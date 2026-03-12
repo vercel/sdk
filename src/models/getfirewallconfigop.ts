@@ -412,7 +412,7 @@ export type Rules2 = {
   active: boolean;
   conditionGroup: Array<GetFirewallConfigRulesConditionGroup>;
   action: GetFirewallConfigRulesAction;
-  valid: boolean;
+  valid: false;
   validationErrors: Array<string>;
 };
 
@@ -552,7 +552,7 @@ export type Rules1 = {
   active: boolean;
   conditionGroup: Array<RulesConditionGroup>;
   action: RulesAction;
-  valid: boolean;
+  valid: true;
   validationErrors?: any | null | undefined;
 };
 
@@ -1893,7 +1893,7 @@ export const Rules2$inboundSchema: z.ZodType<Rules2, z.ZodTypeDef, unknown> = z
       z.lazy(() => GetFirewallConfigRulesConditionGroup$inboundSchema),
     ),
     action: z.lazy(() => GetFirewallConfigRulesAction$inboundSchema),
-    valid: types.boolean(),
+    valid: types.literal(false),
     validationErrors: z.array(types.string()),
   });
 /** @internal */
@@ -1904,7 +1904,7 @@ export type Rules2$Outbound = {
   active: boolean;
   conditionGroup: Array<GetFirewallConfigRulesConditionGroup$Outbound>;
   action: GetFirewallConfigRulesAction$Outbound;
-  valid: boolean;
+  valid: false;
   validationErrors: Array<string>;
 };
 
@@ -1922,7 +1922,7 @@ export const Rules2$outboundSchema: z.ZodType<
     z.lazy(() => GetFirewallConfigRulesConditionGroup$outboundSchema),
   ),
   action: z.lazy(() => GetFirewallConfigRulesAction$outboundSchema),
-  valid: z.boolean(),
+  valid: z.literal(false),
   validationErrors: z.array(z.string()),
 });
 
@@ -2339,7 +2339,7 @@ export const Rules1$inboundSchema: z.ZodType<Rules1, z.ZodTypeDef, unknown> = z
     active: types.boolean(),
     conditionGroup: z.array(z.lazy(() => RulesConditionGroup$inboundSchema)),
     action: z.lazy(() => RulesAction$inboundSchema),
-    valid: types.boolean(),
+    valid: types.literal(true),
     validationErrors: z.nullable(z.any()).optional(),
   });
 /** @internal */
@@ -2350,7 +2350,7 @@ export type Rules1$Outbound = {
   active: boolean;
   conditionGroup: Array<RulesConditionGroup$Outbound>;
   action: RulesAction$Outbound;
-  valid: boolean;
+  valid: true;
   validationErrors?: any | null | undefined;
 };
 
@@ -2366,7 +2366,7 @@ export const Rules1$outboundSchema: z.ZodType<
   active: z.boolean(),
   conditionGroup: z.array(z.lazy(() => RulesConditionGroup$outboundSchema)),
   action: z.lazy(() => RulesAction$outboundSchema),
-  valid: z.boolean(),
+  valid: z.literal(true),
   validationErrors: z.nullable(z.any()).optional(),
 });
 

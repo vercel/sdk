@@ -70,10 +70,15 @@ let value: PutFirewallConfigResponseBody = {
         validationErrors: "<value>",
       },
     ],
-    ips: [],
-    changes: [
-      {},
+    ips: [
+      {
+        id: "<id>",
+        hostname: "drab-vicinity.name",
+        ip: "aebe:8baf:ca48:9d5d:bad7:e4bf:7c8f:d40d",
+        action: "bypass",
+      },
     ],
+    changes: [],
   },
 };
 ```

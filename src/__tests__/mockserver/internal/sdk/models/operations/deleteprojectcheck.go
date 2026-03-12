@@ -4,6 +4,7 @@ package operations
 
 import (
 	"mockserver/internal/sdk/models/components"
+	"mockserver/internal/sdk/utils"
 )
 
 type DeleteProjectCheckRequest struct {
@@ -44,14 +45,22 @@ func (o *DeleteProjectCheckRequest) GetSlug() *string {
 }
 
 type DeleteProjectCheckResponseBody struct {
-	Success bool `json:"success"`
+	success bool `const:"true" json:"success"`
+}
+
+func (d DeleteProjectCheckResponseBody) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DeleteProjectCheckResponseBody) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"success"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *DeleteProjectCheckResponseBody) GetSuccess() bool {
-	if o == nil {
-		return false
-	}
-	return o.Success
+	return true
 }
 
 type DeleteProjectCheckResponse struct {

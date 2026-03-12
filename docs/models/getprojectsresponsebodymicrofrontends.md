@@ -7,12 +7,13 @@
 
 ```typescript
 const value: models.GetProjectsMicrofrontends1 = {
-  isDefaultApp: false,
-  updatedAt: 6343.18,
+  isDefaultApp: true,
+  updatedAt: 7627.68,
   groupIds: [
     "<value 1>",
+    "<value 2>",
   ],
-  enabled: false,
+  enabled: true,
 };
 ```
 
@@ -24,7 +25,7 @@ const value: models.GetProjectsMicrofrontends2 = {
   groupIds: [
     "<value 1>",
   ],
-  enabled: false,
+  enabled: true,
 };
 ```
 
@@ -36,7 +37,7 @@ const value: models.GetProjectsMicrofrontends3 = {
   groupIds: [
     "<value 1>",
   ],
-  enabled: true,
+  enabled: false,
 };
 ```
 

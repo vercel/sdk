@@ -849,12 +849,12 @@ export type GetProjectsResponseBodyLink =
 export type GetProjectsMicrofrontends3 = {
   updatedAt: number;
   groupIds: Array<any>;
-  enabled: boolean;
+  enabled: false;
   freeProjectForLegacyLimits?: boolean | undefined;
 };
 
 export type GetProjectsMicrofrontends2 = {
-  isDefaultApp?: boolean | undefined;
+  isDefaultApp?: false | undefined;
   /**
    * Whether observability data should be routed to this microfrontend project or a root project.
    */
@@ -874,7 +874,7 @@ export type GetProjectsMicrofrontends2 = {
   /**
    * Whether microfrontends are enabled for this project.
    */
-  enabled: boolean;
+  enabled: true;
   /**
    * A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI. Includes the leading slash, e.g. `/docs`
    */
@@ -886,7 +886,7 @@ export type GetProjectsMicrofrontends2 = {
 };
 
 export type GetProjectsMicrofrontends1 = {
-  isDefaultApp: boolean;
+  isDefaultApp: true;
   /**
    * Timestamp when the microfrontends settings were last updated.
    */
@@ -898,7 +898,7 @@ export type GetProjectsMicrofrontends1 = {
   /**
    * Whether microfrontends are enabled for this project.
    */
-  enabled: boolean;
+  enabled: true;
   /**
    * A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI. Includes the leading slash, e.g. `/docs`
    */
@@ -1586,7 +1586,7 @@ export type GetProjectsResponseBodyProjectsWebAnalytics = {
   disabledAt?: number | undefined;
   canceledAt?: number | undefined;
   enabledAt?: number | undefined;
-  hasData?: boolean | undefined;
+  hasData?: true | undefined;
 };
 
 export const GetProjectsResponseBodyProjectsResponse200ApplicationJson3ProjectsSecurityManagedRulesVercelRulesetAction =
@@ -5034,14 +5034,14 @@ export const GetProjectsMicrofrontends3$inboundSchema: z.ZodType<
 > = z.object({
   updatedAt: types.number(),
   groupIds: z.array(z.any()),
-  enabled: types.boolean(),
+  enabled: types.literal(false),
   freeProjectForLegacyLimits: types.optional(types.boolean()),
 });
 /** @internal */
 export type GetProjectsMicrofrontends3$Outbound = {
   updatedAt: number;
   groupIds: Array<any>;
-  enabled: boolean;
+  enabled: false;
   freeProjectForLegacyLimits?: boolean | undefined;
 };
 
@@ -5053,7 +5053,7 @@ export const GetProjectsMicrofrontends3$outboundSchema: z.ZodType<
 > = z.object({
   updatedAt: z.number(),
   groupIds: z.array(z.any()),
-  enabled: z.boolean(),
+  enabled: z.literal(false),
   freeProjectForLegacyLimits: z.boolean().optional(),
 });
 
@@ -5080,23 +5080,23 @@ export const GetProjectsMicrofrontends2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  isDefaultApp: types.optional(types.boolean()),
+  isDefaultApp: types.optional(types.literal(false)),
   routeObservabilityToThisProject: types.optional(types.boolean()),
   doNotRouteWithMicrofrontendsRouting: types.optional(types.boolean()),
   updatedAt: types.number(),
   groupIds: z.array(types.string()),
-  enabled: types.boolean(),
+  enabled: types.literal(true),
   defaultRoute: types.optional(types.string()),
   freeProjectForLegacyLimits: types.optional(types.boolean()),
 });
 /** @internal */
 export type GetProjectsMicrofrontends2$Outbound = {
-  isDefaultApp?: boolean | undefined;
+  isDefaultApp?: false | undefined;
   routeObservabilityToThisProject?: boolean | undefined;
   doNotRouteWithMicrofrontendsRouting?: boolean | undefined;
   updatedAt: number;
   groupIds: Array<string>;
-  enabled: boolean;
+  enabled: true;
   defaultRoute?: string | undefined;
   freeProjectForLegacyLimits?: boolean | undefined;
 };
@@ -5107,12 +5107,12 @@ export const GetProjectsMicrofrontends2$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetProjectsMicrofrontends2
 > = z.object({
-  isDefaultApp: z.boolean().optional(),
+  isDefaultApp: z.literal(false).optional(),
   routeObservabilityToThisProject: z.boolean().optional(),
   doNotRouteWithMicrofrontendsRouting: z.boolean().optional(),
   updatedAt: z.number(),
   groupIds: z.array(z.string()),
-  enabled: z.boolean(),
+  enabled: z.literal(true),
   defaultRoute: z.string().optional(),
   freeProjectForLegacyLimits: z.boolean().optional(),
 });
@@ -5140,19 +5140,19 @@ export const GetProjectsMicrofrontends1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  isDefaultApp: types.boolean(),
+  isDefaultApp: types.literal(true),
   updatedAt: types.number(),
   groupIds: z.array(types.string()),
-  enabled: types.boolean(),
+  enabled: types.literal(true),
   defaultRoute: types.optional(types.string()),
   freeProjectForLegacyLimits: types.optional(types.boolean()),
 });
 /** @internal */
 export type GetProjectsMicrofrontends1$Outbound = {
-  isDefaultApp: boolean;
+  isDefaultApp: true;
   updatedAt: number;
   groupIds: Array<string>;
-  enabled: boolean;
+  enabled: true;
   defaultRoute?: string | undefined;
   freeProjectForLegacyLimits?: boolean | undefined;
 };
@@ -5163,10 +5163,10 @@ export const GetProjectsMicrofrontends1$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetProjectsMicrofrontends1
 > = z.object({
-  isDefaultApp: z.boolean(),
+  isDefaultApp: z.literal(true),
   updatedAt: z.number(),
   groupIds: z.array(z.string()),
-  enabled: z.boolean(),
+  enabled: z.literal(true),
   defaultRoute: z.string().optional(),
   freeProjectForLegacyLimits: z.boolean().optional(),
 });
@@ -7681,7 +7681,7 @@ export const GetProjectsResponseBodyProjectsWebAnalytics$inboundSchema:
     disabledAt: types.optional(types.number()),
     canceledAt: types.optional(types.number()),
     enabledAt: types.optional(types.number()),
-    hasData: types.optional(types.boolean()),
+    hasData: types.optional(types.literal(true)),
   });
 /** @internal */
 export type GetProjectsResponseBodyProjectsWebAnalytics$Outbound = {
@@ -7689,7 +7689,7 @@ export type GetProjectsResponseBodyProjectsWebAnalytics$Outbound = {
   disabledAt?: number | undefined;
   canceledAt?: number | undefined;
   enabledAt?: number | undefined;
-  hasData?: boolean | undefined;
+  hasData?: true | undefined;
 };
 
 /** @internal */
@@ -7703,7 +7703,7 @@ export const GetProjectsResponseBodyProjectsWebAnalytics$outboundSchema:
     disabledAt: z.number().optional(),
     canceledAt: z.number().optional(),
     enabledAt: z.number().optional(),
-    hasData: z.boolean().optional(),
+    hasData: z.literal(true).optional(),
   });
 
 export function getProjectsResponseBodyProjectsWebAnalyticsToJSON(

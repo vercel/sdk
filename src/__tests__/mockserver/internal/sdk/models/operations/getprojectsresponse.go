@@ -8,6 +8,7 @@ import (
 	"fmt"
 	"mockserver/internal/sdk/models/components"
 	"mockserver/internal/sdk/optionalnullable"
+	"mockserver/internal/sdk/types"
 	"mockserver/internal/sdk/utils"
 )
 
@@ -2276,7 +2277,7 @@ type GetProjectsWebAnalytics struct {
 	DisabledAt *float64 `json:"disabledAt,omitempty"`
 	CanceledAt *float64 `json:"canceledAt,omitempty"`
 	EnabledAt  *float64 `json:"enabledAt,omitempty"`
-	HasData    *bool    `json:"hasData,omitempty"`
+	hasData    *bool    `const:"true" json:"hasData,omitempty"`
 }
 
 func (g GetProjectsWebAnalytics) MarshalJSON() ([]byte, error) {
@@ -2319,10 +2320,7 @@ func (o *GetProjectsWebAnalytics) GetEnabledAt() *float64 {
 }
 
 func (o *GetProjectsWebAnalytics) GetHasData() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.HasData
+	return types.Bool(true)
 }
 
 type Src struct {

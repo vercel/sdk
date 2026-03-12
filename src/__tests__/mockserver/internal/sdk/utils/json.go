@@ -53,19 +53,26 @@ func MarshalJSON(v interface{}, tag reflect.StructTag, topLevel bool) ([]byte, e
 			fieldName := field.Name
 
 			omitEmpty := false
+			omitZero := false
 			jsonTag := field.Tag.Get("json")
 			if jsonTag != "" {
 				for _, tag := range strings.Split(jsonTag, ",") {
 					if tag == "omitempty" {
 						omitEmpty = true
-					} else if tag != "omitzero" {
+					} else if tag == "omitzero" {
+						omitZero = true
+					} else {
 						fieldName = tag
 					}
 				}
 			}
 
-			if omitEmpty && field.Tag.Get("const") == "" {
+			if (omitEmpty || omitZero) && field.Tag.Get("const") == "" {
 				if isNil(field.Type, fieldVal) || isEmpty(field.Type, fieldVal) {
+					continue
+				}
+
+				if omitZero && fieldVal.IsZero() {
 					continue
 				}
 			}

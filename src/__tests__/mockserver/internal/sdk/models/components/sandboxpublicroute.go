@@ -2,6 +2,11 @@
 
 package components
 
+import (
+	"mockserver/internal/sdk/types"
+	"mockserver/internal/sdk/utils"
+)
+
 // SandboxPublicRoute - This object represents a public route in a Vercel Sandbox.
 type SandboxPublicRoute struct {
 	// A public URL to access the corresponding port in the Sandbox.
@@ -11,7 +16,18 @@ type SandboxPublicRoute struct {
 	// The subdomain assigned to this route.
 	Subdomain string `json:"subdomain"`
 	// Whether the route is reserved by the system (e.g. for internal use).
-	System *bool `json:"system,omitempty"`
+	system *bool `const:"true" json:"system,omitempty"`
+}
+
+func (s SandboxPublicRoute) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(s, "", false)
+}
+
+func (s *SandboxPublicRoute) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &s, "", false, []string{"url", "port", "subdomain"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *SandboxPublicRoute) GetURL() string {
@@ -36,8 +52,5 @@ func (o *SandboxPublicRoute) GetSubdomain() string {
 }
 
 func (o *SandboxPublicRoute) GetSystem() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.System
+	return types.Bool(true)
 }

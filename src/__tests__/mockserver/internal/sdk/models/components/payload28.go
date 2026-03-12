@@ -10,6 +10,29 @@ import (
 	"mockserver/internal/sdk/utils"
 )
 
+// Payload78 - The payload of the event, if requested.
+type Payload78 struct {
+	Domain string `json:"domain"`
+}
+
+func (p Payload78) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload78) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"domain"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *Payload78) GetDomain() string {
+	if o == nil {
+		return ""
+	}
+	return o.Domain
+}
+
 // Payload77 - The payload of the event, if requested.
 type Payload77 struct {
 	Domain                string   `json:"domain"`
@@ -7136,37 +7159,4 @@ func (o *Payload28) GetAttackModeActiveUntil() optionalnullable.OptionalNullable
 		return nil
 	}
 	return o.AttackModeActiveUntil
-}
-
-// App1 - Note that not all historical events have this field.
-type App1 struct {
-	// The App's ID.
-	ID string `json:"id"`
-	// The App's name at the moment this even was published (it may have changed since then).
-	Name string `json:"name"`
-}
-
-func (a App1) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(a, "", false)
-}
-
-func (a *App1) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"id", "name"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *App1) GetID() string {
-	if o == nil {
-		return ""
-	}
-	return o.ID
-}
-
-func (o *App1) GetName() string {
-	if o == nil {
-		return ""
-	}
-	return o.Name
 }

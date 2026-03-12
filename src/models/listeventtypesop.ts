@@ -383,6 +383,7 @@ export const ListEventTypesName = {
   TeamAvatarUpdate: "team-avatar-update",
   TeamDelete: "team-delete",
   StrictDeploymentProtectionSettings: "strict-deployment-protection-settings",
+  TeamDomainVerificationDeleted: "team-domain-verification-deleted",
   VercelToolbar: "vercel-toolbar",
   TeamEmailDomainUpdate: "team-email-domain-update",
   TeamInviteBulkDelete: "team-invite-bulk-delete",
@@ -444,7 +445,7 @@ export type ListEventTypesName = ClosedEnum<typeof ListEventTypesName>;
 
 export type Types = {
   replacedBy: Array<string>;
-  deprecated: boolean;
+  deprecated: true;
   name: ListEventTypesName;
   description: string;
 };
@@ -508,14 +509,14 @@ export const ListEventTypesName$outboundSchema: z.ZodNativeEnum<
 export const Types$inboundSchema: z.ZodType<Types, z.ZodTypeDef, unknown> = z
   .object({
     replacedBy: z.array(types.string()),
-    deprecated: types.boolean(),
+    deprecated: types.literal(true),
     name: ListEventTypesName$inboundSchema,
     description: types.string(),
   });
 /** @internal */
 export type Types$Outbound = {
   replacedBy: Array<string>;
-  deprecated: boolean;
+  deprecated: true;
   name: string;
   description: string;
 };
@@ -527,7 +528,7 @@ export const Types$outboundSchema: z.ZodType<
   Types
 > = z.object({
   replacedBy: z.array(z.string()),
-  deprecated: z.boolean(),
+  deprecated: z.literal(true),
   name: ListEventTypesName$outboundSchema,
   description: z.string(),
 });

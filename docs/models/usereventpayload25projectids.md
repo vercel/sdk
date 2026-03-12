@@ -7,7 +7,7 @@ import { UserEventPayload25ProjectIds } from "@vercel/sdk/models/userevent.js";
 
 let value: UserEventPayload25ProjectIds = {
   type: "list",
-  required: false,
+  required: true,
   items: {
     type: "string",
   },
@@ -19,5 +19,5 @@ let value: UserEventPayload25ProjectIds = {
 | Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
 | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
 | `type`                                                                         | [models.UserEventPayload25AfterType](../models/usereventpayload25aftertype.md) | :heavy_check_mark:                                                             | N/A                                                                            |
-| `required`                                                                     | *boolean*                                                                      | :heavy_check_mark:                                                             | N/A                                                                            |
+| `required`                                                                     | *true*                                                                         | :heavy_check_mark:                                                             | N/A                                                                            |
 | `items`                                                                        | [models.PayloadItems](../models/payloaditems.md)                               | :heavy_check_mark:                                                             | N/A                                                                            |

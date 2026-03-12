@@ -162,7 +162,7 @@ import {
   OneHundredAndTwentyTwo$inboundSchema,
   OneHundredAndTwentyTwo$Outbound,
   OneHundredAndTwentyTwo$outboundSchema,
-} from "./artifacts.js";
+} from "./analyticsusage.js";
 import {
   OneHundredAndEighty,
   OneHundredAndEighty$inboundSchema,
@@ -551,15 +551,11 @@ import {
   OneHundredAndTwo$inboundSchema,
   OneHundredAndTwo$Outbound,
   OneHundredAndTwo$outboundSchema,
-  SeventyEight,
-  SeventyEight$inboundSchema,
-  SeventyEight$Outbound,
-  SeventyEight$outboundSchema,
   SeventyNine,
   SeventyNine$inboundSchema,
   SeventyNine$Outbound,
   SeventyNine$outboundSchema,
-} from "./seventyeight.js";
+} from "./seventynine.js";
 import {
   Entities,
   Entities$inboundSchema,
@@ -914,6 +910,10 @@ import {
   Seventy$inboundSchema,
   Seventy$Outbound,
   Seventy$outboundSchema,
+  SeventyEight,
+  SeventyEight$inboundSchema,
+  SeventyEight$Outbound,
+  SeventyEight$outboundSchema,
   SeventyFive,
   SeventyFive$inboundSchema,
   SeventyFive$Outbound,
@@ -1038,13 +1038,17 @@ import {
   TwentySix$inboundSchema,
   TwentySix$Outbound,
   TwentySix$outboundSchema,
-  UserEventPayload25BeforeType,
-  UserEventPayload25BeforeType$inboundSchema,
-  UserEventPayload25BeforeType$outboundSchema,
   UserEventPayload25Type,
   UserEventPayload25Type$inboundSchema,
   UserEventPayload25Type$outboundSchema,
-} from "./usereventpayload25beforetype.js";
+} from "./usereventpayload25type.js";
+
+export const UserEventPayload25BeforeType = {
+  String: "string",
+} as const;
+export type UserEventPayload25BeforeType = ClosedEnum<
+  typeof UserEventPayload25BeforeType
+>;
 
 export type UserEventPayloadItems = {
   type: UserEventPayload25BeforeType;
@@ -1052,7 +1056,7 @@ export type UserEventPayloadItems = {
 
 export type UserEventPayloadProjectIds = {
   type: UserEventPayload25Type;
-  required: boolean;
+  required: true;
   items: UserEventPayloadItems;
 };
 
@@ -1078,6 +1082,12 @@ export const UserEventPayload25Permissions = {
   ReadDeployment: "read:deployment",
   ReadWriteDeployment: "read-write:deployment",
   ReadWriteEdgeCache: "read-write:edge-cache",
+  ReadWriteProjectProtectionBypass: "read-write:project-protection-bypass",
+  ReadProjectEnvVarsNonProduction: "read:project-env-vars-non-production",
+  ReadWriteProjectEnvVarsNonProduction:
+    "read-write:project-env-vars-non-production",
+  ReadProjectEnvVarsProduction: "read:project-env-vars-production",
+  ReadWriteProjectEnvVarsProduction: "read-write:project-env-vars-production",
 } as const;
 export type UserEventPayload25Permissions = ClosedEnum<
   typeof UserEventPayload25Permissions
@@ -1108,7 +1118,7 @@ export type PayloadItems = {
 
 export type UserEventPayload25ProjectIds = {
   type: UserEventPayload25AfterType;
-  required: boolean;
+  required: true;
   items: PayloadItems;
 };
 
@@ -1134,6 +1144,12 @@ export const UserEventPayloadPermissions = {
   ReadDeployment: "read:deployment",
   ReadWriteDeployment: "read-write:deployment",
   ReadWriteEdgeCache: "read-write:edge-cache",
+  ReadWriteProjectProtectionBypass: "read-write:project-protection-bypass",
+  ReadProjectEnvVarsNonProduction: "read:project-env-vars-non-production",
+  ReadWriteProjectEnvVarsNonProduction:
+    "read-write:project-env-vars-non-production",
+  ReadProjectEnvVarsProduction: "read:project-env-vars-production",
+  ReadWriteProjectEnvVarsProduction: "read-write:project-env-vars-production",
 } as const;
 export type UserEventPayloadPermissions = ClosedEnum<
   typeof UserEventPayloadPermissions
@@ -1183,6 +1199,12 @@ export const NextPermissions = {
   ReadDeployment: "read:deployment",
   ReadWriteDeployment: "read-write:deployment",
   ReadWriteEdgeCache: "read-write:edge-cache",
+  ReadWriteProjectProtectionBypass: "read-write:project-protection-bypass",
+  ReadProjectEnvVarsNonProduction: "read:project-env-vars-non-production",
+  ReadWriteProjectEnvVarsNonProduction:
+    "read-write:project-env-vars-non-production",
+  ReadProjectEnvVarsProduction: "read:project-env-vars-production",
+  ReadWriteProjectEnvVarsProduction: "read-write:project-env-vars-production",
 } as const;
 export type NextPermissions = ClosedEnum<typeof NextPermissions>;
 
@@ -1232,6 +1254,12 @@ export const Permissions = {
   ReadDeployment: "read:deployment",
   ReadWriteDeployment: "read-write:deployment",
   ReadWriteEdgeCache: "read-write:edge-cache",
+  ReadWriteProjectProtectionBypass: "read-write:project-protection-bypass",
+  ReadProjectEnvVarsNonProduction: "read:project-env-vars-non-production",
+  ReadWriteProjectEnvVarsNonProduction:
+    "read-write:project-env-vars-non-production",
+  ReadProjectEnvVarsProduction: "read:project-env-vars-production",
+  ReadWriteProjectEnvVarsProduction: "read-write:project-env-vars-production",
 } as const;
 export type Permissions = ClosedEnum<typeof Permissions>;
 
@@ -2146,6 +2174,15 @@ export type UserEvent = {
 };
 
 /** @internal */
+export const UserEventPayload25BeforeType$inboundSchema: z.ZodNativeEnum<
+  typeof UserEventPayload25BeforeType
+> = z.nativeEnum(UserEventPayload25BeforeType);
+/** @internal */
+export const UserEventPayload25BeforeType$outboundSchema: z.ZodNativeEnum<
+  typeof UserEventPayload25BeforeType
+> = UserEventPayload25BeforeType$inboundSchema;
+
+/** @internal */
 export const UserEventPayloadItems$inboundSchema: z.ZodType<
   UserEventPayloadItems,
   z.ZodTypeDef,
@@ -2191,13 +2228,13 @@ export const UserEventPayloadProjectIds$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   type: UserEventPayload25Type$inboundSchema,
-  required: types.boolean(),
+  required: types.literal(true),
   items: z.lazy(() => UserEventPayloadItems$inboundSchema),
 });
 /** @internal */
 export type UserEventPayloadProjectIds$Outbound = {
   type: string;
-  required: boolean;
+  required: true;
   items: UserEventPayloadItems$Outbound;
 };
 
@@ -2208,7 +2245,7 @@ export const UserEventPayloadProjectIds$outboundSchema: z.ZodType<
   UserEventPayloadProjectIds
 > = z.object({
   type: UserEventPayload25Type$outboundSchema,
-  required: z.boolean(),
+  required: z.literal(true),
   items: z.lazy(() => UserEventPayloadItems$outboundSchema),
 });
 
@@ -2377,13 +2414,13 @@ export const UserEventPayload25ProjectIds$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   type: UserEventPayload25AfterType$inboundSchema,
-  required: types.boolean(),
+  required: types.literal(true),
   items: z.lazy(() => PayloadItems$inboundSchema),
 });
 /** @internal */
 export type UserEventPayload25ProjectIds$Outbound = {
   type: string;
-  required: boolean;
+  required: true;
   items: PayloadItems$Outbound;
 };
 
@@ -2394,7 +2431,7 @@ export const UserEventPayload25ProjectIds$outboundSchema: z.ZodType<
   UserEventPayload25ProjectIds
 > = z.object({
   type: UserEventPayload25AfterType$outboundSchema,
-  required: z.boolean(),
+  required: z.literal(true),
   items: z.lazy(() => PayloadItems$outboundSchema),
 });
 

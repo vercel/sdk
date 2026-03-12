@@ -6,6 +6,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"mockserver/internal/sdk/models/components"
+	"mockserver/internal/sdk/utils"
 )
 
 type ListEventTypesRequest struct {
@@ -375,6 +376,7 @@ const (
 	NameTeamAvatarUpdate                                Name = "team-avatar-update"
 	NameTeamDelete                                      Name = "team-delete"
 	NameStrictDeploymentProtectionSettings              Name = "strict-deployment-protection-settings"
+	NameTeamDomainVerificationDeleted                   Name = "team-domain-verification-deleted"
 	NameVercelToolbar                                   Name = "vercel-toolbar"
 	NameTeamEmailDomainUpdate                           Name = "team-email-domain-update"
 	NameTeamInviteBulkDelete                            Name = "team-invite-bulk-delete"
@@ -1127,6 +1129,8 @@ func (e *Name) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "strict-deployment-protection-settings":
 		fallthrough
+	case "team-domain-verification-deleted":
+		fallthrough
 	case "vercel-toolbar":
 		fallthrough
 	case "team-email-domain-update":
@@ -1245,9 +1249,20 @@ func (e *Name) UnmarshalJSON(data []byte) error {
 
 type ListEventTypesType struct {
 	ReplacedBy  []string `json:"replacedBy"`
-	Deprecated  bool     `json:"deprecated"`
+	deprecated  bool     `const:"true" json:"deprecated"`
 	Name        Name     `json:"name"`
 	Description string   `json:"description"`
+}
+
+func (l ListEventTypesType) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(l, "", false)
+}
+
+func (l *ListEventTypesType) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &l, "", false, []string{"replacedBy", "deprecated", "name", "description"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *ListEventTypesType) GetReplacedBy() []string {
@@ -1258,10 +1273,7 @@ func (o *ListEventTypesType) GetReplacedBy() []string {
 }
 
 func (o *ListEventTypesType) GetDeprecated() bool {
-	if o == nil {
-		return false
-	}
-	return o.Deprecated
+	return true
 }
 
 func (o *ListEventTypesType) GetName() Name {

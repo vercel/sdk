@@ -8,6 +8,7 @@ import (
 	"fmt"
 	"mockserver/internal/sdk/models/components"
 	"mockserver/internal/sdk/optionalnullable"
+	"mockserver/internal/sdk/types"
 	"mockserver/internal/sdk/utils"
 )
 
@@ -4653,7 +4654,7 @@ func (u ProjectLinkUnion2) MarshalJSON() ([]byte, error) {
 type GetProjectsMicrofrontends3 struct {
 	UpdatedAt                  float64 `json:"updatedAt"`
 	GroupIds                   []any   `json:"groupIds"`
-	Enabled                    bool    `json:"enabled"`
+	enabled                    bool    `const:"false" json:"enabled"`
 	FreeProjectForLegacyLimits *bool   `json:"freeProjectForLegacyLimits,omitempty"`
 }
 
@@ -4683,10 +4684,7 @@ func (o *GetProjectsMicrofrontends3) GetGroupIds() []any {
 }
 
 func (o *GetProjectsMicrofrontends3) GetEnabled() bool {
-	if o == nil {
-		return false
-	}
-	return o.Enabled
+	return false
 }
 
 func (o *GetProjectsMicrofrontends3) GetFreeProjectForLegacyLimits() *bool {
@@ -4697,7 +4695,7 @@ func (o *GetProjectsMicrofrontends3) GetFreeProjectForLegacyLimits() *bool {
 }
 
 type GetProjectsMicrofrontends2 struct {
-	IsDefaultApp *bool `json:"isDefaultApp,omitempty"`
+	isDefaultApp *bool `const:"false" json:"isDefaultApp,omitempty"`
 	// Whether observability data should be routed to this microfrontend project or a root project.
 	RouteObservabilityToThisProject *bool `json:"routeObservabilityToThisProject,omitempty"`
 	// Whether to add microfrontends routing to aliases. This means domains in this project will route as a microfrontend.
@@ -4707,7 +4705,7 @@ type GetProjectsMicrofrontends2 struct {
 	// The group IDs of microfrontends that this project belongs to. Each microfrontend project must belong to a microfrontends group that is the set of microfrontends that are used together.
 	GroupIds []string `json:"groupIds"`
 	// Whether microfrontends are enabled for this project.
-	Enabled bool `json:"enabled"`
+	enabled bool `const:"true" json:"enabled"`
 	// A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI. Includes the leading slash, e.g. `/docs`
 	DefaultRoute *string `json:"defaultRoute,omitempty"`
 	// Whether the project was part of the legacy limits for hobby and pro-trial before billing was added. This field is only set when the team is upgraded to a paid plan and we are backfilling the subscription status. We cap the subscription to 2 projects and set this field for the 3rd project. When this field is set, the project is not charged for and we do not call any billing APIs for this project.
@@ -4726,10 +4724,7 @@ func (g *GetProjectsMicrofrontends2) UnmarshalJSON(data []byte) error {
 }
 
 func (o *GetProjectsMicrofrontends2) GetIsDefaultApp() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.IsDefaultApp
+	return types.Bool(false)
 }
 
 func (o *GetProjectsMicrofrontends2) GetRouteObservabilityToThisProject() *bool {
@@ -4761,10 +4756,7 @@ func (o *GetProjectsMicrofrontends2) GetGroupIds() []string {
 }
 
 func (o *GetProjectsMicrofrontends2) GetEnabled() bool {
-	if o == nil {
-		return false
-	}
-	return o.Enabled
+	return true
 }
 
 func (o *GetProjectsMicrofrontends2) GetDefaultRoute() *string {
@@ -4782,13 +4774,13 @@ func (o *GetProjectsMicrofrontends2) GetFreeProjectForLegacyLimits() *bool {
 }
 
 type GetProjectsMicrofrontends1 struct {
-	IsDefaultApp bool `json:"isDefaultApp"`
+	isDefaultApp bool `const:"true" json:"isDefaultApp"`
 	// Timestamp when the microfrontends settings were last updated.
 	UpdatedAt float64 `json:"updatedAt"`
 	// The group IDs of microfrontends that this project belongs to. Each microfrontend project must belong to a microfrontends group that is the set of microfrontends that are used together.
 	GroupIds []string `json:"groupIds"`
 	// Whether microfrontends are enabled for this project.
-	Enabled bool `json:"enabled"`
+	enabled bool `const:"true" json:"enabled"`
 	// A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI. Includes the leading slash, e.g. `/docs`
 	DefaultRoute *string `json:"defaultRoute,omitempty"`
 	// Whether the project was part of the legacy limits for hobby and pro-trial before billing was added. This field is only set when the team is upgraded to a paid plan and we are backfilling the subscription status. We cap the subscription to 2 projects and set this field for the 3rd project. When this field is set, the project is not charged for and we do not call any billing APIs for this project.
@@ -4807,10 +4799,7 @@ func (g *GetProjectsMicrofrontends1) UnmarshalJSON(data []byte) error {
 }
 
 func (o *GetProjectsMicrofrontends1) GetIsDefaultApp() bool {
-	if o == nil {
-		return false
-	}
-	return o.IsDefaultApp
+	return true
 }
 
 func (o *GetProjectsMicrofrontends1) GetUpdatedAt() float64 {
@@ -4828,10 +4817,7 @@ func (o *GetProjectsMicrofrontends1) GetGroupIds() []string {
 }
 
 func (o *GetProjectsMicrofrontends1) GetEnabled() bool {
-	if o == nil {
-		return false
-	}
-	return o.Enabled
+	return true
 }
 
 func (o *GetProjectsMicrofrontends1) GetDefaultRoute() *string {
@@ -8706,7 +8692,7 @@ type ProjectWebAnalytics2 struct {
 	DisabledAt *float64 `json:"disabledAt,omitempty"`
 	CanceledAt *float64 `json:"canceledAt,omitempty"`
 	EnabledAt  *float64 `json:"enabledAt,omitempty"`
-	HasData    *bool    `json:"hasData,omitempty"`
+	hasData    *bool    `const:"true" json:"hasData,omitempty"`
 }
 
 func (p ProjectWebAnalytics2) MarshalJSON() ([]byte, error) {
@@ -8749,10 +8735,7 @@ func (o *ProjectWebAnalytics2) GetEnabledAt() *float64 {
 }
 
 func (o *ProjectWebAnalytics2) GetHasData() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.HasData
+	return types.Bool(true)
 }
 
 type ProjectVercelRulesetAction2 string

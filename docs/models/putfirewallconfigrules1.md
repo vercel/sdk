@@ -11,7 +11,7 @@ let value: PutFirewallConfigRules1 = {
   active: false,
   conditionGroup: [],
   action: {},
-  valid: false,
+  valid: true,
   validationErrors: "<value>",
 };
 ```
@@ -26,5 +26,5 @@ let value: PutFirewallConfigRules1 = {
 | `active`                                                                                                           | *boolean*                                                                                                          | :heavy_check_mark:                                                                                                 | N/A                                                                                                                |
 | `conditionGroup`                                                                                                   | [models.PutFirewallConfigRulesSecurityConditionGroup](../models/putfirewallconfigrulessecurityconditiongroup.md)[] | :heavy_check_mark:                                                                                                 | N/A                                                                                                                |
 | `action`                                                                                                           | [models.PutFirewallConfigRulesSecurityAction](../models/putfirewallconfigrulessecurityaction.md)                   | :heavy_check_mark:                                                                                                 | N/A                                                                                                                |
-| `valid`                                                                                                            | *boolean*                                                                                                          | :heavy_check_mark:                                                                                                 | N/A                                                                                                                |
+| `valid`                                                                                                            | *true*                                                                                                             | :heavy_check_mark:                                                                                                 | N/A                                                                                                                |
 | `validationErrors`                                                                                                 | *any*                                                                                                              | :heavy_check_mark:                                                                                                 | N/A                                                                                                                |

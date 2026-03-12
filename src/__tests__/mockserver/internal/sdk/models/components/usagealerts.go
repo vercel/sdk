@@ -7,6 +7,7 @@ import (
 	"errors"
 	"fmt"
 	"mockserver/internal/sdk/optionalnullable"
+	"mockserver/internal/sdk/types"
 	"mockserver/internal/sdk/utils"
 )
 
@@ -2162,7 +2163,7 @@ func (o *Payload122) GetProjectName() string {
 type Microfrontends3 struct {
 	UpdatedAt                  float64 `json:"updatedAt"`
 	GroupIds                   []any   `json:"groupIds"`
-	Enabled                    bool    `json:"enabled"`
+	enabled                    bool    `const:"false" json:"enabled"`
 	FreeProjectForLegacyLimits *bool   `json:"freeProjectForLegacyLimits,omitempty"`
 }
 
@@ -2192,10 +2193,7 @@ func (o *Microfrontends3) GetGroupIds() []any {
 }
 
 func (o *Microfrontends3) GetEnabled() bool {
-	if o == nil {
-		return false
-	}
-	return o.Enabled
+	return false
 }
 
 func (o *Microfrontends3) GetFreeProjectForLegacyLimits() *bool {
@@ -2206,7 +2204,7 @@ func (o *Microfrontends3) GetFreeProjectForLegacyLimits() *bool {
 }
 
 type Microfrontends2 struct {
-	IsDefaultApp *bool `json:"isDefaultApp,omitempty"`
+	isDefaultApp *bool `const:"false" json:"isDefaultApp,omitempty"`
 	// Whether observability data should be routed to this microfrontend project or a root project.
 	RouteObservabilityToThisProject *bool `json:"routeObservabilityToThisProject,omitempty"`
 	// Whether to add microfrontends routing to aliases. This means domains in this project will route as a microfrontend.
@@ -2216,7 +2214,7 @@ type Microfrontends2 struct {
 	// The group IDs of microfrontends that this project belongs to. Each microfrontend project must belong to a microfrontends group that is the set of microfrontends that are used together.
 	GroupIds []string `json:"groupIds"`
 	// Whether microfrontends are enabled for this project.
-	Enabled bool `json:"enabled"`
+	enabled bool `const:"true" json:"enabled"`
 	// A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI. Includes the leading slash, e.g. `/docs`
 	DefaultRoute *string `json:"defaultRoute,omitempty"`
 	// Whether the project was part of the legacy limits for hobby and pro-trial before billing was added. This field is only set when the team is upgraded to a paid plan and we are backfilling the subscription status. We cap the subscription to 2 projects and set this field for the 3rd project. When this field is set, the project is not charged for and we do not call any billing APIs for this project.
@@ -2235,10 +2233,7 @@ func (m *Microfrontends2) UnmarshalJSON(data []byte) error {
 }
 
 func (o *Microfrontends2) GetIsDefaultApp() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.IsDefaultApp
+	return types.Bool(false)
 }
 
 func (o *Microfrontends2) GetRouteObservabilityToThisProject() *bool {
@@ -2270,10 +2265,7 @@ func (o *Microfrontends2) GetGroupIds() []string {
 }
 
 func (o *Microfrontends2) GetEnabled() bool {
-	if o == nil {
-		return false
-	}
-	return o.Enabled
+	return true
 }
 
 func (o *Microfrontends2) GetDefaultRoute() *string {
@@ -2291,13 +2283,13 @@ func (o *Microfrontends2) GetFreeProjectForLegacyLimits() *bool {
 }
 
 type Microfrontends1 struct {
-	IsDefaultApp bool `json:"isDefaultApp"`
+	isDefaultApp bool `const:"true" json:"isDefaultApp"`
 	// Timestamp when the microfrontends settings were last updated.
 	UpdatedAt float64 `json:"updatedAt"`
 	// The group IDs of microfrontends that this project belongs to. Each microfrontend project must belong to a microfrontends group that is the set of microfrontends that are used together.
 	GroupIds []string `json:"groupIds"`
 	// Whether microfrontends are enabled for this project.
-	Enabled bool `json:"enabled"`
+	enabled bool `const:"true" json:"enabled"`
 	// A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI. Includes the leading slash, e.g. `/docs`
 	DefaultRoute *string `json:"defaultRoute,omitempty"`
 	// Whether the project was part of the legacy limits for hobby and pro-trial before billing was added. This field is only set when the team is upgraded to a paid plan and we are backfilling the subscription status. We cap the subscription to 2 projects and set this field for the 3rd project. When this field is set, the project is not charged for and we do not call any billing APIs for this project.
@@ -2316,10 +2308,7 @@ func (m *Microfrontends1) UnmarshalJSON(data []byte) error {
 }
 
 func (o *Microfrontends1) GetIsDefaultApp() bool {
-	if o == nil {
-		return false
-	}
-	return o.IsDefaultApp
+	return true
 }
 
 func (o *Microfrontends1) GetUpdatedAt() float64 {
@@ -2337,10 +2326,7 @@ func (o *Microfrontends1) GetGroupIds() []string {
 }
 
 func (o *Microfrontends1) GetEnabled() bool {
-	if o == nil {
-		return false
-	}
-	return o.Enabled
+	return true
 }
 
 func (o *Microfrontends1) GetDefaultRoute() *string {
@@ -2483,7 +2469,7 @@ func (o *Project9) GetMicrofrontends() *MicrofrontendsUnion {
 type MicrofrontendsPrev3 struct {
 	UpdatedAt                  float64 `json:"updatedAt"`
 	GroupIds                   []any   `json:"groupIds"`
-	Enabled                    bool    `json:"enabled"`
+	enabled                    bool    `const:"false" json:"enabled"`
 	FreeProjectForLegacyLimits *bool   `json:"freeProjectForLegacyLimits,omitempty"`
 }
 
@@ -2513,10 +2499,7 @@ func (o *MicrofrontendsPrev3) GetGroupIds() []any {
 }
 
 func (o *MicrofrontendsPrev3) GetEnabled() bool {
-	if o == nil {
-		return false
-	}
-	return o.Enabled
+	return false
 }
 
 func (o *MicrofrontendsPrev3) GetFreeProjectForLegacyLimits() *bool {
@@ -2527,7 +2510,7 @@ func (o *MicrofrontendsPrev3) GetFreeProjectForLegacyLimits() *bool {
 }
 
 type MicrofrontendsPrev2 struct {
-	IsDefaultApp *bool `json:"isDefaultApp,omitempty"`
+	isDefaultApp *bool `const:"false" json:"isDefaultApp,omitempty"`
 	// Whether observability data should be routed to this microfrontend project or a root project.
 	RouteObservabilityToThisProject *bool `json:"routeObservabilityToThisProject,omitempty"`
 	// Whether to add microfrontends routing to aliases. This means domains in this project will route as a microfrontend.
@@ -2537,7 +2520,7 @@ type MicrofrontendsPrev2 struct {
 	// The group IDs of microfrontends that this project belongs to. Each microfrontend project must belong to a microfrontends group that is the set of microfrontends that are used together.
 	GroupIds []string `json:"groupIds"`
 	// Whether microfrontends are enabled for this project.
-	Enabled bool `json:"enabled"`
+	enabled bool `const:"true" json:"enabled"`
 	// A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI. Includes the leading slash, e.g. `/docs`
 	DefaultRoute *string `json:"defaultRoute,omitempty"`
 	// Whether the project was part of the legacy limits for hobby and pro-trial before billing was added. This field is only set when the team is upgraded to a paid plan and we are backfilling the subscription status. We cap the subscription to 2 projects and set this field for the 3rd project. When this field is set, the project is not charged for and we do not call any billing APIs for this project.
@@ -2556,10 +2539,7 @@ func (m *MicrofrontendsPrev2) UnmarshalJSON(data []byte) error {
 }
 
 func (o *MicrofrontendsPrev2) GetIsDefaultApp() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.IsDefaultApp
+	return types.Bool(false)
 }
 
 func (o *MicrofrontendsPrev2) GetRouteObservabilityToThisProject() *bool {
@@ -2591,10 +2571,7 @@ func (o *MicrofrontendsPrev2) GetGroupIds() []string {
 }
 
 func (o *MicrofrontendsPrev2) GetEnabled() bool {
-	if o == nil {
-		return false
-	}
-	return o.Enabled
+	return true
 }
 
 func (o *MicrofrontendsPrev2) GetDefaultRoute() *string {
@@ -2612,13 +2589,13 @@ func (o *MicrofrontendsPrev2) GetFreeProjectForLegacyLimits() *bool {
 }
 
 type MicrofrontendsPrev1 struct {
-	IsDefaultApp bool `json:"isDefaultApp"`
+	isDefaultApp bool `const:"true" json:"isDefaultApp"`
 	// Timestamp when the microfrontends settings were last updated.
 	UpdatedAt float64 `json:"updatedAt"`
 	// The group IDs of microfrontends that this project belongs to. Each microfrontend project must belong to a microfrontends group that is the set of microfrontends that are used together.
 	GroupIds []string `json:"groupIds"`
 	// Whether microfrontends are enabled for this project.
-	Enabled bool `json:"enabled"`
+	enabled bool `const:"true" json:"enabled"`
 	// A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI. Includes the leading slash, e.g. `/docs`
 	DefaultRoute *string `json:"defaultRoute,omitempty"`
 	// Whether the project was part of the legacy limits for hobby and pro-trial before billing was added. This field is only set when the team is upgraded to a paid plan and we are backfilling the subscription status. We cap the subscription to 2 projects and set this field for the 3rd project. When this field is set, the project is not charged for and we do not call any billing APIs for this project.
@@ -2637,10 +2614,7 @@ func (m *MicrofrontendsPrev1) UnmarshalJSON(data []byte) error {
 }
 
 func (o *MicrofrontendsPrev1) GetIsDefaultApp() bool {
-	if o == nil {
-		return false
-	}
-	return o.IsDefaultApp
+	return true
 }
 
 func (o *MicrofrontendsPrev1) GetUpdatedAt() float64 {
@@ -2658,10 +2632,7 @@ func (o *MicrofrontendsPrev1) GetGroupIds() []string {
 }
 
 func (o *MicrofrontendsPrev1) GetEnabled() bool {
-	if o == nil {
-		return false
-	}
-	return o.Enabled
+	return true
 }
 
 func (o *MicrofrontendsPrev1) GetDefaultRoute() *string {
@@ -5668,12 +5639,39 @@ func (e *UserEventDefaultPurchaseType) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type UserEventMachineSelectionType string
+
+const (
+	UserEventMachineSelectionTypeFixed   UserEventMachineSelectionType = "fixed"
+	UserEventMachineSelectionTypeElastic UserEventMachineSelectionType = "elastic"
+)
+
+func (e UserEventMachineSelectionType) ToPointer() *UserEventMachineSelectionType {
+	return &e
+}
+func (e *UserEventMachineSelectionType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "fixed":
+		fallthrough
+	case "elastic":
+		*e = UserEventMachineSelectionType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UserEventMachineSelectionType: %v", v)
+	}
+}
+
 type UserEventBuildMachine struct {
-	Default             *UserEventDefault             `json:"default,omitempty"`
-	PurchaseType        *UserEventPurchaseType        `json:"purchaseType,omitempty"`
-	DefaultPurchaseType *UserEventDefaultPurchaseType `json:"defaultPurchaseType,omitempty"`
-	Cores               *float64                      `json:"cores,omitempty"`
-	Memory              *float64                      `json:"memory,omitempty"`
+	Default              *UserEventDefault              `json:"default,omitempty"`
+	PurchaseType         *UserEventPurchaseType         `json:"purchaseType,omitempty"`
+	DefaultPurchaseType  *UserEventDefaultPurchaseType  `json:"defaultPurchaseType,omitempty"`
+	Cores                *float64                       `json:"cores,omitempty"`
+	Memory               *float64                       `json:"memory,omitempty"`
+	MachineSelectionType *UserEventMachineSelectionType `json:"machineSelectionType,omitempty"`
 }
 
 func (u UserEventBuildMachine) MarshalJSON() ([]byte, error) {
@@ -5720,6 +5718,13 @@ func (o *UserEventBuildMachine) GetMemory() *float64 {
 		return nil
 	}
 	return o.Memory
+}
+
+func (o *UserEventBuildMachine) GetMachineSelectionType() *UserEventMachineSelectionType {
+	if o == nil {
+		return nil
+	}
+	return o.MachineSelectionType
 }
 
 type UserEventSecurity struct {
@@ -6920,7 +6925,7 @@ type TeamUser struct {
 	TeamID            string                    `json:"teamId"`
 	Created           float64                   `json:"created"`
 	Role              TeamRole1                 `json:"role"`
-	Confirmed         bool                      `json:"confirmed"`
+	confirmed         bool                      `const:"true" json:"confirmed"`
 	ConfirmedAt       float64                   `json:"confirmedAt"`
 	AccessRequestedAt *float64                  `json:"accessRequestedAt,omitempty"`
 	TeamRoles         []UserEventTeamRole       `json:"teamRoles,omitempty"`
@@ -6968,10 +6973,7 @@ func (o *TeamUser) GetRole() TeamRole1 {
 }
 
 func (o *TeamUser) GetConfirmed() bool {
-	if o == nil {
-		return false
-	}
-	return o.Confirmed
+	return true
 }
 
 func (o *TeamUser) GetConfirmedAt() float64 {
@@ -7061,42 +7063,4 @@ func (o *UsageAlerts) GetBlockingAt() optionalnullable.OptionalNullable[float64]
 		return nil
 	}
 	return o.BlockingAt
-}
-
-type AnalyticsUsage struct {
-	CurrentThreshold float64                                    `json:"currentThreshold"`
-	WarningAt        optionalnullable.OptionalNullable[float64] `json:"warningAt,omitempty"`
-	BlockedAt        optionalnullable.OptionalNullable[float64] `json:"blockedAt,omitempty"`
-}
-
-func (a AnalyticsUsage) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(a, "", false)
-}
-
-func (a *AnalyticsUsage) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"currentThreshold"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *AnalyticsUsage) GetCurrentThreshold() float64 {
-	if o == nil {
-		return 0.0
-	}
-	return o.CurrentThreshold
-}
-
-func (o *AnalyticsUsage) GetWarningAt() optionalnullable.OptionalNullable[float64] {
-	if o == nil {
-		return nil
-	}
-	return o.WarningAt
-}
-
-func (o *AnalyticsUsage) GetBlockedAt() optionalnullable.OptionalNullable[float64] {
-	if o == nil {
-		return nil
-	}
-	return o.BlockedAt
 }

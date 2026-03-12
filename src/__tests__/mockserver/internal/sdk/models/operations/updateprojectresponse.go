@@ -8,6 +8,7 @@ import (
 	"fmt"
 	"mockserver/internal/sdk/models/components"
 	"mockserver/internal/sdk/optionalnullable"
+	"mockserver/internal/sdk/types"
 	"mockserver/internal/sdk/utils"
 )
 
@@ -251,7 +252,18 @@ type UpdateProjectWebAnalytics struct {
 	DisabledAt *float64 `json:"disabledAt,omitempty"`
 	CanceledAt *float64 `json:"canceledAt,omitempty"`
 	EnabledAt  *float64 `json:"enabledAt,omitempty"`
-	HasData    *bool    `json:"hasData,omitempty"`
+	hasData    *bool    `const:"true" json:"hasData,omitempty"`
+}
+
+func (u UpdateProjectWebAnalytics) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateProjectWebAnalytics) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"id"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UpdateProjectWebAnalytics) GetID() string {
@@ -283,10 +295,7 @@ func (o *UpdateProjectWebAnalytics) GetEnabledAt() *float64 {
 }
 
 func (o *UpdateProjectWebAnalytics) GetHasData() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.HasData
+	return types.Bool(true)
 }
 
 type UpdateProjectVercelRulesetAction string

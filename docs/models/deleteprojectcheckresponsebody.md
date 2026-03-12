@@ -14,4 +14,4 @@ let value: DeleteProjectCheckResponseBody = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `success`          | *boolean*          | :heavy_check_mark: | N/A                |
+| `success`          | *true*             | :heavy_check_mark: | N/A                |

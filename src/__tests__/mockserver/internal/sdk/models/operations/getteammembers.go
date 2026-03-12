@@ -7,6 +7,7 @@ import (
 	"errors"
 	"fmt"
 	"mockserver/internal/sdk/models/components"
+	"mockserver/internal/sdk/types"
 	"mockserver/internal/sdk/utils"
 )
 
@@ -820,9 +821,20 @@ type EmailInviteCode struct {
 	TeamPermissions []GetTeamMembersTeamPermission    `json:"teamPermissions,omitempty"`
 	IsDSyncUser     bool                              `json:"isDSyncUser"`
 	CreatedAt       *float64                          `json:"createdAt,omitempty"`
-	Expired         *bool                             `json:"expired,omitempty"`
+	expired         *bool                             `const:"true" json:"expired,omitempty"`
 	Projects        map[string]GetTeamMembersProjects `json:"projects,omitempty"`
 	Entitlements    []string                          `json:"entitlements,omitempty"`
+}
+
+func (e EmailInviteCode) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EmailInviteCode) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"id", "isDSyncUser"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *EmailInviteCode) GetAccessGroups() []string {
@@ -882,10 +894,7 @@ func (o *EmailInviteCode) GetCreatedAt() *float64 {
 }
 
 func (o *EmailInviteCode) GetExpired() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.Expired
+	return types.Bool(true)
 }
 
 func (o *EmailInviteCode) GetProjects() map[string]GetTeamMembersProjects {

@@ -8,12 +8,11 @@
 ```typescript
 const value: models.UserEventMicrofrontends1 = {
   isDefaultApp: true,
-  updatedAt: 3153.83,
+  updatedAt: 1770.01,
   groupIds: [
     "<value 1>",
-    "<value 2>",
   ],
-  enabled: false,
+  enabled: true,
 };
 ```
 
@@ -26,7 +25,7 @@ const value: models.UserEventMicrofrontends2 = {
     "<value 1>",
     "<value 2>",
   ],
-  enabled: false,
+  enabled: true,
 };
 ```
 

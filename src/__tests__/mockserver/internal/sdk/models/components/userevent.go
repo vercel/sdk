@@ -10,6 +10,39 @@ import (
 	"mockserver/internal/sdk/utils"
 )
 
+// App1 - Note that not all historical events have this field.
+type App1 struct {
+	// The App's ID.
+	ID string `json:"id"`
+	// The App's name at the moment this even was published (it may have changed since then).
+	Name string `json:"name"`
+}
+
+func (a App1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *App1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"id", "name"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *App1) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *App1) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
 // Payload27 - The payload of the event, if requested.
 type Payload27 struct {
 	// The App's name at the moment this even was published (it may have changed since then).
@@ -170,7 +203,7 @@ func (o *Items) GetType() TypeString {
 
 type ResourcesProjectIds struct {
 	Type     ResourcesType `json:"type"`
-	Required bool          `json:"required"`
+	required bool          `const:"true" json:"required"`
 	Items    Items         `json:"items"`
 }
 
@@ -193,10 +226,7 @@ func (o *ResourcesProjectIds) GetType() ResourcesType {
 }
 
 func (o *ResourcesProjectIds) GetRequired() bool {
-	if o == nil {
-		return false
-	}
-	return o.Required
+	return true
 }
 
 func (o *ResourcesProjectIds) GetItems() Items {
@@ -231,23 +261,28 @@ func (o *Resources) GetProjectIds() ResourcesProjectIds {
 type Permission2 string
 
 const (
-	Permission2ReadDomain               Permission2 = "read:domain"
-	Permission2ReadWriteDomain          Permission2 = "read-write:domain"
-	Permission2ReadTeam                 Permission2 = "read:team"
-	Permission2ReadBilling              Permission2 = "read:billing"
-	Permission2ReadWriteBilling         Permission2 = "read-write:billing"
-	Permission2ReadWriteAiGatewayAPIKey Permission2 = "read-write:ai-gateway-api-key"
-	Permission2UseAiGateway             Permission2 = "use:ai-gateway"
-	Permission2ReadWriteProjectEnvVars  Permission2 = "read-write:project-env-vars"
-	Permission2ReadWriteDrains          Permission2 = "read-write:drains"
-	Permission2ReadWriteEdgeConfig      Permission2 = "read-write:edge-config"
-	Permission2ReadMonitoring           Permission2 = "read:monitoring"
-	Permission2ReadAccessGroup          Permission2 = "read:access-group"
-	Permission2ReadProject              Permission2 = "read:project"
-	Permission2ReadWriteProject         Permission2 = "read-write:project"
-	Permission2ReadDeployment           Permission2 = "read:deployment"
-	Permission2ReadWriteDeployment      Permission2 = "read-write:deployment"
-	Permission2ReadWriteEdgeCache       Permission2 = "read-write:edge-cache"
+	Permission2ReadDomain                           Permission2 = "read:domain"
+	Permission2ReadWriteDomain                      Permission2 = "read-write:domain"
+	Permission2ReadTeam                             Permission2 = "read:team"
+	Permission2ReadBilling                          Permission2 = "read:billing"
+	Permission2ReadWriteBilling                     Permission2 = "read-write:billing"
+	Permission2ReadWriteAiGatewayAPIKey             Permission2 = "read-write:ai-gateway-api-key"
+	Permission2UseAiGateway                         Permission2 = "use:ai-gateway"
+	Permission2ReadWriteProjectEnvVars              Permission2 = "read-write:project-env-vars"
+	Permission2ReadWriteDrains                      Permission2 = "read-write:drains"
+	Permission2ReadWriteEdgeConfig                  Permission2 = "read-write:edge-config"
+	Permission2ReadMonitoring                       Permission2 = "read:monitoring"
+	Permission2ReadAccessGroup                      Permission2 = "read:access-group"
+	Permission2ReadProject                          Permission2 = "read:project"
+	Permission2ReadWriteProject                     Permission2 = "read-write:project"
+	Permission2ReadDeployment                       Permission2 = "read:deployment"
+	Permission2ReadWriteDeployment                  Permission2 = "read-write:deployment"
+	Permission2ReadWriteEdgeCache                   Permission2 = "read-write:edge-cache"
+	Permission2ReadWriteProjectProtectionBypass     Permission2 = "read-write:project-protection-bypass"
+	Permission2ReadProjectEnvVarsNonProduction      Permission2 = "read:project-env-vars-non-production"
+	Permission2ReadWriteProjectEnvVarsNonProduction Permission2 = "read-write:project-env-vars-non-production"
+	Permission2ReadProjectEnvVarsProduction         Permission2 = "read:project-env-vars-production"
+	Permission2ReadWriteProjectEnvVarsProduction    Permission2 = "read-write:project-env-vars-production"
 )
 
 func (e Permission2) ToPointer() *Permission2 {
@@ -292,6 +327,16 @@ func (e *Permission2) UnmarshalJSON(data []byte) error {
 	case "read-write:deployment":
 		fallthrough
 	case "read-write:edge-cache":
+		fallthrough
+	case "read-write:project-protection-bypass":
+		fallthrough
+	case "read:project-env-vars-non-production":
+		fallthrough
+	case "read-write:project-env-vars-non-production":
+		fallthrough
+	case "read:project-env-vars-production":
+		fallthrough
+	case "read-write:project-env-vars-production":
 		*e = Permission2(v)
 		return nil
 	default:
@@ -416,7 +461,7 @@ func (o *BeforeItems) GetType() BeforeTypeString {
 
 type BeforeProjectIds struct {
 	Type     BeforeType  `json:"type"`
-	Required bool        `json:"required"`
+	required bool        `const:"true" json:"required"`
 	Items    BeforeItems `json:"items"`
 }
 
@@ -439,10 +484,7 @@ func (o *BeforeProjectIds) GetType() BeforeType {
 }
 
 func (o *BeforeProjectIds) GetRequired() bool {
-	if o == nil {
-		return false
-	}
-	return o.Required
+	return true
 }
 
 func (o *BeforeProjectIds) GetItems() BeforeItems {
@@ -477,23 +519,28 @@ func (o *BeforeResources) GetProjectIds() BeforeProjectIds {
 type BeforePermission string
 
 const (
-	BeforePermissionReadDomain               BeforePermission = "read:domain"
-	BeforePermissionReadWriteDomain          BeforePermission = "read-write:domain"
-	BeforePermissionReadTeam                 BeforePermission = "read:team"
-	BeforePermissionReadBilling              BeforePermission = "read:billing"
-	BeforePermissionReadWriteBilling         BeforePermission = "read-write:billing"
-	BeforePermissionReadWriteAiGatewayAPIKey BeforePermission = "read-write:ai-gateway-api-key"
-	BeforePermissionUseAiGateway             BeforePermission = "use:ai-gateway"
-	BeforePermissionReadWriteProjectEnvVars  BeforePermission = "read-write:project-env-vars"
-	BeforePermissionReadWriteDrains          BeforePermission = "read-write:drains"
-	BeforePermissionReadWriteEdgeConfig      BeforePermission = "read-write:edge-config"
-	BeforePermissionReadMonitoring           BeforePermission = "read:monitoring"
-	BeforePermissionReadAccessGroup          BeforePermission = "read:access-group"
-	BeforePermissionReadProject              BeforePermission = "read:project"
-	BeforePermissionReadWriteProject         BeforePermission = "read-write:project"
-	BeforePermissionReadDeployment           BeforePermission = "read:deployment"
-	BeforePermissionReadWriteDeployment      BeforePermission = "read-write:deployment"
-	BeforePermissionReadWriteEdgeCache       BeforePermission = "read-write:edge-cache"
+	BeforePermissionReadDomain                           BeforePermission = "read:domain"
+	BeforePermissionReadWriteDomain                      BeforePermission = "read-write:domain"
+	BeforePermissionReadTeam                             BeforePermission = "read:team"
+	BeforePermissionReadBilling                          BeforePermission = "read:billing"
+	BeforePermissionReadWriteBilling                     BeforePermission = "read-write:billing"
+	BeforePermissionReadWriteAiGatewayAPIKey             BeforePermission = "read-write:ai-gateway-api-key"
+	BeforePermissionUseAiGateway                         BeforePermission = "use:ai-gateway"
+	BeforePermissionReadWriteProjectEnvVars              BeforePermission = "read-write:project-env-vars"
+	BeforePermissionReadWriteDrains                      BeforePermission = "read-write:drains"
+	BeforePermissionReadWriteEdgeConfig                  BeforePermission = "read-write:edge-config"
+	BeforePermissionReadMonitoring                       BeforePermission = "read:monitoring"
+	BeforePermissionReadAccessGroup                      BeforePermission = "read:access-group"
+	BeforePermissionReadProject                          BeforePermission = "read:project"
+	BeforePermissionReadWriteProject                     BeforePermission = "read-write:project"
+	BeforePermissionReadDeployment                       BeforePermission = "read:deployment"
+	BeforePermissionReadWriteDeployment                  BeforePermission = "read-write:deployment"
+	BeforePermissionReadWriteEdgeCache                   BeforePermission = "read-write:edge-cache"
+	BeforePermissionReadWriteProjectProtectionBypass     BeforePermission = "read-write:project-protection-bypass"
+	BeforePermissionReadProjectEnvVarsNonProduction      BeforePermission = "read:project-env-vars-non-production"
+	BeforePermissionReadWriteProjectEnvVarsNonProduction BeforePermission = "read-write:project-env-vars-non-production"
+	BeforePermissionReadProjectEnvVarsProduction         BeforePermission = "read:project-env-vars-production"
+	BeforePermissionReadWriteProjectEnvVarsProduction    BeforePermission = "read-write:project-env-vars-production"
 )
 
 func (e BeforePermission) ToPointer() *BeforePermission {
@@ -538,6 +585,16 @@ func (e *BeforePermission) UnmarshalJSON(data []byte) error {
 	case "read-write:deployment":
 		fallthrough
 	case "read-write:edge-cache":
+		fallthrough
+	case "read-write:project-protection-bypass":
+		fallthrough
+	case "read:project-env-vars-non-production":
+		fallthrough
+	case "read-write:project-env-vars-non-production":
+		fallthrough
+	case "read:project-env-vars-production":
+		fallthrough
+	case "read-write:project-env-vars-production":
 		*e = BeforePermission(v)
 		return nil
 	default:
@@ -645,7 +702,7 @@ func (o *AfterItems) GetType() AfterTypeString {
 
 type AfterProjectIds struct {
 	Type     AfterType  `json:"type"`
-	Required bool       `json:"required"`
+	required bool       `const:"true" json:"required"`
 	Items    AfterItems `json:"items"`
 }
 
@@ -668,10 +725,7 @@ func (o *AfterProjectIds) GetType() AfterType {
 }
 
 func (o *AfterProjectIds) GetRequired() bool {
-	if o == nil {
-		return false
-	}
-	return o.Required
+	return true
 }
 
 func (o *AfterProjectIds) GetItems() AfterItems {
@@ -706,23 +760,28 @@ func (o *AfterResources) GetProjectIds() AfterProjectIds {
 type AfterPermission string
 
 const (
-	AfterPermissionReadDomain               AfterPermission = "read:domain"
-	AfterPermissionReadWriteDomain          AfterPermission = "read-write:domain"
-	AfterPermissionReadTeam                 AfterPermission = "read:team"
-	AfterPermissionReadBilling              AfterPermission = "read:billing"
-	AfterPermissionReadWriteBilling         AfterPermission = "read-write:billing"
-	AfterPermissionReadWriteAiGatewayAPIKey AfterPermission = "read-write:ai-gateway-api-key"
-	AfterPermissionUseAiGateway             AfterPermission = "use:ai-gateway"
-	AfterPermissionReadWriteProjectEnvVars  AfterPermission = "read-write:project-env-vars"
-	AfterPermissionReadWriteDrains          AfterPermission = "read-write:drains"
-	AfterPermissionReadWriteEdgeConfig      AfterPermission = "read-write:edge-config"
-	AfterPermissionReadMonitoring           AfterPermission = "read:monitoring"
-	AfterPermissionReadAccessGroup          AfterPermission = "read:access-group"
-	AfterPermissionReadProject              AfterPermission = "read:project"
-	AfterPermissionReadWriteProject         AfterPermission = "read-write:project"
-	AfterPermissionReadDeployment           AfterPermission = "read:deployment"
-	AfterPermissionReadWriteDeployment      AfterPermission = "read-write:deployment"
-	AfterPermissionReadWriteEdgeCache       AfterPermission = "read-write:edge-cache"
+	AfterPermissionReadDomain                           AfterPermission = "read:domain"
+	AfterPermissionReadWriteDomain                      AfterPermission = "read-write:domain"
+	AfterPermissionReadTeam                             AfterPermission = "read:team"
+	AfterPermissionReadBilling                          AfterPermission = "read:billing"
+	AfterPermissionReadWriteBilling                     AfterPermission = "read-write:billing"
+	AfterPermissionReadWriteAiGatewayAPIKey             AfterPermission = "read-write:ai-gateway-api-key"
+	AfterPermissionUseAiGateway                         AfterPermission = "use:ai-gateway"
+	AfterPermissionReadWriteProjectEnvVars              AfterPermission = "read-write:project-env-vars"
+	AfterPermissionReadWriteDrains                      AfterPermission = "read-write:drains"
+	AfterPermissionReadWriteEdgeConfig                  AfterPermission = "read-write:edge-config"
+	AfterPermissionReadMonitoring                       AfterPermission = "read:monitoring"
+	AfterPermissionReadAccessGroup                      AfterPermission = "read:access-group"
+	AfterPermissionReadProject                          AfterPermission = "read:project"
+	AfterPermissionReadWriteProject                     AfterPermission = "read-write:project"
+	AfterPermissionReadDeployment                       AfterPermission = "read:deployment"
+	AfterPermissionReadWriteDeployment                  AfterPermission = "read-write:deployment"
+	AfterPermissionReadWriteEdgeCache                   AfterPermission = "read-write:edge-cache"
+	AfterPermissionReadWriteProjectProtectionBypass     AfterPermission = "read-write:project-protection-bypass"
+	AfterPermissionReadProjectEnvVarsNonProduction      AfterPermission = "read:project-env-vars-non-production"
+	AfterPermissionReadWriteProjectEnvVarsNonProduction AfterPermission = "read-write:project-env-vars-non-production"
+	AfterPermissionReadProjectEnvVarsProduction         AfterPermission = "read:project-env-vars-production"
+	AfterPermissionReadWriteProjectEnvVarsProduction    AfterPermission = "read-write:project-env-vars-production"
 )
 
 func (e AfterPermission) ToPointer() *AfterPermission {
@@ -767,6 +826,16 @@ func (e *AfterPermission) UnmarshalJSON(data []byte) error {
 	case "read-write:deployment":
 		fallthrough
 	case "read-write:edge-cache":
+		fallthrough
+	case "read-write:project-protection-bypass":
+		fallthrough
+	case "read:project-env-vars-non-production":
+		fallthrough
+	case "read-write:project-env-vars-non-production":
+		fallthrough
+	case "read:project-env-vars-production":
+		fallthrough
+	case "read-write:project-env-vars-production":
 		*e = AfterPermission(v)
 		return nil
 	default:
@@ -894,25 +963,30 @@ func (e *NextScope1) UnmarshalJSON(data []byte) error {
 type NextPermission string
 
 const (
-	NextPermissionWildcard                 NextPermission = "*"
-	NextPermissionReadUser                 NextPermission = "read:user"
-	NextPermissionReadDomain               NextPermission = "read:domain"
-	NextPermissionReadWriteDomain          NextPermission = "read-write:domain"
-	NextPermissionReadTeam                 NextPermission = "read:team"
-	NextPermissionReadBilling              NextPermission = "read:billing"
-	NextPermissionReadWriteBilling         NextPermission = "read-write:billing"
-	NextPermissionReadWriteAiGatewayAPIKey NextPermission = "read-write:ai-gateway-api-key"
-	NextPermissionUseAiGateway             NextPermission = "use:ai-gateway"
-	NextPermissionReadWriteProjectEnvVars  NextPermission = "read-write:project-env-vars"
-	NextPermissionReadWriteDrains          NextPermission = "read-write:drains"
-	NextPermissionReadWriteEdgeConfig      NextPermission = "read-write:edge-config"
-	NextPermissionReadMonitoring           NextPermission = "read:monitoring"
-	NextPermissionReadAccessGroup          NextPermission = "read:access-group"
-	NextPermissionReadProject              NextPermission = "read:project"
-	NextPermissionReadWriteProject         NextPermission = "read-write:project"
-	NextPermissionReadDeployment           NextPermission = "read:deployment"
-	NextPermissionReadWriteDeployment      NextPermission = "read-write:deployment"
-	NextPermissionReadWriteEdgeCache       NextPermission = "read-write:edge-cache"
+	NextPermissionWildcard                             NextPermission = "*"
+	NextPermissionReadUser                             NextPermission = "read:user"
+	NextPermissionReadDomain                           NextPermission = "read:domain"
+	NextPermissionReadWriteDomain                      NextPermission = "read-write:domain"
+	NextPermissionReadTeam                             NextPermission = "read:team"
+	NextPermissionReadBilling                          NextPermission = "read:billing"
+	NextPermissionReadWriteBilling                     NextPermission = "read-write:billing"
+	NextPermissionReadWriteAiGatewayAPIKey             NextPermission = "read-write:ai-gateway-api-key"
+	NextPermissionUseAiGateway                         NextPermission = "use:ai-gateway"
+	NextPermissionReadWriteProjectEnvVars              NextPermission = "read-write:project-env-vars"
+	NextPermissionReadWriteDrains                      NextPermission = "read-write:drains"
+	NextPermissionReadWriteEdgeConfig                  NextPermission = "read-write:edge-config"
+	NextPermissionReadMonitoring                       NextPermission = "read:monitoring"
+	NextPermissionReadAccessGroup                      NextPermission = "read:access-group"
+	NextPermissionReadProject                          NextPermission = "read:project"
+	NextPermissionReadWriteProject                     NextPermission = "read-write:project"
+	NextPermissionReadDeployment                       NextPermission = "read:deployment"
+	NextPermissionReadWriteDeployment                  NextPermission = "read-write:deployment"
+	NextPermissionReadWriteEdgeCache                   NextPermission = "read-write:edge-cache"
+	NextPermissionReadWriteProjectProtectionBypass     NextPermission = "read-write:project-protection-bypass"
+	NextPermissionReadProjectEnvVarsNonProduction      NextPermission = "read:project-env-vars-non-production"
+	NextPermissionReadWriteProjectEnvVarsNonProduction NextPermission = "read-write:project-env-vars-non-production"
+	NextPermissionReadProjectEnvVarsProduction         NextPermission = "read:project-env-vars-production"
+	NextPermissionReadWriteProjectEnvVarsProduction    NextPermission = "read-write:project-env-vars-production"
 )
 
 func (e NextPermission) ToPointer() *NextPermission {
@@ -961,6 +1035,16 @@ func (e *NextPermission) UnmarshalJSON(data []byte) error {
 	case "read-write:deployment":
 		fallthrough
 	case "read-write:edge-cache":
+		fallthrough
+	case "read-write:project-protection-bypass":
+		fallthrough
+	case "read:project-env-vars-non-production":
+		fallthrough
+	case "read-write:project-env-vars-non-production":
+		fallthrough
+	case "read:project-env-vars-production":
+		fallthrough
+	case "read-write:project-env-vars-production":
 		*e = NextPermission(v)
 		return nil
 	default:
@@ -1081,25 +1165,30 @@ func (e *ScopeEnum1) UnmarshalJSON(data []byte) error {
 type Permission1 string
 
 const (
-	Permission1Wildcard                 Permission1 = "*"
-	Permission1ReadUser                 Permission1 = "read:user"
-	Permission1ReadDomain               Permission1 = "read:domain"
-	Permission1ReadWriteDomain          Permission1 = "read-write:domain"
-	Permission1ReadTeam                 Permission1 = "read:team"
-	Permission1ReadBilling              Permission1 = "read:billing"
-	Permission1ReadWriteBilling         Permission1 = "read-write:billing"
-	Permission1ReadWriteAiGatewayAPIKey Permission1 = "read-write:ai-gateway-api-key"
-	Permission1UseAiGateway             Permission1 = "use:ai-gateway"
-	Permission1ReadWriteProjectEnvVars  Permission1 = "read-write:project-env-vars"
-	Permission1ReadWriteDrains          Permission1 = "read-write:drains"
-	Permission1ReadWriteEdgeConfig      Permission1 = "read-write:edge-config"
-	Permission1ReadMonitoring           Permission1 = "read:monitoring"
-	Permission1ReadAccessGroup          Permission1 = "read:access-group"
-	Permission1ReadProject              Permission1 = "read:project"
-	Permission1ReadWriteProject         Permission1 = "read-write:project"
-	Permission1ReadDeployment           Permission1 = "read:deployment"
-	Permission1ReadWriteDeployment      Permission1 = "read-write:deployment"
-	Permission1ReadWriteEdgeCache       Permission1 = "read-write:edge-cache"
+	Permission1Wildcard                             Permission1 = "*"
+	Permission1ReadUser                             Permission1 = "read:user"
+	Permission1ReadDomain                           Permission1 = "read:domain"
+	Permission1ReadWriteDomain                      Permission1 = "read-write:domain"
+	Permission1ReadTeam                             Permission1 = "read:team"
+	Permission1ReadBilling                          Permission1 = "read:billing"
+	Permission1ReadWriteBilling                     Permission1 = "read-write:billing"
+	Permission1ReadWriteAiGatewayAPIKey             Permission1 = "read-write:ai-gateway-api-key"
+	Permission1UseAiGateway                         Permission1 = "use:ai-gateway"
+	Permission1ReadWriteProjectEnvVars              Permission1 = "read-write:project-env-vars"
+	Permission1ReadWriteDrains                      Permission1 = "read-write:drains"
+	Permission1ReadWriteEdgeConfig                  Permission1 = "read-write:edge-config"
+	Permission1ReadMonitoring                       Permission1 = "read:monitoring"
+	Permission1ReadAccessGroup                      Permission1 = "read:access-group"
+	Permission1ReadProject                          Permission1 = "read:project"
+	Permission1ReadWriteProject                     Permission1 = "read-write:project"
+	Permission1ReadDeployment                       Permission1 = "read:deployment"
+	Permission1ReadWriteDeployment                  Permission1 = "read-write:deployment"
+	Permission1ReadWriteEdgeCache                   Permission1 = "read-write:edge-cache"
+	Permission1ReadWriteProjectProtectionBypass     Permission1 = "read-write:project-protection-bypass"
+	Permission1ReadProjectEnvVarsNonProduction      Permission1 = "read:project-env-vars-non-production"
+	Permission1ReadWriteProjectEnvVarsNonProduction Permission1 = "read-write:project-env-vars-non-production"
+	Permission1ReadProjectEnvVarsProduction         Permission1 = "read:project-env-vars-production"
+	Permission1ReadWriteProjectEnvVarsProduction    Permission1 = "read-write:project-env-vars-production"
 )
 
 func (e Permission1) ToPointer() *Permission1 {
@@ -1148,6 +1237,16 @@ func (e *Permission1) UnmarshalJSON(data []byte) error {
 	case "read-write:deployment":
 		fallthrough
 	case "read-write:edge-cache":
+		fallthrough
+	case "read-write:project-protection-bypass":
+		fallthrough
+	case "read:project-env-vars-non-production":
+		fallthrough
+	case "read-write:project-env-vars-non-production":
+		fallthrough
+	case "read:project-env-vars-production":
+		fallthrough
+	case "read-write:project-env-vars-production":
 		*e = Permission1(v)
 		return nil
 	default:

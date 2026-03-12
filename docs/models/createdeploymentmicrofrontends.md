@@ -19,9 +19,12 @@ const value: models.CreateDeploymentMicrofrontends1 = {
 
 ```typescript
 const value: models.CreateDeploymentMicrofrontends2 = {
-  isDefaultApp: false,
+  isDefaultApp: true,
   defaultAppProjectName: "<value>",
-  groupIds: [],
+  groupIds: [
+    "<value 1>",
+    "<value 2>",
+  ],
 };
 ```
 

@@ -42,7 +42,7 @@ export type UpdateTeamMemberRequestBody = {
   /**
    * Accept a user who requested access to the team.
    */
-  confirmed?: boolean | undefined;
+  confirmed?: true | undefined;
   /**
    * The role in the team of the member.
    */
@@ -166,7 +166,7 @@ export const UpdateTeamMemberRequestBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  confirmed: types.optional(types.boolean()),
+  confirmed: types.optional(types.literal(true)),
   role: types.string().default("MEMBER"),
   projects: types.optional(
     z.array(z.lazy(() => UpdateTeamMemberProjects$inboundSchema)),
@@ -177,7 +177,7 @@ export const UpdateTeamMemberRequestBody$inboundSchema: z.ZodType<
 });
 /** @internal */
 export type UpdateTeamMemberRequestBody$Outbound = {
-  confirmed?: boolean | undefined;
+  confirmed?: true | undefined;
   role: string;
   projects?: Array<UpdateTeamMemberProjects$Outbound> | undefined;
   joinedFrom?: UpdateTeamMemberJoinedFrom$Outbound | undefined;
@@ -189,7 +189,7 @@ export const UpdateTeamMemberRequestBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpdateTeamMemberRequestBody
 > = z.object({
-  confirmed: z.boolean().optional(),
+  confirmed: z.literal(true).optional(),
   role: z.string().default("MEMBER"),
   projects: z.array(z.lazy(() => UpdateTeamMemberProjects$outboundSchema))
     .optional(),

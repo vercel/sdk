@@ -144,7 +144,7 @@ export type CancelDeploymentWebAnalytics = {
   disabledAt?: number | undefined;
   canceledAt?: number | undefined;
   enabledAt?: number | undefined;
-  hasData?: boolean | undefined;
+  hasData?: true | undefined;
 };
 
 export type CancelDeploymentProjectSettings = {
@@ -1021,6 +1021,15 @@ export type CancelDeploymentArchitecture = ClosedEnum<
   typeof CancelDeploymentArchitecture
 >;
 
+export const CancelDeploymentMaxDuration2 = {
+  Max: "max",
+} as const;
+export type CancelDeploymentMaxDuration2 = ClosedEnum<
+  typeof CancelDeploymentMaxDuration2
+>;
+
+export type CancelDeploymentMaxDuration = number | CancelDeploymentMaxDuration2;
+
 /**
  * Queue trigger input event for v2beta (from vercel.json config). Consumer name is implicitly derived from the function path. Only one trigger per function is allowed.
  */
@@ -1092,7 +1101,7 @@ export type CancelDeploymentExperimentalTriggers =
 export type CancelDeploymentFunctions = {
   architecture?: CancelDeploymentArchitecture | undefined;
   memory?: number | undefined;
-  maxDuration?: number | undefined;
+  maxDuration?: number | CancelDeploymentMaxDuration2 | undefined;
   regions?: Array<string> | undefined;
   functionFailoverRegions?: Array<string> | undefined;
   runtime?: string | undefined;
@@ -1491,7 +1500,7 @@ export type MicrofrontendsMfeConfigUploadState = ClosedEnum<
 >;
 
 export type CancelDeploymentMicrofrontends2 = {
-  isDefaultApp: boolean;
+  isDefaultApp: true;
   /**
    * The result of the microfrontends config upload during deployment creation / build. Only set for default app deployments. The config upload is attempted during deployment create, and then again during the build. If the config is not in the root directory, or the deployment is prebuilt, the config cannot be uploaded during deployment create. The upload during deployment build finds the config even if it's not in the root directory, as it has access to all files. Uploading the config during create is ideal, as then all child deployments are guaranteed to have access to the default app deployment config even if the default app has not yet started building. If the config is not uploaded, the child app will show as building until the config has been uploaded during the default app build. - `success` - The config was uploaded successfully, either when the deployment was created or during the build. - `waiting_on_build` - The config could not be uploaded during deployment create, will be attempted again during the build. - `no_config` - No config was found. Only set once the build has not found the config in any of the deployment's files. - `undefined` - Legacy deployments, or there was an error uploading the config during deployment create.
    */
@@ -1511,7 +1520,7 @@ export type CancelDeploymentMicrofrontends2 = {
 };
 
 export type CancelDeploymentMicrofrontends1 = {
-  isDefaultApp?: boolean | undefined;
+  isDefaultApp?: false | undefined;
   /**
    * The project name of the default app of this deployment's microfrontends group.
    */
@@ -2172,7 +2181,7 @@ export const CancelDeploymentWebAnalytics$inboundSchema: z.ZodType<
   disabledAt: types.optional(types.number()),
   canceledAt: types.optional(types.number()),
   enabledAt: types.optional(types.number()),
-  hasData: types.optional(types.boolean()),
+  hasData: types.optional(types.literal(true)),
 });
 /** @internal */
 export type CancelDeploymentWebAnalytics$Outbound = {
@@ -2180,7 +2189,7 @@ export type CancelDeploymentWebAnalytics$Outbound = {
   disabledAt?: number | undefined;
   canceledAt?: number | undefined;
   enabledAt?: number | undefined;
-  hasData?: boolean | undefined;
+  hasData?: true | undefined;
 };
 
 /** @internal */
@@ -2193,7 +2202,7 @@ export const CancelDeploymentWebAnalytics$outboundSchema: z.ZodType<
   disabledAt: z.number().optional(),
   canceledAt: z.number().optional(),
   enabledAt: z.number().optional(),
-  hasData: z.boolean().optional(),
+  hasData: z.literal(true).optional(),
 });
 
 export function cancelDeploymentWebAnalyticsToJSON(
@@ -4919,6 +4928,50 @@ export const CancelDeploymentArchitecture$outboundSchema: z.ZodNativeEnum<
 > = CancelDeploymentArchitecture$inboundSchema;
 
 /** @internal */
+export const CancelDeploymentMaxDuration2$inboundSchema: z.ZodNativeEnum<
+  typeof CancelDeploymentMaxDuration2
+> = z.nativeEnum(CancelDeploymentMaxDuration2);
+/** @internal */
+export const CancelDeploymentMaxDuration2$outboundSchema: z.ZodNativeEnum<
+  typeof CancelDeploymentMaxDuration2
+> = CancelDeploymentMaxDuration2$inboundSchema;
+
+/** @internal */
+export const CancelDeploymentMaxDuration$inboundSchema: z.ZodType<
+  CancelDeploymentMaxDuration,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([types.number(), CancelDeploymentMaxDuration2$inboundSchema]);
+/** @internal */
+export type CancelDeploymentMaxDuration$Outbound = number | string;
+
+/** @internal */
+export const CancelDeploymentMaxDuration$outboundSchema: z.ZodType<
+  CancelDeploymentMaxDuration$Outbound,
+  z.ZodTypeDef,
+  CancelDeploymentMaxDuration
+> = smartUnion([z.number(), CancelDeploymentMaxDuration2$outboundSchema]);
+
+export function cancelDeploymentMaxDurationToJSON(
+  cancelDeploymentMaxDuration: CancelDeploymentMaxDuration,
+): string {
+  return JSON.stringify(
+    CancelDeploymentMaxDuration$outboundSchema.parse(
+      cancelDeploymentMaxDuration,
+    ),
+  );
+}
+export function cancelDeploymentMaxDurationFromJSON(
+  jsonString: string,
+): SafeParseResult<CancelDeploymentMaxDuration, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CancelDeploymentMaxDuration$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CancelDeploymentMaxDuration' from JSON`,
+  );
+}
+
+/** @internal */
 export const CancelDeploymentExperimentalTriggers2$inboundSchema: z.ZodType<
   CancelDeploymentExperimentalTriggers2,
   z.ZodTypeDef,
@@ -5087,7 +5140,9 @@ export const CancelDeploymentFunctions$inboundSchema: z.ZodType<
 > = z.object({
   architecture: types.optional(CancelDeploymentArchitecture$inboundSchema),
   memory: types.optional(types.number()),
-  maxDuration: types.optional(types.number()),
+  maxDuration: types.optional(
+    smartUnion([types.number(), CancelDeploymentMaxDuration2$inboundSchema]),
+  ),
   regions: types.optional(z.array(types.string())),
   functionFailoverRegions: types.optional(z.array(types.string())),
   runtime: types.optional(types.string()),
@@ -5107,7 +5162,7 @@ export const CancelDeploymentFunctions$inboundSchema: z.ZodType<
 export type CancelDeploymentFunctions$Outbound = {
   architecture?: string | undefined;
   memory?: number | undefined;
-  maxDuration?: number | undefined;
+  maxDuration?: number | string | undefined;
   regions?: Array<string> | undefined;
   functionFailoverRegions?: Array<string> | undefined;
   runtime?: string | undefined;
@@ -5130,7 +5185,10 @@ export const CancelDeploymentFunctions$outboundSchema: z.ZodType<
 > = z.object({
   architecture: CancelDeploymentArchitecture$outboundSchema.optional(),
   memory: z.number().optional(),
-  maxDuration: z.number().optional(),
+  maxDuration: smartUnion([
+    z.number(),
+    CancelDeploymentMaxDuration2$outboundSchema,
+  ]).optional(),
   regions: z.array(z.string()).optional(),
   functionFailoverRegions: z.array(z.string()).optional(),
   runtime: z.string().optional(),
@@ -7281,7 +7339,7 @@ export const CancelDeploymentMicrofrontends2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  isDefaultApp: types.boolean(),
+  isDefaultApp: types.literal(true),
   mfeConfigUploadState: types.optional(
     MicrofrontendsMfeConfigUploadState$inboundSchema,
   ),
@@ -7291,7 +7349,7 @@ export const CancelDeploymentMicrofrontends2$inboundSchema: z.ZodType<
 });
 /** @internal */
 export type CancelDeploymentMicrofrontends2$Outbound = {
-  isDefaultApp: boolean;
+  isDefaultApp: true;
   mfeConfigUploadState?: string | undefined;
   defaultAppProjectName: string;
   defaultRoute?: string | undefined;
@@ -7304,7 +7362,7 @@ export const CancelDeploymentMicrofrontends2$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CancelDeploymentMicrofrontends2
 > = z.object({
-  isDefaultApp: z.boolean(),
+  isDefaultApp: z.literal(true),
   mfeConfigUploadState: MicrofrontendsMfeConfigUploadState$outboundSchema
     .optional(),
   defaultAppProjectName: z.string(),
@@ -7337,14 +7395,14 @@ export const CancelDeploymentMicrofrontends1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  isDefaultApp: types.optional(types.boolean()),
+  isDefaultApp: types.optional(types.literal(false)),
   defaultAppProjectName: types.string(),
   defaultRoute: types.optional(types.string()),
   groupIds: z.array(types.string()),
 });
 /** @internal */
 export type CancelDeploymentMicrofrontends1$Outbound = {
-  isDefaultApp?: boolean | undefined;
+  isDefaultApp?: false | undefined;
   defaultAppProjectName: string;
   defaultRoute?: string | undefined;
   groupIds: Array<string>;
@@ -7356,7 +7414,7 @@ export const CancelDeploymentMicrofrontends1$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CancelDeploymentMicrofrontends1
 > = z.object({
-  isDefaultApp: z.boolean().optional(),
+  isDefaultApp: z.literal(false).optional(),
   defaultAppProjectName: z.string(),
   defaultRoute: z.string().optional(),
   groupIds: z.array(z.string()),

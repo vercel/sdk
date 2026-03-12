@@ -177,6 +177,15 @@ export type ResponseBodyArchitecture = ClosedEnum<
   typeof ResponseBodyArchitecture
 >;
 
+export const GetDeploymentMaxDuration2 = {
+  Max: "max",
+} as const;
+export type GetDeploymentMaxDuration2 = ClosedEnum<
+  typeof GetDeploymentMaxDuration2
+>;
+
+export type ResponseBodyMaxDuration = number | GetDeploymentMaxDuration2;
+
 /**
  * Queue trigger input event for v2beta (from vercel.json config). Consumer name is implicitly derived from the function path. Only one trigger per function is allowed.
  */
@@ -248,7 +257,7 @@ export type ResponseBodyExperimentalTriggers =
 export type ResponseBodyFunctions = {
   architecture?: ResponseBodyArchitecture | undefined;
   memory?: number | undefined;
-  maxDuration?: number | undefined;
+  maxDuration?: number | GetDeploymentMaxDuration2 | undefined;
   regions?: Array<string> | undefined;
   functionFailoverRegions?: Array<string> | undefined;
   runtime?: string | undefined;
@@ -646,7 +655,7 @@ export type GetDeploymentMicrofrontendsMfeConfigUploadState = ClosedEnum<
 >;
 
 export type GetDeploymentMicrofrontends2 = {
-  isDefaultApp: boolean;
+  isDefaultApp: true;
   /**
    * The result of the microfrontends config upload during deployment creation / build. Only set for default app deployments. The config upload is attempted during deployment create, and then again during the build. If the config is not in the root directory, or the deployment is prebuilt, the config cannot be uploaded during deployment create. The upload during deployment build finds the config even if it's not in the root directory, as it has access to all files. Uploading the config during create is ideal, as then all child deployments are guaranteed to have access to the default app deployment config even if the default app has not yet started building. If the config is not uploaded, the child app will show as building until the config has been uploaded during the default app build. - `success` - The config was uploaded successfully, either when the deployment was created or during the build. - `waiting_on_build` - The config could not be uploaded during deployment create, will be attempted again during the build. - `no_config` - No config was found. Only set once the build has not found the config in any of the deployment's files. - `undefined` - Legacy deployments, or there was an error uploading the config during deployment create.
    */
@@ -668,7 +677,7 @@ export type GetDeploymentMicrofrontends2 = {
 };
 
 export type GetDeploymentMicrofrontends1 = {
-  isDefaultApp?: boolean | undefined;
+  isDefaultApp?: false | undefined;
   /**
    * The project name of the default app of this deployment's microfrontends group.
    */
@@ -1222,6 +1231,48 @@ export const ResponseBodyArchitecture$outboundSchema: z.ZodNativeEnum<
 > = ResponseBodyArchitecture$inboundSchema;
 
 /** @internal */
+export const GetDeploymentMaxDuration2$inboundSchema: z.ZodNativeEnum<
+  typeof GetDeploymentMaxDuration2
+> = z.nativeEnum(GetDeploymentMaxDuration2);
+/** @internal */
+export const GetDeploymentMaxDuration2$outboundSchema: z.ZodNativeEnum<
+  typeof GetDeploymentMaxDuration2
+> = GetDeploymentMaxDuration2$inboundSchema;
+
+/** @internal */
+export const ResponseBodyMaxDuration$inboundSchema: z.ZodType<
+  ResponseBodyMaxDuration,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([types.number(), GetDeploymentMaxDuration2$inboundSchema]);
+/** @internal */
+export type ResponseBodyMaxDuration$Outbound = number | string;
+
+/** @internal */
+export const ResponseBodyMaxDuration$outboundSchema: z.ZodType<
+  ResponseBodyMaxDuration$Outbound,
+  z.ZodTypeDef,
+  ResponseBodyMaxDuration
+> = smartUnion([z.number(), GetDeploymentMaxDuration2$outboundSchema]);
+
+export function responseBodyMaxDurationToJSON(
+  responseBodyMaxDuration: ResponseBodyMaxDuration,
+): string {
+  return JSON.stringify(
+    ResponseBodyMaxDuration$outboundSchema.parse(responseBodyMaxDuration),
+  );
+}
+export function responseBodyMaxDurationFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodyMaxDuration, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodyMaxDuration$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyMaxDuration' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetDeploymentExperimentalTriggers2$inboundSchema: z.ZodType<
   GetDeploymentExperimentalTriggers2,
   z.ZodTypeDef,
@@ -1389,7 +1440,9 @@ export const ResponseBodyFunctions$inboundSchema: z.ZodType<
 > = z.object({
   architecture: types.optional(ResponseBodyArchitecture$inboundSchema),
   memory: types.optional(types.number()),
-  maxDuration: types.optional(types.number()),
+  maxDuration: types.optional(
+    smartUnion([types.number(), GetDeploymentMaxDuration2$inboundSchema]),
+  ),
   regions: types.optional(z.array(types.string())),
   functionFailoverRegions: types.optional(z.array(types.string())),
   runtime: types.optional(types.string()),
@@ -1409,7 +1462,7 @@ export const ResponseBodyFunctions$inboundSchema: z.ZodType<
 export type ResponseBodyFunctions$Outbound = {
   architecture?: string | undefined;
   memory?: number | undefined;
-  maxDuration?: number | undefined;
+  maxDuration?: number | string | undefined;
   regions?: Array<string> | undefined;
   functionFailoverRegions?: Array<string> | undefined;
   runtime?: string | undefined;
@@ -1432,7 +1485,10 @@ export const ResponseBodyFunctions$outboundSchema: z.ZodType<
 > = z.object({
   architecture: ResponseBodyArchitecture$outboundSchema.optional(),
   memory: z.number().optional(),
-  maxDuration: z.number().optional(),
+  maxDuration: smartUnion([
+    z.number(),
+    GetDeploymentMaxDuration2$outboundSchema,
+  ]).optional(),
   regions: z.array(z.string()).optional(),
   functionFailoverRegions: z.array(z.string()).optional(),
   runtime: z.string().optional(),
@@ -3598,7 +3654,7 @@ export const GetDeploymentMicrofrontends2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  isDefaultApp: types.boolean(),
+  isDefaultApp: types.literal(true),
   mfeConfigUploadState: types.optional(
     GetDeploymentMicrofrontendsMfeConfigUploadState$inboundSchema,
   ),
@@ -3608,7 +3664,7 @@ export const GetDeploymentMicrofrontends2$inboundSchema: z.ZodType<
 });
 /** @internal */
 export type GetDeploymentMicrofrontends2$Outbound = {
-  isDefaultApp: boolean;
+  isDefaultApp: true;
   mfeConfigUploadState?: string | undefined;
   defaultAppProjectName: string;
   defaultRoute?: string | undefined;
@@ -3621,7 +3677,7 @@ export const GetDeploymentMicrofrontends2$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetDeploymentMicrofrontends2
 > = z.object({
-  isDefaultApp: z.boolean(),
+  isDefaultApp: z.literal(true),
   mfeConfigUploadState:
     GetDeploymentMicrofrontendsMfeConfigUploadState$outboundSchema.optional(),
   defaultAppProjectName: z.string(),
@@ -3654,14 +3710,14 @@ export const GetDeploymentMicrofrontends1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  isDefaultApp: types.optional(types.boolean()),
+  isDefaultApp: types.optional(types.literal(false)),
   defaultAppProjectName: types.string(),
   defaultRoute: types.optional(types.string()),
   groupIds: z.array(types.string()),
 });
 /** @internal */
 export type GetDeploymentMicrofrontends1$Outbound = {
-  isDefaultApp?: boolean | undefined;
+  isDefaultApp?: false | undefined;
   defaultAppProjectName: string;
   defaultRoute?: string | undefined;
   groupIds: Array<string>;
@@ -3673,7 +3729,7 @@ export const GetDeploymentMicrofrontends1$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetDeploymentMicrofrontends1
 > = z.object({
-  isDefaultApp: z.boolean().optional(),
+  isDefaultApp: z.literal(false).optional(),
   defaultAppProjectName: z.string(),
   defaultRoute: z.string().optional(),
   groupIds: z.array(z.string()),

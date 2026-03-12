@@ -676,7 +676,7 @@ type TeamLimitedMembership struct {
 	UID               *string                     `json:"uid,omitempty"`
 	Entitlements      []TeamLimitedEntitlement    `json:"entitlements,omitempty"`
 	TeamID            *string                     `json:"teamId,omitempty"`
-	Confirmed         bool                        `json:"confirmed"`
+	confirmed         bool                        `const:"true" json:"confirmed"`
 	AccessRequestedAt *float64                    `json:"accessRequestedAt,omitempty"`
 	Role              TeamLimitedRole             `json:"role"`
 	TeamRoles         []TeamLimitedTeamRole       `json:"teamRoles,omitempty"`
@@ -719,10 +719,7 @@ func (o *TeamLimitedMembership) GetTeamID() *string {
 }
 
 func (o *TeamLimitedMembership) GetConfirmed() bool {
-	if o == nil {
-		return false
-	}
-	return o.Confirmed
+	return true
 }
 
 func (o *TeamLimitedMembership) GetAccessRequestedAt() *float64 {
@@ -777,7 +774,7 @@ func (o *TeamLimitedMembership) GetJoinedFrom() *TeamLimitedJoinedFrom {
 // TeamLimited - A limited form of data representing a Team, due to the authentication token missing privileges to read the full Team data.
 type TeamLimited struct {
 	// Property indicating that this Team data contains only limited information, due to the authentication token missing privileges to read the full Team data or due to team having MFA enforced and the user not having MFA enabled. Re-login with the Team's configured SAML Single Sign-On provider in order to upgrade the authentication token with the necessary privileges.
-	Limited   bool        `json:"limited"`
+	limited   bool        `const:"true" json:"limited"`
 	LimitedBy []LimitedBy `json:"limitedBy"`
 	// When "Single Sign-On (SAML)" is configured, this object contains information that allows the client-side to identify whether or not this Team has SAML enforced.
 	Saml *TeamLimitedSaml `json:"saml,omitempty"`
@@ -807,10 +804,7 @@ func (t *TeamLimited) UnmarshalJSON(data []byte) error {
 }
 
 func (o *TeamLimited) GetLimited() bool {
-	if o == nil {
-		return false
-	}
-	return o.Limited
+	return true
 }
 
 func (o *TeamLimited) GetLimitedBy() []LimitedBy {

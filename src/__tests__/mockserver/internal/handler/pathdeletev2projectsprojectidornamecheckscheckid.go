@@ -45,9 +45,7 @@ func testDeleteProjectCheckDeleteProjectCheck0(w http.ResponseWriter, req *http.
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	var respBody *operations.DeleteProjectCheckResponseBody = &operations.DeleteProjectCheckResponseBody{
-		Success: true,
-	}
+	var respBody *operations.DeleteProjectCheckResponseBody = &operations.DeleteProjectCheckResponseBody{}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 
 	if err != nil {

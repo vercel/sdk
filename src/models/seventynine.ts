@@ -17,10 +17,6 @@ import {
   AnalyticsUsage$inboundSchema,
   AnalyticsUsage$Outbound,
   AnalyticsUsage$outboundSchema,
-  Artifacts,
-  Artifacts$inboundSchema,
-  Artifacts$Outbound,
-  Artifacts$outboundSchema,
   Credentials,
   Credentials$inboundSchema,
   Credentials$Outbound,
@@ -107,8 +103,14 @@ import {
   UserEventPayloadRemoteCaching$inboundSchema,
   UserEventPayloadRemoteCaching$Outbound,
   UserEventPayloadRemoteCaching$outboundSchema,
-} from "./artifacts.js";
+} from "./analyticsusage.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export type Artifacts = {
+  currentThreshold: number;
+  warningAt?: number | null | undefined;
+  blockedAt?: number | null | undefined;
+};
 
 export type Bandwidth = {
   currentThreshold: number;
@@ -1851,15 +1853,46 @@ export type SeventyNine = {
   name: string;
 };
 
-/**
- * The payload of the event, if requested.
- */
-export type SeventyEight = {
-  name: string;
-  userId: string;
-  teamId: string;
-  ownerName: string;
+/** @internal */
+export const Artifacts$inboundSchema: z.ZodType<
+  Artifacts,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  currentThreshold: types.number(),
+  warningAt: z.nullable(types.number()).optional(),
+  blockedAt: z.nullable(types.number()).optional(),
+});
+/** @internal */
+export type Artifacts$Outbound = {
+  currentThreshold: number;
+  warningAt?: number | null | undefined;
+  blockedAt?: number | null | undefined;
 };
+
+/** @internal */
+export const Artifacts$outboundSchema: z.ZodType<
+  Artifacts$Outbound,
+  z.ZodTypeDef,
+  Artifacts
+> = z.object({
+  currentThreshold: z.number(),
+  warningAt: z.nullable(z.number()).optional(),
+  blockedAt: z.nullable(z.number()).optional(),
+});
+
+export function artifactsToJSON(artifacts: Artifacts): string {
+  return JSON.stringify(Artifacts$outboundSchema.parse(artifacts));
+}
+export function artifactsFromJSON(
+  jsonString: string,
+): SafeParseResult<Artifacts, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Artifacts$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Artifacts' from JSON`,
+  );
+}
 
 /** @internal */
 export const Bandwidth$inboundSchema: z.ZodType<
@@ -3514,7 +3547,7 @@ export const OverageUsageAlerts$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   analyticsUsage: types.optional(AnalyticsUsage$inboundSchema),
-  artifacts: types.optional(Artifacts$inboundSchema),
+  artifacts: types.optional(z.lazy(() => Artifacts$inboundSchema)),
   bandwidth: types.optional(z.lazy(() => Bandwidth$inboundSchema)),
   blobTotalAdvancedRequests: types.optional(
     z.lazy(() => BlobTotalAdvancedRequests$inboundSchema),
@@ -3671,7 +3704,7 @@ export const OverageUsageAlerts$outboundSchema: z.ZodType<
   OverageUsageAlerts
 > = z.object({
   analyticsUsage: AnalyticsUsage$outboundSchema.optional(),
-  artifacts: Artifacts$outboundSchema.optional(),
+  artifacts: z.lazy(() => Artifacts$outboundSchema).optional(),
   bandwidth: z.lazy(() => Bandwidth$outboundSchema).optional(),
   blobTotalAdvancedRequests: z.lazy(() =>
     BlobTotalAdvancedRequests$outboundSchema
@@ -7878,49 +7911,5 @@ export function seventyNineFromJSON(
     jsonString,
     (x) => SeventyNine$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'SeventyNine' from JSON`,
-  );
-}
-
-/** @internal */
-export const SeventyEight$inboundSchema: z.ZodType<
-  SeventyEight,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  name: types.string(),
-  userId: types.string(),
-  teamId: types.string(),
-  ownerName: types.string(),
-});
-/** @internal */
-export type SeventyEight$Outbound = {
-  name: string;
-  userId: string;
-  teamId: string;
-  ownerName: string;
-};
-
-/** @internal */
-export const SeventyEight$outboundSchema: z.ZodType<
-  SeventyEight$Outbound,
-  z.ZodTypeDef,
-  SeventyEight
-> = z.object({
-  name: z.string(),
-  userId: z.string(),
-  teamId: z.string(),
-  ownerName: z.string(),
-});
-
-export function seventyEightToJSON(seventyEight: SeventyEight): string {
-  return JSON.stringify(SeventyEight$outboundSchema.parse(seventyEight));
-}
-export function seventyEightFromJSON(
-  jsonString: string,
-): SafeParseResult<SeventyEight, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => SeventyEight$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'SeventyEight' from JSON`,
   );
 }

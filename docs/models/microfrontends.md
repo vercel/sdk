@@ -7,10 +7,12 @@
 
 ```typescript
 const value: models.Microfrontends1 = {
-  isDefaultApp: false,
-  updatedAt: 9718.38,
+  isDefaultApp: true,
+  updatedAt: 6954.14,
   groupIds: [
     "<value 1>",
+    "<value 2>",
+    "<value 3>",
   ],
   enabled: true,
 };
@@ -22,7 +24,7 @@ const value: models.Microfrontends1 = {
 const value: models.Microfrontends2 = {
   updatedAt: 8437.65,
   groupIds: [],
-  enabled: false,
+  enabled: true,
 };
 ```
 

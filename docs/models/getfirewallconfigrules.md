@@ -12,7 +12,7 @@ const value: models.Rules1 = {
   active: false,
   conditionGroup: [],
   action: {},
-  valid: false,
+  valid: true,
   validationErrors: "<value>",
 };
 ```
@@ -31,7 +31,11 @@ const value: models.Rules2 = {
   ],
   action: {},
   valid: false,
-  validationErrors: [],
+  validationErrors: [
+    "<value 1>",
+    "<value 2>",
+    "<value 3>",
+  ],
 };
 ```
 

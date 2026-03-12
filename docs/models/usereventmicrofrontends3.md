@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UserEventMicrofrontends3 } from "@vercel/sdk/models/artifacts.js";
+import { UserEventMicrofrontends3 } from "@vercel/sdk/models/analyticsusage.js";
 
 let value: UserEventMicrofrontends3 = {
   updatedAt: 6600.72,
@@ -21,5 +21,5 @@ let value: UserEventMicrofrontends3 = {
 | ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- |
 | `updatedAt`                  | *number*                     | :heavy_check_mark:           | N/A                          |
 | `groupIds`                   | *any*[]                      | :heavy_check_mark:           | N/A                          |
-| `enabled`                    | *boolean*                    | :heavy_check_mark:           | N/A                          |
+| `enabled`                    | *false*                      | :heavy_check_mark:           | N/A                          |
 | `freeProjectForLegacyLimits` | *boolean*                    | :heavy_minus_sign:           | N/A                          |

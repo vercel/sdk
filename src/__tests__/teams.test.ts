@@ -78,7 +78,6 @@ test("Teams Update Team Member", async () => {
     uid: "ndfasllgPyCtREAqxxdyFKb",
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     requestBody: {
-      confirmed: true,
       role: "[\"MEMBER\",\"VIEWER\"]",
       projects: [
         {

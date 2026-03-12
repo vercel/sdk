@@ -486,6 +486,7 @@ const (
 	UserEventTypeTeamAvatarUpdate                                UserEventType = "team-avatar-update"
 	UserEventTypeTeamDelete                                      UserEventType = "team-delete"
 	UserEventTypeStrictDeploymentProtectionSettings              UserEventType = "strict-deployment-protection-settings"
+	UserEventTypeTeamDomainVerificationDeleted                   UserEventType = "team-domain-verification-deleted"
 	UserEventTypeVercelToolbar                                   UserEventType = "vercel-toolbar"
 	UserEventTypeTeamEmailDomainUpdate                           UserEventType = "team-email-domain-update"
 	UserEventTypeTeamInviteBulkDelete                            UserEventType = "team-invite-bulk-delete"
@@ -1237,6 +1238,8 @@ func (e *UserEventType) UnmarshalJSON(data []byte) error {
 	case "team-delete":
 		fallthrough
 	case "strict-deployment-protection-settings":
+		fallthrough
+	case "team-domain-verification-deleted":
 		fallthrough
 	case "vercel-toolbar":
 		fallthrough

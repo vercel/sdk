@@ -8,6 +8,7 @@ import (
 	"fmt"
 	"mockserver/internal/sdk/models/components"
 	"mockserver/internal/sdk/optionalnullable"
+	"mockserver/internal/sdk/types"
 	"mockserver/internal/sdk/utils"
 )
 
@@ -460,7 +461,18 @@ type CancelDeploymentWebAnalytics struct {
 	DisabledAt *float64 `json:"disabledAt,omitempty"`
 	CanceledAt *float64 `json:"canceledAt,omitempty"`
 	EnabledAt  *float64 `json:"enabledAt,omitempty"`
-	HasData    *bool    `json:"hasData,omitempty"`
+	hasData    *bool    `const:"true" json:"hasData,omitempty"`
+}
+
+func (c CancelDeploymentWebAnalytics) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CancelDeploymentWebAnalytics) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"id"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *CancelDeploymentWebAnalytics) GetID() string {
@@ -492,10 +504,7 @@ func (o *CancelDeploymentWebAnalytics) GetEnabledAt() *float64 {
 }
 
 func (o *CancelDeploymentWebAnalytics) GetHasData() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.HasData
+	return types.Bool(true)
 }
 
 type CancelDeploymentProjectSettings struct {
@@ -4074,6 +4083,92 @@ func (e *CancelDeploymentArchitecture) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type CancelDeploymentMaxDurationEnum string
+
+const (
+	CancelDeploymentMaxDurationEnumMax CancelDeploymentMaxDurationEnum = "max"
+)
+
+func (e CancelDeploymentMaxDurationEnum) ToPointer() *CancelDeploymentMaxDurationEnum {
+	return &e
+}
+func (e *CancelDeploymentMaxDurationEnum) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "max":
+		*e = CancelDeploymentMaxDurationEnum(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CancelDeploymentMaxDurationEnum: %v", v)
+	}
+}
+
+type CancelDeploymentMaxDurationUnionType string
+
+const (
+	CancelDeploymentMaxDurationUnionTypeNumber                          CancelDeploymentMaxDurationUnionType = "number"
+	CancelDeploymentMaxDurationUnionTypeCancelDeploymentMaxDurationEnum CancelDeploymentMaxDurationUnionType = "cancelDeployment_maxDuration_enum"
+)
+
+type CancelDeploymentMaxDurationUnion struct {
+	Number                          *float64                         `queryParam:"inline"`
+	CancelDeploymentMaxDurationEnum *CancelDeploymentMaxDurationEnum `queryParam:"inline"`
+
+	Type CancelDeploymentMaxDurationUnionType
+}
+
+func CreateCancelDeploymentMaxDurationUnionNumber(number float64) CancelDeploymentMaxDurationUnion {
+	typ := CancelDeploymentMaxDurationUnionTypeNumber
+
+	return CancelDeploymentMaxDurationUnion{
+		Number: &number,
+		Type:   typ,
+	}
+}
+
+func CreateCancelDeploymentMaxDurationUnionCancelDeploymentMaxDurationEnum(cancelDeploymentMaxDurationEnum CancelDeploymentMaxDurationEnum) CancelDeploymentMaxDurationUnion {
+	typ := CancelDeploymentMaxDurationUnionTypeCancelDeploymentMaxDurationEnum
+
+	return CancelDeploymentMaxDurationUnion{
+		CancelDeploymentMaxDurationEnum: &cancelDeploymentMaxDurationEnum,
+		Type:                            typ,
+	}
+}
+
+func (u *CancelDeploymentMaxDurationUnion) UnmarshalJSON(data []byte) error {
+
+	var number float64 = float64(0)
+	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
+		u.Number = &number
+		u.Type = CancelDeploymentMaxDurationUnionTypeNumber
+		return nil
+	}
+
+	var cancelDeploymentMaxDurationEnum CancelDeploymentMaxDurationEnum = CancelDeploymentMaxDurationEnum("")
+	if err := utils.UnmarshalJSON(data, &cancelDeploymentMaxDurationEnum, "", true, nil); err == nil {
+		u.CancelDeploymentMaxDurationEnum = &cancelDeploymentMaxDurationEnum
+		u.Type = CancelDeploymentMaxDurationUnionTypeCancelDeploymentMaxDurationEnum
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CancelDeploymentMaxDurationUnion", string(data))
+}
+
+func (u CancelDeploymentMaxDurationUnion) MarshalJSON() ([]byte, error) {
+	if u.Number != nil {
+		return utils.MarshalJSON(u.Number, "", true)
+	}
+
+	if u.CancelDeploymentMaxDurationEnum != nil {
+		return utils.MarshalJSON(u.CancelDeploymentMaxDurationEnum, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type CancelDeploymentMaxDurationUnion: all fields are null")
+}
+
 // CancelDeploymentTypeQueueV2beta - Event type - must be "queue/v2beta" (REQUIRED)
 type CancelDeploymentTypeQueueV2beta string
 
@@ -4357,7 +4452,7 @@ func (u CancelDeploymentExperimentalTriggerUnion) MarshalJSON() ([]byte, error) 
 type CancelDeploymentFunctions struct {
 	Architecture            *CancelDeploymentArchitecture              `json:"architecture,omitempty"`
 	Memory                  *float64                                   `json:"memory,omitempty"`
-	MaxDuration             *float64                                   `json:"maxDuration,omitempty"`
+	MaxDuration             *CancelDeploymentMaxDurationUnion          `json:"maxDuration,omitempty"`
 	Regions                 []string                                   `json:"regions,omitempty"`
 	FunctionFailoverRegions []string                                   `json:"functionFailoverRegions,omitempty"`
 	Runtime                 *string                                    `json:"runtime,omitempty"`
@@ -4381,7 +4476,7 @@ func (o *CancelDeploymentFunctions) GetMemory() *float64 {
 	return o.Memory
 }
 
-func (o *CancelDeploymentFunctions) GetMaxDuration() *float64 {
+func (o *CancelDeploymentFunctions) GetMaxDuration() *CancelDeploymentMaxDurationUnion {
 	if o == nil {
 		return nil
 	}
@@ -7484,7 +7579,7 @@ func (e *CancelDeploymentMfeConfigUploadState) UnmarshalJSON(data []byte) error 
 }
 
 type CancelDeploymentMicrofrontends2 struct {
-	IsDefaultApp bool `json:"isDefaultApp"`
+	isDefaultApp bool `const:"true" json:"isDefaultApp"`
 	// The result of the microfrontends config upload during deployment creation / build. Only set for default app deployments. The config upload is attempted during deployment create, and then again during the build. If the config is not in the root directory, or the deployment is prebuilt, the config cannot be uploaded during deployment create. The upload during deployment build finds the config even if it's not in the root directory, as it has access to all files. Uploading the config during create is ideal, as then all child deployments are guaranteed to have access to the default app deployment config even if the default app has not yet started building. If the config is not uploaded, the child app will show as building until the config has been uploaded during the default app build. - `success` - The config was uploaded successfully, either when the deployment was created or during the build. - `waiting_on_build` - The config could not be uploaded during deployment create, will be attempted again during the build. - `no_config` - No config was found. Only set once the build has not found the config in any of the deployment's files. - `undefined` - Legacy deployments, or there was an error uploading the config during deployment create.
 	MfeConfigUploadState *CancelDeploymentMfeConfigUploadState `json:"mfeConfigUploadState,omitempty"`
 	// The project name of the default app of this deployment's microfrontends group.
@@ -7507,10 +7602,7 @@ func (c *CancelDeploymentMicrofrontends2) UnmarshalJSON(data []byte) error {
 }
 
 func (o *CancelDeploymentMicrofrontends2) GetIsDefaultApp() bool {
-	if o == nil {
-		return false
-	}
-	return o.IsDefaultApp
+	return true
 }
 
 func (o *CancelDeploymentMicrofrontends2) GetMfeConfigUploadState() *CancelDeploymentMfeConfigUploadState {
@@ -7542,7 +7634,7 @@ func (o *CancelDeploymentMicrofrontends2) GetGroupIds() []string {
 }
 
 type CancelDeploymentMicrofrontends1 struct {
-	IsDefaultApp *bool `json:"isDefaultApp,omitempty"`
+	isDefaultApp *bool `const:"false" json:"isDefaultApp,omitempty"`
 	// The project name of the default app of this deployment's microfrontends group.
 	DefaultAppProjectName string `json:"defaultAppProjectName"`
 	// A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI.
@@ -7563,10 +7655,7 @@ func (c *CancelDeploymentMicrofrontends1) UnmarshalJSON(data []byte) error {
 }
 
 func (o *CancelDeploymentMicrofrontends1) GetIsDefaultApp() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.IsDefaultApp
+	return types.Bool(false)
 }
 
 func (o *CancelDeploymentMicrofrontends1) GetDefaultAppProjectName() string {

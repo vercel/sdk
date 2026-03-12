@@ -384,7 +384,7 @@ export type GetDeploymentsWebAnalytics = {
   disabledAt?: number | undefined;
   canceledAt?: number | undefined;
   enabledAt?: number | undefined;
-  hasData?: boolean | undefined;
+  hasData?: true | undefined;
 };
 
 /**
@@ -1187,7 +1187,7 @@ export const GetDeploymentsWebAnalytics$inboundSchema: z.ZodType<
   disabledAt: types.optional(types.number()),
   canceledAt: types.optional(types.number()),
   enabledAt: types.optional(types.number()),
-  hasData: types.optional(types.boolean()),
+  hasData: types.optional(types.literal(true)),
 });
 /** @internal */
 export type GetDeploymentsWebAnalytics$Outbound = {
@@ -1195,7 +1195,7 @@ export type GetDeploymentsWebAnalytics$Outbound = {
   disabledAt?: number | undefined;
   canceledAt?: number | undefined;
   enabledAt?: number | undefined;
-  hasData?: boolean | undefined;
+  hasData?: true | undefined;
 };
 
 /** @internal */
@@ -1208,7 +1208,7 @@ export const GetDeploymentsWebAnalytics$outboundSchema: z.ZodType<
   disabledAt: z.number().optional(),
   canceledAt: z.number().optional(),
   enabledAt: z.number().optional(),
-  hasData: z.boolean().optional(),
+  hasData: z.literal(true).optional(),
 });
 
 export function getDeploymentsWebAnalyticsToJSON(

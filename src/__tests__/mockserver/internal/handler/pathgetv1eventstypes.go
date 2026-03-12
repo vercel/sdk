@@ -52,7 +52,6 @@ func testListEventTypesListEventTypes0(w http.ResponseWriter, req *http.Request)
 					"<value 1>",
 					"<value 2>",
 				},
-				Deprecated:  false,
 				Name:        operations.NameDomainTransferIn,
 				Description: "woot baritone lasting ah foot when worth whether bleakly",
 			},

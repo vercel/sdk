@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PayloadProjectIds } from "@vercel/sdk/models/usereventpayload25beforetype.js";
+import { PayloadProjectIds } from "@vercel/sdk/models/usereventpayload25type.js";
 
 let value: PayloadProjectIds = {
   type: "list",
@@ -19,5 +19,5 @@ let value: PayloadProjectIds = {
 | Field                                                                | Type                                                                 | Required                                                             | Description                                                          |
 | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
 | `type`                                                               | [models.UserEventPayload26Type](../models/usereventpayload26type.md) | :heavy_check_mark:                                                   | N/A                                                                  |
-| `required`                                                           | *boolean*                                                            | :heavy_check_mark:                                                   | N/A                                                                  |
+| `required`                                                           | *true*                                                               | :heavy_check_mark:                                                   | N/A                                                                  |
 | `items`                                                              | [models.Items](../models/items.md)                                   | :heavy_check_mark:                                                   | N/A                                                                  |

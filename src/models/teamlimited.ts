@@ -211,7 +211,7 @@ export type TeamLimitedMembership = {
   uid?: string | undefined;
   entitlements?: Array<TeamLimitedEntitlements> | undefined;
   teamId?: string | undefined;
-  confirmed: boolean;
+  confirmed: true;
   accessRequestedAt?: number | undefined;
   role: TeamLimitedRole;
   teamRoles?: Array<TeamLimitedTeamRoles> | undefined;
@@ -228,7 +228,7 @@ export type TeamLimited = {
   /**
    * Property indicating that this Team data contains only limited information, due to the authentication token missing privileges to read the full Team data or due to team having MFA enforced and the user not having MFA enabled. Re-login with the Team's configured SAML Single Sign-On provider in order to upgrade the authentication token with the necessary privileges.
    */
-  limited: boolean;
+  limited: true;
   limitedBy: Array<LimitedBy>;
   /**
    * When "Single Sign-On (SAML)" is configured, this object contains information that allows the client-side to identify whether or not this Team has SAML enforced.
@@ -627,7 +627,7 @@ export const TeamLimitedMembership$inboundSchema: z.ZodType<
     z.array(z.lazy(() => TeamLimitedEntitlements$inboundSchema)),
   ),
   teamId: types.optional(types.string()),
-  confirmed: types.boolean(),
+  confirmed: types.literal(true),
   accessRequestedAt: types.optional(types.number()),
   role: TeamLimitedRole$inboundSchema,
   teamRoles: types.optional(z.array(TeamLimitedTeamRoles$inboundSchema)),
@@ -643,7 +643,7 @@ export type TeamLimitedMembership$Outbound = {
   uid?: string | undefined;
   entitlements?: Array<TeamLimitedEntitlements$Outbound> | undefined;
   teamId?: string | undefined;
-  confirmed: boolean;
+  confirmed: true;
   accessRequestedAt?: number | undefined;
   role: string;
   teamRoles?: Array<string> | undefined;
@@ -663,7 +663,7 @@ export const TeamLimitedMembership$outboundSchema: z.ZodType<
   entitlements: z.array(z.lazy(() => TeamLimitedEntitlements$outboundSchema))
     .optional(),
   teamId: z.string().optional(),
-  confirmed: z.boolean(),
+  confirmed: z.literal(true),
   accessRequestedAt: z.number().optional(),
   role: TeamLimitedRole$outboundSchema,
   teamRoles: z.array(TeamLimitedTeamRoles$outboundSchema).optional(),
@@ -697,7 +697,7 @@ export const TeamLimited$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  limited: types.boolean(),
+  limited: types.literal(true),
   limitedBy: z.array(LimitedBy$inboundSchema),
   saml: types.optional(z.lazy(() => TeamLimitedSaml$inboundSchema)),
   id: types.string(),
@@ -709,7 +709,7 @@ export const TeamLimited$inboundSchema: z.ZodType<
 });
 /** @internal */
 export type TeamLimited$Outbound = {
-  limited: boolean;
+  limited: true;
   limitedBy: Array<string>;
   saml?: TeamLimitedSaml$Outbound | undefined;
   id: string;
@@ -726,7 +726,7 @@ export const TeamLimited$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   TeamLimited
 > = z.object({
-  limited: z.boolean(),
+  limited: z.literal(true),
   limitedBy: z.array(LimitedBy$outboundSchema),
   saml: z.lazy(() => TeamLimitedSaml$outboundSchema).optional(),
   id: z.string(),

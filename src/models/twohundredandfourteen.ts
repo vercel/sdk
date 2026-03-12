@@ -427,6 +427,7 @@ export const Type = {
   TeamAvatarUpdate: "team-avatar-update",
   TeamDelete: "team-delete",
   StrictDeploymentProtectionSettings: "strict-deployment-protection-settings",
+  TeamDomainVerificationDeleted: "team-domain-verification-deleted",
   VercelToolbar: "vercel-toolbar",
   TeamEmailDomainUpdate: "team-email-domain-update",
   TeamInviteBulkDelete: "team-invite-bulk-delete",

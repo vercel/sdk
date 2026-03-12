@@ -1217,7 +1217,7 @@ export type ResponseBodyWebAnalytics = {
   disabledAt?: number | undefined;
   canceledAt?: number | undefined;
   enabledAt?: number | undefined;
-  hasData?: boolean | undefined;
+  hasData?: true | undefined;
 };
 
 export type Src2 = {
@@ -6835,7 +6835,7 @@ export const ResponseBodyWebAnalytics$inboundSchema: z.ZodType<
   disabledAt: types.optional(types.number()),
   canceledAt: types.optional(types.number()),
   enabledAt: types.optional(types.number()),
-  hasData: types.optional(types.boolean()),
+  hasData: types.optional(types.literal(true)),
 });
 /** @internal */
 export type ResponseBodyWebAnalytics$Outbound = {
@@ -6843,7 +6843,7 @@ export type ResponseBodyWebAnalytics$Outbound = {
   disabledAt?: number | undefined;
   canceledAt?: number | undefined;
   enabledAt?: number | undefined;
-  hasData?: boolean | undefined;
+  hasData?: true | undefined;
 };
 
 /** @internal */
@@ -6856,7 +6856,7 @@ export const ResponseBodyWebAnalytics$outboundSchema: z.ZodType<
   disabledAt: z.number().optional(),
   canceledAt: z.number().optional(),
   enabledAt: z.number().optional(),
-  hasData: z.boolean().optional(),
+  hasData: z.literal(true).optional(),
 });
 
 export function responseBodyWebAnalyticsToJSON(

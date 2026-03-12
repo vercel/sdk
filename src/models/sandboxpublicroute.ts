@@ -27,7 +27,7 @@ export type SandboxPublicRoute = {
   /**
    * Whether the route is reserved by the system (e.g. for internal use).
    */
-  system?: boolean | undefined;
+  system?: true | undefined;
 };
 
 /** @internal */
@@ -39,14 +39,14 @@ export const SandboxPublicRoute$inboundSchema: z.ZodType<
   url: types.string(),
   port: types.number(),
   subdomain: types.string(),
-  system: types.optional(types.boolean()),
+  system: types.optional(types.literal(true)),
 });
 /** @internal */
 export type SandboxPublicRoute$Outbound = {
   url: string;
   port: number;
   subdomain: string;
-  system?: boolean | undefined;
+  system?: true | undefined;
 };
 
 /** @internal */
@@ -58,7 +58,7 @@ export const SandboxPublicRoute$outboundSchema: z.ZodType<
   url: z.string(),
   port: z.number(),
   subdomain: z.string(),
-  system: z.boolean().optional(),
+  system: z.literal(true).optional(),
 });
 
 export function sandboxPublicRouteToJSON(

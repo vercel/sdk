@@ -821,7 +821,7 @@ export type PutFirewallConfigRules2 = {
   active: boolean;
   conditionGroup: Array<PutFirewallConfigRulesConditionGroup>;
   action: PutFirewallConfigRulesAction;
-  valid: boolean;
+  valid: false;
   validationErrors: Array<string>;
 };
 
@@ -975,7 +975,7 @@ export type PutFirewallConfigRules1 = {
   active: boolean;
   conditionGroup: Array<PutFirewallConfigRulesSecurityConditionGroup>;
   action: PutFirewallConfigRulesSecurityAction;
-  valid: boolean;
+  valid: true;
   validationErrors?: any | null | undefined;
 };
 
@@ -3648,7 +3648,7 @@ export const PutFirewallConfigRules2$inboundSchema: z.ZodType<
     z.lazy(() => PutFirewallConfigRulesConditionGroup$inboundSchema),
   ),
   action: z.lazy(() => PutFirewallConfigRulesAction$inboundSchema),
-  valid: types.boolean(),
+  valid: types.literal(false),
   validationErrors: z.array(types.string()),
 });
 /** @internal */
@@ -3659,7 +3659,7 @@ export type PutFirewallConfigRules2$Outbound = {
   active: boolean;
   conditionGroup: Array<PutFirewallConfigRulesConditionGroup$Outbound>;
   action: PutFirewallConfigRulesAction$Outbound;
-  valid: boolean;
+  valid: false;
   validationErrors: Array<string>;
 };
 
@@ -3677,7 +3677,7 @@ export const PutFirewallConfigRules2$outboundSchema: z.ZodType<
     z.lazy(() => PutFirewallConfigRulesConditionGroup$outboundSchema),
   ),
   action: z.lazy(() => PutFirewallConfigRulesAction$outboundSchema),
-  valid: z.boolean(),
+  valid: z.literal(false),
   validationErrors: z.array(z.string()),
 });
 
@@ -4208,7 +4208,7 @@ export const PutFirewallConfigRules1$inboundSchema: z.ZodType<
     z.lazy(() => PutFirewallConfigRulesSecurityConditionGroup$inboundSchema),
   ),
   action: z.lazy(() => PutFirewallConfigRulesSecurityAction$inboundSchema),
-  valid: types.boolean(),
+  valid: types.literal(true),
   validationErrors: z.nullable(z.any()).optional(),
 });
 /** @internal */
@@ -4219,7 +4219,7 @@ export type PutFirewallConfigRules1$Outbound = {
   active: boolean;
   conditionGroup: Array<PutFirewallConfigRulesSecurityConditionGroup$Outbound>;
   action: PutFirewallConfigRulesSecurityAction$Outbound;
-  valid: boolean;
+  valid: true;
   validationErrors?: any | null | undefined;
 };
 
@@ -4237,7 +4237,7 @@ export const PutFirewallConfigRules1$outboundSchema: z.ZodType<
     z.lazy(() => PutFirewallConfigRulesSecurityConditionGroup$outboundSchema),
   ),
   action: z.lazy(() => PutFirewallConfigRulesSecurityAction$outboundSchema),
-  valid: z.boolean(),
+  valid: z.literal(true),
   validationErrors: z.nullable(z.any()).optional(),
 });
 

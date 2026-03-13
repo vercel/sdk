@@ -85,13 +85,12 @@ import {
   UpdateProjectProjectsFramework,
   UpdateProjectProjectsFramework$inboundSchema,
   UpdateProjectProjectsFramework$outboundSchema,
+  UpdateProjectProjectsIssuerMode,
+  UpdateProjectProjectsIssuerMode$inboundSchema,
+  UpdateProjectProjectsIssuerMode$outboundSchema,
   UpdateProjectProjectsNodeVersion,
   UpdateProjectProjectsNodeVersion$inboundSchema,
   UpdateProjectProjectsNodeVersion$outboundSchema,
-  UpdateProjectProjectsOidcTokenConfig,
-  UpdateProjectProjectsOidcTokenConfig$inboundSchema,
-  UpdateProjectProjectsOidcTokenConfig$Outbound,
-  UpdateProjectProjectsOidcTokenConfig$outboundSchema,
   UpdateProjectProjectsOptionsAllowlist,
   UpdateProjectProjectsOptionsAllowlist$inboundSchema,
   UpdateProjectProjectsOptionsAllowlist$Outbound,
@@ -144,7 +143,18 @@ import {
   UpdateProjectWebAnalytics$inboundSchema,
   UpdateProjectWebAnalytics$Outbound,
   UpdateProjectWebAnalytics$outboundSchema,
-} from "./updateprojectprojectsoidctokenconfig.js";
+} from "./updateprojectprojectsissuermode.js";
+
+export type UpdateProjectProjectsOidcTokenConfig = {
+  /**
+   * Whether or not to generate OpenID Connect JSON Web Tokens.
+   */
+  enabled?: boolean | undefined;
+  /**
+   * - team: `https://oidc.vercel.com/[team_slug]` - global: `https://oidc.vercel.com`
+   */
+  issuerMode?: UpdateProjectProjectsIssuerMode | undefined;
+};
 
 export const UpdateProjectTier = {
   Standard: "standard",
@@ -601,6 +611,51 @@ export type UpdateProjectResponseBody = {
   dismissedToasts?: Array<UpdateProjectProjectsDismissedToasts> | undefined;
   protectedSourcemaps?: boolean | undefined;
 };
+
+/** @internal */
+export const UpdateProjectProjectsOidcTokenConfig$inboundSchema: z.ZodType<
+  UpdateProjectProjectsOidcTokenConfig,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  enabled: types.optional(types.boolean()),
+  issuerMode: types.optional(UpdateProjectProjectsIssuerMode$inboundSchema),
+});
+/** @internal */
+export type UpdateProjectProjectsOidcTokenConfig$Outbound = {
+  enabled?: boolean | undefined;
+  issuerMode?: string | undefined;
+};
+
+/** @internal */
+export const UpdateProjectProjectsOidcTokenConfig$outboundSchema: z.ZodType<
+  UpdateProjectProjectsOidcTokenConfig$Outbound,
+  z.ZodTypeDef,
+  UpdateProjectProjectsOidcTokenConfig
+> = z.object({
+  enabled: z.boolean().optional(),
+  issuerMode: UpdateProjectProjectsIssuerMode$outboundSchema.optional(),
+});
+
+export function updateProjectProjectsOidcTokenConfigToJSON(
+  updateProjectProjectsOidcTokenConfig: UpdateProjectProjectsOidcTokenConfig,
+): string {
+  return JSON.stringify(
+    UpdateProjectProjectsOidcTokenConfig$outboundSchema.parse(
+      updateProjectProjectsOidcTokenConfig,
+    ),
+  );
+}
+export function updateProjectProjectsOidcTokenConfigFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectProjectsOidcTokenConfig, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateProjectProjectsOidcTokenConfig$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectProjectsOidcTokenConfig' from JSON`,
+  );
+}
 
 /** @internal */
 export const UpdateProjectTier$inboundSchema: z.ZodNativeEnum<
@@ -2887,7 +2942,7 @@ export const UpdateProjectResponseBody$inboundSchema: z.ZodType<
   webAnalytics: types.optional(UpdateProjectWebAnalytics$inboundSchema),
   security: types.optional(UpdateProjectSecurity$inboundSchema),
   oidcTokenConfig: types.optional(
-    UpdateProjectProjectsOidcTokenConfig$inboundSchema,
+    z.lazy(() => UpdateProjectProjectsOidcTokenConfig$inboundSchema),
   ),
   tier: types.optional(UpdateProjectTier$inboundSchema),
   scheduledTierChange: types.optional(
@@ -3126,8 +3181,9 @@ export const UpdateProjectResponseBody$outboundSchema: z.ZodType<
   concurrencyBucketName: z.string().optional(),
   webAnalytics: UpdateProjectWebAnalytics$outboundSchema.optional(),
   security: UpdateProjectSecurity$outboundSchema.optional(),
-  oidcTokenConfig: UpdateProjectProjectsOidcTokenConfig$outboundSchema
-    .optional(),
+  oidcTokenConfig: z.lazy(() =>
+    UpdateProjectProjectsOidcTokenConfig$outboundSchema
+  ).optional(),
   tier: UpdateProjectTier$outboundSchema.optional(),
   scheduledTierChange: z.lazy(() =>
     UpdateProjectScheduledTierChange$outboundSchema

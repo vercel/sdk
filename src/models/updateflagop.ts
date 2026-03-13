@@ -83,6 +83,8 @@ export const UpdateFlagCmp = {
   NotStartsWith: "!startsWith",
   EndsWith: "endsWith",
   NotEndsWith: "!endsWith",
+  Contains: "contains",
+  NotContains: "!contains",
   Ex: "ex",
   NotEx: "!ex",
   Gt: "gt",
@@ -134,10 +136,15 @@ export type UpdateFlagRhs =
   | number
   | boolean;
 
+export type UpdateFlagCmpOptions = {
+  ignoreCase?: boolean | undefined;
+};
+
 export type UpdateFlagConditions = {
   lhs: UpdateFlagLhs2 | UpdateFlagLhs1;
   cmp: UpdateFlagCmp;
   rhs?: UpdateFlagRhs2 | UpdateFlagRhs1 | string | number | boolean | undefined;
+  cmpOptions?: UpdateFlagCmpOptions | undefined;
 };
 
 export type UpdateFlagOutcomeBase = {
@@ -421,6 +428,10 @@ export type ResponseBodyRhs =
   | number
   | boolean;
 
+export type ResponseBodyCmpOptions = {
+  ignoreCase?: boolean | undefined;
+};
+
 export type UpdateFlagLhsFeatureFlags2 = {
   type: "entity";
   kind: string;
@@ -447,6 +458,8 @@ export const ResponseBodyCmp = {
   NotStartsWith: "!startsWith",
   EndsWith: "endsWith",
   NotEndsWith: "!endsWith",
+  Contains: "contains",
+  NotContains: "!contains",
   Ex: "ex",
   NotEx: "!ex",
   Gt: "gt",
@@ -462,6 +475,7 @@ export type ResponseBodyCmp = ClosedEnum<typeof ResponseBodyCmp>;
 
 export type ResponseBodyConditions = {
   rhs?: UpdateFlagRhs4 | UpdateFlagRhs3 | string | number | boolean | undefined;
+  cmpOptions?: ResponseBodyCmpOptions | undefined;
   lhs: UpdateFlagLhsFeatureFlags1 | UpdateFlagLhsFeatureFlags2;
   cmp: ResponseBodyCmp;
 };
@@ -1127,6 +1141,45 @@ export function updateFlagRhsFromJSON(
 }
 
 /** @internal */
+export const UpdateFlagCmpOptions$inboundSchema: z.ZodType<
+  UpdateFlagCmpOptions,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  ignoreCase: types.optional(types.boolean()),
+});
+/** @internal */
+export type UpdateFlagCmpOptions$Outbound = {
+  ignoreCase?: boolean | undefined;
+};
+
+/** @internal */
+export const UpdateFlagCmpOptions$outboundSchema: z.ZodType<
+  UpdateFlagCmpOptions$Outbound,
+  z.ZodTypeDef,
+  UpdateFlagCmpOptions
+> = z.object({
+  ignoreCase: z.boolean().optional(),
+});
+
+export function updateFlagCmpOptionsToJSON(
+  updateFlagCmpOptions: UpdateFlagCmpOptions,
+): string {
+  return JSON.stringify(
+    UpdateFlagCmpOptions$outboundSchema.parse(updateFlagCmpOptions),
+  );
+}
+export function updateFlagCmpOptionsFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateFlagCmpOptions, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateFlagCmpOptions$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateFlagCmpOptions' from JSON`,
+  );
+}
+
+/** @internal */
 export const UpdateFlagConditions$inboundSchema: z.ZodType<
   UpdateFlagConditions,
   z.ZodTypeDef,
@@ -1146,6 +1199,7 @@ export const UpdateFlagConditions$inboundSchema: z.ZodType<
       types.boolean(),
     ]),
   ),
+  cmpOptions: types.optional(z.lazy(() => UpdateFlagCmpOptions$inboundSchema)),
 });
 /** @internal */
 export type UpdateFlagConditions$Outbound = {
@@ -1158,6 +1212,7 @@ export type UpdateFlagConditions$Outbound = {
     | number
     | boolean
     | undefined;
+  cmpOptions?: UpdateFlagCmpOptions$Outbound | undefined;
 };
 
 /** @internal */
@@ -1178,6 +1233,7 @@ export const UpdateFlagConditions$outboundSchema: z.ZodType<
     z.number(),
     z.boolean(),
   ]).optional(),
+  cmpOptions: z.lazy(() => UpdateFlagCmpOptions$outboundSchema).optional(),
 });
 
 export function updateFlagConditionsToJSON(
@@ -2711,6 +2767,45 @@ export function responseBodyRhsFromJSON(
 }
 
 /** @internal */
+export const ResponseBodyCmpOptions$inboundSchema: z.ZodType<
+  ResponseBodyCmpOptions,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  ignoreCase: types.optional(types.boolean()),
+});
+/** @internal */
+export type ResponseBodyCmpOptions$Outbound = {
+  ignoreCase?: boolean | undefined;
+};
+
+/** @internal */
+export const ResponseBodyCmpOptions$outboundSchema: z.ZodType<
+  ResponseBodyCmpOptions$Outbound,
+  z.ZodTypeDef,
+  ResponseBodyCmpOptions
+> = z.object({
+  ignoreCase: z.boolean().optional(),
+});
+
+export function responseBodyCmpOptionsToJSON(
+  responseBodyCmpOptions: ResponseBodyCmpOptions,
+): string {
+  return JSON.stringify(
+    ResponseBodyCmpOptions$outboundSchema.parse(responseBodyCmpOptions),
+  );
+}
+export function responseBodyCmpOptionsFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodyCmpOptions, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodyCmpOptions$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyCmpOptions' from JSON`,
+  );
+}
+
+/** @internal */
 export const UpdateFlagLhsFeatureFlags2$inboundSchema: z.ZodType<
   UpdateFlagLhsFeatureFlags2,
   z.ZodTypeDef,
@@ -2857,6 +2952,9 @@ export const ResponseBodyConditions$inboundSchema: z.ZodType<
       types.boolean(),
     ]),
   ),
+  cmpOptions: types.optional(
+    z.lazy(() => ResponseBodyCmpOptions$inboundSchema),
+  ),
   lhs: z.union([
     z.lazy(() => UpdateFlagLhsFeatureFlags1$inboundSchema),
     z.lazy(() => UpdateFlagLhsFeatureFlags2$inboundSchema),
@@ -2872,6 +2970,7 @@ export type ResponseBodyConditions$Outbound = {
     | number
     | boolean
     | undefined;
+  cmpOptions?: ResponseBodyCmpOptions$Outbound | undefined;
   lhs:
     | UpdateFlagLhsFeatureFlags1$Outbound
     | UpdateFlagLhsFeatureFlags2$Outbound;
@@ -2891,6 +2990,7 @@ export const ResponseBodyConditions$outboundSchema: z.ZodType<
     z.number(),
     z.boolean(),
   ]).optional(),
+  cmpOptions: z.lazy(() => ResponseBodyCmpOptions$outboundSchema).optional(),
   lhs: z.union([
     z.lazy(() => UpdateFlagLhsFeatureFlags1$outboundSchema),
     z.lazy(() => UpdateFlagLhsFeatureFlags2$outboundSchema),

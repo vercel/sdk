@@ -1,12 +1,12 @@
-# ListSandboxesResponseBodyPagination
+# ListSandboxesPagination
 
 ## Example Usage
 
 ```typescript
-import { ListSandboxesResponseBodyPagination } from "@vercel/sdk/models/listsandboxesop.js";
+import { ListSandboxesPagination } from "@vercel/sdk/models/listsandboxesop.js";
 
-let value: ListSandboxesResponseBodyPagination = {
-  total: 4814.92,
+let value: ListSandboxesPagination = {
+  total: 7536.27,
   count: 20,
   next: 1540095775951,
   prev: 1540095775951,

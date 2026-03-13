@@ -172,6 +172,10 @@ export type ListFlagVersionsRhs =
   | number
   | boolean;
 
+export type ListFlagVersionsCmpOptions = {
+  ignoreCase?: boolean | undefined;
+};
+
 export type ListFlagVersionsLhs2 = {
   type: "entity";
   kind: string;
@@ -196,6 +200,8 @@ export const ListFlagVersionsCmp = {
   NotStartsWith: "!startsWith",
   EndsWith: "endsWith",
   NotEndsWith: "!endsWith",
+  Contains: "contains",
+  NotContains: "!contains",
   Ex: "ex",
   NotEx: "!ex",
   Gt: "gt",
@@ -217,6 +223,7 @@ export type ListFlagVersionsConditions = {
     | number
     | boolean
     | undefined;
+  cmpOptions?: ListFlagVersionsCmpOptions | undefined;
   lhs: ListFlagVersionsLhs1 | ListFlagVersionsLhs2;
   cmp: ListFlagVersionsCmp;
 };
@@ -1240,6 +1247,45 @@ export function listFlagVersionsRhsFromJSON(
 }
 
 /** @internal */
+export const ListFlagVersionsCmpOptions$inboundSchema: z.ZodType<
+  ListFlagVersionsCmpOptions,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  ignoreCase: types.optional(types.boolean()),
+});
+/** @internal */
+export type ListFlagVersionsCmpOptions$Outbound = {
+  ignoreCase?: boolean | undefined;
+};
+
+/** @internal */
+export const ListFlagVersionsCmpOptions$outboundSchema: z.ZodType<
+  ListFlagVersionsCmpOptions$Outbound,
+  z.ZodTypeDef,
+  ListFlagVersionsCmpOptions
+> = z.object({
+  ignoreCase: z.boolean().optional(),
+});
+
+export function listFlagVersionsCmpOptionsToJSON(
+  listFlagVersionsCmpOptions: ListFlagVersionsCmpOptions,
+): string {
+  return JSON.stringify(
+    ListFlagVersionsCmpOptions$outboundSchema.parse(listFlagVersionsCmpOptions),
+  );
+}
+export function listFlagVersionsCmpOptionsFromJSON(
+  jsonString: string,
+): SafeParseResult<ListFlagVersionsCmpOptions, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListFlagVersionsCmpOptions$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListFlagVersionsCmpOptions' from JSON`,
+  );
+}
+
+/** @internal */
 export const ListFlagVersionsLhs2$inboundSchema: z.ZodType<
   ListFlagVersionsLhs2,
   z.ZodTypeDef,
@@ -1388,6 +1434,9 @@ export const ListFlagVersionsConditions$inboundSchema: z.ZodType<
       types.boolean(),
     ]),
   ),
+  cmpOptions: types.optional(
+    z.lazy(() => ListFlagVersionsCmpOptions$inboundSchema),
+  ),
   lhs: z.union([
     z.lazy(() => ListFlagVersionsLhs1$inboundSchema),
     z.lazy(() => ListFlagVersionsLhs2$inboundSchema),
@@ -1403,6 +1452,7 @@ export type ListFlagVersionsConditions$Outbound = {
     | number
     | boolean
     | undefined;
+  cmpOptions?: ListFlagVersionsCmpOptions$Outbound | undefined;
   lhs: ListFlagVersionsLhs1$Outbound | ListFlagVersionsLhs2$Outbound;
   cmp: string;
 };
@@ -1420,6 +1470,8 @@ export const ListFlagVersionsConditions$outboundSchema: z.ZodType<
     z.number(),
     z.boolean(),
   ]).optional(),
+  cmpOptions: z.lazy(() => ListFlagVersionsCmpOptions$outboundSchema)
+    .optional(),
   lhs: z.union([
     z.lazy(() => ListFlagVersionsLhs1$outboundSchema),
     z.lazy(() => ListFlagVersionsLhs2$outboundSchema),

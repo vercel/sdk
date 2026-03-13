@@ -11,6 +11,35 @@ import (
 	"mockserver/internal/sdk/utils"
 )
 
+type CreateProjectVercelRulesetAction string
+
+const (
+	CreateProjectVercelRulesetActionLog       CreateProjectVercelRulesetAction = "log"
+	CreateProjectVercelRulesetActionDeny      CreateProjectVercelRulesetAction = "deny"
+	CreateProjectVercelRulesetActionChallenge CreateProjectVercelRulesetAction = "challenge"
+)
+
+func (e CreateProjectVercelRulesetAction) ToPointer() *CreateProjectVercelRulesetAction {
+	return &e
+}
+func (e *CreateProjectVercelRulesetAction) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "log":
+		fallthrough
+	case "deny":
+		fallthrough
+	case "challenge":
+		*e = CreateProjectVercelRulesetAction(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateProjectVercelRulesetAction: %v", v)
+	}
+}
+
 type CreateProjectVercelRuleset struct {
 	Active bool                              `json:"active"`
 	Action *CreateProjectVercelRulesetAction `json:"action,omitempty"`

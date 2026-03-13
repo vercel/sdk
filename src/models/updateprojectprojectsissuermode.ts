@@ -595,6 +595,17 @@ export type UpdateProjectConnectConfigurations = {
   updatedAt: number;
 };
 
+/**
+ * The origin of this definition. 'api' means created via the API. Undefined means it originated from a deployment (vercel.json).
+ */
+export const UpdateProjectSource = {
+  Api: "api",
+} as const;
+/**
+ * The origin of this definition. 'api' means created via the API. Undefined means it originated from a deployment (vercel.json).
+ */
+export type UpdateProjectSource = ClosedEnum<typeof UpdateProjectSource>;
+
 export type UpdateProjectDefinitions = {
   /**
    * The hostname that should be used.
@@ -608,6 +619,10 @@ export type UpdateProjectDefinitions = {
    * The cron expression.
    */
   schedule: string;
+  /**
+   * The origin of this definition. 'api' means created via the API. Undefined means it originated from a deployment (vercel.json).
+   */
+  source?: UpdateProjectSource | undefined;
 };
 
 export type UpdateProjectCrons = {
@@ -2053,17 +2068,6 @@ export type UpdateProjectProjectsIssuerMode = ClosedEnum<
   typeof UpdateProjectProjectsIssuerMode
 >;
 
-export type UpdateProjectProjectsOidcTokenConfig = {
-  /**
-   * Whether or not to generate OpenID Connect JSON Web Tokens.
-   */
-  enabled?: boolean | undefined;
-  /**
-   * - team: `https://oidc.vercel.com/[team_slug]` - global: `https://oidc.vercel.com`
-   */
-  issuerMode?: UpdateProjectProjectsIssuerMode | undefined;
-};
-
 /** @internal */
 export const UpdateProjectFramework$inboundSchema: z.ZodNativeEnum<
   typeof UpdateProjectFramework
@@ -3354,6 +3358,15 @@ export function updateProjectConnectConfigurationsFromJSON(
 }
 
 /** @internal */
+export const UpdateProjectSource$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateProjectSource
+> = z.nativeEnum(UpdateProjectSource);
+/** @internal */
+export const UpdateProjectSource$outboundSchema: z.ZodNativeEnum<
+  typeof UpdateProjectSource
+> = UpdateProjectSource$inboundSchema;
+
+/** @internal */
 export const UpdateProjectDefinitions$inboundSchema: z.ZodType<
   UpdateProjectDefinitions,
   z.ZodTypeDef,
@@ -3362,12 +3375,14 @@ export const UpdateProjectDefinitions$inboundSchema: z.ZodType<
   host: types.string(),
   path: types.string(),
   schedule: types.string(),
+  source: types.optional(UpdateProjectSource$inboundSchema),
 });
 /** @internal */
 export type UpdateProjectDefinitions$Outbound = {
   host: string;
   path: string;
   schedule: string;
+  source?: string | undefined;
 };
 
 /** @internal */
@@ -3379,6 +3394,7 @@ export const UpdateProjectDefinitions$outboundSchema: z.ZodType<
   host: z.string(),
   path: z.string(),
   schedule: z.string(),
+  source: UpdateProjectSource$outboundSchema.optional(),
 });
 
 export function updateProjectDefinitionsToJSON(
@@ -8864,48 +8880,3 @@ export const UpdateProjectProjectsIssuerMode$inboundSchema: z.ZodNativeEnum<
 export const UpdateProjectProjectsIssuerMode$outboundSchema: z.ZodNativeEnum<
   typeof UpdateProjectProjectsIssuerMode
 > = UpdateProjectProjectsIssuerMode$inboundSchema;
-
-/** @internal */
-export const UpdateProjectProjectsOidcTokenConfig$inboundSchema: z.ZodType<
-  UpdateProjectProjectsOidcTokenConfig,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  enabled: types.optional(types.boolean()),
-  issuerMode: types.optional(UpdateProjectProjectsIssuerMode$inboundSchema),
-});
-/** @internal */
-export type UpdateProjectProjectsOidcTokenConfig$Outbound = {
-  enabled?: boolean | undefined;
-  issuerMode?: string | undefined;
-};
-
-/** @internal */
-export const UpdateProjectProjectsOidcTokenConfig$outboundSchema: z.ZodType<
-  UpdateProjectProjectsOidcTokenConfig$Outbound,
-  z.ZodTypeDef,
-  UpdateProjectProjectsOidcTokenConfig
-> = z.object({
-  enabled: z.boolean().optional(),
-  issuerMode: UpdateProjectProjectsIssuerMode$outboundSchema.optional(),
-});
-
-export function updateProjectProjectsOidcTokenConfigToJSON(
-  updateProjectProjectsOidcTokenConfig: UpdateProjectProjectsOidcTokenConfig,
-): string {
-  return JSON.stringify(
-    UpdateProjectProjectsOidcTokenConfig$outboundSchema.parse(
-      updateProjectProjectsOidcTokenConfig,
-    ),
-  );
-}
-export function updateProjectProjectsOidcTokenConfigFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateProjectProjectsOidcTokenConfig, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      UpdateProjectProjectsOidcTokenConfig$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateProjectProjectsOidcTokenConfig' from JSON`,
-  );
-}

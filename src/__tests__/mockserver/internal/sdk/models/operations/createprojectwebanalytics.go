@@ -1326,6 +1326,30 @@ func (o *CreateProjectConnectConfiguration) GetUpdatedAt() float64 {
 	return o.UpdatedAt
 }
 
+// CreateProjectSource - The origin of this definition. 'api' means created via the API. Undefined means it originated from a deployment (vercel.json).
+type CreateProjectSource string
+
+const (
+	CreateProjectSourceAPI CreateProjectSource = "api"
+)
+
+func (e CreateProjectSource) ToPointer() *CreateProjectSource {
+	return &e
+}
+func (e *CreateProjectSource) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "api":
+		*e = CreateProjectSource(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateProjectSource: %v", v)
+	}
+}
+
 type CreateProjectDefinition struct {
 	// The hostname that should be used.
 	Host string `json:"host"`
@@ -1333,6 +1357,8 @@ type CreateProjectDefinition struct {
 	Path string `json:"path"`
 	// The cron expression.
 	Schedule string `json:"schedule"`
+	// The origin of this definition. 'api' means created via the API. Undefined means it originated from a deployment (vercel.json).
+	Source *CreateProjectSource `json:"source,omitempty"`
 }
 
 func (o *CreateProjectDefinition) GetHost() string {
@@ -1354,6 +1380,13 @@ func (o *CreateProjectDefinition) GetSchedule() string {
 		return ""
 	}
 	return o.Schedule
+}
+
+func (o *CreateProjectDefinition) GetSource() *CreateProjectSource {
+	if o == nil {
+		return nil
+	}
+	return o.Source
 }
 
 type CreateProjectCrons struct {
@@ -9073,33 +9106,4 @@ func (o *CreateProjectWebAnalytics) GetEnabledAt() *float64 {
 
 func (o *CreateProjectWebAnalytics) GetHasData() *bool {
 	return types.Bool(true)
-}
-
-type CreateProjectVercelRulesetAction string
-
-const (
-	CreateProjectVercelRulesetActionLog       CreateProjectVercelRulesetAction = "log"
-	CreateProjectVercelRulesetActionDeny      CreateProjectVercelRulesetAction = "deny"
-	CreateProjectVercelRulesetActionChallenge CreateProjectVercelRulesetAction = "challenge"
-)
-
-func (e CreateProjectVercelRulesetAction) ToPointer() *CreateProjectVercelRulesetAction {
-	return &e
-}
-func (e *CreateProjectVercelRulesetAction) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "log":
-		fallthrough
-	case "deny":
-		fallthrough
-	case "challenge":
-		*e = CreateProjectVercelRulesetAction(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for CreateProjectVercelRulesetAction: %v", v)
-	}
 }

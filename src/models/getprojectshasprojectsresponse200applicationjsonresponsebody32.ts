@@ -179,6 +179,19 @@ export type ResponseBodyConnectConfigurations = {
   updatedAt: number;
 };
 
+/**
+ * The origin of this definition. 'api' means created via the API. Undefined means it originated from a deployment (vercel.json).
+ */
+export const GetProjectsResponseBodySource = {
+  Api: "api",
+} as const;
+/**
+ * The origin of this definition. 'api' means created via the API. Undefined means it originated from a deployment (vercel.json).
+ */
+export type GetProjectsResponseBodySource = ClosedEnum<
+  typeof GetProjectsResponseBodySource
+>;
+
 export type ResponseBodyDefinitions = {
   /**
    * The hostname that should be used.
@@ -192,6 +205,10 @@ export type ResponseBodyDefinitions = {
    * The cron expression.
    */
   schedule: string;
+  /**
+   * The origin of this definition. 'api' means created via the API. Undefined means it originated from a deployment (vercel.json).
+   */
+  source?: GetProjectsResponseBodySource | undefined;
 };
 
 export type GetProjectsResponseBodyCrons = {
@@ -1897,14 +1914,6 @@ export type GetProjectsHasProjectsResponse200ApplicationJSONResponseBody32 = {
     GetProjectsHasProjectsResponse200ApplicationJSONResponseBody3ProjectsValue;
 };
 
-export const GetProjectsHasProjectsResponse200ApplicationJSONResponseBodyKey = {
-  XVercelIpCountry: "x-vercel-ip-country",
-} as const;
-export type GetProjectsHasProjectsResponse200ApplicationJSONResponseBodyKey =
-  ClosedEnum<
-    typeof GetProjectsHasProjectsResponse200ApplicationJSONResponseBodyKey
-  >;
-
 /** @internal */
 export const GitForkProtection$inboundSchema: z.ZodNativeEnum<
   typeof GitForkProtection
@@ -2310,6 +2319,15 @@ export function responseBodyConnectConfigurationsFromJSON(
 }
 
 /** @internal */
+export const GetProjectsResponseBodySource$inboundSchema: z.ZodNativeEnum<
+  typeof GetProjectsResponseBodySource
+> = z.nativeEnum(GetProjectsResponseBodySource);
+/** @internal */
+export const GetProjectsResponseBodySource$outboundSchema: z.ZodNativeEnum<
+  typeof GetProjectsResponseBodySource
+> = GetProjectsResponseBodySource$inboundSchema;
+
+/** @internal */
 export const ResponseBodyDefinitions$inboundSchema: z.ZodType<
   ResponseBodyDefinitions,
   z.ZodTypeDef,
@@ -2318,12 +2336,14 @@ export const ResponseBodyDefinitions$inboundSchema: z.ZodType<
   host: types.string(),
   path: types.string(),
   schedule: types.string(),
+  source: types.optional(GetProjectsResponseBodySource$inboundSchema),
 });
 /** @internal */
 export type ResponseBodyDefinitions$Outbound = {
   host: string;
   path: string;
   schedule: string;
+  source?: string | undefined;
 };
 
 /** @internal */
@@ -2335,6 +2355,7 @@ export const ResponseBodyDefinitions$outboundSchema: z.ZodType<
   host: z.string(),
   path: z.string(),
   schedule: z.string(),
+  source: GetProjectsResponseBodySource$outboundSchema.optional(),
 });
 
 export function responseBodyDefinitionsToJSON(
@@ -9295,17 +9316,3 @@ export function getProjectsHasProjectsResponse200ApplicationJSONResponseBody32Fr
     `Failed to parse 'GetProjectsHasProjectsResponse200ApplicationJSONResponseBody32' from JSON`,
   );
 }
-
-/** @internal */
-export const GetProjectsHasProjectsResponse200ApplicationJSONResponseBodyKey$inboundSchema:
-  z.ZodNativeEnum<
-    typeof GetProjectsHasProjectsResponse200ApplicationJSONResponseBodyKey
-  > = z.nativeEnum(
-    GetProjectsHasProjectsResponse200ApplicationJSONResponseBodyKey,
-  );
-/** @internal */
-export const GetProjectsHasProjectsResponse200ApplicationJSONResponseBodyKey$outboundSchema:
-  z.ZodNativeEnum<
-    typeof GetProjectsHasProjectsResponse200ApplicationJSONResponseBodyKey
-  > =
-    GetProjectsHasProjectsResponse200ApplicationJSONResponseBodyKey$inboundSchema;

@@ -6,7 +6,6 @@ import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
-import { smartUnion } from "../types/smartUnion.js";
 import {
   Sandbox,
   Sandbox$inboundSchema,
@@ -42,7 +41,7 @@ export type ListSandboxesRequest = {
   slug?: string | undefined;
 };
 
-export type ListSandboxesResponseBodyPagination = {
+export type ListSandboxesPagination = {
   total: number;
   /**
    * Amount of items in the current page.
@@ -58,19 +57,13 @@ export type ListSandboxesResponseBodyPagination = {
   prev: number | null;
 };
 
-export type ListSandboxesResponseBody2 = {
-  sandboxes: Array<Sandbox>;
-  pagination: ListSandboxesResponseBodyPagination;
-};
-
-export type ListSandboxesResponseBody1 = {};
-
 /**
  * The list of sandboxes matching the request filters.
  */
-export type ListSandboxesResponseBody =
-  | ListSandboxesResponseBody2
-  | ListSandboxesResponseBody1;
+export type ListSandboxesResponseBody = {
+  sandboxes: Array<Sandbox>;
+  pagination: ListSandboxesPagination;
+};
 
 /** @internal */
 export const ListSandboxesRequest$inboundSchema: z.ZodType<
@@ -127,8 +120,8 @@ export function listSandboxesRequestFromJSON(
 }
 
 /** @internal */
-export const ListSandboxesResponseBodyPagination$inboundSchema: z.ZodType<
-  ListSandboxesResponseBodyPagination,
+export const ListSandboxesPagination$inboundSchema: z.ZodType<
+  ListSandboxesPagination,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -138,7 +131,7 @@ export const ListSandboxesResponseBodyPagination$inboundSchema: z.ZodType<
   prev: types.nullable(types.number()),
 });
 /** @internal */
-export type ListSandboxesResponseBodyPagination$Outbound = {
+export type ListSandboxesPagination$Outbound = {
   total: number;
   count: number;
   next: number | null;
@@ -146,10 +139,10 @@ export type ListSandboxesResponseBodyPagination$Outbound = {
 };
 
 /** @internal */
-export const ListSandboxesResponseBodyPagination$outboundSchema: z.ZodType<
-  ListSandboxesResponseBodyPagination$Outbound,
+export const ListSandboxesPagination$outboundSchema: z.ZodType<
+  ListSandboxesPagination$Outbound,
   z.ZodTypeDef,
-  ListSandboxesResponseBodyPagination
+  ListSandboxesPagination
 > = z.object({
   total: z.number(),
   count: z.number(),
@@ -157,98 +150,20 @@ export const ListSandboxesResponseBodyPagination$outboundSchema: z.ZodType<
   prev: z.nullable(z.number()),
 });
 
-export function listSandboxesResponseBodyPaginationToJSON(
-  listSandboxesResponseBodyPagination: ListSandboxesResponseBodyPagination,
+export function listSandboxesPaginationToJSON(
+  listSandboxesPagination: ListSandboxesPagination,
 ): string {
   return JSON.stringify(
-    ListSandboxesResponseBodyPagination$outboundSchema.parse(
-      listSandboxesResponseBodyPagination,
-    ),
+    ListSandboxesPagination$outboundSchema.parse(listSandboxesPagination),
   );
 }
-export function listSandboxesResponseBodyPaginationFromJSON(
+export function listSandboxesPaginationFromJSON(
   jsonString: string,
-): SafeParseResult<ListSandboxesResponseBodyPagination, SDKValidationError> {
+): SafeParseResult<ListSandboxesPagination, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) =>
-      ListSandboxesResponseBodyPagination$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ListSandboxesResponseBodyPagination' from JSON`,
-  );
-}
-
-/** @internal */
-export const ListSandboxesResponseBody2$inboundSchema: z.ZodType<
-  ListSandboxesResponseBody2,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  sandboxes: z.array(Sandbox$inboundSchema),
-  pagination: z.lazy(() => ListSandboxesResponseBodyPagination$inboundSchema),
-});
-/** @internal */
-export type ListSandboxesResponseBody2$Outbound = {
-  sandboxes: Array<Sandbox$Outbound>;
-  pagination: ListSandboxesResponseBodyPagination$Outbound;
-};
-
-/** @internal */
-export const ListSandboxesResponseBody2$outboundSchema: z.ZodType<
-  ListSandboxesResponseBody2$Outbound,
-  z.ZodTypeDef,
-  ListSandboxesResponseBody2
-> = z.object({
-  sandboxes: z.array(Sandbox$outboundSchema),
-  pagination: z.lazy(() => ListSandboxesResponseBodyPagination$outboundSchema),
-});
-
-export function listSandboxesResponseBody2ToJSON(
-  listSandboxesResponseBody2: ListSandboxesResponseBody2,
-): string {
-  return JSON.stringify(
-    ListSandboxesResponseBody2$outboundSchema.parse(listSandboxesResponseBody2),
-  );
-}
-export function listSandboxesResponseBody2FromJSON(
-  jsonString: string,
-): SafeParseResult<ListSandboxesResponseBody2, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ListSandboxesResponseBody2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ListSandboxesResponseBody2' from JSON`,
-  );
-}
-
-/** @internal */
-export const ListSandboxesResponseBody1$inboundSchema: z.ZodType<
-  ListSandboxesResponseBody1,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-/** @internal */
-export type ListSandboxesResponseBody1$Outbound = {};
-
-/** @internal */
-export const ListSandboxesResponseBody1$outboundSchema: z.ZodType<
-  ListSandboxesResponseBody1$Outbound,
-  z.ZodTypeDef,
-  ListSandboxesResponseBody1
-> = z.object({});
-
-export function listSandboxesResponseBody1ToJSON(
-  listSandboxesResponseBody1: ListSandboxesResponseBody1,
-): string {
-  return JSON.stringify(
-    ListSandboxesResponseBody1$outboundSchema.parse(listSandboxesResponseBody1),
-  );
-}
-export function listSandboxesResponseBody1FromJSON(
-  jsonString: string,
-): SafeParseResult<ListSandboxesResponseBody1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ListSandboxesResponseBody1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ListSandboxesResponseBody1' from JSON`,
+    (x) => ListSandboxesPagination$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListSandboxesPagination' from JSON`,
   );
 }
 
@@ -257,24 +172,25 @@ export const ListSandboxesResponseBody$inboundSchema: z.ZodType<
   ListSandboxesResponseBody,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.lazy(() => ListSandboxesResponseBody2$inboundSchema),
-  z.lazy(() => ListSandboxesResponseBody1$inboundSchema),
-]);
+> = z.object({
+  sandboxes: z.array(Sandbox$inboundSchema),
+  pagination: z.lazy(() => ListSandboxesPagination$inboundSchema),
+});
 /** @internal */
-export type ListSandboxesResponseBody$Outbound =
-  | ListSandboxesResponseBody2$Outbound
-  | ListSandboxesResponseBody1$Outbound;
+export type ListSandboxesResponseBody$Outbound = {
+  sandboxes: Array<Sandbox$Outbound>;
+  pagination: ListSandboxesPagination$Outbound;
+};
 
 /** @internal */
 export const ListSandboxesResponseBody$outboundSchema: z.ZodType<
   ListSandboxesResponseBody$Outbound,
   z.ZodTypeDef,
   ListSandboxesResponseBody
-> = smartUnion([
-  z.lazy(() => ListSandboxesResponseBody2$outboundSchema),
-  z.lazy(() => ListSandboxesResponseBody1$outboundSchema),
-]);
+> = z.object({
+  sandboxes: z.array(Sandbox$outboundSchema),
+  pagination: z.lazy(() => ListSandboxesPagination$outboundSchema),
+});
 
 export function listSandboxesResponseBodyToJSON(
   listSandboxesResponseBody: ListSandboxesResponseBody,

@@ -15,8 +15,9 @@ let value: ResponseBodyConditions = {
 
 ## Fields
 
-| Field                                                  | Type                                                   | Required                                               | Description                                            |
-| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
-| `rhs`                                                  | *models.ResponseBodyRhs*                               | :heavy_minus_sign:                                     | N/A                                                    |
-| `lhs`                                                  | *models.ResponseBodyLhs*                               | :heavy_check_mark:                                     | N/A                                                    |
-| `cmp`                                                  | [models.ResponseBodyCmp](../models/responsebodycmp.md) | :heavy_check_mark:                                     | N/A                                                    |
+| Field                                                                | Type                                                                 | Required                                                             | Description                                                          |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `rhs`                                                                | *models.ResponseBodyRhs*                                             | :heavy_minus_sign:                                                   | N/A                                                                  |
+| `cmpOptions`                                                         | [models.ResponseBodyCmpOptions](../models/responsebodycmpoptions.md) | :heavy_minus_sign:                                                   | N/A                                                                  |
+| `lhs`                                                                | *models.ResponseBodyLhs*                                             | :heavy_check_mark:                                                   | N/A                                                                  |
+| `cmp`                                                                | [models.ResponseBodyCmp](../models/responsebodycmp.md)               | :heavy_check_mark:                                                   | N/A                                                                  |

@@ -273,6 +273,11 @@ const (
 	Permission2ReadWriteEdgeConfig                  Permission2 = "read-write:edge-config"
 	Permission2ReadMonitoring                       Permission2 = "read:monitoring"
 	Permission2ReadAccessGroup                      Permission2 = "read:access-group"
+	Permission2ReadIntegrationConfiguration         Permission2 = "read:integration-configuration"
+	Permission2ReadWriteIntegrationConfiguration    Permission2 = "read-write:integration-configuration"
+	Permission2ReadWriteIntegrationResource         Permission2 = "read-write:integration-resource"
+	Permission2ReadWriteBlob                        Permission2 = "read-write:blob"
+	Permission2ReadEvent                            Permission2 = "read:event"
 	Permission2ReadProject                          Permission2 = "read:project"
 	Permission2ReadWriteProject                     Permission2 = "read-write:project"
 	Permission2ReadDeployment                       Permission2 = "read:deployment"
@@ -283,6 +288,8 @@ const (
 	Permission2ReadWriteProjectEnvVarsNonProduction Permission2 = "read-write:project-env-vars-non-production"
 	Permission2ReadProjectEnvVarsProduction         Permission2 = "read:project-env-vars-production"
 	Permission2ReadWriteProjectEnvVarsProduction    Permission2 = "read-write:project-env-vars-production"
+	Permission2ReadWriteProjectFlagsNonProduction   Permission2 = "read-write:project-flags-non-production"
+	Permission2ReadWriteProjectFlagsProduction      Permission2 = "read-write:project-flags-production"
 )
 
 func (e Permission2) ToPointer() *Permission2 {
@@ -318,6 +325,16 @@ func (e *Permission2) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "read:access-group":
 		fallthrough
+	case "read:integration-configuration":
+		fallthrough
+	case "read-write:integration-configuration":
+		fallthrough
+	case "read-write:integration-resource":
+		fallthrough
+	case "read-write:blob":
+		fallthrough
+	case "read:event":
+		fallthrough
 	case "read:project":
 		fallthrough
 	case "read-write:project":
@@ -337,6 +354,10 @@ func (e *Permission2) UnmarshalJSON(data []byte) error {
 	case "read:project-env-vars-production":
 		fallthrough
 	case "read-write:project-env-vars-production":
+		fallthrough
+	case "read-write:project-flags-non-production":
+		fallthrough
+	case "read-write:project-flags-production":
 		*e = Permission2(v)
 		return nil
 	default:
@@ -531,6 +552,11 @@ const (
 	BeforePermissionReadWriteEdgeConfig                  BeforePermission = "read-write:edge-config"
 	BeforePermissionReadMonitoring                       BeforePermission = "read:monitoring"
 	BeforePermissionReadAccessGroup                      BeforePermission = "read:access-group"
+	BeforePermissionReadIntegrationConfiguration         BeforePermission = "read:integration-configuration"
+	BeforePermissionReadWriteIntegrationConfiguration    BeforePermission = "read-write:integration-configuration"
+	BeforePermissionReadWriteIntegrationResource         BeforePermission = "read-write:integration-resource"
+	BeforePermissionReadWriteBlob                        BeforePermission = "read-write:blob"
+	BeforePermissionReadEvent                            BeforePermission = "read:event"
 	BeforePermissionReadProject                          BeforePermission = "read:project"
 	BeforePermissionReadWriteProject                     BeforePermission = "read-write:project"
 	BeforePermissionReadDeployment                       BeforePermission = "read:deployment"
@@ -541,6 +567,8 @@ const (
 	BeforePermissionReadWriteProjectEnvVarsNonProduction BeforePermission = "read-write:project-env-vars-non-production"
 	BeforePermissionReadProjectEnvVarsProduction         BeforePermission = "read:project-env-vars-production"
 	BeforePermissionReadWriteProjectEnvVarsProduction    BeforePermission = "read-write:project-env-vars-production"
+	BeforePermissionReadWriteProjectFlagsNonProduction   BeforePermission = "read-write:project-flags-non-production"
+	BeforePermissionReadWriteProjectFlagsProduction      BeforePermission = "read-write:project-flags-production"
 )
 
 func (e BeforePermission) ToPointer() *BeforePermission {
@@ -576,6 +604,16 @@ func (e *BeforePermission) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "read:access-group":
 		fallthrough
+	case "read:integration-configuration":
+		fallthrough
+	case "read-write:integration-configuration":
+		fallthrough
+	case "read-write:integration-resource":
+		fallthrough
+	case "read-write:blob":
+		fallthrough
+	case "read:event":
+		fallthrough
 	case "read:project":
 		fallthrough
 	case "read-write:project":
@@ -595,6 +633,10 @@ func (e *BeforePermission) UnmarshalJSON(data []byte) error {
 	case "read:project-env-vars-production":
 		fallthrough
 	case "read-write:project-env-vars-production":
+		fallthrough
+	case "read-write:project-flags-non-production":
+		fallthrough
+	case "read-write:project-flags-production":
 		*e = BeforePermission(v)
 		return nil
 	default:
@@ -772,6 +814,11 @@ const (
 	AfterPermissionReadWriteEdgeConfig                  AfterPermission = "read-write:edge-config"
 	AfterPermissionReadMonitoring                       AfterPermission = "read:monitoring"
 	AfterPermissionReadAccessGroup                      AfterPermission = "read:access-group"
+	AfterPermissionReadIntegrationConfiguration         AfterPermission = "read:integration-configuration"
+	AfterPermissionReadWriteIntegrationConfiguration    AfterPermission = "read-write:integration-configuration"
+	AfterPermissionReadWriteIntegrationResource         AfterPermission = "read-write:integration-resource"
+	AfterPermissionReadWriteBlob                        AfterPermission = "read-write:blob"
+	AfterPermissionReadEvent                            AfterPermission = "read:event"
 	AfterPermissionReadProject                          AfterPermission = "read:project"
 	AfterPermissionReadWriteProject                     AfterPermission = "read-write:project"
 	AfterPermissionReadDeployment                       AfterPermission = "read:deployment"
@@ -782,6 +829,8 @@ const (
 	AfterPermissionReadWriteProjectEnvVarsNonProduction AfterPermission = "read-write:project-env-vars-non-production"
 	AfterPermissionReadProjectEnvVarsProduction         AfterPermission = "read:project-env-vars-production"
 	AfterPermissionReadWriteProjectEnvVarsProduction    AfterPermission = "read-write:project-env-vars-production"
+	AfterPermissionReadWriteProjectFlagsNonProduction   AfterPermission = "read-write:project-flags-non-production"
+	AfterPermissionReadWriteProjectFlagsProduction      AfterPermission = "read-write:project-flags-production"
 )
 
 func (e AfterPermission) ToPointer() *AfterPermission {
@@ -817,6 +866,16 @@ func (e *AfterPermission) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "read:access-group":
 		fallthrough
+	case "read:integration-configuration":
+		fallthrough
+	case "read-write:integration-configuration":
+		fallthrough
+	case "read-write:integration-resource":
+		fallthrough
+	case "read-write:blob":
+		fallthrough
+	case "read:event":
+		fallthrough
 	case "read:project":
 		fallthrough
 	case "read-write:project":
@@ -836,6 +895,10 @@ func (e *AfterPermission) UnmarshalJSON(data []byte) error {
 	case "read:project-env-vars-production":
 		fallthrough
 	case "read-write:project-env-vars-production":
+		fallthrough
+	case "read-write:project-flags-non-production":
+		fallthrough
+	case "read-write:project-flags-production":
 		*e = AfterPermission(v)
 		return nil
 	default:
@@ -977,6 +1040,11 @@ const (
 	NextPermissionReadWriteEdgeConfig                  NextPermission = "read-write:edge-config"
 	NextPermissionReadMonitoring                       NextPermission = "read:monitoring"
 	NextPermissionReadAccessGroup                      NextPermission = "read:access-group"
+	NextPermissionReadIntegrationConfiguration         NextPermission = "read:integration-configuration"
+	NextPermissionReadWriteIntegrationConfiguration    NextPermission = "read-write:integration-configuration"
+	NextPermissionReadWriteIntegrationResource         NextPermission = "read-write:integration-resource"
+	NextPermissionReadWriteBlob                        NextPermission = "read-write:blob"
+	NextPermissionReadEvent                            NextPermission = "read:event"
 	NextPermissionReadProject                          NextPermission = "read:project"
 	NextPermissionReadWriteProject                     NextPermission = "read-write:project"
 	NextPermissionReadDeployment                       NextPermission = "read:deployment"
@@ -987,6 +1055,8 @@ const (
 	NextPermissionReadWriteProjectEnvVarsNonProduction NextPermission = "read-write:project-env-vars-non-production"
 	NextPermissionReadProjectEnvVarsProduction         NextPermission = "read:project-env-vars-production"
 	NextPermissionReadWriteProjectEnvVarsProduction    NextPermission = "read-write:project-env-vars-production"
+	NextPermissionReadWriteProjectFlagsNonProduction   NextPermission = "read-write:project-flags-non-production"
+	NextPermissionReadWriteProjectFlagsProduction      NextPermission = "read-write:project-flags-production"
 )
 
 func (e NextPermission) ToPointer() *NextPermission {
@@ -1026,6 +1096,16 @@ func (e *NextPermission) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "read:access-group":
 		fallthrough
+	case "read:integration-configuration":
+		fallthrough
+	case "read-write:integration-configuration":
+		fallthrough
+	case "read-write:integration-resource":
+		fallthrough
+	case "read-write:blob":
+		fallthrough
+	case "read:event":
+		fallthrough
 	case "read:project":
 		fallthrough
 	case "read-write:project":
@@ -1045,6 +1125,10 @@ func (e *NextPermission) UnmarshalJSON(data []byte) error {
 	case "read:project-env-vars-production":
 		fallthrough
 	case "read-write:project-env-vars-production":
+		fallthrough
+	case "read-write:project-flags-non-production":
+		fallthrough
+	case "read-write:project-flags-production":
 		*e = NextPermission(v)
 		return nil
 	default:
@@ -1179,6 +1263,11 @@ const (
 	Permission1ReadWriteEdgeConfig                  Permission1 = "read-write:edge-config"
 	Permission1ReadMonitoring                       Permission1 = "read:monitoring"
 	Permission1ReadAccessGroup                      Permission1 = "read:access-group"
+	Permission1ReadIntegrationConfiguration         Permission1 = "read:integration-configuration"
+	Permission1ReadWriteIntegrationConfiguration    Permission1 = "read-write:integration-configuration"
+	Permission1ReadWriteIntegrationResource         Permission1 = "read-write:integration-resource"
+	Permission1ReadWriteBlob                        Permission1 = "read-write:blob"
+	Permission1ReadEvent                            Permission1 = "read:event"
 	Permission1ReadProject                          Permission1 = "read:project"
 	Permission1ReadWriteProject                     Permission1 = "read-write:project"
 	Permission1ReadDeployment                       Permission1 = "read:deployment"
@@ -1189,6 +1278,8 @@ const (
 	Permission1ReadWriteProjectEnvVarsNonProduction Permission1 = "read-write:project-env-vars-non-production"
 	Permission1ReadProjectEnvVarsProduction         Permission1 = "read:project-env-vars-production"
 	Permission1ReadWriteProjectEnvVarsProduction    Permission1 = "read-write:project-env-vars-production"
+	Permission1ReadWriteProjectFlagsNonProduction   Permission1 = "read-write:project-flags-non-production"
+	Permission1ReadWriteProjectFlagsProduction      Permission1 = "read-write:project-flags-production"
 )
 
 func (e Permission1) ToPointer() *Permission1 {
@@ -1228,6 +1319,16 @@ func (e *Permission1) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "read:access-group":
 		fallthrough
+	case "read:integration-configuration":
+		fallthrough
+	case "read-write:integration-configuration":
+		fallthrough
+	case "read-write:integration-resource":
+		fallthrough
+	case "read-write:blob":
+		fallthrough
+	case "read:event":
+		fallthrough
 	case "read:project":
 		fallthrough
 	case "read-write:project":
@@ -1247,6 +1348,10 @@ func (e *Permission1) UnmarshalJSON(data []byte) error {
 	case "read:project-env-vars-production":
 		fallthrough
 	case "read-write:project-env-vars-production":
+		fallthrough
+	case "read-write:project-flags-non-production":
+		fallthrough
+	case "read-write:project-flags-production":
 		*e = Permission1(v)
 		return nil
 	default:

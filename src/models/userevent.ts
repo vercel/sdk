@@ -1077,6 +1077,11 @@ export const UserEventPayload25Permissions = {
   ReadWriteEdgeConfig: "read-write:edge-config",
   ReadMonitoring: "read:monitoring",
   ReadAccessGroup: "read:access-group",
+  ReadIntegrationConfiguration: "read:integration-configuration",
+  ReadWriteIntegrationConfiguration: "read-write:integration-configuration",
+  ReadWriteIntegrationResource: "read-write:integration-resource",
+  ReadWriteBlob: "read-write:blob",
+  ReadEvent: "read:event",
   ReadProject: "read:project",
   ReadWriteProject: "read-write:project",
   ReadDeployment: "read:deployment",
@@ -1088,6 +1093,8 @@ export const UserEventPayload25Permissions = {
     "read-write:project-env-vars-non-production",
   ReadProjectEnvVarsProduction: "read:project-env-vars-production",
   ReadWriteProjectEnvVarsProduction: "read-write:project-env-vars-production",
+  ReadWriteProjectFlagsNonProduction: "read-write:project-flags-non-production",
+  ReadWriteProjectFlagsProduction: "read-write:project-flags-production",
 } as const;
 export type UserEventPayload25Permissions = ClosedEnum<
   typeof UserEventPayload25Permissions
@@ -1139,6 +1146,11 @@ export const UserEventPayloadPermissions = {
   ReadWriteEdgeConfig: "read-write:edge-config",
   ReadMonitoring: "read:monitoring",
   ReadAccessGroup: "read:access-group",
+  ReadIntegrationConfiguration: "read:integration-configuration",
+  ReadWriteIntegrationConfiguration: "read-write:integration-configuration",
+  ReadWriteIntegrationResource: "read-write:integration-resource",
+  ReadWriteBlob: "read-write:blob",
+  ReadEvent: "read:event",
   ReadProject: "read:project",
   ReadWriteProject: "read-write:project",
   ReadDeployment: "read:deployment",
@@ -1150,6 +1162,8 @@ export const UserEventPayloadPermissions = {
     "read-write:project-env-vars-non-production",
   ReadProjectEnvVarsProduction: "read:project-env-vars-production",
   ReadWriteProjectEnvVarsProduction: "read-write:project-env-vars-production",
+  ReadWriteProjectFlagsNonProduction: "read-write:project-flags-non-production",
+  ReadWriteProjectFlagsProduction: "read-write:project-flags-production",
 } as const;
 export type UserEventPayloadPermissions = ClosedEnum<
   typeof UserEventPayloadPermissions
@@ -1194,6 +1208,11 @@ export const NextPermissions = {
   ReadWriteEdgeConfig: "read-write:edge-config",
   ReadMonitoring: "read:monitoring",
   ReadAccessGroup: "read:access-group",
+  ReadIntegrationConfiguration: "read:integration-configuration",
+  ReadWriteIntegrationConfiguration: "read-write:integration-configuration",
+  ReadWriteIntegrationResource: "read-write:integration-resource",
+  ReadWriteBlob: "read-write:blob",
+  ReadEvent: "read:event",
   ReadProject: "read:project",
   ReadWriteProject: "read-write:project",
   ReadDeployment: "read:deployment",
@@ -1205,6 +1224,8 @@ export const NextPermissions = {
     "read-write:project-env-vars-non-production",
   ReadProjectEnvVarsProduction: "read:project-env-vars-production",
   ReadWriteProjectEnvVarsProduction: "read-write:project-env-vars-production",
+  ReadWriteProjectFlagsNonProduction: "read-write:project-flags-non-production",
+  ReadWriteProjectFlagsProduction: "read-write:project-flags-production",
 } as const;
 export type NextPermissions = ClosedEnum<typeof NextPermissions>;
 
@@ -1249,6 +1270,11 @@ export const Permissions = {
   ReadWriteEdgeConfig: "read-write:edge-config",
   ReadMonitoring: "read:monitoring",
   ReadAccessGroup: "read:access-group",
+  ReadIntegrationConfiguration: "read:integration-configuration",
+  ReadWriteIntegrationConfiguration: "read-write:integration-configuration",
+  ReadWriteIntegrationResource: "read-write:integration-resource",
+  ReadWriteBlob: "read-write:blob",
+  ReadEvent: "read:event",
   ReadProject: "read:project",
   ReadWriteProject: "read-write:project",
   ReadDeployment: "read:deployment",
@@ -1260,6 +1286,8 @@ export const Permissions = {
     "read-write:project-env-vars-non-production",
   ReadProjectEnvVarsProduction: "read:project-env-vars-production",
   ReadWriteProjectEnvVarsProduction: "read-write:project-env-vars-production",
+  ReadWriteProjectFlagsNonProduction: "read-write:project-flags-non-production",
+  ReadWriteProjectFlagsProduction: "read-write:project-flags-production",
 } as const;
 export type Permissions = ClosedEnum<typeof Permissions>;
 

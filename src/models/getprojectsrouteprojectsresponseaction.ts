@@ -18,9 +18,6 @@ import {
   GetProjectsHasProjectsResponse200ApplicationJSONResponseBody32$inboundSchema,
   GetProjectsHasProjectsResponse200ApplicationJSONResponseBody32$Outbound,
   GetProjectsHasProjectsResponse200ApplicationJSONResponseBody32$outboundSchema,
-  GetProjectsHasProjectsResponse200ApplicationJSONResponseBodyKey,
-  GetProjectsHasProjectsResponse200ApplicationJSONResponseBodyKey$inboundSchema,
-  GetProjectsHasProjectsResponse200ApplicationJSONResponseBodyKey$outboundSchema,
   GetProjectsResponseBodyBlock,
   GetProjectsResponseBodyBlock$inboundSchema,
   GetProjectsResponseBodyBlock$Outbound,
@@ -178,7 +175,7 @@ import {
   ResponseBodyUsageStatus$inboundSchema,
   ResponseBodyUsageStatus$Outbound,
   ResponseBodyUsageStatus$outboundSchema,
-} from "./getprojectshasprojectsresponse200applicationjsonresponsebodykey.js";
+} from "./getprojectshasprojectsresponse200applicationjsonresponsebody32.js";
 import {
   Pagination,
   Pagination$inboundSchema,
@@ -186,6 +183,14 @@ import {
   Pagination$outboundSchema,
 } from "./pagination.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export const GetProjectsHasProjectsResponse200ApplicationJSONResponseBodyKey = {
+  XVercelIpCountry: "x-vercel-ip-country",
+} as const;
+export type GetProjectsHasProjectsResponse200ApplicationJSONResponseBodyKey =
+  ClosedEnum<
+    typeof GetProjectsHasProjectsResponse200ApplicationJSONResponseBodyKey
+  >;
 
 export type GetProjectsHasProjectsResponse200ApplicationJSONResponseBody3Value =
   {
@@ -1744,9 +1749,19 @@ export type GetProjectsRouteProjectsResponseAction = ClosedEnum<
   typeof GetProjectsRouteProjectsResponseAction
 >;
 
-export type GetProjectsRouteProjectsResponseMitigate = {
-  action: GetProjectsRouteProjectsResponseAction;
-};
+/** @internal */
+export const GetProjectsHasProjectsResponse200ApplicationJSONResponseBodyKey$inboundSchema:
+  z.ZodNativeEnum<
+    typeof GetProjectsHasProjectsResponse200ApplicationJSONResponseBodyKey
+  > = z.nativeEnum(
+    GetProjectsHasProjectsResponse200ApplicationJSONResponseBodyKey,
+  );
+/** @internal */
+export const GetProjectsHasProjectsResponse200ApplicationJSONResponseBodyKey$outboundSchema:
+  z.ZodNativeEnum<
+    typeof GetProjectsHasProjectsResponse200ApplicationJSONResponseBodyKey
+  > =
+    GetProjectsHasProjectsResponse200ApplicationJSONResponseBodyKey$inboundSchema;
 
 /** @internal */
 export const GetProjectsHasProjectsResponse200ApplicationJSONResponseBody3Value$inboundSchema:
@@ -9281,51 +9296,3 @@ export const GetProjectsRouteProjectsResponseAction$inboundSchema:
 export const GetProjectsRouteProjectsResponseAction$outboundSchema:
   z.ZodNativeEnum<typeof GetProjectsRouteProjectsResponseAction> =
     GetProjectsRouteProjectsResponseAction$inboundSchema;
-
-/** @internal */
-export const GetProjectsRouteProjectsResponseMitigate$inboundSchema: z.ZodType<
-  GetProjectsRouteProjectsResponseMitigate,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  action: GetProjectsRouteProjectsResponseAction$inboundSchema,
-});
-/** @internal */
-export type GetProjectsRouteProjectsResponseMitigate$Outbound = {
-  action: string;
-};
-
-/** @internal */
-export const GetProjectsRouteProjectsResponseMitigate$outboundSchema: z.ZodType<
-  GetProjectsRouteProjectsResponseMitigate$Outbound,
-  z.ZodTypeDef,
-  GetProjectsRouteProjectsResponseMitigate
-> = z.object({
-  action: GetProjectsRouteProjectsResponseAction$outboundSchema,
-});
-
-export function getProjectsRouteProjectsResponseMitigateToJSON(
-  getProjectsRouteProjectsResponseMitigate:
-    GetProjectsRouteProjectsResponseMitigate,
-): string {
-  return JSON.stringify(
-    GetProjectsRouteProjectsResponseMitigate$outboundSchema.parse(
-      getProjectsRouteProjectsResponseMitigate,
-    ),
-  );
-}
-export function getProjectsRouteProjectsResponseMitigateFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  GetProjectsRouteProjectsResponseMitigate,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetProjectsRouteProjectsResponseMitigate$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'GetProjectsRouteProjectsResponseMitigate' from JSON`,
-  );
-}

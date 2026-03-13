@@ -131,6 +131,10 @@ export type Rhs3 = {
 
 export type Rhs = Rhs4 | Rhs3 | string | number | boolean;
 
+export type CmpOptions = {
+  ignoreCase?: boolean | undefined;
+};
+
 export type Lhs2 = {
   type: "entity";
   kind: string;
@@ -155,6 +159,8 @@ export const Cmp = {
   NotStartsWith: "!startsWith",
   EndsWith: "endsWith",
   NotEndsWith: "!endsWith",
+  Contains: "contains",
+  NotContains: "!contains",
   Ex: "ex",
   NotEx: "!ex",
   Gt: "gt",
@@ -170,6 +176,7 @@ export type Cmp = ClosedEnum<typeof Cmp>;
 
 export type Conditions = {
   rhs?: Rhs4 | Rhs3 | string | number | boolean | undefined;
+  cmpOptions?: CmpOptions | undefined;
   lhs: Lhs1 | Lhs2;
   cmp: Cmp;
 };
@@ -993,6 +1000,41 @@ export function rhsFromJSON(
 }
 
 /** @internal */
+export const CmpOptions$inboundSchema: z.ZodType<
+  CmpOptions,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  ignoreCase: types.optional(types.boolean()),
+});
+/** @internal */
+export type CmpOptions$Outbound = {
+  ignoreCase?: boolean | undefined;
+};
+
+/** @internal */
+export const CmpOptions$outboundSchema: z.ZodType<
+  CmpOptions$Outbound,
+  z.ZodTypeDef,
+  CmpOptions
+> = z.object({
+  ignoreCase: z.boolean().optional(),
+});
+
+export function cmpOptionsToJSON(cmpOptions: CmpOptions): string {
+  return JSON.stringify(CmpOptions$outboundSchema.parse(cmpOptions));
+}
+export function cmpOptionsFromJSON(
+  jsonString: string,
+): SafeParseResult<CmpOptions, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CmpOptions$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CmpOptions' from JSON`,
+  );
+}
+
+/** @internal */
 export const Lhs2$inboundSchema: z.ZodType<Lhs2, z.ZodTypeDef, unknown> = z
   .object({
     type: types.literal("entity"),
@@ -1104,6 +1146,7 @@ export const Conditions$inboundSchema: z.ZodType<
       types.boolean(),
     ]),
   ),
+  cmpOptions: types.optional(z.lazy(() => CmpOptions$inboundSchema)),
   lhs: z.union([
     z.lazy(() => Lhs1$inboundSchema),
     z.lazy(() => Lhs2$inboundSchema),
@@ -1113,6 +1156,7 @@ export const Conditions$inboundSchema: z.ZodType<
 /** @internal */
 export type Conditions$Outbound = {
   rhs?: Rhs4$Outbound | Rhs3$Outbound | string | number | boolean | undefined;
+  cmpOptions?: CmpOptions$Outbound | undefined;
   lhs: Lhs1$Outbound | Lhs2$Outbound;
   cmp: string;
 };
@@ -1130,6 +1174,7 @@ export const Conditions$outboundSchema: z.ZodType<
     z.number(),
     z.boolean(),
   ]).optional(),
+  cmpOptions: z.lazy(() => CmpOptions$outboundSchema).optional(),
   lhs: z.union([
     z.lazy(() => Lhs1$outboundSchema),
     z.lazy(() => Lhs2$outboundSchema),

@@ -78,6 +78,10 @@ export type SegmentRhs3 = {
 
 export type SegmentRhs = SegmentRhs4 | SegmentRhs3 | string | number | boolean;
 
+export type SegmentCmpOptions = {
+  ignoreCase?: boolean | undefined;
+};
+
 export type SegmentLhs2 = {
   type: "entity";
   kind: string;
@@ -102,6 +106,8 @@ export const SegmentCmp = {
   NotStartsWith: "!startsWith",
   EndsWith: "endsWith",
   NotEndsWith: "!endsWith",
+  Contains: "contains",
+  NotContains: "!contains",
   Ex: "ex",
   NotEx: "!ex",
   Gt: "gt",
@@ -117,6 +123,7 @@ export type SegmentCmp = ClosedEnum<typeof SegmentCmp>;
 
 export type SegmentConditions = {
   rhs?: SegmentRhs4 | SegmentRhs3 | string | number | boolean | undefined;
+  cmpOptions?: SegmentCmpOptions | undefined;
   lhs: SegmentLhs1 | SegmentLhs2;
   cmp: SegmentCmp;
 };
@@ -624,6 +631,45 @@ export function segmentRhsFromJSON(
 }
 
 /** @internal */
+export const SegmentCmpOptions$inboundSchema: z.ZodType<
+  SegmentCmpOptions,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  ignoreCase: types.optional(types.boolean()),
+});
+/** @internal */
+export type SegmentCmpOptions$Outbound = {
+  ignoreCase?: boolean | undefined;
+};
+
+/** @internal */
+export const SegmentCmpOptions$outboundSchema: z.ZodType<
+  SegmentCmpOptions$Outbound,
+  z.ZodTypeDef,
+  SegmentCmpOptions
+> = z.object({
+  ignoreCase: z.boolean().optional(),
+});
+
+export function segmentCmpOptionsToJSON(
+  segmentCmpOptions: SegmentCmpOptions,
+): string {
+  return JSON.stringify(
+    SegmentCmpOptions$outboundSchema.parse(segmentCmpOptions),
+  );
+}
+export function segmentCmpOptionsFromJSON(
+  jsonString: string,
+): SafeParseResult<SegmentCmpOptions, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SegmentCmpOptions$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SegmentCmpOptions' from JSON`,
+  );
+}
+
+/** @internal */
 export const SegmentLhs2$inboundSchema: z.ZodType<
   SegmentLhs2,
   z.ZodTypeDef,
@@ -756,6 +802,7 @@ export const SegmentConditions$inboundSchema: z.ZodType<
       types.boolean(),
     ]),
   ),
+  cmpOptions: types.optional(z.lazy(() => SegmentCmpOptions$inboundSchema)),
   lhs: z.union([
     z.lazy(() => SegmentLhs1$inboundSchema),
     z.lazy(() => SegmentLhs2$inboundSchema),
@@ -771,6 +818,7 @@ export type SegmentConditions$Outbound = {
     | number
     | boolean
     | undefined;
+  cmpOptions?: SegmentCmpOptions$Outbound | undefined;
   lhs: SegmentLhs1$Outbound | SegmentLhs2$Outbound;
   cmp: string;
 };
@@ -788,6 +836,7 @@ export const SegmentConditions$outboundSchema: z.ZodType<
     z.number(),
     z.boolean(),
   ]).optional(),
+  cmpOptions: z.lazy(() => SegmentCmpOptions$outboundSchema).optional(),
   lhs: z.union([
     z.lazy(() => SegmentLhs1$outboundSchema),
     z.lazy(() => SegmentLhs2$outboundSchema),

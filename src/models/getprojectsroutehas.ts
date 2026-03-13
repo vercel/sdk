@@ -95,19 +95,18 @@ import {
   GetProjectsResponseBodyWebAnalytics$inboundSchema,
   GetProjectsResponseBodyWebAnalytics$Outbound,
   GetProjectsResponseBodyWebAnalytics$outboundSchema,
+  GetProjectsRouteProjectsResponseAction,
+  GetProjectsRouteProjectsResponseAction$inboundSchema,
+  GetProjectsRouteProjectsResponseAction$outboundSchema,
   GetProjectsRouteProjectsResponseHas,
   GetProjectsRouteProjectsResponseHas$inboundSchema,
   GetProjectsRouteProjectsResponseHas$Outbound,
   GetProjectsRouteProjectsResponseHas$outboundSchema,
-  GetProjectsRouteProjectsResponseMitigate,
-  GetProjectsRouteProjectsResponseMitigate$inboundSchema,
-  GetProjectsRouteProjectsResponseMitigate$Outbound,
-  GetProjectsRouteProjectsResponseMitigate$outboundSchema,
   ResponseBodyAlias,
   ResponseBodyAlias$inboundSchema,
   ResponseBodyAlias$Outbound,
   ResponseBodyAlias$outboundSchema,
-} from "./getprojectsrouteprojectsresponsemitigate.js";
+} from "./getprojectsrouteprojectsresponseaction.js";
 import {
   Pagination,
   Pagination$inboundSchema,
@@ -115,6 +114,10 @@ import {
   Pagination$outboundSchema,
 } from "./pagination.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export type GetProjectsRouteProjectsResponseMitigate = {
+  action: GetProjectsRouteProjectsResponseAction;
+};
 
 export type GetProjectsRouteProjectsResponse2 = {
   has: Array<GetProjectsRouteProjectsResponseHas>;
@@ -1574,10 +1577,53 @@ export type GetProjectsRouteHas =
   | GetProjectsHasProjectsResponse2001
   | GetProjectsHasProjectsResponse2002;
 
-export const GetProjectsRouteAction = {
-  BlockLegalCwc: "block_legal_cwc",
-} as const;
-export type GetProjectsRouteAction = ClosedEnum<typeof GetProjectsRouteAction>;
+/** @internal */
+export const GetProjectsRouteProjectsResponseMitigate$inboundSchema: z.ZodType<
+  GetProjectsRouteProjectsResponseMitigate,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  action: GetProjectsRouteProjectsResponseAction$inboundSchema,
+});
+/** @internal */
+export type GetProjectsRouteProjectsResponseMitigate$Outbound = {
+  action: string;
+};
+
+/** @internal */
+export const GetProjectsRouteProjectsResponseMitigate$outboundSchema: z.ZodType<
+  GetProjectsRouteProjectsResponseMitigate$Outbound,
+  z.ZodTypeDef,
+  GetProjectsRouteProjectsResponseMitigate
+> = z.object({
+  action: GetProjectsRouteProjectsResponseAction$outboundSchema,
+});
+
+export function getProjectsRouteProjectsResponseMitigateToJSON(
+  getProjectsRouteProjectsResponseMitigate:
+    GetProjectsRouteProjectsResponseMitigate,
+): string {
+  return JSON.stringify(
+    GetProjectsRouteProjectsResponseMitigate$outboundSchema.parse(
+      getProjectsRouteProjectsResponseMitigate,
+    ),
+  );
+}
+export function getProjectsRouteProjectsResponseMitigateFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetProjectsRouteProjectsResponseMitigate,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetProjectsRouteProjectsResponseMitigate$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetProjectsRouteProjectsResponseMitigate' from JSON`,
+  );
+}
 
 /** @internal */
 export const GetProjectsRouteProjectsResponse2$inboundSchema: z.ZodType<
@@ -1586,7 +1632,9 @@ export const GetProjectsRouteProjectsResponse2$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   has: z.array(GetProjectsRouteProjectsResponseHas$inboundSchema),
-  mitigate: GetProjectsRouteProjectsResponseMitigate$inboundSchema,
+  mitigate: z.lazy(() =>
+    GetProjectsRouteProjectsResponseMitigate$inboundSchema
+  ),
   src: types.optional(types.string()),
 });
 /** @internal */
@@ -1603,7 +1651,9 @@ export const GetProjectsRouteProjectsResponse2$outboundSchema: z.ZodType<
   GetProjectsRouteProjectsResponse2
 > = z.object({
   has: z.array(GetProjectsRouteProjectsResponseHas$outboundSchema),
-  mitigate: GetProjectsRouteProjectsResponseMitigate$outboundSchema,
+  mitigate: z.lazy(() =>
+    GetProjectsRouteProjectsResponseMitigate$outboundSchema
+  ),
   src: z.string().optional(),
 });
 
@@ -8464,12 +8514,3 @@ export function getProjectsRouteHasFromJSON(
     `Failed to parse 'GetProjectsRouteHas' from JSON`,
   );
 }
-
-/** @internal */
-export const GetProjectsRouteAction$inboundSchema: z.ZodNativeEnum<
-  typeof GetProjectsRouteAction
-> = z.nativeEnum(GetProjectsRouteAction);
-/** @internal */
-export const GetProjectsRouteAction$outboundSchema: z.ZodNativeEnum<
-  typeof GetProjectsRouteAction
-> = GetProjectsRouteAction$inboundSchema;

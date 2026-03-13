@@ -360,6 +360,8 @@ const (
 	CreateFlagCmpRequestNotStartsWith  CreateFlagCmpRequest = "!startsWith"
 	CreateFlagCmpRequestEndsWith       CreateFlagCmpRequest = "endsWith"
 	CreateFlagCmpRequestNotEndsWith    CreateFlagCmpRequest = "!endsWith"
+	CreateFlagCmpRequestContains       CreateFlagCmpRequest = "contains"
+	CreateFlagCmpRequestNotContains    CreateFlagCmpRequest = "!contains"
 	CreateFlagCmpRequestEx             CreateFlagCmpRequest = "ex"
 	CreateFlagCmpRequestNotEx          CreateFlagCmpRequest = "!ex"
 	CreateFlagCmpRequestGt             CreateFlagCmpRequest = "gt"
@@ -402,6 +404,10 @@ func (e *CreateFlagCmpRequest) UnmarshalJSON(data []byte) error {
 	case "endsWith":
 		fallthrough
 	case "!endsWith":
+		fallthrough
+	case "contains":
+		fallthrough
+	case "!contains":
 		fallthrough
 	case "ex":
 		fallthrough
@@ -791,10 +797,22 @@ func (u CreateFlagRHSRequestUnion) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type CreateFlagRHSRequestUnion: all fields are null")
 }
 
+type CreateFlagCmpOptionsRequest struct {
+	IgnoreCase *bool `json:"ignoreCase,omitempty"`
+}
+
+func (o *CreateFlagCmpOptionsRequest) GetIgnoreCase() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IgnoreCase
+}
+
 type CreateFlagConditionRequest struct {
-	LHS CreateFlagLHSRequestUnion  `json:"lhs"`
-	Cmp CreateFlagCmpRequest       `json:"cmp"`
-	RHS *CreateFlagRHSRequestUnion `json:"rhs,omitempty"`
+	LHS        CreateFlagLHSRequestUnion    `json:"lhs"`
+	Cmp        CreateFlagCmpRequest         `json:"cmp"`
+	RHS        *CreateFlagRHSRequestUnion   `json:"rhs,omitempty"`
+	CmpOptions *CreateFlagCmpOptionsRequest `json:"cmpOptions,omitempty"`
 }
 
 func (o *CreateFlagConditionRequest) GetLHS() CreateFlagLHSRequestUnion {
@@ -816,6 +834,13 @@ func (o *CreateFlagConditionRequest) GetRHS() *CreateFlagRHSRequestUnion {
 		return nil
 	}
 	return o.RHS
+}
+
+func (o *CreateFlagConditionRequest) GetCmpOptions() *CreateFlagCmpOptionsRequest {
+	if o == nil {
+		return nil
+	}
+	return o.CmpOptions
 }
 
 type CreateFlagOutcomeBaseRequest struct {
@@ -2515,6 +2540,17 @@ func (u RHSFlagUnion) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type RHSFlagUnion: all fields are null")
 }
 
+type CmpOptionsFlag struct {
+	IgnoreCase *bool `json:"ignoreCase,omitempty"`
+}
+
+func (o *CmpOptionsFlag) GetIgnoreCase() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IgnoreCase
+}
+
 type LHSTypeFlagEntity string
 
 const (
@@ -2720,6 +2756,8 @@ const (
 	CmpFlagNotStartsWith  CmpFlag = "!startsWith"
 	CmpFlagEndsWith       CmpFlag = "endsWith"
 	CmpFlagNotEndsWith    CmpFlag = "!endsWith"
+	CmpFlagContains       CmpFlag = "contains"
+	CmpFlagNotContains    CmpFlag = "!contains"
 	CmpFlagEx             CmpFlag = "ex"
 	CmpFlagNotEx          CmpFlag = "!ex"
 	CmpFlagGt             CmpFlag = "gt"
@@ -2763,6 +2801,10 @@ func (e *CmpFlag) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "!endsWith":
 		fallthrough
+	case "contains":
+		fallthrough
+	case "!contains":
+		fallthrough
 	case "ex":
 		fallthrough
 	case "!ex":
@@ -2790,9 +2832,10 @@ func (e *CmpFlag) UnmarshalJSON(data []byte) error {
 }
 
 type ConditionFlag struct {
-	RHS *RHSFlagUnion `json:"rhs,omitempty"`
-	LHS LHSFlagUnion  `json:"lhs"`
-	Cmp CmpFlag       `json:"cmp"`
+	RHS        *RHSFlagUnion   `json:"rhs,omitempty"`
+	CmpOptions *CmpOptionsFlag `json:"cmpOptions,omitempty"`
+	LHS        LHSFlagUnion    `json:"lhs"`
+	Cmp        CmpFlag         `json:"cmp"`
 }
 
 func (o *ConditionFlag) GetRHS() *RHSFlagUnion {
@@ -2800,6 +2843,13 @@ func (o *ConditionFlag) GetRHS() *RHSFlagUnion {
 		return nil
 	}
 	return o.RHS
+}
+
+func (o *ConditionFlag) GetCmpOptions() *CmpOptionsFlag {
+	if o == nil {
+		return nil
+	}
+	return o.CmpOptions
 }
 
 func (o *ConditionFlag) GetLHS() LHSFlagUnion {

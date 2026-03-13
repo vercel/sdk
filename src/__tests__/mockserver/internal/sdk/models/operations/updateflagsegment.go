@@ -261,6 +261,8 @@ const (
 	UpdateFlagSegmentCmpNotStartsWith  UpdateFlagSegmentCmp = "!startsWith"
 	UpdateFlagSegmentCmpEndsWith       UpdateFlagSegmentCmp = "endsWith"
 	UpdateFlagSegmentCmpNotEndsWith    UpdateFlagSegmentCmp = "!endsWith"
+	UpdateFlagSegmentCmpContains       UpdateFlagSegmentCmp = "contains"
+	UpdateFlagSegmentCmpNotContains    UpdateFlagSegmentCmp = "!contains"
 	UpdateFlagSegmentCmpEx             UpdateFlagSegmentCmp = "ex"
 	UpdateFlagSegmentCmpNotEx          UpdateFlagSegmentCmp = "!ex"
 	UpdateFlagSegmentCmpGt             UpdateFlagSegmentCmp = "gt"
@@ -303,6 +305,10 @@ func (e *UpdateFlagSegmentCmp) UnmarshalJSON(data []byte) error {
 	case "endsWith":
 		fallthrough
 	case "!endsWith":
+		fallthrough
+	case "contains":
+		fallthrough
+	case "!contains":
 		fallthrough
 	case "ex":
 		fallthrough
@@ -692,10 +698,22 @@ func (u UpdateFlagSegmentRHSUnion) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type UpdateFlagSegmentRHSUnion: all fields are null")
 }
 
+type UpdateFlagSegmentCmpOptions struct {
+	IgnoreCase *bool `json:"ignoreCase,omitempty"`
+}
+
+func (o *UpdateFlagSegmentCmpOptions) GetIgnoreCase() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IgnoreCase
+}
+
 type UpdateFlagSegmentCondition struct {
-	LHS UpdateFlagSegmentLHSUnion  `json:"lhs"`
-	Cmp UpdateFlagSegmentCmp       `json:"cmp"`
-	RHS *UpdateFlagSegmentRHSUnion `json:"rhs,omitempty"`
+	LHS        UpdateFlagSegmentLHSUnion    `json:"lhs"`
+	Cmp        UpdateFlagSegmentCmp         `json:"cmp"`
+	RHS        *UpdateFlagSegmentRHSUnion   `json:"rhs,omitempty"`
+	CmpOptions *UpdateFlagSegmentCmpOptions `json:"cmpOptions,omitempty"`
 }
 
 func (o *UpdateFlagSegmentCondition) GetLHS() UpdateFlagSegmentLHSUnion {
@@ -717,6 +735,13 @@ func (o *UpdateFlagSegmentCondition) GetRHS() *UpdateFlagSegmentRHSUnion {
 		return nil
 	}
 	return o.RHS
+}
+
+func (o *UpdateFlagSegmentCondition) GetCmpOptions() *UpdateFlagSegmentCmpOptions {
+	if o == nil {
+		return nil
+	}
+	return o.CmpOptions
 }
 
 type UpdateFlagSegmentBase struct {

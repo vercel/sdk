@@ -604,6 +604,30 @@ func (o *GetProjectsConnectConfiguration) GetUpdatedAt() float64 {
 	return o.UpdatedAt
 }
 
+// GetProjectsSource - The origin of this definition. 'api' means created via the API. Undefined means it originated from a deployment (vercel.json).
+type GetProjectsSource string
+
+const (
+	GetProjectsSourceAPI GetProjectsSource = "api"
+)
+
+func (e GetProjectsSource) ToPointer() *GetProjectsSource {
+	return &e
+}
+func (e *GetProjectsSource) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "api":
+		*e = GetProjectsSource(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetProjectsSource: %v", v)
+	}
+}
+
 type GetProjectsDefinition struct {
 	// The hostname that should be used.
 	Host string `json:"host"`
@@ -611,6 +635,8 @@ type GetProjectsDefinition struct {
 	Path string `json:"path"`
 	// The cron expression.
 	Schedule string `json:"schedule"`
+	// The origin of this definition. 'api' means created via the API. Undefined means it originated from a deployment (vercel.json).
+	Source *GetProjectsSource `json:"source,omitempty"`
 }
 
 func (g GetProjectsDefinition) MarshalJSON() ([]byte, error) {
@@ -643,6 +669,13 @@ func (o *GetProjectsDefinition) GetSchedule() string {
 		return ""
 	}
 	return o.Schedule
+}
+
+func (o *GetProjectsDefinition) GetSource() *GetProjectsSource {
+	if o == nil {
+		return nil
+	}
+	return o.Source
 }
 
 type GetProjectsCrons struct {
@@ -9312,37 +9345,5 @@ func (e *ProjectTier2) UnmarshalJSON(data []byte) error {
 		return nil
 	default:
 		return fmt.Errorf("invalid value for ProjectTier2: %v", v)
-	}
-}
-
-type ProjectScheduledTierChangeTier string
-
-const (
-	ProjectScheduledTierChangeTierStandard ProjectScheduledTierChangeTier = "standard"
-	ProjectScheduledTierChangeTierBase     ProjectScheduledTierChangeTier = "base"
-	ProjectScheduledTierChangeTierAdvanced ProjectScheduledTierChangeTier = "advanced"
-	ProjectScheduledTierChangeTierCritical ProjectScheduledTierChangeTier = "critical"
-)
-
-func (e ProjectScheduledTierChangeTier) ToPointer() *ProjectScheduledTierChangeTier {
-	return &e
-}
-func (e *ProjectScheduledTierChangeTier) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "standard":
-		fallthrough
-	case "base":
-		fallthrough
-	case "advanced":
-		fallthrough
-	case "critical":
-		*e = ProjectScheduledTierChangeTier(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for ProjectScheduledTierChangeTier: %v", v)
 	}
 }

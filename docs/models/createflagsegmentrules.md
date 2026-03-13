@@ -14,7 +14,7 @@ let value: CreateFlagSegmentRules = {
         kind: "<value>",
         attribute: "<value>",
       },
-      cmp: "regex",
+      cmp: "lte",
     },
   ],
   outcome: {

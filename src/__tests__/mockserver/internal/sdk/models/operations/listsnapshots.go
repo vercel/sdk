@@ -3,10 +3,7 @@
 package operations
 
 import (
-	"errors"
-	"fmt"
 	"mockserver/internal/sdk/models/components"
-	"mockserver/internal/sdk/utils"
 )
 
 type ListSnapshotsRequest struct {
@@ -76,17 +73,6 @@ type ListSnapshotsPagination struct {
 	Prev *float64 `json:"prev"`
 }
 
-func (l ListSnapshotsPagination) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(l, "", false)
-}
-
-func (l *ListSnapshotsPagination) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &l, "", false, []string{"total", "count", "next", "prev"}); err != nil {
-		return err
-	}
-	return nil
-}
-
 func (o *ListSnapshotsPagination) GetTotal() float64 {
 	if o == nil {
 		return 0.0
@@ -115,116 +101,28 @@ func (o *ListSnapshotsPagination) GetPrev() *float64 {
 	return o.Prev
 }
 
-type ListSnapshotsResponseBody2 struct {
+type ListSnapshotsResponseBody struct {
 	Snapshots  []components.Snapshot   `json:"snapshots"`
 	Pagination ListSnapshotsPagination `json:"pagination"`
 }
 
-func (l ListSnapshotsResponseBody2) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(l, "", false)
-}
-
-func (l *ListSnapshotsResponseBody2) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &l, "", false, []string{"snapshots", "pagination"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *ListSnapshotsResponseBody2) GetSnapshots() []components.Snapshot {
+func (o *ListSnapshotsResponseBody) GetSnapshots() []components.Snapshot {
 	if o == nil {
 		return []components.Snapshot{}
 	}
 	return o.Snapshots
 }
 
-func (o *ListSnapshotsResponseBody2) GetPagination() ListSnapshotsPagination {
+func (o *ListSnapshotsResponseBody) GetPagination() ListSnapshotsPagination {
 	if o == nil {
 		return ListSnapshotsPagination{}
 	}
 	return o.Pagination
 }
 
-type ListSnapshotsResponseBody1 struct {
-}
-
-func (l ListSnapshotsResponseBody1) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(l, "", false)
-}
-
-func (l *ListSnapshotsResponseBody1) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &l, "", false, nil); err != nil {
-		return err
-	}
-	return nil
-}
-
-type ListSnapshotsResponseBodyType string
-
-const (
-	ListSnapshotsResponseBodyTypeListSnapshotsResponseBody1 ListSnapshotsResponseBodyType = "listSnapshots_ResponseBody_1"
-	ListSnapshotsResponseBodyTypeListSnapshotsResponseBody2 ListSnapshotsResponseBodyType = "listSnapshots_ResponseBody_2"
-)
-
-type ListSnapshotsResponseBody struct {
-	ListSnapshotsResponseBody1 *ListSnapshotsResponseBody1 `queryParam:"inline"`
-	ListSnapshotsResponseBody2 *ListSnapshotsResponseBody2 `queryParam:"inline"`
-
-	Type ListSnapshotsResponseBodyType
-}
-
-func CreateListSnapshotsResponseBodyListSnapshotsResponseBody1(listSnapshotsResponseBody1 ListSnapshotsResponseBody1) ListSnapshotsResponseBody {
-	typ := ListSnapshotsResponseBodyTypeListSnapshotsResponseBody1
-
-	return ListSnapshotsResponseBody{
-		ListSnapshotsResponseBody1: &listSnapshotsResponseBody1,
-		Type:                       typ,
-	}
-}
-
-func CreateListSnapshotsResponseBodyListSnapshotsResponseBody2(listSnapshotsResponseBody2 ListSnapshotsResponseBody2) ListSnapshotsResponseBody {
-	typ := ListSnapshotsResponseBodyTypeListSnapshotsResponseBody2
-
-	return ListSnapshotsResponseBody{
-		ListSnapshotsResponseBody2: &listSnapshotsResponseBody2,
-		Type:                       typ,
-	}
-}
-
-func (u *ListSnapshotsResponseBody) UnmarshalJSON(data []byte) error {
-
-	var listSnapshotsResponseBody2 ListSnapshotsResponseBody2 = ListSnapshotsResponseBody2{}
-	if err := utils.UnmarshalJSON(data, &listSnapshotsResponseBody2, "", true, nil); err == nil {
-		u.ListSnapshotsResponseBody2 = &listSnapshotsResponseBody2
-		u.Type = ListSnapshotsResponseBodyTypeListSnapshotsResponseBody2
-		return nil
-	}
-
-	var listSnapshotsResponseBody1 ListSnapshotsResponseBody1 = ListSnapshotsResponseBody1{}
-	if err := utils.UnmarshalJSON(data, &listSnapshotsResponseBody1, "", true, nil); err == nil {
-		u.ListSnapshotsResponseBody1 = &listSnapshotsResponseBody1
-		u.Type = ListSnapshotsResponseBodyTypeListSnapshotsResponseBody1
-		return nil
-	}
-
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for ListSnapshotsResponseBody", string(data))
-}
-
-func (u ListSnapshotsResponseBody) MarshalJSON() ([]byte, error) {
-	if u.ListSnapshotsResponseBody1 != nil {
-		return utils.MarshalJSON(u.ListSnapshotsResponseBody1, "", true)
-	}
-
-	if u.ListSnapshotsResponseBody2 != nil {
-		return utils.MarshalJSON(u.ListSnapshotsResponseBody2, "", true)
-	}
-
-	return nil, errors.New("could not marshal union type ListSnapshotsResponseBody: all fields are null")
-}
-
 type ListSnapshotsResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
-	OneOf    *ListSnapshotsResponseBody
+	Object   *ListSnapshotsResponseBody
 }
 
 func (o *ListSnapshotsResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -234,9 +132,9 @@ func (o *ListSnapshotsResponse) GetHTTPMeta() components.HTTPMetadata {
 	return o.HTTPMeta
 }
 
-func (o *ListSnapshotsResponse) GetOneOf() *ListSnapshotsResponseBody {
+func (o *ListSnapshotsResponse) GetObject() *ListSnapshotsResponseBody {
 	if o == nil {
 		return nil
 	}
-	return o.OneOf
+	return o.Object
 }

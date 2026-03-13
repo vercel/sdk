@@ -12,6 +12,36 @@ import (
 	"mockserver/internal/sdk/utils"
 )
 
+type ProjectSsoProtection1 struct {
+	DeploymentType               ProjectSsoProtectionDeploymentType1                                     `json:"deploymentType"`
+	Cve55182MigrationAppliedFrom optionalnullable.OptionalNullable[ProjectCve55182MigrationAppliedFrom1] `json:"cve55182MigrationAppliedFrom,omitempty"`
+}
+
+func (p ProjectSsoProtection1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *ProjectSsoProtection1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"deploymentType"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ProjectSsoProtection1) GetDeploymentType() ProjectSsoProtectionDeploymentType1 {
+	if o == nil {
+		return ProjectSsoProtectionDeploymentType1("")
+	}
+	return o.DeploymentType
+}
+
+func (o *ProjectSsoProtection1) GetCve55182MigrationAppliedFrom() optionalnullable.OptionalNullable[ProjectCve55182MigrationAppliedFrom1] {
+	if o == nil {
+		return nil
+	}
+	return o.Cve55182MigrationAppliedFrom
+}
+
 type ProjectTargetsAliasAssigned1Type string
 
 const (
@@ -7626,58 +7656,4 @@ func (o *GetProjectsLatestDeploymentBuild) GetDest() *string {
 		return nil
 	}
 	return o.Dest
-}
-
-type GetProjectsLatestDeploymentCreator struct {
-	Email       string  `json:"email"`
-	GithubLogin *string `json:"githubLogin,omitempty"`
-	GitlabLogin *string `json:"gitlabLogin,omitempty"`
-	UID         string  `json:"uid"`
-	Username    string  `json:"username"`
-}
-
-func (g GetProjectsLatestDeploymentCreator) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(g, "", false)
-}
-
-func (g *GetProjectsLatestDeploymentCreator) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"email", "uid", "username"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *GetProjectsLatestDeploymentCreator) GetEmail() string {
-	if o == nil {
-		return ""
-	}
-	return o.Email
-}
-
-func (o *GetProjectsLatestDeploymentCreator) GetGithubLogin() *string {
-	if o == nil {
-		return nil
-	}
-	return o.GithubLogin
-}
-
-func (o *GetProjectsLatestDeploymentCreator) GetGitlabLogin() *string {
-	if o == nil {
-		return nil
-	}
-	return o.GitlabLogin
-}
-
-func (o *GetProjectsLatestDeploymentCreator) GetUID() string {
-	if o == nil {
-		return ""
-	}
-	return o.UID
-}
-
-func (o *GetProjectsLatestDeploymentCreator) GetUsername() string {
-	if o == nil {
-		return ""
-	}
-	return o.Username
 }

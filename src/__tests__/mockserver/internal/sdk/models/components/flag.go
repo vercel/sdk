@@ -1174,6 +1174,28 @@ func (u FlagRHSUnion) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type FlagRHSUnion: all fields are null")
 }
 
+type FlagCmpOptions struct {
+	IgnoreCase *bool `json:"ignoreCase,omitempty"`
+}
+
+func (f FlagCmpOptions) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FlagCmpOptions) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *FlagCmpOptions) GetIgnoreCase() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IgnoreCase
+}
+
 type FlagLHSTypeEntity string
 
 const (
@@ -1379,6 +1401,8 @@ const (
 	FlagCmpNotStartsWith  FlagCmp = "!startsWith"
 	FlagCmpEndsWith       FlagCmp = "endsWith"
 	FlagCmpNotEndsWith    FlagCmp = "!endsWith"
+	FlagCmpContains       FlagCmp = "contains"
+	FlagCmpNotContains    FlagCmp = "!contains"
 	FlagCmpEx             FlagCmp = "ex"
 	FlagCmpNotEx          FlagCmp = "!ex"
 	FlagCmpGt             FlagCmp = "gt"
@@ -1422,6 +1446,10 @@ func (e *FlagCmp) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "!endsWith":
 		fallthrough
+	case "contains":
+		fallthrough
+	case "!contains":
+		fallthrough
 	case "ex":
 		fallthrough
 	case "!ex":
@@ -1449,9 +1477,10 @@ func (e *FlagCmp) UnmarshalJSON(data []byte) error {
 }
 
 type FlagCondition struct {
-	RHS *FlagRHSUnion `json:"rhs,omitempty"`
-	LHS FlagLHSUnion  `json:"lhs"`
-	Cmp FlagCmp       `json:"cmp"`
+	RHS        *FlagRHSUnion   `json:"rhs,omitempty"`
+	CmpOptions *FlagCmpOptions `json:"cmpOptions,omitempty"`
+	LHS        FlagLHSUnion    `json:"lhs"`
+	Cmp        FlagCmp         `json:"cmp"`
 }
 
 func (f FlagCondition) MarshalJSON() ([]byte, error) {
@@ -1470,6 +1499,13 @@ func (o *FlagCondition) GetRHS() *FlagRHSUnion {
 		return nil
 	}
 	return o.RHS
+}
+
+func (o *FlagCondition) GetCmpOptions() *FlagCmpOptions {
+	if o == nil {
+		return nil
+	}
+	return o.CmpOptions
 }
 
 func (o *FlagCondition) GetLHS() FlagLHSUnion {

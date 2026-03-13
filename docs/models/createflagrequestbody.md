@@ -25,7 +25,7 @@ let value: CreateFlagRequestBody = {
                 kind: "<value>",
                 attribute: "<value>",
               },
-              cmp: "containsAllOf",
+              cmp: "containsAnyOf",
             },
           ],
           outcome: {

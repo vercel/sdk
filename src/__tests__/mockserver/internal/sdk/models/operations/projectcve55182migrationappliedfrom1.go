@@ -11,6 +11,38 @@ import (
 	"mockserver/internal/sdk/utils"
 )
 
+type ProjectScheduledTierChangeTier string
+
+const (
+	ProjectScheduledTierChangeTierStandard ProjectScheduledTierChangeTier = "standard"
+	ProjectScheduledTierChangeTierBase     ProjectScheduledTierChangeTier = "base"
+	ProjectScheduledTierChangeTierAdvanced ProjectScheduledTierChangeTier = "advanced"
+	ProjectScheduledTierChangeTierCritical ProjectScheduledTierChangeTier = "critical"
+)
+
+func (e ProjectScheduledTierChangeTier) ToPointer() *ProjectScheduledTierChangeTier {
+	return &e
+}
+func (e *ProjectScheduledTierChangeTier) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "standard":
+		fallthrough
+	case "base":
+		fallthrough
+	case "advanced":
+		fallthrough
+	case "critical":
+		*e = ProjectScheduledTierChangeTier(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for ProjectScheduledTierChangeTier: %v", v)
+	}
+}
+
 type GetProjectsScheduledTierChange struct {
 	Tier        ProjectScheduledTierChangeTier `json:"tier"`
 	EffectiveAt float64                        `json:"effectiveAt"`
@@ -8118,34 +8150,4 @@ func (e *ProjectCve55182MigrationAppliedFrom1) UnmarshalJSON(data []byte) error 
 	default:
 		return fmt.Errorf("invalid value for ProjectCve55182MigrationAppliedFrom1: %v", v)
 	}
-}
-
-type ProjectSsoProtection1 struct {
-	DeploymentType               ProjectSsoProtectionDeploymentType1                                     `json:"deploymentType"`
-	Cve55182MigrationAppliedFrom optionalnullable.OptionalNullable[ProjectCve55182MigrationAppliedFrom1] `json:"cve55182MigrationAppliedFrom,omitempty"`
-}
-
-func (p ProjectSsoProtection1) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *ProjectSsoProtection1) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"deploymentType"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *ProjectSsoProtection1) GetDeploymentType() ProjectSsoProtectionDeploymentType1 {
-	if o == nil {
-		return ProjectSsoProtectionDeploymentType1("")
-	}
-	return o.DeploymentType
-}
-
-func (o *ProjectSsoProtection1) GetCve55182MigrationAppliedFrom() optionalnullable.OptionalNullable[ProjectCve55182MigrationAppliedFrom1] {
-	if o == nil {
-		return nil
-	}
-	return o.Cve55182MigrationAppliedFrom
 }

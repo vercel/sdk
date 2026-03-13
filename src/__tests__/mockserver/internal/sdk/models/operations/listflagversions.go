@@ -1214,6 +1214,17 @@ func (u ListFlagVersionsRHSUnion) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type ListFlagVersionsRHSUnion: all fields are null")
 }
 
+type ListFlagVersionsCmpOptions struct {
+	IgnoreCase *bool `json:"ignoreCase,omitempty"`
+}
+
+func (o *ListFlagVersionsCmpOptions) GetIgnoreCase() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IgnoreCase
+}
+
 type ListFlagVersionsLHSTypeEntity string
 
 const (
@@ -1419,6 +1430,8 @@ const (
 	ListFlagVersionsCmpNotStartsWith  ListFlagVersionsCmp = "!startsWith"
 	ListFlagVersionsCmpEndsWith       ListFlagVersionsCmp = "endsWith"
 	ListFlagVersionsCmpNotEndsWith    ListFlagVersionsCmp = "!endsWith"
+	ListFlagVersionsCmpContains       ListFlagVersionsCmp = "contains"
+	ListFlagVersionsCmpNotContains    ListFlagVersionsCmp = "!contains"
 	ListFlagVersionsCmpEx             ListFlagVersionsCmp = "ex"
 	ListFlagVersionsCmpNotEx          ListFlagVersionsCmp = "!ex"
 	ListFlagVersionsCmpGt             ListFlagVersionsCmp = "gt"
@@ -1462,6 +1475,10 @@ func (e *ListFlagVersionsCmp) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "!endsWith":
 		fallthrough
+	case "contains":
+		fallthrough
+	case "!contains":
+		fallthrough
 	case "ex":
 		fallthrough
 	case "!ex":
@@ -1489,9 +1506,10 @@ func (e *ListFlagVersionsCmp) UnmarshalJSON(data []byte) error {
 }
 
 type ListFlagVersionsCondition struct {
-	RHS *ListFlagVersionsRHSUnion `json:"rhs,omitempty"`
-	LHS ListFlagVersionsLHSUnion  `json:"lhs"`
-	Cmp ListFlagVersionsCmp       `json:"cmp"`
+	RHS        *ListFlagVersionsRHSUnion   `json:"rhs,omitempty"`
+	CmpOptions *ListFlagVersionsCmpOptions `json:"cmpOptions,omitempty"`
+	LHS        ListFlagVersionsLHSUnion    `json:"lhs"`
+	Cmp        ListFlagVersionsCmp         `json:"cmp"`
 }
 
 func (o *ListFlagVersionsCondition) GetRHS() *ListFlagVersionsRHSUnion {
@@ -1499,6 +1517,13 @@ func (o *ListFlagVersionsCondition) GetRHS() *ListFlagVersionsRHSUnion {
 		return nil
 	}
 	return o.RHS
+}
+
+func (o *ListFlagVersionsCondition) GetCmpOptions() *ListFlagVersionsCmpOptions {
+	if o == nil {
+		return nil
+	}
+	return o.CmpOptions
 }
 
 func (o *ListFlagVersionsCondition) GetLHS() ListFlagVersionsLHSUnion {

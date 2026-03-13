@@ -427,6 +427,17 @@ export type CreateProjectConnectConfigurations = {
   updatedAt: number;
 };
 
+/**
+ * The origin of this definition. 'api' means created via the API. Undefined means it originated from a deployment (vercel.json).
+ */
+export const CreateProjectSource = {
+  Api: "api",
+} as const;
+/**
+ * The origin of this definition. 'api' means created via the API. Undefined means it originated from a deployment (vercel.json).
+ */
+export type CreateProjectSource = ClosedEnum<typeof CreateProjectSource>;
+
 export type Definitions = {
   /**
    * The hostname that should be used.
@@ -440,6 +451,10 @@ export type Definitions = {
    * The cron expression.
    */
   schedule: string;
+  /**
+   * The origin of this definition. 'api' means created via the API. Undefined means it originated from a deployment (vercel.json).
+   */
+  source?: CreateProjectSource | undefined;
 };
 
 export type CreateProjectCrons = {
@@ -3157,6 +3172,15 @@ export function createProjectConnectConfigurationsFromJSON(
 }
 
 /** @internal */
+export const CreateProjectSource$inboundSchema: z.ZodNativeEnum<
+  typeof CreateProjectSource
+> = z.nativeEnum(CreateProjectSource);
+/** @internal */
+export const CreateProjectSource$outboundSchema: z.ZodNativeEnum<
+  typeof CreateProjectSource
+> = CreateProjectSource$inboundSchema;
+
+/** @internal */
 export const Definitions$inboundSchema: z.ZodType<
   Definitions,
   z.ZodTypeDef,
@@ -3165,12 +3189,14 @@ export const Definitions$inboundSchema: z.ZodType<
   host: types.string(),
   path: types.string(),
   schedule: types.string(),
+  source: types.optional(CreateProjectSource$inboundSchema),
 });
 /** @internal */
 export type Definitions$Outbound = {
   host: string;
   path: string;
   schedule: string;
+  source?: string | undefined;
 };
 
 /** @internal */
@@ -3182,6 +3208,7 @@ export const Definitions$outboundSchema: z.ZodType<
   host: z.string(),
   path: z.string(),
   schedule: z.string(),
+  source: CreateProjectSource$outboundSchema.optional(),
 });
 
 export function definitionsToJSON(definitions: Definitions): string {

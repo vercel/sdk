@@ -12,6 +12,60 @@ import (
 	"mockserver/internal/sdk/utils"
 )
 
+type GetProjectsLatestDeploymentCreator struct {
+	Email       string  `json:"email"`
+	GithubLogin *string `json:"githubLogin,omitempty"`
+	GitlabLogin *string `json:"gitlabLogin,omitempty"`
+	UID         string  `json:"uid"`
+	Username    string  `json:"username"`
+}
+
+func (g GetProjectsLatestDeploymentCreator) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetProjectsLatestDeploymentCreator) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"email", "uid", "username"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetProjectsLatestDeploymentCreator) GetEmail() string {
+	if o == nil {
+		return ""
+	}
+	return o.Email
+}
+
+func (o *GetProjectsLatestDeploymentCreator) GetGithubLogin() *string {
+	if o == nil {
+		return nil
+	}
+	return o.GithubLogin
+}
+
+func (o *GetProjectsLatestDeploymentCreator) GetGitlabLogin() *string {
+	if o == nil {
+		return nil
+	}
+	return o.GitlabLogin
+}
+
+func (o *GetProjectsLatestDeploymentCreator) GetUID() string {
+	if o == nil {
+		return ""
+	}
+	return o.UID
+}
+
+func (o *GetProjectsLatestDeploymentCreator) GetUsername() string {
+	if o == nil {
+		return ""
+	}
+	return o.Username
+}
+
 type GetProjectsLatestDeployment struct {
 	Alias              []string                                                                    `json:"alias,omitempty"`
 	AliasAssigned      optionalnullable.OptionalNullable[GetProjectsLatestDeploymentAliasAssigned] `json:"aliasAssigned,omitempty"`

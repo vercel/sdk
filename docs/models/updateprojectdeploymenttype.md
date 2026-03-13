@@ -5,7 +5,7 @@ Specify if the password will apply to every Deployment Target or just Preview
 ## Example Usage
 
 ```typescript
-import { UpdateProjectDeploymentType } from "@vercel/sdk/models/updateprojectprojectsoidctokenconfig.js";
+import { UpdateProjectDeploymentType } from "@vercel/sdk/models/updateprojectprojectsissuermode.js";
 
 let value: UpdateProjectDeploymentType =
   "prod_deployment_urls_and_all_previews";

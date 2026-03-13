@@ -669,6 +669,17 @@ func (u SegmentRHSUnion) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type SegmentRHSUnion: all fields are null")
 }
 
+type SegmentCmpOptions struct {
+	IgnoreCase *bool `json:"ignoreCase,omitempty"`
+}
+
+func (o *SegmentCmpOptions) GetIgnoreCase() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IgnoreCase
+}
+
 type LHSDataTypeEntity string
 
 const (
@@ -874,6 +885,8 @@ const (
 	SegmentCmpNotStartsWith  SegmentCmp = "!startsWith"
 	SegmentCmpEndsWith       SegmentCmp = "endsWith"
 	SegmentCmpNotEndsWith    SegmentCmp = "!endsWith"
+	SegmentCmpContains       SegmentCmp = "contains"
+	SegmentCmpNotContains    SegmentCmp = "!contains"
 	SegmentCmpEx             SegmentCmp = "ex"
 	SegmentCmpNotEx          SegmentCmp = "!ex"
 	SegmentCmpGt             SegmentCmp = "gt"
@@ -917,6 +930,10 @@ func (e *SegmentCmp) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "!endsWith":
 		fallthrough
+	case "contains":
+		fallthrough
+	case "!contains":
+		fallthrough
 	case "ex":
 		fallthrough
 	case "!ex":
@@ -944,9 +961,10 @@ func (e *SegmentCmp) UnmarshalJSON(data []byte) error {
 }
 
 type SegmentCondition struct {
-	RHS *SegmentRHSUnion `json:"rhs,omitempty"`
-	LHS DataLHSUnion     `json:"lhs"`
-	Cmp SegmentCmp       `json:"cmp"`
+	RHS        *SegmentRHSUnion   `json:"rhs,omitempty"`
+	CmpOptions *SegmentCmpOptions `json:"cmpOptions,omitempty"`
+	LHS        DataLHSUnion       `json:"lhs"`
+	Cmp        SegmentCmp         `json:"cmp"`
 }
 
 func (o *SegmentCondition) GetRHS() *SegmentRHSUnion {
@@ -954,6 +972,13 @@ func (o *SegmentCondition) GetRHS() *SegmentRHSUnion {
 		return nil
 	}
 	return o.RHS
+}
+
+func (o *SegmentCondition) GetCmpOptions() *SegmentCmpOptions {
+	if o == nil {
+		return nil
+	}
+	return o.CmpOptions
 }
 
 func (o *SegmentCondition) GetLHS() DataLHSUnion {

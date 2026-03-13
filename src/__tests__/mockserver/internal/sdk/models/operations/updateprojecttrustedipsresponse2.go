@@ -1847,6 +1847,30 @@ func (o *UpdateProjectConnectConfigurationResponse) GetUpdatedAt() float64 {
 	return o.UpdatedAt
 }
 
+// UpdateProjectSource - The origin of this definition. 'api' means created via the API. Undefined means it originated from a deployment (vercel.json).
+type UpdateProjectSource string
+
+const (
+	UpdateProjectSourceAPI UpdateProjectSource = "api"
+)
+
+func (e UpdateProjectSource) ToPointer() *UpdateProjectSource {
+	return &e
+}
+func (e *UpdateProjectSource) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "api":
+		*e = UpdateProjectSource(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateProjectSource: %v", v)
+	}
+}
+
 type UpdateProjectDefinition struct {
 	// The hostname that should be used.
 	Host string `json:"host"`
@@ -1854,6 +1878,8 @@ type UpdateProjectDefinition struct {
 	Path string `json:"path"`
 	// The cron expression.
 	Schedule string `json:"schedule"`
+	// The origin of this definition. 'api' means created via the API. Undefined means it originated from a deployment (vercel.json).
+	Source *UpdateProjectSource `json:"source,omitempty"`
 }
 
 func (o *UpdateProjectDefinition) GetHost() string {
@@ -1875,6 +1901,13 @@ func (o *UpdateProjectDefinition) GetSchedule() string {
 		return ""
 	}
 	return o.Schedule
+}
+
+func (o *UpdateProjectDefinition) GetSource() *UpdateProjectSource {
+	if o == nil {
+		return nil
+	}
+	return o.Source
 }
 
 type UpdateProjectCrons struct {
@@ -9244,39 +9277,4 @@ func (o *UpdateProjectTrustedIpsResponse2) GetDeploymentType() UpdateProjectTrus
 		return UpdateProjectTrustedIpsDeploymentTypeResponse2("")
 	}
 	return o.DeploymentType
-}
-
-type UpdateProjectTrustedIpsDeploymentTypeResponse1 string
-
-const (
-	UpdateProjectTrustedIpsDeploymentTypeResponse1Production                       UpdateProjectTrustedIpsDeploymentTypeResponse1 = "production"
-	UpdateProjectTrustedIpsDeploymentTypeResponse1Preview                          UpdateProjectTrustedIpsDeploymentTypeResponse1 = "preview"
-	UpdateProjectTrustedIpsDeploymentTypeResponse1All                              UpdateProjectTrustedIpsDeploymentTypeResponse1 = "all"
-	UpdateProjectTrustedIpsDeploymentTypeResponse1ProdDeploymentUrlsAndAllPreviews UpdateProjectTrustedIpsDeploymentTypeResponse1 = "prod_deployment_urls_and_all_previews"
-	UpdateProjectTrustedIpsDeploymentTypeResponse1AllExceptCustomDomains           UpdateProjectTrustedIpsDeploymentTypeResponse1 = "all_except_custom_domains"
-)
-
-func (e UpdateProjectTrustedIpsDeploymentTypeResponse1) ToPointer() *UpdateProjectTrustedIpsDeploymentTypeResponse1 {
-	return &e
-}
-func (e *UpdateProjectTrustedIpsDeploymentTypeResponse1) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "production":
-		fallthrough
-	case "preview":
-		fallthrough
-	case "all":
-		fallthrough
-	case "prod_deployment_urls_and_all_previews":
-		fallthrough
-	case "all_except_custom_domains":
-		*e = UpdateProjectTrustedIpsDeploymentTypeResponse1(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for UpdateProjectTrustedIpsDeploymentTypeResponse1: %v", v)
-	}
 }

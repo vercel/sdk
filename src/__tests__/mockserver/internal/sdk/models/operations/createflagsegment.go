@@ -147,6 +147,8 @@ const (
 	CreateFlagSegmentCmpRequestNotStartsWith  CreateFlagSegmentCmpRequest = "!startsWith"
 	CreateFlagSegmentCmpRequestEndsWith       CreateFlagSegmentCmpRequest = "endsWith"
 	CreateFlagSegmentCmpRequestNotEndsWith    CreateFlagSegmentCmpRequest = "!endsWith"
+	CreateFlagSegmentCmpRequestContains       CreateFlagSegmentCmpRequest = "contains"
+	CreateFlagSegmentCmpRequestNotContains    CreateFlagSegmentCmpRequest = "!contains"
 	CreateFlagSegmentCmpRequestEx             CreateFlagSegmentCmpRequest = "ex"
 	CreateFlagSegmentCmpRequestNotEx          CreateFlagSegmentCmpRequest = "!ex"
 	CreateFlagSegmentCmpRequestGt             CreateFlagSegmentCmpRequest = "gt"
@@ -189,6 +191,10 @@ func (e *CreateFlagSegmentCmpRequest) UnmarshalJSON(data []byte) error {
 	case "endsWith":
 		fallthrough
 	case "!endsWith":
+		fallthrough
+	case "contains":
+		fallthrough
+	case "!contains":
 		fallthrough
 	case "ex":
 		fallthrough
@@ -578,10 +584,22 @@ func (u CreateFlagSegmentRHSRequestUnion) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type CreateFlagSegmentRHSRequestUnion: all fields are null")
 }
 
+type CreateFlagSegmentCmpOptionsRequest struct {
+	IgnoreCase *bool `json:"ignoreCase,omitempty"`
+}
+
+func (o *CreateFlagSegmentCmpOptionsRequest) GetIgnoreCase() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IgnoreCase
+}
+
 type CreateFlagSegmentConditionRequest struct {
-	LHS CreateFlagSegmentLHSRequestUnion  `json:"lhs"`
-	Cmp CreateFlagSegmentCmpRequest       `json:"cmp"`
-	RHS *CreateFlagSegmentRHSRequestUnion `json:"rhs,omitempty"`
+	LHS        CreateFlagSegmentLHSRequestUnion    `json:"lhs"`
+	Cmp        CreateFlagSegmentCmpRequest         `json:"cmp"`
+	RHS        *CreateFlagSegmentRHSRequestUnion   `json:"rhs,omitempty"`
+	CmpOptions *CreateFlagSegmentCmpOptionsRequest `json:"cmpOptions,omitempty"`
 }
 
 func (o *CreateFlagSegmentConditionRequest) GetLHS() CreateFlagSegmentLHSRequestUnion {
@@ -603,6 +621,13 @@ func (o *CreateFlagSegmentConditionRequest) GetRHS() *CreateFlagSegmentRHSReques
 		return nil
 	}
 	return o.RHS
+}
+
+func (o *CreateFlagSegmentConditionRequest) GetCmpOptions() *CreateFlagSegmentCmpOptionsRequest {
+	if o == nil {
+		return nil
+	}
+	return o.CmpOptions
 }
 
 type CreateFlagSegmentBaseRequest struct {
@@ -1610,6 +1635,17 @@ func (u RHSSegmentUnion) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type RHSSegmentUnion: all fields are null")
 }
 
+type CmpOptionsSegment struct {
+	IgnoreCase *bool `json:"ignoreCase,omitempty"`
+}
+
+func (o *CmpOptionsSegment) GetIgnoreCase() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IgnoreCase
+}
+
 type CreateFlagSegmentLHSTypeEntity string
 
 const (
@@ -1815,6 +1851,8 @@ const (
 	CmpSegmentNotStartsWith  CmpSegment = "!startsWith"
 	CmpSegmentEndsWith       CmpSegment = "endsWith"
 	CmpSegmentNotEndsWith    CmpSegment = "!endsWith"
+	CmpSegmentContains       CmpSegment = "contains"
+	CmpSegmentNotContains    CmpSegment = "!contains"
 	CmpSegmentEx             CmpSegment = "ex"
 	CmpSegmentNotEx          CmpSegment = "!ex"
 	CmpSegmentGt             CmpSegment = "gt"
@@ -1858,6 +1896,10 @@ func (e *CmpSegment) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "!endsWith":
 		fallthrough
+	case "contains":
+		fallthrough
+	case "!contains":
+		fallthrough
 	case "ex":
 		fallthrough
 	case "!ex":
@@ -1885,9 +1927,10 @@ func (e *CmpSegment) UnmarshalJSON(data []byte) error {
 }
 
 type ConditionSegment struct {
-	RHS *RHSSegmentUnion `json:"rhs,omitempty"`
-	LHS LHSSegmentUnion  `json:"lhs"`
-	Cmp CmpSegment       `json:"cmp"`
+	RHS        *RHSSegmentUnion   `json:"rhs,omitempty"`
+	CmpOptions *CmpOptionsSegment `json:"cmpOptions,omitempty"`
+	LHS        LHSSegmentUnion    `json:"lhs"`
+	Cmp        CmpSegment         `json:"cmp"`
 }
 
 func (o *ConditionSegment) GetRHS() *RHSSegmentUnion {
@@ -1895,6 +1938,13 @@ func (o *ConditionSegment) GetRHS() *RHSSegmentUnion {
 		return nil
 	}
 	return o.RHS
+}
+
+func (o *ConditionSegment) GetCmpOptions() *CmpOptionsSegment {
+	if o == nil {
+		return nil
+	}
+	return o.CmpOptions
 }
 
 func (o *ConditionSegment) GetLHS() LHSSegmentUnion {

@@ -330,6 +330,8 @@ const (
 	UpdateFlagCmpRequestNotStartsWith  UpdateFlagCmpRequest = "!startsWith"
 	UpdateFlagCmpRequestEndsWith       UpdateFlagCmpRequest = "endsWith"
 	UpdateFlagCmpRequestNotEndsWith    UpdateFlagCmpRequest = "!endsWith"
+	UpdateFlagCmpRequestContains       UpdateFlagCmpRequest = "contains"
+	UpdateFlagCmpRequestNotContains    UpdateFlagCmpRequest = "!contains"
 	UpdateFlagCmpRequestEx             UpdateFlagCmpRequest = "ex"
 	UpdateFlagCmpRequestNotEx          UpdateFlagCmpRequest = "!ex"
 	UpdateFlagCmpRequestGt             UpdateFlagCmpRequest = "gt"
@@ -372,6 +374,10 @@ func (e *UpdateFlagCmpRequest) UnmarshalJSON(data []byte) error {
 	case "endsWith":
 		fallthrough
 	case "!endsWith":
+		fallthrough
+	case "contains":
+		fallthrough
+	case "!contains":
 		fallthrough
 	case "ex":
 		fallthrough
@@ -761,10 +767,22 @@ func (u UpdateFlagRHSRequestUnion) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type UpdateFlagRHSRequestUnion: all fields are null")
 }
 
+type UpdateFlagCmpOptionsRequest struct {
+	IgnoreCase *bool `json:"ignoreCase,omitempty"`
+}
+
+func (o *UpdateFlagCmpOptionsRequest) GetIgnoreCase() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IgnoreCase
+}
+
 type UpdateFlagConditionRequest struct {
-	LHS UpdateFlagLHSRequestUnion  `json:"lhs"`
-	Cmp UpdateFlagCmpRequest       `json:"cmp"`
-	RHS *UpdateFlagRHSRequestUnion `json:"rhs,omitempty"`
+	LHS        UpdateFlagLHSRequestUnion    `json:"lhs"`
+	Cmp        UpdateFlagCmpRequest         `json:"cmp"`
+	RHS        *UpdateFlagRHSRequestUnion   `json:"rhs,omitempty"`
+	CmpOptions *UpdateFlagCmpOptionsRequest `json:"cmpOptions,omitempty"`
 }
 
 func (o *UpdateFlagConditionRequest) GetLHS() UpdateFlagLHSRequestUnion {
@@ -786,6 +804,13 @@ func (o *UpdateFlagConditionRequest) GetRHS() *UpdateFlagRHSRequestUnion {
 		return nil
 	}
 	return o.RHS
+}
+
+func (o *UpdateFlagConditionRequest) GetCmpOptions() *UpdateFlagCmpOptionsRequest {
+	if o == nil {
+		return nil
+	}
+	return o.CmpOptions
 }
 
 type UpdateFlagOutcomeBaseRequest struct {
@@ -2556,6 +2581,28 @@ func (u UpdateFlagResponseBodyRHSUnion) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type UpdateFlagResponseBodyRHSUnion: all fields are null")
 }
 
+type UpdateFlagResponseBodyCmpOptions struct {
+	IgnoreCase *bool `json:"ignoreCase,omitempty"`
+}
+
+func (u UpdateFlagResponseBodyCmpOptions) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateFlagResponseBodyCmpOptions) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *UpdateFlagResponseBodyCmpOptions) GetIgnoreCase() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IgnoreCase
+}
+
 type UpdateFlagLHSTypeEntity string
 
 const (
@@ -2761,6 +2808,8 @@ const (
 	UpdateFlagResponseBodyCmpNotStartsWith  UpdateFlagResponseBodyCmp = "!startsWith"
 	UpdateFlagResponseBodyCmpEndsWith       UpdateFlagResponseBodyCmp = "endsWith"
 	UpdateFlagResponseBodyCmpNotEndsWith    UpdateFlagResponseBodyCmp = "!endsWith"
+	UpdateFlagResponseBodyCmpContains       UpdateFlagResponseBodyCmp = "contains"
+	UpdateFlagResponseBodyCmpNotContains    UpdateFlagResponseBodyCmp = "!contains"
 	UpdateFlagResponseBodyCmpEx             UpdateFlagResponseBodyCmp = "ex"
 	UpdateFlagResponseBodyCmpNotEx          UpdateFlagResponseBodyCmp = "!ex"
 	UpdateFlagResponseBodyCmpGt             UpdateFlagResponseBodyCmp = "gt"
@@ -2804,6 +2853,10 @@ func (e *UpdateFlagResponseBodyCmp) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "!endsWith":
 		fallthrough
+	case "contains":
+		fallthrough
+	case "!contains":
+		fallthrough
 	case "ex":
 		fallthrough
 	case "!ex":
@@ -2831,9 +2884,10 @@ func (e *UpdateFlagResponseBodyCmp) UnmarshalJSON(data []byte) error {
 }
 
 type UpdateFlagResponseBodyCondition struct {
-	RHS *UpdateFlagResponseBodyRHSUnion `json:"rhs,omitempty"`
-	LHS UpdateFlagResponseBodyLHSUnion  `json:"lhs"`
-	Cmp UpdateFlagResponseBodyCmp       `json:"cmp"`
+	RHS        *UpdateFlagResponseBodyRHSUnion   `json:"rhs,omitempty"`
+	CmpOptions *UpdateFlagResponseBodyCmpOptions `json:"cmpOptions,omitempty"`
+	LHS        UpdateFlagResponseBodyLHSUnion    `json:"lhs"`
+	Cmp        UpdateFlagResponseBodyCmp         `json:"cmp"`
 }
 
 func (u UpdateFlagResponseBodyCondition) MarshalJSON() ([]byte, error) {
@@ -2852,6 +2906,13 @@ func (o *UpdateFlagResponseBodyCondition) GetRHS() *UpdateFlagResponseBodyRHSUni
 		return nil
 	}
 	return o.RHS
+}
+
+func (o *UpdateFlagResponseBodyCondition) GetCmpOptions() *UpdateFlagResponseBodyCmpOptions {
+	if o == nil {
+		return nil
+	}
+	return o.CmpOptions
 }
 
 func (o *UpdateFlagResponseBodyCondition) GetLHS() UpdateFlagResponseBodyLHSUnion {

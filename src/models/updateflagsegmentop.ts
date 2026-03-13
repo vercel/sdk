@@ -64,6 +64,8 @@ export const UpdateFlagSegmentCmp = {
   NotStartsWith: "!startsWith",
   EndsWith: "endsWith",
   NotEndsWith: "!endsWith",
+  Contains: "contains",
+  NotContains: "!contains",
   Ex: "ex",
   NotEx: "!ex",
   Gt: "gt",
@@ -119,6 +121,10 @@ export type UpdateFlagSegmentRhs =
   | number
   | boolean;
 
+export type UpdateFlagSegmentCmpOptions = {
+  ignoreCase?: boolean | undefined;
+};
+
 export type UpdateFlagSegmentConditions = {
   lhs: UpdateFlagSegmentLhs2 | UpdateFlagSegmentLhs1;
   cmp: UpdateFlagSegmentCmp;
@@ -129,6 +135,7 @@ export type UpdateFlagSegmentConditions = {
     | number
     | boolean
     | undefined;
+  cmpOptions?: UpdateFlagSegmentCmpOptions | undefined;
 };
 
 export type UpdateFlagSegmentOutcomeBase = {
@@ -745,6 +752,47 @@ export function updateFlagSegmentRhsFromJSON(
 }
 
 /** @internal */
+export const UpdateFlagSegmentCmpOptions$inboundSchema: z.ZodType<
+  UpdateFlagSegmentCmpOptions,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  ignoreCase: types.optional(types.boolean()),
+});
+/** @internal */
+export type UpdateFlagSegmentCmpOptions$Outbound = {
+  ignoreCase?: boolean | undefined;
+};
+
+/** @internal */
+export const UpdateFlagSegmentCmpOptions$outboundSchema: z.ZodType<
+  UpdateFlagSegmentCmpOptions$Outbound,
+  z.ZodTypeDef,
+  UpdateFlagSegmentCmpOptions
+> = z.object({
+  ignoreCase: z.boolean().optional(),
+});
+
+export function updateFlagSegmentCmpOptionsToJSON(
+  updateFlagSegmentCmpOptions: UpdateFlagSegmentCmpOptions,
+): string {
+  return JSON.stringify(
+    UpdateFlagSegmentCmpOptions$outboundSchema.parse(
+      updateFlagSegmentCmpOptions,
+    ),
+  );
+}
+export function updateFlagSegmentCmpOptionsFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateFlagSegmentCmpOptions, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateFlagSegmentCmpOptions$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateFlagSegmentCmpOptions' from JSON`,
+  );
+}
+
+/** @internal */
 export const UpdateFlagSegmentConditions$inboundSchema: z.ZodType<
   UpdateFlagSegmentConditions,
   z.ZodTypeDef,
@@ -764,6 +812,9 @@ export const UpdateFlagSegmentConditions$inboundSchema: z.ZodType<
       types.boolean(),
     ]),
   ),
+  cmpOptions: types.optional(
+    z.lazy(() => UpdateFlagSegmentCmpOptions$inboundSchema),
+  ),
 });
 /** @internal */
 export type UpdateFlagSegmentConditions$Outbound = {
@@ -776,6 +827,7 @@ export type UpdateFlagSegmentConditions$Outbound = {
     | number
     | boolean
     | undefined;
+  cmpOptions?: UpdateFlagSegmentCmpOptions$Outbound | undefined;
 };
 
 /** @internal */
@@ -796,6 +848,8 @@ export const UpdateFlagSegmentConditions$outboundSchema: z.ZodType<
     z.number(),
     z.boolean(),
   ]).optional(),
+  cmpOptions: z.lazy(() => UpdateFlagSegmentCmpOptions$outboundSchema)
+    .optional(),
 });
 
 export function updateFlagSegmentConditionsToJSON(

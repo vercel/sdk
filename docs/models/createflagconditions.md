@@ -9,14 +9,15 @@ let value: CreateFlagConditions = {
   lhs: {
     type: "<value>",
   },
-  cmp: "!endsWith",
+  cmp: "contains",
 };
 ```
 
 ## Fields
 
-| Field                                              | Type                                               | Required                                           | Description                                        |
-| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
-| `lhs`                                              | *models.CreateFlagLhs*                             | :heavy_check_mark:                                 | N/A                                                |
-| `cmp`                                              | [models.CreateFlagCmp](../models/createflagcmp.md) | :heavy_check_mark:                                 | N/A                                                |
-| `rhs`                                              | *models.CreateFlagRhs*                             | :heavy_minus_sign:                                 | N/A                                                |
+| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `lhs`                                                            | *models.CreateFlagLhs*                                           | :heavy_check_mark:                                               | N/A                                                              |
+| `cmp`                                                            | [models.CreateFlagCmp](../models/createflagcmp.md)               | :heavy_check_mark:                                               | N/A                                                              |
+| `rhs`                                                            | *models.CreateFlagRhs*                                           | :heavy_minus_sign:                                               | N/A                                                              |
+| `cmpOptions`                                                     | [models.CreateFlagCmpOptions](../models/createflagcmpoptions.md) | :heavy_minus_sign:                                               | N/A                                                              |

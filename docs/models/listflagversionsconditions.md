@@ -9,14 +9,15 @@ let value: ListFlagVersionsConditions = {
   lhs: {
     type: "segment",
   },
-  cmp: "!regex",
+  cmp: "regex",
 };
 ```
 
 ## Fields
 
-| Field                                                          | Type                                                           | Required                                                       | Description                                                    |
-| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
-| `rhs`                                                          | *models.ListFlagVersionsRhs*                                   | :heavy_minus_sign:                                             | N/A                                                            |
-| `lhs`                                                          | *models.ListFlagVersionsLhs*                                   | :heavy_check_mark:                                             | N/A                                                            |
-| `cmp`                                                          | [models.ListFlagVersionsCmp](../models/listflagversionscmp.md) | :heavy_check_mark:                                             | N/A                                                            |
+| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `rhs`                                                                        | *models.ListFlagVersionsRhs*                                                 | :heavy_minus_sign:                                                           | N/A                                                                          |
+| `cmpOptions`                                                                 | [models.ListFlagVersionsCmpOptions](../models/listflagversionscmpoptions.md) | :heavy_minus_sign:                                                           | N/A                                                                          |
+| `lhs`                                                                        | *models.ListFlagVersionsLhs*                                                 | :heavy_check_mark:                                                           | N/A                                                                          |
+| `cmp`                                                                        | [models.ListFlagVersionsCmp](../models/listflagversionscmp.md)               | :heavy_check_mark:                                                           | N/A                                                                          |

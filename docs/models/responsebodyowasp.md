@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyOwasp } from "@vercel/sdk/models/getprojectsrouteaction.js";
+import { ResponseBodyOwasp } from "@vercel/sdk/models/getprojectsroutehas.js";
 
 let value: ResponseBodyOwasp = {
   active: false,

@@ -20,9 +20,6 @@ import {
   GetProjectsResponseBodyNodeVersion,
   GetProjectsResponseBodyNodeVersion$inboundSchema,
   GetProjectsResponseBodyNodeVersion$outboundSchema,
-  GetProjectsRouteAction,
-  GetProjectsRouteAction$inboundSchema,
-  GetProjectsRouteAction$outboundSchema,
   GetProjectsRouteHas,
   GetProjectsRouteHas$inboundSchema,
   GetProjectsRouteHas$Outbound,
@@ -109,14 +106,19 @@ import {
   ResponseBodyWebAnalytics$inboundSchema,
   ResponseBodyWebAnalytics$Outbound,
   ResponseBodyWebAnalytics$outboundSchema,
-} from "./getprojectsrouteaction.js";
+} from "./getprojectsroutehas.js";
 import {
   GetProjectsResponseBody3,
   GetProjectsResponseBody3$inboundSchema,
   GetProjectsResponseBody3$Outbound,
   GetProjectsResponseBody3$outboundSchema,
-} from "./getprojectsrouteprojectsresponsemitigate.js";
+} from "./getprojectsrouteprojectsresponseaction.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export const GetProjectsRouteAction = {
+  BlockLegalCwc: "block_legal_cwc",
+} as const;
+export type GetProjectsRouteAction = ClosedEnum<typeof GetProjectsRouteAction>;
 
 export type GetProjectsRouteMitigate = {
   action: GetProjectsRouteAction;
@@ -388,6 +390,15 @@ export type GetProjectsResponseBody =
   | GetProjectsResponseBody2
   | GetProjectsResponseBody3
   | Array<GetProjectsResponseBody1>;
+
+/** @internal */
+export const GetProjectsRouteAction$inboundSchema: z.ZodNativeEnum<
+  typeof GetProjectsRouteAction
+> = z.nativeEnum(GetProjectsRouteAction);
+/** @internal */
+export const GetProjectsRouteAction$outboundSchema: z.ZodNativeEnum<
+  typeof GetProjectsRouteAction
+> = GetProjectsRouteAction$inboundSchema;
 
 /** @internal */
 export const GetProjectsRouteMitigate$inboundSchema: z.ZodType<

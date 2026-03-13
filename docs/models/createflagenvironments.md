@@ -21,7 +21,7 @@ let value: CreateFlagEnvironments = {
             kind: "<value>",
             attribute: "<value>",
           },
-          cmp: "containsAllOf",
+          cmp: "containsAnyOf",
         },
       ],
       outcome: {

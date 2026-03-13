@@ -37,6 +37,8 @@ export const CreateFlagSegmentCmp = {
   NotStartsWith: "!startsWith",
   EndsWith: "endsWith",
   NotEndsWith: "!endsWith",
+  Contains: "contains",
+  NotContains: "!contains",
   Ex: "ex",
   NotEx: "!ex",
   Gt: "gt",
@@ -92,6 +94,10 @@ export type CreateFlagSegmentRhs =
   | number
   | boolean;
 
+export type CreateFlagSegmentCmpOptions = {
+  ignoreCase?: boolean | undefined;
+};
+
 export type CreateFlagSegmentConditions = {
   lhs: CreateFlagSegmentLhs2 | CreateFlagSegmentLhs1;
   cmp: CreateFlagSegmentCmp;
@@ -102,6 +108,7 @@ export type CreateFlagSegmentConditions = {
     | number
     | boolean
     | undefined;
+  cmpOptions?: CreateFlagSegmentCmpOptions | undefined;
 };
 
 export type CreateFlagSegmentOutcomeBase = {
@@ -269,6 +276,10 @@ export type CreateFlagSegmentFeatureFlagsRhs =
   | number
   | boolean;
 
+export type CreateFlagSegmentFeatureFlagsCmpOptions = {
+  ignoreCase?: boolean | undefined;
+};
+
 export type CreateFlagSegmentLhsFeatureFlags2 = {
   type: "entity";
   kind: string;
@@ -295,6 +306,8 @@ export const CreateFlagSegmentFeatureFlagsCmp = {
   NotStartsWith: "!startsWith",
   EndsWith: "endsWith",
   NotEndsWith: "!endsWith",
+  Contains: "contains",
+  NotContains: "!contains",
   Ex: "ex",
   NotEx: "!ex",
   Gt: "gt",
@@ -318,6 +331,7 @@ export type CreateFlagSegmentFeatureFlagsConditions = {
     | number
     | boolean
     | undefined;
+  cmpOptions?: CreateFlagSegmentFeatureFlagsCmpOptions | undefined;
   lhs: CreateFlagSegmentLhsFeatureFlags1 | CreateFlagSegmentLhsFeatureFlags2;
   cmp: CreateFlagSegmentFeatureFlagsCmp;
 };
@@ -790,6 +804,47 @@ export function createFlagSegmentRhsFromJSON(
 }
 
 /** @internal */
+export const CreateFlagSegmentCmpOptions$inboundSchema: z.ZodType<
+  CreateFlagSegmentCmpOptions,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  ignoreCase: types.optional(types.boolean()),
+});
+/** @internal */
+export type CreateFlagSegmentCmpOptions$Outbound = {
+  ignoreCase?: boolean | undefined;
+};
+
+/** @internal */
+export const CreateFlagSegmentCmpOptions$outboundSchema: z.ZodType<
+  CreateFlagSegmentCmpOptions$Outbound,
+  z.ZodTypeDef,
+  CreateFlagSegmentCmpOptions
+> = z.object({
+  ignoreCase: z.boolean().optional(),
+});
+
+export function createFlagSegmentCmpOptionsToJSON(
+  createFlagSegmentCmpOptions: CreateFlagSegmentCmpOptions,
+): string {
+  return JSON.stringify(
+    CreateFlagSegmentCmpOptions$outboundSchema.parse(
+      createFlagSegmentCmpOptions,
+    ),
+  );
+}
+export function createFlagSegmentCmpOptionsFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateFlagSegmentCmpOptions, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateFlagSegmentCmpOptions$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateFlagSegmentCmpOptions' from JSON`,
+  );
+}
+
+/** @internal */
 export const CreateFlagSegmentConditions$inboundSchema: z.ZodType<
   CreateFlagSegmentConditions,
   z.ZodTypeDef,
@@ -809,6 +864,9 @@ export const CreateFlagSegmentConditions$inboundSchema: z.ZodType<
       types.boolean(),
     ]),
   ),
+  cmpOptions: types.optional(
+    z.lazy(() => CreateFlagSegmentCmpOptions$inboundSchema),
+  ),
 });
 /** @internal */
 export type CreateFlagSegmentConditions$Outbound = {
@@ -821,6 +879,7 @@ export type CreateFlagSegmentConditions$Outbound = {
     | number
     | boolean
     | undefined;
+  cmpOptions?: CreateFlagSegmentCmpOptions$Outbound | undefined;
 };
 
 /** @internal */
@@ -841,6 +900,8 @@ export const CreateFlagSegmentConditions$outboundSchema: z.ZodType<
     z.number(),
     z.boolean(),
   ]).optional(),
+  cmpOptions: z.lazy(() => CreateFlagSegmentCmpOptions$outboundSchema)
+    .optional(),
 });
 
 export function createFlagSegmentConditionsToJSON(
@@ -1868,6 +1929,54 @@ export function createFlagSegmentFeatureFlagsRhsFromJSON(
 }
 
 /** @internal */
+export const CreateFlagSegmentFeatureFlagsCmpOptions$inboundSchema: z.ZodType<
+  CreateFlagSegmentFeatureFlagsCmpOptions,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  ignoreCase: types.optional(types.boolean()),
+});
+/** @internal */
+export type CreateFlagSegmentFeatureFlagsCmpOptions$Outbound = {
+  ignoreCase?: boolean | undefined;
+};
+
+/** @internal */
+export const CreateFlagSegmentFeatureFlagsCmpOptions$outboundSchema: z.ZodType<
+  CreateFlagSegmentFeatureFlagsCmpOptions$Outbound,
+  z.ZodTypeDef,
+  CreateFlagSegmentFeatureFlagsCmpOptions
+> = z.object({
+  ignoreCase: z.boolean().optional(),
+});
+
+export function createFlagSegmentFeatureFlagsCmpOptionsToJSON(
+  createFlagSegmentFeatureFlagsCmpOptions:
+    CreateFlagSegmentFeatureFlagsCmpOptions,
+): string {
+  return JSON.stringify(
+    CreateFlagSegmentFeatureFlagsCmpOptions$outboundSchema.parse(
+      createFlagSegmentFeatureFlagsCmpOptions,
+    ),
+  );
+}
+export function createFlagSegmentFeatureFlagsCmpOptionsFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateFlagSegmentFeatureFlagsCmpOptions,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateFlagSegmentFeatureFlagsCmpOptions$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CreateFlagSegmentFeatureFlagsCmpOptions' from JSON`,
+  );
+}
+
+/** @internal */
 export const CreateFlagSegmentLhsFeatureFlags2$inboundSchema: z.ZodType<
   CreateFlagSegmentLhsFeatureFlags2,
   z.ZodTypeDef,
@@ -2022,6 +2131,9 @@ export const CreateFlagSegmentFeatureFlagsConditions$inboundSchema: z.ZodType<
       types.boolean(),
     ]),
   ),
+  cmpOptions: types.optional(
+    z.lazy(() => CreateFlagSegmentFeatureFlagsCmpOptions$inboundSchema),
+  ),
   lhs: z.union([
     z.lazy(() => CreateFlagSegmentLhsFeatureFlags1$inboundSchema),
     z.lazy(() => CreateFlagSegmentLhsFeatureFlags2$inboundSchema),
@@ -2037,6 +2149,7 @@ export type CreateFlagSegmentFeatureFlagsConditions$Outbound = {
     | number
     | boolean
     | undefined;
+  cmpOptions?: CreateFlagSegmentFeatureFlagsCmpOptions$Outbound | undefined;
   lhs:
     | CreateFlagSegmentLhsFeatureFlags1$Outbound
     | CreateFlagSegmentLhsFeatureFlags2$Outbound;
@@ -2056,6 +2169,9 @@ export const CreateFlagSegmentFeatureFlagsConditions$outboundSchema: z.ZodType<
     z.number(),
     z.boolean(),
   ]).optional(),
+  cmpOptions: z.lazy(() =>
+    CreateFlagSegmentFeatureFlagsCmpOptions$outboundSchema
+  ).optional(),
   lhs: z.union([
     z.lazy(() => CreateFlagSegmentLhsFeatureFlags1$outboundSchema),
     z.lazy(() => CreateFlagSegmentLhsFeatureFlags2$outboundSchema),

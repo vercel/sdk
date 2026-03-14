@@ -47,14 +47,13 @@ let value: GetSandboxResponseBody = {
         },
       ],
     },
-  },
-  routes: [
-    {
-      url: "https://lively-muscat.name",
-      port: 4823.17,
-      subdomain: "<value>",
+    activeCpuDurationMs: 42,
+    networkTransfer: {
+      ingress: 6500.87,
+      egress: 7213.27,
     },
-  ],
+  },
+  routes: [],
 };
 ```
 

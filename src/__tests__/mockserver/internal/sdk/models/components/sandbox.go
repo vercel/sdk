@@ -49,6 +49,26 @@ func (e *SandboxStatus) UnmarshalJSON(data []byte) error {
 	}
 }
 
+// NetworkTransfer - The quantity of data transfered to and from the sandbox, in bytes. This value is only available once the sandbox is stopped, and only if it stopped successfully.
+type NetworkTransfer struct {
+	Ingress float64 `json:"ingress"`
+	Egress  float64 `json:"egress"`
+}
+
+func (o *NetworkTransfer) GetIngress() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Ingress
+}
+
+func (o *NetworkTransfer) GetEgress() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Egress
+}
+
 // Sandbox - This object contains information related to a Vercel Sandbox.
 type Sandbox struct {
 	// The unique identifier of the sandbox.
@@ -89,6 +109,10 @@ type Sandbox struct {
 	UpdatedAt float64 `json:"updatedAt"`
 	// The network policy applied to this sandbox, if any.
 	NetworkPolicy *SandboxNetworkPolicy `json:"networkPolicy,omitempty"`
+	// The amount of CPU time the sandbox consumed, if available, in milliseconds. This value is only available once the sandbox is stopped, and only if it stopped successfully.
+	ActiveCPUDurationMs *float64 `json:"activeCpuDurationMs,omitempty"`
+	// The quantity of data transfered to and from the sandbox, in bytes. This value is only available once the sandbox is stopped, and only if it stopped successfully.
+	NetworkTransfer *NetworkTransfer `json:"networkTransfer,omitempty"`
 }
 
 func (o *Sandbox) GetID() string {
@@ -222,4 +246,18 @@ func (o *Sandbox) GetNetworkPolicy() *SandboxNetworkPolicy {
 		return nil
 	}
 	return o.NetworkPolicy
+}
+
+func (o *Sandbox) GetActiveCPUDurationMs() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.ActiveCPUDurationMs
+}
+
+func (o *Sandbox) GetNetworkTransfer() *NetworkTransfer {
+	if o == nil {
+		return nil
+	}
+	return o.NetworkTransfer
 }

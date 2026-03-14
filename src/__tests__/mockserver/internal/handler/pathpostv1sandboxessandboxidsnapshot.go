@@ -104,6 +104,11 @@ func testCreateSnapshotCreateSnapshot0(w http.ResponseWriter, req *http.Request)
 					},
 				},
 			},
+			ActiveCPUDurationMs: types.Float64(42),
+			NetworkTransfer: &components.NetworkTransfer{
+				Ingress: 2227.7,
+				Egress:  3795.65,
+			},
 		},
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)

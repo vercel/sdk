@@ -7,11 +7,13 @@ import { GetAllLogDrainsProjectAccess1 } from "@vercel/sdk/models/getalllogdrain
 
 let value: GetAllLogDrainsProjectAccess1 = {
   access: "all",
+  managedBy: "drain",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `access`           | *"all"*            | :heavy_check_mark: | N/A                |
+| Field                                                                                              | Type                                                                                               | Required                                                                                           | Description                                                                                        |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `access`                                                                                           | *"all"*                                                                                            | :heavy_check_mark:                                                                                 | N/A                                                                                                |
+| `managedBy`                                                                                        | [models.GetAllLogDrainsProjectAccessManagedBy](../models/getalllogdrainsprojectaccessmanagedby.md) | :heavy_check_mark:                                                                                 | N/A                                                                                                |

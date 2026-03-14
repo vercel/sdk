@@ -1364,6 +1364,99 @@ func (e *GetDeploymentsBlockCode) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type GetDeploymentsGitUserIDType string
+
+const (
+	GetDeploymentsGitUserIDTypeStr    GetDeploymentsGitUserIDType = "str"
+	GetDeploymentsGitUserIDTypeNumber GetDeploymentsGitUserIDType = "number"
+)
+
+type GetDeploymentsGitUserID struct {
+	Str    *string  `queryParam:"inline"`
+	Number *float64 `queryParam:"inline"`
+
+	Type GetDeploymentsGitUserIDType
+}
+
+func CreateGetDeploymentsGitUserIDStr(str string) GetDeploymentsGitUserID {
+	typ := GetDeploymentsGitUserIDTypeStr
+
+	return GetDeploymentsGitUserID{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func CreateGetDeploymentsGitUserIDNumber(number float64) GetDeploymentsGitUserID {
+	typ := GetDeploymentsGitUserIDTypeNumber
+
+	return GetDeploymentsGitUserID{
+		Number: &number,
+		Type:   typ,
+	}
+}
+
+func (u *GetDeploymentsGitUserID) UnmarshalJSON(data []byte) error {
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
+		u.Str = &str
+		u.Type = GetDeploymentsGitUserIDTypeStr
+		return nil
+	}
+
+	var number float64 = float64(0)
+	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
+		u.Number = &number
+		u.Type = GetDeploymentsGitUserIDTypeNumber
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetDeploymentsGitUserID", string(data))
+}
+
+func (u GetDeploymentsGitUserID) MarshalJSON() ([]byte, error) {
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	if u.Number != nil {
+		return utils.MarshalJSON(u.Number, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type GetDeploymentsGitUserID: all fields are null")
+}
+
+// GetDeploymentsGitProvider - The git provider type associated with gitUserId.
+type GetDeploymentsGitProvider string
+
+const (
+	GetDeploymentsGitProviderGithub    GetDeploymentsGitProvider = "github"
+	GetDeploymentsGitProviderGitlab    GetDeploymentsGitProvider = "gitlab"
+	GetDeploymentsGitProviderBitbucket GetDeploymentsGitProvider = "bitbucket"
+)
+
+func (e GetDeploymentsGitProvider) ToPointer() *GetDeploymentsGitProvider {
+	return &e
+}
+func (e *GetDeploymentsGitProvider) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "github":
+		fallthrough
+	case "gitlab":
+		fallthrough
+	case "bitbucket":
+		*e = GetDeploymentsGitProvider(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetDeploymentsGitProvider: %v", v)
+	}
+}
+
 // GetDeploymentsSeatBlock - NSNB Blocked metadata
 type GetDeploymentsSeatBlock struct {
 	// The NSNB decision code for the seat block. TODO: We should consolidate block types.
@@ -1371,7 +1464,10 @@ type GetDeploymentsSeatBlock struct {
 	// The blocked vercel user ID.
 	UserID *string `json:"userId,omitempty"`
 	// Determines if the user was verified during the block. In the git integration case, the commit sender was the author.
-	IsVerified *bool `json:"isVerified,omitempty"`
+	IsVerified *bool                    `json:"isVerified,omitempty"`
+	GitUserID  *GetDeploymentsGitUserID `json:"gitUserId,omitempty"`
+	// The git provider type associated with gitUserId.
+	GitProvider *GetDeploymentsGitProvider `json:"gitProvider,omitempty"`
 }
 
 func (o *GetDeploymentsSeatBlock) GetBlockCode() GetDeploymentsBlockCode {
@@ -1393,6 +1489,20 @@ func (o *GetDeploymentsSeatBlock) GetIsVerified() *bool {
 		return nil
 	}
 	return o.IsVerified
+}
+
+func (o *GetDeploymentsSeatBlock) GetGitUserID() *GetDeploymentsGitUserID {
+	if o == nil {
+		return nil
+	}
+	return o.GitUserID
+}
+
+func (o *GetDeploymentsSeatBlock) GetGitProvider() *GetDeploymentsGitProvider {
+	if o == nil {
+		return nil
+	}
+	return o.GitProvider
 }
 
 type GetDeploymentsDeployment struct {

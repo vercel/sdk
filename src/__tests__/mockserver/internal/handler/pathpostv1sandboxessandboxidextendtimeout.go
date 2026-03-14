@@ -94,6 +94,11 @@ func testExtendSandboxTimeoutExtendSandboxTimeout0(w http.ResponseWriter, req *h
 					},
 				},
 			},
+			ActiveCPUDurationMs: types.Float64(42),
+			NetworkTransfer: &components.NetworkTransfer{
+				Ingress: 3493.77,
+				Egress:  8135.86,
+			},
 		},
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)

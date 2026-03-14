@@ -428,13 +428,27 @@ export type CreateDrainFilterV21 = {
 
 export type ResponseBodyFilterV2 = CreateDrainFilterV21 | CreateDrainFilterV22;
 
+export const ProjectAccessManagedBy = {
+  Integration: "integration",
+  Drain: "drain",
+} as const;
+export type ProjectAccessManagedBy = ClosedEnum<typeof ProjectAccessManagedBy>;
+
 export type ProjectAccess2 = {
   access: "some";
   projectIds: Array<string>;
+  managedBy: ProjectAccessManagedBy;
 };
+
+export const ManagedBy = {
+  Integration: "integration",
+  Drain: "drain",
+} as const;
+export type ManagedBy = ClosedEnum<typeof ManagedBy>;
 
 export type ProjectAccess1 = {
   access: "all";
+  managedBy: ManagedBy;
 };
 
 export type ProjectAccess = ProjectAccess1 | ProjectAccess2;
@@ -3174,6 +3188,15 @@ export function responseBodyFilterV2FromJSON(
 }
 
 /** @internal */
+export const ProjectAccessManagedBy$inboundSchema: z.ZodNativeEnum<
+  typeof ProjectAccessManagedBy
+> = z.nativeEnum(ProjectAccessManagedBy);
+/** @internal */
+export const ProjectAccessManagedBy$outboundSchema: z.ZodNativeEnum<
+  typeof ProjectAccessManagedBy
+> = ProjectAccessManagedBy$inboundSchema;
+
+/** @internal */
 export const ProjectAccess2$inboundSchema: z.ZodType<
   ProjectAccess2,
   z.ZodTypeDef,
@@ -3181,11 +3204,13 @@ export const ProjectAccess2$inboundSchema: z.ZodType<
 > = z.object({
   access: types.literal("some"),
   projectIds: z.array(types.string()),
+  managedBy: ProjectAccessManagedBy$inboundSchema,
 });
 /** @internal */
 export type ProjectAccess2$Outbound = {
   access: "some";
   projectIds: Array<string>;
+  managedBy: string;
 };
 
 /** @internal */
@@ -3196,6 +3221,7 @@ export const ProjectAccess2$outboundSchema: z.ZodType<
 > = z.object({
   access: z.literal("some"),
   projectIds: z.array(z.string()),
+  managedBy: ProjectAccessManagedBy$outboundSchema,
 });
 
 export function projectAccess2ToJSON(projectAccess2: ProjectAccess2): string {
@@ -3212,16 +3238,25 @@ export function projectAccess2FromJSON(
 }
 
 /** @internal */
+export const ManagedBy$inboundSchema: z.ZodNativeEnum<typeof ManagedBy> = z
+  .nativeEnum(ManagedBy);
+/** @internal */
+export const ManagedBy$outboundSchema: z.ZodNativeEnum<typeof ManagedBy> =
+  ManagedBy$inboundSchema;
+
+/** @internal */
 export const ProjectAccess1$inboundSchema: z.ZodType<
   ProjectAccess1,
   z.ZodTypeDef,
   unknown
 > = z.object({
   access: types.literal("all"),
+  managedBy: ManagedBy$inboundSchema,
 });
 /** @internal */
 export type ProjectAccess1$Outbound = {
   access: "all";
+  managedBy: string;
 };
 
 /** @internal */
@@ -3231,6 +3266,7 @@ export const ProjectAccess1$outboundSchema: z.ZodType<
   ProjectAccess1
 > = z.object({
   access: z.literal("all"),
+  managedBy: ManagedBy$outboundSchema,
 });
 
 export function projectAccess1ToJSON(projectAccess1: ProjectAccess1): string {

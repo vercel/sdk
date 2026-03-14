@@ -3172,6 +3172,7 @@ type Lambdas2 struct {
 	TtyBuildLogs           *bool                                                         `json:"ttyBuildLogs,omitempty"`
 	CustomEnvironment      *GetDeploymentCustomEnvironmentUnion2                         `json:"customEnvironment,omitempty"`
 	OomReport              *GetDeploymentOomReport2                                      `json:"oomReport,omitempty"`
+	ReadyStateReason       *string                                                       `json:"readyStateReason,omitempty"`
 	AliasWarning           optionalnullable.OptionalNullable[GetDeploymentAliasWarning2] `json:"aliasWarning,omitempty"`
 	// A string holding the unique ID of the deployment
 	ID string `json:"id"`
@@ -3375,6 +3376,13 @@ func (o *Lambdas2) GetOomReport() *GetDeploymentOomReport2 {
 		return nil
 	}
 	return o.OomReport
+}
+
+func (o *Lambdas2) GetReadyStateReason() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ReadyStateReason
 }
 
 func (o *Lambdas2) GetAliasWarning() optionalnullable.OptionalNullable[GetDeploymentAliasWarning2] {

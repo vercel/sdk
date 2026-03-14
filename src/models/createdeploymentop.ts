@@ -2095,6 +2095,23 @@ export const BlockCode = {
  */
 export type BlockCode = ClosedEnum<typeof BlockCode>;
 
+export type CreateDeploymentGitUserId = string | number;
+
+/**
+ * The git provider type associated with gitUserId.
+ */
+export const CreateDeploymentGitProvider = {
+  Gitlab: "gitlab",
+  Bitbucket: "bitbucket",
+  Github: "github",
+} as const;
+/**
+ * The git provider type associated with gitUserId.
+ */
+export type CreateDeploymentGitProvider = ClosedEnum<
+  typeof CreateDeploymentGitProvider
+>;
+
 /**
  * NSNB Blocked metadata
  */
@@ -2111,6 +2128,11 @@ export type SeatBlock = {
    * Determines if the user was verified during the block. In the git integration case, the commit sender was the author.
    */
   isVerified?: boolean | undefined;
+  gitUserId?: string | number | undefined;
+  /**
+   * The git provider type associated with gitUserId.
+   */
+  gitProvider?: CreateDeploymentGitProvider | undefined;
 };
 
 /**
@@ -2127,7 +2149,6 @@ export type CreateDeploymentResponseBody = {
   isInConcurrentBuildsQueue: boolean;
   isInSystemBuildsQueue: boolean;
   projectSettings: CreateDeploymentProjectSettings;
-  readyStateReason?: string | undefined;
   integrations?: Integrations | undefined;
   images?: Images | undefined;
   /**
@@ -2173,6 +2194,7 @@ export type CreateDeploymentResponseBody = {
   ttyBuildLogs?: boolean | undefined;
   customEnvironment?: CustomEnvironment1 | CustomEnvironment2 | undefined;
   oomReport?: OomReport | undefined;
+  readyStateReason?: string | undefined;
   aliasWarning?: AliasWarning | null | undefined;
   /**
    * A string holding the unique ID of the deployment
@@ -8932,6 +8954,48 @@ export const BlockCode$outboundSchema: z.ZodNativeEnum<typeof BlockCode> =
   BlockCode$inboundSchema;
 
 /** @internal */
+export const CreateDeploymentGitUserId$inboundSchema: z.ZodType<
+  CreateDeploymentGitUserId,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([types.string(), types.number()]);
+/** @internal */
+export type CreateDeploymentGitUserId$Outbound = string | number;
+
+/** @internal */
+export const CreateDeploymentGitUserId$outboundSchema: z.ZodType<
+  CreateDeploymentGitUserId$Outbound,
+  z.ZodTypeDef,
+  CreateDeploymentGitUserId
+> = smartUnion([z.string(), z.number()]);
+
+export function createDeploymentGitUserIdToJSON(
+  createDeploymentGitUserId: CreateDeploymentGitUserId,
+): string {
+  return JSON.stringify(
+    CreateDeploymentGitUserId$outboundSchema.parse(createDeploymentGitUserId),
+  );
+}
+export function createDeploymentGitUserIdFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateDeploymentGitUserId, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateDeploymentGitUserId$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateDeploymentGitUserId' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateDeploymentGitProvider$inboundSchema: z.ZodNativeEnum<
+  typeof CreateDeploymentGitProvider
+> = z.nativeEnum(CreateDeploymentGitProvider);
+/** @internal */
+export const CreateDeploymentGitProvider$outboundSchema: z.ZodNativeEnum<
+  typeof CreateDeploymentGitProvider
+> = CreateDeploymentGitProvider$inboundSchema;
+
+/** @internal */
 export const SeatBlock$inboundSchema: z.ZodType<
   SeatBlock,
   z.ZodTypeDef,
@@ -8940,12 +9004,16 @@ export const SeatBlock$inboundSchema: z.ZodType<
   blockCode: BlockCode$inboundSchema,
   userId: types.optional(types.string()),
   isVerified: types.optional(types.boolean()),
+  gitUserId: types.optional(smartUnion([types.string(), types.number()])),
+  gitProvider: types.optional(CreateDeploymentGitProvider$inboundSchema),
 });
 /** @internal */
 export type SeatBlock$Outbound = {
   blockCode: string;
   userId?: string | undefined;
   isVerified?: boolean | undefined;
+  gitUserId?: string | number | undefined;
+  gitProvider?: string | undefined;
 };
 
 /** @internal */
@@ -8957,6 +9025,8 @@ export const SeatBlock$outboundSchema: z.ZodType<
   blockCode: BlockCode$outboundSchema,
   userId: z.string().optional(),
   isVerified: z.boolean().optional(),
+  gitUserId: smartUnion([z.string(), z.number()]).optional(),
+  gitProvider: CreateDeploymentGitProvider$outboundSchema.optional(),
 });
 
 export function seatBlockToJSON(seatBlock: SeatBlock): string {
@@ -8989,7 +9059,6 @@ export const CreateDeploymentResponseBody$inboundSchema: z.ZodType<
   isInConcurrentBuildsQueue: types.boolean(),
   isInSystemBuildsQueue: types.boolean(),
   projectSettings: z.lazy(() => CreateDeploymentProjectSettings$inboundSchema),
-  readyStateReason: types.optional(types.string()),
   integrations: types.optional(z.lazy(() => Integrations$inboundSchema)),
   images: types.optional(z.lazy(() => Images$inboundSchema)),
   alias: types.optional(z.array(types.string())),
@@ -9016,6 +9085,7 @@ export const CreateDeploymentResponseBody$inboundSchema: z.ZodType<
     ]),
   ),
   oomReport: types.optional(OomReport$inboundSchema),
+  readyStateReason: types.optional(types.string()),
   aliasWarning: z.nullable(z.lazy(() => AliasWarning$inboundSchema)).optional(),
   id: types.string(),
   createdAt: types.number(),
@@ -9130,7 +9200,6 @@ export type CreateDeploymentResponseBody$Outbound = {
   isInConcurrentBuildsQueue: boolean;
   isInSystemBuildsQueue: boolean;
   projectSettings: CreateDeploymentProjectSettings$Outbound;
-  readyStateReason?: string | undefined;
   integrations?: Integrations$Outbound | undefined;
   images?: Images$Outbound | undefined;
   alias?: Array<string> | undefined;
@@ -9155,6 +9224,7 @@ export type CreateDeploymentResponseBody$Outbound = {
     | CustomEnvironment2$Outbound
     | undefined;
   oomReport?: string | undefined;
+  readyStateReason?: string | undefined;
   aliasWarning?: AliasWarning$Outbound | null | undefined;
   id: string;
   createdAt: number;
@@ -9253,7 +9323,6 @@ export const CreateDeploymentResponseBody$outboundSchema: z.ZodType<
   isInConcurrentBuildsQueue: z.boolean(),
   isInSystemBuildsQueue: z.boolean(),
   projectSettings: z.lazy(() => CreateDeploymentProjectSettings$outboundSchema),
-  readyStateReason: z.string().optional(),
   integrations: z.lazy(() => Integrations$outboundSchema).optional(),
   images: z.lazy(() => Images$outboundSchema).optional(),
   alias: z.array(z.string()).optional(),
@@ -9278,6 +9347,7 @@ export const CreateDeploymentResponseBody$outboundSchema: z.ZodType<
     z.lazy(() => CustomEnvironment2$outboundSchema),
   ]).optional(),
   oomReport: OomReport$outboundSchema.optional(),
+  readyStateReason: z.string().optional(),
   aliasWarning: z.nullable(z.lazy(() => AliasWarning$outboundSchema))
     .optional(),
   id: z.string(),

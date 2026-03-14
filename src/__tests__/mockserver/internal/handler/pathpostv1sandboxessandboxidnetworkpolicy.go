@@ -94,6 +94,11 @@ func testUpdateNetworkPolicyUpdateNetworkPolicy0(w http.ResponseWriter, req *htt
 					},
 				},
 			},
+			ActiveCPUDurationMs: types.Float64(42),
+			NetworkTransfer: &components.NetworkTransfer{
+				Ingress: 6094.25,
+				Egress:  9868.24,
+			},
 		},
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)

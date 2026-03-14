@@ -843,6 +843,23 @@ export const ResponseBodyBlockCode = {
  */
 export type ResponseBodyBlockCode = ClosedEnum<typeof ResponseBodyBlockCode>;
 
+export type ResponseBodyGitUserId = string | number;
+
+/**
+ * The git provider type associated with gitUserId.
+ */
+export const ResponseBodyGitProvider = {
+  Gitlab: "gitlab",
+  Bitbucket: "bitbucket",
+  Github: "github",
+} as const;
+/**
+ * The git provider type associated with gitUserId.
+ */
+export type ResponseBodyGitProvider = ClosedEnum<
+  typeof ResponseBodyGitProvider
+>;
+
 /**
  * NSNB Blocked metadata
  */
@@ -859,6 +876,11 @@ export type ResponseBodySeatBlock = {
    * Determines if the user was verified during the block. In the git integration case, the commit sender was the author.
    */
   isVerified?: boolean | undefined;
+  gitUserId?: string | number | undefined;
+  /**
+   * The git provider type associated with gitUserId.
+   */
+  gitProvider?: ResponseBodyGitProvider | undefined;
 };
 
 /**
@@ -875,7 +897,6 @@ export type GetDeploymentResponseBody1 = {
   isInConcurrentBuildsQueue: boolean;
   isInSystemBuildsQueue: boolean;
   projectSettings: ResponseBodyProjectSettings;
-  readyStateReason?: string | undefined;
   integrations?: ResponseBodyIntegrations | undefined;
   images?: ResponseBodyImages | undefined;
   /**
@@ -921,6 +942,7 @@ export type GetDeploymentResponseBody1 = {
   ttyBuildLogs?: boolean | undefined;
   customEnvironment?: GetDeploymentResponseBodyCustomEnvironment | undefined;
   oomReport?: GetDeploymentResponseBodyOomReport | undefined;
+  readyStateReason?: string | undefined;
   aliasWarning?: GetDeploymentResponseBodyAliasWarning | null | undefined;
   /**
    * A string holding the unique ID of the deployment
@@ -4164,6 +4186,48 @@ export const ResponseBodyBlockCode$outboundSchema: z.ZodNativeEnum<
 > = ResponseBodyBlockCode$inboundSchema;
 
 /** @internal */
+export const ResponseBodyGitUserId$inboundSchema: z.ZodType<
+  ResponseBodyGitUserId,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([types.string(), types.number()]);
+/** @internal */
+export type ResponseBodyGitUserId$Outbound = string | number;
+
+/** @internal */
+export const ResponseBodyGitUserId$outboundSchema: z.ZodType<
+  ResponseBodyGitUserId$Outbound,
+  z.ZodTypeDef,
+  ResponseBodyGitUserId
+> = smartUnion([z.string(), z.number()]);
+
+export function responseBodyGitUserIdToJSON(
+  responseBodyGitUserId: ResponseBodyGitUserId,
+): string {
+  return JSON.stringify(
+    ResponseBodyGitUserId$outboundSchema.parse(responseBodyGitUserId),
+  );
+}
+export function responseBodyGitUserIdFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodyGitUserId, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodyGitUserId$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyGitUserId' from JSON`,
+  );
+}
+
+/** @internal */
+export const ResponseBodyGitProvider$inboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyGitProvider
+> = z.nativeEnum(ResponseBodyGitProvider);
+/** @internal */
+export const ResponseBodyGitProvider$outboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyGitProvider
+> = ResponseBodyGitProvider$inboundSchema;
+
+/** @internal */
 export const ResponseBodySeatBlock$inboundSchema: z.ZodType<
   ResponseBodySeatBlock,
   z.ZodTypeDef,
@@ -4172,12 +4236,16 @@ export const ResponseBodySeatBlock$inboundSchema: z.ZodType<
   blockCode: ResponseBodyBlockCode$inboundSchema,
   userId: types.optional(types.string()),
   isVerified: types.optional(types.boolean()),
+  gitUserId: types.optional(smartUnion([types.string(), types.number()])),
+  gitProvider: types.optional(ResponseBodyGitProvider$inboundSchema),
 });
 /** @internal */
 export type ResponseBodySeatBlock$Outbound = {
   blockCode: string;
   userId?: string | undefined;
   isVerified?: boolean | undefined;
+  gitUserId?: string | number | undefined;
+  gitProvider?: string | undefined;
 };
 
 /** @internal */
@@ -4189,6 +4257,8 @@ export const ResponseBodySeatBlock$outboundSchema: z.ZodType<
   blockCode: ResponseBodyBlockCode$outboundSchema,
   userId: z.string().optional(),
   isVerified: z.boolean().optional(),
+  gitUserId: smartUnion([z.string(), z.number()]).optional(),
+  gitProvider: ResponseBodyGitProvider$outboundSchema.optional(),
 });
 
 export function responseBodySeatBlockToJSON(
@@ -4225,7 +4295,6 @@ export const GetDeploymentResponseBody1$inboundSchema: z.ZodType<
   isInConcurrentBuildsQueue: types.boolean(),
   isInSystemBuildsQueue: types.boolean(),
   projectSettings: ResponseBodyProjectSettings$inboundSchema,
-  readyStateReason: types.optional(types.string()),
   integrations: types.optional(ResponseBodyIntegrations$inboundSchema),
   images: types.optional(ResponseBodyImages$inboundSchema),
   alias: types.optional(z.array(types.string())),
@@ -4251,6 +4320,7 @@ export const GetDeploymentResponseBody1$inboundSchema: z.ZodType<
     GetDeploymentResponseBodyCustomEnvironment$inboundSchema,
   ),
   oomReport: types.optional(GetDeploymentResponseBodyOomReport$inboundSchema),
+  readyStateReason: types.optional(types.string()),
   aliasWarning: z.nullable(GetDeploymentResponseBodyAliasWarning$inboundSchema)
     .optional(),
   id: types.string(),
@@ -4360,7 +4430,6 @@ export type GetDeploymentResponseBody1$Outbound = {
   isInConcurrentBuildsQueue: boolean;
   isInSystemBuildsQueue: boolean;
   projectSettings: ResponseBodyProjectSettings$Outbound;
-  readyStateReason?: string | undefined;
   integrations?: ResponseBodyIntegrations$Outbound | undefined;
   images?: ResponseBodyImages$Outbound | undefined;
   alias?: Array<string> | undefined;
@@ -4384,6 +4453,7 @@ export type GetDeploymentResponseBody1$Outbound = {
     | GetDeploymentResponseBodyCustomEnvironment$Outbound
     | undefined;
   oomReport?: string | undefined;
+  readyStateReason?: string | undefined;
   aliasWarning?:
     | GetDeploymentResponseBodyAliasWarning$Outbound
     | null
@@ -4486,7 +4556,6 @@ export const GetDeploymentResponseBody1$outboundSchema: z.ZodType<
   isInConcurrentBuildsQueue: z.boolean(),
   isInSystemBuildsQueue: z.boolean(),
   projectSettings: ResponseBodyProjectSettings$outboundSchema,
-  readyStateReason: z.string().optional(),
   integrations: ResponseBodyIntegrations$outboundSchema.optional(),
   images: ResponseBodyImages$outboundSchema.optional(),
   alias: z.array(z.string()).optional(),
@@ -4509,6 +4578,7 @@ export const GetDeploymentResponseBody1$outboundSchema: z.ZodType<
   customEnvironment: GetDeploymentResponseBodyCustomEnvironment$outboundSchema
     .optional(),
   oomReport: GetDeploymentResponseBodyOomReport$outboundSchema.optional(),
+  readyStateReason: z.string().optional(),
   aliasWarning: z.nullable(GetDeploymentResponseBodyAliasWarning$outboundSchema)
     .optional(),
   id: z.string(),

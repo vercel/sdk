@@ -524,6 +524,23 @@ export type GetDeploymentsBlockCode = ClosedEnum<
   typeof GetDeploymentsBlockCode
 >;
 
+export type GetDeploymentsGitUserId = string | number;
+
+/**
+ * The git provider type associated with gitUserId.
+ */
+export const GetDeploymentsGitProvider = {
+  Github: "github",
+  Gitlab: "gitlab",
+  Bitbucket: "bitbucket",
+} as const;
+/**
+ * The git provider type associated with gitUserId.
+ */
+export type GetDeploymentsGitProvider = ClosedEnum<
+  typeof GetDeploymentsGitProvider
+>;
+
 /**
  * NSNB Blocked metadata
  */
@@ -540,6 +557,11 @@ export type GetDeploymentsSeatBlock = {
    * Determines if the user was verified during the block. In the git integration case, the commit sender was the author.
    */
   isVerified?: boolean | undefined;
+  gitUserId?: string | number | undefined;
+  /**
+   * The git provider type associated with gitUserId.
+   */
+  gitProvider?: GetDeploymentsGitProvider | undefined;
 };
 
 export type Deployments = {
@@ -1609,6 +1631,48 @@ export const GetDeploymentsBlockCode$outboundSchema: z.ZodNativeEnum<
 > = GetDeploymentsBlockCode$inboundSchema;
 
 /** @internal */
+export const GetDeploymentsGitUserId$inboundSchema: z.ZodType<
+  GetDeploymentsGitUserId,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([types.string(), types.number()]);
+/** @internal */
+export type GetDeploymentsGitUserId$Outbound = string | number;
+
+/** @internal */
+export const GetDeploymentsGitUserId$outboundSchema: z.ZodType<
+  GetDeploymentsGitUserId$Outbound,
+  z.ZodTypeDef,
+  GetDeploymentsGitUserId
+> = smartUnion([z.string(), z.number()]);
+
+export function getDeploymentsGitUserIdToJSON(
+  getDeploymentsGitUserId: GetDeploymentsGitUserId,
+): string {
+  return JSON.stringify(
+    GetDeploymentsGitUserId$outboundSchema.parse(getDeploymentsGitUserId),
+  );
+}
+export function getDeploymentsGitUserIdFromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentsGitUserId, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDeploymentsGitUserId$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentsGitUserId' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentsGitProvider$inboundSchema: z.ZodNativeEnum<
+  typeof GetDeploymentsGitProvider
+> = z.nativeEnum(GetDeploymentsGitProvider);
+/** @internal */
+export const GetDeploymentsGitProvider$outboundSchema: z.ZodNativeEnum<
+  typeof GetDeploymentsGitProvider
+> = GetDeploymentsGitProvider$inboundSchema;
+
+/** @internal */
 export const GetDeploymentsSeatBlock$inboundSchema: z.ZodType<
   GetDeploymentsSeatBlock,
   z.ZodTypeDef,
@@ -1617,12 +1681,16 @@ export const GetDeploymentsSeatBlock$inboundSchema: z.ZodType<
   blockCode: GetDeploymentsBlockCode$inboundSchema,
   userId: types.optional(types.string()),
   isVerified: types.optional(types.boolean()),
+  gitUserId: types.optional(smartUnion([types.string(), types.number()])),
+  gitProvider: types.optional(GetDeploymentsGitProvider$inboundSchema),
 });
 /** @internal */
 export type GetDeploymentsSeatBlock$Outbound = {
   blockCode: string;
   userId?: string | undefined;
   isVerified?: boolean | undefined;
+  gitUserId?: string | number | undefined;
+  gitProvider?: string | undefined;
 };
 
 /** @internal */
@@ -1634,6 +1702,8 @@ export const GetDeploymentsSeatBlock$outboundSchema: z.ZodType<
   blockCode: GetDeploymentsBlockCode$outboundSchema,
   userId: z.string().optional(),
   isVerified: z.boolean().optional(),
+  gitUserId: smartUnion([z.string(), z.number()]).optional(),
+  gitProvider: GetDeploymentsGitProvider$outboundSchema.optional(),
 });
 
 export function getDeploymentsSeatBlockToJSON(

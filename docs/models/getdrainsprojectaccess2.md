@@ -10,12 +10,14 @@ let value: GetDrainsProjectAccess2 = {
   projectIds: [
     "<value 1>",
   ],
+  managedBy: "integration",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `access`           | *"some"*           | :heavy_check_mark: | N/A                |
-| `projectIds`       | *string*[]         | :heavy_check_mark: | N/A                |
+| Field                                                                                              | Type                                                                                               | Required                                                                                           | Description                                                                                        |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `access`                                                                                           | *"some"*                                                                                           | :heavy_check_mark:                                                                                 | N/A                                                                                                |
+| `projectIds`                                                                                       | *string*[]                                                                                         | :heavy_check_mark:                                                                                 | N/A                                                                                                |
+| `managedBy`                                                                                        | [models.GetDrainsProjectAccessDrainsManagedBy](../models/getdrainsprojectaccessdrainsmanagedby.md) | :heavy_check_mark:                                                                                 | N/A                                                                                                |

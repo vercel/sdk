@@ -89,6 +89,11 @@ func testGetSandboxGetSandbox0(w http.ResponseWriter, req *http.Request) {
 					},
 				},
 			},
+			ActiveCPUDurationMs: types.Float64(42),
+			NetworkTransfer: &components.NetworkTransfer{
+				Ingress: 2066.84,
+				Egress:  9199.29,
+			},
 		},
 		Routes: []components.SandboxPublicRoute{},
 	}

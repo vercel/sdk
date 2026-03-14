@@ -1862,9 +1862,36 @@ func (e *GetDrainsAccessSome) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type GetDrainsManagedBy2 string
+
+const (
+	GetDrainsManagedBy2Integration GetDrainsManagedBy2 = "integration"
+	GetDrainsManagedBy2Drain       GetDrainsManagedBy2 = "drain"
+)
+
+func (e GetDrainsManagedBy2) ToPointer() *GetDrainsManagedBy2 {
+	return &e
+}
+func (e *GetDrainsManagedBy2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "integration":
+		fallthrough
+	case "drain":
+		*e = GetDrainsManagedBy2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetDrainsManagedBy2: %v", v)
+	}
+}
+
 type GetDrainsProjectAccessSome struct {
 	Access     GetDrainsAccessSome `json:"access"`
 	ProjectIds []string            `json:"projectIds"`
+	ManagedBy  GetDrainsManagedBy2 `json:"managedBy"`
 }
 
 func (g GetDrainsProjectAccessSome) MarshalJSON() ([]byte, error) {
@@ -1872,7 +1899,7 @@ func (g GetDrainsProjectAccessSome) MarshalJSON() ([]byte, error) {
 }
 
 func (g *GetDrainsProjectAccessSome) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"access", "projectIds"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"access", "projectIds", "managedBy"}); err != nil {
 		return err
 	}
 	return nil
@@ -1890,6 +1917,13 @@ func (o *GetDrainsProjectAccessSome) GetProjectIds() []string {
 		return []string{}
 	}
 	return o.ProjectIds
+}
+
+func (o *GetDrainsProjectAccessSome) GetManagedBy() GetDrainsManagedBy2 {
+	if o == nil {
+		return GetDrainsManagedBy2("")
+	}
+	return o.ManagedBy
 }
 
 type GetDrainsAccessAll string
@@ -1915,8 +1949,35 @@ func (e *GetDrainsAccessAll) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type GetDrainsManagedBy1 string
+
+const (
+	GetDrainsManagedBy1Integration GetDrainsManagedBy1 = "integration"
+	GetDrainsManagedBy1Drain       GetDrainsManagedBy1 = "drain"
+)
+
+func (e GetDrainsManagedBy1) ToPointer() *GetDrainsManagedBy1 {
+	return &e
+}
+func (e *GetDrainsManagedBy1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "integration":
+		fallthrough
+	case "drain":
+		*e = GetDrainsManagedBy1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetDrainsManagedBy1: %v", v)
+	}
+}
+
 type GetDrainsProjectAccessAll struct {
-	Access GetDrainsAccessAll `json:"access"`
+	Access    GetDrainsAccessAll  `json:"access"`
+	ManagedBy GetDrainsManagedBy1 `json:"managedBy"`
 }
 
 func (g GetDrainsProjectAccessAll) MarshalJSON() ([]byte, error) {
@@ -1924,7 +1985,7 @@ func (g GetDrainsProjectAccessAll) MarshalJSON() ([]byte, error) {
 }
 
 func (g *GetDrainsProjectAccessAll) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"access"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"access", "managedBy"}); err != nil {
 		return err
 	}
 	return nil
@@ -1935,6 +1996,13 @@ func (o *GetDrainsProjectAccessAll) GetAccess() GetDrainsAccessAll {
 		return GetDrainsAccessAll("")
 	}
 	return o.Access
+}
+
+func (o *GetDrainsProjectAccessAll) GetManagedBy() GetDrainsManagedBy1 {
+	if o == nil {
+		return GetDrainsManagedBy1("")
+	}
+	return o.ManagedBy
 }
 
 type GetDrainsProjectAccessUnionType string

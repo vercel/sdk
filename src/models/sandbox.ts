@@ -33,6 +33,14 @@ export const SandboxStatus = {
 export type SandboxStatus = ClosedEnum<typeof SandboxStatus>;
 
 /**
+ * The quantity of data transfered to and from the sandbox, in bytes. This value is only available once the sandbox is stopped, and only if it stopped successfully.
+ */
+export type NetworkTransfer = {
+  ingress: number;
+  egress: number;
+};
+
+/**
  * This object contains information related to a Vercel Sandbox.
  */
 export type Sandbox = {
@@ -112,6 +120,14 @@ export type Sandbox = {
    * The network policy applied to this sandbox, if any.
    */
   networkPolicy?: SandboxNetworkPolicy | undefined;
+  /**
+   * The amount of CPU time the sandbox consumed, if available, in milliseconds. This value is only available once the sandbox is stopped, and only if it stopped successfully.
+   */
+  activeCpuDurationMs?: number | undefined;
+  /**
+   * The quantity of data transfered to and from the sandbox, in bytes. This value is only available once the sandbox is stopped, and only if it stopped successfully.
+   */
+  networkTransfer?: NetworkTransfer | undefined;
 };
 
 /** @internal */
@@ -122,6 +138,46 @@ export const SandboxStatus$inboundSchema: z.ZodNativeEnum<
 export const SandboxStatus$outboundSchema: z.ZodNativeEnum<
   typeof SandboxStatus
 > = SandboxStatus$inboundSchema;
+
+/** @internal */
+export const NetworkTransfer$inboundSchema: z.ZodType<
+  NetworkTransfer,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  ingress: types.number(),
+  egress: types.number(),
+});
+/** @internal */
+export type NetworkTransfer$Outbound = {
+  ingress: number;
+  egress: number;
+};
+
+/** @internal */
+export const NetworkTransfer$outboundSchema: z.ZodType<
+  NetworkTransfer$Outbound,
+  z.ZodTypeDef,
+  NetworkTransfer
+> = z.object({
+  ingress: z.number(),
+  egress: z.number(),
+});
+
+export function networkTransferToJSON(
+  networkTransfer: NetworkTransfer,
+): string {
+  return JSON.stringify(NetworkTransfer$outboundSchema.parse(networkTransfer));
+}
+export function networkTransferFromJSON(
+  jsonString: string,
+): SafeParseResult<NetworkTransfer, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => NetworkTransfer$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'NetworkTransfer' from JSON`,
+  );
+}
 
 /** @internal */
 export const Sandbox$inboundSchema: z.ZodType<Sandbox, z.ZodTypeDef, unknown> =
@@ -145,6 +201,10 @@ export const Sandbox$inboundSchema: z.ZodType<Sandbox, z.ZodTypeDef, unknown> =
     createdAt: types.number(),
     updatedAt: types.number(),
     networkPolicy: types.optional(SandboxNetworkPolicy$inboundSchema),
+    activeCpuDurationMs: types.optional(types.number()),
+    networkTransfer: types.optional(
+      z.lazy(() => NetworkTransfer$inboundSchema),
+    ),
   });
 /** @internal */
 export type Sandbox$Outbound = {
@@ -167,6 +227,8 @@ export type Sandbox$Outbound = {
   createdAt: number;
   updatedAt: number;
   networkPolicy?: SandboxNetworkPolicy$Outbound | undefined;
+  activeCpuDurationMs?: number | undefined;
+  networkTransfer?: NetworkTransfer$Outbound | undefined;
 };
 
 /** @internal */
@@ -194,6 +256,8 @@ export const Sandbox$outboundSchema: z.ZodType<
   createdAt: z.number(),
   updatedAt: z.number(),
   networkPolicy: SandboxNetworkPolicy$outboundSchema.optional(),
+  activeCpuDurationMs: z.number().optional(),
+  networkTransfer: z.lazy(() => NetworkTransfer$outboundSchema).optional(),
 });
 
 export function sandboxToJSON(sandbox: Sandbox): string {

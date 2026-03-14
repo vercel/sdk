@@ -1688,6 +1688,23 @@ export type CancelDeploymentBlockCode = ClosedEnum<
   typeof CancelDeploymentBlockCode
 >;
 
+export type CancelDeploymentGitUserId = string | number;
+
+/**
+ * The git provider type associated with gitUserId.
+ */
+export const CancelDeploymentGitProvider = {
+  Gitlab: "gitlab",
+  Bitbucket: "bitbucket",
+  Github: "github",
+} as const;
+/**
+ * The git provider type associated with gitUserId.
+ */
+export type CancelDeploymentGitProvider = ClosedEnum<
+  typeof CancelDeploymentGitProvider
+>;
+
 /**
  * NSNB Blocked metadata
  */
@@ -1704,6 +1721,11 @@ export type CancelDeploymentSeatBlock = {
    * Determines if the user was verified during the block. In the git integration case, the commit sender was the author.
    */
   isVerified?: boolean | undefined;
+  gitUserId?: string | number | undefined;
+  /**
+   * The git provider type associated with gitUserId.
+   */
+  gitProvider?: CancelDeploymentGitProvider | undefined;
 };
 
 /**
@@ -1720,7 +1742,6 @@ export type CancelDeploymentResponseBody = {
   isInConcurrentBuildsQueue: boolean;
   isInSystemBuildsQueue: boolean;
   projectSettings: CancelDeploymentProjectSettings;
-  readyStateReason?: string | undefined;
   integrations?: CancelDeploymentIntegrations | undefined;
   images?: CancelDeploymentImages | undefined;
   /**
@@ -1769,6 +1790,7 @@ export type CancelDeploymentResponseBody = {
     | CancelDeploymentCustomEnvironment2
     | undefined;
   oomReport?: CancelDeploymentOomReport | undefined;
+  readyStateReason?: string | undefined;
   aliasWarning?: CancelDeploymentAliasWarning | null | undefined;
   /**
    * A string holding the unique ID of the deployment
@@ -7843,6 +7865,48 @@ export const CancelDeploymentBlockCode$outboundSchema: z.ZodNativeEnum<
 > = CancelDeploymentBlockCode$inboundSchema;
 
 /** @internal */
+export const CancelDeploymentGitUserId$inboundSchema: z.ZodType<
+  CancelDeploymentGitUserId,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([types.string(), types.number()]);
+/** @internal */
+export type CancelDeploymentGitUserId$Outbound = string | number;
+
+/** @internal */
+export const CancelDeploymentGitUserId$outboundSchema: z.ZodType<
+  CancelDeploymentGitUserId$Outbound,
+  z.ZodTypeDef,
+  CancelDeploymentGitUserId
+> = smartUnion([z.string(), z.number()]);
+
+export function cancelDeploymentGitUserIdToJSON(
+  cancelDeploymentGitUserId: CancelDeploymentGitUserId,
+): string {
+  return JSON.stringify(
+    CancelDeploymentGitUserId$outboundSchema.parse(cancelDeploymentGitUserId),
+  );
+}
+export function cancelDeploymentGitUserIdFromJSON(
+  jsonString: string,
+): SafeParseResult<CancelDeploymentGitUserId, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CancelDeploymentGitUserId$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CancelDeploymentGitUserId' from JSON`,
+  );
+}
+
+/** @internal */
+export const CancelDeploymentGitProvider$inboundSchema: z.ZodNativeEnum<
+  typeof CancelDeploymentGitProvider
+> = z.nativeEnum(CancelDeploymentGitProvider);
+/** @internal */
+export const CancelDeploymentGitProvider$outboundSchema: z.ZodNativeEnum<
+  typeof CancelDeploymentGitProvider
+> = CancelDeploymentGitProvider$inboundSchema;
+
+/** @internal */
 export const CancelDeploymentSeatBlock$inboundSchema: z.ZodType<
   CancelDeploymentSeatBlock,
   z.ZodTypeDef,
@@ -7851,12 +7915,16 @@ export const CancelDeploymentSeatBlock$inboundSchema: z.ZodType<
   blockCode: CancelDeploymentBlockCode$inboundSchema,
   userId: types.optional(types.string()),
   isVerified: types.optional(types.boolean()),
+  gitUserId: types.optional(smartUnion([types.string(), types.number()])),
+  gitProvider: types.optional(CancelDeploymentGitProvider$inboundSchema),
 });
 /** @internal */
 export type CancelDeploymentSeatBlock$Outbound = {
   blockCode: string;
   userId?: string | undefined;
   isVerified?: boolean | undefined;
+  gitUserId?: string | number | undefined;
+  gitProvider?: string | undefined;
 };
 
 /** @internal */
@@ -7868,6 +7936,8 @@ export const CancelDeploymentSeatBlock$outboundSchema: z.ZodType<
   blockCode: CancelDeploymentBlockCode$outboundSchema,
   userId: z.string().optional(),
   isVerified: z.boolean().optional(),
+  gitUserId: smartUnion([z.string(), z.number()]).optional(),
+  gitProvider: CancelDeploymentGitProvider$outboundSchema.optional(),
 });
 
 export function cancelDeploymentSeatBlockToJSON(
@@ -7906,7 +7976,6 @@ export const CancelDeploymentResponseBody$inboundSchema: z.ZodType<
   isInConcurrentBuildsQueue: types.boolean(),
   isInSystemBuildsQueue: types.boolean(),
   projectSettings: z.lazy(() => CancelDeploymentProjectSettings$inboundSchema),
-  readyStateReason: types.optional(types.string()),
   integrations: types.optional(
     z.lazy(() => CancelDeploymentIntegrations$inboundSchema),
   ),
@@ -7937,6 +8006,7 @@ export const CancelDeploymentResponseBody$inboundSchema: z.ZodType<
     ]),
   ),
   oomReport: types.optional(CancelDeploymentOomReport$inboundSchema),
+  readyStateReason: types.optional(types.string()),
   aliasWarning: z.nullable(
     z.lazy(() => CancelDeploymentAliasWarning$inboundSchema),
   ).optional(),
@@ -8065,7 +8135,6 @@ export type CancelDeploymentResponseBody$Outbound = {
   isInConcurrentBuildsQueue: boolean;
   isInSystemBuildsQueue: boolean;
   projectSettings: CancelDeploymentProjectSettings$Outbound;
-  readyStateReason?: string | undefined;
   integrations?: CancelDeploymentIntegrations$Outbound | undefined;
   images?: CancelDeploymentImages$Outbound | undefined;
   alias?: Array<string> | undefined;
@@ -8090,6 +8159,7 @@ export type CancelDeploymentResponseBody$Outbound = {
     | CancelDeploymentCustomEnvironment2$Outbound
     | undefined;
   oomReport?: string | undefined;
+  readyStateReason?: string | undefined;
   aliasWarning?: CancelDeploymentAliasWarning$Outbound | null | undefined;
   id: string;
   createdAt: number;
@@ -8201,7 +8271,6 @@ export const CancelDeploymentResponseBody$outboundSchema: z.ZodType<
   isInConcurrentBuildsQueue: z.boolean(),
   isInSystemBuildsQueue: z.boolean(),
   projectSettings: z.lazy(() => CancelDeploymentProjectSettings$outboundSchema),
-  readyStateReason: z.string().optional(),
   integrations: z.lazy(() => CancelDeploymentIntegrations$outboundSchema)
     .optional(),
   images: z.lazy(() => CancelDeploymentImages$outboundSchema).optional(),
@@ -8228,6 +8297,7 @@ export const CancelDeploymentResponseBody$outboundSchema: z.ZodType<
     z.lazy(() => CancelDeploymentCustomEnvironment2$outboundSchema),
   ]).optional(),
   oomReport: CancelDeploymentOomReport$outboundSchema.optional(),
+  readyStateReason: z.string().optional(),
   aliasWarning: z.nullable(
     z.lazy(() => CancelDeploymentAliasWarning$outboundSchema),
   ).optional(),

@@ -49,6 +49,11 @@ let value: UpdateNetworkPolicyResponseBody = {
         },
       ],
     },
+    activeCpuDurationMs: 42,
+    networkTransfer: {
+      ingress: 6500.87,
+      egress: 7213.27,
+    },
   },
 };
 ```

@@ -8104,6 +8104,99 @@ func (e *CancelDeploymentBlockCode) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type CancelDeploymentGitUserIDType string
+
+const (
+	CancelDeploymentGitUserIDTypeStr    CancelDeploymentGitUserIDType = "str"
+	CancelDeploymentGitUserIDTypeNumber CancelDeploymentGitUserIDType = "number"
+)
+
+type CancelDeploymentGitUserID struct {
+	Str    *string  `queryParam:"inline"`
+	Number *float64 `queryParam:"inline"`
+
+	Type CancelDeploymentGitUserIDType
+}
+
+func CreateCancelDeploymentGitUserIDStr(str string) CancelDeploymentGitUserID {
+	typ := CancelDeploymentGitUserIDTypeStr
+
+	return CancelDeploymentGitUserID{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func CreateCancelDeploymentGitUserIDNumber(number float64) CancelDeploymentGitUserID {
+	typ := CancelDeploymentGitUserIDTypeNumber
+
+	return CancelDeploymentGitUserID{
+		Number: &number,
+		Type:   typ,
+	}
+}
+
+func (u *CancelDeploymentGitUserID) UnmarshalJSON(data []byte) error {
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
+		u.Str = &str
+		u.Type = CancelDeploymentGitUserIDTypeStr
+		return nil
+	}
+
+	var number float64 = float64(0)
+	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
+		u.Number = &number
+		u.Type = CancelDeploymentGitUserIDTypeNumber
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CancelDeploymentGitUserID", string(data))
+}
+
+func (u CancelDeploymentGitUserID) MarshalJSON() ([]byte, error) {
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	if u.Number != nil {
+		return utils.MarshalJSON(u.Number, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type CancelDeploymentGitUserID: all fields are null")
+}
+
+// CancelDeploymentGitProvider - The git provider type associated with gitUserId.
+type CancelDeploymentGitProvider string
+
+const (
+	CancelDeploymentGitProviderGitlab    CancelDeploymentGitProvider = "gitlab"
+	CancelDeploymentGitProviderBitbucket CancelDeploymentGitProvider = "bitbucket"
+	CancelDeploymentGitProviderGithub    CancelDeploymentGitProvider = "github"
+)
+
+func (e CancelDeploymentGitProvider) ToPointer() *CancelDeploymentGitProvider {
+	return &e
+}
+func (e *CancelDeploymentGitProvider) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "gitlab":
+		fallthrough
+	case "bitbucket":
+		fallthrough
+	case "github":
+		*e = CancelDeploymentGitProvider(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CancelDeploymentGitProvider: %v", v)
+	}
+}
+
 // CancelDeploymentSeatBlock - NSNB Blocked metadata
 type CancelDeploymentSeatBlock struct {
 	// The NSNB decision code for the seat block. TODO: We should consolidate block types.
@@ -8111,7 +8204,10 @@ type CancelDeploymentSeatBlock struct {
 	// The blocked vercel user ID.
 	UserID *string `json:"userId,omitempty"`
 	// Determines if the user was verified during the block. In the git integration case, the commit sender was the author.
-	IsVerified *bool `json:"isVerified,omitempty"`
+	IsVerified *bool                      `json:"isVerified,omitempty"`
+	GitUserID  *CancelDeploymentGitUserID `json:"gitUserId,omitempty"`
+	// The git provider type associated with gitUserId.
+	GitProvider *CancelDeploymentGitProvider `json:"gitProvider,omitempty"`
 }
 
 func (o *CancelDeploymentSeatBlock) GetBlockCode() CancelDeploymentBlockCode {
@@ -8135,6 +8231,20 @@ func (o *CancelDeploymentSeatBlock) GetIsVerified() *bool {
 	return o.IsVerified
 }
 
+func (o *CancelDeploymentSeatBlock) GetGitUserID() *CancelDeploymentGitUserID {
+	if o == nil {
+		return nil
+	}
+	return o.GitUserID
+}
+
+func (o *CancelDeploymentSeatBlock) GetGitProvider() *CancelDeploymentGitProvider {
+	if o == nil {
+		return nil
+	}
+	return o.GitProvider
+}
+
 // CancelDeploymentResponseBody - The private deployment representation of a Deployment.
 type CancelDeploymentResponseBody struct {
 	AliasAssignedAt           optionalnullable.OptionalNullable[CancelDeploymentAliasAssignedAt] `json:"aliasAssignedAt,omitempty"`
@@ -8147,7 +8257,6 @@ type CancelDeploymentResponseBody struct {
 	IsInConcurrentBuildsQueue bool                                                               `json:"isInConcurrentBuildsQueue"`
 	IsInSystemBuildsQueue     bool                                                               `json:"isInSystemBuildsQueue"`
 	ProjectSettings           CancelDeploymentProjectSettings                                    `json:"projectSettings"`
-	ReadyStateReason          *string                                                            `json:"readyStateReason,omitempty"`
 	Integrations              *CancelDeploymentIntegrations                                      `json:"integrations,omitempty"`
 	Images                    *CancelDeploymentImages                                            `json:"images,omitempty"`
 	// A list of all the aliases (default aliases, staging aliases and production aliases) that were assigned upon deployment creation
@@ -8177,6 +8286,7 @@ type CancelDeploymentResponseBody struct {
 	TtyBuildLogs           *bool                                                           `json:"ttyBuildLogs,omitempty"`
 	CustomEnvironment      *CancelDeploymentCustomEnvironmentUnion                         `json:"customEnvironment,omitempty"`
 	OomReport              *CancelDeploymentOomReport                                      `json:"oomReport,omitempty"`
+	ReadyStateReason       *string                                                         `json:"readyStateReason,omitempty"`
 	AliasWarning           optionalnullable.OptionalNullable[CancelDeploymentAliasWarning] `json:"aliasWarning,omitempty"`
 	// A string holding the unique ID of the deployment
 	ID string `json:"id"`
@@ -8330,13 +8440,6 @@ func (o *CancelDeploymentResponseBody) GetProjectSettings() CancelDeploymentProj
 	return o.ProjectSettings
 }
 
-func (o *CancelDeploymentResponseBody) GetReadyStateReason() *string {
-	if o == nil {
-		return nil
-	}
-	return o.ReadyStateReason
-}
-
 func (o *CancelDeploymentResponseBody) GetIntegrations() *CancelDeploymentIntegrations {
 	if o == nil {
 		return nil
@@ -8482,6 +8585,13 @@ func (o *CancelDeploymentResponseBody) GetOomReport() *CancelDeploymentOomReport
 		return nil
 	}
 	return o.OomReport
+}
+
+func (o *CancelDeploymentResponseBody) GetReadyStateReason() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ReadyStateReason
 }
 
 func (o *CancelDeploymentResponseBody) GetAliasWarning() optionalnullable.OptionalNullable[CancelDeploymentAliasWarning] {

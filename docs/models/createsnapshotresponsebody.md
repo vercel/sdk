@@ -57,6 +57,11 @@ let value: CreateSnapshotResponseBody = {
         },
       ],
     },
+    activeCpuDurationMs: 42,
+    networkTransfer: {
+      ingress: 6500.87,
+      egress: 7213.27,
+    },
   },
 };
 ```

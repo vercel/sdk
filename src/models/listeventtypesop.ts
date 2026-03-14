@@ -310,6 +310,7 @@ export const ListEventTypesName = {
   ProjectOptionsAllowlist: "project-options-allowlist",
   ProjectPasswordProtection: "project-password-protection",
   ProjectPaused: "project-paused",
+  ProjectProgramEnrollmentChanged: "project-program-enrollment-changed",
   ProjectRollingReleaseEnabled: "project-rolling-release-enabled",
   ProjectRollingReleaseDisabled: "project-rolling-release-disabled",
   ProjectRollingReleaseConfigured: "project-rolling-release-configured",
@@ -405,6 +406,7 @@ export const ListEventTypesName = {
   TeamPaidInvoice: "team-paid-invoice",
   TeamInviteCodeReset: "team-invite-code-reset",
   TeamNameUpdate: "team-name-update",
+  TeamProgramEnrollmentChanged: "team-program-enrollment-changed",
   TeamRemoteCachingUpdate: "team-remote-caching-update",
   EnforceSensitiveEnvironmentVariables:
     "enforce-sensitive-environment-variables",

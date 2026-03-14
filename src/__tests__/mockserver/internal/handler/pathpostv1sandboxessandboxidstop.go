@@ -89,6 +89,11 @@ func testStopSandboxStopSandbox0(w http.ResponseWriter, req *http.Request) {
 					},
 				},
 			},
+			ActiveCPUDurationMs: types.Float64(42),
+			NetworkTransfer: &components.NetworkTransfer{
+				Ingress: 7733.99,
+				Egress:  9535.78,
+			},
 		},
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)

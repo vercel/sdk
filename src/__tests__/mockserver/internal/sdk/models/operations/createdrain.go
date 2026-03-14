@@ -2968,9 +2968,36 @@ func (e *CreateDrainAccessSome) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type CreateDrainManagedBy2 string
+
+const (
+	CreateDrainManagedBy2Integration CreateDrainManagedBy2 = "integration"
+	CreateDrainManagedBy2Drain       CreateDrainManagedBy2 = "drain"
+)
+
+func (e CreateDrainManagedBy2) ToPointer() *CreateDrainManagedBy2 {
+	return &e
+}
+func (e *CreateDrainManagedBy2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "integration":
+		fallthrough
+	case "drain":
+		*e = CreateDrainManagedBy2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateDrainManagedBy2: %v", v)
+	}
+}
+
 type CreateDrainProjectAccessSome struct {
 	Access     CreateDrainAccessSome `json:"access"`
 	ProjectIds []string              `json:"projectIds"`
+	ManagedBy  CreateDrainManagedBy2 `json:"managedBy"`
 }
 
 func (c CreateDrainProjectAccessSome) MarshalJSON() ([]byte, error) {
@@ -2978,7 +3005,7 @@ func (c CreateDrainProjectAccessSome) MarshalJSON() ([]byte, error) {
 }
 
 func (c *CreateDrainProjectAccessSome) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"access", "projectIds"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"access", "projectIds", "managedBy"}); err != nil {
 		return err
 	}
 	return nil
@@ -2996,6 +3023,13 @@ func (o *CreateDrainProjectAccessSome) GetProjectIds() []string {
 		return []string{}
 	}
 	return o.ProjectIds
+}
+
+func (o *CreateDrainProjectAccessSome) GetManagedBy() CreateDrainManagedBy2 {
+	if o == nil {
+		return CreateDrainManagedBy2("")
+	}
+	return o.ManagedBy
 }
 
 type CreateDrainAccessAll string
@@ -3021,8 +3055,35 @@ func (e *CreateDrainAccessAll) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type CreateDrainManagedBy1 string
+
+const (
+	CreateDrainManagedBy1Integration CreateDrainManagedBy1 = "integration"
+	CreateDrainManagedBy1Drain       CreateDrainManagedBy1 = "drain"
+)
+
+func (e CreateDrainManagedBy1) ToPointer() *CreateDrainManagedBy1 {
+	return &e
+}
+func (e *CreateDrainManagedBy1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "integration":
+		fallthrough
+	case "drain":
+		*e = CreateDrainManagedBy1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateDrainManagedBy1: %v", v)
+	}
+}
+
 type CreateDrainProjectAccessAll struct {
-	Access CreateDrainAccessAll `json:"access"`
+	Access    CreateDrainAccessAll  `json:"access"`
+	ManagedBy CreateDrainManagedBy1 `json:"managedBy"`
 }
 
 func (c CreateDrainProjectAccessAll) MarshalJSON() ([]byte, error) {
@@ -3030,7 +3091,7 @@ func (c CreateDrainProjectAccessAll) MarshalJSON() ([]byte, error) {
 }
 
 func (c *CreateDrainProjectAccessAll) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"access"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"access", "managedBy"}); err != nil {
 		return err
 	}
 	return nil
@@ -3041,6 +3102,13 @@ func (o *CreateDrainProjectAccessAll) GetAccess() CreateDrainAccessAll {
 		return CreateDrainAccessAll("")
 	}
 	return o.Access
+}
+
+func (o *CreateDrainProjectAccessAll) GetManagedBy() CreateDrainManagedBy1 {
+	if o == nil {
+		return CreateDrainManagedBy1("")
+	}
+	return o.ManagedBy
 }
 
 type CreateDrainProjectAccessUnionType string

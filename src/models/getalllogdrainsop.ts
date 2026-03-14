@@ -262,13 +262,31 @@ export type GetAllLogDrainsDrainsLogDrainsFilterV2 =
   | GetAllLogDrainsFilterV21
   | GetAllLogDrainsFilterV22;
 
+export const GetAllLogDrainsProjectAccessLogDrainsManagedBy = {
+  Integration: "integration",
+  Drain: "drain",
+} as const;
+export type GetAllLogDrainsProjectAccessLogDrainsManagedBy = ClosedEnum<
+  typeof GetAllLogDrainsProjectAccessLogDrainsManagedBy
+>;
+
 export type GetAllLogDrainsProjectAccess2 = {
   access: "some";
   projectIds: Array<string>;
+  managedBy: GetAllLogDrainsProjectAccessLogDrainsManagedBy;
 };
+
+export const GetAllLogDrainsProjectAccessManagedBy = {
+  Integration: "integration",
+  Drain: "drain",
+} as const;
+export type GetAllLogDrainsProjectAccessManagedBy = ClosedEnum<
+  typeof GetAllLogDrainsProjectAccessManagedBy
+>;
 
 export type GetAllLogDrainsProjectAccess1 = {
   access: "all";
+  managedBy: GetAllLogDrainsProjectAccessManagedBy;
 };
 
 export type GetAllLogDrainsDrainsProjectAccess =
@@ -2207,6 +2225,15 @@ export function getAllLogDrainsDrainsLogDrainsFilterV2FromJSON(
 }
 
 /** @internal */
+export const GetAllLogDrainsProjectAccessLogDrainsManagedBy$inboundSchema:
+  z.ZodNativeEnum<typeof GetAllLogDrainsProjectAccessLogDrainsManagedBy> = z
+    .nativeEnum(GetAllLogDrainsProjectAccessLogDrainsManagedBy);
+/** @internal */
+export const GetAllLogDrainsProjectAccessLogDrainsManagedBy$outboundSchema:
+  z.ZodNativeEnum<typeof GetAllLogDrainsProjectAccessLogDrainsManagedBy> =
+    GetAllLogDrainsProjectAccessLogDrainsManagedBy$inboundSchema;
+
+/** @internal */
 export const GetAllLogDrainsProjectAccess2$inboundSchema: z.ZodType<
   GetAllLogDrainsProjectAccess2,
   z.ZodTypeDef,
@@ -2214,11 +2241,13 @@ export const GetAllLogDrainsProjectAccess2$inboundSchema: z.ZodType<
 > = z.object({
   access: types.literal("some"),
   projectIds: z.array(types.string()),
+  managedBy: GetAllLogDrainsProjectAccessLogDrainsManagedBy$inboundSchema,
 });
 /** @internal */
 export type GetAllLogDrainsProjectAccess2$Outbound = {
   access: "some";
   projectIds: Array<string>;
+  managedBy: string;
 };
 
 /** @internal */
@@ -2229,6 +2258,7 @@ export const GetAllLogDrainsProjectAccess2$outboundSchema: z.ZodType<
 > = z.object({
   access: z.literal("some"),
   projectIds: z.array(z.string()),
+  managedBy: GetAllLogDrainsProjectAccessLogDrainsManagedBy$outboundSchema,
 });
 
 export function getAllLogDrainsProjectAccess2ToJSON(
@@ -2251,16 +2281,28 @@ export function getAllLogDrainsProjectAccess2FromJSON(
 }
 
 /** @internal */
+export const GetAllLogDrainsProjectAccessManagedBy$inboundSchema:
+  z.ZodNativeEnum<typeof GetAllLogDrainsProjectAccessManagedBy> = z.nativeEnum(
+    GetAllLogDrainsProjectAccessManagedBy,
+  );
+/** @internal */
+export const GetAllLogDrainsProjectAccessManagedBy$outboundSchema:
+  z.ZodNativeEnum<typeof GetAllLogDrainsProjectAccessManagedBy> =
+    GetAllLogDrainsProjectAccessManagedBy$inboundSchema;
+
+/** @internal */
 export const GetAllLogDrainsProjectAccess1$inboundSchema: z.ZodType<
   GetAllLogDrainsProjectAccess1,
   z.ZodTypeDef,
   unknown
 > = z.object({
   access: types.literal("all"),
+  managedBy: GetAllLogDrainsProjectAccessManagedBy$inboundSchema,
 });
 /** @internal */
 export type GetAllLogDrainsProjectAccess1$Outbound = {
   access: "all";
+  managedBy: string;
 };
 
 /** @internal */
@@ -2270,6 +2312,7 @@ export const GetAllLogDrainsProjectAccess1$outboundSchema: z.ZodType<
   GetAllLogDrainsProjectAccess1
 > = z.object({
   access: z.literal("all"),
+  managedBy: GetAllLogDrainsProjectAccessManagedBy$outboundSchema,
 });
 
 export function getAllLogDrainsProjectAccess1ToJSON(

@@ -8,6 +8,7 @@
 ```typescript
 const value: models.ProjectAccess1 = {
   access: "all",
+  managedBy: "integration",
 };
 ```
 
@@ -19,6 +20,7 @@ const value: models.ProjectAccess2 = {
   projectIds: [
     "<value 1>",
   ],
+  managedBy: "drain",
 };
 ```
 

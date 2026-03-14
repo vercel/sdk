@@ -255,13 +255,31 @@ export type GetDrainsDrainsFilterV2 =
   | GetDrainsFilterV2Drains1
   | GetDrainsFilterV2Drains2;
 
+export const GetDrainsProjectAccessDrainsManagedBy = {
+  Integration: "integration",
+  Drain: "drain",
+} as const;
+export type GetDrainsProjectAccessDrainsManagedBy = ClosedEnum<
+  typeof GetDrainsProjectAccessDrainsManagedBy
+>;
+
 export type GetDrainsProjectAccess2 = {
   access: "some";
   projectIds: Array<string>;
+  managedBy: GetDrainsProjectAccessDrainsManagedBy;
 };
+
+export const GetDrainsProjectAccessManagedBy = {
+  Integration: "integration",
+  Drain: "drain",
+} as const;
+export type GetDrainsProjectAccessManagedBy = ClosedEnum<
+  typeof GetDrainsProjectAccessManagedBy
+>;
 
 export type GetDrainsProjectAccess1 = {
   access: "all";
+  managedBy: GetDrainsProjectAccessManagedBy;
 };
 
 export type DrainsProjectAccess =
@@ -1988,6 +2006,16 @@ export function getDrainsDrainsFilterV2FromJSON(
 }
 
 /** @internal */
+export const GetDrainsProjectAccessDrainsManagedBy$inboundSchema:
+  z.ZodNativeEnum<typeof GetDrainsProjectAccessDrainsManagedBy> = z.nativeEnum(
+    GetDrainsProjectAccessDrainsManagedBy,
+  );
+/** @internal */
+export const GetDrainsProjectAccessDrainsManagedBy$outboundSchema:
+  z.ZodNativeEnum<typeof GetDrainsProjectAccessDrainsManagedBy> =
+    GetDrainsProjectAccessDrainsManagedBy$inboundSchema;
+
+/** @internal */
 export const GetDrainsProjectAccess2$inboundSchema: z.ZodType<
   GetDrainsProjectAccess2,
   z.ZodTypeDef,
@@ -1995,11 +2023,13 @@ export const GetDrainsProjectAccess2$inboundSchema: z.ZodType<
 > = z.object({
   access: types.literal("some"),
   projectIds: z.array(types.string()),
+  managedBy: GetDrainsProjectAccessDrainsManagedBy$inboundSchema,
 });
 /** @internal */
 export type GetDrainsProjectAccess2$Outbound = {
   access: "some";
   projectIds: Array<string>;
+  managedBy: string;
 };
 
 /** @internal */
@@ -2010,6 +2040,7 @@ export const GetDrainsProjectAccess2$outboundSchema: z.ZodType<
 > = z.object({
   access: z.literal("some"),
   projectIds: z.array(z.string()),
+  managedBy: GetDrainsProjectAccessDrainsManagedBy$outboundSchema,
 });
 
 export function getDrainsProjectAccess2ToJSON(
@@ -2030,16 +2061,27 @@ export function getDrainsProjectAccess2FromJSON(
 }
 
 /** @internal */
+export const GetDrainsProjectAccessManagedBy$inboundSchema: z.ZodNativeEnum<
+  typeof GetDrainsProjectAccessManagedBy
+> = z.nativeEnum(GetDrainsProjectAccessManagedBy);
+/** @internal */
+export const GetDrainsProjectAccessManagedBy$outboundSchema: z.ZodNativeEnum<
+  typeof GetDrainsProjectAccessManagedBy
+> = GetDrainsProjectAccessManagedBy$inboundSchema;
+
+/** @internal */
 export const GetDrainsProjectAccess1$inboundSchema: z.ZodType<
   GetDrainsProjectAccess1,
   z.ZodTypeDef,
   unknown
 > = z.object({
   access: types.literal("all"),
+  managedBy: GetDrainsProjectAccessManagedBy$inboundSchema,
 });
 /** @internal */
 export type GetDrainsProjectAccess1$Outbound = {
   access: "all";
+  managedBy: string;
 };
 
 /** @internal */
@@ -2049,6 +2091,7 @@ export const GetDrainsProjectAccess1$outboundSchema: z.ZodType<
   GetDrainsProjectAccess1
 > = z.object({
   access: z.literal("all"),
+  managedBy: GetDrainsProjectAccessManagedBy$outboundSchema,
 });
 
 export function getDrainsProjectAccess1ToJSON(

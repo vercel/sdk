@@ -307,6 +307,7 @@ const (
 	NameProjectOptionsAllowlist                         Name = "project-options-allowlist"
 	NameProjectPasswordProtection                       Name = "project-password-protection"
 	NameProjectPaused                                   Name = "project-paused"
+	NameProjectProgramEnrollmentChanged                 Name = "project-program-enrollment-changed"
 	NameProjectRollingReleaseEnabled                    Name = "project-rolling-release-enabled"
 	NameProjectRollingReleaseDisabled                   Name = "project-rolling-release-disabled"
 	NameProjectRollingReleaseConfigured                 Name = "project-rolling-release-configured"
@@ -398,6 +399,7 @@ const (
 	NameTeamPaidInvoice                                 Name = "team-paid-invoice"
 	NameTeamInviteCodeReset                             Name = "team-invite-code-reset"
 	NameTeamNameUpdate                                  Name = "team-name-update"
+	NameTeamProgramEnrollmentChanged                    Name = "team-program-enrollment-changed"
 	NameTeamRemoteCachingUpdate                         Name = "team-remote-caching-update"
 	NameEnforceSensitiveEnvironmentVariables            Name = "enforce-sensitive-environment-variables"
 	NameShowIPAddresses                                 Name = "show-ip-addresses"
@@ -991,6 +993,8 @@ func (e *Name) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "project-paused":
 		fallthrough
+	case "project-program-enrollment-changed":
+		fallthrough
 	case "project-rolling-release-enabled":
 		fallthrough
 	case "project-rolling-release-disabled":
@@ -1172,6 +1176,8 @@ func (e *Name) UnmarshalJSON(data []byte) error {
 	case "team-invite-code-reset":
 		fallthrough
 	case "team-name-update":
+		fallthrough
+	case "team-program-enrollment-changed":
 		fallthrough
 	case "team-remote-caching-update":
 		fallthrough

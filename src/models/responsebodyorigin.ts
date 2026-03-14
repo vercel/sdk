@@ -775,6 +775,7 @@ export type GetDeploymentResponseBody2 = {
     | GetDeploymentCustomEnvironment2
     | undefined;
   oomReport?: ResponseBodyOomReport | undefined;
+  readyStateReason?: string | undefined;
   aliasWarning?: ResponseBodyAliasWarning | null | undefined;
   /**
    * A string holding the unique ID of the deployment
@@ -4199,6 +4200,7 @@ export const GetDeploymentResponseBody2$inboundSchema: z.ZodType<
     ]),
   ),
   oomReport: types.optional(ResponseBodyOomReport$inboundSchema),
+  readyStateReason: types.optional(types.string()),
   aliasWarning: z.nullable(z.lazy(() => ResponseBodyAliasWarning$inboundSchema))
     .optional(),
   id: types.string(),
@@ -4288,6 +4290,7 @@ export type GetDeploymentResponseBody2$Outbound = {
     | GetDeploymentCustomEnvironment2$Outbound
     | undefined;
   oomReport?: string | undefined;
+  readyStateReason?: string | undefined;
   aliasWarning?: ResponseBodyAliasWarning$Outbound | null | undefined;
   id: string;
   createdAt: number;
@@ -4372,6 +4375,7 @@ export const GetDeploymentResponseBody2$outboundSchema: z.ZodType<
     z.lazy(() => GetDeploymentCustomEnvironment2$outboundSchema),
   ]).optional(),
   oomReport: ResponseBodyOomReport$outboundSchema.optional(),
+  readyStateReason: z.string().optional(),
   aliasWarning: z.nullable(
     z.lazy(() => ResponseBodyAliasWarning$outboundSchema),
   ).optional(),

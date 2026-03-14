@@ -4250,6 +4250,99 @@ func (e *GetDeploymentBlockCode) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type GetDeploymentGitUserIDType string
+
+const (
+	GetDeploymentGitUserIDTypeStr    GetDeploymentGitUserIDType = "str"
+	GetDeploymentGitUserIDTypeNumber GetDeploymentGitUserIDType = "number"
+)
+
+type GetDeploymentGitUserID struct {
+	Str    *string  `queryParam:"inline"`
+	Number *float64 `queryParam:"inline"`
+
+	Type GetDeploymentGitUserIDType
+}
+
+func CreateGetDeploymentGitUserIDStr(str string) GetDeploymentGitUserID {
+	typ := GetDeploymentGitUserIDTypeStr
+
+	return GetDeploymentGitUserID{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func CreateGetDeploymentGitUserIDNumber(number float64) GetDeploymentGitUserID {
+	typ := GetDeploymentGitUserIDTypeNumber
+
+	return GetDeploymentGitUserID{
+		Number: &number,
+		Type:   typ,
+	}
+}
+
+func (u *GetDeploymentGitUserID) UnmarshalJSON(data []byte) error {
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
+		u.Str = &str
+		u.Type = GetDeploymentGitUserIDTypeStr
+		return nil
+	}
+
+	var number float64 = float64(0)
+	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
+		u.Number = &number
+		u.Type = GetDeploymentGitUserIDTypeNumber
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetDeploymentGitUserID", string(data))
+}
+
+func (u GetDeploymentGitUserID) MarshalJSON() ([]byte, error) {
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	if u.Number != nil {
+		return utils.MarshalJSON(u.Number, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type GetDeploymentGitUserID: all fields are null")
+}
+
+// GetDeploymentGitProvider - The git provider type associated with gitUserId.
+type GetDeploymentGitProvider string
+
+const (
+	GetDeploymentGitProviderGitlab    GetDeploymentGitProvider = "gitlab"
+	GetDeploymentGitProviderBitbucket GetDeploymentGitProvider = "bitbucket"
+	GetDeploymentGitProviderGithub    GetDeploymentGitProvider = "github"
+)
+
+func (e GetDeploymentGitProvider) ToPointer() *GetDeploymentGitProvider {
+	return &e
+}
+func (e *GetDeploymentGitProvider) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "gitlab":
+		fallthrough
+	case "bitbucket":
+		fallthrough
+	case "github":
+		*e = GetDeploymentGitProvider(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetDeploymentGitProvider: %v", v)
+	}
+}
+
 // GetDeploymentSeatBlock - NSNB Blocked metadata
 type GetDeploymentSeatBlock struct {
 	// The NSNB decision code for the seat block. TODO: We should consolidate block types.
@@ -4257,7 +4350,10 @@ type GetDeploymentSeatBlock struct {
 	// The blocked vercel user ID.
 	UserID *string `json:"userId,omitempty"`
 	// Determines if the user was verified during the block. In the git integration case, the commit sender was the author.
-	IsVerified *bool `json:"isVerified,omitempty"`
+	IsVerified *bool                   `json:"isVerified,omitempty"`
+	GitUserID  *GetDeploymentGitUserID `json:"gitUserId,omitempty"`
+	// The git provider type associated with gitUserId.
+	GitProvider *GetDeploymentGitProvider `json:"gitProvider,omitempty"`
 }
 
 func (g GetDeploymentSeatBlock) MarshalJSON() ([]byte, error) {
@@ -4292,6 +4388,20 @@ func (o *GetDeploymentSeatBlock) GetIsVerified() *bool {
 	return o.IsVerified
 }
 
+func (o *GetDeploymentSeatBlock) GetGitUserID() *GetDeploymentGitUserID {
+	if o == nil {
+		return nil
+	}
+	return o.GitUserID
+}
+
+func (o *GetDeploymentSeatBlock) GetGitProvider() *GetDeploymentGitProvider {
+	if o == nil {
+		return nil
+	}
+	return o.GitProvider
+}
+
 // Lambdas1 - The deployment including both public and private information
 type Lambdas1 struct {
 	AliasAssignedAt           optionalnullable.OptionalNullable[GetDeploymentAliasAssignedAt] `json:"aliasAssignedAt,omitempty"`
@@ -4304,7 +4414,6 @@ type Lambdas1 struct {
 	IsInConcurrentBuildsQueue bool                                                            `json:"isInConcurrentBuildsQueue"`
 	IsInSystemBuildsQueue     bool                                                            `json:"isInSystemBuildsQueue"`
 	ProjectSettings           GetDeploymentProjectSettings                                    `json:"projectSettings"`
-	ReadyStateReason          *string                                                         `json:"readyStateReason,omitempty"`
 	Integrations              *GetDeploymentIntegrations                                      `json:"integrations,omitempty"`
 	Images                    *GetDeploymentImages                                            `json:"images,omitempty"`
 	// A list of all the aliases (default aliases, staging aliases and production aliases) that were assigned upon deployment creation
@@ -4334,6 +4443,7 @@ type Lambdas1 struct {
 	TtyBuildLogs           *bool                                                         `json:"ttyBuildLogs,omitempty"`
 	CustomEnvironment      *GetDeploymentCustomEnvironmentUnion1                         `json:"customEnvironment,omitempty"`
 	OomReport              *GetDeploymentOomReport1                                      `json:"oomReport,omitempty"`
+	ReadyStateReason       *string                                                       `json:"readyStateReason,omitempty"`
 	AliasWarning           optionalnullable.OptionalNullable[GetDeploymentAliasWarning1] `json:"aliasWarning,omitempty"`
 	// A string holding the unique ID of the deployment
 	ID string `json:"id"`
@@ -4498,13 +4608,6 @@ func (o *Lambdas1) GetProjectSettings() GetDeploymentProjectSettings {
 	return o.ProjectSettings
 }
 
-func (o *Lambdas1) GetReadyStateReason() *string {
-	if o == nil {
-		return nil
-	}
-	return o.ReadyStateReason
-}
-
 func (o *Lambdas1) GetIntegrations() *GetDeploymentIntegrations {
 	if o == nil {
 		return nil
@@ -4650,6 +4753,13 @@ func (o *Lambdas1) GetOomReport() *GetDeploymentOomReport1 {
 		return nil
 	}
 	return o.OomReport
+}
+
+func (o *Lambdas1) GetReadyStateReason() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ReadyStateReason
 }
 
 func (o *Lambdas1) GetAliasWarning() optionalnullable.OptionalNullable[GetDeploymentAliasWarning1] {

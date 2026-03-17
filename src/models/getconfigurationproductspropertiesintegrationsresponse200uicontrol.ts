@@ -600,6 +600,7 @@ export type GetConfigurationProductsUiOptionsIntegrationsResponseHidden =
 
 export type GetConfigurationProductsUiOptions3 = {
   value: string;
+  description?: string | undefined;
   disabled?:
     | GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJSONResponseBody1
     | boolean
@@ -655,6 +656,7 @@ export type GetConfigurationProductsUiOptionsIntegrationsHidden =
 export type GetConfigurationProductsUiOptions1 = {
   value: string;
   label: string;
+  description?: string | undefined;
   disabled?:
     | GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJson1
     | boolean
@@ -841,6 +843,7 @@ export type GetConfigurationProductsUiOptionsHidden =
 
 export type UiOptions3 = {
   value: string;
+  description?: string | undefined;
   disabled?:
     | GetConfigurationProductsDisabledIntegrationsResponse2001
     | boolean
@@ -890,6 +893,7 @@ export type UiOptionsHidden =
 export type UiOptions1 = {
   value: string;
   label: string;
+  description?: string | undefined;
   disabled?:
     | GetConfigurationProductsDisabledIntegrationsResponse1
     | boolean
@@ -1094,6 +1098,7 @@ export type GetConfigurationProductsPropertiesHidden =
 export type GetConfigurationProductsPropertiesUiOptions = {
   value: string;
   label: string;
+  description?: string | undefined;
   disabled?:
     | GetConfigurationProductsDisabledIntegrations1
     | boolean
@@ -3892,6 +3897,7 @@ export const GetConfigurationProductsUiOptions3$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   value: types.string(),
+  description: types.optional(types.string()),
   disabled: types.optional(
     smartUnion([
       z.lazy(() =>
@@ -3914,6 +3920,7 @@ export const GetConfigurationProductsUiOptions3$inboundSchema: z.ZodType<
 /** @internal */
 export type GetConfigurationProductsUiOptions3$Outbound = {
   value: string;
+  description?: string | undefined;
   disabled?:
     | GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJSONResponseBody1$Outbound
     | boolean
@@ -3933,6 +3940,7 @@ export const GetConfigurationProductsUiOptions3$outboundSchema: z.ZodType<
   GetConfigurationProductsUiOptions3
 > = z.object({
   value: z.string(),
+  description: z.string().optional(),
   disabled: smartUnion([
     z.lazy(() =>
       GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJSONResponseBody1$outboundSchema
@@ -4225,6 +4233,7 @@ export const GetConfigurationProductsUiOptions1$inboundSchema: z.ZodType<
 > = z.object({
   value: types.string(),
   label: types.string(),
+  description: types.optional(types.string()),
   disabled: types.optional(
     smartUnion([
       z.lazy(() =>
@@ -4248,6 +4257,7 @@ export const GetConfigurationProductsUiOptions1$inboundSchema: z.ZodType<
 export type GetConfigurationProductsUiOptions1$Outbound = {
   value: string;
   label: string;
+  description?: string | undefined;
   disabled?:
     | GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJson1$Outbound
     | boolean
@@ -4268,6 +4278,7 @@ export const GetConfigurationProductsUiOptions1$outboundSchema: z.ZodType<
 > = z.object({
   value: z.string(),
   label: z.string(),
+  description: z.string().optional(),
   disabled: smartUnion([
     z.lazy(() =>
       GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJson1$outboundSchema
@@ -5362,6 +5373,7 @@ export const UiOptions3$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   value: types.string(),
+  description: types.optional(types.string()),
   disabled: types.optional(
     smartUnion([
       z.lazy(() =>
@@ -5384,6 +5396,7 @@ export const UiOptions3$inboundSchema: z.ZodType<
 /** @internal */
 export type UiOptions3$Outbound = {
   value: string;
+  description?: string | undefined;
   disabled?:
     | GetConfigurationProductsDisabledIntegrationsResponse2001$Outbound
     | boolean
@@ -5403,6 +5416,7 @@ export const UiOptions3$outboundSchema: z.ZodType<
   UiOptions3
 > = z.object({
   value: z.string(),
+  description: z.string().optional(),
   disabled: smartUnion([
     z.lazy(() =>
       GetConfigurationProductsDisabledIntegrationsResponse2001$outboundSchema
@@ -5654,6 +5668,7 @@ export const UiOptions1$inboundSchema: z.ZodType<
 > = z.object({
   value: types.string(),
   label: types.string(),
+  description: types.optional(types.string()),
   disabled: types.optional(
     smartUnion([
       z.lazy(() =>
@@ -5677,6 +5692,7 @@ export const UiOptions1$inboundSchema: z.ZodType<
 export type UiOptions1$Outbound = {
   value: string;
   label: string;
+  description?: string | undefined;
   disabled?:
     | GetConfigurationProductsDisabledIntegrationsResponse1$Outbound
     | boolean
@@ -5697,6 +5713,7 @@ export const UiOptions1$outboundSchema: z.ZodType<
 > = z.object({
   value: z.string(),
   label: z.string(),
+  description: z.string().optional(),
   disabled: smartUnion([
     z.lazy(() =>
       GetConfigurationProductsDisabledIntegrationsResponse1$outboundSchema
@@ -6848,6 +6865,7 @@ export const GetConfigurationProductsPropertiesUiOptions$inboundSchema:
   > = z.object({
     value: types.string(),
     label: types.string(),
+    description: types.optional(types.string()),
     disabled: types.optional(
       smartUnion([
         z.lazy(() =>
@@ -6869,6 +6887,7 @@ export const GetConfigurationProductsPropertiesUiOptions$inboundSchema:
 export type GetConfigurationProductsPropertiesUiOptions$Outbound = {
   value: string;
   label: string;
+  description?: string | undefined;
   disabled?:
     | GetConfigurationProductsDisabledIntegrations1$Outbound
     | boolean
@@ -6890,6 +6909,7 @@ export const GetConfigurationProductsPropertiesUiOptions$outboundSchema:
   > = z.object({
     value: z.string(),
     label: z.string(),
+    description: z.string().optional(),
     disabled: smartUnion([
       z.lazy(() =>
         GetConfigurationProductsDisabledIntegrations1$outboundSchema

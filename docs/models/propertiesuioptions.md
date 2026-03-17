@@ -17,5 +17,6 @@ let value: PropertiesUiOptions = {
 | --------------------------- | --------------------------- | --------------------------- | --------------------------- |
 | `value`                     | *string*                    | :heavy_check_mark:          | N/A                         |
 | `label`                     | *string*                    | :heavy_check_mark:          | N/A                         |
+| `description`               | *string*                    | :heavy_minus_sign:          | N/A                         |
 | `disabled`                  | *models.PropertiesDisabled* | :heavy_minus_sign:          | N/A                         |
 | `hidden`                    | *models.PropertiesHidden*   | :heavy_minus_sign:          | N/A                         |

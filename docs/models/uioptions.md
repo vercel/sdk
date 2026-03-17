@@ -17,5 +17,6 @@ let value: UiOptions = {
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `value`            | *string*           | :heavy_check_mark: | N/A                |
 | `label`            | *string*           | :heavy_check_mark: | N/A                |
+| `description`      | *string*           | :heavy_minus_sign: | N/A                |
 | `disabled`         | *models.Disabled*  | :heavy_minus_sign: | N/A                |
 | `hidden`           | *models.Hidden*    | :heavy_minus_sign: | N/A                |

@@ -5,21 +5,15 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndThirty } from "@vercel/sdk/models/usereventfactors1.js";
+import { TwoHundredAndThirty } from "@vercel/sdk/models/payloadmostspecificsubdivision.js";
 
 let value: TwoHundredAndThirty = {
-  trialCreditsIssuedAt: 5842.61,
-  expiresAt: "1757301380883",
-  amount: "454.95",
-  currency: "Bermudian Dollar (customarily known as Bermuda Dollar)",
+  enabled: false,
 };
 ```
 
 ## Fields
 
-| Field                  | Type                   | Required               | Description            |
-| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
-| `trialCreditsIssuedAt` | *number*               | :heavy_check_mark:     | N/A                    |
-| `expiresAt`            | *string*               | :heavy_check_mark:     | N/A                    |
-| `amount`               | *string*               | :heavy_check_mark:     | N/A                    |
-| `currency`             | *string*               | :heavy_check_mark:     | N/A                    |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `enabled`          | *boolean*          | :heavy_check_mark: | N/A                |

@@ -86,6 +86,7 @@ export type PropertiesHidden =
 export type PropertiesUiOptions = {
   value: string;
   label: string;
+  description?: string | undefined;
   disabled?:
     | GetConfigurationProductsDisabled1
     | boolean
@@ -252,6 +253,7 @@ export type Hidden = Hidden1 | boolean | Hidden3;
 export type UiOptions = {
   value: string;
   label: string;
+  description?: string | undefined;
   disabled?: Disabled1 | boolean | Disabled3 | undefined;
   hidden?: Hidden1 | boolean | Hidden3 | undefined;
 };
@@ -1022,6 +1024,7 @@ export const PropertiesUiOptions$inboundSchema: z.ZodType<
 > = z.object({
   value: types.string(),
   label: types.string(),
+  description: types.optional(types.string()),
   disabled: types.optional(
     smartUnion([
       z.lazy(() => GetConfigurationProductsDisabled1$inboundSchema),
@@ -1041,6 +1044,7 @@ export const PropertiesUiOptions$inboundSchema: z.ZodType<
 export type PropertiesUiOptions$Outbound = {
   value: string;
   label: string;
+  description?: string | undefined;
   disabled?:
     | GetConfigurationProductsDisabled1$Outbound
     | boolean
@@ -1061,6 +1065,7 @@ export const PropertiesUiOptions$outboundSchema: z.ZodType<
 > = z.object({
   value: z.string(),
   label: z.string(),
+  description: z.string().optional(),
   disabled: smartUnion([
     z.lazy(() => GetConfigurationProductsDisabled1$outboundSchema),
     z.boolean(),
@@ -1991,6 +1996,7 @@ export const UiOptions$inboundSchema: z.ZodType<
 > = z.object({
   value: types.string(),
   label: types.string(),
+  description: types.optional(types.string()),
   disabled: types.optional(
     smartUnion([
       z.lazy(() => Disabled1$inboundSchema),
@@ -2010,6 +2016,7 @@ export const UiOptions$inboundSchema: z.ZodType<
 export type UiOptions$Outbound = {
   value: string;
   label: string;
+  description?: string | undefined;
   disabled?: Disabled1$Outbound | boolean | string | undefined;
   hidden?: Hidden1$Outbound | boolean | string | undefined;
 };
@@ -2022,6 +2029,7 @@ export const UiOptions$outboundSchema: z.ZodType<
 > = z.object({
   value: z.string(),
   label: z.string(),
+  description: z.string().optional(),
   disabled: smartUnion([
     z.lazy(() => Disabled1$outboundSchema),
     z.boolean(),

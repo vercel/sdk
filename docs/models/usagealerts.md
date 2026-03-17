@@ -5,7 +5,7 @@ Contains the timestamps when a user was notified about their usage
 ## Example Usage
 
 ```typescript
-import { UsageAlerts } from "@vercel/sdk/models/eightythree.js";
+import { UsageAlerts } from "@vercel/sdk/models/eightyeight.js";
 
 let value: UsageAlerts = {};
 ```

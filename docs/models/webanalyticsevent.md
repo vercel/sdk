@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { WebAnalyticsEvent } from "@vercel/sdk/models/eightythree.js";
+import { WebAnalyticsEvent } from "@vercel/sdk/models/eightyeight.js";
 
 let value: WebAnalyticsEvent = {
   currentThreshold: 1668.55,

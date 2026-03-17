@@ -666,6 +666,7 @@ export type CreateIntegrationStoreDirectUiOptionsIntegrationsResponse200Hidden =
 
 export type CreateIntegrationStoreDirectUiOptionsIntegrations3 = {
   value: string;
+  description?: string | undefined;
   disabled?:
     | CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJSONResponseBodyStore1
     | boolean
@@ -721,6 +722,7 @@ export type CreateIntegrationStoreDirectUiOptionsIntegrationsResponseHidden =
 export type CreateIntegrationStoreDirectUiOptionsIntegrations1 = {
   value: string;
   label: string;
+  description?: string | undefined;
   disabled?:
     | CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJSONResponseBody1
     | boolean
@@ -914,6 +916,7 @@ export type CreateIntegrationStoreDirectUiOptionsIntegrationsHidden =
 
 export type CreateIntegrationStoreDirectUiOptions3 = {
   value: string;
+  description?: string | undefined;
   disabled?:
     | CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson1
     | boolean
@@ -963,6 +966,7 @@ export type CreateIntegrationStoreDirectUiOptionsHidden =
 export type CreateIntegrationStoreDirectUiOptions1 = {
   value: string;
   label: string;
+  description?: string | undefined;
   disabled?:
     | CreateIntegrationStoreDirectDisabledIntegrationsResponse2001
     | boolean
@@ -1170,6 +1174,7 @@ export type CreateIntegrationStoreDirectPropertiesIntegrationsResponseUiOptions 
   {
     value: string;
     label: string;
+    description?: string | undefined;
     disabled?:
       | CreateIntegrationStoreDirectDisabledIntegrationsResponse1
       | boolean
@@ -4197,6 +4202,7 @@ export const CreateIntegrationStoreDirectUiOptionsIntegrations3$inboundSchema:
     unknown
   > = z.object({
     value: types.string(),
+    description: types.optional(types.string()),
     disabled: types.optional(
       smartUnion([
         z.lazy(() =>
@@ -4219,6 +4225,7 @@ export const CreateIntegrationStoreDirectUiOptionsIntegrations3$inboundSchema:
 /** @internal */
 export type CreateIntegrationStoreDirectUiOptionsIntegrations3$Outbound = {
   value: string;
+  description?: string | undefined;
   disabled?:
     | CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJSONResponseBodyStore1$Outbound
     | boolean
@@ -4239,6 +4246,7 @@ export const CreateIntegrationStoreDirectUiOptionsIntegrations3$outboundSchema:
     CreateIntegrationStoreDirectUiOptionsIntegrations3
   > = z.object({
     value: z.string(),
+    description: z.string().optional(),
     disabled: smartUnion([
       z.lazy(() =>
         CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJSONResponseBodyStore1$outboundSchema
@@ -4534,6 +4542,7 @@ export const CreateIntegrationStoreDirectUiOptionsIntegrations1$inboundSchema:
   > = z.object({
     value: types.string(),
     label: types.string(),
+    description: types.optional(types.string()),
     disabled: types.optional(
       smartUnion([
         z.lazy(() =>
@@ -4557,6 +4566,7 @@ export const CreateIntegrationStoreDirectUiOptionsIntegrations1$inboundSchema:
 export type CreateIntegrationStoreDirectUiOptionsIntegrations1$Outbound = {
   value: string;
   label: string;
+  description?: string | undefined;
   disabled?:
     | CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJSONResponseBody1$Outbound
     | boolean
@@ -4578,6 +4588,7 @@ export const CreateIntegrationStoreDirectUiOptionsIntegrations1$outboundSchema:
   > = z.object({
     value: z.string(),
     label: z.string(),
+    description: z.string().optional(),
     disabled: smartUnion([
       z.lazy(() =>
         CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJSONResponseBody1$outboundSchema
@@ -5719,6 +5730,7 @@ export const CreateIntegrationStoreDirectUiOptions3$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   value: types.string(),
+  description: types.optional(types.string()),
   disabled: types.optional(
     smartUnion([
       z.lazy(() =>
@@ -5741,6 +5753,7 @@ export const CreateIntegrationStoreDirectUiOptions3$inboundSchema: z.ZodType<
 /** @internal */
 export type CreateIntegrationStoreDirectUiOptions3$Outbound = {
   value: string;
+  description?: string | undefined;
   disabled?:
     | CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson1$Outbound
     | boolean
@@ -5760,6 +5773,7 @@ export const CreateIntegrationStoreDirectUiOptions3$outboundSchema: z.ZodType<
   CreateIntegrationStoreDirectUiOptions3
 > = z.object({
   value: z.string(),
+  description: z.string().optional(),
   disabled: smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson1$outboundSchema
@@ -6046,6 +6060,7 @@ export const CreateIntegrationStoreDirectUiOptions1$inboundSchema: z.ZodType<
 > = z.object({
   value: types.string(),
   label: types.string(),
+  description: types.optional(types.string()),
   disabled: types.optional(
     smartUnion([
       z.lazy(() =>
@@ -6069,6 +6084,7 @@ export const CreateIntegrationStoreDirectUiOptions1$inboundSchema: z.ZodType<
 export type CreateIntegrationStoreDirectUiOptions1$Outbound = {
   value: string;
   label: string;
+  description?: string | undefined;
   disabled?:
     | CreateIntegrationStoreDirectDisabledIntegrationsResponse2001$Outbound
     | boolean
@@ -6089,6 +6105,7 @@ export const CreateIntegrationStoreDirectUiOptions1$outboundSchema: z.ZodType<
 > = z.object({
   value: z.string(),
   label: z.string(),
+  description: z.string().optional(),
   disabled: smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectDisabledIntegrationsResponse2001$outboundSchema
@@ -7279,6 +7296,7 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponseUiOptions
   > = z.object({
     value: types.string(),
     label: types.string(),
+    description: types.optional(types.string()),
     disabled: types.optional(
       smartUnion([
         z.lazy(() =>
@@ -7303,6 +7321,7 @@ export type CreateIntegrationStoreDirectPropertiesIntegrationsResponseUiOptions$
   {
     value: string;
     label: string;
+    description?: string | undefined;
     disabled?:
       | CreateIntegrationStoreDirectDisabledIntegrationsResponse1$Outbound
       | boolean
@@ -7324,6 +7343,7 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponseUiOptions
   > = z.object({
     value: z.string(),
     label: z.string(),
+    description: z.string().optional(),
     disabled: smartUnion([
       z.lazy(() =>
         CreateIntegrationStoreDirectDisabledIntegrationsResponse1$outboundSchema

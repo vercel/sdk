@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PayloadBranchMatcher } from "@vercel/sdk/models/onehundredandfiftythree.js";
+import { PayloadBranchMatcher } from "@vercel/sdk/models/payloadbranchmatcher.js";
 
 let value: PayloadBranchMatcher = {
   type: "endsWith",
@@ -15,5 +15,5 @@ let value: PayloadBranchMatcher = {
 
 | Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
 | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `type`                                                                         | [models.UserEventPayload154NextType](../models/usereventpayload154nexttype.md) | :heavy_check_mark:                                                             | The type of matching to perform                                                |
+| `type`                                                                         | [models.UserEventPayload155NextType](../models/usereventpayload155nexttype.md) | :heavy_check_mark:                                                             | The type of matching to perform                                                |
 | `pattern`                                                                      | *string*                                                                       | :heavy_check_mark:                                                             | The pattern to match against branch names                                      |

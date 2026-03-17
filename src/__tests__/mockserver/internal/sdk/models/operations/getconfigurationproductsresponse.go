@@ -277,10 +277,11 @@ func (u GetConfigurationProductsHiddenUnion2) MarshalJSON() ([]byte, error) {
 }
 
 type GetConfigurationProductsUIOption2 struct {
-	Value    string                                  `json:"value"`
-	Label    string                                  `json:"label"`
-	Disabled *GetConfigurationProductsDisabledUnion2 `json:"disabled,omitempty"`
-	Hidden   *GetConfigurationProductsHiddenUnion2   `json:"hidden,omitempty"`
+	Value       string                                  `json:"value"`
+	Label       string                                  `json:"label"`
+	Description *string                                 `json:"description,omitempty"`
+	Disabled    *GetConfigurationProductsDisabledUnion2 `json:"disabled,omitempty"`
+	Hidden      *GetConfigurationProductsHiddenUnion2   `json:"hidden,omitempty"`
 }
 
 func (g GetConfigurationProductsUIOption2) MarshalJSON() ([]byte, error) {
@@ -306,6 +307,13 @@ func (o *GetConfigurationProductsUIOption2) GetLabel() string {
 		return ""
 	}
 	return o.Label
+}
+
+func (o *GetConfigurationProductsUIOption2) GetDescription() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Description
 }
 
 func (o *GetConfigurationProductsUIOption2) GetDisabled() *GetConfigurationProductsDisabledUnion2 {
@@ -1283,10 +1291,11 @@ func (u GetConfigurationProductsHiddenUnion1) MarshalJSON() ([]byte, error) {
 }
 
 type GetConfigurationProductsUIOption1 struct {
-	Value    string                                  `json:"value"`
-	Label    string                                  `json:"label"`
-	Disabled *GetConfigurationProductsDisabledUnion1 `json:"disabled,omitempty"`
-	Hidden   *GetConfigurationProductsHiddenUnion1   `json:"hidden,omitempty"`
+	Value       string                                  `json:"value"`
+	Label       string                                  `json:"label"`
+	Description *string                                 `json:"description,omitempty"`
+	Disabled    *GetConfigurationProductsDisabledUnion1 `json:"disabled,omitempty"`
+	Hidden      *GetConfigurationProductsHiddenUnion1   `json:"hidden,omitempty"`
 }
 
 func (g GetConfigurationProductsUIOption1) MarshalJSON() ([]byte, error) {
@@ -1312,6 +1321,13 @@ func (o *GetConfigurationProductsUIOption1) GetLabel() string {
 		return ""
 	}
 	return o.Label
+}
+
+func (o *GetConfigurationProductsUIOption1) GetDescription() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Description
 }
 
 func (o *GetConfigurationProductsUIOption1) GetDisabled() *GetConfigurationProductsDisabledUnion1 {

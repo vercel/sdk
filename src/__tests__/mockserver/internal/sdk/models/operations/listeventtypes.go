@@ -198,7 +198,9 @@ const (
 	NameSharedEnvVariableUpdate                         Name = "shared-env-variable-update"
 	NameFirewallBypassCreated                           Name = "firewall-bypass-created"
 	NameFirewallBypassDeleted                           Name = "firewall-bypass-deleted"
+	NameFirewallConfigModified                          Name = "firewall-config-modified"
 	NameFirewallConfigPromoted                          Name = "firewall-config-promoted"
+	NameFirewallConfigRemoved                           Name = "firewall-config-removed"
 	NameFirewallManagedRulegroupUpdated                 Name = "firewall-managed-rulegroup-updated"
 	NameFirewallManagedRulesetUpdated                   Name = "firewall-managed-ruleset-updated"
 	NameFlagsSegment                                    Name = "flags-segment"
@@ -375,6 +377,7 @@ const (
 	NameAiAlertInvestigation                            Name = "ai-alert-investigation"
 	NameVercelAgentTeamTrialCreditsApplied              Name = "vercel-agent-team-trial-credits-applied"
 	NameTeamAvatarUpdate                                Name = "team-avatar-update"
+	NameTeamDefaultBuildMachineUpdated                  Name = "team-default-build-machine-updated"
 	NameTeamDelete                                      Name = "team-delete"
 	NameStrictDeploymentProtectionSettings              Name = "strict-deployment-protection-settings"
 	NameTeamDomainVerificationDeleted                   Name = "team-domain-verification-deleted"
@@ -775,7 +778,11 @@ func (e *Name) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "firewall-bypass-deleted":
 		fallthrough
+	case "firewall-config-modified":
+		fallthrough
 	case "firewall-config-promoted":
+		fallthrough
+	case "firewall-config-removed":
 		fallthrough
 	case "firewall-managed-rulegroup-updated":
 		fallthrough
@@ -1128,6 +1135,8 @@ func (e *Name) UnmarshalJSON(data []byte) error {
 	case "vercel-agent-team-trial-credits-applied":
 		fallthrough
 	case "team-avatar-update":
+		fallthrough
+	case "team-default-build-machine-updated":
 		fallthrough
 	case "team-delete":
 		fallthrough

@@ -5,7 +5,7 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndNinetyOne } from "@vercel/sdk/models/onehundredandfiftythree.js";
+import { OneHundredAndNinetyOne } from "@vercel/sdk/models/payloadbranchmatcher.js";
 
 let value: OneHundredAndNinetyOne = {
   projectId: "<id>",
@@ -15,9 +15,8 @@ let value: OneHundredAndNinetyOne = {
 
 ## Fields
 
-| Field                 | Type                  | Required              | Description           |
-| --------------------- | --------------------- | --------------------- | --------------------- |
-| `projectId`           | *string*              | :heavy_check_mark:    | N/A                   |
-| `projectName`         | *string*              | :heavy_check_mark:    | N/A                   |
-| `targetDeploymentId`  | *string*              | :heavy_minus_sign:    | N/A                   |
-| `newTargetPercentage` | *number*              | :heavy_minus_sign:    | N/A                   |
+| Field                | Type                 | Required             | Description          |
+| -------------------- | -------------------- | -------------------- | -------------------- |
+| `projectId`          | *string*             | :heavy_check_mark:   | N/A                  |
+| `projectName`        | *string*             | :heavy_check_mark:   | N/A                  |
+| `targetDeploymentId` | *string*             | :heavy_minus_sign:   | N/A                  |

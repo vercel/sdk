@@ -5,7 +5,7 @@ The budget type
 ## Example Usage
 
 ```typescript
-import { UserEventPayload221Type } from "@vercel/sdk/models/usereventfactors1.js";
+import { UserEventPayload221Type } from "@vercel/sdk/models/payloadmostspecificsubdivision.js";
 
 let value: UserEventPayload221Type = "fixed";
 ```

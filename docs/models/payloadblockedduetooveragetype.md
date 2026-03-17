@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PayloadBlockedDueToOverageType } from "@vercel/sdk/models/usereventpayloadjoinedfrom.js";
+import { PayloadBlockedDueToOverageType } from "@vercel/sdk/models/payloadteampermissions.js";
 
 let value: PayloadBlockedDueToOverageType = "imageOptimizationCacheWrite";
 ```

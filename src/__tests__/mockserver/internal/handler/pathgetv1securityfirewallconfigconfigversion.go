@@ -109,7 +109,6 @@ func testGetFirewallConfigGetFirewallConfig0(w http.ResponseWriter, req *http.Re
 					ValidationErrors: []string{
 						"<value 1>",
 						"<value 2>",
-						"<value 3>",
 					},
 				},
 			),

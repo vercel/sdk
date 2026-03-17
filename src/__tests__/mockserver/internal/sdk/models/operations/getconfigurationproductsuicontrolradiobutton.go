@@ -2579,9 +2579,10 @@ func (u GetConfigurationProductsHiddenUnion7) MarshalJSON() ([]byte, error) {
 }
 
 type GetConfigurationProductsUIOption7 struct {
-	Value    string                                  `json:"value"`
-	Disabled *GetConfigurationProductsDisabledUnion7 `json:"disabled,omitempty"`
-	Hidden   *GetConfigurationProductsHiddenUnion7   `json:"hidden,omitempty"`
+	Value       string                                  `json:"value"`
+	Description *string                                 `json:"description,omitempty"`
+	Disabled    *GetConfigurationProductsDisabledUnion7 `json:"disabled,omitempty"`
+	Hidden      *GetConfigurationProductsHiddenUnion7   `json:"hidden,omitempty"`
 }
 
 func (g GetConfigurationProductsUIOption7) MarshalJSON() ([]byte, error) {
@@ -2600,6 +2601,13 @@ func (o *GetConfigurationProductsUIOption7) GetValue() string {
 		return ""
 	}
 	return o.Value
+}
+
+func (o *GetConfigurationProductsUIOption7) GetDescription() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Description
 }
 
 func (o *GetConfigurationProductsUIOption7) GetDisabled() *GetConfigurationProductsDisabledUnion7 {
@@ -2883,10 +2891,11 @@ func (u GetConfigurationProductsHiddenUnion6) MarshalJSON() ([]byte, error) {
 }
 
 type GetConfigurationProductsUIOption6 struct {
-	Value    string                                  `json:"value"`
-	Label    string                                  `json:"label"`
-	Disabled *GetConfigurationProductsDisabledUnion6 `json:"disabled,omitempty"`
-	Hidden   *GetConfigurationProductsHiddenUnion6   `json:"hidden,omitempty"`
+	Value       string                                  `json:"value"`
+	Label       string                                  `json:"label"`
+	Description *string                                 `json:"description,omitempty"`
+	Disabled    *GetConfigurationProductsDisabledUnion6 `json:"disabled,omitempty"`
+	Hidden      *GetConfigurationProductsHiddenUnion6   `json:"hidden,omitempty"`
 }
 
 func (g GetConfigurationProductsUIOption6) MarshalJSON() ([]byte, error) {
@@ -2912,6 +2921,13 @@ func (o *GetConfigurationProductsUIOption6) GetLabel() string {
 		return ""
 	}
 	return o.Label
+}
+
+func (o *GetConfigurationProductsUIOption6) GetDescription() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Description
 }
 
 func (o *GetConfigurationProductsUIOption6) GetDisabled() *GetConfigurationProductsDisabledUnion6 {
@@ -3974,9 +3990,10 @@ func (u GetConfigurationProductsHiddenUnion5) MarshalJSON() ([]byte, error) {
 }
 
 type GetConfigurationProductsUIOption5 struct {
-	Value    string                                  `json:"value"`
-	Disabled *GetConfigurationProductsDisabledUnion5 `json:"disabled,omitempty"`
-	Hidden   *GetConfigurationProductsHiddenUnion5   `json:"hidden,omitempty"`
+	Value       string                                  `json:"value"`
+	Description *string                                 `json:"description,omitempty"`
+	Disabled    *GetConfigurationProductsDisabledUnion5 `json:"disabled,omitempty"`
+	Hidden      *GetConfigurationProductsHiddenUnion5   `json:"hidden,omitempty"`
 }
 
 func (g GetConfigurationProductsUIOption5) MarshalJSON() ([]byte, error) {
@@ -3995,6 +4012,13 @@ func (o *GetConfigurationProductsUIOption5) GetValue() string {
 		return ""
 	}
 	return o.Value
+}
+
+func (o *GetConfigurationProductsUIOption5) GetDescription() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Description
 }
 
 func (o *GetConfigurationProductsUIOption5) GetDisabled() *GetConfigurationProductsDisabledUnion5 {
@@ -4278,10 +4302,11 @@ func (u GetConfigurationProductsHiddenUnion4) MarshalJSON() ([]byte, error) {
 }
 
 type GetConfigurationProductsUIOption4 struct {
-	Value    string                                  `json:"value"`
-	Label    string                                  `json:"label"`
-	Disabled *GetConfigurationProductsDisabledUnion4 `json:"disabled,omitempty"`
-	Hidden   *GetConfigurationProductsHiddenUnion4   `json:"hidden,omitempty"`
+	Value       string                                  `json:"value"`
+	Label       string                                  `json:"label"`
+	Description *string                                 `json:"description,omitempty"`
+	Disabled    *GetConfigurationProductsDisabledUnion4 `json:"disabled,omitempty"`
+	Hidden      *GetConfigurationProductsHiddenUnion4   `json:"hidden,omitempty"`
 }
 
 func (g GetConfigurationProductsUIOption4) MarshalJSON() ([]byte, error) {
@@ -4307,6 +4332,13 @@ func (o *GetConfigurationProductsUIOption4) GetLabel() string {
 		return ""
 	}
 	return o.Label
+}
+
+func (o *GetConfigurationProductsUIOption4) GetDescription() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Description
 }
 
 func (o *GetConfigurationProductsUIOption4) GetDisabled() *GetConfigurationProductsDisabledUnion4 {
@@ -5462,10 +5494,11 @@ func (u GetConfigurationProductsHiddenUnion3) MarshalJSON() ([]byte, error) {
 }
 
 type GetConfigurationProductsUIOption3 struct {
-	Value    string                                  `json:"value"`
-	Label    string                                  `json:"label"`
-	Disabled *GetConfigurationProductsDisabledUnion3 `json:"disabled,omitempty"`
-	Hidden   *GetConfigurationProductsHiddenUnion3   `json:"hidden,omitempty"`
+	Value       string                                  `json:"value"`
+	Label       string                                  `json:"label"`
+	Description *string                                 `json:"description,omitempty"`
+	Disabled    *GetConfigurationProductsDisabledUnion3 `json:"disabled,omitempty"`
+	Hidden      *GetConfigurationProductsHiddenUnion3   `json:"hidden,omitempty"`
 }
 
 func (g GetConfigurationProductsUIOption3) MarshalJSON() ([]byte, error) {
@@ -5491,6 +5524,13 @@ func (o *GetConfigurationProductsUIOption3) GetLabel() string {
 		return ""
 	}
 	return o.Label
+}
+
+func (o *GetConfigurationProductsUIOption3) GetDescription() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Description
 }
 
 func (o *GetConfigurationProductsUIOption3) GetDisabled() *GetConfigurationProductsDisabledUnion3 {

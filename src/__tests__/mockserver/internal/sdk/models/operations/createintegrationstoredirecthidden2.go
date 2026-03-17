@@ -3265,9 +3265,10 @@ func (u CreateIntegrationStoreDirectHiddenUnion7) MarshalJSON() ([]byte, error) 
 }
 
 type CreateIntegrationStoreDirectUIOption7 struct {
-	Value    string                                      `json:"value"`
-	Disabled *CreateIntegrationStoreDirectDisabledUnion7 `json:"disabled,omitempty"`
-	Hidden   *CreateIntegrationStoreDirectHiddenUnion7   `json:"hidden,omitempty"`
+	Value       string                                      `json:"value"`
+	Description *string                                     `json:"description,omitempty"`
+	Disabled    *CreateIntegrationStoreDirectDisabledUnion7 `json:"disabled,omitempty"`
+	Hidden      *CreateIntegrationStoreDirectHiddenUnion7   `json:"hidden,omitempty"`
 }
 
 func (c CreateIntegrationStoreDirectUIOption7) MarshalJSON() ([]byte, error) {
@@ -3286,6 +3287,13 @@ func (o *CreateIntegrationStoreDirectUIOption7) GetValue() string {
 		return ""
 	}
 	return o.Value
+}
+
+func (o *CreateIntegrationStoreDirectUIOption7) GetDescription() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Description
 }
 
 func (o *CreateIntegrationStoreDirectUIOption7) GetDisabled() *CreateIntegrationStoreDirectDisabledUnion7 {
@@ -3569,10 +3577,11 @@ func (u CreateIntegrationStoreDirectHiddenUnion6) MarshalJSON() ([]byte, error) 
 }
 
 type CreateIntegrationStoreDirectUIOption6 struct {
-	Value    string                                      `json:"value"`
-	Label    string                                      `json:"label"`
-	Disabled *CreateIntegrationStoreDirectDisabledUnion6 `json:"disabled,omitempty"`
-	Hidden   *CreateIntegrationStoreDirectHiddenUnion6   `json:"hidden,omitempty"`
+	Value       string                                      `json:"value"`
+	Label       string                                      `json:"label"`
+	Description *string                                     `json:"description,omitempty"`
+	Disabled    *CreateIntegrationStoreDirectDisabledUnion6 `json:"disabled,omitempty"`
+	Hidden      *CreateIntegrationStoreDirectHiddenUnion6   `json:"hidden,omitempty"`
 }
 
 func (c CreateIntegrationStoreDirectUIOption6) MarshalJSON() ([]byte, error) {
@@ -3598,6 +3607,13 @@ func (o *CreateIntegrationStoreDirectUIOption6) GetLabel() string {
 		return ""
 	}
 	return o.Label
+}
+
+func (o *CreateIntegrationStoreDirectUIOption6) GetDescription() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Description
 }
 
 func (o *CreateIntegrationStoreDirectUIOption6) GetDisabled() *CreateIntegrationStoreDirectDisabledUnion6 {
@@ -4660,9 +4676,10 @@ func (u CreateIntegrationStoreDirectHiddenUnion5) MarshalJSON() ([]byte, error) 
 }
 
 type CreateIntegrationStoreDirectUIOption5 struct {
-	Value    string                                      `json:"value"`
-	Disabled *CreateIntegrationStoreDirectDisabledUnion5 `json:"disabled,omitempty"`
-	Hidden   *CreateIntegrationStoreDirectHiddenUnion5   `json:"hidden,omitempty"`
+	Value       string                                      `json:"value"`
+	Description *string                                     `json:"description,omitempty"`
+	Disabled    *CreateIntegrationStoreDirectDisabledUnion5 `json:"disabled,omitempty"`
+	Hidden      *CreateIntegrationStoreDirectHiddenUnion5   `json:"hidden,omitempty"`
 }
 
 func (c CreateIntegrationStoreDirectUIOption5) MarshalJSON() ([]byte, error) {
@@ -4681,6 +4698,13 @@ func (o *CreateIntegrationStoreDirectUIOption5) GetValue() string {
 		return ""
 	}
 	return o.Value
+}
+
+func (o *CreateIntegrationStoreDirectUIOption5) GetDescription() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Description
 }
 
 func (o *CreateIntegrationStoreDirectUIOption5) GetDisabled() *CreateIntegrationStoreDirectDisabledUnion5 {
@@ -4964,10 +4988,11 @@ func (u CreateIntegrationStoreDirectHiddenUnion4) MarshalJSON() ([]byte, error) 
 }
 
 type CreateIntegrationStoreDirectUIOption4 struct {
-	Value    string                                      `json:"value"`
-	Label    string                                      `json:"label"`
-	Disabled *CreateIntegrationStoreDirectDisabledUnion4 `json:"disabled,omitempty"`
-	Hidden   *CreateIntegrationStoreDirectHiddenUnion4   `json:"hidden,omitempty"`
+	Value       string                                      `json:"value"`
+	Label       string                                      `json:"label"`
+	Description *string                                     `json:"description,omitempty"`
+	Disabled    *CreateIntegrationStoreDirectDisabledUnion4 `json:"disabled,omitempty"`
+	Hidden      *CreateIntegrationStoreDirectHiddenUnion4   `json:"hidden,omitempty"`
 }
 
 func (c CreateIntegrationStoreDirectUIOption4) MarshalJSON() ([]byte, error) {
@@ -4993,6 +5018,13 @@ func (o *CreateIntegrationStoreDirectUIOption4) GetLabel() string {
 		return ""
 	}
 	return o.Label
+}
+
+func (o *CreateIntegrationStoreDirectUIOption4) GetDescription() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Description
 }
 
 func (o *CreateIntegrationStoreDirectUIOption4) GetDisabled() *CreateIntegrationStoreDirectDisabledUnion4 {
@@ -6148,10 +6180,11 @@ func (u CreateIntegrationStoreDirectHiddenUnion3) MarshalJSON() ([]byte, error) 
 }
 
 type CreateIntegrationStoreDirectUIOption3 struct {
-	Value    string                                      `json:"value"`
-	Label    string                                      `json:"label"`
-	Disabled *CreateIntegrationStoreDirectDisabledUnion3 `json:"disabled,omitempty"`
-	Hidden   *CreateIntegrationStoreDirectHiddenUnion3   `json:"hidden,omitempty"`
+	Value       string                                      `json:"value"`
+	Label       string                                      `json:"label"`
+	Description *string                                     `json:"description,omitempty"`
+	Disabled    *CreateIntegrationStoreDirectDisabledUnion3 `json:"disabled,omitempty"`
+	Hidden      *CreateIntegrationStoreDirectHiddenUnion3   `json:"hidden,omitempty"`
 }
 
 func (c CreateIntegrationStoreDirectUIOption3) MarshalJSON() ([]byte, error) {
@@ -6177,6 +6210,13 @@ func (o *CreateIntegrationStoreDirectUIOption3) GetLabel() string {
 		return ""
 	}
 	return o.Label
+}
+
+func (o *CreateIntegrationStoreDirectUIOption3) GetDescription() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Description
 }
 
 func (o *CreateIntegrationStoreDirectUIOption3) GetDisabled() *CreateIntegrationStoreDirectDisabledUnion3 {

@@ -17,5 +17,6 @@ let value: GetConfigurationProductsPropertiesUiOptions = {
 | --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
 | `value`                                             | *string*                                            | :heavy_check_mark:                                  | N/A                                                 |
 | `label`                                             | *string*                                            | :heavy_check_mark:                                  | N/A                                                 |
+| `description`                                       | *string*                                            | :heavy_minus_sign:                                  | N/A                                                 |
 | `disabled`                                          | *models.GetConfigurationProductsPropertiesDisabled* | :heavy_minus_sign:                                  | N/A                                                 |
 | `hidden`                                            | *models.GetConfigurationProductsPropertiesHidden*   | :heavy_minus_sign:                                  | N/A                                                 |

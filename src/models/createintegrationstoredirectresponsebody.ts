@@ -1131,6 +1131,7 @@ export type CreateIntegrationStoreDirectNotification = {
 export type CreateIntegrationStoreDirectSecrets = {
   name: string;
   length: number;
+  frameworkPublishable?: boolean | undefined;
 };
 
 export const CreateIntegrationStoreDirectType = {
@@ -6912,11 +6913,13 @@ export const CreateIntegrationStoreDirectSecrets$inboundSchema: z.ZodType<
 > = z.object({
   name: types.string(),
   length: types.number(),
+  frameworkPublishable: types.optional(types.boolean()),
 });
 /** @internal */
 export type CreateIntegrationStoreDirectSecrets$Outbound = {
   name: string;
   length: number;
+  frameworkPublishable?: boolean | undefined;
 };
 
 /** @internal */
@@ -6927,6 +6930,7 @@ export const CreateIntegrationStoreDirectSecrets$outboundSchema: z.ZodType<
 > = z.object({
   name: z.string(),
   length: z.number(),
+  frameworkPublishable: z.boolean().optional(),
 });
 
 export function createIntegrationStoreDirectSecretsToJSON(

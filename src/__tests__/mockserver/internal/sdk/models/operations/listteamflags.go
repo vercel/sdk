@@ -43,6 +43,7 @@ const (
 	ListTeamFlagsKindBoolean ListTeamFlagsKind = "boolean"
 	ListTeamFlagsKindString  ListTeamFlagsKind = "string"
 	ListTeamFlagsKindNumber  ListTeamFlagsKind = "number"
+	ListTeamFlagsKindJSON    ListTeamFlagsKind = "json"
 )
 
 func (e ListTeamFlagsKind) ToPointer() *ListTeamFlagsKind {
@@ -59,6 +60,8 @@ func (e *ListTeamFlagsKind) UnmarshalJSON(data []byte) error {
 	case "string":
 		fallthrough
 	case "number":
+		fallthrough
+	case "json":
 		*e = ListTeamFlagsKind(v)
 		return nil
 	default:

@@ -98,7 +98,6 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc("/v8/artifacts/{hash}")(pathParams);
 
   const query = encodeFormQuery({
@@ -124,9 +123,19 @@ async function $do(
       payload["x-artifact-client-interactive"],
       { explode: false, charEncoding: "none" },
     ),
+    "x-artifact-dirty-hash": encodeSimple(
+      "x-artifact-dirty-hash",
+      payload["x-artifact-dirty-hash"],
+      { explode: false, charEncoding: "none" },
+    ),
     "x-artifact-duration": encodeSimple(
       "x-artifact-duration",
       payload["x-artifact-duration"],
+      { explode: false, charEncoding: "none" },
+    ),
+    "x-artifact-sha": encodeSimple(
+      "x-artifact-sha",
+      payload["x-artifact-sha"],
       { explode: false, charEncoding: "none" },
     ),
     "x-artifact-tag": encodeSimple(

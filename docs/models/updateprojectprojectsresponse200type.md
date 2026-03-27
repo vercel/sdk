@@ -5,7 +5,7 @@ The type of matching to perform
 ## Example Usage
 
 ```typescript
-import { UpdateProjectProjectsResponse200Type } from "@vercel/sdk/models/updateprojectprojectsissuermode.js";
+import { UpdateProjectProjectsResponse200Type } from "@vercel/sdk/models/updateprojectlogheaders.js";
 
 let value: UpdateProjectProjectsResponse200Type = "equals";
 ```

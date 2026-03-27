@@ -23,15 +23,15 @@ func pathGetV1Sandboxes(dir *logging.HTTPFileDirectory, rt *tracking.RequestTrac
 		count := rt.GetRequestCount(test, instanceID)
 
 		switch fmt.Sprintf("%s[%d]", test, count) {
-		case "listSandboxes[0]":
-			dir.HandlerFunc("listSandboxes", testListSandboxesListSandboxes0)(w, req)
+		case "getSandboxesV1[0]":
+			dir.HandlerFunc("getSandboxesV1", testGetSandboxesV1GetSandboxesV10)(w, req)
 		default:
 			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }
 
-func testListSandboxesListSandboxes0(w http.ResponseWriter, req *http.Request) {
+func testGetSandboxesV1GetSandboxesV10(w http.ResponseWriter, req *http.Request) {
 	if err := assert.SecurityAuthorizationHeader(req, true, "Bearer"); err != nil {
 		log.Printf("assertion error: %s\n", err)
 		http.Error(w, err.Error(), http.StatusUnauthorized)
@@ -47,10 +47,10 @@ func testListSandboxesListSandboxes0(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	var respBody *operations.ListSandboxesResponseBody = &operations.ListSandboxesResponseBody{
+	var respBody *operations.GetSandboxesV1ResponseBody = &operations.GetSandboxesV1ResponseBody{
 		Sandboxes: []components.Sandbox{},
-		Pagination: operations.ListSandboxesPagination{
-			Total: 3903.28,
+		Pagination: operations.GetSandboxesV1Pagination{
+			Total: 16.31,
 			Count: 20,
 			Next:  types.Float64(1540095775951),
 			Prev:  types.Float64(1540095775951),

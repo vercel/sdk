@@ -23,7 +23,7 @@ export const SnapshotStatus = {
 export type SnapshotStatus = ClosedEnum<typeof SnapshotStatus>;
 
 /**
- * This object contains information related to a Snapshot of a Vercel Sandbox.
+ * This object contains information related to a Snapshot of a Vercel Sandbox session (v2 API).
  */
 export type Snapshot = {
   /**
@@ -31,9 +31,9 @@ export type Snapshot = {
    */
   id: string;
   /**
-   * The unique identifier of the sandbox from which the snapshot was created.
+   * The unique identifier of the session from which the snapshot was created.
    */
-  sourceSandboxId: string;
+  sourceSessionId: string;
   /**
    * The region where the snapshot is stored.
    */
@@ -76,7 +76,7 @@ export const Snapshot$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   id: types.string(),
-  sourceSandboxId: types.string(),
+  sourceSessionId: types.string(),
   region: types.string(),
   status: SnapshotStatus$inboundSchema,
   sizeBytes: types.number(),
@@ -87,7 +87,7 @@ export const Snapshot$inboundSchema: z.ZodType<
 /** @internal */
 export type Snapshot$Outbound = {
   id: string;
-  sourceSandboxId: string;
+  sourceSessionId: string;
   region: string;
   status: string;
   sizeBytes: number;
@@ -103,7 +103,7 @@ export const Snapshot$outboundSchema: z.ZodType<
   Snapshot
 > = z.object({
   id: z.string(),
-  sourceSandboxId: z.string(),
+  sourceSessionId: z.string(),
   region: z.string(),
   status: SnapshotStatus$outboundSchema,
   sizeBytes: z.number(),

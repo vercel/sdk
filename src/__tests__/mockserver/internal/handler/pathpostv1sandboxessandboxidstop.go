@@ -68,7 +68,7 @@ func testStopSandboxStopSandbox0(w http.ResponseWriter, req *http.Request) {
 			CreatedAt:        1750344501629,
 			UpdatedAt:        1750344501629,
 			NetworkPolicy: &components.SandboxNetworkPolicy{
-				Mode: components.ModeCustom,
+				Mode: components.SandboxNetworkPolicyModeCustom,
 				AllowedDomains: []string{
 					"api.vercel.com",
 					"*.example.com",
@@ -90,7 +90,7 @@ func testStopSandboxStopSandbox0(w http.ResponseWriter, req *http.Request) {
 				},
 			},
 			ActiveCPUDurationMs: types.Float64(42),
-			NetworkTransfer: &components.NetworkTransfer{
+			NetworkTransfer: &components.SandboxNetworkTransfer{
 				Ingress: 7733.99,
 				Egress:  9535.78,
 			},

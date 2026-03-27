@@ -81,7 +81,7 @@ export type ResponseBodyInfo = {
   readyState?: string | undefined;
 };
 
-export const GetDeploymentEventsResponseBodyDeploymentsType = {
+export const GetDeploymentEventsResponseBodyDeploymentsResponseType = {
   Delimiter: "delimiter",
   Command: "command",
   Stdout: "stdout",
@@ -95,8 +95,8 @@ export const GetDeploymentEventsResponseBodyDeploymentsType = {
   Report: "report",
   Fatal: "fatal",
 } as const;
-export type GetDeploymentEventsResponseBodyDeploymentsType = ClosedEnum<
-  typeof GetDeploymentEventsResponseBodyDeploymentsType
+export type GetDeploymentEventsResponseBodyDeploymentsResponseType = ClosedEnum<
+  typeof GetDeploymentEventsResponseBodyDeploymentsResponseType
 >;
 
 export const ResponseBodyLevel = {
@@ -113,11 +113,11 @@ export type GetDeploymentEventsResponseBodyDeployments2 = {
   info: ResponseBodyInfo;
   serial: string;
   text?: string | undefined;
-  type: GetDeploymentEventsResponseBodyDeploymentsType;
+  type: GetDeploymentEventsResponseBodyDeploymentsResponseType;
   level?: ResponseBodyLevel | undefined;
 };
 
-export const GetDeploymentEventsResponseBodyType = {
+export const GetDeploymentEventsResponseBodyDeploymentsType = {
   Delimiter: "delimiter",
   Command: "command",
   Stdout: "stdout",
@@ -131,8 +131,8 @@ export const GetDeploymentEventsResponseBodyType = {
   Report: "report",
   Fatal: "fatal",
 } as const;
-export type GetDeploymentEventsResponseBodyType = ClosedEnum<
-  typeof GetDeploymentEventsResponseBodyType
+export type GetDeploymentEventsResponseBodyDeploymentsType = ClosedEnum<
+  typeof GetDeploymentEventsResponseBodyDeploymentsType
 >;
 
 export type GetDeploymentEventsResponseBodyInfo = {
@@ -201,7 +201,7 @@ export type ResponseBodyPayload = {
 };
 
 export type GetDeploymentEventsResponseBodyDeployments1 = {
-  type: GetDeploymentEventsResponseBodyType;
+  type: GetDeploymentEventsResponseBodyDeploymentsType;
   created: number;
   payload: ResponseBodyPayload;
 };
@@ -219,7 +219,7 @@ export type Info = {
   readyState?: string | undefined;
 };
 
-export const ResponseBodyType = {
+export const GetDeploymentEventsResponseBodyType = {
   Delimiter: "delimiter",
   Command: "command",
   Stdout: "stdout",
@@ -233,7 +233,9 @@ export const ResponseBodyType = {
   Report: "report",
   Fatal: "fatal",
 } as const;
-export type ResponseBodyType = ClosedEnum<typeof ResponseBodyType>;
+export type GetDeploymentEventsResponseBodyType = ClosedEnum<
+  typeof GetDeploymentEventsResponseBodyType
+>;
 
 export const GetDeploymentEventsResponseBodyLevel = {
   Error: "error",
@@ -251,11 +253,11 @@ export type GetDeploymentEventsResponseBody2 = {
   info: Info;
   serial: string;
   text?: string | undefined;
-  type: ResponseBodyType;
+  type: GetDeploymentEventsResponseBodyType;
   level?: GetDeploymentEventsResponseBodyLevel | undefined;
 };
 
-export const GetDeploymentEventsResponseBodyDeploymentsResponseType = {
+export const ResponseBodyType = {
   Delimiter: "delimiter",
   Command: "command",
   Stdout: "stdout",
@@ -269,9 +271,7 @@ export const GetDeploymentEventsResponseBodyDeploymentsResponseType = {
   Report: "report",
   Fatal: "fatal",
 } as const;
-export type GetDeploymentEventsResponseBodyDeploymentsResponseType = ClosedEnum<
-  typeof GetDeploymentEventsResponseBodyDeploymentsResponseType
->;
+export type ResponseBodyType = ClosedEnum<typeof ResponseBodyType>;
 
 export type GetDeploymentEventsResponseBodyDeploymentsInfo = {
   type: string;
@@ -337,7 +337,7 @@ export type GetDeploymentEventsResponseBodyPayload = {
 };
 
 export type GetDeploymentEventsResponseBody1 = {
-  type: GetDeploymentEventsResponseBodyDeploymentsResponseType;
+  type: ResponseBodyType;
   created: number;
   payload: GetDeploymentEventsResponseBodyPayload;
 };
@@ -520,13 +520,15 @@ export function responseBodyInfoFromJSON(
 }
 
 /** @internal */
-export const GetDeploymentEventsResponseBodyDeploymentsType$inboundSchema:
-  z.ZodNativeEnum<typeof GetDeploymentEventsResponseBodyDeploymentsType> = z
-    .nativeEnum(GetDeploymentEventsResponseBodyDeploymentsType);
+export const GetDeploymentEventsResponseBodyDeploymentsResponseType$inboundSchema:
+  z.ZodNativeEnum<
+    typeof GetDeploymentEventsResponseBodyDeploymentsResponseType
+  > = z.nativeEnum(GetDeploymentEventsResponseBodyDeploymentsResponseType);
 /** @internal */
-export const GetDeploymentEventsResponseBodyDeploymentsType$outboundSchema:
-  z.ZodNativeEnum<typeof GetDeploymentEventsResponseBodyDeploymentsType> =
-    GetDeploymentEventsResponseBodyDeploymentsType$inboundSchema;
+export const GetDeploymentEventsResponseBodyDeploymentsResponseType$outboundSchema:
+  z.ZodNativeEnum<
+    typeof GetDeploymentEventsResponseBodyDeploymentsResponseType
+  > = GetDeploymentEventsResponseBodyDeploymentsResponseType$inboundSchema;
 
 /** @internal */
 export const ResponseBodyLevel$inboundSchema: z.ZodNativeEnum<
@@ -551,7 +553,7 @@ export const GetDeploymentEventsResponseBodyDeployments2$inboundSchema:
     info: z.lazy(() => ResponseBodyInfo$inboundSchema),
     serial: types.string(),
     text: types.optional(types.string()),
-    type: GetDeploymentEventsResponseBodyDeploymentsType$inboundSchema,
+    type: GetDeploymentEventsResponseBodyDeploymentsResponseType$inboundSchema,
     level: types.optional(ResponseBodyLevel$inboundSchema),
   });
 /** @internal */
@@ -581,7 +583,7 @@ export const GetDeploymentEventsResponseBodyDeployments2$outboundSchema:
     info: z.lazy(() => ResponseBodyInfo$outboundSchema),
     serial: z.string(),
     text: z.string().optional(),
-    type: GetDeploymentEventsResponseBodyDeploymentsType$outboundSchema,
+    type: GetDeploymentEventsResponseBodyDeploymentsResponseType$outboundSchema,
     level: ResponseBodyLevel$outboundSchema.optional(),
   });
 
@@ -612,13 +614,13 @@ export function getDeploymentEventsResponseBodyDeployments2FromJSON(
 }
 
 /** @internal */
-export const GetDeploymentEventsResponseBodyType$inboundSchema: z.ZodNativeEnum<
-  typeof GetDeploymentEventsResponseBodyType
-> = z.nativeEnum(GetDeploymentEventsResponseBodyType);
+export const GetDeploymentEventsResponseBodyDeploymentsType$inboundSchema:
+  z.ZodNativeEnum<typeof GetDeploymentEventsResponseBodyDeploymentsType> = z
+    .nativeEnum(GetDeploymentEventsResponseBodyDeploymentsType);
 /** @internal */
-export const GetDeploymentEventsResponseBodyType$outboundSchema:
-  z.ZodNativeEnum<typeof GetDeploymentEventsResponseBodyType> =
-    GetDeploymentEventsResponseBodyType$inboundSchema;
+export const GetDeploymentEventsResponseBodyDeploymentsType$outboundSchema:
+  z.ZodNativeEnum<typeof GetDeploymentEventsResponseBodyDeploymentsType> =
+    GetDeploymentEventsResponseBodyDeploymentsType$inboundSchema;
 
 /** @internal */
 export const GetDeploymentEventsResponseBodyInfo$inboundSchema: z.ZodType<
@@ -864,7 +866,7 @@ export const GetDeploymentEventsResponseBodyDeployments1$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.object({
-    type: GetDeploymentEventsResponseBodyType$inboundSchema,
+    type: GetDeploymentEventsResponseBodyDeploymentsType$inboundSchema,
     created: types.number(),
     payload: z.lazy(() => ResponseBodyPayload$inboundSchema),
   });
@@ -882,7 +884,7 @@ export const GetDeploymentEventsResponseBodyDeployments1$outboundSchema:
     z.ZodTypeDef,
     GetDeploymentEventsResponseBodyDeployments1
   > = z.object({
-    type: GetDeploymentEventsResponseBodyType$outboundSchema,
+    type: GetDeploymentEventsResponseBodyDeploymentsType$outboundSchema,
     created: z.number(),
     payload: z.lazy(() => ResponseBodyPayload$outboundSchema),
   });
@@ -1001,13 +1003,13 @@ export function infoFromJSON(
 }
 
 /** @internal */
-export const ResponseBodyType$inboundSchema: z.ZodNativeEnum<
-  typeof ResponseBodyType
-> = z.nativeEnum(ResponseBodyType);
+export const GetDeploymentEventsResponseBodyType$inboundSchema: z.ZodNativeEnum<
+  typeof GetDeploymentEventsResponseBodyType
+> = z.nativeEnum(GetDeploymentEventsResponseBodyType);
 /** @internal */
-export const ResponseBodyType$outboundSchema: z.ZodNativeEnum<
-  typeof ResponseBodyType
-> = ResponseBodyType$inboundSchema;
+export const GetDeploymentEventsResponseBodyType$outboundSchema:
+  z.ZodNativeEnum<typeof GetDeploymentEventsResponseBodyType> =
+    GetDeploymentEventsResponseBodyType$inboundSchema;
 
 /** @internal */
 export const GetDeploymentEventsResponseBodyLevel$inboundSchema:
@@ -1032,7 +1034,7 @@ export const GetDeploymentEventsResponseBody2$inboundSchema: z.ZodType<
   info: z.lazy(() => Info$inboundSchema),
   serial: types.string(),
   text: types.optional(types.string()),
-  type: ResponseBodyType$inboundSchema,
+  type: GetDeploymentEventsResponseBodyType$inboundSchema,
   level: types.optional(GetDeploymentEventsResponseBodyLevel$inboundSchema),
 });
 /** @internal */
@@ -1061,7 +1063,7 @@ export const GetDeploymentEventsResponseBody2$outboundSchema: z.ZodType<
   info: z.lazy(() => Info$outboundSchema),
   serial: z.string(),
   text: z.string().optional(),
-  type: ResponseBodyType$outboundSchema,
+  type: GetDeploymentEventsResponseBodyType$outboundSchema,
   level: GetDeploymentEventsResponseBodyLevel$outboundSchema.optional(),
 });
 
@@ -1085,15 +1087,13 @@ export function getDeploymentEventsResponseBody2FromJSON(
 }
 
 /** @internal */
-export const GetDeploymentEventsResponseBodyDeploymentsResponseType$inboundSchema:
-  z.ZodNativeEnum<
-    typeof GetDeploymentEventsResponseBodyDeploymentsResponseType
-  > = z.nativeEnum(GetDeploymentEventsResponseBodyDeploymentsResponseType);
+export const ResponseBodyType$inboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyType
+> = z.nativeEnum(ResponseBodyType);
 /** @internal */
-export const GetDeploymentEventsResponseBodyDeploymentsResponseType$outboundSchema:
-  z.ZodNativeEnum<
-    typeof GetDeploymentEventsResponseBodyDeploymentsResponseType
-  > = GetDeploymentEventsResponseBodyDeploymentsResponseType$inboundSchema;
+export const ResponseBodyType$outboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyType
+> = ResponseBodyType$inboundSchema;
 
 /** @internal */
 export const GetDeploymentEventsResponseBodyDeploymentsInfo$inboundSchema:
@@ -1340,7 +1340,7 @@ export const GetDeploymentEventsResponseBody1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: GetDeploymentEventsResponseBodyDeploymentsResponseType$inboundSchema,
+  type: ResponseBodyType$inboundSchema,
   created: types.number(),
   payload: z.lazy(() => GetDeploymentEventsResponseBodyPayload$inboundSchema),
 });
@@ -1357,7 +1357,7 @@ export const GetDeploymentEventsResponseBody1$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetDeploymentEventsResponseBody1
 > = z.object({
-  type: GetDeploymentEventsResponseBodyDeploymentsResponseType$outboundSchema,
+  type: ResponseBodyType$outboundSchema,
   created: z.number(),
   payload: z.lazy(() => GetDeploymentEventsResponseBodyPayload$outboundSchema),
 });

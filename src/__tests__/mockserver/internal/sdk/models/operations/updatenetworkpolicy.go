@@ -8,21 +8,21 @@ import (
 	"mockserver/internal/sdk/models/components"
 )
 
-// Mode - The network access policy mode. Use \"allow-all\" to permit all outbound traffic. Use \"deny-all\" to block all outbound traffic. Use \"custom\" to specify explicit allow/deny rules.
-type Mode string
+// UpdateNetworkPolicyMode - The network access policy mode. Use \"allow-all\" to permit all outbound traffic. Use \"deny-all\" to block all outbound traffic. Use \"custom\" to specify explicit allow/deny rules.
+type UpdateNetworkPolicyMode string
 
 const (
-	ModeAllowAll     Mode = "allow-all"
-	ModeDenyAll      Mode = "deny-all"
-	ModeCustom       Mode = "custom"
-	ModeDefaultAllow Mode = "default-allow"
-	ModeDefaultDeny  Mode = "default-deny"
+	UpdateNetworkPolicyModeAllowAll     UpdateNetworkPolicyMode = "allow-all"
+	UpdateNetworkPolicyModeDenyAll      UpdateNetworkPolicyMode = "deny-all"
+	UpdateNetworkPolicyModeCustom       UpdateNetworkPolicyMode = "custom"
+	UpdateNetworkPolicyModeDefaultAllow UpdateNetworkPolicyMode = "default-allow"
+	UpdateNetworkPolicyModeDefaultDeny  UpdateNetworkPolicyMode = "default-deny"
 )
 
-func (e Mode) ToPointer() *Mode {
+func (e UpdateNetworkPolicyMode) ToPointer() *UpdateNetworkPolicyMode {
 	return &e
 }
-func (e *Mode) UnmarshalJSON(data []byte) error {
+func (e *UpdateNetworkPolicyMode) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -37,17 +37,17 @@ func (e *Mode) UnmarshalJSON(data []byte) error {
 	case "default-allow":
 		fallthrough
 	case "default-deny":
-		*e = Mode(v)
+		*e = UpdateNetworkPolicyMode(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for Mode: %v", v)
+		return fmt.Errorf("invalid value for UpdateNetworkPolicyMode: %v", v)
 	}
 }
 
 // UpdateNetworkPolicyRequestBody - Network access policy for the sandbox.\n    Controls which external hosts the sandbox can communicate with.\n    Use \"allow-all\" mode to allow all traffic, \"deny-all\" to block all traffic or \"custom\" to provide specific rules.
 type UpdateNetworkPolicyRequestBody struct {
 	// The network access policy mode. Use \"allow-all\" to permit all outbound traffic. Use \"deny-all\" to block all outbound traffic. Use \"custom\" to specify explicit allow/deny rules.
-	Mode Mode `json:"mode"`
+	Mode UpdateNetworkPolicyMode `json:"mode"`
 	// List of domain names the sandbox is allowed to connect to. Only applies when mode is \"custom\". Supports wildcard patterns (e.g., \"*.example.com\" matches all subdomains).
 	AllowedDomains []string `json:"allowedDomains,omitempty"`
 	// List of IP address ranges (in CIDR notation) the sandbox is allowed to connect to. Traffic to these addresses bypasses domain-based restrictions.
@@ -56,9 +56,9 @@ type UpdateNetworkPolicyRequestBody struct {
 	DeniedCIDRs []string `json:"deniedCIDRs,omitempty"`
 }
 
-func (o *UpdateNetworkPolicyRequestBody) GetMode() Mode {
+func (o *UpdateNetworkPolicyRequestBody) GetMode() UpdateNetworkPolicyMode {
 	if o == nil {
-		return Mode("")
+		return UpdateNetworkPolicyMode("")
 	}
 	return o.Mode
 }

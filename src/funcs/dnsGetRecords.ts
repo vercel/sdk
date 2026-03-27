@@ -96,8 +96,7 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
-  const path = pathToFunc("/v4/domains/{domain}/records")(pathParams);
+  const path = pathToFunc("/v5/domains/{domain}/records")(pathParams);
 
   const query = encodeFormQuery({
     "limit": payload.limit,

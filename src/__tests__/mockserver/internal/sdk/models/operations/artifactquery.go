@@ -98,6 +98,8 @@ type ArtifactQueryResponseBody1 struct {
 	Size           float64 `json:"size"`
 	TaskDurationMs float64 `json:"taskDurationMs"`
 	Tag            *string `json:"tag,omitempty"`
+	Sha            *string `json:"sha,omitempty"`
+	DirtyHash      *string `json:"dirtyHash,omitempty"`
 }
 
 func (a ArtifactQueryResponseBody1) MarshalJSON() ([]byte, error) {
@@ -130,6 +132,20 @@ func (o *ArtifactQueryResponseBody1) GetTag() *string {
 		return nil
 	}
 	return o.Tag
+}
+
+func (o *ArtifactQueryResponseBody1) GetSha() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Sha
+}
+
+func (o *ArtifactQueryResponseBody1) GetDirtyHash() *string {
+	if o == nil {
+		return nil
+	}
+	return o.DirtyHash
 }
 
 type ArtifactQueryResponseBodyUnionType string

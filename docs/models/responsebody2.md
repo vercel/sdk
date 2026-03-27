@@ -3,17 +3,15 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBody2 } from "@vercel/sdk/models/artifactqueryop.js";
+import { ResponseBody2 } from "@vercel/sdk/models/statusop.js";
 
 let value: ResponseBody2 = {
-  error: {
-    message: "<value>",
-  },
+  status: "enabled",
 };
 ```
 
 ## Fields
 
-| Field                                                      | Type                                                       | Required                                                   | Description                                                |
-| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
-| `error`                                                    | [models.ResponseBodyError](../models/responsebodyerror.md) | :heavy_check_mark:                                         | N/A                                                        |
+| Field                                                        | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `status`                                                     | [models.ResponseBodyStatus](../models/responsebodystatus.md) | :heavy_check_mark:                                           | N/A                                                          |

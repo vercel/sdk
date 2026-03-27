@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Geolocation } from "@vercel/sdk/models/payloadteampermissions.js";
+import { Geolocation } from "@vercel/sdk/models/payloadrules.js";
 
 let value: Geolocation = {
   country: {

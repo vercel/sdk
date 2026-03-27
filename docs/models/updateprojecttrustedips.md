@@ -5,7 +5,7 @@ Restricts access to deployments based on the incoming request IP address
 ## Example Usage
 
 ```typescript
-import { UpdateProjectTrustedIps } from "@vercel/sdk/models/updateprojectprojectsissuermode.js";
+import { UpdateProjectTrustedIps } from "@vercel/sdk/models/updateprojectlogheaders.js";
 
 let value: UpdateProjectTrustedIps = {
   deploymentType: "production",

@@ -5,17 +5,13 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndFiftySix } from "@vercel/sdk/models/payloadmostspecificsubdivision.js";
+import { TwoHundredAndFiftySix } from "@vercel/sdk/models/usereventpayload221previous.js";
 
-let value: TwoHundredAndFiftySix = {
-  enabled: false,
-  scope: "dashboard",
-};
+let value: TwoHundredAndFiftySix = {};
 ```
 
 ## Fields
 
-| Field                              | Type                               | Required                           | Description                        |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| `enabled`                          | *boolean*                          | :heavy_check_mark:                 | N/A                                |
-| `scope`                            | [models.Scope](../models/scope.md) | :heavy_check_mark:                 | N/A                                |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `inviteCode`       | *string*           | :heavy_minus_sign: | N/A                |

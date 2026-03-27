@@ -51,7 +51,7 @@ func testListSnapshotsListSnapshots0(w http.ResponseWriter, req *http.Request) {
 		Snapshots: []components.Snapshot{
 			components.Snapshot{
 				ID:              "snap_123a6c5209bc3778245d011443644c8d27dc2c50",
-				SourceSandboxID: "sbx_123a6c5209bc3778245d011443644c8d27dc2c50",
+				SourceSessionID: "sbx_123a6c5209bc3778245d011443644c8d27dc2c50",
 				Region:          "iad1",
 				Status:          components.SnapshotStatusCreated,
 				SizeBytes:       104857600,

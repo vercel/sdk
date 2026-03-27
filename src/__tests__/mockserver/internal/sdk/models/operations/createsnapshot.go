@@ -57,7 +57,7 @@ func (o *CreateSnapshotRequest) GetBody() *CreateSnapshotRequestBody {
 }
 
 type CreateSnapshotResponseBody struct {
-	// This object contains information related to a Snapshot of a Vercel Sandbox.
+	// This object contains information related to a Snapshot of a Vercel Sandbox session (v2 API).
 	Snapshot components.Snapshot `json:"snapshot"`
 	// This object contains information related to a Vercel Sandbox.
 	Sandbox components.Sandbox `json:"sandbox"`

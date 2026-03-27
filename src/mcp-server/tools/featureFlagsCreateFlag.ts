@@ -14,7 +14,7 @@ export const tool$featureFlagsCreateFlag: ToolDefinition<typeof args> = {
   name: "feature-flags-create-flag",
   description: `Create a flag
 
-Create a new feature flag for a project. The flag must have a unique slug within the project and specify its kind (boolean, string, or number).`,
+Create a new feature flag for a project. The flag must have a unique slug within the project and specify its kind (boolean, string, number, or json).`,
   args,
   tool: async (client, args, ctx) => {
     const [result, apiCall] = await featureFlagsCreateFlag(

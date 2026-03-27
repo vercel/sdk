@@ -7,7 +7,9 @@ import { UpdateFlagVariants } from "@vercel/sdk/models/updateflagop.js";
 
 let value: UpdateFlagVariants = {
   id: "<id>",
-  value: true,
+  value: [
+    "<value 1>",
+  ],
 };
 ```
 
@@ -18,4 +20,4 @@ let value: UpdateFlagVariants = {
 | `id`                         | *string*                     | :heavy_check_mark:           | The id of the variant        |
 | `label`                      | *string*                     | :heavy_minus_sign:           | A label for the variant      |
 | `description`                | *string*                     | :heavy_minus_sign:           | A description of the variant |
-| `value`                      | *models.UpdateFlagValue*     | :heavy_check_mark:           | N/A                          |
+| `value`                      | *any*                        | :heavy_check_mark:           | N/A                          |

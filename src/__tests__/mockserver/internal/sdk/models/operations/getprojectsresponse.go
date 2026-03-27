@@ -12,60 +12,6 @@ import (
 	"mockserver/internal/sdk/utils"
 )
 
-type GetProjectsLatestDeploymentCreator struct {
-	Email       string  `json:"email"`
-	GithubLogin *string `json:"githubLogin,omitempty"`
-	GitlabLogin *string `json:"gitlabLogin,omitempty"`
-	UID         string  `json:"uid"`
-	Username    string  `json:"username"`
-}
-
-func (g GetProjectsLatestDeploymentCreator) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(g, "", false)
-}
-
-func (g *GetProjectsLatestDeploymentCreator) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"email", "uid", "username"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *GetProjectsLatestDeploymentCreator) GetEmail() string {
-	if o == nil {
-		return ""
-	}
-	return o.Email
-}
-
-func (o *GetProjectsLatestDeploymentCreator) GetGithubLogin() *string {
-	if o == nil {
-		return nil
-	}
-	return o.GithubLogin
-}
-
-func (o *GetProjectsLatestDeploymentCreator) GetGitlabLogin() *string {
-	if o == nil {
-		return nil
-	}
-	return o.GitlabLogin
-}
-
-func (o *GetProjectsLatestDeploymentCreator) GetUID() string {
-	if o == nil {
-		return ""
-	}
-	return o.UID
-}
-
-func (o *GetProjectsLatestDeploymentCreator) GetUsername() string {
-	if o == nil {
-		return ""
-	}
-	return o.Username
-}
-
 type GetProjectsLatestDeployment struct {
 	Alias              []string                                                                    `json:"alias,omitempty"`
 	AliasAssigned      optionalnullable.OptionalNullable[GetProjectsLatestDeploymentAliasAssigned] `json:"aliasAssigned,omitempty"`
@@ -3790,6 +3736,7 @@ type GetProjectsSecurity struct {
 	BotIDEnabled           *bool                                                      `json:"botIdEnabled,omitempty"`
 	RequestLogsKey         []string                                                   `json:"requestLogsKey,omitempty"`
 	LogHeaders             *GetProjectsLogHeadersUnion                                `json:"log_headers,omitempty"`
+	SecurityPlus           *bool                                                      `json:"securityPlus,omitempty"`
 }
 
 func (g GetProjectsSecurity) MarshalJSON() ([]byte, error) {
@@ -3908,6 +3855,13 @@ func (o *GetProjectsSecurity) GetLogHeaders() *GetProjectsLogHeadersUnion {
 	return o.LogHeaders
 }
 
+func (o *GetProjectsSecurity) GetSecurityPlus() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.SecurityPlus
+}
+
 // GetProjectsIssuerMode - - team: `https://oidc.vercel.com/[team_slug]` - global: `https://oidc.vercel.com`
 type GetProjectsIssuerMode string
 
@@ -3965,38 +3919,6 @@ func (o *GetProjectsOidcTokenConfig) GetIssuerMode() *GetProjectsIssuerMode {
 		return nil
 	}
 	return o.IssuerMode
-}
-
-type GetProjectsTier string
-
-const (
-	GetProjectsTierStandard GetProjectsTier = "standard"
-	GetProjectsTierBase     GetProjectsTier = "base"
-	GetProjectsTierAdvanced GetProjectsTier = "advanced"
-	GetProjectsTierCritical GetProjectsTier = "critical"
-)
-
-func (e GetProjectsTier) ToPointer() *GetProjectsTier {
-	return &e
-}
-func (e *GetProjectsTier) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "standard":
-		fallthrough
-	case "base":
-		fallthrough
-	case "advanced":
-		fallthrough
-	case "critical":
-		*e = GetProjectsTier(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for GetProjectsTier: %v", v)
-	}
 }
 
 type GetProjectsHistory struct {
@@ -6162,7 +6084,7 @@ type GetProjectsResponseBody1 struct {
 	WebAnalytics                         *GetProjectsWebAnalytics                                     `json:"webAnalytics,omitempty"`
 	Security                             *GetProjectsSecurity                                         `json:"security,omitempty"`
 	OidcTokenConfig                      *GetProjectsOidcTokenConfig                                  `json:"oidcTokenConfig,omitempty"`
-	Tier                                 *GetProjectsTier                                             `json:"tier,omitempty"`
+	Tier                                 *string                                                      `json:"tier,omitempty"`
 	Abuse                                *GetProjectsAbuse                                            `json:"abuse,omitempty"`
 	InternalRoutes                       []GetProjectsInternalRouteUnion                              `json:"internalRoutes,omitempty"`
 }
@@ -6563,7 +6485,7 @@ func (o *GetProjectsResponseBody1) GetOidcTokenConfig() *GetProjectsOidcTokenCon
 	return o.OidcTokenConfig
 }
 
-func (o *GetProjectsResponseBody1) GetTier() *GetProjectsTier {
+func (o *GetProjectsResponseBody1) GetTier() *string {
 	if o == nil {
 		return nil
 	}

@@ -95,7 +95,6 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc("/aliases/{id}/protection-bypass")(pathParams);
 
   const query = encodeFormQuery({

@@ -101,7 +101,6 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc(
     "/v1/projects/{projectIdOrName}/feature-flags/flags/{flagIdOrSlug}/versions",
   )(pathParams);

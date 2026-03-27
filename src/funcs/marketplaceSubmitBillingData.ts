@@ -96,7 +96,6 @@ async function $do(
       { explode: false, charEncoding: "percent" },
     ),
   };
-
   const path = pathToFunc(
     "/v1/installations/{integrationConfigurationId}/billing",
   )(pathParams);

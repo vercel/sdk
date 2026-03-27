@@ -8,7 +8,7 @@ import { CreateSnapshotResponseBody } from "@vercel/sdk/models/createsnapshotop.
 let value: CreateSnapshotResponseBody = {
   snapshot: {
     id: "snap_123a6c5209bc3778245d011443644c8d27dc2c50",
-    sourceSandboxId: "sbx_123a6c5209bc3778245d011443644c8d27dc2c50",
+    sourceSessionId: "sbx_123a6c5209bc3778245d011443644c8d27dc2c50",
     region: "iad1",
     status: "created",
     sizeBytes: 104857600,
@@ -68,7 +68,7 @@ let value: CreateSnapshotResponseBody = {
 
 ## Fields
 
-| Field                                                                       | Type                                                                        | Required                                                                    | Description                                                                 |
-| --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
-| `snapshot`                                                                  | [models.Snapshot](../models/snapshot.md)                                    | :heavy_check_mark:                                                          | This object contains information related to a Snapshot of a Vercel Sandbox. |
-| `sandbox`                                                                   | [models.Sandbox](../models/sandbox.md)                                      | :heavy_check_mark:                                                          | This object contains information related to a Vercel Sandbox.               |
+| Field                                                                                        | Type                                                                                         | Required                                                                                     | Description                                                                                  |
+| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `snapshot`                                                                                   | [models.Snapshot](../models/snapshot.md)                                                     | :heavy_check_mark:                                                                           | This object contains information related to a Snapshot of a Vercel Sandbox session (v2 API). |
+| `sandbox`                                                                                    | [models.Sandbox](../models/sandbox.md)                                                       | :heavy_check_mark:                                                                           | This object contains information related to a Vercel Sandbox.                                |

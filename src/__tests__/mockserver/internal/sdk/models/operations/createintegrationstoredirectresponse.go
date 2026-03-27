@@ -5741,8 +5741,9 @@ func (o *CreateIntegrationStoreDirectNotification) GetHref() *string {
 }
 
 type CreateIntegrationStoreDirectSecret struct {
-	Name   string  `json:"name"`
-	Length float64 `json:"length"`
+	Name                 string  `json:"name"`
+	Length               float64 `json:"length"`
+	FrameworkPublishable *bool   `json:"frameworkPublishable,omitempty"`
 }
 
 func (o *CreateIntegrationStoreDirectSecret) GetName() string {
@@ -5757,6 +5758,13 @@ func (o *CreateIntegrationStoreDirectSecret) GetLength() float64 {
 		return 0.0
 	}
 	return o.Length
+}
+
+func (o *CreateIntegrationStoreDirectSecret) GetFrameworkPublishable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.FrameworkPublishable
 }
 
 type CreateIntegrationStoreDirectBillingPlanType string

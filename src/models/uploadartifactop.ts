@@ -31,6 +31,14 @@ export type UploadArtifactRequest = {
    */
   xArtifactTag?: string | undefined;
   /**
+   * The SHA of the source control revision that generated this artifact.
+   */
+  xArtifactSha?: string | undefined;
+  /**
+   * A hash representing uncommitted changes in the working directory when this artifact was generated.
+   */
+  xArtifactDirtyHash?: string | undefined;
+  /**
    * The artifact hash
    */
   hash: string;
@@ -66,6 +74,8 @@ export const UploadArtifactRequest$inboundSchema: z.ZodType<
   "x-artifact-client-ci": types.optional(types.string()),
   "x-artifact-client-interactive": types.optional(types.number()),
   "x-artifact-tag": types.optional(types.string()),
+  "x-artifact-sha": types.optional(types.string()),
+  "x-artifact-dirty-hash": types.optional(types.string()),
   hash: types.string(),
   teamId: types.optional(types.string()),
   slug: types.optional(types.string()),
@@ -82,6 +92,8 @@ export const UploadArtifactRequest$inboundSchema: z.ZodType<
     "x-artifact-client-ci": "xArtifactClientCi",
     "x-artifact-client-interactive": "xArtifactClientInteractive",
     "x-artifact-tag": "xArtifactTag",
+    "x-artifact-sha": "xArtifactSha",
+    "x-artifact-dirty-hash": "xArtifactDirtyHash",
     "RequestBody": "requestBody",
   });
 });
@@ -92,6 +104,8 @@ export type UploadArtifactRequest$Outbound = {
   "x-artifact-client-ci"?: string | undefined;
   "x-artifact-client-interactive"?: number | undefined;
   "x-artifact-tag"?: string | undefined;
+  "x-artifact-sha"?: string | undefined;
+  "x-artifact-dirty-hash"?: string | undefined;
   hash: string;
   teamId?: string | undefined;
   slug?: string | undefined;
@@ -109,6 +123,8 @@ export const UploadArtifactRequest$outboundSchema: z.ZodType<
   xArtifactClientCi: z.string().optional(),
   xArtifactClientInteractive: z.number().int().optional(),
   xArtifactTag: z.string().optional(),
+  xArtifactSha: z.string().optional(),
+  xArtifactDirtyHash: z.string().optional(),
   hash: z.string(),
   teamId: z.string().optional(),
   slug: z.string().optional(),
@@ -125,6 +141,8 @@ export const UploadArtifactRequest$outboundSchema: z.ZodType<
     xArtifactClientCi: "x-artifact-client-ci",
     xArtifactClientInteractive: "x-artifact-client-interactive",
     xArtifactTag: "x-artifact-tag",
+    xArtifactSha: "x-artifact-sha",
+    xArtifactDirtyHash: "x-artifact-dirty-hash",
     requestBody: "RequestBody",
   });
 });

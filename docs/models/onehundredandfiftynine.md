@@ -5,18 +5,16 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndFiftyNine } from "@vercel/sdk/models/payloadbranchmatcher.js";
+import { OneHundredAndFiftyNine } from "@vercel/sdk/models/payloadrules.js";
 
 let value: OneHundredAndFiftyNine = {
   projectId: "<id>",
   projectName: "<value>",
   previous: {
-    functionDefaultRegions: [
-      "<value 1>",
-    ],
+    functionDefaultMemoryType: "<value>",
   },
   next: {
-    functionDefaultRegions: [],
+    functionDefaultMemoryType: "<value>",
   },
 };
 ```

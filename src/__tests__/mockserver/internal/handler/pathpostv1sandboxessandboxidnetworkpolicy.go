@@ -73,7 +73,7 @@ func testUpdateNetworkPolicyUpdateNetworkPolicy0(w http.ResponseWriter, req *htt
 			CreatedAt:        1750344501629,
 			UpdatedAt:        1750344501629,
 			NetworkPolicy: &components.SandboxNetworkPolicy{
-				Mode: components.ModeCustom,
+				Mode: components.SandboxNetworkPolicyModeCustom,
 				AllowedDomains: []string{
 					"api.vercel.com",
 					"*.example.com",
@@ -95,7 +95,7 @@ func testUpdateNetworkPolicyUpdateNetworkPolicy0(w http.ResponseWriter, req *htt
 				},
 			},
 			ActiveCPUDurationMs: types.Float64(42),
-			NetworkTransfer: &components.NetworkTransfer{
+			NetworkTransfer: &components.SandboxNetworkTransfer{
 				Ingress: 6094.25,
 				Egress:  9868.24,
 			},

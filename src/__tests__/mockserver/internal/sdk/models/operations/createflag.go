@@ -17,6 +17,7 @@ const (
 	KindRequestBoolean KindRequest = "boolean"
 	KindRequestString  KindRequest = "string"
 	KindRequestNumber  KindRequest = "number"
+	KindRequestJSON    KindRequest = "json"
 )
 
 func (e KindRequest) ToPointer() *KindRequest {
@@ -33,6 +34,8 @@ func (e *KindRequest) UnmarshalJSON(data []byte) error {
 	case "string":
 		fallthrough
 	case "number":
+		fallthrough
+	case "json":
 		*e = KindRequest(v)
 		return nil
 	default:
@@ -40,89 +43,18 @@ func (e *KindRequest) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type CreateFlagValueRequestType string
-
-const (
-	CreateFlagValueRequestTypeStr     CreateFlagValueRequestType = "str"
-	CreateFlagValueRequestTypeNumber  CreateFlagValueRequestType = "number"
-	CreateFlagValueRequestTypeBoolean CreateFlagValueRequestType = "boolean"
-)
-
-type CreateFlagValueRequest struct {
-	Str     *string  `queryParam:"inline"`
-	Number  *float64 `queryParam:"inline"`
-	Boolean *bool    `queryParam:"inline"`
-
-	Type CreateFlagValueRequestType
+type CreateFlagValue struct {
 }
 
-func CreateCreateFlagValueRequestStr(str string) CreateFlagValueRequest {
-	typ := CreateFlagValueRequestTypeStr
-
-	return CreateFlagValueRequest{
-		Str:  &str,
-		Type: typ,
-	}
+func (c CreateFlagValue) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
 }
 
-func CreateCreateFlagValueRequestNumber(number float64) CreateFlagValueRequest {
-	typ := CreateFlagValueRequestTypeNumber
-
-	return CreateFlagValueRequest{
-		Number: &number,
-		Type:   typ,
+func (c *CreateFlagValue) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, nil); err != nil {
+		return err
 	}
-}
-
-func CreateCreateFlagValueRequestBoolean(boolean bool) CreateFlagValueRequest {
-	typ := CreateFlagValueRequestTypeBoolean
-
-	return CreateFlagValueRequest{
-		Boolean: &boolean,
-		Type:    typ,
-	}
-}
-
-func (u *CreateFlagValueRequest) UnmarshalJSON(data []byte) error {
-
-	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
-		u.Str = &str
-		u.Type = CreateFlagValueRequestTypeStr
-		return nil
-	}
-
-	var number float64 = float64(0)
-	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
-		u.Number = &number
-		u.Type = CreateFlagValueRequestTypeNumber
-		return nil
-	}
-
-	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
-		u.Boolean = &boolean
-		u.Type = CreateFlagValueRequestTypeBoolean
-		return nil
-	}
-
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateFlagValueRequest", string(data))
-}
-
-func (u CreateFlagValueRequest) MarshalJSON() ([]byte, error) {
-	if u.Str != nil {
-		return utils.MarshalJSON(u.Str, "", true)
-	}
-
-	if u.Number != nil {
-		return utils.MarshalJSON(u.Number, "", true)
-	}
-
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
-	return nil, errors.New("could not marshal union type CreateFlagValueRequest: all fields are null")
+	return nil
 }
 
 type CreateFlagVariantRequest struct {
@@ -131,8 +63,8 @@ type CreateFlagVariantRequest struct {
 	// A label for the variant
 	Label *string `json:"label,omitempty"`
 	// A description of the variant
-	Description *string                `json:"description,omitempty"`
-	Value       CreateFlagValueRequest `json:"value"`
+	Description *string `json:"description,omitempty"`
+	Value       any     `json:"value"`
 }
 
 func (o *CreateFlagVariantRequest) GetID() string {
@@ -156,9 +88,9 @@ func (o *CreateFlagVariantRequest) GetDescription() *string {
 	return o.Description
 }
 
-func (o *CreateFlagVariantRequest) GetValue() CreateFlagValueRequest {
+func (o *CreateFlagVariantRequest) GetValue() any {
 	if o == nil {
-		return CreateFlagValueRequest{}
+		return nil
 	}
 	return o.Value
 }
@@ -1419,124 +1351,7 @@ func (o *CreateFlagRequest) GetBody() *CreateFlagRequestBody {
 	return o.Body
 }
 
-type ValueFlagType string
-
-const (
-	ValueFlagTypeStr     ValueFlagType = "str"
-	ValueFlagTypeNumber  ValueFlagType = "number"
-	ValueFlagTypeBoolean ValueFlagType = "boolean"
-)
-
-type ValueFlag struct {
-	Str     *string  `queryParam:"inline"`
-	Number  *float64 `queryParam:"inline"`
-	Boolean *bool    `queryParam:"inline"`
-
-	Type ValueFlagType
-}
-
-func CreateValueFlagStr(str string) ValueFlag {
-	typ := ValueFlagTypeStr
-
-	return ValueFlag{
-		Str:  &str,
-		Type: typ,
-	}
-}
-
-func CreateValueFlagNumber(number float64) ValueFlag {
-	typ := ValueFlagTypeNumber
-
-	return ValueFlag{
-		Number: &number,
-		Type:   typ,
-	}
-}
-
-func CreateValueFlagBoolean(boolean bool) ValueFlag {
-	typ := ValueFlagTypeBoolean
-
-	return ValueFlag{
-		Boolean: &boolean,
-		Type:    typ,
-	}
-}
-
-func (u *ValueFlag) UnmarshalJSON(data []byte) error {
-
-	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
-		u.Str = &str
-		u.Type = ValueFlagTypeStr
-		return nil
-	}
-
-	var number float64 = float64(0)
-	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
-		u.Number = &number
-		u.Type = ValueFlagTypeNumber
-		return nil
-	}
-
-	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
-		u.Boolean = &boolean
-		u.Type = ValueFlagTypeBoolean
-		return nil
-	}
-
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for ValueFlag", string(data))
-}
-
-func (u ValueFlag) MarshalJSON() ([]byte, error) {
-	if u.Str != nil {
-		return utils.MarshalJSON(u.Str, "", true)
-	}
-
-	if u.Number != nil {
-		return utils.MarshalJSON(u.Number, "", true)
-	}
-
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
-	return nil, errors.New("could not marshal union type ValueFlag: all fields are null")
-}
-
 type VariantFlag struct {
-	Description *string   `json:"description,omitempty"`
-	Label       *string   `json:"label,omitempty"`
-	Value       ValueFlag `json:"value"`
-	ID          string    `json:"id"`
-}
-
-func (o *VariantFlag) GetDescription() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Description
-}
-
-func (o *VariantFlag) GetLabel() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Label
-}
-
-func (o *VariantFlag) GetValue() ValueFlag {
-	if o == nil {
-		return ValueFlag{}
-	}
-	return o.Value
-}
-
-func (o *VariantFlag) GetID() string {
-	if o == nil {
-		return ""
-	}
-	return o.ID
 }
 
 type ReuseFlag struct {
@@ -2982,6 +2797,7 @@ const (
 	KindFlagString  KindFlag = "string"
 	KindFlagNumber  KindFlag = "number"
 	KindFlagBoolean KindFlag = "boolean"
+	KindFlagJSON    KindFlag = "json"
 )
 
 func (e KindFlag) ToPointer() *KindFlag {
@@ -2998,6 +2814,8 @@ func (e *KindFlag) UnmarshalJSON(data []byte) error {
 	case "number":
 		fallthrough
 	case "boolean":
+		fallthrough
+	case "json":
 		*e = KindFlag(v)
 		return nil
 	default:

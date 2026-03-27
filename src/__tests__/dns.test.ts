@@ -49,3 +49,23 @@ test("Dns Remove Record", async () => {
   });
   expect(result).toBeDefined();
 });
+
+test("Dns Get Records", async () => {
+  const testHttpClient = createTestHTTPClient("getRecords");
+
+  const vercel = new Vercel({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+  });
+
+  const result = await vercel.dns.getRecords({
+    domain: "example.com",
+    limit: "20",
+    since: "1609499532000",
+    until: "1612264332000",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
+  expect(result).toBeDefined();
+});

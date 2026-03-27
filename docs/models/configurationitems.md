@@ -1,0 +1,23 @@
+# ConfigurationItems
+
+## Example Usage
+
+```typescript
+import { ConfigurationItems } from "@vercel/sdk/models/buycreditsop.js";
+
+let value: ConfigurationItems = {
+  name: "<value>",
+  subtotal: "<value>",
+  type: "renewal",
+  years: 3825.56,
+};
+```
+
+## Fields
+
+| Field                                                                                                                                                                      | Type                                                                                                                                                                       | Required                                                                                                                                                                   | Description                                                                                                                                                                |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `name`                                                                                                                                                                     | *string*                                                                                                                                                                   | :heavy_check_mark:                                                                                                                                                         | N/A                                                                                                                                                                        |
+| `subtotal`                                                                                                                                                                 | *string*                                                                                                                                                                   | :heavy_check_mark:                                                                                                                                                         | The subtotal of the domain name purchase                                                                                                                                   |
+| `type`                                                                                                                                                                     | [models.BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody2Type](../models/buycreditsconfigurationbillingresponse200applicationjsonresponsebody2type.md) | :heavy_check_mark:                                                                                                                                                         | N/A                                                                                                                                                                        |
+| `years`                                                                                                                                                                    | *number*                                                                                                                                                                   | :heavy_check_mark:                                                                                                                                                         | The number of years to purchase                                                                                                                                            |

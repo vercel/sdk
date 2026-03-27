@@ -95,7 +95,6 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc("/v8/artifacts/{hash}")(pathParams);
 
   const query = encodeFormQuery({

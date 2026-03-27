@@ -7,11 +7,11 @@ The kind of flags to retrieve.
 ```typescript
 import { QueryParamKind } from "@vercel/sdk/models/listteamflagsop.js";
 
-let value: QueryParamKind = "number";
+let value: QueryParamKind = "json";
 ```
 
 ## Values
 
 ```typescript
-"boolean" | "string" | "number"
+"boolean" | "string" | "number" | "json"
 ```

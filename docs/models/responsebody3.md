@@ -3,22 +3,27 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBody3 } from "@vercel/sdk/models/deleteredirectsop.js";
+import { ResponseBody3 } from "@vercel/sdk/models/getredirectsop.js";
 
 let value: ResponseBody3 = {
-  alias: "<value>",
-  version: {
-    id: "<id>",
-    key: "<key>",
-    lastModified: 4187.18,
-    createdBy: "<value>",
+  redirects: [
+    {
+      source: "<value>",
+      destination: "<value>",
+    },
+  ],
+  pagination: {
+    page: 4187.18,
+    perPage: 8377.18,
+    numPages: 6882.51,
   },
 };
 ```
 
 ## Fields
 
-| Field                                                                                                                                  | Type                                                                                                                                   | Required                                                                                                                               | Description                                                                                                                            |
-| -------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
-| `alias`                                                                                                                                | *string*                                                                                                                               | :heavy_check_mark:                                                                                                                     | N/A                                                                                                                                    |
-| `version`                                                                                                                              | [models.DeleteRedirectsResponseBodyBulkRedirectsResponseVersion](../models/deleteredirectsresponsebodybulkredirectsresponseversion.md) | :heavy_check_mark:                                                                                                                     | N/A                                                                                                                                    |
+| Field                                                                                                                  | Type                                                                                                                   | Required                                                                                                               | Description                                                                                                            |
+| ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `redirects`                                                                                                            | [models.GetRedirectsResponseBodyRedirects](../models/getredirectsresponsebodyredirects.md)[]                           | :heavy_check_mark:                                                                                                     | N/A                                                                                                                    |
+| `version`                                                                                                              | [models.GetRedirectsResponseBodyVersion](../models/getredirectsresponsebodyversion.md)                                 | :heavy_minus_sign:                                                                                                     | N/A                                                                                                                    |
+| `pagination`                                                                                                           | [models.GetRedirectsResponseBodyBulkRedirectsPagination](../models/getredirectsresponsebodybulkredirectspagination.md) | :heavy_check_mark:                                                                                                     | N/A                                                                                                                    |

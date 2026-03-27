@@ -30,15 +30,15 @@ const value: models.DeleteRedirectsResponseBody2 = {
 };
 ```
 
-### `models.ResponseBody3`
+### `models.DeleteRedirectsResponseBody3`
 
 ```typescript
-const value: models.ResponseBody3 = {
+const value: models.DeleteRedirectsResponseBody3 = {
   alias: "<value>",
   version: {
     id: "<id>",
     key: "<key>",
-    lastModified: 4187.18,
+    lastModified: 44.73,
     createdBy: "<value>",
   },
 };

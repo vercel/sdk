@@ -10,89 +10,18 @@ import (
 	"mockserver/internal/sdk/utils"
 )
 
-type UpdateFlagValueRequestType string
-
-const (
-	UpdateFlagValueRequestTypeStr     UpdateFlagValueRequestType = "str"
-	UpdateFlagValueRequestTypeNumber  UpdateFlagValueRequestType = "number"
-	UpdateFlagValueRequestTypeBoolean UpdateFlagValueRequestType = "boolean"
-)
-
-type UpdateFlagValueRequest struct {
-	Str     *string  `queryParam:"inline"`
-	Number  *float64 `queryParam:"inline"`
-	Boolean *bool    `queryParam:"inline"`
-
-	Type UpdateFlagValueRequestType
+type UpdateFlagValue struct {
 }
 
-func CreateUpdateFlagValueRequestStr(str string) UpdateFlagValueRequest {
-	typ := UpdateFlagValueRequestTypeStr
-
-	return UpdateFlagValueRequest{
-		Str:  &str,
-		Type: typ,
-	}
+func (u UpdateFlagValue) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
 }
 
-func CreateUpdateFlagValueRequestNumber(number float64) UpdateFlagValueRequest {
-	typ := UpdateFlagValueRequestTypeNumber
-
-	return UpdateFlagValueRequest{
-		Number: &number,
-		Type:   typ,
+func (u *UpdateFlagValue) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
+		return err
 	}
-}
-
-func CreateUpdateFlagValueRequestBoolean(boolean bool) UpdateFlagValueRequest {
-	typ := UpdateFlagValueRequestTypeBoolean
-
-	return UpdateFlagValueRequest{
-		Boolean: &boolean,
-		Type:    typ,
-	}
-}
-
-func (u *UpdateFlagValueRequest) UnmarshalJSON(data []byte) error {
-
-	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
-		u.Str = &str
-		u.Type = UpdateFlagValueRequestTypeStr
-		return nil
-	}
-
-	var number float64 = float64(0)
-	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
-		u.Number = &number
-		u.Type = UpdateFlagValueRequestTypeNumber
-		return nil
-	}
-
-	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
-		u.Boolean = &boolean
-		u.Type = UpdateFlagValueRequestTypeBoolean
-		return nil
-	}
-
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateFlagValueRequest", string(data))
-}
-
-func (u UpdateFlagValueRequest) MarshalJSON() ([]byte, error) {
-	if u.Str != nil {
-		return utils.MarshalJSON(u.Str, "", true)
-	}
-
-	if u.Number != nil {
-		return utils.MarshalJSON(u.Number, "", true)
-	}
-
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
-	return nil, errors.New("could not marshal union type UpdateFlagValueRequest: all fields are null")
+	return nil
 }
 
 type UpdateFlagVariantRequest struct {
@@ -101,8 +30,8 @@ type UpdateFlagVariantRequest struct {
 	// A label for the variant
 	Label *string `json:"label,omitempty"`
 	// A description of the variant
-	Description *string                `json:"description,omitempty"`
-	Value       UpdateFlagValueRequest `json:"value"`
+	Description *string `json:"description,omitempty"`
+	Value       any     `json:"value"`
 }
 
 func (o *UpdateFlagVariantRequest) GetID() string {
@@ -126,9 +55,9 @@ func (o *UpdateFlagVariantRequest) GetDescription() *string {
 	return o.Description
 }
 
-func (o *UpdateFlagVariantRequest) GetValue() UpdateFlagValueRequest {
+func (o *UpdateFlagVariantRequest) GetValue() any {
 	if o == nil {
-		return UpdateFlagValueRequest{}
+		return nil
 	}
 	return o.Value
 }
@@ -1416,96 +1345,7 @@ func (o *UpdateFlagRequest) GetBody() *UpdateFlagRequestBody {
 	return o.Body
 }
 
-type UpdateFlagResponseBodyValueType string
-
-const (
-	UpdateFlagResponseBodyValueTypeStr     UpdateFlagResponseBodyValueType = "str"
-	UpdateFlagResponseBodyValueTypeNumber  UpdateFlagResponseBodyValueType = "number"
-	UpdateFlagResponseBodyValueTypeBoolean UpdateFlagResponseBodyValueType = "boolean"
-)
-
-type UpdateFlagResponseBodyValue struct {
-	Str     *string  `queryParam:"inline"`
-	Number  *float64 `queryParam:"inline"`
-	Boolean *bool    `queryParam:"inline"`
-
-	Type UpdateFlagResponseBodyValueType
-}
-
-func CreateUpdateFlagResponseBodyValueStr(str string) UpdateFlagResponseBodyValue {
-	typ := UpdateFlagResponseBodyValueTypeStr
-
-	return UpdateFlagResponseBodyValue{
-		Str:  &str,
-		Type: typ,
-	}
-}
-
-func CreateUpdateFlagResponseBodyValueNumber(number float64) UpdateFlagResponseBodyValue {
-	typ := UpdateFlagResponseBodyValueTypeNumber
-
-	return UpdateFlagResponseBodyValue{
-		Number: &number,
-		Type:   typ,
-	}
-}
-
-func CreateUpdateFlagResponseBodyValueBoolean(boolean bool) UpdateFlagResponseBodyValue {
-	typ := UpdateFlagResponseBodyValueTypeBoolean
-
-	return UpdateFlagResponseBodyValue{
-		Boolean: &boolean,
-		Type:    typ,
-	}
-}
-
-func (u *UpdateFlagResponseBodyValue) UnmarshalJSON(data []byte) error {
-
-	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
-		u.Str = &str
-		u.Type = UpdateFlagResponseBodyValueTypeStr
-		return nil
-	}
-
-	var number float64 = float64(0)
-	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
-		u.Number = &number
-		u.Type = UpdateFlagResponseBodyValueTypeNumber
-		return nil
-	}
-
-	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
-		u.Boolean = &boolean
-		u.Type = UpdateFlagResponseBodyValueTypeBoolean
-		return nil
-	}
-
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateFlagResponseBodyValue", string(data))
-}
-
-func (u UpdateFlagResponseBodyValue) MarshalJSON() ([]byte, error) {
-	if u.Str != nil {
-		return utils.MarshalJSON(u.Str, "", true)
-	}
-
-	if u.Number != nil {
-		return utils.MarshalJSON(u.Number, "", true)
-	}
-
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
-	return nil, errors.New("could not marshal union type UpdateFlagResponseBodyValue: all fields are null")
-}
-
 type UpdateFlagResponseBodyVariant struct {
-	Description *string                     `json:"description,omitempty"`
-	Label       *string                     `json:"label,omitempty"`
-	Value       UpdateFlagResponseBodyValue `json:"value"`
-	ID          string                      `json:"id"`
 }
 
 func (u UpdateFlagResponseBodyVariant) MarshalJSON() ([]byte, error) {
@@ -1513,38 +1353,10 @@ func (u UpdateFlagResponseBodyVariant) MarshalJSON() ([]byte, error) {
 }
 
 func (u *UpdateFlagResponseBodyVariant) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"value", "id"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
 		return err
 	}
 	return nil
-}
-
-func (o *UpdateFlagResponseBodyVariant) GetDescription() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Description
-}
-
-func (o *UpdateFlagResponseBodyVariant) GetLabel() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Label
-}
-
-func (o *UpdateFlagResponseBodyVariant) GetValue() UpdateFlagResponseBodyValue {
-	if o == nil {
-		return UpdateFlagResponseBodyValue{}
-	}
-	return o.Value
-}
-
-func (o *UpdateFlagResponseBodyVariant) GetID() string {
-	if o == nil {
-		return ""
-	}
-	return o.ID
 }
 
 type UpdateFlagResponseBodyReuse struct {
@@ -3067,6 +2879,7 @@ const (
 	UpdateFlagKindString  UpdateFlagKind = "string"
 	UpdateFlagKindNumber  UpdateFlagKind = "number"
 	UpdateFlagKindBoolean UpdateFlagKind = "boolean"
+	UpdateFlagKindJSON    UpdateFlagKind = "json"
 )
 
 func (e UpdateFlagKind) ToPointer() *UpdateFlagKind {
@@ -3083,6 +2896,8 @@ func (e *UpdateFlagKind) UnmarshalJSON(data []byte) error {
 	case "number":
 		fallthrough
 	case "boolean":
+		fallthrough
+	case "json":
 		*e = UpdateFlagKind(v)
 		return nil
 	default:

@@ -4,8 +4,10 @@ package operations
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
 	"mockserver/internal/sdk/models/components"
+	"mockserver/internal/sdk/utils"
 )
 
 type StatusRequest struct {
@@ -61,20 +63,116 @@ func (e *ArtifactsStatus) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type StatusResponseBody struct {
+type StatusResponseBody2 struct {
 	Status ArtifactsStatus `json:"status"`
 }
 
-func (o *StatusResponseBody) GetStatus() ArtifactsStatus {
+func (s StatusResponseBody2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(s, "", false)
+}
+
+func (s *StatusResponseBody2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &s, "", false, []string{"status"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *StatusResponseBody2) GetStatus() ArtifactsStatus {
 	if o == nil {
 		return ArtifactsStatus("")
 	}
 	return o.Status
 }
 
+type StatusResponseBody1 struct {
+	Status string `json:"status"`
+}
+
+func (s StatusResponseBody1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(s, "", false)
+}
+
+func (s *StatusResponseBody1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &s, "", false, []string{"status"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *StatusResponseBody1) GetStatus() string {
+	if o == nil {
+		return ""
+	}
+	return o.Status
+}
+
+type StatusResponseBodyType string
+
+const (
+	StatusResponseBodyTypeStatusResponseBody1 StatusResponseBodyType = "status_ResponseBody_1"
+	StatusResponseBodyTypeStatusResponseBody2 StatusResponseBodyType = "status_ResponseBody_2"
+)
+
+type StatusResponseBody struct {
+	StatusResponseBody1 *StatusResponseBody1 `queryParam:"inline"`
+	StatusResponseBody2 *StatusResponseBody2 `queryParam:"inline"`
+
+	Type StatusResponseBodyType
+}
+
+func CreateStatusResponseBodyStatusResponseBody1(statusResponseBody1 StatusResponseBody1) StatusResponseBody {
+	typ := StatusResponseBodyTypeStatusResponseBody1
+
+	return StatusResponseBody{
+		StatusResponseBody1: &statusResponseBody1,
+		Type:                typ,
+	}
+}
+
+func CreateStatusResponseBodyStatusResponseBody2(statusResponseBody2 StatusResponseBody2) StatusResponseBody {
+	typ := StatusResponseBodyTypeStatusResponseBody2
+
+	return StatusResponseBody{
+		StatusResponseBody2: &statusResponseBody2,
+		Type:                typ,
+	}
+}
+
+func (u *StatusResponseBody) UnmarshalJSON(data []byte) error {
+
+	var statusResponseBody1 StatusResponseBody1 = StatusResponseBody1{}
+	if err := utils.UnmarshalJSON(data, &statusResponseBody1, "", true, nil); err == nil {
+		u.StatusResponseBody1 = &statusResponseBody1
+		u.Type = StatusResponseBodyTypeStatusResponseBody1
+		return nil
+	}
+
+	var statusResponseBody2 StatusResponseBody2 = StatusResponseBody2{}
+	if err := utils.UnmarshalJSON(data, &statusResponseBody2, "", true, nil); err == nil {
+		u.StatusResponseBody2 = &statusResponseBody2
+		u.Type = StatusResponseBodyTypeStatusResponseBody2
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for StatusResponseBody", string(data))
+}
+
+func (u StatusResponseBody) MarshalJSON() ([]byte, error) {
+	if u.StatusResponseBody1 != nil {
+		return utils.MarshalJSON(u.StatusResponseBody1, "", true)
+	}
+
+	if u.StatusResponseBody2 != nil {
+		return utils.MarshalJSON(u.StatusResponseBody2, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type StatusResponseBody: all fields are null")
+}
+
 type StatusResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
-	Object   *StatusResponseBody
+	OneOf    *StatusResponseBody
 }
 
 func (o *StatusResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -84,9 +182,9 @@ func (o *StatusResponse) GetHTTPMeta() components.HTTPMetadata {
 	return o.HTTPMeta
 }
 
-func (o *StatusResponse) GetObject() *StatusResponseBody {
+func (o *StatusResponse) GetOneOf() *StatusResponseBody {
 	if o == nil {
 		return nil
 	}
-	return o.Object
+	return o.OneOf
 }

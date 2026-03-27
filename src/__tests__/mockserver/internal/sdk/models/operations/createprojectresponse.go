@@ -8,8 +8,90 @@ import (
 	"fmt"
 	"mockserver/internal/sdk/models/components"
 	"mockserver/internal/sdk/optionalnullable"
+	"mockserver/internal/sdk/types"
 	"mockserver/internal/sdk/utils"
 )
+
+type CreateProjectGitProviderOptions struct {
+	// Whether the Vercel bot should automatically create GitHub deployments https://docs.github.com/en/rest/deployments/deployments#about-deployments NOTE: repository-dispatch events should be used instead
+	CreateDeployments CreateProjectCreateDeployments `json:"createDeployments"`
+	// Whether the Vercel bot should not automatically create GitHub repository-dispatch events on deployment events. https://vercel.com/docs/git/vercel-for-github#repository-dispatch-events
+	DisableRepositoryDispatchEvents *bool `json:"disableRepositoryDispatchEvents,omitempty"`
+	// Whether the project requires commits to be signed before deployments will be created.
+	RequireVerifiedCommits *bool `json:"requireVerifiedCommits,omitempty"`
+}
+
+func (o *CreateProjectGitProviderOptions) GetCreateDeployments() CreateProjectCreateDeployments {
+	if o == nil {
+		return CreateProjectCreateDeployments("")
+	}
+	return o.CreateDeployments
+}
+
+func (o *CreateProjectGitProviderOptions) GetDisableRepositoryDispatchEvents() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.DisableRepositoryDispatchEvents
+}
+
+func (o *CreateProjectGitProviderOptions) GetRequireVerifiedCommits() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.RequireVerifiedCommits
+}
+
+type CreateProjectWebAnalytics struct {
+	ID         string   `json:"id"`
+	DisabledAt *float64 `json:"disabledAt,omitempty"`
+	CanceledAt *float64 `json:"canceledAt,omitempty"`
+	EnabledAt  *float64 `json:"enabledAt,omitempty"`
+	hasData    *bool    `const:"true" json:"hasData,omitempty"`
+}
+
+func (c CreateProjectWebAnalytics) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateProjectWebAnalytics) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"id"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateProjectWebAnalytics) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *CreateProjectWebAnalytics) GetDisabledAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.DisabledAt
+}
+
+func (o *CreateProjectWebAnalytics) GetCanceledAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.CanceledAt
+}
+
+func (o *CreateProjectWebAnalytics) GetEnabledAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.EnabledAt
+}
+
+func (o *CreateProjectWebAnalytics) GetHasData() *bool {
+	return types.Bool(true)
+}
 
 type CreateProjectVercelRulesetAction string
 
@@ -338,6 +420,7 @@ type CreateProjectSecurity struct {
 	ManagedRules           optionalnullable.OptionalNullable[CreateProjectManagedRules] `json:"managedRules,omitempty"`
 	BotIDEnabled           *bool                                                        `json:"botIdEnabled,omitempty"`
 	LogHeaders             *CreateProjectLogHeadersUnion                                `json:"log_headers,omitempty"`
+	SecurityPlus           *bool                                                        `json:"securityPlus,omitempty"`
 }
 
 func (o *CreateProjectSecurity) GetAttackModeEnabled() *bool {
@@ -431,6 +514,13 @@ func (o *CreateProjectSecurity) GetLogHeaders() *CreateProjectLogHeadersUnion {
 	return o.LogHeaders
 }
 
+func (o *CreateProjectSecurity) GetSecurityPlus() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.SecurityPlus
+}
+
 // CreateProjectIssuerModeResponse - - team: `https://oidc.vercel.com/[team_slug]` - global: `https://oidc.vercel.com`
 type CreateProjectIssuerModeResponse string
 
@@ -479,19 +569,19 @@ func (o *CreateProjectOidcTokenConfigResponse) GetIssuerMode() *CreateProjectIss
 	return o.IssuerMode
 }
 
-type CreateProjectTier string
+type CreateProjectFlatRateTier string
 
 const (
-	CreateProjectTierStandard CreateProjectTier = "standard"
-	CreateProjectTierBase     CreateProjectTier = "base"
-	CreateProjectTierAdvanced CreateProjectTier = "advanced"
-	CreateProjectTierCritical CreateProjectTier = "critical"
+	CreateProjectFlatRateTierStandard CreateProjectFlatRateTier = "standard"
+	CreateProjectFlatRateTierBase     CreateProjectFlatRateTier = "base"
+	CreateProjectFlatRateTierAdvanced CreateProjectFlatRateTier = "advanced"
+	CreateProjectFlatRateTierCritical CreateProjectFlatRateTier = "critical"
 )
 
-func (e CreateProjectTier) ToPointer() *CreateProjectTier {
+func (e CreateProjectFlatRateTier) ToPointer() *CreateProjectFlatRateTier {
 	return &e
 }
-func (e *CreateProjectTier) UnmarshalJSON(data []byte) error {
+func (e *CreateProjectFlatRateTier) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -504,62 +594,11 @@ func (e *CreateProjectTier) UnmarshalJSON(data []byte) error {
 	case "advanced":
 		fallthrough
 	case "critical":
-		*e = CreateProjectTier(v)
+		*e = CreateProjectFlatRateTier(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for CreateProjectTier: %v", v)
+		return fmt.Errorf("invalid value for CreateProjectFlatRateTier: %v", v)
 	}
-}
-
-type CreateProjectScheduledTierChangeTier string
-
-const (
-	CreateProjectScheduledTierChangeTierStandard CreateProjectScheduledTierChangeTier = "standard"
-	CreateProjectScheduledTierChangeTierBase     CreateProjectScheduledTierChangeTier = "base"
-	CreateProjectScheduledTierChangeTierAdvanced CreateProjectScheduledTierChangeTier = "advanced"
-	CreateProjectScheduledTierChangeTierCritical CreateProjectScheduledTierChangeTier = "critical"
-)
-
-func (e CreateProjectScheduledTierChangeTier) ToPointer() *CreateProjectScheduledTierChangeTier {
-	return &e
-}
-func (e *CreateProjectScheduledTierChangeTier) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "standard":
-		fallthrough
-	case "base":
-		fallthrough
-	case "advanced":
-		fallthrough
-	case "critical":
-		*e = CreateProjectScheduledTierChangeTier(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for CreateProjectScheduledTierChangeTier: %v", v)
-	}
-}
-
-type CreateProjectScheduledTierChange struct {
-	Tier        CreateProjectScheduledTierChangeTier `json:"tier"`
-	EffectiveAt float64                              `json:"effectiveAt"`
-}
-
-func (o *CreateProjectScheduledTierChange) GetTier() CreateProjectScheduledTierChangeTier {
-	if o == nil {
-		return CreateProjectScheduledTierChangeTier("")
-	}
-	return o.Tier
-}
-
-func (o *CreateProjectScheduledTierChange) GetEffectiveAt() float64 {
-	if o == nil {
-		return 0.0
-	}
-	return o.EffectiveAt
 }
 
 // CreateProjectKind - Billing mode. Always 'flat' for flat-rate projects.
@@ -3132,6 +3171,7 @@ type CreateProjectResponseBody struct {
 	StaticIps                            *CreateProjectStaticIps                                               `json:"staticIps,omitempty"`
 	SourceFilesOutsideRootDirectory      *bool                                                                 `json:"sourceFilesOutsideRootDirectory,omitempty"`
 	EnableAffectedProjectsDeployments    *bool                                                                 `json:"enableAffectedProjectsDeployments,omitempty"`
+	EnableExternalRewriteCaching         *bool                                                                 `json:"enableExternalRewriteCaching,omitempty"`
 	SsoProtection                        optionalnullable.OptionalNullable[CreateProjectSsoProtectionResponse] `json:"ssoProtection,omitempty"`
 	Targets                              map[string]*CreateProjectTargets                                      `json:"targets,omitempty"`
 	TransferCompletedAt                  *float64                                                              `json:"transferCompletedAt,omitempty"`
@@ -3155,11 +3195,12 @@ type CreateProjectResponseBody struct {
 	WebAnalytics                         *CreateProjectWebAnalytics                                            `json:"webAnalytics,omitempty"`
 	Security                             *CreateProjectSecurity                                                `json:"security,omitempty"`
 	OidcTokenConfig                      *CreateProjectOidcTokenConfigResponse                                 `json:"oidcTokenConfig,omitempty"`
-	Tier                                 *CreateProjectTier                                                    `json:"tier,omitempty"`
-	ScheduledTierChange                  *CreateProjectScheduledTierChange                                     `json:"scheduledTierChange,omitempty"`
+	Tier                                 *string                                                               `json:"tier,omitempty"`
+	FlatRateTier                         *CreateProjectFlatRateTier                                            `json:"flatRateTier,omitempty"`
 	UsageStatus                          *CreateProjectUsageStatus                                             `json:"usageStatus,omitempty"`
 	Features                             *CreateProjectFeatures                                                `json:"features,omitempty"`
 	V0                                   *bool                                                                 `json:"v0,omitempty"`
+	V0Created                            *bool                                                                 `json:"v0Created,omitempty"`
 	Abuse                                *CreateProjectAbuse                                                   `json:"abuse,omitempty"`
 	InternalRoutes                       []CreateProjectInternalRouteUnion                                     `json:"internalRoutes,omitempty"`
 	HasDeployments                       *bool                                                                 `json:"hasDeployments,omitempty"`
@@ -3566,6 +3607,13 @@ func (o *CreateProjectResponseBody) GetEnableAffectedProjectsDeployments() *bool
 	return o.EnableAffectedProjectsDeployments
 }
 
+func (o *CreateProjectResponseBody) GetEnableExternalRewriteCaching() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.EnableExternalRewriteCaching
+}
+
 func (o *CreateProjectResponseBody) GetSsoProtection() optionalnullable.OptionalNullable[CreateProjectSsoProtectionResponse] {
 	if o == nil {
 		return nil
@@ -3727,18 +3775,18 @@ func (o *CreateProjectResponseBody) GetOidcTokenConfig() *CreateProjectOidcToken
 	return o.OidcTokenConfig
 }
 
-func (o *CreateProjectResponseBody) GetTier() *CreateProjectTier {
+func (o *CreateProjectResponseBody) GetTier() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Tier
 }
 
-func (o *CreateProjectResponseBody) GetScheduledTierChange() *CreateProjectScheduledTierChange {
+func (o *CreateProjectResponseBody) GetFlatRateTier() *CreateProjectFlatRateTier {
 	if o == nil {
 		return nil
 	}
-	return o.ScheduledTierChange
+	return o.FlatRateTier
 }
 
 func (o *CreateProjectResponseBody) GetUsageStatus() *CreateProjectUsageStatus {
@@ -3760,6 +3808,13 @@ func (o *CreateProjectResponseBody) GetV0() *bool {
 		return nil
 	}
 	return o.V0
+}
+
+func (o *CreateProjectResponseBody) GetV0Created() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.V0Created
 }
 
 func (o *CreateProjectResponseBody) GetAbuse() *CreateProjectAbuse {

@@ -55,7 +55,7 @@ func testCreateSnapshotCreateSnapshot0(w http.ResponseWriter, req *http.Request)
 	var respBody *operations.CreateSnapshotResponseBody = &operations.CreateSnapshotResponseBody{
 		Snapshot: components.Snapshot{
 			ID:              "snap_123a6c5209bc3778245d011443644c8d27dc2c50",
-			SourceSandboxID: "sbx_123a6c5209bc3778245d011443644c8d27dc2c50",
+			SourceSessionID: "sbx_123a6c5209bc3778245d011443644c8d27dc2c50",
 			Region:          "iad1",
 			Status:          components.SnapshotStatusCreated,
 			SizeBytes:       104857600,
@@ -83,7 +83,7 @@ func testCreateSnapshotCreateSnapshot0(w http.ResponseWriter, req *http.Request)
 			CreatedAt:        1750344501629,
 			UpdatedAt:        1750344501629,
 			NetworkPolicy: &components.SandboxNetworkPolicy{
-				Mode: components.ModeCustom,
+				Mode: components.SandboxNetworkPolicyModeCustom,
 				AllowedDomains: []string{
 					"api.vercel.com",
 					"*.example.com",
@@ -105,7 +105,7 @@ func testCreateSnapshotCreateSnapshot0(w http.ResponseWriter, req *http.Request)
 				},
 			},
 			ActiveCPUDurationMs: types.Float64(42),
-			NetworkTransfer: &components.NetworkTransfer{
+			NetworkTransfer: &components.SandboxNetworkTransfer{
 				Ingress: 2227.7,
 				Egress:  3795.65,
 			},

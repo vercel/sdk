@@ -9,18 +9,18 @@ import (
 	"mockserver/internal/sdk/utils"
 )
 
-// Wait - If set to \"true\", the request will block until the command finishes execution. Useful for synchronously waiting for command completion.
-type Wait string
+// GetCommandWait - If set to \"true\", the request will block until the command finishes execution. Useful for synchronously waiting for command completion.
+type GetCommandWait string
 
 const (
-	WaitTrue  Wait = "true"
-	WaitFalse Wait = "false"
+	GetCommandWaitTrue  GetCommandWait = "true"
+	GetCommandWaitFalse GetCommandWait = "false"
 )
 
-func (e Wait) ToPointer() *Wait {
+func (e GetCommandWait) ToPointer() *GetCommandWait {
 	return &e
 }
-func (e *Wait) UnmarshalJSON(data []byte) error {
+func (e *GetCommandWait) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -29,10 +29,10 @@ func (e *Wait) UnmarshalJSON(data []byte) error {
 	case "true":
 		fallthrough
 	case "false":
-		*e = Wait(v)
+		*e = GetCommandWait(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for Wait: %v", v)
+		return fmt.Errorf("invalid value for GetCommandWait: %v", v)
 	}
 }
 
@@ -42,7 +42,7 @@ type GetCommandRequest struct {
 	// The unique identifier of the command to retrieve.
 	CmdID string `pathParam:"style=simple,explode=false,name=cmdId"`
 	// If set to \"true\", the request will block until the command finishes execution. Useful for synchronously waiting for command completion.
-	Wait *Wait `default:"false" queryParam:"style=form,explode=true,name=wait"`
+	Wait *GetCommandWait `default:"false" queryParam:"style=form,explode=true,name=wait"`
 	// The Team identifier to perform the request on behalf of.
 	TeamID *string `queryParam:"style=form,explode=true,name=teamId"`
 	// The Team slug to perform the request on behalf of.
@@ -74,7 +74,7 @@ func (o *GetCommandRequest) GetCmdID() string {
 	return o.CmdID
 }
 
-func (o *GetCommandRequest) GetWait() *Wait {
+func (o *GetCommandRequest) GetWait() *GetCommandWait {
 	if o == nil {
 		return nil
 	}

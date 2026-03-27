@@ -11,5 +11,5 @@ let value: Kind = "string";
 ## Values
 
 ```typescript
-"string" | "number" | "boolean"
+"string" | "number" | "boolean" | "json"
 ```

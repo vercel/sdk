@@ -101,7 +101,6 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc(
     "/v1/access-groups/{accessGroupIdOrName}/projects/{projectId}",
   )(pathParams);

@@ -102,7 +102,6 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc("/v1/sandboxes/{sandboxId}/cmd/{cmdId}/logs")(
     pathParams,
   );

@@ -5,21 +5,22 @@ package components
 import (
 	"encoding/json"
 	"fmt"
+	"mockserver/internal/sdk/utils"
 )
 
-// Mode - The network policy mode. - 'allow-all': All traffic is allowed. - 'deny-all': All traffic is blocked. - 'custom': Traffic is controlled by explicit allow/deny rules.
-type Mode string
+// SandboxNetworkPolicyMode - The network policy mode. - 'allow-all': All traffic is allowed. - 'deny-all': All traffic is blocked. - 'custom': Traffic is controlled by explicit allow/deny rules.
+type SandboxNetworkPolicyMode string
 
 const (
-	ModeAllowAll Mode = "allow-all"
-	ModeDenyAll  Mode = "deny-all"
-	ModeCustom   Mode = "custom"
+	SandboxNetworkPolicyModeAllowAll SandboxNetworkPolicyMode = "allow-all"
+	SandboxNetworkPolicyModeDenyAll  SandboxNetworkPolicyMode = "deny-all"
+	SandboxNetworkPolicyModeCustom   SandboxNetworkPolicyMode = "custom"
 )
 
-func (e Mode) ToPointer() *Mode {
+func (e SandboxNetworkPolicyMode) ToPointer() *SandboxNetworkPolicyMode {
 	return &e
 }
-func (e *Mode) UnmarshalJSON(data []byte) error {
+func (e *SandboxNetworkPolicyMode) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -30,17 +31,17 @@ func (e *Mode) UnmarshalJSON(data []byte) error {
 	case "deny-all":
 		fallthrough
 	case "custom":
-		*e = Mode(v)
+		*e = SandboxNetworkPolicyMode(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for Mode: %v", v)
+		return fmt.Errorf("invalid value for SandboxNetworkPolicyMode: %v", v)
 	}
 }
 
 // SandboxNetworkPolicy - The network policy applied to this sandbox, if any.
 type SandboxNetworkPolicy struct {
 	// The network policy mode. - 'allow-all': All traffic is allowed. - 'deny-all': All traffic is blocked. - 'custom': Traffic is controlled by explicit allow/deny rules.
-	Mode Mode `json:"mode"`
+	Mode SandboxNetworkPolicyMode `json:"mode"`
 	// List of domain names the sandbox is allowed to connect to. Supports wildcard patterns (e.g., "*.vercel.com" matches all subdomains).
 	AllowedDomains []string `json:"allowedDomains,omitempty"`
 	// List of IP address ranges (in CIDR notation) the sandbox is allowed to connect to.
@@ -51,9 +52,20 @@ type SandboxNetworkPolicy struct {
 	InjectionRules []SandboxInjectionRule `json:"injectionRules,omitempty"`
 }
 
-func (o *SandboxNetworkPolicy) GetMode() Mode {
+func (s SandboxNetworkPolicy) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(s, "", false)
+}
+
+func (s *SandboxNetworkPolicy) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &s, "", false, []string{"mode"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *SandboxNetworkPolicy) GetMode() SandboxNetworkPolicyMode {
 	if o == nil {
-		return Mode("")
+		return SandboxNetworkPolicyMode("")
 	}
 	return o.Mode
 }

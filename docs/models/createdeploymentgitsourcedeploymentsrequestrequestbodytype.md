@@ -6,11 +6,11 @@
 import { CreateDeploymentGitSourceDeploymentsRequestRequestBodyType } from "@vercel/sdk/models/createdeploymentop.js";
 
 let value: CreateDeploymentGitSourceDeploymentsRequestRequestBodyType =
-  "bitbucket";
+  "gitlab";
 ```
 
 ## Values
 
 ```typescript
-"bitbucket"
+"gitlab"
 ```

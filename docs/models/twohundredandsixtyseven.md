@@ -5,17 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndSixtySeven } from "@vercel/sdk/models/payloadmostspecificsubdivision.js";
+import { TwoHundredAndSixtySeven } from "@vercel/sdk/models/usereventpayload221previous.js";
 
 let value: TwoHundredAndSixtySeven = {
-  enabled: false,
-  totpVerified: true,
+  provider: "apple",
+  login: "Cristina.Jacobson30",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `enabled`          | *boolean*          | :heavy_check_mark: | N/A                |
-| `totpVerified`     | *boolean*          | :heavy_check_mark: | N/A                |
+| Field                                    | Type                                     | Required                                 | Description                              |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| `provider`                               | [models.Provider](../models/provider.md) | :heavy_check_mark:                       | N/A                                      |
+| `login`                                  | *string*                                 | :heavy_check_mark:                       | N/A                                      |

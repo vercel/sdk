@@ -46,7 +46,7 @@ func testGetRedirectsGetRedirects0(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	var respBody *operations.GetRedirectsResponseBodyUnion = types.Pointer(operations.CreateGetRedirectsResponseBodyUnionMapOfAny(
+	var respBody *operations.GetRedirectsResponseBody = types.Pointer(operations.CreateGetRedirectsResponseBodyMapOfAny(
 		map[string]any{
 			"key":  "<value>",
 			"key1": "<value>",

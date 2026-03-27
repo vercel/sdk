@@ -11,5 +11,5 @@ let value: ResponseBodyKind = "string";
 ## Values
 
 ```typescript
-"string" | "number" | "boolean"
+"string" | "number" | "boolean" | "json"
 ```

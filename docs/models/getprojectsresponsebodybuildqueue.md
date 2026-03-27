@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsResponseBodyBuildQueue } from "@vercel/sdk/models/getprojectsrouteprojectsresponseaction.js";
+import { GetProjectsResponseBodyBuildQueue } from "@vercel/sdk/models/getprojectsrouteprojectsresponsemitigate.js";
 
 let value: GetProjectsResponseBodyBuildQueue = {};
 ```
 
 ## Fields
 
-| Field                                                                                            | Type                                                                                             | Required                                                                                         | Description                                                                                      |
-| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
-| `configuration`                                                                                  | [models.GetProjectsResponseBodyConfiguration](../models/getprojectsresponsebodyconfiguration.md) | :heavy_minus_sign:                                                                               | N/A                                                                                              |
+| Field                                                                                                            | Type                                                                                                             | Required                                                                                                         | Description                                                                                                      |
+| ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `configuration`                                                                                                  | [models.GetProjectsResponseBodyProjectsConfiguration](../models/getprojectsresponsebodyprojectsconfiguration.md) | :heavy_minus_sign:                                                                                               | N/A                                                                                                              |

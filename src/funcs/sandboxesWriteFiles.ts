@@ -96,7 +96,6 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc("/v1/sandboxes/{sandboxId}/fs/write")(pathParams);
 
   const query = encodeFormQuery({

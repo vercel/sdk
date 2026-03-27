@@ -3,11 +3,10 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBody1 } from "@vercel/sdk/models/artifactqueryop.js";
+import { ResponseBody1 } from "@vercel/sdk/models/statusop.js";
 
 let value: ResponseBody1 = {
-  size: 1488.21,
-  taskDurationMs: 6837.25,
+  status: "<value>",
 };
 ```
 
@@ -15,6 +14,4 @@ let value: ResponseBody1 = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `size`             | *number*           | :heavy_check_mark: | N/A                |
-| `taskDurationMs`   | *number*           | :heavy_check_mark: | N/A                |
-| `tag`              | *string*           | :heavy_minus_sign: | N/A                |
+| `status`           | *string*           | :heavy_check_mark: | N/A                |

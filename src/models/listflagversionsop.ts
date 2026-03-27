@@ -36,14 +36,7 @@ export type ListFlagVersionsRequest = {
   slug?: string | undefined;
 };
 
-export type ListFlagVersionsValue = string | number | boolean;
-
-export type ListFlagVersionsVariants = {
-  description?: string | undefined;
-  label?: string | undefined;
-  value: string | number | boolean;
-  id: string;
-};
+export type ListFlagVersionsVariants = {};
 
 export type ListFlagVersionsReuse = {
   active: boolean;
@@ -351,68 +344,20 @@ export function listFlagVersionsRequestFromJSON(
 }
 
 /** @internal */
-export const ListFlagVersionsValue$inboundSchema: z.ZodType<
-  ListFlagVersionsValue,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([types.string(), types.number(), types.boolean()]);
-/** @internal */
-export type ListFlagVersionsValue$Outbound = string | number | boolean;
-
-/** @internal */
-export const ListFlagVersionsValue$outboundSchema: z.ZodType<
-  ListFlagVersionsValue$Outbound,
-  z.ZodTypeDef,
-  ListFlagVersionsValue
-> = smartUnion([z.string(), z.number(), z.boolean()]);
-
-export function listFlagVersionsValueToJSON(
-  listFlagVersionsValue: ListFlagVersionsValue,
-): string {
-  return JSON.stringify(
-    ListFlagVersionsValue$outboundSchema.parse(listFlagVersionsValue),
-  );
-}
-export function listFlagVersionsValueFromJSON(
-  jsonString: string,
-): SafeParseResult<ListFlagVersionsValue, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ListFlagVersionsValue$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ListFlagVersionsValue' from JSON`,
-  );
-}
-
-/** @internal */
 export const ListFlagVersionsVariants$inboundSchema: z.ZodType<
   ListFlagVersionsVariants,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  description: types.optional(types.string()),
-  label: types.optional(types.string()),
-  value: smartUnion([types.string(), types.number(), types.boolean()]),
-  id: types.string(),
-});
+> = z.object({});
 /** @internal */
-export type ListFlagVersionsVariants$Outbound = {
-  description?: string | undefined;
-  label?: string | undefined;
-  value: string | number | boolean;
-  id: string;
-};
+export type ListFlagVersionsVariants$Outbound = {};
 
 /** @internal */
 export const ListFlagVersionsVariants$outboundSchema: z.ZodType<
   ListFlagVersionsVariants$Outbound,
   z.ZodTypeDef,
   ListFlagVersionsVariants
-> = z.object({
-  description: z.string().optional(),
-  label: z.string().optional(),
-  value: smartUnion([z.string(), z.number(), z.boolean()]),
-  id: z.string(),
-});
+> = z.object({});
 
 export function listFlagVersionsVariantsToJSON(
   listFlagVersionsVariants: ListFlagVersionsVariants,

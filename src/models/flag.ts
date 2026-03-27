@@ -10,14 +10,7 @@ import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
-export type Value = string | number | boolean;
-
-export type Variants = {
-  description?: string | undefined;
-  label?: string | undefined;
-  value: string | number | boolean;
-  id: string;
-};
+export type Variants = {};
 
 export type Reuse = {
   active: boolean;
@@ -203,6 +196,7 @@ export const Kind = {
   String: "string",
   Number: "number",
   Boolean: "boolean",
+  Json: "json",
 } as const;
 export type Kind = ClosedEnum<typeof Kind>;
 
@@ -246,61 +240,20 @@ export type Flag = {
 };
 
 /** @internal */
-export const Value$inboundSchema: z.ZodType<Value, z.ZodTypeDef, unknown> =
-  smartUnion([types.string(), types.number(), types.boolean()]);
-/** @internal */
-export type Value$Outbound = string | number | boolean;
-
-/** @internal */
-export const Value$outboundSchema: z.ZodType<
-  Value$Outbound,
-  z.ZodTypeDef,
-  Value
-> = smartUnion([z.string(), z.number(), z.boolean()]);
-
-export function valueToJSON(value: Value): string {
-  return JSON.stringify(Value$outboundSchema.parse(value));
-}
-export function valueFromJSON(
-  jsonString: string,
-): SafeParseResult<Value, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Value$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Value' from JSON`,
-  );
-}
-
-/** @internal */
 export const Variants$inboundSchema: z.ZodType<
   Variants,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  description: types.optional(types.string()),
-  label: types.optional(types.string()),
-  value: smartUnion([types.string(), types.number(), types.boolean()]),
-  id: types.string(),
-});
+> = z.object({});
 /** @internal */
-export type Variants$Outbound = {
-  description?: string | undefined;
-  label?: string | undefined;
-  value: string | number | boolean;
-  id: string;
-};
+export type Variants$Outbound = {};
 
 /** @internal */
 export const Variants$outboundSchema: z.ZodType<
   Variants$Outbound,
   z.ZodTypeDef,
   Variants
-> = z.object({
-  description: z.string().optional(),
-  label: z.string().optional(),
-  value: smartUnion([z.string(), z.number(), z.boolean()]),
-  id: z.string(),
-});
+> = z.object({});
 
 export function variantsToJSON(variants: Variants): string {
   return JSON.stringify(Variants$outboundSchema.parse(variants));

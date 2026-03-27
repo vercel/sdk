@@ -5,7 +5,7 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndFortySeven } from "@vercel/sdk/models/payloadteampermissions.js";
+import { OneHundredAndFortySeven } from "@vercel/sdk/models/payloadrules.js";
 
 let value: OneHundredAndFortySeven = {};
 ```
@@ -16,5 +16,5 @@ let value: OneHundredAndFortySeven = {};
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `projectId`        | *string*           | :heavy_minus_sign: | N/A                |
 | `projectName`      | *string*           | :heavy_minus_sign: | N/A                |
-| `target`           | *string*[]         | :heavy_minus_sign: | N/A                |
-| `updated`          | *boolean*          | :heavy_minus_sign: | N/A                |
+| `certId`           | *string*           | :heavy_minus_sign: | N/A                |
+| `origin`           | *string*           | :heavy_minus_sign: | N/A                |

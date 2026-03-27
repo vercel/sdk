@@ -9,10 +9,10 @@ import { sandboxesExtendSandboxTimeout } from "../funcs/sandboxesExtendSandboxTi
 import { sandboxesGetCommand } from "../funcs/sandboxesGetCommand.js";
 import { sandboxesGetCommandLogs } from "../funcs/sandboxesGetCommandLogs.js";
 import { sandboxesGetSandbox } from "../funcs/sandboxesGetSandbox.js";
+import { sandboxesGetSandboxesV1 } from "../funcs/sandboxesGetSandboxesV1.js";
 import { sandboxesGetSnapshot } from "../funcs/sandboxesGetSnapshot.js";
 import { sandboxesKillCommand } from "../funcs/sandboxesKillCommand.js";
 import { sandboxesListCommands } from "../funcs/sandboxesListCommands.js";
-import { sandboxesListSandboxes } from "../funcs/sandboxesListSandboxes.js";
 import { sandboxesListSnapshots } from "../funcs/sandboxesListSnapshots.js";
 import { sandboxesReadFile } from "../funcs/sandboxesReadFile.js";
 import {
@@ -49,6 +49,10 @@ import {
   GetCommandResponseBody,
 } from "../models/getcommandop.js";
 import {
+  GetSandboxesV1Request,
+  GetSandboxesV1ResponseBody,
+} from "../models/getsandboxesv1op.js";
+import {
   GetSandboxRequest,
   GetSandboxResponseBody,
 } from "../models/getsandboxop.js";
@@ -64,10 +68,6 @@ import {
   ListCommandsRequest,
   ListCommandsResponseBody,
 } from "../models/listcommandsop.js";
-import {
-  ListSandboxesRequest,
-  ListSandboxesResponseBody,
-} from "../models/listsandboxesop.js";
 import {
   ListSnapshotsRequest,
   ListSnapshotsResponseBody,
@@ -100,11 +100,11 @@ export class Sandboxes extends ClientSDK {
    * @remarks
    * Retrieves a paginated list of sandboxes belonging to a specific project. Results can be filtered by creation time using the `since` and `until` parameters.
    */
-  async listSandboxes(
-    request: ListSandboxesRequest,
+  async getSandboxesV1(
+    request: GetSandboxesV1Request,
     options?: RequestOptions,
-  ): Promise<ListSandboxesResponseBody> {
-    return unwrapAsync(sandboxesListSandboxes(
+  ): Promise<GetSandboxesV1ResponseBody> {
+    return unwrapAsync(sandboxesGetSandboxesV1(
       this,
       request,
       options,

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsHasProjectsResponse200ApplicationJSONKey } from "@vercel/sdk/models/getprojectsroutehas.js";
+import { GetProjectsHasProjectsResponse200ApplicationJSONKey } from "@vercel/sdk/models/getprojectsroutemitigate.js";
 
 let value: GetProjectsHasProjectsResponse200ApplicationJSONKey =
   "x-vercel-ip-country";

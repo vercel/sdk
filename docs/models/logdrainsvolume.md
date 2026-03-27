@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { LogDrainsVolume } from "@vercel/sdk/models/eightyeight.js";
+import { LogDrainsVolume } from "@vercel/sdk/models/usereventpayload96toaccounttype.js";
 
 let value: LogDrainsVolume = {
   currentThreshold: 9065.64,

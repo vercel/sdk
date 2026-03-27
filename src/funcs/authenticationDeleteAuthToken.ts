@@ -96,7 +96,6 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc("/v3/user/tokens/{tokenId}")(pathParams);
 
   const headers = new Headers(compactMap({

@@ -159,35 +159,53 @@ export type GitSource7 = {
   type: CreateDeploymentGitSourceDeploymentsRequestRequestBody7Type;
 };
 
-export const CreateDeploymentGitSourceDeploymentsRequestRequestBodyType = {
+export const CreateDeploymentGitSourceDeploymentsRequestRequestBody6Type = {
   Bitbucket: "bitbucket",
 } as const;
-export type CreateDeploymentGitSourceDeploymentsRequestRequestBodyType =
-  ClosedEnum<typeof CreateDeploymentGitSourceDeploymentsRequestRequestBodyType>;
+export type CreateDeploymentGitSourceDeploymentsRequestRequestBody6Type =
+  ClosedEnum<
+    typeof CreateDeploymentGitSourceDeploymentsRequestRequestBody6Type
+  >;
 
 export type GitSource6 = {
   ref: string;
   repoUuid: string;
   sha?: string | undefined;
-  type: CreateDeploymentGitSourceDeploymentsRequestRequestBodyType;
+  type: CreateDeploymentGitSourceDeploymentsRequestRequestBody6Type;
   workspaceUuid?: string | undefined;
 };
 
 export type ProjectId = number | string;
 
-export const CreateDeploymentGitSourceDeploymentsRequestType = {
+export const CreateDeploymentGitSourceDeploymentsRequestRequestBodyType = {
   Gitlab: "gitlab",
 } as const;
-export type CreateDeploymentGitSourceDeploymentsRequestType = ClosedEnum<
-  typeof CreateDeploymentGitSourceDeploymentsRequestType
->;
+export type CreateDeploymentGitSourceDeploymentsRequestRequestBodyType =
+  ClosedEnum<typeof CreateDeploymentGitSourceDeploymentsRequestRequestBodyType>;
 
 export type GitSource5 = {
   projectId: number | string;
   ref: string;
   sha?: string | undefined;
+  type: CreateDeploymentGitSourceDeploymentsRequestRequestBodyType;
+};
+
+export const CreateDeploymentGitSourceDeploymentsRequestType = {
+  GithubLimited: "github-limited",
+} as const;
+export type CreateDeploymentGitSourceDeploymentsRequestType = ClosedEnum<
+  typeof CreateDeploymentGitSourceDeploymentsRequestType
+>;
+
+export type GitSource4 = {
+  org: string;
+  ref: string;
+  repo: string;
+  sha?: string | undefined;
   type: CreateDeploymentGitSourceDeploymentsRequestType;
 };
+
+export type GitSourceRepoId = number | string;
 
 export const CreateDeploymentGitSourceDeploymentsType = {
   GithubLimited: "github-limited",
@@ -196,58 +214,40 @@ export type CreateDeploymentGitSourceDeploymentsType = ClosedEnum<
   typeof CreateDeploymentGitSourceDeploymentsType
 >;
 
-export type GitSource4 = {
-  org: string;
-  ref: string;
-  repo: string;
-  sha?: string | undefined;
-  type: CreateDeploymentGitSourceDeploymentsType;
-};
-
-export type GitSourceRepoId = number | string;
-
-export const CreateDeploymentGitSourceType = {
-  GithubLimited: "github-limited",
-} as const;
-export type CreateDeploymentGitSourceType = ClosedEnum<
-  typeof CreateDeploymentGitSourceType
->;
-
 export type GitSource3 = {
   ref: string;
   repoId: number | string;
   sha?: string | undefined;
-  type: CreateDeploymentGitSourceType;
+  type: CreateDeploymentGitSourceDeploymentsType;
 };
 
-export const GitSourceType = {
+export const CreateDeploymentGitSourceType = {
   Github: "github",
 } as const;
-export type GitSourceType = ClosedEnum<typeof GitSourceType>;
+export type CreateDeploymentGitSourceType = ClosedEnum<
+  typeof CreateDeploymentGitSourceType
+>;
 
 export type GitSource2 = {
   org: string;
   ref: string;
   repo: string;
   sha?: string | undefined;
-  type: GitSourceType;
+  type: CreateDeploymentGitSourceType;
 };
 
 export type RepoId = number | string;
 
-export const CreateDeploymentGitSourceDeploymentsRequestRequestBody1Type = {
+export const GitSourceType = {
   Github: "github",
 } as const;
-export type CreateDeploymentGitSourceDeploymentsRequestRequestBody1Type =
-  ClosedEnum<
-    typeof CreateDeploymentGitSourceDeploymentsRequestRequestBody1Type
-  >;
+export type GitSourceType = ClosedEnum<typeof GitSourceType>;
 
 export type GitSource1 = {
   ref: string;
   repoId: number | string;
   sha?: string | undefined;
-  type: CreateDeploymentGitSourceDeploymentsRequestRequestBody1Type;
+  type: GitSourceType;
 };
 
 /**
@@ -2610,15 +2610,15 @@ export function gitSource7FromJSON(
 }
 
 /** @internal */
-export const CreateDeploymentGitSourceDeploymentsRequestRequestBodyType$inboundSchema:
+export const CreateDeploymentGitSourceDeploymentsRequestRequestBody6Type$inboundSchema:
   z.ZodNativeEnum<
-    typeof CreateDeploymentGitSourceDeploymentsRequestRequestBodyType
-  > = z.nativeEnum(CreateDeploymentGitSourceDeploymentsRequestRequestBodyType);
+    typeof CreateDeploymentGitSourceDeploymentsRequestRequestBody6Type
+  > = z.nativeEnum(CreateDeploymentGitSourceDeploymentsRequestRequestBody6Type);
 /** @internal */
-export const CreateDeploymentGitSourceDeploymentsRequestRequestBodyType$outboundSchema:
+export const CreateDeploymentGitSourceDeploymentsRequestRequestBody6Type$outboundSchema:
   z.ZodNativeEnum<
-    typeof CreateDeploymentGitSourceDeploymentsRequestRequestBodyType
-  > = CreateDeploymentGitSourceDeploymentsRequestRequestBodyType$inboundSchema;
+    typeof CreateDeploymentGitSourceDeploymentsRequestRequestBody6Type
+  > = CreateDeploymentGitSourceDeploymentsRequestRequestBody6Type$inboundSchema;
 
 /** @internal */
 export const GitSource6$inboundSchema: z.ZodType<
@@ -2630,7 +2630,7 @@ export const GitSource6$inboundSchema: z.ZodType<
   repoUuid: types.string(),
   sha: types.optional(types.string()),
   type:
-    CreateDeploymentGitSourceDeploymentsRequestRequestBodyType$inboundSchema,
+    CreateDeploymentGitSourceDeploymentsRequestRequestBody6Type$inboundSchema,
   workspaceUuid: types.optional(types.string()),
 });
 /** @internal */
@@ -2652,7 +2652,7 @@ export const GitSource6$outboundSchema: z.ZodType<
   repoUuid: z.string(),
   sha: z.string().optional(),
   type:
-    CreateDeploymentGitSourceDeploymentsRequestRequestBodyType$outboundSchema,
+    CreateDeploymentGitSourceDeploymentsRequestRequestBody6Type$outboundSchema,
   workspaceUuid: z.string().optional(),
 });
 
@@ -2699,13 +2699,15 @@ export function projectIdFromJSON(
 }
 
 /** @internal */
-export const CreateDeploymentGitSourceDeploymentsRequestType$inboundSchema:
-  z.ZodNativeEnum<typeof CreateDeploymentGitSourceDeploymentsRequestType> = z
-    .nativeEnum(CreateDeploymentGitSourceDeploymentsRequestType);
+export const CreateDeploymentGitSourceDeploymentsRequestRequestBodyType$inboundSchema:
+  z.ZodNativeEnum<
+    typeof CreateDeploymentGitSourceDeploymentsRequestRequestBodyType
+  > = z.nativeEnum(CreateDeploymentGitSourceDeploymentsRequestRequestBodyType);
 /** @internal */
-export const CreateDeploymentGitSourceDeploymentsRequestType$outboundSchema:
-  z.ZodNativeEnum<typeof CreateDeploymentGitSourceDeploymentsRequestType> =
-    CreateDeploymentGitSourceDeploymentsRequestType$inboundSchema;
+export const CreateDeploymentGitSourceDeploymentsRequestRequestBodyType$outboundSchema:
+  z.ZodNativeEnum<
+    typeof CreateDeploymentGitSourceDeploymentsRequestRequestBodyType
+  > = CreateDeploymentGitSourceDeploymentsRequestRequestBodyType$inboundSchema;
 
 /** @internal */
 export const GitSource5$inboundSchema: z.ZodType<
@@ -2716,7 +2718,8 @@ export const GitSource5$inboundSchema: z.ZodType<
   projectId: smartUnion([types.number(), types.string()]),
   ref: types.string(),
   sha: types.optional(types.string()),
-  type: CreateDeploymentGitSourceDeploymentsRequestType$inboundSchema,
+  type:
+    CreateDeploymentGitSourceDeploymentsRequestRequestBodyType$inboundSchema,
 });
 /** @internal */
 export type GitSource5$Outbound = {
@@ -2735,7 +2738,8 @@ export const GitSource5$outboundSchema: z.ZodType<
   projectId: smartUnion([z.number(), z.string()]),
   ref: z.string(),
   sha: z.string().optional(),
-  type: CreateDeploymentGitSourceDeploymentsRequestType$outboundSchema,
+  type:
+    CreateDeploymentGitSourceDeploymentsRequestRequestBodyType$outboundSchema,
 });
 
 export function gitSource5ToJSON(gitSource5: GitSource5): string {
@@ -2752,13 +2756,13 @@ export function gitSource5FromJSON(
 }
 
 /** @internal */
-export const CreateDeploymentGitSourceDeploymentsType$inboundSchema:
-  z.ZodNativeEnum<typeof CreateDeploymentGitSourceDeploymentsType> = z
-    .nativeEnum(CreateDeploymentGitSourceDeploymentsType);
+export const CreateDeploymentGitSourceDeploymentsRequestType$inboundSchema:
+  z.ZodNativeEnum<typeof CreateDeploymentGitSourceDeploymentsRequestType> = z
+    .nativeEnum(CreateDeploymentGitSourceDeploymentsRequestType);
 /** @internal */
-export const CreateDeploymentGitSourceDeploymentsType$outboundSchema:
-  z.ZodNativeEnum<typeof CreateDeploymentGitSourceDeploymentsType> =
-    CreateDeploymentGitSourceDeploymentsType$inboundSchema;
+export const CreateDeploymentGitSourceDeploymentsRequestType$outboundSchema:
+  z.ZodNativeEnum<typeof CreateDeploymentGitSourceDeploymentsRequestType> =
+    CreateDeploymentGitSourceDeploymentsRequestType$inboundSchema;
 
 /** @internal */
 export const GitSource4$inboundSchema: z.ZodType<
@@ -2770,7 +2774,7 @@ export const GitSource4$inboundSchema: z.ZodType<
   ref: types.string(),
   repo: types.string(),
   sha: types.optional(types.string()),
-  type: CreateDeploymentGitSourceDeploymentsType$inboundSchema,
+  type: CreateDeploymentGitSourceDeploymentsRequestType$inboundSchema,
 });
 /** @internal */
 export type GitSource4$Outbound = {
@@ -2791,7 +2795,7 @@ export const GitSource4$outboundSchema: z.ZodType<
   ref: z.string(),
   repo: z.string(),
   sha: z.string().optional(),
-  type: CreateDeploymentGitSourceDeploymentsType$outboundSchema,
+  type: CreateDeploymentGitSourceDeploymentsRequestType$outboundSchema,
 });
 
 export function gitSource4ToJSON(gitSource4: GitSource4): string {
@@ -2839,13 +2843,13 @@ export function gitSourceRepoIdFromJSON(
 }
 
 /** @internal */
-export const CreateDeploymentGitSourceType$inboundSchema: z.ZodNativeEnum<
-  typeof CreateDeploymentGitSourceType
-> = z.nativeEnum(CreateDeploymentGitSourceType);
+export const CreateDeploymentGitSourceDeploymentsType$inboundSchema:
+  z.ZodNativeEnum<typeof CreateDeploymentGitSourceDeploymentsType> = z
+    .nativeEnum(CreateDeploymentGitSourceDeploymentsType);
 /** @internal */
-export const CreateDeploymentGitSourceType$outboundSchema: z.ZodNativeEnum<
-  typeof CreateDeploymentGitSourceType
-> = CreateDeploymentGitSourceType$inboundSchema;
+export const CreateDeploymentGitSourceDeploymentsType$outboundSchema:
+  z.ZodNativeEnum<typeof CreateDeploymentGitSourceDeploymentsType> =
+    CreateDeploymentGitSourceDeploymentsType$inboundSchema;
 
 /** @internal */
 export const GitSource3$inboundSchema: z.ZodType<
@@ -2856,7 +2860,7 @@ export const GitSource3$inboundSchema: z.ZodType<
   ref: types.string(),
   repoId: smartUnion([types.number(), types.string()]),
   sha: types.optional(types.string()),
-  type: CreateDeploymentGitSourceType$inboundSchema,
+  type: CreateDeploymentGitSourceDeploymentsType$inboundSchema,
 });
 /** @internal */
 export type GitSource3$Outbound = {
@@ -2875,7 +2879,7 @@ export const GitSource3$outboundSchema: z.ZodType<
   ref: z.string(),
   repoId: smartUnion([z.number(), z.string()]),
   sha: z.string().optional(),
-  type: CreateDeploymentGitSourceType$outboundSchema,
+  type: CreateDeploymentGitSourceDeploymentsType$outboundSchema,
 });
 
 export function gitSource3ToJSON(gitSource3: GitSource3): string {
@@ -2892,13 +2896,13 @@ export function gitSource3FromJSON(
 }
 
 /** @internal */
-export const GitSourceType$inboundSchema: z.ZodNativeEnum<
-  typeof GitSourceType
-> = z.nativeEnum(GitSourceType);
+export const CreateDeploymentGitSourceType$inboundSchema: z.ZodNativeEnum<
+  typeof CreateDeploymentGitSourceType
+> = z.nativeEnum(CreateDeploymentGitSourceType);
 /** @internal */
-export const GitSourceType$outboundSchema: z.ZodNativeEnum<
-  typeof GitSourceType
-> = GitSourceType$inboundSchema;
+export const CreateDeploymentGitSourceType$outboundSchema: z.ZodNativeEnum<
+  typeof CreateDeploymentGitSourceType
+> = CreateDeploymentGitSourceType$inboundSchema;
 
 /** @internal */
 export const GitSource2$inboundSchema: z.ZodType<
@@ -2910,7 +2914,7 @@ export const GitSource2$inboundSchema: z.ZodType<
   ref: types.string(),
   repo: types.string(),
   sha: types.optional(types.string()),
-  type: GitSourceType$inboundSchema,
+  type: CreateDeploymentGitSourceType$inboundSchema,
 });
 /** @internal */
 export type GitSource2$Outbound = {
@@ -2931,7 +2935,7 @@ export const GitSource2$outboundSchema: z.ZodType<
   ref: z.string(),
   repo: z.string(),
   sha: z.string().optional(),
-  type: GitSourceType$outboundSchema,
+  type: CreateDeploymentGitSourceType$outboundSchema,
 });
 
 export function gitSource2ToJSON(gitSource2: GitSource2): string {
@@ -2974,15 +2978,13 @@ export function repoIdFromJSON(
 }
 
 /** @internal */
-export const CreateDeploymentGitSourceDeploymentsRequestRequestBody1Type$inboundSchema:
-  z.ZodNativeEnum<
-    typeof CreateDeploymentGitSourceDeploymentsRequestRequestBody1Type
-  > = z.nativeEnum(CreateDeploymentGitSourceDeploymentsRequestRequestBody1Type);
+export const GitSourceType$inboundSchema: z.ZodNativeEnum<
+  typeof GitSourceType
+> = z.nativeEnum(GitSourceType);
 /** @internal */
-export const CreateDeploymentGitSourceDeploymentsRequestRequestBody1Type$outboundSchema:
-  z.ZodNativeEnum<
-    typeof CreateDeploymentGitSourceDeploymentsRequestRequestBody1Type
-  > = CreateDeploymentGitSourceDeploymentsRequestRequestBody1Type$inboundSchema;
+export const GitSourceType$outboundSchema: z.ZodNativeEnum<
+  typeof GitSourceType
+> = GitSourceType$inboundSchema;
 
 /** @internal */
 export const GitSource1$inboundSchema: z.ZodType<
@@ -2993,8 +2995,7 @@ export const GitSource1$inboundSchema: z.ZodType<
   ref: types.string(),
   repoId: smartUnion([types.number(), types.string()]),
   sha: types.optional(types.string()),
-  type:
-    CreateDeploymentGitSourceDeploymentsRequestRequestBody1Type$inboundSchema,
+  type: GitSourceType$inboundSchema,
 });
 /** @internal */
 export type GitSource1$Outbound = {
@@ -3013,8 +3014,7 @@ export const GitSource1$outboundSchema: z.ZodType<
   ref: z.string(),
   repoId: smartUnion([z.number(), z.string()]),
   sha: z.string().optional(),
-  type:
-    CreateDeploymentGitSourceDeploymentsRequestRequestBody1Type$outboundSchema,
+  type: GitSourceType$outboundSchema,
 });
 
 export function gitSource1ToJSON(gitSource1: GitSource1): string {

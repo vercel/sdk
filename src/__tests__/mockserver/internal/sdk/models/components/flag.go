@@ -9,96 +9,7 @@ import (
 	"mockserver/internal/sdk/utils"
 )
 
-type ValueType string
-
-const (
-	ValueTypeStr     ValueType = "str"
-	ValueTypeNumber  ValueType = "number"
-	ValueTypeBoolean ValueType = "boolean"
-)
-
-type Value struct {
-	Str     *string  `queryParam:"inline"`
-	Number  *float64 `queryParam:"inline"`
-	Boolean *bool    `queryParam:"inline"`
-
-	Type ValueType
-}
-
-func CreateValueStr(str string) Value {
-	typ := ValueTypeStr
-
-	return Value{
-		Str:  &str,
-		Type: typ,
-	}
-}
-
-func CreateValueNumber(number float64) Value {
-	typ := ValueTypeNumber
-
-	return Value{
-		Number: &number,
-		Type:   typ,
-	}
-}
-
-func CreateValueBoolean(boolean bool) Value {
-	typ := ValueTypeBoolean
-
-	return Value{
-		Boolean: &boolean,
-		Type:    typ,
-	}
-}
-
-func (u *Value) UnmarshalJSON(data []byte) error {
-
-	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
-		u.Str = &str
-		u.Type = ValueTypeStr
-		return nil
-	}
-
-	var number float64 = float64(0)
-	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
-		u.Number = &number
-		u.Type = ValueTypeNumber
-		return nil
-	}
-
-	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
-		u.Boolean = &boolean
-		u.Type = ValueTypeBoolean
-		return nil
-	}
-
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for Value", string(data))
-}
-
-func (u Value) MarshalJSON() ([]byte, error) {
-	if u.Str != nil {
-		return utils.MarshalJSON(u.Str, "", true)
-	}
-
-	if u.Number != nil {
-		return utils.MarshalJSON(u.Number, "", true)
-	}
-
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
-	return nil, errors.New("could not marshal union type Value: all fields are null")
-}
-
 type Variant struct {
-	Description *string `json:"description,omitempty"`
-	Label       *string `json:"label,omitempty"`
-	Value       Value   `json:"value"`
-	ID          string  `json:"id"`
 }
 
 func (v Variant) MarshalJSON() ([]byte, error) {
@@ -106,38 +17,10 @@ func (v Variant) MarshalJSON() ([]byte, error) {
 }
 
 func (v *Variant) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &v, "", false, []string{"value", "id"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &v, "", false, nil); err != nil {
 		return err
 	}
 	return nil
-}
-
-func (o *Variant) GetDescription() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Description
-}
-
-func (o *Variant) GetLabel() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Label
-}
-
-func (o *Variant) GetValue() Value {
-	if o == nil {
-		return Value{}
-	}
-	return o.Value
-}
-
-func (o *Variant) GetID() string {
-	if o == nil {
-		return ""
-	}
-	return o.ID
 }
 
 type Reuse struct {
@@ -1660,6 +1543,7 @@ const (
 	KindString  Kind = "string"
 	KindNumber  Kind = "number"
 	KindBoolean Kind = "boolean"
+	KindJSON    Kind = "json"
 )
 
 func (e Kind) ToPointer() *Kind {
@@ -1676,6 +1560,8 @@ func (e *Kind) UnmarshalJSON(data []byte) error {
 	case "number":
 		fallthrough
 	case "boolean":
+		fallthrough
+	case "json":
 		*e = Kind(v)
 		return nil
 	default:

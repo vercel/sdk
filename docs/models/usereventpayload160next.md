@@ -3,15 +3,19 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPayload160Next } from "@vercel/sdk/models/payloadbranchmatcher.js";
+import { UserEventPayload160Next } from "@vercel/sdk/models/usereventpayload159next.js";
 
 let value: UserEventPayload160Next = {
-  functionZeroConfigFailover: false,
+  functionDefaultRegions: [
+    "<value 1>",
+    "<value 2>",
+    "<value 3>",
+  ],
 };
 ```
 
 ## Fields
 
-| Field                        | Type                         | Required                     | Description                  |
-| ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- |
-| `functionZeroConfigFailover` | *boolean*                    | :heavy_check_mark:           | N/A                          |
+| Field                    | Type                     | Required                 | Description              |
+| ------------------------ | ------------------------ | ------------------------ | ------------------------ |
+| `functionDefaultRegions` | *string*[]               | :heavy_check_mark:       | N/A                      |

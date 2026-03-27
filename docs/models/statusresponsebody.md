@@ -1,17 +1,21 @@
 # StatusResponseBody
 
-## Example Usage
+
+## Supported Types
+
+### `models.ResponseBody1`
 
 ```typescript
-import { StatusResponseBody } from "@vercel/sdk/models/statusop.js";
-
-let value: StatusResponseBody = {
-  status: "over_limit",
+const value: models.ResponseBody1 = {
+  status: "<value>",
 };
 ```
 
-## Fields
+### `models.ResponseBody2`
 
-| Field                                            | Type                                             | Required                                         | Description                                      |
-| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
-| `status`                                         | [models.StatusStatus](../models/statusstatus.md) | :heavy_check_mark:                               | N/A                                              |
+```typescript
+const value: models.ResponseBody2 = {
+  status: "enabled",
+};
+```
+

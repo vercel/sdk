@@ -15,7 +15,7 @@ Retrieves a list of DNS records created for a domain name. By default it returns
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="getRecords" method="get" path="/v4/domains/{domain}/records" -->
+<!-- UsageSnippet language="typescript" operationID="getRecords" method="get" path="/v5/domains/{domain}/records" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 

@@ -13,5 +13,5 @@ let value: CreateFlagKind = "boolean";
 ## Values
 
 ```typescript
-"boolean" | "string" | "number"
+"boolean" | "string" | "number" | "json"
 ```

@@ -5,14 +5,15 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndThirtyTwo } from "@vercel/sdk/models/payloadmostspecificsubdivision.js";
+import { TwoHundredAndThirtyTwo } from "@vercel/sdk/models/usereventpayload221previous.js";
 
-let value: TwoHundredAndThirtyTwo = {};
+let value: TwoHundredAndThirtyTwo = {
+  slug: "<value>",
+};
 ```
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `previous`                                                                     | [models.UserEventPayload232Previous](../models/usereventpayload232previous.md) | :heavy_minus_sign:                                                             | N/A                                                                            |
-| `next`                                                                         | [models.UserEventPayload232Next](../models/usereventpayload232next.md)         | :heavy_minus_sign:                                                             | N/A                                                                            |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `slug`             | *string*           | :heavy_check_mark: | N/A                |

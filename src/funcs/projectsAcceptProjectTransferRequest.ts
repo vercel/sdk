@@ -96,7 +96,6 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc("/projects/transfer-request/{code}")(pathParams);
 
   const query = encodeFormQuery({

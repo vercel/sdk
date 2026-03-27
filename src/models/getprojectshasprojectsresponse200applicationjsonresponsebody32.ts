@@ -209,6 +209,14 @@ export type ResponseBodyDefinitions = {
    * The origin of this definition. 'api' means created via the API. Undefined means it originated from a deployment (vercel.json).
    */
   source?: GetProjectsResponseBodySource | undefined;
+  /**
+   * A human-readable description of what this cron job does.
+   */
+  description?: string | undefined;
+  /**
+   * Whether the host was inferred from the production deployment URL rather than explicitly provided.
+   */
+  hostInferred?: boolean | undefined;
 };
 
 export type GetProjectsResponseBodyCrons = {
@@ -663,9 +671,17 @@ export type GetProjectsResponseBodyIpBuckets = {
   supportUntil?: number | undefined;
 };
 
+export type ResponseBodyLint = {
+  targets: Array<string>;
+};
+
+export type ResponseBodyTypecheck = {
+  targets: Array<string>;
+};
+
 export type ResponseBodyJobs = {
-  lint?: Array<string> | undefined;
-  typecheck?: Array<string> | undefined;
+  lint?: ResponseBodyLint | undefined;
+  typecheck?: ResponseBodyTypecheck | undefined;
 };
 
 export type GetProjectsResponseBodyProjectsResponse200AliasAssigned =
@@ -982,16 +998,18 @@ export type GetProjectsResponseBodyBuildMachineSelection = ClosedEnum<
   typeof GetProjectsResponseBodyBuildMachineSelection
 >;
 
-export const GetProjectsResponseBodyProjectsConfiguration = {
+export const GetProjectsResponseBodyProjectsResponseConfiguration = {
   SkipNamespaceQueue: "SKIP_NAMESPACE_QUEUE",
   WaitForNamespaceQueue: "WAIT_FOR_NAMESPACE_QUEUE",
 } as const;
-export type GetProjectsResponseBodyProjectsConfiguration = ClosedEnum<
-  typeof GetProjectsResponseBodyProjectsConfiguration
+export type GetProjectsResponseBodyProjectsResponseConfiguration = ClosedEnum<
+  typeof GetProjectsResponseBodyProjectsResponseConfiguration
 >;
 
 export type GetProjectsResponseBodyProjectsBuildQueue = {
-  configuration?: GetProjectsResponseBodyProjectsConfiguration | undefined;
+  configuration?:
+    | GetProjectsResponseBodyProjectsResponseConfiguration
+    | undefined;
 };
 
 export type GetProjectsResponseBodyProjectsResourceConfig = {
@@ -1099,17 +1117,16 @@ export type GetProjectsResponseBodyProjectsBuildMachineSelection = ClosedEnum<
   typeof GetProjectsResponseBodyProjectsBuildMachineSelection
 >;
 
-export const GetProjectsResponseBodyProjectsResponseConfiguration = {
+export const GetProjectsResponseBodyProjectsResponse200Configuration = {
   SkipNamespaceQueue: "SKIP_NAMESPACE_QUEUE",
   WaitForNamespaceQueue: "WAIT_FOR_NAMESPACE_QUEUE",
 } as const;
-export type GetProjectsResponseBodyProjectsResponseConfiguration = ClosedEnum<
-  typeof GetProjectsResponseBodyProjectsResponseConfiguration
->;
+export type GetProjectsResponseBodyProjectsResponse200Configuration =
+  ClosedEnum<typeof GetProjectsResponseBodyProjectsResponse200Configuration>;
 
 export type GetProjectsResponseBodyProjectsResponseBuildQueue = {
   configuration?:
-    | GetProjectsResponseBodyProjectsResponseConfiguration
+    | GetProjectsResponseBodyProjectsResponse200Configuration
     | undefined;
 };
 
@@ -1222,6 +1239,7 @@ export type ResponseBodyPermissions = {
   oauth2Connection?: Array<ACLAction> | undefined;
   user?: Array<ACLAction> | undefined;
   userConnection?: Array<ACLAction> | undefined;
+  userPreference?: Array<ACLAction> | undefined;
   userSudo?: Array<ACLAction> | undefined;
   webAuthn?: Array<ACLAction> | undefined;
   accessGroup?: Array<ACLAction> | undefined;
@@ -1254,6 +1272,8 @@ export type ResponseBodyPermissions = {
   cacheArtifact?: Array<ACLAction> | undefined;
   cacheArtifactUsageEvent?: Array<ACLAction> | undefined;
   codeChecks?: Array<ACLAction> | undefined;
+  ciInvocations?: Array<ACLAction> | undefined;
+  ciLogs?: Array<ACLAction> | undefined;
   concurrentBuilds?: Array<ACLAction> | undefined;
   connect?: Array<ACLAction> | undefined;
   connectConfiguration?: Array<ACLAction> | undefined;
@@ -1710,6 +1730,7 @@ export type GetProjectsResponseBodyProjectsSecurity = {
   managedRules?: GetProjectsResponseBodyManagedRules | null | undefined;
   botIdEnabled?: boolean | undefined;
   logHeaders?: Array<string> | GetProjectsLogHeadersProjects2 | undefined;
+  securityPlus?: boolean | undefined;
 };
 
 /**
@@ -1737,30 +1758,15 @@ export type GetProjectsResponseBodyOidcTokenConfig = {
   issuerMode?: GetProjectsResponseBodyProjectsIssuerMode | undefined;
 };
 
-export const GetProjectsResponseBodyProjectsTier = {
+export const ResponseBodyFlatRateTier = {
   Standard: "standard",
   Base: "base",
   Advanced: "advanced",
   Critical: "critical",
 } as const;
-export type GetProjectsResponseBodyProjectsTier = ClosedEnum<
-  typeof GetProjectsResponseBodyProjectsTier
+export type ResponseBodyFlatRateTier = ClosedEnum<
+  typeof ResponseBodyFlatRateTier
 >;
-
-export const GetProjectsResponseBodyProjectsResponseTier = {
-  Standard: "standard",
-  Base: "base",
-  Advanced: "advanced",
-  Critical: "critical",
-} as const;
-export type GetProjectsResponseBodyProjectsResponseTier = ClosedEnum<
-  typeof GetProjectsResponseBodyProjectsResponseTier
->;
-
-export type ResponseBodyScheduledTierChange = {
-  tier: GetProjectsResponseBodyProjectsResponseTier;
-  effectiveAt: number;
-};
 
 /**
  * Billing mode. Always 'flat' for flat-rate projects.
@@ -2337,6 +2343,8 @@ export const ResponseBodyDefinitions$inboundSchema: z.ZodType<
   path: types.string(),
   schedule: types.string(),
   source: types.optional(GetProjectsResponseBodySource$inboundSchema),
+  description: types.optional(types.string()),
+  hostInferred: types.optional(types.boolean()),
 });
 /** @internal */
 export type ResponseBodyDefinitions$Outbound = {
@@ -2344,6 +2352,8 @@ export type ResponseBodyDefinitions$Outbound = {
   path: string;
   schedule: string;
   source?: string | undefined;
+  description?: string | undefined;
+  hostInferred?: boolean | undefined;
 };
 
 /** @internal */
@@ -2356,6 +2366,8 @@ export const ResponseBodyDefinitions$outboundSchema: z.ZodType<
   path: z.string(),
   schedule: z.string(),
   source: GetProjectsResponseBodySource$outboundSchema.optional(),
+  description: z.string().optional(),
+  hostInferred: z.boolean().optional(),
 });
 
 export function responseBodyDefinitionsToJSON(
@@ -3941,18 +3953,96 @@ export function getProjectsResponseBodyIpBucketsFromJSON(
 }
 
 /** @internal */
+export const ResponseBodyLint$inboundSchema: z.ZodType<
+  ResponseBodyLint,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  targets: z.array(types.string()),
+});
+/** @internal */
+export type ResponseBodyLint$Outbound = {
+  targets: Array<string>;
+};
+
+/** @internal */
+export const ResponseBodyLint$outboundSchema: z.ZodType<
+  ResponseBodyLint$Outbound,
+  z.ZodTypeDef,
+  ResponseBodyLint
+> = z.object({
+  targets: z.array(z.string()),
+});
+
+export function responseBodyLintToJSON(
+  responseBodyLint: ResponseBodyLint,
+): string {
+  return JSON.stringify(
+    ResponseBodyLint$outboundSchema.parse(responseBodyLint),
+  );
+}
+export function responseBodyLintFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodyLint, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodyLint$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyLint' from JSON`,
+  );
+}
+
+/** @internal */
+export const ResponseBodyTypecheck$inboundSchema: z.ZodType<
+  ResponseBodyTypecheck,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  targets: z.array(types.string()),
+});
+/** @internal */
+export type ResponseBodyTypecheck$Outbound = {
+  targets: Array<string>;
+};
+
+/** @internal */
+export const ResponseBodyTypecheck$outboundSchema: z.ZodType<
+  ResponseBodyTypecheck$Outbound,
+  z.ZodTypeDef,
+  ResponseBodyTypecheck
+> = z.object({
+  targets: z.array(z.string()),
+});
+
+export function responseBodyTypecheckToJSON(
+  responseBodyTypecheck: ResponseBodyTypecheck,
+): string {
+  return JSON.stringify(
+    ResponseBodyTypecheck$outboundSchema.parse(responseBodyTypecheck),
+  );
+}
+export function responseBodyTypecheckFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodyTypecheck, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodyTypecheck$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyTypecheck' from JSON`,
+  );
+}
+
+/** @internal */
 export const ResponseBodyJobs$inboundSchema: z.ZodType<
   ResponseBodyJobs,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  lint: types.optional(z.array(types.string())),
-  typecheck: types.optional(z.array(types.string())),
+  lint: types.optional(z.lazy(() => ResponseBodyLint$inboundSchema)),
+  typecheck: types.optional(z.lazy(() => ResponseBodyTypecheck$inboundSchema)),
 });
 /** @internal */
 export type ResponseBodyJobs$Outbound = {
-  lint?: Array<string> | undefined;
-  typecheck?: Array<string> | undefined;
+  lint?: ResponseBodyLint$Outbound | undefined;
+  typecheck?: ResponseBodyTypecheck$Outbound | undefined;
 };
 
 /** @internal */
@@ -3961,8 +4051,8 @@ export const ResponseBodyJobs$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ResponseBodyJobs
 > = z.object({
-  lint: z.array(z.string()).optional(),
-  typecheck: z.array(z.string()).optional(),
+  lint: z.lazy(() => ResponseBodyLint$outboundSchema).optional(),
+  typecheck: z.lazy(() => ResponseBodyTypecheck$outboundSchema).optional(),
 });
 
 export function responseBodyJobsToJSON(
@@ -5417,13 +5507,13 @@ export const GetProjectsResponseBodyBuildMachineSelection$outboundSchema:
     GetProjectsResponseBodyBuildMachineSelection$inboundSchema;
 
 /** @internal */
-export const GetProjectsResponseBodyProjectsConfiguration$inboundSchema:
-  z.ZodNativeEnum<typeof GetProjectsResponseBodyProjectsConfiguration> = z
-    .nativeEnum(GetProjectsResponseBodyProjectsConfiguration);
+export const GetProjectsResponseBodyProjectsResponseConfiguration$inboundSchema:
+  z.ZodNativeEnum<typeof GetProjectsResponseBodyProjectsResponseConfiguration> =
+    z.nativeEnum(GetProjectsResponseBodyProjectsResponseConfiguration);
 /** @internal */
-export const GetProjectsResponseBodyProjectsConfiguration$outboundSchema:
-  z.ZodNativeEnum<typeof GetProjectsResponseBodyProjectsConfiguration> =
-    GetProjectsResponseBodyProjectsConfiguration$inboundSchema;
+export const GetProjectsResponseBodyProjectsResponseConfiguration$outboundSchema:
+  z.ZodNativeEnum<typeof GetProjectsResponseBodyProjectsResponseConfiguration> =
+    GetProjectsResponseBodyProjectsResponseConfiguration$inboundSchema;
 
 /** @internal */
 export const GetProjectsResponseBodyProjectsBuildQueue$inboundSchema: z.ZodType<
@@ -5432,7 +5522,7 @@ export const GetProjectsResponseBodyProjectsBuildQueue$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   configuration: types.optional(
-    GetProjectsResponseBodyProjectsConfiguration$inboundSchema,
+    GetProjectsResponseBodyProjectsResponseConfiguration$inboundSchema,
   ),
 });
 /** @internal */
@@ -5447,8 +5537,9 @@ export const GetProjectsResponseBodyProjectsBuildQueue$outboundSchema:
     z.ZodTypeDef,
     GetProjectsResponseBodyProjectsBuildQueue
   > = z.object({
-    configuration: GetProjectsResponseBodyProjectsConfiguration$outboundSchema
-      .optional(),
+    configuration:
+      GetProjectsResponseBodyProjectsResponseConfiguration$outboundSchema
+        .optional(),
   });
 
 export function getProjectsResponseBodyProjectsBuildQueueToJSON(
@@ -5753,13 +5844,15 @@ export const GetProjectsResponseBodyProjectsBuildMachineSelection$outboundSchema
     GetProjectsResponseBodyProjectsBuildMachineSelection$inboundSchema;
 
 /** @internal */
-export const GetProjectsResponseBodyProjectsResponseConfiguration$inboundSchema:
-  z.ZodNativeEnum<typeof GetProjectsResponseBodyProjectsResponseConfiguration> =
-    z.nativeEnum(GetProjectsResponseBodyProjectsResponseConfiguration);
+export const GetProjectsResponseBodyProjectsResponse200Configuration$inboundSchema:
+  z.ZodNativeEnum<
+    typeof GetProjectsResponseBodyProjectsResponse200Configuration
+  > = z.nativeEnum(GetProjectsResponseBodyProjectsResponse200Configuration);
 /** @internal */
-export const GetProjectsResponseBodyProjectsResponseConfiguration$outboundSchema:
-  z.ZodNativeEnum<typeof GetProjectsResponseBodyProjectsResponseConfiguration> =
-    GetProjectsResponseBodyProjectsResponseConfiguration$inboundSchema;
+export const GetProjectsResponseBodyProjectsResponse200Configuration$outboundSchema:
+  z.ZodNativeEnum<
+    typeof GetProjectsResponseBodyProjectsResponse200Configuration
+  > = GetProjectsResponseBodyProjectsResponse200Configuration$inboundSchema;
 
 /** @internal */
 export const GetProjectsResponseBodyProjectsResponseBuildQueue$inboundSchema:
@@ -5769,7 +5862,7 @@ export const GetProjectsResponseBodyProjectsResponseBuildQueue$inboundSchema:
     unknown
   > = z.object({
     configuration: types.optional(
-      GetProjectsResponseBodyProjectsResponseConfiguration$inboundSchema,
+      GetProjectsResponseBodyProjectsResponse200Configuration$inboundSchema,
     ),
   });
 /** @internal */
@@ -5785,7 +5878,7 @@ export const GetProjectsResponseBodyProjectsResponseBuildQueue$outboundSchema:
     GetProjectsResponseBodyProjectsResponseBuildQueue
   > = z.object({
     configuration:
-      GetProjectsResponseBodyProjectsResponseConfiguration$outboundSchema
+      GetProjectsResponseBodyProjectsResponse200Configuration$outboundSchema
         .optional(),
   });
 
@@ -6329,6 +6422,7 @@ export const ResponseBodyPermissions$inboundSchema: z.ZodType<
   oauth2Connection: types.optional(z.array(ACLAction$inboundSchema)),
   user: types.optional(z.array(ACLAction$inboundSchema)),
   userConnection: types.optional(z.array(ACLAction$inboundSchema)),
+  userPreference: types.optional(z.array(ACLAction$inboundSchema)),
   userSudo: types.optional(z.array(ACLAction$inboundSchema)),
   webAuthn: types.optional(z.array(ACLAction$inboundSchema)),
   accessGroup: types.optional(z.array(ACLAction$inboundSchema)),
@@ -6365,6 +6459,8 @@ export const ResponseBodyPermissions$inboundSchema: z.ZodType<
   cacheArtifact: types.optional(z.array(ACLAction$inboundSchema)),
   cacheArtifactUsageEvent: types.optional(z.array(ACLAction$inboundSchema)),
   codeChecks: types.optional(z.array(ACLAction$inboundSchema)),
+  ciInvocations: types.optional(z.array(ACLAction$inboundSchema)),
+  ciLogs: types.optional(z.array(ACLAction$inboundSchema)),
   concurrentBuilds: types.optional(z.array(ACLAction$inboundSchema)),
   connect: types.optional(z.array(ACLAction$inboundSchema)),
   connectConfiguration: types.optional(z.array(ACLAction$inboundSchema)),
@@ -6612,6 +6708,7 @@ export type ResponseBodyPermissions$Outbound = {
   oauth2Connection?: Array<string> | undefined;
   user?: Array<string> | undefined;
   userConnection?: Array<string> | undefined;
+  userPreference?: Array<string> | undefined;
   userSudo?: Array<string> | undefined;
   webAuthn?: Array<string> | undefined;
   accessGroup?: Array<string> | undefined;
@@ -6644,6 +6741,8 @@ export type ResponseBodyPermissions$Outbound = {
   cacheArtifact?: Array<string> | undefined;
   cacheArtifactUsageEvent?: Array<string> | undefined;
   codeChecks?: Array<string> | undefined;
+  ciInvocations?: Array<string> | undefined;
+  ciLogs?: Array<string> | undefined;
   concurrentBuilds?: Array<string> | undefined;
   connect?: Array<string> | undefined;
   connectConfiguration?: Array<string> | undefined;
@@ -6850,6 +6949,7 @@ export const ResponseBodyPermissions$outboundSchema: z.ZodType<
   oauth2Connection: z.array(ACLAction$outboundSchema).optional(),
   user: z.array(ACLAction$outboundSchema).optional(),
   userConnection: z.array(ACLAction$outboundSchema).optional(),
+  userPreference: z.array(ACLAction$outboundSchema).optional(),
   userSudo: z.array(ACLAction$outboundSchema).optional(),
   webAuthn: z.array(ACLAction$outboundSchema).optional(),
   accessGroup: z.array(ACLAction$outboundSchema).optional(),
@@ -6882,6 +6982,8 @@ export const ResponseBodyPermissions$outboundSchema: z.ZodType<
   cacheArtifact: z.array(ACLAction$outboundSchema).optional(),
   cacheArtifactUsageEvent: z.array(ACLAction$outboundSchema).optional(),
   codeChecks: z.array(ACLAction$outboundSchema).optional(),
+  ciInvocations: z.array(ACLAction$outboundSchema).optional(),
+  ciLogs: z.array(ACLAction$outboundSchema).optional(),
   concurrentBuilds: z.array(ACLAction$outboundSchema).optional(),
   connect: z.array(ACLAction$outboundSchema).optional(),
   connectConfiguration: z.array(ACLAction$outboundSchema).optional(),
@@ -8145,6 +8247,7 @@ export const GetProjectsResponseBodyProjectsSecurity$inboundSchema: z.ZodType<
       GetProjectsLogHeadersProjects2$inboundSchema,
     ]),
   ),
+  securityPlus: types.optional(types.boolean()),
 }).transform((v) => {
   return remap$(v, {
     "log_headers": "logHeaders",
@@ -8168,6 +8271,7 @@ export type GetProjectsResponseBodyProjectsSecurity$Outbound = {
     | undefined;
   botIdEnabled?: boolean | undefined;
   log_headers?: Array<string> | string | undefined;
+  securityPlus?: boolean | undefined;
 };
 
 /** @internal */
@@ -8194,6 +8298,7 @@ export const GetProjectsResponseBodyProjectsSecurity$outboundSchema: z.ZodType<
     z.array(z.string()),
     GetProjectsLogHeadersProjects2$outboundSchema,
   ]).optional(),
+  securityPlus: z.boolean().optional(),
 }).transform((v) => {
   return remap$(v, {
     logHeaders: "log_headers",
@@ -8285,66 +8390,13 @@ export function getProjectsResponseBodyOidcTokenConfigFromJSON(
 }
 
 /** @internal */
-export const GetProjectsResponseBodyProjectsTier$inboundSchema: z.ZodNativeEnum<
-  typeof GetProjectsResponseBodyProjectsTier
-> = z.nativeEnum(GetProjectsResponseBodyProjectsTier);
+export const ResponseBodyFlatRateTier$inboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyFlatRateTier
+> = z.nativeEnum(ResponseBodyFlatRateTier);
 /** @internal */
-export const GetProjectsResponseBodyProjectsTier$outboundSchema:
-  z.ZodNativeEnum<typeof GetProjectsResponseBodyProjectsTier> =
-    GetProjectsResponseBodyProjectsTier$inboundSchema;
-
-/** @internal */
-export const GetProjectsResponseBodyProjectsResponseTier$inboundSchema:
-  z.ZodNativeEnum<typeof GetProjectsResponseBodyProjectsResponseTier> = z
-    .nativeEnum(GetProjectsResponseBodyProjectsResponseTier);
-/** @internal */
-export const GetProjectsResponseBodyProjectsResponseTier$outboundSchema:
-  z.ZodNativeEnum<typeof GetProjectsResponseBodyProjectsResponseTier> =
-    GetProjectsResponseBodyProjectsResponseTier$inboundSchema;
-
-/** @internal */
-export const ResponseBodyScheduledTierChange$inboundSchema: z.ZodType<
-  ResponseBodyScheduledTierChange,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  tier: GetProjectsResponseBodyProjectsResponseTier$inboundSchema,
-  effectiveAt: types.number(),
-});
-/** @internal */
-export type ResponseBodyScheduledTierChange$Outbound = {
-  tier: string;
-  effectiveAt: number;
-};
-
-/** @internal */
-export const ResponseBodyScheduledTierChange$outboundSchema: z.ZodType<
-  ResponseBodyScheduledTierChange$Outbound,
-  z.ZodTypeDef,
-  ResponseBodyScheduledTierChange
-> = z.object({
-  tier: GetProjectsResponseBodyProjectsResponseTier$outboundSchema,
-  effectiveAt: z.number(),
-});
-
-export function responseBodyScheduledTierChangeToJSON(
-  responseBodyScheduledTierChange: ResponseBodyScheduledTierChange,
-): string {
-  return JSON.stringify(
-    ResponseBodyScheduledTierChange$outboundSchema.parse(
-      responseBodyScheduledTierChange,
-    ),
-  );
-}
-export function responseBodyScheduledTierChangeFromJSON(
-  jsonString: string,
-): SafeParseResult<ResponseBodyScheduledTierChange, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ResponseBodyScheduledTierChange$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ResponseBodyScheduledTierChange' from JSON`,
-  );
-}
+export const ResponseBodyFlatRateTier$outboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyFlatRateTier
+> = ResponseBodyFlatRateTier$inboundSchema;
 
 /** @internal */
 export const GetProjectsResponseBodyKind$inboundSchema: z.ZodNativeEnum<

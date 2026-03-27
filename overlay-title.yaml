@@ -13,6 +13,10 @@ actions:
   - target: $.paths['/v1/sandboxes/{sandboxId}/cmd'].post
     update:
       x-speakeasy-test: false
+  # Disable test for runSessionCommand — mock server returns 405
+  - target: $.paths['/v2/sandboxes/sessions/{sessionId}/cmd'].post
+    update:
+      x-speakeasy-test: false
   # Fix updateFlagSegment mock server codegen name collision: the response
   # oneOf has an inline Segment definition AND a $ref to components/Segment,
   # producing duplicate Go types. Replace redundant oneOf with direct $ref.

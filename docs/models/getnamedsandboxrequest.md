@@ -1,0 +1,24 @@
+# GetNamedSandboxRequest
+
+## Example Usage
+
+```typescript
+import { GetNamedSandboxRequest } from "@vercel/sdk/models/getnamedsandboxop.js";
+
+let value: GetNamedSandboxRequest = {
+  name: "my-sandbox",
+  projectId: "prj_abc123",
+  teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+  slug: "my-team-url-slug",
+};
+```
+
+## Fields
+
+| Field                                                                                                                    | Type                                                                                                                     | Required                                                                                                                 | Description                                                                                                              | Example                                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
+| `name`                                                                                                                   | *string*                                                                                                                 | :heavy_check_mark:                                                                                                       | Name for the sandbox. Must be unique per project and URL-safe (alphanumeric, hyphens, underscores).                      | my-sandbox                                                                                                               |
+| `projectId`                                                                                                              | *string*                                                                                                                 | :heavy_minus_sign:                                                                                                       | The project ID or name (required when not using OIDC token).                                                             | prj_abc123                                                                                                               |
+| `resume`                                                                                                                 | *boolean*                                                                                                                | :heavy_minus_sign:                                                                                                       | Whether to automatically resume a stopped named sandbox by creating a new instance from its snapshot. Defaults to false. |                                                                                                                          |
+| `teamId`                                                                                                                 | *string*                                                                                                                 | :heavy_minus_sign:                                                                                                       | The Team identifier to perform the request on behalf of.                                                                 | team_1a2b3c4d5e6f7g8h9i0j1k2l                                                                                            |
+| `slug`                                                                                                                   | *string*                                                                                                                 | :heavy_minus_sign:                                                                                                       | The Team slug to perform the request on behalf of.                                                                       | my-team-url-slug                                                                                                         |

@@ -5,6 +5,7 @@ package components
 import (
 	"encoding/json"
 	"fmt"
+	"mockserver/internal/sdk/utils"
 )
 
 // SnapshotStatus - The status of the snapshot.
@@ -37,12 +38,12 @@ func (e *SnapshotStatus) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// Snapshot - This object contains information related to a Snapshot of a Vercel Sandbox.
+// Snapshot - This object contains information related to a Snapshot of a Vercel Sandbox session (v2 API).
 type Snapshot struct {
 	// The unique identifier of the snapshot.
 	ID string `json:"id"`
-	// The unique identifier of the sandbox from which the snapshot was created.
-	SourceSandboxID string `json:"sourceSandboxId"`
+	// The unique identifier of the session from which the snapshot was created.
+	SourceSessionID string `json:"sourceSessionId"`
 	// The region where the snapshot is stored.
 	Region string `json:"region"`
 	// The status of the snapshot.
@@ -57,6 +58,17 @@ type Snapshot struct {
 	UpdatedAt float64 `json:"updatedAt"`
 }
 
+func (s Snapshot) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(s, "", false)
+}
+
+func (s *Snapshot) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &s, "", false, []string{"id", "sourceSessionId", "region", "status", "sizeBytes", "createdAt", "updatedAt"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Snapshot) GetID() string {
 	if o == nil {
 		return ""
@@ -64,11 +76,11 @@ func (o *Snapshot) GetID() string {
 	return o.ID
 }
 
-func (o *Snapshot) GetSourceSandboxID() string {
+func (o *Snapshot) GetSourceSessionID() string {
 	if o == nil {
 		return ""
 	}
-	return o.SourceSandboxID
+	return o.SourceSessionID
 }
 
 func (o *Snapshot) GetRegion() string {

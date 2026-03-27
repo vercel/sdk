@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { WorkflowStorage } from "@vercel/sdk/models/eightyeight.js";
+import { WorkflowStorage } from "@vercel/sdk/models/usereventpayload96toaccounttype.js";
 
 let value: WorkflowStorage = {
   updatedAt: 3509.01,

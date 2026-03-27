@@ -12,7 +12,7 @@ let value: ListEventTypesResponseBody = {
         "<value 1>",
       ],
       deprecated: true,
-      name: "disconnect-github-limited",
+      name: "disconnect-github-custom-host",
       description: "apud oxidise substantiate amid shear familiar",
     },
   ],

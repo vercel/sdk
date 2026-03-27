@@ -24,6 +24,10 @@ import {
   GetProjectsRouteHas$inboundSchema,
   GetProjectsRouteHas$Outbound,
   GetProjectsRouteHas$outboundSchema,
+  GetProjectsRouteMitigate,
+  GetProjectsRouteMitigate$inboundSchema,
+  GetProjectsRouteMitigate$Outbound,
+  GetProjectsRouteMitigate$outboundSchema,
   ResponseBodyAnalytics,
   ResponseBodyAnalytics$inboundSchema,
   ResponseBodyAnalytics$Outbound,
@@ -99,30 +103,18 @@ import {
   ResponseBodyTargets$inboundSchema,
   ResponseBodyTargets$Outbound,
   ResponseBodyTargets$outboundSchema,
-  ResponseBodyTier,
-  ResponseBodyTier$inboundSchema,
-  ResponseBodyTier$outboundSchema,
   ResponseBodyWebAnalytics,
   ResponseBodyWebAnalytics$inboundSchema,
   ResponseBodyWebAnalytics$Outbound,
   ResponseBodyWebAnalytics$outboundSchema,
-} from "./getprojectsroutehas.js";
+} from "./getprojectsroutemitigate.js";
 import {
   GetProjectsResponseBody3,
   GetProjectsResponseBody3$inboundSchema,
   GetProjectsResponseBody3$Outbound,
   GetProjectsResponseBody3$outboundSchema,
-} from "./getprojectsrouteprojectsresponseaction.js";
+} from "./getprojectsrouteprojectsresponsemitigate.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
-
-export const GetProjectsRouteAction = {
-  BlockLegalCwc: "block_legal_cwc",
-} as const;
-export type GetProjectsRouteAction = ClosedEnum<typeof GetProjectsRouteAction>;
-
-export type GetProjectsRouteMitigate = {
-  action: GetProjectsRouteAction;
-};
 
 export type GetProjectsRoute2 = {
   has: Array<GetProjectsRouteHas>;
@@ -379,7 +371,7 @@ export type GetProjectsResponseBody1 = {
   webAnalytics?: ResponseBodyWebAnalytics | undefined;
   security?: ResponseBodySecurity | undefined;
   oidcTokenConfig?: ResponseBodyOidcTokenConfig | undefined;
-  tier?: ResponseBodyTier | undefined;
+  tier?: string | undefined;
   abuse?: ResponseBodyAbuse | undefined;
   internalRoutes?:
     | Array<GetProjectsInternalRoutes1 | GetProjectsInternalRoutes2>
@@ -392,61 +384,13 @@ export type GetProjectsResponseBody =
   | Array<GetProjectsResponseBody1>;
 
 /** @internal */
-export const GetProjectsRouteAction$inboundSchema: z.ZodNativeEnum<
-  typeof GetProjectsRouteAction
-> = z.nativeEnum(GetProjectsRouteAction);
-/** @internal */
-export const GetProjectsRouteAction$outboundSchema: z.ZodNativeEnum<
-  typeof GetProjectsRouteAction
-> = GetProjectsRouteAction$inboundSchema;
-
-/** @internal */
-export const GetProjectsRouteMitigate$inboundSchema: z.ZodType<
-  GetProjectsRouteMitigate,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  action: GetProjectsRouteAction$inboundSchema,
-});
-/** @internal */
-export type GetProjectsRouteMitigate$Outbound = {
-  action: string;
-};
-
-/** @internal */
-export const GetProjectsRouteMitigate$outboundSchema: z.ZodType<
-  GetProjectsRouteMitigate$Outbound,
-  z.ZodTypeDef,
-  GetProjectsRouteMitigate
-> = z.object({
-  action: GetProjectsRouteAction$outboundSchema,
-});
-
-export function getProjectsRouteMitigateToJSON(
-  getProjectsRouteMitigate: GetProjectsRouteMitigate,
-): string {
-  return JSON.stringify(
-    GetProjectsRouteMitigate$outboundSchema.parse(getProjectsRouteMitigate),
-  );
-}
-export function getProjectsRouteMitigateFromJSON(
-  jsonString: string,
-): SafeParseResult<GetProjectsRouteMitigate, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetProjectsRouteMitigate$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetProjectsRouteMitigate' from JSON`,
-  );
-}
-
-/** @internal */
 export const GetProjectsRoute2$inboundSchema: z.ZodType<
   GetProjectsRoute2,
   z.ZodTypeDef,
   unknown
 > = z.object({
   has: z.array(GetProjectsRouteHas$inboundSchema),
-  mitigate: z.lazy(() => GetProjectsRouteMitigate$inboundSchema),
+  mitigate: GetProjectsRouteMitigate$inboundSchema,
   src: types.optional(types.string()),
 });
 /** @internal */
@@ -463,7 +407,7 @@ export const GetProjectsRoute2$outboundSchema: z.ZodType<
   GetProjectsRoute2
 > = z.object({
   has: z.array(GetProjectsRouteHas$outboundSchema),
-  mitigate: z.lazy(() => GetProjectsRouteMitigate$outboundSchema),
+  mitigate: GetProjectsRouteMitigate$outboundSchema,
   src: z.string().optional(),
 });
 
@@ -1900,7 +1844,7 @@ export const GetProjectsResponseBody1$inboundSchema: z.ZodType<
   webAnalytics: types.optional(ResponseBodyWebAnalytics$inboundSchema),
   security: types.optional(ResponseBodySecurity$inboundSchema),
   oidcTokenConfig: types.optional(ResponseBodyOidcTokenConfig$inboundSchema),
-  tier: types.optional(ResponseBodyTier$inboundSchema),
+  tier: types.optional(types.string()),
   abuse: types.optional(z.lazy(() => ResponseBodyAbuse$inboundSchema)),
   internalRoutes: types.optional(
     z.array(smartUnion([
@@ -2035,7 +1979,7 @@ export const GetProjectsResponseBody1$outboundSchema: z.ZodType<
   webAnalytics: ResponseBodyWebAnalytics$outboundSchema.optional(),
   security: ResponseBodySecurity$outboundSchema.optional(),
   oidcTokenConfig: ResponseBodyOidcTokenConfig$outboundSchema.optional(),
-  tier: ResponseBodyTier$outboundSchema.optional(),
+  tier: z.string().optional(),
   abuse: z.lazy(() => ResponseBodyAbuse$outboundSchema).optional(),
   internalRoutes: z.array(
     smartUnion([

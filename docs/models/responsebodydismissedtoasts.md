@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyDismissedToasts } from "@vercel/sdk/models/getprojectsrouteprojectsresponseaction.js";
+import { ResponseBodyDismissedToasts } from "@vercel/sdk/models/getprojectsrouteprojectsresponsemitigate.js";
 
 let value: ResponseBodyDismissedToasts = {
   key: "<key>",
@@ -23,4 +23,4 @@ let value: ResponseBodyDismissedToasts = {
 | `key`                                                                              | *string*                                                                           | :heavy_check_mark:                                                                 | N/A                                                                                |
 | `dismissedAt`                                                                      | *number*                                                                           | :heavy_check_mark:                                                                 | N/A                                                                                |
 | `action`                                                                           | [models.GetProjectsResponseBodyAction](../models/getprojectsresponsebodyaction.md) | :heavy_check_mark:                                                                 | N/A                                                                                |
-| `value`                                                                            | *models.GetProjectsResponseBodyValue*                                              | :heavy_check_mark:                                                                 | N/A                                                                                |
+| `value`                                                                            | *models.ResponseBodyValue*                                                         | :heavy_check_mark:                                                                 | N/A                                                                                |

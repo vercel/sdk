@@ -8,6 +8,7 @@ import (
 	"mockserver/internal/handler/assert"
 	"mockserver/internal/logging"
 	"mockserver/internal/sdk/models/operations"
+	"mockserver/internal/sdk/types"
 	"mockserver/internal/sdk/utils"
 	"mockserver/internal/tracking"
 	"net/http"
@@ -45,9 +46,11 @@ func testStatusStatus0(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	var respBody *operations.StatusResponseBody = &operations.StatusResponseBody{
-		Status: operations.ArtifactsStatusOverLimit,
-	}
+	var respBody *operations.StatusResponseBody = types.Pointer(operations.CreateStatusResponseBodyStatusResponseBody1(
+		operations.StatusResponseBody1{
+			Status: "over_limit",
+		},
+	))
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 
 	if err != nil {

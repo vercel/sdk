@@ -7,7 +7,7 @@ import { CreateFlagVariants } from "@vercel/sdk/models/createflagop.js";
 
 let value: CreateFlagVariants = {
   id: "<id>",
-  value: "<value>",
+  value: 5418.34,
 };
 ```
 
@@ -18,4 +18,4 @@ let value: CreateFlagVariants = {
 | `id`                         | *string*                     | :heavy_check_mark:           | The id of the variant        |
 | `label`                      | *string*                     | :heavy_minus_sign:           | A label for the variant      |
 | `description`                | *string*                     | :heavy_minus_sign:           | A description of the variant |
-| `value`                      | *models.CreateFlagValue*     | :heavy_check_mark:           | N/A                          |
+| `value`                      | *any*                        | :heavy_check_mark:           | N/A                          |

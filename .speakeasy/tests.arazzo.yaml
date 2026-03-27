@@ -8052,7 +8052,7 @@ workflows:
           - condition: $response.header.Content-Type == application/json
           - context: $response.body
             condition: |
-              {"variants":[{"value":false,"id":"<id>"}],"id":"<id>","environments":{"key":{"pausedOutcome":{"type":"variant","variantId":"<id>"},"fallthrough":{"type":"variant","variantId":"<id>"},"active":true,"rules":[]}},"kind":"number","revision":6165.62,"seed":156.13,"state":"archived","slug":"<value>","createdAt":8146.33,"updatedAt":8302.64,"createdBy":"<value>","ownerId":"<id>","projectId":"<id>","typeName":"flag"}
+              {"variants":[{}],"id":"<id>","environments":{"key":{"pausedOutcome":{"type":"variant","variantId":"<id>"},"fallthrough":{"type":"variant","variantId":"<id>"},"active":true,"rules":[]}},"kind":"number","revision":6165.62,"seed":156.13,"state":"archived","slug":"<value>","createdAt":8146.33,"updatedAt":8302.64,"createdBy":"<value>","ownerId":"<id>","projectId":"<id>","typeName":"flag"}
             type: simple
     x-speakeasy-test-group: feature-flags
     x-speakeasy-test-rebuild: true
@@ -8468,7 +8468,7 @@ workflows:
           - condition: $response.header.Content-Type == application/json
           - context: $response.body
             condition: |
-              {"snapshots":[{"id":"snap_123a6c5209bc3778245d011443644c8d27dc2c50","sourceSandboxId":"sbx_123a6c5209bc3778245d011443644c8d27dc2c50","region":"iad1","status":"created","sizeBytes":104857600,"expiresAt":1750344501629,"createdAt":1750344501629,"updatedAt":1750344501629}],"pagination":{"total":9335.55,"count":20,"next":1540095775951,"prev":1540095775951}}
+              {"snapshots":[{"id":"snap_123a6c5209bc3778245d011443644c8d27dc2c50","sourceSessionId":"sbx_123a6c5209bc3778245d011443644c8d27dc2c50","region":"iad1","status":"created","sizeBytes":104857600,"expiresAt":1750344501629,"createdAt":1750344501629,"updatedAt":1750344501629}],"pagination":{"total":9335.55,"count":20,"next":1540095775951,"prev":1540095775951}}
             type: simple
     x-speakeasy-test-group: sandboxes
     x-speakeasy-test-rebuild: true
@@ -8764,7 +8764,7 @@ workflows:
           - condition: $response.header.Content-Type == application/json
           - context: $response.body
             condition: |
-              {"snapshot":{"id":"snap_123a6c5209bc3778245d011443644c8d27dc2c50","sourceSandboxId":"sbx_123a6c5209bc3778245d011443644c8d27dc2c50","region":"iad1","status":"created","sizeBytes":104857600,"expiresAt":1750344501629,"createdAt":1750344501629,"updatedAt":1750344501629}}
+              {"snapshot":{"id":"snap_123a6c5209bc3778245d011443644c8d27dc2c50","sourceSessionId":"sbx_123a6c5209bc3778245d011443644c8d27dc2c50","region":"iad1","status":"created","sizeBytes":104857600,"expiresAt":1750344501629,"createdAt":1750344501629,"updatedAt":1750344501629}}
             type: simple
     x-speakeasy-test-group: sandboxes
     x-speakeasy-test-rebuild: true
@@ -8787,7 +8787,7 @@ workflows:
           - condition: $response.header.Content-Type == application/json
           - context: $response.body
             condition: |
-              {"snapshot":{"id":"snap_123a6c5209bc3778245d011443644c8d27dc2c50","sourceSandboxId":"sbx_123a6c5209bc3778245d011443644c8d27dc2c50","region":"iad1","status":"created","sizeBytes":104857600,"expiresAt":1750344501629,"createdAt":1750344501629,"updatedAt":1750344501629}}
+              {"snapshot":{"id":"snap_123a6c5209bc3778245d011443644c8d27dc2c50","sourceSessionId":"sbx_123a6c5209bc3778245d011443644c8d27dc2c50","region":"iad1","status":"created","sizeBytes":104857600,"expiresAt":1750344501629,"createdAt":1750344501629,"updatedAt":1750344501629}}
             type: simple
     x-speakeasy-test-group: sandboxes
     x-speakeasy-test-rebuild: true
@@ -8810,7 +8810,7 @@ workflows:
           - condition: $response.header.Content-Type == application/json
           - context: $response.body
             condition: |
-              {"snapshot":{"id":"snap_123a6c5209bc3778245d011443644c8d27dc2c50","sourceSandboxId":"sbx_123a6c5209bc3778245d011443644c8d27dc2c50","region":"iad1","status":"created","sizeBytes":104857600,"expiresAt":1750344501629,"createdAt":1750344501629,"updatedAt":1750344501629},"sandbox":{"id":"sbx_123a6c5209bc3778245d011443644c8d27dc2c50","memory":2048,"vcpus":2,"region":"iad1","runtime":"node22","timeout":3600000,"status":"running","requestedAt":1750344501629,"startedAt":1750344501629,"cwd":"/vercel/sandbox","requestedStopAt":1750344501629,"stoppedAt":1750344501629,"abortedAt":1750344501629,"duration":3600000,"sourceSnapshotId":"snap_123a6c5209bc3778245d011443644c8d27dc2c50","snapshottedAt":1750344501629,"createdAt":1750344501629,"updatedAt":1750344501629,"networkPolicy":{"mode":"custom","allowedDomains":["api.vercel.com","*.example.com"],"allowedCIDRs":["10.0.0.0/8"],"deniedCIDRs":["10.0.0.0/8"],"injectionRules":[{"domain":"api.vercel.com","headerNames":["Authorization","X-API-Key"]}]},"activeCpuDurationMs":42,"networkTransfer":{"ingress":2227.7,"egress":3795.65}}}
+              {"snapshot":{"id":"snap_123a6c5209bc3778245d011443644c8d27dc2c50","sourceSessionId":"sbx_123a6c5209bc3778245d011443644c8d27dc2c50","region":"iad1","status":"created","sizeBytes":104857600,"expiresAt":1750344501629,"createdAt":1750344501629,"updatedAt":1750344501629},"sandbox":{"id":"sbx_123a6c5209bc3778245d011443644c8d27dc2c50","memory":2048,"vcpus":2,"region":"iad1","runtime":"node22","timeout":3600000,"status":"running","requestedAt":1750344501629,"startedAt":1750344501629,"cwd":"/vercel/sandbox","requestedStopAt":1750344501629,"stoppedAt":1750344501629,"abortedAt":1750344501629,"duration":3600000,"sourceSnapshotId":"snap_123a6c5209bc3778245d011443644c8d27dc2c50","snapshottedAt":1750344501629,"createdAt":1750344501629,"updatedAt":1750344501629,"networkPolicy":{"mode":"custom","allowedDomains":["api.vercel.com","*.example.com"],"allowedCIDRs":["10.0.0.0/8"],"deniedCIDRs":["10.0.0.0/8"],"injectionRules":[{"domain":"api.vercel.com","headerNames":["Authorization","X-API-Key"]}]},"activeCpuDurationMs":42,"networkTransfer":{"ingress":2227.7,"egress":3795.65}}}
             type: simple
     x-speakeasy-test-group: sandboxes
     x-speakeasy-test-rebuild: true
@@ -9080,4 +9080,632 @@ workflows:
               {"actions":[{"startTime":"<value>","endTime":"<value>","isActive":false,"action_type":"<value>","host":"ethical-smog.biz","public_ip":"<value>","count":6350.11}]}
             type: simple
     x-speakeasy-test-group: security
+    x-speakeasy-test-rebuild: true
+  - workflowId: buyCredits
+    steps:
+      - stepId: test
+        operationId: buyCredits
+        parameters:
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        requestBody:
+          contentType: application/json
+          payload:
+            item:
+              amount: 890808
+              creditType: agent
+              type: credits
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"purchaseIntent":{"id":"<id>","configuration":{"options":{"externalPlanId":"<id>"},"output":{"pendingSubscriptionChangeId":"<id>"},"type":"orb_subscription"},"createdAt":"1724133771876","currency":"miu","ownerId":"<id>","provider":{"resourceId":"<id>","type":"stripe_hosted"},"status":"succeeded","subtotal":"<value>","tax":"<value>","total":"<value>","updatedAt":"1735637332019"}}
+            type: simple
+    x-speakeasy-test-group: billing
+    x-speakeasy-test-rebuild: true
+  - workflowId: getRecords
+    steps:
+      - stepId: test
+        operationId: getRecords
+        parameters:
+          - name: domain
+            in: path
+            value: example.com
+          - name: limit
+            in: query
+            value: "20"
+          - name: since
+            in: query
+            value: "1609499532000"
+          - name: until
+            in: query
+            value: "1612264332000"
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"records":[]}
+            type: simple
+    x-speakeasy-test-group: dns
+    x-speakeasy-test-rebuild: true
+  - workflowId: getSandboxesV1
+    steps:
+      - stepId: test
+        operationId: getSandboxesV1
+        parameters:
+          - name: project
+            in: query
+            value: prj_abc123
+          - name: limit
+            in: query
+            value: 20
+          - name: since
+            in: query
+            value: 1540095775941
+          - name: until
+            in: query
+            value: 1540095775951
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"sandboxes":[],"pagination":{"total":16.31,"count":20,"next":1540095775951,"prev":1540095775951}}
+            type: simple
+    x-speakeasy-test-group: sandboxes
+    x-speakeasy-test-rebuild: true
+  - workflowId: getSandboxesV2
+    steps:
+      - stepId: test
+        operationId: getSandboxesV2
+        parameters:
+          - name: project
+            in: query
+            value: prj_abc123
+          - name: limit
+            in: query
+            value: 20
+          - name: sortBy
+            in: query
+            value: createdAt
+          - name: sortOrder
+            in: query
+            value: desc
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"sandboxes":[{"name":"my-sandbox","currentSessionId":"<id>","status":"running","statusUpdatedAt":1750344501629,"persistent":true,"region":"iad1","vcpus":2,"memory":1024,"runtime":"node22","timeout":300000,"totalEgressBytes":4096,"totalIngressBytes":2048,"totalActiveCpuDurationMs":5000,"totalDurationMs":60000,"cwd":"/vercel/sandbox","tags":{"team":"hive","user":"bob"},"createdAt":1750344501629,"updatedAt":1750344501629}],"pagination":{"count":914.52,"next":"<value>"}}
+            type: simple
+    x-speakeasy-test-group: sandboxes-v2-beta
+    x-speakeasy-test-rebuild: true
+  - workflowId: listSessionSnapshots
+    steps:
+      - stepId: test
+        operationId: listSessionSnapshots
+        parameters:
+          - name: project
+            in: query
+            value: prj_abc123
+          - name: name
+            in: query
+            value: my-sandbox
+          - name: limit
+            in: query
+            value: 20
+          - name: sortOrder
+            in: query
+            value: desc
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"snapshots":[{"id":"snap_123a6c5209bc3778245d011443644c8d27dc2c50","sourceSessionId":"sbx_123a6c5209bc3778245d011443644c8d27dc2c50","region":"iad1","status":"created","sizeBytes":104857600,"expiresAt":1750344501629,"createdAt":1750344501629,"updatedAt":1750344501629}],"pagination":{"count":2117.85,"next":"<value>"}}
+            type: simple
+    x-speakeasy-test-group: sandboxes-v2-beta
+    x-speakeasy-test-rebuild: true
+  - workflowId: getSessionSnapshot
+    steps:
+      - stepId: test
+        operationId: getSessionSnapshot
+        parameters:
+          - name: snapshotId
+            in: path
+            value: snap_abc123
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"snapshot":{"id":"snap_123a6c5209bc3778245d011443644c8d27dc2c50","sourceSessionId":"sbx_123a6c5209bc3778245d011443644c8d27dc2c50","region":"iad1","status":"created","sizeBytes":104857600,"expiresAt":1750344501629,"createdAt":1750344501629,"updatedAt":1750344501629}}
+            type: simple
+    x-speakeasy-test-group: sandboxes-v2-beta
+    x-speakeasy-test-rebuild: true
+  - workflowId: deleteSessionSnapshot
+    steps:
+      - stepId: test
+        operationId: deleteSessionSnapshot
+        parameters:
+          - name: snapshotId
+            in: path
+            value: snap_abc123
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"snapshot":{"id":"snap_123a6c5209bc3778245d011443644c8d27dc2c50","sourceSessionId":"sbx_123a6c5209bc3778245d011443644c8d27dc2c50","region":"iad1","status":"created","sizeBytes":104857600,"expiresAt":1750344501629,"createdAt":1750344501629,"updatedAt":1750344501629}}
+            type: simple
+    x-speakeasy-test-group: sandboxes-v2-beta
+    x-speakeasy-test-rebuild: true
+  - workflowId: listSessions
+    steps:
+      - stepId: test
+        operationId: listSessions
+        parameters:
+          - name: project
+            in: query
+            value: prj_abc123
+          - name: name
+            in: query
+            value: my-sandbox
+          - name: limit
+            in: query
+            value: 20
+          - name: sortOrder
+            in: query
+            value: desc
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {}
+            type: simple
+    x-speakeasy-test-group: sandboxes-v2-beta
+    x-speakeasy-test-rebuild: true
+  - workflowId: getSession
+    steps:
+      - stepId: test
+        operationId: getSession
+        parameters:
+          - name: sessionId
+            in: path
+            value: sbx_abc123
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"session":{"sourceSandboxName":"my-sandbox","projectId":"prj_123a6c5209bc3778245d011443644c8d27dc2c50","id":"sbx_123a6c5209bc3778245d011443644c8d27dc2c50","memory":2048,"vcpus":2,"region":"iad1","runtime":"node22","timeout":3600000,"status":"running","requestedAt":1750344501629,"startedAt":1750344501629,"cwd":"/vercel/sandbox","requestedStopAt":1750344501629,"stoppedAt":1750344501629,"abortedAt":1750344501629,"duration":3600000,"sourceSnapshotId":"snap_123a6c5209bc3778245d011443644c8d27dc2c50","snapshottedAt":1750344501629,"createdAt":1750344501629,"updatedAt":1750344501629,"networkPolicy":{"mode":"custom","allowedDomains":["api.vercel.com","*.example.com"],"allowedCIDRs":["10.0.0.0/8"],"deniedCIDRs":["10.0.0.0/8"],"injectionRules":[{"domain":"api.vercel.com","headerNames":["Authorization","X-API-Key"]}]},"activeCpuDurationMs":42,"networkTransfer":{"ingress":3878.34,"egress":4078.62}},"routes":[]}
+            type: simple
+    x-speakeasy-test-group: sandboxes-v2-beta
+    x-speakeasy-test-rebuild: true
+  - workflowId: getNamedSandbox
+    steps:
+      - stepId: test
+        operationId: getNamedSandbox
+        parameters:
+          - name: name
+            in: path
+            value: my-sandbox
+          - name: projectId
+            in: query
+            value: prj_abc123
+          - name: resume
+            in: query
+            value: false
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"sandbox":{"name":"my-sandbox","currentSessionId":"<id>","status":"running","statusUpdatedAt":1750344501629,"persistent":true,"region":"iad1","vcpus":2,"memory":1024,"runtime":"node22","timeout":300000,"totalEgressBytes":4096,"totalIngressBytes":2048,"totalActiveCpuDurationMs":5000,"totalDurationMs":60000,"cwd":"/vercel/sandbox","tags":{"team":"hive","user":"bob"},"createdAt":1750344501629,"updatedAt":1750344501629},"session":{"sourceSandboxName":"my-sandbox","projectId":"prj_123a6c5209bc3778245d011443644c8d27dc2c50","id":"sbx_123a6c5209bc3778245d011443644c8d27dc2c50","memory":2048,"vcpus":2,"region":"iad1","runtime":"node22","timeout":3600000,"status":"running","requestedAt":1750344501629,"startedAt":1750344501629,"cwd":"/vercel/sandbox","requestedStopAt":1750344501629,"stoppedAt":1750344501629,"abortedAt":1750344501629,"duration":3600000,"sourceSnapshotId":"snap_123a6c5209bc3778245d011443644c8d27dc2c50","snapshottedAt":1750344501629,"createdAt":1750344501629,"updatedAt":1750344501629,"networkPolicy":{"mode":"custom","allowedDomains":["api.vercel.com","*.example.com"],"allowedCIDRs":["10.0.0.0/8"],"deniedCIDRs":["10.0.0.0/8"],"injectionRules":[{"domain":"api.vercel.com","headerNames":["Authorization","X-API-Key"]}]},"activeCpuDurationMs":42,"networkTransfer":{"ingress":3537.81,"egress":3912.91}},"routes":[{"url":"https://any-wasabi.com","port":4252.43,"subdomain":"<value>","system":true}]}
+            type: simple
+    x-speakeasy-test-group: sandboxes-v2-beta
+    x-speakeasy-test-rebuild: true
+  - workflowId: updateSandbox
+    steps:
+      - stepId: test
+        operationId: updateSandbox
+        parameters:
+          - name: name
+            in: path
+            value: my-sandbox
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        requestBody:
+          contentType: application/json
+          payload:
+            env:
+              HELLO: world
+              NODE_ENV: production
+            networkPolicy:
+              allowedCIDRs:
+                - 35.192.0.0/12
+                - 104.16.0.0/12
+              allowedDomains:
+                - api.github.com
+                - '*.npmjs.org'
+              deniedCIDRs:
+                - 35.192.0.0/12
+              mode: custom
+            resources:
+              memory: 4096
+              vcpus: 2
+            runtime: node24
+            tags:
+              env: staging
+              team: platform
+            timeout: 300000
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"sandbox":{"name":"my-sandbox","currentSessionId":"<id>","status":"running","statusUpdatedAt":1750344501629,"persistent":true,"region":"iad1","vcpus":2,"memory":1024,"runtime":"node22","timeout":300000,"totalEgressBytes":4096,"totalIngressBytes":2048,"totalActiveCpuDurationMs":5000,"totalDurationMs":60000,"cwd":"/vercel/sandbox","tags":{"team":"hive","user":"bob"},"createdAt":1750344501629,"updatedAt":1750344501629}}
+            type: simple
+    x-speakeasy-test-group: sandboxes-v2-beta
+    x-speakeasy-test-rebuild: true
+  - workflowId: deleteSandbox
+    steps:
+      - stepId: test
+        operationId: deleteSandbox
+        parameters:
+          - name: name
+            in: path
+            value: my-sandbox
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"sandbox":{"name":"my-sandbox","currentSessionId":"<id>","status":"running","statusUpdatedAt":1750344501629,"persistent":true,"region":"iad1","vcpus":2,"memory":1024,"runtime":"node22","timeout":300000,"totalEgressBytes":4096,"totalIngressBytes":2048,"totalActiveCpuDurationMs":5000,"totalDurationMs":60000,"cwd":"/vercel/sandbox","tags":{"team":"hive","user":"bob"},"createdAt":1750344501629,"updatedAt":1750344501629}}
+            type: simple
+    x-speakeasy-test-group: sandboxes-v2-beta
+    x-speakeasy-test-rebuild: true
+  - workflowId: listSessionCommands
+    steps:
+      - stepId: test
+        operationId: listSessionCommands
+        parameters:
+          - name: sessionId
+            in: path
+            value: sbx_abc123
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"commands":[]}
+            type: simple
+    x-speakeasy-test-group: sandboxes-v2-beta
+    x-speakeasy-test-rebuild: true
+  - workflowId: getSessionCommand
+    steps:
+      - stepId: test
+        operationId: getSessionCommand
+        parameters:
+          - name: sessionId
+            in: path
+            value: sbx_abc123
+          - name: cmdId
+            in: path
+            value: cmd_abc123
+          - name: wait
+            in: query
+            value: "false"
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"command":{"id":"cmd_123a6c5209bc3778245d011443644c8d27dc2c50","name":"npm","args":["run","build"],"cwd":"/vercel/sandbox","sessionId":"sbx_123a6c5209bc3778245d011443644c8d27dc2c50","exitCode":0,"startedAt":1673123456789}}
+            type: simple
+    x-speakeasy-test-group: sandboxes-v2-beta
+    x-speakeasy-test-rebuild: true
+  - workflowId: killSessionCommand
+    steps:
+      - stepId: test
+        operationId: killSessionCommand
+        parameters:
+          - name: cmdId
+            in: path
+            value: cmd_abc123
+          - name: sessionId
+            in: path
+            value: sbx_abc123
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        requestBody:
+          contentType: application/json
+          payload:
+            signal: 15
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"command":{"id":"cmd_123a6c5209bc3778245d011443644c8d27dc2c50","name":"npm","args":["run","build"],"cwd":"/vercel/sandbox","sessionId":"sbx_123a6c5209bc3778245d011443644c8d27dc2c50","exitCode":0,"startedAt":1673123456789}}
+            type: simple
+    x-speakeasy-test-group: sandboxes-v2-beta
+    x-speakeasy-test-rebuild: true
+  - workflowId: stopSession
+    steps:
+      - stepId: test
+        operationId: stopSession
+        parameters:
+          - name: sessionId
+            in: path
+            value: sbx_abc123
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"session":{"sourceSandboxName":"my-sandbox","projectId":"prj_123a6c5209bc3778245d011443644c8d27dc2c50","id":"sbx_123a6c5209bc3778245d011443644c8d27dc2c50","memory":2048,"vcpus":2,"region":"iad1","runtime":"node22","timeout":3600000,"status":"running","requestedAt":1750344501629,"startedAt":1750344501629,"cwd":"/vercel/sandbox","requestedStopAt":1750344501629,"stoppedAt":1750344501629,"abortedAt":1750344501629,"duration":3600000,"sourceSnapshotId":"snap_123a6c5209bc3778245d011443644c8d27dc2c50","snapshottedAt":1750344501629,"createdAt":1750344501629,"updatedAt":1750344501629,"networkPolicy":{"mode":"custom","allowedDomains":["api.vercel.com","*.example.com"],"allowedCIDRs":["10.0.0.0/8"],"deniedCIDRs":["10.0.0.0/8"],"injectionRules":[{"domain":"api.vercel.com","headerNames":["Authorization","X-API-Key"]}]},"activeCpuDurationMs":42,"networkTransfer":{"ingress":7335.08,"egress":6426.83}}}
+            type: simple
+    x-speakeasy-test-group: sandboxes-v2-beta
+    x-speakeasy-test-rebuild: true
+  - workflowId: extendSessionTimeout
+    steps:
+      - stepId: test
+        operationId: extendSessionTimeout
+        parameters:
+          - name: sessionId
+            in: path
+            value: sbx_abc123
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        requestBody:
+          contentType: application/json
+          payload:
+            duration: 300000
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"session":{"sourceSandboxName":"my-sandbox","projectId":"prj_123a6c5209bc3778245d011443644c8d27dc2c50","id":"sbx_123a6c5209bc3778245d011443644c8d27dc2c50","memory":2048,"vcpus":2,"region":"iad1","runtime":"node22","timeout":3600000,"status":"running","requestedAt":1750344501629,"startedAt":1750344501629,"cwd":"/vercel/sandbox","requestedStopAt":1750344501629,"stoppedAt":1750344501629,"abortedAt":1750344501629,"duration":3600000,"sourceSnapshotId":"snap_123a6c5209bc3778245d011443644c8d27dc2c50","snapshottedAt":1750344501629,"createdAt":1750344501629,"updatedAt":1750344501629,"networkPolicy":{"mode":"custom","allowedDomains":["api.vercel.com","*.example.com"],"allowedCIDRs":["10.0.0.0/8"],"deniedCIDRs":["10.0.0.0/8"],"injectionRules":[{"domain":"api.vercel.com","headerNames":["Authorization","X-API-Key"]}]},"activeCpuDurationMs":42,"networkTransfer":{"ingress":2879.78,"egress":8960.7}}}
+            type: simple
+    x-speakeasy-test-group: sandboxes-v2-beta
+    x-speakeasy-test-rebuild: true
+  - workflowId: updateSessionNetworkPolicy
+    steps:
+      - stepId: test
+        operationId: updateSessionNetworkPolicy
+        parameters:
+          - name: sessionId
+            in: path
+            value: sbx_abc123
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        requestBody:
+          contentType: application/json
+          payload:
+            allowedCIDRs:
+              - 35.192.0.0/12
+              - 104.16.0.0/12
+            allowedDomains:
+              - api.github.com
+              - '*.npmjs.org'
+            deniedCIDRs:
+              - 35.192.0.0/12
+            mode: custom
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"session":{"sourceSandboxName":"my-sandbox","projectId":"prj_123a6c5209bc3778245d011443644c8d27dc2c50","id":"sbx_123a6c5209bc3778245d011443644c8d27dc2c50","memory":2048,"vcpus":2,"region":"iad1","runtime":"node22","timeout":3600000,"status":"running","requestedAt":1750344501629,"startedAt":1750344501629,"cwd":"/vercel/sandbox","requestedStopAt":1750344501629,"stoppedAt":1750344501629,"abortedAt":1750344501629,"duration":3600000,"sourceSnapshotId":"snap_123a6c5209bc3778245d011443644c8d27dc2c50","snapshottedAt":1750344501629,"createdAt":1750344501629,"updatedAt":1750344501629,"networkPolicy":{"mode":"custom","allowedDomains":["api.vercel.com","*.example.com"],"allowedCIDRs":["10.0.0.0/8"],"deniedCIDRs":["10.0.0.0/8"],"injectionRules":[{"domain":"api.vercel.com","headerNames":["Authorization","X-API-Key"]}]},"activeCpuDurationMs":42,"networkTransfer":{"ingress":4717.67,"egress":3225.72}}}
+            type: simple
+    x-speakeasy-test-group: sandboxes-v2-beta
+    x-speakeasy-test-rebuild: true
+  - workflowId: readSessionFile
+    steps:
+      - stepId: test
+        operationId: readSessionFile
+        parameters:
+          - name: sessionId
+            in: path
+            value: sbx_abc123
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        requestBody:
+          contentType: application/json
+          payload:
+            cwd: /home/vercel-sandbox
+            path: dist/agent-output.md
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/octet-stream
+          - context: $response.body
+            condition: |
+              "x-file: example.file"
+            type: simple
+    x-speakeasy-test-group: sandboxes-v2-beta
+    x-speakeasy-test-rebuild: true
+  - workflowId: createSessionDirectory
+    steps:
+      - stepId: test
+        operationId: createSessionDirectory
+        parameters:
+          - name: sessionId
+            in: path
+            value: sbx_abc123
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        requestBody:
+          contentType: application/json
+          payload:
+            cwd: /home/vercel-sandbox
+            path: src/components
+            recursive: true
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {}
+            type: simple
+    x-speakeasy-test-group: sandboxes-v2-beta
+    x-speakeasy-test-rebuild: true
+  - workflowId: writeSessionFiles
+    steps:
+      - stepId: test
+        operationId: writeSessionFiles
+        parameters:
+          - name: sessionId
+            in: path
+            value: sbx_abc123
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+          - name: x-cwd
+            in: header
+            value: /home/vercel-sandbox
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {}
+            type: simple
+    x-speakeasy-test-group: sandboxes-v2-beta
+    x-speakeasy-test-rebuild: true
+  - workflowId: createSessionSnapshot
+    steps:
+      - stepId: test
+        operationId: createSessionSnapshot
+        parameters:
+          - name: sessionId
+            in: path
+            value: sbx_abc123
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 201
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"snapshot":{"id":"snap_123a6c5209bc3778245d011443644c8d27dc2c50","sourceSessionId":"sbx_123a6c5209bc3778245d011443644c8d27dc2c50","region":"iad1","status":"created","sizeBytes":104857600,"expiresAt":1750344501629,"createdAt":1750344501629,"updatedAt":1750344501629},"session":{"sourceSandboxName":"my-sandbox","projectId":"prj_123a6c5209bc3778245d011443644c8d27dc2c50","id":"sbx_123a6c5209bc3778245d011443644c8d27dc2c50","memory":2048,"vcpus":2,"region":"iad1","runtime":"node22","timeout":3600000,"status":"running","requestedAt":1750344501629,"startedAt":1750344501629,"cwd":"/vercel/sandbox","requestedStopAt":1750344501629,"stoppedAt":1750344501629,"abortedAt":1750344501629,"duration":3600000,"sourceSnapshotId":"snap_123a6c5209bc3778245d011443644c8d27dc2c50","snapshottedAt":1750344501629,"createdAt":1750344501629,"updatedAt":1750344501629,"networkPolicy":{"mode":"custom","allowedDomains":["api.vercel.com","*.example.com"],"allowedCIDRs":["10.0.0.0/8"],"deniedCIDRs":["10.0.0.0/8"],"injectionRules":[{"domain":"api.vercel.com","headerNames":["Authorization","X-API-Key"]}]},"activeCpuDurationMs":42,"networkTransfer":{"ingress":2235.65,"egress":2151.72}}}
+            type: simple
+    x-speakeasy-test-group: sandboxes-v2-beta
     x-speakeasy-test-rebuild: true

@@ -33,7 +33,7 @@ import { Result } from "../types/fp.js";
  * Create a flag
  *
  * @remarks
- * Create a new feature flag for a project. The flag must have a unique slug within the project and specify its kind (boolean, string, or number).
+ * Create a new feature flag for a project. The flag must have a unique slug within the project and specify its kind (boolean, string, number, or json).
  */
 export function featureFlagsCreateFlag(
   client: VercelCore,
@@ -96,7 +96,6 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc("/v1/projects/{projectIdOrName}/feature-flags/flags")(
     pathParams,
   );

@@ -25,7 +25,7 @@ export const Field = {
 } as const;
 export type Field = ClosedEnum<typeof Field>;
 
-export type UpdateFlagSegmentValue = {
+export type Value = {
   note?: string | undefined;
   value: string;
 };
@@ -35,7 +35,7 @@ export type Operations = {
   field: Field;
   entity: string;
   attribute: string;
-  value: UpdateFlagSegmentValue;
+  value: Value;
 };
 
 export type UpdateFlagSegmentLhs2 = {
@@ -240,44 +240,37 @@ export const Field$outboundSchema: z.ZodNativeEnum<typeof Field> =
   Field$inboundSchema;
 
 /** @internal */
-export const UpdateFlagSegmentValue$inboundSchema: z.ZodType<
-  UpdateFlagSegmentValue,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  note: types.optional(types.string()),
-  value: types.string(),
-});
+export const Value$inboundSchema: z.ZodType<Value, z.ZodTypeDef, unknown> = z
+  .object({
+    note: types.optional(types.string()),
+    value: types.string(),
+  });
 /** @internal */
-export type UpdateFlagSegmentValue$Outbound = {
+export type Value$Outbound = {
   note?: string | undefined;
   value: string;
 };
 
 /** @internal */
-export const UpdateFlagSegmentValue$outboundSchema: z.ZodType<
-  UpdateFlagSegmentValue$Outbound,
+export const Value$outboundSchema: z.ZodType<
+  Value$Outbound,
   z.ZodTypeDef,
-  UpdateFlagSegmentValue
+  Value
 > = z.object({
   note: z.string().optional(),
   value: z.string(),
 });
 
-export function updateFlagSegmentValueToJSON(
-  updateFlagSegmentValue: UpdateFlagSegmentValue,
-): string {
-  return JSON.stringify(
-    UpdateFlagSegmentValue$outboundSchema.parse(updateFlagSegmentValue),
-  );
+export function valueToJSON(value: Value): string {
+  return JSON.stringify(Value$outboundSchema.parse(value));
 }
-export function updateFlagSegmentValueFromJSON(
+export function valueFromJSON(
   jsonString: string,
-): SafeParseResult<UpdateFlagSegmentValue, SDKValidationError> {
+): SafeParseResult<Value, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => UpdateFlagSegmentValue$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateFlagSegmentValue' from JSON`,
+    (x) => Value$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Value' from JSON`,
   );
 }
 
@@ -291,7 +284,7 @@ export const Operations$inboundSchema: z.ZodType<
   field: Field$inboundSchema,
   entity: types.string(),
   attribute: types.string(),
-  value: z.lazy(() => UpdateFlagSegmentValue$inboundSchema),
+  value: z.lazy(() => Value$inboundSchema),
 });
 /** @internal */
 export type Operations$Outbound = {
@@ -299,7 +292,7 @@ export type Operations$Outbound = {
   field: string;
   entity: string;
   attribute: string;
-  value: UpdateFlagSegmentValue$Outbound;
+  value: Value$Outbound;
 };
 
 /** @internal */
@@ -312,7 +305,7 @@ export const Operations$outboundSchema: z.ZodType<
   field: Field$outboundSchema,
   entity: z.string(),
   attribute: z.string(),
-  value: z.lazy(() => UpdateFlagSegmentValue$outboundSchema),
+  value: z.lazy(() => Value$outboundSchema),
 });
 
 export function operationsToJSON(operations: Operations): string {

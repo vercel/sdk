@@ -7,6 +7,7 @@ import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
+import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type StatusRequest = {
@@ -20,17 +21,23 @@ export type StatusRequest = {
   slug?: string | undefined;
 };
 
-export const StatusStatus = {
+export const ResponseBodyStatus = {
   Disabled: "disabled",
   Enabled: "enabled",
   OverLimit: "over_limit",
   Paused: "paused",
 } as const;
-export type StatusStatus = ClosedEnum<typeof StatusStatus>;
+export type ResponseBodyStatus = ClosedEnum<typeof ResponseBodyStatus>;
 
-export type StatusResponseBody = {
-  status: StatusStatus;
+export type ResponseBody2 = {
+  status: ResponseBodyStatus;
 };
+
+export type ResponseBody1 = {
+  status: string;
+};
+
+export type StatusResponseBody = ResponseBody1 | ResponseBody2;
 
 /** @internal */
 export const StatusRequest$inboundSchema: z.ZodType<
@@ -71,33 +78,107 @@ export function statusRequestFromJSON(
 }
 
 /** @internal */
-export const StatusStatus$inboundSchema: z.ZodNativeEnum<typeof StatusStatus> =
-  z.nativeEnum(StatusStatus);
+export const ResponseBodyStatus$inboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyStatus
+> = z.nativeEnum(ResponseBodyStatus);
 /** @internal */
-export const StatusStatus$outboundSchema: z.ZodNativeEnum<typeof StatusStatus> =
-  StatusStatus$inboundSchema;
+export const ResponseBodyStatus$outboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyStatus
+> = ResponseBodyStatus$inboundSchema;
+
+/** @internal */
+export const ResponseBody2$inboundSchema: z.ZodType<
+  ResponseBody2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  status: ResponseBodyStatus$inboundSchema,
+});
+/** @internal */
+export type ResponseBody2$Outbound = {
+  status: string;
+};
+
+/** @internal */
+export const ResponseBody2$outboundSchema: z.ZodType<
+  ResponseBody2$Outbound,
+  z.ZodTypeDef,
+  ResponseBody2
+> = z.object({
+  status: ResponseBodyStatus$outboundSchema,
+});
+
+export function responseBody2ToJSON(responseBody2: ResponseBody2): string {
+  return JSON.stringify(ResponseBody2$outboundSchema.parse(responseBody2));
+}
+export function responseBody2FromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBody2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBody2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBody2' from JSON`,
+  );
+}
+
+/** @internal */
+export const ResponseBody1$inboundSchema: z.ZodType<
+  ResponseBody1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  status: types.string(),
+});
+/** @internal */
+export type ResponseBody1$Outbound = {
+  status: string;
+};
+
+/** @internal */
+export const ResponseBody1$outboundSchema: z.ZodType<
+  ResponseBody1$Outbound,
+  z.ZodTypeDef,
+  ResponseBody1
+> = z.object({
+  status: z.string(),
+});
+
+export function responseBody1ToJSON(responseBody1: ResponseBody1): string {
+  return JSON.stringify(ResponseBody1$outboundSchema.parse(responseBody1));
+}
+export function responseBody1FromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBody1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBody1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBody1' from JSON`,
+  );
+}
 
 /** @internal */
 export const StatusResponseBody$inboundSchema: z.ZodType<
   StatusResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  status: StatusStatus$inboundSchema,
-});
+> = smartUnion([
+  z.lazy(() => ResponseBody1$inboundSchema),
+  z.lazy(() => ResponseBody2$inboundSchema),
+]);
 /** @internal */
-export type StatusResponseBody$Outbound = {
-  status: string;
-};
+export type StatusResponseBody$Outbound =
+  | ResponseBody1$Outbound
+  | ResponseBody2$Outbound;
 
 /** @internal */
 export const StatusResponseBody$outboundSchema: z.ZodType<
   StatusResponseBody$Outbound,
   z.ZodTypeDef,
   StatusResponseBody
-> = z.object({
-  status: StatusStatus$outboundSchema,
-});
+> = smartUnion([
+  z.lazy(() => ResponseBody1$outboundSchema),
+  z.lazy(() => ResponseBody2$outboundSchema),
+]);
 
 export function statusResponseBodyToJSON(
   statusResponseBody: StatusResponseBody,

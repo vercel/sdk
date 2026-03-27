@@ -134,7 +134,6 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc("/v1/registrar/domains/{domain}/auth-code")(
     pathParams,
   );

@@ -73,7 +73,7 @@ func testExtendSandboxTimeoutExtendSandboxTimeout0(w http.ResponseWriter, req *h
 			CreatedAt:        1750344501629,
 			UpdatedAt:        1750344501629,
 			NetworkPolicy: &components.SandboxNetworkPolicy{
-				Mode: components.ModeCustom,
+				Mode: components.SandboxNetworkPolicyModeCustom,
 				AllowedDomains: []string{
 					"api.vercel.com",
 					"*.example.com",
@@ -95,7 +95,7 @@ func testExtendSandboxTimeoutExtendSandboxTimeout0(w http.ResponseWriter, req *h
 				},
 			},
 			ActiveCPUDurationMs: types.Float64(42),
-			NetworkTransfer: &components.NetworkTransfer{
+			NetworkTransfer: &components.SandboxNetworkTransfer{
 				Ingress: 3493.77,
 				Egress:  8135.86,
 			},

@@ -5,7 +5,7 @@ Represents the payload for a Bitbucket comment job This interface defines the st
 ## Example Usage
 
 ```typescript
-import { Job2 } from "@vercel/sdk/models/twentyeight.js";
+import { Job2 } from "@vercel/sdk/models/usereventpayloaddata.js";
 
 let value: Job2 = {
   headInfo: {

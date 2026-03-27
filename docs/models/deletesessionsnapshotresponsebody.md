@@ -1,0 +1,26 @@
+# DeleteSessionSnapshotResponseBody
+
+## Example Usage
+
+```typescript
+import { DeleteSessionSnapshotResponseBody } from "@vercel/sdk/models/deletesessionsnapshotop.js";
+
+let value: DeleteSessionSnapshotResponseBody = {
+  snapshot: {
+    id: "snap_123a6c5209bc3778245d011443644c8d27dc2c50",
+    sourceSessionId: "sbx_123a6c5209bc3778245d011443644c8d27dc2c50",
+    region: "iad1",
+    status: "created",
+    sizeBytes: 104857600,
+    expiresAt: 1750344501629,
+    createdAt: 1750344501629,
+    updatedAt: 1750344501629,
+  },
+};
+```
+
+## Fields
+
+| Field                                                                                        | Type                                                                                         | Required                                                                                     | Description                                                                                  |
+| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `snapshot`                                                                                   | [models.Snapshot](../models/snapshot.md)                                                     | :heavy_check_mark:                                                                           | This object contains information related to a Snapshot of a Vercel Sandbox session (v2 API). |

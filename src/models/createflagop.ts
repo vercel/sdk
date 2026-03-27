@@ -18,13 +18,14 @@ export const CreateFlagKind = {
   Boolean: "boolean",
   String: "string",
   Number: "number",
+  Json: "json",
 } as const;
 /**
  * The kind of flag
  */
 export type CreateFlagKind = ClosedEnum<typeof CreateFlagKind>;
 
-export type CreateFlagValue = string | number | boolean;
+export type Value4 = {};
 
 export type CreateFlagVariants = {
   /**
@@ -39,7 +40,7 @@ export type CreateFlagVariants = {
    * A description of the variant
    */
   description?: string | undefined;
-  value: string | number | boolean;
+  value?: any | undefined;
 };
 
 /**
@@ -280,14 +281,7 @@ export type CreateFlagRequest = {
   requestBody?: CreateFlagRequestBody | undefined;
 };
 
-export type CreateFlagFeatureFlagsValue = string | number | boolean;
-
-export type CreateFlagFeatureFlagsVariants = {
-  description?: string | undefined;
-  label?: string | undefined;
-  value: string | number | boolean;
-  id: string;
-};
+export type CreateFlagFeatureFlagsVariants = {};
 
 export type CreateFlagFeatureFlagsReuse = {
   active: boolean;
@@ -496,6 +490,7 @@ export const CreateFlagFeatureFlagsKind = {
   String: "string",
   Number: "number",
   Boolean: "boolean",
+  Json: "json",
 } as const;
 export type CreateFlagFeatureFlagsKind = ClosedEnum<
   typeof CreateFlagFeatureFlagsKind
@@ -542,33 +537,28 @@ export const CreateFlagKind$outboundSchema: z.ZodNativeEnum<
 > = CreateFlagKind$inboundSchema;
 
 /** @internal */
-export const CreateFlagValue$inboundSchema: z.ZodType<
-  CreateFlagValue,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([types.string(), types.number(), types.boolean()]);
+export const Value4$inboundSchema: z.ZodType<Value4, z.ZodTypeDef, unknown> = z
+  .object({});
 /** @internal */
-export type CreateFlagValue$Outbound = string | number | boolean;
+export type Value4$Outbound = {};
 
 /** @internal */
-export const CreateFlagValue$outboundSchema: z.ZodType<
-  CreateFlagValue$Outbound,
+export const Value4$outboundSchema: z.ZodType<
+  Value4$Outbound,
   z.ZodTypeDef,
-  CreateFlagValue
-> = smartUnion([z.string(), z.number(), z.boolean()]);
+  Value4
+> = z.object({});
 
-export function createFlagValueToJSON(
-  createFlagValue: CreateFlagValue,
-): string {
-  return JSON.stringify(CreateFlagValue$outboundSchema.parse(createFlagValue));
+export function value4ToJSON(value4: Value4): string {
+  return JSON.stringify(Value4$outboundSchema.parse(value4));
 }
-export function createFlagValueFromJSON(
+export function value4FromJSON(
   jsonString: string,
-): SafeParseResult<CreateFlagValue, SDKValidationError> {
+): SafeParseResult<Value4, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CreateFlagValue$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateFlagValue' from JSON`,
+    (x) => Value4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Value4' from JSON`,
   );
 }
 
@@ -581,14 +571,14 @@ export const CreateFlagVariants$inboundSchema: z.ZodType<
   id: types.string(),
   label: types.optional(types.string()),
   description: types.optional(types.string()),
-  value: smartUnion([types.string(), types.number(), types.boolean()]),
+  value: types.optional(z.any()),
 });
 /** @internal */
 export type CreateFlagVariants$Outbound = {
   id: string;
   label?: string | undefined;
   description?: string | undefined;
-  value: string | number | boolean;
+  value?: any | undefined;
 };
 
 /** @internal */
@@ -600,7 +590,7 @@ export const CreateFlagVariants$outboundSchema: z.ZodType<
   id: z.string(),
   label: z.string().optional(),
   description: z.string().optional(),
-  value: smartUnion([z.string(), z.number(), z.boolean()]),
+  value: z.any().optional(),
 });
 
 export function createFlagVariantsToJSON(
@@ -1837,70 +1827,20 @@ export function createFlagRequestFromJSON(
 }
 
 /** @internal */
-export const CreateFlagFeatureFlagsValue$inboundSchema: z.ZodType<
-  CreateFlagFeatureFlagsValue,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([types.string(), types.number(), types.boolean()]);
-/** @internal */
-export type CreateFlagFeatureFlagsValue$Outbound = string | number | boolean;
-
-/** @internal */
-export const CreateFlagFeatureFlagsValue$outboundSchema: z.ZodType<
-  CreateFlagFeatureFlagsValue$Outbound,
-  z.ZodTypeDef,
-  CreateFlagFeatureFlagsValue
-> = smartUnion([z.string(), z.number(), z.boolean()]);
-
-export function createFlagFeatureFlagsValueToJSON(
-  createFlagFeatureFlagsValue: CreateFlagFeatureFlagsValue,
-): string {
-  return JSON.stringify(
-    CreateFlagFeatureFlagsValue$outboundSchema.parse(
-      createFlagFeatureFlagsValue,
-    ),
-  );
-}
-export function createFlagFeatureFlagsValueFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateFlagFeatureFlagsValue, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateFlagFeatureFlagsValue$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateFlagFeatureFlagsValue' from JSON`,
-  );
-}
-
-/** @internal */
 export const CreateFlagFeatureFlagsVariants$inboundSchema: z.ZodType<
   CreateFlagFeatureFlagsVariants,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  description: types.optional(types.string()),
-  label: types.optional(types.string()),
-  value: smartUnion([types.string(), types.number(), types.boolean()]),
-  id: types.string(),
-});
+> = z.object({});
 /** @internal */
-export type CreateFlagFeatureFlagsVariants$Outbound = {
-  description?: string | undefined;
-  label?: string | undefined;
-  value: string | number | boolean;
-  id: string;
-};
+export type CreateFlagFeatureFlagsVariants$Outbound = {};
 
 /** @internal */
 export const CreateFlagFeatureFlagsVariants$outboundSchema: z.ZodType<
   CreateFlagFeatureFlagsVariants$Outbound,
   z.ZodTypeDef,
   CreateFlagFeatureFlagsVariants
-> = z.object({
-  description: z.string().optional(),
-  label: z.string().optional(),
-  value: smartUnion([z.string(), z.number(), z.boolean()]),
-  id: z.string(),
-});
+> = z.object({});
 
 export function createFlagFeatureFlagsVariantsToJSON(
   createFlagFeatureFlagsVariants: CreateFlagFeatureFlagsVariants,

@@ -36,6 +36,7 @@ export const QueryParamKind = {
   Boolean: "boolean",
   String: "string",
   Number: "number",
+  Json: "json",
 } as const;
 /**
  * The kind of flags to retrieve.

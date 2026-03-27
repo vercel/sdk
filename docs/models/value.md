@@ -1,23 +1,18 @@
 # Value
 
-
-## Supported Types
-
-### `string`
+## Example Usage
 
 ```typescript
-const value: string = "<value>";
+import { Value } from "@vercel/sdk/models/updateflagsegmentop.js";
+
+let value: Value = {
+  value: "<value>",
+};
 ```
 
-### `number`
+## Fields
 
-```typescript
-const value: number = 1284.03;
-```
-
-### `boolean`
-
-```typescript
-const value: boolean = true;
-```
-
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `note`             | *string*           | :heavy_minus_sign: | N/A                |
+| `value`            | *string*           | :heavy_check_mark: | N/A                |

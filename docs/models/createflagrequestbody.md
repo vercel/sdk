@@ -7,7 +7,7 @@ import { CreateFlagRequestBody } from "@vercel/sdk/models/createflagop.js";
 
 let value: CreateFlagRequestBody = {
   slug: "<value>",
-  kind: "number",
+  kind: "json",
   environments: {
     "key": {
       active: true,

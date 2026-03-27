@@ -99,7 +99,6 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc(
     "/v1/projects/{projectIdOrName}/feature-flags/sdk-keys/{hashKey}",
   )(pathParams);

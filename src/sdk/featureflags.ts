@@ -104,7 +104,7 @@ export class FeatureFlags extends ClientSDK {
    * Create a flag
    *
    * @remarks
-   * Create a new feature flag for a project. The flag must have a unique slug within the project and specify its kind (boolean, string, or number).
+   * Create a new feature flag for a project. The flag must have a unique slug within the project and specify its kind (boolean, string, number, or json).
    */
   async createFlag(
     request: CreateFlagRequest,

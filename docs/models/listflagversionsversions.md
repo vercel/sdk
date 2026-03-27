@@ -11,10 +11,7 @@ let value: ListFlagVersionsVersions = {
   createdAt: 9041.39,
   data: {
     variants: [
-      {
-        value: "<value>",
-        id: "<id>",
-      },
+      {},
     ],
     environments: {},
     seed: 1241.07,

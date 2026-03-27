@@ -12,6 +12,63 @@ import (
 	"mockserver/internal/sdk/utils"
 )
 
+type UpdateProjectTrustedIpsDeploymentTypeResponse2 string
+
+const (
+	UpdateProjectTrustedIpsDeploymentTypeResponse2Production                       UpdateProjectTrustedIpsDeploymentTypeResponse2 = "production"
+	UpdateProjectTrustedIpsDeploymentTypeResponse2Preview                          UpdateProjectTrustedIpsDeploymentTypeResponse2 = "preview"
+	UpdateProjectTrustedIpsDeploymentTypeResponse2All                              UpdateProjectTrustedIpsDeploymentTypeResponse2 = "all"
+	UpdateProjectTrustedIpsDeploymentTypeResponse2ProdDeploymentUrlsAndAllPreviews UpdateProjectTrustedIpsDeploymentTypeResponse2 = "prod_deployment_urls_and_all_previews"
+	UpdateProjectTrustedIpsDeploymentTypeResponse2AllExceptCustomDomains           UpdateProjectTrustedIpsDeploymentTypeResponse2 = "all_except_custom_domains"
+)
+
+func (e UpdateProjectTrustedIpsDeploymentTypeResponse2) ToPointer() *UpdateProjectTrustedIpsDeploymentTypeResponse2 {
+	return &e
+}
+func (e *UpdateProjectTrustedIpsDeploymentTypeResponse2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "production":
+		fallthrough
+	case "preview":
+		fallthrough
+	case "all":
+		fallthrough
+	case "prod_deployment_urls_and_all_previews":
+		fallthrough
+	case "all_except_custom_domains":
+		*e = UpdateProjectTrustedIpsDeploymentTypeResponse2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateProjectTrustedIpsDeploymentTypeResponse2: %v", v)
+	}
+}
+
+type UpdateProjectTrustedIpsResponse2 struct {
+	DeploymentType UpdateProjectTrustedIpsDeploymentTypeResponse2 `json:"deploymentType"`
+}
+
+func (u UpdateProjectTrustedIpsResponse2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateProjectTrustedIpsResponse2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"deploymentType"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *UpdateProjectTrustedIpsResponse2) GetDeploymentType() UpdateProjectTrustedIpsDeploymentTypeResponse2 {
+	if o == nil {
+		return UpdateProjectTrustedIpsDeploymentTypeResponse2("")
+	}
+	return o.DeploymentType
+}
+
 type UpdateProjectTrustedIpsDeploymentTypeResponse1 string
 
 const (
@@ -660,6 +717,7 @@ type UpdateProjectSecurity struct {
 	ManagedRules           optionalnullable.OptionalNullable[UpdateProjectManagedRules] `json:"managedRules,omitempty"`
 	BotIDEnabled           *bool                                                        `json:"botIdEnabled,omitempty"`
 	LogHeaders             *UpdateProjectLogHeadersUnion                                `json:"log_headers,omitempty"`
+	SecurityPlus           *bool                                                        `json:"securityPlus,omitempty"`
 }
 
 func (o *UpdateProjectSecurity) GetAttackModeEnabled() *bool {
@@ -753,6 +811,13 @@ func (o *UpdateProjectSecurity) GetLogHeaders() *UpdateProjectLogHeadersUnion {
 	return o.LogHeaders
 }
 
+func (o *UpdateProjectSecurity) GetSecurityPlus() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.SecurityPlus
+}
+
 // UpdateProjectIssuerModeResponse - - team: `https://oidc.vercel.com/[team_slug]` - global: `https://oidc.vercel.com`
 type UpdateProjectIssuerModeResponse string
 
@@ -801,19 +866,19 @@ func (o *UpdateProjectOidcTokenConfigResponse) GetIssuerMode() *UpdateProjectIss
 	return o.IssuerMode
 }
 
-type UpdateProjectTier string
+type UpdateProjectFlatRateTier string
 
 const (
-	UpdateProjectTierStandard UpdateProjectTier = "standard"
-	UpdateProjectTierBase     UpdateProjectTier = "base"
-	UpdateProjectTierAdvanced UpdateProjectTier = "advanced"
-	UpdateProjectTierCritical UpdateProjectTier = "critical"
+	UpdateProjectFlatRateTierStandard UpdateProjectFlatRateTier = "standard"
+	UpdateProjectFlatRateTierBase     UpdateProjectFlatRateTier = "base"
+	UpdateProjectFlatRateTierAdvanced UpdateProjectFlatRateTier = "advanced"
+	UpdateProjectFlatRateTierCritical UpdateProjectFlatRateTier = "critical"
 )
 
-func (e UpdateProjectTier) ToPointer() *UpdateProjectTier {
+func (e UpdateProjectFlatRateTier) ToPointer() *UpdateProjectFlatRateTier {
 	return &e
 }
-func (e *UpdateProjectTier) UnmarshalJSON(data []byte) error {
+func (e *UpdateProjectFlatRateTier) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -826,62 +891,11 @@ func (e *UpdateProjectTier) UnmarshalJSON(data []byte) error {
 	case "advanced":
 		fallthrough
 	case "critical":
-		*e = UpdateProjectTier(v)
+		*e = UpdateProjectFlatRateTier(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateProjectTier: %v", v)
+		return fmt.Errorf("invalid value for UpdateProjectFlatRateTier: %v", v)
 	}
-}
-
-type UpdateProjectScheduledTierChangeTier string
-
-const (
-	UpdateProjectScheduledTierChangeTierStandard UpdateProjectScheduledTierChangeTier = "standard"
-	UpdateProjectScheduledTierChangeTierBase     UpdateProjectScheduledTierChangeTier = "base"
-	UpdateProjectScheduledTierChangeTierAdvanced UpdateProjectScheduledTierChangeTier = "advanced"
-	UpdateProjectScheduledTierChangeTierCritical UpdateProjectScheduledTierChangeTier = "critical"
-)
-
-func (e UpdateProjectScheduledTierChangeTier) ToPointer() *UpdateProjectScheduledTierChangeTier {
-	return &e
-}
-func (e *UpdateProjectScheduledTierChangeTier) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "standard":
-		fallthrough
-	case "base":
-		fallthrough
-	case "advanced":
-		fallthrough
-	case "critical":
-		*e = UpdateProjectScheduledTierChangeTier(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for UpdateProjectScheduledTierChangeTier: %v", v)
-	}
-}
-
-type UpdateProjectScheduledTierChange struct {
-	Tier        UpdateProjectScheduledTierChangeTier `json:"tier"`
-	EffectiveAt float64                              `json:"effectiveAt"`
-}
-
-func (o *UpdateProjectScheduledTierChange) GetTier() UpdateProjectScheduledTierChangeTier {
-	if o == nil {
-		return UpdateProjectScheduledTierChangeTier("")
-	}
-	return o.Tier
-}
-
-func (o *UpdateProjectScheduledTierChange) GetEffectiveAt() float64 {
-	if o == nil {
-		return 0.0
-	}
-	return o.EffectiveAt
 }
 
 // UpdateProjectKind - Billing mode. Always 'flat' for flat-rate projects.
@@ -3454,6 +3468,7 @@ type UpdateProjectResponseBody struct {
 	StaticIps                            *UpdateProjectStaticIpsResponse                                       `json:"staticIps,omitempty"`
 	SourceFilesOutsideRootDirectory      *bool                                                                 `json:"sourceFilesOutsideRootDirectory,omitempty"`
 	EnableAffectedProjectsDeployments    *bool                                                                 `json:"enableAffectedProjectsDeployments,omitempty"`
+	EnableExternalRewriteCaching         *bool                                                                 `json:"enableExternalRewriteCaching,omitempty"`
 	SsoProtection                        optionalnullable.OptionalNullable[UpdateProjectSsoProtectionResponse] `json:"ssoProtection,omitempty"`
 	Targets                              map[string]*UpdateProjectTargets                                      `json:"targets,omitempty"`
 	TransferCompletedAt                  *float64                                                              `json:"transferCompletedAt,omitempty"`
@@ -3477,11 +3492,12 @@ type UpdateProjectResponseBody struct {
 	WebAnalytics                         *UpdateProjectWebAnalytics                                            `json:"webAnalytics,omitempty"`
 	Security                             *UpdateProjectSecurity                                                `json:"security,omitempty"`
 	OidcTokenConfig                      *UpdateProjectOidcTokenConfigResponse                                 `json:"oidcTokenConfig,omitempty"`
-	Tier                                 *UpdateProjectTier                                                    `json:"tier,omitempty"`
-	ScheduledTierChange                  *UpdateProjectScheduledTierChange                                     `json:"scheduledTierChange,omitempty"`
+	Tier                                 *string                                                               `json:"tier,omitempty"`
+	FlatRateTier                         *UpdateProjectFlatRateTier                                            `json:"flatRateTier,omitempty"`
 	UsageStatus                          *UpdateProjectUsageStatus                                             `json:"usageStatus,omitempty"`
 	Features                             *UpdateProjectFeatures                                                `json:"features,omitempty"`
 	V0                                   *bool                                                                 `json:"v0,omitempty"`
+	V0Created                            *bool                                                                 `json:"v0Created,omitempty"`
 	Abuse                                *UpdateProjectAbuse                                                   `json:"abuse,omitempty"`
 	InternalRoutes                       []UpdateProjectInternalRouteUnion                                     `json:"internalRoutes,omitempty"`
 	HasDeployments                       *bool                                                                 `json:"hasDeployments,omitempty"`
@@ -3888,6 +3904,13 @@ func (o *UpdateProjectResponseBody) GetEnableAffectedProjectsDeployments() *bool
 	return o.EnableAffectedProjectsDeployments
 }
 
+func (o *UpdateProjectResponseBody) GetEnableExternalRewriteCaching() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.EnableExternalRewriteCaching
+}
+
 func (o *UpdateProjectResponseBody) GetSsoProtection() optionalnullable.OptionalNullable[UpdateProjectSsoProtectionResponse] {
 	if o == nil {
 		return nil
@@ -4049,18 +4072,18 @@ func (o *UpdateProjectResponseBody) GetOidcTokenConfig() *UpdateProjectOidcToken
 	return o.OidcTokenConfig
 }
 
-func (o *UpdateProjectResponseBody) GetTier() *UpdateProjectTier {
+func (o *UpdateProjectResponseBody) GetTier() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Tier
 }
 
-func (o *UpdateProjectResponseBody) GetScheduledTierChange() *UpdateProjectScheduledTierChange {
+func (o *UpdateProjectResponseBody) GetFlatRateTier() *UpdateProjectFlatRateTier {
 	if o == nil {
 		return nil
 	}
-	return o.ScheduledTierChange
+	return o.FlatRateTier
 }
 
 func (o *UpdateProjectResponseBody) GetUsageStatus() *UpdateProjectUsageStatus {
@@ -4082,6 +4105,13 @@ func (o *UpdateProjectResponseBody) GetV0() *bool {
 		return nil
 	}
 	return o.V0
+}
+
+func (o *UpdateProjectResponseBody) GetV0Created() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.V0Created
 }
 
 func (o *UpdateProjectResponseBody) GetAbuse() *UpdateProjectAbuse {

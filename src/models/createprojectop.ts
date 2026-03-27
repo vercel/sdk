@@ -455,6 +455,14 @@ export type Definitions = {
    * The origin of this definition. 'api' means created via the API. Undefined means it originated from a deployment (vercel.json).
    */
   source?: CreateProjectSource | undefined;
+  /**
+   * A human-readable description of what this cron job does.
+   */
+  description?: string | undefined;
+  /**
+   * Whether the host was inferred from the production deployment URL rather than explicitly provided.
+   */
+  hostInferred?: boolean | undefined;
 };
 
 export type CreateProjectCrons = {
@@ -896,9 +904,17 @@ export type CreateProjectIpBuckets = {
   supportUntil?: number | undefined;
 };
 
+export type Lint = {
+  targets: Array<string>;
+};
+
+export type Typecheck = {
+  targets: Array<string>;
+};
+
 export type Jobs = {
-  lint?: Array<string> | undefined;
-  typecheck?: Array<string> | undefined;
+  lint?: Lint | undefined;
+  typecheck?: Typecheck | undefined;
 };
 
 export type AliasAssigned = number | boolean;
@@ -1412,6 +1428,7 @@ export type CreateProjectPermissions = {
   oauth2Connection?: Array<ACLAction> | undefined;
   user?: Array<ACLAction> | undefined;
   userConnection?: Array<ACLAction> | undefined;
+  userPreference?: Array<ACLAction> | undefined;
   userSudo?: Array<ACLAction> | undefined;
   webAuthn?: Array<ACLAction> | undefined;
   accessGroup?: Array<ACLAction> | undefined;
@@ -1444,6 +1461,8 @@ export type CreateProjectPermissions = {
   cacheArtifact?: Array<ACLAction> | undefined;
   cacheArtifactUsageEvent?: Array<ACLAction> | undefined;
   codeChecks?: Array<ACLAction> | undefined;
+  ciInvocations?: Array<ACLAction> | undefined;
+  ciLogs?: Array<ACLAction> | undefined;
   concurrentBuilds?: Array<ACLAction> | undefined;
   connect?: Array<ACLAction> | undefined;
   connectConfiguration?: Array<ACLAction> | undefined;
@@ -1881,6 +1900,7 @@ export type CreateProjectSecurity = {
   managedRules?: CreateProjectManagedRules | null | undefined;
   botIdEnabled?: boolean | undefined;
   logHeaders?: Array<string> | CreateProjectLogHeaders2 | undefined;
+  securityPlus?: boolean | undefined;
 };
 
 /**
@@ -1908,28 +1928,13 @@ export type CreateProjectOidcTokenConfig = {
   issuerMode?: CreateProjectProjectsIssuerMode | undefined;
 };
 
-export const CreateProjectTier = {
+export const FlatRateTier = {
   Standard: "standard",
   Base: "base",
   Advanced: "advanced",
   Critical: "critical",
 } as const;
-export type CreateProjectTier = ClosedEnum<typeof CreateProjectTier>;
-
-export const CreateProjectProjectsTier = {
-  Standard: "standard",
-  Base: "base",
-  Advanced: "advanced",
-  Critical: "critical",
-} as const;
-export type CreateProjectProjectsTier = ClosedEnum<
-  typeof CreateProjectProjectsTier
->;
-
-export type ScheduledTierChange = {
-  tier: CreateProjectProjectsTier;
-  effectiveAt: number;
-};
+export type FlatRateTier = ClosedEnum<typeof FlatRateTier>;
 
 /**
  * Billing mode. Always 'flat' for flat-rate projects.
@@ -2305,6 +2310,7 @@ export type CreateProjectResponseBody = {
   staticIps?: CreateProjectStaticIps | undefined;
   sourceFilesOutsideRootDirectory?: boolean | undefined;
   enableAffectedProjectsDeployments?: boolean | undefined;
+  enableExternalRewriteCaching?: boolean | undefined;
   ssoProtection?: CreateProjectProjectsSsoProtection | null | undefined;
   targets?: { [k: string]: CreateProjectTargets | null } | undefined;
   transferCompletedAt?: number | undefined;
@@ -2330,11 +2336,12 @@ export type CreateProjectResponseBody = {
   webAnalytics?: CreateProjectWebAnalytics | undefined;
   security?: CreateProjectSecurity | undefined;
   oidcTokenConfig?: CreateProjectOidcTokenConfig | undefined;
-  tier?: CreateProjectTier | undefined;
-  scheduledTierChange?: ScheduledTierChange | undefined;
+  tier?: string | undefined;
+  flatRateTier?: FlatRateTier | undefined;
   usageStatus?: UsageStatus | undefined;
   features?: Features | undefined;
   v0?: boolean | undefined;
+  v0Created?: boolean | undefined;
   abuse?: CreateProjectAbuse | undefined;
   internalRoutes?: Array<InternalRoutes1 | InternalRoutes2> | undefined;
   hasDeployments?: boolean | undefined;
@@ -3190,6 +3197,8 @@ export const Definitions$inboundSchema: z.ZodType<
   path: types.string(),
   schedule: types.string(),
   source: types.optional(CreateProjectSource$inboundSchema),
+  description: types.optional(types.string()),
+  hostInferred: types.optional(types.boolean()),
 });
 /** @internal */
 export type Definitions$Outbound = {
@@ -3197,6 +3206,8 @@ export type Definitions$Outbound = {
   path: string;
   schedule: string;
   source?: string | undefined;
+  description?: string | undefined;
+  hostInferred?: boolean | undefined;
 };
 
 /** @internal */
@@ -3209,6 +3220,8 @@ export const Definitions$outboundSchema: z.ZodType<
   path: z.string(),
   schedule: z.string(),
   source: CreateProjectSource$outboundSchema.optional(),
+  description: z.string().optional(),
+  hostInferred: z.boolean().optional(),
 });
 
 export function definitionsToJSON(definitions: Definitions): string {
@@ -4694,22 +4707,86 @@ export function createProjectIpBucketsFromJSON(
 }
 
 /** @internal */
+export const Lint$inboundSchema: z.ZodType<Lint, z.ZodTypeDef, unknown> = z
+  .object({
+    targets: z.array(types.string()),
+  });
+/** @internal */
+export type Lint$Outbound = {
+  targets: Array<string>;
+};
+
+/** @internal */
+export const Lint$outboundSchema: z.ZodType<Lint$Outbound, z.ZodTypeDef, Lint> =
+  z.object({
+    targets: z.array(z.string()),
+  });
+
+export function lintToJSON(lint: Lint): string {
+  return JSON.stringify(Lint$outboundSchema.parse(lint));
+}
+export function lintFromJSON(
+  jsonString: string,
+): SafeParseResult<Lint, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Lint$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Lint' from JSON`,
+  );
+}
+
+/** @internal */
+export const Typecheck$inboundSchema: z.ZodType<
+  Typecheck,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  targets: z.array(types.string()),
+});
+/** @internal */
+export type Typecheck$Outbound = {
+  targets: Array<string>;
+};
+
+/** @internal */
+export const Typecheck$outboundSchema: z.ZodType<
+  Typecheck$Outbound,
+  z.ZodTypeDef,
+  Typecheck
+> = z.object({
+  targets: z.array(z.string()),
+});
+
+export function typecheckToJSON(typecheck: Typecheck): string {
+  return JSON.stringify(Typecheck$outboundSchema.parse(typecheck));
+}
+export function typecheckFromJSON(
+  jsonString: string,
+): SafeParseResult<Typecheck, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Typecheck$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Typecheck' from JSON`,
+  );
+}
+
+/** @internal */
 export const Jobs$inboundSchema: z.ZodType<Jobs, z.ZodTypeDef, unknown> = z
   .object({
-    lint: types.optional(z.array(types.string())),
-    typecheck: types.optional(z.array(types.string())),
+    lint: types.optional(z.lazy(() => Lint$inboundSchema)),
+    typecheck: types.optional(z.lazy(() => Typecheck$inboundSchema)),
   });
 /** @internal */
 export type Jobs$Outbound = {
-  lint?: Array<string> | undefined;
-  typecheck?: Array<string> | undefined;
+  lint?: Lint$Outbound | undefined;
+  typecheck?: Typecheck$Outbound | undefined;
 };
 
 /** @internal */
 export const Jobs$outboundSchema: z.ZodType<Jobs$Outbound, z.ZodTypeDef, Jobs> =
   z.object({
-    lint: z.array(z.string()).optional(),
-    typecheck: z.array(z.string()).optional(),
+    lint: z.lazy(() => Lint$outboundSchema).optional(),
+    typecheck: z.lazy(() => Typecheck$outboundSchema).optional(),
   });
 
 export function jobsToJSON(jobs: Jobs): string {
@@ -6751,6 +6828,7 @@ export const CreateProjectPermissions$inboundSchema: z.ZodType<
   oauth2Connection: types.optional(z.array(ACLAction$inboundSchema)),
   user: types.optional(z.array(ACLAction$inboundSchema)),
   userConnection: types.optional(z.array(ACLAction$inboundSchema)),
+  userPreference: types.optional(z.array(ACLAction$inboundSchema)),
   userSudo: types.optional(z.array(ACLAction$inboundSchema)),
   webAuthn: types.optional(z.array(ACLAction$inboundSchema)),
   accessGroup: types.optional(z.array(ACLAction$inboundSchema)),
@@ -6787,6 +6865,8 @@ export const CreateProjectPermissions$inboundSchema: z.ZodType<
   cacheArtifact: types.optional(z.array(ACLAction$inboundSchema)),
   cacheArtifactUsageEvent: types.optional(z.array(ACLAction$inboundSchema)),
   codeChecks: types.optional(z.array(ACLAction$inboundSchema)),
+  ciInvocations: types.optional(z.array(ACLAction$inboundSchema)),
+  ciLogs: types.optional(z.array(ACLAction$inboundSchema)),
   concurrentBuilds: types.optional(z.array(ACLAction$inboundSchema)),
   connect: types.optional(z.array(ACLAction$inboundSchema)),
   connectConfiguration: types.optional(z.array(ACLAction$inboundSchema)),
@@ -7034,6 +7114,7 @@ export type CreateProjectPermissions$Outbound = {
   oauth2Connection?: Array<string> | undefined;
   user?: Array<string> | undefined;
   userConnection?: Array<string> | undefined;
+  userPreference?: Array<string> | undefined;
   userSudo?: Array<string> | undefined;
   webAuthn?: Array<string> | undefined;
   accessGroup?: Array<string> | undefined;
@@ -7066,6 +7147,8 @@ export type CreateProjectPermissions$Outbound = {
   cacheArtifact?: Array<string> | undefined;
   cacheArtifactUsageEvent?: Array<string> | undefined;
   codeChecks?: Array<string> | undefined;
+  ciInvocations?: Array<string> | undefined;
+  ciLogs?: Array<string> | undefined;
   concurrentBuilds?: Array<string> | undefined;
   connect?: Array<string> | undefined;
   connectConfiguration?: Array<string> | undefined;
@@ -7272,6 +7355,7 @@ export const CreateProjectPermissions$outboundSchema: z.ZodType<
   oauth2Connection: z.array(ACLAction$outboundSchema).optional(),
   user: z.array(ACLAction$outboundSchema).optional(),
   userConnection: z.array(ACLAction$outboundSchema).optional(),
+  userPreference: z.array(ACLAction$outboundSchema).optional(),
   userSudo: z.array(ACLAction$outboundSchema).optional(),
   webAuthn: z.array(ACLAction$outboundSchema).optional(),
   accessGroup: z.array(ACLAction$outboundSchema).optional(),
@@ -7304,6 +7388,8 @@ export const CreateProjectPermissions$outboundSchema: z.ZodType<
   cacheArtifact: z.array(ACLAction$outboundSchema).optional(),
   cacheArtifactUsageEvent: z.array(ACLAction$outboundSchema).optional(),
   codeChecks: z.array(ACLAction$outboundSchema).optional(),
+  ciInvocations: z.array(ACLAction$outboundSchema).optional(),
+  ciLogs: z.array(ACLAction$outboundSchema).optional(),
   concurrentBuilds: z.array(ACLAction$outboundSchema).optional(),
   connect: z.array(ACLAction$outboundSchema).optional(),
   connectConfiguration: z.array(ACLAction$outboundSchema).optional(),
@@ -8458,6 +8544,7 @@ export const CreateProjectSecurity$inboundSchema: z.ZodType<
       CreateProjectLogHeaders2$inboundSchema,
     ]),
   ),
+  securityPlus: types.optional(types.boolean()),
 }).transform((v) => {
   return remap$(v, {
     "log_headers": "logHeaders",
@@ -8478,6 +8565,7 @@ export type CreateProjectSecurity$Outbound = {
   managedRules?: CreateProjectManagedRules$Outbound | null | undefined;
   botIdEnabled?: boolean | undefined;
   log_headers?: Array<string> | string | undefined;
+  securityPlus?: boolean | undefined;
 };
 
 /** @internal */
@@ -8504,6 +8592,7 @@ export const CreateProjectSecurity$outboundSchema: z.ZodType<
     z.array(z.string()),
     CreateProjectLogHeaders2$outboundSchema,
   ]).optional(),
+  securityPlus: z.boolean().optional(),
 }).transform((v) => {
   return remap$(v, {
     logHeaders: "log_headers",
@@ -8581,64 +8670,11 @@ export function createProjectOidcTokenConfigFromJSON(
 }
 
 /** @internal */
-export const CreateProjectTier$inboundSchema: z.ZodNativeEnum<
-  typeof CreateProjectTier
-> = z.nativeEnum(CreateProjectTier);
+export const FlatRateTier$inboundSchema: z.ZodNativeEnum<typeof FlatRateTier> =
+  z.nativeEnum(FlatRateTier);
 /** @internal */
-export const CreateProjectTier$outboundSchema: z.ZodNativeEnum<
-  typeof CreateProjectTier
-> = CreateProjectTier$inboundSchema;
-
-/** @internal */
-export const CreateProjectProjectsTier$inboundSchema: z.ZodNativeEnum<
-  typeof CreateProjectProjectsTier
-> = z.nativeEnum(CreateProjectProjectsTier);
-/** @internal */
-export const CreateProjectProjectsTier$outboundSchema: z.ZodNativeEnum<
-  typeof CreateProjectProjectsTier
-> = CreateProjectProjectsTier$inboundSchema;
-
-/** @internal */
-export const ScheduledTierChange$inboundSchema: z.ZodType<
-  ScheduledTierChange,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  tier: CreateProjectProjectsTier$inboundSchema,
-  effectiveAt: types.number(),
-});
-/** @internal */
-export type ScheduledTierChange$Outbound = {
-  tier: string;
-  effectiveAt: number;
-};
-
-/** @internal */
-export const ScheduledTierChange$outboundSchema: z.ZodType<
-  ScheduledTierChange$Outbound,
-  z.ZodTypeDef,
-  ScheduledTierChange
-> = z.object({
-  tier: CreateProjectProjectsTier$outboundSchema,
-  effectiveAt: z.number(),
-});
-
-export function scheduledTierChangeToJSON(
-  scheduledTierChange: ScheduledTierChange,
-): string {
-  return JSON.stringify(
-    ScheduledTierChange$outboundSchema.parse(scheduledTierChange),
-  );
-}
-export function scheduledTierChangeFromJSON(
-  jsonString: string,
-): SafeParseResult<ScheduledTierChange, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ScheduledTierChange$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ScheduledTierChange' from JSON`,
-  );
-}
+export const FlatRateTier$outboundSchema: z.ZodNativeEnum<typeof FlatRateTier> =
+  FlatRateTier$inboundSchema;
 
 /** @internal */
 export const CreateProjectKind$inboundSchema: z.ZodNativeEnum<
@@ -10744,6 +10780,7 @@ export const CreateProjectResponseBody$inboundSchema: z.ZodType<
   staticIps: types.optional(z.lazy(() => CreateProjectStaticIps$inboundSchema)),
   sourceFilesOutsideRootDirectory: types.optional(types.boolean()),
   enableAffectedProjectsDeployments: types.optional(types.boolean()),
+  enableExternalRewriteCaching: types.optional(types.boolean()),
   ssoProtection: z.nullable(
     z.lazy(() => CreateProjectProjectsSsoProtection$inboundSchema),
   ).optional(),
@@ -10795,13 +10832,12 @@ export const CreateProjectResponseBody$inboundSchema: z.ZodType<
   oidcTokenConfig: types.optional(
     z.lazy(() => CreateProjectOidcTokenConfig$inboundSchema),
   ),
-  tier: types.optional(CreateProjectTier$inboundSchema),
-  scheduledTierChange: types.optional(
-    z.lazy(() => ScheduledTierChange$inboundSchema),
-  ),
+  tier: types.optional(types.string()),
+  flatRateTier: types.optional(FlatRateTier$inboundSchema),
   usageStatus: types.optional(z.lazy(() => UsageStatus$inboundSchema)),
   features: types.optional(z.lazy(() => Features$inboundSchema)),
   v0: types.optional(types.boolean()),
+  v0Created: types.optional(types.boolean()),
   abuse: types.optional(z.lazy(() => CreateProjectAbuse$inboundSchema)),
   internalRoutes: types.optional(
     z.array(smartUnion([
@@ -10887,6 +10923,7 @@ export type CreateProjectResponseBody$Outbound = {
   staticIps?: CreateProjectStaticIps$Outbound | undefined;
   sourceFilesOutsideRootDirectory?: boolean | undefined;
   enableAffectedProjectsDeployments?: boolean | undefined;
+  enableExternalRewriteCaching?: boolean | undefined;
   ssoProtection?:
     | CreateProjectProjectsSsoProtection$Outbound
     | null
@@ -10916,10 +10953,11 @@ export type CreateProjectResponseBody$Outbound = {
   security?: CreateProjectSecurity$Outbound | undefined;
   oidcTokenConfig?: CreateProjectOidcTokenConfig$Outbound | undefined;
   tier?: string | undefined;
-  scheduledTierChange?: ScheduledTierChange$Outbound | undefined;
+  flatRateTier?: string | undefined;
   usageStatus?: UsageStatus$Outbound | undefined;
   features?: Features$Outbound | undefined;
   v0?: boolean | undefined;
+  v0Created?: boolean | undefined;
   abuse?: CreateProjectAbuse$Outbound | undefined;
   internalRoutes?:
     | Array<InternalRoutes1$Outbound | InternalRoutes2$Outbound>
@@ -11011,6 +11049,7 @@ export const CreateProjectResponseBody$outboundSchema: z.ZodType<
   staticIps: z.lazy(() => CreateProjectStaticIps$outboundSchema).optional(),
   sourceFilesOutsideRootDirectory: z.boolean().optional(),
   enableAffectedProjectsDeployments: z.boolean().optional(),
+  enableExternalRewriteCaching: z.boolean().optional(),
   ssoProtection: z.nullable(
     z.lazy(() => CreateProjectProjectsSsoProtection$outboundSchema),
   ).optional(),
@@ -11054,12 +11093,12 @@ export const CreateProjectResponseBody$outboundSchema: z.ZodType<
   security: z.lazy(() => CreateProjectSecurity$outboundSchema).optional(),
   oidcTokenConfig: z.lazy(() => CreateProjectOidcTokenConfig$outboundSchema)
     .optional(),
-  tier: CreateProjectTier$outboundSchema.optional(),
-  scheduledTierChange: z.lazy(() => ScheduledTierChange$outboundSchema)
-    .optional(),
+  tier: z.string().optional(),
+  flatRateTier: FlatRateTier$outboundSchema.optional(),
   usageStatus: z.lazy(() => UsageStatus$outboundSchema).optional(),
   features: z.lazy(() => Features$outboundSchema).optional(),
   v0: z.boolean().optional(),
+  v0Created: z.boolean().optional(),
   abuse: z.lazy(() => CreateProjectAbuse$outboundSchema).optional(),
   internalRoutes: z.array(
     smartUnion([

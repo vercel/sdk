@@ -4,7 +4,7 @@
 
 ### Available Operations
 
-* [listSandboxes](#listsandboxes) - List sandboxes
+* [getSandboxesV1](#getsandboxesv1) - List sandboxes
 * [listSnapshots](#listsnapshots) - List snapshots
 * [getSandbox](#getsandbox) - Get a sandbox
 * [listCommands](#listcommands) - List commands
@@ -22,13 +22,13 @@
 * [deleteSnapshot](#deletesnapshot) - Delete a snapshot
 * [createSnapshot](#createsnapshot) - Create a snapshot
 
-## listSandboxes
+## getSandboxesV1
 
 Retrieves a paginated list of sandboxes belonging to a specific project. Results can be filtered by creation time using the `since` and `until` parameters.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="listSandboxes" method="get" path="/v1/sandboxes" -->
+<!-- UsageSnippet language="typescript" operationID="getSandboxesV1" method="get" path="/v1/sandboxes" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -37,7 +37,7 @@ const vercel = new Vercel({
 });
 
 async function run() {
-  const result = await vercel.sandboxes.listSandboxes({
+  const result = await vercel.sandboxes.getSandboxesV1({
     project: "prj_abc123",
     limit: 20,
     since: 1540095775941,
@@ -58,7 +58,7 @@ The standalone function version of this method:
 
 ```typescript
 import { VercelCore } from "@vercel/sdk/core.js";
-import { sandboxesListSandboxes } from "@vercel/sdk/funcs/sandboxesListSandboxes.js";
+import { sandboxesGetSandboxesV1 } from "@vercel/sdk/funcs/sandboxesGetSandboxesV1.js";
 
 // Use `VercelCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -67,7 +67,7 @@ const vercel = new VercelCore({
 });
 
 async function run() {
-  const res = await sandboxesListSandboxes(vercel, {
+  const res = await sandboxesGetSandboxesV1(vercel, {
     project: "prj_abc123",
     limit: 20,
     since: 1540095775941,
@@ -79,7 +79,7 @@ async function run() {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("sandboxesListSandboxes failed:", res.error);
+    console.log("sandboxesGetSandboxesV1 failed:", res.error);
   }
 }
 
@@ -90,14 +90,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [models.ListSandboxesRequest](../../models/listsandboxesrequest.md)                                                                                                            | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [models.GetSandboxesV1Request](../../models/getsandboxesv1request.md)                                                                                                          | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[models.ListSandboxesResponseBody](../../models/listsandboxesresponsebody.md)\>**
+**Promise\<[models.GetSandboxesV1ResponseBody](../../models/getsandboxesv1responsebody.md)\>**
 
 ### Errors
 

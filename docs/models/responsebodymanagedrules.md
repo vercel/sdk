@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyManagedRules } from "@vercel/sdk/models/getprojectsroutehas.js";
+import { ResponseBodyManagedRules } from "@vercel/sdk/models/getprojectsroutemitigate.js";
 
 let value: ResponseBodyManagedRules = {
   vercelRuleset: {

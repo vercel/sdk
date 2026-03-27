@@ -5,13 +5,30 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndTwentyFour } from "@vercel/sdk/models/payloadmostspecificsubdivision.js";
+import { TwoHundredAndTwentyFour } from "@vercel/sdk/models/usereventpayload221previous.js";
 
-let value: TwoHundredAndTwentyFour = {};
+let value: TwoHundredAndTwentyFour = {
+  budget: {
+    type: "fixed",
+    fixedBudget: 9234.69,
+    previousSpend: [
+      443.5,
+    ],
+    notifiedAt: [
+      6191.06,
+      9894.34,
+    ],
+    createdAt: 9396.17,
+    isActive: true,
+    teamId: "<id>",
+    id: "<id>",
+  },
+};
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `webhookUrl`       | *string*           | :heavy_minus_sign: | N/A                |
+| Field                                                                   | Type                                                                    | Required                                                                | Description                                                             |
+| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| `budget`                                                                | [models.UserEventPayloadBudget](../models/usereventpayloadbudget.md)    | :heavy_check_mark:                                                      | Represents a budget for tracking and notifying teams on their spending. |
+| `webhookUrl`                                                            | *string*                                                                | :heavy_minus_sign:                                                      | N/A                                                                     |

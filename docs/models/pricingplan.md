@@ -5,13 +5,13 @@ The acive pricing plan the team is billed with
 ## Example Usage
 
 ```typescript
-import { PricingPlan } from "@vercel/sdk/models/payloadmostspecificsubdivision.js";
+import { PricingPlan } from "@vercel/sdk/models/usereventpayload221previous.js";
 
-let value: PricingPlan = "plus";
+let value: PricingPlan = "platform";
 ```
 
 ## Values
 
 ```typescript
-"plus" | "legacy" | "unbundled"
+"platform" | "plus" | "legacy" | "unbundled"
 ```

@@ -13,7 +13,8 @@ let value: CreateIntegrationStoreDirectSecrets = {
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `name`             | *string*           | :heavy_check_mark: | N/A                |
-| `length`           | *number*           | :heavy_check_mark: | N/A                |
+| Field                  | Type                   | Required               | Description            |
+| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
+| `name`                 | *string*               | :heavy_check_mark:     | N/A                    |
+| `length`               | *number*               | :heavy_check_mark:     | N/A                    |
+| `frameworkPublishable` | *boolean*              | :heavy_minus_sign:     | N/A                    |

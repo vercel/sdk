@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
@@ -74,6 +75,14 @@ import {
   UpdateProjectLink$inboundSchema,
   UpdateProjectLink$Outbound,
   UpdateProjectLink$outboundSchema,
+  UpdateProjectLogHeaders,
+  UpdateProjectLogHeaders$inboundSchema,
+  UpdateProjectLogHeaders$Outbound,
+  UpdateProjectLogHeaders$outboundSchema,
+  UpdateProjectManagedRules,
+  UpdateProjectManagedRules$inboundSchema,
+  UpdateProjectManagedRules$Outbound,
+  UpdateProjectManagedRules$outboundSchema,
   UpdateProjectMicrofrontends,
   UpdateProjectMicrofrontends$inboundSchema,
   UpdateProjectMicrofrontends$Outbound,
@@ -85,9 +94,6 @@ import {
   UpdateProjectProjectsFramework,
   UpdateProjectProjectsFramework$inboundSchema,
   UpdateProjectProjectsFramework$outboundSchema,
-  UpdateProjectProjectsIssuerMode,
-  UpdateProjectProjectsIssuerMode$inboundSchema,
-  UpdateProjectProjectsIssuerMode$outboundSchema,
   UpdateProjectProjectsNodeVersion,
   UpdateProjectProjectsNodeVersion$inboundSchema,
   UpdateProjectProjectsNodeVersion$outboundSchema,
@@ -127,10 +133,6 @@ import {
   UpdateProjectRollingRelease$inboundSchema,
   UpdateProjectRollingRelease$Outbound,
   UpdateProjectRollingRelease$outboundSchema,
-  UpdateProjectSecurity,
-  UpdateProjectSecurity$inboundSchema,
-  UpdateProjectSecurity$Outbound,
-  UpdateProjectSecurity$outboundSchema,
   UpdateProjectSpeedInsights,
   UpdateProjectSpeedInsights$inboundSchema,
   UpdateProjectSpeedInsights$Outbound,
@@ -143,7 +145,38 @@ import {
   UpdateProjectWebAnalytics$inboundSchema,
   UpdateProjectWebAnalytics$Outbound,
   UpdateProjectWebAnalytics$outboundSchema,
-} from "./updateprojectprojectsissuermode.js";
+} from "./updateprojectlogheaders.js";
+
+export type UpdateProjectSecurity = {
+  attackModeEnabled?: boolean | undefined;
+  attackModeUpdatedAt?: number | undefined;
+  firewallEnabled?: boolean | undefined;
+  firewallUpdatedAt?: number | undefined;
+  attackModeActiveUntil?: number | null | undefined;
+  firewallConfigVersion?: number | undefined;
+  firewallSeawallEnabled?: boolean | undefined;
+  ja3Enabled?: boolean | undefined;
+  ja4Enabled?: boolean | undefined;
+  firewallBypassIps?: Array<string> | undefined;
+  managedRules?: UpdateProjectManagedRules | null | undefined;
+  botIdEnabled?: boolean | undefined;
+  logHeaders?: UpdateProjectLogHeaders | undefined;
+  securityPlus?: boolean | undefined;
+};
+
+/**
+ * - team: `https://oidc.vercel.com/[team_slug]` - global: `https://oidc.vercel.com`
+ */
+export const UpdateProjectProjectsIssuerMode = {
+  Team: "team",
+  Global: "global",
+} as const;
+/**
+ * - team: `https://oidc.vercel.com/[team_slug]` - global: `https://oidc.vercel.com`
+ */
+export type UpdateProjectProjectsIssuerMode = ClosedEnum<
+  typeof UpdateProjectProjectsIssuerMode
+>;
 
 export type UpdateProjectProjectsOidcTokenConfig = {
   /**
@@ -156,28 +189,15 @@ export type UpdateProjectProjectsOidcTokenConfig = {
   issuerMode?: UpdateProjectProjectsIssuerMode | undefined;
 };
 
-export const UpdateProjectTier = {
+export const UpdateProjectFlatRateTier = {
   Standard: "standard",
   Base: "base",
   Advanced: "advanced",
   Critical: "critical",
 } as const;
-export type UpdateProjectTier = ClosedEnum<typeof UpdateProjectTier>;
-
-export const UpdateProjectProjectsTier = {
-  Standard: "standard",
-  Base: "base",
-  Advanced: "advanced",
-  Critical: "critical",
-} as const;
-export type UpdateProjectProjectsTier = ClosedEnum<
-  typeof UpdateProjectProjectsTier
+export type UpdateProjectFlatRateTier = ClosedEnum<
+  typeof UpdateProjectFlatRateTier
 >;
-
-export type UpdateProjectScheduledTierChange = {
-  tier: UpdateProjectProjectsTier;
-  effectiveAt: number;
-};
 
 /**
  * Billing mode. Always 'flat' for flat-rate projects.
@@ -575,6 +595,7 @@ export type UpdateProjectResponseBody = {
   staticIps?: UpdateProjectProjectsStaticIps | undefined;
   sourceFilesOutsideRootDirectory?: boolean | undefined;
   enableAffectedProjectsDeployments?: boolean | undefined;
+  enableExternalRewriteCaching?: boolean | undefined;
   ssoProtection?: UpdateProjectProjectsSsoProtection | null | undefined;
   targets?: { [k: string]: UpdateProjectTargets | null } | undefined;
   transferCompletedAt?: number | undefined;
@@ -598,11 +619,12 @@ export type UpdateProjectResponseBody = {
   webAnalytics?: UpdateProjectWebAnalytics | undefined;
   security?: UpdateProjectSecurity | undefined;
   oidcTokenConfig?: UpdateProjectProjectsOidcTokenConfig | undefined;
-  tier?: UpdateProjectTier | undefined;
-  scheduledTierChange?: UpdateProjectScheduledTierChange | undefined;
+  tier?: string | undefined;
+  flatRateTier?: UpdateProjectFlatRateTier | undefined;
   usageStatus?: UpdateProjectUsageStatus | undefined;
   features?: UpdateProjectFeatures | undefined;
   v0?: boolean | undefined;
+  v0Created?: boolean | undefined;
   abuse?: UpdateProjectAbuse | undefined;
   internalRoutes?:
     | Array<UpdateProjectInternalRoutes1 | UpdateProjectInternalRoutes2>
@@ -611,6 +633,101 @@ export type UpdateProjectResponseBody = {
   dismissedToasts?: Array<UpdateProjectProjectsDismissedToasts> | undefined;
   protectedSourcemaps?: boolean | undefined;
 };
+
+/** @internal */
+export const UpdateProjectSecurity$inboundSchema: z.ZodType<
+  UpdateProjectSecurity,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  attackModeEnabled: types.optional(types.boolean()),
+  attackModeUpdatedAt: types.optional(types.number()),
+  firewallEnabled: types.optional(types.boolean()),
+  firewallUpdatedAt: types.optional(types.number()),
+  attackModeActiveUntil: z.nullable(types.number()).optional(),
+  firewallConfigVersion: types.optional(types.number()),
+  firewallSeawallEnabled: types.optional(types.boolean()),
+  ja3Enabled: types.optional(types.boolean()),
+  ja4Enabled: types.optional(types.boolean()),
+  firewallBypassIps: types.optional(z.array(types.string())),
+  managedRules: z.nullable(UpdateProjectManagedRules$inboundSchema).optional(),
+  botIdEnabled: types.optional(types.boolean()),
+  log_headers: types.optional(UpdateProjectLogHeaders$inboundSchema),
+  securityPlus: types.optional(types.boolean()),
+}).transform((v) => {
+  return remap$(v, {
+    "log_headers": "logHeaders",
+  });
+});
+/** @internal */
+export type UpdateProjectSecurity$Outbound = {
+  attackModeEnabled?: boolean | undefined;
+  attackModeUpdatedAt?: number | undefined;
+  firewallEnabled?: boolean | undefined;
+  firewallUpdatedAt?: number | undefined;
+  attackModeActiveUntil?: number | null | undefined;
+  firewallConfigVersion?: number | undefined;
+  firewallSeawallEnabled?: boolean | undefined;
+  ja3Enabled?: boolean | undefined;
+  ja4Enabled?: boolean | undefined;
+  firewallBypassIps?: Array<string> | undefined;
+  managedRules?: UpdateProjectManagedRules$Outbound | null | undefined;
+  botIdEnabled?: boolean | undefined;
+  log_headers?: UpdateProjectLogHeaders$Outbound | undefined;
+  securityPlus?: boolean | undefined;
+};
+
+/** @internal */
+export const UpdateProjectSecurity$outboundSchema: z.ZodType<
+  UpdateProjectSecurity$Outbound,
+  z.ZodTypeDef,
+  UpdateProjectSecurity
+> = z.object({
+  attackModeEnabled: z.boolean().optional(),
+  attackModeUpdatedAt: z.number().optional(),
+  firewallEnabled: z.boolean().optional(),
+  firewallUpdatedAt: z.number().optional(),
+  attackModeActiveUntil: z.nullable(z.number()).optional(),
+  firewallConfigVersion: z.number().optional(),
+  firewallSeawallEnabled: z.boolean().optional(),
+  ja3Enabled: z.boolean().optional(),
+  ja4Enabled: z.boolean().optional(),
+  firewallBypassIps: z.array(z.string()).optional(),
+  managedRules: z.nullable(UpdateProjectManagedRules$outboundSchema).optional(),
+  botIdEnabled: z.boolean().optional(),
+  logHeaders: UpdateProjectLogHeaders$outboundSchema.optional(),
+  securityPlus: z.boolean().optional(),
+}).transform((v) => {
+  return remap$(v, {
+    logHeaders: "log_headers",
+  });
+});
+
+export function updateProjectSecurityToJSON(
+  updateProjectSecurity: UpdateProjectSecurity,
+): string {
+  return JSON.stringify(
+    UpdateProjectSecurity$outboundSchema.parse(updateProjectSecurity),
+  );
+}
+export function updateProjectSecurityFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectSecurity, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectSecurity$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectSecurity' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateProjectProjectsIssuerMode$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateProjectProjectsIssuerMode
+> = z.nativeEnum(UpdateProjectProjectsIssuerMode);
+/** @internal */
+export const UpdateProjectProjectsIssuerMode$outboundSchema: z.ZodNativeEnum<
+  typeof UpdateProjectProjectsIssuerMode
+> = UpdateProjectProjectsIssuerMode$inboundSchema;
 
 /** @internal */
 export const UpdateProjectProjectsOidcTokenConfig$inboundSchema: z.ZodType<
@@ -658,66 +775,13 @@ export function updateProjectProjectsOidcTokenConfigFromJSON(
 }
 
 /** @internal */
-export const UpdateProjectTier$inboundSchema: z.ZodNativeEnum<
-  typeof UpdateProjectTier
-> = z.nativeEnum(UpdateProjectTier);
+export const UpdateProjectFlatRateTier$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateProjectFlatRateTier
+> = z.nativeEnum(UpdateProjectFlatRateTier);
 /** @internal */
-export const UpdateProjectTier$outboundSchema: z.ZodNativeEnum<
-  typeof UpdateProjectTier
-> = UpdateProjectTier$inboundSchema;
-
-/** @internal */
-export const UpdateProjectProjectsTier$inboundSchema: z.ZodNativeEnum<
-  typeof UpdateProjectProjectsTier
-> = z.nativeEnum(UpdateProjectProjectsTier);
-/** @internal */
-export const UpdateProjectProjectsTier$outboundSchema: z.ZodNativeEnum<
-  typeof UpdateProjectProjectsTier
-> = UpdateProjectProjectsTier$inboundSchema;
-
-/** @internal */
-export const UpdateProjectScheduledTierChange$inboundSchema: z.ZodType<
-  UpdateProjectScheduledTierChange,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  tier: UpdateProjectProjectsTier$inboundSchema,
-  effectiveAt: types.number(),
-});
-/** @internal */
-export type UpdateProjectScheduledTierChange$Outbound = {
-  tier: string;
-  effectiveAt: number;
-};
-
-/** @internal */
-export const UpdateProjectScheduledTierChange$outboundSchema: z.ZodType<
-  UpdateProjectScheduledTierChange$Outbound,
-  z.ZodTypeDef,
-  UpdateProjectScheduledTierChange
-> = z.object({
-  tier: UpdateProjectProjectsTier$outboundSchema,
-  effectiveAt: z.number(),
-});
-
-export function updateProjectScheduledTierChangeToJSON(
-  updateProjectScheduledTierChange: UpdateProjectScheduledTierChange,
-): string {
-  return JSON.stringify(
-    UpdateProjectScheduledTierChange$outboundSchema.parse(
-      updateProjectScheduledTierChange,
-    ),
-  );
-}
-export function updateProjectScheduledTierChangeFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateProjectScheduledTierChange, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateProjectScheduledTierChange$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateProjectScheduledTierChange' from JSON`,
-  );
-}
+export const UpdateProjectFlatRateTier$outboundSchema: z.ZodNativeEnum<
+  typeof UpdateProjectFlatRateTier
+> = UpdateProjectFlatRateTier$inboundSchema;
 
 /** @internal */
 export const UpdateProjectKind$inboundSchema: z.ZodNativeEnum<
@@ -2909,6 +2973,7 @@ export const UpdateProjectResponseBody$inboundSchema: z.ZodType<
   staticIps: types.optional(UpdateProjectProjectsStaticIps$inboundSchema),
   sourceFilesOutsideRootDirectory: types.optional(types.boolean()),
   enableAffectedProjectsDeployments: types.optional(types.boolean()),
+  enableExternalRewriteCaching: types.optional(types.boolean()),
   ssoProtection: z.nullable(UpdateProjectProjectsSsoProtection$inboundSchema)
     .optional(),
   targets: types.optional(
@@ -2940,19 +3005,18 @@ export const UpdateProjectResponseBody$inboundSchema: z.ZodType<
   paused: types.optional(types.boolean()),
   concurrencyBucketName: types.optional(types.string()),
   webAnalytics: types.optional(UpdateProjectWebAnalytics$inboundSchema),
-  security: types.optional(UpdateProjectSecurity$inboundSchema),
+  security: types.optional(z.lazy(() => UpdateProjectSecurity$inboundSchema)),
   oidcTokenConfig: types.optional(
     z.lazy(() => UpdateProjectProjectsOidcTokenConfig$inboundSchema),
   ),
-  tier: types.optional(UpdateProjectTier$inboundSchema),
-  scheduledTierChange: types.optional(
-    z.lazy(() => UpdateProjectScheduledTierChange$inboundSchema),
-  ),
+  tier: types.optional(types.string()),
+  flatRateTier: types.optional(UpdateProjectFlatRateTier$inboundSchema),
   usageStatus: types.optional(
     z.lazy(() => UpdateProjectUsageStatus$inboundSchema),
   ),
   features: types.optional(z.lazy(() => UpdateProjectFeatures$inboundSchema)),
   v0: types.optional(types.boolean()),
+  v0Created: types.optional(types.boolean()),
   abuse: types.optional(z.lazy(() => UpdateProjectAbuse$inboundSchema)),
   internalRoutes: types.optional(
     z.array(smartUnion([
@@ -3035,6 +3099,7 @@ export type UpdateProjectResponseBody$Outbound = {
   staticIps?: UpdateProjectProjectsStaticIps$Outbound | undefined;
   sourceFilesOutsideRootDirectory?: boolean | undefined;
   enableAffectedProjectsDeployments?: boolean | undefined;
+  enableExternalRewriteCaching?: boolean | undefined;
   ssoProtection?:
     | UpdateProjectProjectsSsoProtection$Outbound
     | null
@@ -3067,10 +3132,11 @@ export type UpdateProjectResponseBody$Outbound = {
   security?: UpdateProjectSecurity$Outbound | undefined;
   oidcTokenConfig?: UpdateProjectProjectsOidcTokenConfig$Outbound | undefined;
   tier?: string | undefined;
-  scheduledTierChange?: UpdateProjectScheduledTierChange$Outbound | undefined;
+  flatRateTier?: string | undefined;
   usageStatus?: UpdateProjectUsageStatus$Outbound | undefined;
   features?: UpdateProjectFeatures$Outbound | undefined;
   v0?: boolean | undefined;
+  v0Created?: boolean | undefined;
   abuse?: UpdateProjectAbuse$Outbound | undefined;
   internalRoutes?:
     | Array<
@@ -3154,6 +3220,7 @@ export const UpdateProjectResponseBody$outboundSchema: z.ZodType<
   staticIps: UpdateProjectProjectsStaticIps$outboundSchema.optional(),
   sourceFilesOutsideRootDirectory: z.boolean().optional(),
   enableAffectedProjectsDeployments: z.boolean().optional(),
+  enableExternalRewriteCaching: z.boolean().optional(),
   ssoProtection: z.nullable(UpdateProjectProjectsSsoProtection$outboundSchema)
     .optional(),
   targets: z.record(z.nullable(UpdateProjectTargets$outboundSchema)).optional(),
@@ -3180,17 +3247,16 @@ export const UpdateProjectResponseBody$outboundSchema: z.ZodType<
   paused: z.boolean().optional(),
   concurrencyBucketName: z.string().optional(),
   webAnalytics: UpdateProjectWebAnalytics$outboundSchema.optional(),
-  security: UpdateProjectSecurity$outboundSchema.optional(),
+  security: z.lazy(() => UpdateProjectSecurity$outboundSchema).optional(),
   oidcTokenConfig: z.lazy(() =>
     UpdateProjectProjectsOidcTokenConfig$outboundSchema
   ).optional(),
-  tier: UpdateProjectTier$outboundSchema.optional(),
-  scheduledTierChange: z.lazy(() =>
-    UpdateProjectScheduledTierChange$outboundSchema
-  ).optional(),
+  tier: z.string().optional(),
+  flatRateTier: UpdateProjectFlatRateTier$outboundSchema.optional(),
   usageStatus: z.lazy(() => UpdateProjectUsageStatus$outboundSchema).optional(),
   features: z.lazy(() => UpdateProjectFeatures$outboundSchema).optional(),
   v0: z.boolean().optional(),
+  v0Created: z.boolean().optional(),
   abuse: z.lazy(() => UpdateProjectAbuse$outboundSchema).optional(),
   internalRoutes: z.array(
     smartUnion([

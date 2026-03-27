@@ -13,10 +13,7 @@ let value: ListFlagVersionsResponseBody = {
       createdAt: 3078.07,
       data: {
         variants: [
-          {
-            value: "<value>",
-            id: "<id>",
-          },
+          {},
         ],
         environments: {},
         seed: 1241.07,

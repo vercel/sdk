@@ -1,0 +1,26 @@
+# ListSessionSnapshotsRequest
+
+## Example Usage
+
+```typescript
+import { ListSessionSnapshotsRequest } from "@vercel/sdk/models/listsessionsnapshotsop.js";
+
+let value: ListSessionSnapshotsRequest = {
+  project: "prj_abc123",
+  name: "my-sandbox",
+  teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+  slug: "my-team-url-slug",
+};
+```
+
+## Fields
+
+| Field                                                                                                  | Type                                                                                                   | Required                                                                                               | Description                                                                                            | Example                                                                                                |
+| ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
+| `project`                                                                                              | *string*                                                                                               | :heavy_minus_sign:                                                                                     | The unique identifier or name of the project to list snapshots for.                                    | prj_abc123                                                                                             |
+| `name`                                                                                                 | *string*                                                                                               | :heavy_minus_sign:                                                                                     | Name for the sandbox. Must be unique per project and URL-safe (alphanumeric, hyphens, underscores).    | my-sandbox                                                                                             |
+| `limit`                                                                                                | *number*                                                                                               | :heavy_minus_sign:                                                                                     | Maximum number of snapshots to return in the response. Used for pagination.                            | 20                                                                                                     |
+| `cursor`                                                                                               | *string*                                                                                               | :heavy_minus_sign:                                                                                     | Opaque pagination cursor from a previous response.                                                     |                                                                                                        |
+| `sortOrder`                                                                                            | [models.ListSessionSnapshotsQueryParamSortOrder](../models/listsessionsnapshotsqueryparamsortorder.md) | :heavy_minus_sign:                                                                                     | Sort direction for results by creation time.                                                           |                                                                                                        |
+| `teamId`                                                                                               | *string*                                                                                               | :heavy_minus_sign:                                                                                     | The Team identifier to perform the request on behalf of.                                               | team_1a2b3c4d5e6f7g8h9i0j1k2l                                                                          |
+| `slug`                                                                                                 | *string*                                                                                               | :heavy_minus_sign:                                                                                     | The Team slug to perform the request on behalf of.                                                     | my-team-url-slug                                                                                       |

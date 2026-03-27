@@ -42,24 +42,6 @@ export type SearchRepoRequest = {
   slug?: string | undefined;
 };
 
-export const ResponseBodyProvider = {
-  Github: "github",
-  GithubLimited: "github-limited",
-  GithubCustomHost: "github-custom-host",
-  Gitlab: "gitlab",
-  Bitbucket: "bitbucket",
-} as const;
-export type ResponseBodyProvider = ClosedEnum<typeof ResponseBodyProvider>;
-
-export type ResponseBodyNamespaceId = string | number;
-
-export type GitAccount = {
-  provider: ResponseBodyProvider;
-  namespaceId: string | number | null;
-};
-
-export type ResponseBodyId = string | number;
-
 export const SearchRepoResponseBodyProvider = {
   Github: "github",
   GithubLimited: "github-limited",
@@ -69,6 +51,26 @@ export const SearchRepoResponseBodyProvider = {
 } as const;
 export type SearchRepoResponseBodyProvider = ClosedEnum<
   typeof SearchRepoResponseBodyProvider
+>;
+
+export type ResponseBodyNamespaceId = string | number;
+
+export type GitAccount = {
+  provider: SearchRepoResponseBodyProvider;
+  namespaceId: string | number | null;
+};
+
+export type ResponseBodyId = string | number;
+
+export const SearchRepoResponseBodyIntegrationsProvider = {
+  Github: "github",
+  GithubLimited: "github-limited",
+  GithubCustomHost: "github-custom-host",
+  Gitlab: "gitlab",
+  Bitbucket: "bitbucket",
+} as const;
+export type SearchRepoResponseBodyIntegrationsProvider = ClosedEnum<
+  typeof SearchRepoResponseBodyIntegrationsProvider
 >;
 
 export type SearchRepoResponseBodyId = string | number;
@@ -86,7 +88,7 @@ export type ResponseBodyOwnerType = ClosedEnum<typeof ResponseBodyOwnerType>;
 
 export type Repos = {
   id: string | number;
-  provider: SearchRepoResponseBodyProvider;
+  provider: SearchRepoResponseBodyIntegrationsProvider;
   url: string;
   name: string;
   slug: string;
@@ -206,13 +208,13 @@ export function searchRepoRequestFromJSON(
 }
 
 /** @internal */
-export const ResponseBodyProvider$inboundSchema: z.ZodNativeEnum<
-  typeof ResponseBodyProvider
-> = z.nativeEnum(ResponseBodyProvider);
+export const SearchRepoResponseBodyProvider$inboundSchema: z.ZodNativeEnum<
+  typeof SearchRepoResponseBodyProvider
+> = z.nativeEnum(SearchRepoResponseBodyProvider);
 /** @internal */
-export const ResponseBodyProvider$outboundSchema: z.ZodNativeEnum<
-  typeof ResponseBodyProvider
-> = ResponseBodyProvider$inboundSchema;
+export const SearchRepoResponseBodyProvider$outboundSchema: z.ZodNativeEnum<
+  typeof SearchRepoResponseBodyProvider
+> = SearchRepoResponseBodyProvider$inboundSchema;
 
 /** @internal */
 export const ResponseBodyNamespaceId$inboundSchema: z.ZodType<
@@ -253,7 +255,7 @@ export const GitAccount$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  provider: ResponseBodyProvider$inboundSchema,
+  provider: SearchRepoResponseBodyProvider$inboundSchema,
   namespaceId: types.nullable(smartUnion([types.string(), types.number()])),
 });
 /** @internal */
@@ -268,7 +270,7 @@ export const GitAccount$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GitAccount
 > = z.object({
-  provider: ResponseBodyProvider$outboundSchema,
+  provider: SearchRepoResponseBodyProvider$outboundSchema,
   namespaceId: z.nullable(smartUnion([z.string(), z.number()])),
 });
 
@@ -315,13 +317,13 @@ export function responseBodyIdFromJSON(
 }
 
 /** @internal */
-export const SearchRepoResponseBodyProvider$inboundSchema: z.ZodNativeEnum<
-  typeof SearchRepoResponseBodyProvider
-> = z.nativeEnum(SearchRepoResponseBodyProvider);
+export const SearchRepoResponseBodyIntegrationsProvider$inboundSchema:
+  z.ZodNativeEnum<typeof SearchRepoResponseBodyIntegrationsProvider> = z
+    .nativeEnum(SearchRepoResponseBodyIntegrationsProvider);
 /** @internal */
-export const SearchRepoResponseBodyProvider$outboundSchema: z.ZodNativeEnum<
-  typeof SearchRepoResponseBodyProvider
-> = SearchRepoResponseBodyProvider$inboundSchema;
+export const SearchRepoResponseBodyIntegrationsProvider$outboundSchema:
+  z.ZodNativeEnum<typeof SearchRepoResponseBodyIntegrationsProvider> =
+    SearchRepoResponseBodyIntegrationsProvider$inboundSchema;
 
 /** @internal */
 export const SearchRepoResponseBodyId$inboundSchema: z.ZodType<
@@ -404,7 +406,7 @@ export const ResponseBodyOwnerType$outboundSchema: z.ZodNativeEnum<
 export const Repos$inboundSchema: z.ZodType<Repos, z.ZodTypeDef, unknown> = z
   .object({
     id: smartUnion([types.string(), types.number()]),
-    provider: SearchRepoResponseBodyProvider$inboundSchema,
+    provider: SearchRepoResponseBodyIntegrationsProvider$inboundSchema,
     url: types.string(),
     name: types.string(),
     slug: types.string(),
@@ -437,7 +439,7 @@ export const Repos$outboundSchema: z.ZodType<
   Repos
 > = z.object({
   id: smartUnion([z.string(), z.number()]),
-  provider: SearchRepoResponseBodyProvider$outboundSchema,
+  provider: SearchRepoResponseBodyIntegrationsProvider$outboundSchema,
   url: z.string(),
   name: z.string(),
   slug: z.string(),

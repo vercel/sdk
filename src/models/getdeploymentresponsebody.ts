@@ -74,6 +74,9 @@ import {
   GetDeploymentResponseBodyReadySubstate,
   GetDeploymentResponseBodyReadySubstate$inboundSchema,
   GetDeploymentResponseBodyReadySubstate$outboundSchema,
+  GetDeploymentResponseBodyStatus,
+  GetDeploymentResponseBodyStatus$inboundSchema,
+  GetDeploymentResponseBodyStatus$outboundSchema,
   GetDeploymentResponseBodyTarget,
   GetDeploymentResponseBodyTarget$inboundSchema,
   GetDeploymentResponseBodyTarget$outboundSchema,
@@ -122,9 +125,6 @@ import {
   ResponseBodySource,
   ResponseBodySource$inboundSchema,
   ResponseBodySource$outboundSchema,
-  ResponseBodyStatus,
-  ResponseBodyStatus$inboundSchema,
-  ResponseBodyStatus$outboundSchema,
 } from "./responsebodyorigin.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
@@ -926,7 +926,7 @@ export type GetDeploymentResponseBody1 = {
    */
   public: boolean;
   ready?: number | undefined;
-  status: ResponseBodyStatus;
+  status: GetDeploymentResponseBodyStatus;
   /**
    * The team that owns the deployment if any
    */
@@ -4311,7 +4311,7 @@ export const GetDeploymentResponseBody1$inboundSchema: z.ZodType<
   ),
   public: types.boolean(),
   ready: types.optional(types.number()),
-  status: ResponseBodyStatus$inboundSchema,
+  status: GetDeploymentResponseBodyStatus$inboundSchema,
   team: types.optional(GetDeploymentResponseBodyTeam$inboundSchema),
   userAliases: types.optional(z.array(types.string())),
   previewCommentsEnabled: types.optional(types.boolean()),
@@ -4570,7 +4570,7 @@ export const GetDeploymentResponseBody1$outboundSchema: z.ZodType<
   lambdas: z.array(GetDeploymentResponseBodyLambdas$outboundSchema).optional(),
   public: z.boolean(),
   ready: z.number().optional(),
-  status: ResponseBodyStatus$outboundSchema,
+  status: GetDeploymentResponseBodyStatus$outboundSchema,
   team: GetDeploymentResponseBodyTeam$outboundSchema.optional(),
   userAliases: z.array(z.string()).optional(),
   previewCommentsEnabled: z.boolean().optional(),

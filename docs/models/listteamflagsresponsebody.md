@@ -9,10 +9,7 @@ let value: ListTeamFlagsResponseBody = {
   data: [
     {
       variants: [
-        {
-          value: true,
-          id: "<id>",
-        },
+        {},
       ],
       id: "<id>",
       environments: {

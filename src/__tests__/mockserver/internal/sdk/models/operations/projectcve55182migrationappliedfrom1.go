@@ -11,19 +11,51 @@ import (
 	"mockserver/internal/sdk/utils"
 )
 
-type ProjectScheduledTierChangeTier string
+type ProjectOidcTokenConfig2 struct {
+	// Whether or not to generate OpenID Connect JSON Web Tokens.
+	Enabled *bool `json:"enabled,omitempty"`
+	// - team: `https://oidc.vercel.com/[team_slug]` - global: `https://oidc.vercel.com`
+	IssuerMode *ProjectIssuerMode2 `json:"issuerMode,omitempty"`
+}
+
+func (p ProjectOidcTokenConfig2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *ProjectOidcTokenConfig2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ProjectOidcTokenConfig2) GetEnabled() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Enabled
+}
+
+func (o *ProjectOidcTokenConfig2) GetIssuerMode() *ProjectIssuerMode2 {
+	if o == nil {
+		return nil
+	}
+	return o.IssuerMode
+}
+
+type GetProjectsFlatRateTier string
 
 const (
-	ProjectScheduledTierChangeTierStandard ProjectScheduledTierChangeTier = "standard"
-	ProjectScheduledTierChangeTierBase     ProjectScheduledTierChangeTier = "base"
-	ProjectScheduledTierChangeTierAdvanced ProjectScheduledTierChangeTier = "advanced"
-	ProjectScheduledTierChangeTierCritical ProjectScheduledTierChangeTier = "critical"
+	GetProjectsFlatRateTierStandard GetProjectsFlatRateTier = "standard"
+	GetProjectsFlatRateTierBase     GetProjectsFlatRateTier = "base"
+	GetProjectsFlatRateTierAdvanced GetProjectsFlatRateTier = "advanced"
+	GetProjectsFlatRateTierCritical GetProjectsFlatRateTier = "critical"
 )
 
-func (e ProjectScheduledTierChangeTier) ToPointer() *ProjectScheduledTierChangeTier {
+func (e GetProjectsFlatRateTier) ToPointer() *GetProjectsFlatRateTier {
 	return &e
 }
-func (e *ProjectScheduledTierChangeTier) UnmarshalJSON(data []byte) error {
+func (e *GetProjectsFlatRateTier) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -36,41 +68,11 @@ func (e *ProjectScheduledTierChangeTier) UnmarshalJSON(data []byte) error {
 	case "advanced":
 		fallthrough
 	case "critical":
-		*e = ProjectScheduledTierChangeTier(v)
+		*e = GetProjectsFlatRateTier(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ProjectScheduledTierChangeTier: %v", v)
+		return fmt.Errorf("invalid value for GetProjectsFlatRateTier: %v", v)
 	}
-}
-
-type GetProjectsScheduledTierChange struct {
-	Tier        ProjectScheduledTierChangeTier `json:"tier"`
-	EffectiveAt float64                        `json:"effectiveAt"`
-}
-
-func (g GetProjectsScheduledTierChange) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(g, "", false)
-}
-
-func (g *GetProjectsScheduledTierChange) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"tier", "effectiveAt"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *GetProjectsScheduledTierChange) GetTier() ProjectScheduledTierChangeTier {
-	if o == nil {
-		return ProjectScheduledTierChangeTier("")
-	}
-	return o.Tier
-}
-
-func (o *GetProjectsScheduledTierChange) GetEffectiveAt() float64 {
-	if o == nil {
-		return 0.0
-	}
-	return o.EffectiveAt
 }
 
 // GetProjectsKind - Billing mode. Always 'flat' for flat-rate projects.
@@ -2708,6 +2710,7 @@ type GetProjectsProject2 struct {
 	StaticIps                            *GetProjectsStaticIps                                            `json:"staticIps,omitempty"`
 	SourceFilesOutsideRootDirectory      *bool                                                            `json:"sourceFilesOutsideRootDirectory,omitempty"`
 	EnableAffectedProjectsDeployments    *bool                                                            `json:"enableAffectedProjectsDeployments,omitempty"`
+	EnableExternalRewriteCaching         *bool                                                            `json:"enableExternalRewriteCaching,omitempty"`
 	SsoProtection                        optionalnullable.OptionalNullable[ProjectSsoProtection2]         `json:"ssoProtection,omitempty"`
 	Targets                              map[string]*ProjectTargets2                                      `json:"targets,omitempty"`
 	TransferCompletedAt                  *float64                                                         `json:"transferCompletedAt,omitempty"`
@@ -2731,11 +2734,12 @@ type GetProjectsProject2 struct {
 	WebAnalytics                         *ProjectWebAnalytics2                                            `json:"webAnalytics,omitempty"`
 	Security                             *ProjectSecurity2                                                `json:"security,omitempty"`
 	OidcTokenConfig                      *ProjectOidcTokenConfig2                                         `json:"oidcTokenConfig,omitempty"`
-	Tier                                 *ProjectTier2                                                    `json:"tier,omitempty"`
-	ScheduledTierChange                  *GetProjectsScheduledTierChange                                  `json:"scheduledTierChange,omitempty"`
+	Tier                                 *string                                                          `json:"tier,omitempty"`
+	FlatRateTier                         *GetProjectsFlatRateTier                                         `json:"flatRateTier,omitempty"`
 	UsageStatus                          *GetProjectsUsageStatus                                          `json:"usageStatus,omitempty"`
 	Features                             *GetProjectsFeatures                                             `json:"features,omitempty"`
 	V0                                   *bool                                                            `json:"v0,omitempty"`
+	V0Created                            *bool                                                            `json:"v0Created,omitempty"`
 	Abuse                                *ProjectAbuse2                                                   `json:"abuse,omitempty"`
 	InternalRoutes                       []ProjectInternalRouteUnion2                                     `json:"internalRoutes,omitempty"`
 	HasDeployments                       *bool                                                            `json:"hasDeployments,omitempty"`
@@ -3153,6 +3157,13 @@ func (o *GetProjectsProject2) GetEnableAffectedProjectsDeployments() *bool {
 	return o.EnableAffectedProjectsDeployments
 }
 
+func (o *GetProjectsProject2) GetEnableExternalRewriteCaching() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.EnableExternalRewriteCaching
+}
+
 func (o *GetProjectsProject2) GetSsoProtection() optionalnullable.OptionalNullable[ProjectSsoProtection2] {
 	if o == nil {
 		return nil
@@ -3314,18 +3325,18 @@ func (o *GetProjectsProject2) GetOidcTokenConfig() *ProjectOidcTokenConfig2 {
 	return o.OidcTokenConfig
 }
 
-func (o *GetProjectsProject2) GetTier() *ProjectTier2 {
+func (o *GetProjectsProject2) GetTier() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Tier
 }
 
-func (o *GetProjectsProject2) GetScheduledTierChange() *GetProjectsScheduledTierChange {
+func (o *GetProjectsProject2) GetFlatRateTier() *GetProjectsFlatRateTier {
 	if o == nil {
 		return nil
 	}
-	return o.ScheduledTierChange
+	return o.FlatRateTier
 }
 
 func (o *GetProjectsProject2) GetUsageStatus() *GetProjectsUsageStatus {
@@ -3347,6 +3358,13 @@ func (o *GetProjectsProject2) GetV0() *bool {
 		return nil
 	}
 	return o.V0
+}
+
+func (o *GetProjectsProject2) GetV0Created() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.V0Created
 }
 
 func (o *GetProjectsProject2) GetAbuse() *ProjectAbuse2 {

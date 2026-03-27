@@ -3,19 +3,19 @@
 
 ## Supported Types
 
-### `models.ResponseBody1`
+### `models.ArtifactQueryResponseBody1`
 
 ```typescript
-const value: models.ResponseBody1 = {
-  size: 1488.21,
-  taskDurationMs: 6837.25,
+const value: models.ArtifactQueryResponseBody1 = {
+  size: 9376,
+  taskDurationMs: 4731.02,
 };
 ```
 
-### `models.ResponseBody2`
+### `models.ArtifactQueryResponseBody2`
 
 ```typescript
-const value: models.ResponseBody2 = {
+const value: models.ArtifactQueryResponseBody2 = {
   error: {
     message: "<value>",
   },

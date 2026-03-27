@@ -95,7 +95,6 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc("/v1/connect/networks/{networkId}")(pathParams);
 
   const query = encodeFormQuery({

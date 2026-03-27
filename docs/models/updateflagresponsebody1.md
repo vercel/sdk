@@ -9,7 +9,7 @@ let value: UpdateFlagResponseBody1 = {
   variants: [],
   id: "<id>",
   environments: {},
-  kind: "boolean",
+  kind: "json",
   revision: 9662.69,
   seed: 4558.32,
   state: "archived",

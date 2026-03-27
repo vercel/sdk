@@ -5,7 +5,7 @@ The origin of this definition. 'api' means created via the API. Undefined means 
 ## Example Usage
 
 ```typescript
-import { UpdateProjectSource } from "@vercel/sdk/models/updateprojectprojectsissuermode.js";
+import { UpdateProjectSource } from "@vercel/sdk/models/updateprojectlogheaders.js";
 
 let value: UpdateProjectSource = "api";
 ```

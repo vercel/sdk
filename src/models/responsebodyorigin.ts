@@ -77,7 +77,7 @@ export type ResponseBodyLambdas = {
   output: Array<GetDeploymentResponseBodyOutput>;
 };
 
-export const GetDeploymentResponseBodyStatus = {
+export const GetDeploymentResponseBodyDeploymentsStatus = {
   Queued: "QUEUED",
   Building: "BUILDING",
   Error: "ERROR",
@@ -85,8 +85,8 @@ export const GetDeploymentResponseBodyStatus = {
   Ready: "READY",
   Canceled: "CANCELED",
 } as const;
-export type GetDeploymentResponseBodyStatus = ClosedEnum<
-  typeof GetDeploymentResponseBodyStatus
+export type GetDeploymentResponseBodyDeploymentsStatus = ClosedEnum<
+  typeof GetDeploymentResponseBodyDeploymentsStatus
 >;
 
 /**
@@ -756,7 +756,7 @@ export type GetDeploymentResponseBody2 = {
    */
   public: boolean;
   ready?: number | undefined;
-  status: GetDeploymentResponseBodyStatus;
+  status: GetDeploymentResponseBodyDeploymentsStatus;
   /**
    * The team that owns the deployment if any
    */
@@ -1022,19 +1022,19 @@ export type ResponseBodyProjectSettings = {
   webAnalytics?: GetDeploymentResponseBodyWebAnalytics | undefined;
 };
 
-export const GetDeploymentResponseBodyDeploymentsStatus = {
+export const GetDeploymentResponseBodyDeploymentsResponseStatus = {
   Skipped: "skipped",
   Pending: "pending",
   Ready: "ready",
   Error: "error",
   Timeout: "timeout",
 } as const;
-export type GetDeploymentResponseBodyDeploymentsStatus = ClosedEnum<
-  typeof GetDeploymentResponseBodyDeploymentsStatus
+export type GetDeploymentResponseBodyDeploymentsResponseStatus = ClosedEnum<
+  typeof GetDeploymentResponseBodyDeploymentsResponseStatus
 >;
 
 export type ResponseBodyIntegrations = {
-  status: GetDeploymentResponseBodyDeploymentsStatus;
+  status: GetDeploymentResponseBodyDeploymentsResponseStatus;
   startedAt: number;
   completedAt?: number | undefined;
   skippedAt?: number | undefined;
@@ -1159,7 +1159,7 @@ export type GetDeploymentResponseBodyLambdas = {
   output: Array<ResponseBodyOutput>;
 };
 
-export const ResponseBodyStatus = {
+export const GetDeploymentResponseBodyStatus = {
   Queued: "QUEUED",
   Building: "BUILDING",
   Error: "ERROR",
@@ -1167,7 +1167,9 @@ export const ResponseBodyStatus = {
   Ready: "READY",
   Canceled: "CANCELED",
 } as const;
-export type ResponseBodyStatus = ClosedEnum<typeof ResponseBodyStatus>;
+export type GetDeploymentResponseBodyStatus = ClosedEnum<
+  typeof GetDeploymentResponseBodyStatus
+>;
 
 /**
  * The team that owns the deployment if any
@@ -2044,13 +2046,13 @@ export function responseBodyLambdasFromJSON(
 }
 
 /** @internal */
-export const GetDeploymentResponseBodyStatus$inboundSchema: z.ZodNativeEnum<
-  typeof GetDeploymentResponseBodyStatus
-> = z.nativeEnum(GetDeploymentResponseBodyStatus);
+export const GetDeploymentResponseBodyDeploymentsStatus$inboundSchema:
+  z.ZodNativeEnum<typeof GetDeploymentResponseBodyDeploymentsStatus> = z
+    .nativeEnum(GetDeploymentResponseBodyDeploymentsStatus);
 /** @internal */
-export const GetDeploymentResponseBodyStatus$outboundSchema: z.ZodNativeEnum<
-  typeof GetDeploymentResponseBodyStatus
-> = GetDeploymentResponseBodyStatus$inboundSchema;
+export const GetDeploymentResponseBodyDeploymentsStatus$outboundSchema:
+  z.ZodNativeEnum<typeof GetDeploymentResponseBodyDeploymentsStatus> =
+    GetDeploymentResponseBodyDeploymentsStatus$inboundSchema;
 
 /** @internal */
 export const ResponseBodyTeam$inboundSchema: z.ZodType<
@@ -4188,7 +4190,7 @@ export const GetDeploymentResponseBody2$inboundSchema: z.ZodType<
   ),
   public: types.boolean(),
   ready: types.optional(types.number()),
-  status: GetDeploymentResponseBodyStatus$inboundSchema,
+  status: GetDeploymentResponseBodyDeploymentsStatus$inboundSchema,
   team: types.optional(z.lazy(() => ResponseBodyTeam$inboundSchema)),
   userAliases: types.optional(z.array(types.string())),
   previewCommentsEnabled: types.optional(types.boolean()),
@@ -4365,7 +4367,7 @@ export const GetDeploymentResponseBody2$outboundSchema: z.ZodType<
   lambdas: z.array(z.lazy(() => ResponseBodyLambdas$outboundSchema)).optional(),
   public: z.boolean(),
   ready: z.number().optional(),
-  status: GetDeploymentResponseBodyStatus$outboundSchema,
+  status: GetDeploymentResponseBodyDeploymentsStatus$outboundSchema,
   team: z.lazy(() => ResponseBodyTeam$outboundSchema).optional(),
   userAliases: z.array(z.string()).optional(),
   previewCommentsEnabled: z.boolean().optional(),
@@ -4784,13 +4786,13 @@ export function responseBodyProjectSettingsFromJSON(
 }
 
 /** @internal */
-export const GetDeploymentResponseBodyDeploymentsStatus$inboundSchema:
-  z.ZodNativeEnum<typeof GetDeploymentResponseBodyDeploymentsStatus> = z
-    .nativeEnum(GetDeploymentResponseBodyDeploymentsStatus);
+export const GetDeploymentResponseBodyDeploymentsResponseStatus$inboundSchema:
+  z.ZodNativeEnum<typeof GetDeploymentResponseBodyDeploymentsResponseStatus> = z
+    .nativeEnum(GetDeploymentResponseBodyDeploymentsResponseStatus);
 /** @internal */
-export const GetDeploymentResponseBodyDeploymentsStatus$outboundSchema:
-  z.ZodNativeEnum<typeof GetDeploymentResponseBodyDeploymentsStatus> =
-    GetDeploymentResponseBodyDeploymentsStatus$inboundSchema;
+export const GetDeploymentResponseBodyDeploymentsResponseStatus$outboundSchema:
+  z.ZodNativeEnum<typeof GetDeploymentResponseBodyDeploymentsResponseStatus> =
+    GetDeploymentResponseBodyDeploymentsResponseStatus$inboundSchema;
 
 /** @internal */
 export const ResponseBodyIntegrations$inboundSchema: z.ZodType<
@@ -4798,7 +4800,7 @@ export const ResponseBodyIntegrations$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  status: GetDeploymentResponseBodyDeploymentsStatus$inboundSchema,
+  status: GetDeploymentResponseBodyDeploymentsResponseStatus$inboundSchema,
   startedAt: types.number(),
   completedAt: types.optional(types.number()),
   skippedAt: types.optional(types.number()),
@@ -4819,7 +4821,7 @@ export const ResponseBodyIntegrations$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ResponseBodyIntegrations
 > = z.object({
-  status: GetDeploymentResponseBodyDeploymentsStatus$outboundSchema,
+  status: GetDeploymentResponseBodyDeploymentsResponseStatus$outboundSchema,
   startedAt: z.number(),
   completedAt: z.number().optional(),
   skippedAt: z.number().optional(),
@@ -5197,13 +5199,13 @@ export function getDeploymentResponseBodyLambdasFromJSON(
 }
 
 /** @internal */
-export const ResponseBodyStatus$inboundSchema: z.ZodNativeEnum<
-  typeof ResponseBodyStatus
-> = z.nativeEnum(ResponseBodyStatus);
+export const GetDeploymentResponseBodyStatus$inboundSchema: z.ZodNativeEnum<
+  typeof GetDeploymentResponseBodyStatus
+> = z.nativeEnum(GetDeploymentResponseBodyStatus);
 /** @internal */
-export const ResponseBodyStatus$outboundSchema: z.ZodNativeEnum<
-  typeof ResponseBodyStatus
-> = ResponseBodyStatus$inboundSchema;
+export const GetDeploymentResponseBodyStatus$outboundSchema: z.ZodNativeEnum<
+  typeof GetDeploymentResponseBodyStatus
+> = GetDeploymentResponseBodyStatus$inboundSchema;
 
 /** @internal */
 export const GetDeploymentResponseBodyTeam$inboundSchema: z.ZodType<

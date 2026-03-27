@@ -31,6 +31,7 @@ import { ProjectRoutes } from "./projectroutes.js";
 import { Projects } from "./projects.js";
 import { RollingRelease } from "./rollingrelease.js";
 import { Sandboxes } from "./sandboxes.js";
+import { SandboxesV2Beta } from "./sandboxesv2beta.js";
 import { Security } from "./security.js";
 import { StaticIps } from "./staticips.js";
 import { Teams } from "./teams.js";
@@ -176,6 +177,11 @@ export class Vercel extends ClientSDK {
   private _sandboxes?: Sandboxes;
   get sandboxes(): Sandboxes {
     return (this._sandboxes ??= new Sandboxes(this._options));
+  }
+
+  private _sandboxesV2Beta?: SandboxesV2Beta;
+  get sandboxesV2Beta(): SandboxesV2Beta {
+    return (this._sandboxesV2Beta ??= new SandboxesV2Beta(this._options));
   }
 
   private _security?: Security;

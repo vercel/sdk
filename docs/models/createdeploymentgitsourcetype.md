@@ -5,11 +5,11 @@
 ```typescript
 import { CreateDeploymentGitSourceType } from "@vercel/sdk/models/createdeploymentop.js";
 
-let value: CreateDeploymentGitSourceType = "github-limited";
+let value: CreateDeploymentGitSourceType = "github";
 ```
 
 ## Values
 
 ```typescript
-"github-limited"
+"github"
 ```

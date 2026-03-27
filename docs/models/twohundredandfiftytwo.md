@@ -5,13 +5,15 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndFiftyTwo } from "@vercel/sdk/models/payloadmostspecificsubdivision.js";
+import { TwoHundredAndFiftyTwo } from "@vercel/sdk/models/usereventpayload221previous.js";
 
-let value: TwoHundredAndFiftyTwo = {};
+let value: TwoHundredAndFiftyTwo = {
+  enforced: false,
+};
 ```
 
 ## Fields
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `name`             | *string*           | :heavy_minus_sign: | N/A                |
+| `enforced`         | *boolean*          | :heavy_check_mark: | N/A                |

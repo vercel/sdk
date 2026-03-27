@@ -250,6 +250,7 @@ const (
 	NameProjectSpeedInsightsEnabled                     Name = "project-speed-insights-enabled"
 	NameProjectAutomationBypass                         Name = "project-automation-bypass"
 	NameProjectAffectedProjectsDeploymentsUpdated       Name = "project-affected-projects-deployments-updated"
+	NameProjectExternalRewriteCachingUpdated            Name = "project-external-rewrite-caching-updated"
 	NameProjectBuildCommandUpdated                      Name = "project-build-command-updated"
 	NameProjectFrameworkUpdated                         Name = "project-framework-updated"
 	NameProjectInstallCommandUpdated                    Name = "project-install-command-updated"
@@ -360,6 +361,9 @@ const (
 	NameSpendDeleted                                    Name = "spend-deleted"
 	NameSpendUpdated                                    Name = "spend-updated"
 	NameStorageAcceptTos                                Name = "storage-accept-tos"
+	NameStorageTransferRequestCreated                   Name = "storage-transfer-request-created"
+	NameStorageTransferOutSuccess                       Name = "storage-transfer-out-success"
+	NameStorageTransferInSuccess                        Name = "storage-transfer-in-success"
 	NameStorageCreate                                   Name = "storage-create"
 	NameStorageResetCredentials                         Name = "storage-reset-credentials"
 	NameStorageUpdate                                   Name = "storage-update"
@@ -380,7 +384,10 @@ const (
 	NameTeamDefaultBuildMachineUpdated                  Name = "team-default-build-machine-updated"
 	NameTeamDelete                                      Name = "team-delete"
 	NameStrictDeploymentProtectionSettings              Name = "strict-deployment-protection-settings"
+	NameTeamDomainVerificationCreated                   Name = "team-domain-verification-created"
 	NameTeamDomainVerificationDeleted                   Name = "team-domain-verification-deleted"
+	NameTeamDomainVerificationVerified                  Name = "team-domain-verification-verified"
+	NameTeamEmuUpdated                                  Name = "team-emu-updated"
 	NameVercelToolbar                                   Name = "vercel-toolbar"
 	NameTeamEmailDomainUpdate                           Name = "team-email-domain-update"
 	NameTeamInviteBulkDelete                            Name = "team-invite-bulk-delete"
@@ -882,6 +889,8 @@ func (e *Name) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "project-affected-projects-deployments-updated":
 		fallthrough
+	case "project-external-rewrite-caching-updated":
+		fallthrough
 	case "project-build-command-updated":
 		fallthrough
 	case "project-framework-updated":
@@ -1102,6 +1111,12 @@ func (e *Name) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "storage-accept-tos":
 		fallthrough
+	case "storage-transfer-request-created":
+		fallthrough
+	case "storage-transfer-out-success":
+		fallthrough
+	case "storage-transfer-in-success":
+		fallthrough
 	case "storage-create":
 		fallthrough
 	case "storage-reset-credentials":
@@ -1142,7 +1157,13 @@ func (e *Name) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "strict-deployment-protection-settings":
 		fallthrough
+	case "team-domain-verification-created":
+		fallthrough
 	case "team-domain-verification-deleted":
+		fallthrough
+	case "team-domain-verification-verified":
+		fallthrough
+	case "team-emu-updated":
 		fallthrough
 	case "vercel-toolbar":
 		fallthrough

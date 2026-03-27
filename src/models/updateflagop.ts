@@ -17,7 +17,7 @@ import {
 } from "./flag.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
-export type UpdateFlagValue = string | number | boolean;
+export type UpdateFlagValue4 = {};
 
 export type UpdateFlagVariants = {
   /**
@@ -32,7 +32,7 @@ export type UpdateFlagVariants = {
    * A description of the variant
    */
   description?: string | undefined;
-  value: string | number | boolean;
+  value?: any | undefined;
 };
 
 /**
@@ -290,14 +290,7 @@ export type UpdateFlagRequest = {
   requestBody?: UpdateFlagRequestBody | undefined;
 };
 
-export type ResponseBodyValue = string | number | boolean;
-
-export type ResponseBodyVariants = {
-  description?: string | undefined;
-  label?: string | undefined;
-  value: string | number | boolean;
-  id: string;
-};
+export type ResponseBodyVariants = {};
 
 export type ResponseBodyReuse = {
   active: boolean;
@@ -506,6 +499,7 @@ export const ResponseBodyKind = {
   String: "string",
   Number: "number",
   Boolean: "boolean",
+  Json: "json",
 } as const;
 export type ResponseBodyKind = ClosedEnum<typeof ResponseBodyKind>;
 
@@ -541,33 +535,35 @@ export type UpdateFlagResponseBody1 = {
 export type UpdateFlagResponseBody = UpdateFlagResponseBody1 | Flag;
 
 /** @internal */
-export const UpdateFlagValue$inboundSchema: z.ZodType<
-  UpdateFlagValue,
+export const UpdateFlagValue4$inboundSchema: z.ZodType<
+  UpdateFlagValue4,
   z.ZodTypeDef,
   unknown
-> = smartUnion([types.string(), types.number(), types.boolean()]);
+> = z.object({});
 /** @internal */
-export type UpdateFlagValue$Outbound = string | number | boolean;
+export type UpdateFlagValue4$Outbound = {};
 
 /** @internal */
-export const UpdateFlagValue$outboundSchema: z.ZodType<
-  UpdateFlagValue$Outbound,
+export const UpdateFlagValue4$outboundSchema: z.ZodType<
+  UpdateFlagValue4$Outbound,
   z.ZodTypeDef,
-  UpdateFlagValue
-> = smartUnion([z.string(), z.number(), z.boolean()]);
+  UpdateFlagValue4
+> = z.object({});
 
-export function updateFlagValueToJSON(
-  updateFlagValue: UpdateFlagValue,
+export function updateFlagValue4ToJSON(
+  updateFlagValue4: UpdateFlagValue4,
 ): string {
-  return JSON.stringify(UpdateFlagValue$outboundSchema.parse(updateFlagValue));
+  return JSON.stringify(
+    UpdateFlagValue4$outboundSchema.parse(updateFlagValue4),
+  );
 }
-export function updateFlagValueFromJSON(
+export function updateFlagValue4FromJSON(
   jsonString: string,
-): SafeParseResult<UpdateFlagValue, SDKValidationError> {
+): SafeParseResult<UpdateFlagValue4, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => UpdateFlagValue$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateFlagValue' from JSON`,
+    (x) => UpdateFlagValue4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateFlagValue4' from JSON`,
   );
 }
 
@@ -580,14 +576,14 @@ export const UpdateFlagVariants$inboundSchema: z.ZodType<
   id: types.string(),
   label: types.optional(types.string()),
   description: types.optional(types.string()),
-  value: smartUnion([types.string(), types.number(), types.boolean()]),
+  value: types.optional(z.any()),
 });
 /** @internal */
 export type UpdateFlagVariants$Outbound = {
   id: string;
   label?: string | undefined;
   description?: string | undefined;
-  value: string | number | boolean;
+  value?: any | undefined;
 };
 
 /** @internal */
@@ -599,7 +595,7 @@ export const UpdateFlagVariants$outboundSchema: z.ZodType<
   id: z.string(),
   label: z.string().optional(),
   description: z.string().optional(),
-  value: smartUnion([z.string(), z.number(), z.boolean()]),
+  value: z.any().optional(),
 });
 
 export function updateFlagVariantsToJSON(
@@ -1868,68 +1864,20 @@ export function updateFlagRequestFromJSON(
 }
 
 /** @internal */
-export const ResponseBodyValue$inboundSchema: z.ZodType<
-  ResponseBodyValue,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([types.string(), types.number(), types.boolean()]);
-/** @internal */
-export type ResponseBodyValue$Outbound = string | number | boolean;
-
-/** @internal */
-export const ResponseBodyValue$outboundSchema: z.ZodType<
-  ResponseBodyValue$Outbound,
-  z.ZodTypeDef,
-  ResponseBodyValue
-> = smartUnion([z.string(), z.number(), z.boolean()]);
-
-export function responseBodyValueToJSON(
-  responseBodyValue: ResponseBodyValue,
-): string {
-  return JSON.stringify(
-    ResponseBodyValue$outboundSchema.parse(responseBodyValue),
-  );
-}
-export function responseBodyValueFromJSON(
-  jsonString: string,
-): SafeParseResult<ResponseBodyValue, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ResponseBodyValue$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ResponseBodyValue' from JSON`,
-  );
-}
-
-/** @internal */
 export const ResponseBodyVariants$inboundSchema: z.ZodType<
   ResponseBodyVariants,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  description: types.optional(types.string()),
-  label: types.optional(types.string()),
-  value: smartUnion([types.string(), types.number(), types.boolean()]),
-  id: types.string(),
-});
+> = z.object({});
 /** @internal */
-export type ResponseBodyVariants$Outbound = {
-  description?: string | undefined;
-  label?: string | undefined;
-  value: string | number | boolean;
-  id: string;
-};
+export type ResponseBodyVariants$Outbound = {};
 
 /** @internal */
 export const ResponseBodyVariants$outboundSchema: z.ZodType<
   ResponseBodyVariants$Outbound,
   z.ZodTypeDef,
   ResponseBodyVariants
-> = z.object({
-  description: z.string().optional(),
-  label: z.string().optional(),
-  value: smartUnion([z.string(), z.number(), z.boolean()]),
-  id: z.string(),
-});
+> = z.object({});
 
 export function responseBodyVariantsToJSON(
   responseBodyVariants: ResponseBodyVariants,

@@ -5,14 +5,11 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndEightyFour } from "@vercel/sdk/models/payloadbranchmatcher.js";
+import { OneHundredAndEightyFour } from "@vercel/sdk/models/usereventpayload159next.js";
 
 let value: OneHundredAndEightyFour = {
-  projectId: "<id>",
   projectName: "<value>",
-  originAccountName: "<value>",
-  destinationAccountName: "<value>",
-  destinationAccountId: "<id>",
+  destinationAccountName: null,
 };
 ```
 
@@ -20,9 +17,6 @@ let value: OneHundredAndEightyFour = {
 
 | Field                    | Type                     | Required                 | Description              |
 | ------------------------ | ------------------------ | ------------------------ | ------------------------ |
-| `projectId`              | *string*                 | :heavy_check_mark:       | N/A                      |
 | `projectName`            | *string*                 | :heavy_check_mark:       | N/A                      |
-| `originAccountName`      | *string*                 | :heavy_check_mark:       | N/A                      |
 | `destinationAccountName` | *string*                 | :heavy_check_mark:       | N/A                      |
-| `destinationAccountId`   | *string*                 | :heavy_check_mark:       | N/A                      |
 | `transferId`             | *string*                 | :heavy_minus_sign:       | N/A                      |

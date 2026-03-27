@@ -124,7 +124,6 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc("/v1/registrar/tlds/{tld}")(pathParams);
 
   const query = encodeFormQuery({

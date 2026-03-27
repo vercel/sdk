@@ -40,6 +40,7 @@ import { tool$authenticationCreateAuthToken } from "./tools/authenticationCreate
 import { tool$authenticationDeleteAuthToken } from "./tools/authenticationDeleteAuthToken.js";
 import { tool$authenticationGetAuthToken } from "./tools/authenticationGetAuthToken.js";
 import { tool$authenticationListAuthTokens } from "./tools/authenticationListAuthTokens.js";
+import { tool$billingBuyCredits } from "./tools/billingBuyCredits.js";
 import { tool$billingListBillingCharges } from "./tools/billingListBillingCharges.js";
 import { tool$billingListContractCommitments } from "./tools/billingListContractCommitments.js";
 import { tool$bulkRedirectsDeleteRedirects } from "./tools/bulkRedirectsDeleteRedirects.js";
@@ -261,15 +262,36 @@ import { tool$sandboxesExtendSandboxTimeout } from "./tools/sandboxesExtendSandb
 import { tool$sandboxesGetCommand } from "./tools/sandboxesGetCommand.js";
 import { tool$sandboxesGetCommandLogs } from "./tools/sandboxesGetCommandLogs.js";
 import { tool$sandboxesGetSandbox } from "./tools/sandboxesGetSandbox.js";
+import { tool$sandboxesGetSandboxesV1 } from "./tools/sandboxesGetSandboxesV1.js";
 import { tool$sandboxesGetSnapshot } from "./tools/sandboxesGetSnapshot.js";
 import { tool$sandboxesKillCommand } from "./tools/sandboxesKillCommand.js";
 import { tool$sandboxesListCommands } from "./tools/sandboxesListCommands.js";
-import { tool$sandboxesListSandboxes } from "./tools/sandboxesListSandboxes.js";
 import { tool$sandboxesListSnapshots } from "./tools/sandboxesListSnapshots.js";
 import { tool$sandboxesReadFile } from "./tools/sandboxesReadFile.js";
 import { tool$sandboxesRunCommand } from "./tools/sandboxesRunCommand.js";
 import { tool$sandboxesStopSandbox } from "./tools/sandboxesStopSandbox.js";
 import { tool$sandboxesUpdateNetworkPolicy } from "./tools/sandboxesUpdateNetworkPolicy.js";
+import { tool$sandboxesV2BetaCreateSessionDirectory } from "./tools/sandboxesV2BetaCreateSessionDirectory.js";
+import { tool$sandboxesV2BetaCreateSessionSnapshot } from "./tools/sandboxesV2BetaCreateSessionSnapshot.js";
+import { tool$sandboxesV2BetaDeleteSandbox } from "./tools/sandboxesV2BetaDeleteSandbox.js";
+import { tool$sandboxesV2BetaDeleteSessionSnapshot } from "./tools/sandboxesV2BetaDeleteSessionSnapshot.js";
+import { tool$sandboxesV2BetaExtendSessionTimeout } from "./tools/sandboxesV2BetaExtendSessionTimeout.js";
+import { tool$sandboxesV2BetaGetNamedSandbox } from "./tools/sandboxesV2BetaGetNamedSandbox.js";
+import { tool$sandboxesV2BetaGetSandboxesV2 } from "./tools/sandboxesV2BetaGetSandboxesV2.js";
+import { tool$sandboxesV2BetaGetSession } from "./tools/sandboxesV2BetaGetSession.js";
+import { tool$sandboxesV2BetaGetSessionCommand } from "./tools/sandboxesV2BetaGetSessionCommand.js";
+import { tool$sandboxesV2BetaGetSessionCommandLogs } from "./tools/sandboxesV2BetaGetSessionCommandLogs.js";
+import { tool$sandboxesV2BetaGetSessionSnapshot } from "./tools/sandboxesV2BetaGetSessionSnapshot.js";
+import { tool$sandboxesV2BetaKillSessionCommand } from "./tools/sandboxesV2BetaKillSessionCommand.js";
+import { tool$sandboxesV2BetaListSessionCommands } from "./tools/sandboxesV2BetaListSessionCommands.js";
+import { tool$sandboxesV2BetaListSessions } from "./tools/sandboxesV2BetaListSessions.js";
+import { tool$sandboxesV2BetaListSessionSnapshots } from "./tools/sandboxesV2BetaListSessionSnapshots.js";
+import { tool$sandboxesV2BetaReadSessionFile } from "./tools/sandboxesV2BetaReadSessionFile.js";
+import { tool$sandboxesV2BetaRunSessionCommand } from "./tools/sandboxesV2BetaRunSessionCommand.js";
+import { tool$sandboxesV2BetaStopSession } from "./tools/sandboxesV2BetaStopSession.js";
+import { tool$sandboxesV2BetaUpdateSandbox } from "./tools/sandboxesV2BetaUpdateSandbox.js";
+import { tool$sandboxesV2BetaUpdateSessionNetworkPolicy } from "./tools/sandboxesV2BetaUpdateSessionNetworkPolicy.js";
+import { tool$sandboxesV2BetaWriteSessionFiles } from "./tools/sandboxesV2BetaWriteSessionFiles.js";
 import { tool$sandboxesWriteFiles } from "./tools/sandboxesWriteFiles.js";
 import { tool$securityAddBypassIp } from "./tools/securityAddBypassIp.js";
 import { tool$securityGetActiveAttackStatus } from "./tools/securityGetActiveAttackStatus.js";
@@ -313,7 +335,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Vercel",
-    version: "1.19.18",
+    version: "1.19.19",
   });
 
   const client = new VercelCore({
@@ -362,6 +384,7 @@ export function createMCPServer(deps: {
   tool(tool$artifactsArtifactQuery);
   tool(tool$billingListBillingCharges);
   tool(tool$billingListContractCommitments);
+  tool(tool$billingBuyCredits);
   tool(tool$bulkRedirectsStageRedirects);
   tool(tool$bulkRedirectsGetRedirects);
   tool(tool$bulkRedirectsDeleteRedirects);
@@ -580,7 +603,7 @@ export function createMCPServer(deps: {
   tool(tool$rollingReleaseGetRollingRelease);
   tool(tool$rollingReleaseApproveRollingReleaseStage);
   tool(tool$rollingReleaseCompleteRollingRelease);
-  tool(tool$sandboxesListSandboxes);
+  tool(tool$sandboxesGetSandboxesV1);
   tool(tool$sandboxesListSnapshots);
   tool(tool$sandboxesGetSandbox);
   tool(tool$sandboxesListCommands);
@@ -597,6 +620,27 @@ export function createMCPServer(deps: {
   tool(tool$sandboxesGetSnapshot);
   tool(tool$sandboxesDeleteSnapshot);
   tool(tool$sandboxesCreateSnapshot);
+  tool(tool$sandboxesV2BetaGetSandboxesV2);
+  tool(tool$sandboxesV2BetaListSessionSnapshots);
+  tool(tool$sandboxesV2BetaGetSessionSnapshot);
+  tool(tool$sandboxesV2BetaDeleteSessionSnapshot);
+  tool(tool$sandboxesV2BetaListSessions);
+  tool(tool$sandboxesV2BetaGetSession);
+  tool(tool$sandboxesV2BetaGetNamedSandbox);
+  tool(tool$sandboxesV2BetaUpdateSandbox);
+  tool(tool$sandboxesV2BetaDeleteSandbox);
+  tool(tool$sandboxesV2BetaListSessionCommands);
+  tool(tool$sandboxesV2BetaRunSessionCommand);
+  tool(tool$sandboxesV2BetaGetSessionCommand);
+  tool(tool$sandboxesV2BetaKillSessionCommand);
+  tool(tool$sandboxesV2BetaGetSessionCommandLogs);
+  tool(tool$sandboxesV2BetaStopSession);
+  tool(tool$sandboxesV2BetaExtendSessionTimeout);
+  tool(tool$sandboxesV2BetaUpdateSessionNetworkPolicy);
+  tool(tool$sandboxesV2BetaReadSessionFile);
+  tool(tool$sandboxesV2BetaCreateSessionDirectory);
+  tool(tool$sandboxesV2BetaWriteSessionFiles);
+  tool(tool$sandboxesV2BetaCreateSessionSnapshot);
   tool(tool$securityUpdateAttackChallengeMode);
   tool(tool$securityPutFirewallConfig);
   tool(tool$securityUpdateFirewallConfig);

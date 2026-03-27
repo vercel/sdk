@@ -18,6 +18,10 @@ type UploadArtifactRequest struct {
 	XArtifactClientInteractive *int64 `header:"style=simple,explode=false,name=x-artifact-client-interactive"`
 	// The base64 encoded tag for this artifact. The value is sent back to clients when the artifact is downloaded as the header `x-artifact-tag`
 	XArtifactTag *string `header:"style=simple,explode=false,name=x-artifact-tag"`
+	// The SHA of the source control revision that generated this artifact.
+	XArtifactSha *string `header:"style=simple,explode=false,name=x-artifact-sha"`
+	// A hash representing uncommitted changes in the working directory when this artifact was generated.
+	XArtifactDirtyHash *string `header:"style=simple,explode=false,name=x-artifact-dirty-hash"`
 	// The artifact hash
 	Hash string `pathParam:"style=simple,explode=false,name=hash"`
 	// The Team identifier to perform the request on behalf of.
@@ -60,6 +64,20 @@ func (o *UploadArtifactRequest) GetXArtifactTag() *string {
 		return nil
 	}
 	return o.XArtifactTag
+}
+
+func (o *UploadArtifactRequest) GetXArtifactSha() *string {
+	if o == nil {
+		return nil
+	}
+	return o.XArtifactSha
+}
+
+func (o *UploadArtifactRequest) GetXArtifactDirtyHash() *string {
+	if o == nil {
+		return nil
+	}
+	return o.XArtifactDirtyHash
 }
 
 func (o *UploadArtifactRequest) GetHash() string {

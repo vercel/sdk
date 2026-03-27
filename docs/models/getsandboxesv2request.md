@@ -1,0 +1,27 @@
+# GetSandboxesV2Request
+
+## Example Usage
+
+```typescript
+import { GetSandboxesV2Request } from "@vercel/sdk/models/getsandboxesv2op.js";
+
+let value: GetSandboxesV2Request = {
+  project: "prj_abc123",
+  teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+  slug: "my-team-url-slug",
+};
+```
+
+## Fields
+
+| Field                                                                                       | Type                                                                                        | Required                                                                                    | Description                                                                                 | Example                                                                                     |
+| ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| `project`                                                                                   | *string*                                                                                    | :heavy_minus_sign:                                                                          | The unique identifier or name of the project to list named sandboxes for.                   | prj_abc123                                                                                  |
+| `limit`                                                                                     | *number*                                                                                    | :heavy_minus_sign:                                                                          | Maximum number of named sandboxes to return in the response. Used for pagination.           | 20                                                                                          |
+| `sortBy`                                                                                    | [models.QueryParamSortBy](../models/queryparamsortby.md)                                    | :heavy_minus_sign:                                                                          | Field to sort by.                                                                           |                                                                                             |
+| `namePrefix`                                                                                | *string*                                                                                    | :heavy_minus_sign:                                                                          | Filter named sandboxes whose name starts with this prefix. Only valid when sortBy=name.     |                                                                                             |
+| `cursor`                                                                                    | *string*                                                                                    | :heavy_minus_sign:                                                                          | Opaque pagination cursor from a previous response.                                          |                                                                                             |
+| `sortOrder`                                                                                 | [models.QueryParamSortOrder](../models/queryparamsortorder.md)                              | :heavy_minus_sign:                                                                          | Sort direction. Defaults to desc.                                                           |                                                                                             |
+| `tags`                                                                                      | *models.QueryParamTags*                                                                     | :heavy_minus_sign:                                                                          | Filter sandboxes by tag. Format: \"key:value\". Only one tag filter is supported at a time. |                                                                                             |
+| `teamId`                                                                                    | *string*                                                                                    | :heavy_minus_sign:                                                                          | The Team identifier to perform the request on behalf of.                                    | team_1a2b3c4d5e6f7g8h9i0j1k2l                                                               |
+| `slug`                                                                                      | *string*                                                                                    | :heavy_minus_sign:                                                                          | The Team slug to perform the request on behalf of.                                          | my-team-url-slug                                                                            |

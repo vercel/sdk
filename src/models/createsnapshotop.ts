@@ -46,7 +46,7 @@ export type CreateSnapshotRequest = {
 
 export type CreateSnapshotResponseBody = {
   /**
-   * This object contains information related to a Snapshot of a Vercel Sandbox.
+   * This object contains information related to a Snapshot of a Vercel Sandbox session (v2 API).
    */
   snapshot: Snapshot;
   /**

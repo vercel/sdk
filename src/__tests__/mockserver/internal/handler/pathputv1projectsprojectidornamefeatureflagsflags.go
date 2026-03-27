@@ -52,12 +52,7 @@ func testCreateFlagCreateFlag0(w http.ResponseWriter, req *http.Request) {
 	}
 	var respBody *operations.CreateFlagResponseBody = &operations.CreateFlagResponseBody{
 		Variants: []operations.VariantFlag{
-			operations.VariantFlag{
-				Value: operations.CreateValueFlagBoolean(
-					false,
-				),
-				ID: "<id>",
-			},
+			operations.VariantFlag{},
 		},
 		ID: "<id>",
 		Environments: map[string]operations.EnvironmentsFlag{

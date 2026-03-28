@@ -1345,6 +1345,525 @@ func (o *UpdateFlagRequest) GetBody() *UpdateFlagRequestBody {
 	return o.Body
 }
 
+type UpdateFlagGuardrailMetricMetricType string
+
+const (
+	UpdateFlagGuardrailMetricMetricTypePercentage UpdateFlagGuardrailMetricMetricType = "percentage"
+	UpdateFlagGuardrailMetricMetricTypeCurrency   UpdateFlagGuardrailMetricMetricType = "currency"
+	UpdateFlagGuardrailMetricMetricTypeCount      UpdateFlagGuardrailMetricMetricType = "count"
+)
+
+func (e UpdateFlagGuardrailMetricMetricType) ToPointer() *UpdateFlagGuardrailMetricMetricType {
+	return &e
+}
+func (e *UpdateFlagGuardrailMetricMetricType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "percentage":
+		fallthrough
+	case "currency":
+		fallthrough
+	case "count":
+		*e = UpdateFlagGuardrailMetricMetricType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateFlagGuardrailMetricMetricType: %v", v)
+	}
+}
+
+type UpdateFlagGuardrailMetricMetricUnit string
+
+const (
+	UpdateFlagGuardrailMetricMetricUnitUser    UpdateFlagGuardrailMetricMetricUnit = "user"
+	UpdateFlagGuardrailMetricMetricUnitSession UpdateFlagGuardrailMetricMetricUnit = "session"
+	UpdateFlagGuardrailMetricMetricUnitVisitor UpdateFlagGuardrailMetricMetricUnit = "visitor"
+)
+
+func (e UpdateFlagGuardrailMetricMetricUnit) ToPointer() *UpdateFlagGuardrailMetricMetricUnit {
+	return &e
+}
+func (e *UpdateFlagGuardrailMetricMetricUnit) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "user":
+		fallthrough
+	case "session":
+		fallthrough
+	case "visitor":
+		*e = UpdateFlagGuardrailMetricMetricUnit(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateFlagGuardrailMetricMetricUnit: %v", v)
+	}
+}
+
+type UpdateFlagGuardrailMetricDirectionality string
+
+const (
+	UpdateFlagGuardrailMetricDirectionalityIncreaseIsGood UpdateFlagGuardrailMetricDirectionality = "increaseIsGood"
+	UpdateFlagGuardrailMetricDirectionalityDecreaseIsGood UpdateFlagGuardrailMetricDirectionality = "decreaseIsGood"
+)
+
+func (e UpdateFlagGuardrailMetricDirectionality) ToPointer() *UpdateFlagGuardrailMetricDirectionality {
+	return &e
+}
+func (e *UpdateFlagGuardrailMetricDirectionality) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "increaseIsGood":
+		fallthrough
+	case "decreaseIsGood":
+		*e = UpdateFlagGuardrailMetricDirectionality(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateFlagGuardrailMetricDirectionality: %v", v)
+	}
+}
+
+type UpdateFlagGuardrailMetric struct {
+	Description    *string                                 `json:"description,omitempty"`
+	MetricFormula  *string                                 `json:"metricFormula,omitempty"`
+	Name           string                                  `json:"name"`
+	MetricType     UpdateFlagGuardrailMetricMetricType     `json:"metricType"`
+	MetricUnit     UpdateFlagGuardrailMetricMetricUnit     `json:"metricUnit"`
+	Directionality UpdateFlagGuardrailMetricDirectionality `json:"directionality"`
+}
+
+func (u UpdateFlagGuardrailMetric) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateFlagGuardrailMetric) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"name", "metricType", "metricUnit", "directionality"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *UpdateFlagGuardrailMetric) GetDescription() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Description
+}
+
+func (o *UpdateFlagGuardrailMetric) GetMetricFormula() *string {
+	if o == nil {
+		return nil
+	}
+	return o.MetricFormula
+}
+
+func (o *UpdateFlagGuardrailMetric) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *UpdateFlagGuardrailMetric) GetMetricType() UpdateFlagGuardrailMetricMetricType {
+	if o == nil {
+		return UpdateFlagGuardrailMetricMetricType("")
+	}
+	return o.MetricType
+}
+
+func (o *UpdateFlagGuardrailMetric) GetMetricUnit() UpdateFlagGuardrailMetricMetricUnit {
+	if o == nil {
+		return UpdateFlagGuardrailMetricMetricUnit("")
+	}
+	return o.MetricUnit
+}
+
+func (o *UpdateFlagGuardrailMetric) GetDirectionality() UpdateFlagGuardrailMetricDirectionality {
+	if o == nil {
+		return UpdateFlagGuardrailMetricDirectionality("")
+	}
+	return o.Directionality
+}
+
+type UpdateFlagDevice string
+
+const (
+	UpdateFlagDeviceAndroid UpdateFlagDevice = "android"
+	UpdateFlagDeviceIos     UpdateFlagDevice = "ios"
+	UpdateFlagDeviceDesktop UpdateFlagDevice = "desktop"
+	UpdateFlagDeviceMweb    UpdateFlagDevice = "mweb"
+)
+
+func (e UpdateFlagDevice) ToPointer() *UpdateFlagDevice {
+	return &e
+}
+func (e *UpdateFlagDevice) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "android":
+		fallthrough
+	case "ios":
+		fallthrough
+	case "desktop":
+		fallthrough
+	case "mweb":
+		*e = UpdateFlagDevice(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateFlagDevice: %v", v)
+	}
+}
+
+type UpdateFlagAllocationUnit string
+
+const (
+	UpdateFlagAllocationUnitCookieID  UpdateFlagAllocationUnit = "cookieId"
+	UpdateFlagAllocationUnitVisitorID UpdateFlagAllocationUnit = "visitorId"
+	UpdateFlagAllocationUnitUserID    UpdateFlagAllocationUnit = "userId"
+)
+
+func (e UpdateFlagAllocationUnit) ToPointer() *UpdateFlagAllocationUnit {
+	return &e
+}
+func (e *UpdateFlagAllocationUnit) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "cookieId":
+		fallthrough
+	case "visitorId":
+		fallthrough
+	case "userId":
+		*e = UpdateFlagAllocationUnit(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateFlagAllocationUnit: %v", v)
+	}
+}
+
+type UpdateFlagPrimaryMetricMetricType string
+
+const (
+	UpdateFlagPrimaryMetricMetricTypePercentage UpdateFlagPrimaryMetricMetricType = "percentage"
+	UpdateFlagPrimaryMetricMetricTypeCurrency   UpdateFlagPrimaryMetricMetricType = "currency"
+	UpdateFlagPrimaryMetricMetricTypeCount      UpdateFlagPrimaryMetricMetricType = "count"
+)
+
+func (e UpdateFlagPrimaryMetricMetricType) ToPointer() *UpdateFlagPrimaryMetricMetricType {
+	return &e
+}
+func (e *UpdateFlagPrimaryMetricMetricType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "percentage":
+		fallthrough
+	case "currency":
+		fallthrough
+	case "count":
+		*e = UpdateFlagPrimaryMetricMetricType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateFlagPrimaryMetricMetricType: %v", v)
+	}
+}
+
+type UpdateFlagPrimaryMetricMetricUnit string
+
+const (
+	UpdateFlagPrimaryMetricMetricUnitUser    UpdateFlagPrimaryMetricMetricUnit = "user"
+	UpdateFlagPrimaryMetricMetricUnitSession UpdateFlagPrimaryMetricMetricUnit = "session"
+	UpdateFlagPrimaryMetricMetricUnitVisitor UpdateFlagPrimaryMetricMetricUnit = "visitor"
+)
+
+func (e UpdateFlagPrimaryMetricMetricUnit) ToPointer() *UpdateFlagPrimaryMetricMetricUnit {
+	return &e
+}
+func (e *UpdateFlagPrimaryMetricMetricUnit) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "user":
+		fallthrough
+	case "session":
+		fallthrough
+	case "visitor":
+		*e = UpdateFlagPrimaryMetricMetricUnit(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateFlagPrimaryMetricMetricUnit: %v", v)
+	}
+}
+
+type UpdateFlagPrimaryMetricDirectionality string
+
+const (
+	UpdateFlagPrimaryMetricDirectionalityIncreaseIsGood UpdateFlagPrimaryMetricDirectionality = "increaseIsGood"
+	UpdateFlagPrimaryMetricDirectionalityDecreaseIsGood UpdateFlagPrimaryMetricDirectionality = "decreaseIsGood"
+)
+
+func (e UpdateFlagPrimaryMetricDirectionality) ToPointer() *UpdateFlagPrimaryMetricDirectionality {
+	return &e
+}
+func (e *UpdateFlagPrimaryMetricDirectionality) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "increaseIsGood":
+		fallthrough
+	case "decreaseIsGood":
+		*e = UpdateFlagPrimaryMetricDirectionality(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateFlagPrimaryMetricDirectionality: %v", v)
+	}
+}
+
+type UpdateFlagPrimaryMetric struct {
+	Description    *string                               `json:"description,omitempty"`
+	MetricFormula  *string                               `json:"metricFormula,omitempty"`
+	Name           string                                `json:"name"`
+	MetricType     UpdateFlagPrimaryMetricMetricType     `json:"metricType"`
+	MetricUnit     UpdateFlagPrimaryMetricMetricUnit     `json:"metricUnit"`
+	Directionality UpdateFlagPrimaryMetricDirectionality `json:"directionality"`
+}
+
+func (u UpdateFlagPrimaryMetric) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateFlagPrimaryMetric) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"name", "metricType", "metricUnit", "directionality"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *UpdateFlagPrimaryMetric) GetDescription() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Description
+}
+
+func (o *UpdateFlagPrimaryMetric) GetMetricFormula() *string {
+	if o == nil {
+		return nil
+	}
+	return o.MetricFormula
+}
+
+func (o *UpdateFlagPrimaryMetric) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *UpdateFlagPrimaryMetric) GetMetricType() UpdateFlagPrimaryMetricMetricType {
+	if o == nil {
+		return UpdateFlagPrimaryMetricMetricType("")
+	}
+	return o.MetricType
+}
+
+func (o *UpdateFlagPrimaryMetric) GetMetricUnit() UpdateFlagPrimaryMetricMetricUnit {
+	if o == nil {
+		return UpdateFlagPrimaryMetricMetricUnit("")
+	}
+	return o.MetricUnit
+}
+
+func (o *UpdateFlagPrimaryMetric) GetDirectionality() UpdateFlagPrimaryMetricDirectionality {
+	if o == nil {
+		return UpdateFlagPrimaryMetricDirectionality("")
+	}
+	return o.Directionality
+}
+
+type UpdateFlagStatus string
+
+const (
+	UpdateFlagStatusDraft   UpdateFlagStatus = "draft"
+	UpdateFlagStatusRunning UpdateFlagStatus = "running"
+	UpdateFlagStatusPaused  UpdateFlagStatus = "paused"
+	UpdateFlagStatusClosed  UpdateFlagStatus = "closed"
+)
+
+func (e UpdateFlagStatus) ToPointer() *UpdateFlagStatus {
+	return &e
+}
+func (e *UpdateFlagStatus) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "draft":
+		fallthrough
+	case "running":
+		fallthrough
+	case "paused":
+		fallthrough
+	case "closed":
+		*e = UpdateFlagStatus(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateFlagStatus: %v", v)
+	}
+}
+
+type UpdateFlagExperiment struct {
+	Name              *string                     `json:"name,omitempty"`
+	ID                *string                     `json:"id,omitempty"`
+	NumVariants       *float64                    `json:"numVariants,omitempty"`
+	SurfaceArea       *string                     `json:"surfaceArea,omitempty"`
+	StickyRequirement *bool                       `json:"stickyRequirement,omitempty"`
+	Layer             *string                     `json:"layer,omitempty"`
+	GuardrailMetrics  []UpdateFlagGuardrailMetric `json:"guardrailMetrics,omitempty"`
+	Hypothesis        *string                     `json:"hypothesis,omitempty"`
+	Device            *UpdateFlagDevice           `json:"device,omitempty"`
+	ControlVariantID  *string                     `json:"controlVariantId,omitempty"`
+	StartedAt         *float64                    `json:"startedAt,omitempty"`
+	EndedAt           *float64                    `json:"endedAt,omitempty"`
+	AllocationUnit    UpdateFlagAllocationUnit    `json:"allocationUnit"`
+	PrimaryMetrics    []UpdateFlagPrimaryMetric   `json:"primaryMetrics"`
+	Status            UpdateFlagStatus            `json:"status"`
+}
+
+func (u UpdateFlagExperiment) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateFlagExperiment) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"allocationUnit", "primaryMetrics", "status"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *UpdateFlagExperiment) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+func (o *UpdateFlagExperiment) GetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *UpdateFlagExperiment) GetNumVariants() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.NumVariants
+}
+
+func (o *UpdateFlagExperiment) GetSurfaceArea() *string {
+	if o == nil {
+		return nil
+	}
+	return o.SurfaceArea
+}
+
+func (o *UpdateFlagExperiment) GetStickyRequirement() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.StickyRequirement
+}
+
+func (o *UpdateFlagExperiment) GetLayer() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Layer
+}
+
+func (o *UpdateFlagExperiment) GetGuardrailMetrics() []UpdateFlagGuardrailMetric {
+	if o == nil {
+		return nil
+	}
+	return o.GuardrailMetrics
+}
+
+func (o *UpdateFlagExperiment) GetHypothesis() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Hypothesis
+}
+
+func (o *UpdateFlagExperiment) GetDevice() *UpdateFlagDevice {
+	if o == nil {
+		return nil
+	}
+	return o.Device
+}
+
+func (o *UpdateFlagExperiment) GetControlVariantID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ControlVariantID
+}
+
+func (o *UpdateFlagExperiment) GetStartedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.StartedAt
+}
+
+func (o *UpdateFlagExperiment) GetEndedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.EndedAt
+}
+
+func (o *UpdateFlagExperiment) GetAllocationUnit() UpdateFlagAllocationUnit {
+	if o == nil {
+		return UpdateFlagAllocationUnit("")
+	}
+	return o.AllocationUnit
+}
+
+func (o *UpdateFlagExperiment) GetPrimaryMetrics() []UpdateFlagPrimaryMetric {
+	if o == nil {
+		return []UpdateFlagPrimaryMetric{}
+	}
+	return o.PrimaryMetrics
+}
+
+func (o *UpdateFlagExperiment) GetStatus() UpdateFlagStatus {
+	if o == nil {
+		return UpdateFlagStatus("")
+	}
+	return o.Status
+}
+
 type UpdateFlagResponseBodyVariant struct {
 }
 
@@ -2956,6 +3475,7 @@ func (e *UpdateFlagTypeName) UnmarshalJSON(data []byte) error {
 
 type UpdateFlagFlag struct {
 	Description  *string                                       `json:"description,omitempty"`
+	Experiment   *UpdateFlagExperiment                         `json:"experiment,omitempty"`
 	Variants     []UpdateFlagResponseBodyVariant               `json:"variants"`
 	ID           string                                        `json:"id"`
 	Environments map[string]UpdateFlagResponseBodyEnvironments `json:"environments"`
@@ -2988,6 +3508,13 @@ func (o *UpdateFlagFlag) GetDescription() *string {
 		return nil
 	}
 	return o.Description
+}
+
+func (o *UpdateFlagFlag) GetExperiment() *UpdateFlagExperiment {
+	if o == nil {
+		return nil
+	}
+	return o.Experiment
 }
 
 func (o *UpdateFlagFlag) GetVariants() []UpdateFlagResponseBodyVariant {

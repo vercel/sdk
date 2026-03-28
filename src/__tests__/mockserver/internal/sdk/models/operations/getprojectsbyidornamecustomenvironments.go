@@ -90,58 +90,6 @@ func (e *GetProjectsByIDOrNameCustomEnvironmentsType) UnmarshalJSON(data []byte)
 	}
 }
 
-// GetProjectsByIDOrNameCustomEnvironmentsBranchMatcherType - The type of matching to perform
-type GetProjectsByIDOrNameCustomEnvironmentsBranchMatcherType string
-
-const (
-	GetProjectsByIDOrNameCustomEnvironmentsBranchMatcherTypeEndsWith   GetProjectsByIDOrNameCustomEnvironmentsBranchMatcherType = "endsWith"
-	GetProjectsByIDOrNameCustomEnvironmentsBranchMatcherTypeStartsWith GetProjectsByIDOrNameCustomEnvironmentsBranchMatcherType = "startsWith"
-	GetProjectsByIDOrNameCustomEnvironmentsBranchMatcherTypeEquals     GetProjectsByIDOrNameCustomEnvironmentsBranchMatcherType = "equals"
-)
-
-func (e GetProjectsByIDOrNameCustomEnvironmentsBranchMatcherType) ToPointer() *GetProjectsByIDOrNameCustomEnvironmentsBranchMatcherType {
-	return &e
-}
-func (e *GetProjectsByIDOrNameCustomEnvironmentsBranchMatcherType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "endsWith":
-		fallthrough
-	case "startsWith":
-		fallthrough
-	case "equals":
-		*e = GetProjectsByIDOrNameCustomEnvironmentsBranchMatcherType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for GetProjectsByIDOrNameCustomEnvironmentsBranchMatcherType: %v", v)
-	}
-}
-
-// GetProjectsByIDOrNameCustomEnvironmentsBranchMatcher - Configuration for matching git branches to this environment
-type GetProjectsByIDOrNameCustomEnvironmentsBranchMatcher struct {
-	// The type of matching to perform
-	Type GetProjectsByIDOrNameCustomEnvironmentsBranchMatcherType `json:"type"`
-	// The pattern to match against branch names
-	Pattern string `json:"pattern"`
-}
-
-func (o *GetProjectsByIDOrNameCustomEnvironmentsBranchMatcher) GetType() GetProjectsByIDOrNameCustomEnvironmentsBranchMatcherType {
-	if o == nil {
-		return GetProjectsByIDOrNameCustomEnvironmentsBranchMatcherType("")
-	}
-	return o.Type
-}
-
-func (o *GetProjectsByIDOrNameCustomEnvironmentsBranchMatcher) GetPattern() string {
-	if o == nil {
-		return ""
-	}
-	return o.Pattern
-}
-
 // GetProjectsByIDOrNameCustomEnvironmentsVerification - A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`.
 type GetProjectsByIDOrNameCustomEnvironmentsVerification struct {
 	Type   string `json:"type"`
@@ -272,6 +220,58 @@ func (o *GetProjectsByIDOrNameCustomEnvironmentsDomain) GetVerification() []GetP
 	return o.Verification
 }
 
+// GetProjectsByIDOrNameCustomEnvironmentsBranchMatcherType - The type of matching to perform
+type GetProjectsByIDOrNameCustomEnvironmentsBranchMatcherType string
+
+const (
+	GetProjectsByIDOrNameCustomEnvironmentsBranchMatcherTypeEndsWith   GetProjectsByIDOrNameCustomEnvironmentsBranchMatcherType = "endsWith"
+	GetProjectsByIDOrNameCustomEnvironmentsBranchMatcherTypeStartsWith GetProjectsByIDOrNameCustomEnvironmentsBranchMatcherType = "startsWith"
+	GetProjectsByIDOrNameCustomEnvironmentsBranchMatcherTypeEquals     GetProjectsByIDOrNameCustomEnvironmentsBranchMatcherType = "equals"
+)
+
+func (e GetProjectsByIDOrNameCustomEnvironmentsBranchMatcherType) ToPointer() *GetProjectsByIDOrNameCustomEnvironmentsBranchMatcherType {
+	return &e
+}
+func (e *GetProjectsByIDOrNameCustomEnvironmentsBranchMatcherType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "endsWith":
+		fallthrough
+	case "startsWith":
+		fallthrough
+	case "equals":
+		*e = GetProjectsByIDOrNameCustomEnvironmentsBranchMatcherType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetProjectsByIDOrNameCustomEnvironmentsBranchMatcherType: %v", v)
+	}
+}
+
+// GetProjectsByIDOrNameCustomEnvironmentsBranchMatcher - Configuration for matching git branches to this environment
+type GetProjectsByIDOrNameCustomEnvironmentsBranchMatcher struct {
+	// The type of matching to perform
+	Type GetProjectsByIDOrNameCustomEnvironmentsBranchMatcherType `json:"type"`
+	// The pattern to match against branch names
+	Pattern string `json:"pattern"`
+}
+
+func (o *GetProjectsByIDOrNameCustomEnvironmentsBranchMatcher) GetType() GetProjectsByIDOrNameCustomEnvironmentsBranchMatcherType {
+	if o == nil {
+		return GetProjectsByIDOrNameCustomEnvironmentsBranchMatcherType("")
+	}
+	return o.Type
+}
+
+func (o *GetProjectsByIDOrNameCustomEnvironmentsBranchMatcher) GetPattern() string {
+	if o == nil {
+		return ""
+	}
+	return o.Pattern
+}
+
 type GetProjectsByIDOrNameCustomEnvironmentsEnvironment struct {
 	// The type of environment (production, preview, or development)
 	Type GetProjectsByIDOrNameCustomEnvironmentsType `json:"type"`
@@ -285,10 +285,10 @@ type GetProjectsByIDOrNameCustomEnvironmentsEnvironment struct {
 	ID string `json:"id"`
 	// URL-friendly name of the environment
 	Slug string `json:"slug"`
-	// Configuration for matching git branches to this environment
-	BranchMatcher *GetProjectsByIDOrNameCustomEnvironmentsBranchMatcher `json:"branchMatcher,omitempty"`
 	// List of domains associated with this environment
 	Domains []GetProjectsByIDOrNameCustomEnvironmentsDomain `json:"domains,omitempty"`
+	// Configuration for matching git branches to this environment
+	BranchMatcher *GetProjectsByIDOrNameCustomEnvironmentsBranchMatcher `json:"branchMatcher,omitempty"`
 	// List of aliases for the current deployment
 	CurrentDeploymentAliases []string `json:"currentDeploymentAliases,omitempty"`
 }
@@ -335,18 +335,18 @@ func (o *GetProjectsByIDOrNameCustomEnvironmentsEnvironment) GetSlug() string {
 	return o.Slug
 }
 
-func (o *GetProjectsByIDOrNameCustomEnvironmentsEnvironment) GetBranchMatcher() *GetProjectsByIDOrNameCustomEnvironmentsBranchMatcher {
-	if o == nil {
-		return nil
-	}
-	return o.BranchMatcher
-}
-
 func (o *GetProjectsByIDOrNameCustomEnvironmentsEnvironment) GetDomains() []GetProjectsByIDOrNameCustomEnvironmentsDomain {
 	if o == nil {
 		return nil
 	}
 	return o.Domains
+}
+
+func (o *GetProjectsByIDOrNameCustomEnvironmentsEnvironment) GetBranchMatcher() *GetProjectsByIDOrNameCustomEnvironmentsBranchMatcher {
+	if o == nil {
+		return nil
+	}
+	return o.BranchMatcher
 }
 
 func (o *GetProjectsByIDOrNameCustomEnvironmentsEnvironment) GetCurrentDeploymentAliases() []string {

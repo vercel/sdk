@@ -5,6 +5,8 @@
 import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
+import { smartUnion } from "../types/smartUnion.js";
 import {
   AuthToken,
   AuthToken$inboundSchema,
@@ -19,7 +21,7 @@ import {
 } from "./pagination.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
-export type ListAuthTokensResponseBody = {
+export type ListAuthTokensResponseBody2 = {
   tokens: Array<AuthToken>;
   /**
    * This object contains information related to the pagination of the current request, including the necessary parameters to get the next or previous page of data.
@@ -27,9 +29,24 @@ export type ListAuthTokensResponseBody = {
   pagination: Pagination;
 };
 
+export type ListAuthTokensResponseBodyPagination = {
+  count: number;
+  next: string | null;
+  prev: string | null;
+};
+
+export type ListAuthTokensResponseBody1 = {
+  tokens: Array<AuthToken>;
+  pagination: ListAuthTokensResponseBodyPagination;
+};
+
+export type ListAuthTokensResponseBody =
+  | ListAuthTokensResponseBody1
+  | ListAuthTokensResponseBody2;
+
 /** @internal */
-export const ListAuthTokensResponseBody$inboundSchema: z.ZodType<
-  ListAuthTokensResponseBody,
+export const ListAuthTokensResponseBody2$inboundSchema: z.ZodType<
+  ListAuthTokensResponseBody2,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -37,20 +54,155 @@ export const ListAuthTokensResponseBody$inboundSchema: z.ZodType<
   pagination: Pagination$inboundSchema,
 });
 /** @internal */
-export type ListAuthTokensResponseBody$Outbound = {
+export type ListAuthTokensResponseBody2$Outbound = {
   tokens: Array<AuthToken$Outbound>;
   pagination: Pagination$Outbound;
 };
+
+/** @internal */
+export const ListAuthTokensResponseBody2$outboundSchema: z.ZodType<
+  ListAuthTokensResponseBody2$Outbound,
+  z.ZodTypeDef,
+  ListAuthTokensResponseBody2
+> = z.object({
+  tokens: z.array(AuthToken$outboundSchema),
+  pagination: Pagination$outboundSchema,
+});
+
+export function listAuthTokensResponseBody2ToJSON(
+  listAuthTokensResponseBody2: ListAuthTokensResponseBody2,
+): string {
+  return JSON.stringify(
+    ListAuthTokensResponseBody2$outboundSchema.parse(
+      listAuthTokensResponseBody2,
+    ),
+  );
+}
+export function listAuthTokensResponseBody2FromJSON(
+  jsonString: string,
+): SafeParseResult<ListAuthTokensResponseBody2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListAuthTokensResponseBody2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListAuthTokensResponseBody2' from JSON`,
+  );
+}
+
+/** @internal */
+export const ListAuthTokensResponseBodyPagination$inboundSchema: z.ZodType<
+  ListAuthTokensResponseBodyPagination,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  count: types.number(),
+  next: types.nullable(types.string()),
+  prev: types.nullable(types.string()),
+});
+/** @internal */
+export type ListAuthTokensResponseBodyPagination$Outbound = {
+  count: number;
+  next: string | null;
+  prev: string | null;
+};
+
+/** @internal */
+export const ListAuthTokensResponseBodyPagination$outboundSchema: z.ZodType<
+  ListAuthTokensResponseBodyPagination$Outbound,
+  z.ZodTypeDef,
+  ListAuthTokensResponseBodyPagination
+> = z.object({
+  count: z.number(),
+  next: z.nullable(z.string()),
+  prev: z.nullable(z.string()),
+});
+
+export function listAuthTokensResponseBodyPaginationToJSON(
+  listAuthTokensResponseBodyPagination: ListAuthTokensResponseBodyPagination,
+): string {
+  return JSON.stringify(
+    ListAuthTokensResponseBodyPagination$outboundSchema.parse(
+      listAuthTokensResponseBodyPagination,
+    ),
+  );
+}
+export function listAuthTokensResponseBodyPaginationFromJSON(
+  jsonString: string,
+): SafeParseResult<ListAuthTokensResponseBodyPagination, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ListAuthTokensResponseBodyPagination$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListAuthTokensResponseBodyPagination' from JSON`,
+  );
+}
+
+/** @internal */
+export const ListAuthTokensResponseBody1$inboundSchema: z.ZodType<
+  ListAuthTokensResponseBody1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  tokens: z.array(AuthToken$inboundSchema),
+  pagination: z.lazy(() => ListAuthTokensResponseBodyPagination$inboundSchema),
+});
+/** @internal */
+export type ListAuthTokensResponseBody1$Outbound = {
+  tokens: Array<AuthToken$Outbound>;
+  pagination: ListAuthTokensResponseBodyPagination$Outbound;
+};
+
+/** @internal */
+export const ListAuthTokensResponseBody1$outboundSchema: z.ZodType<
+  ListAuthTokensResponseBody1$Outbound,
+  z.ZodTypeDef,
+  ListAuthTokensResponseBody1
+> = z.object({
+  tokens: z.array(AuthToken$outboundSchema),
+  pagination: z.lazy(() => ListAuthTokensResponseBodyPagination$outboundSchema),
+});
+
+export function listAuthTokensResponseBody1ToJSON(
+  listAuthTokensResponseBody1: ListAuthTokensResponseBody1,
+): string {
+  return JSON.stringify(
+    ListAuthTokensResponseBody1$outboundSchema.parse(
+      listAuthTokensResponseBody1,
+    ),
+  );
+}
+export function listAuthTokensResponseBody1FromJSON(
+  jsonString: string,
+): SafeParseResult<ListAuthTokensResponseBody1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListAuthTokensResponseBody1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListAuthTokensResponseBody1' from JSON`,
+  );
+}
+
+/** @internal */
+export const ListAuthTokensResponseBody$inboundSchema: z.ZodType<
+  ListAuthTokensResponseBody,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  z.lazy(() => ListAuthTokensResponseBody1$inboundSchema),
+  z.lazy(() => ListAuthTokensResponseBody2$inboundSchema),
+]);
+/** @internal */
+export type ListAuthTokensResponseBody$Outbound =
+  | ListAuthTokensResponseBody1$Outbound
+  | ListAuthTokensResponseBody2$Outbound;
 
 /** @internal */
 export const ListAuthTokensResponseBody$outboundSchema: z.ZodType<
   ListAuthTokensResponseBody$Outbound,
   z.ZodTypeDef,
   ListAuthTokensResponseBody
-> = z.object({
-  tokens: z.array(AuthToken$outboundSchema),
-  pagination: Pagination$outboundSchema,
-});
+> = smartUnion([
+  z.lazy(() => ListAuthTokensResponseBody1$outboundSchema),
+  z.lazy(() => ListAuthTokensResponseBody2$outboundSchema),
+]);
 
 export function listAuthTokensResponseBodyToJSON(
   listAuthTokensResponseBody: ListAuthTokensResponseBody,

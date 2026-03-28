@@ -3,32 +3,177 @@
 package operations
 
 import (
+	"errors"
+	"fmt"
 	"mockserver/internal/sdk/models/components"
+	"mockserver/internal/sdk/utils"
 )
 
-type ListAuthTokensResponseBody struct {
+type ListAuthTokensResponseBody2 struct {
 	Tokens []components.AuthToken `json:"tokens"`
 	// This object contains information related to the pagination of the current request, including the necessary parameters to get the next or previous page of data.
 	Pagination components.Pagination `json:"pagination"`
 }
 
-func (o *ListAuthTokensResponseBody) GetTokens() []components.AuthToken {
+func (l ListAuthTokensResponseBody2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(l, "", false)
+}
+
+func (l *ListAuthTokensResponseBody2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &l, "", false, []string{"tokens", "pagination"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ListAuthTokensResponseBody2) GetTokens() []components.AuthToken {
 	if o == nil {
 		return []components.AuthToken{}
 	}
 	return o.Tokens
 }
 
-func (o *ListAuthTokensResponseBody) GetPagination() components.Pagination {
+func (o *ListAuthTokensResponseBody2) GetPagination() components.Pagination {
 	if o == nil {
 		return components.Pagination{}
 	}
 	return o.Pagination
 }
 
+type ListAuthTokensPagination struct {
+	Count float64 `json:"count"`
+	Next  *string `json:"next"`
+	Prev  *string `json:"prev"`
+}
+
+func (l ListAuthTokensPagination) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(l, "", false)
+}
+
+func (l *ListAuthTokensPagination) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &l, "", false, []string{"count", "next", "prev"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ListAuthTokensPagination) GetCount() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Count
+}
+
+func (o *ListAuthTokensPagination) GetNext() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Next
+}
+
+func (o *ListAuthTokensPagination) GetPrev() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Prev
+}
+
+type ListAuthTokensResponseBody1 struct {
+	Tokens     []components.AuthToken   `json:"tokens"`
+	Pagination ListAuthTokensPagination `json:"pagination"`
+}
+
+func (l ListAuthTokensResponseBody1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(l, "", false)
+}
+
+func (l *ListAuthTokensResponseBody1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &l, "", false, []string{"tokens", "pagination"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ListAuthTokensResponseBody1) GetTokens() []components.AuthToken {
+	if o == nil {
+		return []components.AuthToken{}
+	}
+	return o.Tokens
+}
+
+func (o *ListAuthTokensResponseBody1) GetPagination() ListAuthTokensPagination {
+	if o == nil {
+		return ListAuthTokensPagination{}
+	}
+	return o.Pagination
+}
+
+type ListAuthTokensResponseBodyType string
+
+const (
+	ListAuthTokensResponseBodyTypeListAuthTokensResponseBody1 ListAuthTokensResponseBodyType = "listAuthTokens_ResponseBody_1"
+	ListAuthTokensResponseBodyTypeListAuthTokensResponseBody2 ListAuthTokensResponseBodyType = "listAuthTokens_ResponseBody_2"
+)
+
+type ListAuthTokensResponseBody struct {
+	ListAuthTokensResponseBody1 *ListAuthTokensResponseBody1 `queryParam:"inline"`
+	ListAuthTokensResponseBody2 *ListAuthTokensResponseBody2 `queryParam:"inline"`
+
+	Type ListAuthTokensResponseBodyType
+}
+
+func CreateListAuthTokensResponseBodyListAuthTokensResponseBody1(listAuthTokensResponseBody1 ListAuthTokensResponseBody1) ListAuthTokensResponseBody {
+	typ := ListAuthTokensResponseBodyTypeListAuthTokensResponseBody1
+
+	return ListAuthTokensResponseBody{
+		ListAuthTokensResponseBody1: &listAuthTokensResponseBody1,
+		Type:                        typ,
+	}
+}
+
+func CreateListAuthTokensResponseBodyListAuthTokensResponseBody2(listAuthTokensResponseBody2 ListAuthTokensResponseBody2) ListAuthTokensResponseBody {
+	typ := ListAuthTokensResponseBodyTypeListAuthTokensResponseBody2
+
+	return ListAuthTokensResponseBody{
+		ListAuthTokensResponseBody2: &listAuthTokensResponseBody2,
+		Type:                        typ,
+	}
+}
+
+func (u *ListAuthTokensResponseBody) UnmarshalJSON(data []byte) error {
+
+	var listAuthTokensResponseBody1 ListAuthTokensResponseBody1 = ListAuthTokensResponseBody1{}
+	if err := utils.UnmarshalJSON(data, &listAuthTokensResponseBody1, "", true, nil); err == nil {
+		u.ListAuthTokensResponseBody1 = &listAuthTokensResponseBody1
+		u.Type = ListAuthTokensResponseBodyTypeListAuthTokensResponseBody1
+		return nil
+	}
+
+	var listAuthTokensResponseBody2 ListAuthTokensResponseBody2 = ListAuthTokensResponseBody2{}
+	if err := utils.UnmarshalJSON(data, &listAuthTokensResponseBody2, "", true, nil); err == nil {
+		u.ListAuthTokensResponseBody2 = &listAuthTokensResponseBody2
+		u.Type = ListAuthTokensResponseBodyTypeListAuthTokensResponseBody2
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for ListAuthTokensResponseBody", string(data))
+}
+
+func (u ListAuthTokensResponseBody) MarshalJSON() ([]byte, error) {
+	if u.ListAuthTokensResponseBody1 != nil {
+		return utils.MarshalJSON(u.ListAuthTokensResponseBody1, "", true)
+	}
+
+	if u.ListAuthTokensResponseBody2 != nil {
+		return utils.MarshalJSON(u.ListAuthTokensResponseBody2, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type ListAuthTokensResponseBody: all fields are null")
+}
+
 type ListAuthTokensResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
-	Object   *ListAuthTokensResponseBody
+	OneOf    *ListAuthTokensResponseBody
 }
 
 func (o *ListAuthTokensResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -38,9 +183,9 @@ func (o *ListAuthTokensResponse) GetHTTPMeta() components.HTTPMetadata {
 	return o.HTTPMeta
 }
 
-func (o *ListAuthTokensResponse) GetObject() *ListAuthTokensResponseBody {
+func (o *ListAuthTokensResponse) GetOneOf() *ListAuthTokensResponseBody {
 	if o == nil {
 		return nil
 	}
-	return o.Object
+	return o.OneOf
 }

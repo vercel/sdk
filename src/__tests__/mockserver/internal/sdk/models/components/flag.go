@@ -9,6 +9,525 @@ import (
 	"mockserver/internal/sdk/utils"
 )
 
+type GuardrailMetricMetricType string
+
+const (
+	GuardrailMetricMetricTypePercentage GuardrailMetricMetricType = "percentage"
+	GuardrailMetricMetricTypeCurrency   GuardrailMetricMetricType = "currency"
+	GuardrailMetricMetricTypeCount      GuardrailMetricMetricType = "count"
+)
+
+func (e GuardrailMetricMetricType) ToPointer() *GuardrailMetricMetricType {
+	return &e
+}
+func (e *GuardrailMetricMetricType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "percentage":
+		fallthrough
+	case "currency":
+		fallthrough
+	case "count":
+		*e = GuardrailMetricMetricType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GuardrailMetricMetricType: %v", v)
+	}
+}
+
+type GuardrailMetricMetricUnit string
+
+const (
+	GuardrailMetricMetricUnitUser    GuardrailMetricMetricUnit = "user"
+	GuardrailMetricMetricUnitSession GuardrailMetricMetricUnit = "session"
+	GuardrailMetricMetricUnitVisitor GuardrailMetricMetricUnit = "visitor"
+)
+
+func (e GuardrailMetricMetricUnit) ToPointer() *GuardrailMetricMetricUnit {
+	return &e
+}
+func (e *GuardrailMetricMetricUnit) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "user":
+		fallthrough
+	case "session":
+		fallthrough
+	case "visitor":
+		*e = GuardrailMetricMetricUnit(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GuardrailMetricMetricUnit: %v", v)
+	}
+}
+
+type GuardrailMetricDirectionality string
+
+const (
+	GuardrailMetricDirectionalityIncreaseIsGood GuardrailMetricDirectionality = "increaseIsGood"
+	GuardrailMetricDirectionalityDecreaseIsGood GuardrailMetricDirectionality = "decreaseIsGood"
+)
+
+func (e GuardrailMetricDirectionality) ToPointer() *GuardrailMetricDirectionality {
+	return &e
+}
+func (e *GuardrailMetricDirectionality) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "increaseIsGood":
+		fallthrough
+	case "decreaseIsGood":
+		*e = GuardrailMetricDirectionality(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GuardrailMetricDirectionality: %v", v)
+	}
+}
+
+type GuardrailMetric struct {
+	Description    *string                       `json:"description,omitempty"`
+	MetricFormula  *string                       `json:"metricFormula,omitempty"`
+	Name           string                        `json:"name"`
+	MetricType     GuardrailMetricMetricType     `json:"metricType"`
+	MetricUnit     GuardrailMetricMetricUnit     `json:"metricUnit"`
+	Directionality GuardrailMetricDirectionality `json:"directionality"`
+}
+
+func (g GuardrailMetric) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GuardrailMetric) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"name", "metricType", "metricUnit", "directionality"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GuardrailMetric) GetDescription() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Description
+}
+
+func (o *GuardrailMetric) GetMetricFormula() *string {
+	if o == nil {
+		return nil
+	}
+	return o.MetricFormula
+}
+
+func (o *GuardrailMetric) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *GuardrailMetric) GetMetricType() GuardrailMetricMetricType {
+	if o == nil {
+		return GuardrailMetricMetricType("")
+	}
+	return o.MetricType
+}
+
+func (o *GuardrailMetric) GetMetricUnit() GuardrailMetricMetricUnit {
+	if o == nil {
+		return GuardrailMetricMetricUnit("")
+	}
+	return o.MetricUnit
+}
+
+func (o *GuardrailMetric) GetDirectionality() GuardrailMetricDirectionality {
+	if o == nil {
+		return GuardrailMetricDirectionality("")
+	}
+	return o.Directionality
+}
+
+type Device string
+
+const (
+	DeviceAndroid Device = "android"
+	DeviceIos     Device = "ios"
+	DeviceDesktop Device = "desktop"
+	DeviceMweb    Device = "mweb"
+)
+
+func (e Device) ToPointer() *Device {
+	return &e
+}
+func (e *Device) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "android":
+		fallthrough
+	case "ios":
+		fallthrough
+	case "desktop":
+		fallthrough
+	case "mweb":
+		*e = Device(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for Device: %v", v)
+	}
+}
+
+type AllocationUnit string
+
+const (
+	AllocationUnitCookieID  AllocationUnit = "cookieId"
+	AllocationUnitVisitorID AllocationUnit = "visitorId"
+	AllocationUnitUserID    AllocationUnit = "userId"
+)
+
+func (e AllocationUnit) ToPointer() *AllocationUnit {
+	return &e
+}
+func (e *AllocationUnit) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "cookieId":
+		fallthrough
+	case "visitorId":
+		fallthrough
+	case "userId":
+		*e = AllocationUnit(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for AllocationUnit: %v", v)
+	}
+}
+
+type PrimaryMetricMetricType string
+
+const (
+	PrimaryMetricMetricTypePercentage PrimaryMetricMetricType = "percentage"
+	PrimaryMetricMetricTypeCurrency   PrimaryMetricMetricType = "currency"
+	PrimaryMetricMetricTypeCount      PrimaryMetricMetricType = "count"
+)
+
+func (e PrimaryMetricMetricType) ToPointer() *PrimaryMetricMetricType {
+	return &e
+}
+func (e *PrimaryMetricMetricType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "percentage":
+		fallthrough
+	case "currency":
+		fallthrough
+	case "count":
+		*e = PrimaryMetricMetricType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for PrimaryMetricMetricType: %v", v)
+	}
+}
+
+type PrimaryMetricMetricUnit string
+
+const (
+	PrimaryMetricMetricUnitUser    PrimaryMetricMetricUnit = "user"
+	PrimaryMetricMetricUnitSession PrimaryMetricMetricUnit = "session"
+	PrimaryMetricMetricUnitVisitor PrimaryMetricMetricUnit = "visitor"
+)
+
+func (e PrimaryMetricMetricUnit) ToPointer() *PrimaryMetricMetricUnit {
+	return &e
+}
+func (e *PrimaryMetricMetricUnit) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "user":
+		fallthrough
+	case "session":
+		fallthrough
+	case "visitor":
+		*e = PrimaryMetricMetricUnit(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for PrimaryMetricMetricUnit: %v", v)
+	}
+}
+
+type PrimaryMetricDirectionality string
+
+const (
+	PrimaryMetricDirectionalityIncreaseIsGood PrimaryMetricDirectionality = "increaseIsGood"
+	PrimaryMetricDirectionalityDecreaseIsGood PrimaryMetricDirectionality = "decreaseIsGood"
+)
+
+func (e PrimaryMetricDirectionality) ToPointer() *PrimaryMetricDirectionality {
+	return &e
+}
+func (e *PrimaryMetricDirectionality) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "increaseIsGood":
+		fallthrough
+	case "decreaseIsGood":
+		*e = PrimaryMetricDirectionality(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for PrimaryMetricDirectionality: %v", v)
+	}
+}
+
+type PrimaryMetric struct {
+	Description    *string                     `json:"description,omitempty"`
+	MetricFormula  *string                     `json:"metricFormula,omitempty"`
+	Name           string                      `json:"name"`
+	MetricType     PrimaryMetricMetricType     `json:"metricType"`
+	MetricUnit     PrimaryMetricMetricUnit     `json:"metricUnit"`
+	Directionality PrimaryMetricDirectionality `json:"directionality"`
+}
+
+func (p PrimaryMetric) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PrimaryMetric) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"name", "metricType", "metricUnit", "directionality"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *PrimaryMetric) GetDescription() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Description
+}
+
+func (o *PrimaryMetric) GetMetricFormula() *string {
+	if o == nil {
+		return nil
+	}
+	return o.MetricFormula
+}
+
+func (o *PrimaryMetric) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *PrimaryMetric) GetMetricType() PrimaryMetricMetricType {
+	if o == nil {
+		return PrimaryMetricMetricType("")
+	}
+	return o.MetricType
+}
+
+func (o *PrimaryMetric) GetMetricUnit() PrimaryMetricMetricUnit {
+	if o == nil {
+		return PrimaryMetricMetricUnit("")
+	}
+	return o.MetricUnit
+}
+
+func (o *PrimaryMetric) GetDirectionality() PrimaryMetricDirectionality {
+	if o == nil {
+		return PrimaryMetricDirectionality("")
+	}
+	return o.Directionality
+}
+
+type FlagStatus string
+
+const (
+	FlagStatusDraft   FlagStatus = "draft"
+	FlagStatusRunning FlagStatus = "running"
+	FlagStatusPaused  FlagStatus = "paused"
+	FlagStatusClosed  FlagStatus = "closed"
+)
+
+func (e FlagStatus) ToPointer() *FlagStatus {
+	return &e
+}
+func (e *FlagStatus) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "draft":
+		fallthrough
+	case "running":
+		fallthrough
+	case "paused":
+		fallthrough
+	case "closed":
+		*e = FlagStatus(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FlagStatus: %v", v)
+	}
+}
+
+type Experiment struct {
+	Name              *string           `json:"name,omitempty"`
+	ID                *string           `json:"id,omitempty"`
+	NumVariants       *float64          `json:"numVariants,omitempty"`
+	SurfaceArea       *string           `json:"surfaceArea,omitempty"`
+	StickyRequirement *bool             `json:"stickyRequirement,omitempty"`
+	Layer             *string           `json:"layer,omitempty"`
+	GuardrailMetrics  []GuardrailMetric `json:"guardrailMetrics,omitempty"`
+	Hypothesis        *string           `json:"hypothesis,omitempty"`
+	Device            *Device           `json:"device,omitempty"`
+	ControlVariantID  *string           `json:"controlVariantId,omitempty"`
+	StartedAt         *float64          `json:"startedAt,omitempty"`
+	EndedAt           *float64          `json:"endedAt,omitempty"`
+	AllocationUnit    AllocationUnit    `json:"allocationUnit"`
+	PrimaryMetrics    []PrimaryMetric   `json:"primaryMetrics"`
+	Status            FlagStatus        `json:"status"`
+}
+
+func (e Experiment) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *Experiment) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"allocationUnit", "primaryMetrics", "status"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *Experiment) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+func (o *Experiment) GetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *Experiment) GetNumVariants() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.NumVariants
+}
+
+func (o *Experiment) GetSurfaceArea() *string {
+	if o == nil {
+		return nil
+	}
+	return o.SurfaceArea
+}
+
+func (o *Experiment) GetStickyRequirement() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.StickyRequirement
+}
+
+func (o *Experiment) GetLayer() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Layer
+}
+
+func (o *Experiment) GetGuardrailMetrics() []GuardrailMetric {
+	if o == nil {
+		return nil
+	}
+	return o.GuardrailMetrics
+}
+
+func (o *Experiment) GetHypothesis() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Hypothesis
+}
+
+func (o *Experiment) GetDevice() *Device {
+	if o == nil {
+		return nil
+	}
+	return o.Device
+}
+
+func (o *Experiment) GetControlVariantID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ControlVariantID
+}
+
+func (o *Experiment) GetStartedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.StartedAt
+}
+
+func (o *Experiment) GetEndedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.EndedAt
+}
+
+func (o *Experiment) GetAllocationUnit() AllocationUnit {
+	if o == nil {
+		return AllocationUnit("")
+	}
+	return o.AllocationUnit
+}
+
+func (o *Experiment) GetPrimaryMetrics() []PrimaryMetric {
+	if o == nil {
+		return []PrimaryMetric{}
+	}
+	return o.PrimaryMetrics
+}
+
+func (o *Experiment) GetStatus() FlagStatus {
+	if o == nil {
+		return FlagStatus("")
+	}
+	return o.Status
+}
+
 type Variant struct {
 }
 
@@ -1672,6 +2191,7 @@ func (o *FlagMetadata) GetCreator() *FlagCreator {
 
 type Flag struct {
 	Description  *string                 `json:"description,omitempty"`
+	Experiment   *Experiment             `json:"experiment,omitempty"`
 	Variants     []Variant               `json:"variants"`
 	ID           string                  `json:"id"`
 	Environments map[string]Environments `json:"environments"`
@@ -1705,6 +2225,13 @@ func (o *Flag) GetDescription() *string {
 		return nil
 	}
 	return o.Description
+}
+
+func (o *Flag) GetExperiment() *Experiment {
+	if o == nil {
+		return nil
+	}
+	return o.Experiment
 }
 
 func (o *Flag) GetVariants() []Variant {

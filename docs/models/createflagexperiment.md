@@ -1,0 +1,33 @@
+# CreateFlagExperiment
+
+## Example Usage
+
+```typescript
+import { CreateFlagExperiment } from "@vercel/sdk/models/createflagop.js";
+
+let value: CreateFlagExperiment = {
+  allocationUnit: "userId",
+  primaryMetrics: [],
+  status: "draft",
+};
+```
+
+## Fields
+
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `name`                                                                         | *string*                                                                       | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `id`                                                                           | *string*                                                                       | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `numVariants`                                                                  | *number*                                                                       | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `surfaceArea`                                                                  | *string*                                                                       | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `stickyRequirement`                                                            | *boolean*                                                                      | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `layer`                                                                        | *string*                                                                       | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `guardrailMetrics`                                                             | [models.CreateFlagGuardrailMetrics](../models/createflagguardrailmetrics.md)[] | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `hypothesis`                                                                   | *string*                                                                       | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `device`                                                                       | [models.CreateFlagDevice](../models/createflagdevice.md)                       | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `controlVariantId`                                                             | *string*                                                                       | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `startedAt`                                                                    | *number*                                                                       | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `endedAt`                                                                      | *number*                                                                       | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `allocationUnit`                                                               | [models.CreateFlagAllocationUnit](../models/createflagallocationunit.md)       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `primaryMetrics`                                                               | [models.CreateFlagPrimaryMetrics](../models/createflagprimarymetrics.md)[]     | :heavy_check_mark:                                                             | N/A                                                                            |
+| `status`                                                                       | [models.CreateFlagStatus](../models/createflagstatus.md)                       | :heavy_check_mark:                                                             | N/A                                                                            |

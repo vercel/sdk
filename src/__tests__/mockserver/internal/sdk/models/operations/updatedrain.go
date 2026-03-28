@@ -733,18 +733,18 @@ func (u UpdateDrainDeliveryRequestUnion) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type UpdateDrainDeliveryRequestUnion: all fields are null")
 }
 
-// UpdateDrainEnvRequest - Environment to apply sampling to
-type UpdateDrainEnvRequest string
+// UpdateDrainSamplingEnv - Environment to apply sampling to
+type UpdateDrainSamplingEnv string
 
 const (
-	UpdateDrainEnvRequestProduction UpdateDrainEnvRequest = "production"
-	UpdateDrainEnvRequestPreview    UpdateDrainEnvRequest = "preview"
+	UpdateDrainSamplingEnvProduction UpdateDrainSamplingEnv = "production"
+	UpdateDrainSamplingEnvPreview    UpdateDrainSamplingEnv = "preview"
 )
 
-func (e UpdateDrainEnvRequest) ToPointer() *UpdateDrainEnvRequest {
+func (e UpdateDrainSamplingEnv) ToPointer() *UpdateDrainSamplingEnv {
 	return &e
 }
-func (e *UpdateDrainEnvRequest) UnmarshalJSON(data []byte) error {
+func (e *UpdateDrainSamplingEnv) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -753,10 +753,10 @@ func (e *UpdateDrainEnvRequest) UnmarshalJSON(data []byte) error {
 	case "production":
 		fallthrough
 	case "preview":
-		*e = UpdateDrainEnvRequest(v)
+		*e = UpdateDrainSamplingEnv(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateDrainEnvRequest: %v", v)
+		return fmt.Errorf("invalid value for UpdateDrainSamplingEnv: %v", v)
 	}
 }
 
@@ -765,7 +765,7 @@ type UpdateDrainSamplingRequest struct {
 	// Sampling rate from 0 to 1 (e.g., 0.1 for 10%)
 	Rate float64 `json:"rate"`
 	// Environment to apply sampling to
-	Env *UpdateDrainEnvRequest `json:"env,omitempty"`
+	Env *UpdateDrainSamplingEnv `json:"env,omitempty"`
 	// Request path prefix to apply the sampling rule to
 	RequestPath *string `json:"requestPath,omitempty"`
 }
@@ -784,7 +784,7 @@ func (o *UpdateDrainSamplingRequest) GetRate() float64 {
 	return o.Rate
 }
 
-func (o *UpdateDrainSamplingRequest) GetEnv() *UpdateDrainEnvRequest {
+func (o *UpdateDrainSamplingRequest) GetEnv() *UpdateDrainSamplingEnv {
 	if o == nil {
 		return nil
 	}

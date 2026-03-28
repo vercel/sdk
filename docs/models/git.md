@@ -12,8 +12,8 @@ let value: Git = {
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `providers`        | *models.Providers* | :heavy_check_mark: | N/A                |
-| `owners`           | *string*[]         | :heavy_minus_sign: | N/A                |
-| `repos`            | *string*[]         | :heavy_minus_sign: | N/A                |
+| Field                                          | Type                                           | Required                                       | Description                                    |
+| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
+| `providers`                                    | *models.CreateIntegrationStoreDirectProviders* | :heavy_check_mark:                             | N/A                                            |
+| `owners`                                       | *string*[]                                     | :heavy_minus_sign:                             | N/A                                            |
+| `repos`                                        | *string*[]                                     | :heavy_minus_sign:                             | N/A                                            |

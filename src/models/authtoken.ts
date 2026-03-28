@@ -10,6 +10,7 @@ import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export const AuthTokenScopesOrigin = {
+  App: "app",
   Saml: "saml",
   Github: "github",
   GithubWebhook: "github-webhook",
@@ -24,7 +25,6 @@ export const AuthTokenScopesOrigin = {
   Google: "google",
   Apple: "apple",
   Chatgpt: "chatgpt",
-  App: "app",
   Emu: "emu",
 } as const;
 export type AuthTokenScopesOrigin = ClosedEnum<typeof AuthTokenScopesOrigin>;
@@ -62,6 +62,7 @@ export type Sudo = {
 };
 
 export const ScopesOrigin = {
+  App: "app",
   Saml: "saml",
   Github: "github",
   GithubWebhook: "github-webhook",
@@ -76,7 +77,6 @@ export const ScopesOrigin = {
   Google: "google",
   Apple: "apple",
   Chatgpt: "chatgpt",
-  App: "app",
   Emu: "emu",
 } as const;
 export type ScopesOrigin = ClosedEnum<typeof ScopesOrigin>;
@@ -138,6 +138,10 @@ export type AuthToken = {
    * Timestamp (in milliseconds) of when the token expires.
    */
   expiresAt?: number | undefined;
+  /**
+   * Timestamp (in milliseconds) of when the token was revoked.
+   */
+  revokedAt?: number | undefined;
   /**
    * Timestamp (in milliseconds) of when the token was marked as leaked.
    */
@@ -348,6 +352,7 @@ export const AuthToken$inboundSchema: z.ZodType<
   createdAt: types.number(),
   activeAt: types.number(),
   expiresAt: types.optional(types.number()),
+  revokedAt: types.optional(types.number()),
   leakedAt: types.optional(types.number()),
   leakedUrl: types.optional(types.string()),
 });
@@ -363,6 +368,7 @@ export type AuthToken$Outbound = {
   createdAt: number;
   activeAt: number;
   expiresAt?: number | undefined;
+  revokedAt?: number | undefined;
   leakedAt?: number | undefined;
   leakedUrl?: string | undefined;
 };
@@ -388,6 +394,7 @@ export const AuthToken$outboundSchema: z.ZodType<
   createdAt: z.number(),
   activeAt: z.number(),
   expiresAt: z.number().optional(),
+  revokedAt: z.number().optional(),
   leakedAt: z.number().optional(),
   leakedUrl: z.string().optional(),
 });

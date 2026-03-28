@@ -35,6 +35,7 @@ func (e *TypeTeam) UnmarshalJSON(data []byte) error {
 type AuthTokenOrigin2 string
 
 const (
+	AuthTokenOrigin2App           AuthTokenOrigin2 = "app"
 	AuthTokenOrigin2Saml          AuthTokenOrigin2 = "saml"
 	AuthTokenOrigin2Github        AuthTokenOrigin2 = "github"
 	AuthTokenOrigin2GithubWebhook AuthTokenOrigin2 = "github-webhook"
@@ -49,7 +50,6 @@ const (
 	AuthTokenOrigin2Google        AuthTokenOrigin2 = "google"
 	AuthTokenOrigin2Apple         AuthTokenOrigin2 = "apple"
 	AuthTokenOrigin2Chatgpt       AuthTokenOrigin2 = "chatgpt"
-	AuthTokenOrigin2App           AuthTokenOrigin2 = "app"
 	AuthTokenOrigin2Emu           AuthTokenOrigin2 = "emu"
 )
 
@@ -62,6 +62,8 @@ func (e *AuthTokenOrigin2) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
+	case "app":
+		fallthrough
 	case "saml":
 		fallthrough
 	case "github":
@@ -89,8 +91,6 @@ func (e *AuthTokenOrigin2) UnmarshalJSON(data []byte) error {
 	case "apple":
 		fallthrough
 	case "chatgpt":
-		fallthrough
-	case "app":
 		fallthrough
 	case "emu":
 		*e = AuthTokenOrigin2(v)
@@ -242,6 +242,7 @@ func (o *Sudo) GetExpiresAt() float64 {
 type AuthTokenOrigin1 string
 
 const (
+	AuthTokenOrigin1App           AuthTokenOrigin1 = "app"
 	AuthTokenOrigin1Saml          AuthTokenOrigin1 = "saml"
 	AuthTokenOrigin1Github        AuthTokenOrigin1 = "github"
 	AuthTokenOrigin1GithubWebhook AuthTokenOrigin1 = "github-webhook"
@@ -256,7 +257,6 @@ const (
 	AuthTokenOrigin1Google        AuthTokenOrigin1 = "google"
 	AuthTokenOrigin1Apple         AuthTokenOrigin1 = "apple"
 	AuthTokenOrigin1Chatgpt       AuthTokenOrigin1 = "chatgpt"
-	AuthTokenOrigin1App           AuthTokenOrigin1 = "app"
 	AuthTokenOrigin1Emu           AuthTokenOrigin1 = "emu"
 )
 
@@ -269,6 +269,8 @@ func (e *AuthTokenOrigin1) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
+	case "app":
+		fallthrough
 	case "saml":
 		fallthrough
 	case "github":
@@ -296,8 +298,6 @@ func (e *AuthTokenOrigin1) UnmarshalJSON(data []byte) error {
 	case "apple":
 		fallthrough
 	case "chatgpt":
-		fallthrough
-	case "app":
 		fallthrough
 	case "emu":
 		*e = AuthTokenOrigin1(v)
@@ -469,10 +469,23 @@ type AuthToken struct {
 	ActiveAt float64 `json:"activeAt"`
 	// Timestamp (in milliseconds) of when the token expires.
 	ExpiresAt *float64 `json:"expiresAt,omitempty"`
+	// Timestamp (in milliseconds) of when the token was revoked.
+	RevokedAt *float64 `json:"revokedAt,omitempty"`
 	// Timestamp (in milliseconds) of when the token was marked as leaked.
 	LeakedAt *float64 `json:"leakedAt,omitempty"`
 	// URL where the token was discovered as leaked.
 	LeakedURL *string `json:"leakedUrl,omitempty"`
+}
+
+func (a AuthToken) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AuthToken) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"id", "name", "type", "createdAt", "activeAt"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *AuthToken) GetID() string {
@@ -543,6 +556,13 @@ func (o *AuthToken) GetExpiresAt() *float64 {
 		return nil
 	}
 	return o.ExpiresAt
+}
+
+func (o *AuthToken) GetRevokedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.RevokedAt
 }
 
 func (o *AuthToken) GetLeakedAt() *float64 {

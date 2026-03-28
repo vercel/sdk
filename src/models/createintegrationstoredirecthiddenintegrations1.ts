@@ -218,7 +218,9 @@ export const Providers1 = {
 } as const;
 export type Providers1 = ClosedEnum<typeof Providers1>;
 
-export type Providers = Array<Providers1> | Providers2;
+export type CreateIntegrationStoreDirectProviders =
+  | Array<Providers1>
+  | Providers2;
 
 export type Git = {
   providers: Array<Providers1> | Providers2;
@@ -1800,31 +1802,40 @@ export const Providers1$outboundSchema: z.ZodNativeEnum<typeof Providers1> =
   Providers1$inboundSchema;
 
 /** @internal */
-export const Providers$inboundSchema: z.ZodType<
-  Providers,
+export const CreateIntegrationStoreDirectProviders$inboundSchema: z.ZodType<
+  CreateIntegrationStoreDirectProviders,
   z.ZodTypeDef,
   unknown
 > = smartUnion([z.array(Providers1$inboundSchema), Providers2$inboundSchema]);
 /** @internal */
-export type Providers$Outbound = Array<string> | string;
+export type CreateIntegrationStoreDirectProviders$Outbound =
+  | Array<string>
+  | string;
 
 /** @internal */
-export const Providers$outboundSchema: z.ZodType<
-  Providers$Outbound,
+export const CreateIntegrationStoreDirectProviders$outboundSchema: z.ZodType<
+  CreateIntegrationStoreDirectProviders$Outbound,
   z.ZodTypeDef,
-  Providers
+  CreateIntegrationStoreDirectProviders
 > = smartUnion([z.array(Providers1$outboundSchema), Providers2$outboundSchema]);
 
-export function providersToJSON(providers: Providers): string {
-  return JSON.stringify(Providers$outboundSchema.parse(providers));
+export function createIntegrationStoreDirectProvidersToJSON(
+  createIntegrationStoreDirectProviders: CreateIntegrationStoreDirectProviders,
+): string {
+  return JSON.stringify(
+    CreateIntegrationStoreDirectProviders$outboundSchema.parse(
+      createIntegrationStoreDirectProviders,
+    ),
+  );
 }
-export function providersFromJSON(
+export function createIntegrationStoreDirectProvidersFromJSON(
   jsonString: string,
-): SafeParseResult<Providers, SDKValidationError> {
+): SafeParseResult<CreateIntegrationStoreDirectProviders, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Providers$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Providers' from JSON`,
+    (x) =>
+      CreateIntegrationStoreDirectProviders$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateIntegrationStoreDirectProviders' from JSON`,
   );
 }
 

@@ -3,7 +3,7 @@
  */
 
 import { projectsUpdateProject } from "../../funcs/projectsUpdateProject.js";
-import { UpdateProjectRequest$inboundSchema } from "../../models/updateprojectlogheaders.js";
+import { UpdateProjectRequest$inboundSchema } from "../../models/updateprojectprojectsresponse200applicationjsonresponsebodyaction.js";
 import { formatResult, ToolDefinition } from "../tools.js";
 
 const args = {

@@ -185,12 +185,490 @@ func (o *OrbSubscriptionIntentOptions4) GetRemovedResourceIds() []string {
 	return o.RemovedResourceIds
 }
 
+type ChangedResourceTypeAdjustPlanItemQuantity4 string
+
+const (
+	ChangedResourceTypeAdjustPlanItemQuantity4AdjustPlanItemQuantity ChangedResourceTypeAdjustPlanItemQuantity4 = "adjust_plan_item_quantity"
+)
+
+func (e ChangedResourceTypeAdjustPlanItemQuantity4) ToPointer() *ChangedResourceTypeAdjustPlanItemQuantity4 {
+	return &e
+}
+func (e *ChangedResourceTypeAdjustPlanItemQuantity4) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "adjust_plan_item_quantity":
+		*e = ChangedResourceTypeAdjustPlanItemQuantity4(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for ChangedResourceTypeAdjustPlanItemQuantity4: %v", v)
+	}
+}
+
+// ChangedResourceAdjustPlanItemQuantity4 - Resources that were changed as part of this intent. Tracks all logical changes including the primary change and any side effects.
+type ChangedResourceAdjustPlanItemQuantity4 struct {
+	// Resource IDs that were added.
+	AddedResourceIds []string `json:"addedResourceIds"`
+	// The alias of the product that was changed.
+	ProductAlias string `json:"productAlias"`
+	// The ID of the product that was changed.
+	ProductID string `json:"productId"`
+	// The resulting quantity after this change.
+	Quantity float64 `json:"quantity"`
+	// Resource IDs that were removed.
+	RemovedResourceIds []string                                   `json:"removedResourceIds"`
+	Type               ChangedResourceTypeAdjustPlanItemQuantity4 `json:"type"`
+}
+
+func (c ChangedResourceAdjustPlanItemQuantity4) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *ChangedResourceAdjustPlanItemQuantity4) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"addedResourceIds", "productAlias", "productId", "quantity", "removedResourceIds", "type"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ChangedResourceAdjustPlanItemQuantity4) GetAddedResourceIds() []string {
+	if o == nil {
+		return []string{}
+	}
+	return o.AddedResourceIds
+}
+
+func (o *ChangedResourceAdjustPlanItemQuantity4) GetProductAlias() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProductAlias
+}
+
+func (o *ChangedResourceAdjustPlanItemQuantity4) GetProductID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProductID
+}
+
+func (o *ChangedResourceAdjustPlanItemQuantity4) GetQuantity() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Quantity
+}
+
+func (o *ChangedResourceAdjustPlanItemQuantity4) GetRemovedResourceIds() []string {
+	if o == nil {
+		return []string{}
+	}
+	return o.RemovedResourceIds
+}
+
+func (o *ChangedResourceAdjustPlanItemQuantity4) GetType() ChangedResourceTypeAdjustPlanItemQuantity4 {
+	if o == nil {
+		return ChangedResourceTypeAdjustPlanItemQuantity4("")
+	}
+	return o.Type
+}
+
+type ChangedResourceTypeDecreasePlanItemQuantity4 string
+
+const (
+	ChangedResourceTypeDecreasePlanItemQuantity4DecreasePlanItemQuantity ChangedResourceTypeDecreasePlanItemQuantity4 = "decrease_plan_item_quantity"
+)
+
+func (e ChangedResourceTypeDecreasePlanItemQuantity4) ToPointer() *ChangedResourceTypeDecreasePlanItemQuantity4 {
+	return &e
+}
+func (e *ChangedResourceTypeDecreasePlanItemQuantity4) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "decrease_plan_item_quantity":
+		*e = ChangedResourceTypeDecreasePlanItemQuantity4(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for ChangedResourceTypeDecreasePlanItemQuantity4: %v", v)
+	}
+}
+
+// ChangedResourceDecreasePlanItemQuantity4 - Resources that were changed as part of this intent. Tracks all logical changes including the primary change and any side effects.
+type ChangedResourceDecreasePlanItemQuantity4 struct {
+	// The alias of the product that was changed.
+	ProductAlias string `json:"productAlias"`
+	// The ID of the product that was changed.
+	ProductID string `json:"productId"`
+	// The resulting quantity after this change.
+	Quantity float64 `json:"quantity"`
+	// Resource IDs that were removed.
+	ResourceIds []string                                     `json:"resourceIds"`
+	Type        ChangedResourceTypeDecreasePlanItemQuantity4 `json:"type"`
+}
+
+func (c ChangedResourceDecreasePlanItemQuantity4) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *ChangedResourceDecreasePlanItemQuantity4) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"productAlias", "productId", "quantity", "resourceIds", "type"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ChangedResourceDecreasePlanItemQuantity4) GetProductAlias() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProductAlias
+}
+
+func (o *ChangedResourceDecreasePlanItemQuantity4) GetProductID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProductID
+}
+
+func (o *ChangedResourceDecreasePlanItemQuantity4) GetQuantity() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Quantity
+}
+
+func (o *ChangedResourceDecreasePlanItemQuantity4) GetResourceIds() []string {
+	if o == nil {
+		return []string{}
+	}
+	return o.ResourceIds
+}
+
+func (o *ChangedResourceDecreasePlanItemQuantity4) GetType() ChangedResourceTypeDecreasePlanItemQuantity4 {
+	if o == nil {
+		return ChangedResourceTypeDecreasePlanItemQuantity4("")
+	}
+	return o.Type
+}
+
+type ChangedResourceTypeIncreasePlanItemQuantity4 string
+
+const (
+	ChangedResourceTypeIncreasePlanItemQuantity4IncreasePlanItemQuantity ChangedResourceTypeIncreasePlanItemQuantity4 = "increase_plan_item_quantity"
+)
+
+func (e ChangedResourceTypeIncreasePlanItemQuantity4) ToPointer() *ChangedResourceTypeIncreasePlanItemQuantity4 {
+	return &e
+}
+func (e *ChangedResourceTypeIncreasePlanItemQuantity4) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "increase_plan_item_quantity":
+		*e = ChangedResourceTypeIncreasePlanItemQuantity4(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for ChangedResourceTypeIncreasePlanItemQuantity4: %v", v)
+	}
+}
+
+// ChangedResourceIncreasePlanItemQuantity4 - Resources that were changed as part of this intent. Tracks all logical changes including the primary change and any side effects.
+type ChangedResourceIncreasePlanItemQuantity4 struct {
+	// The alias of the product that was changed.
+	ProductAlias string `json:"productAlias"`
+	// The ID of the product that was changed.
+	ProductID string `json:"productId"`
+	// The resulting quantity after this change.
+	Quantity float64 `json:"quantity"`
+	// Resource IDs that were added.
+	ResourceIds []string                                     `json:"resourceIds"`
+	Type        ChangedResourceTypeIncreasePlanItemQuantity4 `json:"type"`
+}
+
+func (c ChangedResourceIncreasePlanItemQuantity4) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *ChangedResourceIncreasePlanItemQuantity4) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"productAlias", "productId", "quantity", "resourceIds", "type"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ChangedResourceIncreasePlanItemQuantity4) GetProductAlias() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProductAlias
+}
+
+func (o *ChangedResourceIncreasePlanItemQuantity4) GetProductID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProductID
+}
+
+func (o *ChangedResourceIncreasePlanItemQuantity4) GetQuantity() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Quantity
+}
+
+func (o *ChangedResourceIncreasePlanItemQuantity4) GetResourceIds() []string {
+	if o == nil {
+		return []string{}
+	}
+	return o.ResourceIds
+}
+
+func (o *ChangedResourceIncreasePlanItemQuantity4) GetType() ChangedResourceTypeIncreasePlanItemQuantity4 {
+	if o == nil {
+		return ChangedResourceTypeIncreasePlanItemQuantity4("")
+	}
+	return o.Type
+}
+
+type ChangedResourceTypeSetPlanItemQuantity4 string
+
+const (
+	ChangedResourceTypeSetPlanItemQuantity4SetPlanItemQuantity ChangedResourceTypeSetPlanItemQuantity4 = "set_plan_item_quantity"
+)
+
+func (e ChangedResourceTypeSetPlanItemQuantity4) ToPointer() *ChangedResourceTypeSetPlanItemQuantity4 {
+	return &e
+}
+func (e *ChangedResourceTypeSetPlanItemQuantity4) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "set_plan_item_quantity":
+		*e = ChangedResourceTypeSetPlanItemQuantity4(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for ChangedResourceTypeSetPlanItemQuantity4: %v", v)
+	}
+}
+
+// ChangedResourceSetPlanItemQuantity4 - Resources that were changed as part of this intent. Tracks all logical changes including the primary change and any side effects.
+type ChangedResourceSetPlanItemQuantity4 struct {
+	// The alias of the product that was changed.
+	ProductAlias string `json:"productAlias"`
+	// The ID of the product that was changed.
+	ProductID string `json:"productId"`
+	// The resulting quantity after this change.
+	Quantity float64                                 `json:"quantity"`
+	Type     ChangedResourceTypeSetPlanItemQuantity4 `json:"type"`
+	// The full set of resource IDs after the set operation.
+	ResourceIds []string `json:"resourceIds,omitempty"`
+}
+
+func (c ChangedResourceSetPlanItemQuantity4) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *ChangedResourceSetPlanItemQuantity4) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"productAlias", "productId", "quantity", "type"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ChangedResourceSetPlanItemQuantity4) GetProductAlias() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProductAlias
+}
+
+func (o *ChangedResourceSetPlanItemQuantity4) GetProductID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProductID
+}
+
+func (o *ChangedResourceSetPlanItemQuantity4) GetQuantity() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Quantity
+}
+
+func (o *ChangedResourceSetPlanItemQuantity4) GetType() ChangedResourceTypeSetPlanItemQuantity4 {
+	if o == nil {
+		return ChangedResourceTypeSetPlanItemQuantity4("")
+	}
+	return o.Type
+}
+
+func (o *ChangedResourceSetPlanItemQuantity4) GetResourceIds() []string {
+	if o == nil {
+		return nil
+	}
+	return o.ResourceIds
+}
+
+type ChangedResourceUnion4Type string
+
+const (
+	ChangedResourceUnion4TypeSetPlanItemQuantity      ChangedResourceUnion4Type = "set_plan_item_quantity"
+	ChangedResourceUnion4TypeIncreasePlanItemQuantity ChangedResourceUnion4Type = "increase_plan_item_quantity"
+	ChangedResourceUnion4TypeDecreasePlanItemQuantity ChangedResourceUnion4Type = "decrease_plan_item_quantity"
+	ChangedResourceUnion4TypeAdjustPlanItemQuantity   ChangedResourceUnion4Type = "adjust_plan_item_quantity"
+)
+
+type ChangedResourceUnion4 struct {
+	ChangedResourceSetPlanItemQuantity4      *ChangedResourceSetPlanItemQuantity4      `queryParam:"inline"`
+	ChangedResourceIncreasePlanItemQuantity4 *ChangedResourceIncreasePlanItemQuantity4 `queryParam:"inline"`
+	ChangedResourceDecreasePlanItemQuantity4 *ChangedResourceDecreasePlanItemQuantity4 `queryParam:"inline"`
+	ChangedResourceAdjustPlanItemQuantity4   *ChangedResourceAdjustPlanItemQuantity4   `queryParam:"inline"`
+
+	Type ChangedResourceUnion4Type
+}
+
+func CreateChangedResourceUnion4SetPlanItemQuantity(setPlanItemQuantity ChangedResourceSetPlanItemQuantity4) ChangedResourceUnion4 {
+	typ := ChangedResourceUnion4TypeSetPlanItemQuantity
+
+	typStr := ChangedResourceTypeSetPlanItemQuantity4(typ)
+	setPlanItemQuantity.Type = typStr
+
+	return ChangedResourceUnion4{
+		ChangedResourceSetPlanItemQuantity4: &setPlanItemQuantity,
+		Type:                                typ,
+	}
+}
+
+func CreateChangedResourceUnion4IncreasePlanItemQuantity(increasePlanItemQuantity ChangedResourceIncreasePlanItemQuantity4) ChangedResourceUnion4 {
+	typ := ChangedResourceUnion4TypeIncreasePlanItemQuantity
+
+	typStr := ChangedResourceTypeIncreasePlanItemQuantity4(typ)
+	increasePlanItemQuantity.Type = typStr
+
+	return ChangedResourceUnion4{
+		ChangedResourceIncreasePlanItemQuantity4: &increasePlanItemQuantity,
+		Type:                                     typ,
+	}
+}
+
+func CreateChangedResourceUnion4DecreasePlanItemQuantity(decreasePlanItemQuantity ChangedResourceDecreasePlanItemQuantity4) ChangedResourceUnion4 {
+	typ := ChangedResourceUnion4TypeDecreasePlanItemQuantity
+
+	typStr := ChangedResourceTypeDecreasePlanItemQuantity4(typ)
+	decreasePlanItemQuantity.Type = typStr
+
+	return ChangedResourceUnion4{
+		ChangedResourceDecreasePlanItemQuantity4: &decreasePlanItemQuantity,
+		Type:                                     typ,
+	}
+}
+
+func CreateChangedResourceUnion4AdjustPlanItemQuantity(adjustPlanItemQuantity ChangedResourceAdjustPlanItemQuantity4) ChangedResourceUnion4 {
+	typ := ChangedResourceUnion4TypeAdjustPlanItemQuantity
+
+	typStr := ChangedResourceTypeAdjustPlanItemQuantity4(typ)
+	adjustPlanItemQuantity.Type = typStr
+
+	return ChangedResourceUnion4{
+		ChangedResourceAdjustPlanItemQuantity4: &adjustPlanItemQuantity,
+		Type:                                   typ,
+	}
+}
+
+func (u *ChangedResourceUnion4) UnmarshalJSON(data []byte) error {
+
+	type discriminator struct {
+		Type string `json:"type"`
+	}
+
+	dis := new(discriminator)
+	if err := json.Unmarshal(data, &dis); err != nil {
+		return fmt.Errorf("could not unmarshal discriminator: %w", err)
+	}
+
+	switch dis.Type {
+	case "set_plan_item_quantity":
+		changedResourceSetPlanItemQuantity4 := new(ChangedResourceSetPlanItemQuantity4)
+		if err := utils.UnmarshalJSON(data, &changedResourceSetPlanItemQuantity4, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == set_plan_item_quantity) type ChangedResourceSetPlanItemQuantity4 within ChangedResourceUnion4: %w", string(data), err)
+		}
+
+		u.ChangedResourceSetPlanItemQuantity4 = changedResourceSetPlanItemQuantity4
+		u.Type = ChangedResourceUnion4TypeSetPlanItemQuantity
+		return nil
+	case "increase_plan_item_quantity":
+		changedResourceIncreasePlanItemQuantity4 := new(ChangedResourceIncreasePlanItemQuantity4)
+		if err := utils.UnmarshalJSON(data, &changedResourceIncreasePlanItemQuantity4, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == increase_plan_item_quantity) type ChangedResourceIncreasePlanItemQuantity4 within ChangedResourceUnion4: %w", string(data), err)
+		}
+
+		u.ChangedResourceIncreasePlanItemQuantity4 = changedResourceIncreasePlanItemQuantity4
+		u.Type = ChangedResourceUnion4TypeIncreasePlanItemQuantity
+		return nil
+	case "decrease_plan_item_quantity":
+		changedResourceDecreasePlanItemQuantity4 := new(ChangedResourceDecreasePlanItemQuantity4)
+		if err := utils.UnmarshalJSON(data, &changedResourceDecreasePlanItemQuantity4, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == decrease_plan_item_quantity) type ChangedResourceDecreasePlanItemQuantity4 within ChangedResourceUnion4: %w", string(data), err)
+		}
+
+		u.ChangedResourceDecreasePlanItemQuantity4 = changedResourceDecreasePlanItemQuantity4
+		u.Type = ChangedResourceUnion4TypeDecreasePlanItemQuantity
+		return nil
+	case "adjust_plan_item_quantity":
+		changedResourceAdjustPlanItemQuantity4 := new(ChangedResourceAdjustPlanItemQuantity4)
+		if err := utils.UnmarshalJSON(data, &changedResourceAdjustPlanItemQuantity4, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == adjust_plan_item_quantity) type ChangedResourceAdjustPlanItemQuantity4 within ChangedResourceUnion4: %w", string(data), err)
+		}
+
+		u.ChangedResourceAdjustPlanItemQuantity4 = changedResourceAdjustPlanItemQuantity4
+		u.Type = ChangedResourceUnion4TypeAdjustPlanItemQuantity
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for ChangedResourceUnion4", string(data))
+}
+
+func (u ChangedResourceUnion4) MarshalJSON() ([]byte, error) {
+	if u.ChangedResourceSetPlanItemQuantity4 != nil {
+		return utils.MarshalJSON(u.ChangedResourceSetPlanItemQuantity4, "", true)
+	}
+
+	if u.ChangedResourceIncreasePlanItemQuantity4 != nil {
+		return utils.MarshalJSON(u.ChangedResourceIncreasePlanItemQuantity4, "", true)
+	}
+
+	if u.ChangedResourceDecreasePlanItemQuantity4 != nil {
+		return utils.MarshalJSON(u.ChangedResourceDecreasePlanItemQuantity4, "", true)
+	}
+
+	if u.ChangedResourceAdjustPlanItemQuantity4 != nil {
+		return utils.MarshalJSON(u.ChangedResourceAdjustPlanItemQuantity4, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type ChangedResourceUnion4: all fields are null")
+}
+
 // OrbSubscriptionIntentOutput4 - Output returned after configuring an OrbSubscriptionIntent.
 type OrbSubscriptionIntentOutput4 struct {
 	// The Orb price ID for the subscription item being modified.
 	OrbPriceID string `json:"orbPriceId"`
 	// The product ID associated with this intent.
 	ProductID string `json:"productId"`
+	// Resources that were changed as part of this intent. Tracks all logical changes including the primary change and any side effects.
+	ChangedResources []ChangedResourceUnion4 `json:"changedResources,omitempty"`
 	// Optional metadata associated with the intent to update the Orb subscription with.
 	Metadata map[string]string `json:"metadata,omitempty"`
 	// The ID of the pending subscription change if there is one.
@@ -220,6 +698,13 @@ func (o *OrbSubscriptionIntentOutput4) GetProductID() string {
 		return ""
 	}
 	return o.ProductID
+}
+
+func (o *OrbSubscriptionIntentOutput4) GetChangedResources() []ChangedResourceUnion4 {
+	if o == nil {
+		return nil
+	}
+	return o.ChangedResources
 }
 
 func (o *OrbSubscriptionIntentOutput4) GetMetadata() map[string]string {
@@ -333,12 +818,490 @@ func (o *OrbSubscriptionIntentOptions3) GetResourceIds() []string {
 	return o.ResourceIds
 }
 
+type ChangedResourceTypeAdjustPlanItemQuantity3 string
+
+const (
+	ChangedResourceTypeAdjustPlanItemQuantity3AdjustPlanItemQuantity ChangedResourceTypeAdjustPlanItemQuantity3 = "adjust_plan_item_quantity"
+)
+
+func (e ChangedResourceTypeAdjustPlanItemQuantity3) ToPointer() *ChangedResourceTypeAdjustPlanItemQuantity3 {
+	return &e
+}
+func (e *ChangedResourceTypeAdjustPlanItemQuantity3) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "adjust_plan_item_quantity":
+		*e = ChangedResourceTypeAdjustPlanItemQuantity3(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for ChangedResourceTypeAdjustPlanItemQuantity3: %v", v)
+	}
+}
+
+// ChangedResourceAdjustPlanItemQuantity3 - Resources that were changed as part of this intent. Tracks all logical changes including the primary change and any side effects.
+type ChangedResourceAdjustPlanItemQuantity3 struct {
+	// Resource IDs that were added.
+	AddedResourceIds []string `json:"addedResourceIds"`
+	// The alias of the product that was changed.
+	ProductAlias string `json:"productAlias"`
+	// The ID of the product that was changed.
+	ProductID string `json:"productId"`
+	// The resulting quantity after this change.
+	Quantity float64 `json:"quantity"`
+	// Resource IDs that were removed.
+	RemovedResourceIds []string                                   `json:"removedResourceIds"`
+	Type               ChangedResourceTypeAdjustPlanItemQuantity3 `json:"type"`
+}
+
+func (c ChangedResourceAdjustPlanItemQuantity3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *ChangedResourceAdjustPlanItemQuantity3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"addedResourceIds", "productAlias", "productId", "quantity", "removedResourceIds", "type"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ChangedResourceAdjustPlanItemQuantity3) GetAddedResourceIds() []string {
+	if o == nil {
+		return []string{}
+	}
+	return o.AddedResourceIds
+}
+
+func (o *ChangedResourceAdjustPlanItemQuantity3) GetProductAlias() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProductAlias
+}
+
+func (o *ChangedResourceAdjustPlanItemQuantity3) GetProductID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProductID
+}
+
+func (o *ChangedResourceAdjustPlanItemQuantity3) GetQuantity() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Quantity
+}
+
+func (o *ChangedResourceAdjustPlanItemQuantity3) GetRemovedResourceIds() []string {
+	if o == nil {
+		return []string{}
+	}
+	return o.RemovedResourceIds
+}
+
+func (o *ChangedResourceAdjustPlanItemQuantity3) GetType() ChangedResourceTypeAdjustPlanItemQuantity3 {
+	if o == nil {
+		return ChangedResourceTypeAdjustPlanItemQuantity3("")
+	}
+	return o.Type
+}
+
+type ChangedResourceTypeDecreasePlanItemQuantity3 string
+
+const (
+	ChangedResourceTypeDecreasePlanItemQuantity3DecreasePlanItemQuantity ChangedResourceTypeDecreasePlanItemQuantity3 = "decrease_plan_item_quantity"
+)
+
+func (e ChangedResourceTypeDecreasePlanItemQuantity3) ToPointer() *ChangedResourceTypeDecreasePlanItemQuantity3 {
+	return &e
+}
+func (e *ChangedResourceTypeDecreasePlanItemQuantity3) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "decrease_plan_item_quantity":
+		*e = ChangedResourceTypeDecreasePlanItemQuantity3(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for ChangedResourceTypeDecreasePlanItemQuantity3: %v", v)
+	}
+}
+
+// ChangedResourceDecreasePlanItemQuantity3 - Resources that were changed as part of this intent. Tracks all logical changes including the primary change and any side effects.
+type ChangedResourceDecreasePlanItemQuantity3 struct {
+	// The alias of the product that was changed.
+	ProductAlias string `json:"productAlias"`
+	// The ID of the product that was changed.
+	ProductID string `json:"productId"`
+	// The resulting quantity after this change.
+	Quantity float64 `json:"quantity"`
+	// Resource IDs that were removed.
+	ResourceIds []string                                     `json:"resourceIds"`
+	Type        ChangedResourceTypeDecreasePlanItemQuantity3 `json:"type"`
+}
+
+func (c ChangedResourceDecreasePlanItemQuantity3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *ChangedResourceDecreasePlanItemQuantity3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"productAlias", "productId", "quantity", "resourceIds", "type"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ChangedResourceDecreasePlanItemQuantity3) GetProductAlias() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProductAlias
+}
+
+func (o *ChangedResourceDecreasePlanItemQuantity3) GetProductID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProductID
+}
+
+func (o *ChangedResourceDecreasePlanItemQuantity3) GetQuantity() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Quantity
+}
+
+func (o *ChangedResourceDecreasePlanItemQuantity3) GetResourceIds() []string {
+	if o == nil {
+		return []string{}
+	}
+	return o.ResourceIds
+}
+
+func (o *ChangedResourceDecreasePlanItemQuantity3) GetType() ChangedResourceTypeDecreasePlanItemQuantity3 {
+	if o == nil {
+		return ChangedResourceTypeDecreasePlanItemQuantity3("")
+	}
+	return o.Type
+}
+
+type ChangedResourceTypeIncreasePlanItemQuantity3 string
+
+const (
+	ChangedResourceTypeIncreasePlanItemQuantity3IncreasePlanItemQuantity ChangedResourceTypeIncreasePlanItemQuantity3 = "increase_plan_item_quantity"
+)
+
+func (e ChangedResourceTypeIncreasePlanItemQuantity3) ToPointer() *ChangedResourceTypeIncreasePlanItemQuantity3 {
+	return &e
+}
+func (e *ChangedResourceTypeIncreasePlanItemQuantity3) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "increase_plan_item_quantity":
+		*e = ChangedResourceTypeIncreasePlanItemQuantity3(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for ChangedResourceTypeIncreasePlanItemQuantity3: %v", v)
+	}
+}
+
+// ChangedResourceIncreasePlanItemQuantity3 - Resources that were changed as part of this intent. Tracks all logical changes including the primary change and any side effects.
+type ChangedResourceIncreasePlanItemQuantity3 struct {
+	// The alias of the product that was changed.
+	ProductAlias string `json:"productAlias"`
+	// The ID of the product that was changed.
+	ProductID string `json:"productId"`
+	// The resulting quantity after this change.
+	Quantity float64 `json:"quantity"`
+	// Resource IDs that were added.
+	ResourceIds []string                                     `json:"resourceIds"`
+	Type        ChangedResourceTypeIncreasePlanItemQuantity3 `json:"type"`
+}
+
+func (c ChangedResourceIncreasePlanItemQuantity3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *ChangedResourceIncreasePlanItemQuantity3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"productAlias", "productId", "quantity", "resourceIds", "type"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ChangedResourceIncreasePlanItemQuantity3) GetProductAlias() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProductAlias
+}
+
+func (o *ChangedResourceIncreasePlanItemQuantity3) GetProductID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProductID
+}
+
+func (o *ChangedResourceIncreasePlanItemQuantity3) GetQuantity() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Quantity
+}
+
+func (o *ChangedResourceIncreasePlanItemQuantity3) GetResourceIds() []string {
+	if o == nil {
+		return []string{}
+	}
+	return o.ResourceIds
+}
+
+func (o *ChangedResourceIncreasePlanItemQuantity3) GetType() ChangedResourceTypeIncreasePlanItemQuantity3 {
+	if o == nil {
+		return ChangedResourceTypeIncreasePlanItemQuantity3("")
+	}
+	return o.Type
+}
+
+type ChangedResourceTypeSetPlanItemQuantity3 string
+
+const (
+	ChangedResourceTypeSetPlanItemQuantity3SetPlanItemQuantity ChangedResourceTypeSetPlanItemQuantity3 = "set_plan_item_quantity"
+)
+
+func (e ChangedResourceTypeSetPlanItemQuantity3) ToPointer() *ChangedResourceTypeSetPlanItemQuantity3 {
+	return &e
+}
+func (e *ChangedResourceTypeSetPlanItemQuantity3) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "set_plan_item_quantity":
+		*e = ChangedResourceTypeSetPlanItemQuantity3(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for ChangedResourceTypeSetPlanItemQuantity3: %v", v)
+	}
+}
+
+// ChangedResourceSetPlanItemQuantity3 - Resources that were changed as part of this intent. Tracks all logical changes including the primary change and any side effects.
+type ChangedResourceSetPlanItemQuantity3 struct {
+	// The alias of the product that was changed.
+	ProductAlias string `json:"productAlias"`
+	// The ID of the product that was changed.
+	ProductID string `json:"productId"`
+	// The resulting quantity after this change.
+	Quantity float64                                 `json:"quantity"`
+	Type     ChangedResourceTypeSetPlanItemQuantity3 `json:"type"`
+	// The full set of resource IDs after the set operation.
+	ResourceIds []string `json:"resourceIds,omitempty"`
+}
+
+func (c ChangedResourceSetPlanItemQuantity3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *ChangedResourceSetPlanItemQuantity3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"productAlias", "productId", "quantity", "type"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ChangedResourceSetPlanItemQuantity3) GetProductAlias() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProductAlias
+}
+
+func (o *ChangedResourceSetPlanItemQuantity3) GetProductID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProductID
+}
+
+func (o *ChangedResourceSetPlanItemQuantity3) GetQuantity() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Quantity
+}
+
+func (o *ChangedResourceSetPlanItemQuantity3) GetType() ChangedResourceTypeSetPlanItemQuantity3 {
+	if o == nil {
+		return ChangedResourceTypeSetPlanItemQuantity3("")
+	}
+	return o.Type
+}
+
+func (o *ChangedResourceSetPlanItemQuantity3) GetResourceIds() []string {
+	if o == nil {
+		return nil
+	}
+	return o.ResourceIds
+}
+
+type ChangedResourceUnion3Type string
+
+const (
+	ChangedResourceUnion3TypeSetPlanItemQuantity      ChangedResourceUnion3Type = "set_plan_item_quantity"
+	ChangedResourceUnion3TypeIncreasePlanItemQuantity ChangedResourceUnion3Type = "increase_plan_item_quantity"
+	ChangedResourceUnion3TypeDecreasePlanItemQuantity ChangedResourceUnion3Type = "decrease_plan_item_quantity"
+	ChangedResourceUnion3TypeAdjustPlanItemQuantity   ChangedResourceUnion3Type = "adjust_plan_item_quantity"
+)
+
+type ChangedResourceUnion3 struct {
+	ChangedResourceSetPlanItemQuantity3      *ChangedResourceSetPlanItemQuantity3      `queryParam:"inline"`
+	ChangedResourceIncreasePlanItemQuantity3 *ChangedResourceIncreasePlanItemQuantity3 `queryParam:"inline"`
+	ChangedResourceDecreasePlanItemQuantity3 *ChangedResourceDecreasePlanItemQuantity3 `queryParam:"inline"`
+	ChangedResourceAdjustPlanItemQuantity3   *ChangedResourceAdjustPlanItemQuantity3   `queryParam:"inline"`
+
+	Type ChangedResourceUnion3Type
+}
+
+func CreateChangedResourceUnion3SetPlanItemQuantity(setPlanItemQuantity ChangedResourceSetPlanItemQuantity3) ChangedResourceUnion3 {
+	typ := ChangedResourceUnion3TypeSetPlanItemQuantity
+
+	typStr := ChangedResourceTypeSetPlanItemQuantity3(typ)
+	setPlanItemQuantity.Type = typStr
+
+	return ChangedResourceUnion3{
+		ChangedResourceSetPlanItemQuantity3: &setPlanItemQuantity,
+		Type:                                typ,
+	}
+}
+
+func CreateChangedResourceUnion3IncreasePlanItemQuantity(increasePlanItemQuantity ChangedResourceIncreasePlanItemQuantity3) ChangedResourceUnion3 {
+	typ := ChangedResourceUnion3TypeIncreasePlanItemQuantity
+
+	typStr := ChangedResourceTypeIncreasePlanItemQuantity3(typ)
+	increasePlanItemQuantity.Type = typStr
+
+	return ChangedResourceUnion3{
+		ChangedResourceIncreasePlanItemQuantity3: &increasePlanItemQuantity,
+		Type:                                     typ,
+	}
+}
+
+func CreateChangedResourceUnion3DecreasePlanItemQuantity(decreasePlanItemQuantity ChangedResourceDecreasePlanItemQuantity3) ChangedResourceUnion3 {
+	typ := ChangedResourceUnion3TypeDecreasePlanItemQuantity
+
+	typStr := ChangedResourceTypeDecreasePlanItemQuantity3(typ)
+	decreasePlanItemQuantity.Type = typStr
+
+	return ChangedResourceUnion3{
+		ChangedResourceDecreasePlanItemQuantity3: &decreasePlanItemQuantity,
+		Type:                                     typ,
+	}
+}
+
+func CreateChangedResourceUnion3AdjustPlanItemQuantity(adjustPlanItemQuantity ChangedResourceAdjustPlanItemQuantity3) ChangedResourceUnion3 {
+	typ := ChangedResourceUnion3TypeAdjustPlanItemQuantity
+
+	typStr := ChangedResourceTypeAdjustPlanItemQuantity3(typ)
+	adjustPlanItemQuantity.Type = typStr
+
+	return ChangedResourceUnion3{
+		ChangedResourceAdjustPlanItemQuantity3: &adjustPlanItemQuantity,
+		Type:                                   typ,
+	}
+}
+
+func (u *ChangedResourceUnion3) UnmarshalJSON(data []byte) error {
+
+	type discriminator struct {
+		Type string `json:"type"`
+	}
+
+	dis := new(discriminator)
+	if err := json.Unmarshal(data, &dis); err != nil {
+		return fmt.Errorf("could not unmarshal discriminator: %w", err)
+	}
+
+	switch dis.Type {
+	case "set_plan_item_quantity":
+		changedResourceSetPlanItemQuantity3 := new(ChangedResourceSetPlanItemQuantity3)
+		if err := utils.UnmarshalJSON(data, &changedResourceSetPlanItemQuantity3, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == set_plan_item_quantity) type ChangedResourceSetPlanItemQuantity3 within ChangedResourceUnion3: %w", string(data), err)
+		}
+
+		u.ChangedResourceSetPlanItemQuantity3 = changedResourceSetPlanItemQuantity3
+		u.Type = ChangedResourceUnion3TypeSetPlanItemQuantity
+		return nil
+	case "increase_plan_item_quantity":
+		changedResourceIncreasePlanItemQuantity3 := new(ChangedResourceIncreasePlanItemQuantity3)
+		if err := utils.UnmarshalJSON(data, &changedResourceIncreasePlanItemQuantity3, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == increase_plan_item_quantity) type ChangedResourceIncreasePlanItemQuantity3 within ChangedResourceUnion3: %w", string(data), err)
+		}
+
+		u.ChangedResourceIncreasePlanItemQuantity3 = changedResourceIncreasePlanItemQuantity3
+		u.Type = ChangedResourceUnion3TypeIncreasePlanItemQuantity
+		return nil
+	case "decrease_plan_item_quantity":
+		changedResourceDecreasePlanItemQuantity3 := new(ChangedResourceDecreasePlanItemQuantity3)
+		if err := utils.UnmarshalJSON(data, &changedResourceDecreasePlanItemQuantity3, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == decrease_plan_item_quantity) type ChangedResourceDecreasePlanItemQuantity3 within ChangedResourceUnion3: %w", string(data), err)
+		}
+
+		u.ChangedResourceDecreasePlanItemQuantity3 = changedResourceDecreasePlanItemQuantity3
+		u.Type = ChangedResourceUnion3TypeDecreasePlanItemQuantity
+		return nil
+	case "adjust_plan_item_quantity":
+		changedResourceAdjustPlanItemQuantity3 := new(ChangedResourceAdjustPlanItemQuantity3)
+		if err := utils.UnmarshalJSON(data, &changedResourceAdjustPlanItemQuantity3, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == adjust_plan_item_quantity) type ChangedResourceAdjustPlanItemQuantity3 within ChangedResourceUnion3: %w", string(data), err)
+		}
+
+		u.ChangedResourceAdjustPlanItemQuantity3 = changedResourceAdjustPlanItemQuantity3
+		u.Type = ChangedResourceUnion3TypeAdjustPlanItemQuantity
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for ChangedResourceUnion3", string(data))
+}
+
+func (u ChangedResourceUnion3) MarshalJSON() ([]byte, error) {
+	if u.ChangedResourceSetPlanItemQuantity3 != nil {
+		return utils.MarshalJSON(u.ChangedResourceSetPlanItemQuantity3, "", true)
+	}
+
+	if u.ChangedResourceIncreasePlanItemQuantity3 != nil {
+		return utils.MarshalJSON(u.ChangedResourceIncreasePlanItemQuantity3, "", true)
+	}
+
+	if u.ChangedResourceDecreasePlanItemQuantity3 != nil {
+		return utils.MarshalJSON(u.ChangedResourceDecreasePlanItemQuantity3, "", true)
+	}
+
+	if u.ChangedResourceAdjustPlanItemQuantity3 != nil {
+		return utils.MarshalJSON(u.ChangedResourceAdjustPlanItemQuantity3, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type ChangedResourceUnion3: all fields are null")
+}
+
 // OrbSubscriptionIntentOutput3 - Output returned after configuring an OrbSubscriptionIntent.
 type OrbSubscriptionIntentOutput3 struct {
 	// The Orb price ID for the subscription item being modified.
 	OrbPriceID string `json:"orbPriceId"`
 	// The product ID associated with this intent.
 	ProductID string `json:"productId"`
+	// Resources that were changed as part of this intent. Tracks all logical changes including the primary change and any side effects.
+	ChangedResources []ChangedResourceUnion3 `json:"changedResources,omitempty"`
 	// Optional metadata associated with the intent to update the Orb subscription with.
 	Metadata map[string]string `json:"metadata,omitempty"`
 	// The ID of the pending subscription change if there is one.
@@ -368,6 +1331,13 @@ func (o *OrbSubscriptionIntentOutput3) GetProductID() string {
 		return ""
 	}
 	return o.ProductID
+}
+
+func (o *OrbSubscriptionIntentOutput3) GetChangedResources() []ChangedResourceUnion3 {
+	if o == nil {
+		return nil
+	}
+	return o.ChangedResources
 }
 
 func (o *OrbSubscriptionIntentOutput3) GetMetadata() map[string]string {
@@ -481,12 +1451,490 @@ func (o *OrbSubscriptionIntentOptions2) GetResourceIds() []string {
 	return o.ResourceIds
 }
 
+type ChangedResourceTypeAdjustPlanItemQuantity2 string
+
+const (
+	ChangedResourceTypeAdjustPlanItemQuantity2AdjustPlanItemQuantity ChangedResourceTypeAdjustPlanItemQuantity2 = "adjust_plan_item_quantity"
+)
+
+func (e ChangedResourceTypeAdjustPlanItemQuantity2) ToPointer() *ChangedResourceTypeAdjustPlanItemQuantity2 {
+	return &e
+}
+func (e *ChangedResourceTypeAdjustPlanItemQuantity2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "adjust_plan_item_quantity":
+		*e = ChangedResourceTypeAdjustPlanItemQuantity2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for ChangedResourceTypeAdjustPlanItemQuantity2: %v", v)
+	}
+}
+
+// ChangedResourceAdjustPlanItemQuantity2 - Resources that were changed as part of this intent. Tracks all logical changes including the primary change and any side effects.
+type ChangedResourceAdjustPlanItemQuantity2 struct {
+	// Resource IDs that were added.
+	AddedResourceIds []string `json:"addedResourceIds"`
+	// The alias of the product that was changed.
+	ProductAlias string `json:"productAlias"`
+	// The ID of the product that was changed.
+	ProductID string `json:"productId"`
+	// The resulting quantity after this change.
+	Quantity float64 `json:"quantity"`
+	// Resource IDs that were removed.
+	RemovedResourceIds []string                                   `json:"removedResourceIds"`
+	Type               ChangedResourceTypeAdjustPlanItemQuantity2 `json:"type"`
+}
+
+func (c ChangedResourceAdjustPlanItemQuantity2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *ChangedResourceAdjustPlanItemQuantity2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"addedResourceIds", "productAlias", "productId", "quantity", "removedResourceIds", "type"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ChangedResourceAdjustPlanItemQuantity2) GetAddedResourceIds() []string {
+	if o == nil {
+		return []string{}
+	}
+	return o.AddedResourceIds
+}
+
+func (o *ChangedResourceAdjustPlanItemQuantity2) GetProductAlias() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProductAlias
+}
+
+func (o *ChangedResourceAdjustPlanItemQuantity2) GetProductID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProductID
+}
+
+func (o *ChangedResourceAdjustPlanItemQuantity2) GetQuantity() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Quantity
+}
+
+func (o *ChangedResourceAdjustPlanItemQuantity2) GetRemovedResourceIds() []string {
+	if o == nil {
+		return []string{}
+	}
+	return o.RemovedResourceIds
+}
+
+func (o *ChangedResourceAdjustPlanItemQuantity2) GetType() ChangedResourceTypeAdjustPlanItemQuantity2 {
+	if o == nil {
+		return ChangedResourceTypeAdjustPlanItemQuantity2("")
+	}
+	return o.Type
+}
+
+type ChangedResourceTypeDecreasePlanItemQuantity2 string
+
+const (
+	ChangedResourceTypeDecreasePlanItemQuantity2DecreasePlanItemQuantity ChangedResourceTypeDecreasePlanItemQuantity2 = "decrease_plan_item_quantity"
+)
+
+func (e ChangedResourceTypeDecreasePlanItemQuantity2) ToPointer() *ChangedResourceTypeDecreasePlanItemQuantity2 {
+	return &e
+}
+func (e *ChangedResourceTypeDecreasePlanItemQuantity2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "decrease_plan_item_quantity":
+		*e = ChangedResourceTypeDecreasePlanItemQuantity2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for ChangedResourceTypeDecreasePlanItemQuantity2: %v", v)
+	}
+}
+
+// ChangedResourceDecreasePlanItemQuantity2 - Resources that were changed as part of this intent. Tracks all logical changes including the primary change and any side effects.
+type ChangedResourceDecreasePlanItemQuantity2 struct {
+	// The alias of the product that was changed.
+	ProductAlias string `json:"productAlias"`
+	// The ID of the product that was changed.
+	ProductID string `json:"productId"`
+	// The resulting quantity after this change.
+	Quantity float64 `json:"quantity"`
+	// Resource IDs that were removed.
+	ResourceIds []string                                     `json:"resourceIds"`
+	Type        ChangedResourceTypeDecreasePlanItemQuantity2 `json:"type"`
+}
+
+func (c ChangedResourceDecreasePlanItemQuantity2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *ChangedResourceDecreasePlanItemQuantity2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"productAlias", "productId", "quantity", "resourceIds", "type"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ChangedResourceDecreasePlanItemQuantity2) GetProductAlias() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProductAlias
+}
+
+func (o *ChangedResourceDecreasePlanItemQuantity2) GetProductID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProductID
+}
+
+func (o *ChangedResourceDecreasePlanItemQuantity2) GetQuantity() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Quantity
+}
+
+func (o *ChangedResourceDecreasePlanItemQuantity2) GetResourceIds() []string {
+	if o == nil {
+		return []string{}
+	}
+	return o.ResourceIds
+}
+
+func (o *ChangedResourceDecreasePlanItemQuantity2) GetType() ChangedResourceTypeDecreasePlanItemQuantity2 {
+	if o == nil {
+		return ChangedResourceTypeDecreasePlanItemQuantity2("")
+	}
+	return o.Type
+}
+
+type ChangedResourceTypeIncreasePlanItemQuantity2 string
+
+const (
+	ChangedResourceTypeIncreasePlanItemQuantity2IncreasePlanItemQuantity ChangedResourceTypeIncreasePlanItemQuantity2 = "increase_plan_item_quantity"
+)
+
+func (e ChangedResourceTypeIncreasePlanItemQuantity2) ToPointer() *ChangedResourceTypeIncreasePlanItemQuantity2 {
+	return &e
+}
+func (e *ChangedResourceTypeIncreasePlanItemQuantity2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "increase_plan_item_quantity":
+		*e = ChangedResourceTypeIncreasePlanItemQuantity2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for ChangedResourceTypeIncreasePlanItemQuantity2: %v", v)
+	}
+}
+
+// ChangedResourceIncreasePlanItemQuantity2 - Resources that were changed as part of this intent. Tracks all logical changes including the primary change and any side effects.
+type ChangedResourceIncreasePlanItemQuantity2 struct {
+	// The alias of the product that was changed.
+	ProductAlias string `json:"productAlias"`
+	// The ID of the product that was changed.
+	ProductID string `json:"productId"`
+	// The resulting quantity after this change.
+	Quantity float64 `json:"quantity"`
+	// Resource IDs that were added.
+	ResourceIds []string                                     `json:"resourceIds"`
+	Type        ChangedResourceTypeIncreasePlanItemQuantity2 `json:"type"`
+}
+
+func (c ChangedResourceIncreasePlanItemQuantity2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *ChangedResourceIncreasePlanItemQuantity2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"productAlias", "productId", "quantity", "resourceIds", "type"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ChangedResourceIncreasePlanItemQuantity2) GetProductAlias() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProductAlias
+}
+
+func (o *ChangedResourceIncreasePlanItemQuantity2) GetProductID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProductID
+}
+
+func (o *ChangedResourceIncreasePlanItemQuantity2) GetQuantity() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Quantity
+}
+
+func (o *ChangedResourceIncreasePlanItemQuantity2) GetResourceIds() []string {
+	if o == nil {
+		return []string{}
+	}
+	return o.ResourceIds
+}
+
+func (o *ChangedResourceIncreasePlanItemQuantity2) GetType() ChangedResourceTypeIncreasePlanItemQuantity2 {
+	if o == nil {
+		return ChangedResourceTypeIncreasePlanItemQuantity2("")
+	}
+	return o.Type
+}
+
+type ChangedResourceTypeSetPlanItemQuantity2 string
+
+const (
+	ChangedResourceTypeSetPlanItemQuantity2SetPlanItemQuantity ChangedResourceTypeSetPlanItemQuantity2 = "set_plan_item_quantity"
+)
+
+func (e ChangedResourceTypeSetPlanItemQuantity2) ToPointer() *ChangedResourceTypeSetPlanItemQuantity2 {
+	return &e
+}
+func (e *ChangedResourceTypeSetPlanItemQuantity2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "set_plan_item_quantity":
+		*e = ChangedResourceTypeSetPlanItemQuantity2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for ChangedResourceTypeSetPlanItemQuantity2: %v", v)
+	}
+}
+
+// ChangedResourceSetPlanItemQuantity2 - Resources that were changed as part of this intent. Tracks all logical changes including the primary change and any side effects.
+type ChangedResourceSetPlanItemQuantity2 struct {
+	// The alias of the product that was changed.
+	ProductAlias string `json:"productAlias"`
+	// The ID of the product that was changed.
+	ProductID string `json:"productId"`
+	// The resulting quantity after this change.
+	Quantity float64                                 `json:"quantity"`
+	Type     ChangedResourceTypeSetPlanItemQuantity2 `json:"type"`
+	// The full set of resource IDs after the set operation.
+	ResourceIds []string `json:"resourceIds,omitempty"`
+}
+
+func (c ChangedResourceSetPlanItemQuantity2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *ChangedResourceSetPlanItemQuantity2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"productAlias", "productId", "quantity", "type"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ChangedResourceSetPlanItemQuantity2) GetProductAlias() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProductAlias
+}
+
+func (o *ChangedResourceSetPlanItemQuantity2) GetProductID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProductID
+}
+
+func (o *ChangedResourceSetPlanItemQuantity2) GetQuantity() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Quantity
+}
+
+func (o *ChangedResourceSetPlanItemQuantity2) GetType() ChangedResourceTypeSetPlanItemQuantity2 {
+	if o == nil {
+		return ChangedResourceTypeSetPlanItemQuantity2("")
+	}
+	return o.Type
+}
+
+func (o *ChangedResourceSetPlanItemQuantity2) GetResourceIds() []string {
+	if o == nil {
+		return nil
+	}
+	return o.ResourceIds
+}
+
+type ChangedResourceUnion2Type string
+
+const (
+	ChangedResourceUnion2TypeSetPlanItemQuantity      ChangedResourceUnion2Type = "set_plan_item_quantity"
+	ChangedResourceUnion2TypeIncreasePlanItemQuantity ChangedResourceUnion2Type = "increase_plan_item_quantity"
+	ChangedResourceUnion2TypeDecreasePlanItemQuantity ChangedResourceUnion2Type = "decrease_plan_item_quantity"
+	ChangedResourceUnion2TypeAdjustPlanItemQuantity   ChangedResourceUnion2Type = "adjust_plan_item_quantity"
+)
+
+type ChangedResourceUnion2 struct {
+	ChangedResourceSetPlanItemQuantity2      *ChangedResourceSetPlanItemQuantity2      `queryParam:"inline"`
+	ChangedResourceIncreasePlanItemQuantity2 *ChangedResourceIncreasePlanItemQuantity2 `queryParam:"inline"`
+	ChangedResourceDecreasePlanItemQuantity2 *ChangedResourceDecreasePlanItemQuantity2 `queryParam:"inline"`
+	ChangedResourceAdjustPlanItemQuantity2   *ChangedResourceAdjustPlanItemQuantity2   `queryParam:"inline"`
+
+	Type ChangedResourceUnion2Type
+}
+
+func CreateChangedResourceUnion2SetPlanItemQuantity(setPlanItemQuantity ChangedResourceSetPlanItemQuantity2) ChangedResourceUnion2 {
+	typ := ChangedResourceUnion2TypeSetPlanItemQuantity
+
+	typStr := ChangedResourceTypeSetPlanItemQuantity2(typ)
+	setPlanItemQuantity.Type = typStr
+
+	return ChangedResourceUnion2{
+		ChangedResourceSetPlanItemQuantity2: &setPlanItemQuantity,
+		Type:                                typ,
+	}
+}
+
+func CreateChangedResourceUnion2IncreasePlanItemQuantity(increasePlanItemQuantity ChangedResourceIncreasePlanItemQuantity2) ChangedResourceUnion2 {
+	typ := ChangedResourceUnion2TypeIncreasePlanItemQuantity
+
+	typStr := ChangedResourceTypeIncreasePlanItemQuantity2(typ)
+	increasePlanItemQuantity.Type = typStr
+
+	return ChangedResourceUnion2{
+		ChangedResourceIncreasePlanItemQuantity2: &increasePlanItemQuantity,
+		Type:                                     typ,
+	}
+}
+
+func CreateChangedResourceUnion2DecreasePlanItemQuantity(decreasePlanItemQuantity ChangedResourceDecreasePlanItemQuantity2) ChangedResourceUnion2 {
+	typ := ChangedResourceUnion2TypeDecreasePlanItemQuantity
+
+	typStr := ChangedResourceTypeDecreasePlanItemQuantity2(typ)
+	decreasePlanItemQuantity.Type = typStr
+
+	return ChangedResourceUnion2{
+		ChangedResourceDecreasePlanItemQuantity2: &decreasePlanItemQuantity,
+		Type:                                     typ,
+	}
+}
+
+func CreateChangedResourceUnion2AdjustPlanItemQuantity(adjustPlanItemQuantity ChangedResourceAdjustPlanItemQuantity2) ChangedResourceUnion2 {
+	typ := ChangedResourceUnion2TypeAdjustPlanItemQuantity
+
+	typStr := ChangedResourceTypeAdjustPlanItemQuantity2(typ)
+	adjustPlanItemQuantity.Type = typStr
+
+	return ChangedResourceUnion2{
+		ChangedResourceAdjustPlanItemQuantity2: &adjustPlanItemQuantity,
+		Type:                                   typ,
+	}
+}
+
+func (u *ChangedResourceUnion2) UnmarshalJSON(data []byte) error {
+
+	type discriminator struct {
+		Type string `json:"type"`
+	}
+
+	dis := new(discriminator)
+	if err := json.Unmarshal(data, &dis); err != nil {
+		return fmt.Errorf("could not unmarshal discriminator: %w", err)
+	}
+
+	switch dis.Type {
+	case "set_plan_item_quantity":
+		changedResourceSetPlanItemQuantity2 := new(ChangedResourceSetPlanItemQuantity2)
+		if err := utils.UnmarshalJSON(data, &changedResourceSetPlanItemQuantity2, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == set_plan_item_quantity) type ChangedResourceSetPlanItemQuantity2 within ChangedResourceUnion2: %w", string(data), err)
+		}
+
+		u.ChangedResourceSetPlanItemQuantity2 = changedResourceSetPlanItemQuantity2
+		u.Type = ChangedResourceUnion2TypeSetPlanItemQuantity
+		return nil
+	case "increase_plan_item_quantity":
+		changedResourceIncreasePlanItemQuantity2 := new(ChangedResourceIncreasePlanItemQuantity2)
+		if err := utils.UnmarshalJSON(data, &changedResourceIncreasePlanItemQuantity2, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == increase_plan_item_quantity) type ChangedResourceIncreasePlanItemQuantity2 within ChangedResourceUnion2: %w", string(data), err)
+		}
+
+		u.ChangedResourceIncreasePlanItemQuantity2 = changedResourceIncreasePlanItemQuantity2
+		u.Type = ChangedResourceUnion2TypeIncreasePlanItemQuantity
+		return nil
+	case "decrease_plan_item_quantity":
+		changedResourceDecreasePlanItemQuantity2 := new(ChangedResourceDecreasePlanItemQuantity2)
+		if err := utils.UnmarshalJSON(data, &changedResourceDecreasePlanItemQuantity2, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == decrease_plan_item_quantity) type ChangedResourceDecreasePlanItemQuantity2 within ChangedResourceUnion2: %w", string(data), err)
+		}
+
+		u.ChangedResourceDecreasePlanItemQuantity2 = changedResourceDecreasePlanItemQuantity2
+		u.Type = ChangedResourceUnion2TypeDecreasePlanItemQuantity
+		return nil
+	case "adjust_plan_item_quantity":
+		changedResourceAdjustPlanItemQuantity2 := new(ChangedResourceAdjustPlanItemQuantity2)
+		if err := utils.UnmarshalJSON(data, &changedResourceAdjustPlanItemQuantity2, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == adjust_plan_item_quantity) type ChangedResourceAdjustPlanItemQuantity2 within ChangedResourceUnion2: %w", string(data), err)
+		}
+
+		u.ChangedResourceAdjustPlanItemQuantity2 = changedResourceAdjustPlanItemQuantity2
+		u.Type = ChangedResourceUnion2TypeAdjustPlanItemQuantity
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for ChangedResourceUnion2", string(data))
+}
+
+func (u ChangedResourceUnion2) MarshalJSON() ([]byte, error) {
+	if u.ChangedResourceSetPlanItemQuantity2 != nil {
+		return utils.MarshalJSON(u.ChangedResourceSetPlanItemQuantity2, "", true)
+	}
+
+	if u.ChangedResourceIncreasePlanItemQuantity2 != nil {
+		return utils.MarshalJSON(u.ChangedResourceIncreasePlanItemQuantity2, "", true)
+	}
+
+	if u.ChangedResourceDecreasePlanItemQuantity2 != nil {
+		return utils.MarshalJSON(u.ChangedResourceDecreasePlanItemQuantity2, "", true)
+	}
+
+	if u.ChangedResourceAdjustPlanItemQuantity2 != nil {
+		return utils.MarshalJSON(u.ChangedResourceAdjustPlanItemQuantity2, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type ChangedResourceUnion2: all fields are null")
+}
+
 // OrbSubscriptionIntentOutput2 - Output returned after configuring an OrbSubscriptionIntent.
 type OrbSubscriptionIntentOutput2 struct {
 	// The Orb price ID for the subscription item being modified.
 	OrbPriceID string `json:"orbPriceId"`
 	// The product ID associated with this intent.
 	ProductID string `json:"productId"`
+	// Resources that were changed as part of this intent. Tracks all logical changes including the primary change and any side effects.
+	ChangedResources []ChangedResourceUnion2 `json:"changedResources,omitempty"`
 	// Optional metadata associated with the intent to update the Orb subscription with.
 	Metadata map[string]string `json:"metadata,omitempty"`
 	// The ID of the pending subscription change if there is one.
@@ -516,6 +1964,13 @@ func (o *OrbSubscriptionIntentOutput2) GetProductID() string {
 		return ""
 	}
 	return o.ProductID
+}
+
+func (o *OrbSubscriptionIntentOutput2) GetChangedResources() []ChangedResourceUnion2 {
+	if o == nil {
+		return nil
+	}
+	return o.ChangedResources
 }
 
 func (o *OrbSubscriptionIntentOutput2) GetMetadata() map[string]string {
@@ -638,12 +2093,490 @@ func (o *OrbSubscriptionIntentOptions1) GetResourceIds() []string {
 	return o.ResourceIds
 }
 
+type ChangedResourceTypeAdjustPlanItemQuantity1 string
+
+const (
+	ChangedResourceTypeAdjustPlanItemQuantity1AdjustPlanItemQuantity ChangedResourceTypeAdjustPlanItemQuantity1 = "adjust_plan_item_quantity"
+)
+
+func (e ChangedResourceTypeAdjustPlanItemQuantity1) ToPointer() *ChangedResourceTypeAdjustPlanItemQuantity1 {
+	return &e
+}
+func (e *ChangedResourceTypeAdjustPlanItemQuantity1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "adjust_plan_item_quantity":
+		*e = ChangedResourceTypeAdjustPlanItemQuantity1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for ChangedResourceTypeAdjustPlanItemQuantity1: %v", v)
+	}
+}
+
+// ChangedResourceAdjustPlanItemQuantity1 - Resources that were changed as part of this intent. Tracks all logical changes including the primary change and any side effects.
+type ChangedResourceAdjustPlanItemQuantity1 struct {
+	// Resource IDs that were added.
+	AddedResourceIds []string `json:"addedResourceIds"`
+	// The alias of the product that was changed.
+	ProductAlias string `json:"productAlias"`
+	// The ID of the product that was changed.
+	ProductID string `json:"productId"`
+	// The resulting quantity after this change.
+	Quantity float64 `json:"quantity"`
+	// Resource IDs that were removed.
+	RemovedResourceIds []string                                   `json:"removedResourceIds"`
+	Type               ChangedResourceTypeAdjustPlanItemQuantity1 `json:"type"`
+}
+
+func (c ChangedResourceAdjustPlanItemQuantity1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *ChangedResourceAdjustPlanItemQuantity1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"addedResourceIds", "productAlias", "productId", "quantity", "removedResourceIds", "type"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ChangedResourceAdjustPlanItemQuantity1) GetAddedResourceIds() []string {
+	if o == nil {
+		return []string{}
+	}
+	return o.AddedResourceIds
+}
+
+func (o *ChangedResourceAdjustPlanItemQuantity1) GetProductAlias() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProductAlias
+}
+
+func (o *ChangedResourceAdjustPlanItemQuantity1) GetProductID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProductID
+}
+
+func (o *ChangedResourceAdjustPlanItemQuantity1) GetQuantity() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Quantity
+}
+
+func (o *ChangedResourceAdjustPlanItemQuantity1) GetRemovedResourceIds() []string {
+	if o == nil {
+		return []string{}
+	}
+	return o.RemovedResourceIds
+}
+
+func (o *ChangedResourceAdjustPlanItemQuantity1) GetType() ChangedResourceTypeAdjustPlanItemQuantity1 {
+	if o == nil {
+		return ChangedResourceTypeAdjustPlanItemQuantity1("")
+	}
+	return o.Type
+}
+
+type ChangedResourceTypeDecreasePlanItemQuantity1 string
+
+const (
+	ChangedResourceTypeDecreasePlanItemQuantity1DecreasePlanItemQuantity ChangedResourceTypeDecreasePlanItemQuantity1 = "decrease_plan_item_quantity"
+)
+
+func (e ChangedResourceTypeDecreasePlanItemQuantity1) ToPointer() *ChangedResourceTypeDecreasePlanItemQuantity1 {
+	return &e
+}
+func (e *ChangedResourceTypeDecreasePlanItemQuantity1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "decrease_plan_item_quantity":
+		*e = ChangedResourceTypeDecreasePlanItemQuantity1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for ChangedResourceTypeDecreasePlanItemQuantity1: %v", v)
+	}
+}
+
+// ChangedResourceDecreasePlanItemQuantity1 - Resources that were changed as part of this intent. Tracks all logical changes including the primary change and any side effects.
+type ChangedResourceDecreasePlanItemQuantity1 struct {
+	// The alias of the product that was changed.
+	ProductAlias string `json:"productAlias"`
+	// The ID of the product that was changed.
+	ProductID string `json:"productId"`
+	// The resulting quantity after this change.
+	Quantity float64 `json:"quantity"`
+	// Resource IDs that were removed.
+	ResourceIds []string                                     `json:"resourceIds"`
+	Type        ChangedResourceTypeDecreasePlanItemQuantity1 `json:"type"`
+}
+
+func (c ChangedResourceDecreasePlanItemQuantity1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *ChangedResourceDecreasePlanItemQuantity1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"productAlias", "productId", "quantity", "resourceIds", "type"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ChangedResourceDecreasePlanItemQuantity1) GetProductAlias() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProductAlias
+}
+
+func (o *ChangedResourceDecreasePlanItemQuantity1) GetProductID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProductID
+}
+
+func (o *ChangedResourceDecreasePlanItemQuantity1) GetQuantity() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Quantity
+}
+
+func (o *ChangedResourceDecreasePlanItemQuantity1) GetResourceIds() []string {
+	if o == nil {
+		return []string{}
+	}
+	return o.ResourceIds
+}
+
+func (o *ChangedResourceDecreasePlanItemQuantity1) GetType() ChangedResourceTypeDecreasePlanItemQuantity1 {
+	if o == nil {
+		return ChangedResourceTypeDecreasePlanItemQuantity1("")
+	}
+	return o.Type
+}
+
+type ChangedResourceTypeIncreasePlanItemQuantity1 string
+
+const (
+	ChangedResourceTypeIncreasePlanItemQuantity1IncreasePlanItemQuantity ChangedResourceTypeIncreasePlanItemQuantity1 = "increase_plan_item_quantity"
+)
+
+func (e ChangedResourceTypeIncreasePlanItemQuantity1) ToPointer() *ChangedResourceTypeIncreasePlanItemQuantity1 {
+	return &e
+}
+func (e *ChangedResourceTypeIncreasePlanItemQuantity1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "increase_plan_item_quantity":
+		*e = ChangedResourceTypeIncreasePlanItemQuantity1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for ChangedResourceTypeIncreasePlanItemQuantity1: %v", v)
+	}
+}
+
+// ChangedResourceIncreasePlanItemQuantity1 - Resources that were changed as part of this intent. Tracks all logical changes including the primary change and any side effects.
+type ChangedResourceIncreasePlanItemQuantity1 struct {
+	// The alias of the product that was changed.
+	ProductAlias string `json:"productAlias"`
+	// The ID of the product that was changed.
+	ProductID string `json:"productId"`
+	// The resulting quantity after this change.
+	Quantity float64 `json:"quantity"`
+	// Resource IDs that were added.
+	ResourceIds []string                                     `json:"resourceIds"`
+	Type        ChangedResourceTypeIncreasePlanItemQuantity1 `json:"type"`
+}
+
+func (c ChangedResourceIncreasePlanItemQuantity1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *ChangedResourceIncreasePlanItemQuantity1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"productAlias", "productId", "quantity", "resourceIds", "type"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ChangedResourceIncreasePlanItemQuantity1) GetProductAlias() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProductAlias
+}
+
+func (o *ChangedResourceIncreasePlanItemQuantity1) GetProductID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProductID
+}
+
+func (o *ChangedResourceIncreasePlanItemQuantity1) GetQuantity() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Quantity
+}
+
+func (o *ChangedResourceIncreasePlanItemQuantity1) GetResourceIds() []string {
+	if o == nil {
+		return []string{}
+	}
+	return o.ResourceIds
+}
+
+func (o *ChangedResourceIncreasePlanItemQuantity1) GetType() ChangedResourceTypeIncreasePlanItemQuantity1 {
+	if o == nil {
+		return ChangedResourceTypeIncreasePlanItemQuantity1("")
+	}
+	return o.Type
+}
+
+type ChangedResourceTypeSetPlanItemQuantity1 string
+
+const (
+	ChangedResourceTypeSetPlanItemQuantity1SetPlanItemQuantity ChangedResourceTypeSetPlanItemQuantity1 = "set_plan_item_quantity"
+)
+
+func (e ChangedResourceTypeSetPlanItemQuantity1) ToPointer() *ChangedResourceTypeSetPlanItemQuantity1 {
+	return &e
+}
+func (e *ChangedResourceTypeSetPlanItemQuantity1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "set_plan_item_quantity":
+		*e = ChangedResourceTypeSetPlanItemQuantity1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for ChangedResourceTypeSetPlanItemQuantity1: %v", v)
+	}
+}
+
+// ChangedResourceSetPlanItemQuantity1 - Resources that were changed as part of this intent. Tracks all logical changes including the primary change and any side effects.
+type ChangedResourceSetPlanItemQuantity1 struct {
+	// The alias of the product that was changed.
+	ProductAlias string `json:"productAlias"`
+	// The ID of the product that was changed.
+	ProductID string `json:"productId"`
+	// The resulting quantity after this change.
+	Quantity float64                                 `json:"quantity"`
+	Type     ChangedResourceTypeSetPlanItemQuantity1 `json:"type"`
+	// The full set of resource IDs after the set operation.
+	ResourceIds []string `json:"resourceIds,omitempty"`
+}
+
+func (c ChangedResourceSetPlanItemQuantity1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *ChangedResourceSetPlanItemQuantity1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"productAlias", "productId", "quantity", "type"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ChangedResourceSetPlanItemQuantity1) GetProductAlias() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProductAlias
+}
+
+func (o *ChangedResourceSetPlanItemQuantity1) GetProductID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProductID
+}
+
+func (o *ChangedResourceSetPlanItemQuantity1) GetQuantity() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Quantity
+}
+
+func (o *ChangedResourceSetPlanItemQuantity1) GetType() ChangedResourceTypeSetPlanItemQuantity1 {
+	if o == nil {
+		return ChangedResourceTypeSetPlanItemQuantity1("")
+	}
+	return o.Type
+}
+
+func (o *ChangedResourceSetPlanItemQuantity1) GetResourceIds() []string {
+	if o == nil {
+		return nil
+	}
+	return o.ResourceIds
+}
+
+type ChangedResourceUnion1Type string
+
+const (
+	ChangedResourceUnion1TypeSetPlanItemQuantity      ChangedResourceUnion1Type = "set_plan_item_quantity"
+	ChangedResourceUnion1TypeIncreasePlanItemQuantity ChangedResourceUnion1Type = "increase_plan_item_quantity"
+	ChangedResourceUnion1TypeDecreasePlanItemQuantity ChangedResourceUnion1Type = "decrease_plan_item_quantity"
+	ChangedResourceUnion1TypeAdjustPlanItemQuantity   ChangedResourceUnion1Type = "adjust_plan_item_quantity"
+)
+
+type ChangedResourceUnion1 struct {
+	ChangedResourceSetPlanItemQuantity1      *ChangedResourceSetPlanItemQuantity1      `queryParam:"inline"`
+	ChangedResourceIncreasePlanItemQuantity1 *ChangedResourceIncreasePlanItemQuantity1 `queryParam:"inline"`
+	ChangedResourceDecreasePlanItemQuantity1 *ChangedResourceDecreasePlanItemQuantity1 `queryParam:"inline"`
+	ChangedResourceAdjustPlanItemQuantity1   *ChangedResourceAdjustPlanItemQuantity1   `queryParam:"inline"`
+
+	Type ChangedResourceUnion1Type
+}
+
+func CreateChangedResourceUnion1SetPlanItemQuantity(setPlanItemQuantity ChangedResourceSetPlanItemQuantity1) ChangedResourceUnion1 {
+	typ := ChangedResourceUnion1TypeSetPlanItemQuantity
+
+	typStr := ChangedResourceTypeSetPlanItemQuantity1(typ)
+	setPlanItemQuantity.Type = typStr
+
+	return ChangedResourceUnion1{
+		ChangedResourceSetPlanItemQuantity1: &setPlanItemQuantity,
+		Type:                                typ,
+	}
+}
+
+func CreateChangedResourceUnion1IncreasePlanItemQuantity(increasePlanItemQuantity ChangedResourceIncreasePlanItemQuantity1) ChangedResourceUnion1 {
+	typ := ChangedResourceUnion1TypeIncreasePlanItemQuantity
+
+	typStr := ChangedResourceTypeIncreasePlanItemQuantity1(typ)
+	increasePlanItemQuantity.Type = typStr
+
+	return ChangedResourceUnion1{
+		ChangedResourceIncreasePlanItemQuantity1: &increasePlanItemQuantity,
+		Type:                                     typ,
+	}
+}
+
+func CreateChangedResourceUnion1DecreasePlanItemQuantity(decreasePlanItemQuantity ChangedResourceDecreasePlanItemQuantity1) ChangedResourceUnion1 {
+	typ := ChangedResourceUnion1TypeDecreasePlanItemQuantity
+
+	typStr := ChangedResourceTypeDecreasePlanItemQuantity1(typ)
+	decreasePlanItemQuantity.Type = typStr
+
+	return ChangedResourceUnion1{
+		ChangedResourceDecreasePlanItemQuantity1: &decreasePlanItemQuantity,
+		Type:                                     typ,
+	}
+}
+
+func CreateChangedResourceUnion1AdjustPlanItemQuantity(adjustPlanItemQuantity ChangedResourceAdjustPlanItemQuantity1) ChangedResourceUnion1 {
+	typ := ChangedResourceUnion1TypeAdjustPlanItemQuantity
+
+	typStr := ChangedResourceTypeAdjustPlanItemQuantity1(typ)
+	adjustPlanItemQuantity.Type = typStr
+
+	return ChangedResourceUnion1{
+		ChangedResourceAdjustPlanItemQuantity1: &adjustPlanItemQuantity,
+		Type:                                   typ,
+	}
+}
+
+func (u *ChangedResourceUnion1) UnmarshalJSON(data []byte) error {
+
+	type discriminator struct {
+		Type string `json:"type"`
+	}
+
+	dis := new(discriminator)
+	if err := json.Unmarshal(data, &dis); err != nil {
+		return fmt.Errorf("could not unmarshal discriminator: %w", err)
+	}
+
+	switch dis.Type {
+	case "set_plan_item_quantity":
+		changedResourceSetPlanItemQuantity1 := new(ChangedResourceSetPlanItemQuantity1)
+		if err := utils.UnmarshalJSON(data, &changedResourceSetPlanItemQuantity1, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == set_plan_item_quantity) type ChangedResourceSetPlanItemQuantity1 within ChangedResourceUnion1: %w", string(data), err)
+		}
+
+		u.ChangedResourceSetPlanItemQuantity1 = changedResourceSetPlanItemQuantity1
+		u.Type = ChangedResourceUnion1TypeSetPlanItemQuantity
+		return nil
+	case "increase_plan_item_quantity":
+		changedResourceIncreasePlanItemQuantity1 := new(ChangedResourceIncreasePlanItemQuantity1)
+		if err := utils.UnmarshalJSON(data, &changedResourceIncreasePlanItemQuantity1, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == increase_plan_item_quantity) type ChangedResourceIncreasePlanItemQuantity1 within ChangedResourceUnion1: %w", string(data), err)
+		}
+
+		u.ChangedResourceIncreasePlanItemQuantity1 = changedResourceIncreasePlanItemQuantity1
+		u.Type = ChangedResourceUnion1TypeIncreasePlanItemQuantity
+		return nil
+	case "decrease_plan_item_quantity":
+		changedResourceDecreasePlanItemQuantity1 := new(ChangedResourceDecreasePlanItemQuantity1)
+		if err := utils.UnmarshalJSON(data, &changedResourceDecreasePlanItemQuantity1, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == decrease_plan_item_quantity) type ChangedResourceDecreasePlanItemQuantity1 within ChangedResourceUnion1: %w", string(data), err)
+		}
+
+		u.ChangedResourceDecreasePlanItemQuantity1 = changedResourceDecreasePlanItemQuantity1
+		u.Type = ChangedResourceUnion1TypeDecreasePlanItemQuantity
+		return nil
+	case "adjust_plan_item_quantity":
+		changedResourceAdjustPlanItemQuantity1 := new(ChangedResourceAdjustPlanItemQuantity1)
+		if err := utils.UnmarshalJSON(data, &changedResourceAdjustPlanItemQuantity1, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == adjust_plan_item_quantity) type ChangedResourceAdjustPlanItemQuantity1 within ChangedResourceUnion1: %w", string(data), err)
+		}
+
+		u.ChangedResourceAdjustPlanItemQuantity1 = changedResourceAdjustPlanItemQuantity1
+		u.Type = ChangedResourceUnion1TypeAdjustPlanItemQuantity
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for ChangedResourceUnion1", string(data))
+}
+
+func (u ChangedResourceUnion1) MarshalJSON() ([]byte, error) {
+	if u.ChangedResourceSetPlanItemQuantity1 != nil {
+		return utils.MarshalJSON(u.ChangedResourceSetPlanItemQuantity1, "", true)
+	}
+
+	if u.ChangedResourceIncreasePlanItemQuantity1 != nil {
+		return utils.MarshalJSON(u.ChangedResourceIncreasePlanItemQuantity1, "", true)
+	}
+
+	if u.ChangedResourceDecreasePlanItemQuantity1 != nil {
+		return utils.MarshalJSON(u.ChangedResourceDecreasePlanItemQuantity1, "", true)
+	}
+
+	if u.ChangedResourceAdjustPlanItemQuantity1 != nil {
+		return utils.MarshalJSON(u.ChangedResourceAdjustPlanItemQuantity1, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type ChangedResourceUnion1: all fields are null")
+}
+
 // OrbSubscriptionIntentOutput1 - Output returned after configuring an OrbSubscriptionIntent.
 type OrbSubscriptionIntentOutput1 struct {
 	// The Orb price ID for the subscription item being modified.
 	OrbPriceID string `json:"orbPriceId"`
 	// The product ID associated with this intent.
 	ProductID string `json:"productId"`
+	// Resources that were changed as part of this intent. Tracks all logical changes including the primary change and any side effects.
+	ChangedResources []ChangedResourceUnion1 `json:"changedResources,omitempty"`
 	// Optional metadata associated with the intent to update the Orb subscription with.
 	Metadata map[string]string `json:"metadata,omitempty"`
 	// The ID of the pending subscription change if there is one.
@@ -673,6 +2606,13 @@ func (o *OrbSubscriptionIntentOutput1) GetProductID() string {
 		return ""
 	}
 	return o.ProductID
+}
+
+func (o *OrbSubscriptionIntentOutput1) GetChangedResources() []ChangedResourceUnion1 {
+	if o == nil {
+		return nil
+	}
+	return o.ChangedResources
 }
 
 func (o *OrbSubscriptionIntentOutput1) GetMetadata() map[string]string {

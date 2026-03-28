@@ -18,6 +18,7 @@ let value: CreateAuthTokenResponseBody = {
     createdAt: 1632816536002,
     activeAt: 1632816536002,
     expiresAt: 1632816536002,
+    revokedAt: 1632816536002,
     leakedAt: 1632816536002,
   },
   bearerToken: "uRKJSTt0L4RaSkiMj41QTkxM",

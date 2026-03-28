@@ -1,0 +1,33 @@
+# ResponseBodyExperiment
+
+## Example Usage
+
+```typescript
+import { ResponseBodyExperiment } from "@vercel/sdk/models/updateflagop.js";
+
+let value: ResponseBodyExperiment = {
+  allocationUnit: "userId",
+  primaryMetrics: [],
+  status: "closed",
+};
+```
+
+## Fields
+
+| Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `name`                                                                             | *string*                                                                           | :heavy_minus_sign:                                                                 | N/A                                                                                |
+| `id`                                                                               | *string*                                                                           | :heavy_minus_sign:                                                                 | N/A                                                                                |
+| `numVariants`                                                                      | *number*                                                                           | :heavy_minus_sign:                                                                 | N/A                                                                                |
+| `surfaceArea`                                                                      | *string*                                                                           | :heavy_minus_sign:                                                                 | N/A                                                                                |
+| `stickyRequirement`                                                                | *boolean*                                                                          | :heavy_minus_sign:                                                                 | N/A                                                                                |
+| `layer`                                                                            | *string*                                                                           | :heavy_minus_sign:                                                                 | N/A                                                                                |
+| `guardrailMetrics`                                                                 | [models.ResponseBodyGuardrailMetrics](../models/responsebodyguardrailmetrics.md)[] | :heavy_minus_sign:                                                                 | N/A                                                                                |
+| `hypothesis`                                                                       | *string*                                                                           | :heavy_minus_sign:                                                                 | N/A                                                                                |
+| `device`                                                                           | [models.ResponseBodyDevice](../models/responsebodydevice.md)                       | :heavy_minus_sign:                                                                 | N/A                                                                                |
+| `controlVariantId`                                                                 | *string*                                                                           | :heavy_minus_sign:                                                                 | N/A                                                                                |
+| `startedAt`                                                                        | *number*                                                                           | :heavy_minus_sign:                                                                 | N/A                                                                                |
+| `endedAt`                                                                          | *number*                                                                           | :heavy_minus_sign:                                                                 | N/A                                                                                |
+| `allocationUnit`                                                                   | [models.ResponseBodyAllocationUnit](../models/responsebodyallocationunit.md)       | :heavy_check_mark:                                                                 | N/A                                                                                |
+| `primaryMetrics`                                                                   | [models.ResponseBodyPrimaryMetrics](../models/responsebodyprimarymetrics.md)[]     | :heavy_check_mark:                                                                 | N/A                                                                                |
+| `status`                                                                           | [models.UpdateFlagResponseBodyStatus](../models/updateflagresponsebodystatus.md)   | :heavy_check_mark:                                                                 | N/A                                                                                |

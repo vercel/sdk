@@ -74,33 +74,33 @@ func (e *CreateProjectCheckBlocksRequest) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type ProviderRequest string
+type ProviderGithub string
 
 const (
-	ProviderRequestGithub ProviderRequest = "github"
+	ProviderGithubGithub ProviderGithub = "github"
 )
 
-func (e ProviderRequest) ToPointer() *ProviderRequest {
+func (e ProviderGithub) ToPointer() *ProviderGithub {
 	return &e
 }
-func (e *ProviderRequest) UnmarshalJSON(data []byte) error {
+func (e *ProviderGithub) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "github":
-		*e = ProviderRequest(v)
+		*e = ProviderGithub(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ProviderRequest: %v", v)
+		return fmt.Errorf("invalid value for ProviderGithub: %v", v)
 	}
 }
 
 type SourceGithub struct {
-	Kind              string          `json:"kind"`
-	ExternalCheckName string          `json:"externalCheckName"`
-	Provider          ProviderRequest `json:"provider"`
+	Kind              string         `json:"kind"`
+	ExternalCheckName string         `json:"externalCheckName"`
+	Provider          ProviderGithub `json:"provider"`
 }
 
 func (s SourceGithub) MarshalJSON() ([]byte, error) {
@@ -128,9 +128,9 @@ func (o *SourceGithub) GetExternalCheckName() string {
 	return o.ExternalCheckName
 }
 
-func (o *SourceGithub) GetProvider() ProviderRequest {
+func (o *SourceGithub) GetProvider() ProviderGithub {
 	if o == nil {
-		return ProviderRequest("")
+		return ProviderGithub("")
 	}
 	return o.Provider
 }

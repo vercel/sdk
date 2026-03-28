@@ -17,6 +17,7 @@ let value: AuthToken = {
   createdAt: 1632816536002,
   activeAt: 1632816536002,
   expiresAt: 1632816536002,
+  revokedAt: 1632816536002,
   leakedAt: 1632816536002,
 };
 ```
@@ -35,5 +36,6 @@ let value: AuthToken = {
 | `createdAt`                                                           | *number*                                                              | :heavy_check_mark:                                                    | Timestamp (in milliseconds) of when the token was created.            | 1632816536002                                                         |
 | `activeAt`                                                            | *number*                                                              | :heavy_check_mark:                                                    | Timestamp (in milliseconds) of when the token was most recently used. | 1632816536002                                                         |
 | `expiresAt`                                                           | *number*                                                              | :heavy_minus_sign:                                                    | Timestamp (in milliseconds) of when the token expires.                | 1632816536002                                                         |
+| `revokedAt`                                                           | *number*                                                              | :heavy_minus_sign:                                                    | Timestamp (in milliseconds) of when the token was revoked.            | 1632816536002                                                         |
 | `leakedAt`                                                            | *number*                                                              | :heavy_minus_sign:                                                    | Timestamp (in milliseconds) of when the token was marked as leaked.   | 1632816536002                                                         |
 | `leakedUrl`                                                           | *string*                                                              | :heavy_minus_sign:                                                    | URL where the token was discovered as leaked.                         |                                                                       |

@@ -1,11 +1,39 @@
 # ListAuthTokensResponseBody
 
-## Example Usage
+
+## Supported Types
+
+### `models.ListAuthTokensResponseBody1`
 
 ```typescript
-import { ListAuthTokensResponseBody } from "@vercel/sdk/models/listauthtokensop.js";
+const value: models.ListAuthTokensResponseBody1 = {
+  tokens: [
+    {
+      id: "5d9f2ebd38ddca62e5d51e9c1704c72530bdc8bfdd41e782a6687c48399e8391",
+      name: "<value>",
+      type: "oauth2-token",
+      prefix: "vcp_",
+      suffix: "abc123",
+      origin: "github",
+      createdAt: 1632816536002,
+      activeAt: 1632816536002,
+      expiresAt: 1632816536002,
+      revokedAt: 1632816536002,
+      leakedAt: 1632816536002,
+    },
+  ],
+  pagination: {
+    count: 6317.01,
+    next: "<value>",
+    prev: "<value>",
+  },
+};
+```
 
-let value: ListAuthTokensResponseBody = {
+### `models.ListAuthTokensResponseBody2`
+
+```typescript
+const value: models.ListAuthTokensResponseBody2 = {
   tokens: [],
   pagination: {
     count: 20,
@@ -15,9 +43,3 @@ let value: ListAuthTokensResponseBody = {
 };
 ```
 
-## Fields
-
-| Field                                                                                                                                                           | Type                                                                                                                                                            | Required                                                                                                                                                        | Description                                                                                                                                                     |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `tokens`                                                                                                                                                        | [models.AuthToken](../models/authtoken.md)[]                                                                                                                    | :heavy_check_mark:                                                                                                                                              | N/A                                                                                                                                                             |
-| `pagination`                                                                                                                                                    | [models.Pagination](../models/pagination.md)                                                                                                                    | :heavy_check_mark:                                                                                                                                              | This object contains information related to the pagination of the current request, including the necessary parameters to get the next or previous page of data. |

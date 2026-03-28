@@ -106,33 +106,28 @@ func testPutFirewallConfigPutFirewallConfig0(w http.ResponseWriter, req *http.Re
 				},
 			},
 			Rules: []operations.ActiveRuleUnion{
-				operations.CreateActiveRuleUnionRuleActive1(
-					operations.RuleActive1{
-						ID:               "<id>",
-						Name:             "<value>",
-						Active:           true,
-						ConditionGroup:   []operations.ActiveConditionGroup1{},
-						Action:           operations.RuleActiveAction1{},
-						ValidationErrors: types.String("<value>"),
-					},
-				),
 				operations.CreateActiveRuleUnionRuleActive2(
 					operations.RuleActive2{
 						ID:     "<id>",
 						Name:   "<value>",
-						Active: false,
+						Active: true,
 						ConditionGroup: []operations.ActiveConditionGroup2{
 							operations.ActiveConditionGroup2{
-								Conditions: []operations.ActiveCondition2{
-									operations.ActiveCondition2{
-										Type: operations.ActiveType2Region,
-										Op:   operations.ActiveOp2Lte,
-									},
-								},
+								Conditions: []operations.ActiveCondition2{},
 							},
 						},
 						Action:           operations.RuleActiveAction2{},
 						ValidationErrors: []string{},
+					},
+				),
+				operations.CreateActiveRuleUnionRuleActive1(
+					operations.RuleActive1{
+						ID:               "<id>",
+						Name:             "<value>",
+						Active:           false,
+						ConditionGroup:   []operations.ActiveConditionGroup1{},
+						Action:           operations.RuleActiveAction1{},
+						ValidationErrors: types.String("<value>"),
 					},
 				),
 			},

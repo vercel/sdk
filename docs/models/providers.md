@@ -1,17 +1,25 @@
 # Providers
 
-
-## Supported Types
-
-### `models.Providers1[]`
+## Example Usage
 
 ```typescript
-const value: models.Providers1[] = [];
+import { Providers } from "@vercel/sdk/models/updateprojectprojectsresponse200applicationjsonresponsebodyaction.js";
+
+let value: Providers = {
+  issuer: "jcb",
+  claims: [
+    {
+      name: "<value>",
+      values: [],
+    },
+  ],
+};
 ```
 
-### `models.Providers2`
+## Fields
 
-```typescript
-const value: models.Providers2 = "*";
-```
-
+| Field                                         | Type                                          | Required                                      | Description                                   |
+| --------------------------------------------- | --------------------------------------------- | --------------------------------------------- | --------------------------------------------- |
+| `issuer`                                      | *string*                                      | :heavy_check_mark:                            | The issuer URL of the OIDC Provider           |
+| `label`                                       | *string*                                      | :heavy_minus_sign:                            | The label or description of the OIDC Provider |
+| `claims`                                      | [models.Claims](../models/claims.md)[]        | :heavy_check_mark:                            | N/A                                           |

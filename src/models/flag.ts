@@ -10,6 +10,105 @@ import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
+export const MetricType = {
+  Percentage: "percentage",
+  Currency: "currency",
+  Count: "count",
+} as const;
+export type MetricType = ClosedEnum<typeof MetricType>;
+
+export const MetricUnit = {
+  User: "user",
+  Session: "session",
+  Visitor: "visitor",
+} as const;
+export type MetricUnit = ClosedEnum<typeof MetricUnit>;
+
+export const Directionality = {
+  IncreaseIsGood: "increaseIsGood",
+  DecreaseIsGood: "decreaseIsGood",
+} as const;
+export type Directionality = ClosedEnum<typeof Directionality>;
+
+export type GuardrailMetrics = {
+  description?: string | undefined;
+  metricFormula?: string | undefined;
+  name: string;
+  metricType: MetricType;
+  metricUnit: MetricUnit;
+  directionality: Directionality;
+};
+
+export const Device = {
+  Android: "android",
+  Ios: "ios",
+  Desktop: "desktop",
+  Mweb: "mweb",
+} as const;
+export type Device = ClosedEnum<typeof Device>;
+
+export const AllocationUnit = {
+  CookieId: "cookieId",
+  VisitorId: "visitorId",
+  UserId: "userId",
+} as const;
+export type AllocationUnit = ClosedEnum<typeof AllocationUnit>;
+
+export const FlagMetricType = {
+  Percentage: "percentage",
+  Currency: "currency",
+  Count: "count",
+} as const;
+export type FlagMetricType = ClosedEnum<typeof FlagMetricType>;
+
+export const FlagMetricUnit = {
+  User: "user",
+  Session: "session",
+  Visitor: "visitor",
+} as const;
+export type FlagMetricUnit = ClosedEnum<typeof FlagMetricUnit>;
+
+export const FlagDirectionality = {
+  IncreaseIsGood: "increaseIsGood",
+  DecreaseIsGood: "decreaseIsGood",
+} as const;
+export type FlagDirectionality = ClosedEnum<typeof FlagDirectionality>;
+
+export type PrimaryMetrics = {
+  description?: string | undefined;
+  metricFormula?: string | undefined;
+  name: string;
+  metricType: FlagMetricType;
+  metricUnit: FlagMetricUnit;
+  directionality: FlagDirectionality;
+};
+
+export const FlagStatus = {
+  Draft: "draft",
+  Running: "running",
+  Paused: "paused",
+  Closed: "closed",
+} as const;
+export type FlagStatus = ClosedEnum<typeof FlagStatus>;
+
+export type Experiment = {
+  name?: string | undefined;
+  id?: string | undefined;
+  numVariants?: number | undefined;
+  surfaceArea?: string | undefined;
+  stickyRequirement?: boolean | undefined;
+  layer?: string | undefined;
+  guardrailMetrics?: Array<GuardrailMetrics> | undefined;
+  hypothesis?: string | undefined;
+  device?: Device | undefined;
+  controlVariantId?: string | undefined;
+  startedAt?: number | undefined;
+  endedAt?: number | undefined;
+  allocationUnit: AllocationUnit;
+  primaryMetrics: Array<PrimaryMetrics>;
+  status: FlagStatus;
+};
+
 export type Variants = {};
 
 export type Reuse = {
@@ -222,6 +321,7 @@ export type Metadata = {
 
 export type Flag = {
   description?: string | undefined;
+  experiment?: Experiment | undefined;
   variants: Array<Variants>;
   id: string;
   environments: { [k: string]: Environments };
@@ -238,6 +338,263 @@ export type Flag = {
   typeName: TypeName;
   metadata?: Metadata | undefined;
 };
+
+/** @internal */
+export const MetricType$inboundSchema: z.ZodNativeEnum<typeof MetricType> = z
+  .nativeEnum(MetricType);
+/** @internal */
+export const MetricType$outboundSchema: z.ZodNativeEnum<typeof MetricType> =
+  MetricType$inboundSchema;
+
+/** @internal */
+export const MetricUnit$inboundSchema: z.ZodNativeEnum<typeof MetricUnit> = z
+  .nativeEnum(MetricUnit);
+/** @internal */
+export const MetricUnit$outboundSchema: z.ZodNativeEnum<typeof MetricUnit> =
+  MetricUnit$inboundSchema;
+
+/** @internal */
+export const Directionality$inboundSchema: z.ZodNativeEnum<
+  typeof Directionality
+> = z.nativeEnum(Directionality);
+/** @internal */
+export const Directionality$outboundSchema: z.ZodNativeEnum<
+  typeof Directionality
+> = Directionality$inboundSchema;
+
+/** @internal */
+export const GuardrailMetrics$inboundSchema: z.ZodType<
+  GuardrailMetrics,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  description: types.optional(types.string()),
+  metricFormula: types.optional(types.string()),
+  name: types.string(),
+  metricType: MetricType$inboundSchema,
+  metricUnit: MetricUnit$inboundSchema,
+  directionality: Directionality$inboundSchema,
+});
+/** @internal */
+export type GuardrailMetrics$Outbound = {
+  description?: string | undefined;
+  metricFormula?: string | undefined;
+  name: string;
+  metricType: string;
+  metricUnit: string;
+  directionality: string;
+};
+
+/** @internal */
+export const GuardrailMetrics$outboundSchema: z.ZodType<
+  GuardrailMetrics$Outbound,
+  z.ZodTypeDef,
+  GuardrailMetrics
+> = z.object({
+  description: z.string().optional(),
+  metricFormula: z.string().optional(),
+  name: z.string(),
+  metricType: MetricType$outboundSchema,
+  metricUnit: MetricUnit$outboundSchema,
+  directionality: Directionality$outboundSchema,
+});
+
+export function guardrailMetricsToJSON(
+  guardrailMetrics: GuardrailMetrics,
+): string {
+  return JSON.stringify(
+    GuardrailMetrics$outboundSchema.parse(guardrailMetrics),
+  );
+}
+export function guardrailMetricsFromJSON(
+  jsonString: string,
+): SafeParseResult<GuardrailMetrics, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GuardrailMetrics$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GuardrailMetrics' from JSON`,
+  );
+}
+
+/** @internal */
+export const Device$inboundSchema: z.ZodNativeEnum<typeof Device> = z
+  .nativeEnum(Device);
+/** @internal */
+export const Device$outboundSchema: z.ZodNativeEnum<typeof Device> =
+  Device$inboundSchema;
+
+/** @internal */
+export const AllocationUnit$inboundSchema: z.ZodNativeEnum<
+  typeof AllocationUnit
+> = z.nativeEnum(AllocationUnit);
+/** @internal */
+export const AllocationUnit$outboundSchema: z.ZodNativeEnum<
+  typeof AllocationUnit
+> = AllocationUnit$inboundSchema;
+
+/** @internal */
+export const FlagMetricType$inboundSchema: z.ZodNativeEnum<
+  typeof FlagMetricType
+> = z.nativeEnum(FlagMetricType);
+/** @internal */
+export const FlagMetricType$outboundSchema: z.ZodNativeEnum<
+  typeof FlagMetricType
+> = FlagMetricType$inboundSchema;
+
+/** @internal */
+export const FlagMetricUnit$inboundSchema: z.ZodNativeEnum<
+  typeof FlagMetricUnit
+> = z.nativeEnum(FlagMetricUnit);
+/** @internal */
+export const FlagMetricUnit$outboundSchema: z.ZodNativeEnum<
+  typeof FlagMetricUnit
+> = FlagMetricUnit$inboundSchema;
+
+/** @internal */
+export const FlagDirectionality$inboundSchema: z.ZodNativeEnum<
+  typeof FlagDirectionality
+> = z.nativeEnum(FlagDirectionality);
+/** @internal */
+export const FlagDirectionality$outboundSchema: z.ZodNativeEnum<
+  typeof FlagDirectionality
+> = FlagDirectionality$inboundSchema;
+
+/** @internal */
+export const PrimaryMetrics$inboundSchema: z.ZodType<
+  PrimaryMetrics,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  description: types.optional(types.string()),
+  metricFormula: types.optional(types.string()),
+  name: types.string(),
+  metricType: FlagMetricType$inboundSchema,
+  metricUnit: FlagMetricUnit$inboundSchema,
+  directionality: FlagDirectionality$inboundSchema,
+});
+/** @internal */
+export type PrimaryMetrics$Outbound = {
+  description?: string | undefined;
+  metricFormula?: string | undefined;
+  name: string;
+  metricType: string;
+  metricUnit: string;
+  directionality: string;
+};
+
+/** @internal */
+export const PrimaryMetrics$outboundSchema: z.ZodType<
+  PrimaryMetrics$Outbound,
+  z.ZodTypeDef,
+  PrimaryMetrics
+> = z.object({
+  description: z.string().optional(),
+  metricFormula: z.string().optional(),
+  name: z.string(),
+  metricType: FlagMetricType$outboundSchema,
+  metricUnit: FlagMetricUnit$outboundSchema,
+  directionality: FlagDirectionality$outboundSchema,
+});
+
+export function primaryMetricsToJSON(primaryMetrics: PrimaryMetrics): string {
+  return JSON.stringify(PrimaryMetrics$outboundSchema.parse(primaryMetrics));
+}
+export function primaryMetricsFromJSON(
+  jsonString: string,
+): SafeParseResult<PrimaryMetrics, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PrimaryMetrics$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PrimaryMetrics' from JSON`,
+  );
+}
+
+/** @internal */
+export const FlagStatus$inboundSchema: z.ZodNativeEnum<typeof FlagStatus> = z
+  .nativeEnum(FlagStatus);
+/** @internal */
+export const FlagStatus$outboundSchema: z.ZodNativeEnum<typeof FlagStatus> =
+  FlagStatus$inboundSchema;
+
+/** @internal */
+export const Experiment$inboundSchema: z.ZodType<
+  Experiment,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  name: types.optional(types.string()),
+  id: types.optional(types.string()),
+  numVariants: types.optional(types.number()),
+  surfaceArea: types.optional(types.string()),
+  stickyRequirement: types.optional(types.boolean()),
+  layer: types.optional(types.string()),
+  guardrailMetrics: types.optional(
+    z.array(z.lazy(() => GuardrailMetrics$inboundSchema)),
+  ),
+  hypothesis: types.optional(types.string()),
+  device: types.optional(Device$inboundSchema),
+  controlVariantId: types.optional(types.string()),
+  startedAt: types.optional(types.number()),
+  endedAt: types.optional(types.number()),
+  allocationUnit: AllocationUnit$inboundSchema,
+  primaryMetrics: z.array(z.lazy(() => PrimaryMetrics$inboundSchema)),
+  status: FlagStatus$inboundSchema,
+});
+/** @internal */
+export type Experiment$Outbound = {
+  name?: string | undefined;
+  id?: string | undefined;
+  numVariants?: number | undefined;
+  surfaceArea?: string | undefined;
+  stickyRequirement?: boolean | undefined;
+  layer?: string | undefined;
+  guardrailMetrics?: Array<GuardrailMetrics$Outbound> | undefined;
+  hypothesis?: string | undefined;
+  device?: string | undefined;
+  controlVariantId?: string | undefined;
+  startedAt?: number | undefined;
+  endedAt?: number | undefined;
+  allocationUnit: string;
+  primaryMetrics: Array<PrimaryMetrics$Outbound>;
+  status: string;
+};
+
+/** @internal */
+export const Experiment$outboundSchema: z.ZodType<
+  Experiment$Outbound,
+  z.ZodTypeDef,
+  Experiment
+> = z.object({
+  name: z.string().optional(),
+  id: z.string().optional(),
+  numVariants: z.number().optional(),
+  surfaceArea: z.string().optional(),
+  stickyRequirement: z.boolean().optional(),
+  layer: z.string().optional(),
+  guardrailMetrics: z.array(z.lazy(() => GuardrailMetrics$outboundSchema))
+    .optional(),
+  hypothesis: z.string().optional(),
+  device: Device$outboundSchema.optional(),
+  controlVariantId: z.string().optional(),
+  startedAt: z.number().optional(),
+  endedAt: z.number().optional(),
+  allocationUnit: AllocationUnit$outboundSchema,
+  primaryMetrics: z.array(z.lazy(() => PrimaryMetrics$outboundSchema)),
+  status: FlagStatus$outboundSchema,
+});
+
+export function experimentToJSON(experiment: Experiment): string {
+  return JSON.stringify(Experiment$outboundSchema.parse(experiment));
+}
+export function experimentFromJSON(
+  jsonString: string,
+): SafeParseResult<Experiment, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Experiment$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Experiment' from JSON`,
+  );
+}
 
 /** @internal */
 export const Variants$inboundSchema: z.ZodType<
@@ -1354,6 +1711,7 @@ export function metadataFromJSON(
 export const Flag$inboundSchema: z.ZodType<Flag, z.ZodTypeDef, unknown> = z
   .object({
     description: types.optional(types.string()),
+    experiment: types.optional(z.lazy(() => Experiment$inboundSchema)),
     variants: z.array(z.lazy(() => Variants$inboundSchema)),
     id: types.string(),
     environments: z.record(z.lazy(() => Environments$inboundSchema)),
@@ -1373,6 +1731,7 @@ export const Flag$inboundSchema: z.ZodType<Flag, z.ZodTypeDef, unknown> = z
 /** @internal */
 export type Flag$Outbound = {
   description?: string | undefined;
+  experiment?: Experiment$Outbound | undefined;
   variants: Array<Variants$Outbound>;
   id: string;
   environments: { [k: string]: Environments$Outbound };
@@ -1394,6 +1753,7 @@ export type Flag$Outbound = {
 export const Flag$outboundSchema: z.ZodType<Flag$Outbound, z.ZodTypeDef, Flag> =
   z.object({
     description: z.string().optional(),
+    experiment: z.lazy(() => Experiment$outboundSchema).optional(),
     variants: z.array(z.lazy(() => Variants$outboundSchema)),
     id: z.string(),
     environments: z.record(z.lazy(() => Environments$outboundSchema)),

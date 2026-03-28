@@ -12,6 +12,325 @@ import (
 	"mockserver/internal/sdk/utils"
 )
 
+type UpdateProjectLastAliasRequestType string
+
+const (
+	UpdateProjectLastAliasRequestTypePromote  UpdateProjectLastAliasRequestType = "promote"
+	UpdateProjectLastAliasRequestTypeRollback UpdateProjectLastAliasRequestType = "rollback"
+)
+
+func (e UpdateProjectLastAliasRequestType) ToPointer() *UpdateProjectLastAliasRequestType {
+	return &e
+}
+func (e *UpdateProjectLastAliasRequestType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "promote":
+		fallthrough
+	case "rollback":
+		*e = UpdateProjectLastAliasRequestType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateProjectLastAliasRequestType: %v", v)
+	}
+}
+
+type UpdateProjectLastAliasRequest struct {
+	FromDeploymentID *string `json:"fromDeploymentId"`
+	ToDeploymentID   string  `json:"toDeploymentId"`
+	// If rolling back from a rolling release, fromDeploymentId captures the "base" of that rolling release, and fromRollingReleaseId captures the "target" of that rolling release.
+	FromRollingReleaseID *string                           `json:"fromRollingReleaseId,omitempty"`
+	JobStatus            UpdateProjectJobStatus            `json:"jobStatus"`
+	RequestedAt          float64                           `json:"requestedAt"`
+	Type                 UpdateProjectLastAliasRequestType `json:"type"`
+}
+
+func (o *UpdateProjectLastAliasRequest) GetFromDeploymentID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.FromDeploymentID
+}
+
+func (o *UpdateProjectLastAliasRequest) GetToDeploymentID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ToDeploymentID
+}
+
+func (o *UpdateProjectLastAliasRequest) GetFromRollingReleaseID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.FromRollingReleaseID
+}
+
+func (o *UpdateProjectLastAliasRequest) GetJobStatus() UpdateProjectJobStatus {
+	if o == nil {
+		return UpdateProjectJobStatus("")
+	}
+	return o.JobStatus
+}
+
+func (o *UpdateProjectLastAliasRequest) GetRequestedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.RequestedAt
+}
+
+func (o *UpdateProjectLastAliasRequest) GetType() UpdateProjectLastAliasRequestType {
+	if o == nil {
+		return UpdateProjectLastAliasRequestType("")
+	}
+	return o.Type
+}
+
+type UpdateProjectScopeAutomationBypass string
+
+const (
+	UpdateProjectScopeAutomationBypassAutomationBypass UpdateProjectScopeAutomationBypass = "automation-bypass"
+)
+
+func (e UpdateProjectScopeAutomationBypass) ToPointer() *UpdateProjectScopeAutomationBypass {
+	return &e
+}
+func (e *UpdateProjectScopeAutomationBypass) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "automation-bypass":
+		*e = UpdateProjectScopeAutomationBypass(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateProjectScopeAutomationBypass: %v", v)
+	}
+}
+
+type UpdateProjectProtectionBypassAutomationBypass struct {
+	CreatedAt float64                            `json:"createdAt"`
+	CreatedBy string                             `json:"createdBy"`
+	Scope     UpdateProjectScopeAutomationBypass `json:"scope"`
+	// When there was only one bypass, it was automatically set as an env var on deployments. With multiple bypasses, there is always one bypass that is selected as the default, and gets set as an env var on deployments. As this is a new field, undefined means that the bypass is the env var. If there are any automation bypasses, exactly one must be the env var.
+	IsEnvVar *bool `json:"isEnvVar,omitempty"`
+	// Optional note about the bypass to be displayed in the UI
+	Note *string `json:"note,omitempty"`
+}
+
+func (u UpdateProjectProtectionBypassAutomationBypass) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateProjectProtectionBypassAutomationBypass) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"createdAt", "createdBy", "scope"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *UpdateProjectProtectionBypassAutomationBypass) GetCreatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CreatedAt
+}
+
+func (o *UpdateProjectProtectionBypassAutomationBypass) GetCreatedBy() string {
+	if o == nil {
+		return ""
+	}
+	return o.CreatedBy
+}
+
+func (o *UpdateProjectProtectionBypassAutomationBypass) GetScope() UpdateProjectScopeAutomationBypass {
+	if o == nil {
+		return UpdateProjectScopeAutomationBypass("")
+	}
+	return o.Scope
+}
+
+func (o *UpdateProjectProtectionBypassAutomationBypass) GetIsEnvVar() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IsEnvVar
+}
+
+func (o *UpdateProjectProtectionBypassAutomationBypass) GetNote() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Note
+}
+
+type UpdateProjectScopeIntegrationAutomationBypass string
+
+const (
+	UpdateProjectScopeIntegrationAutomationBypassIntegrationAutomationBypass UpdateProjectScopeIntegrationAutomationBypass = "integration-automation-bypass"
+)
+
+func (e UpdateProjectScopeIntegrationAutomationBypass) ToPointer() *UpdateProjectScopeIntegrationAutomationBypass {
+	return &e
+}
+func (e *UpdateProjectScopeIntegrationAutomationBypass) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "integration-automation-bypass":
+		*e = UpdateProjectScopeIntegrationAutomationBypass(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateProjectScopeIntegrationAutomationBypass: %v", v)
+	}
+}
+
+type UpdateProjectProtectionBypassIntegrationAutomationBypass struct {
+	CreatedAt       float64                                       `json:"createdAt"`
+	CreatedBy       string                                        `json:"createdBy"`
+	Scope           UpdateProjectScopeIntegrationAutomationBypass `json:"scope"`
+	IntegrationID   string                                        `json:"integrationId"`
+	ConfigurationID string                                        `json:"configurationId"`
+}
+
+func (u UpdateProjectProtectionBypassIntegrationAutomationBypass) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateProjectProtectionBypassIntegrationAutomationBypass) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"createdAt", "createdBy", "scope", "integrationId", "configurationId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *UpdateProjectProtectionBypassIntegrationAutomationBypass) GetCreatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CreatedAt
+}
+
+func (o *UpdateProjectProtectionBypassIntegrationAutomationBypass) GetCreatedBy() string {
+	if o == nil {
+		return ""
+	}
+	return o.CreatedBy
+}
+
+func (o *UpdateProjectProtectionBypassIntegrationAutomationBypass) GetScope() UpdateProjectScopeIntegrationAutomationBypass {
+	if o == nil {
+		return UpdateProjectScopeIntegrationAutomationBypass("")
+	}
+	return o.Scope
+}
+
+func (o *UpdateProjectProtectionBypassIntegrationAutomationBypass) GetIntegrationID() string {
+	if o == nil {
+		return ""
+	}
+	return o.IntegrationID
+}
+
+func (o *UpdateProjectProtectionBypassIntegrationAutomationBypass) GetConfigurationID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ConfigurationID
+}
+
+type UpdateProjectProtectionBypassUnionType string
+
+const (
+	UpdateProjectProtectionBypassUnionTypeIntegrationAutomationBypass UpdateProjectProtectionBypassUnionType = "integration-automation-bypass"
+	UpdateProjectProtectionBypassUnionTypeAutomationBypass            UpdateProjectProtectionBypassUnionType = "automation-bypass"
+)
+
+type UpdateProjectProtectionBypassUnion struct {
+	UpdateProjectProtectionBypassIntegrationAutomationBypass *UpdateProjectProtectionBypassIntegrationAutomationBypass `queryParam:"inline"`
+	UpdateProjectProtectionBypassAutomationBypass            *UpdateProjectProtectionBypassAutomationBypass            `queryParam:"inline"`
+
+	Type UpdateProjectProtectionBypassUnionType
+}
+
+func CreateUpdateProjectProtectionBypassUnionIntegrationAutomationBypass(integrationAutomationBypass UpdateProjectProtectionBypassIntegrationAutomationBypass) UpdateProjectProtectionBypassUnion {
+	typ := UpdateProjectProtectionBypassUnionTypeIntegrationAutomationBypass
+
+	typStr := UpdateProjectScopeIntegrationAutomationBypass(typ)
+	integrationAutomationBypass.Scope = typStr
+
+	return UpdateProjectProtectionBypassUnion{
+		UpdateProjectProtectionBypassIntegrationAutomationBypass: &integrationAutomationBypass,
+		Type: typ,
+	}
+}
+
+func CreateUpdateProjectProtectionBypassUnionAutomationBypass(automationBypass UpdateProjectProtectionBypassAutomationBypass) UpdateProjectProtectionBypassUnion {
+	typ := UpdateProjectProtectionBypassUnionTypeAutomationBypass
+
+	typStr := UpdateProjectScopeAutomationBypass(typ)
+	automationBypass.Scope = typStr
+
+	return UpdateProjectProtectionBypassUnion{
+		UpdateProjectProtectionBypassAutomationBypass: &automationBypass,
+		Type: typ,
+	}
+}
+
+func (u *UpdateProjectProtectionBypassUnion) UnmarshalJSON(data []byte) error {
+
+	type discriminator struct {
+		Scope string `json:"scope"`
+	}
+
+	dis := new(discriminator)
+	if err := json.Unmarshal(data, &dis); err != nil {
+		return fmt.Errorf("could not unmarshal discriminator: %w", err)
+	}
+
+	switch dis.Scope {
+	case "integration-automation-bypass":
+		updateProjectProtectionBypassIntegrationAutomationBypass := new(UpdateProjectProtectionBypassIntegrationAutomationBypass)
+		if err := utils.UnmarshalJSON(data, &updateProjectProtectionBypassIntegrationAutomationBypass, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Scope == integration-automation-bypass) type UpdateProjectProtectionBypassIntegrationAutomationBypass within UpdateProjectProtectionBypassUnion: %w", string(data), err)
+		}
+
+		u.UpdateProjectProtectionBypassIntegrationAutomationBypass = updateProjectProtectionBypassIntegrationAutomationBypass
+		u.Type = UpdateProjectProtectionBypassUnionTypeIntegrationAutomationBypass
+		return nil
+	case "automation-bypass":
+		updateProjectProtectionBypassAutomationBypass := new(UpdateProjectProtectionBypassAutomationBypass)
+		if err := utils.UnmarshalJSON(data, &updateProjectProtectionBypassAutomationBypass, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Scope == automation-bypass) type UpdateProjectProtectionBypassAutomationBypass within UpdateProjectProtectionBypassUnion: %w", string(data), err)
+		}
+
+		u.UpdateProjectProtectionBypassAutomationBypass = updateProjectProtectionBypassAutomationBypass
+		u.Type = UpdateProjectProtectionBypassUnionTypeAutomationBypass
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateProjectProtectionBypassUnion", string(data))
+}
+
+func (u UpdateProjectProtectionBypassUnion) MarshalJSON() ([]byte, error) {
+	if u.UpdateProjectProtectionBypassIntegrationAutomationBypass != nil {
+		return utils.MarshalJSON(u.UpdateProjectProtectionBypassIntegrationAutomationBypass, "", true)
+	}
+
+	if u.UpdateProjectProtectionBypassAutomationBypass != nil {
+		return utils.MarshalJSON(u.UpdateProjectProtectionBypassAutomationBypass, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type UpdateProjectProtectionBypassUnion: all fields are null")
+}
+
 type UpdateProjectTrustedIpsDeploymentTypeResponse2 string
 
 const (
@@ -259,6 +578,63 @@ func (u UpdateProjectTrustedIpsUnion) MarshalJSON() ([]byte, error) {
 	}
 
 	return nil, errors.New("could not marshal union type UpdateProjectTrustedIpsUnion: all fields are null")
+}
+
+type UpdateProjectProjects struct {
+	Label        *string  `json:"label,omitempty"`
+	Environments []string `json:"environments"`
+}
+
+func (o *UpdateProjectProjects) GetLabel() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Label
+}
+
+func (o *UpdateProjectProjects) GetEnvironments() []string {
+	if o == nil {
+		return []string{}
+	}
+	return o.Environments
+}
+
+type UpdateProjectProviders struct {
+	Label  *string             `json:"label,omitempty"`
+	Claims map[string][]string `json:"claims"`
+}
+
+func (o *UpdateProjectProviders) GetLabel() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Label
+}
+
+func (o *UpdateProjectProviders) GetClaims() map[string][]string {
+	if o == nil {
+		return map[string][]string{}
+	}
+	return o.Claims
+}
+
+type UpdateProjectTrustedOidcProvidersResponse struct {
+	Projects  map[string]UpdateProjectProjects  `json:"projects"`
+	Providers map[string]UpdateProjectProviders `json:"providers"`
+}
+
+func (o *UpdateProjectTrustedOidcProvidersResponse) GetProjects() map[string]UpdateProjectProjects {
+	if o == nil {
+		return map[string]UpdateProjectProjects{}
+	}
+	return o.Projects
+}
+
+func (o *UpdateProjectTrustedOidcProvidersResponse) GetProviders() map[string]UpdateProjectProviders {
+	if o == nil {
+		return map[string]UpdateProjectProviders{}
+	}
+	return o.Providers
 }
 
 type UpdateProjectGitComments struct {
@@ -3435,7 +3811,7 @@ type UpdateProjectResponseBody struct {
 	DevCommand                    optionalnullable.OptionalNullable[string]                                  `json:"devCommand,omitempty"`
 	DirectoryListing              bool                                                                       `json:"directoryListing"`
 	InstallCommand                optionalnullable.OptionalNullable[string]                                  `json:"installCommand,omitempty"`
-	Env                           []UpdateProjectEnv                                                         `json:"env,omitempty"`
+	Env                           []UpdateProjectEnvResponse                                                 `json:"env,omitempty"`
 	CustomEnvironments            []UpdateProjectCustomEnvironment                                           `json:"customEnvironments,omitempty"`
 	Framework                     optionalnullable.OptionalNullable[UpdateProjectFrameworkResponseBody]      `json:"framework,omitempty"`
 	GitForkProtection             *bool                                                                      `json:"gitForkProtection,omitempty"`
@@ -3457,52 +3833,53 @@ type UpdateProjectResponseBody struct {
 	// Description of why a project was rolled back, and by whom. Note that lastAliasRequest contains the from/to details of the rollback.
 	RollbackDescription *UpdateProjectRollbackDescription `json:"rollbackDescription,omitempty"`
 	// Project-level rolling release configuration that defines how deployments should be gradually rolled out
-	RollingRelease                       optionalnullable.OptionalNullable[UpdateProjectRollingRelease]        `json:"rollingRelease,omitempty"`
-	DefaultResourceConfig                UpdateProjectDefaultResourceConfig                                    `json:"defaultResourceConfig"`
-	RootDirectory                        optionalnullable.OptionalNullable[string]                             `json:"rootDirectory,omitempty"`
-	ServerlessFunctionZeroConfigFailover *bool                                                                 `json:"serverlessFunctionZeroConfigFailover,omitempty"`
-	SkewProtectionBoundaryAt             *float64                                                              `json:"skewProtectionBoundaryAt,omitempty"`
-	SkewProtectionMaxAge                 *float64                                                              `json:"skewProtectionMaxAge,omitempty"`
-	SkewProtectionAllowedDomains         []string                                                              `json:"skewProtectionAllowedDomains,omitempty"`
-	SkipGitConnectDuringLink             *bool                                                                 `json:"skipGitConnectDuringLink,omitempty"`
-	StaticIps                            *UpdateProjectStaticIpsResponse                                       `json:"staticIps,omitempty"`
-	SourceFilesOutsideRootDirectory      *bool                                                                 `json:"sourceFilesOutsideRootDirectory,omitempty"`
-	EnableAffectedProjectsDeployments    *bool                                                                 `json:"enableAffectedProjectsDeployments,omitempty"`
-	EnableExternalRewriteCaching         *bool                                                                 `json:"enableExternalRewriteCaching,omitempty"`
-	SsoProtection                        optionalnullable.OptionalNullable[UpdateProjectSsoProtectionResponse] `json:"ssoProtection,omitempty"`
-	Targets                              map[string]*UpdateProjectTargets                                      `json:"targets,omitempty"`
-	TransferCompletedAt                  *float64                                                              `json:"transferCompletedAt,omitempty"`
-	TransferStartedAt                    *float64                                                              `json:"transferStartedAt,omitempty"`
-	TransferToAccountID                  *string                                                               `json:"transferToAccountId,omitempty"`
-	TransferredFromAccountID             *string                                                               `json:"transferredFromAccountId,omitempty"`
-	UpdatedAt                            *float64                                                              `json:"updatedAt,omitempty"`
-	Live                                 *bool                                                                 `json:"live,omitempty"`
-	EnablePreviewFeedback                optionalnullable.OptionalNullable[bool]                               `json:"enablePreviewFeedback,omitempty"`
-	EnableProductionFeedback             optionalnullable.OptionalNullable[bool]                               `json:"enableProductionFeedback,omitempty"`
-	Permissions                          *UpdateProjectPermissions                                             `json:"permissions,omitempty"`
-	LastRollbackTarget                   optionalnullable.OptionalNullable[UpdateProjectLastRollbackTarget]    `json:"lastRollbackTarget,omitempty"`
-	LastAliasRequest                     optionalnullable.OptionalNullable[UpdateProjectLastAliasRequest]      `json:"lastAliasRequest,omitempty"`
-	ProtectionBypass                     map[string]UpdateProjectProtectionBypassUnion                         `json:"protectionBypass,omitempty"`
-	HasActiveBranches                    *bool                                                                 `json:"hasActiveBranches,omitempty"`
-	TrustedIps                           optionalnullable.OptionalNullable[UpdateProjectTrustedIpsUnion]       `json:"trustedIps,omitempty"`
-	GitComments                          *UpdateProjectGitComments                                             `json:"gitComments,omitempty"`
-	GitProviderOptions                   *UpdateProjectGitProviderOptions                                      `json:"gitProviderOptions,omitempty"`
-	Paused                               *bool                                                                 `json:"paused,omitempty"`
-	ConcurrencyBucketName                *string                                                               `json:"concurrencyBucketName,omitempty"`
-	WebAnalytics                         *UpdateProjectWebAnalytics                                            `json:"webAnalytics,omitempty"`
-	Security                             *UpdateProjectSecurity                                                `json:"security,omitempty"`
-	OidcTokenConfig                      *UpdateProjectOidcTokenConfigResponse                                 `json:"oidcTokenConfig,omitempty"`
-	Tier                                 *string                                                               `json:"tier,omitempty"`
-	FlatRateTier                         *UpdateProjectFlatRateTier                                            `json:"flatRateTier,omitempty"`
-	UsageStatus                          *UpdateProjectUsageStatus                                             `json:"usageStatus,omitempty"`
-	Features                             *UpdateProjectFeatures                                                `json:"features,omitempty"`
-	V0                                   *bool                                                                 `json:"v0,omitempty"`
-	V0Created                            *bool                                                                 `json:"v0Created,omitempty"`
-	Abuse                                *UpdateProjectAbuse                                                   `json:"abuse,omitempty"`
-	InternalRoutes                       []UpdateProjectInternalRouteUnion                                     `json:"internalRoutes,omitempty"`
-	HasDeployments                       *bool                                                                 `json:"hasDeployments,omitempty"`
-	DismissedToasts                      []UpdateProjectDismissedToastResponse                                 `json:"dismissedToasts,omitempty"`
-	ProtectedSourcemaps                  *bool                                                                 `json:"protectedSourcemaps,omitempty"`
+	RollingRelease                       optionalnullable.OptionalNullable[UpdateProjectRollingRelease]               `json:"rollingRelease,omitempty"`
+	DefaultResourceConfig                UpdateProjectDefaultResourceConfig                                           `json:"defaultResourceConfig"`
+	RootDirectory                        optionalnullable.OptionalNullable[string]                                    `json:"rootDirectory,omitempty"`
+	ServerlessFunctionZeroConfigFailover *bool                                                                        `json:"serverlessFunctionZeroConfigFailover,omitempty"`
+	SkewProtectionBoundaryAt             *float64                                                                     `json:"skewProtectionBoundaryAt,omitempty"`
+	SkewProtectionMaxAge                 *float64                                                                     `json:"skewProtectionMaxAge,omitempty"`
+	SkewProtectionAllowedDomains         []string                                                                     `json:"skewProtectionAllowedDomains,omitempty"`
+	SkipGitConnectDuringLink             *bool                                                                        `json:"skipGitConnectDuringLink,omitempty"`
+	StaticIps                            *UpdateProjectStaticIpsResponse                                              `json:"staticIps,omitempty"`
+	SourceFilesOutsideRootDirectory      *bool                                                                        `json:"sourceFilesOutsideRootDirectory,omitempty"`
+	EnableAffectedProjectsDeployments    *bool                                                                        `json:"enableAffectedProjectsDeployments,omitempty"`
+	EnableExternalRewriteCaching         *bool                                                                        `json:"enableExternalRewriteCaching,omitempty"`
+	SsoProtection                        optionalnullable.OptionalNullable[UpdateProjectSsoProtectionResponse]        `json:"ssoProtection,omitempty"`
+	Targets                              map[string]*UpdateProjectTargets                                             `json:"targets,omitempty"`
+	TransferCompletedAt                  *float64                                                                     `json:"transferCompletedAt,omitempty"`
+	TransferStartedAt                    *float64                                                                     `json:"transferStartedAt,omitempty"`
+	TransferToAccountID                  *string                                                                      `json:"transferToAccountId,omitempty"`
+	TransferredFromAccountID             *string                                                                      `json:"transferredFromAccountId,omitempty"`
+	UpdatedAt                            *float64                                                                     `json:"updatedAt,omitempty"`
+	Live                                 *bool                                                                        `json:"live,omitempty"`
+	EnablePreviewFeedback                optionalnullable.OptionalNullable[bool]                                      `json:"enablePreviewFeedback,omitempty"`
+	EnableProductionFeedback             optionalnullable.OptionalNullable[bool]                                      `json:"enableProductionFeedback,omitempty"`
+	Permissions                          *UpdateProjectPermissions                                                    `json:"permissions,omitempty"`
+	LastRollbackTarget                   optionalnullable.OptionalNullable[UpdateProjectLastRollbackTarget]           `json:"lastRollbackTarget,omitempty"`
+	LastAliasRequest                     optionalnullable.OptionalNullable[UpdateProjectLastAliasRequest]             `json:"lastAliasRequest,omitempty"`
+	ProtectionBypass                     map[string]UpdateProjectProtectionBypassUnion                                `json:"protectionBypass,omitempty"`
+	HasActiveBranches                    *bool                                                                        `json:"hasActiveBranches,omitempty"`
+	TrustedIps                           optionalnullable.OptionalNullable[UpdateProjectTrustedIpsUnion]              `json:"trustedIps,omitempty"`
+	TrustedOidcProviders                 optionalnullable.OptionalNullable[UpdateProjectTrustedOidcProvidersResponse] `json:"trustedOidcProviders,omitempty"`
+	GitComments                          *UpdateProjectGitComments                                                    `json:"gitComments,omitempty"`
+	GitProviderOptions                   *UpdateProjectGitProviderOptions                                             `json:"gitProviderOptions,omitempty"`
+	Paused                               *bool                                                                        `json:"paused,omitempty"`
+	ConcurrencyBucketName                *string                                                                      `json:"concurrencyBucketName,omitempty"`
+	WebAnalytics                         *UpdateProjectWebAnalytics                                                   `json:"webAnalytics,omitempty"`
+	Security                             *UpdateProjectSecurity                                                       `json:"security,omitempty"`
+	OidcTokenConfig                      *UpdateProjectOidcTokenConfigResponse                                        `json:"oidcTokenConfig,omitempty"`
+	Tier                                 *string                                                                      `json:"tier,omitempty"`
+	FlatRateTier                         *UpdateProjectFlatRateTier                                                   `json:"flatRateTier,omitempty"`
+	UsageStatus                          *UpdateProjectUsageStatus                                                    `json:"usageStatus,omitempty"`
+	Features                             *UpdateProjectFeatures                                                       `json:"features,omitempty"`
+	V0                                   *bool                                                                        `json:"v0,omitempty"`
+	V0Created                            *bool                                                                        `json:"v0Created,omitempty"`
+	Abuse                                *UpdateProjectAbuse                                                          `json:"abuse,omitempty"`
+	InternalRoutes                       []UpdateProjectInternalRouteUnion                                            `json:"internalRoutes,omitempty"`
+	HasDeployments                       *bool                                                                        `json:"hasDeployments,omitempty"`
+	DismissedToasts                      []UpdateProjectDismissedToastResponse                                        `json:"dismissedToasts,omitempty"`
+	ProtectedSourcemaps                  *bool                                                                        `json:"protectedSourcemaps,omitempty"`
 }
 
 func (o *UpdateProjectResponseBody) GetAccountID() string {
@@ -3652,7 +4029,7 @@ func (o *UpdateProjectResponseBody) GetInstallCommand() optionalnullable.Optiona
 	return o.InstallCommand
 }
 
-func (o *UpdateProjectResponseBody) GetEnv() []UpdateProjectEnv {
+func (o *UpdateProjectResponseBody) GetEnv() []UpdateProjectEnvResponse {
 	if o == nil {
 		return nil
 	}
@@ -4021,6 +4398,13 @@ func (o *UpdateProjectResponseBody) GetTrustedIps() optionalnullable.OptionalNul
 		return nil
 	}
 	return o.TrustedIps
+}
+
+func (o *UpdateProjectResponseBody) GetTrustedOidcProviders() optionalnullable.OptionalNullable[UpdateProjectTrustedOidcProvidersResponse] {
+	if o == nil {
+		return nil
+	}
+	return o.TrustedOidcProviders
 }
 
 func (o *UpdateProjectResponseBody) GetGitComments() *UpdateProjectGitComments {

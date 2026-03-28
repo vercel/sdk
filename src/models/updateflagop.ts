@@ -290,6 +290,117 @@ export type UpdateFlagRequest = {
   requestBody?: UpdateFlagRequestBody | undefined;
 };
 
+export const ResponseBodyMetricType = {
+  Percentage: "percentage",
+  Currency: "currency",
+  Count: "count",
+} as const;
+export type ResponseBodyMetricType = ClosedEnum<typeof ResponseBodyMetricType>;
+
+export const ResponseBodyMetricUnit = {
+  User: "user",
+  Session: "session",
+  Visitor: "visitor",
+} as const;
+export type ResponseBodyMetricUnit = ClosedEnum<typeof ResponseBodyMetricUnit>;
+
+export const ResponseBodyDirectionality = {
+  IncreaseIsGood: "increaseIsGood",
+  DecreaseIsGood: "decreaseIsGood",
+} as const;
+export type ResponseBodyDirectionality = ClosedEnum<
+  typeof ResponseBodyDirectionality
+>;
+
+export type ResponseBodyGuardrailMetrics = {
+  description?: string | undefined;
+  metricFormula?: string | undefined;
+  name: string;
+  metricType: ResponseBodyMetricType;
+  metricUnit: ResponseBodyMetricUnit;
+  directionality: ResponseBodyDirectionality;
+};
+
+export const ResponseBodyDevice = {
+  Android: "android",
+  Ios: "ios",
+  Desktop: "desktop",
+  Mweb: "mweb",
+} as const;
+export type ResponseBodyDevice = ClosedEnum<typeof ResponseBodyDevice>;
+
+export const ResponseBodyAllocationUnit = {
+  CookieId: "cookieId",
+  VisitorId: "visitorId",
+  UserId: "userId",
+} as const;
+export type ResponseBodyAllocationUnit = ClosedEnum<
+  typeof ResponseBodyAllocationUnit
+>;
+
+export const UpdateFlagResponseBodyMetricType = {
+  Percentage: "percentage",
+  Currency: "currency",
+  Count: "count",
+} as const;
+export type UpdateFlagResponseBodyMetricType = ClosedEnum<
+  typeof UpdateFlagResponseBodyMetricType
+>;
+
+export const UpdateFlagResponseBodyMetricUnit = {
+  User: "user",
+  Session: "session",
+  Visitor: "visitor",
+} as const;
+export type UpdateFlagResponseBodyMetricUnit = ClosedEnum<
+  typeof UpdateFlagResponseBodyMetricUnit
+>;
+
+export const UpdateFlagResponseBodyDirectionality = {
+  IncreaseIsGood: "increaseIsGood",
+  DecreaseIsGood: "decreaseIsGood",
+} as const;
+export type UpdateFlagResponseBodyDirectionality = ClosedEnum<
+  typeof UpdateFlagResponseBodyDirectionality
+>;
+
+export type ResponseBodyPrimaryMetrics = {
+  description?: string | undefined;
+  metricFormula?: string | undefined;
+  name: string;
+  metricType: UpdateFlagResponseBodyMetricType;
+  metricUnit: UpdateFlagResponseBodyMetricUnit;
+  directionality: UpdateFlagResponseBodyDirectionality;
+};
+
+export const UpdateFlagResponseBodyStatus = {
+  Draft: "draft",
+  Running: "running",
+  Paused: "paused",
+  Closed: "closed",
+} as const;
+export type UpdateFlagResponseBodyStatus = ClosedEnum<
+  typeof UpdateFlagResponseBodyStatus
+>;
+
+export type ResponseBodyExperiment = {
+  name?: string | undefined;
+  id?: string | undefined;
+  numVariants?: number | undefined;
+  surfaceArea?: string | undefined;
+  stickyRequirement?: boolean | undefined;
+  layer?: string | undefined;
+  guardrailMetrics?: Array<ResponseBodyGuardrailMetrics> | undefined;
+  hypothesis?: string | undefined;
+  device?: ResponseBodyDevice | undefined;
+  controlVariantId?: string | undefined;
+  startedAt?: number | undefined;
+  endedAt?: number | undefined;
+  allocationUnit: ResponseBodyAllocationUnit;
+  primaryMetrics: Array<ResponseBodyPrimaryMetrics>;
+  status: UpdateFlagResponseBodyStatus;
+};
+
 export type ResponseBodyVariants = {};
 
 export type ResponseBodyReuse = {
@@ -516,6 +627,7 @@ export type ResponseBodyTypeName = ClosedEnum<typeof ResponseBodyTypeName>;
 
 export type UpdateFlagResponseBody1 = {
   description?: string | undefined;
+  experiment?: ResponseBodyExperiment | undefined;
   variants: Array<ResponseBodyVariants>;
   id: string;
   environments: { [k: string]: ResponseBodyEnvironments };
@@ -1864,6 +1976,287 @@ export function updateFlagRequestFromJSON(
 }
 
 /** @internal */
+export const ResponseBodyMetricType$inboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyMetricType
+> = z.nativeEnum(ResponseBodyMetricType);
+/** @internal */
+export const ResponseBodyMetricType$outboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyMetricType
+> = ResponseBodyMetricType$inboundSchema;
+
+/** @internal */
+export const ResponseBodyMetricUnit$inboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyMetricUnit
+> = z.nativeEnum(ResponseBodyMetricUnit);
+/** @internal */
+export const ResponseBodyMetricUnit$outboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyMetricUnit
+> = ResponseBodyMetricUnit$inboundSchema;
+
+/** @internal */
+export const ResponseBodyDirectionality$inboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyDirectionality
+> = z.nativeEnum(ResponseBodyDirectionality);
+/** @internal */
+export const ResponseBodyDirectionality$outboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyDirectionality
+> = ResponseBodyDirectionality$inboundSchema;
+
+/** @internal */
+export const ResponseBodyGuardrailMetrics$inboundSchema: z.ZodType<
+  ResponseBodyGuardrailMetrics,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  description: types.optional(types.string()),
+  metricFormula: types.optional(types.string()),
+  name: types.string(),
+  metricType: ResponseBodyMetricType$inboundSchema,
+  metricUnit: ResponseBodyMetricUnit$inboundSchema,
+  directionality: ResponseBodyDirectionality$inboundSchema,
+});
+/** @internal */
+export type ResponseBodyGuardrailMetrics$Outbound = {
+  description?: string | undefined;
+  metricFormula?: string | undefined;
+  name: string;
+  metricType: string;
+  metricUnit: string;
+  directionality: string;
+};
+
+/** @internal */
+export const ResponseBodyGuardrailMetrics$outboundSchema: z.ZodType<
+  ResponseBodyGuardrailMetrics$Outbound,
+  z.ZodTypeDef,
+  ResponseBodyGuardrailMetrics
+> = z.object({
+  description: z.string().optional(),
+  metricFormula: z.string().optional(),
+  name: z.string(),
+  metricType: ResponseBodyMetricType$outboundSchema,
+  metricUnit: ResponseBodyMetricUnit$outboundSchema,
+  directionality: ResponseBodyDirectionality$outboundSchema,
+});
+
+export function responseBodyGuardrailMetricsToJSON(
+  responseBodyGuardrailMetrics: ResponseBodyGuardrailMetrics,
+): string {
+  return JSON.stringify(
+    ResponseBodyGuardrailMetrics$outboundSchema.parse(
+      responseBodyGuardrailMetrics,
+    ),
+  );
+}
+export function responseBodyGuardrailMetricsFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodyGuardrailMetrics, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodyGuardrailMetrics$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyGuardrailMetrics' from JSON`,
+  );
+}
+
+/** @internal */
+export const ResponseBodyDevice$inboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyDevice
+> = z.nativeEnum(ResponseBodyDevice);
+/** @internal */
+export const ResponseBodyDevice$outboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyDevice
+> = ResponseBodyDevice$inboundSchema;
+
+/** @internal */
+export const ResponseBodyAllocationUnit$inboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyAllocationUnit
+> = z.nativeEnum(ResponseBodyAllocationUnit);
+/** @internal */
+export const ResponseBodyAllocationUnit$outboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyAllocationUnit
+> = ResponseBodyAllocationUnit$inboundSchema;
+
+/** @internal */
+export const UpdateFlagResponseBodyMetricType$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateFlagResponseBodyMetricType
+> = z.nativeEnum(UpdateFlagResponseBodyMetricType);
+/** @internal */
+export const UpdateFlagResponseBodyMetricType$outboundSchema: z.ZodNativeEnum<
+  typeof UpdateFlagResponseBodyMetricType
+> = UpdateFlagResponseBodyMetricType$inboundSchema;
+
+/** @internal */
+export const UpdateFlagResponseBodyMetricUnit$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateFlagResponseBodyMetricUnit
+> = z.nativeEnum(UpdateFlagResponseBodyMetricUnit);
+/** @internal */
+export const UpdateFlagResponseBodyMetricUnit$outboundSchema: z.ZodNativeEnum<
+  typeof UpdateFlagResponseBodyMetricUnit
+> = UpdateFlagResponseBodyMetricUnit$inboundSchema;
+
+/** @internal */
+export const UpdateFlagResponseBodyDirectionality$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateFlagResponseBodyDirectionality> = z.nativeEnum(
+    UpdateFlagResponseBodyDirectionality,
+  );
+/** @internal */
+export const UpdateFlagResponseBodyDirectionality$outboundSchema:
+  z.ZodNativeEnum<typeof UpdateFlagResponseBodyDirectionality> =
+    UpdateFlagResponseBodyDirectionality$inboundSchema;
+
+/** @internal */
+export const ResponseBodyPrimaryMetrics$inboundSchema: z.ZodType<
+  ResponseBodyPrimaryMetrics,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  description: types.optional(types.string()),
+  metricFormula: types.optional(types.string()),
+  name: types.string(),
+  metricType: UpdateFlagResponseBodyMetricType$inboundSchema,
+  metricUnit: UpdateFlagResponseBodyMetricUnit$inboundSchema,
+  directionality: UpdateFlagResponseBodyDirectionality$inboundSchema,
+});
+/** @internal */
+export type ResponseBodyPrimaryMetrics$Outbound = {
+  description?: string | undefined;
+  metricFormula?: string | undefined;
+  name: string;
+  metricType: string;
+  metricUnit: string;
+  directionality: string;
+};
+
+/** @internal */
+export const ResponseBodyPrimaryMetrics$outboundSchema: z.ZodType<
+  ResponseBodyPrimaryMetrics$Outbound,
+  z.ZodTypeDef,
+  ResponseBodyPrimaryMetrics
+> = z.object({
+  description: z.string().optional(),
+  metricFormula: z.string().optional(),
+  name: z.string(),
+  metricType: UpdateFlagResponseBodyMetricType$outboundSchema,
+  metricUnit: UpdateFlagResponseBodyMetricUnit$outboundSchema,
+  directionality: UpdateFlagResponseBodyDirectionality$outboundSchema,
+});
+
+export function responseBodyPrimaryMetricsToJSON(
+  responseBodyPrimaryMetrics: ResponseBodyPrimaryMetrics,
+): string {
+  return JSON.stringify(
+    ResponseBodyPrimaryMetrics$outboundSchema.parse(responseBodyPrimaryMetrics),
+  );
+}
+export function responseBodyPrimaryMetricsFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodyPrimaryMetrics, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodyPrimaryMetrics$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyPrimaryMetrics' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateFlagResponseBodyStatus$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateFlagResponseBodyStatus
+> = z.nativeEnum(UpdateFlagResponseBodyStatus);
+/** @internal */
+export const UpdateFlagResponseBodyStatus$outboundSchema: z.ZodNativeEnum<
+  typeof UpdateFlagResponseBodyStatus
+> = UpdateFlagResponseBodyStatus$inboundSchema;
+
+/** @internal */
+export const ResponseBodyExperiment$inboundSchema: z.ZodType<
+  ResponseBodyExperiment,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  name: types.optional(types.string()),
+  id: types.optional(types.string()),
+  numVariants: types.optional(types.number()),
+  surfaceArea: types.optional(types.string()),
+  stickyRequirement: types.optional(types.boolean()),
+  layer: types.optional(types.string()),
+  guardrailMetrics: types.optional(
+    z.array(z.lazy(() => ResponseBodyGuardrailMetrics$inboundSchema)),
+  ),
+  hypothesis: types.optional(types.string()),
+  device: types.optional(ResponseBodyDevice$inboundSchema),
+  controlVariantId: types.optional(types.string()),
+  startedAt: types.optional(types.number()),
+  endedAt: types.optional(types.number()),
+  allocationUnit: ResponseBodyAllocationUnit$inboundSchema,
+  primaryMetrics: z.array(
+    z.lazy(() => ResponseBodyPrimaryMetrics$inboundSchema),
+  ),
+  status: UpdateFlagResponseBodyStatus$inboundSchema,
+});
+/** @internal */
+export type ResponseBodyExperiment$Outbound = {
+  name?: string | undefined;
+  id?: string | undefined;
+  numVariants?: number | undefined;
+  surfaceArea?: string | undefined;
+  stickyRequirement?: boolean | undefined;
+  layer?: string | undefined;
+  guardrailMetrics?: Array<ResponseBodyGuardrailMetrics$Outbound> | undefined;
+  hypothesis?: string | undefined;
+  device?: string | undefined;
+  controlVariantId?: string | undefined;
+  startedAt?: number | undefined;
+  endedAt?: number | undefined;
+  allocationUnit: string;
+  primaryMetrics: Array<ResponseBodyPrimaryMetrics$Outbound>;
+  status: string;
+};
+
+/** @internal */
+export const ResponseBodyExperiment$outboundSchema: z.ZodType<
+  ResponseBodyExperiment$Outbound,
+  z.ZodTypeDef,
+  ResponseBodyExperiment
+> = z.object({
+  name: z.string().optional(),
+  id: z.string().optional(),
+  numVariants: z.number().optional(),
+  surfaceArea: z.string().optional(),
+  stickyRequirement: z.boolean().optional(),
+  layer: z.string().optional(),
+  guardrailMetrics: z.array(
+    z.lazy(() => ResponseBodyGuardrailMetrics$outboundSchema),
+  ).optional(),
+  hypothesis: z.string().optional(),
+  device: ResponseBodyDevice$outboundSchema.optional(),
+  controlVariantId: z.string().optional(),
+  startedAt: z.number().optional(),
+  endedAt: z.number().optional(),
+  allocationUnit: ResponseBodyAllocationUnit$outboundSchema,
+  primaryMetrics: z.array(
+    z.lazy(() => ResponseBodyPrimaryMetrics$outboundSchema),
+  ),
+  status: UpdateFlagResponseBodyStatus$outboundSchema,
+});
+
+export function responseBodyExperimentToJSON(
+  responseBodyExperiment: ResponseBodyExperiment,
+): string {
+  return JSON.stringify(
+    ResponseBodyExperiment$outboundSchema.parse(responseBodyExperiment),
+  );
+}
+export function responseBodyExperimentFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodyExperiment, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodyExperiment$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyExperiment' from JSON`,
+  );
+}
+
+/** @internal */
 export const ResponseBodyVariants$inboundSchema: z.ZodType<
   ResponseBodyVariants,
   z.ZodTypeDef,
@@ -3129,6 +3522,9 @@ export const UpdateFlagResponseBody1$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   description: types.optional(types.string()),
+  experiment: types.optional(
+    z.lazy(() => ResponseBodyExperiment$inboundSchema),
+  ),
   variants: z.array(z.lazy(() => ResponseBodyVariants$inboundSchema)),
   id: types.string(),
   environments: z.record(z.lazy(() => ResponseBodyEnvironments$inboundSchema)),
@@ -3147,6 +3543,7 @@ export const UpdateFlagResponseBody1$inboundSchema: z.ZodType<
 /** @internal */
 export type UpdateFlagResponseBody1$Outbound = {
   description?: string | undefined;
+  experiment?: ResponseBodyExperiment$Outbound | undefined;
   variants: Array<ResponseBodyVariants$Outbound>;
   id: string;
   environments: { [k: string]: ResponseBodyEnvironments$Outbound };
@@ -3170,6 +3567,7 @@ export const UpdateFlagResponseBody1$outboundSchema: z.ZodType<
   UpdateFlagResponseBody1
 > = z.object({
   description: z.string().optional(),
+  experiment: z.lazy(() => ResponseBodyExperiment$outboundSchema).optional(),
   variants: z.array(z.lazy(() => ResponseBodyVariants$outboundSchema)),
   id: z.string(),
   environments: z.record(z.lazy(() => ResponseBodyEnvironments$outboundSchema)),

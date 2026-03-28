@@ -48,10 +48,40 @@ func testGetProjectsGetProjects0(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	var respBody optionalnullable.OptionalNullable[operations.GetProjectsResponseBody] = optionalnullable.From(types.Pointer(operations.CreateGetProjectsResponseBodyGetProjectsResponseBody3(
-		operations.GetProjectsResponseBody3{
-			Projects: []operations.GetProjectsProject2{},
-			Pagination: operations.CreatePaginationUnion2Pagination(
+	var respBody optionalnullable.OptionalNullable[operations.GetProjectsResponseBody] = optionalnullable.From(types.Pointer(operations.CreateGetProjectsResponseBodyGetProjectsResponseBody2(
+		operations.GetProjectsResponseBody2{
+			Projects: []operations.GetProjectsProject1{
+				operations.GetProjectsProject1{
+					AccountID:            "<id>",
+					Alias:                []operations.ProjectAlias{},
+					DirectoryListing:     false,
+					DeploymentExpiration: operations.ProjectDeploymentExpiration1{},
+					ID:                   "<id>",
+					Name:                 "<value>",
+					NodeVersion:          operations.ProjectNodeVersion1EighteenDotX,
+					ResourceConfig: operations.ProjectResourceConfig1{
+						FunctionDefaultRegions: []string{
+							"<value 1>",
+							"<value 2>",
+							"<value 3>",
+						},
+					},
+					RollingRelease: optionalnullable.From(&operations.ProjectRollingRelease1{
+						Target: "production",
+						Stages: optionalnullable.From(types.Pointer([]operations.ProjectStage1{
+							operations.ProjectStage1{
+								TargetPercentage: 25,
+								RequireApproval:  types.Bool(false),
+								Duration:         types.Float64(600),
+								LinearShift:      types.Bool(false),
+							},
+						})),
+						CanaryResponseHeader: types.Bool(false),
+					}),
+					ServerlessFunctionRegion: "<value>",
+				},
+			},
+			Pagination: operations.CreatePaginationUnion1Pagination(
 				components.Pagination{
 					Count: 20,
 					Next:  types.Float64(1540095775951),

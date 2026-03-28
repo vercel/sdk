@@ -36,6 +36,119 @@ export type ListFlagVersionsRequest = {
   slug?: string | undefined;
 };
 
+export const ListFlagVersionsMetricType = {
+  Percentage: "percentage",
+  Currency: "currency",
+  Count: "count",
+} as const;
+export type ListFlagVersionsMetricType = ClosedEnum<
+  typeof ListFlagVersionsMetricType
+>;
+
+export const ListFlagVersionsMetricUnit = {
+  User: "user",
+  Session: "session",
+  Visitor: "visitor",
+} as const;
+export type ListFlagVersionsMetricUnit = ClosedEnum<
+  typeof ListFlagVersionsMetricUnit
+>;
+
+export const ListFlagVersionsDirectionality = {
+  IncreaseIsGood: "increaseIsGood",
+  DecreaseIsGood: "decreaseIsGood",
+} as const;
+export type ListFlagVersionsDirectionality = ClosedEnum<
+  typeof ListFlagVersionsDirectionality
+>;
+
+export type ListFlagVersionsGuardrailMetrics = {
+  description?: string | undefined;
+  metricFormula?: string | undefined;
+  name: string;
+  metricType: ListFlagVersionsMetricType;
+  metricUnit: ListFlagVersionsMetricUnit;
+  directionality: ListFlagVersionsDirectionality;
+};
+
+export const ListFlagVersionsDevice = {
+  Android: "android",
+  Ios: "ios",
+  Desktop: "desktop",
+  Mweb: "mweb",
+} as const;
+export type ListFlagVersionsDevice = ClosedEnum<typeof ListFlagVersionsDevice>;
+
+export const ListFlagVersionsAllocationUnit = {
+  CookieId: "cookieId",
+  VisitorId: "visitorId",
+  UserId: "userId",
+} as const;
+export type ListFlagVersionsAllocationUnit = ClosedEnum<
+  typeof ListFlagVersionsAllocationUnit
+>;
+
+export const ListFlagVersionsFeatureFlagsMetricType = {
+  Percentage: "percentage",
+  Currency: "currency",
+  Count: "count",
+} as const;
+export type ListFlagVersionsFeatureFlagsMetricType = ClosedEnum<
+  typeof ListFlagVersionsFeatureFlagsMetricType
+>;
+
+export const ListFlagVersionsFeatureFlagsMetricUnit = {
+  User: "user",
+  Session: "session",
+  Visitor: "visitor",
+} as const;
+export type ListFlagVersionsFeatureFlagsMetricUnit = ClosedEnum<
+  typeof ListFlagVersionsFeatureFlagsMetricUnit
+>;
+
+export const ListFlagVersionsFeatureFlagsDirectionality = {
+  IncreaseIsGood: "increaseIsGood",
+  DecreaseIsGood: "decreaseIsGood",
+} as const;
+export type ListFlagVersionsFeatureFlagsDirectionality = ClosedEnum<
+  typeof ListFlagVersionsFeatureFlagsDirectionality
+>;
+
+export type ListFlagVersionsPrimaryMetrics = {
+  description?: string | undefined;
+  metricFormula?: string | undefined;
+  name: string;
+  metricType: ListFlagVersionsFeatureFlagsMetricType;
+  metricUnit: ListFlagVersionsFeatureFlagsMetricUnit;
+  directionality: ListFlagVersionsFeatureFlagsDirectionality;
+};
+
+export const ListFlagVersionsStatus = {
+  Draft: "draft",
+  Running: "running",
+  Paused: "paused",
+  Closed: "closed",
+} as const;
+export type ListFlagVersionsStatus = ClosedEnum<typeof ListFlagVersionsStatus>;
+
+export type ListFlagVersionsExperiment = {
+  name?: string | undefined;
+  id?: string | undefined;
+  numVariants?: number | undefined;
+  surfaceArea?: string | undefined;
+  stickyRequirement?: boolean | undefined;
+  layer?: string | undefined;
+  guardrailMetrics?: Array<ListFlagVersionsGuardrailMetrics> | undefined;
+  hypothesis?: string | undefined;
+  device?: ListFlagVersionsDevice | undefined;
+  controlVariantId?: string | undefined;
+  startedAt?: number | undefined;
+  endedAt?: number | undefined;
+  allocationUnit: ListFlagVersionsAllocationUnit;
+  primaryMetrics: Array<ListFlagVersionsPrimaryMetrics>;
+  status: ListFlagVersionsStatus;
+};
+
 export type ListFlagVersionsVariants = {};
 
 export type ListFlagVersionsReuse = {
@@ -249,6 +362,7 @@ export type ListFlagVersionsState = ClosedEnum<typeof ListFlagVersionsState>;
 
 export type ListFlagVersionsData = {
   description?: string | undefined;
+  experiment?: ListFlagVersionsExperiment | undefined;
   variants: Array<ListFlagVersionsVariants>;
   environments: { [k: string]: ListFlagVersionsEnvironments };
   seed: number;
@@ -340,6 +454,292 @@ export function listFlagVersionsRequestFromJSON(
     jsonString,
     (x) => ListFlagVersionsRequest$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'ListFlagVersionsRequest' from JSON`,
+  );
+}
+
+/** @internal */
+export const ListFlagVersionsMetricType$inboundSchema: z.ZodNativeEnum<
+  typeof ListFlagVersionsMetricType
+> = z.nativeEnum(ListFlagVersionsMetricType);
+/** @internal */
+export const ListFlagVersionsMetricType$outboundSchema: z.ZodNativeEnum<
+  typeof ListFlagVersionsMetricType
+> = ListFlagVersionsMetricType$inboundSchema;
+
+/** @internal */
+export const ListFlagVersionsMetricUnit$inboundSchema: z.ZodNativeEnum<
+  typeof ListFlagVersionsMetricUnit
+> = z.nativeEnum(ListFlagVersionsMetricUnit);
+/** @internal */
+export const ListFlagVersionsMetricUnit$outboundSchema: z.ZodNativeEnum<
+  typeof ListFlagVersionsMetricUnit
+> = ListFlagVersionsMetricUnit$inboundSchema;
+
+/** @internal */
+export const ListFlagVersionsDirectionality$inboundSchema: z.ZodNativeEnum<
+  typeof ListFlagVersionsDirectionality
+> = z.nativeEnum(ListFlagVersionsDirectionality);
+/** @internal */
+export const ListFlagVersionsDirectionality$outboundSchema: z.ZodNativeEnum<
+  typeof ListFlagVersionsDirectionality
+> = ListFlagVersionsDirectionality$inboundSchema;
+
+/** @internal */
+export const ListFlagVersionsGuardrailMetrics$inboundSchema: z.ZodType<
+  ListFlagVersionsGuardrailMetrics,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  description: types.optional(types.string()),
+  metricFormula: types.optional(types.string()),
+  name: types.string(),
+  metricType: ListFlagVersionsMetricType$inboundSchema,
+  metricUnit: ListFlagVersionsMetricUnit$inboundSchema,
+  directionality: ListFlagVersionsDirectionality$inboundSchema,
+});
+/** @internal */
+export type ListFlagVersionsGuardrailMetrics$Outbound = {
+  description?: string | undefined;
+  metricFormula?: string | undefined;
+  name: string;
+  metricType: string;
+  metricUnit: string;
+  directionality: string;
+};
+
+/** @internal */
+export const ListFlagVersionsGuardrailMetrics$outboundSchema: z.ZodType<
+  ListFlagVersionsGuardrailMetrics$Outbound,
+  z.ZodTypeDef,
+  ListFlagVersionsGuardrailMetrics
+> = z.object({
+  description: z.string().optional(),
+  metricFormula: z.string().optional(),
+  name: z.string(),
+  metricType: ListFlagVersionsMetricType$outboundSchema,
+  metricUnit: ListFlagVersionsMetricUnit$outboundSchema,
+  directionality: ListFlagVersionsDirectionality$outboundSchema,
+});
+
+export function listFlagVersionsGuardrailMetricsToJSON(
+  listFlagVersionsGuardrailMetrics: ListFlagVersionsGuardrailMetrics,
+): string {
+  return JSON.stringify(
+    ListFlagVersionsGuardrailMetrics$outboundSchema.parse(
+      listFlagVersionsGuardrailMetrics,
+    ),
+  );
+}
+export function listFlagVersionsGuardrailMetricsFromJSON(
+  jsonString: string,
+): SafeParseResult<ListFlagVersionsGuardrailMetrics, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListFlagVersionsGuardrailMetrics$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListFlagVersionsGuardrailMetrics' from JSON`,
+  );
+}
+
+/** @internal */
+export const ListFlagVersionsDevice$inboundSchema: z.ZodNativeEnum<
+  typeof ListFlagVersionsDevice
+> = z.nativeEnum(ListFlagVersionsDevice);
+/** @internal */
+export const ListFlagVersionsDevice$outboundSchema: z.ZodNativeEnum<
+  typeof ListFlagVersionsDevice
+> = ListFlagVersionsDevice$inboundSchema;
+
+/** @internal */
+export const ListFlagVersionsAllocationUnit$inboundSchema: z.ZodNativeEnum<
+  typeof ListFlagVersionsAllocationUnit
+> = z.nativeEnum(ListFlagVersionsAllocationUnit);
+/** @internal */
+export const ListFlagVersionsAllocationUnit$outboundSchema: z.ZodNativeEnum<
+  typeof ListFlagVersionsAllocationUnit
+> = ListFlagVersionsAllocationUnit$inboundSchema;
+
+/** @internal */
+export const ListFlagVersionsFeatureFlagsMetricType$inboundSchema:
+  z.ZodNativeEnum<typeof ListFlagVersionsFeatureFlagsMetricType> = z.nativeEnum(
+    ListFlagVersionsFeatureFlagsMetricType,
+  );
+/** @internal */
+export const ListFlagVersionsFeatureFlagsMetricType$outboundSchema:
+  z.ZodNativeEnum<typeof ListFlagVersionsFeatureFlagsMetricType> =
+    ListFlagVersionsFeatureFlagsMetricType$inboundSchema;
+
+/** @internal */
+export const ListFlagVersionsFeatureFlagsMetricUnit$inboundSchema:
+  z.ZodNativeEnum<typeof ListFlagVersionsFeatureFlagsMetricUnit> = z.nativeEnum(
+    ListFlagVersionsFeatureFlagsMetricUnit,
+  );
+/** @internal */
+export const ListFlagVersionsFeatureFlagsMetricUnit$outboundSchema:
+  z.ZodNativeEnum<typeof ListFlagVersionsFeatureFlagsMetricUnit> =
+    ListFlagVersionsFeatureFlagsMetricUnit$inboundSchema;
+
+/** @internal */
+export const ListFlagVersionsFeatureFlagsDirectionality$inboundSchema:
+  z.ZodNativeEnum<typeof ListFlagVersionsFeatureFlagsDirectionality> = z
+    .nativeEnum(ListFlagVersionsFeatureFlagsDirectionality);
+/** @internal */
+export const ListFlagVersionsFeatureFlagsDirectionality$outboundSchema:
+  z.ZodNativeEnum<typeof ListFlagVersionsFeatureFlagsDirectionality> =
+    ListFlagVersionsFeatureFlagsDirectionality$inboundSchema;
+
+/** @internal */
+export const ListFlagVersionsPrimaryMetrics$inboundSchema: z.ZodType<
+  ListFlagVersionsPrimaryMetrics,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  description: types.optional(types.string()),
+  metricFormula: types.optional(types.string()),
+  name: types.string(),
+  metricType: ListFlagVersionsFeatureFlagsMetricType$inboundSchema,
+  metricUnit: ListFlagVersionsFeatureFlagsMetricUnit$inboundSchema,
+  directionality: ListFlagVersionsFeatureFlagsDirectionality$inboundSchema,
+});
+/** @internal */
+export type ListFlagVersionsPrimaryMetrics$Outbound = {
+  description?: string | undefined;
+  metricFormula?: string | undefined;
+  name: string;
+  metricType: string;
+  metricUnit: string;
+  directionality: string;
+};
+
+/** @internal */
+export const ListFlagVersionsPrimaryMetrics$outboundSchema: z.ZodType<
+  ListFlagVersionsPrimaryMetrics$Outbound,
+  z.ZodTypeDef,
+  ListFlagVersionsPrimaryMetrics
+> = z.object({
+  description: z.string().optional(),
+  metricFormula: z.string().optional(),
+  name: z.string(),
+  metricType: ListFlagVersionsFeatureFlagsMetricType$outboundSchema,
+  metricUnit: ListFlagVersionsFeatureFlagsMetricUnit$outboundSchema,
+  directionality: ListFlagVersionsFeatureFlagsDirectionality$outboundSchema,
+});
+
+export function listFlagVersionsPrimaryMetricsToJSON(
+  listFlagVersionsPrimaryMetrics: ListFlagVersionsPrimaryMetrics,
+): string {
+  return JSON.stringify(
+    ListFlagVersionsPrimaryMetrics$outboundSchema.parse(
+      listFlagVersionsPrimaryMetrics,
+    ),
+  );
+}
+export function listFlagVersionsPrimaryMetricsFromJSON(
+  jsonString: string,
+): SafeParseResult<ListFlagVersionsPrimaryMetrics, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListFlagVersionsPrimaryMetrics$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListFlagVersionsPrimaryMetrics' from JSON`,
+  );
+}
+
+/** @internal */
+export const ListFlagVersionsStatus$inboundSchema: z.ZodNativeEnum<
+  typeof ListFlagVersionsStatus
+> = z.nativeEnum(ListFlagVersionsStatus);
+/** @internal */
+export const ListFlagVersionsStatus$outboundSchema: z.ZodNativeEnum<
+  typeof ListFlagVersionsStatus
+> = ListFlagVersionsStatus$inboundSchema;
+
+/** @internal */
+export const ListFlagVersionsExperiment$inboundSchema: z.ZodType<
+  ListFlagVersionsExperiment,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  name: types.optional(types.string()),
+  id: types.optional(types.string()),
+  numVariants: types.optional(types.number()),
+  surfaceArea: types.optional(types.string()),
+  stickyRequirement: types.optional(types.boolean()),
+  layer: types.optional(types.string()),
+  guardrailMetrics: types.optional(
+    z.array(z.lazy(() => ListFlagVersionsGuardrailMetrics$inboundSchema)),
+  ),
+  hypothesis: types.optional(types.string()),
+  device: types.optional(ListFlagVersionsDevice$inboundSchema),
+  controlVariantId: types.optional(types.string()),
+  startedAt: types.optional(types.number()),
+  endedAt: types.optional(types.number()),
+  allocationUnit: ListFlagVersionsAllocationUnit$inboundSchema,
+  primaryMetrics: z.array(
+    z.lazy(() => ListFlagVersionsPrimaryMetrics$inboundSchema),
+  ),
+  status: ListFlagVersionsStatus$inboundSchema,
+});
+/** @internal */
+export type ListFlagVersionsExperiment$Outbound = {
+  name?: string | undefined;
+  id?: string | undefined;
+  numVariants?: number | undefined;
+  surfaceArea?: string | undefined;
+  stickyRequirement?: boolean | undefined;
+  layer?: string | undefined;
+  guardrailMetrics?:
+    | Array<ListFlagVersionsGuardrailMetrics$Outbound>
+    | undefined;
+  hypothesis?: string | undefined;
+  device?: string | undefined;
+  controlVariantId?: string | undefined;
+  startedAt?: number | undefined;
+  endedAt?: number | undefined;
+  allocationUnit: string;
+  primaryMetrics: Array<ListFlagVersionsPrimaryMetrics$Outbound>;
+  status: string;
+};
+
+/** @internal */
+export const ListFlagVersionsExperiment$outboundSchema: z.ZodType<
+  ListFlagVersionsExperiment$Outbound,
+  z.ZodTypeDef,
+  ListFlagVersionsExperiment
+> = z.object({
+  name: z.string().optional(),
+  id: z.string().optional(),
+  numVariants: z.number().optional(),
+  surfaceArea: z.string().optional(),
+  stickyRequirement: z.boolean().optional(),
+  layer: z.string().optional(),
+  guardrailMetrics: z.array(
+    z.lazy(() => ListFlagVersionsGuardrailMetrics$outboundSchema),
+  ).optional(),
+  hypothesis: z.string().optional(),
+  device: ListFlagVersionsDevice$outboundSchema.optional(),
+  controlVariantId: z.string().optional(),
+  startedAt: z.number().optional(),
+  endedAt: z.number().optional(),
+  allocationUnit: ListFlagVersionsAllocationUnit$outboundSchema,
+  primaryMetrics: z.array(
+    z.lazy(() => ListFlagVersionsPrimaryMetrics$outboundSchema),
+  ),
+  status: ListFlagVersionsStatus$outboundSchema,
+});
+
+export function listFlagVersionsExperimentToJSON(
+  listFlagVersionsExperiment: ListFlagVersionsExperiment,
+): string {
+  return JSON.stringify(
+    ListFlagVersionsExperiment$outboundSchema.parse(listFlagVersionsExperiment),
+  );
+}
+export function listFlagVersionsExperimentFromJSON(
+  jsonString: string,
+): SafeParseResult<ListFlagVersionsExperiment, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListFlagVersionsExperiment$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListFlagVersionsExperiment' from JSON`,
   );
 }
 
@@ -1589,6 +1989,9 @@ export const ListFlagVersionsData$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   description: types.optional(types.string()),
+  experiment: types.optional(
+    z.lazy(() => ListFlagVersionsExperiment$inboundSchema),
+  ),
   variants: z.array(z.lazy(() => ListFlagVersionsVariants$inboundSchema)),
   environments: z.record(
     z.lazy(() => ListFlagVersionsEnvironments$inboundSchema),
@@ -1599,6 +2002,7 @@ export const ListFlagVersionsData$inboundSchema: z.ZodType<
 /** @internal */
 export type ListFlagVersionsData$Outbound = {
   description?: string | undefined;
+  experiment?: ListFlagVersionsExperiment$Outbound | undefined;
   variants: Array<ListFlagVersionsVariants$Outbound>;
   environments: { [k: string]: ListFlagVersionsEnvironments$Outbound };
   seed: number;
@@ -1612,6 +2016,8 @@ export const ListFlagVersionsData$outboundSchema: z.ZodType<
   ListFlagVersionsData
 > = z.object({
   description: z.string().optional(),
+  experiment: z.lazy(() => ListFlagVersionsExperiment$outboundSchema)
+    .optional(),
   variants: z.array(z.lazy(() => ListFlagVersionsVariants$outboundSchema)),
   environments: z.record(
     z.lazy(() => ListFlagVersionsEnvironments$outboundSchema),

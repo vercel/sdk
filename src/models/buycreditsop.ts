@@ -90,6 +90,108 @@ export type BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody
   };
 
 /**
+ * Resources that were changed as part of this intent. Tracks all logical changes including the primary change and any side effects.
+ */
+export type BuyCreditsChangedResourcesBillingResponse4 = {
+  /**
+   * Resource IDs that were added.
+   */
+  addedResourceIds: Array<string>;
+  /**
+   * The alias of the product that was changed.
+   */
+  productAlias: string;
+  /**
+   * The ID of the product that was changed.
+   */
+  productId: string;
+  /**
+   * The resulting quantity after this change.
+   */
+  quantity: number;
+  /**
+   * Resource IDs that were removed.
+   */
+  removedResourceIds: Array<string>;
+  type: "adjust_plan_item_quantity";
+};
+
+/**
+ * Resources that were changed as part of this intent. Tracks all logical changes including the primary change and any side effects.
+ */
+export type BuyCreditsChangedResourcesBillingResponse3 = {
+  /**
+   * The alias of the product that was changed.
+   */
+  productAlias: string;
+  /**
+   * The ID of the product that was changed.
+   */
+  productId: string;
+  /**
+   * The resulting quantity after this change.
+   */
+  quantity: number;
+  /**
+   * Resource IDs that were removed.
+   */
+  resourceIds: Array<string>;
+  type: "decrease_plan_item_quantity";
+};
+
+/**
+ * Resources that were changed as part of this intent. Tracks all logical changes including the primary change and any side effects.
+ */
+export type BuyCreditsChangedResourcesBillingResponse2 = {
+  /**
+   * The alias of the product that was changed.
+   */
+  productAlias: string;
+  /**
+   * The ID of the product that was changed.
+   */
+  productId: string;
+  /**
+   * The resulting quantity after this change.
+   */
+  quantity: number;
+  /**
+   * Resource IDs that were added.
+   */
+  resourceIds: Array<string>;
+  type: "increase_plan_item_quantity";
+};
+
+/**
+ * Resources that were changed as part of this intent. Tracks all logical changes including the primary change and any side effects.
+ */
+export type BuyCreditsChangedResourcesBillingResponse1 = {
+  /**
+   * The alias of the product that was changed.
+   */
+  productAlias: string;
+  /**
+   * The ID of the product that was changed.
+   */
+  productId: string;
+  /**
+   * The resulting quantity after this change.
+   */
+  quantity: number;
+  type: "set_plan_item_quantity";
+  /**
+   * The full set of resource IDs after the set operation.
+   */
+  resourceIds?: Array<string> | undefined;
+};
+
+export type BuyCreditsConfigurationBillingChangedResources =
+  | BuyCreditsChangedResourcesBillingResponse1
+  | BuyCreditsChangedResourcesBillingResponse2
+  | BuyCreditsChangedResourcesBillingResponse3
+  | BuyCreditsChangedResourcesBillingResponse4;
+
+/**
  * Output returned after configuring an OrbSubscriptionIntent.
  */
 export type BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBodyOutput =
@@ -102,6 +204,17 @@ export type BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody
      * The product ID associated with this intent.
      */
     productId: string;
+    /**
+     * Resources that were changed as part of this intent. Tracks all logical changes including the primary change and any side effects.
+     */
+    changedResources?:
+      | Array<
+        | BuyCreditsChangedResourcesBillingResponse1
+        | BuyCreditsChangedResourcesBillingResponse2
+        | BuyCreditsChangedResourcesBillingResponse3
+        | BuyCreditsChangedResourcesBillingResponse4
+      >
+      | undefined;
     /**
      * Optional metadata associated with the intent to update the Orb subscription with.
      */
@@ -145,6 +258,108 @@ export type BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody
   };
 
 /**
+ * Resources that were changed as part of this intent. Tracks all logical changes including the primary change and any side effects.
+ */
+export type BuyCreditsChangedResourcesBilling4 = {
+  /**
+   * Resource IDs that were added.
+   */
+  addedResourceIds: Array<string>;
+  /**
+   * The alias of the product that was changed.
+   */
+  productAlias: string;
+  /**
+   * The ID of the product that was changed.
+   */
+  productId: string;
+  /**
+   * The resulting quantity after this change.
+   */
+  quantity: number;
+  /**
+   * Resource IDs that were removed.
+   */
+  removedResourceIds: Array<string>;
+  type: "adjust_plan_item_quantity";
+};
+
+/**
+ * Resources that were changed as part of this intent. Tracks all logical changes including the primary change and any side effects.
+ */
+export type BuyCreditsChangedResourcesBilling3 = {
+  /**
+   * The alias of the product that was changed.
+   */
+  productAlias: string;
+  /**
+   * The ID of the product that was changed.
+   */
+  productId: string;
+  /**
+   * The resulting quantity after this change.
+   */
+  quantity: number;
+  /**
+   * Resource IDs that were removed.
+   */
+  resourceIds: Array<string>;
+  type: "decrease_plan_item_quantity";
+};
+
+/**
+ * Resources that were changed as part of this intent. Tracks all logical changes including the primary change and any side effects.
+ */
+export type BuyCreditsChangedResourcesBilling2 = {
+  /**
+   * The alias of the product that was changed.
+   */
+  productAlias: string;
+  /**
+   * The ID of the product that was changed.
+   */
+  productId: string;
+  /**
+   * The resulting quantity after this change.
+   */
+  quantity: number;
+  /**
+   * Resource IDs that were added.
+   */
+  resourceIds: Array<string>;
+  type: "increase_plan_item_quantity";
+};
+
+/**
+ * Resources that were changed as part of this intent. Tracks all logical changes including the primary change and any side effects.
+ */
+export type BuyCreditsChangedResourcesBilling1 = {
+  /**
+   * The alias of the product that was changed.
+   */
+  productAlias: string;
+  /**
+   * The ID of the product that was changed.
+   */
+  productId: string;
+  /**
+   * The resulting quantity after this change.
+   */
+  quantity: number;
+  type: "set_plan_item_quantity";
+  /**
+   * The full set of resource IDs after the set operation.
+   */
+  resourceIds?: Array<string> | undefined;
+};
+
+export type BuyCreditsConfigurationChangedResources =
+  | BuyCreditsChangedResourcesBilling1
+  | BuyCreditsChangedResourcesBilling2
+  | BuyCreditsChangedResourcesBilling3
+  | BuyCreditsChangedResourcesBilling4;
+
+/**
  * Output returned after configuring an OrbSubscriptionIntent.
  */
 export type BuyCreditsConfigurationBillingResponse200ApplicationJSONOutput = {
@@ -156,6 +371,17 @@ export type BuyCreditsConfigurationBillingResponse200ApplicationJSONOutput = {
    * The product ID associated with this intent.
    */
   productId: string;
+  /**
+   * Resources that were changed as part of this intent. Tracks all logical changes including the primary change and any side effects.
+   */
+  changedResources?:
+    | Array<
+      | BuyCreditsChangedResourcesBilling1
+      | BuyCreditsChangedResourcesBilling2
+      | BuyCreditsChangedResourcesBilling3
+      | BuyCreditsChangedResourcesBilling4
+    >
+    | undefined;
   /**
    * Optional metadata associated with the intent to update the Orb subscription with.
    */
@@ -198,6 +424,108 @@ export type BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody
   };
 
 /**
+ * Resources that were changed as part of this intent. Tracks all logical changes including the primary change and any side effects.
+ */
+export type BuyCreditsChangedResources4 = {
+  /**
+   * Resource IDs that were added.
+   */
+  addedResourceIds: Array<string>;
+  /**
+   * The alias of the product that was changed.
+   */
+  productAlias: string;
+  /**
+   * The ID of the product that was changed.
+   */
+  productId: string;
+  /**
+   * The resulting quantity after this change.
+   */
+  quantity: number;
+  /**
+   * Resource IDs that were removed.
+   */
+  removedResourceIds: Array<string>;
+  type: "adjust_plan_item_quantity";
+};
+
+/**
+ * Resources that were changed as part of this intent. Tracks all logical changes including the primary change and any side effects.
+ */
+export type BuyCreditsChangedResources3 = {
+  /**
+   * The alias of the product that was changed.
+   */
+  productAlias: string;
+  /**
+   * The ID of the product that was changed.
+   */
+  productId: string;
+  /**
+   * The resulting quantity after this change.
+   */
+  quantity: number;
+  /**
+   * Resource IDs that were removed.
+   */
+  resourceIds: Array<string>;
+  type: "decrease_plan_item_quantity";
+};
+
+/**
+ * Resources that were changed as part of this intent. Tracks all logical changes including the primary change and any side effects.
+ */
+export type BuyCreditsChangedResources2 = {
+  /**
+   * The alias of the product that was changed.
+   */
+  productAlias: string;
+  /**
+   * The ID of the product that was changed.
+   */
+  productId: string;
+  /**
+   * The resulting quantity after this change.
+   */
+  quantity: number;
+  /**
+   * Resource IDs that were added.
+   */
+  resourceIds: Array<string>;
+  type: "increase_plan_item_quantity";
+};
+
+/**
+ * Resources that were changed as part of this intent. Tracks all logical changes including the primary change and any side effects.
+ */
+export type BuyCreditsChangedResources1 = {
+  /**
+   * The alias of the product that was changed.
+   */
+  productAlias: string;
+  /**
+   * The ID of the product that was changed.
+   */
+  productId: string;
+  /**
+   * The resulting quantity after this change.
+   */
+  quantity: number;
+  type: "set_plan_item_quantity";
+  /**
+   * The full set of resource IDs after the set operation.
+   */
+  resourceIds?: Array<string> | undefined;
+};
+
+export type ConfigurationChangedResources =
+  | BuyCreditsChangedResources1
+  | BuyCreditsChangedResources2
+  | BuyCreditsChangedResources3
+  | BuyCreditsChangedResources4;
+
+/**
  * Output returned after configuring an OrbSubscriptionIntent.
  */
 export type BuyCreditsConfigurationBillingResponse200Output = {
@@ -209,6 +537,17 @@ export type BuyCreditsConfigurationBillingResponse200Output = {
    * The product ID associated with this intent.
    */
   productId: string;
+  /**
+   * Resources that were changed as part of this intent. Tracks all logical changes including the primary change and any side effects.
+   */
+  changedResources?:
+    | Array<
+      | BuyCreditsChangedResources1
+      | BuyCreditsChangedResources2
+      | BuyCreditsChangedResources3
+      | BuyCreditsChangedResources4
+    >
+    | undefined;
   /**
    * Optional metadata associated with the intent to update the Orb subscription with.
    */
@@ -254,6 +593,108 @@ export type BuyCreditsConfigurationBillingResponse200ApplicationJSONOptions = {
 };
 
 /**
+ * Resources that were changed as part of this intent. Tracks all logical changes including the primary change and any side effects.
+ */
+export type ChangedResources4 = {
+  /**
+   * Resource IDs that were added.
+   */
+  addedResourceIds: Array<string>;
+  /**
+   * The alias of the product that was changed.
+   */
+  productAlias: string;
+  /**
+   * The ID of the product that was changed.
+   */
+  productId: string;
+  /**
+   * The resulting quantity after this change.
+   */
+  quantity: number;
+  /**
+   * Resource IDs that were removed.
+   */
+  removedResourceIds: Array<string>;
+  type: "adjust_plan_item_quantity";
+};
+
+/**
+ * Resources that were changed as part of this intent. Tracks all logical changes including the primary change and any side effects.
+ */
+export type ChangedResources3 = {
+  /**
+   * The alias of the product that was changed.
+   */
+  productAlias: string;
+  /**
+   * The ID of the product that was changed.
+   */
+  productId: string;
+  /**
+   * The resulting quantity after this change.
+   */
+  quantity: number;
+  /**
+   * Resource IDs that were removed.
+   */
+  resourceIds: Array<string>;
+  type: "decrease_plan_item_quantity";
+};
+
+/**
+ * Resources that were changed as part of this intent. Tracks all logical changes including the primary change and any side effects.
+ */
+export type ChangedResources2 = {
+  /**
+   * The alias of the product that was changed.
+   */
+  productAlias: string;
+  /**
+   * The ID of the product that was changed.
+   */
+  productId: string;
+  /**
+   * The resulting quantity after this change.
+   */
+  quantity: number;
+  /**
+   * Resource IDs that were added.
+   */
+  resourceIds: Array<string>;
+  type: "increase_plan_item_quantity";
+};
+
+/**
+ * Resources that were changed as part of this intent. Tracks all logical changes including the primary change and any side effects.
+ */
+export type ChangedResources1 = {
+  /**
+   * The alias of the product that was changed.
+   */
+  productAlias: string;
+  /**
+   * The ID of the product that was changed.
+   */
+  productId: string;
+  /**
+   * The resulting quantity after this change.
+   */
+  quantity: number;
+  type: "set_plan_item_quantity";
+  /**
+   * The full set of resource IDs after the set operation.
+   */
+  resourceIds?: Array<string> | undefined;
+};
+
+export type ChangedResources =
+  | ChangedResources1
+  | ChangedResources2
+  | ChangedResources3
+  | ChangedResources4;
+
+/**
  * Output returned after configuring an OrbSubscriptionIntent.
  */
 export type BuyCreditsConfigurationBillingResponseOutput = {
@@ -265,6 +706,17 @@ export type BuyCreditsConfigurationBillingResponseOutput = {
    * The product ID associated with this intent.
    */
   productId: string;
+  /**
+   * Resources that were changed as part of this intent. Tracks all logical changes including the primary change and any side effects.
+   */
+  changedResources?:
+    | Array<
+      | ChangedResources1
+      | ChangedResources2
+      | ChangedResources3
+      | ChangedResources4
+    >
+    | undefined;
   /**
    * Optional metadata associated with the intent to update the Orb subscription with.
    */
@@ -1153,6 +1605,303 @@ export function buyCreditsConfigurationBillingResponse200ApplicationJSONResponse
 }
 
 /** @internal */
+export const BuyCreditsChangedResourcesBillingResponse4$inboundSchema:
+  z.ZodType<BuyCreditsChangedResourcesBillingResponse4, z.ZodTypeDef, unknown> =
+    z.object({
+      addedResourceIds: z.array(types.string()),
+      productAlias: types.string(),
+      productId: types.string(),
+      quantity: types.number(),
+      removedResourceIds: z.array(types.string()),
+      type: types.literal("adjust_plan_item_quantity"),
+    });
+/** @internal */
+export type BuyCreditsChangedResourcesBillingResponse4$Outbound = {
+  addedResourceIds: Array<string>;
+  productAlias: string;
+  productId: string;
+  quantity: number;
+  removedResourceIds: Array<string>;
+  type: "adjust_plan_item_quantity";
+};
+
+/** @internal */
+export const BuyCreditsChangedResourcesBillingResponse4$outboundSchema:
+  z.ZodType<
+    BuyCreditsChangedResourcesBillingResponse4$Outbound,
+    z.ZodTypeDef,
+    BuyCreditsChangedResourcesBillingResponse4
+  > = z.object({
+    addedResourceIds: z.array(z.string()),
+    productAlias: z.string(),
+    productId: z.string(),
+    quantity: z.number(),
+    removedResourceIds: z.array(z.string()),
+    type: z.literal("adjust_plan_item_quantity"),
+  });
+
+export function buyCreditsChangedResourcesBillingResponse4ToJSON(
+  buyCreditsChangedResourcesBillingResponse4:
+    BuyCreditsChangedResourcesBillingResponse4,
+): string {
+  return JSON.stringify(
+    BuyCreditsChangedResourcesBillingResponse4$outboundSchema.parse(
+      buyCreditsChangedResourcesBillingResponse4,
+    ),
+  );
+}
+export function buyCreditsChangedResourcesBillingResponse4FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  BuyCreditsChangedResourcesBillingResponse4,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      BuyCreditsChangedResourcesBillingResponse4$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'BuyCreditsChangedResourcesBillingResponse4' from JSON`,
+  );
+}
+
+/** @internal */
+export const BuyCreditsChangedResourcesBillingResponse3$inboundSchema:
+  z.ZodType<BuyCreditsChangedResourcesBillingResponse3, z.ZodTypeDef, unknown> =
+    z.object({
+      productAlias: types.string(),
+      productId: types.string(),
+      quantity: types.number(),
+      resourceIds: z.array(types.string()),
+      type: types.literal("decrease_plan_item_quantity"),
+    });
+/** @internal */
+export type BuyCreditsChangedResourcesBillingResponse3$Outbound = {
+  productAlias: string;
+  productId: string;
+  quantity: number;
+  resourceIds: Array<string>;
+  type: "decrease_plan_item_quantity";
+};
+
+/** @internal */
+export const BuyCreditsChangedResourcesBillingResponse3$outboundSchema:
+  z.ZodType<
+    BuyCreditsChangedResourcesBillingResponse3$Outbound,
+    z.ZodTypeDef,
+    BuyCreditsChangedResourcesBillingResponse3
+  > = z.object({
+    productAlias: z.string(),
+    productId: z.string(),
+    quantity: z.number(),
+    resourceIds: z.array(z.string()),
+    type: z.literal("decrease_plan_item_quantity"),
+  });
+
+export function buyCreditsChangedResourcesBillingResponse3ToJSON(
+  buyCreditsChangedResourcesBillingResponse3:
+    BuyCreditsChangedResourcesBillingResponse3,
+): string {
+  return JSON.stringify(
+    BuyCreditsChangedResourcesBillingResponse3$outboundSchema.parse(
+      buyCreditsChangedResourcesBillingResponse3,
+    ),
+  );
+}
+export function buyCreditsChangedResourcesBillingResponse3FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  BuyCreditsChangedResourcesBillingResponse3,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      BuyCreditsChangedResourcesBillingResponse3$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'BuyCreditsChangedResourcesBillingResponse3' from JSON`,
+  );
+}
+
+/** @internal */
+export const BuyCreditsChangedResourcesBillingResponse2$inboundSchema:
+  z.ZodType<BuyCreditsChangedResourcesBillingResponse2, z.ZodTypeDef, unknown> =
+    z.object({
+      productAlias: types.string(),
+      productId: types.string(),
+      quantity: types.number(),
+      resourceIds: z.array(types.string()),
+      type: types.literal("increase_plan_item_quantity"),
+    });
+/** @internal */
+export type BuyCreditsChangedResourcesBillingResponse2$Outbound = {
+  productAlias: string;
+  productId: string;
+  quantity: number;
+  resourceIds: Array<string>;
+  type: "increase_plan_item_quantity";
+};
+
+/** @internal */
+export const BuyCreditsChangedResourcesBillingResponse2$outboundSchema:
+  z.ZodType<
+    BuyCreditsChangedResourcesBillingResponse2$Outbound,
+    z.ZodTypeDef,
+    BuyCreditsChangedResourcesBillingResponse2
+  > = z.object({
+    productAlias: z.string(),
+    productId: z.string(),
+    quantity: z.number(),
+    resourceIds: z.array(z.string()),
+    type: z.literal("increase_plan_item_quantity"),
+  });
+
+export function buyCreditsChangedResourcesBillingResponse2ToJSON(
+  buyCreditsChangedResourcesBillingResponse2:
+    BuyCreditsChangedResourcesBillingResponse2,
+): string {
+  return JSON.stringify(
+    BuyCreditsChangedResourcesBillingResponse2$outboundSchema.parse(
+      buyCreditsChangedResourcesBillingResponse2,
+    ),
+  );
+}
+export function buyCreditsChangedResourcesBillingResponse2FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  BuyCreditsChangedResourcesBillingResponse2,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      BuyCreditsChangedResourcesBillingResponse2$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'BuyCreditsChangedResourcesBillingResponse2' from JSON`,
+  );
+}
+
+/** @internal */
+export const BuyCreditsChangedResourcesBillingResponse1$inboundSchema:
+  z.ZodType<BuyCreditsChangedResourcesBillingResponse1, z.ZodTypeDef, unknown> =
+    z.object({
+      productAlias: types.string(),
+      productId: types.string(),
+      quantity: types.number(),
+      type: types.literal("set_plan_item_quantity"),
+      resourceIds: types.optional(z.array(types.string())),
+    });
+/** @internal */
+export type BuyCreditsChangedResourcesBillingResponse1$Outbound = {
+  productAlias: string;
+  productId: string;
+  quantity: number;
+  type: "set_plan_item_quantity";
+  resourceIds?: Array<string> | undefined;
+};
+
+/** @internal */
+export const BuyCreditsChangedResourcesBillingResponse1$outboundSchema:
+  z.ZodType<
+    BuyCreditsChangedResourcesBillingResponse1$Outbound,
+    z.ZodTypeDef,
+    BuyCreditsChangedResourcesBillingResponse1
+  > = z.object({
+    productAlias: z.string(),
+    productId: z.string(),
+    quantity: z.number(),
+    type: z.literal("set_plan_item_quantity"),
+    resourceIds: z.array(z.string()).optional(),
+  });
+
+export function buyCreditsChangedResourcesBillingResponse1ToJSON(
+  buyCreditsChangedResourcesBillingResponse1:
+    BuyCreditsChangedResourcesBillingResponse1,
+): string {
+  return JSON.stringify(
+    BuyCreditsChangedResourcesBillingResponse1$outboundSchema.parse(
+      buyCreditsChangedResourcesBillingResponse1,
+    ),
+  );
+}
+export function buyCreditsChangedResourcesBillingResponse1FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  BuyCreditsChangedResourcesBillingResponse1,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      BuyCreditsChangedResourcesBillingResponse1$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'BuyCreditsChangedResourcesBillingResponse1' from JSON`,
+  );
+}
+
+/** @internal */
+export const BuyCreditsConfigurationBillingChangedResources$inboundSchema:
+  z.ZodType<
+    BuyCreditsConfigurationBillingChangedResources,
+    z.ZodTypeDef,
+    unknown
+  > = z.union([
+    z.lazy(() => BuyCreditsChangedResourcesBillingResponse1$inboundSchema),
+    z.lazy(() => BuyCreditsChangedResourcesBillingResponse2$inboundSchema),
+    z.lazy(() => BuyCreditsChangedResourcesBillingResponse3$inboundSchema),
+    z.lazy(() => BuyCreditsChangedResourcesBillingResponse4$inboundSchema),
+  ]);
+/** @internal */
+export type BuyCreditsConfigurationBillingChangedResources$Outbound =
+  | BuyCreditsChangedResourcesBillingResponse1$Outbound
+  | BuyCreditsChangedResourcesBillingResponse2$Outbound
+  | BuyCreditsChangedResourcesBillingResponse3$Outbound
+  | BuyCreditsChangedResourcesBillingResponse4$Outbound;
+
+/** @internal */
+export const BuyCreditsConfigurationBillingChangedResources$outboundSchema:
+  z.ZodType<
+    BuyCreditsConfigurationBillingChangedResources$Outbound,
+    z.ZodTypeDef,
+    BuyCreditsConfigurationBillingChangedResources
+  > = z.union([
+    z.lazy(() => BuyCreditsChangedResourcesBillingResponse1$outboundSchema),
+    z.lazy(() => BuyCreditsChangedResourcesBillingResponse2$outboundSchema),
+    z.lazy(() => BuyCreditsChangedResourcesBillingResponse3$outboundSchema),
+    z.lazy(() => BuyCreditsChangedResourcesBillingResponse4$outboundSchema),
+  ]);
+
+export function buyCreditsConfigurationBillingChangedResourcesToJSON(
+  buyCreditsConfigurationBillingChangedResources:
+    BuyCreditsConfigurationBillingChangedResources,
+): string {
+  return JSON.stringify(
+    BuyCreditsConfigurationBillingChangedResources$outboundSchema.parse(
+      buyCreditsConfigurationBillingChangedResources,
+    ),
+  );
+}
+export function buyCreditsConfigurationBillingChangedResourcesFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  BuyCreditsConfigurationBillingChangedResources,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      BuyCreditsConfigurationBillingChangedResources$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'BuyCreditsConfigurationBillingChangedResources' from JSON`,
+  );
+}
+
+/** @internal */
 export const BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBodyOutput$inboundSchema:
   z.ZodType<
     BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBodyOutput,
@@ -1161,6 +1910,16 @@ export const BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBod
   > = z.object({
     orbPriceId: types.string(),
     productId: types.string(),
+    changedResources: types.optional(
+      z.array(z.union([
+        z.lazy(() => BuyCreditsChangedResourcesBillingResponse1$inboundSchema),
+        z.lazy(() =>
+          BuyCreditsChangedResourcesBillingResponse2$inboundSchema
+        ),
+        z.lazy(() => BuyCreditsChangedResourcesBillingResponse3$inboundSchema),
+        z.lazy(() => BuyCreditsChangedResourcesBillingResponse4$inboundSchema),
+      ])),
+    ),
     metadata: types.optional(z.record(types.string())),
     pendingSubscriptionChangeId: types.optional(types.string()),
   });
@@ -1169,6 +1928,14 @@ export type BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody
   {
     orbPriceId: string;
     productId: string;
+    changedResources?:
+      | Array<
+        | BuyCreditsChangedResourcesBillingResponse1$Outbound
+        | BuyCreditsChangedResourcesBillingResponse2$Outbound
+        | BuyCreditsChangedResourcesBillingResponse3$Outbound
+        | BuyCreditsChangedResourcesBillingResponse4$Outbound
+      >
+      | undefined;
     metadata?: { [k: string]: string } | undefined;
     pendingSubscriptionChangeId?: string | undefined;
   };
@@ -1182,6 +1949,16 @@ export const BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBod
   > = z.object({
     orbPriceId: z.string(),
     productId: z.string(),
+    changedResources: z.array(
+      z.union([
+        z.lazy(() => BuyCreditsChangedResourcesBillingResponse1$outboundSchema),
+        z.lazy(() =>
+          BuyCreditsChangedResourcesBillingResponse2$outboundSchema
+        ),
+        z.lazy(() => BuyCreditsChangedResourcesBillingResponse3$outboundSchema),
+        z.lazy(() => BuyCreditsChangedResourcesBillingResponse4$outboundSchema),
+      ]),
+    ).optional(),
     metadata: z.record(z.string()).optional(),
     pendingSubscriptionChangeId: z.string().optional(),
   });
@@ -1318,6 +2095,281 @@ export function buyCreditsConfigurationBillingResponse200ApplicationJSONResponse
 }
 
 /** @internal */
+export const BuyCreditsChangedResourcesBilling4$inboundSchema: z.ZodType<
+  BuyCreditsChangedResourcesBilling4,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  addedResourceIds: z.array(types.string()),
+  productAlias: types.string(),
+  productId: types.string(),
+  quantity: types.number(),
+  removedResourceIds: z.array(types.string()),
+  type: types.literal("adjust_plan_item_quantity"),
+});
+/** @internal */
+export type BuyCreditsChangedResourcesBilling4$Outbound = {
+  addedResourceIds: Array<string>;
+  productAlias: string;
+  productId: string;
+  quantity: number;
+  removedResourceIds: Array<string>;
+  type: "adjust_plan_item_quantity";
+};
+
+/** @internal */
+export const BuyCreditsChangedResourcesBilling4$outboundSchema: z.ZodType<
+  BuyCreditsChangedResourcesBilling4$Outbound,
+  z.ZodTypeDef,
+  BuyCreditsChangedResourcesBilling4
+> = z.object({
+  addedResourceIds: z.array(z.string()),
+  productAlias: z.string(),
+  productId: z.string(),
+  quantity: z.number(),
+  removedResourceIds: z.array(z.string()),
+  type: z.literal("adjust_plan_item_quantity"),
+});
+
+export function buyCreditsChangedResourcesBilling4ToJSON(
+  buyCreditsChangedResourcesBilling4: BuyCreditsChangedResourcesBilling4,
+): string {
+  return JSON.stringify(
+    BuyCreditsChangedResourcesBilling4$outboundSchema.parse(
+      buyCreditsChangedResourcesBilling4,
+    ),
+  );
+}
+export function buyCreditsChangedResourcesBilling4FromJSON(
+  jsonString: string,
+): SafeParseResult<BuyCreditsChangedResourcesBilling4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      BuyCreditsChangedResourcesBilling4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BuyCreditsChangedResourcesBilling4' from JSON`,
+  );
+}
+
+/** @internal */
+export const BuyCreditsChangedResourcesBilling3$inboundSchema: z.ZodType<
+  BuyCreditsChangedResourcesBilling3,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  productAlias: types.string(),
+  productId: types.string(),
+  quantity: types.number(),
+  resourceIds: z.array(types.string()),
+  type: types.literal("decrease_plan_item_quantity"),
+});
+/** @internal */
+export type BuyCreditsChangedResourcesBilling3$Outbound = {
+  productAlias: string;
+  productId: string;
+  quantity: number;
+  resourceIds: Array<string>;
+  type: "decrease_plan_item_quantity";
+};
+
+/** @internal */
+export const BuyCreditsChangedResourcesBilling3$outboundSchema: z.ZodType<
+  BuyCreditsChangedResourcesBilling3$Outbound,
+  z.ZodTypeDef,
+  BuyCreditsChangedResourcesBilling3
+> = z.object({
+  productAlias: z.string(),
+  productId: z.string(),
+  quantity: z.number(),
+  resourceIds: z.array(z.string()),
+  type: z.literal("decrease_plan_item_quantity"),
+});
+
+export function buyCreditsChangedResourcesBilling3ToJSON(
+  buyCreditsChangedResourcesBilling3: BuyCreditsChangedResourcesBilling3,
+): string {
+  return JSON.stringify(
+    BuyCreditsChangedResourcesBilling3$outboundSchema.parse(
+      buyCreditsChangedResourcesBilling3,
+    ),
+  );
+}
+export function buyCreditsChangedResourcesBilling3FromJSON(
+  jsonString: string,
+): SafeParseResult<BuyCreditsChangedResourcesBilling3, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      BuyCreditsChangedResourcesBilling3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BuyCreditsChangedResourcesBilling3' from JSON`,
+  );
+}
+
+/** @internal */
+export const BuyCreditsChangedResourcesBilling2$inboundSchema: z.ZodType<
+  BuyCreditsChangedResourcesBilling2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  productAlias: types.string(),
+  productId: types.string(),
+  quantity: types.number(),
+  resourceIds: z.array(types.string()),
+  type: types.literal("increase_plan_item_quantity"),
+});
+/** @internal */
+export type BuyCreditsChangedResourcesBilling2$Outbound = {
+  productAlias: string;
+  productId: string;
+  quantity: number;
+  resourceIds: Array<string>;
+  type: "increase_plan_item_quantity";
+};
+
+/** @internal */
+export const BuyCreditsChangedResourcesBilling2$outboundSchema: z.ZodType<
+  BuyCreditsChangedResourcesBilling2$Outbound,
+  z.ZodTypeDef,
+  BuyCreditsChangedResourcesBilling2
+> = z.object({
+  productAlias: z.string(),
+  productId: z.string(),
+  quantity: z.number(),
+  resourceIds: z.array(z.string()),
+  type: z.literal("increase_plan_item_quantity"),
+});
+
+export function buyCreditsChangedResourcesBilling2ToJSON(
+  buyCreditsChangedResourcesBilling2: BuyCreditsChangedResourcesBilling2,
+): string {
+  return JSON.stringify(
+    BuyCreditsChangedResourcesBilling2$outboundSchema.parse(
+      buyCreditsChangedResourcesBilling2,
+    ),
+  );
+}
+export function buyCreditsChangedResourcesBilling2FromJSON(
+  jsonString: string,
+): SafeParseResult<BuyCreditsChangedResourcesBilling2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      BuyCreditsChangedResourcesBilling2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BuyCreditsChangedResourcesBilling2' from JSON`,
+  );
+}
+
+/** @internal */
+export const BuyCreditsChangedResourcesBilling1$inboundSchema: z.ZodType<
+  BuyCreditsChangedResourcesBilling1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  productAlias: types.string(),
+  productId: types.string(),
+  quantity: types.number(),
+  type: types.literal("set_plan_item_quantity"),
+  resourceIds: types.optional(z.array(types.string())),
+});
+/** @internal */
+export type BuyCreditsChangedResourcesBilling1$Outbound = {
+  productAlias: string;
+  productId: string;
+  quantity: number;
+  type: "set_plan_item_quantity";
+  resourceIds?: Array<string> | undefined;
+};
+
+/** @internal */
+export const BuyCreditsChangedResourcesBilling1$outboundSchema: z.ZodType<
+  BuyCreditsChangedResourcesBilling1$Outbound,
+  z.ZodTypeDef,
+  BuyCreditsChangedResourcesBilling1
+> = z.object({
+  productAlias: z.string(),
+  productId: z.string(),
+  quantity: z.number(),
+  type: z.literal("set_plan_item_quantity"),
+  resourceIds: z.array(z.string()).optional(),
+});
+
+export function buyCreditsChangedResourcesBilling1ToJSON(
+  buyCreditsChangedResourcesBilling1: BuyCreditsChangedResourcesBilling1,
+): string {
+  return JSON.stringify(
+    BuyCreditsChangedResourcesBilling1$outboundSchema.parse(
+      buyCreditsChangedResourcesBilling1,
+    ),
+  );
+}
+export function buyCreditsChangedResourcesBilling1FromJSON(
+  jsonString: string,
+): SafeParseResult<BuyCreditsChangedResourcesBilling1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      BuyCreditsChangedResourcesBilling1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BuyCreditsChangedResourcesBilling1' from JSON`,
+  );
+}
+
+/** @internal */
+export const BuyCreditsConfigurationChangedResources$inboundSchema: z.ZodType<
+  BuyCreditsConfigurationChangedResources,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() => BuyCreditsChangedResourcesBilling1$inboundSchema),
+  z.lazy(() => BuyCreditsChangedResourcesBilling2$inboundSchema),
+  z.lazy(() => BuyCreditsChangedResourcesBilling3$inboundSchema),
+  z.lazy(() => BuyCreditsChangedResourcesBilling4$inboundSchema),
+]);
+/** @internal */
+export type BuyCreditsConfigurationChangedResources$Outbound =
+  | BuyCreditsChangedResourcesBilling1$Outbound
+  | BuyCreditsChangedResourcesBilling2$Outbound
+  | BuyCreditsChangedResourcesBilling3$Outbound
+  | BuyCreditsChangedResourcesBilling4$Outbound;
+
+/** @internal */
+export const BuyCreditsConfigurationChangedResources$outboundSchema: z.ZodType<
+  BuyCreditsConfigurationChangedResources$Outbound,
+  z.ZodTypeDef,
+  BuyCreditsConfigurationChangedResources
+> = z.union([
+  z.lazy(() => BuyCreditsChangedResourcesBilling1$outboundSchema),
+  z.lazy(() => BuyCreditsChangedResourcesBilling2$outboundSchema),
+  z.lazy(() => BuyCreditsChangedResourcesBilling3$outboundSchema),
+  z.lazy(() => BuyCreditsChangedResourcesBilling4$outboundSchema),
+]);
+
+export function buyCreditsConfigurationChangedResourcesToJSON(
+  buyCreditsConfigurationChangedResources:
+    BuyCreditsConfigurationChangedResources,
+): string {
+  return JSON.stringify(
+    BuyCreditsConfigurationChangedResources$outboundSchema.parse(
+      buyCreditsConfigurationChangedResources,
+    ),
+  );
+}
+export function buyCreditsConfigurationChangedResourcesFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  BuyCreditsConfigurationChangedResources,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      BuyCreditsConfigurationChangedResources$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'BuyCreditsConfigurationChangedResources' from JSON`,
+  );
+}
+
+/** @internal */
 export const BuyCreditsConfigurationBillingResponse200ApplicationJSONOutput$inboundSchema:
   z.ZodType<
     BuyCreditsConfigurationBillingResponse200ApplicationJSONOutput,
@@ -1326,6 +2378,16 @@ export const BuyCreditsConfigurationBillingResponse200ApplicationJSONOutput$inbo
   > = z.object({
     orbPriceId: types.string(),
     productId: types.string(),
+    changedResources: types.optional(
+      z.array(z.union([
+        z.lazy(() => BuyCreditsChangedResourcesBilling1$inboundSchema),
+        z.lazy(() =>
+          BuyCreditsChangedResourcesBilling2$inboundSchema
+        ),
+        z.lazy(() => BuyCreditsChangedResourcesBilling3$inboundSchema),
+        z.lazy(() => BuyCreditsChangedResourcesBilling4$inboundSchema),
+      ])),
+    ),
     metadata: types.optional(z.record(types.string())),
     pendingSubscriptionChangeId: types.optional(types.string()),
   });
@@ -1334,6 +2396,14 @@ export type BuyCreditsConfigurationBillingResponse200ApplicationJSONOutput$Outbo
   {
     orbPriceId: string;
     productId: string;
+    changedResources?:
+      | Array<
+        | BuyCreditsChangedResourcesBilling1$Outbound
+        | BuyCreditsChangedResourcesBilling2$Outbound
+        | BuyCreditsChangedResourcesBilling3$Outbound
+        | BuyCreditsChangedResourcesBilling4$Outbound
+      >
+      | undefined;
     metadata?: { [k: string]: string } | undefined;
     pendingSubscriptionChangeId?: string | undefined;
   };
@@ -1347,6 +2417,14 @@ export const BuyCreditsConfigurationBillingResponse200ApplicationJSONOutput$outb
   > = z.object({
     orbPriceId: z.string(),
     productId: z.string(),
+    changedResources: z.array(
+      z.union([
+        z.lazy(() => BuyCreditsChangedResourcesBilling1$outboundSchema),
+        z.lazy(() => BuyCreditsChangedResourcesBilling2$outboundSchema),
+        z.lazy(() => BuyCreditsChangedResourcesBilling3$outboundSchema),
+        z.lazy(() => BuyCreditsChangedResourcesBilling4$outboundSchema),
+      ]),
+    ).optional(),
     metadata: z.record(z.string()).optional(),
     pendingSubscriptionChangeId: z.string().optional(),
   });
@@ -1481,6 +2559,270 @@ export function buyCreditsConfigurationBillingResponse200ApplicationJSONResponse
 }
 
 /** @internal */
+export const BuyCreditsChangedResources4$inboundSchema: z.ZodType<
+  BuyCreditsChangedResources4,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  addedResourceIds: z.array(types.string()),
+  productAlias: types.string(),
+  productId: types.string(),
+  quantity: types.number(),
+  removedResourceIds: z.array(types.string()),
+  type: types.literal("adjust_plan_item_quantity"),
+});
+/** @internal */
+export type BuyCreditsChangedResources4$Outbound = {
+  addedResourceIds: Array<string>;
+  productAlias: string;
+  productId: string;
+  quantity: number;
+  removedResourceIds: Array<string>;
+  type: "adjust_plan_item_quantity";
+};
+
+/** @internal */
+export const BuyCreditsChangedResources4$outboundSchema: z.ZodType<
+  BuyCreditsChangedResources4$Outbound,
+  z.ZodTypeDef,
+  BuyCreditsChangedResources4
+> = z.object({
+  addedResourceIds: z.array(z.string()),
+  productAlias: z.string(),
+  productId: z.string(),
+  quantity: z.number(),
+  removedResourceIds: z.array(z.string()),
+  type: z.literal("adjust_plan_item_quantity"),
+});
+
+export function buyCreditsChangedResources4ToJSON(
+  buyCreditsChangedResources4: BuyCreditsChangedResources4,
+): string {
+  return JSON.stringify(
+    BuyCreditsChangedResources4$outboundSchema.parse(
+      buyCreditsChangedResources4,
+    ),
+  );
+}
+export function buyCreditsChangedResources4FromJSON(
+  jsonString: string,
+): SafeParseResult<BuyCreditsChangedResources4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BuyCreditsChangedResources4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BuyCreditsChangedResources4' from JSON`,
+  );
+}
+
+/** @internal */
+export const BuyCreditsChangedResources3$inboundSchema: z.ZodType<
+  BuyCreditsChangedResources3,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  productAlias: types.string(),
+  productId: types.string(),
+  quantity: types.number(),
+  resourceIds: z.array(types.string()),
+  type: types.literal("decrease_plan_item_quantity"),
+});
+/** @internal */
+export type BuyCreditsChangedResources3$Outbound = {
+  productAlias: string;
+  productId: string;
+  quantity: number;
+  resourceIds: Array<string>;
+  type: "decrease_plan_item_quantity";
+};
+
+/** @internal */
+export const BuyCreditsChangedResources3$outboundSchema: z.ZodType<
+  BuyCreditsChangedResources3$Outbound,
+  z.ZodTypeDef,
+  BuyCreditsChangedResources3
+> = z.object({
+  productAlias: z.string(),
+  productId: z.string(),
+  quantity: z.number(),
+  resourceIds: z.array(z.string()),
+  type: z.literal("decrease_plan_item_quantity"),
+});
+
+export function buyCreditsChangedResources3ToJSON(
+  buyCreditsChangedResources3: BuyCreditsChangedResources3,
+): string {
+  return JSON.stringify(
+    BuyCreditsChangedResources3$outboundSchema.parse(
+      buyCreditsChangedResources3,
+    ),
+  );
+}
+export function buyCreditsChangedResources3FromJSON(
+  jsonString: string,
+): SafeParseResult<BuyCreditsChangedResources3, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BuyCreditsChangedResources3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BuyCreditsChangedResources3' from JSON`,
+  );
+}
+
+/** @internal */
+export const BuyCreditsChangedResources2$inboundSchema: z.ZodType<
+  BuyCreditsChangedResources2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  productAlias: types.string(),
+  productId: types.string(),
+  quantity: types.number(),
+  resourceIds: z.array(types.string()),
+  type: types.literal("increase_plan_item_quantity"),
+});
+/** @internal */
+export type BuyCreditsChangedResources2$Outbound = {
+  productAlias: string;
+  productId: string;
+  quantity: number;
+  resourceIds: Array<string>;
+  type: "increase_plan_item_quantity";
+};
+
+/** @internal */
+export const BuyCreditsChangedResources2$outboundSchema: z.ZodType<
+  BuyCreditsChangedResources2$Outbound,
+  z.ZodTypeDef,
+  BuyCreditsChangedResources2
+> = z.object({
+  productAlias: z.string(),
+  productId: z.string(),
+  quantity: z.number(),
+  resourceIds: z.array(z.string()),
+  type: z.literal("increase_plan_item_quantity"),
+});
+
+export function buyCreditsChangedResources2ToJSON(
+  buyCreditsChangedResources2: BuyCreditsChangedResources2,
+): string {
+  return JSON.stringify(
+    BuyCreditsChangedResources2$outboundSchema.parse(
+      buyCreditsChangedResources2,
+    ),
+  );
+}
+export function buyCreditsChangedResources2FromJSON(
+  jsonString: string,
+): SafeParseResult<BuyCreditsChangedResources2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BuyCreditsChangedResources2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BuyCreditsChangedResources2' from JSON`,
+  );
+}
+
+/** @internal */
+export const BuyCreditsChangedResources1$inboundSchema: z.ZodType<
+  BuyCreditsChangedResources1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  productAlias: types.string(),
+  productId: types.string(),
+  quantity: types.number(),
+  type: types.literal("set_plan_item_quantity"),
+  resourceIds: types.optional(z.array(types.string())),
+});
+/** @internal */
+export type BuyCreditsChangedResources1$Outbound = {
+  productAlias: string;
+  productId: string;
+  quantity: number;
+  type: "set_plan_item_quantity";
+  resourceIds?: Array<string> | undefined;
+};
+
+/** @internal */
+export const BuyCreditsChangedResources1$outboundSchema: z.ZodType<
+  BuyCreditsChangedResources1$Outbound,
+  z.ZodTypeDef,
+  BuyCreditsChangedResources1
+> = z.object({
+  productAlias: z.string(),
+  productId: z.string(),
+  quantity: z.number(),
+  type: z.literal("set_plan_item_quantity"),
+  resourceIds: z.array(z.string()).optional(),
+});
+
+export function buyCreditsChangedResources1ToJSON(
+  buyCreditsChangedResources1: BuyCreditsChangedResources1,
+): string {
+  return JSON.stringify(
+    BuyCreditsChangedResources1$outboundSchema.parse(
+      buyCreditsChangedResources1,
+    ),
+  );
+}
+export function buyCreditsChangedResources1FromJSON(
+  jsonString: string,
+): SafeParseResult<BuyCreditsChangedResources1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BuyCreditsChangedResources1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BuyCreditsChangedResources1' from JSON`,
+  );
+}
+
+/** @internal */
+export const ConfigurationChangedResources$inboundSchema: z.ZodType<
+  ConfigurationChangedResources,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() => BuyCreditsChangedResources1$inboundSchema),
+  z.lazy(() => BuyCreditsChangedResources2$inboundSchema),
+  z.lazy(() => BuyCreditsChangedResources3$inboundSchema),
+  z.lazy(() => BuyCreditsChangedResources4$inboundSchema),
+]);
+/** @internal */
+export type ConfigurationChangedResources$Outbound =
+  | BuyCreditsChangedResources1$Outbound
+  | BuyCreditsChangedResources2$Outbound
+  | BuyCreditsChangedResources3$Outbound
+  | BuyCreditsChangedResources4$Outbound;
+
+/** @internal */
+export const ConfigurationChangedResources$outboundSchema: z.ZodType<
+  ConfigurationChangedResources$Outbound,
+  z.ZodTypeDef,
+  ConfigurationChangedResources
+> = z.union([
+  z.lazy(() => BuyCreditsChangedResources1$outboundSchema),
+  z.lazy(() => BuyCreditsChangedResources2$outboundSchema),
+  z.lazy(() => BuyCreditsChangedResources3$outboundSchema),
+  z.lazy(() => BuyCreditsChangedResources4$outboundSchema),
+]);
+
+export function configurationChangedResourcesToJSON(
+  configurationChangedResources: ConfigurationChangedResources,
+): string {
+  return JSON.stringify(
+    ConfigurationChangedResources$outboundSchema.parse(
+      configurationChangedResources,
+    ),
+  );
+}
+export function configurationChangedResourcesFromJSON(
+  jsonString: string,
+): SafeParseResult<ConfigurationChangedResources, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ConfigurationChangedResources$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ConfigurationChangedResources' from JSON`,
+  );
+}
+
+/** @internal */
 export const BuyCreditsConfigurationBillingResponse200Output$inboundSchema:
   z.ZodType<
     BuyCreditsConfigurationBillingResponse200Output,
@@ -1489,6 +2831,16 @@ export const BuyCreditsConfigurationBillingResponse200Output$inboundSchema:
   > = z.object({
     orbPriceId: types.string(),
     productId: types.string(),
+    changedResources: types.optional(
+      z.array(z.union([
+        z.lazy(() => BuyCreditsChangedResources1$inboundSchema),
+        z.lazy(() =>
+          BuyCreditsChangedResources2$inboundSchema
+        ),
+        z.lazy(() => BuyCreditsChangedResources3$inboundSchema),
+        z.lazy(() => BuyCreditsChangedResources4$inboundSchema),
+      ])),
+    ),
     metadata: types.optional(z.record(types.string())),
     pendingSubscriptionChangeId: types.optional(types.string()),
   });
@@ -1496,6 +2848,14 @@ export const BuyCreditsConfigurationBillingResponse200Output$inboundSchema:
 export type BuyCreditsConfigurationBillingResponse200Output$Outbound = {
   orbPriceId: string;
   productId: string;
+  changedResources?:
+    | Array<
+      | BuyCreditsChangedResources1$Outbound
+      | BuyCreditsChangedResources2$Outbound
+      | BuyCreditsChangedResources3$Outbound
+      | BuyCreditsChangedResources4$Outbound
+    >
+    | undefined;
   metadata?: { [k: string]: string } | undefined;
   pendingSubscriptionChangeId?: string | undefined;
 };
@@ -1509,6 +2869,14 @@ export const BuyCreditsConfigurationBillingResponse200Output$outboundSchema:
   > = z.object({
     orbPriceId: z.string(),
     productId: z.string(),
+    changedResources: z.array(
+      z.union([
+        z.lazy(() => BuyCreditsChangedResources1$outboundSchema),
+        z.lazy(() => BuyCreditsChangedResources2$outboundSchema),
+        z.lazy(() => BuyCreditsChangedResources3$outboundSchema),
+        z.lazy(() => BuyCreditsChangedResources4$outboundSchema),
+      ]),
+    ).optional(),
     metadata: z.record(z.string()).optional(),
     pendingSubscriptionChangeId: z.string().optional(),
   });
@@ -1649,6 +3017,260 @@ export function buyCreditsConfigurationBillingResponse200ApplicationJSONOptionsF
 }
 
 /** @internal */
+export const ChangedResources4$inboundSchema: z.ZodType<
+  ChangedResources4,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  addedResourceIds: z.array(types.string()),
+  productAlias: types.string(),
+  productId: types.string(),
+  quantity: types.number(),
+  removedResourceIds: z.array(types.string()),
+  type: types.literal("adjust_plan_item_quantity"),
+});
+/** @internal */
+export type ChangedResources4$Outbound = {
+  addedResourceIds: Array<string>;
+  productAlias: string;
+  productId: string;
+  quantity: number;
+  removedResourceIds: Array<string>;
+  type: "adjust_plan_item_quantity";
+};
+
+/** @internal */
+export const ChangedResources4$outboundSchema: z.ZodType<
+  ChangedResources4$Outbound,
+  z.ZodTypeDef,
+  ChangedResources4
+> = z.object({
+  addedResourceIds: z.array(z.string()),
+  productAlias: z.string(),
+  productId: z.string(),
+  quantity: z.number(),
+  removedResourceIds: z.array(z.string()),
+  type: z.literal("adjust_plan_item_quantity"),
+});
+
+export function changedResources4ToJSON(
+  changedResources4: ChangedResources4,
+): string {
+  return JSON.stringify(
+    ChangedResources4$outboundSchema.parse(changedResources4),
+  );
+}
+export function changedResources4FromJSON(
+  jsonString: string,
+): SafeParseResult<ChangedResources4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ChangedResources4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ChangedResources4' from JSON`,
+  );
+}
+
+/** @internal */
+export const ChangedResources3$inboundSchema: z.ZodType<
+  ChangedResources3,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  productAlias: types.string(),
+  productId: types.string(),
+  quantity: types.number(),
+  resourceIds: z.array(types.string()),
+  type: types.literal("decrease_plan_item_quantity"),
+});
+/** @internal */
+export type ChangedResources3$Outbound = {
+  productAlias: string;
+  productId: string;
+  quantity: number;
+  resourceIds: Array<string>;
+  type: "decrease_plan_item_quantity";
+};
+
+/** @internal */
+export const ChangedResources3$outboundSchema: z.ZodType<
+  ChangedResources3$Outbound,
+  z.ZodTypeDef,
+  ChangedResources3
+> = z.object({
+  productAlias: z.string(),
+  productId: z.string(),
+  quantity: z.number(),
+  resourceIds: z.array(z.string()),
+  type: z.literal("decrease_plan_item_quantity"),
+});
+
+export function changedResources3ToJSON(
+  changedResources3: ChangedResources3,
+): string {
+  return JSON.stringify(
+    ChangedResources3$outboundSchema.parse(changedResources3),
+  );
+}
+export function changedResources3FromJSON(
+  jsonString: string,
+): SafeParseResult<ChangedResources3, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ChangedResources3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ChangedResources3' from JSON`,
+  );
+}
+
+/** @internal */
+export const ChangedResources2$inboundSchema: z.ZodType<
+  ChangedResources2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  productAlias: types.string(),
+  productId: types.string(),
+  quantity: types.number(),
+  resourceIds: z.array(types.string()),
+  type: types.literal("increase_plan_item_quantity"),
+});
+/** @internal */
+export type ChangedResources2$Outbound = {
+  productAlias: string;
+  productId: string;
+  quantity: number;
+  resourceIds: Array<string>;
+  type: "increase_plan_item_quantity";
+};
+
+/** @internal */
+export const ChangedResources2$outboundSchema: z.ZodType<
+  ChangedResources2$Outbound,
+  z.ZodTypeDef,
+  ChangedResources2
+> = z.object({
+  productAlias: z.string(),
+  productId: z.string(),
+  quantity: z.number(),
+  resourceIds: z.array(z.string()),
+  type: z.literal("increase_plan_item_quantity"),
+});
+
+export function changedResources2ToJSON(
+  changedResources2: ChangedResources2,
+): string {
+  return JSON.stringify(
+    ChangedResources2$outboundSchema.parse(changedResources2),
+  );
+}
+export function changedResources2FromJSON(
+  jsonString: string,
+): SafeParseResult<ChangedResources2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ChangedResources2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ChangedResources2' from JSON`,
+  );
+}
+
+/** @internal */
+export const ChangedResources1$inboundSchema: z.ZodType<
+  ChangedResources1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  productAlias: types.string(),
+  productId: types.string(),
+  quantity: types.number(),
+  type: types.literal("set_plan_item_quantity"),
+  resourceIds: types.optional(z.array(types.string())),
+});
+/** @internal */
+export type ChangedResources1$Outbound = {
+  productAlias: string;
+  productId: string;
+  quantity: number;
+  type: "set_plan_item_quantity";
+  resourceIds?: Array<string> | undefined;
+};
+
+/** @internal */
+export const ChangedResources1$outboundSchema: z.ZodType<
+  ChangedResources1$Outbound,
+  z.ZodTypeDef,
+  ChangedResources1
+> = z.object({
+  productAlias: z.string(),
+  productId: z.string(),
+  quantity: z.number(),
+  type: z.literal("set_plan_item_quantity"),
+  resourceIds: z.array(z.string()).optional(),
+});
+
+export function changedResources1ToJSON(
+  changedResources1: ChangedResources1,
+): string {
+  return JSON.stringify(
+    ChangedResources1$outboundSchema.parse(changedResources1),
+  );
+}
+export function changedResources1FromJSON(
+  jsonString: string,
+): SafeParseResult<ChangedResources1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ChangedResources1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ChangedResources1' from JSON`,
+  );
+}
+
+/** @internal */
+export const ChangedResources$inboundSchema: z.ZodType<
+  ChangedResources,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() => ChangedResources1$inboundSchema),
+  z.lazy(() => ChangedResources2$inboundSchema),
+  z.lazy(() => ChangedResources3$inboundSchema),
+  z.lazy(() => ChangedResources4$inboundSchema),
+]);
+/** @internal */
+export type ChangedResources$Outbound =
+  | ChangedResources1$Outbound
+  | ChangedResources2$Outbound
+  | ChangedResources3$Outbound
+  | ChangedResources4$Outbound;
+
+/** @internal */
+export const ChangedResources$outboundSchema: z.ZodType<
+  ChangedResources$Outbound,
+  z.ZodTypeDef,
+  ChangedResources
+> = z.union([
+  z.lazy(() => ChangedResources1$outboundSchema),
+  z.lazy(() => ChangedResources2$outboundSchema),
+  z.lazy(() => ChangedResources3$outboundSchema),
+  z.lazy(() => ChangedResources4$outboundSchema),
+]);
+
+export function changedResourcesToJSON(
+  changedResources: ChangedResources,
+): string {
+  return JSON.stringify(
+    ChangedResources$outboundSchema.parse(changedResources),
+  );
+}
+export function changedResourcesFromJSON(
+  jsonString: string,
+): SafeParseResult<ChangedResources, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ChangedResources$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ChangedResources' from JSON`,
+  );
+}
+
+/** @internal */
 export const BuyCreditsConfigurationBillingResponseOutput$inboundSchema:
   z.ZodType<
     BuyCreditsConfigurationBillingResponseOutput,
@@ -1657,6 +3279,16 @@ export const BuyCreditsConfigurationBillingResponseOutput$inboundSchema:
   > = z.object({
     orbPriceId: types.string(),
     productId: types.string(),
+    changedResources: types.optional(
+      z.array(z.union([
+        z.lazy(() => ChangedResources1$inboundSchema),
+        z.lazy(() =>
+          ChangedResources2$inboundSchema
+        ),
+        z.lazy(() => ChangedResources3$inboundSchema),
+        z.lazy(() => ChangedResources4$inboundSchema),
+      ])),
+    ),
     metadata: types.optional(z.record(types.string())),
     pendingSubscriptionChangeId: types.optional(types.string()),
   });
@@ -1664,6 +3296,14 @@ export const BuyCreditsConfigurationBillingResponseOutput$inboundSchema:
 export type BuyCreditsConfigurationBillingResponseOutput$Outbound = {
   orbPriceId: string;
   productId: string;
+  changedResources?:
+    | Array<
+      | ChangedResources1$Outbound
+      | ChangedResources2$Outbound
+      | ChangedResources3$Outbound
+      | ChangedResources4$Outbound
+    >
+    | undefined;
   metadata?: { [k: string]: string } | undefined;
   pendingSubscriptionChangeId?: string | undefined;
 };
@@ -1677,6 +3317,14 @@ export const BuyCreditsConfigurationBillingResponseOutput$outboundSchema:
   > = z.object({
     orbPriceId: z.string(),
     productId: z.string(),
+    changedResources: z.array(
+      z.union([
+        z.lazy(() => ChangedResources1$outboundSchema),
+        z.lazy(() => ChangedResources2$outboundSchema),
+        z.lazy(() => ChangedResources3$outboundSchema),
+        z.lazy(() => ChangedResources4$outboundSchema),
+      ]),
+    ).optional(),
     metadata: z.record(z.string()).optional(),
     pendingSubscriptionChangeId: z.string().optional(),
   });

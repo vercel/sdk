@@ -12,6 +12,73 @@ import (
 	"mockserver/internal/sdk/utils"
 )
 
+type CreateProjectTrustedOidcProviders struct {
+	Projects  map[string]CreateProjectProjects  `json:"projects"`
+	Providers map[string]CreateProjectProviders `json:"providers"`
+}
+
+func (o *CreateProjectTrustedOidcProviders) GetProjects() map[string]CreateProjectProjects {
+	if o == nil {
+		return map[string]CreateProjectProjects{}
+	}
+	return o.Projects
+}
+
+func (o *CreateProjectTrustedOidcProviders) GetProviders() map[string]CreateProjectProviders {
+	if o == nil {
+		return map[string]CreateProjectProviders{}
+	}
+	return o.Providers
+}
+
+type CreateProjectGitComments struct {
+	// Whether the Vercel bot should comment on PRs
+	OnPullRequest bool `json:"onPullRequest"`
+	// Whether the Vercel bot should comment on commits
+	OnCommit bool `json:"onCommit"`
+}
+
+func (o *CreateProjectGitComments) GetOnPullRequest() bool {
+	if o == nil {
+		return false
+	}
+	return o.OnPullRequest
+}
+
+func (o *CreateProjectGitComments) GetOnCommit() bool {
+	if o == nil {
+		return false
+	}
+	return o.OnCommit
+}
+
+// CreateProjectCreateDeployments - Whether the Vercel bot should automatically create GitHub deployments https://docs.github.com/en/rest/deployments/deployments#about-deployments NOTE: repository-dispatch events should be used instead
+type CreateProjectCreateDeployments string
+
+const (
+	CreateProjectCreateDeploymentsEnabled  CreateProjectCreateDeployments = "enabled"
+	CreateProjectCreateDeploymentsDisabled CreateProjectCreateDeployments = "disabled"
+)
+
+func (e CreateProjectCreateDeployments) ToPointer() *CreateProjectCreateDeployments {
+	return &e
+}
+func (e *CreateProjectCreateDeployments) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "enabled":
+		fallthrough
+	case "disabled":
+		*e = CreateProjectCreateDeployments(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateProjectCreateDeployments: %v", v)
+	}
+}
+
 type CreateProjectGitProviderOptions struct {
 	// Whether the Vercel bot should automatically create GitHub deployments https://docs.github.com/en/rest/deployments/deployments#about-deployments NOTE: repository-dispatch events should be used instead
 	CreateDeployments CreateProjectCreateDeployments `json:"createDeployments"`
@@ -3188,6 +3255,7 @@ type CreateProjectResponseBody struct {
 	ProtectionBypass                     map[string]CreateProjectProtectionBypassUnion                         `json:"protectionBypass,omitempty"`
 	HasActiveBranches                    *bool                                                                 `json:"hasActiveBranches,omitempty"`
 	TrustedIps                           optionalnullable.OptionalNullable[CreateProjectTrustedIpsUnion]       `json:"trustedIps,omitempty"`
+	TrustedOidcProviders                 optionalnullable.OptionalNullable[CreateProjectTrustedOidcProviders]  `json:"trustedOidcProviders,omitempty"`
 	GitComments                          *CreateProjectGitComments                                             `json:"gitComments,omitempty"`
 	GitProviderOptions                   *CreateProjectGitProviderOptions                                      `json:"gitProviderOptions,omitempty"`
 	Paused                               *bool                                                                 `json:"paused,omitempty"`
@@ -3724,6 +3792,13 @@ func (o *CreateProjectResponseBody) GetTrustedIps() optionalnullable.OptionalNul
 		return nil
 	}
 	return o.TrustedIps
+}
+
+func (o *CreateProjectResponseBody) GetTrustedOidcProviders() optionalnullable.OptionalNullable[CreateProjectTrustedOidcProviders] {
+	if o == nil {
+		return nil
+	}
+	return o.TrustedOidcProviders
 }
 
 func (o *CreateProjectResponseBody) GetGitComments() *CreateProjectGitComments {

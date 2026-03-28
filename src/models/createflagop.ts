@@ -281,6 +281,115 @@ export type CreateFlagRequest = {
   requestBody?: CreateFlagRequestBody | undefined;
 };
 
+export const CreateFlagMetricType = {
+  Percentage: "percentage",
+  Currency: "currency",
+  Count: "count",
+} as const;
+export type CreateFlagMetricType = ClosedEnum<typeof CreateFlagMetricType>;
+
+export const CreateFlagMetricUnit = {
+  User: "user",
+  Session: "session",
+  Visitor: "visitor",
+} as const;
+export type CreateFlagMetricUnit = ClosedEnum<typeof CreateFlagMetricUnit>;
+
+export const CreateFlagDirectionality = {
+  IncreaseIsGood: "increaseIsGood",
+  DecreaseIsGood: "decreaseIsGood",
+} as const;
+export type CreateFlagDirectionality = ClosedEnum<
+  typeof CreateFlagDirectionality
+>;
+
+export type CreateFlagGuardrailMetrics = {
+  description?: string | undefined;
+  metricFormula?: string | undefined;
+  name: string;
+  metricType: CreateFlagMetricType;
+  metricUnit: CreateFlagMetricUnit;
+  directionality: CreateFlagDirectionality;
+};
+
+export const CreateFlagDevice = {
+  Android: "android",
+  Ios: "ios",
+  Desktop: "desktop",
+  Mweb: "mweb",
+} as const;
+export type CreateFlagDevice = ClosedEnum<typeof CreateFlagDevice>;
+
+export const CreateFlagAllocationUnit = {
+  CookieId: "cookieId",
+  VisitorId: "visitorId",
+  UserId: "userId",
+} as const;
+export type CreateFlagAllocationUnit = ClosedEnum<
+  typeof CreateFlagAllocationUnit
+>;
+
+export const CreateFlagFeatureFlagsMetricType = {
+  Percentage: "percentage",
+  Currency: "currency",
+  Count: "count",
+} as const;
+export type CreateFlagFeatureFlagsMetricType = ClosedEnum<
+  typeof CreateFlagFeatureFlagsMetricType
+>;
+
+export const CreateFlagFeatureFlagsMetricUnit = {
+  User: "user",
+  Session: "session",
+  Visitor: "visitor",
+} as const;
+export type CreateFlagFeatureFlagsMetricUnit = ClosedEnum<
+  typeof CreateFlagFeatureFlagsMetricUnit
+>;
+
+export const CreateFlagFeatureFlagsDirectionality = {
+  IncreaseIsGood: "increaseIsGood",
+  DecreaseIsGood: "decreaseIsGood",
+} as const;
+export type CreateFlagFeatureFlagsDirectionality = ClosedEnum<
+  typeof CreateFlagFeatureFlagsDirectionality
+>;
+
+export type CreateFlagPrimaryMetrics = {
+  description?: string | undefined;
+  metricFormula?: string | undefined;
+  name: string;
+  metricType: CreateFlagFeatureFlagsMetricType;
+  metricUnit: CreateFlagFeatureFlagsMetricUnit;
+  directionality: CreateFlagFeatureFlagsDirectionality;
+};
+
+export const CreateFlagStatus = {
+  Draft: "draft",
+  Running: "running",
+  Paused: "paused",
+  Closed: "closed",
+} as const;
+export type CreateFlagStatus = ClosedEnum<typeof CreateFlagStatus>;
+
+export type CreateFlagExperiment = {
+  name?: string | undefined;
+  id?: string | undefined;
+  numVariants?: number | undefined;
+  surfaceArea?: string | undefined;
+  stickyRequirement?: boolean | undefined;
+  layer?: string | undefined;
+  guardrailMetrics?: Array<CreateFlagGuardrailMetrics> | undefined;
+  hypothesis?: string | undefined;
+  device?: CreateFlagDevice | undefined;
+  controlVariantId?: string | undefined;
+  startedAt?: number | undefined;
+  endedAt?: number | undefined;
+  allocationUnit: CreateFlagAllocationUnit;
+  primaryMetrics: Array<CreateFlagPrimaryMetrics>;
+  status: CreateFlagStatus;
+};
+
 export type CreateFlagFeatureFlagsVariants = {};
 
 export type CreateFlagFeatureFlagsReuse = {
@@ -511,6 +620,7 @@ export type CreateFlagTypeName = ClosedEnum<typeof CreateFlagTypeName>;
 
 export type CreateFlagResponseBody = {
   description?: string | undefined;
+  experiment?: CreateFlagExperiment | undefined;
   variants: Array<CreateFlagFeatureFlagsVariants>;
   id: string;
   environments: { [k: string]: CreateFlagFeatureFlagsEnvironments };
@@ -1827,6 +1937,283 @@ export function createFlagRequestFromJSON(
 }
 
 /** @internal */
+export const CreateFlagMetricType$inboundSchema: z.ZodNativeEnum<
+  typeof CreateFlagMetricType
+> = z.nativeEnum(CreateFlagMetricType);
+/** @internal */
+export const CreateFlagMetricType$outboundSchema: z.ZodNativeEnum<
+  typeof CreateFlagMetricType
+> = CreateFlagMetricType$inboundSchema;
+
+/** @internal */
+export const CreateFlagMetricUnit$inboundSchema: z.ZodNativeEnum<
+  typeof CreateFlagMetricUnit
+> = z.nativeEnum(CreateFlagMetricUnit);
+/** @internal */
+export const CreateFlagMetricUnit$outboundSchema: z.ZodNativeEnum<
+  typeof CreateFlagMetricUnit
+> = CreateFlagMetricUnit$inboundSchema;
+
+/** @internal */
+export const CreateFlagDirectionality$inboundSchema: z.ZodNativeEnum<
+  typeof CreateFlagDirectionality
+> = z.nativeEnum(CreateFlagDirectionality);
+/** @internal */
+export const CreateFlagDirectionality$outboundSchema: z.ZodNativeEnum<
+  typeof CreateFlagDirectionality
+> = CreateFlagDirectionality$inboundSchema;
+
+/** @internal */
+export const CreateFlagGuardrailMetrics$inboundSchema: z.ZodType<
+  CreateFlagGuardrailMetrics,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  description: types.optional(types.string()),
+  metricFormula: types.optional(types.string()),
+  name: types.string(),
+  metricType: CreateFlagMetricType$inboundSchema,
+  metricUnit: CreateFlagMetricUnit$inboundSchema,
+  directionality: CreateFlagDirectionality$inboundSchema,
+});
+/** @internal */
+export type CreateFlagGuardrailMetrics$Outbound = {
+  description?: string | undefined;
+  metricFormula?: string | undefined;
+  name: string;
+  metricType: string;
+  metricUnit: string;
+  directionality: string;
+};
+
+/** @internal */
+export const CreateFlagGuardrailMetrics$outboundSchema: z.ZodType<
+  CreateFlagGuardrailMetrics$Outbound,
+  z.ZodTypeDef,
+  CreateFlagGuardrailMetrics
+> = z.object({
+  description: z.string().optional(),
+  metricFormula: z.string().optional(),
+  name: z.string(),
+  metricType: CreateFlagMetricType$outboundSchema,
+  metricUnit: CreateFlagMetricUnit$outboundSchema,
+  directionality: CreateFlagDirectionality$outboundSchema,
+});
+
+export function createFlagGuardrailMetricsToJSON(
+  createFlagGuardrailMetrics: CreateFlagGuardrailMetrics,
+): string {
+  return JSON.stringify(
+    CreateFlagGuardrailMetrics$outboundSchema.parse(createFlagGuardrailMetrics),
+  );
+}
+export function createFlagGuardrailMetricsFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateFlagGuardrailMetrics, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateFlagGuardrailMetrics$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateFlagGuardrailMetrics' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateFlagDevice$inboundSchema: z.ZodNativeEnum<
+  typeof CreateFlagDevice
+> = z.nativeEnum(CreateFlagDevice);
+/** @internal */
+export const CreateFlagDevice$outboundSchema: z.ZodNativeEnum<
+  typeof CreateFlagDevice
+> = CreateFlagDevice$inboundSchema;
+
+/** @internal */
+export const CreateFlagAllocationUnit$inboundSchema: z.ZodNativeEnum<
+  typeof CreateFlagAllocationUnit
+> = z.nativeEnum(CreateFlagAllocationUnit);
+/** @internal */
+export const CreateFlagAllocationUnit$outboundSchema: z.ZodNativeEnum<
+  typeof CreateFlagAllocationUnit
+> = CreateFlagAllocationUnit$inboundSchema;
+
+/** @internal */
+export const CreateFlagFeatureFlagsMetricType$inboundSchema: z.ZodNativeEnum<
+  typeof CreateFlagFeatureFlagsMetricType
+> = z.nativeEnum(CreateFlagFeatureFlagsMetricType);
+/** @internal */
+export const CreateFlagFeatureFlagsMetricType$outboundSchema: z.ZodNativeEnum<
+  typeof CreateFlagFeatureFlagsMetricType
+> = CreateFlagFeatureFlagsMetricType$inboundSchema;
+
+/** @internal */
+export const CreateFlagFeatureFlagsMetricUnit$inboundSchema: z.ZodNativeEnum<
+  typeof CreateFlagFeatureFlagsMetricUnit
+> = z.nativeEnum(CreateFlagFeatureFlagsMetricUnit);
+/** @internal */
+export const CreateFlagFeatureFlagsMetricUnit$outboundSchema: z.ZodNativeEnum<
+  typeof CreateFlagFeatureFlagsMetricUnit
+> = CreateFlagFeatureFlagsMetricUnit$inboundSchema;
+
+/** @internal */
+export const CreateFlagFeatureFlagsDirectionality$inboundSchema:
+  z.ZodNativeEnum<typeof CreateFlagFeatureFlagsDirectionality> = z.nativeEnum(
+    CreateFlagFeatureFlagsDirectionality,
+  );
+/** @internal */
+export const CreateFlagFeatureFlagsDirectionality$outboundSchema:
+  z.ZodNativeEnum<typeof CreateFlagFeatureFlagsDirectionality> =
+    CreateFlagFeatureFlagsDirectionality$inboundSchema;
+
+/** @internal */
+export const CreateFlagPrimaryMetrics$inboundSchema: z.ZodType<
+  CreateFlagPrimaryMetrics,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  description: types.optional(types.string()),
+  metricFormula: types.optional(types.string()),
+  name: types.string(),
+  metricType: CreateFlagFeatureFlagsMetricType$inboundSchema,
+  metricUnit: CreateFlagFeatureFlagsMetricUnit$inboundSchema,
+  directionality: CreateFlagFeatureFlagsDirectionality$inboundSchema,
+});
+/** @internal */
+export type CreateFlagPrimaryMetrics$Outbound = {
+  description?: string | undefined;
+  metricFormula?: string | undefined;
+  name: string;
+  metricType: string;
+  metricUnit: string;
+  directionality: string;
+};
+
+/** @internal */
+export const CreateFlagPrimaryMetrics$outboundSchema: z.ZodType<
+  CreateFlagPrimaryMetrics$Outbound,
+  z.ZodTypeDef,
+  CreateFlagPrimaryMetrics
+> = z.object({
+  description: z.string().optional(),
+  metricFormula: z.string().optional(),
+  name: z.string(),
+  metricType: CreateFlagFeatureFlagsMetricType$outboundSchema,
+  metricUnit: CreateFlagFeatureFlagsMetricUnit$outboundSchema,
+  directionality: CreateFlagFeatureFlagsDirectionality$outboundSchema,
+});
+
+export function createFlagPrimaryMetricsToJSON(
+  createFlagPrimaryMetrics: CreateFlagPrimaryMetrics,
+): string {
+  return JSON.stringify(
+    CreateFlagPrimaryMetrics$outboundSchema.parse(createFlagPrimaryMetrics),
+  );
+}
+export function createFlagPrimaryMetricsFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateFlagPrimaryMetrics, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateFlagPrimaryMetrics$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateFlagPrimaryMetrics' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateFlagStatus$inboundSchema: z.ZodNativeEnum<
+  typeof CreateFlagStatus
+> = z.nativeEnum(CreateFlagStatus);
+/** @internal */
+export const CreateFlagStatus$outboundSchema: z.ZodNativeEnum<
+  typeof CreateFlagStatus
+> = CreateFlagStatus$inboundSchema;
+
+/** @internal */
+export const CreateFlagExperiment$inboundSchema: z.ZodType<
+  CreateFlagExperiment,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  name: types.optional(types.string()),
+  id: types.optional(types.string()),
+  numVariants: types.optional(types.number()),
+  surfaceArea: types.optional(types.string()),
+  stickyRequirement: types.optional(types.boolean()),
+  layer: types.optional(types.string()),
+  guardrailMetrics: types.optional(
+    z.array(z.lazy(() => CreateFlagGuardrailMetrics$inboundSchema)),
+  ),
+  hypothesis: types.optional(types.string()),
+  device: types.optional(CreateFlagDevice$inboundSchema),
+  controlVariantId: types.optional(types.string()),
+  startedAt: types.optional(types.number()),
+  endedAt: types.optional(types.number()),
+  allocationUnit: CreateFlagAllocationUnit$inboundSchema,
+  primaryMetrics: z.array(z.lazy(() => CreateFlagPrimaryMetrics$inboundSchema)),
+  status: CreateFlagStatus$inboundSchema,
+});
+/** @internal */
+export type CreateFlagExperiment$Outbound = {
+  name?: string | undefined;
+  id?: string | undefined;
+  numVariants?: number | undefined;
+  surfaceArea?: string | undefined;
+  stickyRequirement?: boolean | undefined;
+  layer?: string | undefined;
+  guardrailMetrics?: Array<CreateFlagGuardrailMetrics$Outbound> | undefined;
+  hypothesis?: string | undefined;
+  device?: string | undefined;
+  controlVariantId?: string | undefined;
+  startedAt?: number | undefined;
+  endedAt?: number | undefined;
+  allocationUnit: string;
+  primaryMetrics: Array<CreateFlagPrimaryMetrics$Outbound>;
+  status: string;
+};
+
+/** @internal */
+export const CreateFlagExperiment$outboundSchema: z.ZodType<
+  CreateFlagExperiment$Outbound,
+  z.ZodTypeDef,
+  CreateFlagExperiment
+> = z.object({
+  name: z.string().optional(),
+  id: z.string().optional(),
+  numVariants: z.number().optional(),
+  surfaceArea: z.string().optional(),
+  stickyRequirement: z.boolean().optional(),
+  layer: z.string().optional(),
+  guardrailMetrics: z.array(
+    z.lazy(() => CreateFlagGuardrailMetrics$outboundSchema),
+  ).optional(),
+  hypothesis: z.string().optional(),
+  device: CreateFlagDevice$outboundSchema.optional(),
+  controlVariantId: z.string().optional(),
+  startedAt: z.number().optional(),
+  endedAt: z.number().optional(),
+  allocationUnit: CreateFlagAllocationUnit$outboundSchema,
+  primaryMetrics: z.array(
+    z.lazy(() => CreateFlagPrimaryMetrics$outboundSchema),
+  ),
+  status: CreateFlagStatus$outboundSchema,
+});
+
+export function createFlagExperimentToJSON(
+  createFlagExperiment: CreateFlagExperiment,
+): string {
+  return JSON.stringify(
+    CreateFlagExperiment$outboundSchema.parse(createFlagExperiment),
+  );
+}
+export function createFlagExperimentFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateFlagExperiment, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateFlagExperiment$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateFlagExperiment' from JSON`,
+  );
+}
+
+/** @internal */
 export const CreateFlagFeatureFlagsVariants$inboundSchema: z.ZodType<
   CreateFlagFeatureFlagsVariants,
   z.ZodTypeDef,
@@ -3124,6 +3511,7 @@ export const CreateFlagResponseBody$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   description: types.optional(types.string()),
+  experiment: types.optional(z.lazy(() => CreateFlagExperiment$inboundSchema)),
   variants: z.array(z.lazy(() => CreateFlagFeatureFlagsVariants$inboundSchema)),
   id: types.string(),
   environments: z.record(
@@ -3144,6 +3532,7 @@ export const CreateFlagResponseBody$inboundSchema: z.ZodType<
 /** @internal */
 export type CreateFlagResponseBody$Outbound = {
   description?: string | undefined;
+  experiment?: CreateFlagExperiment$Outbound | undefined;
   variants: Array<CreateFlagFeatureFlagsVariants$Outbound>;
   id: string;
   environments: { [k: string]: CreateFlagFeatureFlagsEnvironments$Outbound };
@@ -3167,6 +3556,7 @@ export const CreateFlagResponseBody$outboundSchema: z.ZodType<
   CreateFlagResponseBody
 > = z.object({
   description: z.string().optional(),
+  experiment: z.lazy(() => CreateFlagExperiment$outboundSchema).optional(),
   variants: z.array(
     z.lazy(() => CreateFlagFeatureFlagsVariants$outboundSchema),
   ),

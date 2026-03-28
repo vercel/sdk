@@ -51,35 +51,6 @@ export type GetProjectsByIdOrNameCustomEnvironmentsType = ClosedEnum<
 >;
 
 /**
- * The type of matching to perform
- */
-export const GetProjectsByIdOrNameCustomEnvironmentsEnvironmentType = {
-  EndsWith: "endsWith",
-  StartsWith: "startsWith",
-  Equals: "equals",
-} as const;
-/**
- * The type of matching to perform
- */
-export type GetProjectsByIdOrNameCustomEnvironmentsEnvironmentType = ClosedEnum<
-  typeof GetProjectsByIdOrNameCustomEnvironmentsEnvironmentType
->;
-
-/**
- * Configuration for matching git branches to this environment
- */
-export type GetProjectsByIdOrNameCustomEnvironmentsBranchMatcher = {
-  /**
-   * The type of matching to perform
-   */
-  type: GetProjectsByIdOrNameCustomEnvironmentsEnvironmentType;
-  /**
-   * The pattern to match against branch names
-   */
-  pattern: string;
-};
-
-/**
  * A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`.
  */
 export type GetProjectsByIdOrNameCustomEnvironmentsVerification = {
@@ -114,6 +85,35 @@ export type GetProjectsByIdOrNameCustomEnvironmentsDomains = {
     | undefined;
 };
 
+/**
+ * The type of matching to perform
+ */
+export const GetProjectsByIdOrNameCustomEnvironmentsEnvironmentType = {
+  EndsWith: "endsWith",
+  StartsWith: "startsWith",
+  Equals: "equals",
+} as const;
+/**
+ * The type of matching to perform
+ */
+export type GetProjectsByIdOrNameCustomEnvironmentsEnvironmentType = ClosedEnum<
+  typeof GetProjectsByIdOrNameCustomEnvironmentsEnvironmentType
+>;
+
+/**
+ * Configuration for matching git branches to this environment
+ */
+export type GetProjectsByIdOrNameCustomEnvironmentsBranchMatcher = {
+  /**
+   * The type of matching to perform
+   */
+  type: GetProjectsByIdOrNameCustomEnvironmentsEnvironmentType;
+  /**
+   * The pattern to match against branch names
+   */
+  pattern: string;
+};
+
 export type GetProjectsByIdOrNameCustomEnvironmentsEnvironments = {
   /**
    * The type of environment (production, preview, or development)
@@ -140,15 +140,15 @@ export type GetProjectsByIdOrNameCustomEnvironmentsEnvironments = {
    */
   slug: string;
   /**
+   * List of domains associated with this environment
+   */
+  domains?: Array<GetProjectsByIdOrNameCustomEnvironmentsDomains> | undefined;
+  /**
    * Configuration for matching git branches to this environment
    */
   branchMatcher?:
     | GetProjectsByIdOrNameCustomEnvironmentsBranchMatcher
     | undefined;
-  /**
-   * List of domains associated with this environment
-   */
-  domains?: Array<GetProjectsByIdOrNameCustomEnvironmentsDomains> | undefined;
   /**
    * List of aliases for the current deployment
    */
@@ -265,70 +265,6 @@ export const GetProjectsByIdOrNameCustomEnvironmentsType$inboundSchema:
 export const GetProjectsByIdOrNameCustomEnvironmentsType$outboundSchema:
   z.ZodNativeEnum<typeof GetProjectsByIdOrNameCustomEnvironmentsType> =
     GetProjectsByIdOrNameCustomEnvironmentsType$inboundSchema;
-
-/** @internal */
-export const GetProjectsByIdOrNameCustomEnvironmentsEnvironmentType$inboundSchema:
-  z.ZodNativeEnum<
-    typeof GetProjectsByIdOrNameCustomEnvironmentsEnvironmentType
-  > = z.nativeEnum(GetProjectsByIdOrNameCustomEnvironmentsEnvironmentType);
-/** @internal */
-export const GetProjectsByIdOrNameCustomEnvironmentsEnvironmentType$outboundSchema:
-  z.ZodNativeEnum<
-    typeof GetProjectsByIdOrNameCustomEnvironmentsEnvironmentType
-  > = GetProjectsByIdOrNameCustomEnvironmentsEnvironmentType$inboundSchema;
-
-/** @internal */
-export const GetProjectsByIdOrNameCustomEnvironmentsBranchMatcher$inboundSchema:
-  z.ZodType<
-    GetProjectsByIdOrNameCustomEnvironmentsBranchMatcher,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    type: GetProjectsByIdOrNameCustomEnvironmentsEnvironmentType$inboundSchema,
-    pattern: types.string(),
-  });
-/** @internal */
-export type GetProjectsByIdOrNameCustomEnvironmentsBranchMatcher$Outbound = {
-  type: string;
-  pattern: string;
-};
-
-/** @internal */
-export const GetProjectsByIdOrNameCustomEnvironmentsBranchMatcher$outboundSchema:
-  z.ZodType<
-    GetProjectsByIdOrNameCustomEnvironmentsBranchMatcher$Outbound,
-    z.ZodTypeDef,
-    GetProjectsByIdOrNameCustomEnvironmentsBranchMatcher
-  > = z.object({
-    type: GetProjectsByIdOrNameCustomEnvironmentsEnvironmentType$outboundSchema,
-    pattern: z.string(),
-  });
-
-export function getProjectsByIdOrNameCustomEnvironmentsBranchMatcherToJSON(
-  getProjectsByIdOrNameCustomEnvironmentsBranchMatcher:
-    GetProjectsByIdOrNameCustomEnvironmentsBranchMatcher,
-): string {
-  return JSON.stringify(
-    GetProjectsByIdOrNameCustomEnvironmentsBranchMatcher$outboundSchema.parse(
-      getProjectsByIdOrNameCustomEnvironmentsBranchMatcher,
-    ),
-  );
-}
-export function getProjectsByIdOrNameCustomEnvironmentsBranchMatcherFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  GetProjectsByIdOrNameCustomEnvironmentsBranchMatcher,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetProjectsByIdOrNameCustomEnvironmentsBranchMatcher$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'GetProjectsByIdOrNameCustomEnvironmentsBranchMatcher' from JSON`,
-  );
-}
 
 /** @internal */
 export const GetProjectsByIdOrNameCustomEnvironmentsVerification$inboundSchema:
@@ -480,6 +416,70 @@ export function getProjectsByIdOrNameCustomEnvironmentsDomainsFromJSON(
 }
 
 /** @internal */
+export const GetProjectsByIdOrNameCustomEnvironmentsEnvironmentType$inboundSchema:
+  z.ZodNativeEnum<
+    typeof GetProjectsByIdOrNameCustomEnvironmentsEnvironmentType
+  > = z.nativeEnum(GetProjectsByIdOrNameCustomEnvironmentsEnvironmentType);
+/** @internal */
+export const GetProjectsByIdOrNameCustomEnvironmentsEnvironmentType$outboundSchema:
+  z.ZodNativeEnum<
+    typeof GetProjectsByIdOrNameCustomEnvironmentsEnvironmentType
+  > = GetProjectsByIdOrNameCustomEnvironmentsEnvironmentType$inboundSchema;
+
+/** @internal */
+export const GetProjectsByIdOrNameCustomEnvironmentsBranchMatcher$inboundSchema:
+  z.ZodType<
+    GetProjectsByIdOrNameCustomEnvironmentsBranchMatcher,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    type: GetProjectsByIdOrNameCustomEnvironmentsEnvironmentType$inboundSchema,
+    pattern: types.string(),
+  });
+/** @internal */
+export type GetProjectsByIdOrNameCustomEnvironmentsBranchMatcher$Outbound = {
+  type: string;
+  pattern: string;
+};
+
+/** @internal */
+export const GetProjectsByIdOrNameCustomEnvironmentsBranchMatcher$outboundSchema:
+  z.ZodType<
+    GetProjectsByIdOrNameCustomEnvironmentsBranchMatcher$Outbound,
+    z.ZodTypeDef,
+    GetProjectsByIdOrNameCustomEnvironmentsBranchMatcher
+  > = z.object({
+    type: GetProjectsByIdOrNameCustomEnvironmentsEnvironmentType$outboundSchema,
+    pattern: z.string(),
+  });
+
+export function getProjectsByIdOrNameCustomEnvironmentsBranchMatcherToJSON(
+  getProjectsByIdOrNameCustomEnvironmentsBranchMatcher:
+    GetProjectsByIdOrNameCustomEnvironmentsBranchMatcher,
+): string {
+  return JSON.stringify(
+    GetProjectsByIdOrNameCustomEnvironmentsBranchMatcher$outboundSchema.parse(
+      getProjectsByIdOrNameCustomEnvironmentsBranchMatcher,
+    ),
+  );
+}
+export function getProjectsByIdOrNameCustomEnvironmentsBranchMatcherFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetProjectsByIdOrNameCustomEnvironmentsBranchMatcher,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetProjectsByIdOrNameCustomEnvironmentsBranchMatcher$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetProjectsByIdOrNameCustomEnvironmentsBranchMatcher' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetProjectsByIdOrNameCustomEnvironmentsEnvironments$inboundSchema:
   z.ZodType<
     GetProjectsByIdOrNameCustomEnvironmentsEnvironments,
@@ -492,15 +492,15 @@ export const GetProjectsByIdOrNameCustomEnvironmentsEnvironments$inboundSchema:
     updatedAt: types.number(),
     id: types.string(),
     slug: types.string(),
-    branchMatcher: types.optional(
-      z.lazy(() =>
-        GetProjectsByIdOrNameCustomEnvironmentsBranchMatcher$inboundSchema
-      ),
-    ),
     domains: types.optional(
       z.array(z.lazy(() =>
         GetProjectsByIdOrNameCustomEnvironmentsDomains$inboundSchema
       )),
+    ),
+    branchMatcher: types.optional(
+      z.lazy(() =>
+        GetProjectsByIdOrNameCustomEnvironmentsBranchMatcher$inboundSchema
+      ),
     ),
     currentDeploymentAliases: types.optional(z.array(types.string())),
   });
@@ -512,11 +512,11 @@ export type GetProjectsByIdOrNameCustomEnvironmentsEnvironments$Outbound = {
   updatedAt: number;
   id: string;
   slug: string;
-  branchMatcher?:
-    | GetProjectsByIdOrNameCustomEnvironmentsBranchMatcher$Outbound
-    | undefined;
   domains?:
     | Array<GetProjectsByIdOrNameCustomEnvironmentsDomains$Outbound>
+    | undefined;
+  branchMatcher?:
+    | GetProjectsByIdOrNameCustomEnvironmentsBranchMatcher$Outbound
     | undefined;
   currentDeploymentAliases?: Array<string> | undefined;
 };
@@ -534,13 +534,13 @@ export const GetProjectsByIdOrNameCustomEnvironmentsEnvironments$outboundSchema:
     updatedAt: z.number(),
     id: z.string(),
     slug: z.string(),
-    branchMatcher: z.lazy(() =>
-      GetProjectsByIdOrNameCustomEnvironmentsBranchMatcher$outboundSchema
-    ).optional(),
     domains: z.array(
       z.lazy(() =>
         GetProjectsByIdOrNameCustomEnvironmentsDomains$outboundSchema
       ),
+    ).optional(),
+    branchMatcher: z.lazy(() =>
+      GetProjectsByIdOrNameCustomEnvironmentsBranchMatcher$outboundSchema
     ).optional(),
     currentDeploymentAliases: z.array(z.string()).optional(),
   });

@@ -5,7 +5,7 @@ Description of why a project was rolled back, and by whom. Note that lastAliasRe
 ## Example Usage
 
 ```typescript
-import { UpdateProjectRollbackDescription } from "@vercel/sdk/models/updateprojectlogheaders.js";
+import { UpdateProjectRollbackDescription } from "@vercel/sdk/models/updateprojectprojectsresponse200applicationjsonresponsebodyaction.js";
 
 let value: UpdateProjectRollbackDescription = {
   userId: "<id>",

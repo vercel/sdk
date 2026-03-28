@@ -1351,6 +1351,492 @@ func (o *CreateFlagRequest) GetBody() *CreateFlagRequestBody {
 	return o.Body
 }
 
+type CreateFlagGuardrailMetricMetricType string
+
+const (
+	CreateFlagGuardrailMetricMetricTypePercentage CreateFlagGuardrailMetricMetricType = "percentage"
+	CreateFlagGuardrailMetricMetricTypeCurrency   CreateFlagGuardrailMetricMetricType = "currency"
+	CreateFlagGuardrailMetricMetricTypeCount      CreateFlagGuardrailMetricMetricType = "count"
+)
+
+func (e CreateFlagGuardrailMetricMetricType) ToPointer() *CreateFlagGuardrailMetricMetricType {
+	return &e
+}
+func (e *CreateFlagGuardrailMetricMetricType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "percentage":
+		fallthrough
+	case "currency":
+		fallthrough
+	case "count":
+		*e = CreateFlagGuardrailMetricMetricType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateFlagGuardrailMetricMetricType: %v", v)
+	}
+}
+
+type CreateFlagGuardrailMetricMetricUnit string
+
+const (
+	CreateFlagGuardrailMetricMetricUnitUser    CreateFlagGuardrailMetricMetricUnit = "user"
+	CreateFlagGuardrailMetricMetricUnitSession CreateFlagGuardrailMetricMetricUnit = "session"
+	CreateFlagGuardrailMetricMetricUnitVisitor CreateFlagGuardrailMetricMetricUnit = "visitor"
+)
+
+func (e CreateFlagGuardrailMetricMetricUnit) ToPointer() *CreateFlagGuardrailMetricMetricUnit {
+	return &e
+}
+func (e *CreateFlagGuardrailMetricMetricUnit) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "user":
+		fallthrough
+	case "session":
+		fallthrough
+	case "visitor":
+		*e = CreateFlagGuardrailMetricMetricUnit(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateFlagGuardrailMetricMetricUnit: %v", v)
+	}
+}
+
+type CreateFlagGuardrailMetricDirectionality string
+
+const (
+	CreateFlagGuardrailMetricDirectionalityIncreaseIsGood CreateFlagGuardrailMetricDirectionality = "increaseIsGood"
+	CreateFlagGuardrailMetricDirectionalityDecreaseIsGood CreateFlagGuardrailMetricDirectionality = "decreaseIsGood"
+)
+
+func (e CreateFlagGuardrailMetricDirectionality) ToPointer() *CreateFlagGuardrailMetricDirectionality {
+	return &e
+}
+func (e *CreateFlagGuardrailMetricDirectionality) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "increaseIsGood":
+		fallthrough
+	case "decreaseIsGood":
+		*e = CreateFlagGuardrailMetricDirectionality(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateFlagGuardrailMetricDirectionality: %v", v)
+	}
+}
+
+type CreateFlagGuardrailMetric struct {
+	Description    *string                                 `json:"description,omitempty"`
+	MetricFormula  *string                                 `json:"metricFormula,omitempty"`
+	Name           string                                  `json:"name"`
+	MetricType     CreateFlagGuardrailMetricMetricType     `json:"metricType"`
+	MetricUnit     CreateFlagGuardrailMetricMetricUnit     `json:"metricUnit"`
+	Directionality CreateFlagGuardrailMetricDirectionality `json:"directionality"`
+}
+
+func (o *CreateFlagGuardrailMetric) GetDescription() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Description
+}
+
+func (o *CreateFlagGuardrailMetric) GetMetricFormula() *string {
+	if o == nil {
+		return nil
+	}
+	return o.MetricFormula
+}
+
+func (o *CreateFlagGuardrailMetric) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *CreateFlagGuardrailMetric) GetMetricType() CreateFlagGuardrailMetricMetricType {
+	if o == nil {
+		return CreateFlagGuardrailMetricMetricType("")
+	}
+	return o.MetricType
+}
+
+func (o *CreateFlagGuardrailMetric) GetMetricUnit() CreateFlagGuardrailMetricMetricUnit {
+	if o == nil {
+		return CreateFlagGuardrailMetricMetricUnit("")
+	}
+	return o.MetricUnit
+}
+
+func (o *CreateFlagGuardrailMetric) GetDirectionality() CreateFlagGuardrailMetricDirectionality {
+	if o == nil {
+		return CreateFlagGuardrailMetricDirectionality("")
+	}
+	return o.Directionality
+}
+
+type CreateFlagDevice string
+
+const (
+	CreateFlagDeviceAndroid CreateFlagDevice = "android"
+	CreateFlagDeviceIos     CreateFlagDevice = "ios"
+	CreateFlagDeviceDesktop CreateFlagDevice = "desktop"
+	CreateFlagDeviceMweb    CreateFlagDevice = "mweb"
+)
+
+func (e CreateFlagDevice) ToPointer() *CreateFlagDevice {
+	return &e
+}
+func (e *CreateFlagDevice) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "android":
+		fallthrough
+	case "ios":
+		fallthrough
+	case "desktop":
+		fallthrough
+	case "mweb":
+		*e = CreateFlagDevice(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateFlagDevice: %v", v)
+	}
+}
+
+type CreateFlagAllocationUnit string
+
+const (
+	CreateFlagAllocationUnitCookieID  CreateFlagAllocationUnit = "cookieId"
+	CreateFlagAllocationUnitVisitorID CreateFlagAllocationUnit = "visitorId"
+	CreateFlagAllocationUnitUserID    CreateFlagAllocationUnit = "userId"
+)
+
+func (e CreateFlagAllocationUnit) ToPointer() *CreateFlagAllocationUnit {
+	return &e
+}
+func (e *CreateFlagAllocationUnit) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "cookieId":
+		fallthrough
+	case "visitorId":
+		fallthrough
+	case "userId":
+		*e = CreateFlagAllocationUnit(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateFlagAllocationUnit: %v", v)
+	}
+}
+
+type CreateFlagPrimaryMetricMetricType string
+
+const (
+	CreateFlagPrimaryMetricMetricTypePercentage CreateFlagPrimaryMetricMetricType = "percentage"
+	CreateFlagPrimaryMetricMetricTypeCurrency   CreateFlagPrimaryMetricMetricType = "currency"
+	CreateFlagPrimaryMetricMetricTypeCount      CreateFlagPrimaryMetricMetricType = "count"
+)
+
+func (e CreateFlagPrimaryMetricMetricType) ToPointer() *CreateFlagPrimaryMetricMetricType {
+	return &e
+}
+func (e *CreateFlagPrimaryMetricMetricType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "percentage":
+		fallthrough
+	case "currency":
+		fallthrough
+	case "count":
+		*e = CreateFlagPrimaryMetricMetricType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateFlagPrimaryMetricMetricType: %v", v)
+	}
+}
+
+type CreateFlagPrimaryMetricMetricUnit string
+
+const (
+	CreateFlagPrimaryMetricMetricUnitUser    CreateFlagPrimaryMetricMetricUnit = "user"
+	CreateFlagPrimaryMetricMetricUnitSession CreateFlagPrimaryMetricMetricUnit = "session"
+	CreateFlagPrimaryMetricMetricUnitVisitor CreateFlagPrimaryMetricMetricUnit = "visitor"
+)
+
+func (e CreateFlagPrimaryMetricMetricUnit) ToPointer() *CreateFlagPrimaryMetricMetricUnit {
+	return &e
+}
+func (e *CreateFlagPrimaryMetricMetricUnit) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "user":
+		fallthrough
+	case "session":
+		fallthrough
+	case "visitor":
+		*e = CreateFlagPrimaryMetricMetricUnit(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateFlagPrimaryMetricMetricUnit: %v", v)
+	}
+}
+
+type CreateFlagPrimaryMetricDirectionality string
+
+const (
+	CreateFlagPrimaryMetricDirectionalityIncreaseIsGood CreateFlagPrimaryMetricDirectionality = "increaseIsGood"
+	CreateFlagPrimaryMetricDirectionalityDecreaseIsGood CreateFlagPrimaryMetricDirectionality = "decreaseIsGood"
+)
+
+func (e CreateFlagPrimaryMetricDirectionality) ToPointer() *CreateFlagPrimaryMetricDirectionality {
+	return &e
+}
+func (e *CreateFlagPrimaryMetricDirectionality) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "increaseIsGood":
+		fallthrough
+	case "decreaseIsGood":
+		*e = CreateFlagPrimaryMetricDirectionality(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateFlagPrimaryMetricDirectionality: %v", v)
+	}
+}
+
+type CreateFlagPrimaryMetric struct {
+	Description    *string                               `json:"description,omitempty"`
+	MetricFormula  *string                               `json:"metricFormula,omitempty"`
+	Name           string                                `json:"name"`
+	MetricType     CreateFlagPrimaryMetricMetricType     `json:"metricType"`
+	MetricUnit     CreateFlagPrimaryMetricMetricUnit     `json:"metricUnit"`
+	Directionality CreateFlagPrimaryMetricDirectionality `json:"directionality"`
+}
+
+func (o *CreateFlagPrimaryMetric) GetDescription() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Description
+}
+
+func (o *CreateFlagPrimaryMetric) GetMetricFormula() *string {
+	if o == nil {
+		return nil
+	}
+	return o.MetricFormula
+}
+
+func (o *CreateFlagPrimaryMetric) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *CreateFlagPrimaryMetric) GetMetricType() CreateFlagPrimaryMetricMetricType {
+	if o == nil {
+		return CreateFlagPrimaryMetricMetricType("")
+	}
+	return o.MetricType
+}
+
+func (o *CreateFlagPrimaryMetric) GetMetricUnit() CreateFlagPrimaryMetricMetricUnit {
+	if o == nil {
+		return CreateFlagPrimaryMetricMetricUnit("")
+	}
+	return o.MetricUnit
+}
+
+func (o *CreateFlagPrimaryMetric) GetDirectionality() CreateFlagPrimaryMetricDirectionality {
+	if o == nil {
+		return CreateFlagPrimaryMetricDirectionality("")
+	}
+	return o.Directionality
+}
+
+type CreateFlagStatus string
+
+const (
+	CreateFlagStatusDraft   CreateFlagStatus = "draft"
+	CreateFlagStatusRunning CreateFlagStatus = "running"
+	CreateFlagStatusPaused  CreateFlagStatus = "paused"
+	CreateFlagStatusClosed  CreateFlagStatus = "closed"
+)
+
+func (e CreateFlagStatus) ToPointer() *CreateFlagStatus {
+	return &e
+}
+func (e *CreateFlagStatus) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "draft":
+		fallthrough
+	case "running":
+		fallthrough
+	case "paused":
+		fallthrough
+	case "closed":
+		*e = CreateFlagStatus(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateFlagStatus: %v", v)
+	}
+}
+
+type CreateFlagExperiment struct {
+	Name              *string                     `json:"name,omitempty"`
+	ID                *string                     `json:"id,omitempty"`
+	NumVariants       *float64                    `json:"numVariants,omitempty"`
+	SurfaceArea       *string                     `json:"surfaceArea,omitempty"`
+	StickyRequirement *bool                       `json:"stickyRequirement,omitempty"`
+	Layer             *string                     `json:"layer,omitempty"`
+	GuardrailMetrics  []CreateFlagGuardrailMetric `json:"guardrailMetrics,omitempty"`
+	Hypothesis        *string                     `json:"hypothesis,omitempty"`
+	Device            *CreateFlagDevice           `json:"device,omitempty"`
+	ControlVariantID  *string                     `json:"controlVariantId,omitempty"`
+	StartedAt         *float64                    `json:"startedAt,omitempty"`
+	EndedAt           *float64                    `json:"endedAt,omitempty"`
+	AllocationUnit    CreateFlagAllocationUnit    `json:"allocationUnit"`
+	PrimaryMetrics    []CreateFlagPrimaryMetric   `json:"primaryMetrics"`
+	Status            CreateFlagStatus            `json:"status"`
+}
+
+func (o *CreateFlagExperiment) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+func (o *CreateFlagExperiment) GetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *CreateFlagExperiment) GetNumVariants() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.NumVariants
+}
+
+func (o *CreateFlagExperiment) GetSurfaceArea() *string {
+	if o == nil {
+		return nil
+	}
+	return o.SurfaceArea
+}
+
+func (o *CreateFlagExperiment) GetStickyRequirement() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.StickyRequirement
+}
+
+func (o *CreateFlagExperiment) GetLayer() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Layer
+}
+
+func (o *CreateFlagExperiment) GetGuardrailMetrics() []CreateFlagGuardrailMetric {
+	if o == nil {
+		return nil
+	}
+	return o.GuardrailMetrics
+}
+
+func (o *CreateFlagExperiment) GetHypothesis() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Hypothesis
+}
+
+func (o *CreateFlagExperiment) GetDevice() *CreateFlagDevice {
+	if o == nil {
+		return nil
+	}
+	return o.Device
+}
+
+func (o *CreateFlagExperiment) GetControlVariantID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ControlVariantID
+}
+
+func (o *CreateFlagExperiment) GetStartedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.StartedAt
+}
+
+func (o *CreateFlagExperiment) GetEndedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.EndedAt
+}
+
+func (o *CreateFlagExperiment) GetAllocationUnit() CreateFlagAllocationUnit {
+	if o == nil {
+		return CreateFlagAllocationUnit("")
+	}
+	return o.AllocationUnit
+}
+
+func (o *CreateFlagExperiment) GetPrimaryMetrics() []CreateFlagPrimaryMetric {
+	if o == nil {
+		return []CreateFlagPrimaryMetric{}
+	}
+	return o.PrimaryMetrics
+}
+
+func (o *CreateFlagExperiment) GetStatus() CreateFlagStatus {
+	if o == nil {
+		return CreateFlagStatus("")
+	}
+	return o.Status
+}
+
 type VariantFlag struct {
 }
 
@@ -2874,6 +3360,7 @@ func (e *CreateFlagTypeName) UnmarshalJSON(data []byte) error {
 
 type CreateFlagResponseBody struct {
 	Description  *string                     `json:"description,omitempty"`
+	Experiment   *CreateFlagExperiment       `json:"experiment,omitempty"`
 	Variants     []VariantFlag               `json:"variants"`
 	ID           string                      `json:"id"`
 	Environments map[string]EnvironmentsFlag `json:"environments"`
@@ -2895,6 +3382,13 @@ func (o *CreateFlagResponseBody) GetDescription() *string {
 		return nil
 	}
 	return o.Description
+}
+
+func (o *CreateFlagResponseBody) GetExperiment() *CreateFlagExperiment {
+	if o == nil {
+		return nil
+	}
+	return o.Experiment
 }
 
 func (o *CreateFlagResponseBody) GetVariants() []VariantFlag {

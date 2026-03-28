@@ -91,7 +91,7 @@ Retrieve a list of the current User's authentication tokens.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="listAuthTokens" method="get" path="/v5/user/tokens" -->
+<!-- UsageSnippet language="typescript" operationID="listAuthTokens" method="get" path="/v6/user/tokens" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 

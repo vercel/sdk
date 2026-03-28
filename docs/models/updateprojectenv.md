@@ -1,39 +1,17 @@
 # UpdateProjectEnv
 
+Environment to apply sampling to
+
 ## Example Usage
 
 ```typescript
-import { UpdateProjectEnv } from "@vercel/sdk/models/updateprojectlogheaders.js";
+import { UpdateProjectEnv } from "@vercel/sdk/models/updateprojectprojectsresponse200applicationjsonresponsebodyaction.js";
 
-let value: UpdateProjectEnv = {
-  type: "system",
-  value: "<value>",
-  key: "<key>",
-};
+let value: UpdateProjectEnv = "production";
 ```
 
-## Fields
+## Values
 
-| Field                                                                                     | Type                                                                                      | Required                                                                                  | Description                                                                               |
-| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| `target`                                                                                  | *models.UpdateProjectTarget*                                                              | :heavy_minus_sign:                                                                        | N/A                                                                                       |
-| `type`                                                                                    | [models.UpdateProjectType](../models/updateprojecttype.md)                                | :heavy_check_mark:                                                                        | N/A                                                                                       |
-| `sunsetSecretId`                                                                          | *string*                                                                                  | :heavy_minus_sign:                                                                        | This is used to identify variables that have been migrated from type secret to sensitive. |
-| `legacyValue`                                                                             | *string*                                                                                  | :heavy_minus_sign:                                                                        | Legacy now-encryption ciphertext, present after migration swaps value/vsmValue            |
-| `decrypted`                                                                               | *boolean*                                                                                 | :heavy_minus_sign:                                                                        | N/A                                                                                       |
-| `value`                                                                                   | *string*                                                                                  | :heavy_check_mark:                                                                        | N/A                                                                                       |
-| `vsmValue`                                                                                | *string*                                                                                  | :heavy_minus_sign:                                                                        | N/A                                                                                       |
-| `id`                                                                                      | *string*                                                                                  | :heavy_minus_sign:                                                                        | N/A                                                                                       |
-| `key`                                                                                     | *string*                                                                                  | :heavy_check_mark:                                                                        | N/A                                                                                       |
-| `configurationId`                                                                         | *string*                                                                                  | :heavy_minus_sign:                                                                        | N/A                                                                                       |
-| `createdAt`                                                                               | *number*                                                                                  | :heavy_minus_sign:                                                                        | N/A                                                                                       |
-| `updatedAt`                                                                               | *number*                                                                                  | :heavy_minus_sign:                                                                        | N/A                                                                                       |
-| `createdBy`                                                                               | *string*                                                                                  | :heavy_minus_sign:                                                                        | N/A                                                                                       |
-| `updatedBy`                                                                               | *string*                                                                                  | :heavy_minus_sign:                                                                        | N/A                                                                                       |
-| `gitBranch`                                                                               | *string*                                                                                  | :heavy_minus_sign:                                                                        | N/A                                                                                       |
-| `edgeConfigId`                                                                            | *string*                                                                                  | :heavy_minus_sign:                                                                        | N/A                                                                                       |
-| `edgeConfigTokenId`                                                                       | *string*                                                                                  | :heavy_minus_sign:                                                                        | N/A                                                                                       |
-| `contentHint`                                                                             | *models.UpdateProjectContentHint*                                                         | :heavy_minus_sign:                                                                        | N/A                                                                                       |
-| `internalContentHint`                                                                     | [models.UpdateProjectInternalContentHint](../models/updateprojectinternalcontenthint.md)  | :heavy_minus_sign:                                                                        | Similar to `contentHints`, but should not be exposed to the user.                         |
-| `comment`                                                                                 | *string*                                                                                  | :heavy_minus_sign:                                                                        | N/A                                                                                       |
-| `customEnvironmentIds`                                                                    | *string*[]                                                                                | :heavy_minus_sign:                                                                        | N/A                                                                                       |
+```typescript
+"production" | "preview"
+```

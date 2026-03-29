@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetDeploymentRequest } from "@vercel/sdk/models/responsebodyorigin.js";
+import { GetDeploymentRequest } from "@vercel/sdk/models/responsebodyproject.js";
 
 let value: GetDeploymentRequest = {
   idOrUrl: "dpl_89qyp1cskzkLrVicDaZoDbjyHuDJ",

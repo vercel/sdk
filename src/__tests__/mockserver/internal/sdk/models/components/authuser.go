@@ -1066,6 +1066,7 @@ func (u AuthUserImportFlowGitNamespaceID) MarshalJSON() ([]byte, error) {
 type AuthUserImportFlowGitProvider string
 
 const (
+	AuthUserImportFlowGitProviderVercel           AuthUserImportFlowGitProvider = "vercel"
 	AuthUserImportFlowGitProviderGitlab           AuthUserImportFlowGitProvider = "gitlab"
 	AuthUserImportFlowGitProviderBitbucket        AuthUserImportFlowGitProvider = "bitbucket"
 	AuthUserImportFlowGitProviderGithub           AuthUserImportFlowGitProvider = "github"
@@ -1082,6 +1083,8 @@ func (e *AuthUserImportFlowGitProvider) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
+	case "vercel":
+		fallthrough
 	case "gitlab":
 		fallthrough
 	case "bitbucket":

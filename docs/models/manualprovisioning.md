@@ -5,7 +5,7 @@ Present when deployment was created with VERCEL_MANUAL_PROVISIONING=true. The de
 ## Example Usage
 
 ```typescript
-import { ManualProvisioning } from "@vercel/sdk/models/createdeploymentop.js";
+import { ManualProvisioning } from "@vercel/sdk/models/createdeploymentvaluedeployments2.js";
 
 let value: ManualProvisioning = {
   state: "TIMEOUT",

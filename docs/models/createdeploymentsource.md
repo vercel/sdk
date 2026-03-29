@@ -5,7 +5,7 @@ Where was the deployment created from
 ## Example Usage
 
 ```typescript
-import { CreateDeploymentSource } from "@vercel/sdk/models/createdeploymentop.js";
+import { CreateDeploymentSource } from "@vercel/sdk/models/createdeploymentvaluedeployments2.js";
 
 let value: CreateDeploymentSource = "cli";
 ```

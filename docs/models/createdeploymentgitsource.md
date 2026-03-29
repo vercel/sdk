@@ -94,10 +94,8 @@ const value: models.CreateDeploymentGitSource9 = {
 
 ```typescript
 const value: models.CreateDeploymentGitSource10 = {
-  type: "custom",
-  ref: "<value>",
+  type: "vercel",
   sha: "<value>",
-  gitUrl: "https://snappy-soliloquy.org",
 };
 ```
 
@@ -105,10 +103,10 @@ const value: models.CreateDeploymentGitSource10 = {
 
 ```typescript
 const value: models.CreateDeploymentGitSource11 = {
-  type: "github",
+  type: "custom",
   ref: "<value>",
   sha: "<value>",
-  repoId: 4115.15,
+  gitUrl: "https://velvety-straw.net/",
 };
 ```
 
@@ -116,11 +114,10 @@ const value: models.CreateDeploymentGitSource11 = {
 
 ```typescript
 const value: models.CreateDeploymentGitSource12 = {
-  type: "github-custom-host",
-  host: "ultimate-hope.info",
+  type: "github",
   ref: "<value>",
   sha: "<value>",
-  repoId: 2069.18,
+  repoId: 8770.72,
 };
 ```
 
@@ -128,10 +125,11 @@ const value: models.CreateDeploymentGitSource12 = {
 
 ```typescript
 const value: models.CreateDeploymentGitSource13 = {
-  type: "github-limited",
+  type: "github-custom-host",
+  host: "lasting-cinder.com",
   ref: "<value>",
   sha: "<value>",
-  repoId: 4560.03,
+  repoId: 7576.66,
 };
 ```
 
@@ -139,10 +137,10 @@ const value: models.CreateDeploymentGitSource13 = {
 
 ```typescript
 const value: models.CreateDeploymentGitSource14 = {
-  type: "gitlab",
+  type: "github-limited",
   ref: "<value>",
   sha: "<value>",
-  projectId: 309.84,
+  repoId: 309.84,
 };
 ```
 
@@ -150,11 +148,34 @@ const value: models.CreateDeploymentGitSource14 = {
 
 ```typescript
 const value: models.CreateDeploymentGitSource15 = {
+  type: "gitlab",
+  ref: "<value>",
+  sha: "<value>",
+  projectId: 7335.33,
+};
+```
+
+### `models.CreateDeploymentGitSource16`
+
+```typescript
+const value: models.CreateDeploymentGitSource16 = {
   type: "bitbucket",
   ref: "<value>",
   sha: "<value>",
   workspaceUuid: "<id>",
   repoUuid: "<id>",
+};
+```
+
+### `models.CreateDeploymentGitSource17`
+
+```typescript
+const value: models.CreateDeploymentGitSource17 = {
+  type: "vercel",
+  ref: "<value>",
+  sha: "<value>",
+  org: "<value>",
+  repo: "<value>",
 };
 ```
 

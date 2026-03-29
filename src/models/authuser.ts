@@ -365,6 +365,7 @@ export type ImportFlowGitNamespace = string | number;
 export type ImportFlowGitNamespaceId = string | number;
 
 export const ImportFlowGitProvider = {
+  Vercel: "vercel",
   Gitlab: "gitlab",
   Bitbucket: "bitbucket",
   Github: "github",

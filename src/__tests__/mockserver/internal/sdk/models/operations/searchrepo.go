@@ -179,6 +179,7 @@ const (
 	GitAccountProviderGithubCustomHost GitAccountProvider = "github-custom-host"
 	GitAccountProviderGitlab           GitAccountProvider = "gitlab"
 	GitAccountProviderBitbucket        GitAccountProvider = "bitbucket"
+	GitAccountProviderVercel           GitAccountProvider = "vercel"
 )
 
 func (e GitAccountProvider) ToPointer() *GitAccountProvider {
@@ -199,6 +200,8 @@ func (e *GitAccountProvider) UnmarshalJSON(data []byte) error {
 	case "gitlab":
 		fallthrough
 	case "bitbucket":
+		fallthrough
+	case "vercel":
 		*e = GitAccountProvider(v)
 		return nil
 	default:
@@ -370,6 +373,7 @@ const (
 	RepoProviderGithubCustomHost RepoProvider = "github-custom-host"
 	RepoProviderGitlab           RepoProvider = "gitlab"
 	RepoProviderBitbucket        RepoProvider = "bitbucket"
+	RepoProviderVercel           RepoProvider = "vercel"
 )
 
 func (e RepoProvider) ToPointer() *RepoProvider {
@@ -390,6 +394,8 @@ func (e *RepoProvider) UnmarshalJSON(data []byte) error {
 	case "gitlab":
 		fallthrough
 	case "bitbucket":
+		fallthrough
+	case "vercel":
 		*e = RepoProvider(v)
 		return nil
 	default:

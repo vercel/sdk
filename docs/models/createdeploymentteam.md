@@ -5,7 +5,7 @@ The team that owns the deployment if any
 ## Example Usage
 
 ```typescript
-import { CreateDeploymentTeam } from "@vercel/sdk/models/createdeploymentop.js";
+import { CreateDeploymentTeam } from "@vercel/sdk/models/createdeploymentvaluedeployments2.js";
 
 let value: CreateDeploymentTeam = {
   id: "<id>",

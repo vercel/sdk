@@ -5076,6 +5076,7 @@ func (o *Payload162) GetOnPullRequest() bool {
 type GitProvider string
 
 const (
+	GitProviderVercel           GitProvider = "vercel"
 	GitProviderGithub           GitProvider = "github"
 	GitProviderGithubLimited    GitProvider = "github-limited"
 	GitProviderGithubCustomHost GitProvider = "github-custom-host"
@@ -5092,6 +5093,8 @@ func (e *GitProvider) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
+	case "vercel":
+		fallthrough
 	case "github":
 		fallthrough
 	case "github-limited":
@@ -5166,6 +5169,7 @@ func (o *Payload161) GetGitRepositoryName() string {
 type PreviousGitProvider string
 
 const (
+	PreviousGitProviderVercel           PreviousGitProvider = "vercel"
 	PreviousGitProviderGithub           PreviousGitProvider = "github"
 	PreviousGitProviderGithubLimited    PreviousGitProvider = "github-limited"
 	PreviousGitProviderGithubCustomHost PreviousGitProvider = "github-custom-host"
@@ -5182,6 +5186,8 @@ func (e *PreviousGitProvider) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
+	case "vercel":
+		fallthrough
 	case "github":
 		fallthrough
 	case "github-limited":
@@ -5239,6 +5245,7 @@ func (o *Previous7) GetGitRepositoryName() string {
 type NextGitProvider string
 
 const (
+	NextGitProviderVercel           NextGitProvider = "vercel"
 	NextGitProviderGithub           NextGitProvider = "github"
 	NextGitProviderGithubLimited    NextGitProvider = "github-limited"
 	NextGitProviderGithubCustomHost NextGitProvider = "github-custom-host"
@@ -5255,6 +5262,8 @@ func (e *NextGitProvider) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
+	case "vercel":
+		fallthrough
 	case "github":
 		fallthrough
 	case "github-limited":

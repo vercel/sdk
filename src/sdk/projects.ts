@@ -74,7 +74,7 @@ import {
   GetProjectEnvRequest,
   GetProjectEnvResponseBody,
 } from "../models/getprojectenvop.js";
-import { GetProjectsRequest } from "../models/getprojectsblockhistoryprojectsresponse200applicationjsonroute.js";
+import { GetProjectsRequest } from "../models/getprojectsblockhistoryprojects4.js";
 import { GetProjectsResponseBody } from "../models/getprojectsresponsebody.js";
 import {
   ListPromoteAliasesRequest,
@@ -96,11 +96,11 @@ import {
 import { RequestPromoteRequest } from "../models/requestpromoteop.js";
 import { RequestRollbackRequest } from "../models/requestrollbackop.js";
 import { UnpauseProjectRequest } from "../models/unpauseprojectop.js";
+import { UpdateProjectRequest } from "../models/updateprojectaibots.js";
 import {
   UpdateProjectDomainRequest,
   UpdateProjectDomainResponseBody,
 } from "../models/updateprojectdomainop.js";
-import { UpdateProjectRequest } from "../models/updateprojectprojectsresponse200applicationjsonresponsebodyaction.js";
 import {
   UpdateProjectProtectionBypassRequest,
   UpdateProjectProtectionBypassResponseBody,

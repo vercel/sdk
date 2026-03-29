@@ -640,22 +640,22 @@ const value: models.SixtySix = {
 ```typescript
 const value: models.SixtySeven = {
   job: {
-    repoPushedAt: 6561.49,
-    type: "push",
     headInfo: {
       org: "<value>",
       ref: "<value>",
       repo: "<value>",
-      repoId: 6467.65,
+      repoId: 1102.65,
       sha: "<value>",
     },
-    installationId: 9005.87,
+    installationId: 5954.02,
     isPrivate: false,
     org: "<value>",
-    prId: 8441.99,
+    prId: 9005.87,
+    projectId: "<id>",
     repo: "<value>",
-    repoId: 2991.2,
-    provider: "github",
+    repoId: 2178.03,
+    type: "now-comment",
+    provider: "github-custom-host",
   },
 };
 ```
@@ -1753,7 +1753,7 @@ const value: models.OneHundredAndSixtyFour = {
   projectId: "<id>",
   projectName: "<value>",
   next: {
-    gitProvider: "github-custom-host",
+    gitProvider: "github-limited",
     gitRepoId: "<id>",
     gitRepositoryName: "<value>",
   },
@@ -1766,7 +1766,7 @@ const value: models.OneHundredAndSixtyFour = {
 const value: models.OneHundredAndSixtyFive = {
   projectId: "<id>",
   projectName: "<value>",
-  gitProvider: "github",
+  gitProvider: "vercel",
   gitRepoId: "<id>",
   gitRepositoryName: "<value>",
 };

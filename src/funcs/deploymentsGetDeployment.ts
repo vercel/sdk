@@ -24,7 +24,7 @@ import {
 import {
   GetDeploymentRequest,
   GetDeploymentRequest$outboundSchema,
-} from "../models/responsebodyorigin.js";
+} from "../models/responsebodyproject.js";
 import { ResponseValidationError } from "../models/responsevalidationerror.js";
 import { SDKValidationError } from "../models/sdkvalidationerror.js";
 import { VercelError } from "../models/vercelerror.js";

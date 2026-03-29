@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsResponseBodyCrons } from "@vercel/sdk/models/getprojectsblockhistoryprojectsresponse200applicationjsonroute.js";
+import { GetProjectsResponseBodyCrons } from "@vercel/sdk/models/getprojectsblockhistoryprojects4.js";
 
 let value: GetProjectsResponseBodyCrons = {
   enabledAt: 1074.56,

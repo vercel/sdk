@@ -12,23 +12,67 @@ import (
 	"mockserver/internal/sdk/utils"
 )
 
-type CreateProjectTrustedOidcProviders struct {
-	Projects  map[string]CreateProjectProjects  `json:"projects"`
-	Providers map[string]CreateProjectProviders `json:"providers"`
+type CreateProjectTrustedIpsUnionType string
+
+const (
+	CreateProjectTrustedIpsUnionTypeCreateProjectTrustedIps1 CreateProjectTrustedIpsUnionType = "createProject_trustedIps_1"
+	CreateProjectTrustedIpsUnionTypeCreateProjectTrustedIps2 CreateProjectTrustedIpsUnionType = "createProject_trustedIps_2"
+)
+
+type CreateProjectTrustedIpsUnion struct {
+	CreateProjectTrustedIps1 *CreateProjectTrustedIps1 `queryParam:"inline"`
+	CreateProjectTrustedIps2 *CreateProjectTrustedIps2 `queryParam:"inline"`
+
+	Type CreateProjectTrustedIpsUnionType
 }
 
-func (o *CreateProjectTrustedOidcProviders) GetProjects() map[string]CreateProjectProjects {
-	if o == nil {
-		return map[string]CreateProjectProjects{}
+func CreateCreateProjectTrustedIpsUnionCreateProjectTrustedIps1(createProjectTrustedIps1 CreateProjectTrustedIps1) CreateProjectTrustedIpsUnion {
+	typ := CreateProjectTrustedIpsUnionTypeCreateProjectTrustedIps1
+
+	return CreateProjectTrustedIpsUnion{
+		CreateProjectTrustedIps1: &createProjectTrustedIps1,
+		Type:                     typ,
 	}
-	return o.Projects
 }
 
-func (o *CreateProjectTrustedOidcProviders) GetProviders() map[string]CreateProjectProviders {
-	if o == nil {
-		return map[string]CreateProjectProviders{}
+func CreateCreateProjectTrustedIpsUnionCreateProjectTrustedIps2(createProjectTrustedIps2 CreateProjectTrustedIps2) CreateProjectTrustedIpsUnion {
+	typ := CreateProjectTrustedIpsUnionTypeCreateProjectTrustedIps2
+
+	return CreateProjectTrustedIpsUnion{
+		CreateProjectTrustedIps2: &createProjectTrustedIps2,
+		Type:                     typ,
 	}
-	return o.Providers
+}
+
+func (u *CreateProjectTrustedIpsUnion) UnmarshalJSON(data []byte) error {
+
+	var createProjectTrustedIps1 CreateProjectTrustedIps1 = CreateProjectTrustedIps1{}
+	if err := utils.UnmarshalJSON(data, &createProjectTrustedIps1, "", true, nil); err == nil {
+		u.CreateProjectTrustedIps1 = &createProjectTrustedIps1
+		u.Type = CreateProjectTrustedIpsUnionTypeCreateProjectTrustedIps1
+		return nil
+	}
+
+	var createProjectTrustedIps2 CreateProjectTrustedIps2 = CreateProjectTrustedIps2{}
+	if err := utils.UnmarshalJSON(data, &createProjectTrustedIps2, "", true, nil); err == nil {
+		u.CreateProjectTrustedIps2 = &createProjectTrustedIps2
+		u.Type = CreateProjectTrustedIpsUnionTypeCreateProjectTrustedIps2
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateProjectTrustedIpsUnion", string(data))
+}
+
+func (u CreateProjectTrustedIpsUnion) MarshalJSON() ([]byte, error) {
+	if u.CreateProjectTrustedIps1 != nil {
+		return utils.MarshalJSON(u.CreateProjectTrustedIps1, "", true)
+	}
+
+	if u.CreateProjectTrustedIps2 != nil {
+		return utils.MarshalJSON(u.CreateProjectTrustedIps2, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type CreateProjectTrustedIpsUnion: all fields are null")
 }
 
 type CreateProjectGitComments struct {
@@ -3255,7 +3299,6 @@ type CreateProjectResponseBody struct {
 	ProtectionBypass                     map[string]CreateProjectProtectionBypassUnion                         `json:"protectionBypass,omitempty"`
 	HasActiveBranches                    *bool                                                                 `json:"hasActiveBranches,omitempty"`
 	TrustedIps                           optionalnullable.OptionalNullable[CreateProjectTrustedIpsUnion]       `json:"trustedIps,omitempty"`
-	TrustedOidcProviders                 optionalnullable.OptionalNullable[CreateProjectTrustedOidcProviders]  `json:"trustedOidcProviders,omitempty"`
 	GitComments                          *CreateProjectGitComments                                             `json:"gitComments,omitempty"`
 	GitProviderOptions                   *CreateProjectGitProviderOptions                                      `json:"gitProviderOptions,omitempty"`
 	Paused                               *bool                                                                 `json:"paused,omitempty"`
@@ -3528,6 +3571,13 @@ func (o *CreateProjectResponseBody) GetLinkBitbucket() *CreateProjectLinkBitbuck
 	return nil
 }
 
+func (o *CreateProjectResponseBody) GetLinkVercel() *CreateProjectLinkVercel {
+	if v := o.GetLink(); v != nil {
+		return v.CreateProjectLinkVercel
+	}
+	return nil
+}
+
 func (o *CreateProjectResponseBody) GetMicrofrontends() *CreateProjectMicrofrontendsUnion {
 	if o == nil {
 		return nil
@@ -3792,13 +3842,6 @@ func (o *CreateProjectResponseBody) GetTrustedIps() optionalnullable.OptionalNul
 		return nil
 	}
 	return o.TrustedIps
-}
-
-func (o *CreateProjectResponseBody) GetTrustedOidcProviders() optionalnullable.OptionalNullable[CreateProjectTrustedOidcProviders] {
-	if o == nil {
-		return nil
-	}
-	return o.TrustedOidcProviders
 }
 
 func (o *CreateProjectResponseBody) GetGitComments() *CreateProjectGitComments {

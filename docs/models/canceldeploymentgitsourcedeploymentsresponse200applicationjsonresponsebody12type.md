@@ -7,11 +7,11 @@ import { CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseB
 
 let value:
   CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody12Type =
-    "github-custom-host";
+    "github";
 ```
 
 ## Values
 
 ```typescript
-"github-custom-host"
+"github"
 ```

@@ -3,12 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { GitSource2 } from "@vercel/sdk/models/createdeploymentop.js";
+import { GitSource2 } from "@vercel/sdk/models/createdeploymentvaluedeployments2.js";
 
 let value: GitSource2 = {
-  org: "vercel",
   ref: "main",
-  repo: "next.js",
+  repoId: 123456789,
   sha: "a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0",
   type: "github",
 };
@@ -18,8 +17,7 @@ let value: GitSource2 = {
 
 | Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        | Example                                                                            |
 | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `org`                                                                              | *string*                                                                           | :heavy_check_mark:                                                                 | N/A                                                                                | vercel                                                                             |
 | `ref`                                                                              | *string*                                                                           | :heavy_check_mark:                                                                 | N/A                                                                                | main                                                                               |
-| `repo`                                                                             | *string*                                                                           | :heavy_check_mark:                                                                 | N/A                                                                                | next.js                                                                            |
+| `repoId`                                                                           | *models.RepoId*                                                                    | :heavy_check_mark:                                                                 | N/A                                                                                | 123456789                                                                          |
 | `sha`                                                                              | *string*                                                                           | :heavy_minus_sign:                                                                 | N/A                                                                                | a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0                                           |
 | `type`                                                                             | [models.CreateDeploymentGitSourceType](../models/createdeploymentgitsourcetype.md) | :heavy_check_mark:                                                                 | N/A                                                                                |                                                                                    |

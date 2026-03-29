@@ -58,12 +58,10 @@ func testGetProjectsGetProjects0(w http.ResponseWriter, req *http.Request) {
 					DeploymentExpiration: operations.ProjectDeploymentExpiration1{},
 					ID:                   "<id>",
 					Name:                 "<value>",
-					NodeVersion:          operations.ProjectNodeVersion1EighteenDotX,
+					NodeVersion:          operations.ProjectNodeVersion1EightDot10DotX,
 					ResourceConfig: operations.ProjectResourceConfig1{
 						FunctionDefaultRegions: []string{
 							"<value 1>",
-							"<value 2>",
-							"<value 3>",
 						},
 					},
 					RollingRelease: optionalnullable.From(&operations.ProjectRollingRelease1{

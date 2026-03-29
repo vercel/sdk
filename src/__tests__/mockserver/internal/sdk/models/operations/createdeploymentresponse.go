@@ -12,6 +12,325 @@ import (
 	"mockserver/internal/sdk/utils"
 )
 
+type CreateDeploymentMissing struct {
+	Type  CreateDeploymentMissingType         `json:"type"`
+	Key   string                              `json:"key"`
+	Value *CreateDeploymentMissingValueUnion2 `json:"value,omitempty"`
+}
+
+func (c CreateDeploymentMissing) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateDeploymentMissing) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"type", "key"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateDeploymentMissing) GetType() CreateDeploymentMissingType {
+	if o == nil {
+		return CreateDeploymentMissingType("")
+	}
+	return o.Type
+}
+
+func (o *CreateDeploymentMissing) GetKey() string {
+	if o == nil {
+		return ""
+	}
+	return o.Key
+}
+
+func (o *CreateDeploymentMissing) GetValue() *CreateDeploymentMissingValueUnion2 {
+	if o == nil {
+		return nil
+	}
+	return o.Value
+}
+
+type CreateDeploymentMissingTypeHost string
+
+const (
+	CreateDeploymentMissingTypeHostHost CreateDeploymentMissingTypeHost = "host"
+)
+
+func (e CreateDeploymentMissingTypeHost) ToPointer() *CreateDeploymentMissingTypeHost {
+	return &e
+}
+func (e *CreateDeploymentMissingTypeHost) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "host":
+		*e = CreateDeploymentMissingTypeHost(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateDeploymentMissingTypeHost: %v", v)
+	}
+}
+
+type CreateDeploymentMissingEq1Type string
+
+const (
+	CreateDeploymentMissingEq1TypeStr    CreateDeploymentMissingEq1Type = "str"
+	CreateDeploymentMissingEq1TypeNumber CreateDeploymentMissingEq1Type = "number"
+)
+
+type CreateDeploymentMissingEq1 struct {
+	Str    *string  `queryParam:"inline"`
+	Number *float64 `queryParam:"inline"`
+
+	Type CreateDeploymentMissingEq1Type
+}
+
+func CreateCreateDeploymentMissingEq1Str(str string) CreateDeploymentMissingEq1 {
+	typ := CreateDeploymentMissingEq1TypeStr
+
+	return CreateDeploymentMissingEq1{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func CreateCreateDeploymentMissingEq1Number(number float64) CreateDeploymentMissingEq1 {
+	typ := CreateDeploymentMissingEq1TypeNumber
+
+	return CreateDeploymentMissingEq1{
+		Number: &number,
+		Type:   typ,
+	}
+}
+
+func (u *CreateDeploymentMissingEq1) UnmarshalJSON(data []byte) error {
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
+		u.Str = &str
+		u.Type = CreateDeploymentMissingEq1TypeStr
+		return nil
+	}
+
+	var number float64 = float64(0)
+	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
+		u.Number = &number
+		u.Type = CreateDeploymentMissingEq1TypeNumber
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateDeploymentMissingEq1", string(data))
+}
+
+func (u CreateDeploymentMissingEq1) MarshalJSON() ([]byte, error) {
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	if u.Number != nil {
+		return utils.MarshalJSON(u.Number, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type CreateDeploymentMissingEq1: all fields are null")
+}
+
+type CreateDeploymentMissingValue1 struct {
+	Eq   *CreateDeploymentMissingEq1 `json:"eq,omitempty"`
+	Neq  *string                     `json:"neq,omitempty"`
+	Inc  []string                    `json:"inc,omitempty"`
+	Ninc []string                    `json:"ninc,omitempty"`
+	Pre  *string                     `json:"pre,omitempty"`
+	Suf  *string                     `json:"suf,omitempty"`
+	Re   *string                     `json:"re,omitempty"`
+	Gt   *float64                    `json:"gt,omitempty"`
+	Gte  *float64                    `json:"gte,omitempty"`
+	Lt   *float64                    `json:"lt,omitempty"`
+	Lte  *float64                    `json:"lte,omitempty"`
+}
+
+func (c CreateDeploymentMissingValue1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateDeploymentMissingValue1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateDeploymentMissingValue1) GetEq() *CreateDeploymentMissingEq1 {
+	if o == nil {
+		return nil
+	}
+	return o.Eq
+}
+
+func (o *CreateDeploymentMissingValue1) GetNeq() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Neq
+}
+
+func (o *CreateDeploymentMissingValue1) GetInc() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Inc
+}
+
+func (o *CreateDeploymentMissingValue1) GetNinc() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Ninc
+}
+
+func (o *CreateDeploymentMissingValue1) GetPre() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Pre
+}
+
+func (o *CreateDeploymentMissingValue1) GetSuf() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Suf
+}
+
+func (o *CreateDeploymentMissingValue1) GetRe() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Re
+}
+
+func (o *CreateDeploymentMissingValue1) GetGt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Gt
+}
+
+func (o *CreateDeploymentMissingValue1) GetGte() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Gte
+}
+
+func (o *CreateDeploymentMissingValue1) GetLt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Lt
+}
+
+func (o *CreateDeploymentMissingValue1) GetLte() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Lte
+}
+
+type CreateDeploymentMissingValueUnion1Type string
+
+const (
+	CreateDeploymentMissingValueUnion1TypeStr                           CreateDeploymentMissingValueUnion1Type = "str"
+	CreateDeploymentMissingValueUnion1TypeCreateDeploymentMissingValue1 CreateDeploymentMissingValueUnion1Type = "createDeployment_missing_value_1"
+)
+
+type CreateDeploymentMissingValueUnion1 struct {
+	Str                           *string                        `queryParam:"inline"`
+	CreateDeploymentMissingValue1 *CreateDeploymentMissingValue1 `queryParam:"inline"`
+
+	Type CreateDeploymentMissingValueUnion1Type
+}
+
+func CreateCreateDeploymentMissingValueUnion1Str(str string) CreateDeploymentMissingValueUnion1 {
+	typ := CreateDeploymentMissingValueUnion1TypeStr
+
+	return CreateDeploymentMissingValueUnion1{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func CreateCreateDeploymentMissingValueUnion1CreateDeploymentMissingValue1(createDeploymentMissingValue1 CreateDeploymentMissingValue1) CreateDeploymentMissingValueUnion1 {
+	typ := CreateDeploymentMissingValueUnion1TypeCreateDeploymentMissingValue1
+
+	return CreateDeploymentMissingValueUnion1{
+		CreateDeploymentMissingValue1: &createDeploymentMissingValue1,
+		Type:                          typ,
+	}
+}
+
+func (u *CreateDeploymentMissingValueUnion1) UnmarshalJSON(data []byte) error {
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
+		u.Str = &str
+		u.Type = CreateDeploymentMissingValueUnion1TypeStr
+		return nil
+	}
+
+	var createDeploymentMissingValue1 CreateDeploymentMissingValue1 = CreateDeploymentMissingValue1{}
+	if err := utils.UnmarshalJSON(data, &createDeploymentMissingValue1, "", true, nil); err == nil {
+		u.CreateDeploymentMissingValue1 = &createDeploymentMissingValue1
+		u.Type = CreateDeploymentMissingValueUnion1TypeCreateDeploymentMissingValue1
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateDeploymentMissingValueUnion1", string(data))
+}
+
+func (u CreateDeploymentMissingValueUnion1) MarshalJSON() ([]byte, error) {
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	if u.CreateDeploymentMissingValue1 != nil {
+		return utils.MarshalJSON(u.CreateDeploymentMissingValue1, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type CreateDeploymentMissingValueUnion1: all fields are null")
+}
+
+type CreateDeploymentMissingHost struct {
+	Type  CreateDeploymentMissingTypeHost    `json:"type"`
+	Value CreateDeploymentMissingValueUnion1 `json:"value"`
+}
+
+func (c CreateDeploymentMissingHost) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateDeploymentMissingHost) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"type", "value"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateDeploymentMissingHost) GetType() CreateDeploymentMissingTypeHost {
+	if o == nil {
+		return CreateDeploymentMissingTypeHost("")
+	}
+	return o.Type
+}
+
+func (o *CreateDeploymentMissingHost) GetValue() CreateDeploymentMissingValueUnion1 {
+	if o == nil {
+		return CreateDeploymentMissingValueUnion1{}
+	}
+	return o.Value
+}
+
 type CreateDeploymentMissingUnionType string
 
 const (
@@ -923,6 +1242,133 @@ func (u CreateDeploymentRouteUnion) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type CreateDeploymentRouteUnion: all fields are null")
 }
 
+type CreateDeploymentGitRepoTypeVercel string
+
+const (
+	CreateDeploymentGitRepoTypeVercelVercel CreateDeploymentGitRepoTypeVercel = "vercel"
+)
+
+func (e CreateDeploymentGitRepoTypeVercel) ToPointer() *CreateDeploymentGitRepoTypeVercel {
+	return &e
+}
+func (e *CreateDeploymentGitRepoTypeVercel) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "vercel":
+		*e = CreateDeploymentGitRepoTypeVercel(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateDeploymentGitRepoTypeVercel: %v", v)
+	}
+}
+
+type CreateDeploymentOwnerType4 string
+
+const (
+	CreateDeploymentOwnerType4Team CreateDeploymentOwnerType4 = "team"
+	CreateDeploymentOwnerType4User CreateDeploymentOwnerType4 = "user"
+)
+
+func (e CreateDeploymentOwnerType4) ToPointer() *CreateDeploymentOwnerType4 {
+	return &e
+}
+func (e *CreateDeploymentOwnerType4) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "team":
+		fallthrough
+	case "user":
+		*e = CreateDeploymentOwnerType4(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateDeploymentOwnerType4: %v", v)
+	}
+}
+
+type CreateDeploymentGitRepoVercel struct {
+	Org           string                            `json:"org"`
+	Repo          string                            `json:"repo"`
+	Type          CreateDeploymentGitRepoTypeVercel `json:"type"`
+	Path          string                            `json:"path"`
+	DefaultBranch string                            `json:"defaultBranch"`
+	Name          string                            `json:"name"`
+	Private       bool                              `json:"private"`
+	OwnerType     CreateDeploymentOwnerType4        `json:"ownerType"`
+}
+
+func (c CreateDeploymentGitRepoVercel) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateDeploymentGitRepoVercel) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"org", "repo", "type", "path", "defaultBranch", "name", "private", "ownerType"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateDeploymentGitRepoVercel) GetOrg() string {
+	if o == nil {
+		return ""
+	}
+	return o.Org
+}
+
+func (o *CreateDeploymentGitRepoVercel) GetRepo() string {
+	if o == nil {
+		return ""
+	}
+	return o.Repo
+}
+
+func (o *CreateDeploymentGitRepoVercel) GetType() CreateDeploymentGitRepoTypeVercel {
+	if o == nil {
+		return CreateDeploymentGitRepoTypeVercel("")
+	}
+	return o.Type
+}
+
+func (o *CreateDeploymentGitRepoVercel) GetPath() string {
+	if o == nil {
+		return ""
+	}
+	return o.Path
+}
+
+func (o *CreateDeploymentGitRepoVercel) GetDefaultBranch() string {
+	if o == nil {
+		return ""
+	}
+	return o.DefaultBranch
+}
+
+func (o *CreateDeploymentGitRepoVercel) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *CreateDeploymentGitRepoVercel) GetPrivate() bool {
+	if o == nil {
+		return false
+	}
+	return o.Private
+}
+
+func (o *CreateDeploymentGitRepoVercel) GetOwnerType() CreateDeploymentOwnerType4 {
+	if o == nil {
+		return CreateDeploymentOwnerType4("")
+	}
+	return o.OwnerType
+}
+
 type CreateDeploymentGitRepoTypeBitbucket string
 
 const (
@@ -1350,12 +1796,14 @@ const (
 	CreateDeploymentGitRepoUnionTypeGitlab    CreateDeploymentGitRepoUnionType = "gitlab"
 	CreateDeploymentGitRepoUnionTypeGithub    CreateDeploymentGitRepoUnionType = "github"
 	CreateDeploymentGitRepoUnionTypeBitbucket CreateDeploymentGitRepoUnionType = "bitbucket"
+	CreateDeploymentGitRepoUnionTypeVercel    CreateDeploymentGitRepoUnionType = "vercel"
 )
 
 type CreateDeploymentGitRepoUnion struct {
 	CreateDeploymentGitRepoGitlab    *CreateDeploymentGitRepoGitlab    `queryParam:"inline"`
 	CreateDeploymentGitRepoGithub    *CreateDeploymentGitRepoGithub    `queryParam:"inline"`
 	CreateDeploymentGitRepoBitbucket *CreateDeploymentGitRepoBitbucket `queryParam:"inline"`
+	CreateDeploymentGitRepoVercel    *CreateDeploymentGitRepoVercel    `queryParam:"inline"`
 
 	Type CreateDeploymentGitRepoUnionType
 }
@@ -1393,6 +1841,18 @@ func CreateCreateDeploymentGitRepoUnionBitbucket(bitbucket CreateDeploymentGitRe
 	return CreateDeploymentGitRepoUnion{
 		CreateDeploymentGitRepoBitbucket: &bitbucket,
 		Type:                             typ,
+	}
+}
+
+func CreateCreateDeploymentGitRepoUnionVercel(vercel CreateDeploymentGitRepoVercel) CreateDeploymentGitRepoUnion {
+	typ := CreateDeploymentGitRepoUnionTypeVercel
+
+	typStr := CreateDeploymentGitRepoTypeVercel(typ)
+	vercel.Type = typStr
+
+	return CreateDeploymentGitRepoUnion{
+		CreateDeploymentGitRepoVercel: &vercel,
+		Type:                          typ,
 	}
 }
 
@@ -1435,6 +1895,15 @@ func (u *CreateDeploymentGitRepoUnion) UnmarshalJSON(data []byte) error {
 		u.CreateDeploymentGitRepoBitbucket = createDeploymentGitRepoBitbucket
 		u.Type = CreateDeploymentGitRepoUnionTypeBitbucket
 		return nil
+	case "vercel":
+		createDeploymentGitRepoVercel := new(CreateDeploymentGitRepoVercel)
+		if err := utils.UnmarshalJSON(data, &createDeploymentGitRepoVercel, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == vercel) type CreateDeploymentGitRepoVercel within CreateDeploymentGitRepoUnion: %w", string(data), err)
+		}
+
+		u.CreateDeploymentGitRepoVercel = createDeploymentGitRepoVercel
+		u.Type = CreateDeploymentGitRepoUnionTypeVercel
+		return nil
 	}
 
 	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateDeploymentGitRepoUnion", string(data))
@@ -1451,6 +1920,10 @@ func (u CreateDeploymentGitRepoUnion) MarshalJSON() ([]byte, error) {
 
 	if u.CreateDeploymentGitRepoBitbucket != nil {
 		return utils.MarshalJSON(u.CreateDeploymentGitRepoBitbucket, "", true)
+	}
+
+	if u.CreateDeploymentGitRepoVercel != nil {
+		return utils.MarshalJSON(u.CreateDeploymentGitRepoVercel, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type CreateDeploymentGitRepoUnion: all fields are null")
@@ -2322,6 +2795,174 @@ func (o *CreateDeploymentSeatBlock) GetGitProvider() *CreateDeploymentGitProvide
 	return o.GitProvider
 }
 
+// CreateDeploymentCommitMeta - Commit metadata from the git commit author
+type CreateDeploymentCommitMeta struct {
+	// Email from git commit author
+	Email *string `json:"email,omitempty"`
+	// Name from git commit author
+	Name *string `json:"name,omitempty"`
+	// Whether the commit was signed/verified (GitHub only, others return undefined)
+	IsVerified *bool `json:"isVerified,omitempty"`
+}
+
+func (o *CreateDeploymentCommitMeta) GetEmail() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Email
+}
+
+func (o *CreateDeploymentCommitMeta) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+func (o *CreateDeploymentCommitMeta) GetIsVerified() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IsVerified
+}
+
+type CreateDeploymentIDType string
+
+const (
+	CreateDeploymentIDTypeStr    CreateDeploymentIDType = "str"
+	CreateDeploymentIDTypeNumber CreateDeploymentIDType = "number"
+)
+
+type CreateDeploymentID struct {
+	Str    *string  `queryParam:"inline"`
+	Number *float64 `queryParam:"inline"`
+
+	Type CreateDeploymentIDType
+}
+
+func CreateCreateDeploymentIDStr(str string) CreateDeploymentID {
+	typ := CreateDeploymentIDTypeStr
+
+	return CreateDeploymentID{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func CreateCreateDeploymentIDNumber(number float64) CreateDeploymentID {
+	typ := CreateDeploymentIDTypeNumber
+
+	return CreateDeploymentID{
+		Number: &number,
+		Type:   typ,
+	}
+}
+
+func (u *CreateDeploymentID) UnmarshalJSON(data []byte) error {
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
+		u.Str = &str
+		u.Type = CreateDeploymentIDTypeStr
+		return nil
+	}
+
+	var number float64 = float64(0)
+	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
+		u.Number = &number
+		u.Type = CreateDeploymentIDTypeNumber
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateDeploymentID", string(data))
+}
+
+func (u CreateDeploymentID) MarshalJSON() ([]byte, error) {
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	if u.Number != nil {
+		return utils.MarshalJSON(u.Number, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type CreateDeploymentID: all fields are null")
+}
+
+// CreateDeploymentGitUser - Git provider user associated with the commit author email (only set if resolved)
+type CreateDeploymentGitUser struct {
+	ID CreateDeploymentID `json:"id"`
+	// Git provider username/login
+	Login string `json:"login"`
+}
+
+func (o *CreateDeploymentGitUser) GetID() CreateDeploymentID {
+	if o == nil {
+		return CreateDeploymentID{}
+	}
+	return o.ID
+}
+
+func (o *CreateDeploymentGitUser) GetLogin() string {
+	if o == nil {
+		return ""
+	}
+	return o.Login
+}
+
+// CreateDeploymentVercelUser - Vercel user linked to the git provider account (only set if resolved)
+type CreateDeploymentVercelUser struct {
+	// Vercel user ID
+	ID string `json:"id"`
+	// Vercel username
+	Username string `json:"username"`
+}
+
+func (o *CreateDeploymentVercelUser) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *CreateDeploymentVercelUser) GetUsername() string {
+	if o == nil {
+		return ""
+	}
+	return o.Username
+}
+
+// CreateDeploymentAttribution - Attribution metadata for the deployment, linking commit author to git and Vercel users. Only populated when the `enable-deployment-attribution` flag is enabled.
+type CreateDeploymentAttribution struct {
+	// Commit metadata from the git commit author
+	CommitMeta *CreateDeploymentCommitMeta `json:"commitMeta,omitempty"`
+	// Git provider user associated with the commit author email (only set if resolved)
+	GitUser *CreateDeploymentGitUser `json:"gitUser,omitempty"`
+	// Vercel user linked to the git provider account (only set if resolved)
+	VercelUser *CreateDeploymentVercelUser `json:"vercelUser,omitempty"`
+}
+
+func (o *CreateDeploymentAttribution) GetCommitMeta() *CreateDeploymentCommitMeta {
+	if o == nil {
+		return nil
+	}
+	return o.CommitMeta
+}
+
+func (o *CreateDeploymentAttribution) GetGitUser() *CreateDeploymentGitUser {
+	if o == nil {
+		return nil
+	}
+	return o.GitUser
+}
+
+func (o *CreateDeploymentAttribution) GetVercelUser() *CreateDeploymentVercelUser {
+	if o == nil {
+		return nil
+	}
+	return o.VercelUser
+}
+
 // CreateDeploymentResponseBody - The successfully created deployment
 type CreateDeploymentResponseBody struct {
 	AliasAssignedAt           optionalnullable.OptionalNullable[CreateDeploymentAliasAssignedAt] `json:"aliasAssignedAt,omitempty"`
@@ -2445,6 +3086,8 @@ type CreateDeploymentResponseBody struct {
 	Checks *CreateDeploymentChecks `json:"checks,omitempty"`
 	// NSNB Blocked metadata
 	SeatBlock *CreateDeploymentSeatBlock `json:"seatBlock,omitempty"`
+	// Attribution metadata for the deployment, linking commit author to git and Vercel users. Only populated when the `enable-deployment-attribution` flag is enabled.
+	Attribution *CreateDeploymentAttribution `json:"attribution,omitempty"`
 }
 
 func (o *CreateDeploymentResponseBody) GetAliasAssignedAt() optionalnullable.OptionalNullable[CreateDeploymentAliasAssignedAt] {
@@ -3058,6 +3701,16 @@ func (o *CreateDeploymentResponseBody) GetGitRepoBitbucket() *CreateDeploymentGi
 	return nil
 }
 
+func (o *CreateDeploymentResponseBody) GetGitRepoVercel() *CreateDeploymentGitRepoVercel {
+	if v := o.GetGitRepo(); v != nil {
+		if actualValue, ok := v.Get(); ok && actualValue != nil {
+			return actualValue.CreateDeploymentGitRepoVercel
+		}
+		return nil
+	}
+	return nil
+}
+
 func (o *CreateDeploymentResponseBody) GetFlags() *CreateDeploymentFlagsUnion {
 	if o == nil {
 		return nil
@@ -3091,6 +3744,13 @@ func (o *CreateDeploymentResponseBody) GetSeatBlock() *CreateDeploymentSeatBlock
 		return nil
 	}
 	return o.SeatBlock
+}
+
+func (o *CreateDeploymentResponseBody) GetAttribution() *CreateDeploymentAttribution {
+	if o == nil {
+		return nil
+	}
+	return o.Attribution
 }
 
 type CreateDeploymentResponse struct {

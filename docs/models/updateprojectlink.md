@@ -79,3 +79,16 @@ const value: models.UpdateProjectLink5 = {
 };
 ```
 
+### `models.UpdateProjectLink6`
+
+```typescript
+const value: models.UpdateProjectLink6 = {
+  org: "<value>",
+  repo: "<value>",
+  type: "vercel",
+  deployHooks: [],
+  gitCredentialId: "<id>",
+  productionBranch: "<value>",
+};
+```
+

@@ -1033,6 +1033,7 @@ export type OneHundredAndSixtySix = {
 };
 
 export const GitProvider = {
+  Vercel: "vercel",
   Github: "github",
   GithubLimited: "github-limited",
   GithubCustomHost: "github-custom-host",
@@ -1053,6 +1054,7 @@ export type OneHundredAndSixtyFive = {
 };
 
 export const UserEventPayloadGitProvider = {
+  Vercel: "vercel",
   Github: "github",
   GithubLimited: "github-limited",
   GithubCustomHost: "github-custom-host",
@@ -1070,6 +1072,7 @@ export type UserEventPayload164Previous = {
 };
 
 export const PayloadGitProvider = {
+  Vercel: "vercel",
   Github: "github",
   GithubLimited: "github-limited",
   GithubCustomHost: "github-custom-host",

@@ -5,7 +5,7 @@ The type of environment (production, preview, or development)
 ## Example Usage
 
 ```typescript
-import { GetDeploymentCustomEnvironmentType } from "@vercel/sdk/models/responsebodyorigin.js";
+import { GetDeploymentCustomEnvironmentType } from "@vercel/sdk/models/responsebodyproject.js";
 
 let value: GetDeploymentCustomEnvironmentType = "preview";
 ```

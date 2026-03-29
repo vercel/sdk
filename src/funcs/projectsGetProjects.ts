@@ -13,7 +13,7 @@ import { pathToFunc } from "../lib/url.js";
 import {
   GetProjectsRequest,
   GetProjectsRequest$outboundSchema,
-} from "../models/getprojectsblockhistoryprojectsresponse200applicationjsonroute.js";
+} from "../models/getprojectsblockhistoryprojects4.js";
 import {
   GetProjectsResponseBody,
   GetProjectsResponseBody$inboundSchema,

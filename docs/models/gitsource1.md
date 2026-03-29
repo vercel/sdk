@@ -3,13 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { GitSource1 } from "@vercel/sdk/models/createdeploymentop.js";
+import { GitSource1 } from "@vercel/sdk/models/createdeploymentvaluedeployments2.js";
 
 let value: GitSource1 = {
-  ref: "main",
-  repoId: 123456789,
+  type: "vercel",
   sha: "a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0",
-  type: "github",
 };
 ```
 
@@ -17,7 +15,5 @@ let value: GitSource1 = {
 
 | Field                                              | Type                                               | Required                                           | Description                                        | Example                                            |
 | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
-| `ref`                                              | *string*                                           | :heavy_check_mark:                                 | N/A                                                | main                                               |
-| `repoId`                                           | *models.RepoId*                                    | :heavy_check_mark:                                 | N/A                                                | 123456789                                          |
-| `sha`                                              | *string*                                           | :heavy_minus_sign:                                 | N/A                                                | a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0           |
 | `type`                                             | [models.GitSourceType](../models/gitsourcetype.md) | :heavy_check_mark:                                 | N/A                                                |                                                    |
+| `sha`                                              | *string*                                           | :heavy_check_mark:                                 | N/A                                                | a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0           |

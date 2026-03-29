@@ -5,7 +5,7 @@ Allows to skip framework detection so the API would not fail to ask for confirma
 ## Example Usage
 
 ```typescript
-import { SkipAutoDetectionConfirmation } from "@vercel/sdk/models/createdeploymentop.js";
+import { SkipAutoDetectionConfirmation } from "@vercel/sdk/models/createdeploymentvaluedeployments2.js";
 
 let value: SkipAutoDetectionConfirmation = "1";
 ```

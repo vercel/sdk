@@ -156,6 +156,7 @@ export const CreateProjectProjectsType = {
   GithubLimited: "github-limited",
   Gitlab: "gitlab",
   Bitbucket: "bitbucket",
+  Vercel: "vercel",
 } as const;
 /**
  * The Git Provider of the repository
@@ -957,6 +958,26 @@ export type LatestDeployments = {
   withCache?: boolean | undefined;
 };
 
+export type CreateProjectLinkProjectsResponse200DeployHooks = {
+  createdAt?: number | undefined;
+  id: string;
+  name: string;
+  ref: string;
+  url: string;
+};
+
+export type Link6 = {
+  org: string;
+  repo: string;
+  type: "vercel";
+  createdAt?: number | undefined;
+  deployHooks: Array<CreateProjectLinkProjectsResponse200DeployHooks>;
+  gitCredentialId: string;
+  updatedAt?: number | undefined;
+  sourceless?: boolean | undefined;
+  productionBranch: string;
+};
+
 export type CreateProjectLinkProjectsResponseDeployHooks = {
   createdAt?: number | undefined;
   id: string;
@@ -1083,7 +1104,7 @@ export type Link1 = {
   productionBranch: string;
 };
 
-export type Link = Link1 | Link2 | Link3 | Link4 | Link5;
+export type Link = Link1 | Link2 | Link3 | Link4 | Link5 | Link6;
 
 export type CreateProjectMicrofrontends3 = {
   updatedAt: number;
@@ -1656,7 +1677,6 @@ export type CreateProjectPermissions = {
   skewProtection?: Array<ACLAction> | undefined;
   analytics?: Array<ACLAction> | undefined;
   trustedIps?: Array<ACLAction> | undefined;
-  trustedOidcProviders?: Array<ACLAction> | undefined;
   v0Chat?: Array<ACLAction> | undefined;
   webAnalytics?: Array<ACLAction> | undefined;
 };
@@ -1762,21 +1782,6 @@ export type TrustedIps1 = {
 };
 
 export type CreateProjectTrustedIps = TrustedIps1 | TrustedIps2;
-
-export type CreateProjectProjects = {
-  label?: string | undefined;
-  environments: Array<string>;
-};
-
-export type CreateProjectProviders = {
-  label?: string | undefined;
-  claims: { [k: string]: Array<string> };
-};
-
-export type CreateProjectTrustedOidcProviders = {
-  projects: { [k: string]: CreateProjectProjects };
-  providers: { [k: string]: CreateProjectProviders };
-};
 
 export type CreateProjectGitComments = {
   /**
@@ -2294,7 +2299,7 @@ export type CreateProjectResponseBody = {
   ipBuckets?: Array<CreateProjectIpBuckets> | undefined;
   jobs?: Jobs | undefined;
   latestDeployments?: Array<LatestDeployments> | undefined;
-  link?: Link1 | Link2 | Link3 | Link4 | Link5 | undefined;
+  link?: Link1 | Link2 | Link3 | Link4 | Link5 | Link6 | undefined;
   microfrontends?:
     | CreateProjectMicrofrontends1
     | CreateProjectMicrofrontends2
@@ -2345,7 +2350,6 @@ export type CreateProjectResponseBody = {
     | undefined;
   hasActiveBranches?: boolean | undefined;
   trustedIps?: TrustedIps1 | TrustedIps2 | null | undefined;
-  trustedOidcProviders?: CreateProjectTrustedOidcProviders | null | undefined;
   gitComments?: CreateProjectGitComments | undefined;
   gitProviderOptions?: GitProviderOptions | undefined;
   paused?: boolean | undefined;
@@ -5047,6 +5051,132 @@ export function latestDeploymentsFromJSON(
 }
 
 /** @internal */
+export const CreateProjectLinkProjectsResponse200DeployHooks$inboundSchema:
+  z.ZodType<
+    CreateProjectLinkProjectsResponse200DeployHooks,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    createdAt: types.optional(types.number()),
+    id: types.string(),
+    name: types.string(),
+    ref: types.string(),
+    url: types.string(),
+  });
+/** @internal */
+export type CreateProjectLinkProjectsResponse200DeployHooks$Outbound = {
+  createdAt?: number | undefined;
+  id: string;
+  name: string;
+  ref: string;
+  url: string;
+};
+
+/** @internal */
+export const CreateProjectLinkProjectsResponse200DeployHooks$outboundSchema:
+  z.ZodType<
+    CreateProjectLinkProjectsResponse200DeployHooks$Outbound,
+    z.ZodTypeDef,
+    CreateProjectLinkProjectsResponse200DeployHooks
+  > = z.object({
+    createdAt: z.number().optional(),
+    id: z.string(),
+    name: z.string(),
+    ref: z.string(),
+    url: z.string(),
+  });
+
+export function createProjectLinkProjectsResponse200DeployHooksToJSON(
+  createProjectLinkProjectsResponse200DeployHooks:
+    CreateProjectLinkProjectsResponse200DeployHooks,
+): string {
+  return JSON.stringify(
+    CreateProjectLinkProjectsResponse200DeployHooks$outboundSchema.parse(
+      createProjectLinkProjectsResponse200DeployHooks,
+    ),
+  );
+}
+export function createProjectLinkProjectsResponse200DeployHooksFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateProjectLinkProjectsResponse200DeployHooks,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateProjectLinkProjectsResponse200DeployHooks$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CreateProjectLinkProjectsResponse200DeployHooks' from JSON`,
+  );
+}
+
+/** @internal */
+export const Link6$inboundSchema: z.ZodType<Link6, z.ZodTypeDef, unknown> = z
+  .object({
+    org: types.string(),
+    repo: types.string(),
+    type: types.literal("vercel"),
+    createdAt: types.optional(types.number()),
+    deployHooks: z.array(
+      z.lazy(() =>
+        CreateProjectLinkProjectsResponse200DeployHooks$inboundSchema
+      ),
+    ),
+    gitCredentialId: types.string(),
+    updatedAt: types.optional(types.number()),
+    sourceless: types.optional(types.boolean()),
+    productionBranch: types.string(),
+  });
+/** @internal */
+export type Link6$Outbound = {
+  org: string;
+  repo: string;
+  type: "vercel";
+  createdAt?: number | undefined;
+  deployHooks: Array<CreateProjectLinkProjectsResponse200DeployHooks$Outbound>;
+  gitCredentialId: string;
+  updatedAt?: number | undefined;
+  sourceless?: boolean | undefined;
+  productionBranch: string;
+};
+
+/** @internal */
+export const Link6$outboundSchema: z.ZodType<
+  Link6$Outbound,
+  z.ZodTypeDef,
+  Link6
+> = z.object({
+  org: z.string(),
+  repo: z.string(),
+  type: z.literal("vercel"),
+  createdAt: z.number().optional(),
+  deployHooks: z.array(
+    z.lazy(() =>
+      CreateProjectLinkProjectsResponse200DeployHooks$outboundSchema
+    ),
+  ),
+  gitCredentialId: z.string(),
+  updatedAt: z.number().optional(),
+  sourceless: z.boolean().optional(),
+  productionBranch: z.string(),
+});
+
+export function link6ToJSON(link6: Link6): string {
+  return JSON.stringify(Link6$outboundSchema.parse(link6));
+}
+export function link6FromJSON(
+  jsonString: string,
+): SafeParseResult<Link6, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Link6$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Link6' from JSON`,
+  );
+}
+
+/** @internal */
 export const CreateProjectLinkProjectsResponseDeployHooks$inboundSchema:
   z.ZodType<
     CreateProjectLinkProjectsResponseDeployHooks,
@@ -5653,6 +5783,7 @@ export const Link$inboundSchema: z.ZodType<Link, z.ZodTypeDef, unknown> = z
     z.lazy(() => Link3$inboundSchema),
     z.lazy(() => Link4$inboundSchema),
     z.lazy(() => Link5$inboundSchema),
+    z.lazy(() => Link6$inboundSchema),
   ]);
 /** @internal */
 export type Link$Outbound =
@@ -5660,7 +5791,8 @@ export type Link$Outbound =
   | Link2$Outbound
   | Link3$Outbound
   | Link4$Outbound
-  | Link5$Outbound;
+  | Link5$Outbound
+  | Link6$Outbound;
 
 /** @internal */
 export const Link$outboundSchema: z.ZodType<Link$Outbound, z.ZodTypeDef, Link> =
@@ -5670,6 +5802,7 @@ export const Link$outboundSchema: z.ZodType<Link$Outbound, z.ZodTypeDef, Link> =
     z.lazy(() => Link3$outboundSchema),
     z.lazy(() => Link4$outboundSchema),
     z.lazy(() => Link5$outboundSchema),
+    z.lazy(() => Link6$outboundSchema),
   ]);
 
 export function linkToJSON(link: Link): string {
@@ -7117,7 +7250,6 @@ export const CreateProjectPermissions$inboundSchema: z.ZodType<
   skewProtection: types.optional(z.array(ACLAction$inboundSchema)),
   analytics: types.optional(z.array(ACLAction$inboundSchema)),
   trustedIps: types.optional(z.array(ACLAction$inboundSchema)),
-  trustedOidcProviders: types.optional(z.array(ACLAction$inboundSchema)),
   v0Chat: types.optional(z.array(ACLAction$inboundSchema)),
   webAnalytics: types.optional(z.array(ACLAction$inboundSchema)),
 }).transform((v) => {
@@ -7360,7 +7492,6 @@ export type CreateProjectPermissions$Outbound = {
   skewProtection?: Array<string> | undefined;
   analytics?: Array<string> | undefined;
   trustedIps?: Array<string> | undefined;
-  trustedOidcProviders?: Array<string> | undefined;
   v0Chat?: Array<string> | undefined;
   webAnalytics?: Array<string> | undefined;
 };
@@ -7610,7 +7741,6 @@ export const CreateProjectPermissions$outboundSchema: z.ZodType<
   skewProtection: z.array(ACLAction$outboundSchema).optional(),
   analytics: z.array(ACLAction$outboundSchema).optional(),
   trustedIps: z.array(ACLAction$outboundSchema).optional(),
-  trustedOidcProviders: z.array(ACLAction$outboundSchema).optional(),
   v0Chat: z.array(ACLAction$outboundSchema).optional(),
   webAnalytics: z.array(ACLAction$outboundSchema).optional(),
 }).transform((v) => {
@@ -8068,134 +8198,6 @@ export function createProjectTrustedIpsFromJSON(
     jsonString,
     (x) => CreateProjectTrustedIps$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'CreateProjectTrustedIps' from JSON`,
-  );
-}
-
-/** @internal */
-export const CreateProjectProjects$inboundSchema: z.ZodType<
-  CreateProjectProjects,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  label: types.optional(types.string()),
-  environments: z.array(types.string()),
-});
-/** @internal */
-export type CreateProjectProjects$Outbound = {
-  label?: string | undefined;
-  environments: Array<string>;
-};
-
-/** @internal */
-export const CreateProjectProjects$outboundSchema: z.ZodType<
-  CreateProjectProjects$Outbound,
-  z.ZodTypeDef,
-  CreateProjectProjects
-> = z.object({
-  label: z.string().optional(),
-  environments: z.array(z.string()),
-});
-
-export function createProjectProjectsToJSON(
-  createProjectProjects: CreateProjectProjects,
-): string {
-  return JSON.stringify(
-    CreateProjectProjects$outboundSchema.parse(createProjectProjects),
-  );
-}
-export function createProjectProjectsFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateProjectProjects, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateProjectProjects$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateProjectProjects' from JSON`,
-  );
-}
-
-/** @internal */
-export const CreateProjectProviders$inboundSchema: z.ZodType<
-  CreateProjectProviders,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  label: types.optional(types.string()),
-  claims: z.record(z.array(types.string())),
-});
-/** @internal */
-export type CreateProjectProviders$Outbound = {
-  label?: string | undefined;
-  claims: { [k: string]: Array<string> };
-};
-
-/** @internal */
-export const CreateProjectProviders$outboundSchema: z.ZodType<
-  CreateProjectProviders$Outbound,
-  z.ZodTypeDef,
-  CreateProjectProviders
-> = z.object({
-  label: z.string().optional(),
-  claims: z.record(z.array(z.string())),
-});
-
-export function createProjectProvidersToJSON(
-  createProjectProviders: CreateProjectProviders,
-): string {
-  return JSON.stringify(
-    CreateProjectProviders$outboundSchema.parse(createProjectProviders),
-  );
-}
-export function createProjectProvidersFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateProjectProviders, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateProjectProviders$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateProjectProviders' from JSON`,
-  );
-}
-
-/** @internal */
-export const CreateProjectTrustedOidcProviders$inboundSchema: z.ZodType<
-  CreateProjectTrustedOidcProviders,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  projects: z.record(z.lazy(() => CreateProjectProjects$inboundSchema)),
-  providers: z.record(z.lazy(() => CreateProjectProviders$inboundSchema)),
-});
-/** @internal */
-export type CreateProjectTrustedOidcProviders$Outbound = {
-  projects: { [k: string]: CreateProjectProjects$Outbound };
-  providers: { [k: string]: CreateProjectProviders$Outbound };
-};
-
-/** @internal */
-export const CreateProjectTrustedOidcProviders$outboundSchema: z.ZodType<
-  CreateProjectTrustedOidcProviders$Outbound,
-  z.ZodTypeDef,
-  CreateProjectTrustedOidcProviders
-> = z.object({
-  projects: z.record(z.lazy(() => CreateProjectProjects$outboundSchema)),
-  providers: z.record(z.lazy(() => CreateProjectProviders$outboundSchema)),
-});
-
-export function createProjectTrustedOidcProvidersToJSON(
-  createProjectTrustedOidcProviders: CreateProjectTrustedOidcProviders,
-): string {
-  return JSON.stringify(
-    CreateProjectTrustedOidcProviders$outboundSchema.parse(
-      createProjectTrustedOidcProviders,
-    ),
-  );
-}
-export function createProjectTrustedOidcProvidersFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateProjectTrustedOidcProviders, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateProjectTrustedOidcProviders$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateProjectTrustedOidcProviders' from JSON`,
   );
 }
 
@@ -10890,6 +10892,7 @@ export const CreateProjectResponseBody$inboundSchema: z.ZodType<
       z.lazy(() => Link3$inboundSchema),
       z.lazy(() => Link4$inboundSchema),
       z.lazy(() => Link5$inboundSchema),
+      z.lazy(() => Link6$inboundSchema),
     ]),
   ),
   microfrontends: types.optional(
@@ -10964,9 +10967,6 @@ export const CreateProjectResponseBody$inboundSchema: z.ZodType<
       z.lazy(() => TrustedIps1$inboundSchema),
       z.lazy(() => TrustedIps2$inboundSchema),
     ]),
-  ).optional(),
-  trustedOidcProviders: z.nullable(
-    z.lazy(() => CreateProjectTrustedOidcProviders$inboundSchema),
   ).optional(),
   gitComments: types.optional(
     z.lazy(() => CreateProjectGitComments$inboundSchema),
@@ -11045,6 +11045,7 @@ export type CreateProjectResponseBody$Outbound = {
     | Link3$Outbound
     | Link4$Outbound
     | Link5$Outbound
+    | Link6$Outbound
     | undefined;
   microfrontends?:
     | CreateProjectMicrofrontends1$Outbound
@@ -11096,10 +11097,6 @@ export type CreateProjectResponseBody$Outbound = {
   } | undefined;
   hasActiveBranches?: boolean | undefined;
   trustedIps?: TrustedIps1$Outbound | TrustedIps2$Outbound | null | undefined;
-  trustedOidcProviders?:
-    | CreateProjectTrustedOidcProviders$Outbound
-    | null
-    | undefined;
   gitComments?: CreateProjectGitComments$Outbound | undefined;
   gitProviderOptions?: GitProviderOptions$Outbound | undefined;
   paused?: boolean | undefined;
@@ -11170,6 +11167,7 @@ export const CreateProjectResponseBody$outboundSchema: z.ZodType<
     z.lazy(() => Link3$outboundSchema),
     z.lazy(() => Link4$outboundSchema),
     z.lazy(() => Link5$outboundSchema),
+    z.lazy(() => Link6$outboundSchema),
   ]).optional(),
   microfrontends: smartUnion([
     z.lazy(() => CreateProjectMicrofrontends1$outboundSchema),
@@ -11237,9 +11235,6 @@ export const CreateProjectResponseBody$outboundSchema: z.ZodType<
       z.lazy(() => TrustedIps1$outboundSchema),
       z.lazy(() => TrustedIps2$outboundSchema),
     ]),
-  ).optional(),
-  trustedOidcProviders: z.nullable(
-    z.lazy(() => CreateProjectTrustedOidcProviders$outboundSchema),
   ).optional(),
   gitComments: z.lazy(() => CreateProjectGitComments$outboundSchema).optional(),
   gitProviderOptions: z.lazy(() => GitProviderOptions$outboundSchema)

@@ -161,3 +161,22 @@ const value: models.Job7 = {
 };
 ```
 
+### `models.Job8`
+
+```typescript
+const value: models.Job8 = {
+  type: "vercel-push",
+  ref: "<value>",
+  repo: "<value>",
+  sha: "<value>",
+  headInfo: {
+    org: "<value>",
+    ref: "<value>",
+    repo: "<value>",
+    sha: "<value>",
+  },
+  org: "<value>",
+  provider: "vercel",
+};
+```
+

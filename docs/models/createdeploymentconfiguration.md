@@ -5,7 +5,7 @@ Build resource configuration snapshot for this deployment.
 ## Example Usage
 
 ```typescript
-import { CreateDeploymentConfiguration } from "@vercel/sdk/models/createdeploymentop.js";
+import { CreateDeploymentConfiguration } from "@vercel/sdk/models/createdeploymentresponsebody.js";
 
 let value: CreateDeploymentConfiguration = "SKIP_NAMESPACE_QUEUE";
 ```

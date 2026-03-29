@@ -1,15 +1,17 @@
 # GetDeploymentGitSourceDeployments11
 
+Allows custom git sources (local folder mounted to the container) in test mode
+
 ## Example Usage
 
 ```typescript
-import { GetDeploymentGitSourceDeployments11 } from "@vercel/sdk/models/responsebodyorigin.js";
+import { GetDeploymentGitSourceDeployments11 } from "@vercel/sdk/models/responsebodyproject.js";
 
 let value: GetDeploymentGitSourceDeployments11 = {
-  type: "github",
+  type: "custom",
   ref: "<value>",
   sha: "<value>",
-  repoId: 3996.33,
+  gitUrl: "https://unpleasant-kit.org/",
 };
 ```
 
@@ -20,6 +22,4 @@ let value: GetDeploymentGitSourceDeployments11 = {
 | `type`                                                                                                                                                                               | [models.GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody211Type](../models/getdeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody211type.md) | :heavy_check_mark:                                                                                                                                                                   | N/A                                                                                                                                                                                  |
 | `ref`                                                                                                                                                                                | *string*                                                                                                                                                                             | :heavy_check_mark:                                                                                                                                                                   | N/A                                                                                                                                                                                  |
 | `sha`                                                                                                                                                                                | *string*                                                                                                                                                                             | :heavy_check_mark:                                                                                                                                                                   | N/A                                                                                                                                                                                  |
-| `repoId`                                                                                                                                                                             | *number*                                                                                                                                                                             | :heavy_check_mark:                                                                                                                                                                   | N/A                                                                                                                                                                                  |
-| `org`                                                                                                                                                                                | *string*                                                                                                                                                                             | :heavy_minus_sign:                                                                                                                                                                   | N/A                                                                                                                                                                                  |
-| `repo`                                                                                                                                                                               | *string*                                                                                                                                                                             | :heavy_minus_sign:                                                                                                                                                                   | N/A                                                                                                                                                                                  |
+| `gitUrl`                                                                                                                                                                             | *string*                                                                                                                                                                             | :heavy_check_mark:                                                                                                                                                                   | N/A                                                                                                                                                                                  |

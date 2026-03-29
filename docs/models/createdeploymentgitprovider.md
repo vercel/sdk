@@ -5,7 +5,7 @@ The git provider type associated with gitUserId.
 ## Example Usage
 
 ```typescript
-import { CreateDeploymentGitProvider } from "@vercel/sdk/models/createdeploymentop.js";
+import { CreateDeploymentGitProvider } from "@vercel/sdk/models/createdeploymentresponsebody.js";
 
 let value: CreateDeploymentGitProvider = "github";
 ```

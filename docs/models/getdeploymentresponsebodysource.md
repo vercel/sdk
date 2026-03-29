@@ -5,7 +5,7 @@ Where was the deployment created from
 ## Example Usage
 
 ```typescript
-import { GetDeploymentResponseBodySource } from "@vercel/sdk/models/responsebodyorigin.js";
+import { GetDeploymentResponseBodySource } from "@vercel/sdk/models/responsebodyproject.js";
 
 let value: GetDeploymentResponseBodySource = "cli";
 ```

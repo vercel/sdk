@@ -11,7 +11,7 @@ let value: OneHundredAndSixtyFour = {
   projectId: "<id>",
   projectName: "<value>",
   next: {
-    gitProvider: "github-custom-host",
+    gitProvider: "github-limited",
     gitRepoId: "<id>",
     gitRepositoryName: "<value>",
   },

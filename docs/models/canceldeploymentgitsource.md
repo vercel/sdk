@@ -71,10 +71,10 @@ const value: models.CancelDeploymentGitSource7 = {
 };
 ```
 
-### `models.GitSource8`
+### `models.CancelDeploymentGitSource8`
 
 ```typescript
-const value: models.GitSource8 = {
+const value: models.CancelDeploymentGitSource8 = {
   type: "bitbucket",
   repoUuid: "<id>",
 };
@@ -94,10 +94,8 @@ const value: models.GitSource9 = {
 
 ```typescript
 const value: models.GitSource10 = {
-  type: "custom",
-  ref: "<value>",
+  type: "vercel",
   sha: "<value>",
-  gitUrl: "https://zany-completion.org/",
 };
 ```
 
@@ -105,10 +103,10 @@ const value: models.GitSource10 = {
 
 ```typescript
 const value: models.GitSource11 = {
-  type: "github",
+  type: "custom",
   ref: "<value>",
   sha: "<value>",
-  repoId: 1177.12,
+  gitUrl: "https://pleasing-rim.org/",
 };
 ```
 
@@ -116,11 +114,10 @@ const value: models.GitSource11 = {
 
 ```typescript
 const value: models.GitSource12 = {
-  type: "github-custom-host",
-  host: "hefty-annual.net",
+  type: "github",
   ref: "<value>",
   sha: "<value>",
-  repoId: 7180.81,
+  repoId: 3642.37,
 };
 ```
 
@@ -128,10 +125,11 @@ const value: models.GitSource12 = {
 
 ```typescript
 const value: models.GitSource13 = {
-  type: "github-limited",
+  type: "github-custom-host",
+  host: "idolized-derby.org",
   ref: "<value>",
   sha: "<value>",
-  repoId: 3858.32,
+  repoId: 3443.52,
 };
 ```
 
@@ -139,10 +137,10 @@ const value: models.GitSource13 = {
 
 ```typescript
 const value: models.GitSource14 = {
-  type: "gitlab",
+  type: "github-limited",
   ref: "<value>",
   sha: "<value>",
-  projectId: 2422.11,
+  repoId: 2422.11,
 };
 ```
 
@@ -150,11 +148,34 @@ const value: models.GitSource14 = {
 
 ```typescript
 const value: models.GitSource15 = {
+  type: "gitlab",
+  ref: "<value>",
+  sha: "<value>",
+  projectId: 4925.13,
+};
+```
+
+### `models.GitSource16`
+
+```typescript
+const value: models.GitSource16 = {
   type: "bitbucket",
   ref: "<value>",
   sha: "<value>",
   workspaceUuid: "<id>",
   repoUuid: "<id>",
+};
+```
+
+### `models.GitSource17`
+
+```typescript
+const value: models.GitSource17 = {
+  type: "vercel",
+  ref: "<value>",
+  sha: "<value>",
+  org: "<value>",
+  repo: "<value>",
 };
 ```
 

@@ -53,3 +53,18 @@ const value: models.GetDeploymentGitRepo3 = {
 };
 ```
 
+### `models.GetDeploymentGitRepo4`
+
+```typescript
+const value: models.GetDeploymentGitRepo4 = {
+  org: "<value>",
+  repo: "<value>",
+  type: "vercel",
+  path: "/etc/namedb",
+  defaultBranch: "<value>",
+  name: "<value>",
+  private: false,
+  ownerType: "user",
+};
+```
+

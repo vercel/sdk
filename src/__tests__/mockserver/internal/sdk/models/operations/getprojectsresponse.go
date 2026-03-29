@@ -931,6 +931,169 @@ func (o *GetProjectsLatestDeployment) GetWithCache() *bool {
 	return o.WithCache
 }
 
+type GetProjectsTypeVercel string
+
+const (
+	GetProjectsTypeVercelVercel GetProjectsTypeVercel = "vercel"
+)
+
+func (e GetProjectsTypeVercel) ToPointer() *GetProjectsTypeVercel {
+	return &e
+}
+func (e *GetProjectsTypeVercel) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "vercel":
+		*e = GetProjectsTypeVercel(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetProjectsTypeVercel: %v", v)
+	}
+}
+
+type GetProjectsDeployHook6 struct {
+	CreatedAt *float64 `json:"createdAt,omitempty"`
+	ID        string   `json:"id"`
+	Name      string   `json:"name"`
+	Ref       string   `json:"ref"`
+	URL       string   `json:"url"`
+}
+
+func (g GetProjectsDeployHook6) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetProjectsDeployHook6) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"id", "name", "ref", "url"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetProjectsDeployHook6) GetCreatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedAt
+}
+
+func (o *GetProjectsDeployHook6) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *GetProjectsDeployHook6) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *GetProjectsDeployHook6) GetRef() string {
+	if o == nil {
+		return ""
+	}
+	return o.Ref
+}
+
+func (o *GetProjectsDeployHook6) GetURL() string {
+	if o == nil {
+		return ""
+	}
+	return o.URL
+}
+
+type GetProjectsLinkVercel struct {
+	Org              string                   `json:"org"`
+	Repo             string                   `json:"repo"`
+	Type             GetProjectsTypeVercel    `json:"type"`
+	CreatedAt        *float64                 `json:"createdAt,omitempty"`
+	DeployHooks      []GetProjectsDeployHook6 `json:"deployHooks"`
+	GitCredentialID  string                   `json:"gitCredentialId"`
+	UpdatedAt        *float64                 `json:"updatedAt,omitempty"`
+	Sourceless       *bool                    `json:"sourceless,omitempty"`
+	ProductionBranch string                   `json:"productionBranch"`
+}
+
+func (g GetProjectsLinkVercel) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetProjectsLinkVercel) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"org", "repo", "type", "deployHooks", "gitCredentialId", "productionBranch"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetProjectsLinkVercel) GetOrg() string {
+	if o == nil {
+		return ""
+	}
+	return o.Org
+}
+
+func (o *GetProjectsLinkVercel) GetRepo() string {
+	if o == nil {
+		return ""
+	}
+	return o.Repo
+}
+
+func (o *GetProjectsLinkVercel) GetType() GetProjectsTypeVercel {
+	if o == nil {
+		return GetProjectsTypeVercel("")
+	}
+	return o.Type
+}
+
+func (o *GetProjectsLinkVercel) GetCreatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedAt
+}
+
+func (o *GetProjectsLinkVercel) GetDeployHooks() []GetProjectsDeployHook6 {
+	if o == nil {
+		return []GetProjectsDeployHook6{}
+	}
+	return o.DeployHooks
+}
+
+func (o *GetProjectsLinkVercel) GetGitCredentialID() string {
+	if o == nil {
+		return ""
+	}
+	return o.GitCredentialID
+}
+
+func (o *GetProjectsLinkVercel) GetUpdatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.UpdatedAt
+}
+
+func (o *GetProjectsLinkVercel) GetSourceless() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Sourceless
+}
+
+func (o *GetProjectsLinkVercel) GetProductionBranch() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProductionBranch
+}
+
 type GetProjectsTypeBitbucket string
 
 const (
@@ -1870,6 +2033,7 @@ const (
 	GetProjectsLinkUnionTypeGithubCustomHost GetProjectsLinkUnionType = "github-custom-host"
 	GetProjectsLinkUnionTypeGitlab           GetProjectsLinkUnionType = "gitlab"
 	GetProjectsLinkUnionTypeBitbucket        GetProjectsLinkUnionType = "bitbucket"
+	GetProjectsLinkUnionTypeVercel           GetProjectsLinkUnionType = "vercel"
 )
 
 type GetProjectsLinkUnion struct {
@@ -1878,6 +2042,7 @@ type GetProjectsLinkUnion struct {
 	GetProjectsLinkGithubCustomHost *GetProjectsLinkGithubCustomHost `queryParam:"inline"`
 	GetProjectsLinkGitlab           *GetProjectsLinkGitlab           `queryParam:"inline"`
 	GetProjectsLinkBitbucket        *GetProjectsLinkBitbucket        `queryParam:"inline"`
+	GetProjectsLinkVercel           *GetProjectsLinkVercel           `queryParam:"inline"`
 
 	Type GetProjectsLinkUnionType
 }
@@ -1942,6 +2107,18 @@ func CreateGetProjectsLinkUnionBitbucket(bitbucket GetProjectsLinkBitbucket) Get
 	}
 }
 
+func CreateGetProjectsLinkUnionVercel(vercel GetProjectsLinkVercel) GetProjectsLinkUnion {
+	typ := GetProjectsLinkUnionTypeVercel
+
+	typStr := GetProjectsTypeVercel(typ)
+	vercel.Type = typStr
+
+	return GetProjectsLinkUnion{
+		GetProjectsLinkVercel: &vercel,
+		Type:                  typ,
+	}
+}
+
 func (u *GetProjectsLinkUnion) UnmarshalJSON(data []byte) error {
 
 	type discriminator struct {
@@ -1999,6 +2176,15 @@ func (u *GetProjectsLinkUnion) UnmarshalJSON(data []byte) error {
 		u.GetProjectsLinkBitbucket = getProjectsLinkBitbucket
 		u.Type = GetProjectsLinkUnionTypeBitbucket
 		return nil
+	case "vercel":
+		getProjectsLinkVercel := new(GetProjectsLinkVercel)
+		if err := utils.UnmarshalJSON(data, &getProjectsLinkVercel, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == vercel) type GetProjectsLinkVercel within GetProjectsLinkUnion: %w", string(data), err)
+		}
+
+		u.GetProjectsLinkVercel = getProjectsLinkVercel
+		u.Type = GetProjectsLinkUnionTypeVercel
+		return nil
 	}
 
 	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetProjectsLinkUnion", string(data))
@@ -2023,6 +2209,10 @@ func (u GetProjectsLinkUnion) MarshalJSON() ([]byte, error) {
 
 	if u.GetProjectsLinkBitbucket != nil {
 		return utils.MarshalJSON(u.GetProjectsLinkBitbucket, "", true)
+	}
+
+	if u.GetProjectsLinkVercel != nil {
+		return utils.MarshalJSON(u.GetProjectsLinkVercel, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type GetProjectsLinkUnion: all fields are null")
@@ -2907,96 +3097,6 @@ func (o *GetProjectsTargets) GetWithCache() *bool {
 		return nil
 	}
 	return o.WithCache
-}
-
-type GetProjectsProjects struct {
-	Label        *string  `json:"label,omitempty"`
-	Environments []string `json:"environments"`
-}
-
-func (g GetProjectsProjects) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(g, "", false)
-}
-
-func (g *GetProjectsProjects) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"environments"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *GetProjectsProjects) GetLabel() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Label
-}
-
-func (o *GetProjectsProjects) GetEnvironments() []string {
-	if o == nil {
-		return []string{}
-	}
-	return o.Environments
-}
-
-type GetProjectsProviders struct {
-	Label  *string             `json:"label,omitempty"`
-	Claims map[string][]string `json:"claims"`
-}
-
-func (g GetProjectsProviders) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(g, "", false)
-}
-
-func (g *GetProjectsProviders) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"claims"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *GetProjectsProviders) GetLabel() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Label
-}
-
-func (o *GetProjectsProviders) GetClaims() map[string][]string {
-	if o == nil {
-		return map[string][]string{}
-	}
-	return o.Claims
-}
-
-type GetProjectsTrustedOidcProviders struct {
-	Projects  map[string]GetProjectsProjects  `json:"projects"`
-	Providers map[string]GetProjectsProviders `json:"providers"`
-}
-
-func (g GetProjectsTrustedOidcProviders) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(g, "", false)
-}
-
-func (g *GetProjectsTrustedOidcProviders) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"projects", "providers"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *GetProjectsTrustedOidcProviders) GetProjects() map[string]GetProjectsProjects {
-	if o == nil {
-		return map[string]GetProjectsProjects{}
-	}
-	return o.Projects
-}
-
-func (o *GetProjectsTrustedOidcProviders) GetProviders() map[string]GetProjectsProviders {
-	if o == nil {
-		return map[string]GetProjectsProviders{}
-	}
-	return o.Providers
 }
 
 type GetProjectsGitComments struct {
@@ -6889,32 +6989,31 @@ type GetProjectsResponseBody1 struct {
 	PublicSource         optionalnullable.OptionalNullable[bool]                          `json:"publicSource,omitempty"`
 	ResourceConfig       GetProjectsResourceConfig                                        `json:"resourceConfig"`
 	// Project-level rolling release configuration that defines how deployments should be gradually rolled out
-	RollingRelease                       optionalnullable.OptionalNullable[GetProjectsRollingRelease]       `json:"rollingRelease,omitempty"`
-	RootDirectory                        optionalnullable.OptionalNullable[string]                          `json:"rootDirectory,omitempty"`
-	ServerlessFunctionRegion             string                                                             `json:"serverlessFunctionRegion"`
-	ServerlessFunctionZeroConfigFailover *bool                                                              `json:"serverlessFunctionZeroConfigFailover,omitempty"`
-	SpeedInsights                        *GetProjectsSpeedInsights                                          `json:"speedInsights,omitempty"`
-	SkipGitConnectDuringLink             *bool                                                              `json:"skipGitConnectDuringLink,omitempty"`
-	SourceFilesOutsideRootDirectory      *bool                                                              `json:"sourceFilesOutsideRootDirectory,omitempty"`
-	SsoProtection                        optionalnullable.OptionalNullable[GetProjectsSsoProtection]        `json:"ssoProtection,omitempty"`
-	Targets                              map[string]*GetProjectsTargets                                     `json:"targets,omitempty"`
-	TransferCompletedAt                  *float64                                                           `json:"transferCompletedAt,omitempty"`
-	TransferStartedAt                    *float64                                                           `json:"transferStartedAt,omitempty"`
-	TransferToAccountID                  *string                                                            `json:"transferToAccountId,omitempty"`
-	TransferredFromAccountID             *string                                                            `json:"transferredFromAccountId,omitempty"`
-	TrustedOidcProviders                 optionalnullable.OptionalNullable[GetProjectsTrustedOidcProviders] `json:"trustedOidcProviders,omitempty"`
-	UpdatedAt                            *float64                                                           `json:"updatedAt,omitempty"`
-	Live                                 *bool                                                              `json:"live,omitempty"`
-	HasActiveBranches                    *bool                                                              `json:"hasActiveBranches,omitempty"`
-	GitComments                          *GetProjectsGitComments                                            `json:"gitComments,omitempty"`
-	GitProviderOptions                   *GetProjectsGitProviderOptions                                     `json:"gitProviderOptions,omitempty"`
-	Paused                               *bool                                                              `json:"paused,omitempty"`
-	WebAnalytics                         *GetProjectsWebAnalytics                                           `json:"webAnalytics,omitempty"`
-	Security                             *GetProjectsSecurity                                               `json:"security,omitempty"`
-	OidcTokenConfig                      *GetProjectsOidcTokenConfig                                        `json:"oidcTokenConfig,omitempty"`
-	Tier                                 *string                                                            `json:"tier,omitempty"`
-	Abuse                                *GetProjectsAbuse                                                  `json:"abuse,omitempty"`
-	InternalRoutes                       []GetProjectsInternalRouteUnion                                    `json:"internalRoutes,omitempty"`
+	RollingRelease                       optionalnullable.OptionalNullable[GetProjectsRollingRelease] `json:"rollingRelease,omitempty"`
+	RootDirectory                        optionalnullable.OptionalNullable[string]                    `json:"rootDirectory,omitempty"`
+	ServerlessFunctionRegion             string                                                       `json:"serverlessFunctionRegion"`
+	ServerlessFunctionZeroConfigFailover *bool                                                        `json:"serverlessFunctionZeroConfigFailover,omitempty"`
+	SpeedInsights                        *GetProjectsSpeedInsights                                    `json:"speedInsights,omitempty"`
+	SkipGitConnectDuringLink             *bool                                                        `json:"skipGitConnectDuringLink,omitempty"`
+	SourceFilesOutsideRootDirectory      *bool                                                        `json:"sourceFilesOutsideRootDirectory,omitempty"`
+	SsoProtection                        optionalnullable.OptionalNullable[GetProjectsSsoProtection]  `json:"ssoProtection,omitempty"`
+	Targets                              map[string]*GetProjectsTargets                               `json:"targets,omitempty"`
+	TransferCompletedAt                  *float64                                                     `json:"transferCompletedAt,omitempty"`
+	TransferStartedAt                    *float64                                                     `json:"transferStartedAt,omitempty"`
+	TransferToAccountID                  *string                                                      `json:"transferToAccountId,omitempty"`
+	TransferredFromAccountID             *string                                                      `json:"transferredFromAccountId,omitempty"`
+	UpdatedAt                            *float64                                                     `json:"updatedAt,omitempty"`
+	Live                                 *bool                                                        `json:"live,omitempty"`
+	HasActiveBranches                    *bool                                                        `json:"hasActiveBranches,omitempty"`
+	GitComments                          *GetProjectsGitComments                                      `json:"gitComments,omitempty"`
+	GitProviderOptions                   *GetProjectsGitProviderOptions                               `json:"gitProviderOptions,omitempty"`
+	Paused                               *bool                                                        `json:"paused,omitempty"`
+	WebAnalytics                         *GetProjectsWebAnalytics                                     `json:"webAnalytics,omitempty"`
+	Security                             *GetProjectsSecurity                                         `json:"security,omitempty"`
+	OidcTokenConfig                      *GetProjectsOidcTokenConfig                                  `json:"oidcTokenConfig,omitempty"`
+	Tier                                 *string                                                      `json:"tier,omitempty"`
+	Abuse                                *GetProjectsAbuse                                            `json:"abuse,omitempty"`
+	InternalRoutes                       []GetProjectsInternalRouteUnion                              `json:"internalRoutes,omitempty"`
 }
 
 func (g GetProjectsResponseBody1) MarshalJSON() ([]byte, error) {
@@ -7117,6 +7216,13 @@ func (o *GetProjectsResponseBody1) GetLinkBitbucket() *GetProjectsLinkBitbucket 
 	return nil
 }
 
+func (o *GetProjectsResponseBody1) GetLinkVercel() *GetProjectsLinkVercel {
+	if v := o.GetLink(); v != nil {
+		return v.GetProjectsLinkVercel
+	}
+	return nil
+}
+
 func (o *GetProjectsResponseBody1) GetName() string {
 	if o == nil {
 		return ""
@@ -7248,13 +7354,6 @@ func (o *GetProjectsResponseBody1) GetTransferredFromAccountID() *string {
 		return nil
 	}
 	return o.TransferredFromAccountID
-}
-
-func (o *GetProjectsResponseBody1) GetTrustedOidcProviders() optionalnullable.OptionalNullable[GetProjectsTrustedOidcProviders] {
-	if o == nil {
-		return nil
-	}
-	return o.TrustedOidcProviders
 }
 
 func (o *GetProjectsResponseBody1) GetUpdatedAt() *float64 {

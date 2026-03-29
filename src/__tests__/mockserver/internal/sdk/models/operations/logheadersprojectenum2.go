@@ -3649,6 +3649,169 @@ func (o *ProjectLatestDeployment2) GetWithCache() *bool {
 	return o.WithCache
 }
 
+type ProjectTypeVercel2 string
+
+const (
+	ProjectTypeVercel2Vercel ProjectTypeVercel2 = "vercel"
+)
+
+func (e ProjectTypeVercel2) ToPointer() *ProjectTypeVercel2 {
+	return &e
+}
+func (e *ProjectTypeVercel2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "vercel":
+		*e = ProjectTypeVercel2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for ProjectTypeVercel2: %v", v)
+	}
+}
+
+type ProjectDeployHook12 struct {
+	CreatedAt *float64 `json:"createdAt,omitempty"`
+	ID        string   `json:"id"`
+	Name      string   `json:"name"`
+	Ref       string   `json:"ref"`
+	URL       string   `json:"url"`
+}
+
+func (p ProjectDeployHook12) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *ProjectDeployHook12) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"id", "name", "ref", "url"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ProjectDeployHook12) GetCreatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedAt
+}
+
+func (o *ProjectDeployHook12) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *ProjectDeployHook12) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *ProjectDeployHook12) GetRef() string {
+	if o == nil {
+		return ""
+	}
+	return o.Ref
+}
+
+func (o *ProjectDeployHook12) GetURL() string {
+	if o == nil {
+		return ""
+	}
+	return o.URL
+}
+
+type LinkProjectVercel2 struct {
+	Org              string                `json:"org"`
+	Repo             string                `json:"repo"`
+	Type             ProjectTypeVercel2    `json:"type"`
+	CreatedAt        *float64              `json:"createdAt,omitempty"`
+	DeployHooks      []ProjectDeployHook12 `json:"deployHooks"`
+	GitCredentialID  string                `json:"gitCredentialId"`
+	UpdatedAt        *float64              `json:"updatedAt,omitempty"`
+	Sourceless       *bool                 `json:"sourceless,omitempty"`
+	ProductionBranch string                `json:"productionBranch"`
+}
+
+func (l LinkProjectVercel2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(l, "", false)
+}
+
+func (l *LinkProjectVercel2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &l, "", false, []string{"org", "repo", "type", "deployHooks", "gitCredentialId", "productionBranch"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *LinkProjectVercel2) GetOrg() string {
+	if o == nil {
+		return ""
+	}
+	return o.Org
+}
+
+func (o *LinkProjectVercel2) GetRepo() string {
+	if o == nil {
+		return ""
+	}
+	return o.Repo
+}
+
+func (o *LinkProjectVercel2) GetType() ProjectTypeVercel2 {
+	if o == nil {
+		return ProjectTypeVercel2("")
+	}
+	return o.Type
+}
+
+func (o *LinkProjectVercel2) GetCreatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedAt
+}
+
+func (o *LinkProjectVercel2) GetDeployHooks() []ProjectDeployHook12 {
+	if o == nil {
+		return []ProjectDeployHook12{}
+	}
+	return o.DeployHooks
+}
+
+func (o *LinkProjectVercel2) GetGitCredentialID() string {
+	if o == nil {
+		return ""
+	}
+	return o.GitCredentialID
+}
+
+func (o *LinkProjectVercel2) GetUpdatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.UpdatedAt
+}
+
+func (o *LinkProjectVercel2) GetSourceless() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Sourceless
+}
+
+func (o *LinkProjectVercel2) GetProductionBranch() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProductionBranch
+}
+
 type ProjectTypeBitbucket2 string
 
 const (
@@ -3672,7 +3835,7 @@ func (e *ProjectTypeBitbucket2) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type ProjectDeployHook10 struct {
+type ProjectDeployHook11 struct {
 	CreatedAt *float64 `json:"createdAt,omitempty"`
 	ID        string   `json:"id"`
 	Name      string   `json:"name"`
@@ -3680,46 +3843,46 @@ type ProjectDeployHook10 struct {
 	URL       string   `json:"url"`
 }
 
-func (p ProjectDeployHook10) MarshalJSON() ([]byte, error) {
+func (p ProjectDeployHook11) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(p, "", false)
 }
 
-func (p *ProjectDeployHook10) UnmarshalJSON(data []byte) error {
+func (p *ProjectDeployHook11) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"id", "name", "ref", "url"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *ProjectDeployHook10) GetCreatedAt() *float64 {
+func (o *ProjectDeployHook11) GetCreatedAt() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.CreatedAt
 }
 
-func (o *ProjectDeployHook10) GetID() string {
+func (o *ProjectDeployHook11) GetID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ID
 }
 
-func (o *ProjectDeployHook10) GetName() string {
+func (o *ProjectDeployHook11) GetName() string {
 	if o == nil {
 		return ""
 	}
 	return o.Name
 }
 
-func (o *ProjectDeployHook10) GetRef() string {
+func (o *ProjectDeployHook11) GetRef() string {
 	if o == nil {
 		return ""
 	}
 	return o.Ref
 }
 
-func (o *ProjectDeployHook10) GetURL() string {
+func (o *ProjectDeployHook11) GetURL() string {
 	if o == nil {
 		return ""
 	}
@@ -3734,7 +3897,7 @@ type LinkProjectBitbucket2 struct {
 	UUID             string                `json:"uuid"`
 	WorkspaceUUID    string                `json:"workspaceUuid"`
 	CreatedAt        *float64              `json:"createdAt,omitempty"`
-	DeployHooks      []ProjectDeployHook10 `json:"deployHooks"`
+	DeployHooks      []ProjectDeployHook11 `json:"deployHooks"`
 	GitCredentialID  string                `json:"gitCredentialId"`
 	UpdatedAt        *float64              `json:"updatedAt,omitempty"`
 	Sourceless       *bool                 `json:"sourceless,omitempty"`
@@ -3801,9 +3964,9 @@ func (o *LinkProjectBitbucket2) GetCreatedAt() *float64 {
 	return o.CreatedAt
 }
 
-func (o *LinkProjectBitbucket2) GetDeployHooks() []ProjectDeployHook10 {
+func (o *LinkProjectBitbucket2) GetDeployHooks() []ProjectDeployHook11 {
 	if o == nil {
-		return []ProjectDeployHook10{}
+		return []ProjectDeployHook11{}
 	}
 	return o.DeployHooks
 }
@@ -3859,7 +4022,7 @@ func (e *ProjectTypeGitlab2) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type ProjectDeployHook9 struct {
+type ProjectDeployHook10 struct {
 	CreatedAt *float64 `json:"createdAt,omitempty"`
 	ID        string   `json:"id"`
 	Name      string   `json:"name"`
@@ -3867,46 +4030,46 @@ type ProjectDeployHook9 struct {
 	URL       string   `json:"url"`
 }
 
-func (p ProjectDeployHook9) MarshalJSON() ([]byte, error) {
+func (p ProjectDeployHook10) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(p, "", false)
 }
 
-func (p *ProjectDeployHook9) UnmarshalJSON(data []byte) error {
+func (p *ProjectDeployHook10) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"id", "name", "ref", "url"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *ProjectDeployHook9) GetCreatedAt() *float64 {
+func (o *ProjectDeployHook10) GetCreatedAt() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.CreatedAt
 }
 
-func (o *ProjectDeployHook9) GetID() string {
+func (o *ProjectDeployHook10) GetID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ID
 }
 
-func (o *ProjectDeployHook9) GetName() string {
+func (o *ProjectDeployHook10) GetName() string {
 	if o == nil {
 		return ""
 	}
 	return o.Name
 }
 
-func (o *ProjectDeployHook9) GetRef() string {
+func (o *ProjectDeployHook10) GetRef() string {
 	if o == nil {
 		return ""
 	}
 	return o.Ref
 }
 
-func (o *ProjectDeployHook9) GetURL() string {
+func (o *ProjectDeployHook10) GetURL() string {
 	if o == nil {
 		return ""
 	}
@@ -3919,15 +4082,15 @@ type LinkProjectGitlab2 struct {
 	ProjectNameWithNamespace string `json:"projectNameWithNamespace"`
 	ProjectNamespace         string `json:"projectNamespace"`
 	// A new field, should be included in all new project links, is being added just in time when a deployment is created. This is needed for Protected Git scopes. This is the id of the top level group that a namespace belongs to. Gitlab supports group nesting (up to 20 levels).
-	ProjectOwnerID   *float64             `json:"projectOwnerId,omitempty"`
-	ProjectURL       string               `json:"projectUrl"`
-	Type             ProjectTypeGitlab2   `json:"type"`
-	CreatedAt        *float64             `json:"createdAt,omitempty"`
-	DeployHooks      []ProjectDeployHook9 `json:"deployHooks"`
-	GitCredentialID  string               `json:"gitCredentialId"`
-	UpdatedAt        *float64             `json:"updatedAt,omitempty"`
-	Sourceless       *bool                `json:"sourceless,omitempty"`
-	ProductionBranch string               `json:"productionBranch"`
+	ProjectOwnerID   *float64              `json:"projectOwnerId,omitempty"`
+	ProjectURL       string                `json:"projectUrl"`
+	Type             ProjectTypeGitlab2    `json:"type"`
+	CreatedAt        *float64              `json:"createdAt,omitempty"`
+	DeployHooks      []ProjectDeployHook10 `json:"deployHooks"`
+	GitCredentialID  string                `json:"gitCredentialId"`
+	UpdatedAt        *float64              `json:"updatedAt,omitempty"`
+	Sourceless       *bool                 `json:"sourceless,omitempty"`
+	ProductionBranch string                `json:"productionBranch"`
 }
 
 func (l LinkProjectGitlab2) MarshalJSON() ([]byte, error) {
@@ -3997,9 +4160,9 @@ func (o *LinkProjectGitlab2) GetCreatedAt() *float64 {
 	return o.CreatedAt
 }
 
-func (o *LinkProjectGitlab2) GetDeployHooks() []ProjectDeployHook9 {
+func (o *LinkProjectGitlab2) GetDeployHooks() []ProjectDeployHook10 {
 	if o == nil {
-		return []ProjectDeployHook9{}
+		return []ProjectDeployHook10{}
 	}
 	return o.DeployHooks
 }
@@ -4055,7 +4218,7 @@ func (e *ProjectTypeGithubCustomHost2) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type ProjectDeployHook8 struct {
+type ProjectDeployHook9 struct {
 	CreatedAt *float64 `json:"createdAt,omitempty"`
 	ID        string   `json:"id"`
 	Name      string   `json:"name"`
@@ -4063,46 +4226,46 @@ type ProjectDeployHook8 struct {
 	URL       string   `json:"url"`
 }
 
-func (p ProjectDeployHook8) MarshalJSON() ([]byte, error) {
+func (p ProjectDeployHook9) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(p, "", false)
 }
 
-func (p *ProjectDeployHook8) UnmarshalJSON(data []byte) error {
+func (p *ProjectDeployHook9) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"id", "name", "ref", "url"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *ProjectDeployHook8) GetCreatedAt() *float64 {
+func (o *ProjectDeployHook9) GetCreatedAt() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.CreatedAt
 }
 
-func (o *ProjectDeployHook8) GetID() string {
+func (o *ProjectDeployHook9) GetID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ID
 }
 
-func (o *ProjectDeployHook8) GetName() string {
+func (o *ProjectDeployHook9) GetName() string {
 	if o == nil {
 		return ""
 	}
 	return o.Name
 }
 
-func (o *ProjectDeployHook8) GetRef() string {
+func (o *ProjectDeployHook9) GetRef() string {
 	if o == nil {
 		return ""
 	}
 	return o.Ref
 }
 
-func (o *ProjectDeployHook8) GetURL() string {
+func (o *ProjectDeployHook9) GetURL() string {
 	if o == nil {
 		return ""
 	}
@@ -4118,7 +4281,7 @@ type LinkProjectGithubCustomHost2 struct {
 	Type             ProjectTypeGithubCustomHost2 `json:"type"`
 	Host             string                       `json:"host"`
 	CreatedAt        *float64                     `json:"createdAt,omitempty"`
-	DeployHooks      []ProjectDeployHook8         `json:"deployHooks"`
+	DeployHooks      []ProjectDeployHook9         `json:"deployHooks"`
 	GitCredentialID  string                       `json:"gitCredentialId"`
 	UpdatedAt        *float64                     `json:"updatedAt,omitempty"`
 	Sourceless       *bool                        `json:"sourceless,omitempty"`
@@ -4185,9 +4348,9 @@ func (o *LinkProjectGithubCustomHost2) GetCreatedAt() *float64 {
 	return o.CreatedAt
 }
 
-func (o *LinkProjectGithubCustomHost2) GetDeployHooks() []ProjectDeployHook8 {
+func (o *LinkProjectGithubCustomHost2) GetDeployHooks() []ProjectDeployHook9 {
 	if o == nil {
-		return []ProjectDeployHook8{}
+		return []ProjectDeployHook9{}
 	}
 	return o.DeployHooks
 }
@@ -4243,7 +4406,7 @@ func (e *ProjectTypeGithubLimited2) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type ProjectDeployHook7 struct {
+type ProjectDeployHook8 struct {
 	CreatedAt *float64 `json:"createdAt,omitempty"`
 	ID        string   `json:"id"`
 	Name      string   `json:"name"`
@@ -4251,46 +4414,46 @@ type ProjectDeployHook7 struct {
 	URL       string   `json:"url"`
 }
 
-func (p ProjectDeployHook7) MarshalJSON() ([]byte, error) {
+func (p ProjectDeployHook8) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(p, "", false)
 }
 
-func (p *ProjectDeployHook7) UnmarshalJSON(data []byte) error {
+func (p *ProjectDeployHook8) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"id", "name", "ref", "url"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *ProjectDeployHook7) GetCreatedAt() *float64 {
+func (o *ProjectDeployHook8) GetCreatedAt() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.CreatedAt
 }
 
-func (o *ProjectDeployHook7) GetID() string {
+func (o *ProjectDeployHook8) GetID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ID
 }
 
-func (o *ProjectDeployHook7) GetName() string {
+func (o *ProjectDeployHook8) GetName() string {
 	if o == nil {
 		return ""
 	}
 	return o.Name
 }
 
-func (o *ProjectDeployHook7) GetRef() string {
+func (o *ProjectDeployHook8) GetRef() string {
 	if o == nil {
 		return ""
 	}
 	return o.Ref
 }
 
-func (o *ProjectDeployHook7) GetURL() string {
+func (o *ProjectDeployHook8) GetURL() string {
 	if o == nil {
 		return ""
 	}
@@ -4306,7 +4469,7 @@ type LinkProjectGithubLimited2 struct {
 	Org       string                    `json:"org"`
 	// A new field, should be included in all new project links, is being added just in time when a deployment is created. This is needed for Protected Git scopes.
 	RepoOwnerID      *float64             `json:"repoOwnerId,omitempty"`
-	DeployHooks      []ProjectDeployHook7 `json:"deployHooks"`
+	DeployHooks      []ProjectDeployHook8 `json:"deployHooks"`
 	GitCredentialID  string               `json:"gitCredentialId"`
 	Sourceless       *bool                `json:"sourceless,omitempty"`
 	ProductionBranch string               `json:"productionBranch"`
@@ -4372,9 +4535,9 @@ func (o *LinkProjectGithubLimited2) GetRepoOwnerID() *float64 {
 	return o.RepoOwnerID
 }
 
-func (o *LinkProjectGithubLimited2) GetDeployHooks() []ProjectDeployHook7 {
+func (o *LinkProjectGithubLimited2) GetDeployHooks() []ProjectDeployHook8 {
 	if o == nil {
-		return []ProjectDeployHook7{}
+		return []ProjectDeployHook8{}
 	}
 	return o.DeployHooks
 }
@@ -4423,7 +4586,7 @@ func (e *ProjectTypeGithub2) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type ProjectDeployHook6 struct {
+type ProjectDeployHook7 struct {
 	CreatedAt *float64 `json:"createdAt,omitempty"`
 	ID        string   `json:"id"`
 	Name      string   `json:"name"`
@@ -4431,46 +4594,46 @@ type ProjectDeployHook6 struct {
 	URL       string   `json:"url"`
 }
 
-func (p ProjectDeployHook6) MarshalJSON() ([]byte, error) {
+func (p ProjectDeployHook7) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(p, "", false)
 }
 
-func (p *ProjectDeployHook6) UnmarshalJSON(data []byte) error {
+func (p *ProjectDeployHook7) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"id", "name", "ref", "url"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *ProjectDeployHook6) GetCreatedAt() *float64 {
+func (o *ProjectDeployHook7) GetCreatedAt() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.CreatedAt
 }
 
-func (o *ProjectDeployHook6) GetID() string {
+func (o *ProjectDeployHook7) GetID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ID
 }
 
-func (o *ProjectDeployHook6) GetName() string {
+func (o *ProjectDeployHook7) GetName() string {
 	if o == nil {
 		return ""
 	}
 	return o.Name
 }
 
-func (o *ProjectDeployHook6) GetRef() string {
+func (o *ProjectDeployHook7) GetRef() string {
 	if o == nil {
 		return ""
 	}
 	return o.Ref
 }
 
-func (o *ProjectDeployHook6) GetURL() string {
+func (o *ProjectDeployHook7) GetURL() string {
 	if o == nil {
 		return ""
 	}
@@ -4485,7 +4648,7 @@ type LinkProjectGithub2 struct {
 	RepoID           *float64             `json:"repoId,omitempty"`
 	Type             ProjectTypeGithub2   `json:"type"`
 	CreatedAt        *float64             `json:"createdAt,omitempty"`
-	DeployHooks      []ProjectDeployHook6 `json:"deployHooks"`
+	DeployHooks      []ProjectDeployHook7 `json:"deployHooks"`
 	GitCredentialID  string               `json:"gitCredentialId"`
 	UpdatedAt        *float64             `json:"updatedAt,omitempty"`
 	Sourceless       *bool                `json:"sourceless,omitempty"`
@@ -4545,9 +4708,9 @@ func (o *LinkProjectGithub2) GetCreatedAt() *float64 {
 	return o.CreatedAt
 }
 
-func (o *LinkProjectGithub2) GetDeployHooks() []ProjectDeployHook6 {
+func (o *LinkProjectGithub2) GetDeployHooks() []ProjectDeployHook7 {
 	if o == nil {
-		return []ProjectDeployHook6{}
+		return []ProjectDeployHook7{}
 	}
 	return o.DeployHooks
 }
@@ -4588,6 +4751,7 @@ const (
 	ProjectLinkUnion2TypeGithubCustomHost ProjectLinkUnion2Type = "github-custom-host"
 	ProjectLinkUnion2TypeGitlab           ProjectLinkUnion2Type = "gitlab"
 	ProjectLinkUnion2TypeBitbucket        ProjectLinkUnion2Type = "bitbucket"
+	ProjectLinkUnion2TypeVercel           ProjectLinkUnion2Type = "vercel"
 )
 
 type ProjectLinkUnion2 struct {
@@ -4596,6 +4760,7 @@ type ProjectLinkUnion2 struct {
 	LinkProjectGithubCustomHost2 *LinkProjectGithubCustomHost2 `queryParam:"inline"`
 	LinkProjectGitlab2           *LinkProjectGitlab2           `queryParam:"inline"`
 	LinkProjectBitbucket2        *LinkProjectBitbucket2        `queryParam:"inline"`
+	LinkProjectVercel2           *LinkProjectVercel2           `queryParam:"inline"`
 
 	Type ProjectLinkUnion2Type
 }
@@ -4660,6 +4825,18 @@ func CreateProjectLinkUnion2Bitbucket(bitbucket LinkProjectBitbucket2) ProjectLi
 	}
 }
 
+func CreateProjectLinkUnion2Vercel(vercel LinkProjectVercel2) ProjectLinkUnion2 {
+	typ := ProjectLinkUnion2TypeVercel
+
+	typStr := ProjectTypeVercel2(typ)
+	vercel.Type = typStr
+
+	return ProjectLinkUnion2{
+		LinkProjectVercel2: &vercel,
+		Type:               typ,
+	}
+}
+
 func (u *ProjectLinkUnion2) UnmarshalJSON(data []byte) error {
 
 	type discriminator struct {
@@ -4717,6 +4894,15 @@ func (u *ProjectLinkUnion2) UnmarshalJSON(data []byte) error {
 		u.LinkProjectBitbucket2 = linkProjectBitbucket2
 		u.Type = ProjectLinkUnion2TypeBitbucket
 		return nil
+	case "vercel":
+		linkProjectVercel2 := new(LinkProjectVercel2)
+		if err := utils.UnmarshalJSON(data, &linkProjectVercel2, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == vercel) type LinkProjectVercel2 within ProjectLinkUnion2: %w", string(data), err)
+		}
+
+		u.LinkProjectVercel2 = linkProjectVercel2
+		u.Type = ProjectLinkUnion2TypeVercel
+		return nil
 	}
 
 	return fmt.Errorf("could not unmarshal `%s` into any supported union types for ProjectLinkUnion2", string(data))
@@ -4741,6 +4927,10 @@ func (u ProjectLinkUnion2) MarshalJSON() ([]byte, error) {
 
 	if u.LinkProjectBitbucket2 != nil {
 		return utils.MarshalJSON(u.LinkProjectBitbucket2, "", true)
+	}
+
+	if u.LinkProjectVercel2 != nil {
+		return utils.MarshalJSON(u.LinkProjectVercel2, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type ProjectLinkUnion2: all fields are null")
@@ -6432,7 +6622,6 @@ type GetProjectsPermissions struct {
 	SkewProtection                           []components.ACLAction `json:"skewProtection,omitempty"`
 	Analytics                                []components.ACLAction `json:"analytics,omitempty"`
 	TrustedIps                               []components.ACLAction `json:"trustedIps,omitempty"`
-	TrustedOidcProviders                     []components.ACLAction `json:"trustedOidcProviders,omitempty"`
 	V0Chat                                   []components.ACLAction `json:"v0Chat,omitempty"`
 	WebAnalytics                             []components.ACLAction `json:"webAnalytics,omitempty"`
 }
@@ -8065,13 +8254,6 @@ func (o *GetProjectsPermissions) GetTrustedIps() []components.ACLAction {
 	return o.TrustedIps
 }
 
-func (o *GetProjectsPermissions) GetTrustedOidcProviders() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.TrustedOidcProviders
-}
-
 func (o *GetProjectsPermissions) GetV0Chat() []components.ACLAction {
 	if o == nil {
 		return nil
@@ -8712,96 +8894,6 @@ func (u GetProjectsTrustedIpsUnion) MarshalJSON() ([]byte, error) {
 	}
 
 	return nil, errors.New("could not marshal union type GetProjectsTrustedIpsUnion: all fields are null")
-}
-
-type ProjectProjects2 struct {
-	Label        *string  `json:"label,omitempty"`
-	Environments []string `json:"environments"`
-}
-
-func (p ProjectProjects2) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *ProjectProjects2) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"environments"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *ProjectProjects2) GetLabel() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Label
-}
-
-func (o *ProjectProjects2) GetEnvironments() []string {
-	if o == nil {
-		return []string{}
-	}
-	return o.Environments
-}
-
-type ProjectProviders2 struct {
-	Label  *string             `json:"label,omitempty"`
-	Claims map[string][]string `json:"claims"`
-}
-
-func (p ProjectProviders2) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *ProjectProviders2) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"claims"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *ProjectProviders2) GetLabel() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Label
-}
-
-func (o *ProjectProviders2) GetClaims() map[string][]string {
-	if o == nil {
-		return map[string][]string{}
-	}
-	return o.Claims
-}
-
-type ProjectTrustedOidcProviders2 struct {
-	Projects  map[string]ProjectProjects2  `json:"projects"`
-	Providers map[string]ProjectProviders2 `json:"providers"`
-}
-
-func (p ProjectTrustedOidcProviders2) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *ProjectTrustedOidcProviders2) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"projects", "providers"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *ProjectTrustedOidcProviders2) GetProjects() map[string]ProjectProjects2 {
-	if o == nil {
-		return map[string]ProjectProjects2{}
-	}
-	return o.Projects
-}
-
-func (o *ProjectTrustedOidcProviders2) GetProviders() map[string]ProjectProviders2 {
-	if o == nil {
-		return map[string]ProjectProviders2{}
-	}
-	return o.Providers
 }
 
 type ProjectGitComments2 struct {

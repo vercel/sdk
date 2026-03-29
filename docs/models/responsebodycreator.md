@@ -5,7 +5,7 @@ Information about the deployment creator
 ## Example Usage
 
 ```typescript
-import { ResponseBodyCreator } from "@vercel/sdk/models/responsebodyorigin.js";
+import { ResponseBodyCreator } from "@vercel/sdk/models/responsebodyproject.js";
 
 let value: ResponseBodyCreator = {
   uid: "96SnxkFiMyVKsK3pnoHfx3Hz",

@@ -3,13 +3,14 @@
 ## Example Usage
 
 ```typescript
-import { GitSource3 } from "@vercel/sdk/models/createdeploymentop.js";
+import { GitSource3 } from "@vercel/sdk/models/createdeploymentvaluedeployments2.js";
 
 let value: GitSource3 = {
+  org: "vercel",
   ref: "main",
-  repoId: 123456789,
+  repo: "next.js",
   sha: "a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0",
-  type: "github-limited",
+  type: "github",
 };
 ```
 
@@ -17,7 +18,8 @@ let value: GitSource3 = {
 
 | Field                                                                                                    | Type                                                                                                     | Required                                                                                                 | Description                                                                                              | Example                                                                                                  |
 | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| `org`                                                                                                    | *string*                                                                                                 | :heavy_check_mark:                                                                                       | N/A                                                                                                      | vercel                                                                                                   |
 | `ref`                                                                                                    | *string*                                                                                                 | :heavy_check_mark:                                                                                       | N/A                                                                                                      | main                                                                                                     |
-| `repoId`                                                                                                 | *models.GitSourceRepoId*                                                                                 | :heavy_check_mark:                                                                                       | N/A                                                                                                      | 123456789                                                                                                |
+| `repo`                                                                                                   | *string*                                                                                                 | :heavy_check_mark:                                                                                       | N/A                                                                                                      | next.js                                                                                                  |
 | `sha`                                                                                                    | *string*                                                                                                 | :heavy_minus_sign:                                                                                       | N/A                                                                                                      | a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0                                                                 |
 | `type`                                                                                                   | [models.CreateDeploymentGitSourceDeploymentsType](../models/createdeploymentgitsourcedeploymentstype.md) | :heavy_check_mark:                                                                                       | N/A                                                                                                      |                                                                                                          |

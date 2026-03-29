@@ -5,7 +5,7 @@ The public project information associated with the deployment.
 ## Example Usage
 
 ```typescript
-import { CreateDeploymentProject } from "@vercel/sdk/models/createdeploymentop.js";
+import { CreateDeploymentProject } from "@vercel/sdk/models/createdeploymentvaluedeployments2.js";
 
 let value: CreateDeploymentProject = {
   id: "<id>",

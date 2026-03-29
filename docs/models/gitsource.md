@@ -9,10 +9,8 @@ Defines the Git Repository source to be deployed. This property can not be used 
 
 ```typescript
 const value: models.GitSource1 = {
-  ref: "main",
-  repoId: 123456789,
+  type: "vercel",
   sha: "a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0",
-  type: "github",
 };
 ```
 
@@ -20,9 +18,8 @@ const value: models.GitSource1 = {
 
 ```typescript
 const value: models.GitSource2 = {
-  org: "vercel",
   ref: "main",
-  repo: "next.js",
+  repoId: 123456789,
   sha: "a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0",
   type: "github",
 };
@@ -32,10 +29,11 @@ const value: models.GitSource2 = {
 
 ```typescript
 const value: models.GitSource3 = {
+  org: "vercel",
   ref: "main",
-  repoId: 123456789,
+  repo: "next.js",
   sha: "a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0",
-  type: "github-limited",
+  type: "github",
 };
 ```
 
@@ -43,9 +41,8 @@ const value: models.GitSource3 = {
 
 ```typescript
 const value: models.GitSource4 = {
-  org: "vercel",
   ref: "main",
-  repo: "next.js",
+  repoId: 123456789,
   sha: "a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0",
   type: "github-limited",
 };
@@ -55,10 +52,11 @@ const value: models.GitSource4 = {
 
 ```typescript
 const value: models.GitSource5 = {
-  projectId: 987654321,
+  org: "vercel",
   ref: "main",
+  repo: "next.js",
   sha: "a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0",
-  type: "gitlab",
+  type: "github-limited",
 };
 ```
 
@@ -66,6 +64,17 @@ const value: models.GitSource5 = {
 
 ```typescript
 const value: models.GitSource6 = {
+  projectId: 987654321,
+  ref: "main",
+  sha: "a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0",
+  type: "gitlab",
+};
+```
+
+### `models.GitSource7`
+
+```typescript
+const value: models.GitSource7 = {
   ref: "main",
   repoUuid: "123e4567-e89b-12d3-a456-426614174000",
   sha: "a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0",
@@ -74,10 +83,10 @@ const value: models.GitSource6 = {
 };
 ```
 
-### `models.GitSource7`
+### `models.GitSource8`
 
 ```typescript
-const value: models.GitSource7 = {
+const value: models.GitSource8 = {
   owner: "bitbucket_user",
   ref: "main",
   sha: "a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0",

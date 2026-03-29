@@ -94,10 +94,8 @@ const value: models.GetDeploymentGitSourceDeployments9 = {
 
 ```typescript
 const value: models.GetDeploymentGitSourceDeployments10 = {
-  type: "custom",
-  ref: "<value>",
+  type: "vercel",
   sha: "<value>",
-  gitUrl: "https://palatable-cod.biz",
 };
 ```
 
@@ -105,10 +103,10 @@ const value: models.GetDeploymentGitSourceDeployments10 = {
 
 ```typescript
 const value: models.GetDeploymentGitSourceDeployments11 = {
-  type: "github",
+  type: "custom",
   ref: "<value>",
   sha: "<value>",
-  repoId: 3996.33,
+  gitUrl: "https://unpleasant-kit.org/",
 };
 ```
 
@@ -116,11 +114,10 @@ const value: models.GetDeploymentGitSourceDeployments11 = {
 
 ```typescript
 const value: models.GetDeploymentGitSourceDeployments12 = {
-  type: "github-custom-host",
-  host: "peaceful-bog.info",
+  type: "github",
   ref: "<value>",
   sha: "<value>",
-  repoId: 2785.32,
+  repoId: 5999.61,
 };
 ```
 
@@ -128,10 +125,11 @@ const value: models.GetDeploymentGitSourceDeployments12 = {
 
 ```typescript
 const value: models.GetDeploymentGitSourceDeployments13 = {
-  type: "github-limited",
+  type: "github-custom-host",
+  host: "juvenile-formation.biz",
   ref: "<value>",
   sha: "<value>",
-  repoId: 4465.75,
+  repoId: 1147.08,
 };
 ```
 
@@ -139,10 +137,10 @@ const value: models.GetDeploymentGitSourceDeployments13 = {
 
 ```typescript
 const value: models.GetDeploymentGitSourceDeployments14 = {
-  type: "gitlab",
+  type: "github-limited",
   ref: "<value>",
   sha: "<value>",
-  projectId: 1976.41,
+  repoId: 1976.41,
 };
 ```
 
@@ -150,11 +148,34 @@ const value: models.GetDeploymentGitSourceDeployments14 = {
 
 ```typescript
 const value: models.GetDeploymentGitSourceDeployments15 = {
+  type: "gitlab",
+  ref: "<value>",
+  sha: "<value>",
+  projectId: 139.24,
+};
+```
+
+### `models.GetDeploymentGitSourceDeployments16`
+
+```typescript
+const value: models.GetDeploymentGitSourceDeployments16 = {
   type: "bitbucket",
   ref: "<value>",
   sha: "<value>",
   workspaceUuid: "<id>",
   repoUuid: "<id>",
+};
+```
+
+### `models.GetDeploymentGitSourceDeployments17`
+
+```typescript
+const value: models.GetDeploymentGitSourceDeployments17 = {
+  type: "vercel",
+  ref: "<value>",
+  sha: "<value>",
+  org: "<value>",
+  repo: "<value>",
 };
 ```
 

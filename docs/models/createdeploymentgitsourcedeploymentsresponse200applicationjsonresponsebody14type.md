@@ -3,15 +3,15 @@
 ## Example Usage
 
 ```typescript
-import { CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody14Type } from "@vercel/sdk/models/createdeploymentop.js";
+import { CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody14Type } from "@vercel/sdk/models/createdeploymentvaluedeployments2.js";
 
 let value:
   CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody14Type =
-    "gitlab";
+    "github-limited";
 ```
 
 ## Values
 
 ```typescript
-"gitlab"
+"github-limited"
 ```

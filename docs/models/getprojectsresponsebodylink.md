@@ -93,3 +93,23 @@ const value: models.GetProjectsLinkProjects5 = {
 };
 ```
 
+### `models.GetProjectsLinkProjects6`
+
+```typescript
+const value: models.GetProjectsLinkProjects6 = {
+  org: "<value>",
+  repo: "<value>",
+  type: "vercel",
+  deployHooks: [
+    {
+      id: "<id>",
+      name: "<value>",
+      ref: "<value>",
+      url: "https://jagged-freight.com/",
+    },
+  ],
+  gitCredentialId: "<id>",
+  productionBranch: "<value>",
+};
+```
+

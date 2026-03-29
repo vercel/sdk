@@ -93,3 +93,23 @@ const value: models.GetProjectsLink5 = {
 };
 ```
 
+### `models.GetProjectsLink6`
+
+```typescript
+const value: models.GetProjectsLink6 = {
+  org: "<value>",
+  repo: "<value>",
+  type: "vercel",
+  deployHooks: [
+    {
+      id: "<id>",
+      name: "<value>",
+      ref: "<value>",
+      url: "https://possible-label.name/",
+    },
+  ],
+  gitCredentialId: "<id>",
+  productionBranch: "<value>",
+};
+```
+

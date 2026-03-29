@@ -5,11 +5,11 @@
 ```typescript
 import { PayloadGitProvider } from "@vercel/sdk/models/usereventpayload159next.js";
 
-let value: PayloadGitProvider = "github";
+let value: PayloadGitProvider = "vercel";
 ```
 
 ## Values
 
 ```typescript
-"github" | "github-limited" | "github-custom-host" | "gitlab" | "bitbucket"
+"vercel" | "github" | "github-limited" | "github-custom-host" | "gitlab" | "bitbucket"
 ```

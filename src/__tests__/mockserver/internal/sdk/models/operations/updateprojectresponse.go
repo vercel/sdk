@@ -12,32 +12,6 @@ import (
 	"mockserver/internal/sdk/utils"
 )
 
-type UpdateProjectLastAliasRequestType string
-
-const (
-	UpdateProjectLastAliasRequestTypePromote  UpdateProjectLastAliasRequestType = "promote"
-	UpdateProjectLastAliasRequestTypeRollback UpdateProjectLastAliasRequestType = "rollback"
-)
-
-func (e UpdateProjectLastAliasRequestType) ToPointer() *UpdateProjectLastAliasRequestType {
-	return &e
-}
-func (e *UpdateProjectLastAliasRequestType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "promote":
-		fallthrough
-	case "rollback":
-		*e = UpdateProjectLastAliasRequestType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for UpdateProjectLastAliasRequestType: %v", v)
-	}
-}
-
 type UpdateProjectLastAliasRequest struct {
 	FromDeploymentID *string `json:"fromDeploymentId"`
 	ToDeploymentID   string  `json:"toDeploymentId"`
@@ -578,63 +552,6 @@ func (u UpdateProjectTrustedIpsUnion) MarshalJSON() ([]byte, error) {
 	}
 
 	return nil, errors.New("could not marshal union type UpdateProjectTrustedIpsUnion: all fields are null")
-}
-
-type UpdateProjectProjects struct {
-	Label        *string  `json:"label,omitempty"`
-	Environments []string `json:"environments"`
-}
-
-func (o *UpdateProjectProjects) GetLabel() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Label
-}
-
-func (o *UpdateProjectProjects) GetEnvironments() []string {
-	if o == nil {
-		return []string{}
-	}
-	return o.Environments
-}
-
-type UpdateProjectProviders struct {
-	Label  *string             `json:"label,omitempty"`
-	Claims map[string][]string `json:"claims"`
-}
-
-func (o *UpdateProjectProviders) GetLabel() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Label
-}
-
-func (o *UpdateProjectProviders) GetClaims() map[string][]string {
-	if o == nil {
-		return map[string][]string{}
-	}
-	return o.Claims
-}
-
-type UpdateProjectTrustedOidcProvidersResponse struct {
-	Projects  map[string]UpdateProjectProjects  `json:"projects"`
-	Providers map[string]UpdateProjectProviders `json:"providers"`
-}
-
-func (o *UpdateProjectTrustedOidcProvidersResponse) GetProjects() map[string]UpdateProjectProjects {
-	if o == nil {
-		return map[string]UpdateProjectProjects{}
-	}
-	return o.Projects
-}
-
-func (o *UpdateProjectTrustedOidcProvidersResponse) GetProviders() map[string]UpdateProjectProviders {
-	if o == nil {
-		return map[string]UpdateProjectProviders{}
-	}
-	return o.Providers
 }
 
 type UpdateProjectGitComments struct {
@@ -3833,53 +3750,52 @@ type UpdateProjectResponseBody struct {
 	// Description of why a project was rolled back, and by whom. Note that lastAliasRequest contains the from/to details of the rollback.
 	RollbackDescription *UpdateProjectRollbackDescription `json:"rollbackDescription,omitempty"`
 	// Project-level rolling release configuration that defines how deployments should be gradually rolled out
-	RollingRelease                       optionalnullable.OptionalNullable[UpdateProjectRollingRelease]               `json:"rollingRelease,omitempty"`
-	DefaultResourceConfig                UpdateProjectDefaultResourceConfig                                           `json:"defaultResourceConfig"`
-	RootDirectory                        optionalnullable.OptionalNullable[string]                                    `json:"rootDirectory,omitempty"`
-	ServerlessFunctionZeroConfigFailover *bool                                                                        `json:"serverlessFunctionZeroConfigFailover,omitempty"`
-	SkewProtectionBoundaryAt             *float64                                                                     `json:"skewProtectionBoundaryAt,omitempty"`
-	SkewProtectionMaxAge                 *float64                                                                     `json:"skewProtectionMaxAge,omitempty"`
-	SkewProtectionAllowedDomains         []string                                                                     `json:"skewProtectionAllowedDomains,omitempty"`
-	SkipGitConnectDuringLink             *bool                                                                        `json:"skipGitConnectDuringLink,omitempty"`
-	StaticIps                            *UpdateProjectStaticIpsResponse                                              `json:"staticIps,omitempty"`
-	SourceFilesOutsideRootDirectory      *bool                                                                        `json:"sourceFilesOutsideRootDirectory,omitempty"`
-	EnableAffectedProjectsDeployments    *bool                                                                        `json:"enableAffectedProjectsDeployments,omitempty"`
-	EnableExternalRewriteCaching         *bool                                                                        `json:"enableExternalRewriteCaching,omitempty"`
-	SsoProtection                        optionalnullable.OptionalNullable[UpdateProjectSsoProtectionResponse]        `json:"ssoProtection,omitempty"`
-	Targets                              map[string]*UpdateProjectTargets                                             `json:"targets,omitempty"`
-	TransferCompletedAt                  *float64                                                                     `json:"transferCompletedAt,omitempty"`
-	TransferStartedAt                    *float64                                                                     `json:"transferStartedAt,omitempty"`
-	TransferToAccountID                  *string                                                                      `json:"transferToAccountId,omitempty"`
-	TransferredFromAccountID             *string                                                                      `json:"transferredFromAccountId,omitempty"`
-	UpdatedAt                            *float64                                                                     `json:"updatedAt,omitempty"`
-	Live                                 *bool                                                                        `json:"live,omitempty"`
-	EnablePreviewFeedback                optionalnullable.OptionalNullable[bool]                                      `json:"enablePreviewFeedback,omitempty"`
-	EnableProductionFeedback             optionalnullable.OptionalNullable[bool]                                      `json:"enableProductionFeedback,omitempty"`
-	Permissions                          *UpdateProjectPermissions                                                    `json:"permissions,omitempty"`
-	LastRollbackTarget                   optionalnullable.OptionalNullable[UpdateProjectLastRollbackTarget]           `json:"lastRollbackTarget,omitempty"`
-	LastAliasRequest                     optionalnullable.OptionalNullable[UpdateProjectLastAliasRequest]             `json:"lastAliasRequest,omitempty"`
-	ProtectionBypass                     map[string]UpdateProjectProtectionBypassUnion                                `json:"protectionBypass,omitempty"`
-	HasActiveBranches                    *bool                                                                        `json:"hasActiveBranches,omitempty"`
-	TrustedIps                           optionalnullable.OptionalNullable[UpdateProjectTrustedIpsUnion]              `json:"trustedIps,omitempty"`
-	TrustedOidcProviders                 optionalnullable.OptionalNullable[UpdateProjectTrustedOidcProvidersResponse] `json:"trustedOidcProviders,omitempty"`
-	GitComments                          *UpdateProjectGitComments                                                    `json:"gitComments,omitempty"`
-	GitProviderOptions                   *UpdateProjectGitProviderOptions                                             `json:"gitProviderOptions,omitempty"`
-	Paused                               *bool                                                                        `json:"paused,omitempty"`
-	ConcurrencyBucketName                *string                                                                      `json:"concurrencyBucketName,omitempty"`
-	WebAnalytics                         *UpdateProjectWebAnalytics                                                   `json:"webAnalytics,omitempty"`
-	Security                             *UpdateProjectSecurity                                                       `json:"security,omitempty"`
-	OidcTokenConfig                      *UpdateProjectOidcTokenConfigResponse                                        `json:"oidcTokenConfig,omitempty"`
-	Tier                                 *string                                                                      `json:"tier,omitempty"`
-	FlatRateTier                         *UpdateProjectFlatRateTier                                                   `json:"flatRateTier,omitempty"`
-	UsageStatus                          *UpdateProjectUsageStatus                                                    `json:"usageStatus,omitempty"`
-	Features                             *UpdateProjectFeatures                                                       `json:"features,omitempty"`
-	V0                                   *bool                                                                        `json:"v0,omitempty"`
-	V0Created                            *bool                                                                        `json:"v0Created,omitempty"`
-	Abuse                                *UpdateProjectAbuse                                                          `json:"abuse,omitempty"`
-	InternalRoutes                       []UpdateProjectInternalRouteUnion                                            `json:"internalRoutes,omitempty"`
-	HasDeployments                       *bool                                                                        `json:"hasDeployments,omitempty"`
-	DismissedToasts                      []UpdateProjectDismissedToastResponse                                        `json:"dismissedToasts,omitempty"`
-	ProtectedSourcemaps                  *bool                                                                        `json:"protectedSourcemaps,omitempty"`
+	RollingRelease                       optionalnullable.OptionalNullable[UpdateProjectRollingRelease]        `json:"rollingRelease,omitempty"`
+	DefaultResourceConfig                UpdateProjectDefaultResourceConfig                                    `json:"defaultResourceConfig"`
+	RootDirectory                        optionalnullable.OptionalNullable[string]                             `json:"rootDirectory,omitempty"`
+	ServerlessFunctionZeroConfigFailover *bool                                                                 `json:"serverlessFunctionZeroConfigFailover,omitempty"`
+	SkewProtectionBoundaryAt             *float64                                                              `json:"skewProtectionBoundaryAt,omitempty"`
+	SkewProtectionMaxAge                 *float64                                                              `json:"skewProtectionMaxAge,omitempty"`
+	SkewProtectionAllowedDomains         []string                                                              `json:"skewProtectionAllowedDomains,omitempty"`
+	SkipGitConnectDuringLink             *bool                                                                 `json:"skipGitConnectDuringLink,omitempty"`
+	StaticIps                            *UpdateProjectStaticIpsResponse                                       `json:"staticIps,omitempty"`
+	SourceFilesOutsideRootDirectory      *bool                                                                 `json:"sourceFilesOutsideRootDirectory,omitempty"`
+	EnableAffectedProjectsDeployments    *bool                                                                 `json:"enableAffectedProjectsDeployments,omitempty"`
+	EnableExternalRewriteCaching         *bool                                                                 `json:"enableExternalRewriteCaching,omitempty"`
+	SsoProtection                        optionalnullable.OptionalNullable[UpdateProjectSsoProtectionResponse] `json:"ssoProtection,omitempty"`
+	Targets                              map[string]*UpdateProjectTargets                                      `json:"targets,omitempty"`
+	TransferCompletedAt                  *float64                                                              `json:"transferCompletedAt,omitempty"`
+	TransferStartedAt                    *float64                                                              `json:"transferStartedAt,omitempty"`
+	TransferToAccountID                  *string                                                               `json:"transferToAccountId,omitempty"`
+	TransferredFromAccountID             *string                                                               `json:"transferredFromAccountId,omitempty"`
+	UpdatedAt                            *float64                                                              `json:"updatedAt,omitempty"`
+	Live                                 *bool                                                                 `json:"live,omitempty"`
+	EnablePreviewFeedback                optionalnullable.OptionalNullable[bool]                               `json:"enablePreviewFeedback,omitempty"`
+	EnableProductionFeedback             optionalnullable.OptionalNullable[bool]                               `json:"enableProductionFeedback,omitempty"`
+	Permissions                          *UpdateProjectPermissions                                             `json:"permissions,omitempty"`
+	LastRollbackTarget                   optionalnullable.OptionalNullable[UpdateProjectLastRollbackTarget]    `json:"lastRollbackTarget,omitempty"`
+	LastAliasRequest                     optionalnullable.OptionalNullable[UpdateProjectLastAliasRequest]      `json:"lastAliasRequest,omitempty"`
+	ProtectionBypass                     map[string]UpdateProjectProtectionBypassUnion                         `json:"protectionBypass,omitempty"`
+	HasActiveBranches                    *bool                                                                 `json:"hasActiveBranches,omitempty"`
+	TrustedIps                           optionalnullable.OptionalNullable[UpdateProjectTrustedIpsUnion]       `json:"trustedIps,omitempty"`
+	GitComments                          *UpdateProjectGitComments                                             `json:"gitComments,omitempty"`
+	GitProviderOptions                   *UpdateProjectGitProviderOptions                                      `json:"gitProviderOptions,omitempty"`
+	Paused                               *bool                                                                 `json:"paused,omitempty"`
+	ConcurrencyBucketName                *string                                                               `json:"concurrencyBucketName,omitempty"`
+	WebAnalytics                         *UpdateProjectWebAnalytics                                            `json:"webAnalytics,omitempty"`
+	Security                             *UpdateProjectSecurity                                                `json:"security,omitempty"`
+	OidcTokenConfig                      *UpdateProjectOidcTokenConfigResponse                                 `json:"oidcTokenConfig,omitempty"`
+	Tier                                 *string                                                               `json:"tier,omitempty"`
+	FlatRateTier                         *UpdateProjectFlatRateTier                                            `json:"flatRateTier,omitempty"`
+	UsageStatus                          *UpdateProjectUsageStatus                                             `json:"usageStatus,omitempty"`
+	Features                             *UpdateProjectFeatures                                                `json:"features,omitempty"`
+	V0                                   *bool                                                                 `json:"v0,omitempty"`
+	V0Created                            *bool                                                                 `json:"v0Created,omitempty"`
+	Abuse                                *UpdateProjectAbuse                                                   `json:"abuse,omitempty"`
+	InternalRoutes                       []UpdateProjectInternalRouteUnion                                     `json:"internalRoutes,omitempty"`
+	HasDeployments                       *bool                                                                 `json:"hasDeployments,omitempty"`
+	DismissedToasts                      []UpdateProjectDismissedToastResponse                                 `json:"dismissedToasts,omitempty"`
+	ProtectedSourcemaps                  *bool                                                                 `json:"protectedSourcemaps,omitempty"`
 }
 
 func (o *UpdateProjectResponseBody) GetAccountID() string {
@@ -4130,6 +4046,13 @@ func (o *UpdateProjectResponseBody) GetLinkGitlab() *UpdateProjectLinkGitlab {
 func (o *UpdateProjectResponseBody) GetLinkBitbucket() *UpdateProjectLinkBitbucket {
 	if v := o.GetLink(); v != nil {
 		return v.UpdateProjectLinkBitbucket
+	}
+	return nil
+}
+
+func (o *UpdateProjectResponseBody) GetLinkVercel() *UpdateProjectLinkVercel {
+	if v := o.GetLink(); v != nil {
+		return v.UpdateProjectLinkVercel
 	}
 	return nil
 }
@@ -4398,13 +4321,6 @@ func (o *UpdateProjectResponseBody) GetTrustedIps() optionalnullable.OptionalNul
 		return nil
 	}
 	return o.TrustedIps
-}
-
-func (o *UpdateProjectResponseBody) GetTrustedOidcProviders() optionalnullable.OptionalNullable[UpdateProjectTrustedOidcProvidersResponse] {
-	if o == nil {
-		return nil
-	}
-	return o.TrustedOidcProviders
 }
 
 func (o *UpdateProjectResponseBody) GetGitComments() *UpdateProjectGitComments {

@@ -5,7 +5,7 @@ Present when deployment was created with VERCEL_MANUAL_PROVISIONING=true. The de
 ## Example Usage
 
 ```typescript
-import { ResponseBodyManualProvisioning } from "@vercel/sdk/models/responsebodyorigin.js";
+import { ResponseBodyManualProvisioning } from "@vercel/sdk/models/responsebodyproject.js";
 
 let value: ResponseBodyManualProvisioning = {
   state: "PENDING",

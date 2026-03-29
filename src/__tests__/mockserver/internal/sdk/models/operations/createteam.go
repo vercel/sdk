@@ -45,8 +45,8 @@ func (o *Utm) GetUtmTerm() *string {
 	return o.UtmTerm
 }
 
-// Attribution information for the session or current page
-type Attribution struct {
+// CreateTeamAttribution - Attribution information for the session or current page
+type CreateTeamAttribution struct {
 	// Session referrer
 	SessionReferrer *string `json:"sessionReferrer,omitempty"`
 	// Session landing page
@@ -56,28 +56,28 @@ type Attribution struct {
 	Utm                      *Utm    `json:"utm,omitempty"`
 }
 
-func (o *Attribution) GetSessionReferrer() *string {
+func (o *CreateTeamAttribution) GetSessionReferrer() *string {
 	if o == nil {
 		return nil
 	}
 	return o.SessionReferrer
 }
 
-func (o *Attribution) GetLandingPage() *string {
+func (o *CreateTeamAttribution) GetLandingPage() *string {
 	if o == nil {
 		return nil
 	}
 	return o.LandingPage
 }
 
-func (o *Attribution) GetPageBeforeConversionPage() *string {
+func (o *CreateTeamAttribution) GetPageBeforeConversionPage() *string {
 	if o == nil {
 		return nil
 	}
 	return o.PageBeforeConversionPage
 }
 
-func (o *Attribution) GetUtm() *Utm {
+func (o *CreateTeamAttribution) GetUtm() *Utm {
 	if o == nil {
 		return nil
 	}
@@ -90,7 +90,7 @@ type CreateTeamRequest struct {
 	// The desired name for the Team. It will be generated from the provided slug if nothing is provided
 	Name *string `json:"name,omitempty"`
 	// Attribution information for the session or current page
-	Attribution *Attribution `json:"attribution,omitempty"`
+	Attribution *CreateTeamAttribution `json:"attribution,omitempty"`
 }
 
 func (o *CreateTeamRequest) GetSlug() string {
@@ -107,7 +107,7 @@ func (o *CreateTeamRequest) GetName() *string {
 	return o.Name
 }
 
-func (o *CreateTeamRequest) GetAttribution() *Attribution {
+func (o *CreateTeamRequest) GetAttribution() *CreateTeamAttribution {
 	if o == nil {
 		return nil
 	}

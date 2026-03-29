@@ -53,3 +53,18 @@ const value: models.GitRepo3 = {
 };
 ```
 
+### `models.GitRepo4`
+
+```typescript
+const value: models.GitRepo4 = {
+  org: "<value>",
+  repo: "<value>",
+  type: "vercel",
+  path: "/private",
+  defaultBranch: "<value>",
+  name: "<value>",
+  private: true,
+  ownerType: "team",
+};
+```
+

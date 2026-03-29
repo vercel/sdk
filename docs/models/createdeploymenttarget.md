@@ -5,7 +5,7 @@ If defined, either `staging` if a staging alias in the format `<project>.<team>.
 ## Example Usage
 
 ```typescript
-import { CreateDeploymentTarget } from "@vercel/sdk/models/createdeploymentop.js";
+import { CreateDeploymentTarget } from "@vercel/sdk/models/createdeploymentvaluedeployments2.js";
 
 let value: CreateDeploymentTarget = "production";
 ```

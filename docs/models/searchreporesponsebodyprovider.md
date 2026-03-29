@@ -5,11 +5,11 @@
 ```typescript
 import { SearchRepoResponseBodyProvider } from "@vercel/sdk/models/searchrepoop.js";
 
-let value: SearchRepoResponseBodyProvider = "bitbucket";
+let value: SearchRepoResponseBodyProvider = "vercel";
 ```
 
 ## Values
 
 ```typescript
-"github" | "github-limited" | "github-custom-host" | "gitlab" | "bitbucket"
+"github" | "github-limited" | "github-custom-host" | "gitlab" | "bitbucket" | "vercel"
 ```

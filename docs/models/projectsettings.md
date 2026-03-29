@@ -5,7 +5,7 @@ Project settings that will be applied to the deployment. It is required for the 
 ## Example Usage
 
 ```typescript
-import { ProjectSettings } from "@vercel/sdk/models/createdeploymentop.js";
+import { ProjectSettings } from "@vercel/sdk/models/createdeploymentvaluedeployments2.js";
 
 let value: ProjectSettings = {
   buildCommand: "next build",

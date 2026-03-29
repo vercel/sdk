@@ -93,3 +93,16 @@ const value: models.GetProjectsLinkProjectsResponse5 = {
 };
 ```
 
+### `models.GetProjectsLinkProjectsResponse6`
+
+```typescript
+const value: models.GetProjectsLinkProjectsResponse6 = {
+  org: "<value>",
+  repo: "<value>",
+  type: "vercel",
+  deployHooks: [],
+  gitCredentialId: "<id>",
+  productionBranch: "<value>",
+};
+```
+

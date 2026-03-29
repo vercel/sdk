@@ -20,10 +20,8 @@ import {
   CancelDeploymentRequest,
   CancelDeploymentResponseBody,
 } from "../models/canceldeploymentop.js";
-import {
-  CreateDeploymentRequest,
-  CreateDeploymentResponseBody,
-} from "../models/createdeploymentop.js";
+import { CreateDeploymentResponseBody } from "../models/createdeploymentresponsebody.js";
+import { CreateDeploymentRequest } from "../models/createdeploymentvaluedeployments2.js";
 import {
   DeleteDeploymentRequest,
   DeleteDeploymentResponseBody,
@@ -40,7 +38,7 @@ import {
   GetDeploymentsResponseBody,
 } from "../models/getdeploymentsop.js";
 import { ListDeploymentFilesRequest } from "../models/listdeploymentfilesop.js";
-import { GetDeploymentRequest } from "../models/responsebodyorigin.js";
+import { GetDeploymentRequest } from "../models/responsebodyproject.js";
 import { UpdateIntegrationDeploymentActionRequest } from "../models/updateintegrationdeploymentactionop.js";
 import {
   UploadFileRequest,

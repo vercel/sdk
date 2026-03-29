@@ -5390,6 +5390,7 @@ func (o *CredentialGithubOauthCustomHost) GetID() string {
 type CredentialType string
 
 const (
+	CredentialTypeVercel             CredentialType = "vercel"
 	CredentialTypeGitlab             CredentialType = "gitlab"
 	CredentialTypeBitbucket          CredentialType = "bitbucket"
 	CredentialTypeGoogle             CredentialType = "google"
@@ -5408,6 +5409,8 @@ func (e *CredentialType) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
+	case "vercel":
+		fallthrough
 	case "gitlab":
 		fallthrough
 	case "bitbucket":
@@ -5461,6 +5464,7 @@ func (o *Credential) GetID() string {
 type CredentialUnionType string
 
 const (
+	CredentialUnionTypeVercel                CredentialUnionType = "vercel"
 	CredentialUnionTypeGitlab                CredentialUnionType = "gitlab"
 	CredentialUnionTypeBitbucket             CredentialUnionType = "bitbucket"
 	CredentialUnionTypeGoogle                CredentialUnionType = "google"
@@ -5476,6 +5480,18 @@ type CredentialUnion struct {
 	CredentialGithubOauthCustomHost *CredentialGithubOauthCustomHost `queryParam:"inline"`
 
 	Type CredentialUnionType
+}
+
+func CreateCredentialUnionVercel(vercel Credential) CredentialUnion {
+	typ := CredentialUnionTypeVercel
+
+	typStr := CredentialType(typ)
+	vercel.Type = typStr
+
+	return CredentialUnion{
+		Credential: &vercel,
+		Type:       typ,
+	}
 }
 
 func CreateCredentialUnionGitlab(gitlab Credential) CredentialUnion {
@@ -5586,6 +5602,15 @@ func (u *CredentialUnion) UnmarshalJSON(data []byte) error {
 	}
 
 	switch dis.Type {
+	case "vercel":
+		credential := new(Credential)
+		if err := utils.UnmarshalJSON(data, &credential, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == vercel) type Credential within CredentialUnion: %w", string(data), err)
+		}
+
+		u.Credential = credential
+		u.Type = CredentialUnionTypeVercel
+		return nil
 	case "gitlab":
 		credential := new(Credential)
 		if err := utils.UnmarshalJSON(data, &credential, "", true, nil); err != nil {
@@ -5916,6 +5941,7 @@ func (u UserEventImportFlowGitNamespaceID) MarshalJSON() ([]byte, error) {
 type UserEventImportFlowGitProvider string
 
 const (
+	UserEventImportFlowGitProviderVercel           UserEventImportFlowGitProvider = "vercel"
 	UserEventImportFlowGitProviderGithub           UserEventImportFlowGitProvider = "github"
 	UserEventImportFlowGitProviderGithubLimited    UserEventImportFlowGitProvider = "github-limited"
 	UserEventImportFlowGitProviderGithubCustomHost UserEventImportFlowGitProvider = "github-custom-host"
@@ -5932,6 +5958,8 @@ func (e *UserEventImportFlowGitProvider) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
+	case "vercel":
+		fallthrough
 	case "github":
 		fallthrough
 	case "github-limited":

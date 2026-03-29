@@ -12,6 +12,201 @@ import (
 	"mockserver/internal/sdk/utils"
 )
 
+type ProjectResourceConfig1 struct {
+	ElasticConcurrencyEnabled      *bool                                            `json:"elasticConcurrencyEnabled,omitempty"`
+	Fluid                          *bool                                            `json:"fluid,omitempty"`
+	FunctionDefaultRegions         []string                                         `json:"functionDefaultRegions"`
+	FunctionDefaultTimeout         *float64                                         `json:"functionDefaultTimeout,omitempty"`
+	FunctionDefaultMemoryType      *ProjectResourceConfigFunctionDefaultMemoryType1 `json:"functionDefaultMemoryType,omitempty"`
+	FunctionZeroConfigFailover     *bool                                            `json:"functionZeroConfigFailover,omitempty"`
+	BuildMachineType               *ProjectResourceConfigBuildMachineType1          `json:"buildMachineType,omitempty"`
+	BuildMachineSelection          *ProjectResourceConfigBuildMachineSelection1     `json:"buildMachineSelection,omitempty"`
+	BuildMachineElasticLastUpdated *float64                                         `json:"buildMachineElasticLastUpdated,omitempty"`
+	IsNSNBDisabled                 *bool                                            `json:"isNSNBDisabled,omitempty"`
+	BuildQueue                     *ProjectResourceConfigBuildQueue1                `json:"buildQueue,omitempty"`
+}
+
+func (p ProjectResourceConfig1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *ProjectResourceConfig1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"functionDefaultRegions"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ProjectResourceConfig1) GetElasticConcurrencyEnabled() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ElasticConcurrencyEnabled
+}
+
+func (o *ProjectResourceConfig1) GetFluid() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Fluid
+}
+
+func (o *ProjectResourceConfig1) GetFunctionDefaultRegions() []string {
+	if o == nil {
+		return []string{}
+	}
+	return o.FunctionDefaultRegions
+}
+
+func (o *ProjectResourceConfig1) GetFunctionDefaultTimeout() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.FunctionDefaultTimeout
+}
+
+func (o *ProjectResourceConfig1) GetFunctionDefaultMemoryType() *ProjectResourceConfigFunctionDefaultMemoryType1 {
+	if o == nil {
+		return nil
+	}
+	return o.FunctionDefaultMemoryType
+}
+
+func (o *ProjectResourceConfig1) GetFunctionZeroConfigFailover() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.FunctionZeroConfigFailover
+}
+
+func (o *ProjectResourceConfig1) GetBuildMachineType() *ProjectResourceConfigBuildMachineType1 {
+	if o == nil {
+		return nil
+	}
+	return o.BuildMachineType
+}
+
+func (o *ProjectResourceConfig1) GetBuildMachineSelection() *ProjectResourceConfigBuildMachineSelection1 {
+	if o == nil {
+		return nil
+	}
+	return o.BuildMachineSelection
+}
+
+func (o *ProjectResourceConfig1) GetBuildMachineElasticLastUpdated() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.BuildMachineElasticLastUpdated
+}
+
+func (o *ProjectResourceConfig1) GetIsNSNBDisabled() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IsNSNBDisabled
+}
+
+func (o *ProjectResourceConfig1) GetBuildQueue() *ProjectResourceConfigBuildQueue1 {
+	if o == nil {
+		return nil
+	}
+	return o.BuildQueue
+}
+
+// ProjectStage1 - An array of all the stages required during a deployment release. Each stage defines a target percentage and advancement rules. The final stage must always have targetPercentage: 100.
+type ProjectStage1 struct {
+	// The percentage of traffic to serve to the canary deployment (0-100)
+	TargetPercentage float64 `json:"targetPercentage"`
+	// Whether or not this stage requires manual approval to proceed
+	RequireApproval *bool `json:"requireApproval,omitempty"`
+	// Duration in minutes for automatic advancement to the next stage
+	Duration *float64 `json:"duration,omitempty"`
+	// Whether to linearly shift traffic over the duration of this stage
+	LinearShift *bool `json:"linearShift,omitempty"`
+}
+
+func (p ProjectStage1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *ProjectStage1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"targetPercentage"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ProjectStage1) GetTargetPercentage() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.TargetPercentage
+}
+
+func (o *ProjectStage1) GetRequireApproval() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.RequireApproval
+}
+
+func (o *ProjectStage1) GetDuration() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Duration
+}
+
+func (o *ProjectStage1) GetLinearShift() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.LinearShift
+}
+
+// ProjectRollingRelease1 - Project-level rolling release configuration that defines how deployments should be gradually rolled out
+type ProjectRollingRelease1 struct {
+	// The environment that the release targets, currently only supports production. Adding in case we want to configure with alias groups or custom environments.
+	Target string `json:"target"`
+	// An array of all the stages required during a deployment release. Each stage defines a target percentage and advancement rules. The final stage must always have targetPercentage: 100.
+	Stages optionalnullable.OptionalNullable[[]ProjectStage1] `json:"stages,omitempty"`
+	// Whether the request served by a canary deployment should return a header indicating a canary was served. Defaults to `false` when omitted.
+	CanaryResponseHeader *bool `json:"canaryResponseHeader,omitempty"`
+}
+
+func (p ProjectRollingRelease1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *ProjectRollingRelease1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"target"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ProjectRollingRelease1) GetTarget() string {
+	if o == nil {
+		return ""
+	}
+	return o.Target
+}
+
+func (o *ProjectRollingRelease1) GetStages() optionalnullable.OptionalNullable[[]ProjectStage1] {
+	if o == nil {
+		return nil
+	}
+	return o.Stages
+}
+
+func (o *ProjectRollingRelease1) GetCanaryResponseHeader() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.CanaryResponseHeader
+}
+
 type ProjectSpeedInsights1 struct {
 	ID         string   `json:"id"`
 	EnabledAt  *float64 `json:"enabledAt,omitempty"`
@@ -503,96 +698,6 @@ func (o *ProjectTargets1) GetWithCache() *bool {
 		return nil
 	}
 	return o.WithCache
-}
-
-type ProjectProjects1 struct {
-	Label        *string  `json:"label,omitempty"`
-	Environments []string `json:"environments"`
-}
-
-func (p ProjectProjects1) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *ProjectProjects1) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"environments"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *ProjectProjects1) GetLabel() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Label
-}
-
-func (o *ProjectProjects1) GetEnvironments() []string {
-	if o == nil {
-		return []string{}
-	}
-	return o.Environments
-}
-
-type ProjectProviders1 struct {
-	Label  *string             `json:"label,omitempty"`
-	Claims map[string][]string `json:"claims"`
-}
-
-func (p ProjectProviders1) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *ProjectProviders1) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"claims"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *ProjectProviders1) GetLabel() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Label
-}
-
-func (o *ProjectProviders1) GetClaims() map[string][]string {
-	if o == nil {
-		return map[string][]string{}
-	}
-	return o.Claims
-}
-
-type ProjectTrustedOidcProviders1 struct {
-	Projects  map[string]ProjectProjects1  `json:"projects"`
-	Providers map[string]ProjectProviders1 `json:"providers"`
-}
-
-func (p ProjectTrustedOidcProviders1) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *ProjectTrustedOidcProviders1) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"projects", "providers"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *ProjectTrustedOidcProviders1) GetProjects() map[string]ProjectProjects1 {
-	if o == nil {
-		return map[string]ProjectProjects1{}
-	}
-	return o.Projects
-}
-
-func (o *ProjectTrustedOidcProviders1) GetProviders() map[string]ProjectProviders1 {
-	if o == nil {
-		return map[string]ProjectProviders1{}
-	}
-	return o.Providers
 }
 
 type ProjectGitComments1 struct {
@@ -4485,32 +4590,31 @@ type GetProjectsProject1 struct {
 	PublicSource         optionalnullable.OptionalNullable[bool]                       `json:"publicSource,omitempty"`
 	ResourceConfig       ProjectResourceConfig1                                        `json:"resourceConfig"`
 	// Project-level rolling release configuration that defines how deployments should be gradually rolled out
-	RollingRelease                       optionalnullable.OptionalNullable[ProjectRollingRelease1]       `json:"rollingRelease,omitempty"`
-	RootDirectory                        optionalnullable.OptionalNullable[string]                       `json:"rootDirectory,omitempty"`
-	ServerlessFunctionRegion             string                                                          `json:"serverlessFunctionRegion"`
-	ServerlessFunctionZeroConfigFailover *bool                                                           `json:"serverlessFunctionZeroConfigFailover,omitempty"`
-	SpeedInsights                        *ProjectSpeedInsights1                                          `json:"speedInsights,omitempty"`
-	SkipGitConnectDuringLink             *bool                                                           `json:"skipGitConnectDuringLink,omitempty"`
-	SourceFilesOutsideRootDirectory      *bool                                                           `json:"sourceFilesOutsideRootDirectory,omitempty"`
-	SsoProtection                        optionalnullable.OptionalNullable[ProjectSsoProtection1]        `json:"ssoProtection,omitempty"`
-	Targets                              map[string]*ProjectTargets1                                     `json:"targets,omitempty"`
-	TransferCompletedAt                  *float64                                                        `json:"transferCompletedAt,omitempty"`
-	TransferStartedAt                    *float64                                                        `json:"transferStartedAt,omitempty"`
-	TransferToAccountID                  *string                                                         `json:"transferToAccountId,omitempty"`
-	TransferredFromAccountID             *string                                                         `json:"transferredFromAccountId,omitempty"`
-	TrustedOidcProviders                 optionalnullable.OptionalNullable[ProjectTrustedOidcProviders1] `json:"trustedOidcProviders,omitempty"`
-	UpdatedAt                            *float64                                                        `json:"updatedAt,omitempty"`
-	Live                                 *bool                                                           `json:"live,omitempty"`
-	HasActiveBranches                    *bool                                                           `json:"hasActiveBranches,omitempty"`
-	GitComments                          *ProjectGitComments1                                            `json:"gitComments,omitempty"`
-	GitProviderOptions                   *ProjectGitProviderOptions1                                     `json:"gitProviderOptions,omitempty"`
-	Paused                               *bool                                                           `json:"paused,omitempty"`
-	WebAnalytics                         *ProjectWebAnalytics1                                           `json:"webAnalytics,omitempty"`
-	Security                             *ProjectSecurity1                                               `json:"security,omitempty"`
-	OidcTokenConfig                      *ProjectOidcTokenConfig1                                        `json:"oidcTokenConfig,omitempty"`
-	Tier                                 *string                                                         `json:"tier,omitempty"`
-	Abuse                                *ProjectAbuse1                                                  `json:"abuse,omitempty"`
-	InternalRoutes                       []ProjectInternalRouteUnion1                                    `json:"internalRoutes,omitempty"`
+	RollingRelease                       optionalnullable.OptionalNullable[ProjectRollingRelease1] `json:"rollingRelease,omitempty"`
+	RootDirectory                        optionalnullable.OptionalNullable[string]                 `json:"rootDirectory,omitempty"`
+	ServerlessFunctionRegion             string                                                    `json:"serverlessFunctionRegion"`
+	ServerlessFunctionZeroConfigFailover *bool                                                     `json:"serverlessFunctionZeroConfigFailover,omitempty"`
+	SpeedInsights                        *ProjectSpeedInsights1                                    `json:"speedInsights,omitempty"`
+	SkipGitConnectDuringLink             *bool                                                     `json:"skipGitConnectDuringLink,omitempty"`
+	SourceFilesOutsideRootDirectory      *bool                                                     `json:"sourceFilesOutsideRootDirectory,omitempty"`
+	SsoProtection                        optionalnullable.OptionalNullable[ProjectSsoProtection1]  `json:"ssoProtection,omitempty"`
+	Targets                              map[string]*ProjectTargets1                               `json:"targets,omitempty"`
+	TransferCompletedAt                  *float64                                                  `json:"transferCompletedAt,omitempty"`
+	TransferStartedAt                    *float64                                                  `json:"transferStartedAt,omitempty"`
+	TransferToAccountID                  *string                                                   `json:"transferToAccountId,omitempty"`
+	TransferredFromAccountID             *string                                                   `json:"transferredFromAccountId,omitempty"`
+	UpdatedAt                            *float64                                                  `json:"updatedAt,omitempty"`
+	Live                                 *bool                                                     `json:"live,omitempty"`
+	HasActiveBranches                    *bool                                                     `json:"hasActiveBranches,omitempty"`
+	GitComments                          *ProjectGitComments1                                      `json:"gitComments,omitempty"`
+	GitProviderOptions                   *ProjectGitProviderOptions1                               `json:"gitProviderOptions,omitempty"`
+	Paused                               *bool                                                     `json:"paused,omitempty"`
+	WebAnalytics                         *ProjectWebAnalytics1                                     `json:"webAnalytics,omitempty"`
+	Security                             *ProjectSecurity1                                         `json:"security,omitempty"`
+	OidcTokenConfig                      *ProjectOidcTokenConfig1                                  `json:"oidcTokenConfig,omitempty"`
+	Tier                                 *string                                                   `json:"tier,omitempty"`
+	Abuse                                *ProjectAbuse1                                            `json:"abuse,omitempty"`
+	InternalRoutes                       []ProjectInternalRouteUnion1                              `json:"internalRoutes,omitempty"`
 }
 
 func (g GetProjectsProject1) MarshalJSON() ([]byte, error) {
@@ -4713,6 +4817,13 @@ func (o *GetProjectsProject1) GetLinkBitbucket() *LinkProjectBitbucket1 {
 	return nil
 }
 
+func (o *GetProjectsProject1) GetLinkVercel() *LinkProjectVercel1 {
+	if v := o.GetLink(); v != nil {
+		return v.LinkProjectVercel1
+	}
+	return nil
+}
+
 func (o *GetProjectsProject1) GetName() string {
 	if o == nil {
 		return ""
@@ -4844,13 +4955,6 @@ func (o *GetProjectsProject1) GetTransferredFromAccountID() *string {
 		return nil
 	}
 	return o.TransferredFromAccountID
-}
-
-func (o *GetProjectsProject1) GetTrustedOidcProviders() optionalnullable.OptionalNullable[ProjectTrustedOidcProviders1] {
-	if o == nil {
-		return nil
-	}
-	return o.TrustedOidcProviders
 }
 
 func (o *GetProjectsProject1) GetUpdatedAt() *float64 {

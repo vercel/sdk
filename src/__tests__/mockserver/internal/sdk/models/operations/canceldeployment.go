@@ -1727,6 +1727,91 @@ func (e *CancelDeploymentChecksConclusion) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type CancelDeploymentGitSourceTypeVercel2 string
+
+const (
+	CancelDeploymentGitSourceTypeVercel2Vercel CancelDeploymentGitSourceTypeVercel2 = "vercel"
+)
+
+func (e CancelDeploymentGitSourceTypeVercel2) ToPointer() *CancelDeploymentGitSourceTypeVercel2 {
+	return &e
+}
+func (e *CancelDeploymentGitSourceTypeVercel2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "vercel":
+		*e = CancelDeploymentGitSourceTypeVercel2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CancelDeploymentGitSourceTypeVercel2: %v", v)
+	}
+}
+
+type CancelDeploymentGitSourceVercel2 struct {
+	Type         CancelDeploymentGitSourceTypeVercel2 `json:"type"`
+	Ref          string                               `json:"ref"`
+	Sha          string                               `json:"sha"`
+	Org          string                               `json:"org"`
+	Repo         string                               `json:"repo"`
+	RepoPushedAt *float64                             `json:"repoPushedAt,omitempty"`
+}
+
+func (c CancelDeploymentGitSourceVercel2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CancelDeploymentGitSourceVercel2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"type", "ref", "sha", "org", "repo"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CancelDeploymentGitSourceVercel2) GetType() CancelDeploymentGitSourceTypeVercel2 {
+	if o == nil {
+		return CancelDeploymentGitSourceTypeVercel2("")
+	}
+	return o.Type
+}
+
+func (o *CancelDeploymentGitSourceVercel2) GetRef() string {
+	if o == nil {
+		return ""
+	}
+	return o.Ref
+}
+
+func (o *CancelDeploymentGitSourceVercel2) GetSha() string {
+	if o == nil {
+		return ""
+	}
+	return o.Sha
+}
+
+func (o *CancelDeploymentGitSourceVercel2) GetOrg() string {
+	if o == nil {
+		return ""
+	}
+	return o.Org
+}
+
+func (o *CancelDeploymentGitSourceVercel2) GetRepo() string {
+	if o == nil {
+		return ""
+	}
+	return o.Repo
+}
+
+func (o *CancelDeploymentGitSourceVercel2) GetRepoPushedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.RepoPushedAt
+}
+
 type CancelDeploymentGitSourceTypeBitbucket3 string
 
 const (
@@ -2220,6 +2305,99 @@ func (o *CancelDeploymentGitSourceCustom) GetGitURL() string {
 		return ""
 	}
 	return o.GitURL
+}
+
+type CancelDeploymentGitSourceTypeVercel1 string
+
+const (
+	CancelDeploymentGitSourceTypeVercel1Vercel CancelDeploymentGitSourceTypeVercel1 = "vercel"
+)
+
+func (e CancelDeploymentGitSourceTypeVercel1) ToPointer() *CancelDeploymentGitSourceTypeVercel1 {
+	return &e
+}
+func (e *CancelDeploymentGitSourceTypeVercel1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "vercel":
+		*e = CancelDeploymentGitSourceTypeVercel1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CancelDeploymentGitSourceTypeVercel1: %v", v)
+	}
+}
+
+type CancelDeploymentGitSourceVercel1 struct {
+	Type         CancelDeploymentGitSourceTypeVercel1       `json:"type"`
+	Org          *string                                    `json:"org,omitempty"`
+	Repo         *string                                    `json:"repo,omitempty"`
+	Sha          string                                     `json:"sha"`
+	RepoPushedAt *float64                                   `json:"repoPushedAt,omitempty"`
+	Ref          optionalnullable.OptionalNullable[string]  `json:"ref,omitempty"`
+	PrID         optionalnullable.OptionalNullable[float64] `json:"prId,omitempty"`
+}
+
+func (c CancelDeploymentGitSourceVercel1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CancelDeploymentGitSourceVercel1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"type", "sha"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CancelDeploymentGitSourceVercel1) GetType() CancelDeploymentGitSourceTypeVercel1 {
+	if o == nil {
+		return CancelDeploymentGitSourceTypeVercel1("")
+	}
+	return o.Type
+}
+
+func (o *CancelDeploymentGitSourceVercel1) GetOrg() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Org
+}
+
+func (o *CancelDeploymentGitSourceVercel1) GetRepo() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Repo
+}
+
+func (o *CancelDeploymentGitSourceVercel1) GetSha() string {
+	if o == nil {
+		return ""
+	}
+	return o.Sha
+}
+
+func (o *CancelDeploymentGitSourceVercel1) GetRepoPushedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.RepoPushedAt
+}
+
+func (o *CancelDeploymentGitSourceVercel1) GetRef() optionalnullable.OptionalNullable[string] {
+	if o == nil {
+		return nil
+	}
+	return o.Ref
+}
+
+func (o *CancelDeploymentGitSourceVercel1) GetPrID() optionalnullable.OptionalNullable[float64] {
+	if o == nil {
+		return nil
+	}
+	return o.PrID
 }
 
 type CancelDeploymentGitSourceTypeBitbucket2 string
@@ -3235,12 +3413,14 @@ const (
 	CancelDeploymentGitSourceUnionTypeCancelDeploymentGitSourceGitlab1           CancelDeploymentGitSourceUnionType = "cancelDeployment_gitSource_Gitlab_1"
 	CancelDeploymentGitSourceUnionTypeCancelDeploymentGitSourceBitbucket1        CancelDeploymentGitSourceUnionType = "cancelDeployment_gitSource_Bitbucket_1"
 	CancelDeploymentGitSourceUnionTypeCancelDeploymentGitSourceBitbucket2        CancelDeploymentGitSourceUnionType = "cancelDeployment_gitSource_Bitbucket_2"
+	CancelDeploymentGitSourceUnionTypeCancelDeploymentGitSourceVercel1           CancelDeploymentGitSourceUnionType = "cancelDeployment_gitSource_Vercel_1"
 	CancelDeploymentGitSourceUnionTypeCancelDeploymentGitSourceCustom            CancelDeploymentGitSourceUnionType = "cancelDeployment_gitSource_Custom"
 	CancelDeploymentGitSourceUnionTypeCancelDeploymentGitSourceGithub3           CancelDeploymentGitSourceUnionType = "cancelDeployment_gitSource_Github_3"
 	CancelDeploymentGitSourceUnionTypeCancelDeploymentGitSourceGithubCustomHost3 CancelDeploymentGitSourceUnionType = "cancelDeployment_gitSource_GithubCustomHost_3"
 	CancelDeploymentGitSourceUnionTypeCancelDeploymentGitSourceGithubLimited3    CancelDeploymentGitSourceUnionType = "cancelDeployment_gitSource_GithubLimited_3"
 	CancelDeploymentGitSourceUnionTypeCancelDeploymentGitSourceGitlab2           CancelDeploymentGitSourceUnionType = "cancelDeployment_gitSource_Gitlab_2"
 	CancelDeploymentGitSourceUnionTypeCancelDeploymentGitSourceBitbucket3        CancelDeploymentGitSourceUnionType = "cancelDeployment_gitSource_Bitbucket_3"
+	CancelDeploymentGitSourceUnionTypeCancelDeploymentGitSourceVercel2           CancelDeploymentGitSourceUnionType = "cancelDeployment_gitSource_Vercel_2"
 )
 
 type CancelDeploymentGitSourceUnion struct {
@@ -3253,12 +3433,14 @@ type CancelDeploymentGitSourceUnion struct {
 	CancelDeploymentGitSourceGitlab1           *CancelDeploymentGitSourceGitlab1           `queryParam:"inline"`
 	CancelDeploymentGitSourceBitbucket1        *CancelDeploymentGitSourceBitbucket1        `queryParam:"inline"`
 	CancelDeploymentGitSourceBitbucket2        *CancelDeploymentGitSourceBitbucket2        `queryParam:"inline"`
+	CancelDeploymentGitSourceVercel1           *CancelDeploymentGitSourceVercel1           `queryParam:"inline"`
 	CancelDeploymentGitSourceCustom            *CancelDeploymentGitSourceCustom            `queryParam:"inline"`
 	CancelDeploymentGitSourceGithub3           *CancelDeploymentGitSourceGithub3           `queryParam:"inline"`
 	CancelDeploymentGitSourceGithubCustomHost3 *CancelDeploymentGitSourceGithubCustomHost3 `queryParam:"inline"`
 	CancelDeploymentGitSourceGithubLimited3    *CancelDeploymentGitSourceGithubLimited3    `queryParam:"inline"`
 	CancelDeploymentGitSourceGitlab2           *CancelDeploymentGitSourceGitlab2           `queryParam:"inline"`
 	CancelDeploymentGitSourceBitbucket3        *CancelDeploymentGitSourceBitbucket3        `queryParam:"inline"`
+	CancelDeploymentGitSourceVercel2           *CancelDeploymentGitSourceVercel2           `queryParam:"inline"`
 
 	Type CancelDeploymentGitSourceUnionType
 }
@@ -3344,6 +3526,15 @@ func CreateCancelDeploymentGitSourceUnionCancelDeploymentGitSourceBitbucket2(can
 	}
 }
 
+func CreateCancelDeploymentGitSourceUnionCancelDeploymentGitSourceVercel1(cancelDeploymentGitSourceVercel1 CancelDeploymentGitSourceVercel1) CancelDeploymentGitSourceUnion {
+	typ := CancelDeploymentGitSourceUnionTypeCancelDeploymentGitSourceVercel1
+
+	return CancelDeploymentGitSourceUnion{
+		CancelDeploymentGitSourceVercel1: &cancelDeploymentGitSourceVercel1,
+		Type:                             typ,
+	}
+}
+
 func CreateCancelDeploymentGitSourceUnionCancelDeploymentGitSourceCustom(cancelDeploymentGitSourceCustom CancelDeploymentGitSourceCustom) CancelDeploymentGitSourceUnion {
 	typ := CancelDeploymentGitSourceUnionTypeCancelDeploymentGitSourceCustom
 
@@ -3398,6 +3589,15 @@ func CreateCancelDeploymentGitSourceUnionCancelDeploymentGitSourceBitbucket3(can
 	}
 }
 
+func CreateCancelDeploymentGitSourceUnionCancelDeploymentGitSourceVercel2(cancelDeploymentGitSourceVercel2 CancelDeploymentGitSourceVercel2) CancelDeploymentGitSourceUnion {
+	typ := CancelDeploymentGitSourceUnionTypeCancelDeploymentGitSourceVercel2
+
+	return CancelDeploymentGitSourceUnion{
+		CancelDeploymentGitSourceVercel2: &cancelDeploymentGitSourceVercel2,
+		Type:                             typ,
+	}
+}
+
 func (u *CancelDeploymentGitSourceUnion) UnmarshalJSON(data []byte) error {
 
 	var cancelDeploymentGitSourceGithubCustomHost3 CancelDeploymentGitSourceGithubCustomHost3 = CancelDeploymentGitSourceGithubCustomHost3{}
@@ -3411,6 +3611,13 @@ func (u *CancelDeploymentGitSourceUnion) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &cancelDeploymentGitSourceBitbucket3, "", true, nil); err == nil {
 		u.CancelDeploymentGitSourceBitbucket3 = &cancelDeploymentGitSourceBitbucket3
 		u.Type = CancelDeploymentGitSourceUnionTypeCancelDeploymentGitSourceBitbucket3
+		return nil
+	}
+
+	var cancelDeploymentGitSourceVercel2 CancelDeploymentGitSourceVercel2 = CancelDeploymentGitSourceVercel2{}
+	if err := utils.UnmarshalJSON(data, &cancelDeploymentGitSourceVercel2, "", true, nil); err == nil {
+		u.CancelDeploymentGitSourceVercel2 = &cancelDeploymentGitSourceVercel2
+		u.Type = CancelDeploymentGitSourceUnionTypeCancelDeploymentGitSourceVercel2
 		return nil
 	}
 
@@ -3505,6 +3712,13 @@ func (u *CancelDeploymentGitSourceUnion) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
+	var cancelDeploymentGitSourceVercel1 CancelDeploymentGitSourceVercel1 = CancelDeploymentGitSourceVercel1{}
+	if err := utils.UnmarshalJSON(data, &cancelDeploymentGitSourceVercel1, "", true, nil); err == nil {
+		u.CancelDeploymentGitSourceVercel1 = &cancelDeploymentGitSourceVercel1
+		u.Type = CancelDeploymentGitSourceUnionTypeCancelDeploymentGitSourceVercel1
+		return nil
+	}
+
 	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CancelDeploymentGitSourceUnion", string(data))
 }
 
@@ -3545,6 +3759,10 @@ func (u CancelDeploymentGitSourceUnion) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.CancelDeploymentGitSourceBitbucket2, "", true)
 	}
 
+	if u.CancelDeploymentGitSourceVercel1 != nil {
+		return utils.MarshalJSON(u.CancelDeploymentGitSourceVercel1, "", true)
+	}
+
 	if u.CancelDeploymentGitSourceCustom != nil {
 		return utils.MarshalJSON(u.CancelDeploymentGitSourceCustom, "", true)
 	}
@@ -3567,6 +3785,10 @@ func (u CancelDeploymentGitSourceUnion) MarshalJSON() ([]byte, error) {
 
 	if u.CancelDeploymentGitSourceBitbucket3 != nil {
 		return utils.MarshalJSON(u.CancelDeploymentGitSourceBitbucket3, "", true)
+	}
+
+	if u.CancelDeploymentGitSourceVercel2 != nil {
+		return utils.MarshalJSON(u.CancelDeploymentGitSourceVercel2, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type CancelDeploymentGitSourceUnion: all fields are null")
@@ -6846,6 +7068,133 @@ func (u CancelDeploymentRouteUnion) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type CancelDeploymentRouteUnion: all fields are null")
 }
 
+type CancelDeploymentGitRepoTypeVercel string
+
+const (
+	CancelDeploymentGitRepoTypeVercelVercel CancelDeploymentGitRepoTypeVercel = "vercel"
+)
+
+func (e CancelDeploymentGitRepoTypeVercel) ToPointer() *CancelDeploymentGitRepoTypeVercel {
+	return &e
+}
+func (e *CancelDeploymentGitRepoTypeVercel) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "vercel":
+		*e = CancelDeploymentGitRepoTypeVercel(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CancelDeploymentGitRepoTypeVercel: %v", v)
+	}
+}
+
+type CancelDeploymentOwnerType4 string
+
+const (
+	CancelDeploymentOwnerType4Team CancelDeploymentOwnerType4 = "team"
+	CancelDeploymentOwnerType4User CancelDeploymentOwnerType4 = "user"
+)
+
+func (e CancelDeploymentOwnerType4) ToPointer() *CancelDeploymentOwnerType4 {
+	return &e
+}
+func (e *CancelDeploymentOwnerType4) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "team":
+		fallthrough
+	case "user":
+		*e = CancelDeploymentOwnerType4(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CancelDeploymentOwnerType4: %v", v)
+	}
+}
+
+type CancelDeploymentGitRepoVercel struct {
+	Org           string                            `json:"org"`
+	Repo          string                            `json:"repo"`
+	Type          CancelDeploymentGitRepoTypeVercel `json:"type"`
+	Path          string                            `json:"path"`
+	DefaultBranch string                            `json:"defaultBranch"`
+	Name          string                            `json:"name"`
+	Private       bool                              `json:"private"`
+	OwnerType     CancelDeploymentOwnerType4        `json:"ownerType"`
+}
+
+func (c CancelDeploymentGitRepoVercel) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CancelDeploymentGitRepoVercel) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"org", "repo", "type", "path", "defaultBranch", "name", "private", "ownerType"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CancelDeploymentGitRepoVercel) GetOrg() string {
+	if o == nil {
+		return ""
+	}
+	return o.Org
+}
+
+func (o *CancelDeploymentGitRepoVercel) GetRepo() string {
+	if o == nil {
+		return ""
+	}
+	return o.Repo
+}
+
+func (o *CancelDeploymentGitRepoVercel) GetType() CancelDeploymentGitRepoTypeVercel {
+	if o == nil {
+		return CancelDeploymentGitRepoTypeVercel("")
+	}
+	return o.Type
+}
+
+func (o *CancelDeploymentGitRepoVercel) GetPath() string {
+	if o == nil {
+		return ""
+	}
+	return o.Path
+}
+
+func (o *CancelDeploymentGitRepoVercel) GetDefaultBranch() string {
+	if o == nil {
+		return ""
+	}
+	return o.DefaultBranch
+}
+
+func (o *CancelDeploymentGitRepoVercel) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *CancelDeploymentGitRepoVercel) GetPrivate() bool {
+	if o == nil {
+		return false
+	}
+	return o.Private
+}
+
+func (o *CancelDeploymentGitRepoVercel) GetOwnerType() CancelDeploymentOwnerType4 {
+	if o == nil {
+		return CancelDeploymentOwnerType4("")
+	}
+	return o.OwnerType
+}
+
 type CancelDeploymentGitRepoTypeBitbucket string
 
 const (
@@ -7273,12 +7622,14 @@ const (
 	CancelDeploymentGitRepoUnionTypeGitlab    CancelDeploymentGitRepoUnionType = "gitlab"
 	CancelDeploymentGitRepoUnionTypeGithub    CancelDeploymentGitRepoUnionType = "github"
 	CancelDeploymentGitRepoUnionTypeBitbucket CancelDeploymentGitRepoUnionType = "bitbucket"
+	CancelDeploymentGitRepoUnionTypeVercel    CancelDeploymentGitRepoUnionType = "vercel"
 )
 
 type CancelDeploymentGitRepoUnion struct {
 	CancelDeploymentGitRepoGitlab    *CancelDeploymentGitRepoGitlab    `queryParam:"inline"`
 	CancelDeploymentGitRepoGithub    *CancelDeploymentGitRepoGithub    `queryParam:"inline"`
 	CancelDeploymentGitRepoBitbucket *CancelDeploymentGitRepoBitbucket `queryParam:"inline"`
+	CancelDeploymentGitRepoVercel    *CancelDeploymentGitRepoVercel    `queryParam:"inline"`
 
 	Type CancelDeploymentGitRepoUnionType
 }
@@ -7316,6 +7667,18 @@ func CreateCancelDeploymentGitRepoUnionBitbucket(bitbucket CancelDeploymentGitRe
 	return CancelDeploymentGitRepoUnion{
 		CancelDeploymentGitRepoBitbucket: &bitbucket,
 		Type:                             typ,
+	}
+}
+
+func CreateCancelDeploymentGitRepoUnionVercel(vercel CancelDeploymentGitRepoVercel) CancelDeploymentGitRepoUnion {
+	typ := CancelDeploymentGitRepoUnionTypeVercel
+
+	typStr := CancelDeploymentGitRepoTypeVercel(typ)
+	vercel.Type = typStr
+
+	return CancelDeploymentGitRepoUnion{
+		CancelDeploymentGitRepoVercel: &vercel,
+		Type:                          typ,
 	}
 }
 
@@ -7358,6 +7721,15 @@ func (u *CancelDeploymentGitRepoUnion) UnmarshalJSON(data []byte) error {
 		u.CancelDeploymentGitRepoBitbucket = cancelDeploymentGitRepoBitbucket
 		u.Type = CancelDeploymentGitRepoUnionTypeBitbucket
 		return nil
+	case "vercel":
+		cancelDeploymentGitRepoVercel := new(CancelDeploymentGitRepoVercel)
+		if err := utils.UnmarshalJSON(data, &cancelDeploymentGitRepoVercel, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == vercel) type CancelDeploymentGitRepoVercel within CancelDeploymentGitRepoUnion: %w", string(data), err)
+		}
+
+		u.CancelDeploymentGitRepoVercel = cancelDeploymentGitRepoVercel
+		u.Type = CancelDeploymentGitRepoUnionTypeVercel
+		return nil
 	}
 
 	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CancelDeploymentGitRepoUnion", string(data))
@@ -7374,6 +7746,10 @@ func (u CancelDeploymentGitRepoUnion) MarshalJSON() ([]byte, error) {
 
 	if u.CancelDeploymentGitRepoBitbucket != nil {
 		return utils.MarshalJSON(u.CancelDeploymentGitRepoBitbucket, "", true)
+	}
+
+	if u.CancelDeploymentGitRepoVercel != nil {
+		return utils.MarshalJSON(u.CancelDeploymentGitRepoVercel, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type CancelDeploymentGitRepoUnion: all fields are null")
@@ -8245,6 +8621,174 @@ func (o *CancelDeploymentSeatBlock) GetGitProvider() *CancelDeploymentGitProvide
 	return o.GitProvider
 }
 
+// CancelDeploymentCommitMeta - Commit metadata from the git commit author
+type CancelDeploymentCommitMeta struct {
+	// Email from git commit author
+	Email *string `json:"email,omitempty"`
+	// Name from git commit author
+	Name *string `json:"name,omitempty"`
+	// Whether the commit was signed/verified (GitHub only, others return undefined)
+	IsVerified *bool `json:"isVerified,omitempty"`
+}
+
+func (o *CancelDeploymentCommitMeta) GetEmail() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Email
+}
+
+func (o *CancelDeploymentCommitMeta) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+func (o *CancelDeploymentCommitMeta) GetIsVerified() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IsVerified
+}
+
+type CancelDeploymentIDType string
+
+const (
+	CancelDeploymentIDTypeStr    CancelDeploymentIDType = "str"
+	CancelDeploymentIDTypeNumber CancelDeploymentIDType = "number"
+)
+
+type CancelDeploymentID struct {
+	Str    *string  `queryParam:"inline"`
+	Number *float64 `queryParam:"inline"`
+
+	Type CancelDeploymentIDType
+}
+
+func CreateCancelDeploymentIDStr(str string) CancelDeploymentID {
+	typ := CancelDeploymentIDTypeStr
+
+	return CancelDeploymentID{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func CreateCancelDeploymentIDNumber(number float64) CancelDeploymentID {
+	typ := CancelDeploymentIDTypeNumber
+
+	return CancelDeploymentID{
+		Number: &number,
+		Type:   typ,
+	}
+}
+
+func (u *CancelDeploymentID) UnmarshalJSON(data []byte) error {
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
+		u.Str = &str
+		u.Type = CancelDeploymentIDTypeStr
+		return nil
+	}
+
+	var number float64 = float64(0)
+	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
+		u.Number = &number
+		u.Type = CancelDeploymentIDTypeNumber
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CancelDeploymentID", string(data))
+}
+
+func (u CancelDeploymentID) MarshalJSON() ([]byte, error) {
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	if u.Number != nil {
+		return utils.MarshalJSON(u.Number, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type CancelDeploymentID: all fields are null")
+}
+
+// CancelDeploymentGitUser - Git provider user associated with the commit author email (only set if resolved)
+type CancelDeploymentGitUser struct {
+	ID CancelDeploymentID `json:"id"`
+	// Git provider username/login
+	Login string `json:"login"`
+}
+
+func (o *CancelDeploymentGitUser) GetID() CancelDeploymentID {
+	if o == nil {
+		return CancelDeploymentID{}
+	}
+	return o.ID
+}
+
+func (o *CancelDeploymentGitUser) GetLogin() string {
+	if o == nil {
+		return ""
+	}
+	return o.Login
+}
+
+// CancelDeploymentVercelUser - Vercel user linked to the git provider account (only set if resolved)
+type CancelDeploymentVercelUser struct {
+	// Vercel user ID
+	ID string `json:"id"`
+	// Vercel username
+	Username string `json:"username"`
+}
+
+func (o *CancelDeploymentVercelUser) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *CancelDeploymentVercelUser) GetUsername() string {
+	if o == nil {
+		return ""
+	}
+	return o.Username
+}
+
+// CancelDeploymentAttribution - Attribution metadata for the deployment, linking commit author to git and Vercel users. Only populated when the `enable-deployment-attribution` flag is enabled.
+type CancelDeploymentAttribution struct {
+	// Commit metadata from the git commit author
+	CommitMeta *CancelDeploymentCommitMeta `json:"commitMeta,omitempty"`
+	// Git provider user associated with the commit author email (only set if resolved)
+	GitUser *CancelDeploymentGitUser `json:"gitUser,omitempty"`
+	// Vercel user linked to the git provider account (only set if resolved)
+	VercelUser *CancelDeploymentVercelUser `json:"vercelUser,omitempty"`
+}
+
+func (o *CancelDeploymentAttribution) GetCommitMeta() *CancelDeploymentCommitMeta {
+	if o == nil {
+		return nil
+	}
+	return o.CommitMeta
+}
+
+func (o *CancelDeploymentAttribution) GetGitUser() *CancelDeploymentGitUser {
+	if o == nil {
+		return nil
+	}
+	return o.GitUser
+}
+
+func (o *CancelDeploymentAttribution) GetVercelUser() *CancelDeploymentVercelUser {
+	if o == nil {
+		return nil
+	}
+	return o.VercelUser
+}
+
 // CancelDeploymentResponseBody - The private deployment representation of a Deployment.
 type CancelDeploymentResponseBody struct {
 	AliasAssignedAt           optionalnullable.OptionalNullable[CancelDeploymentAliasAssignedAt] `json:"aliasAssignedAt,omitempty"`
@@ -8368,6 +8912,8 @@ type CancelDeploymentResponseBody struct {
 	Checks *CancelDeploymentChecks `json:"checks,omitempty"`
 	// NSNB Blocked metadata
 	SeatBlock *CancelDeploymentSeatBlock `json:"seatBlock,omitempty"`
+	// Attribution metadata for the deployment, linking commit author to git and Vercel users. Only populated when the `enable-deployment-attribution` flag is enabled.
+	Attribution *CancelDeploymentAttribution `json:"attribution,omitempty"`
 }
 
 func (o *CancelDeploymentResponseBody) GetAliasAssignedAt() optionalnullable.OptionalNullable[CancelDeploymentAliasAssignedAt] {
@@ -8981,6 +9527,16 @@ func (o *CancelDeploymentResponseBody) GetGitRepoBitbucket() *CancelDeploymentGi
 	return nil
 }
 
+func (o *CancelDeploymentResponseBody) GetGitRepoVercel() *CancelDeploymentGitRepoVercel {
+	if v := o.GetGitRepo(); v != nil {
+		if actualValue, ok := v.Get(); ok && actualValue != nil {
+			return actualValue.CancelDeploymentGitRepoVercel
+		}
+		return nil
+	}
+	return nil
+}
+
 func (o *CancelDeploymentResponseBody) GetFlags() *CancelDeploymentFlagsUnion {
 	if o == nil {
 		return nil
@@ -9014,6 +9570,13 @@ func (o *CancelDeploymentResponseBody) GetSeatBlock() *CancelDeploymentSeatBlock
 		return nil
 	}
 	return o.SeatBlock
+}
+
+func (o *CancelDeploymentResponseBody) GetAttribution() *CancelDeploymentAttribution {
+	if o == nil {
+		return nil
+	}
+	return o.Attribution
 }
 
 type CancelDeploymentResponse struct {

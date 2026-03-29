@@ -12,6 +12,315 @@ import (
 	"mockserver/internal/sdk/utils"
 )
 
+// GetDeploymentReadySubstate1 - Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic
+type GetDeploymentReadySubstate1 string
+
+const (
+	GetDeploymentReadySubstate1Staged   GetDeploymentReadySubstate1 = "STAGED"
+	GetDeploymentReadySubstate1Rolling  GetDeploymentReadySubstate1 = "ROLLING"
+	GetDeploymentReadySubstate1Promoted GetDeploymentReadySubstate1 = "PROMOTED"
+)
+
+func (e GetDeploymentReadySubstate1) ToPointer() *GetDeploymentReadySubstate1 {
+	return &e
+}
+func (e *GetDeploymentReadySubstate1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "STAGED":
+		fallthrough
+	case "ROLLING":
+		fallthrough
+	case "PROMOTED":
+		*e = GetDeploymentReadySubstate1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetDeploymentReadySubstate1: %v", v)
+	}
+}
+
+// GetDeploymentSourceEnum1 - Where was the deployment created from
+type GetDeploymentSourceEnum1 string
+
+const (
+	GetDeploymentSourceEnum1APITriggerGitDeploy GetDeploymentSourceEnum1 = "api-trigger-git-deploy"
+	GetDeploymentSourceEnum1Cli                 GetDeploymentSourceEnum1 = "cli"
+	GetDeploymentSourceEnum1CloneRepo           GetDeploymentSourceEnum1 = "clone/repo"
+	GetDeploymentSourceEnum1Git                 GetDeploymentSourceEnum1 = "git"
+	GetDeploymentSourceEnum1Import              GetDeploymentSourceEnum1 = "import"
+	GetDeploymentSourceEnum1ImportRepo          GetDeploymentSourceEnum1 = "import/repo"
+	GetDeploymentSourceEnum1Redeploy            GetDeploymentSourceEnum1 = "redeploy"
+	GetDeploymentSourceEnum1V0Web               GetDeploymentSourceEnum1 = "v0-web"
+)
+
+func (e GetDeploymentSourceEnum1) ToPointer() *GetDeploymentSourceEnum1 {
+	return &e
+}
+func (e *GetDeploymentSourceEnum1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "api-trigger-git-deploy":
+		fallthrough
+	case "cli":
+		fallthrough
+	case "clone/repo":
+		fallthrough
+	case "git":
+		fallthrough
+	case "import":
+		fallthrough
+	case "import/repo":
+		fallthrough
+	case "redeploy":
+		fallthrough
+	case "v0-web":
+		*e = GetDeploymentSourceEnum1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetDeploymentSourceEnum1: %v", v)
+	}
+}
+
+// GetDeploymentTargetEnum1 - If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
+type GetDeploymentTargetEnum1 string
+
+const (
+	GetDeploymentTargetEnum1Staging    GetDeploymentTargetEnum1 = "staging"
+	GetDeploymentTargetEnum1Production GetDeploymentTargetEnum1 = "production"
+)
+
+func (e GetDeploymentTargetEnum1) ToPointer() *GetDeploymentTargetEnum1 {
+	return &e
+}
+func (e *GetDeploymentTargetEnum1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "staging":
+		fallthrough
+	case "production":
+		*e = GetDeploymentTargetEnum1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetDeploymentTargetEnum1: %v", v)
+	}
+}
+
+type GetDeploymentOidcTokenClaims1 struct {
+	Iss         string  `json:"iss"`
+	Sub         string  `json:"sub"`
+	Scope       string  `json:"scope"`
+	Aud         string  `json:"aud"`
+	Owner       string  `json:"owner"`
+	OwnerID     string  `json:"owner_id"`
+	Project     string  `json:"project"`
+	ProjectID   string  `json:"project_id"`
+	Environment string  `json:"environment"`
+	Plan        *string `json:"plan,omitempty"`
+}
+
+func (g GetDeploymentOidcTokenClaims1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentOidcTokenClaims1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"iss", "sub", "scope", "aud", "owner", "owner_id", "project", "project_id", "environment"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetDeploymentOidcTokenClaims1) GetIss() string {
+	if o == nil {
+		return ""
+	}
+	return o.Iss
+}
+
+func (o *GetDeploymentOidcTokenClaims1) GetSub() string {
+	if o == nil {
+		return ""
+	}
+	return o.Sub
+}
+
+func (o *GetDeploymentOidcTokenClaims1) GetScope() string {
+	if o == nil {
+		return ""
+	}
+	return o.Scope
+}
+
+func (o *GetDeploymentOidcTokenClaims1) GetAud() string {
+	if o == nil {
+		return ""
+	}
+	return o.Aud
+}
+
+func (o *GetDeploymentOidcTokenClaims1) GetOwner() string {
+	if o == nil {
+		return ""
+	}
+	return o.Owner
+}
+
+func (o *GetDeploymentOidcTokenClaims1) GetOwnerID() string {
+	if o == nil {
+		return ""
+	}
+	return o.OwnerID
+}
+
+func (o *GetDeploymentOidcTokenClaims1) GetProject() string {
+	if o == nil {
+		return ""
+	}
+	return o.Project
+}
+
+func (o *GetDeploymentOidcTokenClaims1) GetProjectID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProjectID
+}
+
+func (o *GetDeploymentOidcTokenClaims1) GetEnvironment() string {
+	if o == nil {
+		return ""
+	}
+	return o.Environment
+}
+
+func (o *GetDeploymentOidcTokenClaims1) GetPlan() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Plan
+}
+
+type GetDeploymentPlan string
+
+const (
+	GetDeploymentPlanPro        GetDeploymentPlan = "pro"
+	GetDeploymentPlanEnterprise GetDeploymentPlan = "enterprise"
+	GetDeploymentPlanHobby      GetDeploymentPlan = "hobby"
+)
+
+func (e GetDeploymentPlan) ToPointer() *GetDeploymentPlan {
+	return &e
+}
+func (e *GetDeploymentPlan) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "pro":
+		fallthrough
+	case "enterprise":
+		fallthrough
+	case "hobby":
+		*e = GetDeploymentPlan(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetDeploymentPlan: %v", v)
+	}
+}
+
+// GetDeploymentPlatformSource - The external platform that created the deployment (e.g. its display name).
+type GetDeploymentPlatformSource struct {
+	// Display name of the platform.
+	Name string `json:"name"`
+}
+
+func (g GetDeploymentPlatformSource) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentPlatformSource) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"name"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetDeploymentPlatformSource) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+// GetDeploymentOriginType - Whether the value is an opaque identifier or a URL.
+type GetDeploymentOriginType string
+
+const (
+	GetDeploymentOriginTypeID  GetDeploymentOriginType = "id"
+	GetDeploymentOriginTypeURL GetDeploymentOriginType = "url"
+)
+
+func (e GetDeploymentOriginType) ToPointer() *GetDeploymentOriginType {
+	return &e
+}
+func (e *GetDeploymentOriginType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "id":
+		fallthrough
+	case "url":
+		*e = GetDeploymentOriginType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetDeploymentOriginType: %v", v)
+	}
+}
+
+// GetDeploymentOrigin - Reference back to the entity on the platform that initiated the deployment.
+type GetDeploymentOrigin struct {
+	// Whether the value is an opaque identifier or a URL.
+	Type GetDeploymentOriginType `json:"type"`
+	// The identifier or URL pointing to the originating entity.
+	Value string `json:"value"`
+}
+
+func (g GetDeploymentOrigin) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentOrigin) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"type", "value"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetDeploymentOrigin) GetType() GetDeploymentOriginType {
+	if o == nil {
+		return GetDeploymentOriginType("")
+	}
+	return o.Type
+}
+
+func (o *GetDeploymentOrigin) GetValue() string {
+	if o == nil {
+		return ""
+	}
+	return o.Value
+}
+
 // GetDeploymentPlatformCreator - The user on the external platform who triggered the deployment.
 type GetDeploymentPlatformCreator struct {
 	// Display name of the platform user.
@@ -2926,6 +3235,133 @@ func (u GetDeploymentRouteUnion) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type GetDeploymentRouteUnion: all fields are null")
 }
 
+type GetDeploymentGitRepoTypeVercel string
+
+const (
+	GetDeploymentGitRepoTypeVercelVercel GetDeploymentGitRepoTypeVercel = "vercel"
+)
+
+func (e GetDeploymentGitRepoTypeVercel) ToPointer() *GetDeploymentGitRepoTypeVercel {
+	return &e
+}
+func (e *GetDeploymentGitRepoTypeVercel) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "vercel":
+		*e = GetDeploymentGitRepoTypeVercel(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetDeploymentGitRepoTypeVercel: %v", v)
+	}
+}
+
+type GetDeploymentOwnerType4 string
+
+const (
+	GetDeploymentOwnerType4Team GetDeploymentOwnerType4 = "team"
+	GetDeploymentOwnerType4User GetDeploymentOwnerType4 = "user"
+)
+
+func (e GetDeploymentOwnerType4) ToPointer() *GetDeploymentOwnerType4 {
+	return &e
+}
+func (e *GetDeploymentOwnerType4) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "team":
+		fallthrough
+	case "user":
+		*e = GetDeploymentOwnerType4(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetDeploymentOwnerType4: %v", v)
+	}
+}
+
+type GetDeploymentGitRepoVercel struct {
+	Org           string                         `json:"org"`
+	Repo          string                         `json:"repo"`
+	Type          GetDeploymentGitRepoTypeVercel `json:"type"`
+	Path          string                         `json:"path"`
+	DefaultBranch string                         `json:"defaultBranch"`
+	Name          string                         `json:"name"`
+	Private       bool                           `json:"private"`
+	OwnerType     GetDeploymentOwnerType4        `json:"ownerType"`
+}
+
+func (g GetDeploymentGitRepoVercel) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentGitRepoVercel) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"org", "repo", "type", "path", "defaultBranch", "name", "private", "ownerType"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetDeploymentGitRepoVercel) GetOrg() string {
+	if o == nil {
+		return ""
+	}
+	return o.Org
+}
+
+func (o *GetDeploymentGitRepoVercel) GetRepo() string {
+	if o == nil {
+		return ""
+	}
+	return o.Repo
+}
+
+func (o *GetDeploymentGitRepoVercel) GetType() GetDeploymentGitRepoTypeVercel {
+	if o == nil {
+		return GetDeploymentGitRepoTypeVercel("")
+	}
+	return o.Type
+}
+
+func (o *GetDeploymentGitRepoVercel) GetPath() string {
+	if o == nil {
+		return ""
+	}
+	return o.Path
+}
+
+func (o *GetDeploymentGitRepoVercel) GetDefaultBranch() string {
+	if o == nil {
+		return ""
+	}
+	return o.DefaultBranch
+}
+
+func (o *GetDeploymentGitRepoVercel) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *GetDeploymentGitRepoVercel) GetPrivate() bool {
+	if o == nil {
+		return false
+	}
+	return o.Private
+}
+
+func (o *GetDeploymentGitRepoVercel) GetOwnerType() GetDeploymentOwnerType4 {
+	if o == nil {
+		return GetDeploymentOwnerType4("")
+	}
+	return o.OwnerType
+}
+
 type GetDeploymentGitRepoTypeBitbucket string
 
 const (
@@ -3353,12 +3789,14 @@ const (
 	GetDeploymentGitRepoUnionTypeGitlab    GetDeploymentGitRepoUnionType = "gitlab"
 	GetDeploymentGitRepoUnionTypeGithub    GetDeploymentGitRepoUnionType = "github"
 	GetDeploymentGitRepoUnionTypeBitbucket GetDeploymentGitRepoUnionType = "bitbucket"
+	GetDeploymentGitRepoUnionTypeVercel    GetDeploymentGitRepoUnionType = "vercel"
 )
 
 type GetDeploymentGitRepoUnion struct {
 	GetDeploymentGitRepoGitlab    *GetDeploymentGitRepoGitlab    `queryParam:"inline"`
 	GetDeploymentGitRepoGithub    *GetDeploymentGitRepoGithub    `queryParam:"inline"`
 	GetDeploymentGitRepoBitbucket *GetDeploymentGitRepoBitbucket `queryParam:"inline"`
+	GetDeploymentGitRepoVercel    *GetDeploymentGitRepoVercel    `queryParam:"inline"`
 
 	Type GetDeploymentGitRepoUnionType
 }
@@ -3396,6 +3834,18 @@ func CreateGetDeploymentGitRepoUnionBitbucket(bitbucket GetDeploymentGitRepoBitb
 	return GetDeploymentGitRepoUnion{
 		GetDeploymentGitRepoBitbucket: &bitbucket,
 		Type:                          typ,
+	}
+}
+
+func CreateGetDeploymentGitRepoUnionVercel(vercel GetDeploymentGitRepoVercel) GetDeploymentGitRepoUnion {
+	typ := GetDeploymentGitRepoUnionTypeVercel
+
+	typStr := GetDeploymentGitRepoTypeVercel(typ)
+	vercel.Type = typStr
+
+	return GetDeploymentGitRepoUnion{
+		GetDeploymentGitRepoVercel: &vercel,
+		Type:                       typ,
 	}
 }
 
@@ -3438,6 +3888,15 @@ func (u *GetDeploymentGitRepoUnion) UnmarshalJSON(data []byte) error {
 		u.GetDeploymentGitRepoBitbucket = getDeploymentGitRepoBitbucket
 		u.Type = GetDeploymentGitRepoUnionTypeBitbucket
 		return nil
+	case "vercel":
+		getDeploymentGitRepoVercel := new(GetDeploymentGitRepoVercel)
+		if err := utils.UnmarshalJSON(data, &getDeploymentGitRepoVercel, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == vercel) type GetDeploymentGitRepoVercel within GetDeploymentGitRepoUnion: %w", string(data), err)
+		}
+
+		u.GetDeploymentGitRepoVercel = getDeploymentGitRepoVercel
+		u.Type = GetDeploymentGitRepoUnionTypeVercel
+		return nil
 	}
 
 	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetDeploymentGitRepoUnion", string(data))
@@ -3454,6 +3913,10 @@ func (u GetDeploymentGitRepoUnion) MarshalJSON() ([]byte, error) {
 
 	if u.GetDeploymentGitRepoBitbucket != nil {
 		return utils.MarshalJSON(u.GetDeploymentGitRepoBitbucket, "", true)
+	}
+
+	if u.GetDeploymentGitRepoVercel != nil {
+		return utils.MarshalJSON(u.GetDeploymentGitRepoVercel, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type GetDeploymentGitRepoUnion: all fields are null")
@@ -4402,6 +4865,218 @@ func (o *GetDeploymentSeatBlock) GetGitProvider() *GetDeploymentGitProvider {
 	return o.GitProvider
 }
 
+// GetDeploymentCommitMeta - Commit metadata from the git commit author
+type GetDeploymentCommitMeta struct {
+	// Email from git commit author
+	Email *string `json:"email,omitempty"`
+	// Name from git commit author
+	Name *string `json:"name,omitempty"`
+	// Whether the commit was signed/verified (GitHub only, others return undefined)
+	IsVerified *bool `json:"isVerified,omitempty"`
+}
+
+func (g GetDeploymentCommitMeta) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentCommitMeta) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetDeploymentCommitMeta) GetEmail() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Email
+}
+
+func (o *GetDeploymentCommitMeta) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+func (o *GetDeploymentCommitMeta) GetIsVerified() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IsVerified
+}
+
+type GetDeploymentIDType string
+
+const (
+	GetDeploymentIDTypeStr    GetDeploymentIDType = "str"
+	GetDeploymentIDTypeNumber GetDeploymentIDType = "number"
+)
+
+type GetDeploymentID struct {
+	Str    *string  `queryParam:"inline"`
+	Number *float64 `queryParam:"inline"`
+
+	Type GetDeploymentIDType
+}
+
+func CreateGetDeploymentIDStr(str string) GetDeploymentID {
+	typ := GetDeploymentIDTypeStr
+
+	return GetDeploymentID{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func CreateGetDeploymentIDNumber(number float64) GetDeploymentID {
+	typ := GetDeploymentIDTypeNumber
+
+	return GetDeploymentID{
+		Number: &number,
+		Type:   typ,
+	}
+}
+
+func (u *GetDeploymentID) UnmarshalJSON(data []byte) error {
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
+		u.Str = &str
+		u.Type = GetDeploymentIDTypeStr
+		return nil
+	}
+
+	var number float64 = float64(0)
+	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
+		u.Number = &number
+		u.Type = GetDeploymentIDTypeNumber
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetDeploymentID", string(data))
+}
+
+func (u GetDeploymentID) MarshalJSON() ([]byte, error) {
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	if u.Number != nil {
+		return utils.MarshalJSON(u.Number, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type GetDeploymentID: all fields are null")
+}
+
+// GetDeploymentGitUser - Git provider user associated with the commit author email (only set if resolved)
+type GetDeploymentGitUser struct {
+	ID GetDeploymentID `json:"id"`
+	// Git provider username/login
+	Login string `json:"login"`
+}
+
+func (g GetDeploymentGitUser) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentGitUser) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"id", "login"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetDeploymentGitUser) GetID() GetDeploymentID {
+	if o == nil {
+		return GetDeploymentID{}
+	}
+	return o.ID
+}
+
+func (o *GetDeploymentGitUser) GetLogin() string {
+	if o == nil {
+		return ""
+	}
+	return o.Login
+}
+
+// GetDeploymentVercelUser - Vercel user linked to the git provider account (only set if resolved)
+type GetDeploymentVercelUser struct {
+	// Vercel user ID
+	ID string `json:"id"`
+	// Vercel username
+	Username string `json:"username"`
+}
+
+func (g GetDeploymentVercelUser) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentVercelUser) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"id", "username"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetDeploymentVercelUser) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *GetDeploymentVercelUser) GetUsername() string {
+	if o == nil {
+		return ""
+	}
+	return o.Username
+}
+
+// GetDeploymentAttribution - Attribution metadata for the deployment, linking commit author to git and Vercel users. Only populated when the `enable-deployment-attribution` flag is enabled.
+type GetDeploymentAttribution struct {
+	// Commit metadata from the git commit author
+	CommitMeta *GetDeploymentCommitMeta `json:"commitMeta,omitempty"`
+	// Git provider user associated with the commit author email (only set if resolved)
+	GitUser *GetDeploymentGitUser `json:"gitUser,omitempty"`
+	// Vercel user linked to the git provider account (only set if resolved)
+	VercelUser *GetDeploymentVercelUser `json:"vercelUser,omitempty"`
+}
+
+func (g GetDeploymentAttribution) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentAttribution) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetDeploymentAttribution) GetCommitMeta() *GetDeploymentCommitMeta {
+	if o == nil {
+		return nil
+	}
+	return o.CommitMeta
+}
+
+func (o *GetDeploymentAttribution) GetGitUser() *GetDeploymentGitUser {
+	if o == nil {
+		return nil
+	}
+	return o.GitUser
+}
+
+func (o *GetDeploymentAttribution) GetVercelUser() *GetDeploymentVercelUser {
+	if o == nil {
+		return nil
+	}
+	return o.VercelUser
+}
+
 // Lambdas1 - The deployment including both public and private information
 type Lambdas1 struct {
 	AliasAssignedAt           optionalnullable.OptionalNullable[GetDeploymentAliasAssignedAt] `json:"aliasAssignedAt,omitempty"`
@@ -4525,6 +5200,8 @@ type Lambdas1 struct {
 	Checks *GetDeploymentChecks `json:"checks,omitempty"`
 	// NSNB Blocked metadata
 	SeatBlock *GetDeploymentSeatBlock `json:"seatBlock,omitempty"`
+	// Attribution metadata for the deployment, linking commit author to git and Vercel users. Only populated when the `enable-deployment-attribution` flag is enabled.
+	Attribution *GetDeploymentAttribution `json:"attribution,omitempty"`
 }
 
 func (l Lambdas1) MarshalJSON() ([]byte, error) {
@@ -5149,6 +5826,16 @@ func (o *Lambdas1) GetGitRepoBitbucket() *GetDeploymentGitRepoBitbucket {
 	return nil
 }
 
+func (o *Lambdas1) GetGitRepoVercel() *GetDeploymentGitRepoVercel {
+	if v := o.GetGitRepo(); v != nil {
+		if actualValue, ok := v.Get(); ok && actualValue != nil {
+			return actualValue.GetDeploymentGitRepoVercel
+		}
+		return nil
+	}
+	return nil
+}
+
 func (o *Lambdas1) GetFlags() *GetDeploymentFlagsUnion {
 	if o == nil {
 		return nil
@@ -5182,6 +5869,13 @@ func (o *Lambdas1) GetSeatBlock() *GetDeploymentSeatBlock {
 		return nil
 	}
 	return o.SeatBlock
+}
+
+func (o *Lambdas1) GetAttribution() *GetDeploymentAttribution {
+	if o == nil {
+		return nil
+	}
+	return o.Attribution
 }
 
 type GetDeploymentResponseBodyType string

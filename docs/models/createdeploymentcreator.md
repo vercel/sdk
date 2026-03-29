@@ -5,7 +5,7 @@ Information about the deployment creator
 ## Example Usage
 
 ```typescript
-import { CreateDeploymentCreator } from "@vercel/sdk/models/createdeploymentop.js";
+import { CreateDeploymentCreator } from "@vercel/sdk/models/createdeploymentvaluedeployments2.js";
 
 let value: CreateDeploymentCreator = {
   uid: "96SnxkFiMyVKsK3pnoHfx3Hz",

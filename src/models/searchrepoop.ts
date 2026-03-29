@@ -48,6 +48,7 @@ export const SearchRepoResponseBodyProvider = {
   GithubCustomHost: "github-custom-host",
   Gitlab: "gitlab",
   Bitbucket: "bitbucket",
+  Vercel: "vercel",
 } as const;
 export type SearchRepoResponseBodyProvider = ClosedEnum<
   typeof SearchRepoResponseBodyProvider
@@ -68,6 +69,7 @@ export const SearchRepoResponseBodyIntegrationsProvider = {
   GithubCustomHost: "github-custom-host",
   Gitlab: "gitlab",
   Bitbucket: "bitbucket",
+  Vercel: "vercel",
 } as const;
 export type SearchRepoResponseBodyIntegrationsProvider = ClosedEnum<
   typeof SearchRepoResponseBodyIntegrationsProvider

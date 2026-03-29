@@ -5,26 +5,26 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { SixtySeven } from "@vercel/sdk/models/usereventpayloaddata.js";
+import { SixtySeven } from "@vercel/sdk/models/usereventpayload38action.js";
 
 let value: SixtySeven = {
   job: {
-    repoPushedAt: 6561.49,
-    type: "push",
     headInfo: {
       org: "<value>",
       ref: "<value>",
       repo: "<value>",
-      repoId: 6467.65,
+      repoId: 1102.65,
       sha: "<value>",
     },
-    installationId: 9005.87,
+    installationId: 5954.02,
     isPrivate: false,
     org: "<value>",
-    prId: 8441.99,
+    prId: 9005.87,
+    projectId: "<id>",
     repo: "<value>",
-    repoId: 2991.2,
-    provider: "github",
+    repoId: 2178.03,
+    type: "now-comment",
+    provider: "github-custom-host",
   },
 };
 ```

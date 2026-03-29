@@ -5,7 +5,7 @@ If set it overrides the `projectSettings.nodeVersion` for this deployment.
 ## Example Usage
 
 ```typescript
-import { CreateDeploymentNodeVersion } from "@vercel/sdk/models/createdeploymentop.js";
+import { CreateDeploymentNodeVersion } from "@vercel/sdk/models/createdeploymentvaluedeployments2.js";
 
 let value: CreateDeploymentNodeVersion = "22.x";
 ```

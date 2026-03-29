@@ -86,3 +86,23 @@ const value: models.Link5 = {
 };
 ```
 
+### `models.Link6`
+
+```typescript
+const value: models.Link6 = {
+  org: "<value>",
+  repo: "<value>",
+  type: "vercel",
+  deployHooks: [
+    {
+      id: "<id>",
+      name: "<value>",
+      ref: "<value>",
+      url: "https://ultimate-outrun.info/",
+    },
+  ],
+  gitCredentialId: "<id>",
+  productionBranch: "<value>",
+};
+```
+

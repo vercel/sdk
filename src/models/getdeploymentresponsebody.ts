@@ -42,10 +42,6 @@ import {
   GetDeploymentResponseBodyCustomEnvironment$inboundSchema,
   GetDeploymentResponseBodyCustomEnvironment$Outbound,
   GetDeploymentResponseBodyCustomEnvironment$outboundSchema,
-  GetDeploymentResponseBodyDeploymentsSource,
-  GetDeploymentResponseBodyDeploymentsSource$inboundSchema,
-  GetDeploymentResponseBodyDeploymentsSource$Outbound,
-  GetDeploymentResponseBodyDeploymentsSource$outboundSchema,
   GetDeploymentResponseBodyGitSource,
   GetDeploymentResponseBodyGitSource$inboundSchema,
   GetDeploymentResponseBodyGitSource$Outbound,
@@ -61,25 +57,15 @@ import {
   GetDeploymentResponseBodyNodeVersion,
   GetDeploymentResponseBodyNodeVersion$inboundSchema,
   GetDeploymentResponseBodyNodeVersion$outboundSchema,
-  GetDeploymentResponseBodyOidcTokenClaims,
-  GetDeploymentResponseBodyOidcTokenClaims$inboundSchema,
-  GetDeploymentResponseBodyOidcTokenClaims$Outbound,
-  GetDeploymentResponseBodyOidcTokenClaims$outboundSchema,
   GetDeploymentResponseBodyOomReport,
   GetDeploymentResponseBodyOomReport$inboundSchema,
   GetDeploymentResponseBodyOomReport$outboundSchema,
   GetDeploymentResponseBodyReadyState,
   GetDeploymentResponseBodyReadyState$inboundSchema,
   GetDeploymentResponseBodyReadyState$outboundSchema,
-  GetDeploymentResponseBodyReadySubstate,
-  GetDeploymentResponseBodyReadySubstate$inboundSchema,
-  GetDeploymentResponseBodyReadySubstate$outboundSchema,
   GetDeploymentResponseBodyStatus,
   GetDeploymentResponseBodyStatus$inboundSchema,
   GetDeploymentResponseBodyStatus$outboundSchema,
-  GetDeploymentResponseBodyTarget,
-  GetDeploymentResponseBodyTarget$inboundSchema,
-  GetDeploymentResponseBodyTarget$outboundSchema,
   GetDeploymentResponseBodyTeam,
   GetDeploymentResponseBodyTeam$inboundSchema,
   GetDeploymentResponseBodyTeam$Outbound,
@@ -107,13 +93,6 @@ import {
   ResponseBodyIntegrations$inboundSchema,
   ResponseBodyIntegrations$Outbound,
   ResponseBodyIntegrations$outboundSchema,
-  ResponseBodyOrigin,
-  ResponseBodyOrigin$inboundSchema,
-  ResponseBodyOrigin$Outbound,
-  ResponseBodyOrigin$outboundSchema,
-  ResponseBodyPlan,
-  ResponseBodyPlan$inboundSchema,
-  ResponseBodyPlan$outboundSchema,
   ResponseBodyProject,
   ResponseBodyProject$inboundSchema,
   ResponseBodyProject$Outbound,
@@ -122,11 +101,113 @@ import {
   ResponseBodyProjectSettings$inboundSchema,
   ResponseBodyProjectSettings$Outbound,
   ResponseBodyProjectSettings$outboundSchema,
-  ResponseBodySource,
-  ResponseBodySource$inboundSchema,
-  ResponseBodySource$outboundSchema,
-} from "./responsebodyorigin.js";
+} from "./responsebodyproject.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+/**
+ * Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic
+ */
+export const GetDeploymentResponseBodyReadySubstate = {
+  Staged: "STAGED",
+  Rolling: "ROLLING",
+  Promoted: "PROMOTED",
+} as const;
+/**
+ * Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic
+ */
+export type GetDeploymentResponseBodyReadySubstate = ClosedEnum<
+  typeof GetDeploymentResponseBodyReadySubstate
+>;
+
+/**
+ * Where was the deployment created from
+ */
+export const ResponseBodySource = {
+  ApiTriggerGitDeploy: "api-trigger-git-deploy",
+  Cli: "cli",
+  CloneRepo: "clone/repo",
+  Git: "git",
+  Import: "import",
+  ImportRepo: "import/repo",
+  Redeploy: "redeploy",
+  V0Web: "v0-web",
+} as const;
+/**
+ * Where was the deployment created from
+ */
+export type ResponseBodySource = ClosedEnum<typeof ResponseBodySource>;
+
+/**
+ * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
+ */
+export const GetDeploymentResponseBodyTarget = {
+  Staging: "staging",
+  Production: "production",
+} as const;
+/**
+ * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
+ */
+export type GetDeploymentResponseBodyTarget = ClosedEnum<
+  typeof GetDeploymentResponseBodyTarget
+>;
+
+export type GetDeploymentResponseBodyOidcTokenClaims = {
+  iss: string;
+  sub: string;
+  scope: string;
+  aud: string;
+  owner: string;
+  ownerId: string;
+  project: string;
+  projectId: string;
+  environment: string;
+  plan?: string | undefined;
+};
+
+export const ResponseBodyPlan = {
+  Pro: "pro",
+  Enterprise: "enterprise",
+  Hobby: "hobby",
+} as const;
+export type ResponseBodyPlan = ClosedEnum<typeof ResponseBodyPlan>;
+
+/**
+ * The external platform that created the deployment (e.g. its display name).
+ */
+export type GetDeploymentResponseBodyDeploymentsSource = {
+  /**
+   * Display name of the platform.
+   */
+  name: string;
+};
+
+/**
+ * Whether the value is an opaque identifier or a URL.
+ */
+export const GetDeploymentResponseBodyDeploymentsResponseType = {
+  Id: "id",
+  Url: "url",
+} as const;
+/**
+ * Whether the value is an opaque identifier or a URL.
+ */
+export type GetDeploymentResponseBodyDeploymentsResponseType = ClosedEnum<
+  typeof GetDeploymentResponseBodyDeploymentsResponseType
+>;
+
+/**
+ * Reference back to the entity on the platform that initiated the deployment.
+ */
+export type ResponseBodyOrigin = {
+  /**
+   * Whether the value is an opaque identifier or a URL.
+   */
+  type: GetDeploymentResponseBodyDeploymentsResponseType;
+  /**
+   * The identifier or URL pointing to the originating entity.
+   */
+  value: string;
+};
 
 /**
  * The user on the external platform who triggered the deployment.
@@ -545,6 +626,25 @@ export type ResponseBodyRoutes =
   | GetDeploymentRoutes1
   | GetDeploymentRoutes2;
 
+export const GetDeploymentGitRepoDeploymentsOwnerType = {
+  Team: "team",
+  User: "user",
+} as const;
+export type GetDeploymentGitRepoDeploymentsOwnerType = ClosedEnum<
+  typeof GetDeploymentGitRepoDeploymentsOwnerType
+>;
+
+export type GetDeploymentGitRepo4 = {
+  org: string;
+  repo: string;
+  type: "vercel";
+  path: string;
+  defaultBranch: string;
+  name: string;
+  private: boolean;
+  ownerType: GetDeploymentGitRepoDeploymentsOwnerType;
+};
+
 export const GetDeploymentGitRepoOwnerType = {
   Team: "team",
   User: "user",
@@ -566,12 +666,12 @@ export type GetDeploymentGitRepo3 = {
   ownerType: GetDeploymentGitRepoOwnerType;
 };
 
-export const GetDeploymentGitRepoDeploymentsResponseOwnerType = {
+export const GetDeploymentGitRepoDeploymentsResponse200OwnerType = {
   Team: "team",
   User: "user",
 } as const;
-export type GetDeploymentGitRepoDeploymentsResponseOwnerType = ClosedEnum<
-  typeof GetDeploymentGitRepoDeploymentsResponseOwnerType
+export type GetDeploymentGitRepoDeploymentsResponse200OwnerType = ClosedEnum<
+  typeof GetDeploymentGitRepoDeploymentsResponse200OwnerType
 >;
 
 export type GetDeploymentGitRepo2 = {
@@ -584,15 +684,15 @@ export type GetDeploymentGitRepo2 = {
   defaultBranch: string;
   name: string;
   private: boolean;
-  ownerType: GetDeploymentGitRepoDeploymentsResponseOwnerType;
+  ownerType: GetDeploymentGitRepoDeploymentsResponse200OwnerType;
 };
 
-export const GetDeploymentGitRepoDeploymentsOwnerType = {
+export const GetDeploymentGitRepoDeploymentsResponseOwnerType = {
   Team: "team",
   User: "user",
 } as const;
-export type GetDeploymentGitRepoDeploymentsOwnerType = ClosedEnum<
-  typeof GetDeploymentGitRepoDeploymentsOwnerType
+export type GetDeploymentGitRepoDeploymentsResponseOwnerType = ClosedEnum<
+  typeof GetDeploymentGitRepoDeploymentsResponseOwnerType
 >;
 
 export type GetDeploymentGitRepo1 = {
@@ -604,13 +704,14 @@ export type GetDeploymentGitRepo1 = {
   defaultBranch: string;
   name: string;
   private: boolean;
-  ownerType: GetDeploymentGitRepoDeploymentsOwnerType;
+  ownerType: GetDeploymentGitRepoDeploymentsResponseOwnerType;
 };
 
 export type ResponseBodyGitRepo =
   | GetDeploymentGitRepo1
   | GetDeploymentGitRepo2
-  | GetDeploymentGitRepo3;
+  | GetDeploymentGitRepo3
+  | GetDeploymentGitRepo4;
 
 /**
  * Flags defined in the Build Output API, used by this deployment. Primarily used by the Toolbar to know about the used flags.
@@ -884,6 +985,69 @@ export type ResponseBodySeatBlock = {
 };
 
 /**
+ * Commit metadata from the git commit author
+ */
+export type ResponseBodyCommitMeta = {
+  /**
+   * Email from git commit author
+   */
+  email?: string | undefined;
+  /**
+   * Name from git commit author
+   */
+  name?: string | undefined;
+  /**
+   * Whether the commit was signed/verified (GitHub only, others return undefined)
+   */
+  isVerified?: boolean | undefined;
+};
+
+export type GetDeploymentResponseBodyId = string | number;
+
+/**
+ * Git provider user associated with the commit author email (only set if resolved)
+ */
+export type ResponseBodyGitUser = {
+  id: string | number;
+  /**
+   * Git provider username/login
+   */
+  login: string;
+};
+
+/**
+ * Vercel user linked to the git provider account (only set if resolved)
+ */
+export type ResponseBodyVercelUser = {
+  /**
+   * Vercel user ID
+   */
+  id: string;
+  /**
+   * Vercel username
+   */
+  username: string;
+};
+
+/**
+ * Attribution metadata for the deployment, linking commit author to git and Vercel users. Only populated when the `enable-deployment-attribution` flag is enabled.
+ */
+export type ResponseBodyAttribution = {
+  /**
+   * Commit metadata from the git commit author
+   */
+  commitMeta?: ResponseBodyCommitMeta | undefined;
+  /**
+   * Git provider user associated with the commit author email (only set if resolved)
+   */
+  gitUser?: ResponseBodyGitUser | undefined;
+  /**
+   * Vercel user linked to the git provider account (only set if resolved)
+   */
+  vercelUser?: ResponseBodyVercelUser | undefined;
+};
+
+/**
  * The deployment including both public and private information
  */
 export type GetDeploymentResponseBody1 = {
@@ -1068,6 +1232,7 @@ export type GetDeploymentResponseBody1 = {
     | GetDeploymentGitRepo1
     | GetDeploymentGitRepo2
     | GetDeploymentGitRepo3
+    | GetDeploymentGitRepo4
     | null
     | undefined;
   flags?: GetDeploymentFlags1 | Array<GetDeploymentFlags2> | undefined;
@@ -1084,6 +1249,10 @@ export type GetDeploymentResponseBody1 = {
    * NSNB Blocked metadata
    */
   seatBlock?: ResponseBodySeatBlock | undefined;
+  /**
+   * Attribution metadata for the deployment, linking commit author to git and Vercel users. Only populated when the `enable-deployment-attribution` flag is enabled.
+   */
+  attribution?: ResponseBodyAttribution | undefined;
 };
 
 /**
@@ -1095,6 +1264,226 @@ export type GetDeploymentResponseBody1 = {
 export type GetDeploymentResponseBody =
   | GetDeploymentResponseBody1
   | GetDeploymentResponseBody2;
+
+/** @internal */
+export const GetDeploymentResponseBodyReadySubstate$inboundSchema:
+  z.ZodNativeEnum<typeof GetDeploymentResponseBodyReadySubstate> = z.nativeEnum(
+    GetDeploymentResponseBodyReadySubstate,
+  );
+/** @internal */
+export const GetDeploymentResponseBodyReadySubstate$outboundSchema:
+  z.ZodNativeEnum<typeof GetDeploymentResponseBodyReadySubstate> =
+    GetDeploymentResponseBodyReadySubstate$inboundSchema;
+
+/** @internal */
+export const ResponseBodySource$inboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodySource
+> = z.nativeEnum(ResponseBodySource);
+/** @internal */
+export const ResponseBodySource$outboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodySource
+> = ResponseBodySource$inboundSchema;
+
+/** @internal */
+export const GetDeploymentResponseBodyTarget$inboundSchema: z.ZodNativeEnum<
+  typeof GetDeploymentResponseBodyTarget
+> = z.nativeEnum(GetDeploymentResponseBodyTarget);
+/** @internal */
+export const GetDeploymentResponseBodyTarget$outboundSchema: z.ZodNativeEnum<
+  typeof GetDeploymentResponseBodyTarget
+> = GetDeploymentResponseBodyTarget$inboundSchema;
+
+/** @internal */
+export const GetDeploymentResponseBodyOidcTokenClaims$inboundSchema: z.ZodType<
+  GetDeploymentResponseBodyOidcTokenClaims,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  iss: types.string(),
+  sub: types.string(),
+  scope: types.string(),
+  aud: types.string(),
+  owner: types.string(),
+  owner_id: types.string(),
+  project: types.string(),
+  project_id: types.string(),
+  environment: types.string(),
+  plan: types.optional(types.string()),
+}).transform((v) => {
+  return remap$(v, {
+    "owner_id": "ownerId",
+    "project_id": "projectId",
+  });
+});
+/** @internal */
+export type GetDeploymentResponseBodyOidcTokenClaims$Outbound = {
+  iss: string;
+  sub: string;
+  scope: string;
+  aud: string;
+  owner: string;
+  owner_id: string;
+  project: string;
+  project_id: string;
+  environment: string;
+  plan?: string | undefined;
+};
+
+/** @internal */
+export const GetDeploymentResponseBodyOidcTokenClaims$outboundSchema: z.ZodType<
+  GetDeploymentResponseBodyOidcTokenClaims$Outbound,
+  z.ZodTypeDef,
+  GetDeploymentResponseBodyOidcTokenClaims
+> = z.object({
+  iss: z.string(),
+  sub: z.string(),
+  scope: z.string(),
+  aud: z.string(),
+  owner: z.string(),
+  ownerId: z.string(),
+  project: z.string(),
+  projectId: z.string(),
+  environment: z.string(),
+  plan: z.string().optional(),
+}).transform((v) => {
+  return remap$(v, {
+    ownerId: "owner_id",
+    projectId: "project_id",
+  });
+});
+
+export function getDeploymentResponseBodyOidcTokenClaimsToJSON(
+  getDeploymentResponseBodyOidcTokenClaims:
+    GetDeploymentResponseBodyOidcTokenClaims,
+): string {
+  return JSON.stringify(
+    GetDeploymentResponseBodyOidcTokenClaims$outboundSchema.parse(
+      getDeploymentResponseBodyOidcTokenClaims,
+    ),
+  );
+}
+export function getDeploymentResponseBodyOidcTokenClaimsFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetDeploymentResponseBodyOidcTokenClaims,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetDeploymentResponseBodyOidcTokenClaims$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetDeploymentResponseBodyOidcTokenClaims' from JSON`,
+  );
+}
+
+/** @internal */
+export const ResponseBodyPlan$inboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyPlan
+> = z.nativeEnum(ResponseBodyPlan);
+/** @internal */
+export const ResponseBodyPlan$outboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyPlan
+> = ResponseBodyPlan$inboundSchema;
+
+/** @internal */
+export const GetDeploymentResponseBodyDeploymentsSource$inboundSchema:
+  z.ZodType<GetDeploymentResponseBodyDeploymentsSource, z.ZodTypeDef, unknown> =
+    z.object({
+      name: types.string(),
+    });
+/** @internal */
+export type GetDeploymentResponseBodyDeploymentsSource$Outbound = {
+  name: string;
+};
+
+/** @internal */
+export const GetDeploymentResponseBodyDeploymentsSource$outboundSchema:
+  z.ZodType<
+    GetDeploymentResponseBodyDeploymentsSource$Outbound,
+    z.ZodTypeDef,
+    GetDeploymentResponseBodyDeploymentsSource
+  > = z.object({
+    name: z.string(),
+  });
+
+export function getDeploymentResponseBodyDeploymentsSourceToJSON(
+  getDeploymentResponseBodyDeploymentsSource:
+    GetDeploymentResponseBodyDeploymentsSource,
+): string {
+  return JSON.stringify(
+    GetDeploymentResponseBodyDeploymentsSource$outboundSchema.parse(
+      getDeploymentResponseBodyDeploymentsSource,
+    ),
+  );
+}
+export function getDeploymentResponseBodyDeploymentsSourceFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetDeploymentResponseBodyDeploymentsSource,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetDeploymentResponseBodyDeploymentsSource$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetDeploymentResponseBodyDeploymentsSource' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentResponseBodyDeploymentsResponseType$inboundSchema:
+  z.ZodNativeEnum<typeof GetDeploymentResponseBodyDeploymentsResponseType> = z
+    .nativeEnum(GetDeploymentResponseBodyDeploymentsResponseType);
+/** @internal */
+export const GetDeploymentResponseBodyDeploymentsResponseType$outboundSchema:
+  z.ZodNativeEnum<typeof GetDeploymentResponseBodyDeploymentsResponseType> =
+    GetDeploymentResponseBodyDeploymentsResponseType$inboundSchema;
+
+/** @internal */
+export const ResponseBodyOrigin$inboundSchema: z.ZodType<
+  ResponseBodyOrigin,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: GetDeploymentResponseBodyDeploymentsResponseType$inboundSchema,
+  value: types.string(),
+});
+/** @internal */
+export type ResponseBodyOrigin$Outbound = {
+  type: string;
+  value: string;
+};
+
+/** @internal */
+export const ResponseBodyOrigin$outboundSchema: z.ZodType<
+  ResponseBodyOrigin$Outbound,
+  z.ZodTypeDef,
+  ResponseBodyOrigin
+> = z.object({
+  type: GetDeploymentResponseBodyDeploymentsResponseType$outboundSchema,
+  value: z.string(),
+});
+
+export function responseBodyOriginToJSON(
+  responseBodyOrigin: ResponseBodyOrigin,
+): string {
+  return JSON.stringify(
+    ResponseBodyOrigin$outboundSchema.parse(responseBodyOrigin),
+  );
+}
+export function responseBodyOriginFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodyOrigin, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodyOrigin$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyOrigin' from JSON`,
+  );
+}
 
 /** @internal */
 export const GetDeploymentResponseBodyDeploymentsCreator$inboundSchema:
@@ -1155,8 +1544,10 @@ export const ResponseBodyPlatform$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  source: GetDeploymentResponseBodyDeploymentsSource$inboundSchema,
-  origin: ResponseBodyOrigin$inboundSchema,
+  source: z.lazy(() =>
+    GetDeploymentResponseBodyDeploymentsSource$inboundSchema
+  ),
+  origin: z.lazy(() => ResponseBodyOrigin$inboundSchema),
   creator: z.lazy(() =>
     GetDeploymentResponseBodyDeploymentsCreator$inboundSchema
   ),
@@ -1176,8 +1567,10 @@ export const ResponseBodyPlatform$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ResponseBodyPlatform
 > = z.object({
-  source: GetDeploymentResponseBodyDeploymentsSource$outboundSchema,
-  origin: ResponseBodyOrigin$outboundSchema,
+  source: z.lazy(() =>
+    GetDeploymentResponseBodyDeploymentsSource$outboundSchema
+  ),
+  origin: z.lazy(() => ResponseBodyOrigin$outboundSchema),
   creator: z.lazy(() =>
     GetDeploymentResponseBodyDeploymentsCreator$outboundSchema
   ),
@@ -3187,6 +3580,75 @@ export function responseBodyRoutesFromJSON(
 }
 
 /** @internal */
+export const GetDeploymentGitRepoDeploymentsOwnerType$inboundSchema:
+  z.ZodNativeEnum<typeof GetDeploymentGitRepoDeploymentsOwnerType> = z
+    .nativeEnum(GetDeploymentGitRepoDeploymentsOwnerType);
+/** @internal */
+export const GetDeploymentGitRepoDeploymentsOwnerType$outboundSchema:
+  z.ZodNativeEnum<typeof GetDeploymentGitRepoDeploymentsOwnerType> =
+    GetDeploymentGitRepoDeploymentsOwnerType$inboundSchema;
+
+/** @internal */
+export const GetDeploymentGitRepo4$inboundSchema: z.ZodType<
+  GetDeploymentGitRepo4,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  org: types.string(),
+  repo: types.string(),
+  type: types.literal("vercel"),
+  path: types.string(),
+  defaultBranch: types.string(),
+  name: types.string(),
+  private: types.boolean(),
+  ownerType: GetDeploymentGitRepoDeploymentsOwnerType$inboundSchema,
+});
+/** @internal */
+export type GetDeploymentGitRepo4$Outbound = {
+  org: string;
+  repo: string;
+  type: "vercel";
+  path: string;
+  defaultBranch: string;
+  name: string;
+  private: boolean;
+  ownerType: string;
+};
+
+/** @internal */
+export const GetDeploymentGitRepo4$outboundSchema: z.ZodType<
+  GetDeploymentGitRepo4$Outbound,
+  z.ZodTypeDef,
+  GetDeploymentGitRepo4
+> = z.object({
+  org: z.string(),
+  repo: z.string(),
+  type: z.literal("vercel"),
+  path: z.string(),
+  defaultBranch: z.string(),
+  name: z.string(),
+  private: z.boolean(),
+  ownerType: GetDeploymentGitRepoDeploymentsOwnerType$outboundSchema,
+});
+
+export function getDeploymentGitRepo4ToJSON(
+  getDeploymentGitRepo4: GetDeploymentGitRepo4,
+): string {
+  return JSON.stringify(
+    GetDeploymentGitRepo4$outboundSchema.parse(getDeploymentGitRepo4),
+  );
+}
+export function getDeploymentGitRepo4FromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentGitRepo4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDeploymentGitRepo4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentGitRepo4' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetDeploymentGitRepoOwnerType$inboundSchema: z.ZodNativeEnum<
   typeof GetDeploymentGitRepoOwnerType
 > = z.nativeEnum(GetDeploymentGitRepoOwnerType);
@@ -3262,13 +3724,13 @@ export function getDeploymentGitRepo3FromJSON(
 }
 
 /** @internal */
-export const GetDeploymentGitRepoDeploymentsResponseOwnerType$inboundSchema:
-  z.ZodNativeEnum<typeof GetDeploymentGitRepoDeploymentsResponseOwnerType> = z
-    .nativeEnum(GetDeploymentGitRepoDeploymentsResponseOwnerType);
+export const GetDeploymentGitRepoDeploymentsResponse200OwnerType$inboundSchema:
+  z.ZodNativeEnum<typeof GetDeploymentGitRepoDeploymentsResponse200OwnerType> =
+    z.nativeEnum(GetDeploymentGitRepoDeploymentsResponse200OwnerType);
 /** @internal */
-export const GetDeploymentGitRepoDeploymentsResponseOwnerType$outboundSchema:
-  z.ZodNativeEnum<typeof GetDeploymentGitRepoDeploymentsResponseOwnerType> =
-    GetDeploymentGitRepoDeploymentsResponseOwnerType$inboundSchema;
+export const GetDeploymentGitRepoDeploymentsResponse200OwnerType$outboundSchema:
+  z.ZodNativeEnum<typeof GetDeploymentGitRepoDeploymentsResponse200OwnerType> =
+    GetDeploymentGitRepoDeploymentsResponse200OwnerType$inboundSchema;
 
 /** @internal */
 export const GetDeploymentGitRepo2$inboundSchema: z.ZodType<
@@ -3285,7 +3747,7 @@ export const GetDeploymentGitRepo2$inboundSchema: z.ZodType<
   defaultBranch: types.string(),
   name: types.string(),
   private: types.boolean(),
-  ownerType: GetDeploymentGitRepoDeploymentsResponseOwnerType$inboundSchema,
+  ownerType: GetDeploymentGitRepoDeploymentsResponse200OwnerType$inboundSchema,
 });
 /** @internal */
 export type GetDeploymentGitRepo2$Outbound = {
@@ -3316,7 +3778,7 @@ export const GetDeploymentGitRepo2$outboundSchema: z.ZodType<
   defaultBranch: z.string(),
   name: z.string(),
   private: z.boolean(),
-  ownerType: GetDeploymentGitRepoDeploymentsResponseOwnerType$outboundSchema,
+  ownerType: GetDeploymentGitRepoDeploymentsResponse200OwnerType$outboundSchema,
 });
 
 export function getDeploymentGitRepo2ToJSON(
@@ -3337,13 +3799,13 @@ export function getDeploymentGitRepo2FromJSON(
 }
 
 /** @internal */
-export const GetDeploymentGitRepoDeploymentsOwnerType$inboundSchema:
-  z.ZodNativeEnum<typeof GetDeploymentGitRepoDeploymentsOwnerType> = z
-    .nativeEnum(GetDeploymentGitRepoDeploymentsOwnerType);
+export const GetDeploymentGitRepoDeploymentsResponseOwnerType$inboundSchema:
+  z.ZodNativeEnum<typeof GetDeploymentGitRepoDeploymentsResponseOwnerType> = z
+    .nativeEnum(GetDeploymentGitRepoDeploymentsResponseOwnerType);
 /** @internal */
-export const GetDeploymentGitRepoDeploymentsOwnerType$outboundSchema:
-  z.ZodNativeEnum<typeof GetDeploymentGitRepoDeploymentsOwnerType> =
-    GetDeploymentGitRepoDeploymentsOwnerType$inboundSchema;
+export const GetDeploymentGitRepoDeploymentsResponseOwnerType$outboundSchema:
+  z.ZodNativeEnum<typeof GetDeploymentGitRepoDeploymentsResponseOwnerType> =
+    GetDeploymentGitRepoDeploymentsResponseOwnerType$inboundSchema;
 
 /** @internal */
 export const GetDeploymentGitRepo1$inboundSchema: z.ZodType<
@@ -3359,7 +3821,7 @@ export const GetDeploymentGitRepo1$inboundSchema: z.ZodType<
   defaultBranch: types.string(),
   name: types.string(),
   private: types.boolean(),
-  ownerType: GetDeploymentGitRepoDeploymentsOwnerType$inboundSchema,
+  ownerType: GetDeploymentGitRepoDeploymentsResponseOwnerType$inboundSchema,
 });
 /** @internal */
 export type GetDeploymentGitRepo1$Outbound = {
@@ -3388,7 +3850,7 @@ export const GetDeploymentGitRepo1$outboundSchema: z.ZodType<
   defaultBranch: z.string(),
   name: z.string(),
   private: z.boolean(),
-  ownerType: GetDeploymentGitRepoDeploymentsOwnerType$outboundSchema,
+  ownerType: GetDeploymentGitRepoDeploymentsResponseOwnerType$outboundSchema,
 });
 
 export function getDeploymentGitRepo1ToJSON(
@@ -3417,12 +3879,14 @@ export const ResponseBodyGitRepo$inboundSchema: z.ZodType<
   z.lazy(() => GetDeploymentGitRepo1$inboundSchema),
   z.lazy(() => GetDeploymentGitRepo2$inboundSchema),
   z.lazy(() => GetDeploymentGitRepo3$inboundSchema),
+  z.lazy(() => GetDeploymentGitRepo4$inboundSchema),
 ]);
 /** @internal */
 export type ResponseBodyGitRepo$Outbound =
   | GetDeploymentGitRepo1$Outbound
   | GetDeploymentGitRepo2$Outbound
-  | GetDeploymentGitRepo3$Outbound;
+  | GetDeploymentGitRepo3$Outbound
+  | GetDeploymentGitRepo4$Outbound;
 
 /** @internal */
 export const ResponseBodyGitRepo$outboundSchema: z.ZodType<
@@ -3433,6 +3897,7 @@ export const ResponseBodyGitRepo$outboundSchema: z.ZodType<
   z.lazy(() => GetDeploymentGitRepo1$outboundSchema),
   z.lazy(() => GetDeploymentGitRepo2$outboundSchema),
   z.lazy(() => GetDeploymentGitRepo3$outboundSchema),
+  z.lazy(() => GetDeploymentGitRepo4$outboundSchema),
 ]);
 
 export function responseBodyGitRepoToJSON(
@@ -4279,6 +4744,219 @@ export function responseBodySeatBlockFromJSON(
 }
 
 /** @internal */
+export const ResponseBodyCommitMeta$inboundSchema: z.ZodType<
+  ResponseBodyCommitMeta,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  email: types.optional(types.string()),
+  name: types.optional(types.string()),
+  isVerified: types.optional(types.boolean()),
+});
+/** @internal */
+export type ResponseBodyCommitMeta$Outbound = {
+  email?: string | undefined;
+  name?: string | undefined;
+  isVerified?: boolean | undefined;
+};
+
+/** @internal */
+export const ResponseBodyCommitMeta$outboundSchema: z.ZodType<
+  ResponseBodyCommitMeta$Outbound,
+  z.ZodTypeDef,
+  ResponseBodyCommitMeta
+> = z.object({
+  email: z.string().optional(),
+  name: z.string().optional(),
+  isVerified: z.boolean().optional(),
+});
+
+export function responseBodyCommitMetaToJSON(
+  responseBodyCommitMeta: ResponseBodyCommitMeta,
+): string {
+  return JSON.stringify(
+    ResponseBodyCommitMeta$outboundSchema.parse(responseBodyCommitMeta),
+  );
+}
+export function responseBodyCommitMetaFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodyCommitMeta, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodyCommitMeta$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyCommitMeta' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentResponseBodyId$inboundSchema: z.ZodType<
+  GetDeploymentResponseBodyId,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([types.string(), types.number()]);
+/** @internal */
+export type GetDeploymentResponseBodyId$Outbound = string | number;
+
+/** @internal */
+export const GetDeploymentResponseBodyId$outboundSchema: z.ZodType<
+  GetDeploymentResponseBodyId$Outbound,
+  z.ZodTypeDef,
+  GetDeploymentResponseBodyId
+> = smartUnion([z.string(), z.number()]);
+
+export function getDeploymentResponseBodyIdToJSON(
+  getDeploymentResponseBodyId: GetDeploymentResponseBodyId,
+): string {
+  return JSON.stringify(
+    GetDeploymentResponseBodyId$outboundSchema.parse(
+      getDeploymentResponseBodyId,
+    ),
+  );
+}
+export function getDeploymentResponseBodyIdFromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentResponseBodyId, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDeploymentResponseBodyId$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentResponseBodyId' from JSON`,
+  );
+}
+
+/** @internal */
+export const ResponseBodyGitUser$inboundSchema: z.ZodType<
+  ResponseBodyGitUser,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  id: smartUnion([types.string(), types.number()]),
+  login: types.string(),
+});
+/** @internal */
+export type ResponseBodyGitUser$Outbound = {
+  id: string | number;
+  login: string;
+};
+
+/** @internal */
+export const ResponseBodyGitUser$outboundSchema: z.ZodType<
+  ResponseBodyGitUser$Outbound,
+  z.ZodTypeDef,
+  ResponseBodyGitUser
+> = z.object({
+  id: smartUnion([z.string(), z.number()]),
+  login: z.string(),
+});
+
+export function responseBodyGitUserToJSON(
+  responseBodyGitUser: ResponseBodyGitUser,
+): string {
+  return JSON.stringify(
+    ResponseBodyGitUser$outboundSchema.parse(responseBodyGitUser),
+  );
+}
+export function responseBodyGitUserFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodyGitUser, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodyGitUser$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyGitUser' from JSON`,
+  );
+}
+
+/** @internal */
+export const ResponseBodyVercelUser$inboundSchema: z.ZodType<
+  ResponseBodyVercelUser,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  id: types.string(),
+  username: types.string(),
+});
+/** @internal */
+export type ResponseBodyVercelUser$Outbound = {
+  id: string;
+  username: string;
+};
+
+/** @internal */
+export const ResponseBodyVercelUser$outboundSchema: z.ZodType<
+  ResponseBodyVercelUser$Outbound,
+  z.ZodTypeDef,
+  ResponseBodyVercelUser
+> = z.object({
+  id: z.string(),
+  username: z.string(),
+});
+
+export function responseBodyVercelUserToJSON(
+  responseBodyVercelUser: ResponseBodyVercelUser,
+): string {
+  return JSON.stringify(
+    ResponseBodyVercelUser$outboundSchema.parse(responseBodyVercelUser),
+  );
+}
+export function responseBodyVercelUserFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodyVercelUser, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodyVercelUser$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyVercelUser' from JSON`,
+  );
+}
+
+/** @internal */
+export const ResponseBodyAttribution$inboundSchema: z.ZodType<
+  ResponseBodyAttribution,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  commitMeta: types.optional(
+    z.lazy(() => ResponseBodyCommitMeta$inboundSchema),
+  ),
+  gitUser: types.optional(z.lazy(() => ResponseBodyGitUser$inboundSchema)),
+  vercelUser: types.optional(
+    z.lazy(() => ResponseBodyVercelUser$inboundSchema),
+  ),
+});
+/** @internal */
+export type ResponseBodyAttribution$Outbound = {
+  commitMeta?: ResponseBodyCommitMeta$Outbound | undefined;
+  gitUser?: ResponseBodyGitUser$Outbound | undefined;
+  vercelUser?: ResponseBodyVercelUser$Outbound | undefined;
+};
+
+/** @internal */
+export const ResponseBodyAttribution$outboundSchema: z.ZodType<
+  ResponseBodyAttribution$Outbound,
+  z.ZodTypeDef,
+  ResponseBodyAttribution
+> = z.object({
+  commitMeta: z.lazy(() => ResponseBodyCommitMeta$outboundSchema).optional(),
+  gitUser: z.lazy(() => ResponseBodyGitUser$outboundSchema).optional(),
+  vercelUser: z.lazy(() => ResponseBodyVercelUser$outboundSchema).optional(),
+});
+
+export function responseBodyAttributionToJSON(
+  responseBodyAttribution: ResponseBodyAttribution,
+): string {
+  return JSON.stringify(
+    ResponseBodyAttribution$outboundSchema.parse(responseBodyAttribution),
+  );
+}
+export function responseBodyAttributionFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodyAttribution, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodyAttribution$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyAttribution' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetDeploymentResponseBody1$inboundSchema: z.ZodType<
   GetDeploymentResponseBody1,
   z.ZodTypeDef,
@@ -4371,7 +5049,7 @@ export const GetDeploymentResponseBody1$inboundSchema: z.ZodType<
   userConfiguredDeploymentId: types.optional(types.string()),
   version: types.number(),
   oidcTokenClaims: types.optional(
-    GetDeploymentResponseBodyOidcTokenClaims$inboundSchema,
+    z.lazy(() => GetDeploymentResponseBodyOidcTokenClaims$inboundSchema),
   ),
   projectId: types.string(),
   plan: ResponseBodyPlan$inboundSchema,
@@ -4400,6 +5078,7 @@ export const GetDeploymentResponseBody1$inboundSchema: z.ZodType<
       z.lazy(() => GetDeploymentGitRepo1$inboundSchema),
       z.lazy(() => GetDeploymentGitRepo2$inboundSchema),
       z.lazy(() => GetDeploymentGitRepo3$inboundSchema),
+      z.lazy(() => GetDeploymentGitRepo4$inboundSchema),
     ]),
   ).optional(),
   flags: types.optional(
@@ -4417,6 +5096,9 @@ export const GetDeploymentResponseBody1$inboundSchema: z.ZodType<
   config: types.optional(z.lazy(() => ResponseBodyConfig$inboundSchema)),
   checks: types.optional(z.lazy(() => ResponseBodyChecks$inboundSchema)),
   seatBlock: types.optional(z.lazy(() => ResponseBodySeatBlock$inboundSchema)),
+  attribution: types.optional(
+    z.lazy(() => ResponseBodyAttribution$inboundSchema),
+  ),
 });
 /** @internal */
 export type GetDeploymentResponseBody1$Outbound = {
@@ -4524,6 +5206,7 @@ export type GetDeploymentResponseBody1$Outbound = {
     | GetDeploymentGitRepo1$Outbound
     | GetDeploymentGitRepo2$Outbound
     | GetDeploymentGitRepo3$Outbound
+    | GetDeploymentGitRepo4$Outbound
     | null
     | undefined;
   flags?:
@@ -4537,6 +5220,7 @@ export type GetDeploymentResponseBody1$Outbound = {
   config?: ResponseBodyConfig$Outbound | undefined;
   checks?: ResponseBodyChecks$Outbound | undefined;
   seatBlock?: ResponseBodySeatBlock$Outbound | undefined;
+  attribution?: ResponseBodyAttribution$Outbound | undefined;
 };
 
 /** @internal */
@@ -4621,8 +5305,9 @@ export const GetDeploymentResponseBody1$outboundSchema: z.ZodType<
   url: z.string(),
   userConfiguredDeploymentId: z.string().optional(),
   version: z.number(),
-  oidcTokenClaims: GetDeploymentResponseBodyOidcTokenClaims$outboundSchema
-    .optional(),
+  oidcTokenClaims: z.lazy(() =>
+    GetDeploymentResponseBodyOidcTokenClaims$outboundSchema
+  ).optional(),
   projectId: z.string(),
   plan: ResponseBodyPlan$outboundSchema,
   platform: z.lazy(() => ResponseBodyPlatform$outboundSchema).optional(),
@@ -4650,6 +5335,7 @@ export const GetDeploymentResponseBody1$outboundSchema: z.ZodType<
       z.lazy(() => GetDeploymentGitRepo1$outboundSchema),
       z.lazy(() => GetDeploymentGitRepo2$outboundSchema),
       z.lazy(() => GetDeploymentGitRepo3$outboundSchema),
+      z.lazy(() => GetDeploymentGitRepo4$outboundSchema),
     ]),
   ).optional(),
   flags: smartUnion([
@@ -4663,6 +5349,7 @@ export const GetDeploymentResponseBody1$outboundSchema: z.ZodType<
   config: z.lazy(() => ResponseBodyConfig$outboundSchema).optional(),
   checks: z.lazy(() => ResponseBodyChecks$outboundSchema).optional(),
   seatBlock: z.lazy(() => ResponseBodySeatBlock$outboundSchema).optional(),
+  attribution: z.lazy(() => ResponseBodyAttribution$outboundSchema).optional(),
 });
 
 export function getDeploymentResponseBody1ToJSON(

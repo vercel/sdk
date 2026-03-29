@@ -53,3 +53,18 @@ const value: models.CancelDeploymentGitRepo3 = {
 };
 ```
 
+### `models.CancelDeploymentGitRepo4`
+
+```typescript
+const value: models.CancelDeploymentGitRepo4 = {
+  org: "<value>",
+  repo: "<value>",
+  type: "vercel",
+  path: "/usr/lib",
+  defaultBranch: "<value>",
+  name: "<value>",
+  private: false,
+  ownerType: "user",
+};
+```
+

@@ -10,6 +10,344 @@ import (
 	"mockserver/internal/sdk/utils"
 )
 
+type OldTeam2 struct {
+	Name string `json:"name"`
+}
+
+func (o OldTeam2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(o, "", false)
+}
+
+func (o *OldTeam2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &o, "", false, []string{"name"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *OldTeam2) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+type NewTeam2 struct {
+	Name string `json:"name"`
+}
+
+func (n NewTeam2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(n, "", false)
+}
+
+func (n *NewTeam2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &n, "", false, []string{"name"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *NewTeam2) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+// Payload41 - The payload of the event, if requested.
+type Payload41 struct {
+	ID      string    `json:"id"`
+	OldTeam *OldTeam2 `json:"oldTeam,omitempty"`
+	NewTeam *NewTeam2 `json:"newTeam,omitempty"`
+}
+
+func (p Payload41) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload41) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"id"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *Payload41) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *Payload41) GetOldTeam() *OldTeam2 {
+	if o == nil {
+		return nil
+	}
+	return o.OldTeam
+}
+
+func (o *Payload41) GetNewTeam() *NewTeam2 {
+	if o == nil {
+		return nil
+	}
+	return o.NewTeam
+}
+
+// Payload40 - The payload of the event, if requested.
+type Payload40 struct {
+	Cn  *string  `json:"cn,omitempty"`
+	Cns []string `json:"cns,omitempty"`
+	ID  *string  `json:"id,omitempty"`
+}
+
+func (p Payload40) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload40) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *Payload40) GetCn() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Cn
+}
+
+func (o *Payload40) GetCns() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Cns
+}
+
+func (o *Payload40) GetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+// Payload39 - The payload of the event, if requested.
+type Payload39 struct {
+	ID     string   `json:"id"`
+	Cns    []string `json:"cns"`
+	Custom bool     `json:"custom"`
+}
+
+func (p Payload39) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload39) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"id", "cns", "custom"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *Payload39) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *Payload39) GetCns() []string {
+	if o == nil {
+		return []string{}
+	}
+	return o.Cns
+}
+
+func (o *Payload39) GetCustom() bool {
+	if o == nil {
+		return false
+	}
+	return o.Custom
+}
+
+// Payload38 - The payload of the event, if requested.
+type Payload38 struct {
+	Cn     *string  `json:"cn,omitempty"`
+	Cns    []string `json:"cns,omitempty"`
+	Custom bool     `json:"custom"`
+	ID     *string  `json:"id,omitempty"`
+}
+
+func (p Payload38) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload38) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"custom"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *Payload38) GetCn() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Cn
+}
+
+func (o *Payload38) GetCns() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Cns
+}
+
+func (o *Payload38) GetCustom() bool {
+	if o == nil {
+		return false
+	}
+	return o.Custom
+}
+
+func (o *Payload38) GetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+type Project3 struct {
+	ID   string `json:"id"`
+	Name string `json:"name"`
+}
+
+func (p Project3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Project3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"id", "name"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *Project3) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *Project3) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+// Payload37 - The payload of the event, if requested.
+type Payload37 struct {
+	Project   Project3 `json:"project"`
+	VersionID string   `json:"versionId"`
+}
+
+func (p Payload37) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload37) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"project", "versionId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *Payload37) GetProject() Project3 {
+	if o == nil {
+		return Project3{}
+	}
+	return o.Project
+}
+
+func (o *Payload37) GetVersionID() string {
+	if o == nil {
+		return ""
+	}
+	return o.VersionID
+}
+
+type Project2 struct {
+	ID   string `json:"id"`
+	Name string `json:"name"`
+}
+
+func (p Project2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Project2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"id", "name"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *Project2) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *Project2) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+// Payload36 - The payload of the event, if requested.
+type Payload36 struct {
+	Project                Project2 `json:"project"`
+	BulkRedirectsLimit     float64  `json:"bulkRedirectsLimit"`
+	PrevBulkRedirectsLimit float64  `json:"prevBulkRedirectsLimit"`
+}
+
+func (p Payload36) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload36) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"project", "bulkRedirectsLimit", "prevBulkRedirectsLimit"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *Payload36) GetProject() Project2 {
+	if o == nil {
+		return Project2{}
+	}
+	return o.Project
+}
+
+func (o *Payload36) GetBulkRedirectsLimit() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.BulkRedirectsLimit
+}
+
+func (o *Payload36) GetPrevBulkRedirectsLimit() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.PrevBulkRedirectsLimit
+}
+
 // Payload35 - The payload of the event, if requested.
 type Payload35 struct {
 	SubscriptionID *string  `json:"subscriptionId,omitempty"`

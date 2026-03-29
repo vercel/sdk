@@ -5,7 +5,7 @@ Condensed check data. Retrieve individual check and check run data using api-che
 ## Example Usage
 
 ```typescript
-import { DeploymentAlias } from "@vercel/sdk/models/createdeploymentop.js";
+import { DeploymentAlias } from "@vercel/sdk/models/createdeploymentresponsebody.js";
 
 let value: DeploymentAlias = {
   state: "failed",

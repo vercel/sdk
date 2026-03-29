@@ -6,7 +6,7 @@
 import { UserEventPayload164Previous } from "@vercel/sdk/models/usereventpayload159next.js";
 
 let value: UserEventPayload164Previous = {
-  gitProvider: "github-custom-host",
+  gitProvider: "github-limited",
   gitRepoId: "<id>",
   gitRepositoryName: "<value>",
 };

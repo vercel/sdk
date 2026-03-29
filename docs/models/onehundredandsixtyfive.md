@@ -10,7 +10,7 @@ import { OneHundredAndSixtyFive } from "@vercel/sdk/models/usereventpayload159ne
 let value: OneHundredAndSixtyFive = {
   projectId: "<id>",
   projectName: "<value>",
-  gitProvider: "github",
+  gitProvider: "vercel",
   gitRepoId: "<id>",
   gitRepositoryName: "<value>",
 };

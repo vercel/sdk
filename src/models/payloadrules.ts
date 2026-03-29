@@ -1119,6 +1119,7 @@ export type Credentials2 = {
 };
 
 export const CredentialsType = {
+  Vercel: "vercel",
   Gitlab: "gitlab",
   Bitbucket: "bitbucket",
   Google: "google",
@@ -1135,6 +1136,7 @@ export type Credentials1 = {
 };
 
 export type Credentials =
+  | (Credentials1 & { type: "vercel" })
   | (Credentials1 & { type: "gitlab" })
   | (Credentials1 & { type: "bitbucket" })
   | (Credentials1 & { type: "google" })
@@ -1168,6 +1170,7 @@ export type PayloadImportFlowGitNamespace = string | number;
 export type PayloadImportFlowGitNamespaceId = string | number;
 
 export const PayloadImportFlowGitProvider = {
+  Vercel: "vercel",
   Github: "github",
   GithubLimited: "github-limited",
   GithubCustomHost: "github-custom-host",
@@ -6180,6 +6183,9 @@ export const Credentials$inboundSchema: z.ZodType<
   unknown
 > = z.union([
   z.lazy(() => Credentials1$inboundSchema).and(
+    z.object({ type: z.literal("vercel") }),
+  ),
+  z.lazy(() => Credentials1$inboundSchema).and(
     z.object({ type: z.literal("gitlab") }),
   ),
   z.lazy(() => Credentials1$inboundSchema).and(
@@ -6204,6 +6210,7 @@ export const Credentials$inboundSchema: z.ZodType<
 ]);
 /** @internal */
 export type Credentials$Outbound =
+  | (Credentials1$Outbound & { type: "vercel" })
   | (Credentials1$Outbound & { type: "gitlab" })
   | (Credentials1$Outbound & { type: "bitbucket" })
   | (Credentials1$Outbound & { type: "google" })
@@ -6219,6 +6226,9 @@ export const Credentials$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Credentials
 > = z.union([
+  z.lazy(() => Credentials1$outboundSchema).and(
+    z.object({ type: z.literal("vercel") }),
+  ),
   z.lazy(() => Credentials1$outboundSchema).and(
     z.object({ type: z.literal("gitlab") }),
   ),

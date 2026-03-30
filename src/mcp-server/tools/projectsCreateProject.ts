@@ -3,7 +3,7 @@
  */
 
 import { projectsCreateProject } from "../../funcs/projectsCreateProject.js";
-import { CreateProjectRequest$inboundSchema } from "../../models/createprojectop.js";
+import { CreateProjectRequest$inboundSchema } from "../../models/features.js";
 import { formatResult, ToolDefinition } from "../tools.js";
 
 const args = {

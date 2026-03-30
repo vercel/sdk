@@ -381,6 +381,26 @@ export type ResponseBodyDismissedToasts = {
   value: GetProjectsValue3 | string | number | boolean | null;
 };
 
+export const GetProjectsResponseBodyProjectsResponseEnv = {
+  Production: "production",
+  Preview: "preview",
+} as const;
+export type GetProjectsResponseBodyProjectsResponseEnv = ClosedEnum<
+  typeof GetProjectsResponseBodyProjectsResponseEnv
+>;
+
+export type ResponseBodySamplingRules = {
+  rate: number;
+  env?: GetProjectsResponseBodyProjectsResponseEnv | undefined;
+  requestPath?: string | undefined;
+};
+
+export type ResponseBodyTracing = {
+  domains?: string | undefined;
+  ignorePaths?: Array<string> | undefined;
+  samplingRules?: Array<ResponseBodySamplingRules> | undefined;
+};
+
 export type GetProjectsResponseBodyProjects = {
   accountId: string;
   analytics?: GetProjectsResponseBodyProjectsAnalytics | undefined;
@@ -495,6 +515,7 @@ export type GetProjectsResponseBodyProjects = {
   hasDeployments?: boolean | undefined;
   dismissedToasts?: Array<ResponseBodyDismissedToasts> | undefined;
   protectedSourcemaps?: boolean | undefined;
+  tracing?: ResponseBodyTracing | undefined;
 };
 
 /**
@@ -1723,26 +1744,6 @@ export type GetProjectsResponseBodyProjectsBlock = {
 };
 
 export type GetProjectsHasProjectsResponse200ApplicationJSONResponseBody2ProjectsAbuseBlockHistoryValue =
-  {
-    eq: string;
-  };
-
-export type GetProjectsHasProjectsResponse200ApplicationJSONResponseBody22 = {
-  type: "host";
-  value:
-    GetProjectsHasProjectsResponse200ApplicationJSONResponseBody2ProjectsAbuseBlockHistoryValue;
-};
-
-export const GetProjectsHasProjectsResponse200ApplicationJSONResponseBody2Key =
-  {
-    XVercelIpCountry: "x-vercel-ip-country",
-  } as const;
-export type GetProjectsHasProjectsResponse200ApplicationJSONResponseBody2Key =
-  ClosedEnum<
-    typeof GetProjectsHasProjectsResponse200ApplicationJSONResponseBody2Key
-  >;
-
-export type GetProjectsHasProjectsResponse200ApplicationJSONResponseBody2ProjectsAbuseValue =
   {
     eq: string;
   };
@@ -3296,6 +3297,108 @@ export function responseBodyDismissedToastsFromJSON(
 }
 
 /** @internal */
+export const GetProjectsResponseBodyProjectsResponseEnv$inboundSchema:
+  z.ZodNativeEnum<typeof GetProjectsResponseBodyProjectsResponseEnv> = z
+    .nativeEnum(GetProjectsResponseBodyProjectsResponseEnv);
+/** @internal */
+export const GetProjectsResponseBodyProjectsResponseEnv$outboundSchema:
+  z.ZodNativeEnum<typeof GetProjectsResponseBodyProjectsResponseEnv> =
+    GetProjectsResponseBodyProjectsResponseEnv$inboundSchema;
+
+/** @internal */
+export const ResponseBodySamplingRules$inboundSchema: z.ZodType<
+  ResponseBodySamplingRules,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  rate: types.number(),
+  env: types.optional(GetProjectsResponseBodyProjectsResponseEnv$inboundSchema),
+  requestPath: types.optional(types.string()),
+});
+/** @internal */
+export type ResponseBodySamplingRules$Outbound = {
+  rate: number;
+  env?: string | undefined;
+  requestPath?: string | undefined;
+};
+
+/** @internal */
+export const ResponseBodySamplingRules$outboundSchema: z.ZodType<
+  ResponseBodySamplingRules$Outbound,
+  z.ZodTypeDef,
+  ResponseBodySamplingRules
+> = z.object({
+  rate: z.number(),
+  env: GetProjectsResponseBodyProjectsResponseEnv$outboundSchema.optional(),
+  requestPath: z.string().optional(),
+});
+
+export function responseBodySamplingRulesToJSON(
+  responseBodySamplingRules: ResponseBodySamplingRules,
+): string {
+  return JSON.stringify(
+    ResponseBodySamplingRules$outboundSchema.parse(responseBodySamplingRules),
+  );
+}
+export function responseBodySamplingRulesFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodySamplingRules, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodySamplingRules$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodySamplingRules' from JSON`,
+  );
+}
+
+/** @internal */
+export const ResponseBodyTracing$inboundSchema: z.ZodType<
+  ResponseBodyTracing,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  domains: types.optional(types.string()),
+  ignorePaths: types.optional(z.array(types.string())),
+  samplingRules: types.optional(
+    z.array(z.lazy(() => ResponseBodySamplingRules$inboundSchema)),
+  ),
+});
+/** @internal */
+export type ResponseBodyTracing$Outbound = {
+  domains?: string | undefined;
+  ignorePaths?: Array<string> | undefined;
+  samplingRules?: Array<ResponseBodySamplingRules$Outbound> | undefined;
+};
+
+/** @internal */
+export const ResponseBodyTracing$outboundSchema: z.ZodType<
+  ResponseBodyTracing$Outbound,
+  z.ZodTypeDef,
+  ResponseBodyTracing
+> = z.object({
+  domains: z.string().optional(),
+  ignorePaths: z.array(z.string()).optional(),
+  samplingRules: z.array(z.lazy(() => ResponseBodySamplingRules$outboundSchema))
+    .optional(),
+});
+
+export function responseBodyTracingToJSON(
+  responseBodyTracing: ResponseBodyTracing,
+): string {
+  return JSON.stringify(
+    ResponseBodyTracing$outboundSchema.parse(responseBodyTracing),
+  );
+}
+export function responseBodyTracingFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodyTracing, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodyTracing$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyTracing' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetProjectsResponseBodyProjects$inboundSchema: z.ZodType<
   GetProjectsResponseBodyProjects,
   z.ZodTypeDef,
@@ -3444,6 +3547,7 @@ export const GetProjectsResponseBodyProjects$inboundSchema: z.ZodType<
     z.array(z.lazy(() => ResponseBodyDismissedToasts$inboundSchema)),
   ),
   protectedSourcemaps: types.optional(types.boolean()),
+  tracing: types.optional(z.lazy(() => ResponseBodyTracing$inboundSchema)),
 });
 /** @internal */
 export type GetProjectsResponseBodyProjects$Outbound = {
@@ -3568,6 +3672,7 @@ export type GetProjectsResponseBodyProjects$Outbound = {
   hasDeployments?: boolean | undefined;
   dismissedToasts?: Array<ResponseBodyDismissedToasts$Outbound> | undefined;
   protectedSourcemaps?: boolean | undefined;
+  tracing?: ResponseBodyTracing$Outbound | undefined;
 };
 
 /** @internal */
@@ -3699,6 +3804,7 @@ export const GetProjectsResponseBodyProjects$outboundSchema: z.ZodType<
     z.lazy(() => ResponseBodyDismissedToasts$outboundSchema),
   ).optional(),
   protectedSourcemaps: z.boolean().optional(),
+  tracing: z.lazy(() => ResponseBodyTracing$outboundSchema).optional(),
 });
 
 export function getProjectsResponseBodyProjectsToJSON(
@@ -9300,127 +9406,5 @@ export function getProjectsHasProjectsResponse200ApplicationJSONResponseBody2Pro
       GetProjectsHasProjectsResponse200ApplicationJSONResponseBody2ProjectsAbuseBlockHistoryValue$inboundSchema
         .parse(JSON.parse(x)),
     `Failed to parse 'GetProjectsHasProjectsResponse200ApplicationJSONResponseBody2ProjectsAbuseBlockHistoryValue' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetProjectsHasProjectsResponse200ApplicationJSONResponseBody22$inboundSchema:
-  z.ZodType<
-    GetProjectsHasProjectsResponse200ApplicationJSONResponseBody22,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    type: types.literal("host"),
-    value: z.lazy(() =>
-      GetProjectsHasProjectsResponse200ApplicationJSONResponseBody2ProjectsAbuseBlockHistoryValue$inboundSchema
-    ),
-  });
-/** @internal */
-export type GetProjectsHasProjectsResponse200ApplicationJSONResponseBody22$Outbound =
-  {
-    type: "host";
-    value:
-      GetProjectsHasProjectsResponse200ApplicationJSONResponseBody2ProjectsAbuseBlockHistoryValue$Outbound;
-  };
-
-/** @internal */
-export const GetProjectsHasProjectsResponse200ApplicationJSONResponseBody22$outboundSchema:
-  z.ZodType<
-    GetProjectsHasProjectsResponse200ApplicationJSONResponseBody22$Outbound,
-    z.ZodTypeDef,
-    GetProjectsHasProjectsResponse200ApplicationJSONResponseBody22
-  > = z.object({
-    type: z.literal("host"),
-    value: z.lazy(() =>
-      GetProjectsHasProjectsResponse200ApplicationJSONResponseBody2ProjectsAbuseBlockHistoryValue$outboundSchema
-    ),
-  });
-
-export function getProjectsHasProjectsResponse200ApplicationJSONResponseBody22ToJSON(
-  getProjectsHasProjectsResponse200ApplicationJSONResponseBody22:
-    GetProjectsHasProjectsResponse200ApplicationJSONResponseBody22,
-): string {
-  return JSON.stringify(
-    GetProjectsHasProjectsResponse200ApplicationJSONResponseBody22$outboundSchema
-      .parse(getProjectsHasProjectsResponse200ApplicationJSONResponseBody22),
-  );
-}
-export function getProjectsHasProjectsResponse200ApplicationJSONResponseBody22FromJSON(
-  jsonString: string,
-): SafeParseResult<
-  GetProjectsHasProjectsResponse200ApplicationJSONResponseBody22,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetProjectsHasProjectsResponse200ApplicationJSONResponseBody22$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'GetProjectsHasProjectsResponse200ApplicationJSONResponseBody22' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetProjectsHasProjectsResponse200ApplicationJSONResponseBody2Key$inboundSchema:
-  z.ZodNativeEnum<
-    typeof GetProjectsHasProjectsResponse200ApplicationJSONResponseBody2Key
-  > = z.nativeEnum(
-    GetProjectsHasProjectsResponse200ApplicationJSONResponseBody2Key,
-  );
-/** @internal */
-export const GetProjectsHasProjectsResponse200ApplicationJSONResponseBody2Key$outboundSchema:
-  z.ZodNativeEnum<
-    typeof GetProjectsHasProjectsResponse200ApplicationJSONResponseBody2Key
-  > =
-    GetProjectsHasProjectsResponse200ApplicationJSONResponseBody2Key$inboundSchema;
-
-/** @internal */
-export const GetProjectsHasProjectsResponse200ApplicationJSONResponseBody2ProjectsAbuseValue$inboundSchema:
-  z.ZodType<
-    GetProjectsHasProjectsResponse200ApplicationJSONResponseBody2ProjectsAbuseValue,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    eq: types.string(),
-  });
-/** @internal */
-export type GetProjectsHasProjectsResponse200ApplicationJSONResponseBody2ProjectsAbuseValue$Outbound =
-  {
-    eq: string;
-  };
-
-/** @internal */
-export const GetProjectsHasProjectsResponse200ApplicationJSONResponseBody2ProjectsAbuseValue$outboundSchema:
-  z.ZodType<
-    GetProjectsHasProjectsResponse200ApplicationJSONResponseBody2ProjectsAbuseValue$Outbound,
-    z.ZodTypeDef,
-    GetProjectsHasProjectsResponse200ApplicationJSONResponseBody2ProjectsAbuseValue
-  > = z.object({
-    eq: z.string(),
-  });
-
-export function getProjectsHasProjectsResponse200ApplicationJSONResponseBody2ProjectsAbuseValueToJSON(
-  getProjectsHasProjectsResponse200ApplicationJSONResponseBody2ProjectsAbuseValue:
-    GetProjectsHasProjectsResponse200ApplicationJSONResponseBody2ProjectsAbuseValue,
-): string {
-  return JSON.stringify(
-    GetProjectsHasProjectsResponse200ApplicationJSONResponseBody2ProjectsAbuseValue$outboundSchema
-      .parse(
-        getProjectsHasProjectsResponse200ApplicationJSONResponseBody2ProjectsAbuseValue,
-      ),
-  );
-}
-export function getProjectsHasProjectsResponse200ApplicationJSONResponseBody2ProjectsAbuseValueFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  GetProjectsHasProjectsResponse200ApplicationJSONResponseBody2ProjectsAbuseValue,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetProjectsHasProjectsResponse200ApplicationJSONResponseBody2ProjectsAbuseValue$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'GetProjectsHasProjectsResponse200ApplicationJSONResponseBody2ProjectsAbuseValue' from JSON`,
   );
 }

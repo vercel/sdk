@@ -5,7 +5,7 @@ The Vercel Auth setting for the project (historically named \"SSO Protection\")
 ## Example Usage
 
 ```typescript
-import { CreateProjectSsoProtection } from "@vercel/sdk/models/createprojectop.js";
+import { CreateProjectSsoProtection } from "@vercel/sdk/models/features.js";
 
 let value: CreateProjectSsoProtection = {
   deploymentType: "all",

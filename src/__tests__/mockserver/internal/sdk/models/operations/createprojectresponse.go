@@ -3225,6 +3225,86 @@ func (o *CreateProjectDismissedToast) GetValue() *CreateProjectValueUnion {
 	return o.Value
 }
 
+type CreateProjectSamplingRuleEnv string
+
+const (
+	CreateProjectSamplingRuleEnvProduction CreateProjectSamplingRuleEnv = "production"
+	CreateProjectSamplingRuleEnvPreview    CreateProjectSamplingRuleEnv = "preview"
+)
+
+func (e CreateProjectSamplingRuleEnv) ToPointer() *CreateProjectSamplingRuleEnv {
+	return &e
+}
+func (e *CreateProjectSamplingRuleEnv) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "production":
+		fallthrough
+	case "preview":
+		*e = CreateProjectSamplingRuleEnv(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateProjectSamplingRuleEnv: %v", v)
+	}
+}
+
+type CreateProjectSamplingRule struct {
+	Rate        float64                       `json:"rate"`
+	Env         *CreateProjectSamplingRuleEnv `json:"env,omitempty"`
+	RequestPath *string                       `json:"requestPath,omitempty"`
+}
+
+func (o *CreateProjectSamplingRule) GetRate() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Rate
+}
+
+func (o *CreateProjectSamplingRule) GetEnv() *CreateProjectSamplingRuleEnv {
+	if o == nil {
+		return nil
+	}
+	return o.Env
+}
+
+func (o *CreateProjectSamplingRule) GetRequestPath() *string {
+	if o == nil {
+		return nil
+	}
+	return o.RequestPath
+}
+
+type CreateProjectTracing struct {
+	Domains       *string                     `json:"domains,omitempty"`
+	IgnorePaths   []string                    `json:"ignorePaths,omitempty"`
+	SamplingRules []CreateProjectSamplingRule `json:"samplingRules,omitempty"`
+}
+
+func (o *CreateProjectTracing) GetDomains() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Domains
+}
+
+func (o *CreateProjectTracing) GetIgnorePaths() []string {
+	if o == nil {
+		return nil
+	}
+	return o.IgnorePaths
+}
+
+func (o *CreateProjectTracing) GetSamplingRules() []CreateProjectSamplingRule {
+	if o == nil {
+		return nil
+	}
+	return o.SamplingRules
+}
+
 // CreateProjectResponseBody - The project was successfuly created
 type CreateProjectResponseBody struct {
 	AccountID                        string                                                                 `json:"accountId"`
@@ -3317,6 +3397,7 @@ type CreateProjectResponseBody struct {
 	HasDeployments                       *bool                                                                 `json:"hasDeployments,omitempty"`
 	DismissedToasts                      []CreateProjectDismissedToast                                         `json:"dismissedToasts,omitempty"`
 	ProtectedSourcemaps                  *bool                                                                 `json:"protectedSourcemaps,omitempty"`
+	Tracing                              *CreateProjectTracing                                                 `json:"tracing,omitempty"`
 }
 
 func (o *CreateProjectResponseBody) GetAccountID() string {
@@ -3968,6 +4049,13 @@ func (o *CreateProjectResponseBody) GetProtectedSourcemaps() *bool {
 		return nil
 	}
 	return o.ProtectedSourcemaps
+}
+
+func (o *CreateProjectResponseBody) GetTracing() *CreateProjectTracing {
+	if o == nil {
+		return nil
+	}
+	return o.Tracing
 }
 
 type CreateProjectResponse struct {

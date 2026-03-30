@@ -2870,6 +2870,108 @@ func (o *GetProjectsDismissedToast) GetValue() *ProjectDismissedToastValueUnion 
 	return o.Value
 }
 
+type ProjectSamplingRuleEnv string
+
+const (
+	ProjectSamplingRuleEnvProduction ProjectSamplingRuleEnv = "production"
+	ProjectSamplingRuleEnvPreview    ProjectSamplingRuleEnv = "preview"
+)
+
+func (e ProjectSamplingRuleEnv) ToPointer() *ProjectSamplingRuleEnv {
+	return &e
+}
+func (e *ProjectSamplingRuleEnv) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "production":
+		fallthrough
+	case "preview":
+		*e = ProjectSamplingRuleEnv(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for ProjectSamplingRuleEnv: %v", v)
+	}
+}
+
+type GetProjectsSamplingRule struct {
+	Rate        float64                 `json:"rate"`
+	Env         *ProjectSamplingRuleEnv `json:"env,omitempty"`
+	RequestPath *string                 `json:"requestPath,omitempty"`
+}
+
+func (g GetProjectsSamplingRule) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetProjectsSamplingRule) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"rate"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetProjectsSamplingRule) GetRate() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Rate
+}
+
+func (o *GetProjectsSamplingRule) GetEnv() *ProjectSamplingRuleEnv {
+	if o == nil {
+		return nil
+	}
+	return o.Env
+}
+
+func (o *GetProjectsSamplingRule) GetRequestPath() *string {
+	if o == nil {
+		return nil
+	}
+	return o.RequestPath
+}
+
+type GetProjectsTracing struct {
+	Domains       *string                   `json:"domains,omitempty"`
+	IgnorePaths   []string                  `json:"ignorePaths,omitempty"`
+	SamplingRules []GetProjectsSamplingRule `json:"samplingRules,omitempty"`
+}
+
+func (g GetProjectsTracing) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetProjectsTracing) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetProjectsTracing) GetDomains() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Domains
+}
+
+func (o *GetProjectsTracing) GetIgnorePaths() []string {
+	if o == nil {
+		return nil
+	}
+	return o.IgnorePaths
+}
+
+func (o *GetProjectsTracing) GetSamplingRules() []GetProjectsSamplingRule {
+	if o == nil {
+		return nil
+	}
+	return o.SamplingRules
+}
+
 type GetProjectsProject2 struct {
 	AccountID                        string                                                               `json:"accountId"`
 	Analytics                        *ProjectAnalytics2                                                   `json:"analytics,omitempty"`
@@ -2961,6 +3063,7 @@ type GetProjectsProject2 struct {
 	HasDeployments                       *bool                                                            `json:"hasDeployments,omitempty"`
 	DismissedToasts                      []GetProjectsDismissedToast                                      `json:"dismissedToasts,omitempty"`
 	ProtectedSourcemaps                  *bool                                                            `json:"protectedSourcemaps,omitempty"`
+	Tracing                              *GetProjectsTracing                                              `json:"tracing,omitempty"`
 }
 
 func (g GetProjectsProject2) MarshalJSON() ([]byte, error) {
@@ -3623,6 +3726,13 @@ func (o *GetProjectsProject2) GetProtectedSourcemaps() *bool {
 		return nil
 	}
 	return o.ProtectedSourcemaps
+}
+
+func (o *GetProjectsProject2) GetTracing() *GetProjectsTracing {
+	if o == nil {
+		return nil
+	}
+	return o.Tracing
 }
 
 // GetProjectsPagination2 - This object contains information related to the pagination of the current request using continuation tokens. Since CosmosDB doesn't support going to previous pages, only count and next are provided.
@@ -8186,78 +8296,4 @@ func (e *ProjectResourceConfigBuildMachineType1) UnmarshalJSON(data []byte) erro
 	default:
 		return fmt.Errorf("invalid value for ProjectResourceConfigBuildMachineType1: %v", v)
 	}
-}
-
-type ProjectResourceConfigBuildMachineSelection1 string
-
-const (
-	ProjectResourceConfigBuildMachineSelection1Fixed   ProjectResourceConfigBuildMachineSelection1 = "fixed"
-	ProjectResourceConfigBuildMachineSelection1Elastic ProjectResourceConfigBuildMachineSelection1 = "elastic"
-)
-
-func (e ProjectResourceConfigBuildMachineSelection1) ToPointer() *ProjectResourceConfigBuildMachineSelection1 {
-	return &e
-}
-func (e *ProjectResourceConfigBuildMachineSelection1) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "fixed":
-		fallthrough
-	case "elastic":
-		*e = ProjectResourceConfigBuildMachineSelection1(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for ProjectResourceConfigBuildMachineSelection1: %v", v)
-	}
-}
-
-type ProjectResourceConfigConfiguration1 string
-
-const (
-	ProjectResourceConfigConfiguration1SkipNamespaceQueue    ProjectResourceConfigConfiguration1 = "SKIP_NAMESPACE_QUEUE"
-	ProjectResourceConfigConfiguration1WaitForNamespaceQueue ProjectResourceConfigConfiguration1 = "WAIT_FOR_NAMESPACE_QUEUE"
-)
-
-func (e ProjectResourceConfigConfiguration1) ToPointer() *ProjectResourceConfigConfiguration1 {
-	return &e
-}
-func (e *ProjectResourceConfigConfiguration1) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "SKIP_NAMESPACE_QUEUE":
-		fallthrough
-	case "WAIT_FOR_NAMESPACE_QUEUE":
-		*e = ProjectResourceConfigConfiguration1(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for ProjectResourceConfigConfiguration1: %v", v)
-	}
-}
-
-type ProjectResourceConfigBuildQueue1 struct {
-	Configuration *ProjectResourceConfigConfiguration1 `json:"configuration,omitempty"`
-}
-
-func (p ProjectResourceConfigBuildQueue1) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *ProjectResourceConfigBuildQueue1) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *ProjectResourceConfigBuildQueue1) GetConfiguration() *ProjectResourceConfigConfiguration1 {
-	if o == nil {
-		return nil
-	}
-	return o.Configuration
 }

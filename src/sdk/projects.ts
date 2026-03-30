@@ -45,10 +45,7 @@ import {
   CreateProjectEnvRequest,
   CreateProjectEnvResponseBody,
 } from "../models/createprojectenvop.js";
-import {
-  CreateProjectRequest,
-  CreateProjectResponseBody,
-} from "../models/createprojectop.js";
+import { CreateProjectResponseBody } from "../models/createprojectresponsebody.js";
 import {
   CreateProjectTransferRequestRequest,
   CreateProjectTransferRequestResponseBody,
@@ -58,6 +55,7 @@ import {
   EditProjectEnvRequest,
   EditProjectEnvResponseBody,
 } from "../models/editprojectenvop.js";
+import { CreateProjectRequest } from "../models/features.js";
 import {
   FilterProjectEnvsRequest,
   FilterProjectEnvsResponseBody,

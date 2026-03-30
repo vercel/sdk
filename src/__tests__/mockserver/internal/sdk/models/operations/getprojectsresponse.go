@@ -12,6 +12,495 @@ import (
 	"mockserver/internal/sdk/utils"
 )
 
+type GetProjectsContentHintRedisURL struct {
+	Type    GetProjectsTypeRedisURL `json:"type"`
+	StoreID string                  `json:"storeId"`
+}
+
+func (g GetProjectsContentHintRedisURL) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetProjectsContentHintRedisURL) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetProjectsContentHintRedisURL) GetType() GetProjectsTypeRedisURL {
+	if o == nil {
+		return GetProjectsTypeRedisURL("")
+	}
+	return o.Type
+}
+
+func (o *GetProjectsContentHintRedisURL) GetStoreID() string {
+	if o == nil {
+		return ""
+	}
+	return o.StoreID
+}
+
+type GetProjectsContentHintUnionType string
+
+const (
+	GetProjectsContentHintUnionTypeRedisURL                  GetProjectsContentHintUnionType = "redis-url"
+	GetProjectsContentHintUnionTypeRedisRestAPIURL           GetProjectsContentHintUnionType = "redis-rest-api-url"
+	GetProjectsContentHintUnionTypeRedisRestAPIToken         GetProjectsContentHintUnionType = "redis-rest-api-token"
+	GetProjectsContentHintUnionTypeRedisRestAPIReadOnlyToken GetProjectsContentHintUnionType = "redis-rest-api-read-only-token"
+	GetProjectsContentHintUnionTypeBlobReadWriteToken        GetProjectsContentHintUnionType = "blob-read-write-token"
+	GetProjectsContentHintUnionTypePostgresURL               GetProjectsContentHintUnionType = "postgres-url"
+	GetProjectsContentHintUnionTypePostgresURLNonPooling     GetProjectsContentHintUnionType = "postgres-url-non-pooling"
+	GetProjectsContentHintUnionTypePostgresPrismaURL         GetProjectsContentHintUnionType = "postgres-prisma-url"
+	GetProjectsContentHintUnionTypePostgresUser              GetProjectsContentHintUnionType = "postgres-user"
+	GetProjectsContentHintUnionTypePostgresHost              GetProjectsContentHintUnionType = "postgres-host"
+	GetProjectsContentHintUnionTypePostgresPassword          GetProjectsContentHintUnionType = "postgres-password"
+	GetProjectsContentHintUnionTypePostgresDatabase          GetProjectsContentHintUnionType = "postgres-database"
+	GetProjectsContentHintUnionTypePostgresURLNoSsl          GetProjectsContentHintUnionType = "postgres-url-no-ssl"
+	GetProjectsContentHintUnionTypeIntegrationStoreSecret    GetProjectsContentHintUnionType = "integration-store-secret"
+	GetProjectsContentHintUnionTypeFlagsConnectionString     GetProjectsContentHintUnionType = "flags-connection-string"
+)
+
+type GetProjectsContentHintUnion struct {
+	GetProjectsContentHintRedisURL                  *GetProjectsContentHintRedisURL                  `queryParam:"inline"`
+	GetProjectsContentHintRedisRestAPIURL           *GetProjectsContentHintRedisRestAPIURL           `queryParam:"inline"`
+	GetProjectsContentHintRedisRestAPIToken         *GetProjectsContentHintRedisRestAPIToken         `queryParam:"inline"`
+	GetProjectsContentHintRedisRestAPIReadOnlyToken *GetProjectsContentHintRedisRestAPIReadOnlyToken `queryParam:"inline"`
+	GetProjectsContentHintBlobReadWriteToken        *GetProjectsContentHintBlobReadWriteToken        `queryParam:"inline"`
+	GetProjectsContentHintPostgresURL               *GetProjectsContentHintPostgresURL               `queryParam:"inline"`
+	GetProjectsContentHintPostgresURLNonPooling     *GetProjectsContentHintPostgresURLNonPooling     `queryParam:"inline"`
+	GetProjectsContentHintPostgresPrismaURL         *GetProjectsContentHintPostgresPrismaURL         `queryParam:"inline"`
+	GetProjectsContentHintPostgresUser              *GetProjectsContentHintPostgresUser              `queryParam:"inline"`
+	GetProjectsContentHintPostgresHost              *GetProjectsContentHintPostgresHost              `queryParam:"inline"`
+	GetProjectsContentHintPostgresPassword          *GetProjectsContentHintPostgresPassword          `queryParam:"inline"`
+	GetProjectsContentHintPostgresDatabase          *GetProjectsContentHintPostgresDatabase          `queryParam:"inline"`
+	GetProjectsContentHintPostgresURLNoSsl          *GetProjectsContentHintPostgresURLNoSsl          `queryParam:"inline"`
+	GetProjectsContentHintIntegrationStoreSecret    *GetProjectsContentHintIntegrationStoreSecret    `queryParam:"inline"`
+	GetProjectsContentHintFlagsConnectionString     *GetProjectsContentHintFlagsConnectionString     `queryParam:"inline"`
+
+	Type GetProjectsContentHintUnionType
+}
+
+func CreateGetProjectsContentHintUnionRedisURL(redisURL GetProjectsContentHintRedisURL) GetProjectsContentHintUnion {
+	typ := GetProjectsContentHintUnionTypeRedisURL
+
+	typStr := GetProjectsTypeRedisURL(typ)
+	redisURL.Type = typStr
+
+	return GetProjectsContentHintUnion{
+		GetProjectsContentHintRedisURL: &redisURL,
+		Type:                           typ,
+	}
+}
+
+func CreateGetProjectsContentHintUnionRedisRestAPIURL(redisRestAPIURL GetProjectsContentHintRedisRestAPIURL) GetProjectsContentHintUnion {
+	typ := GetProjectsContentHintUnionTypeRedisRestAPIURL
+
+	typStr := GetProjectsTypeRedisRestAPIURL(typ)
+	redisRestAPIURL.Type = typStr
+
+	return GetProjectsContentHintUnion{
+		GetProjectsContentHintRedisRestAPIURL: &redisRestAPIURL,
+		Type:                                  typ,
+	}
+}
+
+func CreateGetProjectsContentHintUnionRedisRestAPIToken(redisRestAPIToken GetProjectsContentHintRedisRestAPIToken) GetProjectsContentHintUnion {
+	typ := GetProjectsContentHintUnionTypeRedisRestAPIToken
+
+	typStr := GetProjectsTypeRedisRestAPIToken(typ)
+	redisRestAPIToken.Type = typStr
+
+	return GetProjectsContentHintUnion{
+		GetProjectsContentHintRedisRestAPIToken: &redisRestAPIToken,
+		Type:                                    typ,
+	}
+}
+
+func CreateGetProjectsContentHintUnionRedisRestAPIReadOnlyToken(redisRestAPIReadOnlyToken GetProjectsContentHintRedisRestAPIReadOnlyToken) GetProjectsContentHintUnion {
+	typ := GetProjectsContentHintUnionTypeRedisRestAPIReadOnlyToken
+
+	typStr := GetProjectsTypeRedisRestAPIReadOnlyToken(typ)
+	redisRestAPIReadOnlyToken.Type = typStr
+
+	return GetProjectsContentHintUnion{
+		GetProjectsContentHintRedisRestAPIReadOnlyToken: &redisRestAPIReadOnlyToken,
+		Type: typ,
+	}
+}
+
+func CreateGetProjectsContentHintUnionBlobReadWriteToken(blobReadWriteToken GetProjectsContentHintBlobReadWriteToken) GetProjectsContentHintUnion {
+	typ := GetProjectsContentHintUnionTypeBlobReadWriteToken
+
+	typStr := GetProjectsTypeBlobReadWriteToken(typ)
+	blobReadWriteToken.Type = typStr
+
+	return GetProjectsContentHintUnion{
+		GetProjectsContentHintBlobReadWriteToken: &blobReadWriteToken,
+		Type:                                     typ,
+	}
+}
+
+func CreateGetProjectsContentHintUnionPostgresURL(postgresURL GetProjectsContentHintPostgresURL) GetProjectsContentHintUnion {
+	typ := GetProjectsContentHintUnionTypePostgresURL
+
+	typStr := GetProjectsTypePostgresURL(typ)
+	postgresURL.Type = typStr
+
+	return GetProjectsContentHintUnion{
+		GetProjectsContentHintPostgresURL: &postgresURL,
+		Type:                              typ,
+	}
+}
+
+func CreateGetProjectsContentHintUnionPostgresURLNonPooling(postgresURLNonPooling GetProjectsContentHintPostgresURLNonPooling) GetProjectsContentHintUnion {
+	typ := GetProjectsContentHintUnionTypePostgresURLNonPooling
+
+	typStr := GetProjectsTypePostgresURLNonPooling(typ)
+	postgresURLNonPooling.Type = typStr
+
+	return GetProjectsContentHintUnion{
+		GetProjectsContentHintPostgresURLNonPooling: &postgresURLNonPooling,
+		Type: typ,
+	}
+}
+
+func CreateGetProjectsContentHintUnionPostgresPrismaURL(postgresPrismaURL GetProjectsContentHintPostgresPrismaURL) GetProjectsContentHintUnion {
+	typ := GetProjectsContentHintUnionTypePostgresPrismaURL
+
+	typStr := GetProjectsTypePostgresPrismaURL(typ)
+	postgresPrismaURL.Type = typStr
+
+	return GetProjectsContentHintUnion{
+		GetProjectsContentHintPostgresPrismaURL: &postgresPrismaURL,
+		Type:                                    typ,
+	}
+}
+
+func CreateGetProjectsContentHintUnionPostgresUser(postgresUser GetProjectsContentHintPostgresUser) GetProjectsContentHintUnion {
+	typ := GetProjectsContentHintUnionTypePostgresUser
+
+	typStr := GetProjectsTypePostgresUser(typ)
+	postgresUser.Type = typStr
+
+	return GetProjectsContentHintUnion{
+		GetProjectsContentHintPostgresUser: &postgresUser,
+		Type:                               typ,
+	}
+}
+
+func CreateGetProjectsContentHintUnionPostgresHost(postgresHost GetProjectsContentHintPostgresHost) GetProjectsContentHintUnion {
+	typ := GetProjectsContentHintUnionTypePostgresHost
+
+	typStr := GetProjectsTypePostgresHost(typ)
+	postgresHost.Type = typStr
+
+	return GetProjectsContentHintUnion{
+		GetProjectsContentHintPostgresHost: &postgresHost,
+		Type:                               typ,
+	}
+}
+
+func CreateGetProjectsContentHintUnionPostgresPassword(postgresPassword GetProjectsContentHintPostgresPassword) GetProjectsContentHintUnion {
+	typ := GetProjectsContentHintUnionTypePostgresPassword
+
+	typStr := GetProjectsTypePostgresPassword(typ)
+	postgresPassword.Type = typStr
+
+	return GetProjectsContentHintUnion{
+		GetProjectsContentHintPostgresPassword: &postgresPassword,
+		Type:                                   typ,
+	}
+}
+
+func CreateGetProjectsContentHintUnionPostgresDatabase(postgresDatabase GetProjectsContentHintPostgresDatabase) GetProjectsContentHintUnion {
+	typ := GetProjectsContentHintUnionTypePostgresDatabase
+
+	typStr := GetProjectsTypePostgresDatabase(typ)
+	postgresDatabase.Type = typStr
+
+	return GetProjectsContentHintUnion{
+		GetProjectsContentHintPostgresDatabase: &postgresDatabase,
+		Type:                                   typ,
+	}
+}
+
+func CreateGetProjectsContentHintUnionPostgresURLNoSsl(postgresURLNoSsl GetProjectsContentHintPostgresURLNoSsl) GetProjectsContentHintUnion {
+	typ := GetProjectsContentHintUnionTypePostgresURLNoSsl
+
+	typStr := GetProjectsTypePostgresURLNoSsl(typ)
+	postgresURLNoSsl.Type = typStr
+
+	return GetProjectsContentHintUnion{
+		GetProjectsContentHintPostgresURLNoSsl: &postgresURLNoSsl,
+		Type:                                   typ,
+	}
+}
+
+func CreateGetProjectsContentHintUnionIntegrationStoreSecret(integrationStoreSecret GetProjectsContentHintIntegrationStoreSecret) GetProjectsContentHintUnion {
+	typ := GetProjectsContentHintUnionTypeIntegrationStoreSecret
+
+	typStr := GetProjectsTypeIntegrationStoreSecret(typ)
+	integrationStoreSecret.Type = typStr
+
+	return GetProjectsContentHintUnion{
+		GetProjectsContentHintIntegrationStoreSecret: &integrationStoreSecret,
+		Type: typ,
+	}
+}
+
+func CreateGetProjectsContentHintUnionFlagsConnectionString(flagsConnectionString GetProjectsContentHintFlagsConnectionString) GetProjectsContentHintUnion {
+	typ := GetProjectsContentHintUnionTypeFlagsConnectionString
+
+	typStr := GetProjectsTypeFlagsConnectionString(typ)
+	flagsConnectionString.Type = typStr
+
+	return GetProjectsContentHintUnion{
+		GetProjectsContentHintFlagsConnectionString: &flagsConnectionString,
+		Type: typ,
+	}
+}
+
+func (u *GetProjectsContentHintUnion) UnmarshalJSON(data []byte) error {
+
+	type discriminator struct {
+		Type string `json:"type"`
+	}
+
+	dis := new(discriminator)
+	if err := json.Unmarshal(data, &dis); err != nil {
+		return fmt.Errorf("could not unmarshal discriminator: %w", err)
+	}
+
+	switch dis.Type {
+	case "redis-url":
+		getProjectsContentHintRedisURL := new(GetProjectsContentHintRedisURL)
+		if err := utils.UnmarshalJSON(data, &getProjectsContentHintRedisURL, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == redis-url) type GetProjectsContentHintRedisURL within GetProjectsContentHintUnion: %w", string(data), err)
+		}
+
+		u.GetProjectsContentHintRedisURL = getProjectsContentHintRedisURL
+		u.Type = GetProjectsContentHintUnionTypeRedisURL
+		return nil
+	case "redis-rest-api-url":
+		getProjectsContentHintRedisRestAPIURL := new(GetProjectsContentHintRedisRestAPIURL)
+		if err := utils.UnmarshalJSON(data, &getProjectsContentHintRedisRestAPIURL, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == redis-rest-api-url) type GetProjectsContentHintRedisRestAPIURL within GetProjectsContentHintUnion: %w", string(data), err)
+		}
+
+		u.GetProjectsContentHintRedisRestAPIURL = getProjectsContentHintRedisRestAPIURL
+		u.Type = GetProjectsContentHintUnionTypeRedisRestAPIURL
+		return nil
+	case "redis-rest-api-token":
+		getProjectsContentHintRedisRestAPIToken := new(GetProjectsContentHintRedisRestAPIToken)
+		if err := utils.UnmarshalJSON(data, &getProjectsContentHintRedisRestAPIToken, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == redis-rest-api-token) type GetProjectsContentHintRedisRestAPIToken within GetProjectsContentHintUnion: %w", string(data), err)
+		}
+
+		u.GetProjectsContentHintRedisRestAPIToken = getProjectsContentHintRedisRestAPIToken
+		u.Type = GetProjectsContentHintUnionTypeRedisRestAPIToken
+		return nil
+	case "redis-rest-api-read-only-token":
+		getProjectsContentHintRedisRestAPIReadOnlyToken := new(GetProjectsContentHintRedisRestAPIReadOnlyToken)
+		if err := utils.UnmarshalJSON(data, &getProjectsContentHintRedisRestAPIReadOnlyToken, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == redis-rest-api-read-only-token) type GetProjectsContentHintRedisRestAPIReadOnlyToken within GetProjectsContentHintUnion: %w", string(data), err)
+		}
+
+		u.GetProjectsContentHintRedisRestAPIReadOnlyToken = getProjectsContentHintRedisRestAPIReadOnlyToken
+		u.Type = GetProjectsContentHintUnionTypeRedisRestAPIReadOnlyToken
+		return nil
+	case "blob-read-write-token":
+		getProjectsContentHintBlobReadWriteToken := new(GetProjectsContentHintBlobReadWriteToken)
+		if err := utils.UnmarshalJSON(data, &getProjectsContentHintBlobReadWriteToken, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == blob-read-write-token) type GetProjectsContentHintBlobReadWriteToken within GetProjectsContentHintUnion: %w", string(data), err)
+		}
+
+		u.GetProjectsContentHintBlobReadWriteToken = getProjectsContentHintBlobReadWriteToken
+		u.Type = GetProjectsContentHintUnionTypeBlobReadWriteToken
+		return nil
+	case "postgres-url":
+		getProjectsContentHintPostgresURL := new(GetProjectsContentHintPostgresURL)
+		if err := utils.UnmarshalJSON(data, &getProjectsContentHintPostgresURL, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == postgres-url) type GetProjectsContentHintPostgresURL within GetProjectsContentHintUnion: %w", string(data), err)
+		}
+
+		u.GetProjectsContentHintPostgresURL = getProjectsContentHintPostgresURL
+		u.Type = GetProjectsContentHintUnionTypePostgresURL
+		return nil
+	case "postgres-url-non-pooling":
+		getProjectsContentHintPostgresURLNonPooling := new(GetProjectsContentHintPostgresURLNonPooling)
+		if err := utils.UnmarshalJSON(data, &getProjectsContentHintPostgresURLNonPooling, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == postgres-url-non-pooling) type GetProjectsContentHintPostgresURLNonPooling within GetProjectsContentHintUnion: %w", string(data), err)
+		}
+
+		u.GetProjectsContentHintPostgresURLNonPooling = getProjectsContentHintPostgresURLNonPooling
+		u.Type = GetProjectsContentHintUnionTypePostgresURLNonPooling
+		return nil
+	case "postgres-prisma-url":
+		getProjectsContentHintPostgresPrismaURL := new(GetProjectsContentHintPostgresPrismaURL)
+		if err := utils.UnmarshalJSON(data, &getProjectsContentHintPostgresPrismaURL, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == postgres-prisma-url) type GetProjectsContentHintPostgresPrismaURL within GetProjectsContentHintUnion: %w", string(data), err)
+		}
+
+		u.GetProjectsContentHintPostgresPrismaURL = getProjectsContentHintPostgresPrismaURL
+		u.Type = GetProjectsContentHintUnionTypePostgresPrismaURL
+		return nil
+	case "postgres-user":
+		getProjectsContentHintPostgresUser := new(GetProjectsContentHintPostgresUser)
+		if err := utils.UnmarshalJSON(data, &getProjectsContentHintPostgresUser, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == postgres-user) type GetProjectsContentHintPostgresUser within GetProjectsContentHintUnion: %w", string(data), err)
+		}
+
+		u.GetProjectsContentHintPostgresUser = getProjectsContentHintPostgresUser
+		u.Type = GetProjectsContentHintUnionTypePostgresUser
+		return nil
+	case "postgres-host":
+		getProjectsContentHintPostgresHost := new(GetProjectsContentHintPostgresHost)
+		if err := utils.UnmarshalJSON(data, &getProjectsContentHintPostgresHost, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == postgres-host) type GetProjectsContentHintPostgresHost within GetProjectsContentHintUnion: %w", string(data), err)
+		}
+
+		u.GetProjectsContentHintPostgresHost = getProjectsContentHintPostgresHost
+		u.Type = GetProjectsContentHintUnionTypePostgresHost
+		return nil
+	case "postgres-password":
+		getProjectsContentHintPostgresPassword := new(GetProjectsContentHintPostgresPassword)
+		if err := utils.UnmarshalJSON(data, &getProjectsContentHintPostgresPassword, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == postgres-password) type GetProjectsContentHintPostgresPassword within GetProjectsContentHintUnion: %w", string(data), err)
+		}
+
+		u.GetProjectsContentHintPostgresPassword = getProjectsContentHintPostgresPassword
+		u.Type = GetProjectsContentHintUnionTypePostgresPassword
+		return nil
+	case "postgres-database":
+		getProjectsContentHintPostgresDatabase := new(GetProjectsContentHintPostgresDatabase)
+		if err := utils.UnmarshalJSON(data, &getProjectsContentHintPostgresDatabase, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == postgres-database) type GetProjectsContentHintPostgresDatabase within GetProjectsContentHintUnion: %w", string(data), err)
+		}
+
+		u.GetProjectsContentHintPostgresDatabase = getProjectsContentHintPostgresDatabase
+		u.Type = GetProjectsContentHintUnionTypePostgresDatabase
+		return nil
+	case "postgres-url-no-ssl":
+		getProjectsContentHintPostgresURLNoSsl := new(GetProjectsContentHintPostgresURLNoSsl)
+		if err := utils.UnmarshalJSON(data, &getProjectsContentHintPostgresURLNoSsl, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == postgres-url-no-ssl) type GetProjectsContentHintPostgresURLNoSsl within GetProjectsContentHintUnion: %w", string(data), err)
+		}
+
+		u.GetProjectsContentHintPostgresURLNoSsl = getProjectsContentHintPostgresURLNoSsl
+		u.Type = GetProjectsContentHintUnionTypePostgresURLNoSsl
+		return nil
+	case "integration-store-secret":
+		getProjectsContentHintIntegrationStoreSecret := new(GetProjectsContentHintIntegrationStoreSecret)
+		if err := utils.UnmarshalJSON(data, &getProjectsContentHintIntegrationStoreSecret, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == integration-store-secret) type GetProjectsContentHintIntegrationStoreSecret within GetProjectsContentHintUnion: %w", string(data), err)
+		}
+
+		u.GetProjectsContentHintIntegrationStoreSecret = getProjectsContentHintIntegrationStoreSecret
+		u.Type = GetProjectsContentHintUnionTypeIntegrationStoreSecret
+		return nil
+	case "flags-connection-string":
+		getProjectsContentHintFlagsConnectionString := new(GetProjectsContentHintFlagsConnectionString)
+		if err := utils.UnmarshalJSON(data, &getProjectsContentHintFlagsConnectionString, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == flags-connection-string) type GetProjectsContentHintFlagsConnectionString within GetProjectsContentHintUnion: %w", string(data), err)
+		}
+
+		u.GetProjectsContentHintFlagsConnectionString = getProjectsContentHintFlagsConnectionString
+		u.Type = GetProjectsContentHintUnionTypeFlagsConnectionString
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetProjectsContentHintUnion", string(data))
+}
+
+func (u GetProjectsContentHintUnion) MarshalJSON() ([]byte, error) {
+	if u.GetProjectsContentHintRedisURL != nil {
+		return utils.MarshalJSON(u.GetProjectsContentHintRedisURL, "", true)
+	}
+
+	if u.GetProjectsContentHintRedisRestAPIURL != nil {
+		return utils.MarshalJSON(u.GetProjectsContentHintRedisRestAPIURL, "", true)
+	}
+
+	if u.GetProjectsContentHintRedisRestAPIToken != nil {
+		return utils.MarshalJSON(u.GetProjectsContentHintRedisRestAPIToken, "", true)
+	}
+
+	if u.GetProjectsContentHintRedisRestAPIReadOnlyToken != nil {
+		return utils.MarshalJSON(u.GetProjectsContentHintRedisRestAPIReadOnlyToken, "", true)
+	}
+
+	if u.GetProjectsContentHintBlobReadWriteToken != nil {
+		return utils.MarshalJSON(u.GetProjectsContentHintBlobReadWriteToken, "", true)
+	}
+
+	if u.GetProjectsContentHintPostgresURL != nil {
+		return utils.MarshalJSON(u.GetProjectsContentHintPostgresURL, "", true)
+	}
+
+	if u.GetProjectsContentHintPostgresURLNonPooling != nil {
+		return utils.MarshalJSON(u.GetProjectsContentHintPostgresURLNonPooling, "", true)
+	}
+
+	if u.GetProjectsContentHintPostgresPrismaURL != nil {
+		return utils.MarshalJSON(u.GetProjectsContentHintPostgresPrismaURL, "", true)
+	}
+
+	if u.GetProjectsContentHintPostgresUser != nil {
+		return utils.MarshalJSON(u.GetProjectsContentHintPostgresUser, "", true)
+	}
+
+	if u.GetProjectsContentHintPostgresHost != nil {
+		return utils.MarshalJSON(u.GetProjectsContentHintPostgresHost, "", true)
+	}
+
+	if u.GetProjectsContentHintPostgresPassword != nil {
+		return utils.MarshalJSON(u.GetProjectsContentHintPostgresPassword, "", true)
+	}
+
+	if u.GetProjectsContentHintPostgresDatabase != nil {
+		return utils.MarshalJSON(u.GetProjectsContentHintPostgresDatabase, "", true)
+	}
+
+	if u.GetProjectsContentHintPostgresURLNoSsl != nil {
+		return utils.MarshalJSON(u.GetProjectsContentHintPostgresURLNoSsl, "", true)
+	}
+
+	if u.GetProjectsContentHintIntegrationStoreSecret != nil {
+		return utils.MarshalJSON(u.GetProjectsContentHintIntegrationStoreSecret, "", true)
+	}
+
+	if u.GetProjectsContentHintFlagsConnectionString != nil {
+		return utils.MarshalJSON(u.GetProjectsContentHintFlagsConnectionString, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type GetProjectsContentHintUnion: all fields are null")
+}
+
+type GetProjectsTypeFlagsSecret string
+
+const (
+	GetProjectsTypeFlagsSecretFlagsSecret GetProjectsTypeFlagsSecret = "flags-secret"
+)
+
+func (e GetProjectsTypeFlagsSecret) ToPointer() *GetProjectsTypeFlagsSecret {
+	return &e
+}
+func (e *GetProjectsTypeFlagsSecret) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "flags-secret":
+		*e = GetProjectsTypeFlagsSecret(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetProjectsTypeFlagsSecret: %v", v)
+	}
+}
+
 // GetProjectsInternalContentHint - Similar to `contentHints`, but should not be exposed to the user.
 type GetProjectsInternalContentHint struct {
 	Type GetProjectsTypeFlagsSecret `json:"type"`

@@ -9,14 +9,16 @@ import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import {
+  GetProjectsResponseBody3,
+  GetProjectsResponseBody3$inboundSchema,
+  GetProjectsResponseBody3$Outbound,
+  GetProjectsResponseBody3$outboundSchema,
+} from "./getprojectshasprojectsresponse200applicationjsonresponsebody2projectsabuseblockhistoryvalue.js";
+import {
   Alias,
   Alias$inboundSchema,
   Alias$Outbound,
   Alias$outboundSchema,
-  GetProjectsHasProjectsResponse2002,
-  GetProjectsHasProjectsResponse2002$inboundSchema,
-  GetProjectsHasProjectsResponse2002$Outbound,
-  GetProjectsHasProjectsResponse2002$outboundSchema,
   GetProjectsResponseBody2,
   GetProjectsResponseBody2$inboundSchema,
   GetProjectsResponseBody2$Outbound,
@@ -24,14 +26,13 @@ import {
   GetProjectsResponseBodyNodeVersion,
   GetProjectsResponseBodyNodeVersion$inboundSchema,
   GetProjectsResponseBodyNodeVersion$outboundSchema,
+  GetProjectsResponseBodyProjectsAction,
+  GetProjectsResponseBodyProjectsAction$inboundSchema,
+  GetProjectsResponseBodyProjectsAction$outboundSchema,
   ResponseBodyAnalytics,
   ResponseBodyAnalytics$inboundSchema,
   ResponseBodyAnalytics$Outbound,
   ResponseBodyAnalytics$outboundSchema,
-  ResponseBodyBlock,
-  ResponseBodyBlock$inboundSchema,
-  ResponseBodyBlock$Outbound,
-  ResponseBodyBlock$outboundSchema,
   ResponseBodyDeploymentExpiration,
   ResponseBodyDeploymentExpiration$inboundSchema,
   ResponseBodyDeploymentExpiration$Outbound,
@@ -103,14 +104,31 @@ import {
   ResponseBodyWebAnalytics$inboundSchema,
   ResponseBodyWebAnalytics$Outbound,
   ResponseBodyWebAnalytics$outboundSchema,
-} from "./getprojectshasprojectsresponse2002.js";
-import {
-  GetProjectsResponseBody3,
-  GetProjectsResponseBody3$inboundSchema,
-  GetProjectsResponseBody3$Outbound,
-  GetProjectsResponseBody3$outboundSchema,
-} from "./getprojectshasprojectsresponse200applicationjsonresponsebody2projectsabusevalue.js";
+} from "./getprojectsresponsebodyprojectsaction.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export type ResponseBodyBlock = {
+  action: GetProjectsResponseBodyProjectsAction;
+  reason: string;
+  statusCode: number;
+  createdAt: number;
+  caseId?: string | undefined;
+  actor?: string | undefined;
+  comment?: string | undefined;
+  ineligibleForAppeal?: boolean | undefined;
+  isCascading?: boolean | undefined;
+};
+
+export type GetProjectsHasProjectsResponse200ApplicationJSONResponseBody1AbuseValue =
+  {
+    eq: string;
+  };
+
+export type GetProjectsHasProjectsResponse2002 = {
+  type: "host";
+  value:
+    GetProjectsHasProjectsResponse200ApplicationJSONResponseBody1AbuseValue;
+};
 
 export const GetProjectsHasProjectsResponse200ApplicationJSONKey = {
   XVercelIpCountry: "x-vercel-ip-country",
@@ -413,6 +431,170 @@ export type GetProjectsResponseBody =
   | Array<GetProjectsResponseBody1>;
 
 /** @internal */
+export const ResponseBodyBlock$inboundSchema: z.ZodType<
+  ResponseBodyBlock,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  action: GetProjectsResponseBodyProjectsAction$inboundSchema,
+  reason: types.string(),
+  statusCode: types.number(),
+  createdAt: types.number(),
+  caseId: types.optional(types.string()),
+  actor: types.optional(types.string()),
+  comment: types.optional(types.string()),
+  ineligibleForAppeal: types.optional(types.boolean()),
+  isCascading: types.optional(types.boolean()),
+});
+/** @internal */
+export type ResponseBodyBlock$Outbound = {
+  action: string;
+  reason: string;
+  statusCode: number;
+  createdAt: number;
+  caseId?: string | undefined;
+  actor?: string | undefined;
+  comment?: string | undefined;
+  ineligibleForAppeal?: boolean | undefined;
+  isCascading?: boolean | undefined;
+};
+
+/** @internal */
+export const ResponseBodyBlock$outboundSchema: z.ZodType<
+  ResponseBodyBlock$Outbound,
+  z.ZodTypeDef,
+  ResponseBodyBlock
+> = z.object({
+  action: GetProjectsResponseBodyProjectsAction$outboundSchema,
+  reason: z.string(),
+  statusCode: z.number(),
+  createdAt: z.number(),
+  caseId: z.string().optional(),
+  actor: z.string().optional(),
+  comment: z.string().optional(),
+  ineligibleForAppeal: z.boolean().optional(),
+  isCascading: z.boolean().optional(),
+});
+
+export function responseBodyBlockToJSON(
+  responseBodyBlock: ResponseBodyBlock,
+): string {
+  return JSON.stringify(
+    ResponseBodyBlock$outboundSchema.parse(responseBodyBlock),
+  );
+}
+export function responseBodyBlockFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodyBlock, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodyBlock$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyBlock' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetProjectsHasProjectsResponse200ApplicationJSONResponseBody1AbuseValue$inboundSchema:
+  z.ZodType<
+    GetProjectsHasProjectsResponse200ApplicationJSONResponseBody1AbuseValue,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    eq: types.string(),
+  });
+/** @internal */
+export type GetProjectsHasProjectsResponse200ApplicationJSONResponseBody1AbuseValue$Outbound =
+  {
+    eq: string;
+  };
+
+/** @internal */
+export const GetProjectsHasProjectsResponse200ApplicationJSONResponseBody1AbuseValue$outboundSchema:
+  z.ZodType<
+    GetProjectsHasProjectsResponse200ApplicationJSONResponseBody1AbuseValue$Outbound,
+    z.ZodTypeDef,
+    GetProjectsHasProjectsResponse200ApplicationJSONResponseBody1AbuseValue
+  > = z.object({
+    eq: z.string(),
+  });
+
+export function getProjectsHasProjectsResponse200ApplicationJSONResponseBody1AbuseValueToJSON(
+  getProjectsHasProjectsResponse200ApplicationJSONResponseBody1AbuseValue:
+    GetProjectsHasProjectsResponse200ApplicationJSONResponseBody1AbuseValue,
+): string {
+  return JSON.stringify(
+    GetProjectsHasProjectsResponse200ApplicationJSONResponseBody1AbuseValue$outboundSchema
+      .parse(
+        getProjectsHasProjectsResponse200ApplicationJSONResponseBody1AbuseValue,
+      ),
+  );
+}
+export function getProjectsHasProjectsResponse200ApplicationJSONResponseBody1AbuseValueFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetProjectsHasProjectsResponse200ApplicationJSONResponseBody1AbuseValue,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetProjectsHasProjectsResponse200ApplicationJSONResponseBody1AbuseValue$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectsHasProjectsResponse200ApplicationJSONResponseBody1AbuseValue' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetProjectsHasProjectsResponse2002$inboundSchema: z.ZodType<
+  GetProjectsHasProjectsResponse2002,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: types.literal("host"),
+  value: z.lazy(() =>
+    GetProjectsHasProjectsResponse200ApplicationJSONResponseBody1AbuseValue$inboundSchema
+  ),
+});
+/** @internal */
+export type GetProjectsHasProjectsResponse2002$Outbound = {
+  type: "host";
+  value:
+    GetProjectsHasProjectsResponse200ApplicationJSONResponseBody1AbuseValue$Outbound;
+};
+
+/** @internal */
+export const GetProjectsHasProjectsResponse2002$outboundSchema: z.ZodType<
+  GetProjectsHasProjectsResponse2002$Outbound,
+  z.ZodTypeDef,
+  GetProjectsHasProjectsResponse2002
+> = z.object({
+  type: z.literal("host"),
+  value: z.lazy(() =>
+    GetProjectsHasProjectsResponse200ApplicationJSONResponseBody1AbuseValue$outboundSchema
+  ),
+});
+
+export function getProjectsHasProjectsResponse2002ToJSON(
+  getProjectsHasProjectsResponse2002: GetProjectsHasProjectsResponse2002,
+): string {
+  return JSON.stringify(
+    GetProjectsHasProjectsResponse2002$outboundSchema.parse(
+      getProjectsHasProjectsResponse2002,
+    ),
+  );
+}
+export function getProjectsHasProjectsResponse2002FromJSON(
+  jsonString: string,
+): SafeParseResult<GetProjectsHasProjectsResponse2002, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetProjectsHasProjectsResponse2002$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectsHasProjectsResponse2002' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetProjectsHasProjectsResponse200ApplicationJSONKey$inboundSchema:
   z.ZodNativeEnum<typeof GetProjectsHasProjectsResponse200ApplicationJSONKey> =
     z.nativeEnum(GetProjectsHasProjectsResponse200ApplicationJSONKey);
@@ -532,7 +714,7 @@ export const GetProjectsRouteHas$inboundSchema: z.ZodType<
   unknown
 > = z.union([
   z.lazy(() => GetProjectsHasProjectsResponse2001$inboundSchema),
-  GetProjectsHasProjectsResponse2002$inboundSchema,
+  z.lazy(() => GetProjectsHasProjectsResponse2002$inboundSchema),
 ]);
 /** @internal */
 export type GetProjectsRouteHas$Outbound =
@@ -546,7 +728,7 @@ export const GetProjectsRouteHas$outboundSchema: z.ZodType<
   GetProjectsRouteHas
 > = z.union([
   z.lazy(() => GetProjectsHasProjectsResponse2001$outboundSchema),
-  GetProjectsHasProjectsResponse2002$outboundSchema,
+  z.lazy(() => GetProjectsHasProjectsResponse2002$outboundSchema),
 ]);
 
 export function getProjectsRouteHasToJSON(
@@ -623,7 +805,7 @@ export const GetProjectsRoute2$inboundSchema: z.ZodType<
   has: z.array(
     z.union([
       z.lazy(() => GetProjectsHasProjectsResponse2001$inboundSchema),
-      GetProjectsHasProjectsResponse2002$inboundSchema,
+      z.lazy(() => GetProjectsHasProjectsResponse2002$inboundSchema),
     ]),
   ),
   mitigate: z.lazy(() => GetProjectsRouteMitigate$inboundSchema),
@@ -648,7 +830,7 @@ export const GetProjectsRoute2$outboundSchema: z.ZodType<
   has: z.array(
     z.union([
       z.lazy(() => GetProjectsHasProjectsResponse2001$outboundSchema),
-      GetProjectsHasProjectsResponse2002$outboundSchema,
+      z.lazy(() => GetProjectsHasProjectsResponse2002$outboundSchema),
     ]),
   ),
   mitigate: z.lazy(() => GetProjectsRouteMitigate$outboundSchema),
@@ -1553,7 +1735,7 @@ export const ResponseBodyAbuse$inboundSchema: z.ZodType<
   scanner: types.optional(types.string()),
   history: z.array(ResponseBodyHistory$inboundSchema),
   updatedAt: types.number(),
-  block: types.optional(ResponseBodyBlock$inboundSchema),
+  block: types.optional(z.lazy(() => ResponseBodyBlock$inboundSchema)),
   blockHistory: types.optional(
     z.array(z.union([
       z.lazy(() => GetProjectsBlockHistory1$inboundSchema),
@@ -1592,7 +1774,7 @@ export const ResponseBodyAbuse$outboundSchema: z.ZodType<
   scanner: z.string().optional(),
   history: z.array(ResponseBodyHistory$outboundSchema),
   updatedAt: z.number(),
-  block: ResponseBodyBlock$outboundSchema.optional(),
+  block: z.lazy(() => ResponseBodyBlock$outboundSchema).optional(),
   blockHistory: z.array(
     z.union([
       z.lazy(() => GetProjectsBlockHistory1$outboundSchema),

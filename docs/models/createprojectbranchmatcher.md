@@ -5,7 +5,7 @@ Configuration for matching git branches to this environment
 ## Example Usage
 
 ```typescript
-import { CreateProjectBranchMatcher } from "@vercel/sdk/models/createprojectop.js";
+import { CreateProjectBranchMatcher } from "@vercel/sdk/models/features.js";
 
 let value: CreateProjectBranchMatcher = {
   type: "endsWith",

@@ -503,18 +503,18 @@ func (o *StaticIpsRequest) GetEnabled() bool {
 	return o.Enabled
 }
 
-// SamplingRuleEnv - Environment to apply sampling to
-type SamplingRuleEnv string
+// UpdateProjectEnvRequest - Environment to apply sampling to
+type UpdateProjectEnvRequest string
 
 const (
-	SamplingRuleEnvProduction SamplingRuleEnv = "production"
-	SamplingRuleEnvPreview    SamplingRuleEnv = "preview"
+	UpdateProjectEnvRequestProduction UpdateProjectEnvRequest = "production"
+	UpdateProjectEnvRequestPreview    UpdateProjectEnvRequest = "preview"
 )
 
-func (e SamplingRuleEnv) ToPointer() *SamplingRuleEnv {
+func (e UpdateProjectEnvRequest) ToPointer() *UpdateProjectEnvRequest {
 	return &e
 }
-func (e *SamplingRuleEnv) UnmarshalJSON(data []byte) error {
+func (e *UpdateProjectEnvRequest) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -523,68 +523,68 @@ func (e *SamplingRuleEnv) UnmarshalJSON(data []byte) error {
 	case "production":
 		fallthrough
 	case "preview":
-		*e = SamplingRuleEnv(v)
+		*e = UpdateProjectEnvRequest(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for SamplingRuleEnv: %v", v)
+		return fmt.Errorf("invalid value for UpdateProjectEnvRequest: %v", v)
 	}
 }
 
-type SamplingRule struct {
+type SamplingRuleRequest struct {
 	// Sampling rate from 0 to 1
 	Rate float64 `json:"rate"`
 	// Environment to apply sampling to
-	Env *SamplingRuleEnv `json:"env,omitempty"`
+	Env *UpdateProjectEnvRequest `json:"env,omitempty"`
 	// Request path prefix to apply the sampling rule to
 	RequestPath *string `json:"requestPath,omitempty"`
 }
 
-func (o *SamplingRule) GetRate() float64 {
+func (o *SamplingRuleRequest) GetRate() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Rate
 }
 
-func (o *SamplingRule) GetEnv() *SamplingRuleEnv {
+func (o *SamplingRuleRequest) GetEnv() *UpdateProjectEnvRequest {
 	if o == nil {
 		return nil
 	}
 	return o.Env
 }
 
-func (o *SamplingRule) GetRequestPath() *string {
+func (o *SamplingRuleRequest) GetRequestPath() *string {
 	if o == nil {
 		return nil
 	}
 	return o.RequestPath
 }
 
-// Tracing configuration for this project
-type Tracing struct {
+// TracingRequest - Tracing configuration for this project
+type TracingRequest struct {
 	// Comma-separated list of drain endpoint domains
 	Domains *string `json:"domains,omitempty"`
 	// Paths to ignore for tracing
 	IgnorePaths []string `json:"ignorePaths,omitempty"`
 	// Sampling rules for trace collection
-	SamplingRules []SamplingRule `json:"samplingRules,omitempty"`
+	SamplingRules []SamplingRuleRequest `json:"samplingRules,omitempty"`
 }
 
-func (o *Tracing) GetDomains() *string {
+func (o *TracingRequest) GetDomains() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Domains
 }
 
-func (o *Tracing) GetIgnorePaths() []string {
+func (o *TracingRequest) GetIgnorePaths() []string {
 	if o == nil {
 		return nil
 	}
 	return o.IgnorePaths
 }
 
-func (o *Tracing) GetSamplingRules() []SamplingRule {
+func (o *TracingRequest) GetSamplingRules() []SamplingRuleRequest {
 	if o == nil {
 		return nil
 	}
@@ -1326,7 +1326,7 @@ type UpdateProjectRequestBody struct {
 	// Manage Static IPs for this project
 	StaticIps *StaticIpsRequest `json:"staticIps,omitempty"`
 	// Tracing configuration for this project
-	Tracing optionalnullable.OptionalNullable[Tracing] `json:"tracing,omitempty"`
+	Tracing optionalnullable.OptionalNullable[TracingRequest] `json:"tracing,omitempty"`
 	// OpenID Connect JSON Web Token generation configuration.
 	OidcTokenConfig *UpdateProjectOidcTokenConfigRequest `json:"oidcTokenConfig,omitempty"`
 	// Allows to protect project deployments with a password
@@ -1574,7 +1574,7 @@ func (o *UpdateProjectRequestBody) GetStaticIps() *StaticIpsRequest {
 	return o.StaticIps
 }
 
-func (o *UpdateProjectRequestBody) GetTracing() optionalnullable.OptionalNullable[Tracing] {
+func (o *UpdateProjectRequestBody) GetTracing() optionalnullable.OptionalNullable[TracingRequest] {
 	if o == nil {
 		return nil
 	}

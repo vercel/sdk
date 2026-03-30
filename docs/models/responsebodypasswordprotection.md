@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyPasswordProtection } from "@vercel/sdk/models/getprojectshasprojectsresponse2002.js";
+import { ResponseBodyPasswordProtection } from "@vercel/sdk/models/getprojectsresponsebodyprojectsaction.js";
 
 let value: ResponseBodyPasswordProtection = {};
 ```

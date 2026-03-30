@@ -558,6 +558,26 @@ export type UpdateProjectProjectsDismissedToasts = {
   value: UpdateProjectValue3 | string | number | boolean | null;
 };
 
+export const UpdateProjectProjectsResponseEnv = {
+  Production: "production",
+  Preview: "preview",
+} as const;
+export type UpdateProjectProjectsResponseEnv = ClosedEnum<
+  typeof UpdateProjectProjectsResponseEnv
+>;
+
+export type UpdateProjectSamplingRules = {
+  rate: number;
+  env?: UpdateProjectProjectsResponseEnv | undefined;
+  requestPath?: string | undefined;
+};
+
+export type UpdateProjectTracing = {
+  domains?: string | undefined;
+  ignorePaths?: Array<string> | undefined;
+  samplingRules?: Array<UpdateProjectSamplingRules> | undefined;
+};
+
 /**
  * The project was successfully updated
  */
@@ -666,6 +686,7 @@ export type UpdateProjectResponseBody = {
   hasDeployments?: boolean | undefined;
   dismissedToasts?: Array<UpdateProjectProjectsDismissedToasts> | undefined;
   protectedSourcemaps?: boolean | undefined;
+  tracing?: UpdateProjectTracing | undefined;
 };
 
 /** @internal */
@@ -3109,6 +3130,109 @@ export function updateProjectProjectsDismissedToastsFromJSON(
 }
 
 /** @internal */
+export const UpdateProjectProjectsResponseEnv$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateProjectProjectsResponseEnv
+> = z.nativeEnum(UpdateProjectProjectsResponseEnv);
+/** @internal */
+export const UpdateProjectProjectsResponseEnv$outboundSchema: z.ZodNativeEnum<
+  typeof UpdateProjectProjectsResponseEnv
+> = UpdateProjectProjectsResponseEnv$inboundSchema;
+
+/** @internal */
+export const UpdateProjectSamplingRules$inboundSchema: z.ZodType<
+  UpdateProjectSamplingRules,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  rate: types.number(),
+  env: types.optional(UpdateProjectProjectsResponseEnv$inboundSchema),
+  requestPath: types.optional(types.string()),
+});
+/** @internal */
+export type UpdateProjectSamplingRules$Outbound = {
+  rate: number;
+  env?: string | undefined;
+  requestPath?: string | undefined;
+};
+
+/** @internal */
+export const UpdateProjectSamplingRules$outboundSchema: z.ZodType<
+  UpdateProjectSamplingRules$Outbound,
+  z.ZodTypeDef,
+  UpdateProjectSamplingRules
+> = z.object({
+  rate: z.number(),
+  env: UpdateProjectProjectsResponseEnv$outboundSchema.optional(),
+  requestPath: z.string().optional(),
+});
+
+export function updateProjectSamplingRulesToJSON(
+  updateProjectSamplingRules: UpdateProjectSamplingRules,
+): string {
+  return JSON.stringify(
+    UpdateProjectSamplingRules$outboundSchema.parse(updateProjectSamplingRules),
+  );
+}
+export function updateProjectSamplingRulesFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectSamplingRules, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectSamplingRules$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectSamplingRules' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateProjectTracing$inboundSchema: z.ZodType<
+  UpdateProjectTracing,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  domains: types.optional(types.string()),
+  ignorePaths: types.optional(z.array(types.string())),
+  samplingRules: types.optional(
+    z.array(z.lazy(() => UpdateProjectSamplingRules$inboundSchema)),
+  ),
+});
+/** @internal */
+export type UpdateProjectTracing$Outbound = {
+  domains?: string | undefined;
+  ignorePaths?: Array<string> | undefined;
+  samplingRules?: Array<UpdateProjectSamplingRules$Outbound> | undefined;
+};
+
+/** @internal */
+export const UpdateProjectTracing$outboundSchema: z.ZodType<
+  UpdateProjectTracing$Outbound,
+  z.ZodTypeDef,
+  UpdateProjectTracing
+> = z.object({
+  domains: z.string().optional(),
+  ignorePaths: z.array(z.string()).optional(),
+  samplingRules: z.array(
+    z.lazy(() => UpdateProjectSamplingRules$outboundSchema),
+  ).optional(),
+});
+
+export function updateProjectTracingToJSON(
+  updateProjectTracing: UpdateProjectTracing,
+): string {
+  return JSON.stringify(
+    UpdateProjectTracing$outboundSchema.parse(updateProjectTracing),
+  );
+}
+export function updateProjectTracingFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectTracing, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectTracing$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectTracing' from JSON`,
+  );
+}
+
+/** @internal */
 export const UpdateProjectResponseBody$inboundSchema: z.ZodType<
   UpdateProjectResponseBody,
   z.ZodTypeDef,
@@ -3238,6 +3362,7 @@ export const UpdateProjectResponseBody$inboundSchema: z.ZodType<
     z.array(z.lazy(() => UpdateProjectProjectsDismissedToasts$inboundSchema)),
   ),
   protectedSourcemaps: types.optional(types.boolean()),
+  tracing: types.optional(z.lazy(() => UpdateProjectTracing$inboundSchema)),
 });
 /** @internal */
 export type UpdateProjectResponseBody$Outbound = {
@@ -3356,6 +3481,7 @@ export type UpdateProjectResponseBody$Outbound = {
     | Array<UpdateProjectProjectsDismissedToasts$Outbound>
     | undefined;
   protectedSourcemaps?: boolean | undefined;
+  tracing?: UpdateProjectTracing$Outbound | undefined;
 };
 
 /** @internal */
@@ -3476,6 +3602,7 @@ export const UpdateProjectResponseBody$outboundSchema: z.ZodType<
     z.lazy(() => UpdateProjectProjectsDismissedToasts$outboundSchema),
   ).optional(),
   protectedSourcemaps: z.boolean().optional(),
+  tracing: z.lazy(() => UpdateProjectTracing$outboundSchema).optional(),
 });
 
 export function updateProjectResponseBodyToJSON(

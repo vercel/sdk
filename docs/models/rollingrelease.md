@@ -5,7 +5,7 @@ Project-level rolling release configuration that defines how deployments should 
 ## Example Usage
 
 ```typescript
-import { RollingRelease } from "@vercel/sdk/models/createprojectop.js";
+import { RollingRelease } from "@vercel/sdk/models/features.js";
 
 let value: RollingRelease = {
   target: "production",

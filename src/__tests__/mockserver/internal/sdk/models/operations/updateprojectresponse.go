@@ -3704,6 +3704,86 @@ func (o *UpdateProjectDismissedToastResponse) GetValue() *UpdateProjectValueUnio
 	return o.Value
 }
 
+type UpdateProjectSamplingRuleEnvResponse string
+
+const (
+	UpdateProjectSamplingRuleEnvResponseProduction UpdateProjectSamplingRuleEnvResponse = "production"
+	UpdateProjectSamplingRuleEnvResponsePreview    UpdateProjectSamplingRuleEnvResponse = "preview"
+)
+
+func (e UpdateProjectSamplingRuleEnvResponse) ToPointer() *UpdateProjectSamplingRuleEnvResponse {
+	return &e
+}
+func (e *UpdateProjectSamplingRuleEnvResponse) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "production":
+		fallthrough
+	case "preview":
+		*e = UpdateProjectSamplingRuleEnvResponse(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateProjectSamplingRuleEnvResponse: %v", v)
+	}
+}
+
+type UpdateProjectSamplingRuleResponse struct {
+	Rate        float64                               `json:"rate"`
+	Env         *UpdateProjectSamplingRuleEnvResponse `json:"env,omitempty"`
+	RequestPath *string                               `json:"requestPath,omitempty"`
+}
+
+func (o *UpdateProjectSamplingRuleResponse) GetRate() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Rate
+}
+
+func (o *UpdateProjectSamplingRuleResponse) GetEnv() *UpdateProjectSamplingRuleEnvResponse {
+	if o == nil {
+		return nil
+	}
+	return o.Env
+}
+
+func (o *UpdateProjectSamplingRuleResponse) GetRequestPath() *string {
+	if o == nil {
+		return nil
+	}
+	return o.RequestPath
+}
+
+type UpdateProjectTracingResponse struct {
+	Domains       *string                             `json:"domains,omitempty"`
+	IgnorePaths   []string                            `json:"ignorePaths,omitempty"`
+	SamplingRules []UpdateProjectSamplingRuleResponse `json:"samplingRules,omitempty"`
+}
+
+func (o *UpdateProjectTracingResponse) GetDomains() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Domains
+}
+
+func (o *UpdateProjectTracingResponse) GetIgnorePaths() []string {
+	if o == nil {
+		return nil
+	}
+	return o.IgnorePaths
+}
+
+func (o *UpdateProjectTracingResponse) GetSamplingRules() []UpdateProjectSamplingRuleResponse {
+	if o == nil {
+		return nil
+	}
+	return o.SamplingRules
+}
+
 // UpdateProjectResponseBody - The project was successfully updated
 type UpdateProjectResponseBody struct {
 	AccountID                        string                                                                         `json:"accountId"`
@@ -3796,6 +3876,7 @@ type UpdateProjectResponseBody struct {
 	HasDeployments                       *bool                                                                 `json:"hasDeployments,omitempty"`
 	DismissedToasts                      []UpdateProjectDismissedToastResponse                                 `json:"dismissedToasts,omitempty"`
 	ProtectedSourcemaps                  *bool                                                                 `json:"protectedSourcemaps,omitempty"`
+	Tracing                              *UpdateProjectTracingResponse                                         `json:"tracing,omitempty"`
 }
 
 func (o *UpdateProjectResponseBody) GetAccountID() string {
@@ -4447,6 +4528,13 @@ func (o *UpdateProjectResponseBody) GetProtectedSourcemaps() *bool {
 		return nil
 	}
 	return o.ProtectedSourcemaps
+}
+
+func (o *UpdateProjectResponseBody) GetTracing() *UpdateProjectTracingResponse {
+	if o == nil {
+		return nil
+	}
+	return o.Tracing
 }
 
 type UpdateProjectResponse struct {

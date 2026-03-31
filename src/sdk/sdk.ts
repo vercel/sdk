@@ -5,6 +5,7 @@
 import { ClientSDK } from "../lib/sdks.js";
 import { AccessGroups } from "./accessgroups.js";
 import { Aliases } from "./aliases.js";
+import { ApiObservability } from "./apiobservability.js";
 import { Artifacts } from "./artifacts.js";
 import { Authentication } from "./authentication.js";
 import { Billing } from "./billing.js";
@@ -147,6 +148,11 @@ export class Vercel extends ClientSDK {
   private _logs?: Logs;
   get logs(): Logs {
     return (this._logs ??= new Logs(this._options));
+  }
+
+  private _apiObservability?: ApiObservability;
+  get apiObservability(): ApiObservability {
+    return (this._apiObservability ??= new ApiObservability(this._options));
   }
 
   private _projectMembers?: ProjectMembers;

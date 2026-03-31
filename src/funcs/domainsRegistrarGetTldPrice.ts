@@ -52,6 +52,8 @@ import { Result } from "../types/fp.js";
  *
  * @remarks
  * Get price data for a specific TLD. This only reflects base prices for the given TLD. Premium domains may have different prices. Use the [Get price data for a domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/get-price-data-for-a-domain) endpoint to get the price data for a specific domain.
+ *
+ * If set, this operation will use {@link Security.bearerToken} from the global security.
  */
 export function domainsRegistrarGetTldPrice(
   client: VercelCore,
@@ -137,7 +139,7 @@ async function $do(
 
   const secConfig = await extractSecurity(client._options.bearerToken);
   const securityInput = secConfig == null ? {} : { bearerToken: secConfig };
-  const requestSecurity = resolveGlobalSecurity(securityInput);
+  const requestSecurity = resolveGlobalSecurity(securityInput, [0]);
 
   const context = {
     options: client._options,

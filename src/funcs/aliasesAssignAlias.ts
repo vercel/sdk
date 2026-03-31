@@ -34,6 +34,8 @@ import { Result } from "../types/fp.js";
  *
  * @remarks
  * Creates a new alias for the deployment with the given deployment ID. The authenticated user or team must own this deployment. If the desired alias is already assigned to another deployment, then it will be removed from the old deployment and assigned to the new one.
+ *
+ * If set, this operation will use {@link Security.bearerToken} from the global security.
  */
 export function aliasesAssignAlias(
   client: VercelCore,
@@ -110,7 +112,7 @@ async function $do(
 
   const secConfig = await extractSecurity(client._options.bearerToken);
   const securityInput = secConfig == null ? {} : { bearerToken: secConfig };
-  const requestSecurity = resolveGlobalSecurity(securityInput);
+  const requestSecurity = resolveGlobalSecurity(securityInput, [0]);
 
   const context = {
     options: client._options,

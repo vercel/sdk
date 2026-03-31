@@ -34,6 +34,8 @@ import { Result } from "../types/fp.js";
  *
  * @remarks
  * When the user enabled Edge Config syncing, then this endpoint can be used by the partner to push their configuration data into the relevant Edge Config.
+ *
+ * If set, this operation will use {@link Security.bearerToken} from the global security.
  */
 export function marketplaceUpdateInstallationIntegrationEdgeConfig(
   client: VercelCore,
@@ -116,7 +118,7 @@ async function $do(
 
   const secConfig = await extractSecurity(client._options.bearerToken);
   const securityInput = secConfig == null ? {} : { bearerToken: secConfig };
-  const requestSecurity = resolveGlobalSecurity(securityInput);
+  const requestSecurity = resolveGlobalSecurity(securityInput, [0]);
 
   const context = {
     options: client._options,

@@ -12,6 +12,59 @@ import (
 	"mockserver/internal/sdk/utils"
 )
 
+type GetProjectsContentHintRedisRestAPIURL struct {
+	Type    GetProjectsTypeRedisRestAPIURL `json:"type"`
+	StoreID string                         `json:"storeId"`
+}
+
+func (g GetProjectsContentHintRedisRestAPIURL) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetProjectsContentHintRedisRestAPIURL) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetProjectsContentHintRedisRestAPIURL) GetType() GetProjectsTypeRedisRestAPIURL {
+	if o == nil {
+		return GetProjectsTypeRedisRestAPIURL("")
+	}
+	return o.Type
+}
+
+func (o *GetProjectsContentHintRedisRestAPIURL) GetStoreID() string {
+	if o == nil {
+		return ""
+	}
+	return o.StoreID
+}
+
+type GetProjectsTypeRedisURL string
+
+const (
+	GetProjectsTypeRedisURLRedisURL GetProjectsTypeRedisURL = "redis-url"
+)
+
+func (e GetProjectsTypeRedisURL) ToPointer() *GetProjectsTypeRedisURL {
+	return &e
+}
+func (e *GetProjectsTypeRedisURL) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "redis-url":
+		*e = GetProjectsTypeRedisURL(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetProjectsTypeRedisURL: %v", v)
+	}
+}
+
 type GetProjectsContentHintRedisURL struct {
 	Type    GetProjectsTypeRedisURL `json:"type"`
 	StoreID string                  `json:"storeId"`
@@ -3647,6 +3700,39 @@ func (e *GetProjectsCreateDeployments) UnmarshalJSON(data []byte) error {
 	}
 }
 
+// GetProjectsConsolidatedGitCommitStatus - Configuration for consolidated git commit status reporting. When enabled, Vercel will post a single consolidated commit status instead of individual statuses for each deployment.
+type GetProjectsConsolidatedGitCommitStatus struct {
+	// Whether consolidated commit status is enabled.
+	Enabled bool `json:"enabled"`
+	// Whether to propagate individual deployment failures to the consolidated status.
+	PropagateFailures bool `json:"propagateFailures"`
+}
+
+func (g GetProjectsConsolidatedGitCommitStatus) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetProjectsConsolidatedGitCommitStatus) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"enabled", "propagateFailures"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetProjectsConsolidatedGitCommitStatus) GetEnabled() bool {
+	if o == nil {
+		return false
+	}
+	return o.Enabled
+}
+
+func (o *GetProjectsConsolidatedGitCommitStatus) GetPropagateFailures() bool {
+	if o == nil {
+		return false
+	}
+	return o.PropagateFailures
+}
+
 type GetProjectsGitProviderOptions struct {
 	// Whether the Vercel bot should automatically create GitHub deployments https://docs.github.com/en/rest/deployments/deployments#about-deployments NOTE: repository-dispatch events should be used instead
 	CreateDeployments GetProjectsCreateDeployments `json:"createDeployments"`
@@ -3654,6 +3740,8 @@ type GetProjectsGitProviderOptions struct {
 	DisableRepositoryDispatchEvents *bool `json:"disableRepositoryDispatchEvents,omitempty"`
 	// Whether the project requires commits to be signed before deployments will be created.
 	RequireVerifiedCommits *bool `json:"requireVerifiedCommits,omitempty"`
+	// Configuration for consolidated git commit status reporting. When enabled, Vercel will post a single consolidated commit status instead of individual statuses for each deployment.
+	ConsolidatedGitCommitStatus *GetProjectsConsolidatedGitCommitStatus `json:"consolidatedGitCommitStatus,omitempty"`
 }
 
 func (g GetProjectsGitProviderOptions) MarshalJSON() ([]byte, error) {
@@ -3686,6 +3774,13 @@ func (o *GetProjectsGitProviderOptions) GetRequireVerifiedCommits() *bool {
 		return nil
 	}
 	return o.RequireVerifiedCommits
+}
+
+func (o *GetProjectsGitProviderOptions) GetConsolidatedGitCommitStatus() *GetProjectsConsolidatedGitCommitStatus {
+	if o == nil {
+		return nil
+	}
+	return o.ConsolidatedGitCommitStatus
 }
 
 type GetProjectsWebAnalytics struct {

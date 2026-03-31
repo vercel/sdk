@@ -34,6 +34,8 @@ import { Result } from "../types/fp.js";
  *
  * @remarks
  * This endpoint is used for adding a new apex domain name with Vercel for the authenticating user. Note: This endpoint is no longer used for initiating domain transfers from external registrars to Vercel. For this, please use the endpoint [Transfer-in a domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/transfer-in-a-domain).
+ *
+ * If set, this operation will use {@link Security.bearerToken} from the global security.
  */
 export function domainsCreateOrTransferDomain(
   client: VercelCore,
@@ -104,7 +106,7 @@ async function $do(
 
   const secConfig = await extractSecurity(client._options.bearerToken);
   const securityInput = secConfig == null ? {} : { bearerToken: secConfig };
-  const requestSecurity = resolveGlobalSecurity(securityInput);
+  const requestSecurity = resolveGlobalSecurity(securityInput, [0]);
 
   const context = {
     options: client._options,

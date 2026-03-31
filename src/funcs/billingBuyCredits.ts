@@ -34,6 +34,8 @@ import { Result } from "../types/fp.js";
  *
  * @remarks
  * Purchases credits for a Vercel team using the default payment method on file. The purchase is charged immediately via Stripe invoice. Supported credit types are `v0`, `gateway`, and `agent`. The `amount` field specifies the number of credits to purchase and must be a positive integer. An optional `source` query parameter can be provided to identify the caller. Defaults to `api` if not specified. This is only available for Owner, Member, Developer, Security, and Billing roles for the supplied team.
+ *
+ * If set, this operation will use {@link Security.bearerToken} from the global security.
  */
 export function billingBuyCredits(
   client: VercelCore,
@@ -105,7 +107,7 @@ async function $do(
 
   const secConfig = await extractSecurity(client._options.bearerToken);
   const securityInput = secConfig == null ? {} : { bearerToken: secConfig };
-  const requestSecurity = resolveGlobalSecurity(securityInput);
+  const requestSecurity = resolveGlobalSecurity(securityInput, [0]);
 
   const context = {
     options: client._options,

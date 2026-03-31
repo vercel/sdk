@@ -123,6 +123,28 @@ func (e *CreateProjectCreateDeployments) UnmarshalJSON(data []byte) error {
 	}
 }
 
+// CreateProjectConsolidatedGitCommitStatus - Configuration for consolidated git commit status reporting. When enabled, Vercel will post a single consolidated commit status instead of individual statuses for each deployment.
+type CreateProjectConsolidatedGitCommitStatus struct {
+	// Whether consolidated commit status is enabled.
+	Enabled bool `json:"enabled"`
+	// Whether to propagate individual deployment failures to the consolidated status.
+	PropagateFailures bool `json:"propagateFailures"`
+}
+
+func (o *CreateProjectConsolidatedGitCommitStatus) GetEnabled() bool {
+	if o == nil {
+		return false
+	}
+	return o.Enabled
+}
+
+func (o *CreateProjectConsolidatedGitCommitStatus) GetPropagateFailures() bool {
+	if o == nil {
+		return false
+	}
+	return o.PropagateFailures
+}
+
 type CreateProjectGitProviderOptions struct {
 	// Whether the Vercel bot should automatically create GitHub deployments https://docs.github.com/en/rest/deployments/deployments#about-deployments NOTE: repository-dispatch events should be used instead
 	CreateDeployments CreateProjectCreateDeployments `json:"createDeployments"`
@@ -130,6 +152,8 @@ type CreateProjectGitProviderOptions struct {
 	DisableRepositoryDispatchEvents *bool `json:"disableRepositoryDispatchEvents,omitempty"`
 	// Whether the project requires commits to be signed before deployments will be created.
 	RequireVerifiedCommits *bool `json:"requireVerifiedCommits,omitempty"`
+	// Configuration for consolidated git commit status reporting. When enabled, Vercel will post a single consolidated commit status instead of individual statuses for each deployment.
+	ConsolidatedGitCommitStatus *CreateProjectConsolidatedGitCommitStatus `json:"consolidatedGitCommitStatus,omitempty"`
 }
 
 func (o *CreateProjectGitProviderOptions) GetCreateDeployments() CreateProjectCreateDeployments {
@@ -151,6 +175,13 @@ func (o *CreateProjectGitProviderOptions) GetRequireVerifiedCommits() *bool {
 		return nil
 	}
 	return o.RequireVerifiedCommits
+}
+
+func (o *CreateProjectGitProviderOptions) GetConsolidatedGitCommitStatus() *CreateProjectConsolidatedGitCommitStatus {
+	if o == nil {
+		return nil
+	}
+	return o.ConsolidatedGitCommitStatus
 }
 
 type CreateProjectWebAnalytics struct {

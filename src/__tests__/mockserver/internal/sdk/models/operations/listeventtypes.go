@@ -290,6 +290,7 @@ const (
 	NameProjectGitCreateDeploymentsToggled              Name = "project-git-create-deployments-toggled"
 	NameProjectGitRequireVerifiedCommitsToggled         Name = "project-git-require-verified-commits-toggled"
 	NameProjectGitLfsToggled                            Name = "project-git-lfs-toggled"
+	NameProjectConsolidatedGitCommitStatusUpdated       Name = "project-consolidated-git-commit-status-updated"
 	NameProjectIgnoredBuildStepUpdated                  Name = "project-ignored-build-step-updated"
 	NameProjectAddAlias                                 Name = "project-add-alias"
 	NameProjectAddRedirect                              Name = "project-add-redirect"
@@ -968,6 +969,8 @@ func (e *Name) UnmarshalJSON(data []byte) error {
 	case "project-git-require-verified-commits-toggled":
 		fallthrough
 	case "project-git-lfs-toggled":
+		fallthrough
+	case "project-consolidated-git-commit-status-updated":
 		fallthrough
 	case "project-ignored-build-step-updated":
 		fallthrough

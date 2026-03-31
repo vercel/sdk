@@ -5,23 +5,16 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndSeventy } from "@vercel/sdk/models/usereventpayload221previous.js";
+import { TwoHundredAndSeventy } from "@vercel/sdk/models/usereventpayload222previous.js";
 
 let value: TwoHundredAndSeventy = {
-  previous: {
-    enabled: true,
-    totpVerified: false,
-  },
-  next: {
-    enabled: false,
-    totpVerified: true,
-  },
+  username: "Adele.Schultz",
 };
 ```
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `previous`                                                                     | [models.UserEventPayload270Previous](../models/usereventpayload270previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
-| `next`                                                                         | [models.UserEventPayload270Next](../models/usereventpayload270next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `deletedAt`        | *number*           | :heavy_minus_sign: | N/A                |
+| `username`         | *string*           | :heavy_check_mark: | N/A                |

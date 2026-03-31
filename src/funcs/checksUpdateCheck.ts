@@ -35,6 +35,8 @@ import { Result } from "../types/fp.js";
  * @remarks
  * Update an existing check. This endpoint must be called with an OAuth2 or it will produce a 400 error.
  *
+ * If set, this operation will use {@link Security.bearerToken} from the global security.
+ *
  * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
  */
 export function checksUpdateCheck(
@@ -118,7 +120,7 @@ async function $do(
 
   const secConfig = await extractSecurity(client._options.bearerToken);
   const securityInput = secConfig == null ? {} : { bearerToken: secConfig };
-  const requestSecurity = resolveGlobalSecurity(securityInput);
+  const requestSecurity = resolveGlobalSecurity(securityInput, [0]);
 
   const context = {
     options: client._options,

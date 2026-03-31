@@ -34,6 +34,8 @@ import { Result } from "../types/fp.js";
  *
  * @remarks
  * Lists git repositories linked to a namespace `id` for a supported provider. A specific namespace `id` can be obtained via the `git-namespaces`  endpoint. Supported providers are `github`, `gitlab` and `bitbucket`. If the provider or namespace is not provided, it will try to obtain it from the user that authenticated the request.
+ *
+ * If set, this operation will use {@link Security.bearerToken} from the global security.
  */
 export function integrationsSearchRepo(
   client: VercelCore,
@@ -108,7 +110,7 @@ async function $do(
 
   const secConfig = await extractSecurity(client._options.bearerToken);
   const securityInput = secConfig == null ? {} : { bearerToken: secConfig };
-  const requestSecurity = resolveGlobalSecurity(securityInput);
+  const requestSecurity = resolveGlobalSecurity(securityInput, [0]);
 
   const context = {
     options: client._options,

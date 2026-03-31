@@ -5,7 +5,7 @@ Since June 2023
 ## Example Usage
 
 ```typescript
-import { BlockHistory } from "@vercel/sdk/models/payloadrules.js";
+import { BlockHistory } from "@vercel/sdk/models/payloadactivedashboardviews.js";
 
 let value: BlockHistory = {
   action: "unblocked",

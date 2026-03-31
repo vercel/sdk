@@ -33,6 +33,8 @@ import { Result } from "../types/fp.js";
  *
  * @remarks
  * Update the protection bypass for the alias or deployment URL (used for user access & comment access for deployments). Used as shareable links and user scoped access for Vercel Authentication and also to allow external (logged in) people to comment on previews for Preview Comments (next-live-mode).
+ *
+ * If set, this operation will use {@link Security.bearerToken} from the global security.
  */
 export function aliasesPatchUrlProtectionBypass(
   client: VercelCore,
@@ -109,7 +111,7 @@ async function $do(
 
   const secConfig = await extractSecurity(client._options.bearerToken);
   const securityInput = secConfig == null ? {} : { bearerToken: secConfig };
-  const requestSecurity = resolveGlobalSecurity(securityInput);
+  const requestSecurity = resolveGlobalSecurity(securityInput, [0]);
 
   const context = {
     options: client._options,

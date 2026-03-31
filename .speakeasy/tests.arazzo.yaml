@@ -9709,3 +9709,46 @@ workflows:
             type: simple
     x-speakeasy-test-group: sandboxes-v2-beta
     x-speakeasy-test-rebuild: true
+  - workflowId: getObservabilityConfigurationProjects
+    steps:
+      - stepId: test
+        operationId: getObservabilityConfigurationProjects
+        parameters:
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"disabledProjects":[]}
+            type: simple
+    x-speakeasy-test-group: api-observability
+    x-speakeasy-test-rebuild: true
+  - workflowId: updateObservabilityConfigurationProject
+    steps:
+      - stepId: test
+        operationId: updateObservabilityConfigurationProject
+        parameters:
+          - name: projectIdOrName
+            in: path
+            value: <value>
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"id":"<id>"}
+            type: simple
+    x-speakeasy-test-group: api-observability
+    x-speakeasy-test-rebuild: true

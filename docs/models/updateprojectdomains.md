@@ -5,7 +5,7 @@ List of domains associated with this environment
 ## Example Usage
 
 ```typescript
-import { UpdateProjectDomains } from "@vercel/sdk/models/updateprojectaibots.js";
+import { UpdateProjectDomains } from "@vercel/sdk/models/updateprojectprojectsresponse200action.js";
 
 let value: UpdateProjectDomains = {
   name: "<value>",

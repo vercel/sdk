@@ -5,7 +5,7 @@ Specifies whether PRs from Git forks should require a team member's authorizatio
 ## Example Usage
 
 ```typescript
-import { GitForkProtection } from "@vercel/sdk/models/getprojectsblockhistoryprojects4.js";
+import { GitForkProtection } from "@vercel/sdk/models/getprojectsblockhistoryprojectsresponse200applicationjsonroute.js";
 
 let value: GitForkProtection = "1";
 ```

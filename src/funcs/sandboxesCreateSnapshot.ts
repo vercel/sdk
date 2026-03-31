@@ -34,6 +34,8 @@ import { Result } from "../types/fp.js";
  *
  * @remarks
  * Creates a point-in-time snapshot of a running sandbox's filesystem. Snapshots can be used to quickly restore a sandbox to a previous state or to create new sandboxes with pre-configured environments. The sandbox must be running and able to accept commands for a snapshot to be created. The sandbox will be terminated after the snapshot is created.
+ *
+ * If set, this operation will use {@link Security.bearerToken} from the global security.
  */
 export function sandboxesCreateSnapshot(
   client: VercelCore,
@@ -110,7 +112,7 @@ async function $do(
 
   const secConfig = await extractSecurity(client._options.bearerToken);
   const securityInput = secConfig == null ? {} : { bearerToken: secConfig };
-  const requestSecurity = resolveGlobalSecurity(securityInput);
+  const requestSecurity = resolveGlobalSecurity(securityInput, [0]);
 
   const context = {
     options: client._options,

@@ -36,6 +36,8 @@ import { Result } from "../types/fp.js";
  *
  * @remarks
  * Returns commitment allocations per contract period in FOCUS v1.3 JSONL format for a specified Vercel team. The response is streamed as newline-delimited JSON (JSONL). This endpoint is only applicable to Enterprise Vercel customers. An empty response is returned for non-Enterprise (Pro/Flex) customers.
+ *
+ * If set, this operation will use {@link Security.bearerToken} from the global security.
  */
 export function billingListContractCommitments(
   client: VercelCore,
@@ -105,7 +107,7 @@ async function $do(
 
   const secConfig = await extractSecurity(client._options.bearerToken);
   const securityInput = secConfig == null ? {} : { bearerToken: secConfig };
-  const requestSecurity = resolveGlobalSecurity(securityInput);
+  const requestSecurity = resolveGlobalSecurity(securityInput, [0]);
 
   const context = {
     options: client._options,

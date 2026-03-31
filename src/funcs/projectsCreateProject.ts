@@ -15,10 +15,6 @@ import {
   CreateProjectResponseBody$inboundSchema,
 } from "../models/createprojectresponsebody.js";
 import {
-  CreateProjectRequest,
-  CreateProjectRequest$outboundSchema,
-} from "../models/features.js";
-import {
   ConnectionError,
   InvalidRequestError,
   RequestAbortedError,
@@ -27,6 +23,10 @@ import {
 } from "../models/httpclienterrors.js";
 import { ResponseValidationError } from "../models/responsevalidationerror.js";
 import { SDKValidationError } from "../models/sdkvalidationerror.js";
+import {
+  CreateProjectRequest,
+  CreateProjectRequest$outboundSchema,
+} from "../models/usagestatus.js";
 import { VercelError } from "../models/vercelerror.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
@@ -36,6 +36,8 @@ import { Result } from "../types/fp.js";
  *
  * @remarks
  * Allows to create a new project with the provided configuration. It only requires the project `name` but more configuration can be provided to override the defaults.
+ *
+ * If set, this operation will use {@link Security.bearerToken} from the global security.
  */
 export function projectsCreateProject(
   client: VercelCore,
@@ -106,7 +108,7 @@ async function $do(
 
   const secConfig = await extractSecurity(client._options.bearerToken);
   const securityInput = secConfig == null ? {} : { bearerToken: secConfig };
-  const requestSecurity = resolveGlobalSecurity(securityInput);
+  const requestSecurity = resolveGlobalSecurity(securityInput, [0]);
 
   const context = {
     options: client._options,

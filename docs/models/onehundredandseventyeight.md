@@ -5,23 +5,23 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndSeventyEight } from "@vercel/sdk/models/usereventpayload159next.js";
+import { OneHundredAndSeventyEight } from "@vercel/sdk/models/onehundredandsixty.js";
 
 let value: OneHundredAndSeventyEight = {
-  projectId: "<id>",
-  projectName: "<value>",
-  target: "<value>",
-  domain: "superb-hose.biz",
+  projects: [
+    {
+      projectId: "<id>",
+      role: "PROJECT_DEVELOPER",
+      membershipCreatedAt: 2569.67,
+    },
+  ],
+  uid: "<id>",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
-| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
-| `target`           | *string*           | :heavy_check_mark: | N/A                |
-| `domain`           | *string*           | :heavy_check_mark: | N/A                |
-| `configuredBy`     | *string*           | :heavy_minus_sign: | N/A                |
-| `prevConfiguredBy` | *string*           | :heavy_minus_sign: | N/A                |
+| Field                                                    | Type                                                     | Required                                                 | Description                                              |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `projects`                                               | [models.PayloadProjects](../models/payloadprojects.md)[] | :heavy_check_mark:                                       | N/A                                                      |
+| `uid`                                                    | *string*                                                 | :heavy_check_mark:                                       | N/A                                                      |

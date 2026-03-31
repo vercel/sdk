@@ -8,6 +8,7 @@ import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 import {
   Analytics,
   Analytics$inboundSchema,
@@ -103,10 +104,6 @@ import {
   DeploymentExpiration$inboundSchema,
   DeploymentExpiration$Outbound,
   DeploymentExpiration$outboundSchema,
-  Features,
-  Features$inboundSchema,
-  Features$Outbound,
-  Features$outboundSchema,
   FlatRateTier,
   FlatRateTier$inboundSchema,
   FlatRateTier$outboundSchema,
@@ -154,8 +151,11 @@ import {
   UsageStatus$inboundSchema,
   UsageStatus$Outbound,
   UsageStatus$outboundSchema,
-} from "./features.js";
-import { SDKValidationError } from "./sdkvalidationerror.js";
+} from "./usagestatus.js";
+
+export type Features = {
+  webAnalytics?: boolean | undefined;
+};
 
 export type CreateProjectHistory = {
   scanner: string;
@@ -554,6 +554,41 @@ export type CreateProjectResponseBody = {
   protectedSourcemaps?: boolean | undefined;
   tracing?: CreateProjectTracing | undefined;
 };
+
+/** @internal */
+export const Features$inboundSchema: z.ZodType<
+  Features,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  webAnalytics: types.optional(types.boolean()),
+});
+/** @internal */
+export type Features$Outbound = {
+  webAnalytics?: boolean | undefined;
+};
+
+/** @internal */
+export const Features$outboundSchema: z.ZodType<
+  Features$Outbound,
+  z.ZodTypeDef,
+  Features
+> = z.object({
+  webAnalytics: z.boolean().optional(),
+});
+
+export function featuresToJSON(features: Features): string {
+  return JSON.stringify(Features$outboundSchema.parse(features));
+}
+export function featuresFromJSON(
+  jsonString: string,
+): SafeParseResult<Features, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Features$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Features' from JSON`,
+  );
+}
 
 /** @internal */
 export const CreateProjectHistory$inboundSchema: z.ZodType<
@@ -2680,7 +2715,7 @@ export const CreateProjectResponseBody$inboundSchema: z.ZodType<
   tier: types.optional(types.string()),
   flatRateTier: types.optional(FlatRateTier$inboundSchema),
   usageStatus: types.optional(UsageStatus$inboundSchema),
-  features: types.optional(Features$inboundSchema),
+  features: types.optional(z.lazy(() => Features$inboundSchema)),
   v0: types.optional(types.boolean()),
   v0Created: types.optional(types.boolean()),
   abuse: types.optional(z.lazy(() => CreateProjectAbuse$inboundSchema)),
@@ -2893,7 +2928,7 @@ export const CreateProjectResponseBody$outboundSchema: z.ZodType<
   tier: z.string().optional(),
   flatRateTier: FlatRateTier$outboundSchema.optional(),
   usageStatus: UsageStatus$outboundSchema.optional(),
-  features: Features$outboundSchema.optional(),
+  features: z.lazy(() => Features$outboundSchema).optional(),
   v0: z.boolean().optional(),
   v0Created: z.boolean().optional(),
   abuse: z.lazy(() => CreateProjectAbuse$outboundSchema).optional(),

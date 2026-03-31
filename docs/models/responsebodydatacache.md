@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyDataCache } from "@vercel/sdk/models/getprojectsblockhistoryprojects4.js";
+import { ResponseBodyDataCache } from "@vercel/sdk/models/getprojectsblockhistoryprojectsresponse200applicationjsonroute.js";
 
 let value: ResponseBodyDataCache = {
   userDisabled: true,

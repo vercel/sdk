@@ -30,6 +30,8 @@ import { tool$aliasesGetAlias } from "./tools/aliasesGetAlias.js";
 import { tool$aliasesListAliases } from "./tools/aliasesListAliases.js";
 import { tool$aliasesListDeploymentAliases } from "./tools/aliasesListDeploymentAliases.js";
 import { tool$aliasesPatchUrlProtectionBypass } from "./tools/aliasesPatchUrlProtectionBypass.js";
+import { tool$apiObservabilityGetObservabilityConfigurationProjects } from "./tools/apiObservabilityGetObservabilityConfigurationProjects.js";
+import { tool$apiObservabilityUpdateObservabilityConfigurationProject } from "./tools/apiObservabilityUpdateObservabilityConfigurationProject.js";
 import { tool$artifactsArtifactExists } from "./tools/artifactsArtifactExists.js";
 import { tool$artifactsArtifactQuery } from "./tools/artifactsArtifactQuery.js";
 import { tool$artifactsDownloadArtifact } from "./tools/artifactsDownloadArtifact.js";
@@ -335,7 +337,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Vercel",
-    version: "1.19.22",
+    version: "1.19.23",
   });
 
   const client = new VercelCore({
@@ -557,6 +559,8 @@ export function createMCPServer(deps: {
   tool(tool$authenticationGetAuthToken);
   tool(tool$authenticationDeleteAuthToken);
   tool(tool$logsGetRuntimeLogs);
+  tool(tool$apiObservabilityGetObservabilityConfigurationProjects);
+  tool(tool$apiObservabilityUpdateObservabilityConfigurationProject);
   tool(tool$projectMembersGetProjectMembers);
   tool(tool$projectMembersAddProjectMember);
   tool(tool$projectMembersRemoveProjectMember);

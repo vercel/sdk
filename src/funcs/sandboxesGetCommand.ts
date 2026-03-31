@@ -34,6 +34,8 @@ import { Result } from "../types/fp.js";
  *
  * @remarks
  * Retrieves the current status and details of a command executed in a sandbox. Use the `wait` parameter to block until the command finishes execution.
+ *
+ * If set, this operation will use {@link Security.bearerToken} from the global security.
  */
 export function sandboxesGetCommand(
   client: VercelCore,
@@ -114,7 +116,7 @@ async function $do(
 
   const secConfig = await extractSecurity(client._options.bearerToken);
   const securityInput = secConfig == null ? {} : { bearerToken: secConfig };
-  const requestSecurity = resolveGlobalSecurity(securityInput);
+  const requestSecurity = resolveGlobalSecurity(securityInput, [0]);
 
   const context = {
     options: client._options,

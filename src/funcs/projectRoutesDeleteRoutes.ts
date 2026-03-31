@@ -34,6 +34,8 @@ import { Result } from "../types/fp.js";
  *
  * @remarks
  * Delete one or more routing rules from a project by ID. Stages a new version with the routes removed.
+ *
+ * If set, this operation will use {@link Security.bearerToken} from the global security.
  */
 export function projectRoutesDeleteRoutes(
   client: VercelCore,
@@ -110,7 +112,7 @@ async function $do(
 
   const secConfig = await extractSecurity(client._options.bearerToken);
   const securityInput = secConfig == null ? {} : { bearerToken: secConfig };
-  const requestSecurity = resolveGlobalSecurity(securityInput);
+  const requestSecurity = resolveGlobalSecurity(securityInput, [0]);
 
   const context = {
     options: client._options,

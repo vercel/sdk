@@ -39,6 +39,8 @@ export enum RunCommandAcceptEnum {
  *
  * @remarks
  * Executes a shell command inside a running sandbox. The command runs asynchronously and returns immediately with a command ID that can be used to track its progress and retrieve its output. Optionally, use the `wait` parameter to stream the command status until completion.
+ *
+ * If set, this operation will use {@link Security.bearerToken} from the global security.
  */
 export function sandboxesRunCommand(
   client: VercelCore,
@@ -116,7 +118,7 @@ async function $do(
 
   const secConfig = await extractSecurity(client._options.bearerToken);
   const securityInput = secConfig == null ? {} : { bearerToken: secConfig };
-  const requestSecurity = resolveGlobalSecurity(securityInput);
+  const requestSecurity = resolveGlobalSecurity(securityInput, [0]);
 
   const context = {
     options: client._options,

@@ -5,20 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndSixtyEight } from "@vercel/sdk/models/usereventpayload221previous.js";
+import { TwoHundredAndSixtyEight } from "@vercel/sdk/models/usereventpayload222previous.js";
 
 let value: TwoHundredAndSixtyEight = {
-  totp: false,
-  recoveryCodes: 1991.38,
+  provider: "apple",
+  login: "Clyde_Considine",
 };
 ```
 
 ## Fields
 
-| Field                                      | Type                                       | Required                                   | Description                                |
-| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `totp`                                     | *boolean*                                  | :heavy_check_mark:                         | N/A                                        |
-| `recoveryCodes`                            | *number*                                   | :heavy_check_mark:                         | N/A                                        |
-| `actorId`                                  | *string*                                   | :heavy_minus_sign:                         | N/A                                        |
-| `actorType`                                | [models.ActorType](../models/actortype.md) | :heavy_minus_sign:                         | N/A                                        |
-| `reason`                                   | *string*                                   | :heavy_minus_sign:                         | N/A                                        |
+| Field                                    | Type                                     | Required                                 | Description                              |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| `provider`                               | [models.Provider](../models/provider.md) | :heavy_check_mark:                       | N/A                                      |
+| `login`                                  | *string*                                 | :heavy_check_mark:                       | N/A                                      |

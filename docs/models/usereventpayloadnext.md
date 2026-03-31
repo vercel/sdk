@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPayloadNext } from "@vercel/sdk/models/payloadrules.js";
+import { UserEventPayloadNext } from "@vercel/sdk/models/payloadactivedashboardviews.js";
 
 let value: UserEventPayloadNext = {
   functionDefaultTimeout: 3873.19,

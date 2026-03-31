@@ -34,6 +34,8 @@ import { Result } from "../types/fp.js";
  *
  * @remarks
  * Request access to a team as a member. An owner has to approve the request. Only 10 users can request access to a team at the same time.
+ *
+ * If set, this operation will use {@link Security.bearerToken} from the global security.
  */
 export function teamsRequestAccessToTeam(
   client: VercelCore,
@@ -105,7 +107,7 @@ async function $do(
 
   const secConfig = await extractSecurity(client._options.bearerToken);
   const securityInput = secConfig == null ? {} : { bearerToken: secConfig };
-  const requestSecurity = resolveGlobalSecurity(securityInput);
+  const requestSecurity = resolveGlobalSecurity(securityInput, [0]);
 
   const context = {
     options: client._options,

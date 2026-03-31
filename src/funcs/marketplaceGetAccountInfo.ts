@@ -34,6 +34,8 @@ import { Result } from "../types/fp.js";
  *
  * @remarks
  * Fetches the best account or user’s contact info
+ *
+ * If set, this operation will use {@link Security.bearerToken} from the global security.
  */
 export function marketplaceGetAccountInfo(
   client: VercelCore,
@@ -107,7 +109,7 @@ async function $do(
 
   const secConfig = await extractSecurity(client._options.bearerToken);
   const securityInput = secConfig == null ? {} : { bearerToken: secConfig };
-  const requestSecurity = resolveGlobalSecurity(securityInput);
+  const requestSecurity = resolveGlobalSecurity(securityInput, [0]);
 
   const context = {
     options: client._options,

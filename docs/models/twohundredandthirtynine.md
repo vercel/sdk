@@ -5,21 +5,16 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndThirtyNine } from "@vercel/sdk/models/usereventpayload221previous.js";
+import { TwoHundredAndThirtyNine } from "@vercel/sdk/models/usereventpayload222previous.js";
 
 let value: TwoHundredAndThirtyNine = {
-  projectId: "<id>",
-  projectName: "<value>",
   enabled: true,
-  environment: "production",
 };
 ```
 
 ## Fields
 
-| Field                                          | Type                                           | Required                                       | Description                                    |
-| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| `projectId`                                    | *string*                                       | :heavy_check_mark:                             | N/A                                            |
-| `projectName`                                  | *string*                                       | :heavy_check_mark:                             | N/A                                            |
-| `enabled`                                      | *boolean*                                      | :heavy_check_mark:                             | N/A                                            |
-| `environment`                                  | [models.Environment](../models/environment.md) | :heavy_check_mark:                             | N/A                                            |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `enabled`          | *boolean*          | :heavy_check_mark: | N/A                |
+| `domain`           | *string*           | :heavy_minus_sign: | N/A                |

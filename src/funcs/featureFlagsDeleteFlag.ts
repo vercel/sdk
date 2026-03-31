@@ -33,6 +33,8 @@ import { Result } from "../types/fp.js";
  *
  * @remarks
  * Permanently delete a feature flag from the project. This action cannot be undone. Consider archiving the flag instead if you may need it in the future.
+ *
+ * If set, this operation will use {@link Security.bearerToken} from the global security.
  */
 export function featureFlagsDeleteFlag(
   client: VercelCore,
@@ -116,7 +118,7 @@ async function $do(
 
   const secConfig = await extractSecurity(client._options.bearerToken);
   const securityInput = secConfig == null ? {} : { bearerToken: secConfig };
-  const requestSecurity = resolveGlobalSecurity(securityInput);
+  const requestSecurity = resolveGlobalSecurity(securityInput, [0]);
 
   const context = {
     options: client._options,

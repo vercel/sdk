@@ -294,6 +294,8 @@ export const ListEventTypesName = {
   ProjectGitRequireVerifiedCommitsToggled:
     "project-git-require-verified-commits-toggled",
   ProjectGitLfsToggled: "project-git-lfs-toggled",
+  ProjectConsolidatedGitCommitStatusUpdated:
+    "project-consolidated-git-commit-status-updated",
   ProjectIgnoredBuildStepUpdated: "project-ignored-build-step-updated",
   ProjectAddAlias: "project-add-alias",
   ProjectAddRedirect: "project-add-redirect",

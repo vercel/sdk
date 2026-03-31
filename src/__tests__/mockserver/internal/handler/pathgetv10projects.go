@@ -52,30 +52,45 @@ func testGetProjectsGetProjects0(w http.ResponseWriter, req *http.Request) {
 		operations.GetProjectsResponseBody2{
 			Projects: []operations.GetProjectsProject1{
 				operations.GetProjectsProject1{
-					AccountID:            "<id>",
-					Alias:                []operations.ProjectAlias{},
-					DirectoryListing:     false,
+					AccountID: "<id>",
+					Alias: []operations.ProjectAlias{
+						operations.ProjectAlias{
+							Deployment: &operations.ProjectDeployment{
+								CreatedAt: 4236.55,
+								CreatedIn: "<value>",
+								Creator: &operations.ProjectDeploymentCreator{
+									Email:    "Sim56@yahoo.com",
+									UID:      "<id>",
+									Username: "Antonetta77",
+								},
+								DeploymentHostname: "<value>",
+								Name:               "<value>",
+								ID:                 "<id>",
+								Plan:               "<value>",
+								Private:            false,
+								ReadyState:         "<value>",
+								Type:               "<value>",
+								URL:                "https://leading-scaffold.com",
+								UserID:             "<id>",
+							},
+							Domain:      "productive-charm.org",
+							Environment: operations.ProjectEnvironmentPreview,
+							Target:      operations.ProjectAliasTargetStaging,
+						},
+					},
+					DirectoryListing:     true,
 					DeploymentExpiration: operations.ProjectDeploymentExpiration1{},
 					ID:                   "<id>",
 					Name:                 "<value>",
-					NodeVersion:          operations.ProjectNodeVersion1EighteenDotX,
+					NodeVersion:          operations.ProjectNodeVersion1TwelveDotX,
 					ResourceConfig: operations.ProjectResourceConfig1{
 						FunctionDefaultRegions: []string{
 							"<value 1>",
-							"<value 2>",
-							"<value 3>",
 						},
 					},
 					RollingRelease: optionalnullable.From(&operations.ProjectRollingRelease1{
-						Target: "production",
-						Stages: optionalnullable.From(types.Pointer([]operations.ProjectStage1{
-							operations.ProjectStage1{
-								TargetPercentage: 25,
-								RequireApproval:  types.Bool(false),
-								Duration:         types.Float64(600),
-								LinearShift:      types.Bool(false),
-							},
-						})),
+						Target:               "production",
+						Stages:               nil,
 						CanaryResponseHeader: types.Bool(false),
 					}),
 					ServerlessFunctionRegion: "<value>",

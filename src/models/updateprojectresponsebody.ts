@@ -11,10 +11,6 @@ import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 import {
-  UpdateProjectAiBots,
-  UpdateProjectAiBots$inboundSchema,
-  UpdateProjectAiBots$Outbound,
-  UpdateProjectAiBots$outboundSchema,
   UpdateProjectAnalytics,
   UpdateProjectAnalytics$inboundSchema,
   UpdateProjectAnalytics$Outbound,
@@ -109,6 +105,9 @@ import {
   UpdateProjectProjectsResourceConfig$inboundSchema,
   UpdateProjectProjectsResourceConfig$Outbound,
   UpdateProjectProjectsResourceConfig$outboundSchema,
+  UpdateProjectProjectsResponse200Action,
+  UpdateProjectProjectsResponse200Action$inboundSchema,
+  UpdateProjectProjectsResponse200Action$outboundSchema,
   UpdateProjectProjectsSsoProtection,
   UpdateProjectProjectsSsoProtection$inboundSchema,
   UpdateProjectProjectsSsoProtection$Outbound,
@@ -149,7 +148,12 @@ import {
   UpdateProjectWebAnalytics$inboundSchema,
   UpdateProjectWebAnalytics$Outbound,
   UpdateProjectWebAnalytics$outboundSchema,
-} from "./updateprojectaibots.js";
+} from "./updateprojectprojectsresponse200action.js";
+
+export type UpdateProjectAiBots = {
+  active: boolean;
+  action?: UpdateProjectProjectsResponse200Action | undefined;
+};
 
 export const UpdateProjectProjectsResponse200ApplicationJSONAction = {
   Log: "log",
@@ -690,6 +694,48 @@ export type UpdateProjectResponseBody = {
 };
 
 /** @internal */
+export const UpdateProjectAiBots$inboundSchema: z.ZodType<
+  UpdateProjectAiBots,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  active: types.boolean(),
+  action: types.optional(UpdateProjectProjectsResponse200Action$inboundSchema),
+});
+/** @internal */
+export type UpdateProjectAiBots$Outbound = {
+  active: boolean;
+  action?: string | undefined;
+};
+
+/** @internal */
+export const UpdateProjectAiBots$outboundSchema: z.ZodType<
+  UpdateProjectAiBots$Outbound,
+  z.ZodTypeDef,
+  UpdateProjectAiBots
+> = z.object({
+  active: z.boolean(),
+  action: UpdateProjectProjectsResponse200Action$outboundSchema.optional(),
+});
+
+export function updateProjectAiBotsToJSON(
+  updateProjectAiBots: UpdateProjectAiBots,
+): string {
+  return JSON.stringify(
+    UpdateProjectAiBots$outboundSchema.parse(updateProjectAiBots),
+  );
+}
+export function updateProjectAiBotsFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectAiBots, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectAiBots$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectAiBots' from JSON`,
+  );
+}
+
+/** @internal */
 export const UpdateProjectProjectsResponse200ApplicationJSONAction$inboundSchema:
   z.ZodNativeEnum<
     typeof UpdateProjectProjectsResponse200ApplicationJSONAction
@@ -753,7 +799,7 @@ export const UpdateProjectManagedRules$inboundSchema: z.ZodType<
 > = z.object({
   vercel_ruleset: UpdateProjectVercelRuleset$inboundSchema,
   bot_filter: UpdateProjectBotFilter$inboundSchema,
-  ai_bots: UpdateProjectAiBots$inboundSchema,
+  ai_bots: z.lazy(() => UpdateProjectAiBots$inboundSchema),
   owasp: z.lazy(() => UpdateProjectOwasp$inboundSchema),
 }).transform((v) => {
   return remap$(v, {
@@ -778,7 +824,7 @@ export const UpdateProjectManagedRules$outboundSchema: z.ZodType<
 > = z.object({
   vercelRuleset: UpdateProjectVercelRuleset$outboundSchema,
   botFilter: UpdateProjectBotFilter$outboundSchema,
-  aiBots: UpdateProjectAiBots$outboundSchema,
+  aiBots: z.lazy(() => UpdateProjectAiBots$outboundSchema),
   owasp: z.lazy(() => UpdateProjectOwasp$outboundSchema),
 }).transform((v) => {
   return remap$(v, {

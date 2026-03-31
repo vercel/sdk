@@ -34,6 +34,8 @@ import { Result } from "../types/fp.js";
  *
  * @remarks
  * Stops a running sandbox and releases its allocated resources. All running processes within the sandbox will be terminated. This action cannot be undone. A stopped sandbox cannot be restarted.
+ *
+ * If set, this operation will use {@link Security.bearerToken} from the global security.
  */
 export function sandboxesStopSandbox(
   client: VercelCore,
@@ -109,7 +111,7 @@ async function $do(
 
   const secConfig = await extractSecurity(client._options.bearerToken);
   const securityInput = secConfig == null ? {} : { bearerToken: secConfig };
-  const requestSecurity = resolveGlobalSecurity(securityInput);
+  const requestSecurity = resolveGlobalSecurity(securityInput, [0]);
 
   const context = {
     options: client._options,

@@ -13,7 +13,7 @@ import { pathToFunc } from "../lib/url.js";
 import {
   GetProjectsRequest,
   GetProjectsRequest$outboundSchema,
-} from "../models/getprojectsblockhistoryprojects4.js";
+} from "../models/getprojectsblockhistoryprojectsresponse200applicationjsonroute.js";
 import {
   GetProjectsResponseBody,
   GetProjectsResponseBody$inboundSchema,
@@ -36,6 +36,8 @@ import { Result } from "../types/fp.js";
  *
  * @remarks
  * Allows to retrieve the list of projects of the authenticated user or team. The list will be paginated and the provided query parameters allow filtering the returned projects.
+ *
+ * If set, this operation will use {@link Security.bearerToken} from the global security.
  */
 export function projectsGetProjects(
   client: VercelCore,
@@ -120,7 +122,7 @@ async function $do(
 
   const secConfig = await extractSecurity(client._options.bearerToken);
   const securityInput = secConfig == null ? {} : { bearerToken: secConfig };
-  const requestSecurity = resolveGlobalSecurity(securityInput);
+  const requestSecurity = resolveGlobalSecurity(securityInput, [0]);
 
   const context = {
     options: client._options,

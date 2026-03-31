@@ -10,6 +10,76 @@ import (
 	"mockserver/internal/sdk/utils"
 )
 
+// Payload43 - The payload of the event, if requested.
+type Payload43 struct {
+	ID  string   `json:"id"`
+	Cn  *string  `json:"cn,omitempty"`
+	Cns []string `json:"cns,omitempty"`
+}
+
+func (p Payload43) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload43) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"id"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *Payload43) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *Payload43) GetCn() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Cn
+}
+
+func (o *Payload43) GetCns() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Cns
+}
+
+// Payload42 - The payload of the event, if requested.
+type Payload42 struct {
+	Src string `json:"src"`
+	Dst string `json:"dst"`
+}
+
+func (p Payload42) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload42) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"src", "dst"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *Payload42) GetSrc() string {
+	if o == nil {
+		return ""
+	}
+	return o.Src
+}
+
+func (o *Payload42) GetDst() string {
+	if o == nil {
+		return ""
+	}
+	return o.Dst
+}
+
 type OldTeam2 struct {
 	Name string `json:"name"`
 }
@@ -4128,6 +4198,7 @@ const (
 	PayloadUnionTypePayload278        PayloadUnionType = "payload_278"
 	PayloadUnionTypePayload279        PayloadUnionType = "payload_279"
 	PayloadUnionTypePayload280        PayloadUnionType = "payload_280"
+	PayloadUnionTypePayload281        PayloadUnionType = "payload_281"
 )
 
 type PayloadUnion struct {
@@ -4415,6 +4486,7 @@ type PayloadUnion struct {
 	Payload278        *Payload278        `queryParam:"inline"`
 	Payload279        *Payload279        `queryParam:"inline"`
 	Payload280        *Payload280        `queryParam:"inline"`
+	Payload281        *Payload281        `queryParam:"inline"`
 
 	Type PayloadUnionType
 }
@@ -6975,12 +7047,21 @@ func CreatePayloadUnionPayload280(payload280 Payload280) PayloadUnion {
 	}
 }
 
+func CreatePayloadUnionPayload281(payload281 Payload281) PayloadUnion {
+	typ := PayloadUnionTypePayload281
+
+	return PayloadUnion{
+		Payload281: &payload281,
+		Type:       typ,
+	}
+}
+
 func (u *PayloadUnion) UnmarshalJSON(data []byte) error {
 
-	var payload169 Payload169 = Payload169{}
-	if err := utils.UnmarshalJSON(data, &payload169, "", true, nil); err == nil {
-		u.Payload169 = &payload169
-		u.Type = PayloadUnionTypePayload169
+	var payload170 Payload170 = Payload170{}
+	if err := utils.UnmarshalJSON(data, &payload170, "", true, nil); err == nil {
+		u.Payload170 = &payload170
+		u.Type = PayloadUnionTypePayload170
 		return nil
 	}
 
@@ -7005,17 +7086,17 @@ func (u *PayloadUnion) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var payload214 Payload214 = Payload214{}
-	if err := utils.UnmarshalJSON(data, &payload214, "", true, nil); err == nil {
-		u.Payload214 = &payload214
-		u.Type = PayloadUnionTypePayload214
+	var payload215 Payload215 = Payload215{}
+	if err := utils.UnmarshalJSON(data, &payload215, "", true, nil); err == nil {
+		u.Payload215 = &payload215
+		u.Type = PayloadUnionTypePayload215
 		return nil
 	}
 
-	var payload216 Payload216 = Payload216{}
-	if err := utils.UnmarshalJSON(data, &payload216, "", true, nil); err == nil {
-		u.Payload216 = &payload216
-		u.Type = PayloadUnionTypePayload216
+	var payload217 Payload217 = Payload217{}
+	if err := utils.UnmarshalJSON(data, &payload217, "", true, nil); err == nil {
+		u.Payload217 = &payload217
+		u.Type = PayloadUnionTypePayload217
 		return nil
 	}
 
@@ -7082,24 +7163,24 @@ func (u *PayloadUnion) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var payload171 Payload171 = Payload171{}
-	if err := utils.UnmarshalJSON(data, &payload171, "", true, nil); err == nil {
-		u.Payload171 = &payload171
-		u.Type = PayloadUnionTypePayload171
+	var payload172 Payload172 = Payload172{}
+	if err := utils.UnmarshalJSON(data, &payload172, "", true, nil); err == nil {
+		u.Payload172 = &payload172
+		u.Type = PayloadUnionTypePayload172
 		return nil
 	}
 
-	var payload181 Payload181 = Payload181{}
-	if err := utils.UnmarshalJSON(data, &payload181, "", true, nil); err == nil {
-		u.Payload181 = &payload181
-		u.Type = PayloadUnionTypePayload181
+	var payload182 Payload182 = Payload182{}
+	if err := utils.UnmarshalJSON(data, &payload182, "", true, nil); err == nil {
+		u.Payload182 = &payload182
+		u.Type = PayloadUnionTypePayload182
 		return nil
 	}
 
-	var payload280 Payload280 = Payload280{}
-	if err := utils.UnmarshalJSON(data, &payload280, "", true, nil); err == nil {
-		u.Payload280 = &payload280
-		u.Type = PayloadUnionTypePayload280
+	var payload281 Payload281 = Payload281{}
+	if err := utils.UnmarshalJSON(data, &payload281, "", true, nil); err == nil {
+		u.Payload281 = &payload281
+		u.Type = PayloadUnionTypePayload281
 		return nil
 	}
 
@@ -7215,38 +7296,31 @@ func (u *PayloadUnion) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var payload168 Payload168 = Payload168{}
-	if err := utils.UnmarshalJSON(data, &payload168, "", true, nil); err == nil {
-		u.Payload168 = &payload168
-		u.Type = PayloadUnionTypePayload168
+	var payload169 Payload169 = Payload169{}
+	if err := utils.UnmarshalJSON(data, &payload169, "", true, nil); err == nil {
+		u.Payload169 = &payload169
+		u.Type = PayloadUnionTypePayload169
 		return nil
 	}
 
-	var payload170 Payload170 = Payload170{}
-	if err := utils.UnmarshalJSON(data, &payload170, "", true, nil); err == nil {
-		u.Payload170 = &payload170
-		u.Type = PayloadUnionTypePayload170
+	var payload171 Payload171 = Payload171{}
+	if err := utils.UnmarshalJSON(data, &payload171, "", true, nil); err == nil {
+		u.Payload171 = &payload171
+		u.Type = PayloadUnionTypePayload171
 		return nil
 	}
 
-	var payload174 Payload174 = Payload174{}
-	if err := utils.UnmarshalJSON(data, &payload174, "", true, nil); err == nil {
-		u.Payload174 = &payload174
-		u.Type = PayloadUnionTypePayload174
+	var payload175 Payload175 = Payload175{}
+	if err := utils.UnmarshalJSON(data, &payload175, "", true, nil); err == nil {
+		u.Payload175 = &payload175
+		u.Type = PayloadUnionTypePayload175
 		return nil
 	}
 
-	var payload190 Payload190 = Payload190{}
-	if err := utils.UnmarshalJSON(data, &payload190, "", true, nil); err == nil {
-		u.Payload190 = &payload190
-		u.Type = PayloadUnionTypePayload190
-		return nil
-	}
-
-	var payload196 Payload196 = Payload196{}
-	if err := utils.UnmarshalJSON(data, &payload196, "", true, nil); err == nil {
-		u.Payload196 = &payload196
-		u.Type = PayloadUnionTypePayload196
+	var payload191 Payload191 = Payload191{}
+	if err := utils.UnmarshalJSON(data, &payload191, "", true, nil); err == nil {
+		u.Payload191 = &payload191
+		u.Type = PayloadUnionTypePayload191
 		return nil
 	}
 
@@ -7264,31 +7338,31 @@ func (u *PayloadUnion) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var payload200 Payload200 = Payload200{}
-	if err := utils.UnmarshalJSON(data, &payload200, "", true, nil); err == nil {
-		u.Payload200 = &payload200
-		u.Type = PayloadUnionTypePayload200
+	var payload199 Payload199 = Payload199{}
+	if err := utils.UnmarshalJSON(data, &payload199, "", true, nil); err == nil {
+		u.Payload199 = &payload199
+		u.Type = PayloadUnionTypePayload199
 		return nil
 	}
 
-	var payload212 Payload212 = Payload212{}
-	if err := utils.UnmarshalJSON(data, &payload212, "", true, nil); err == nil {
-		u.Payload212 = &payload212
-		u.Type = PayloadUnionTypePayload212
+	var payload201 Payload201 = Payload201{}
+	if err := utils.UnmarshalJSON(data, &payload201, "", true, nil); err == nil {
+		u.Payload201 = &payload201
+		u.Type = PayloadUnionTypePayload201
 		return nil
 	}
 
-	var payload215 Payload215 = Payload215{}
-	if err := utils.UnmarshalJSON(data, &payload215, "", true, nil); err == nil {
-		u.Payload215 = &payload215
-		u.Type = PayloadUnionTypePayload215
+	var payload213 Payload213 = Payload213{}
+	if err := utils.UnmarshalJSON(data, &payload213, "", true, nil); err == nil {
+		u.Payload213 = &payload213
+		u.Type = PayloadUnionTypePayload213
 		return nil
 	}
 
-	var payload224 Payload224 = Payload224{}
-	if err := utils.UnmarshalJSON(data, &payload224, "", true, nil); err == nil {
-		u.Payload224 = &payload224
-		u.Type = PayloadUnionTypePayload224
+	var payload216 Payload216 = Payload216{}
+	if err := utils.UnmarshalJSON(data, &payload216, "", true, nil); err == nil {
+		u.Payload216 = &payload216
+		u.Type = PayloadUnionTypePayload216
 		return nil
 	}
 
@@ -7299,24 +7373,31 @@ func (u *PayloadUnion) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var payload231 Payload231 = Payload231{}
-	if err := utils.UnmarshalJSON(data, &payload231, "", true, nil); err == nil {
-		u.Payload231 = &payload231
-		u.Type = PayloadUnionTypePayload231
+	var payload226 Payload226 = Payload226{}
+	if err := utils.UnmarshalJSON(data, &payload226, "", true, nil); err == nil {
+		u.Payload226 = &payload226
+		u.Type = PayloadUnionTypePayload226
 		return nil
 	}
 
-	var payload235 Payload235 = Payload235{}
-	if err := utils.UnmarshalJSON(data, &payload235, "", true, nil); err == nil {
-		u.Payload235 = &payload235
-		u.Type = PayloadUnionTypePayload235
+	var payload232 Payload232 = Payload232{}
+	if err := utils.UnmarshalJSON(data, &payload232, "", true, nil); err == nil {
+		u.Payload232 = &payload232
+		u.Type = PayloadUnionTypePayload232
 		return nil
 	}
 
-	var payload260 Payload260 = Payload260{}
-	if err := utils.UnmarshalJSON(data, &payload260, "", true, nil); err == nil {
-		u.Payload260 = &payload260
-		u.Type = PayloadUnionTypePayload260
+	var payload236 Payload236 = Payload236{}
+	if err := utils.UnmarshalJSON(data, &payload236, "", true, nil); err == nil {
+		u.Payload236 = &payload236
+		u.Type = PayloadUnionTypePayload236
+		return nil
+	}
+
+	var payload261 Payload261 = Payload261{}
+	if err := utils.UnmarshalJSON(data, &payload261, "", true, nil); err == nil {
+		u.Payload261 = &payload261
+		u.Type = PayloadUnionTypePayload261
 		return nil
 	}
 
@@ -7670,24 +7751,24 @@ func (u *PayloadUnion) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var payload172 Payload172 = Payload172{}
-	if err := utils.UnmarshalJSON(data, &payload172, "", true, nil); err == nil {
-		u.Payload172 = &payload172
-		u.Type = PayloadUnionTypePayload172
+	var payload168 Payload168 = Payload168{}
+	if err := utils.UnmarshalJSON(data, &payload168, "", true, nil); err == nil {
+		u.Payload168 = &payload168
+		u.Type = PayloadUnionTypePayload168
 		return nil
 	}
 
-	var payload179 Payload179 = Payload179{}
-	if err := utils.UnmarshalJSON(data, &payload179, "", true, nil); err == nil {
-		u.Payload179 = &payload179
-		u.Type = PayloadUnionTypePayload179
+	var payload173 Payload173 = Payload173{}
+	if err := utils.UnmarshalJSON(data, &payload173, "", true, nil); err == nil {
+		u.Payload173 = &payload173
+		u.Type = PayloadUnionTypePayload173
 		return nil
 	}
 
-	var payload182 Payload182 = Payload182{}
-	if err := utils.UnmarshalJSON(data, &payload182, "", true, nil); err == nil {
-		u.Payload182 = &payload182
-		u.Type = PayloadUnionTypePayload182
+	var payload180 Payload180 = Payload180{}
+	if err := utils.UnmarshalJSON(data, &payload180, "", true, nil); err == nil {
+		u.Payload180 = &payload180
+		u.Type = PayloadUnionTypePayload180
 		return nil
 	}
 
@@ -7698,10 +7779,10 @@ func (u *PayloadUnion) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var payload191 Payload191 = Payload191{}
-	if err := utils.UnmarshalJSON(data, &payload191, "", true, nil); err == nil {
-		u.Payload191 = &payload191
-		u.Type = PayloadUnionTypePayload191
+	var payload184 Payload184 = Payload184{}
+	if err := utils.UnmarshalJSON(data, &payload184, "", true, nil); err == nil {
+		u.Payload184 = &payload184
+		u.Type = PayloadUnionTypePayload184
 		return nil
 	}
 
@@ -7726,38 +7807,38 @@ func (u *PayloadUnion) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var payload204 Payload204 = Payload204{}
-	if err := utils.UnmarshalJSON(data, &payload204, "", true, nil); err == nil {
-		u.Payload204 = &payload204
-		u.Type = PayloadUnionTypePayload204
+	var payload195 Payload195 = Payload195{}
+	if err := utils.UnmarshalJSON(data, &payload195, "", true, nil); err == nil {
+		u.Payload195 = &payload195
+		u.Type = PayloadUnionTypePayload195
 		return nil
 	}
 
-	var payload217 Payload217 = Payload217{}
-	if err := utils.UnmarshalJSON(data, &payload217, "", true, nil); err == nil {
-		u.Payload217 = &payload217
-		u.Type = PayloadUnionTypePayload217
+	var payload205 Payload205 = Payload205{}
+	if err := utils.UnmarshalJSON(data, &payload205, "", true, nil); err == nil {
+		u.Payload205 = &payload205
+		u.Type = PayloadUnionTypePayload205
 		return nil
 	}
 
-	var payload233 Payload233 = Payload233{}
-	if err := utils.UnmarshalJSON(data, &payload233, "", true, nil); err == nil {
-		u.Payload233 = &payload233
-		u.Type = PayloadUnionTypePayload233
+	var payload218 Payload218 = Payload218{}
+	if err := utils.UnmarshalJSON(data, &payload218, "", true, nil); err == nil {
+		u.Payload218 = &payload218
+		u.Type = PayloadUnionTypePayload218
 		return nil
 	}
 
-	var payload251 Payload251 = Payload251{}
-	if err := utils.UnmarshalJSON(data, &payload251, "", true, nil); err == nil {
-		u.Payload251 = &payload251
-		u.Type = PayloadUnionTypePayload251
+	var payload234 Payload234 = Payload234{}
+	if err := utils.UnmarshalJSON(data, &payload234, "", true, nil); err == nil {
+		u.Payload234 = &payload234
+		u.Type = PayloadUnionTypePayload234
 		return nil
 	}
 
-	var payload272 Payload272 = Payload272{}
-	if err := utils.UnmarshalJSON(data, &payload272, "", true, nil); err == nil {
-		u.Payload272 = &payload272
-		u.Type = PayloadUnionTypePayload272
+	var payload252 Payload252 = Payload252{}
+	if err := utils.UnmarshalJSON(data, &payload252, "", true, nil); err == nil {
+		u.Payload252 = &payload252
+		u.Type = PayloadUnionTypePayload252
 		return nil
 	}
 
@@ -7775,10 +7856,17 @@ func (u *PayloadUnion) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var payload279 Payload279 = Payload279{}
-	if err := utils.UnmarshalJSON(data, &payload279, "", true, nil); err == nil {
-		u.Payload279 = &payload279
-		u.Type = PayloadUnionTypePayload279
+	var payload275 Payload275 = Payload275{}
+	if err := utils.UnmarshalJSON(data, &payload275, "", true, nil); err == nil {
+		u.Payload275 = &payload275
+		u.Type = PayloadUnionTypePayload275
+		return nil
+	}
+
+	var payload280 Payload280 = Payload280{}
+	if err := utils.UnmarshalJSON(data, &payload280, "", true, nil); err == nil {
+		u.Payload280 = &payload280
+		u.Type = PayloadUnionTypePayload280
 		return nil
 	}
 
@@ -8048,24 +8136,17 @@ func (u *PayloadUnion) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var payload173 Payload173 = Payload173{}
-	if err := utils.UnmarshalJSON(data, &payload173, "", true, nil); err == nil {
-		u.Payload173 = &payload173
-		u.Type = PayloadUnionTypePayload173
+	var payload174 Payload174 = Payload174{}
+	if err := utils.UnmarshalJSON(data, &payload174, "", true, nil); err == nil {
+		u.Payload174 = &payload174
+		u.Type = PayloadUnionTypePayload174
 		return nil
 	}
 
-	var payload175 Payload175 = Payload175{}
-	if err := utils.UnmarshalJSON(data, &payload175, "", true, nil); err == nil {
-		u.Payload175 = &payload175
-		u.Type = PayloadUnionTypePayload175
-		return nil
-	}
-
-	var payload177 Payload177 = Payload177{}
-	if err := utils.UnmarshalJSON(data, &payload177, "", true, nil); err == nil {
-		u.Payload177 = &payload177
-		u.Type = PayloadUnionTypePayload177
+	var payload176 Payload176 = Payload176{}
+	if err := utils.UnmarshalJSON(data, &payload176, "", true, nil); err == nil {
+		u.Payload176 = &payload176
+		u.Type = PayloadUnionTypePayload176
 		return nil
 	}
 
@@ -8076,17 +8157,17 @@ func (u *PayloadUnion) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var payload180 Payload180 = Payload180{}
-	if err := utils.UnmarshalJSON(data, &payload180, "", true, nil); err == nil {
-		u.Payload180 = &payload180
-		u.Type = PayloadUnionTypePayload180
+	var payload179 Payload179 = Payload179{}
+	if err := utils.UnmarshalJSON(data, &payload179, "", true, nil); err == nil {
+		u.Payload179 = &payload179
+		u.Type = PayloadUnionTypePayload179
 		return nil
 	}
 
-	var payload184 Payload184 = Payload184{}
-	if err := utils.UnmarshalJSON(data, &payload184, "", true, nil); err == nil {
-		u.Payload184 = &payload184
-		u.Type = PayloadUnionTypePayload184
+	var payload181 Payload181 = Payload181{}
+	if err := utils.UnmarshalJSON(data, &payload181, "", true, nil); err == nil {
+		u.Payload181 = &payload181
+		u.Type = PayloadUnionTypePayload181
 		return nil
 	}
 
@@ -8097,10 +8178,10 @@ func (u *PayloadUnion) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var payload187 Payload187 = Payload187{}
-	if err := utils.UnmarshalJSON(data, &payload187, "", true, nil); err == nil {
-		u.Payload187 = &payload187
-		u.Type = PayloadUnionTypePayload187
+	var payload186 Payload186 = Payload186{}
+	if err := utils.UnmarshalJSON(data, &payload186, "", true, nil); err == nil {
+		u.Payload186 = &payload186
+		u.Type = PayloadUnionTypePayload186
 		return nil
 	}
 
@@ -8118,38 +8199,38 @@ func (u *PayloadUnion) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var payload195 Payload195 = Payload195{}
-	if err := utils.UnmarshalJSON(data, &payload195, "", true, nil); err == nil {
-		u.Payload195 = &payload195
-		u.Type = PayloadUnionTypePayload195
+	var payload190 Payload190 = Payload190{}
+	if err := utils.UnmarshalJSON(data, &payload190, "", true, nil); err == nil {
+		u.Payload190 = &payload190
+		u.Type = PayloadUnionTypePayload190
 		return nil
 	}
 
-	var payload199 Payload199 = Payload199{}
-	if err := utils.UnmarshalJSON(data, &payload199, "", true, nil); err == nil {
-		u.Payload199 = &payload199
-		u.Type = PayloadUnionTypePayload199
+	var payload196 Payload196 = Payload196{}
+	if err := utils.UnmarshalJSON(data, &payload196, "", true, nil); err == nil {
+		u.Payload196 = &payload196
+		u.Type = PayloadUnionTypePayload196
 		return nil
 	}
 
-	var payload201 Payload201 = Payload201{}
-	if err := utils.UnmarshalJSON(data, &payload201, "", true, nil); err == nil {
-		u.Payload201 = &payload201
-		u.Type = PayloadUnionTypePayload201
+	var payload200 Payload200 = Payload200{}
+	if err := utils.UnmarshalJSON(data, &payload200, "", true, nil); err == nil {
+		u.Payload200 = &payload200
+		u.Type = PayloadUnionTypePayload200
 		return nil
 	}
 
-	var payload203 Payload203 = Payload203{}
-	if err := utils.UnmarshalJSON(data, &payload203, "", true, nil); err == nil {
-		u.Payload203 = &payload203
-		u.Type = PayloadUnionTypePayload203
+	var payload202 Payload202 = Payload202{}
+	if err := utils.UnmarshalJSON(data, &payload202, "", true, nil); err == nil {
+		u.Payload202 = &payload202
+		u.Type = PayloadUnionTypePayload202
 		return nil
 	}
 
-	var payload205 Payload205 = Payload205{}
-	if err := utils.UnmarshalJSON(data, &payload205, "", true, nil); err == nil {
-		u.Payload205 = &payload205
-		u.Type = PayloadUnionTypePayload205
+	var payload204 Payload204 = Payload204{}
+	if err := utils.UnmarshalJSON(data, &payload204, "", true, nil); err == nil {
+		u.Payload204 = &payload204
+		u.Type = PayloadUnionTypePayload204
 		return nil
 	}
 
@@ -8160,10 +8241,10 @@ func (u *PayloadUnion) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var payload208 Payload208 = Payload208{}
-	if err := utils.UnmarshalJSON(data, &payload208, "", true, nil); err == nil {
-		u.Payload208 = &payload208
-		u.Type = PayloadUnionTypePayload208
+	var payload207 Payload207 = Payload207{}
+	if err := utils.UnmarshalJSON(data, &payload207, "", true, nil); err == nil {
+		u.Payload207 = &payload207
+		u.Type = PayloadUnionTypePayload207
 		return nil
 	}
 
@@ -8181,38 +8262,38 @@ func (u *PayloadUnion) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var payload223 Payload223 = Payload223{}
-	if err := utils.UnmarshalJSON(data, &payload223, "", true, nil); err == nil {
-		u.Payload223 = &payload223
-		u.Type = PayloadUnionTypePayload223
+	var payload211 Payload211 = Payload211{}
+	if err := utils.UnmarshalJSON(data, &payload211, "", true, nil); err == nil {
+		u.Payload211 = &payload211
+		u.Type = PayloadUnionTypePayload211
 		return nil
 	}
 
-	var payload226 Payload226 = Payload226{}
-	if err := utils.UnmarshalJSON(data, &payload226, "", true, nil); err == nil {
-		u.Payload226 = &payload226
-		u.Type = PayloadUnionTypePayload226
+	var payload224 Payload224 = Payload224{}
+	if err := utils.UnmarshalJSON(data, &payload224, "", true, nil); err == nil {
+		u.Payload224 = &payload224
+		u.Type = PayloadUnionTypePayload224
 		return nil
 	}
 
-	var payload236 Payload236 = Payload236{}
-	if err := utils.UnmarshalJSON(data, &payload236, "", true, nil); err == nil {
-		u.Payload236 = &payload236
-		u.Type = PayloadUnionTypePayload236
+	var payload227 Payload227 = Payload227{}
+	if err := utils.UnmarshalJSON(data, &payload227, "", true, nil); err == nil {
+		u.Payload227 = &payload227
+		u.Type = PayloadUnionTypePayload227
 		return nil
 	}
 
-	var payload238 Payload238 = Payload238{}
-	if err := utils.UnmarshalJSON(data, &payload238, "", true, nil); err == nil {
-		u.Payload238 = &payload238
-		u.Type = PayloadUnionTypePayload238
+	var payload237 Payload237 = Payload237{}
+	if err := utils.UnmarshalJSON(data, &payload237, "", true, nil); err == nil {
+		u.Payload237 = &payload237
+		u.Type = PayloadUnionTypePayload237
 		return nil
 	}
 
-	var payload243 Payload243 = Payload243{}
-	if err := utils.UnmarshalJSON(data, &payload243, "", true, nil); err == nil {
-		u.Payload243 = &payload243
-		u.Type = PayloadUnionTypePayload243
+	var payload239 Payload239 = Payload239{}
+	if err := utils.UnmarshalJSON(data, &payload239, "", true, nil); err == nil {
+		u.Payload239 = &payload239
+		u.Type = PayloadUnionTypePayload239
 		return nil
 	}
 
@@ -8223,31 +8304,31 @@ func (u *PayloadUnion) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var payload249 Payload249 = Payload249{}
-	if err := utils.UnmarshalJSON(data, &payload249, "", true, nil); err == nil {
-		u.Payload249 = &payload249
-		u.Type = PayloadUnionTypePayload249
+	var payload245 Payload245 = Payload245{}
+	if err := utils.UnmarshalJSON(data, &payload245, "", true, nil); err == nil {
+		u.Payload245 = &payload245
+		u.Type = PayloadUnionTypePayload245
 		return nil
 	}
 
-	var payload257 Payload257 = Payload257{}
-	if err := utils.UnmarshalJSON(data, &payload257, "", true, nil); err == nil {
-		u.Payload257 = &payload257
-		u.Type = PayloadUnionTypePayload257
+	var payload250 Payload250 = Payload250{}
+	if err := utils.UnmarshalJSON(data, &payload250, "", true, nil); err == nil {
+		u.Payload250 = &payload250
+		u.Type = PayloadUnionTypePayload250
 		return nil
 	}
 
-	var payload259 Payload259 = Payload259{}
-	if err := utils.UnmarshalJSON(data, &payload259, "", true, nil); err == nil {
-		u.Payload259 = &payload259
-		u.Type = PayloadUnionTypePayload259
+	var payload258 Payload258 = Payload258{}
+	if err := utils.UnmarshalJSON(data, &payload258, "", true, nil); err == nil {
+		u.Payload258 = &payload258
+		u.Type = PayloadUnionTypePayload258
 		return nil
 	}
 
-	var payload263 Payload263 = Payload263{}
-	if err := utils.UnmarshalJSON(data, &payload263, "", true, nil); err == nil {
-		u.Payload263 = &payload263
-		u.Type = PayloadUnionTypePayload263
+	var payload260 Payload260 = Payload260{}
+	if err := utils.UnmarshalJSON(data, &payload260, "", true, nil); err == nil {
+		u.Payload260 = &payload260
+		u.Type = PayloadUnionTypePayload260
 		return nil
 	}
 
@@ -8258,17 +8339,17 @@ func (u *PayloadUnion) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var payload266 Payload266 = Payload266{}
-	if err := utils.UnmarshalJSON(data, &payload266, "", true, nil); err == nil {
-		u.Payload266 = &payload266
-		u.Type = PayloadUnionTypePayload266
+	var payload265 Payload265 = Payload265{}
+	if err := utils.UnmarshalJSON(data, &payload265, "", true, nil); err == nil {
+		u.Payload265 = &payload265
+		u.Type = PayloadUnionTypePayload265
 		return nil
 	}
 
-	var payload268 Payload268 = Payload268{}
-	if err := utils.UnmarshalJSON(data, &payload268, "", true, nil); err == nil {
-		u.Payload268 = &payload268
-		u.Type = PayloadUnionTypePayload268
+	var payload267 Payload267 = Payload267{}
+	if err := utils.UnmarshalJSON(data, &payload267, "", true, nil); err == nil {
+		u.Payload267 = &payload267
+		u.Type = PayloadUnionTypePayload267
 		return nil
 	}
 
@@ -8279,17 +8360,24 @@ func (u *PayloadUnion) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var payload276 Payload276 = Payload276{}
-	if err := utils.UnmarshalJSON(data, &payload276, "", true, nil); err == nil {
-		u.Payload276 = &payload276
-		u.Type = PayloadUnionTypePayload276
+	var payload270 Payload270 = Payload270{}
+	if err := utils.UnmarshalJSON(data, &payload270, "", true, nil); err == nil {
+		u.Payload270 = &payload270
+		u.Type = PayloadUnionTypePayload270
 		return nil
 	}
 
-	var payload278 Payload278 = Payload278{}
-	if err := utils.UnmarshalJSON(data, &payload278, "", true, nil); err == nil {
-		u.Payload278 = &payload278
-		u.Type = PayloadUnionTypePayload278
+	var payload277 Payload277 = Payload277{}
+	if err := utils.UnmarshalJSON(data, &payload277, "", true, nil); err == nil {
+		u.Payload277 = &payload277
+		u.Type = PayloadUnionTypePayload277
+		return nil
+	}
+
+	var payload279 Payload279 = Payload279{}
+	if err := utils.UnmarshalJSON(data, &payload279, "", true, nil); err == nil {
+		u.Payload279 = &payload279
+		u.Type = PayloadUnionTypePayload279
 		return nil
 	}
 
@@ -8538,45 +8626,38 @@ func (u *PayloadUnion) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var payload176 Payload176 = Payload176{}
-	if err := utils.UnmarshalJSON(data, &payload176, "", true, nil); err == nil {
-		u.Payload176 = &payload176
-		u.Type = PayloadUnionTypePayload176
+	var payload177 Payload177 = Payload177{}
+	if err := utils.UnmarshalJSON(data, &payload177, "", true, nil); err == nil {
+		u.Payload177 = &payload177
+		u.Type = PayloadUnionTypePayload177
 		return nil
 	}
 
-	var payload186 Payload186 = Payload186{}
-	if err := utils.UnmarshalJSON(data, &payload186, "", true, nil); err == nil {
-		u.Payload186 = &payload186
-		u.Type = PayloadUnionTypePayload186
+	var payload187 Payload187 = Payload187{}
+	if err := utils.UnmarshalJSON(data, &payload187, "", true, nil); err == nil {
+		u.Payload187 = &payload187
+		u.Type = PayloadUnionTypePayload187
 		return nil
 	}
 
-	var payload202 Payload202 = Payload202{}
-	if err := utils.UnmarshalJSON(data, &payload202, "", true, nil); err == nil {
-		u.Payload202 = &payload202
-		u.Type = PayloadUnionTypePayload202
+	var payload203 Payload203 = Payload203{}
+	if err := utils.UnmarshalJSON(data, &payload203, "", true, nil); err == nil {
+		u.Payload203 = &payload203
+		u.Type = PayloadUnionTypePayload203
 		return nil
 	}
 
-	var payload207 Payload207 = Payload207{}
-	if err := utils.UnmarshalJSON(data, &payload207, "", true, nil); err == nil {
-		u.Payload207 = &payload207
-		u.Type = PayloadUnionTypePayload207
+	var payload208 Payload208 = Payload208{}
+	if err := utils.UnmarshalJSON(data, &payload208, "", true, nil); err == nil {
+		u.Payload208 = &payload208
+		u.Type = PayloadUnionTypePayload208
 		return nil
 	}
 
-	var payload211 Payload211 = Payload211{}
-	if err := utils.UnmarshalJSON(data, &payload211, "", true, nil); err == nil {
-		u.Payload211 = &payload211
-		u.Type = PayloadUnionTypePayload211
-		return nil
-	}
-
-	var payload218 Payload218 = Payload218{}
-	if err := utils.UnmarshalJSON(data, &payload218, "", true, nil); err == nil {
-		u.Payload218 = &payload218
-		u.Type = PayloadUnionTypePayload218
+	var payload212 Payload212 = Payload212{}
+	if err := utils.UnmarshalJSON(data, &payload212, "", true, nil); err == nil {
+		u.Payload212 = &payload212
+		u.Type = PayloadUnionTypePayload212
 		return nil
 	}
 
@@ -8594,17 +8675,17 @@ func (u *PayloadUnion) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var payload222 Payload222 = Payload222{}
-	if err := utils.UnmarshalJSON(data, &payload222, "", true, nil); err == nil {
-		u.Payload222 = &payload222
-		u.Type = PayloadUnionTypePayload222
+	var payload221 Payload221 = Payload221{}
+	if err := utils.UnmarshalJSON(data, &payload221, "", true, nil); err == nil {
+		u.Payload221 = &payload221
+		u.Type = PayloadUnionTypePayload221
 		return nil
 	}
 
-	var payload227 Payload227 = Payload227{}
-	if err := utils.UnmarshalJSON(data, &payload227, "", true, nil); err == nil {
-		u.Payload227 = &payload227
-		u.Type = PayloadUnionTypePayload227
+	var payload223 Payload223 = Payload223{}
+	if err := utils.UnmarshalJSON(data, &payload223, "", true, nil); err == nil {
+		u.Payload223 = &payload223
+		u.Type = PayloadUnionTypePayload223
 		return nil
 	}
 
@@ -8629,17 +8710,17 @@ func (u *PayloadUnion) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var payload234 Payload234 = Payload234{}
-	if err := utils.UnmarshalJSON(data, &payload234, "", true, nil); err == nil {
-		u.Payload234 = &payload234
-		u.Type = PayloadUnionTypePayload234
+	var payload231 Payload231 = Payload231{}
+	if err := utils.UnmarshalJSON(data, &payload231, "", true, nil); err == nil {
+		u.Payload231 = &payload231
+		u.Type = PayloadUnionTypePayload231
 		return nil
 	}
 
-	var payload240 Payload240 = Payload240{}
-	if err := utils.UnmarshalJSON(data, &payload240, "", true, nil); err == nil {
-		u.Payload240 = &payload240
-		u.Type = PayloadUnionTypePayload240
+	var payload235 Payload235 = Payload235{}
+	if err := utils.UnmarshalJSON(data, &payload235, "", true, nil); err == nil {
+		u.Payload235 = &payload235
+		u.Type = PayloadUnionTypePayload235
 		return nil
 	}
 
@@ -8650,10 +8731,10 @@ func (u *PayloadUnion) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var payload245 Payload245 = Payload245{}
-	if err := utils.UnmarshalJSON(data, &payload245, "", true, nil); err == nil {
-		u.Payload245 = &payload245
-		u.Type = PayloadUnionTypePayload245
+	var payload242 Payload242 = Payload242{}
+	if err := utils.UnmarshalJSON(data, &payload242, "", true, nil); err == nil {
+		u.Payload242 = &payload242
+		u.Type = PayloadUnionTypePayload242
 		return nil
 	}
 
@@ -8678,52 +8759,52 @@ func (u *PayloadUnion) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var payload250 Payload250 = Payload250{}
-	if err := utils.UnmarshalJSON(data, &payload250, "", true, nil); err == nil {
-		u.Payload250 = &payload250
-		u.Type = PayloadUnionTypePayload250
+	var payload249 Payload249 = Payload249{}
+	if err := utils.UnmarshalJSON(data, &payload249, "", true, nil); err == nil {
+		u.Payload249 = &payload249
+		u.Type = PayloadUnionTypePayload249
 		return nil
 	}
 
-	var payload254 Payload254 = Payload254{}
-	if err := utils.UnmarshalJSON(data, &payload254, "", true, nil); err == nil {
-		u.Payload254 = &payload254
-		u.Type = PayloadUnionTypePayload254
+	var payload251 Payload251 = Payload251{}
+	if err := utils.UnmarshalJSON(data, &payload251, "", true, nil); err == nil {
+		u.Payload251 = &payload251
+		u.Type = PayloadUnionTypePayload251
 		return nil
 	}
 
-	var payload256 Payload256 = Payload256{}
-	if err := utils.UnmarshalJSON(data, &payload256, "", true, nil); err == nil {
-		u.Payload256 = &payload256
-		u.Type = PayloadUnionTypePayload256
+	var payload255 Payload255 = Payload255{}
+	if err := utils.UnmarshalJSON(data, &payload255, "", true, nil); err == nil {
+		u.Payload255 = &payload255
+		u.Type = PayloadUnionTypePayload255
 		return nil
 	}
 
-	var payload261 Payload261 = Payload261{}
-	if err := utils.UnmarshalJSON(data, &payload261, "", true, nil); err == nil {
-		u.Payload261 = &payload261
-		u.Type = PayloadUnionTypePayload261
+	var payload257 Payload257 = Payload257{}
+	if err := utils.UnmarshalJSON(data, &payload257, "", true, nil); err == nil {
+		u.Payload257 = &payload257
+		u.Type = PayloadUnionTypePayload257
 		return nil
 	}
 
-	var payload265 Payload265 = Payload265{}
-	if err := utils.UnmarshalJSON(data, &payload265, "", true, nil); err == nil {
-		u.Payload265 = &payload265
-		u.Type = PayloadUnionTypePayload265
+	var payload262 Payload262 = Payload262{}
+	if err := utils.UnmarshalJSON(data, &payload262, "", true, nil); err == nil {
+		u.Payload262 = &payload262
+		u.Type = PayloadUnionTypePayload262
 		return nil
 	}
 
-	var payload267 Payload267 = Payload267{}
-	if err := utils.UnmarshalJSON(data, &payload267, "", true, nil); err == nil {
-		u.Payload267 = &payload267
-		u.Type = PayloadUnionTypePayload267
+	var payload266 Payload266 = Payload266{}
+	if err := utils.UnmarshalJSON(data, &payload266, "", true, nil); err == nil {
+		u.Payload266 = &payload266
+		u.Type = PayloadUnionTypePayload266
 		return nil
 	}
 
-	var payload270 Payload270 = Payload270{}
-	if err := utils.UnmarshalJSON(data, &payload270, "", true, nil); err == nil {
-		u.Payload270 = &payload270
-		u.Type = PayloadUnionTypePayload270
+	var payload268 Payload268 = Payload268{}
+	if err := utils.UnmarshalJSON(data, &payload268, "", true, nil); err == nil {
+		u.Payload268 = &payload268
+		u.Type = PayloadUnionTypePayload268
 		return nil
 	}
 
@@ -8734,17 +8815,24 @@ func (u *PayloadUnion) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var payload275 Payload275 = Payload275{}
-	if err := utils.UnmarshalJSON(data, &payload275, "", true, nil); err == nil {
-		u.Payload275 = &payload275
-		u.Type = PayloadUnionTypePayload275
+	var payload272 Payload272 = Payload272{}
+	if err := utils.UnmarshalJSON(data, &payload272, "", true, nil); err == nil {
+		u.Payload272 = &payload272
+		u.Type = PayloadUnionTypePayload272
 		return nil
 	}
 
-	var payload277 Payload277 = Payload277{}
-	if err := utils.UnmarshalJSON(data, &payload277, "", true, nil); err == nil {
-		u.Payload277 = &payload277
-		u.Type = PayloadUnionTypePayload277
+	var payload276 Payload276 = Payload276{}
+	if err := utils.UnmarshalJSON(data, &payload276, "", true, nil); err == nil {
+		u.Payload276 = &payload276
+		u.Type = PayloadUnionTypePayload276
+		return nil
+	}
+
+	var payload278 Payload278 = Payload278{}
+	if err := utils.UnmarshalJSON(data, &payload278, "", true, nil); err == nil {
+		u.Payload278 = &payload278
+		u.Type = PayloadUnionTypePayload278
 		return nil
 	}
 
@@ -8888,52 +8976,45 @@ func (u *PayloadUnion) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var payload213 Payload213 = Payload213{}
-	if err := utils.UnmarshalJSON(data, &payload213, "", true, nil); err == nil {
-		u.Payload213 = &payload213
-		u.Type = PayloadUnionTypePayload213
+	var payload214 Payload214 = Payload214{}
+	if err := utils.UnmarshalJSON(data, &payload214, "", true, nil); err == nil {
+		u.Payload214 = &payload214
+		u.Type = PayloadUnionTypePayload214
 		return nil
 	}
 
-	var payload221 Payload221 = Payload221{}
-	if err := utils.UnmarshalJSON(data, &payload221, "", true, nil); err == nil {
-		u.Payload221 = &payload221
-		u.Type = PayloadUnionTypePayload221
+	var payload222 Payload222 = Payload222{}
+	if err := utils.UnmarshalJSON(data, &payload222, "", true, nil); err == nil {
+		u.Payload222 = &payload222
+		u.Type = PayloadUnionTypePayload222
 		return nil
 	}
 
-	var payload232 Payload232 = Payload232{}
-	if err := utils.UnmarshalJSON(data, &payload232, "", true, nil); err == nil {
-		u.Payload232 = &payload232
-		u.Type = PayloadUnionTypePayload232
+	var payload233 Payload233 = Payload233{}
+	if err := utils.UnmarshalJSON(data, &payload233, "", true, nil); err == nil {
+		u.Payload233 = &payload233
+		u.Type = PayloadUnionTypePayload233
 		return nil
 	}
 
-	var payload237 Payload237 = Payload237{}
-	if err := utils.UnmarshalJSON(data, &payload237, "", true, nil); err == nil {
-		u.Payload237 = &payload237
-		u.Type = PayloadUnionTypePayload237
+	var payload238 Payload238 = Payload238{}
+	if err := utils.UnmarshalJSON(data, &payload238, "", true, nil); err == nil {
+		u.Payload238 = &payload238
+		u.Type = PayloadUnionTypePayload238
 		return nil
 	}
 
-	var payload239 Payload239 = Payload239{}
-	if err := utils.UnmarshalJSON(data, &payload239, "", true, nil); err == nil {
-		u.Payload239 = &payload239
-		u.Type = PayloadUnionTypePayload239
+	var payload240 Payload240 = Payload240{}
+	if err := utils.UnmarshalJSON(data, &payload240, "", true, nil); err == nil {
+		u.Payload240 = &payload240
+		u.Type = PayloadUnionTypePayload240
 		return nil
 	}
 
-	var payload242 Payload242 = Payload242{}
-	if err := utils.UnmarshalJSON(data, &payload242, "", true, nil); err == nil {
-		u.Payload242 = &payload242
-		u.Type = PayloadUnionTypePayload242
-		return nil
-	}
-
-	var payload252 Payload252 = Payload252{}
-	if err := utils.UnmarshalJSON(data, &payload252, "", true, nil); err == nil {
-		u.Payload252 = &payload252
-		u.Type = PayloadUnionTypePayload252
+	var payload243 Payload243 = Payload243{}
+	if err := utils.UnmarshalJSON(data, &payload243, "", true, nil); err == nil {
+		u.Payload243 = &payload243
+		u.Type = PayloadUnionTypePayload243
 		return nil
 	}
 
@@ -8944,24 +9025,31 @@ func (u *PayloadUnion) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var payload255 Payload255 = Payload255{}
-	if err := utils.UnmarshalJSON(data, &payload255, "", true, nil); err == nil {
-		u.Payload255 = &payload255
-		u.Type = PayloadUnionTypePayload255
+	var payload254 Payload254 = Payload254{}
+	if err := utils.UnmarshalJSON(data, &payload254, "", true, nil); err == nil {
+		u.Payload254 = &payload254
+		u.Type = PayloadUnionTypePayload254
 		return nil
 	}
 
-	var payload258 Payload258 = Payload258{}
-	if err := utils.UnmarshalJSON(data, &payload258, "", true, nil); err == nil {
-		u.Payload258 = &payload258
-		u.Type = PayloadUnionTypePayload258
+	var payload256 Payload256 = Payload256{}
+	if err := utils.UnmarshalJSON(data, &payload256, "", true, nil); err == nil {
+		u.Payload256 = &payload256
+		u.Type = PayloadUnionTypePayload256
 		return nil
 	}
 
-	var payload262 Payload262 = Payload262{}
-	if err := utils.UnmarshalJSON(data, &payload262, "", true, nil); err == nil {
-		u.Payload262 = &payload262
-		u.Type = PayloadUnionTypePayload262
+	var payload259 Payload259 = Payload259{}
+	if err := utils.UnmarshalJSON(data, &payload259, "", true, nil); err == nil {
+		u.Payload259 = &payload259
+		u.Type = PayloadUnionTypePayload259
+		return nil
+	}
+
+	var payload263 Payload263 = Payload263{}
+	if err := utils.UnmarshalJSON(data, &payload263, "", true, nil); err == nil {
+		u.Payload263 = &payload263
+		u.Type = PayloadUnionTypePayload263
 		return nil
 	}
 
@@ -10103,6 +10191,10 @@ func (u PayloadUnion) MarshalJSON() ([]byte, error) {
 
 	if u.Payload280 != nil {
 		return utils.MarshalJSON(u.Payload280, "", true)
+	}
+
+	if u.Payload281 != nil {
+		return utils.MarshalJSON(u.Payload281, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type PayloadUnion: all fields are null")

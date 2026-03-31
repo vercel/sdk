@@ -39,6 +39,8 @@ export enum GetDeploymentEventsAcceptEnum {
  *
  * @remarks
  * Get the build logs of a deployment by deployment ID and build ID. It can work as an infinite stream of logs or as a JSON endpoint depending on the input parameters.
+ *
+ * If set, this operation will use {@link Security.bearerToken} from the global security.
  */
 export function deploymentsGetDeploymentEvents(
   client: VercelCore,
@@ -128,7 +130,7 @@ async function $do(
 
   const secConfig = await extractSecurity(client._options.bearerToken);
   const securityInput = secConfig == null ? {} : { bearerToken: secConfig };
-  const requestSecurity = resolveGlobalSecurity(securityInput);
+  const requestSecurity = resolveGlobalSecurity(securityInput, [0]);
 
   const context = {
     options: client._options,

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyCve55182MigrationAppliedFrom } from "@vercel/sdk/models/getprojectsresponsebodyprojectsaction.js";
+import { ResponseBodyCve55182MigrationAppliedFrom } from "@vercel/sdk/models/responsebodyissuermode.js";
 
 let value: ResponseBodyCve55182MigrationAppliedFrom =
   "prod_deployment_urls_and_all_previews";

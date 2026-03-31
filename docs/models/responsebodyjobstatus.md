@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyJobStatus } from "@vercel/sdk/models/getprojectsblockhistoryprojects4.js";
+import { ResponseBodyJobStatus } from "@vercel/sdk/models/getprojectsblockhistoryprojectsresponse200applicationjsonroute.js";
 
 let value: ResponseBodyJobStatus = "skipped";
 ```

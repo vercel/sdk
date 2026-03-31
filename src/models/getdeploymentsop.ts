@@ -564,6 +564,69 @@ export type GetDeploymentsSeatBlock = {
   gitProvider?: GetDeploymentsGitProvider | undefined;
 };
 
+/**
+ * Commit metadata from the git commit author
+ */
+export type GetDeploymentsCommitMeta = {
+  /**
+   * Email from git commit author
+   */
+  email?: string | undefined;
+  /**
+   * Name from git commit author
+   */
+  name?: string | undefined;
+  /**
+   * Whether the commit was signed/verified (GitHub only, others return undefined)
+   */
+  isVerified?: boolean | undefined;
+};
+
+export type GetDeploymentsId = string | number;
+
+/**
+ * Git provider user associated with the commit author email (only set if resolved)
+ */
+export type GetDeploymentsGitUser = {
+  id: string | number;
+  /**
+   * Git provider username/login
+   */
+  login: string;
+};
+
+/**
+ * Vercel user linked to the git provider account (only set if resolved)
+ */
+export type GetDeploymentsVercelUser = {
+  /**
+   * Vercel user ID
+   */
+  id: string;
+  /**
+   * Vercel username
+   */
+  username: string;
+};
+
+/**
+ * Commit attribution metadata
+ */
+export type GetDeploymentsAttribution = {
+  /**
+   * Commit metadata from the git commit author
+   */
+  commitMeta?: GetDeploymentsCommitMeta | undefined;
+  /**
+   * Git provider user associated with the commit author email (only set if resolved)
+   */
+  gitUser?: GetDeploymentsGitUser | undefined;
+  /**
+   * Vercel user linked to the git provider account (only set if resolved)
+   */
+  vercelUser?: GetDeploymentsVercelUser | undefined;
+};
+
 export type Deployments = {
   /**
    * The unique identifier of the deployment.
@@ -719,6 +782,10 @@ export type Deployments = {
    * NSNB Blocked metadata
    */
   seatBlock?: GetDeploymentsSeatBlock | undefined;
+  /**
+   * Commit attribution metadata
+   */
+  attribution?: GetDeploymentsAttribution | undefined;
 };
 
 export type GetDeploymentsResponseBody = {
@@ -1724,6 +1791,217 @@ export function getDeploymentsSeatBlockFromJSON(
 }
 
 /** @internal */
+export const GetDeploymentsCommitMeta$inboundSchema: z.ZodType<
+  GetDeploymentsCommitMeta,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  email: types.optional(types.string()),
+  name: types.optional(types.string()),
+  isVerified: types.optional(types.boolean()),
+});
+/** @internal */
+export type GetDeploymentsCommitMeta$Outbound = {
+  email?: string | undefined;
+  name?: string | undefined;
+  isVerified?: boolean | undefined;
+};
+
+/** @internal */
+export const GetDeploymentsCommitMeta$outboundSchema: z.ZodType<
+  GetDeploymentsCommitMeta$Outbound,
+  z.ZodTypeDef,
+  GetDeploymentsCommitMeta
+> = z.object({
+  email: z.string().optional(),
+  name: z.string().optional(),
+  isVerified: z.boolean().optional(),
+});
+
+export function getDeploymentsCommitMetaToJSON(
+  getDeploymentsCommitMeta: GetDeploymentsCommitMeta,
+): string {
+  return JSON.stringify(
+    GetDeploymentsCommitMeta$outboundSchema.parse(getDeploymentsCommitMeta),
+  );
+}
+export function getDeploymentsCommitMetaFromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentsCommitMeta, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDeploymentsCommitMeta$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentsCommitMeta' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentsId$inboundSchema: z.ZodType<
+  GetDeploymentsId,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([types.string(), types.number()]);
+/** @internal */
+export type GetDeploymentsId$Outbound = string | number;
+
+/** @internal */
+export const GetDeploymentsId$outboundSchema: z.ZodType<
+  GetDeploymentsId$Outbound,
+  z.ZodTypeDef,
+  GetDeploymentsId
+> = smartUnion([z.string(), z.number()]);
+
+export function getDeploymentsIdToJSON(
+  getDeploymentsId: GetDeploymentsId,
+): string {
+  return JSON.stringify(
+    GetDeploymentsId$outboundSchema.parse(getDeploymentsId),
+  );
+}
+export function getDeploymentsIdFromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentsId, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDeploymentsId$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentsId' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentsGitUser$inboundSchema: z.ZodType<
+  GetDeploymentsGitUser,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  id: smartUnion([types.string(), types.number()]),
+  login: types.string(),
+});
+/** @internal */
+export type GetDeploymentsGitUser$Outbound = {
+  id: string | number;
+  login: string;
+};
+
+/** @internal */
+export const GetDeploymentsGitUser$outboundSchema: z.ZodType<
+  GetDeploymentsGitUser$Outbound,
+  z.ZodTypeDef,
+  GetDeploymentsGitUser
+> = z.object({
+  id: smartUnion([z.string(), z.number()]),
+  login: z.string(),
+});
+
+export function getDeploymentsGitUserToJSON(
+  getDeploymentsGitUser: GetDeploymentsGitUser,
+): string {
+  return JSON.stringify(
+    GetDeploymentsGitUser$outboundSchema.parse(getDeploymentsGitUser),
+  );
+}
+export function getDeploymentsGitUserFromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentsGitUser, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDeploymentsGitUser$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentsGitUser' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentsVercelUser$inboundSchema: z.ZodType<
+  GetDeploymentsVercelUser,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  id: types.string(),
+  username: types.string(),
+});
+/** @internal */
+export type GetDeploymentsVercelUser$Outbound = {
+  id: string;
+  username: string;
+};
+
+/** @internal */
+export const GetDeploymentsVercelUser$outboundSchema: z.ZodType<
+  GetDeploymentsVercelUser$Outbound,
+  z.ZodTypeDef,
+  GetDeploymentsVercelUser
+> = z.object({
+  id: z.string(),
+  username: z.string(),
+});
+
+export function getDeploymentsVercelUserToJSON(
+  getDeploymentsVercelUser: GetDeploymentsVercelUser,
+): string {
+  return JSON.stringify(
+    GetDeploymentsVercelUser$outboundSchema.parse(getDeploymentsVercelUser),
+  );
+}
+export function getDeploymentsVercelUserFromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentsVercelUser, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDeploymentsVercelUser$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentsVercelUser' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentsAttribution$inboundSchema: z.ZodType<
+  GetDeploymentsAttribution,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  commitMeta: types.optional(
+    z.lazy(() => GetDeploymentsCommitMeta$inboundSchema),
+  ),
+  gitUser: types.optional(z.lazy(() => GetDeploymentsGitUser$inboundSchema)),
+  vercelUser: types.optional(
+    z.lazy(() => GetDeploymentsVercelUser$inboundSchema),
+  ),
+});
+/** @internal */
+export type GetDeploymentsAttribution$Outbound = {
+  commitMeta?: GetDeploymentsCommitMeta$Outbound | undefined;
+  gitUser?: GetDeploymentsGitUser$Outbound | undefined;
+  vercelUser?: GetDeploymentsVercelUser$Outbound | undefined;
+};
+
+/** @internal */
+export const GetDeploymentsAttribution$outboundSchema: z.ZodType<
+  GetDeploymentsAttribution$Outbound,
+  z.ZodTypeDef,
+  GetDeploymentsAttribution
+> = z.object({
+  commitMeta: z.lazy(() => GetDeploymentsCommitMeta$outboundSchema).optional(),
+  gitUser: z.lazy(() => GetDeploymentsGitUser$outboundSchema).optional(),
+  vercelUser: z.lazy(() => GetDeploymentsVercelUser$outboundSchema).optional(),
+});
+
+export function getDeploymentsAttributionToJSON(
+  getDeploymentsAttribution: GetDeploymentsAttribution,
+): string {
+  return JSON.stringify(
+    GetDeploymentsAttribution$outboundSchema.parse(getDeploymentsAttribution),
+  );
+}
+export function getDeploymentsAttributionFromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentsAttribution, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDeploymentsAttribution$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentsAttribution' from JSON`,
+  );
+}
+
+/** @internal */
 export const Deployments$inboundSchema: z.ZodType<
   Deployments,
   z.ZodTypeDef,
@@ -1779,6 +2057,9 @@ export const Deployments$inboundSchema: z.ZodType<
   seatBlock: types.optional(
     z.lazy(() => GetDeploymentsSeatBlock$inboundSchema),
   ),
+  attribution: types.optional(
+    z.lazy(() => GetDeploymentsAttribution$inboundSchema),
+  ),
 });
 /** @internal */
 export type Deployments$Outbound = {
@@ -1822,6 +2103,7 @@ export type Deployments$Outbound = {
   platform?: GetDeploymentsPlatform$Outbound | undefined;
   customEnvironment?: GetDeploymentsCustomEnvironment$Outbound | undefined;
   seatBlock?: GetDeploymentsSeatBlock$Outbound | undefined;
+  attribution?: GetDeploymentsAttribution$Outbound | undefined;
 };
 
 /** @internal */
@@ -1874,6 +2156,8 @@ export const Deployments$outboundSchema: z.ZodType<
     GetDeploymentsCustomEnvironment$outboundSchema
   ).optional(),
   seatBlock: z.lazy(() => GetDeploymentsSeatBlock$outboundSchema).optional(),
+  attribution: z.lazy(() => GetDeploymentsAttribution$outboundSchema)
+    .optional(),
 });
 
 export function deploymentsToJSON(deployments: Deployments): string {

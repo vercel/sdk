@@ -1505,6 +1505,174 @@ func (o *GetDeploymentsSeatBlock) GetGitProvider() *GetDeploymentsGitProvider {
 	return o.GitProvider
 }
 
+// GetDeploymentsCommitMeta - Commit metadata from the git commit author
+type GetDeploymentsCommitMeta struct {
+	// Email from git commit author
+	Email *string `json:"email,omitempty"`
+	// Name from git commit author
+	Name *string `json:"name,omitempty"`
+	// Whether the commit was signed/verified (GitHub only, others return undefined)
+	IsVerified *bool `json:"isVerified,omitempty"`
+}
+
+func (o *GetDeploymentsCommitMeta) GetEmail() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Email
+}
+
+func (o *GetDeploymentsCommitMeta) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+func (o *GetDeploymentsCommitMeta) GetIsVerified() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IsVerified
+}
+
+type GetDeploymentsIDType string
+
+const (
+	GetDeploymentsIDTypeStr    GetDeploymentsIDType = "str"
+	GetDeploymentsIDTypeNumber GetDeploymentsIDType = "number"
+)
+
+type GetDeploymentsID struct {
+	Str    *string  `queryParam:"inline"`
+	Number *float64 `queryParam:"inline"`
+
+	Type GetDeploymentsIDType
+}
+
+func CreateGetDeploymentsIDStr(str string) GetDeploymentsID {
+	typ := GetDeploymentsIDTypeStr
+
+	return GetDeploymentsID{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func CreateGetDeploymentsIDNumber(number float64) GetDeploymentsID {
+	typ := GetDeploymentsIDTypeNumber
+
+	return GetDeploymentsID{
+		Number: &number,
+		Type:   typ,
+	}
+}
+
+func (u *GetDeploymentsID) UnmarshalJSON(data []byte) error {
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
+		u.Str = &str
+		u.Type = GetDeploymentsIDTypeStr
+		return nil
+	}
+
+	var number float64 = float64(0)
+	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
+		u.Number = &number
+		u.Type = GetDeploymentsIDTypeNumber
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetDeploymentsID", string(data))
+}
+
+func (u GetDeploymentsID) MarshalJSON() ([]byte, error) {
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	if u.Number != nil {
+		return utils.MarshalJSON(u.Number, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type GetDeploymentsID: all fields are null")
+}
+
+// GetDeploymentsGitUser - Git provider user associated with the commit author email (only set if resolved)
+type GetDeploymentsGitUser struct {
+	ID GetDeploymentsID `json:"id"`
+	// Git provider username/login
+	Login string `json:"login"`
+}
+
+func (o *GetDeploymentsGitUser) GetID() GetDeploymentsID {
+	if o == nil {
+		return GetDeploymentsID{}
+	}
+	return o.ID
+}
+
+func (o *GetDeploymentsGitUser) GetLogin() string {
+	if o == nil {
+		return ""
+	}
+	return o.Login
+}
+
+// GetDeploymentsVercelUser - Vercel user linked to the git provider account (only set if resolved)
+type GetDeploymentsVercelUser struct {
+	// Vercel user ID
+	ID string `json:"id"`
+	// Vercel username
+	Username string `json:"username"`
+}
+
+func (o *GetDeploymentsVercelUser) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *GetDeploymentsVercelUser) GetUsername() string {
+	if o == nil {
+		return ""
+	}
+	return o.Username
+}
+
+// GetDeploymentsAttribution - Commit attribution metadata
+type GetDeploymentsAttribution struct {
+	// Commit metadata from the git commit author
+	CommitMeta *GetDeploymentsCommitMeta `json:"commitMeta,omitempty"`
+	// Git provider user associated with the commit author email (only set if resolved)
+	GitUser *GetDeploymentsGitUser `json:"gitUser,omitempty"`
+	// Vercel user linked to the git provider account (only set if resolved)
+	VercelUser *GetDeploymentsVercelUser `json:"vercelUser,omitempty"`
+}
+
+func (o *GetDeploymentsAttribution) GetCommitMeta() *GetDeploymentsCommitMeta {
+	if o == nil {
+		return nil
+	}
+	return o.CommitMeta
+}
+
+func (o *GetDeploymentsAttribution) GetGitUser() *GetDeploymentsGitUser {
+	if o == nil {
+		return nil
+	}
+	return o.GitUser
+}
+
+func (o *GetDeploymentsAttribution) GetVercelUser() *GetDeploymentsVercelUser {
+	if o == nil {
+		return nil
+	}
+	return o.VercelUser
+}
+
 type GetDeploymentsDeployment struct {
 	// The unique identifier of the deployment.
 	UID string `json:"uid"`
@@ -1584,6 +1752,8 @@ type GetDeploymentsDeployment struct {
 	CustomEnvironment *GetDeploymentsCustomEnvironment `json:"customEnvironment,omitempty"`
 	// NSNB Blocked metadata
 	SeatBlock *GetDeploymentsSeatBlock `json:"seatBlock,omitempty"`
+	// Commit attribution metadata
+	Attribution *GetDeploymentsAttribution `json:"attribution,omitempty"`
 }
 
 func (o *GetDeploymentsDeployment) GetUID() string {
@@ -1864,6 +2034,13 @@ func (o *GetDeploymentsDeployment) GetSeatBlock() *GetDeploymentsSeatBlock {
 		return nil
 	}
 	return o.SeatBlock
+}
+
+func (o *GetDeploymentsDeployment) GetAttribution() *GetDeploymentsAttribution {
+	if o == nil {
+		return nil
+	}
+	return o.Attribution
 }
 
 type GetDeploymentsResponseBody struct {

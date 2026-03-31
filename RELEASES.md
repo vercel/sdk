@@ -1149,3 +1149,13 @@ Based on:
 - [typescript v1.19.22] .
 ### Releases
 - [NPM v1.19.22] https://www.npmjs.com/package/@vercel/sdk/v/1.19.22 - .
+
+## 2026-03-31 00:14:43
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.760.0 (2.873.1) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v1.19.23] .
+### Releases
+- [NPM v1.19.23] https://www.npmjs.com/package/@vercel/sdk/v/1.19.23 - .

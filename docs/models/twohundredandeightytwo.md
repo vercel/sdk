@@ -5,11 +5,10 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndEightyTwo } from "@vercel/sdk/models/usereventpayload221previous.js";
+import { TwoHundredAndEightyTwo } from "@vercel/sdk/models/usereventpayload222previous.js";
 
 let value: TwoHundredAndEightyTwo = {
   chatId: "<id>",
-  messageId: "<id>",
 };
 ```
 
@@ -19,4 +18,3 @@ let value: TwoHundredAndEightyTwo = {
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `chatId`           | *string*           | :heavy_check_mark: | N/A                |
 | `chatTitle`        | *string*           | :heavy_minus_sign: | N/A                |
-| `messageId`        | *string*           | :heavy_check_mark: | N/A                |

@@ -34,6 +34,8 @@ import { Result } from "../types/fp.js";
  *
  * @remarks
  * Move one project's domain to another project. Also allows the move of all redirects pointed to that domain in the same project.
+ *
+ * If set, this operation will use {@link Security.bearerToken} from the global security.
  */
 export function projectsMoveProjectDomain(
   client: VercelCore,
@@ -116,7 +118,7 @@ async function $do(
 
   const secConfig = await extractSecurity(client._options.bearerToken);
   const securityInput = secConfig == null ? {} : { bearerToken: secConfig };
-  const requestSecurity = resolveGlobalSecurity(securityInput);
+  const requestSecurity = resolveGlobalSecurity(securityInput, [0]);
 
   const context = {
     options: client._options,

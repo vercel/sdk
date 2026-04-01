@@ -6953,6 +6953,7 @@ type CreateProjectPermissions struct {
 	OnDemandConcurrency                      []components.ACLAction `json:"onDemandConcurrency,omitempty"`
 	OptionsAllowlist                         []components.ACLAction `json:"optionsAllowlist,omitempty"`
 	PasswordProtection                       []components.ACLAction `json:"passwordProtection,omitempty"`
+	PrivateLinkEndpoint                      []components.ACLAction `json:"privateLinkEndpoint,omitempty"`
 	ProductionAliasProtectionBypass          []components.ACLAction `json:"productionAliasProtectionBypass,omitempty"`
 	Project                                  []components.ACLAction `json:"project,omitempty"`
 	ProjectAccessGroup                       []components.ACLAction `json:"projectAccessGroup,omitempty"`
@@ -8320,6 +8321,13 @@ func (o *CreateProjectPermissions) GetPasswordProtection() []components.ACLActio
 		return nil
 	}
 	return o.PasswordProtection
+}
+
+func (o *CreateProjectPermissions) GetPrivateLinkEndpoint() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.PrivateLinkEndpoint
 }
 
 func (o *CreateProjectPermissions) GetProductionAliasProtectionBypass() []components.ACLAction {

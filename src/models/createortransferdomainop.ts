@@ -82,19 +82,6 @@ export type CreateOrTransferDomainCreator = {
 };
 
 /**
- * Whether or not the domain is registered with Name.com. If set to `true`, the domain is registered with Name.com.
- */
-export const CreateOrTransferDomainRegistrar = {
-  New: "new",
-} as const;
-/**
- * Whether or not the domain is registered with Name.com. If set to `true`, the domain is registered with Name.com.
- */
-export type CreateOrTransferDomainRegistrar = ClosedEnum<
-  typeof CreateOrTransferDomainRegistrar
->;
-
-/**
  * The type of service the domain is handled by. `external` if the DNS is externally handled, `zeit.world` if handled with Vercel, or `na` if the service is not available.
  */
 export const CreateOrTransferDomainServiceType = {
@@ -130,10 +117,6 @@ export type CreateOrTransferDomainDomain = {
    * An object containing information of the domain creator, including the user's id, username, and email.
    */
   creator: CreateOrTransferDomainCreator;
-  /**
-   * Whether or not the domain is registered with Name.com. If set to `true`, the domain is registered with Name.com.
-   */
-  registrar?: CreateOrTransferDomainRegistrar | undefined;
   /**
    * The domain name.
    */
@@ -440,15 +423,6 @@ export function createOrTransferDomainCreatorFromJSON(
 }
 
 /** @internal */
-export const CreateOrTransferDomainRegistrar$inboundSchema: z.ZodNativeEnum<
-  typeof CreateOrTransferDomainRegistrar
-> = z.nativeEnum(CreateOrTransferDomainRegistrar);
-/** @internal */
-export const CreateOrTransferDomainRegistrar$outboundSchema: z.ZodNativeEnum<
-  typeof CreateOrTransferDomainRegistrar
-> = CreateOrTransferDomainRegistrar$inboundSchema;
-
-/** @internal */
 export const CreateOrTransferDomainServiceType$inboundSchema: z.ZodNativeEnum<
   typeof CreateOrTransferDomainServiceType
 > = z.nativeEnum(CreateOrTransferDomainServiceType);
@@ -468,7 +442,6 @@ export const CreateOrTransferDomainDomain$inboundSchema: z.ZodType<
   intendedNameservers: z.array(types.string()),
   customNameservers: types.optional(z.array(types.string())),
   creator: z.lazy(() => CreateOrTransferDomainCreator$inboundSchema),
-  registrar: types.optional(CreateOrTransferDomainRegistrar$inboundSchema),
   name: types.string(),
   teamId: types.nullable(types.string()),
   boughtAt: types.nullable(types.number()),
@@ -488,7 +461,6 @@ export type CreateOrTransferDomainDomain$Outbound = {
   intendedNameservers: Array<string>;
   customNameservers?: Array<string> | undefined;
   creator: CreateOrTransferDomainCreator$Outbound;
-  registrar?: string | undefined;
   name: string;
   teamId: string | null;
   boughtAt: number | null;
@@ -513,7 +485,6 @@ export const CreateOrTransferDomainDomain$outboundSchema: z.ZodType<
   intendedNameservers: z.array(z.string()),
   customNameservers: z.array(z.string()).optional(),
   creator: z.lazy(() => CreateOrTransferDomainCreator$outboundSchema),
-  registrar: CreateOrTransferDomainRegistrar$outboundSchema.optional(),
   name: z.string(),
   teamId: z.nullable(z.string()),
   boughtAt: z.nullable(z.number()),

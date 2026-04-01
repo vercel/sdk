@@ -15,7 +15,8 @@ let value: CancelDeploymentVercelUser = {
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `id`               | *string*           | :heavy_check_mark: | Vercel user ID     |
-| `username`         | *string*           | :heavy_check_mark: | Vercel username    |
+| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `id`                                                                         | *string*                                                                     | :heavy_check_mark:                                                           | Vercel user ID                                                               |
+| `username`                                                                   | *string*                                                                     | :heavy_check_mark:                                                           | Vercel username                                                              |
+| `teamRoles`                                                                  | [models.CancelDeploymentTeamRoles](../models/canceldeploymentteamroles.md)[] | :heavy_minus_sign:                                                           | Team roles at time of deployment                                             |

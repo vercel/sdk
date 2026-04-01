@@ -1,0 +1,28 @@
+# GetMicrofrontendsInGroupBlock
+
+## Example Usage
+
+```typescript
+import { GetMicrofrontendsInGroupBlock } from "@vercel/sdk/models/getmicrofrontendsingroupresponsebody.js";
+
+let value: GetMicrofrontendsInGroupBlock = {
+  action: "blocked",
+  reason: "<value>",
+  statusCode: 1295.32,
+  createdAt: 3201.54,
+};
+```
+
+## Fields
+
+| Field                                                                                                            | Type                                                                                                             | Required                                                                                                         | Description                                                                                                      |
+| ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `action`                                                                                                         | [models.GetMicrofrontendsInGroupMicrofrontendsAction](../models/getmicrofrontendsingroupmicrofrontendsaction.md) | :heavy_check_mark:                                                                                               | N/A                                                                                                              |
+| `reason`                                                                                                         | *string*                                                                                                         | :heavy_check_mark:                                                                                               | N/A                                                                                                              |
+| `statusCode`                                                                                                     | *number*                                                                                                         | :heavy_check_mark:                                                                                               | N/A                                                                                                              |
+| `createdAt`                                                                                                      | *number*                                                                                                         | :heavy_check_mark:                                                                                               | N/A                                                                                                              |
+| `caseId`                                                                                                         | *string*                                                                                                         | :heavy_minus_sign:                                                                                               | N/A                                                                                                              |
+| `actor`                                                                                                          | *string*                                                                                                         | :heavy_minus_sign:                                                                                               | N/A                                                                                                              |
+| `comment`                                                                                                        | *string*                                                                                                         | :heavy_minus_sign:                                                                                               | N/A                                                                                                              |
+| `ineligibleForAppeal`                                                                                            | *boolean*                                                                                                        | :heavy_minus_sign:                                                                                               | N/A                                                                                                              |
+| `isCascading`                                                                                                    | *boolean*                                                                                                        | :heavy_minus_sign:                                                                                               | N/A                                                                                                              |

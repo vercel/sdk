@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { DeploymentType } from "@vercel/sdk/models/onehundredandsixty.js";
+import { DeploymentType } from "@vercel/sdk/models/usereventpayload160next.js";
 
 let value: DeploymentType = "all_except_custom_domains";
 ```

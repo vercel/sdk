@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPayload113Configuration } from "@vercel/sdk/models/payloadactivedashboardviews.js";
+import { UserEventPayload113Configuration } from "@vercel/sdk/models/payloadrecentsviewpreference.js";
 
 let value: UserEventPayload113Configuration = "SKIP_NAMESPACE_QUEUE";
 ```

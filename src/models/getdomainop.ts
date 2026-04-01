@@ -36,17 +36,6 @@ export type GetDomainCreator = {
 };
 
 /**
- * Whether or not the domain is registered with Name.com. If set to `true`, the domain is registered with Name.com.
- */
-export const Registrar = {
-  New: "new",
-} as const;
-/**
- * Whether or not the domain is registered with Name.com. If set to `true`, the domain is registered with Name.com.
- */
-export type Registrar = ClosedEnum<typeof Registrar>;
-
-/**
  * The type of service the domain is handled by. `external` if the DNS is externally handled, `zeit.world` if handled with Vercel, or `na` if the service is not available.
  */
 export const ServiceType = {
@@ -81,10 +70,6 @@ export type GetDomainDomain = {
    * An object containing information of the domain creator, including the user's id, username, and email.
    */
   creator: GetDomainCreator;
-  /**
-   * Whether or not the domain is registered with Name.com. If set to `true`, the domain is registered with Name.com.
-   */
-  registrar?: Registrar | undefined;
   /**
    * The domain name.
    */
@@ -229,13 +214,6 @@ export function getDomainCreatorFromJSON(
 }
 
 /** @internal */
-export const Registrar$inboundSchema: z.ZodNativeEnum<typeof Registrar> = z
-  .nativeEnum(Registrar);
-/** @internal */
-export const Registrar$outboundSchema: z.ZodNativeEnum<typeof Registrar> =
-  Registrar$inboundSchema;
-
-/** @internal */
 export const ServiceType$inboundSchema: z.ZodNativeEnum<typeof ServiceType> = z
   .nativeEnum(ServiceType);
 /** @internal */
@@ -254,7 +232,6 @@ export const GetDomainDomain$inboundSchema: z.ZodType<
   intendedNameservers: z.array(types.string()),
   customNameservers: types.optional(z.array(types.string())),
   creator: z.lazy(() => GetDomainCreator$inboundSchema),
-  registrar: types.optional(Registrar$inboundSchema),
   name: types.string(),
   teamId: types.nullable(types.string()),
   boughtAt: types.nullable(types.number()),
@@ -275,7 +252,6 @@ export type GetDomainDomain$Outbound = {
   intendedNameservers: Array<string>;
   customNameservers?: Array<string> | undefined;
   creator: GetDomainCreator$Outbound;
-  registrar?: string | undefined;
   name: string;
   teamId: string | null;
   boughtAt: number | null;
@@ -301,7 +277,6 @@ export const GetDomainDomain$outboundSchema: z.ZodType<
   intendedNameservers: z.array(z.string()),
   customNameservers: z.array(z.string()).optional(),
   creator: z.lazy(() => GetDomainCreator$outboundSchema),
-  registrar: Registrar$outboundSchema.optional(),
   name: z.string(),
   teamId: z.nullable(z.string()),
   boughtAt: z.nullable(z.number()),

@@ -354,13 +354,13 @@ export type GitRepo = GitRepo1 | GitRepo2 | GitRepo3 | GitRepo4;
  */
 export type Flags2 = {};
 
-export type Options = {
+export type CreateDeploymentFlagsOptions = {
   value: FlagJSONValue | null;
   label?: string | undefined;
 };
 
 export type CreateDeploymentFlagsDefinitions = {
-  options?: Array<Options> | undefined;
+  options?: Array<CreateDeploymentFlagsOptions> | undefined;
   url?: string | undefined;
   description?: string | undefined;
 };
@@ -629,6 +629,21 @@ export type CommitMeta = {
 export type CreateDeploymentId = string | number;
 
 /**
+ * User type
+ */
+export const CreateDeploymentDeploymentsResponseType = {
+  User: "user",
+  Bot: "bot",
+  AiAgent: "ai-agent",
+} as const;
+/**
+ * User type
+ */
+export type CreateDeploymentDeploymentsResponseType = ClosedEnum<
+  typeof CreateDeploymentDeploymentsResponseType
+>;
+
+/**
  * Git provider user associated with the commit author email (only set if resolved)
  */
 export type GitUser = {
@@ -637,7 +652,35 @@ export type GitUser = {
    * Git provider username/login
    */
   login: string;
+  /**
+   * Is the git user a bot
+   */
+  isBot?: boolean | undefined;
+  /**
+   * User type
+   */
+  type?: CreateDeploymentDeploymentsResponseType | undefined;
 };
+
+/**
+ * Team roles at time of deployment
+ */
+export const CreateDeploymentTeamRoles = {
+  Owner: "OWNER",
+  Member: "MEMBER",
+  Developer: "DEVELOPER",
+  Security: "SECURITY",
+  Billing: "BILLING",
+  Viewer: "VIEWER",
+  ViewerForPlus: "VIEWER_FOR_PLUS",
+  Contributor: "CONTRIBUTOR",
+} as const;
+/**
+ * Team roles at time of deployment
+ */
+export type CreateDeploymentTeamRoles = ClosedEnum<
+  typeof CreateDeploymentTeamRoles
+>;
 
 /**
  * Vercel user linked to the git provider account (only set if resolved)
@@ -651,6 +694,10 @@ export type VercelUser = {
    * Vercel username
    */
   username: string;
+  /**
+   * Team roles at time of deployment
+   */
+  teamRoles?: Array<CreateDeploymentTeamRoles> | undefined;
 };
 
 /**
@@ -1823,37 +1870,46 @@ export function flags2FromJSON(
 }
 
 /** @internal */
-export const Options$inboundSchema: z.ZodType<Options, z.ZodTypeDef, unknown> =
-  z.object({
-    value: types.nullable(FlagJSONValue$inboundSchema),
-    label: types.optional(types.string()),
-  });
+export const CreateDeploymentFlagsOptions$inboundSchema: z.ZodType<
+  CreateDeploymentFlagsOptions,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  value: types.nullable(FlagJSONValue$inboundSchema),
+  label: types.optional(types.string()),
+});
 /** @internal */
-export type Options$Outbound = {
+export type CreateDeploymentFlagsOptions$Outbound = {
   value: FlagJSONValue$Outbound | null;
   label?: string | undefined;
 };
 
 /** @internal */
-export const Options$outboundSchema: z.ZodType<
-  Options$Outbound,
+export const CreateDeploymentFlagsOptions$outboundSchema: z.ZodType<
+  CreateDeploymentFlagsOptions$Outbound,
   z.ZodTypeDef,
-  Options
+  CreateDeploymentFlagsOptions
 > = z.object({
   value: z.nullable(FlagJSONValue$outboundSchema),
   label: z.string().optional(),
 });
 
-export function optionsToJSON(options: Options): string {
-  return JSON.stringify(Options$outboundSchema.parse(options));
+export function createDeploymentFlagsOptionsToJSON(
+  createDeploymentFlagsOptions: CreateDeploymentFlagsOptions,
+): string {
+  return JSON.stringify(
+    CreateDeploymentFlagsOptions$outboundSchema.parse(
+      createDeploymentFlagsOptions,
+    ),
+  );
 }
-export function optionsFromJSON(
+export function createDeploymentFlagsOptionsFromJSON(
   jsonString: string,
-): SafeParseResult<Options, SDKValidationError> {
+): SafeParseResult<CreateDeploymentFlagsOptions, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Options$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Options' from JSON`,
+    (x) => CreateDeploymentFlagsOptions$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateDeploymentFlagsOptions' from JSON`,
   );
 }
 
@@ -1863,13 +1919,15 @@ export const CreateDeploymentFlagsDefinitions$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  options: types.optional(z.array(z.lazy(() => Options$inboundSchema))),
+  options: types.optional(
+    z.array(z.lazy(() => CreateDeploymentFlagsOptions$inboundSchema)),
+  ),
   url: types.optional(types.string()),
   description: types.optional(types.string()),
 });
 /** @internal */
 export type CreateDeploymentFlagsDefinitions$Outbound = {
-  options?: Array<Options$Outbound> | undefined;
+  options?: Array<CreateDeploymentFlagsOptions$Outbound> | undefined;
   url?: string | undefined;
   description?: string | undefined;
 };
@@ -1880,7 +1938,8 @@ export const CreateDeploymentFlagsDefinitions$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateDeploymentFlagsDefinitions
 > = z.object({
-  options: z.array(z.lazy(() => Options$outboundSchema)).optional(),
+  options: z.array(z.lazy(() => CreateDeploymentFlagsOptions$outboundSchema))
+    .optional(),
   url: z.string().optional(),
   description: z.string().optional(),
 });
@@ -2631,15 +2690,28 @@ export function createDeploymentIdFromJSON(
 }
 
 /** @internal */
+export const CreateDeploymentDeploymentsResponseType$inboundSchema:
+  z.ZodNativeEnum<typeof CreateDeploymentDeploymentsResponseType> = z
+    .nativeEnum(CreateDeploymentDeploymentsResponseType);
+/** @internal */
+export const CreateDeploymentDeploymentsResponseType$outboundSchema:
+  z.ZodNativeEnum<typeof CreateDeploymentDeploymentsResponseType> =
+    CreateDeploymentDeploymentsResponseType$inboundSchema;
+
+/** @internal */
 export const GitUser$inboundSchema: z.ZodType<GitUser, z.ZodTypeDef, unknown> =
   z.object({
     id: smartUnion([types.string(), types.number()]),
     login: types.string(),
+    isBot: types.optional(types.boolean()),
+    type: types.optional(CreateDeploymentDeploymentsResponseType$inboundSchema),
   });
 /** @internal */
 export type GitUser$Outbound = {
   id: string | number;
   login: string;
+  isBot?: boolean | undefined;
+  type?: string | undefined;
 };
 
 /** @internal */
@@ -2650,6 +2722,8 @@ export const GitUser$outboundSchema: z.ZodType<
 > = z.object({
   id: smartUnion([z.string(), z.number()]),
   login: z.string(),
+  isBot: z.boolean().optional(),
+  type: CreateDeploymentDeploymentsResponseType$outboundSchema.optional(),
 });
 
 export function gitUserToJSON(gitUser: GitUser): string {
@@ -2666,6 +2740,15 @@ export function gitUserFromJSON(
 }
 
 /** @internal */
+export const CreateDeploymentTeamRoles$inboundSchema: z.ZodNativeEnum<
+  typeof CreateDeploymentTeamRoles
+> = z.nativeEnum(CreateDeploymentTeamRoles);
+/** @internal */
+export const CreateDeploymentTeamRoles$outboundSchema: z.ZodNativeEnum<
+  typeof CreateDeploymentTeamRoles
+> = CreateDeploymentTeamRoles$inboundSchema;
+
+/** @internal */
 export const VercelUser$inboundSchema: z.ZodType<
   VercelUser,
   z.ZodTypeDef,
@@ -2673,11 +2756,13 @@ export const VercelUser$inboundSchema: z.ZodType<
 > = z.object({
   id: types.string(),
   username: types.string(),
+  teamRoles: types.optional(z.array(CreateDeploymentTeamRoles$inboundSchema)),
 });
 /** @internal */
 export type VercelUser$Outbound = {
   id: string;
   username: string;
+  teamRoles?: Array<string> | undefined;
 };
 
 /** @internal */
@@ -2688,6 +2773,7 @@ export const VercelUser$outboundSchema: z.ZodType<
 > = z.object({
   id: z.string(),
   username: z.string(),
+  teamRoles: z.array(CreateDeploymentTeamRoles$outboundSchema).optional(),
 });
 
 export function vercelUserToJSON(vercelUser: VercelUser): string {

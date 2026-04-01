@@ -443,6 +443,7 @@ const (
 	NameWebhookDeleted                                  Name = "webhook-deleted"
 	NameWebhookUpdated                                  Name = "webhook-updated"
 	NameV0ChatCreated                                   Name = "v0-chat-created"
+	NameV0ChatAiUsage                                   Name = "v0-chat-ai-usage"
 	NameV0ChatMessageSent                               Name = "v0-chat-message-sent"
 	NameWorkflowDeploymentKeyAccessed                   Name = "workflow-deployment-key-accessed"
 )
@@ -1275,6 +1276,8 @@ func (e *Name) UnmarshalJSON(data []byte) error {
 	case "webhook-updated":
 		fallthrough
 	case "v0-chat-created":
+		fallthrough
+	case "v0-chat-ai-usage":
 		fallthrough
 	case "v0-chat-message-sent":
 		fallthrough

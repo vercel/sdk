@@ -27,6 +27,7 @@ import { Integrations } from "./integrations.js";
 import { LogDrains } from "./logdrains.js";
 import { Logs } from "./logs.js";
 import { Marketplace } from "./marketplace.js";
+import { Microfrontends } from "./microfrontends.js";
 import { ProjectMembers } from "./projectmembers.js";
 import { ProjectRoutes } from "./projectroutes.js";
 import { Projects } from "./projects.js";
@@ -148,6 +149,11 @@ export class Vercel extends ClientSDK {
   private _logs?: Logs;
   get logs(): Logs {
     return (this._logs ??= new Logs(this._options));
+  }
+
+  private _microfrontends?: Microfrontends;
+  get microfrontends(): Microfrontends {
+    return (this._microfrontends ??= new Microfrontends(this._options));
   }
 
   private _apiObservability?: ApiObservability;

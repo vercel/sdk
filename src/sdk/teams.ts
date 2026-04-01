@@ -3,6 +3,7 @@
  */
 
 import { teamsCreateTeam } from "../funcs/teamsCreateTeam.js";
+import { teamsDeleteMicrofrontendsGroup } from "../funcs/teamsDeleteMicrofrontendsGroup.js";
 import { teamsDeleteTeam } from "../funcs/teamsDeleteTeam.js";
 import { teamsDeleteTeamInviteCode } from "../funcs/teamsDeleteTeamInviteCode.js";
 import { teamsGetTeam } from "../funcs/teamsGetTeam.js";
@@ -15,12 +16,17 @@ import { teamsPatchTeam } from "../funcs/teamsPatchTeam.js";
 import { teamsPostTeamDsyncRoles } from "../funcs/teamsPostTeamDsyncRoles.js";
 import { teamsRemoveTeamMember } from "../funcs/teamsRemoveTeamMember.js";
 import { teamsRequestAccessToTeam } from "../funcs/teamsRequestAccessToTeam.js";
+import { teamsUpdateMicrofrontendsGroup } from "../funcs/teamsUpdateMicrofrontendsGroup.js";
 import { teamsUpdateTeamMember } from "../funcs/teamsUpdateTeamMember.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import {
   CreateTeamRequestBody,
   CreateTeamResponseBody,
 } from "../models/createteamop.js";
+import {
+  DeleteMicrofrontendsGroupRequest,
+  DeleteMicrofrontendsGroupResponseBody,
+} from "../models/deletemicrofrontendsgroupop.js";
 import {
   DeleteTeamInviteCodeRequest,
   DeleteTeamInviteCodeResponseBody,
@@ -56,6 +62,10 @@ import {
   RequestAccessToTeamResponseBody,
 } from "../models/requestaccesstoteamop.js";
 import { Team } from "../models/team.js";
+import {
+  UpdateMicrofrontendsGroupRequest,
+  UpdateMicrofrontendsGroupResponseBody,
+} from "../models/updatemicrofrontendsgroupop.js";
 import {
   UpdateTeamMemberRequest,
   UpdateTeamMemberResponseBody,
@@ -295,6 +305,40 @@ export class Teams extends ClientSDK {
     options?: RequestOptions,
   ): Promise<DeleteTeamInviteCodeResponseBody> {
     return unwrapAsync(teamsDeleteTeamInviteCode(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Update a microfrontends group
+   *
+   * @remarks
+   * Updates the name (and slug) of a microfrontends group.
+   */
+  async updateMicrofrontendsGroup(
+    request: UpdateMicrofrontendsGroupRequest,
+    options?: RequestOptions,
+  ): Promise<UpdateMicrofrontendsGroupResponseBody> {
+    return unwrapAsync(teamsUpdateMicrofrontendsGroup(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Delete a microfrontends group
+   *
+   * @remarks
+   * Deletes a microfrontends group from the team associated with the group ID.
+   */
+  async deleteMicrofrontendsGroup(
+    request: DeleteMicrofrontendsGroupRequest,
+    options?: RequestOptions,
+  ): Promise<DeleteMicrofrontendsGroupResponseBody> {
+    return unwrapAsync(teamsDeleteMicrofrontendsGroup(
       this,
       request,
       options,

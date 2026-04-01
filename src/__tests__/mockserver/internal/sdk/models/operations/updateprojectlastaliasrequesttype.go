@@ -1194,30 +1194,30 @@ func (u CurrentValueRequest) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type CurrentValueRequest: all fields are null")
 }
 
-type ValueDismissedToastRequest struct {
+type UpdateProjectValueRequest struct {
 	PreviousValue PreviousValueRequest `json:"previousValue"`
 	CurrentValue  CurrentValueRequest  `json:"currentValue"`
 }
 
-func (v ValueDismissedToastRequest) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(v, "", false)
+func (u UpdateProjectValueRequest) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
 }
 
-func (v *ValueDismissedToastRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &v, "", false, []string{"previousValue", "currentValue"}); err != nil {
+func (u *UpdateProjectValueRequest) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"previousValue", "currentValue"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *ValueDismissedToastRequest) GetPreviousValue() PreviousValueRequest {
+func (o *UpdateProjectValueRequest) GetPreviousValue() PreviousValueRequest {
 	if o == nil {
 		return PreviousValueRequest{}
 	}
 	return o.PreviousValue
 }
 
-func (o *ValueDismissedToastRequest) GetCurrentValue() CurrentValueRequest {
+func (o *UpdateProjectValueRequest) GetCurrentValue() CurrentValueRequest {
 	if o == nil {
 		return CurrentValueRequest{}
 	}
@@ -7548,6 +7548,7 @@ type UpdateProjectPermissions struct {
 	OnDemandConcurrency                      []components.ACLAction `json:"onDemandConcurrency,omitempty"`
 	OptionsAllowlist                         []components.ACLAction `json:"optionsAllowlist,omitempty"`
 	PasswordProtection                       []components.ACLAction `json:"passwordProtection,omitempty"`
+	PrivateLinkEndpoint                      []components.ACLAction `json:"privateLinkEndpoint,omitempty"`
 	ProductionAliasProtectionBypass          []components.ACLAction `json:"productionAliasProtectionBypass,omitempty"`
 	Project                                  []components.ACLAction `json:"project,omitempty"`
 	ProjectAccessGroup                       []components.ACLAction `json:"projectAccessGroup,omitempty"`
@@ -8915,6 +8916,13 @@ func (o *UpdateProjectPermissions) GetPasswordProtection() []components.ACLActio
 		return nil
 	}
 	return o.PasswordProtection
+}
+
+func (o *UpdateProjectPermissions) GetPrivateLinkEndpoint() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.PrivateLinkEndpoint
 }
 
 func (o *UpdateProjectPermissions) GetProductionAliasProtectionBypass() []components.ACLAction {

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsTrustedIps2 } from "@vercel/sdk/models/getprojectsblockhistoryprojectsresponse200applicationjsonroute.js";
+import { GetProjectsTrustedIps2 } from "@vercel/sdk/models/getprojectsblockhistoryprojectsresponse200applicationjsonresponsebodyroute.js";
 
 let value: GetProjectsTrustedIps2 = {
   deploymentType: "prod_deployment_urls_and_all_previews",
@@ -12,6 +12,6 @@ let value: GetProjectsTrustedIps2 = {
 
 ## Fields
 
-| Field                                                                                          | Type                                                                                           | Required                                                                                       | Description                                                                                    |
-| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| `deploymentType`                                                                               | [models.GetProjectsTrustedIpsDeploymentType](../models/getprojectstrustedipsdeploymenttype.md) | :heavy_check_mark:                                                                             | N/A                                                                                            |
+| Field                                                                                                          | Type                                                                                                           | Required                                                                                                       | Description                                                                                                    |
+| -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| `deploymentType`                                                                                               | [models.GetProjectsTrustedIpsProjectsDeploymentType](../models/getprojectstrustedipsprojectsdeploymenttype.md) | :heavy_check_mark:                                                                                             | N/A                                                                                                            |

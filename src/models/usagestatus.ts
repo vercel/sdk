@@ -1635,6 +1635,7 @@ export type CreateProjectPermissions = {
   onDemandConcurrency?: Array<ACLAction> | undefined;
   optionsAllowlist?: Array<ACLAction> | undefined;
   passwordProtection?: Array<ACLAction> | undefined;
+  privateLinkEndpoint?: Array<ACLAction> | undefined;
   productionAliasProtectionBypass?: Array<ACLAction> | undefined;
   project?: Array<ACLAction> | undefined;
   projectAccessGroup?: Array<ACLAction> | undefined;
@@ -6833,6 +6834,7 @@ export const CreateProjectPermissions$inboundSchema: z.ZodType<
   onDemandConcurrency: types.optional(z.array(ACLAction$inboundSchema)),
   optionsAllowlist: types.optional(z.array(ACLAction$inboundSchema)),
   passwordProtection: types.optional(z.array(ACLAction$inboundSchema)),
+  privateLinkEndpoint: types.optional(z.array(ACLAction$inboundSchema)),
   productionAliasProtectionBypass: types.optional(
     z.array(ACLAction$inboundSchema),
   ),
@@ -7083,6 +7085,7 @@ export type CreateProjectPermissions$Outbound = {
   onDemandConcurrency?: Array<string> | undefined;
   optionsAllowlist?: Array<string> | undefined;
   passwordProtection?: Array<string> | undefined;
+  privateLinkEndpoint?: Array<string> | undefined;
   productionAliasProtectionBypass?: Array<string> | undefined;
   project?: Array<string> | undefined;
   projectAccessGroup?: Array<string> | undefined;
@@ -7330,6 +7333,7 @@ export const CreateProjectPermissions$outboundSchema: z.ZodType<
   onDemandConcurrency: z.array(ACLAction$outboundSchema).optional(),
   optionsAllowlist: z.array(ACLAction$outboundSchema).optional(),
   passwordProtection: z.array(ACLAction$outboundSchema).optional(),
+  privateLinkEndpoint: z.array(ACLAction$outboundSchema).optional(),
   productionAliasProtectionBypass: z.array(ACLAction$outboundSchema).optional(),
   project: z.array(ACLAction$outboundSchema).optional(),
   projectAccessGroup: z.array(ACLAction$outboundSchema).optional(),

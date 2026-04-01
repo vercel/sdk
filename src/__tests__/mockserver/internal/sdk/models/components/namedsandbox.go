@@ -11,8 +11,9 @@ import (
 type NamedSandboxStatus string
 
 const (
-	NamedSandboxStatusRunning NamedSandboxStatus = "running"
-	NamedSandboxStatusStopped NamedSandboxStatus = "stopped"
+	NamedSandboxStatusStopping NamedSandboxStatus = "stopping"
+	NamedSandboxStatusRunning  NamedSandboxStatus = "running"
+	NamedSandboxStatusStopped  NamedSandboxStatus = "stopped"
 )
 
 func (e NamedSandboxStatus) ToPointer() *NamedSandboxStatus {
@@ -24,6 +25,8 @@ func (e *NamedSandboxStatus) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
+	case "stopping":
+		fallthrough
 	case "running":
 		fallthrough
 	case "stopped":

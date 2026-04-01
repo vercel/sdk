@@ -8715,11 +8715,45 @@ func (u CancelDeploymentID) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type CancelDeploymentID: all fields are null")
 }
 
+// CancelDeploymentGitUserType - User type
+type CancelDeploymentGitUserType string
+
+const (
+	CancelDeploymentGitUserTypeUser    CancelDeploymentGitUserType = "user"
+	CancelDeploymentGitUserTypeBot     CancelDeploymentGitUserType = "bot"
+	CancelDeploymentGitUserTypeAiAgent CancelDeploymentGitUserType = "ai-agent"
+)
+
+func (e CancelDeploymentGitUserType) ToPointer() *CancelDeploymentGitUserType {
+	return &e
+}
+func (e *CancelDeploymentGitUserType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "user":
+		fallthrough
+	case "bot":
+		fallthrough
+	case "ai-agent":
+		*e = CancelDeploymentGitUserType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CancelDeploymentGitUserType: %v", v)
+	}
+}
+
 // CancelDeploymentGitUser - Git provider user associated with the commit author email (only set if resolved)
 type CancelDeploymentGitUser struct {
 	ID CancelDeploymentID `json:"id"`
 	// Git provider username/login
 	Login string `json:"login"`
+	// Is the git user a bot
+	IsBot *bool `json:"isBot,omitempty"`
+	// User type
+	Type *CancelDeploymentGitUserType `json:"type,omitempty"`
 }
 
 func (o *CancelDeploymentGitUser) GetID() CancelDeploymentID {
@@ -8736,12 +8770,73 @@ func (o *CancelDeploymentGitUser) GetLogin() string {
 	return o.Login
 }
 
+func (o *CancelDeploymentGitUser) GetIsBot() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IsBot
+}
+
+func (o *CancelDeploymentGitUser) GetType() *CancelDeploymentGitUserType {
+	if o == nil {
+		return nil
+	}
+	return o.Type
+}
+
+// CancelDeploymentTeamRole - Team roles at time of deployment
+type CancelDeploymentTeamRole string
+
+const (
+	CancelDeploymentTeamRoleOwner         CancelDeploymentTeamRole = "OWNER"
+	CancelDeploymentTeamRoleMember        CancelDeploymentTeamRole = "MEMBER"
+	CancelDeploymentTeamRoleDeveloper     CancelDeploymentTeamRole = "DEVELOPER"
+	CancelDeploymentTeamRoleSecurity      CancelDeploymentTeamRole = "SECURITY"
+	CancelDeploymentTeamRoleBilling       CancelDeploymentTeamRole = "BILLING"
+	CancelDeploymentTeamRoleViewer        CancelDeploymentTeamRole = "VIEWER"
+	CancelDeploymentTeamRoleViewerForPlus CancelDeploymentTeamRole = "VIEWER_FOR_PLUS"
+	CancelDeploymentTeamRoleContributor   CancelDeploymentTeamRole = "CONTRIBUTOR"
+)
+
+func (e CancelDeploymentTeamRole) ToPointer() *CancelDeploymentTeamRole {
+	return &e
+}
+func (e *CancelDeploymentTeamRole) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "OWNER":
+		fallthrough
+	case "MEMBER":
+		fallthrough
+	case "DEVELOPER":
+		fallthrough
+	case "SECURITY":
+		fallthrough
+	case "BILLING":
+		fallthrough
+	case "VIEWER":
+		fallthrough
+	case "VIEWER_FOR_PLUS":
+		fallthrough
+	case "CONTRIBUTOR":
+		*e = CancelDeploymentTeamRole(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CancelDeploymentTeamRole: %v", v)
+	}
+}
+
 // CancelDeploymentVercelUser - Vercel user linked to the git provider account (only set if resolved)
 type CancelDeploymentVercelUser struct {
 	// Vercel user ID
 	ID string `json:"id"`
 	// Vercel username
 	Username string `json:"username"`
+	// Team roles at time of deployment
+	TeamRoles []CancelDeploymentTeamRole `json:"teamRoles,omitempty"`
 }
 
 func (o *CancelDeploymentVercelUser) GetID() string {
@@ -8756,6 +8851,13 @@ func (o *CancelDeploymentVercelUser) GetUsername() string {
 		return ""
 	}
 	return o.Username
+}
+
+func (o *CancelDeploymentVercelUser) GetTeamRoles() []CancelDeploymentTeamRole {
+	if o == nil {
+		return nil
+	}
+	return o.TeamRoles
 }
 
 // CancelDeploymentAttribution - Attribution metadata for the deployment, linking commit author to git and Vercel users. Only populated when the `enable-deployment-attribution` flag is enabled.

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { BlobTotalAvgSizeInBytes } from "@vercel/sdk/models/usereventpayload96type.js";
+import { BlobTotalAvgSizeInBytes } from "@vercel/sdk/models/edgeconfig.js";
 
 let value: BlobTotalAvgSizeInBytes = {
   currentThreshold: 5520.92,

@@ -451,3 +451,26 @@ it.skip("Projects Delete Project Client Cert", async () => {
     "incomplete test found please make sure to address the following errors: [`workflow step deleteProjectClientCert.test referencing operation deleteProjectClientCert not found in document`]",
   );
 });
+
+test("Projects Update Microfrontends", async () => {
+  const testHttpClient = createTestHTTPClient("updateMicrofrontends");
+
+  const vercel = new Vercel({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+  });
+
+  const result = await vercel.projects.updateMicrofrontends({
+    projectId: "prj_12HKQaOmR5t5Uy6vdcQsNIiZgHGB",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+    requestBody: {
+      microfrontendsGroupId: "mfe_12HKQaOmR5t5Uy6vdcQsNIiZgHGB",
+      enabled: true,
+      isDefaultApp: true,
+      defaultRoute: "/home",
+    },
+  });
+  expect(result).toBeDefined();
+});

@@ -148,11 +148,11 @@ export type GetProjectsHasProjectsResponse2002 = {
     GetProjectsHasProjectsResponse200ApplicationJSONResponseBody1AbuseValue;
 };
 
-export const GetProjectsHasProjectsResponse200ApplicationJSONKey = {
+export const GetProjectsHasProjectsResponse200Key = {
   XVercelIpCountry: "x-vercel-ip-country",
 } as const;
-export type GetProjectsHasProjectsResponse200ApplicationJSONKey = ClosedEnum<
-  typeof GetProjectsHasProjectsResponse200ApplicationJSONKey
+export type GetProjectsHasProjectsResponse200Key = ClosedEnum<
+  typeof GetProjectsHasProjectsResponse200Key
 >;
 
 export type GetProjectsHasProjectsResponse200ApplicationJSONResponseBody1Value =
@@ -162,43 +162,45 @@ export type GetProjectsHasProjectsResponse200ApplicationJSONResponseBody1Value =
 
 export type GetProjectsHasProjectsResponse2001 = {
   type: "header";
-  key: GetProjectsHasProjectsResponse200ApplicationJSONKey;
+  key: GetProjectsHasProjectsResponse200Key;
   value: GetProjectsHasProjectsResponse200ApplicationJSONResponseBody1Value;
 };
 
-export type GetProjectsRouteHas =
+export type GetProjectsRouteProjectsHas =
   | GetProjectsHasProjectsResponse2001
   | GetProjectsHasProjectsResponse2002;
 
-export const GetProjectsRouteAction = {
+export const GetProjectsRouteProjectsAction = {
   BlockLegalCwc: "block_legal_cwc",
 } as const;
-export type GetProjectsRouteAction = ClosedEnum<typeof GetProjectsRouteAction>;
+export type GetProjectsRouteProjectsAction = ClosedEnum<
+  typeof GetProjectsRouteProjectsAction
+>;
 
-export type GetProjectsRouteMitigate = {
-  action: GetProjectsRouteAction;
+export type GetProjectsRouteProjectsMitigate = {
+  action: GetProjectsRouteProjectsAction;
 };
 
-export type GetProjectsRoute2 = {
+export type GetProjectsRouteProjects2 = {
   has: Array<
     GetProjectsHasProjectsResponse2001 | GetProjectsHasProjectsResponse2002
   >;
-  mitigate: GetProjectsRouteMitigate;
+  mitigate: GetProjectsRouteProjectsMitigate;
   src?: string | undefined;
 };
 
-export type GetProjectsRoute1 = {
+export type GetProjectsRouteProjects1 = {
   src: string;
   status: number;
 };
 
-export type GetProjectsBlockHistoryRoute =
-  | GetProjectsRoute1
-  | GetProjectsRoute2;
+export type GetProjectsBlockHistoryProjectsRoute =
+  | GetProjectsRouteProjects1
+  | GetProjectsRouteProjects2;
 
 export type GetProjectsBlockHistory4 = {
   action: "route-unblocked";
-  route: GetProjectsRoute1 | GetProjectsRoute2;
+  route: GetProjectsRouteProjects1 | GetProjectsRouteProjects2;
   statusCode?: number | undefined;
   createdAt: number;
   caseId?: string | undefined;
@@ -219,11 +221,11 @@ export type GetProjectsHasProjectsResponse200ApplicationJson2 = {
     GetProjectsHasProjectsResponse200ApplicationJSONResponseBody1AbuseBlockHistory3Value;
 };
 
-export const GetProjectsHasProjectsResponse200Key = {
+export const GetProjectsHasProjectsResponse200ApplicationJSONKey = {
   XVercelIpCountry: "x-vercel-ip-country",
 } as const;
-export type GetProjectsHasProjectsResponse200Key = ClosedEnum<
-  typeof GetProjectsHasProjectsResponse200Key
+export type GetProjectsHasProjectsResponse200ApplicationJSONKey = ClosedEnum<
+  typeof GetProjectsHasProjectsResponse200ApplicationJSONKey
 >;
 
 export type GetProjectsHasProjectsResponse200ApplicationJSONResponseBody1AbuseBlockHistoryValue =
@@ -233,47 +235,45 @@ export type GetProjectsHasProjectsResponse200ApplicationJSONResponseBody1AbuseBl
 
 export type GetProjectsHasProjectsResponse200ApplicationJson1 = {
   type: "header";
-  key: GetProjectsHasProjectsResponse200Key;
+  key: GetProjectsHasProjectsResponse200ApplicationJSONKey;
   value:
     GetProjectsHasProjectsResponse200ApplicationJSONResponseBody1AbuseBlockHistoryValue;
 };
 
-export type GetProjectsRouteProjectsHas =
+export type GetProjectsRouteHas =
   | GetProjectsHasProjectsResponse200ApplicationJson1
   | GetProjectsHasProjectsResponse200ApplicationJson2;
 
-export const GetProjectsRouteProjectsAction = {
+export const GetProjectsRouteAction = {
   BlockLegalCwc: "block_legal_cwc",
 } as const;
-export type GetProjectsRouteProjectsAction = ClosedEnum<
-  typeof GetProjectsRouteProjectsAction
->;
+export type GetProjectsRouteAction = ClosedEnum<typeof GetProjectsRouteAction>;
 
-export type GetProjectsRouteProjectsMitigate = {
-  action: GetProjectsRouteProjectsAction;
+export type GetProjectsRouteMitigate = {
+  action: GetProjectsRouteAction;
 };
 
-export type GetProjectsRouteProjects2 = {
+export type GetProjectsRoute2 = {
   has: Array<
     | GetProjectsHasProjectsResponse200ApplicationJson1
     | GetProjectsHasProjectsResponse200ApplicationJson2
   >;
-  mitigate: GetProjectsRouteProjectsMitigate;
+  mitigate: GetProjectsRouteMitigate;
   src?: string | undefined;
 };
 
-export type GetProjectsRouteProjects1 = {
+export type GetProjectsRoute1 = {
   src: string;
   status: number;
 };
 
-export type GetProjectsBlockHistoryProjectsRoute =
-  | GetProjectsRouteProjects1
-  | GetProjectsRouteProjects2;
+export type GetProjectsBlockHistoryRoute =
+  | GetProjectsRoute1
+  | GetProjectsRoute2;
 
 export type GetProjectsBlockHistory3 = {
   action: "route-blocked";
-  route: GetProjectsRouteProjects1 | GetProjectsRouteProjects2;
+  route: GetProjectsRoute1 | GetProjectsRoute2;
   reason: string;
   createdAt: number;
   caseId?: string | undefined;
@@ -718,13 +718,14 @@ export function getProjectsHasProjectsResponse2002FromJSON(
 }
 
 /** @internal */
-export const GetProjectsHasProjectsResponse200ApplicationJSONKey$inboundSchema:
-  z.ZodNativeEnum<typeof GetProjectsHasProjectsResponse200ApplicationJSONKey> =
-    z.nativeEnum(GetProjectsHasProjectsResponse200ApplicationJSONKey);
+export const GetProjectsHasProjectsResponse200Key$inboundSchema:
+  z.ZodNativeEnum<typeof GetProjectsHasProjectsResponse200Key> = z.nativeEnum(
+    GetProjectsHasProjectsResponse200Key,
+  );
 /** @internal */
-export const GetProjectsHasProjectsResponse200ApplicationJSONKey$outboundSchema:
-  z.ZodNativeEnum<typeof GetProjectsHasProjectsResponse200ApplicationJSONKey> =
-    GetProjectsHasProjectsResponse200ApplicationJSONKey$inboundSchema;
+export const GetProjectsHasProjectsResponse200Key$outboundSchema:
+  z.ZodNativeEnum<typeof GetProjectsHasProjectsResponse200Key> =
+    GetProjectsHasProjectsResponse200Key$inboundSchema;
 
 /** @internal */
 export const GetProjectsHasProjectsResponse200ApplicationJSONResponseBody1Value$inboundSchema:
@@ -784,7 +785,7 @@ export const GetProjectsHasProjectsResponse2001$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   type: types.literal("header"),
-  key: GetProjectsHasProjectsResponse200ApplicationJSONKey$inboundSchema,
+  key: GetProjectsHasProjectsResponse200Key$inboundSchema,
   value: z.lazy(() =>
     GetProjectsHasProjectsResponse200ApplicationJSONResponseBody1Value$inboundSchema
   ),
@@ -804,7 +805,7 @@ export const GetProjectsHasProjectsResponse2001$outboundSchema: z.ZodType<
   GetProjectsHasProjectsResponse2001
 > = z.object({
   type: z.literal("header"),
-  key: GetProjectsHasProjectsResponse200ApplicationJSONKey$outboundSchema,
+  key: GetProjectsHasProjectsResponse200Key$outboundSchema,
   value: z.lazy(() =>
     GetProjectsHasProjectsResponse200ApplicationJSONResponseBody1Value$outboundSchema
   ),
@@ -831,8 +832,8 @@ export function getProjectsHasProjectsResponse2001FromJSON(
 }
 
 /** @internal */
-export const GetProjectsRouteHas$inboundSchema: z.ZodType<
-  GetProjectsRouteHas,
+export const GetProjectsRouteProjectsHas$inboundSchema: z.ZodType<
+  GetProjectsRouteProjectsHas,
   z.ZodTypeDef,
   unknown
 > = z.union([
@@ -840,88 +841,92 @@ export const GetProjectsRouteHas$inboundSchema: z.ZodType<
   z.lazy(() => GetProjectsHasProjectsResponse2002$inboundSchema),
 ]);
 /** @internal */
-export type GetProjectsRouteHas$Outbound =
+export type GetProjectsRouteProjectsHas$Outbound =
   | GetProjectsHasProjectsResponse2001$Outbound
   | GetProjectsHasProjectsResponse2002$Outbound;
 
 /** @internal */
-export const GetProjectsRouteHas$outboundSchema: z.ZodType<
-  GetProjectsRouteHas$Outbound,
+export const GetProjectsRouteProjectsHas$outboundSchema: z.ZodType<
+  GetProjectsRouteProjectsHas$Outbound,
   z.ZodTypeDef,
-  GetProjectsRouteHas
+  GetProjectsRouteProjectsHas
 > = z.union([
   z.lazy(() => GetProjectsHasProjectsResponse2001$outboundSchema),
   z.lazy(() => GetProjectsHasProjectsResponse2002$outboundSchema),
 ]);
 
-export function getProjectsRouteHasToJSON(
-  getProjectsRouteHas: GetProjectsRouteHas,
+export function getProjectsRouteProjectsHasToJSON(
+  getProjectsRouteProjectsHas: GetProjectsRouteProjectsHas,
 ): string {
   return JSON.stringify(
-    GetProjectsRouteHas$outboundSchema.parse(getProjectsRouteHas),
+    GetProjectsRouteProjectsHas$outboundSchema.parse(
+      getProjectsRouteProjectsHas,
+    ),
   );
 }
-export function getProjectsRouteHasFromJSON(
+export function getProjectsRouteProjectsHasFromJSON(
   jsonString: string,
-): SafeParseResult<GetProjectsRouteHas, SDKValidationError> {
+): SafeParseResult<GetProjectsRouteProjectsHas, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetProjectsRouteHas$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetProjectsRouteHas' from JSON`,
+    (x) => GetProjectsRouteProjectsHas$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectsRouteProjectsHas' from JSON`,
   );
 }
 
 /** @internal */
-export const GetProjectsRouteAction$inboundSchema: z.ZodNativeEnum<
-  typeof GetProjectsRouteAction
-> = z.nativeEnum(GetProjectsRouteAction);
+export const GetProjectsRouteProjectsAction$inboundSchema: z.ZodNativeEnum<
+  typeof GetProjectsRouteProjectsAction
+> = z.nativeEnum(GetProjectsRouteProjectsAction);
 /** @internal */
-export const GetProjectsRouteAction$outboundSchema: z.ZodNativeEnum<
-  typeof GetProjectsRouteAction
-> = GetProjectsRouteAction$inboundSchema;
+export const GetProjectsRouteProjectsAction$outboundSchema: z.ZodNativeEnum<
+  typeof GetProjectsRouteProjectsAction
+> = GetProjectsRouteProjectsAction$inboundSchema;
 
 /** @internal */
-export const GetProjectsRouteMitigate$inboundSchema: z.ZodType<
-  GetProjectsRouteMitigate,
+export const GetProjectsRouteProjectsMitigate$inboundSchema: z.ZodType<
+  GetProjectsRouteProjectsMitigate,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  action: GetProjectsRouteAction$inboundSchema,
+  action: GetProjectsRouteProjectsAction$inboundSchema,
 });
 /** @internal */
-export type GetProjectsRouteMitigate$Outbound = {
+export type GetProjectsRouteProjectsMitigate$Outbound = {
   action: string;
 };
 
 /** @internal */
-export const GetProjectsRouteMitigate$outboundSchema: z.ZodType<
-  GetProjectsRouteMitigate$Outbound,
+export const GetProjectsRouteProjectsMitigate$outboundSchema: z.ZodType<
+  GetProjectsRouteProjectsMitigate$Outbound,
   z.ZodTypeDef,
-  GetProjectsRouteMitigate
+  GetProjectsRouteProjectsMitigate
 > = z.object({
-  action: GetProjectsRouteAction$outboundSchema,
+  action: GetProjectsRouteProjectsAction$outboundSchema,
 });
 
-export function getProjectsRouteMitigateToJSON(
-  getProjectsRouteMitigate: GetProjectsRouteMitigate,
+export function getProjectsRouteProjectsMitigateToJSON(
+  getProjectsRouteProjectsMitigate: GetProjectsRouteProjectsMitigate,
 ): string {
   return JSON.stringify(
-    GetProjectsRouteMitigate$outboundSchema.parse(getProjectsRouteMitigate),
+    GetProjectsRouteProjectsMitigate$outboundSchema.parse(
+      getProjectsRouteProjectsMitigate,
+    ),
   );
 }
-export function getProjectsRouteMitigateFromJSON(
+export function getProjectsRouteProjectsMitigateFromJSON(
   jsonString: string,
-): SafeParseResult<GetProjectsRouteMitigate, SDKValidationError> {
+): SafeParseResult<GetProjectsRouteProjectsMitigate, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetProjectsRouteMitigate$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetProjectsRouteMitigate' from JSON`,
+    (x) => GetProjectsRouteProjectsMitigate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectsRouteProjectsMitigate' from JSON`,
   );
 }
 
 /** @internal */
-export const GetProjectsRoute2$inboundSchema: z.ZodType<
-  GetProjectsRoute2,
+export const GetProjectsRouteProjects2$inboundSchema: z.ZodType<
+  GetProjectsRouteProjects2,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -931,24 +936,24 @@ export const GetProjectsRoute2$inboundSchema: z.ZodType<
       z.lazy(() => GetProjectsHasProjectsResponse2002$inboundSchema),
     ]),
   ),
-  mitigate: z.lazy(() => GetProjectsRouteMitigate$inboundSchema),
+  mitigate: z.lazy(() => GetProjectsRouteProjectsMitigate$inboundSchema),
   src: types.optional(types.string()),
 });
 /** @internal */
-export type GetProjectsRoute2$Outbound = {
+export type GetProjectsRouteProjects2$Outbound = {
   has: Array<
     | GetProjectsHasProjectsResponse2001$Outbound
     | GetProjectsHasProjectsResponse2002$Outbound
   >;
-  mitigate: GetProjectsRouteMitigate$Outbound;
+  mitigate: GetProjectsRouteProjectsMitigate$Outbound;
   src?: string | undefined;
 };
 
 /** @internal */
-export const GetProjectsRoute2$outboundSchema: z.ZodType<
-  GetProjectsRoute2$Outbound,
+export const GetProjectsRouteProjects2$outboundSchema: z.ZodType<
+  GetProjectsRouteProjects2$Outbound,
   z.ZodTypeDef,
-  GetProjectsRoute2
+  GetProjectsRouteProjects2
 > = z.object({
   has: z.array(
     z.union([
@@ -956,30 +961,30 @@ export const GetProjectsRoute2$outboundSchema: z.ZodType<
       z.lazy(() => GetProjectsHasProjectsResponse2002$outboundSchema),
     ]),
   ),
-  mitigate: z.lazy(() => GetProjectsRouteMitigate$outboundSchema),
+  mitigate: z.lazy(() => GetProjectsRouteProjectsMitigate$outboundSchema),
   src: z.string().optional(),
 });
 
-export function getProjectsRoute2ToJSON(
-  getProjectsRoute2: GetProjectsRoute2,
+export function getProjectsRouteProjects2ToJSON(
+  getProjectsRouteProjects2: GetProjectsRouteProjects2,
 ): string {
   return JSON.stringify(
-    GetProjectsRoute2$outboundSchema.parse(getProjectsRoute2),
+    GetProjectsRouteProjects2$outboundSchema.parse(getProjectsRouteProjects2),
   );
 }
-export function getProjectsRoute2FromJSON(
+export function getProjectsRouteProjects2FromJSON(
   jsonString: string,
-): SafeParseResult<GetProjectsRoute2, SDKValidationError> {
+): SafeParseResult<GetProjectsRouteProjects2, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetProjectsRoute2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetProjectsRoute2' from JSON`,
+    (x) => GetProjectsRouteProjects2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectsRouteProjects2' from JSON`,
   );
 }
 
 /** @internal */
-export const GetProjectsRoute1$inboundSchema: z.ZodType<
-  GetProjectsRoute1,
+export const GetProjectsRouteProjects1$inboundSchema: z.ZodType<
+  GetProjectsRouteProjects1,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -987,78 +992,79 @@ export const GetProjectsRoute1$inboundSchema: z.ZodType<
   status: types.number(),
 });
 /** @internal */
-export type GetProjectsRoute1$Outbound = {
+export type GetProjectsRouteProjects1$Outbound = {
   src: string;
   status: number;
 };
 
 /** @internal */
-export const GetProjectsRoute1$outboundSchema: z.ZodType<
-  GetProjectsRoute1$Outbound,
+export const GetProjectsRouteProjects1$outboundSchema: z.ZodType<
+  GetProjectsRouteProjects1$Outbound,
   z.ZodTypeDef,
-  GetProjectsRoute1
+  GetProjectsRouteProjects1
 > = z.object({
   src: z.string(),
   status: z.number(),
 });
 
-export function getProjectsRoute1ToJSON(
-  getProjectsRoute1: GetProjectsRoute1,
+export function getProjectsRouteProjects1ToJSON(
+  getProjectsRouteProjects1: GetProjectsRouteProjects1,
 ): string {
   return JSON.stringify(
-    GetProjectsRoute1$outboundSchema.parse(getProjectsRoute1),
+    GetProjectsRouteProjects1$outboundSchema.parse(getProjectsRouteProjects1),
   );
 }
-export function getProjectsRoute1FromJSON(
+export function getProjectsRouteProjects1FromJSON(
   jsonString: string,
-): SafeParseResult<GetProjectsRoute1, SDKValidationError> {
+): SafeParseResult<GetProjectsRouteProjects1, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetProjectsRoute1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetProjectsRoute1' from JSON`,
+    (x) => GetProjectsRouteProjects1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectsRouteProjects1' from JSON`,
   );
 }
 
 /** @internal */
-export const GetProjectsBlockHistoryRoute$inboundSchema: z.ZodType<
-  GetProjectsBlockHistoryRoute,
+export const GetProjectsBlockHistoryProjectsRoute$inboundSchema: z.ZodType<
+  GetProjectsBlockHistoryProjectsRoute,
   z.ZodTypeDef,
   unknown
 > = smartUnion([
-  z.lazy(() => GetProjectsRoute1$inboundSchema),
-  z.lazy(() => GetProjectsRoute2$inboundSchema),
+  z.lazy(() => GetProjectsRouteProjects1$inboundSchema),
+  z.lazy(() => GetProjectsRouteProjects2$inboundSchema),
 ]);
 /** @internal */
-export type GetProjectsBlockHistoryRoute$Outbound =
-  | GetProjectsRoute1$Outbound
-  | GetProjectsRoute2$Outbound;
+export type GetProjectsBlockHistoryProjectsRoute$Outbound =
+  | GetProjectsRouteProjects1$Outbound
+  | GetProjectsRouteProjects2$Outbound;
 
 /** @internal */
-export const GetProjectsBlockHistoryRoute$outboundSchema: z.ZodType<
-  GetProjectsBlockHistoryRoute$Outbound,
+export const GetProjectsBlockHistoryProjectsRoute$outboundSchema: z.ZodType<
+  GetProjectsBlockHistoryProjectsRoute$Outbound,
   z.ZodTypeDef,
-  GetProjectsBlockHistoryRoute
+  GetProjectsBlockHistoryProjectsRoute
 > = smartUnion([
-  z.lazy(() => GetProjectsRoute1$outboundSchema),
-  z.lazy(() => GetProjectsRoute2$outboundSchema),
+  z.lazy(() => GetProjectsRouteProjects1$outboundSchema),
+  z.lazy(() => GetProjectsRouteProjects2$outboundSchema),
 ]);
 
-export function getProjectsBlockHistoryRouteToJSON(
-  getProjectsBlockHistoryRoute: GetProjectsBlockHistoryRoute,
+export function getProjectsBlockHistoryProjectsRouteToJSON(
+  getProjectsBlockHistoryProjectsRoute: GetProjectsBlockHistoryProjectsRoute,
 ): string {
   return JSON.stringify(
-    GetProjectsBlockHistoryRoute$outboundSchema.parse(
-      getProjectsBlockHistoryRoute,
+    GetProjectsBlockHistoryProjectsRoute$outboundSchema.parse(
+      getProjectsBlockHistoryProjectsRoute,
     ),
   );
 }
-export function getProjectsBlockHistoryRouteFromJSON(
+export function getProjectsBlockHistoryProjectsRouteFromJSON(
   jsonString: string,
-): SafeParseResult<GetProjectsBlockHistoryRoute, SDKValidationError> {
+): SafeParseResult<GetProjectsBlockHistoryProjectsRoute, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetProjectsBlockHistoryRoute$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetProjectsBlockHistoryRoute' from JSON`,
+    (x) =>
+      GetProjectsBlockHistoryProjectsRoute$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectsBlockHistoryProjectsRoute' from JSON`,
   );
 }
 
@@ -1070,8 +1076,8 @@ export const GetProjectsBlockHistory4$inboundSchema: z.ZodType<
 > = z.object({
   action: types.literal("route-unblocked"),
   route: smartUnion([
-    z.lazy(() => GetProjectsRoute1$inboundSchema),
-    z.lazy(() => GetProjectsRoute2$inboundSchema),
+    z.lazy(() => GetProjectsRouteProjects1$inboundSchema),
+    z.lazy(() => GetProjectsRouteProjects2$inboundSchema),
   ]),
   statusCode: types.optional(types.number()),
   createdAt: types.number(),
@@ -1084,7 +1090,9 @@ export const GetProjectsBlockHistory4$inboundSchema: z.ZodType<
 /** @internal */
 export type GetProjectsBlockHistory4$Outbound = {
   action: "route-unblocked";
-  route: GetProjectsRoute1$Outbound | GetProjectsRoute2$Outbound;
+  route:
+    | GetProjectsRouteProjects1$Outbound
+    | GetProjectsRouteProjects2$Outbound;
   statusCode?: number | undefined;
   createdAt: number;
   caseId?: string | undefined;
@@ -1102,8 +1110,8 @@ export const GetProjectsBlockHistory4$outboundSchema: z.ZodType<
 > = z.object({
   action: z.literal("route-unblocked"),
   route: smartUnion([
-    z.lazy(() => GetProjectsRoute1$outboundSchema),
-    z.lazy(() => GetProjectsRoute2$outboundSchema),
+    z.lazy(() => GetProjectsRouteProjects1$outboundSchema),
+    z.lazy(() => GetProjectsRouteProjects2$outboundSchema),
   ]),
   statusCode: z.number().optional(),
   createdAt: z.number(),
@@ -1241,14 +1249,13 @@ export function getProjectsHasProjectsResponse200ApplicationJSON2FromJSON(
 }
 
 /** @internal */
-export const GetProjectsHasProjectsResponse200Key$inboundSchema:
-  z.ZodNativeEnum<typeof GetProjectsHasProjectsResponse200Key> = z.nativeEnum(
-    GetProjectsHasProjectsResponse200Key,
-  );
+export const GetProjectsHasProjectsResponse200ApplicationJSONKey$inboundSchema:
+  z.ZodNativeEnum<typeof GetProjectsHasProjectsResponse200ApplicationJSONKey> =
+    z.nativeEnum(GetProjectsHasProjectsResponse200ApplicationJSONKey);
 /** @internal */
-export const GetProjectsHasProjectsResponse200Key$outboundSchema:
-  z.ZodNativeEnum<typeof GetProjectsHasProjectsResponse200Key> =
-    GetProjectsHasProjectsResponse200Key$inboundSchema;
+export const GetProjectsHasProjectsResponse200ApplicationJSONKey$outboundSchema:
+  z.ZodNativeEnum<typeof GetProjectsHasProjectsResponse200ApplicationJSONKey> =
+    GetProjectsHasProjectsResponse200ApplicationJSONKey$inboundSchema;
 
 /** @internal */
 export const GetProjectsHasProjectsResponse200ApplicationJSONResponseBody1AbuseBlockHistoryValue$inboundSchema:
@@ -1309,7 +1316,7 @@ export const GetProjectsHasProjectsResponse200ApplicationJson1$inboundSchema:
     unknown
   > = z.object({
     type: types.literal("header"),
-    key: GetProjectsHasProjectsResponse200Key$inboundSchema,
+    key: GetProjectsHasProjectsResponse200ApplicationJSONKey$inboundSchema,
     value: z.lazy(() =>
       GetProjectsHasProjectsResponse200ApplicationJSONResponseBody1AbuseBlockHistoryValue$inboundSchema
     ),
@@ -1330,7 +1337,7 @@ export const GetProjectsHasProjectsResponse200ApplicationJson1$outboundSchema:
     GetProjectsHasProjectsResponse200ApplicationJson1
   > = z.object({
     type: z.literal("header"),
-    key: GetProjectsHasProjectsResponse200Key$outboundSchema,
+    key: GetProjectsHasProjectsResponse200ApplicationJSONKey$outboundSchema,
     value: z.lazy(() =>
       GetProjectsHasProjectsResponse200ApplicationJSONResponseBody1AbuseBlockHistoryValue$outboundSchema
     ),
@@ -1363,8 +1370,8 @@ export function getProjectsHasProjectsResponse200ApplicationJSON1FromJSON(
 }
 
 /** @internal */
-export const GetProjectsRouteProjectsHas$inboundSchema: z.ZodType<
-  GetProjectsRouteProjectsHas,
+export const GetProjectsRouteHas$inboundSchema: z.ZodType<
+  GetProjectsRouteHas,
   z.ZodTypeDef,
   unknown
 > = z.union([
@@ -1372,15 +1379,15 @@ export const GetProjectsRouteProjectsHas$inboundSchema: z.ZodType<
   z.lazy(() => GetProjectsHasProjectsResponse200ApplicationJson2$inboundSchema),
 ]);
 /** @internal */
-export type GetProjectsRouteProjectsHas$Outbound =
+export type GetProjectsRouteHas$Outbound =
   | GetProjectsHasProjectsResponse200ApplicationJson1$Outbound
   | GetProjectsHasProjectsResponse200ApplicationJson2$Outbound;
 
 /** @internal */
-export const GetProjectsRouteProjectsHas$outboundSchema: z.ZodType<
-  GetProjectsRouteProjectsHas$Outbound,
+export const GetProjectsRouteHas$outboundSchema: z.ZodType<
+  GetProjectsRouteHas$Outbound,
   z.ZodTypeDef,
-  GetProjectsRouteProjectsHas
+  GetProjectsRouteHas
 > = z.union([
   z.lazy(() =>
     GetProjectsHasProjectsResponse200ApplicationJson1$outboundSchema
@@ -1390,78 +1397,74 @@ export const GetProjectsRouteProjectsHas$outboundSchema: z.ZodType<
   ),
 ]);
 
-export function getProjectsRouteProjectsHasToJSON(
-  getProjectsRouteProjectsHas: GetProjectsRouteProjectsHas,
+export function getProjectsRouteHasToJSON(
+  getProjectsRouteHas: GetProjectsRouteHas,
 ): string {
   return JSON.stringify(
-    GetProjectsRouteProjectsHas$outboundSchema.parse(
-      getProjectsRouteProjectsHas,
-    ),
+    GetProjectsRouteHas$outboundSchema.parse(getProjectsRouteHas),
   );
 }
-export function getProjectsRouteProjectsHasFromJSON(
+export function getProjectsRouteHasFromJSON(
   jsonString: string,
-): SafeParseResult<GetProjectsRouteProjectsHas, SDKValidationError> {
+): SafeParseResult<GetProjectsRouteHas, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetProjectsRouteProjectsHas$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetProjectsRouteProjectsHas' from JSON`,
+    (x) => GetProjectsRouteHas$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectsRouteHas' from JSON`,
   );
 }
 
 /** @internal */
-export const GetProjectsRouteProjectsAction$inboundSchema: z.ZodNativeEnum<
-  typeof GetProjectsRouteProjectsAction
-> = z.nativeEnum(GetProjectsRouteProjectsAction);
+export const GetProjectsRouteAction$inboundSchema: z.ZodNativeEnum<
+  typeof GetProjectsRouteAction
+> = z.nativeEnum(GetProjectsRouteAction);
 /** @internal */
-export const GetProjectsRouteProjectsAction$outboundSchema: z.ZodNativeEnum<
-  typeof GetProjectsRouteProjectsAction
-> = GetProjectsRouteProjectsAction$inboundSchema;
+export const GetProjectsRouteAction$outboundSchema: z.ZodNativeEnum<
+  typeof GetProjectsRouteAction
+> = GetProjectsRouteAction$inboundSchema;
 
 /** @internal */
-export const GetProjectsRouteProjectsMitigate$inboundSchema: z.ZodType<
-  GetProjectsRouteProjectsMitigate,
+export const GetProjectsRouteMitigate$inboundSchema: z.ZodType<
+  GetProjectsRouteMitigate,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  action: GetProjectsRouteProjectsAction$inboundSchema,
+  action: GetProjectsRouteAction$inboundSchema,
 });
 /** @internal */
-export type GetProjectsRouteProjectsMitigate$Outbound = {
+export type GetProjectsRouteMitigate$Outbound = {
   action: string;
 };
 
 /** @internal */
-export const GetProjectsRouteProjectsMitigate$outboundSchema: z.ZodType<
-  GetProjectsRouteProjectsMitigate$Outbound,
+export const GetProjectsRouteMitigate$outboundSchema: z.ZodType<
+  GetProjectsRouteMitigate$Outbound,
   z.ZodTypeDef,
-  GetProjectsRouteProjectsMitigate
+  GetProjectsRouteMitigate
 > = z.object({
-  action: GetProjectsRouteProjectsAction$outboundSchema,
+  action: GetProjectsRouteAction$outboundSchema,
 });
 
-export function getProjectsRouteProjectsMitigateToJSON(
-  getProjectsRouteProjectsMitigate: GetProjectsRouteProjectsMitigate,
+export function getProjectsRouteMitigateToJSON(
+  getProjectsRouteMitigate: GetProjectsRouteMitigate,
 ): string {
   return JSON.stringify(
-    GetProjectsRouteProjectsMitigate$outboundSchema.parse(
-      getProjectsRouteProjectsMitigate,
-    ),
+    GetProjectsRouteMitigate$outboundSchema.parse(getProjectsRouteMitigate),
   );
 }
-export function getProjectsRouteProjectsMitigateFromJSON(
+export function getProjectsRouteMitigateFromJSON(
   jsonString: string,
-): SafeParseResult<GetProjectsRouteProjectsMitigate, SDKValidationError> {
+): SafeParseResult<GetProjectsRouteMitigate, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetProjectsRouteProjectsMitigate$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetProjectsRouteProjectsMitigate' from JSON`,
+    (x) => GetProjectsRouteMitigate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectsRouteMitigate' from JSON`,
   );
 }
 
 /** @internal */
-export const GetProjectsRouteProjects2$inboundSchema: z.ZodType<
-  GetProjectsRouteProjects2,
+export const GetProjectsRoute2$inboundSchema: z.ZodType<
+  GetProjectsRoute2,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -1475,24 +1478,24 @@ export const GetProjectsRouteProjects2$inboundSchema: z.ZodType<
       ),
     ]),
   ),
-  mitigate: z.lazy(() => GetProjectsRouteProjectsMitigate$inboundSchema),
+  mitigate: z.lazy(() => GetProjectsRouteMitigate$inboundSchema),
   src: types.optional(types.string()),
 });
 /** @internal */
-export type GetProjectsRouteProjects2$Outbound = {
+export type GetProjectsRoute2$Outbound = {
   has: Array<
     | GetProjectsHasProjectsResponse200ApplicationJson1$Outbound
     | GetProjectsHasProjectsResponse200ApplicationJson2$Outbound
   >;
-  mitigate: GetProjectsRouteProjectsMitigate$Outbound;
+  mitigate: GetProjectsRouteMitigate$Outbound;
   src?: string | undefined;
 };
 
 /** @internal */
-export const GetProjectsRouteProjects2$outboundSchema: z.ZodType<
-  GetProjectsRouteProjects2$Outbound,
+export const GetProjectsRoute2$outboundSchema: z.ZodType<
+  GetProjectsRoute2$Outbound,
   z.ZodTypeDef,
-  GetProjectsRouteProjects2
+  GetProjectsRoute2
 > = z.object({
   has: z.array(
     z.union([
@@ -1504,30 +1507,30 @@ export const GetProjectsRouteProjects2$outboundSchema: z.ZodType<
       ),
     ]),
   ),
-  mitigate: z.lazy(() => GetProjectsRouteProjectsMitigate$outboundSchema),
+  mitigate: z.lazy(() => GetProjectsRouteMitigate$outboundSchema),
   src: z.string().optional(),
 });
 
-export function getProjectsRouteProjects2ToJSON(
-  getProjectsRouteProjects2: GetProjectsRouteProjects2,
+export function getProjectsRoute2ToJSON(
+  getProjectsRoute2: GetProjectsRoute2,
 ): string {
   return JSON.stringify(
-    GetProjectsRouteProjects2$outboundSchema.parse(getProjectsRouteProjects2),
+    GetProjectsRoute2$outboundSchema.parse(getProjectsRoute2),
   );
 }
-export function getProjectsRouteProjects2FromJSON(
+export function getProjectsRoute2FromJSON(
   jsonString: string,
-): SafeParseResult<GetProjectsRouteProjects2, SDKValidationError> {
+): SafeParseResult<GetProjectsRoute2, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetProjectsRouteProjects2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetProjectsRouteProjects2' from JSON`,
+    (x) => GetProjectsRoute2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectsRoute2' from JSON`,
   );
 }
 
 /** @internal */
-export const GetProjectsRouteProjects1$inboundSchema: z.ZodType<
-  GetProjectsRouteProjects1,
+export const GetProjectsRoute1$inboundSchema: z.ZodType<
+  GetProjectsRoute1,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -1535,79 +1538,78 @@ export const GetProjectsRouteProjects1$inboundSchema: z.ZodType<
   status: types.number(),
 });
 /** @internal */
-export type GetProjectsRouteProjects1$Outbound = {
+export type GetProjectsRoute1$Outbound = {
   src: string;
   status: number;
 };
 
 /** @internal */
-export const GetProjectsRouteProjects1$outboundSchema: z.ZodType<
-  GetProjectsRouteProjects1$Outbound,
+export const GetProjectsRoute1$outboundSchema: z.ZodType<
+  GetProjectsRoute1$Outbound,
   z.ZodTypeDef,
-  GetProjectsRouteProjects1
+  GetProjectsRoute1
 > = z.object({
   src: z.string(),
   status: z.number(),
 });
 
-export function getProjectsRouteProjects1ToJSON(
-  getProjectsRouteProjects1: GetProjectsRouteProjects1,
+export function getProjectsRoute1ToJSON(
+  getProjectsRoute1: GetProjectsRoute1,
 ): string {
   return JSON.stringify(
-    GetProjectsRouteProjects1$outboundSchema.parse(getProjectsRouteProjects1),
+    GetProjectsRoute1$outboundSchema.parse(getProjectsRoute1),
   );
 }
-export function getProjectsRouteProjects1FromJSON(
+export function getProjectsRoute1FromJSON(
   jsonString: string,
-): SafeParseResult<GetProjectsRouteProjects1, SDKValidationError> {
+): SafeParseResult<GetProjectsRoute1, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetProjectsRouteProjects1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetProjectsRouteProjects1' from JSON`,
+    (x) => GetProjectsRoute1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectsRoute1' from JSON`,
   );
 }
 
 /** @internal */
-export const GetProjectsBlockHistoryProjectsRoute$inboundSchema: z.ZodType<
-  GetProjectsBlockHistoryProjectsRoute,
+export const GetProjectsBlockHistoryRoute$inboundSchema: z.ZodType<
+  GetProjectsBlockHistoryRoute,
   z.ZodTypeDef,
   unknown
 > = smartUnion([
-  z.lazy(() => GetProjectsRouteProjects1$inboundSchema),
-  z.lazy(() => GetProjectsRouteProjects2$inboundSchema),
+  z.lazy(() => GetProjectsRoute1$inboundSchema),
+  z.lazy(() => GetProjectsRoute2$inboundSchema),
 ]);
 /** @internal */
-export type GetProjectsBlockHistoryProjectsRoute$Outbound =
-  | GetProjectsRouteProjects1$Outbound
-  | GetProjectsRouteProjects2$Outbound;
+export type GetProjectsBlockHistoryRoute$Outbound =
+  | GetProjectsRoute1$Outbound
+  | GetProjectsRoute2$Outbound;
 
 /** @internal */
-export const GetProjectsBlockHistoryProjectsRoute$outboundSchema: z.ZodType<
-  GetProjectsBlockHistoryProjectsRoute$Outbound,
+export const GetProjectsBlockHistoryRoute$outboundSchema: z.ZodType<
+  GetProjectsBlockHistoryRoute$Outbound,
   z.ZodTypeDef,
-  GetProjectsBlockHistoryProjectsRoute
+  GetProjectsBlockHistoryRoute
 > = smartUnion([
-  z.lazy(() => GetProjectsRouteProjects1$outboundSchema),
-  z.lazy(() => GetProjectsRouteProjects2$outboundSchema),
+  z.lazy(() => GetProjectsRoute1$outboundSchema),
+  z.lazy(() => GetProjectsRoute2$outboundSchema),
 ]);
 
-export function getProjectsBlockHistoryProjectsRouteToJSON(
-  getProjectsBlockHistoryProjectsRoute: GetProjectsBlockHistoryProjectsRoute,
+export function getProjectsBlockHistoryRouteToJSON(
+  getProjectsBlockHistoryRoute: GetProjectsBlockHistoryRoute,
 ): string {
   return JSON.stringify(
-    GetProjectsBlockHistoryProjectsRoute$outboundSchema.parse(
-      getProjectsBlockHistoryProjectsRoute,
+    GetProjectsBlockHistoryRoute$outboundSchema.parse(
+      getProjectsBlockHistoryRoute,
     ),
   );
 }
-export function getProjectsBlockHistoryProjectsRouteFromJSON(
+export function getProjectsBlockHistoryRouteFromJSON(
   jsonString: string,
-): SafeParseResult<GetProjectsBlockHistoryProjectsRoute, SDKValidationError> {
+): SafeParseResult<GetProjectsBlockHistoryRoute, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) =>
-      GetProjectsBlockHistoryProjectsRoute$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetProjectsBlockHistoryProjectsRoute' from JSON`,
+    (x) => GetProjectsBlockHistoryRoute$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectsBlockHistoryRoute' from JSON`,
   );
 }
 
@@ -1619,8 +1621,8 @@ export const GetProjectsBlockHistory3$inboundSchema: z.ZodType<
 > = z.object({
   action: types.literal("route-blocked"),
   route: smartUnion([
-    z.lazy(() => GetProjectsRouteProjects1$inboundSchema),
-    z.lazy(() => GetProjectsRouteProjects2$inboundSchema),
+    z.lazy(() => GetProjectsRoute1$inboundSchema),
+    z.lazy(() => GetProjectsRoute2$inboundSchema),
   ]),
   reason: types.string(),
   createdAt: types.number(),
@@ -1633,9 +1635,7 @@ export const GetProjectsBlockHistory3$inboundSchema: z.ZodType<
 /** @internal */
 export type GetProjectsBlockHistory3$Outbound = {
   action: "route-blocked";
-  route:
-    | GetProjectsRouteProjects1$Outbound
-    | GetProjectsRouteProjects2$Outbound;
+  route: GetProjectsRoute1$Outbound | GetProjectsRoute2$Outbound;
   reason: string;
   createdAt: number;
   caseId?: string | undefined;
@@ -1653,8 +1653,8 @@ export const GetProjectsBlockHistory3$outboundSchema: z.ZodType<
 > = z.object({
   action: z.literal("route-blocked"),
   route: smartUnion([
-    z.lazy(() => GetProjectsRouteProjects1$outboundSchema),
-    z.lazy(() => GetProjectsRouteProjects2$outboundSchema),
+    z.lazy(() => GetProjectsRoute1$outboundSchema),
+    z.lazy(() => GetProjectsRoute2$outboundSchema),
   ]),
   reason: z.string(),
   createdAt: z.number(),

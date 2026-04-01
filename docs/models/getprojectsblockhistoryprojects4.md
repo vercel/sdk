@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsBlockHistoryProjects4 } from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponse200applicationjson2action.js";
+import { GetProjectsBlockHistoryProjects4 } from "@vercel/sdk/models/responsebodyissuermode.js";
 
 let value: GetProjectsBlockHistoryProjects4 = {
   action: "route-unblocked",
@@ -26,14 +26,14 @@ let value: GetProjectsBlockHistoryProjects4 = {
 
 ## Fields
 
-| Field                                                                   | Type                                                                    | Required                                                                | Description                                                             |
-| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| `action`                                                                | *"route-unblocked"*                                                     | :heavy_check_mark:                                                      | N/A                                                                     |
-| `route`                                                                 | *models.GetProjectsBlockHistoryProjectsResponse200ApplicationJSONRoute* | :heavy_check_mark:                                                      | N/A                                                                     |
-| `statusCode`                                                            | *number*                                                                | :heavy_minus_sign:                                                      | N/A                                                                     |
-| `createdAt`                                                             | *number*                                                                | :heavy_check_mark:                                                      | N/A                                                                     |
-| `caseId`                                                                | *string*                                                                | :heavy_minus_sign:                                                      | N/A                                                                     |
-| `actor`                                                                 | *string*                                                                | :heavy_minus_sign:                                                      | N/A                                                                     |
-| `comment`                                                               | *string*                                                                | :heavy_minus_sign:                                                      | N/A                                                                     |
-| `ineligibleForAppeal`                                                   | *boolean*                                                               | :heavy_minus_sign:                                                      | N/A                                                                     |
-| `isCascading`                                                           | *boolean*                                                               | :heavy_minus_sign:                                                      | N/A                                                                     |
+| Field                                                    | Type                                                     | Required                                                 | Description                                              |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `action`                                                 | *"route-unblocked"*                                      | :heavy_check_mark:                                       | N/A                                                      |
+| `route`                                                  | *models.GetProjectsBlockHistoryProjectsResponse200Route* | :heavy_check_mark:                                       | N/A                                                      |
+| `statusCode`                                             | *number*                                                 | :heavy_minus_sign:                                       | N/A                                                      |
+| `createdAt`                                              | *number*                                                 | :heavy_check_mark:                                       | N/A                                                      |
+| `caseId`                                                 | *string*                                                 | :heavy_minus_sign:                                       | N/A                                                      |
+| `actor`                                                  | *string*                                                 | :heavy_minus_sign:                                       | N/A                                                      |
+| `comment`                                                | *string*                                                 | :heavy_minus_sign:                                       | N/A                                                      |
+| `ineligibleForAppeal`                                    | *boolean*                                                | :heavy_minus_sign:                                       | N/A                                                      |
+| `isCascading`                                            | *boolean*                                                | :heavy_minus_sign:                                       | N/A                                                      |

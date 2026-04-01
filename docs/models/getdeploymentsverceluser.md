@@ -15,7 +15,8 @@ let value: GetDeploymentsVercelUser = {
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `id`               | *string*           | :heavy_check_mark: | Vercel user ID     |
-| `username`         | *string*           | :heavy_check_mark: | Vercel username    |
+| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `id`                                                                     | *string*                                                                 | :heavy_check_mark:                                                       | Vercel user ID                                                           |
+| `username`                                                               | *string*                                                                 | :heavy_check_mark:                                                       | Vercel username                                                          |
+| `teamRoles`                                                              | [models.GetDeploymentsTeamRoles](../models/getdeploymentsteamroles.md)[] | :heavy_minus_sign:                                                       | Team roles at time of deployment                                         |

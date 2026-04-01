@@ -2993,8 +2993,8 @@ const value: models.TwoHundredAndEightyTwo = {
 
 ```typescript
 const value: models.TwoHundredAndEightyThree = {
-  chatId: "<id>",
-  messageId: "<id>",
+  model: "Beetle",
+  useCase: "<value>",
 };
 ```
 
@@ -3002,9 +3002,8 @@ const value: models.TwoHundredAndEightyThree = {
 
 ```typescript
 const value: models.TwoHundredAndEightyFour = {
-  deploymentId: "<id>",
-  projectId: "<id>",
-  runId: "<id>",
+  chatId: "<id>",
+  messageId: "<id>",
 };
 ```
 
@@ -3012,11 +3011,21 @@ const value: models.TwoHundredAndEightyFour = {
 
 ```typescript
 const value: models.TwoHundredAndEightyFive = {
+  deploymentId: "<id>",
+  projectId: "<id>",
+  runId: "<id>",
+};
+```
+
+### `models.TwoHundredAndEightySix`
+
+```typescript
+const value: models.TwoHundredAndEightySix = {
   grantType: "urn:ietf:params:oauth:grant-type:device_code",
   appName: "<value>",
-  atTTL: 2321.13,
+  atTTL: 5063.8,
   scope: "<value>",
-  authMethod: "app",
+  authMethod: "invite",
 };
 ```
 

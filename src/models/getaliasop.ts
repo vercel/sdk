@@ -129,7 +129,7 @@ export type GetAliasProtectionBypass =
   | ProtectionBypass3
   | ProtectionBypass4;
 
-export type DefaultApp = {
+export type GetAliasDefaultApp = {
   projectId: string;
 };
 
@@ -163,7 +163,7 @@ export type Applications3 = {
 /**
  * A list of the deployment routing information for each project.
  */
-export type Applications2 = {
+export type GetAliasApplications2 = {
   /**
    * This is always set. For branch aliases, it's used as the fallback if there is no deployment for the branch.
    */
@@ -181,7 +181,7 @@ export type Applications2 = {
 /**
  * A list of the deployment routing information for each project.
  */
-export type Applications1 = {
+export type GetAliasApplications1 = {
   /**
    * This is always set. In production it is used as a pointer to each apps production deployment. For pre-production, it's used as the fallback if there is no deployment for the branch.
    */
@@ -192,19 +192,19 @@ export type Applications1 = {
   projectId: string;
 };
 
-export type Applications =
-  | Array<Applications1>
-  | Array<Applications2>
+export type GetAliasApplications =
+  | Array<GetAliasApplications1>
+  | Array<GetAliasApplications2>
   | Array<Applications3>;
 
 /**
  * The microfrontends for the alias including the routing configuration
  */
 export type GetAliasMicrofrontends = {
-  defaultApp: DefaultApp;
+  defaultApp: GetAliasDefaultApp;
   applications:
-    | Array<Applications1>
-    | Array<Applications2>
+    | Array<GetAliasApplications1>
+    | Array<GetAliasApplications2>
     | Array<Applications3>;
 };
 
@@ -668,37 +668,41 @@ export function getAliasProtectionBypassFromJSON(
 }
 
 /** @internal */
-export const DefaultApp$inboundSchema: z.ZodType<
-  DefaultApp,
+export const GetAliasDefaultApp$inboundSchema: z.ZodType<
+  GetAliasDefaultApp,
   z.ZodTypeDef,
   unknown
 > = z.object({
   projectId: types.string(),
 });
 /** @internal */
-export type DefaultApp$Outbound = {
+export type GetAliasDefaultApp$Outbound = {
   projectId: string;
 };
 
 /** @internal */
-export const DefaultApp$outboundSchema: z.ZodType<
-  DefaultApp$Outbound,
+export const GetAliasDefaultApp$outboundSchema: z.ZodType<
+  GetAliasDefaultApp$Outbound,
   z.ZodTypeDef,
-  DefaultApp
+  GetAliasDefaultApp
 > = z.object({
   projectId: z.string(),
 });
 
-export function defaultAppToJSON(defaultApp: DefaultApp): string {
-  return JSON.stringify(DefaultApp$outboundSchema.parse(defaultApp));
+export function getAliasDefaultAppToJSON(
+  getAliasDefaultApp: GetAliasDefaultApp,
+): string {
+  return JSON.stringify(
+    GetAliasDefaultApp$outboundSchema.parse(getAliasDefaultApp),
+  );
 }
-export function defaultAppFromJSON(
+export function getAliasDefaultAppFromJSON(
   jsonString: string,
-): SafeParseResult<DefaultApp, SDKValidationError> {
+): SafeParseResult<GetAliasDefaultApp, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => DefaultApp$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DefaultApp' from JSON`,
+    (x) => GetAliasDefaultApp$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAliasDefaultApp' from JSON`,
   );
 }
 
@@ -753,8 +757,8 @@ export function applications3FromJSON(
 }
 
 /** @internal */
-export const Applications2$inboundSchema: z.ZodType<
-  Applications2,
+export const GetAliasApplications2$inboundSchema: z.ZodType<
+  GetAliasApplications2,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -763,39 +767,43 @@ export const Applications2$inboundSchema: z.ZodType<
   projectId: types.string(),
 });
 /** @internal */
-export type Applications2$Outbound = {
+export type GetAliasApplications2$Outbound = {
   fallbackHost: string;
   branchAlias: string;
   projectId: string;
 };
 
 /** @internal */
-export const Applications2$outboundSchema: z.ZodType<
-  Applications2$Outbound,
+export const GetAliasApplications2$outboundSchema: z.ZodType<
+  GetAliasApplications2$Outbound,
   z.ZodTypeDef,
-  Applications2
+  GetAliasApplications2
 > = z.object({
   fallbackHost: z.string(),
   branchAlias: z.string(),
   projectId: z.string(),
 });
 
-export function applications2ToJSON(applications2: Applications2): string {
-  return JSON.stringify(Applications2$outboundSchema.parse(applications2));
+export function getAliasApplications2ToJSON(
+  getAliasApplications2: GetAliasApplications2,
+): string {
+  return JSON.stringify(
+    GetAliasApplications2$outboundSchema.parse(getAliasApplications2),
+  );
 }
-export function applications2FromJSON(
+export function getAliasApplications2FromJSON(
   jsonString: string,
-): SafeParseResult<Applications2, SDKValidationError> {
+): SafeParseResult<GetAliasApplications2, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Applications2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Applications2' from JSON`,
+    (x) => GetAliasApplications2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAliasApplications2' from JSON`,
   );
 }
 
 /** @internal */
-export const Applications1$inboundSchema: z.ZodType<
-  Applications1,
+export const GetAliasApplications1$inboundSchema: z.ZodType<
+  GetAliasApplications1,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -803,71 +811,79 @@ export const Applications1$inboundSchema: z.ZodType<
   projectId: types.string(),
 });
 /** @internal */
-export type Applications1$Outbound = {
+export type GetAliasApplications1$Outbound = {
   fallbackHost: string;
   projectId: string;
 };
 
 /** @internal */
-export const Applications1$outboundSchema: z.ZodType<
-  Applications1$Outbound,
+export const GetAliasApplications1$outboundSchema: z.ZodType<
+  GetAliasApplications1$Outbound,
   z.ZodTypeDef,
-  Applications1
+  GetAliasApplications1
 > = z.object({
   fallbackHost: z.string(),
   projectId: z.string(),
 });
 
-export function applications1ToJSON(applications1: Applications1): string {
-  return JSON.stringify(Applications1$outboundSchema.parse(applications1));
+export function getAliasApplications1ToJSON(
+  getAliasApplications1: GetAliasApplications1,
+): string {
+  return JSON.stringify(
+    GetAliasApplications1$outboundSchema.parse(getAliasApplications1),
+  );
 }
-export function applications1FromJSON(
+export function getAliasApplications1FromJSON(
   jsonString: string,
-): SafeParseResult<Applications1, SDKValidationError> {
+): SafeParseResult<GetAliasApplications1, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Applications1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Applications1' from JSON`,
+    (x) => GetAliasApplications1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAliasApplications1' from JSON`,
   );
 }
 
 /** @internal */
-export const Applications$inboundSchema: z.ZodType<
-  Applications,
+export const GetAliasApplications$inboundSchema: z.ZodType<
+  GetAliasApplications,
   z.ZodTypeDef,
   unknown
 > = smartUnion([
-  z.array(z.lazy(() => Applications1$inboundSchema)),
-  z.array(z.lazy(() => Applications2$inboundSchema)),
+  z.array(z.lazy(() => GetAliasApplications1$inboundSchema)),
+  z.array(z.lazy(() => GetAliasApplications2$inboundSchema)),
   z.array(z.lazy(() => Applications3$inboundSchema)),
 ]);
 /** @internal */
-export type Applications$Outbound =
-  | Array<Applications1$Outbound>
-  | Array<Applications2$Outbound>
+export type GetAliasApplications$Outbound =
+  | Array<GetAliasApplications1$Outbound>
+  | Array<GetAliasApplications2$Outbound>
   | Array<Applications3$Outbound>;
 
 /** @internal */
-export const Applications$outboundSchema: z.ZodType<
-  Applications$Outbound,
+export const GetAliasApplications$outboundSchema: z.ZodType<
+  GetAliasApplications$Outbound,
   z.ZodTypeDef,
-  Applications
+  GetAliasApplications
 > = smartUnion([
-  z.array(z.lazy(() => Applications1$outboundSchema)),
-  z.array(z.lazy(() => Applications2$outboundSchema)),
+  z.array(z.lazy(() => GetAliasApplications1$outboundSchema)),
+  z.array(z.lazy(() => GetAliasApplications2$outboundSchema)),
   z.array(z.lazy(() => Applications3$outboundSchema)),
 ]);
 
-export function applicationsToJSON(applications: Applications): string {
-  return JSON.stringify(Applications$outboundSchema.parse(applications));
+export function getAliasApplicationsToJSON(
+  getAliasApplications: GetAliasApplications,
+): string {
+  return JSON.stringify(
+    GetAliasApplications$outboundSchema.parse(getAliasApplications),
+  );
 }
-export function applicationsFromJSON(
+export function getAliasApplicationsFromJSON(
   jsonString: string,
-): SafeParseResult<Applications, SDKValidationError> {
+): SafeParseResult<GetAliasApplications, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Applications$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Applications' from JSON`,
+    (x) => GetAliasApplications$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAliasApplications' from JSON`,
   );
 }
 
@@ -877,19 +893,19 @@ export const GetAliasMicrofrontends$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  defaultApp: z.lazy(() => DefaultApp$inboundSchema),
+  defaultApp: z.lazy(() => GetAliasDefaultApp$inboundSchema),
   applications: smartUnion([
-    z.array(z.lazy(() => Applications1$inboundSchema)),
-    z.array(z.lazy(() => Applications2$inboundSchema)),
+    z.array(z.lazy(() => GetAliasApplications1$inboundSchema)),
+    z.array(z.lazy(() => GetAliasApplications2$inboundSchema)),
     z.array(z.lazy(() => Applications3$inboundSchema)),
   ]),
 });
 /** @internal */
 export type GetAliasMicrofrontends$Outbound = {
-  defaultApp: DefaultApp$Outbound;
+  defaultApp: GetAliasDefaultApp$Outbound;
   applications:
-    | Array<Applications1$Outbound>
-    | Array<Applications2$Outbound>
+    | Array<GetAliasApplications1$Outbound>
+    | Array<GetAliasApplications2$Outbound>
     | Array<Applications3$Outbound>;
 };
 
@@ -899,10 +915,10 @@ export const GetAliasMicrofrontends$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetAliasMicrofrontends
 > = z.object({
-  defaultApp: z.lazy(() => DefaultApp$outboundSchema),
+  defaultApp: z.lazy(() => GetAliasDefaultApp$outboundSchema),
   applications: smartUnion([
-    z.array(z.lazy(() => Applications1$outboundSchema)),
-    z.array(z.lazy(() => Applications2$outboundSchema)),
+    z.array(z.lazy(() => GetAliasApplications1$outboundSchema)),
+    z.array(z.lazy(() => GetAliasApplications2$outboundSchema)),
     z.array(z.lazy(() => Applications3$outboundSchema)),
   ]),
 });

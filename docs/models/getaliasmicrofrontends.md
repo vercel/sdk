@@ -17,7 +17,7 @@ let value: GetAliasMicrofrontends = {
 
 ## Fields
 
-| Field                                        | Type                                         | Required                                     | Description                                  |
-| -------------------------------------------- | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
-| `defaultApp`                                 | [models.DefaultApp](../models/defaultapp.md) | :heavy_check_mark:                           | N/A                                          |
-| `applications`                               | *models.Applications*                        | :heavy_check_mark:                           | N/A                                          |
+| Field                                                        | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `defaultApp`                                                 | [models.GetAliasDefaultApp](../models/getaliasdefaultapp.md) | :heavy_check_mark:                                           | N/A                                                          |
+| `applications`                                               | *models.GetAliasApplications*                                | :heavy_check_mark:                                           | N/A                                                          |

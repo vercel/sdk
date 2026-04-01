@@ -23,6 +23,7 @@ import { projectsRemoveProjectEnv } from "../funcs/projectsRemoveProjectEnv.js";
 import { projectsRequestPromote } from "../funcs/projectsRequestPromote.js";
 import { projectsRequestRollback } from "../funcs/projectsRequestRollback.js";
 import { projectsUnpauseProject } from "../funcs/projectsUnpauseProject.js";
+import { projectsUpdateMicrofrontends } from "../funcs/projectsUpdateMicrofrontends.js";
 import { projectsUpdateProject } from "../funcs/projectsUpdateProject.js";
 import { projectsUpdateProjectDomain } from "../funcs/projectsUpdateProjectDomain.js";
 import { projectsUpdateProjectProtectionBypass } from "../funcs/projectsUpdateProjectProtectionBypass.js";
@@ -71,7 +72,7 @@ import {
   GetProjectEnvRequest,
   GetProjectEnvResponseBody,
 } from "../models/getprojectenvop.js";
-import { GetProjectsRequest } from "../models/getprojectsblockhistoryprojectsresponse200applicationjsonroute.js";
+import { GetProjectsRequest } from "../models/getprojectsblockhistoryprojectsresponse200applicationjsonresponsebodyroute.js";
 import { GetProjectsResponseBody } from "../models/getprojectsresponsebody.js";
 import {
   ListPromoteAliasesRequest,
@@ -93,6 +94,10 @@ import {
 import { RequestPromoteRequest } from "../models/requestpromoteop.js";
 import { RequestRollbackRequest } from "../models/requestrollbackop.js";
 import { UnpauseProjectRequest } from "../models/unpauseprojectop.js";
+import {
+  UpdateMicrofrontendsRequest,
+  UpdateMicrofrontendsResponseBody,
+} from "../models/updatemicrofrontendsop.js";
 import {
   UpdateProjectDomainRequest,
   UpdateProjectDomainResponseBody,
@@ -487,6 +492,23 @@ export class Projects extends ClientSDK {
         options,
       ),
     );
+  }
+
+  /**
+   * Update the microfrontends settings
+   *
+   * @remarks
+   * Update the microfrontends settings for a project.
+   */
+  async updateMicrofrontends(
+    request: UpdateMicrofrontendsRequest,
+    options?: RequestOptions,
+  ): Promise<UpdateMicrofrontendsResponseBody> {
+    return unwrapAsync(projectsUpdateMicrofrontends(
+      this,
+      request,
+      options,
+    ));
   }
 
   /**

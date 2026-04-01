@@ -13,6 +13,7 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
  * The status of the current sandbox.
  */
 export const NamedSandboxStatus = {
+  Stopping: "stopping",
   Running: "running",
   Stopped: "stopped",
 } as const;

@@ -453,6 +453,7 @@ export const ListEventTypesName = {
   WebhookDeleted: "webhook-deleted",
   WebhookUpdated: "webhook-updated",
   V0ChatCreated: "v0-chat-created",
+  V0ChatAiUsage: "v0-chat-ai-usage",
   V0ChatMessageSent: "v0-chat-message-sent",
   WorkflowDeploymentKeyAccessed: "workflow-deployment-key-accessed",
 } as const;

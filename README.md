@@ -558,6 +558,14 @@ run();
 * [getInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfig](docs/sdks/marketplace/README.md#getinstallationsbyintegrationconfigurationidresourcesbyresourceidexperimentationedgeconfig) - Get the data of a user-provided Edge Config
 * [updateInstallationIntegrationEdgeConfig](docs/sdks/marketplace/README.md#updateinstallationintegrationedgeconfig) - Push data into a user-provided Edge Config
 
+### [Microfrontends](docs/sdks/microfrontends/README.md)
+
+* [getMicrofrontendsGroups](docs/sdks/microfrontends/README.md#getmicrofrontendsgroups) - List microfrontends groups
+* [getMicrofrontendsInGroup](docs/sdks/microfrontends/README.md#getmicrofrontendsingroup) - List projects in a microfrontends group
+* [getMicrofrontendsConfig](docs/sdks/microfrontends/README.md#getmicrofrontendsconfig) - Get microfrontends config for a deployment
+* [getMicrofrontendsConfigForProject](docs/sdks/microfrontends/README.md#getmicrofrontendsconfigforproject) - Get microfrontends config for a project
+* [createMicrofrontendsGroupWithApplications](docs/sdks/microfrontends/README.md#createmicrofrontendsgroupwithapplications) - Create a microfrontends group with applications
+
 ### [ProjectRoutes](docs/sdks/projectroutes/README.md)
 
 * [getRoutes](docs/sdks/projectroutes/README.md#getroutes) - Get project routing rules
@@ -599,6 +607,7 @@ run();
 * [updateProjectProtectionBypass](docs/sdks/projects/README.md#updateprojectprotectionbypass) - Update Protection Bypass for Automation
 * [requestRollback](docs/sdks/projects/README.md#requestrollback) - Points all production domains for a project to the given deploy
 * [updateProjectsByProjectIdRollbackByDeploymentIdUpdateDescription](docs/sdks/projects/README.md#updateprojectsbyprojectidrollbackbydeploymentidupdatedescription) - Updates the description for a rollback
+* [updateMicrofrontends](docs/sdks/projects/README.md#updatemicrofrontends) - Update the microfrontends settings
 * [requestPromote](docs/sdks/projects/README.md#requestpromote) - Points all production domains for a project to the given deploy
 * [listPromoteAliases](docs/sdks/projects/README.md#listpromotealiases) - Gets a list of aliases with status for the current promote
 * [pauseProject](docs/sdks/projects/README.md#pauseproject) - Pause a project
@@ -690,6 +699,8 @@ run();
 * [postTeamDsyncRoles](docs/sdks/teams/README.md#postteamdsyncroles) - Update Team Directory Sync Role Mappings
 * [deleteTeam](docs/sdks/teams/README.md#deleteteam) - Delete a Team
 * [deleteTeamInviteCode](docs/sdks/teams/README.md#deleteteaminvitecode) - Delete a Team invite code
+* [updateMicrofrontendsGroup](docs/sdks/teams/README.md#updatemicrofrontendsgroup) - Update a microfrontends group
+* [deleteMicrofrontendsGroup](docs/sdks/teams/README.md#deletemicrofrontendsgroup) - Delete a microfrontends group
 
 ### [User](docs/sdks/user/README.md)
 
@@ -918,6 +929,11 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`marketplaceUpdateInvoice`](docs/sdks/marketplace/README.md#updateinvoice) - Invoice Actions
 - [`marketplaceUpdateResource`](docs/sdks/marketplace/README.md#updateresource) - Update Resource
 - [`marketplaceUpdateResourceSecretsById`](docs/sdks/marketplace/README.md#updateresourcesecretsbyid) - Update Resource Secrets
+- [`microfrontendsCreateMicrofrontendsGroupWithApplications`](docs/sdks/microfrontends/README.md#createmicrofrontendsgroupwithapplications) - Create a microfrontends group with applications
+- [`microfrontendsGetMicrofrontendsConfig`](docs/sdks/microfrontends/README.md#getmicrofrontendsconfig) - Get microfrontends config for a deployment
+- [`microfrontendsGetMicrofrontendsConfigForProject`](docs/sdks/microfrontends/README.md#getmicrofrontendsconfigforproject) - Get microfrontends config for a project
+- [`microfrontendsGetMicrofrontendsGroups`](docs/sdks/microfrontends/README.md#getmicrofrontendsgroups) - List microfrontends groups
+- [`microfrontendsGetMicrofrontendsInGroup`](docs/sdks/microfrontends/README.md#getmicrofrontendsingroup) - List projects in a microfrontends group
 - [`projectMembersAddProjectMember`](docs/sdks/projectmembers/README.md#addprojectmember) - Adds a new member to a project.
 - [`projectMembersGetProjectMembers`](docs/sdks/projectmembers/README.md#getprojectmembers) - List project members
 - [`projectMembersRemoveProjectMember`](docs/sdks/projectmembers/README.md#removeprojectmember) - Remove a Project Member
@@ -950,6 +966,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`projectsRequestPromote`](docs/sdks/projects/README.md#requestpromote) - Points all production domains for a project to the given deploy
 - [`projectsRequestRollback`](docs/sdks/projects/README.md#requestrollback) - Points all production domains for a project to the given deploy
 - [`projectsUnpauseProject`](docs/sdks/projects/README.md#unpauseproject) - Unpause a project
+- [`projectsUpdateMicrofrontends`](docs/sdks/projects/README.md#updatemicrofrontends) - Update the microfrontends settings
 - [`projectsUpdateProject`](docs/sdks/projects/README.md#updateproject) - Update an existing project
 - [`projectsUpdateProjectDomain`](docs/sdks/projects/README.md#updateprojectdomain) - Update a project domain
 - [`projectsUpdateProjectProtectionBypass`](docs/sdks/projects/README.md#updateprojectprotectionbypass) - Update Protection Bypass for Automation
@@ -1010,6 +1027,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`securityUpdateAttackChallengeMode`](docs/sdks/security/README.md#updateattackchallengemode) - Update Attack Challenge mode
 - [`securityUpdateFirewallConfig`](docs/sdks/security/README.md#updatefirewallconfig) - Update Firewall Configuration
 - [`teamsCreateTeam`](docs/sdks/teams/README.md#createteam) - Create a Team
+- [`teamsDeleteMicrofrontendsGroup`](docs/sdks/teams/README.md#deletemicrofrontendsgroup) - Delete a microfrontends group
 - [`teamsDeleteTeam`](docs/sdks/teams/README.md#deleteteam) - Delete a Team
 - [`teamsDeleteTeamInviteCode`](docs/sdks/teams/README.md#deleteteaminvitecode) - Delete a Team invite code
 - [`teamsGetTeam`](docs/sdks/teams/README.md#getteam) - Get a Team
@@ -1022,6 +1040,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`teamsPostTeamDsyncRoles`](docs/sdks/teams/README.md#postteamdsyncroles) - Update Team Directory Sync Role Mappings
 - [`teamsRemoveTeamMember`](docs/sdks/teams/README.md#removeteammember) - Remove a Team Member
 - [`teamsRequestAccessToTeam`](docs/sdks/teams/README.md#requestaccesstoteam) - Request access to a team
+- [`teamsUpdateMicrofrontendsGroup`](docs/sdks/teams/README.md#updatemicrofrontendsgroup) - Update a microfrontends group
 - [`teamsUpdateTeamMember`](docs/sdks/teams/README.md#updateteammember) - Update a Team Member
 - [`userGetAuthUser`](docs/sdks/user/README.md#getauthuser) - Get the User
 - [`userListEventTypes`](docs/sdks/user/README.md#listeventtypes) - List Event Types
@@ -1261,31 +1280,31 @@ run();
 
 
 **Inherit from [`VercelError`](./src/models/vercelerror.ts)**:
-* [`HttpApiDecodeError`](./src/models/httpapidecodeerror.ts): The request did not match the expected schema. Status code `400`. Applicable to 16 of 314 methods.*
-* [`Unauthorized`](./src/models/unauthorized.ts): Unauthorized. Status code `401`. Applicable to 16 of 314 methods.*
-* [`NotAuthorizedForScope`](./src/models/notauthorizedforscope.ts): NotAuthorizedForScope. Status code `403`. Applicable to 16 of 314 methods.*
-* [`TooManyRequests`](./src/models/toomanyrequests.ts): TooManyRequests. Status code `429`. Applicable to 16 of 314 methods.*
-* [`InternalServerError`](./src/models/internalservererror.ts): InternalServerError. Status code `500`. Applicable to 16 of 314 methods.*
-* [`Forbidden`](./src/models/forbidden.ts): NotAuthorizedForScope. Status code `403`. Applicable to 9 of 314 methods.*
-* [`TldNotSupported`](./src/models/tldnotsupported.ts): The TLD is not currently supported. Status code `400`. Applicable to 7 of 314 methods.*
-* [`DomainTooShort`](./src/models/domaintooshort.ts): The domain name (excluding the TLD) is too short. Status code `400`. Applicable to 5 of 314 methods.*
-* [`BadRequest`](./src/models/badrequest.ts): There was something wrong with the request. Status code `400`. Applicable to 4 of 314 methods.*
-* [`DomainNotRegistered`](./src/models/domainnotregistered.ts): The domain is not registered with Vercel. Status code `400`. Applicable to 4 of 314 methods.*
-* [`ExpectedPriceMismatch`](./src/models/expectedpricemismatch.ts): The expected price passed does not match the actual price. Status code `400`. Applicable to 4 of 314 methods.*
-* [`DomainNotAvailable`](./src/models/domainnotavailable.ts): The domain is not available. Status code `400`. Applicable to 4 of 314 methods.*
-* [`DomainNotFound`](./src/models/domainnotfound.ts): The domain was not found in our system. Status code `404`. Applicable to 4 of 314 methods.*
-* [`NotFound`](./src/models/notfound.ts): NotFound. Status code `404`. Applicable to 3 of 314 methods.*
-* [`OrderTooExpensive`](./src/models/ordertooexpensive.ts): The total price of the order is too high. Status code `400`. Applicable to 2 of 314 methods.*
-* [`InvalidAdditionalContactInfo`](./src/models/invalidadditionalcontactinfo.ts): Additional contact information provided for the TLD is invalid. Status code `400`. Applicable to 2 of 314 methods.*
-* [`AdditionalContactInfoRequired`](./src/models/additionalcontactinforequired.ts): Additional contact information is required for the TLD. Status code `400`. Applicable to 2 of 314 methods.*
-* [`LanguageCodeRequired`](./src/models/languagecoderequired.ts): A language code is required for punycode domains. Status code `400`. Applicable to 2 of 314 methods.*
-* [`TooManyDomains`](./src/models/toomanydomains.ts): The number of domains in the order is too high. Status code `400`. Applicable to 1 of 314 methods.*
-* [`DuplicateDomains`](./src/models/duplicatedomains.ts): Duplicate domains were provided. Status code `400`. Applicable to 1 of 314 methods.*
-* [`DomainAlreadyOwned`](./src/models/domainalreadyowned.ts): The domain is already owned by another team or user. Status code `400`. Applicable to 1 of 314 methods.*
-* [`DNSSECEnabled`](./src/models/dnssecenabled.ts): The operation cannot be completed because DNSSEC is enabled for the domain. Status code `400`. Applicable to 1 of 314 methods.*
-* [`DomainAlreadyRenewing`](./src/models/domainalreadyrenewing.ts): The domain is already renewing. Status code `400`. Applicable to 1 of 314 methods.*
-* [`DomainNotRenewable`](./src/models/domainnotrenewable.ts): The domain is not renewable. Status code `400`. Applicable to 1 of 314 methods.*
-* [`DomainCannotBeTransferedOutUntil`](./src/models/domaincannotbetransferedoutuntil.ts): The domain cannot be transfered out until the specified date. Status code `409`. Applicable to 1 of 314 methods.*
+* [`HttpApiDecodeError`](./src/models/httpapidecodeerror.ts): The request did not match the expected schema. Status code `400`. Applicable to 16 of 322 methods.*
+* [`Unauthorized`](./src/models/unauthorized.ts): Unauthorized. Status code `401`. Applicable to 16 of 322 methods.*
+* [`NotAuthorizedForScope`](./src/models/notauthorizedforscope.ts): NotAuthorizedForScope. Status code `403`. Applicable to 16 of 322 methods.*
+* [`TooManyRequests`](./src/models/toomanyrequests.ts): TooManyRequests. Status code `429`. Applicable to 16 of 322 methods.*
+* [`InternalServerError`](./src/models/internalservererror.ts): InternalServerError. Status code `500`. Applicable to 16 of 322 methods.*
+* [`Forbidden`](./src/models/forbidden.ts): NotAuthorizedForScope. Status code `403`. Applicable to 9 of 322 methods.*
+* [`TldNotSupported`](./src/models/tldnotsupported.ts): The TLD is not currently supported. Status code `400`. Applicable to 7 of 322 methods.*
+* [`DomainTooShort`](./src/models/domaintooshort.ts): The domain name (excluding the TLD) is too short. Status code `400`. Applicable to 5 of 322 methods.*
+* [`BadRequest`](./src/models/badrequest.ts): There was something wrong with the request. Status code `400`. Applicable to 4 of 322 methods.*
+* [`DomainNotRegistered`](./src/models/domainnotregistered.ts): The domain is not registered with Vercel. Status code `400`. Applicable to 4 of 322 methods.*
+* [`ExpectedPriceMismatch`](./src/models/expectedpricemismatch.ts): The expected price passed does not match the actual price. Status code `400`. Applicable to 4 of 322 methods.*
+* [`DomainNotAvailable`](./src/models/domainnotavailable.ts): The domain is not available. Status code `400`. Applicable to 4 of 322 methods.*
+* [`DomainNotFound`](./src/models/domainnotfound.ts): The domain was not found in our system. Status code `404`. Applicable to 4 of 322 methods.*
+* [`NotFound`](./src/models/notfound.ts): NotFound. Status code `404`. Applicable to 3 of 322 methods.*
+* [`OrderTooExpensive`](./src/models/ordertooexpensive.ts): The total price of the order is too high. Status code `400`. Applicable to 2 of 322 methods.*
+* [`InvalidAdditionalContactInfo`](./src/models/invalidadditionalcontactinfo.ts): Additional contact information provided for the TLD is invalid. Status code `400`. Applicable to 2 of 322 methods.*
+* [`AdditionalContactInfoRequired`](./src/models/additionalcontactinforequired.ts): Additional contact information is required for the TLD. Status code `400`. Applicable to 2 of 322 methods.*
+* [`LanguageCodeRequired`](./src/models/languagecoderequired.ts): A language code is required for punycode domains. Status code `400`. Applicable to 2 of 322 methods.*
+* [`TooManyDomains`](./src/models/toomanydomains.ts): The number of domains in the order is too high. Status code `400`. Applicable to 1 of 322 methods.*
+* [`DuplicateDomains`](./src/models/duplicatedomains.ts): Duplicate domains were provided. Status code `400`. Applicable to 1 of 322 methods.*
+* [`DomainAlreadyOwned`](./src/models/domainalreadyowned.ts): The domain is already owned by another team or user. Status code `400`. Applicable to 1 of 322 methods.*
+* [`DNSSECEnabled`](./src/models/dnssecenabled.ts): The operation cannot be completed because DNSSEC is enabled for the domain. Status code `400`. Applicable to 1 of 322 methods.*
+* [`DomainAlreadyRenewing`](./src/models/domainalreadyrenewing.ts): The domain is already renewing. Status code `400`. Applicable to 1 of 322 methods.*
+* [`DomainNotRenewable`](./src/models/domainnotrenewable.ts): The domain is not renewable. Status code `400`. Applicable to 1 of 322 methods.*
+* [`DomainCannotBeTransferedOutUntil`](./src/models/domaincannotbetransferedoutuntil.ts): The domain cannot be transfered out until the specified date. Status code `409`. Applicable to 1 of 322 methods.*
 * [`ResponseValidationError`](./src/models/responsevalidationerror.ts): Type mismatch between the data returned from the server and the structure expected by the SDK. See `error.rawValue` for the raw value and `error.pretty()` for a nicely formatted multi-line string.
 
 </details>

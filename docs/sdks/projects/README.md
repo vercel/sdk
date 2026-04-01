@@ -26,6 +26,7 @@
 * [updateProjectProtectionBypass](#updateprojectprotectionbypass) - Update Protection Bypass for Automation
 * [requestRollback](#requestrollback) - Points all production domains for a project to the given deploy
 * [updateProjectsByProjectIdRollbackByDeploymentIdUpdateDescription](#updateprojectsbyprojectidrollbackbydeploymentidupdatedescription) - Updates the description for a rollback
+* [updateMicrofrontends](#updatemicrofrontends) - Update the microfrontends settings
 * [requestPromote](#requestpromote) - Points all production domains for a project to the given deploy
 * [listPromoteAliases](#listpromotealiases) - Gets a list of aliases with status for the current promote
 * [pauseProject](#pauseproject) - Pause a project
@@ -1868,6 +1869,95 @@ run();
 ### Response
 
 **Promise\<void\>**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| models.SDKError | 4XX, 5XX        | \*/\*           |
+
+## updateMicrofrontends
+
+Update the microfrontends settings for a project.
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="updateMicrofrontends" method="patch" path="/v1/projects/{projectId}/microfrontends" -->
+```typescript
+import { Vercel } from "@vercel/sdk";
+
+const vercel = new Vercel({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await vercel.projects.updateMicrofrontends({
+    projectId: "prj_12HKQaOmR5t5Uy6vdcQsNIiZgHGB",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+    requestBody: {
+      microfrontendsGroupId: "mfe_12HKQaOmR5t5Uy6vdcQsNIiZgHGB",
+      enabled: true,
+      isDefaultApp: true,
+      defaultRoute: "/home",
+    },
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { VercelCore } from "@vercel/sdk/core.js";
+import { projectsUpdateMicrofrontends } from "@vercel/sdk/funcs/projectsUpdateMicrofrontends.js";
+
+// Use `VercelCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const vercel = new VercelCore({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await projectsUpdateMicrofrontends(vercel, {
+    projectId: "prj_12HKQaOmR5t5Uy6vdcQsNIiZgHGB",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+    requestBody: {
+      microfrontendsGroupId: "mfe_12HKQaOmR5t5Uy6vdcQsNIiZgHGB",
+      enabled: true,
+      isDefaultApp: true,
+      defaultRoute: "/home",
+    },
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("projectsUpdateMicrofrontends failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [models.UpdateMicrofrontendsRequest](../../models/updatemicrofrontendsrequest.md)                                                                                              | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[models.UpdateMicrofrontendsResponseBody](../../models/updatemicrofrontendsresponsebody.md)\>**
 
 ### Errors
 

@@ -3,49 +3,36 @@
 
 ## Supported Types
 
-### `models.GetProjectsBlockHistoryProjects1`
+### `models.GetProjectsBlockHistoryProjectsResponse1`
 
 ```typescript
-const value: models.GetProjectsBlockHistoryProjects1 = {
+const value: models.GetProjectsBlockHistoryProjectsResponse1 = {
   action: "blocked",
   reason: "<value>",
-  statusCode: 9460.54,
-  createdAt: 2117.58,
+  statusCode: 4808.42,
+  createdAt: 9677.51,
 };
 ```
 
-### `models.GetProjectsBlockHistoryProjects2`
+### `models.GetProjectsBlockHistoryProjectsResponse2`
 
 ```typescript
-const value: models.GetProjectsBlockHistoryProjects2 = {
+const value: models.GetProjectsBlockHistoryProjectsResponse2 = {
   action: "unblocked",
-  createdAt: 3700.08,
+  createdAt: 3923.15,
 };
 ```
 
-### `models.GetProjectsBlockHistoryProjects3`
+### `models.GetProjectsBlockHistoryProjectsResponse3`
 
 ```typescript
-const value: models.GetProjectsBlockHistoryProjects3 = {
+const value: models.GetProjectsBlockHistoryProjectsResponse3 = {
   action: "route-blocked",
-  route: {
-    src: "<value>",
-    status: 5533.57,
-  },
-  reason: "<value>",
-  createdAt: 2165.59,
-};
-```
-
-### `models.GetProjectsBlockHistoryProjects4`
-
-```typescript
-const value: models.GetProjectsBlockHistoryProjects4 = {
-  action: "route-unblocked",
   route: {
     has: [
       {
-        type: "host",
+        type: "header",
+        key: "x-vercel-ip-country",
         value: {
           eq: "<value>",
         },
@@ -55,7 +42,31 @@ const value: models.GetProjectsBlockHistoryProjects4 = {
       action: "block_legal_cwc",
     },
   },
-  createdAt: 8632.82,
+  reason: "<value>",
+  createdAt: 7229.26,
+};
+```
+
+### `models.GetProjectsBlockHistoryProjectsResponse4`
+
+```typescript
+const value: models.GetProjectsBlockHistoryProjectsResponse4 = {
+  action: "route-unblocked",
+  route: {
+    has: [
+      {
+        type: "header",
+        key: "x-vercel-ip-country",
+        value: {
+          eq: "<value>",
+        },
+      },
+    ],
+    mitigate: {
+      action: "block_legal_cwc",
+    },
+  },
+  createdAt: 300.19,
 };
 ```
 

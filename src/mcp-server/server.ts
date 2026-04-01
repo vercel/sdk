@@ -213,6 +213,11 @@ import { tool$marketplaceUpdateInvoice } from "./tools/marketplaceUpdateInvoice.
 import { tool$marketplaceUpdateResource } from "./tools/marketplaceUpdateResource.js";
 import { tool$marketplaceUpdateResourceSecrets } from "./tools/marketplaceUpdateResourceSecrets.js";
 import { tool$marketplaceUpdateResourceSecretsById } from "./tools/marketplaceUpdateResourceSecretsById.js";
+import { tool$microfrontendsCreateMicrofrontendsGroupWithApplications } from "./tools/microfrontendsCreateMicrofrontendsGroupWithApplications.js";
+import { tool$microfrontendsGetMicrofrontendsConfig } from "./tools/microfrontendsGetMicrofrontendsConfig.js";
+import { tool$microfrontendsGetMicrofrontendsConfigForProject } from "./tools/microfrontendsGetMicrofrontendsConfigForProject.js";
+import { tool$microfrontendsGetMicrofrontendsGroups } from "./tools/microfrontendsGetMicrofrontendsGroups.js";
+import { tool$microfrontendsGetMicrofrontendsInGroup } from "./tools/microfrontendsGetMicrofrontendsInGroup.js";
 import { tool$projectMembersAddProjectMember } from "./tools/projectMembersAddProjectMember.js";
 import { tool$projectMembersGetProjectMembers } from "./tools/projectMembersGetProjectMembers.js";
 import { tool$projectMembersRemoveProjectMember } from "./tools/projectMembersRemoveProjectMember.js";
@@ -245,6 +250,7 @@ import { tool$projectsRemoveProjectEnv } from "./tools/projectsRemoveProjectEnv.
 import { tool$projectsRequestPromote } from "./tools/projectsRequestPromote.js";
 import { tool$projectsRequestRollback } from "./tools/projectsRequestRollback.js";
 import { tool$projectsUnpauseProject } from "./tools/projectsUnpauseProject.js";
+import { tool$projectsUpdateMicrofrontends } from "./tools/projectsUpdateMicrofrontends.js";
 import { tool$projectsUpdateProject } from "./tools/projectsUpdateProject.js";
 import { tool$projectsUpdateProjectDomain } from "./tools/projectsUpdateProjectDomain.js";
 import { tool$projectsUpdateProjectProtectionBypass } from "./tools/projectsUpdateProjectProtectionBypass.js";
@@ -305,6 +311,7 @@ import { tool$securityRemoveBypassIp } from "./tools/securityRemoveBypassIp.js";
 import { tool$securityUpdateAttackChallengeMode } from "./tools/securityUpdateAttackChallengeMode.js";
 import { tool$securityUpdateFirewallConfig } from "./tools/securityUpdateFirewallConfig.js";
 import { tool$teamsCreateTeam } from "./tools/teamsCreateTeam.js";
+import { tool$teamsDeleteMicrofrontendsGroup } from "./tools/teamsDeleteMicrofrontendsGroup.js";
 import { tool$teamsDeleteTeam } from "./tools/teamsDeleteTeam.js";
 import { tool$teamsDeleteTeamInviteCode } from "./tools/teamsDeleteTeamInviteCode.js";
 import { tool$teamsGetTeam } from "./tools/teamsGetTeam.js";
@@ -317,6 +324,7 @@ import { tool$teamsPatchTeam } from "./tools/teamsPatchTeam.js";
 import { tool$teamsPostTeamDsyncRoles } from "./tools/teamsPostTeamDsyncRoles.js";
 import { tool$teamsRemoveTeamMember } from "./tools/teamsRemoveTeamMember.js";
 import { tool$teamsRequestAccessToTeam } from "./tools/teamsRequestAccessToTeam.js";
+import { tool$teamsUpdateMicrofrontendsGroup } from "./tools/teamsUpdateMicrofrontendsGroup.js";
 import { tool$teamsUpdateTeamMember } from "./tools/teamsUpdateTeamMember.js";
 import { tool$userGetAuthUser } from "./tools/userGetAuthUser.js";
 import { tool$userListEventTypes } from "./tools/userListEventTypes.js";
@@ -337,7 +345,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Vercel",
-    version: "1.19.23",
+    version: "1.19.24",
   });
 
   const client = new VercelCore({
@@ -559,6 +567,11 @@ export function createMCPServer(deps: {
   tool(tool$authenticationGetAuthToken);
   tool(tool$authenticationDeleteAuthToken);
   tool(tool$logsGetRuntimeLogs);
+  tool(tool$microfrontendsGetMicrofrontendsGroups);
+  tool(tool$microfrontendsGetMicrofrontendsInGroup);
+  tool(tool$microfrontendsGetMicrofrontendsConfig);
+  tool(tool$microfrontendsGetMicrofrontendsConfigForProject);
+  tool(tool$microfrontendsCreateMicrofrontendsGroupWithApplications);
   tool(tool$apiObservabilityGetObservabilityConfigurationProjects);
   tool(tool$apiObservabilityUpdateObservabilityConfigurationProject);
   tool(tool$projectMembersGetProjectMembers);
@@ -596,6 +609,7 @@ export function createMCPServer(deps: {
   tool(
     tool$projectsUpdateProjectsByProjectIdRollbackByDeploymentIdUpdateDescription,
   );
+  tool(tool$projectsUpdateMicrofrontends);
   tool(tool$projectsRequestPromote);
   tool(tool$projectsListPromoteAliases);
   tool(tool$projectsPauseProject);
@@ -668,6 +682,8 @@ export function createMCPServer(deps: {
   tool(tool$teamsPostTeamDsyncRoles);
   tool(tool$teamsDeleteTeam);
   tool(tool$teamsDeleteTeamInviteCode);
+  tool(tool$teamsUpdateMicrofrontendsGroup);
+  tool(tool$teamsDeleteMicrofrontendsGroup);
   tool(tool$webhooksCreateWebhook);
   tool(tool$webhooksGetWebhooks);
   tool(tool$webhooksGetWebhook);

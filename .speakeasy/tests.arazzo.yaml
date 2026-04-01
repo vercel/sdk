@@ -9752,3 +9752,200 @@ workflows:
             type: simple
     x-speakeasy-test-group: api-observability
     x-speakeasy-test-rebuild: true
+  - workflowId: getMicrofrontendsGroups
+    steps:
+      - stepId: test
+        operationId: getMicrofrontendsGroups
+        parameters:
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {}
+            type: simple
+    x-speakeasy-test-group: microfrontends
+    x-speakeasy-test-rebuild: true
+  - workflowId: getMicrofrontendsInGroup
+    steps:
+      - stepId: test
+        operationId: getMicrofrontendsInGroup
+        parameters:
+          - name: groupId
+            in: path
+            value: <id>
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"projects":[{"accountId":"<id>","crons":{"enabledAt":6540.1,"disabledAt":158.39,"updatedAt":4019.2,"deploymentId":"<id>","definitions":[{"host":"vercel.com","path":"/api/crons/sync-something?hello=world","schedule":"0 0 * * *"}]},"deploymentExpiration":{},"directoryListing":false,"id":"<id>","latestDeployments":[{"id":"<id>","createdAt":6193.73,"createdIn":"<value>","creator":{"email":"Alessia.Denesik68@gmail.com","uid":"<id>","username":"Karlie_Kassulke"},"deploymentHostname":"<value>","name":"<value>","plan":"enterprise","previewCommentsEnabled":false,"private":true,"readyState":"READY","type":"LAMBDAS","url":"https://peaceful-bump.com/","userId":"<id>"}],"name":"<value>","nodeVersion":"8.10.x","resourceConfig":{"functionDefaultRegions":["<value 1>","<value 2>","<value 3>"]},"rollingRelease":null,"defaultResourceConfig":{"functionDefaultRegions":["<value 1>","<value 2>"]},"targets":{"key":{"id":"<id>","createdAt":7978.81,"createdIn":"<value>","creator":{"email":"Fanny_OKon56@hotmail.com","uid":"<id>","username":"Delia16"},"deploymentHostname":"<value>","name":"<value>","plan":"pro","previewCommentsEnabled":false,"private":false,"readyState":"INITIALIZING","type":"LAMBDAS","url":"https://multicolored-freezing.biz","userId":"<id>"}}}]}
+            type: simple
+    x-speakeasy-test-group: microfrontends
+    x-speakeasy-test-rebuild: true
+  - workflowId: getMicrofrontendsConfig
+    steps:
+      - stepId: test
+        operationId: getMicrofrontendsConfig
+        parameters:
+          - name: deploymentId
+            in: path
+            value: <id>
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"config":null}
+            type: simple
+    x-speakeasy-test-group: microfrontends
+    x-speakeasy-test-rebuild: true
+  - workflowId: getMicrofrontendsConfigForProject
+    steps:
+      - stepId: test
+        operationId: getMicrofrontendsConfigForProject
+        parameters:
+          - name: projectIdOrName
+            in: path
+            value: <value>
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"config":{"applications":{}}}
+            type: simple
+    x-speakeasy-test-group: microfrontends
+    x-speakeasy-test-rebuild: true
+  - workflowId: createMicrofrontendsGroupWithApplications
+    steps:
+      - stepId: test
+        operationId: createMicrofrontendsGroupWithApplications
+        parameters:
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        requestBody:
+          contentType: application/json
+          payload:
+            defaultApp:
+              projectId: <id>
+            groupName: MFE Group 1
+            otherApplications:
+              - projectId: <id>
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"newMicrofrontendsGroup":{"id":"<id>","slug":"<value>","name":"<value>","fallbackEnvironment":"<value>","createdAt":2039.7,"updatedAt":8549.07}}
+            type: simple
+    x-speakeasy-test-group: microfrontends
+    x-speakeasy-test-rebuild: true
+  - workflowId: updateMicrofrontends
+    steps:
+      - stepId: test
+        operationId: updateMicrofrontends
+        parameters:
+          - name: projectId
+            in: path
+            value: prj_12HKQaOmR5t5Uy6vdcQsNIiZgHGB
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        requestBody:
+          contentType: application/json
+          payload:
+            defaultRoute: /home
+            enabled: true
+            isDefaultApp: true
+            microfrontendsGroupId: mfe_12HKQaOmR5t5Uy6vdcQsNIiZgHGB
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"accountId":"<id>","crons":{"enabledAt":697.46,"disabledAt":null,"updatedAt":6144.67,"deploymentId":"<id>","definitions":[{"host":"vercel.com","path":"/api/crons/sync-something?hello=world","schedule":"0 0 * * *"}]},"deploymentExpiration":{},"directoryListing":true,"id":"<id>","name":"<value>","nodeVersion":"20.x","resourceConfig":{"functionDefaultRegions":["<value 1>","<value 2>"]},"rollingRelease":{"target":"production","stages":[{"targetPercentage":25,"requireApproval":false,"duration":600,"linearShift":false}],"canaryResponseHeader":false},"defaultResourceConfig":{"functionDefaultRegions":["<value 1>","<value 2>","<value 3>"]}}
+            type: simple
+    x-speakeasy-test-group: projects
+    x-speakeasy-test-rebuild: true
+  - workflowId: updateMicrofrontendsGroup
+    steps:
+      - stepId: test
+        operationId: updateMicrofrontendsGroup
+        parameters:
+          - name: groupId
+            in: path
+            value: <id>
+          - name: teamId
+            in: path
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        requestBody:
+          contentType: application/json
+          payload:
+            name: MFE Group 1
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"updatedMicrofrontendsGroup":{"id":"<id>"}}
+            type: simple
+    x-speakeasy-test-group: teams
+    x-speakeasy-test-rebuild: true
+  - workflowId: deleteMicrofrontendsGroup
+    steps:
+      - stepId: test
+        operationId: deleteMicrofrontendsGroup
+        parameters:
+          - name: groupId
+            in: path
+            value: mfe_
+          - name: teamId
+            in: path
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {}
+            type: simple
+    x-speakeasy-test-group: teams
+    x-speakeasy-test-rebuild: true

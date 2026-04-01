@@ -1,17 +1,17 @@
 # GetDeploymentResponseBodyDeploymentsResponseType
 
-Whether the value is an opaque identifier or a URL.
+User type
 
 ## Example Usage
 
 ```typescript
 import { GetDeploymentResponseBodyDeploymentsResponseType } from "@vercel/sdk/models/getdeploymentresponsebody.js";
 
-let value: GetDeploymentResponseBodyDeploymentsResponseType = "url";
+let value: GetDeploymentResponseBodyDeploymentsResponseType = "bot";
 ```
 
 ## Values
 
 ```typescript
-"id" | "url"
+"user" | "bot" | "ai-agent"
 ```

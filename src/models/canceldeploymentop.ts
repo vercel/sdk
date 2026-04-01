@@ -1810,6 +1810,21 @@ export type CancelDeploymentCommitMeta = {
 export type CancelDeploymentId = string | number;
 
 /**
+ * User type
+ */
+export const CancelDeploymentDeploymentsResponseType = {
+  User: "user",
+  Bot: "bot",
+  AiAgent: "ai-agent",
+} as const;
+/**
+ * User type
+ */
+export type CancelDeploymentDeploymentsResponseType = ClosedEnum<
+  typeof CancelDeploymentDeploymentsResponseType
+>;
+
+/**
  * Git provider user associated with the commit author email (only set if resolved)
  */
 export type CancelDeploymentGitUser = {
@@ -1818,7 +1833,35 @@ export type CancelDeploymentGitUser = {
    * Git provider username/login
    */
   login: string;
+  /**
+   * Is the git user a bot
+   */
+  isBot?: boolean | undefined;
+  /**
+   * User type
+   */
+  type?: CancelDeploymentDeploymentsResponseType | undefined;
 };
+
+/**
+ * Team roles at time of deployment
+ */
+export const CancelDeploymentTeamRoles = {
+  Owner: "OWNER",
+  Member: "MEMBER",
+  Developer: "DEVELOPER",
+  Security: "SECURITY",
+  Billing: "BILLING",
+  Viewer: "VIEWER",
+  ViewerForPlus: "VIEWER_FOR_PLUS",
+  Contributor: "CONTRIBUTOR",
+} as const;
+/**
+ * Team roles at time of deployment
+ */
+export type CancelDeploymentTeamRoles = ClosedEnum<
+  typeof CancelDeploymentTeamRoles
+>;
 
 /**
  * Vercel user linked to the git provider account (only set if resolved)
@@ -1832,6 +1875,10 @@ export type CancelDeploymentVercelUser = {
    * Vercel username
    */
   username: string;
+  /**
+   * Team roles at time of deployment
+   */
+  teamRoles?: Array<CancelDeploymentTeamRoles> | undefined;
 };
 
 /**
@@ -8388,6 +8435,15 @@ export function cancelDeploymentIdFromJSON(
 }
 
 /** @internal */
+export const CancelDeploymentDeploymentsResponseType$inboundSchema:
+  z.ZodNativeEnum<typeof CancelDeploymentDeploymentsResponseType> = z
+    .nativeEnum(CancelDeploymentDeploymentsResponseType);
+/** @internal */
+export const CancelDeploymentDeploymentsResponseType$outboundSchema:
+  z.ZodNativeEnum<typeof CancelDeploymentDeploymentsResponseType> =
+    CancelDeploymentDeploymentsResponseType$inboundSchema;
+
+/** @internal */
 export const CancelDeploymentGitUser$inboundSchema: z.ZodType<
   CancelDeploymentGitUser,
   z.ZodTypeDef,
@@ -8395,11 +8451,15 @@ export const CancelDeploymentGitUser$inboundSchema: z.ZodType<
 > = z.object({
   id: smartUnion([types.string(), types.number()]),
   login: types.string(),
+  isBot: types.optional(types.boolean()),
+  type: types.optional(CancelDeploymentDeploymentsResponseType$inboundSchema),
 });
 /** @internal */
 export type CancelDeploymentGitUser$Outbound = {
   id: string | number;
   login: string;
+  isBot?: boolean | undefined;
+  type?: string | undefined;
 };
 
 /** @internal */
@@ -8410,6 +8470,8 @@ export const CancelDeploymentGitUser$outboundSchema: z.ZodType<
 > = z.object({
   id: smartUnion([z.string(), z.number()]),
   login: z.string(),
+  isBot: z.boolean().optional(),
+  type: CancelDeploymentDeploymentsResponseType$outboundSchema.optional(),
 });
 
 export function cancelDeploymentGitUserToJSON(
@@ -8430,6 +8492,15 @@ export function cancelDeploymentGitUserFromJSON(
 }
 
 /** @internal */
+export const CancelDeploymentTeamRoles$inboundSchema: z.ZodNativeEnum<
+  typeof CancelDeploymentTeamRoles
+> = z.nativeEnum(CancelDeploymentTeamRoles);
+/** @internal */
+export const CancelDeploymentTeamRoles$outboundSchema: z.ZodNativeEnum<
+  typeof CancelDeploymentTeamRoles
+> = CancelDeploymentTeamRoles$inboundSchema;
+
+/** @internal */
 export const CancelDeploymentVercelUser$inboundSchema: z.ZodType<
   CancelDeploymentVercelUser,
   z.ZodTypeDef,
@@ -8437,11 +8508,13 @@ export const CancelDeploymentVercelUser$inboundSchema: z.ZodType<
 > = z.object({
   id: types.string(),
   username: types.string(),
+  teamRoles: types.optional(z.array(CancelDeploymentTeamRoles$inboundSchema)),
 });
 /** @internal */
 export type CancelDeploymentVercelUser$Outbound = {
   id: string;
   username: string;
+  teamRoles?: Array<string> | undefined;
 };
 
 /** @internal */
@@ -8452,6 +8525,7 @@ export const CancelDeploymentVercelUser$outboundSchema: z.ZodType<
 > = z.object({
   id: z.string(),
   username: z.string(),
+  teamRoles: z.array(CancelDeploymentTeamRoles$outboundSchema).optional(),
 });
 
 export function cancelDeploymentVercelUserToJSON(

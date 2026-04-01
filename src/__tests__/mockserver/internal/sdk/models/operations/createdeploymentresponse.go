@@ -2889,11 +2889,45 @@ func (u CreateDeploymentID) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type CreateDeploymentID: all fields are null")
 }
 
+// CreateDeploymentGitUserType - User type
+type CreateDeploymentGitUserType string
+
+const (
+	CreateDeploymentGitUserTypeUser    CreateDeploymentGitUserType = "user"
+	CreateDeploymentGitUserTypeBot     CreateDeploymentGitUserType = "bot"
+	CreateDeploymentGitUserTypeAiAgent CreateDeploymentGitUserType = "ai-agent"
+)
+
+func (e CreateDeploymentGitUserType) ToPointer() *CreateDeploymentGitUserType {
+	return &e
+}
+func (e *CreateDeploymentGitUserType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "user":
+		fallthrough
+	case "bot":
+		fallthrough
+	case "ai-agent":
+		*e = CreateDeploymentGitUserType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateDeploymentGitUserType: %v", v)
+	}
+}
+
 // CreateDeploymentGitUser - Git provider user associated with the commit author email (only set if resolved)
 type CreateDeploymentGitUser struct {
 	ID CreateDeploymentID `json:"id"`
 	// Git provider username/login
 	Login string `json:"login"`
+	// Is the git user a bot
+	IsBot *bool `json:"isBot,omitempty"`
+	// User type
+	Type *CreateDeploymentGitUserType `json:"type,omitempty"`
 }
 
 func (o *CreateDeploymentGitUser) GetID() CreateDeploymentID {
@@ -2910,12 +2944,73 @@ func (o *CreateDeploymentGitUser) GetLogin() string {
 	return o.Login
 }
 
+func (o *CreateDeploymentGitUser) GetIsBot() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IsBot
+}
+
+func (o *CreateDeploymentGitUser) GetType() *CreateDeploymentGitUserType {
+	if o == nil {
+		return nil
+	}
+	return o.Type
+}
+
+// CreateDeploymentTeamRole - Team roles at time of deployment
+type CreateDeploymentTeamRole string
+
+const (
+	CreateDeploymentTeamRoleOwner         CreateDeploymentTeamRole = "OWNER"
+	CreateDeploymentTeamRoleMember        CreateDeploymentTeamRole = "MEMBER"
+	CreateDeploymentTeamRoleDeveloper     CreateDeploymentTeamRole = "DEVELOPER"
+	CreateDeploymentTeamRoleSecurity      CreateDeploymentTeamRole = "SECURITY"
+	CreateDeploymentTeamRoleBilling       CreateDeploymentTeamRole = "BILLING"
+	CreateDeploymentTeamRoleViewer        CreateDeploymentTeamRole = "VIEWER"
+	CreateDeploymentTeamRoleViewerForPlus CreateDeploymentTeamRole = "VIEWER_FOR_PLUS"
+	CreateDeploymentTeamRoleContributor   CreateDeploymentTeamRole = "CONTRIBUTOR"
+)
+
+func (e CreateDeploymentTeamRole) ToPointer() *CreateDeploymentTeamRole {
+	return &e
+}
+func (e *CreateDeploymentTeamRole) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "OWNER":
+		fallthrough
+	case "MEMBER":
+		fallthrough
+	case "DEVELOPER":
+		fallthrough
+	case "SECURITY":
+		fallthrough
+	case "BILLING":
+		fallthrough
+	case "VIEWER":
+		fallthrough
+	case "VIEWER_FOR_PLUS":
+		fallthrough
+	case "CONTRIBUTOR":
+		*e = CreateDeploymentTeamRole(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateDeploymentTeamRole: %v", v)
+	}
+}
+
 // CreateDeploymentVercelUser - Vercel user linked to the git provider account (only set if resolved)
 type CreateDeploymentVercelUser struct {
 	// Vercel user ID
 	ID string `json:"id"`
 	// Vercel username
 	Username string `json:"username"`
+	// Team roles at time of deployment
+	TeamRoles []CreateDeploymentTeamRole `json:"teamRoles,omitempty"`
 }
 
 func (o *CreateDeploymentVercelUser) GetID() string {
@@ -2930,6 +3025,13 @@ func (o *CreateDeploymentVercelUser) GetUsername() string {
 		return ""
 	}
 	return o.Username
+}
+
+func (o *CreateDeploymentVercelUser) GetTeamRoles() []CreateDeploymentTeamRole {
+	if o == nil {
+		return nil
+	}
+	return o.TeamRoles
 }
 
 // CreateDeploymentAttribution - Attribution metadata for the deployment, linking commit author to git and Vercel users. Only populated when the `enable-deployment-attribution` flag is enabled.

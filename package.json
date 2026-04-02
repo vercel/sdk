@@ -1,6 +1,6 @@
 {
   "name": "@vercel/sdk",
-  "version": "1.19.24",
+  "version": "1.19.25",
   "author": "Speakeasy",
   "type": "module",
   "bin": {

@@ -7,6 +7,7 @@ import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
+import { smartUnion } from "../types/smartUnion.js";
 import {
   Sandbox,
   Sandbox$inboundSchema,
@@ -21,11 +22,16 @@ import {
   Snapshot$outboundSchema,
 } from "./snapshot.js";
 
+/**
+ * The number of milliseconds after which the snapshot will expire and be deleted. Use 0 for no expiration.
+ */
+export type Expiration = any | number;
+
 export type CreateSnapshotRequestBody = {
   /**
    * The number of milliseconds after which the snapshot will expire and be deleted. Use 0 for no expiration.
    */
-  expiration?: number | undefined;
+  expiration?: any | number | undefined;
 };
 
 export type CreateSnapshotRequest = {
@@ -56,16 +62,45 @@ export type CreateSnapshotResponseBody = {
 };
 
 /** @internal */
+export const Expiration$inboundSchema: z.ZodType<
+  Expiration,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([z.any(), types.number()]);
+/** @internal */
+export type Expiration$Outbound = any | number;
+
+/** @internal */
+export const Expiration$outboundSchema: z.ZodType<
+  Expiration$Outbound,
+  z.ZodTypeDef,
+  Expiration
+> = smartUnion([z.any(), z.number().int()]);
+
+export function expirationToJSON(expiration: Expiration): string {
+  return JSON.stringify(Expiration$outboundSchema.parse(expiration));
+}
+export function expirationFromJSON(
+  jsonString: string,
+): SafeParseResult<Expiration, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Expiration$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Expiration' from JSON`,
+  );
+}
+
+/** @internal */
 export const CreateSnapshotRequestBody$inboundSchema: z.ZodType<
   CreateSnapshotRequestBody,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  expiration: types.optional(types.number()),
+  expiration: types.optional(smartUnion([z.any(), types.number()])),
 });
 /** @internal */
 export type CreateSnapshotRequestBody$Outbound = {
-  expiration?: number | undefined;
+  expiration?: any | number | undefined;
 };
 
 /** @internal */
@@ -74,7 +109,7 @@ export const CreateSnapshotRequestBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateSnapshotRequestBody
 > = z.object({
-  expiration: z.number().int().optional(),
+  expiration: smartUnion([z.any(), z.number().int()]).optional(),
 });
 
 export function createSnapshotRequestBodyToJSON(

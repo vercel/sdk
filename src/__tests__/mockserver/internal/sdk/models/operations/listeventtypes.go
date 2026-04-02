@@ -242,6 +242,7 @@ const (
 	NamePasskeyDeleted                                  Name = "passkey-deleted"
 	NamePasskeyUpdated                                  Name = "passkey-updated"
 	NamePreviewDeploymentSuffixUpdate                   Name = "preview-deployment-suffix-update"
+	NamePrivatelinkEndpointCreated                      Name = "privatelink-endpoint-created"
 	NameProductionBranchUpdated                         Name = "production-branch-updated"
 	NameProjectDirectoryListing                         Name = "project-directory-listing"
 	NameProjectAnalyticsDisabled                        Name = "project-analytics-disabled"
@@ -874,6 +875,8 @@ func (e *Name) UnmarshalJSON(data []byte) error {
 	case "passkey-updated":
 		fallthrough
 	case "preview-deployment-suffix-update":
+		fallthrough
+	case "privatelink-endpoint-created":
 		fallthrough
 	case "production-branch-updated":
 		fallthrough

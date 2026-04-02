@@ -45,7 +45,6 @@ type EditProjectEnvTypeRequest string
 
 const (
 	EditProjectEnvTypeRequestSystem    EditProjectEnvTypeRequest = "system"
-	EditProjectEnvTypeRequestSecret    EditProjectEnvTypeRequest = "secret"
 	EditProjectEnvTypeRequestEncrypted EditProjectEnvTypeRequest = "encrypted"
 	EditProjectEnvTypeRequestPlain     EditProjectEnvTypeRequest = "plain"
 	EditProjectEnvTypeRequestSensitive EditProjectEnvTypeRequest = "sensitive"
@@ -61,8 +60,6 @@ func (e *EditProjectEnvTypeRequest) UnmarshalJSON(data []byte) error {
 	}
 	switch v {
 	case "system":
-		fallthrough
-	case "secret":
 		fallthrough
 	case "encrypted":
 		fallthrough

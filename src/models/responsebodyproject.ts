@@ -1079,6 +1079,7 @@ export type GetDeploymentResponseBodyDeploymentsResponseStatus = ClosedEnum<
 export type ResponseBodyIntegrations = {
   status: GetDeploymentResponseBodyDeploymentsResponseStatus;
   startedAt: number;
+  claimedAt?: number | undefined;
   completedAt?: number | undefined;
   skippedAt?: number | undefined;
   skippedBy?: string | undefined;
@@ -4942,6 +4943,7 @@ export const ResponseBodyIntegrations$inboundSchema: z.ZodType<
 > = z.object({
   status: GetDeploymentResponseBodyDeploymentsResponseStatus$inboundSchema,
   startedAt: types.number(),
+  claimedAt: types.optional(types.number()),
   completedAt: types.optional(types.number()),
   skippedAt: types.optional(types.number()),
   skippedBy: types.optional(types.string()),
@@ -4950,6 +4952,7 @@ export const ResponseBodyIntegrations$inboundSchema: z.ZodType<
 export type ResponseBodyIntegrations$Outbound = {
   status: string;
   startedAt: number;
+  claimedAt?: number | undefined;
   completedAt?: number | undefined;
   skippedAt?: number | undefined;
   skippedBy?: string | undefined;
@@ -4963,6 +4966,7 @@ export const ResponseBodyIntegrations$outboundSchema: z.ZodType<
 > = z.object({
   status: GetDeploymentResponseBodyDeploymentsResponseStatus$outboundSchema,
   startedAt: z.number(),
+  claimedAt: z.number().optional(),
   completedAt: z.number().optional(),
   skippedAt: z.number().optional(),
   skippedBy: z.string().optional(),

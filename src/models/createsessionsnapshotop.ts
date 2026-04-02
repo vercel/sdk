@@ -7,6 +7,7 @@ import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
+import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 import {
   Session,
@@ -21,11 +22,16 @@ import {
   Snapshot$outboundSchema,
 } from "./snapshot.js";
 
+/**
+ * The number of milliseconds after which the snapshot will expire and be deleted. Use 0 for no expiration.
+ */
+export type CreateSessionSnapshotExpiration = any | number;
+
 export type CreateSessionSnapshotRequestBody = {
   /**
    * The number of milliseconds after which the snapshot will expire and be deleted. Use 0 for no expiration.
    */
-  expiration?: number | undefined;
+  expiration?: any | number | undefined;
 };
 
 export type CreateSessionSnapshotRequest = {
@@ -56,16 +62,51 @@ export type CreateSessionSnapshotResponseBody = {
 };
 
 /** @internal */
+export const CreateSessionSnapshotExpiration$inboundSchema: z.ZodType<
+  CreateSessionSnapshotExpiration,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([z.any(), types.number()]);
+/** @internal */
+export type CreateSessionSnapshotExpiration$Outbound = any | number;
+
+/** @internal */
+export const CreateSessionSnapshotExpiration$outboundSchema: z.ZodType<
+  CreateSessionSnapshotExpiration$Outbound,
+  z.ZodTypeDef,
+  CreateSessionSnapshotExpiration
+> = smartUnion([z.any(), z.number().int()]);
+
+export function createSessionSnapshotExpirationToJSON(
+  createSessionSnapshotExpiration: CreateSessionSnapshotExpiration,
+): string {
+  return JSON.stringify(
+    CreateSessionSnapshotExpiration$outboundSchema.parse(
+      createSessionSnapshotExpiration,
+    ),
+  );
+}
+export function createSessionSnapshotExpirationFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateSessionSnapshotExpiration, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateSessionSnapshotExpiration$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateSessionSnapshotExpiration' from JSON`,
+  );
+}
+
+/** @internal */
 export const CreateSessionSnapshotRequestBody$inboundSchema: z.ZodType<
   CreateSessionSnapshotRequestBody,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  expiration: types.optional(types.number()),
+  expiration: types.optional(smartUnion([z.any(), types.number()])),
 });
 /** @internal */
 export type CreateSessionSnapshotRequestBody$Outbound = {
-  expiration?: number | undefined;
+  expiration?: any | number | undefined;
 };
 
 /** @internal */
@@ -74,7 +115,7 @@ export const CreateSessionSnapshotRequestBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateSessionSnapshotRequestBody
 > = z.object({
-  expiration: z.number().int().optional(),
+  expiration: smartUnion([z.any(), z.number().int()]).optional(),
 });
 
 export function createSessionSnapshotRequestBodyToJSON(

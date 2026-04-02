@@ -16,7 +16,6 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
  */
 export const CreateProjectEnv2Type = {
   System: "system",
-  Secret: "secret",
   Encrypted: "encrypted",
   Plain: "plain",
   Sensitive: "sensitive",
@@ -71,7 +70,6 @@ export type CreateProjectEnv22 = {
  */
 export const TwoType = {
   System: "system",
-  Secret: "secret",
   Encrypted: "encrypted",
   Plain: "plain",
   Sensitive: "sensitive",
@@ -128,7 +126,6 @@ export type CreateProjectEnvRequestBody2 =
  */
 export const CreateProjectEnv1Type = {
   System: "system",
-  Secret: "secret",
   Encrypted: "encrypted",
   Plain: "plain",
   Sensitive: "sensitive",
@@ -183,7 +180,6 @@ export type CreateProjectEnv12 = {
  */
 export const OneType = {
   System: "system",
-  Secret: "secret",
   Encrypted: "encrypted",
   Plain: "plain",
   Sensitive: "sensitive",

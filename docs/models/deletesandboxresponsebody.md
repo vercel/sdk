@@ -17,6 +17,7 @@ let value: DeleteSandboxResponseBody = {
     memory: 1024,
     runtime: "node22",
     timeout: 300000,
+    snapshotExpiration: 604800000,
     totalEgressBytes: 4096,
     totalIngressBytes: 2048,
     totalActiveCpuDurationMs: 5000,

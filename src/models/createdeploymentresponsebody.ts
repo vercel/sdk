@@ -629,21 +629,6 @@ export type CommitMeta = {
 export type CreateDeploymentId = string | number;
 
 /**
- * User type
- */
-export const CreateDeploymentDeploymentsResponseType = {
-  User: "user",
-  Bot: "bot",
-  AiAgent: "ai-agent",
-} as const;
-/**
- * User type
- */
-export type CreateDeploymentDeploymentsResponseType = ClosedEnum<
-  typeof CreateDeploymentDeploymentsResponseType
->;
-
-/**
  * Git provider user associated with the commit author email (only set if resolved)
  */
 export type GitUser = {
@@ -653,34 +638,10 @@ export type GitUser = {
    */
   login: string;
   /**
-   * Is the git user a bot
-   */
-  isBot?: boolean | undefined;
-  /**
    * User type
    */
-  type?: CreateDeploymentDeploymentsResponseType | undefined;
+  type?: string | undefined;
 };
-
-/**
- * Team roles at time of deployment
- */
-export const CreateDeploymentTeamRoles = {
-  Owner: "OWNER",
-  Member: "MEMBER",
-  Developer: "DEVELOPER",
-  Security: "SECURITY",
-  Billing: "BILLING",
-  Viewer: "VIEWER",
-  ViewerForPlus: "VIEWER_FOR_PLUS",
-  Contributor: "CONTRIBUTOR",
-} as const;
-/**
- * Team roles at time of deployment
- */
-export type CreateDeploymentTeamRoles = ClosedEnum<
-  typeof CreateDeploymentTeamRoles
->;
 
 /**
  * Vercel user linked to the git provider account (only set if resolved)
@@ -697,7 +658,7 @@ export type VercelUser = {
   /**
    * Team roles at time of deployment
    */
-  teamRoles?: Array<CreateDeploymentTeamRoles> | undefined;
+  teamRoles?: Array<string> | undefined;
 };
 
 /**
@@ -2690,27 +2651,16 @@ export function createDeploymentIdFromJSON(
 }
 
 /** @internal */
-export const CreateDeploymentDeploymentsResponseType$inboundSchema:
-  z.ZodNativeEnum<typeof CreateDeploymentDeploymentsResponseType> = z
-    .nativeEnum(CreateDeploymentDeploymentsResponseType);
-/** @internal */
-export const CreateDeploymentDeploymentsResponseType$outboundSchema:
-  z.ZodNativeEnum<typeof CreateDeploymentDeploymentsResponseType> =
-    CreateDeploymentDeploymentsResponseType$inboundSchema;
-
-/** @internal */
 export const GitUser$inboundSchema: z.ZodType<GitUser, z.ZodTypeDef, unknown> =
   z.object({
     id: smartUnion([types.string(), types.number()]),
     login: types.string(),
-    isBot: types.optional(types.boolean()),
-    type: types.optional(CreateDeploymentDeploymentsResponseType$inboundSchema),
+    type: types.optional(types.string()),
   });
 /** @internal */
 export type GitUser$Outbound = {
   id: string | number;
   login: string;
-  isBot?: boolean | undefined;
   type?: string | undefined;
 };
 
@@ -2722,8 +2672,7 @@ export const GitUser$outboundSchema: z.ZodType<
 > = z.object({
   id: smartUnion([z.string(), z.number()]),
   login: z.string(),
-  isBot: z.boolean().optional(),
-  type: CreateDeploymentDeploymentsResponseType$outboundSchema.optional(),
+  type: z.string().optional(),
 });
 
 export function gitUserToJSON(gitUser: GitUser): string {
@@ -2740,15 +2689,6 @@ export function gitUserFromJSON(
 }
 
 /** @internal */
-export const CreateDeploymentTeamRoles$inboundSchema: z.ZodNativeEnum<
-  typeof CreateDeploymentTeamRoles
-> = z.nativeEnum(CreateDeploymentTeamRoles);
-/** @internal */
-export const CreateDeploymentTeamRoles$outboundSchema: z.ZodNativeEnum<
-  typeof CreateDeploymentTeamRoles
-> = CreateDeploymentTeamRoles$inboundSchema;
-
-/** @internal */
 export const VercelUser$inboundSchema: z.ZodType<
   VercelUser,
   z.ZodTypeDef,
@@ -2756,7 +2696,7 @@ export const VercelUser$inboundSchema: z.ZodType<
 > = z.object({
   id: types.string(),
   username: types.string(),
-  teamRoles: types.optional(z.array(CreateDeploymentTeamRoles$inboundSchema)),
+  teamRoles: types.optional(z.array(types.string())),
 });
 /** @internal */
 export type VercelUser$Outbound = {
@@ -2773,7 +2713,7 @@ export const VercelUser$outboundSchema: z.ZodType<
 > = z.object({
   id: z.string(),
   username: z.string(),
-  teamRoles: z.array(CreateDeploymentTeamRoles$outboundSchema).optional(),
+  teamRoles: z.array(z.string()).optional(),
 });
 
 export function vercelUserToJSON(vercelUser: VercelUser): string {

@@ -3,15 +3,82 @@
 package operations
 
 import (
+	"errors"
+	"fmt"
 	"mockserver/internal/sdk/models/components"
+	"mockserver/internal/sdk/utils"
 )
+
+type CreateSessionSnapshotExpirationType string
+
+const (
+	CreateSessionSnapshotExpirationTypeAny     CreateSessionSnapshotExpirationType = "any"
+	CreateSessionSnapshotExpirationTypeInteger CreateSessionSnapshotExpirationType = "integer"
+)
+
+// CreateSessionSnapshotExpiration - The number of milliseconds after which the snapshot will expire and be deleted. Use 0 for no expiration.
+type CreateSessionSnapshotExpiration struct {
+	Any     any    `queryParam:"inline"`
+	Integer *int64 `queryParam:"inline"`
+
+	Type CreateSessionSnapshotExpirationType
+}
+
+func CreateCreateSessionSnapshotExpirationAny(anyT any) CreateSessionSnapshotExpiration {
+	typ := CreateSessionSnapshotExpirationTypeAny
+
+	return CreateSessionSnapshotExpiration{
+		Any:  anyT,
+		Type: typ,
+	}
+}
+
+func CreateCreateSessionSnapshotExpirationInteger(integer int64) CreateSessionSnapshotExpiration {
+	typ := CreateSessionSnapshotExpirationTypeInteger
+
+	return CreateSessionSnapshotExpiration{
+		Integer: &integer,
+		Type:    typ,
+	}
+}
+
+func (u *CreateSessionSnapshotExpiration) UnmarshalJSON(data []byte) error {
+
+	var anyVar any = nil
+	if err := utils.UnmarshalJSON(data, &anyVar, "", true, nil); err == nil {
+		u.Any = anyVar
+		u.Type = CreateSessionSnapshotExpirationTypeAny
+		return nil
+	}
+
+	var integer int64 = int64(0)
+	if err := utils.UnmarshalJSON(data, &integer, "", true, nil); err == nil {
+		u.Integer = &integer
+		u.Type = CreateSessionSnapshotExpirationTypeInteger
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateSessionSnapshotExpiration", string(data))
+}
+
+func (u CreateSessionSnapshotExpiration) MarshalJSON() ([]byte, error) {
+	if u.Any != nil {
+		return utils.MarshalJSON(u.Any, "", true)
+	}
+
+	if u.Integer != nil {
+		return utils.MarshalJSON(u.Integer, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type CreateSessionSnapshotExpiration: all fields are null")
+}
 
 type CreateSessionSnapshotRequestBody struct {
 	// The number of milliseconds after which the snapshot will expire and be deleted. Use 0 for no expiration.
-	Expiration *int64 `json:"expiration,omitempty"`
+	Expiration *CreateSessionSnapshotExpiration `json:"expiration,omitempty"`
 }
 
-func (o *CreateSessionSnapshotRequestBody) GetExpiration() *int64 {
+func (o *CreateSessionSnapshotRequestBody) GetExpiration() *CreateSessionSnapshotExpiration {
 	if o == nil {
 		return nil
 	}

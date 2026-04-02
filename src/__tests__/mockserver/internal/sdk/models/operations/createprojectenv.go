@@ -16,7 +16,6 @@ type CreateProjectEnvTypeRequest4 string
 
 const (
 	CreateProjectEnvTypeRequest4System    CreateProjectEnvTypeRequest4 = "system"
-	CreateProjectEnvTypeRequest4Secret    CreateProjectEnvTypeRequest4 = "secret"
 	CreateProjectEnvTypeRequest4Encrypted CreateProjectEnvTypeRequest4 = "encrypted"
 	CreateProjectEnvTypeRequest4Plain     CreateProjectEnvTypeRequest4 = "plain"
 	CreateProjectEnvTypeRequest4Sensitive CreateProjectEnvTypeRequest4 = "sensitive"
@@ -32,8 +31,6 @@ func (e *CreateProjectEnvTypeRequest4) UnmarshalJSON(data []byte) error {
 	}
 	switch v {
 	case "system":
-		fallthrough
-	case "secret":
 		fallthrough
 	case "encrypted":
 		fallthrough
@@ -158,7 +155,6 @@ type CreateProjectEnvTypeRequest3 string
 
 const (
 	CreateProjectEnvTypeRequest3System    CreateProjectEnvTypeRequest3 = "system"
-	CreateProjectEnvTypeRequest3Secret    CreateProjectEnvTypeRequest3 = "secret"
 	CreateProjectEnvTypeRequest3Encrypted CreateProjectEnvTypeRequest3 = "encrypted"
 	CreateProjectEnvTypeRequest3Plain     CreateProjectEnvTypeRequest3 = "plain"
 	CreateProjectEnvTypeRequest3Sensitive CreateProjectEnvTypeRequest3 = "sensitive"
@@ -174,8 +170,6 @@ func (e *CreateProjectEnvTypeRequest3) UnmarshalJSON(data []byte) error {
 	}
 	switch v {
 	case "system":
-		fallthrough
-	case "secret":
 		fallthrough
 	case "encrypted":
 		fallthrough
@@ -363,7 +357,6 @@ type CreateProjectEnvTypeRequest2 string
 
 const (
 	CreateProjectEnvTypeRequest2System    CreateProjectEnvTypeRequest2 = "system"
-	CreateProjectEnvTypeRequest2Secret    CreateProjectEnvTypeRequest2 = "secret"
 	CreateProjectEnvTypeRequest2Encrypted CreateProjectEnvTypeRequest2 = "encrypted"
 	CreateProjectEnvTypeRequest2Plain     CreateProjectEnvTypeRequest2 = "plain"
 	CreateProjectEnvTypeRequest2Sensitive CreateProjectEnvTypeRequest2 = "sensitive"
@@ -379,8 +372,6 @@ func (e *CreateProjectEnvTypeRequest2) UnmarshalJSON(data []byte) error {
 	}
 	switch v {
 	case "system":
-		fallthrough
-	case "secret":
 		fallthrough
 	case "encrypted":
 		fallthrough
@@ -505,7 +496,6 @@ type CreateProjectEnvTypeRequest1 string
 
 const (
 	CreateProjectEnvTypeRequest1System    CreateProjectEnvTypeRequest1 = "system"
-	CreateProjectEnvTypeRequest1Secret    CreateProjectEnvTypeRequest1 = "secret"
 	CreateProjectEnvTypeRequest1Encrypted CreateProjectEnvTypeRequest1 = "encrypted"
 	CreateProjectEnvTypeRequest1Plain     CreateProjectEnvTypeRequest1 = "plain"
 	CreateProjectEnvTypeRequest1Sensitive CreateProjectEnvTypeRequest1 = "sensitive"
@@ -521,8 +511,6 @@ func (e *CreateProjectEnvTypeRequest1) UnmarshalJSON(data []byte) error {
 	}
 	switch v {
 	case "system":
-		fallthrough
-	case "secret":
 		fallthrough
 	case "encrypted":
 		fallthrough

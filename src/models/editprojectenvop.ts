@@ -23,7 +23,6 @@ export type EditProjectEnvTarget = ClosedEnum<typeof EditProjectEnvTarget>;
  */
 export const EditProjectEnvType = {
   System: "system",
-  Secret: "secret",
   Encrypted: "encrypted",
   Plain: "plain",
   Sensitive: "sensitive",

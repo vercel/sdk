@@ -15,8 +15,8 @@ let value: ResponseBodyVercelUser = {
 
 ## Fields
 
-| Field                                                                | Type                                                                 | Required                                                             | Description                                                          |
-| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| `id`                                                                 | *string*                                                             | :heavy_check_mark:                                                   | Vercel user ID                                                       |
-| `username`                                                           | *string*                                                             | :heavy_check_mark:                                                   | Vercel username                                                      |
-| `teamRoles`                                                          | [models.ResponseBodyTeamRoles](../models/responsebodyteamroles.md)[] | :heavy_minus_sign:                                                   | Team roles at time of deployment                                     |
+| Field                            | Type                             | Required                         | Description                      |
+| -------------------------------- | -------------------------------- | -------------------------------- | -------------------------------- |
+| `id`                             | *string*                         | :heavy_check_mark:               | Vercel user ID                   |
+| `username`                       | *string*                         | :heavy_check_mark:               | Vercel username                  |
+| `teamRoles`                      | *string*[]                       | :heavy_minus_sign:               | Team roles at time of deployment |

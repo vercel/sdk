@@ -634,6 +634,7 @@ export type CreateDeploymentDeploymentsStatus = ClosedEnum<
 export type Integrations = {
   status: CreateDeploymentDeploymentsStatus;
   startedAt: number;
+  claimedAt?: number | undefined;
   completedAt?: number | undefined;
   skippedAt?: number | undefined;
   skippedBy?: string | undefined;
@@ -3103,6 +3104,7 @@ export const Integrations$inboundSchema: z.ZodType<
 > = z.object({
   status: CreateDeploymentDeploymentsStatus$inboundSchema,
   startedAt: types.number(),
+  claimedAt: types.optional(types.number()),
   completedAt: types.optional(types.number()),
   skippedAt: types.optional(types.number()),
   skippedBy: types.optional(types.string()),
@@ -3111,6 +3113,7 @@ export const Integrations$inboundSchema: z.ZodType<
 export type Integrations$Outbound = {
   status: string;
   startedAt: number;
+  claimedAt?: number | undefined;
   completedAt?: number | undefined;
   skippedAt?: number | undefined;
   skippedBy?: string | undefined;
@@ -3124,6 +3127,7 @@ export const Integrations$outboundSchema: z.ZodType<
 > = z.object({
   status: CreateDeploymentDeploymentsStatus$outboundSchema,
   startedAt: z.number(),
+  claimedAt: z.number().optional(),
   completedAt: z.number().optional(),
   skippedAt: z.number().optional(),
   skippedBy: z.string().optional(),

@@ -184,15 +184,15 @@ export type GetDeploymentResponseBodyDeploymentsSource = {
 /**
  * Whether the value is an opaque identifier or a URL.
  */
-export const GetDeploymentResponseBodyDeploymentsResponse200Type = {
+export const GetDeploymentResponseBodyDeploymentsResponseType = {
   Id: "id",
   Url: "url",
 } as const;
 /**
  * Whether the value is an opaque identifier or a URL.
  */
-export type GetDeploymentResponseBodyDeploymentsResponse200Type = ClosedEnum<
-  typeof GetDeploymentResponseBodyDeploymentsResponse200Type
+export type GetDeploymentResponseBodyDeploymentsResponseType = ClosedEnum<
+  typeof GetDeploymentResponseBodyDeploymentsResponseType
 >;
 
 /**
@@ -202,7 +202,7 @@ export type ResponseBodyOrigin = {
   /**
    * Whether the value is an opaque identifier or a URL.
    */
-  type: GetDeploymentResponseBodyDeploymentsResponse200Type;
+  type: GetDeploymentResponseBodyDeploymentsResponseType;
   /**
    * The identifier or URL pointing to the originating entity.
    */
@@ -1005,21 +1005,6 @@ export type ResponseBodyCommitMeta = {
 export type GetDeploymentResponseBodyId = string | number;
 
 /**
- * User type
- */
-export const GetDeploymentResponseBodyDeploymentsResponseType = {
-  User: "user",
-  Bot: "bot",
-  AiAgent: "ai-agent",
-} as const;
-/**
- * User type
- */
-export type GetDeploymentResponseBodyDeploymentsResponseType = ClosedEnum<
-  typeof GetDeploymentResponseBodyDeploymentsResponseType
->;
-
-/**
  * Git provider user associated with the commit author email (only set if resolved)
  */
 export type ResponseBodyGitUser = {
@@ -1029,32 +1014,10 @@ export type ResponseBodyGitUser = {
    */
   login: string;
   /**
-   * Is the git user a bot
-   */
-  isBot?: boolean | undefined;
-  /**
    * User type
    */
-  type?: GetDeploymentResponseBodyDeploymentsResponseType | undefined;
+  type?: string | undefined;
 };
-
-/**
- * Team roles at time of deployment
- */
-export const ResponseBodyTeamRoles = {
-  Owner: "OWNER",
-  Member: "MEMBER",
-  Developer: "DEVELOPER",
-  Security: "SECURITY",
-  Billing: "BILLING",
-  Viewer: "VIEWER",
-  ViewerForPlus: "VIEWER_FOR_PLUS",
-  Contributor: "CONTRIBUTOR",
-} as const;
-/**
- * Team roles at time of deployment
- */
-export type ResponseBodyTeamRoles = ClosedEnum<typeof ResponseBodyTeamRoles>;
 
 /**
  * Vercel user linked to the git provider account (only set if resolved)
@@ -1071,7 +1034,7 @@ export type ResponseBodyVercelUser = {
   /**
    * Team roles at time of deployment
    */
-  teamRoles?: Array<ResponseBodyTeamRoles> | undefined;
+  teamRoles?: Array<string> | undefined;
 };
 
 /**
@@ -1480,13 +1443,13 @@ export function getDeploymentResponseBodyDeploymentsSourceFromJSON(
 }
 
 /** @internal */
-export const GetDeploymentResponseBodyDeploymentsResponse200Type$inboundSchema:
-  z.ZodNativeEnum<typeof GetDeploymentResponseBodyDeploymentsResponse200Type> =
-    z.nativeEnum(GetDeploymentResponseBodyDeploymentsResponse200Type);
+export const GetDeploymentResponseBodyDeploymentsResponseType$inboundSchema:
+  z.ZodNativeEnum<typeof GetDeploymentResponseBodyDeploymentsResponseType> = z
+    .nativeEnum(GetDeploymentResponseBodyDeploymentsResponseType);
 /** @internal */
-export const GetDeploymentResponseBodyDeploymentsResponse200Type$outboundSchema:
-  z.ZodNativeEnum<typeof GetDeploymentResponseBodyDeploymentsResponse200Type> =
-    GetDeploymentResponseBodyDeploymentsResponse200Type$inboundSchema;
+export const GetDeploymentResponseBodyDeploymentsResponseType$outboundSchema:
+  z.ZodNativeEnum<typeof GetDeploymentResponseBodyDeploymentsResponseType> =
+    GetDeploymentResponseBodyDeploymentsResponseType$inboundSchema;
 
 /** @internal */
 export const ResponseBodyOrigin$inboundSchema: z.ZodType<
@@ -1494,7 +1457,7 @@ export const ResponseBodyOrigin$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: GetDeploymentResponseBodyDeploymentsResponse200Type$inboundSchema,
+  type: GetDeploymentResponseBodyDeploymentsResponseType$inboundSchema,
   value: types.string(),
 });
 /** @internal */
@@ -1509,7 +1472,7 @@ export const ResponseBodyOrigin$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ResponseBodyOrigin
 > = z.object({
-  type: GetDeploymentResponseBodyDeploymentsResponse200Type$outboundSchema,
+  type: GetDeploymentResponseBodyDeploymentsResponseType$outboundSchema,
   value: z.string(),
 });
 
@@ -4869,15 +4832,6 @@ export function getDeploymentResponseBodyIdFromJSON(
 }
 
 /** @internal */
-export const GetDeploymentResponseBodyDeploymentsResponseType$inboundSchema:
-  z.ZodNativeEnum<typeof GetDeploymentResponseBodyDeploymentsResponseType> = z
-    .nativeEnum(GetDeploymentResponseBodyDeploymentsResponseType);
-/** @internal */
-export const GetDeploymentResponseBodyDeploymentsResponseType$outboundSchema:
-  z.ZodNativeEnum<typeof GetDeploymentResponseBodyDeploymentsResponseType> =
-    GetDeploymentResponseBodyDeploymentsResponseType$inboundSchema;
-
-/** @internal */
 export const ResponseBodyGitUser$inboundSchema: z.ZodType<
   ResponseBodyGitUser,
   z.ZodTypeDef,
@@ -4885,16 +4839,12 @@ export const ResponseBodyGitUser$inboundSchema: z.ZodType<
 > = z.object({
   id: smartUnion([types.string(), types.number()]),
   login: types.string(),
-  isBot: types.optional(types.boolean()),
-  type: types.optional(
-    GetDeploymentResponseBodyDeploymentsResponseType$inboundSchema,
-  ),
+  type: types.optional(types.string()),
 });
 /** @internal */
 export type ResponseBodyGitUser$Outbound = {
   id: string | number;
   login: string;
-  isBot?: boolean | undefined;
   type?: string | undefined;
 };
 
@@ -4906,9 +4856,7 @@ export const ResponseBodyGitUser$outboundSchema: z.ZodType<
 > = z.object({
   id: smartUnion([z.string(), z.number()]),
   login: z.string(),
-  isBot: z.boolean().optional(),
-  type: GetDeploymentResponseBodyDeploymentsResponseType$outboundSchema
-    .optional(),
+  type: z.string().optional(),
 });
 
 export function responseBodyGitUserToJSON(
@@ -4929,15 +4877,6 @@ export function responseBodyGitUserFromJSON(
 }
 
 /** @internal */
-export const ResponseBodyTeamRoles$inboundSchema: z.ZodNativeEnum<
-  typeof ResponseBodyTeamRoles
-> = z.nativeEnum(ResponseBodyTeamRoles);
-/** @internal */
-export const ResponseBodyTeamRoles$outboundSchema: z.ZodNativeEnum<
-  typeof ResponseBodyTeamRoles
-> = ResponseBodyTeamRoles$inboundSchema;
-
-/** @internal */
 export const ResponseBodyVercelUser$inboundSchema: z.ZodType<
   ResponseBodyVercelUser,
   z.ZodTypeDef,
@@ -4945,7 +4884,7 @@ export const ResponseBodyVercelUser$inboundSchema: z.ZodType<
 > = z.object({
   id: types.string(),
   username: types.string(),
-  teamRoles: types.optional(z.array(ResponseBodyTeamRoles$inboundSchema)),
+  teamRoles: types.optional(z.array(types.string())),
 });
 /** @internal */
 export type ResponseBodyVercelUser$Outbound = {
@@ -4962,7 +4901,7 @@ export const ResponseBodyVercelUser$outboundSchema: z.ZodType<
 > = z.object({
   id: z.string(),
   username: z.string(),
-  teamRoles: z.array(ResponseBodyTeamRoles$outboundSchema).optional(),
+  teamRoles: z.array(z.string()).optional(),
 });
 
 export function responseBodyVercelUserToJSON(

@@ -132,6 +132,8 @@ type NamedSandbox struct {
 	Runtime *string `json:"runtime,omitempty"`
 	// Timeout in milliseconds.
 	Timeout *float64 `json:"timeout,omitempty"`
+	// Default snapshot expiration time in milliseconds. 0 means no expiration.
+	SnapshotExpiration *float64 `json:"snapshotExpiration,omitempty"`
 	// Network policy configuration.
 	NetworkPolicy *NetworkPolicy `json:"networkPolicy,omitempty"`
 	// Cumulative egress bytes across all sandbox runs.
@@ -227,6 +229,13 @@ func (o *NamedSandbox) GetTimeout() *float64 {
 		return nil
 	}
 	return o.Timeout
+}
+
+func (o *NamedSandbox) GetSnapshotExpiration() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.SnapshotExpiration
 }
 
 func (o *NamedSandbox) GetNetworkPolicy() *NetworkPolicy {

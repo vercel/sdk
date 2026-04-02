@@ -13,5 +13,5 @@ let value: EditProjectEnvType = "plain";
 ## Values
 
 ```typescript
-"system" | "secret" | "encrypted" | "plain" | "sensitive"
+"system" | "encrypted" | "plain" | "sensitive"
 ```

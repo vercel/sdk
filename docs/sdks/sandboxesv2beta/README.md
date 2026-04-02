@@ -597,6 +597,7 @@ async function run() {
       },
       runtime: "node24",
       timeout: 300000,
+      snapshotExpiration: 604800000,
       networkPolicy: {
         mode: "custom",
         allowedDomains: [
@@ -654,6 +655,7 @@ async function run() {
       },
       runtime: "node24",
       timeout: 300000,
+      snapshotExpiration: 604800000,
       networkPolicy: {
         mode: "custom",
         allowedDomains: [

@@ -4970,45 +4970,13 @@ func (u GetDeploymentID) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type GetDeploymentID: all fields are null")
 }
 
-// GetDeploymentGitUserType - User type
-type GetDeploymentGitUserType string
-
-const (
-	GetDeploymentGitUserTypeUser    GetDeploymentGitUserType = "user"
-	GetDeploymentGitUserTypeBot     GetDeploymentGitUserType = "bot"
-	GetDeploymentGitUserTypeAiAgent GetDeploymentGitUserType = "ai-agent"
-)
-
-func (e GetDeploymentGitUserType) ToPointer() *GetDeploymentGitUserType {
-	return &e
-}
-func (e *GetDeploymentGitUserType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "user":
-		fallthrough
-	case "bot":
-		fallthrough
-	case "ai-agent":
-		*e = GetDeploymentGitUserType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for GetDeploymentGitUserType: %v", v)
-	}
-}
-
 // GetDeploymentGitUser - Git provider user associated with the commit author email (only set if resolved)
 type GetDeploymentGitUser struct {
 	ID GetDeploymentID `json:"id"`
 	// Git provider username/login
 	Login string `json:"login"`
-	// Is the git user a bot
-	IsBot *bool `json:"isBot,omitempty"`
 	// User type
-	Type *GetDeploymentGitUserType `json:"type,omitempty"`
+	Type *string `json:"type,omitempty"`
 }
 
 func (g GetDeploymentGitUser) MarshalJSON() ([]byte, error) {
@@ -5036,63 +5004,11 @@ func (o *GetDeploymentGitUser) GetLogin() string {
 	return o.Login
 }
 
-func (o *GetDeploymentGitUser) GetIsBot() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.IsBot
-}
-
-func (o *GetDeploymentGitUser) GetType() *GetDeploymentGitUserType {
+func (o *GetDeploymentGitUser) GetType() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Type
-}
-
-// GetDeploymentTeamRole - Team roles at time of deployment
-type GetDeploymentTeamRole string
-
-const (
-	GetDeploymentTeamRoleOwner         GetDeploymentTeamRole = "OWNER"
-	GetDeploymentTeamRoleMember        GetDeploymentTeamRole = "MEMBER"
-	GetDeploymentTeamRoleDeveloper     GetDeploymentTeamRole = "DEVELOPER"
-	GetDeploymentTeamRoleSecurity      GetDeploymentTeamRole = "SECURITY"
-	GetDeploymentTeamRoleBilling       GetDeploymentTeamRole = "BILLING"
-	GetDeploymentTeamRoleViewer        GetDeploymentTeamRole = "VIEWER"
-	GetDeploymentTeamRoleViewerForPlus GetDeploymentTeamRole = "VIEWER_FOR_PLUS"
-	GetDeploymentTeamRoleContributor   GetDeploymentTeamRole = "CONTRIBUTOR"
-)
-
-func (e GetDeploymentTeamRole) ToPointer() *GetDeploymentTeamRole {
-	return &e
-}
-func (e *GetDeploymentTeamRole) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "OWNER":
-		fallthrough
-	case "MEMBER":
-		fallthrough
-	case "DEVELOPER":
-		fallthrough
-	case "SECURITY":
-		fallthrough
-	case "BILLING":
-		fallthrough
-	case "VIEWER":
-		fallthrough
-	case "VIEWER_FOR_PLUS":
-		fallthrough
-	case "CONTRIBUTOR":
-		*e = GetDeploymentTeamRole(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for GetDeploymentTeamRole: %v", v)
-	}
 }
 
 // GetDeploymentVercelUser - Vercel user linked to the git provider account (only set if resolved)
@@ -5102,7 +5018,7 @@ type GetDeploymentVercelUser struct {
 	// Vercel username
 	Username string `json:"username"`
 	// Team roles at time of deployment
-	TeamRoles []GetDeploymentTeamRole `json:"teamRoles,omitempty"`
+	TeamRoles []string `json:"teamRoles,omitempty"`
 }
 
 func (g GetDeploymentVercelUser) MarshalJSON() ([]byte, error) {
@@ -5130,7 +5046,7 @@ func (o *GetDeploymentVercelUser) GetUsername() string {
 	return o.Username
 }
 
-func (o *GetDeploymentVercelUser) GetTeamRoles() []GetDeploymentTeamRole {
+func (o *GetDeploymentVercelUser) GetTeamRoles() []string {
 	if o == nil {
 		return nil
 	}

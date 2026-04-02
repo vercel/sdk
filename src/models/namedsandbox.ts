@@ -90,6 +90,10 @@ export type NamedSandbox = {
    */
   timeout?: number | undefined;
   /**
+   * Default snapshot expiration time in milliseconds. 0 means no expiration.
+   */
+  snapshotExpiration?: number | undefined;
+  /**
    * Network policy configuration.
    */
   networkPolicy?: NetworkPolicy | undefined;
@@ -206,6 +210,7 @@ export const NamedSandbox$inboundSchema: z.ZodType<
   memory: types.optional(types.number()),
   runtime: types.optional(types.string()),
   timeout: types.optional(types.number()),
+  snapshotExpiration: types.optional(types.number()),
   networkPolicy: types.optional(z.lazy(() => NetworkPolicy$inboundSchema)),
   totalEgressBytes: types.optional(types.number()),
   totalIngressBytes: types.optional(types.number()),
@@ -229,6 +234,7 @@ export type NamedSandbox$Outbound = {
   memory?: number | undefined;
   runtime?: string | undefined;
   timeout?: number | undefined;
+  snapshotExpiration?: number | undefined;
   networkPolicy?: NetworkPolicy$Outbound | undefined;
   totalEgressBytes?: number | undefined;
   totalIngressBytes?: number | undefined;
@@ -257,6 +263,7 @@ export const NamedSandbox$outboundSchema: z.ZodType<
   memory: z.number().optional(),
   runtime: z.string().optional(),
   timeout: z.number().optional(),
+  snapshotExpiration: z.number().optional(),
   networkPolicy: z.lazy(() => NetworkPolicy$outboundSchema).optional(),
   totalEgressBytes: z.number().optional(),
   totalIngressBytes: z.number().optional(),

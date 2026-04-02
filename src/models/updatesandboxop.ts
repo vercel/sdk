@@ -8,6 +8,7 @@ import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
+import { smartUnion } from "../types/smartUnion.js";
 import {
   NamedSandbox,
   NamedSandbox$inboundSchema,
@@ -42,6 +43,11 @@ export const UpdateSandboxRuntime = {
  * The runtime environment for the sandbox. Determines the pre-installed language runtimes and tools available.
  */
 export type UpdateSandboxRuntime = ClosedEnum<typeof UpdateSandboxRuntime>;
+
+/**
+ * Default snapshot expiration time in milliseconds. Set to 0 to disable expiration. When set, this value is used as the default expiration for all snapshots created for this sandbox.
+ */
+export type SnapshotExpiration = any | number;
 
 /**
  * The network access policy mode. Use \"allow-all\" to permit all outbound traffic. Use \"deny-all\" to block all outbound traffic. Use \"custom\" to specify explicit allow/deny rules.
@@ -97,6 +103,10 @@ export type UpdateSandboxRequestBody = {
    * Whether the sandbox persists its state across restarts via automatic snapshots.
    */
   persistent?: boolean | undefined;
+  /**
+   * Default snapshot expiration time in milliseconds. Set to 0 to disable expiration. When set, this value is used as the default expiration for all snapshots created for this sandbox.
+   */
+  snapshotExpiration?: any | number | undefined;
   /**
    * Network access policy for the sandbox.\n    Controls which external hosts the sandbox can communicate with.\n    Use \"allow-all\" mode to allow all traffic, \"deny-all\" to block all traffic or \"custom\" to provide specific rules.
    */
@@ -190,6 +200,39 @@ export const UpdateSandboxRuntime$outboundSchema: z.ZodNativeEnum<
 > = UpdateSandboxRuntime$inboundSchema;
 
 /** @internal */
+export const SnapshotExpiration$inboundSchema: z.ZodType<
+  SnapshotExpiration,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([z.any(), types.number()]);
+/** @internal */
+export type SnapshotExpiration$Outbound = any | number;
+
+/** @internal */
+export const SnapshotExpiration$outboundSchema: z.ZodType<
+  SnapshotExpiration$Outbound,
+  z.ZodTypeDef,
+  SnapshotExpiration
+> = smartUnion([z.any(), z.number().int()]);
+
+export function snapshotExpirationToJSON(
+  snapshotExpiration: SnapshotExpiration,
+): string {
+  return JSON.stringify(
+    SnapshotExpiration$outboundSchema.parse(snapshotExpiration),
+  );
+}
+export function snapshotExpirationFromJSON(
+  jsonString: string,
+): SafeParseResult<SnapshotExpiration, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SnapshotExpiration$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SnapshotExpiration' from JSON`,
+  );
+}
+
+/** @internal */
 export const UpdateSandboxMode$inboundSchema: z.ZodNativeEnum<
   typeof UpdateSandboxMode
 > = z.nativeEnum(UpdateSandboxMode);
@@ -256,6 +299,7 @@ export const UpdateSandboxRequestBody$inboundSchema: z.ZodType<
   runtime: types.optional(UpdateSandboxRuntime$inboundSchema),
   timeout: types.optional(types.number()),
   persistent: types.optional(types.boolean()),
+  snapshotExpiration: types.optional(smartUnion([z.any(), types.number()])),
   networkPolicy: types.optional(
     z.lazy(() => UpdateSandboxNetworkPolicy$inboundSchema),
   ),
@@ -268,6 +312,7 @@ export type UpdateSandboxRequestBody$Outbound = {
   runtime?: string | undefined;
   timeout?: number | undefined;
   persistent?: boolean | undefined;
+  snapshotExpiration?: any | number | undefined;
   networkPolicy?: UpdateSandboxNetworkPolicy$Outbound | undefined;
   env?: { [k: string]: string } | undefined;
   tags?: { [k: string]: string } | undefined;
@@ -283,6 +328,7 @@ export const UpdateSandboxRequestBody$outboundSchema: z.ZodType<
   runtime: UpdateSandboxRuntime$outboundSchema.optional(),
   timeout: z.number().int().optional(),
   persistent: z.boolean().optional(),
+  snapshotExpiration: smartUnion([z.any(), z.number().int()]).optional(),
   networkPolicy: z.lazy(() => UpdateSandboxNetworkPolicy$outboundSchema)
     .optional(),
   env: z.record(z.string()).optional(),

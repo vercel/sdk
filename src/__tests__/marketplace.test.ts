@@ -268,10 +268,10 @@ test("Marketplace Exchange Sso Token", async () => {
   });
 
   const result = await vercel.marketplace.exchangeSsoToken({
-    refreshToken: "<value>",
+    code: "<value>",
     clientId: "<id>",
     clientSecret: "<value>",
-    grantType: "refresh_token",
+    grantType: "authorization_code",
   });
   expect(result).toBeDefined();
 });

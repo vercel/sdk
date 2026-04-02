@@ -123,7 +123,7 @@ export type PatchTeamDefaultDeploymentProtection = {
 /**
  * The time period to keep non-production deployments for
  */
-export const Expiration = {
+export const PatchTeamExpiration = {
   Threey: "3y",
   Twoy: "2y",
   Oney: "1y",
@@ -139,7 +139,7 @@ export const Expiration = {
 /**
  * The time period to keep non-production deployments for
  */
-export type Expiration = ClosedEnum<typeof Expiration>;
+export type PatchTeamExpiration = ClosedEnum<typeof PatchTeamExpiration>;
 
 /**
  * The time period to keep production deployments for
@@ -204,7 +204,7 @@ export type PatchTeamDefaultExpirationSettings = {
   /**
    * The time period to keep non-production deployments for
    */
-  expiration?: Expiration | undefined;
+  expiration?: PatchTeamExpiration | undefined;
   /**
    * The time period to keep production deployments for
    */
@@ -694,11 +694,13 @@ export function patchTeamDefaultDeploymentProtectionFromJSON(
 }
 
 /** @internal */
-export const Expiration$inboundSchema: z.ZodNativeEnum<typeof Expiration> = z
-  .nativeEnum(Expiration);
+export const PatchTeamExpiration$inboundSchema: z.ZodNativeEnum<
+  typeof PatchTeamExpiration
+> = z.nativeEnum(PatchTeamExpiration);
 /** @internal */
-export const Expiration$outboundSchema: z.ZodNativeEnum<typeof Expiration> =
-  Expiration$inboundSchema;
+export const PatchTeamExpiration$outboundSchema: z.ZodNativeEnum<
+  typeof PatchTeamExpiration
+> = PatchTeamExpiration$inboundSchema;
 
 /** @internal */
 export const ExpirationProduction$inboundSchema: z.ZodNativeEnum<
@@ -733,7 +735,7 @@ export const PatchTeamDefaultExpirationSettings$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  expiration: types.optional(Expiration$inboundSchema),
+  expiration: types.optional(PatchTeamExpiration$inboundSchema),
   expirationProduction: types.optional(ExpirationProduction$inboundSchema),
   expirationCanceled: types.optional(ExpirationCanceled$inboundSchema),
   expirationErrored: types.optional(ExpirationErrored$inboundSchema),
@@ -752,7 +754,7 @@ export const PatchTeamDefaultExpirationSettings$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   PatchTeamDefaultExpirationSettings
 > = z.object({
-  expiration: Expiration$outboundSchema.optional(),
+  expiration: PatchTeamExpiration$outboundSchema.optional(),
   expirationProduction: ExpirationProduction$outboundSchema.optional(),
   expirationCanceled: ExpirationCanceled$outboundSchema.optional(),
   expirationErrored: ExpirationErrored$outboundSchema.optional(),

@@ -20,7 +20,7 @@ func (o *GetSupportedTldsRequest) GetTeamID() *string {
 type GetSupportedTldsResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
 	// A list of the TLDs supported by Vercel.
-	Strings []string
+	TldNames []string
 }
 
 func (o *GetSupportedTldsResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -30,9 +30,9 @@ func (o *GetSupportedTldsResponse) GetHTTPMeta() components.HTTPMetadata {
 	return o.HTTPMeta
 }
 
-func (o *GetSupportedTldsResponse) GetStrings() []string {
+func (o *GetSupportedTldsResponse) GetTldNames() []string {
 	if o == nil {
 		return nil
 	}
-	return o.Strings
+	return o.TldNames
 }

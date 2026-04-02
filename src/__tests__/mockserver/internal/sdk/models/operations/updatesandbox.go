@@ -4,8 +4,10 @@ package operations
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
 	"mockserver/internal/sdk/models/components"
+	"mockserver/internal/sdk/utils"
 )
 
 // UpdateSandboxResources - Resources to define the VM
@@ -58,6 +60,70 @@ func (e *UpdateSandboxRuntime) UnmarshalJSON(data []byte) error {
 	default:
 		return fmt.Errorf("invalid value for UpdateSandboxRuntime: %v", v)
 	}
+}
+
+type SnapshotExpirationType string
+
+const (
+	SnapshotExpirationTypeAny     SnapshotExpirationType = "any"
+	SnapshotExpirationTypeInteger SnapshotExpirationType = "integer"
+)
+
+// SnapshotExpiration - Default snapshot expiration time in milliseconds. Set to 0 to disable expiration. When set, this value is used as the default expiration for all snapshots created for this sandbox.
+type SnapshotExpiration struct {
+	Any     any    `queryParam:"inline"`
+	Integer *int64 `queryParam:"inline"`
+
+	Type SnapshotExpirationType
+}
+
+func CreateSnapshotExpirationAny(anyT any) SnapshotExpiration {
+	typ := SnapshotExpirationTypeAny
+
+	return SnapshotExpiration{
+		Any:  anyT,
+		Type: typ,
+	}
+}
+
+func CreateSnapshotExpirationInteger(integer int64) SnapshotExpiration {
+	typ := SnapshotExpirationTypeInteger
+
+	return SnapshotExpiration{
+		Integer: &integer,
+		Type:    typ,
+	}
+}
+
+func (u *SnapshotExpiration) UnmarshalJSON(data []byte) error {
+
+	var anyVar any = nil
+	if err := utils.UnmarshalJSON(data, &anyVar, "", true, nil); err == nil {
+		u.Any = anyVar
+		u.Type = SnapshotExpirationTypeAny
+		return nil
+	}
+
+	var integer int64 = int64(0)
+	if err := utils.UnmarshalJSON(data, &integer, "", true, nil); err == nil {
+		u.Integer = &integer
+		u.Type = SnapshotExpirationTypeInteger
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for SnapshotExpiration", string(data))
+}
+
+func (u SnapshotExpiration) MarshalJSON() ([]byte, error) {
+	if u.Any != nil {
+		return utils.MarshalJSON(u.Any, "", true)
+	}
+
+	if u.Integer != nil {
+		return utils.MarshalJSON(u.Integer, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type SnapshotExpiration: all fields are null")
 }
 
 // UpdateSandboxMode - The network access policy mode. Use \"allow-all\" to permit all outbound traffic. Use \"deny-all\" to block all outbound traffic. Use \"custom\" to specify explicit allow/deny rules.
@@ -145,6 +211,8 @@ type UpdateSandboxRequestBody struct {
 	Timeout *int64 `json:"timeout,omitempty"`
 	// Whether the sandbox persists its state across restarts via automatic snapshots.
 	Persistent *bool `json:"persistent,omitempty"`
+	// Default snapshot expiration time in milliseconds. Set to 0 to disable expiration. When set, this value is used as the default expiration for all snapshots created for this sandbox.
+	SnapshotExpiration *SnapshotExpiration `json:"snapshotExpiration,omitempty"`
 	// Network access policy for the sandbox.\n    Controls which external hosts the sandbox can communicate with.\n    Use \"allow-all\" mode to allow all traffic, \"deny-all\" to block all traffic or \"custom\" to provide specific rules.
 	NetworkPolicy *NetworkPolicy `json:"networkPolicy,omitempty"`
 	// Default environment variables for the sandbox. Set to empty object to clear.
@@ -179,6 +247,13 @@ func (o *UpdateSandboxRequestBody) GetPersistent() *bool {
 		return nil
 	}
 	return o.Persistent
+}
+
+func (o *UpdateSandboxRequestBody) GetSnapshotExpiration() *SnapshotExpiration {
+	if o == nil {
+		return nil
+	}
+	return o.SnapshotExpiration
 }
 
 func (o *UpdateSandboxRequestBody) GetNetworkPolicy() *NetworkPolicy {

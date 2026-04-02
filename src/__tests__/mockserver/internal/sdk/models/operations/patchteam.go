@@ -308,27 +308,27 @@ func (o *DefaultDeploymentProtection) GetSsoProtection() optionalnullable.Option
 	return o.SsoProtection
 }
 
-// Expiration - The time period to keep non-production deployments for
-type Expiration string
+// PatchTeamExpiration - The time period to keep non-production deployments for
+type PatchTeamExpiration string
 
 const (
-	ExpirationThreey    Expiration = "3y"
-	ExpirationTwoy      Expiration = "2y"
-	ExpirationOney      Expiration = "1y"
-	ExpirationSixm      Expiration = "6m"
-	ExpirationThreem    Expiration = "3m"
-	ExpirationTwom      Expiration = "2m"
-	ExpirationOnem      Expiration = "1m"
-	ExpirationTwow      Expiration = "2w"
-	ExpirationOnew      Expiration = "1w"
-	ExpirationOned      Expiration = "1d"
-	ExpirationUnlimited Expiration = "unlimited"
+	PatchTeamExpirationThreey    PatchTeamExpiration = "3y"
+	PatchTeamExpirationTwoy      PatchTeamExpiration = "2y"
+	PatchTeamExpirationOney      PatchTeamExpiration = "1y"
+	PatchTeamExpirationSixm      PatchTeamExpiration = "6m"
+	PatchTeamExpirationThreem    PatchTeamExpiration = "3m"
+	PatchTeamExpirationTwom      PatchTeamExpiration = "2m"
+	PatchTeamExpirationOnem      PatchTeamExpiration = "1m"
+	PatchTeamExpirationTwow      PatchTeamExpiration = "2w"
+	PatchTeamExpirationOnew      PatchTeamExpiration = "1w"
+	PatchTeamExpirationOned      PatchTeamExpiration = "1d"
+	PatchTeamExpirationUnlimited PatchTeamExpiration = "unlimited"
 )
 
-func (e Expiration) ToPointer() *Expiration {
+func (e PatchTeamExpiration) ToPointer() *PatchTeamExpiration {
 	return &e
 }
-func (e *Expiration) UnmarshalJSON(data []byte) error {
+func (e *PatchTeamExpiration) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -355,10 +355,10 @@ func (e *Expiration) UnmarshalJSON(data []byte) error {
 	case "1d":
 		fallthrough
 	case "unlimited":
-		*e = Expiration(v)
+		*e = PatchTeamExpiration(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for Expiration: %v", v)
+		return fmt.Errorf("invalid value for PatchTeamExpiration: %v", v)
 	}
 }
 
@@ -514,7 +514,7 @@ func (e *ExpirationErrored) UnmarshalJSON(data []byte) error {
 
 type DefaultExpirationSettings struct {
 	// The time period to keep non-production deployments for
-	Expiration *Expiration `json:"expiration,omitempty"`
+	Expiration *PatchTeamExpiration `json:"expiration,omitempty"`
 	// The time period to keep production deployments for
 	ExpirationProduction *ExpirationProduction `json:"expirationProduction,omitempty"`
 	// The time period to keep canceled deployments for
@@ -523,7 +523,7 @@ type DefaultExpirationSettings struct {
 	ExpirationErrored *ExpirationErrored `json:"expirationErrored,omitempty"`
 }
 
-func (o *DefaultExpirationSettings) GetExpiration() *Expiration {
+func (o *DefaultExpirationSettings) GetExpiration() *PatchTeamExpiration {
 	if o == nil {
 		return nil
 	}

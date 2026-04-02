@@ -585,21 +585,6 @@ export type GetDeploymentsCommitMeta = {
 export type GetDeploymentsId = string | number;
 
 /**
- * User type
- */
-export const GetDeploymentsDeploymentsResponseType = {
-  User: "user",
-  Bot: "bot",
-  AiAgent: "ai-agent",
-} as const;
-/**
- * User type
- */
-export type GetDeploymentsDeploymentsResponseType = ClosedEnum<
-  typeof GetDeploymentsDeploymentsResponseType
->;
-
-/**
  * Git provider user associated with the commit author email (only set if resolved)
  */
 export type GetDeploymentsGitUser = {
@@ -609,34 +594,10 @@ export type GetDeploymentsGitUser = {
    */
   login: string;
   /**
-   * Is the git user a bot
-   */
-  isBot?: boolean | undefined;
-  /**
    * User type
    */
-  type?: GetDeploymentsDeploymentsResponseType | undefined;
+  type?: string | undefined;
 };
-
-/**
- * Team roles at time of deployment
- */
-export const GetDeploymentsTeamRoles = {
-  Owner: "OWNER",
-  Member: "MEMBER",
-  Developer: "DEVELOPER",
-  Security: "SECURITY",
-  Billing: "BILLING",
-  Viewer: "VIEWER",
-  ViewerForPlus: "VIEWER_FOR_PLUS",
-  Contributor: "CONTRIBUTOR",
-} as const;
-/**
- * Team roles at time of deployment
- */
-export type GetDeploymentsTeamRoles = ClosedEnum<
-  typeof GetDeploymentsTeamRoles
->;
 
 /**
  * Vercel user linked to the git provider account (only set if resolved)
@@ -653,7 +614,7 @@ export type GetDeploymentsVercelUser = {
   /**
    * Team roles at time of deployment
    */
-  teamRoles?: Array<GetDeploymentsTeamRoles> | undefined;
+  teamRoles?: Array<string> | undefined;
 };
 
 /**
@@ -1916,16 +1877,6 @@ export function getDeploymentsIdFromJSON(
 }
 
 /** @internal */
-export const GetDeploymentsDeploymentsResponseType$inboundSchema:
-  z.ZodNativeEnum<typeof GetDeploymentsDeploymentsResponseType> = z.nativeEnum(
-    GetDeploymentsDeploymentsResponseType,
-  );
-/** @internal */
-export const GetDeploymentsDeploymentsResponseType$outboundSchema:
-  z.ZodNativeEnum<typeof GetDeploymentsDeploymentsResponseType> =
-    GetDeploymentsDeploymentsResponseType$inboundSchema;
-
-/** @internal */
 export const GetDeploymentsGitUser$inboundSchema: z.ZodType<
   GetDeploymentsGitUser,
   z.ZodTypeDef,
@@ -1933,14 +1884,12 @@ export const GetDeploymentsGitUser$inboundSchema: z.ZodType<
 > = z.object({
   id: smartUnion([types.string(), types.number()]),
   login: types.string(),
-  isBot: types.optional(types.boolean()),
-  type: types.optional(GetDeploymentsDeploymentsResponseType$inboundSchema),
+  type: types.optional(types.string()),
 });
 /** @internal */
 export type GetDeploymentsGitUser$Outbound = {
   id: string | number;
   login: string;
-  isBot?: boolean | undefined;
   type?: string | undefined;
 };
 
@@ -1952,8 +1901,7 @@ export const GetDeploymentsGitUser$outboundSchema: z.ZodType<
 > = z.object({
   id: smartUnion([z.string(), z.number()]),
   login: z.string(),
-  isBot: z.boolean().optional(),
-  type: GetDeploymentsDeploymentsResponseType$outboundSchema.optional(),
+  type: z.string().optional(),
 });
 
 export function getDeploymentsGitUserToJSON(
@@ -1974,15 +1922,6 @@ export function getDeploymentsGitUserFromJSON(
 }
 
 /** @internal */
-export const GetDeploymentsTeamRoles$inboundSchema: z.ZodNativeEnum<
-  typeof GetDeploymentsTeamRoles
-> = z.nativeEnum(GetDeploymentsTeamRoles);
-/** @internal */
-export const GetDeploymentsTeamRoles$outboundSchema: z.ZodNativeEnum<
-  typeof GetDeploymentsTeamRoles
-> = GetDeploymentsTeamRoles$inboundSchema;
-
-/** @internal */
 export const GetDeploymentsVercelUser$inboundSchema: z.ZodType<
   GetDeploymentsVercelUser,
   z.ZodTypeDef,
@@ -1990,7 +1929,7 @@ export const GetDeploymentsVercelUser$inboundSchema: z.ZodType<
 > = z.object({
   id: types.string(),
   username: types.string(),
-  teamRoles: types.optional(z.array(GetDeploymentsTeamRoles$inboundSchema)),
+  teamRoles: types.optional(z.array(types.string())),
 });
 /** @internal */
 export type GetDeploymentsVercelUser$Outbound = {
@@ -2007,7 +1946,7 @@ export const GetDeploymentsVercelUser$outboundSchema: z.ZodType<
 > = z.object({
   id: z.string(),
   username: z.string(),
-  teamRoles: z.array(GetDeploymentsTeamRoles$outboundSchema).optional(),
+  teamRoles: z.array(z.string()).optional(),
 });
 
 export function getDeploymentsVercelUserToJSON(

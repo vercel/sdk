@@ -3,15 +3,82 @@
 package operations
 
 import (
+	"errors"
+	"fmt"
 	"mockserver/internal/sdk/models/components"
+	"mockserver/internal/sdk/utils"
 )
+
+type CreateSnapshotExpirationType string
+
+const (
+	CreateSnapshotExpirationTypeAny     CreateSnapshotExpirationType = "any"
+	CreateSnapshotExpirationTypeInteger CreateSnapshotExpirationType = "integer"
+)
+
+// CreateSnapshotExpiration - The number of milliseconds after which the snapshot will expire and be deleted. Use 0 for no expiration.
+type CreateSnapshotExpiration struct {
+	Any     any    `queryParam:"inline"`
+	Integer *int64 `queryParam:"inline"`
+
+	Type CreateSnapshotExpirationType
+}
+
+func CreateCreateSnapshotExpirationAny(anyT any) CreateSnapshotExpiration {
+	typ := CreateSnapshotExpirationTypeAny
+
+	return CreateSnapshotExpiration{
+		Any:  anyT,
+		Type: typ,
+	}
+}
+
+func CreateCreateSnapshotExpirationInteger(integer int64) CreateSnapshotExpiration {
+	typ := CreateSnapshotExpirationTypeInteger
+
+	return CreateSnapshotExpiration{
+		Integer: &integer,
+		Type:    typ,
+	}
+}
+
+func (u *CreateSnapshotExpiration) UnmarshalJSON(data []byte) error {
+
+	var anyVar any = nil
+	if err := utils.UnmarshalJSON(data, &anyVar, "", true, nil); err == nil {
+		u.Any = anyVar
+		u.Type = CreateSnapshotExpirationTypeAny
+		return nil
+	}
+
+	var integer int64 = int64(0)
+	if err := utils.UnmarshalJSON(data, &integer, "", true, nil); err == nil {
+		u.Integer = &integer
+		u.Type = CreateSnapshotExpirationTypeInteger
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateSnapshotExpiration", string(data))
+}
+
+func (u CreateSnapshotExpiration) MarshalJSON() ([]byte, error) {
+	if u.Any != nil {
+		return utils.MarshalJSON(u.Any, "", true)
+	}
+
+	if u.Integer != nil {
+		return utils.MarshalJSON(u.Integer, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type CreateSnapshotExpiration: all fields are null")
+}
 
 type CreateSnapshotRequestBody struct {
 	// The number of milliseconds after which the snapshot will expire and be deleted. Use 0 for no expiration.
-	Expiration *int64 `json:"expiration,omitempty"`
+	Expiration *CreateSnapshotExpiration `json:"expiration,omitempty"`
 }
 
-func (o *CreateSnapshotRequestBody) GetExpiration() *int64 {
+func (o *CreateSnapshotRequestBody) GetExpiration() *CreateSnapshotExpiration {
 	if o == nil {
 		return nil
 	}

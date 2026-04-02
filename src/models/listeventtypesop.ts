@@ -238,6 +238,7 @@ export const ListEventTypesName = {
   PasskeyDeleted: "passkey-deleted",
   PasskeyUpdated: "passkey-updated",
   PreviewDeploymentSuffixUpdate: "preview-deployment-suffix-update",
+  PrivatelinkEndpointCreated: "privatelink-endpoint-created",
   ProductionBranchUpdated: "production-branch-updated",
   ProjectDirectoryListing: "project-directory-listing",
   ProjectAnalyticsDisabled: "project-analytics-disabled",

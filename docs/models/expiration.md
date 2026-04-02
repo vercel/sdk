@@ -1,17 +1,19 @@
 # Expiration
 
-The time period to keep non-production deployments for
+The number of milliseconds after which the snapshot will expire and be deleted. Use 0 for no expiration.
 
-## Example Usage
 
-```typescript
-import { Expiration } from "@vercel/sdk/models/patchteamop.js";
+## Supported Types
 
-let value: Expiration = "1y";
-```
-
-## Values
+### `any`
 
 ```typescript
-"3y" | "2y" | "1y" | "6m" | "3m" | "2m" | "1m" | "2w" | "1w" | "1d" | "unlimited"
+const value: any = "<value>";
 ```
+
+### `number`
+
+```typescript
+const value: number = 128403;
+```
+

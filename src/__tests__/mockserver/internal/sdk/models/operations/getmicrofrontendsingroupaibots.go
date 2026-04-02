@@ -6318,6 +6318,7 @@ type GetMicrofrontendsInGroupPermissions struct {
 	ObservabilityNotebook                    []components.ACLAction `json:"observabilityNotebook,omitempty"`
 	OpenTelemetryEndpoint                    []components.ACLAction `json:"openTelemetryEndpoint,omitempty"`
 	OwnEvent                                 []components.ACLAction `json:"ownEvent,omitempty"`
+	Organization                             []components.ACLAction `json:"organization,omitempty"`
 	OrganizationDomain                       []components.ACLAction `json:"organizationDomain,omitempty"`
 	PasswordProtectionInvoiceItem            []components.ACLAction `json:"passwordProtectionInvoiceItem,omitempty"`
 	PaymentMethod                            []components.ACLAction `json:"paymentMethod,omitempty"`
@@ -7242,6 +7243,13 @@ func (o *GetMicrofrontendsInGroupPermissions) GetOwnEvent() []components.ACLActi
 		return nil
 	}
 	return o.OwnEvent
+}
+
+func (o *GetMicrofrontendsInGroupPermissions) GetOrganization() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.Organization
 }
 
 func (o *GetMicrofrontendsInGroupPermissions) GetOrganizationDomain() []components.ACLAction {

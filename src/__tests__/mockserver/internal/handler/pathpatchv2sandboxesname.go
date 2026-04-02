@@ -64,6 +64,7 @@ func testUpdateSandboxUpdateSandbox0(w http.ResponseWriter, req *http.Request) {
 			Memory:                   types.Float64(1024),
 			Runtime:                  types.String("node22"),
 			Timeout:                  types.Float64(300000),
+			SnapshotExpiration:       types.Float64(604800000),
 			TotalEgressBytes:         types.Float64(4096),
 			TotalIngressBytes:        types.Float64(2048),
 			TotalActiveCPUDurationMs: types.Float64(5000),

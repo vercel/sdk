@@ -7,7 +7,6 @@ import (
 	"log"
 	"mockserver/internal/handler/assert"
 	"mockserver/internal/logging"
-	"mockserver/internal/sdk/models/components"
 	"mockserver/internal/sdk/models/operations"
 	"mockserver/internal/sdk/optionalnullable"
 	"mockserver/internal/sdk/types"
@@ -48,17 +47,8 @@ func testGetProjectsGetProjects0(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	var respBody optionalnullable.OptionalNullable[operations.GetProjectsResponseBody] = optionalnullable.From(types.Pointer(operations.CreateGetProjectsResponseBodyGetProjectsResponseBody3(
-		operations.GetProjectsResponseBody3{
-			Projects: []operations.GetProjectsProject2{},
-			Pagination: operations.CreatePaginationUnion2Pagination(
-				components.Pagination{
-					Count: 20,
-					Next:  types.Float64(1540095775951),
-					Prev:  types.Float64(1540095775951),
-				},
-			),
-		},
+	var respBody optionalnullable.OptionalNullable[operations.GetProjectsResponseBody] = optionalnullable.From(types.Pointer(operations.CreateGetProjectsResponseBodyArrayOfGetProjectsResponseBody1(
+		[]operations.GetProjectsResponseBody1{},
 	)))
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

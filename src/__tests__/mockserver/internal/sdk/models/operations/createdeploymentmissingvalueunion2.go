@@ -2399,6 +2399,7 @@ func (e *CreateDeploymentIntegrationsStatus) UnmarshalJSON(data []byte) error {
 type CreateDeploymentIntegrations struct {
 	Status      CreateDeploymentIntegrationsStatus `json:"status"`
 	StartedAt   float64                            `json:"startedAt"`
+	ClaimedAt   *float64                           `json:"claimedAt,omitempty"`
 	CompletedAt *float64                           `json:"completedAt,omitempty"`
 	SkippedAt   *float64                           `json:"skippedAt,omitempty"`
 	SkippedBy   *string                            `json:"skippedBy,omitempty"`
@@ -2416,6 +2417,13 @@ func (o *CreateDeploymentIntegrations) GetStartedAt() float64 {
 		return 0.0
 	}
 	return o.StartedAt
+}
+
+func (o *CreateDeploymentIntegrations) GetClaimedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.ClaimedAt
 }
 
 func (o *CreateDeploymentIntegrations) GetCompletedAt() *float64 {

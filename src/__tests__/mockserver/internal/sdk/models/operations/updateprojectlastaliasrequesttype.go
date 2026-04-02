@@ -7474,6 +7474,7 @@ type UpdateProjectPermissions struct {
 	ObservabilityNotebook                    []components.ACLAction `json:"observabilityNotebook,omitempty"`
 	OpenTelemetryEndpoint                    []components.ACLAction `json:"openTelemetryEndpoint,omitempty"`
 	OwnEvent                                 []components.ACLAction `json:"ownEvent,omitempty"`
+	Organization                             []components.ACLAction `json:"organization,omitempty"`
 	OrganizationDomain                       []components.ACLAction `json:"organizationDomain,omitempty"`
 	PasswordProtectionInvoiceItem            []components.ACLAction `json:"passwordProtectionInvoiceItem,omitempty"`
 	PaymentMethod                            []components.ACLAction `json:"paymentMethod,omitempty"`
@@ -8398,6 +8399,13 @@ func (o *UpdateProjectPermissions) GetOwnEvent() []components.ACLAction {
 		return nil
 	}
 	return o.OwnEvent
+}
+
+func (o *UpdateProjectPermissions) GetOrganization() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.Organization
 }
 
 func (o *UpdateProjectPermissions) GetOrganizationDomain() []components.ACLAction {

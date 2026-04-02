@@ -148,6 +148,7 @@ test("Sandboxes V2 Beta Update Sandbox", async () => {
       },
       runtime: "node24",
       timeout: 300000,
+      snapshotExpiration: 604800000,
       networkPolicy: {
         mode: "custom",
         allowedDomains: [

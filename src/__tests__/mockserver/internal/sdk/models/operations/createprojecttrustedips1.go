@@ -139,7 +139,6 @@ type EnvironmentVariableType string
 
 const (
 	EnvironmentVariableTypeSystem    EnvironmentVariableType = "system"
-	EnvironmentVariableTypeSecret    EnvironmentVariableType = "secret"
 	EnvironmentVariableTypeEncrypted EnvironmentVariableType = "encrypted"
 	EnvironmentVariableTypePlain     EnvironmentVariableType = "plain"
 	EnvironmentVariableTypeSensitive EnvironmentVariableType = "sensitive"
@@ -155,8 +154,6 @@ func (e *EnvironmentVariableType) UnmarshalJSON(data []byte) error {
 	}
 	switch v {
 	case "system":
-		fallthrough
-	case "secret":
 		fallthrough
 	case "encrypted":
 		fallthrough
@@ -6879,6 +6876,7 @@ type CreateProjectPermissions struct {
 	ObservabilityNotebook                    []components.ACLAction `json:"observabilityNotebook,omitempty"`
 	OpenTelemetryEndpoint                    []components.ACLAction `json:"openTelemetryEndpoint,omitempty"`
 	OwnEvent                                 []components.ACLAction `json:"ownEvent,omitempty"`
+	Organization                             []components.ACLAction `json:"organization,omitempty"`
 	OrganizationDomain                       []components.ACLAction `json:"organizationDomain,omitempty"`
 	PasswordProtectionInvoiceItem            []components.ACLAction `json:"passwordProtectionInvoiceItem,omitempty"`
 	PaymentMethod                            []components.ACLAction `json:"paymentMethod,omitempty"`
@@ -7803,6 +7801,13 @@ func (o *CreateProjectPermissions) GetOwnEvent() []components.ACLAction {
 		return nil
 	}
 	return o.OwnEvent
+}
+
+func (o *CreateProjectPermissions) GetOrganization() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.Organization
 }
 
 func (o *CreateProjectPermissions) GetOrganizationDomain() []components.ACLAction {

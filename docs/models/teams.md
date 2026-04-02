@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Teams } from "@vercel/sdk/models/ninetyeight.js";
+import { Teams } from "@vercel/sdk/models/ninetynine.js";
 
 let value: Teams = {
   createdAt: 3009.16,
@@ -24,7 +24,7 @@ let value: Teams = {
 | `confirmed`                                                                  | *true*                                                                       | :heavy_check_mark:                                                           | N/A                                                                          |
 | `confirmedAt`                                                                | *number*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
 | `accessRequestedAt`                                                          | *number*                                                                     | :heavy_minus_sign:                                                           | N/A                                                                          |
-| `role`                                                                       | [models.UserEventPayload113Role](../models/usereventpayload113role.md)       | :heavy_check_mark:                                                           | N/A                                                                          |
+| `role`                                                                       | [models.UserEventPayload114Role](../models/usereventpayload114role.md)       | :heavy_check_mark:                                                           | N/A                                                                          |
 | `teamRoles`                                                                  | [models.PayloadTeamRoles](../models/payloadteamroles.md)[]                   | :heavy_minus_sign:                                                           | N/A                                                                          |
 | `teamPermissions`                                                            | [models.PayloadTeamPermissions](../models/payloadteampermissions.md)[]       | :heavy_minus_sign:                                                           | N/A                                                                          |
 | `created`                                                                    | *number*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |

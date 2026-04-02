@@ -9,7 +9,7 @@ import { SeventySix } from "@vercel/sdk/models/usereventpayloadproject.js";
 
 let value: SeventySix = {
   name: "<value>",
-  cdnEnabled: false,
+  price: 8965.35,
 };
 ```
 
@@ -18,4 +18,5 @@ let value: SeventySix = {
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `name`             | *string*           | :heavy_check_mark: | N/A                |
-| `cdnEnabled`       | *boolean*          | :heavy_check_mark: | N/A                |
+| `price`            | *number*           | :heavy_check_mark: | N/A                |
+| `currency`         | *string*           | :heavy_minus_sign: | N/A                |

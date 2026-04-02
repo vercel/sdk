@@ -8,7 +8,7 @@ The payload of the event, if requested.
 import { OneHundredAndTwenty } from "@vercel/sdk/models/payloadviewpreference.js";
 
 let value: OneHundredAndTwenty = {
-  logDrainUrl: "https://basic-alligator.net/",
+  logDrainUrl: null,
 };
 ```
 

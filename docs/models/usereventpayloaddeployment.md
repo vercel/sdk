@@ -8,11 +8,11 @@ import { UserEventPayloadDeployment } from "@vercel/sdk/models/usereventpayloadp
 let value: UserEventPayloadDeployment = {
   id: "<id>",
   name: "<value>",
+  url: "https://posh-sundae.net",
   meta: {
     "key": "<value>",
     "key1": "<value>",
   },
-  url: "https://trusting-sandbar.net",
 };
 ```
 
@@ -22,5 +22,5 @@ let value: UserEventPayloadDeployment = {
 | ------------------------ | ------------------------ | ------------------------ | ------------------------ |
 | `id`                     | *string*                 | :heavy_check_mark:       | N/A                      |
 | `name`                   | *string*                 | :heavy_check_mark:       | N/A                      |
-| `meta`                   | Record<string, *string*> | :heavy_check_mark:       | N/A                      |
 | `url`                    | *string*                 | :heavy_check_mark:       | N/A                      |
+| `meta`                   | Record<string, *string*> | :heavy_check_mark:       | N/A                      |

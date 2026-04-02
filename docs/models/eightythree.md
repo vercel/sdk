@@ -9,7 +9,6 @@ import { EightyThree } from "@vercel/sdk/models/usereventpayloadproject.js";
 
 let value: EightyThree = {
   domain: "evil-editor.biz",
-  zone: false,
 };
 ```
 
@@ -18,4 +17,3 @@ let value: EightyThree = {
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `domain`           | *string*           | :heavy_check_mark: | N/A                |
-| `zone`             | *boolean*          | :heavy_check_mark: | N/A                |

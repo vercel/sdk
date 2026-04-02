@@ -12,9 +12,6 @@ let value: OneHundredAndTwentySix = {
     id: "<id>",
     name: "<value>",
   },
-  prev: {
-    project: {},
-  },
   group: {
     id: "<id>",
     slug: "<value>",
@@ -28,5 +25,4 @@ let value: OneHundredAndTwentySix = {
 | Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
 | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
 | `project`                                                                    | [models.UserEventPayload126Project](../models/usereventpayload126project.md) | :heavy_check_mark:                                                           | N/A                                                                          |
-| `prev`                                                                       | [models.PayloadPrev](../models/payloadprev.md)                               | :heavy_check_mark:                                                           | N/A                                                                          |
-| `group`                                                                      | [models.PayloadGroup](../models/payloadgroup.md)                             | :heavy_check_mark:                                                           | N/A                                                                          |
+| `group`                                                                      | [models.Group](../models/group.md)                                           | :heavy_check_mark:                                                           | N/A                                                                          |

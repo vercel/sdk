@@ -8,9 +8,9 @@ The payload of the event, if requested.
 import { OneHundredAndTwentyThree } from "@vercel/sdk/models/payloadviewpreference.js";
 
 let value: OneHundredAndTwentyThree = {
-  id: "<id>",
-  slug: "<value>",
-  name: "<value>",
+  projectId: "<id>",
+  toDeploymentId: "<id>",
+  projectName: "<value>",
 };
 ```
 
@@ -18,6 +18,6 @@ let value: OneHundredAndTwentyThree = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `id`               | *string*           | :heavy_check_mark: | N/A                |
-| `slug`             | *string*           | :heavy_check_mark: | N/A                |
-| `name`             | *string*           | :heavy_check_mark: | N/A                |
+| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
+| `toDeploymentId`   | *string*           | :heavy_check_mark: | N/A                |
+| `projectName`      | *string*           | :heavy_check_mark: | N/A                |

@@ -8,8 +8,6 @@ The payload of the event, if requested.
 import { FortyThree } from "@vercel/sdk/models/usereventpayloadproject.js";
 
 let value: FortyThree = {
-  id: "<id>",
-  cns: [],
   custom: true,
 };
 ```
@@ -18,6 +16,7 @@ let value: FortyThree = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `id`               | *string*           | :heavy_check_mark: | N/A                |
-| `cns`              | *string*[]         | :heavy_check_mark: | N/A                |
+| `cn`               | *string*           | :heavy_minus_sign: | N/A                |
+| `cns`              | *string*[]         | :heavy_minus_sign: | N/A                |
 | `custom`           | *boolean*          | :heavy_check_mark: | N/A                |
+| `id`               | *string*           | :heavy_minus_sign: | N/A                |

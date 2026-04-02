@@ -9,7 +9,7 @@ import { FiftySeven } from "@vercel/sdk/models/usereventpayloadproject.js";
 
 let value: FiftySeven = {
   gitlabLogin: "<value>",
-  gitlabUserId: 4103.29,
+  gitlabEmail: "<value>",
 };
 ```
 
@@ -18,4 +18,7 @@ let value: FiftySeven = {
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `gitlabLogin`      | *string*           | :heavy_check_mark: | N/A                |
-| `gitlabUserId`     | *number*           | :heavy_check_mark: | N/A                |
+| `gitlabEmail`      | *string*           | :heavy_check_mark: | N/A                |
+| `gitlabName`       | *string*           | :heavy_minus_sign: | N/A                |
+| `zeitAccount`      | *string*           | :heavy_minus_sign: | N/A                |
+| `zeitAccountType`  | *string*           | :heavy_minus_sign: | N/A                |

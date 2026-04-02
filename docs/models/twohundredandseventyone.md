@@ -5,16 +5,20 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndSeventyOne } from "@vercel/sdk/models/twohundredandtwentyfour.js";
+import { TwoHundredAndSeventyOne } from "@vercel/sdk/models/twohundredandtwentyfive.js";
 
 let value: TwoHundredAndSeventyOne = {
-  username: "Ola16",
+  totp: false,
+  recoveryCodes: 905.99,
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `deletedAt`        | *number*           | :heavy_minus_sign: | N/A                |
-| `username`         | *string*           | :heavy_check_mark: | N/A                |
+| Field                                      | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `totp`                                     | *boolean*                                  | :heavy_check_mark:                         | N/A                                        |
+| `recoveryCodes`                            | *number*                                   | :heavy_check_mark:                         | N/A                                        |
+| `actorId`                                  | *string*                                   | :heavy_minus_sign:                         | N/A                                        |
+| `actorType`                                | [models.ActorType](../models/actortype.md) | :heavy_minus_sign:                         | N/A                                        |
+| `reason`                                   | *string*                                   | :heavy_minus_sign:                         | N/A                                        |

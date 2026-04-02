@@ -8,9 +8,7 @@ The payload of the event, if requested.
 import { Ninety } from "@vercel/sdk/models/usereventpayloadproject.js";
 
 let value: Ninety = {
-  projectId: "<id>",
-  projectName: "<value>",
-  srcImages: [],
+  drainUrl: null,
 };
 ```
 
@@ -18,6 +16,5 @@ let value: Ninety = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
-| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
-| `srcImages`        | *string*[]         | :heavy_check_mark: | N/A                |
+| `drainUrl`         | *string*           | :heavy_check_mark: | N/A                |
+| `integrationName`  | *string*           | :heavy_minus_sign: | N/A                |

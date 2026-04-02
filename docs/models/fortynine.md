@@ -7,16 +7,12 @@ The payload of the event, if requested.
 ```typescript
 import { FortyNine } from "@vercel/sdk/models/usereventpayloadproject.js";
 
-let value: FortyNine = {
-  configuration: {
-    id: "<id>",
-    name: "<value>",
-  },
-};
+let value: FortyNine = {};
 ```
 
 ## Fields
 
-| Field                                              | Type                                               | Required                                           | Description                                        |
-| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
-| `configuration`                                    | [models.Configuration](../models/configuration.md) | :heavy_check_mark:                                 | N/A                                                |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `cn`               | *string*           | :heavy_minus_sign: | N/A                |
+| `cns`              | *string*[]         | :heavy_minus_sign: | N/A                |

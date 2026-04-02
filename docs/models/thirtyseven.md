@@ -8,7 +8,7 @@ The payload of the event, if requested.
 import { ThirtySeven } from "@vercel/sdk/models/userevent.js";
 
 let value: ThirtySeven = {
-  action: "resume_plan",
+  action: "cancel_plan",
   data: {
     planSlug: "v0_teams",
   },
@@ -21,4 +21,4 @@ let value: ThirtySeven = {
 | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
 | `subscriptionId`                                                         | *string*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
 | `action`                                                                 | [models.UserEventPayload37Action](../models/usereventpayload37action.md) | :heavy_check_mark:                                                       | N/A                                                                      |
-| `data`                                                                   | [models.PayloadData](../models/payloaddata.md)                           | :heavy_check_mark:                                                       | N/A                                                                      |
+| `data`                                                                   | [models.UserEventPayloadData](../models/usereventpayloaddata.md)         | :heavy_check_mark:                                                       | N/A                                                                      |

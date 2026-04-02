@@ -35,6 +35,7 @@ export const ListEventTypesName = {
   AccessGroupUserRemoved: "access-group-user-removed",
   PasswordProtectionDisabled: "password-protection-disabled",
   PasswordProtectionEnabled: "password-protection-enabled",
+  AliasesAssigned: "aliases-assigned",
   AliasChown: "alias-chown",
   AliasDelete: "alias-delete",
   AliasInviteCreated: "alias-invite-created",

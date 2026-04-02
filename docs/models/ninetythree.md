@@ -8,9 +8,8 @@ The payload of the event, if requested.
 import { NinetyThree } from "@vercel/sdk/models/usereventpayloadproject.js";
 
 let value: NinetyThree = {
-  edgeConfigId: "<id>",
-  edgeConfigSlug: "<value>",
-  edgeConfigDigest: "<value>",
+  projectId: "<id>",
+  projectName: "<value>",
 };
 ```
 
@@ -18,6 +17,5 @@ let value: NinetyThree = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `edgeConfigId`     | *string*           | :heavy_check_mark: | N/A                |
-| `edgeConfigSlug`   | *string*           | :heavy_check_mark: | N/A                |
-| `edgeConfigDigest` | *string*           | :heavy_check_mark: | N/A                |
+| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
+| `projectName`      | *string*           | :heavy_check_mark: | N/A                |

@@ -173,6 +173,10 @@ export type GetConfigurationResponseBody3 = {
    * A timestamp that tells you when the configuration deletion has been started for cases when the deletion needs to be settled/approved by partners, such as when marketplace invoices have been paid.
    */
   deleteRequestedAt?: number | null | undefined;
+  /**
+   * Record when the customer initited deletion, independent of whether `deleteRequestedAt` gets set.
+   */
+  customerDeleteRequestedAt?: number | null | undefined;
   disabledReason?:
     | GetConfigurationResponseBodyIntegrationsResponseDisabledReason
     | undefined;
@@ -328,6 +332,10 @@ export type GetConfigurationResponseBody2 = {
    * A timestamp that tells you when the configuration deletion has been started for cases when the deletion needs to be settled/approved by partners, such as when marketplace invoices have been paid.
    */
   deleteRequestedAt?: number | null | undefined;
+  /**
+   * Record when the customer initited deletion, independent of whether `deleteRequestedAt` gets set.
+   */
+  customerDeleteRequestedAt?: number | null | undefined;
   disabledReason?:
     | GetConfigurationResponseBodyIntegrationsDisabledReason
     | undefined;
@@ -580,6 +588,10 @@ export type GetConfigurationResponseBody1 = {
    * A timestamp that tells you when the configuration deletion has been started for cases when the deletion needs to be settled/approved by partners, such as when marketplace invoices have been paid.
    */
   deleteRequestedAt?: number | null | undefined;
+  /**
+   * Record when the customer initited deletion, independent of whether `deleteRequestedAt` gets set.
+   */
+  customerDeleteRequestedAt?: number | null | undefined;
   disabledReason?: GetConfigurationResponseBodyDisabledReason | undefined;
   /**
    * Defines the installation type. - 'external' integrations are installed via the existing integrations flow - 'marketplace' integrations are natively installed: - when accepting the TOS of a partner during the store creation process - if undefined, assume 'external'
@@ -729,6 +741,7 @@ export const GetConfigurationResponseBody3$inboundSchema: z.ZodType<
   disabledAt: types.optional(types.number()),
   deletedAt: z.nullable(types.number()).optional(),
   deleteRequestedAt: z.nullable(types.number()).optional(),
+  customerDeleteRequestedAt: z.nullable(types.number()).optional(),
   disabledReason: types.optional(
     GetConfigurationResponseBodyIntegrationsResponseDisabledReason$inboundSchema,
   ),
@@ -756,6 +769,7 @@ export type GetConfigurationResponseBody3$Outbound = {
   disabledAt?: number | undefined;
   deletedAt?: number | null | undefined;
   deleteRequestedAt?: number | null | undefined;
+  customerDeleteRequestedAt?: number | null | undefined;
   disabledReason?: string | undefined;
   installationType?: string | undefined;
 };
@@ -787,6 +801,7 @@ export const GetConfigurationResponseBody3$outboundSchema: z.ZodType<
   disabledAt: z.number().optional(),
   deletedAt: z.nullable(z.number()).optional(),
   deleteRequestedAt: z.nullable(z.number()).optional(),
+  customerDeleteRequestedAt: z.nullable(z.number()).optional(),
   disabledReason:
     GetConfigurationResponseBodyIntegrationsResponseDisabledReason$outboundSchema
       .optional(),
@@ -891,6 +906,7 @@ export const GetConfigurationResponseBody2$inboundSchema: z.ZodType<
   disabledAt: types.optional(types.number()),
   deletedAt: z.nullable(types.number()).optional(),
   deleteRequestedAt: z.nullable(types.number()).optional(),
+  customerDeleteRequestedAt: z.nullable(types.number()).optional(),
   disabledReason: types.optional(
     GetConfigurationResponseBodyIntegrationsDisabledReason$inboundSchema,
   ),
@@ -918,6 +934,7 @@ export type GetConfigurationResponseBody2$Outbound = {
   disabledAt?: number | undefined;
   deletedAt?: number | null | undefined;
   deleteRequestedAt?: number | null | undefined;
+  customerDeleteRequestedAt?: number | null | undefined;
   disabledReason?: string | undefined;
   installationType?: string | undefined;
 };
@@ -948,6 +965,7 @@ export const GetConfigurationResponseBody2$outboundSchema: z.ZodType<
   disabledAt: z.number().optional(),
   deletedAt: z.nullable(z.number()).optional(),
   deleteRequestedAt: z.nullable(z.number()).optional(),
+  customerDeleteRequestedAt: z.nullable(z.number()).optional(),
   disabledReason:
     GetConfigurationResponseBodyIntegrationsDisabledReason$outboundSchema
       .optional(),
@@ -1458,6 +1476,7 @@ export const GetConfigurationResponseBody1$inboundSchema: z.ZodType<
   externalId: types.optional(types.string()),
   disabledAt: types.optional(types.number()),
   deleteRequestedAt: z.nullable(types.number()).optional(),
+  customerDeleteRequestedAt: z.nullable(types.number()).optional(),
   disabledReason: types.optional(
     GetConfigurationResponseBodyDisabledReason$inboundSchema,
   ),
@@ -1489,6 +1508,7 @@ export type GetConfigurationResponseBody1$Outbound = {
   externalId?: string | undefined;
   disabledAt?: number | undefined;
   deleteRequestedAt?: number | null | undefined;
+  customerDeleteRequestedAt?: number | null | undefined;
   disabledReason?: string | undefined;
   installationType?: string | undefined;
 };
@@ -1524,6 +1544,7 @@ export const GetConfigurationResponseBody1$outboundSchema: z.ZodType<
   externalId: z.string().optional(),
   disabledAt: z.number().optional(),
   deleteRequestedAt: z.nullable(z.number()).optional(),
+  customerDeleteRequestedAt: z.nullable(z.number()).optional(),
   disabledReason: GetConfigurationResponseBodyDisabledReason$outboundSchema
     .optional(),
   installationType: GetConfigurationResponseBodyInstallationType$outboundSchema

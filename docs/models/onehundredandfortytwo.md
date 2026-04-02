@@ -10,14 +10,16 @@ import { OneHundredAndFortyTwo } from "@vercel/sdk/models/payloadviewpreference.
 let value: OneHundredAndFortyTwo = {
   projectId: "<id>",
   projectName: "<value>",
-  enableAffectedProjectsDeployments: true,
+  action: "disabled",
 };
 ```
 
 ## Fields
 
-| Field                               | Type                                | Required                            | Description                         |
-| ----------------------------------- | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| `projectId`                         | *string*                            | :heavy_check_mark:                  | N/A                                 |
-| `projectName`                       | *string*                            | :heavy_check_mark:                  | N/A                                 |
-| `enableAffectedProjectsDeployments` | *boolean*                           | :heavy_check_mark:                  | N/A                                 |
+| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `projectId`                                                                | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
+| `projectName`                                                              | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
+| `action`                                                                   | [models.UserEventPayload142Action](../models/usereventpayload142action.md) | :heavy_check_mark:                                                         | N/A                                                                        |
+| `isEnvVar`                                                                 | *boolean*                                                                  | :heavy_minus_sign:                                                         | N/A                                                                        |
+| `note`                                                                     | *string*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |

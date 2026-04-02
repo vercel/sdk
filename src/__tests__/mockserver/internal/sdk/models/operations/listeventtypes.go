@@ -47,6 +47,7 @@ const (
 	NameAccessGroupUserRemoved                          Name = "access-group-user-removed"
 	NamePasswordProtectionDisabled                      Name = "password-protection-disabled"
 	NamePasswordProtectionEnabled                       Name = "password-protection-enabled"
+	NameAliasesAssigned                                 Name = "aliases-assigned"
 	NameAliasChown                                      Name = "alias-chown"
 	NameAliasDelete                                     Name = "alias-delete"
 	NameAliasInviteCreated                              Name = "alias-invite-created"
@@ -485,6 +486,8 @@ func (e *Name) UnmarshalJSON(data []byte) error {
 	case "password-protection-disabled":
 		fallthrough
 	case "password-protection-enabled":
+		fallthrough
+	case "aliases-assigned":
 		fallthrough
 	case "alias-chown":
 		fallthrough

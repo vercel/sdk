@@ -5,11 +5,14 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndOne } from "@vercel/sdk/models/ninetyeight.js";
+import { OneHundredAndOne } from "@vercel/sdk/models/ninetynine.js";
 
 let value: OneHundredAndOne = {
   team: {
     id: "<id>",
+  },
+  previousRule: {
+    email: "Kristoffer35@gmail.com",
   },
 };
 ```
@@ -19,5 +22,4 @@ let value: OneHundredAndOne = {
 | Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
 | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
 | `team`                                                                 | [models.UserEventPayload101Team](../models/usereventpayload101team.md) | :heavy_check_mark:                                                     | N/A                                                                    |
-| `previousRule`                                                         | [models.PayloadPreviousRule](../models/payloadpreviousrule.md)         | :heavy_minus_sign:                                                     | N/A                                                                    |
-| `nextRule`                                                             | [models.NextRule](../models/nextrule.md)                               | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `previousRule`                                                         | [models.PreviousRule](../models/previousrule.md)                       | :heavy_check_mark:                                                     | N/A                                                                    |

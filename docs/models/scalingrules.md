@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ScalingRules } from "@vercel/sdk/models/usereventpayload161next.js";
+import { ScalingRules } from "@vercel/sdk/models/usereventpayload162next.js";
 
 let value: ScalingRules = {
   min: 7732.79,

@@ -490,7 +490,9 @@ type GetConfigurationsIntegrationConfiguration2 struct {
 	DeletedAt optionalnullable.OptionalNullable[float64] `json:"deletedAt,omitempty"`
 	// A timestamp that tells you when the configuration deletion has been started for cases when the deletion needs to be settled/approved by partners, such as when marketplace invoices have been paid.
 	DeleteRequestedAt optionalnullable.OptionalNullable[float64] `json:"deleteRequestedAt,omitempty"`
-	DisabledReason    *GetConfigurationsDisabledReason2          `json:"disabledReason,omitempty"`
+	// Record when the customer initited deletion, independent of whether `deleteRequestedAt` gets set.
+	CustomerDeleteRequestedAt optionalnullable.OptionalNullable[float64] `json:"customerDeleteRequestedAt,omitempty"`
+	DisabledReason            *GetConfigurationsDisabledReason2          `json:"disabledReason,omitempty"`
 	// Defines the installation type. - 'external' integrations are installed via the existing integrations flow - 'marketplace' integrations are natively installed: - when accepting the TOS of a partner during the store creation process - if undefined, assume 'external'
 	InstallationType *GetConfigurationsInstallationTypeResponse2 `json:"installationType,omitempty"`
 }
@@ -637,6 +639,13 @@ func (o *GetConfigurationsIntegrationConfiguration2) GetDeleteRequestedAt() opti
 		return nil
 	}
 	return o.DeleteRequestedAt
+}
+
+func (o *GetConfigurationsIntegrationConfiguration2) GetCustomerDeleteRequestedAt() optionalnullable.OptionalNullable[float64] {
+	if o == nil {
+		return nil
+	}
+	return o.CustomerDeleteRequestedAt
 }
 
 func (o *GetConfigurationsIntegrationConfiguration2) GetDisabledReason() *GetConfigurationsDisabledReason2 {
@@ -865,7 +874,9 @@ type GetConfigurationsIntegrationConfiguration1 struct {
 	DeletedAt optionalnullable.OptionalNullable[float64] `json:"deletedAt,omitempty"`
 	// A timestamp that tells you when the configuration deletion has been started for cases when the deletion needs to be settled/approved by partners, such as when marketplace invoices have been paid.
 	DeleteRequestedAt optionalnullable.OptionalNullable[float64] `json:"deleteRequestedAt,omitempty"`
-	DisabledReason    *GetConfigurationsDisabledReason1          `json:"disabledReason,omitempty"`
+	// Record when the customer initited deletion, independent of whether `deleteRequestedAt` gets set.
+	CustomerDeleteRequestedAt optionalnullable.OptionalNullable[float64] `json:"customerDeleteRequestedAt,omitempty"`
+	DisabledReason            *GetConfigurationsDisabledReason1          `json:"disabledReason,omitempty"`
 	// Defines the installation type. - 'external' integrations are installed via the existing integrations flow - 'marketplace' integrations are natively installed: - when accepting the TOS of a partner during the store creation process - if undefined, assume 'external'
 	InstallationType *GetConfigurationsInstallationTypeResponse1 `json:"installationType,omitempty"`
 }
@@ -1005,6 +1016,13 @@ func (o *GetConfigurationsIntegrationConfiguration1) GetDeleteRequestedAt() opti
 		return nil
 	}
 	return o.DeleteRequestedAt
+}
+
+func (o *GetConfigurationsIntegrationConfiguration1) GetCustomerDeleteRequestedAt() optionalnullable.OptionalNullable[float64] {
+	if o == nil {
+		return nil
+	}
+	return o.CustomerDeleteRequestedAt
 }
 
 func (o *GetConfigurationsIntegrationConfiguration1) GetDisabledReason() *GetConfigurationsDisabledReason1 {

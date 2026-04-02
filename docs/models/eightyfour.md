@@ -8,9 +8,8 @@ The payload of the event, if requested.
 import { EightyFour } from "@vercel/sdk/models/usereventpayloadproject.js";
 
 let value: EightyFour = {
-  name: "<value>",
-  fromId: "<id>",
-  fromName: "<value>",
+  domain: "glittering-carnival.name",
+  zone: false,
 };
 ```
 
@@ -18,6 +17,5 @@ let value: EightyFour = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `name`             | *string*           | :heavy_check_mark: | N/A                |
-| `fromId`           | *string*           | :heavy_check_mark: | N/A                |
-| `fromName`         | *string*           | :heavy_check_mark: | N/A                |
+| `domain`           | *string*           | :heavy_check_mark: | N/A                |
+| `zone`             | *boolean*          | :heavy_check_mark: | N/A                |

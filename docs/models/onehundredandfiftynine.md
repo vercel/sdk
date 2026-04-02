@@ -10,20 +10,16 @@ import { OneHundredAndFiftyNine } from "@vercel/sdk/models/payloadviewpreference
 let value: OneHundredAndFiftyNine = {
   projectId: "<id>",
   projectName: "<value>",
-  previous: {
-    functionDefaultTimeout: 4739.55,
-  },
-  next: {
-    functionDefaultTimeout: 2222.38,
-  },
+  customEnvironmentId: "<id>",
+  customEnvironmentSlug: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
-| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| `projectId`                                                              | *string*                                                                 | :heavy_check_mark:                                                       | N/A                                                                      |
-| `projectName`                                                            | *string*                                                                 | :heavy_check_mark:                                                       | N/A                                                                      |
-| `previous`                                                               | [models.UserEventPayloadPrevious](../models/usereventpayloadprevious.md) | :heavy_check_mark:                                                       | N/A                                                                      |
-| `next`                                                                   | [models.UserEventPayloadNext](../models/usereventpayloadnext.md)         | :heavy_check_mark:                                                       | N/A                                                                      |
+| Field                   | Type                    | Required                | Description             |
+| ----------------------- | ----------------------- | ----------------------- | ----------------------- |
+| `projectId`             | *string*                | :heavy_check_mark:      | N/A                     |
+| `projectName`           | *string*                | :heavy_check_mark:      | N/A                     |
+| `customEnvironmentId`   | *string*                | :heavy_check_mark:      | N/A                     |
+| `customEnvironmentSlug` | *string*                | :heavy_check_mark:      | N/A                     |

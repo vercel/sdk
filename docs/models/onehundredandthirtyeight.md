@@ -8,9 +8,8 @@ The payload of the event, if requested.
 import { OneHundredAndThirtyEight } from "@vercel/sdk/models/payloadviewpreference.js";
 
 let value: OneHundredAndThirtyEight = {
-  projectId: "<id>",
   projectName: "<value>",
-  directoryListing: true,
+  branch: "<value>",
 };
 ```
 
@@ -18,6 +17,5 @@ let value: OneHundredAndThirtyEight = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
 | `projectName`      | *string*           | :heavy_check_mark: | N/A                |
-| `directoryListing` | *boolean*          | :heavy_check_mark: | N/A                |
+| `branch`           | *string*           | :heavy_check_mark: | N/A                |

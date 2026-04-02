@@ -7,17 +7,13 @@ The payload of the event, if requested.
 ```typescript
 import { Eighteen } from "@vercel/sdk/models/userevent.js";
 
-let value: Eighteen = {
-  projectName: "<value>",
-  alias: "<value>",
-  action: "removed",
-};
+let value: Eighteen = {};
 ```
 
 ## Fields
 
-| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
-| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| `projectName`                                                            | *string*                                                                 | :heavy_check_mark:                                                       | N/A                                                                      |
-| `alias`                                                                  | *string*                                                                 | :heavy_check_mark:                                                       | N/A                                                                      |
-| `action`                                                                 | [models.UserEventPayload18Action](../models/usereventpayload18action.md) | :heavy_check_mark:                                                       | N/A                                                                      |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `aliasId`          | *string*           | :heavy_minus_sign: | N/A                |
+| `alias`            | *string*           | :heavy_minus_sign: | N/A                |
+| `projectName`      | *string*           | :heavy_minus_sign: | N/A                |

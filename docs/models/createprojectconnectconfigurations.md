@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CreateProjectConnectConfigurations } from "@vercel/sdk/models/usagestatus.js";
+import { CreateProjectConnectConfigurations } from "@vercel/sdk/models/createprojectkind.js";
 
 let value: CreateProjectConnectConfigurations = {
   envId: "<id>",

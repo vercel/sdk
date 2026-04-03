@@ -791,6 +791,20 @@ func (o *GetProjectsDataCache) GetUnlimited() *bool {
 	return o.Unlimited
 }
 
+type GetProjectsDelegatedProtection struct {
+}
+
+func (g GetProjectsDelegatedProtection) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetProjectsDelegatedProtection) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
 // GetProjectsProjectDeploymentExpiration2 - Retention policies for deployments. These are enforced at the project level, but we also maintain an instance of this at the team level as a default policy that gets applied to new projects.
 type GetProjectsProjectDeploymentExpiration2 struct {
 	// Number of days to keep non-production deployments (mostly preview deployments) before soft deletion.
@@ -6589,6 +6603,7 @@ type GetProjectsPermissions struct {
 	ProjectAnalyticsUsage                    []components.ACLAction `json:"projectAnalyticsUsage,omitempty"`
 	ProjectCheck                             []components.ACLAction `json:"projectCheck,omitempty"`
 	ProjectCheckRun                          []components.ACLAction `json:"projectCheckRun,omitempty"`
+	ProjectDelegatedProtection               []components.ACLAction `json:"projectDelegatedProtection,omitempty"`
 	ProjectDeploymentExpiration              []components.ACLAction `json:"projectDeploymentExpiration,omitempty"`
 	ProjectDeploymentHook                    []components.ACLAction `json:"projectDeploymentHook,omitempty"`
 	ProjectDeploymentProtectionStrict        []components.ACLAction `json:"projectDeploymentProtectionStrict,omitempty"`
@@ -8025,6 +8040,13 @@ func (o *GetProjectsPermissions) GetProjectCheckRun() []components.ACLAction {
 	return o.ProjectCheckRun
 }
 
+func (o *GetProjectsPermissions) GetProjectDelegatedProtection() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectDelegatedProtection
+}
+
 func (o *GetProjectsPermissions) GetProjectDeploymentExpiration() []components.ACLAction {
 	if o == nil {
 		return nil
@@ -9339,50 +9361,4 @@ func (o *GetProjectsProjectOwasp2) GetAction() *GetProjectsProjectOwaspAction2 {
 		return nil
 	}
 	return o.Action
-}
-
-type GetProjectsProjectManagedRules2 struct {
-	VercelRuleset GetProjectsProjectVercelRuleset2 `json:"vercel_ruleset"`
-	BotFilter     GetProjectsProjectBotFilter2     `json:"bot_filter"`
-	AiBots        GetProjectsProjectAiBots2        `json:"ai_bots"`
-	Owasp         GetProjectsProjectOwasp2         `json:"owasp"`
-}
-
-func (g GetProjectsProjectManagedRules2) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(g, "", false)
-}
-
-func (g *GetProjectsProjectManagedRules2) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"vercel_ruleset", "bot_filter", "ai_bots", "owasp"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *GetProjectsProjectManagedRules2) GetVercelRuleset() GetProjectsProjectVercelRuleset2 {
-	if o == nil {
-		return GetProjectsProjectVercelRuleset2{}
-	}
-	return o.VercelRuleset
-}
-
-func (o *GetProjectsProjectManagedRules2) GetBotFilter() GetProjectsProjectBotFilter2 {
-	if o == nil {
-		return GetProjectsProjectBotFilter2{}
-	}
-	return o.BotFilter
-}
-
-func (o *GetProjectsProjectManagedRules2) GetAiBots() GetProjectsProjectAiBots2 {
-	if o == nil {
-		return GetProjectsProjectAiBots2{}
-	}
-	return o.AiBots
-}
-
-func (o *GetProjectsProjectManagedRules2) GetOwasp() GetProjectsProjectOwasp2 {
-	if o == nil {
-		return GetProjectsProjectOwasp2{}
-	}
-	return o.Owasp
 }

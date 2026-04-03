@@ -5,7 +5,7 @@ Manage Static IPs for this project
 ## Example Usage
 
 ```typescript
-import { UpdateProjectStaticIps } from "@vercel/sdk/models/updateprojectprojectsresponse200action.js";
+import { UpdateProjectStaticIps } from "@vercel/sdk/models/updateprojectbotfilter.js";
 
 let value: UpdateProjectStaticIps = {
   enabled: true,

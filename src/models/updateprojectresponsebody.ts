@@ -39,6 +39,10 @@ import {
   UpdateProjectDefaultResourceConfig$inboundSchema,
   UpdateProjectDefaultResourceConfig$Outbound,
   UpdateProjectDefaultResourceConfig$outboundSchema,
+  UpdateProjectDelegatedProtection,
+  UpdateProjectDelegatedProtection$inboundSchema,
+  UpdateProjectDelegatedProtection$Outbound,
+  UpdateProjectDelegatedProtection$outboundSchema,
   UpdateProjectDeploymentExpiration,
   UpdateProjectDeploymentExpiration$inboundSchema,
   UpdateProjectDeploymentExpiration$Outbound,
@@ -105,9 +109,6 @@ import {
   UpdateProjectProjectsResourceConfig$inboundSchema,
   UpdateProjectProjectsResourceConfig$Outbound,
   UpdateProjectProjectsResourceConfig$outboundSchema,
-  UpdateProjectProjectsResponse200Action,
-  UpdateProjectProjectsResponse200Action$inboundSchema,
-  UpdateProjectProjectsResponse200Action$outboundSchema,
   UpdateProjectProjectsSsoProtection,
   UpdateProjectProjectsSsoProtection$inboundSchema,
   UpdateProjectProjectsSsoProtection$Outbound,
@@ -148,7 +149,16 @@ import {
   UpdateProjectWebAnalytics$inboundSchema,
   UpdateProjectWebAnalytics$Outbound,
   UpdateProjectWebAnalytics$outboundSchema,
-} from "./updateprojectprojectsresponse200action.js";
+} from "./updateprojectbotfilter.js";
+
+export const UpdateProjectProjectsResponse200Action = {
+  Log: "log",
+  Deny: "deny",
+  Challenge: "challenge",
+} as const;
+export type UpdateProjectProjectsResponse200Action = ClosedEnum<
+  typeof UpdateProjectProjectsResponse200Action
+>;
 
 export type UpdateProjectAiBots = {
   active: boolean;
@@ -606,6 +616,7 @@ export type UpdateProjectResponseBody = {
   customerSupportCodeVisibility?: boolean | undefined;
   crons?: UpdateProjectCrons | undefined;
   dataCache?: UpdateProjectDataCache | undefined;
+  delegatedProtection?: UpdateProjectDelegatedProtection | null | undefined;
   /**
    * Retention policies for deployments. These are enforced at the project level, but we also maintain an instance of this at the team level as a default policy that gets applied to new projects.
    */
@@ -692,6 +703,16 @@ export type UpdateProjectResponseBody = {
   protectedSourcemaps?: boolean | undefined;
   tracing?: UpdateProjectTracing | undefined;
 };
+
+/** @internal */
+export const UpdateProjectProjectsResponse200Action$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateProjectProjectsResponse200Action> = z.nativeEnum(
+    UpdateProjectProjectsResponse200Action,
+  );
+/** @internal */
+export const UpdateProjectProjectsResponse200Action$outboundSchema:
+  z.ZodNativeEnum<typeof UpdateProjectProjectsResponse200Action> =
+    UpdateProjectProjectsResponse200Action$inboundSchema;
 
 /** @internal */
 export const UpdateProjectAiBots$inboundSchema: z.ZodType<
@@ -3303,6 +3324,9 @@ export const UpdateProjectResponseBody$inboundSchema: z.ZodType<
   customerSupportCodeVisibility: types.optional(types.boolean()),
   crons: types.optional(UpdateProjectCrons$inboundSchema),
   dataCache: types.optional(UpdateProjectDataCache$inboundSchema),
+  delegatedProtection: z.nullable(
+    UpdateProjectDelegatedProtection$inboundSchema,
+  ).optional(),
   deploymentExpiration: UpdateProjectDeploymentExpiration$inboundSchema,
   devCommand: z.nullable(types.string()).optional(),
   directoryListing: types.boolean(),
@@ -3432,6 +3456,10 @@ export type UpdateProjectResponseBody$Outbound = {
   customerSupportCodeVisibility?: boolean | undefined;
   crons?: UpdateProjectCrons$Outbound | undefined;
   dataCache?: UpdateProjectDataCache$Outbound | undefined;
+  delegatedProtection?:
+    | UpdateProjectDelegatedProtection$Outbound
+    | null
+    | undefined;
   deploymentExpiration: UpdateProjectDeploymentExpiration$Outbound;
   devCommand?: string | null | undefined;
   directoryListing: boolean;
@@ -3555,6 +3583,9 @@ export const UpdateProjectResponseBody$outboundSchema: z.ZodType<
   customerSupportCodeVisibility: z.boolean().optional(),
   crons: UpdateProjectCrons$outboundSchema.optional(),
   dataCache: UpdateProjectDataCache$outboundSchema.optional(),
+  delegatedProtection: z.nullable(
+    UpdateProjectDelegatedProtection$outboundSchema,
+  ).optional(),
   deploymentExpiration: UpdateProjectDeploymentExpiration$outboundSchema,
   devCommand: z.nullable(z.string()).optional(),
   directoryListing: z.boolean(),

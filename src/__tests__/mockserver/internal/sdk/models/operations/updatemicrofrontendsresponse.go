@@ -11,6 +11,121 @@ import (
 	"mockserver/internal/sdk/utils"
 )
 
+type UpdateMicrofrontendsSecurity struct {
+	AttackModeEnabled      *bool                                                               `json:"attackModeEnabled,omitempty"`
+	AttackModeUpdatedAt    *float64                                                            `json:"attackModeUpdatedAt,omitempty"`
+	FirewallEnabled        *bool                                                               `json:"firewallEnabled,omitempty"`
+	FirewallUpdatedAt      *float64                                                            `json:"firewallUpdatedAt,omitempty"`
+	AttackModeActiveUntil  optionalnullable.OptionalNullable[float64]                          `json:"attackModeActiveUntil,omitempty"`
+	FirewallConfigVersion  *float64                                                            `json:"firewallConfigVersion,omitempty"`
+	FirewallSeawallEnabled *bool                                                               `json:"firewallSeawallEnabled,omitempty"`
+	Ja3Enabled             *bool                                                               `json:"ja3Enabled,omitempty"`
+	Ja4Enabled             *bool                                                               `json:"ja4Enabled,omitempty"`
+	FirewallBypassIps      []string                                                            `json:"firewallBypassIps,omitempty"`
+	ManagedRules           optionalnullable.OptionalNullable[UpdateMicrofrontendsManagedRules] `json:"managedRules,omitempty"`
+	BotIDEnabled           *bool                                                               `json:"botIdEnabled,omitempty"`
+	LogHeaders             *UpdateMicrofrontendsLogHeadersUnion                                `json:"log_headers,omitempty"`
+	SecurityPlus           *bool                                                               `json:"securityPlus,omitempty"`
+}
+
+func (o *UpdateMicrofrontendsSecurity) GetAttackModeEnabled() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.AttackModeEnabled
+}
+
+func (o *UpdateMicrofrontendsSecurity) GetAttackModeUpdatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.AttackModeUpdatedAt
+}
+
+func (o *UpdateMicrofrontendsSecurity) GetFirewallEnabled() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.FirewallEnabled
+}
+
+func (o *UpdateMicrofrontendsSecurity) GetFirewallUpdatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.FirewallUpdatedAt
+}
+
+func (o *UpdateMicrofrontendsSecurity) GetAttackModeActiveUntil() optionalnullable.OptionalNullable[float64] {
+	if o == nil {
+		return nil
+	}
+	return o.AttackModeActiveUntil
+}
+
+func (o *UpdateMicrofrontendsSecurity) GetFirewallConfigVersion() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.FirewallConfigVersion
+}
+
+func (o *UpdateMicrofrontendsSecurity) GetFirewallSeawallEnabled() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.FirewallSeawallEnabled
+}
+
+func (o *UpdateMicrofrontendsSecurity) GetJa3Enabled() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Ja3Enabled
+}
+
+func (o *UpdateMicrofrontendsSecurity) GetJa4Enabled() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Ja4Enabled
+}
+
+func (o *UpdateMicrofrontendsSecurity) GetFirewallBypassIps() []string {
+	if o == nil {
+		return nil
+	}
+	return o.FirewallBypassIps
+}
+
+func (o *UpdateMicrofrontendsSecurity) GetManagedRules() optionalnullable.OptionalNullable[UpdateMicrofrontendsManagedRules] {
+	if o == nil {
+		return nil
+	}
+	return o.ManagedRules
+}
+
+func (o *UpdateMicrofrontendsSecurity) GetBotIDEnabled() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.BotIDEnabled
+}
+
+func (o *UpdateMicrofrontendsSecurity) GetLogHeaders() *UpdateMicrofrontendsLogHeadersUnion {
+	if o == nil {
+		return nil
+	}
+	return o.LogHeaders
+}
+
+func (o *UpdateMicrofrontendsSecurity) GetSecurityPlus() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.SecurityPlus
+}
+
 // UpdateMicrofrontendsIssuerMode - - team: `https://oidc.vercel.com/[team_slug]` - global: `https://oidc.vercel.com`
 type UpdateMicrofrontendsIssuerMode string
 
@@ -2702,6 +2817,7 @@ type UpdateMicrofrontendsResponseBody struct {
 	CustomerSupportCodeVisibility    *bool                                                                         `json:"customerSupportCodeVisibility,omitempty"`
 	Crons                            *UpdateMicrofrontendsCrons                                                    `json:"crons,omitempty"`
 	DataCache                        *UpdateMicrofrontendsDataCache                                                `json:"dataCache,omitempty"`
+	DelegatedProtection              optionalnullable.OptionalNullable[UpdateMicrofrontendsDelegatedProtection]    `json:"delegatedProtection,omitempty"`
 	// Retention policies for deployments. These are enforced at the project level, but we also maintain an instance of this at the team level as a default policy that gets applied to new projects.
 	DeploymentExpiration          UpdateMicrofrontendsDeploymentExpiration                                  `json:"deploymentExpiration"`
 	DevCommand                    optionalnullable.OptionalNullable[string]                                 `json:"devCommand,omitempty"`
@@ -2895,6 +3011,13 @@ func (o *UpdateMicrofrontendsResponseBody) GetDataCache() *UpdateMicrofrontendsD
 		return nil
 	}
 	return o.DataCache
+}
+
+func (o *UpdateMicrofrontendsResponseBody) GetDelegatedProtection() optionalnullable.OptionalNullable[UpdateMicrofrontendsDelegatedProtection] {
+	if o == nil {
+		return nil
+	}
+	return o.DelegatedProtection
 }
 
 func (o *UpdateMicrofrontendsResponseBody) GetDeploymentExpiration() UpdateMicrofrontendsDeploymentExpiration {

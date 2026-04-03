@@ -33,6 +33,10 @@ import {
   GetMicrofrontendsInGroupDefaultResourceConfig$inboundSchema,
   GetMicrofrontendsInGroupDefaultResourceConfig$Outbound,
   GetMicrofrontendsInGroupDefaultResourceConfig$outboundSchema,
+  GetMicrofrontendsInGroupDelegatedProtection,
+  GetMicrofrontendsInGroupDelegatedProtection$inboundSchema,
+  GetMicrofrontendsInGroupDelegatedProtection$Outbound,
+  GetMicrofrontendsInGroupDelegatedProtection$outboundSchema,
   GetMicrofrontendsInGroupDeploymentExpiration,
   GetMicrofrontendsInGroupDeploymentExpiration$inboundSchema,
   GetMicrofrontendsInGroupDeploymentExpiration$Outbound,
@@ -63,9 +67,6 @@ import {
   GetMicrofrontendsInGroupJobs$inboundSchema,
   GetMicrofrontendsInGroupJobs$Outbound,
   GetMicrofrontendsInGroupJobs$outboundSchema,
-  GetMicrofrontendsInGroupKind,
-  GetMicrofrontendsInGroupKind$inboundSchema,
-  GetMicrofrontendsInGroupKind$outboundSchema,
   GetMicrofrontendsInGroupLastAliasRequest,
   GetMicrofrontendsInGroupLastAliasRequest$inboundSchema,
   GetMicrofrontendsInGroupLastAliasRequest$Outbound,
@@ -149,8 +150,21 @@ import {
   GetMicrofrontendsInGroupWebAnalytics$inboundSchema,
   GetMicrofrontendsInGroupWebAnalytics$Outbound,
   GetMicrofrontendsInGroupWebAnalytics$outboundSchema,
-} from "./getmicrofrontendsingroupkind.js";
+} from "./getmicrofrontendsingroupflatratetier.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+/**
+ * Billing mode. Always 'flat' for flat-rate projects.
+ */
+export const GetMicrofrontendsInGroupKind = {
+  Flat: "flat",
+} as const;
+/**
+ * Billing mode. Always 'flat' for flat-rate projects.
+ */
+export type GetMicrofrontendsInGroupKind = ClosedEnum<
+  typeof GetMicrofrontendsInGroupKind
+>;
 
 export type GetMicrofrontendsInGroupUsageStatus = {
   /**
@@ -524,6 +538,10 @@ export type GetMicrofrontendsInGroupProjects = {
   customerSupportCodeVisibility?: boolean | undefined;
   crons?: GetMicrofrontendsInGroupCrons | undefined;
   dataCache?: GetMicrofrontendsInGroupDataCache | undefined;
+  delegatedProtection?:
+    | GetMicrofrontendsInGroupDelegatedProtection
+    | null
+    | undefined;
   /**
    * Retention policies for deployments. These are enforced at the project level, but we also maintain an instance of this at the team level as a default policy that gets applied to new projects.
    */
@@ -632,6 +650,15 @@ export type GetMicrofrontendsInGroupProjects = {
 export type GetMicrofrontendsInGroupResponseBody = {
   projects: Array<GetMicrofrontendsInGroupProjects>;
 };
+
+/** @internal */
+export const GetMicrofrontendsInGroupKind$inboundSchema: z.ZodNativeEnum<
+  typeof GetMicrofrontendsInGroupKind
+> = z.nativeEnum(GetMicrofrontendsInGroupKind);
+/** @internal */
+export const GetMicrofrontendsInGroupKind$outboundSchema: z.ZodNativeEnum<
+  typeof GetMicrofrontendsInGroupKind
+> = GetMicrofrontendsInGroupKind$inboundSchema;
 
 /** @internal */
 export const GetMicrofrontendsInGroupUsageStatus$inboundSchema: z.ZodType<
@@ -3133,6 +3160,9 @@ export const GetMicrofrontendsInGroupProjects$inboundSchema: z.ZodType<
   customerSupportCodeVisibility: types.optional(types.boolean()),
   crons: types.optional(GetMicrofrontendsInGroupCrons$inboundSchema),
   dataCache: types.optional(GetMicrofrontendsInGroupDataCache$inboundSchema),
+  delegatedProtection: z.nullable(
+    GetMicrofrontendsInGroupDelegatedProtection$inboundSchema,
+  ).optional(),
   deploymentExpiration:
     GetMicrofrontendsInGroupDeploymentExpiration$inboundSchema,
   devCommand: z.nullable(types.string()).optional(),
@@ -3287,6 +3317,10 @@ export type GetMicrofrontendsInGroupProjects$Outbound = {
   customerSupportCodeVisibility?: boolean | undefined;
   crons?: GetMicrofrontendsInGroupCrons$Outbound | undefined;
   dataCache?: GetMicrofrontendsInGroupDataCache$Outbound | undefined;
+  delegatedProtection?:
+    | GetMicrofrontendsInGroupDelegatedProtection$Outbound
+    | null
+    | undefined;
   deploymentExpiration: GetMicrofrontendsInGroupDeploymentExpiration$Outbound;
   devCommand?: string | null | undefined;
   directoryListing: boolean;
@@ -3425,6 +3459,9 @@ export const GetMicrofrontendsInGroupProjects$outboundSchema: z.ZodType<
   customerSupportCodeVisibility: z.boolean().optional(),
   crons: GetMicrofrontendsInGroupCrons$outboundSchema.optional(),
   dataCache: GetMicrofrontendsInGroupDataCache$outboundSchema.optional(),
+  delegatedProtection: z.nullable(
+    GetMicrofrontendsInGroupDelegatedProtection$outboundSchema,
+  ).optional(),
   deploymentExpiration:
     GetMicrofrontendsInGroupDeploymentExpiration$outboundSchema,
   devCommand: z.nullable(z.string()).optional(),

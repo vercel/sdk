@@ -10,10 +10,6 @@ import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import {
-  GetProjectsBlockHistoryProjectsResponse200ApplicationJSONResponseBodyRoute,
-  GetProjectsBlockHistoryProjectsResponse200ApplicationJSONResponseBodyRoute$inboundSchema,
-  GetProjectsBlockHistoryProjectsResponse200ApplicationJSONResponseBodyRoute$Outbound,
-  GetProjectsBlockHistoryProjectsResponse200ApplicationJSONResponseBodyRoute$outboundSchema,
   GetProjectsResponseBodyCrons,
   GetProjectsResponseBodyCrons$inboundSchema,
   GetProjectsResponseBodyCrons$Outbound,
@@ -104,6 +100,14 @@ import {
   GetProjectsResponseBodyProjectsWebAnalytics$inboundSchema,
   GetProjectsResponseBodyProjectsWebAnalytics$Outbound,
   GetProjectsResponseBodyProjectsWebAnalytics$outboundSchema,
+  GetProjectsRouteProjectsResponse200ApplicationJSONResponseBody1,
+  GetProjectsRouteProjectsResponse200ApplicationJSONResponseBody1$inboundSchema,
+  GetProjectsRouteProjectsResponse200ApplicationJSONResponseBody1$Outbound,
+  GetProjectsRouteProjectsResponse200ApplicationJSONResponseBody1$outboundSchema,
+  GetProjectsRouteProjectsResponse200ApplicationJSONResponseBody2,
+  GetProjectsRouteProjectsResponse200ApplicationJSONResponseBody2$inboundSchema,
+  GetProjectsRouteProjectsResponse200ApplicationJSONResponseBody2$Outbound,
+  GetProjectsRouteProjectsResponse200ApplicationJSONResponseBody2$outboundSchema,
   ResponseBodyConnectConfigurations,
   ResponseBodyConnectConfigurations$inboundSchema,
   ResponseBodyConnectConfigurations$Outbound,
@@ -120,6 +124,10 @@ import {
   ResponseBodyDefaultResourceConfig$inboundSchema,
   ResponseBodyDefaultResourceConfig$Outbound,
   ResponseBodyDefaultResourceConfig$outboundSchema,
+  ResponseBodyDelegatedProtection,
+  ResponseBodyDelegatedProtection$inboundSchema,
+  ResponseBodyDelegatedProtection$Outbound,
+  ResponseBodyDelegatedProtection$outboundSchema,
   ResponseBodyFeatures,
   ResponseBodyFeatures$inboundSchema,
   ResponseBodyFeatures$Outbound,
@@ -167,7 +175,7 @@ import {
   ResponseBodyUsageStatus$inboundSchema,
   ResponseBodyUsageStatus$Outbound,
   ResponseBodyUsageStatus$outboundSchema,
-} from "./getprojectsblockhistoryprojectsresponse200applicationjsonresponsebodyroute.js";
+} from "./getprojectsrouteprojectsresponse200applicationjsonresponsebody1.js";
 import {
   Pagination,
   Pagination$inboundSchema,
@@ -176,10 +184,15 @@ import {
 } from "./pagination.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
+export type GetProjectsBlockHistoryProjectsResponse200ApplicationJSONResponseBodyRoute =
+  | GetProjectsRouteProjectsResponse200ApplicationJSONResponseBody1
+  | GetProjectsRouteProjectsResponse200ApplicationJSONResponseBody2;
+
 export type GetProjectsBlockHistoryProjectsResponse4 = {
   action: "route-unblocked";
   route:
-    GetProjectsBlockHistoryProjectsResponse200ApplicationJSONResponseBodyRoute;
+    | GetProjectsRouteProjectsResponse200ApplicationJSONResponseBody1
+    | GetProjectsRouteProjectsResponse200ApplicationJSONResponseBody2;
   statusCode?: number | undefined;
   createdAt: number;
   caseId?: string | undefined;
@@ -435,6 +448,7 @@ export type GetProjectsResponseBodyProjects = {
   customerSupportCodeVisibility?: boolean | undefined;
   crons?: GetProjectsResponseBodyCrons | undefined;
   dataCache?: ResponseBodyDataCache | undefined;
+  delegatedProtection?: ResponseBodyDelegatedProtection | null | undefined;
   /**
    * Retention policies for deployments. These are enforced at the project level, but we also maintain an instance of this at the team level as a default policy that gets applied to new projects.
    */
@@ -1756,14 +1770,57 @@ export type GetProjectsResponseBodyHistory = {
   at: number;
 };
 
-export const GetProjectsResponseBodyProjectsResponse200ApplicationJson2Action =
-  {
-    Blocked: "blocked",
-  } as const;
-export type GetProjectsResponseBodyProjectsResponse200ApplicationJson2Action =
-  ClosedEnum<
-    typeof GetProjectsResponseBodyProjectsResponse200ApplicationJson2Action
-  >;
+/** @internal */
+export const GetProjectsBlockHistoryProjectsResponse200ApplicationJSONResponseBodyRoute$inboundSchema:
+  z.ZodType<
+    GetProjectsBlockHistoryProjectsResponse200ApplicationJSONResponseBodyRoute,
+    z.ZodTypeDef,
+    unknown
+  > = smartUnion([
+    GetProjectsRouteProjectsResponse200ApplicationJSONResponseBody1$inboundSchema,
+    GetProjectsRouteProjectsResponse200ApplicationJSONResponseBody2$inboundSchema,
+  ]);
+/** @internal */
+export type GetProjectsBlockHistoryProjectsResponse200ApplicationJSONResponseBodyRoute$Outbound =
+  | GetProjectsRouteProjectsResponse200ApplicationJSONResponseBody1$Outbound
+  | GetProjectsRouteProjectsResponse200ApplicationJSONResponseBody2$Outbound;
+
+/** @internal */
+export const GetProjectsBlockHistoryProjectsResponse200ApplicationJSONResponseBodyRoute$outboundSchema:
+  z.ZodType<
+    GetProjectsBlockHistoryProjectsResponse200ApplicationJSONResponseBodyRoute$Outbound,
+    z.ZodTypeDef,
+    GetProjectsBlockHistoryProjectsResponse200ApplicationJSONResponseBodyRoute
+  > = smartUnion([
+    GetProjectsRouteProjectsResponse200ApplicationJSONResponseBody1$outboundSchema,
+    GetProjectsRouteProjectsResponse200ApplicationJSONResponseBody2$outboundSchema,
+  ]);
+
+export function getProjectsBlockHistoryProjectsResponse200ApplicationJSONResponseBodyRouteToJSON(
+  getProjectsBlockHistoryProjectsResponse200ApplicationJSONResponseBodyRoute:
+    GetProjectsBlockHistoryProjectsResponse200ApplicationJSONResponseBodyRoute,
+): string {
+  return JSON.stringify(
+    GetProjectsBlockHistoryProjectsResponse200ApplicationJSONResponseBodyRoute$outboundSchema
+      .parse(
+        getProjectsBlockHistoryProjectsResponse200ApplicationJSONResponseBodyRoute,
+      ),
+  );
+}
+export function getProjectsBlockHistoryProjectsResponse200ApplicationJSONResponseBodyRouteFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetProjectsBlockHistoryProjectsResponse200ApplicationJSONResponseBodyRoute,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetProjectsBlockHistoryProjectsResponse200ApplicationJSONResponseBodyRoute$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectsBlockHistoryProjectsResponse200ApplicationJSONResponseBodyRoute' from JSON`,
+  );
+}
 
 /** @internal */
 export const GetProjectsBlockHistoryProjectsResponse4$inboundSchema: z.ZodType<
@@ -1772,8 +1829,10 @@ export const GetProjectsBlockHistoryProjectsResponse4$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   action: types.literal("route-unblocked"),
-  route:
-    GetProjectsBlockHistoryProjectsResponse200ApplicationJSONResponseBodyRoute$inboundSchema,
+  route: smartUnion([
+    GetProjectsRouteProjectsResponse200ApplicationJSONResponseBody1$inboundSchema,
+    GetProjectsRouteProjectsResponse200ApplicationJSONResponseBody2$inboundSchema,
+  ]),
   statusCode: types.optional(types.number()),
   createdAt: types.number(),
   caseId: types.optional(types.string()),
@@ -1786,7 +1845,8 @@ export const GetProjectsBlockHistoryProjectsResponse4$inboundSchema: z.ZodType<
 export type GetProjectsBlockHistoryProjectsResponse4$Outbound = {
   action: "route-unblocked";
   route:
-    GetProjectsBlockHistoryProjectsResponse200ApplicationJSONResponseBodyRoute$Outbound;
+    | GetProjectsRouteProjectsResponse200ApplicationJSONResponseBody1$Outbound
+    | GetProjectsRouteProjectsResponse200ApplicationJSONResponseBody2$Outbound;
   statusCode?: number | undefined;
   createdAt: number;
   caseId?: string | undefined;
@@ -1803,8 +1863,10 @@ export const GetProjectsBlockHistoryProjectsResponse4$outboundSchema: z.ZodType<
   GetProjectsBlockHistoryProjectsResponse4
 > = z.object({
   action: z.literal("route-unblocked"),
-  route:
-    GetProjectsBlockHistoryProjectsResponse200ApplicationJSONResponseBodyRoute$outboundSchema,
+  route: smartUnion([
+    GetProjectsRouteProjectsResponse200ApplicationJSONResponseBody1$outboundSchema,
+    GetProjectsRouteProjectsResponse200ApplicationJSONResponseBody2$outboundSchema,
+  ]),
   statusCode: z.number().optional(),
   createdAt: z.number(),
   caseId: z.string().optional(),
@@ -3607,6 +3669,8 @@ export const GetProjectsResponseBodyProjects$inboundSchema: z.ZodType<
   customerSupportCodeVisibility: types.optional(types.boolean()),
   crons: types.optional(GetProjectsResponseBodyCrons$inboundSchema),
   dataCache: types.optional(ResponseBodyDataCache$inboundSchema),
+  delegatedProtection: z.nullable(ResponseBodyDelegatedProtection$inboundSchema)
+    .optional(),
   deploymentExpiration:
     GetProjectsResponseBodyProjectsDeploymentExpiration$inboundSchema,
   devCommand: z.nullable(types.string()).optional(),
@@ -3753,6 +3817,10 @@ export type GetProjectsResponseBodyProjects$Outbound = {
   customerSupportCodeVisibility?: boolean | undefined;
   crons?: GetProjectsResponseBodyCrons$Outbound | undefined;
   dataCache?: ResponseBodyDataCache$Outbound | undefined;
+  delegatedProtection?:
+    | ResponseBodyDelegatedProtection$Outbound
+    | null
+    | undefined;
   deploymentExpiration:
     GetProjectsResponseBodyProjectsDeploymentExpiration$Outbound;
   devCommand?: string | null | undefined;
@@ -3886,6 +3954,9 @@ export const GetProjectsResponseBodyProjects$outboundSchema: z.ZodType<
   customerSupportCodeVisibility: z.boolean().optional(),
   crons: GetProjectsResponseBodyCrons$outboundSchema.optional(),
   dataCache: ResponseBodyDataCache$outboundSchema.optional(),
+  delegatedProtection: z.nullable(
+    ResponseBodyDelegatedProtection$outboundSchema,
+  ).optional(),
   deploymentExpiration:
     GetProjectsResponseBodyProjectsDeploymentExpiration$outboundSchema,
   devCommand: z.nullable(z.string()).optional(),
@@ -9318,17 +9389,3 @@ export function getProjectsResponseBodyHistoryFromJSON(
     `Failed to parse 'GetProjectsResponseBodyHistory' from JSON`,
   );
 }
-
-/** @internal */
-export const GetProjectsResponseBodyProjectsResponse200ApplicationJson2Action$inboundSchema:
-  z.ZodNativeEnum<
-    typeof GetProjectsResponseBodyProjectsResponse200ApplicationJson2Action
-  > = z.nativeEnum(
-    GetProjectsResponseBodyProjectsResponse200ApplicationJson2Action,
-  );
-/** @internal */
-export const GetProjectsResponseBodyProjectsResponse200ApplicationJson2Action$outboundSchema:
-  z.ZodNativeEnum<
-    typeof GetProjectsResponseBodyProjectsResponse200ApplicationJson2Action
-  > =
-    GetProjectsResponseBodyProjectsResponse200ApplicationJson2Action$inboundSchema;

@@ -138,6 +138,8 @@ export type GetMicrofrontendsInGroupDataCache = {
   unlimited?: boolean | undefined;
 };
 
+export type GetMicrofrontendsInGroupDelegatedProtection = {};
+
 /**
  * Retention policies for deployments. These are enforced at the project level, but we also maintain an instance of this at the team level as a default policy that gets applied to new projects.
  */
@@ -1587,6 +1589,7 @@ export type GetMicrofrontendsInGroupPermissions = {
   projectAnalyticsUsage?: Array<ACLAction> | undefined;
   projectCheck?: Array<ACLAction> | undefined;
   projectCheckRun?: Array<ACLAction> | undefined;
+  projectDelegatedProtection?: Array<ACLAction> | undefined;
   projectDeploymentExpiration?: Array<ACLAction> | undefined;
   projectDeploymentHook?: Array<ACLAction> | undefined;
   projectDeploymentProtectionStrict?: Array<ACLAction> | undefined;
@@ -1937,19 +1940,6 @@ export const GetMicrofrontendsInGroupFlatRateTier = {
 } as const;
 export type GetMicrofrontendsInGroupFlatRateTier = ClosedEnum<
   typeof GetMicrofrontendsInGroupFlatRateTier
->;
-
-/**
- * Billing mode. Always 'flat' for flat-rate projects.
- */
-export const GetMicrofrontendsInGroupKind = {
-  Flat: "flat",
-} as const;
-/**
- * Billing mode. Always 'flat' for flat-rate projects.
- */
-export type GetMicrofrontendsInGroupKind = ClosedEnum<
-  typeof GetMicrofrontendsInGroupKind
 >;
 
 /** @internal */
@@ -2449,6 +2439,50 @@ export function getMicrofrontendsInGroupDataCacheFromJSON(
     jsonString,
     (x) => GetMicrofrontendsInGroupDataCache$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'GetMicrofrontendsInGroupDataCache' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetMicrofrontendsInGroupDelegatedProtection$inboundSchema:
+  z.ZodType<
+    GetMicrofrontendsInGroupDelegatedProtection,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({});
+/** @internal */
+export type GetMicrofrontendsInGroupDelegatedProtection$Outbound = {};
+
+/** @internal */
+export const GetMicrofrontendsInGroupDelegatedProtection$outboundSchema:
+  z.ZodType<
+    GetMicrofrontendsInGroupDelegatedProtection$Outbound,
+    z.ZodTypeDef,
+    GetMicrofrontendsInGroupDelegatedProtection
+  > = z.object({});
+
+export function getMicrofrontendsInGroupDelegatedProtectionToJSON(
+  getMicrofrontendsInGroupDelegatedProtection:
+    GetMicrofrontendsInGroupDelegatedProtection,
+): string {
+  return JSON.stringify(
+    GetMicrofrontendsInGroupDelegatedProtection$outboundSchema.parse(
+      getMicrofrontendsInGroupDelegatedProtection,
+    ),
+  );
+}
+export function getMicrofrontendsInGroupDelegatedProtectionFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetMicrofrontendsInGroupDelegatedProtection,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetMicrofrontendsInGroupDelegatedProtection$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetMicrofrontendsInGroupDelegatedProtection' from JSON`,
   );
 }
 
@@ -7426,6 +7460,7 @@ export const GetMicrofrontendsInGroupPermissions$inboundSchema: z.ZodType<
   projectAnalyticsUsage: types.optional(z.array(ACLAction$inboundSchema)),
   projectCheck: types.optional(z.array(ACLAction$inboundSchema)),
   projectCheckRun: types.optional(z.array(ACLAction$inboundSchema)),
+  projectDelegatedProtection: types.optional(z.array(ACLAction$inboundSchema)),
   projectDeploymentExpiration: types.optional(z.array(ACLAction$inboundSchema)),
   projectDeploymentHook: types.optional(z.array(ACLAction$inboundSchema)),
   projectDeploymentProtectionStrict: types.optional(
@@ -7676,6 +7711,7 @@ export type GetMicrofrontendsInGroupPermissions$Outbound = {
   projectAnalyticsUsage?: Array<string> | undefined;
   projectCheck?: Array<string> | undefined;
   projectCheckRun?: Array<string> | undefined;
+  projectDelegatedProtection?: Array<string> | undefined;
   projectDeploymentExpiration?: Array<string> | undefined;
   projectDeploymentHook?: Array<string> | undefined;
   projectDeploymentProtectionStrict?: Array<string> | undefined;
@@ -7925,6 +7961,7 @@ export const GetMicrofrontendsInGroupPermissions$outboundSchema: z.ZodType<
   projectAnalyticsUsage: z.array(ACLAction$outboundSchema).optional(),
   projectCheck: z.array(ACLAction$outboundSchema).optional(),
   projectCheckRun: z.array(ACLAction$outboundSchema).optional(),
+  projectDelegatedProtection: z.array(ACLAction$outboundSchema).optional(),
   projectDeploymentExpiration: z.array(ACLAction$outboundSchema).optional(),
   projectDeploymentHook: z.array(ACLAction$outboundSchema).optional(),
   projectDeploymentProtectionStrict: z.array(ACLAction$outboundSchema)
@@ -9279,12 +9316,3 @@ export const GetMicrofrontendsInGroupFlatRateTier$inboundSchema:
 export const GetMicrofrontendsInGroupFlatRateTier$outboundSchema:
   z.ZodNativeEnum<typeof GetMicrofrontendsInGroupFlatRateTier> =
     GetMicrofrontendsInGroupFlatRateTier$inboundSchema;
-
-/** @internal */
-export const GetMicrofrontendsInGroupKind$inboundSchema: z.ZodNativeEnum<
-  typeof GetMicrofrontendsInGroupKind
-> = z.nativeEnum(GetMicrofrontendsInGroupKind);
-/** @internal */
-export const GetMicrofrontendsInGroupKind$outboundSchema: z.ZodNativeEnum<
-  typeof GetMicrofrontendsInGroupKind
-> = GetMicrofrontendsInGroupKind$inboundSchema;

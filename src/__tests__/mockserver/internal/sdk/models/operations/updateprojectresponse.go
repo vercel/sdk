@@ -12,6 +12,32 @@ import (
 	"mockserver/internal/sdk/utils"
 )
 
+type UpdateProjectLastAliasRequestType string
+
+const (
+	UpdateProjectLastAliasRequestTypePromote  UpdateProjectLastAliasRequestType = "promote"
+	UpdateProjectLastAliasRequestTypeRollback UpdateProjectLastAliasRequestType = "rollback"
+)
+
+func (e UpdateProjectLastAliasRequestType) ToPointer() *UpdateProjectLastAliasRequestType {
+	return &e
+}
+func (e *UpdateProjectLastAliasRequestType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "promote":
+		fallthrough
+	case "rollback":
+		*e = UpdateProjectLastAliasRequestType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateProjectLastAliasRequestType: %v", v)
+	}
+}
+
 type UpdateProjectLastAliasRequest struct {
 	FromDeploymentID *string `json:"fromDeploymentId"`
 	ToDeploymentID   string  `json:"toDeploymentId"`
@@ -3834,6 +3860,7 @@ type UpdateProjectResponseBody struct {
 	CustomerSupportCodeVisibility    *bool                                                                          `json:"customerSupportCodeVisibility,omitempty"`
 	Crons                            *UpdateProjectCrons                                                            `json:"crons,omitempty"`
 	DataCache                        *UpdateProjectDataCache                                                        `json:"dataCache,omitempty"`
+	DelegatedProtection              optionalnullable.OptionalNullable[UpdateProjectDelegatedProtection]            `json:"delegatedProtection,omitempty"`
 	// Retention policies for deployments. These are enforced at the project level, but we also maintain an instance of this at the team level as a default policy that gets applied to new projects.
 	DeploymentExpiration          UpdateProjectDeploymentExpiration                                          `json:"deploymentExpiration"`
 	DevCommand                    optionalnullable.OptionalNullable[string]                                  `json:"devCommand,omitempty"`
@@ -4027,6 +4054,13 @@ func (o *UpdateProjectResponseBody) GetDataCache() *UpdateProjectDataCache {
 		return nil
 	}
 	return o.DataCache
+}
+
+func (o *UpdateProjectResponseBody) GetDelegatedProtection() optionalnullable.OptionalNullable[UpdateProjectDelegatedProtection] {
+	if o == nil {
+		return nil
+	}
+	return o.DelegatedProtection
 }
 
 func (o *UpdateProjectResponseBody) GetDeploymentExpiration() UpdateProjectDeploymentExpiration {

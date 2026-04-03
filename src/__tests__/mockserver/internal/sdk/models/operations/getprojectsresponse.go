@@ -12,6 +12,29 @@ import (
 	"mockserver/internal/sdk/utils"
 )
 
+type GetProjectsTypeRedisRestAPIURL string
+
+const (
+	GetProjectsTypeRedisRestAPIURLRedisRestAPIURL GetProjectsTypeRedisRestAPIURL = "redis-rest-api-url"
+)
+
+func (e GetProjectsTypeRedisRestAPIURL) ToPointer() *GetProjectsTypeRedisRestAPIURL {
+	return &e
+}
+func (e *GetProjectsTypeRedisRestAPIURL) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "redis-rest-api-url":
+		*e = GetProjectsTypeRedisRestAPIURL(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetProjectsTypeRedisRestAPIURL: %v", v)
+	}
+}
+
 type GetProjectsContentHintRedisRestAPIURL struct {
 	Type    GetProjectsTypeRedisRestAPIURL `json:"type"`
 	StoreID string                         `json:"storeId"`

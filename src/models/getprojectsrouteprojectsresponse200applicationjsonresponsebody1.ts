@@ -242,6 +242,8 @@ export type ResponseBodyDataCache = {
   unlimited?: boolean | undefined;
 };
 
+export type ResponseBodyDelegatedProtection = {};
+
 /**
  * Retention policies for deployments. These are enforced at the project level, but we also maintain an instance of this at the team level as a default policy that gets applied to new projects.
  */
@@ -1462,6 +1464,7 @@ export type ResponseBodyPermissions = {
   projectAnalyticsUsage?: Array<ACLAction> | undefined;
   projectCheck?: Array<ACLAction> | undefined;
   projectCheckRun?: Array<ACLAction> | undefined;
+  projectDelegatedProtection?: Array<ACLAction> | undefined;
   projectDeploymentExpiration?: Array<ACLAction> | undefined;
   projectDeploymentHook?: Array<ACLAction> | undefined;
   projectDeploymentProtectionStrict?: Array<ACLAction> | undefined;
@@ -1950,10 +1953,6 @@ export type GetProjectsRouteProjectsResponse200ApplicationJSONResponseBody1 = {
   src: string;
   status: number;
 };
-
-export type GetProjectsBlockHistoryProjectsResponse200ApplicationJSONResponseBodyRoute =
-  | GetProjectsRouteProjectsResponse200ApplicationJSONResponseBody1
-  | GetProjectsRouteProjectsResponse200ApplicationJSONResponseBody2;
 
 /** @internal */
 export const GitForkProtection$inboundSchema: z.ZodNativeEnum<
@@ -2517,6 +2516,41 @@ export function responseBodyDataCacheFromJSON(
     jsonString,
     (x) => ResponseBodyDataCache$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'ResponseBodyDataCache' from JSON`,
+  );
+}
+
+/** @internal */
+export const ResponseBodyDelegatedProtection$inboundSchema: z.ZodType<
+  ResponseBodyDelegatedProtection,
+  z.ZodTypeDef,
+  unknown
+> = z.object({});
+/** @internal */
+export type ResponseBodyDelegatedProtection$Outbound = {};
+
+/** @internal */
+export const ResponseBodyDelegatedProtection$outboundSchema: z.ZodType<
+  ResponseBodyDelegatedProtection$Outbound,
+  z.ZodTypeDef,
+  ResponseBodyDelegatedProtection
+> = z.object({});
+
+export function responseBodyDelegatedProtectionToJSON(
+  responseBodyDelegatedProtection: ResponseBodyDelegatedProtection,
+): string {
+  return JSON.stringify(
+    ResponseBodyDelegatedProtection$outboundSchema.parse(
+      responseBodyDelegatedProtection,
+    ),
+  );
+}
+export function responseBodyDelegatedProtectionFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodyDelegatedProtection, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodyDelegatedProtection$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyDelegatedProtection' from JSON`,
   );
 }
 
@@ -6986,6 +7020,7 @@ export const ResponseBodyPermissions$inboundSchema: z.ZodType<
   projectAnalyticsUsage: types.optional(z.array(ACLAction$inboundSchema)),
   projectCheck: types.optional(z.array(ACLAction$inboundSchema)),
   projectCheckRun: types.optional(z.array(ACLAction$inboundSchema)),
+  projectDelegatedProtection: types.optional(z.array(ACLAction$inboundSchema)),
   projectDeploymentExpiration: types.optional(z.array(ACLAction$inboundSchema)),
   projectDeploymentHook: types.optional(z.array(ACLAction$inboundSchema)),
   projectDeploymentProtectionStrict: types.optional(
@@ -7236,6 +7271,7 @@ export type ResponseBodyPermissions$Outbound = {
   projectAnalyticsUsage?: Array<string> | undefined;
   projectCheck?: Array<string> | undefined;
   projectCheckRun?: Array<string> | undefined;
+  projectDelegatedProtection?: Array<string> | undefined;
   projectDeploymentExpiration?: Array<string> | undefined;
   projectDeploymentHook?: Array<string> | undefined;
   projectDeploymentProtectionStrict?: Array<string> | undefined;
@@ -7485,6 +7521,7 @@ export const ResponseBodyPermissions$outboundSchema: z.ZodType<
   projectAnalyticsUsage: z.array(ACLAction$outboundSchema).optional(),
   projectCheck: z.array(ACLAction$outboundSchema).optional(),
   projectCheckRun: z.array(ACLAction$outboundSchema).optional(),
+  projectDelegatedProtection: z.array(ACLAction$outboundSchema).optional(),
   projectDeploymentExpiration: z.array(ACLAction$outboundSchema).optional(),
   projectDeploymentHook: z.array(ACLAction$outboundSchema).optional(),
   projectDeploymentProtectionStrict: z.array(ACLAction$outboundSchema)
@@ -9570,65 +9607,5 @@ export function getProjectsRouteProjectsResponse200ApplicationJSONResponseBody1F
       GetProjectsRouteProjectsResponse200ApplicationJSONResponseBody1$inboundSchema
         .parse(JSON.parse(x)),
     `Failed to parse 'GetProjectsRouteProjectsResponse200ApplicationJSONResponseBody1' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetProjectsBlockHistoryProjectsResponse200ApplicationJSONResponseBodyRoute$inboundSchema:
-  z.ZodType<
-    GetProjectsBlockHistoryProjectsResponse200ApplicationJSONResponseBodyRoute,
-    z.ZodTypeDef,
-    unknown
-  > = smartUnion([
-    z.lazy(() =>
-      GetProjectsRouteProjectsResponse200ApplicationJSONResponseBody1$inboundSchema
-    ),
-    z.lazy(() =>
-      GetProjectsRouteProjectsResponse200ApplicationJSONResponseBody2$inboundSchema
-    ),
-  ]);
-/** @internal */
-export type GetProjectsBlockHistoryProjectsResponse200ApplicationJSONResponseBodyRoute$Outbound =
-  | GetProjectsRouteProjectsResponse200ApplicationJSONResponseBody1$Outbound
-  | GetProjectsRouteProjectsResponse200ApplicationJSONResponseBody2$Outbound;
-
-/** @internal */
-export const GetProjectsBlockHistoryProjectsResponse200ApplicationJSONResponseBodyRoute$outboundSchema:
-  z.ZodType<
-    GetProjectsBlockHistoryProjectsResponse200ApplicationJSONResponseBodyRoute$Outbound,
-    z.ZodTypeDef,
-    GetProjectsBlockHistoryProjectsResponse200ApplicationJSONResponseBodyRoute
-  > = smartUnion([
-    z.lazy(() =>
-      GetProjectsRouteProjectsResponse200ApplicationJSONResponseBody1$outboundSchema
-    ),
-    z.lazy(() =>
-      GetProjectsRouteProjectsResponse200ApplicationJSONResponseBody2$outboundSchema
-    ),
-  ]);
-
-export function getProjectsBlockHistoryProjectsResponse200ApplicationJSONResponseBodyRouteToJSON(
-  getProjectsBlockHistoryProjectsResponse200ApplicationJSONResponseBodyRoute:
-    GetProjectsBlockHistoryProjectsResponse200ApplicationJSONResponseBodyRoute,
-): string {
-  return JSON.stringify(
-    GetProjectsBlockHistoryProjectsResponse200ApplicationJSONResponseBodyRoute$outboundSchema
-      .parse(
-        getProjectsBlockHistoryProjectsResponse200ApplicationJSONResponseBodyRoute,
-      ),
-  );
-}
-export function getProjectsBlockHistoryProjectsResponse200ApplicationJSONResponseBodyRouteFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  GetProjectsBlockHistoryProjectsResponse200ApplicationJSONResponseBodyRoute,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetProjectsBlockHistoryProjectsResponse200ApplicationJSONResponseBodyRoute$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'GetProjectsBlockHistoryProjectsResponse200ApplicationJSONResponseBodyRoute' from JSON`,
   );
 }

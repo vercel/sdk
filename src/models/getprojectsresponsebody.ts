@@ -13,7 +13,7 @@ import {
   GetProjectsResponseBody3$inboundSchema,
   GetProjectsResponseBody3$Outbound,
   GetProjectsResponseBody3$outboundSchema,
-} from "./getprojectsresponsebodyprojectsresponse200applicationjson2action.js";
+} from "./getprojectsresponsebodyhistory.js";
 import {
   Alias,
   Alias$inboundSchema,
@@ -53,9 +53,6 @@ import {
   ResponseBodyIpBuckets$inboundSchema,
   ResponseBodyIpBuckets$Outbound,
   ResponseBodyIpBuckets$outboundSchema,
-  ResponseBodyIssuerMode,
-  ResponseBodyIssuerMode$inboundSchema,
-  ResponseBodyIssuerMode$outboundSchema,
   ResponseBodyLatestDeployments,
   ResponseBodyLatestDeployments$inboundSchema,
   ResponseBodyLatestDeployments$Outbound,
@@ -96,8 +93,20 @@ import {
   ResponseBodyWebAnalytics$inboundSchema,
   ResponseBodyWebAnalytics$Outbound,
   ResponseBodyWebAnalytics$outboundSchema,
-} from "./responsebodyissuermode.js";
+} from "./responsebodysecurity.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+/**
+ * - team: `https://oidc.vercel.com/[team_slug]` - global: `https://oidc.vercel.com`
+ */
+export const ResponseBodyIssuerMode = {
+  Team: "team",
+  Global: "global",
+} as const;
+/**
+ * - team: `https://oidc.vercel.com/[team_slug]` - global: `https://oidc.vercel.com`
+ */
+export type ResponseBodyIssuerMode = ClosedEnum<typeof ResponseBodyIssuerMode>;
 
 export type ResponseBodyOidcTokenConfig = {
   /**
@@ -447,6 +456,15 @@ export type GetProjectsResponseBody =
   | GetProjectsResponseBody2
   | GetProjectsResponseBody3
   | Array<GetProjectsResponseBody1>;
+
+/** @internal */
+export const ResponseBodyIssuerMode$inboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyIssuerMode
+> = z.nativeEnum(ResponseBodyIssuerMode);
+/** @internal */
+export const ResponseBodyIssuerMode$outboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyIssuerMode
+> = ResponseBodyIssuerMode$inboundSchema;
 
 /** @internal */
 export const ResponseBodyOidcTokenConfig$inboundSchema: z.ZodType<

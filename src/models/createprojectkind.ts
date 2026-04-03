@@ -488,6 +488,8 @@ export type CreateProjectDataCache = {
   unlimited?: boolean | undefined;
 };
 
+export type DelegatedProtection = {};
+
 /**
  * Retention policies for deployments. These are enforced at the project level, but we also maintain an instance of this at the team level as a default policy that gets applied to new projects.
  */
@@ -1643,6 +1645,7 @@ export type CreateProjectPermissions = {
   projectAnalyticsUsage?: Array<ACLAction> | undefined;
   projectCheck?: Array<ACLAction> | undefined;
   projectCheckRun?: Array<ACLAction> | undefined;
+  projectDelegatedProtection?: Array<ACLAction> | undefined;
   projectDeploymentExpiration?: Array<ACLAction> | undefined;
   projectDeploymentHook?: Array<ACLAction> | undefined;
   projectDeploymentProtectionStrict?: Array<ACLAction> | undefined;
@@ -1988,21 +1991,6 @@ export const CreateProjectKind = {
  * Billing mode. Always 'flat' for flat-rate projects.
  */
 export type CreateProjectKind = ClosedEnum<typeof CreateProjectKind>;
-
-export type UsageStatus = {
-  /**
-   * Billing mode. Always 'flat' for flat-rate projects.
-   */
-  kind: CreateProjectKind;
-  /**
-   * Timestamp until which the project has exceeded its CDN allowance.
-   */
-  exceededAllowanceUntil?: number | undefined;
-  /**
-   * Timestamp until which throttling is bypassed (project pays list rates for overage).
-   */
-  bypassThrottleUntil?: number | undefined;
-};
 
 /** @internal */
 export const Target2$inboundSchema: z.ZodNativeEnum<typeof Target2> = z
@@ -2985,6 +2973,39 @@ export function createProjectDataCacheFromJSON(
     jsonString,
     (x) => CreateProjectDataCache$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'CreateProjectDataCache' from JSON`,
+  );
+}
+
+/** @internal */
+export const DelegatedProtection$inboundSchema: z.ZodType<
+  DelegatedProtection,
+  z.ZodTypeDef,
+  unknown
+> = z.object({});
+/** @internal */
+export type DelegatedProtection$Outbound = {};
+
+/** @internal */
+export const DelegatedProtection$outboundSchema: z.ZodType<
+  DelegatedProtection$Outbound,
+  z.ZodTypeDef,
+  DelegatedProtection
+> = z.object({});
+
+export function delegatedProtectionToJSON(
+  delegatedProtection: DelegatedProtection,
+): string {
+  return JSON.stringify(
+    DelegatedProtection$outboundSchema.parse(delegatedProtection),
+  );
+}
+export function delegatedProtectionFromJSON(
+  jsonString: string,
+): SafeParseResult<DelegatedProtection, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DelegatedProtection$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DelegatedProtection' from JSON`,
   );
 }
 
@@ -6845,6 +6866,7 @@ export const CreateProjectPermissions$inboundSchema: z.ZodType<
   projectAnalyticsUsage: types.optional(z.array(ACLAction$inboundSchema)),
   projectCheck: types.optional(z.array(ACLAction$inboundSchema)),
   projectCheckRun: types.optional(z.array(ACLAction$inboundSchema)),
+  projectDelegatedProtection: types.optional(z.array(ACLAction$inboundSchema)),
   projectDeploymentExpiration: types.optional(z.array(ACLAction$inboundSchema)),
   projectDeploymentHook: types.optional(z.array(ACLAction$inboundSchema)),
   projectDeploymentProtectionStrict: types.optional(
@@ -7095,6 +7117,7 @@ export type CreateProjectPermissions$Outbound = {
   projectAnalyticsUsage?: Array<string> | undefined;
   projectCheck?: Array<string> | undefined;
   projectCheckRun?: Array<string> | undefined;
+  projectDelegatedProtection?: Array<string> | undefined;
   projectDeploymentExpiration?: Array<string> | undefined;
   projectDeploymentHook?: Array<string> | undefined;
   projectDeploymentProtectionStrict?: Array<string> | undefined;
@@ -7344,6 +7367,7 @@ export const CreateProjectPermissions$outboundSchema: z.ZodType<
   projectAnalyticsUsage: z.array(ACLAction$outboundSchema).optional(),
   projectCheck: z.array(ACLAction$outboundSchema).optional(),
   projectCheckRun: z.array(ACLAction$outboundSchema).optional(),
+  projectDelegatedProtection: z.array(ACLAction$outboundSchema).optional(),
   projectDeploymentExpiration: z.array(ACLAction$outboundSchema).optional(),
   projectDeploymentHook: z.array(ACLAction$outboundSchema).optional(),
   projectDeploymentProtectionStrict: z.array(ACLAction$outboundSchema)
@@ -8534,44 +8558,3 @@ export const CreateProjectKind$inboundSchema: z.ZodNativeEnum<
 export const CreateProjectKind$outboundSchema: z.ZodNativeEnum<
   typeof CreateProjectKind
 > = CreateProjectKind$inboundSchema;
-
-/** @internal */
-export const UsageStatus$inboundSchema: z.ZodType<
-  UsageStatus,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  kind: CreateProjectKind$inboundSchema,
-  exceededAllowanceUntil: types.optional(types.number()),
-  bypassThrottleUntil: types.optional(types.number()),
-});
-/** @internal */
-export type UsageStatus$Outbound = {
-  kind: string;
-  exceededAllowanceUntil?: number | undefined;
-  bypassThrottleUntil?: number | undefined;
-};
-
-/** @internal */
-export const UsageStatus$outboundSchema: z.ZodType<
-  UsageStatus$Outbound,
-  z.ZodTypeDef,
-  UsageStatus
-> = z.object({
-  kind: CreateProjectKind$outboundSchema,
-  exceededAllowanceUntil: z.number().optional(),
-  bypassThrottleUntil: z.number().optional(),
-});
-
-export function usageStatusToJSON(usageStatus: UsageStatus): string {
-  return JSON.stringify(UsageStatus$outboundSchema.parse(usageStatus));
-}
-export function usageStatusFromJSON(
-  jsonString: string,
-): SafeParseResult<UsageStatus, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UsageStatus$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UsageStatus' from JSON`,
-  );
-}

@@ -11,6 +11,25 @@ import (
 	"mockserver/internal/sdk/utils"
 )
 
+type GetMicrofrontendsInGroupAiBots struct {
+	Active bool                                  `json:"active"`
+	Action *GetMicrofrontendsInGroupAiBotsAction `json:"action,omitempty"`
+}
+
+func (o *GetMicrofrontendsInGroupAiBots) GetActive() bool {
+	if o == nil {
+		return false
+	}
+	return o.Active
+}
+
+func (o *GetMicrofrontendsInGroupAiBots) GetAction() *GetMicrofrontendsInGroupAiBotsAction {
+	if o == nil {
+		return nil
+	}
+	return o.Action
+}
+
 type GetMicrofrontendsInGroupOwaspAction string
 
 const (
@@ -2986,6 +3005,7 @@ type GetMicrofrontendsInGroupProject struct {
 	CustomerSupportCodeVisibility    *bool                                                                             `json:"customerSupportCodeVisibility,omitempty"`
 	Crons                            *GetMicrofrontendsInGroupCrons                                                    `json:"crons,omitempty"`
 	DataCache                        *GetMicrofrontendsInGroupDataCache                                                `json:"dataCache,omitempty"`
+	DelegatedProtection              optionalnullable.OptionalNullable[GetMicrofrontendsInGroupDelegatedProtection]    `json:"delegatedProtection,omitempty"`
 	// Retention policies for deployments. These are enforced at the project level, but we also maintain an instance of this at the team level as a default policy that gets applied to new projects.
 	DeploymentExpiration          GetMicrofrontendsInGroupDeploymentExpiration                                  `json:"deploymentExpiration"`
 	DevCommand                    optionalnullable.OptionalNullable[string]                                     `json:"devCommand,omitempty"`
@@ -3179,6 +3199,13 @@ func (o *GetMicrofrontendsInGroupProject) GetDataCache() *GetMicrofrontendsInGro
 		return nil
 	}
 	return o.DataCache
+}
+
+func (o *GetMicrofrontendsInGroupProject) GetDelegatedProtection() optionalnullable.OptionalNullable[GetMicrofrontendsInGroupDelegatedProtection] {
+	if o == nil {
+		return nil
+	}
+	return o.DelegatedProtection
 }
 
 func (o *GetMicrofrontendsInGroupProject) GetDeploymentExpiration() GetMicrofrontendsInGroupDeploymentExpiration {

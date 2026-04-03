@@ -60,9 +60,6 @@ import {
   GetProjectsResponseBodyProjectsNodeVersion,
   GetProjectsResponseBodyProjectsNodeVersion$inboundSchema,
   GetProjectsResponseBodyProjectsNodeVersion$outboundSchema,
-  GetProjectsResponseBodyProjectsResponse200ApplicationJson2Action,
-  GetProjectsResponseBodyProjectsResponse200ApplicationJson2Action$inboundSchema,
-  GetProjectsResponseBodyProjectsResponse200ApplicationJson2Action$outboundSchema,
   GetProjectsResponseBodyResourceConfig,
   GetProjectsResponseBodyResourceConfig$inboundSchema,
   GetProjectsResponseBodyResourceConfig$Outbound,
@@ -95,7 +92,7 @@ import {
   ResponseBodyAlias$inboundSchema,
   ResponseBodyAlias$Outbound,
   ResponseBodyAlias$outboundSchema,
-} from "./getprojectsresponsebodyprojectsresponse200applicationjson2action.js";
+} from "./getprojectsresponsebodyhistory.js";
 import {
   Pagination,
   Pagination$inboundSchema,
@@ -103,6 +100,15 @@ import {
   Pagination$outboundSchema,
 } from "./pagination.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export const GetProjectsResponseBodyProjectsResponse200ApplicationJson2Action =
+  {
+    Blocked: "blocked",
+  } as const;
+export type GetProjectsResponseBodyProjectsResponse200ApplicationJson2Action =
+  ClosedEnum<
+    typeof GetProjectsResponseBodyProjectsResponse200ApplicationJson2Action
+  >;
 
 export type GetProjectsResponseBodyBlock = {
   action: GetProjectsResponseBodyProjectsResponse200ApplicationJson2Action;
@@ -1560,17 +1566,19 @@ export type ResponseBodySecurity = {
   securityPlus?: boolean | undefined;
 };
 
-/**
- * - team: `https://oidc.vercel.com/[team_slug]` - global: `https://oidc.vercel.com`
- */
-export const ResponseBodyIssuerMode = {
-  Team: "team",
-  Global: "global",
-} as const;
-/**
- * - team: `https://oidc.vercel.com/[team_slug]` - global: `https://oidc.vercel.com`
- */
-export type ResponseBodyIssuerMode = ClosedEnum<typeof ResponseBodyIssuerMode>;
+/** @internal */
+export const GetProjectsResponseBodyProjectsResponse200ApplicationJson2Action$inboundSchema:
+  z.ZodNativeEnum<
+    typeof GetProjectsResponseBodyProjectsResponse200ApplicationJson2Action
+  > = z.nativeEnum(
+    GetProjectsResponseBodyProjectsResponse200ApplicationJson2Action,
+  );
+/** @internal */
+export const GetProjectsResponseBodyProjectsResponse200ApplicationJson2Action$outboundSchema:
+  z.ZodNativeEnum<
+    typeof GetProjectsResponseBodyProjectsResponse200ApplicationJson2Action
+  > =
+    GetProjectsResponseBodyProjectsResponse200ApplicationJson2Action$inboundSchema;
 
 /** @internal */
 export const GetProjectsResponseBodyBlock$inboundSchema: z.ZodType<
@@ -8544,12 +8552,3 @@ export function responseBodySecurityFromJSON(
     `Failed to parse 'ResponseBodySecurity' from JSON`,
   );
 }
-
-/** @internal */
-export const ResponseBodyIssuerMode$inboundSchema: z.ZodNativeEnum<
-  typeof ResponseBodyIssuerMode
-> = z.nativeEnum(ResponseBodyIssuerMode);
-/** @internal */
-export const ResponseBodyIssuerMode$outboundSchema: z.ZodNativeEnum<
-  typeof ResponseBodyIssuerMode
-> = ResponseBodyIssuerMode$inboundSchema;

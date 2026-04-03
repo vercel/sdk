@@ -2107,6 +2107,9 @@ func (o *UpdateProjectDataCache) GetUnlimited() *bool {
 	return o.Unlimited
 }
 
+type UpdateProjectDelegatedProtection struct {
+}
+
 // UpdateProjectDeploymentExpiration - Retention policies for deployments. These are enforced at the project level, but we also maintain an instance of this at the team level as a default policy that gets applied to new projects.
 type UpdateProjectDeploymentExpiration struct {
 	// Number of days to keep non-production deployments (mostly preview deployments) before soft deletion.
@@ -7557,6 +7560,7 @@ type UpdateProjectPermissions struct {
 	ProjectAnalyticsUsage                    []components.ACLAction `json:"projectAnalyticsUsage,omitempty"`
 	ProjectCheck                             []components.ACLAction `json:"projectCheck,omitempty"`
 	ProjectCheckRun                          []components.ACLAction `json:"projectCheckRun,omitempty"`
+	ProjectDelegatedProtection               []components.ACLAction `json:"projectDelegatedProtection,omitempty"`
 	ProjectDeploymentExpiration              []components.ACLAction `json:"projectDeploymentExpiration,omitempty"`
 	ProjectDeploymentHook                    []components.ACLAction `json:"projectDeploymentHook,omitempty"`
 	ProjectDeploymentProtectionStrict        []components.ACLAction `json:"projectDeploymentProtectionStrict,omitempty"`
@@ -8982,6 +8986,13 @@ func (o *UpdateProjectPermissions) GetProjectCheckRun() []components.ACLAction {
 	return o.ProjectCheckRun
 }
 
+func (o *UpdateProjectPermissions) GetProjectDelegatedProtection() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectDelegatedProtection
+}
+
 func (o *UpdateProjectPermissions) GetProjectDeploymentExpiration() []components.ACLAction {
 	if o == nil {
 		return nil
@@ -9276,31 +9287,5 @@ func (e *UpdateProjectJobStatus) UnmarshalJSON(data []byte) error {
 		return nil
 	default:
 		return fmt.Errorf("invalid value for UpdateProjectJobStatus: %v", v)
-	}
-}
-
-type UpdateProjectLastAliasRequestType string
-
-const (
-	UpdateProjectLastAliasRequestTypePromote  UpdateProjectLastAliasRequestType = "promote"
-	UpdateProjectLastAliasRequestTypeRollback UpdateProjectLastAliasRequestType = "rollback"
-)
-
-func (e UpdateProjectLastAliasRequestType) ToPointer() *UpdateProjectLastAliasRequestType {
-	return &e
-}
-func (e *UpdateProjectLastAliasRequestType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "promote":
-		fallthrough
-	case "rollback":
-		*e = UpdateProjectLastAliasRequestType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for UpdateProjectLastAliasRequestType: %v", v)
 	}
 }

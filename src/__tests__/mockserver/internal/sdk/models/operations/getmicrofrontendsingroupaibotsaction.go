@@ -480,6 +480,9 @@ func (o *GetMicrofrontendsInGroupDataCache) GetUnlimited() *bool {
 	return o.Unlimited
 }
 
+type GetMicrofrontendsInGroupDelegatedProtection struct {
+}
+
 // GetMicrofrontendsInGroupDeploymentExpiration - Retention policies for deployments. These are enforced at the project level, but we also maintain an instance of this at the team level as a default policy that gets applied to new projects.
 type GetMicrofrontendsInGroupDeploymentExpiration struct {
 	// Number of days to keep non-production deployments (mostly preview deployments) before soft deletion.
@@ -6401,6 +6404,7 @@ type GetMicrofrontendsInGroupPermissions struct {
 	ProjectAnalyticsUsage                    []components.ACLAction `json:"projectAnalyticsUsage,omitempty"`
 	ProjectCheck                             []components.ACLAction `json:"projectCheck,omitempty"`
 	ProjectCheckRun                          []components.ACLAction `json:"projectCheckRun,omitempty"`
+	ProjectDelegatedProtection               []components.ACLAction `json:"projectDelegatedProtection,omitempty"`
 	ProjectDeploymentExpiration              []components.ACLAction `json:"projectDeploymentExpiration,omitempty"`
 	ProjectDeploymentHook                    []components.ACLAction `json:"projectDeploymentHook,omitempty"`
 	ProjectDeploymentProtectionStrict        []components.ACLAction `json:"projectDeploymentProtectionStrict,omitempty"`
@@ -7826,6 +7830,13 @@ func (o *GetMicrofrontendsInGroupPermissions) GetProjectCheckRun() []components.
 	return o.ProjectCheckRun
 }
 
+func (o *GetMicrofrontendsInGroupPermissions) GetProjectDelegatedProtection() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectDelegatedProtection
+}
+
 func (o *GetMicrofrontendsInGroupPermissions) GetProjectDeploymentExpiration() []components.ACLAction {
 	if o == nil {
 		return nil
@@ -8974,23 +8985,4 @@ func (e *GetMicrofrontendsInGroupAiBotsAction) UnmarshalJSON(data []byte) error 
 	default:
 		return fmt.Errorf("invalid value for GetMicrofrontendsInGroupAiBotsAction: %v", v)
 	}
-}
-
-type GetMicrofrontendsInGroupAiBots struct {
-	Active bool                                  `json:"active"`
-	Action *GetMicrofrontendsInGroupAiBotsAction `json:"action,omitempty"`
-}
-
-func (o *GetMicrofrontendsInGroupAiBots) GetActive() bool {
-	if o == nil {
-		return false
-	}
-	return o.Active
-}
-
-func (o *GetMicrofrontendsInGroupAiBots) GetAction() *GetMicrofrontendsInGroupAiBotsAction {
-	if o == nil {
-		return nil
-	}
-	return o.Action
 }

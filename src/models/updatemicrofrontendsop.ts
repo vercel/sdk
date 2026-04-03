@@ -167,6 +167,8 @@ export type UpdateMicrofrontendsDataCache = {
   unlimited?: boolean | undefined;
 };
 
+export type UpdateMicrofrontendsDelegatedProtection = {};
+
 /**
  * Retention policies for deployments. These are enforced at the project level, but we also maintain an instance of this at the team level as a default policy that gets applied to new projects.
  */
@@ -1340,6 +1342,7 @@ export type UpdateMicrofrontendsPermissions = {
   projectAnalyticsUsage?: Array<ACLAction> | undefined;
   projectCheck?: Array<ACLAction> | undefined;
   projectCheckRun?: Array<ACLAction> | undefined;
+  projectDelegatedProtection?: Array<ACLAction> | undefined;
   projectDeploymentExpiration?: Array<ACLAction> | undefined;
   projectDeploymentHook?: Array<ACLAction> | undefined;
   projectDeploymentProtectionStrict?: Array<ACLAction> | undefined;
@@ -2064,6 +2067,10 @@ export type UpdateMicrofrontendsResponseBody = {
   customerSupportCodeVisibility?: boolean | undefined;
   crons?: UpdateMicrofrontendsCrons | undefined;
   dataCache?: UpdateMicrofrontendsDataCache | undefined;
+  delegatedProtection?:
+    | UpdateMicrofrontendsDelegatedProtection
+    | null
+    | undefined;
   /**
    * Retention policies for deployments. These are enforced at the project level, but we also maintain an instance of this at the team level as a default policy that gets applied to new projects.
    */
@@ -2727,6 +2734,48 @@ export function updateMicrofrontendsDataCacheFromJSON(
     jsonString,
     (x) => UpdateMicrofrontendsDataCache$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'UpdateMicrofrontendsDataCache' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsDelegatedProtection$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsDelegatedProtection,
+  z.ZodTypeDef,
+  unknown
+> = z.object({});
+/** @internal */
+export type UpdateMicrofrontendsDelegatedProtection$Outbound = {};
+
+/** @internal */
+export const UpdateMicrofrontendsDelegatedProtection$outboundSchema: z.ZodType<
+  UpdateMicrofrontendsDelegatedProtection$Outbound,
+  z.ZodTypeDef,
+  UpdateMicrofrontendsDelegatedProtection
+> = z.object({});
+
+export function updateMicrofrontendsDelegatedProtectionToJSON(
+  updateMicrofrontendsDelegatedProtection:
+    UpdateMicrofrontendsDelegatedProtection,
+): string {
+  return JSON.stringify(
+    UpdateMicrofrontendsDelegatedProtection$outboundSchema.parse(
+      updateMicrofrontendsDelegatedProtection,
+    ),
+  );
+}
+export function updateMicrofrontendsDelegatedProtectionFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UpdateMicrofrontendsDelegatedProtection,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateMicrofrontendsDelegatedProtection$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UpdateMicrofrontendsDelegatedProtection' from JSON`,
   );
 }
 
@@ -6859,6 +6908,7 @@ export const UpdateMicrofrontendsPermissions$inboundSchema: z.ZodType<
   projectAnalyticsUsage: types.optional(z.array(ACLAction$inboundSchema)),
   projectCheck: types.optional(z.array(ACLAction$inboundSchema)),
   projectCheckRun: types.optional(z.array(ACLAction$inboundSchema)),
+  projectDelegatedProtection: types.optional(z.array(ACLAction$inboundSchema)),
   projectDeploymentExpiration: types.optional(z.array(ACLAction$inboundSchema)),
   projectDeploymentHook: types.optional(z.array(ACLAction$inboundSchema)),
   projectDeploymentProtectionStrict: types.optional(
@@ -7109,6 +7159,7 @@ export type UpdateMicrofrontendsPermissions$Outbound = {
   projectAnalyticsUsage?: Array<string> | undefined;
   projectCheck?: Array<string> | undefined;
   projectCheckRun?: Array<string> | undefined;
+  projectDelegatedProtection?: Array<string> | undefined;
   projectDeploymentExpiration?: Array<string> | undefined;
   projectDeploymentHook?: Array<string> | undefined;
   projectDeploymentProtectionStrict?: Array<string> | undefined;
@@ -7358,6 +7409,7 @@ export const UpdateMicrofrontendsPermissions$outboundSchema: z.ZodType<
   projectAnalyticsUsage: z.array(ACLAction$outboundSchema).optional(),
   projectCheck: z.array(ACLAction$outboundSchema).optional(),
   projectCheckRun: z.array(ACLAction$outboundSchema).optional(),
+  projectDelegatedProtection: z.array(ACLAction$outboundSchema).optional(),
   projectDeploymentExpiration: z.array(ACLAction$outboundSchema).optional(),
   projectDeploymentHook: z.array(ACLAction$outboundSchema).optional(),
   projectDeploymentProtectionStrict: z.array(ACLAction$outboundSchema)
@@ -10992,6 +11044,9 @@ export const UpdateMicrofrontendsResponseBody$inboundSchema: z.ZodType<
   dataCache: types.optional(
     z.lazy(() => UpdateMicrofrontendsDataCache$inboundSchema),
   ),
+  delegatedProtection: z.nullable(
+    z.lazy(() => UpdateMicrofrontendsDelegatedProtection$inboundSchema),
+  ).optional(),
   deploymentExpiration: z.lazy(() =>
     UpdateMicrofrontendsDeploymentExpiration$inboundSchema
   ),
@@ -11174,6 +11229,10 @@ export type UpdateMicrofrontendsResponseBody$Outbound = {
   customerSupportCodeVisibility?: boolean | undefined;
   crons?: UpdateMicrofrontendsCrons$Outbound | undefined;
   dataCache?: UpdateMicrofrontendsDataCache$Outbound | undefined;
+  delegatedProtection?:
+    | UpdateMicrofrontendsDelegatedProtection$Outbound
+    | null
+    | undefined;
   deploymentExpiration: UpdateMicrofrontendsDeploymentExpiration$Outbound;
   devCommand?: string | null | undefined;
   directoryListing: boolean;
@@ -11328,6 +11387,9 @@ export const UpdateMicrofrontendsResponseBody$outboundSchema: z.ZodType<
   crons: z.lazy(() => UpdateMicrofrontendsCrons$outboundSchema).optional(),
   dataCache: z.lazy(() => UpdateMicrofrontendsDataCache$outboundSchema)
     .optional(),
+  delegatedProtection: z.nullable(
+    z.lazy(() => UpdateMicrofrontendsDelegatedProtection$outboundSchema),
+  ).optional(),
   deploymentExpiration: z.lazy(() =>
     UpdateMicrofrontendsDeploymentExpiration$outboundSchema
   ),

@@ -11,6 +11,52 @@ import (
 	"mockserver/internal/sdk/utils"
 )
 
+type GetProjectsProjectManagedRules2 struct {
+	VercelRuleset GetProjectsProjectVercelRuleset2 `json:"vercel_ruleset"`
+	BotFilter     GetProjectsProjectBotFilter2     `json:"bot_filter"`
+	AiBots        GetProjectsProjectAiBots2        `json:"ai_bots"`
+	Owasp         GetProjectsProjectOwasp2         `json:"owasp"`
+}
+
+func (g GetProjectsProjectManagedRules2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetProjectsProjectManagedRules2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"vercel_ruleset", "bot_filter", "ai_bots", "owasp"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetProjectsProjectManagedRules2) GetVercelRuleset() GetProjectsProjectVercelRuleset2 {
+	if o == nil {
+		return GetProjectsProjectVercelRuleset2{}
+	}
+	return o.VercelRuleset
+}
+
+func (o *GetProjectsProjectManagedRules2) GetBotFilter() GetProjectsProjectBotFilter2 {
+	if o == nil {
+		return GetProjectsProjectBotFilter2{}
+	}
+	return o.BotFilter
+}
+
+func (o *GetProjectsProjectManagedRules2) GetAiBots() GetProjectsProjectAiBots2 {
+	if o == nil {
+		return GetProjectsProjectAiBots2{}
+	}
+	return o.AiBots
+}
+
+func (o *GetProjectsProjectManagedRules2) GetOwasp() GetProjectsProjectOwasp2 {
+	if o == nil {
+		return GetProjectsProjectOwasp2{}
+	}
+	return o.Owasp
+}
+
 type GetProjectsLogHeadersProjectEnum2 string
 
 const (
@@ -3013,6 +3059,7 @@ type GetProjectsProject2 struct {
 	CustomerSupportCodeVisibility    *bool                                                                `json:"customerSupportCodeVisibility,omitempty"`
 	Crons                            *GetProjectsCrons                                                    `json:"crons,omitempty"`
 	DataCache                        *GetProjectsDataCache                                                `json:"dataCache,omitempty"`
+	DelegatedProtection              optionalnullable.OptionalNullable[GetProjectsDelegatedProtection]    `json:"delegatedProtection,omitempty"`
 	// Retention policies for deployments. These are enforced at the project level, but we also maintain an instance of this at the team level as a default policy that gets applied to new projects.
 	DeploymentExpiration          GetProjectsProjectDeploymentExpiration2                                  `json:"deploymentExpiration"`
 	DevCommand                    optionalnullable.OptionalNullable[string]                                `json:"devCommand,omitempty"`
@@ -3217,6 +3264,13 @@ func (o *GetProjectsProject2) GetDataCache() *GetProjectsDataCache {
 		return nil
 	}
 	return o.DataCache
+}
+
+func (o *GetProjectsProject2) GetDelegatedProtection() optionalnullable.OptionalNullable[GetProjectsDelegatedProtection] {
+	if o == nil {
+		return nil
+	}
+	return o.DelegatedProtection
 }
 
 func (o *GetProjectsProject2) GetDeploymentExpiration() GetProjectsProjectDeploymentExpiration2 {
@@ -8261,33 +8315,4 @@ func (g *GetProjectsProjectPasswordProtection1) UnmarshalJSON(data []byte) error
 		return err
 	}
 	return nil
-}
-
-type GetProjectsProjectResourceConfigFunctionDefaultMemoryType1 string
-
-const (
-	GetProjectsProjectResourceConfigFunctionDefaultMemoryType1StandardLegacy GetProjectsProjectResourceConfigFunctionDefaultMemoryType1 = "standard_legacy"
-	GetProjectsProjectResourceConfigFunctionDefaultMemoryType1Standard       GetProjectsProjectResourceConfigFunctionDefaultMemoryType1 = "standard"
-	GetProjectsProjectResourceConfigFunctionDefaultMemoryType1Performance    GetProjectsProjectResourceConfigFunctionDefaultMemoryType1 = "performance"
-)
-
-func (e GetProjectsProjectResourceConfigFunctionDefaultMemoryType1) ToPointer() *GetProjectsProjectResourceConfigFunctionDefaultMemoryType1 {
-	return &e
-}
-func (e *GetProjectsProjectResourceConfigFunctionDefaultMemoryType1) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "standard_legacy":
-		fallthrough
-	case "standard":
-		fallthrough
-	case "performance":
-		*e = GetProjectsProjectResourceConfigFunctionDefaultMemoryType1(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for GetProjectsProjectResourceConfigFunctionDefaultMemoryType1: %v", v)
-	}
 }

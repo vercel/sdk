@@ -12,6 +12,35 @@ import (
 	"mockserver/internal/sdk/utils"
 )
 
+type GetProjectsProjectResourceConfigFunctionDefaultMemoryType1 string
+
+const (
+	GetProjectsProjectResourceConfigFunctionDefaultMemoryType1StandardLegacy GetProjectsProjectResourceConfigFunctionDefaultMemoryType1 = "standard_legacy"
+	GetProjectsProjectResourceConfigFunctionDefaultMemoryType1Standard       GetProjectsProjectResourceConfigFunctionDefaultMemoryType1 = "standard"
+	GetProjectsProjectResourceConfigFunctionDefaultMemoryType1Performance    GetProjectsProjectResourceConfigFunctionDefaultMemoryType1 = "performance"
+)
+
+func (e GetProjectsProjectResourceConfigFunctionDefaultMemoryType1) ToPointer() *GetProjectsProjectResourceConfigFunctionDefaultMemoryType1 {
+	return &e
+}
+func (e *GetProjectsProjectResourceConfigFunctionDefaultMemoryType1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "standard_legacy":
+		fallthrough
+	case "standard":
+		fallthrough
+	case "performance":
+		*e = GetProjectsProjectResourceConfigFunctionDefaultMemoryType1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetProjectsProjectResourceConfigFunctionDefaultMemoryType1: %v", v)
+	}
+}
+
 type GetProjectsProjectResourceConfigBuildMachineType1 string
 
 const (
@@ -6857,27 +6886,4 @@ func (o *GetProjectsContentHintRedisRestAPIToken) GetStoreID() string {
 		return ""
 	}
 	return o.StoreID
-}
-
-type GetProjectsTypeRedisRestAPIURL string
-
-const (
-	GetProjectsTypeRedisRestAPIURLRedisRestAPIURL GetProjectsTypeRedisRestAPIURL = "redis-rest-api-url"
-)
-
-func (e GetProjectsTypeRedisRestAPIURL) ToPointer() *GetProjectsTypeRedisRestAPIURL {
-	return &e
-}
-func (e *GetProjectsTypeRedisRestAPIURL) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "redis-rest-api-url":
-		*e = GetProjectsTypeRedisRestAPIURL(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for GetProjectsTypeRedisRestAPIURL: %v", v)
-	}
 }

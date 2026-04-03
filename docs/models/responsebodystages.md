@@ -5,7 +5,7 @@ An array of all the stages required during a deployment release. Each stage defi
 ## Example Usage
 
 ```typescript
-import { ResponseBodyStages } from "@vercel/sdk/models/responsebodyissuermode.js";
+import { ResponseBodyStages } from "@vercel/sdk/models/responsebodysecurity.js";
 
 let value: ResponseBodyStages = {
   targetPercentage: 25,

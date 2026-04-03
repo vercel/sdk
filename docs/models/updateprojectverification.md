@@ -5,7 +5,7 @@ A list of verification challenges, one of which must be completed to verify the 
 ## Example Usage
 
 ```typescript
-import { UpdateProjectVerification } from "@vercel/sdk/models/updateprojectprojectsresponse200action.js";
+import { UpdateProjectVerification } from "@vercel/sdk/models/updateprojectbotfilter.js";
 
 let value: UpdateProjectVerification = {
   type: "<value>",

@@ -46,6 +46,7 @@ import {
   CreateProjectEnvRequest,
   CreateProjectEnvResponseBody,
 } from "../models/createprojectenvop.js";
+import { CreateProjectRequest } from "../models/createprojectkind.js";
 import { CreateProjectResponseBody } from "../models/createprojectresponsebody.js";
 import {
   CreateProjectTransferRequestRequest,
@@ -72,8 +73,8 @@ import {
   GetProjectEnvRequest,
   GetProjectEnvResponseBody,
 } from "../models/getprojectenvop.js";
-import { GetProjectsRequest } from "../models/getprojectsblockhistoryprojectsresponse200applicationjsonresponsebodyroute.js";
 import { GetProjectsResponseBody } from "../models/getprojectsresponsebody.js";
+import { GetProjectsRequest } from "../models/getprojectsrouteprojectsresponse200applicationjsonresponsebody1.js";
 import {
   ListPromoteAliasesRequest,
   ListPromoteAliasesResponseBody,
@@ -98,18 +99,17 @@ import {
   UpdateMicrofrontendsRequest,
   UpdateMicrofrontendsResponseBody,
 } from "../models/updatemicrofrontendsop.js";
+import { UpdateProjectRequest } from "../models/updateprojectbotfilter.js";
 import {
   UpdateProjectDomainRequest,
   UpdateProjectDomainResponseBody,
 } from "../models/updateprojectdomainop.js";
-import { UpdateProjectRequest } from "../models/updateprojectprojectsresponse200action.js";
 import {
   UpdateProjectProtectionBypassRequest,
   UpdateProjectProtectionBypassResponseBody,
 } from "../models/updateprojectprotectionbypassop.js";
 import { UpdateProjectResponseBody } from "../models/updateprojectresponsebody.js";
 import { UpdateProjectsByProjectIdRollbackByDeploymentIdUpdateDescriptionRequest } from "../models/updateprojectsbyprojectidrollbackbydeploymentidupdatedescriptionop.js";
-import { CreateProjectRequest } from "../models/usagestatus.js";
 import {
   VerifyProjectDomainRequest,
   VerifyProjectDomainResponseBody,

@@ -709,6 +709,8 @@ export type UpdateProjectDataCache = {
   unlimited?: boolean | undefined;
 };
 
+export type UpdateProjectDelegatedProtection = {};
+
 /**
  * Retention policies for deployments. These are enforced at the project level, but we also maintain an instance of this at the team level as a default policy that gets applied to new projects.
  */
@@ -1863,6 +1865,7 @@ export type UpdateProjectPermissions = {
   projectAnalyticsUsage?: Array<ACLAction> | undefined;
   projectCheck?: Array<ACLAction> | undefined;
   projectCheckRun?: Array<ACLAction> | undefined;
+  projectDelegatedProtection?: Array<ACLAction> | undefined;
   projectDeploymentExpiration?: Array<ACLAction> | undefined;
   projectDeploymentHook?: Array<ACLAction> | undefined;
   projectDeploymentProtectionStrict?: Array<ACLAction> | undefined;
@@ -2111,15 +2114,6 @@ export type UpdateProjectBotFilter = {
     | UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityAction
     | undefined;
 };
-
-export const UpdateProjectProjectsResponse200Action = {
-  Log: "log",
-  Deny: "deny",
-  Challenge: "challenge",
-} as const;
-export type UpdateProjectProjectsResponse200Action = ClosedEnum<
-  typeof UpdateProjectProjectsResponse200Action
->;
 
 /** @internal */
 export const UpdateProjectFramework$inboundSchema: z.ZodNativeEnum<
@@ -3662,6 +3656,41 @@ export function updateProjectDataCacheFromJSON(
     jsonString,
     (x) => UpdateProjectDataCache$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'UpdateProjectDataCache' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateProjectDelegatedProtection$inboundSchema: z.ZodType<
+  UpdateProjectDelegatedProtection,
+  z.ZodTypeDef,
+  unknown
+> = z.object({});
+/** @internal */
+export type UpdateProjectDelegatedProtection$Outbound = {};
+
+/** @internal */
+export const UpdateProjectDelegatedProtection$outboundSchema: z.ZodType<
+  UpdateProjectDelegatedProtection$Outbound,
+  z.ZodTypeDef,
+  UpdateProjectDelegatedProtection
+> = z.object({});
+
+export function updateProjectDelegatedProtectionToJSON(
+  updateProjectDelegatedProtection: UpdateProjectDelegatedProtection,
+): string {
+  return JSON.stringify(
+    UpdateProjectDelegatedProtection$outboundSchema.parse(
+      updateProjectDelegatedProtection,
+    ),
+  );
+}
+export function updateProjectDelegatedProtectionFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectDelegatedProtection, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectDelegatedProtection$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectDelegatedProtection' from JSON`,
   );
 }
 
@@ -7657,6 +7686,7 @@ export const UpdateProjectPermissions$inboundSchema: z.ZodType<
   projectAnalyticsUsage: types.optional(z.array(ACLAction$inboundSchema)),
   projectCheck: types.optional(z.array(ACLAction$inboundSchema)),
   projectCheckRun: types.optional(z.array(ACLAction$inboundSchema)),
+  projectDelegatedProtection: types.optional(z.array(ACLAction$inboundSchema)),
   projectDeploymentExpiration: types.optional(z.array(ACLAction$inboundSchema)),
   projectDeploymentHook: types.optional(z.array(ACLAction$inboundSchema)),
   projectDeploymentProtectionStrict: types.optional(
@@ -7907,6 +7937,7 @@ export type UpdateProjectPermissions$Outbound = {
   projectAnalyticsUsage?: Array<string> | undefined;
   projectCheck?: Array<string> | undefined;
   projectCheckRun?: Array<string> | undefined;
+  projectDelegatedProtection?: Array<string> | undefined;
   projectDeploymentExpiration?: Array<string> | undefined;
   projectDeploymentHook?: Array<string> | undefined;
   projectDeploymentProtectionStrict?: Array<string> | undefined;
@@ -8156,6 +8187,7 @@ export const UpdateProjectPermissions$outboundSchema: z.ZodType<
   projectAnalyticsUsage: z.array(ACLAction$outboundSchema).optional(),
   projectCheck: z.array(ACLAction$outboundSchema).optional(),
   projectCheckRun: z.array(ACLAction$outboundSchema).optional(),
+  projectDelegatedProtection: z.array(ACLAction$outboundSchema).optional(),
   projectDeploymentExpiration: z.array(ACLAction$outboundSchema).optional(),
   projectDeploymentHook: z.array(ACLAction$outboundSchema).optional(),
   projectDeploymentProtectionStrict: z.array(ACLAction$outboundSchema)
@@ -9010,13 +9042,3 @@ export function updateProjectBotFilterFromJSON(
     `Failed to parse 'UpdateProjectBotFilter' from JSON`,
   );
 }
-
-/** @internal */
-export const UpdateProjectProjectsResponse200Action$inboundSchema:
-  z.ZodNativeEnum<typeof UpdateProjectProjectsResponse200Action> = z.nativeEnum(
-    UpdateProjectProjectsResponse200Action,
-  );
-/** @internal */
-export const UpdateProjectProjectsResponse200Action$outboundSchema:
-  z.ZodNativeEnum<typeof UpdateProjectProjectsResponse200Action> =
-    UpdateProjectProjectsResponse200Action$inboundSchema;

@@ -8,7 +8,6 @@ import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
-import { SDKValidationError } from "./sdkvalidationerror.js";
 import {
   Analytics,
   Analytics$inboundSchema,
@@ -38,6 +37,9 @@ import {
   CreateProjectIpBuckets$inboundSchema,
   CreateProjectIpBuckets$Outbound,
   CreateProjectIpBuckets$outboundSchema,
+  CreateProjectKind,
+  CreateProjectKind$inboundSchema,
+  CreateProjectKind$outboundSchema,
   CreateProjectMicrofrontends,
   CreateProjectMicrofrontends$inboundSchema,
   CreateProjectMicrofrontends$Outbound,
@@ -100,6 +102,10 @@ import {
   DefaultResourceConfig$inboundSchema,
   DefaultResourceConfig$Outbound,
   DefaultResourceConfig$outboundSchema,
+  DelegatedProtection,
+  DelegatedProtection$inboundSchema,
+  DelegatedProtection$Outbound,
+  DelegatedProtection$outboundSchema,
   DeploymentExpiration,
   DeploymentExpiration$inboundSchema,
   DeploymentExpiration$Outbound,
@@ -147,11 +153,23 @@ import {
   SpeedInsights$inboundSchema,
   SpeedInsights$Outbound,
   SpeedInsights$outboundSchema,
-  UsageStatus,
-  UsageStatus$inboundSchema,
-  UsageStatus$Outbound,
-  UsageStatus$outboundSchema,
-} from "./usagestatus.js";
+} from "./createprojectkind.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export type UsageStatus = {
+  /**
+   * Billing mode. Always 'flat' for flat-rate projects.
+   */
+  kind: CreateProjectKind;
+  /**
+   * Timestamp until which the project has exceeded its CDN allowance.
+   */
+  exceededAllowanceUntil?: number | undefined;
+  /**
+   * Timestamp until which throttling is bypassed (project pays list rates for overage).
+   */
+  bypassThrottleUntil?: number | undefined;
+};
 
 export type Features = {
   webAnalytics?: boolean | undefined;
@@ -473,6 +491,7 @@ export type CreateProjectResponseBody = {
   customerSupportCodeVisibility?: boolean | undefined;
   crons?: CreateProjectCrons | undefined;
   dataCache?: CreateProjectDataCache | undefined;
+  delegatedProtection?: DelegatedProtection | null | undefined;
   /**
    * Retention policies for deployments. These are enforced at the project level, but we also maintain an instance of this at the team level as a default policy that gets applied to new projects.
    */
@@ -554,6 +573,47 @@ export type CreateProjectResponseBody = {
   protectedSourcemaps?: boolean | undefined;
   tracing?: CreateProjectTracing | undefined;
 };
+
+/** @internal */
+export const UsageStatus$inboundSchema: z.ZodType<
+  UsageStatus,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  kind: CreateProjectKind$inboundSchema,
+  exceededAllowanceUntil: types.optional(types.number()),
+  bypassThrottleUntil: types.optional(types.number()),
+});
+/** @internal */
+export type UsageStatus$Outbound = {
+  kind: string;
+  exceededAllowanceUntil?: number | undefined;
+  bypassThrottleUntil?: number | undefined;
+};
+
+/** @internal */
+export const UsageStatus$outboundSchema: z.ZodType<
+  UsageStatus$Outbound,
+  z.ZodTypeDef,
+  UsageStatus
+> = z.object({
+  kind: CreateProjectKind$outboundSchema,
+  exceededAllowanceUntil: z.number().optional(),
+  bypassThrottleUntil: z.number().optional(),
+});
+
+export function usageStatusToJSON(usageStatus: UsageStatus): string {
+  return JSON.stringify(UsageStatus$outboundSchema.parse(usageStatus));
+}
+export function usageStatusFromJSON(
+  jsonString: string,
+): SafeParseResult<UsageStatus, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UsageStatus$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UsageStatus' from JSON`,
+  );
+}
 
 /** @internal */
 export const Features$inboundSchema: z.ZodType<
@@ -2647,6 +2707,7 @@ export const CreateProjectResponseBody$inboundSchema: z.ZodType<
   customerSupportCodeVisibility: types.optional(types.boolean()),
   crons: types.optional(CreateProjectCrons$inboundSchema),
   dataCache: types.optional(CreateProjectDataCache$inboundSchema),
+  delegatedProtection: z.nullable(DelegatedProtection$inboundSchema).optional(),
   deploymentExpiration: DeploymentExpiration$inboundSchema,
   devCommand: z.nullable(types.string()).optional(),
   directoryListing: types.boolean(),
@@ -2714,7 +2775,7 @@ export const CreateProjectResponseBody$inboundSchema: z.ZodType<
   oidcTokenConfig: types.optional(CreateProjectOidcTokenConfig$inboundSchema),
   tier: types.optional(types.string()),
   flatRateTier: types.optional(FlatRateTier$inboundSchema),
-  usageStatus: types.optional(UsageStatus$inboundSchema),
+  usageStatus: types.optional(z.lazy(() => UsageStatus$inboundSchema)),
   features: types.optional(z.lazy(() => Features$inboundSchema)),
   v0: types.optional(types.boolean()),
   v0Created: types.optional(types.boolean()),
@@ -2756,6 +2817,7 @@ export type CreateProjectResponseBody$Outbound = {
   customerSupportCodeVisibility?: boolean | undefined;
   crons?: CreateProjectCrons$Outbound | undefined;
   dataCache?: CreateProjectDataCache$Outbound | undefined;
+  delegatedProtection?: DelegatedProtection$Outbound | null | undefined;
   deploymentExpiration: DeploymentExpiration$Outbound;
   devCommand?: string | null | undefined;
   directoryListing: boolean;
@@ -2862,6 +2924,8 @@ export const CreateProjectResponseBody$outboundSchema: z.ZodType<
   customerSupportCodeVisibility: z.boolean().optional(),
   crons: CreateProjectCrons$outboundSchema.optional(),
   dataCache: CreateProjectDataCache$outboundSchema.optional(),
+  delegatedProtection: z.nullable(DelegatedProtection$outboundSchema)
+    .optional(),
   deploymentExpiration: DeploymentExpiration$outboundSchema,
   devCommand: z.nullable(z.string()).optional(),
   directoryListing: z.boolean(),
@@ -2927,7 +2991,7 @@ export const CreateProjectResponseBody$outboundSchema: z.ZodType<
   oidcTokenConfig: CreateProjectOidcTokenConfig$outboundSchema.optional(),
   tier: z.string().optional(),
   flatRateTier: FlatRateTier$outboundSchema.optional(),
-  usageStatus: UsageStatus$outboundSchema.optional(),
+  usageStatus: z.lazy(() => UsageStatus$outboundSchema).optional(),
   features: z.lazy(() => Features$outboundSchema).optional(),
   v0: z.boolean().optional(),
   v0Created: z.boolean().optional(),

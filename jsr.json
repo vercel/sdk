@@ -2,7 +2,7 @@
 
 {
   "name": "@vercel/sdk",
-  "version": "1.19.26",
+  "version": "1.19.27",
   "exports": {
     ".": "./src/index.ts",    
     "./models": "./src/models/index.ts",

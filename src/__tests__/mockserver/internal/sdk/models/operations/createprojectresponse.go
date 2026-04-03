@@ -12,6 +12,44 @@ import (
 	"mockserver/internal/sdk/utils"
 )
 
+type CreateProjectTrustedIps1 struct {
+	DeploymentType CreateProjectTrustedIpsDeploymentType1 `json:"deploymentType"`
+	Addresses      []CreateProjectAddress                 `json:"addresses"`
+	ProtectionMode CreateProjectProtectionMode            `json:"protectionMode"`
+}
+
+func (c CreateProjectTrustedIps1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateProjectTrustedIps1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"deploymentType", "addresses", "protectionMode"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateProjectTrustedIps1) GetDeploymentType() CreateProjectTrustedIpsDeploymentType1 {
+	if o == nil {
+		return CreateProjectTrustedIpsDeploymentType1("")
+	}
+	return o.DeploymentType
+}
+
+func (o *CreateProjectTrustedIps1) GetAddresses() []CreateProjectAddress {
+	if o == nil {
+		return []CreateProjectAddress{}
+	}
+	return o.Addresses
+}
+
+func (o *CreateProjectTrustedIps1) GetProtectionMode() CreateProjectProtectionMode {
+	if o == nil {
+		return CreateProjectProtectionMode("")
+	}
+	return o.ProtectionMode
+}
+
 type CreateProjectTrustedIpsUnionType string
 
 const (
@@ -3355,6 +3393,7 @@ type CreateProjectResponseBody struct {
 	CustomerSupportCodeVisibility    *bool                                                                  `json:"customerSupportCodeVisibility,omitempty"`
 	Crons                            *CreateProjectCrons                                                    `json:"crons,omitempty"`
 	DataCache                        *CreateProjectDataCache                                                `json:"dataCache,omitempty"`
+	DelegatedProtection              optionalnullable.OptionalNullable[CreateProjectDelegatedProtection]    `json:"delegatedProtection,omitempty"`
 	// Retention policies for deployments. These are enforced at the project level, but we also maintain an instance of this at the team level as a default policy that gets applied to new projects.
 	DeploymentExpiration          CreateProjectDeploymentExpiration                                     `json:"deploymentExpiration"`
 	DevCommand                    optionalnullable.OptionalNullable[string]                             `json:"devCommand,omitempty"`
@@ -3548,6 +3587,13 @@ func (o *CreateProjectResponseBody) GetDataCache() *CreateProjectDataCache {
 		return nil
 	}
 	return o.DataCache
+}
+
+func (o *CreateProjectResponseBody) GetDelegatedProtection() optionalnullable.OptionalNullable[CreateProjectDelegatedProtection] {
+	if o == nil {
+		return nil
+	}
+	return o.DelegatedProtection
 }
 
 func (o *CreateProjectResponseBody) GetDeploymentExpiration() CreateProjectDeploymentExpiration {

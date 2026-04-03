@@ -1480,6 +1480,9 @@ func (o *CreateProjectDataCache) GetUnlimited() *bool {
 	return o.Unlimited
 }
 
+type CreateProjectDelegatedProtection struct {
+}
+
 // CreateProjectDeploymentExpiration - Retention policies for deployments. These are enforced at the project level, but we also maintain an instance of this at the team level as a default policy that gets applied to new projects.
 type CreateProjectDeploymentExpiration struct {
 	// Number of days to keep non-production deployments (mostly preview deployments) before soft deletion.
@@ -6959,6 +6962,7 @@ type CreateProjectPermissions struct {
 	ProjectAnalyticsUsage                    []components.ACLAction `json:"projectAnalyticsUsage,omitempty"`
 	ProjectCheck                             []components.ACLAction `json:"projectCheck,omitempty"`
 	ProjectCheckRun                          []components.ACLAction `json:"projectCheckRun,omitempty"`
+	ProjectDelegatedProtection               []components.ACLAction `json:"projectDelegatedProtection,omitempty"`
 	ProjectDeploymentExpiration              []components.ACLAction `json:"projectDeploymentExpiration,omitempty"`
 	ProjectDeploymentHook                    []components.ACLAction `json:"projectDeploymentHook,omitempty"`
 	ProjectDeploymentProtectionStrict        []components.ACLAction `json:"projectDeploymentProtectionStrict,omitempty"`
@@ -8384,6 +8388,13 @@ func (o *CreateProjectPermissions) GetProjectCheckRun() []components.ACLAction {
 	return o.ProjectCheckRun
 }
 
+func (o *CreateProjectPermissions) GetProjectDelegatedProtection() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectDelegatedProtection
+}
+
 func (o *CreateProjectPermissions) GetProjectDeploymentExpiration() []components.ACLAction {
 	if o == nil {
 		return nil
@@ -9146,42 +9157,4 @@ func (e *CreateProjectProtectionMode) UnmarshalJSON(data []byte) error {
 	default:
 		return fmt.Errorf("invalid value for CreateProjectProtectionMode: %v", v)
 	}
-}
-
-type CreateProjectTrustedIps1 struct {
-	DeploymentType CreateProjectTrustedIpsDeploymentType1 `json:"deploymentType"`
-	Addresses      []CreateProjectAddress                 `json:"addresses"`
-	ProtectionMode CreateProjectProtectionMode            `json:"protectionMode"`
-}
-
-func (c CreateProjectTrustedIps1) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(c, "", false)
-}
-
-func (c *CreateProjectTrustedIps1) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"deploymentType", "addresses", "protectionMode"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *CreateProjectTrustedIps1) GetDeploymentType() CreateProjectTrustedIpsDeploymentType1 {
-	if o == nil {
-		return CreateProjectTrustedIpsDeploymentType1("")
-	}
-	return o.DeploymentType
-}
-
-func (o *CreateProjectTrustedIps1) GetAddresses() []CreateProjectAddress {
-	if o == nil {
-		return []CreateProjectAddress{}
-	}
-	return o.Addresses
-}
-
-func (o *CreateProjectTrustedIps1) GetProtectionMode() CreateProjectProtectionMode {
-	if o == nil {
-		return CreateProjectProtectionMode("")
-	}
-	return o.ProtectionMode
 }

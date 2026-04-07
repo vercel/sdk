@@ -1217,6 +1217,10 @@ export type ResponseBodyProvider = {
    * The currency conversion rate used by the provider
    */
   currencyConversionRate?: string | undefined;
+  /**
+   * Whether a Stripe Shared Payment Token was used for this purchase. Only applicable when type is stripe_invoice_immediate.
+   */
+  stripeSharedPaymentTokenUsed?: boolean | undefined;
 };
 
 /**
@@ -4889,12 +4893,14 @@ export const ResponseBodyProvider$inboundSchema: z.ZodType<
   resourceId: types.string(),
   type: BuyCreditsResponseBodyType$inboundSchema,
   currencyConversionRate: types.optional(types.string()),
+  stripeSharedPaymentTokenUsed: types.optional(types.boolean()),
 });
 /** @internal */
 export type ResponseBodyProvider$Outbound = {
   resourceId: string;
   type: string;
   currencyConversionRate?: string | undefined;
+  stripeSharedPaymentTokenUsed?: boolean | undefined;
 };
 
 /** @internal */
@@ -4906,6 +4912,7 @@ export const ResponseBodyProvider$outboundSchema: z.ZodType<
   resourceId: z.string(),
   type: BuyCreditsResponseBodyType$outboundSchema,
   currencyConversionRate: z.string().optional(),
+  stripeSharedPaymentTokenUsed: z.boolean().optional(),
 });
 
 export function responseBodyProviderToJSON(

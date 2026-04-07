@@ -4553,6 +4553,8 @@ type BuyCreditsProvider struct {
 	Type ProviderType `json:"type"`
 	// The currency conversion rate used by the provider
 	CurrencyConversionRate *string `json:"currencyConversionRate,omitempty"`
+	// Whether a Stripe Shared Payment Token was used for this purchase. Only applicable when type is stripe_invoice_immediate.
+	StripeSharedPaymentTokenUsed *bool `json:"stripeSharedPaymentTokenUsed,omitempty"`
 }
 
 func (b BuyCreditsProvider) MarshalJSON() ([]byte, error) {
@@ -4585,6 +4587,13 @@ func (o *BuyCreditsProvider) GetCurrencyConversionRate() *string {
 		return nil
 	}
 	return o.CurrencyConversionRate
+}
+
+func (o *BuyCreditsProvider) GetStripeSharedPaymentTokenUsed() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.StripeSharedPaymentTokenUsed
 }
 
 // PurchaseIntentStatus - The status of the Purchase Intent.

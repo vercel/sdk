@@ -5,22 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndFortySeven } from "@vercel/sdk/models/twohundredandtwentyfive.js";
+import { TwoHundredAndFortySeven } from "@vercel/sdk/models/twohundredandtwentysix.js";
 
-let value: TwoHundredAndFortySeven = {
-  teamName: "<value>",
-};
+let value: TwoHundredAndFortySeven = {};
 ```
 
 ## Fields
 
-| Field               | Type                | Required            | Description         |
-| ------------------- | ------------------- | ------------------- | ------------------- |
-| `teamName`          | *string*            | :heavy_check_mark:  | N/A                 |
-| `username`          | *string*            | :heavy_minus_sign:  | N/A                 |
-| `gitUsername`       | *string*            | :heavy_minus_sign:  | N/A                 |
-| `githubUsername`    | *string*            | :heavy_minus_sign:  | N/A                 |
-| `gitlabUsername`    | *string*            | :heavy_minus_sign:  | N/A                 |
-| `bitbucketUsername` | *string*            | :heavy_minus_sign:  | N/A                 |
-| `updatedUid`        | *string*            | :heavy_minus_sign:  | N/A                 |
-| `teamId`            | *string*            | :heavy_minus_sign:  | N/A                 |
+| Field                                          | Type                                           | Required                                       | Description                                    |
+| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
+| `directoryType`                                | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
+| `ssoType`                                      | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
+| `invitedUser`                                  | [models.InvitedUser](../models/inviteduser.md) | :heavy_minus_sign:                             | N/A                                            |
+| `invitedEmail`                                 | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
+| `invitationRole`                               | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
+| `entitlements`                                 | *string*[]                                     | :heavy_minus_sign:                             | N/A                                            |
+| `invitedUid`                                   | *string*                                       | :heavy_minus_sign:                             | N/A                                            |

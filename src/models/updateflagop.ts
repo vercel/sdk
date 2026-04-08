@@ -260,6 +260,10 @@ export type UpdateFlagRequestBody = {
    */
   description?: string | undefined;
   state?: UpdateFlagState | undefined;
+  /**
+   * Whether this flag is marked as permanent, indicating it should not be removed
+   */
+  permanent?: boolean | undefined;
 };
 
 export type UpdateFlagRequest = {
@@ -627,6 +631,7 @@ export type ResponseBodyTypeName = ClosedEnum<typeof ResponseBodyTypeName>;
 
 export type UpdateFlagResponseBody1 = {
   description?: string | undefined;
+  permanent?: boolean | undefined;
   experiment?: ResponseBodyExperiment | undefined;
   variants: Array<ResponseBodyVariants>;
   id: string;
@@ -1863,6 +1868,7 @@ export const UpdateFlagRequestBody$inboundSchema: z.ZodType<
   seed: types.optional(types.number()),
   description: types.optional(types.string()),
   state: types.optional(UpdateFlagState$inboundSchema),
+  permanent: types.optional(types.boolean()),
 });
 /** @internal */
 export type UpdateFlagRequestBody$Outbound = {
@@ -1873,6 +1879,7 @@ export type UpdateFlagRequestBody$Outbound = {
   seed?: number | undefined;
   description?: string | undefined;
   state?: string | undefined;
+  permanent?: boolean | undefined;
 };
 
 /** @internal */
@@ -1889,6 +1896,7 @@ export const UpdateFlagRequestBody$outboundSchema: z.ZodType<
   seed: z.number().optional(),
   description: z.string().optional(),
   state: UpdateFlagState$outboundSchema.optional(),
+  permanent: z.boolean().optional(),
 });
 
 export function updateFlagRequestBodyToJSON(
@@ -3522,6 +3530,7 @@ export const UpdateFlagResponseBody1$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   description: types.optional(types.string()),
+  permanent: types.optional(types.boolean()),
   experiment: types.optional(
     z.lazy(() => ResponseBodyExperiment$inboundSchema),
   ),
@@ -3543,6 +3552,7 @@ export const UpdateFlagResponseBody1$inboundSchema: z.ZodType<
 /** @internal */
 export type UpdateFlagResponseBody1$Outbound = {
   description?: string | undefined;
+  permanent?: boolean | undefined;
   experiment?: ResponseBodyExperiment$Outbound | undefined;
   variants: Array<ResponseBodyVariants$Outbound>;
   id: string;
@@ -3567,6 +3577,7 @@ export const UpdateFlagResponseBody1$outboundSchema: z.ZodType<
   UpdateFlagResponseBody1
 > = z.object({
   description: z.string().optional(),
+  permanent: z.boolean().optional(),
   experiment: z.lazy(() => ResponseBodyExperiment$outboundSchema).optional(),
   variants: z.array(z.lazy(() => ResponseBodyVariants$outboundSchema)),
   id: z.string(),

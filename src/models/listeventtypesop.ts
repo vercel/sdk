@@ -295,6 +295,7 @@ export const ListEventTypesName = {
   ProjectGitCreateDeploymentsToggled: "project-git-create-deployments-toggled",
   ProjectGitRequireVerifiedCommitsToggled:
     "project-git-require-verified-commits-toggled",
+  ProjectGitCommitStatusToggled: "project-git-commit-status-toggled",
   ProjectGitLfsToggled: "project-git-lfs-toggled",
   ProjectConsolidatedGitCommitStatusUpdated:
     "project-consolidated-git-commit-status-updated",
@@ -327,6 +328,8 @@ export const ListEventTypesName = {
   ProjectRollingReleaseAborted: "project-rolling-release-aborted",
   ProjectRollingReleaseApproved: "project-rolling-release-approved",
   ProjectRollingReleaseTimer: "project-rolling-release-timer",
+  ProjectRollingReleasePaused: "project-rolling-release-paused",
+  ProjectRollingReleaseContinued: "project-rolling-release-continued",
   ProjectRoutesVersionPromoted: "project-routes-version-promoted",
   ProjectRoutesVersionRestored: "project-routes-version-restored",
   ProjectOidcIssuerModeUpdated: "project-oidc-issuer-mode-updated",

@@ -57,6 +57,17 @@ export const GetRollingReleaseState = {
 export type GetRollingReleaseState = ClosedEnum<typeof GetRollingReleaseState>;
 
 /**
+ * When set to `PAUSED`, the rollout is frozen at the current percentage until continued.
+ */
+export const Substate = {
+  Paused: "PAUSED",
+} as const;
+/**
+ * When set to `PAUSED`, the rollout is frozen at the current percentage until continued.
+ */
+export type Substate = ClosedEnum<typeof Substate>;
+
+/**
  * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
  */
 export const GetRollingReleaseReadyState = {
@@ -341,6 +352,10 @@ export type GetRollingReleaseRollingRelease = {
    */
   state: GetRollingReleaseState;
   /**
+   * When set to `PAUSED`, the rollout is frozen at the current percentage until continued.
+   */
+  substate: Substate | null;
+  /**
    * The current deployment receiving production traffic
    */
   currentDeployment: CurrentDeployment | null;
@@ -453,6 +468,13 @@ export const GetRollingReleaseState$inboundSchema: z.ZodNativeEnum<
 export const GetRollingReleaseState$outboundSchema: z.ZodNativeEnum<
   typeof GetRollingReleaseState
 > = GetRollingReleaseState$inboundSchema;
+
+/** @internal */
+export const Substate$inboundSchema: z.ZodNativeEnum<typeof Substate> = z
+  .nativeEnum(Substate);
+/** @internal */
+export const Substate$outboundSchema: z.ZodNativeEnum<typeof Substate> =
+  Substate$inboundSchema;
 
 /** @internal */
 export const GetRollingReleaseReadyState$inboundSchema: z.ZodNativeEnum<
@@ -802,6 +824,7 @@ export const GetRollingReleaseRollingRelease$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   state: GetRollingReleaseState$inboundSchema,
+  substate: types.nullable(Substate$inboundSchema),
   currentDeployment: types.nullable(
     z.lazy(() => CurrentDeployment$inboundSchema),
   ),
@@ -819,6 +842,7 @@ export const GetRollingReleaseRollingRelease$inboundSchema: z.ZodType<
 /** @internal */
 export type GetRollingReleaseRollingRelease$Outbound = {
   state: string;
+  substate: string | null;
   currentDeployment: CurrentDeployment$Outbound | null;
   canaryDeployment: CanaryDeployment$Outbound | null;
   queuedDeploymentId: string | null;
@@ -837,6 +861,7 @@ export const GetRollingReleaseRollingRelease$outboundSchema: z.ZodType<
   GetRollingReleaseRollingRelease
 > = z.object({
   state: GetRollingReleaseState$outboundSchema,
+  substate: z.nullable(Substate$outboundSchema),
   currentDeployment: z.nullable(z.lazy(() => CurrentDeployment$outboundSchema)),
   canaryDeployment: z.nullable(z.lazy(() => CanaryDeployment$outboundSchema)),
   queuedDeploymentId: z.nullable(z.string()),

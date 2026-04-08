@@ -5,7 +5,7 @@ A list of "entities" within the event `text`. Useful for enhancing the displayed
 ## Example Usage
 
 ```typescript
-import { Entities } from "@vercel/sdk/models/twohundredandtwentyfive.js";
+import { Entities } from "@vercel/sdk/models/twohundredandtwentysix.js";
 
 let value: Entities = {
   type: "author",

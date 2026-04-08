@@ -53,6 +53,19 @@ export type ApproveRollingReleaseStageState = ClosedEnum<
 >;
 
 /**
+ * When set to `PAUSED`, the rollout is frozen at the current percentage until continued.
+ */
+export const ApproveRollingReleaseStageSubstate = {
+  Paused: "PAUSED",
+} as const;
+/**
+ * When set to `PAUSED`, the rollout is frozen at the current percentage until continued.
+ */
+export type ApproveRollingReleaseStageSubstate = ClosedEnum<
+  typeof ApproveRollingReleaseStageSubstate
+>;
+
+/**
  * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
  */
 export const ApproveRollingReleaseStageReadyState = {
@@ -339,6 +352,10 @@ export type ApproveRollingReleaseStageRollingRelease = {
    */
   state: ApproveRollingReleaseStageState;
   /**
+   * When set to `PAUSED`, the rollout is frozen at the current percentage until continued.
+   */
+  substate: ApproveRollingReleaseStageSubstate | null;
+  /**
    * The current deployment receiving production traffic
    */
   currentDeployment: ApproveRollingReleaseStageCurrentDeployment | null;
@@ -501,6 +518,15 @@ export const ApproveRollingReleaseStageState$inboundSchema: z.ZodNativeEnum<
 export const ApproveRollingReleaseStageState$outboundSchema: z.ZodNativeEnum<
   typeof ApproveRollingReleaseStageState
 > = ApproveRollingReleaseStageState$inboundSchema;
+
+/** @internal */
+export const ApproveRollingReleaseStageSubstate$inboundSchema: z.ZodNativeEnum<
+  typeof ApproveRollingReleaseStageSubstate
+> = z.nativeEnum(ApproveRollingReleaseStageSubstate);
+/** @internal */
+export const ApproveRollingReleaseStageSubstate$outboundSchema: z.ZodNativeEnum<
+  typeof ApproveRollingReleaseStageSubstate
+> = ApproveRollingReleaseStageSubstate$inboundSchema;
 
 /** @internal */
 export const ApproveRollingReleaseStageReadyState$inboundSchema:
@@ -893,6 +919,7 @@ export const ApproveRollingReleaseStageRollingRelease$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   state: ApproveRollingReleaseStageState$inboundSchema,
+  substate: types.nullable(ApproveRollingReleaseStageSubstate$inboundSchema),
   currentDeployment: types.nullable(
     z.lazy(() => ApproveRollingReleaseStageCurrentDeployment$inboundSchema),
   ),
@@ -914,6 +941,7 @@ export const ApproveRollingReleaseStageRollingRelease$inboundSchema: z.ZodType<
 /** @internal */
 export type ApproveRollingReleaseStageRollingRelease$Outbound = {
   state: string;
+  substate: string | null;
   currentDeployment:
     | ApproveRollingReleaseStageCurrentDeployment$Outbound
     | null;
@@ -934,6 +962,7 @@ export const ApproveRollingReleaseStageRollingRelease$outboundSchema: z.ZodType<
   ApproveRollingReleaseStageRollingRelease
 > = z.object({
   state: ApproveRollingReleaseStageState$outboundSchema,
+  substate: z.nullable(ApproveRollingReleaseStageSubstate$outboundSchema),
   currentDeployment: z.nullable(
     z.lazy(() => ApproveRollingReleaseStageCurrentDeployment$outboundSchema),
   ),

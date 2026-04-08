@@ -10,6 +10,7 @@ import { GetRollingReleaseResponseBody } from "@vercel/sdk/models/getrollingrele
 let value: GetRollingReleaseResponseBody = {
   rollingRelease: {
     state: "ACTIVE",
+    substate: "PAUSED",
     currentDeployment: {
       name: "my-shop@main",
       createdAt: 1716206500000,

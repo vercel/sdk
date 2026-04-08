@@ -291,6 +291,7 @@ const (
 	NameProjectGitRepositoryDispatchEventsToggled       Name = "project-git-repository-dispatch-events-toggled"
 	NameProjectGitCreateDeploymentsToggled              Name = "project-git-create-deployments-toggled"
 	NameProjectGitRequireVerifiedCommitsToggled         Name = "project-git-require-verified-commits-toggled"
+	NameProjectGitCommitStatusToggled                   Name = "project-git-commit-status-toggled"
 	NameProjectGitLfsToggled                            Name = "project-git-lfs-toggled"
 	NameProjectConsolidatedGitCommitStatusUpdated       Name = "project-consolidated-git-commit-status-updated"
 	NameProjectIgnoredBuildStepUpdated                  Name = "project-ignored-build-step-updated"
@@ -322,6 +323,8 @@ const (
 	NameProjectRollingReleaseAborted                    Name = "project-rolling-release-aborted"
 	NameProjectRollingReleaseApproved                   Name = "project-rolling-release-approved"
 	NameProjectRollingReleaseTimer                      Name = "project-rolling-release-timer"
+	NameProjectRollingReleasePaused                     Name = "project-rolling-release-paused"
+	NameProjectRollingReleaseContinued                  Name = "project-rolling-release-continued"
 	NameProjectRoutesVersionPromoted                    Name = "project-routes-version-promoted"
 	NameProjectRoutesVersionRestored                    Name = "project-routes-version-restored"
 	NameProjectOidcIssuerModeUpdated                    Name = "project-oidc-issuer-mode-updated"
@@ -975,6 +978,8 @@ func (e *Name) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "project-git-require-verified-commits-toggled":
 		fallthrough
+	case "project-git-commit-status-toggled":
+		fallthrough
 	case "project-git-lfs-toggled":
 		fallthrough
 	case "project-consolidated-git-commit-status-updated":
@@ -1036,6 +1041,10 @@ func (e *Name) UnmarshalJSON(data []byte) error {
 	case "project-rolling-release-approved":
 		fallthrough
 	case "project-rolling-release-timer":
+		fallthrough
+	case "project-rolling-release-paused":
+		fallthrough
+	case "project-rolling-release-continued":
 		fallthrough
 	case "project-routes-version-promoted":
 		fallthrough

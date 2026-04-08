@@ -931,6 +931,8 @@ type GetProjectsProjectGitProviderOptions1 struct {
 	DisableRepositoryDispatchEvents *bool `json:"disableRepositoryDispatchEvents,omitempty"`
 	// Whether the project requires commits to be signed before deployments will be created.
 	RequireVerifiedCommits *bool `json:"requireVerifiedCommits,omitempty"`
+	// Whether Vercel should post commit statuses for this project. When omitted, commit statuses remain enabled.
+	GitCommitStatus *bool `json:"gitCommitStatus,omitempty"`
 	// Configuration for consolidated git commit status reporting. When enabled, Vercel will post a single consolidated commit status instead of individual statuses for each deployment.
 	ConsolidatedGitCommitStatus *GetProjectsProjectConsolidatedGitCommitStatus1 `json:"consolidatedGitCommitStatus,omitempty"`
 }
@@ -965,6 +967,13 @@ func (o *GetProjectsProjectGitProviderOptions1) GetRequireVerifiedCommits() *boo
 		return nil
 	}
 	return o.RequireVerifiedCommits
+}
+
+func (o *GetProjectsProjectGitProviderOptions1) GetGitCommitStatus() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.GitCommitStatus
 }
 
 func (o *GetProjectsProjectGitProviderOptions1) GetConsolidatedGitCommitStatus() *GetProjectsProjectConsolidatedGitCommitStatus1 {

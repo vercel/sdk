@@ -10,6 +10,7 @@ import { CompleteRollingReleaseResponseBody } from "@vercel/sdk/models/completer
 let value: CompleteRollingReleaseResponseBody = {
   rollingRelease: {
     state: "ACTIVE",
+    substate: "PAUSED",
     currentDeployment: {
       name: "my-shop@main",
       createdAt: 1716206500000,

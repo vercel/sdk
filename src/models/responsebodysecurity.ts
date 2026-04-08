@@ -1291,6 +1291,10 @@ export type ResponseBodyGitProviderOptions = {
    */
   requireVerifiedCommits?: boolean | undefined;
   /**
+   * Whether Vercel should post commit statuses for this project. When omitted, commit statuses remain enabled.
+   */
+  gitCommitStatus?: boolean | undefined;
+  /**
    * Configuration for consolidated git commit status reporting. When enabled, Vercel will post a single consolidated commit status instead of individual statuses for each deployment.
    */
   consolidatedGitCommitStatus?:
@@ -7316,6 +7320,7 @@ export const ResponseBodyGitProviderOptions$inboundSchema: z.ZodType<
   createDeployments: ResponseBodyCreateDeployments$inboundSchema,
   disableRepositoryDispatchEvents: types.optional(types.boolean()),
   requireVerifiedCommits: types.optional(types.boolean()),
+  gitCommitStatus: types.optional(types.boolean()),
   consolidatedGitCommitStatus: types.optional(
     z.lazy(() => ResponseBodyConsolidatedGitCommitStatus$inboundSchema),
   ),
@@ -7325,6 +7330,7 @@ export type ResponseBodyGitProviderOptions$Outbound = {
   createDeployments: string;
   disableRepositoryDispatchEvents?: boolean | undefined;
   requireVerifiedCommits?: boolean | undefined;
+  gitCommitStatus?: boolean | undefined;
   consolidatedGitCommitStatus?:
     | ResponseBodyConsolidatedGitCommitStatus$Outbound
     | undefined;
@@ -7339,6 +7345,7 @@ export const ResponseBodyGitProviderOptions$outboundSchema: z.ZodType<
   createDeployments: ResponseBodyCreateDeployments$outboundSchema,
   disableRepositoryDispatchEvents: z.boolean().optional(),
   requireVerifiedCommits: z.boolean().optional(),
+  gitCommitStatus: z.boolean().optional(),
   consolidatedGitCommitStatus: z.lazy(() =>
     ResponseBodyConsolidatedGitCommitStatus$outboundSchema
   ).optional(),

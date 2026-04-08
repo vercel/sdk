@@ -5,21 +5,23 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndSeventyNine } from "@vercel/sdk/models/usereventpayload162next.js";
+import { OneHundredAndSeventyNine } from "@vercel/sdk/models/usereventpayload162previous.js";
 
 let value: OneHundredAndSeventyNine = {
-  projectId: "<id>",
-  projectName: "<value>",
+  oldProjectId: "<id>",
+  oldProjectName: "<value>",
+  newProjectId: "<id>",
+  newProjectName: "<value>",
   domain: "strong-tentacle.name",
 };
 ```
 
 ## Fields
 
-| Field                | Type                 | Required             | Description          |
-| -------------------- | -------------------- | -------------------- | -------------------- |
-| `projectId`          | *string*             | :heavy_check_mark:   | N/A                  |
-| `projectName`        | *string*             | :heavy_check_mark:   | N/A                  |
-| `domain`             | *string*             | :heavy_check_mark:   | N/A                  |
-| `redirect`           | *string*             | :heavy_minus_sign:   | N/A                  |
-| `redirectStatusCode` | *number*             | :heavy_minus_sign:   | N/A                  |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `oldProjectId`     | *string*           | :heavy_check_mark: | N/A                |
+| `oldProjectName`   | *string*           | :heavy_check_mark: | N/A                |
+| `newProjectId`     | *string*           | :heavy_check_mark: | N/A                |
+| `newProjectName`   | *string*           | :heavy_check_mark: | N/A                |
+| `domain`           | *string*           | :heavy_check_mark: | N/A                |

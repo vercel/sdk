@@ -89,6 +89,30 @@ func (e *CompleteRollingReleaseState) UnmarshalJSON(data []byte) error {
 	}
 }
 
+// CompleteRollingReleaseSubstate - When set to `PAUSED`, the rollout is frozen at the current percentage until continued.
+type CompleteRollingReleaseSubstate string
+
+const (
+	CompleteRollingReleaseSubstatePaused CompleteRollingReleaseSubstate = "PAUSED"
+)
+
+func (e CompleteRollingReleaseSubstate) ToPointer() *CompleteRollingReleaseSubstate {
+	return &e
+}
+func (e *CompleteRollingReleaseSubstate) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "PAUSED":
+		*e = CompleteRollingReleaseSubstate(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CompleteRollingReleaseSubstate: %v", v)
+	}
+}
+
 // CompleteRollingReleaseCurrentDeploymentReadyState - The state of the deployment depending on the process of deploying, or if it is ready or in an error state
 type CompleteRollingReleaseCurrentDeploymentReadyState string
 
@@ -666,6 +690,8 @@ func (o *CompleteRollingReleaseNextStage) GetLinearShift() *bool {
 type CompleteRollingReleaseRollingRelease struct {
 	// The current state of the rolling release
 	State CompleteRollingReleaseState `json:"state"`
+	// When set to `PAUSED`, the rollout is frozen at the current percentage until continued.
+	Substate *CompleteRollingReleaseSubstate `json:"substate"`
 	// The current deployment receiving production traffic
 	CurrentDeployment *CompleteRollingReleaseCurrentDeployment `json:"currentDeployment"`
 	// The canary deployment being rolled out
@@ -691,6 +717,13 @@ func (o *CompleteRollingReleaseRollingRelease) GetState() CompleteRollingRelease
 		return CompleteRollingReleaseState("")
 	}
 	return o.State
+}
+
+func (o *CompleteRollingReleaseRollingRelease) GetSubstate() *CompleteRollingReleaseSubstate {
+	if o == nil {
+		return nil
+	}
+	return o.Substate
 }
 
 func (o *CompleteRollingReleaseRollingRelease) GetCurrentDeployment() *CompleteRollingReleaseCurrentDeployment {

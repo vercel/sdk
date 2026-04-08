@@ -78,19 +78,19 @@ func (o *GetRollingReleaseRequest) GetSlug() *string {
 	return o.Slug
 }
 
-// GetRollingReleaseStateResponseBody - The current state of the rolling release
-type GetRollingReleaseStateResponseBody string
+// GetRollingReleaseStatePaused - The current state of the rolling release
+type GetRollingReleaseStatePaused string
 
 const (
-	GetRollingReleaseStateResponseBodyActive   GetRollingReleaseStateResponseBody = "ACTIVE"
-	GetRollingReleaseStateResponseBodyComplete GetRollingReleaseStateResponseBody = "COMPLETE"
-	GetRollingReleaseStateResponseBodyAborted  GetRollingReleaseStateResponseBody = "ABORTED"
+	GetRollingReleaseStatePausedActive   GetRollingReleaseStatePaused = "ACTIVE"
+	GetRollingReleaseStatePausedComplete GetRollingReleaseStatePaused = "COMPLETE"
+	GetRollingReleaseStatePausedAborted  GetRollingReleaseStatePaused = "ABORTED"
 )
 
-func (e GetRollingReleaseStateResponseBody) ToPointer() *GetRollingReleaseStateResponseBody {
+func (e GetRollingReleaseStatePaused) ToPointer() *GetRollingReleaseStatePaused {
 	return &e
 }
-func (e *GetRollingReleaseStateResponseBody) UnmarshalJSON(data []byte) error {
+func (e *GetRollingReleaseStatePaused) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -101,10 +101,34 @@ func (e *GetRollingReleaseStateResponseBody) UnmarshalJSON(data []byte) error {
 	case "COMPLETE":
 		fallthrough
 	case "ABORTED":
-		*e = GetRollingReleaseStateResponseBody(v)
+		*e = GetRollingReleaseStatePaused(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetRollingReleaseStateResponseBody: %v", v)
+		return fmt.Errorf("invalid value for GetRollingReleaseStatePaused: %v", v)
+	}
+}
+
+// GetRollingReleaseSubstate - When set to `PAUSED`, the rollout is frozen at the current percentage until continued.
+type GetRollingReleaseSubstate string
+
+const (
+	GetRollingReleaseSubstatePaused GetRollingReleaseSubstate = "PAUSED"
+)
+
+func (e GetRollingReleaseSubstate) ToPointer() *GetRollingReleaseSubstate {
+	return &e
+}
+func (e *GetRollingReleaseSubstate) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "PAUSED":
+		*e = GetRollingReleaseSubstate(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetRollingReleaseSubstate: %v", v)
 	}
 }
 
@@ -684,7 +708,9 @@ func (o *GetRollingReleaseNextStage) GetLinearShift() *bool {
 // GetRollingReleaseRollingRelease - Rolling release information including configuration and document details, or null if no rolling release exists
 type GetRollingReleaseRollingRelease struct {
 	// The current state of the rolling release
-	State GetRollingReleaseStateResponseBody `json:"state"`
+	State GetRollingReleaseStatePaused `json:"state"`
+	// When set to `PAUSED`, the rollout is frozen at the current percentage until continued.
+	Substate *GetRollingReleaseSubstate `json:"substate"`
 	// The current deployment receiving production traffic
 	CurrentDeployment *GetRollingReleaseCurrentDeployment `json:"currentDeployment"`
 	// The canary deployment being rolled out
@@ -705,11 +731,18 @@ type GetRollingReleaseRollingRelease struct {
 	UpdatedAt float64 `json:"updatedAt"`
 }
 
-func (o *GetRollingReleaseRollingRelease) GetState() GetRollingReleaseStateResponseBody {
+func (o *GetRollingReleaseRollingRelease) GetState() GetRollingReleaseStatePaused {
 	if o == nil {
-		return GetRollingReleaseStateResponseBody("")
+		return GetRollingReleaseStatePaused("")
 	}
 	return o.State
+}
+
+func (o *GetRollingReleaseRollingRelease) GetSubstate() *GetRollingReleaseSubstate {
+	if o == nil {
+		return nil
+	}
+	return o.Substate
 }
 
 func (o *GetRollingReleaseRollingRelease) GetCurrentDeployment() *GetRollingReleaseCurrentDeployment {

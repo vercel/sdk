@@ -5,7 +5,7 @@ Information about the head commit/branch for a GitHub repository
 ## Example Usage
 
 ```typescript
-import { UserEventJobHeadInfo } from "@vercel/sdk/models/usereventpayloadproject.js";
+import { UserEventJobHeadInfo } from "@vercel/sdk/models/fortythree.js";
 
 let value: UserEventJobHeadInfo = {
   org: "<value>",

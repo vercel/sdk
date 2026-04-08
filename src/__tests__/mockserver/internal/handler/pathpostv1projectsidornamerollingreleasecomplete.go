@@ -54,7 +54,8 @@ func testCompleteRollingReleaseCompleteRollingRelease0(w http.ResponseWriter, re
 	}
 	var respBody *operations.CompleteRollingReleaseResponseBody = &operations.CompleteRollingReleaseResponseBody{
 		RollingRelease: &operations.CompleteRollingReleaseRollingRelease{
-			State: operations.CompleteRollingReleaseStateActive,
+			State:    operations.CompleteRollingReleaseStateActive,
+			Substate: operations.CompleteRollingReleaseSubstatePaused.ToPointer(),
 			CurrentDeployment: &operations.CompleteRollingReleaseCurrentDeployment{
 				Name:         "my-shop@main",
 				CreatedAt:    1716206500000,

@@ -1229,6 +1229,8 @@ type UpdateFlagRequestBody struct {
 	// A description of the flag
 	Description *string                 `json:"description,omitempty"`
 	State       *UpdateFlagStateRequest `json:"state,omitempty"`
+	// Whether this flag is marked as permanent, indicating it should not be removed
+	Permanent *bool `json:"permanent,omitempty"`
 }
 
 func (o *UpdateFlagRequestBody) GetCreatedBy() *string {
@@ -1278,6 +1280,13 @@ func (o *UpdateFlagRequestBody) GetState() *UpdateFlagStateRequest {
 		return nil
 	}
 	return o.State
+}
+
+func (o *UpdateFlagRequestBody) GetPermanent() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Permanent
 }
 
 type UpdateFlagRequest struct {
@@ -3475,6 +3484,7 @@ func (e *UpdateFlagTypeName) UnmarshalJSON(data []byte) error {
 
 type UpdateFlagFlag struct {
 	Description  *string                                       `json:"description,omitempty"`
+	Permanent    *bool                                         `json:"permanent,omitempty"`
 	Experiment   *UpdateFlagExperiment                         `json:"experiment,omitempty"`
 	Variants     []UpdateFlagResponseBodyVariant               `json:"variants"`
 	ID           string                                        `json:"id"`
@@ -3508,6 +3518,13 @@ func (o *UpdateFlagFlag) GetDescription() *string {
 		return nil
 	}
 	return o.Description
+}
+
+func (o *UpdateFlagFlag) GetPermanent() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Permanent
 }
 
 func (o *UpdateFlagFlag) GetExperiment() *UpdateFlagExperiment {

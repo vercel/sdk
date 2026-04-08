@@ -1307,6 +1307,8 @@ export type ResponseBodyPermissions = {
   concurrentBuilds?: Array<ACLAction> | undefined;
   connect?: Array<ACLAction> | undefined;
   connectConfiguration?: Array<ACLAction> | undefined;
+  connexClient?: Array<ACLAction> | undefined;
+  connexToken?: Array<ACLAction> | undefined;
   buildMachineDefault?: Array<ACLAction> | undefined;
   dataCacheBillingSettings?: Array<ACLAction> | undefined;
   defaultDeploymentProtection?: Array<ACLAction> | undefined;
@@ -1663,6 +1665,10 @@ export type GetProjectsResponseBodyProjectsGitProviderOptions = {
    * Whether the project requires commits to be signed before deployments will be created.
    */
   requireVerifiedCommits?: boolean | undefined;
+  /**
+   * Whether Vercel should post commit statuses for this project. When omitted, commit statuses remain enabled.
+   */
+  gitCommitStatus?: boolean | undefined;
   /**
    * Configuration for consolidated git commit status reporting. When enabled, Vercel will post a single consolidated commit status instead of individual statuses for each deployment.
    */
@@ -6829,6 +6835,8 @@ export const ResponseBodyPermissions$inboundSchema: z.ZodType<
   concurrentBuilds: types.optional(z.array(ACLAction$inboundSchema)),
   connect: types.optional(z.array(ACLAction$inboundSchema)),
   connectConfiguration: types.optional(z.array(ACLAction$inboundSchema)),
+  connexClient: types.optional(z.array(ACLAction$inboundSchema)),
+  connexToken: types.optional(z.array(ACLAction$inboundSchema)),
   buildMachineDefault: types.optional(z.array(ACLAction$inboundSchema)),
   dataCacheBillingSettings: types.optional(z.array(ACLAction$inboundSchema)),
   defaultDeploymentProtection: types.optional(z.array(ACLAction$inboundSchema)),
@@ -7114,6 +7122,8 @@ export type ResponseBodyPermissions$Outbound = {
   concurrentBuilds?: Array<string> | undefined;
   connect?: Array<string> | undefined;
   connectConfiguration?: Array<string> | undefined;
+  connexClient?: Array<string> | undefined;
+  connexToken?: Array<string> | undefined;
   buildMachineDefault?: Array<string> | undefined;
   dataCacheBillingSettings?: Array<string> | undefined;
   defaultDeploymentProtection?: Array<string> | undefined;
@@ -7358,6 +7368,8 @@ export const ResponseBodyPermissions$outboundSchema: z.ZodType<
   concurrentBuilds: z.array(ACLAction$outboundSchema).optional(),
   connect: z.array(ACLAction$outboundSchema).optional(),
   connectConfiguration: z.array(ACLAction$outboundSchema).optional(),
+  connexClient: z.array(ACLAction$outboundSchema).optional(),
+  connexToken: z.array(ACLAction$outboundSchema).optional(),
   buildMachineDefault: z.array(ACLAction$outboundSchema).optional(),
   dataCacheBillingSettings: z.array(ACLAction$outboundSchema).optional(),
   defaultDeploymentProtection: z.array(ACLAction$outboundSchema).optional(),
@@ -8173,6 +8185,7 @@ export const GetProjectsResponseBodyProjectsGitProviderOptions$inboundSchema:
       GetProjectsResponseBodyProjectsCreateDeployments$inboundSchema,
     disableRepositoryDispatchEvents: types.optional(types.boolean()),
     requireVerifiedCommits: types.optional(types.boolean()),
+    gitCommitStatus: types.optional(types.boolean()),
     consolidatedGitCommitStatus: types.optional(
       z.lazy(() =>
         GetProjectsResponseBodyProjectsConsolidatedGitCommitStatus$inboundSchema
@@ -8184,6 +8197,7 @@ export type GetProjectsResponseBodyProjectsGitProviderOptions$Outbound = {
   createDeployments: string;
   disableRepositoryDispatchEvents?: boolean | undefined;
   requireVerifiedCommits?: boolean | undefined;
+  gitCommitStatus?: boolean | undefined;
   consolidatedGitCommitStatus?:
     | GetProjectsResponseBodyProjectsConsolidatedGitCommitStatus$Outbound
     | undefined;
@@ -8200,6 +8214,7 @@ export const GetProjectsResponseBodyProjectsGitProviderOptions$outboundSchema:
       GetProjectsResponseBodyProjectsCreateDeployments$outboundSchema,
     disableRepositoryDispatchEvents: z.boolean().optional(),
     requireVerifiedCommits: z.boolean().optional(),
+    gitCommitStatus: z.boolean().optional(),
     consolidatedGitCommitStatus: z.lazy(() =>
       GetProjectsResponseBodyProjectsConsolidatedGitCommitStatus$outboundSchema
     ).optional(),

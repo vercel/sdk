@@ -5,27 +5,26 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndTwenty } from "@vercel/sdk/models/usereventpayload162next.js";
+import { TwoHundredAndTwenty } from "@vercel/sdk/models/usereventpayload162previous.js";
 
-let value: TwoHundredAndTwenty = {};
+let value: TwoHundredAndTwenty = {
+  scalingRules: {
+    "key": {
+      min: 7732.79,
+      max: 2712.29,
+    },
+  },
+  min: 9775.08,
+  max: 9525.16,
+  url: "https://majestic-wombat.name",
+};
 ```
 
 ## Fields
 
-| Field                                                        | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `userAgent`                                                  | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          |
-| `geolocation`                                                | [models.PayloadGeolocation](../models/payloadgeolocation.md) | :heavy_minus_sign:                                           | N/A                                                          |
-| `env`                                                        | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          |
-| `os`                                                         | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          |
-| `username`                                                   | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          |
-| `ssoType`                                                    | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          |
-| `factors`                                                    | *models.PayloadFactors*[]                                    | :heavy_minus_sign:                                           | N/A                                                          |
-| `viaOTP`                                                     | *boolean*                                                    | :heavy_minus_sign:                                           | N/A                                                          |
-| `viaGithub`                                                  | *boolean*                                                    | :heavy_minus_sign:                                           | N/A                                                          |
-| `viaGitlab`                                                  | *boolean*                                                    | :heavy_minus_sign:                                           | N/A                                                          |
-| `viaBitbucket`                                               | *boolean*                                                    | :heavy_minus_sign:                                           | N/A                                                          |
-| `viaGoogle`                                                  | *boolean*                                                    | :heavy_minus_sign:                                           | N/A                                                          |
-| `viaApple`                                                   | *boolean*                                                    | :heavy_minus_sign:                                           | N/A                                                          |
-| `viaSamlSso`                                                 | *boolean*                                                    | :heavy_minus_sign:                                           | N/A                                                          |
-| `viaPasskey`                                                 | *boolean*                                                    | :heavy_minus_sign:                                           | N/A                                                          |
+| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `scalingRules`                                                   | Record<string, [models.ScalingRules](../models/scalingrules.md)> | :heavy_check_mark:                                               | N/A                                                              |
+| `min`                                                            | *number*                                                         | :heavy_check_mark:                                               | N/A                                                              |
+| `max`                                                            | *number*                                                         | :heavy_check_mark:                                               | N/A                                                              |
+| `url`                                                            | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |

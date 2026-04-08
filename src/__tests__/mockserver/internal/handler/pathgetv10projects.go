@@ -47,8 +47,59 @@ func testGetProjectsGetProjects0(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	var respBody optionalnullable.OptionalNullable[operations.GetProjectsResponseBody] = optionalnullable.From(types.Pointer(operations.CreateGetProjectsResponseBodyArrayOfGetProjectsResponseBody1(
-		[]operations.GetProjectsResponseBody1{},
+	var respBody optionalnullable.OptionalNullable[operations.GetProjectsResponseBody] = optionalnullable.From(types.Pointer(operations.CreateGetProjectsResponseBodyGetProjectsResponseBody3(
+		operations.GetProjectsResponseBody3{
+			Projects: []operations.GetProjectsProject2{
+				operations.GetProjectsProject2{
+					AccountID: "<id>",
+					Crons: &operations.GetProjectsCrons{
+						EnabledAt:    5448.83,
+						DisabledAt:   types.Float64(6458.94),
+						UpdatedAt:    4375.87,
+						DeploymentID: types.String("<id>"),
+						Definitions: []operations.GetProjectsDefinition{
+							operations.GetProjectsDefinition{
+								Host:     "vercel.com",
+								Path:     "/api/crons/sync-something?hello=world",
+								Schedule: "0 0 * * *",
+							},
+						},
+					},
+					DeploymentExpiration: operations.GetProjectsProjectDeploymentExpiration2{},
+					DirectoryListing:     true,
+					ID:                   "<id>",
+					Name:                 "<value>",
+					NodeVersion:          operations.GetProjectsProjectNodeVersion2TenDotX,
+					ResourceConfig: operations.GetProjectsProjectResourceConfig2{
+						FunctionDefaultRegions: []string{
+							"<value 1>",
+							"<value 2>",
+						},
+					},
+					RollingRelease: optionalnullable.From(&operations.GetProjectsProjectRollingRelease2{
+						Target: "production",
+						Stages: optionalnullable.From(types.Pointer([]operations.GetProjectsProjectStage2{
+							operations.GetProjectsProjectStage2{
+								TargetPercentage: 25,
+								RequireApproval:  types.Bool(false),
+								Duration:         types.Float64(600),
+								LinearShift:      types.Bool(false),
+							},
+						})),
+						CanaryResponseHeader: types.Bool(false),
+					}),
+					DefaultResourceConfig: operations.GetProjectsDefaultResourceConfig{
+						FunctionDefaultRegions: []string{},
+					},
+				},
+			},
+			Pagination: operations.CreatePaginationUnion2GetProjectsPagination2(
+				operations.GetProjectsPagination2{
+					Count: 20,
+					Next:  types.String("JBSWY3DPEHPK3PXP"),
+				},
+			),
+		},
 	)))
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

@@ -263,6 +263,10 @@ export type CreateFlagRequestBody = {
    */
   description?: string | undefined;
   state?: CreateFlagState | undefined;
+  /**
+   * Whether this flag is marked as permanent, indicating it should not be removed
+   */
+  permanent?: boolean | undefined;
 };
 
 export type CreateFlagRequest = {
@@ -620,6 +624,7 @@ export type CreateFlagTypeName = ClosedEnum<typeof CreateFlagTypeName>;
 
 export type CreateFlagResponseBody = {
   description?: string | undefined;
+  permanent?: boolean | undefined;
   experiment?: CreateFlagExperiment | undefined;
   variants: Array<CreateFlagFeatureFlagsVariants>;
   id: string;
@@ -1834,6 +1839,7 @@ export const CreateFlagRequestBody$inboundSchema: z.ZodType<
   seed: types.optional(types.number()),
   description: types.optional(types.string()),
   state: types.optional(CreateFlagState$inboundSchema),
+  permanent: types.optional(types.boolean()),
 });
 /** @internal */
 export type CreateFlagRequestBody$Outbound = {
@@ -1844,6 +1850,7 @@ export type CreateFlagRequestBody$Outbound = {
   seed?: number | undefined;
   description?: string | undefined;
   state?: string | undefined;
+  permanent?: boolean | undefined;
 };
 
 /** @internal */
@@ -1859,6 +1866,7 @@ export const CreateFlagRequestBody$outboundSchema: z.ZodType<
   seed: z.number().optional(),
   description: z.string().optional(),
   state: CreateFlagState$outboundSchema.optional(),
+  permanent: z.boolean().optional(),
 });
 
 export function createFlagRequestBodyToJSON(
@@ -3511,6 +3519,7 @@ export const CreateFlagResponseBody$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   description: types.optional(types.string()),
+  permanent: types.optional(types.boolean()),
   experiment: types.optional(z.lazy(() => CreateFlagExperiment$inboundSchema)),
   variants: z.array(z.lazy(() => CreateFlagFeatureFlagsVariants$inboundSchema)),
   id: types.string(),
@@ -3532,6 +3541,7 @@ export const CreateFlagResponseBody$inboundSchema: z.ZodType<
 /** @internal */
 export type CreateFlagResponseBody$Outbound = {
   description?: string | undefined;
+  permanent?: boolean | undefined;
   experiment?: CreateFlagExperiment$Outbound | undefined;
   variants: Array<CreateFlagFeatureFlagsVariants$Outbound>;
   id: string;
@@ -3556,6 +3566,7 @@ export const CreateFlagResponseBody$outboundSchema: z.ZodType<
   CreateFlagResponseBody
 > = z.object({
   description: z.string().optional(),
+  permanent: z.boolean().optional(),
   experiment: z.lazy(() => CreateFlagExperiment$outboundSchema).optional(),
   variants: z.array(
     z.lazy(() => CreateFlagFeatureFlagsVariants$outboundSchema),

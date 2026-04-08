@@ -10,6 +10,7 @@ import { ApproveRollingReleaseStageResponseBody } from "@vercel/sdk/models/appro
 let value: ApproveRollingReleaseStageResponseBody = {
   rollingRelease: {
     state: "ACTIVE",
+    substate: "PAUSED",
     currentDeployment: {
       name: "my-shop@main",
       createdAt: 1716206500000,

@@ -5,13 +5,15 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndSeventyFive } from "@vercel/sdk/models/usereventpayload162next.js";
+import { OneHundredAndSeventyFive } from "@vercel/sdk/models/usereventpayload162previous.js";
 
 let value: OneHundredAndSeventyFive = {
   projectId: "<id>",
   projectName: "<value>",
-  previous: {},
-  next: {},
+  consolidatedGitCommitStatus: {
+    enabled: false,
+    propagateFailures: true,
+  },
 };
 ```
 
@@ -21,5 +23,4 @@ let value: OneHundredAndSeventyFive = {
 | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
 | `projectId`                                                                    | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
 | `projectName`                                                                  | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
-| `previous`                                                                     | [models.UserEventPayload175Previous](../models/usereventpayload175previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
-| `next`                                                                         | [models.UserEventPayload175Next](../models/usereventpayload175next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
+| `consolidatedGitCommitStatus`                                                  | [models.ConsolidatedGitCommitStatus](../models/consolidatedgitcommitstatus.md) | :heavy_check_mark:                                                             | N/A                                                                            |

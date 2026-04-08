@@ -6446,6 +6446,8 @@ type GetProjectsPermissions struct {
 	ConcurrentBuilds                         []components.ACLAction `json:"concurrentBuilds,omitempty"`
 	Connect                                  []components.ACLAction `json:"connect,omitempty"`
 	ConnectConfiguration                     []components.ACLAction `json:"connectConfiguration,omitempty"`
+	ConnexClient                             []components.ACLAction `json:"connexClient,omitempty"`
+	ConnexToken                              []components.ACLAction `json:"connexToken,omitempty"`
 	BuildMachineDefault                      []components.ACLAction `json:"buildMachineDefault,omitempty"`
 	DataCacheBillingSettings                 []components.ACLAction `json:"dataCacheBillingSettings,omitempty"`
 	DefaultDeploymentProtection              []components.ACLAction `json:"defaultDeploymentProtection,omitempty"`
@@ -6939,6 +6941,20 @@ func (o *GetProjectsPermissions) GetConnectConfiguration() []components.ACLActio
 		return nil
 	}
 	return o.ConnectConfiguration
+}
+
+func (o *GetProjectsPermissions) GetConnexClient() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ConnexClient
+}
+
+func (o *GetProjectsPermissions) GetConnexToken() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ConnexToken
 }
 
 func (o *GetProjectsPermissions) GetBuildMachineDefault() []components.ACLAction {
@@ -9033,6 +9049,8 @@ type GetProjectsProjectGitProviderOptions2 struct {
 	DisableRepositoryDispatchEvents *bool `json:"disableRepositoryDispatchEvents,omitempty"`
 	// Whether the project requires commits to be signed before deployments will be created.
 	RequireVerifiedCommits *bool `json:"requireVerifiedCommits,omitempty"`
+	// Whether Vercel should post commit statuses for this project. When omitted, commit statuses remain enabled.
+	GitCommitStatus *bool `json:"gitCommitStatus,omitempty"`
 	// Configuration for consolidated git commit status reporting. When enabled, Vercel will post a single consolidated commit status instead of individual statuses for each deployment.
 	ConsolidatedGitCommitStatus *GetProjectsProjectConsolidatedGitCommitStatus2 `json:"consolidatedGitCommitStatus,omitempty"`
 }
@@ -9067,6 +9085,13 @@ func (o *GetProjectsProjectGitProviderOptions2) GetRequireVerifiedCommits() *boo
 		return nil
 	}
 	return o.RequireVerifiedCommits
+}
+
+func (o *GetProjectsProjectGitProviderOptions2) GetGitCommitStatus() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.GitCommitStatus
 }
 
 func (o *GetProjectsProjectGitProviderOptions2) GetConsolidatedGitCommitStatus() *GetProjectsProjectConsolidatedGitCommitStatus2 {

@@ -7403,6 +7403,8 @@ type UpdateProjectPermissions struct {
 	ConcurrentBuilds                         []components.ACLAction `json:"concurrentBuilds,omitempty"`
 	Connect                                  []components.ACLAction `json:"connect,omitempty"`
 	ConnectConfiguration                     []components.ACLAction `json:"connectConfiguration,omitempty"`
+	ConnexClient                             []components.ACLAction `json:"connexClient,omitempty"`
+	ConnexToken                              []components.ACLAction `json:"connexToken,omitempty"`
 	BuildMachineDefault                      []components.ACLAction `json:"buildMachineDefault,omitempty"`
 	DataCacheBillingSettings                 []components.ACLAction `json:"dataCacheBillingSettings,omitempty"`
 	DefaultDeploymentProtection              []components.ACLAction `json:"defaultDeploymentProtection,omitempty"`
@@ -7885,6 +7887,20 @@ func (o *UpdateProjectPermissions) GetConnectConfiguration() []components.ACLAct
 		return nil
 	}
 	return o.ConnectConfiguration
+}
+
+func (o *UpdateProjectPermissions) GetConnexClient() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ConnexClient
+}
+
+func (o *UpdateProjectPermissions) GetConnexToken() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ConnexToken
 }
 
 func (o *UpdateProjectPermissions) GetBuildMachineDefault() []components.ACLAction {

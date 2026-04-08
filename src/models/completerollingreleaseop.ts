@@ -49,6 +49,19 @@ export type CompleteRollingReleaseState = ClosedEnum<
 >;
 
 /**
+ * When set to `PAUSED`, the rollout is frozen at the current percentage until continued.
+ */
+export const CompleteRollingReleaseSubstate = {
+  Paused: "PAUSED",
+} as const;
+/**
+ * When set to `PAUSED`, the rollout is frozen at the current percentage until continued.
+ */
+export type CompleteRollingReleaseSubstate = ClosedEnum<
+  typeof CompleteRollingReleaseSubstate
+>;
+
+/**
  * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
  */
 export const CompleteRollingReleaseReadyState = {
@@ -335,6 +348,10 @@ export type CompleteRollingReleaseRollingRelease = {
    */
   state: CompleteRollingReleaseState;
   /**
+   * When set to `PAUSED`, the rollout is frozen at the current percentage until continued.
+   */
+  substate: CompleteRollingReleaseSubstate | null;
+  /**
    * The current deployment receiving production traffic
    */
   currentDeployment: CompleteRollingReleaseCurrentDeployment | null;
@@ -492,6 +509,15 @@ export const CompleteRollingReleaseState$inboundSchema: z.ZodNativeEnum<
 export const CompleteRollingReleaseState$outboundSchema: z.ZodNativeEnum<
   typeof CompleteRollingReleaseState
 > = CompleteRollingReleaseState$inboundSchema;
+
+/** @internal */
+export const CompleteRollingReleaseSubstate$inboundSchema: z.ZodNativeEnum<
+  typeof CompleteRollingReleaseSubstate
+> = z.nativeEnum(CompleteRollingReleaseSubstate);
+/** @internal */
+export const CompleteRollingReleaseSubstate$outboundSchema: z.ZodNativeEnum<
+  typeof CompleteRollingReleaseSubstate
+> = CompleteRollingReleaseSubstate$inboundSchema;
 
 /** @internal */
 export const CompleteRollingReleaseReadyState$inboundSchema: z.ZodNativeEnum<
@@ -869,6 +895,7 @@ export const CompleteRollingReleaseRollingRelease$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   state: CompleteRollingReleaseState$inboundSchema,
+  substate: types.nullable(CompleteRollingReleaseSubstate$inboundSchema),
   currentDeployment: types.nullable(
     z.lazy(() => CompleteRollingReleaseCurrentDeployment$inboundSchema),
   ),
@@ -890,6 +917,7 @@ export const CompleteRollingReleaseRollingRelease$inboundSchema: z.ZodType<
 /** @internal */
 export type CompleteRollingReleaseRollingRelease$Outbound = {
   state: string;
+  substate: string | null;
   currentDeployment: CompleteRollingReleaseCurrentDeployment$Outbound | null;
   canaryDeployment: CompleteRollingReleaseCanaryDeployment$Outbound | null;
   queuedDeploymentId: string | null;
@@ -908,6 +936,7 @@ export const CompleteRollingReleaseRollingRelease$outboundSchema: z.ZodType<
   CompleteRollingReleaseRollingRelease
 > = z.object({
   state: CompleteRollingReleaseState$outboundSchema,
+  substate: z.nullable(CompleteRollingReleaseSubstate$outboundSchema),
   currentDeployment: z.nullable(
     z.lazy(() => CompleteRollingReleaseCurrentDeployment$outboundSchema),
   ),

@@ -98,6 +98,30 @@ func (e *ApproveRollingReleaseStageState) UnmarshalJSON(data []byte) error {
 	}
 }
 
+// ApproveRollingReleaseStageSubstate - When set to `PAUSED`, the rollout is frozen at the current percentage until continued.
+type ApproveRollingReleaseStageSubstate string
+
+const (
+	ApproveRollingReleaseStageSubstatePaused ApproveRollingReleaseStageSubstate = "PAUSED"
+)
+
+func (e ApproveRollingReleaseStageSubstate) ToPointer() *ApproveRollingReleaseStageSubstate {
+	return &e
+}
+func (e *ApproveRollingReleaseStageSubstate) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "PAUSED":
+		*e = ApproveRollingReleaseStageSubstate(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for ApproveRollingReleaseStageSubstate: %v", v)
+	}
+}
+
 // ApproveRollingReleaseStageCurrentDeploymentReadyState - The state of the deployment depending on the process of deploying, or if it is ready or in an error state
 type ApproveRollingReleaseStageCurrentDeploymentReadyState string
 
@@ -675,6 +699,8 @@ func (o *ApproveRollingReleaseStageNextStage) GetLinearShift() *bool {
 type ApproveRollingReleaseStageRollingRelease struct {
 	// The current state of the rolling release
 	State ApproveRollingReleaseStageState `json:"state"`
+	// When set to `PAUSED`, the rollout is frozen at the current percentage until continued.
+	Substate *ApproveRollingReleaseStageSubstate `json:"substate"`
 	// The current deployment receiving production traffic
 	CurrentDeployment *ApproveRollingReleaseStageCurrentDeployment `json:"currentDeployment"`
 	// The canary deployment being rolled out
@@ -700,6 +726,13 @@ func (o *ApproveRollingReleaseStageRollingRelease) GetState() ApproveRollingRele
 		return ApproveRollingReleaseStageState("")
 	}
 	return o.State
+}
+
+func (o *ApproveRollingReleaseStageRollingRelease) GetSubstate() *ApproveRollingReleaseStageSubstate {
+	if o == nil {
+		return nil
+	}
+	return o.Substate
 }
 
 func (o *ApproveRollingReleaseStageRollingRelease) GetCurrentDeployment() *ApproveRollingReleaseStageCurrentDeployment {

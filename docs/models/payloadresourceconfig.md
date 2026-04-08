@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PayloadResourceConfig } from "@vercel/sdk/models/payloadviewpreference.js";
+import { PayloadResourceConfig } from "@vercel/sdk/models/resourcelimits.js";
 
 let value: PayloadResourceConfig = {};
 ```

@@ -30,6 +30,6 @@ jobs:
       environment: |
         NODE_OPTIONS="--max-old-space-size=12288"
     secrets:
-      github_access_token: ${{ secrets.GITHUB_TOKEN }}
+      github_access_token: ${{ secrets.PR_CREATION_PAT }}
       npm_token: ${{ secrets.NPM_TOKEN_ELEVATED }}
       speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}

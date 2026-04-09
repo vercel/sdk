@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsContentHintProjectsResponse10 } from "@vercel/sdk/models/getprojectsrouteprojectsresponse200applicationjsonresponsebody1.js";
+import { GetProjectsContentHintProjectsResponse10 } from "@vercel/sdk/models/getprojectsrouteprojectsresponse200applicationjsonresponsebody2.js";
 
 let value: GetProjectsContentHintProjectsResponse10 = {
   type: "postgres-host",

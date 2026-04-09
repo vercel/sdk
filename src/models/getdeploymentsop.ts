@@ -597,6 +597,10 @@ export type GetDeploymentsGitUser = {
    * User type
    */
   type?: string | undefined;
+  /**
+   * The git provider (github, gitlab, bitbucket)
+   */
+  provider?: string | undefined;
 };
 
 /**
@@ -1885,12 +1889,14 @@ export const GetDeploymentsGitUser$inboundSchema: z.ZodType<
   id: smartUnion([types.string(), types.number()]),
   login: types.string(),
   type: types.optional(types.string()),
+  provider: types.optional(types.string()),
 });
 /** @internal */
 export type GetDeploymentsGitUser$Outbound = {
   id: string | number;
   login: string;
   type?: string | undefined;
+  provider?: string | undefined;
 };
 
 /** @internal */
@@ -1902,6 +1908,7 @@ export const GetDeploymentsGitUser$outboundSchema: z.ZodType<
   id: smartUnion([z.string(), z.number()]),
   login: z.string(),
   type: z.string().optional(),
+  provider: z.string().optional(),
 });
 
 export function getDeploymentsGitUserToJSON(

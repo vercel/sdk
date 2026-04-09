@@ -2192,6 +2192,7 @@ func (o *FlagMetadata) GetCreator() *FlagCreator {
 type Flag struct {
 	Description  *string                 `json:"description,omitempty"`
 	Permanent    *bool                   `json:"permanent,omitempty"`
+	Tags         []string                `json:"tags,omitempty"`
 	Experiment   *Experiment             `json:"experiment,omitempty"`
 	Variants     []Variant               `json:"variants"`
 	ID           string                  `json:"id"`
@@ -2233,6 +2234,13 @@ func (o *Flag) GetPermanent() *bool {
 		return nil
 	}
 	return o.Permanent
+}
+
+func (o *Flag) GetTags() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Tags
 }
 
 func (o *Flag) GetExperiment() *Experiment {

@@ -5,16 +5,20 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndSixtyThree } from "@vercel/sdk/models/usereventpayload162previous.js";
+import { OneHundredAndSixtyThree } from "@vercel/sdk/models/payloadresourceconfig.js";
 
 let value: OneHundredAndSixtyThree = {
   projectId: "<id>",
   projectName: "<value>",
   previous: {
-    functionZeroConfigFailover: true,
+    functionDefaultRegions: [
+      "<value 1>",
+    ],
   },
   next: {
-    functionZeroConfigFailover: true,
+    functionDefaultRegions: [
+      "<value 1>",
+    ],
   },
 };
 ```

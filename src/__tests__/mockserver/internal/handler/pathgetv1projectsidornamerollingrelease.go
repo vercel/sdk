@@ -50,7 +50,7 @@ func testGetRollingReleaseGetRollingRelease0(w http.ResponseWriter, req *http.Re
 	var respBody *operations.GetRollingReleaseResponseBody = &operations.GetRollingReleaseResponseBody{
 		RollingRelease: &operations.GetRollingReleaseRollingRelease{
 			State:    operations.GetRollingReleaseStatePausedActive,
-			Substate: nil,
+			Substate: operations.GetRollingReleaseSubstatePaused.ToPointer(),
 			CurrentDeployment: &operations.GetRollingReleaseCurrentDeployment{
 				Name:         "my-shop@main",
 				CreatedAt:    1716206500000,

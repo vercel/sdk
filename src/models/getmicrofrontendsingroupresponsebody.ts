@@ -45,9 +45,6 @@ import {
   GetMicrofrontendsInGroupEnv$inboundSchema,
   GetMicrofrontendsInGroupEnv$Outbound,
   GetMicrofrontendsInGroupEnv$outboundSchema,
-  GetMicrofrontendsInGroupFlatRateTier,
-  GetMicrofrontendsInGroupFlatRateTier$inboundSchema,
-  GetMicrofrontendsInGroupFlatRateTier$outboundSchema,
   GetMicrofrontendsInGroupFramework,
   GetMicrofrontendsInGroupFramework$inboundSchema,
   GetMicrofrontendsInGroupFramework$outboundSchema,
@@ -150,8 +147,18 @@ import {
   GetMicrofrontendsInGroupWebAnalytics$inboundSchema,
   GetMicrofrontendsInGroupWebAnalytics$Outbound,
   GetMicrofrontendsInGroupWebAnalytics$outboundSchema,
-} from "./getmicrofrontendsingroupflatratetier.js";
+} from "./getmicrofrontendsingroupoidctokenconfig.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export const GetMicrofrontendsInGroupFlatRateTier = {
+  Standard: "standard",
+  Base: "base",
+  Advanced: "advanced",
+  Critical: "critical",
+} as const;
+export type GetMicrofrontendsInGroupFlatRateTier = ClosedEnum<
+  typeof GetMicrofrontendsInGroupFlatRateTier
+>;
 
 /**
  * Billing mode. Always 'flat' for flat-rate projects.
@@ -650,6 +657,16 @@ export type GetMicrofrontendsInGroupProjects = {
 export type GetMicrofrontendsInGroupResponseBody = {
   projects: Array<GetMicrofrontendsInGroupProjects>;
 };
+
+/** @internal */
+export const GetMicrofrontendsInGroupFlatRateTier$inboundSchema:
+  z.ZodNativeEnum<typeof GetMicrofrontendsInGroupFlatRateTier> = z.nativeEnum(
+    GetMicrofrontendsInGroupFlatRateTier,
+  );
+/** @internal */
+export const GetMicrofrontendsInGroupFlatRateTier$outboundSchema:
+  z.ZodNativeEnum<typeof GetMicrofrontendsInGroupFlatRateTier> =
+    GetMicrofrontendsInGroupFlatRateTier$inboundSchema;
 
 /** @internal */
 export const GetMicrofrontendsInGroupKind$inboundSchema: z.ZodNativeEnum<

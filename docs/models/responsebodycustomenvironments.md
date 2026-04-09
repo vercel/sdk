@@ -5,7 +5,7 @@ Internal representation of a custom environment with all required properties
 ## Example Usage
 
 ```typescript
-import { ResponseBodyCustomEnvironments } from "@vercel/sdk/models/getprojectsrouteprojectsresponse200applicationjsonresponsebody1.js";
+import { ResponseBodyCustomEnvironments } from "@vercel/sdk/models/getprojectsrouteprojectsresponse200applicationjsonresponsebody2.js";
 
 let value: ResponseBodyCustomEnvironments = {
   id: "<id>",

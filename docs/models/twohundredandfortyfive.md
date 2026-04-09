@@ -5,13 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndFortyFive } from "@vercel/sdk/models/twohundredandtwentysix.js";
+import { TwoHundredAndFortyFive } from "@vercel/sdk/models/twohundredandtwentyseven.js";
 
-let value: TwoHundredAndFortyFive = {};
+let value: TwoHundredAndFortyFive = {
+  environment: "preview",
+  enabled: "on",
+};
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `emailDomain`      | *string*           | :heavy_minus_sign: | N/A                |
+| Field                                                        | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `environment`                                                | [models.PayloadEnvironment](../models/payloadenvironment.md) | :heavy_check_mark:                                           | N/A                                                          |
+| `enabled`                                                    | [models.Enabled](../models/enabled.md)                       | :heavy_check_mark:                                           | N/A                                                          |

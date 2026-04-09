@@ -2896,6 +2896,8 @@ type CreateDeploymentGitUser struct {
 	Login string `json:"login"`
 	// User type
 	Type *string `json:"type,omitempty"`
+	// The git provider (github, gitlab, bitbucket)
+	Provider *string `json:"provider,omitempty"`
 }
 
 func (o *CreateDeploymentGitUser) GetID() CreateDeploymentID {
@@ -2917,6 +2919,13 @@ func (o *CreateDeploymentGitUser) GetType() *string {
 		return nil
 	}
 	return o.Type
+}
+
+func (o *CreateDeploymentGitUser) GetProvider() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Provider
 }
 
 // CreateDeploymentVercelUser - Vercel user linked to the git provider account (only set if resolved)

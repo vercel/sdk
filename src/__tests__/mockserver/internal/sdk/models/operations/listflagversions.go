@@ -2048,6 +2048,7 @@ func (e *ListFlagVersionsState) UnmarshalJSON(data []byte) error {
 type ListFlagVersionsData struct {
 	Description  *string                                 `json:"description,omitempty"`
 	Permanent    *bool                                   `json:"permanent,omitempty"`
+	Tags         []string                                `json:"tags,omitempty"`
 	Experiment   *ListFlagVersionsExperiment             `json:"experiment,omitempty"`
 	Variants     []ListFlagVersionsVariant               `json:"variants"`
 	Environments map[string]ListFlagVersionsEnvironments `json:"environments"`
@@ -2067,6 +2068,13 @@ func (o *ListFlagVersionsData) GetPermanent() *bool {
 		return nil
 	}
 	return o.Permanent
+}
+
+func (o *ListFlagVersionsData) GetTags() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Tags
 }
 
 func (o *ListFlagVersionsData) GetExperiment() *ListFlagVersionsExperiment {

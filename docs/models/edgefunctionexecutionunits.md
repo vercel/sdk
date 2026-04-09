@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { EdgeFunctionExecutionUnits } from "@vercel/sdk/models/onehundred.js";
+import { EdgeFunctionExecutionUnits } from "@vercel/sdk/models/onehundredandone.js";
 
 let value: EdgeFunctionExecutionUnits = {
   currentThreshold: 5747.96,

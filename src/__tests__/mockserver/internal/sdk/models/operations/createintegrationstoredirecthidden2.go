@@ -2081,6 +2081,7 @@ type CreateIntegrationStoreDirectPropertiesGitNamespace struct {
 	UIDisabled       *CreateIntegrationStoreDirectUIDisabledUnion11    `json:"ui:disabled,omitempty"`
 	UIDescription    *CreateIntegrationStoreDirectUIDescriptionUnion11 `json:"ui:description,omitempty"`
 	UIFormattedValue *CreateIntegrationStoreDirectUIFormattedValue11   `json:"ui:formatted-value,omitempty"`
+	UIPaidOnly       *bool                                             `json:"ui:paid-only,omitempty"`
 	UIPlaceholder    *string                                           `json:"ui:placeholder,omitempty"`
 	GitProviders     []CreateIntegrationStoreDirectGitProvider         `json:"git:providers,omitempty"`
 }
@@ -2157,6 +2158,13 @@ func (o *CreateIntegrationStoreDirectPropertiesGitNamespace) GetUIFormattedValue
 		return nil
 	}
 	return o.UIFormattedValue
+}
+
+func (o *CreateIntegrationStoreDirectPropertiesGitNamespace) GetUIPaidOnly() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.UIPaidOnly
 }
 
 func (o *CreateIntegrationStoreDirectPropertiesGitNamespace) GetUIPlaceholder() *string {
@@ -2740,6 +2748,7 @@ type CreateIntegrationStoreDirectPropertiesDomain struct {
 	UIDisabled       *CreateIntegrationStoreDirectUIDisabledUnion10    `json:"ui:disabled,omitempty"`
 	UIDescription    *CreateIntegrationStoreDirectUIDescriptionUnion10 `json:"ui:description,omitempty"`
 	UIFormattedValue *CreateIntegrationStoreDirectUIFormattedValue10   `json:"ui:formatted-value,omitempty"`
+	UIPaidOnly       *bool                                             `json:"ui:paid-only,omitempty"`
 	UIPlaceholder    *string                                           `json:"ui:placeholder,omitempty"`
 }
 
@@ -2850,6 +2859,13 @@ func (o *CreateIntegrationStoreDirectPropertiesDomain) GetUIFormattedValue() *Cr
 		return nil
 	}
 	return o.UIFormattedValue
+}
+
+func (o *CreateIntegrationStoreDirectPropertiesDomain) GetUIPaidOnly() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.UIPaidOnly
 }
 
 func (o *CreateIntegrationStoreDirectPropertiesDomain) GetUIPlaceholder() *string {
@@ -4235,6 +4251,7 @@ type CreateIntegrationStoreDirectPropertiesMultiVercelRegion struct {
 	UIDisabled       *CreateIntegrationStoreDirectUIDisabledUnion9          `json:"ui:disabled,omitempty"`
 	UIDescription    *CreateIntegrationStoreDirectUIDescriptionUnion9       `json:"ui:description,omitempty"`
 	UIFormattedValue *CreateIntegrationStoreDirectUIFormattedValue9         `json:"ui:formatted-value,omitempty"`
+	UIPaidOnly       *bool                                                  `json:"ui:paid-only,omitempty"`
 	UIPlaceholder    *string                                                `json:"ui:placeholder,omitempty"`
 	Default          []string                                               `json:"default,omitempty"`
 	Example          []string                                               `json:"example,omitempty"`
@@ -4340,6 +4357,13 @@ func (o *CreateIntegrationStoreDirectPropertiesMultiVercelRegion) GetUIFormatted
 		return nil
 	}
 	return o.UIFormattedValue
+}
+
+func (o *CreateIntegrationStoreDirectPropertiesMultiVercelRegion) GetUIPaidOnly() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.UIPaidOnly
 }
 
 func (o *CreateIntegrationStoreDirectPropertiesMultiVercelRegion) GetUIPlaceholder() *string {
@@ -5648,6 +5672,7 @@ type CreateIntegrationStoreDirectPropertiesVercelRegion struct {
 	UIDisabled       *CreateIntegrationStoreDirectUIDisabledUnion8     `json:"ui:disabled,omitempty"`
 	UIDescription    *CreateIntegrationStoreDirectUIDescriptionUnion8  `json:"ui:description,omitempty"`
 	UIFormattedValue *CreateIntegrationStoreDirectUIFormattedValue8    `json:"ui:formatted-value,omitempty"`
+	UIPaidOnly       *bool                                             `json:"ui:paid-only,omitempty"`
 	UIPlaceholder    *string                                           `json:"ui:placeholder,omitempty"`
 }
 
@@ -5765,6 +5790,13 @@ func (o *CreateIntegrationStoreDirectPropertiesVercelRegion) GetUIFormattedValue
 		return nil
 	}
 	return o.UIFormattedValue
+}
+
+func (o *CreateIntegrationStoreDirectPropertiesVercelRegion) GetUIPaidOnly() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.UIPaidOnly
 }
 
 func (o *CreateIntegrationStoreDirectPropertiesVercelRegion) GetUIPlaceholder() *string {
@@ -6753,6 +6785,7 @@ type CreateIntegrationStoreDirectPropertiesMultiSelect struct {
 	UIDisabled       *CreateIntegrationStoreDirectUIDisabledUnion7    `json:"ui:disabled,omitempty"`
 	UIDescription    *CreateIntegrationStoreDirectUIDescriptionUnion7 `json:"ui:description,omitempty"`
 	UIFormattedValue *CreateIntegrationStoreDirectUIFormattedValue7   `json:"ui:formatted-value,omitempty"`
+	UIPaidOnly       *bool                                            `json:"ui:paid-only,omitempty"`
 	UIPlaceholder    *string                                          `json:"ui:placeholder,omitempty"`
 	Default          []string                                         `json:"default,omitempty"`
 	Example          []string                                         `json:"example,omitempty"`
@@ -6858,6 +6891,13 @@ func (o *CreateIntegrationStoreDirectPropertiesMultiSelect) GetUIFormattedValue(
 		return nil
 	}
 	return o.UIFormattedValue
+}
+
+func (o *CreateIntegrationStoreDirectPropertiesMultiSelect) GetUIPaidOnly() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.UIPaidOnly
 }
 
 func (o *CreateIntegrationStoreDirectPropertiesMultiSelect) GetUIPlaceholder() *string {

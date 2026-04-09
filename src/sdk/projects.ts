@@ -46,7 +46,6 @@ import {
   CreateProjectEnvRequest,
   CreateProjectEnvResponseBody,
 } from "../models/createprojectenvop.js";
-import { CreateProjectRequest } from "../models/createprojectkind.js";
 import { CreateProjectResponseBody } from "../models/createprojectresponsebody.js";
 import {
   CreateProjectTransferRequestRequest,
@@ -61,6 +60,7 @@ import {
   FilterProjectEnvsRequest,
   FilterProjectEnvsResponseBody,
 } from "../models/filterprojectenvsop.js";
+import { CreateProjectRequest } from "../models/flatratetier.js";
 import {
   GetProjectDomainRequest,
   GetProjectDomainResponseBody,
@@ -74,7 +74,7 @@ import {
   GetProjectEnvResponseBody,
 } from "../models/getprojectenvop.js";
 import { GetProjectsResponseBody } from "../models/getprojectsresponsebody.js";
-import { GetProjectsRequest } from "../models/getprojectsrouteprojectsresponse200applicationjsonresponsebody1.js";
+import { GetProjectsRequest } from "../models/getprojectsrouteprojectsresponse200applicationjsonresponsebody2.js";
 import {
   ListPromoteAliasesRequest,
   ListPromoteAliasesResponseBody,

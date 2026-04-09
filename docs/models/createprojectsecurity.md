@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CreateProjectSecurity } from "@vercel/sdk/models/createprojectkind.js";
+import { CreateProjectSecurity } from "@vercel/sdk/models/flatratetier.js";
 
 let value: CreateProjectSecurity = {};
 ```
@@ -26,3 +26,4 @@ let value: CreateProjectSecurity = {};
 | `botIdEnabled`                                                             | *boolean*                                                                  | :heavy_minus_sign:                                                         | N/A                                                                        |
 | `logHeaders`                                                               | *models.CreateProjectLogHeaders*                                           | :heavy_minus_sign:                                                         | N/A                                                                        |
 | `securityPlus`                                                             | *boolean*                                                                  | :heavy_minus_sign:                                                         | N/A                                                                        |
+| `securityPlusMetadata`                                                     | [models.SecurityPlusMetadata](../models/securityplusmetadata.md)           | :heavy_minus_sign:                                                         | N/A                                                                        |

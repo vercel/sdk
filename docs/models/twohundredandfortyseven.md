@@ -5,19 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndFortySeven } from "@vercel/sdk/models/twohundredandtwentysix.js";
+import { TwoHundredAndFortySeven } from "@vercel/sdk/models/twohundredandtwentyseven.js";
 
-let value: TwoHundredAndFortySeven = {};
+let value: TwoHundredAndFortySeven = {
+  deletedCount: 2826.75,
+  inviteIds: [
+    "<value 1>",
+  ],
+};
 ```
 
 ## Fields
 
-| Field                                          | Type                                           | Required                                       | Description                                    |
-| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| `directoryType`                                | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `ssoType`                                      | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `invitedUser`                                  | [models.InvitedUser](../models/inviteduser.md) | :heavy_minus_sign:                             | N/A                                            |
-| `invitedEmail`                                 | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `invitationRole`                               | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `entitlements`                                 | *string*[]                                     | :heavy_minus_sign:                             | N/A                                            |
-| `invitedUid`                                   | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `deletedCount`     | *number*           | :heavy_check_mark: | N/A                |
+| `inviteIds`        | *string*[]         | :heavy_check_mark: | N/A                |

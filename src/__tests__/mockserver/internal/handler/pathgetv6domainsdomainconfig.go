@@ -50,9 +50,14 @@ func testGetDomainConfigGetDomainConfig0(w http.ResponseWriter, req *http.Reques
 		AcceptedChallenges: []operations.AcceptedChallenge{
 			operations.AcceptedChallengeHttp01,
 		},
-		RecommendedIPv4:  []operations.RecommendedIPv4{},
-		RecommendedCNAME: []operations.RecommendedCNAME{},
-		Misconfigured:    false,
+		RecommendedIPv4: []operations.RecommendedIPv4{},
+		RecommendedCNAME: []operations.RecommendedCNAME{
+			operations.RecommendedCNAME{
+				Rank:  4375.87,
+				Value: "<value>",
+			},
+		},
+		Misconfigured: false,
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

@@ -4977,6 +4977,8 @@ type GetDeploymentGitUser struct {
 	Login string `json:"login"`
 	// User type
 	Type *string `json:"type,omitempty"`
+	// The git provider (github, gitlab, bitbucket)
+	Provider *string `json:"provider,omitempty"`
 }
 
 func (g GetDeploymentGitUser) MarshalJSON() ([]byte, error) {
@@ -5009,6 +5011,13 @@ func (o *GetDeploymentGitUser) GetType() *string {
 		return nil
 	}
 	return o.Type
+}
+
+func (o *GetDeploymentGitUser) GetProvider() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Provider
 }
 
 // GetDeploymentVercelUser - Vercel user linked to the git provider account (only set if resolved)

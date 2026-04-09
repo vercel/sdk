@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { RedisOverageReason } from "@vercel/sdk/models/onehundred.js";
+import { RedisOverageReason } from "@vercel/sdk/models/onehundredandone.js";
 
 let value: RedisOverageReason = "runtimeCacheWrite";
 ```

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { BranchMatcher } from "@vercel/sdk/models/resourcelimits.js";
+import { BranchMatcher } from "@vercel/sdk/models/payloadresourceconfig.js";
 
 let value: BranchMatcher = {
   type: "equals",
@@ -15,5 +15,5 @@ let value: BranchMatcher = {
 
 | Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
 | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `type`                                                                 | [models.UserEventPayload158Type](../models/usereventpayload158type.md) | :heavy_check_mark:                                                     | The type of matching to perform                                        |
+| `type`                                                                 | [models.UserEventPayload159Type](../models/usereventpayload159type.md) | :heavy_check_mark:                                                     | The type of matching to perform                                        |
 | `pattern`                                                              | *string*                                                               | :heavy_check_mark:                                                     | The pattern to match against branch names                              |

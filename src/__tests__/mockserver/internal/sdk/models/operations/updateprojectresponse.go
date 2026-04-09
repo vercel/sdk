@@ -1062,6 +1062,26 @@ func (u UpdateProjectLogHeadersUnion) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type UpdateProjectLogHeadersUnion: all fields are null")
 }
 
+type UpdateProjectSecurityPlusMetadata struct {
+	UpdatedAt float64 `json:"updatedAt"`
+	// Timestamp when the feature was first enabled. Never changes after initial enablement.
+	FirstEnabledAt *float64 `json:"firstEnabledAt,omitempty"`
+}
+
+func (o *UpdateProjectSecurityPlusMetadata) GetUpdatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.UpdatedAt
+}
+
+func (o *UpdateProjectSecurityPlusMetadata) GetFirstEnabledAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.FirstEnabledAt
+}
+
 type UpdateProjectSecurity struct {
 	AttackModeEnabled      *bool                                                        `json:"attackModeEnabled,omitempty"`
 	AttackModeUpdatedAt    *float64                                                     `json:"attackModeUpdatedAt,omitempty"`
@@ -1077,6 +1097,7 @@ type UpdateProjectSecurity struct {
 	BotIDEnabled           *bool                                                        `json:"botIdEnabled,omitempty"`
 	LogHeaders             *UpdateProjectLogHeadersUnion                                `json:"log_headers,omitempty"`
 	SecurityPlus           *bool                                                        `json:"securityPlus,omitempty"`
+	SecurityPlusMetadata   *UpdateProjectSecurityPlusMetadata                           `json:"securityPlusMetadata,omitempty"`
 }
 
 func (o *UpdateProjectSecurity) GetAttackModeEnabled() *bool {
@@ -1175,6 +1196,13 @@ func (o *UpdateProjectSecurity) GetSecurityPlus() *bool {
 		return nil
 	}
 	return o.SecurityPlus
+}
+
+func (o *UpdateProjectSecurity) GetSecurityPlusMetadata() *UpdateProjectSecurityPlusMetadata {
+	if o == nil {
+		return nil
+	}
+	return o.SecurityPlusMetadata
 }
 
 // UpdateProjectIssuerModeResponse - - team: `https://oidc.vercel.com/[team_slug]` - global: `https://oidc.vercel.com`

@@ -641,6 +641,10 @@ export type GitUser = {
    * User type
    */
   type?: string | undefined;
+  /**
+   * The git provider (github, gitlab, bitbucket)
+   */
+  provider?: string | undefined;
 };
 
 /**
@@ -2656,12 +2660,14 @@ export const GitUser$inboundSchema: z.ZodType<GitUser, z.ZodTypeDef, unknown> =
     id: smartUnion([types.string(), types.number()]),
     login: types.string(),
     type: types.optional(types.string()),
+    provider: types.optional(types.string()),
   });
 /** @internal */
 export type GitUser$Outbound = {
   id: string | number;
   login: string;
   type?: string | undefined;
+  provider?: string | undefined;
 };
 
 /** @internal */
@@ -2673,6 +2679,7 @@ export const GitUser$outboundSchema: z.ZodType<
   id: smartUnion([z.string(), z.number()]),
   login: z.string(),
   type: z.string().optional(),
+  provider: z.string().optional(),
 });
 
 export function gitUserToJSON(gitUser: GitUser): string {

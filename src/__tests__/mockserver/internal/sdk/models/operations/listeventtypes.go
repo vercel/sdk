@@ -267,6 +267,7 @@ const (
 	NameProjectConnectConfigurations                    Name = "project-connect-configurations"
 	NameProjectCreated                                  Name = "project-created"
 	NameProjectCronJobsToggled                          Name = "project-cron-jobs-toggled"
+	NameProjectDelegatedProtectionEnabled               Name = "project-delegated-protection-enabled"
 	NameProjectDelete                                   Name = "project-delete"
 	NameProjectDomainUnverified                         Name = "project-domain-unverified"
 	NameProjectDomainVerified                           Name = "project-domain-verified"
@@ -929,6 +930,8 @@ func (e *Name) UnmarshalJSON(data []byte) error {
 	case "project-created":
 		fallthrough
 	case "project-cron-jobs-toggled":
+		fallthrough
+	case "project-delegated-protection-enabled":
 		fallthrough
 	case "project-delete":
 		fallthrough

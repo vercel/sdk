@@ -1395,6 +1395,7 @@ type GetConfigurationProductsPropertiesGitNamespace struct {
 	UIDisabled       *GetConfigurationProductsUIDisabledUnion11    `json:"ui:disabled,omitempty"`
 	UIDescription    *GetConfigurationProductsUIDescriptionUnion11 `json:"ui:description,omitempty"`
 	UIFormattedValue *GetConfigurationProductsUIFormattedValue11   `json:"ui:formatted-value,omitempty"`
+	UIPaidOnly       *bool                                         `json:"ui:paid-only,omitempty"`
 	UIPlaceholder    *string                                       `json:"ui:placeholder,omitempty"`
 	GitProviders     []GetConfigurationProductsGitProvider         `json:"git:providers,omitempty"`
 }
@@ -1471,6 +1472,13 @@ func (o *GetConfigurationProductsPropertiesGitNamespace) GetUIFormattedValue() *
 		return nil
 	}
 	return o.UIFormattedValue
+}
+
+func (o *GetConfigurationProductsPropertiesGitNamespace) GetUIPaidOnly() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.UIPaidOnly
 }
 
 func (o *GetConfigurationProductsPropertiesGitNamespace) GetUIPlaceholder() *string {
@@ -2054,6 +2062,7 @@ type GetConfigurationProductsPropertiesDomain struct {
 	UIDisabled       *GetConfigurationProductsUIDisabledUnion10    `json:"ui:disabled,omitempty"`
 	UIDescription    *GetConfigurationProductsUIDescriptionUnion10 `json:"ui:description,omitempty"`
 	UIFormattedValue *GetConfigurationProductsUIFormattedValue10   `json:"ui:formatted-value,omitempty"`
+	UIPaidOnly       *bool                                         `json:"ui:paid-only,omitempty"`
 	UIPlaceholder    *string                                       `json:"ui:placeholder,omitempty"`
 }
 
@@ -2164,6 +2173,13 @@ func (o *GetConfigurationProductsPropertiesDomain) GetUIFormattedValue() *GetCon
 		return nil
 	}
 	return o.UIFormattedValue
+}
+
+func (o *GetConfigurationProductsPropertiesDomain) GetUIPaidOnly() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.UIPaidOnly
 }
 
 func (o *GetConfigurationProductsPropertiesDomain) GetUIPlaceholder() *string {
@@ -3549,6 +3565,7 @@ type GetConfigurationProductsPropertiesMultiVercelRegion struct {
 	UIDisabled       *GetConfigurationProductsUIDisabledUnion9          `json:"ui:disabled,omitempty"`
 	UIDescription    *GetConfigurationProductsUIDescriptionUnion9       `json:"ui:description,omitempty"`
 	UIFormattedValue *GetConfigurationProductsUIFormattedValue9         `json:"ui:formatted-value,omitempty"`
+	UIPaidOnly       *bool                                              `json:"ui:paid-only,omitempty"`
 	UIPlaceholder    *string                                            `json:"ui:placeholder,omitempty"`
 	Default          []string                                           `json:"default,omitempty"`
 	Example          []string                                           `json:"example,omitempty"`
@@ -3654,6 +3671,13 @@ func (o *GetConfigurationProductsPropertiesMultiVercelRegion) GetUIFormattedValu
 		return nil
 	}
 	return o.UIFormattedValue
+}
+
+func (o *GetConfigurationProductsPropertiesMultiVercelRegion) GetUIPaidOnly() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.UIPaidOnly
 }
 
 func (o *GetConfigurationProductsPropertiesMultiVercelRegion) GetUIPlaceholder() *string {
@@ -4962,6 +4986,7 @@ type GetConfigurationProductsPropertiesVercelRegion struct {
 	UIDisabled       *GetConfigurationProductsUIDisabledUnion8     `json:"ui:disabled,omitempty"`
 	UIDescription    *GetConfigurationProductsUIDescriptionUnion8  `json:"ui:description,omitempty"`
 	UIFormattedValue *GetConfigurationProductsUIFormattedValue8    `json:"ui:formatted-value,omitempty"`
+	UIPaidOnly       *bool                                         `json:"ui:paid-only,omitempty"`
 	UIPlaceholder    *string                                       `json:"ui:placeholder,omitempty"`
 }
 
@@ -5079,6 +5104,13 @@ func (o *GetConfigurationProductsPropertiesVercelRegion) GetUIFormattedValue() *
 		return nil
 	}
 	return o.UIFormattedValue
+}
+
+func (o *GetConfigurationProductsPropertiesVercelRegion) GetUIPaidOnly() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.UIPaidOnly
 }
 
 func (o *GetConfigurationProductsPropertiesVercelRegion) GetUIPlaceholder() *string {
@@ -6067,6 +6099,7 @@ type GetConfigurationProductsPropertiesMultiSelect struct {
 	UIDisabled       *GetConfigurationProductsUIDisabledUnion7    `json:"ui:disabled,omitempty"`
 	UIDescription    *GetConfigurationProductsUIDescriptionUnion7 `json:"ui:description,omitempty"`
 	UIFormattedValue *GetConfigurationProductsUIFormattedValue7   `json:"ui:formatted-value,omitempty"`
+	UIPaidOnly       *bool                                        `json:"ui:paid-only,omitempty"`
 	UIPlaceholder    *string                                      `json:"ui:placeholder,omitempty"`
 	Default          []string                                     `json:"default,omitempty"`
 	Example          []string                                     `json:"example,omitempty"`
@@ -6172,6 +6205,13 @@ func (o *GetConfigurationProductsPropertiesMultiSelect) GetUIFormattedValue() *G
 		return nil
 	}
 	return o.UIFormattedValue
+}
+
+func (o *GetConfigurationProductsPropertiesMultiSelect) GetUIPaidOnly() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.UIPaidOnly
 }
 
 func (o *GetConfigurationProductsPropertiesMultiSelect) GetUIPlaceholder() *string {

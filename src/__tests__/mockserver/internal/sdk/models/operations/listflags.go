@@ -48,6 +48,8 @@ type ListFlagsRequest struct {
 	Cursor *string `queryParam:"style=form,explode=true,name=cursor"`
 	// Search flags by their slug or description. Case-insensitive.
 	Search *string `queryParam:"style=form,explode=true,name=search"`
+	// Filter flags by tag. Repeat the parameter for multiple tags (all must match).
+	Tags []string `queryParam:"style=form,explode=true,name=tags"`
 	// The Team identifier to perform the request on behalf of.
 	TeamID *string `queryParam:"style=form,explode=true,name=teamId"`
 	// The Team slug to perform the request on behalf of.
@@ -94,6 +96,13 @@ func (o *ListFlagsRequest) GetSearch() *string {
 		return nil
 	}
 	return o.Search
+}
+
+func (o *ListFlagsRequest) GetTags() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Tags
 }
 
 func (o *ListFlagsRequest) GetTeamID() *string {

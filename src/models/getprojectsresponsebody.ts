@@ -3,22 +3,24 @@
  */
 
 import * as z from "zod/v3";
+import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import {
-  GetProjectsResponseBody3,
-  GetProjectsResponseBody3$inboundSchema,
-  GetProjectsResponseBody3$Outbound,
-  GetProjectsResponseBody3$outboundSchema,
-} from "./getprojectsresponsebodyhistory.js";
-import {
   Alias,
   Alias$inboundSchema,
   Alias$Outbound,
   Alias$outboundSchema,
+  FirewallRoutes,
+  FirewallRoutes$inboundSchema,
+  FirewallRoutes$Outbound,
+  FirewallRoutes$outboundSchema,
+  GetProjectsLogHeaders2,
+  GetProjectsLogHeaders2$inboundSchema,
+  GetProjectsLogHeaders2$outboundSchema,
   GetProjectsResponseBody2,
   GetProjectsResponseBody2$inboundSchema,
   GetProjectsResponseBody2$Outbound,
@@ -61,6 +63,10 @@ import {
   ResponseBodyLink$inboundSchema,
   ResponseBodyLink$Outbound,
   ResponseBodyLink$outboundSchema,
+  ResponseBodyManagedRules,
+  ResponseBodyManagedRules$inboundSchema,
+  ResponseBodyManagedRules$Outbound,
+  ResponseBodyManagedRules$outboundSchema,
   ResponseBodyPasswordProtection,
   ResponseBodyPasswordProtection$inboundSchema,
   ResponseBodyPasswordProtection$Outbound,
@@ -73,10 +79,6 @@ import {
   ResponseBodyRollingRelease$inboundSchema,
   ResponseBodyRollingRelease$Outbound,
   ResponseBodyRollingRelease$outboundSchema,
-  ResponseBodySecurity,
-  ResponseBodySecurity$inboundSchema,
-  ResponseBodySecurity$Outbound,
-  ResponseBodySecurity$outboundSchema,
   ResponseBodySpeedInsights,
   ResponseBodySpeedInsights$inboundSchema,
   ResponseBodySpeedInsights$Outbound,
@@ -93,8 +95,44 @@ import {
   ResponseBodyWebAnalytics$inboundSchema,
   ResponseBodyWebAnalytics$Outbound,
   ResponseBodyWebAnalytics$outboundSchema,
-} from "./responsebodysecurity.js";
+} from "./getprojectslogheaders2.js";
+import {
+  GetProjectsResponseBody3,
+  GetProjectsResponseBody3$inboundSchema,
+  GetProjectsResponseBody3$Outbound,
+  GetProjectsResponseBody3$outboundSchema,
+} from "./getprojectsresponsebodyissuermode.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export type ResponseBodyLogHeaders = Array<string> | GetProjectsLogHeaders2;
+
+export type ResponseBodySecurityPlusMetadata = {
+  updatedAt: number;
+  /**
+   * Timestamp when the feature was first enabled. Never changes after initial enablement.
+   */
+  firstEnabledAt?: number | undefined;
+};
+
+export type ResponseBodySecurity = {
+  attackModeEnabled?: boolean | undefined;
+  attackModeUpdatedAt?: number | undefined;
+  firewallEnabled?: boolean | undefined;
+  firewallUpdatedAt?: number | undefined;
+  attackModeActiveUntil?: number | null | undefined;
+  firewallConfigVersion?: number | undefined;
+  firewallRoutes?: Array<FirewallRoutes> | undefined;
+  firewallSeawallEnabled?: boolean | undefined;
+  ja3Enabled?: boolean | undefined;
+  ja4Enabled?: boolean | undefined;
+  firewallBypassIps?: Array<string> | undefined;
+  managedRules?: ResponseBodyManagedRules | null | undefined;
+  botIdEnabled?: boolean | undefined;
+  requestLogsKey?: Array<string> | undefined;
+  logHeaders?: Array<string> | GetProjectsLogHeaders2 | undefined;
+  securityPlus?: boolean | undefined;
+  securityPlusMetadata?: ResponseBodySecurityPlusMetadata | undefined;
+};
 
 /**
  * - team: `https://oidc.vercel.com/[team_slug]` - global: `https://oidc.vercel.com`
@@ -456,6 +494,187 @@ export type GetProjectsResponseBody =
   | GetProjectsResponseBody2
   | GetProjectsResponseBody3
   | Array<GetProjectsResponseBody1>;
+
+/** @internal */
+export const ResponseBodyLogHeaders$inboundSchema: z.ZodType<
+  ResponseBodyLogHeaders,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([z.array(types.string()), GetProjectsLogHeaders2$inboundSchema]);
+/** @internal */
+export type ResponseBodyLogHeaders$Outbound = Array<string> | string;
+
+/** @internal */
+export const ResponseBodyLogHeaders$outboundSchema: z.ZodType<
+  ResponseBodyLogHeaders$Outbound,
+  z.ZodTypeDef,
+  ResponseBodyLogHeaders
+> = smartUnion([z.array(z.string()), GetProjectsLogHeaders2$outboundSchema]);
+
+export function responseBodyLogHeadersToJSON(
+  responseBodyLogHeaders: ResponseBodyLogHeaders,
+): string {
+  return JSON.stringify(
+    ResponseBodyLogHeaders$outboundSchema.parse(responseBodyLogHeaders),
+  );
+}
+export function responseBodyLogHeadersFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodyLogHeaders, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodyLogHeaders$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyLogHeaders' from JSON`,
+  );
+}
+
+/** @internal */
+export const ResponseBodySecurityPlusMetadata$inboundSchema: z.ZodType<
+  ResponseBodySecurityPlusMetadata,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  updatedAt: types.number(),
+  firstEnabledAt: types.optional(types.number()),
+});
+/** @internal */
+export type ResponseBodySecurityPlusMetadata$Outbound = {
+  updatedAt: number;
+  firstEnabledAt?: number | undefined;
+};
+
+/** @internal */
+export const ResponseBodySecurityPlusMetadata$outboundSchema: z.ZodType<
+  ResponseBodySecurityPlusMetadata$Outbound,
+  z.ZodTypeDef,
+  ResponseBodySecurityPlusMetadata
+> = z.object({
+  updatedAt: z.number(),
+  firstEnabledAt: z.number().optional(),
+});
+
+export function responseBodySecurityPlusMetadataToJSON(
+  responseBodySecurityPlusMetadata: ResponseBodySecurityPlusMetadata,
+): string {
+  return JSON.stringify(
+    ResponseBodySecurityPlusMetadata$outboundSchema.parse(
+      responseBodySecurityPlusMetadata,
+    ),
+  );
+}
+export function responseBodySecurityPlusMetadataFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodySecurityPlusMetadata, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodySecurityPlusMetadata$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodySecurityPlusMetadata' from JSON`,
+  );
+}
+
+/** @internal */
+export const ResponseBodySecurity$inboundSchema: z.ZodType<
+  ResponseBodySecurity,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  attackModeEnabled: types.optional(types.boolean()),
+  attackModeUpdatedAt: types.optional(types.number()),
+  firewallEnabled: types.optional(types.boolean()),
+  firewallUpdatedAt: types.optional(types.number()),
+  attackModeActiveUntil: z.nullable(types.number()).optional(),
+  firewallConfigVersion: types.optional(types.number()),
+  firewallRoutes: types.optional(z.array(FirewallRoutes$inboundSchema)),
+  firewallSeawallEnabled: types.optional(types.boolean()),
+  ja3Enabled: types.optional(types.boolean()),
+  ja4Enabled: types.optional(types.boolean()),
+  firewallBypassIps: types.optional(z.array(types.string())),
+  managedRules: z.nullable(ResponseBodyManagedRules$inboundSchema).optional(),
+  botIdEnabled: types.optional(types.boolean()),
+  requestLogsKey: types.optional(z.array(types.string())),
+  log_headers: types.optional(
+    smartUnion([z.array(types.string()), GetProjectsLogHeaders2$inboundSchema]),
+  ),
+  securityPlus: types.optional(types.boolean()),
+  securityPlusMetadata: types.optional(
+    z.lazy(() => ResponseBodySecurityPlusMetadata$inboundSchema),
+  ),
+}).transform((v) => {
+  return remap$(v, {
+    "log_headers": "logHeaders",
+  });
+});
+/** @internal */
+export type ResponseBodySecurity$Outbound = {
+  attackModeEnabled?: boolean | undefined;
+  attackModeUpdatedAt?: number | undefined;
+  firewallEnabled?: boolean | undefined;
+  firewallUpdatedAt?: number | undefined;
+  attackModeActiveUntil?: number | null | undefined;
+  firewallConfigVersion?: number | undefined;
+  firewallRoutes?: Array<FirewallRoutes$Outbound> | undefined;
+  firewallSeawallEnabled?: boolean | undefined;
+  ja3Enabled?: boolean | undefined;
+  ja4Enabled?: boolean | undefined;
+  firewallBypassIps?: Array<string> | undefined;
+  managedRules?: ResponseBodyManagedRules$Outbound | null | undefined;
+  botIdEnabled?: boolean | undefined;
+  requestLogsKey?: Array<string> | undefined;
+  log_headers?: Array<string> | string | undefined;
+  securityPlus?: boolean | undefined;
+  securityPlusMetadata?: ResponseBodySecurityPlusMetadata$Outbound | undefined;
+};
+
+/** @internal */
+export const ResponseBodySecurity$outboundSchema: z.ZodType<
+  ResponseBodySecurity$Outbound,
+  z.ZodTypeDef,
+  ResponseBodySecurity
+> = z.object({
+  attackModeEnabled: z.boolean().optional(),
+  attackModeUpdatedAt: z.number().optional(),
+  firewallEnabled: z.boolean().optional(),
+  firewallUpdatedAt: z.number().optional(),
+  attackModeActiveUntil: z.nullable(z.number()).optional(),
+  firewallConfigVersion: z.number().optional(),
+  firewallRoutes: z.array(FirewallRoutes$outboundSchema).optional(),
+  firewallSeawallEnabled: z.boolean().optional(),
+  ja3Enabled: z.boolean().optional(),
+  ja4Enabled: z.boolean().optional(),
+  firewallBypassIps: z.array(z.string()).optional(),
+  managedRules: z.nullable(ResponseBodyManagedRules$outboundSchema).optional(),
+  botIdEnabled: z.boolean().optional(),
+  requestLogsKey: z.array(z.string()).optional(),
+  logHeaders: smartUnion([
+    z.array(z.string()),
+    GetProjectsLogHeaders2$outboundSchema,
+  ]).optional(),
+  securityPlus: z.boolean().optional(),
+  securityPlusMetadata: z.lazy(() =>
+    ResponseBodySecurityPlusMetadata$outboundSchema
+  ).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    logHeaders: "log_headers",
+  });
+});
+
+export function responseBodySecurityToJSON(
+  responseBodySecurity: ResponseBodySecurity,
+): string {
+  return JSON.stringify(
+    ResponseBodySecurity$outboundSchema.parse(responseBodySecurity),
+  );
+}
+export function responseBodySecurityFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodySecurity, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodySecurity$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodySecurity' from JSON`,
+  );
+}
 
 /** @internal */
 export const ResponseBodyIssuerMode$inboundSchema: z.ZodNativeEnum<
@@ -2409,7 +2628,7 @@ export const GetProjectsResponseBody1$inboundSchema: z.ZodType<
   ),
   paused: types.optional(types.boolean()),
   webAnalytics: types.optional(ResponseBodyWebAnalytics$inboundSchema),
-  security: types.optional(ResponseBodySecurity$inboundSchema),
+  security: types.optional(z.lazy(() => ResponseBodySecurity$inboundSchema)),
   oidcTokenConfig: types.optional(
     z.lazy(() => ResponseBodyOidcTokenConfig$inboundSchema),
   ),
@@ -2546,7 +2765,7 @@ export const GetProjectsResponseBody1$outboundSchema: z.ZodType<
   gitProviderOptions: ResponseBodyGitProviderOptions$outboundSchema.optional(),
   paused: z.boolean().optional(),
   webAnalytics: ResponseBodyWebAnalytics$outboundSchema.optional(),
-  security: ResponseBodySecurity$outboundSchema.optional(),
+  security: z.lazy(() => ResponseBodySecurity$outboundSchema).optional(),
   oidcTokenConfig: z.lazy(() => ResponseBodyOidcTokenConfig$outboundSchema)
     .optional(),
   tier: z.string().optional(),

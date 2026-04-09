@@ -5,12 +5,12 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndSixtyNine } from "@vercel/sdk/models/usereventpayload162previous.js";
+import { OneHundredAndSixtyNine } from "@vercel/sdk/models/usereventpayload163previous.js";
 
 let value: OneHundredAndSixtyNine = {
   projectId: "<id>",
   projectName: "<value>",
-  onCommit: false,
+  onPullRequest: false,
 };
 ```
 
@@ -20,4 +20,4 @@ let value: OneHundredAndSixtyNine = {
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `projectId`        | *string*           | :heavy_check_mark: | N/A                |
 | `projectName`      | *string*           | :heavy_check_mark: | N/A                |
-| `onCommit`         | *boolean*          | :heavy_check_mark: | N/A                |
+| `onPullRequest`    | *boolean*          | :heavy_check_mark: | N/A                |

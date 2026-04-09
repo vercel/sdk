@@ -11,6 +11,26 @@ import (
 	"mockserver/internal/sdk/utils"
 )
 
+type UpdateMicrofrontendsSecurityPlusMetadata struct {
+	UpdatedAt float64 `json:"updatedAt"`
+	// Timestamp when the feature was first enabled. Never changes after initial enablement.
+	FirstEnabledAt *float64 `json:"firstEnabledAt,omitempty"`
+}
+
+func (o *UpdateMicrofrontendsSecurityPlusMetadata) GetUpdatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.UpdatedAt
+}
+
+func (o *UpdateMicrofrontendsSecurityPlusMetadata) GetFirstEnabledAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.FirstEnabledAt
+}
+
 type UpdateMicrofrontendsSecurity struct {
 	AttackModeEnabled      *bool                                                               `json:"attackModeEnabled,omitempty"`
 	AttackModeUpdatedAt    *float64                                                            `json:"attackModeUpdatedAt,omitempty"`
@@ -26,6 +46,7 @@ type UpdateMicrofrontendsSecurity struct {
 	BotIDEnabled           *bool                                                               `json:"botIdEnabled,omitempty"`
 	LogHeaders             *UpdateMicrofrontendsLogHeadersUnion                                `json:"log_headers,omitempty"`
 	SecurityPlus           *bool                                                               `json:"securityPlus,omitempty"`
+	SecurityPlusMetadata   *UpdateMicrofrontendsSecurityPlusMetadata                           `json:"securityPlusMetadata,omitempty"`
 }
 
 func (o *UpdateMicrofrontendsSecurity) GetAttackModeEnabled() *bool {
@@ -124,6 +145,13 @@ func (o *UpdateMicrofrontendsSecurity) GetSecurityPlus() *bool {
 		return nil
 	}
 	return o.SecurityPlus
+}
+
+func (o *UpdateMicrofrontendsSecurity) GetSecurityPlusMetadata() *UpdateMicrofrontendsSecurityPlusMetadata {
+	if o == nil {
+		return nil
+	}
+	return o.SecurityPlusMetadata
 }
 
 // UpdateMicrofrontendsIssuerMode - - team: `https://oidc.vercel.com/[team_slug]` - global: `https://oidc.vercel.com`

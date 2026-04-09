@@ -108,6 +108,7 @@ async function $do(
     "search": payload.search,
     "slug": payload.slug,
     "state": payload.state,
+    "tags": payload.tags,
     "teamId": payload.teamId,
     "withMetadata": payload.withMetadata,
   });

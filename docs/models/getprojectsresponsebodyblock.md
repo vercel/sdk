@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsResponseBodyBlock } from "@vercel/sdk/models/responsebodysecurity.js";
+import { GetProjectsResponseBodyBlock } from "@vercel/sdk/models/getprojectslogheaders2.js";
 
 let value: GetProjectsResponseBodyBlock = {
   action: "blocked",

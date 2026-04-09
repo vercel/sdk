@@ -53,6 +53,10 @@ export type ListFlagsRequest = {
    */
   search?: string | undefined;
   /**
+   * Filter flags by tag. Repeat the parameter for multiple tags (all must match).
+   */
+  tags?: Array<string> | undefined;
+  /**
    * The Team identifier to perform the request on behalf of.
    */
   teamId?: string | undefined;
@@ -92,6 +96,7 @@ export const ListFlagsRequest$inboundSchema: z.ZodType<
   limit: types.optional(types.number()),
   cursor: types.optional(types.string()),
   search: types.optional(types.string()),
+  tags: types.optional(z.array(types.string())),
   teamId: types.optional(types.string()),
   slug: types.optional(types.string()),
 });
@@ -103,6 +108,7 @@ export type ListFlagsRequest$Outbound = {
   limit?: number | undefined;
   cursor?: string | undefined;
   search?: string | undefined;
+  tags?: Array<string> | undefined;
   teamId?: string | undefined;
   slug?: string | undefined;
 };
@@ -119,6 +125,7 @@ export const ListFlagsRequest$outboundSchema: z.ZodType<
   limit: z.number().int().optional(),
   cursor: z.string().optional(),
   search: z.string().optional(),
+  tags: z.array(z.string()).optional(),
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });

@@ -3,7 +3,7 @@
  */
 
 import { microfrontendsGetMicrofrontendsInGroup } from "../../funcs/microfrontendsGetMicrofrontendsInGroup.js";
-import { GetMicrofrontendsInGroupRequest$inboundSchema } from "../../models/getmicrofrontendsingroupflatratetier.js";
+import { GetMicrofrontendsInGroupRequest$inboundSchema } from "../../models/getmicrofrontendsingroupoidctokenconfig.js";
 import { formatResult, ToolDefinition } from "../tools.js";
 
 const args = {

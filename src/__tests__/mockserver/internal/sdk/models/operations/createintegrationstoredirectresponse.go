@@ -672,6 +672,7 @@ type CreateIntegrationStoreDirectPropertiesRadioButton struct {
 	UIDisabled       *CreateIntegrationStoreDirectUIDisabledUnion6    `json:"ui:disabled,omitempty"`
 	UIDescription    *CreateIntegrationStoreDirectUIDescriptionUnion6 `json:"ui:description,omitempty"`
 	UIFormattedValue *CreateIntegrationStoreDirectUIFormattedValue6   `json:"ui:formatted-value,omitempty"`
+	UIPaidOnly       *bool                                            `json:"ui:paid-only,omitempty"`
 	UIPlaceholder    *string                                          `json:"ui:placeholder,omitempty"`
 }
 
@@ -789,6 +790,13 @@ func (o *CreateIntegrationStoreDirectPropertiesRadioButton) GetUIFormattedValue(
 		return nil
 	}
 	return o.UIFormattedValue
+}
+
+func (o *CreateIntegrationStoreDirectPropertiesRadioButton) GetUIPaidOnly() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.UIPaidOnly
 }
 
 func (o *CreateIntegrationStoreDirectPropertiesRadioButton) GetUIPlaceholder() *string {
@@ -1686,6 +1694,7 @@ type CreateIntegrationStoreDirectPropertiesSelect struct {
 	UIDisabled       *CreateIntegrationStoreDirectUIDisabledUnion5    `json:"ui:disabled,omitempty"`
 	UIDescription    *CreateIntegrationStoreDirectUIDescriptionUnion5 `json:"ui:description,omitempty"`
 	UIFormattedValue *CreateIntegrationStoreDirectUIFormattedValue5   `json:"ui:formatted-value,omitempty"`
+	UIPaidOnly       *bool                                            `json:"ui:paid-only,omitempty"`
 	UIPlaceholder    *string                                          `json:"ui:placeholder,omitempty"`
 }
 
@@ -1803,6 +1812,13 @@ func (o *CreateIntegrationStoreDirectPropertiesSelect) GetUIFormattedValue() *Cr
 		return nil
 	}
 	return o.UIFormattedValue
+}
+
+func (o *CreateIntegrationStoreDirectPropertiesSelect) GetUIPaidOnly() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.UIPaidOnly
 }
 
 func (o *CreateIntegrationStoreDirectPropertiesSelect) GetUIPlaceholder() *string {
@@ -2471,6 +2487,7 @@ type CreateIntegrationStoreDirectPropertiesSlider struct {
 	UIDisabled       *CreateIntegrationStoreDirectUIDisabledUnion4    `json:"ui:disabled,omitempty"`
 	UIDescription    *CreateIntegrationStoreDirectUIDescriptionUnion4 `json:"ui:description,omitempty"`
 	UIFormattedValue *CreateIntegrationStoreDirectUIFormattedValue4   `json:"ui:formatted-value,omitempty"`
+	UIPaidOnly       *bool                                            `json:"ui:paid-only,omitempty"`
 	Default          []float64                                        `json:"default,omitempty"`
 }
 
@@ -2574,6 +2591,13 @@ func (o *CreateIntegrationStoreDirectPropertiesSlider) GetUIFormattedValue() *Cr
 		return nil
 	}
 	return o.UIFormattedValue
+}
+
+func (o *CreateIntegrationStoreDirectPropertiesSlider) GetUIPaidOnly() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.UIPaidOnly
 }
 
 func (o *CreateIntegrationStoreDirectPropertiesSlider) GetDefault() []float64 {
@@ -3146,6 +3170,7 @@ type CreateIntegrationStoreDirectPropertiesToggle struct {
 	UIDisabled       *CreateIntegrationStoreDirectUIDisabledUnion3    `json:"ui:disabled,omitempty"`
 	UIDescription    *CreateIntegrationStoreDirectUIDescriptionUnion3 `json:"ui:description,omitempty"`
 	UIFormattedValue *CreateIntegrationStoreDirectUIFormattedValue3   `json:"ui:formatted-value,omitempty"`
+	UIPaidOnly       *bool                                            `json:"ui:paid-only,omitempty"`
 }
 
 func (c CreateIntegrationStoreDirectPropertiesToggle) MarshalJSON() ([]byte, error) {
@@ -3227,6 +3252,13 @@ func (o *CreateIntegrationStoreDirectPropertiesToggle) GetUIFormattedValue() *Cr
 		return nil
 	}
 	return o.UIFormattedValue
+}
+
+func (o *CreateIntegrationStoreDirectPropertiesToggle) GetUIPaidOnly() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.UIPaidOnly
 }
 
 type CreateIntegrationStoreDirectTypeNumber1 string
@@ -3796,6 +3828,7 @@ type CreateIntegrationStoreDirectPropertiesNumber struct {
 	UIDisabled       *CreateIntegrationStoreDirectUIDisabledUnion2    `json:"ui:disabled,omitempty"`
 	UIDescription    *CreateIntegrationStoreDirectUIDescriptionUnion2 `json:"ui:description,omitempty"`
 	UIFormattedValue *CreateIntegrationStoreDirectUIFormattedValue2   `json:"ui:formatted-value,omitempty"`
+	UIPaidOnly       *bool                                            `json:"ui:paid-only,omitempty"`
 	UIPlaceholder    *string                                          `json:"ui:placeholder,omitempty"`
 }
 
@@ -3906,6 +3939,13 @@ func (o *CreateIntegrationStoreDirectPropertiesNumber) GetUIFormattedValue() *Cr
 		return nil
 	}
 	return o.UIFormattedValue
+}
+
+func (o *CreateIntegrationStoreDirectPropertiesNumber) GetUIPaidOnly() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.UIPaidOnly
 }
 
 func (o *CreateIntegrationStoreDirectPropertiesNumber) GetUIPlaceholder() *string {
@@ -4482,6 +4522,7 @@ type CreateIntegrationStoreDirectPropertiesStringInput struct {
 	UIDisabled       *CreateIntegrationStoreDirectUIDisabledUnion1    `json:"ui:disabled,omitempty"`
 	UIDescription    *CreateIntegrationStoreDirectUIDescriptionUnion1 `json:"ui:description,omitempty"`
 	UIFormattedValue *CreateIntegrationStoreDirectUIFormattedValue1   `json:"ui:formatted-value,omitempty"`
+	UIPaidOnly       *bool                                            `json:"ui:paid-only,omitempty"`
 	UIPlaceholder    *string                                          `json:"ui:placeholder,omitempty"`
 }
 
@@ -4592,6 +4633,13 @@ func (o *CreateIntegrationStoreDirectPropertiesStringInput) GetUIFormattedValue(
 		return nil
 	}
 	return o.UIFormattedValue
+}
+
+func (o *CreateIntegrationStoreDirectPropertiesStringInput) GetUIPaidOnly() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.UIPaidOnly
 }
 
 func (o *CreateIntegrationStoreDirectPropertiesStringInput) GetUIPlaceholder() *string {
@@ -4866,6 +4914,7 @@ type CreateIntegrationStoreDirectMetadataSchema struct {
 	Type       CreateIntegrationStoreDirectTypeObject                 `json:"type"`
 	Properties map[string]CreateIntegrationStoreDirectPropertiesUnion `json:"properties"`
 	Required   []string                                               `json:"required,omitempty"`
+	UIOrder    []string                                               `json:"ui:order,omitempty"`
 }
 
 func (o *CreateIntegrationStoreDirectMetadataSchema) GetType() CreateIntegrationStoreDirectTypeObject {
@@ -4887,6 +4936,13 @@ func (o *CreateIntegrationStoreDirectMetadataSchema) GetRequired() []string {
 		return nil
 	}
 	return o.Required
+}
+
+func (o *CreateIntegrationStoreDirectMetadataSchema) GetUIOrder() []string {
+	if o == nil {
+		return nil
+	}
+	return o.UIOrder
 }
 
 type ResourceLink struct {

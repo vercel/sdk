@@ -852,6 +852,7 @@ type GetConfigurationProductsPropertiesRadioButton struct {
 	UIDisabled       *GetConfigurationProductsUIDisabledUnion6    `json:"ui:disabled,omitempty"`
 	UIDescription    *GetConfigurationProductsUIDescriptionUnion6 `json:"ui:description,omitempty"`
 	UIFormattedValue *GetConfigurationProductsUIFormattedValue6   `json:"ui:formatted-value,omitempty"`
+	UIPaidOnly       *bool                                        `json:"ui:paid-only,omitempty"`
 	UIPlaceholder    *string                                      `json:"ui:placeholder,omitempty"`
 }
 
@@ -969,6 +970,13 @@ func (o *GetConfigurationProductsPropertiesRadioButton) GetUIFormattedValue() *G
 		return nil
 	}
 	return o.UIFormattedValue
+}
+
+func (o *GetConfigurationProductsPropertiesRadioButton) GetUIPaidOnly() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.UIPaidOnly
 }
 
 func (o *GetConfigurationProductsPropertiesRadioButton) GetUIPlaceholder() *string {
@@ -1866,6 +1874,7 @@ type GetConfigurationProductsPropertiesSelect struct {
 	UIDisabled       *GetConfigurationProductsUIDisabledUnion5    `json:"ui:disabled,omitempty"`
 	UIDescription    *GetConfigurationProductsUIDescriptionUnion5 `json:"ui:description,omitempty"`
 	UIFormattedValue *GetConfigurationProductsUIFormattedValue5   `json:"ui:formatted-value,omitempty"`
+	UIPaidOnly       *bool                                        `json:"ui:paid-only,omitempty"`
 	UIPlaceholder    *string                                      `json:"ui:placeholder,omitempty"`
 }
 
@@ -1983,6 +1992,13 @@ func (o *GetConfigurationProductsPropertiesSelect) GetUIFormattedValue() *GetCon
 		return nil
 	}
 	return o.UIFormattedValue
+}
+
+func (o *GetConfigurationProductsPropertiesSelect) GetUIPaidOnly() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.UIPaidOnly
 }
 
 func (o *GetConfigurationProductsPropertiesSelect) GetUIPlaceholder() *string {
@@ -2651,6 +2667,7 @@ type GetConfigurationProductsPropertiesSlider struct {
 	UIDisabled       *GetConfigurationProductsUIDisabledUnion4    `json:"ui:disabled,omitempty"`
 	UIDescription    *GetConfigurationProductsUIDescriptionUnion4 `json:"ui:description,omitempty"`
 	UIFormattedValue *GetConfigurationProductsUIFormattedValue4   `json:"ui:formatted-value,omitempty"`
+	UIPaidOnly       *bool                                        `json:"ui:paid-only,omitempty"`
 	Default          []float64                                    `json:"default,omitempty"`
 }
 
@@ -2754,6 +2771,13 @@ func (o *GetConfigurationProductsPropertiesSlider) GetUIFormattedValue() *GetCon
 		return nil
 	}
 	return o.UIFormattedValue
+}
+
+func (o *GetConfigurationProductsPropertiesSlider) GetUIPaidOnly() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.UIPaidOnly
 }
 
 func (o *GetConfigurationProductsPropertiesSlider) GetDefault() []float64 {
@@ -3326,6 +3350,7 @@ type GetConfigurationProductsPropertiesToggle struct {
 	UIDisabled       *GetConfigurationProductsUIDisabledUnion3    `json:"ui:disabled,omitempty"`
 	UIDescription    *GetConfigurationProductsUIDescriptionUnion3 `json:"ui:description,omitempty"`
 	UIFormattedValue *GetConfigurationProductsUIFormattedValue3   `json:"ui:formatted-value,omitempty"`
+	UIPaidOnly       *bool                                        `json:"ui:paid-only,omitempty"`
 }
 
 func (g GetConfigurationProductsPropertiesToggle) MarshalJSON() ([]byte, error) {
@@ -3407,6 +3432,13 @@ func (o *GetConfigurationProductsPropertiesToggle) GetUIFormattedValue() *GetCon
 		return nil
 	}
 	return o.UIFormattedValue
+}
+
+func (o *GetConfigurationProductsPropertiesToggle) GetUIPaidOnly() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.UIPaidOnly
 }
 
 type GetConfigurationProductsTypeNumber1 string
@@ -3976,6 +4008,7 @@ type GetConfigurationProductsPropertiesNumber struct {
 	UIDisabled       *GetConfigurationProductsUIDisabledUnion2    `json:"ui:disabled,omitempty"`
 	UIDescription    *GetConfigurationProductsUIDescriptionUnion2 `json:"ui:description,omitempty"`
 	UIFormattedValue *GetConfigurationProductsUIFormattedValue2   `json:"ui:formatted-value,omitempty"`
+	UIPaidOnly       *bool                                        `json:"ui:paid-only,omitempty"`
 	UIPlaceholder    *string                                      `json:"ui:placeholder,omitempty"`
 }
 
@@ -4086,6 +4119,13 @@ func (o *GetConfigurationProductsPropertiesNumber) GetUIFormattedValue() *GetCon
 		return nil
 	}
 	return o.UIFormattedValue
+}
+
+func (o *GetConfigurationProductsPropertiesNumber) GetUIPaidOnly() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.UIPaidOnly
 }
 
 func (o *GetConfigurationProductsPropertiesNumber) GetUIPlaceholder() *string {
@@ -4662,6 +4702,7 @@ type GetConfigurationProductsPropertiesStringInput struct {
 	UIDisabled       *GetConfigurationProductsUIDisabledUnion1    `json:"ui:disabled,omitempty"`
 	UIDescription    *GetConfigurationProductsUIDescriptionUnion1 `json:"ui:description,omitempty"`
 	UIFormattedValue *GetConfigurationProductsUIFormattedValue1   `json:"ui:formatted-value,omitempty"`
+	UIPaidOnly       *bool                                        `json:"ui:paid-only,omitempty"`
 	UIPlaceholder    *string                                      `json:"ui:placeholder,omitempty"`
 }
 
@@ -4772,6 +4813,13 @@ func (o *GetConfigurationProductsPropertiesStringInput) GetUIFormattedValue() *G
 		return nil
 	}
 	return o.UIFormattedValue
+}
+
+func (o *GetConfigurationProductsPropertiesStringInput) GetUIPaidOnly() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.UIPaidOnly
 }
 
 func (o *GetConfigurationProductsPropertiesStringInput) GetUIPlaceholder() *string {
@@ -5046,6 +5094,7 @@ type GetConfigurationProductsMetadataSchema struct {
 	Type       GetConfigurationProductsType                       `json:"type"`
 	Properties map[string]GetConfigurationProductsPropertiesUnion `json:"properties"`
 	Required   []string                                           `json:"required,omitempty"`
+	UIOrder    []string                                           `json:"ui:order,omitempty"`
 }
 
 func (o *GetConfigurationProductsMetadataSchema) GetType() GetConfigurationProductsType {
@@ -5067,6 +5116,13 @@ func (o *GetConfigurationProductsMetadataSchema) GetRequired() []string {
 		return nil
 	}
 	return o.Required
+}
+
+func (o *GetConfigurationProductsMetadataSchema) GetUIOrder() []string {
+	if o == nil {
+		return nil
+	}
+	return o.UIOrder
 }
 
 type GetConfigurationProductsProduct struct {

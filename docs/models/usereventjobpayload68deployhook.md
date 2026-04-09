@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UserEventJobPayload68DeployHook } from "@vercel/sdk/models/fortythree.js";
+import { UserEventJobPayload68DeployHook } from "@vercel/sdk/models/fortyfour.js";
 
 let value: UserEventJobPayload68DeployHook = {
   createdAt: 7626.98,

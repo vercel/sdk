@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyAlias } from "@vercel/sdk/models/getprojectsresponsebodyhistory.js";
+import { ResponseBodyAlias } from "@vercel/sdk/models/getprojectsresponsebodyissuermode.js";
 
 let value: ResponseBodyAlias = {
   deployment: {

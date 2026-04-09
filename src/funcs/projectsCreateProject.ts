@@ -11,13 +11,13 @@ import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
 import {
-  CreateProjectRequest,
-  CreateProjectRequest$outboundSchema,
-} from "../models/createprojectkind.js";
-import {
   CreateProjectResponseBody,
   CreateProjectResponseBody$inboundSchema,
 } from "../models/createprojectresponsebody.js";
+import {
+  CreateProjectRequest,
+  CreateProjectRequest$outboundSchema,
+} from "../models/flatratetier.js";
 import {
   ConnectionError,
   InvalidRequestError,

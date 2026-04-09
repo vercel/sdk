@@ -13,7 +13,7 @@ import { pathToFunc } from "../lib/url.js";
 import {
   GetMicrofrontendsInGroupRequest,
   GetMicrofrontendsInGroupRequest$outboundSchema,
-} from "../models/getmicrofrontendsingroupflatratetier.js";
+} from "../models/getmicrofrontendsingroupoidctokenconfig.js";
 import {
   GetMicrofrontendsInGroupResponseBody,
   GetMicrofrontendsInGroupResponseBody$inboundSchema,

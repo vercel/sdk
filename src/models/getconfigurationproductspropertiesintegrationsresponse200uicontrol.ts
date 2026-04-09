@@ -387,6 +387,7 @@ export type Properties11 = {
   uiFormattedValue?:
     | GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema11UiFormattedValue
     | undefined;
+  uiPaidOnly?: boolean | undefined;
   uiPlaceholder?: string | undefined;
   gitProviders?: Array<GitProviders> | undefined;
 };
@@ -517,6 +518,7 @@ export type Properties10 = {
   uiFormattedValue?:
     | GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaUiFormattedValue
     | undefined;
+  uiPaidOnly?: boolean | undefined;
   uiPlaceholder?: string | undefined;
 };
 
@@ -785,6 +787,7 @@ export type Properties9 = {
   uiFormattedValue?:
     | GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiFormattedValue
     | undefined;
+  uiPaidOnly?: boolean | undefined;
   uiPlaceholder?: string | undefined;
   default?: Array<string> | undefined;
   example?: Array<string> | undefined;
@@ -1020,6 +1023,7 @@ export type Properties8 = {
   uiFormattedValue?:
     | GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiFormattedValue
     | undefined;
+  uiPaidOnly?: boolean | undefined;
   uiPlaceholder?: string | undefined;
 };
 
@@ -1218,6 +1222,7 @@ export type Properties7 = {
   uiFormattedValue?:
     | GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiFormattedValue
     | undefined;
+  uiPaidOnly?: boolean | undefined;
   uiPlaceholder?: string | undefined;
   default?: Array<string> | undefined;
   example?: Array<string> | undefined;
@@ -2678,6 +2683,7 @@ export const Properties11$inboundSchema: z.ZodType<
       GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema11UiFormattedValue$inboundSchema
     ),
   ),
+  "ui:paid-only": types.optional(types.boolean()),
   "ui:placeholder": types.optional(types.string()),
   "git:providers": types.optional(z.array(GitProviders$inboundSchema)),
 }).transform((v) => {
@@ -2689,6 +2695,7 @@ export const Properties11$inboundSchema: z.ZodType<
     "ui:disabled": "uiDisabled",
     "ui:description": "uiDescription",
     "ui:formatted-value": "uiFormattedValue",
+    "ui:paid-only": "uiPaidOnly",
     "ui:placeholder": "uiPlaceholder",
     "git:providers": "gitProviders",
   });
@@ -2721,6 +2728,7 @@ export type Properties11$Outbound = {
   "ui:formatted-value"?:
     | GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema11UiFormattedValue$Outbound
     | undefined;
+  "ui:paid-only"?: boolean | undefined;
   "ui:placeholder"?: string | undefined;
   "git:providers"?: Array<string> | undefined;
 };
@@ -2767,6 +2775,7 @@ export const Properties11$outboundSchema: z.ZodType<
   uiFormattedValue: z.lazy(() =>
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema11UiFormattedValue$outboundSchema
   ).optional(),
+  uiPaidOnly: z.boolean().optional(),
   uiPlaceholder: z.string().optional(),
   gitProviders: z.array(GitProviders$outboundSchema).optional(),
 }).transform((v) => {
@@ -2778,6 +2787,7 @@ export const Properties11$outboundSchema: z.ZodType<
     uiDisabled: "ui:disabled",
     uiDescription: "ui:description",
     uiFormattedValue: "ui:formatted-value",
+    uiPaidOnly: "ui:paid-only",
     uiPlaceholder: "ui:placeholder",
     gitProviders: "git:providers",
   });
@@ -3411,6 +3421,7 @@ export const Properties10$inboundSchema: z.ZodType<
       GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaUiFormattedValue$inboundSchema
     ),
   ),
+  "ui:paid-only": types.optional(types.boolean()),
   "ui:placeholder": types.optional(types.string()),
 }).transform((v) => {
   return remap$(v, {
@@ -3421,6 +3432,7 @@ export const Properties10$inboundSchema: z.ZodType<
     "ui:disabled": "uiDisabled",
     "ui:description": "uiDescription",
     "ui:formatted-value": "uiFormattedValue",
+    "ui:paid-only": "uiPaidOnly",
     "ui:placeholder": "uiPlaceholder",
   });
 });
@@ -3457,6 +3469,7 @@ export type Properties10$Outbound = {
   "ui:formatted-value"?:
     | GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaUiFormattedValue$Outbound
     | undefined;
+  "ui:paid-only"?: boolean | undefined;
   "ui:placeholder"?: string | undefined;
 };
 
@@ -3507,6 +3520,7 @@ export const Properties10$outboundSchema: z.ZodType<
   uiFormattedValue: z.lazy(() =>
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaUiFormattedValue$outboundSchema
   ).optional(),
+  uiPaidOnly: z.boolean().optional(),
   uiPlaceholder: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -3517,6 +3531,7 @@ export const Properties10$outboundSchema: z.ZodType<
     uiDisabled: "ui:disabled",
     uiDescription: "ui:description",
     uiFormattedValue: "ui:formatted-value",
+    uiPaidOnly: "ui:paid-only",
     uiPlaceholder: "ui:placeholder",
   });
 });
@@ -4962,6 +4977,7 @@ export const Properties9$inboundSchema: z.ZodType<
       GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiFormattedValue$inboundSchema
     ),
   ),
+  "ui:paid-only": types.optional(types.boolean()),
   "ui:placeholder": types.optional(types.string()),
   default: types.optional(z.array(types.string())),
   example: types.optional(z.array(types.string())),
@@ -4975,6 +4991,7 @@ export const Properties9$inboundSchema: z.ZodType<
     "ui:disabled": "uiDisabled",
     "ui:description": "uiDescription",
     "ui:formatted-value": "uiFormattedValue",
+    "ui:paid-only": "uiPaidOnly",
     "ui:placeholder": "uiPlaceholder",
   });
 });
@@ -5014,6 +5031,7 @@ export type Properties9$Outbound = {
   "ui:formatted-value"?:
     | GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiFormattedValue$Outbound
     | undefined;
+  "ui:paid-only"?: boolean | undefined;
   "ui:placeholder"?: string | undefined;
   default?: Array<string> | undefined;
   example?: Array<string> | undefined;
@@ -5073,6 +5091,7 @@ export const Properties9$outboundSchema: z.ZodType<
   uiFormattedValue: z.lazy(() =>
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiFormattedValue$outboundSchema
   ).optional(),
+  uiPaidOnly: z.boolean().optional(),
   uiPlaceholder: z.string().optional(),
   default: z.array(z.string()).optional(),
   example: z.array(z.string()).optional(),
@@ -5086,6 +5105,7 @@ export const Properties9$outboundSchema: z.ZodType<
     uiDisabled: "ui:disabled",
     uiDescription: "ui:description",
     uiFormattedValue: "ui:formatted-value",
+    uiPaidOnly: "ui:paid-only",
     uiPlaceholder: "ui:placeholder",
   });
 });
@@ -6390,6 +6410,7 @@ export const Properties8$inboundSchema: z.ZodType<
       GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiFormattedValue$inboundSchema
     ),
   ),
+  "ui:paid-only": types.optional(types.boolean()),
   "ui:placeholder": types.optional(types.string()),
 }).transform((v) => {
   return remap$(v, {
@@ -6401,6 +6422,7 @@ export const Properties8$inboundSchema: z.ZodType<
     "ui:disabled": "uiDisabled",
     "ui:description": "uiDescription",
     "ui:formatted-value": "uiFormattedValue",
+    "ui:paid-only": "uiPaidOnly",
     "ui:placeholder": "uiPlaceholder",
   });
 });
@@ -6438,6 +6460,7 @@ export type Properties8$Outbound = {
   "ui:formatted-value"?:
     | GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiFormattedValue$Outbound
     | undefined;
+  "ui:paid-only"?: boolean | undefined;
   "ui:placeholder"?: string | undefined;
 };
 
@@ -6495,6 +6518,7 @@ export const Properties8$outboundSchema: z.ZodType<
   uiFormattedValue: z.lazy(() =>
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiFormattedValue$outboundSchema
   ).optional(),
+  uiPaidOnly: z.boolean().optional(),
   uiPlaceholder: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -6506,6 +6530,7 @@ export const Properties8$outboundSchema: z.ZodType<
     uiDisabled: "ui:disabled",
     uiDescription: "ui:description",
     uiFormattedValue: "ui:formatted-value",
+    uiPaidOnly: "ui:paid-only",
     uiPlaceholder: "ui:placeholder",
   });
 });
@@ -7538,6 +7563,7 @@ export const Properties7$inboundSchema: z.ZodType<
       GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiFormattedValue$inboundSchema
     ),
   ),
+  "ui:paid-only": types.optional(types.boolean()),
   "ui:placeholder": types.optional(types.string()),
   default: types.optional(z.array(types.string())),
   example: types.optional(z.array(types.string())),
@@ -7551,6 +7577,7 @@ export const Properties7$inboundSchema: z.ZodType<
     "ui:disabled": "uiDisabled",
     "ui:description": "uiDescription",
     "ui:formatted-value": "uiFormattedValue",
+    "ui:paid-only": "uiPaidOnly",
     "ui:placeholder": "uiPlaceholder",
   });
 });
@@ -7586,6 +7613,7 @@ export type Properties7$Outbound = {
   "ui:formatted-value"?:
     | GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiFormattedValue$Outbound
     | undefined;
+  "ui:paid-only"?: boolean | undefined;
   "ui:placeholder"?: string | undefined;
   default?: Array<string> | undefined;
   example?: Array<string> | undefined;
@@ -7639,6 +7667,7 @@ export const Properties7$outboundSchema: z.ZodType<
   uiFormattedValue: z.lazy(() =>
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiFormattedValue$outboundSchema
   ).optional(),
+  uiPaidOnly: z.boolean().optional(),
   uiPlaceholder: z.string().optional(),
   default: z.array(z.string()).optional(),
   example: z.array(z.string()).optional(),
@@ -7652,6 +7681,7 @@ export const Properties7$outboundSchema: z.ZodType<
     uiDisabled: "ui:disabled",
     uiDescription: "ui:description",
     uiFormattedValue: "ui:formatted-value",
+    uiPaidOnly: "ui:paid-only",
     uiPlaceholder: "ui:placeholder",
   });
 });

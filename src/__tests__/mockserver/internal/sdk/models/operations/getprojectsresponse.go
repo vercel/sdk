@@ -12,6 +12,59 @@ import (
 	"mockserver/internal/sdk/utils"
 )
 
+type GetProjectsTypeRedisRestAPIToken string
+
+const (
+	GetProjectsTypeRedisRestAPITokenRedisRestAPIToken GetProjectsTypeRedisRestAPIToken = "redis-rest-api-token"
+)
+
+func (e GetProjectsTypeRedisRestAPIToken) ToPointer() *GetProjectsTypeRedisRestAPIToken {
+	return &e
+}
+func (e *GetProjectsTypeRedisRestAPIToken) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "redis-rest-api-token":
+		*e = GetProjectsTypeRedisRestAPIToken(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetProjectsTypeRedisRestAPIToken: %v", v)
+	}
+}
+
+type GetProjectsContentHintRedisRestAPIToken struct {
+	Type    GetProjectsTypeRedisRestAPIToken `json:"type"`
+	StoreID string                           `json:"storeId"`
+}
+
+func (g GetProjectsContentHintRedisRestAPIToken) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetProjectsContentHintRedisRestAPIToken) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetProjectsContentHintRedisRestAPIToken) GetType() GetProjectsTypeRedisRestAPIToken {
+	if o == nil {
+		return GetProjectsTypeRedisRestAPIToken("")
+	}
+	return o.Type
+}
+
+func (o *GetProjectsContentHintRedisRestAPIToken) GetStoreID() string {
+	if o == nil {
+		return ""
+	}
+	return o.StoreID
+}
+
 type GetProjectsTypeRedisRestAPIURL string
 
 const (
@@ -5263,6 +5316,37 @@ func (u GetProjectsLogHeadersUnion) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type GetProjectsLogHeadersUnion: all fields are null")
 }
 
+type GetProjectsSecurityPlusMetadata struct {
+	UpdatedAt float64 `json:"updatedAt"`
+	// Timestamp when the feature was first enabled. Never changes after initial enablement.
+	FirstEnabledAt *float64 `json:"firstEnabledAt,omitempty"`
+}
+
+func (g GetProjectsSecurityPlusMetadata) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetProjectsSecurityPlusMetadata) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"updatedAt"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetProjectsSecurityPlusMetadata) GetUpdatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.UpdatedAt
+}
+
+func (o *GetProjectsSecurityPlusMetadata) GetFirstEnabledAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.FirstEnabledAt
+}
+
 type GetProjectsSecurity struct {
 	AttackModeEnabled      *bool                                                      `json:"attackModeEnabled,omitempty"`
 	AttackModeUpdatedAt    *float64                                                   `json:"attackModeUpdatedAt,omitempty"`
@@ -5280,6 +5364,7 @@ type GetProjectsSecurity struct {
 	RequestLogsKey         []string                                                   `json:"requestLogsKey,omitempty"`
 	LogHeaders             *GetProjectsLogHeadersUnion                                `json:"log_headers,omitempty"`
 	SecurityPlus           *bool                                                      `json:"securityPlus,omitempty"`
+	SecurityPlusMetadata   *GetProjectsSecurityPlusMetadata                           `json:"securityPlusMetadata,omitempty"`
 }
 
 func (g GetProjectsSecurity) MarshalJSON() ([]byte, error) {
@@ -5403,6 +5488,13 @@ func (o *GetProjectsSecurity) GetSecurityPlus() *bool {
 		return nil
 	}
 	return o.SecurityPlus
+}
+
+func (o *GetProjectsSecurity) GetSecurityPlusMetadata() *GetProjectsSecurityPlusMetadata {
+	if o == nil {
+		return nil
+	}
+	return o.SecurityPlusMetadata
 }
 
 // GetProjectsIssuerMode - - team: `https://oidc.vercel.com/[team_slug]` - global: `https://oidc.vercel.com`

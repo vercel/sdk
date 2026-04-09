@@ -195,6 +195,14 @@ export type UpdateProjectLogHeaders2 = ClosedEnum<
 
 export type UpdateProjectLogHeaders = Array<string> | UpdateProjectLogHeaders2;
 
+export type UpdateProjectSecurityPlusMetadata = {
+  updatedAt: number;
+  /**
+   * Timestamp when the feature was first enabled. Never changes after initial enablement.
+   */
+  firstEnabledAt?: number | undefined;
+};
+
 export type UpdateProjectSecurity = {
   attackModeEnabled?: boolean | undefined;
   attackModeUpdatedAt?: number | undefined;
@@ -210,6 +218,7 @@ export type UpdateProjectSecurity = {
   botIdEnabled?: boolean | undefined;
   logHeaders?: Array<string> | UpdateProjectLogHeaders2 | undefined;
   securityPlus?: boolean | undefined;
+  securityPlusMetadata?: UpdateProjectSecurityPlusMetadata | undefined;
 };
 
 /**
@@ -918,6 +927,50 @@ export function updateProjectLogHeadersFromJSON(
 }
 
 /** @internal */
+export const UpdateProjectSecurityPlusMetadata$inboundSchema: z.ZodType<
+  UpdateProjectSecurityPlusMetadata,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  updatedAt: types.number(),
+  firstEnabledAt: types.optional(types.number()),
+});
+/** @internal */
+export type UpdateProjectSecurityPlusMetadata$Outbound = {
+  updatedAt: number;
+  firstEnabledAt?: number | undefined;
+};
+
+/** @internal */
+export const UpdateProjectSecurityPlusMetadata$outboundSchema: z.ZodType<
+  UpdateProjectSecurityPlusMetadata$Outbound,
+  z.ZodTypeDef,
+  UpdateProjectSecurityPlusMetadata
+> = z.object({
+  updatedAt: z.number(),
+  firstEnabledAt: z.number().optional(),
+});
+
+export function updateProjectSecurityPlusMetadataToJSON(
+  updateProjectSecurityPlusMetadata: UpdateProjectSecurityPlusMetadata,
+): string {
+  return JSON.stringify(
+    UpdateProjectSecurityPlusMetadata$outboundSchema.parse(
+      updateProjectSecurityPlusMetadata,
+    ),
+  );
+}
+export function updateProjectSecurityPlusMetadataFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectSecurityPlusMetadata, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectSecurityPlusMetadata$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectSecurityPlusMetadata' from JSON`,
+  );
+}
+
+/** @internal */
 export const UpdateProjectSecurity$inboundSchema: z.ZodType<
   UpdateProjectSecurity,
   z.ZodTypeDef,
@@ -944,6 +997,9 @@ export const UpdateProjectSecurity$inboundSchema: z.ZodType<
     ]),
   ),
   securityPlus: types.optional(types.boolean()),
+  securityPlusMetadata: types.optional(
+    z.lazy(() => UpdateProjectSecurityPlusMetadata$inboundSchema),
+  ),
 }).transform((v) => {
   return remap$(v, {
     "log_headers": "logHeaders",
@@ -965,6 +1021,7 @@ export type UpdateProjectSecurity$Outbound = {
   botIdEnabled?: boolean | undefined;
   log_headers?: Array<string> | string | undefined;
   securityPlus?: boolean | undefined;
+  securityPlusMetadata?: UpdateProjectSecurityPlusMetadata$Outbound | undefined;
 };
 
 /** @internal */
@@ -992,6 +1049,9 @@ export const UpdateProjectSecurity$outboundSchema: z.ZodType<
     UpdateProjectLogHeaders2$outboundSchema,
   ]).optional(),
   securityPlus: z.boolean().optional(),
+  securityPlusMetadata: z.lazy(() =>
+    UpdateProjectSecurityPlusMetadata$outboundSchema
+  ).optional(),
 }).transform((v) => {
   return remap$(v, {
     logHeaders: "log_headers",

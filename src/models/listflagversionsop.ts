@@ -363,6 +363,7 @@ export type ListFlagVersionsState = ClosedEnum<typeof ListFlagVersionsState>;
 export type ListFlagVersionsData = {
   description?: string | undefined;
   permanent?: boolean | undefined;
+  tags?: Array<string> | undefined;
   experiment?: ListFlagVersionsExperiment | undefined;
   variants: Array<ListFlagVersionsVariants>;
   environments: { [k: string]: ListFlagVersionsEnvironments };
@@ -1991,6 +1992,7 @@ export const ListFlagVersionsData$inboundSchema: z.ZodType<
 > = z.object({
   description: types.optional(types.string()),
   permanent: types.optional(types.boolean()),
+  tags: types.optional(z.array(types.string())),
   experiment: types.optional(
     z.lazy(() => ListFlagVersionsExperiment$inboundSchema),
   ),
@@ -2005,6 +2007,7 @@ export const ListFlagVersionsData$inboundSchema: z.ZodType<
 export type ListFlagVersionsData$Outbound = {
   description?: string | undefined;
   permanent?: boolean | undefined;
+  tags?: Array<string> | undefined;
   experiment?: ListFlagVersionsExperiment$Outbound | undefined;
   variants: Array<ListFlagVersionsVariants$Outbound>;
   environments: { [k: string]: ListFlagVersionsEnvironments$Outbound };
@@ -2020,6 +2023,7 @@ export const ListFlagVersionsData$outboundSchema: z.ZodType<
 > = z.object({
   description: z.string().optional(),
   permanent: z.boolean().optional(),
+  tags: z.array(z.string()).optional(),
   experiment: z.lazy(() => ListFlagVersionsExperiment$outboundSchema)
     .optional(),
   variants: z.array(z.lazy(() => ListFlagVersionsVariants$outboundSchema)),

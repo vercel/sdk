@@ -322,6 +322,7 @@ export type Metadata = {
 export type Flag = {
   description?: string | undefined;
   permanent?: boolean | undefined;
+  tags?: Array<string> | undefined;
   experiment?: Experiment | undefined;
   variants: Array<Variants>;
   id: string;
@@ -1713,6 +1714,7 @@ export const Flag$inboundSchema: z.ZodType<Flag, z.ZodTypeDef, unknown> = z
   .object({
     description: types.optional(types.string()),
     permanent: types.optional(types.boolean()),
+    tags: types.optional(z.array(types.string())),
     experiment: types.optional(z.lazy(() => Experiment$inboundSchema)),
     variants: z.array(z.lazy(() => Variants$inboundSchema)),
     id: types.string(),
@@ -1734,6 +1736,7 @@ export const Flag$inboundSchema: z.ZodType<Flag, z.ZodTypeDef, unknown> = z
 export type Flag$Outbound = {
   description?: string | undefined;
   permanent?: boolean | undefined;
+  tags?: Array<string> | undefined;
   experiment?: Experiment$Outbound | undefined;
   variants: Array<Variants$Outbound>;
   id: string;
@@ -1757,6 +1760,7 @@ export const Flag$outboundSchema: z.ZodType<Flag$Outbound, z.ZodTypeDef, Flag> =
   z.object({
     description: z.string().optional(),
     permanent: z.boolean().optional(),
+    tags: z.array(z.string()).optional(),
     experiment: z.lazy(() => Experiment$outboundSchema).optional(),
     variants: z.array(z.lazy(() => Variants$outboundSchema)),
     id: z.string(),

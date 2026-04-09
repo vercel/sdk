@@ -1279,7 +1279,6 @@ export type UpdateMicrofrontendsPermissions = {
   repository?: Array<ACLAction> | undefined;
   samlConfig?: Array<ACLAction> | undefined;
   secret?: Array<ACLAction> | undefined;
-  securityPlusConfiguration?: Array<ACLAction> | undefined;
   sensitiveEnvironmentVariablePolicy?: Array<ACLAction> | undefined;
   sharedEnvVars?: Array<ACLAction> | undefined;
   sharedEnvVarsProduction?: Array<ACLAction> | undefined;
@@ -1375,7 +1374,9 @@ export type UpdateMicrofrontendsPermissions = {
   projectTransfer?: Array<ACLAction> | undefined;
   projectTransferOut?: Array<ACLAction> | undefined;
   projectUsage?: Array<ACLAction> | undefined;
+  pageIntegrity?: Array<ACLAction> | undefined;
   seawallConfig?: Array<ACLAction> | undefined;
+  securityPlusConfiguration?: Array<ACLAction> | undefined;
   sharedEnvVarConnection?: Array<ACLAction> | undefined;
   skewProtection?: Array<ACLAction> | undefined;
   analytics?: Array<ACLAction> | undefined;
@@ -1645,6 +1646,14 @@ export type UpdateMicrofrontendsLogHeaders =
   | Array<string>
   | UpdateMicrofrontendsLogHeaders2;
 
+export type UpdateMicrofrontendsSecurityPlusMetadata = {
+  updatedAt: number;
+  /**
+   * Timestamp when the feature was first enabled. Never changes after initial enablement.
+   */
+  firstEnabledAt?: number | undefined;
+};
+
 export type UpdateMicrofrontendsSecurity = {
   attackModeEnabled?: boolean | undefined;
   attackModeUpdatedAt?: number | undefined;
@@ -1660,6 +1669,7 @@ export type UpdateMicrofrontendsSecurity = {
   botIdEnabled?: boolean | undefined;
   logHeaders?: Array<string> | UpdateMicrofrontendsLogHeaders2 | undefined;
   securityPlus?: boolean | undefined;
+  securityPlusMetadata?: UpdateMicrofrontendsSecurityPlusMetadata | undefined;
 };
 
 /**
@@ -6843,7 +6853,6 @@ export const UpdateMicrofrontendsPermissions$inboundSchema: z.ZodType<
   repository: types.optional(z.array(ACLAction$inboundSchema)),
   samlConfig: types.optional(z.array(ACLAction$inboundSchema)),
   secret: types.optional(z.array(ACLAction$inboundSchema)),
-  securityPlusConfiguration: types.optional(z.array(ACLAction$inboundSchema)),
   sensitiveEnvironmentVariablePolicy: types.optional(
     z.array(ACLAction$inboundSchema),
   ),
@@ -6953,7 +6962,9 @@ export const UpdateMicrofrontendsPermissions$inboundSchema: z.ZodType<
   projectTransfer: types.optional(z.array(ACLAction$inboundSchema)),
   projectTransferOut: types.optional(z.array(ACLAction$inboundSchema)),
   projectUsage: types.optional(z.array(ACLAction$inboundSchema)),
+  pageIntegrity: types.optional(z.array(ACLAction$inboundSchema)),
   seawallConfig: types.optional(z.array(ACLAction$inboundSchema)),
+  securityPlusConfiguration: types.optional(z.array(ACLAction$inboundSchema)),
   sharedEnvVarConnection: types.optional(z.array(ACLAction$inboundSchema)),
   skewProtection: types.optional(z.array(ACLAction$inboundSchema)),
   analytics: types.optional(z.array(ACLAction$inboundSchema)),
@@ -7104,7 +7115,6 @@ export type UpdateMicrofrontendsPermissions$Outbound = {
   repository?: Array<string> | undefined;
   samlConfig?: Array<string> | undefined;
   secret?: Array<string> | undefined;
-  securityPlusConfiguration?: Array<string> | undefined;
   sensitiveEnvironmentVariablePolicy?: Array<string> | undefined;
   sharedEnvVars?: Array<string> | undefined;
   sharedEnvVarsProduction?: Array<string> | undefined;
@@ -7200,7 +7210,9 @@ export type UpdateMicrofrontendsPermissions$Outbound = {
   projectTransfer?: Array<string> | undefined;
   projectTransferOut?: Array<string> | undefined;
   projectUsage?: Array<string> | undefined;
+  pageIntegrity?: Array<string> | undefined;
   seawallConfig?: Array<string> | undefined;
+  securityPlusConfiguration?: Array<string> | undefined;
   sharedEnvVarConnection?: Array<string> | undefined;
   skewProtection?: Array<string> | undefined;
   analytics?: Array<string> | undefined;
@@ -7354,7 +7366,6 @@ export const UpdateMicrofrontendsPermissions$outboundSchema: z.ZodType<
   repository: z.array(ACLAction$outboundSchema).optional(),
   samlConfig: z.array(ACLAction$outboundSchema).optional(),
   secret: z.array(ACLAction$outboundSchema).optional(),
-  securityPlusConfiguration: z.array(ACLAction$outboundSchema).optional(),
   sensitiveEnvironmentVariablePolicy: z.array(ACLAction$outboundSchema)
     .optional(),
   sharedEnvVars: z.array(ACLAction$outboundSchema).optional(),
@@ -7454,7 +7465,9 @@ export const UpdateMicrofrontendsPermissions$outboundSchema: z.ZodType<
   projectTransfer: z.array(ACLAction$outboundSchema).optional(),
   projectTransferOut: z.array(ACLAction$outboundSchema).optional(),
   projectUsage: z.array(ACLAction$outboundSchema).optional(),
+  pageIntegrity: z.array(ACLAction$outboundSchema).optional(),
   seawallConfig: z.array(ACLAction$outboundSchema).optional(),
+  securityPlusConfiguration: z.array(ACLAction$outboundSchema).optional(),
   sharedEnvVarConnection: z.array(ACLAction$outboundSchema).optional(),
   skewProtection: z.array(ACLAction$outboundSchema).optional(),
   analytics: z.array(ACLAction$outboundSchema).optional(),
@@ -8532,6 +8545,57 @@ export function updateMicrofrontendsLogHeadersFromJSON(
 }
 
 /** @internal */
+export const UpdateMicrofrontendsSecurityPlusMetadata$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsSecurityPlusMetadata,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  updatedAt: types.number(),
+  firstEnabledAt: types.optional(types.number()),
+});
+/** @internal */
+export type UpdateMicrofrontendsSecurityPlusMetadata$Outbound = {
+  updatedAt: number;
+  firstEnabledAt?: number | undefined;
+};
+
+/** @internal */
+export const UpdateMicrofrontendsSecurityPlusMetadata$outboundSchema: z.ZodType<
+  UpdateMicrofrontendsSecurityPlusMetadata$Outbound,
+  z.ZodTypeDef,
+  UpdateMicrofrontendsSecurityPlusMetadata
+> = z.object({
+  updatedAt: z.number(),
+  firstEnabledAt: z.number().optional(),
+});
+
+export function updateMicrofrontendsSecurityPlusMetadataToJSON(
+  updateMicrofrontendsSecurityPlusMetadata:
+    UpdateMicrofrontendsSecurityPlusMetadata,
+): string {
+  return JSON.stringify(
+    UpdateMicrofrontendsSecurityPlusMetadata$outboundSchema.parse(
+      updateMicrofrontendsSecurityPlusMetadata,
+    ),
+  );
+}
+export function updateMicrofrontendsSecurityPlusMetadataFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UpdateMicrofrontendsSecurityPlusMetadata,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateMicrofrontendsSecurityPlusMetadata$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UpdateMicrofrontendsSecurityPlusMetadata' from JSON`,
+  );
+}
+
+/** @internal */
 export const UpdateMicrofrontendsSecurity$inboundSchema: z.ZodType<
   UpdateMicrofrontendsSecurity,
   z.ZodTypeDef,
@@ -8558,6 +8622,9 @@ export const UpdateMicrofrontendsSecurity$inboundSchema: z.ZodType<
     ]),
   ),
   securityPlus: types.optional(types.boolean()),
+  securityPlusMetadata: types.optional(
+    z.lazy(() => UpdateMicrofrontendsSecurityPlusMetadata$inboundSchema),
+  ),
 }).transform((v) => {
   return remap$(v, {
     "log_headers": "logHeaders",
@@ -8579,6 +8646,9 @@ export type UpdateMicrofrontendsSecurity$Outbound = {
   botIdEnabled?: boolean | undefined;
   log_headers?: Array<string> | string | undefined;
   securityPlus?: boolean | undefined;
+  securityPlusMetadata?:
+    | UpdateMicrofrontendsSecurityPlusMetadata$Outbound
+    | undefined;
 };
 
 /** @internal */
@@ -8606,6 +8676,9 @@ export const UpdateMicrofrontendsSecurity$outboundSchema: z.ZodType<
     UpdateMicrofrontendsLogHeaders2$outboundSchema,
   ]).optional(),
   securityPlus: z.boolean().optional(),
+  securityPlusMetadata: z.lazy(() =>
+    UpdateMicrofrontendsSecurityPlusMetadata$outboundSchema
+  ).optional(),
 }).transform((v) => {
   return remap$(v, {
     logHeaders: "log_headers",

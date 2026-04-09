@@ -5,7 +5,7 @@
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupIssuerMode } from "@vercel/sdk/models/getmicrofrontendsingroupflatratetier.js";
+import { GetMicrofrontendsInGroupIssuerMode } from "@vercel/sdk/models/getmicrofrontendsingroupoidctokenconfig.js";
 
 let value: GetMicrofrontendsInGroupIssuerMode = "global";
 ```

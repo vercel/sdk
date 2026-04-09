@@ -37,9 +37,6 @@ import {
   CreateProjectIpBuckets$inboundSchema,
   CreateProjectIpBuckets$Outbound,
   CreateProjectIpBuckets$outboundSchema,
-  CreateProjectKind,
-  CreateProjectKind$inboundSchema,
-  CreateProjectKind$outboundSchema,
   CreateProjectMicrofrontends,
   CreateProjectMicrofrontends$inboundSchema,
   CreateProjectMicrofrontends$Outbound,
@@ -153,8 +150,19 @@ import {
   SpeedInsights$inboundSchema,
   SpeedInsights$Outbound,
   SpeedInsights$outboundSchema,
-} from "./createprojectkind.js";
+} from "./flatratetier.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+/**
+ * Billing mode. Always 'flat' for flat-rate projects.
+ */
+export const CreateProjectKind = {
+  Flat: "flat",
+} as const;
+/**
+ * Billing mode. Always 'flat' for flat-rate projects.
+ */
+export type CreateProjectKind = ClosedEnum<typeof CreateProjectKind>;
 
 export type UsageStatus = {
   /**
@@ -573,6 +581,15 @@ export type CreateProjectResponseBody = {
   protectedSourcemaps?: boolean | undefined;
   tracing?: CreateProjectTracing | undefined;
 };
+
+/** @internal */
+export const CreateProjectKind$inboundSchema: z.ZodNativeEnum<
+  typeof CreateProjectKind
+> = z.nativeEnum(CreateProjectKind);
+/** @internal */
+export const CreateProjectKind$outboundSchema: z.ZodNativeEnum<
+  typeof CreateProjectKind
+> = CreateProjectKind$inboundSchema;
 
 /** @internal */
 export const UsageStatus$inboundSchema: z.ZodType<

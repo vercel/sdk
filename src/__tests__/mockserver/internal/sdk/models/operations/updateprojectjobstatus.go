@@ -7497,7 +7497,6 @@ type UpdateProjectPermissions struct {
 	Repository                               []components.ACLAction `json:"repository,omitempty"`
 	SamlConfig                               []components.ACLAction `json:"samlConfig,omitempty"`
 	Secret                                   []components.ACLAction `json:"secret,omitempty"`
-	SecurityPlusConfiguration                []components.ACLAction `json:"securityPlusConfiguration,omitempty"`
 	SensitiveEnvironmentVariablePolicy       []components.ACLAction `json:"sensitiveEnvironmentVariablePolicy,omitempty"`
 	SharedEnvVars                            []components.ACLAction `json:"sharedEnvVars,omitempty"`
 	SharedEnvVarsProduction                  []components.ACLAction `json:"sharedEnvVarsProduction,omitempty"`
@@ -7593,7 +7592,9 @@ type UpdateProjectPermissions struct {
 	ProjectTransfer                          []components.ACLAction `json:"projectTransfer,omitempty"`
 	ProjectTransferOut                       []components.ACLAction `json:"projectTransferOut,omitempty"`
 	ProjectUsage                             []components.ACLAction `json:"projectUsage,omitempty"`
+	PageIntegrity                            []components.ACLAction `json:"pageIntegrity,omitempty"`
 	SeawallConfig                            []components.ACLAction `json:"seawallConfig,omitempty"`
+	SecurityPlusConfiguration                []components.ACLAction `json:"securityPlusConfiguration,omitempty"`
 	SharedEnvVarConnection                   []components.ACLAction `json:"sharedEnvVarConnection,omitempty"`
 	SkewProtection                           []components.ACLAction `json:"skewProtection,omitempty"`
 	Analytics                                []components.ACLAction `json:"analytics,omitempty"`
@@ -8547,13 +8548,6 @@ func (o *UpdateProjectPermissions) GetSecret() []components.ACLAction {
 	return o.Secret
 }
 
-func (o *UpdateProjectPermissions) GetSecurityPlusConfiguration() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.SecurityPlusConfiguration
-}
-
 func (o *UpdateProjectPermissions) GetSensitiveEnvironmentVariablePolicy() []components.ACLAction {
 	if o == nil {
 		return nil
@@ -9219,11 +9213,25 @@ func (o *UpdateProjectPermissions) GetProjectUsage() []components.ACLAction {
 	return o.ProjectUsage
 }
 
+func (o *UpdateProjectPermissions) GetPageIntegrity() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.PageIntegrity
+}
+
 func (o *UpdateProjectPermissions) GetSeawallConfig() []components.ACLAction {
 	if o == nil {
 		return nil
 	}
 	return o.SeawallConfig
+}
+
+func (o *UpdateProjectPermissions) GetSecurityPlusConfiguration() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.SecurityPlusConfiguration
 }
 
 func (o *UpdateProjectPermissions) GetSharedEnvVarConnection() []components.ACLAction {

@@ -82,6 +82,8 @@ type ListTeamFlagsRequest struct {
 	Search *string `queryParam:"style=form,explode=true,name=search"`
 	// The kind of flags to retrieve.
 	Kind *ListTeamFlagsKind `queryParam:"style=form,explode=true,name=kind"`
+	// Filter flags by tag. Repeat the parameter for multiple tags (all must match).
+	Tags []string `queryParam:"style=form,explode=true,name=tags"`
 	// The Team identifier to perform the request on behalf of.
 	TeamID string `pathParam:"style=simple,explode=false,name=teamId"`
 	// The Team slug to perform the request on behalf of.
@@ -139,6 +141,13 @@ func (o *ListTeamFlagsRequest) GetKind() *ListTeamFlagsKind {
 		return nil
 	}
 	return o.Kind
+}
+
+func (o *ListTeamFlagsRequest) GetTags() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Tags
 }
 
 func (o *ListTeamFlagsRequest) GetTeamID() string {

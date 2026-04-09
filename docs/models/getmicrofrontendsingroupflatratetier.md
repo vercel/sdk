@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupFlatRateTier } from "@vercel/sdk/models/getmicrofrontendsingroupflatratetier.js";
+import { GetMicrofrontendsInGroupFlatRateTier } from "@vercel/sdk/models/getmicrofrontendsingroupresponsebody.js";
 
 let value: GetMicrofrontendsInGroupFlatRateTier = "base";
 ```

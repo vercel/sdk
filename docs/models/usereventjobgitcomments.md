@@ -5,7 +5,7 @@ Since June 2023 Determines if comments should be posted to the git host. Replace
 ## Example Usage
 
 ```typescript
-import { UserEventJobGitComments } from "@vercel/sdk/models/fortythree.js";
+import { UserEventJobGitComments } from "@vercel/sdk/models/fortyfour.js";
 
 let value: UserEventJobGitComments = {
   onPullRequest: false,

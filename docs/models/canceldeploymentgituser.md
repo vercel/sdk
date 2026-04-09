@@ -15,8 +15,9 @@ let value: CancelDeploymentGitUser = {
 
 ## Fields
 
-| Field                       | Type                        | Required                    | Description                 |
-| --------------------------- | --------------------------- | --------------------------- | --------------------------- |
-| `id`                        | *models.CancelDeploymentId* | :heavy_check_mark:          | N/A                         |
-| `login`                     | *string*                    | :heavy_check_mark:          | Git provider username/login |
-| `type`                      | *string*                    | :heavy_minus_sign:          | User type                   |
+| Field                                        | Type                                         | Required                                     | Description                                  |
+| -------------------------------------------- | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
+| `id`                                         | *models.CancelDeploymentId*                  | :heavy_check_mark:                           | N/A                                          |
+| `login`                                      | *string*                                     | :heavy_check_mark:                           | Git provider username/login                  |
+| `type`                                       | *string*                                     | :heavy_minus_sign:                           | User type                                    |
+| `provider`                                   | *string*                                     | :heavy_minus_sign:                           | The git provider (github, gitlab, bitbucket) |

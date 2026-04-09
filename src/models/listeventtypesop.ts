@@ -267,6 +267,7 @@ export const ListEventTypesName = {
   ProjectConnectConfigurations: "project-connect-configurations",
   ProjectCreated: "project-created",
   ProjectCronJobsToggled: "project-cron-jobs-toggled",
+  ProjectDelegatedProtectionEnabled: "project-delegated-protection-enabled",
   ProjectDelete: "project-delete",
   ProjectDomainUnverified: "project-domain-unverified",
   ProjectDomainVerified: "project-domain-verified",

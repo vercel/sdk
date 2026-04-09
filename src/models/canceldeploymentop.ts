@@ -1823,6 +1823,10 @@ export type CancelDeploymentGitUser = {
    * User type
    */
   type?: string | undefined;
+  /**
+   * The git provider (github, gitlab, bitbucket)
+   */
+  provider?: string | undefined;
 };
 
 /**
@@ -8408,12 +8412,14 @@ export const CancelDeploymentGitUser$inboundSchema: z.ZodType<
   id: smartUnion([types.string(), types.number()]),
   login: types.string(),
   type: types.optional(types.string()),
+  provider: types.optional(types.string()),
 });
 /** @internal */
 export type CancelDeploymentGitUser$Outbound = {
   id: string | number;
   login: string;
   type?: string | undefined;
+  provider?: string | undefined;
 };
 
 /** @internal */
@@ -8425,6 +8431,7 @@ export const CancelDeploymentGitUser$outboundSchema: z.ZodType<
   id: smartUnion([z.string(), z.number()]),
   login: z.string(),
   type: z.string().optional(),
+  provider: z.string().optional(),
 });
 
 export function cancelDeploymentGitUserToJSON(

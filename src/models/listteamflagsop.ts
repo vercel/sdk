@@ -69,6 +69,10 @@ export type ListTeamFlagsRequest = {
    */
   kind?: QueryParamKind | undefined;
   /**
+   * Filter flags by tag. Repeat the parameter for multiple tags (all must match).
+   */
+  tags?: Array<string> | undefined;
+  /**
    * The Team identifier to perform the request on behalf of.
    */
   teamId: string;
@@ -117,6 +121,7 @@ export const ListTeamFlagsRequest$inboundSchema: z.ZodType<
   cursor: types.optional(types.string()),
   search: types.optional(types.string()),
   kind: types.optional(QueryParamKind$inboundSchema),
+  tags: types.optional(z.array(types.string())),
   teamId: types.string(),
   slug: types.optional(types.string()),
 });
@@ -128,6 +133,7 @@ export type ListTeamFlagsRequest$Outbound = {
   cursor?: string | undefined;
   search?: string | undefined;
   kind?: string | undefined;
+  tags?: Array<string> | undefined;
   teamId: string;
   slug?: string | undefined;
 };
@@ -144,6 +150,7 @@ export const ListTeamFlagsRequest$outboundSchema: z.ZodType<
   cursor: z.string().optional(),
   search: z.string().optional(),
   kind: QueryParamKind$outboundSchema.optional(),
+  tags: z.array(z.string()).optional(),
   teamId: z.string(),
   slug: z.string().optional(),
 });

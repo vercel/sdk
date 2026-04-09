@@ -5,14 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndSixtySix } from "@vercel/sdk/models/twohundredandtwentysix.js";
+import { TwoHundredAndSixtySix } from "@vercel/sdk/models/twohundredandtwentyseven.js";
 
-let value: TwoHundredAndSixtySix = {};
+let value: TwoHundredAndSixtySix = {
+  enabled: false,
+  scope: "log-drains",
+};
 ```
 
 ## Fields
 
-| Field                                                | Type                                                 | Required                                             | Description                                          |
-| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
-| `previous`                                           | Record<string, *models.UserEventPayload266Previous*> | :heavy_minus_sign:                                   | N/A                                                  |
-| `next`                                               | Record<string, *models.UserEventPayload266Next*>     | :heavy_minus_sign:                                   | N/A                                                  |
+| Field                              | Type                               | Required                           | Description                        |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| `enabled`                          | *boolean*                          | :heavy_check_mark:                 | N/A                                |
+| `scope`                            | [models.Scope](../models/scope.md) | :heavy_check_mark:                 | N/A                                |

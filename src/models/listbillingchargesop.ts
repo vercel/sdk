@@ -128,13 +128,13 @@ export type ListBillingChargesResponseBody = {
    */
   chargePeriodEnd: string;
   /**
-   * Volume of resource consumed
+   * Volume of resource consumed. Null when a charge does not involve measurable consumption quantity.
    */
-  consumedQuantity: number;
+  consumedQuantity: number | null;
   /**
-   * Unit of measurement for consumed quantity
+   * Unit of measurement for consumed quantity. Null when the charge is not measured in units.
    */
-  consumedUnit: string;
+  consumedUnit: string | null;
   /**
    * Amortized cost representation including discounts, pre-commitment credit purchase amount, etc.
    */
@@ -276,8 +276,8 @@ export const ListBillingChargesResponseBody$inboundSchema: z.ZodType<
   ChargeCategory: ChargeCategory$inboundSchema,
   ChargePeriodStart: types.string(),
   ChargePeriodEnd: types.string(),
-  ConsumedQuantity: types.number(),
-  ConsumedUnit: types.string(),
+  ConsumedQuantity: types.nullable(types.number()),
+  ConsumedUnit: types.nullable(types.string()),
   EffectiveCost: types.number(),
   RegionId: types.optional(types.string()),
   RegionName: types.optional(types.string()),
@@ -318,8 +318,8 @@ export type ListBillingChargesResponseBody$Outbound = {
   ChargeCategory: string;
   ChargePeriodStart: string;
   ChargePeriodEnd: string;
-  ConsumedQuantity: number;
-  ConsumedUnit: string;
+  ConsumedQuantity: number | null;
+  ConsumedUnit: string | null;
   EffectiveCost: number;
   RegionId?: string | undefined;
   RegionName?: string | undefined;
@@ -344,8 +344,8 @@ export const ListBillingChargesResponseBody$outboundSchema: z.ZodType<
   chargeCategory: ChargeCategory$outboundSchema,
   chargePeriodStart: z.string(),
   chargePeriodEnd: z.string(),
-  consumedQuantity: z.number(),
-  consumedUnit: z.string(),
+  consumedQuantity: z.nullable(z.number()),
+  consumedUnit: z.nullable(z.string()),
   effectiveCost: z.number(),
   regionId: z.string().optional(),
   regionName: z.string().optional(),

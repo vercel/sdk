@@ -199,6 +199,26 @@ func (u GetMicrofrontendsInGroupLogHeadersUnion) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type GetMicrofrontendsInGroupLogHeadersUnion: all fields are null")
 }
 
+type GetMicrofrontendsInGroupSecurityPlusMetadata struct {
+	UpdatedAt float64 `json:"updatedAt"`
+	// Timestamp when the feature was first enabled. Never changes after initial enablement.
+	FirstEnabledAt *float64 `json:"firstEnabledAt,omitempty"`
+}
+
+func (o *GetMicrofrontendsInGroupSecurityPlusMetadata) GetUpdatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.UpdatedAt
+}
+
+func (o *GetMicrofrontendsInGroupSecurityPlusMetadata) GetFirstEnabledAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.FirstEnabledAt
+}
+
 type GetMicrofrontendsInGroupSecurity struct {
 	AttackModeEnabled      *bool                                                                   `json:"attackModeEnabled,omitempty"`
 	AttackModeUpdatedAt    *float64                                                                `json:"attackModeUpdatedAt,omitempty"`
@@ -214,6 +234,7 @@ type GetMicrofrontendsInGroupSecurity struct {
 	BotIDEnabled           *bool                                                                   `json:"botIdEnabled,omitempty"`
 	LogHeaders             *GetMicrofrontendsInGroupLogHeadersUnion                                `json:"log_headers,omitempty"`
 	SecurityPlus           *bool                                                                   `json:"securityPlus,omitempty"`
+	SecurityPlusMetadata   *GetMicrofrontendsInGroupSecurityPlusMetadata                           `json:"securityPlusMetadata,omitempty"`
 }
 
 func (o *GetMicrofrontendsInGroupSecurity) GetAttackModeEnabled() *bool {
@@ -312,6 +333,13 @@ func (o *GetMicrofrontendsInGroupSecurity) GetSecurityPlus() *bool {
 		return nil
 	}
 	return o.SecurityPlus
+}
+
+func (o *GetMicrofrontendsInGroupSecurity) GetSecurityPlusMetadata() *GetMicrofrontendsInGroupSecurityPlusMetadata {
+	if o == nil {
+		return nil
+	}
+	return o.SecurityPlusMetadata
 }
 
 // GetMicrofrontendsInGroupIssuerMode - - team: `https://oidc.vercel.com/[team_slug]` - global: `https://oidc.vercel.com`

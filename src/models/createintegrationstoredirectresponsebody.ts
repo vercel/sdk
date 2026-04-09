@@ -210,6 +210,7 @@ export type CreateIntegrationStoreDirectProperties6 = {
   uiFormattedValue?:
     | CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiFormattedValue
     | undefined;
+  uiPaidOnly?: boolean | undefined;
   uiPlaceholder?: string | undefined;
 };
 
@@ -390,6 +391,7 @@ export type CreateIntegrationStoreDirectProperties5 = {
   uiFormattedValue?:
     | CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONUiFormattedValue
     | undefined;
+  uiPaidOnly?: boolean | undefined;
   uiPlaceholder?: string | undefined;
 };
 
@@ -531,6 +533,7 @@ export type CreateIntegrationStoreDirectProperties4 = {
   uiFormattedValue?:
     | CreateIntegrationStoreDirectPropertiesIntegrationsResponse200UiFormattedValue
     | undefined;
+  uiPaidOnly?: boolean | undefined;
   default?: Array<number> | undefined;
 };
 
@@ -645,6 +648,7 @@ export type CreateIntegrationStoreDirectProperties3 = {
   uiFormattedValue?:
     | CreateIntegrationStoreDirectPropertiesIntegrationsResponseUiFormattedValue
     | undefined;
+  uiPaidOnly?: boolean | undefined;
 };
 
 export const CreateIntegrationStoreDirectPropertiesIntegrationsType = {
@@ -758,6 +762,7 @@ export type CreateIntegrationStoreDirectProperties2 = {
   uiFormattedValue?:
     | CreateIntegrationStoreDirectPropertiesIntegrationsUiFormattedValue
     | undefined;
+  uiPaidOnly?: boolean | undefined;
   uiPlaceholder?: string | undefined;
 };
 
@@ -870,6 +875,7 @@ export type CreateIntegrationStoreDirectProperties1 = {
   uiFormattedValue?:
     | CreateIntegrationStoreDirectPropertiesUiFormattedValue
     | undefined;
+  uiPaidOnly?: boolean | undefined;
   uiPlaceholder?: string | undefined;
 };
 
@@ -903,6 +909,7 @@ export type CreateIntegrationStoreDirectMetadataSchema = {
       | CreateIntegrationStoreDirectProperties11;
   };
   required?: Array<string> | undefined;
+  uiOrder?: Array<string> | undefined;
 };
 
 export type ResourceLinks = {
@@ -1977,6 +1984,7 @@ export const CreateIntegrationStoreDirectProperties6$inboundSchema: z.ZodType<
       CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiFormattedValue$inboundSchema
     ),
   ),
+  "ui:paid-only": types.optional(types.boolean()),
   "ui:placeholder": types.optional(types.string()),
 }).transform((v) => {
   return remap$(v, {
@@ -1988,6 +1996,7 @@ export const CreateIntegrationStoreDirectProperties6$inboundSchema: z.ZodType<
     "ui:disabled": "uiDisabled",
     "ui:description": "uiDescription",
     "ui:formatted-value": "uiFormattedValue",
+    "ui:paid-only": "uiPaidOnly",
     "ui:placeholder": "uiPlaceholder",
   });
 });
@@ -2027,6 +2036,7 @@ export type CreateIntegrationStoreDirectProperties6$Outbound = {
   "ui:formatted-value"?:
     | CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiFormattedValue$Outbound
     | undefined;
+  "ui:paid-only"?: boolean | undefined;
   "ui:placeholder"?: string | undefined;
 };
 
@@ -2082,6 +2092,7 @@ export const CreateIntegrationStoreDirectProperties6$outboundSchema: z.ZodType<
   uiFormattedValue: z.lazy(() =>
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiFormattedValue$outboundSchema
   ).optional(),
+  uiPaidOnly: z.boolean().optional(),
   uiPlaceholder: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -2093,6 +2104,7 @@ export const CreateIntegrationStoreDirectProperties6$outboundSchema: z.ZodType<
     uiDisabled: "ui:disabled",
     uiDescription: "ui:description",
     uiFormattedValue: "ui:formatted-value",
+    uiPaidOnly: "ui:paid-only",
     uiPlaceholder: "ui:placeholder",
   });
 });
@@ -3044,6 +3056,7 @@ export const CreateIntegrationStoreDirectProperties5$inboundSchema: z.ZodType<
       CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONUiFormattedValue$inboundSchema
     ),
   ),
+  "ui:paid-only": types.optional(types.boolean()),
   "ui:placeholder": types.optional(types.string()),
 }).transform((v) => {
   return remap$(v, {
@@ -3055,6 +3068,7 @@ export const CreateIntegrationStoreDirectProperties5$inboundSchema: z.ZodType<
     "ui:disabled": "uiDisabled",
     "ui:description": "uiDescription",
     "ui:formatted-value": "uiFormattedValue",
+    "ui:paid-only": "uiPaidOnly",
     "ui:placeholder": "uiPlaceholder",
   });
 });
@@ -3092,6 +3106,7 @@ export type CreateIntegrationStoreDirectProperties5$Outbound = {
   "ui:formatted-value"?:
     | CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONUiFormattedValue$Outbound
     | undefined;
+  "ui:paid-only"?: boolean | undefined;
   "ui:placeholder"?: string | undefined;
 };
 
@@ -3147,6 +3162,7 @@ export const CreateIntegrationStoreDirectProperties5$outboundSchema: z.ZodType<
   uiFormattedValue: z.lazy(() =>
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONUiFormattedValue$outboundSchema
   ).optional(),
+  uiPaidOnly: z.boolean().optional(),
   uiPlaceholder: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -3158,6 +3174,7 @@ export const CreateIntegrationStoreDirectProperties5$outboundSchema: z.ZodType<
     uiDisabled: "ui:disabled",
     uiDescription: "ui:description",
     uiFormattedValue: "ui:formatted-value",
+    uiPaidOnly: "ui:paid-only",
     uiPlaceholder: "ui:placeholder",
   });
 });
@@ -3880,6 +3897,7 @@ export const CreateIntegrationStoreDirectProperties4$inboundSchema: z.ZodType<
       CreateIntegrationStoreDirectPropertiesIntegrationsResponse200UiFormattedValue$inboundSchema
     ),
   ),
+  "ui:paid-only": types.optional(types.boolean()),
   default: types.optional(z.array(types.number())),
 }).transform((v) => {
   return remap$(v, {
@@ -3891,6 +3909,7 @@ export const CreateIntegrationStoreDirectProperties4$inboundSchema: z.ZodType<
     "ui:disabled": "uiDisabled",
     "ui:description": "uiDescription",
     "ui:formatted-value": "uiFormattedValue",
+    "ui:paid-only": "uiPaidOnly",
   });
 });
 /** @internal */
@@ -3925,6 +3944,7 @@ export type CreateIntegrationStoreDirectProperties4$Outbound = {
   "ui:formatted-value"?:
     | CreateIntegrationStoreDirectPropertiesIntegrationsResponse200UiFormattedValue$Outbound
     | undefined;
+  "ui:paid-only"?: boolean | undefined;
   default?: Array<number> | undefined;
 };
 
@@ -3976,6 +3996,7 @@ export const CreateIntegrationStoreDirectProperties4$outboundSchema: z.ZodType<
   uiFormattedValue: z.lazy(() =>
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200UiFormattedValue$outboundSchema
   ).optional(),
+  uiPaidOnly: z.boolean().optional(),
   default: z.array(z.number()).optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -3987,6 +4008,7 @@ export const CreateIntegrationStoreDirectProperties4$outboundSchema: z.ZodType<
     uiDisabled: "ui:disabled",
     uiDescription: "ui:description",
     uiFormattedValue: "ui:formatted-value",
+    uiPaidOnly: "ui:paid-only",
   });
 });
 
@@ -4610,6 +4632,7 @@ export const CreateIntegrationStoreDirectProperties3$inboundSchema: z.ZodType<
       CreateIntegrationStoreDirectPropertiesIntegrationsResponseUiFormattedValue$inboundSchema
     ),
   ),
+  "ui:paid-only": types.optional(types.boolean()),
 }).transform((v) => {
   return remap$(v, {
     "ui:control": "uiControl",
@@ -4619,6 +4642,7 @@ export const CreateIntegrationStoreDirectProperties3$inboundSchema: z.ZodType<
     "ui:disabled": "uiDisabled",
     "ui:description": "uiDescription",
     "ui:formatted-value": "uiFormattedValue",
+    "ui:paid-only": "uiPaidOnly",
   });
 });
 /** @internal */
@@ -4650,6 +4674,7 @@ export type CreateIntegrationStoreDirectProperties3$Outbound = {
   "ui:formatted-value"?:
     | CreateIntegrationStoreDirectPropertiesIntegrationsResponseUiFormattedValue$Outbound
     | undefined;
+  "ui:paid-only"?: boolean | undefined;
 };
 
 /** @internal */
@@ -4695,6 +4720,7 @@ export const CreateIntegrationStoreDirectProperties3$outboundSchema: z.ZodType<
   uiFormattedValue: z.lazy(() =>
     CreateIntegrationStoreDirectPropertiesIntegrationsResponseUiFormattedValue$outboundSchema
   ).optional(),
+  uiPaidOnly: z.boolean().optional(),
 }).transform((v) => {
   return remap$(v, {
     uiControl: "ui:control",
@@ -4704,6 +4730,7 @@ export const CreateIntegrationStoreDirectProperties3$outboundSchema: z.ZodType<
     uiDisabled: "ui:disabled",
     uiDescription: "ui:description",
     uiFormattedValue: "ui:formatted-value",
+    uiPaidOnly: "ui:paid-only",
   });
 });
 
@@ -5313,6 +5340,7 @@ export const CreateIntegrationStoreDirectProperties2$inboundSchema: z.ZodType<
       CreateIntegrationStoreDirectPropertiesIntegrationsUiFormattedValue$inboundSchema
     ),
   ),
+  "ui:paid-only": types.optional(types.boolean()),
   "ui:placeholder": types.optional(types.string()),
 }).transform((v) => {
   return remap$(v, {
@@ -5323,6 +5351,7 @@ export const CreateIntegrationStoreDirectProperties2$inboundSchema: z.ZodType<
     "ui:disabled": "uiDisabled",
     "ui:description": "uiDescription",
     "ui:formatted-value": "uiFormattedValue",
+    "ui:paid-only": "uiPaidOnly",
     "ui:placeholder": "uiPlaceholder",
   });
 });
@@ -5359,6 +5388,7 @@ export type CreateIntegrationStoreDirectProperties2$Outbound = {
   "ui:formatted-value"?:
     | CreateIntegrationStoreDirectPropertiesIntegrationsUiFormattedValue$Outbound
     | undefined;
+  "ui:paid-only"?: boolean | undefined;
   "ui:placeholder"?: string | undefined;
 };
 
@@ -5408,6 +5438,7 @@ export const CreateIntegrationStoreDirectProperties2$outboundSchema: z.ZodType<
   uiFormattedValue: z.lazy(() =>
     CreateIntegrationStoreDirectPropertiesIntegrationsUiFormattedValue$outboundSchema
   ).optional(),
+  uiPaidOnly: z.boolean().optional(),
   uiPlaceholder: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -5418,6 +5449,7 @@ export const CreateIntegrationStoreDirectProperties2$outboundSchema: z.ZodType<
     uiDisabled: "ui:disabled",
     uiDescription: "ui:description",
     uiFormattedValue: "ui:formatted-value",
+    uiPaidOnly: "ui:paid-only",
     uiPlaceholder: "ui:placeholder",
   });
 });
@@ -5992,6 +6024,7 @@ export const CreateIntegrationStoreDirectProperties1$inboundSchema: z.ZodType<
       CreateIntegrationStoreDirectPropertiesUiFormattedValue$inboundSchema
     ),
   ),
+  "ui:paid-only": types.optional(types.boolean()),
   "ui:placeholder": types.optional(types.string()),
 }).transform((v) => {
   return remap$(v, {
@@ -6002,6 +6035,7 @@ export const CreateIntegrationStoreDirectProperties1$inboundSchema: z.ZodType<
     "ui:disabled": "uiDisabled",
     "ui:description": "uiDescription",
     "ui:formatted-value": "uiFormattedValue",
+    "ui:paid-only": "uiPaidOnly",
     "ui:placeholder": "uiPlaceholder",
   });
 });
@@ -6038,6 +6072,7 @@ export type CreateIntegrationStoreDirectProperties1$Outbound = {
   "ui:formatted-value"?:
     | CreateIntegrationStoreDirectPropertiesUiFormattedValue$Outbound
     | undefined;
+  "ui:paid-only"?: boolean | undefined;
   "ui:placeholder"?: string | undefined;
 };
 
@@ -6078,6 +6113,7 @@ export const CreateIntegrationStoreDirectProperties1$outboundSchema: z.ZodType<
   uiFormattedValue: z.lazy(() =>
     CreateIntegrationStoreDirectPropertiesUiFormattedValue$outboundSchema
   ).optional(),
+  uiPaidOnly: z.boolean().optional(),
   uiPlaceholder: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -6088,6 +6124,7 @@ export const CreateIntegrationStoreDirectProperties1$outboundSchema: z.ZodType<
     uiDisabled: "ui:disabled",
     uiDescription: "ui:description",
     uiFormattedValue: "ui:formatted-value",
+    uiPaidOnly: "ui:paid-only",
     uiPlaceholder: "ui:placeholder",
   });
 });
@@ -6213,6 +6250,11 @@ export const CreateIntegrationStoreDirectMetadataSchema$inboundSchema:
         ]),
       ),
       required: types.optional(z.array(types.string())),
+      "ui:order": types.optional(z.array(types.string())),
+    }).transform((v) => {
+      return remap$(v, {
+        "ui:order": "uiOrder",
+      });
     });
 /** @internal */
 export type CreateIntegrationStoreDirectMetadataSchema$Outbound = {
@@ -6232,6 +6274,7 @@ export type CreateIntegrationStoreDirectMetadataSchema$Outbound = {
       | CreateIntegrationStoreDirectProperties11$Outbound;
   };
   required?: Array<string> | undefined;
+  "ui:order"?: Array<string> | undefined;
 };
 
 /** @internal */
@@ -6258,6 +6301,11 @@ export const CreateIntegrationStoreDirectMetadataSchema$outboundSchema:
       ]),
     ),
     required: z.array(z.string()).optional(),
+    uiOrder: z.array(z.string()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      uiOrder: "ui:order",
+    });
   });
 
 export function createIntegrationStoreDirectMetadataSchemaToJSON(

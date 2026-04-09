@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { FastOriginTransfer } from "@vercel/sdk/models/onehundred.js";
+import { FastOriginTransfer } from "@vercel/sdk/models/onehundredandone.js";
 
 let value: FastOriginTransfer = {
   currentThreshold: 7303.29,

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyFramework } from "@vercel/sdk/models/responsebodysecurity.js";
+import { ResponseBodyFramework } from "@vercel/sdk/models/getprojectslogheaders2.js";
 
 let value: ResponseBodyFramework = "fasthtml";
 ```

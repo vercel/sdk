@@ -1802,7 +1802,6 @@ export type UpdateProjectPermissions = {
   repository?: Array<ACLAction> | undefined;
   samlConfig?: Array<ACLAction> | undefined;
   secret?: Array<ACLAction> | undefined;
-  securityPlusConfiguration?: Array<ACLAction> | undefined;
   sensitiveEnvironmentVariablePolicy?: Array<ACLAction> | undefined;
   sharedEnvVars?: Array<ACLAction> | undefined;
   sharedEnvVarsProduction?: Array<ACLAction> | undefined;
@@ -1898,7 +1897,9 @@ export type UpdateProjectPermissions = {
   projectTransfer?: Array<ACLAction> | undefined;
   projectTransferOut?: Array<ACLAction> | undefined;
   projectUsage?: Array<ACLAction> | undefined;
+  pageIntegrity?: Array<ACLAction> | undefined;
   seawallConfig?: Array<ACLAction> | undefined;
+  securityPlusConfiguration?: Array<ACLAction> | undefined;
   sharedEnvVarConnection?: Array<ACLAction> | undefined;
   skewProtection?: Array<ACLAction> | undefined;
   analytics?: Array<ACLAction> | undefined;
@@ -7621,7 +7622,6 @@ export const UpdateProjectPermissions$inboundSchema: z.ZodType<
   repository: types.optional(z.array(ACLAction$inboundSchema)),
   samlConfig: types.optional(z.array(ACLAction$inboundSchema)),
   secret: types.optional(z.array(ACLAction$inboundSchema)),
-  securityPlusConfiguration: types.optional(z.array(ACLAction$inboundSchema)),
   sensitiveEnvironmentVariablePolicy: types.optional(
     z.array(ACLAction$inboundSchema),
   ),
@@ -7731,7 +7731,9 @@ export const UpdateProjectPermissions$inboundSchema: z.ZodType<
   projectTransfer: types.optional(z.array(ACLAction$inboundSchema)),
   projectTransferOut: types.optional(z.array(ACLAction$inboundSchema)),
   projectUsage: types.optional(z.array(ACLAction$inboundSchema)),
+  pageIntegrity: types.optional(z.array(ACLAction$inboundSchema)),
   seawallConfig: types.optional(z.array(ACLAction$inboundSchema)),
+  securityPlusConfiguration: types.optional(z.array(ACLAction$inboundSchema)),
   sharedEnvVarConnection: types.optional(z.array(ACLAction$inboundSchema)),
   skewProtection: types.optional(z.array(ACLAction$inboundSchema)),
   analytics: types.optional(z.array(ACLAction$inboundSchema)),
@@ -7882,7 +7884,6 @@ export type UpdateProjectPermissions$Outbound = {
   repository?: Array<string> | undefined;
   samlConfig?: Array<string> | undefined;
   secret?: Array<string> | undefined;
-  securityPlusConfiguration?: Array<string> | undefined;
   sensitiveEnvironmentVariablePolicy?: Array<string> | undefined;
   sharedEnvVars?: Array<string> | undefined;
   sharedEnvVarsProduction?: Array<string> | undefined;
@@ -7978,7 +7979,9 @@ export type UpdateProjectPermissions$Outbound = {
   projectTransfer?: Array<string> | undefined;
   projectTransferOut?: Array<string> | undefined;
   projectUsage?: Array<string> | undefined;
+  pageIntegrity?: Array<string> | undefined;
   seawallConfig?: Array<string> | undefined;
+  securityPlusConfiguration?: Array<string> | undefined;
   sharedEnvVarConnection?: Array<string> | undefined;
   skewProtection?: Array<string> | undefined;
   analytics?: Array<string> | undefined;
@@ -8132,7 +8135,6 @@ export const UpdateProjectPermissions$outboundSchema: z.ZodType<
   repository: z.array(ACLAction$outboundSchema).optional(),
   samlConfig: z.array(ACLAction$outboundSchema).optional(),
   secret: z.array(ACLAction$outboundSchema).optional(),
-  securityPlusConfiguration: z.array(ACLAction$outboundSchema).optional(),
   sensitiveEnvironmentVariablePolicy: z.array(ACLAction$outboundSchema)
     .optional(),
   sharedEnvVars: z.array(ACLAction$outboundSchema).optional(),
@@ -8232,7 +8234,9 @@ export const UpdateProjectPermissions$outboundSchema: z.ZodType<
   projectTransfer: z.array(ACLAction$outboundSchema).optional(),
   projectTransferOut: z.array(ACLAction$outboundSchema).optional(),
   projectUsage: z.array(ACLAction$outboundSchema).optional(),
+  pageIntegrity: z.array(ACLAction$outboundSchema).optional(),
   seawallConfig: z.array(ACLAction$outboundSchema).optional(),
+  securityPlusConfiguration: z.array(ACLAction$outboundSchema).optional(),
   sharedEnvVarConnection: z.array(ACLAction$outboundSchema).optional(),
   skewProtection: z.array(ACLAction$outboundSchema).optional(),
   analytics: z.array(ACLAction$outboundSchema).optional(),

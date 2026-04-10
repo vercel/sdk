@@ -315,6 +315,40 @@ export type DefaultExpirationSettings = {
 };
 
 /**
+ * Default job configuration applied to new projects created in this team.
+ */
+export type Lint = {
+  /**
+   * Default job configuration applied to new projects created in this team.
+   */
+  targets: Array<string>;
+};
+
+/**
+ * Default job configuration applied to new projects created in this team.
+ */
+export type Typecheck = {
+  /**
+   * Default job configuration applied to new projects created in this team.
+   */
+  targets: Array<string>;
+};
+
+/**
+ * Default job configuration applied to new projects created in this team.
+ */
+export type DefaultProjectJobs = {
+  /**
+   * Default job configuration applied to new projects created in this team.
+   */
+  lint?: Lint | undefined;
+  /**
+   * Default job configuration applied to new projects created in this team.
+   */
+  typecheck?: Typecheck | undefined;
+};
+
+/**
  * Whether toolbar is enabled on preview deployments
  */
 export const EnablePreviewFeedback = {
@@ -548,6 +582,10 @@ export type Team = {
    * Default deployment expiration settings for this team
    */
   defaultExpirationSettings?: DefaultExpirationSettings | undefined;
+  /**
+   * Default job configuration applied to new projects created in this team.
+   */
+  defaultProjectJobs?: DefaultProjectJobs | undefined;
   /**
    * Whether toolbar is enabled on preview deployments
    */
@@ -1323,6 +1361,112 @@ export function defaultExpirationSettingsFromJSON(
 }
 
 /** @internal */
+export const Lint$inboundSchema: z.ZodType<Lint, z.ZodTypeDef, unknown> = z
+  .object({
+    targets: z.array(types.string()),
+  });
+/** @internal */
+export type Lint$Outbound = {
+  targets: Array<string>;
+};
+
+/** @internal */
+export const Lint$outboundSchema: z.ZodType<Lint$Outbound, z.ZodTypeDef, Lint> =
+  z.object({
+    targets: z.array(z.string()),
+  });
+
+export function lintToJSON(lint: Lint): string {
+  return JSON.stringify(Lint$outboundSchema.parse(lint));
+}
+export function lintFromJSON(
+  jsonString: string,
+): SafeParseResult<Lint, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Lint$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Lint' from JSON`,
+  );
+}
+
+/** @internal */
+export const Typecheck$inboundSchema: z.ZodType<
+  Typecheck,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  targets: z.array(types.string()),
+});
+/** @internal */
+export type Typecheck$Outbound = {
+  targets: Array<string>;
+};
+
+/** @internal */
+export const Typecheck$outboundSchema: z.ZodType<
+  Typecheck$Outbound,
+  z.ZodTypeDef,
+  Typecheck
+> = z.object({
+  targets: z.array(z.string()),
+});
+
+export function typecheckToJSON(typecheck: Typecheck): string {
+  return JSON.stringify(Typecheck$outboundSchema.parse(typecheck));
+}
+export function typecheckFromJSON(
+  jsonString: string,
+): SafeParseResult<Typecheck, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Typecheck$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Typecheck' from JSON`,
+  );
+}
+
+/** @internal */
+export const DefaultProjectJobs$inboundSchema: z.ZodType<
+  DefaultProjectJobs,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  lint: types.optional(z.lazy(() => Lint$inboundSchema)),
+  typecheck: types.optional(z.lazy(() => Typecheck$inboundSchema)),
+});
+/** @internal */
+export type DefaultProjectJobs$Outbound = {
+  lint?: Lint$Outbound | undefined;
+  typecheck?: Typecheck$Outbound | undefined;
+};
+
+/** @internal */
+export const DefaultProjectJobs$outboundSchema: z.ZodType<
+  DefaultProjectJobs$Outbound,
+  z.ZodTypeDef,
+  DefaultProjectJobs
+> = z.object({
+  lint: z.lazy(() => Lint$outboundSchema).optional(),
+  typecheck: z.lazy(() => Typecheck$outboundSchema).optional(),
+});
+
+export function defaultProjectJobsToJSON(
+  defaultProjectJobs: DefaultProjectJobs,
+): string {
+  return JSON.stringify(
+    DefaultProjectJobs$outboundSchema.parse(defaultProjectJobs),
+  );
+}
+export function defaultProjectJobsFromJSON(
+  jsonString: string,
+): SafeParseResult<DefaultProjectJobs, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DefaultProjectJobs$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DefaultProjectJobs' from JSON`,
+  );
+}
+
+/** @internal */
 export const EnablePreviewFeedback$inboundSchema: z.ZodNativeEnum<
   typeof EnablePreviewFeedback
 > = z.nativeEnum(EnablePreviewFeedback);
@@ -1733,6 +1877,9 @@ export const Team$inboundSchema: z.ZodType<Team, z.ZodTypeDef, unknown> =
       defaultExpirationSettings: types.optional(
         z.lazy(() => DefaultExpirationSettings$inboundSchema),
       ),
+      defaultProjectJobs: types.optional(
+        z.lazy(() => DefaultProjectJobs$inboundSchema),
+      ),
       enablePreviewFeedback: z.nullable(EnablePreviewFeedback$inboundSchema)
         .optional(),
       enableProductionFeedback: z.nullable(
@@ -1778,6 +1925,7 @@ export type Team$Outbound = {
     | DefaultDeploymentProtection$Outbound
     | undefined;
   defaultExpirationSettings?: DefaultExpirationSettings$Outbound | undefined;
+  defaultProjectJobs?: DefaultProjectJobs$Outbound | undefined;
   enablePreviewFeedback?: string | null | undefined;
   enableProductionFeedback?: string | null | undefined;
   sensitiveEnvironmentVariablePolicy?: string | null | undefined;
@@ -1820,6 +1968,8 @@ export const Team$outboundSchema: z.ZodType<Team$Outbound, z.ZodTypeDef, Team> =
     defaultExpirationSettings: z.lazy(() =>
       DefaultExpirationSettings$outboundSchema
     ).optional(),
+    defaultProjectJobs: z.lazy(() => DefaultProjectJobs$outboundSchema)
+      .optional(),
     enablePreviewFeedback: z.nullable(EnablePreviewFeedback$outboundSchema)
       .optional(),
     enableProductionFeedback: z.nullable(

@@ -1,9 +1,11 @@
 # Lint
 
+Default job configuration applied to new projects created in this team.
+
 ## Example Usage
 
 ```typescript
-import { Lint } from "@vercel/sdk/models/flatratetier.js";
+import { Lint } from "@vercel/sdk/models/team.js";
 
 let value: Lint = {
   targets: [
@@ -16,6 +18,6 @@ let value: Lint = {
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `targets`          | *string*[]         | :heavy_check_mark: | N/A                |
+| Field                                                                   | Type                                                                    | Required                                                                | Description                                                             |
+| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| `targets`                                                               | *string*[]                                                              | :heavy_check_mark:                                                      | Default job configuration applied to new projects created in this team. |

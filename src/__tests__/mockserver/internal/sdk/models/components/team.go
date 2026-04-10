@@ -969,6 +969,87 @@ func (o *DefaultExpirationSettings) GetDeploymentsToKeep() *float64 {
 	return o.DeploymentsToKeep
 }
 
+// Lint - Default job configuration applied to new projects created in this team.
+type Lint struct {
+	// Default job configuration applied to new projects created in this team.
+	Targets []string `json:"targets"`
+}
+
+func (l Lint) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(l, "", false)
+}
+
+func (l *Lint) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &l, "", false, []string{"targets"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *Lint) GetTargets() []string {
+	if o == nil {
+		return []string{}
+	}
+	return o.Targets
+}
+
+// Typecheck - Default job configuration applied to new projects created in this team.
+type Typecheck struct {
+	// Default job configuration applied to new projects created in this team.
+	Targets []string `json:"targets"`
+}
+
+func (t Typecheck) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(t, "", false)
+}
+
+func (t *Typecheck) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &t, "", false, []string{"targets"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *Typecheck) GetTargets() []string {
+	if o == nil {
+		return []string{}
+	}
+	return o.Targets
+}
+
+// DefaultProjectJobs - Default job configuration applied to new projects created in this team.
+type DefaultProjectJobs struct {
+	// Default job configuration applied to new projects created in this team.
+	Lint *Lint `json:"lint,omitempty"`
+	// Default job configuration applied to new projects created in this team.
+	Typecheck *Typecheck `json:"typecheck,omitempty"`
+}
+
+func (d DefaultProjectJobs) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DefaultProjectJobs) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *DefaultProjectJobs) GetLint() *Lint {
+	if o == nil {
+		return nil
+	}
+	return o.Lint
+}
+
+func (o *DefaultProjectJobs) GetTypecheck() *Typecheck {
+	if o == nil {
+		return nil
+	}
+	return o.Typecheck
+}
+
 // TeamEnablePreviewFeedback - Whether toolbar is enabled on preview deployments
 type TeamEnablePreviewFeedback string
 
@@ -1714,6 +1795,8 @@ type Team struct {
 	DefaultDeploymentProtection *DefaultDeploymentProtection `json:"defaultDeploymentProtection,omitempty"`
 	// Default deployment expiration settings for this team
 	DefaultExpirationSettings *DefaultExpirationSettings `json:"defaultExpirationSettings,omitempty"`
+	// Default job configuration applied to new projects created in this team.
+	DefaultProjectJobs *DefaultProjectJobs `json:"defaultProjectJobs,omitempty"`
 	// Whether toolbar is enabled on preview deployments
 	EnablePreviewFeedback optionalnullable.OptionalNullable[TeamEnablePreviewFeedback] `json:"enablePreviewFeedback,omitempty"`
 	// Whether toolbar is enabled on production deployments
@@ -1865,6 +1948,13 @@ func (o *Team) GetDefaultExpirationSettings() *DefaultExpirationSettings {
 		return nil
 	}
 	return o.DefaultExpirationSettings
+}
+
+func (o *Team) GetDefaultProjectJobs() *DefaultProjectJobs {
+	if o == nil {
+		return nil
+	}
+	return o.DefaultProjectJobs
 }
 
 func (o *Team) GetEnablePreviewFeedback() optionalnullable.OptionalNullable[TeamEnablePreviewFeedback] {

@@ -681,6 +681,144 @@ func (u NsnbConfigUnion) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type NsnbConfigUnion: all fields are null")
 }
 
+type PatchTeamLint struct {
+	Targets []string `json:"targets"`
+}
+
+func (p PatchTeamLint) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PatchTeamLint) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"targets"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *PatchTeamLint) GetTargets() []string {
+	if o == nil {
+		return []string{}
+	}
+	return o.Targets
+}
+
+type PatchTeamTypecheck struct {
+	Targets []string `json:"targets"`
+}
+
+func (p PatchTeamTypecheck) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PatchTeamTypecheck) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"targets"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *PatchTeamTypecheck) GetTargets() []string {
+	if o == nil {
+		return []string{}
+	}
+	return o.Targets
+}
+
+// DefaultProjectJobs - Default job configuration applied to new projects created in this team.
+type DefaultProjectJobs struct {
+	Lint      *PatchTeamLint      `json:"lint,omitempty"`
+	Typecheck *PatchTeamTypecheck `json:"typecheck,omitempty"`
+}
+
+func (d DefaultProjectJobs) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DefaultProjectJobs) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *DefaultProjectJobs) GetLint() *PatchTeamLint {
+	if o == nil {
+		return nil
+	}
+	return o.Lint
+}
+
+func (o *DefaultProjectJobs) GetTypecheck() *PatchTeamTypecheck {
+	if o == nil {
+		return nil
+	}
+	return o.Typecheck
+}
+
+type DefaultProjectJobsUnionType string
+
+const (
+	DefaultProjectJobsUnionTypeDefaultProjectJobs DefaultProjectJobsUnionType = "defaultProjectJobs"
+	DefaultProjectJobsUnionTypeStr                DefaultProjectJobsUnionType = "str"
+)
+
+type DefaultProjectJobsUnion struct {
+	DefaultProjectJobs *DefaultProjectJobs `queryParam:"inline"`
+	Str                *string             `queryParam:"inline"`
+
+	Type DefaultProjectJobsUnionType
+}
+
+func CreateDefaultProjectJobsUnionDefaultProjectJobs(defaultProjectJobs DefaultProjectJobs) DefaultProjectJobsUnion {
+	typ := DefaultProjectJobsUnionTypeDefaultProjectJobs
+
+	return DefaultProjectJobsUnion{
+		DefaultProjectJobs: &defaultProjectJobs,
+		Type:               typ,
+	}
+}
+
+func CreateDefaultProjectJobsUnionStr(str string) DefaultProjectJobsUnion {
+	typ := DefaultProjectJobsUnionTypeStr
+
+	return DefaultProjectJobsUnion{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func (u *DefaultProjectJobsUnion) UnmarshalJSON(data []byte) error {
+
+	var defaultProjectJobs DefaultProjectJobs = DefaultProjectJobs{}
+	if err := utils.UnmarshalJSON(data, &defaultProjectJobs, "", true, nil); err == nil {
+		u.DefaultProjectJobs = &defaultProjectJobs
+		u.Type = DefaultProjectJobsUnionTypeDefaultProjectJobs
+		return nil
+	}
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
+		u.Str = &str
+		u.Type = DefaultProjectJobsUnionTypeStr
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for DefaultProjectJobsUnion", string(data))
+}
+
+func (u DefaultProjectJobsUnion) MarshalJSON() ([]byte, error) {
+	if u.DefaultProjectJobs != nil {
+		return utils.MarshalJSON(u.DefaultProjectJobs, "", true)
+	}
+
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type DefaultProjectJobsUnion: all fields are null")
+}
+
 // Default build machine type for new builds: standard, enhanced, turbo, or elastic.
 type Default string
 
@@ -773,6 +911,7 @@ type PatchTeamRequestBody struct {
 	// When enabled, deployment protection settings require stricter permissions (owner-only).
 	StrictDeploymentProtectionSettings *StrictDeploymentProtectionSettings `json:"strictDeploymentProtectionSettings,omitempty"`
 	NsnbConfig                         *NsnbConfigUnion                    `json:"nsnbConfig,omitempty"`
+	DefaultProjectJobs                 *DefaultProjectJobsUnion            `json:"defaultProjectJobs,omitempty"`
 	// Resource configuration for the team.
 	ResourceConfig *PatchTeamResourceConfig `json:"resourceConfig,omitempty"`
 }
@@ -901,6 +1040,13 @@ func (o *PatchTeamRequestBody) GetNsnbConfig() *NsnbConfigUnion {
 		return nil
 	}
 	return o.NsnbConfig
+}
+
+func (o *PatchTeamRequestBody) GetDefaultProjectJobs() *DefaultProjectJobsUnion {
+	if o == nil {
+		return nil
+	}
+	return o.DefaultProjectJobs
 }
 
 func (o *PatchTeamRequestBody) GetResourceConfig() *PatchTeamResourceConfig {

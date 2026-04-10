@@ -254,6 +254,24 @@ export type NsnbConfig1 = {
 
 export type PatchTeamNsnbConfig = NsnbConfig1 | string;
 
+export type DefaultProjectJobsLint = {
+  targets: Array<string>;
+};
+
+export type DefaultProjectJobsTypecheck = {
+  targets: Array<string>;
+};
+
+/**
+ * Default job configuration applied to new projects created in this team.
+ */
+export type DefaultProjectJobs1 = {
+  lint?: DefaultProjectJobsLint | undefined;
+  typecheck?: DefaultProjectJobsTypecheck | undefined;
+};
+
+export type PatchTeamDefaultProjectJobs = DefaultProjectJobs1 | string;
+
 /**
  * Default build machine type for new builds: standard, enhanced, turbo, or elastic.
  */
@@ -353,6 +371,7 @@ export type PatchTeamRequestBody = {
     | PatchTeamStrictDeploymentProtectionSettings
     | undefined;
   nsnbConfig?: NsnbConfig1 | string | undefined;
+  defaultProjectJobs?: DefaultProjectJobs1 | string | undefined;
   /**
    * Resource configuration for the team.
    */
@@ -908,6 +927,171 @@ export function patchTeamNsnbConfigFromJSON(
 }
 
 /** @internal */
+export const DefaultProjectJobsLint$inboundSchema: z.ZodType<
+  DefaultProjectJobsLint,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  targets: z.array(types.string()),
+});
+/** @internal */
+export type DefaultProjectJobsLint$Outbound = {
+  targets: Array<string>;
+};
+
+/** @internal */
+export const DefaultProjectJobsLint$outboundSchema: z.ZodType<
+  DefaultProjectJobsLint$Outbound,
+  z.ZodTypeDef,
+  DefaultProjectJobsLint
+> = z.object({
+  targets: z.array(z.string()),
+});
+
+export function defaultProjectJobsLintToJSON(
+  defaultProjectJobsLint: DefaultProjectJobsLint,
+): string {
+  return JSON.stringify(
+    DefaultProjectJobsLint$outboundSchema.parse(defaultProjectJobsLint),
+  );
+}
+export function defaultProjectJobsLintFromJSON(
+  jsonString: string,
+): SafeParseResult<DefaultProjectJobsLint, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DefaultProjectJobsLint$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DefaultProjectJobsLint' from JSON`,
+  );
+}
+
+/** @internal */
+export const DefaultProjectJobsTypecheck$inboundSchema: z.ZodType<
+  DefaultProjectJobsTypecheck,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  targets: z.array(types.string()),
+});
+/** @internal */
+export type DefaultProjectJobsTypecheck$Outbound = {
+  targets: Array<string>;
+};
+
+/** @internal */
+export const DefaultProjectJobsTypecheck$outboundSchema: z.ZodType<
+  DefaultProjectJobsTypecheck$Outbound,
+  z.ZodTypeDef,
+  DefaultProjectJobsTypecheck
+> = z.object({
+  targets: z.array(z.string()),
+});
+
+export function defaultProjectJobsTypecheckToJSON(
+  defaultProjectJobsTypecheck: DefaultProjectJobsTypecheck,
+): string {
+  return JSON.stringify(
+    DefaultProjectJobsTypecheck$outboundSchema.parse(
+      defaultProjectJobsTypecheck,
+    ),
+  );
+}
+export function defaultProjectJobsTypecheckFromJSON(
+  jsonString: string,
+): SafeParseResult<DefaultProjectJobsTypecheck, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DefaultProjectJobsTypecheck$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DefaultProjectJobsTypecheck' from JSON`,
+  );
+}
+
+/** @internal */
+export const DefaultProjectJobs1$inboundSchema: z.ZodType<
+  DefaultProjectJobs1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  lint: types.optional(z.lazy(() => DefaultProjectJobsLint$inboundSchema)),
+  typecheck: types.optional(
+    z.lazy(() => DefaultProjectJobsTypecheck$inboundSchema),
+  ),
+});
+/** @internal */
+export type DefaultProjectJobs1$Outbound = {
+  lint?: DefaultProjectJobsLint$Outbound | undefined;
+  typecheck?: DefaultProjectJobsTypecheck$Outbound | undefined;
+};
+
+/** @internal */
+export const DefaultProjectJobs1$outboundSchema: z.ZodType<
+  DefaultProjectJobs1$Outbound,
+  z.ZodTypeDef,
+  DefaultProjectJobs1
+> = z.object({
+  lint: z.lazy(() => DefaultProjectJobsLint$outboundSchema).optional(),
+  typecheck: z.lazy(() => DefaultProjectJobsTypecheck$outboundSchema)
+    .optional(),
+});
+
+export function defaultProjectJobs1ToJSON(
+  defaultProjectJobs1: DefaultProjectJobs1,
+): string {
+  return JSON.stringify(
+    DefaultProjectJobs1$outboundSchema.parse(defaultProjectJobs1),
+  );
+}
+export function defaultProjectJobs1FromJSON(
+  jsonString: string,
+): SafeParseResult<DefaultProjectJobs1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DefaultProjectJobs1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DefaultProjectJobs1' from JSON`,
+  );
+}
+
+/** @internal */
+export const PatchTeamDefaultProjectJobs$inboundSchema: z.ZodType<
+  PatchTeamDefaultProjectJobs,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  z.lazy(() => DefaultProjectJobs1$inboundSchema),
+  types.string(),
+]);
+/** @internal */
+export type PatchTeamDefaultProjectJobs$Outbound =
+  | DefaultProjectJobs1$Outbound
+  | string;
+
+/** @internal */
+export const PatchTeamDefaultProjectJobs$outboundSchema: z.ZodType<
+  PatchTeamDefaultProjectJobs$Outbound,
+  z.ZodTypeDef,
+  PatchTeamDefaultProjectJobs
+> = smartUnion([z.lazy(() => DefaultProjectJobs1$outboundSchema), z.string()]);
+
+export function patchTeamDefaultProjectJobsToJSON(
+  patchTeamDefaultProjectJobs: PatchTeamDefaultProjectJobs,
+): string {
+  return JSON.stringify(
+    PatchTeamDefaultProjectJobs$outboundSchema.parse(
+      patchTeamDefaultProjectJobs,
+    ),
+  );
+}
+export function patchTeamDefaultProjectJobsFromJSON(
+  jsonString: string,
+): SafeParseResult<PatchTeamDefaultProjectJobs, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PatchTeamDefaultProjectJobs$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PatchTeamDefaultProjectJobs' from JSON`,
+  );
+}
+
+/** @internal */
 export const PatchTeamDefault$inboundSchema: z.ZodNativeEnum<
   typeof PatchTeamDefault
 > = z.nativeEnum(PatchTeamDefault);
@@ -1030,6 +1214,12 @@ export const PatchTeamRequestBody$inboundSchema: z.ZodType<
   nsnbConfig: types.optional(
     smartUnion([z.lazy(() => NsnbConfig1$inboundSchema), types.string()]),
   ),
+  defaultProjectJobs: types.optional(
+    smartUnion([
+      z.lazy(() => DefaultProjectJobs1$inboundSchema),
+      types.string(),
+    ]),
+  ),
   resourceConfig: types.optional(
     z.lazy(() => PatchTeamResourceConfig$inboundSchema),
   ),
@@ -1060,6 +1250,7 @@ export type PatchTeamRequestBody$Outbound = {
     | PatchTeamStrictDeploymentProtectionSettings$Outbound
     | undefined;
   nsnbConfig?: NsnbConfig1$Outbound | string | undefined;
+  defaultProjectJobs?: DefaultProjectJobs1$Outbound | string | undefined;
   resourceConfig?: PatchTeamResourceConfig$Outbound | undefined;
 };
 
@@ -1094,6 +1285,10 @@ export const PatchTeamRequestBody$outboundSchema: z.ZodType<
   ).optional(),
   nsnbConfig: smartUnion([z.lazy(() => NsnbConfig1$outboundSchema), z.string()])
     .optional(),
+  defaultProjectJobs: smartUnion([
+    z.lazy(() => DefaultProjectJobs1$outboundSchema),
+    z.string(),
+  ]).optional(),
   resourceConfig: z.lazy(() => PatchTeamResourceConfig$outboundSchema)
     .optional(),
 });

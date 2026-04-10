@@ -908,17 +908,17 @@ export type CreateProjectIpBuckets = {
   supportUntil?: number | undefined;
 };
 
-export type Lint = {
+export type CreateProjectLint = {
   targets: Array<string>;
 };
 
-export type Typecheck = {
+export type CreateProjectTypecheck = {
   targets: Array<string>;
 };
 
 export type Jobs = {
-  lint?: Lint | undefined;
-  typecheck?: Typecheck | undefined;
+  lint?: CreateProjectLint | undefined;
+  typecheck?: CreateProjectTypecheck | undefined;
 };
 
 export type AliasAssigned = number | boolean;
@@ -4390,86 +4390,102 @@ export function createProjectIpBucketsFromJSON(
 }
 
 /** @internal */
-export const Lint$inboundSchema: z.ZodType<Lint, z.ZodTypeDef, unknown> = z
-  .object({
-    targets: z.array(types.string()),
-  });
-/** @internal */
-export type Lint$Outbound = {
-  targets: Array<string>;
-};
-
-/** @internal */
-export const Lint$outboundSchema: z.ZodType<Lint$Outbound, z.ZodTypeDef, Lint> =
-  z.object({
-    targets: z.array(z.string()),
-  });
-
-export function lintToJSON(lint: Lint): string {
-  return JSON.stringify(Lint$outboundSchema.parse(lint));
-}
-export function lintFromJSON(
-  jsonString: string,
-): SafeParseResult<Lint, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Lint$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Lint' from JSON`,
-  );
-}
-
-/** @internal */
-export const Typecheck$inboundSchema: z.ZodType<
-  Typecheck,
+export const CreateProjectLint$inboundSchema: z.ZodType<
+  CreateProjectLint,
   z.ZodTypeDef,
   unknown
 > = z.object({
   targets: z.array(types.string()),
 });
 /** @internal */
-export type Typecheck$Outbound = {
+export type CreateProjectLint$Outbound = {
   targets: Array<string>;
 };
 
 /** @internal */
-export const Typecheck$outboundSchema: z.ZodType<
-  Typecheck$Outbound,
+export const CreateProjectLint$outboundSchema: z.ZodType<
+  CreateProjectLint$Outbound,
   z.ZodTypeDef,
-  Typecheck
+  CreateProjectLint
 > = z.object({
   targets: z.array(z.string()),
 });
 
-export function typecheckToJSON(typecheck: Typecheck): string {
-  return JSON.stringify(Typecheck$outboundSchema.parse(typecheck));
+export function createProjectLintToJSON(
+  createProjectLint: CreateProjectLint,
+): string {
+  return JSON.stringify(
+    CreateProjectLint$outboundSchema.parse(createProjectLint),
+  );
 }
-export function typecheckFromJSON(
+export function createProjectLintFromJSON(
   jsonString: string,
-): SafeParseResult<Typecheck, SDKValidationError> {
+): SafeParseResult<CreateProjectLint, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Typecheck$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Typecheck' from JSON`,
+    (x) => CreateProjectLint$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProjectLint' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateProjectTypecheck$inboundSchema: z.ZodType<
+  CreateProjectTypecheck,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  targets: z.array(types.string()),
+});
+/** @internal */
+export type CreateProjectTypecheck$Outbound = {
+  targets: Array<string>;
+};
+
+/** @internal */
+export const CreateProjectTypecheck$outboundSchema: z.ZodType<
+  CreateProjectTypecheck$Outbound,
+  z.ZodTypeDef,
+  CreateProjectTypecheck
+> = z.object({
+  targets: z.array(z.string()),
+});
+
+export function createProjectTypecheckToJSON(
+  createProjectTypecheck: CreateProjectTypecheck,
+): string {
+  return JSON.stringify(
+    CreateProjectTypecheck$outboundSchema.parse(createProjectTypecheck),
+  );
+}
+export function createProjectTypecheckFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateProjectTypecheck, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateProjectTypecheck$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProjectTypecheck' from JSON`,
   );
 }
 
 /** @internal */
 export const Jobs$inboundSchema: z.ZodType<Jobs, z.ZodTypeDef, unknown> = z
   .object({
-    lint: types.optional(z.lazy(() => Lint$inboundSchema)),
-    typecheck: types.optional(z.lazy(() => Typecheck$inboundSchema)),
+    lint: types.optional(z.lazy(() => CreateProjectLint$inboundSchema)),
+    typecheck: types.optional(
+      z.lazy(() => CreateProjectTypecheck$inboundSchema),
+    ),
   });
 /** @internal */
 export type Jobs$Outbound = {
-  lint?: Lint$Outbound | undefined;
-  typecheck?: Typecheck$Outbound | undefined;
+  lint?: CreateProjectLint$Outbound | undefined;
+  typecheck?: CreateProjectTypecheck$Outbound | undefined;
 };
 
 /** @internal */
 export const Jobs$outboundSchema: z.ZodType<Jobs$Outbound, z.ZodTypeDef, Jobs> =
   z.object({
-    lint: z.lazy(() => Lint$outboundSchema).optional(),
-    typecheck: z.lazy(() => Typecheck$outboundSchema).optional(),
+    lint: z.lazy(() => CreateProjectLint$outboundSchema).optional(),
+    typecheck: z.lazy(() => CreateProjectTypecheck$outboundSchema).optional(),
   });
 
 export function jobsToJSON(jobs: Jobs): string {

@@ -7,6 +7,7 @@ import (
 	"log"
 	"mockserver/internal/handler/assert"
 	"mockserver/internal/logging"
+	"mockserver/internal/sdk/models/components"
 	"mockserver/internal/sdk/models/operations"
 	"mockserver/internal/sdk/optionalnullable"
 	"mockserver/internal/sdk/types"
@@ -51,33 +52,13 @@ func testGetProjectsGetProjects0(w http.ResponseWriter, req *http.Request) {
 		operations.GetProjectsResponseBody2{
 			Projects: []operations.GetProjectsProject1{
 				operations.GetProjectsProject1{
-					AccountID: "<id>",
-					Alias: []operations.ProjectAlias{
-						operations.ProjectAlias{
-							Deployment: &operations.ProjectDeployment{
-								CreatedAt:          9255.97,
-								CreatedIn:          "<value>",
-								Creator:            nil,
-								DeploymentHostname: "<value>",
-								Name:               "<value>",
-								ID:                 "<id>",
-								Plan:               "<value>",
-								Private:            true,
-								ReadyState:         "<value>",
-								Type:               "<value>",
-								URL:                "https://talkative-sauerkraut.org/",
-								UserID:             "<id>",
-							},
-							Domain:      "wonderful-sediment.info",
-							Environment: operations.ProjectEnvironmentPreview,
-							Target:      operations.ProjectAliasTargetProduction,
-						},
-					},
-					DirectoryListing:     false,
+					AccountID:            "<id>",
+					Alias:                []operations.ProjectAlias{},
+					DirectoryListing:     true,
 					DeploymentExpiration: operations.GetProjectsProjectDeploymentExpiration1{},
 					ID:                   "<id>",
 					Name:                 "<value>",
-					NodeVersion:          operations.GetProjectsProjectNodeVersion1TwentyTwoDotX,
+					NodeVersion:          operations.GetProjectsProjectNodeVersion1TwentyFourDotX,
 					ResourceConfig: operations.GetProjectsProjectResourceConfig1{
 						FunctionDefaultRegions: []string{
 							"<value 1>",
@@ -100,10 +81,11 @@ func testGetProjectsGetProjects0(w http.ResponseWriter, req *http.Request) {
 					ServerlessFunctionRegion: "<value>",
 				},
 			},
-			Pagination: operations.CreatePaginationUnion1GetProjectsPagination1(
-				operations.GetProjectsPagination1{
+			Pagination: operations.CreatePaginationUnion1Pagination(
+				components.Pagination{
 					Count: 20,
-					Next:  types.String("JBSWY3DPEHPK3PXP"),
+					Next:  types.Float64(1540095775951),
+					Prev:  types.Float64(1540095775951),
 				},
 			),
 		},

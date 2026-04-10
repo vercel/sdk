@@ -125,6 +125,7 @@ export const CancelDeploymentFramework = {
   Node: "node",
   Go: "go",
   Services: "services",
+  Mastra: "mastra",
 } as const;
 export type CancelDeploymentFramework = ClosedEnum<
   typeof CancelDeploymentFramework

@@ -972,6 +972,7 @@ export const GetProjectsResponseBodyFramework = {
   Rust: "rust",
   Node: "node",
   Go: "go",
+  Mastra: "mastra",
 } as const;
 export type GetProjectsResponseBodyFramework = ClosedEnum<
   typeof GetProjectsResponseBodyFramework

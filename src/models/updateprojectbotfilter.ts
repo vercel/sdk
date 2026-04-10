@@ -85,6 +85,7 @@ export const UpdateProjectFramework = {
   Rust: "rust",
   Node: "node",
   Go: "go",
+  Mastra: "mastra",
 } as const;
 /**
  * The framework that is being used for this project. When `null` is used no framework is selected
@@ -1103,6 +1104,7 @@ export const UpdateProjectProjectsFramework = {
   Rust: "rust",
   Node: "node",
   Go: "go",
+  Mastra: "mastra",
 } as const;
 export type UpdateProjectProjectsFramework = ClosedEnum<
   typeof UpdateProjectProjectsFramework

@@ -10,6 +10,7 @@ import { GetDomainsResponseBody } from "@vercel/sdk/models/getdomainsop.js";
 let value: GetDomainsResponseBody = {
   domains: [
     {
+      expiresAt: 2499.29,
       verified: true,
       nameservers: [
         "ns1.nameserver.net",
@@ -32,7 +33,6 @@ let value: GetDomainsResponseBody = {
       teamId: "<id>",
       boughtAt: 1613602938882,
       createdAt: 1613602938882,
-      expiresAt: 1613602938882,
       id: "EmTbe5CEJyTk2yVAHBUWy4A3sRusca3GCwRjTC1bpeVnt1",
       renew: true,
       serviceType: "zeit.world",

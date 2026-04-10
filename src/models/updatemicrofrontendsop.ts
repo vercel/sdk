@@ -581,6 +581,7 @@ export const UpdateMicrofrontendsFramework = {
   Rust: "rust",
   Node: "node",
   Go: "go",
+  Mastra: "mastra",
 } as const;
 export type UpdateMicrofrontendsFramework = ClosedEnum<
   typeof UpdateMicrofrontendsFramework

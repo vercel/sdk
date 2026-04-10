@@ -5,7 +5,7 @@ The acive pricing plan the team is billed with
 ## Example Usage
 
 ```typescript
-import { PayloadPricingPlan } from "@vercel/sdk/models/twohundredandtwentyseven.js";
+import { PayloadPricingPlan } from "@vercel/sdk/models/twohundredandtwentyeight.js";
 
 let value: PayloadPricingPlan = "platform";
 ```

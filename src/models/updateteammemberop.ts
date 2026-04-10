@@ -10,6 +10,21 @@ import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
+export const UpdateTeamMemberTeamPermissions = {
+  IntegrationManager: "IntegrationManager",
+  CreateProject: "CreateProject",
+  FullProductionDeployment: "FullProductionDeployment",
+  UsageViewer: "UsageViewer",
+  EnvVariableManager: "EnvVariableManager",
+  EnvironmentManager: "EnvironmentManager",
+  V0Builder: "V0Builder",
+  V0Chatter: "V0Chatter",
+  V0Viewer: "V0Viewer",
+} as const;
+export type UpdateTeamMemberTeamPermissions = ClosedEnum<
+  typeof UpdateTeamMemberTeamPermissions
+>;
+
 /**
  * The project role of the member that will be added. \"null\" will remove this project level role.
  */
@@ -47,6 +62,10 @@ export type UpdateTeamMemberRequestBody = {
    * The role in the team of the member.
    */
   role?: string | undefined;
+  /**
+   * The team permissions to set for the member. Permissions must be compatible with the team roles assigned to the member.
+   */
+  teamPermissions?: Array<UpdateTeamMemberTeamPermissions> | undefined;
   projects?: Array<UpdateTeamMemberProjects> | undefined;
   joinedFrom?: UpdateTeamMemberJoinedFrom | undefined;
 };
@@ -69,6 +88,15 @@ export type UpdateTeamMemberResponseBody = {
    */
   id: string;
 };
+
+/** @internal */
+export const UpdateTeamMemberTeamPermissions$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateTeamMemberTeamPermissions
+> = z.nativeEnum(UpdateTeamMemberTeamPermissions);
+/** @internal */
+export const UpdateTeamMemberTeamPermissions$outboundSchema: z.ZodNativeEnum<
+  typeof UpdateTeamMemberTeamPermissions
+> = UpdateTeamMemberTeamPermissions$inboundSchema;
 
 /** @internal */
 export const UpdateTeamMemberRole$inboundSchema: z.ZodNativeEnum<
@@ -168,6 +196,9 @@ export const UpdateTeamMemberRequestBody$inboundSchema: z.ZodType<
 > = z.object({
   confirmed: types.optional(types.literal(true)),
   role: types.string().default("MEMBER"),
+  teamPermissions: types.optional(
+    z.array(UpdateTeamMemberTeamPermissions$inboundSchema),
+  ),
   projects: types.optional(
     z.array(z.lazy(() => UpdateTeamMemberProjects$inboundSchema)),
   ),
@@ -179,6 +210,7 @@ export const UpdateTeamMemberRequestBody$inboundSchema: z.ZodType<
 export type UpdateTeamMemberRequestBody$Outbound = {
   confirmed?: true | undefined;
   role: string;
+  teamPermissions?: Array<string> | undefined;
   projects?: Array<UpdateTeamMemberProjects$Outbound> | undefined;
   joinedFrom?: UpdateTeamMemberJoinedFrom$Outbound | undefined;
 };
@@ -191,6 +223,8 @@ export const UpdateTeamMemberRequestBody$outboundSchema: z.ZodType<
 > = z.object({
   confirmed: z.literal(true).optional(),
   role: z.string().default("MEMBER"),
+  teamPermissions: z.array(UpdateTeamMemberTeamPermissions$outboundSchema)
+    .optional(),
   projects: z.array(z.lazy(() => UpdateTeamMemberProjects$outboundSchema))
     .optional(),
   joinedFrom: z.lazy(() => UpdateTeamMemberJoinedFrom$outboundSchema)

@@ -559,6 +559,7 @@ export const GetMicrofrontendsInGroupFramework = {
   Ruby: "ruby",
   Rust: "rust",
   Go: "go",
+  Mastra: "mastra",
 } as const;
 export type GetMicrofrontendsInGroupFramework = ClosedEnum<
   typeof GetMicrofrontendsInGroupFramework

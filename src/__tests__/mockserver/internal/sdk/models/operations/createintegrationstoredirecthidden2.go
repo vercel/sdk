@@ -385,6 +385,7 @@ const (
 	CreateIntegrationStoreDirectFrameworkNode           CreateIntegrationStoreDirectFramework = "node"
 	CreateIntegrationStoreDirectFrameworkGo             CreateIntegrationStoreDirectFramework = "go"
 	CreateIntegrationStoreDirectFrameworkServices       CreateIntegrationStoreDirectFramework = "services"
+	CreateIntegrationStoreDirectFrameworkMastra         CreateIntegrationStoreDirectFramework = "mastra"
 )
 
 func (e CreateIntegrationStoreDirectFramework) ToPointer() *CreateIntegrationStoreDirectFramework {
@@ -525,6 +526,8 @@ func (e *CreateIntegrationStoreDirectFramework) UnmarshalJSON(data []byte) error
 	case "go":
 		fallthrough
 	case "services":
+		fallthrough
+	case "mastra":
 		*e = CreateIntegrationStoreDirectFramework(v)
 		return nil
 	default:

@@ -128,6 +128,7 @@ func testGetNamedSandboxGetNamedSandbox0(w http.ResponseWriter, req *http.Reques
 				Subdomain: "<value>",
 			},
 		},
+		Resumed: true,
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

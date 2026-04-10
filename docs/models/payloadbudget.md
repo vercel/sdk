@@ -5,7 +5,7 @@ Represents a budget for tracking and notifying teams on their spending.
 ## Example Usage
 
 ```typescript
-import { PayloadBudget } from "@vercel/sdk/models/twohundredandtwentyseven.js";
+import { PayloadBudget } from "@vercel/sdk/models/twohundredandtwentyeight.js";
 
 let value: PayloadBudget = {
   type: "fixed",
@@ -28,7 +28,7 @@ let value: PayloadBudget = {
 
 | Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
 | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `type`                                                                 | [models.UserEventPayload228Type](../models/usereventpayload228type.md) | :heavy_check_mark:                                                     | The budget type                                                        |
+| `type`                                                                 | [models.UserEventPayload229Type](../models/usereventpayload229type.md) | :heavy_check_mark:                                                     | The budget type                                                        |
 | `fixedBudget`                                                          | *number*                                                               | :heavy_check_mark:                                                     | Budget amount (USD / dollars)                                          |
 | `previousSpend`                                                        | *number*[]                                                             | :heavy_check_mark:                                                     | Array of the last 3 months of spend data                               |
 | `notifiedAt`                                                           | *number*[]                                                             | :heavy_check_mark:                                                     | Array of 50, 75, 100 to keep track of notifications sent out           |

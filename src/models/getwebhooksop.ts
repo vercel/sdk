@@ -244,6 +244,7 @@ export const GetWebhooksResponseBodyFramework = {
   Node: "node",
   Go: "go",
   Services: "services",
+  Mastra: "mastra",
 } as const;
 export type GetWebhooksResponseBodyFramework = ClosedEnum<
   typeof GetWebhooksResponseBodyFramework

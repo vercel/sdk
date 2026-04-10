@@ -11,6 +11,53 @@ import (
 	"mockserver/internal/sdk/utils"
 )
 
+type UpdateTeamMemberTeamPermission string
+
+const (
+	UpdateTeamMemberTeamPermissionIntegrationManager       UpdateTeamMemberTeamPermission = "IntegrationManager"
+	UpdateTeamMemberTeamPermissionCreateProject            UpdateTeamMemberTeamPermission = "CreateProject"
+	UpdateTeamMemberTeamPermissionFullProductionDeployment UpdateTeamMemberTeamPermission = "FullProductionDeployment"
+	UpdateTeamMemberTeamPermissionUsageViewer              UpdateTeamMemberTeamPermission = "UsageViewer"
+	UpdateTeamMemberTeamPermissionEnvVariableManager       UpdateTeamMemberTeamPermission = "EnvVariableManager"
+	UpdateTeamMemberTeamPermissionEnvironmentManager       UpdateTeamMemberTeamPermission = "EnvironmentManager"
+	UpdateTeamMemberTeamPermissionV0Builder                UpdateTeamMemberTeamPermission = "V0Builder"
+	UpdateTeamMemberTeamPermissionV0Chatter                UpdateTeamMemberTeamPermission = "V0Chatter"
+	UpdateTeamMemberTeamPermissionV0Viewer                 UpdateTeamMemberTeamPermission = "V0Viewer"
+)
+
+func (e UpdateTeamMemberTeamPermission) ToPointer() *UpdateTeamMemberTeamPermission {
+	return &e
+}
+func (e *UpdateTeamMemberTeamPermission) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "IntegrationManager":
+		fallthrough
+	case "CreateProject":
+		fallthrough
+	case "FullProductionDeployment":
+		fallthrough
+	case "UsageViewer":
+		fallthrough
+	case "EnvVariableManager":
+		fallthrough
+	case "EnvironmentManager":
+		fallthrough
+	case "V0Builder":
+		fallthrough
+	case "V0Chatter":
+		fallthrough
+	case "V0Viewer":
+		*e = UpdateTeamMemberTeamPermission(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateTeamMemberTeamPermission: %v", v)
+	}
+}
+
 // UpdateTeamMemberRole - The project role of the member that will be added. \"null\" will remove this project level role.
 type UpdateTeamMemberRole string
 
@@ -77,9 +124,11 @@ type UpdateTeamMemberRequestBody struct {
 	// Accept a user who requested access to the team.
 	confirmed *bool `const:"true" json:"confirmed,omitempty"`
 	// The role in the team of the member.
-	Role       *string                     `default:"MEMBER" json:"role"`
-	Projects   []UpdateTeamMemberProject   `json:"projects,omitempty"`
-	JoinedFrom *UpdateTeamMemberJoinedFrom `json:"joinedFrom,omitempty"`
+	Role *string `default:"MEMBER" json:"role"`
+	// The team permissions to set for the member. Permissions must be compatible with the team roles assigned to the member.
+	TeamPermissions []UpdateTeamMemberTeamPermission `json:"teamPermissions,omitempty"`
+	Projects        []UpdateTeamMemberProject        `json:"projects,omitempty"`
+	JoinedFrom      *UpdateTeamMemberJoinedFrom      `json:"joinedFrom,omitempty"`
 }
 
 func (u UpdateTeamMemberRequestBody) MarshalJSON() ([]byte, error) {
@@ -102,6 +151,13 @@ func (o *UpdateTeamMemberRequestBody) GetRole() *string {
 		return nil
 	}
 	return o.Role
+}
+
+func (o *UpdateTeamMemberRequestBody) GetTeamPermissions() []UpdateTeamMemberTeamPermission {
+	if o == nil {
+		return nil
+	}
+	return o.TeamPermissions
 }
 
 func (o *UpdateTeamMemberRequestBody) GetProjects() []UpdateTeamMemberProject {

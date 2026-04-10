@@ -7,6 +7,7 @@ import { CreateOrTransferDomainResponseBody } from "@vercel/sdk/models/createort
 
 let value: CreateOrTransferDomainResponseBody = {
   domain: {
+    expiresAt: null,
     verified: true,
     nameservers: [
       "ns1.nameserver.net",
@@ -26,10 +27,9 @@ let value: CreateOrTransferDomainResponseBody = {
       id: "ZspSRT4ljIEEmMHgoDwKWDei",
     },
     name: "example.com",
-    teamId: null,
+    teamId: "<id>",
     boughtAt: 1613602938882,
     createdAt: 1613602938882,
-    expiresAt: 1613602938882,
     id: "EmTbe5CEJyTk2yVAHBUWy4A3sRusca3GCwRjTC1bpeVnt1",
     renew: true,
     serviceType: "zeit.world",

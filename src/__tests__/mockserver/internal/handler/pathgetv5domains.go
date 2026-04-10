@@ -51,7 +51,8 @@ func testGetDomainsGetDomains0(w http.ResponseWriter, req *http.Request) {
 	var respBody *operations.GetDomainsResponseBody = &operations.GetDomainsResponseBody{
 		Domains: []operations.GetDomainsDomain{
 			operations.GetDomainsDomain{
-				Verified: true,
+				ExpiresAt: types.Float64(1613602938882),
+				Verified:  true,
 				Nameservers: []string{
 					"ns1.nameserver.net",
 					"ns2.nameserver.net",
@@ -73,7 +74,6 @@ func testGetDomainsGetDomains0(w http.ResponseWriter, req *http.Request) {
 				TeamID:            types.String("<id>"),
 				BoughtAt:          types.Float64(1613602938882),
 				CreatedAt:         1613602938882,
-				ExpiresAt:         types.Float64(1613602938882),
 				ID:                "EmTbe5CEJyTk2yVAHBUWy4A3sRusca3GCwRjTC1bpeVnt1",
 				Renew:             types.Bool(true),
 				ServiceType:       operations.GetDomainsServiceTypeZeitWorld,

@@ -7,7 +7,6 @@ import (
 	"log"
 	"mockserver/internal/handler/assert"
 	"mockserver/internal/logging"
-	"mockserver/internal/sdk/models/components"
 	"mockserver/internal/sdk/models/operations"
 	"mockserver/internal/sdk/optionalnullable"
 	"mockserver/internal/sdk/types"
@@ -48,34 +47,48 @@ func testGetProjectsGetProjects0(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	var respBody optionalnullable.OptionalNullable[operations.GetProjectsResponseBody] = optionalnullable.From(types.Pointer(operations.CreateGetProjectsResponseBodyGetProjectsResponseBody3(
-		operations.GetProjectsResponseBody3{
-			Projects: []operations.GetProjectsProject2{
-				operations.GetProjectsProject2{
+	var respBody optionalnullable.OptionalNullable[operations.GetProjectsResponseBody] = optionalnullable.From(types.Pointer(operations.CreateGetProjectsResponseBodyGetProjectsResponseBody2(
+		operations.GetProjectsResponseBody2{
+			Projects: []operations.GetProjectsProject1{
+				operations.GetProjectsProject1{
 					AccountID: "<id>",
-					Crons: &operations.GetProjectsCrons{
-						EnabledAt:    3834.41,
-						DisabledAt:   types.Float64(5288.95),
-						UpdatedAt:    5680.45,
-						DeploymentID: types.String("<id>"),
-						Definitions:  []operations.GetProjectsDefinition{},
+					Alias: []operations.ProjectAlias{
+						operations.ProjectAlias{
+							Deployment: &operations.ProjectDeployment{
+								CreatedAt:          9255.97,
+								CreatedIn:          "<value>",
+								Creator:            nil,
+								DeploymentHostname: "<value>",
+								Name:               "<value>",
+								ID:                 "<id>",
+								Plan:               "<value>",
+								Private:            true,
+								ReadyState:         "<value>",
+								Type:               "<value>",
+								URL:                "https://talkative-sauerkraut.org/",
+								UserID:             "<id>",
+							},
+							Domain:      "wonderful-sediment.info",
+							Environment: operations.ProjectEnvironmentPreview,
+							Target:      operations.ProjectAliasTargetProduction,
+						},
 					},
-					DeploymentExpiration: operations.GetProjectsProjectDeploymentExpiration2{},
-					DirectoryListing:     true,
+					DirectoryListing:     false,
+					DeploymentExpiration: operations.GetProjectsProjectDeploymentExpiration1{},
 					ID:                   "<id>",
 					Name:                 "<value>",
-					NodeVersion:          operations.GetProjectsProjectNodeVersion2TwentyFourDotX,
-					ResourceConfig: operations.GetProjectsProjectResourceConfig2{
+					NodeVersion:          operations.GetProjectsProjectNodeVersion1TwentyTwoDotX,
+					ResourceConfig: operations.GetProjectsProjectResourceConfig1{
 						FunctionDefaultRegions: []string{
 							"<value 1>",
 							"<value 2>",
 							"<value 3>",
 						},
 					},
-					RollingRelease: optionalnullable.From(&operations.GetProjectsProjectRollingRelease2{
+					RollingRelease: optionalnullable.From(&operations.GetProjectsProjectRollingRelease1{
 						Target: "production",
-						Stages: optionalnullable.From(types.Pointer([]operations.GetProjectsProjectStage2{
-							operations.GetProjectsProjectStage2{
+						Stages: optionalnullable.From(types.Pointer([]operations.GetProjectsProjectStage1{
+							operations.GetProjectsProjectStage1{
 								TargetPercentage: 25,
 								RequireApproval:  types.Bool(false),
 								Duration:         types.Float64(600),
@@ -84,20 +97,13 @@ func testGetProjectsGetProjects0(w http.ResponseWriter, req *http.Request) {
 						})),
 						CanaryResponseHeader: types.Bool(false),
 					}),
-					DefaultResourceConfig: operations.GetProjectsDefaultResourceConfig{
-						FunctionDefaultRegions: []string{
-							"<value 1>",
-							"<value 2>",
-							"<value 3>",
-						},
-					},
+					ServerlessFunctionRegion: "<value>",
 				},
 			},
-			Pagination: operations.CreatePaginationUnion2Pagination(
-				components.Pagination{
+			Pagination: operations.CreatePaginationUnion1GetProjectsPagination1(
+				operations.GetProjectsPagination1{
 					Count: 20,
-					Next:  types.Float64(1540095775951),
-					Prev:  types.Float64(1540095775951),
+					Next:  types.String("JBSWY3DPEHPK3PXP"),
 				},
 			),
 		},

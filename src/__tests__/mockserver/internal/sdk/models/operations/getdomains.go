@@ -132,6 +132,8 @@ func (e *GetDomainsServiceType) UnmarshalJSON(data []byte) error {
 }
 
 type GetDomainsDomain struct {
+	// Timestamp in milliseconds at which the domain is set to expire. null if not bought with Vercel.
+	ExpiresAt *float64 `json:"expiresAt"`
 	// If the domain has the ownership verified.
 	Verified bool `json:"verified"`
 	// A list of the current nameservers of the domain.
@@ -149,8 +151,6 @@ type GetDomainsDomain struct {
 	BoughtAt *float64 `json:"boughtAt"`
 	// Timestamp in milliseconds when the domain was created in the registry.
 	CreatedAt float64 `json:"createdAt"`
-	// Timestamp in milliseconds at which the domain is set to expire. `null` if not bought with Vercel.
-	ExpiresAt *float64 `json:"expiresAt"`
 	// The unique identifier of the domain.
 	ID string `json:"id"`
 	// Indicates whether the domain is set to automatically renew.
@@ -162,6 +162,13 @@ type GetDomainsDomain struct {
 	// If transferred into Vercel, timestamp in milliseconds when the domain transfer was initiated.
 	TransferStartedAt *float64 `json:"transferStartedAt,omitempty"`
 	UserID            string   `json:"userId"`
+}
+
+func (o *GetDomainsDomain) GetExpiresAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.ExpiresAt
 }
 
 func (o *GetDomainsDomain) GetVerified() bool {
@@ -225,13 +232,6 @@ func (o *GetDomainsDomain) GetCreatedAt() float64 {
 		return 0.0
 	}
 	return o.CreatedAt
-}
-
-func (o *GetDomainsDomain) GetExpiresAt() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.ExpiresAt
 }
 
 func (o *GetDomainsDomain) GetID() string {

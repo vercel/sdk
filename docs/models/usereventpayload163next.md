@@ -3,19 +3,15 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPayload163Next } from "@vercel/sdk/models/payloadresourceconfig.js";
+import { UserEventPayload163Next } from "@vercel/sdk/models/payloaddefaultpurchasetype.js";
 
 let value: UserEventPayload163Next = {
-  functionDefaultRegions: [
-    "<value 1>",
-    "<value 2>",
-    "<value 3>",
-  ],
+  functionDefaultMemoryType: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                    | Type                     | Required                 | Description              |
-| ------------------------ | ------------------------ | ------------------------ | ------------------------ |
-| `functionDefaultRegions` | *string*[]               | :heavy_check_mark:       | N/A                      |
+| Field                       | Type                        | Required                    | Description                 |
+| --------------------------- | --------------------------- | --------------------------- | --------------------------- |
+| `functionDefaultMemoryType` | *string*                    | :heavy_check_mark:          | N/A                         |

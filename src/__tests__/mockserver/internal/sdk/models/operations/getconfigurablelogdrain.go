@@ -106,6 +106,7 @@ const (
 	GetConfigurableLogDrainFrameworkNode           GetConfigurableLogDrainFramework = "node"
 	GetConfigurableLogDrainFrameworkGo             GetConfigurableLogDrainFramework = "go"
 	GetConfigurableLogDrainFrameworkServices       GetConfigurableLogDrainFramework = "services"
+	GetConfigurableLogDrainFrameworkMastra         GetConfigurableLogDrainFramework = "mastra"
 )
 
 func (e GetConfigurableLogDrainFramework) ToPointer() *GetConfigurableLogDrainFramework {
@@ -246,6 +247,8 @@ func (e *GetConfigurableLogDrainFramework) UnmarshalJSON(data []byte) error {
 	case "go":
 		fallthrough
 	case "services":
+		fallthrough
+	case "mastra":
 		*e = GetConfigurableLogDrainFramework(v)
 		return nil
 	default:

@@ -161,6 +161,7 @@ export const CreateIntegrationStoreDirectFramework = {
   Node: "node",
   Go: "go",
   Services: "services",
+  Mastra: "mastra",
 } as const;
 export type CreateIntegrationStoreDirectFramework = ClosedEnum<
   typeof CreateIntegrationStoreDirectFramework

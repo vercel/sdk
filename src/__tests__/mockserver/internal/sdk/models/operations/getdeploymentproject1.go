@@ -4111,6 +4111,7 @@ const (
 	GetDeploymentFrameworkNode           GetDeploymentFramework = "node"
 	GetDeploymentFrameworkGo             GetDeploymentFramework = "go"
 	GetDeploymentFrameworkServices       GetDeploymentFramework = "services"
+	GetDeploymentFrameworkMastra         GetDeploymentFramework = "mastra"
 )
 
 func (e GetDeploymentFramework) ToPointer() *GetDeploymentFramework {
@@ -4251,6 +4252,8 @@ func (e *GetDeploymentFramework) UnmarshalJSON(data []byte) error {
 	case "go":
 		fallthrough
 	case "services":
+		fallthrough
+	case "mastra":
 		*e = GetDeploymentFramework(v)
 		return nil
 	default:

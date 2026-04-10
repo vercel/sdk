@@ -339,6 +339,7 @@ export const Framework = {
   Node: "node",
   Go: "go",
   Services: "services",
+  Mastra: "mastra",
 } as const;
 /**
  * The framework that is being used for this project. When `null` is used no framework is selected
@@ -586,6 +587,7 @@ export const CreateDeploymentFramework = {
   Node: "node",
   Go: "go",
   Services: "services",
+  Mastra: "mastra",
 } as const;
 export type CreateDeploymentFramework = ClosedEnum<
   typeof CreateDeploymentFramework

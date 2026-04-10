@@ -98,6 +98,10 @@ export type CreateOrTransferDomainServiceType = ClosedEnum<
 
 export type CreateOrTransferDomainDomain = {
   /**
+   * Timestamp in milliseconds at which the domain is set to expire. null if not bought with Vercel.
+   */
+  expiresAt: number | null;
+  /**
    * If the domain has the ownership verified.
    */
   verified: boolean;
@@ -130,10 +134,6 @@ export type CreateOrTransferDomainDomain = {
    * Timestamp in milliseconds when the domain was created in the registry.
    */
   createdAt: number;
-  /**
-   * Timestamp in milliseconds at which the domain is set to expire. `null` if not bought with Vercel.
-   */
-  expiresAt: number | null;
   /**
    * The unique identifier of the domain.
    */
@@ -437,6 +437,7 @@ export const CreateOrTransferDomainDomain$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  expiresAt: types.nullable(types.number()),
   verified: types.boolean(),
   nameservers: z.array(types.string()),
   intendedNameservers: z.array(types.string()),
@@ -446,7 +447,6 @@ export const CreateOrTransferDomainDomain$inboundSchema: z.ZodType<
   teamId: types.nullable(types.string()),
   boughtAt: types.nullable(types.number()),
   createdAt: types.number(),
-  expiresAt: types.nullable(types.number()),
   id: types.string(),
   renew: types.optional(types.boolean()),
   serviceType: CreateOrTransferDomainServiceType$inboundSchema,
@@ -456,6 +456,7 @@ export const CreateOrTransferDomainDomain$inboundSchema: z.ZodType<
 });
 /** @internal */
 export type CreateOrTransferDomainDomain$Outbound = {
+  expiresAt: number | null;
   verified: boolean;
   nameservers: Array<string>;
   intendedNameservers: Array<string>;
@@ -465,7 +466,6 @@ export type CreateOrTransferDomainDomain$Outbound = {
   teamId: string | null;
   boughtAt: number | null;
   createdAt: number;
-  expiresAt: number | null;
   id: string;
   renew?: boolean | undefined;
   serviceType: string;
@@ -480,6 +480,7 @@ export const CreateOrTransferDomainDomain$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateOrTransferDomainDomain
 > = z.object({
+  expiresAt: z.nullable(z.number()),
   verified: z.boolean(),
   nameservers: z.array(z.string()),
   intendedNameservers: z.array(z.string()),
@@ -489,7 +490,6 @@ export const CreateOrTransferDomainDomain$outboundSchema: z.ZodType<
   teamId: z.nullable(z.string()),
   boughtAt: z.nullable(z.number()),
   createdAt: z.number(),
-  expiresAt: z.nullable(z.number()),
   id: z.string(),
   renew: z.boolean().optional(),
   serviceType: CreateOrTransferDomainServiceType$outboundSchema,

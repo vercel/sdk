@@ -258,6 +258,7 @@ const (
 	CancelDeploymentFrameworkNode           CancelDeploymentFramework = "node"
 	CancelDeploymentFrameworkGo             CancelDeploymentFramework = "go"
 	CancelDeploymentFrameworkServices       CancelDeploymentFramework = "services"
+	CancelDeploymentFrameworkMastra         CancelDeploymentFramework = "mastra"
 )
 
 func (e CancelDeploymentFramework) ToPointer() *CancelDeploymentFramework {
@@ -398,6 +399,8 @@ func (e *CancelDeploymentFramework) UnmarshalJSON(data []byte) error {
 	case "go":
 		fallthrough
 	case "services":
+		fallthrough
+	case "mastra":
 		*e = CancelDeploymentFramework(v)
 		return nil
 	default:

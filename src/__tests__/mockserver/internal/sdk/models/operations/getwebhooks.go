@@ -530,6 +530,7 @@ const (
 	GetWebhooksFrameworkNode           GetWebhooksFramework = "node"
 	GetWebhooksFrameworkGo             GetWebhooksFramework = "go"
 	GetWebhooksFrameworkServices       GetWebhooksFramework = "services"
+	GetWebhooksFrameworkMastra         GetWebhooksFramework = "mastra"
 )
 
 func (e GetWebhooksFramework) ToPointer() *GetWebhooksFramework {
@@ -670,6 +671,8 @@ func (e *GetWebhooksFramework) UnmarshalJSON(data []byte) error {
 	case "go":
 		fallthrough
 	case "services":
+		fallthrough
+	case "mastra":
 		*e = GetWebhooksFramework(v)
 		return nil
 	default:

@@ -1031,6 +1031,7 @@ export const GetDeploymentResponseBodyFramework = {
   Node: "node",
   Go: "go",
   Services: "services",
+  Mastra: "mastra",
 } as const;
 export type GetDeploymentResponseBodyFramework = ClosedEnum<
   typeof GetDeploymentResponseBodyFramework

@@ -864,6 +864,7 @@ export const ResponseBodyFramework = {
   Rust: "rust",
   Node: "node",
   Go: "go",
+  Mastra: "mastra",
 } as const;
 export type ResponseBodyFramework = ClosedEnum<typeof ResponseBodyFramework>;
 

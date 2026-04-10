@@ -350,6 +350,7 @@ export const GetDeploymentsFramework = {
   Node: "node",
   Go: "go",
   Services: "services",
+  Mastra: "mastra",
 } as const;
 export type GetDeploymentsFramework = ClosedEnum<
   typeof GetDeploymentsFramework

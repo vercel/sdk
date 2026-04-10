@@ -59,6 +59,7 @@ export type GetNamedSandboxResponseBody = {
    */
   session: Session;
   routes: Array<SandboxPublicRoute>;
+  resumed: boolean;
 };
 
 /** @internal */
@@ -121,12 +122,14 @@ export const GetNamedSandboxResponseBody$inboundSchema: z.ZodType<
   sandbox: NamedSandbox$inboundSchema,
   session: Session$inboundSchema,
   routes: z.array(SandboxPublicRoute$inboundSchema),
+  resumed: types.boolean(),
 });
 /** @internal */
 export type GetNamedSandboxResponseBody$Outbound = {
   sandbox: NamedSandbox$Outbound;
   session: Session$Outbound;
   routes: Array<SandboxPublicRoute$Outbound>;
+  resumed: boolean;
 };
 
 /** @internal */
@@ -138,6 +141,7 @@ export const GetNamedSandboxResponseBody$outboundSchema: z.ZodType<
   sandbox: NamedSandbox$outboundSchema,
   session: Session$outboundSchema,
   routes: z.array(SandboxPublicRoute$outboundSchema),
+  resumed: z.boolean(),
 });
 
 export function getNamedSandboxResponseBodyToJSON(

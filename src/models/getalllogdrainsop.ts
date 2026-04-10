@@ -664,6 +664,7 @@ export const GetAllLogDrainsResponseBodyFramework = {
   Node: "node",
   Go: "go",
   Services: "services",
+  Mastra: "mastra",
 } as const;
 export type GetAllLogDrainsResponseBodyFramework = ClosedEnum<
   typeof GetAllLogDrainsResponseBodyFramework

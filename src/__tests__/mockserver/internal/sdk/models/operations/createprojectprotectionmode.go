@@ -284,6 +284,7 @@ const (
 	CreateProjectFrameworkRequestRust           CreateProjectFrameworkRequest = "rust"
 	CreateProjectFrameworkRequestNode           CreateProjectFrameworkRequest = "node"
 	CreateProjectFrameworkRequestGo             CreateProjectFrameworkRequest = "go"
+	CreateProjectFrameworkRequestMastra         CreateProjectFrameworkRequest = "mastra"
 )
 
 func (e CreateProjectFrameworkRequest) ToPointer() *CreateProjectFrameworkRequest {
@@ -424,6 +425,8 @@ func (e *CreateProjectFrameworkRequest) UnmarshalJSON(data []byte) error {
 	case "node":
 		fallthrough
 	case "go":
+		fallthrough
+	case "mastra":
 		*e = CreateProjectFrameworkRequest(v)
 		return nil
 	default:
@@ -3676,6 +3679,7 @@ const (
 	CreateProjectFrameworkResponseBodyRust           CreateProjectFrameworkResponseBody = "rust"
 	CreateProjectFrameworkResponseBodyNode           CreateProjectFrameworkResponseBody = "node"
 	CreateProjectFrameworkResponseBodyGo             CreateProjectFrameworkResponseBody = "go"
+	CreateProjectFrameworkResponseBodyMastra         CreateProjectFrameworkResponseBody = "mastra"
 )
 
 func (e CreateProjectFrameworkResponseBody) ToPointer() *CreateProjectFrameworkResponseBody {
@@ -3816,6 +3820,8 @@ func (e *CreateProjectFrameworkResponseBody) UnmarshalJSON(data []byte) error {
 	case "node":
 		fallthrough
 	case "go":
+		fallthrough
+	case "mastra":
 		*e = CreateProjectFrameworkResponseBody(v)
 		return nil
 	default:

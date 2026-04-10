@@ -1364,6 +1364,7 @@ const (
 	CreateDeploymentFrameworkRequestNode           CreateDeploymentFrameworkRequest = "node"
 	CreateDeploymentFrameworkRequestGo             CreateDeploymentFrameworkRequest = "go"
 	CreateDeploymentFrameworkRequestServices       CreateDeploymentFrameworkRequest = "services"
+	CreateDeploymentFrameworkRequestMastra         CreateDeploymentFrameworkRequest = "mastra"
 )
 
 func (e CreateDeploymentFrameworkRequest) ToPointer() *CreateDeploymentFrameworkRequest {
@@ -1504,6 +1505,8 @@ func (e *CreateDeploymentFrameworkRequest) UnmarshalJSON(data []byte) error {
 	case "go":
 		fallthrough
 	case "services":
+		fallthrough
+	case "mastra":
 		*e = CreateDeploymentFrameworkRequest(v)
 		return nil
 	default:
@@ -2037,6 +2040,7 @@ const (
 	CreateDeploymentFrameworkLambdasNode           CreateDeploymentFrameworkLambdas = "node"
 	CreateDeploymentFrameworkLambdasGo             CreateDeploymentFrameworkLambdas = "go"
 	CreateDeploymentFrameworkLambdasServices       CreateDeploymentFrameworkLambdas = "services"
+	CreateDeploymentFrameworkLambdasMastra         CreateDeploymentFrameworkLambdas = "mastra"
 )
 
 func (e CreateDeploymentFrameworkLambdas) ToPointer() *CreateDeploymentFrameworkLambdas {
@@ -2177,6 +2181,8 @@ func (e *CreateDeploymentFrameworkLambdas) UnmarshalJSON(data []byte) error {
 	case "go":
 		fallthrough
 	case "services":
+		fallthrough
+	case "mastra":
 		*e = CreateDeploymentFrameworkLambdas(v)
 		return nil
 	default:

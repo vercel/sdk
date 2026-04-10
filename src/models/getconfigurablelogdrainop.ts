@@ -87,6 +87,7 @@ export const GetConfigurableLogDrainFramework = {
   Node: "node",
   Go: "go",
   Services: "services",
+  Mastra: "mastra",
 } as const;
 export type GetConfigurableLogDrainFramework = ClosedEnum<
   typeof GetConfigurableLogDrainFramework

@@ -6524,6 +6524,7 @@ const (
 	GetProjectsProjectFramework1Rust           GetProjectsProjectFramework1 = "rust"
 	GetProjectsProjectFramework1Node           GetProjectsProjectFramework1 = "node"
 	GetProjectsProjectFramework1Go             GetProjectsProjectFramework1 = "go"
+	GetProjectsProjectFramework1Mastra         GetProjectsProjectFramework1 = "mastra"
 )
 
 func (e GetProjectsProjectFramework1) ToPointer() *GetProjectsProjectFramework1 {
@@ -6664,6 +6665,8 @@ func (e *GetProjectsProjectFramework1) UnmarshalJSON(data []byte) error {
 	case "node":
 		fallthrough
 	case "go":
+		fallthrough
+	case "mastra":
 		*e = GetProjectsProjectFramework1(v)
 		return nil
 	default:

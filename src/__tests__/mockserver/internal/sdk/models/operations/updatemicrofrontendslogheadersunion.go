@@ -2742,6 +2742,7 @@ const (
 	UpdateMicrofrontendsFrameworkRust           UpdateMicrofrontendsFramework = "rust"
 	UpdateMicrofrontendsFrameworkNode           UpdateMicrofrontendsFramework = "node"
 	UpdateMicrofrontendsFrameworkGo             UpdateMicrofrontendsFramework = "go"
+	UpdateMicrofrontendsFrameworkMastra         UpdateMicrofrontendsFramework = "mastra"
 )
 
 func (e UpdateMicrofrontendsFramework) ToPointer() *UpdateMicrofrontendsFramework {
@@ -2882,6 +2883,8 @@ func (e *UpdateMicrofrontendsFramework) UnmarshalJSON(data []byte) error {
 	case "node":
 		fallthrough
 	case "go":
+		fallthrough
+	case "mastra":
 		*e = UpdateMicrofrontendsFramework(v)
 		return nil
 	default:

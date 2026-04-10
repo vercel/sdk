@@ -72,6 +72,7 @@ type GetNamedSandboxResponseBody struct {
 	// This object contains information related to a Vercel Sandbox Session. v2 endpoints return "session" instead of "sandbox" as the response wrapper key.
 	Session components.Session              `json:"session"`
 	Routes  []components.SandboxPublicRoute `json:"routes"`
+	Resumed bool                            `json:"resumed"`
 }
 
 func (o *GetNamedSandboxResponseBody) GetSandbox() components.NamedSandbox {
@@ -93,6 +94,13 @@ func (o *GetNamedSandboxResponseBody) GetRoutes() []components.SandboxPublicRout
 		return []components.SandboxPublicRoute{}
 	}
 	return o.Routes
+}
+
+func (o *GetNamedSandboxResponseBody) GetResumed() bool {
+	if o == nil {
+		return false
+	}
+	return o.Resumed
 }
 
 type GetNamedSandboxResponse struct {

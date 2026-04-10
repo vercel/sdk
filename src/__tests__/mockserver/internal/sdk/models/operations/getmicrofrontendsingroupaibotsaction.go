@@ -2676,6 +2676,7 @@ const (
 	GetMicrofrontendsInGroupFrameworkRuby           GetMicrofrontendsInGroupFramework = "ruby"
 	GetMicrofrontendsInGroupFrameworkRust           GetMicrofrontendsInGroupFramework = "rust"
 	GetMicrofrontendsInGroupFrameworkGo             GetMicrofrontendsInGroupFramework = "go"
+	GetMicrofrontendsInGroupFrameworkMastra         GetMicrofrontendsInGroupFramework = "mastra"
 )
 
 func (e GetMicrofrontendsInGroupFramework) ToPointer() *GetMicrofrontendsInGroupFramework {
@@ -2816,6 +2817,8 @@ func (e *GetMicrofrontendsInGroupFramework) UnmarshalJSON(data []byte) error {
 	case "rust":
 		fallthrough
 	case "go":
+		fallthrough
+	case "mastra":
 		*e = GetMicrofrontendsInGroupFramework(v)
 		return nil
 	default:

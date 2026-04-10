@@ -22,4 +22,4 @@ jobs:
             gh pr merge "$PR_NUMBER" --auto --squash --repo "${{ github.repository }}"
           fi
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.PR_CREATION_PAT }}

@@ -5,11 +5,11 @@
 ```typescript
 import { UserEventPayload112Action } from "@vercel/sdk/models/nextrule.js";
 
-let value: UserEventPayload112Action = "enable";
+let value: UserEventPayload112Action = "challenge";
 ```
 
 ## Values
 
 ```typescript
-"enable" | "disable"
+"log" | "challenge" | "deny"
 ```

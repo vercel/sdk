@@ -1752,6 +1752,10 @@ export type GetProjectsResponseBodySecurity = {
   securityPlusMetadata?:
     | GetProjectsResponseBodySecurityPlusMetadata
     | undefined;
+  /**
+   * Whether Page Integrity is enabled for this project. Used by the metadata service to gate DynamoDB lookups against the page-integrity-inventory table.
+   */
+  pageIntegrityEnabled?: boolean | undefined;
 };
 
 /**
@@ -9317,6 +9321,7 @@ export const GetProjectsResponseBodySecurity$inboundSchema: z.ZodType<
   securityPlusMetadata: types.optional(
     z.lazy(() => GetProjectsResponseBodySecurityPlusMetadata$inboundSchema),
   ),
+  pageIntegrityEnabled: types.optional(types.boolean()),
 }).transform((v) => {
   return remap$(v, {
     "log_headers": "logHeaders",
@@ -9346,6 +9351,7 @@ export type GetProjectsResponseBodySecurity$Outbound = {
   securityPlusMetadata?:
     | GetProjectsResponseBodySecurityPlusMetadata$Outbound
     | undefined;
+  pageIntegrityEnabled?: boolean | undefined;
 };
 
 /** @internal */
@@ -9380,6 +9386,7 @@ export const GetProjectsResponseBodySecurity$outboundSchema: z.ZodType<
   securityPlusMetadata: z.lazy(() =>
     GetProjectsResponseBodySecurityPlusMetadata$outboundSchema
   ).optional(),
+  pageIntegrityEnabled: z.boolean().optional(),
 }).transform((v) => {
   return remap$(v, {
     logHeaders: "log_headers",

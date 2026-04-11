@@ -9,7 +9,7 @@ import (
 	"mockserver/internal/sdk/utils"
 )
 
-// GetCommandWait - If set to \"true\", the request will block until the command finishes execution. Useful for synchronously waiting for command completion.
+// GetCommandWait - If set to "true", the request will block until the command finishes execution. Useful for synchronously waiting for command completion.
 type GetCommandWait string
 
 const (
@@ -41,7 +41,7 @@ type GetCommandRequest struct {
 	SandboxID string `pathParam:"style=simple,explode=false,name=sandboxId"`
 	// The unique identifier of the command to retrieve.
 	CmdID string `pathParam:"style=simple,explode=false,name=cmdId"`
-	// If set to \"true\", the request will block until the command finishes execution. Useful for synchronously waiting for command completion.
+	// If set to "true", the request will block until the command finishes execution. Useful for synchronously waiting for command completion.
 	Wait *GetCommandWait `default:"false" queryParam:"style=form,explode=true,name=wait"`
 	// The Team identifier to perform the request on behalf of.
 	TeamID *string `queryParam:"style=form,explode=true,name=teamId"`

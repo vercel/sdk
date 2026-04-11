@@ -391,6 +391,10 @@ export type ApproveRollingReleaseStageRollingRelease = {
    * Unix timestamp in milliseconds when the rolling release was last updated
    */
   updatedAt: number;
+  /**
+   * When set (for example while {@link substate} is `PAUSED`), the canary traffic percentage persisted on the rollout document — use for dashboard display when linear shift is active.
+   */
+  currentCanaryPercentage?: number | undefined;
 };
 
 /**
@@ -937,6 +941,7 @@ export const ApproveRollingReleaseStageRollingRelease$inboundSchema: z.ZodType<
   ),
   startedAt: types.number(),
   updatedAt: types.number(),
+  currentCanaryPercentage: types.optional(types.number()),
 });
 /** @internal */
 export type ApproveRollingReleaseStageRollingRelease$Outbound = {
@@ -953,6 +958,7 @@ export type ApproveRollingReleaseStageRollingRelease$Outbound = {
   nextStage: ApproveRollingReleaseStageNextStage$Outbound | null;
   startedAt: number;
   updatedAt: number;
+  currentCanaryPercentage?: number | undefined;
 };
 
 /** @internal */
@@ -982,6 +988,7 @@ export const ApproveRollingReleaseStageRollingRelease$outboundSchema: z.ZodType<
   ),
   startedAt: z.number(),
   updatedAt: z.number(),
+  currentCanaryPercentage: z.number().optional(),
 });
 
 export function approveRollingReleaseStageRollingReleaseToJSON(

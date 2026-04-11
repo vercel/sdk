@@ -11,7 +11,7 @@ import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
- * The project role that will be added to this Access Group. \"null\" will remove this project level role.
+ * The project role that will be added to this Access Group. "null" will remove this project level role.
  */
 export const CreateAccessGroupRole = {
   Admin: "ADMIN",
@@ -19,7 +19,7 @@ export const CreateAccessGroupRole = {
   ProjectDeveloper: "PROJECT_DEVELOPER",
 } as const;
 /**
- * The project role that will be added to this Access Group. \"null\" will remove this project level role.
+ * The project role that will be added to this Access Group. "null" will remove this project level role.
  */
 export type CreateAccessGroupRole = ClosedEnum<typeof CreateAccessGroupRole>;
 
@@ -29,7 +29,7 @@ export type CreateAccessGroupProjects = {
    */
   projectId: string;
   /**
-   * The project role that will be added to this Access Group. \"null\" will remove this project level role.
+   * The project role that will be added to this Access Group. "null" will remove this project level role.
    */
   role: CreateAccessGroupRole | null;
 };

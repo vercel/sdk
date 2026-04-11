@@ -95,10 +95,10 @@ async function $do(
   const path = pathToFunc("/v1/env")();
 
   const query = encodeFormQuery({
+    "'exclude-ids'": payload["'exclude-ids'QueryParameter1"],
+    "'exclude-projectId'": payload["'exclude-projectId'QueryParameter1"],
     "exclude_ids": payload.exclude_idsQueryParameter,
     "exclude_projectId": payload.exclude_projectIdQueryParameter,
-    "exclude-ids": payload["exclude-idsQueryParameter1"],
-    "exclude-projectId": payload["exclude-projectIdQueryParameter1"],
     "ids": payload.ids,
     "projectId": payload.projectId,
     "search": payload.search,

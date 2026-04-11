@@ -10,6 +10,7 @@ import { NinetyThree } from "@vercel/sdk/models/payloadoldteam.js";
 let value: NinetyThree = {
   projectId: "<id>",
   projectName: "<value>",
+  tags: [],
 };
 ```
 
@@ -19,3 +20,5 @@ let value: NinetyThree = {
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `projectId`        | *string*           | :heavy_check_mark: | N/A                |
 | `projectName`      | *string*           | :heavy_check_mark: | N/A                |
+| `tags`             | *string*[]         | :heavy_check_mark: | N/A                |
+| `target`           | *string*           | :heavy_minus_sign: | N/A                |

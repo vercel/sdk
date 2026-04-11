@@ -106,7 +106,7 @@ export type AddRouteRoute = {
 };
 
 /**
- * \"after\"/\"before\" require referenceId.
+ * "after"/"before" require referenceId.
  */
 export const Placement = {
   Start: "start",
@@ -115,20 +115,20 @@ export const Placement = {
   Before: "before",
 } as const;
 /**
- * \"after\"/\"before\" require referenceId.
+ * "after"/"before" require referenceId.
  */
 export type Placement = ClosedEnum<typeof Placement>;
 
 /**
- * Controls where the route is inserted. Defaults to \"end\" if omitted.
+ * Controls where the route is inserted. Defaults to "end" if omitted.
  */
 export type Position = {
   /**
-   * \"after\"/\"before\" require referenceId.
+   * "after"/"before" require referenceId.
    */
   placement?: Placement | undefined;
   /**
-   * Route ID to insert after/before. Required for \"after\"/\"before\".
+   * Route ID to insert after/before. Required for "after"/"before".
    */
   referenceId?: string | undefined;
 };
@@ -136,7 +136,7 @@ export type Position = {
 export type AddRouteRequestBody = {
   route: AddRouteRoute;
   /**
-   * Controls where the route is inserted. Defaults to \"end\" if omitted.
+   * Controls where the route is inserted. Defaults to "end" if omitted.
    */
   position?: Position | undefined;
 };

@@ -772,6 +772,9 @@ async function run() {
       strictDeploymentProtectionSettings: {
         enabled: true,
       },
+      strictShareableLinks: {
+        enabled: true,
+      },
       resourceConfig: {
         buildMachine: {
           default: "standard",
@@ -829,6 +832,9 @@ async function run() {
         expirationErrored: "1y",
       },
       strictDeploymentProtectionSettings: {
+        enabled: true,
+      },
+      strictShareableLinks: {
         enabled: true,
       },
       resourceConfig: {

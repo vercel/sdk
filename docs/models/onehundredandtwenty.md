@@ -8,7 +8,9 @@ The payload of the event, if requested.
 import { OneHundredAndTwenty } from "@vercel/sdk/models/payloaddefaultpurchasetype.js";
 
 let value: OneHundredAndTwenty = {
-  logDrainUrl: null,
+  integrationId: "<id>",
+  integrationSlug: "<value>",
+  integrationName: "<value>",
 };
 ```
 
@@ -16,5 +18,6 @@ let value: OneHundredAndTwenty = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `logDrainUrl`      | *string*           | :heavy_check_mark: | N/A                |
-| `integrationName`  | *string*           | :heavy_minus_sign: | N/A                |
+| `integrationId`    | *string*           | :heavy_check_mark: | N/A                |
+| `integrationSlug`  | *string*           | :heavy_check_mark: | N/A                |
+| `integrationName`  | *string*           | :heavy_check_mark: | N/A                |

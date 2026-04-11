@@ -384,7 +384,7 @@ func (o *AddRouteRouteRequest1) GetRoute() AddRouteRouteRequest2 {
 	return o.Route
 }
 
-// Placement - \"after\"/\"before\" require referenceId.
+// Placement - "after"/"before" require referenceId.
 type Placement string
 
 const (
@@ -417,11 +417,11 @@ func (e *Placement) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// Position - Controls where the route is inserted. Defaults to \"end\" if omitted.
+// Position - Controls where the route is inserted. Defaults to "end" if omitted.
 type Position struct {
-	// \"after\"/\"before\" require referenceId.
+	// "after"/"before" require referenceId.
 	Placement *Placement `json:"placement,omitempty"`
-	// Route ID to insert after/before. Required for \"after\"/\"before\".
+	// Route ID to insert after/before. Required for "after"/"before".
 	ReferenceID *string `json:"referenceId,omitempty"`
 }
 
@@ -441,7 +441,7 @@ func (o *Position) GetReferenceID() *string {
 
 type AddRouteRequestBody struct {
 	Route AddRouteRouteRequest1 `json:"route"`
-	// Controls where the route is inserted. Defaults to \"end\" if omitted.
+	// Controls where the route is inserted. Defaults to "end" if omitted.
 	Position *Position `json:"position,omitempty"`
 }
 

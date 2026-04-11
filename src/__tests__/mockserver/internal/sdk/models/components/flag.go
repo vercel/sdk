@@ -2190,25 +2190,26 @@ func (o *FlagMetadata) GetCreator() *FlagCreator {
 }
 
 type Flag struct {
-	Description  *string                 `json:"description,omitempty"`
-	Permanent    *bool                   `json:"permanent,omitempty"`
-	Tags         []string                `json:"tags,omitempty"`
-	Experiment   *Experiment             `json:"experiment,omitempty"`
-	Variants     []Variant               `json:"variants"`
-	ID           string                  `json:"id"`
-	Environments map[string]Environments `json:"environments"`
-	Kind         Kind                    `json:"kind"`
-	Revision     float64                 `json:"revision"`
-	Seed         float64                 `json:"seed"`
-	State        State                   `json:"state"`
-	Slug         string                  `json:"slug"`
-	CreatedAt    float64                 `json:"createdAt"`
-	UpdatedAt    float64                 `json:"updatedAt"`
-	CreatedBy    string                  `json:"createdBy"`
-	OwnerID      string                  `json:"ownerId"`
-	ProjectID    string                  `json:"projectId"`
-	TypeName     FlagTypeName            `json:"typeName"`
-	Metadata     *FlagMetadata           `json:"metadata,omitempty"`
+	Description   *string                 `json:"description,omitempty"`
+	MaintainerIds []string                `json:"maintainerIds,omitempty"`
+	Permanent     *bool                   `json:"permanent,omitempty"`
+	Tags          []string                `json:"tags,omitempty"`
+	Experiment    *Experiment             `json:"experiment,omitempty"`
+	Variants      []Variant               `json:"variants"`
+	ID            string                  `json:"id"`
+	Environments  map[string]Environments `json:"environments"`
+	Kind          Kind                    `json:"kind"`
+	Revision      float64                 `json:"revision"`
+	Seed          float64                 `json:"seed"`
+	State         State                   `json:"state"`
+	Slug          string                  `json:"slug"`
+	CreatedAt     float64                 `json:"createdAt"`
+	UpdatedAt     float64                 `json:"updatedAt"`
+	CreatedBy     string                  `json:"createdBy"`
+	OwnerID       string                  `json:"ownerId"`
+	ProjectID     string                  `json:"projectId"`
+	TypeName      FlagTypeName            `json:"typeName"`
+	Metadata      *FlagMetadata           `json:"metadata,omitempty"`
 }
 
 func (f Flag) MarshalJSON() ([]byte, error) {
@@ -2227,6 +2228,13 @@ func (o *Flag) GetDescription() *string {
 		return nil
 	}
 	return o.Description
+}
+
+func (o *Flag) GetMaintainerIds() []string {
+	if o == nil {
+		return nil
+	}
+	return o.MaintainerIds
 }
 
 func (o *Flag) GetPermanent() *bool {

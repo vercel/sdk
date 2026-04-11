@@ -9,19 +9,19 @@ import (
 
 type UploadArtifactRequest struct {
 	// The artifact size in bytes
-	ContentLength float64 `header:"style=simple,explode=false,name=Content-Length"`
+	ContentLength *float64 `header:"style=simple,explode=false,name='content-Length'"`
 	// The time taken to generate the uploaded artifact in milliseconds.
-	XArtifactDuration *float64 `header:"style=simple,explode=false,name=x-artifact-duration"`
+	XArtifactDuration *float64 `header:"style=simple,explode=false,name='x-Artifact-Duration'"`
 	// The continuous integration or delivery environment where this artifact was generated.
-	XArtifactClientCi *string `header:"style=simple,explode=false,name=x-artifact-client-ci"`
+	XArtifactClientCi *string `header:"style=simple,explode=false,name='x-Artifact-Client-Ci'"`
 	// 1 if the client is an interactive shell. Otherwise 0
-	XArtifactClientInteractive *int64 `header:"style=simple,explode=false,name=x-artifact-client-interactive"`
+	XArtifactClientInteractive *int64 `header:"style=simple,explode=false,name='x-Artifact-Client-Interactive'"`
 	// The base64 encoded tag for this artifact. The value is sent back to clients when the artifact is downloaded as the header `x-artifact-tag`
-	XArtifactTag *string `header:"style=simple,explode=false,name=x-artifact-tag"`
+	XArtifactTag *string `header:"style=simple,explode=false,name='x-Artifact-Tag'"`
 	// The SHA of the source control revision that generated this artifact.
-	XArtifactSha *string `header:"style=simple,explode=false,name=x-artifact-sha"`
+	XArtifactSha *string `header:"style=simple,explode=false,name='x-Artifact-Sha'"`
 	// A hash representing uncommitted changes in the working directory when this artifact was generated.
-	XArtifactDirtyHash *string `header:"style=simple,explode=false,name=x-artifact-dirty-hash"`
+	XArtifactDirtyHash *string `header:"style=simple,explode=false,name='x-Artifact-Dirty-Hash'"`
 	// The artifact hash
 	Hash string `pathParam:"style=simple,explode=false,name=hash"`
 	// The Team identifier to perform the request on behalf of.
@@ -31,9 +31,9 @@ type UploadArtifactRequest struct {
 	Body io.Reader `request:"mediaType=application/octet-stream"`
 }
 
-func (o *UploadArtifactRequest) GetContentLength() float64 {
+func (o *UploadArtifactRequest) GetContentLength() *float64 {
 	if o == nil {
-		return 0.0
+		return nil
 	}
 	return o.ContentLength
 }

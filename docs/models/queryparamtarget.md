@@ -1,6 +1,6 @@
 # QueryParamTarget
 
-Filters on the target of the domain. Can be either \"production\", \"preview\"
+Filters on the target of the domain. Can be either "production", "preview"
 
 ## Example Usage
 

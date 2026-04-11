@@ -8,13 +8,15 @@ The payload of the event, if requested.
 import { Forty } from "@vercel/sdk/models/userevent.js";
 
 let value: Forty = {
-  productAliases: [],
+  action: "mutate",
+  data: {},
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `subscriptionId`   | *string*           | :heavy_minus_sign: | N/A                |
-| `productAliases`   | *string*[]         | :heavy_check_mark: | N/A                |
+| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `subscriptionId`                                                         | *string*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `action`                                                                 | [models.UserEventPayload40Action](../models/usereventpayload40action.md) | :heavy_check_mark:                                                       | N/A                                                                      |
+| `data`                                                                   | Record<string, *any*>                                                    | :heavy_check_mark:                                                       | N/A                                                                      |

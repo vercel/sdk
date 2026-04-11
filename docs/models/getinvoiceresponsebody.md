@@ -7,7 +7,7 @@ import { GetInvoiceResponseBody } from "@vercel/sdk/models/getinvoiceop.js";
 
 let value: GetInvoiceResponseBody = {
   invoiceId: "<id>",
-  state: "invoiced",
+  state: "notpaid",
   invoiceDate: "<value>",
   period: {
     start: "<value>",

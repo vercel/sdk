@@ -46,7 +46,17 @@ func testGetBypassIPGetBypassIp0(w http.ResponseWriter, req *http.Request) {
 		return
 	}
 	var respBody *operations.GetBypassIPResponseBody = &operations.GetBypassIPResponseBody{
-		Result: []operations.GetBypassIPResult{},
+		Result: []operations.GetBypassIPResult{
+			operations.GetBypassIPResult{
+				OwnerID:       "<id>",
+				ID:            "<id>",
+				Domain:        "necessary-hierarchy.name",
+				IP:            "228.246.98.202",
+				CreatedAt:     "1720832829660",
+				UpdatedAt:     "1735652278482",
+				UpdatedAtHour: "<value>",
+			},
+		},
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

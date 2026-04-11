@@ -5,17 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FortySeven } from "@vercel/sdk/models/payloadoldteam.js";
+import { FortySeven } from "@vercel/sdk/models/userevent.js";
 
 let value: FortySeven = {
-  src: "<value>",
-  dst: "<value>",
+  id: "<id>",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `src`              | *string*           | :heavy_check_mark: | N/A                |
-| `dst`              | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                | Type                                                 | Required                                             | Description                                          |
+| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
+| `id`                                                 | *string*                                             | :heavy_check_mark:                                   | N/A                                                  |
+| `oldTeam`                                            | [models.PayloadOldTeam](../models/payloadoldteam.md) | :heavy_minus_sign:                                   | N/A                                                  |
+| `newTeam`                                            | [models.PayloadNewTeam](../models/payloadnewteam.md) | :heavy_minus_sign:                                   | N/A                                                  |

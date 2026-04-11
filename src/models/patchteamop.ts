@@ -230,6 +230,16 @@ export type PatchTeamStrictDeploymentProtectionSettings = {
 };
 
 /**
+ * When enabled, creating shareable links requires Owner role.
+ */
+export type PatchTeamStrictShareableLinks = {
+  /**
+   * Enable or disable requiring Owner role to create shareable links.
+   */
+  enabled: boolean;
+};
+
+/**
  * The NSNB preference for the team.
  */
 export const NsnbConfigPreference = {
@@ -370,6 +380,10 @@ export type PatchTeamRequestBody = {
   strictDeploymentProtectionSettings?:
     | PatchTeamStrictDeploymentProtectionSettings
     | undefined;
+  /**
+   * When enabled, creating shareable links requires Owner role.
+   */
+  strictShareableLinks?: PatchTeamStrictShareableLinks | undefined;
   nsnbConfig?: NsnbConfig1 | string | undefined;
   defaultProjectJobs?: DefaultProjectJobs1 | string | undefined;
   /**
@@ -850,6 +864,47 @@ export function patchTeamStrictDeploymentProtectionSettingsFromJSON(
 }
 
 /** @internal */
+export const PatchTeamStrictShareableLinks$inboundSchema: z.ZodType<
+  PatchTeamStrictShareableLinks,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  enabled: types.boolean(),
+});
+/** @internal */
+export type PatchTeamStrictShareableLinks$Outbound = {
+  enabled: boolean;
+};
+
+/** @internal */
+export const PatchTeamStrictShareableLinks$outboundSchema: z.ZodType<
+  PatchTeamStrictShareableLinks$Outbound,
+  z.ZodTypeDef,
+  PatchTeamStrictShareableLinks
+> = z.object({
+  enabled: z.boolean(),
+});
+
+export function patchTeamStrictShareableLinksToJSON(
+  patchTeamStrictShareableLinks: PatchTeamStrictShareableLinks,
+): string {
+  return JSON.stringify(
+    PatchTeamStrictShareableLinks$outboundSchema.parse(
+      patchTeamStrictShareableLinks,
+    ),
+  );
+}
+export function patchTeamStrictShareableLinksFromJSON(
+  jsonString: string,
+): SafeParseResult<PatchTeamStrictShareableLinks, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PatchTeamStrictShareableLinks$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PatchTeamStrictShareableLinks' from JSON`,
+  );
+}
+
+/** @internal */
 export const NsnbConfigPreference$inboundSchema: z.ZodNativeEnum<
   typeof NsnbConfigPreference
 > = z.nativeEnum(NsnbConfigPreference);
@@ -1211,6 +1266,9 @@ export const PatchTeamRequestBody$inboundSchema: z.ZodType<
   strictDeploymentProtectionSettings: types.optional(
     z.lazy(() => PatchTeamStrictDeploymentProtectionSettings$inboundSchema),
   ),
+  strictShareableLinks: types.optional(
+    z.lazy(() => PatchTeamStrictShareableLinks$inboundSchema),
+  ),
   nsnbConfig: types.optional(
     smartUnion([z.lazy(() => NsnbConfig1$inboundSchema), types.string()]),
   ),
@@ -1249,6 +1307,7 @@ export type PatchTeamRequestBody$Outbound = {
   strictDeploymentProtectionSettings?:
     | PatchTeamStrictDeploymentProtectionSettings$Outbound
     | undefined;
+  strictShareableLinks?: PatchTeamStrictShareableLinks$Outbound | undefined;
   nsnbConfig?: NsnbConfig1$Outbound | string | undefined;
   defaultProjectJobs?: DefaultProjectJobs1$Outbound | string | undefined;
   resourceConfig?: PatchTeamResourceConfig$Outbound | undefined;
@@ -1282,6 +1341,9 @@ export const PatchTeamRequestBody$outboundSchema: z.ZodType<
   ).optional(),
   strictDeploymentProtectionSettings: z.lazy(() =>
     PatchTeamStrictDeploymentProtectionSettings$outboundSchema
+  ).optional(),
+  strictShareableLinks: z.lazy(() =>
+    PatchTeamStrictShareableLinks$outboundSchema
   ).optional(),
   nsnbConfig: smartUnion([z.lazy(() => NsnbConfig1$outboundSchema), z.string()])
     .optional(),

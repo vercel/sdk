@@ -55,7 +55,7 @@ func testApproveRollingReleaseStageApproveRollingReleaseStage0(w http.ResponseWr
 	var respBody *operations.ApproveRollingReleaseStageResponseBody = &operations.ApproveRollingReleaseStageResponseBody{
 		RollingRelease: &operations.ApproveRollingReleaseStageRollingRelease{
 			State:    operations.ApproveRollingReleaseStageStateActive,
-			Substate: operations.ApproveRollingReleaseStageSubstatePaused.ToPointer(),
+			Substate: nil,
 			CurrentDeployment: &operations.ApproveRollingReleaseStageCurrentDeployment{
 				Name:         "my-shop@main",
 				CreatedAt:    1716206500000,

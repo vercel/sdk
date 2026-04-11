@@ -6,12 +6,12 @@
 import { UserEventPayload164Next } from "@vercel/sdk/models/payloaddefaultpurchasetype.js";
 
 let value: UserEventPayload164Next = {
-  functionDefaultRegions: [],
+  functionDefaultMemoryType: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                    | Type                     | Required                 | Description              |
-| ------------------------ | ------------------------ | ------------------------ | ------------------------ |
-| `functionDefaultRegions` | *string*[]               | :heavy_check_mark:       | N/A                      |
+| Field                       | Type                        | Required                    | Description                 |
+| --------------------------- | --------------------------- | --------------------------- | --------------------------- |
+| `functionDefaultMemoryType` | *string*                    | :heavy_check_mark:          | N/A                         |

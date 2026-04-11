@@ -235,6 +235,8 @@ type GetMicrofrontendsInGroupSecurity struct {
 	LogHeaders             *GetMicrofrontendsInGroupLogHeadersUnion                                `json:"log_headers,omitempty"`
 	SecurityPlus           *bool                                                                   `json:"securityPlus,omitempty"`
 	SecurityPlusMetadata   *GetMicrofrontendsInGroupSecurityPlusMetadata                           `json:"securityPlusMetadata,omitempty"`
+	// Whether Page Integrity is enabled for this project. Used by the metadata service to gate DynamoDB lookups against the page-integrity-inventory table.
+	PageIntegrityEnabled *bool `json:"pageIntegrityEnabled,omitempty"`
 }
 
 func (o *GetMicrofrontendsInGroupSecurity) GetAttackModeEnabled() *bool {
@@ -340,6 +342,13 @@ func (o *GetMicrofrontendsInGroupSecurity) GetSecurityPlusMetadata() *GetMicrofr
 		return nil
 	}
 	return o.SecurityPlusMetadata
+}
+
+func (o *GetMicrofrontendsInGroupSecurity) GetPageIntegrityEnabled() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.PageIntegrityEnabled
 }
 
 // GetMicrofrontendsInGroupIssuerMode - - team: `https://oidc.vercel.com/[team_slug]` - global: `https://oidc.vercel.com`

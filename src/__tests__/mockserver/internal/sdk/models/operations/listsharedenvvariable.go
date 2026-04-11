@@ -20,11 +20,11 @@ type ListSharedEnvVariableRequest struct {
 	// Filter SharedEnvVariables based on comma separated ids
 	ExcludeIdsQueryParameter *string `queryParam:"style=form,explode=true,name=exclude_ids"`
 	// Filter SharedEnvVariables based on comma separated ids
-	ExcludeIdsQueryParameter1 *string `queryParam:"style=form,explode=true,name=exclude-ids"`
+	ExcludeIdsQueryParameter1 *string `queryParam:"style=form,explode=true,name='exclude-ids'"`
 	// Filter SharedEnvVariables that belong to a project
 	ExcludeProjectIDQueryParameter *string `queryParam:"style=form,explode=true,name=exclude_projectId"`
 	// Filter SharedEnvVariables that belong to a project
-	ExcludeProjectIDQueryParameter1 *string `queryParam:"style=form,explode=true,name=exclude-projectId"`
+	ExcludeProjectIDQueryParameter1 *string `queryParam:"style=form,explode=true,name='exclude-projectId'"`
 	// The Team identifier to perform the request on behalf of.
 	TeamID *string `queryParam:"style=form,explode=true,name=teamId"`
 	// The Team slug to perform the request on behalf of.

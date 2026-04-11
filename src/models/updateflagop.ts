@@ -261,6 +261,10 @@ export type UpdateFlagRequestBody = {
   description?: string | undefined;
   state?: UpdateFlagState | undefined;
   /**
+   * The user ids of the maintainers of the flag
+   */
+  maintainerIds?: Array<string> | undefined;
+  /**
    * Whether this flag is marked as permanent, indicating it should not be removed
    */
   permanent?: boolean | undefined;
@@ -635,6 +639,7 @@ export type ResponseBodyTypeName = ClosedEnum<typeof ResponseBodyTypeName>;
 
 export type UpdateFlagResponseBody1 = {
   description?: string | undefined;
+  maintainerIds?: Array<string> | undefined;
   permanent?: boolean | undefined;
   tags?: Array<string> | undefined;
   experiment?: ResponseBodyExperiment | undefined;
@@ -1873,6 +1878,7 @@ export const UpdateFlagRequestBody$inboundSchema: z.ZodType<
   seed: types.optional(types.number()),
   description: types.optional(types.string()),
   state: types.optional(UpdateFlagState$inboundSchema),
+  maintainerIds: types.optional(z.array(types.string())),
   permanent: types.optional(types.boolean()),
   tags: types.optional(z.array(types.string())),
 });
@@ -1885,6 +1891,7 @@ export type UpdateFlagRequestBody$Outbound = {
   seed?: number | undefined;
   description?: string | undefined;
   state?: string | undefined;
+  maintainerIds?: Array<string> | undefined;
   permanent?: boolean | undefined;
   tags?: Array<string> | undefined;
 };
@@ -1903,6 +1910,7 @@ export const UpdateFlagRequestBody$outboundSchema: z.ZodType<
   seed: z.number().optional(),
   description: z.string().optional(),
   state: UpdateFlagState$outboundSchema.optional(),
+  maintainerIds: z.array(z.string()).optional(),
   permanent: z.boolean().optional(),
   tags: z.array(z.string()).optional(),
 });
@@ -3538,6 +3546,7 @@ export const UpdateFlagResponseBody1$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   description: types.optional(types.string()),
+  maintainerIds: types.optional(z.array(types.string())),
   permanent: types.optional(types.boolean()),
   tags: types.optional(z.array(types.string())),
   experiment: types.optional(
@@ -3561,6 +3570,7 @@ export const UpdateFlagResponseBody1$inboundSchema: z.ZodType<
 /** @internal */
 export type UpdateFlagResponseBody1$Outbound = {
   description?: string | undefined;
+  maintainerIds?: Array<string> | undefined;
   permanent?: boolean | undefined;
   tags?: Array<string> | undefined;
   experiment?: ResponseBodyExperiment$Outbound | undefined;
@@ -3587,6 +3597,7 @@ export const UpdateFlagResponseBody1$outboundSchema: z.ZodType<
   UpdateFlagResponseBody1
 > = z.object({
   description: z.string().optional(),
+  maintainerIds: z.array(z.string()).optional(),
   permanent: z.boolean().optional(),
   tags: z.array(z.string()).optional(),
   experiment: z.lazy(() => ResponseBodyExperiment$outboundSchema).optional(),

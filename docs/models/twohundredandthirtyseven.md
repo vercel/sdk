@@ -5,19 +5,22 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndThirtySeven } from "@vercel/sdk/models/twohundredandtwentyeight.js";
+import { TwoHundredAndThirtySeven } from "@vercel/sdk/models/twohundredandtwentynine.js";
 
 let value: TwoHundredAndThirtySeven = {
-  store: {
-    name: "<value>",
-    id: "<id>",
-  },
+  id: "<id>",
+  type: "blob",
 };
 ```
 
 ## Fields
 
-| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
-| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| `store`                                                                  | [models.UserEventPayload237Store](../models/usereventpayload237store.md) | :heavy_check_mark:                                                       | N/A                                                                      |
-| `ownerId`                                                                | *string*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
+| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `id`                                                             | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
+| `name`                                                           | *string*                                                         | :heavy_minus_sign:                                               | N/A                                                              |
+| `computeUnitsMax`                                                | *number*                                                         | :heavy_minus_sign:                                               | N/A                                                              |
+| `computeUnitsMin`                                                | *number*                                                         | :heavy_minus_sign:                                               | N/A                                                              |
+| `suspendTimeoutSeconds`                                          | *number*                                                         | :heavy_minus_sign:                                               | N/A                                                              |
+| `type`                                                           | [models.UserEventPayloadType](../models/usereventpayloadtype.md) | :heavy_check_mark:                                               | N/A                                                              |
+| `access`                                                         | [models.Access](../models/access.md)                             | :heavy_minus_sign:                                               | N/A                                                              |

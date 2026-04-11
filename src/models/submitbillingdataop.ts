@@ -147,7 +147,11 @@ export type Billing1 = {
 export type SubmitBillingDataBilling = Billing2 | Array<Billing1>;
 
 /**
- * \n              Type of the metric.\n              - total: measured total value, such as Database size\n              - interval: usage during the period, such as i/o or number of queries.\n              - rate: rate of usage, such as queries per second.\n
+ * @remarks
+ *               Type of the metric.
+ *               - total: measured total value, such as Database size
+ *               - interval: usage during the period, such as i/o or number of queries.
+ *               - rate: rate of usage, such as queries per second.
  */
 export const SubmitBillingDataType = {
   Total: "total",
@@ -155,7 +159,11 @@ export const SubmitBillingDataType = {
   Rate: "rate",
 } as const;
 /**
- * \n              Type of the metric.\n              - total: measured total value, such as Database size\n              - interval: usage during the period, such as i/o or number of queries.\n              - rate: rate of usage, such as queries per second.\n
+ * @remarks
+ *               Type of the metric.
+ *               - total: measured total value, such as Database size
+ *               - interval: usage during the period, such as i/o or number of queries.
+ *               - rate: rate of usage, such as queries per second.
  */
 export type SubmitBillingDataType = ClosedEnum<typeof SubmitBillingDataType>;
 
@@ -169,11 +177,15 @@ export type Usage = {
    */
   name: string;
   /**
-   * \n              Type of the metric.\n              - total: measured total value, such as Database size\n              - interval: usage during the period, such as i/o or number of queries.\n              - rate: rate of usage, such as queries per second.\n
+   * @remarks
+   *               Type of the metric.
+   *               - total: measured total value, such as Database size
+   *               - interval: usage during the period, such as i/o or number of queries.
+   *               - rate: rate of usage, such as queries per second.
    */
   type: SubmitBillingDataType;
   /**
-   * Metric units. Example: \"GB\"
+   * Metric units. Example: "GB"
    */
   units: string;
   /**
@@ -196,7 +208,7 @@ export type SubmitBillingDataRequestBody = {
    */
   timestamp: Date;
   /**
-   * End of Day, the UTC datetime for when the end of the billing/usage day is in UTC time. This tells us which day the usage data is for, and also allows for your \"end of day\" to be different from UTC 00:00:00. eod must be within the period dates, and cannot be older than 24h earlier from our server's current time.
+   * End of Day, the UTC datetime for when the end of the billing/usage day is in UTC time. This tells us which day the usage data is for, and also allows for your "end of day" to be different from UTC 00:00:00. eod must be within the period dates, and cannot be older than 24h earlier from our server's current time.
    */
   eod: Date;
   /**

@@ -8,7 +8,8 @@ The payload of the event, if requested.
 import { FortyEight } from "@vercel/sdk/models/payloadoldteam.js";
 
 let value: FortyEight = {
-  id: "<id>",
+  src: "<value>",
+  dst: "<value>",
 };
 ```
 
@@ -16,6 +17,5 @@ let value: FortyEight = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `id`               | *string*           | :heavy_check_mark: | N/A                |
-| `cn`               | *string*           | :heavy_minus_sign: | N/A                |
-| `cns`              | *string*[]         | :heavy_minus_sign: | N/A                |
+| `src`              | *string*           | :heavy_check_mark: | N/A                |
+| `dst`              | *string*           | :heavy_check_mark: | N/A                |

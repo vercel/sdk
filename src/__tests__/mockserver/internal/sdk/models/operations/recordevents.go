@@ -112,9 +112,9 @@ func (o *RecordEventsRequestBody) GetDuration() *float64 {
 
 type RecordEventsRequest struct {
 	// The continuous integration or delivery environment where this artifact is downloaded.
-	XArtifactClientCi *string `header:"style=simple,explode=false,name=x-artifact-client-ci"`
+	XArtifactClientCi *string `header:"style=simple,explode=false,name='x-Artifact-Client-Ci'"`
 	// 1 if the client is an interactive shell. Otherwise 0
-	XArtifactClientInteractive *int64 `header:"style=simple,explode=false,name=x-artifact-client-interactive"`
+	XArtifactClientInteractive *int64 `header:"style=simple,explode=false,name='x-Artifact-Client-Interactive'"`
 	// The Team identifier to perform the request on behalf of.
 	TeamID *string `queryParam:"style=form,explode=true,name=teamId"`
 	// The Team slug to perform the request on behalf of.

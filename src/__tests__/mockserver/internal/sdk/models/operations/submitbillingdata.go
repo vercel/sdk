@@ -421,7 +421,12 @@ func (u BillingUnion) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type BillingUnion: all fields are null")
 }
 
-// SubmitBillingDataType - \n              Type of the metric.\n              - total: measured total value, such as Database size\n              - interval: usage during the period, such as i/o or number of queries.\n              - rate: rate of usage, such as queries per second.\n
+// SubmitBillingDataType -
+//
+//	Type of the metric.
+//	- total: measured total value, such as Database size
+//	- interval: usage during the period, such as i/o or number of queries.
+//	- rate: rate of usage, such as queries per second.
 type SubmitBillingDataType string
 
 const (
@@ -456,9 +461,13 @@ type Usage struct {
 	ResourceID *string `json:"resourceId,omitempty"`
 	// Metric name.
 	Name string `json:"name"`
-	// \n              Type of the metric.\n              - total: measured total value, such as Database size\n              - interval: usage during the period, such as i/o or number of queries.\n              - rate: rate of usage, such as queries per second.\n
+	//               Type of the metric.
+	//               - total: measured total value, such as Database size
+	//               - interval: usage during the period, such as i/o or number of queries.
+	//               - rate: rate of usage, such as queries per second.
+	//
 	Type SubmitBillingDataType `json:"type"`
-	// Metric units. Example: \"GB\"
+	// Metric units. Example: "GB"
 	Units string `json:"units"`
 	// Metric value for the day. Could be a final or an interim value for the day.
 	DayValue float64 `json:"dayValue"`
@@ -520,7 +529,7 @@ func (o *Usage) GetPlanValue() *float64 {
 type SubmitBillingDataRequestBody struct {
 	// Server time of your integration, used to determine the most recent data for race conditions & updates. Only the latest usage data for a given day, week, and month will be kept.
 	Timestamp time.Time `json:"timestamp"`
-	// End of Day, the UTC datetime for when the end of the billing/usage day is in UTC time. This tells us which day the usage data is for, and also allows for your \"end of day\" to be different from UTC 00:00:00. eod must be within the period dates, and cannot be older than 24h earlier from our server's current time.
+	// End of Day, the UTC datetime for when the end of the billing/usage day is in UTC time. This tells us which day the usage data is for, and also allows for your "end of day" to be different from UTC 00:00:00. eod must be within the period dates, and cannot be older than 24h earlier from our server's current time.
 	Eod time.Time `json:"eod"`
 	// Period for the billing cycle. The period end date cannot be older than 24 hours earlier than our current server's time.
 	Period SubmitBillingDataPeriod `json:"period"`

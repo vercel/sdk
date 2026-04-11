@@ -8,37 +8,19 @@ The payload of the event, if requested.
 import { OneHundredAndFourteen } from "@vercel/sdk/models/nextrule.js";
 
 let value: OneHundredAndFourteen = {
-  userId: "<id>",
-  integrationId: "<id>",
-  configurationId: "<id>",
-  integrationSlug: "<value>",
-  newOwner: {
-    billing: {
-      plan: "enterprise",
-    },
-    blocked: null,
-    createdAt: 8121.76,
-    deploymentSecret: "<value>",
-    email: "Lorna38@gmail.com",
-    id: "<id>",
-    platformVersion: null,
-    stagingPrefix: "<value>",
-    sysToken: "<value>",
-    type: "user",
-    username: "Janick_Hodkiewicz15",
-    updatedAt: 1044.66,
-    version: "northstar",
-  },
+  projectId: "<id>",
+  fromDeploymentId: "<id>",
+  toDeploymentId: "<id>",
+  projectName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                    | Type                                     | Required                                 | Description                              |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| `userId`                                 | *string*                                 | :heavy_check_mark:                       | N/A                                      |
-| `integrationId`                          | *string*                                 | :heavy_check_mark:                       | N/A                                      |
-| `configurationId`                        | *string*                                 | :heavy_check_mark:                       | N/A                                      |
-| `integrationSlug`                        | *string*                                 | :heavy_check_mark:                       | N/A                                      |
-| `integrationName`                        | *string*                                 | :heavy_minus_sign:                       | N/A                                      |
-| `newOwner`                               | [models.NewOwner](../models/newowner.md) | :heavy_check_mark:                       | N/A                                      |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
+| `fromDeploymentId` | *string*           | :heavy_check_mark: | N/A                |
+| `toDeploymentId`   | *string*           | :heavy_check_mark: | N/A                |
+| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
+| `reason`           | *string*           | :heavy_minus_sign: | N/A                |

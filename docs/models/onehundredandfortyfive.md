@@ -10,16 +10,14 @@ import { OneHundredAndFortyFive } from "@vercel/sdk/models/payloaddefaultpurchas
 let value: OneHundredAndFortyFive = {
   projectId: "<id>",
   projectName: "<value>",
-  previous: {},
-  next: {},
+  enableExternalRewriteCaching: false,
 };
 ```
 
 ## Fields
 
-| Field                                    | Type                                     | Required                                 | Description                              |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| `projectId`                              | *string*                                 | :heavy_check_mark:                       | N/A                                      |
-| `projectName`                            | *string*                                 | :heavy_check_mark:                       | N/A                                      |
-| `previous`                               | [models.Previous](../models/previous.md) | :heavy_check_mark:                       | N/A                                      |
-| `next`                                   | [models.Next](../models/next.md)         | :heavy_check_mark:                       | N/A                                      |
+| Field                          | Type                           | Required                       | Description                    |
+| ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
+| `projectId`                    | *string*                       | :heavy_check_mark:             | N/A                            |
+| `projectName`                  | *string*                       | :heavy_check_mark:             | N/A                            |
+| `enableExternalRewriteCaching` | *boolean*                      | :heavy_check_mark:             | N/A                            |

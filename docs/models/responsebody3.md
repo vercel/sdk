@@ -8,8 +8,8 @@ import { ResponseBody3 } from "@vercel/sdk/models/getredirectsop.js";
 let value: ResponseBody3 = {
   redirects: [
     {
-      source: "<value>",
       destination: "<value>",
+      source: "<value>",
     },
   ],
   pagination: {

@@ -16,7 +16,7 @@ type ListUserEventsRequest struct {
 	Since *string `queryParam:"style=form,explode=true,name=since"`
 	// Timestamp to only include items created until then.
 	Until *string `queryParam:"style=form,explode=true,name=until"`
-	// Comma-delimited list of event \"types\" to filter the results by.
+	// Comma-delimited list of event "types" to filter the results by.
 	Types *string `queryParam:"style=form,explode=true,name=types"`
 	// Deprecated. Use `principalId` instead. If `principalId` and `userId` both exist, `principalId` will be used.
 	UserID *string `queryParam:"style=form,explode=true,name=userId"`

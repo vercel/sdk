@@ -8,14 +8,20 @@ The payload of the event, if requested.
 import { OneHundred } from "@vercel/sdk/models/payloadoldteam.js";
 
 let value: OneHundred = {
-  email: "Melba_Bode@hotmail.com",
-  name: "<value>",
+  edgeConfigId: "<id>",
+  edgeConfigSlug: "<value>",
+  edgeConfigTokenIds: [
+    "<value 1>",
+    "<value 2>",
+    "<value 3>",
+  ],
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `email`            | *string*           | :heavy_check_mark: | N/A                |
-| `name`             | *string*           | :heavy_check_mark: | N/A                |
+| Field                 | Type                  | Required              | Description           |
+| --------------------- | --------------------- | --------------------- | --------------------- |
+| `edgeConfigId`        | *string*              | :heavy_check_mark:    | N/A                   |
+| `edgeConfigSlug`      | *string*              | :heavy_check_mark:    | N/A                   |
+| `edgeConfigTokenIds`  | *string*[]            | :heavy_check_mark:    | ids of deleted tokens |

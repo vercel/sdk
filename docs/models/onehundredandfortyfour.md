@@ -10,14 +10,14 @@ import { OneHundredAndFortyFour } from "@vercel/sdk/models/payloaddefaultpurchas
 let value: OneHundredAndFortyFour = {
   projectId: "<id>",
   projectName: "<value>",
-  enableExternalRewriteCaching: true,
+  enableAffectedProjectsDeployments: true,
 };
 ```
 
 ## Fields
 
-| Field                          | Type                           | Required                       | Description                    |
-| ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
-| `projectId`                    | *string*                       | :heavy_check_mark:             | N/A                            |
-| `projectName`                  | *string*                       | :heavy_check_mark:             | N/A                            |
-| `enableExternalRewriteCaching` | *boolean*                      | :heavy_check_mark:             | N/A                            |
+| Field                               | Type                                | Required                            | Description                         |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| `projectId`                         | *string*                            | :heavy_check_mark:                  | N/A                                 |
+| `projectName`                       | *string*                            | :heavy_check_mark:                  | N/A                                 |
+| `enableAffectedProjectsDeployments` | *boolean*                           | :heavy_check_mark:                  | N/A                                 |

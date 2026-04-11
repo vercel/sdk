@@ -2046,14 +2046,15 @@ func (e *ListFlagVersionsState) UnmarshalJSON(data []byte) error {
 }
 
 type ListFlagVersionsData struct {
-	Description  *string                                 `json:"description,omitempty"`
-	Permanent    *bool                                   `json:"permanent,omitempty"`
-	Tags         []string                                `json:"tags,omitempty"`
-	Experiment   *ListFlagVersionsExperiment             `json:"experiment,omitempty"`
-	Variants     []ListFlagVersionsVariant               `json:"variants"`
-	Environments map[string]ListFlagVersionsEnvironments `json:"environments"`
-	Seed         float64                                 `json:"seed"`
-	State        ListFlagVersionsState                   `json:"state"`
+	Description   *string                                 `json:"description,omitempty"`
+	MaintainerIds []string                                `json:"maintainerIds,omitempty"`
+	Permanent     *bool                                   `json:"permanent,omitempty"`
+	Tags          []string                                `json:"tags,omitempty"`
+	Experiment    *ListFlagVersionsExperiment             `json:"experiment,omitempty"`
+	Variants      []ListFlagVersionsVariant               `json:"variants"`
+	Environments  map[string]ListFlagVersionsEnvironments `json:"environments"`
+	Seed          float64                                 `json:"seed"`
+	State         ListFlagVersionsState                   `json:"state"`
 }
 
 func (o *ListFlagVersionsData) GetDescription() *string {
@@ -2061,6 +2062,13 @@ func (o *ListFlagVersionsData) GetDescription() *string {
 		return nil
 	}
 	return o.Description
+}
+
+func (o *ListFlagVersionsData) GetMaintainerIds() []string {
+	if o == nil {
+		return nil
+	}
+	return o.MaintainerIds
 }
 
 func (o *ListFlagVersionsData) GetPermanent() *bool {

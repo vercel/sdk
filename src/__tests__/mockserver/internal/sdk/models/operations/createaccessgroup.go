@@ -8,7 +8,7 @@ import (
 	"mockserver/internal/sdk/models/components"
 )
 
-// CreateAccessGroupRole - The project role that will be added to this Access Group. \"null\" will remove this project level role.
+// CreateAccessGroupRole - The project role that will be added to this Access Group. "null" will remove this project level role.
 type CreateAccessGroupRole string
 
 const (
@@ -41,7 +41,7 @@ func (e *CreateAccessGroupRole) UnmarshalJSON(data []byte) error {
 type CreateAccessGroupProject struct {
 	// The ID of the project.
 	ProjectID string `json:"projectId"`
-	// The project role that will be added to this Access Group. \"null\" will remove this project level role.
+	// The project role that will be added to this Access Group. "null" will remove this project level role.
 	Role *CreateAccessGroupRole `json:"role"`
 }
 

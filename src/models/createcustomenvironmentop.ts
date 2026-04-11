@@ -11,7 +11,7 @@ import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
- * Type of matcher. One of \"equals\", \"startsWith\", or \"endsWith\".
+ * Type of matcher. One of "equals", "startsWith", or "endsWith".
  */
 export const CreateCustomEnvironmentType = {
   Equals: "equals",
@@ -19,7 +19,7 @@ export const CreateCustomEnvironmentType = {
   EndsWith: "endsWith",
 } as const;
 /**
- * Type of matcher. One of \"equals\", \"startsWith\", or \"endsWith\".
+ * Type of matcher. One of "equals", "startsWith", or "endsWith".
  */
 export type CreateCustomEnvironmentType = ClosedEnum<
   typeof CreateCustomEnvironmentType
@@ -30,7 +30,7 @@ export type CreateCustomEnvironmentType = ClosedEnum<
  */
 export type CreateCustomEnvironmentBranchMatcher = {
   /**
-   * Type of matcher. One of \"equals\", \"startsWith\", or \"endsWith\".
+   * Type of matcher. One of "equals", "startsWith", or "endsWith".
    */
   type: CreateCustomEnvironmentType;
   /**

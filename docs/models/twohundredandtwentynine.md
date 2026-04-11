@@ -5,27 +5,30 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndTwentyNine } from "@vercel/sdk/models/twohundredandtwentyeight.js";
+import { TwoHundredAndTwentyNine } from "@vercel/sdk/models/twohundredandtwentynine.js";
 
 let value: TwoHundredAndTwentyNine = {
   budget: {
-    type: "fixed",
-    fixedBudget: 7063.17,
-    previousSpend: [
-      3682.17,
-      5434.69,
-    ],
-    notifiedAt: [],
-    createdAt: 6882.62,
-    isActive: false,
-    teamId: "<id>",
-    id: "<id>",
+    budgetItem: {
+      type: "fixed",
+      fixedBudget: 268.4,
+      previousSpend: [
+        2211.33,
+        3066.93,
+        9049.6,
+      ],
+      notifiedAt: [],
+      createdAt: 2535.69,
+      isActive: true,
+      teamId: "<id>",
+      id: "<id>",
+    },
   },
 };
 ```
 
 ## Fields
 
-| Field                                                                   | Type                                                                    | Required                                                                | Description                                                             |
-| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| `budget`                                                                | [models.PayloadBudget](../models/payloadbudget.md)                      | :heavy_check_mark:                                                      | Represents a budget for tracking and notifying teams on their spending. |
+| Field                                | Type                                 | Required                             | Description                          |
+| ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
+| `budget`                             | [models.Budget](../models/budget.md) | :heavy_check_mark:                   | N/A                                  |

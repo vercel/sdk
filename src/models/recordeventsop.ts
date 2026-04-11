@@ -145,22 +145,22 @@ export const RecordEventsRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "x-artifact-client-ci": types.optional(types.string()),
-  "x-artifact-client-interactive": types.optional(types.number()),
+  "'x-Artifact-Client-Ci'": types.optional(types.string()),
+  "'x-Artifact-Client-Interactive'": types.optional(types.number()),
   teamId: types.optional(types.string()),
   slug: types.optional(types.string()),
   RequestBody: z.array(z.lazy(() => RequestBody$inboundSchema)),
 }).transform((v) => {
   return remap$(v, {
-    "x-artifact-client-ci": "xArtifactClientCi",
-    "x-artifact-client-interactive": "xArtifactClientInteractive",
+    "'x-Artifact-Client-Ci'": "xArtifactClientCi",
+    "'x-Artifact-Client-Interactive'": "xArtifactClientInteractive",
     "RequestBody": "requestBody",
   });
 });
 /** @internal */
 export type RecordEventsRequest$Outbound = {
-  "x-artifact-client-ci"?: string | undefined;
-  "x-artifact-client-interactive"?: number | undefined;
+  "'x-Artifact-Client-Ci'"?: string | undefined;
+  "'x-Artifact-Client-Interactive'"?: number | undefined;
   teamId?: string | undefined;
   slug?: string | undefined;
   RequestBody: Array<RequestBody$Outbound>;
@@ -179,8 +179,8 @@ export const RecordEventsRequest$outboundSchema: z.ZodType<
   requestBody: z.array(z.lazy(() => RequestBody$outboundSchema)),
 }).transform((v) => {
   return remap$(v, {
-    xArtifactClientCi: "x-artifact-client-ci",
-    xArtifactClientInteractive: "x-artifact-client-interactive",
+    xArtifactClientCi: "'x-Artifact-Client-Ci'",
+    xArtifactClientInteractive: "'x-Artifact-Client-Interactive'",
     requestBody: "RequestBody",
   });
 });

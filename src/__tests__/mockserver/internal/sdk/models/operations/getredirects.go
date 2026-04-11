@@ -243,8 +243,8 @@ type GetRedirectsRedirect2 struct {
 	CaseSensitive       *bool    `json:"caseSensitive,omitempty"`
 	Query               *bool    `json:"query,omitempty"`
 	PreserveQueryParams *bool    `json:"preserveQueryParams,omitempty"`
-	Source              string   `json:"source"`
 	Destination         string   `json:"destination"`
+	Source              string   `json:"source"`
 }
 
 func (g GetRedirectsRedirect2) MarshalJSON() ([]byte, error) {
@@ -252,7 +252,7 @@ func (g GetRedirectsRedirect2) MarshalJSON() ([]byte, error) {
 }
 
 func (g *GetRedirectsRedirect2) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"source", "destination"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"destination", "source"}); err != nil {
 		return err
 	}
 	return nil
@@ -300,18 +300,18 @@ func (o *GetRedirectsRedirect2) GetPreserveQueryParams() *bool {
 	return o.PreserveQueryParams
 }
 
-func (o *GetRedirectsRedirect2) GetSource() string {
-	if o == nil {
-		return ""
-	}
-	return o.Source
-}
-
 func (o *GetRedirectsRedirect2) GetDestination() string {
 	if o == nil {
 		return ""
 	}
 	return o.Destination
+}
+
+func (o *GetRedirectsRedirect2) GetSource() string {
+	if o == nil {
+		return ""
+	}
+	return o.Source
 }
 
 type GetRedirectsVersion2 struct {
@@ -583,8 +583,8 @@ type GetRedirectsRedirect1 struct {
 	CaseSensitive       *bool    `json:"caseSensitive,omitempty"`
 	Query               *bool    `json:"query,omitempty"`
 	PreserveQueryParams *bool    `json:"preserveQueryParams,omitempty"`
-	Source              string   `json:"source"`
 	Destination         string   `json:"destination"`
+	Source              string   `json:"source"`
 }
 
 func (g GetRedirectsRedirect1) MarshalJSON() ([]byte, error) {
@@ -592,7 +592,7 @@ func (g GetRedirectsRedirect1) MarshalJSON() ([]byte, error) {
 }
 
 func (g *GetRedirectsRedirect1) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"source", "destination"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"destination", "source"}); err != nil {
 		return err
 	}
 	return nil
@@ -640,18 +640,18 @@ func (o *GetRedirectsRedirect1) GetPreserveQueryParams() *bool {
 	return o.PreserveQueryParams
 }
 
-func (o *GetRedirectsRedirect1) GetSource() string {
-	if o == nil {
-		return ""
-	}
-	return o.Source
-}
-
 func (o *GetRedirectsRedirect1) GetDestination() string {
 	if o == nil {
 		return ""
 	}
 	return o.Destination
+}
+
+func (o *GetRedirectsRedirect1) GetSource() string {
+	if o == nil {
+		return ""
+	}
+	return o.Source
 }
 
 type GetRedirectsPagination1 struct {

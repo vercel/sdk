@@ -719,6 +719,8 @@ type ApproveRollingReleaseStageRollingRelease struct {
 	StartedAt float64 `json:"startedAt"`
 	// Unix timestamp in milliseconds when the rolling release was last updated
 	UpdatedAt float64 `json:"updatedAt"`
+	// When set (for example while {@link substate} is `PAUSED`), the canary traffic percentage persisted on the rollout document — use for dashboard display when linear shift is active.
+	CurrentCanaryPercentage *float64 `json:"currentCanaryPercentage,omitempty"`
 }
 
 func (o *ApproveRollingReleaseStageRollingRelease) GetState() ApproveRollingReleaseStageState {
@@ -796,6 +798,13 @@ func (o *ApproveRollingReleaseStageRollingRelease) GetUpdatedAt() float64 {
 		return 0.0
 	}
 	return o.UpdatedAt
+}
+
+func (o *ApproveRollingReleaseStageRollingRelease) GetCurrentCanaryPercentage() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.CurrentCanaryPercentage
 }
 
 // ApproveRollingReleaseStageResponseBody - The response format for rolling release endpoints that return rolling release information

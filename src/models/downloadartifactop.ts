@@ -38,21 +38,21 @@ export const DownloadArtifactRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "x-artifact-client-ci": types.optional(types.string()),
-  "x-artifact-client-interactive": types.optional(types.number()),
+  "'x-Artifact-Client-Ci'": types.optional(types.string()),
+  "'x-Artifact-Client-Interactive'": types.optional(types.number()),
   hash: types.string(),
   teamId: types.optional(types.string()),
   slug: types.optional(types.string()),
 }).transform((v) => {
   return remap$(v, {
-    "x-artifact-client-ci": "xArtifactClientCi",
-    "x-artifact-client-interactive": "xArtifactClientInteractive",
+    "'x-Artifact-Client-Ci'": "xArtifactClientCi",
+    "'x-Artifact-Client-Interactive'": "xArtifactClientInteractive",
   });
 });
 /** @internal */
 export type DownloadArtifactRequest$Outbound = {
-  "x-artifact-client-ci"?: string | undefined;
-  "x-artifact-client-interactive"?: number | undefined;
+  "'x-Artifact-Client-Ci'"?: string | undefined;
+  "'x-Artifact-Client-Interactive'"?: number | undefined;
   hash: string;
   teamId?: string | undefined;
   slug?: string | undefined;
@@ -71,8 +71,8 @@ export const DownloadArtifactRequest$outboundSchema: z.ZodType<
   slug: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
-    xArtifactClientCi: "x-artifact-client-ci",
-    xArtifactClientInteractive: "x-artifact-client-interactive",
+    xArtifactClientCi: "'x-Artifact-Client-Ci'",
+    xArtifactClientInteractive: "'x-Artifact-Client-Interactive'",
   });
 });
 

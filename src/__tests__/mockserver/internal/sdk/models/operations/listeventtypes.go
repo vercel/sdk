@@ -39,6 +39,8 @@ const (
 	NamePlan                                            Name = "plan"
 	NameFlag                                            Name = "flag"
 	NameDeployment                                      Name = "deployment"
+	NameAiGatewayAPIKeyCreated                          Name = "ai-gateway-api-key-created"
+	NameAiGatewayAPIKeyDeleted                          Name = "ai-gateway-api-key-deleted"
 	NameAccessGroupCreated                              Name = "access-group-created"
 	NameAccessGroupDeleted                              Name = "access-group-deleted"
 	NameAccessGroupProjectUpdated                       Name = "access-group-project-updated"
@@ -392,6 +394,7 @@ const (
 	NameTeamDefaultBuildMachineUpdated                  Name = "team-default-build-machine-updated"
 	NameTeamDelete                                      Name = "team-delete"
 	NameStrictDeploymentProtectionSettings              Name = "strict-deployment-protection-settings"
+	NameStrictShareableLinks                            Name = "strict-shareable-links"
 	NameTeamDomainVerificationCreated                   Name = "team-domain-verification-created"
 	NameTeamDomainVerificationDeleted                   Name = "team-domain-verification-deleted"
 	NameTeamDomainVerificationVerified                  Name = "team-domain-verification-verified"
@@ -475,6 +478,10 @@ func (e *Name) UnmarshalJSON(data []byte) error {
 	case "flag":
 		fallthrough
 	case "deployment":
+		fallthrough
+	case "ai-gateway-api-key-created":
+		fallthrough
+	case "ai-gateway-api-key-deleted":
 		fallthrough
 	case "access-group-created":
 		fallthrough
@@ -1181,6 +1188,8 @@ func (e *Name) UnmarshalJSON(data []byte) error {
 	case "team-delete":
 		fallthrough
 	case "strict-deployment-protection-settings":
+		fallthrough
+	case "strict-shareable-links":
 		fallthrough
 	case "team-domain-verification-created":
 		fallthrough

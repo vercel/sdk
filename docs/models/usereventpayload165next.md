@@ -3,15 +3,17 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPayload165Next } from "@vercel/sdk/models/usereventpayload164previous.js";
+import { UserEventPayload165Next } from "@vercel/sdk/models/payloaddefaultpurchasetype.js";
 
 let value: UserEventPayload165Next = {
-  functionZeroConfigFailover: true,
+  functionDefaultRegions: [
+    "<value 1>",
+  ],
 };
 ```
 
 ## Fields
 
-| Field                        | Type                         | Required                     | Description                  |
-| ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- |
-| `functionZeroConfigFailover` | *boolean*                    | :heavy_check_mark:           | N/A                          |
+| Field                    | Type                     | Required                 | Description              |
+| ------------------------ | ------------------------ | ------------------------ | ------------------------ |
+| `functionDefaultRegions` | *string*[]               | :heavy_check_mark:       | N/A                      |

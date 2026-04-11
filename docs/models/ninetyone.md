@@ -8,9 +8,7 @@ The payload of the event, if requested.
 import { NinetyOne } from "@vercel/sdk/models/payloadoldteam.js";
 
 let value: NinetyOne = {
-  projectId: "<id>",
-  projectName: "<value>",
-  srcImages: [],
+  drainUrl: "https://warlike-saloon.biz",
 };
 ```
 
@@ -18,6 +16,5 @@ let value: NinetyOne = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
-| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
-| `srcImages`        | *string*[]         | :heavy_check_mark: | N/A                |
+| `drainUrl`         | *string*           | :heavy_check_mark: | N/A                |
+| `integrationName`  | *string*           | :heavy_minus_sign: | N/A                |

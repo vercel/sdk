@@ -5,7 +5,7 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndThirtyFive } from "@vercel/sdk/models/twohundredandtwentyeight.js";
+import { TwoHundredAndThirtyFive } from "@vercel/sdk/models/twohundredandtwentynine.js";
 
 let value: TwoHundredAndThirtyFive = {
   transferRequestCode: "<value>",
@@ -13,16 +13,16 @@ let value: TwoHundredAndThirtyFive = {
     id: "<id>",
     type: "blob",
   },
-  originTeamId: "<id>",
-  originTeamName: "<value>",
+  destinationTeamId: "<id>",
+  destinationTeamName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                              | Type                                                               | Required                                                           | Description                                                        |
-| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
-| `transferRequestCode`                                              | *string*                                                           | :heavy_check_mark:                                                 | N/A                                                                |
-| `store`                                                            | [models.UserEventPayloadStore](../models/usereventpayloadstore.md) | :heavy_check_mark:                                                 | N/A                                                                |
-| `originTeamId`                                                     | *string*                                                           | :heavy_check_mark:                                                 | N/A                                                                |
-| `originTeamName`                                                   | *string*                                                           | :heavy_check_mark:                                                 | N/A                                                                |
+| Field                                            | Type                                             | Required                                         | Description                                      |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
+| `transferRequestCode`                            | *string*                                         | :heavy_check_mark:                               | N/A                                              |
+| `store`                                          | [models.PayloadStore](../models/payloadstore.md) | :heavy_check_mark:                               | N/A                                              |
+| `destinationTeamId`                              | *string*                                         | :heavy_check_mark:                               | N/A                                              |
+| `destinationTeamName`                            | *string*                                         | :heavy_check_mark:                               | N/A                                              |

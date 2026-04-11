@@ -8,15 +8,15 @@ The payload of the event, if requested.
 import { Thirteen } from "@vercel/sdk/models/userevent.js";
 
 let value: Thirteen = {
-  alias: "<value>",
+  projectId: "<id>",
+  aliasCount: 1177.11,
 };
 ```
 
 ## Fields
 
-| Field                                  | Type                                   | Required                               | Description                            |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| `name`                                 | *string*                               | :heavy_minus_sign:                     | N/A                                    |
-| `alias`                                | *string*                               | :heavy_check_mark:                     | N/A                                    |
-| `oldTeam`                              | [models.OldTeam](../models/oldteam.md) | :heavy_minus_sign:                     | N/A                                    |
-| `newTeam`                              | [models.NewTeam](../models/newteam.md) | :heavy_minus_sign:                     | N/A                                    |
+| Field                                                      | Type                                                       | Required                                                   | Description                                                |
+| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
+| `projectId`                                                | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        |
+| `aliasCount`                                               | *number*                                                   | :heavy_check_mark:                                         | N/A                                                        |
+| `deployment`                                               | [models.PayloadDeployment](../models/payloaddeployment.md) | :heavy_minus_sign:                                         | N/A                                                        |

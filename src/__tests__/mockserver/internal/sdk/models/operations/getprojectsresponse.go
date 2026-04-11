@@ -5368,6 +5368,8 @@ type GetProjectsSecurity struct {
 	LogHeaders             *GetProjectsLogHeadersUnion                                `json:"log_headers,omitempty"`
 	SecurityPlus           *bool                                                      `json:"securityPlus,omitempty"`
 	SecurityPlusMetadata   *GetProjectsSecurityPlusMetadata                           `json:"securityPlusMetadata,omitempty"`
+	// Whether Page Integrity is enabled for this project. Used by the metadata service to gate DynamoDB lookups against the page-integrity-inventory table.
+	PageIntegrityEnabled *bool `json:"pageIntegrityEnabled,omitempty"`
 }
 
 func (g GetProjectsSecurity) MarshalJSON() ([]byte, error) {
@@ -5498,6 +5500,13 @@ func (o *GetProjectsSecurity) GetSecurityPlusMetadata() *GetProjectsSecurityPlus
 		return nil
 	}
 	return o.SecurityPlusMetadata
+}
+
+func (o *GetProjectsSecurity) GetPageIntegrityEnabled() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.PageIntegrityEnabled
 }
 
 // GetProjectsIssuerMode - - team: `https://oidc.vercel.com/[team_slug]` - global: `https://oidc.vercel.com`

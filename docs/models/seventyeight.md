@@ -9,13 +9,13 @@ import { SeventyEight } from "@vercel/sdk/models/payloadoldteam.js";
 
 let value: SeventyEight = {
   name: "<value>",
+  cdnEnabled: false,
 };
 ```
 
 ## Fields
 
-| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `name`                                                                     | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
-| `oldTeam`                                                                  | [models.UserEventPayload78OldTeam](../models/usereventpayload78oldteam.md) | :heavy_minus_sign:                                                         | N/A                                                                        |
-| `newTeam`                                                                  | [models.UserEventPayload78NewTeam](../models/usereventpayload78newteam.md) | :heavy_minus_sign:                                                         | N/A                                                                        |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `name`             | *string*           | :heavy_check_mark: | N/A                |
+| `cdnEnabled`       | *boolean*          | :heavy_check_mark: | N/A                |

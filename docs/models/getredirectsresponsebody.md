@@ -38,8 +38,8 @@ const value: models.GetRedirectsResponseBody2 = {
 const value: models.ResponseBody3 = {
   redirects: [
     {
-      source: "<value>",
       destination: "<value>",
+      source: "<value>",
     },
   ],
   pagination: {

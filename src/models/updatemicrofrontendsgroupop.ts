@@ -15,7 +15,7 @@ export type UpdateMicrofrontendsGroupRequestBody = {
    */
   name?: string | undefined;
   /**
-   * The new fallback environment for the microfrontends group. Must be \"SAME_ENV\", \"PRODUCTION\", or a valid custom environment slug from the default app.
+   * The new fallback environment for the microfrontends group. Must be "SAME_ENV", "PRODUCTION", or a valid custom environment slug from the default app.
    */
   fallbackEnvironment?: string | undefined;
 };

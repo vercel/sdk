@@ -8,13 +8,14 @@ The payload of the event, if requested.
 import { SixtyOne } from "@vercel/sdk/models/payloadoldteam.js";
 
 let value: SixtyOne = {
-  suffix: "<value>",
+  bitbucketLogin: "<value>",
+  bitbucketAccountId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `reason`           | *string*           | :heavy_minus_sign: | N/A                |
-| `suffix`           | *string*           | :heavy_check_mark: | N/A                |
+| Field                | Type                 | Required             | Description          |
+| -------------------- | -------------------- | -------------------- | -------------------- |
+| `bitbucketLogin`     | *string*             | :heavy_check_mark:   | N/A                  |
+| `bitbucketAccountId` | *string*             | :heavy_check_mark:   | N/A                  |

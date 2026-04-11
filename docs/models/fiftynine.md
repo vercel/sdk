@@ -8,8 +8,8 @@ The payload of the event, if requested.
 import { FiftyNine } from "@vercel/sdk/models/payloadoldteam.js";
 
 let value: FiftyNine = {
-  bitbucketEmail: "<value>",
-  bitbucketLogin: "<value>",
+  gitlabLogin: "<value>",
+  gitlabUserId: 6462.86,
 };
 ```
 
@@ -17,6 +17,5 @@ let value: FiftyNine = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `bitbucketEmail`   | *string*           | :heavy_check_mark: | N/A                |
-| `bitbucketLogin`   | *string*           | :heavy_check_mark: | N/A                |
-| `bitbucketName`    | *string*           | :heavy_minus_sign: | N/A                |
+| `gitlabLogin`      | *string*           | :heavy_check_mark: | N/A                |
+| `gitlabUserId`     | *number*           | :heavy_check_mark: | N/A                |

@@ -8,21 +8,17 @@ The payload of the event, if requested.
 import { Seven } from "@vercel/sdk/models/userevent.js";
 
 let value: Seven = {
+  author: "<value>",
   accessGroup: {
     id: "<id>",
     name: "<value>",
-  },
-  project: {
-    id: "<id>",
   },
 };
 ```
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `accessGroup`                                                                  | [models.UserEventPayloadAccessGroup](../models/usereventpayloadaccessgroup.md) | :heavy_check_mark:                                                             | N/A                                                                            |
-| `project`                                                                      | [models.Project](../models/project.md)                                         | :heavy_check_mark:                                                             | N/A                                                                            |
-| `nextRole`                                                                     | [models.NextRole](../models/nextrole.md)                                       | :heavy_minus_sign:                                                             | N/A                                                                            |
-| `previousRole`                                                                 | [models.PreviousRole](../models/previousrole.md)                               | :heavy_minus_sign:                                                             | N/A                                                                            |
+| Field                                                        | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `author`                                                     | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
+| `accessGroup`                                                | [models.PayloadAccessGroup](../models/payloadaccessgroup.md) | :heavy_check_mark:                                           | N/A                                                          |

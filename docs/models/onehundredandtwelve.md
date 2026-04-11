@@ -8,7 +8,9 @@ The payload of the event, if requested.
 import { OneHundredAndTwelve } from "@vercel/sdk/models/nextrule.js";
 
 let value: OneHundredAndTwelve = {
-  action: "enable",
+  projectId: "<id>",
+  rulesetName: "<value>",
+  active: true,
 };
 ```
 
@@ -16,4 +18,7 @@ let value: OneHundredAndTwelve = {
 
 | Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
 | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `action`                                                                   | [models.UserEventPayload112Action](../models/usereventpayload112action.md) | :heavy_check_mark:                                                         | N/A                                                                        |
+| `projectId`                                                                | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
+| `rulesetName`                                                              | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
+| `active`                                                                   | *boolean*                                                                  | :heavy_check_mark:                                                         | N/A                                                                        |
+| `action`                                                                   | [models.UserEventPayload112Action](../models/usereventpayload112action.md) | :heavy_minus_sign:                                                         | N/A                                                                        |

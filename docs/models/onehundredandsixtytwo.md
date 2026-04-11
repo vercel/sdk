@@ -10,20 +10,16 @@ import { OneHundredAndSixtyTwo } from "@vercel/sdk/models/payloaddefaultpurchase
 let value: OneHundredAndSixtyTwo = {
   projectId: "<id>",
   projectName: "<value>",
-  previous: {
-    functionDefaultTimeout: 4256.76,
-  },
-  next: {
-    functionDefaultTimeout: 7857.27,
-  },
+  customEnvironmentId: "<id>",
+  customEnvironmentSlug: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `projectId`                                                                    | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
-| `projectName`                                                                  | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
-| `previous`                                                                     | [models.UserEventPayload162Previous](../models/usereventpayload162previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
-| `next`                                                                         | [models.UserEventPayload162Next](../models/usereventpayload162next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
+| Field                   | Type                    | Required                | Description             |
+| ----------------------- | ----------------------- | ----------------------- | ----------------------- |
+| `projectId`             | *string*                | :heavy_check_mark:      | N/A                     |
+| `projectName`           | *string*                | :heavy_check_mark:      | N/A                     |
+| `customEnvironmentId`   | *string*                | :heavy_check_mark:      | N/A                     |
+| `customEnvironmentSlug` | *string*                | :heavy_check_mark:      | N/A                     |

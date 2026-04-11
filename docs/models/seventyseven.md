@@ -9,7 +9,7 @@ import { SeventySeven } from "@vercel/sdk/models/payloadoldteam.js";
 
 let value: SeventySeven = {
   name: "<value>",
-  cdnEnabled: true,
+  price: 674.33,
 };
 ```
 
@@ -18,4 +18,5 @@ let value: SeventySeven = {
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `name`             | *string*           | :heavy_check_mark: | N/A                |
-| `cdnEnabled`       | *boolean*          | :heavy_check_mark: | N/A                |
+| `price`            | *number*           | :heavy_check_mark: | N/A                |
+| `currency`         | *string*           | :heavy_minus_sign: | N/A                |

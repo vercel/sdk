@@ -9,7 +9,7 @@ import { EightySeven } from "@vercel/sdk/models/payloadoldteam.js";
 
 let value: EightySeven = {
   name: "<value>",
-  destinationId: "<id>",
+  destinationId: null,
   destinationName: "<value>",
 };
 ```

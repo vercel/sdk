@@ -1,6 +1,6 @@
 # QueryParamWait
 
-If set to \"true\", the request will block until the command finishes execution. Useful for synchronously waiting for command completion.
+If set to "true", the request will block until the command finishes execution. Useful for synchronously waiting for command completion.
 
 ## Example Usage
 

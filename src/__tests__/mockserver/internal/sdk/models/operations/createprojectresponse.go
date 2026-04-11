@@ -631,6 +631,8 @@ type CreateProjectSecurity struct {
 	LogHeaders             *CreateProjectLogHeadersUnion                                `json:"log_headers,omitempty"`
 	SecurityPlus           *bool                                                        `json:"securityPlus,omitempty"`
 	SecurityPlusMetadata   *CreateProjectSecurityPlusMetadata                           `json:"securityPlusMetadata,omitempty"`
+	// Whether Page Integrity is enabled for this project. Used by the metadata service to gate DynamoDB lookups against the page-integrity-inventory table.
+	PageIntegrityEnabled *bool `json:"pageIntegrityEnabled,omitempty"`
 }
 
 func (o *CreateProjectSecurity) GetAttackModeEnabled() *bool {
@@ -736,6 +738,13 @@ func (o *CreateProjectSecurity) GetSecurityPlusMetadata() *CreateProjectSecurity
 		return nil
 	}
 	return o.SecurityPlusMetadata
+}
+
+func (o *CreateProjectSecurity) GetPageIntegrityEnabled() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.PageIntegrityEnabled
 }
 
 // CreateProjectIssuerModeResponse - - team: `https://oidc.vercel.com/[team_slug]` - global: `https://oidc.vercel.com`

@@ -17,7 +17,7 @@ import {
 } from "./session.js";
 
 /**
- * The network access policy mode. Use \"allow-all\" to permit all outbound traffic. Use \"deny-all\" to block all outbound traffic. Use \"custom\" to specify explicit allow/deny rules.
+ * The network access policy mode. Use "allow-all" to permit all outbound traffic. Use "deny-all" to block all outbound traffic. Use "custom" to specify explicit allow/deny rules.
  */
 export const UpdateSessionNetworkPolicyMode = {
   AllowAll: "allow-all",
@@ -27,22 +27,26 @@ export const UpdateSessionNetworkPolicyMode = {
   DefaultDeny: "default-deny",
 } as const;
 /**
- * The network access policy mode. Use \"allow-all\" to permit all outbound traffic. Use \"deny-all\" to block all outbound traffic. Use \"custom\" to specify explicit allow/deny rules.
+ * The network access policy mode. Use "allow-all" to permit all outbound traffic. Use "deny-all" to block all outbound traffic. Use "custom" to specify explicit allow/deny rules.
  */
 export type UpdateSessionNetworkPolicyMode = ClosedEnum<
   typeof UpdateSessionNetworkPolicyMode
 >;
 
 /**
- * Network access policy for the sandbox.\n    Controls which external hosts the sandbox can communicate with.\n    Use \"allow-all\" mode to allow all traffic, \"deny-all\" to block all traffic or \"custom\" to provide specific rules.
+ * Network access policy for the sandbox.
+ *
+ * @remarks
+ *     Controls which external hosts the sandbox can communicate with.
+ *     Use "allow-all" mode to allow all traffic, "deny-all" to block all traffic or "custom" to provide specific rules.
  */
 export type UpdateSessionNetworkPolicyRequestBody = {
   /**
-   * The network access policy mode. Use \"allow-all\" to permit all outbound traffic. Use \"deny-all\" to block all outbound traffic. Use \"custom\" to specify explicit allow/deny rules.
+   * The network access policy mode. Use "allow-all" to permit all outbound traffic. Use "deny-all" to block all outbound traffic. Use "custom" to specify explicit allow/deny rules.
    */
   mode: UpdateSessionNetworkPolicyMode;
   /**
-   * List of domain names the sandbox is allowed to connect to. Only applies when mode is \"custom\". Supports wildcard patterns (e.g., \"*.example.com\" matches all subdomains).
+   * List of domain names the sandbox is allowed to connect to. Only applies when mode is "custom". Supports wildcard patterns (e.g., "*.example.com" matches all subdomains).
    */
   allowedDomains?: Array<string> | undefined;
   /**

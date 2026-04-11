@@ -18,11 +18,11 @@ export type Balances = {
    */
   resourceId?: string | undefined;
   /**
-   * A human-readable description of the credits the user currently has, e.g. \"2,000 Tokens\"
+   * A human-readable description of the credits the user currently has, e.g. "2,000 Tokens"
    */
   credit?: string | undefined;
   /**
-   * The name of the credits, for display purposes, e.g. \"Tokens\"
+   * The name of the credits, for display purposes, e.g. "Tokens"
    */
   nameLabel?: string | undefined;
   /**

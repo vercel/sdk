@@ -1,6 +1,6 @@
 # QueryParamRedirects
 
-Excludes redirect project domains when \"false\". Includes redirect project domains when \"true\" (default).
+Excludes redirect project domains when "false". Includes redirect project domains when "true" (default).
 
 ## Example Usage
 

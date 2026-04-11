@@ -16,14 +16,14 @@ import {
 } from "./sessioncommand.js";
 
 /**
- * If set to \"true\", the request will block until the command finishes execution. Useful for synchronously waiting for command completion.
+ * If set to "true", the request will block until the command finishes execution. Useful for synchronously waiting for command completion.
  */
 export const QueryParamWait = {
   True: "true",
   False: "false",
 } as const;
 /**
- * If set to \"true\", the request will block until the command finishes execution. Useful for synchronously waiting for command completion.
+ * If set to "true", the request will block until the command finishes execution. Useful for synchronously waiting for command completion.
  */
 export type QueryParamWait = ClosedEnum<typeof QueryParamWait>;
 
@@ -37,7 +37,7 @@ export type GetSessionCommandRequest = {
    */
   cmdId: string;
   /**
-   * If set to \"true\", the request will block until the command finishes execution. Useful for synchronously waiting for command completion.
+   * If set to "true", the request will block until the command finishes execution. Useful for synchronously waiting for command completion.
    */
   wait?: QueryParamWait | undefined;
   /**

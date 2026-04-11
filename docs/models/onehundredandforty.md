@@ -9,24 +9,15 @@ import { OneHundredAndForty } from "@vercel/sdk/models/payloaddefaultpurchasetyp
 
 let value: OneHundredAndForty = {
   projectId: "<id>",
-  projectAnalytics: {
-    id: "<id>",
-    disabledAt: 5006.63,
-    enabledAt: 6908.82,
-  },
-  prevProjectAnalytics: {
-    id: "<id>",
-    disabledAt: 343.46,
-    enabledAt: 1322.3,
-  },
+  projectName: "<value>",
+  directoryListing: false,
 };
 ```
 
 ## Fields
 
-| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `projectName`                                                    | *string*                                                         | :heavy_minus_sign:                                               | N/A                                                              |
-| `projectId`                                                      | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
-| `projectAnalytics`                                               | [models.ProjectAnalytics](../models/projectanalytics.md)         | :heavy_check_mark:                                               | N/A                                                              |
-| `prevProjectAnalytics`                                           | [models.PrevProjectAnalytics](../models/prevprojectanalytics.md) | :heavy_check_mark:                                               | N/A                                                              |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
+| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
+| `directoryListing` | *boolean*          | :heavy_check_mark: | N/A                |

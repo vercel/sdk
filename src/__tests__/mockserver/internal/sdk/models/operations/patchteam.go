@@ -564,6 +564,19 @@ func (o *StrictDeploymentProtectionSettings) GetEnabled() bool {
 	return o.Enabled
 }
 
+// StrictShareableLinks - When enabled, creating shareable links requires Owner role.
+type StrictShareableLinks struct {
+	// Enable or disable requiring Owner role to create shareable links.
+	Enabled bool `json:"enabled"`
+}
+
+func (o *StrictShareableLinks) GetEnabled() bool {
+	if o == nil {
+		return false
+	}
+	return o.Enabled
+}
+
 // Preference - The NSNB preference for the team.
 type Preference string
 
@@ -910,8 +923,10 @@ type PatchTeamRequestBody struct {
 	DefaultExpirationSettings   *DefaultExpirationSettings   `json:"defaultExpirationSettings,omitempty"`
 	// When enabled, deployment protection settings require stricter permissions (owner-only).
 	StrictDeploymentProtectionSettings *StrictDeploymentProtectionSettings `json:"strictDeploymentProtectionSettings,omitempty"`
-	NsnbConfig                         *NsnbConfigUnion                    `json:"nsnbConfig,omitempty"`
-	DefaultProjectJobs                 *DefaultProjectJobsUnion            `json:"defaultProjectJobs,omitempty"`
+	// When enabled, creating shareable links requires Owner role.
+	StrictShareableLinks *StrictShareableLinks    `json:"strictShareableLinks,omitempty"`
+	NsnbConfig           *NsnbConfigUnion         `json:"nsnbConfig,omitempty"`
+	DefaultProjectJobs   *DefaultProjectJobsUnion `json:"defaultProjectJobs,omitempty"`
 	// Resource configuration for the team.
 	ResourceConfig *PatchTeamResourceConfig `json:"resourceConfig,omitempty"`
 }
@@ -1033,6 +1048,13 @@ func (o *PatchTeamRequestBody) GetStrictDeploymentProtectionSettings() *StrictDe
 		return nil
 	}
 	return o.StrictDeploymentProtectionSettings
+}
+
+func (o *PatchTeamRequestBody) GetStrictShareableLinks() *StrictShareableLinks {
+	if o == nil {
+		return nil
+	}
+	return o.StrictShareableLinks
 }
 
 func (o *PatchTeamRequestBody) GetNsnbConfig() *NsnbConfigUnion {

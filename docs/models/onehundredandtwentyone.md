@@ -8,7 +8,7 @@ The payload of the event, if requested.
 import { OneHundredAndTwentyOne } from "@vercel/sdk/models/payloaddefaultpurchasetype.js";
 
 let value: OneHundredAndTwentyOne = {
-  logDrainUrl: "https://warped-turret.info/",
+  logDrainUrl: "https://warped-horde.biz",
 };
 ```
 

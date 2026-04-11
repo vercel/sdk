@@ -1219,6 +1219,37 @@ func (o *StrictDeploymentProtectionSettings) GetUpdatedAt() float64 {
 	return o.UpdatedAt
 }
 
+// StrictShareableLinks - When enabled, creating shareable links requires Owner role.
+type StrictShareableLinks struct {
+	Enabled   bool    `json:"enabled"`
+	UpdatedAt float64 `json:"updatedAt"`
+}
+
+func (s StrictShareableLinks) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(s, "", false)
+}
+
+func (s *StrictShareableLinks) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &s, "", false, []string{"enabled", "updatedAt"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *StrictShareableLinks) GetEnabled() bool {
+	if o == nil {
+		return false
+	}
+	return o.Enabled
+}
+
+func (o *StrictShareableLinks) GetUpdatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.UpdatedAt
+}
+
 type Preference string
 
 const (
@@ -1810,6 +1841,8 @@ type Team struct {
 	IPBuckets                  []IPBucket                              `json:"ipBuckets,omitempty"`
 	// When enabled, deployment protection settings require stricter permissions (owner-only).
 	StrictDeploymentProtectionSettings *StrictDeploymentProtectionSettings `json:"strictDeploymentProtectionSettings,omitempty"`
+	// When enabled, creating shareable links requires Owner role.
+	StrictShareableLinks *StrictShareableLinks `json:"strictShareableLinks,omitempty"`
 	// NSNB configuration for the team.
 	NsnbConfig *NsnbConfig `json:"nsnbConfig,omitempty"`
 	// The Team's unique identifier.
@@ -2004,6 +2037,13 @@ func (o *Team) GetStrictDeploymentProtectionSettings() *StrictDeploymentProtecti
 		return nil
 	}
 	return o.StrictDeploymentProtectionSettings
+}
+
+func (o *Team) GetStrictShareableLinks() *StrictShareableLinks {
+	if o == nil {
+		return nil
+	}
+	return o.StrictShareableLinks
 }
 
 func (o *Team) GetNsnbConfig() *NsnbConfig {

@@ -103,17 +103,20 @@ func testGetFirewallConfigGetFirewallConfig0(w http.ResponseWriter, req *http.Re
 				operations.GetFirewallConfigRule2{
 					ID:     "<id>",
 					Name:   "<value>",
-					Active: true,
+					Active: false,
 					ConditionGroup: []operations.GetFirewallConfigConditionGroup2{
 						operations.GetFirewallConfigConditionGroup2{
-							Conditions: []operations.GetFirewallConfigCondition2{},
+							Conditions: []operations.GetFirewallConfigCondition2{
+								operations.GetFirewallConfigCondition2{
+									Type: operations.GetFirewallConfigType2Region,
+									Op:   operations.GetFirewallConfigOp2Lt,
+								},
+							},
 						},
 					},
 					Action: operations.GetFirewallConfigRuleAction2{},
 					ValidationErrors: []string{
 						"<value 1>",
-						"<value 2>",
-						"<value 3>",
 					},
 				},
 			),

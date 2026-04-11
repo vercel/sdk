@@ -8,7 +8,7 @@ import (
 
 type WriteSessionFilesRequest struct {
 	// The target directory where the tarball contents will be extracted. If not specified, files are extracted to the sandbox home directory.
-	XCwd *string `header:"style=simple,explode=false,name=x-cwd"`
+	XCwd *string `header:"style=simple,explode=false,name='x-Cwd'"`
 	// The unique identifier of the session to write files to.
 	SessionID string `pathParam:"style=simple,explode=false,name=sessionId"`
 	// The Team identifier to perform the request on behalf of.

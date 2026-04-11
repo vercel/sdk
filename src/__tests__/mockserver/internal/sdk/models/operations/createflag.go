@@ -1262,6 +1262,8 @@ type CreateFlagRequestBody struct {
 	// A description of the flag
 	Description *string                 `json:"description,omitempty"`
 	State       *CreateFlagStateRequest `json:"state,omitempty"`
+	// The user ids of the maintainers of the flag
+	MaintainerIds []string `json:"maintainerIds,omitempty"`
 	// Whether this flag is marked as permanent, indicating it should not be removed
 	Permanent *bool `json:"permanent,omitempty"`
 	// Tags for categorizing the flag
@@ -1315,6 +1317,13 @@ func (o *CreateFlagRequestBody) GetState() *CreateFlagStateRequest {
 		return nil
 	}
 	return o.State
+}
+
+func (o *CreateFlagRequestBody) GetMaintainerIds() []string {
+	if o == nil {
+		return nil
+	}
+	return o.MaintainerIds
 }
 
 func (o *CreateFlagRequestBody) GetPermanent() *bool {
@@ -3377,24 +3386,25 @@ func (e *CreateFlagTypeName) UnmarshalJSON(data []byte) error {
 }
 
 type CreateFlagResponseBody struct {
-	Description  *string                     `json:"description,omitempty"`
-	Permanent    *bool                       `json:"permanent,omitempty"`
-	Tags         []string                    `json:"tags,omitempty"`
-	Experiment   *CreateFlagExperiment       `json:"experiment,omitempty"`
-	Variants     []VariantFlag               `json:"variants"`
-	ID           string                      `json:"id"`
-	Environments map[string]EnvironmentsFlag `json:"environments"`
-	Kind         KindFlag                    `json:"kind"`
-	Revision     float64                     `json:"revision"`
-	Seed         float64                     `json:"seed"`
-	State        StateFlag                   `json:"state"`
-	Slug         string                      `json:"slug"`
-	CreatedAt    float64                     `json:"createdAt"`
-	UpdatedAt    float64                     `json:"updatedAt"`
-	CreatedBy    string                      `json:"createdBy"`
-	OwnerID      string                      `json:"ownerId"`
-	ProjectID    string                      `json:"projectId"`
-	TypeName     CreateFlagTypeName          `json:"typeName"`
+	Description   *string                     `json:"description,omitempty"`
+	MaintainerIds []string                    `json:"maintainerIds,omitempty"`
+	Permanent     *bool                       `json:"permanent,omitempty"`
+	Tags          []string                    `json:"tags,omitempty"`
+	Experiment    *CreateFlagExperiment       `json:"experiment,omitempty"`
+	Variants      []VariantFlag               `json:"variants"`
+	ID            string                      `json:"id"`
+	Environments  map[string]EnvironmentsFlag `json:"environments"`
+	Kind          KindFlag                    `json:"kind"`
+	Revision      float64                     `json:"revision"`
+	Seed          float64                     `json:"seed"`
+	State         StateFlag                   `json:"state"`
+	Slug          string                      `json:"slug"`
+	CreatedAt     float64                     `json:"createdAt"`
+	UpdatedAt     float64                     `json:"updatedAt"`
+	CreatedBy     string                      `json:"createdBy"`
+	OwnerID       string                      `json:"ownerId"`
+	ProjectID     string                      `json:"projectId"`
+	TypeName      CreateFlagTypeName          `json:"typeName"`
 }
 
 func (o *CreateFlagResponseBody) GetDescription() *string {
@@ -3402,6 +3412,13 @@ func (o *CreateFlagResponseBody) GetDescription() *string {
 		return nil
 	}
 	return o.Description
+}
+
+func (o *CreateFlagResponseBody) GetMaintainerIds() []string {
+	if o == nil {
+		return nil
+	}
+	return o.MaintainerIds
 }
 
 func (o *CreateFlagResponseBody) GetPermanent() *bool {

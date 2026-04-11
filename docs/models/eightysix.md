@@ -9,8 +9,8 @@ import { EightySix } from "@vercel/sdk/models/payloadoldteam.js";
 
 let value: EightySix = {
   name: "<value>",
-  destinationId: "<id>",
-  destinationName: "<value>",
+  fromId: "<id>",
+  fromName: "<value>",
 };
 ```
 
@@ -19,5 +19,5 @@ let value: EightySix = {
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `name`             | *string*           | :heavy_check_mark: | N/A                |
-| `destinationId`    | *string*           | :heavy_check_mark: | N/A                |
-| `destinationName`  | *string*           | :heavy_check_mark: | N/A                |
+| `fromId`           | *string*           | :heavy_check_mark: | N/A                |
+| `fromName`         | *string*           | :heavy_check_mark: | N/A                |

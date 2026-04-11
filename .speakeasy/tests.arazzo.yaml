@@ -7027,13 +7027,7 @@ workflows:
           - name: exclude_ids
             in: query
             value: env_2WjyKQmM8ZnGcJsPWMrHRHrE,env_2WjyKQmM8ZnGcJsPWMrHRCRV
-          - name: exclude-ids
-            in: query
-            value: env_2WjyKQmM8ZnGcJsPWMrHRHrE,env_2WjyKQmM8ZnGcJsPWMrHRCRV
           - name: exclude_projectId
-            in: query
-            value: prj_2WjyKQmM8ZnGcJsPWMrHRHrE
-          - name: exclude-projectId
             in: query
             value: prj_2WjyKQmM8ZnGcJsPWMrHRHrE
           - name: teamId
@@ -7042,6 +7036,12 @@ workflows:
           - name: slug
             in: query
             value: my-team-url-slug
+          - name: '''exclude-ids'''
+            in: query
+            value: env_2WjyKQmM8ZnGcJsPWMrHRHrE,env_2WjyKQmM8ZnGcJsPWMrHRCRV
+          - name: '''exclude-projectId'''
+            in: query
+            value: prj_2WjyKQmM8ZnGcJsPWMrHRHrE
         successCriteria:
           - condition: $statusCode == 200
           - condition: $response.header.Content-Type == application/json
@@ -8733,7 +8733,7 @@ workflows:
           - name: slug
             in: query
             value: my-team-url-slug
-          - name: x-cwd
+          - name: '''x-Cwd'''
             in: header
             value: /home/vercel-sandbox
         successCriteria:
@@ -9675,7 +9675,7 @@ workflows:
           - name: slug
             in: query
             value: my-team-url-slug
-          - name: x-cwd
+          - name: '''x-Cwd'''
             in: header
             value: /home/vercel-sandbox
         successCriteria:

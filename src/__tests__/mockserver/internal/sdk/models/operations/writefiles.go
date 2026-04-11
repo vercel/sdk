@@ -8,7 +8,7 @@ import (
 
 type WriteFilesRequest struct {
 	// The target directory where the tarball contents will be extracted. If not specified, files are extracted to the sandbox home directory.
-	XCwd *string `header:"style=simple,explode=false,name=x-cwd"`
+	XCwd *string `header:"style=simple,explode=false,name='x-Cwd'"`
 	// The unique identifier of the sandbox to write files to.
 	SandboxID string `pathParam:"style=simple,explode=false,name=sandboxId"`
 	// The Team identifier to perform the request on behalf of.

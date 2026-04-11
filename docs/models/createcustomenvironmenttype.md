@@ -1,6 +1,6 @@
 # CreateCustomEnvironmentType
 
-Type of matcher. One of \"equals\", \"startsWith\", or \"endsWith\".
+Type of matcher. One of "equals", "startsWith", or "endsWith".
 
 ## Example Usage
 

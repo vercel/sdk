@@ -29,7 +29,7 @@ export type ListUserEventsRequest = {
    */
   until?: string | undefined;
   /**
-   * Comma-delimited list of event \"types\" to filter the results by.
+   * Comma-delimited list of event "types" to filter the results by.
    */
   types?: string | undefined;
   /**

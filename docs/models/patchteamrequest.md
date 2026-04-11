@@ -36,6 +36,9 @@ let value: PatchTeamRequest = {
     strictDeploymentProtectionSettings: {
       enabled: true,
     },
+    strictShareableLinks: {
+      enabled: true,
+    },
     resourceConfig: {
       buildMachine: {
         default: "standard",

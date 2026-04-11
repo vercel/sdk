@@ -1229,6 +1229,8 @@ type UpdateFlagRequestBody struct {
 	// A description of the flag
 	Description *string                 `json:"description,omitempty"`
 	State       *UpdateFlagStateRequest `json:"state,omitempty"`
+	// The user ids of the maintainers of the flag
+	MaintainerIds []string `json:"maintainerIds,omitempty"`
 	// Whether this flag is marked as permanent, indicating it should not be removed
 	Permanent *bool `json:"permanent,omitempty"`
 	// Tags for categorizing the flag
@@ -1282,6 +1284,13 @@ func (o *UpdateFlagRequestBody) GetState() *UpdateFlagStateRequest {
 		return nil
 	}
 	return o.State
+}
+
+func (o *UpdateFlagRequestBody) GetMaintainerIds() []string {
+	if o == nil {
+		return nil
+	}
+	return o.MaintainerIds
 }
 
 func (o *UpdateFlagRequestBody) GetPermanent() *bool {
@@ -3492,24 +3501,25 @@ func (e *UpdateFlagTypeName) UnmarshalJSON(data []byte) error {
 }
 
 type UpdateFlagFlag struct {
-	Description  *string                                       `json:"description,omitempty"`
-	Permanent    *bool                                         `json:"permanent,omitempty"`
-	Tags         []string                                      `json:"tags,omitempty"`
-	Experiment   *UpdateFlagExperiment                         `json:"experiment,omitempty"`
-	Variants     []UpdateFlagResponseBodyVariant               `json:"variants"`
-	ID           string                                        `json:"id"`
-	Environments map[string]UpdateFlagResponseBodyEnvironments `json:"environments"`
-	Kind         UpdateFlagKind                                `json:"kind"`
-	Revision     float64                                       `json:"revision"`
-	Seed         float64                                       `json:"seed"`
-	State        UpdateFlagResponseBodyState                   `json:"state"`
-	Slug         string                                        `json:"slug"`
-	CreatedAt    float64                                       `json:"createdAt"`
-	UpdatedAt    float64                                       `json:"updatedAt"`
-	CreatedBy    string                                        `json:"createdBy"`
-	OwnerID      string                                        `json:"ownerId"`
-	ProjectID    string                                        `json:"projectId"`
-	TypeName     UpdateFlagTypeName                            `json:"typeName"`
+	Description   *string                                       `json:"description,omitempty"`
+	MaintainerIds []string                                      `json:"maintainerIds,omitempty"`
+	Permanent     *bool                                         `json:"permanent,omitempty"`
+	Tags          []string                                      `json:"tags,omitempty"`
+	Experiment    *UpdateFlagExperiment                         `json:"experiment,omitempty"`
+	Variants      []UpdateFlagResponseBodyVariant               `json:"variants"`
+	ID            string                                        `json:"id"`
+	Environments  map[string]UpdateFlagResponseBodyEnvironments `json:"environments"`
+	Kind          UpdateFlagKind                                `json:"kind"`
+	Revision      float64                                       `json:"revision"`
+	Seed          float64                                       `json:"seed"`
+	State         UpdateFlagResponseBodyState                   `json:"state"`
+	Slug          string                                        `json:"slug"`
+	CreatedAt     float64                                       `json:"createdAt"`
+	UpdatedAt     float64                                       `json:"updatedAt"`
+	CreatedBy     string                                        `json:"createdBy"`
+	OwnerID       string                                        `json:"ownerId"`
+	ProjectID     string                                        `json:"projectId"`
+	TypeName      UpdateFlagTypeName                            `json:"typeName"`
 }
 
 func (u UpdateFlagFlag) MarshalJSON() ([]byte, error) {
@@ -3528,6 +3538,13 @@ func (o *UpdateFlagFlag) GetDescription() *string {
 		return nil
 	}
 	return o.Description
+}
+
+func (o *UpdateFlagFlag) GetMaintainerIds() []string {
+	if o == nil {
+		return nil
+	}
+	return o.MaintainerIds
 }
 
 func (o *UpdateFlagFlag) GetPermanent() *bool {

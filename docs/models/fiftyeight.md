@@ -9,7 +9,7 @@ import { FiftyEight } from "@vercel/sdk/models/payloadoldteam.js";
 
 let value: FiftyEight = {
   gitlabLogin: "<value>",
-  gitlabUserId: 4131.31,
+  gitlabEmail: "<value>",
 };
 ```
 
@@ -18,4 +18,7 @@ let value: FiftyEight = {
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `gitlabLogin`      | *string*           | :heavy_check_mark: | N/A                |
-| `gitlabUserId`     | *number*           | :heavy_check_mark: | N/A                |
+| `gitlabEmail`      | *string*           | :heavy_check_mark: | N/A                |
+| `gitlabName`       | *string*           | :heavy_minus_sign: | N/A                |
+| `zeitAccount`      | *string*           | :heavy_minus_sign: | N/A                |
+| `zeitAccountType`  | *string*           | :heavy_minus_sign: | N/A                |

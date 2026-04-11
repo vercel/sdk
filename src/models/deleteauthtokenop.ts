@@ -10,7 +10,7 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type DeleteAuthTokenRequest = {
   /**
-   * The identifier of the token to invalidate. The special value \"current\" may be supplied, which invalidates the token that the HTTP request was authenticated with.
+   * The identifier of the token to invalidate. The special value "current" may be supplied, which invalidates the token that the HTTP request was authenticated with.
    */
   tokenId: string;
 };

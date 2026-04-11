@@ -5992,7 +5992,6 @@ type UpdateMicrofrontendsPermissions struct {
 	Usage                                    []components.ACLAction `json:"usage,omitempty"`
 	UsageCycle                               []components.ACLAction `json:"usageCycle,omitempty"`
 	VercelRun                                []components.ACLAction `json:"vercelRun,omitempty"`
-	VercelRunExec                            []components.ACLAction `json:"vercelRunExec,omitempty"`
 	VpcPeeringConnection                     []components.ACLAction `json:"vpcPeeringConnection,omitempty"`
 	WebAnalyticsPlan                         []components.ACLAction `json:"webAnalyticsPlan,omitempty"`
 	Webhook                                  []components.ACLAction `json:"webhook,omitempty"`
@@ -6066,6 +6065,7 @@ type UpdateMicrofrontendsPermissions struct {
 	PageIntegrity                            []components.ACLAction `json:"pageIntegrity,omitempty"`
 	SeawallConfig                            []components.ACLAction `json:"seawallConfig,omitempty"`
 	SecurityPlusConfiguration                []components.ACLAction `json:"securityPlusConfiguration,omitempty"`
+	ShareableLinkStrict                      []components.ACLAction `json:"shareableLinkStrict,omitempty"`
 	SharedEnvVarConnection                   []components.ACLAction `json:"sharedEnvVarConnection,omitempty"`
 	SkewProtection                           []components.ACLAction `json:"skewProtection,omitempty"`
 	Analytics                                []components.ACLAction `json:"analytics,omitempty"`
@@ -7187,13 +7187,6 @@ func (o *UpdateMicrofrontendsPermissions) GetVercelRun() []components.ACLAction 
 	return o.VercelRun
 }
 
-func (o *UpdateMicrofrontendsPermissions) GetVercelRunExec() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.VercelRunExec
-}
-
 func (o *UpdateMicrofrontendsPermissions) GetVpcPeeringConnection() []components.ACLAction {
 	if o == nil {
 		return nil
@@ -7703,6 +7696,13 @@ func (o *UpdateMicrofrontendsPermissions) GetSecurityPlusConfiguration() []compo
 		return nil
 	}
 	return o.SecurityPlusConfiguration
+}
+
+func (o *UpdateMicrofrontendsPermissions) GetShareableLinkStrict() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ShareableLinkStrict
 }
 
 func (o *UpdateMicrofrontendsPermissions) GetSharedEnvVarConnection() []components.ACLAction {

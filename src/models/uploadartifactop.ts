@@ -13,7 +13,7 @@ export type UploadArtifactRequest = {
   /**
    * The artifact size in bytes
    */
-  contentLength: number;
+  contentLength?: number | undefined;
   /**
    * The time taken to generate the uploaded artifact in milliseconds.
    */
@@ -69,13 +69,13 @@ export const UploadArtifactRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "Content-Length": types.number(),
-  "x-artifact-duration": types.optional(types.number()),
-  "x-artifact-client-ci": types.optional(types.string()),
-  "x-artifact-client-interactive": types.optional(types.number()),
-  "x-artifact-tag": types.optional(types.string()),
-  "x-artifact-sha": types.optional(types.string()),
-  "x-artifact-dirty-hash": types.optional(types.string()),
+  "'content-Length'": types.optional(types.number()),
+  "'x-Artifact-Duration'": types.optional(types.number()),
+  "'x-Artifact-Client-Ci'": types.optional(types.string()),
+  "'x-Artifact-Client-Interactive'": types.optional(types.number()),
+  "'x-Artifact-Tag'": types.optional(types.string()),
+  "'x-Artifact-Sha'": types.optional(types.string()),
+  "'x-Artifact-Dirty-Hash'": types.optional(types.string()),
   hash: types.string(),
   teamId: types.optional(types.string()),
   slug: types.optional(types.string()),
@@ -87,25 +87,25 @@ export const UploadArtifactRequest$inboundSchema: z.ZodType<
   ]),
 }).transform((v) => {
   return remap$(v, {
-    "Content-Length": "contentLength",
-    "x-artifact-duration": "xArtifactDuration",
-    "x-artifact-client-ci": "xArtifactClientCi",
-    "x-artifact-client-interactive": "xArtifactClientInteractive",
-    "x-artifact-tag": "xArtifactTag",
-    "x-artifact-sha": "xArtifactSha",
-    "x-artifact-dirty-hash": "xArtifactDirtyHash",
+    "'content-Length'": "contentLength",
+    "'x-Artifact-Duration'": "xArtifactDuration",
+    "'x-Artifact-Client-Ci'": "xArtifactClientCi",
+    "'x-Artifact-Client-Interactive'": "xArtifactClientInteractive",
+    "'x-Artifact-Tag'": "xArtifactTag",
+    "'x-Artifact-Sha'": "xArtifactSha",
+    "'x-Artifact-Dirty-Hash'": "xArtifactDirtyHash",
     "RequestBody": "requestBody",
   });
 });
 /** @internal */
 export type UploadArtifactRequest$Outbound = {
-  "Content-Length": number;
-  "x-artifact-duration"?: number | undefined;
-  "x-artifact-client-ci"?: string | undefined;
-  "x-artifact-client-interactive"?: number | undefined;
-  "x-artifact-tag"?: string | undefined;
-  "x-artifact-sha"?: string | undefined;
-  "x-artifact-dirty-hash"?: string | undefined;
+  "'content-Length'"?: number | undefined;
+  "'x-Artifact-Duration'"?: number | undefined;
+  "'x-Artifact-Client-Ci'"?: string | undefined;
+  "'x-Artifact-Client-Interactive'"?: number | undefined;
+  "'x-Artifact-Tag'"?: string | undefined;
+  "'x-Artifact-Sha'"?: string | undefined;
+  "'x-Artifact-Dirty-Hash'"?: string | undefined;
   hash: string;
   teamId?: string | undefined;
   slug?: string | undefined;
@@ -118,7 +118,7 @@ export const UploadArtifactRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UploadArtifactRequest
 > = z.object({
-  contentLength: z.number(),
+  contentLength: z.number().optional(),
   xArtifactDuration: z.number().optional(),
   xArtifactClientCi: z.string().optional(),
   xArtifactClientInteractive: z.number().int().optional(),
@@ -136,13 +136,13 @@ export const UploadArtifactRequest$outboundSchema: z.ZodType<
   ]),
 }).transform((v) => {
   return remap$(v, {
-    contentLength: "Content-Length",
-    xArtifactDuration: "x-artifact-duration",
-    xArtifactClientCi: "x-artifact-client-ci",
-    xArtifactClientInteractive: "x-artifact-client-interactive",
-    xArtifactTag: "x-artifact-tag",
-    xArtifactSha: "x-artifact-sha",
-    xArtifactDirtyHash: "x-artifact-dirty-hash",
+    contentLength: "'content-Length'",
+    xArtifactDuration: "'x-Artifact-Duration'",
+    xArtifactClientCi: "'x-Artifact-Client-Ci'",
+    xArtifactClientInteractive: "'x-Artifact-Client-Interactive'",
+    xArtifactTag: "'x-Artifact-Tag'",
+    xArtifactSha: "'x-Artifact-Sha'",
+    xArtifactDirtyHash: "'x-Artifact-Dirty-Hash'",
     requestBody: "RequestBody",
   });
 });

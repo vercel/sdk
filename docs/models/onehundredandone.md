@@ -8,18 +8,14 @@ The payload of the event, if requested.
 import { OneHundredAndOne } from "@vercel/sdk/models/payloadoldteam.js";
 
 let value: OneHundredAndOne = {
-  team: {
-    id: "<id>",
-  },
-  previousRule: {
-    email: "Kristoffer35@gmail.com",
-  },
+  email: "Kristoffer35@gmail.com",
+  name: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
-| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `team`                                                                 | [models.UserEventPayload101Team](../models/usereventpayload101team.md) | :heavy_check_mark:                                                     | N/A                                                                    |
-| `previousRule`                                                         | [models.PreviousRule](../models/previousrule.md)                       | :heavy_check_mark:                                                     | N/A                                                                    |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `email`            | *string*           | :heavy_check_mark: | N/A                |
+| `name`             | *string*           | :heavy_check_mark: | N/A                |

@@ -7,16 +7,12 @@ The payload of the event, if requested.
 ```typescript
 import { Fifty } from "@vercel/sdk/models/payloadoldteam.js";
 
-let value: Fifty = {
-  configuration: {
-    id: "<id>",
-    name: "<value>",
-  },
-};
+let value: Fifty = {};
 ```
 
 ## Fields
 
-| Field                                              | Type                                               | Required                                           | Description                                        |
-| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
-| `configuration`                                    | [models.Configuration](../models/configuration.md) | :heavy_check_mark:                                 | N/A                                                |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `cn`               | *string*           | :heavy_minus_sign: | N/A                |
+| `cns`              | *string*[]         | :heavy_minus_sign: | N/A                |

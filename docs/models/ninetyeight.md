@@ -8,18 +8,25 @@ The payload of the event, if requested.
 import { NinetyEight } from "@vercel/sdk/models/payloadoldteam.js";
 
 let value: NinetyEight = {
-  edgeConfigId: "<id>",
-  edgeConfigSlug: "<value>",
-  edgeConfigTokenId: "<id>",
-  label: "<value>",
+  edgeConfig: {
+    id: "<id>",
+    slug: "<value>",
+  },
+  fromAccount: {
+    id: "<id>",
+    type: "team",
+  },
+  toAccount: {
+    id: "<id>",
+    type: "team",
+  },
 };
 ```
 
 ## Fields
 
-| Field               | Type                | Required            | Description         |
-| ------------------- | ------------------- | ------------------- | ------------------- |
-| `edgeConfigId`      | *string*            | :heavy_check_mark:  | N/A                 |
-| `edgeConfigSlug`    | *string*            | :heavy_check_mark:  | N/A                 |
-| `edgeConfigTokenId` | *string*            | :heavy_check_mark:  | N/A                 |
-| `label`             | *string*            | :heavy_check_mark:  | N/A                 |
+| Field                                          | Type                                           | Required                                       | Description                                    |
+| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
+| `edgeConfig`                                   | [models.EdgeConfig](../models/edgeconfig.md)   | :heavy_check_mark:                             | N/A                                            |
+| `fromAccount`                                  | [models.FromAccount](../models/fromaccount.md) | :heavy_check_mark:                             | N/A                                            |
+| `toAccount`                                    | [models.ToAccount](../models/toaccount.md)     | :heavy_check_mark:                             | N/A                                            |

@@ -176,17 +176,17 @@ export const ListSharedEnvVariableRequest$inboundSchema: z.ZodType<
   projectId: types.optional(types.string()),
   ids: types.optional(types.string()),
   exclude_idsQueryParameter: types.optional(types.string()),
-  "exclude-idsQueryParameter1": types.optional(types.string()),
+  "'exclude-ids'QueryParameter1": types.optional(types.string()),
   exclude_projectIdQueryParameter: types.optional(types.string()),
-  "exclude-projectIdQueryParameter1": types.optional(types.string()),
+  "'exclude-projectId'QueryParameter1": types.optional(types.string()),
   teamId: types.optional(types.string()),
   slug: types.optional(types.string()),
 }).transform((v) => {
   return remap$(v, {
     "exclude_idsQueryParameter": "excludeIdsQueryParameter",
-    "exclude-idsQueryParameter1": "excludeIdsQueryParameter1",
+    "'exclude-ids'QueryParameter1": "excludeIdsQueryParameter1",
     "exclude_projectIdQueryParameter": "excludeProjectIdQueryParameter",
-    "exclude-projectIdQueryParameter1": "excludeProjectIdQueryParameter1",
+    "'exclude-projectId'QueryParameter1": "excludeProjectIdQueryParameter1",
   });
 });
 /** @internal */
@@ -195,9 +195,9 @@ export type ListSharedEnvVariableRequest$Outbound = {
   projectId?: string | undefined;
   ids?: string | undefined;
   exclude_idsQueryParameter?: string | undefined;
-  "exclude-idsQueryParameter1"?: string | undefined;
+  "'exclude-ids'QueryParameter1"?: string | undefined;
   exclude_projectIdQueryParameter?: string | undefined;
-  "exclude-projectIdQueryParameter1"?: string | undefined;
+  "'exclude-projectId'QueryParameter1"?: string | undefined;
   teamId?: string | undefined;
   slug?: string | undefined;
 };
@@ -220,9 +220,9 @@ export const ListSharedEnvVariableRequest$outboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     excludeIdsQueryParameter: "exclude_idsQueryParameter",
-    excludeIdsQueryParameter1: "exclude-idsQueryParameter1",
+    excludeIdsQueryParameter1: "'exclude-ids'QueryParameter1",
     excludeProjectIdQueryParameter: "exclude_projectIdQueryParameter",
-    excludeProjectIdQueryParameter1: "exclude-projectIdQueryParameter1",
+    excludeProjectIdQueryParameter1: "'exclude-projectId'QueryParameter1",
   });
 });
 

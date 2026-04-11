@@ -39,18 +39,18 @@ export const WriteFilesRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "x-cwd": types.optional(types.string()),
+  "'x-Cwd'": types.optional(types.string()),
   sandboxId: types.string(),
   teamId: types.optional(types.string()),
   slug: types.optional(types.string()),
 }).transform((v) => {
   return remap$(v, {
-    "x-cwd": "xCwd",
+    "'x-Cwd'": "xCwd",
   });
 });
 /** @internal */
 export type WriteFilesRequest$Outbound = {
-  "x-cwd"?: string | undefined;
+  "'x-Cwd'"?: string | undefined;
   sandboxId: string;
   teamId?: string | undefined;
   slug?: string | undefined;
@@ -68,7 +68,7 @@ export const WriteFilesRequest$outboundSchema: z.ZodType<
   slug: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
-    xCwd: "x-cwd",
+    xCwd: "'x-Cwd'",
   });
 });
 

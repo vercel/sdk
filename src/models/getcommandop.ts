@@ -16,14 +16,14 @@ import {
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
- * If set to \"true\", the request will block until the command finishes execution. Useful for synchronously waiting for command completion.
+ * If set to "true", the request will block until the command finishes execution. Useful for synchronously waiting for command completion.
  */
 export const Wait = {
   True: "true",
   False: "false",
 } as const;
 /**
- * If set to \"true\", the request will block until the command finishes execution. Useful for synchronously waiting for command completion.
+ * If set to "true", the request will block until the command finishes execution. Useful for synchronously waiting for command completion.
  */
 export type Wait = ClosedEnum<typeof Wait>;
 
@@ -37,7 +37,7 @@ export type GetCommandRequest = {
    */
   cmdId: string;
   /**
-   * If set to \"true\", the request will block until the command finishes execution. Useful for synchronously waiting for command completion.
+   * If set to "true", the request will block until the command finishes execution. Useful for synchronously waiting for command completion.
    */
   wait?: Wait | undefined;
   /**

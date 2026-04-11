@@ -146,7 +146,7 @@ type GetProjectsRequest struct {
 	ElasticConcurrencyEnabled *ElasticConcurrencyEnabled `queryParam:"style=form,explode=true,name=elasticConcurrencyEnabled"`
 	// Filter results by projects with Static IPs enabled
 	StaticIpsEnabled *StaticIpsEnabled `queryParam:"style=form,explode=true,name=staticIpsEnabled"`
-	// Filter results by build machine types. Accepts comma-separated values. Use \"default\" for projects without a build machine type set.
+	// Filter results by build machine types. Accepts comma-separated values. Use "default" for projects without a build machine type set.
 	BuildMachineTypes *string `queryParam:"style=form,explode=true,name=buildMachineTypes"`
 	// Filter results by build queue configuration. SKIP_NAMESPACE_QUEUE includes projects without a configuration set.
 	BuildQueueConfiguration *BuildQueueConfiguration `queryParam:"style=form,explode=true,name=buildQueueConfiguration"`
@@ -6567,7 +6567,6 @@ type GetProjectsPermissions struct {
 	Usage                                    []components.ACLAction `json:"usage,omitempty"`
 	UsageCycle                               []components.ACLAction `json:"usageCycle,omitempty"`
 	VercelRun                                []components.ACLAction `json:"vercelRun,omitempty"`
-	VercelRunExec                            []components.ACLAction `json:"vercelRunExec,omitempty"`
 	VpcPeeringConnection                     []components.ACLAction `json:"vpcPeeringConnection,omitempty"`
 	WebAnalyticsPlan                         []components.ACLAction `json:"webAnalyticsPlan,omitempty"`
 	Webhook                                  []components.ACLAction `json:"webhook,omitempty"`
@@ -6641,6 +6640,7 @@ type GetProjectsPermissions struct {
 	PageIntegrity                            []components.ACLAction `json:"pageIntegrity,omitempty"`
 	SeawallConfig                            []components.ACLAction `json:"seawallConfig,omitempty"`
 	SecurityPlusConfiguration                []components.ACLAction `json:"securityPlusConfiguration,omitempty"`
+	ShareableLinkStrict                      []components.ACLAction `json:"shareableLinkStrict,omitempty"`
 	SharedEnvVarConnection                   []components.ACLAction `json:"sharedEnvVarConnection,omitempty"`
 	SkewProtection                           []components.ACLAction `json:"skewProtection,omitempty"`
 	Analytics                                []components.ACLAction `json:"analytics,omitempty"`
@@ -7773,13 +7773,6 @@ func (o *GetProjectsPermissions) GetVercelRun() []components.ACLAction {
 	return o.VercelRun
 }
 
-func (o *GetProjectsPermissions) GetVercelRunExec() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.VercelRunExec
-}
-
 func (o *GetProjectsPermissions) GetVpcPeeringConnection() []components.ACLAction {
 	if o == nil {
 		return nil
@@ -8289,6 +8282,13 @@ func (o *GetProjectsPermissions) GetSecurityPlusConfiguration() []components.ACL
 		return nil
 	}
 	return o.SecurityPlusConfiguration
+}
+
+func (o *GetProjectsPermissions) GetShareableLinkStrict() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ShareableLinkStrict
 }
 
 func (o *GetProjectsPermissions) GetSharedEnvVarConnection() []components.ACLAction {

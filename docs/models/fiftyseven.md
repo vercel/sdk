@@ -8,8 +8,8 @@ The payload of the event, if requested.
 import { FiftySeven } from "@vercel/sdk/models/payloadoldteam.js";
 
 let value: FiftySeven = {
-  gitlabLogin: "<value>",
-  gitlabEmail: "<value>",
+  githubLogin: "<value>",
+  host: "incomplete-goat.info",
 };
 ```
 
@@ -17,8 +17,5 @@ let value: FiftySeven = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `gitlabLogin`      | *string*           | :heavy_check_mark: | N/A                |
-| `gitlabEmail`      | *string*           | :heavy_check_mark: | N/A                |
-| `gitlabName`       | *string*           | :heavy_minus_sign: | N/A                |
-| `zeitAccount`      | *string*           | :heavy_minus_sign: | N/A                |
-| `zeitAccountType`  | *string*           | :heavy_minus_sign: | N/A                |
+| `githubLogin`      | *string*           | :heavy_check_mark: | N/A                |
+| `host`             | *string*           | :heavy_check_mark: | N/A                |

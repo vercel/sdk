@@ -1304,7 +1304,6 @@ export type UpdateMicrofrontendsPermissions = {
   usage?: Array<ACLAction> | undefined;
   usageCycle?: Array<ACLAction> | undefined;
   vercelRun?: Array<ACLAction> | undefined;
-  vercelRunExec?: Array<ACLAction> | undefined;
   vpcPeeringConnection?: Array<ACLAction> | undefined;
   webAnalyticsPlan?: Array<ACLAction> | undefined;
   webhook?: Array<ACLAction> | undefined;
@@ -1378,6 +1377,7 @@ export type UpdateMicrofrontendsPermissions = {
   pageIntegrity?: Array<ACLAction> | undefined;
   seawallConfig?: Array<ACLAction> | undefined;
   securityPlusConfiguration?: Array<ACLAction> | undefined;
+  shareableLinkStrict?: Array<ACLAction> | undefined;
   sharedEnvVarConnection?: Array<ACLAction> | undefined;
   skewProtection?: Array<ACLAction> | undefined;
   analytics?: Array<ACLAction> | undefined;
@@ -1671,6 +1671,10 @@ export type UpdateMicrofrontendsSecurity = {
   logHeaders?: Array<string> | UpdateMicrofrontendsLogHeaders2 | undefined;
   securityPlus?: boolean | undefined;
   securityPlusMetadata?: UpdateMicrofrontendsSecurityPlusMetadata | undefined;
+  /**
+   * Whether Page Integrity is enabled for this project. Used by the metadata service to gate DynamoDB lookups against the page-integrity-inventory table.
+   */
+  pageIntegrityEnabled?: boolean | undefined;
 };
 
 /**
@@ -6882,7 +6886,6 @@ export const UpdateMicrofrontendsPermissions$inboundSchema: z.ZodType<
   usage: types.optional(z.array(ACLAction$inboundSchema)),
   usageCycle: types.optional(z.array(ACLAction$inboundSchema)),
   vercelRun: types.optional(z.array(ACLAction$inboundSchema)),
-  vercelRunExec: types.optional(z.array(ACLAction$inboundSchema)),
   vpcPeeringConnection: types.optional(z.array(ACLAction$inboundSchema)),
   webAnalyticsPlan: types.optional(z.array(ACLAction$inboundSchema)),
   webhook: types.optional(z.array(ACLAction$inboundSchema)),
@@ -6966,6 +6969,7 @@ export const UpdateMicrofrontendsPermissions$inboundSchema: z.ZodType<
   pageIntegrity: types.optional(z.array(ACLAction$inboundSchema)),
   seawallConfig: types.optional(z.array(ACLAction$inboundSchema)),
   securityPlusConfiguration: types.optional(z.array(ACLAction$inboundSchema)),
+  shareableLinkStrict: types.optional(z.array(ACLAction$inboundSchema)),
   sharedEnvVarConnection: types.optional(z.array(ACLAction$inboundSchema)),
   skewProtection: types.optional(z.array(ACLAction$inboundSchema)),
   analytics: types.optional(z.array(ACLAction$inboundSchema)),
@@ -7140,7 +7144,6 @@ export type UpdateMicrofrontendsPermissions$Outbound = {
   usage?: Array<string> | undefined;
   usageCycle?: Array<string> | undefined;
   vercelRun?: Array<string> | undefined;
-  vercelRunExec?: Array<string> | undefined;
   vpcPeeringConnection?: Array<string> | undefined;
   webAnalyticsPlan?: Array<string> | undefined;
   webhook?: Array<string> | undefined;
@@ -7214,6 +7217,7 @@ export type UpdateMicrofrontendsPermissions$Outbound = {
   pageIntegrity?: Array<string> | undefined;
   seawallConfig?: Array<string> | undefined;
   securityPlusConfiguration?: Array<string> | undefined;
+  shareableLinkStrict?: Array<string> | undefined;
   sharedEnvVarConnection?: Array<string> | undefined;
   skewProtection?: Array<string> | undefined;
   analytics?: Array<string> | undefined;
@@ -7392,7 +7396,6 @@ export const UpdateMicrofrontendsPermissions$outboundSchema: z.ZodType<
   usage: z.array(ACLAction$outboundSchema).optional(),
   usageCycle: z.array(ACLAction$outboundSchema).optional(),
   vercelRun: z.array(ACLAction$outboundSchema).optional(),
-  vercelRunExec: z.array(ACLAction$outboundSchema).optional(),
   vpcPeeringConnection: z.array(ACLAction$outboundSchema).optional(),
   webAnalyticsPlan: z.array(ACLAction$outboundSchema).optional(),
   webhook: z.array(ACLAction$outboundSchema).optional(),
@@ -7469,6 +7472,7 @@ export const UpdateMicrofrontendsPermissions$outboundSchema: z.ZodType<
   pageIntegrity: z.array(ACLAction$outboundSchema).optional(),
   seawallConfig: z.array(ACLAction$outboundSchema).optional(),
   securityPlusConfiguration: z.array(ACLAction$outboundSchema).optional(),
+  shareableLinkStrict: z.array(ACLAction$outboundSchema).optional(),
   sharedEnvVarConnection: z.array(ACLAction$outboundSchema).optional(),
   skewProtection: z.array(ACLAction$outboundSchema).optional(),
   analytics: z.array(ACLAction$outboundSchema).optional(),
@@ -8626,6 +8630,7 @@ export const UpdateMicrofrontendsSecurity$inboundSchema: z.ZodType<
   securityPlusMetadata: types.optional(
     z.lazy(() => UpdateMicrofrontendsSecurityPlusMetadata$inboundSchema),
   ),
+  pageIntegrityEnabled: types.optional(types.boolean()),
 }).transform((v) => {
   return remap$(v, {
     "log_headers": "logHeaders",
@@ -8650,6 +8655,7 @@ export type UpdateMicrofrontendsSecurity$Outbound = {
   securityPlusMetadata?:
     | UpdateMicrofrontendsSecurityPlusMetadata$Outbound
     | undefined;
+  pageIntegrityEnabled?: boolean | undefined;
 };
 
 /** @internal */
@@ -8680,6 +8686,7 @@ export const UpdateMicrofrontendsSecurity$outboundSchema: z.ZodType<
   securityPlusMetadata: z.lazy(() =>
     UpdateMicrofrontendsSecurityPlusMetadata$outboundSchema
   ).optional(),
+  pageIntegrityEnabled: z.boolean().optional(),
 }).transform((v) => {
   return remap$(v, {
     logHeaders: "log_headers",

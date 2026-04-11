@@ -12,9 +12,9 @@ import (
 type Balance struct {
 	// Partner's resource ID, exclude if credits are tied to the installation and not an individual resource.
 	ResourceID *string `json:"resourceId,omitempty"`
-	// A human-readable description of the credits the user currently has, e.g. \"2,000 Tokens\"
+	// A human-readable description of the credits the user currently has, e.g. "2,000 Tokens"
 	Credit *string `json:"credit,omitempty"`
-	// The name of the credits, for display purposes, e.g. \"Tokens\"
+	// The name of the credits, for display purposes, e.g. "Tokens"
 	NameLabel *string `json:"nameLabel,omitempty"`
 	// The dollar value of the credit balance, in USD and provided in cents, which is used to trigger automatic purchase thresholds.
 	CurrencyValueInCents float64 `json:"currencyValueInCents"`

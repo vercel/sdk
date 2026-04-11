@@ -1,6 +1,6 @@
 # UpdateNetworkPolicyMode
 
-The network access policy mode. Use \"allow-all\" to permit all outbound traffic. Use \"deny-all\" to block all outbound traffic. Use \"custom\" to specify explicit allow/deny rules.
+The network access policy mode. Use "allow-all" to permit all outbound traffic. Use "deny-all" to block all outbound traffic. Use "custom" to specify explicit allow/deny rules.
 
 ## Example Usage
 

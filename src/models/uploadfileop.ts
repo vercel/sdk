@@ -68,10 +68,10 @@ export const UploadFileRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "Content-Length": types.optional(types.number()),
-  "x-vercel-digest": types.optional(types.string()),
-  "x-now-digest": types.optional(types.string()),
-  "x-now-size": types.optional(types.number()),
+  "'content-Length'": types.optional(types.number()),
+  "'x-Vercel-Digest'": types.optional(types.string()),
+  "'x-Now-Digest'": types.optional(types.string()),
+  "'x-Now-Size'": types.optional(types.number()),
   teamId: types.optional(types.string()),
   slug: types.optional(types.string()),
   RequestBody: types.optional(
@@ -84,19 +84,19 @@ export const UploadFileRequest$inboundSchema: z.ZodType<
   ),
 }).transform((v) => {
   return remap$(v, {
-    "Content-Length": "contentLength",
-    "x-vercel-digest": "xVercelDigest",
-    "x-now-digest": "xNowDigest",
-    "x-now-size": "xNowSize",
+    "'content-Length'": "contentLength",
+    "'x-Vercel-Digest'": "xVercelDigest",
+    "'x-Now-Digest'": "xNowDigest",
+    "'x-Now-Size'": "xNowSize",
     "RequestBody": "requestBody",
   });
 });
 /** @internal */
 export type UploadFileRequest$Outbound = {
-  "Content-Length"?: number | undefined;
-  "x-vercel-digest"?: string | undefined;
-  "x-now-digest"?: string | undefined;
-  "x-now-size"?: number | undefined;
+  "'content-Length'"?: number | undefined;
+  "'x-Vercel-Digest'"?: string | undefined;
+  "'x-Now-Digest'"?: string | undefined;
+  "'x-Now-Size'"?: number | undefined;
   teamId?: string | undefined;
   slug?: string | undefined;
   RequestBody?:
@@ -127,10 +127,10 @@ export const UploadFileRequest$outboundSchema: z.ZodType<
   ]).optional(),
 }).transform((v) => {
   return remap$(v, {
-    contentLength: "Content-Length",
-    xVercelDigest: "x-vercel-digest",
-    xNowDigest: "x-now-digest",
-    xNowSize: "x-now-size",
+    contentLength: "'content-Length'",
+    xVercelDigest: "'x-Vercel-Digest'",
+    xNowDigest: "'x-Now-Digest'",
+    xNowSize: "'x-Now-Size'",
     requestBody: "RequestBody",
   });
 });

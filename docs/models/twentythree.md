@@ -7,19 +7,14 @@ The payload of the event, if requested.
 ```typescript
 import { TwentyThree } from "@vercel/sdk/models/userevent.js";
 
-let value: TwentyThree = {
-  appName: "<value>",
-  scopes: [
-    "offline_access",
-  ],
-};
+let value: TwentyThree = {};
 ```
 
 ## Fields
 
-| Field                                                | Type                                                 | Required                                             | Description                                          |
-| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
-| `appName`                                            | *string*                                             | :heavy_check_mark:                                   | N/A                                                  |
-| `appId`                                              | *string*                                             | :heavy_minus_sign:                                   | N/A                                                  |
-| `scopes`                                             | [models.PayloadScopes](../models/payloadscopes.md)[] | :heavy_check_mark:                                   | N/A                                                  |
-| `permissions`                                        | [models.Permissions](../models/permissions.md)[]     | :heavy_minus_sign:                                   | N/A                                                  |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `alias`            | *string*           | :heavy_minus_sign: | N/A                |
+| `aliasId`          | *string*           | :heavy_minus_sign: | N/A                |
+| `userId`           | *string*           | :heavy_minus_sign: | N/A                |
+| `username`         | *string*           | :heavy_minus_sign: | N/A                |

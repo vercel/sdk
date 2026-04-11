@@ -8,6 +8,7 @@ The payload of the event, if requested.
 import { SixtyThree } from "@vercel/sdk/models/payloadoldteam.js";
 
 let value: SixtyThree = {
+  status: "<value>",
   suffix: "<value>",
 };
 ```
@@ -16,4 +17,5 @@ let value: SixtyThree = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
+| `status`           | *string*           | :heavy_check_mark: | N/A                |
 | `suffix`           | *string*           | :heavy_check_mark: | N/A                |

@@ -12,13 +12,13 @@ import (
 
 type UploadFileRequest struct {
 	// The file size in bytes
-	ContentLength *float64 `header:"style=simple,explode=false,name=Content-Length"`
+	ContentLength *float64 `header:"style=simple,explode=false,name='content-Length'"`
 	// The file SHA1 used to check the integrity
-	XVercelDigest *string `header:"style=simple,explode=false,name=x-vercel-digest"`
+	XVercelDigest *string `header:"style=simple,explode=false,name='x-Vercel-Digest'"`
 	// The file SHA1 used to check the integrity
-	XNowDigest *string `header:"style=simple,explode=false,name=x-now-digest"`
+	XNowDigest *string `header:"style=simple,explode=false,name='x-Now-Digest'"`
 	// The file size as an alternative to `Content-Length`
-	XNowSize *float64 `header:"style=simple,explode=false,name=x-now-size"`
+	XNowSize *float64 `header:"style=simple,explode=false,name='x-Now-Size'"`
 	// The Team identifier to perform the request on behalf of.
 	TeamID *string `queryParam:"style=form,explode=true,name=teamId"`
 	// The Team slug to perform the request on behalf of.

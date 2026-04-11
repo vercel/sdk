@@ -7,11 +7,15 @@ The payload of the event, if requested.
 ```typescript
 import { ThirtyTwo } from "@vercel/sdk/models/userevent.js";
 
-let value: ThirtyTwo = {};
+let value: ThirtyTwo = {
+  projectName: "<value>",
+  autoExposeSystemEnvs: true,
+};
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `avatar`           | *string*           | :heavy_minus_sign: | N/A                |
+| Field                  | Type                   | Required               | Description            |
+| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
+| `projectName`          | *string*               | :heavy_check_mark:     | N/A                    |
+| `autoExposeSystemEnvs` | *boolean*              | :heavy_check_mark:     | N/A                    |

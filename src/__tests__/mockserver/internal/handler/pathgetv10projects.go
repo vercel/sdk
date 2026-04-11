@@ -7,7 +7,6 @@ import (
 	"log"
 	"mockserver/internal/handler/assert"
 	"mockserver/internal/logging"
-	"mockserver/internal/sdk/models/components"
 	"mockserver/internal/sdk/models/operations"
 	"mockserver/internal/sdk/optionalnullable"
 	"mockserver/internal/sdk/types"
@@ -48,44 +47,13 @@ func testGetProjectsGetProjects0(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	var respBody optionalnullable.OptionalNullable[operations.GetProjectsResponseBody] = optionalnullable.From(types.Pointer(operations.CreateGetProjectsResponseBodyGetProjectsResponseBody2(
-		operations.GetProjectsResponseBody2{
-			Projects: []operations.GetProjectsProject1{
-				operations.GetProjectsProject1{
-					AccountID:            "<id>",
-					Alias:                []operations.ProjectAlias{},
-					DirectoryListing:     true,
-					DeploymentExpiration: operations.GetProjectsProjectDeploymentExpiration1{},
-					ID:                   "<id>",
-					Name:                 "<value>",
-					NodeVersion:          operations.GetProjectsProjectNodeVersion1TwentyFourDotX,
-					ResourceConfig: operations.GetProjectsProjectResourceConfig1{
-						FunctionDefaultRegions: []string{
-							"<value 1>",
-							"<value 2>",
-							"<value 3>",
-						},
-					},
-					RollingRelease: optionalnullable.From(&operations.GetProjectsProjectRollingRelease1{
-						Target: "production",
-						Stages: optionalnullable.From(types.Pointer([]operations.GetProjectsProjectStage1{
-							operations.GetProjectsProjectStage1{
-								TargetPercentage: 25,
-								RequireApproval:  types.Bool(false),
-								Duration:         types.Float64(600),
-								LinearShift:      types.Bool(false),
-							},
-						})),
-						CanaryResponseHeader: types.Bool(false),
-					}),
-					ServerlessFunctionRegion: "<value>",
-				},
-			},
-			Pagination: operations.CreatePaginationUnion1Pagination(
-				components.Pagination{
+	var respBody optionalnullable.OptionalNullable[operations.GetProjectsResponseBody] = optionalnullable.From(types.Pointer(operations.CreateGetProjectsResponseBodyGetProjectsResponseBody3(
+		operations.GetProjectsResponseBody3{
+			Projects: []operations.GetProjectsProject2{},
+			Pagination: operations.CreatePaginationUnion2GetProjectsPagination2(
+				operations.GetProjectsPagination2{
 					Count: 20,
-					Next:  types.Float64(1540095775951),
-					Prev:  types.Float64(1540095775951),
+					Next:  types.String("JBSWY3DPEHPK3PXP"),
 				},
 			),
 		},

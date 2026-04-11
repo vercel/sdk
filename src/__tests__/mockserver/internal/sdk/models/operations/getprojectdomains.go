@@ -38,7 +38,7 @@ func (e *Production) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// GetProjectDomainsTarget - Filters on the target of the domain. Can be either \"production\", \"preview\"
+// GetProjectDomainsTarget - Filters on the target of the domain. Can be either "production", "preview"
 type GetProjectDomainsTarget string
 
 const (
@@ -65,7 +65,7 @@ func (e *GetProjectDomainsTarget) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// Redirects - Excludes redirect project domains when \"false\". Includes redirect project domains when \"true\" (default).
+// Redirects - Excludes redirect project domains when "false". Includes redirect project domains when "true" (default).
 type Redirects string
 
 const (
@@ -151,13 +151,13 @@ type GetProjectDomainsRequest struct {
 	IDOrName string `pathParam:"style=simple,explode=false,name=idOrName"`
 	// Filters only production domains when set to `true`.
 	Production *Production `default:"false" queryParam:"style=form,explode=true,name=production"`
-	// Filters on the target of the domain. Can be either \"production\", \"preview\"
+	// Filters on the target of the domain. Can be either "production", "preview"
 	Target *GetProjectDomainsTarget `queryParam:"style=form,explode=true,name=target"`
 	// The unique custom environment identifier within the project
 	CustomEnvironmentID *string `queryParam:"style=form,explode=true,name=customEnvironmentId"`
 	// Filters domains based on specific branch.
 	GitBranch *string `queryParam:"style=form,explode=true,name=gitBranch"`
-	// Excludes redirect project domains when \"false\". Includes redirect project domains when \"true\" (default).
+	// Excludes redirect project domains when "false". Includes redirect project domains when "true" (default).
 	Redirects *Redirects `default:"true" queryParam:"style=form,explode=true,name=redirects"`
 	// Filters domains based on their redirect target.
 	Redirect *string `queryParam:"style=form,explode=true,name=redirect"`

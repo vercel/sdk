@@ -219,6 +219,10 @@ export type UpdateProjectSecurity = {
   logHeaders?: Array<string> | UpdateProjectLogHeaders2 | undefined;
   securityPlus?: boolean | undefined;
   securityPlusMetadata?: UpdateProjectSecurityPlusMetadata | undefined;
+  /**
+   * Whether Page Integrity is enabled for this project. Used by the metadata service to gate DynamoDB lookups against the page-integrity-inventory table.
+   */
+  pageIntegrityEnabled?: boolean | undefined;
 };
 
 /**
@@ -1000,6 +1004,7 @@ export const UpdateProjectSecurity$inboundSchema: z.ZodType<
   securityPlusMetadata: types.optional(
     z.lazy(() => UpdateProjectSecurityPlusMetadata$inboundSchema),
   ),
+  pageIntegrityEnabled: types.optional(types.boolean()),
 }).transform((v) => {
   return remap$(v, {
     "log_headers": "logHeaders",
@@ -1022,6 +1027,7 @@ export type UpdateProjectSecurity$Outbound = {
   log_headers?: Array<string> | string | undefined;
   securityPlus?: boolean | undefined;
   securityPlusMetadata?: UpdateProjectSecurityPlusMetadata$Outbound | undefined;
+  pageIntegrityEnabled?: boolean | undefined;
 };
 
 /** @internal */
@@ -1052,6 +1058,7 @@ export const UpdateProjectSecurity$outboundSchema: z.ZodType<
   securityPlusMetadata: z.lazy(() =>
     UpdateProjectSecurityPlusMetadata$outboundSchema
   ).optional(),
+  pageIntegrityEnabled: z.boolean().optional(),
 }).transform((v) => {
   return remap$(v, {
     logHeaders: "log_headers",

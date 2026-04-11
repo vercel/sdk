@@ -57,8 +57,8 @@ export type GetRedirectsResponseBodyRedirects = {
   caseSensitive?: boolean | undefined;
   query?: boolean | undefined;
   preserveQueryParams?: boolean | undefined;
-  source: string;
   destination: string;
+  source: string;
 };
 
 export type GetRedirectsResponseBodyVersion = {
@@ -146,8 +146,8 @@ export type ResponseBodyRedirects = {
   caseSensitive?: boolean | undefined;
   query?: boolean | undefined;
   preserveQueryParams?: boolean | undefined;
-  source: string;
   destination: string;
+  source: string;
 };
 
 export type GetRedirectsResponseBodyPagination = {
@@ -303,8 +303,8 @@ export const GetRedirectsResponseBodyRedirects$inboundSchema: z.ZodType<
   caseSensitive: types.optional(types.boolean()),
   query: types.optional(types.boolean()),
   preserveQueryParams: types.optional(types.boolean()),
-  source: types.string(),
   destination: types.string(),
+  source: types.string(),
 });
 /** @internal */
 export type GetRedirectsResponseBodyRedirects$Outbound = {
@@ -314,8 +314,8 @@ export type GetRedirectsResponseBodyRedirects$Outbound = {
   caseSensitive?: boolean | undefined;
   query?: boolean | undefined;
   preserveQueryParams?: boolean | undefined;
-  source: string;
   destination: string;
+  source: string;
 };
 
 /** @internal */
@@ -330,8 +330,8 @@ export const GetRedirectsResponseBodyRedirects$outboundSchema: z.ZodType<
   caseSensitive: z.boolean().optional(),
   query: z.boolean().optional(),
   preserveQueryParams: z.boolean().optional(),
-  source: z.string(),
   destination: z.string(),
+  source: z.string(),
 });
 
 export function getRedirectsResponseBodyRedirectsToJSON(
@@ -609,8 +609,8 @@ export const ResponseBodyRedirects$inboundSchema: z.ZodType<
   caseSensitive: types.optional(types.boolean()),
   query: types.optional(types.boolean()),
   preserveQueryParams: types.optional(types.boolean()),
-  source: types.string(),
   destination: types.string(),
+  source: types.string(),
 });
 /** @internal */
 export type ResponseBodyRedirects$Outbound = {
@@ -620,8 +620,8 @@ export type ResponseBodyRedirects$Outbound = {
   caseSensitive?: boolean | undefined;
   query?: boolean | undefined;
   preserveQueryParams?: boolean | undefined;
-  source: string;
   destination: string;
+  source: string;
 };
 
 /** @internal */
@@ -636,8 +636,8 @@ export const ResponseBodyRedirects$outboundSchema: z.ZodType<
   caseSensitive: z.boolean().optional(),
   query: z.boolean().optional(),
   preserveQueryParams: z.boolean().optional(),
-  source: z.string(),
   destination: z.string(),
+  source: z.string(),
 });
 
 export function responseBodyRedirectsToJSON(

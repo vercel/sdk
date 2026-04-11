@@ -32,11 +32,11 @@ type GetInvoiceState string
 
 const (
 	GetInvoiceStatePending         GetInvoiceState = "pending"
-	GetInvoiceStatePaid            GetInvoiceState = "paid"
-	GetInvoiceStateNotpaid         GetInvoiceState = "notpaid"
 	GetInvoiceStateDraft           GetInvoiceState = "draft"
 	GetInvoiceStateScheduled       GetInvoiceState = "scheduled"
 	GetInvoiceStateInvoiced        GetInvoiceState = "invoiced"
+	GetInvoiceStatePaid            GetInvoiceState = "paid"
+	GetInvoiceStateNotpaid         GetInvoiceState = "notpaid"
 	GetInvoiceStateOverdue         GetInvoiceState = "overdue"
 	GetInvoiceStateRefundRequested GetInvoiceState = "refund_requested"
 	GetInvoiceStateRefunded        GetInvoiceState = "refunded"
@@ -53,15 +53,15 @@ func (e *GetInvoiceState) UnmarshalJSON(data []byte) error {
 	switch v {
 	case "pending":
 		fallthrough
-	case "paid":
-		fallthrough
-	case "notpaid":
-		fallthrough
 	case "draft":
 		fallthrough
 	case "scheduled":
 		fallthrough
 	case "invoiced":
+		fallthrough
+	case "paid":
+		fallthrough
+	case "notpaid":
 		fallthrough
 	case "overdue":
 		fallthrough

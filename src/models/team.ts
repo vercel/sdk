@@ -410,6 +410,14 @@ export type StrictDeploymentProtectionSettings = {
   updatedAt: number;
 };
 
+/**
+ * When enabled, creating shareable links requires Owner role.
+ */
+export type StrictShareableLinks = {
+  enabled: boolean;
+  updatedAt: number;
+};
+
 export const Preference = {
   AutoApproval: "auto-approval",
   ManualApproval: "manual-approval",
@@ -616,6 +624,10 @@ export type Team = {
   strictDeploymentProtectionSettings?:
     | StrictDeploymentProtectionSettings
     | undefined;
+  /**
+   * When enabled, creating shareable links requires Owner role.
+   */
+  strictShareableLinks?: StrictShareableLinks | undefined;
   /**
    * NSNB configuration for the team.
    */
@@ -1577,6 +1589,48 @@ export function strictDeploymentProtectionSettingsFromJSON(
 }
 
 /** @internal */
+export const StrictShareableLinks$inboundSchema: z.ZodType<
+  StrictShareableLinks,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  enabled: types.boolean(),
+  updatedAt: types.number(),
+});
+/** @internal */
+export type StrictShareableLinks$Outbound = {
+  enabled: boolean;
+  updatedAt: number;
+};
+
+/** @internal */
+export const StrictShareableLinks$outboundSchema: z.ZodType<
+  StrictShareableLinks$Outbound,
+  z.ZodTypeDef,
+  StrictShareableLinks
+> = z.object({
+  enabled: z.boolean(),
+  updatedAt: z.number(),
+});
+
+export function strictShareableLinksToJSON(
+  strictShareableLinks: StrictShareableLinks,
+): string {
+  return JSON.stringify(
+    StrictShareableLinks$outboundSchema.parse(strictShareableLinks),
+  );
+}
+export function strictShareableLinksFromJSON(
+  jsonString: string,
+): SafeParseResult<StrictShareableLinks, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => StrictShareableLinks$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'StrictShareableLinks' from JSON`,
+  );
+}
+
+/** @internal */
 export const Preference$inboundSchema: z.ZodNativeEnum<typeof Preference> = z
   .nativeEnum(Preference);
 /** @internal */
@@ -1894,6 +1948,9 @@ export const Team$inboundSchema: z.ZodType<Team, z.ZodTypeDef, unknown> =
       strictDeploymentProtectionSettings: types.optional(
         z.lazy(() => StrictDeploymentProtectionSettings$inboundSchema),
       ),
+      strictShareableLinks: types.optional(
+        z.lazy(() => StrictShareableLinks$inboundSchema),
+      ),
       nsnbConfig: types.optional(z.lazy(() => NsnbConfig$inboundSchema)),
       id: types.string(),
       slug: types.string(),
@@ -1935,6 +1992,7 @@ export type Team$Outbound = {
   strictDeploymentProtectionSettings?:
     | StrictDeploymentProtectionSettings$Outbound
     | undefined;
+  strictShareableLinks?: StrictShareableLinks$Outbound | undefined;
   nsnbConfig?: NsnbConfig$Outbound | undefined;
   id: string;
   slug: string;
@@ -1984,6 +2042,8 @@ export const Team$outboundSchema: z.ZodType<Team$Outbound, z.ZodTypeDef, Team> =
     strictDeploymentProtectionSettings: z.lazy(() =>
       StrictDeploymentProtectionSettings$outboundSchema
     ).optional(),
+    strictShareableLinks: z.lazy(() => StrictShareableLinks$outboundSchema)
+      .optional(),
     nsnbConfig: z.lazy(() => NsnbConfig$outboundSchema).optional(),
     id: z.string(),
     slug: z.string(),

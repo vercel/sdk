@@ -8,8 +8,9 @@ The payload of the event, if requested.
 import { OneHundredAndThirtyThree } from "@vercel/sdk/models/payloaddefaultpurchasetype.js";
 
 let value: OneHundredAndThirtyThree = {
-  oldName: "<value>",
-  newName: "<value>",
+  ownerId: "<id>",
+  source: "<value>",
+  cause: "<value>",
 };
 ```
 
@@ -17,5 +18,6 @@ let value: OneHundredAndThirtyThree = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `oldName`          | *string*           | :heavy_check_mark: | N/A                |
-| `newName`          | *string*           | :heavy_check_mark: | N/A                |
+| `ownerId`          | *string*           | :heavy_check_mark: | N/A                |
+| `source`           | *string*           | :heavy_check_mark: | N/A                |
+| `cause`            | *string*           | :heavy_check_mark: | N/A                |

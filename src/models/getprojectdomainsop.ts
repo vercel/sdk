@@ -29,26 +29,26 @@ export const Production = {
 export type Production = ClosedEnum<typeof Production>;
 
 /**
- * Filters on the target of the domain. Can be either \"production\", \"preview\"
+ * Filters on the target of the domain. Can be either "production", "preview"
  */
 export const QueryParamTarget = {
   Production: "production",
   Preview: "preview",
 } as const;
 /**
- * Filters on the target of the domain. Can be either \"production\", \"preview\"
+ * Filters on the target of the domain. Can be either "production", "preview"
  */
 export type QueryParamTarget = ClosedEnum<typeof QueryParamTarget>;
 
 /**
- * Excludes redirect project domains when \"false\". Includes redirect project domains when \"true\" (default).
+ * Excludes redirect project domains when "false". Includes redirect project domains when "true" (default).
  */
 export const QueryParamRedirects = {
   True: "true",
   False: "false",
 } as const;
 /**
- * Excludes redirect project domains when \"false\". Includes redirect project domains when \"true\" (default).
+ * Excludes redirect project domains when "false". Includes redirect project domains when "true" (default).
  */
 export type QueryParamRedirects = ClosedEnum<typeof QueryParamRedirects>;
 
@@ -86,7 +86,7 @@ export type GetProjectDomainsRequest = {
    */
   production?: Production | undefined;
   /**
-   * Filters on the target of the domain. Can be either \"production\", \"preview\"
+   * Filters on the target of the domain. Can be either "production", "preview"
    */
   target?: QueryParamTarget | undefined;
   /**
@@ -98,7 +98,7 @@ export type GetProjectDomainsRequest = {
    */
   gitBranch?: string | undefined;
   /**
-   * Excludes redirect project domains when \"false\". Includes redirect project domains when \"true\" (default).
+   * Excludes redirect project domains when "false". Includes redirect project domains when "true" (default).
    */
   redirects?: QueryParamRedirects | undefined;
   /**

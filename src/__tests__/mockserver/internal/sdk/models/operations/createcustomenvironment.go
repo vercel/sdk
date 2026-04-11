@@ -9,7 +9,7 @@ import (
 	"mockserver/internal/sdk/optionalnullable"
 )
 
-// CreateCustomEnvironmentTypeRequest - Type of matcher. One of \"equals\", \"startsWith\", or \"endsWith\".
+// CreateCustomEnvironmentTypeRequest - Type of matcher. One of "equals", "startsWith", or "endsWith".
 type CreateCustomEnvironmentTypeRequest string
 
 const (
@@ -41,7 +41,7 @@ func (e *CreateCustomEnvironmentTypeRequest) UnmarshalJSON(data []byte) error {
 
 // CreateCustomEnvironmentBranchMatcherRequest - How we want to determine a matching branch. This is optional.
 type CreateCustomEnvironmentBranchMatcherRequest struct {
-	// Type of matcher. One of \"equals\", \"startsWith\", or \"endsWith\".
+	// Type of matcher. One of "equals", "startsWith", or "endsWith".
 	Type CreateCustomEnvironmentTypeRequest `json:"type"`
 	// Git branch name or portion thereof.
 	Pattern string `json:"pattern"`

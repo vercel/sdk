@@ -1,6 +1,6 @@
 # Position
 
-Controls where the route is inserted. Defaults to \"end\" if omitted.
+Controls where the route is inserted. Defaults to "end" if omitted.
 
 ## Example Usage
 
@@ -12,7 +12,7 @@ let value: Position = {};
 
 ## Fields
 
-| Field                                                               | Type                                                                | Required                                                            | Description                                                         |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `placement`                                                         | [models.Placement](../models/placement.md)                          | :heavy_minus_sign:                                                  | \"after\"/\"before\" require referenceId.                           |
-| `referenceId`                                                       | *string*                                                            | :heavy_minus_sign:                                                  | Route ID to insert after/before. Required for \"after\"/\"before\". |
+| Field                                                           | Type                                                            | Required                                                        | Description                                                     |
+| --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
+| `placement`                                                     | [models.Placement](../models/placement.md)                      | :heavy_minus_sign:                                              | "after"/"before" require referenceId.                           |
+| `referenceId`                                                   | *string*                                                        | :heavy_minus_sign:                                              | Route ID to insert after/before. Required for "after"/"before". |

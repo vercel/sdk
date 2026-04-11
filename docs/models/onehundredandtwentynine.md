@@ -8,18 +8,12 @@ The payload of the event, if requested.
 import { OneHundredAndTwentyNine } from "@vercel/sdk/models/payloaddefaultpurchasetype.js";
 
 let value: OneHundredAndTwentyNine = {
-  ownerId: "<id>",
-  source: "<value>",
-  cause: "<value>",
+  projectName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                      | Type                                       | Required                                   | Description                                |
-| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `ownerId`                                  | *string*                                   | :heavy_check_mark:                         | N/A                                        |
-| `source`                                   | *string*                                   | :heavy_check_mark:                         | N/A                                        |
-| `cause`                                    | *string*                                   | :heavy_check_mark:                         | N/A                                        |
-| `blockReason`                              | *string*                                   | :heavy_minus_sign:                         | N/A                                        |
-| `siftRoute`                                | [models.SiftRoute](../models/siftroute.md) | :heavy_minus_sign:                         | N/A                                        |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `projectName`      | *string*           | :heavy_check_mark: | N/A                |

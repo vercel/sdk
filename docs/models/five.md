@@ -8,7 +8,7 @@ The payload of the event, if requested.
 import { Five } from "@vercel/sdk/models/userevent.js";
 
 let value: Five = {
-  accessGroup: {
+  apiKey: {
     id: "<id>",
     name: "<value>",
   },
@@ -17,9 +17,6 @@ let value: Five = {
 
 ## Fields
 
-| Field                                          | Type                                           | Required                                       | Description                                    |
-| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| `accessGroup`                                  | [models.AccessGroup](../models/accessgroup.md) | :heavy_check_mark:                             | N/A                                            |
-| `teamRoles`                                    | *string*[]                                     | :heavy_minus_sign:                             | N/A                                            |
-| `teamPermissions`                              | *string*[]                                     | :heavy_minus_sign:                             | N/A                                            |
-| `entitlements`                                 | *string*[]                                     | :heavy_minus_sign:                             | N/A                                            |
+| Field                                | Type                                 | Required                             | Description                          |
+| ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
+| `apiKey`                             | [models.ApiKey](../models/apikey.md) | :heavy_check_mark:                   | N/A                                  |

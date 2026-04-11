@@ -6463,8 +6463,8 @@ func (o *NewOwner) GetIsEnterpriseManaged() *bool {
 	return o.IsEnterpriseManaged
 }
 
-// Payload110 - The payload of the event, if requested.
-type Payload110 struct {
+// Payload111 - The payload of the event, if requested.
+type Payload111 struct {
 	UserID          string    `json:"userId"`
 	IntegrationID   string    `json:"integrationId"`
 	ConfigurationID string    `json:"configurationId"`
@@ -6473,61 +6473,61 @@ type Payload110 struct {
 	NewOwner        *NewOwner `json:"newOwner"`
 }
 
-func (p Payload110) MarshalJSON() ([]byte, error) {
+func (p Payload111) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(p, "", false)
 }
 
-func (p *Payload110) UnmarshalJSON(data []byte) error {
+func (p *Payload111) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"userId", "integrationId", "configurationId", "integrationSlug", "newOwner"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *Payload110) GetUserID() string {
+func (o *Payload111) GetUserID() string {
 	if o == nil {
 		return ""
 	}
 	return o.UserID
 }
 
-func (o *Payload110) GetIntegrationID() string {
+func (o *Payload111) GetIntegrationID() string {
 	if o == nil {
 		return ""
 	}
 	return o.IntegrationID
 }
 
-func (o *Payload110) GetConfigurationID() string {
+func (o *Payload111) GetConfigurationID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ConfigurationID
 }
 
-func (o *Payload110) GetIntegrationSlug() string {
+func (o *Payload111) GetIntegrationSlug() string {
 	if o == nil {
 		return ""
 	}
 	return o.IntegrationSlug
 }
 
-func (o *Payload110) GetIntegrationName() *string {
+func (o *Payload111) GetIntegrationName() *string {
 	if o == nil {
 		return nil
 	}
 	return o.IntegrationName
 }
 
-func (o *Payload110) GetNewOwner() *NewOwner {
+func (o *Payload111) GetNewOwner() *NewOwner {
 	if o == nil {
 		return nil
 	}
 	return o.NewOwner
 }
 
-// Payload109 - The payload of the event, if requested.
-type Payload109 struct {
+// Payload110 - The payload of the event, if requested.
+type Payload110 struct {
 	ProjectID        string  `json:"projectId"`
 	FromDeploymentID string  `json:"fromDeploymentId"`
 	ToDeploymentID   string  `json:"toDeploymentId"`
@@ -6535,46 +6535,46 @@ type Payload109 struct {
 	Reason           *string `json:"reason,omitempty"`
 }
 
-func (p Payload109) MarshalJSON() ([]byte, error) {
+func (p Payload110) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(p, "", false)
 }
 
-func (p *Payload109) UnmarshalJSON(data []byte) error {
+func (p *Payload110) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"projectId", "fromDeploymentId", "toDeploymentId", "projectName"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *Payload109) GetProjectID() string {
+func (o *Payload110) GetProjectID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ProjectID
 }
 
-func (o *Payload109) GetFromDeploymentID() string {
+func (o *Payload110) GetFromDeploymentID() string {
 	if o == nil {
 		return ""
 	}
 	return o.FromDeploymentID
 }
 
-func (o *Payload109) GetToDeploymentID() string {
+func (o *Payload110) GetToDeploymentID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ToDeploymentID
 }
 
-func (o *Payload109) GetProjectName() string {
+func (o *Payload110) GetProjectName() string {
 	if o == nil {
 		return ""
 	}
 	return o.ProjectName
 }
 
-func (o *Payload109) GetReason() *string {
+func (o *Payload110) GetReason() *string {
 	if o == nil {
 		return nil
 	}
@@ -6607,23 +6607,23 @@ func (e *Action5) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// Payload108 - The payload of the event, if requested.
-type Payload108 struct {
+// Payload109 - The payload of the event, if requested.
+type Payload109 struct {
 	Action Action5 `json:"action"`
 }
 
-func (p Payload108) MarshalJSON() ([]byte, error) {
+func (p Payload109) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(p, "", false)
 }
 
-func (p *Payload108) UnmarshalJSON(data []byte) error {
+func (p *Payload109) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"action"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *Payload108) GetAction() Action5 {
+func (o *Payload109) GetAction() Action5 {
 	if o == nil {
 		return Action5("")
 	}
@@ -6659,47 +6659,47 @@ func (e *Action4) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// Payload107 - The payload of the event, if requested.
-type Payload107 struct {
+// Payload108 - The payload of the event, if requested.
+type Payload108 struct {
 	ProjectID   string   `json:"projectId"`
 	RulesetName string   `json:"rulesetName"`
 	Active      bool     `json:"active"`
 	Action      *Action4 `json:"action,omitempty"`
 }
 
-func (p Payload107) MarshalJSON() ([]byte, error) {
+func (p Payload108) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(p, "", false)
 }
 
-func (p *Payload107) UnmarshalJSON(data []byte) error {
+func (p *Payload108) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"projectId", "rulesetName", "active"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *Payload107) GetProjectID() string {
+func (o *Payload108) GetProjectID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ProjectID
 }
 
-func (o *Payload107) GetRulesetName() string {
+func (o *Payload108) GetRulesetName() string {
 	if o == nil {
 		return ""
 	}
 	return o.RulesetName
 }
 
-func (o *Payload107) GetActive() bool {
+func (o *Payload108) GetActive() bool {
 	if o == nil {
 		return false
 	}
 	return o.Active
 }
 
-func (o *Payload107) GetAction() *Action4 {
+func (o *Payload108) GetAction() *Action4 {
 	if o == nil {
 		return nil
 	}
@@ -6765,39 +6765,39 @@ func (o *RuleGroups) GetAction() *RuleGroupsAction {
 	return o.Action
 }
 
-// Payload106 - The payload of the event, if requested.
-type Payload106 struct {
+// Payload107 - The payload of the event, if requested.
+type Payload107 struct {
 	ProjectID   string                `json:"projectId"`
 	RulesetName string                `json:"rulesetName"`
 	RuleGroups  map[string]RuleGroups `json:"ruleGroups"`
 }
 
-func (p Payload106) MarshalJSON() ([]byte, error) {
+func (p Payload107) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(p, "", false)
 }
 
-func (p *Payload106) UnmarshalJSON(data []byte) error {
+func (p *Payload107) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"projectId", "rulesetName", "ruleGroups"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *Payload106) GetProjectID() string {
+func (o *Payload107) GetProjectID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ProjectID
 }
 
-func (o *Payload106) GetRulesetName() string {
+func (o *Payload107) GetRulesetName() string {
 	if o == nil {
 		return ""
 	}
 	return o.RulesetName
 }
 
-func (o *Payload106) GetRuleGroups() map[string]RuleGroups {
+func (o *Payload107) GetRuleGroups() map[string]RuleGroups {
 	if o == nil {
 		return map[string]RuleGroups{}
 	}
@@ -6818,8 +6818,8 @@ func (c *ConfigChange) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-// Payload105 - The payload of the event, if requested.
-type Payload105 struct {
+// Payload106 - The payload of the event, if requested.
+type Payload106 struct {
 	ProjectID         string         `json:"projectId"`
 	ProjectName       *string        `json:"projectName,omitempty"`
 	Restore           bool           `json:"restore"`
@@ -6828,53 +6828,53 @@ type Payload105 struct {
 	ConfigChanges     []ConfigChange `json:"configChanges"`
 }
 
-func (p Payload105) MarshalJSON() ([]byte, error) {
+func (p Payload106) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(p, "", false)
 }
 
-func (p *Payload105) UnmarshalJSON(data []byte) error {
+func (p *Payload106) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"projectId", "restore", "configVersion", "configChangeCount", "configChanges"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *Payload105) GetProjectID() string {
+func (o *Payload106) GetProjectID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ProjectID
 }
 
-func (o *Payload105) GetProjectName() *string {
+func (o *Payload106) GetProjectName() *string {
 	if o == nil {
 		return nil
 	}
 	return o.ProjectName
 }
 
-func (o *Payload105) GetRestore() bool {
+func (o *Payload106) GetRestore() bool {
 	if o == nil {
 		return false
 	}
 	return o.Restore
 }
 
-func (o *Payload105) GetConfigVersion() float64 {
+func (o *Payload106) GetConfigVersion() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.ConfigVersion
 }
 
-func (o *Payload105) GetConfigChangeCount() float64 {
+func (o *Payload106) GetConfigChangeCount() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.ConfigChangeCount
 }
 
-func (o *Payload105) GetConfigChanges() []ConfigChange {
+func (o *Payload106) GetConfigChanges() []ConfigChange {
 	if o == nil {
 		return []ConfigChange{}
 	}
@@ -6944,11 +6944,50 @@ func (u ConfigVersion) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type ConfigVersion: all fields are null")
 }
 
-// Payload104 - The payload of the event, if requested.
-type Payload104 struct {
+// Payload105 - The payload of the event, if requested.
+type Payload105 struct {
 	ProjectID     string        `json:"projectId"`
 	ProjectName   string        `json:"projectName"`
 	ConfigVersion ConfigVersion `json:"configVersion"`
+}
+
+func (p Payload105) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload105) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"projectId", "projectName", "configVersion"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *Payload105) GetProjectID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProjectID
+}
+
+func (o *Payload105) GetProjectName() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProjectName
+}
+
+func (o *Payload105) GetConfigVersion() ConfigVersion {
+	if o == nil {
+		return ConfigVersion{}
+	}
+	return o.ConfigVersion
+}
+
+// Payload104 - The payload of the event, if requested.
+type Payload104 struct {
+	ProjectID string `json:"projectId"`
+	Scope     string `json:"scope"`
+	Source    string `json:"source"`
 }
 
 func (p Payload104) MarshalJSON() ([]byte, error) {
@@ -6956,7 +6995,7 @@ func (p Payload104) MarshalJSON() ([]byte, error) {
 }
 
 func (p *Payload104) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"projectId", "projectName", "configVersion"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"projectId", "scope", "source"}); err != nil {
 		return err
 	}
 	return nil
@@ -6969,25 +7008,26 @@ func (o *Payload104) GetProjectID() string {
 	return o.ProjectID
 }
 
-func (o *Payload104) GetProjectName() string {
+func (o *Payload104) GetScope() string {
 	if o == nil {
 		return ""
 	}
-	return o.ProjectName
+	return o.Scope
 }
 
-func (o *Payload104) GetConfigVersion() ConfigVersion {
+func (o *Payload104) GetSource() string {
 	if o == nil {
-		return ConfigVersion{}
+		return ""
 	}
-	return o.ConfigVersion
+	return o.Source
 }
 
 // Payload103 - The payload of the event, if requested.
 type Payload103 struct {
-	ProjectID string `json:"projectId"`
-	Scope     string `json:"scope"`
-	Source    string `json:"source"`
+	ProjectID string                                     `json:"projectId"`
+	Scope     string                                     `json:"scope"`
+	Source    string                                     `json:"source"`
+	ExpiresAt optionalnullable.OptionalNullable[float64] `json:"expiresAt,omitempty"`
 }
 
 func (p Payload103) MarshalJSON() ([]byte, error) {
@@ -7022,47 +7062,7 @@ func (o *Payload103) GetSource() string {
 	return o.Source
 }
 
-// Payload102 - The payload of the event, if requested.
-type Payload102 struct {
-	ProjectID string                                     `json:"projectId"`
-	Scope     string                                     `json:"scope"`
-	Source    string                                     `json:"source"`
-	ExpiresAt optionalnullable.OptionalNullable[float64] `json:"expiresAt,omitempty"`
-}
-
-func (p Payload102) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *Payload102) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"projectId", "scope", "source"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *Payload102) GetProjectID() string {
-	if o == nil {
-		return ""
-	}
-	return o.ProjectID
-}
-
-func (o *Payload102) GetScope() string {
-	if o == nil {
-		return ""
-	}
-	return o.Scope
-}
-
-func (o *Payload102) GetSource() string {
-	if o == nil {
-		return ""
-	}
-	return o.Source
-}
-
-func (o *Payload102) GetExpiresAt() optionalnullable.OptionalNullable[float64] {
+func (o *Payload103) GetExpiresAt() optionalnullable.OptionalNullable[float64] {
 	if o == nil {
 		return nil
 	}
@@ -7759,39 +7759,39 @@ func (o *UpdateDiff) GetChangedValue() bool {
 	return o.ChangedValue
 }
 
-// Payload101 - The payload of the event, if requested.
-type Payload101 struct {
+// Payload102 - The payload of the event, if requested.
+type Payload102 struct {
 	OldEnvVar  *OldEnvVar  `json:"oldEnvVar,omitempty"`
 	NewEnvVar  *NewEnvVar  `json:"newEnvVar,omitempty"`
 	UpdateDiff *UpdateDiff `json:"updateDiff,omitempty"`
 }
 
-func (p Payload101) MarshalJSON() ([]byte, error) {
+func (p Payload102) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(p, "", false)
 }
 
-func (p *Payload101) UnmarshalJSON(data []byte) error {
+func (p *Payload102) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *Payload101) GetOldEnvVar() *OldEnvVar {
+func (o *Payload102) GetOldEnvVar() *OldEnvVar {
 	if o == nil {
 		return nil
 	}
 	return o.OldEnvVar
 }
 
-func (o *Payload101) GetNewEnvVar() *NewEnvVar {
+func (o *Payload102) GetNewEnvVar() *NewEnvVar {
 	if o == nil {
 		return nil
 	}
 	return o.NewEnvVar
 }
 
-func (o *Payload101) GetUpdateDiff() *UpdateDiff {
+func (o *Payload102) GetUpdateDiff() *UpdateDiff {
 	if o == nil {
 		return nil
 	}
@@ -7861,8 +7861,8 @@ func (e *TargetEnum) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// Payload100 - The payload of the event, if requested.
-type Payload100 struct {
+// Payload101 - The payload of the event, if requested.
+type Payload101 struct {
 	// The date when the Shared Env Var was created.
 	Created *time.Time `json:"created,omitempty"`
 	// The name of the Shared Env Var.
@@ -7902,144 +7902,144 @@ type Payload100 struct {
 	ProjectNames            []string `json:"projectNames,omitempty"`
 }
 
-func (p Payload100) MarshalJSON() ([]byte, error) {
+func (p Payload101) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(p, "", false)
 }
 
-func (p *Payload100) UnmarshalJSON(data []byte) error {
+func (p *Payload101) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *Payload100) GetCreated() *time.Time {
+func (o *Payload101) GetCreated() *time.Time {
 	if o == nil {
 		return nil
 	}
 	return o.Created
 }
 
-func (o *Payload100) GetKey() *string {
+func (o *Payload101) GetKey() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Key
 }
 
-func (o *Payload100) GetOwnerID() optionalnullable.OptionalNullable[string] {
+func (o *Payload101) GetOwnerID() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
 	return o.OwnerID
 }
 
-func (o *Payload100) GetID() *string {
+func (o *Payload101) GetID() *string {
 	if o == nil {
 		return nil
 	}
 	return o.ID
 }
 
-func (o *Payload100) GetCreatedBy() optionalnullable.OptionalNullable[string] {
+func (o *Payload101) GetCreatedBy() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
 	return o.CreatedBy
 }
 
-func (o *Payload100) GetDeletedBy() optionalnullable.OptionalNullable[string] {
+func (o *Payload101) GetDeletedBy() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
 	return o.DeletedBy
 }
 
-func (o *Payload100) GetUpdatedBy() optionalnullable.OptionalNullable[string] {
+func (o *Payload101) GetUpdatedBy() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
 	return o.UpdatedBy
 }
 
-func (o *Payload100) GetCreatedAt() *float64 {
+func (o *Payload101) GetCreatedAt() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.CreatedAt
 }
 
-func (o *Payload100) GetDeletedAt() *float64 {
+func (o *Payload101) GetDeletedAt() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.DeletedAt
 }
 
-func (o *Payload100) GetUpdatedAt() *float64 {
+func (o *Payload101) GetUpdatedAt() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.UpdatedAt
 }
 
-func (o *Payload100) GetValue() *string {
+func (o *Payload101) GetValue() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Value
 }
 
-func (o *Payload100) GetProjectID() []string {
+func (o *Payload101) GetProjectID() []string {
 	if o == nil {
 		return nil
 	}
 	return o.ProjectID
 }
 
-func (o *Payload100) GetType() *PayloadType1 {
+func (o *Payload101) GetType() *PayloadType1 {
 	if o == nil {
 		return nil
 	}
 	return o.Type
 }
 
-func (o *Payload100) GetTarget() []TargetEnum {
+func (o *Payload101) GetTarget() []TargetEnum {
 	if o == nil {
 		return nil
 	}
 	return o.Target
 }
 
-func (o *Payload100) GetApplyToAllCustomEnvironments() *bool {
+func (o *Payload101) GetApplyToAllCustomEnvironments() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.ApplyToAllCustomEnvironments
 }
 
-func (o *Payload100) GetDecrypted() *bool {
+func (o *Payload101) GetDecrypted() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.Decrypted
 }
 
-func (o *Payload100) GetComment() *string {
+func (o *Payload101) GetComment() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Comment
 }
 
-func (o *Payload100) GetLastEditedByDisplayName() *string {
+func (o *Payload101) GetLastEditedByDisplayName() *string {
 	if o == nil {
 		return nil
 	}
 	return o.LastEditedByDisplayName
 }
 
-func (o *Payload100) GetProjectNames() []string {
+func (o *Payload101) GetProjectNames() []string {
 	if o == nil {
 		return nil
 	}

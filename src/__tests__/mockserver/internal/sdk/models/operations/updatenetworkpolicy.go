@@ -8,7 +8,7 @@ import (
 	"mockserver/internal/sdk/models/components"
 )
 
-// UpdateNetworkPolicyMode - The network access policy mode. Use \"allow-all\" to permit all outbound traffic. Use \"deny-all\" to block all outbound traffic. Use \"custom\" to specify explicit allow/deny rules.
+// UpdateNetworkPolicyMode - The network access policy mode. Use "allow-all" to permit all outbound traffic. Use "deny-all" to block all outbound traffic. Use "custom" to specify explicit allow/deny rules.
 type UpdateNetworkPolicyMode string
 
 const (
@@ -44,11 +44,14 @@ func (e *UpdateNetworkPolicyMode) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// UpdateNetworkPolicyRequestBody - Network access policy for the sandbox.\n    Controls which external hosts the sandbox can communicate with.\n    Use \"allow-all\" mode to allow all traffic, \"deny-all\" to block all traffic or \"custom\" to provide specific rules.
+// UpdateNetworkPolicyRequestBody - Network access policy for the sandbox.
+//
+//	Controls which external hosts the sandbox can communicate with.
+//	Use "allow-all" mode to allow all traffic, "deny-all" to block all traffic or "custom" to provide specific rules.
 type UpdateNetworkPolicyRequestBody struct {
-	// The network access policy mode. Use \"allow-all\" to permit all outbound traffic. Use \"deny-all\" to block all outbound traffic. Use \"custom\" to specify explicit allow/deny rules.
+	// The network access policy mode. Use "allow-all" to permit all outbound traffic. Use "deny-all" to block all outbound traffic. Use "custom" to specify explicit allow/deny rules.
 	Mode UpdateNetworkPolicyMode `json:"mode"`
-	// List of domain names the sandbox is allowed to connect to. Only applies when mode is \"custom\". Supports wildcard patterns (e.g., \"*.example.com\" matches all subdomains).
+	// List of domain names the sandbox is allowed to connect to. Only applies when mode is "custom". Supports wildcard patterns (e.g., "*.example.com" matches all subdomains).
 	AllowedDomains []string `json:"allowedDomains,omitempty"`
 	// List of IP address ranges (in CIDR notation) the sandbox is allowed to connect to. Traffic to these addresses bypasses domain-based restrictions.
 	AllowedCIDRs []string `json:"allowedCIDRs,omitempty"`

@@ -7,12 +7,15 @@ The payload of the event, if requested.
 ```typescript
 import { FortyNine } from "@vercel/sdk/models/payloadoldteam.js";
 
-let value: FortyNine = {};
+let value: FortyNine = {
+  id: "<id>",
+};
 ```
 
 ## Fields
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
+| `id`               | *string*           | :heavy_check_mark: | N/A                |
 | `cn`               | *string*           | :heavy_minus_sign: | N/A                |
 | `cns`              | *string*[]         | :heavy_minus_sign: | N/A                |

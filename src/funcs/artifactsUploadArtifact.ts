@@ -110,39 +110,39 @@ async function $do(
   const headers = new Headers(compactMap({
     "Content-Type": "application/octet-stream",
     Accept: "application/json",
-    "Content-Length": encodeSimple(
-      "Content-Length",
-      payload["Content-Length"],
+    "'content-Length'": encodeSimple(
+      "'content-Length'",
+      payload["'content-Length'"],
       { explode: false, charEncoding: "none" },
     ),
-    "x-artifact-client-ci": encodeSimple(
-      "x-artifact-client-ci",
-      payload["x-artifact-client-ci"],
+    "'x-Artifact-Client-Ci'": encodeSimple(
+      "'x-Artifact-Client-Ci'",
+      payload["'x-Artifact-Client-Ci'"],
       { explode: false, charEncoding: "none" },
     ),
-    "x-artifact-client-interactive": encodeSimple(
-      "x-artifact-client-interactive",
-      payload["x-artifact-client-interactive"],
+    "'x-Artifact-Client-Interactive'": encodeSimple(
+      "'x-Artifact-Client-Interactive'",
+      payload["'x-Artifact-Client-Interactive'"],
       { explode: false, charEncoding: "none" },
     ),
-    "x-artifact-dirty-hash": encodeSimple(
-      "x-artifact-dirty-hash",
-      payload["x-artifact-dirty-hash"],
+    "'x-Artifact-Dirty-Hash'": encodeSimple(
+      "'x-Artifact-Dirty-Hash'",
+      payload["'x-Artifact-Dirty-Hash'"],
       { explode: false, charEncoding: "none" },
     ),
-    "x-artifact-duration": encodeSimple(
-      "x-artifact-duration",
-      payload["x-artifact-duration"],
+    "'x-Artifact-Duration'": encodeSimple(
+      "'x-Artifact-Duration'",
+      payload["'x-Artifact-Duration'"],
       { explode: false, charEncoding: "none" },
     ),
-    "x-artifact-sha": encodeSimple(
-      "x-artifact-sha",
-      payload["x-artifact-sha"],
+    "'x-Artifact-Sha'": encodeSimple(
+      "'x-Artifact-Sha'",
+      payload["'x-Artifact-Sha'"],
       { explode: false, charEncoding: "none" },
     ),
-    "x-artifact-tag": encodeSimple(
-      "x-artifact-tag",
-      payload["x-artifact-tag"],
+    "'x-Artifact-Tag'": encodeSimple(
+      "'x-Artifact-Tag'",
+      payload["'x-Artifact-Tag'"],
       { explode: false, charEncoding: "none" },
     ),
   }));

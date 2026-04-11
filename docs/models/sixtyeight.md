@@ -8,30 +8,23 @@ The payload of the event, if requested.
 import { SixtyEight } from "@vercel/sdk/models/payloadoldteam.js";
 
 let value: SixtyEight = {
-  job: {
-    headInfo: {
-      owner: "<value>",
-      ref: "<value>",
-      repoUuid: "<id>",
-      sha: "<value>",
-      slug: "<value>",
-    },
-    name: "<value>",
-    owner: "<value>",
-    prId: 5980.01,
-    ref: "<value>",
-    repoUuid: "<id>",
-    sha: "<value>",
-    slug: "<value>",
-    type: "bitbucket-now-comment",
-    workspaceUuid: "<id>",
-    provider: "bitbucket",
-  },
+  url: "https://pastel-convection.info/",
 };
 ```
 
 ## Fields
 
-| Field               | Type                | Required            | Description         |
-| ------------------- | ------------------- | ------------------- | ------------------- |
-| `job`               | *models.PayloadJob* | :heavy_check_mark:  | N/A                 |
+| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `name`                                                                       | *string*                                                                     | :heavy_minus_sign:                                                           | N/A                                                                          |
+| `alias`                                                                      | *string*[]                                                                   | :heavy_minus_sign:                                                           | N/A                                                                          |
+| `target`                                                                     | *string*                                                                     | :heavy_minus_sign:                                                           | N/A                                                                          |
+| `deployment`                                                                 | [models.UserEventPayloadDeployment](../models/usereventpayloaddeployment.md) | :heavy_minus_sign:                                                           | N/A                                                                          |
+| `url`                                                                        | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
+| `forced`                                                                     | *boolean*                                                                    | :heavy_minus_sign:                                                           | N/A                                                                          |
+| `deploymentId`                                                               | *string*                                                                     | :heavy_minus_sign:                                                           | N/A                                                                          |
+| `plan`                                                                       | *string*                                                                     | :heavy_minus_sign:                                                           | N/A                                                                          |
+| `project`                                                                    | *string*                                                                     | :heavy_minus_sign:                                                           | N/A                                                                          |
+| `projectId`                                                                  | *string*                                                                     | :heavy_minus_sign:                                                           | N/A                                                                          |
+| `regions`                                                                    | *string*[]                                                                   | :heavy_minus_sign:                                                           | N/A                                                                          |
+| `type`                                                                       | *string*                                                                     | :heavy_minus_sign:                                                           | N/A                                                                          |

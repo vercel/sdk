@@ -332,6 +332,12 @@ export const CreateFlagDevice = {
 } as const;
 export type CreateFlagDevice = ClosedEnum<typeof CreateFlagDevice>;
 
+export const CreateFlagDurationUnit = {
+  Days: "days",
+  Exposures: "exposures",
+} as const;
+export type CreateFlagDurationUnit = ClosedEnum<typeof CreateFlagDurationUnit>;
+
 export const CreateFlagAllocationUnit = {
   CookieId: "cookieId",
   VisitorId: "visitorId",
@@ -397,6 +403,11 @@ export type CreateFlagExperiment = {
   controlVariantId?: string | undefined;
   startedAt?: number | undefined;
   endedAt?: number | undefined;
+  decision?: string | undefined;
+  decisionReason?: string | undefined;
+  duration?: number | undefined;
+  durationUnit?: CreateFlagDurationUnit | undefined;
+  allocationPercent?: number | undefined;
   allocationUnit: CreateFlagAllocationUnit;
   primaryMetrics: Array<CreateFlagPrimaryMetrics>;
   status: CreateFlagStatus;
@@ -2051,6 +2062,15 @@ export const CreateFlagDevice$outboundSchema: z.ZodNativeEnum<
 > = CreateFlagDevice$inboundSchema;
 
 /** @internal */
+export const CreateFlagDurationUnit$inboundSchema: z.ZodNativeEnum<
+  typeof CreateFlagDurationUnit
+> = z.nativeEnum(CreateFlagDurationUnit);
+/** @internal */
+export const CreateFlagDurationUnit$outboundSchema: z.ZodNativeEnum<
+  typeof CreateFlagDurationUnit
+> = CreateFlagDurationUnit$inboundSchema;
+
+/** @internal */
 export const CreateFlagAllocationUnit$inboundSchema: z.ZodNativeEnum<
   typeof CreateFlagAllocationUnit
 > = z.nativeEnum(CreateFlagAllocationUnit);
@@ -2170,6 +2190,11 @@ export const CreateFlagExperiment$inboundSchema: z.ZodType<
   controlVariantId: types.optional(types.string()),
   startedAt: types.optional(types.number()),
   endedAt: types.optional(types.number()),
+  decision: types.optional(types.string()),
+  decisionReason: types.optional(types.string()),
+  duration: types.optional(types.number()),
+  durationUnit: types.optional(CreateFlagDurationUnit$inboundSchema),
+  allocationPercent: types.optional(types.number()),
   allocationUnit: CreateFlagAllocationUnit$inboundSchema,
   primaryMetrics: z.array(z.lazy(() => CreateFlagPrimaryMetrics$inboundSchema)),
   status: CreateFlagStatus$inboundSchema,
@@ -2188,6 +2213,11 @@ export type CreateFlagExperiment$Outbound = {
   controlVariantId?: string | undefined;
   startedAt?: number | undefined;
   endedAt?: number | undefined;
+  decision?: string | undefined;
+  decisionReason?: string | undefined;
+  duration?: number | undefined;
+  durationUnit?: string | undefined;
+  allocationPercent?: number | undefined;
   allocationUnit: string;
   primaryMetrics: Array<CreateFlagPrimaryMetrics$Outbound>;
   status: string;
@@ -2213,6 +2243,11 @@ export const CreateFlagExperiment$outboundSchema: z.ZodType<
   controlVariantId: z.string().optional(),
   startedAt: z.number().optional(),
   endedAt: z.number().optional(),
+  decision: z.string().optional(),
+  decisionReason: z.string().optional(),
+  duration: z.number().optional(),
+  durationUnit: CreateFlagDurationUnit$outboundSchema.optional(),
+  allocationPercent: z.number().optional(),
   allocationUnit: CreateFlagAllocationUnit$outboundSchema,
   primaryMetrics: z.array(
     z.lazy(() => CreateFlagPrimaryMetrics$outboundSchema),

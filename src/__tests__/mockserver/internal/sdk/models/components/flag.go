@@ -187,6 +187,32 @@ func (e *Device) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type DurationUnit string
+
+const (
+	DurationUnitDays      DurationUnit = "days"
+	DurationUnitExposures DurationUnit = "exposures"
+)
+
+func (e DurationUnit) ToPointer() *DurationUnit {
+	return &e
+}
+func (e *DurationUnit) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "days":
+		fallthrough
+	case "exposures":
+		*e = DurationUnit(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for DurationUnit: %v", v)
+	}
+}
+
 type AllocationUnit string
 
 const (
@@ -407,6 +433,11 @@ type Experiment struct {
 	ControlVariantID  *string           `json:"controlVariantId,omitempty"`
 	StartedAt         *float64          `json:"startedAt,omitempty"`
 	EndedAt           *float64          `json:"endedAt,omitempty"`
+	Decision          *string           `json:"decision,omitempty"`
+	DecisionReason    *string           `json:"decisionReason,omitempty"`
+	Duration          *float64          `json:"duration,omitempty"`
+	DurationUnit      *DurationUnit     `json:"durationUnit,omitempty"`
+	AllocationPercent *float64          `json:"allocationPercent,omitempty"`
 	AllocationUnit    AllocationUnit    `json:"allocationUnit"`
 	PrimaryMetrics    []PrimaryMetric   `json:"primaryMetrics"`
 	Status            FlagStatus        `json:"status"`
@@ -505,6 +536,41 @@ func (o *Experiment) GetEndedAt() *float64 {
 		return nil
 	}
 	return o.EndedAt
+}
+
+func (o *Experiment) GetDecision() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Decision
+}
+
+func (o *Experiment) GetDecisionReason() *string {
+	if o == nil {
+		return nil
+	}
+	return o.DecisionReason
+}
+
+func (o *Experiment) GetDuration() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Duration
+}
+
+func (o *Experiment) GetDurationUnit() *DurationUnit {
+	if o == nil {
+		return nil
+	}
+	return o.DurationUnit
+}
+
+func (o *Experiment) GetAllocationPercent() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.AllocationPercent
 }
 
 func (o *Experiment) GetAllocationUnit() AllocationUnit {

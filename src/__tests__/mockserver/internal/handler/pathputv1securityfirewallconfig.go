@@ -109,13 +109,13 @@ func testPutFirewallConfigPutFirewallConfig0(w http.ResponseWriter, req *http.Re
 					operations.RuleActive2{
 						ID:     "<id>",
 						Name:   "<value>",
-						Active: true,
+						Active: false,
 						ConditionGroup: []operations.ActiveConditionGroup2{
 							operations.ActiveConditionGroup2{
 								Conditions: []operations.ActiveCondition2{
 									operations.ActiveCondition2{
-										Type: operations.ActiveType2IPAddress,
-										Op:   operations.ActiveOp2Nex,
+										Type: operations.ActiveType2Region,
+										Op:   operations.ActiveOp2Lt,
 									},
 								},
 							},
@@ -123,7 +123,6 @@ func testPutFirewallConfigPutFirewallConfig0(w http.ResponseWriter, req *http.Re
 						Action: operations.RuleActiveAction2{},
 						ValidationErrors: []string{
 							"<value 1>",
-							"<value 2>",
 						},
 					},
 				),
@@ -131,13 +130,13 @@ func testPutFirewallConfigPutFirewallConfig0(w http.ResponseWriter, req *http.Re
 					operations.RuleActive2{
 						ID:     "<id>",
 						Name:   "<value>",
-						Active: true,
+						Active: false,
 						ConditionGroup: []operations.ActiveConditionGroup2{
 							operations.ActiveConditionGroup2{
 								Conditions: []operations.ActiveCondition2{
 									operations.ActiveCondition2{
-										Type: operations.ActiveType2IPAddress,
-										Op:   operations.ActiveOp2Nex,
+										Type: operations.ActiveType2Region,
+										Op:   operations.ActiveOp2Lt,
 									},
 								},
 							},
@@ -145,7 +144,6 @@ func testPutFirewallConfigPutFirewallConfig0(w http.ResponseWriter, req *http.Re
 						Action: operations.RuleActiveAction2{},
 						ValidationErrors: []string{
 							"<value 1>",
-							"<value 2>",
 						},
 					},
 				),

@@ -1550,6 +1550,32 @@ func (e *UpdateFlagDevice) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type UpdateFlagDurationUnit string
+
+const (
+	UpdateFlagDurationUnitDays      UpdateFlagDurationUnit = "days"
+	UpdateFlagDurationUnitExposures UpdateFlagDurationUnit = "exposures"
+)
+
+func (e UpdateFlagDurationUnit) ToPointer() *UpdateFlagDurationUnit {
+	return &e
+}
+func (e *UpdateFlagDurationUnit) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "days":
+		fallthrough
+	case "exposures":
+		*e = UpdateFlagDurationUnit(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateFlagDurationUnit: %v", v)
+	}
+}
+
 type UpdateFlagAllocationUnit string
 
 const (
@@ -1770,6 +1796,11 @@ type UpdateFlagExperiment struct {
 	ControlVariantID  *string                     `json:"controlVariantId,omitempty"`
 	StartedAt         *float64                    `json:"startedAt,omitempty"`
 	EndedAt           *float64                    `json:"endedAt,omitempty"`
+	Decision          *string                     `json:"decision,omitempty"`
+	DecisionReason    *string                     `json:"decisionReason,omitempty"`
+	Duration          *float64                    `json:"duration,omitempty"`
+	DurationUnit      *UpdateFlagDurationUnit     `json:"durationUnit,omitempty"`
+	AllocationPercent *float64                    `json:"allocationPercent,omitempty"`
 	AllocationUnit    UpdateFlagAllocationUnit    `json:"allocationUnit"`
 	PrimaryMetrics    []UpdateFlagPrimaryMetric   `json:"primaryMetrics"`
 	Status            UpdateFlagStatus            `json:"status"`
@@ -1868,6 +1899,41 @@ func (o *UpdateFlagExperiment) GetEndedAt() *float64 {
 		return nil
 	}
 	return o.EndedAt
+}
+
+func (o *UpdateFlagExperiment) GetDecision() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Decision
+}
+
+func (o *UpdateFlagExperiment) GetDecisionReason() *string {
+	if o == nil {
+		return nil
+	}
+	return o.DecisionReason
+}
+
+func (o *UpdateFlagExperiment) GetDuration() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Duration
+}
+
+func (o *UpdateFlagExperiment) GetDurationUnit() *UpdateFlagDurationUnit {
+	if o == nil {
+		return nil
+	}
+	return o.DurationUnit
+}
+
+func (o *UpdateFlagExperiment) GetAllocationPercent() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.AllocationPercent
 }
 
 func (o *UpdateFlagExperiment) GetAllocationUnit() UpdateFlagAllocationUnit {

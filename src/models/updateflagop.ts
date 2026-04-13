@@ -341,6 +341,14 @@ export const ResponseBodyDevice = {
 } as const;
 export type ResponseBodyDevice = ClosedEnum<typeof ResponseBodyDevice>;
 
+export const ResponseBodyDurationUnit = {
+  Days: "days",
+  Exposures: "exposures",
+} as const;
+export type ResponseBodyDurationUnit = ClosedEnum<
+  typeof ResponseBodyDurationUnit
+>;
+
 export const ResponseBodyAllocationUnit = {
   CookieId: "cookieId",
   VisitorId: "visitorId",
@@ -408,6 +416,11 @@ export type ResponseBodyExperiment = {
   controlVariantId?: string | undefined;
   startedAt?: number | undefined;
   endedAt?: number | undefined;
+  decision?: string | undefined;
+  decisionReason?: string | undefined;
+  duration?: number | undefined;
+  durationUnit?: ResponseBodyDurationUnit | undefined;
+  allocationPercent?: number | undefined;
   allocationUnit: ResponseBodyAllocationUnit;
   primaryMetrics: Array<ResponseBodyPrimaryMetrics>;
   status: UpdateFlagResponseBodyStatus;
@@ -2092,6 +2105,15 @@ export const ResponseBodyDevice$outboundSchema: z.ZodNativeEnum<
 > = ResponseBodyDevice$inboundSchema;
 
 /** @internal */
+export const ResponseBodyDurationUnit$inboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyDurationUnit
+> = z.nativeEnum(ResponseBodyDurationUnit);
+/** @internal */
+export const ResponseBodyDurationUnit$outboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyDurationUnit
+> = ResponseBodyDurationUnit$inboundSchema;
+
+/** @internal */
 export const ResponseBodyAllocationUnit$inboundSchema: z.ZodNativeEnum<
   typeof ResponseBodyAllocationUnit
 > = z.nativeEnum(ResponseBodyAllocationUnit);
@@ -2211,6 +2233,11 @@ export const ResponseBodyExperiment$inboundSchema: z.ZodType<
   controlVariantId: types.optional(types.string()),
   startedAt: types.optional(types.number()),
   endedAt: types.optional(types.number()),
+  decision: types.optional(types.string()),
+  decisionReason: types.optional(types.string()),
+  duration: types.optional(types.number()),
+  durationUnit: types.optional(ResponseBodyDurationUnit$inboundSchema),
+  allocationPercent: types.optional(types.number()),
   allocationUnit: ResponseBodyAllocationUnit$inboundSchema,
   primaryMetrics: z.array(
     z.lazy(() => ResponseBodyPrimaryMetrics$inboundSchema),
@@ -2231,6 +2258,11 @@ export type ResponseBodyExperiment$Outbound = {
   controlVariantId?: string | undefined;
   startedAt?: number | undefined;
   endedAt?: number | undefined;
+  decision?: string | undefined;
+  decisionReason?: string | undefined;
+  duration?: number | undefined;
+  durationUnit?: string | undefined;
+  allocationPercent?: number | undefined;
   allocationUnit: string;
   primaryMetrics: Array<ResponseBodyPrimaryMetrics$Outbound>;
   status: string;
@@ -2256,6 +2288,11 @@ export const ResponseBodyExperiment$outboundSchema: z.ZodType<
   controlVariantId: z.string().optional(),
   startedAt: z.number().optional(),
   endedAt: z.number().optional(),
+  decision: z.string().optional(),
+  decisionReason: z.string().optional(),
+  duration: z.number().optional(),
+  durationUnit: ResponseBodyDurationUnit$outboundSchema.optional(),
+  allocationPercent: z.number().optional(),
   allocationUnit: ResponseBodyAllocationUnit$outboundSchema,
   primaryMetrics: z.array(
     z.lazy(() => ResponseBodyPrimaryMetrics$outboundSchema),

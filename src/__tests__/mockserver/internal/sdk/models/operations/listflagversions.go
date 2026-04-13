@@ -260,6 +260,32 @@ func (e *ListFlagVersionsDevice) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type ListFlagVersionsDurationUnit string
+
+const (
+	ListFlagVersionsDurationUnitDays      ListFlagVersionsDurationUnit = "days"
+	ListFlagVersionsDurationUnitExposures ListFlagVersionsDurationUnit = "exposures"
+)
+
+func (e ListFlagVersionsDurationUnit) ToPointer() *ListFlagVersionsDurationUnit {
+	return &e
+}
+func (e *ListFlagVersionsDurationUnit) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "days":
+		fallthrough
+	case "exposures":
+		*e = ListFlagVersionsDurationUnit(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for ListFlagVersionsDurationUnit: %v", v)
+	}
+}
+
 type ListFlagVersionsAllocationUnit string
 
 const (
@@ -469,6 +495,11 @@ type ListFlagVersionsExperiment struct {
 	ControlVariantID  *string                           `json:"controlVariantId,omitempty"`
 	StartedAt         *float64                          `json:"startedAt,omitempty"`
 	EndedAt           *float64                          `json:"endedAt,omitempty"`
+	Decision          *string                           `json:"decision,omitempty"`
+	DecisionReason    *string                           `json:"decisionReason,omitempty"`
+	Duration          *float64                          `json:"duration,omitempty"`
+	DurationUnit      *ListFlagVersionsDurationUnit     `json:"durationUnit,omitempty"`
+	AllocationPercent *float64                          `json:"allocationPercent,omitempty"`
 	AllocationUnit    ListFlagVersionsAllocationUnit    `json:"allocationUnit"`
 	PrimaryMetrics    []ListFlagVersionsPrimaryMetric   `json:"primaryMetrics"`
 	Status            ListFlagVersionsStatus            `json:"status"`
@@ -556,6 +587,41 @@ func (o *ListFlagVersionsExperiment) GetEndedAt() *float64 {
 		return nil
 	}
 	return o.EndedAt
+}
+
+func (o *ListFlagVersionsExperiment) GetDecision() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Decision
+}
+
+func (o *ListFlagVersionsExperiment) GetDecisionReason() *string {
+	if o == nil {
+		return nil
+	}
+	return o.DecisionReason
+}
+
+func (o *ListFlagVersionsExperiment) GetDuration() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Duration
+}
+
+func (o *ListFlagVersionsExperiment) GetDurationUnit() *ListFlagVersionsDurationUnit {
+	if o == nil {
+		return nil
+	}
+	return o.DurationUnit
+}
+
+func (o *ListFlagVersionsExperiment) GetAllocationPercent() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.AllocationPercent
 }
 
 func (o *ListFlagVersionsExperiment) GetAllocationUnit() ListFlagVersionsAllocationUnit {

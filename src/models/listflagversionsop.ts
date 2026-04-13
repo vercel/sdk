@@ -79,6 +79,14 @@ export const ListFlagVersionsDevice = {
 } as const;
 export type ListFlagVersionsDevice = ClosedEnum<typeof ListFlagVersionsDevice>;
 
+export const ListFlagVersionsDurationUnit = {
+  Days: "days",
+  Exposures: "exposures",
+} as const;
+export type ListFlagVersionsDurationUnit = ClosedEnum<
+  typeof ListFlagVersionsDurationUnit
+>;
+
 export const ListFlagVersionsAllocationUnit = {
   CookieId: "cookieId",
   VisitorId: "visitorId",
@@ -144,6 +152,11 @@ export type ListFlagVersionsExperiment = {
   controlVariantId?: string | undefined;
   startedAt?: number | undefined;
   endedAt?: number | undefined;
+  decision?: string | undefined;
+  decisionReason?: string | undefined;
+  duration?: number | undefined;
+  durationUnit?: ListFlagVersionsDurationUnit | undefined;
+  allocationPercent?: number | undefined;
   allocationUnit: ListFlagVersionsAllocationUnit;
   primaryMetrics: Array<ListFlagVersionsPrimaryMetrics>;
   status: ListFlagVersionsStatus;
@@ -553,6 +566,15 @@ export const ListFlagVersionsDevice$outboundSchema: z.ZodNativeEnum<
 > = ListFlagVersionsDevice$inboundSchema;
 
 /** @internal */
+export const ListFlagVersionsDurationUnit$inboundSchema: z.ZodNativeEnum<
+  typeof ListFlagVersionsDurationUnit
+> = z.nativeEnum(ListFlagVersionsDurationUnit);
+/** @internal */
+export const ListFlagVersionsDurationUnit$outboundSchema: z.ZodNativeEnum<
+  typeof ListFlagVersionsDurationUnit
+> = ListFlagVersionsDurationUnit$inboundSchema;
+
+/** @internal */
 export const ListFlagVersionsAllocationUnit$inboundSchema: z.ZodNativeEnum<
   typeof ListFlagVersionsAllocationUnit
 > = z.nativeEnum(ListFlagVersionsAllocationUnit);
@@ -675,6 +697,11 @@ export const ListFlagVersionsExperiment$inboundSchema: z.ZodType<
   controlVariantId: types.optional(types.string()),
   startedAt: types.optional(types.number()),
   endedAt: types.optional(types.number()),
+  decision: types.optional(types.string()),
+  decisionReason: types.optional(types.string()),
+  duration: types.optional(types.number()),
+  durationUnit: types.optional(ListFlagVersionsDurationUnit$inboundSchema),
+  allocationPercent: types.optional(types.number()),
   allocationUnit: ListFlagVersionsAllocationUnit$inboundSchema,
   primaryMetrics: z.array(
     z.lazy(() => ListFlagVersionsPrimaryMetrics$inboundSchema),
@@ -697,6 +724,11 @@ export type ListFlagVersionsExperiment$Outbound = {
   controlVariantId?: string | undefined;
   startedAt?: number | undefined;
   endedAt?: number | undefined;
+  decision?: string | undefined;
+  decisionReason?: string | undefined;
+  duration?: number | undefined;
+  durationUnit?: string | undefined;
+  allocationPercent?: number | undefined;
   allocationUnit: string;
   primaryMetrics: Array<ListFlagVersionsPrimaryMetrics$Outbound>;
   status: string;
@@ -722,6 +754,11 @@ export const ListFlagVersionsExperiment$outboundSchema: z.ZodType<
   controlVariantId: z.string().optional(),
   startedAt: z.number().optional(),
   endedAt: z.number().optional(),
+  decision: z.string().optional(),
+  decisionReason: z.string().optional(),
+  duration: z.number().optional(),
+  durationUnit: ListFlagVersionsDurationUnit$outboundSchema.optional(),
+  allocationPercent: z.number().optional(),
   allocationUnit: ListFlagVersionsAllocationUnit$outboundSchema,
   primaryMetrics: z.array(
     z.lazy(() => ListFlagVersionsPrimaryMetrics$outboundSchema),

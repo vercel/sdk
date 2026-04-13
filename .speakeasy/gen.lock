@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 79567c4a-05f9-4d65-864d-dfe107aa4e9d
 management:
-  docChecksum: e54bc450c05784f003cb85db8082cedd
+  docChecksum: 3b5bf8f01a00e4fc26e1cb7595b46f7e
   docVersion: 0.0.1
   speakeasyVersion: 1.761.3
   generationVersion: 2.879.11
-  releaseVersion: 1.19.33
-  configChecksum: 5f8e9597059290ffd90e10b3f79c7dcf
+  releaseVersion: 1.19.34
+  configChecksum: 690b86d3cc57997c7eedffa47c5f4ed2
   repoURL: https://github.com/vercel/sdk.git
   installationURL: https://github.com/vercel/sdk
   published: true
 persistentEdits:
-  generation_id: e697c5d8-318b-4a54-897e-a08a90e27e01
-  pristine_commit_hash: 02464ba9aabd65fca9576141827b57e62273c144
-  pristine_tree_hash: 86635c1ae9fb4db1dfa30fdd4a656a8b5bf05f4d
+  generation_id: 12958248-dfc0-4345-9c28-eff457d0c8ce
+  pristine_commit_hash: d20b52ce68965babdc7550a81fbb676497c081fc
+  pristine_tree_hash: f66b29ad3eddf143689350c11659fd571b2d9f94
 features:
   typescript:
     acceptHeaders: 2.81.2
@@ -3285,14 +3285,18 @@ trackedFiles:
     id: 9e333b7979cd
     last_write_checksum: sha1:2384def5dc4f8975151e23cab7500829f63380c6
     pristine_git_object: 3408049f00a98c51a66627ee03a73df5b1d6d6bb
+  docs/models/createflagdurationunit.md:
+    id: 3506a6cb4062
+    last_write_checksum: sha1:f5e680b000f02d1ff6adbe697740b81d1f13d4cd
+    pristine_git_object: 17855a8f1219e776c7a7663cd0fdfe809cc96e4a
   docs/models/createflagenvironments.md:
     id: ee3809dea707
     last_write_checksum: sha1:b82dcd514c24f65cedaca03aff349cbc736a076c
     pristine_git_object: 1d834bb0682db9d07f0743937b32092c4d05a449
   docs/models/createflagexperiment.md:
     id: 4749c35d4a70
-    last_write_checksum: sha1:d1af49524f9e8c48155d157722ee73efc7609b78
-    pristine_git_object: 337d39f501284286a1944159d1615b2d0c6bb8b2
+    last_write_checksum: sha1:b63cde6434362d0a32ad0d9150eaf3c0c7cb0217
+    pristine_git_object: 6f8e6720d00d835ad8ab8b29856faffff7f79162
   docs/models/createflagfallthrough.md:
     id: 152d07f4aebb
     last_write_checksum: sha1:db55bb9018740e5f26087eac8e16cd6649ff8dfd
@@ -6749,6 +6753,10 @@ trackedFiles:
     id: 93cdccccb36c
     last_write_checksum: sha1:3e621eeef2576e516c20103a36b6dcf580c5f230
     pristine_git_object: ba2f8bc7aa3a9699039e0c66d271df09b3da6e69
+  docs/models/durationunit.md:
+    id: 072377187a7f
+    last_write_checksum: sha1:e619259d2abbe14da86b2249a59f0cd01fc9953c
+    pristine_git_object: 419d3ce08f8a051a3706c0bae784126730e85e7b
   docs/models/edgeconfig.md:
     id: 423b2fd8df35
     last_write_checksum: sha1:12cd06ffc2c3639be54620c45cb573c71de89adf
@@ -7279,8 +7287,8 @@ trackedFiles:
     pristine_git_object: ad999d7e79175f68fb8ba8778ea0d0402568a165
   docs/models/experiment.md:
     id: c9ecc9d46e47
-    last_write_checksum: sha1:4794280e6197243c849f0ecc60caa8aea827f92f
-    pristine_git_object: 10e0bb25ca5013e97f557eb67b7b21cb95c634ae
+    last_write_checksum: sha1:d85bb796e83759100b1abe3e0520f8bb7a744569
+    pristine_git_object: b55ce024908a782c5421be213ec21b64622abbb0
   docs/models/experimentaltriggers.md:
     id: 093f57b904c0
     last_write_checksum: sha1:679f33fc5e31f2548323df49d25603fe435f682d
@@ -17093,14 +17101,18 @@ trackedFiles:
     id: faf27cd59bb7
     last_write_checksum: sha1:6807291f0c19f67c57d100c635816bcd2569fa3a
     pristine_git_object: 28049afe946af699f6bb8becf8cd9600aefae7a4
+  docs/models/listflagversionsdurationunit.md:
+    id: 7e0f26728c8d
+    last_write_checksum: sha1:15a6a9f1b295e1ccd6274cb86ec6fa26db4d5995
+    pristine_git_object: 732cdd360e4ad8ae5b92e887e3cce3e3d0992d2e
   docs/models/listflagversionsenvironments.md:
     id: b74a8edb6482
     last_write_checksum: sha1:b5139097cfe3c805f1669e06123514721e02de26
     pristine_git_object: 07d7cc78da80a454020e59984af6777c82982bd5
   docs/models/listflagversionsexperiment.md:
     id: c1a1eff9857b
-    last_write_checksum: sha1:5b1f1bfa007bb09f8b6cccae23464eded9c533aa
-    pristine_git_object: 3cffa799ee081aff4c7189c8d8c81a3400fd3cc1
+    last_write_checksum: sha1:50565edd6ecb6f4842efaa2208f1890e009ab632
+    pristine_git_object: 815db192865796167a02778831bb42726c9dd9fa
   docs/models/listflagversionsfallthrough.md:
     id: f29740c4895d
     last_write_checksum: sha1:63d2e42043357ef708af451d994618e40ff3075f
@@ -21225,6 +21237,10 @@ trackedFiles:
     id: c319425d002b
     last_write_checksum: sha1:8aab2549fc1c6fec160c66c9207c5b869a1aab60
     pristine_git_object: 0cf02d4369400b8f7600804472a55e578e8b76b1
+  docs/models/responsebodydurationunit.md:
+    id: f3807b7ae5b0
+    last_write_checksum: sha1:8d0c43669b3ce10deeb35dc9e01964ed6eac55e6
+    pristine_git_object: 9ade80054f0292244cbd65c358e39bedc8a3cd03
   docs/models/responsebodyelasticconcurrency.md:
     id: b304db6f7227
     last_write_checksum: sha1:86d538d79d7acdfb2ae0d1c4b3c050117cb9e6da
@@ -21267,8 +21283,8 @@ trackedFiles:
     pristine_git_object: e88e2c1adfd42389a7abc4f9b2c369bfdc8ab4a8
   docs/models/responsebodyexperiment.md:
     id: 8c8e3717da78
-    last_write_checksum: sha1:9cfbbd07f71772fe1d8928e5d6271ff6c128549e
-    pristine_git_object: 3a2674c635dc1c86febd4a8814e2eb0fea3b9fd9
+    last_write_checksum: sha1:2fdb8c30b194874817a5843505496137b068f0e7
+    pristine_git_object: 98e13d631be76ae46705d92be2977e1e860b4ef5
   docs/models/responsebodyexperimentaltriggers.md:
     id: b0bd130f0e17
     last_write_checksum: sha1:9b2d9224e1401b0878a33afca9ddb38e3db45164
@@ -28579,12 +28595,12 @@ trackedFiles:
     pristine_git_object: f85048c5faf67c6dced61a8b4bb1083b0c33ffe9
   jsr.json:
     id: 7f6ab7767282
-    last_write_checksum: sha1:775a39b71035275ad2e44f8dc3e22b04cfdbbecb
-    pristine_git_object: d367f2c5d6f390c441c1207d21c56a5d09176cee
+    last_write_checksum: sha1:1306945e62ae186612a4252a63f8b72eefc46d71
+    pristine_git_object: 61b8c0948e16924c8d3b8aad04c3a45b28eefa68
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:1c22b9a99aa84aa4de715368100dcff5d802d736
-    pristine_git_object: 2041c2a62cfb11e6e01941687987f68a3432f2fe
+    last_write_checksum: sha1:9f1c1ebbbd58bbd564daf322fc1eb96bbf4cea29
+    pristine_git_object: 9dab2e71d1b1813b8279b166d9bb29e03d4e34ce
   src/__tests__/accessgroups.test.ts:
     id: ab047c52d3c4
     last_write_checksum: sha1:a21c1f66e908d0f2607cbd707ee7b177b6fca567
@@ -28683,8 +28699,8 @@ trackedFiles:
     pristine_git_object: e478672482ac9204eedb66ab81cbbc8dd3c66dd4
   src/__tests__/marketplace.test.ts:
     id: 20dcdfb6a189
-    last_write_checksum: sha1:26019b4faac656a83fc7571f4c88604a3258312d
-    pristine_git_object: a1faab3924d9adc0ad174a3f18f9617f9592d74a
+    last_write_checksum: sha1:dad5d3e7fdc8b224e982cfa94728a77dd270f663
+    pristine_git_object: 50a3ddee3f4aa2c558f9e79065de7e64ac5d5d51
   src/__tests__/microfrontends.test.ts:
     id: be508721b185
     last_write_checksum: sha1:f1fca65432dcbb8121dfec72852e8972d64d0606
@@ -28788,7 +28804,7 @@ trackedFiles:
   src/__tests__/mockserver/internal/handler/pathdeletev9projectsidornameenvid.go:
     last_write_checksum: sha1:c16856078d5ada85573b6e8bdd8e809381dfe12e
   src/__tests__/mockserver/internal/handler/pathgetv10projects.go:
-    last_write_checksum: sha1:956115b7363a5ddb9cf2b6d4225f33cf4d079567
+    last_write_checksum: sha1:a3f001a866c80cdf522674fb67b5c57504fb9124
   src/__tests__/mockserver/internal/handler/pathgetv13deploymentsidorurl.go:
     last_write_checksum: sha1:6c289563fef49173fe06827b11ef38c72fdcb022
   src/__tests__/mockserver/internal/handler/pathgetv1accessgroups.go:
@@ -28810,7 +28826,7 @@ trackedFiles:
   src/__tests__/mockserver/internal/handler/pathgetv1connectnetworksnetworkid.go:
     last_write_checksum: sha1:23bd56d7d8bb706638a4b0508dd9cdfaf0cdda0a
   src/__tests__/mockserver/internal/handler/pathgetv1deploymentsdeploymentidchecks.go:
-    last_write_checksum: sha1:5215ff31e752ef5cc4d1e157093692ab98b8df6b
+    last_write_checksum: sha1:36cb342cad24c91242a2d5f3865a555aa239eae7
   src/__tests__/mockserver/internal/handler/pathgetv1deploymentsdeploymentidcheckscheckid.go:
     last_write_checksum: sha1:9e1970e9005a99ca31565a664211abe0fd9b66fe
   src/__tests__/mockserver/internal/handler/pathgetv1deploymentsdeploymentidfeatureflags.go:
@@ -28822,7 +28838,7 @@ trackedFiles:
   src/__tests__/mockserver/internal/handler/pathgetv1edgeconfig.go:
     last_write_checksum: sha1:91b045e2c3d8a4a7dd42068ad76201ca959b51f9
   src/__tests__/mockserver/internal/handler/pathgetv1edgeconfigedgeconfigid.go:
-    last_write_checksum: sha1:001c9765568187cb833025a8e56ad0af462b677e
+    last_write_checksum: sha1:7757913d6dfe424a36da35a63ec9edbe16f4ddd5
   src/__tests__/mockserver/internal/handler/pathgetv1edgeconfigedgeconfigidbackups.go:
     last_write_checksum: sha1:9511e139d2c0f3aaebb8e2c2993acf0da75f81a6
   src/__tests__/mockserver/internal/handler/pathgetv1edgeconfigedgeconfigiditemedgeconfigitemkey.go:
@@ -28938,9 +28954,9 @@ trackedFiles:
   src/__tests__/mockserver/internal/handler/pathgetv1sandboxessnapshotssnapshotid.go:
     last_write_checksum: sha1:fe7baca212b57eaecfab771ad2228ffc60cd2317
   src/__tests__/mockserver/internal/handler/pathgetv1securityfirewallbypass.go:
-    last_write_checksum: sha1:a21caeea3830db13b0cc80b4b03fef6da115440e
+    last_write_checksum: sha1:d23c4944de52c6b2c3c316d4881acbe1a0e63532
   src/__tests__/mockserver/internal/handler/pathgetv1securityfirewallconfigconfigversion.go:
-    last_write_checksum: sha1:76dcf4508863c022ee21b8e0396c408c5a993e38
+    last_write_checksum: sha1:ee1357b5b9892ef323b5b882d2c407c008e56dae
   src/__tests__/mockserver/internal/handler/pathgetv1securityfirewallevents.go:
     last_write_checksum: sha1:c260c82764f5ede495650d08e65ecb8da2fa86a8
   src/__tests__/mockserver/internal/handler/pathgetv1teamsteamidfeatureflagsflags.go:
@@ -28960,7 +28976,7 @@ trackedFiles:
   src/__tests__/mockserver/internal/handler/pathgetv2deploymentsidaliases.go:
     last_write_checksum: sha1:d087c362dacec292d71a45d421f639a2016e70a2
   src/__tests__/mockserver/internal/handler/pathgetv2integrationslogdrains.go:
-    last_write_checksum: sha1:5c6cb847439c891d82943b8f2ed67757520a2ae6
+    last_write_checksum: sha1:4ff7896080278a03cadbc1f5ebd8d6bd1aa31059
   src/__tests__/mockserver/internal/handler/pathgetv2projectsprojectidornamechecks.go:
     last_write_checksum: sha1:7b331c748711e8acfef38dec06b9ceb6a7407b3e
   src/__tests__/mockserver/internal/handler/pathgetv2projectsprojectidornamecheckscheckid.go:
@@ -29008,7 +29024,7 @@ trackedFiles:
   src/__tests__/mockserver/internal/handler/pathgetv6deploymentsidfiles.go:
     last_write_checksum: sha1:29583ada1feafff8eeaf6416b2721ee0205e22ce
   src/__tests__/mockserver/internal/handler/pathgetv6domainsdomainconfig.go:
-    last_write_checksum: sha1:d2041faef8cac88935f392dfc1053d2a95531291
+    last_write_checksum: sha1:31eef2dad87cdc6160dcc055384885df77a4163c
   src/__tests__/mockserver/internal/handler/pathgetv6usertokens.go:
     last_write_checksum: sha1:7a9b690f2739c50343427a61a4f1c11b70e8ac69
   src/__tests__/mockserver/internal/handler/pathgetv8artifactsstatus.go:
@@ -29124,7 +29140,7 @@ trackedFiles:
   src/__tests__/mockserver/internal/handler/pathpostv1drainstest.go:
     last_write_checksum: sha1:5338b1b7885ed0440af9b704113509eec99f474d
   src/__tests__/mockserver/internal/handler/pathpostv1edgeconfig.go:
-    last_write_checksum: sha1:0c5d76ca16d2f99de51812efce7c04e2cced45b2
+    last_write_checksum: sha1:bd8ed0f51ed5ee94241333c814597f721eba1b86
   src/__tests__/mockserver/internal/handler/pathpostv1edgeconfigedgeconfigidschema.go:
     last_write_checksum: sha1:76b8e787f93c93c60ca63fbfc519f7cd7660b8f9
   src/__tests__/mockserver/internal/handler/pathpostv1edgeconfigedgeconfigidtoken.go:
@@ -29152,7 +29168,7 @@ trackedFiles:
   src/__tests__/mockserver/internal/handler/pathpostv1projectsidornamemembers.go:
     last_write_checksum: sha1:a486c44db2189c10c3653ae4d076c25bebe870f3
   src/__tests__/mockserver/internal/handler/pathpostv1projectsidornamerollingreleaseapprovestage.go:
-    last_write_checksum: sha1:6d8476419d2e62fb6ff01380f3ad74dd2697da1b
+    last_write_checksum: sha1:5b506ec35ab80229c0d8415147b5fdd23824ed89
   src/__tests__/mockserver/internal/handler/pathpostv1projectsidornamerollingreleasecomplete.go:
     last_write_checksum: sha1:e726f159cb4d9c580e1891eaaffb4bd60837b97b
   src/__tests__/mockserver/internal/handler/pathpostv1projectsprojectidpause.go:
@@ -29250,7 +29266,7 @@ trackedFiles:
   src/__tests__/mockserver/internal/handler/pathputv1bulkredirects.go:
     last_write_checksum: sha1:53d3355fd3e66c77c3414f1791a6d9dc0e9022e4
   src/__tests__/mockserver/internal/handler/pathputv1edgeconfigedgeconfigid.go:
-    last_write_checksum: sha1:0bfaaf62fbbfead655f6602b13e6d484d4d02919
+    last_write_checksum: sha1:1ebf77f70d5dd3861909998a3e23bdb07f11b697
   ? src/__tests__/mockserver/internal/handler/pathputv1installationsintegrationconfigurationidproductsintegrationproductidorslugresourcesresourceidsecrets.go
   : last_write_checksum: sha1:e6d20cb02db6b4cc025f673653ea5a965f3f43a8
   src/__tests__/mockserver/internal/handler/pathputv1installationsintegrationconfigurationidresourcesresourceid.go:
@@ -29270,7 +29286,7 @@ trackedFiles:
   src/__tests__/mockserver/internal/handler/pathputv1projectsprojectidroutes.go:
     last_write_checksum: sha1:bbd00d6cbf8fbc6e8d08fc320f104bcd63da685a
   src/__tests__/mockserver/internal/handler/pathputv1securityfirewallconfig.go:
-    last_write_checksum: sha1:59361d20421515fc5bd99d275e43bb52649c501e
+    last_write_checksum: sha1:7aab7369c1bf06b06578615cdead3215af7e2c53
   src/__tests__/mockserver/internal/handler/pathputv8certs.go:
     last_write_checksum: sha1:de5df0a100484470db4aa74110adf3fdc3ab72a6
   src/__tests__/mockserver/internal/handler/values/files.go:
@@ -29334,7 +29350,7 @@ trackedFiles:
   src/__tests__/mockserver/internal/sdk/models/components/filetree.go:
     last_write_checksum: sha1:7557f9ca4f7ba22d5be29de405f278dde0822308
   src/__tests__/mockserver/internal/sdk/models/components/flag.go:
-    last_write_checksum: sha1:f4d9d96f88dc49380da5c6a902fa4c5a9f622b2e
+    last_write_checksum: sha1:f732261a33fbc0a6ffa5bedb27cf2260dfced25f
   src/__tests__/mockserver/internal/sdk/models/components/flagjsonvalue.go:
     last_write_checksum: sha1:f9b10d8972268df1b4c09f3de54245e1e0036ec2
   src/__tests__/mockserver/internal/sdk/models/components/flagssdkkey.go:
@@ -29472,7 +29488,7 @@ trackedFiles:
   src/__tests__/mockserver/internal/sdk/models/operations/createevent.go:
     last_write_checksum: sha1:8dd581badc2aef0000dd2ec0b1130f72323978d0
   src/__tests__/mockserver/internal/sdk/models/operations/createflag.go:
-    last_write_checksum: sha1:327780ca0d9ebf302c1cee2e711f3daded60ba51
+    last_write_checksum: sha1:db502600f1945aad8cdfeaf673898bad213de74b
   src/__tests__/mockserver/internal/sdk/models/operations/createflagsegment.go:
     last_write_checksum: sha1:304157aae056055978d9185975e6b5ae3f32c1c5
   ? src/__tests__/mockserver/internal/sdk/models/operations/createinstallationsbyintegrationconfigurationidresourcesbyresourceidexperimentationitems.go
@@ -29852,7 +29868,7 @@ trackedFiles:
   src/__tests__/mockserver/internal/sdk/models/operations/listflagsegments.go:
     last_write_checksum: sha1:af9707ac99e4311cae1a6aa35bf87306e850f5fe
   src/__tests__/mockserver/internal/sdk/models/operations/listflagversions.go:
-    last_write_checksum: sha1:2a82ca719cd9eb1f15d2b142586bc9af74a2472c
+    last_write_checksum: sha1:f2d5612c8ed040bd7bd05acd9630cdbc02abae47
   src/__tests__/mockserver/internal/sdk/models/operations/listnetworks.go:
     last_write_checksum: sha1:81f98663ec54a0e161e5eb090b09048614278310
   src/__tests__/mockserver/internal/sdk/models/operations/listprojectchecks.go:
@@ -29986,7 +30002,7 @@ trackedFiles:
   src/__tests__/mockserver/internal/sdk/models/operations/updatefirewallconfig.go:
     last_write_checksum: sha1:7dbcf05a38f6a9805b451443a63c9bb9519f0623
   src/__tests__/mockserver/internal/sdk/models/operations/updateflag.go:
-    last_write_checksum: sha1:7e7a64740d87694634cd9f7e1f2c4ab39b171ea4
+    last_write_checksum: sha1:fe6d5a74048a128ce0da991c09b54bda15bdbc0a
   src/__tests__/mockserver/internal/sdk/models/operations/updateflagsegment.go:
     last_write_checksum: sha1:8b5a70b94f1d181d5f8363c201e29b713bac6857
   src/__tests__/mockserver/internal/sdk/models/operations/updateflagsettings.go:
@@ -31523,8 +31539,8 @@ trackedFiles:
     pristine_git_object: 0aebd8b0a4867e35cb3348fc52921c3c0b4725b7
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:56d84fe7062b7e9a4c55d5826fb8c71a9256ad53
-    pristine_git_object: 6aca094aa8b967e5ef3c69103ca53e0c9e3b3d76
+    last_write_checksum: sha1:615662e75d906c6e22ed0fcd4fdf3f3a9a22c7d3
+    pristine_git_object: a8cae393f6048dd5271127899ffabacdd2126f88
   src/lib/dlv.ts:
     id: b1988214835a
     last_write_checksum: sha1:1dd3e3fbb4550c4bf31f5ef997faff355d6f3250
@@ -31607,8 +31623,8 @@ trackedFiles:
     pristine_git_object: 0955a573c2ce989d63c737410ab8cc28706d9f74
   src/mcp-server/mcp-server.ts:
     id: aabbc4ab07c1
-    last_write_checksum: sha1:f9c13dfc014889b0933b9a346f3965dbf47639e2
-    pristine_git_object: 836194d13bcdd22065dd3867d5b9f7a2ac0b3023
+    last_write_checksum: sha1:fed22150cbfce530e84d2116d60ec82f2f72ef7a
+    pristine_git_object: df3ebc34b9b598d55e2cbf863c9d654f5b3636b4
   src/mcp-server/prompts.ts:
     id: 26f3d73cbf31
     last_write_checksum: sha1:376b46be0e4c514c7d6af5102dc03e1c4ccfe24b
@@ -31623,8 +31639,8 @@ trackedFiles:
     pristine_git_object: c25696d4c4f70e081fa5d87ad6891874c509a577
   src/mcp-server/server.ts:
     id: 2784dd48e82a
-    last_write_checksum: sha1:47fe46e7444dc2f9c4ae8a23156f4ce3204cf4a6
-    pristine_git_object: 5336ab70b3398f0f37c0e567e5ce27c19860bae5
+    last_write_checksum: sha1:89108c320a2cef6eedb3a9d60c74269afaf0a3df
+    pristine_git_object: 3cec8ccdf8fe10629aea9178beb6e57f3b957836
   src/mcp-server/shared.ts:
     id: 074e80d4be1e
     last_write_checksum: sha1:d89576cea2bef3856b7fc3e65b868875528be042
@@ -33055,8 +33071,8 @@ trackedFiles:
     pristine_git_object: 7e86fa46dfb4f556e39f7e83ea17f6ba1e580002
   src/models/createflagop.ts:
     id: 4c7d04525e26
-    last_write_checksum: sha1:9d1f55796c63d6ec23d3ca93503e903ee25d097f
-    pristine_git_object: f915a50bce1dc0c4e3a5873a4b301b09a82cfe14
+    last_write_checksum: sha1:1faa6726b0b847f4434a8b570be5aa5113009c00
+    pristine_git_object: 4f4562ae358d51c07a0488a5dcddc2e8dca3b636
   src/models/createflagsegmentop.ts:
     id: eb085bbd3134
     last_write_checksum: sha1:f7ec66ffb9c25e450c7f2b1d5429dbe26de76436
@@ -33371,8 +33387,8 @@ trackedFiles:
     pristine_git_object: fa6c5431e4bbb0f885e0dc8391185f890d79887f
   src/models/flag.ts:
     id: 70773fa74fb4
-    last_write_checksum: sha1:48f356fe0218b0e6997ba85ebc96cbe1ab5fe3df
-    pristine_git_object: 0b9c51d9ebfb3431a12d54c64934e2f9b73feea3
+    last_write_checksum: sha1:b1db6135dc23907ee9df43bfe9cabb8a650b6e5e
+    pristine_git_object: 12fe924a3afe7723a5e37f28f407834ebfbeec5d
   src/models/flagjsonvalue.ts:
     id: b3a746b0b50c
     last_write_checksum: sha1:1142e0559936a46d8ad5cf7447b2c593ec9731ba
@@ -33931,8 +33947,8 @@ trackedFiles:
     pristine_git_object: 124cca678e0a6b90e4a8a42eccfd17779d121e8b
   src/models/listflagversionsop.ts:
     id: 961b554c3902
-    last_write_checksum: sha1:681579005b8af7711b6b4e88c7363d04f83292bc
-    pristine_git_object: 7c5ebc984a1f2174f060cc7af19ae89bed89f826
+    last_write_checksum: sha1:e096aad821b4a29cbfac610844d659d0096085f3
+    pristine_git_object: f59ced4c640e87728cc80be54521c8b85084763e
   src/models/listnetworksop.ts:
     id: f3a0051dbe83
     last_write_checksum: sha1:c3447e02b11a02325259689b1839de744fd7c742
@@ -34331,8 +34347,8 @@ trackedFiles:
     pristine_git_object: 11d69b99f47464a3cb1922bc444ed41191718201
   src/models/updateflagop.ts:
     id: 537f663be459
-    last_write_checksum: sha1:2b3c75d7239f8bc92cc8ac846c1757d3aeaeca02
-    pristine_git_object: f86242efb013a5e75d73e41ef6afa78ae9960d4d
+    last_write_checksum: sha1:02f436c2e8fc5858f44aed204046eb21c44ae738
+    pristine_git_object: 47aabf789529de662823b4e912b99cd41c4df0c2
   src/models/updateflagsegmentop.ts:
     id: 66350acea2a4
     last_write_checksum: sha1:421e236e56dea6212260ca1482750e0a4cf7766f
@@ -40235,7 +40251,14 @@ generatedTests:
   updateMicrofrontends: "2026-04-01T00:21:17Z"
   updateMicrofrontendsGroup: "2026-04-01T00:21:17Z"
   deleteMicrofrontendsGroup: "2026-04-01T00:21:17Z"
-releaseNotes: "## Typescript SDK Changes:\n* `vercel.user.listEventTypes()`:  `response.types[].name` **Changed** (Breaking ⚠️)\n* `vercel.artifacts.recordEvents()`:  `request` **Changed** (Breaking ⚠️)\n* `vercel.artifacts.downloadArtifact()`:  `request` **Changed** (Breaking ⚠️)\n* `vercel.deployments.uploadFile()`:  `request` **Changed** (Breaking ⚠️)\n* `vercel.environment.listSharedEnvVariable()`:  `request` **Changed** (Breaking ⚠️)\n* `vercel.user.listUserEvents()`:  `response.union(2).events[]` **Changed** (Breaking ⚠️)\n* `vercel.sandboxes.writeFiles()`:  `request` **Changed** (Breaking ⚠️)\n* `vercel.projects.getProjects()`:  `response` **Changed** (Breaking ⚠️)\n* `vercel.artifacts.uploadArtifact()`:  `request` **Changed** (Breaking ⚠️)\n* `vercel.projects.updateMicrofrontends()`:  `response` **Changed** (Breaking ⚠️)\n* `vercel.projects.updateProject()`:  `response` **Changed** (Breaking ⚠️)\n* `vercel.projects.createProject()`:  `response` **Changed** (Breaking ⚠️)\n* `vercel.sandboxesV2Beta.writeSessionFiles()`:  `request` **Changed** (Breaking ⚠️)\n* `vercel.microfrontends.getMicrofrontendsInGroup()`:  `response.projects[]` **Changed** (Breaking ⚠️)\n* `vercel.featureFlags.listTeamFlags()`:  `response.data[].maintainerIds` **Added**\n* `vercel.featureFlags.listFlagVersions()`:  `response.versions[].data.maintainerIds` **Added**\n* `vercel.featureFlags.updateFlag()`: \n  *  `request.requestBody.maintainerIds` **Added**\n  *  `response` **Changed**\n* `vercel.featureFlags.getFlag()`:  `response.maintainerIds` **Added**\n* `vercel.rollingRelease.getRollingRelease()`:  `response.rollingRelease.currentCanaryPercentage` **Added**\n* `vercel.rollingRelease.approveRollingReleaseStage()`:  `response.rollingRelease.currentCanaryPercentage` **Added**\n* `vercel.rollingRelease.completeRollingRelease()`:  `response.rollingRelease.currentCanaryPercentage` **Added**\n* `vercel.featureFlags.createFlag()`: \n  *  `request.requestBody.maintainerIds` **Added**\n  *  `response.maintainerIds` **Added**\n* `vercel.featureFlags.listFlags()`:  `response.data[].maintainerIds` **Added**\n* `vercel.teams.getTeam()`:  `response.strictShareableLinks` **Added**\n* `vercel.teams.patchTeam()`: \n  *  `request.requestBody.strictShareableLinks` **Added**\n  *  `response.strictShareableLinks` **Added**\n* `vercel.teams.getTeams()`:  `response.teams[].union(Team).strictShareableLinks` **Added**\n"
+releaseNotes: |
+  ## Typescript SDK Changes:
+  * `vercel.featureFlags.listFlags()`:  `response.data[].experiment` **Changed**
+  * `vercel.featureFlags.createFlag()`:  `response.experiment` **Changed**
+  * `vercel.featureFlags.getFlag()`:  `response.experiment` **Changed**
+  * `vercel.featureFlags.updateFlag()`:  `response` **Changed**
+  * `vercel.featureFlags.listFlagVersions()`:  `response.versions[].data.experiment` **Changed**
+  * `vercel.featureFlags.listTeamFlags()`:  `response.data[].experiment` **Changed**
 generatedFiles:
   - .devcontainer/README.md
   - .devcontainer/devcontainer.json

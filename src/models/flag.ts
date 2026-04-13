@@ -47,6 +47,12 @@ export const Device = {
 } as const;
 export type Device = ClosedEnum<typeof Device>;
 
+export const DurationUnit = {
+  Days: "days",
+  Exposures: "exposures",
+} as const;
+export type DurationUnit = ClosedEnum<typeof DurationUnit>;
+
 export const AllocationUnit = {
   CookieId: "cookieId",
   VisitorId: "visitorId",
@@ -104,6 +110,11 @@ export type Experiment = {
   controlVariantId?: string | undefined;
   startedAt?: number | undefined;
   endedAt?: number | undefined;
+  decision?: string | undefined;
+  decisionReason?: string | undefined;
+  duration?: number | undefined;
+  durationUnit?: DurationUnit | undefined;
+  allocationPercent?: number | undefined;
   allocationUnit: AllocationUnit;
   primaryMetrics: Array<PrimaryMetrics>;
   status: FlagStatus;
@@ -427,6 +438,13 @@ export const Device$outboundSchema: z.ZodNativeEnum<typeof Device> =
   Device$inboundSchema;
 
 /** @internal */
+export const DurationUnit$inboundSchema: z.ZodNativeEnum<typeof DurationUnit> =
+  z.nativeEnum(DurationUnit);
+/** @internal */
+export const DurationUnit$outboundSchema: z.ZodNativeEnum<typeof DurationUnit> =
+  DurationUnit$inboundSchema;
+
+/** @internal */
 export const AllocationUnit$inboundSchema: z.ZodNativeEnum<
   typeof AllocationUnit
 > = z.nativeEnum(AllocationUnit);
@@ -539,6 +557,11 @@ export const Experiment$inboundSchema: z.ZodType<
   controlVariantId: types.optional(types.string()),
   startedAt: types.optional(types.number()),
   endedAt: types.optional(types.number()),
+  decision: types.optional(types.string()),
+  decisionReason: types.optional(types.string()),
+  duration: types.optional(types.number()),
+  durationUnit: types.optional(DurationUnit$inboundSchema),
+  allocationPercent: types.optional(types.number()),
   allocationUnit: AllocationUnit$inboundSchema,
   primaryMetrics: z.array(z.lazy(() => PrimaryMetrics$inboundSchema)),
   status: FlagStatus$inboundSchema,
@@ -557,6 +580,11 @@ export type Experiment$Outbound = {
   controlVariantId?: string | undefined;
   startedAt?: number | undefined;
   endedAt?: number | undefined;
+  decision?: string | undefined;
+  decisionReason?: string | undefined;
+  duration?: number | undefined;
+  durationUnit?: string | undefined;
+  allocationPercent?: number | undefined;
   allocationUnit: string;
   primaryMetrics: Array<PrimaryMetrics$Outbound>;
   status: string;
@@ -581,6 +609,11 @@ export const Experiment$outboundSchema: z.ZodType<
   controlVariantId: z.string().optional(),
   startedAt: z.number().optional(),
   endedAt: z.number().optional(),
+  decision: z.string().optional(),
+  decisionReason: z.string().optional(),
+  duration: z.number().optional(),
+  durationUnit: DurationUnit$outboundSchema.optional(),
+  allocationPercent: z.number().optional(),
   allocationUnit: AllocationUnit$outboundSchema,
   primaryMetrics: z.array(z.lazy(() => PrimaryMetrics$outboundSchema)),
   status: FlagStatus$outboundSchema,

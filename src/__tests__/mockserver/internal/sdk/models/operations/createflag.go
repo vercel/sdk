@@ -1545,6 +1545,32 @@ func (e *CreateFlagDevice) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type CreateFlagDurationUnit string
+
+const (
+	CreateFlagDurationUnitDays      CreateFlagDurationUnit = "days"
+	CreateFlagDurationUnitExposures CreateFlagDurationUnit = "exposures"
+)
+
+func (e CreateFlagDurationUnit) ToPointer() *CreateFlagDurationUnit {
+	return &e
+}
+func (e *CreateFlagDurationUnit) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "days":
+		fallthrough
+	case "exposures":
+		*e = CreateFlagDurationUnit(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateFlagDurationUnit: %v", v)
+	}
+}
+
 type CreateFlagAllocationUnit string
 
 const (
@@ -1754,6 +1780,11 @@ type CreateFlagExperiment struct {
 	ControlVariantID  *string                     `json:"controlVariantId,omitempty"`
 	StartedAt         *float64                    `json:"startedAt,omitempty"`
 	EndedAt           *float64                    `json:"endedAt,omitempty"`
+	Decision          *string                     `json:"decision,omitempty"`
+	DecisionReason    *string                     `json:"decisionReason,omitempty"`
+	Duration          *float64                    `json:"duration,omitempty"`
+	DurationUnit      *CreateFlagDurationUnit     `json:"durationUnit,omitempty"`
+	AllocationPercent *float64                    `json:"allocationPercent,omitempty"`
 	AllocationUnit    CreateFlagAllocationUnit    `json:"allocationUnit"`
 	PrimaryMetrics    []CreateFlagPrimaryMetric   `json:"primaryMetrics"`
 	Status            CreateFlagStatus            `json:"status"`
@@ -1841,6 +1872,41 @@ func (o *CreateFlagExperiment) GetEndedAt() *float64 {
 		return nil
 	}
 	return o.EndedAt
+}
+
+func (o *CreateFlagExperiment) GetDecision() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Decision
+}
+
+func (o *CreateFlagExperiment) GetDecisionReason() *string {
+	if o == nil {
+		return nil
+	}
+	return o.DecisionReason
+}
+
+func (o *CreateFlagExperiment) GetDuration() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Duration
+}
+
+func (o *CreateFlagExperiment) GetDurationUnit() *CreateFlagDurationUnit {
+	if o == nil {
+		return nil
+	}
+	return o.DurationUnit
+}
+
+func (o *CreateFlagExperiment) GetAllocationPercent() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.AllocationPercent
 }
 
 func (o *CreateFlagExperiment) GetAllocationUnit() CreateFlagAllocationUnit {

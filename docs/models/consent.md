@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Consent } from "@vercel/sdk/models/usereventpayload165previous.js";
+import { Consent } from "@vercel/sdk/models/usereventpayload167previous.js";
 
 let value: Consent = "granted";
 ```

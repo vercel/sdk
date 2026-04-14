@@ -5,10 +5,10 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndSixtySeven } from "@vercel/sdk/models/twohundredandtwentynine.js";
+import { TwoHundredAndSixtySeven } from "@vercel/sdk/models/twohundredandthirtyone.js";
 
 let value: TwoHundredAndSixtySeven = {
-  enabled: "off",
+  consent: "refused",
 };
 ```
 
@@ -16,4 +16,4 @@ let value: TwoHundredAndSixtySeven = {
 
 | Field                                                | Type                                                 | Required                                             | Description                                          |
 | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
-| `enabled`                                            | [models.PayloadEnabled](../models/payloadenabled.md) | :heavy_check_mark:                                   | N/A                                                  |
+| `consent`                                            | [models.PayloadConsent](../models/payloadconsent.md) | :heavy_check_mark:                                   | N/A                                                  |

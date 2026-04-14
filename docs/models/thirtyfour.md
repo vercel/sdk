@@ -7,19 +7,11 @@ The payload of the event, if requested.
 ```typescript
 import { ThirtyFour } from "@vercel/sdk/models/userevent.js";
 
-let value: ThirtyFour = {
-  invoiceId: "<id>",
-  amount: 1619.73,
-  refundReason: "<value>",
-  lineItemCount: 8101.16,
-};
+let value: ThirtyFour = {};
 ```
 
 ## Fields
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `invoiceId`        | *string*           | :heavy_check_mark: | N/A                |
-| `amount`           | *number*           | :heavy_check_mark: | N/A                |
-| `refundReason`     | *string*           | :heavy_check_mark: | N/A                |
-| `lineItemCount`    | *number*           | :heavy_check_mark: | N/A                |
+| `avatar`           | *string*           | :heavy_minus_sign: | N/A                |

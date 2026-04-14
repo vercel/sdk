@@ -75,6 +75,8 @@ const (
 	GetWebhookEventFirewallAttack                                     GetWebhookEvent = "firewall.attack"
 	GetWebhookEventFirewallSystemRuleAnomaly                          GetWebhookEvent = "firewall.system-rule-anomaly"
 	GetWebhookEventFirewallCustomRuleAnomaly                          GetWebhookEvent = "firewall.custom-rule-anomaly"
+	GetWebhookEventFunctionArchivalRequired                           GetWebhookEvent = "function.archival-required"
+	GetWebhookEventFunctionRemovalRequired                            GetWebhookEvent = "function.removal-required"
 	GetWebhookEventAlertsTriggered                                    GetWebhookEvent = "alerts.triggered"
 	GetWebhookEventIntegrationConfigurationPermissionUpgraded         GetWebhookEvent = "integration-configuration.permission-upgraded"
 	GetWebhookEventIntegrationConfigurationRemoved                    GetWebhookEvent = "integration-configuration.removed"
@@ -227,6 +229,10 @@ func (e *GetWebhookEvent) UnmarshalJSON(data []byte) error {
 	case "firewall.system-rule-anomaly":
 		fallthrough
 	case "firewall.custom-rule-anomaly":
+		fallthrough
+	case "function.archival-required":
+		fallthrough
+	case "function.removal-required":
 		fallthrough
 	case "alerts.triggered":
 		fallthrough

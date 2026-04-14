@@ -1,6 +1,6 @@
 {
   "name": "@vercel/sdk",
-  "version": "1.19.34",
+  "version": "1.19.35",
   "author": "Speakeasy",
   "type": "module",
   "bin": {
@@ -33,7 +33,7 @@
   "scripts": {
     "test": "vitest run src --reporter=junit --outputFile=.speakeasy/reports/tests.xml --reporter=default",
     "check": "npm run test && npm run lint",
-    "lint": "oxlint --max-warnings=0 --deny-warnings 'src/**/*.{ts,tsx}'",
+    "lint": "oxlint --max-warnings=0 --deny-warnings src/**/*.ts src/**/*.tsx",
     "build:mcp": "bun src/mcp-server/build.mts",
     "build": "npm run build:mcp && tsgo",
     "prepublishOnly": "npm run build"
@@ -49,7 +49,7 @@
     "bun": "1.2.17",
     "bun-types": "1.2.17",
     "express": "^4.21.2",
-    "oxlint": "^1.50.0",
+    "oxlint": "^1.60.0",
     "typescript": "~5.8.3",
     "vitest": "^3.0.5"
   },

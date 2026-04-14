@@ -40,34 +40,6 @@ func (o *GetEdgeConfigRequest) GetSlug() *string {
 	return o.Slug
 }
 
-// GetEdgeConfigTransfer - Keeps track of the current state of the Edge Config while it gets transferred.
-type GetEdgeConfigTransfer struct {
-	FromAccountID string   `json:"fromAccountId"`
-	StartedAt     float64  `json:"startedAt"`
-	DoneAt        *float64 `json:"doneAt"`
-}
-
-func (o *GetEdgeConfigTransfer) GetFromAccountID() string {
-	if o == nil {
-		return ""
-	}
-	return o.FromAccountID
-}
-
-func (o *GetEdgeConfigTransfer) GetStartedAt() float64 {
-	if o == nil {
-		return 0.0
-	}
-	return o.StartedAt
-}
-
-func (o *GetEdgeConfigTransfer) GetDoneAt() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.DoneAt
-}
-
 type GetEdgeConfigTypeExperimentation string
 
 const (
@@ -259,15 +231,41 @@ func (u GetEdgeConfigPurposeUnion) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type GetEdgeConfigPurposeUnion: all fields are null")
 }
 
+// GetEdgeConfigTransfer - Keeps track of the current state of the Edge Config while it gets transferred.
+type GetEdgeConfigTransfer struct {
+	FromAccountID string   `json:"fromAccountId"`
+	StartedAt     float64  `json:"startedAt"`
+	DoneAt        *float64 `json:"doneAt"`
+}
+
+func (o *GetEdgeConfigTransfer) GetFromAccountID() string {
+	if o == nil {
+		return ""
+	}
+	return o.FromAccountID
+}
+
+func (o *GetEdgeConfigTransfer) GetStartedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.StartedAt
+}
+
+func (o *GetEdgeConfigTransfer) GetDoneAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.DoneAt
+}
+
 type GetEdgeConfigSchema struct {
 }
 
 // GetEdgeConfigResponseBody - The EdgeConfig.
 type GetEdgeConfigResponseBody struct {
-	// Keeps track of the current state of the Edge Config while it gets transferred.
-	Transfer  *GetEdgeConfigTransfer `json:"transfer,omitempty"`
-	ID        string                 `json:"id"`
-	CreatedAt float64                `json:"createdAt"`
+	ID        string  `json:"id"`
+	CreatedAt float64 `json:"createdAt"`
 	// The ID of the user who created the Edge Config, optional because it is not always set.
 	CreatedBy *string `json:"createdBy,omitempty"`
 	OwnerID   string  `json:"ownerId"`
@@ -277,18 +275,13 @@ type GetEdgeConfigResponseBody struct {
 	Digest    string                                     `json:"digest"`
 	Purpose   *GetEdgeConfigPurposeUnion                 `json:"purpose,omitempty"`
 	DeletedAt optionalnullable.OptionalNullable[float64] `json:"deletedAt,omitempty"`
-	Schema    *GetEdgeConfigSchema                       `json:"schema,omitempty"`
+	// Keeps track of the current state of the Edge Config while it gets transferred.
+	Transfer *GetEdgeConfigTransfer `json:"transfer,omitempty"`
+	Schema   *GetEdgeConfigSchema   `json:"schema,omitempty"`
 	// Timestamp of when the Edge Config was synced to DynamoDB initially. It is only set when syncing the entire Edge Config, not when updating.
 	SyncedToDynamoAt *float64 `json:"syncedToDynamoAt,omitempty"`
 	SizeInBytes      float64  `json:"sizeInBytes"`
 	ItemCount        float64  `json:"itemCount"`
-}
-
-func (o *GetEdgeConfigResponseBody) GetTransfer() *GetEdgeConfigTransfer {
-	if o == nil {
-		return nil
-	}
-	return o.Transfer
 }
 
 func (o *GetEdgeConfigResponseBody) GetID() string {
@@ -366,6 +359,13 @@ func (o *GetEdgeConfigResponseBody) GetDeletedAt() optionalnullable.OptionalNull
 		return nil
 	}
 	return o.DeletedAt
+}
+
+func (o *GetEdgeConfigResponseBody) GetTransfer() *GetEdgeConfigTransfer {
+	if o == nil {
+		return nil
+	}
+	return o.Transfer
 }
 
 func (o *GetEdgeConfigResponseBody) GetSchema() *GetEdgeConfigSchema {

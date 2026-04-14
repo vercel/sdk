@@ -8,19 +8,13 @@ The payload of the event, if requested.
 import { FortyTwo } from "@vercel/sdk/models/userevent.js";
 
 let value: FortyTwo = {
-  project: {
-    id: "<id>",
-    name: "<value>",
-  },
-  bulkRedirectsLimit: 1923.42,
-  prevBulkRedirectsLimit: 6426.16,
+  productAliases: [],
 };
 ```
 
 ## Fields
 
-| Field                                                | Type                                                 | Required                                             | Description                                          |
-| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
-| `project`                                            | [models.PayloadProject](../models/payloadproject.md) | :heavy_check_mark:                                   | N/A                                                  |
-| `bulkRedirectsLimit`                                 | *number*                                             | :heavy_check_mark:                                   | N/A                                                  |
-| `prevBulkRedirectsLimit`                             | *number*                                             | :heavy_check_mark:                                   | N/A                                                  |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `subscriptionId`   | *string*           | :heavy_minus_sign: | N/A                |
+| `productAliases`   | *string*[]         | :heavy_check_mark: | N/A                |

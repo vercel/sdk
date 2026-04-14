@@ -8,8 +8,10 @@ The payload of the event, if requested.
 import { Forty } from "@vercel/sdk/models/userevent.js";
 
 let value: Forty = {
-  action: "mutate",
-  data: {},
+  action: "resume_plan",
+  data: {
+    planSlug: "v0_teams",
+  },
 };
 ```
 
@@ -19,4 +21,4 @@ let value: Forty = {
 | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
 | `subscriptionId`                                                         | *string*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
 | `action`                                                                 | [models.UserEventPayload40Action](../models/usereventpayload40action.md) | :heavy_check_mark:                                                       | N/A                                                                      |
-| `data`                                                                   | Record<string, *any*>                                                    | :heavy_check_mark:                                                       | N/A                                                                      |
+| `data`                                                                   | [models.PayloadData](../models/payloaddata.md)                           | :heavy_check_mark:                                                       | N/A                                                                      |

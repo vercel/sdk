@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { SsoProtectionDeploymentType } from "@vercel/sdk/models/usereventpayload165previous.js";
+import { SsoProtectionDeploymentType } from "@vercel/sdk/models/usereventpayload167previous.js";
 
 let value: SsoProtectionDeploymentType = "all_except_custom_domains";
 ```

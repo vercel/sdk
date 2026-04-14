@@ -20,15 +20,6 @@ export type GetEdgeConfigRequest = {
   slug?: string | undefined;
 };
 
-/**
- * Keeps track of the current state of the Edge Config while it gets transferred.
- */
-export type GetEdgeConfigTransfer = {
-  fromAccountId: string;
-  startedAt: number;
-  doneAt: number | null;
-};
-
 export type GetEdgeConfigPurpose2 = {
   type: "experimentation";
   resourceId: string;
@@ -43,16 +34,21 @@ export type GetEdgeConfigPurpose =
   | GetEdgeConfigPurpose1
   | GetEdgeConfigPurpose2;
 
+/**
+ * Keeps track of the current state of the Edge Config while it gets transferred.
+ */
+export type GetEdgeConfigTransfer = {
+  fromAccountId: string;
+  startedAt: number;
+  doneAt: number | null;
+};
+
 export type GetEdgeConfigSchema = {};
 
 /**
  * The EdgeConfig.
  */
 export type GetEdgeConfigResponseBody = {
-  /**
-   * Keeps track of the current state of the Edge Config while it gets transferred.
-   */
-  transfer?: GetEdgeConfigTransfer | undefined;
   id: string;
   createdAt: number;
   /**
@@ -68,6 +64,10 @@ export type GetEdgeConfigResponseBody = {
   digest: string;
   purpose?: GetEdgeConfigPurpose1 | GetEdgeConfigPurpose2 | undefined;
   deletedAt?: number | null | undefined;
+  /**
+   * Keeps track of the current state of the Edge Config while it gets transferred.
+   */
+  transfer?: GetEdgeConfigTransfer | undefined;
   schema?: GetEdgeConfigSchema | undefined;
   /**
    * Timestamp of when the Edge Config was synced to DynamoDB initially. It is only set when syncing the entire Edge Config, not when updating.
@@ -119,51 +119,6 @@ export function getEdgeConfigRequestFromJSON(
     jsonString,
     (x) => GetEdgeConfigRequest$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'GetEdgeConfigRequest' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetEdgeConfigTransfer$inboundSchema: z.ZodType<
-  GetEdgeConfigTransfer,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fromAccountId: types.string(),
-  startedAt: types.number(),
-  doneAt: types.nullable(types.number()),
-});
-/** @internal */
-export type GetEdgeConfigTransfer$Outbound = {
-  fromAccountId: string;
-  startedAt: number;
-  doneAt: number | null;
-};
-
-/** @internal */
-export const GetEdgeConfigTransfer$outboundSchema: z.ZodType<
-  GetEdgeConfigTransfer$Outbound,
-  z.ZodTypeDef,
-  GetEdgeConfigTransfer
-> = z.object({
-  fromAccountId: z.string(),
-  startedAt: z.number(),
-  doneAt: z.nullable(z.number()),
-});
-
-export function getEdgeConfigTransferToJSON(
-  getEdgeConfigTransfer: GetEdgeConfigTransfer,
-): string {
-  return JSON.stringify(
-    GetEdgeConfigTransfer$outboundSchema.parse(getEdgeConfigTransfer),
-  );
-}
-export function getEdgeConfigTransferFromJSON(
-  jsonString: string,
-): SafeParseResult<GetEdgeConfigTransfer, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetEdgeConfigTransfer$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetEdgeConfigTransfer' from JSON`,
   );
 }
 
@@ -293,6 +248,51 @@ export function getEdgeConfigPurposeFromJSON(
 }
 
 /** @internal */
+export const GetEdgeConfigTransfer$inboundSchema: z.ZodType<
+  GetEdgeConfigTransfer,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  fromAccountId: types.string(),
+  startedAt: types.number(),
+  doneAt: types.nullable(types.number()),
+});
+/** @internal */
+export type GetEdgeConfigTransfer$Outbound = {
+  fromAccountId: string;
+  startedAt: number;
+  doneAt: number | null;
+};
+
+/** @internal */
+export const GetEdgeConfigTransfer$outboundSchema: z.ZodType<
+  GetEdgeConfigTransfer$Outbound,
+  z.ZodTypeDef,
+  GetEdgeConfigTransfer
+> = z.object({
+  fromAccountId: z.string(),
+  startedAt: z.number(),
+  doneAt: z.nullable(z.number()),
+});
+
+export function getEdgeConfigTransferToJSON(
+  getEdgeConfigTransfer: GetEdgeConfigTransfer,
+): string {
+  return JSON.stringify(
+    GetEdgeConfigTransfer$outboundSchema.parse(getEdgeConfigTransfer),
+  );
+}
+export function getEdgeConfigTransferFromJSON(
+  jsonString: string,
+): SafeParseResult<GetEdgeConfigTransfer, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetEdgeConfigTransfer$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetEdgeConfigTransfer' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetEdgeConfigSchema$inboundSchema: z.ZodType<
   GetEdgeConfigSchema,
   z.ZodTypeDef,
@@ -331,7 +331,6 @@ export const GetEdgeConfigResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  transfer: types.optional(z.lazy(() => GetEdgeConfigTransfer$inboundSchema)),
   id: types.string(),
   createdAt: types.number(),
   createdBy: types.optional(types.string()),
@@ -346,6 +345,7 @@ export const GetEdgeConfigResponseBody$inboundSchema: z.ZodType<
     ]),
   ),
   deletedAt: z.nullable(types.number()).optional(),
+  transfer: types.optional(z.lazy(() => GetEdgeConfigTransfer$inboundSchema)),
   schema: types.optional(z.lazy(() => GetEdgeConfigSchema$inboundSchema)),
   syncedToDynamoAt: types.optional(types.number()),
   sizeInBytes: types.number(),
@@ -353,7 +353,6 @@ export const GetEdgeConfigResponseBody$inboundSchema: z.ZodType<
 });
 /** @internal */
 export type GetEdgeConfigResponseBody$Outbound = {
-  transfer?: GetEdgeConfigTransfer$Outbound | undefined;
   id: string;
   createdAt: number;
   createdBy?: string | undefined;
@@ -366,6 +365,7 @@ export type GetEdgeConfigResponseBody$Outbound = {
     | GetEdgeConfigPurpose2$Outbound
     | undefined;
   deletedAt?: number | null | undefined;
+  transfer?: GetEdgeConfigTransfer$Outbound | undefined;
   schema?: GetEdgeConfigSchema$Outbound | undefined;
   syncedToDynamoAt?: number | undefined;
   sizeInBytes: number;
@@ -378,7 +378,6 @@ export const GetEdgeConfigResponseBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetEdgeConfigResponseBody
 > = z.object({
-  transfer: z.lazy(() => GetEdgeConfigTransfer$outboundSchema).optional(),
   id: z.string(),
   createdAt: z.number(),
   createdBy: z.string().optional(),
@@ -391,6 +390,7 @@ export const GetEdgeConfigResponseBody$outboundSchema: z.ZodType<
     z.lazy(() => GetEdgeConfigPurpose2$outboundSchema),
   ]).optional(),
   deletedAt: z.nullable(z.number()).optional(),
+  transfer: z.lazy(() => GetEdgeConfigTransfer$outboundSchema).optional(),
   schema: z.lazy(() => GetEdgeConfigSchema$outboundSchema).optional(),
   syncedToDynamoAt: z.number().optional(),
   sizeInBytes: z.number(),

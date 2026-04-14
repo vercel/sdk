@@ -5,7 +5,7 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndThirtyThree } from "@vercel/sdk/models/payloaddefaultpurchasetype.js";
+import { OneHundredAndThirtyThree } from "@vercel/sdk/models/payloadbuildqueue.js";
 
 let value: OneHundredAndThirtyThree = {
   ownerId: "<id>",
@@ -21,3 +21,4 @@ let value: OneHundredAndThirtyThree = {
 | `ownerId`          | *string*           | :heavy_check_mark: | N/A                |
 | `source`           | *string*           | :heavy_check_mark: | N/A                |
 | `cause`            | *string*           | :heavy_check_mark: | N/A                |
+| `blockReason`      | *string*           | :heavy_minus_sign: | N/A                |

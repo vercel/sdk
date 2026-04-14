@@ -41,6 +41,9 @@ const (
 	NameDeployment                                      Name = "deployment"
 	NameAiGatewayAPIKeyCreated                          Name = "ai-gateway-api-key-created"
 	NameAiGatewayAPIKeyDeleted                          Name = "ai-gateway-api-key-deleted"
+	NameAiGatewayByokCredentialCreated                  Name = "ai-gateway-byok-credential-created"
+	NameAiGatewayByokCredentialDeleted                  Name = "ai-gateway-byok-credential-deleted"
+	NameAiGatewayByokCredentialUpdated                  Name = "ai-gateway-byok-credential-updated"
 	NameAccessGroupCreated                              Name = "access-group-created"
 	NameAccessGroupDeleted                              Name = "access-group-deleted"
 	NameAccessGroupProjectUpdated                       Name = "access-group-project-updated"
@@ -246,6 +249,8 @@ const (
 	NamePasskeyUpdated                                  Name = "passkey-updated"
 	NamePreviewDeploymentSuffixUpdate                   Name = "preview-deployment-suffix-update"
 	NamePrivatelinkEndpointCreated                      Name = "privatelink-endpoint-created"
+	NamePrivatelinkEndpointDeleted                      Name = "privatelink-endpoint-deleted"
+	NamePrivatelinkEndpointUpdated                      Name = "privatelink-endpoint-updated"
 	NameProductionBranchUpdated                         Name = "production-branch-updated"
 	NameProjectDirectoryListing                         Name = "project-directory-listing"
 	NameProjectAnalyticsDisabled                        Name = "project-analytics-disabled"
@@ -482,6 +487,12 @@ func (e *Name) UnmarshalJSON(data []byte) error {
 	case "ai-gateway-api-key-created":
 		fallthrough
 	case "ai-gateway-api-key-deleted":
+		fallthrough
+	case "ai-gateway-byok-credential-created":
+		fallthrough
+	case "ai-gateway-byok-credential-deleted":
+		fallthrough
+	case "ai-gateway-byok-credential-updated":
 		fallthrough
 	case "access-group-created":
 		fallthrough
@@ -892,6 +903,10 @@ func (e *Name) UnmarshalJSON(data []byte) error {
 	case "preview-deployment-suffix-update":
 		fallthrough
 	case "privatelink-endpoint-created":
+		fallthrough
+	case "privatelink-endpoint-deleted":
+		fallthrough
+	case "privatelink-endpoint-updated":
 		fallthrough
 	case "production-branch-updated":
 		fallthrough

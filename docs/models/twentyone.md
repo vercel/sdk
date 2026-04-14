@@ -8,14 +8,16 @@ The payload of the event, if requested.
 import { TwentyOne } from "@vercel/sdk/models/userevent.js";
 
 let value: TwentyOne = {
+  projectName: "<value>",
   alias: "<value>",
-  deploymentUrl: "https://glorious-embossing.com",
+  action: "removed",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `alias`            | *string*           | :heavy_check_mark: | N/A                |
-| `deploymentUrl`    | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `projectName`                                                            | *string*                                                                 | :heavy_check_mark:                                                       | N/A                                                                      |
+| `alias`                                                                  | *string*                                                                 | :heavy_check_mark:                                                       | N/A                                                                      |
+| `action`                                                                 | [models.UserEventPayload21Action](../models/usereventpayload21action.md) | :heavy_check_mark:                                                       | N/A                                                                      |

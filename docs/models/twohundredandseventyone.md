@@ -5,21 +5,14 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndSeventyOne } from "@vercel/sdk/models/twohundredandtwentynine.js";
+import { TwoHundredAndSeventyOne } from "@vercel/sdk/models/twohundredandthirtyone.js";
 
-let value: TwoHundredAndSeventyOne = {
-  exportId: "<id>",
-  from: 7701.28,
-  to: 905.99,
-  format: "<value>",
-};
+let value: TwoHundredAndSeventyOne = {};
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `exportId`         | *string*           | :heavy_check_mark: | N/A                |
-| `from`             | *number*           | :heavy_check_mark: | N/A                |
-| `to`               | *number*           | :heavy_check_mark: | N/A                |
-| `format`           | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                | Type                                                 | Required                                             | Description                                          |
+| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
+| `previous`                                           | Record<string, *models.UserEventPayload271Previous*> | :heavy_minus_sign:                                   | N/A                                                  |
+| `next`                                               | Record<string, *models.UserEventPayload271Next*>     | :heavy_minus_sign:                                   | N/A                                                  |

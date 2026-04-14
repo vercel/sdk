@@ -45,6 +45,8 @@ export const Events = {
   FirewallAttack: "firewall.attack",
   FirewallSystemRuleAnomaly: "firewall.system-rule-anomaly",
   FirewallCustomRuleAnomaly: "firewall.custom-rule-anomaly",
+  FunctionArchivalRequired: "function.archival-required",
+  FunctionRemovalRequired: "function.removal-required",
   AlertsTriggered: "alerts.triggered",
   IntegrationConfigurationPermissionUpgraded:
     "integration-configuration.permission-upgraded",
@@ -183,6 +185,8 @@ export const CreateWebhookEvents = {
   FirewallAttack: "firewall.attack",
   FirewallSystemRuleAnomaly: "firewall.system-rule-anomaly",
   FirewallCustomRuleAnomaly: "firewall.custom-rule-anomaly",
+  FunctionArchivalRequired: "function.archival-required",
+  FunctionRemovalRequired: "function.removal-required",
   AlertsTriggered: "alerts.triggered",
   IntegrationConfigurationPermissionUpgraded:
     "integration-configuration.permission-upgraded",

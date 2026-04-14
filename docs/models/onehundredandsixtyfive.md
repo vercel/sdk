@@ -5,20 +5,16 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndSixtyFive } from "@vercel/sdk/models/payloaddefaultpurchasetype.js";
+import { OneHundredAndSixtyFive } from "@vercel/sdk/models/payloadbuildqueue.js";
 
 let value: OneHundredAndSixtyFive = {
   projectId: "<id>",
   projectName: "<value>",
   previous: {
-    functionDefaultRegions: null,
+    functionDefaultTimeout: null,
   },
   next: {
-    functionDefaultRegions: [
-      "<value 1>",
-      "<value 2>",
-      "<value 3>",
-    ],
+    functionDefaultTimeout: 8563.97,
   },
 };
 ```

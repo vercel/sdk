@@ -5,11 +5,12 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndFiftySeven } from "@vercel/sdk/models/payloaddefaultpurchasetype.js";
+import { OneHundredAndFiftySeven } from "@vercel/sdk/models/payloadbuildqueue.js";
 
 let value: OneHundredAndFiftySeven = {
-  name: "<value>",
-  ownerId: "<id>",
+  clientId: "<id>",
+  projectId: "<id>",
+  projectName: "<value>",
 };
 ```
 
@@ -17,5 +18,6 @@ let value: OneHundredAndFiftySeven = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `name`             | *string*           | :heavy_check_mark: | N/A                |
-| `ownerId`          | *string*           | :heavy_check_mark: | N/A                |
+| `clientId`         | *string*           | :heavy_check_mark: | N/A                |
+| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
+| `projectName`      | *string*           | :heavy_check_mark: | N/A                |

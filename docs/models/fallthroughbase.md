@@ -3,10 +3,10 @@
 ## Example Usage
 
 ```typescript
-import { FallthroughBase } from "@vercel/sdk/models/createflagop.js";
+import { FallthroughBase } from "@vercel/sdk/models/flag.js";
 
 let value: FallthroughBase = {
-  type: "<value>",
+  type: "entity",
   kind: "<value>",
   attribute: "<value>",
 };
@@ -14,8 +14,8 @@ let value: FallthroughBase = {
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `type`             | *any*              | :heavy_check_mark: | N/A                |
-| `kind`             | *string*           | :heavy_check_mark: | N/A                |
-| `attribute`        | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                                                    | Type                                                                                     | Required                                                                                 | Description                                                                              |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `type`                                                                                   | [models.FlagFallthroughEnvironments3Type](../models/flagfallthroughenvironments3type.md) | :heavy_check_mark:                                                                       | N/A                                                                                      |
+| `kind`                                                                                   | *string*                                                                                 | :heavy_check_mark:                                                                       | N/A                                                                                      |
+| `attribute`                                                                              | *string*                                                                                 | :heavy_check_mark:                                                                       | N/A                                                                                      |

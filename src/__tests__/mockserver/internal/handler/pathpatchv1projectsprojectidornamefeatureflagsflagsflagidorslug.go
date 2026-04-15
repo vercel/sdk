@@ -64,8 +64,8 @@ func testUpdateFlagUpdateFlag0(w http.ResponseWriter, req *http.Request) {
 					Fallthrough: operations.CreateUpdateFlagResponseBodyFallthroughUnionSplit(
 						operations.UpdateFlagFallthroughSplit{
 							Type: operations.UpdateFlagFallthroughTypeSplitSplit,
-							Base: operations.UpdateFlagResponseBodyFallthroughBase{
-								Type:      operations.UpdateFlagFallthroughTypeEntityEntity,
+							Base: operations.UpdateFlagResponseBodyFallthroughBase1{
+								Type:      operations.UpdateFlagFallthroughTypeEntity1Entity,
 								Kind:      "<value>",
 								Attribute: "<value>",
 							},

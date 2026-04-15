@@ -15,6 +15,7 @@ let value: CreateSessionSnapshotResponseBody = {
     expiresAt: 1750344501629,
     createdAt: 1750344501629,
     updatedAt: 1750344501629,
+    lastUsedAt: 1750344501629,
   },
   session: {
     sourceSandboxName: "my-sandbox",

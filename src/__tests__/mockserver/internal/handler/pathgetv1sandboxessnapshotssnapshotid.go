@@ -57,6 +57,7 @@ func testGetSnapshotGetSnapshot0(w http.ResponseWriter, req *http.Request) {
 			ExpiresAt:       types.Float64(1750344501629),
 			CreatedAt:       1750344501629,
 			UpdatedAt:       1750344501629,
+			LastUsedAt:      1750344501629,
 		},
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)

@@ -319,6 +319,7 @@ export const Type = {
   ProjectCronJobsToggled: "project-cron-jobs-toggled",
   ProjectDelegatedProtectionEnabled: "project-delegated-protection-enabled",
   ProjectDelegatedProtectionUpdated: "project-delegated-protection-updated",
+  ProjectDelegatedProtectionDisabled: "project-delegated-protection-disabled",
   ProjectDelete: "project-delete",
   ProjectDomainUnverified: "project-domain-unverified",
   ProjectDomainVerified: "project-domain-verified",

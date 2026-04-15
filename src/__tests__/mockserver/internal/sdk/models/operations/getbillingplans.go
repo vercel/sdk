@@ -224,10 +224,10 @@ func (o *GetBillingPlansQuote) GetAmount() string {
 
 type GetBillingPlansPlan struct {
 	Type                               GetBillingPlansType                `json:"type"`
-	Description                        string                             `json:"description"`
 	ID                                 string                             `json:"id"`
 	Name                               string                             `json:"name"`
 	Scope                              GetBillingPlansScope               `json:"scope"`
+	Description                        string                             `json:"description"`
 	PaymentMethodRequired              bool                               `json:"paymentMethodRequired"`
 	PreauthorizationAmount             *float64                           `json:"preauthorizationAmount,omitempty"`
 	InitialCharge                      *string                            `json:"initialCharge,omitempty"`
@@ -249,13 +249,6 @@ func (o *GetBillingPlansPlan) GetType() GetBillingPlansType {
 	return o.Type
 }
 
-func (o *GetBillingPlansPlan) GetDescription() string {
-	if o == nil {
-		return ""
-	}
-	return o.Description
-}
-
 func (o *GetBillingPlansPlan) GetID() string {
 	if o == nil {
 		return ""
@@ -275,6 +268,13 @@ func (o *GetBillingPlansPlan) GetScope() GetBillingPlansScope {
 		return GetBillingPlansScope("")
 	}
 	return o.Scope
+}
+
+func (o *GetBillingPlansPlan) GetDescription() string {
+	if o == nil {
+		return ""
+	}
+	return o.Description
 }
 
 func (o *GetBillingPlansPlan) GetPaymentMethodRequired() bool {

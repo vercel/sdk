@@ -8,17 +8,20 @@ import { ListFlagVersionsRules } from "@vercel/sdk/models/listflagversionsop.js"
 let value: ListFlagVersionsRules = {
   id: "<id>",
   outcome: {
-    type: "variant",
-    variantId: "<id>",
-  },
-  conditions: [
-    {
-      lhs: {
-        type: "segment",
-      },
-      cmp: "containsNoneOf",
+    type: "split",
+    base: {
+      type: "entity",
+      kind: "<value>",
+      attribute: "<value>",
     },
-  ],
+    weights: {
+      "key": 1013.32,
+      "key1": 2943.86,
+      "key2": 2552.94,
+    },
+    defaultVariantId: "<id>",
+  },
+  conditions: [],
 };
 ```
 

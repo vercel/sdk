@@ -728,6 +728,190 @@ func (o *ListFlagVersionsPausedOutcome) GetVariantID() string {
 	return o.VariantID
 }
 
+type ListFlagVersionsFallthroughTypeRollout string
+
+const (
+	ListFlagVersionsFallthroughTypeRolloutRollout ListFlagVersionsFallthroughTypeRollout = "rollout"
+)
+
+func (e ListFlagVersionsFallthroughTypeRollout) ToPointer() *ListFlagVersionsFallthroughTypeRollout {
+	return &e
+}
+func (e *ListFlagVersionsFallthroughTypeRollout) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "rollout":
+		*e = ListFlagVersionsFallthroughTypeRollout(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for ListFlagVersionsFallthroughTypeRollout: %v", v)
+	}
+}
+
+type ListFlagVersionsFallthroughTypeEntity2 string
+
+const (
+	ListFlagVersionsFallthroughTypeEntity2Entity ListFlagVersionsFallthroughTypeEntity2 = "entity"
+)
+
+func (e ListFlagVersionsFallthroughTypeEntity2) ToPointer() *ListFlagVersionsFallthroughTypeEntity2 {
+	return &e
+}
+func (e *ListFlagVersionsFallthroughTypeEntity2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "entity":
+		*e = ListFlagVersionsFallthroughTypeEntity2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for ListFlagVersionsFallthroughTypeEntity2: %v", v)
+	}
+}
+
+type ListFlagVersionsFallthroughBase2 struct {
+	Type      ListFlagVersionsFallthroughTypeEntity2 `json:"type"`
+	Kind      string                                 `json:"kind"`
+	Attribute string                                 `json:"attribute"`
+}
+
+func (l ListFlagVersionsFallthroughBase2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(l, "", false)
+}
+
+func (l *ListFlagVersionsFallthroughBase2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &l, "", false, []string{"type", "kind", "attribute"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ListFlagVersionsFallthroughBase2) GetType() ListFlagVersionsFallthroughTypeEntity2 {
+	if o == nil {
+		return ListFlagVersionsFallthroughTypeEntity2("")
+	}
+	return o.Type
+}
+
+func (o *ListFlagVersionsFallthroughBase2) GetKind() string {
+	if o == nil {
+		return ""
+	}
+	return o.Kind
+}
+
+func (o *ListFlagVersionsFallthroughBase2) GetAttribute() string {
+	if o == nil {
+		return ""
+	}
+	return o.Attribute
+}
+
+type ListFlagVersionsFallthroughSlot struct {
+	Promille   float64 `json:"promille"`
+	DurationMs float64 `json:"durationMs"`
+}
+
+func (l ListFlagVersionsFallthroughSlot) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(l, "", false)
+}
+
+func (l *ListFlagVersionsFallthroughSlot) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &l, "", false, []string{"promille", "durationMs"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ListFlagVersionsFallthroughSlot) GetPromille() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Promille
+}
+
+func (o *ListFlagVersionsFallthroughSlot) GetDurationMs() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.DurationMs
+}
+
+type ListFlagVersionsFallthroughRollout struct {
+	Type              ListFlagVersionsFallthroughTypeRollout `json:"type"`
+	Base              ListFlagVersionsFallthroughBase2       `json:"base"`
+	DefaultVariantID  string                                 `json:"defaultVariantId"`
+	StartTimestamp    float64                                `json:"startTimestamp"`
+	RollFromVariantID string                                 `json:"rollFromVariantId"`
+	RollToVariantID   string                                 `json:"rollToVariantId"`
+	Slots             []ListFlagVersionsFallthroughSlot      `json:"slots"`
+}
+
+func (l ListFlagVersionsFallthroughRollout) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(l, "", false)
+}
+
+func (l *ListFlagVersionsFallthroughRollout) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &l, "", false, []string{"type", "base", "defaultVariantId", "startTimestamp", "rollFromVariantId", "rollToVariantId", "slots"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ListFlagVersionsFallthroughRollout) GetType() ListFlagVersionsFallthroughTypeRollout {
+	if o == nil {
+		return ListFlagVersionsFallthroughTypeRollout("")
+	}
+	return o.Type
+}
+
+func (o *ListFlagVersionsFallthroughRollout) GetBase() ListFlagVersionsFallthroughBase2 {
+	if o == nil {
+		return ListFlagVersionsFallthroughBase2{}
+	}
+	return o.Base
+}
+
+func (o *ListFlagVersionsFallthroughRollout) GetDefaultVariantID() string {
+	if o == nil {
+		return ""
+	}
+	return o.DefaultVariantID
+}
+
+func (o *ListFlagVersionsFallthroughRollout) GetStartTimestamp() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.StartTimestamp
+}
+
+func (o *ListFlagVersionsFallthroughRollout) GetRollFromVariantID() string {
+	if o == nil {
+		return ""
+	}
+	return o.RollFromVariantID
+}
+
+func (o *ListFlagVersionsFallthroughRollout) GetRollToVariantID() string {
+	if o == nil {
+		return ""
+	}
+	return o.RollToVariantID
+}
+
+func (o *ListFlagVersionsFallthroughRollout) GetSlots() []ListFlagVersionsFallthroughSlot {
+	if o == nil {
+		return []ListFlagVersionsFallthroughSlot{}
+	}
+	return o.Slots
+}
+
 type ListFlagVersionsFallthroughTypeSplit string
 
 const (
@@ -751,61 +935,61 @@ func (e *ListFlagVersionsFallthroughTypeSplit) UnmarshalJSON(data []byte) error 
 	}
 }
 
-type ListFlagVersionsFallthroughTypeEntity string
+type ListFlagVersionsFallthroughTypeEntity1 string
 
 const (
-	ListFlagVersionsFallthroughTypeEntityEntity ListFlagVersionsFallthroughTypeEntity = "entity"
+	ListFlagVersionsFallthroughTypeEntity1Entity ListFlagVersionsFallthroughTypeEntity1 = "entity"
 )
 
-func (e ListFlagVersionsFallthroughTypeEntity) ToPointer() *ListFlagVersionsFallthroughTypeEntity {
+func (e ListFlagVersionsFallthroughTypeEntity1) ToPointer() *ListFlagVersionsFallthroughTypeEntity1 {
 	return &e
 }
-func (e *ListFlagVersionsFallthroughTypeEntity) UnmarshalJSON(data []byte) error {
+func (e *ListFlagVersionsFallthroughTypeEntity1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "entity":
-		*e = ListFlagVersionsFallthroughTypeEntity(v)
+		*e = ListFlagVersionsFallthroughTypeEntity1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ListFlagVersionsFallthroughTypeEntity: %v", v)
+		return fmt.Errorf("invalid value for ListFlagVersionsFallthroughTypeEntity1: %v", v)
 	}
 }
 
-type ListFlagVersionsFallthroughBase struct {
-	Type      ListFlagVersionsFallthroughTypeEntity `json:"type"`
-	Kind      string                                `json:"kind"`
-	Attribute string                                `json:"attribute"`
+type ListFlagVersionsFallthroughBase1 struct {
+	Type      ListFlagVersionsFallthroughTypeEntity1 `json:"type"`
+	Kind      string                                 `json:"kind"`
+	Attribute string                                 `json:"attribute"`
 }
 
-func (l ListFlagVersionsFallthroughBase) MarshalJSON() ([]byte, error) {
+func (l ListFlagVersionsFallthroughBase1) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(l, "", false)
 }
 
-func (l *ListFlagVersionsFallthroughBase) UnmarshalJSON(data []byte) error {
+func (l *ListFlagVersionsFallthroughBase1) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &l, "", false, []string{"type", "kind", "attribute"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *ListFlagVersionsFallthroughBase) GetType() ListFlagVersionsFallthroughTypeEntity {
+func (o *ListFlagVersionsFallthroughBase1) GetType() ListFlagVersionsFallthroughTypeEntity1 {
 	if o == nil {
-		return ListFlagVersionsFallthroughTypeEntity("")
+		return ListFlagVersionsFallthroughTypeEntity1("")
 	}
 	return o.Type
 }
 
-func (o *ListFlagVersionsFallthroughBase) GetKind() string {
+func (o *ListFlagVersionsFallthroughBase1) GetKind() string {
 	if o == nil {
 		return ""
 	}
 	return o.Kind
 }
 
-func (o *ListFlagVersionsFallthroughBase) GetAttribute() string {
+func (o *ListFlagVersionsFallthroughBase1) GetAttribute() string {
 	if o == nil {
 		return ""
 	}
@@ -814,7 +998,7 @@ func (o *ListFlagVersionsFallthroughBase) GetAttribute() string {
 
 type ListFlagVersionsFallthroughSplit struct {
 	Type             ListFlagVersionsFallthroughTypeSplit `json:"type"`
-	Base             ListFlagVersionsFallthroughBase      `json:"base"`
+	Base             ListFlagVersionsFallthroughBase1     `json:"base"`
 	Weights          map[string]float64                   `json:"weights"`
 	DefaultVariantID string                               `json:"defaultVariantId"`
 }
@@ -837,9 +1021,9 @@ func (o *ListFlagVersionsFallthroughSplit) GetType() ListFlagVersionsFallthrough
 	return o.Type
 }
 
-func (o *ListFlagVersionsFallthroughSplit) GetBase() ListFlagVersionsFallthroughBase {
+func (o *ListFlagVersionsFallthroughSplit) GetBase() ListFlagVersionsFallthroughBase1 {
 	if o == nil {
-		return ListFlagVersionsFallthroughBase{}
+		return ListFlagVersionsFallthroughBase1{}
 	}
 	return o.Base
 }
@@ -916,11 +1100,13 @@ type ListFlagVersionsFallthroughUnionType string
 const (
 	ListFlagVersionsFallthroughUnionTypeVariant ListFlagVersionsFallthroughUnionType = "variant"
 	ListFlagVersionsFallthroughUnionTypeSplit   ListFlagVersionsFallthroughUnionType = "split"
+	ListFlagVersionsFallthroughUnionTypeRollout ListFlagVersionsFallthroughUnionType = "rollout"
 )
 
 type ListFlagVersionsFallthroughUnion struct {
 	ListFlagVersionsFallthroughVariant *ListFlagVersionsFallthroughVariant `queryParam:"inline"`
 	ListFlagVersionsFallthroughSplit   *ListFlagVersionsFallthroughSplit   `queryParam:"inline"`
+	ListFlagVersionsFallthroughRollout *ListFlagVersionsFallthroughRollout `queryParam:"inline"`
 
 	Type ListFlagVersionsFallthroughUnionType
 }
@@ -946,6 +1132,18 @@ func CreateListFlagVersionsFallthroughUnionSplit(split ListFlagVersionsFallthrou
 	return ListFlagVersionsFallthroughUnion{
 		ListFlagVersionsFallthroughSplit: &split,
 		Type:                             typ,
+	}
+}
+
+func CreateListFlagVersionsFallthroughUnionRollout(rollout ListFlagVersionsFallthroughRollout) ListFlagVersionsFallthroughUnion {
+	typ := ListFlagVersionsFallthroughUnionTypeRollout
+
+	typStr := ListFlagVersionsFallthroughTypeRollout(typ)
+	rollout.Type = typStr
+
+	return ListFlagVersionsFallthroughUnion{
+		ListFlagVersionsFallthroughRollout: &rollout,
+		Type:                               typ,
 	}
 }
 
@@ -979,6 +1177,15 @@ func (u *ListFlagVersionsFallthroughUnion) UnmarshalJSON(data []byte) error {
 		u.ListFlagVersionsFallthroughSplit = listFlagVersionsFallthroughSplit
 		u.Type = ListFlagVersionsFallthroughUnionTypeSplit
 		return nil
+	case "rollout":
+		listFlagVersionsFallthroughRollout := new(ListFlagVersionsFallthroughRollout)
+		if err := utils.UnmarshalJSON(data, &listFlagVersionsFallthroughRollout, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == rollout) type ListFlagVersionsFallthroughRollout within ListFlagVersionsFallthroughUnion: %w", string(data), err)
+		}
+
+		u.ListFlagVersionsFallthroughRollout = listFlagVersionsFallthroughRollout
+		u.Type = ListFlagVersionsFallthroughUnionTypeRollout
+		return nil
 	}
 
 	return fmt.Errorf("could not unmarshal `%s` into any supported union types for ListFlagVersionsFallthroughUnion", string(data))
@@ -993,7 +1200,195 @@ func (u ListFlagVersionsFallthroughUnion) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.ListFlagVersionsFallthroughSplit, "", true)
 	}
 
+	if u.ListFlagVersionsFallthroughRollout != nil {
+		return utils.MarshalJSON(u.ListFlagVersionsFallthroughRollout, "", true)
+	}
+
 	return nil, errors.New("could not marshal union type ListFlagVersionsFallthroughUnion: all fields are null")
+}
+
+type ListFlagVersionsOutcomeTypeRollout string
+
+const (
+	ListFlagVersionsOutcomeTypeRolloutRollout ListFlagVersionsOutcomeTypeRollout = "rollout"
+)
+
+func (e ListFlagVersionsOutcomeTypeRollout) ToPointer() *ListFlagVersionsOutcomeTypeRollout {
+	return &e
+}
+func (e *ListFlagVersionsOutcomeTypeRollout) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "rollout":
+		*e = ListFlagVersionsOutcomeTypeRollout(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for ListFlagVersionsOutcomeTypeRollout: %v", v)
+	}
+}
+
+type ListFlagVersionsOutcomeTypeEntity2 string
+
+const (
+	ListFlagVersionsOutcomeTypeEntity2Entity ListFlagVersionsOutcomeTypeEntity2 = "entity"
+)
+
+func (e ListFlagVersionsOutcomeTypeEntity2) ToPointer() *ListFlagVersionsOutcomeTypeEntity2 {
+	return &e
+}
+func (e *ListFlagVersionsOutcomeTypeEntity2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "entity":
+		*e = ListFlagVersionsOutcomeTypeEntity2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for ListFlagVersionsOutcomeTypeEntity2: %v", v)
+	}
+}
+
+type ListFlagVersionsOutcomeBase2 struct {
+	Type      ListFlagVersionsOutcomeTypeEntity2 `json:"type"`
+	Kind      string                             `json:"kind"`
+	Attribute string                             `json:"attribute"`
+}
+
+func (l ListFlagVersionsOutcomeBase2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(l, "", false)
+}
+
+func (l *ListFlagVersionsOutcomeBase2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &l, "", false, []string{"type", "kind", "attribute"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ListFlagVersionsOutcomeBase2) GetType() ListFlagVersionsOutcomeTypeEntity2 {
+	if o == nil {
+		return ListFlagVersionsOutcomeTypeEntity2("")
+	}
+	return o.Type
+}
+
+func (o *ListFlagVersionsOutcomeBase2) GetKind() string {
+	if o == nil {
+		return ""
+	}
+	return o.Kind
+}
+
+func (o *ListFlagVersionsOutcomeBase2) GetAttribute() string {
+	if o == nil {
+		return ""
+	}
+	return o.Attribute
+}
+
+type ListFlagVersionsOutcomeSlot struct {
+	Promille   float64 `json:"promille"`
+	DurationMs float64 `json:"durationMs"`
+}
+
+func (l ListFlagVersionsOutcomeSlot) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(l, "", false)
+}
+
+func (l *ListFlagVersionsOutcomeSlot) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &l, "", false, []string{"promille", "durationMs"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ListFlagVersionsOutcomeSlot) GetPromille() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Promille
+}
+
+func (o *ListFlagVersionsOutcomeSlot) GetDurationMs() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.DurationMs
+}
+
+type ListFlagVersionsOutcomeRollout struct {
+	Type              ListFlagVersionsOutcomeTypeRollout `json:"type"`
+	Base              ListFlagVersionsOutcomeBase2       `json:"base"`
+	DefaultVariantID  string                             `json:"defaultVariantId"`
+	StartTimestamp    float64                            `json:"startTimestamp"`
+	RollFromVariantID string                             `json:"rollFromVariantId"`
+	RollToVariantID   string                             `json:"rollToVariantId"`
+	Slots             []ListFlagVersionsOutcomeSlot      `json:"slots"`
+}
+
+func (l ListFlagVersionsOutcomeRollout) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(l, "", false)
+}
+
+func (l *ListFlagVersionsOutcomeRollout) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &l, "", false, []string{"type", "base", "defaultVariantId", "startTimestamp", "rollFromVariantId", "rollToVariantId", "slots"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ListFlagVersionsOutcomeRollout) GetType() ListFlagVersionsOutcomeTypeRollout {
+	if o == nil {
+		return ListFlagVersionsOutcomeTypeRollout("")
+	}
+	return o.Type
+}
+
+func (o *ListFlagVersionsOutcomeRollout) GetBase() ListFlagVersionsOutcomeBase2 {
+	if o == nil {
+		return ListFlagVersionsOutcomeBase2{}
+	}
+	return o.Base
+}
+
+func (o *ListFlagVersionsOutcomeRollout) GetDefaultVariantID() string {
+	if o == nil {
+		return ""
+	}
+	return o.DefaultVariantID
+}
+
+func (o *ListFlagVersionsOutcomeRollout) GetStartTimestamp() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.StartTimestamp
+}
+
+func (o *ListFlagVersionsOutcomeRollout) GetRollFromVariantID() string {
+	if o == nil {
+		return ""
+	}
+	return o.RollFromVariantID
+}
+
+func (o *ListFlagVersionsOutcomeRollout) GetRollToVariantID() string {
+	if o == nil {
+		return ""
+	}
+	return o.RollToVariantID
+}
+
+func (o *ListFlagVersionsOutcomeRollout) GetSlots() []ListFlagVersionsOutcomeSlot {
+	if o == nil {
+		return []ListFlagVersionsOutcomeSlot{}
+	}
+	return o.Slots
 }
 
 type ListFlagVersionsOutcomeTypeSplit string
@@ -1019,61 +1414,61 @@ func (e *ListFlagVersionsOutcomeTypeSplit) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type ListFlagVersionsOutcomeTypeEntity string
+type ListFlagVersionsOutcomeTypeEntity1 string
 
 const (
-	ListFlagVersionsOutcomeTypeEntityEntity ListFlagVersionsOutcomeTypeEntity = "entity"
+	ListFlagVersionsOutcomeTypeEntity1Entity ListFlagVersionsOutcomeTypeEntity1 = "entity"
 )
 
-func (e ListFlagVersionsOutcomeTypeEntity) ToPointer() *ListFlagVersionsOutcomeTypeEntity {
+func (e ListFlagVersionsOutcomeTypeEntity1) ToPointer() *ListFlagVersionsOutcomeTypeEntity1 {
 	return &e
 }
-func (e *ListFlagVersionsOutcomeTypeEntity) UnmarshalJSON(data []byte) error {
+func (e *ListFlagVersionsOutcomeTypeEntity1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "entity":
-		*e = ListFlagVersionsOutcomeTypeEntity(v)
+		*e = ListFlagVersionsOutcomeTypeEntity1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ListFlagVersionsOutcomeTypeEntity: %v", v)
+		return fmt.Errorf("invalid value for ListFlagVersionsOutcomeTypeEntity1: %v", v)
 	}
 }
 
-type ListFlagVersionsOutcomeBase struct {
-	Type      ListFlagVersionsOutcomeTypeEntity `json:"type"`
-	Kind      string                            `json:"kind"`
-	Attribute string                            `json:"attribute"`
+type ListFlagVersionsOutcomeBase1 struct {
+	Type      ListFlagVersionsOutcomeTypeEntity1 `json:"type"`
+	Kind      string                             `json:"kind"`
+	Attribute string                             `json:"attribute"`
 }
 
-func (l ListFlagVersionsOutcomeBase) MarshalJSON() ([]byte, error) {
+func (l ListFlagVersionsOutcomeBase1) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(l, "", false)
 }
 
-func (l *ListFlagVersionsOutcomeBase) UnmarshalJSON(data []byte) error {
+func (l *ListFlagVersionsOutcomeBase1) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &l, "", false, []string{"type", "kind", "attribute"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *ListFlagVersionsOutcomeBase) GetType() ListFlagVersionsOutcomeTypeEntity {
+func (o *ListFlagVersionsOutcomeBase1) GetType() ListFlagVersionsOutcomeTypeEntity1 {
 	if o == nil {
-		return ListFlagVersionsOutcomeTypeEntity("")
+		return ListFlagVersionsOutcomeTypeEntity1("")
 	}
 	return o.Type
 }
 
-func (o *ListFlagVersionsOutcomeBase) GetKind() string {
+func (o *ListFlagVersionsOutcomeBase1) GetKind() string {
 	if o == nil {
 		return ""
 	}
 	return o.Kind
 }
 
-func (o *ListFlagVersionsOutcomeBase) GetAttribute() string {
+func (o *ListFlagVersionsOutcomeBase1) GetAttribute() string {
 	if o == nil {
 		return ""
 	}
@@ -1082,7 +1477,7 @@ func (o *ListFlagVersionsOutcomeBase) GetAttribute() string {
 
 type ListFlagVersionsOutcomeSplit struct {
 	Type             ListFlagVersionsOutcomeTypeSplit `json:"type"`
-	Base             ListFlagVersionsOutcomeBase      `json:"base"`
+	Base             ListFlagVersionsOutcomeBase1     `json:"base"`
 	Weights          map[string]float64               `json:"weights"`
 	DefaultVariantID string                           `json:"defaultVariantId"`
 }
@@ -1105,9 +1500,9 @@ func (o *ListFlagVersionsOutcomeSplit) GetType() ListFlagVersionsOutcomeTypeSpli
 	return o.Type
 }
 
-func (o *ListFlagVersionsOutcomeSplit) GetBase() ListFlagVersionsOutcomeBase {
+func (o *ListFlagVersionsOutcomeSplit) GetBase() ListFlagVersionsOutcomeBase1 {
 	if o == nil {
-		return ListFlagVersionsOutcomeBase{}
+		return ListFlagVersionsOutcomeBase1{}
 	}
 	return o.Base
 }
@@ -1184,11 +1579,13 @@ type ListFlagVersionsOutcomeUnionType string
 const (
 	ListFlagVersionsOutcomeUnionTypeVariant ListFlagVersionsOutcomeUnionType = "variant"
 	ListFlagVersionsOutcomeUnionTypeSplit   ListFlagVersionsOutcomeUnionType = "split"
+	ListFlagVersionsOutcomeUnionTypeRollout ListFlagVersionsOutcomeUnionType = "rollout"
 )
 
 type ListFlagVersionsOutcomeUnion struct {
 	ListFlagVersionsOutcomeVariant *ListFlagVersionsOutcomeVariant `queryParam:"inline"`
 	ListFlagVersionsOutcomeSplit   *ListFlagVersionsOutcomeSplit   `queryParam:"inline"`
+	ListFlagVersionsOutcomeRollout *ListFlagVersionsOutcomeRollout `queryParam:"inline"`
 
 	Type ListFlagVersionsOutcomeUnionType
 }
@@ -1214,6 +1611,18 @@ func CreateListFlagVersionsOutcomeUnionSplit(split ListFlagVersionsOutcomeSplit)
 	return ListFlagVersionsOutcomeUnion{
 		ListFlagVersionsOutcomeSplit: &split,
 		Type:                         typ,
+	}
+}
+
+func CreateListFlagVersionsOutcomeUnionRollout(rollout ListFlagVersionsOutcomeRollout) ListFlagVersionsOutcomeUnion {
+	typ := ListFlagVersionsOutcomeUnionTypeRollout
+
+	typStr := ListFlagVersionsOutcomeTypeRollout(typ)
+	rollout.Type = typStr
+
+	return ListFlagVersionsOutcomeUnion{
+		ListFlagVersionsOutcomeRollout: &rollout,
+		Type:                           typ,
 	}
 }
 
@@ -1247,6 +1656,15 @@ func (u *ListFlagVersionsOutcomeUnion) UnmarshalJSON(data []byte) error {
 		u.ListFlagVersionsOutcomeSplit = listFlagVersionsOutcomeSplit
 		u.Type = ListFlagVersionsOutcomeUnionTypeSplit
 		return nil
+	case "rollout":
+		listFlagVersionsOutcomeRollout := new(ListFlagVersionsOutcomeRollout)
+		if err := utils.UnmarshalJSON(data, &listFlagVersionsOutcomeRollout, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == rollout) type ListFlagVersionsOutcomeRollout within ListFlagVersionsOutcomeUnion: %w", string(data), err)
+		}
+
+		u.ListFlagVersionsOutcomeRollout = listFlagVersionsOutcomeRollout
+		u.Type = ListFlagVersionsOutcomeUnionTypeRollout
+		return nil
 	}
 
 	return fmt.Errorf("could not unmarshal `%s` into any supported union types for ListFlagVersionsOutcomeUnion", string(data))
@@ -1259,6 +1677,10 @@ func (u ListFlagVersionsOutcomeUnion) MarshalJSON() ([]byte, error) {
 
 	if u.ListFlagVersionsOutcomeSplit != nil {
 		return utils.MarshalJSON(u.ListFlagVersionsOutcomeSplit, "", true)
+	}
+
+	if u.ListFlagVersionsOutcomeRollout != nil {
+		return utils.MarshalJSON(u.ListFlagVersionsOutcomeRollout, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type ListFlagVersionsOutcomeUnion: all fields are null")
@@ -2011,6 +2433,10 @@ func (o *ListFlagVersionsRule) GetOutcomeSplit() *ListFlagVersionsOutcomeSplit {
 	return o.GetOutcome().ListFlagVersionsOutcomeSplit
 }
 
+func (o *ListFlagVersionsRule) GetOutcomeRollout() *ListFlagVersionsOutcomeRollout {
+	return o.GetOutcome().ListFlagVersionsOutcomeRollout
+}
+
 func (o *ListFlagVersionsRule) GetConditions() []ListFlagVersionsCondition {
 	if o == nil {
 		return []ListFlagVersionsCondition{}
@@ -2069,6 +2495,10 @@ func (o *ListFlagVersionsEnvironments) GetFallthroughVariant() *ListFlagVersions
 
 func (o *ListFlagVersionsEnvironments) GetFallthroughSplit() *ListFlagVersionsFallthroughSplit {
 	return o.GetFallthrough().ListFlagVersionsFallthroughSplit
+}
+
+func (o *ListFlagVersionsEnvironments) GetFallthroughRollout() *ListFlagVersionsFallthroughRollout {
+	return o.GetFallthrough().ListFlagVersionsFallthroughRollout
 }
 
 func (o *ListFlagVersionsEnvironments) GetActive() bool {

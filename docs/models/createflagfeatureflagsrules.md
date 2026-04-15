@@ -8,18 +8,17 @@ import { CreateFlagFeatureFlagsRules } from "@vercel/sdk/models/createflagop.js"
 let value: CreateFlagFeatureFlagsRules = {
   id: "<id>",
   outcome: {
-    type: "split",
+    type: "rollout",
     base: {
       type: "entity",
       kind: "<value>",
       attribute: "<value>",
     },
-    weights: {
-      "key": 4023.69,
-      "key1": 3498.59,
-      "key2": 3958.83,
-    },
     defaultVariantId: "<id>",
+    startTimestamp: 8781.29,
+    rollFromVariantId: "<id>",
+    rollToVariantId: "<id>",
+    slots: [],
   },
   conditions: [],
 };

@@ -23,6 +23,7 @@ const value: models.ListSessionSnapshotsResponseBody2 = {
       expiresAt: 1750344501629,
       createdAt: 1750344501629,
       updatedAt: 1750344501629,
+      lastUsedAt: 1750344501629,
     },
   ],
   pagination: {

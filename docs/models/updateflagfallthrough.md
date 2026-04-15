@@ -31,3 +31,26 @@ const value: models.UpdateFlagFallthrough2 = {
 };
 ```
 
+### `models.UpdateFlagFallthrough3`
+
+```typescript
+const value: models.UpdateFlagFallthrough3 = {
+  type: "<value>",
+  base: {
+    type: "<value>",
+    kind: "<value>",
+    attribute: "<value>",
+  },
+  startTimestamp: 6984.75,
+  rollFromVariantId: "<id>",
+  rollToVariantId: "<id>",
+  defaultVariantId: "<id>",
+  slots: [
+    {
+      promille: 475.38,
+      durationMs: 3893.57,
+    },
+  ],
+};
+```
+

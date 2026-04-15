@@ -19,16 +19,26 @@ let value: CreateFlagFeatureFlagsEnvironments = {
     {
       id: "<id>",
       outcome: {
-        type: "split",
+        type: "rollout",
         base: {
           type: "entity",
           kind: "<value>",
           attribute: "<value>",
         },
-        weights: {},
         defaultVariantId: "<id>",
+        startTimestamp: 493.57,
+        rollFromVariantId: "<id>",
+        rollToVariantId: "<id>",
+        slots: [],
       },
-      conditions: [],
+      conditions: [
+        {
+          lhs: {
+            type: "segment",
+          },
+          cmp: "containsNoneOf",
+        },
+      ],
     },
   ],
 };

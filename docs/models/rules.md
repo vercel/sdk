@@ -8,17 +8,17 @@ import { Rules } from "@vercel/sdk/models/flag.js";
 let value: Rules = {
   id: "<id>",
   outcome: {
-    type: "split",
+    type: "rollout",
     base: {
       type: "entity",
       kind: "<value>",
       attribute: "<value>",
     },
-    weights: {
-      "key": 1208.01,
-      "key1": 2235.64,
-    },
     defaultVariantId: "<id>",
+    startTimestamp: 5347.28,
+    rollFromVariantId: "<id>",
+    rollToVariantId: "<id>",
+    slots: [],
   },
   conditions: [],
 };

@@ -184,15 +184,45 @@ export type ListFlagVersionsPausedOutcome = {
   variantId: string;
 };
 
-export const ListFlagVersionsFallthroughFeatureFlagsResponseType = {
+export const ListFlagVersionsFallthroughFeatureFlagsResponse200ApplicationJSONType =
+  {
+    Entity: "entity",
+  } as const;
+export type ListFlagVersionsFallthroughFeatureFlagsResponse200ApplicationJSONType =
+  ClosedEnum<
+    typeof ListFlagVersionsFallthroughFeatureFlagsResponse200ApplicationJSONType
+  >;
+
+export type ListFlagVersionsFallthroughFeatureFlagsBase = {
+  type: ListFlagVersionsFallthroughFeatureFlagsResponse200ApplicationJSONType;
+  kind: string;
+  attribute: string;
+};
+
+export type ListFlagVersionsFallthroughSlots = {
+  promille: number;
+  durationMs: number;
+};
+
+export type ListFlagVersionsFallthrough3 = {
+  type: "rollout";
+  base: ListFlagVersionsFallthroughFeatureFlagsBase;
+  defaultVariantId: string;
+  startTimestamp: number;
+  rollFromVariantId: string;
+  rollToVariantId: string;
+  slots: Array<ListFlagVersionsFallthroughSlots>;
+};
+
+export const ListFlagVersionsFallthroughFeatureFlagsResponse200Type = {
   Entity: "entity",
 } as const;
-export type ListFlagVersionsFallthroughFeatureFlagsResponseType = ClosedEnum<
-  typeof ListFlagVersionsFallthroughFeatureFlagsResponseType
+export type ListFlagVersionsFallthroughFeatureFlagsResponse200Type = ClosedEnum<
+  typeof ListFlagVersionsFallthroughFeatureFlagsResponse200Type
 >;
 
 export type ListFlagVersionsFallthroughBase = {
-  type: ListFlagVersionsFallthroughFeatureFlagsResponseType;
+  type: ListFlagVersionsFallthroughFeatureFlagsResponse200Type;
   kind: string;
   attribute: string;
 };
@@ -211,17 +241,48 @@ export type ListFlagVersionsFallthrough1 = {
 
 export type ListFlagVersionsFallthrough =
   | ListFlagVersionsFallthrough1
-  | ListFlagVersionsFallthrough2;
+  | ListFlagVersionsFallthrough2
+  | ListFlagVersionsFallthrough3;
 
-export const ListFlagVersionsOutcomeFeatureFlagsResponseType = {
+export const ListFlagVersionsOutcomeFeatureFlagsResponse200ApplicationJSONType =
+  {
+    Entity: "entity",
+  } as const;
+export type ListFlagVersionsOutcomeFeatureFlagsResponse200ApplicationJSONType =
+  ClosedEnum<
+    typeof ListFlagVersionsOutcomeFeatureFlagsResponse200ApplicationJSONType
+  >;
+
+export type ListFlagVersionsOutcomeFeatureFlagsBase = {
+  type: ListFlagVersionsOutcomeFeatureFlagsResponse200ApplicationJSONType;
+  kind: string;
+  attribute: string;
+};
+
+export type ListFlagVersionsOutcomeSlots = {
+  promille: number;
+  durationMs: number;
+};
+
+export type ListFlagVersionsOutcome3 = {
+  type: "rollout";
+  base: ListFlagVersionsOutcomeFeatureFlagsBase;
+  defaultVariantId: string;
+  startTimestamp: number;
+  rollFromVariantId: string;
+  rollToVariantId: string;
+  slots: Array<ListFlagVersionsOutcomeSlots>;
+};
+
+export const ListFlagVersionsOutcomeFeatureFlagsResponse200Type = {
   Entity: "entity",
 } as const;
-export type ListFlagVersionsOutcomeFeatureFlagsResponseType = ClosedEnum<
-  typeof ListFlagVersionsOutcomeFeatureFlagsResponseType
+export type ListFlagVersionsOutcomeFeatureFlagsResponse200Type = ClosedEnum<
+  typeof ListFlagVersionsOutcomeFeatureFlagsResponse200Type
 >;
 
 export type ListFlagVersionsOutcomeBase = {
-  type: ListFlagVersionsOutcomeFeatureFlagsResponseType;
+  type: ListFlagVersionsOutcomeFeatureFlagsResponse200Type;
   kind: string;
   attribute: string;
 };
@@ -240,7 +301,8 @@ export type ListFlagVersionsOutcome1 = {
 
 export type ListFlagVersionsOutcome =
   | ListFlagVersionsOutcome1
-  | ListFlagVersionsOutcome2;
+  | ListFlagVersionsOutcome2
+  | ListFlagVersionsOutcome3;
 
 export const ListFlagVersionsRhsFeatureFlagsType = {
   Regex: "regex",
@@ -349,7 +411,10 @@ export type ListFlagVersionsConditions = {
 
 export type ListFlagVersionsRules = {
   id: string;
-  outcome: ListFlagVersionsOutcome1 | ListFlagVersionsOutcome2;
+  outcome:
+    | ListFlagVersionsOutcome1
+    | ListFlagVersionsOutcome2
+    | ListFlagVersionsOutcome3;
   conditions: Array<ListFlagVersionsConditions>;
 };
 
@@ -362,7 +427,10 @@ export type ListFlagVersionsEnvironments = {
   } | undefined;
   revision?: number | undefined;
   pausedOutcome: ListFlagVersionsPausedOutcome;
-  fallthrough: ListFlagVersionsFallthrough1 | ListFlagVersionsFallthrough2;
+  fallthrough:
+    | ListFlagVersionsFallthrough1
+    | ListFlagVersionsFallthrough2
+    | ListFlagVersionsFallthrough3;
   active: boolean;
   rules: Array<ListFlagVersionsRules>;
 };
@@ -954,13 +1022,192 @@ export function listFlagVersionsPausedOutcomeFromJSON(
 }
 
 /** @internal */
-export const ListFlagVersionsFallthroughFeatureFlagsResponseType$inboundSchema:
-  z.ZodNativeEnum<typeof ListFlagVersionsFallthroughFeatureFlagsResponseType> =
-    z.nativeEnum(ListFlagVersionsFallthroughFeatureFlagsResponseType);
+export const ListFlagVersionsFallthroughFeatureFlagsResponse200ApplicationJSONType$inboundSchema:
+  z.ZodNativeEnum<
+    typeof ListFlagVersionsFallthroughFeatureFlagsResponse200ApplicationJSONType
+  > = z.nativeEnum(
+    ListFlagVersionsFallthroughFeatureFlagsResponse200ApplicationJSONType,
+  );
 /** @internal */
-export const ListFlagVersionsFallthroughFeatureFlagsResponseType$outboundSchema:
-  z.ZodNativeEnum<typeof ListFlagVersionsFallthroughFeatureFlagsResponseType> =
-    ListFlagVersionsFallthroughFeatureFlagsResponseType$inboundSchema;
+export const ListFlagVersionsFallthroughFeatureFlagsResponse200ApplicationJSONType$outboundSchema:
+  z.ZodNativeEnum<
+    typeof ListFlagVersionsFallthroughFeatureFlagsResponse200ApplicationJSONType
+  > =
+    ListFlagVersionsFallthroughFeatureFlagsResponse200ApplicationJSONType$inboundSchema;
+
+/** @internal */
+export const ListFlagVersionsFallthroughFeatureFlagsBase$inboundSchema:
+  z.ZodType<
+    ListFlagVersionsFallthroughFeatureFlagsBase,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    type:
+      ListFlagVersionsFallthroughFeatureFlagsResponse200ApplicationJSONType$inboundSchema,
+    kind: types.string(),
+    attribute: types.string(),
+  });
+/** @internal */
+export type ListFlagVersionsFallthroughFeatureFlagsBase$Outbound = {
+  type: string;
+  kind: string;
+  attribute: string;
+};
+
+/** @internal */
+export const ListFlagVersionsFallthroughFeatureFlagsBase$outboundSchema:
+  z.ZodType<
+    ListFlagVersionsFallthroughFeatureFlagsBase$Outbound,
+    z.ZodTypeDef,
+    ListFlagVersionsFallthroughFeatureFlagsBase
+  > = z.object({
+    type:
+      ListFlagVersionsFallthroughFeatureFlagsResponse200ApplicationJSONType$outboundSchema,
+    kind: z.string(),
+    attribute: z.string(),
+  });
+
+export function listFlagVersionsFallthroughFeatureFlagsBaseToJSON(
+  listFlagVersionsFallthroughFeatureFlagsBase:
+    ListFlagVersionsFallthroughFeatureFlagsBase,
+): string {
+  return JSON.stringify(
+    ListFlagVersionsFallthroughFeatureFlagsBase$outboundSchema.parse(
+      listFlagVersionsFallthroughFeatureFlagsBase,
+    ),
+  );
+}
+export function listFlagVersionsFallthroughFeatureFlagsBaseFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  ListFlagVersionsFallthroughFeatureFlagsBase,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ListFlagVersionsFallthroughFeatureFlagsBase$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'ListFlagVersionsFallthroughFeatureFlagsBase' from JSON`,
+  );
+}
+
+/** @internal */
+export const ListFlagVersionsFallthroughSlots$inboundSchema: z.ZodType<
+  ListFlagVersionsFallthroughSlots,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  promille: types.number(),
+  durationMs: types.number(),
+});
+/** @internal */
+export type ListFlagVersionsFallthroughSlots$Outbound = {
+  promille: number;
+  durationMs: number;
+};
+
+/** @internal */
+export const ListFlagVersionsFallthroughSlots$outboundSchema: z.ZodType<
+  ListFlagVersionsFallthroughSlots$Outbound,
+  z.ZodTypeDef,
+  ListFlagVersionsFallthroughSlots
+> = z.object({
+  promille: z.number(),
+  durationMs: z.number(),
+});
+
+export function listFlagVersionsFallthroughSlotsToJSON(
+  listFlagVersionsFallthroughSlots: ListFlagVersionsFallthroughSlots,
+): string {
+  return JSON.stringify(
+    ListFlagVersionsFallthroughSlots$outboundSchema.parse(
+      listFlagVersionsFallthroughSlots,
+    ),
+  );
+}
+export function listFlagVersionsFallthroughSlotsFromJSON(
+  jsonString: string,
+): SafeParseResult<ListFlagVersionsFallthroughSlots, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListFlagVersionsFallthroughSlots$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListFlagVersionsFallthroughSlots' from JSON`,
+  );
+}
+
+/** @internal */
+export const ListFlagVersionsFallthrough3$inboundSchema: z.ZodType<
+  ListFlagVersionsFallthrough3,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: types.literal("rollout"),
+  base: z.lazy(() => ListFlagVersionsFallthroughFeatureFlagsBase$inboundSchema),
+  defaultVariantId: types.string(),
+  startTimestamp: types.number(),
+  rollFromVariantId: types.string(),
+  rollToVariantId: types.string(),
+  slots: z.array(z.lazy(() => ListFlagVersionsFallthroughSlots$inboundSchema)),
+});
+/** @internal */
+export type ListFlagVersionsFallthrough3$Outbound = {
+  type: "rollout";
+  base: ListFlagVersionsFallthroughFeatureFlagsBase$Outbound;
+  defaultVariantId: string;
+  startTimestamp: number;
+  rollFromVariantId: string;
+  rollToVariantId: string;
+  slots: Array<ListFlagVersionsFallthroughSlots$Outbound>;
+};
+
+/** @internal */
+export const ListFlagVersionsFallthrough3$outboundSchema: z.ZodType<
+  ListFlagVersionsFallthrough3$Outbound,
+  z.ZodTypeDef,
+  ListFlagVersionsFallthrough3
+> = z.object({
+  type: z.literal("rollout"),
+  base: z.lazy(() =>
+    ListFlagVersionsFallthroughFeatureFlagsBase$outboundSchema
+  ),
+  defaultVariantId: z.string(),
+  startTimestamp: z.number(),
+  rollFromVariantId: z.string(),
+  rollToVariantId: z.string(),
+  slots: z.array(z.lazy(() => ListFlagVersionsFallthroughSlots$outboundSchema)),
+});
+
+export function listFlagVersionsFallthrough3ToJSON(
+  listFlagVersionsFallthrough3: ListFlagVersionsFallthrough3,
+): string {
+  return JSON.stringify(
+    ListFlagVersionsFallthrough3$outboundSchema.parse(
+      listFlagVersionsFallthrough3,
+    ),
+  );
+}
+export function listFlagVersionsFallthrough3FromJSON(
+  jsonString: string,
+): SafeParseResult<ListFlagVersionsFallthrough3, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListFlagVersionsFallthrough3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListFlagVersionsFallthrough3' from JSON`,
+  );
+}
+
+/** @internal */
+export const ListFlagVersionsFallthroughFeatureFlagsResponse200Type$inboundSchema:
+  z.ZodNativeEnum<
+    typeof ListFlagVersionsFallthroughFeatureFlagsResponse200Type
+  > = z.nativeEnum(ListFlagVersionsFallthroughFeatureFlagsResponse200Type);
+/** @internal */
+export const ListFlagVersionsFallthroughFeatureFlagsResponse200Type$outboundSchema:
+  z.ZodNativeEnum<
+    typeof ListFlagVersionsFallthroughFeatureFlagsResponse200Type
+  > = ListFlagVersionsFallthroughFeatureFlagsResponse200Type$inboundSchema;
 
 /** @internal */
 export const ListFlagVersionsFallthroughBase$inboundSchema: z.ZodType<
@@ -968,7 +1215,7 @@ export const ListFlagVersionsFallthroughBase$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: ListFlagVersionsFallthroughFeatureFlagsResponseType$inboundSchema,
+  type: ListFlagVersionsFallthroughFeatureFlagsResponse200Type$inboundSchema,
   kind: types.string(),
   attribute: types.string(),
 });
@@ -985,7 +1232,7 @@ export const ListFlagVersionsFallthroughBase$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ListFlagVersionsFallthroughBase
 > = z.object({
-  type: ListFlagVersionsFallthroughFeatureFlagsResponseType$outboundSchema,
+  type: ListFlagVersionsFallthroughFeatureFlagsResponse200Type$outboundSchema,
   kind: z.string(),
   attribute: z.string(),
 });
@@ -1111,11 +1358,13 @@ export const ListFlagVersionsFallthrough$inboundSchema: z.ZodType<
 > = z.union([
   z.lazy(() => ListFlagVersionsFallthrough1$inboundSchema),
   z.lazy(() => ListFlagVersionsFallthrough2$inboundSchema),
+  z.lazy(() => ListFlagVersionsFallthrough3$inboundSchema),
 ]);
 /** @internal */
 export type ListFlagVersionsFallthrough$Outbound =
   | ListFlagVersionsFallthrough1$Outbound
-  | ListFlagVersionsFallthrough2$Outbound;
+  | ListFlagVersionsFallthrough2$Outbound
+  | ListFlagVersionsFallthrough3$Outbound;
 
 /** @internal */
 export const ListFlagVersionsFallthrough$outboundSchema: z.ZodType<
@@ -1125,6 +1374,7 @@ export const ListFlagVersionsFallthrough$outboundSchema: z.ZodType<
 > = z.union([
   z.lazy(() => ListFlagVersionsFallthrough1$outboundSchema),
   z.lazy(() => ListFlagVersionsFallthrough2$outboundSchema),
+  z.lazy(() => ListFlagVersionsFallthrough3$outboundSchema),
 ]);
 
 export function listFlagVersionsFallthroughToJSON(
@@ -1147,13 +1397,184 @@ export function listFlagVersionsFallthroughFromJSON(
 }
 
 /** @internal */
-export const ListFlagVersionsOutcomeFeatureFlagsResponseType$inboundSchema:
-  z.ZodNativeEnum<typeof ListFlagVersionsOutcomeFeatureFlagsResponseType> = z
-    .nativeEnum(ListFlagVersionsOutcomeFeatureFlagsResponseType);
+export const ListFlagVersionsOutcomeFeatureFlagsResponse200ApplicationJSONType$inboundSchema:
+  z.ZodNativeEnum<
+    typeof ListFlagVersionsOutcomeFeatureFlagsResponse200ApplicationJSONType
+  > = z.nativeEnum(
+    ListFlagVersionsOutcomeFeatureFlagsResponse200ApplicationJSONType,
+  );
 /** @internal */
-export const ListFlagVersionsOutcomeFeatureFlagsResponseType$outboundSchema:
-  z.ZodNativeEnum<typeof ListFlagVersionsOutcomeFeatureFlagsResponseType> =
-    ListFlagVersionsOutcomeFeatureFlagsResponseType$inboundSchema;
+export const ListFlagVersionsOutcomeFeatureFlagsResponse200ApplicationJSONType$outboundSchema:
+  z.ZodNativeEnum<
+    typeof ListFlagVersionsOutcomeFeatureFlagsResponse200ApplicationJSONType
+  > =
+    ListFlagVersionsOutcomeFeatureFlagsResponse200ApplicationJSONType$inboundSchema;
+
+/** @internal */
+export const ListFlagVersionsOutcomeFeatureFlagsBase$inboundSchema: z.ZodType<
+  ListFlagVersionsOutcomeFeatureFlagsBase,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type:
+    ListFlagVersionsOutcomeFeatureFlagsResponse200ApplicationJSONType$inboundSchema,
+  kind: types.string(),
+  attribute: types.string(),
+});
+/** @internal */
+export type ListFlagVersionsOutcomeFeatureFlagsBase$Outbound = {
+  type: string;
+  kind: string;
+  attribute: string;
+};
+
+/** @internal */
+export const ListFlagVersionsOutcomeFeatureFlagsBase$outboundSchema: z.ZodType<
+  ListFlagVersionsOutcomeFeatureFlagsBase$Outbound,
+  z.ZodTypeDef,
+  ListFlagVersionsOutcomeFeatureFlagsBase
+> = z.object({
+  type:
+    ListFlagVersionsOutcomeFeatureFlagsResponse200ApplicationJSONType$outboundSchema,
+  kind: z.string(),
+  attribute: z.string(),
+});
+
+export function listFlagVersionsOutcomeFeatureFlagsBaseToJSON(
+  listFlagVersionsOutcomeFeatureFlagsBase:
+    ListFlagVersionsOutcomeFeatureFlagsBase,
+): string {
+  return JSON.stringify(
+    ListFlagVersionsOutcomeFeatureFlagsBase$outboundSchema.parse(
+      listFlagVersionsOutcomeFeatureFlagsBase,
+    ),
+  );
+}
+export function listFlagVersionsOutcomeFeatureFlagsBaseFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  ListFlagVersionsOutcomeFeatureFlagsBase,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ListFlagVersionsOutcomeFeatureFlagsBase$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'ListFlagVersionsOutcomeFeatureFlagsBase' from JSON`,
+  );
+}
+
+/** @internal */
+export const ListFlagVersionsOutcomeSlots$inboundSchema: z.ZodType<
+  ListFlagVersionsOutcomeSlots,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  promille: types.number(),
+  durationMs: types.number(),
+});
+/** @internal */
+export type ListFlagVersionsOutcomeSlots$Outbound = {
+  promille: number;
+  durationMs: number;
+};
+
+/** @internal */
+export const ListFlagVersionsOutcomeSlots$outboundSchema: z.ZodType<
+  ListFlagVersionsOutcomeSlots$Outbound,
+  z.ZodTypeDef,
+  ListFlagVersionsOutcomeSlots
+> = z.object({
+  promille: z.number(),
+  durationMs: z.number(),
+});
+
+export function listFlagVersionsOutcomeSlotsToJSON(
+  listFlagVersionsOutcomeSlots: ListFlagVersionsOutcomeSlots,
+): string {
+  return JSON.stringify(
+    ListFlagVersionsOutcomeSlots$outboundSchema.parse(
+      listFlagVersionsOutcomeSlots,
+    ),
+  );
+}
+export function listFlagVersionsOutcomeSlotsFromJSON(
+  jsonString: string,
+): SafeParseResult<ListFlagVersionsOutcomeSlots, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListFlagVersionsOutcomeSlots$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListFlagVersionsOutcomeSlots' from JSON`,
+  );
+}
+
+/** @internal */
+export const ListFlagVersionsOutcome3$inboundSchema: z.ZodType<
+  ListFlagVersionsOutcome3,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: types.literal("rollout"),
+  base: z.lazy(() => ListFlagVersionsOutcomeFeatureFlagsBase$inboundSchema),
+  defaultVariantId: types.string(),
+  startTimestamp: types.number(),
+  rollFromVariantId: types.string(),
+  rollToVariantId: types.string(),
+  slots: z.array(z.lazy(() => ListFlagVersionsOutcomeSlots$inboundSchema)),
+});
+/** @internal */
+export type ListFlagVersionsOutcome3$Outbound = {
+  type: "rollout";
+  base: ListFlagVersionsOutcomeFeatureFlagsBase$Outbound;
+  defaultVariantId: string;
+  startTimestamp: number;
+  rollFromVariantId: string;
+  rollToVariantId: string;
+  slots: Array<ListFlagVersionsOutcomeSlots$Outbound>;
+};
+
+/** @internal */
+export const ListFlagVersionsOutcome3$outboundSchema: z.ZodType<
+  ListFlagVersionsOutcome3$Outbound,
+  z.ZodTypeDef,
+  ListFlagVersionsOutcome3
+> = z.object({
+  type: z.literal("rollout"),
+  base: z.lazy(() => ListFlagVersionsOutcomeFeatureFlagsBase$outboundSchema),
+  defaultVariantId: z.string(),
+  startTimestamp: z.number(),
+  rollFromVariantId: z.string(),
+  rollToVariantId: z.string(),
+  slots: z.array(z.lazy(() => ListFlagVersionsOutcomeSlots$outboundSchema)),
+});
+
+export function listFlagVersionsOutcome3ToJSON(
+  listFlagVersionsOutcome3: ListFlagVersionsOutcome3,
+): string {
+  return JSON.stringify(
+    ListFlagVersionsOutcome3$outboundSchema.parse(listFlagVersionsOutcome3),
+  );
+}
+export function listFlagVersionsOutcome3FromJSON(
+  jsonString: string,
+): SafeParseResult<ListFlagVersionsOutcome3, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListFlagVersionsOutcome3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListFlagVersionsOutcome3' from JSON`,
+  );
+}
+
+/** @internal */
+export const ListFlagVersionsOutcomeFeatureFlagsResponse200Type$inboundSchema:
+  z.ZodNativeEnum<typeof ListFlagVersionsOutcomeFeatureFlagsResponse200Type> = z
+    .nativeEnum(ListFlagVersionsOutcomeFeatureFlagsResponse200Type);
+/** @internal */
+export const ListFlagVersionsOutcomeFeatureFlagsResponse200Type$outboundSchema:
+  z.ZodNativeEnum<typeof ListFlagVersionsOutcomeFeatureFlagsResponse200Type> =
+    ListFlagVersionsOutcomeFeatureFlagsResponse200Type$inboundSchema;
 
 /** @internal */
 export const ListFlagVersionsOutcomeBase$inboundSchema: z.ZodType<
@@ -1161,7 +1582,7 @@ export const ListFlagVersionsOutcomeBase$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: ListFlagVersionsOutcomeFeatureFlagsResponseType$inboundSchema,
+  type: ListFlagVersionsOutcomeFeatureFlagsResponse200Type$inboundSchema,
   kind: types.string(),
   attribute: types.string(),
 });
@@ -1178,7 +1599,7 @@ export const ListFlagVersionsOutcomeBase$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ListFlagVersionsOutcomeBase
 > = z.object({
-  type: ListFlagVersionsOutcomeFeatureFlagsResponseType$outboundSchema,
+  type: ListFlagVersionsOutcomeFeatureFlagsResponse200Type$outboundSchema,
   kind: z.string(),
   attribute: z.string(),
 });
@@ -1300,11 +1721,13 @@ export const ListFlagVersionsOutcome$inboundSchema: z.ZodType<
 > = z.union([
   z.lazy(() => ListFlagVersionsOutcome1$inboundSchema),
   z.lazy(() => ListFlagVersionsOutcome2$inboundSchema),
+  z.lazy(() => ListFlagVersionsOutcome3$inboundSchema),
 ]);
 /** @internal */
 export type ListFlagVersionsOutcome$Outbound =
   | ListFlagVersionsOutcome1$Outbound
-  | ListFlagVersionsOutcome2$Outbound;
+  | ListFlagVersionsOutcome2$Outbound
+  | ListFlagVersionsOutcome3$Outbound;
 
 /** @internal */
 export const ListFlagVersionsOutcome$outboundSchema: z.ZodType<
@@ -1314,6 +1737,7 @@ export const ListFlagVersionsOutcome$outboundSchema: z.ZodType<
 > = z.union([
   z.lazy(() => ListFlagVersionsOutcome1$outboundSchema),
   z.lazy(() => ListFlagVersionsOutcome2$outboundSchema),
+  z.lazy(() => ListFlagVersionsOutcome3$outboundSchema),
 ]);
 
 export function listFlagVersionsOutcomeToJSON(
@@ -1891,6 +2315,7 @@ export const ListFlagVersionsRules$inboundSchema: z.ZodType<
   outcome: z.union([
     z.lazy(() => ListFlagVersionsOutcome1$inboundSchema),
     z.lazy(() => ListFlagVersionsOutcome2$inboundSchema),
+    z.lazy(() => ListFlagVersionsOutcome3$inboundSchema),
   ]),
   conditions: z.array(z.lazy(() => ListFlagVersionsConditions$inboundSchema)),
 });
@@ -1899,7 +2324,8 @@ export type ListFlagVersionsRules$Outbound = {
   id: string;
   outcome:
     | ListFlagVersionsOutcome1$Outbound
-    | ListFlagVersionsOutcome2$Outbound;
+    | ListFlagVersionsOutcome2$Outbound
+    | ListFlagVersionsOutcome3$Outbound;
   conditions: Array<ListFlagVersionsConditions$Outbound>;
 };
 
@@ -1913,6 +2339,7 @@ export const ListFlagVersionsRules$outboundSchema: z.ZodType<
   outcome: z.union([
     z.lazy(() => ListFlagVersionsOutcome1$outboundSchema),
     z.lazy(() => ListFlagVersionsOutcome2$outboundSchema),
+    z.lazy(() => ListFlagVersionsOutcome3$outboundSchema),
   ]),
   conditions: z.array(z.lazy(() => ListFlagVersionsConditions$outboundSchema)),
 });
@@ -1951,6 +2378,7 @@ export const ListFlagVersionsEnvironments$inboundSchema: z.ZodType<
   fallthrough: z.union([
     z.lazy(() => ListFlagVersionsFallthrough1$inboundSchema),
     z.lazy(() => ListFlagVersionsFallthrough2$inboundSchema),
+    z.lazy(() => ListFlagVersionsFallthrough3$inboundSchema),
   ]),
   active: types.boolean(),
   rules: z.array(z.lazy(() => ListFlagVersionsRules$inboundSchema)),
@@ -1967,7 +2395,8 @@ export type ListFlagVersionsEnvironments$Outbound = {
   pausedOutcome: ListFlagVersionsPausedOutcome$Outbound;
   fallthrough:
     | ListFlagVersionsFallthrough1$Outbound
-    | ListFlagVersionsFallthrough2$Outbound;
+    | ListFlagVersionsFallthrough2$Outbound
+    | ListFlagVersionsFallthrough3$Outbound;
   active: boolean;
   rules: Array<ListFlagVersionsRules$Outbound>;
 };
@@ -1989,6 +2418,7 @@ export const ListFlagVersionsEnvironments$outboundSchema: z.ZodType<
   fallthrough: z.union([
     z.lazy(() => ListFlagVersionsFallthrough1$outboundSchema),
     z.lazy(() => ListFlagVersionsFallthrough2$outboundSchema),
+    z.lazy(() => ListFlagVersionsFallthrough3$outboundSchema),
   ]),
   active: z.boolean(),
   rules: z.array(z.lazy(() => ListFlagVersionsRules$outboundSchema)),

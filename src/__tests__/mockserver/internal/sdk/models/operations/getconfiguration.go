@@ -1615,33 +1615,33 @@ type GetConfigurationIntegrationConfiguration1 struct {
 	// The configuration status. Optional. If not defined, assume 'ready'.
 	Status *GetConfigurationStatus1                      `json:"status,omitempty"`
 	Type   GetConfigurationTypeIntegrationConfiguration1 `json:"type"`
-	// A timestamp that tells you when the configuration was created
-	CreatedAt float64 `json:"createdAt"`
-	// A timestamp that tells you when the configuration was deleted.
-	DeletedAt optionalnullable.OptionalNullable[float64] `json:"deletedAt,omitempty"`
 	// The unique identifier of the configuration
 	ID string `json:"id"`
-	// The slug of the integration the configuration is created for.
-	Slug string `json:"slug"`
-	// When the configuration was created for a team, this will show the ID of the team.
-	TeamID optionalnullable.OptionalNullable[string] `json:"teamId,omitempty"`
-	// A timestamp that tells you when the configuration was updated.
-	UpdatedAt float64 `json:"updatedAt"`
-	// The ID of the user that created the configuration.
-	UserID string `json:"userId"`
-	// The resources that are allowed to be accessed by the configuration.
-	Scopes []string `json:"scopes"`
-	// Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics.
-	Source *GetConfigurationSource1 `json:"source,omitempty"`
 	// The unique identifier of the app the configuration was created for
 	IntegrationID string `json:"integrationId"`
+	// The ID of the user that created the configuration.
+	UserID string `json:"userId"`
 	// The user or team ID that owns the configuration
-	OwnerID                   string `json:"ownerId"`
-	CanConfigureOpenTelemetry *bool  `json:"canConfigureOpenTelemetry,omitempty"`
+	OwnerID string `json:"ownerId"`
+	// A timestamp that tells you when the configuration was created
+	CreatedAt float64 `json:"createdAt"`
+	// A timestamp that tells you when the configuration was updated.
+	UpdatedAt float64 `json:"updatedAt"`
+	// A timestamp that tells you when the configuration was deleted.
+	DeletedAt                 optionalnullable.OptionalNullable[float64] `json:"deletedAt,omitempty"`
+	CanConfigureOpenTelemetry *bool                                      `json:"canConfigureOpenTelemetry,omitempty"`
 	// A timestamp that tells you when the configuration was installed successfully
 	CompletedAt *float64 `json:"completedAt,omitempty"`
 	// An external identifier defined by the integration vendor.
 	ExternalID *string `json:"externalId,omitempty"`
+	// Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics.
+	Source *GetConfigurationSource1 `json:"source,omitempty"`
+	// The slug of the integration the configuration is created for.
+	Slug string `json:"slug"`
+	// When the configuration was created for a team, this will show the ID of the team.
+	TeamID optionalnullable.OptionalNullable[string] `json:"teamId,omitempty"`
+	// The resources that are allowed to be accessed by the configuration.
+	Scopes []string `json:"scopes"`
 	// A timestamp that tells you when the configuration was disabled. Note: Configurations can be disabled when the associated user loses access to a team. They do not function during this time until the configuration is 'transferred', meaning the associated user is changed to one with access to the team.
 	DisabledAt *float64 `json:"disabledAt,omitempty"`
 	// A timestamp that tells you when the configuration deletion has been started for cases when the deletion needs to be settled/approved by partners, such as when marketplace invoices have been paid.
@@ -1658,7 +1658,7 @@ func (g GetConfigurationIntegrationConfiguration1) MarshalJSON() ([]byte, error)
 }
 
 func (g *GetConfigurationIntegrationConfiguration1) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"projectSelection", "notification", "transferRequest", "type", "createdAt", "id", "slug", "updatedAt", "userId", "scopes", "integrationId", "ownerId"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"projectSelection", "notification", "transferRequest", "type", "id", "integrationId", "userId", "ownerId", "createdAt", "updatedAt", "slug", "scopes"}); err != nil {
 		return err
 	}
 	return nil
@@ -1714,67 +1714,11 @@ func (o *GetConfigurationIntegrationConfiguration1) GetType() GetConfigurationTy
 	return o.Type
 }
 
-func (o *GetConfigurationIntegrationConfiguration1) GetCreatedAt() float64 {
-	if o == nil {
-		return 0.0
-	}
-	return o.CreatedAt
-}
-
-func (o *GetConfigurationIntegrationConfiguration1) GetDeletedAt() optionalnullable.OptionalNullable[float64] {
-	if o == nil {
-		return nil
-	}
-	return o.DeletedAt
-}
-
 func (o *GetConfigurationIntegrationConfiguration1) GetID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ID
-}
-
-func (o *GetConfigurationIntegrationConfiguration1) GetSlug() string {
-	if o == nil {
-		return ""
-	}
-	return o.Slug
-}
-
-func (o *GetConfigurationIntegrationConfiguration1) GetTeamID() optionalnullable.OptionalNullable[string] {
-	if o == nil {
-		return nil
-	}
-	return o.TeamID
-}
-
-func (o *GetConfigurationIntegrationConfiguration1) GetUpdatedAt() float64 {
-	if o == nil {
-		return 0.0
-	}
-	return o.UpdatedAt
-}
-
-func (o *GetConfigurationIntegrationConfiguration1) GetUserID() string {
-	if o == nil {
-		return ""
-	}
-	return o.UserID
-}
-
-func (o *GetConfigurationIntegrationConfiguration1) GetScopes() []string {
-	if o == nil {
-		return []string{}
-	}
-	return o.Scopes
-}
-
-func (o *GetConfigurationIntegrationConfiguration1) GetSource() *GetConfigurationSource1 {
-	if o == nil {
-		return nil
-	}
-	return o.Source
 }
 
 func (o *GetConfigurationIntegrationConfiguration1) GetIntegrationID() string {
@@ -1784,11 +1728,39 @@ func (o *GetConfigurationIntegrationConfiguration1) GetIntegrationID() string {
 	return o.IntegrationID
 }
 
+func (o *GetConfigurationIntegrationConfiguration1) GetUserID() string {
+	if o == nil {
+		return ""
+	}
+	return o.UserID
+}
+
 func (o *GetConfigurationIntegrationConfiguration1) GetOwnerID() string {
 	if o == nil {
 		return ""
 	}
 	return o.OwnerID
+}
+
+func (o *GetConfigurationIntegrationConfiguration1) GetCreatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CreatedAt
+}
+
+func (o *GetConfigurationIntegrationConfiguration1) GetUpdatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.UpdatedAt
+}
+
+func (o *GetConfigurationIntegrationConfiguration1) GetDeletedAt() optionalnullable.OptionalNullable[float64] {
+	if o == nil {
+		return nil
+	}
+	return o.DeletedAt
 }
 
 func (o *GetConfigurationIntegrationConfiguration1) GetCanConfigureOpenTelemetry() *bool {
@@ -1810,6 +1782,34 @@ func (o *GetConfigurationIntegrationConfiguration1) GetExternalID() *string {
 		return nil
 	}
 	return o.ExternalID
+}
+
+func (o *GetConfigurationIntegrationConfiguration1) GetSource() *GetConfigurationSource1 {
+	if o == nil {
+		return nil
+	}
+	return o.Source
+}
+
+func (o *GetConfigurationIntegrationConfiguration1) GetSlug() string {
+	if o == nil {
+		return ""
+	}
+	return o.Slug
+}
+
+func (o *GetConfigurationIntegrationConfiguration1) GetTeamID() optionalnullable.OptionalNullable[string] {
+	if o == nil {
+		return nil
+	}
+	return o.TeamID
+}
+
+func (o *GetConfigurationIntegrationConfiguration1) GetScopes() []string {
+	if o == nil {
+		return []string{}
+	}
+	return o.Scopes
 }
 
 func (o *GetConfigurationIntegrationConfiguration1) GetDisabledAt() *float64 {

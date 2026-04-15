@@ -143,17 +143,10 @@ func (e *GetIntegrationResourceLevel) UnmarshalJSON(data []byte) error {
 
 // GetIntegrationResourceNotification - The notification, if set, displayed to the user when viewing the resource in Vercel
 type GetIntegrationResourceNotification struct {
-	Title   string                      `json:"title"`
 	Level   GetIntegrationResourceLevel `json:"level"`
+	Title   string                      `json:"title"`
 	Message *string                     `json:"message,omitempty"`
 	Href    *string                     `json:"href,omitempty"`
-}
-
-func (o *GetIntegrationResourceNotification) GetTitle() string {
-	if o == nil {
-		return ""
-	}
-	return o.Title
 }
 
 func (o *GetIntegrationResourceNotification) GetLevel() GetIntegrationResourceLevel {
@@ -161,6 +154,13 @@ func (o *GetIntegrationResourceNotification) GetLevel() GetIntegrationResourceLe
 		return GetIntegrationResourceLevel("")
 	}
 	return o.Level
+}
+
+func (o *GetIntegrationResourceNotification) GetTitle() string {
+	if o == nil {
+		return ""
+	}
+	return o.Title
 }
 
 func (o *GetIntegrationResourceNotification) GetMessage() *string {

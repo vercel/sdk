@@ -6,7 +6,7 @@
 import { CreateFlagFallthroughBase } from "@vercel/sdk/models/createflagop.js";
 
 let value: CreateFlagFallthroughBase = {
-  type: "entity",
+  type: "<value>",
   kind: "<value>",
   attribute: "<value>",
 };
@@ -14,8 +14,8 @@ let value: CreateFlagFallthroughBase = {
 
 ## Fields
 
-| Field                                                                                                              | Type                                                                                                               | Required                                                                                                           | Description                                                                                                        |
-| ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
-| `type`                                                                                                             | [models.CreateFlagFallthroughFeatureFlagsResponseType](../models/createflagfallthroughfeatureflagsresponsetype.md) | :heavy_check_mark:                                                                                                 | N/A                                                                                                                |
-| `kind`                                                                                                             | *string*                                                                                                           | :heavy_check_mark:                                                                                                 | N/A                                                                                                                |
-| `attribute`                                                                                                        | *string*                                                                                                           | :heavy_check_mark:                                                                                                 | N/A                                                                                                                |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `type`             | *any*              | :heavy_check_mark: | N/A                |
+| `kind`             | *string*           | :heavy_check_mark: | N/A                |
+| `attribute`        | *string*           | :heavy_check_mark: | N/A                |

@@ -11,20 +11,19 @@ let value: ListFlagVersionsEnvironments = {
     variantId: "<id>",
   },
   fallthrough: {
-    type: "variant",
-    variantId: "<id>",
+    type: "split",
+    base: {
+      type: "entity",
+      kind: "<value>",
+      attribute: "<value>",
+    },
+    weights: {
+      "key": 6938.29,
+    },
+    defaultVariantId: "<id>",
   },
   active: true,
-  rules: [
-    {
-      id: "<id>",
-      outcome: {
-        type: "variant",
-        variantId: "<id>",
-      },
-      conditions: [],
-    },
-  ],
+  rules: [],
 };
 ```
 

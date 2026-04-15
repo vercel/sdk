@@ -17,7 +17,15 @@ let value: UpdateFlagRules = {
   ],
   outcome: {
     type: "<value>",
-    variantId: "<id>",
+    base: {
+      type: "<value>",
+      kind: "<value>",
+      attribute: "<value>",
+    },
+    weights: {
+      "key": 1446.07,
+    },
+    defaultVariantId: "<id>",
   },
 };
 ```

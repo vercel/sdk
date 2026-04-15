@@ -30,3 +30,26 @@ const value: models.CreateFlagOutcome2 = {
 };
 ```
 
+### `models.CreateFlagOutcome3`
+
+```typescript
+const value: models.CreateFlagOutcome3 = {
+  type: "<value>",
+  base: {
+    type: "<value>",
+    kind: "<value>",
+    attribute: "<value>",
+  },
+  startTimestamp: 7840.37,
+  rollFromVariantId: "<id>",
+  rollToVariantId: "<id>",
+  defaultVariantId: "<id>",
+  slots: [
+    {
+      promille: 7558.89,
+      durationMs: 1577.58,
+    },
+  ],
+};
+```
+

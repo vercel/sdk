@@ -386,6 +386,7 @@ const (
 	UserEventTypeProjectCronJobsToggled                          UserEventType = "project-cron-jobs-toggled"
 	UserEventTypeProjectDelegatedProtectionEnabled               UserEventType = "project-delegated-protection-enabled"
 	UserEventTypeProjectDelegatedProtectionUpdated               UserEventType = "project-delegated-protection-updated"
+	UserEventTypeProjectDelegatedProtectionDisabled              UserEventType = "project-delegated-protection-disabled"
 	UserEventTypeProjectDelete                                   UserEventType = "project-delete"
 	UserEventTypeProjectDomainUnverified                         UserEventType = "project-domain-unverified"
 	UserEventTypeProjectDomainVerified                           UserEventType = "project-domain-verified"
@@ -1067,6 +1068,8 @@ func (e *UserEventType) UnmarshalJSON(data []byte) error {
 	case "project-delegated-protection-enabled":
 		fallthrough
 	case "project-delegated-protection-updated":
+		fallthrough
+	case "project-delegated-protection-disabled":
 		fallthrough
 	case "project-delete":
 		fallthrough

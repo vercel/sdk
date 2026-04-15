@@ -147,6 +147,48 @@ export type UpdateFlagConditions = {
   cmpOptions?: UpdateFlagCmpOptions | undefined;
 };
 
+export type UpdateFlagOutcomeFeatureFlagsBase = {
+  type?: any | undefined;
+  kind: string;
+  attribute: string;
+};
+
+export type UpdateFlagOutcomeSlots = {
+  /**
+   * Promille of traffic for rollToVariant (0-100_000, where 1_000 = 1%)
+   */
+  promille: number;
+  /**
+   * How long this promille is served in ms before moving to the next slot.
+   */
+  durationMs: number;
+};
+
+export type UpdateFlagOutcome3 = {
+  type?: any | undefined;
+  base: UpdateFlagOutcomeFeatureFlagsBase;
+  /**
+   * Epoch ms when the rollout begins
+   */
+  startTimestamp: number;
+  /**
+   * The variant to roll away from
+   */
+  rollFromVariantId: string;
+  /**
+   * The variant to roll towards
+   */
+  rollToVariantId: string;
+  /**
+   * This variant will be used when the base attribute does not exist
+   */
+  defaultVariantId: string;
+  /**
+   * Each slot defines a promille and how long it is served for. After all slots expire, 100% is served indefinitely. The final implicit 100% slot does not need to be listed. Example: [[5_000, 21_600_000], [10_000, 28_800_000]] means 5‰ for 6h, then 10‰ for 8h, then 100% indefinitely.
+   */
+  slots: Array<UpdateFlagOutcomeSlots>;
+};
+
 export type UpdateFlagOutcomeBase = {
   type?: any | undefined;
   kind: string;
@@ -171,12 +213,57 @@ export type UpdateFlagOutcome1 = {
   variantId: string;
 };
 
-export type UpdateFlagOutcome = UpdateFlagOutcome2 | UpdateFlagOutcome1;
+export type UpdateFlagOutcome =
+  | UpdateFlagOutcome3
+  | UpdateFlagOutcome2
+  | UpdateFlagOutcome1;
 
 export type UpdateFlagRules = {
   id: string;
   conditions: Array<UpdateFlagConditions>;
-  outcome: UpdateFlagOutcome2 | UpdateFlagOutcome1;
+  outcome: UpdateFlagOutcome3 | UpdateFlagOutcome2 | UpdateFlagOutcome1;
+};
+
+export type UpdateFlagFallthroughFeatureFlagsBase = {
+  type?: any | undefined;
+  kind: string;
+  attribute: string;
+};
+
+export type UpdateFlagFallthroughSlots = {
+  /**
+   * Promille of traffic for rollToVariant (0-100_000, where 1_000 = 1%)
+   */
+  promille: number;
+  /**
+   * How long this promille is served in ms before moving to the next slot.
+   */
+  durationMs: number;
+};
+
+export type UpdateFlagFallthrough3 = {
+  type?: any | undefined;
+  base: UpdateFlagFallthroughFeatureFlagsBase;
+  /**
+   * Epoch ms when the rollout begins
+   */
+  startTimestamp: number;
+  /**
+   * The variant to roll away from
+   */
+  rollFromVariantId: string;
+  /**
+   * The variant to roll towards
+   */
+  rollToVariantId: string;
+  /**
+   * This variant will be used when the base attribute does not exist
+   */
+  defaultVariantId: string;
+  /**
+   * Each slot defines a promille and how long it is served for. After all slots expire, 100% is served indefinitely. The final implicit 100% slot does not need to be listed. Example: [[5_000, 21_600_000], [10_000, 28_800_000]] means 5‰ for 6h, then 10‰ for 8h, then 100% indefinitely.
+   */
+  slots: Array<UpdateFlagFallthroughSlots>;
 };
 
 export type UpdateFlagFallthroughBase = {
@@ -204,6 +291,7 @@ export type UpdateFlagFallthrough1 = {
 };
 
 export type UpdateFlagFallthrough =
+  | UpdateFlagFallthrough3
   | UpdateFlagFallthrough2
   | UpdateFlagFallthrough1;
 
@@ -221,7 +309,10 @@ export type UpdateFlagEnvironments = {
   } | undefined;
   pausedOutcome: UpdateFlagPausedOutcome;
   rules: Array<UpdateFlagRules>;
-  fallthrough: UpdateFlagFallthrough2 | UpdateFlagFallthrough1;
+  fallthrough:
+    | UpdateFlagFallthrough3
+    | UpdateFlagFallthrough2
+    | UpdateFlagFallthrough1;
   /**
    * The revision of the environment config
    */
@@ -450,22 +541,51 @@ export type ResponseBodyPausedOutcome = {
   variantId: string;
 };
 
-export const UpdateFlagFallthroughFeatureFlagsResponseType = {
+export const UpdateFlagFallthroughFeatureFlagsResponse200ApplicationJSONType = {
   Entity: "entity",
 } as const;
-export type UpdateFlagFallthroughFeatureFlagsResponseType = ClosedEnum<
-  typeof UpdateFlagFallthroughFeatureFlagsResponseType
+export type UpdateFlagFallthroughFeatureFlagsResponse200ApplicationJSONType =
+  ClosedEnum<
+    typeof UpdateFlagFallthroughFeatureFlagsResponse200ApplicationJSONType
+  >;
+
+export type UpdateFlagFallthroughFeatureFlagsResponse200Base = {
+  type: UpdateFlagFallthroughFeatureFlagsResponse200ApplicationJSONType;
+  kind: string;
+  attribute: string;
+};
+
+export type UpdateFlagFallthroughFeatureFlagsSlots = {
+  promille: number;
+  durationMs: number;
+};
+
+export type UpdateFlagFallthroughFeatureFlags3 = {
+  type: "rollout";
+  base: UpdateFlagFallthroughFeatureFlagsResponse200Base;
+  defaultVariantId: string;
+  startTimestamp: number;
+  rollFromVariantId: string;
+  rollToVariantId: string;
+  slots: Array<UpdateFlagFallthroughFeatureFlagsSlots>;
+};
+
+export const UpdateFlagFallthroughFeatureFlagsResponse200Type = {
+  Entity: "entity",
+} as const;
+export type UpdateFlagFallthroughFeatureFlagsResponse200Type = ClosedEnum<
+  typeof UpdateFlagFallthroughFeatureFlagsResponse200Type
 >;
 
-export type UpdateFlagFallthroughFeatureFlagsBase = {
-  type: UpdateFlagFallthroughFeatureFlagsResponseType;
+export type UpdateFlagFallthroughFeatureFlagsResponseBase = {
+  type: UpdateFlagFallthroughFeatureFlagsResponse200Type;
   kind: string;
   attribute: string;
 };
 
 export type UpdateFlagFallthroughFeatureFlags2 = {
   type: "split";
-  base: UpdateFlagFallthroughFeatureFlagsBase;
+  base: UpdateFlagFallthroughFeatureFlagsResponseBase;
   weights: { [k: string]: number };
   defaultVariantId: string;
 };
@@ -477,24 +597,54 @@ export type UpdateFlagFallthroughFeatureFlags1 = {
 
 export type ResponseBodyFallthrough =
   | UpdateFlagFallthroughFeatureFlags1
-  | UpdateFlagFallthroughFeatureFlags2;
+  | UpdateFlagFallthroughFeatureFlags2
+  | UpdateFlagFallthroughFeatureFlags3;
 
-export const UpdateFlagOutcomeFeatureFlagsResponseType = {
+export const UpdateFlagOutcomeFeatureFlagsResponse200ApplicationJSONType = {
   Entity: "entity",
 } as const;
-export type UpdateFlagOutcomeFeatureFlagsResponseType = ClosedEnum<
-  typeof UpdateFlagOutcomeFeatureFlagsResponseType
+export type UpdateFlagOutcomeFeatureFlagsResponse200ApplicationJSONType =
+  ClosedEnum<
+    typeof UpdateFlagOutcomeFeatureFlagsResponse200ApplicationJSONType
+  >;
+
+export type UpdateFlagOutcomeFeatureFlagsResponse200Base = {
+  type: UpdateFlagOutcomeFeatureFlagsResponse200ApplicationJSONType;
+  kind: string;
+  attribute: string;
+};
+
+export type UpdateFlagOutcomeFeatureFlagsSlots = {
+  promille: number;
+  durationMs: number;
+};
+
+export type UpdateFlagOutcomeFeatureFlags3 = {
+  type: "rollout";
+  base: UpdateFlagOutcomeFeatureFlagsResponse200Base;
+  defaultVariantId: string;
+  startTimestamp: number;
+  rollFromVariantId: string;
+  rollToVariantId: string;
+  slots: Array<UpdateFlagOutcomeFeatureFlagsSlots>;
+};
+
+export const UpdateFlagOutcomeFeatureFlagsResponse200Type = {
+  Entity: "entity",
+} as const;
+export type UpdateFlagOutcomeFeatureFlagsResponse200Type = ClosedEnum<
+  typeof UpdateFlagOutcomeFeatureFlagsResponse200Type
 >;
 
-export type UpdateFlagOutcomeFeatureFlagsBase = {
-  type: UpdateFlagOutcomeFeatureFlagsResponseType;
+export type UpdateFlagOutcomeFeatureFlagsResponseBase = {
+  type: UpdateFlagOutcomeFeatureFlagsResponse200Type;
   kind: string;
   attribute: string;
 };
 
 export type UpdateFlagOutcomeFeatureFlags2 = {
   type: "split";
-  base: UpdateFlagOutcomeFeatureFlagsBase;
+  base: UpdateFlagOutcomeFeatureFlagsResponseBase;
   weights: { [k: string]: number };
   defaultVariantId: string;
 };
@@ -506,7 +656,8 @@ export type UpdateFlagOutcomeFeatureFlags1 = {
 
 export type ResponseBodyOutcome =
   | UpdateFlagOutcomeFeatureFlags1
-  | UpdateFlagOutcomeFeatureFlags2;
+  | UpdateFlagOutcomeFeatureFlags2
+  | UpdateFlagOutcomeFeatureFlags3;
 
 export const UpdateFlagRhsFeatureFlagsResponseType = {
   Regex: "regex",
@@ -611,7 +762,10 @@ export type ResponseBodyConditions = {
 
 export type ResponseBodyRules = {
   id: string;
-  outcome: UpdateFlagOutcomeFeatureFlags1 | UpdateFlagOutcomeFeatureFlags2;
+  outcome:
+    | UpdateFlagOutcomeFeatureFlags1
+    | UpdateFlagOutcomeFeatureFlags2
+    | UpdateFlagOutcomeFeatureFlags3;
   conditions: Array<ResponseBodyConditions>;
 };
 
@@ -626,7 +780,8 @@ export type ResponseBodyEnvironments = {
   pausedOutcome: ResponseBodyPausedOutcome;
   fallthrough:
     | UpdateFlagFallthroughFeatureFlags1
-    | UpdateFlagFallthroughFeatureFlags2;
+    | UpdateFlagFallthroughFeatureFlags2
+    | UpdateFlagFallthroughFeatureFlags3;
   active: boolean;
   rules: Array<ResponseBodyRules>;
 };
@@ -1390,6 +1545,152 @@ export function updateFlagConditionsFromJSON(
 }
 
 /** @internal */
+export const UpdateFlagOutcomeFeatureFlagsBase$inboundSchema: z.ZodType<
+  UpdateFlagOutcomeFeatureFlagsBase,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: types.optional(z.any()),
+  kind: types.string(),
+  attribute: types.string(),
+});
+/** @internal */
+export type UpdateFlagOutcomeFeatureFlagsBase$Outbound = {
+  type?: any | undefined;
+  kind: string;
+  attribute: string;
+};
+
+/** @internal */
+export const UpdateFlagOutcomeFeatureFlagsBase$outboundSchema: z.ZodType<
+  UpdateFlagOutcomeFeatureFlagsBase$Outbound,
+  z.ZodTypeDef,
+  UpdateFlagOutcomeFeatureFlagsBase
+> = z.object({
+  type: z.any().optional(),
+  kind: z.string(),
+  attribute: z.string(),
+});
+
+export function updateFlagOutcomeFeatureFlagsBaseToJSON(
+  updateFlagOutcomeFeatureFlagsBase: UpdateFlagOutcomeFeatureFlagsBase,
+): string {
+  return JSON.stringify(
+    UpdateFlagOutcomeFeatureFlagsBase$outboundSchema.parse(
+      updateFlagOutcomeFeatureFlagsBase,
+    ),
+  );
+}
+export function updateFlagOutcomeFeatureFlagsBaseFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateFlagOutcomeFeatureFlagsBase, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateFlagOutcomeFeatureFlagsBase$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateFlagOutcomeFeatureFlagsBase' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateFlagOutcomeSlots$inboundSchema: z.ZodType<
+  UpdateFlagOutcomeSlots,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  promille: types.number(),
+  durationMs: types.number(),
+});
+/** @internal */
+export type UpdateFlagOutcomeSlots$Outbound = {
+  promille: number;
+  durationMs: number;
+};
+
+/** @internal */
+export const UpdateFlagOutcomeSlots$outboundSchema: z.ZodType<
+  UpdateFlagOutcomeSlots$Outbound,
+  z.ZodTypeDef,
+  UpdateFlagOutcomeSlots
+> = z.object({
+  promille: z.number(),
+  durationMs: z.number(),
+});
+
+export function updateFlagOutcomeSlotsToJSON(
+  updateFlagOutcomeSlots: UpdateFlagOutcomeSlots,
+): string {
+  return JSON.stringify(
+    UpdateFlagOutcomeSlots$outboundSchema.parse(updateFlagOutcomeSlots),
+  );
+}
+export function updateFlagOutcomeSlotsFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateFlagOutcomeSlots, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateFlagOutcomeSlots$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateFlagOutcomeSlots' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateFlagOutcome3$inboundSchema: z.ZodType<
+  UpdateFlagOutcome3,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: types.optional(z.any()),
+  base: z.lazy(() => UpdateFlagOutcomeFeatureFlagsBase$inboundSchema),
+  startTimestamp: types.number(),
+  rollFromVariantId: types.string(),
+  rollToVariantId: types.string(),
+  defaultVariantId: types.string(),
+  slots: z.array(z.lazy(() => UpdateFlagOutcomeSlots$inboundSchema)),
+});
+/** @internal */
+export type UpdateFlagOutcome3$Outbound = {
+  type?: any | undefined;
+  base: UpdateFlagOutcomeFeatureFlagsBase$Outbound;
+  startTimestamp: number;
+  rollFromVariantId: string;
+  rollToVariantId: string;
+  defaultVariantId: string;
+  slots: Array<UpdateFlagOutcomeSlots$Outbound>;
+};
+
+/** @internal */
+export const UpdateFlagOutcome3$outboundSchema: z.ZodType<
+  UpdateFlagOutcome3$Outbound,
+  z.ZodTypeDef,
+  UpdateFlagOutcome3
+> = z.object({
+  type: z.any().optional(),
+  base: z.lazy(() => UpdateFlagOutcomeFeatureFlagsBase$outboundSchema),
+  startTimestamp: z.number(),
+  rollFromVariantId: z.string(),
+  rollToVariantId: z.string(),
+  defaultVariantId: z.string(),
+  slots: z.array(z.lazy(() => UpdateFlagOutcomeSlots$outboundSchema)),
+});
+
+export function updateFlagOutcome3ToJSON(
+  updateFlagOutcome3: UpdateFlagOutcome3,
+): string {
+  return JSON.stringify(
+    UpdateFlagOutcome3$outboundSchema.parse(updateFlagOutcome3),
+  );
+}
+export function updateFlagOutcome3FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateFlagOutcome3, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateFlagOutcome3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateFlagOutcome3' from JSON`,
+  );
+}
+
+/** @internal */
 export const UpdateFlagOutcomeBase$inboundSchema: z.ZodType<
   UpdateFlagOutcomeBase,
   z.ZodTypeDef,
@@ -1530,11 +1831,13 @@ export const UpdateFlagOutcome$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = smartUnion([
+  z.lazy(() => UpdateFlagOutcome3$inboundSchema),
   z.lazy(() => UpdateFlagOutcome2$inboundSchema),
   z.lazy(() => UpdateFlagOutcome1$inboundSchema),
 ]);
 /** @internal */
 export type UpdateFlagOutcome$Outbound =
+  | UpdateFlagOutcome3$Outbound
   | UpdateFlagOutcome2$Outbound
   | UpdateFlagOutcome1$Outbound;
 
@@ -1544,6 +1847,7 @@ export const UpdateFlagOutcome$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpdateFlagOutcome
 > = smartUnion([
+  z.lazy(() => UpdateFlagOutcome3$outboundSchema),
   z.lazy(() => UpdateFlagOutcome2$outboundSchema),
   z.lazy(() => UpdateFlagOutcome1$outboundSchema),
 ]);
@@ -1574,6 +1878,7 @@ export const UpdateFlagRules$inboundSchema: z.ZodType<
   id: types.string(),
   conditions: z.array(z.lazy(() => UpdateFlagConditions$inboundSchema)),
   outcome: smartUnion([
+    z.lazy(() => UpdateFlagOutcome3$inboundSchema),
     z.lazy(() => UpdateFlagOutcome2$inboundSchema),
     z.lazy(() => UpdateFlagOutcome1$inboundSchema),
   ]),
@@ -1582,7 +1887,10 @@ export const UpdateFlagRules$inboundSchema: z.ZodType<
 export type UpdateFlagRules$Outbound = {
   id: string;
   conditions: Array<UpdateFlagConditions$Outbound>;
-  outcome: UpdateFlagOutcome2$Outbound | UpdateFlagOutcome1$Outbound;
+  outcome:
+    | UpdateFlagOutcome3$Outbound
+    | UpdateFlagOutcome2$Outbound
+    | UpdateFlagOutcome1$Outbound;
 };
 
 /** @internal */
@@ -1594,6 +1902,7 @@ export const UpdateFlagRules$outboundSchema: z.ZodType<
   id: z.string(),
   conditions: z.array(z.lazy(() => UpdateFlagConditions$outboundSchema)),
   outcome: smartUnion([
+    z.lazy(() => UpdateFlagOutcome3$outboundSchema),
     z.lazy(() => UpdateFlagOutcome2$outboundSchema),
     z.lazy(() => UpdateFlagOutcome1$outboundSchema),
   ]),
@@ -1611,6 +1920,153 @@ export function updateFlagRulesFromJSON(
     jsonString,
     (x) => UpdateFlagRules$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'UpdateFlagRules' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateFlagFallthroughFeatureFlagsBase$inboundSchema: z.ZodType<
+  UpdateFlagFallthroughFeatureFlagsBase,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: types.optional(z.any()),
+  kind: types.string(),
+  attribute: types.string(),
+});
+/** @internal */
+export type UpdateFlagFallthroughFeatureFlagsBase$Outbound = {
+  type?: any | undefined;
+  kind: string;
+  attribute: string;
+};
+
+/** @internal */
+export const UpdateFlagFallthroughFeatureFlagsBase$outboundSchema: z.ZodType<
+  UpdateFlagFallthroughFeatureFlagsBase$Outbound,
+  z.ZodTypeDef,
+  UpdateFlagFallthroughFeatureFlagsBase
+> = z.object({
+  type: z.any().optional(),
+  kind: z.string(),
+  attribute: z.string(),
+});
+
+export function updateFlagFallthroughFeatureFlagsBaseToJSON(
+  updateFlagFallthroughFeatureFlagsBase: UpdateFlagFallthroughFeatureFlagsBase,
+): string {
+  return JSON.stringify(
+    UpdateFlagFallthroughFeatureFlagsBase$outboundSchema.parse(
+      updateFlagFallthroughFeatureFlagsBase,
+    ),
+  );
+}
+export function updateFlagFallthroughFeatureFlagsBaseFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateFlagFallthroughFeatureFlagsBase, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateFlagFallthroughFeatureFlagsBase$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateFlagFallthroughFeatureFlagsBase' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateFlagFallthroughSlots$inboundSchema: z.ZodType<
+  UpdateFlagFallthroughSlots,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  promille: types.number(),
+  durationMs: types.number(),
+});
+/** @internal */
+export type UpdateFlagFallthroughSlots$Outbound = {
+  promille: number;
+  durationMs: number;
+};
+
+/** @internal */
+export const UpdateFlagFallthroughSlots$outboundSchema: z.ZodType<
+  UpdateFlagFallthroughSlots$Outbound,
+  z.ZodTypeDef,
+  UpdateFlagFallthroughSlots
+> = z.object({
+  promille: z.number(),
+  durationMs: z.number(),
+});
+
+export function updateFlagFallthroughSlotsToJSON(
+  updateFlagFallthroughSlots: UpdateFlagFallthroughSlots,
+): string {
+  return JSON.stringify(
+    UpdateFlagFallthroughSlots$outboundSchema.parse(updateFlagFallthroughSlots),
+  );
+}
+export function updateFlagFallthroughSlotsFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateFlagFallthroughSlots, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateFlagFallthroughSlots$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateFlagFallthroughSlots' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateFlagFallthrough3$inboundSchema: z.ZodType<
+  UpdateFlagFallthrough3,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: types.optional(z.any()),
+  base: z.lazy(() => UpdateFlagFallthroughFeatureFlagsBase$inboundSchema),
+  startTimestamp: types.number(),
+  rollFromVariantId: types.string(),
+  rollToVariantId: types.string(),
+  defaultVariantId: types.string(),
+  slots: z.array(z.lazy(() => UpdateFlagFallthroughSlots$inboundSchema)),
+});
+/** @internal */
+export type UpdateFlagFallthrough3$Outbound = {
+  type?: any | undefined;
+  base: UpdateFlagFallthroughFeatureFlagsBase$Outbound;
+  startTimestamp: number;
+  rollFromVariantId: string;
+  rollToVariantId: string;
+  defaultVariantId: string;
+  slots: Array<UpdateFlagFallthroughSlots$Outbound>;
+};
+
+/** @internal */
+export const UpdateFlagFallthrough3$outboundSchema: z.ZodType<
+  UpdateFlagFallthrough3$Outbound,
+  z.ZodTypeDef,
+  UpdateFlagFallthrough3
+> = z.object({
+  type: z.any().optional(),
+  base: z.lazy(() => UpdateFlagFallthroughFeatureFlagsBase$outboundSchema),
+  startTimestamp: z.number(),
+  rollFromVariantId: z.string(),
+  rollToVariantId: z.string(),
+  defaultVariantId: z.string(),
+  slots: z.array(z.lazy(() => UpdateFlagFallthroughSlots$outboundSchema)),
+});
+
+export function updateFlagFallthrough3ToJSON(
+  updateFlagFallthrough3: UpdateFlagFallthrough3,
+): string {
+  return JSON.stringify(
+    UpdateFlagFallthrough3$outboundSchema.parse(updateFlagFallthrough3),
+  );
+}
+export function updateFlagFallthrough3FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateFlagFallthrough3, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateFlagFallthrough3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateFlagFallthrough3' from JSON`,
   );
 }
 
@@ -1755,11 +2211,13 @@ export const UpdateFlagFallthrough$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = smartUnion([
+  z.lazy(() => UpdateFlagFallthrough3$inboundSchema),
   z.lazy(() => UpdateFlagFallthrough2$inboundSchema),
   z.lazy(() => UpdateFlagFallthrough1$inboundSchema),
 ]);
 /** @internal */
 export type UpdateFlagFallthrough$Outbound =
+  | UpdateFlagFallthrough3$Outbound
   | UpdateFlagFallthrough2$Outbound
   | UpdateFlagFallthrough1$Outbound;
 
@@ -1769,6 +2227,7 @@ export const UpdateFlagFallthrough$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpdateFlagFallthrough
 > = smartUnion([
+  z.lazy(() => UpdateFlagFallthrough3$outboundSchema),
   z.lazy(() => UpdateFlagFallthrough2$outboundSchema),
   z.lazy(() => UpdateFlagFallthrough1$outboundSchema),
 ]);
@@ -1806,6 +2265,7 @@ export const UpdateFlagEnvironments$inboundSchema: z.ZodType<
   pausedOutcome: z.lazy(() => UpdateFlagPausedOutcome$inboundSchema),
   rules: z.array(z.lazy(() => UpdateFlagRules$inboundSchema)),
   fallthrough: smartUnion([
+    z.lazy(() => UpdateFlagFallthrough3$inboundSchema),
     z.lazy(() => UpdateFlagFallthrough2$inboundSchema),
     z.lazy(() => UpdateFlagFallthrough1$inboundSchema),
   ]),
@@ -1823,6 +2283,7 @@ export type UpdateFlagEnvironments$Outbound = {
   pausedOutcome: UpdateFlagPausedOutcome$Outbound;
   rules: Array<UpdateFlagRules$Outbound>;
   fallthrough:
+    | UpdateFlagFallthrough3$Outbound
     | UpdateFlagFallthrough2$Outbound
     | UpdateFlagFallthrough1$Outbound;
   revision?: number | undefined;
@@ -1842,6 +2303,7 @@ export const UpdateFlagEnvironments$outboundSchema: z.ZodType<
   pausedOutcome: z.lazy(() => UpdateFlagPausedOutcome$outboundSchema),
   rules: z.array(z.lazy(() => UpdateFlagRules$outboundSchema)),
   fallthrough: smartUnion([
+    z.lazy(() => UpdateFlagFallthrough3$outboundSchema),
     z.lazy(() => UpdateFlagFallthrough2$outboundSchema),
     z.lazy(() => UpdateFlagFallthrough1$outboundSchema),
   ]),
@@ -2488,59 +2950,253 @@ export function responseBodyPausedOutcomeFromJSON(
 }
 
 /** @internal */
-export const UpdateFlagFallthroughFeatureFlagsResponseType$inboundSchema:
-  z.ZodNativeEnum<typeof UpdateFlagFallthroughFeatureFlagsResponseType> = z
-    .nativeEnum(UpdateFlagFallthroughFeatureFlagsResponseType);
+export const UpdateFlagFallthroughFeatureFlagsResponse200ApplicationJSONType$inboundSchema:
+  z.ZodNativeEnum<
+    typeof UpdateFlagFallthroughFeatureFlagsResponse200ApplicationJSONType
+  > = z.nativeEnum(
+    UpdateFlagFallthroughFeatureFlagsResponse200ApplicationJSONType,
+  );
 /** @internal */
-export const UpdateFlagFallthroughFeatureFlagsResponseType$outboundSchema:
-  z.ZodNativeEnum<typeof UpdateFlagFallthroughFeatureFlagsResponseType> =
-    UpdateFlagFallthroughFeatureFlagsResponseType$inboundSchema;
+export const UpdateFlagFallthroughFeatureFlagsResponse200ApplicationJSONType$outboundSchema:
+  z.ZodNativeEnum<
+    typeof UpdateFlagFallthroughFeatureFlagsResponse200ApplicationJSONType
+  > =
+    UpdateFlagFallthroughFeatureFlagsResponse200ApplicationJSONType$inboundSchema;
 
 /** @internal */
-export const UpdateFlagFallthroughFeatureFlagsBase$inboundSchema: z.ZodType<
-  UpdateFlagFallthroughFeatureFlagsBase,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  type: UpdateFlagFallthroughFeatureFlagsResponseType$inboundSchema,
-  kind: types.string(),
-  attribute: types.string(),
-});
+export const UpdateFlagFallthroughFeatureFlagsResponse200Base$inboundSchema:
+  z.ZodType<
+    UpdateFlagFallthroughFeatureFlagsResponse200Base,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    type:
+      UpdateFlagFallthroughFeatureFlagsResponse200ApplicationJSONType$inboundSchema,
+    kind: types.string(),
+    attribute: types.string(),
+  });
 /** @internal */
-export type UpdateFlagFallthroughFeatureFlagsBase$Outbound = {
+export type UpdateFlagFallthroughFeatureFlagsResponse200Base$Outbound = {
   type: string;
   kind: string;
   attribute: string;
 };
 
 /** @internal */
-export const UpdateFlagFallthroughFeatureFlagsBase$outboundSchema: z.ZodType<
-  UpdateFlagFallthroughFeatureFlagsBase$Outbound,
-  z.ZodTypeDef,
-  UpdateFlagFallthroughFeatureFlagsBase
-> = z.object({
-  type: UpdateFlagFallthroughFeatureFlagsResponseType$outboundSchema,
-  kind: z.string(),
-  attribute: z.string(),
-});
+export const UpdateFlagFallthroughFeatureFlagsResponse200Base$outboundSchema:
+  z.ZodType<
+    UpdateFlagFallthroughFeatureFlagsResponse200Base$Outbound,
+    z.ZodTypeDef,
+    UpdateFlagFallthroughFeatureFlagsResponse200Base
+  > = z.object({
+    type:
+      UpdateFlagFallthroughFeatureFlagsResponse200ApplicationJSONType$outboundSchema,
+    kind: z.string(),
+    attribute: z.string(),
+  });
 
-export function updateFlagFallthroughFeatureFlagsBaseToJSON(
-  updateFlagFallthroughFeatureFlagsBase: UpdateFlagFallthroughFeatureFlagsBase,
+export function updateFlagFallthroughFeatureFlagsResponse200BaseToJSON(
+  updateFlagFallthroughFeatureFlagsResponse200Base:
+    UpdateFlagFallthroughFeatureFlagsResponse200Base,
 ): string {
   return JSON.stringify(
-    UpdateFlagFallthroughFeatureFlagsBase$outboundSchema.parse(
-      updateFlagFallthroughFeatureFlagsBase,
+    UpdateFlagFallthroughFeatureFlagsResponse200Base$outboundSchema.parse(
+      updateFlagFallthroughFeatureFlagsResponse200Base,
     ),
   );
 }
-export function updateFlagFallthroughFeatureFlagsBaseFromJSON(
+export function updateFlagFallthroughFeatureFlagsResponse200BaseFromJSON(
   jsonString: string,
-): SafeParseResult<UpdateFlagFallthroughFeatureFlagsBase, SDKValidationError> {
+): SafeParseResult<
+  UpdateFlagFallthroughFeatureFlagsResponse200Base,
+  SDKValidationError
+> {
   return safeParse(
     jsonString,
     (x) =>
-      UpdateFlagFallthroughFeatureFlagsBase$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateFlagFallthroughFeatureFlagsBase' from JSON`,
+      UpdateFlagFallthroughFeatureFlagsResponse200Base$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UpdateFlagFallthroughFeatureFlagsResponse200Base' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateFlagFallthroughFeatureFlagsSlots$inboundSchema: z.ZodType<
+  UpdateFlagFallthroughFeatureFlagsSlots,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  promille: types.number(),
+  durationMs: types.number(),
+});
+/** @internal */
+export type UpdateFlagFallthroughFeatureFlagsSlots$Outbound = {
+  promille: number;
+  durationMs: number;
+};
+
+/** @internal */
+export const UpdateFlagFallthroughFeatureFlagsSlots$outboundSchema: z.ZodType<
+  UpdateFlagFallthroughFeatureFlagsSlots$Outbound,
+  z.ZodTypeDef,
+  UpdateFlagFallthroughFeatureFlagsSlots
+> = z.object({
+  promille: z.number(),
+  durationMs: z.number(),
+});
+
+export function updateFlagFallthroughFeatureFlagsSlotsToJSON(
+  updateFlagFallthroughFeatureFlagsSlots:
+    UpdateFlagFallthroughFeatureFlagsSlots,
+): string {
+  return JSON.stringify(
+    UpdateFlagFallthroughFeatureFlagsSlots$outboundSchema.parse(
+      updateFlagFallthroughFeatureFlagsSlots,
+    ),
+  );
+}
+export function updateFlagFallthroughFeatureFlagsSlotsFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateFlagFallthroughFeatureFlagsSlots, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateFlagFallthroughFeatureFlagsSlots$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateFlagFallthroughFeatureFlagsSlots' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateFlagFallthroughFeatureFlags3$inboundSchema: z.ZodType<
+  UpdateFlagFallthroughFeatureFlags3,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: types.literal("rollout"),
+  base: z.lazy(() =>
+    UpdateFlagFallthroughFeatureFlagsResponse200Base$inboundSchema
+  ),
+  defaultVariantId: types.string(),
+  startTimestamp: types.number(),
+  rollFromVariantId: types.string(),
+  rollToVariantId: types.string(),
+  slots: z.array(
+    z.lazy(() => UpdateFlagFallthroughFeatureFlagsSlots$inboundSchema),
+  ),
+});
+/** @internal */
+export type UpdateFlagFallthroughFeatureFlags3$Outbound = {
+  type: "rollout";
+  base: UpdateFlagFallthroughFeatureFlagsResponse200Base$Outbound;
+  defaultVariantId: string;
+  startTimestamp: number;
+  rollFromVariantId: string;
+  rollToVariantId: string;
+  slots: Array<UpdateFlagFallthroughFeatureFlagsSlots$Outbound>;
+};
+
+/** @internal */
+export const UpdateFlagFallthroughFeatureFlags3$outboundSchema: z.ZodType<
+  UpdateFlagFallthroughFeatureFlags3$Outbound,
+  z.ZodTypeDef,
+  UpdateFlagFallthroughFeatureFlags3
+> = z.object({
+  type: z.literal("rollout"),
+  base: z.lazy(() =>
+    UpdateFlagFallthroughFeatureFlagsResponse200Base$outboundSchema
+  ),
+  defaultVariantId: z.string(),
+  startTimestamp: z.number(),
+  rollFromVariantId: z.string(),
+  rollToVariantId: z.string(),
+  slots: z.array(
+    z.lazy(() => UpdateFlagFallthroughFeatureFlagsSlots$outboundSchema),
+  ),
+});
+
+export function updateFlagFallthroughFeatureFlags3ToJSON(
+  updateFlagFallthroughFeatureFlags3: UpdateFlagFallthroughFeatureFlags3,
+): string {
+  return JSON.stringify(
+    UpdateFlagFallthroughFeatureFlags3$outboundSchema.parse(
+      updateFlagFallthroughFeatureFlags3,
+    ),
+  );
+}
+export function updateFlagFallthroughFeatureFlags3FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateFlagFallthroughFeatureFlags3, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateFlagFallthroughFeatureFlags3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateFlagFallthroughFeatureFlags3' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateFlagFallthroughFeatureFlagsResponse200Type$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateFlagFallthroughFeatureFlagsResponse200Type> = z
+    .nativeEnum(UpdateFlagFallthroughFeatureFlagsResponse200Type);
+/** @internal */
+export const UpdateFlagFallthroughFeatureFlagsResponse200Type$outboundSchema:
+  z.ZodNativeEnum<typeof UpdateFlagFallthroughFeatureFlagsResponse200Type> =
+    UpdateFlagFallthroughFeatureFlagsResponse200Type$inboundSchema;
+
+/** @internal */
+export const UpdateFlagFallthroughFeatureFlagsResponseBase$inboundSchema:
+  z.ZodType<
+    UpdateFlagFallthroughFeatureFlagsResponseBase,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    type: UpdateFlagFallthroughFeatureFlagsResponse200Type$inboundSchema,
+    kind: types.string(),
+    attribute: types.string(),
+  });
+/** @internal */
+export type UpdateFlagFallthroughFeatureFlagsResponseBase$Outbound = {
+  type: string;
+  kind: string;
+  attribute: string;
+};
+
+/** @internal */
+export const UpdateFlagFallthroughFeatureFlagsResponseBase$outboundSchema:
+  z.ZodType<
+    UpdateFlagFallthroughFeatureFlagsResponseBase$Outbound,
+    z.ZodTypeDef,
+    UpdateFlagFallthroughFeatureFlagsResponseBase
+  > = z.object({
+    type: UpdateFlagFallthroughFeatureFlagsResponse200Type$outboundSchema,
+    kind: z.string(),
+    attribute: z.string(),
+  });
+
+export function updateFlagFallthroughFeatureFlagsResponseBaseToJSON(
+  updateFlagFallthroughFeatureFlagsResponseBase:
+    UpdateFlagFallthroughFeatureFlagsResponseBase,
+): string {
+  return JSON.stringify(
+    UpdateFlagFallthroughFeatureFlagsResponseBase$outboundSchema.parse(
+      updateFlagFallthroughFeatureFlagsResponseBase,
+    ),
+  );
+}
+export function updateFlagFallthroughFeatureFlagsResponseBaseFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UpdateFlagFallthroughFeatureFlagsResponseBase,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateFlagFallthroughFeatureFlagsResponseBase$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UpdateFlagFallthroughFeatureFlagsResponseBase' from JSON`,
   );
 }
 
@@ -2551,14 +3207,16 @@ export const UpdateFlagFallthroughFeatureFlags2$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   type: types.literal("split"),
-  base: z.lazy(() => UpdateFlagFallthroughFeatureFlagsBase$inboundSchema),
+  base: z.lazy(() =>
+    UpdateFlagFallthroughFeatureFlagsResponseBase$inboundSchema
+  ),
   weights: z.record(types.number()),
   defaultVariantId: types.string(),
 });
 /** @internal */
 export type UpdateFlagFallthroughFeatureFlags2$Outbound = {
   type: "split";
-  base: UpdateFlagFallthroughFeatureFlagsBase$Outbound;
+  base: UpdateFlagFallthroughFeatureFlagsResponseBase$Outbound;
   weights: { [k: string]: number };
   defaultVariantId: string;
 };
@@ -2570,7 +3228,9 @@ export const UpdateFlagFallthroughFeatureFlags2$outboundSchema: z.ZodType<
   UpdateFlagFallthroughFeatureFlags2
 > = z.object({
   type: z.literal("split"),
-  base: z.lazy(() => UpdateFlagFallthroughFeatureFlagsBase$outboundSchema),
+  base: z.lazy(() =>
+    UpdateFlagFallthroughFeatureFlagsResponseBase$outboundSchema
+  ),
   weights: z.record(z.number()),
   defaultVariantId: z.string(),
 });
@@ -2648,11 +3308,13 @@ export const ResponseBodyFallthrough$inboundSchema: z.ZodType<
 > = z.union([
   z.lazy(() => UpdateFlagFallthroughFeatureFlags1$inboundSchema),
   z.lazy(() => UpdateFlagFallthroughFeatureFlags2$inboundSchema),
+  z.lazy(() => UpdateFlagFallthroughFeatureFlags3$inboundSchema),
 ]);
 /** @internal */
 export type ResponseBodyFallthrough$Outbound =
   | UpdateFlagFallthroughFeatureFlags1$Outbound
-  | UpdateFlagFallthroughFeatureFlags2$Outbound;
+  | UpdateFlagFallthroughFeatureFlags2$Outbound
+  | UpdateFlagFallthroughFeatureFlags3$Outbound;
 
 /** @internal */
 export const ResponseBodyFallthrough$outboundSchema: z.ZodType<
@@ -2662,6 +3324,7 @@ export const ResponseBodyFallthrough$outboundSchema: z.ZodType<
 > = z.union([
   z.lazy(() => UpdateFlagFallthroughFeatureFlags1$outboundSchema),
   z.lazy(() => UpdateFlagFallthroughFeatureFlags2$outboundSchema),
+  z.lazy(() => UpdateFlagFallthroughFeatureFlags3$outboundSchema),
 ]);
 
 export function responseBodyFallthroughToJSON(
@@ -2682,58 +3345,247 @@ export function responseBodyFallthroughFromJSON(
 }
 
 /** @internal */
-export const UpdateFlagOutcomeFeatureFlagsResponseType$inboundSchema:
-  z.ZodNativeEnum<typeof UpdateFlagOutcomeFeatureFlagsResponseType> = z
-    .nativeEnum(UpdateFlagOutcomeFeatureFlagsResponseType);
+export const UpdateFlagOutcomeFeatureFlagsResponse200ApplicationJSONType$inboundSchema:
+  z.ZodNativeEnum<
+    typeof UpdateFlagOutcomeFeatureFlagsResponse200ApplicationJSONType
+  > = z.nativeEnum(UpdateFlagOutcomeFeatureFlagsResponse200ApplicationJSONType);
 /** @internal */
-export const UpdateFlagOutcomeFeatureFlagsResponseType$outboundSchema:
-  z.ZodNativeEnum<typeof UpdateFlagOutcomeFeatureFlagsResponseType> =
-    UpdateFlagOutcomeFeatureFlagsResponseType$inboundSchema;
+export const UpdateFlagOutcomeFeatureFlagsResponse200ApplicationJSONType$outboundSchema:
+  z.ZodNativeEnum<
+    typeof UpdateFlagOutcomeFeatureFlagsResponse200ApplicationJSONType
+  > = UpdateFlagOutcomeFeatureFlagsResponse200ApplicationJSONType$inboundSchema;
 
 /** @internal */
-export const UpdateFlagOutcomeFeatureFlagsBase$inboundSchema: z.ZodType<
-  UpdateFlagOutcomeFeatureFlagsBase,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  type: UpdateFlagOutcomeFeatureFlagsResponseType$inboundSchema,
-  kind: types.string(),
-  attribute: types.string(),
-});
+export const UpdateFlagOutcomeFeatureFlagsResponse200Base$inboundSchema:
+  z.ZodType<
+    UpdateFlagOutcomeFeatureFlagsResponse200Base,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    type:
+      UpdateFlagOutcomeFeatureFlagsResponse200ApplicationJSONType$inboundSchema,
+    kind: types.string(),
+    attribute: types.string(),
+  });
 /** @internal */
-export type UpdateFlagOutcomeFeatureFlagsBase$Outbound = {
+export type UpdateFlagOutcomeFeatureFlagsResponse200Base$Outbound = {
   type: string;
   kind: string;
   attribute: string;
 };
 
 /** @internal */
-export const UpdateFlagOutcomeFeatureFlagsBase$outboundSchema: z.ZodType<
-  UpdateFlagOutcomeFeatureFlagsBase$Outbound,
-  z.ZodTypeDef,
-  UpdateFlagOutcomeFeatureFlagsBase
-> = z.object({
-  type: UpdateFlagOutcomeFeatureFlagsResponseType$outboundSchema,
-  kind: z.string(),
-  attribute: z.string(),
-});
+export const UpdateFlagOutcomeFeatureFlagsResponse200Base$outboundSchema:
+  z.ZodType<
+    UpdateFlagOutcomeFeatureFlagsResponse200Base$Outbound,
+    z.ZodTypeDef,
+    UpdateFlagOutcomeFeatureFlagsResponse200Base
+  > = z.object({
+    type:
+      UpdateFlagOutcomeFeatureFlagsResponse200ApplicationJSONType$outboundSchema,
+    kind: z.string(),
+    attribute: z.string(),
+  });
 
-export function updateFlagOutcomeFeatureFlagsBaseToJSON(
-  updateFlagOutcomeFeatureFlagsBase: UpdateFlagOutcomeFeatureFlagsBase,
+export function updateFlagOutcomeFeatureFlagsResponse200BaseToJSON(
+  updateFlagOutcomeFeatureFlagsResponse200Base:
+    UpdateFlagOutcomeFeatureFlagsResponse200Base,
 ): string {
   return JSON.stringify(
-    UpdateFlagOutcomeFeatureFlagsBase$outboundSchema.parse(
-      updateFlagOutcomeFeatureFlagsBase,
+    UpdateFlagOutcomeFeatureFlagsResponse200Base$outboundSchema.parse(
+      updateFlagOutcomeFeatureFlagsResponse200Base,
     ),
   );
 }
-export function updateFlagOutcomeFeatureFlagsBaseFromJSON(
+export function updateFlagOutcomeFeatureFlagsResponse200BaseFromJSON(
   jsonString: string,
-): SafeParseResult<UpdateFlagOutcomeFeatureFlagsBase, SDKValidationError> {
+): SafeParseResult<
+  UpdateFlagOutcomeFeatureFlagsResponse200Base,
+  SDKValidationError
+> {
   return safeParse(
     jsonString,
-    (x) => UpdateFlagOutcomeFeatureFlagsBase$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateFlagOutcomeFeatureFlagsBase' from JSON`,
+    (x) =>
+      UpdateFlagOutcomeFeatureFlagsResponse200Base$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UpdateFlagOutcomeFeatureFlagsResponse200Base' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateFlagOutcomeFeatureFlagsSlots$inboundSchema: z.ZodType<
+  UpdateFlagOutcomeFeatureFlagsSlots,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  promille: types.number(),
+  durationMs: types.number(),
+});
+/** @internal */
+export type UpdateFlagOutcomeFeatureFlagsSlots$Outbound = {
+  promille: number;
+  durationMs: number;
+};
+
+/** @internal */
+export const UpdateFlagOutcomeFeatureFlagsSlots$outboundSchema: z.ZodType<
+  UpdateFlagOutcomeFeatureFlagsSlots$Outbound,
+  z.ZodTypeDef,
+  UpdateFlagOutcomeFeatureFlagsSlots
+> = z.object({
+  promille: z.number(),
+  durationMs: z.number(),
+});
+
+export function updateFlagOutcomeFeatureFlagsSlotsToJSON(
+  updateFlagOutcomeFeatureFlagsSlots: UpdateFlagOutcomeFeatureFlagsSlots,
+): string {
+  return JSON.stringify(
+    UpdateFlagOutcomeFeatureFlagsSlots$outboundSchema.parse(
+      updateFlagOutcomeFeatureFlagsSlots,
+    ),
+  );
+}
+export function updateFlagOutcomeFeatureFlagsSlotsFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateFlagOutcomeFeatureFlagsSlots, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateFlagOutcomeFeatureFlagsSlots$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateFlagOutcomeFeatureFlagsSlots' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateFlagOutcomeFeatureFlags3$inboundSchema: z.ZodType<
+  UpdateFlagOutcomeFeatureFlags3,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: types.literal("rollout"),
+  base: z.lazy(() =>
+    UpdateFlagOutcomeFeatureFlagsResponse200Base$inboundSchema
+  ),
+  defaultVariantId: types.string(),
+  startTimestamp: types.number(),
+  rollFromVariantId: types.string(),
+  rollToVariantId: types.string(),
+  slots: z.array(
+    z.lazy(() => UpdateFlagOutcomeFeatureFlagsSlots$inboundSchema),
+  ),
+});
+/** @internal */
+export type UpdateFlagOutcomeFeatureFlags3$Outbound = {
+  type: "rollout";
+  base: UpdateFlagOutcomeFeatureFlagsResponse200Base$Outbound;
+  defaultVariantId: string;
+  startTimestamp: number;
+  rollFromVariantId: string;
+  rollToVariantId: string;
+  slots: Array<UpdateFlagOutcomeFeatureFlagsSlots$Outbound>;
+};
+
+/** @internal */
+export const UpdateFlagOutcomeFeatureFlags3$outboundSchema: z.ZodType<
+  UpdateFlagOutcomeFeatureFlags3$Outbound,
+  z.ZodTypeDef,
+  UpdateFlagOutcomeFeatureFlags3
+> = z.object({
+  type: z.literal("rollout"),
+  base: z.lazy(() =>
+    UpdateFlagOutcomeFeatureFlagsResponse200Base$outboundSchema
+  ),
+  defaultVariantId: z.string(),
+  startTimestamp: z.number(),
+  rollFromVariantId: z.string(),
+  rollToVariantId: z.string(),
+  slots: z.array(
+    z.lazy(() => UpdateFlagOutcomeFeatureFlagsSlots$outboundSchema),
+  ),
+});
+
+export function updateFlagOutcomeFeatureFlags3ToJSON(
+  updateFlagOutcomeFeatureFlags3: UpdateFlagOutcomeFeatureFlags3,
+): string {
+  return JSON.stringify(
+    UpdateFlagOutcomeFeatureFlags3$outboundSchema.parse(
+      updateFlagOutcomeFeatureFlags3,
+    ),
+  );
+}
+export function updateFlagOutcomeFeatureFlags3FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateFlagOutcomeFeatureFlags3, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateFlagOutcomeFeatureFlags3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateFlagOutcomeFeatureFlags3' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateFlagOutcomeFeatureFlagsResponse200Type$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateFlagOutcomeFeatureFlagsResponse200Type> = z
+    .nativeEnum(UpdateFlagOutcomeFeatureFlagsResponse200Type);
+/** @internal */
+export const UpdateFlagOutcomeFeatureFlagsResponse200Type$outboundSchema:
+  z.ZodNativeEnum<typeof UpdateFlagOutcomeFeatureFlagsResponse200Type> =
+    UpdateFlagOutcomeFeatureFlagsResponse200Type$inboundSchema;
+
+/** @internal */
+export const UpdateFlagOutcomeFeatureFlagsResponseBase$inboundSchema: z.ZodType<
+  UpdateFlagOutcomeFeatureFlagsResponseBase,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: UpdateFlagOutcomeFeatureFlagsResponse200Type$inboundSchema,
+  kind: types.string(),
+  attribute: types.string(),
+});
+/** @internal */
+export type UpdateFlagOutcomeFeatureFlagsResponseBase$Outbound = {
+  type: string;
+  kind: string;
+  attribute: string;
+};
+
+/** @internal */
+export const UpdateFlagOutcomeFeatureFlagsResponseBase$outboundSchema:
+  z.ZodType<
+    UpdateFlagOutcomeFeatureFlagsResponseBase$Outbound,
+    z.ZodTypeDef,
+    UpdateFlagOutcomeFeatureFlagsResponseBase
+  > = z.object({
+    type: UpdateFlagOutcomeFeatureFlagsResponse200Type$outboundSchema,
+    kind: z.string(),
+    attribute: z.string(),
+  });
+
+export function updateFlagOutcomeFeatureFlagsResponseBaseToJSON(
+  updateFlagOutcomeFeatureFlagsResponseBase:
+    UpdateFlagOutcomeFeatureFlagsResponseBase,
+): string {
+  return JSON.stringify(
+    UpdateFlagOutcomeFeatureFlagsResponseBase$outboundSchema.parse(
+      updateFlagOutcomeFeatureFlagsResponseBase,
+    ),
+  );
+}
+export function updateFlagOutcomeFeatureFlagsResponseBaseFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UpdateFlagOutcomeFeatureFlagsResponseBase,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateFlagOutcomeFeatureFlagsResponseBase$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UpdateFlagOutcomeFeatureFlagsResponseBase' from JSON`,
   );
 }
 
@@ -2744,14 +3596,14 @@ export const UpdateFlagOutcomeFeatureFlags2$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   type: types.literal("split"),
-  base: z.lazy(() => UpdateFlagOutcomeFeatureFlagsBase$inboundSchema),
+  base: z.lazy(() => UpdateFlagOutcomeFeatureFlagsResponseBase$inboundSchema),
   weights: z.record(types.number()),
   defaultVariantId: types.string(),
 });
 /** @internal */
 export type UpdateFlagOutcomeFeatureFlags2$Outbound = {
   type: "split";
-  base: UpdateFlagOutcomeFeatureFlagsBase$Outbound;
+  base: UpdateFlagOutcomeFeatureFlagsResponseBase$Outbound;
   weights: { [k: string]: number };
   defaultVariantId: string;
 };
@@ -2763,7 +3615,7 @@ export const UpdateFlagOutcomeFeatureFlags2$outboundSchema: z.ZodType<
   UpdateFlagOutcomeFeatureFlags2
 > = z.object({
   type: z.literal("split"),
-  base: z.lazy(() => UpdateFlagOutcomeFeatureFlagsBase$outboundSchema),
+  base: z.lazy(() => UpdateFlagOutcomeFeatureFlagsResponseBase$outboundSchema),
   weights: z.record(z.number()),
   defaultVariantId: z.string(),
 });
@@ -2839,11 +3691,13 @@ export const ResponseBodyOutcome$inboundSchema: z.ZodType<
 > = z.union([
   z.lazy(() => UpdateFlagOutcomeFeatureFlags1$inboundSchema),
   z.lazy(() => UpdateFlagOutcomeFeatureFlags2$inboundSchema),
+  z.lazy(() => UpdateFlagOutcomeFeatureFlags3$inboundSchema),
 ]);
 /** @internal */
 export type ResponseBodyOutcome$Outbound =
   | UpdateFlagOutcomeFeatureFlags1$Outbound
-  | UpdateFlagOutcomeFeatureFlags2$Outbound;
+  | UpdateFlagOutcomeFeatureFlags2$Outbound
+  | UpdateFlagOutcomeFeatureFlags3$Outbound;
 
 /** @internal */
 export const ResponseBodyOutcome$outboundSchema: z.ZodType<
@@ -2853,6 +3707,7 @@ export const ResponseBodyOutcome$outboundSchema: z.ZodType<
 > = z.union([
   z.lazy(() => UpdateFlagOutcomeFeatureFlags1$outboundSchema),
   z.lazy(() => UpdateFlagOutcomeFeatureFlags2$outboundSchema),
+  z.lazy(() => UpdateFlagOutcomeFeatureFlags3$outboundSchema),
 ]);
 
 export function responseBodyOutcomeToJSON(
@@ -3427,6 +4282,7 @@ export const ResponseBodyRules$inboundSchema: z.ZodType<
   outcome: z.union([
     z.lazy(() => UpdateFlagOutcomeFeatureFlags1$inboundSchema),
     z.lazy(() => UpdateFlagOutcomeFeatureFlags2$inboundSchema),
+    z.lazy(() => UpdateFlagOutcomeFeatureFlags3$inboundSchema),
   ]),
   conditions: z.array(z.lazy(() => ResponseBodyConditions$inboundSchema)),
 });
@@ -3435,7 +4291,8 @@ export type ResponseBodyRules$Outbound = {
   id: string;
   outcome:
     | UpdateFlagOutcomeFeatureFlags1$Outbound
-    | UpdateFlagOutcomeFeatureFlags2$Outbound;
+    | UpdateFlagOutcomeFeatureFlags2$Outbound
+    | UpdateFlagOutcomeFeatureFlags3$Outbound;
   conditions: Array<ResponseBodyConditions$Outbound>;
 };
 
@@ -3449,6 +4306,7 @@ export const ResponseBodyRules$outboundSchema: z.ZodType<
   outcome: z.union([
     z.lazy(() => UpdateFlagOutcomeFeatureFlags1$outboundSchema),
     z.lazy(() => UpdateFlagOutcomeFeatureFlags2$outboundSchema),
+    z.lazy(() => UpdateFlagOutcomeFeatureFlags3$outboundSchema),
   ]),
   conditions: z.array(z.lazy(() => ResponseBodyConditions$outboundSchema)),
 });
@@ -3487,6 +4345,7 @@ export const ResponseBodyEnvironments$inboundSchema: z.ZodType<
   fallthrough: z.union([
     z.lazy(() => UpdateFlagFallthroughFeatureFlags1$inboundSchema),
     z.lazy(() => UpdateFlagFallthroughFeatureFlags2$inboundSchema),
+    z.lazy(() => UpdateFlagFallthroughFeatureFlags3$inboundSchema),
   ]),
   active: types.boolean(),
   rules: z.array(z.lazy(() => ResponseBodyRules$inboundSchema)),
@@ -3505,7 +4364,8 @@ export type ResponseBodyEnvironments$Outbound = {
   pausedOutcome: ResponseBodyPausedOutcome$Outbound;
   fallthrough:
     | UpdateFlagFallthroughFeatureFlags1$Outbound
-    | UpdateFlagFallthroughFeatureFlags2$Outbound;
+    | UpdateFlagFallthroughFeatureFlags2$Outbound
+    | UpdateFlagFallthroughFeatureFlags3$Outbound;
   active: boolean;
   rules: Array<ResponseBodyRules$Outbound>;
 };
@@ -3527,6 +4387,7 @@ export const ResponseBodyEnvironments$outboundSchema: z.ZodType<
   fallthrough: z.union([
     z.lazy(() => UpdateFlagFallthroughFeatureFlags1$outboundSchema),
     z.lazy(() => UpdateFlagFallthroughFeatureFlags2$outboundSchema),
+    z.lazy(() => UpdateFlagFallthroughFeatureFlags3$outboundSchema),
   ]),
   active: z.boolean(),
   rules: z.array(z.lazy(() => ResponseBodyRules$outboundSchema)),

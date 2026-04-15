@@ -27,3 +27,26 @@ const value: models.UpdateFlagOutcomeFeatureFlags2 = {
 };
 ```
 
+### `models.UpdateFlagOutcomeFeatureFlags3`
+
+```typescript
+const value: models.UpdateFlagOutcomeFeatureFlags3 = {
+  type: "rollout",
+  base: {
+    type: "entity",
+    kind: "<value>",
+    attribute: "<value>",
+  },
+  defaultVariantId: "<id>",
+  startTimestamp: 9372.47,
+  rollFromVariantId: "<id>",
+  rollToVariantId: "<id>",
+  slots: [
+    {
+      promille: 5618.61,
+      durationMs: 194.97,
+    },
+  ],
+};
+```
+

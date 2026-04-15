@@ -528,49 +528,33 @@ export type GetConfigurationResponseBody1 = {
   status?: GetConfigurationResponseBodyStatus | undefined;
   type: GetConfigurationResponseBodyType;
   /**
-   * A timestamp that tells you when the configuration was created
-   */
-  createdAt: number;
-  /**
-   * A timestamp that tells you when the configuration was deleted.
-   */
-  deletedAt?: number | null | undefined;
-  /**
    * The unique identifier of the configuration
    */
   id: string;
-  /**
-   * The slug of the integration the configuration is created for.
-   */
-  slug: string;
-  /**
-   * When the configuration was created for a team, this will show the ID of the team.
-   */
-  teamId?: string | null | undefined;
-  /**
-   * A timestamp that tells you when the configuration was updated.
-   */
-  updatedAt: number;
-  /**
-   * The ID of the user that created the configuration.
-   */
-  userId: string;
-  /**
-   * The resources that are allowed to be accessed by the configuration.
-   */
-  scopes: Array<string>;
-  /**
-   * Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics.
-   */
-  source?: GetConfigurationResponseBodySource | undefined;
   /**
    * The unique identifier of the app the configuration was created for
    */
   integrationId: string;
   /**
+   * The ID of the user that created the configuration.
+   */
+  userId: string;
+  /**
    * The user or team ID that owns the configuration
    */
   ownerId: string;
+  /**
+   * A timestamp that tells you when the configuration was created
+   */
+  createdAt: number;
+  /**
+   * A timestamp that tells you when the configuration was updated.
+   */
+  updatedAt: number;
+  /**
+   * A timestamp that tells you when the configuration was deleted.
+   */
+  deletedAt?: number | null | undefined;
   canConfigureOpenTelemetry?: boolean | undefined;
   /**
    * A timestamp that tells you when the configuration was installed successfully
@@ -580,6 +564,22 @@ export type GetConfigurationResponseBody1 = {
    * An external identifier defined by the integration vendor.
    */
   externalId?: string | undefined;
+  /**
+   * Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics.
+   */
+  source?: GetConfigurationResponseBodySource | undefined;
+  /**
+   * The slug of the integration the configuration is created for.
+   */
+  slug: string;
+  /**
+   * When the configuration was created for a team, this will show the ID of the team.
+   */
+  teamId?: string | null | undefined;
+  /**
+   * The resources that are allowed to be accessed by the configuration.
+   */
+  scopes: Array<string>;
   /**
    * A timestamp that tells you when the configuration was disabled. Note: Configurations can be disabled when the associated user loses access to a team. They do not function during this time until the configuration is 'transferred', meaning the associated user is changed to one with access to the team.
    */
@@ -1460,20 +1460,20 @@ export const GetConfigurationResponseBody1$inboundSchema: z.ZodType<
   projects: types.optional(z.array(types.string())),
   status: types.optional(GetConfigurationResponseBodyStatus$inboundSchema),
   type: GetConfigurationResponseBodyType$inboundSchema,
-  createdAt: types.number(),
-  deletedAt: z.nullable(types.number()).optional(),
   id: types.string(),
-  slug: types.string(),
-  teamId: z.nullable(types.string()).optional(),
-  updatedAt: types.number(),
-  userId: types.string(),
-  scopes: z.array(types.string()),
-  source: types.optional(GetConfigurationResponseBodySource$inboundSchema),
   integrationId: types.string(),
+  userId: types.string(),
   ownerId: types.string(),
+  createdAt: types.number(),
+  updatedAt: types.number(),
+  deletedAt: z.nullable(types.number()).optional(),
   canConfigureOpenTelemetry: types.optional(types.boolean()),
   completedAt: types.optional(types.number()),
   externalId: types.optional(types.string()),
+  source: types.optional(GetConfigurationResponseBodySource$inboundSchema),
+  slug: types.string(),
+  teamId: z.nullable(types.string()).optional(),
+  scopes: z.array(types.string()),
   disabledAt: types.optional(types.number()),
   deleteRequestedAt: z.nullable(types.number()).optional(),
   customerDeleteRequestedAt: z.nullable(types.number()).optional(),
@@ -1492,20 +1492,20 @@ export type GetConfigurationResponseBody1$Outbound = {
   projects?: Array<string> | undefined;
   status?: string | undefined;
   type: string;
-  createdAt: number;
-  deletedAt?: number | null | undefined;
   id: string;
-  slug: string;
-  teamId?: string | null | undefined;
-  updatedAt: number;
-  userId: string;
-  scopes: Array<string>;
-  source?: string | undefined;
   integrationId: string;
+  userId: string;
   ownerId: string;
+  createdAt: number;
+  updatedAt: number;
+  deletedAt?: number | null | undefined;
   canConfigureOpenTelemetry?: boolean | undefined;
   completedAt?: number | undefined;
   externalId?: string | undefined;
+  source?: string | undefined;
+  slug: string;
+  teamId?: string | null | undefined;
+  scopes: Array<string>;
   disabledAt?: number | undefined;
   deleteRequestedAt?: number | null | undefined;
   customerDeleteRequestedAt?: number | null | undefined;
@@ -1528,20 +1528,20 @@ export const GetConfigurationResponseBody1$outboundSchema: z.ZodType<
   projects: z.array(z.string()).optional(),
   status: GetConfigurationResponseBodyStatus$outboundSchema.optional(),
   type: GetConfigurationResponseBodyType$outboundSchema,
-  createdAt: z.number(),
-  deletedAt: z.nullable(z.number()).optional(),
   id: z.string(),
-  slug: z.string(),
-  teamId: z.nullable(z.string()).optional(),
-  updatedAt: z.number(),
-  userId: z.string(),
-  scopes: z.array(z.string()),
-  source: GetConfigurationResponseBodySource$outboundSchema.optional(),
   integrationId: z.string(),
+  userId: z.string(),
   ownerId: z.string(),
+  createdAt: z.number(),
+  updatedAt: z.number(),
+  deletedAt: z.nullable(z.number()).optional(),
   canConfigureOpenTelemetry: z.boolean().optional(),
   completedAt: z.number().optional(),
   externalId: z.string().optional(),
+  source: GetConfigurationResponseBodySource$outboundSchema.optional(),
+  slug: z.string(),
+  teamId: z.nullable(z.string()).optional(),
+  scopes: z.array(z.string()),
   disabledAt: z.number().optional(),
   deleteRequestedAt: z.nullable(z.number()).optional(),
   customerDeleteRequestedAt: z.nullable(z.number()).optional(),

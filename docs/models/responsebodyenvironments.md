@@ -11,26 +11,20 @@ let value: ResponseBodyEnvironments = {
     variantId: "<id>",
   },
   fallthrough: {
-    type: "variant",
-    variantId: "<id>",
-  },
-  active: false,
-  rules: [
-    {
-      id: "<id>",
-      outcome: {
-        type: "split",
-        base: {
-          type: "entity",
-          kind: "<value>",
-          attribute: "<value>",
-        },
-        weights: {},
-        defaultVariantId: "<id>",
-      },
-      conditions: [],
+    type: "split",
+    base: {
+      type: "entity",
+      kind: "<value>",
+      attribute: "<value>",
     },
-  ],
+    weights: {
+      "key": 5970.26,
+      "key1": 7560.07,
+    },
+    defaultVariantId: "<id>",
+  },
+  active: true,
+  rules: [],
 };
 ```
 

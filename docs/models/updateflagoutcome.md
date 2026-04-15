@@ -29,3 +29,21 @@ const value: models.UpdateFlagOutcome2 = {
 };
 ```
 
+### `models.UpdateFlagOutcome3`
+
+```typescript
+const value: models.UpdateFlagOutcome3 = {
+  type: "<value>",
+  base: {
+    type: "<value>",
+    kind: "<value>",
+    attribute: "<value>",
+  },
+  startTimestamp: 800.47,
+  rollFromVariantId: "<id>",
+  rollToVariantId: "<id>",
+  defaultVariantId: "<id>",
+  slots: [],
+};
+```
+

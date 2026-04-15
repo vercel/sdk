@@ -58,6 +58,10 @@ export type Snapshot = {
    * The last time the snapshot was updated, in milliseconds since the epoch.
    */
   updatedAt: number;
+  /**
+   * The last time the snapshot was used (e.g. to resume or create a sandbox), in milliseconds since the epoch. Falls back to `createdAt` for older snapshots that predate this field.
+   */
+  lastUsedAt: number;
 };
 
 /** @internal */
@@ -83,6 +87,7 @@ export const Snapshot$inboundSchema: z.ZodType<
   expiresAt: types.optional(types.number()),
   createdAt: types.number(),
   updatedAt: types.number(),
+  lastUsedAt: types.number(),
 });
 /** @internal */
 export type Snapshot$Outbound = {
@@ -94,6 +99,7 @@ export type Snapshot$Outbound = {
   expiresAt?: number | undefined;
   createdAt: number;
   updatedAt: number;
+  lastUsedAt: number;
 };
 
 /** @internal */
@@ -110,6 +116,7 @@ export const Snapshot$outboundSchema: z.ZodType<
   expiresAt: z.number().optional(),
   createdAt: z.number(),
   updatedAt: z.number(),
+  lastUsedAt: z.number(),
 });
 
 export function snapshotToJSON(snapshot: Snapshot): string {

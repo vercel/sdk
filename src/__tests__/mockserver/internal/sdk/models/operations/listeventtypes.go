@@ -276,6 +276,7 @@ const (
 	NameProjectCronJobsToggled                          Name = "project-cron-jobs-toggled"
 	NameProjectDelegatedProtectionEnabled               Name = "project-delegated-protection-enabled"
 	NameProjectDelegatedProtectionUpdated               Name = "project-delegated-protection-updated"
+	NameProjectDelegatedProtectionDisabled              Name = "project-delegated-protection-disabled"
 	NameProjectDelete                                   Name = "project-delete"
 	NameProjectDomainUnverified                         Name = "project-domain-unverified"
 	NameProjectDomainVerified                           Name = "project-domain-verified"
@@ -957,6 +958,8 @@ func (e *Name) UnmarshalJSON(data []byte) error {
 	case "project-delegated-protection-enabled":
 		fallthrough
 	case "project-delegated-protection-updated":
+		fallthrough
+	case "project-delegated-protection-disabled":
 		fallthrough
 	case "project-delete":
 		fallthrough

@@ -30,3 +30,21 @@ const value: models.Fallthrough2 = {
 };
 ```
 
+### `models.Fallthrough3`
+
+```typescript
+const value: models.Fallthrough3 = {
+  type: "rollout",
+  base: {
+    type: "entity",
+    kind: "<value>",
+    attribute: "<value>",
+  },
+  defaultVariantId: "<id>",
+  startTimestamp: 5899.25,
+  rollFromVariantId: "<id>",
+  rollToVariantId: "<id>",
+  slots: [],
+};
+```
+

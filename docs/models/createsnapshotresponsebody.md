@@ -15,6 +15,7 @@ let value: CreateSnapshotResponseBody = {
     expiresAt: 1750344501629,
     createdAt: 1750344501629,
     updatedAt: 1750344501629,
+    lastUsedAt: 1750344501629,
   },
   sandbox: {
     id: "sbx_123a6c5209bc3778245d011443644c8d27dc2c50",

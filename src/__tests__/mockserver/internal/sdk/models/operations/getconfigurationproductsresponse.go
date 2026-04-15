@@ -841,11 +841,11 @@ type GetConfigurationProductsPropertiesRadioButton struct {
 	UIControl        GetConfigurationProductsUIControlRadioButton `json:"ui:control"`
 	UIOptions        []GetConfigurationProductsUIOption2          `json:"ui:options"`
 	Description      *string                                      `json:"description,omitempty"`
+	Default          *string                                      `json:"default,omitempty"`
 	Enum             []string                                     `json:"enum,omitempty"`
 	MaxLength        *float64                                     `json:"maxLength,omitempty"`
 	MinLength        *float64                                     `json:"minLength,omitempty"`
 	Pattern          *string                                      `json:"pattern,omitempty"`
-	Default          *string                                      `json:"default,omitempty"`
 	UILabel          *string                                      `json:"ui:label,omitempty"`
 	UIReadOnly       *GetConfigurationProductsUIReadOnlyUnion6    `json:"ui:read-only,omitempty"`
 	UIHidden         *GetConfigurationProductsUIHiddenUnion6      `json:"ui:hidden,omitempty"`
@@ -895,6 +895,13 @@ func (o *GetConfigurationProductsPropertiesRadioButton) GetDescription() *string
 	return o.Description
 }
 
+func (o *GetConfigurationProductsPropertiesRadioButton) GetDefault() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Default
+}
+
 func (o *GetConfigurationProductsPropertiesRadioButton) GetEnum() []string {
 	if o == nil {
 		return nil
@@ -921,13 +928,6 @@ func (o *GetConfigurationProductsPropertiesRadioButton) GetPattern() *string {
 		return nil
 	}
 	return o.Pattern
-}
-
-func (o *GetConfigurationProductsPropertiesRadioButton) GetDefault() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Default
 }
 
 func (o *GetConfigurationProductsPropertiesRadioButton) GetUILabel() *string {
@@ -1863,11 +1863,11 @@ type GetConfigurationProductsPropertiesSelect struct {
 	UIControl        GetConfigurationProductsUIControlSelect      `json:"ui:control"`
 	UIOptions        []GetConfigurationProductsUIOption1          `json:"ui:options"`
 	Description      *string                                      `json:"description,omitempty"`
+	Default          *string                                      `json:"default,omitempty"`
 	Enum             []string                                     `json:"enum,omitempty"`
 	MaxLength        *float64                                     `json:"maxLength,omitempty"`
 	MinLength        *float64                                     `json:"minLength,omitempty"`
 	Pattern          *string                                      `json:"pattern,omitempty"`
-	Default          *string                                      `json:"default,omitempty"`
 	UILabel          *string                                      `json:"ui:label,omitempty"`
 	UIReadOnly       *GetConfigurationProductsUIReadOnlyUnion5    `json:"ui:read-only,omitempty"`
 	UIHidden         *GetConfigurationProductsUIHiddenUnion5      `json:"ui:hidden,omitempty"`
@@ -1917,6 +1917,13 @@ func (o *GetConfigurationProductsPropertiesSelect) GetDescription() *string {
 	return o.Description
 }
 
+func (o *GetConfigurationProductsPropertiesSelect) GetDefault() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Default
+}
+
 func (o *GetConfigurationProductsPropertiesSelect) GetEnum() []string {
 	if o == nil {
 		return nil
@@ -1943,13 +1950,6 @@ func (o *GetConfigurationProductsPropertiesSelect) GetPattern() *string {
 		return nil
 	}
 	return o.Pattern
-}
-
-func (o *GetConfigurationProductsPropertiesSelect) GetDefault() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Default
 }
 
 func (o *GetConfigurationProductsPropertiesSelect) GetUILabel() *string {
@@ -3999,9 +3999,9 @@ type GetConfigurationProductsPropertiesNumber struct {
 	Minimum          *float64                                     `json:"minimum,omitempty"`
 	Maximum          *float64                                     `json:"maximum,omitempty"`
 	Description      *string                                      `json:"description,omitempty"`
+	Default          *float64                                     `json:"default,omitempty"`
 	ExclusiveMaximum *float64                                     `json:"exclusiveMaximum,omitempty"`
 	ExclusiveMinimum *float64                                     `json:"exclusiveMinimum,omitempty"`
-	Default          *float64                                     `json:"default,omitempty"`
 	UILabel          *string                                      `json:"ui:label,omitempty"`
 	UIReadOnly       *GetConfigurationProductsUIReadOnlyUnion2    `json:"ui:read-only,omitempty"`
 	UIHidden         *GetConfigurationProductsUIHiddenUnion2      `json:"ui:hidden,omitempty"`
@@ -4058,6 +4058,13 @@ func (o *GetConfigurationProductsPropertiesNumber) GetDescription() *string {
 	return o.Description
 }
 
+func (o *GetConfigurationProductsPropertiesNumber) GetDefault() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Default
+}
+
 func (o *GetConfigurationProductsPropertiesNumber) GetExclusiveMaximum() *float64 {
 	if o == nil {
 		return nil
@@ -4070,13 +4077,6 @@ func (o *GetConfigurationProductsPropertiesNumber) GetExclusiveMinimum() *float6
 		return nil
 	}
 	return o.ExclusiveMinimum
-}
-
-func (o *GetConfigurationProductsPropertiesNumber) GetDefault() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.Default
 }
 
 func (o *GetConfigurationProductsPropertiesNumber) GetUILabel() *string {
@@ -4691,11 +4691,11 @@ type GetConfigurationProductsPropertiesStringInput struct {
 	Type             GetConfigurationProductsTypeString1          `json:"type"`
 	UIControl        GetConfigurationProductsUIControlInput1      `json:"ui:control"`
 	Description      *string                                      `json:"description,omitempty"`
+	Default          *string                                      `json:"default,omitempty"`
 	Enum             []string                                     `json:"enum,omitempty"`
 	MaxLength        *float64                                     `json:"maxLength,omitempty"`
 	MinLength        *float64                                     `json:"minLength,omitempty"`
 	Pattern          *string                                      `json:"pattern,omitempty"`
-	Default          *string                                      `json:"default,omitempty"`
 	UILabel          *string                                      `json:"ui:label,omitempty"`
 	UIReadOnly       *GetConfigurationProductsUIReadOnlyUnion1    `json:"ui:read-only,omitempty"`
 	UIHidden         *GetConfigurationProductsUIHiddenUnion1      `json:"ui:hidden,omitempty"`
@@ -4738,6 +4738,13 @@ func (o *GetConfigurationProductsPropertiesStringInput) GetDescription() *string
 	return o.Description
 }
 
+func (o *GetConfigurationProductsPropertiesStringInput) GetDefault() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Default
+}
+
 func (o *GetConfigurationProductsPropertiesStringInput) GetEnum() []string {
 	if o == nil {
 		return nil
@@ -4764,13 +4771,6 @@ func (o *GetConfigurationProductsPropertiesStringInput) GetPattern() *string {
 		return nil
 	}
 	return o.Pattern
-}
-
-func (o *GetConfigurationProductsPropertiesStringInput) GetDefault() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Default
 }
 
 func (o *GetConfigurationProductsPropertiesStringInput) GetUILabel() *string {

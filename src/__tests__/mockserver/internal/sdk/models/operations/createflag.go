@@ -775,38 +775,183 @@ func (o *CreateFlagConditionRequest) GetCmpOptions() *CreateFlagCmpOptionsReques
 	return o.CmpOptions
 }
 
-type CreateFlagOutcomeBaseRequest struct {
+type CreateFlagOutcomeBaseRequest2 struct {
 	Type      any    `json:"type"`
 	Kind      string `json:"kind"`
 	Attribute string `json:"attribute"`
 }
 
-func (c CreateFlagOutcomeBaseRequest) MarshalJSON() ([]byte, error) {
+func (c CreateFlagOutcomeBaseRequest2) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(c, "", false)
 }
 
-func (c *CreateFlagOutcomeBaseRequest) UnmarshalJSON(data []byte) error {
+func (c *CreateFlagOutcomeBaseRequest2) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"type", "kind", "attribute"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *CreateFlagOutcomeBaseRequest) GetType() any {
+func (o *CreateFlagOutcomeBaseRequest2) GetType() any {
 	if o == nil {
 		return nil
 	}
 	return o.Type
 }
 
-func (o *CreateFlagOutcomeBaseRequest) GetKind() string {
+func (o *CreateFlagOutcomeBaseRequest2) GetKind() string {
 	if o == nil {
 		return ""
 	}
 	return o.Kind
 }
 
-func (o *CreateFlagOutcomeBaseRequest) GetAttribute() string {
+func (o *CreateFlagOutcomeBaseRequest2) GetAttribute() string {
+	if o == nil {
+		return ""
+	}
+	return o.Attribute
+}
+
+type CreateFlagOutcomeSlotRequest struct {
+	// Promille of traffic for rollToVariant (0-100_000, where 1_000 = 1%)
+	Promille float64 `json:"promille"`
+	// How long this promille is served in ms before moving to the next slot.
+	DurationMs float64 `json:"durationMs"`
+}
+
+func (c CreateFlagOutcomeSlotRequest) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateFlagOutcomeSlotRequest) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"promille", "durationMs"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateFlagOutcomeSlotRequest) GetPromille() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Promille
+}
+
+func (o *CreateFlagOutcomeSlotRequest) GetDurationMs() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.DurationMs
+}
+
+type CreateFlagOutcomeRequest3 struct {
+	Type any                           `json:"type"`
+	Base CreateFlagOutcomeBaseRequest2 `json:"base"`
+	// Epoch ms when the rollout begins
+	StartTimestamp float64 `json:"startTimestamp"`
+	// The variant to roll away from
+	RollFromVariantID string `json:"rollFromVariantId"`
+	// The variant to roll towards
+	RollToVariantID string `json:"rollToVariantId"`
+	// This variant will be used when the base attribute does not exist
+	DefaultVariantID string `json:"defaultVariantId"`
+	// Each slot defines a promille and how long it is served for. After all slots expire, 100% is served indefinitely. The final implicit 100% slot does not need to be listed. Example: [[5_000, 21_600_000], [10_000, 28_800_000]] means 5‰ for 6h, then 10‰ for 8h, then 100% indefinitely.
+	Slots []CreateFlagOutcomeSlotRequest `json:"slots"`
+}
+
+func (c CreateFlagOutcomeRequest3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateFlagOutcomeRequest3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"type", "base", "startTimestamp", "rollFromVariantId", "rollToVariantId", "defaultVariantId", "slots"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateFlagOutcomeRequest3) GetType() any {
+	if o == nil {
+		return nil
+	}
+	return o.Type
+}
+
+func (o *CreateFlagOutcomeRequest3) GetBase() CreateFlagOutcomeBaseRequest2 {
+	if o == nil {
+		return CreateFlagOutcomeBaseRequest2{}
+	}
+	return o.Base
+}
+
+func (o *CreateFlagOutcomeRequest3) GetStartTimestamp() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.StartTimestamp
+}
+
+func (o *CreateFlagOutcomeRequest3) GetRollFromVariantID() string {
+	if o == nil {
+		return ""
+	}
+	return o.RollFromVariantID
+}
+
+func (o *CreateFlagOutcomeRequest3) GetRollToVariantID() string {
+	if o == nil {
+		return ""
+	}
+	return o.RollToVariantID
+}
+
+func (o *CreateFlagOutcomeRequest3) GetDefaultVariantID() string {
+	if o == nil {
+		return ""
+	}
+	return o.DefaultVariantID
+}
+
+func (o *CreateFlagOutcomeRequest3) GetSlots() []CreateFlagOutcomeSlotRequest {
+	if o == nil {
+		return []CreateFlagOutcomeSlotRequest{}
+	}
+	return o.Slots
+}
+
+type CreateFlagOutcomeBaseRequest1 struct {
+	Type      any    `json:"type"`
+	Kind      string `json:"kind"`
+	Attribute string `json:"attribute"`
+}
+
+func (c CreateFlagOutcomeBaseRequest1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateFlagOutcomeBaseRequest1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"type", "kind", "attribute"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateFlagOutcomeBaseRequest1) GetType() any {
+	if o == nil {
+		return nil
+	}
+	return o.Type
+}
+
+func (o *CreateFlagOutcomeBaseRequest1) GetKind() string {
+	if o == nil {
+		return ""
+	}
+	return o.Kind
+}
+
+func (o *CreateFlagOutcomeBaseRequest1) GetAttribute() string {
 	if o == nil {
 		return ""
 	}
@@ -814,8 +959,8 @@ func (o *CreateFlagOutcomeBaseRequest) GetAttribute() string {
 }
 
 type CreateFlagOutcomeRequest2 struct {
-	Type any                          `json:"type"`
-	Base CreateFlagOutcomeBaseRequest `json:"base"`
+	Type any                           `json:"type"`
+	Base CreateFlagOutcomeBaseRequest1 `json:"base"`
 	// The distribution for each variant
 	Weights map[string]float64 `json:"weights"`
 	// This variant will be used when the base attribute does not exist
@@ -840,9 +985,9 @@ func (o *CreateFlagOutcomeRequest2) GetType() any {
 	return o.Type
 }
 
-func (o *CreateFlagOutcomeRequest2) GetBase() CreateFlagOutcomeBaseRequest {
+func (o *CreateFlagOutcomeRequest2) GetBase() CreateFlagOutcomeBaseRequest1 {
 	if o == nil {
-		return CreateFlagOutcomeBaseRequest{}
+		return CreateFlagOutcomeBaseRequest1{}
 	}
 	return o.Base
 }
@@ -896,11 +1041,13 @@ type CreateFlagOutcomeRequestUnionType string
 const (
 	CreateFlagOutcomeRequestUnionTypeCreateFlagOutcomeRequest1 CreateFlagOutcomeRequestUnionType = "createFlag_outcome_request_1"
 	CreateFlagOutcomeRequestUnionTypeCreateFlagOutcomeRequest2 CreateFlagOutcomeRequestUnionType = "createFlag_outcome_request_2"
+	CreateFlagOutcomeRequestUnionTypeCreateFlagOutcomeRequest3 CreateFlagOutcomeRequestUnionType = "createFlag_outcome_request_3"
 )
 
 type CreateFlagOutcomeRequestUnion struct {
 	CreateFlagOutcomeRequest1 *CreateFlagOutcomeRequest1 `queryParam:"inline"`
 	CreateFlagOutcomeRequest2 *CreateFlagOutcomeRequest2 `queryParam:"inline"`
+	CreateFlagOutcomeRequest3 *CreateFlagOutcomeRequest3 `queryParam:"inline"`
 
 	Type CreateFlagOutcomeRequestUnionType
 }
@@ -923,7 +1070,23 @@ func CreateCreateFlagOutcomeRequestUnionCreateFlagOutcomeRequest2(createFlagOutc
 	}
 }
 
+func CreateCreateFlagOutcomeRequestUnionCreateFlagOutcomeRequest3(createFlagOutcomeRequest3 CreateFlagOutcomeRequest3) CreateFlagOutcomeRequestUnion {
+	typ := CreateFlagOutcomeRequestUnionTypeCreateFlagOutcomeRequest3
+
+	return CreateFlagOutcomeRequestUnion{
+		CreateFlagOutcomeRequest3: &createFlagOutcomeRequest3,
+		Type:                      typ,
+	}
+}
+
 func (u *CreateFlagOutcomeRequestUnion) UnmarshalJSON(data []byte) error {
+
+	var createFlagOutcomeRequest3 CreateFlagOutcomeRequest3 = CreateFlagOutcomeRequest3{}
+	if err := utils.UnmarshalJSON(data, &createFlagOutcomeRequest3, "", true, nil); err == nil {
+		u.CreateFlagOutcomeRequest3 = &createFlagOutcomeRequest3
+		u.Type = CreateFlagOutcomeRequestUnionTypeCreateFlagOutcomeRequest3
+		return nil
+	}
 
 	var createFlagOutcomeRequest2 CreateFlagOutcomeRequest2 = CreateFlagOutcomeRequest2{}
 	if err := utils.UnmarshalJSON(data, &createFlagOutcomeRequest2, "", true, nil); err == nil {
@@ -949,6 +1112,10 @@ func (u CreateFlagOutcomeRequestUnion) MarshalJSON() ([]byte, error) {
 
 	if u.CreateFlagOutcomeRequest2 != nil {
 		return utils.MarshalJSON(u.CreateFlagOutcomeRequest2, "", true)
+	}
+
+	if u.CreateFlagOutcomeRequest3 != nil {
+		return utils.MarshalJSON(u.CreateFlagOutcomeRequest3, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type CreateFlagOutcomeRequestUnion: all fields are null")
@@ -981,38 +1148,183 @@ func (o *CreateFlagRuleRequest) GetOutcome() CreateFlagOutcomeRequestUnion {
 	return o.Outcome
 }
 
-type CreateFlagFallthroughBaseRequest struct {
+type CreateFlagFallthroughBaseRequest2 struct {
 	Type      any    `json:"type"`
 	Kind      string `json:"kind"`
 	Attribute string `json:"attribute"`
 }
 
-func (c CreateFlagFallthroughBaseRequest) MarshalJSON() ([]byte, error) {
+func (c CreateFlagFallthroughBaseRequest2) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(c, "", false)
 }
 
-func (c *CreateFlagFallthroughBaseRequest) UnmarshalJSON(data []byte) error {
+func (c *CreateFlagFallthroughBaseRequest2) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"type", "kind", "attribute"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *CreateFlagFallthroughBaseRequest) GetType() any {
+func (o *CreateFlagFallthroughBaseRequest2) GetType() any {
 	if o == nil {
 		return nil
 	}
 	return o.Type
 }
 
-func (o *CreateFlagFallthroughBaseRequest) GetKind() string {
+func (o *CreateFlagFallthroughBaseRequest2) GetKind() string {
 	if o == nil {
 		return ""
 	}
 	return o.Kind
 }
 
-func (o *CreateFlagFallthroughBaseRequest) GetAttribute() string {
+func (o *CreateFlagFallthroughBaseRequest2) GetAttribute() string {
+	if o == nil {
+		return ""
+	}
+	return o.Attribute
+}
+
+type CreateFlagFallthroughSlotRequest struct {
+	// Promille of traffic for rollToVariant (0-100_000, where 1_000 = 1%)
+	Promille float64 `json:"promille"`
+	// How long this promille is served in ms before moving to the next slot.
+	DurationMs float64 `json:"durationMs"`
+}
+
+func (c CreateFlagFallthroughSlotRequest) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateFlagFallthroughSlotRequest) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"promille", "durationMs"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateFlagFallthroughSlotRequest) GetPromille() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Promille
+}
+
+func (o *CreateFlagFallthroughSlotRequest) GetDurationMs() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.DurationMs
+}
+
+type CreateFlagFallthroughRequest3 struct {
+	Type any                               `json:"type"`
+	Base CreateFlagFallthroughBaseRequest2 `json:"base"`
+	// Epoch ms when the rollout begins
+	StartTimestamp float64 `json:"startTimestamp"`
+	// The variant to roll away from
+	RollFromVariantID string `json:"rollFromVariantId"`
+	// The variant to roll towards
+	RollToVariantID string `json:"rollToVariantId"`
+	// This variant will be used when the base attribute does not exist
+	DefaultVariantID string `json:"defaultVariantId"`
+	// Each slot defines a promille and how long it is served for. After all slots expire, 100% is served indefinitely. The final implicit 100% slot does not need to be listed. Example: [[5_000, 21_600_000], [10_000, 28_800_000]] means 5‰ for 6h, then 10‰ for 8h, then 100% indefinitely.
+	Slots []CreateFlagFallthroughSlotRequest `json:"slots"`
+}
+
+func (c CreateFlagFallthroughRequest3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateFlagFallthroughRequest3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"type", "base", "startTimestamp", "rollFromVariantId", "rollToVariantId", "defaultVariantId", "slots"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateFlagFallthroughRequest3) GetType() any {
+	if o == nil {
+		return nil
+	}
+	return o.Type
+}
+
+func (o *CreateFlagFallthroughRequest3) GetBase() CreateFlagFallthroughBaseRequest2 {
+	if o == nil {
+		return CreateFlagFallthroughBaseRequest2{}
+	}
+	return o.Base
+}
+
+func (o *CreateFlagFallthroughRequest3) GetStartTimestamp() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.StartTimestamp
+}
+
+func (o *CreateFlagFallthroughRequest3) GetRollFromVariantID() string {
+	if o == nil {
+		return ""
+	}
+	return o.RollFromVariantID
+}
+
+func (o *CreateFlagFallthroughRequest3) GetRollToVariantID() string {
+	if o == nil {
+		return ""
+	}
+	return o.RollToVariantID
+}
+
+func (o *CreateFlagFallthroughRequest3) GetDefaultVariantID() string {
+	if o == nil {
+		return ""
+	}
+	return o.DefaultVariantID
+}
+
+func (o *CreateFlagFallthroughRequest3) GetSlots() []CreateFlagFallthroughSlotRequest {
+	if o == nil {
+		return []CreateFlagFallthroughSlotRequest{}
+	}
+	return o.Slots
+}
+
+type CreateFlagFallthroughBaseRequest1 struct {
+	Type      any    `json:"type"`
+	Kind      string `json:"kind"`
+	Attribute string `json:"attribute"`
+}
+
+func (c CreateFlagFallthroughBaseRequest1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateFlagFallthroughBaseRequest1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"type", "kind", "attribute"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateFlagFallthroughBaseRequest1) GetType() any {
+	if o == nil {
+		return nil
+	}
+	return o.Type
+}
+
+func (o *CreateFlagFallthroughBaseRequest1) GetKind() string {
+	if o == nil {
+		return ""
+	}
+	return o.Kind
+}
+
+func (o *CreateFlagFallthroughBaseRequest1) GetAttribute() string {
 	if o == nil {
 		return ""
 	}
@@ -1020,8 +1332,8 @@ func (o *CreateFlagFallthroughBaseRequest) GetAttribute() string {
 }
 
 type CreateFlagFallthroughRequest2 struct {
-	Type any                              `json:"type"`
-	Base CreateFlagFallthroughBaseRequest `json:"base"`
+	Type any                               `json:"type"`
+	Base CreateFlagFallthroughBaseRequest1 `json:"base"`
 	// The distribution for each variant
 	Weights map[string]float64 `json:"weights"`
 	// This variant will be used when the base attribute does not exist
@@ -1046,9 +1358,9 @@ func (o *CreateFlagFallthroughRequest2) GetType() any {
 	return o.Type
 }
 
-func (o *CreateFlagFallthroughRequest2) GetBase() CreateFlagFallthroughBaseRequest {
+func (o *CreateFlagFallthroughRequest2) GetBase() CreateFlagFallthroughBaseRequest1 {
 	if o == nil {
-		return CreateFlagFallthroughBaseRequest{}
+		return CreateFlagFallthroughBaseRequest1{}
 	}
 	return o.Base
 }
@@ -1102,11 +1414,13 @@ type CreateFlagFallthroughRequestUnionType string
 const (
 	CreateFlagFallthroughRequestUnionTypeCreateFlagFallthroughRequest1 CreateFlagFallthroughRequestUnionType = "createFlag_fallthrough_request_1"
 	CreateFlagFallthroughRequestUnionTypeCreateFlagFallthroughRequest2 CreateFlagFallthroughRequestUnionType = "createFlag_fallthrough_request_2"
+	CreateFlagFallthroughRequestUnionTypeCreateFlagFallthroughRequest3 CreateFlagFallthroughRequestUnionType = "createFlag_fallthrough_request_3"
 )
 
 type CreateFlagFallthroughRequestUnion struct {
 	CreateFlagFallthroughRequest1 *CreateFlagFallthroughRequest1 `queryParam:"inline"`
 	CreateFlagFallthroughRequest2 *CreateFlagFallthroughRequest2 `queryParam:"inline"`
+	CreateFlagFallthroughRequest3 *CreateFlagFallthroughRequest3 `queryParam:"inline"`
 
 	Type CreateFlagFallthroughRequestUnionType
 }
@@ -1129,7 +1443,23 @@ func CreateCreateFlagFallthroughRequestUnionCreateFlagFallthroughRequest2(create
 	}
 }
 
+func CreateCreateFlagFallthroughRequestUnionCreateFlagFallthroughRequest3(createFlagFallthroughRequest3 CreateFlagFallthroughRequest3) CreateFlagFallthroughRequestUnion {
+	typ := CreateFlagFallthroughRequestUnionTypeCreateFlagFallthroughRequest3
+
+	return CreateFlagFallthroughRequestUnion{
+		CreateFlagFallthroughRequest3: &createFlagFallthroughRequest3,
+		Type:                          typ,
+	}
+}
+
 func (u *CreateFlagFallthroughRequestUnion) UnmarshalJSON(data []byte) error {
+
+	var createFlagFallthroughRequest3 CreateFlagFallthroughRequest3 = CreateFlagFallthroughRequest3{}
+	if err := utils.UnmarshalJSON(data, &createFlagFallthroughRequest3, "", true, nil); err == nil {
+		u.CreateFlagFallthroughRequest3 = &createFlagFallthroughRequest3
+		u.Type = CreateFlagFallthroughRequestUnionTypeCreateFlagFallthroughRequest3
+		return nil
+	}
 
 	var createFlagFallthroughRequest2 CreateFlagFallthroughRequest2 = CreateFlagFallthroughRequest2{}
 	if err := utils.UnmarshalJSON(data, &createFlagFallthroughRequest2, "", true, nil); err == nil {
@@ -1155,6 +1485,10 @@ func (u CreateFlagFallthroughRequestUnion) MarshalJSON() ([]byte, error) {
 
 	if u.CreateFlagFallthroughRequest2 != nil {
 		return utils.MarshalJSON(u.CreateFlagFallthroughRequest2, "", true)
+	}
+
+	if u.CreateFlagFallthroughRequest3 != nil {
+		return utils.MarshalJSON(u.CreateFlagFallthroughRequest3, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type CreateFlagFallthroughRequestUnion: all fields are null")
@@ -2013,6 +2347,190 @@ func (o *PausedOutcomeFlag) GetVariantID() string {
 	return o.VariantID
 }
 
+type FallthroughTypeFlagRollout string
+
+const (
+	FallthroughTypeFlagRolloutRollout FallthroughTypeFlagRollout = "rollout"
+)
+
+func (e FallthroughTypeFlagRollout) ToPointer() *FallthroughTypeFlagRollout {
+	return &e
+}
+func (e *FallthroughTypeFlagRollout) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "rollout":
+		*e = FallthroughTypeFlagRollout(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FallthroughTypeFlagRollout: %v", v)
+	}
+}
+
+type FallthroughTypeFlagEntity2 string
+
+const (
+	FallthroughTypeFlagEntity2Entity FallthroughTypeFlagEntity2 = "entity"
+)
+
+func (e FallthroughTypeFlagEntity2) ToPointer() *FallthroughTypeFlagEntity2 {
+	return &e
+}
+func (e *FallthroughTypeFlagEntity2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "entity":
+		*e = FallthroughTypeFlagEntity2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FallthroughTypeFlagEntity2: %v", v)
+	}
+}
+
+type FallthroughBaseFlag2 struct {
+	Type      FallthroughTypeFlagEntity2 `json:"type"`
+	Kind      string                     `json:"kind"`
+	Attribute string                     `json:"attribute"`
+}
+
+func (f FallthroughBaseFlag2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FallthroughBaseFlag2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"type", "kind", "attribute"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *FallthroughBaseFlag2) GetType() FallthroughTypeFlagEntity2 {
+	if o == nil {
+		return FallthroughTypeFlagEntity2("")
+	}
+	return o.Type
+}
+
+func (o *FallthroughBaseFlag2) GetKind() string {
+	if o == nil {
+		return ""
+	}
+	return o.Kind
+}
+
+func (o *FallthroughBaseFlag2) GetAttribute() string {
+	if o == nil {
+		return ""
+	}
+	return o.Attribute
+}
+
+type FallthroughSlotFlag struct {
+	Promille   float64 `json:"promille"`
+	DurationMs float64 `json:"durationMs"`
+}
+
+func (f FallthroughSlotFlag) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FallthroughSlotFlag) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"promille", "durationMs"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *FallthroughSlotFlag) GetPromille() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Promille
+}
+
+func (o *FallthroughSlotFlag) GetDurationMs() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.DurationMs
+}
+
+type FallthroughFlagRollout struct {
+	Type              FallthroughTypeFlagRollout `json:"type"`
+	Base              FallthroughBaseFlag2       `json:"base"`
+	DefaultVariantID  string                     `json:"defaultVariantId"`
+	StartTimestamp    float64                    `json:"startTimestamp"`
+	RollFromVariantID string                     `json:"rollFromVariantId"`
+	RollToVariantID   string                     `json:"rollToVariantId"`
+	Slots             []FallthroughSlotFlag      `json:"slots"`
+}
+
+func (f FallthroughFlagRollout) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FallthroughFlagRollout) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"type", "base", "defaultVariantId", "startTimestamp", "rollFromVariantId", "rollToVariantId", "slots"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *FallthroughFlagRollout) GetType() FallthroughTypeFlagRollout {
+	if o == nil {
+		return FallthroughTypeFlagRollout("")
+	}
+	return o.Type
+}
+
+func (o *FallthroughFlagRollout) GetBase() FallthroughBaseFlag2 {
+	if o == nil {
+		return FallthroughBaseFlag2{}
+	}
+	return o.Base
+}
+
+func (o *FallthroughFlagRollout) GetDefaultVariantID() string {
+	if o == nil {
+		return ""
+	}
+	return o.DefaultVariantID
+}
+
+func (o *FallthroughFlagRollout) GetStartTimestamp() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.StartTimestamp
+}
+
+func (o *FallthroughFlagRollout) GetRollFromVariantID() string {
+	if o == nil {
+		return ""
+	}
+	return o.RollFromVariantID
+}
+
+func (o *FallthroughFlagRollout) GetRollToVariantID() string {
+	if o == nil {
+		return ""
+	}
+	return o.RollToVariantID
+}
+
+func (o *FallthroughFlagRollout) GetSlots() []FallthroughSlotFlag {
+	if o == nil {
+		return []FallthroughSlotFlag{}
+	}
+	return o.Slots
+}
+
 type FallthroughTypeFlagSplit string
 
 const (
@@ -2036,61 +2554,61 @@ func (e *FallthroughTypeFlagSplit) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type FallthroughTypeFlagEntity string
+type FallthroughTypeFlagEntity1 string
 
 const (
-	FallthroughTypeFlagEntityEntity FallthroughTypeFlagEntity = "entity"
+	FallthroughTypeFlagEntity1Entity FallthroughTypeFlagEntity1 = "entity"
 )
 
-func (e FallthroughTypeFlagEntity) ToPointer() *FallthroughTypeFlagEntity {
+func (e FallthroughTypeFlagEntity1) ToPointer() *FallthroughTypeFlagEntity1 {
 	return &e
 }
-func (e *FallthroughTypeFlagEntity) UnmarshalJSON(data []byte) error {
+func (e *FallthroughTypeFlagEntity1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "entity":
-		*e = FallthroughTypeFlagEntity(v)
+		*e = FallthroughTypeFlagEntity1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for FallthroughTypeFlagEntity: %v", v)
+		return fmt.Errorf("invalid value for FallthroughTypeFlagEntity1: %v", v)
 	}
 }
 
-type FallthroughBaseFlag struct {
-	Type      FallthroughTypeFlagEntity `json:"type"`
-	Kind      string                    `json:"kind"`
-	Attribute string                    `json:"attribute"`
+type FallthroughBaseFlag1 struct {
+	Type      FallthroughTypeFlagEntity1 `json:"type"`
+	Kind      string                     `json:"kind"`
+	Attribute string                     `json:"attribute"`
 }
 
-func (f FallthroughBaseFlag) MarshalJSON() ([]byte, error) {
+func (f FallthroughBaseFlag1) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(f, "", false)
 }
 
-func (f *FallthroughBaseFlag) UnmarshalJSON(data []byte) error {
+func (f *FallthroughBaseFlag1) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"type", "kind", "attribute"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *FallthroughBaseFlag) GetType() FallthroughTypeFlagEntity {
+func (o *FallthroughBaseFlag1) GetType() FallthroughTypeFlagEntity1 {
 	if o == nil {
-		return FallthroughTypeFlagEntity("")
+		return FallthroughTypeFlagEntity1("")
 	}
 	return o.Type
 }
 
-func (o *FallthroughBaseFlag) GetKind() string {
+func (o *FallthroughBaseFlag1) GetKind() string {
 	if o == nil {
 		return ""
 	}
 	return o.Kind
 }
 
-func (o *FallthroughBaseFlag) GetAttribute() string {
+func (o *FallthroughBaseFlag1) GetAttribute() string {
 	if o == nil {
 		return ""
 	}
@@ -2099,7 +2617,7 @@ func (o *FallthroughBaseFlag) GetAttribute() string {
 
 type FallthroughFlagSplit struct {
 	Type             FallthroughTypeFlagSplit `json:"type"`
-	Base             FallthroughBaseFlag      `json:"base"`
+	Base             FallthroughBaseFlag1     `json:"base"`
 	Weights          map[string]float64       `json:"weights"`
 	DefaultVariantID string                   `json:"defaultVariantId"`
 }
@@ -2122,9 +2640,9 @@ func (o *FallthroughFlagSplit) GetType() FallthroughTypeFlagSplit {
 	return o.Type
 }
 
-func (o *FallthroughFlagSplit) GetBase() FallthroughBaseFlag {
+func (o *FallthroughFlagSplit) GetBase() FallthroughBaseFlag1 {
 	if o == nil {
-		return FallthroughBaseFlag{}
+		return FallthroughBaseFlag1{}
 	}
 	return o.Base
 }
@@ -2201,11 +2719,13 @@ type FallthroughFlagUnionType string
 const (
 	FallthroughFlagUnionTypeVariant FallthroughFlagUnionType = "variant"
 	FallthroughFlagUnionTypeSplit   FallthroughFlagUnionType = "split"
+	FallthroughFlagUnionTypeRollout FallthroughFlagUnionType = "rollout"
 )
 
 type FallthroughFlagUnion struct {
 	FallthroughFlagVariant *FallthroughFlagVariant `queryParam:"inline"`
 	FallthroughFlagSplit   *FallthroughFlagSplit   `queryParam:"inline"`
+	FallthroughFlagRollout *FallthroughFlagRollout `queryParam:"inline"`
 
 	Type FallthroughFlagUnionType
 }
@@ -2231,6 +2751,18 @@ func CreateFallthroughFlagUnionSplit(split FallthroughFlagSplit) FallthroughFlag
 	return FallthroughFlagUnion{
 		FallthroughFlagSplit: &split,
 		Type:                 typ,
+	}
+}
+
+func CreateFallthroughFlagUnionRollout(rollout FallthroughFlagRollout) FallthroughFlagUnion {
+	typ := FallthroughFlagUnionTypeRollout
+
+	typStr := FallthroughTypeFlagRollout(typ)
+	rollout.Type = typStr
+
+	return FallthroughFlagUnion{
+		FallthroughFlagRollout: &rollout,
+		Type:                   typ,
 	}
 }
 
@@ -2264,6 +2796,15 @@ func (u *FallthroughFlagUnion) UnmarshalJSON(data []byte) error {
 		u.FallthroughFlagSplit = fallthroughFlagSplit
 		u.Type = FallthroughFlagUnionTypeSplit
 		return nil
+	case "rollout":
+		fallthroughFlagRollout := new(FallthroughFlagRollout)
+		if err := utils.UnmarshalJSON(data, &fallthroughFlagRollout, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == rollout) type FallthroughFlagRollout within FallthroughFlagUnion: %w", string(data), err)
+		}
+
+		u.FallthroughFlagRollout = fallthroughFlagRollout
+		u.Type = FallthroughFlagUnionTypeRollout
+		return nil
 	}
 
 	return fmt.Errorf("could not unmarshal `%s` into any supported union types for FallthroughFlagUnion", string(data))
@@ -2278,7 +2819,195 @@ func (u FallthroughFlagUnion) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.FallthroughFlagSplit, "", true)
 	}
 
+	if u.FallthroughFlagRollout != nil {
+		return utils.MarshalJSON(u.FallthroughFlagRollout, "", true)
+	}
+
 	return nil, errors.New("could not marshal union type FallthroughFlagUnion: all fields are null")
+}
+
+type OutcomeTypeFlagRollout string
+
+const (
+	OutcomeTypeFlagRolloutRollout OutcomeTypeFlagRollout = "rollout"
+)
+
+func (e OutcomeTypeFlagRollout) ToPointer() *OutcomeTypeFlagRollout {
+	return &e
+}
+func (e *OutcomeTypeFlagRollout) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "rollout":
+		*e = OutcomeTypeFlagRollout(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for OutcomeTypeFlagRollout: %v", v)
+	}
+}
+
+type OutcomeTypeFlagEntity2 string
+
+const (
+	OutcomeTypeFlagEntity2Entity OutcomeTypeFlagEntity2 = "entity"
+)
+
+func (e OutcomeTypeFlagEntity2) ToPointer() *OutcomeTypeFlagEntity2 {
+	return &e
+}
+func (e *OutcomeTypeFlagEntity2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "entity":
+		*e = OutcomeTypeFlagEntity2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for OutcomeTypeFlagEntity2: %v", v)
+	}
+}
+
+type OutcomeBaseFlag2 struct {
+	Type      OutcomeTypeFlagEntity2 `json:"type"`
+	Kind      string                 `json:"kind"`
+	Attribute string                 `json:"attribute"`
+}
+
+func (o OutcomeBaseFlag2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(o, "", false)
+}
+
+func (o *OutcomeBaseFlag2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &o, "", false, []string{"type", "kind", "attribute"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *OutcomeBaseFlag2) GetType() OutcomeTypeFlagEntity2 {
+	if o == nil {
+		return OutcomeTypeFlagEntity2("")
+	}
+	return o.Type
+}
+
+func (o *OutcomeBaseFlag2) GetKind() string {
+	if o == nil {
+		return ""
+	}
+	return o.Kind
+}
+
+func (o *OutcomeBaseFlag2) GetAttribute() string {
+	if o == nil {
+		return ""
+	}
+	return o.Attribute
+}
+
+type OutcomeSlotFlag struct {
+	Promille   float64 `json:"promille"`
+	DurationMs float64 `json:"durationMs"`
+}
+
+func (o OutcomeSlotFlag) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(o, "", false)
+}
+
+func (o *OutcomeSlotFlag) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &o, "", false, []string{"promille", "durationMs"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *OutcomeSlotFlag) GetPromille() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Promille
+}
+
+func (o *OutcomeSlotFlag) GetDurationMs() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.DurationMs
+}
+
+type OutcomeFlagRollout struct {
+	Type              OutcomeTypeFlagRollout `json:"type"`
+	Base              OutcomeBaseFlag2       `json:"base"`
+	DefaultVariantID  string                 `json:"defaultVariantId"`
+	StartTimestamp    float64                `json:"startTimestamp"`
+	RollFromVariantID string                 `json:"rollFromVariantId"`
+	RollToVariantID   string                 `json:"rollToVariantId"`
+	Slots             []OutcomeSlotFlag      `json:"slots"`
+}
+
+func (o OutcomeFlagRollout) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(o, "", false)
+}
+
+func (o *OutcomeFlagRollout) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &o, "", false, []string{"type", "base", "defaultVariantId", "startTimestamp", "rollFromVariantId", "rollToVariantId", "slots"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *OutcomeFlagRollout) GetType() OutcomeTypeFlagRollout {
+	if o == nil {
+		return OutcomeTypeFlagRollout("")
+	}
+	return o.Type
+}
+
+func (o *OutcomeFlagRollout) GetBase() OutcomeBaseFlag2 {
+	if o == nil {
+		return OutcomeBaseFlag2{}
+	}
+	return o.Base
+}
+
+func (o *OutcomeFlagRollout) GetDefaultVariantID() string {
+	if o == nil {
+		return ""
+	}
+	return o.DefaultVariantID
+}
+
+func (o *OutcomeFlagRollout) GetStartTimestamp() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.StartTimestamp
+}
+
+func (o *OutcomeFlagRollout) GetRollFromVariantID() string {
+	if o == nil {
+		return ""
+	}
+	return o.RollFromVariantID
+}
+
+func (o *OutcomeFlagRollout) GetRollToVariantID() string {
+	if o == nil {
+		return ""
+	}
+	return o.RollToVariantID
+}
+
+func (o *OutcomeFlagRollout) GetSlots() []OutcomeSlotFlag {
+	if o == nil {
+		return []OutcomeSlotFlag{}
+	}
+	return o.Slots
 }
 
 type OutcomeTypeFlagSplit string
@@ -2304,61 +3033,61 @@ func (e *OutcomeTypeFlagSplit) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type OutcomeTypeFlagEntity string
+type OutcomeTypeFlagEntity1 string
 
 const (
-	OutcomeTypeFlagEntityEntity OutcomeTypeFlagEntity = "entity"
+	OutcomeTypeFlagEntity1Entity OutcomeTypeFlagEntity1 = "entity"
 )
 
-func (e OutcomeTypeFlagEntity) ToPointer() *OutcomeTypeFlagEntity {
+func (e OutcomeTypeFlagEntity1) ToPointer() *OutcomeTypeFlagEntity1 {
 	return &e
 }
-func (e *OutcomeTypeFlagEntity) UnmarshalJSON(data []byte) error {
+func (e *OutcomeTypeFlagEntity1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "entity":
-		*e = OutcomeTypeFlagEntity(v)
+		*e = OutcomeTypeFlagEntity1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for OutcomeTypeFlagEntity: %v", v)
+		return fmt.Errorf("invalid value for OutcomeTypeFlagEntity1: %v", v)
 	}
 }
 
-type OutcomeBaseFlag struct {
-	Type      OutcomeTypeFlagEntity `json:"type"`
-	Kind      string                `json:"kind"`
-	Attribute string                `json:"attribute"`
+type OutcomeBaseFlag1 struct {
+	Type      OutcomeTypeFlagEntity1 `json:"type"`
+	Kind      string                 `json:"kind"`
+	Attribute string                 `json:"attribute"`
 }
 
-func (o OutcomeBaseFlag) MarshalJSON() ([]byte, error) {
+func (o OutcomeBaseFlag1) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(o, "", false)
 }
 
-func (o *OutcomeBaseFlag) UnmarshalJSON(data []byte) error {
+func (o *OutcomeBaseFlag1) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &o, "", false, []string{"type", "kind", "attribute"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *OutcomeBaseFlag) GetType() OutcomeTypeFlagEntity {
+func (o *OutcomeBaseFlag1) GetType() OutcomeTypeFlagEntity1 {
 	if o == nil {
-		return OutcomeTypeFlagEntity("")
+		return OutcomeTypeFlagEntity1("")
 	}
 	return o.Type
 }
 
-func (o *OutcomeBaseFlag) GetKind() string {
+func (o *OutcomeBaseFlag1) GetKind() string {
 	if o == nil {
 		return ""
 	}
 	return o.Kind
 }
 
-func (o *OutcomeBaseFlag) GetAttribute() string {
+func (o *OutcomeBaseFlag1) GetAttribute() string {
 	if o == nil {
 		return ""
 	}
@@ -2367,7 +3096,7 @@ func (o *OutcomeBaseFlag) GetAttribute() string {
 
 type OutcomeFlagSplit struct {
 	Type             OutcomeTypeFlagSplit `json:"type"`
-	Base             OutcomeBaseFlag      `json:"base"`
+	Base             OutcomeBaseFlag1     `json:"base"`
 	Weights          map[string]float64   `json:"weights"`
 	DefaultVariantID string               `json:"defaultVariantId"`
 }
@@ -2390,9 +3119,9 @@ func (o *OutcomeFlagSplit) GetType() OutcomeTypeFlagSplit {
 	return o.Type
 }
 
-func (o *OutcomeFlagSplit) GetBase() OutcomeBaseFlag {
+func (o *OutcomeFlagSplit) GetBase() OutcomeBaseFlag1 {
 	if o == nil {
-		return OutcomeBaseFlag{}
+		return OutcomeBaseFlag1{}
 	}
 	return o.Base
 }
@@ -2469,11 +3198,13 @@ type OutcomeFlagUnionType string
 const (
 	OutcomeFlagUnionTypeVariant OutcomeFlagUnionType = "variant"
 	OutcomeFlagUnionTypeSplit   OutcomeFlagUnionType = "split"
+	OutcomeFlagUnionTypeRollout OutcomeFlagUnionType = "rollout"
 )
 
 type OutcomeFlagUnion struct {
 	OutcomeFlagVariant *OutcomeFlagVariant `queryParam:"inline"`
 	OutcomeFlagSplit   *OutcomeFlagSplit   `queryParam:"inline"`
+	OutcomeFlagRollout *OutcomeFlagRollout `queryParam:"inline"`
 
 	Type OutcomeFlagUnionType
 }
@@ -2499,6 +3230,18 @@ func CreateOutcomeFlagUnionSplit(split OutcomeFlagSplit) OutcomeFlagUnion {
 	return OutcomeFlagUnion{
 		OutcomeFlagSplit: &split,
 		Type:             typ,
+	}
+}
+
+func CreateOutcomeFlagUnionRollout(rollout OutcomeFlagRollout) OutcomeFlagUnion {
+	typ := OutcomeFlagUnionTypeRollout
+
+	typStr := OutcomeTypeFlagRollout(typ)
+	rollout.Type = typStr
+
+	return OutcomeFlagUnion{
+		OutcomeFlagRollout: &rollout,
+		Type:               typ,
 	}
 }
 
@@ -2532,6 +3275,15 @@ func (u *OutcomeFlagUnion) UnmarshalJSON(data []byte) error {
 		u.OutcomeFlagSplit = outcomeFlagSplit
 		u.Type = OutcomeFlagUnionTypeSplit
 		return nil
+	case "rollout":
+		outcomeFlagRollout := new(OutcomeFlagRollout)
+		if err := utils.UnmarshalJSON(data, &outcomeFlagRollout, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == rollout) type OutcomeFlagRollout within OutcomeFlagUnion: %w", string(data), err)
+		}
+
+		u.OutcomeFlagRollout = outcomeFlagRollout
+		u.Type = OutcomeFlagUnionTypeRollout
+		return nil
 	}
 
 	return fmt.Errorf("could not unmarshal `%s` into any supported union types for OutcomeFlagUnion", string(data))
@@ -2544,6 +3296,10 @@ func (u OutcomeFlagUnion) MarshalJSON() ([]byte, error) {
 
 	if u.OutcomeFlagSplit != nil {
 		return utils.MarshalJSON(u.OutcomeFlagSplit, "", true)
+	}
+
+	if u.OutcomeFlagRollout != nil {
+		return utils.MarshalJSON(u.OutcomeFlagRollout, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type OutcomeFlagUnion: all fields are null")
@@ -3296,6 +4052,10 @@ func (o *RuleFlag) GetOutcomeSplit() *OutcomeFlagSplit {
 	return o.GetOutcome().OutcomeFlagSplit
 }
 
+func (o *RuleFlag) GetOutcomeRollout() *OutcomeFlagRollout {
+	return o.GetOutcome().OutcomeFlagRollout
+}
+
 func (o *RuleFlag) GetConditions() []ConditionFlag {
 	if o == nil {
 		return []ConditionFlag{}
@@ -3354,6 +4114,10 @@ func (o *EnvironmentsFlag) GetFallthroughVariant() *FallthroughFlagVariant {
 
 func (o *EnvironmentsFlag) GetFallthroughSplit() *FallthroughFlagSplit {
 	return o.GetFallthrough().FallthroughFlagSplit
+}
+
+func (o *EnvironmentsFlag) GetFallthroughRollout() *FallthroughFlagRollout {
+	return o.GetFallthrough().FallthroughFlagRollout
 }
 
 func (o *EnvironmentsFlag) GetActive() bool {

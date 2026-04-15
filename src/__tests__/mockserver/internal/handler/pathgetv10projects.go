@@ -7,7 +7,6 @@ import (
 	"log"
 	"mockserver/internal/handler/assert"
 	"mockserver/internal/logging"
-	"mockserver/internal/sdk/models/components"
 	"mockserver/internal/sdk/models/operations"
 	"mockserver/internal/sdk/optionalnullable"
 	"mockserver/internal/sdk/types"
@@ -48,16 +47,57 @@ func testGetProjectsGetProjects0(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	var respBody optionalnullable.OptionalNullable[operations.GetProjectsResponseBody] = optionalnullable.From(types.Pointer(operations.CreateGetProjectsResponseBodyGetProjectsResponseBody2(
-		operations.GetProjectsResponseBody2{
-			Projects: []operations.GetProjectsProject1{},
-			Pagination: operations.CreatePaginationUnion1Pagination(
-				components.Pagination{
-					Count: 20,
-					Next:  types.Float64(1540095775951),
-					Prev:  types.Float64(1540095775951),
+	var respBody optionalnullable.OptionalNullable[operations.GetProjectsResponseBody] = optionalnullable.From(types.Pointer(operations.CreateGetProjectsResponseBodyArrayOfGetProjectsResponseBody1(
+		[]operations.GetProjectsResponseBody1{
+			operations.GetProjectsResponseBody1{
+				AccountID: "<id>",
+				Alias: []operations.GetProjectsAlias{
+					operations.GetProjectsAlias{
+						Deployment: &operations.GetProjectsDeployment{
+							CreatedAt: 9786.19,
+							CreatedIn: "<value>",
+							Creator: &operations.DeploymentCreator{
+								Email:    "Osborne.Nikolaus@yahoo.com",
+								UID:      "<id>",
+								Username: "Haskell.Ryan56",
+							},
+							DeploymentHostname: "<value>",
+							Name:               "<value>",
+							ID:                 "<id>",
+							Plan:               "<value>",
+							Private:            false,
+							ReadyState:         "<value>",
+							Type:               "<value>",
+							URL:                "https://pointed-typewriter.net",
+							UserID:             "<id>",
+						},
+						Domain:      "hateful-humor.net",
+						Environment: operations.GetProjectsEnvironmentProduction,
+						Target:      operations.AliasTargetPreview,
+					},
 				},
-			),
+				DirectoryListing:     false,
+				DeploymentExpiration: operations.GetProjectsDeploymentExpiration{},
+				ID:                   "<id>",
+				Name:                 "<value>",
+				NodeVersion:          operations.GetProjectsNodeVersionTwentyTwoDotX,
+				ResourceConfig: operations.GetProjectsResourceConfig{
+					FunctionDefaultRegions: []string{},
+				},
+				RollingRelease: optionalnullable.From(&operations.GetProjectsRollingRelease{
+					Target: "production",
+					Stages: optionalnullable.From(types.Pointer([]operations.GetProjectsStage{
+						operations.GetProjectsStage{
+							TargetPercentage: 25,
+							RequireApproval:  types.Bool(false),
+							Duration:         types.Float64(600),
+							LinearShift:      types.Bool(false),
+						},
+					})),
+					CanaryResponseHeader: types.Bool(false),
+				}),
+				ServerlessFunctionRegion: "<value>",
+			},
 		},
 	)))
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)

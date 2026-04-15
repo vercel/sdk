@@ -30,3 +30,26 @@ const value: models.ListFlagVersionsFallthrough2 = {
 };
 ```
 
+### `models.ListFlagVersionsFallthrough3`
+
+```typescript
+const value: models.ListFlagVersionsFallthrough3 = {
+  type: "rollout",
+  base: {
+    type: "entity",
+    kind: "<value>",
+    attribute: "<value>",
+  },
+  defaultVariantId: "<id>",
+  startTimestamp: 5804.73,
+  rollFromVariantId: "<id>",
+  rollToVariantId: "<id>",
+  slots: [
+    {
+      promille: 5267.08,
+      durationMs: 1714.17,
+    },
+  ],
+};
+```
+

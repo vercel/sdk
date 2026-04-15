@@ -37,11 +37,37 @@ const value: models.Flag = {
         variantId: "<id>",
       },
       fallthrough: {
-        type: "variant",
-        variantId: "<id>",
+        type: "split",
+        base: {
+          type: "entity",
+          kind: "<value>",
+          attribute: "<value>",
+        },
+        weights: {
+          "key": 167.7,
+        },
+        defaultVariantId: "<id>",
       },
       active: true,
-      rules: [],
+      rules: [
+        {
+          id: "<id>",
+          outcome: {
+            type: "rollout",
+            base: {
+              type: "entity",
+              kind: "<value>",
+              attribute: "<value>",
+            },
+            defaultVariantId: "<id>",
+            startTimestamp: 5347.28,
+            rollFromVariantId: "<id>",
+            rollToVariantId: "<id>",
+            slots: [],
+          },
+          conditions: [],
+        },
+      ],
     },
   },
   kind: "string",

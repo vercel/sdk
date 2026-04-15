@@ -62,6 +62,7 @@ func testCreateSnapshotCreateSnapshot0(w http.ResponseWriter, req *http.Request)
 			ExpiresAt:       types.Float64(1750344501629),
 			CreatedAt:       1750344501629,
 			UpdatedAt:       1750344501629,
+			LastUsedAt:      1750344501629,
 		},
 		Sandbox: components.Sandbox{
 			ID:               "sbx_123a6c5209bc3778245d011443644c8d27dc2c50",

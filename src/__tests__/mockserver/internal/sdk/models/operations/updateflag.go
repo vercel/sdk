@@ -742,38 +742,183 @@ func (o *UpdateFlagConditionRequest) GetCmpOptions() *UpdateFlagCmpOptionsReques
 	return o.CmpOptions
 }
 
-type UpdateFlagOutcomeBaseRequest struct {
+type UpdateFlagOutcomeBaseRequest2 struct {
 	Type      any    `json:"type"`
 	Kind      string `json:"kind"`
 	Attribute string `json:"attribute"`
 }
 
-func (u UpdateFlagOutcomeBaseRequest) MarshalJSON() ([]byte, error) {
+func (u UpdateFlagOutcomeBaseRequest2) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(u, "", false)
 }
 
-func (u *UpdateFlagOutcomeBaseRequest) UnmarshalJSON(data []byte) error {
+func (u *UpdateFlagOutcomeBaseRequest2) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"type", "kind", "attribute"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *UpdateFlagOutcomeBaseRequest) GetType() any {
+func (o *UpdateFlagOutcomeBaseRequest2) GetType() any {
 	if o == nil {
 		return nil
 	}
 	return o.Type
 }
 
-func (o *UpdateFlagOutcomeBaseRequest) GetKind() string {
+func (o *UpdateFlagOutcomeBaseRequest2) GetKind() string {
 	if o == nil {
 		return ""
 	}
 	return o.Kind
 }
 
-func (o *UpdateFlagOutcomeBaseRequest) GetAttribute() string {
+func (o *UpdateFlagOutcomeBaseRequest2) GetAttribute() string {
+	if o == nil {
+		return ""
+	}
+	return o.Attribute
+}
+
+type UpdateFlagOutcomeSlotRequest struct {
+	// Promille of traffic for rollToVariant (0-100_000, where 1_000 = 1%)
+	Promille float64 `json:"promille"`
+	// How long this promille is served in ms before moving to the next slot.
+	DurationMs float64 `json:"durationMs"`
+}
+
+func (u UpdateFlagOutcomeSlotRequest) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateFlagOutcomeSlotRequest) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"promille", "durationMs"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *UpdateFlagOutcomeSlotRequest) GetPromille() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Promille
+}
+
+func (o *UpdateFlagOutcomeSlotRequest) GetDurationMs() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.DurationMs
+}
+
+type UpdateFlagOutcomeRequest3 struct {
+	Type any                           `json:"type"`
+	Base UpdateFlagOutcomeBaseRequest2 `json:"base"`
+	// Epoch ms when the rollout begins
+	StartTimestamp float64 `json:"startTimestamp"`
+	// The variant to roll away from
+	RollFromVariantID string `json:"rollFromVariantId"`
+	// The variant to roll towards
+	RollToVariantID string `json:"rollToVariantId"`
+	// This variant will be used when the base attribute does not exist
+	DefaultVariantID string `json:"defaultVariantId"`
+	// Each slot defines a promille and how long it is served for. After all slots expire, 100% is served indefinitely. The final implicit 100% slot does not need to be listed. Example: [[5_000, 21_600_000], [10_000, 28_800_000]] means 5‰ for 6h, then 10‰ for 8h, then 100% indefinitely.
+	Slots []UpdateFlagOutcomeSlotRequest `json:"slots"`
+}
+
+func (u UpdateFlagOutcomeRequest3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateFlagOutcomeRequest3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"type", "base", "startTimestamp", "rollFromVariantId", "rollToVariantId", "defaultVariantId", "slots"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *UpdateFlagOutcomeRequest3) GetType() any {
+	if o == nil {
+		return nil
+	}
+	return o.Type
+}
+
+func (o *UpdateFlagOutcomeRequest3) GetBase() UpdateFlagOutcomeBaseRequest2 {
+	if o == nil {
+		return UpdateFlagOutcomeBaseRequest2{}
+	}
+	return o.Base
+}
+
+func (o *UpdateFlagOutcomeRequest3) GetStartTimestamp() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.StartTimestamp
+}
+
+func (o *UpdateFlagOutcomeRequest3) GetRollFromVariantID() string {
+	if o == nil {
+		return ""
+	}
+	return o.RollFromVariantID
+}
+
+func (o *UpdateFlagOutcomeRequest3) GetRollToVariantID() string {
+	if o == nil {
+		return ""
+	}
+	return o.RollToVariantID
+}
+
+func (o *UpdateFlagOutcomeRequest3) GetDefaultVariantID() string {
+	if o == nil {
+		return ""
+	}
+	return o.DefaultVariantID
+}
+
+func (o *UpdateFlagOutcomeRequest3) GetSlots() []UpdateFlagOutcomeSlotRequest {
+	if o == nil {
+		return []UpdateFlagOutcomeSlotRequest{}
+	}
+	return o.Slots
+}
+
+type UpdateFlagOutcomeBaseRequest1 struct {
+	Type      any    `json:"type"`
+	Kind      string `json:"kind"`
+	Attribute string `json:"attribute"`
+}
+
+func (u UpdateFlagOutcomeBaseRequest1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateFlagOutcomeBaseRequest1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"type", "kind", "attribute"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *UpdateFlagOutcomeBaseRequest1) GetType() any {
+	if o == nil {
+		return nil
+	}
+	return o.Type
+}
+
+func (o *UpdateFlagOutcomeBaseRequest1) GetKind() string {
+	if o == nil {
+		return ""
+	}
+	return o.Kind
+}
+
+func (o *UpdateFlagOutcomeBaseRequest1) GetAttribute() string {
 	if o == nil {
 		return ""
 	}
@@ -781,8 +926,8 @@ func (o *UpdateFlagOutcomeBaseRequest) GetAttribute() string {
 }
 
 type UpdateFlagOutcomeRequest2 struct {
-	Type any                          `json:"type"`
-	Base UpdateFlagOutcomeBaseRequest `json:"base"`
+	Type any                           `json:"type"`
+	Base UpdateFlagOutcomeBaseRequest1 `json:"base"`
 	// The distribution for each variant
 	Weights map[string]float64 `json:"weights"`
 	// This variant will be used when the base attribute does not exist
@@ -807,9 +952,9 @@ func (o *UpdateFlagOutcomeRequest2) GetType() any {
 	return o.Type
 }
 
-func (o *UpdateFlagOutcomeRequest2) GetBase() UpdateFlagOutcomeBaseRequest {
+func (o *UpdateFlagOutcomeRequest2) GetBase() UpdateFlagOutcomeBaseRequest1 {
 	if o == nil {
-		return UpdateFlagOutcomeBaseRequest{}
+		return UpdateFlagOutcomeBaseRequest1{}
 	}
 	return o.Base
 }
@@ -863,11 +1008,13 @@ type UpdateFlagOutcomeRequestUnionType string
 const (
 	UpdateFlagOutcomeRequestUnionTypeUpdateFlagOutcomeRequest1 UpdateFlagOutcomeRequestUnionType = "updateFlag_outcome_request_1"
 	UpdateFlagOutcomeRequestUnionTypeUpdateFlagOutcomeRequest2 UpdateFlagOutcomeRequestUnionType = "updateFlag_outcome_request_2"
+	UpdateFlagOutcomeRequestUnionTypeUpdateFlagOutcomeRequest3 UpdateFlagOutcomeRequestUnionType = "updateFlag_outcome_request_3"
 )
 
 type UpdateFlagOutcomeRequestUnion struct {
 	UpdateFlagOutcomeRequest1 *UpdateFlagOutcomeRequest1 `queryParam:"inline"`
 	UpdateFlagOutcomeRequest2 *UpdateFlagOutcomeRequest2 `queryParam:"inline"`
+	UpdateFlagOutcomeRequest3 *UpdateFlagOutcomeRequest3 `queryParam:"inline"`
 
 	Type UpdateFlagOutcomeRequestUnionType
 }
@@ -890,7 +1037,23 @@ func CreateUpdateFlagOutcomeRequestUnionUpdateFlagOutcomeRequest2(updateFlagOutc
 	}
 }
 
+func CreateUpdateFlagOutcomeRequestUnionUpdateFlagOutcomeRequest3(updateFlagOutcomeRequest3 UpdateFlagOutcomeRequest3) UpdateFlagOutcomeRequestUnion {
+	typ := UpdateFlagOutcomeRequestUnionTypeUpdateFlagOutcomeRequest3
+
+	return UpdateFlagOutcomeRequestUnion{
+		UpdateFlagOutcomeRequest3: &updateFlagOutcomeRequest3,
+		Type:                      typ,
+	}
+}
+
 func (u *UpdateFlagOutcomeRequestUnion) UnmarshalJSON(data []byte) error {
+
+	var updateFlagOutcomeRequest3 UpdateFlagOutcomeRequest3 = UpdateFlagOutcomeRequest3{}
+	if err := utils.UnmarshalJSON(data, &updateFlagOutcomeRequest3, "", true, nil); err == nil {
+		u.UpdateFlagOutcomeRequest3 = &updateFlagOutcomeRequest3
+		u.Type = UpdateFlagOutcomeRequestUnionTypeUpdateFlagOutcomeRequest3
+		return nil
+	}
 
 	var updateFlagOutcomeRequest2 UpdateFlagOutcomeRequest2 = UpdateFlagOutcomeRequest2{}
 	if err := utils.UnmarshalJSON(data, &updateFlagOutcomeRequest2, "", true, nil); err == nil {
@@ -916,6 +1079,10 @@ func (u UpdateFlagOutcomeRequestUnion) MarshalJSON() ([]byte, error) {
 
 	if u.UpdateFlagOutcomeRequest2 != nil {
 		return utils.MarshalJSON(u.UpdateFlagOutcomeRequest2, "", true)
+	}
+
+	if u.UpdateFlagOutcomeRequest3 != nil {
+		return utils.MarshalJSON(u.UpdateFlagOutcomeRequest3, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type UpdateFlagOutcomeRequestUnion: all fields are null")
@@ -948,38 +1115,183 @@ func (o *UpdateFlagRuleRequest) GetOutcome() UpdateFlagOutcomeRequestUnion {
 	return o.Outcome
 }
 
-type UpdateFlagFallthroughBaseRequest struct {
+type UpdateFlagFallthroughBaseRequest2 struct {
 	Type      any    `json:"type"`
 	Kind      string `json:"kind"`
 	Attribute string `json:"attribute"`
 }
 
-func (u UpdateFlagFallthroughBaseRequest) MarshalJSON() ([]byte, error) {
+func (u UpdateFlagFallthroughBaseRequest2) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(u, "", false)
 }
 
-func (u *UpdateFlagFallthroughBaseRequest) UnmarshalJSON(data []byte) error {
+func (u *UpdateFlagFallthroughBaseRequest2) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"type", "kind", "attribute"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *UpdateFlagFallthroughBaseRequest) GetType() any {
+func (o *UpdateFlagFallthroughBaseRequest2) GetType() any {
 	if o == nil {
 		return nil
 	}
 	return o.Type
 }
 
-func (o *UpdateFlagFallthroughBaseRequest) GetKind() string {
+func (o *UpdateFlagFallthroughBaseRequest2) GetKind() string {
 	if o == nil {
 		return ""
 	}
 	return o.Kind
 }
 
-func (o *UpdateFlagFallthroughBaseRequest) GetAttribute() string {
+func (o *UpdateFlagFallthroughBaseRequest2) GetAttribute() string {
+	if o == nil {
+		return ""
+	}
+	return o.Attribute
+}
+
+type UpdateFlagFallthroughSlotRequest struct {
+	// Promille of traffic for rollToVariant (0-100_000, where 1_000 = 1%)
+	Promille float64 `json:"promille"`
+	// How long this promille is served in ms before moving to the next slot.
+	DurationMs float64 `json:"durationMs"`
+}
+
+func (u UpdateFlagFallthroughSlotRequest) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateFlagFallthroughSlotRequest) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"promille", "durationMs"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *UpdateFlagFallthroughSlotRequest) GetPromille() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Promille
+}
+
+func (o *UpdateFlagFallthroughSlotRequest) GetDurationMs() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.DurationMs
+}
+
+type UpdateFlagFallthroughRequest3 struct {
+	Type any                               `json:"type"`
+	Base UpdateFlagFallthroughBaseRequest2 `json:"base"`
+	// Epoch ms when the rollout begins
+	StartTimestamp float64 `json:"startTimestamp"`
+	// The variant to roll away from
+	RollFromVariantID string `json:"rollFromVariantId"`
+	// The variant to roll towards
+	RollToVariantID string `json:"rollToVariantId"`
+	// This variant will be used when the base attribute does not exist
+	DefaultVariantID string `json:"defaultVariantId"`
+	// Each slot defines a promille and how long it is served for. After all slots expire, 100% is served indefinitely. The final implicit 100% slot does not need to be listed. Example: [[5_000, 21_600_000], [10_000, 28_800_000]] means 5‰ for 6h, then 10‰ for 8h, then 100% indefinitely.
+	Slots []UpdateFlagFallthroughSlotRequest `json:"slots"`
+}
+
+func (u UpdateFlagFallthroughRequest3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateFlagFallthroughRequest3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"type", "base", "startTimestamp", "rollFromVariantId", "rollToVariantId", "defaultVariantId", "slots"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *UpdateFlagFallthroughRequest3) GetType() any {
+	if o == nil {
+		return nil
+	}
+	return o.Type
+}
+
+func (o *UpdateFlagFallthroughRequest3) GetBase() UpdateFlagFallthroughBaseRequest2 {
+	if o == nil {
+		return UpdateFlagFallthroughBaseRequest2{}
+	}
+	return o.Base
+}
+
+func (o *UpdateFlagFallthroughRequest3) GetStartTimestamp() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.StartTimestamp
+}
+
+func (o *UpdateFlagFallthroughRequest3) GetRollFromVariantID() string {
+	if o == nil {
+		return ""
+	}
+	return o.RollFromVariantID
+}
+
+func (o *UpdateFlagFallthroughRequest3) GetRollToVariantID() string {
+	if o == nil {
+		return ""
+	}
+	return o.RollToVariantID
+}
+
+func (o *UpdateFlagFallthroughRequest3) GetDefaultVariantID() string {
+	if o == nil {
+		return ""
+	}
+	return o.DefaultVariantID
+}
+
+func (o *UpdateFlagFallthroughRequest3) GetSlots() []UpdateFlagFallthroughSlotRequest {
+	if o == nil {
+		return []UpdateFlagFallthroughSlotRequest{}
+	}
+	return o.Slots
+}
+
+type UpdateFlagFallthroughBaseRequest1 struct {
+	Type      any    `json:"type"`
+	Kind      string `json:"kind"`
+	Attribute string `json:"attribute"`
+}
+
+func (u UpdateFlagFallthroughBaseRequest1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateFlagFallthroughBaseRequest1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"type", "kind", "attribute"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *UpdateFlagFallthroughBaseRequest1) GetType() any {
+	if o == nil {
+		return nil
+	}
+	return o.Type
+}
+
+func (o *UpdateFlagFallthroughBaseRequest1) GetKind() string {
+	if o == nil {
+		return ""
+	}
+	return o.Kind
+}
+
+func (o *UpdateFlagFallthroughBaseRequest1) GetAttribute() string {
 	if o == nil {
 		return ""
 	}
@@ -987,8 +1299,8 @@ func (o *UpdateFlagFallthroughBaseRequest) GetAttribute() string {
 }
 
 type UpdateFlagFallthroughRequest2 struct {
-	Type any                              `json:"type"`
-	Base UpdateFlagFallthroughBaseRequest `json:"base"`
+	Type any                               `json:"type"`
+	Base UpdateFlagFallthroughBaseRequest1 `json:"base"`
 	// The distribution for each variant
 	Weights map[string]float64 `json:"weights"`
 	// This variant will be used when the base attribute does not exist
@@ -1013,9 +1325,9 @@ func (o *UpdateFlagFallthroughRequest2) GetType() any {
 	return o.Type
 }
 
-func (o *UpdateFlagFallthroughRequest2) GetBase() UpdateFlagFallthroughBaseRequest {
+func (o *UpdateFlagFallthroughRequest2) GetBase() UpdateFlagFallthroughBaseRequest1 {
 	if o == nil {
-		return UpdateFlagFallthroughBaseRequest{}
+		return UpdateFlagFallthroughBaseRequest1{}
 	}
 	return o.Base
 }
@@ -1069,11 +1381,13 @@ type UpdateFlagFallthroughRequestUnionType string
 const (
 	UpdateFlagFallthroughRequestUnionTypeUpdateFlagFallthroughRequest1 UpdateFlagFallthroughRequestUnionType = "updateFlag_fallthrough_request_1"
 	UpdateFlagFallthroughRequestUnionTypeUpdateFlagFallthroughRequest2 UpdateFlagFallthroughRequestUnionType = "updateFlag_fallthrough_request_2"
+	UpdateFlagFallthroughRequestUnionTypeUpdateFlagFallthroughRequest3 UpdateFlagFallthroughRequestUnionType = "updateFlag_fallthrough_request_3"
 )
 
 type UpdateFlagFallthroughRequestUnion struct {
 	UpdateFlagFallthroughRequest1 *UpdateFlagFallthroughRequest1 `queryParam:"inline"`
 	UpdateFlagFallthroughRequest2 *UpdateFlagFallthroughRequest2 `queryParam:"inline"`
+	UpdateFlagFallthroughRequest3 *UpdateFlagFallthroughRequest3 `queryParam:"inline"`
 
 	Type UpdateFlagFallthroughRequestUnionType
 }
@@ -1096,7 +1410,23 @@ func CreateUpdateFlagFallthroughRequestUnionUpdateFlagFallthroughRequest2(update
 	}
 }
 
+func CreateUpdateFlagFallthroughRequestUnionUpdateFlagFallthroughRequest3(updateFlagFallthroughRequest3 UpdateFlagFallthroughRequest3) UpdateFlagFallthroughRequestUnion {
+	typ := UpdateFlagFallthroughRequestUnionTypeUpdateFlagFallthroughRequest3
+
+	return UpdateFlagFallthroughRequestUnion{
+		UpdateFlagFallthroughRequest3: &updateFlagFallthroughRequest3,
+		Type:                          typ,
+	}
+}
+
 func (u *UpdateFlagFallthroughRequestUnion) UnmarshalJSON(data []byte) error {
+
+	var updateFlagFallthroughRequest3 UpdateFlagFallthroughRequest3 = UpdateFlagFallthroughRequest3{}
+	if err := utils.UnmarshalJSON(data, &updateFlagFallthroughRequest3, "", true, nil); err == nil {
+		u.UpdateFlagFallthroughRequest3 = &updateFlagFallthroughRequest3
+		u.Type = UpdateFlagFallthroughRequestUnionTypeUpdateFlagFallthroughRequest3
+		return nil
+	}
 
 	var updateFlagFallthroughRequest2 UpdateFlagFallthroughRequest2 = UpdateFlagFallthroughRequest2{}
 	if err := utils.UnmarshalJSON(data, &updateFlagFallthroughRequest2, "", true, nil); err == nil {
@@ -1122,6 +1452,10 @@ func (u UpdateFlagFallthroughRequestUnion) MarshalJSON() ([]byte, error) {
 
 	if u.UpdateFlagFallthroughRequest2 != nil {
 		return utils.MarshalJSON(u.UpdateFlagFallthroughRequest2, "", true)
+	}
+
+	if u.UpdateFlagFallthroughRequest3 != nil {
+		return utils.MarshalJSON(u.UpdateFlagFallthroughRequest3, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type UpdateFlagFallthroughRequestUnion: all fields are null")
@@ -2084,6 +2418,190 @@ func (o *UpdateFlagResponseBodyPausedOutcome) GetVariantID() string {
 	return o.VariantID
 }
 
+type UpdateFlagFallthroughTypeRollout string
+
+const (
+	UpdateFlagFallthroughTypeRolloutRollout UpdateFlagFallthroughTypeRollout = "rollout"
+)
+
+func (e UpdateFlagFallthroughTypeRollout) ToPointer() *UpdateFlagFallthroughTypeRollout {
+	return &e
+}
+func (e *UpdateFlagFallthroughTypeRollout) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "rollout":
+		*e = UpdateFlagFallthroughTypeRollout(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateFlagFallthroughTypeRollout: %v", v)
+	}
+}
+
+type UpdateFlagFallthroughTypeEntity2 string
+
+const (
+	UpdateFlagFallthroughTypeEntity2Entity UpdateFlagFallthroughTypeEntity2 = "entity"
+)
+
+func (e UpdateFlagFallthroughTypeEntity2) ToPointer() *UpdateFlagFallthroughTypeEntity2 {
+	return &e
+}
+func (e *UpdateFlagFallthroughTypeEntity2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "entity":
+		*e = UpdateFlagFallthroughTypeEntity2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateFlagFallthroughTypeEntity2: %v", v)
+	}
+}
+
+type UpdateFlagResponseBodyFallthroughBase2 struct {
+	Type      UpdateFlagFallthroughTypeEntity2 `json:"type"`
+	Kind      string                           `json:"kind"`
+	Attribute string                           `json:"attribute"`
+}
+
+func (u UpdateFlagResponseBodyFallthroughBase2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateFlagResponseBodyFallthroughBase2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"type", "kind", "attribute"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *UpdateFlagResponseBodyFallthroughBase2) GetType() UpdateFlagFallthroughTypeEntity2 {
+	if o == nil {
+		return UpdateFlagFallthroughTypeEntity2("")
+	}
+	return o.Type
+}
+
+func (o *UpdateFlagResponseBodyFallthroughBase2) GetKind() string {
+	if o == nil {
+		return ""
+	}
+	return o.Kind
+}
+
+func (o *UpdateFlagResponseBodyFallthroughBase2) GetAttribute() string {
+	if o == nil {
+		return ""
+	}
+	return o.Attribute
+}
+
+type UpdateFlagResponseBodyFallthroughSlot struct {
+	Promille   float64 `json:"promille"`
+	DurationMs float64 `json:"durationMs"`
+}
+
+func (u UpdateFlagResponseBodyFallthroughSlot) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateFlagResponseBodyFallthroughSlot) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"promille", "durationMs"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *UpdateFlagResponseBodyFallthroughSlot) GetPromille() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Promille
+}
+
+func (o *UpdateFlagResponseBodyFallthroughSlot) GetDurationMs() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.DurationMs
+}
+
+type UpdateFlagFallthroughRollout struct {
+	Type              UpdateFlagFallthroughTypeRollout        `json:"type"`
+	Base              UpdateFlagResponseBodyFallthroughBase2  `json:"base"`
+	DefaultVariantID  string                                  `json:"defaultVariantId"`
+	StartTimestamp    float64                                 `json:"startTimestamp"`
+	RollFromVariantID string                                  `json:"rollFromVariantId"`
+	RollToVariantID   string                                  `json:"rollToVariantId"`
+	Slots             []UpdateFlagResponseBodyFallthroughSlot `json:"slots"`
+}
+
+func (u UpdateFlagFallthroughRollout) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateFlagFallthroughRollout) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"type", "base", "defaultVariantId", "startTimestamp", "rollFromVariantId", "rollToVariantId", "slots"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *UpdateFlagFallthroughRollout) GetType() UpdateFlagFallthroughTypeRollout {
+	if o == nil {
+		return UpdateFlagFallthroughTypeRollout("")
+	}
+	return o.Type
+}
+
+func (o *UpdateFlagFallthroughRollout) GetBase() UpdateFlagResponseBodyFallthroughBase2 {
+	if o == nil {
+		return UpdateFlagResponseBodyFallthroughBase2{}
+	}
+	return o.Base
+}
+
+func (o *UpdateFlagFallthroughRollout) GetDefaultVariantID() string {
+	if o == nil {
+		return ""
+	}
+	return o.DefaultVariantID
+}
+
+func (o *UpdateFlagFallthroughRollout) GetStartTimestamp() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.StartTimestamp
+}
+
+func (o *UpdateFlagFallthroughRollout) GetRollFromVariantID() string {
+	if o == nil {
+		return ""
+	}
+	return o.RollFromVariantID
+}
+
+func (o *UpdateFlagFallthroughRollout) GetRollToVariantID() string {
+	if o == nil {
+		return ""
+	}
+	return o.RollToVariantID
+}
+
+func (o *UpdateFlagFallthroughRollout) GetSlots() []UpdateFlagResponseBodyFallthroughSlot {
+	if o == nil {
+		return []UpdateFlagResponseBodyFallthroughSlot{}
+	}
+	return o.Slots
+}
+
 type UpdateFlagFallthroughTypeSplit string
 
 const (
@@ -2107,61 +2625,61 @@ func (e *UpdateFlagFallthroughTypeSplit) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type UpdateFlagFallthroughTypeEntity string
+type UpdateFlagFallthroughTypeEntity1 string
 
 const (
-	UpdateFlagFallthroughTypeEntityEntity UpdateFlagFallthroughTypeEntity = "entity"
+	UpdateFlagFallthroughTypeEntity1Entity UpdateFlagFallthroughTypeEntity1 = "entity"
 )
 
-func (e UpdateFlagFallthroughTypeEntity) ToPointer() *UpdateFlagFallthroughTypeEntity {
+func (e UpdateFlagFallthroughTypeEntity1) ToPointer() *UpdateFlagFallthroughTypeEntity1 {
 	return &e
 }
-func (e *UpdateFlagFallthroughTypeEntity) UnmarshalJSON(data []byte) error {
+func (e *UpdateFlagFallthroughTypeEntity1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "entity":
-		*e = UpdateFlagFallthroughTypeEntity(v)
+		*e = UpdateFlagFallthroughTypeEntity1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateFlagFallthroughTypeEntity: %v", v)
+		return fmt.Errorf("invalid value for UpdateFlagFallthroughTypeEntity1: %v", v)
 	}
 }
 
-type UpdateFlagResponseBodyFallthroughBase struct {
-	Type      UpdateFlagFallthroughTypeEntity `json:"type"`
-	Kind      string                          `json:"kind"`
-	Attribute string                          `json:"attribute"`
+type UpdateFlagResponseBodyFallthroughBase1 struct {
+	Type      UpdateFlagFallthroughTypeEntity1 `json:"type"`
+	Kind      string                           `json:"kind"`
+	Attribute string                           `json:"attribute"`
 }
 
-func (u UpdateFlagResponseBodyFallthroughBase) MarshalJSON() ([]byte, error) {
+func (u UpdateFlagResponseBodyFallthroughBase1) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(u, "", false)
 }
 
-func (u *UpdateFlagResponseBodyFallthroughBase) UnmarshalJSON(data []byte) error {
+func (u *UpdateFlagResponseBodyFallthroughBase1) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"type", "kind", "attribute"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *UpdateFlagResponseBodyFallthroughBase) GetType() UpdateFlagFallthroughTypeEntity {
+func (o *UpdateFlagResponseBodyFallthroughBase1) GetType() UpdateFlagFallthroughTypeEntity1 {
 	if o == nil {
-		return UpdateFlagFallthroughTypeEntity("")
+		return UpdateFlagFallthroughTypeEntity1("")
 	}
 	return o.Type
 }
 
-func (o *UpdateFlagResponseBodyFallthroughBase) GetKind() string {
+func (o *UpdateFlagResponseBodyFallthroughBase1) GetKind() string {
 	if o == nil {
 		return ""
 	}
 	return o.Kind
 }
 
-func (o *UpdateFlagResponseBodyFallthroughBase) GetAttribute() string {
+func (o *UpdateFlagResponseBodyFallthroughBase1) GetAttribute() string {
 	if o == nil {
 		return ""
 	}
@@ -2169,10 +2687,10 @@ func (o *UpdateFlagResponseBodyFallthroughBase) GetAttribute() string {
 }
 
 type UpdateFlagFallthroughSplit struct {
-	Type             UpdateFlagFallthroughTypeSplit        `json:"type"`
-	Base             UpdateFlagResponseBodyFallthroughBase `json:"base"`
-	Weights          map[string]float64                    `json:"weights"`
-	DefaultVariantID string                                `json:"defaultVariantId"`
+	Type             UpdateFlagFallthroughTypeSplit         `json:"type"`
+	Base             UpdateFlagResponseBodyFallthroughBase1 `json:"base"`
+	Weights          map[string]float64                     `json:"weights"`
+	DefaultVariantID string                                 `json:"defaultVariantId"`
 }
 
 func (u UpdateFlagFallthroughSplit) MarshalJSON() ([]byte, error) {
@@ -2193,9 +2711,9 @@ func (o *UpdateFlagFallthroughSplit) GetType() UpdateFlagFallthroughTypeSplit {
 	return o.Type
 }
 
-func (o *UpdateFlagFallthroughSplit) GetBase() UpdateFlagResponseBodyFallthroughBase {
+func (o *UpdateFlagFallthroughSplit) GetBase() UpdateFlagResponseBodyFallthroughBase1 {
 	if o == nil {
-		return UpdateFlagResponseBodyFallthroughBase{}
+		return UpdateFlagResponseBodyFallthroughBase1{}
 	}
 	return o.Base
 }
@@ -2272,11 +2790,13 @@ type UpdateFlagResponseBodyFallthroughUnionType string
 const (
 	UpdateFlagResponseBodyFallthroughUnionTypeVariant UpdateFlagResponseBodyFallthroughUnionType = "variant"
 	UpdateFlagResponseBodyFallthroughUnionTypeSplit   UpdateFlagResponseBodyFallthroughUnionType = "split"
+	UpdateFlagResponseBodyFallthroughUnionTypeRollout UpdateFlagResponseBodyFallthroughUnionType = "rollout"
 )
 
 type UpdateFlagResponseBodyFallthroughUnion struct {
 	UpdateFlagFallthroughVariant *UpdateFlagFallthroughVariant `queryParam:"inline"`
 	UpdateFlagFallthroughSplit   *UpdateFlagFallthroughSplit   `queryParam:"inline"`
+	UpdateFlagFallthroughRollout *UpdateFlagFallthroughRollout `queryParam:"inline"`
 
 	Type UpdateFlagResponseBodyFallthroughUnionType
 }
@@ -2302,6 +2822,18 @@ func CreateUpdateFlagResponseBodyFallthroughUnionSplit(split UpdateFlagFallthrou
 	return UpdateFlagResponseBodyFallthroughUnion{
 		UpdateFlagFallthroughSplit: &split,
 		Type:                       typ,
+	}
+}
+
+func CreateUpdateFlagResponseBodyFallthroughUnionRollout(rollout UpdateFlagFallthroughRollout) UpdateFlagResponseBodyFallthroughUnion {
+	typ := UpdateFlagResponseBodyFallthroughUnionTypeRollout
+
+	typStr := UpdateFlagFallthroughTypeRollout(typ)
+	rollout.Type = typStr
+
+	return UpdateFlagResponseBodyFallthroughUnion{
+		UpdateFlagFallthroughRollout: &rollout,
+		Type:                         typ,
 	}
 }
 
@@ -2335,6 +2867,15 @@ func (u *UpdateFlagResponseBodyFallthroughUnion) UnmarshalJSON(data []byte) erro
 		u.UpdateFlagFallthroughSplit = updateFlagFallthroughSplit
 		u.Type = UpdateFlagResponseBodyFallthroughUnionTypeSplit
 		return nil
+	case "rollout":
+		updateFlagFallthroughRollout := new(UpdateFlagFallthroughRollout)
+		if err := utils.UnmarshalJSON(data, &updateFlagFallthroughRollout, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == rollout) type UpdateFlagFallthroughRollout within UpdateFlagResponseBodyFallthroughUnion: %w", string(data), err)
+		}
+
+		u.UpdateFlagFallthroughRollout = updateFlagFallthroughRollout
+		u.Type = UpdateFlagResponseBodyFallthroughUnionTypeRollout
+		return nil
 	}
 
 	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateFlagResponseBodyFallthroughUnion", string(data))
@@ -2349,7 +2890,195 @@ func (u UpdateFlagResponseBodyFallthroughUnion) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.UpdateFlagFallthroughSplit, "", true)
 	}
 
+	if u.UpdateFlagFallthroughRollout != nil {
+		return utils.MarshalJSON(u.UpdateFlagFallthroughRollout, "", true)
+	}
+
 	return nil, errors.New("could not marshal union type UpdateFlagResponseBodyFallthroughUnion: all fields are null")
+}
+
+type UpdateFlagOutcomeTypeRollout string
+
+const (
+	UpdateFlagOutcomeTypeRolloutRollout UpdateFlagOutcomeTypeRollout = "rollout"
+)
+
+func (e UpdateFlagOutcomeTypeRollout) ToPointer() *UpdateFlagOutcomeTypeRollout {
+	return &e
+}
+func (e *UpdateFlagOutcomeTypeRollout) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "rollout":
+		*e = UpdateFlagOutcomeTypeRollout(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateFlagOutcomeTypeRollout: %v", v)
+	}
+}
+
+type UpdateFlagOutcomeTypeEntity2 string
+
+const (
+	UpdateFlagOutcomeTypeEntity2Entity UpdateFlagOutcomeTypeEntity2 = "entity"
+)
+
+func (e UpdateFlagOutcomeTypeEntity2) ToPointer() *UpdateFlagOutcomeTypeEntity2 {
+	return &e
+}
+func (e *UpdateFlagOutcomeTypeEntity2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "entity":
+		*e = UpdateFlagOutcomeTypeEntity2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateFlagOutcomeTypeEntity2: %v", v)
+	}
+}
+
+type UpdateFlagResponseBodyOutcomeBase2 struct {
+	Type      UpdateFlagOutcomeTypeEntity2 `json:"type"`
+	Kind      string                       `json:"kind"`
+	Attribute string                       `json:"attribute"`
+}
+
+func (u UpdateFlagResponseBodyOutcomeBase2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateFlagResponseBodyOutcomeBase2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"type", "kind", "attribute"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *UpdateFlagResponseBodyOutcomeBase2) GetType() UpdateFlagOutcomeTypeEntity2 {
+	if o == nil {
+		return UpdateFlagOutcomeTypeEntity2("")
+	}
+	return o.Type
+}
+
+func (o *UpdateFlagResponseBodyOutcomeBase2) GetKind() string {
+	if o == nil {
+		return ""
+	}
+	return o.Kind
+}
+
+func (o *UpdateFlagResponseBodyOutcomeBase2) GetAttribute() string {
+	if o == nil {
+		return ""
+	}
+	return o.Attribute
+}
+
+type UpdateFlagResponseBodyOutcomeSlot struct {
+	Promille   float64 `json:"promille"`
+	DurationMs float64 `json:"durationMs"`
+}
+
+func (u UpdateFlagResponseBodyOutcomeSlot) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateFlagResponseBodyOutcomeSlot) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"promille", "durationMs"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *UpdateFlagResponseBodyOutcomeSlot) GetPromille() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Promille
+}
+
+func (o *UpdateFlagResponseBodyOutcomeSlot) GetDurationMs() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.DurationMs
+}
+
+type UpdateFlagOutcomeRollout struct {
+	Type              UpdateFlagOutcomeTypeRollout        `json:"type"`
+	Base              UpdateFlagResponseBodyOutcomeBase2  `json:"base"`
+	DefaultVariantID  string                              `json:"defaultVariantId"`
+	StartTimestamp    float64                             `json:"startTimestamp"`
+	RollFromVariantID string                              `json:"rollFromVariantId"`
+	RollToVariantID   string                              `json:"rollToVariantId"`
+	Slots             []UpdateFlagResponseBodyOutcomeSlot `json:"slots"`
+}
+
+func (u UpdateFlagOutcomeRollout) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateFlagOutcomeRollout) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"type", "base", "defaultVariantId", "startTimestamp", "rollFromVariantId", "rollToVariantId", "slots"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *UpdateFlagOutcomeRollout) GetType() UpdateFlagOutcomeTypeRollout {
+	if o == nil {
+		return UpdateFlagOutcomeTypeRollout("")
+	}
+	return o.Type
+}
+
+func (o *UpdateFlagOutcomeRollout) GetBase() UpdateFlagResponseBodyOutcomeBase2 {
+	if o == nil {
+		return UpdateFlagResponseBodyOutcomeBase2{}
+	}
+	return o.Base
+}
+
+func (o *UpdateFlagOutcomeRollout) GetDefaultVariantID() string {
+	if o == nil {
+		return ""
+	}
+	return o.DefaultVariantID
+}
+
+func (o *UpdateFlagOutcomeRollout) GetStartTimestamp() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.StartTimestamp
+}
+
+func (o *UpdateFlagOutcomeRollout) GetRollFromVariantID() string {
+	if o == nil {
+		return ""
+	}
+	return o.RollFromVariantID
+}
+
+func (o *UpdateFlagOutcomeRollout) GetRollToVariantID() string {
+	if o == nil {
+		return ""
+	}
+	return o.RollToVariantID
+}
+
+func (o *UpdateFlagOutcomeRollout) GetSlots() []UpdateFlagResponseBodyOutcomeSlot {
+	if o == nil {
+		return []UpdateFlagResponseBodyOutcomeSlot{}
+	}
+	return o.Slots
 }
 
 type UpdateFlagOutcomeTypeSplit string
@@ -2375,61 +3104,61 @@ func (e *UpdateFlagOutcomeTypeSplit) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type UpdateFlagOutcomeTypeEntity string
+type UpdateFlagOutcomeTypeEntity1 string
 
 const (
-	UpdateFlagOutcomeTypeEntityEntity UpdateFlagOutcomeTypeEntity = "entity"
+	UpdateFlagOutcomeTypeEntity1Entity UpdateFlagOutcomeTypeEntity1 = "entity"
 )
 
-func (e UpdateFlagOutcomeTypeEntity) ToPointer() *UpdateFlagOutcomeTypeEntity {
+func (e UpdateFlagOutcomeTypeEntity1) ToPointer() *UpdateFlagOutcomeTypeEntity1 {
 	return &e
 }
-func (e *UpdateFlagOutcomeTypeEntity) UnmarshalJSON(data []byte) error {
+func (e *UpdateFlagOutcomeTypeEntity1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "entity":
-		*e = UpdateFlagOutcomeTypeEntity(v)
+		*e = UpdateFlagOutcomeTypeEntity1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateFlagOutcomeTypeEntity: %v", v)
+		return fmt.Errorf("invalid value for UpdateFlagOutcomeTypeEntity1: %v", v)
 	}
 }
 
-type UpdateFlagResponseBodyOutcomeBase struct {
-	Type      UpdateFlagOutcomeTypeEntity `json:"type"`
-	Kind      string                      `json:"kind"`
-	Attribute string                      `json:"attribute"`
+type UpdateFlagResponseBodyOutcomeBase1 struct {
+	Type      UpdateFlagOutcomeTypeEntity1 `json:"type"`
+	Kind      string                       `json:"kind"`
+	Attribute string                       `json:"attribute"`
 }
 
-func (u UpdateFlagResponseBodyOutcomeBase) MarshalJSON() ([]byte, error) {
+func (u UpdateFlagResponseBodyOutcomeBase1) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(u, "", false)
 }
 
-func (u *UpdateFlagResponseBodyOutcomeBase) UnmarshalJSON(data []byte) error {
+func (u *UpdateFlagResponseBodyOutcomeBase1) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"type", "kind", "attribute"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *UpdateFlagResponseBodyOutcomeBase) GetType() UpdateFlagOutcomeTypeEntity {
+func (o *UpdateFlagResponseBodyOutcomeBase1) GetType() UpdateFlagOutcomeTypeEntity1 {
 	if o == nil {
-		return UpdateFlagOutcomeTypeEntity("")
+		return UpdateFlagOutcomeTypeEntity1("")
 	}
 	return o.Type
 }
 
-func (o *UpdateFlagResponseBodyOutcomeBase) GetKind() string {
+func (o *UpdateFlagResponseBodyOutcomeBase1) GetKind() string {
 	if o == nil {
 		return ""
 	}
 	return o.Kind
 }
 
-func (o *UpdateFlagResponseBodyOutcomeBase) GetAttribute() string {
+func (o *UpdateFlagResponseBodyOutcomeBase1) GetAttribute() string {
 	if o == nil {
 		return ""
 	}
@@ -2437,10 +3166,10 @@ func (o *UpdateFlagResponseBodyOutcomeBase) GetAttribute() string {
 }
 
 type UpdateFlagOutcomeSplit struct {
-	Type             UpdateFlagOutcomeTypeSplit        `json:"type"`
-	Base             UpdateFlagResponseBodyOutcomeBase `json:"base"`
-	Weights          map[string]float64                `json:"weights"`
-	DefaultVariantID string                            `json:"defaultVariantId"`
+	Type             UpdateFlagOutcomeTypeSplit         `json:"type"`
+	Base             UpdateFlagResponseBodyOutcomeBase1 `json:"base"`
+	Weights          map[string]float64                 `json:"weights"`
+	DefaultVariantID string                             `json:"defaultVariantId"`
 }
 
 func (u UpdateFlagOutcomeSplit) MarshalJSON() ([]byte, error) {
@@ -2461,9 +3190,9 @@ func (o *UpdateFlagOutcomeSplit) GetType() UpdateFlagOutcomeTypeSplit {
 	return o.Type
 }
 
-func (o *UpdateFlagOutcomeSplit) GetBase() UpdateFlagResponseBodyOutcomeBase {
+func (o *UpdateFlagOutcomeSplit) GetBase() UpdateFlagResponseBodyOutcomeBase1 {
 	if o == nil {
-		return UpdateFlagResponseBodyOutcomeBase{}
+		return UpdateFlagResponseBodyOutcomeBase1{}
 	}
 	return o.Base
 }
@@ -2540,11 +3269,13 @@ type UpdateFlagResponseBodyOutcomeUnionType string
 const (
 	UpdateFlagResponseBodyOutcomeUnionTypeVariant UpdateFlagResponseBodyOutcomeUnionType = "variant"
 	UpdateFlagResponseBodyOutcomeUnionTypeSplit   UpdateFlagResponseBodyOutcomeUnionType = "split"
+	UpdateFlagResponseBodyOutcomeUnionTypeRollout UpdateFlagResponseBodyOutcomeUnionType = "rollout"
 )
 
 type UpdateFlagResponseBodyOutcomeUnion struct {
 	UpdateFlagOutcomeVariant *UpdateFlagOutcomeVariant `queryParam:"inline"`
 	UpdateFlagOutcomeSplit   *UpdateFlagOutcomeSplit   `queryParam:"inline"`
+	UpdateFlagOutcomeRollout *UpdateFlagOutcomeRollout `queryParam:"inline"`
 
 	Type UpdateFlagResponseBodyOutcomeUnionType
 }
@@ -2570,6 +3301,18 @@ func CreateUpdateFlagResponseBodyOutcomeUnionSplit(split UpdateFlagOutcomeSplit)
 	return UpdateFlagResponseBodyOutcomeUnion{
 		UpdateFlagOutcomeSplit: &split,
 		Type:                   typ,
+	}
+}
+
+func CreateUpdateFlagResponseBodyOutcomeUnionRollout(rollout UpdateFlagOutcomeRollout) UpdateFlagResponseBodyOutcomeUnion {
+	typ := UpdateFlagResponseBodyOutcomeUnionTypeRollout
+
+	typStr := UpdateFlagOutcomeTypeRollout(typ)
+	rollout.Type = typStr
+
+	return UpdateFlagResponseBodyOutcomeUnion{
+		UpdateFlagOutcomeRollout: &rollout,
+		Type:                     typ,
 	}
 }
 
@@ -2603,6 +3346,15 @@ func (u *UpdateFlagResponseBodyOutcomeUnion) UnmarshalJSON(data []byte) error {
 		u.UpdateFlagOutcomeSplit = updateFlagOutcomeSplit
 		u.Type = UpdateFlagResponseBodyOutcomeUnionTypeSplit
 		return nil
+	case "rollout":
+		updateFlagOutcomeRollout := new(UpdateFlagOutcomeRollout)
+		if err := utils.UnmarshalJSON(data, &updateFlagOutcomeRollout, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == rollout) type UpdateFlagOutcomeRollout within UpdateFlagResponseBodyOutcomeUnion: %w", string(data), err)
+		}
+
+		u.UpdateFlagOutcomeRollout = updateFlagOutcomeRollout
+		u.Type = UpdateFlagResponseBodyOutcomeUnionTypeRollout
+		return nil
 	}
 
 	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateFlagResponseBodyOutcomeUnion", string(data))
@@ -2615,6 +3367,10 @@ func (u UpdateFlagResponseBodyOutcomeUnion) MarshalJSON() ([]byte, error) {
 
 	if u.UpdateFlagOutcomeSplit != nil {
 		return utils.MarshalJSON(u.UpdateFlagOutcomeSplit, "", true)
+	}
+
+	if u.UpdateFlagOutcomeRollout != nil {
+		return utils.MarshalJSON(u.UpdateFlagOutcomeRollout, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type UpdateFlagResponseBodyOutcomeUnion: all fields are null")
@@ -3400,6 +4156,10 @@ func (o *UpdateFlagResponseBodyRule) GetOutcomeSplit() *UpdateFlagOutcomeSplit {
 	return o.GetOutcome().UpdateFlagOutcomeSplit
 }
 
+func (o *UpdateFlagResponseBodyRule) GetOutcomeRollout() *UpdateFlagOutcomeRollout {
+	return o.GetOutcome().UpdateFlagOutcomeRollout
+}
+
 func (o *UpdateFlagResponseBodyRule) GetConditions() []UpdateFlagResponseBodyCondition {
 	if o == nil {
 		return []UpdateFlagResponseBodyCondition{}
@@ -3469,6 +4229,10 @@ func (o *UpdateFlagResponseBodyEnvironments) GetFallthroughVariant() *UpdateFlag
 
 func (o *UpdateFlagResponseBodyEnvironments) GetFallthroughSplit() *UpdateFlagFallthroughSplit {
 	return o.GetFallthrough().UpdateFlagFallthroughSplit
+}
+
+func (o *UpdateFlagResponseBodyEnvironments) GetFallthroughRollout() *UpdateFlagFallthroughRollout {
+	return o.GetFallthrough().UpdateFlagFallthroughRollout
 }
 
 func (o *UpdateFlagResponseBodyEnvironments) GetActive() bool {

@@ -142,15 +142,43 @@ export type PausedOutcome = {
   variantId: string;
 };
 
-export const FlagFallthroughEnvironmentsType = {
+export const FlagFallthroughEnvironments3Type = {
   Entity: "entity",
 } as const;
-export type FlagFallthroughEnvironmentsType = ClosedEnum<
-  typeof FlagFallthroughEnvironmentsType
+export type FlagFallthroughEnvironments3Type = ClosedEnum<
+  typeof FlagFallthroughEnvironments3Type
+>;
+
+export type FallthroughBase = {
+  type: FlagFallthroughEnvironments3Type;
+  kind: string;
+  attribute: string;
+};
+
+export type Slots = {
+  promille: number;
+  durationMs: number;
+};
+
+export type Fallthrough3 = {
+  type: "rollout";
+  base: FallthroughBase;
+  defaultVariantId: string;
+  startTimestamp: number;
+  rollFromVariantId: string;
+  rollToVariantId: string;
+  slots: Array<Slots>;
+};
+
+export const FlagFallthroughEnvironments2Type = {
+  Entity: "entity",
+} as const;
+export type FlagFallthroughEnvironments2Type = ClosedEnum<
+  typeof FlagFallthroughEnvironments2Type
 >;
 
 export type Base = {
-  type: FlagFallthroughEnvironmentsType;
+  type: FlagFallthroughEnvironments2Type;
   kind: string;
   attribute: string;
 };
@@ -167,17 +195,45 @@ export type Fallthrough1 = {
   variantId: string;
 };
 
-export type Fallthrough = Fallthrough1 | Fallthrough2;
+export type Fallthrough = Fallthrough1 | Fallthrough2 | Fallthrough3;
 
-export const FlagOutcomeEnvironmentsType = {
+export const FlagOutcomeEnvironmentsRules3Type = {
   Entity: "entity",
 } as const;
-export type FlagOutcomeEnvironmentsType = ClosedEnum<
-  typeof FlagOutcomeEnvironmentsType
+export type FlagOutcomeEnvironmentsRules3Type = ClosedEnum<
+  typeof FlagOutcomeEnvironmentsRules3Type
+>;
+
+export type FlagOutcomeBase = {
+  type: FlagOutcomeEnvironmentsRules3Type;
+  kind: string;
+  attribute: string;
+};
+
+export type OutcomeSlots = {
+  promille: number;
+  durationMs: number;
+};
+
+export type Outcome3 = {
+  type: "rollout";
+  base: FlagOutcomeBase;
+  defaultVariantId: string;
+  startTimestamp: number;
+  rollFromVariantId: string;
+  rollToVariantId: string;
+  slots: Array<OutcomeSlots>;
+};
+
+export const FlagOutcomeEnvironmentsRulesType = {
+  Entity: "entity",
+} as const;
+export type FlagOutcomeEnvironmentsRulesType = ClosedEnum<
+  typeof FlagOutcomeEnvironmentsRulesType
 >;
 
 export type OutcomeBase = {
-  type: FlagOutcomeEnvironmentsType;
+  type: FlagOutcomeEnvironmentsRulesType;
   kind: string;
   attribute: string;
 };
@@ -194,7 +250,7 @@ export type Outcome1 = {
   variantId: string;
 };
 
-export type Outcome = Outcome1 | Outcome2;
+export type Outcome = Outcome1 | Outcome2 | Outcome3;
 
 export const FlagRhsType = {
   Regex: "regex",
@@ -286,7 +342,7 @@ export type Conditions = {
 
 export type Rules = {
   id: string;
-  outcome: Outcome1 | Outcome2;
+  outcome: Outcome1 | Outcome2 | Outcome3;
   conditions: Array<Conditions>;
 };
 
@@ -297,7 +353,7 @@ export type Environments = {
     | undefined;
   revision?: number | undefined;
   pausedOutcome: PausedOutcome;
-  fallthrough: Fallthrough1 | Fallthrough2;
+  fallthrough: Fallthrough1 | Fallthrough2 | Fallthrough3;
   active: boolean;
   rules: Array<Rules>;
 };
@@ -777,18 +833,158 @@ export function pausedOutcomeFromJSON(
 }
 
 /** @internal */
-export const FlagFallthroughEnvironmentsType$inboundSchema: z.ZodNativeEnum<
-  typeof FlagFallthroughEnvironmentsType
-> = z.nativeEnum(FlagFallthroughEnvironmentsType);
+export const FlagFallthroughEnvironments3Type$inboundSchema: z.ZodNativeEnum<
+  typeof FlagFallthroughEnvironments3Type
+> = z.nativeEnum(FlagFallthroughEnvironments3Type);
 /** @internal */
-export const FlagFallthroughEnvironmentsType$outboundSchema: z.ZodNativeEnum<
-  typeof FlagFallthroughEnvironmentsType
-> = FlagFallthroughEnvironmentsType$inboundSchema;
+export const FlagFallthroughEnvironments3Type$outboundSchema: z.ZodNativeEnum<
+  typeof FlagFallthroughEnvironments3Type
+> = FlagFallthroughEnvironments3Type$inboundSchema;
+
+/** @internal */
+export const FallthroughBase$inboundSchema: z.ZodType<
+  FallthroughBase,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: FlagFallthroughEnvironments3Type$inboundSchema,
+  kind: types.string(),
+  attribute: types.string(),
+});
+/** @internal */
+export type FallthroughBase$Outbound = {
+  type: string;
+  kind: string;
+  attribute: string;
+};
+
+/** @internal */
+export const FallthroughBase$outboundSchema: z.ZodType<
+  FallthroughBase$Outbound,
+  z.ZodTypeDef,
+  FallthroughBase
+> = z.object({
+  type: FlagFallthroughEnvironments3Type$outboundSchema,
+  kind: z.string(),
+  attribute: z.string(),
+});
+
+export function fallthroughBaseToJSON(
+  fallthroughBase: FallthroughBase,
+): string {
+  return JSON.stringify(FallthroughBase$outboundSchema.parse(fallthroughBase));
+}
+export function fallthroughBaseFromJSON(
+  jsonString: string,
+): SafeParseResult<FallthroughBase, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => FallthroughBase$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'FallthroughBase' from JSON`,
+  );
+}
+
+/** @internal */
+export const Slots$inboundSchema: z.ZodType<Slots, z.ZodTypeDef, unknown> = z
+  .object({
+    promille: types.number(),
+    durationMs: types.number(),
+  });
+/** @internal */
+export type Slots$Outbound = {
+  promille: number;
+  durationMs: number;
+};
+
+/** @internal */
+export const Slots$outboundSchema: z.ZodType<
+  Slots$Outbound,
+  z.ZodTypeDef,
+  Slots
+> = z.object({
+  promille: z.number(),
+  durationMs: z.number(),
+});
+
+export function slotsToJSON(slots: Slots): string {
+  return JSON.stringify(Slots$outboundSchema.parse(slots));
+}
+export function slotsFromJSON(
+  jsonString: string,
+): SafeParseResult<Slots, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Slots$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Slots' from JSON`,
+  );
+}
+
+/** @internal */
+export const Fallthrough3$inboundSchema: z.ZodType<
+  Fallthrough3,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: types.literal("rollout"),
+  base: z.lazy(() => FallthroughBase$inboundSchema),
+  defaultVariantId: types.string(),
+  startTimestamp: types.number(),
+  rollFromVariantId: types.string(),
+  rollToVariantId: types.string(),
+  slots: z.array(z.lazy(() => Slots$inboundSchema)),
+});
+/** @internal */
+export type Fallthrough3$Outbound = {
+  type: "rollout";
+  base: FallthroughBase$Outbound;
+  defaultVariantId: string;
+  startTimestamp: number;
+  rollFromVariantId: string;
+  rollToVariantId: string;
+  slots: Array<Slots$Outbound>;
+};
+
+/** @internal */
+export const Fallthrough3$outboundSchema: z.ZodType<
+  Fallthrough3$Outbound,
+  z.ZodTypeDef,
+  Fallthrough3
+> = z.object({
+  type: z.literal("rollout"),
+  base: z.lazy(() => FallthroughBase$outboundSchema),
+  defaultVariantId: z.string(),
+  startTimestamp: z.number(),
+  rollFromVariantId: z.string(),
+  rollToVariantId: z.string(),
+  slots: z.array(z.lazy(() => Slots$outboundSchema)),
+});
+
+export function fallthrough3ToJSON(fallthrough3: Fallthrough3): string {
+  return JSON.stringify(Fallthrough3$outboundSchema.parse(fallthrough3));
+}
+export function fallthrough3FromJSON(
+  jsonString: string,
+): SafeParseResult<Fallthrough3, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Fallthrough3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Fallthrough3' from JSON`,
+  );
+}
+
+/** @internal */
+export const FlagFallthroughEnvironments2Type$inboundSchema: z.ZodNativeEnum<
+  typeof FlagFallthroughEnvironments2Type
+> = z.nativeEnum(FlagFallthroughEnvironments2Type);
+/** @internal */
+export const FlagFallthroughEnvironments2Type$outboundSchema: z.ZodNativeEnum<
+  typeof FlagFallthroughEnvironments2Type
+> = FlagFallthroughEnvironments2Type$inboundSchema;
 
 /** @internal */
 export const Base$inboundSchema: z.ZodType<Base, z.ZodTypeDef, unknown> = z
   .object({
-    type: FlagFallthroughEnvironmentsType$inboundSchema,
+    type: FlagFallthroughEnvironments2Type$inboundSchema,
     kind: types.string(),
     attribute: types.string(),
   });
@@ -802,7 +998,7 @@ export type Base$Outbound = {
 /** @internal */
 export const Base$outboundSchema: z.ZodType<Base$Outbound, z.ZodTypeDef, Base> =
   z.object({
-    type: FlagFallthroughEnvironmentsType$outboundSchema,
+    type: FlagFallthroughEnvironments2Type$outboundSchema,
     kind: z.string(),
     attribute: z.string(),
   });
@@ -910,11 +1106,13 @@ export const Fallthrough$inboundSchema: z.ZodType<
 > = z.union([
   z.lazy(() => Fallthrough1$inboundSchema),
   z.lazy(() => Fallthrough2$inboundSchema),
+  z.lazy(() => Fallthrough3$inboundSchema),
 ]);
 /** @internal */
 export type Fallthrough$Outbound =
   | Fallthrough1$Outbound
-  | Fallthrough2$Outbound;
+  | Fallthrough2$Outbound
+  | Fallthrough3$Outbound;
 
 /** @internal */
 export const Fallthrough$outboundSchema: z.ZodType<
@@ -924,6 +1122,7 @@ export const Fallthrough$outboundSchema: z.ZodType<
 > = z.union([
   z.lazy(() => Fallthrough1$outboundSchema),
   z.lazy(() => Fallthrough2$outboundSchema),
+  z.lazy(() => Fallthrough3$outboundSchema),
 ]);
 
 export function fallthroughToJSON(fallthrough: Fallthrough): string {
@@ -940,13 +1139,156 @@ export function fallthroughFromJSON(
 }
 
 /** @internal */
-export const FlagOutcomeEnvironmentsType$inboundSchema: z.ZodNativeEnum<
-  typeof FlagOutcomeEnvironmentsType
-> = z.nativeEnum(FlagOutcomeEnvironmentsType);
+export const FlagOutcomeEnvironmentsRules3Type$inboundSchema: z.ZodNativeEnum<
+  typeof FlagOutcomeEnvironmentsRules3Type
+> = z.nativeEnum(FlagOutcomeEnvironmentsRules3Type);
 /** @internal */
-export const FlagOutcomeEnvironmentsType$outboundSchema: z.ZodNativeEnum<
-  typeof FlagOutcomeEnvironmentsType
-> = FlagOutcomeEnvironmentsType$inboundSchema;
+export const FlagOutcomeEnvironmentsRules3Type$outboundSchema: z.ZodNativeEnum<
+  typeof FlagOutcomeEnvironmentsRules3Type
+> = FlagOutcomeEnvironmentsRules3Type$inboundSchema;
+
+/** @internal */
+export const FlagOutcomeBase$inboundSchema: z.ZodType<
+  FlagOutcomeBase,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: FlagOutcomeEnvironmentsRules3Type$inboundSchema,
+  kind: types.string(),
+  attribute: types.string(),
+});
+/** @internal */
+export type FlagOutcomeBase$Outbound = {
+  type: string;
+  kind: string;
+  attribute: string;
+};
+
+/** @internal */
+export const FlagOutcomeBase$outboundSchema: z.ZodType<
+  FlagOutcomeBase$Outbound,
+  z.ZodTypeDef,
+  FlagOutcomeBase
+> = z.object({
+  type: FlagOutcomeEnvironmentsRules3Type$outboundSchema,
+  kind: z.string(),
+  attribute: z.string(),
+});
+
+export function flagOutcomeBaseToJSON(
+  flagOutcomeBase: FlagOutcomeBase,
+): string {
+  return JSON.stringify(FlagOutcomeBase$outboundSchema.parse(flagOutcomeBase));
+}
+export function flagOutcomeBaseFromJSON(
+  jsonString: string,
+): SafeParseResult<FlagOutcomeBase, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => FlagOutcomeBase$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'FlagOutcomeBase' from JSON`,
+  );
+}
+
+/** @internal */
+export const OutcomeSlots$inboundSchema: z.ZodType<
+  OutcomeSlots,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  promille: types.number(),
+  durationMs: types.number(),
+});
+/** @internal */
+export type OutcomeSlots$Outbound = {
+  promille: number;
+  durationMs: number;
+};
+
+/** @internal */
+export const OutcomeSlots$outboundSchema: z.ZodType<
+  OutcomeSlots$Outbound,
+  z.ZodTypeDef,
+  OutcomeSlots
+> = z.object({
+  promille: z.number(),
+  durationMs: z.number(),
+});
+
+export function outcomeSlotsToJSON(outcomeSlots: OutcomeSlots): string {
+  return JSON.stringify(OutcomeSlots$outboundSchema.parse(outcomeSlots));
+}
+export function outcomeSlotsFromJSON(
+  jsonString: string,
+): SafeParseResult<OutcomeSlots, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => OutcomeSlots$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OutcomeSlots' from JSON`,
+  );
+}
+
+/** @internal */
+export const Outcome3$inboundSchema: z.ZodType<
+  Outcome3,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: types.literal("rollout"),
+  base: z.lazy(() => FlagOutcomeBase$inboundSchema),
+  defaultVariantId: types.string(),
+  startTimestamp: types.number(),
+  rollFromVariantId: types.string(),
+  rollToVariantId: types.string(),
+  slots: z.array(z.lazy(() => OutcomeSlots$inboundSchema)),
+});
+/** @internal */
+export type Outcome3$Outbound = {
+  type: "rollout";
+  base: FlagOutcomeBase$Outbound;
+  defaultVariantId: string;
+  startTimestamp: number;
+  rollFromVariantId: string;
+  rollToVariantId: string;
+  slots: Array<OutcomeSlots$Outbound>;
+};
+
+/** @internal */
+export const Outcome3$outboundSchema: z.ZodType<
+  Outcome3$Outbound,
+  z.ZodTypeDef,
+  Outcome3
+> = z.object({
+  type: z.literal("rollout"),
+  base: z.lazy(() => FlagOutcomeBase$outboundSchema),
+  defaultVariantId: z.string(),
+  startTimestamp: z.number(),
+  rollFromVariantId: z.string(),
+  rollToVariantId: z.string(),
+  slots: z.array(z.lazy(() => OutcomeSlots$outboundSchema)),
+});
+
+export function outcome3ToJSON(outcome3: Outcome3): string {
+  return JSON.stringify(Outcome3$outboundSchema.parse(outcome3));
+}
+export function outcome3FromJSON(
+  jsonString: string,
+): SafeParseResult<Outcome3, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Outcome3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Outcome3' from JSON`,
+  );
+}
+
+/** @internal */
+export const FlagOutcomeEnvironmentsRulesType$inboundSchema: z.ZodNativeEnum<
+  typeof FlagOutcomeEnvironmentsRulesType
+> = z.nativeEnum(FlagOutcomeEnvironmentsRulesType);
+/** @internal */
+export const FlagOutcomeEnvironmentsRulesType$outboundSchema: z.ZodNativeEnum<
+  typeof FlagOutcomeEnvironmentsRulesType
+> = FlagOutcomeEnvironmentsRulesType$inboundSchema;
 
 /** @internal */
 export const OutcomeBase$inboundSchema: z.ZodType<
@@ -954,7 +1296,7 @@ export const OutcomeBase$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: FlagOutcomeEnvironmentsType$inboundSchema,
+  type: FlagOutcomeEnvironmentsRulesType$inboundSchema,
   kind: types.string(),
   attribute: types.string(),
 });
@@ -971,7 +1313,7 @@ export const OutcomeBase$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   OutcomeBase
 > = z.object({
-  type: FlagOutcomeEnvironmentsType$outboundSchema,
+  type: FlagOutcomeEnvironmentsRulesType$outboundSchema,
   kind: z.string(),
   attribute: z.string(),
 });
@@ -1076,9 +1418,13 @@ export const Outcome$inboundSchema: z.ZodType<Outcome, z.ZodTypeDef, unknown> =
   z.union([
     z.lazy(() => Outcome1$inboundSchema),
     z.lazy(() => Outcome2$inboundSchema),
+    z.lazy(() => Outcome3$inboundSchema),
   ]);
 /** @internal */
-export type Outcome$Outbound = Outcome1$Outbound | Outcome2$Outbound;
+export type Outcome$Outbound =
+  | Outcome1$Outbound
+  | Outcome2$Outbound
+  | Outcome3$Outbound;
 
 /** @internal */
 export const Outcome$outboundSchema: z.ZodType<
@@ -1088,6 +1434,7 @@ export const Outcome$outboundSchema: z.ZodType<
 > = z.union([
   z.lazy(() => Outcome1$outboundSchema),
   z.lazy(() => Outcome2$outboundSchema),
+  z.lazy(() => Outcome3$outboundSchema),
 ]);
 
 export function outcomeToJSON(outcome: Outcome): string {
@@ -1548,13 +1895,14 @@ export const Rules$inboundSchema: z.ZodType<Rules, z.ZodTypeDef, unknown> = z
     outcome: z.union([
       z.lazy(() => Outcome1$inboundSchema),
       z.lazy(() => Outcome2$inboundSchema),
+      z.lazy(() => Outcome3$inboundSchema),
     ]),
     conditions: z.array(z.lazy(() => Conditions$inboundSchema)),
   });
 /** @internal */
 export type Rules$Outbound = {
   id: string;
-  outcome: Outcome1$Outbound | Outcome2$Outbound;
+  outcome: Outcome1$Outbound | Outcome2$Outbound | Outcome3$Outbound;
   conditions: Array<Conditions$Outbound>;
 };
 
@@ -1568,6 +1916,7 @@ export const Rules$outboundSchema: z.ZodType<
   outcome: z.union([
     z.lazy(() => Outcome1$outboundSchema),
     z.lazy(() => Outcome2$outboundSchema),
+    z.lazy(() => Outcome3$outboundSchema),
   ]),
   conditions: z.array(z.lazy(() => Conditions$outboundSchema)),
 });
@@ -1600,6 +1949,7 @@ export const Environments$inboundSchema: z.ZodType<
   fallthrough: z.union([
     z.lazy(() => Fallthrough1$inboundSchema),
     z.lazy(() => Fallthrough2$inboundSchema),
+    z.lazy(() => Fallthrough3$inboundSchema),
   ]),
   active: types.boolean(),
   rules: z.array(z.lazy(() => Rules$inboundSchema)),
@@ -1612,7 +1962,10 @@ export type Environments$Outbound = {
   } | undefined;
   revision?: number | undefined;
   pausedOutcome: PausedOutcome$Outbound;
-  fallthrough: Fallthrough1$Outbound | Fallthrough2$Outbound;
+  fallthrough:
+    | Fallthrough1$Outbound
+    | Fallthrough2$Outbound
+    | Fallthrough3$Outbound;
   active: boolean;
   rules: Array<Rules$Outbound>;
 };
@@ -1632,6 +1985,7 @@ export const Environments$outboundSchema: z.ZodType<
   fallthrough: z.union([
     z.lazy(() => Fallthrough1$outboundSchema),
     z.lazy(() => Fallthrough2$outboundSchema),
+    z.lazy(() => Fallthrough3$outboundSchema),
   ]),
   active: z.boolean(),
   rules: z.array(z.lazy(() => Rules$outboundSchema)),

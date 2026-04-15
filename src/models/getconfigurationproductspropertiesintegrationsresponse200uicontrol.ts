@@ -238,10 +238,10 @@ export type Protocols = {
 
 export const PrimaryProtocol = {
   Checks: "checks",
+  Experimentation: "experimentation",
   Ai: "ai",
   Authentication: "authentication",
   Storage: "storage",
-  Experimentation: "experimentation",
   Messaging: "messaging",
   Observability: "observability",
   Video: "video",
@@ -490,11 +490,11 @@ export type Properties10 = {
   uiControl:
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaUiControl;
   description?: string | undefined;
+  default?: string | undefined;
   enum?: Array<string> | undefined;
   maxLength?: number | undefined;
   minLength?: number | undefined;
   pattern?: string | undefined;
-  default?: string | undefined;
   uiLabel?: string | undefined;
   uiReadOnly?:
     | GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaProperties1
@@ -995,11 +995,11 @@ export type Properties8 = {
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiControl;
   uiOptions: Array<UiOptions1 | UiOptions3 | string>;
   description?: string | undefined;
+  default?: string | undefined;
   enum?: Array<string> | undefined;
   maxLength?: number | undefined;
   minLength?: number | undefined;
   pattern?: string | undefined;
-  default?: string | undefined;
   uiLabel?: string | undefined;
   uiReadOnly?:
     | GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProducts1
@@ -3375,11 +3375,11 @@ export const Properties10$inboundSchema: z.ZodType<
   "ui:control":
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaUiControl$inboundSchema,
   description: types.optional(types.string()),
+  default: types.optional(types.string()),
   enum: types.optional(z.array(types.string())),
   maxLength: types.optional(types.number()),
   minLength: types.optional(types.number()),
   pattern: types.optional(types.string()),
-  default: types.optional(types.string()),
   "ui:label": types.optional(types.string()),
   "ui:read-only": types.optional(
     smartUnion([
@@ -3441,11 +3441,11 @@ export type Properties10$Outbound = {
   type: string;
   "ui:control": string;
   description?: string | undefined;
+  default?: string | undefined;
   enum?: Array<string> | undefined;
   maxLength?: number | undefined;
   minLength?: number | undefined;
   pattern?: string | undefined;
-  default?: string | undefined;
   "ui:label"?: string | undefined;
   "ui:read-only"?:
     | GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaProperties1$Outbound
@@ -3484,11 +3484,11 @@ export const Properties10$outboundSchema: z.ZodType<
   uiControl:
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaUiControl$outboundSchema,
   description: z.string().optional(),
+  default: z.string().optional(),
   enum: z.array(z.string()).optional(),
   maxLength: z.number().optional(),
   minLength: z.number().optional(),
   pattern: z.string().optional(),
-  default: z.string().optional(),
   uiLabel: z.string().optional(),
   uiReadOnly: smartUnion([
     z.lazy(() =>
@@ -6364,11 +6364,11 @@ export const Properties8$inboundSchema: z.ZodType<
     ]),
   ),
   description: types.optional(types.string()),
+  default: types.optional(types.string()),
   enum: types.optional(z.array(types.string())),
   maxLength: types.optional(types.number()),
   minLength: types.optional(types.number()),
   pattern: types.optional(types.string()),
-  default: types.optional(types.string()),
   "ui:label": types.optional(types.string()),
   "ui:read-only": types.optional(
     smartUnion([
@@ -6432,11 +6432,11 @@ export type Properties8$Outbound = {
   "ui:control": string;
   "ui:options": Array<UiOptions1$Outbound | UiOptions3$Outbound | string>;
   description?: string | undefined;
+  default?: string | undefined;
   enum?: Array<string> | undefined;
   maxLength?: number | undefined;
   minLength?: number | undefined;
   pattern?: string | undefined;
-  default?: string | undefined;
   "ui:label"?: string | undefined;
   "ui:read-only"?:
     | GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProducts1$Outbound
@@ -6482,11 +6482,11 @@ export const Properties8$outboundSchema: z.ZodType<
     ]),
   ),
   description: z.string().optional(),
+  default: z.string().optional(),
   enum: z.array(z.string()).optional(),
   maxLength: z.number().optional(),
   minLength: z.number().optional(),
   pattern: z.string().optional(),
-  default: z.string().optional(),
   uiLabel: z.string().optional(),
   uiReadOnly: smartUnion([
     z.lazy(() =>

@@ -29,3 +29,26 @@ const value: models.ListFlagVersionsOutcome2 = {
 };
 ```
 
+### `models.ListFlagVersionsOutcome3`
+
+```typescript
+const value: models.ListFlagVersionsOutcome3 = {
+  type: "rollout",
+  base: {
+    type: "entity",
+    kind: "<value>",
+    attribute: "<value>",
+  },
+  defaultVariantId: "<id>",
+  startTimestamp: 6729.99,
+  rollFromVariantId: "<id>",
+  rollToVariantId: "<id>",
+  slots: [
+    {
+      promille: 2557.11,
+      durationMs: 4705.48,
+    },
+  ],
+};
+```
+

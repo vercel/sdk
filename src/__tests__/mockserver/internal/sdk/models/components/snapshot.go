@@ -56,6 +56,8 @@ type Snapshot struct {
 	CreatedAt float64 `json:"createdAt"`
 	// The last time the snapshot was updated, in milliseconds since the epoch.
 	UpdatedAt float64 `json:"updatedAt"`
+	// The last time the snapshot was used (e.g. to resume or create a sandbox), in milliseconds since the epoch. Falls back to `createdAt` for older snapshots that predate this field.
+	LastUsedAt float64 `json:"lastUsedAt"`
 }
 
 func (s Snapshot) MarshalJSON() ([]byte, error) {
@@ -63,7 +65,7 @@ func (s Snapshot) MarshalJSON() ([]byte, error) {
 }
 
 func (s *Snapshot) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &s, "", false, []string{"id", "sourceSessionId", "region", "status", "sizeBytes", "createdAt", "updatedAt"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &s, "", false, []string{"id", "sourceSessionId", "region", "status", "sizeBytes", "createdAt", "updatedAt", "lastUsedAt"}); err != nil {
 		return err
 	}
 	return nil
@@ -123,4 +125,11 @@ func (o *Snapshot) GetUpdatedAt() float64 {
 		return 0.0
 	}
 	return o.UpdatedAt
+}
+
+func (o *Snapshot) GetLastUsedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.LastUsedAt
 }

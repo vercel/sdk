@@ -66,8 +66,8 @@ export type GetIntegrationResourceLevel = ClosedEnum<
  * The notification, if set, displayed to the user when viewing the resource in Vercel
  */
 export type GetIntegrationResourceNotification = {
-  title: string;
   level: GetIntegrationResourceLevel;
+  title: string;
   message?: string | undefined;
   href?: string | undefined;
 };
@@ -270,15 +270,15 @@ export const GetIntegrationResourceNotification$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  title: types.string(),
   level: GetIntegrationResourceLevel$inboundSchema,
+  title: types.string(),
   message: types.optional(types.string()),
   href: types.optional(types.string()),
 });
 /** @internal */
 export type GetIntegrationResourceNotification$Outbound = {
-  title: string;
   level: string;
+  title: string;
   message?: string | undefined;
   href?: string | undefined;
 };
@@ -289,8 +289,8 @@ export const GetIntegrationResourceNotification$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetIntegrationResourceNotification
 > = z.object({
-  title: z.string(),
   level: GetIntegrationResourceLevel$outboundSchema,
+  title: z.string(),
   message: z.string().optional(),
   href: z.string().optional(),
 });

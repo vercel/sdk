@@ -30,3 +30,21 @@ const value: models.Outcome2 = {
 };
 ```
 
+### `models.Outcome3`
+
+```typescript
+const value: models.Outcome3 = {
+  type: "rollout",
+  base: {
+    type: "entity",
+    kind: "<value>",
+    attribute: "<value>",
+  },
+  defaultVariantId: "<id>",
+  startTimestamp: 3190.05,
+  rollFromVariantId: "<id>",
+  rollToVariantId: "<id>",
+  slots: [],
+};
+```
+

@@ -66,10 +66,10 @@ export type Quote = {
 
 export type Plans = {
   type: GetBillingPlansType;
-  description: string;
   id: string;
   name: string;
   scope: GetBillingPlansScope;
+  description: string;
   paymentMethodRequired: boolean;
   preauthorizationAmount?: number | undefined;
   initialCharge?: string | undefined;
@@ -297,10 +297,10 @@ export function quoteFromJSON(
 export const Plans$inboundSchema: z.ZodType<Plans, z.ZodTypeDef, unknown> = z
   .object({
     type: GetBillingPlansType$inboundSchema,
-    description: types.string(),
     id: types.string(),
     name: types.string(),
     scope: GetBillingPlansScope$inboundSchema,
+    description: types.string(),
     paymentMethodRequired: types.boolean(),
     preauthorizationAmount: types.optional(types.number()),
     initialCharge: types.optional(types.string()),
@@ -321,10 +321,10 @@ export const Plans$inboundSchema: z.ZodType<Plans, z.ZodTypeDef, unknown> = z
 /** @internal */
 export type Plans$Outbound = {
   type: string;
-  description: string;
   id: string;
   name: string;
   scope: string;
+  description: string;
   paymentMethodRequired: boolean;
   preauthorizationAmount?: number | undefined;
   initialCharge?: string | undefined;
@@ -348,10 +348,10 @@ export const Plans$outboundSchema: z.ZodType<
   Plans
 > = z.object({
   type: GetBillingPlansType$outboundSchema,
-  description: z.string(),
   id: z.string(),
   name: z.string(),
   scope: GetBillingPlansScope$outboundSchema,
+  description: z.string(),
   paymentMethodRequired: z.boolean(),
   preauthorizationAmount: z.number().optional(),
   initialCharge: z.string().optional(),

@@ -27,3 +27,21 @@ const value: models.CreateFlagFallthroughFeatureFlags2 = {
 };
 ```
 
+### `models.CreateFlagFallthroughFeatureFlags3`
+
+```typescript
+const value: models.CreateFlagFallthroughFeatureFlags3 = {
+  type: "rollout",
+  base: {
+    type: "entity",
+    kind: "<value>",
+    attribute: "<value>",
+  },
+  defaultVariantId: "<id>",
+  startTimestamp: 4507.34,
+  rollFromVariantId: "<id>",
+  rollToVariantId: "<id>",
+  slots: [],
+};
+```
+

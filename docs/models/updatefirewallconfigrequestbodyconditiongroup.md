@@ -8,7 +8,7 @@ import { UpdateFirewallConfigRequestBodyConditionGroup } from "@vercel/sdk/model
 let value: UpdateFirewallConfigRequestBodyConditionGroup = {
   conditions: [
     {
-      type: "scheme",
+      type: "environment",
       op: "pre",
     },
   ],

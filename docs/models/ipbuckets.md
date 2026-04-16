@@ -16,3 +16,4 @@ let value: IpBuckets = {
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `bucket`           | *string*           | :heavy_check_mark: | N/A                |
 | `supportUntil`     | *number*           | :heavy_minus_sign: | N/A                |
+| `default`          | *boolean*          | :heavy_minus_sign: | N/A                |

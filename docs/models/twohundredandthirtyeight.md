@@ -5,24 +5,31 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndThirtyEight } from "@vercel/sdk/models/twohundredandthirtyone.js";
+import { TwoHundredAndThirtyEight } from "@vercel/sdk/models/twohundredandthirtysix.js";
 
 let value: TwoHundredAndThirtyEight = {
-  transferRequestCode: "<value>",
-  store: {
+  budget: {
+    type: "fixed",
+    fixedBudget: 9292.23,
+    previousSpend: [
+      5092.01,
+      7808.43,
+    ],
+    notifiedAt: [
+      790.36,
+      3891.69,
+    ],
+    createdAt: 3717.34,
+    isActive: false,
+    teamId: "<id>",
     id: "<id>",
-    type: "blob",
   },
-  originTeamId: "<id>",
-  originTeamName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                              | Type                                                               | Required                                                           | Description                                                        |
-| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
-| `transferRequestCode`                                              | *string*                                                           | :heavy_check_mark:                                                 | N/A                                                                |
-| `store`                                                            | [models.UserEventPayloadStore](../models/usereventpayloadstore.md) | :heavy_check_mark:                                                 | N/A                                                                |
-| `originTeamId`                                                     | *string*                                                           | :heavy_check_mark:                                                 | N/A                                                                |
-| `originTeamName`                                                   | *string*                                                           | :heavy_check_mark:                                                 | N/A                                                                |
+| Field                                                                   | Type                                                                    | Required                                                                | Description                                                             |
+| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| `budget`                                                                | [models.UserEventPayloadBudget](../models/usereventpayloadbudget.md)    | :heavy_check_mark:                                                      | Represents a budget for tracking and notifying teams on their spending. |
+| `webhookUrl`                                                            | *string*                                                                | :heavy_minus_sign:                                                      | N/A                                                                     |

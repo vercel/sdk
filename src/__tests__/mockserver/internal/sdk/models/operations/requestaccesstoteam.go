@@ -206,23 +206,24 @@ func (o *RequestAccessToTeamRequest) GetBody() RequestAccessToTeamRequestBody {
 type RequestAccessToTeamOriginResponseBody string
 
 const (
-	RequestAccessToTeamOriginResponseBodyTeams             RequestAccessToTeamOriginResponseBody = "teams"
-	RequestAccessToTeamOriginResponseBodyLink              RequestAccessToTeamOriginResponseBody = "link"
-	RequestAccessToTeamOriginResponseBodyImport            RequestAccessToTeamOriginResponseBody = "import"
-	RequestAccessToTeamOriginResponseBodyMail              RequestAccessToTeamOriginResponseBody = "mail"
-	RequestAccessToTeamOriginResponseBodyGithub            RequestAccessToTeamOriginResponseBody = "github"
-	RequestAccessToTeamOriginResponseBodyGitlab            RequestAccessToTeamOriginResponseBody = "gitlab"
-	RequestAccessToTeamOriginResponseBodyBitbucket         RequestAccessToTeamOriginResponseBody = "bitbucket"
-	RequestAccessToTeamOriginResponseBodySaml              RequestAccessToTeamOriginResponseBody = "saml"
-	RequestAccessToTeamOriginResponseBodyDsync             RequestAccessToTeamOriginResponseBody = "dsync"
-	RequestAccessToTeamOriginResponseBodyFeedback          RequestAccessToTeamOriginResponseBody = "feedback"
-	RequestAccessToTeamOriginResponseBodyOrganizationTeams RequestAccessToTeamOriginResponseBody = "organization-teams"
-	RequestAccessToTeamOriginResponseBodyNsnbAutoApprove   RequestAccessToTeamOriginResponseBody = "nsnb-auto-approve"
-	RequestAccessToTeamOriginResponseBodyNsnbHobbyUpgrade  RequestAccessToTeamOriginResponseBody = "nsnb-hobby-upgrade"
-	RequestAccessToTeamOriginResponseBodyNsnbRequestAccess RequestAccessToTeamOriginResponseBody = "nsnb-request-access"
-	RequestAccessToTeamOriginResponseBodyNsnbViewerUpgrade RequestAccessToTeamOriginResponseBody = "nsnb-viewer-upgrade"
-	RequestAccessToTeamOriginResponseBodyNsnbInvite        RequestAccessToTeamOriginResponseBody = "nsnb-invite"
-	RequestAccessToTeamOriginResponseBodyNsnbRedeploy      RequestAccessToTeamOriginResponseBody = "nsnb-redeploy"
+	RequestAccessToTeamOriginResponseBodyTeams                       RequestAccessToTeamOriginResponseBody = "teams"
+	RequestAccessToTeamOriginResponseBodyLink                        RequestAccessToTeamOriginResponseBody = "link"
+	RequestAccessToTeamOriginResponseBodyImport                      RequestAccessToTeamOriginResponseBody = "import"
+	RequestAccessToTeamOriginResponseBodyMail                        RequestAccessToTeamOriginResponseBody = "mail"
+	RequestAccessToTeamOriginResponseBodyGithub                      RequestAccessToTeamOriginResponseBody = "github"
+	RequestAccessToTeamOriginResponseBodyGitlab                      RequestAccessToTeamOriginResponseBody = "gitlab"
+	RequestAccessToTeamOriginResponseBodyBitbucket                   RequestAccessToTeamOriginResponseBody = "bitbucket"
+	RequestAccessToTeamOriginResponseBodySaml                        RequestAccessToTeamOriginResponseBody = "saml"
+	RequestAccessToTeamOriginResponseBodyDsync                       RequestAccessToTeamOriginResponseBody = "dsync"
+	RequestAccessToTeamOriginResponseBodyFeedback                    RequestAccessToTeamOriginResponseBody = "feedback"
+	RequestAccessToTeamOriginResponseBodyOrganizationTeams           RequestAccessToTeamOriginResponseBody = "organization-teams"
+	RequestAccessToTeamOriginResponseBodyNsnbAutoApprove             RequestAccessToTeamOriginResponseBody = "nsnb-auto-approve"
+	RequestAccessToTeamOriginResponseBodyNsnbHobbyUpgrade            RequestAccessToTeamOriginResponseBody = "nsnb-hobby-upgrade"
+	RequestAccessToTeamOriginResponseBodyNsnbRequestAccess           RequestAccessToTeamOriginResponseBody = "nsnb-request-access"
+	RequestAccessToTeamOriginResponseBodyNsnbViewerUpgrade           RequestAccessToTeamOriginResponseBody = "nsnb-viewer-upgrade"
+	RequestAccessToTeamOriginResponseBodyNsnbInvite                  RequestAccessToTeamOriginResponseBody = "nsnb-invite"
+	RequestAccessToTeamOriginResponseBodyNsnbRedeploy                RequestAccessToTeamOriginResponseBody = "nsnb-redeploy"
+	RequestAccessToTeamOriginResponseBodyNsnbRedeployAttributionCard RequestAccessToTeamOriginResponseBody = "nsnb-redeploy-attribution-card"
 )
 
 func (e RequestAccessToTeamOriginResponseBody) ToPointer() *RequestAccessToTeamOriginResponseBody {
@@ -267,6 +268,8 @@ func (e *RequestAccessToTeamOriginResponseBody) UnmarshalJSON(data []byte) error
 	case "nsnb-invite":
 		fallthrough
 	case "nsnb-redeploy":
+		fallthrough
+	case "nsnb-redeploy-attribution-card":
 		*e = RequestAccessToTeamOriginResponseBody(v)
 		return nil
 	default:

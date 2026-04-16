@@ -6,7 +6,7 @@
 import { PutFirewallConfigRulesConditions } from "@vercel/sdk/models/putfirewallconfigop.js";
 
 let value: PutFirewallConfigRulesConditions = {
-  type: "route",
+  type: "raw_path",
   op: "suf",
 };
 ```

@@ -299,6 +299,8 @@ export const GetFirewallConfigRulesType = {
   ServerAction: "server_action",
   BotName: "bot_name",
   BotCategory: "bot_category",
+  BotStatus: "bot_status",
+  BotProtection: "bot_protection",
 } as const;
 export type GetFirewallConfigRulesType = ClosedEnum<
   typeof GetFirewallConfigRulesType
@@ -443,6 +445,8 @@ export const RulesType = {
   ServerAction: "server_action",
   BotName: "bot_name",
   BotCategory: "bot_category",
+  BotStatus: "bot_status",
+  BotProtection: "bot_protection",
 } as const;
 export type RulesType = ClosedEnum<typeof RulesType>;
 

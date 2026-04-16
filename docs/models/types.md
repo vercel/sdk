@@ -10,7 +10,7 @@ let value: Types = {
     "<value 1>",
   ],
   deprecated: true,
-  name: "connect-github-limited",
+  name: "disconnect-github-limited",
   description: "apud oxidise substantiate amid shear familiar",
 };
 ```

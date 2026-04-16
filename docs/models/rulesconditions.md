@@ -6,7 +6,7 @@
 import { RulesConditions } from "@vercel/sdk/models/getfirewallconfigop.js";
 
 let value: RulesConditions = {
-  type: "raw_path",
+  type: "ip_address",
   op: "nex",
 };
 ```

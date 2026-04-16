@@ -170,6 +170,7 @@ type GetProjectsProjectResourceConfig1 struct {
 	BuildMachineElasticLastUpdated *float64                                                    `json:"buildMachineElasticLastUpdated,omitempty"`
 	IsNSNBDisabled                 *bool                                                       `json:"isNSNBDisabled,omitempty"`
 	BuildQueue                     *GetProjectsProjectResourceConfigBuildQueue1                `json:"buildQueue,omitempty"`
+	EnableFunctionsBeta            *bool                                                       `json:"enableFunctionsBeta,omitempty"`
 }
 
 func (g GetProjectsProjectResourceConfig1) MarshalJSON() ([]byte, error) {
@@ -258,6 +259,13 @@ func (o *GetProjectsProjectResourceConfig1) GetBuildQueue() *GetProjectsProjectR
 		return nil
 	}
 	return o.BuildQueue
+}
+
+func (o *GetProjectsProjectResourceConfig1) GetEnableFunctionsBeta() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.EnableFunctionsBeta
 }
 
 // GetProjectsProjectStage1 - An array of all the stages required during a deployment release. Each stage defines a target percentage and advancement rules. The final stage must always have targetPercentage: 100.
@@ -6062,6 +6070,7 @@ func (o *GetProjectsDeploymentExpiration) GetDeploymentsToKeep() *float64 {
 
 type GetProjectsIPBucket struct {
 	Bucket       string   `json:"bucket"`
+	Default      *bool    `json:"default,omitempty"`
 	SupportUntil *float64 `json:"supportUntil,omitempty"`
 }
 
@@ -6081,6 +6090,13 @@ func (o *GetProjectsIPBucket) GetBucket() string {
 		return ""
 	}
 	return o.Bucket
+}
+
+func (o *GetProjectsIPBucket) GetDefault() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Default
 }
 
 func (o *GetProjectsIPBucket) GetSupportUntil() *float64 {

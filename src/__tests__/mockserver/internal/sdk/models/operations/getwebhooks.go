@@ -59,6 +59,7 @@ const (
 	GetWebhooksEvent2DomainRenewalFailed                                GetWebhooksEvent2 = "domain.renewal.failed"
 	GetWebhooksEvent2DomainAutoRenewChanged                             GetWebhooksEvent2 = "domain.auto-renew.changed"
 	GetWebhooksEvent2DeploymentCreated                                  GetWebhooksEvent2 = "deployment.created"
+	GetWebhooksEvent2DeploymentBuildRequested                           GetWebhooksEvent2 = "deployment.build-requested"
 	GetWebhooksEvent2DeploymentCleanup                                  GetWebhooksEvent2 = "deployment.cleanup"
 	GetWebhooksEvent2DeploymentError                                    GetWebhooksEvent2 = "deployment.error"
 	GetWebhooksEvent2DeploymentCanceled                                 GetWebhooksEvent2 = "deployment.canceled"
@@ -194,6 +195,8 @@ func (e *GetWebhooksEvent2) UnmarshalJSON(data []byte) error {
 	case "domain.auto-renew.changed":
 		fallthrough
 	case "deployment.created":
+		fallthrough
+	case "deployment.build-requested":
 		fallthrough
 	case "deployment.cleanup":
 		fallthrough
@@ -751,6 +754,7 @@ const (
 	GetWebhooksEvent1DomainRenewalFailed                                GetWebhooksEvent1 = "domain.renewal.failed"
 	GetWebhooksEvent1DomainAutoRenewChanged                             GetWebhooksEvent1 = "domain.auto-renew.changed"
 	GetWebhooksEvent1DeploymentCreated                                  GetWebhooksEvent1 = "deployment.created"
+	GetWebhooksEvent1DeploymentBuildRequested                           GetWebhooksEvent1 = "deployment.build-requested"
 	GetWebhooksEvent1DeploymentCleanup                                  GetWebhooksEvent1 = "deployment.cleanup"
 	GetWebhooksEvent1DeploymentError                                    GetWebhooksEvent1 = "deployment.error"
 	GetWebhooksEvent1DeploymentCanceled                                 GetWebhooksEvent1 = "deployment.canceled"
@@ -886,6 +890,8 @@ func (e *GetWebhooksEvent1) UnmarshalJSON(data []byte) error {
 	case "domain.auto-renew.changed":
 		fallthrough
 	case "deployment.created":
+		fallthrough
+	case "deployment.build-requested":
 		fallthrough
 	case "deployment.cleanup":
 		fallthrough

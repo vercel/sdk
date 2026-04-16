@@ -1161,6 +1161,7 @@ func (e *SensitiveEnvironmentVariablePolicy) UnmarshalJSON(data []byte) error {
 type IPBucket struct {
 	Bucket       string   `json:"bucket"`
 	SupportUntil *float64 `json:"supportUntil,omitempty"`
+	Default      *bool    `json:"default,omitempty"`
 }
 
 func (i IPBucket) MarshalJSON() ([]byte, error) {
@@ -1186,6 +1187,13 @@ func (o *IPBucket) GetSupportUntil() *float64 {
 		return nil
 	}
 	return o.SupportUntil
+}
+
+func (o *IPBucket) GetDefault() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Default
 }
 
 // StrictDeploymentProtectionSettings - When enabled, deployment protection settings require stricter permissions (owner-only).
@@ -1462,23 +1470,24 @@ func (e *TeamMembershipTeamPermission) UnmarshalJSON(data []byte) error {
 type TeamOrigin2 string
 
 const (
-	TeamOrigin2Link              TeamOrigin2 = "link"
-	TeamOrigin2Saml              TeamOrigin2 = "saml"
-	TeamOrigin2Mail              TeamOrigin2 = "mail"
-	TeamOrigin2Import            TeamOrigin2 = "import"
-	TeamOrigin2Teams             TeamOrigin2 = "teams"
-	TeamOrigin2Github            TeamOrigin2 = "github"
-	TeamOrigin2Gitlab            TeamOrigin2 = "gitlab"
-	TeamOrigin2Bitbucket         TeamOrigin2 = "bitbucket"
-	TeamOrigin2Dsync             TeamOrigin2 = "dsync"
-	TeamOrigin2Feedback          TeamOrigin2 = "feedback"
-	TeamOrigin2OrganizationTeams TeamOrigin2 = "organization-teams"
-	TeamOrigin2NsnbAutoApprove   TeamOrigin2 = "nsnb-auto-approve"
-	TeamOrigin2NsnbHobbyUpgrade  TeamOrigin2 = "nsnb-hobby-upgrade"
-	TeamOrigin2NsnbRequestAccess TeamOrigin2 = "nsnb-request-access"
-	TeamOrigin2NsnbViewerUpgrade TeamOrigin2 = "nsnb-viewer-upgrade"
-	TeamOrigin2NsnbInvite        TeamOrigin2 = "nsnb-invite"
-	TeamOrigin2NsnbRedeploy      TeamOrigin2 = "nsnb-redeploy"
+	TeamOrigin2Link                        TeamOrigin2 = "link"
+	TeamOrigin2Saml                        TeamOrigin2 = "saml"
+	TeamOrigin2Mail                        TeamOrigin2 = "mail"
+	TeamOrigin2Import                      TeamOrigin2 = "import"
+	TeamOrigin2Teams                       TeamOrigin2 = "teams"
+	TeamOrigin2Github                      TeamOrigin2 = "github"
+	TeamOrigin2Gitlab                      TeamOrigin2 = "gitlab"
+	TeamOrigin2Bitbucket                   TeamOrigin2 = "bitbucket"
+	TeamOrigin2Dsync                       TeamOrigin2 = "dsync"
+	TeamOrigin2Feedback                    TeamOrigin2 = "feedback"
+	TeamOrigin2OrganizationTeams           TeamOrigin2 = "organization-teams"
+	TeamOrigin2NsnbAutoApprove             TeamOrigin2 = "nsnb-auto-approve"
+	TeamOrigin2NsnbHobbyUpgrade            TeamOrigin2 = "nsnb-hobby-upgrade"
+	TeamOrigin2NsnbRequestAccess           TeamOrigin2 = "nsnb-request-access"
+	TeamOrigin2NsnbViewerUpgrade           TeamOrigin2 = "nsnb-viewer-upgrade"
+	TeamOrigin2NsnbInvite                  TeamOrigin2 = "nsnb-invite"
+	TeamOrigin2NsnbRedeploy                TeamOrigin2 = "nsnb-redeploy"
+	TeamOrigin2NsnbRedeployAttributionCard TeamOrigin2 = "nsnb-redeploy-attribution-card"
 )
 
 func (e TeamOrigin2) ToPointer() *TeamOrigin2 {
@@ -1523,6 +1532,8 @@ func (e *TeamOrigin2) UnmarshalJSON(data []byte) error {
 	case "nsnb-invite":
 		fallthrough
 	case "nsnb-redeploy":
+		fallthrough
+	case "nsnb-redeploy-attribution-card":
 		*e = TeamOrigin2(v)
 		return nil
 	default:

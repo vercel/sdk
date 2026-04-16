@@ -281,6 +281,7 @@ export type CreateProjectResourceConfig = {
   buildMachineElasticLastUpdated?: number | undefined;
   isNSNBDisabled?: boolean | undefined;
   buildQueue?: CreateProjectBuildQueue | undefined;
+  enableFunctionsBeta?: boolean | undefined;
 };
 
 export type CreateProjectRequestBody = {
@@ -905,6 +906,7 @@ export type CreateProjectProjectsFramework = ClosedEnum<
 
 export type CreateProjectIpBuckets = {
   bucket: string;
+  default?: boolean | undefined;
   supportUntil?: number | undefined;
 };
 
@@ -1254,6 +1256,7 @@ export type CreateProjectProjectsResourceConfig = {
   buildMachineElasticLastUpdated?: number | undefined;
   isNSNBDisabled?: boolean | undefined;
   buildQueue?: CreateProjectProjectsBuildQueue | undefined;
+  enableFunctionsBeta?: boolean | undefined;
 };
 
 /**
@@ -1372,6 +1375,7 @@ export type DefaultResourceConfig = {
   buildMachineElasticLastUpdated?: number | undefined;
   isNSNBDisabled?: boolean | undefined;
   buildQueue?: CreateProjectProjectsResponseBuildQueue | undefined;
+  enableFunctionsBeta?: boolean | undefined;
 };
 
 export type CreateProjectStaticIps = {
@@ -1491,6 +1495,7 @@ export type CreateProjectPermissions = {
   connect?: Array<ACLAction> | undefined;
   connectConfiguration?: Array<ACLAction> | undefined;
   connexClient?: Array<ACLAction> | undefined;
+  connexClientProject?: Array<ACLAction> | undefined;
   connexToken?: Array<ACLAction> | undefined;
   buildMachineDefault?: Array<ACLAction> | undefined;
   dataCacheBillingSettings?: Array<ACLAction> | undefined;
@@ -2359,6 +2364,7 @@ export const CreateProjectResourceConfig$inboundSchema: z.ZodType<
   buildQueue: types.optional(
     z.lazy(() => CreateProjectBuildQueue$inboundSchema),
   ),
+  enableFunctionsBeta: types.optional(types.boolean()),
 });
 /** @internal */
 export type CreateProjectResourceConfig$Outbound = {
@@ -2373,6 +2379,7 @@ export type CreateProjectResourceConfig$Outbound = {
   buildMachineElasticLastUpdated?: number | undefined;
   isNSNBDisabled?: boolean | undefined;
   buildQueue?: CreateProjectBuildQueue$Outbound | undefined;
+  enableFunctionsBeta?: boolean | undefined;
 };
 
 /** @internal */
@@ -2393,6 +2400,7 @@ export const CreateProjectResourceConfig$outboundSchema: z.ZodType<
   buildMachineElasticLastUpdated: z.number().optional(),
   isNSNBDisabled: z.boolean().optional(),
   buildQueue: z.lazy(() => CreateProjectBuildQueue$outboundSchema).optional(),
+  enableFunctionsBeta: z.boolean().optional(),
 });
 
 export function createProjectResourceConfigToJSON(
@@ -4358,11 +4366,13 @@ export const CreateProjectIpBuckets$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   bucket: types.string(),
+  default: types.optional(types.boolean()),
   supportUntil: types.optional(types.number()),
 });
 /** @internal */
 export type CreateProjectIpBuckets$Outbound = {
   bucket: string;
+  default?: boolean | undefined;
   supportUntil?: number | undefined;
 };
 
@@ -4373,6 +4383,7 @@ export const CreateProjectIpBuckets$outboundSchema: z.ZodType<
   CreateProjectIpBuckets
 > = z.object({
   bucket: z.string(),
+  default: z.boolean().optional(),
   supportUntil: z.number().optional(),
 });
 
@@ -5941,6 +5952,7 @@ export const CreateProjectProjectsResourceConfig$inboundSchema: z.ZodType<
   buildQueue: types.optional(
     z.lazy(() => CreateProjectProjectsBuildQueue$inboundSchema),
   ),
+  enableFunctionsBeta: types.optional(types.boolean()),
 });
 /** @internal */
 export type CreateProjectProjectsResourceConfig$Outbound = {
@@ -5955,6 +5967,7 @@ export type CreateProjectProjectsResourceConfig$Outbound = {
   buildMachineElasticLastUpdated?: number | undefined;
   isNSNBDisabled?: boolean | undefined;
   buildQueue?: CreateProjectProjectsBuildQueue$Outbound | undefined;
+  enableFunctionsBeta?: boolean | undefined;
 };
 
 /** @internal */
@@ -5977,6 +5990,7 @@ export const CreateProjectProjectsResourceConfig$outboundSchema: z.ZodType<
   isNSNBDisabled: z.boolean().optional(),
   buildQueue: z.lazy(() => CreateProjectProjectsBuildQueue$outboundSchema)
     .optional(),
+  enableFunctionsBeta: z.boolean().optional(),
 });
 
 export function createProjectProjectsResourceConfigToJSON(
@@ -6242,6 +6256,7 @@ export const DefaultResourceConfig$inboundSchema: z.ZodType<
   buildQueue: types.optional(
     z.lazy(() => CreateProjectProjectsResponseBuildQueue$inboundSchema),
   ),
+  enableFunctionsBeta: types.optional(types.boolean()),
 });
 /** @internal */
 export type DefaultResourceConfig$Outbound = {
@@ -6256,6 +6271,7 @@ export type DefaultResourceConfig$Outbound = {
   buildMachineElasticLastUpdated?: number | undefined;
   isNSNBDisabled?: boolean | undefined;
   buildQueue?: CreateProjectProjectsResponseBuildQueue$Outbound | undefined;
+  enableFunctionsBeta?: boolean | undefined;
 };
 
 /** @internal */
@@ -6280,6 +6296,7 @@ export const DefaultResourceConfig$outboundSchema: z.ZodType<
   buildQueue: z.lazy(() =>
     CreateProjectProjectsResponseBuildQueue$outboundSchema
   ).optional(),
+  enableFunctionsBeta: z.boolean().optional(),
 });
 
 export function defaultResourceConfigToJSON(
@@ -6703,6 +6720,7 @@ export const CreateProjectPermissions$inboundSchema: z.ZodType<
   connect: types.optional(z.array(ACLAction$inboundSchema)),
   connectConfiguration: types.optional(z.array(ACLAction$inboundSchema)),
   connexClient: types.optional(z.array(ACLAction$inboundSchema)),
+  connexClientProject: types.optional(z.array(ACLAction$inboundSchema)),
   connexToken: types.optional(z.array(ACLAction$inboundSchema)),
   buildMachineDefault: types.optional(z.array(ACLAction$inboundSchema)),
   dataCacheBillingSettings: types.optional(z.array(ACLAction$inboundSchema)),
@@ -6991,6 +7009,7 @@ export type CreateProjectPermissions$Outbound = {
   connect?: Array<string> | undefined;
   connectConfiguration?: Array<string> | undefined;
   connexClient?: Array<string> | undefined;
+  connexClientProject?: Array<string> | undefined;
   connexToken?: Array<string> | undefined;
   buildMachineDefault?: Array<string> | undefined;
   dataCacheBillingSettings?: Array<string> | undefined;
@@ -7238,6 +7257,7 @@ export const CreateProjectPermissions$outboundSchema: z.ZodType<
   connect: z.array(ACLAction$outboundSchema).optional(),
   connectConfiguration: z.array(ACLAction$outboundSchema).optional(),
   connexClient: z.array(ACLAction$outboundSchema).optional(),
+  connexClientProject: z.array(ACLAction$outboundSchema).optional(),
   connexToken: z.array(ACLAction$outboundSchema).optional(),
   buildMachineDefault: z.array(ACLAction$outboundSchema).optional(),
   dataCacheBillingSettings: z.array(ACLAction$outboundSchema).optional(),

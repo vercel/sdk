@@ -6,7 +6,7 @@
 import { GetRuntimeLogsResponseBody } from "@vercel/sdk/models/getruntimelogsop.js";
 
 let value: GetRuntimeLogsResponseBody = {
-  level: "error",
+  level: "trace",
   message: "<value>",
   rowId: "<id>",
   source: "request",

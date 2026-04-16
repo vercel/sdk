@@ -1129,6 +1129,8 @@ const (
 	UpdateFirewallConfigType2ServerAction     UpdateFirewallConfigType2 = "server_action"
 	UpdateFirewallConfigType2BotName          UpdateFirewallConfigType2 = "bot_name"
 	UpdateFirewallConfigType2BotCategory      UpdateFirewallConfigType2 = "bot_category"
+	UpdateFirewallConfigType2BotStatus        UpdateFirewallConfigType2 = "bot_status"
+	UpdateFirewallConfigType2BotProtection    UpdateFirewallConfigType2 = "bot_protection"
 )
 
 func (e UpdateFirewallConfigType2) ToPointer() *UpdateFirewallConfigType2 {
@@ -1191,6 +1193,10 @@ func (e *UpdateFirewallConfigType2) UnmarshalJSON(data []byte) error {
 	case "bot_name":
 		fallthrough
 	case "bot_category":
+		fallthrough
+	case "bot_status":
+		fallthrough
+	case "bot_protection":
 		*e = UpdateFirewallConfigType2(v)
 		return nil
 	default:
@@ -2161,6 +2167,8 @@ const (
 	UpdateFirewallConfigType1ServerAction     UpdateFirewallConfigType1 = "server_action"
 	UpdateFirewallConfigType1BotName          UpdateFirewallConfigType1 = "bot_name"
 	UpdateFirewallConfigType1BotCategory      UpdateFirewallConfigType1 = "bot_category"
+	UpdateFirewallConfigType1BotStatus        UpdateFirewallConfigType1 = "bot_status"
+	UpdateFirewallConfigType1BotProtection    UpdateFirewallConfigType1 = "bot_protection"
 )
 
 func (e UpdateFirewallConfigType1) ToPointer() *UpdateFirewallConfigType1 {
@@ -2223,6 +2231,10 @@ func (e *UpdateFirewallConfigType1) UnmarshalJSON(data []byte) error {
 	case "bot_name":
 		fallthrough
 	case "bot_category":
+		fallthrough
+	case "bot_status":
+		fallthrough
+	case "bot_protection":
 		*e = UpdateFirewallConfigType1(v)
 		return nil
 	default:

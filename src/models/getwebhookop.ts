@@ -40,6 +40,7 @@ export const GetWebhookEvents = {
   DomainRenewalFailed: "domain.renewal.failed",
   DomainAutoRenewChanged: "domain.auto-renew.changed",
   DeploymentCreated: "deployment.created",
+  DeploymentBuildRequested: "deployment.build-requested",
   DeploymentCleanup: "deployment.cleanup",
   DeploymentError: "deployment.error",
   DeploymentCanceled: "deployment.canceled",

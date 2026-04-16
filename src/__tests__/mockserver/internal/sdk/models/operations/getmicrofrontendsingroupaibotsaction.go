@@ -2828,6 +2828,7 @@ func (e *GetMicrofrontendsInGroupFramework) UnmarshalJSON(data []byte) error {
 
 type GetMicrofrontendsInGroupIPBucket struct {
 	Bucket       string   `json:"bucket"`
+	Default      *bool    `json:"default,omitempty"`
 	SupportUntil *float64 `json:"supportUntil,omitempty"`
 }
 
@@ -2836,6 +2837,13 @@ func (o *GetMicrofrontendsInGroupIPBucket) GetBucket() string {
 		return ""
 	}
 	return o.Bucket
+}
+
+func (o *GetMicrofrontendsInGroupIPBucket) GetDefault() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Default
 }
 
 func (o *GetMicrofrontendsInGroupIPBucket) GetSupportUntil() *float64 {
@@ -5404,6 +5412,7 @@ type GetMicrofrontendsInGroupResourceConfig struct {
 	BuildMachineSelection          *GetMicrofrontendsInGroupResourceConfigBuildMachineSelection     `json:"buildMachineSelection,omitempty"`
 	BuildMachineElasticLastUpdated *float64                                                         `json:"buildMachineElasticLastUpdated,omitempty"`
 	IsNSNBDisabled                 *bool                                                            `json:"isNSNBDisabled,omitempty"`
+	EnableFunctionsBeta            *bool                                                            `json:"enableFunctionsBeta,omitempty"`
 }
 
 func (o *GetMicrofrontendsInGroupResourceConfig) GetElasticConcurrencyEnabled() *bool {
@@ -5481,6 +5490,13 @@ func (o *GetMicrofrontendsInGroupResourceConfig) GetIsNSNBDisabled() *bool {
 		return nil
 	}
 	return o.IsNSNBDisabled
+}
+
+func (o *GetMicrofrontendsInGroupResourceConfig) GetEnableFunctionsBeta() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.EnableFunctionsBeta
 }
 
 // GetMicrofrontendsInGroupRollbackDescription - Description of why a project was rolled back, and by whom. Note that lastAliasRequest contains the from/to details of the rollback.
@@ -5727,6 +5743,7 @@ type GetMicrofrontendsInGroupDefaultResourceConfig struct {
 	BuildMachineSelection          *GetMicrofrontendsInGroupDefaultResourceConfigBuildMachineSelection     `json:"buildMachineSelection,omitempty"`
 	BuildMachineElasticLastUpdated *float64                                                                `json:"buildMachineElasticLastUpdated,omitempty"`
 	IsNSNBDisabled                 *bool                                                                   `json:"isNSNBDisabled,omitempty"`
+	EnableFunctionsBeta            *bool                                                                   `json:"enableFunctionsBeta,omitempty"`
 }
 
 func (o *GetMicrofrontendsInGroupDefaultResourceConfig) GetElasticConcurrencyEnabled() *bool {
@@ -5804,6 +5821,13 @@ func (o *GetMicrofrontendsInGroupDefaultResourceConfig) GetIsNSNBDisabled() *boo
 		return nil
 	}
 	return o.IsNSNBDisabled
+}
+
+func (o *GetMicrofrontendsInGroupDefaultResourceConfig) GetEnableFunctionsBeta() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.EnableFunctionsBeta
 }
 
 type GetMicrofrontendsInGroupStaticIps struct {
@@ -6251,6 +6275,7 @@ type GetMicrofrontendsInGroupPermissions struct {
 	Connect                                  []components.ACLAction `json:"connect,omitempty"`
 	ConnectConfiguration                     []components.ACLAction `json:"connectConfiguration,omitempty"`
 	ConnexClient                             []components.ACLAction `json:"connexClient,omitempty"`
+	ConnexClientProject                      []components.ACLAction `json:"connexClientProject,omitempty"`
 	ConnexToken                              []components.ACLAction `json:"connexToken,omitempty"`
 	BuildMachineDefault                      []components.ACLAction `json:"buildMachineDefault,omitempty"`
 	DataCacheBillingSettings                 []components.ACLAction `json:"dataCacheBillingSettings,omitempty"`
@@ -6742,6 +6767,13 @@ func (o *GetMicrofrontendsInGroupPermissions) GetConnexClient() []components.ACL
 		return nil
 	}
 	return o.ConnexClient
+}
+
+func (o *GetMicrofrontendsInGroupPermissions) GetConnexClientProject() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ConnexClientProject
 }
 
 func (o *GetMicrofrontendsInGroupPermissions) GetConnexToken() []components.ACLAction {

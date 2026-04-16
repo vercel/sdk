@@ -224,23 +224,24 @@ func (e *GetTeamMembersMemberRole) UnmarshalJSON(data []byte) error {
 type GetTeamMembersOrigin string
 
 const (
-	GetTeamMembersOriginTeams             GetTeamMembersOrigin = "teams"
-	GetTeamMembersOriginLink              GetTeamMembersOrigin = "link"
-	GetTeamMembersOriginImport            GetTeamMembersOrigin = "import"
-	GetTeamMembersOriginMail              GetTeamMembersOrigin = "mail"
-	GetTeamMembersOriginGithub            GetTeamMembersOrigin = "github"
-	GetTeamMembersOriginGitlab            GetTeamMembersOrigin = "gitlab"
-	GetTeamMembersOriginBitbucket         GetTeamMembersOrigin = "bitbucket"
-	GetTeamMembersOriginSaml              GetTeamMembersOrigin = "saml"
-	GetTeamMembersOriginDsync             GetTeamMembersOrigin = "dsync"
-	GetTeamMembersOriginFeedback          GetTeamMembersOrigin = "feedback"
-	GetTeamMembersOriginOrganizationTeams GetTeamMembersOrigin = "organization-teams"
-	GetTeamMembersOriginNsnbAutoApprove   GetTeamMembersOrigin = "nsnb-auto-approve"
-	GetTeamMembersOriginNsnbHobbyUpgrade  GetTeamMembersOrigin = "nsnb-hobby-upgrade"
-	GetTeamMembersOriginNsnbRequestAccess GetTeamMembersOrigin = "nsnb-request-access"
-	GetTeamMembersOriginNsnbViewerUpgrade GetTeamMembersOrigin = "nsnb-viewer-upgrade"
-	GetTeamMembersOriginNsnbInvite        GetTeamMembersOrigin = "nsnb-invite"
-	GetTeamMembersOriginNsnbRedeploy      GetTeamMembersOrigin = "nsnb-redeploy"
+	GetTeamMembersOriginTeams                       GetTeamMembersOrigin = "teams"
+	GetTeamMembersOriginLink                        GetTeamMembersOrigin = "link"
+	GetTeamMembersOriginImport                      GetTeamMembersOrigin = "import"
+	GetTeamMembersOriginMail                        GetTeamMembersOrigin = "mail"
+	GetTeamMembersOriginGithub                      GetTeamMembersOrigin = "github"
+	GetTeamMembersOriginGitlab                      GetTeamMembersOrigin = "gitlab"
+	GetTeamMembersOriginBitbucket                   GetTeamMembersOrigin = "bitbucket"
+	GetTeamMembersOriginSaml                        GetTeamMembersOrigin = "saml"
+	GetTeamMembersOriginDsync                       GetTeamMembersOrigin = "dsync"
+	GetTeamMembersOriginFeedback                    GetTeamMembersOrigin = "feedback"
+	GetTeamMembersOriginOrganizationTeams           GetTeamMembersOrigin = "organization-teams"
+	GetTeamMembersOriginNsnbAutoApprove             GetTeamMembersOrigin = "nsnb-auto-approve"
+	GetTeamMembersOriginNsnbHobbyUpgrade            GetTeamMembersOrigin = "nsnb-hobby-upgrade"
+	GetTeamMembersOriginNsnbRequestAccess           GetTeamMembersOrigin = "nsnb-request-access"
+	GetTeamMembersOriginNsnbViewerUpgrade           GetTeamMembersOrigin = "nsnb-viewer-upgrade"
+	GetTeamMembersOriginNsnbInvite                  GetTeamMembersOrigin = "nsnb-invite"
+	GetTeamMembersOriginNsnbRedeploy                GetTeamMembersOrigin = "nsnb-redeploy"
+	GetTeamMembersOriginNsnbRedeployAttributionCard GetTeamMembersOrigin = "nsnb-redeploy-attribution-card"
 )
 
 func (e GetTeamMembersOrigin) ToPointer() *GetTeamMembersOrigin {
@@ -285,6 +286,8 @@ func (e *GetTeamMembersOrigin) UnmarshalJSON(data []byte) error {
 	case "nsnb-invite":
 		fallthrough
 	case "nsnb-redeploy":
+		fallthrough
+	case "nsnb-redeploy-attribution-card":
 		*e = GetTeamMembersOrigin(v)
 		return nil
 	default:

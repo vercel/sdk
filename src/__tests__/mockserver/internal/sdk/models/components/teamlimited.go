@@ -438,23 +438,24 @@ func (e *TeamLimitedTeamPermission) UnmarshalJSON(data []byte) error {
 type TeamLimitedOrigin string
 
 const (
-	TeamLimitedOriginLink              TeamLimitedOrigin = "link"
-	TeamLimitedOriginSaml              TeamLimitedOrigin = "saml"
-	TeamLimitedOriginMail              TeamLimitedOrigin = "mail"
-	TeamLimitedOriginImport            TeamLimitedOrigin = "import"
-	TeamLimitedOriginTeams             TeamLimitedOrigin = "teams"
-	TeamLimitedOriginGithub            TeamLimitedOrigin = "github"
-	TeamLimitedOriginGitlab            TeamLimitedOrigin = "gitlab"
-	TeamLimitedOriginBitbucket         TeamLimitedOrigin = "bitbucket"
-	TeamLimitedOriginDsync             TeamLimitedOrigin = "dsync"
-	TeamLimitedOriginFeedback          TeamLimitedOrigin = "feedback"
-	TeamLimitedOriginOrganizationTeams TeamLimitedOrigin = "organization-teams"
-	TeamLimitedOriginNsnbAutoApprove   TeamLimitedOrigin = "nsnb-auto-approve"
-	TeamLimitedOriginNsnbHobbyUpgrade  TeamLimitedOrigin = "nsnb-hobby-upgrade"
-	TeamLimitedOriginNsnbRequestAccess TeamLimitedOrigin = "nsnb-request-access"
-	TeamLimitedOriginNsnbViewerUpgrade TeamLimitedOrigin = "nsnb-viewer-upgrade"
-	TeamLimitedOriginNsnbInvite        TeamLimitedOrigin = "nsnb-invite"
-	TeamLimitedOriginNsnbRedeploy      TeamLimitedOrigin = "nsnb-redeploy"
+	TeamLimitedOriginLink                        TeamLimitedOrigin = "link"
+	TeamLimitedOriginSaml                        TeamLimitedOrigin = "saml"
+	TeamLimitedOriginMail                        TeamLimitedOrigin = "mail"
+	TeamLimitedOriginImport                      TeamLimitedOrigin = "import"
+	TeamLimitedOriginTeams                       TeamLimitedOrigin = "teams"
+	TeamLimitedOriginGithub                      TeamLimitedOrigin = "github"
+	TeamLimitedOriginGitlab                      TeamLimitedOrigin = "gitlab"
+	TeamLimitedOriginBitbucket                   TeamLimitedOrigin = "bitbucket"
+	TeamLimitedOriginDsync                       TeamLimitedOrigin = "dsync"
+	TeamLimitedOriginFeedback                    TeamLimitedOrigin = "feedback"
+	TeamLimitedOriginOrganizationTeams           TeamLimitedOrigin = "organization-teams"
+	TeamLimitedOriginNsnbAutoApprove             TeamLimitedOrigin = "nsnb-auto-approve"
+	TeamLimitedOriginNsnbHobbyUpgrade            TeamLimitedOrigin = "nsnb-hobby-upgrade"
+	TeamLimitedOriginNsnbRequestAccess           TeamLimitedOrigin = "nsnb-request-access"
+	TeamLimitedOriginNsnbViewerUpgrade           TeamLimitedOrigin = "nsnb-viewer-upgrade"
+	TeamLimitedOriginNsnbInvite                  TeamLimitedOrigin = "nsnb-invite"
+	TeamLimitedOriginNsnbRedeploy                TeamLimitedOrigin = "nsnb-redeploy"
+	TeamLimitedOriginNsnbRedeployAttributionCard TeamLimitedOrigin = "nsnb-redeploy-attribution-card"
 )
 
 func (e TeamLimitedOrigin) ToPointer() *TeamLimitedOrigin {
@@ -499,6 +500,8 @@ func (e *TeamLimitedOrigin) UnmarshalJSON(data []byte) error {
 	case "nsnb-invite":
 		fallthrough
 	case "nsnb-redeploy":
+		fallthrough
+	case "nsnb-redeploy-attribution-card":
 		*e = TeamLimitedOrigin(v)
 		return nil
 	default:

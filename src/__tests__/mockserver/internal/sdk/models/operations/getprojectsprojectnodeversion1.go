@@ -4636,6 +4636,7 @@ func (o *GetProjectsProjectDeploymentExpiration1) GetDeploymentsToKeep() *float6
 
 type GetProjectsProjectIPBucket1 struct {
 	Bucket       string   `json:"bucket"`
+	Default      *bool    `json:"default,omitempty"`
 	SupportUntil *float64 `json:"supportUntil,omitempty"`
 }
 
@@ -4655,6 +4656,13 @@ func (o *GetProjectsProjectIPBucket1) GetBucket() string {
 		return ""
 	}
 	return o.Bucket
+}
+
+func (o *GetProjectsProjectIPBucket1) GetDefault() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Default
 }
 
 func (o *GetProjectsProjectIPBucket1) GetSupportUntil() *float64 {

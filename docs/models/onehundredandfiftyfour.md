@@ -5,42 +5,24 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndFiftyFour } from "@vercel/sdk/models/payloadbuildqueue.js";
+import { OneHundredAndFiftyFour } from "@vercel/sdk/models/payloadimportflowgitprovider.js";
 
 let value: OneHundredAndFiftyFour = {
-  team: {
-    id: "<id>",
-    name: "<value>",
-  },
-  project: {
-    id: "<id>",
-    oldConnectConfigurations: [
-      {
-        envId: "<id>",
-        connectConfigurationId: "<id>",
-        passive: false,
-        buildsEnabled: true,
-        createdAt: 9005.75,
-        updatedAt: 8968.35,
-      },
-    ],
-    newConnectConfigurations: [
-      {
-        envId: "<id>",
-        connectConfigurationId: "<id>",
-        passive: true,
-        buildsEnabled: false,
-        createdAt: 5463.76,
-        updatedAt: 2696.76,
-      },
-    ],
-  },
+  projectName: "<value>",
+  nextBuildMachineType: "<value>",
+  previousBuildMachineSelection: "<value>",
+  nextBuildMachineSelection: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `team`                                                                       | [models.UserEventPayload154Team](../models/usereventpayload154team.md)       | :heavy_check_mark:                                                           | N/A                                                                          |
-| `project`                                                                    | [models.UserEventPayload154Project](../models/usereventpayload154project.md) | :heavy_check_mark:                                                           | N/A                                                                          |
+| Field                           | Type                            | Required                        | Description                     |
+| ------------------------------- | ------------------------------- | ------------------------------- | ------------------------------- |
+| `projectId`                     | *string*                        | :heavy_minus_sign:              | N/A                             |
+| `projectName`                   | *string*                        | :heavy_check_mark:              | N/A                             |
+| `previousBuildMachineType`      | *string*                        | :heavy_minus_sign:              | N/A                             |
+| `nextBuildMachineType`          | *string*                        | :heavy_check_mark:              | N/A                             |
+| `previousBuildMachineSelection` | *string*                        | :heavy_check_mark:              | N/A                             |
+| `nextBuildMachineSelection`     | *string*                        | :heavy_check_mark:              | N/A                             |
+| `isSystemInitiated`             | *boolean*                       | :heavy_minus_sign:              | N/A                             |

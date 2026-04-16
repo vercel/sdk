@@ -33,6 +33,7 @@ export const GetTeamAccessRequestOrigin = {
   NsnbViewerUpgrade: "nsnb-viewer-upgrade",
   NsnbInvite: "nsnb-invite",
   NsnbRedeploy: "nsnb-redeploy",
+  NsnbRedeployAttributionCard: "nsnb-redeploy-attribution-card",
 } as const;
 export type GetTeamAccessRequestOrigin = ClosedEnum<
   typeof GetTeamAccessRequestOrigin

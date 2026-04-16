@@ -5,23 +5,23 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndNinety } from "@vercel/sdk/models/usereventpayload167previous.js";
+import { OneHundredAndNinety } from "@vercel/sdk/models/onehundredandseventytwo.js";
 
 let value: OneHundredAndNinety = {
-  project: {
-    name: "<value>",
-  },
-  removedMembership: {
-    role: "PROJECT_VIEWER",
-    uid: "<id>",
-    createdAt: 1974.32,
-  },
+  projects: [
+    {
+      projectId: "<id>",
+      role: "ADMIN",
+      membershipCreatedAt: 8833.27,
+    },
+  ],
+  uid: "<id>",
 };
 ```
 
 ## Fields
 
-| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `project`                                                                    | [models.UserEventPayload190Project](../models/usereventpayload190project.md) | :heavy_check_mark:                                                           | N/A                                                                          |
-| `removedMembership`                                                          | [models.RemovedMembership](../models/removedmembership.md)                   | :heavy_check_mark:                                                           | N/A                                                                          |
+| Field                                                    | Type                                                     | Required                                                 | Description                                              |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `projects`                                               | [models.PayloadProjects](../models/payloadprojects.md)[] | :heavy_check_mark:                                       | N/A                                                      |
+| `uid`                                                    | *string*                                                 | :heavy_check_mark:                                       | N/A                                                      |

@@ -32,23 +32,24 @@ func (o *GetTeamAccessRequestRequest) GetTeamID() string {
 type GetTeamAccessRequestOrigin string
 
 const (
-	GetTeamAccessRequestOriginTeams             GetTeamAccessRequestOrigin = "teams"
-	GetTeamAccessRequestOriginLink              GetTeamAccessRequestOrigin = "link"
-	GetTeamAccessRequestOriginImport            GetTeamAccessRequestOrigin = "import"
-	GetTeamAccessRequestOriginMail              GetTeamAccessRequestOrigin = "mail"
-	GetTeamAccessRequestOriginGithub            GetTeamAccessRequestOrigin = "github"
-	GetTeamAccessRequestOriginGitlab            GetTeamAccessRequestOrigin = "gitlab"
-	GetTeamAccessRequestOriginBitbucket         GetTeamAccessRequestOrigin = "bitbucket"
-	GetTeamAccessRequestOriginSaml              GetTeamAccessRequestOrigin = "saml"
-	GetTeamAccessRequestOriginDsync             GetTeamAccessRequestOrigin = "dsync"
-	GetTeamAccessRequestOriginFeedback          GetTeamAccessRequestOrigin = "feedback"
-	GetTeamAccessRequestOriginOrganizationTeams GetTeamAccessRequestOrigin = "organization-teams"
-	GetTeamAccessRequestOriginNsnbAutoApprove   GetTeamAccessRequestOrigin = "nsnb-auto-approve"
-	GetTeamAccessRequestOriginNsnbHobbyUpgrade  GetTeamAccessRequestOrigin = "nsnb-hobby-upgrade"
-	GetTeamAccessRequestOriginNsnbRequestAccess GetTeamAccessRequestOrigin = "nsnb-request-access"
-	GetTeamAccessRequestOriginNsnbViewerUpgrade GetTeamAccessRequestOrigin = "nsnb-viewer-upgrade"
-	GetTeamAccessRequestOriginNsnbInvite        GetTeamAccessRequestOrigin = "nsnb-invite"
-	GetTeamAccessRequestOriginNsnbRedeploy      GetTeamAccessRequestOrigin = "nsnb-redeploy"
+	GetTeamAccessRequestOriginTeams                       GetTeamAccessRequestOrigin = "teams"
+	GetTeamAccessRequestOriginLink                        GetTeamAccessRequestOrigin = "link"
+	GetTeamAccessRequestOriginImport                      GetTeamAccessRequestOrigin = "import"
+	GetTeamAccessRequestOriginMail                        GetTeamAccessRequestOrigin = "mail"
+	GetTeamAccessRequestOriginGithub                      GetTeamAccessRequestOrigin = "github"
+	GetTeamAccessRequestOriginGitlab                      GetTeamAccessRequestOrigin = "gitlab"
+	GetTeamAccessRequestOriginBitbucket                   GetTeamAccessRequestOrigin = "bitbucket"
+	GetTeamAccessRequestOriginSaml                        GetTeamAccessRequestOrigin = "saml"
+	GetTeamAccessRequestOriginDsync                       GetTeamAccessRequestOrigin = "dsync"
+	GetTeamAccessRequestOriginFeedback                    GetTeamAccessRequestOrigin = "feedback"
+	GetTeamAccessRequestOriginOrganizationTeams           GetTeamAccessRequestOrigin = "organization-teams"
+	GetTeamAccessRequestOriginNsnbAutoApprove             GetTeamAccessRequestOrigin = "nsnb-auto-approve"
+	GetTeamAccessRequestOriginNsnbHobbyUpgrade            GetTeamAccessRequestOrigin = "nsnb-hobby-upgrade"
+	GetTeamAccessRequestOriginNsnbRequestAccess           GetTeamAccessRequestOrigin = "nsnb-request-access"
+	GetTeamAccessRequestOriginNsnbViewerUpgrade           GetTeamAccessRequestOrigin = "nsnb-viewer-upgrade"
+	GetTeamAccessRequestOriginNsnbInvite                  GetTeamAccessRequestOrigin = "nsnb-invite"
+	GetTeamAccessRequestOriginNsnbRedeploy                GetTeamAccessRequestOrigin = "nsnb-redeploy"
+	GetTeamAccessRequestOriginNsnbRedeployAttributionCard GetTeamAccessRequestOrigin = "nsnb-redeploy-attribution-card"
 )
 
 func (e GetTeamAccessRequestOrigin) ToPointer() *GetTeamAccessRequestOrigin {
@@ -93,6 +94,8 @@ func (e *GetTeamAccessRequestOrigin) UnmarshalJSON(data []byte) error {
 	case "nsnb-invite":
 		fallthrough
 	case "nsnb-redeploy":
+		fallthrough
+	case "nsnb-redeploy-attribution-card":
 		*e = GetTeamAccessRequestOrigin(v)
 		return nil
 	default:

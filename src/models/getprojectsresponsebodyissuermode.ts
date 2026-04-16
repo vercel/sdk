@@ -700,6 +700,7 @@ export type GetProjectsResponseBodyDeploymentExpiration = {
 
 export type GetProjectsResponseBodyIpBuckets = {
   bucket: string;
+  default?: boolean | undefined;
   supportUntil?: number | undefined;
 };
 
@@ -1263,6 +1264,7 @@ export type GetProjectsResponseBodyResourceConfig = {
   buildMachineElasticLastUpdated?: number | undefined;
   isNSNBDisabled?: boolean | undefined;
   buildQueue?: GetProjectsResponseBodyBuildQueue | undefined;
+  enableFunctionsBeta?: boolean | undefined;
 };
 
 /**
@@ -4802,11 +4804,13 @@ export const GetProjectsResponseBodyIpBuckets$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   bucket: types.string(),
+  default: types.optional(types.boolean()),
   supportUntil: types.optional(types.number()),
 });
 /** @internal */
 export type GetProjectsResponseBodyIpBuckets$Outbound = {
   bucket: string;
+  default?: boolean | undefined;
   supportUntil?: number | undefined;
 };
 
@@ -4817,6 +4821,7 @@ export const GetProjectsResponseBodyIpBuckets$outboundSchema: z.ZodType<
   GetProjectsResponseBodyIpBuckets
 > = z.object({
   bucket: z.string(),
+  default: z.boolean().optional(),
   supportUntil: z.number().optional(),
 });
 
@@ -7287,6 +7292,7 @@ export const GetProjectsResponseBodyResourceConfig$inboundSchema: z.ZodType<
   buildQueue: types.optional(
     z.lazy(() => GetProjectsResponseBodyBuildQueue$inboundSchema),
   ),
+  enableFunctionsBeta: types.optional(types.boolean()),
 });
 /** @internal */
 export type GetProjectsResponseBodyResourceConfig$Outbound = {
@@ -7301,6 +7307,7 @@ export type GetProjectsResponseBodyResourceConfig$Outbound = {
   buildMachineElasticLastUpdated?: number | undefined;
   isNSNBDisabled?: boolean | undefined;
   buildQueue?: GetProjectsResponseBodyBuildQueue$Outbound | undefined;
+  enableFunctionsBeta?: boolean | undefined;
 };
 
 /** @internal */
@@ -7324,6 +7331,7 @@ export const GetProjectsResponseBodyResourceConfig$outboundSchema: z.ZodType<
   isNSNBDisabled: z.boolean().optional(),
   buildQueue: z.lazy(() => GetProjectsResponseBodyBuildQueue$outboundSchema)
     .optional(),
+  enableFunctionsBeta: z.boolean().optional(),
 });
 
 export function getProjectsResponseBodyResourceConfigToJSON(

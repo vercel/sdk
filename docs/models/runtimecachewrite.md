@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { RuntimeCacheWrite } from "@vercel/sdk/models/onehundredandfive.js";
+import { RuntimeCacheWrite } from "@vercel/sdk/models/newprojects.js";
 
 let value: RuntimeCacheWrite = {
   currentThreshold: 8347.02,

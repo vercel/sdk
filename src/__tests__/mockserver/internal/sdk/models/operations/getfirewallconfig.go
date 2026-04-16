@@ -687,6 +687,8 @@ const (
 	GetFirewallConfigType2ServerAction     GetFirewallConfigType2 = "server_action"
 	GetFirewallConfigType2BotName          GetFirewallConfigType2 = "bot_name"
 	GetFirewallConfigType2BotCategory      GetFirewallConfigType2 = "bot_category"
+	GetFirewallConfigType2BotStatus        GetFirewallConfigType2 = "bot_status"
+	GetFirewallConfigType2BotProtection    GetFirewallConfigType2 = "bot_protection"
 )
 
 func (e GetFirewallConfigType2) ToPointer() *GetFirewallConfigType2 {
@@ -749,6 +751,10 @@ func (e *GetFirewallConfigType2) UnmarshalJSON(data []byte) error {
 	case "bot_name":
 		fallthrough
 	case "bot_category":
+		fallthrough
+	case "bot_status":
+		fallthrough
+	case "bot_protection":
 		*e = GetFirewallConfigType2(v)
 		return nil
 	default:
@@ -1433,6 +1439,8 @@ const (
 	GetFirewallConfigType1ServerAction     GetFirewallConfigType1 = "server_action"
 	GetFirewallConfigType1BotName          GetFirewallConfigType1 = "bot_name"
 	GetFirewallConfigType1BotCategory      GetFirewallConfigType1 = "bot_category"
+	GetFirewallConfigType1BotStatus        GetFirewallConfigType1 = "bot_status"
+	GetFirewallConfigType1BotProtection    GetFirewallConfigType1 = "bot_protection"
 )
 
 func (e GetFirewallConfigType1) ToPointer() *GetFirewallConfigType1 {
@@ -1495,6 +1503,10 @@ func (e *GetFirewallConfigType1) UnmarshalJSON(data []byte) error {
 	case "bot_name":
 		fallthrough
 	case "bot_category":
+		fallthrough
+	case "bot_status":
+		fallthrough
+	case "bot_protection":
 		*e = GetFirewallConfigType1(v)
 		return nil
 	default:

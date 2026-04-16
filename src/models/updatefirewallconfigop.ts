@@ -310,6 +310,8 @@ export const UpdateFirewallConfigRequestBodySecurityType = {
   ServerAction: "server_action",
   BotName: "bot_name",
   BotCategory: "bot_category",
+  BotStatus: "bot_status",
+  BotProtection: "bot_protection",
 } as const;
 export type UpdateFirewallConfigRequestBodySecurityType = ClosedEnum<
   typeof UpdateFirewallConfigRequestBodySecurityType
@@ -478,6 +480,8 @@ export const UpdateFirewallConfigRequestBodyType = {
   ServerAction: "server_action",
   BotName: "bot_name",
   BotCategory: "bot_category",
+  BotStatus: "bot_status",
+  BotProtection: "bot_protection",
 } as const;
 export type UpdateFirewallConfigRequestBodyType = ClosedEnum<
   typeof UpdateFirewallConfigRequestBodyType

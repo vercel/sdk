@@ -2894,6 +2894,7 @@ func (e *UpdateMicrofrontendsFramework) UnmarshalJSON(data []byte) error {
 
 type UpdateMicrofrontendsIPBucket struct {
 	Bucket       string   `json:"bucket"`
+	Default      *bool    `json:"default,omitempty"`
 	SupportUntil *float64 `json:"supportUntil,omitempty"`
 }
 
@@ -2902,6 +2903,13 @@ func (o *UpdateMicrofrontendsIPBucket) GetBucket() string {
 		return ""
 	}
 	return o.Bucket
+}
+
+func (o *UpdateMicrofrontendsIPBucket) GetDefault() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Default
 }
 
 func (o *UpdateMicrofrontendsIPBucket) GetSupportUntil() *float64 {
@@ -5016,6 +5024,7 @@ type UpdateMicrofrontendsResourceConfig struct {
 	BuildMachineElasticLastUpdated *float64                                                     `json:"buildMachineElasticLastUpdated,omitempty"`
 	IsNSNBDisabled                 *bool                                                        `json:"isNSNBDisabled,omitempty"`
 	BuildQueue                     *UpdateMicrofrontendsResourceConfigBuildQueue                `json:"buildQueue,omitempty"`
+	EnableFunctionsBeta            *bool                                                        `json:"enableFunctionsBeta,omitempty"`
 }
 
 func (o *UpdateMicrofrontendsResourceConfig) GetElasticConcurrencyEnabled() *bool {
@@ -5093,6 +5102,13 @@ func (o *UpdateMicrofrontendsResourceConfig) GetBuildQueue() *UpdateMicrofronten
 		return nil
 	}
 	return o.BuildQueue
+}
+
+func (o *UpdateMicrofrontendsResourceConfig) GetEnableFunctionsBeta() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.EnableFunctionsBeta
 }
 
 // UpdateMicrofrontendsRollbackDescription - Description of why a project was rolled back, and by whom. Note that lastAliasRequest contains the from/to details of the rollback.
@@ -5339,6 +5355,7 @@ type UpdateMicrofrontendsDefaultResourceConfig struct {
 	BuildMachineElasticLastUpdated *float64                                                            `json:"buildMachineElasticLastUpdated,omitempty"`
 	IsNSNBDisabled                 *bool                                                               `json:"isNSNBDisabled,omitempty"`
 	BuildQueue                     *UpdateMicrofrontendsDefaultResourceConfigBuildQueue                `json:"buildQueue,omitempty"`
+	EnableFunctionsBeta            *bool                                                               `json:"enableFunctionsBeta,omitempty"`
 }
 
 func (o *UpdateMicrofrontendsDefaultResourceConfig) GetElasticConcurrencyEnabled() *bool {
@@ -5416,6 +5433,13 @@ func (o *UpdateMicrofrontendsDefaultResourceConfig) GetBuildQueue() *UpdateMicro
 		return nil
 	}
 	return o.BuildQueue
+}
+
+func (o *UpdateMicrofrontendsDefaultResourceConfig) GetEnableFunctionsBeta() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.EnableFunctionsBeta
 }
 
 type UpdateMicrofrontendsStaticIps struct {
@@ -5875,6 +5899,7 @@ type UpdateMicrofrontendsPermissions struct {
 	Connect                                  []components.ACLAction `json:"connect,omitempty"`
 	ConnectConfiguration                     []components.ACLAction `json:"connectConfiguration,omitempty"`
 	ConnexClient                             []components.ACLAction `json:"connexClient,omitempty"`
+	ConnexClientProject                      []components.ACLAction `json:"connexClientProject,omitempty"`
 	ConnexToken                              []components.ACLAction `json:"connexToken,omitempty"`
 	BuildMachineDefault                      []components.ACLAction `json:"buildMachineDefault,omitempty"`
 	DataCacheBillingSettings                 []components.ACLAction `json:"dataCacheBillingSettings,omitempty"`
@@ -6366,6 +6391,13 @@ func (o *UpdateMicrofrontendsPermissions) GetConnexClient() []components.ACLActi
 		return nil
 	}
 	return o.ConnexClient
+}
+
+func (o *UpdateMicrofrontendsPermissions) GetConnexClientProject() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ConnexClientProject
 }
 
 func (o *UpdateMicrofrontendsPermissions) GetConnexToken() []components.ACLAction {

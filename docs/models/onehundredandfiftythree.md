@@ -5,16 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndFiftyThree } from "@vercel/sdk/models/payloadbuildqueue.js";
+import { OneHundredAndFiftyThree } from "@vercel/sdk/models/payloadimportflowgitprovider.js";
 
-let value: OneHundredAndFiftyThree = {};
+let value: OneHundredAndFiftyThree = {
+  projectId: "<id>",
+  projectName: "<value>",
+  sourceFilesOutsideRootDirectory: true,
+};
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `projectId`        | *string*           | :heavy_minus_sign: | N/A                |
-| `projectName`      | *string*           | :heavy_minus_sign: | N/A                |
-| `target`           | *string*[]         | :heavy_minus_sign: | N/A                |
-| `updated`          | *boolean*          | :heavy_minus_sign: | N/A                |
+| Field                             | Type                              | Required                          | Description                       |
+| --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- |
+| `projectId`                       | *string*                          | :heavy_check_mark:                | N/A                               |
+| `projectName`                     | *string*                          | :heavy_check_mark:                | N/A                               |
+| `sourceFilesOutsideRootDirectory` | *boolean*                         | :heavy_check_mark:                | N/A                               |

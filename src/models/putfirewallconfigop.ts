@@ -264,6 +264,8 @@ export const PutFirewallConfigType = {
   ServerAction: "server_action",
   BotName: "bot_name",
   BotCategory: "bot_category",
+  BotStatus: "bot_status",
+  BotProtection: "bot_protection",
 } as const;
 /**
  * [Parameter](https://vercel.com/docs/security/vercel-waf/rule-configuration#parameters) from the incoming traffic.
@@ -703,6 +705,8 @@ export const PutFirewallConfigRulesType = {
   ServerAction: "server_action",
   BotName: "bot_name",
   BotCategory: "bot_category",
+  BotStatus: "bot_status",
+  BotProtection: "bot_protection",
 } as const;
 export type PutFirewallConfigRulesType = ClosedEnum<
   typeof PutFirewallConfigRulesType
@@ -852,6 +856,8 @@ export const PutFirewallConfigRulesSecurityType = {
   ServerAction: "server_action",
   BotName: "bot_name",
   BotCategory: "bot_category",
+  BotStatus: "bot_status",
+  BotProtection: "bot_protection",
 } as const;
 export type PutFirewallConfigRulesSecurityType = ClosedEnum<
   typeof PutFirewallConfigRulesSecurityType

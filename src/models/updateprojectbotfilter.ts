@@ -168,6 +168,7 @@ export type UpdateProjectResourceConfig = {
   buildMachineSelection?: UpdateProjectBuildMachineSelection | undefined;
   buildMachineElasticLastUpdated?: number | undefined;
   isNSNBDisabled?: boolean | undefined;
+  enableFunctionsBeta?: boolean | undefined;
 };
 
 /**
@@ -1112,6 +1113,7 @@ export type UpdateProjectProjectsFramework = ClosedEnum<
 
 export type UpdateProjectIpBuckets = {
   bucket: string;
+  default?: boolean | undefined;
   supportUntil?: number | undefined;
 };
 
@@ -1474,6 +1476,7 @@ export type UpdateProjectProjectsResourceConfig = {
   buildMachineElasticLastUpdated?: number | undefined;
   isNSNBDisabled?: boolean | undefined;
   buildQueue?: UpdateProjectProjectsBuildQueue | undefined;
+  enableFunctionsBeta?: boolean | undefined;
 };
 
 /**
@@ -1592,6 +1595,7 @@ export type UpdateProjectDefaultResourceConfig = {
   buildMachineElasticLastUpdated?: number | undefined;
   isNSNBDisabled?: boolean | undefined;
   buildQueue?: UpdateProjectProjectsResponseBuildQueue | undefined;
+  enableFunctionsBeta?: boolean | undefined;
 };
 
 export type UpdateProjectProjectsStaticIps = {
@@ -1711,6 +1715,7 @@ export type UpdateProjectPermissions = {
   connect?: Array<ACLAction> | undefined;
   connectConfiguration?: Array<ACLAction> | undefined;
   connexClient?: Array<ACLAction> | undefined;
+  connexClientProject?: Array<ACLAction> | undefined;
   connexToken?: Array<ACLAction> | undefined;
   buildMachineDefault?: Array<ACLAction> | undefined;
   dataCacheBillingSettings?: Array<ACLAction> | undefined;
@@ -2241,6 +2246,7 @@ export const UpdateProjectResourceConfig$inboundSchema: z.ZodType<
   ),
   buildMachineElasticLastUpdated: types.optional(types.number()),
   isNSNBDisabled: types.optional(types.boolean()),
+  enableFunctionsBeta: types.optional(types.boolean()),
 });
 /** @internal */
 export type UpdateProjectResourceConfig$Outbound = {
@@ -2255,6 +2261,7 @@ export type UpdateProjectResourceConfig$Outbound = {
   buildMachineSelection?: string | undefined;
   buildMachineElasticLastUpdated?: number | undefined;
   isNSNBDisabled?: boolean | undefined;
+  enableFunctionsBeta?: boolean | undefined;
 };
 
 /** @internal */
@@ -2276,6 +2283,7 @@ export const UpdateProjectResourceConfig$outboundSchema: z.ZodType<
     .optional(),
   buildMachineElasticLastUpdated: z.number().optional(),
   isNSNBDisabled: z.boolean().optional(),
+  enableFunctionsBeta: z.boolean().optional(),
 });
 
 export function updateProjectResourceConfigToJSON(
@@ -5009,11 +5017,13 @@ export const UpdateProjectIpBuckets$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   bucket: types.string(),
+  default: types.optional(types.boolean()),
   supportUntil: types.optional(types.number()),
 });
 /** @internal */
 export type UpdateProjectIpBuckets$Outbound = {
   bucket: string;
+  default?: boolean | undefined;
   supportUntil?: number | undefined;
 };
 
@@ -5024,6 +5034,7 @@ export const UpdateProjectIpBuckets$outboundSchema: z.ZodType<
   UpdateProjectIpBuckets
 > = z.object({
   bucket: z.string(),
+  default: z.boolean().optional(),
   supportUntil: z.number().optional(),
 });
 
@@ -6714,6 +6725,7 @@ export const UpdateProjectProjectsResourceConfig$inboundSchema: z.ZodType<
   buildQueue: types.optional(
     z.lazy(() => UpdateProjectProjectsBuildQueue$inboundSchema),
   ),
+  enableFunctionsBeta: types.optional(types.boolean()),
 });
 /** @internal */
 export type UpdateProjectProjectsResourceConfig$Outbound = {
@@ -6728,6 +6740,7 @@ export type UpdateProjectProjectsResourceConfig$Outbound = {
   buildMachineElasticLastUpdated?: number | undefined;
   isNSNBDisabled?: boolean | undefined;
   buildQueue?: UpdateProjectProjectsBuildQueue$Outbound | undefined;
+  enableFunctionsBeta?: boolean | undefined;
 };
 
 /** @internal */
@@ -6751,6 +6764,7 @@ export const UpdateProjectProjectsResourceConfig$outboundSchema: z.ZodType<
   isNSNBDisabled: z.boolean().optional(),
   buildQueue: z.lazy(() => UpdateProjectProjectsBuildQueue$outboundSchema)
     .optional(),
+  enableFunctionsBeta: z.boolean().optional(),
 });
 
 export function updateProjectProjectsResourceConfigToJSON(
@@ -7034,6 +7048,7 @@ export const UpdateProjectDefaultResourceConfig$inboundSchema: z.ZodType<
   buildQueue: types.optional(
     z.lazy(() => UpdateProjectProjectsResponseBuildQueue$inboundSchema),
   ),
+  enableFunctionsBeta: types.optional(types.boolean()),
 });
 /** @internal */
 export type UpdateProjectDefaultResourceConfig$Outbound = {
@@ -7048,6 +7063,7 @@ export type UpdateProjectDefaultResourceConfig$Outbound = {
   buildMachineElasticLastUpdated?: number | undefined;
   isNSNBDisabled?: boolean | undefined;
   buildQueue?: UpdateProjectProjectsResponseBuildQueue$Outbound | undefined;
+  enableFunctionsBeta?: boolean | undefined;
 };
 
 /** @internal */
@@ -7074,6 +7090,7 @@ export const UpdateProjectDefaultResourceConfig$outboundSchema: z.ZodType<
   buildQueue: z.lazy(() =>
     UpdateProjectProjectsResponseBuildQueue$outboundSchema
   ).optional(),
+  enableFunctionsBeta: z.boolean().optional(),
 });
 
 export function updateProjectDefaultResourceConfigToJSON(
@@ -7505,6 +7522,7 @@ export const UpdateProjectPermissions$inboundSchema: z.ZodType<
   connect: types.optional(z.array(ACLAction$inboundSchema)),
   connectConfiguration: types.optional(z.array(ACLAction$inboundSchema)),
   connexClient: types.optional(z.array(ACLAction$inboundSchema)),
+  connexClientProject: types.optional(z.array(ACLAction$inboundSchema)),
   connexToken: types.optional(z.array(ACLAction$inboundSchema)),
   buildMachineDefault: types.optional(z.array(ACLAction$inboundSchema)),
   dataCacheBillingSettings: types.optional(z.array(ACLAction$inboundSchema)),
@@ -7793,6 +7811,7 @@ export type UpdateProjectPermissions$Outbound = {
   connect?: Array<string> | undefined;
   connectConfiguration?: Array<string> | undefined;
   connexClient?: Array<string> | undefined;
+  connexClientProject?: Array<string> | undefined;
   connexToken?: Array<string> | undefined;
   buildMachineDefault?: Array<string> | undefined;
   dataCacheBillingSettings?: Array<string> | undefined;
@@ -8040,6 +8059,7 @@ export const UpdateProjectPermissions$outboundSchema: z.ZodType<
   connect: z.array(ACLAction$outboundSchema).optional(),
   connectConfiguration: z.array(ACLAction$outboundSchema).optional(),
   connexClient: z.array(ACLAction$outboundSchema).optional(),
+  connexClientProject: z.array(ACLAction$outboundSchema).optional(),
   connexToken: z.array(ACLAction$outboundSchema).optional(),
   buildMachineDefault: z.array(ACLAction$outboundSchema).optional(),
   dataCacheBillingSettings: z.array(ACLAction$outboundSchema).optional(),

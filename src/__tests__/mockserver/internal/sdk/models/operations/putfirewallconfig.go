@@ -653,6 +653,8 @@ const (
 	PutFirewallConfigTypeRequestServerAction     PutFirewallConfigTypeRequest = "server_action"
 	PutFirewallConfigTypeRequestBotName          PutFirewallConfigTypeRequest = "bot_name"
 	PutFirewallConfigTypeRequestBotCategory      PutFirewallConfigTypeRequest = "bot_category"
+	PutFirewallConfigTypeRequestBotStatus        PutFirewallConfigTypeRequest = "bot_status"
+	PutFirewallConfigTypeRequestBotProtection    PutFirewallConfigTypeRequest = "bot_protection"
 )
 
 func (e PutFirewallConfigTypeRequest) ToPointer() *PutFirewallConfigTypeRequest {
@@ -715,6 +717,10 @@ func (e *PutFirewallConfigTypeRequest) UnmarshalJSON(data []byte) error {
 	case "bot_name":
 		fallthrough
 	case "bot_category":
+		fallthrough
+	case "bot_status":
+		fallthrough
+	case "bot_protection":
 		*e = PutFirewallConfigTypeRequest(v)
 		return nil
 	default:
@@ -2421,6 +2427,8 @@ const (
 	ActiveType2ServerAction     ActiveType2 = "server_action"
 	ActiveType2BotName          ActiveType2 = "bot_name"
 	ActiveType2BotCategory      ActiveType2 = "bot_category"
+	ActiveType2BotStatus        ActiveType2 = "bot_status"
+	ActiveType2BotProtection    ActiveType2 = "bot_protection"
 )
 
 func (e ActiveType2) ToPointer() *ActiveType2 {
@@ -2483,6 +2491,10 @@ func (e *ActiveType2) UnmarshalJSON(data []byte) error {
 	case "bot_name":
 		fallthrough
 	case "bot_category":
+		fallthrough
+	case "bot_status":
+		fallthrough
+	case "bot_protection":
 		*e = ActiveType2(v)
 		return nil
 	default:
@@ -3167,6 +3179,8 @@ const (
 	ActiveType1ServerAction     ActiveType1 = "server_action"
 	ActiveType1BotName          ActiveType1 = "bot_name"
 	ActiveType1BotCategory      ActiveType1 = "bot_category"
+	ActiveType1BotStatus        ActiveType1 = "bot_status"
+	ActiveType1BotProtection    ActiveType1 = "bot_protection"
 )
 
 func (e ActiveType1) ToPointer() *ActiveType1 {
@@ -3229,6 +3243,10 @@ func (e *ActiveType1) UnmarshalJSON(data []byte) error {
 	case "bot_name":
 		fallthrough
 	case "bot_category":
+		fallthrough
+	case "bot_status":
+		fallthrough
+	case "bot_protection":
 		*e = ActiveType1(v)
 		return nil
 	default:

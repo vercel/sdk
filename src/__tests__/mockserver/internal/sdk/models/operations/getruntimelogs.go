@@ -48,9 +48,12 @@ func (o *GetRuntimeLogsRequest) GetSlug() *string {
 type GetRuntimeLogsLevel string
 
 const (
-	GetRuntimeLogsLevelError   GetRuntimeLogsLevel = "error"
-	GetRuntimeLogsLevelWarning GetRuntimeLogsLevel = "warning"
+	GetRuntimeLogsLevelTrace   GetRuntimeLogsLevel = "trace"
+	GetRuntimeLogsLevelDebug   GetRuntimeLogsLevel = "debug"
 	GetRuntimeLogsLevelInfo    GetRuntimeLogsLevel = "info"
+	GetRuntimeLogsLevelWarning GetRuntimeLogsLevel = "warning"
+	GetRuntimeLogsLevelError   GetRuntimeLogsLevel = "error"
+	GetRuntimeLogsLevelFatal   GetRuntimeLogsLevel = "fatal"
 )
 
 func (e GetRuntimeLogsLevel) ToPointer() *GetRuntimeLogsLevel {
@@ -62,11 +65,17 @@ func (e *GetRuntimeLogsLevel) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "error":
+	case "trace":
+		fallthrough
+	case "debug":
+		fallthrough
+	case "info":
 		fallthrough
 	case "warning":
 		fallthrough
-	case "info":
+	case "error":
+		fallthrough
+	case "fatal":
 		*e = GetRuntimeLogsLevel(v)
 		return nil
 	default:

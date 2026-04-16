@@ -23,9 +23,12 @@ export type GetRuntimeLogsRequest = {
 };
 
 export const GetRuntimeLogsLevel = {
-  Error: "error",
-  Warning: "warning",
+  Trace: "trace",
+  Debug: "debug",
   Info: "info",
+  Warning: "warning",
+  Error: "error",
+  Fatal: "fatal",
 } as const;
 export type GetRuntimeLogsLevel = ClosedEnum<typeof GetRuntimeLogsLevel>;
 

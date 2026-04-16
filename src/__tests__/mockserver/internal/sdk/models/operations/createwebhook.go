@@ -26,6 +26,7 @@ const (
 	CreateWebhookEventRequestDomainRenewalFailed                                CreateWebhookEventRequest = "domain.renewal.failed"
 	CreateWebhookEventRequestDomainAutoRenewChanged                             CreateWebhookEventRequest = "domain.auto-renew.changed"
 	CreateWebhookEventRequestDeploymentCreated                                  CreateWebhookEventRequest = "deployment.created"
+	CreateWebhookEventRequestDeploymentBuildRequested                           CreateWebhookEventRequest = "deployment.build-requested"
 	CreateWebhookEventRequestDeploymentCleanup                                  CreateWebhookEventRequest = "deployment.cleanup"
 	CreateWebhookEventRequestDeploymentError                                    CreateWebhookEventRequest = "deployment.error"
 	CreateWebhookEventRequestDeploymentCanceled                                 CreateWebhookEventRequest = "deployment.canceled"
@@ -161,6 +162,8 @@ func (e *CreateWebhookEventRequest) UnmarshalJSON(data []byte) error {
 	case "domain.auto-renew.changed":
 		fallthrough
 	case "deployment.created":
+		fallthrough
+	case "deployment.build-requested":
 		fallthrough
 	case "deployment.cleanup":
 		fallthrough
@@ -433,6 +436,7 @@ const (
 	CreateWebhookEventResponseDomainRenewalFailed                                CreateWebhookEventResponse = "domain.renewal.failed"
 	CreateWebhookEventResponseDomainAutoRenewChanged                             CreateWebhookEventResponse = "domain.auto-renew.changed"
 	CreateWebhookEventResponseDeploymentCreated                                  CreateWebhookEventResponse = "deployment.created"
+	CreateWebhookEventResponseDeploymentBuildRequested                           CreateWebhookEventResponse = "deployment.build-requested"
 	CreateWebhookEventResponseDeploymentCleanup                                  CreateWebhookEventResponse = "deployment.cleanup"
 	CreateWebhookEventResponseDeploymentError                                    CreateWebhookEventResponse = "deployment.error"
 	CreateWebhookEventResponseDeploymentCanceled                                 CreateWebhookEventResponse = "deployment.canceled"
@@ -568,6 +572,8 @@ func (e *CreateWebhookEventResponse) UnmarshalJSON(data []byte) error {
 	case "domain.auto-renew.changed":
 		fallthrough
 	case "deployment.created":
+		fallthrough
+	case "deployment.build-requested":
 		fallthrough
 	case "deployment.cleanup":
 		fallthrough

@@ -3,12 +3,19 @@
 ## Example Usage
 
 ```typescript
-import { Next } from "@vercel/sdk/models/payloadbuildqueue.js";
+import { Next } from "@vercel/sdk/models/payloadimportflowgitprovider.js";
 
-let value: Next = {};
+let value: Next = {
+  enabled: true,
+  mode: "<value>",
+  enforcePercentage: 8151.82,
+};
 ```
 
 ## Fields
 
-| Field       | Type        | Required    | Description |
-| ----------- | ----------- | ----------- | ----------- |
+| Field               | Type                | Required            | Description         |
+| ------------------- | ------------------- | ------------------- | ------------------- |
+| `enabled`           | *boolean*           | :heavy_check_mark:  | N/A                 |
+| `mode`              | *string*            | :heavy_check_mark:  | N/A                 |
+| `enforcePercentage` | *number*            | :heavy_check_mark:  | N/A                 |

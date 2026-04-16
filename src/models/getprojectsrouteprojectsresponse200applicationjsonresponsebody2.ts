@@ -671,6 +671,7 @@ export type GetProjectsResponseBodyProjectsFramework = ClosedEnum<
 
 export type GetProjectsResponseBodyProjectsIpBuckets = {
   bucket: string;
+  default?: boolean | undefined;
   supportUntil?: number | undefined;
 };
 
@@ -1056,6 +1057,7 @@ export type GetProjectsResponseBodyProjectsResourceConfig = {
   buildMachineElasticLastUpdated?: number | undefined;
   isNSNBDisabled?: boolean | undefined;
   buildQueue?: GetProjectsResponseBodyProjectsBuildQueue | undefined;
+  enableFunctionsBeta?: boolean | undefined;
 };
 
 /**
@@ -1179,6 +1181,7 @@ export type ResponseBodyDefaultResourceConfig = {
   buildMachineElasticLastUpdated?: number | undefined;
   isNSNBDisabled?: boolean | undefined;
   buildQueue?: GetProjectsResponseBodyProjectsResponseBuildQueue | undefined;
+  enableFunctionsBeta?: boolean | undefined;
 };
 
 export type ResponseBodyStaticIps = {
@@ -1309,6 +1312,7 @@ export type ResponseBodyPermissions = {
   connect?: Array<ACLAction> | undefined;
   connectConfiguration?: Array<ACLAction> | undefined;
   connexClient?: Array<ACLAction> | undefined;
+  connexClientProject?: Array<ACLAction> | undefined;
   connexToken?: Array<ACLAction> | undefined;
   buildMachineDefault?: Array<ACLAction> | undefined;
   dataCacheBillingSettings?: Array<ACLAction> | undefined;
@@ -4105,11 +4109,13 @@ export const GetProjectsResponseBodyProjectsIpBuckets$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   bucket: types.string(),
+  default: types.optional(types.boolean()),
   supportUntil: types.optional(types.number()),
 });
 /** @internal */
 export type GetProjectsResponseBodyProjectsIpBuckets$Outbound = {
   bucket: string;
+  default?: boolean | undefined;
   supportUntil?: number | undefined;
 };
 
@@ -4120,6 +4126,7 @@ export const GetProjectsResponseBodyProjectsIpBuckets$outboundSchema: z.ZodType<
   GetProjectsResponseBodyProjectsIpBuckets
 > = z.object({
   bucket: z.string(),
+  default: z.boolean().optional(),
   supportUntil: z.number().optional(),
 });
 
@@ -5949,6 +5956,7 @@ export const GetProjectsResponseBodyProjectsResourceConfig$inboundSchema:
     buildQueue: types.optional(
       z.lazy(() => GetProjectsResponseBodyProjectsBuildQueue$inboundSchema),
     ),
+    enableFunctionsBeta: types.optional(types.boolean()),
   });
 /** @internal */
 export type GetProjectsResponseBodyProjectsResourceConfig$Outbound = {
@@ -5963,6 +5971,7 @@ export type GetProjectsResponseBodyProjectsResourceConfig$Outbound = {
   buildMachineElasticLastUpdated?: number | undefined;
   isNSNBDisabled?: boolean | undefined;
   buildQueue?: GetProjectsResponseBodyProjectsBuildQueue$Outbound | undefined;
+  enableFunctionsBeta?: boolean | undefined;
 };
 
 /** @internal */
@@ -5990,6 +5999,7 @@ export const GetProjectsResponseBodyProjectsResourceConfig$outboundSchema:
     buildQueue: z.lazy(() =>
       GetProjectsResponseBodyProjectsBuildQueue$outboundSchema
     ).optional(),
+    enableFunctionsBeta: z.boolean().optional(),
   });
 
 export function getProjectsResponseBodyProjectsResourceConfigToJSON(
@@ -6317,6 +6327,7 @@ export const ResponseBodyDefaultResourceConfig$inboundSchema: z.ZodType<
       GetProjectsResponseBodyProjectsResponseBuildQueue$inboundSchema
     ),
   ),
+  enableFunctionsBeta: types.optional(types.boolean()),
 });
 /** @internal */
 export type ResponseBodyDefaultResourceConfig$Outbound = {
@@ -6333,6 +6344,7 @@ export type ResponseBodyDefaultResourceConfig$Outbound = {
   buildQueue?:
     | GetProjectsResponseBodyProjectsResponseBuildQueue$Outbound
     | undefined;
+  enableFunctionsBeta?: boolean | undefined;
 };
 
 /** @internal */
@@ -6360,6 +6372,7 @@ export const ResponseBodyDefaultResourceConfig$outboundSchema: z.ZodType<
   buildQueue: z.lazy(() =>
     GetProjectsResponseBodyProjectsResponseBuildQueue$outboundSchema
   ).optional(),
+  enableFunctionsBeta: z.boolean().optional(),
 });
 
 export function responseBodyDefaultResourceConfigToJSON(
@@ -6848,6 +6861,7 @@ export const ResponseBodyPermissions$inboundSchema: z.ZodType<
   connect: types.optional(z.array(ACLAction$inboundSchema)),
   connectConfiguration: types.optional(z.array(ACLAction$inboundSchema)),
   connexClient: types.optional(z.array(ACLAction$inboundSchema)),
+  connexClientProject: types.optional(z.array(ACLAction$inboundSchema)),
   connexToken: types.optional(z.array(ACLAction$inboundSchema)),
   buildMachineDefault: types.optional(z.array(ACLAction$inboundSchema)),
   dataCacheBillingSettings: types.optional(z.array(ACLAction$inboundSchema)),
@@ -7136,6 +7150,7 @@ export type ResponseBodyPermissions$Outbound = {
   connect?: Array<string> | undefined;
   connectConfiguration?: Array<string> | undefined;
   connexClient?: Array<string> | undefined;
+  connexClientProject?: Array<string> | undefined;
   connexToken?: Array<string> | undefined;
   buildMachineDefault?: Array<string> | undefined;
   dataCacheBillingSettings?: Array<string> | undefined;
@@ -7383,6 +7398,7 @@ export const ResponseBodyPermissions$outboundSchema: z.ZodType<
   connect: z.array(ACLAction$outboundSchema).optional(),
   connectConfiguration: z.array(ACLAction$outboundSchema).optional(),
   connexClient: z.array(ACLAction$outboundSchema).optional(),
+  connexClientProject: z.array(ACLAction$outboundSchema).optional(),
   connexToken: z.array(ACLAction$outboundSchema).optional(),
   buildMachineDefault: z.array(ACLAction$outboundSchema).optional(),
   dataCacheBillingSettings: z.array(ACLAction$outboundSchema).optional(),

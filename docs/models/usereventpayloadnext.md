@@ -3,13 +3,20 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPayloadNext } from "@vercel/sdk/models/payloadbuildqueue.js";
+import { UserEventPayloadNext } from "@vercel/sdk/models/payloadimportflowgitprovider.js";
 
-let value: UserEventPayloadNext = {};
+let value: UserEventPayloadNext = {
+  clientId: "<id>",
+  deploymentType: "<value>",
+  issuer: "discover",
+};
 ```
 
 ## Fields
 
-| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `branchMatcher`                                                  | [models.PayloadBranchMatcher](../models/payloadbranchmatcher.md) | :heavy_minus_sign:                                               | N/A                                                              |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `clientId`         | *string*           | :heavy_check_mark: | N/A                |
+| `cookieName`       | *string*           | :heavy_minus_sign: | N/A                |
+| `deploymentType`   | *string*           | :heavy_check_mark: | N/A                |
+| `issuer`           | *string*           | :heavy_check_mark: | N/A                |

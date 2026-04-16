@@ -244,6 +244,10 @@ const (
 	NameOwnerUnblocked                                  Name = "owner-unblocked"
 	NameOwnerSoftBlocked                                Name = "owner-soft-blocked"
 	NameOwnerSoftUnblocked                              Name = "owner-soft-unblocked"
+	NamePageIntegrityConfigUpdated                      Name = "page-integrity-config-updated"
+	NamePageIntegrityHeaderApproved                     Name = "page-integrity-header-approved"
+	NamePageIntegrityResourceApproved                   Name = "page-integrity-resource-approved"
+	NamePageIntegrityResourceRejected                   Name = "page-integrity-resource-rejected"
 	NamePasskeyCreated                                  Name = "passkey-created"
 	NamePasskeyDeleted                                  Name = "passkey-deleted"
 	NamePasskeyUpdated                                  Name = "passkey-updated"
@@ -286,6 +290,7 @@ const (
 	NameProjectCustomEnvironmentUpdated                 Name = "project-custom-environment-updated"
 	NameProjectCustomEnvironmentCreated                 Name = "project-custom-environment-created"
 	NameProjectCustomEnvironmentDeleted                 Name = "project-custom-environment-deleted"
+	NameProjectFunctionsBetaUpdated                     Name = "project-functions-beta-updated"
 	NameProjectFunctionsFluidDisabled                   Name = "project-functions-fluid-disabled"
 	NameProjectFunctionsFluidEnabled                    Name = "project-functions-fluid-enabled"
 	NameProjectFunctionMaxDuration                      Name = "project-function-max-duration"
@@ -335,6 +340,7 @@ const (
 	NameProjectRollingReleaseTimer                      Name = "project-rolling-release-timer"
 	NameProjectRollingReleasePaused                     Name = "project-rolling-release-paused"
 	NameProjectRollingReleaseContinued                  Name = "project-rolling-release-continued"
+	NameProjectRollingReleaseSuggestedActionsGenerated  Name = "project-rolling-release-suggested-actions-generated"
 	NameProjectRoutesVersionPromoted                    Name = "project-routes-version-promoted"
 	NameProjectRoutesVersionRestored                    Name = "project-routes-version-restored"
 	NameProjectOidcIssuerModeUpdated                    Name = "project-oidc-issuer-mode-updated"
@@ -895,6 +901,14 @@ func (e *Name) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "owner-soft-unblocked":
 		fallthrough
+	case "page-integrity-config-updated":
+		fallthrough
+	case "page-integrity-header-approved":
+		fallthrough
+	case "page-integrity-resource-approved":
+		fallthrough
+	case "page-integrity-resource-rejected":
+		fallthrough
 	case "passkey-created":
 		fallthrough
 	case "passkey-deleted":
@@ -978,6 +992,8 @@ func (e *Name) UnmarshalJSON(data []byte) error {
 	case "project-custom-environment-created":
 		fallthrough
 	case "project-custom-environment-deleted":
+		fallthrough
+	case "project-functions-beta-updated":
 		fallthrough
 	case "project-functions-fluid-disabled":
 		fallthrough
@@ -1076,6 +1092,8 @@ func (e *Name) UnmarshalJSON(data []byte) error {
 	case "project-rolling-release-paused":
 		fallthrough
 	case "project-rolling-release-continued":
+		fallthrough
+	case "project-rolling-release-suggested-actions-generated":
 		fallthrough
 	case "project-routes-version-promoted":
 		fallthrough

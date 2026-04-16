@@ -3044,6 +3044,7 @@ type GetProjectsResourceConfig struct {
 	BuildMachineElasticLastUpdated *float64                                            `json:"buildMachineElasticLastUpdated,omitempty"`
 	IsNSNBDisabled                 *bool                                               `json:"isNSNBDisabled,omitempty"`
 	BuildQueue                     *GetProjectsResourceConfigBuildQueue                `json:"buildQueue,omitempty"`
+	EnableFunctionsBeta            *bool                                               `json:"enableFunctionsBeta,omitempty"`
 }
 
 func (g GetProjectsResourceConfig) MarshalJSON() ([]byte, error) {
@@ -3132,6 +3133,13 @@ func (o *GetProjectsResourceConfig) GetBuildQueue() *GetProjectsResourceConfigBu
 		return nil
 	}
 	return o.BuildQueue
+}
+
+func (o *GetProjectsResourceConfig) GetEnableFunctionsBeta() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.EnableFunctionsBeta
 }
 
 // GetProjectsStage - An array of all the stages required during a deployment release. Each stage defines a target percentage and advancement rules. The final stage must always have targetPercentage: 100.

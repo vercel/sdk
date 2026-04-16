@@ -414,6 +414,7 @@ type UpdateProjectResourceConfigRequest struct {
 	BuildMachineSelection          *UpdateProjectBuildMachineSelectionRequest `json:"buildMachineSelection,omitempty"`
 	BuildMachineElasticLastUpdated *float64                                   `json:"buildMachineElasticLastUpdated,omitempty"`
 	IsNSNBDisabled                 *bool                                      `json:"isNSNBDisabled,omitempty"`
+	EnableFunctionsBeta            *bool                                      `json:"enableFunctionsBeta,omitempty"`
 }
 
 func (o *UpdateProjectResourceConfigRequest) GetBuildMachineType() *UpdateProjectBuildMachineTypeRequest {
@@ -491,6 +492,13 @@ func (o *UpdateProjectResourceConfigRequest) GetIsNSNBDisabled() *bool {
 		return nil
 	}
 	return o.IsNSNBDisabled
+}
+
+func (o *UpdateProjectResourceConfigRequest) GetEnableFunctionsBeta() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.EnableFunctionsBeta
 }
 
 // StaticIpsRequest - Manage Static IPs for this project
@@ -4429,6 +4437,7 @@ func (e *UpdateProjectFrameworkResponseBody) UnmarshalJSON(data []byte) error {
 
 type UpdateProjectIPBucket struct {
 	Bucket       string   `json:"bucket"`
+	Default      *bool    `json:"default,omitempty"`
 	SupportUntil *float64 `json:"supportUntil,omitempty"`
 }
 
@@ -4437,6 +4446,13 @@ func (o *UpdateProjectIPBucket) GetBucket() string {
 		return ""
 	}
 	return o.Bucket
+}
+
+func (o *UpdateProjectIPBucket) GetDefault() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Default
 }
 
 func (o *UpdateProjectIPBucket) GetSupportUntil() *float64 {
@@ -6551,6 +6567,7 @@ type UpdateProjectResourceConfigResponseBody struct {
 	BuildMachineElasticLastUpdated *float64                                                      `json:"buildMachineElasticLastUpdated,omitempty"`
 	IsNSNBDisabled                 *bool                                                         `json:"isNSNBDisabled,omitempty"`
 	BuildQueue                     *UpdateProjectResourceConfigBuildQueueResponseBody            `json:"buildQueue,omitempty"`
+	EnableFunctionsBeta            *bool                                                         `json:"enableFunctionsBeta,omitempty"`
 }
 
 func (o *UpdateProjectResourceConfigResponseBody) GetElasticConcurrencyEnabled() *bool {
@@ -6628,6 +6645,13 @@ func (o *UpdateProjectResourceConfigResponseBody) GetBuildQueue() *UpdateProject
 		return nil
 	}
 	return o.BuildQueue
+}
+
+func (o *UpdateProjectResourceConfigResponseBody) GetEnableFunctionsBeta() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.EnableFunctionsBeta
 }
 
 // UpdateProjectRollbackDescription - Description of why a project was rolled back, and by whom. Note that lastAliasRequest contains the from/to details of the rollback.
@@ -6874,6 +6898,7 @@ type UpdateProjectDefaultResourceConfig struct {
 	BuildMachineElasticLastUpdated *float64                                                     `json:"buildMachineElasticLastUpdated,omitempty"`
 	IsNSNBDisabled                 *bool                                                        `json:"isNSNBDisabled,omitempty"`
 	BuildQueue                     *UpdateProjectDefaultResourceConfigBuildQueue                `json:"buildQueue,omitempty"`
+	EnableFunctionsBeta            *bool                                                        `json:"enableFunctionsBeta,omitempty"`
 }
 
 func (o *UpdateProjectDefaultResourceConfig) GetElasticConcurrencyEnabled() *bool {
@@ -6951,6 +6976,13 @@ func (o *UpdateProjectDefaultResourceConfig) GetBuildQueue() *UpdateProjectDefau
 		return nil
 	}
 	return o.BuildQueue
+}
+
+func (o *UpdateProjectDefaultResourceConfig) GetEnableFunctionsBeta() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.EnableFunctionsBeta
 }
 
 type UpdateProjectStaticIpsResponse struct {
@@ -7410,6 +7442,7 @@ type UpdateProjectPermissions struct {
 	Connect                                  []components.ACLAction `json:"connect,omitempty"`
 	ConnectConfiguration                     []components.ACLAction `json:"connectConfiguration,omitempty"`
 	ConnexClient                             []components.ACLAction `json:"connexClient,omitempty"`
+	ConnexClientProject                      []components.ACLAction `json:"connexClientProject,omitempty"`
 	ConnexToken                              []components.ACLAction `json:"connexToken,omitempty"`
 	BuildMachineDefault                      []components.ACLAction `json:"buildMachineDefault,omitempty"`
 	DataCacheBillingSettings                 []components.ACLAction `json:"dataCacheBillingSettings,omitempty"`
@@ -7901,6 +7934,13 @@ func (o *UpdateProjectPermissions) GetConnexClient() []components.ACLAction {
 		return nil
 	}
 	return o.ConnexClient
+}
+
+func (o *UpdateProjectPermissions) GetConnexClientProject() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ConnexClientProject
 }
 
 func (o *UpdateProjectPermissions) GetConnexToken() []components.ACLAction {

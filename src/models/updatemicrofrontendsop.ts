@@ -589,6 +589,7 @@ export type UpdateMicrofrontendsFramework = ClosedEnum<
 
 export type UpdateMicrofrontendsIpBuckets = {
   bucket: string;
+  default?: boolean | undefined;
   supportUntil?: number | undefined;
 };
 
@@ -950,6 +951,7 @@ export type UpdateMicrofrontendsResourceConfig = {
   buildMachineElasticLastUpdated?: number | undefined;
   isNSNBDisabled?: boolean | undefined;
   buildQueue?: UpdateMicrofrontendsBuildQueue | undefined;
+  enableFunctionsBeta?: boolean | undefined;
 };
 
 /**
@@ -1068,6 +1070,7 @@ export type UpdateMicrofrontendsDefaultResourceConfig = {
   buildMachineElasticLastUpdated?: number | undefined;
   isNSNBDisabled?: boolean | undefined;
   buildQueue?: UpdateMicrofrontendsProjectsBuildQueue | undefined;
+  enableFunctionsBeta?: boolean | undefined;
 };
 
 export type UpdateMicrofrontendsStaticIps = {
@@ -1187,6 +1190,7 @@ export type UpdateMicrofrontendsPermissions = {
   connect?: Array<ACLAction> | undefined;
   connectConfiguration?: Array<ACLAction> | undefined;
   connexClient?: Array<ACLAction> | undefined;
+  connexClientProject?: Array<ACLAction> | undefined;
   connexToken?: Array<ACLAction> | undefined;
   buildMachineDefault?: Array<ACLAction> | undefined;
   dataCacheBillingSettings?: Array<ACLAction> | undefined;
@@ -4184,11 +4188,13 @@ export const UpdateMicrofrontendsIpBuckets$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   bucket: types.string(),
+  default: types.optional(types.boolean()),
   supportUntil: types.optional(types.number()),
 });
 /** @internal */
 export type UpdateMicrofrontendsIpBuckets$Outbound = {
   bucket: string;
+  default?: boolean | undefined;
   supportUntil?: number | undefined;
 };
 
@@ -4199,6 +4205,7 @@ export const UpdateMicrofrontendsIpBuckets$outboundSchema: z.ZodType<
   UpdateMicrofrontendsIpBuckets
 > = z.object({
   bucket: z.string(),
+  default: z.boolean().optional(),
   supportUntil: z.number().optional(),
 });
 
@@ -5923,6 +5930,7 @@ export const UpdateMicrofrontendsResourceConfig$inboundSchema: z.ZodType<
   buildQueue: types.optional(
     z.lazy(() => UpdateMicrofrontendsBuildQueue$inboundSchema),
   ),
+  enableFunctionsBeta: types.optional(types.boolean()),
 });
 /** @internal */
 export type UpdateMicrofrontendsResourceConfig$Outbound = {
@@ -5937,6 +5945,7 @@ export type UpdateMicrofrontendsResourceConfig$Outbound = {
   buildMachineElasticLastUpdated?: number | undefined;
   isNSNBDisabled?: boolean | undefined;
   buildQueue?: UpdateMicrofrontendsBuildQueue$Outbound | undefined;
+  enableFunctionsBeta?: boolean | undefined;
 };
 
 /** @internal */
@@ -5960,6 +5969,7 @@ export const UpdateMicrofrontendsResourceConfig$outboundSchema: z.ZodType<
   isNSNBDisabled: z.boolean().optional(),
   buildQueue: z.lazy(() => UpdateMicrofrontendsBuildQueue$outboundSchema)
     .optional(),
+  enableFunctionsBeta: z.boolean().optional(),
 });
 
 export function updateMicrofrontendsResourceConfigToJSON(
@@ -6248,6 +6258,7 @@ export const UpdateMicrofrontendsDefaultResourceConfig$inboundSchema: z.ZodType<
   buildQueue: types.optional(
     z.lazy(() => UpdateMicrofrontendsProjectsBuildQueue$inboundSchema),
   ),
+  enableFunctionsBeta: types.optional(types.boolean()),
 });
 /** @internal */
 export type UpdateMicrofrontendsDefaultResourceConfig$Outbound = {
@@ -6262,6 +6273,7 @@ export type UpdateMicrofrontendsDefaultResourceConfig$Outbound = {
   buildMachineElasticLastUpdated?: number | undefined;
   isNSNBDisabled?: boolean | undefined;
   buildQueue?: UpdateMicrofrontendsProjectsBuildQueue$Outbound | undefined;
+  enableFunctionsBeta?: boolean | undefined;
 };
 
 /** @internal */
@@ -6289,6 +6301,7 @@ export const UpdateMicrofrontendsDefaultResourceConfig$outboundSchema:
     buildQueue: z.lazy(() =>
       UpdateMicrofrontendsProjectsBuildQueue$outboundSchema
     ).optional(),
+    enableFunctionsBeta: z.boolean().optional(),
   });
 
 export function updateMicrofrontendsDefaultResourceConfigToJSON(
@@ -6739,6 +6752,7 @@ export const UpdateMicrofrontendsPermissions$inboundSchema: z.ZodType<
   connect: types.optional(z.array(ACLAction$inboundSchema)),
   connectConfiguration: types.optional(z.array(ACLAction$inboundSchema)),
   connexClient: types.optional(z.array(ACLAction$inboundSchema)),
+  connexClientProject: types.optional(z.array(ACLAction$inboundSchema)),
   connexToken: types.optional(z.array(ACLAction$inboundSchema)),
   buildMachineDefault: types.optional(z.array(ACLAction$inboundSchema)),
   dataCacheBillingSettings: types.optional(z.array(ACLAction$inboundSchema)),
@@ -7027,6 +7041,7 @@ export type UpdateMicrofrontendsPermissions$Outbound = {
   connect?: Array<string> | undefined;
   connectConfiguration?: Array<string> | undefined;
   connexClient?: Array<string> | undefined;
+  connexClientProject?: Array<string> | undefined;
   connexToken?: Array<string> | undefined;
   buildMachineDefault?: Array<string> | undefined;
   dataCacheBillingSettings?: Array<string> | undefined;
@@ -7274,6 +7289,7 @@ export const UpdateMicrofrontendsPermissions$outboundSchema: z.ZodType<
   connect: z.array(ACLAction$outboundSchema).optional(),
   connectConfiguration: z.array(ACLAction$outboundSchema).optional(),
   connexClient: z.array(ACLAction$outboundSchema).optional(),
+  connexClientProject: z.array(ACLAction$outboundSchema).optional(),
   connexToken: z.array(ACLAction$outboundSchema).optional(),
   buildMachineDefault: z.array(ACLAction$outboundSchema).optional(),
   dataCacheBillingSettings: z.array(ACLAction$outboundSchema).optional(),

@@ -400,6 +400,7 @@ export type SensitiveEnvironmentVariablePolicy = ClosedEnum<
 export type IpBuckets = {
   bucket: string;
   supportUntil?: number | undefined;
+  default?: boolean | undefined;
 };
 
 /**
@@ -495,6 +496,7 @@ export const Origin = {
   NsnbViewerUpgrade: "nsnb-viewer-upgrade",
   NsnbInvite: "nsnb-invite",
   NsnbRedeploy: "nsnb-redeploy",
+  NsnbRedeployAttributionCard: "nsnb-redeploy-attribution-card",
 } as const;
 export type Origin = ClosedEnum<typeof Origin>;
 
@@ -1513,11 +1515,13 @@ export const IpBuckets$inboundSchema: z.ZodType<
 > = z.object({
   bucket: types.string(),
   supportUntil: types.optional(types.number()),
+  default: types.optional(types.boolean()),
 });
 /** @internal */
 export type IpBuckets$Outbound = {
   bucket: string;
   supportUntil?: number | undefined;
+  default?: boolean | undefined;
 };
 
 /** @internal */
@@ -1528,6 +1532,7 @@ export const IpBuckets$outboundSchema: z.ZodType<
 > = z.object({
   bucket: z.string(),
   supportUntil: z.number().optional(),
+  default: z.boolean().optional(),
 });
 
 export function ipBucketsToJSON(ipBuckets: IpBuckets): string {

@@ -600,6 +600,7 @@ export type ResponseBodyDeploymentExpiration = {
 
 export type ResponseBodyIpBuckets = {
   bucket: string;
+  default?: boolean | undefined;
   supportUntil?: number | undefined;
 };
 
@@ -1134,6 +1135,7 @@ export type ResponseBodyResourceConfig = {
   buildMachineElasticLastUpdated?: number | undefined;
   isNSNBDisabled?: boolean | undefined;
   buildQueue?: ResponseBodyBuildQueue | undefined;
+  enableFunctionsBeta?: boolean | undefined;
 };
 
 /**
@@ -4485,11 +4487,13 @@ export const ResponseBodyIpBuckets$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   bucket: types.string(),
+  default: types.optional(types.boolean()),
   supportUntil: types.optional(types.number()),
 });
 /** @internal */
 export type ResponseBodyIpBuckets$Outbound = {
   bucket: string;
+  default?: boolean | undefined;
   supportUntil?: number | undefined;
 };
 
@@ -4500,6 +4504,7 @@ export const ResponseBodyIpBuckets$outboundSchema: z.ZodType<
   ResponseBodyIpBuckets
 > = z.object({
   bucket: z.string(),
+  default: z.boolean().optional(),
   supportUntil: z.number().optional(),
 });
 
@@ -6789,6 +6794,7 @@ export const ResponseBodyResourceConfig$inboundSchema: z.ZodType<
   buildQueue: types.optional(
     z.lazy(() => ResponseBodyBuildQueue$inboundSchema),
   ),
+  enableFunctionsBeta: types.optional(types.boolean()),
 });
 /** @internal */
 export type ResponseBodyResourceConfig$Outbound = {
@@ -6803,6 +6809,7 @@ export type ResponseBodyResourceConfig$Outbound = {
   buildMachineElasticLastUpdated?: number | undefined;
   isNSNBDisabled?: boolean | undefined;
   buildQueue?: ResponseBodyBuildQueue$Outbound | undefined;
+  enableFunctionsBeta?: boolean | undefined;
 };
 
 /** @internal */
@@ -6824,6 +6831,7 @@ export const ResponseBodyResourceConfig$outboundSchema: z.ZodType<
   buildMachineElasticLastUpdated: z.number().optional(),
   isNSNBDisabled: z.boolean().optional(),
   buildQueue: z.lazy(() => ResponseBodyBuildQueue$outboundSchema).optional(),
+  enableFunctionsBeta: z.boolean().optional(),
 });
 
 export function responseBodyResourceConfigToJSON(

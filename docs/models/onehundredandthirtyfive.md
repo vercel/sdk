@@ -5,17 +5,27 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndThirtyFive } from "@vercel/sdk/models/payloadbuildqueue.js";
+import { OneHundredAndThirtyFive } from "@vercel/sdk/models/payloadimportflowgitprovider.js";
 
 let value: OneHundredAndThirtyFive = {
-  oldName: "<value>",
-  newName: "<value>",
+  projectId: "<id>",
+  previous: {
+    enabled: false,
+    mode: "<value>",
+    enforcePercentage: 5892.14,
+  },
+  next: {
+    enabled: false,
+    mode: "<value>",
+    enforcePercentage: 5305.26,
+  },
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `oldName`          | *string*           | :heavy_check_mark: | N/A                |
-| `newName`          | *string*           | :heavy_check_mark: | N/A                |
+| Field                                    | Type                                     | Required                                 | Description                              |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| `projectId`                              | *string*                                 | :heavy_check_mark:                       | N/A                                      |
+| `previous`                               | [models.Previous](../models/previous.md) | :heavy_check_mark:                       | N/A                                      |
+| `next`                                   | [models.Next](../models/next.md)         | :heavy_check_mark:                       | N/A                                      |

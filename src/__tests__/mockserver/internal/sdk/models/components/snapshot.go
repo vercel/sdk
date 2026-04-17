@@ -38,6 +38,33 @@ func (e *SnapshotStatus) UnmarshalJSON(data []byte) error {
 	}
 }
 
+// CreationMethod - The method used to create the snapshot.
+type CreationMethod string
+
+const (
+	CreationMethodManual    CreationMethod = "manual"
+	CreationMethodAutomatic CreationMethod = "automatic"
+)
+
+func (e CreationMethod) ToPointer() *CreationMethod {
+	return &e
+}
+func (e *CreationMethod) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "manual":
+		fallthrough
+	case "automatic":
+		*e = CreationMethod(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreationMethod: %v", v)
+	}
+}
+
 // Snapshot - This object contains information related to a Snapshot of a Vercel Sandbox session (v2 API).
 type Snapshot struct {
 	// The unique identifier of the snapshot.
@@ -58,6 +85,10 @@ type Snapshot struct {
 	UpdatedAt float64 `json:"updatedAt"`
 	// The last time the snapshot was used (e.g. to resume or create a sandbox), in milliseconds since the epoch. Falls back to `createdAt` for older snapshots that predate this field.
 	LastUsedAt float64 `json:"lastUsedAt"`
+	// The method used to create the snapshot.
+	CreationMethod *CreationMethod `json:"creationMethod,omitempty"`
+	// The unique identifier of the parent snapshot, if this snapshot was created from another snapshot.
+	ParentID *string `json:"parentId,omitempty"`
 }
 
 func (s Snapshot) MarshalJSON() ([]byte, error) {
@@ -132,4 +163,18 @@ func (o *Snapshot) GetLastUsedAt() float64 {
 		return 0.0
 	}
 	return o.LastUsedAt
+}
+
+func (o *Snapshot) GetCreationMethod() *CreationMethod {
+	if o == nil {
+		return nil
+	}
+	return o.CreationMethod
+}
+
+func (o *Snapshot) GetParentID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ParentID
 }

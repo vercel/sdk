@@ -16,6 +16,8 @@ let value: CreateSnapshotResponseBody = {
     createdAt: 1750344501629,
     updatedAt: 1750344501629,
     lastUsedAt: 1750344501629,
+    creationMethod: "manual",
+    parentId: "snap_parent123",
   },
   sandbox: {
     id: "sbx_123a6c5209bc3778245d011443644c8d27dc2c50",

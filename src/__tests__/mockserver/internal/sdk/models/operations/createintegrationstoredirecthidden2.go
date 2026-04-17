@@ -1363,6 +1363,7 @@ type ProductCapabilities struct {
 	ConnectedImportResource *bool                       `json:"connectedImportResource,omitempty"`
 	NativeImportResource    *bool                       `json:"nativeImportResource,omitempty"`
 	DatabaseUI              *bool                       `json:"databaseUI,omitempty"`
+	V0Flavors               *bool                       `json:"v0Flavors,omitempty"`
 }
 
 func (o *ProductCapabilities) GetMcp() *bool {
@@ -1468,6 +1469,13 @@ func (o *ProductCapabilities) GetDatabaseUI() *bool {
 		return nil
 	}
 	return o.DatabaseUI
+}
+
+func (o *ProductCapabilities) GetV0Flavors() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.V0Flavors
 }
 
 type CreateIntegrationStoreDirectTypeObject string

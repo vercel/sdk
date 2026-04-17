@@ -3159,16 +3159,17 @@ func (o *GetMicrofrontendsInGroupCreator) GetUsername() string {
 }
 
 type GetMicrofrontendsInGroupOidcTokenClaims struct {
-	Iss         string  `json:"iss"`
-	Sub         string  `json:"sub"`
-	Scope       string  `json:"scope"`
-	Aud         string  `json:"aud"`
-	Owner       string  `json:"owner"`
-	OwnerID     string  `json:"owner_id"`
-	Project     string  `json:"project"`
-	ProjectID   string  `json:"project_id"`
-	Environment string  `json:"environment"`
-	Plan        *string `json:"plan,omitempty"`
+	Iss                 string  `json:"iss"`
+	Sub                 string  `json:"sub"`
+	Scope               string  `json:"scope"`
+	Aud                 string  `json:"aud"`
+	Owner               string  `json:"owner"`
+	OwnerID             string  `json:"owner_id"`
+	Project             string  `json:"project"`
+	ProjectID           string  `json:"project_id"`
+	Environment         string  `json:"environment"`
+	CustomEnvironmentID *string `json:"custom_environment_id,omitempty"`
+	Plan                *string `json:"plan,omitempty"`
 }
 
 func (o *GetMicrofrontendsInGroupOidcTokenClaims) GetIss() string {
@@ -3232,6 +3233,13 @@ func (o *GetMicrofrontendsInGroupOidcTokenClaims) GetEnvironment() string {
 		return ""
 	}
 	return o.Environment
+}
+
+func (o *GetMicrofrontendsInGroupOidcTokenClaims) GetCustomEnvironmentID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.CustomEnvironmentID
 }
 
 func (o *GetMicrofrontendsInGroupOidcTokenClaims) GetPlan() *string {
@@ -6234,6 +6242,7 @@ func (o *GetMicrofrontendsInGroupTargets) GetWithCache() *bool {
 
 type GetMicrofrontendsInGroupPermissions struct {
 	Oauth2Connection                         []components.ACLAction `json:"oauth2Connection,omitempty"`
+	Organization                             []components.ACLAction `json:"organization,omitempty"`
 	User                                     []components.ACLAction `json:"user,omitempty"`
 	UserConnection                           []components.ACLAction `json:"userConnection,omitempty"`
 	UserPreference                           []components.ACLAction `json:"userPreference,omitempty"`
@@ -6351,7 +6360,6 @@ type GetMicrofrontendsInGroupPermissions struct {
 	ObservabilityNotebook                    []components.ACLAction `json:"observabilityNotebook,omitempty"`
 	OpenTelemetryEndpoint                    []components.ACLAction `json:"openTelemetryEndpoint,omitempty"`
 	OwnEvent                                 []components.ACLAction `json:"ownEvent,omitempty"`
-	Organization                             []components.ACLAction `json:"organization,omitempty"`
 	OrganizationDomain                       []components.ACLAction `json:"organizationDomain,omitempty"`
 	PasswordProtectionInvoiceItem            []components.ACLAction `json:"passwordProtectionInvoiceItem,omitempty"`
 	PaymentMethod                            []components.ACLAction `json:"paymentMethod,omitempty"`
@@ -6480,6 +6488,13 @@ func (o *GetMicrofrontendsInGroupPermissions) GetOauth2Connection() []components
 		return nil
 	}
 	return o.Oauth2Connection
+}
+
+func (o *GetMicrofrontendsInGroupPermissions) GetOrganization() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.Organization
 }
 
 func (o *GetMicrofrontendsInGroupPermissions) GetUser() []components.ACLAction {
@@ -7299,13 +7314,6 @@ func (o *GetMicrofrontendsInGroupPermissions) GetOwnEvent() []components.ACLActi
 		return nil
 	}
 	return o.OwnEvent
-}
-
-func (o *GetMicrofrontendsInGroupPermissions) GetOrganization() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.Organization
 }
 
 func (o *GetMicrofrontendsInGroupPermissions) GetOrganizationDomain() []components.ACLAction {

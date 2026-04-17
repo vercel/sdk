@@ -14,9 +14,10 @@ import (
 type GetSandboxesV2SortBy string
 
 const (
-	GetSandboxesV2SortByCreatedAt       GetSandboxesV2SortBy = "createdAt"
-	GetSandboxesV2SortByName            GetSandboxesV2SortBy = "name"
-	GetSandboxesV2SortByStatusUpdatedAt GetSandboxesV2SortBy = "statusUpdatedAt"
+	GetSandboxesV2SortByCreatedAt         GetSandboxesV2SortBy = "createdAt"
+	GetSandboxesV2SortByName              GetSandboxesV2SortBy = "name"
+	GetSandboxesV2SortByStatusUpdatedAt   GetSandboxesV2SortBy = "statusUpdatedAt"
+	GetSandboxesV2SortByCurrentSnapshotID GetSandboxesV2SortBy = "currentSnapshotId"
 )
 
 func (e GetSandboxesV2SortBy) ToPointer() *GetSandboxesV2SortBy {
@@ -33,6 +34,8 @@ func (e *GetSandboxesV2SortBy) UnmarshalJSON(data []byte) error {
 	case "name":
 		fallthrough
 	case "statusUpdatedAt":
+		fallthrough
+	case "currentSnapshotId":
 		*e = GetSandboxesV2SortBy(v)
 		return nil
 	default:

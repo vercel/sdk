@@ -58,6 +58,8 @@ func testGetSessionSnapshotGetSessionSnapshot0(w http.ResponseWriter, req *http.
 			CreatedAt:       1750344501629,
 			UpdatedAt:       1750344501629,
 			LastUsedAt:      1750344501629,
+			CreationMethod:  components.CreationMethodManual.ToPointer(),
+			ParentID:        types.String("snap_parent123"),
 		},
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)

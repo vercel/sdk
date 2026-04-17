@@ -63,6 +63,8 @@ func testCreateSnapshotCreateSnapshot0(w http.ResponseWriter, req *http.Request)
 			CreatedAt:       1750344501629,
 			UpdatedAt:       1750344501629,
 			LastUsedAt:      1750344501629,
+			CreationMethod:  components.CreationMethodManual.ToPointer(),
+			ParentID:        types.String("snap_parent123"),
 		},
 		Sandbox: components.Sandbox{
 			ID:               "sbx_123a6c5209bc3778245d011443644c8d27dc2c50",

@@ -6433,6 +6433,7 @@ func (o *GetProjectsProjectTargets2) GetWithCache() *bool {
 
 type GetProjectsPermissions struct {
 	Oauth2Connection                         []components.ACLAction `json:"oauth2Connection,omitempty"`
+	Organization                             []components.ACLAction `json:"organization,omitempty"`
 	User                                     []components.ACLAction `json:"user,omitempty"`
 	UserConnection                           []components.ACLAction `json:"userConnection,omitempty"`
 	UserPreference                           []components.ACLAction `json:"userPreference,omitempty"`
@@ -6550,7 +6551,6 @@ type GetProjectsPermissions struct {
 	ObservabilityNotebook                    []components.ACLAction `json:"observabilityNotebook,omitempty"`
 	OpenTelemetryEndpoint                    []components.ACLAction `json:"openTelemetryEndpoint,omitempty"`
 	OwnEvent                                 []components.ACLAction `json:"ownEvent,omitempty"`
-	Organization                             []components.ACLAction `json:"organization,omitempty"`
 	OrganizationDomain                       []components.ACLAction `json:"organizationDomain,omitempty"`
 	PasswordProtectionInvoiceItem            []components.ACLAction `json:"passwordProtectionInvoiceItem,omitempty"`
 	PaymentMethod                            []components.ACLAction `json:"paymentMethod,omitempty"`
@@ -6690,6 +6690,13 @@ func (o *GetProjectsPermissions) GetOauth2Connection() []components.ACLAction {
 		return nil
 	}
 	return o.Oauth2Connection
+}
+
+func (o *GetProjectsPermissions) GetOrganization() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.Organization
 }
 
 func (o *GetProjectsPermissions) GetUser() []components.ACLAction {
@@ -7509,13 +7516,6 @@ func (o *GetProjectsPermissions) GetOwnEvent() []components.ACLAction {
 		return nil
 	}
 	return o.OwnEvent
-}
-
-func (o *GetProjectsPermissions) GetOrganization() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.Organization
 }
 
 func (o *GetProjectsPermissions) GetOrganizationDomain() []components.ACLAction {

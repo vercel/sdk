@@ -23,6 +23,7 @@ export const QueryParamSortBy = {
   CreatedAt: "createdAt",
   Name: "name",
   StatusUpdatedAt: "statusUpdatedAt",
+  CurrentSnapshotId: "currentSnapshotId",
 } as const;
 /**
  * Field to sort by.

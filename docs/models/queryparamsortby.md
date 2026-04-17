@@ -13,5 +13,5 @@ let value: QueryParamSortBy = "createdAt";
 ## Values
 
 ```typescript
-"createdAt" | "name" | "statusUpdatedAt"
+"createdAt" | "name" | "statusUpdatedAt" | "currentSnapshotId"
 ```

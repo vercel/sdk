@@ -665,6 +665,7 @@ export type GetMicrofrontendsInGroupOidcTokenClaims = {
   project: string;
   projectId: string;
   environment: string;
+  customEnvironmentId?: string | undefined;
   plan?: string | undefined;
 };
 
@@ -1301,6 +1302,7 @@ export type GetMicrofrontendsInGroupMicrofrontendsOidcTokenClaims = {
   project: string;
   projectId: string;
   environment: string;
+  customEnvironmentId?: string | undefined;
   plan?: string | undefined;
 };
 
@@ -1396,6 +1398,7 @@ export type GetMicrofrontendsInGroupTargets = {
 
 export type GetMicrofrontendsInGroupPermissions = {
   oauth2Connection?: Array<ACLAction> | undefined;
+  organization?: Array<ACLAction> | undefined;
   user?: Array<ACLAction> | undefined;
   userConnection?: Array<ACLAction> | undefined;
   userPreference?: Array<ACLAction> | undefined;
@@ -1513,7 +1516,6 @@ export type GetMicrofrontendsInGroupPermissions = {
   observabilityNotebook?: Array<ACLAction> | undefined;
   openTelemetryEndpoint?: Array<ACLAction> | undefined;
   ownEvent?: Array<ACLAction> | undefined;
-  organization?: Array<ACLAction> | undefined;
   organizationDomain?: Array<ACLAction> | undefined;
   passwordProtectionInvoiceItem?: Array<ACLAction> | undefined;
   paymentMethod?: Array<ACLAction> | undefined;
@@ -4395,11 +4397,13 @@ export const GetMicrofrontendsInGroupOidcTokenClaims$inboundSchema: z.ZodType<
   project: types.string(),
   project_id: types.string(),
   environment: types.string(),
+  custom_environment_id: types.optional(types.string()),
   plan: types.optional(types.string()),
 }).transform((v) => {
   return remap$(v, {
     "owner_id": "ownerId",
     "project_id": "projectId",
+    "custom_environment_id": "customEnvironmentId",
   });
 });
 /** @internal */
@@ -4413,6 +4417,7 @@ export type GetMicrofrontendsInGroupOidcTokenClaims$Outbound = {
   project: string;
   project_id: string;
   environment: string;
+  custom_environment_id?: string | undefined;
   plan?: string | undefined;
 };
 
@@ -4431,11 +4436,13 @@ export const GetMicrofrontendsInGroupOidcTokenClaims$outboundSchema: z.ZodType<
   project: z.string(),
   projectId: z.string(),
   environment: z.string(),
+  customEnvironmentId: z.string().optional(),
   plan: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
     ownerId: "owner_id",
     projectId: "project_id",
+    customEnvironmentId: "custom_environment_id",
   });
 });
 
@@ -6938,11 +6945,13 @@ export const GetMicrofrontendsInGroupMicrofrontendsOidcTokenClaims$inboundSchema
     project: types.string(),
     project_id: types.string(),
     environment: types.string(),
+    custom_environment_id: types.optional(types.string()),
     plan: types.optional(types.string()),
   }).transform((v) => {
     return remap$(v, {
       "owner_id": "ownerId",
       "project_id": "projectId",
+      "custom_environment_id": "customEnvironmentId",
     });
   });
 /** @internal */
@@ -6956,6 +6965,7 @@ export type GetMicrofrontendsInGroupMicrofrontendsOidcTokenClaims$Outbound = {
   project: string;
   project_id: string;
   environment: string;
+  custom_environment_id?: string | undefined;
   plan?: string | undefined;
 };
 
@@ -6975,11 +6985,13 @@ export const GetMicrofrontendsInGroupMicrofrontendsOidcTokenClaims$outboundSchem
     project: z.string(),
     projectId: z.string(),
     environment: z.string(),
+    customEnvironmentId: z.string().optional(),
     plan: z.string().optional(),
   }).transform((v) => {
     return remap$(v, {
       ownerId: "owner_id",
       projectId: "project_id",
+      customEnvironmentId: "custom_environment_id",
     });
   });
 
@@ -7251,6 +7263,7 @@ export const GetMicrofrontendsInGroupPermissions$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   oauth2Connection: types.optional(z.array(ACLAction$inboundSchema)),
+  organization: types.optional(z.array(ACLAction$inboundSchema)),
   user: types.optional(z.array(ACLAction$inboundSchema)),
   userConnection: types.optional(z.array(ACLAction$inboundSchema)),
   userPreference: types.optional(z.array(ACLAction$inboundSchema)),
@@ -7396,7 +7409,6 @@ export const GetMicrofrontendsInGroupPermissions$inboundSchema: z.ZodType<
   observabilityNotebook: types.optional(z.array(ACLAction$inboundSchema)),
   openTelemetryEndpoint: types.optional(z.array(ACLAction$inboundSchema)),
   ownEvent: types.optional(z.array(ACLAction$inboundSchema)),
-  organization: types.optional(z.array(ACLAction$inboundSchema)),
   organizationDomain: types.optional(z.array(ACLAction$inboundSchema)),
   passwordProtectionInvoiceItem: types.optional(
     z.array(ACLAction$inboundSchema),
@@ -7544,6 +7556,7 @@ export const GetMicrofrontendsInGroupPermissions$inboundSchema: z.ZodType<
 /** @internal */
 export type GetMicrofrontendsInGroupPermissions$Outbound = {
   oauth2Connection?: Array<string> | undefined;
+  organization?: Array<string> | undefined;
   user?: Array<string> | undefined;
   userConnection?: Array<string> | undefined;
   userPreference?: Array<string> | undefined;
@@ -7661,7 +7674,6 @@ export type GetMicrofrontendsInGroupPermissions$Outbound = {
   observabilityNotebook?: Array<string> | undefined;
   openTelemetryEndpoint?: Array<string> | undefined;
   ownEvent?: Array<string> | undefined;
-  organization?: Array<string> | undefined;
   organizationDomain?: Array<string> | undefined;
   passwordProtectionInvoiceItem?: Array<string> | undefined;
   paymentMethod?: Array<string> | undefined;
@@ -7792,6 +7804,7 @@ export const GetMicrofrontendsInGroupPermissions$outboundSchema: z.ZodType<
   GetMicrofrontendsInGroupPermissions
 > = z.object({
   oauth2Connection: z.array(ACLAction$outboundSchema).optional(),
+  organization: z.array(ACLAction$outboundSchema).optional(),
   user: z.array(ACLAction$outboundSchema).optional(),
   userConnection: z.array(ACLAction$outboundSchema).optional(),
   userPreference: z.array(ACLAction$outboundSchema).optional(),
@@ -7913,7 +7926,6 @@ export const GetMicrofrontendsInGroupPermissions$outboundSchema: z.ZodType<
   observabilityNotebook: z.array(ACLAction$outboundSchema).optional(),
   openTelemetryEndpoint: z.array(ACLAction$outboundSchema).optional(),
   ownEvent: z.array(ACLAction$outboundSchema).optional(),
-  organization: z.array(ACLAction$outboundSchema).optional(),
   organizationDomain: z.array(ACLAction$outboundSchema).optional(),
   passwordProtectionInvoiceItem: z.array(ACLAction$outboundSchema).optional(),
   paymentMethod: z.array(ACLAction$outboundSchema).optional(),

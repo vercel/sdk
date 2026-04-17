@@ -217,6 +217,8 @@ type UpdateSandboxRequestBody struct {
 	NetworkPolicy *NetworkPolicy `json:"networkPolicy,omitempty"`
 	// Default environment variables for the sandbox. Set to empty object to clear.
 	Env map[string]string `json:"env,omitempty"`
+	// The snapshot ID to set as the current snapshot. Must be active and belong to the same project. Set to null to clear.
+	CurrentSnapshotID *string `json:"currentSnapshotId,omitempty"`
 	// Key-value tags to associate with the sandbox. Replaces existing tags. Set to empty object to clear. Maximum 5 tags.
 	Tags map[string]string `json:"tags,omitempty"`
 }
@@ -268,6 +270,13 @@ func (o *UpdateSandboxRequestBody) GetEnv() map[string]string {
 		return nil
 	}
 	return o.Env
+}
+
+func (o *UpdateSandboxRequestBody) GetCurrentSnapshotID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.CurrentSnapshotID
 }
 
 func (o *UpdateSandboxRequestBody) GetTags() map[string]string {

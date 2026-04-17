@@ -633,12 +633,12 @@ export const AuthMethod = {
 export type AuthMethod = ClosedEnum<typeof AuthMethod>;
 
 export const Method = {
+  None: "none",
   ClientSecretBasic: "client_secret_basic",
   ClientSecretPost: "client_secret_post",
   ClientSecretJwt: "client_secret_jwt",
   PrivateKeyJwt: "private_key_jwt",
   OidcToken: "oidc_token",
-  None: "none",
 } as const;
 export type Method = ClosedEnum<typeof Method>;
 

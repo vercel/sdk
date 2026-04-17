@@ -63,6 +63,8 @@ func testCreateSessionSnapshotCreateSessionSnapshot0(w http.ResponseWriter, req 
 			CreatedAt:       1750344501629,
 			UpdatedAt:       1750344501629,
 			LastUsedAt:      1750344501629,
+			CreationMethod:  components.CreationMethodManual.ToPointer(),
+			ParentID:        types.String("snap_parent123"),
 		},
 		Session: components.Session{
 			SourceSandboxName: "my-sandbox",

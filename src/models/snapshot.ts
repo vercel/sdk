@@ -23,6 +23,18 @@ export const SnapshotStatus = {
 export type SnapshotStatus = ClosedEnum<typeof SnapshotStatus>;
 
 /**
+ * The method used to create the snapshot.
+ */
+export const CreationMethod = {
+  Manual: "manual",
+  Automatic: "automatic",
+} as const;
+/**
+ * The method used to create the snapshot.
+ */
+export type CreationMethod = ClosedEnum<typeof CreationMethod>;
+
+/**
  * This object contains information related to a Snapshot of a Vercel Sandbox session (v2 API).
  */
 export type Snapshot = {
@@ -62,6 +74,14 @@ export type Snapshot = {
    * The last time the snapshot was used (e.g. to resume or create a sandbox), in milliseconds since the epoch. Falls back to `createdAt` for older snapshots that predate this field.
    */
   lastUsedAt: number;
+  /**
+   * The method used to create the snapshot.
+   */
+  creationMethod?: CreationMethod | undefined;
+  /**
+   * The unique identifier of the parent snapshot, if this snapshot was created from another snapshot.
+   */
+  parentId?: string | undefined;
 };
 
 /** @internal */
@@ -72,6 +92,15 @@ export const SnapshotStatus$inboundSchema: z.ZodNativeEnum<
 export const SnapshotStatus$outboundSchema: z.ZodNativeEnum<
   typeof SnapshotStatus
 > = SnapshotStatus$inboundSchema;
+
+/** @internal */
+export const CreationMethod$inboundSchema: z.ZodNativeEnum<
+  typeof CreationMethod
+> = z.nativeEnum(CreationMethod);
+/** @internal */
+export const CreationMethod$outboundSchema: z.ZodNativeEnum<
+  typeof CreationMethod
+> = CreationMethod$inboundSchema;
 
 /** @internal */
 export const Snapshot$inboundSchema: z.ZodType<
@@ -88,6 +117,8 @@ export const Snapshot$inboundSchema: z.ZodType<
   createdAt: types.number(),
   updatedAt: types.number(),
   lastUsedAt: types.number(),
+  creationMethod: types.optional(CreationMethod$inboundSchema),
+  parentId: types.optional(types.string()),
 });
 /** @internal */
 export type Snapshot$Outbound = {
@@ -100,6 +131,8 @@ export type Snapshot$Outbound = {
   createdAt: number;
   updatedAt: number;
   lastUsedAt: number;
+  creationMethod?: string | undefined;
+  parentId?: string | undefined;
 };
 
 /** @internal */
@@ -117,6 +150,8 @@ export const Snapshot$outboundSchema: z.ZodType<
   createdAt: z.number(),
   updatedAt: z.number(),
   lastUsedAt: z.number(),
+  creationMethod: CreationMethod$outboundSchema.optional(),
+  parentId: z.string().optional(),
 });
 
 export function snapshotToJSON(snapshot: Snapshot): string {

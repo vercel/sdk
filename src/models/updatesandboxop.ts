@@ -116,6 +116,10 @@ export type UpdateSandboxRequestBody = {
    */
   env?: { [k: string]: string } | undefined;
   /**
+   * The snapshot ID to set as the current snapshot. Must be active and belong to the same project. Set to null to clear.
+   */
+  currentSnapshotId?: string | undefined;
+  /**
    * Key-value tags to associate with the sandbox. Replaces existing tags. Set to empty object to clear. Maximum 5 tags.
    */
   tags?: { [k: string]: string } | undefined;
@@ -304,6 +308,7 @@ export const UpdateSandboxRequestBody$inboundSchema: z.ZodType<
     z.lazy(() => UpdateSandboxNetworkPolicy$inboundSchema),
   ),
   env: types.optional(z.record(types.string())),
+  currentSnapshotId: types.optional(types.string()),
   tags: types.optional(z.record(types.string())),
 });
 /** @internal */
@@ -315,6 +320,7 @@ export type UpdateSandboxRequestBody$Outbound = {
   snapshotExpiration?: any | number | undefined;
   networkPolicy?: UpdateSandboxNetworkPolicy$Outbound | undefined;
   env?: { [k: string]: string } | undefined;
+  currentSnapshotId?: string | undefined;
   tags?: { [k: string]: string } | undefined;
 };
 
@@ -332,6 +338,7 @@ export const UpdateSandboxRequestBody$outboundSchema: z.ZodType<
   networkPolicy: z.lazy(() => UpdateSandboxNetworkPolicy$outboundSchema)
     .optional(),
   env: z.record(z.string()).optional(),
+  currentSnapshotId: z.string().optional(),
   tags: z.record(z.string()).optional(),
 });
 

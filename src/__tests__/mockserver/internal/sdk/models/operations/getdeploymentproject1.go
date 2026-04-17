@@ -3272,16 +3272,17 @@ func (e *GetDeploymentTargetEnum2) UnmarshalJSON(data []byte) error {
 }
 
 type GetDeploymentOidcTokenClaims2 struct {
-	Iss         string  `json:"iss"`
-	Sub         string  `json:"sub"`
-	Scope       string  `json:"scope"`
-	Aud         string  `json:"aud"`
-	Owner       string  `json:"owner"`
-	OwnerID     string  `json:"owner_id"`
-	Project     string  `json:"project"`
-	ProjectID   string  `json:"project_id"`
-	Environment string  `json:"environment"`
-	Plan        *string `json:"plan,omitempty"`
+	Iss                 string  `json:"iss"`
+	Sub                 string  `json:"sub"`
+	Scope               string  `json:"scope"`
+	Aud                 string  `json:"aud"`
+	Owner               string  `json:"owner"`
+	OwnerID             string  `json:"owner_id"`
+	Project             string  `json:"project"`
+	ProjectID           string  `json:"project_id"`
+	Environment         string  `json:"environment"`
+	CustomEnvironmentID *string `json:"custom_environment_id,omitempty"`
+	Plan                *string `json:"plan,omitempty"`
 }
 
 func (g GetDeploymentOidcTokenClaims2) MarshalJSON() ([]byte, error) {
@@ -3356,6 +3357,13 @@ func (o *GetDeploymentOidcTokenClaims2) GetEnvironment() string {
 		return ""
 	}
 	return o.Environment
+}
+
+func (o *GetDeploymentOidcTokenClaims2) GetCustomEnvironmentID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.CustomEnvironmentID
 }
 
 func (o *GetDeploymentOidcTokenClaims2) GetPlan() *string {

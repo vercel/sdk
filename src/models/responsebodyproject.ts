@@ -763,6 +763,7 @@ export type ResponseBodyOidcTokenClaims = {
   project: string;
   projectId: string;
   environment: string;
+  customEnvironmentId?: string | undefined;
   plan?: string | undefined;
 };
 
@@ -4243,11 +4244,13 @@ export const ResponseBodyOidcTokenClaims$inboundSchema: z.ZodType<
   project: types.string(),
   project_id: types.string(),
   environment: types.string(),
+  custom_environment_id: types.optional(types.string()),
   plan: types.optional(types.string()),
 }).transform((v) => {
   return remap$(v, {
     "owner_id": "ownerId",
     "project_id": "projectId",
+    "custom_environment_id": "customEnvironmentId",
   });
 });
 /** @internal */
@@ -4261,6 +4264,7 @@ export type ResponseBodyOidcTokenClaims$Outbound = {
   project: string;
   project_id: string;
   environment: string;
+  custom_environment_id?: string | undefined;
   plan?: string | undefined;
 };
 
@@ -4279,11 +4283,13 @@ export const ResponseBodyOidcTokenClaims$outboundSchema: z.ZodType<
   project: z.string(),
   projectId: z.string(),
   environment: z.string(),
+  customEnvironmentId: z.string().optional(),
   plan: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
     ownerId: "owner_id",
     projectId: "project_id",
+    customEnvironmentId: "custom_environment_id",
   });
 });
 

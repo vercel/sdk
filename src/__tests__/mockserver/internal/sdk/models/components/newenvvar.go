@@ -6276,6 +6276,10 @@ type NewOwner struct {
 	MfaConfiguration *MfaConfiguration `json:"mfaConfiguration,omitempty"`
 	// Indicates that the underlying user entity is a managed user for the enterprise it's associated with The intention is that this field is only set to true for users that are provisioned by the enterprise which means that the domain associated with the user's email is the same domain associated with the team Allowing us to query information about the user's team at login time through the domain verification service
 	IsEnterpriseManaged *bool `json:"isEnterpriseManaged,omitempty"`
+	// On a personal account, points to the managed account created during EMU account separation. Set by the split utility when an existing team member is converted into a separate managed account.
+	LinkedManagedAccountID *string `json:"linkedManagedAccountId,omitempty"`
+	// On a managed account, points back to the personal account it was split from during EMU account separation. When set together with `isEnterpriseManaged`, the managed account's email is excluded from global secondary-key indexing so it doesn't conflict with the personal account's email.
+	LinkedPersonalAccountID *string `json:"linkedPersonalAccountId,omitempty"`
 }
 
 func (n NewOwner) MarshalJSON() ([]byte, error) {
@@ -6812,6 +6816,20 @@ func (o *NewOwner) GetIsEnterpriseManaged() *bool {
 		return nil
 	}
 	return o.IsEnterpriseManaged
+}
+
+func (o *NewOwner) GetLinkedManagedAccountID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.LinkedManagedAccountID
+}
+
+func (o *NewOwner) GetLinkedPersonalAccountID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.LinkedPersonalAccountID
 }
 
 // Payload112 - The payload of the event, if requested.

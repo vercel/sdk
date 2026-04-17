@@ -27,3 +27,4 @@ let value: CreateIntegrationStoreDirectCapabilities = {};
 | `connectedImportResource`                           | *boolean*                                           | :heavy_minus_sign:                                  | N/A                                                 |
 | `nativeImportResource`                              | *boolean*                                           | :heavy_minus_sign:                                  | N/A                                                 |
 | `databaseUI`                                        | *boolean*                                           | :heavy_minus_sign:                                  | N/A                                                 |
+| `v0Flavors`                                         | *boolean*                                           | :heavy_minus_sign:                                  | N/A                                                 |

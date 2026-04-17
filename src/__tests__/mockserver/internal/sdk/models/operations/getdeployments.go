@@ -658,6 +658,57 @@ func (e *GetDeploymentsOomReport) UnmarshalJSON(data []byte) error {
 	}
 }
 
+// GetDeploymentsManualProvisioningState - Current provisioning state
+type GetDeploymentsManualProvisioningState string
+
+const (
+	GetDeploymentsManualProvisioningStatePending  GetDeploymentsManualProvisioningState = "PENDING"
+	GetDeploymentsManualProvisioningStateComplete GetDeploymentsManualProvisioningState = "COMPLETE"
+	GetDeploymentsManualProvisioningStateTimeout  GetDeploymentsManualProvisioningState = "TIMEOUT"
+)
+
+func (e GetDeploymentsManualProvisioningState) ToPointer() *GetDeploymentsManualProvisioningState {
+	return &e
+}
+func (e *GetDeploymentsManualProvisioningState) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "PENDING":
+		fallthrough
+	case "COMPLETE":
+		fallthrough
+	case "TIMEOUT":
+		*e = GetDeploymentsManualProvisioningState(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetDeploymentsManualProvisioningState: %v", v)
+	}
+}
+
+type GetDeploymentsManualProvisioning struct {
+	// Current provisioning state
+	State GetDeploymentsManualProvisioningState `json:"state"`
+	// Timestamp when manual provisioning completed
+	CompletedAt *float64 `json:"completedAt,omitempty"`
+}
+
+func (o *GetDeploymentsManualProvisioning) GetState() GetDeploymentsManualProvisioningState {
+	if o == nil {
+		return GetDeploymentsManualProvisioningState("")
+	}
+	return o.State
+}
+
+func (o *GetDeploymentsManualProvisioning) GetCompletedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.CompletedAt
+}
+
 type GetDeploymentsFramework string
 
 const (
@@ -1764,6 +1815,7 @@ type GetDeploymentsDeployment struct {
 	// Deployment can be used for instant rollback
 	IsRollbackCandidate optionalnullable.OptionalNullable[bool] `json:"isRollbackCandidate,omitempty"`
 	Prebuilt            *bool                                   `json:"prebuilt,omitempty"`
+	ManualProvisioning  *GetDeploymentsManualProvisioning       `json:"manualProvisioning,omitempty"`
 	// The project settings which was used for this deployment
 	ProjectSettings *GetDeploymentsProjectSettings `json:"projectSettings,omitempty"`
 	// The flag saying if Secure Compute network is used for builds
@@ -2001,6 +2053,13 @@ func (o *GetDeploymentsDeployment) GetPrebuilt() *bool {
 		return nil
 	}
 	return o.Prebuilt
+}
+
+func (o *GetDeploymentsDeployment) GetManualProvisioning() *GetDeploymentsManualProvisioning {
+	if o == nil {
+		return nil
+	}
+	return o.ManualProvisioning
 }
 
 func (o *GetDeploymentsDeployment) GetProjectSettings() *GetDeploymentsProjectSettings {

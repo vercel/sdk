@@ -1674,6 +1674,7 @@ export type UpdateProjectTargets = {
 
 export type UpdateProjectPermissions = {
   oauth2Connection?: Array<ACLAction> | undefined;
+  organization?: Array<ACLAction> | undefined;
   user?: Array<ACLAction> | undefined;
   userConnection?: Array<ACLAction> | undefined;
   userPreference?: Array<ACLAction> | undefined;
@@ -1791,7 +1792,6 @@ export type UpdateProjectPermissions = {
   observabilityNotebook?: Array<ACLAction> | undefined;
   openTelemetryEndpoint?: Array<ACLAction> | undefined;
   ownEvent?: Array<ACLAction> | undefined;
-  organization?: Array<ACLAction> | undefined;
   organizationDomain?: Array<ACLAction> | undefined;
   passwordProtectionInvoiceItem?: Array<ACLAction> | undefined;
   paymentMethod?: Array<ACLAction> | undefined;
@@ -7477,6 +7477,7 @@ export const UpdateProjectPermissions$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   oauth2Connection: types.optional(z.array(ACLAction$inboundSchema)),
+  organization: types.optional(z.array(ACLAction$inboundSchema)),
   user: types.optional(z.array(ACLAction$inboundSchema)),
   userConnection: types.optional(z.array(ACLAction$inboundSchema)),
   userPreference: types.optional(z.array(ACLAction$inboundSchema)),
@@ -7622,7 +7623,6 @@ export const UpdateProjectPermissions$inboundSchema: z.ZodType<
   observabilityNotebook: types.optional(z.array(ACLAction$inboundSchema)),
   openTelemetryEndpoint: types.optional(z.array(ACLAction$inboundSchema)),
   ownEvent: types.optional(z.array(ACLAction$inboundSchema)),
-  organization: types.optional(z.array(ACLAction$inboundSchema)),
   organizationDomain: types.optional(z.array(ACLAction$inboundSchema)),
   passwordProtectionInvoiceItem: types.optional(
     z.array(ACLAction$inboundSchema),
@@ -7770,6 +7770,7 @@ export const UpdateProjectPermissions$inboundSchema: z.ZodType<
 /** @internal */
 export type UpdateProjectPermissions$Outbound = {
   oauth2Connection?: Array<string> | undefined;
+  organization?: Array<string> | undefined;
   user?: Array<string> | undefined;
   userConnection?: Array<string> | undefined;
   userPreference?: Array<string> | undefined;
@@ -7887,7 +7888,6 @@ export type UpdateProjectPermissions$Outbound = {
   observabilityNotebook?: Array<string> | undefined;
   openTelemetryEndpoint?: Array<string> | undefined;
   ownEvent?: Array<string> | undefined;
-  organization?: Array<string> | undefined;
   organizationDomain?: Array<string> | undefined;
   passwordProtectionInvoiceItem?: Array<string> | undefined;
   paymentMethod?: Array<string> | undefined;
@@ -8018,6 +8018,7 @@ export const UpdateProjectPermissions$outboundSchema: z.ZodType<
   UpdateProjectPermissions
 > = z.object({
   oauth2Connection: z.array(ACLAction$outboundSchema).optional(),
+  organization: z.array(ACLAction$outboundSchema).optional(),
   user: z.array(ACLAction$outboundSchema).optional(),
   userConnection: z.array(ACLAction$outboundSchema).optional(),
   userPreference: z.array(ACLAction$outboundSchema).optional(),
@@ -8139,7 +8140,6 @@ export const UpdateProjectPermissions$outboundSchema: z.ZodType<
   observabilityNotebook: z.array(ACLAction$outboundSchema).optional(),
   openTelemetryEndpoint: z.array(ACLAction$outboundSchema).optional(),
   ownEvent: z.array(ACLAction$outboundSchema).optional(),
-  organization: z.array(ACLAction$outboundSchema).optional(),
   organizationDomain: z.array(ACLAction$outboundSchema).optional(),
   passwordProtectionInvoiceItem: z.array(ACLAction$outboundSchema).optional(),
   paymentMethod: z.array(ACLAction$outboundSchema).optional(),

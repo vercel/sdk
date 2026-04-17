@@ -243,20 +243,20 @@ export type GetDeploymentsChecksConclusion = ClosedEnum<
   typeof GetDeploymentsChecksConclusion
 >;
 
-export const GetDeploymentsDeploymentsState = {
+export const GetDeploymentsDeploymentsResponseState = {
   Succeeded: "succeeded",
   Failed: "failed",
   Pending: "pending",
 } as const;
-export type GetDeploymentsDeploymentsState = ClosedEnum<
-  typeof GetDeploymentsDeploymentsState
+export type GetDeploymentsDeploymentsResponseState = ClosedEnum<
+  typeof GetDeploymentsDeploymentsResponseState
 >;
 
 /**
  * Detailed information about v2 deployment checks. Includes information about blocked workflows in the deployment lifecycle.
  */
 export type GetDeploymentsDeploymentAlias = {
-  state: GetDeploymentsDeploymentsState;
+  state: GetDeploymentsDeploymentsResponseState;
   startedAt: number;
   completedAt?: number | undefined;
 };
@@ -283,6 +283,32 @@ export const GetDeploymentsOomReport = {
 export type GetDeploymentsOomReport = ClosedEnum<
   typeof GetDeploymentsOomReport
 >;
+
+/**
+ * Current provisioning state
+ */
+export const GetDeploymentsDeploymentsState = {
+  Pending: "PENDING",
+  Complete: "COMPLETE",
+  Timeout: "TIMEOUT",
+} as const;
+/**
+ * Current provisioning state
+ */
+export type GetDeploymentsDeploymentsState = ClosedEnum<
+  typeof GetDeploymentsDeploymentsState
+>;
+
+export type GetDeploymentsManualProvisioning = {
+  /**
+   * Current provisioning state
+   */
+  state: GetDeploymentsDeploymentsState;
+  /**
+   * Timestamp when manual provisioning completed
+   */
+  completedAt?: number | undefined;
+};
 
 export const GetDeploymentsFramework = {
   Blitzjs: "blitzjs",
@@ -759,6 +785,7 @@ export type Deployments = {
    */
   isRollbackCandidate?: boolean | null | undefined;
   prebuilt?: boolean | undefined;
+  manualProvisioning?: GetDeploymentsManualProvisioning | undefined;
   /**
    * The project settings which was used for this deployment
    */
@@ -1094,13 +1121,14 @@ export const GetDeploymentsChecksConclusion$outboundSchema: z.ZodNativeEnum<
 > = GetDeploymentsChecksConclusion$inboundSchema;
 
 /** @internal */
-export const GetDeploymentsDeploymentsState$inboundSchema: z.ZodNativeEnum<
-  typeof GetDeploymentsDeploymentsState
-> = z.nativeEnum(GetDeploymentsDeploymentsState);
+export const GetDeploymentsDeploymentsResponseState$inboundSchema:
+  z.ZodNativeEnum<typeof GetDeploymentsDeploymentsResponseState> = z.nativeEnum(
+    GetDeploymentsDeploymentsResponseState,
+  );
 /** @internal */
-export const GetDeploymentsDeploymentsState$outboundSchema: z.ZodNativeEnum<
-  typeof GetDeploymentsDeploymentsState
-> = GetDeploymentsDeploymentsState$inboundSchema;
+export const GetDeploymentsDeploymentsResponseState$outboundSchema:
+  z.ZodNativeEnum<typeof GetDeploymentsDeploymentsResponseState> =
+    GetDeploymentsDeploymentsResponseState$inboundSchema;
 
 /** @internal */
 export const GetDeploymentsDeploymentAlias$inboundSchema: z.ZodType<
@@ -1108,7 +1136,7 @@ export const GetDeploymentsDeploymentAlias$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  state: GetDeploymentsDeploymentsState$inboundSchema,
+  state: GetDeploymentsDeploymentsResponseState$inboundSchema,
   startedAt: types.number(),
   completedAt: types.optional(types.number()),
 });
@@ -1125,7 +1153,7 @@ export const GetDeploymentsDeploymentAlias$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetDeploymentsDeploymentAlias
 > = z.object({
-  state: GetDeploymentsDeploymentsState$outboundSchema,
+  state: GetDeploymentsDeploymentsResponseState$outboundSchema,
   startedAt: z.number(),
   completedAt: z.number().optional(),
 });
@@ -1204,6 +1232,59 @@ export const GetDeploymentsOomReport$inboundSchema: z.ZodNativeEnum<
 export const GetDeploymentsOomReport$outboundSchema: z.ZodNativeEnum<
   typeof GetDeploymentsOomReport
 > = GetDeploymentsOomReport$inboundSchema;
+
+/** @internal */
+export const GetDeploymentsDeploymentsState$inboundSchema: z.ZodNativeEnum<
+  typeof GetDeploymentsDeploymentsState
+> = z.nativeEnum(GetDeploymentsDeploymentsState);
+/** @internal */
+export const GetDeploymentsDeploymentsState$outboundSchema: z.ZodNativeEnum<
+  typeof GetDeploymentsDeploymentsState
+> = GetDeploymentsDeploymentsState$inboundSchema;
+
+/** @internal */
+export const GetDeploymentsManualProvisioning$inboundSchema: z.ZodType<
+  GetDeploymentsManualProvisioning,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  state: GetDeploymentsDeploymentsState$inboundSchema,
+  completedAt: types.optional(types.number()),
+});
+/** @internal */
+export type GetDeploymentsManualProvisioning$Outbound = {
+  state: string;
+  completedAt?: number | undefined;
+};
+
+/** @internal */
+export const GetDeploymentsManualProvisioning$outboundSchema: z.ZodType<
+  GetDeploymentsManualProvisioning$Outbound,
+  z.ZodTypeDef,
+  GetDeploymentsManualProvisioning
+> = z.object({
+  state: GetDeploymentsDeploymentsState$outboundSchema,
+  completedAt: z.number().optional(),
+});
+
+export function getDeploymentsManualProvisioningToJSON(
+  getDeploymentsManualProvisioning: GetDeploymentsManualProvisioning,
+): string {
+  return JSON.stringify(
+    GetDeploymentsManualProvisioning$outboundSchema.parse(
+      getDeploymentsManualProvisioning,
+    ),
+  );
+}
+export function getDeploymentsManualProvisioningFromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentsManualProvisioning, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDeploymentsManualProvisioning$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentsManualProvisioning' from JSON`,
+  );
+}
 
 /** @internal */
 export const GetDeploymentsFramework$inboundSchema: z.ZodNativeEnum<
@@ -2064,6 +2145,9 @@ export const Deployments$inboundSchema: z.ZodType<
   oomReport: types.optional(GetDeploymentsOomReport$inboundSchema),
   isRollbackCandidate: z.nullable(types.boolean()).optional(),
   prebuilt: types.optional(types.boolean()),
+  manualProvisioning: types.optional(
+    z.lazy(() => GetDeploymentsManualProvisioning$inboundSchema),
+  ),
   projectSettings: types.optional(
     z.lazy(() => GetDeploymentsProjectSettings$inboundSchema),
   ),
@@ -2116,6 +2200,7 @@ export type Deployments$Outbound = {
   oomReport?: string | undefined;
   isRollbackCandidate?: boolean | null | undefined;
   prebuilt?: boolean | undefined;
+  manualProvisioning?: GetDeploymentsManualProvisioning$Outbound | undefined;
   projectSettings?: GetDeploymentsProjectSettings$Outbound | undefined;
   connectBuildsEnabled?: boolean | undefined;
   connectConfigurationId?: string | undefined;
@@ -2166,6 +2251,9 @@ export const Deployments$outboundSchema: z.ZodType<
   oomReport: GetDeploymentsOomReport$outboundSchema.optional(),
   isRollbackCandidate: z.nullable(z.boolean()).optional(),
   prebuilt: z.boolean().optional(),
+  manualProvisioning: z.lazy(() =>
+    GetDeploymentsManualProvisioning$outboundSchema
+  ).optional(),
   projectSettings: z.lazy(() => GetDeploymentsProjectSettings$outboundSchema)
     .optional(),
   connectBuildsEnabled: z.boolean().optional(),

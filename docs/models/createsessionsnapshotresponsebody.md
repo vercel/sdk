@@ -16,6 +16,8 @@ let value: CreateSessionSnapshotResponseBody = {
     createdAt: 1750344501629,
     updatedAt: 1750344501629,
     lastUsedAt: 1750344501629,
+    creationMethod: "manual",
+    parentId: "snap_parent123",
   },
   session: {
     sourceSandboxName: "my-sandbox",

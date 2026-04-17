@@ -2039,12 +2039,12 @@ func (e *AuthMethod) UnmarshalJSON(data []byte) error {
 type ClientAuthenticationUsedMethod string
 
 const (
+	ClientAuthenticationUsedMethodNone              ClientAuthenticationUsedMethod = "none"
 	ClientAuthenticationUsedMethodClientSecretBasic ClientAuthenticationUsedMethod = "client_secret_basic"
 	ClientAuthenticationUsedMethodClientSecretPost  ClientAuthenticationUsedMethod = "client_secret_post"
 	ClientAuthenticationUsedMethodClientSecretJwt   ClientAuthenticationUsedMethod = "client_secret_jwt"
 	ClientAuthenticationUsedMethodPrivateKeyJwt     ClientAuthenticationUsedMethod = "private_key_jwt"
 	ClientAuthenticationUsedMethodOidcToken         ClientAuthenticationUsedMethod = "oidc_token"
-	ClientAuthenticationUsedMethodNone              ClientAuthenticationUsedMethod = "none"
 )
 
 func (e ClientAuthenticationUsedMethod) ToPointer() *ClientAuthenticationUsedMethod {
@@ -2056,6 +2056,8 @@ func (e *ClientAuthenticationUsedMethod) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
+	case "none":
+		fallthrough
 	case "client_secret_basic":
 		fallthrough
 	case "client_secret_post":
@@ -2065,8 +2067,6 @@ func (e *ClientAuthenticationUsedMethod) UnmarshalJSON(data []byte) error {
 	case "private_key_jwt":
 		fallthrough
 	case "oidc_token":
-		fallthrough
-	case "none":
 		*e = ClientAuthenticationUsedMethod(v)
 		return nil
 	default:

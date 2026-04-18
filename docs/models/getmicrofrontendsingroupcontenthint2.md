@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupContentHint2 } from "@vercel/sdk/models/getmicrofrontendsingroupoidctokenconfig.js";
+import { GetMicrofrontendsInGroupContentHint2 } from "@vercel/sdk/models/getmicrofrontendsingroupgitcomments.js";
 
 let value: GetMicrofrontendsInGroupContentHint2 = {
   type: "redis-rest-api-url",

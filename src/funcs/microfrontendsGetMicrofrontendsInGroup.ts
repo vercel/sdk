@@ -14,7 +14,7 @@ import { pathToFunc } from "../lib/url.js";
 import {
   GetMicrofrontendsInGroupRequest,
   GetMicrofrontendsInGroupRequest$outboundSchema,
-} from "../models/getmicrofrontendsingroupoidctokenconfig.js";
+} from "../models/getmicrofrontendsingroupgitcomments.js";
 import {
   GetMicrofrontendsInGroupResponseBody,
   GetMicrofrontendsInGroupResponseBody$inboundSchema,

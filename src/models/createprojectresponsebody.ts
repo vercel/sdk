@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
@@ -17,6 +18,9 @@ import {
   CreateProjectConnectConfigurations$inboundSchema,
   CreateProjectConnectConfigurations$Outbound,
   CreateProjectConnectConfigurations$outboundSchema,
+  CreateProjectCreateDeployments,
+  CreateProjectCreateDeployments$inboundSchema,
+  CreateProjectCreateDeployments$outboundSchema,
   CreateProjectCrons,
   CreateProjectCrons$inboundSchema,
   CreateProjectCrons$Outbound,
@@ -44,10 +48,6 @@ import {
   CreateProjectNodeVersion,
   CreateProjectNodeVersion$inboundSchema,
   CreateProjectNodeVersion$outboundSchema,
-  CreateProjectOidcTokenConfig,
-  CreateProjectOidcTokenConfig$inboundSchema,
-  CreateProjectOidcTokenConfig$Outbound,
-  CreateProjectOidcTokenConfig$outboundSchema,
   CreateProjectOptionsAllowlist,
   CreateProjectOptionsAllowlist$inboundSchema,
   CreateProjectOptionsAllowlist$Outbound,
@@ -71,10 +71,6 @@ import {
   CreateProjectProjectsSsoProtection$inboundSchema,
   CreateProjectProjectsSsoProtection$Outbound,
   CreateProjectProjectsSsoProtection$outboundSchema,
-  CreateProjectSecurity,
-  CreateProjectSecurity$inboundSchema,
-  CreateProjectSecurity$Outbound,
-  CreateProjectSecurity$outboundSchema,
   CreateProjectStaticIps,
   CreateProjectStaticIps$inboundSchema,
   CreateProjectStaticIps$Outbound,
@@ -87,10 +83,10 @@ import {
   CreateProjectTrustedIps$inboundSchema,
   CreateProjectTrustedIps$Outbound,
   CreateProjectTrustedIps$outboundSchema,
-  CreateProjectWebAnalytics,
-  CreateProjectWebAnalytics$inboundSchema,
-  CreateProjectWebAnalytics$Outbound,
-  CreateProjectWebAnalytics$outboundSchema,
+  CreateProjectTrustedSources,
+  CreateProjectTrustedSources$inboundSchema,
+  CreateProjectTrustedSources$Outbound,
+  CreateProjectTrustedSources$outboundSchema,
   CustomEnvironments,
   CustomEnvironments$inboundSchema,
   CustomEnvironments$Outbound,
@@ -107,13 +103,6 @@ import {
   DeploymentExpiration$inboundSchema,
   DeploymentExpiration$Outbound,
   DeploymentExpiration$outboundSchema,
-  FlatRateTier,
-  FlatRateTier$inboundSchema,
-  FlatRateTier$outboundSchema,
-  GitProviderOptions,
-  GitProviderOptions$inboundSchema,
-  GitProviderOptions$Outbound,
-  GitProviderOptions$outboundSchema,
   Jobs,
   Jobs$inboundSchema,
   Jobs$Outbound,
@@ -150,8 +139,194 @@ import {
   SpeedInsights$inboundSchema,
   SpeedInsights$Outbound,
   SpeedInsights$outboundSchema,
-} from "./flatratetier.js";
+} from "./createprojectcreatedeployments.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+/**
+ * Configuration for consolidated git commit status reporting. When enabled, Vercel will post a single consolidated commit status instead of individual statuses for each deployment.
+ */
+export type CreateProjectConsolidatedGitCommitStatus = {
+  /**
+   * Whether consolidated commit status is enabled.
+   */
+  enabled: boolean;
+  /**
+   * Whether to propagate individual deployment failures to the consolidated status.
+   */
+  propagateFailures: boolean;
+};
+
+export type GitProviderOptions = {
+  /**
+   * Whether the Vercel bot should automatically create GitHub deployments https://docs.github.com/en/rest/deployments/deployments#about-deployments NOTE: repository-dispatch events should be used instead
+   */
+  createDeployments: CreateProjectCreateDeployments;
+  /**
+   * Whether the Vercel bot should not automatically create GitHub repository-dispatch events on deployment events. https://vercel.com/docs/git/vercel-for-github#repository-dispatch-events
+   */
+  disableRepositoryDispatchEvents?: boolean | undefined;
+  /**
+   * Whether the project requires commits to be signed before deployments will be created.
+   */
+  requireVerifiedCommits?: boolean | undefined;
+  /**
+   * Whether Vercel should post commit statuses for this project. When omitted, commit statuses remain enabled.
+   */
+  gitCommitStatus?: boolean | undefined;
+  /**
+   * Configuration for consolidated git commit status reporting. When enabled, Vercel will post a single consolidated commit status instead of individual statuses for each deployment.
+   */
+  consolidatedGitCommitStatus?:
+    | CreateProjectConsolidatedGitCommitStatus
+    | undefined;
+};
+
+export type CreateProjectWebAnalytics = {
+  id: string;
+  disabledAt?: number | undefined;
+  canceledAt?: number | undefined;
+  enabledAt?: number | undefined;
+  hasData?: true | undefined;
+};
+
+export const CreateProjectProjectsResponse200ApplicationJSONAction = {
+  Log: "log",
+  Deny: "deny",
+  Challenge: "challenge",
+} as const;
+export type CreateProjectProjectsResponse200ApplicationJSONAction = ClosedEnum<
+  typeof CreateProjectProjectsResponse200ApplicationJSONAction
+>;
+
+export type CreateProjectVercelRuleset = {
+  active: boolean;
+  action?: CreateProjectProjectsResponse200ApplicationJSONAction | undefined;
+};
+
+export const CreateProjectProjectsResponse200ApplicationJSONResponseBodyAction =
+  {
+    Log: "log",
+    Deny: "deny",
+    Challenge: "challenge",
+  } as const;
+export type CreateProjectProjectsResponse200ApplicationJSONResponseBodyAction =
+  ClosedEnum<
+    typeof CreateProjectProjectsResponse200ApplicationJSONResponseBodyAction
+  >;
+
+export type BotFilter = {
+  active: boolean;
+  action?:
+    | CreateProjectProjectsResponse200ApplicationJSONResponseBodyAction
+    | undefined;
+};
+
+export const CreateProjectProjectsResponseAction = {
+  Log: "log",
+  Deny: "deny",
+  Challenge: "challenge",
+} as const;
+export type CreateProjectProjectsResponseAction = ClosedEnum<
+  typeof CreateProjectProjectsResponseAction
+>;
+
+export type CreateProjectAiBots = {
+  active: boolean;
+  action?: CreateProjectProjectsResponseAction | undefined;
+};
+
+export const CreateProjectProjectsResponse200Action = {
+  Log: "log",
+  Deny: "deny",
+  Challenge: "challenge",
+} as const;
+export type CreateProjectProjectsResponse200Action = ClosedEnum<
+  typeof CreateProjectProjectsResponse200Action
+>;
+
+export type CreateProjectOwasp = {
+  active: boolean;
+  action?: CreateProjectProjectsResponse200Action | undefined;
+};
+
+export type CreateProjectManagedRules = {
+  vercelRuleset: CreateProjectVercelRuleset;
+  botFilter: BotFilter;
+  aiBots: CreateProjectAiBots;
+  owasp: CreateProjectOwasp;
+};
+
+export const CreateProjectLogHeaders2 = {
+  Wildcard: "*",
+} as const;
+export type CreateProjectLogHeaders2 = ClosedEnum<
+  typeof CreateProjectLogHeaders2
+>;
+
+export type CreateProjectLogHeaders = Array<string> | CreateProjectLogHeaders2;
+
+export type SecurityPlusMetadata = {
+  updatedAt: number;
+  /**
+   * Timestamp when the feature was first enabled. Never changes after initial enablement.
+   */
+  firstEnabledAt?: number | undefined;
+};
+
+export type CreateProjectSecurity = {
+  attackModeEnabled?: boolean | undefined;
+  attackModeUpdatedAt?: number | undefined;
+  firewallEnabled?: boolean | undefined;
+  firewallUpdatedAt?: number | undefined;
+  attackModeActiveUntil?: number | null | undefined;
+  firewallConfigVersion?: number | undefined;
+  firewallSeawallEnabled?: boolean | undefined;
+  ja3Enabled?: boolean | undefined;
+  ja4Enabled?: boolean | undefined;
+  firewallBypassIps?: Array<string> | undefined;
+  managedRules?: CreateProjectManagedRules | null | undefined;
+  botIdEnabled?: boolean | undefined;
+  logHeaders?: Array<string> | CreateProjectLogHeaders2 | undefined;
+  securityPlus?: boolean | undefined;
+  securityPlusMetadata?: SecurityPlusMetadata | undefined;
+  /**
+   * Whether Page Integrity is enabled for this project. Used by the metadata service to gate DynamoDB lookups against the page-integrity-inventory table.
+   */
+  pageIntegrityEnabled?: boolean | undefined;
+};
+
+/**
+ * - team: `https://oidc.vercel.com/[team_slug]` - global: `https://oidc.vercel.com`
+ */
+export const CreateProjectProjectsIssuerMode = {
+  Team: "team",
+  Global: "global",
+} as const;
+/**
+ * - team: `https://oidc.vercel.com/[team_slug]` - global: `https://oidc.vercel.com`
+ */
+export type CreateProjectProjectsIssuerMode = ClosedEnum<
+  typeof CreateProjectProjectsIssuerMode
+>;
+
+export type CreateProjectOidcTokenConfig = {
+  /**
+   * Whether or not to generate OpenID Connect JSON Web Tokens.
+   */
+  enabled?: boolean | undefined;
+  /**
+   * - team: `https://oidc.vercel.com/[team_slug]` - global: `https://oidc.vercel.com`
+   */
+  issuerMode?: CreateProjectProjectsIssuerMode | undefined;
+};
+
+export const FlatRateTier = {
+  Standard: "standard",
+  Base: "base",
+  Advanced: "advanced",
+  Critical: "critical",
+} as const;
+export type FlatRateTier = ClosedEnum<typeof FlatRateTier>;
 
 /**
  * Billing mode. Always 'flat' for flat-rate projects.
@@ -561,6 +736,7 @@ export type CreateProjectResponseBody = {
   protectionBypass?: { [k: string]: ProtectionBypass } | undefined;
   hasActiveBranches?: boolean | undefined;
   trustedIps?: CreateProjectTrustedIps | null | undefined;
+  trustedSources?: CreateProjectTrustedSources | null | undefined;
   gitComments?: CreateProjectGitComments | undefined;
   gitProviderOptions?: GitProviderOptions | undefined;
   paused?: boolean | undefined;
@@ -581,6 +757,694 @@ export type CreateProjectResponseBody = {
   protectedSourcemaps?: boolean | undefined;
   tracing?: CreateProjectTracing | undefined;
 };
+
+/** @internal */
+export const CreateProjectConsolidatedGitCommitStatus$inboundSchema: z.ZodType<
+  CreateProjectConsolidatedGitCommitStatus,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  enabled: types.boolean(),
+  propagateFailures: types.boolean(),
+});
+/** @internal */
+export type CreateProjectConsolidatedGitCommitStatus$Outbound = {
+  enabled: boolean;
+  propagateFailures: boolean;
+};
+
+/** @internal */
+export const CreateProjectConsolidatedGitCommitStatus$outboundSchema: z.ZodType<
+  CreateProjectConsolidatedGitCommitStatus$Outbound,
+  z.ZodTypeDef,
+  CreateProjectConsolidatedGitCommitStatus
+> = z.object({
+  enabled: z.boolean(),
+  propagateFailures: z.boolean(),
+});
+
+export function createProjectConsolidatedGitCommitStatusToJSON(
+  createProjectConsolidatedGitCommitStatus:
+    CreateProjectConsolidatedGitCommitStatus,
+): string {
+  return JSON.stringify(
+    CreateProjectConsolidatedGitCommitStatus$outboundSchema.parse(
+      createProjectConsolidatedGitCommitStatus,
+    ),
+  );
+}
+export function createProjectConsolidatedGitCommitStatusFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateProjectConsolidatedGitCommitStatus,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateProjectConsolidatedGitCommitStatus$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CreateProjectConsolidatedGitCommitStatus' from JSON`,
+  );
+}
+
+/** @internal */
+export const GitProviderOptions$inboundSchema: z.ZodType<
+  GitProviderOptions,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  createDeployments: CreateProjectCreateDeployments$inboundSchema,
+  disableRepositoryDispatchEvents: types.optional(types.boolean()),
+  requireVerifiedCommits: types.optional(types.boolean()),
+  gitCommitStatus: types.optional(types.boolean()),
+  consolidatedGitCommitStatus: types.optional(
+    z.lazy(() => CreateProjectConsolidatedGitCommitStatus$inboundSchema),
+  ),
+});
+/** @internal */
+export type GitProviderOptions$Outbound = {
+  createDeployments: string;
+  disableRepositoryDispatchEvents?: boolean | undefined;
+  requireVerifiedCommits?: boolean | undefined;
+  gitCommitStatus?: boolean | undefined;
+  consolidatedGitCommitStatus?:
+    | CreateProjectConsolidatedGitCommitStatus$Outbound
+    | undefined;
+};
+
+/** @internal */
+export const GitProviderOptions$outboundSchema: z.ZodType<
+  GitProviderOptions$Outbound,
+  z.ZodTypeDef,
+  GitProviderOptions
+> = z.object({
+  createDeployments: CreateProjectCreateDeployments$outboundSchema,
+  disableRepositoryDispatchEvents: z.boolean().optional(),
+  requireVerifiedCommits: z.boolean().optional(),
+  gitCommitStatus: z.boolean().optional(),
+  consolidatedGitCommitStatus: z.lazy(() =>
+    CreateProjectConsolidatedGitCommitStatus$outboundSchema
+  ).optional(),
+});
+
+export function gitProviderOptionsToJSON(
+  gitProviderOptions: GitProviderOptions,
+): string {
+  return JSON.stringify(
+    GitProviderOptions$outboundSchema.parse(gitProviderOptions),
+  );
+}
+export function gitProviderOptionsFromJSON(
+  jsonString: string,
+): SafeParseResult<GitProviderOptions, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GitProviderOptions$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GitProviderOptions' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateProjectWebAnalytics$inboundSchema: z.ZodType<
+  CreateProjectWebAnalytics,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  id: types.string(),
+  disabledAt: types.optional(types.number()),
+  canceledAt: types.optional(types.number()),
+  enabledAt: types.optional(types.number()),
+  hasData: types.optional(types.literal(true)),
+});
+/** @internal */
+export type CreateProjectWebAnalytics$Outbound = {
+  id: string;
+  disabledAt?: number | undefined;
+  canceledAt?: number | undefined;
+  enabledAt?: number | undefined;
+  hasData?: true | undefined;
+};
+
+/** @internal */
+export const CreateProjectWebAnalytics$outboundSchema: z.ZodType<
+  CreateProjectWebAnalytics$Outbound,
+  z.ZodTypeDef,
+  CreateProjectWebAnalytics
+> = z.object({
+  id: z.string(),
+  disabledAt: z.number().optional(),
+  canceledAt: z.number().optional(),
+  enabledAt: z.number().optional(),
+  hasData: z.literal(true).optional(),
+});
+
+export function createProjectWebAnalyticsToJSON(
+  createProjectWebAnalytics: CreateProjectWebAnalytics,
+): string {
+  return JSON.stringify(
+    CreateProjectWebAnalytics$outboundSchema.parse(createProjectWebAnalytics),
+  );
+}
+export function createProjectWebAnalyticsFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateProjectWebAnalytics, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateProjectWebAnalytics$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProjectWebAnalytics' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateProjectProjectsResponse200ApplicationJSONAction$inboundSchema:
+  z.ZodNativeEnum<
+    typeof CreateProjectProjectsResponse200ApplicationJSONAction
+  > = z.nativeEnum(CreateProjectProjectsResponse200ApplicationJSONAction);
+/** @internal */
+export const CreateProjectProjectsResponse200ApplicationJSONAction$outboundSchema:
+  z.ZodNativeEnum<
+    typeof CreateProjectProjectsResponse200ApplicationJSONAction
+  > = CreateProjectProjectsResponse200ApplicationJSONAction$inboundSchema;
+
+/** @internal */
+export const CreateProjectVercelRuleset$inboundSchema: z.ZodType<
+  CreateProjectVercelRuleset,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  active: types.boolean(),
+  action: types.optional(
+    CreateProjectProjectsResponse200ApplicationJSONAction$inboundSchema,
+  ),
+});
+/** @internal */
+export type CreateProjectVercelRuleset$Outbound = {
+  active: boolean;
+  action?: string | undefined;
+};
+
+/** @internal */
+export const CreateProjectVercelRuleset$outboundSchema: z.ZodType<
+  CreateProjectVercelRuleset$Outbound,
+  z.ZodTypeDef,
+  CreateProjectVercelRuleset
+> = z.object({
+  active: z.boolean(),
+  action: CreateProjectProjectsResponse200ApplicationJSONAction$outboundSchema
+    .optional(),
+});
+
+export function createProjectVercelRulesetToJSON(
+  createProjectVercelRuleset: CreateProjectVercelRuleset,
+): string {
+  return JSON.stringify(
+    CreateProjectVercelRuleset$outboundSchema.parse(createProjectVercelRuleset),
+  );
+}
+export function createProjectVercelRulesetFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateProjectVercelRuleset, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateProjectVercelRuleset$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProjectVercelRuleset' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateProjectProjectsResponse200ApplicationJSONResponseBodyAction$inboundSchema:
+  z.ZodNativeEnum<
+    typeof CreateProjectProjectsResponse200ApplicationJSONResponseBodyAction
+  > = z.nativeEnum(
+    CreateProjectProjectsResponse200ApplicationJSONResponseBodyAction,
+  );
+/** @internal */
+export const CreateProjectProjectsResponse200ApplicationJSONResponseBodyAction$outboundSchema:
+  z.ZodNativeEnum<
+    typeof CreateProjectProjectsResponse200ApplicationJSONResponseBodyAction
+  > =
+    CreateProjectProjectsResponse200ApplicationJSONResponseBodyAction$inboundSchema;
+
+/** @internal */
+export const BotFilter$inboundSchema: z.ZodType<
+  BotFilter,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  active: types.boolean(),
+  action: types.optional(
+    CreateProjectProjectsResponse200ApplicationJSONResponseBodyAction$inboundSchema,
+  ),
+});
+/** @internal */
+export type BotFilter$Outbound = {
+  active: boolean;
+  action?: string | undefined;
+};
+
+/** @internal */
+export const BotFilter$outboundSchema: z.ZodType<
+  BotFilter$Outbound,
+  z.ZodTypeDef,
+  BotFilter
+> = z.object({
+  active: z.boolean(),
+  action:
+    CreateProjectProjectsResponse200ApplicationJSONResponseBodyAction$outboundSchema
+      .optional(),
+});
+
+export function botFilterToJSON(botFilter: BotFilter): string {
+  return JSON.stringify(BotFilter$outboundSchema.parse(botFilter));
+}
+export function botFilterFromJSON(
+  jsonString: string,
+): SafeParseResult<BotFilter, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BotFilter$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BotFilter' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateProjectProjectsResponseAction$inboundSchema: z.ZodNativeEnum<
+  typeof CreateProjectProjectsResponseAction
+> = z.nativeEnum(CreateProjectProjectsResponseAction);
+/** @internal */
+export const CreateProjectProjectsResponseAction$outboundSchema:
+  z.ZodNativeEnum<typeof CreateProjectProjectsResponseAction> =
+    CreateProjectProjectsResponseAction$inboundSchema;
+
+/** @internal */
+export const CreateProjectAiBots$inboundSchema: z.ZodType<
+  CreateProjectAiBots,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  active: types.boolean(),
+  action: types.optional(CreateProjectProjectsResponseAction$inboundSchema),
+});
+/** @internal */
+export type CreateProjectAiBots$Outbound = {
+  active: boolean;
+  action?: string | undefined;
+};
+
+/** @internal */
+export const CreateProjectAiBots$outboundSchema: z.ZodType<
+  CreateProjectAiBots$Outbound,
+  z.ZodTypeDef,
+  CreateProjectAiBots
+> = z.object({
+  active: z.boolean(),
+  action: CreateProjectProjectsResponseAction$outboundSchema.optional(),
+});
+
+export function createProjectAiBotsToJSON(
+  createProjectAiBots: CreateProjectAiBots,
+): string {
+  return JSON.stringify(
+    CreateProjectAiBots$outboundSchema.parse(createProjectAiBots),
+  );
+}
+export function createProjectAiBotsFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateProjectAiBots, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateProjectAiBots$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProjectAiBots' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateProjectProjectsResponse200Action$inboundSchema:
+  z.ZodNativeEnum<typeof CreateProjectProjectsResponse200Action> = z.nativeEnum(
+    CreateProjectProjectsResponse200Action,
+  );
+/** @internal */
+export const CreateProjectProjectsResponse200Action$outboundSchema:
+  z.ZodNativeEnum<typeof CreateProjectProjectsResponse200Action> =
+    CreateProjectProjectsResponse200Action$inboundSchema;
+
+/** @internal */
+export const CreateProjectOwasp$inboundSchema: z.ZodType<
+  CreateProjectOwasp,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  active: types.boolean(),
+  action: types.optional(CreateProjectProjectsResponse200Action$inboundSchema),
+});
+/** @internal */
+export type CreateProjectOwasp$Outbound = {
+  active: boolean;
+  action?: string | undefined;
+};
+
+/** @internal */
+export const CreateProjectOwasp$outboundSchema: z.ZodType<
+  CreateProjectOwasp$Outbound,
+  z.ZodTypeDef,
+  CreateProjectOwasp
+> = z.object({
+  active: z.boolean(),
+  action: CreateProjectProjectsResponse200Action$outboundSchema.optional(),
+});
+
+export function createProjectOwaspToJSON(
+  createProjectOwasp: CreateProjectOwasp,
+): string {
+  return JSON.stringify(
+    CreateProjectOwasp$outboundSchema.parse(createProjectOwasp),
+  );
+}
+export function createProjectOwaspFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateProjectOwasp, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateProjectOwasp$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProjectOwasp' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateProjectManagedRules$inboundSchema: z.ZodType<
+  CreateProjectManagedRules,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  vercel_ruleset: z.lazy(() => CreateProjectVercelRuleset$inboundSchema),
+  bot_filter: z.lazy(() => BotFilter$inboundSchema),
+  ai_bots: z.lazy(() => CreateProjectAiBots$inboundSchema),
+  owasp: z.lazy(() => CreateProjectOwasp$inboundSchema),
+}).transform((v) => {
+  return remap$(v, {
+    "vercel_ruleset": "vercelRuleset",
+    "bot_filter": "botFilter",
+    "ai_bots": "aiBots",
+  });
+});
+/** @internal */
+export type CreateProjectManagedRules$Outbound = {
+  vercel_ruleset: CreateProjectVercelRuleset$Outbound;
+  bot_filter: BotFilter$Outbound;
+  ai_bots: CreateProjectAiBots$Outbound;
+  owasp: CreateProjectOwasp$Outbound;
+};
+
+/** @internal */
+export const CreateProjectManagedRules$outboundSchema: z.ZodType<
+  CreateProjectManagedRules$Outbound,
+  z.ZodTypeDef,
+  CreateProjectManagedRules
+> = z.object({
+  vercelRuleset: z.lazy(() => CreateProjectVercelRuleset$outboundSchema),
+  botFilter: z.lazy(() => BotFilter$outboundSchema),
+  aiBots: z.lazy(() => CreateProjectAiBots$outboundSchema),
+  owasp: z.lazy(() => CreateProjectOwasp$outboundSchema),
+}).transform((v) => {
+  return remap$(v, {
+    vercelRuleset: "vercel_ruleset",
+    botFilter: "bot_filter",
+    aiBots: "ai_bots",
+  });
+});
+
+export function createProjectManagedRulesToJSON(
+  createProjectManagedRules: CreateProjectManagedRules,
+): string {
+  return JSON.stringify(
+    CreateProjectManagedRules$outboundSchema.parse(createProjectManagedRules),
+  );
+}
+export function createProjectManagedRulesFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateProjectManagedRules, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateProjectManagedRules$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProjectManagedRules' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateProjectLogHeaders2$inboundSchema: z.ZodNativeEnum<
+  typeof CreateProjectLogHeaders2
+> = z.nativeEnum(CreateProjectLogHeaders2);
+/** @internal */
+export const CreateProjectLogHeaders2$outboundSchema: z.ZodNativeEnum<
+  typeof CreateProjectLogHeaders2
+> = CreateProjectLogHeaders2$inboundSchema;
+
+/** @internal */
+export const CreateProjectLogHeaders$inboundSchema: z.ZodType<
+  CreateProjectLogHeaders,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  z.array(types.string()),
+  CreateProjectLogHeaders2$inboundSchema,
+]);
+/** @internal */
+export type CreateProjectLogHeaders$Outbound = Array<string> | string;
+
+/** @internal */
+export const CreateProjectLogHeaders$outboundSchema: z.ZodType<
+  CreateProjectLogHeaders$Outbound,
+  z.ZodTypeDef,
+  CreateProjectLogHeaders
+> = smartUnion([z.array(z.string()), CreateProjectLogHeaders2$outboundSchema]);
+
+export function createProjectLogHeadersToJSON(
+  createProjectLogHeaders: CreateProjectLogHeaders,
+): string {
+  return JSON.stringify(
+    CreateProjectLogHeaders$outboundSchema.parse(createProjectLogHeaders),
+  );
+}
+export function createProjectLogHeadersFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateProjectLogHeaders, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateProjectLogHeaders$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProjectLogHeaders' from JSON`,
+  );
+}
+
+/** @internal */
+export const SecurityPlusMetadata$inboundSchema: z.ZodType<
+  SecurityPlusMetadata,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  updatedAt: types.number(),
+  firstEnabledAt: types.optional(types.number()),
+});
+/** @internal */
+export type SecurityPlusMetadata$Outbound = {
+  updatedAt: number;
+  firstEnabledAt?: number | undefined;
+};
+
+/** @internal */
+export const SecurityPlusMetadata$outboundSchema: z.ZodType<
+  SecurityPlusMetadata$Outbound,
+  z.ZodTypeDef,
+  SecurityPlusMetadata
+> = z.object({
+  updatedAt: z.number(),
+  firstEnabledAt: z.number().optional(),
+});
+
+export function securityPlusMetadataToJSON(
+  securityPlusMetadata: SecurityPlusMetadata,
+): string {
+  return JSON.stringify(
+    SecurityPlusMetadata$outboundSchema.parse(securityPlusMetadata),
+  );
+}
+export function securityPlusMetadataFromJSON(
+  jsonString: string,
+): SafeParseResult<SecurityPlusMetadata, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SecurityPlusMetadata$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SecurityPlusMetadata' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateProjectSecurity$inboundSchema: z.ZodType<
+  CreateProjectSecurity,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  attackModeEnabled: types.optional(types.boolean()),
+  attackModeUpdatedAt: types.optional(types.number()),
+  firewallEnabled: types.optional(types.boolean()),
+  firewallUpdatedAt: types.optional(types.number()),
+  attackModeActiveUntil: z.nullable(types.number()).optional(),
+  firewallConfigVersion: types.optional(types.number()),
+  firewallSeawallEnabled: types.optional(types.boolean()),
+  ja3Enabled: types.optional(types.boolean()),
+  ja4Enabled: types.optional(types.boolean()),
+  firewallBypassIps: types.optional(z.array(types.string())),
+  managedRules: z.nullable(
+    z.lazy(() => CreateProjectManagedRules$inboundSchema),
+  ).optional(),
+  botIdEnabled: types.optional(types.boolean()),
+  log_headers: types.optional(
+    smartUnion([
+      z.array(types.string()),
+      CreateProjectLogHeaders2$inboundSchema,
+    ]),
+  ),
+  securityPlus: types.optional(types.boolean()),
+  securityPlusMetadata: types.optional(
+    z.lazy(() => SecurityPlusMetadata$inboundSchema),
+  ),
+  pageIntegrityEnabled: types.optional(types.boolean()),
+}).transform((v) => {
+  return remap$(v, {
+    "log_headers": "logHeaders",
+  });
+});
+/** @internal */
+export type CreateProjectSecurity$Outbound = {
+  attackModeEnabled?: boolean | undefined;
+  attackModeUpdatedAt?: number | undefined;
+  firewallEnabled?: boolean | undefined;
+  firewallUpdatedAt?: number | undefined;
+  attackModeActiveUntil?: number | null | undefined;
+  firewallConfigVersion?: number | undefined;
+  firewallSeawallEnabled?: boolean | undefined;
+  ja3Enabled?: boolean | undefined;
+  ja4Enabled?: boolean | undefined;
+  firewallBypassIps?: Array<string> | undefined;
+  managedRules?: CreateProjectManagedRules$Outbound | null | undefined;
+  botIdEnabled?: boolean | undefined;
+  log_headers?: Array<string> | string | undefined;
+  securityPlus?: boolean | undefined;
+  securityPlusMetadata?: SecurityPlusMetadata$Outbound | undefined;
+  pageIntegrityEnabled?: boolean | undefined;
+};
+
+/** @internal */
+export const CreateProjectSecurity$outboundSchema: z.ZodType<
+  CreateProjectSecurity$Outbound,
+  z.ZodTypeDef,
+  CreateProjectSecurity
+> = z.object({
+  attackModeEnabled: z.boolean().optional(),
+  attackModeUpdatedAt: z.number().optional(),
+  firewallEnabled: z.boolean().optional(),
+  firewallUpdatedAt: z.number().optional(),
+  attackModeActiveUntil: z.nullable(z.number()).optional(),
+  firewallConfigVersion: z.number().optional(),
+  firewallSeawallEnabled: z.boolean().optional(),
+  ja3Enabled: z.boolean().optional(),
+  ja4Enabled: z.boolean().optional(),
+  firewallBypassIps: z.array(z.string()).optional(),
+  managedRules: z.nullable(
+    z.lazy(() => CreateProjectManagedRules$outboundSchema),
+  ).optional(),
+  botIdEnabled: z.boolean().optional(),
+  logHeaders: smartUnion([
+    z.array(z.string()),
+    CreateProjectLogHeaders2$outboundSchema,
+  ]).optional(),
+  securityPlus: z.boolean().optional(),
+  securityPlusMetadata: z.lazy(() => SecurityPlusMetadata$outboundSchema)
+    .optional(),
+  pageIntegrityEnabled: z.boolean().optional(),
+}).transform((v) => {
+  return remap$(v, {
+    logHeaders: "log_headers",
+  });
+});
+
+export function createProjectSecurityToJSON(
+  createProjectSecurity: CreateProjectSecurity,
+): string {
+  return JSON.stringify(
+    CreateProjectSecurity$outboundSchema.parse(createProjectSecurity),
+  );
+}
+export function createProjectSecurityFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateProjectSecurity, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateProjectSecurity$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProjectSecurity' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateProjectProjectsIssuerMode$inboundSchema: z.ZodNativeEnum<
+  typeof CreateProjectProjectsIssuerMode
+> = z.nativeEnum(CreateProjectProjectsIssuerMode);
+/** @internal */
+export const CreateProjectProjectsIssuerMode$outboundSchema: z.ZodNativeEnum<
+  typeof CreateProjectProjectsIssuerMode
+> = CreateProjectProjectsIssuerMode$inboundSchema;
+
+/** @internal */
+export const CreateProjectOidcTokenConfig$inboundSchema: z.ZodType<
+  CreateProjectOidcTokenConfig,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  enabled: types.optional(types.boolean()),
+  issuerMode: types.optional(CreateProjectProjectsIssuerMode$inboundSchema),
+});
+/** @internal */
+export type CreateProjectOidcTokenConfig$Outbound = {
+  enabled?: boolean | undefined;
+  issuerMode?: string | undefined;
+};
+
+/** @internal */
+export const CreateProjectOidcTokenConfig$outboundSchema: z.ZodType<
+  CreateProjectOidcTokenConfig$Outbound,
+  z.ZodTypeDef,
+  CreateProjectOidcTokenConfig
+> = z.object({
+  enabled: z.boolean().optional(),
+  issuerMode: CreateProjectProjectsIssuerMode$outboundSchema.optional(),
+});
+
+export function createProjectOidcTokenConfigToJSON(
+  createProjectOidcTokenConfig: CreateProjectOidcTokenConfig,
+): string {
+  return JSON.stringify(
+    CreateProjectOidcTokenConfig$outboundSchema.parse(
+      createProjectOidcTokenConfig,
+    ),
+  );
+}
+export function createProjectOidcTokenConfigFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateProjectOidcTokenConfig, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateProjectOidcTokenConfig$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProjectOidcTokenConfig' from JSON`,
+  );
+}
+
+/** @internal */
+export const FlatRateTier$inboundSchema: z.ZodNativeEnum<typeof FlatRateTier> =
+  z.nativeEnum(FlatRateTier);
+/** @internal */
+export const FlatRateTier$outboundSchema: z.ZodNativeEnum<typeof FlatRateTier> =
+  FlatRateTier$inboundSchema;
 
 /** @internal */
 export const CreateProjectKind$inboundSchema: z.ZodNativeEnum<
@@ -2783,13 +3647,21 @@ export const CreateProjectResponseBody$inboundSchema: z.ZodType<
   protectionBypass: types.optional(z.record(ProtectionBypass$inboundSchema)),
   hasActiveBranches: types.optional(types.boolean()),
   trustedIps: z.nullable(CreateProjectTrustedIps$inboundSchema).optional(),
+  trustedSources: z.nullable(CreateProjectTrustedSources$inboundSchema)
+    .optional(),
   gitComments: types.optional(CreateProjectGitComments$inboundSchema),
-  gitProviderOptions: types.optional(GitProviderOptions$inboundSchema),
+  gitProviderOptions: types.optional(
+    z.lazy(() => GitProviderOptions$inboundSchema),
+  ),
   paused: types.optional(types.boolean()),
   concurrencyBucketName: types.optional(types.string()),
-  webAnalytics: types.optional(CreateProjectWebAnalytics$inboundSchema),
-  security: types.optional(CreateProjectSecurity$inboundSchema),
-  oidcTokenConfig: types.optional(CreateProjectOidcTokenConfig$inboundSchema),
+  webAnalytics: types.optional(
+    z.lazy(() => CreateProjectWebAnalytics$inboundSchema),
+  ),
+  security: types.optional(z.lazy(() => CreateProjectSecurity$inboundSchema)),
+  oidcTokenConfig: types.optional(
+    z.lazy(() => CreateProjectOidcTokenConfig$inboundSchema),
+  ),
   tier: types.optional(types.string()),
   flatRateTier: types.optional(FlatRateTier$inboundSchema),
   usageStatus: types.optional(z.lazy(() => UsageStatus$inboundSchema)),
@@ -2893,6 +3765,7 @@ export type CreateProjectResponseBody$Outbound = {
   protectionBypass?: { [k: string]: ProtectionBypass$Outbound } | undefined;
   hasActiveBranches?: boolean | undefined;
   trustedIps?: CreateProjectTrustedIps$Outbound | null | undefined;
+  trustedSources?: CreateProjectTrustedSources$Outbound | null | undefined;
   gitComments?: CreateProjectGitComments$Outbound | undefined;
   gitProviderOptions?: GitProviderOptions$Outbound | undefined;
   paused?: boolean | undefined;
@@ -2999,13 +3872,18 @@ export const CreateProjectResponseBody$outboundSchema: z.ZodType<
   protectionBypass: z.record(ProtectionBypass$outboundSchema).optional(),
   hasActiveBranches: z.boolean().optional(),
   trustedIps: z.nullable(CreateProjectTrustedIps$outboundSchema).optional(),
+  trustedSources: z.nullable(CreateProjectTrustedSources$outboundSchema)
+    .optional(),
   gitComments: CreateProjectGitComments$outboundSchema.optional(),
-  gitProviderOptions: GitProviderOptions$outboundSchema.optional(),
+  gitProviderOptions: z.lazy(() => GitProviderOptions$outboundSchema)
+    .optional(),
   paused: z.boolean().optional(),
   concurrencyBucketName: z.string().optional(),
-  webAnalytics: CreateProjectWebAnalytics$outboundSchema.optional(),
-  security: CreateProjectSecurity$outboundSchema.optional(),
-  oidcTokenConfig: CreateProjectOidcTokenConfig$outboundSchema.optional(),
+  webAnalytics: z.lazy(() => CreateProjectWebAnalytics$outboundSchema)
+    .optional(),
+  security: z.lazy(() => CreateProjectSecurity$outboundSchema).optional(),
+  oidcTokenConfig: z.lazy(() => CreateProjectOidcTokenConfig$outboundSchema)
+    .optional(),
   tier: z.string().optional(),
   flatRateTier: FlatRateTier$outboundSchema.optional(),
   usageStatus: z.lazy(() => UsageStatus$outboundSchema).optional(),

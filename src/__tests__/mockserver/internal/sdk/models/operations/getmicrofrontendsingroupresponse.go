@@ -8,8 +8,562 @@ import (
 	"fmt"
 	"mockserver/internal/sdk/models/components"
 	"mockserver/internal/sdk/optionalnullable"
+	"mockserver/internal/sdk/types"
 	"mockserver/internal/sdk/utils"
 )
+
+// GetMicrofrontendsInGroupCustomAllow - Optional overrides for the default same-env-by-slug matching. Provide explicit rules to allow cross-env access or presets.
+type GetMicrofrontendsInGroupCustomAllow struct {
+	From GetMicrofrontendsInGroupFromUnion          `json:"from"`
+	To   GetMicrofrontendsInGroupCustomAllowToUnion `json:"to"`
+}
+
+func (o *GetMicrofrontendsInGroupCustomAllow) GetFrom() GetMicrofrontendsInGroupFromUnion {
+	if o == nil {
+		return GetMicrofrontendsInGroupFromUnion{}
+	}
+	return o.From
+}
+
+func (o *GetMicrofrontendsInGroupCustomAllow) GetTo() GetMicrofrontendsInGroupCustomAllowToUnion {
+	if o == nil {
+		return GetMicrofrontendsInGroupCustomAllowToUnion{}
+	}
+	return o.To
+}
+
+type GetMicrofrontendsInGroupProjects struct {
+	Label *string `json:"label,omitempty"`
+	// Optional overrides for the default same-env-by-slug matching. Provide explicit rules to allow cross-env access or presets.
+	CustomAllow []GetMicrofrontendsInGroupCustomAllow `json:"customAllow,omitempty"`
+}
+
+func (o *GetMicrofrontendsInGroupProjects) GetLabel() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Label
+}
+
+func (o *GetMicrofrontendsInGroupProjects) GetCustomAllow() []GetMicrofrontendsInGroupCustomAllow {
+	if o == nil {
+		return nil
+	}
+	return o.CustomAllow
+}
+
+type GetMicrofrontendsInGroupOidcProviderPreset2 string
+
+const (
+	GetMicrofrontendsInGroupOidcProviderPreset2AllCustom GetMicrofrontendsInGroupOidcProviderPreset2 = "all-custom"
+)
+
+func (e GetMicrofrontendsInGroupOidcProviderPreset2) ToPointer() *GetMicrofrontendsInGroupOidcProviderPreset2 {
+	return &e
+}
+func (e *GetMicrofrontendsInGroupOidcProviderPreset2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "all-custom":
+		*e = GetMicrofrontendsInGroupOidcProviderPreset2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetMicrofrontendsInGroupOidcProviderPreset2: %v", v)
+	}
+}
+
+// GetMicrofrontendsInGroupToOidcProviderAllCustom2 - The target envs on the current project that may be accessed.
+type GetMicrofrontendsInGroupToOidcProviderAllCustom2 struct {
+	// System environment slugs (`production`, `preview`) and/or custom environment slugs defined on the referenced project.
+	Slugs  []string                                    `json:"slugs,omitempty"`
+	Preset GetMicrofrontendsInGroupOidcProviderPreset2 `json:"preset"`
+}
+
+func (g GetMicrofrontendsInGroupToOidcProviderAllCustom2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetMicrofrontendsInGroupToOidcProviderAllCustom2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"preset"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetMicrofrontendsInGroupToOidcProviderAllCustom2) GetSlugs() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Slugs
+}
+
+func (o *GetMicrofrontendsInGroupToOidcProviderAllCustom2) GetPreset() GetMicrofrontendsInGroupOidcProviderPreset2 {
+	if o == nil {
+		return GetMicrofrontendsInGroupOidcProviderPreset2("")
+	}
+	return o.Preset
+}
+
+type GetMicrofrontendsInGroupOidcProviderPreset1 string
+
+const (
+	GetMicrofrontendsInGroupOidcProviderPreset1AllCustom GetMicrofrontendsInGroupOidcProviderPreset1 = "all-custom"
+)
+
+func (e GetMicrofrontendsInGroupOidcProviderPreset1) ToPointer() *GetMicrofrontendsInGroupOidcProviderPreset1 {
+	return &e
+}
+func (e *GetMicrofrontendsInGroupOidcProviderPreset1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "all-custom":
+		*e = GetMicrofrontendsInGroupOidcProviderPreset1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetMicrofrontendsInGroupOidcProviderPreset1: %v", v)
+	}
+}
+
+// GetMicrofrontendsInGroupToOidcProviderAllCustom1 - The target envs on the current project that may be accessed.
+type GetMicrofrontendsInGroupToOidcProviderAllCustom1 struct {
+	// System environment slugs (`production`, `preview`) and/or custom environment slugs defined on the referenced project.
+	Slugs  []string                                     `json:"slugs"`
+	Preset *GetMicrofrontendsInGroupOidcProviderPreset1 `json:"preset,omitempty"`
+}
+
+func (g GetMicrofrontendsInGroupToOidcProviderAllCustom1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetMicrofrontendsInGroupToOidcProviderAllCustom1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"slugs"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetMicrofrontendsInGroupToOidcProviderAllCustom1) GetSlugs() []string {
+	if o == nil {
+		return []string{}
+	}
+	return o.Slugs
+}
+
+func (o *GetMicrofrontendsInGroupToOidcProviderAllCustom1) GetPreset() *GetMicrofrontendsInGroupOidcProviderPreset1 {
+	if o == nil {
+		return nil
+	}
+	return o.Preset
+}
+
+type GetMicrofrontendsInGroupOidcProviderToUnionType string
+
+const (
+	GetMicrofrontendsInGroupOidcProviderToUnionTypeGetMicrofrontendsInGroupToOidcProviderAllCustom1 GetMicrofrontendsInGroupOidcProviderToUnionType = "getMicrofrontendsInGroup_to_oidcProvider_AllCustom_1"
+	GetMicrofrontendsInGroupOidcProviderToUnionTypeGetMicrofrontendsInGroupToOidcProviderAllCustom2 GetMicrofrontendsInGroupOidcProviderToUnionType = "getMicrofrontendsInGroup_to_oidcProvider_AllCustom_2"
+)
+
+type GetMicrofrontendsInGroupOidcProviderToUnion struct {
+	GetMicrofrontendsInGroupToOidcProviderAllCustom1 *GetMicrofrontendsInGroupToOidcProviderAllCustom1 `queryParam:"inline"`
+	GetMicrofrontendsInGroupToOidcProviderAllCustom2 *GetMicrofrontendsInGroupToOidcProviderAllCustom2 `queryParam:"inline"`
+
+	Type GetMicrofrontendsInGroupOidcProviderToUnionType
+}
+
+func CreateGetMicrofrontendsInGroupOidcProviderToUnionGetMicrofrontendsInGroupToOidcProviderAllCustom1(getMicrofrontendsInGroupToOidcProviderAllCustom1 GetMicrofrontendsInGroupToOidcProviderAllCustom1) GetMicrofrontendsInGroupOidcProviderToUnion {
+	typ := GetMicrofrontendsInGroupOidcProviderToUnionTypeGetMicrofrontendsInGroupToOidcProviderAllCustom1
+
+	return GetMicrofrontendsInGroupOidcProviderToUnion{
+		GetMicrofrontendsInGroupToOidcProviderAllCustom1: &getMicrofrontendsInGroupToOidcProviderAllCustom1,
+		Type: typ,
+	}
+}
+
+func CreateGetMicrofrontendsInGroupOidcProviderToUnionGetMicrofrontendsInGroupToOidcProviderAllCustom2(getMicrofrontendsInGroupToOidcProviderAllCustom2 GetMicrofrontendsInGroupToOidcProviderAllCustom2) GetMicrofrontendsInGroupOidcProviderToUnion {
+	typ := GetMicrofrontendsInGroupOidcProviderToUnionTypeGetMicrofrontendsInGroupToOidcProviderAllCustom2
+
+	return GetMicrofrontendsInGroupOidcProviderToUnion{
+		GetMicrofrontendsInGroupToOidcProviderAllCustom2: &getMicrofrontendsInGroupToOidcProviderAllCustom2,
+		Type: typ,
+	}
+}
+
+func (u *GetMicrofrontendsInGroupOidcProviderToUnion) UnmarshalJSON(data []byte) error {
+
+	var getMicrofrontendsInGroupToOidcProviderAllCustom1 GetMicrofrontendsInGroupToOidcProviderAllCustom1 = GetMicrofrontendsInGroupToOidcProviderAllCustom1{}
+	if err := utils.UnmarshalJSON(data, &getMicrofrontendsInGroupToOidcProviderAllCustom1, "", true, nil); err == nil {
+		u.GetMicrofrontendsInGroupToOidcProviderAllCustom1 = &getMicrofrontendsInGroupToOidcProviderAllCustom1
+		u.Type = GetMicrofrontendsInGroupOidcProviderToUnionTypeGetMicrofrontendsInGroupToOidcProviderAllCustom1
+		return nil
+	}
+
+	var getMicrofrontendsInGroupToOidcProviderAllCustom2 GetMicrofrontendsInGroupToOidcProviderAllCustom2 = GetMicrofrontendsInGroupToOidcProviderAllCustom2{}
+	if err := utils.UnmarshalJSON(data, &getMicrofrontendsInGroupToOidcProviderAllCustom2, "", true, nil); err == nil {
+		u.GetMicrofrontendsInGroupToOidcProviderAllCustom2 = &getMicrofrontendsInGroupToOidcProviderAllCustom2
+		u.Type = GetMicrofrontendsInGroupOidcProviderToUnionTypeGetMicrofrontendsInGroupToOidcProviderAllCustom2
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetMicrofrontendsInGroupOidcProviderToUnion", string(data))
+}
+
+func (u GetMicrofrontendsInGroupOidcProviderToUnion) MarshalJSON() ([]byte, error) {
+	if u.GetMicrofrontendsInGroupToOidcProviderAllCustom1 != nil {
+		return utils.MarshalJSON(u.GetMicrofrontendsInGroupToOidcProviderAllCustom1, "", true)
+	}
+
+	if u.GetMicrofrontendsInGroupToOidcProviderAllCustom2 != nil {
+		return utils.MarshalJSON(u.GetMicrofrontendsInGroupToOidcProviderAllCustom2, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type GetMicrofrontendsInGroupOidcProviderToUnion: all fields are null")
+}
+
+type GetMicrofrontendsInGroupOidcProvider struct {
+	To     GetMicrofrontendsInGroupOidcProviderToUnion `json:"to"`
+	Label  *string                                     `json:"label,omitempty"`
+	Claims map[string][]string                         `json:"claims"`
+}
+
+func (o *GetMicrofrontendsInGroupOidcProvider) GetTo() GetMicrofrontendsInGroupOidcProviderToUnion {
+	if o == nil {
+		return GetMicrofrontendsInGroupOidcProviderToUnion{}
+	}
+	return o.To
+}
+
+func (o *GetMicrofrontendsInGroupOidcProvider) GetLabel() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Label
+}
+
+func (o *GetMicrofrontendsInGroupOidcProvider) GetClaims() map[string][]string {
+	if o == nil {
+		return map[string][]string{}
+	}
+	return o.Claims
+}
+
+type GetMicrofrontendsInGroupTrustedSources struct {
+	Projects      map[string]GetMicrofrontendsInGroupProjects       `json:"projects,omitempty"`
+	OidcProviders map[string][]GetMicrofrontendsInGroupOidcProvider `json:"oidcProviders,omitempty"`
+}
+
+func (o *GetMicrofrontendsInGroupTrustedSources) GetProjects() map[string]GetMicrofrontendsInGroupProjects {
+	if o == nil {
+		return nil
+	}
+	return o.Projects
+}
+
+func (o *GetMicrofrontendsInGroupTrustedSources) GetOidcProviders() map[string][]GetMicrofrontendsInGroupOidcProvider {
+	if o == nil {
+		return nil
+	}
+	return o.OidcProviders
+}
+
+type GetMicrofrontendsInGroupGitComments struct {
+	// Whether the Vercel bot should comment on PRs
+	OnPullRequest bool `json:"onPullRequest"`
+	// Whether the Vercel bot should comment on commits
+	OnCommit bool `json:"onCommit"`
+}
+
+func (o *GetMicrofrontendsInGroupGitComments) GetOnPullRequest() bool {
+	if o == nil {
+		return false
+	}
+	return o.OnPullRequest
+}
+
+func (o *GetMicrofrontendsInGroupGitComments) GetOnCommit() bool {
+	if o == nil {
+		return false
+	}
+	return o.OnCommit
+}
+
+// GetMicrofrontendsInGroupCreateDeployments - Whether the Vercel bot should automatically create GitHub deployments https://docs.github.com/en/rest/deployments/deployments#about-deployments NOTE: repository-dispatch events should be used instead
+type GetMicrofrontendsInGroupCreateDeployments string
+
+const (
+	GetMicrofrontendsInGroupCreateDeploymentsEnabled  GetMicrofrontendsInGroupCreateDeployments = "enabled"
+	GetMicrofrontendsInGroupCreateDeploymentsDisabled GetMicrofrontendsInGroupCreateDeployments = "disabled"
+)
+
+func (e GetMicrofrontendsInGroupCreateDeployments) ToPointer() *GetMicrofrontendsInGroupCreateDeployments {
+	return &e
+}
+func (e *GetMicrofrontendsInGroupCreateDeployments) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "enabled":
+		fallthrough
+	case "disabled":
+		*e = GetMicrofrontendsInGroupCreateDeployments(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetMicrofrontendsInGroupCreateDeployments: %v", v)
+	}
+}
+
+// GetMicrofrontendsInGroupConsolidatedGitCommitStatus - Configuration for consolidated git commit status reporting. When enabled, Vercel will post a single consolidated commit status instead of individual statuses for each deployment.
+type GetMicrofrontendsInGroupConsolidatedGitCommitStatus struct {
+	// Whether consolidated commit status is enabled.
+	Enabled bool `json:"enabled"`
+	// Whether to propagate individual deployment failures to the consolidated status.
+	PropagateFailures bool `json:"propagateFailures"`
+}
+
+func (o *GetMicrofrontendsInGroupConsolidatedGitCommitStatus) GetEnabled() bool {
+	if o == nil {
+		return false
+	}
+	return o.Enabled
+}
+
+func (o *GetMicrofrontendsInGroupConsolidatedGitCommitStatus) GetPropagateFailures() bool {
+	if o == nil {
+		return false
+	}
+	return o.PropagateFailures
+}
+
+type GetMicrofrontendsInGroupGitProviderOptions struct {
+	// Whether the Vercel bot should automatically create GitHub deployments https://docs.github.com/en/rest/deployments/deployments#about-deployments NOTE: repository-dispatch events should be used instead
+	CreateDeployments GetMicrofrontendsInGroupCreateDeployments `json:"createDeployments"`
+	// Whether the Vercel bot should not automatically create GitHub repository-dispatch events on deployment events. https://vercel.com/docs/git/vercel-for-github#repository-dispatch-events
+	DisableRepositoryDispatchEvents *bool `json:"disableRepositoryDispatchEvents,omitempty"`
+	// Whether the project requires commits to be signed before deployments will be created.
+	RequireVerifiedCommits *bool `json:"requireVerifiedCommits,omitempty"`
+	// Whether Vercel should post commit statuses for this project. When omitted, commit statuses remain enabled.
+	GitCommitStatus *bool `json:"gitCommitStatus,omitempty"`
+	// Configuration for consolidated git commit status reporting. When enabled, Vercel will post a single consolidated commit status instead of individual statuses for each deployment.
+	ConsolidatedGitCommitStatus *GetMicrofrontendsInGroupConsolidatedGitCommitStatus `json:"consolidatedGitCommitStatus,omitempty"`
+}
+
+func (o *GetMicrofrontendsInGroupGitProviderOptions) GetCreateDeployments() GetMicrofrontendsInGroupCreateDeployments {
+	if o == nil {
+		return GetMicrofrontendsInGroupCreateDeployments("")
+	}
+	return o.CreateDeployments
+}
+
+func (o *GetMicrofrontendsInGroupGitProviderOptions) GetDisableRepositoryDispatchEvents() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.DisableRepositoryDispatchEvents
+}
+
+func (o *GetMicrofrontendsInGroupGitProviderOptions) GetRequireVerifiedCommits() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.RequireVerifiedCommits
+}
+
+func (o *GetMicrofrontendsInGroupGitProviderOptions) GetGitCommitStatus() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.GitCommitStatus
+}
+
+func (o *GetMicrofrontendsInGroupGitProviderOptions) GetConsolidatedGitCommitStatus() *GetMicrofrontendsInGroupConsolidatedGitCommitStatus {
+	if o == nil {
+		return nil
+	}
+	return o.ConsolidatedGitCommitStatus
+}
+
+type GetMicrofrontendsInGroupWebAnalytics struct {
+	ID         string   `json:"id"`
+	DisabledAt *float64 `json:"disabledAt,omitempty"`
+	CanceledAt *float64 `json:"canceledAt,omitempty"`
+	EnabledAt  *float64 `json:"enabledAt,omitempty"`
+	hasData    *bool    `const:"true" json:"hasData,omitempty"`
+}
+
+func (g GetMicrofrontendsInGroupWebAnalytics) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetMicrofrontendsInGroupWebAnalytics) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"id"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetMicrofrontendsInGroupWebAnalytics) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *GetMicrofrontendsInGroupWebAnalytics) GetDisabledAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.DisabledAt
+}
+
+func (o *GetMicrofrontendsInGroupWebAnalytics) GetCanceledAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.CanceledAt
+}
+
+func (o *GetMicrofrontendsInGroupWebAnalytics) GetEnabledAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.EnabledAt
+}
+
+func (o *GetMicrofrontendsInGroupWebAnalytics) GetHasData() *bool {
+	return types.Bool(true)
+}
+
+type GetMicrofrontendsInGroupVercelRulesetAction string
+
+const (
+	GetMicrofrontendsInGroupVercelRulesetActionLog       GetMicrofrontendsInGroupVercelRulesetAction = "log"
+	GetMicrofrontendsInGroupVercelRulesetActionChallenge GetMicrofrontendsInGroupVercelRulesetAction = "challenge"
+	GetMicrofrontendsInGroupVercelRulesetActionDeny      GetMicrofrontendsInGroupVercelRulesetAction = "deny"
+)
+
+func (e GetMicrofrontendsInGroupVercelRulesetAction) ToPointer() *GetMicrofrontendsInGroupVercelRulesetAction {
+	return &e
+}
+func (e *GetMicrofrontendsInGroupVercelRulesetAction) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "log":
+		fallthrough
+	case "challenge":
+		fallthrough
+	case "deny":
+		*e = GetMicrofrontendsInGroupVercelRulesetAction(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetMicrofrontendsInGroupVercelRulesetAction: %v", v)
+	}
+}
+
+type GetMicrofrontendsInGroupVercelRuleset struct {
+	Active bool                                         `json:"active"`
+	Action *GetMicrofrontendsInGroupVercelRulesetAction `json:"action,omitempty"`
+}
+
+func (o *GetMicrofrontendsInGroupVercelRuleset) GetActive() bool {
+	if o == nil {
+		return false
+	}
+	return o.Active
+}
+
+func (o *GetMicrofrontendsInGroupVercelRuleset) GetAction() *GetMicrofrontendsInGroupVercelRulesetAction {
+	if o == nil {
+		return nil
+	}
+	return o.Action
+}
+
+type GetMicrofrontendsInGroupBotFilterAction string
+
+const (
+	GetMicrofrontendsInGroupBotFilterActionLog       GetMicrofrontendsInGroupBotFilterAction = "log"
+	GetMicrofrontendsInGroupBotFilterActionChallenge GetMicrofrontendsInGroupBotFilterAction = "challenge"
+	GetMicrofrontendsInGroupBotFilterActionDeny      GetMicrofrontendsInGroupBotFilterAction = "deny"
+)
+
+func (e GetMicrofrontendsInGroupBotFilterAction) ToPointer() *GetMicrofrontendsInGroupBotFilterAction {
+	return &e
+}
+func (e *GetMicrofrontendsInGroupBotFilterAction) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "log":
+		fallthrough
+	case "challenge":
+		fallthrough
+	case "deny":
+		*e = GetMicrofrontendsInGroupBotFilterAction(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetMicrofrontendsInGroupBotFilterAction: %v", v)
+	}
+}
+
+type GetMicrofrontendsInGroupBotFilter struct {
+	Active bool                                     `json:"active"`
+	Action *GetMicrofrontendsInGroupBotFilterAction `json:"action,omitempty"`
+}
+
+func (o *GetMicrofrontendsInGroupBotFilter) GetActive() bool {
+	if o == nil {
+		return false
+	}
+	return o.Active
+}
+
+func (o *GetMicrofrontendsInGroupBotFilter) GetAction() *GetMicrofrontendsInGroupBotFilterAction {
+	if o == nil {
+		return nil
+	}
+	return o.Action
+}
+
+type GetMicrofrontendsInGroupAiBotsAction string
+
+const (
+	GetMicrofrontendsInGroupAiBotsActionLog       GetMicrofrontendsInGroupAiBotsAction = "log"
+	GetMicrofrontendsInGroupAiBotsActionChallenge GetMicrofrontendsInGroupAiBotsAction = "challenge"
+	GetMicrofrontendsInGroupAiBotsActionDeny      GetMicrofrontendsInGroupAiBotsAction = "deny"
+)
+
+func (e GetMicrofrontendsInGroupAiBotsAction) ToPointer() *GetMicrofrontendsInGroupAiBotsAction {
+	return &e
+}
+func (e *GetMicrofrontendsInGroupAiBotsAction) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "log":
+		fallthrough
+	case "challenge":
+		fallthrough
+	case "deny":
+		*e = GetMicrofrontendsInGroupAiBotsAction(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetMicrofrontendsInGroupAiBotsAction: %v", v)
+	}
+}
 
 type GetMicrofrontendsInGroupAiBots struct {
 	Active bool                                  `json:"active"`
@@ -3098,6 +3652,7 @@ type GetMicrofrontendsInGroupProject struct {
 	ProtectionBypass                     map[string]GetMicrofrontendsInGroupProtectionBypassUnion                      `json:"protectionBypass,omitempty"`
 	HasActiveBranches                    *bool                                                                         `json:"hasActiveBranches,omitempty"`
 	TrustedIps                           optionalnullable.OptionalNullable[GetMicrofrontendsInGroupTrustedIpsUnion]    `json:"trustedIps,omitempty"`
+	TrustedSources                       optionalnullable.OptionalNullable[GetMicrofrontendsInGroupTrustedSources]     `json:"trustedSources,omitempty"`
 	GitComments                          *GetMicrofrontendsInGroupGitComments                                          `json:"gitComments,omitempty"`
 	GitProviderOptions                   *GetMicrofrontendsInGroupGitProviderOptions                                   `json:"gitProviderOptions,omitempty"`
 	Paused                               *bool                                                                         `json:"paused,omitempty"`
@@ -3649,6 +4204,13 @@ func (o *GetMicrofrontendsInGroupProject) GetTrustedIps() optionalnullable.Optio
 		return nil
 	}
 	return o.TrustedIps
+}
+
+func (o *GetMicrofrontendsInGroupProject) GetTrustedSources() optionalnullable.OptionalNullable[GetMicrofrontendsInGroupTrustedSources] {
+	if o == nil {
+		return nil
+	}
+	return o.TrustedSources
 }
 
 func (o *GetMicrofrontendsInGroupProject) GetGitComments() *GetMicrofrontendsInGroupGitComments {

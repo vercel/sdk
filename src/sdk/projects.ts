@@ -42,6 +42,7 @@ import {
   BatchRemoveProjectEnvRequest,
   BatchRemoveProjectEnvResponseBody,
 } from "../models/batchremoveprojectenvop.js";
+import { CreateProjectRequest } from "../models/createprojectcreatedeployments.js";
 import {
   CreateProjectEnvRequest,
   CreateProjectEnvResponseBody,
@@ -60,7 +61,6 @@ import {
   FilterProjectEnvsRequest,
   FilterProjectEnvsResponseBody,
 } from "../models/filterprojectenvsop.js";
-import { CreateProjectRequest } from "../models/flatratetier.js";
 import {
   GetProjectDomainRequest,
   GetProjectDomainResponseBody,
@@ -74,7 +74,7 @@ import {
   GetProjectEnvResponseBody,
 } from "../models/getprojectenvop.js";
 import { GetProjectsResponseBody } from "../models/getprojectsresponsebody.js";
-import { GetProjectsRequest } from "../models/getprojectsrouteprojectsresponse200applicationjsonresponsebody2.js";
+import { GetProjectsRequest } from "../models/getprojectsresponsebodyprojectssecurityplusmetadata.js";
 import {
   ListPromoteAliasesRequest,
   ListPromoteAliasesResponseBody,
@@ -95,15 +95,13 @@ import {
 import { RequestPromoteRequest } from "../models/requestpromoteop.js";
 import { RequestRollbackRequest } from "../models/requestrollbackop.js";
 import { UnpauseProjectRequest } from "../models/unpauseprojectop.js";
-import {
-  UpdateMicrofrontendsRequest,
-  UpdateMicrofrontendsResponseBody,
-} from "../models/updatemicrofrontendsop.js";
-import { UpdateProjectRequest } from "../models/updateprojectbotfilter.js";
+import { UpdateMicrofrontendsRequest } from "../models/updatemicrofrontendsoidctokenconfig.js";
+import { UpdateMicrofrontendsResponseBody } from "../models/updatemicrofrontendsresponsebody.js";
 import {
   UpdateProjectDomainRequest,
   UpdateProjectDomainResponseBody,
 } from "../models/updateprojectdomainop.js";
+import { UpdateProjectRequest } from "../models/updateprojectlastaliasrequest.js";
 import {
   UpdateProjectProtectionBypassRequest,
   UpdateProjectProtectionBypassResponseBody,

@@ -5,7 +5,7 @@
 ```typescript
 import {
   GetMicrofrontendsInGroupLinkMicrofrontendsResponse200ApplicationJSONResponseBodyDeployHooks,
-} from "@vercel/sdk/models/getmicrofrontendsingroupoidctokenconfig.js";
+} from "@vercel/sdk/models/getmicrofrontendsingroupgitcomments.js";
 
 let value:
   GetMicrofrontendsInGroupLinkMicrofrontendsResponse200ApplicationJSONResponseBodyDeployHooks =

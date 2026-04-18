@@ -23,9 +23,11 @@ import { SDKValidationError } from "../models/sdkvalidationerror.js";
 import {
   UpdateMicrofrontendsRequest,
   UpdateMicrofrontendsRequest$outboundSchema,
+} from "../models/updatemicrofrontendsoidctokenconfig.js";
+import {
   UpdateMicrofrontendsResponseBody,
   UpdateMicrofrontendsResponseBody$inboundSchema,
-} from "../models/updatemicrofrontendsop.js";
+} from "../models/updatemicrofrontendsresponsebody.js";
 import { VercelError } from "../models/vercelerror.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";

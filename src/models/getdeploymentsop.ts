@@ -373,6 +373,8 @@ export const GetDeploymentsFramework = {
   Python: "python",
   Ruby: "ruby",
   Rust: "rust",
+  Axum: "axum",
+  ActixWeb: "actix-web",
   Node: "node",
   Go: "go",
   Services: "services",

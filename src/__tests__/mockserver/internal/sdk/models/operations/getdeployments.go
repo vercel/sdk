@@ -774,6 +774,8 @@ const (
 	GetDeploymentsFrameworkPython         GetDeploymentsFramework = "python"
 	GetDeploymentsFrameworkRuby           GetDeploymentsFramework = "ruby"
 	GetDeploymentsFrameworkRust           GetDeploymentsFramework = "rust"
+	GetDeploymentsFrameworkAxum           GetDeploymentsFramework = "axum"
+	GetDeploymentsFrameworkActixWeb       GetDeploymentsFramework = "actix-web"
 	GetDeploymentsFrameworkNode           GetDeploymentsFramework = "node"
 	GetDeploymentsFrameworkGo             GetDeploymentsFramework = "go"
 	GetDeploymentsFrameworkServices       GetDeploymentsFramework = "services"
@@ -912,6 +914,10 @@ func (e *GetDeploymentsFramework) UnmarshalJSON(data []byte) error {
 	case "ruby":
 		fallthrough
 	case "rust":
+		fallthrough
+	case "axum":
+		fallthrough
+	case "actix-web":
 		fallthrough
 	case "node":
 		fallthrough

@@ -467,6 +467,7 @@ export const ListEventTypesName = {
   AlertRuleCreated: "alert-rule-created",
   AlertRuleUpdated: "alert-rule-updated",
   AlertRuleDeleted: "alert-rule-deleted",
+  VulnerabilityBannerDismissed: "vulnerability-banner-dismissed",
   VpcPeeringConnectionAccepted: "vpc-peering-connection-accepted",
   VpcPeeringConnectionDeleted: "vpc-peering-connection-deleted",
   VpcPeeringConnectionRejected: "vpc-peering-connection-rejected",

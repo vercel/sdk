@@ -456,6 +456,7 @@ const (
 	NameAlertRuleCreated                                Name = "alert-rule-created"
 	NameAlertRuleUpdated                                Name = "alert-rule-updated"
 	NameAlertRuleDeleted                                Name = "alert-rule-deleted"
+	NameVulnerabilityBannerDismissed                    Name = "vulnerability-banner-dismissed"
 	NameVpcPeeringConnectionAccepted                    Name = "vpc-peering-connection-accepted"
 	NameVpcPeeringConnectionDeleted                     Name = "vpc-peering-connection-deleted"
 	NameVpcPeeringConnectionRejected                    Name = "vpc-peering-connection-rejected"
@@ -1324,6 +1325,8 @@ func (e *Name) UnmarshalJSON(data []byte) error {
 	case "alert-rule-updated":
 		fallthrough
 	case "alert-rule-deleted":
+		fallthrough
+	case "vulnerability-banner-dismissed":
 		fallthrough
 	case "vpc-peering-connection-accepted":
 		fallthrough

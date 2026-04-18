@@ -282,6 +282,8 @@ const (
 	CreateProjectFrameworkRequestPython         CreateProjectFrameworkRequest = "python"
 	CreateProjectFrameworkRequestRuby           CreateProjectFrameworkRequest = "ruby"
 	CreateProjectFrameworkRequestRust           CreateProjectFrameworkRequest = "rust"
+	CreateProjectFrameworkRequestAxum           CreateProjectFrameworkRequest = "axum"
+	CreateProjectFrameworkRequestActixWeb       CreateProjectFrameworkRequest = "actix-web"
 	CreateProjectFrameworkRequestNode           CreateProjectFrameworkRequest = "node"
 	CreateProjectFrameworkRequestGo             CreateProjectFrameworkRequest = "go"
 	CreateProjectFrameworkRequestMastra         CreateProjectFrameworkRequest = "mastra"
@@ -421,6 +423,10 @@ func (e *CreateProjectFrameworkRequest) UnmarshalJSON(data []byte) error {
 	case "ruby":
 		fallthrough
 	case "rust":
+		fallthrough
+	case "axum":
+		fallthrough
+	case "actix-web":
 		fallthrough
 	case "node":
 		fallthrough
@@ -3685,6 +3691,8 @@ const (
 	CreateProjectFrameworkResponseBodyPython         CreateProjectFrameworkResponseBody = "python"
 	CreateProjectFrameworkResponseBodyRuby           CreateProjectFrameworkResponseBody = "ruby"
 	CreateProjectFrameworkResponseBodyRust           CreateProjectFrameworkResponseBody = "rust"
+	CreateProjectFrameworkResponseBodyAxum           CreateProjectFrameworkResponseBody = "axum"
+	CreateProjectFrameworkResponseBodyActixWeb       CreateProjectFrameworkResponseBody = "actix-web"
 	CreateProjectFrameworkResponseBodyNode           CreateProjectFrameworkResponseBody = "node"
 	CreateProjectFrameworkResponseBodyGo             CreateProjectFrameworkResponseBody = "go"
 	CreateProjectFrameworkResponseBodyMastra         CreateProjectFrameworkResponseBody = "mastra"
@@ -3824,6 +3832,10 @@ func (e *CreateProjectFrameworkResponseBody) UnmarshalJSON(data []byte) error {
 	case "ruby":
 		fallthrough
 	case "rust":
+		fallthrough
+	case "axum":
+		fallthrough
+	case "actix-web":
 		fallthrough
 	case "node":
 		fallthrough
@@ -7040,6 +7052,7 @@ type CreateProjectPermissions struct {
 	SkewProtection                           []components.ACLAction `json:"skewProtection,omitempty"`
 	Analytics                                []components.ACLAction `json:"analytics,omitempty"`
 	TrustedIps                               []components.ACLAction `json:"trustedIps,omitempty"`
+	TrustedSources                           []components.ACLAction `json:"trustedSources,omitempty"`
 	V0Chat                                   []components.ACLAction `json:"v0Chat,omitempty"`
 	WebAnalytics                             []components.ACLAction `json:"webAnalytics,omitempty"`
 }
@@ -8708,6 +8721,13 @@ func (o *CreateProjectPermissions) GetTrustedIps() []components.ACLAction {
 		return nil
 	}
 	return o.TrustedIps
+}
+
+func (o *CreateProjectPermissions) GetTrustedSources() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.TrustedSources
 }
 
 func (o *CreateProjectPermissions) GetV0Chat() []components.ACLAction {

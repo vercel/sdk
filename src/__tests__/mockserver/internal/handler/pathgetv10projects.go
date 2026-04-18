@@ -7,6 +7,7 @@ import (
 	"log"
 	"mockserver/internal/handler/assert"
 	"mockserver/internal/logging"
+	"mockserver/internal/sdk/models/components"
 	"mockserver/internal/sdk/models/operations"
 	"mockserver/internal/sdk/optionalnullable"
 	"mockserver/internal/sdk/types"
@@ -49,58 +50,12 @@ func testGetProjectsGetProjects0(w http.ResponseWriter, req *http.Request) {
 	}
 	var respBody optionalnullable.OptionalNullable[operations.GetProjectsResponseBody] = optionalnullable.From(types.Pointer(operations.CreateGetProjectsResponseBodyGetProjectsResponseBody3(
 		operations.GetProjectsResponseBody3{
-			Projects: []operations.GetProjectsProject2{
-				operations.GetProjectsProject2{
-					AccountID: "<id>",
-					Crons: &operations.GetProjectsCrons{
-						EnabledAt:    9786.19,
-						DisabledAt:   types.Float64(4614.79),
-						UpdatedAt:    7805.29,
-						DeploymentID: types.String("<id>"),
-						Definitions: []operations.GetProjectsDefinition{
-							operations.GetProjectsDefinition{
-								Host:     "vercel.com",
-								Path:     "/api/crons/sync-something?hello=world",
-								Schedule: "0 0 * * *",
-							},
-						},
-					},
-					DeploymentExpiration: operations.GetProjectsProjectDeploymentExpiration2{},
-					DirectoryListing:     true,
-					ID:                   "<id>",
-					Name:                 "<value>",
-					NodeVersion:          operations.GetProjectsProjectNodeVersion2EightDot10DotX,
-					ResourceConfig: operations.GetProjectsProjectResourceConfig2{
-						FunctionDefaultRegions: []string{
-							"<value 1>",
-							"<value 2>",
-						},
-					},
-					RollingRelease: optionalnullable.From(&operations.GetProjectsProjectRollingRelease2{
-						Target: "production",
-						Stages: optionalnullable.From(types.Pointer([]operations.GetProjectsProjectStage2{
-							operations.GetProjectsProjectStage2{
-								TargetPercentage: 25,
-								RequireApproval:  types.Bool(false),
-								Duration:         types.Float64(600),
-								LinearShift:      types.Bool(false),
-							},
-						})),
-						CanaryResponseHeader: types.Bool(false),
-					}),
-					DefaultResourceConfig: operations.GetProjectsDefaultResourceConfig{
-						FunctionDefaultRegions: []string{
-							"<value 1>",
-							"<value 2>",
-							"<value 3>",
-						},
-					},
-				},
-			},
-			Pagination: operations.CreatePaginationUnion2GetProjectsPagination2(
-				operations.GetProjectsPagination2{
+			Projects: []operations.GetProjectsProject2{},
+			Pagination: operations.CreatePaginationUnion2Pagination(
+				components.Pagination{
 					Count: 20,
-					Next:  types.String("JBSWY3DPEHPK3PXP"),
+					Next:  types.Float64(1540095775951),
+					Prev:  types.Float64(1540095775951),
 				},
 			),
 		},

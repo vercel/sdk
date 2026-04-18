@@ -14,7 +14,7 @@ export const tool$sandboxesV2BetaDeleteSandbox: ToolDefinition<typeof args> = {
   name: "sandboxes-v2-beta-delete-sandbox",
   description: `Delete a sandbox
 
-Deletes a sandbox by name. If sandboxes are currently running, they will be stopped first. This operation deletes all sandbox entities with the given name, all associated snapshots, and the named sandbox metadata.`,
+Deletes a sandbox by name. If sandboxes are currently running, they will be stopped first. This operation deletes all sandbox entities with the given name and the named sandbox metadata.`,
   args,
   tool: async (client, args, ctx) => {
     const [result, apiCall] = await sandboxesV2BetaDeleteSandbox(

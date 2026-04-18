@@ -113,6 +113,611 @@ func (u CreateProjectTrustedIpsUnion) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type CreateProjectTrustedIpsUnion: all fields are null")
 }
 
+type CreateProjectFromPreset2 string
+
+const (
+	CreateProjectFromPreset2AllCustom CreateProjectFromPreset2 = "all-custom"
+)
+
+func (e CreateProjectFromPreset2) ToPointer() *CreateProjectFromPreset2 {
+	return &e
+}
+func (e *CreateProjectFromPreset2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "all-custom":
+		*e = CreateProjectFromPreset2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateProjectFromPreset2: %v", v)
+	}
+}
+
+// CreateProjectFromAllCustom2 - The source envs on the trusted project that are allowed to access `to`.
+type CreateProjectFromAllCustom2 struct {
+	// System environment slugs (`production`, `preview`) and/or custom environment slugs defined on the referenced project.
+	Slugs  []string                 `json:"slugs,omitempty"`
+	Preset CreateProjectFromPreset2 `json:"preset"`
+}
+
+func (c CreateProjectFromAllCustom2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateProjectFromAllCustom2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"preset"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateProjectFromAllCustom2) GetSlugs() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Slugs
+}
+
+func (o *CreateProjectFromAllCustom2) GetPreset() CreateProjectFromPreset2 {
+	if o == nil {
+		return CreateProjectFromPreset2("")
+	}
+	return o.Preset
+}
+
+type CreateProjectFromPreset1 string
+
+const (
+	CreateProjectFromPreset1AllCustom CreateProjectFromPreset1 = "all-custom"
+)
+
+func (e CreateProjectFromPreset1) ToPointer() *CreateProjectFromPreset1 {
+	return &e
+}
+func (e *CreateProjectFromPreset1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "all-custom":
+		*e = CreateProjectFromPreset1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateProjectFromPreset1: %v", v)
+	}
+}
+
+// CreateProjectFromAllCustom1 - The source envs on the trusted project that are allowed to access `to`.
+type CreateProjectFromAllCustom1 struct {
+	// System environment slugs (`production`, `preview`) and/or custom environment slugs defined on the referenced project.
+	Slugs  []string                  `json:"slugs"`
+	Preset *CreateProjectFromPreset1 `json:"preset,omitempty"`
+}
+
+func (c CreateProjectFromAllCustom1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateProjectFromAllCustom1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"slugs"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateProjectFromAllCustom1) GetSlugs() []string {
+	if o == nil {
+		return []string{}
+	}
+	return o.Slugs
+}
+
+func (o *CreateProjectFromAllCustom1) GetPreset() *CreateProjectFromPreset1 {
+	if o == nil {
+		return nil
+	}
+	return o.Preset
+}
+
+type CreateProjectFromUnionType string
+
+const (
+	CreateProjectFromUnionTypeCreateProjectFromAllCustom1 CreateProjectFromUnionType = "createProject_from_AllCustom_1"
+	CreateProjectFromUnionTypeCreateProjectFromAllCustom2 CreateProjectFromUnionType = "createProject_from_AllCustom_2"
+)
+
+type CreateProjectFromUnion struct {
+	CreateProjectFromAllCustom1 *CreateProjectFromAllCustom1 `queryParam:"inline"`
+	CreateProjectFromAllCustom2 *CreateProjectFromAllCustom2 `queryParam:"inline"`
+
+	Type CreateProjectFromUnionType
+}
+
+func CreateCreateProjectFromUnionCreateProjectFromAllCustom1(createProjectFromAllCustom1 CreateProjectFromAllCustom1) CreateProjectFromUnion {
+	typ := CreateProjectFromUnionTypeCreateProjectFromAllCustom1
+
+	return CreateProjectFromUnion{
+		CreateProjectFromAllCustom1: &createProjectFromAllCustom1,
+		Type:                        typ,
+	}
+}
+
+func CreateCreateProjectFromUnionCreateProjectFromAllCustom2(createProjectFromAllCustom2 CreateProjectFromAllCustom2) CreateProjectFromUnion {
+	typ := CreateProjectFromUnionTypeCreateProjectFromAllCustom2
+
+	return CreateProjectFromUnion{
+		CreateProjectFromAllCustom2: &createProjectFromAllCustom2,
+		Type:                        typ,
+	}
+}
+
+func (u *CreateProjectFromUnion) UnmarshalJSON(data []byte) error {
+
+	var createProjectFromAllCustom1 CreateProjectFromAllCustom1 = CreateProjectFromAllCustom1{}
+	if err := utils.UnmarshalJSON(data, &createProjectFromAllCustom1, "", true, nil); err == nil {
+		u.CreateProjectFromAllCustom1 = &createProjectFromAllCustom1
+		u.Type = CreateProjectFromUnionTypeCreateProjectFromAllCustom1
+		return nil
+	}
+
+	var createProjectFromAllCustom2 CreateProjectFromAllCustom2 = CreateProjectFromAllCustom2{}
+	if err := utils.UnmarshalJSON(data, &createProjectFromAllCustom2, "", true, nil); err == nil {
+		u.CreateProjectFromAllCustom2 = &createProjectFromAllCustom2
+		u.Type = CreateProjectFromUnionTypeCreateProjectFromAllCustom2
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateProjectFromUnion", string(data))
+}
+
+func (u CreateProjectFromUnion) MarshalJSON() ([]byte, error) {
+	if u.CreateProjectFromAllCustom1 != nil {
+		return utils.MarshalJSON(u.CreateProjectFromAllCustom1, "", true)
+	}
+
+	if u.CreateProjectFromAllCustom2 != nil {
+		return utils.MarshalJSON(u.CreateProjectFromAllCustom2, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type CreateProjectFromUnion: all fields are null")
+}
+
+type CreateProjectToCustomAllowPreset2 string
+
+const (
+	CreateProjectToCustomAllowPreset2AllCustom CreateProjectToCustomAllowPreset2 = "all-custom"
+)
+
+func (e CreateProjectToCustomAllowPreset2) ToPointer() *CreateProjectToCustomAllowPreset2 {
+	return &e
+}
+func (e *CreateProjectToCustomAllowPreset2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "all-custom":
+		*e = CreateProjectToCustomAllowPreset2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateProjectToCustomAllowPreset2: %v", v)
+	}
+}
+
+// CreateProjectToCustomAllowAllCustom2 - The target envs on the current project that may be accessed.
+type CreateProjectToCustomAllowAllCustom2 struct {
+	// System environment slugs (`production`, `preview`) and/or custom environment slugs defined on the referenced project.
+	Slugs  []string                          `json:"slugs,omitempty"`
+	Preset CreateProjectToCustomAllowPreset2 `json:"preset"`
+}
+
+func (c CreateProjectToCustomAllowAllCustom2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateProjectToCustomAllowAllCustom2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"preset"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateProjectToCustomAllowAllCustom2) GetSlugs() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Slugs
+}
+
+func (o *CreateProjectToCustomAllowAllCustom2) GetPreset() CreateProjectToCustomAllowPreset2 {
+	if o == nil {
+		return CreateProjectToCustomAllowPreset2("")
+	}
+	return o.Preset
+}
+
+type CreateProjectToCustomAllowPreset1 string
+
+const (
+	CreateProjectToCustomAllowPreset1AllCustom CreateProjectToCustomAllowPreset1 = "all-custom"
+)
+
+func (e CreateProjectToCustomAllowPreset1) ToPointer() *CreateProjectToCustomAllowPreset1 {
+	return &e
+}
+func (e *CreateProjectToCustomAllowPreset1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "all-custom":
+		*e = CreateProjectToCustomAllowPreset1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateProjectToCustomAllowPreset1: %v", v)
+	}
+}
+
+// CreateProjectToCustomAllowAllCustom1 - The target envs on the current project that may be accessed.
+type CreateProjectToCustomAllowAllCustom1 struct {
+	// System environment slugs (`production`, `preview`) and/or custom environment slugs defined on the referenced project.
+	Slugs  []string                           `json:"slugs"`
+	Preset *CreateProjectToCustomAllowPreset1 `json:"preset,omitempty"`
+}
+
+func (c CreateProjectToCustomAllowAllCustom1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateProjectToCustomAllowAllCustom1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"slugs"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateProjectToCustomAllowAllCustom1) GetSlugs() []string {
+	if o == nil {
+		return []string{}
+	}
+	return o.Slugs
+}
+
+func (o *CreateProjectToCustomAllowAllCustom1) GetPreset() *CreateProjectToCustomAllowPreset1 {
+	if o == nil {
+		return nil
+	}
+	return o.Preset
+}
+
+type CreateProjectCustomAllowToUnionType string
+
+const (
+	CreateProjectCustomAllowToUnionTypeCreateProjectToCustomAllowAllCustom1 CreateProjectCustomAllowToUnionType = "createProject_to_customAllow_AllCustom_1"
+	CreateProjectCustomAllowToUnionTypeCreateProjectToCustomAllowAllCustom2 CreateProjectCustomAllowToUnionType = "createProject_to_customAllow_AllCustom_2"
+)
+
+type CreateProjectCustomAllowToUnion struct {
+	CreateProjectToCustomAllowAllCustom1 *CreateProjectToCustomAllowAllCustom1 `queryParam:"inline"`
+	CreateProjectToCustomAllowAllCustom2 *CreateProjectToCustomAllowAllCustom2 `queryParam:"inline"`
+
+	Type CreateProjectCustomAllowToUnionType
+}
+
+func CreateCreateProjectCustomAllowToUnionCreateProjectToCustomAllowAllCustom1(createProjectToCustomAllowAllCustom1 CreateProjectToCustomAllowAllCustom1) CreateProjectCustomAllowToUnion {
+	typ := CreateProjectCustomAllowToUnionTypeCreateProjectToCustomAllowAllCustom1
+
+	return CreateProjectCustomAllowToUnion{
+		CreateProjectToCustomAllowAllCustom1: &createProjectToCustomAllowAllCustom1,
+		Type:                                 typ,
+	}
+}
+
+func CreateCreateProjectCustomAllowToUnionCreateProjectToCustomAllowAllCustom2(createProjectToCustomAllowAllCustom2 CreateProjectToCustomAllowAllCustom2) CreateProjectCustomAllowToUnion {
+	typ := CreateProjectCustomAllowToUnionTypeCreateProjectToCustomAllowAllCustom2
+
+	return CreateProjectCustomAllowToUnion{
+		CreateProjectToCustomAllowAllCustom2: &createProjectToCustomAllowAllCustom2,
+		Type:                                 typ,
+	}
+}
+
+func (u *CreateProjectCustomAllowToUnion) UnmarshalJSON(data []byte) error {
+
+	var createProjectToCustomAllowAllCustom1 CreateProjectToCustomAllowAllCustom1 = CreateProjectToCustomAllowAllCustom1{}
+	if err := utils.UnmarshalJSON(data, &createProjectToCustomAllowAllCustom1, "", true, nil); err == nil {
+		u.CreateProjectToCustomAllowAllCustom1 = &createProjectToCustomAllowAllCustom1
+		u.Type = CreateProjectCustomAllowToUnionTypeCreateProjectToCustomAllowAllCustom1
+		return nil
+	}
+
+	var createProjectToCustomAllowAllCustom2 CreateProjectToCustomAllowAllCustom2 = CreateProjectToCustomAllowAllCustom2{}
+	if err := utils.UnmarshalJSON(data, &createProjectToCustomAllowAllCustom2, "", true, nil); err == nil {
+		u.CreateProjectToCustomAllowAllCustom2 = &createProjectToCustomAllowAllCustom2
+		u.Type = CreateProjectCustomAllowToUnionTypeCreateProjectToCustomAllowAllCustom2
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateProjectCustomAllowToUnion", string(data))
+}
+
+func (u CreateProjectCustomAllowToUnion) MarshalJSON() ([]byte, error) {
+	if u.CreateProjectToCustomAllowAllCustom1 != nil {
+		return utils.MarshalJSON(u.CreateProjectToCustomAllowAllCustom1, "", true)
+	}
+
+	if u.CreateProjectToCustomAllowAllCustom2 != nil {
+		return utils.MarshalJSON(u.CreateProjectToCustomAllowAllCustom2, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type CreateProjectCustomAllowToUnion: all fields are null")
+}
+
+// CreateProjectCustomAllow - Optional overrides for the default same-env-by-slug matching. Provide explicit rules to allow cross-env access or presets.
+type CreateProjectCustomAllow struct {
+	From CreateProjectFromUnion          `json:"from"`
+	To   CreateProjectCustomAllowToUnion `json:"to"`
+}
+
+func (o *CreateProjectCustomAllow) GetFrom() CreateProjectFromUnion {
+	if o == nil {
+		return CreateProjectFromUnion{}
+	}
+	return o.From
+}
+
+func (o *CreateProjectCustomAllow) GetTo() CreateProjectCustomAllowToUnion {
+	if o == nil {
+		return CreateProjectCustomAllowToUnion{}
+	}
+	return o.To
+}
+
+type CreateProjectProjects struct {
+	Label *string `json:"label,omitempty"`
+	// Optional overrides for the default same-env-by-slug matching. Provide explicit rules to allow cross-env access or presets.
+	CustomAllow []CreateProjectCustomAllow `json:"customAllow,omitempty"`
+}
+
+func (o *CreateProjectProjects) GetLabel() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Label
+}
+
+func (o *CreateProjectProjects) GetCustomAllow() []CreateProjectCustomAllow {
+	if o == nil {
+		return nil
+	}
+	return o.CustomAllow
+}
+
+type CreateProjectOidcProviderPreset2 string
+
+const (
+	CreateProjectOidcProviderPreset2AllCustom CreateProjectOidcProviderPreset2 = "all-custom"
+)
+
+func (e CreateProjectOidcProviderPreset2) ToPointer() *CreateProjectOidcProviderPreset2 {
+	return &e
+}
+func (e *CreateProjectOidcProviderPreset2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "all-custom":
+		*e = CreateProjectOidcProviderPreset2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateProjectOidcProviderPreset2: %v", v)
+	}
+}
+
+// CreateProjectToOidcProviderAllCustom2 - The target envs on the current project that may be accessed.
+type CreateProjectToOidcProviderAllCustom2 struct {
+	// System environment slugs (`production`, `preview`) and/or custom environment slugs defined on the referenced project.
+	Slugs  []string                         `json:"slugs,omitempty"`
+	Preset CreateProjectOidcProviderPreset2 `json:"preset"`
+}
+
+func (c CreateProjectToOidcProviderAllCustom2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateProjectToOidcProviderAllCustom2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"preset"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateProjectToOidcProviderAllCustom2) GetSlugs() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Slugs
+}
+
+func (o *CreateProjectToOidcProviderAllCustom2) GetPreset() CreateProjectOidcProviderPreset2 {
+	if o == nil {
+		return CreateProjectOidcProviderPreset2("")
+	}
+	return o.Preset
+}
+
+type CreateProjectOidcProviderPreset1 string
+
+const (
+	CreateProjectOidcProviderPreset1AllCustom CreateProjectOidcProviderPreset1 = "all-custom"
+)
+
+func (e CreateProjectOidcProviderPreset1) ToPointer() *CreateProjectOidcProviderPreset1 {
+	return &e
+}
+func (e *CreateProjectOidcProviderPreset1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "all-custom":
+		*e = CreateProjectOidcProviderPreset1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateProjectOidcProviderPreset1: %v", v)
+	}
+}
+
+// CreateProjectToOidcProviderAllCustom1 - The target envs on the current project that may be accessed.
+type CreateProjectToOidcProviderAllCustom1 struct {
+	// System environment slugs (`production`, `preview`) and/or custom environment slugs defined on the referenced project.
+	Slugs  []string                          `json:"slugs"`
+	Preset *CreateProjectOidcProviderPreset1 `json:"preset,omitempty"`
+}
+
+func (c CreateProjectToOidcProviderAllCustom1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateProjectToOidcProviderAllCustom1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"slugs"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateProjectToOidcProviderAllCustom1) GetSlugs() []string {
+	if o == nil {
+		return []string{}
+	}
+	return o.Slugs
+}
+
+func (o *CreateProjectToOidcProviderAllCustom1) GetPreset() *CreateProjectOidcProviderPreset1 {
+	if o == nil {
+		return nil
+	}
+	return o.Preset
+}
+
+type CreateProjectOidcProviderToUnionType string
+
+const (
+	CreateProjectOidcProviderToUnionTypeCreateProjectToOidcProviderAllCustom1 CreateProjectOidcProviderToUnionType = "createProject_to_oidcProvider_AllCustom_1"
+	CreateProjectOidcProviderToUnionTypeCreateProjectToOidcProviderAllCustom2 CreateProjectOidcProviderToUnionType = "createProject_to_oidcProvider_AllCustom_2"
+)
+
+type CreateProjectOidcProviderToUnion struct {
+	CreateProjectToOidcProviderAllCustom1 *CreateProjectToOidcProviderAllCustom1 `queryParam:"inline"`
+	CreateProjectToOidcProviderAllCustom2 *CreateProjectToOidcProviderAllCustom2 `queryParam:"inline"`
+
+	Type CreateProjectOidcProviderToUnionType
+}
+
+func CreateCreateProjectOidcProviderToUnionCreateProjectToOidcProviderAllCustom1(createProjectToOidcProviderAllCustom1 CreateProjectToOidcProviderAllCustom1) CreateProjectOidcProviderToUnion {
+	typ := CreateProjectOidcProviderToUnionTypeCreateProjectToOidcProviderAllCustom1
+
+	return CreateProjectOidcProviderToUnion{
+		CreateProjectToOidcProviderAllCustom1: &createProjectToOidcProviderAllCustom1,
+		Type:                                  typ,
+	}
+}
+
+func CreateCreateProjectOidcProviderToUnionCreateProjectToOidcProviderAllCustom2(createProjectToOidcProviderAllCustom2 CreateProjectToOidcProviderAllCustom2) CreateProjectOidcProviderToUnion {
+	typ := CreateProjectOidcProviderToUnionTypeCreateProjectToOidcProviderAllCustom2
+
+	return CreateProjectOidcProviderToUnion{
+		CreateProjectToOidcProviderAllCustom2: &createProjectToOidcProviderAllCustom2,
+		Type:                                  typ,
+	}
+}
+
+func (u *CreateProjectOidcProviderToUnion) UnmarshalJSON(data []byte) error {
+
+	var createProjectToOidcProviderAllCustom1 CreateProjectToOidcProviderAllCustom1 = CreateProjectToOidcProviderAllCustom1{}
+	if err := utils.UnmarshalJSON(data, &createProjectToOidcProviderAllCustom1, "", true, nil); err == nil {
+		u.CreateProjectToOidcProviderAllCustom1 = &createProjectToOidcProviderAllCustom1
+		u.Type = CreateProjectOidcProviderToUnionTypeCreateProjectToOidcProviderAllCustom1
+		return nil
+	}
+
+	var createProjectToOidcProviderAllCustom2 CreateProjectToOidcProviderAllCustom2 = CreateProjectToOidcProviderAllCustom2{}
+	if err := utils.UnmarshalJSON(data, &createProjectToOidcProviderAllCustom2, "", true, nil); err == nil {
+		u.CreateProjectToOidcProviderAllCustom2 = &createProjectToOidcProviderAllCustom2
+		u.Type = CreateProjectOidcProviderToUnionTypeCreateProjectToOidcProviderAllCustom2
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateProjectOidcProviderToUnion", string(data))
+}
+
+func (u CreateProjectOidcProviderToUnion) MarshalJSON() ([]byte, error) {
+	if u.CreateProjectToOidcProviderAllCustom1 != nil {
+		return utils.MarshalJSON(u.CreateProjectToOidcProviderAllCustom1, "", true)
+	}
+
+	if u.CreateProjectToOidcProviderAllCustom2 != nil {
+		return utils.MarshalJSON(u.CreateProjectToOidcProviderAllCustom2, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type CreateProjectOidcProviderToUnion: all fields are null")
+}
+
+type CreateProjectOidcProvider struct {
+	To     CreateProjectOidcProviderToUnion `json:"to"`
+	Label  *string                          `json:"label,omitempty"`
+	Claims map[string][]string              `json:"claims"`
+}
+
+func (o *CreateProjectOidcProvider) GetTo() CreateProjectOidcProviderToUnion {
+	if o == nil {
+		return CreateProjectOidcProviderToUnion{}
+	}
+	return o.To
+}
+
+func (o *CreateProjectOidcProvider) GetLabel() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Label
+}
+
+func (o *CreateProjectOidcProvider) GetClaims() map[string][]string {
+	if o == nil {
+		return map[string][]string{}
+	}
+	return o.Claims
+}
+
+type CreateProjectTrustedSources struct {
+	Projects      map[string]CreateProjectProjects       `json:"projects,omitempty"`
+	OidcProviders map[string][]CreateProjectOidcProvider `json:"oidcProviders,omitempty"`
+}
+
+func (o *CreateProjectTrustedSources) GetProjects() map[string]CreateProjectProjects {
+	if o == nil {
+		return nil
+	}
+	return o.Projects
+}
+
+func (o *CreateProjectTrustedSources) GetOidcProviders() map[string][]CreateProjectOidcProvider {
+	if o == nil {
+		return nil
+	}
+	return o.OidcProviders
+}
+
 type CreateProjectGitComments struct {
 	// Whether the Vercel bot should comment on PRs
 	OnPullRequest bool `json:"onPullRequest"`
@@ -3495,6 +4100,7 @@ type CreateProjectResponseBody struct {
 	ProtectionBypass                     map[string]CreateProjectProtectionBypassUnion                         `json:"protectionBypass,omitempty"`
 	HasActiveBranches                    *bool                                                                 `json:"hasActiveBranches,omitempty"`
 	TrustedIps                           optionalnullable.OptionalNullable[CreateProjectTrustedIpsUnion]       `json:"trustedIps,omitempty"`
+	TrustedSources                       optionalnullable.OptionalNullable[CreateProjectTrustedSources]        `json:"trustedSources,omitempty"`
 	GitComments                          *CreateProjectGitComments                                             `json:"gitComments,omitempty"`
 	GitProviderOptions                   *CreateProjectGitProviderOptions                                      `json:"gitProviderOptions,omitempty"`
 	Paused                               *bool                                                                 `json:"paused,omitempty"`
@@ -4046,6 +4652,13 @@ func (o *CreateProjectResponseBody) GetTrustedIps() optionalnullable.OptionalNul
 		return nil
 	}
 	return o.TrustedIps
+}
+
+func (o *CreateProjectResponseBody) GetTrustedSources() optionalnullable.OptionalNullable[CreateProjectTrustedSources] {
+	if o == nil {
+		return nil
+	}
+	return o.TrustedSources
 }
 
 func (o *CreateProjectResponseBody) GetGitComments() *CreateProjectGitComments {

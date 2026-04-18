@@ -5,7 +5,7 @@ environments this env variable targets
 ## Example Usage
 
 ```typescript
-import { UserEventPayload107Target } from "@vercel/sdk/models/newprojects.js";
+import { UserEventPayload107Target } from "@vercel/sdk/models/oldprojects.js";
 
 let value: UserEventPayload107Target = "production";
 ```

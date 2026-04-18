@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UpdateMicrofrontendsSecurityPlusMetadata } from "@vercel/sdk/models/updatemicrofrontendsop.js";
+import { UpdateMicrofrontendsSecurityPlusMetadata } from "@vercel/sdk/models/updatemicrofrontendsoidctokenconfig.js";
 
 let value: UpdateMicrofrontendsSecurityPlusMetadata = {
   updatedAt: 6592.87,

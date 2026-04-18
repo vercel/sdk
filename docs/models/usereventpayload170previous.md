@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPayload170Previous } from "@vercel/sdk/models/payloadimportflowgitprovider.js";
+import { UserEventPayload170Previous } from "@vercel/sdk/models/payloadimportflowgitnamespaceid.js";
 
 let value: UserEventPayload170Previous = {
   functionDefaultMemoryType: "<value>",

@@ -4466,6 +4466,8 @@ const (
 	GetAllLogDrainsFrameworkPython         GetAllLogDrainsFramework = "python"
 	GetAllLogDrainsFrameworkRuby           GetAllLogDrainsFramework = "ruby"
 	GetAllLogDrainsFrameworkRust           GetAllLogDrainsFramework = "rust"
+	GetAllLogDrainsFrameworkAxum           GetAllLogDrainsFramework = "axum"
+	GetAllLogDrainsFrameworkActixWeb       GetAllLogDrainsFramework = "actix-web"
 	GetAllLogDrainsFrameworkNode           GetAllLogDrainsFramework = "node"
 	GetAllLogDrainsFrameworkGo             GetAllLogDrainsFramework = "go"
 	GetAllLogDrainsFrameworkServices       GetAllLogDrainsFramework = "services"
@@ -4604,6 +4606,10 @@ func (e *GetAllLogDrainsFramework) UnmarshalJSON(data []byte) error {
 	case "ruby":
 		fallthrough
 	case "rust":
+		fallthrough
+	case "axum":
+		fallthrough
+	case "actix-web":
 		fallthrough
 	case "node":
 		fallthrough

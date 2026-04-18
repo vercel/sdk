@@ -116,7 +116,7 @@ export type UpdateSandboxRequestBody = {
    */
   env?: { [k: string]: string } | undefined;
   /**
-   * The snapshot ID to set as the current snapshot. Must be active and belong to the same project. Set to null to clear.
+   * The snapshot ID to set as the current snapshot. Must be active and belong to the same project.
    */
   currentSnapshotId?: string | undefined;
   /**

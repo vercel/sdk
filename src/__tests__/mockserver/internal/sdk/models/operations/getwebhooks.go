@@ -536,6 +536,8 @@ const (
 	GetWebhooksFrameworkPython         GetWebhooksFramework = "python"
 	GetWebhooksFrameworkRuby           GetWebhooksFramework = "ruby"
 	GetWebhooksFrameworkRust           GetWebhooksFramework = "rust"
+	GetWebhooksFrameworkAxum           GetWebhooksFramework = "axum"
+	GetWebhooksFrameworkActixWeb       GetWebhooksFramework = "actix-web"
 	GetWebhooksFrameworkNode           GetWebhooksFramework = "node"
 	GetWebhooksFrameworkGo             GetWebhooksFramework = "go"
 	GetWebhooksFrameworkServices       GetWebhooksFramework = "services"
@@ -674,6 +676,10 @@ func (e *GetWebhooksFramework) UnmarshalJSON(data []byte) error {
 	case "ruby":
 		fallthrough
 	case "rust":
+		fallthrough
+	case "axum":
+		fallthrough
+	case "actix-web":
 		fallthrough
 	case "node":
 		fallthrough

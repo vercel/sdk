@@ -254,7 +254,7 @@ export class SandboxesV2Beta extends ClientSDK {
    * Delete a sandbox
    *
    * @remarks
-   * Deletes a sandbox by name. If sandboxes are currently running, they will be stopped first. This operation deletes all sandbox entities with the given name, all associated snapshots, and the named sandbox metadata.
+   * Deletes a sandbox by name. If sandboxes are currently running, they will be stopped first. This operation deletes all sandbox entities with the given name and the named sandbox metadata.
    */
   async deleteSandbox(
     request: DeleteSandboxRequest,

@@ -5,7 +5,7 @@
 ```typescript
 import {
   UpdateMicrofrontendsLinkProjectsResponse200ApplicationJSONResponseBodyDeployHooks,
-} from "@vercel/sdk/models/updatemicrofrontendsop.js";
+} from "@vercel/sdk/models/updatemicrofrontendsoidctokenconfig.js";
 
 let value:
   UpdateMicrofrontendsLinkProjectsResponse200ApplicationJSONResponseBodyDeployHooks =

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { EnvId2 } from "@vercel/sdk/models/payloadimportflowgitprovider.js";
+import { EnvId2 } from "@vercel/sdk/models/payloadimportflowgitnamespaceid.js";
 
 let value: EnvId2 = "production";
 ```

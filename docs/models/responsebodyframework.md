@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyFramework } from "@vercel/sdk/models/getprojectslogheaders2.js";
+import { ResponseBodyFramework } from "@vercel/sdk/models/responsebodycve55182migrationappliedfrom.js";
 
-let value: ResponseBodyFramework = "django";
+let value: ResponseBodyFramework = "sanity-v3";
 ```
 
 ## Values
 
 ```typescript
-"services" | "blitzjs" | "nextjs" | "gatsby" | "remix" | "react-router" | "astro" | "hexo" | "eleventy" | "docusaurus-2" | "docusaurus" | "preact" | "solidstart-1" | "solidstart" | "dojo" | "ember" | "vue" | "scully" | "ionic-angular" | "angular" | "polymer" | "svelte" | "sveltekit" | "sveltekit-1" | "ionic-react" | "create-react-app" | "gridsome" | "umijs" | "sapper" | "saber" | "stencil" | "nuxtjs" | "redwoodjs" | "hugo" | "jekyll" | "brunch" | "middleman" | "zola" | "hydrogen" | "vite" | "tanstack-start" | "vitepress" | "vuepress" | "parcel" | "fastapi" | "flask" | "fasthtml" | "django" | "sanity-v3" | "sanity" | "storybook" | "nitro" | "hono" | "express" | "h3" | "koa" | "nestjs" | "elysia" | "fastify" | "xmcp" | "python" | "ruby" | "rust" | "node" | "go" | "mastra"
+"services" | "blitzjs" | "nextjs" | "gatsby" | "remix" | "react-router" | "astro" | "hexo" | "eleventy" | "docusaurus-2" | "docusaurus" | "preact" | "solidstart-1" | "solidstart" | "dojo" | "ember" | "vue" | "scully" | "ionic-angular" | "angular" | "polymer" | "svelte" | "sveltekit" | "sveltekit-1" | "ionic-react" | "create-react-app" | "gridsome" | "umijs" | "sapper" | "saber" | "stencil" | "nuxtjs" | "redwoodjs" | "hugo" | "jekyll" | "brunch" | "middleman" | "zola" | "hydrogen" | "vite" | "tanstack-start" | "vitepress" | "vuepress" | "parcel" | "fastapi" | "flask" | "fasthtml" | "django" | "sanity-v3" | "sanity" | "storybook" | "nitro" | "hono" | "express" | "h3" | "koa" | "nestjs" | "elysia" | "fastify" | "xmcp" | "python" | "ruby" | "rust" | "axum" | "actix-web" | "node" | "go" | "mastra"
 ```

@@ -1361,6 +1361,8 @@ const (
 	CreateDeploymentFrameworkRequestPython         CreateDeploymentFrameworkRequest = "python"
 	CreateDeploymentFrameworkRequestRuby           CreateDeploymentFrameworkRequest = "ruby"
 	CreateDeploymentFrameworkRequestRust           CreateDeploymentFrameworkRequest = "rust"
+	CreateDeploymentFrameworkRequestAxum           CreateDeploymentFrameworkRequest = "axum"
+	CreateDeploymentFrameworkRequestActixWeb       CreateDeploymentFrameworkRequest = "actix-web"
 	CreateDeploymentFrameworkRequestNode           CreateDeploymentFrameworkRequest = "node"
 	CreateDeploymentFrameworkRequestGo             CreateDeploymentFrameworkRequest = "go"
 	CreateDeploymentFrameworkRequestServices       CreateDeploymentFrameworkRequest = "services"
@@ -1499,6 +1501,10 @@ func (e *CreateDeploymentFrameworkRequest) UnmarshalJSON(data []byte) error {
 	case "ruby":
 		fallthrough
 	case "rust":
+		fallthrough
+	case "axum":
+		fallthrough
+	case "actix-web":
 		fallthrough
 	case "node":
 		fallthrough
@@ -2037,6 +2043,8 @@ const (
 	CreateDeploymentFrameworkLambdasPython         CreateDeploymentFrameworkLambdas = "python"
 	CreateDeploymentFrameworkLambdasRuby           CreateDeploymentFrameworkLambdas = "ruby"
 	CreateDeploymentFrameworkLambdasRust           CreateDeploymentFrameworkLambdas = "rust"
+	CreateDeploymentFrameworkLambdasAxum           CreateDeploymentFrameworkLambdas = "axum"
+	CreateDeploymentFrameworkLambdasActixWeb       CreateDeploymentFrameworkLambdas = "actix-web"
 	CreateDeploymentFrameworkLambdasNode           CreateDeploymentFrameworkLambdas = "node"
 	CreateDeploymentFrameworkLambdasGo             CreateDeploymentFrameworkLambdas = "go"
 	CreateDeploymentFrameworkLambdasServices       CreateDeploymentFrameworkLambdas = "services"
@@ -2175,6 +2183,10 @@ func (e *CreateDeploymentFrameworkLambdas) UnmarshalJSON(data []byte) error {
 	case "ruby":
 		fallthrough
 	case "rust":
+		fallthrough
+	case "axum":
+		fallthrough
+	case "actix-web":
 		fallthrough
 	case "node":
 		fallthrough

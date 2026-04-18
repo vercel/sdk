@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CreateProjectTrustedIpsDeploymentType } from "@vercel/sdk/models/flatratetier.js";
+import { CreateProjectTrustedIpsDeploymentType } from "@vercel/sdk/models/createprojectcreatedeployments.js";
 
 let value: CreateProjectTrustedIpsDeploymentType = "all_except_custom_domains";
 ```

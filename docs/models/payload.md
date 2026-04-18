@@ -3084,19 +3084,9 @@ const value: models.TwoHundredAndEightyNine = {
 
 ```typescript
 const value: models.TwoHundredAndNinety = {
-  team: {
-    id: "<id>",
-    name: "<value>",
-  },
-  configuration: {
-    id: "<id>",
-  },
-  peering: {
-    id: "<id>",
-    accountId: "<id>",
-    region: "<value>",
-    vpcId: "<id>",
-  },
+  vulnerabilities: [],
+  protectionEnabled: true,
+  protectedProjectCount: 5184.1,
 };
 ```
 
@@ -3113,6 +3103,9 @@ const value: models.TwoHundredAndNinetyOne = {
   },
   peering: {
     id: "<id>",
+    accountId: "<id>",
+    region: "<value>",
+    vpcId: "<id>",
   },
 };
 ```
@@ -3138,7 +3131,16 @@ const value: models.TwoHundredAndNinetyTwo = {
 
 ```typescript
 const value: models.TwoHundredAndNinetyThree = {
-  tier: "plus",
+  team: {
+    id: "<id>",
+    name: "<value>",
+  },
+  configuration: {
+    id: "<id>",
+  },
+  peering: {
+    id: "<id>",
+  },
 };
 ```
 
@@ -3146,8 +3148,7 @@ const value: models.TwoHundredAndNinetyThree = {
 
 ```typescript
 const value: models.TwoHundredAndNinetyFour = {
-  id: "<id>",
-  url: "https://shameful-reach.biz/",
+  tier: "pro",
 };
 ```
 
@@ -3155,7 +3156,8 @@ const value: models.TwoHundredAndNinetyFour = {
 
 ```typescript
 const value: models.TwoHundredAndNinetyFive = {
-  chatId: "<id>",
+  id: "<id>",
+  url: "https://medium-instructor.biz",
 };
 ```
 
@@ -3163,8 +3165,7 @@ const value: models.TwoHundredAndNinetyFive = {
 
 ```typescript
 const value: models.TwoHundredAndNinetySix = {
-  model: "F-150",
-  useCase: "<value>",
+  chatId: "<id>",
 };
 ```
 
@@ -3172,8 +3173,8 @@ const value: models.TwoHundredAndNinetySix = {
 
 ```typescript
 const value: models.TwoHundredAndNinetySeven = {
-  chatId: "<id>",
-  messageId: "<id>",
+  model: "Cruze",
+  useCase: "<value>",
 };
 ```
 
@@ -3181,9 +3182,8 @@ const value: models.TwoHundredAndNinetySeven = {
 
 ```typescript
 const value: models.TwoHundredAndNinetyEight = {
-  deploymentId: "<id>",
-  projectId: "<id>",
-  runId: "<id>",
+  chatId: "<id>",
+  messageId: "<id>",
 };
 ```
 
@@ -3191,11 +3191,21 @@ const value: models.TwoHundredAndNinetyEight = {
 
 ```typescript
 const value: models.TwoHundredAndNinetyNine = {
-  grantType: "urn:ietf:params:oauth:grant-type:device_code",
+  deploymentId: "<id>",
+  projectId: "<id>",
+  runId: "<id>",
+};
+```
+
+### `models.ThreeHundred`
+
+```typescript
+const value: models.ThreeHundred = {
+  grantType: "authorization_code",
   appName: "<value>",
-  atTTL: 508.04,
+  atTTL: 2471.94,
   scope: "<value>",
-  authMethod: "github-webhook",
+  authMethod: "bitbucket",
 };
 ```
 

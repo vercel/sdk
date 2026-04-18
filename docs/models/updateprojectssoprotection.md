@@ -5,7 +5,7 @@ Ensures visitors to your Preview Deployments are logged into Vercel and have a m
 ## Example Usage
 
 ```typescript
-import { UpdateProjectSsoProtection } from "@vercel/sdk/models/updateprojectbotfilter.js";
+import { UpdateProjectSsoProtection } from "@vercel/sdk/models/updateprojectlastaliasrequest.js";
 
 let value: UpdateProjectSsoProtection = {};
 ```

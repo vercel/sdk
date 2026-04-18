@@ -47,10 +47,10 @@ func testGetEdgeConfigGetEdgeConfig0(w http.ResponseWriter, req *http.Request) {
 	}
 	var respBody *operations.GetEdgeConfigResponseBody = &operations.GetEdgeConfigResponseBody{
 		ID:          "<id>",
-		CreatedAt:   871.29,
+		CreatedAt:   710.36,
 		OwnerID:     "<id>",
 		Slug:        "<value>",
-		UpdatedAt:   202.18,
+		UpdatedAt:   871.29,
 		Digest:      "<value>",
 		SizeInBytes: 3866.06,
 		ItemCount:   4529.9,

@@ -382,6 +382,8 @@ const (
 	CreateIntegrationStoreDirectFrameworkPython         CreateIntegrationStoreDirectFramework = "python"
 	CreateIntegrationStoreDirectFrameworkRuby           CreateIntegrationStoreDirectFramework = "ruby"
 	CreateIntegrationStoreDirectFrameworkRust           CreateIntegrationStoreDirectFramework = "rust"
+	CreateIntegrationStoreDirectFrameworkAxum           CreateIntegrationStoreDirectFramework = "axum"
+	CreateIntegrationStoreDirectFrameworkActixWeb       CreateIntegrationStoreDirectFramework = "actix-web"
 	CreateIntegrationStoreDirectFrameworkNode           CreateIntegrationStoreDirectFramework = "node"
 	CreateIntegrationStoreDirectFrameworkGo             CreateIntegrationStoreDirectFramework = "go"
 	CreateIntegrationStoreDirectFrameworkServices       CreateIntegrationStoreDirectFramework = "services"
@@ -520,6 +522,10 @@ func (e *CreateIntegrationStoreDirectFramework) UnmarshalJSON(data []byte) error
 	case "ruby":
 		fallthrough
 	case "rust":
+		fallthrough
+	case "axum":
+		fallthrough
+	case "actix-web":
 		fallthrough
 	case "node":
 		fallthrough

@@ -255,6 +255,8 @@ const (
 	CancelDeploymentFrameworkPython         CancelDeploymentFramework = "python"
 	CancelDeploymentFrameworkRuby           CancelDeploymentFramework = "ruby"
 	CancelDeploymentFrameworkRust           CancelDeploymentFramework = "rust"
+	CancelDeploymentFrameworkAxum           CancelDeploymentFramework = "axum"
+	CancelDeploymentFrameworkActixWeb       CancelDeploymentFramework = "actix-web"
 	CancelDeploymentFrameworkNode           CancelDeploymentFramework = "node"
 	CancelDeploymentFrameworkGo             CancelDeploymentFramework = "go"
 	CancelDeploymentFrameworkServices       CancelDeploymentFramework = "services"
@@ -393,6 +395,10 @@ func (e *CancelDeploymentFramework) UnmarshalJSON(data []byte) error {
 	case "ruby":
 		fallthrough
 	case "rust":
+		fallthrough
+	case "axum":
+		fallthrough
+	case "actix-web":
 		fallthrough
 	case "node":
 		fallthrough

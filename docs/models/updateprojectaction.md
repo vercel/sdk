@@ -5,7 +5,7 @@ Whether the toast was dismissed, the action was accepted, or the dismissal with 
 ## Example Usage
 
 ```typescript
-import { UpdateProjectAction } from "@vercel/sdk/models/updateprojectbotfilter.js";
+import { UpdateProjectAction } from "@vercel/sdk/models/updateprojectlastaliasrequest.js";
 
 let value: UpdateProjectAction = "delete";
 ```

@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
@@ -52,10 +53,6 @@ import {
   GetMicrofrontendsInGroupGitComments$inboundSchema,
   GetMicrofrontendsInGroupGitComments$Outbound,
   GetMicrofrontendsInGroupGitComments$outboundSchema,
-  GetMicrofrontendsInGroupGitProviderOptions,
-  GetMicrofrontendsInGroupGitProviderOptions$inboundSchema,
-  GetMicrofrontendsInGroupGitProviderOptions$Outbound,
-  GetMicrofrontendsInGroupGitProviderOptions$outboundSchema,
   GetMicrofrontendsInGroupIpBuckets,
   GetMicrofrontendsInGroupIpBuckets$inboundSchema,
   GetMicrofrontendsInGroupIpBuckets$Outbound,
@@ -87,10 +84,6 @@ import {
   GetMicrofrontendsInGroupNodeVersion,
   GetMicrofrontendsInGroupNodeVersion$inboundSchema,
   GetMicrofrontendsInGroupNodeVersion$outboundSchema,
-  GetMicrofrontendsInGroupOidcTokenConfig,
-  GetMicrofrontendsInGroupOidcTokenConfig$inboundSchema,
-  GetMicrofrontendsInGroupOidcTokenConfig$Outbound,
-  GetMicrofrontendsInGroupOidcTokenConfig$outboundSchema,
   GetMicrofrontendsInGroupOptionsAllowlist,
   GetMicrofrontendsInGroupOptionsAllowlist$inboundSchema,
   GetMicrofrontendsInGroupOptionsAllowlist$Outbound,
@@ -119,10 +112,6 @@ import {
   GetMicrofrontendsInGroupRollingRelease$inboundSchema,
   GetMicrofrontendsInGroupRollingRelease$Outbound,
   GetMicrofrontendsInGroupRollingRelease$outboundSchema,
-  GetMicrofrontendsInGroupSecurity,
-  GetMicrofrontendsInGroupSecurity$inboundSchema,
-  GetMicrofrontendsInGroupSecurity$Outbound,
-  GetMicrofrontendsInGroupSecurity$outboundSchema,
   GetMicrofrontendsInGroupSpeedInsights,
   GetMicrofrontendsInGroupSpeedInsights$inboundSchema,
   GetMicrofrontendsInGroupSpeedInsights$Outbound,
@@ -143,12 +132,211 @@ import {
   GetMicrofrontendsInGroupTrustedIps$inboundSchema,
   GetMicrofrontendsInGroupTrustedIps$Outbound,
   GetMicrofrontendsInGroupTrustedIps$outboundSchema,
-  GetMicrofrontendsInGroupWebAnalytics,
-  GetMicrofrontendsInGroupWebAnalytics$inboundSchema,
-  GetMicrofrontendsInGroupWebAnalytics$Outbound,
-  GetMicrofrontendsInGroupWebAnalytics$outboundSchema,
-} from "./getmicrofrontendsingroupoidctokenconfig.js";
+  GetMicrofrontendsInGroupTrustedSources,
+  GetMicrofrontendsInGroupTrustedSources$inboundSchema,
+  GetMicrofrontendsInGroupTrustedSources$Outbound,
+  GetMicrofrontendsInGroupTrustedSources$outboundSchema,
+} from "./getmicrofrontendsingroupgitcomments.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+/**
+ * Whether the Vercel bot should automatically create GitHub deployments https://docs.github.com/en/rest/deployments/deployments#about-deployments NOTE: repository-dispatch events should be used instead
+ */
+export const GetMicrofrontendsInGroupCreateDeployments = {
+  Enabled: "enabled",
+  Disabled: "disabled",
+} as const;
+/**
+ * Whether the Vercel bot should automatically create GitHub deployments https://docs.github.com/en/rest/deployments/deployments#about-deployments NOTE: repository-dispatch events should be used instead
+ */
+export type GetMicrofrontendsInGroupCreateDeployments = ClosedEnum<
+  typeof GetMicrofrontendsInGroupCreateDeployments
+>;
+
+/**
+ * Configuration for consolidated git commit status reporting. When enabled, Vercel will post a single consolidated commit status instead of individual statuses for each deployment.
+ */
+export type GetMicrofrontendsInGroupConsolidatedGitCommitStatus = {
+  /**
+   * Whether consolidated commit status is enabled.
+   */
+  enabled: boolean;
+  /**
+   * Whether to propagate individual deployment failures to the consolidated status.
+   */
+  propagateFailures: boolean;
+};
+
+export type GetMicrofrontendsInGroupGitProviderOptions = {
+  /**
+   * Whether the Vercel bot should automatically create GitHub deployments https://docs.github.com/en/rest/deployments/deployments#about-deployments NOTE: repository-dispatch events should be used instead
+   */
+  createDeployments: GetMicrofrontendsInGroupCreateDeployments;
+  /**
+   * Whether the Vercel bot should not automatically create GitHub repository-dispatch events on deployment events. https://vercel.com/docs/git/vercel-for-github#repository-dispatch-events
+   */
+  disableRepositoryDispatchEvents?: boolean | undefined;
+  /**
+   * Whether the project requires commits to be signed before deployments will be created.
+   */
+  requireVerifiedCommits?: boolean | undefined;
+  /**
+   * Whether Vercel should post commit statuses for this project. When omitted, commit statuses remain enabled.
+   */
+  gitCommitStatus?: boolean | undefined;
+  /**
+   * Configuration for consolidated git commit status reporting. When enabled, Vercel will post a single consolidated commit status instead of individual statuses for each deployment.
+   */
+  consolidatedGitCommitStatus?:
+    | GetMicrofrontendsInGroupConsolidatedGitCommitStatus
+    | undefined;
+};
+
+export type GetMicrofrontendsInGroupWebAnalytics = {
+  id: string;
+  disabledAt?: number | undefined;
+  canceledAt?: number | undefined;
+  enabledAt?: number | undefined;
+  hasData?: true | undefined;
+};
+
+export const GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONAction =
+  {
+    Log: "log",
+    Challenge: "challenge",
+    Deny: "deny",
+  } as const;
+export type GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONAction =
+  ClosedEnum<
+    typeof GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONAction
+  >;
+
+export type GetMicrofrontendsInGroupVercelRuleset = {
+  active: boolean;
+  action?:
+    | GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONAction
+    | undefined;
+};
+
+export const GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyAction =
+  {
+    Log: "log",
+    Challenge: "challenge",
+    Deny: "deny",
+  } as const;
+export type GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyAction =
+  ClosedEnum<
+    typeof GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyAction
+  >;
+
+export type GetMicrofrontendsInGroupBotFilter = {
+  active: boolean;
+  action?:
+    | GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyAction
+    | undefined;
+};
+
+export const GetMicrofrontendsInGroupMicrofrontendsResponseAction = {
+  Log: "log",
+  Challenge: "challenge",
+  Deny: "deny",
+} as const;
+export type GetMicrofrontendsInGroupMicrofrontendsResponseAction = ClosedEnum<
+  typeof GetMicrofrontendsInGroupMicrofrontendsResponseAction
+>;
+
+export type GetMicrofrontendsInGroupAiBots = {
+  active: boolean;
+  action?: GetMicrofrontendsInGroupMicrofrontendsResponseAction | undefined;
+};
+
+export const GetMicrofrontendsInGroupMicrofrontendsResponse200Action = {
+  Log: "log",
+  Challenge: "challenge",
+  Deny: "deny",
+} as const;
+export type GetMicrofrontendsInGroupMicrofrontendsResponse200Action =
+  ClosedEnum<typeof GetMicrofrontendsInGroupMicrofrontendsResponse200Action>;
+
+export type GetMicrofrontendsInGroupOwasp = {
+  active: boolean;
+  action?: GetMicrofrontendsInGroupMicrofrontendsResponse200Action | undefined;
+};
+
+export type GetMicrofrontendsInGroupManagedRules = {
+  vercelRuleset: GetMicrofrontendsInGroupVercelRuleset;
+  botFilter: GetMicrofrontendsInGroupBotFilter;
+  aiBots: GetMicrofrontendsInGroupAiBots;
+  owasp: GetMicrofrontendsInGroupOwasp;
+};
+
+export const GetMicrofrontendsInGroupLogHeaders2 = {
+  Wildcard: "*",
+} as const;
+export type GetMicrofrontendsInGroupLogHeaders2 = ClosedEnum<
+  typeof GetMicrofrontendsInGroupLogHeaders2
+>;
+
+export type GetMicrofrontendsInGroupLogHeaders =
+  | Array<string>
+  | GetMicrofrontendsInGroupLogHeaders2;
+
+export type GetMicrofrontendsInGroupSecurityPlusMetadata = {
+  updatedAt: number;
+  /**
+   * Timestamp when the feature was first enabled. Never changes after initial enablement.
+   */
+  firstEnabledAt?: number | undefined;
+};
+
+export type GetMicrofrontendsInGroupSecurity = {
+  attackModeEnabled?: boolean | undefined;
+  attackModeUpdatedAt?: number | undefined;
+  firewallEnabled?: boolean | undefined;
+  firewallUpdatedAt?: number | undefined;
+  attackModeActiveUntil?: number | null | undefined;
+  firewallConfigVersion?: number | undefined;
+  firewallSeawallEnabled?: boolean | undefined;
+  ja3Enabled?: boolean | undefined;
+  ja4Enabled?: boolean | undefined;
+  firewallBypassIps?: Array<string> | undefined;
+  managedRules?: GetMicrofrontendsInGroupManagedRules | null | undefined;
+  botIdEnabled?: boolean | undefined;
+  logHeaders?: Array<string> | GetMicrofrontendsInGroupLogHeaders2 | undefined;
+  securityPlus?: boolean | undefined;
+  securityPlusMetadata?:
+    | GetMicrofrontendsInGroupSecurityPlusMetadata
+    | undefined;
+  /**
+   * Whether Page Integrity is enabled for this project. Used by the metadata service to gate DynamoDB lookups against the page-integrity-inventory table.
+   */
+  pageIntegrityEnabled?: boolean | undefined;
+};
+
+/**
+ * - team: `https://oidc.vercel.com/[team_slug]` - global: `https://oidc.vercel.com`
+ */
+export const GetMicrofrontendsInGroupIssuerMode = {
+  Team: "team",
+  Global: "global",
+} as const;
+/**
+ * - team: `https://oidc.vercel.com/[team_slug]` - global: `https://oidc.vercel.com`
+ */
+export type GetMicrofrontendsInGroupIssuerMode = ClosedEnum<
+  typeof GetMicrofrontendsInGroupIssuerMode
+>;
+
+export type GetMicrofrontendsInGroupOidcTokenConfig = {
+  /**
+   * Whether or not to generate OpenID Connect JSON Web Tokens.
+   */
+  enabled?: boolean | undefined;
+  /**
+   * - team: `https://oidc.vercel.com/[team_slug]` - global: `https://oidc.vercel.com`
+   */
+  issuerMode?: GetMicrofrontendsInGroupIssuerMode | undefined;
+};
 
 export const GetMicrofrontendsInGroupFlatRateTier = {
   Standard: "standard",
@@ -628,6 +816,7 @@ export type GetMicrofrontendsInGroupProjects = {
     | undefined;
   hasActiveBranches?: boolean | undefined;
   trustedIps?: GetMicrofrontendsInGroupTrustedIps | null | undefined;
+  trustedSources?: GetMicrofrontendsInGroupTrustedSources | null | undefined;
   gitComments?: GetMicrofrontendsInGroupGitComments | undefined;
   gitProviderOptions?: GetMicrofrontendsInGroupGitProviderOptions | undefined;
   paused?: boolean | undefined;
@@ -657,6 +846,777 @@ export type GetMicrofrontendsInGroupProjects = {
 export type GetMicrofrontendsInGroupResponseBody = {
   projects: Array<GetMicrofrontendsInGroupProjects>;
 };
+
+/** @internal */
+export const GetMicrofrontendsInGroupCreateDeployments$inboundSchema:
+  z.ZodNativeEnum<typeof GetMicrofrontendsInGroupCreateDeployments> = z
+    .nativeEnum(GetMicrofrontendsInGroupCreateDeployments);
+/** @internal */
+export const GetMicrofrontendsInGroupCreateDeployments$outboundSchema:
+  z.ZodNativeEnum<typeof GetMicrofrontendsInGroupCreateDeployments> =
+    GetMicrofrontendsInGroupCreateDeployments$inboundSchema;
+
+/** @internal */
+export const GetMicrofrontendsInGroupConsolidatedGitCommitStatus$inboundSchema:
+  z.ZodType<
+    GetMicrofrontendsInGroupConsolidatedGitCommitStatus,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    enabled: types.boolean(),
+    propagateFailures: types.boolean(),
+  });
+/** @internal */
+export type GetMicrofrontendsInGroupConsolidatedGitCommitStatus$Outbound = {
+  enabled: boolean;
+  propagateFailures: boolean;
+};
+
+/** @internal */
+export const GetMicrofrontendsInGroupConsolidatedGitCommitStatus$outboundSchema:
+  z.ZodType<
+    GetMicrofrontendsInGroupConsolidatedGitCommitStatus$Outbound,
+    z.ZodTypeDef,
+    GetMicrofrontendsInGroupConsolidatedGitCommitStatus
+  > = z.object({
+    enabled: z.boolean(),
+    propagateFailures: z.boolean(),
+  });
+
+export function getMicrofrontendsInGroupConsolidatedGitCommitStatusToJSON(
+  getMicrofrontendsInGroupConsolidatedGitCommitStatus:
+    GetMicrofrontendsInGroupConsolidatedGitCommitStatus,
+): string {
+  return JSON.stringify(
+    GetMicrofrontendsInGroupConsolidatedGitCommitStatus$outboundSchema.parse(
+      getMicrofrontendsInGroupConsolidatedGitCommitStatus,
+    ),
+  );
+}
+export function getMicrofrontendsInGroupConsolidatedGitCommitStatusFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetMicrofrontendsInGroupConsolidatedGitCommitStatus,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetMicrofrontendsInGroupConsolidatedGitCommitStatus$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetMicrofrontendsInGroupConsolidatedGitCommitStatus' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetMicrofrontendsInGroupGitProviderOptions$inboundSchema:
+  z.ZodType<GetMicrofrontendsInGroupGitProviderOptions, z.ZodTypeDef, unknown> =
+    z.object({
+      createDeployments:
+        GetMicrofrontendsInGroupCreateDeployments$inboundSchema,
+      disableRepositoryDispatchEvents: types.optional(types.boolean()),
+      requireVerifiedCommits: types.optional(types.boolean()),
+      gitCommitStatus: types.optional(types.boolean()),
+      consolidatedGitCommitStatus: types.optional(
+        z.lazy(() =>
+          GetMicrofrontendsInGroupConsolidatedGitCommitStatus$inboundSchema
+        ),
+      ),
+    });
+/** @internal */
+export type GetMicrofrontendsInGroupGitProviderOptions$Outbound = {
+  createDeployments: string;
+  disableRepositoryDispatchEvents?: boolean | undefined;
+  requireVerifiedCommits?: boolean | undefined;
+  gitCommitStatus?: boolean | undefined;
+  consolidatedGitCommitStatus?:
+    | GetMicrofrontendsInGroupConsolidatedGitCommitStatus$Outbound
+    | undefined;
+};
+
+/** @internal */
+export const GetMicrofrontendsInGroupGitProviderOptions$outboundSchema:
+  z.ZodType<
+    GetMicrofrontendsInGroupGitProviderOptions$Outbound,
+    z.ZodTypeDef,
+    GetMicrofrontendsInGroupGitProviderOptions
+  > = z.object({
+    createDeployments: GetMicrofrontendsInGroupCreateDeployments$outboundSchema,
+    disableRepositoryDispatchEvents: z.boolean().optional(),
+    requireVerifiedCommits: z.boolean().optional(),
+    gitCommitStatus: z.boolean().optional(),
+    consolidatedGitCommitStatus: z.lazy(() =>
+      GetMicrofrontendsInGroupConsolidatedGitCommitStatus$outboundSchema
+    ).optional(),
+  });
+
+export function getMicrofrontendsInGroupGitProviderOptionsToJSON(
+  getMicrofrontendsInGroupGitProviderOptions:
+    GetMicrofrontendsInGroupGitProviderOptions,
+): string {
+  return JSON.stringify(
+    GetMicrofrontendsInGroupGitProviderOptions$outboundSchema.parse(
+      getMicrofrontendsInGroupGitProviderOptions,
+    ),
+  );
+}
+export function getMicrofrontendsInGroupGitProviderOptionsFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetMicrofrontendsInGroupGitProviderOptions,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetMicrofrontendsInGroupGitProviderOptions$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetMicrofrontendsInGroupGitProviderOptions' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetMicrofrontendsInGroupWebAnalytics$inboundSchema: z.ZodType<
+  GetMicrofrontendsInGroupWebAnalytics,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  id: types.string(),
+  disabledAt: types.optional(types.number()),
+  canceledAt: types.optional(types.number()),
+  enabledAt: types.optional(types.number()),
+  hasData: types.optional(types.literal(true)),
+});
+/** @internal */
+export type GetMicrofrontendsInGroupWebAnalytics$Outbound = {
+  id: string;
+  disabledAt?: number | undefined;
+  canceledAt?: number | undefined;
+  enabledAt?: number | undefined;
+  hasData?: true | undefined;
+};
+
+/** @internal */
+export const GetMicrofrontendsInGroupWebAnalytics$outboundSchema: z.ZodType<
+  GetMicrofrontendsInGroupWebAnalytics$Outbound,
+  z.ZodTypeDef,
+  GetMicrofrontendsInGroupWebAnalytics
+> = z.object({
+  id: z.string(),
+  disabledAt: z.number().optional(),
+  canceledAt: z.number().optional(),
+  enabledAt: z.number().optional(),
+  hasData: z.literal(true).optional(),
+});
+
+export function getMicrofrontendsInGroupWebAnalyticsToJSON(
+  getMicrofrontendsInGroupWebAnalytics: GetMicrofrontendsInGroupWebAnalytics,
+): string {
+  return JSON.stringify(
+    GetMicrofrontendsInGroupWebAnalytics$outboundSchema.parse(
+      getMicrofrontendsInGroupWebAnalytics,
+    ),
+  );
+}
+export function getMicrofrontendsInGroupWebAnalyticsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetMicrofrontendsInGroupWebAnalytics, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetMicrofrontendsInGroupWebAnalytics$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetMicrofrontendsInGroupWebAnalytics' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONAction$inboundSchema:
+  z.ZodNativeEnum<
+    typeof GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONAction
+  > = z.nativeEnum(
+    GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONAction,
+  );
+/** @internal */
+export const GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONAction$outboundSchema:
+  z.ZodNativeEnum<
+    typeof GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONAction
+  > =
+    GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONAction$inboundSchema;
+
+/** @internal */
+export const GetMicrofrontendsInGroupVercelRuleset$inboundSchema: z.ZodType<
+  GetMicrofrontendsInGroupVercelRuleset,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  active: types.boolean(),
+  action: types.optional(
+    GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONAction$inboundSchema,
+  ),
+});
+/** @internal */
+export type GetMicrofrontendsInGroupVercelRuleset$Outbound = {
+  active: boolean;
+  action?: string | undefined;
+};
+
+/** @internal */
+export const GetMicrofrontendsInGroupVercelRuleset$outboundSchema: z.ZodType<
+  GetMicrofrontendsInGroupVercelRuleset$Outbound,
+  z.ZodTypeDef,
+  GetMicrofrontendsInGroupVercelRuleset
+> = z.object({
+  active: z.boolean(),
+  action:
+    GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONAction$outboundSchema
+      .optional(),
+});
+
+export function getMicrofrontendsInGroupVercelRulesetToJSON(
+  getMicrofrontendsInGroupVercelRuleset: GetMicrofrontendsInGroupVercelRuleset,
+): string {
+  return JSON.stringify(
+    GetMicrofrontendsInGroupVercelRuleset$outboundSchema.parse(
+      getMicrofrontendsInGroupVercelRuleset,
+    ),
+  );
+}
+export function getMicrofrontendsInGroupVercelRulesetFromJSON(
+  jsonString: string,
+): SafeParseResult<GetMicrofrontendsInGroupVercelRuleset, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetMicrofrontendsInGroupVercelRuleset$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetMicrofrontendsInGroupVercelRuleset' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyAction$inboundSchema:
+  z.ZodNativeEnum<
+    typeof GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyAction
+  > = z.nativeEnum(
+    GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyAction,
+  );
+/** @internal */
+export const GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyAction$outboundSchema:
+  z.ZodNativeEnum<
+    typeof GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyAction
+  > =
+    GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyAction$inboundSchema;
+
+/** @internal */
+export const GetMicrofrontendsInGroupBotFilter$inboundSchema: z.ZodType<
+  GetMicrofrontendsInGroupBotFilter,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  active: types.boolean(),
+  action: types.optional(
+    GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyAction$inboundSchema,
+  ),
+});
+/** @internal */
+export type GetMicrofrontendsInGroupBotFilter$Outbound = {
+  active: boolean;
+  action?: string | undefined;
+};
+
+/** @internal */
+export const GetMicrofrontendsInGroupBotFilter$outboundSchema: z.ZodType<
+  GetMicrofrontendsInGroupBotFilter$Outbound,
+  z.ZodTypeDef,
+  GetMicrofrontendsInGroupBotFilter
+> = z.object({
+  active: z.boolean(),
+  action:
+    GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyAction$outboundSchema
+      .optional(),
+});
+
+export function getMicrofrontendsInGroupBotFilterToJSON(
+  getMicrofrontendsInGroupBotFilter: GetMicrofrontendsInGroupBotFilter,
+): string {
+  return JSON.stringify(
+    GetMicrofrontendsInGroupBotFilter$outboundSchema.parse(
+      getMicrofrontendsInGroupBotFilter,
+    ),
+  );
+}
+export function getMicrofrontendsInGroupBotFilterFromJSON(
+  jsonString: string,
+): SafeParseResult<GetMicrofrontendsInGroupBotFilter, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetMicrofrontendsInGroupBotFilter$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetMicrofrontendsInGroupBotFilter' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetMicrofrontendsInGroupMicrofrontendsResponseAction$inboundSchema:
+  z.ZodNativeEnum<typeof GetMicrofrontendsInGroupMicrofrontendsResponseAction> =
+    z.nativeEnum(GetMicrofrontendsInGroupMicrofrontendsResponseAction);
+/** @internal */
+export const GetMicrofrontendsInGroupMicrofrontendsResponseAction$outboundSchema:
+  z.ZodNativeEnum<typeof GetMicrofrontendsInGroupMicrofrontendsResponseAction> =
+    GetMicrofrontendsInGroupMicrofrontendsResponseAction$inboundSchema;
+
+/** @internal */
+export const GetMicrofrontendsInGroupAiBots$inboundSchema: z.ZodType<
+  GetMicrofrontendsInGroupAiBots,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  active: types.boolean(),
+  action: types.optional(
+    GetMicrofrontendsInGroupMicrofrontendsResponseAction$inboundSchema,
+  ),
+});
+/** @internal */
+export type GetMicrofrontendsInGroupAiBots$Outbound = {
+  active: boolean;
+  action?: string | undefined;
+};
+
+/** @internal */
+export const GetMicrofrontendsInGroupAiBots$outboundSchema: z.ZodType<
+  GetMicrofrontendsInGroupAiBots$Outbound,
+  z.ZodTypeDef,
+  GetMicrofrontendsInGroupAiBots
+> = z.object({
+  active: z.boolean(),
+  action: GetMicrofrontendsInGroupMicrofrontendsResponseAction$outboundSchema
+    .optional(),
+});
+
+export function getMicrofrontendsInGroupAiBotsToJSON(
+  getMicrofrontendsInGroupAiBots: GetMicrofrontendsInGroupAiBots,
+): string {
+  return JSON.stringify(
+    GetMicrofrontendsInGroupAiBots$outboundSchema.parse(
+      getMicrofrontendsInGroupAiBots,
+    ),
+  );
+}
+export function getMicrofrontendsInGroupAiBotsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetMicrofrontendsInGroupAiBots, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetMicrofrontendsInGroupAiBots$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetMicrofrontendsInGroupAiBots' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetMicrofrontendsInGroupMicrofrontendsResponse200Action$inboundSchema:
+  z.ZodNativeEnum<
+    typeof GetMicrofrontendsInGroupMicrofrontendsResponse200Action
+  > = z.nativeEnum(GetMicrofrontendsInGroupMicrofrontendsResponse200Action);
+/** @internal */
+export const GetMicrofrontendsInGroupMicrofrontendsResponse200Action$outboundSchema:
+  z.ZodNativeEnum<
+    typeof GetMicrofrontendsInGroupMicrofrontendsResponse200Action
+  > = GetMicrofrontendsInGroupMicrofrontendsResponse200Action$inboundSchema;
+
+/** @internal */
+export const GetMicrofrontendsInGroupOwasp$inboundSchema: z.ZodType<
+  GetMicrofrontendsInGroupOwasp,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  active: types.boolean(),
+  action: types.optional(
+    GetMicrofrontendsInGroupMicrofrontendsResponse200Action$inboundSchema,
+  ),
+});
+/** @internal */
+export type GetMicrofrontendsInGroupOwasp$Outbound = {
+  active: boolean;
+  action?: string | undefined;
+};
+
+/** @internal */
+export const GetMicrofrontendsInGroupOwasp$outboundSchema: z.ZodType<
+  GetMicrofrontendsInGroupOwasp$Outbound,
+  z.ZodTypeDef,
+  GetMicrofrontendsInGroupOwasp
+> = z.object({
+  active: z.boolean(),
+  action: GetMicrofrontendsInGroupMicrofrontendsResponse200Action$outboundSchema
+    .optional(),
+});
+
+export function getMicrofrontendsInGroupOwaspToJSON(
+  getMicrofrontendsInGroupOwasp: GetMicrofrontendsInGroupOwasp,
+): string {
+  return JSON.stringify(
+    GetMicrofrontendsInGroupOwasp$outboundSchema.parse(
+      getMicrofrontendsInGroupOwasp,
+    ),
+  );
+}
+export function getMicrofrontendsInGroupOwaspFromJSON(
+  jsonString: string,
+): SafeParseResult<GetMicrofrontendsInGroupOwasp, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetMicrofrontendsInGroupOwasp$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetMicrofrontendsInGroupOwasp' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetMicrofrontendsInGroupManagedRules$inboundSchema: z.ZodType<
+  GetMicrofrontendsInGroupManagedRules,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  vercel_ruleset: z.lazy(() =>
+    GetMicrofrontendsInGroupVercelRuleset$inboundSchema
+  ),
+  bot_filter: z.lazy(() => GetMicrofrontendsInGroupBotFilter$inboundSchema),
+  ai_bots: z.lazy(() => GetMicrofrontendsInGroupAiBots$inboundSchema),
+  owasp: z.lazy(() => GetMicrofrontendsInGroupOwasp$inboundSchema),
+}).transform((v) => {
+  return remap$(v, {
+    "vercel_ruleset": "vercelRuleset",
+    "bot_filter": "botFilter",
+    "ai_bots": "aiBots",
+  });
+});
+/** @internal */
+export type GetMicrofrontendsInGroupManagedRules$Outbound = {
+  vercel_ruleset: GetMicrofrontendsInGroupVercelRuleset$Outbound;
+  bot_filter: GetMicrofrontendsInGroupBotFilter$Outbound;
+  ai_bots: GetMicrofrontendsInGroupAiBots$Outbound;
+  owasp: GetMicrofrontendsInGroupOwasp$Outbound;
+};
+
+/** @internal */
+export const GetMicrofrontendsInGroupManagedRules$outboundSchema: z.ZodType<
+  GetMicrofrontendsInGroupManagedRules$Outbound,
+  z.ZodTypeDef,
+  GetMicrofrontendsInGroupManagedRules
+> = z.object({
+  vercelRuleset: z.lazy(() =>
+    GetMicrofrontendsInGroupVercelRuleset$outboundSchema
+  ),
+  botFilter: z.lazy(() => GetMicrofrontendsInGroupBotFilter$outboundSchema),
+  aiBots: z.lazy(() => GetMicrofrontendsInGroupAiBots$outboundSchema),
+  owasp: z.lazy(() => GetMicrofrontendsInGroupOwasp$outboundSchema),
+}).transform((v) => {
+  return remap$(v, {
+    vercelRuleset: "vercel_ruleset",
+    botFilter: "bot_filter",
+    aiBots: "ai_bots",
+  });
+});
+
+export function getMicrofrontendsInGroupManagedRulesToJSON(
+  getMicrofrontendsInGroupManagedRules: GetMicrofrontendsInGroupManagedRules,
+): string {
+  return JSON.stringify(
+    GetMicrofrontendsInGroupManagedRules$outboundSchema.parse(
+      getMicrofrontendsInGroupManagedRules,
+    ),
+  );
+}
+export function getMicrofrontendsInGroupManagedRulesFromJSON(
+  jsonString: string,
+): SafeParseResult<GetMicrofrontendsInGroupManagedRules, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetMicrofrontendsInGroupManagedRules$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetMicrofrontendsInGroupManagedRules' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetMicrofrontendsInGroupLogHeaders2$inboundSchema: z.ZodNativeEnum<
+  typeof GetMicrofrontendsInGroupLogHeaders2
+> = z.nativeEnum(GetMicrofrontendsInGroupLogHeaders2);
+/** @internal */
+export const GetMicrofrontendsInGroupLogHeaders2$outboundSchema:
+  z.ZodNativeEnum<typeof GetMicrofrontendsInGroupLogHeaders2> =
+    GetMicrofrontendsInGroupLogHeaders2$inboundSchema;
+
+/** @internal */
+export const GetMicrofrontendsInGroupLogHeaders$inboundSchema: z.ZodType<
+  GetMicrofrontendsInGroupLogHeaders,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  z.array(types.string()),
+  GetMicrofrontendsInGroupLogHeaders2$inboundSchema,
+]);
+/** @internal */
+export type GetMicrofrontendsInGroupLogHeaders$Outbound =
+  | Array<string>
+  | string;
+
+/** @internal */
+export const GetMicrofrontendsInGroupLogHeaders$outboundSchema: z.ZodType<
+  GetMicrofrontendsInGroupLogHeaders$Outbound,
+  z.ZodTypeDef,
+  GetMicrofrontendsInGroupLogHeaders
+> = smartUnion([
+  z.array(z.string()),
+  GetMicrofrontendsInGroupLogHeaders2$outboundSchema,
+]);
+
+export function getMicrofrontendsInGroupLogHeadersToJSON(
+  getMicrofrontendsInGroupLogHeaders: GetMicrofrontendsInGroupLogHeaders,
+): string {
+  return JSON.stringify(
+    GetMicrofrontendsInGroupLogHeaders$outboundSchema.parse(
+      getMicrofrontendsInGroupLogHeaders,
+    ),
+  );
+}
+export function getMicrofrontendsInGroupLogHeadersFromJSON(
+  jsonString: string,
+): SafeParseResult<GetMicrofrontendsInGroupLogHeaders, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetMicrofrontendsInGroupLogHeaders$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetMicrofrontendsInGroupLogHeaders' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetMicrofrontendsInGroupSecurityPlusMetadata$inboundSchema:
+  z.ZodType<
+    GetMicrofrontendsInGroupSecurityPlusMetadata,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    updatedAt: types.number(),
+    firstEnabledAt: types.optional(types.number()),
+  });
+/** @internal */
+export type GetMicrofrontendsInGroupSecurityPlusMetadata$Outbound = {
+  updatedAt: number;
+  firstEnabledAt?: number | undefined;
+};
+
+/** @internal */
+export const GetMicrofrontendsInGroupSecurityPlusMetadata$outboundSchema:
+  z.ZodType<
+    GetMicrofrontendsInGroupSecurityPlusMetadata$Outbound,
+    z.ZodTypeDef,
+    GetMicrofrontendsInGroupSecurityPlusMetadata
+  > = z.object({
+    updatedAt: z.number(),
+    firstEnabledAt: z.number().optional(),
+  });
+
+export function getMicrofrontendsInGroupSecurityPlusMetadataToJSON(
+  getMicrofrontendsInGroupSecurityPlusMetadata:
+    GetMicrofrontendsInGroupSecurityPlusMetadata,
+): string {
+  return JSON.stringify(
+    GetMicrofrontendsInGroupSecurityPlusMetadata$outboundSchema.parse(
+      getMicrofrontendsInGroupSecurityPlusMetadata,
+    ),
+  );
+}
+export function getMicrofrontendsInGroupSecurityPlusMetadataFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetMicrofrontendsInGroupSecurityPlusMetadata,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetMicrofrontendsInGroupSecurityPlusMetadata$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetMicrofrontendsInGroupSecurityPlusMetadata' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetMicrofrontendsInGroupSecurity$inboundSchema: z.ZodType<
+  GetMicrofrontendsInGroupSecurity,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  attackModeEnabled: types.optional(types.boolean()),
+  attackModeUpdatedAt: types.optional(types.number()),
+  firewallEnabled: types.optional(types.boolean()),
+  firewallUpdatedAt: types.optional(types.number()),
+  attackModeActiveUntil: z.nullable(types.number()).optional(),
+  firewallConfigVersion: types.optional(types.number()),
+  firewallSeawallEnabled: types.optional(types.boolean()),
+  ja3Enabled: types.optional(types.boolean()),
+  ja4Enabled: types.optional(types.boolean()),
+  firewallBypassIps: types.optional(z.array(types.string())),
+  managedRules: z.nullable(
+    z.lazy(() => GetMicrofrontendsInGroupManagedRules$inboundSchema),
+  ).optional(),
+  botIdEnabled: types.optional(types.boolean()),
+  log_headers: types.optional(
+    smartUnion([
+      z.array(types.string()),
+      GetMicrofrontendsInGroupLogHeaders2$inboundSchema,
+    ]),
+  ),
+  securityPlus: types.optional(types.boolean()),
+  securityPlusMetadata: types.optional(
+    z.lazy(() => GetMicrofrontendsInGroupSecurityPlusMetadata$inboundSchema),
+  ),
+  pageIntegrityEnabled: types.optional(types.boolean()),
+}).transform((v) => {
+  return remap$(v, {
+    "log_headers": "logHeaders",
+  });
+});
+/** @internal */
+export type GetMicrofrontendsInGroupSecurity$Outbound = {
+  attackModeEnabled?: boolean | undefined;
+  attackModeUpdatedAt?: number | undefined;
+  firewallEnabled?: boolean | undefined;
+  firewallUpdatedAt?: number | undefined;
+  attackModeActiveUntil?: number | null | undefined;
+  firewallConfigVersion?: number | undefined;
+  firewallSeawallEnabled?: boolean | undefined;
+  ja3Enabled?: boolean | undefined;
+  ja4Enabled?: boolean | undefined;
+  firewallBypassIps?: Array<string> | undefined;
+  managedRules?:
+    | GetMicrofrontendsInGroupManagedRules$Outbound
+    | null
+    | undefined;
+  botIdEnabled?: boolean | undefined;
+  log_headers?: Array<string> | string | undefined;
+  securityPlus?: boolean | undefined;
+  securityPlusMetadata?:
+    | GetMicrofrontendsInGroupSecurityPlusMetadata$Outbound
+    | undefined;
+  pageIntegrityEnabled?: boolean | undefined;
+};
+
+/** @internal */
+export const GetMicrofrontendsInGroupSecurity$outboundSchema: z.ZodType<
+  GetMicrofrontendsInGroupSecurity$Outbound,
+  z.ZodTypeDef,
+  GetMicrofrontendsInGroupSecurity
+> = z.object({
+  attackModeEnabled: z.boolean().optional(),
+  attackModeUpdatedAt: z.number().optional(),
+  firewallEnabled: z.boolean().optional(),
+  firewallUpdatedAt: z.number().optional(),
+  attackModeActiveUntil: z.nullable(z.number()).optional(),
+  firewallConfigVersion: z.number().optional(),
+  firewallSeawallEnabled: z.boolean().optional(),
+  ja3Enabled: z.boolean().optional(),
+  ja4Enabled: z.boolean().optional(),
+  firewallBypassIps: z.array(z.string()).optional(),
+  managedRules: z.nullable(
+    z.lazy(() => GetMicrofrontendsInGroupManagedRules$outboundSchema),
+  ).optional(),
+  botIdEnabled: z.boolean().optional(),
+  logHeaders: smartUnion([
+    z.array(z.string()),
+    GetMicrofrontendsInGroupLogHeaders2$outboundSchema,
+  ]).optional(),
+  securityPlus: z.boolean().optional(),
+  securityPlusMetadata: z.lazy(() =>
+    GetMicrofrontendsInGroupSecurityPlusMetadata$outboundSchema
+  ).optional(),
+  pageIntegrityEnabled: z.boolean().optional(),
+}).transform((v) => {
+  return remap$(v, {
+    logHeaders: "log_headers",
+  });
+});
+
+export function getMicrofrontendsInGroupSecurityToJSON(
+  getMicrofrontendsInGroupSecurity: GetMicrofrontendsInGroupSecurity,
+): string {
+  return JSON.stringify(
+    GetMicrofrontendsInGroupSecurity$outboundSchema.parse(
+      getMicrofrontendsInGroupSecurity,
+    ),
+  );
+}
+export function getMicrofrontendsInGroupSecurityFromJSON(
+  jsonString: string,
+): SafeParseResult<GetMicrofrontendsInGroupSecurity, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetMicrofrontendsInGroupSecurity$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetMicrofrontendsInGroupSecurity' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetMicrofrontendsInGroupIssuerMode$inboundSchema: z.ZodNativeEnum<
+  typeof GetMicrofrontendsInGroupIssuerMode
+> = z.nativeEnum(GetMicrofrontendsInGroupIssuerMode);
+/** @internal */
+export const GetMicrofrontendsInGroupIssuerMode$outboundSchema: z.ZodNativeEnum<
+  typeof GetMicrofrontendsInGroupIssuerMode
+> = GetMicrofrontendsInGroupIssuerMode$inboundSchema;
+
+/** @internal */
+export const GetMicrofrontendsInGroupOidcTokenConfig$inboundSchema: z.ZodType<
+  GetMicrofrontendsInGroupOidcTokenConfig,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  enabled: types.optional(types.boolean()),
+  issuerMode: types.optional(GetMicrofrontendsInGroupIssuerMode$inboundSchema),
+});
+/** @internal */
+export type GetMicrofrontendsInGroupOidcTokenConfig$Outbound = {
+  enabled?: boolean | undefined;
+  issuerMode?: string | undefined;
+};
+
+/** @internal */
+export const GetMicrofrontendsInGroupOidcTokenConfig$outboundSchema: z.ZodType<
+  GetMicrofrontendsInGroupOidcTokenConfig$Outbound,
+  z.ZodTypeDef,
+  GetMicrofrontendsInGroupOidcTokenConfig
+> = z.object({
+  enabled: z.boolean().optional(),
+  issuerMode: GetMicrofrontendsInGroupIssuerMode$outboundSchema.optional(),
+});
+
+export function getMicrofrontendsInGroupOidcTokenConfigToJSON(
+  getMicrofrontendsInGroupOidcTokenConfig:
+    GetMicrofrontendsInGroupOidcTokenConfig,
+): string {
+  return JSON.stringify(
+    GetMicrofrontendsInGroupOidcTokenConfig$outboundSchema.parse(
+      getMicrofrontendsInGroupOidcTokenConfig,
+    ),
+  );
+}
+export function getMicrofrontendsInGroupOidcTokenConfigFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetMicrofrontendsInGroupOidcTokenConfig,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetMicrofrontendsInGroupOidcTokenConfig$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetMicrofrontendsInGroupOidcTokenConfig' from JSON`,
+  );
+}
 
 /** @internal */
 export const GetMicrofrontendsInGroupFlatRateTier$inboundSchema:
@@ -3263,20 +4223,25 @@ export const GetMicrofrontendsInGroupProjects$inboundSchema: z.ZodType<
   hasActiveBranches: types.optional(types.boolean()),
   trustedIps: z.nullable(GetMicrofrontendsInGroupTrustedIps$inboundSchema)
     .optional(),
+  trustedSources: z.nullable(
+    GetMicrofrontendsInGroupTrustedSources$inboundSchema,
+  ).optional(),
   gitComments: types.optional(
     GetMicrofrontendsInGroupGitComments$inboundSchema,
   ),
   gitProviderOptions: types.optional(
-    GetMicrofrontendsInGroupGitProviderOptions$inboundSchema,
+    z.lazy(() => GetMicrofrontendsInGroupGitProviderOptions$inboundSchema),
   ),
   paused: types.optional(types.boolean()),
   concurrencyBucketName: types.optional(types.string()),
   webAnalytics: types.optional(
-    GetMicrofrontendsInGroupWebAnalytics$inboundSchema,
+    z.lazy(() => GetMicrofrontendsInGroupWebAnalytics$inboundSchema),
   ),
-  security: types.optional(GetMicrofrontendsInGroupSecurity$inboundSchema),
+  security: types.optional(
+    z.lazy(() => GetMicrofrontendsInGroupSecurity$inboundSchema),
+  ),
   oidcTokenConfig: types.optional(
-    GetMicrofrontendsInGroupOidcTokenConfig$inboundSchema,
+    z.lazy(() => GetMicrofrontendsInGroupOidcTokenConfig$inboundSchema),
   ),
   tier: types.optional(types.string()),
   flatRateTier: types.optional(
@@ -3418,6 +4383,10 @@ export type GetMicrofrontendsInGroupProjects$Outbound = {
   } | undefined;
   hasActiveBranches?: boolean | undefined;
   trustedIps?: GetMicrofrontendsInGroupTrustedIps$Outbound | null | undefined;
+  trustedSources?:
+    | GetMicrofrontendsInGroupTrustedSources$Outbound
+    | null
+    | undefined;
   gitComments?: GetMicrofrontendsInGroupGitComments$Outbound | undefined;
   gitProviderOptions?:
     | GetMicrofrontendsInGroupGitProviderOptions$Outbound
@@ -3557,15 +4526,23 @@ export const GetMicrofrontendsInGroupProjects$outboundSchema: z.ZodType<
   hasActiveBranches: z.boolean().optional(),
   trustedIps: z.nullable(GetMicrofrontendsInGroupTrustedIps$outboundSchema)
     .optional(),
+  trustedSources: z.nullable(
+    GetMicrofrontendsInGroupTrustedSources$outboundSchema,
+  ).optional(),
   gitComments: GetMicrofrontendsInGroupGitComments$outboundSchema.optional(),
-  gitProviderOptions: GetMicrofrontendsInGroupGitProviderOptions$outboundSchema
-    .optional(),
+  gitProviderOptions: z.lazy(() =>
+    GetMicrofrontendsInGroupGitProviderOptions$outboundSchema
+  ).optional(),
   paused: z.boolean().optional(),
   concurrencyBucketName: z.string().optional(),
-  webAnalytics: GetMicrofrontendsInGroupWebAnalytics$outboundSchema.optional(),
-  security: GetMicrofrontendsInGroupSecurity$outboundSchema.optional(),
-  oidcTokenConfig: GetMicrofrontendsInGroupOidcTokenConfig$outboundSchema
+  webAnalytics: z.lazy(() =>
+    GetMicrofrontendsInGroupWebAnalytics$outboundSchema
+  ).optional(),
+  security: z.lazy(() => GetMicrofrontendsInGroupSecurity$outboundSchema)
     .optional(),
+  oidcTokenConfig: z.lazy(() =>
+    GetMicrofrontendsInGroupOidcTokenConfig$outboundSchema
+  ).optional(),
   tier: z.string().optional(),
   flatRateTier: GetMicrofrontendsInGroupFlatRateTier$outboundSchema.optional(),
   usageStatus: z.lazy(() => GetMicrofrontendsInGroupUsageStatus$outboundSchema)

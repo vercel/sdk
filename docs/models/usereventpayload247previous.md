@@ -5,7 +5,7 @@ Automatic code review settings
 ## Example Usage
 
 ```typescript
-import { UserEventPayload247Previous } from "@vercel/sdk/models/twohundredandthirtysix.js";
+import { UserEventPayload247Previous } from "@vercel/sdk/models/budget.js";
 
 let value: UserEventPayload247Previous = {
   enabled: false,

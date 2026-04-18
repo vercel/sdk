@@ -8,8 +8,600 @@ import (
 	"fmt"
 	"mockserver/internal/sdk/models/components"
 	"mockserver/internal/sdk/optionalnullable"
+	"mockserver/internal/sdk/types"
 	"mockserver/internal/sdk/utils"
 )
+
+type UpdateMicrofrontendsOidcProviderToUnionType string
+
+const (
+	UpdateMicrofrontendsOidcProviderToUnionTypeUpdateMicrofrontendsToOidcProviderAllCustom1 UpdateMicrofrontendsOidcProviderToUnionType = "updateMicrofrontends_to_oidcProvider_AllCustom_1"
+	UpdateMicrofrontendsOidcProviderToUnionTypeUpdateMicrofrontendsToOidcProviderAllCustom2 UpdateMicrofrontendsOidcProviderToUnionType = "updateMicrofrontends_to_oidcProvider_AllCustom_2"
+)
+
+type UpdateMicrofrontendsOidcProviderToUnion struct {
+	UpdateMicrofrontendsToOidcProviderAllCustom1 *UpdateMicrofrontendsToOidcProviderAllCustom1 `queryParam:"inline"`
+	UpdateMicrofrontendsToOidcProviderAllCustom2 *UpdateMicrofrontendsToOidcProviderAllCustom2 `queryParam:"inline"`
+
+	Type UpdateMicrofrontendsOidcProviderToUnionType
+}
+
+func CreateUpdateMicrofrontendsOidcProviderToUnionUpdateMicrofrontendsToOidcProviderAllCustom1(updateMicrofrontendsToOidcProviderAllCustom1 UpdateMicrofrontendsToOidcProviderAllCustom1) UpdateMicrofrontendsOidcProviderToUnion {
+	typ := UpdateMicrofrontendsOidcProviderToUnionTypeUpdateMicrofrontendsToOidcProviderAllCustom1
+
+	return UpdateMicrofrontendsOidcProviderToUnion{
+		UpdateMicrofrontendsToOidcProviderAllCustom1: &updateMicrofrontendsToOidcProviderAllCustom1,
+		Type: typ,
+	}
+}
+
+func CreateUpdateMicrofrontendsOidcProviderToUnionUpdateMicrofrontendsToOidcProviderAllCustom2(updateMicrofrontendsToOidcProviderAllCustom2 UpdateMicrofrontendsToOidcProviderAllCustom2) UpdateMicrofrontendsOidcProviderToUnion {
+	typ := UpdateMicrofrontendsOidcProviderToUnionTypeUpdateMicrofrontendsToOidcProviderAllCustom2
+
+	return UpdateMicrofrontendsOidcProviderToUnion{
+		UpdateMicrofrontendsToOidcProviderAllCustom2: &updateMicrofrontendsToOidcProviderAllCustom2,
+		Type: typ,
+	}
+}
+
+func (u *UpdateMicrofrontendsOidcProviderToUnion) UnmarshalJSON(data []byte) error {
+
+	var updateMicrofrontendsToOidcProviderAllCustom1 UpdateMicrofrontendsToOidcProviderAllCustom1 = UpdateMicrofrontendsToOidcProviderAllCustom1{}
+	if err := utils.UnmarshalJSON(data, &updateMicrofrontendsToOidcProviderAllCustom1, "", true, nil); err == nil {
+		u.UpdateMicrofrontendsToOidcProviderAllCustom1 = &updateMicrofrontendsToOidcProviderAllCustom1
+		u.Type = UpdateMicrofrontendsOidcProviderToUnionTypeUpdateMicrofrontendsToOidcProviderAllCustom1
+		return nil
+	}
+
+	var updateMicrofrontendsToOidcProviderAllCustom2 UpdateMicrofrontendsToOidcProviderAllCustom2 = UpdateMicrofrontendsToOidcProviderAllCustom2{}
+	if err := utils.UnmarshalJSON(data, &updateMicrofrontendsToOidcProviderAllCustom2, "", true, nil); err == nil {
+		u.UpdateMicrofrontendsToOidcProviderAllCustom2 = &updateMicrofrontendsToOidcProviderAllCustom2
+		u.Type = UpdateMicrofrontendsOidcProviderToUnionTypeUpdateMicrofrontendsToOidcProviderAllCustom2
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateMicrofrontendsOidcProviderToUnion", string(data))
+}
+
+func (u UpdateMicrofrontendsOidcProviderToUnion) MarshalJSON() ([]byte, error) {
+	if u.UpdateMicrofrontendsToOidcProviderAllCustom1 != nil {
+		return utils.MarshalJSON(u.UpdateMicrofrontendsToOidcProviderAllCustom1, "", true)
+	}
+
+	if u.UpdateMicrofrontendsToOidcProviderAllCustom2 != nil {
+		return utils.MarshalJSON(u.UpdateMicrofrontendsToOidcProviderAllCustom2, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type UpdateMicrofrontendsOidcProviderToUnion: all fields are null")
+}
+
+type UpdateMicrofrontendsOidcProvider struct {
+	To     UpdateMicrofrontendsOidcProviderToUnion `json:"to"`
+	Label  *string                                 `json:"label,omitempty"`
+	Claims map[string][]string                     `json:"claims"`
+}
+
+func (o *UpdateMicrofrontendsOidcProvider) GetTo() UpdateMicrofrontendsOidcProviderToUnion {
+	if o == nil {
+		return UpdateMicrofrontendsOidcProviderToUnion{}
+	}
+	return o.To
+}
+
+func (o *UpdateMicrofrontendsOidcProvider) GetLabel() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Label
+}
+
+func (o *UpdateMicrofrontendsOidcProvider) GetClaims() map[string][]string {
+	if o == nil {
+		return map[string][]string{}
+	}
+	return o.Claims
+}
+
+type UpdateMicrofrontendsTrustedSources struct {
+	Projects      map[string]UpdateMicrofrontendsProjects       `json:"projects,omitempty"`
+	OidcProviders map[string][]UpdateMicrofrontendsOidcProvider `json:"oidcProviders,omitempty"`
+}
+
+func (o *UpdateMicrofrontendsTrustedSources) GetProjects() map[string]UpdateMicrofrontendsProjects {
+	if o == nil {
+		return nil
+	}
+	return o.Projects
+}
+
+func (o *UpdateMicrofrontendsTrustedSources) GetOidcProviders() map[string][]UpdateMicrofrontendsOidcProvider {
+	if o == nil {
+		return nil
+	}
+	return o.OidcProviders
+}
+
+type UpdateMicrofrontendsGitComments struct {
+	// Whether the Vercel bot should comment on PRs
+	OnPullRequest bool `json:"onPullRequest"`
+	// Whether the Vercel bot should comment on commits
+	OnCommit bool `json:"onCommit"`
+}
+
+func (o *UpdateMicrofrontendsGitComments) GetOnPullRequest() bool {
+	if o == nil {
+		return false
+	}
+	return o.OnPullRequest
+}
+
+func (o *UpdateMicrofrontendsGitComments) GetOnCommit() bool {
+	if o == nil {
+		return false
+	}
+	return o.OnCommit
+}
+
+// UpdateMicrofrontendsCreateDeployments - Whether the Vercel bot should automatically create GitHub deployments https://docs.github.com/en/rest/deployments/deployments#about-deployments NOTE: repository-dispatch events should be used instead
+type UpdateMicrofrontendsCreateDeployments string
+
+const (
+	UpdateMicrofrontendsCreateDeploymentsEnabled  UpdateMicrofrontendsCreateDeployments = "enabled"
+	UpdateMicrofrontendsCreateDeploymentsDisabled UpdateMicrofrontendsCreateDeployments = "disabled"
+)
+
+func (e UpdateMicrofrontendsCreateDeployments) ToPointer() *UpdateMicrofrontendsCreateDeployments {
+	return &e
+}
+func (e *UpdateMicrofrontendsCreateDeployments) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "enabled":
+		fallthrough
+	case "disabled":
+		*e = UpdateMicrofrontendsCreateDeployments(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateMicrofrontendsCreateDeployments: %v", v)
+	}
+}
+
+// UpdateMicrofrontendsConsolidatedGitCommitStatus - Configuration for consolidated git commit status reporting. When enabled, Vercel will post a single consolidated commit status instead of individual statuses for each deployment.
+type UpdateMicrofrontendsConsolidatedGitCommitStatus struct {
+	// Whether consolidated commit status is enabled.
+	Enabled bool `json:"enabled"`
+	// Whether to propagate individual deployment failures to the consolidated status.
+	PropagateFailures bool `json:"propagateFailures"`
+}
+
+func (o *UpdateMicrofrontendsConsolidatedGitCommitStatus) GetEnabled() bool {
+	if o == nil {
+		return false
+	}
+	return o.Enabled
+}
+
+func (o *UpdateMicrofrontendsConsolidatedGitCommitStatus) GetPropagateFailures() bool {
+	if o == nil {
+		return false
+	}
+	return o.PropagateFailures
+}
+
+type UpdateMicrofrontendsGitProviderOptions struct {
+	// Whether the Vercel bot should automatically create GitHub deployments https://docs.github.com/en/rest/deployments/deployments#about-deployments NOTE: repository-dispatch events should be used instead
+	CreateDeployments UpdateMicrofrontendsCreateDeployments `json:"createDeployments"`
+	// Whether the Vercel bot should not automatically create GitHub repository-dispatch events on deployment events. https://vercel.com/docs/git/vercel-for-github#repository-dispatch-events
+	DisableRepositoryDispatchEvents *bool `json:"disableRepositoryDispatchEvents,omitempty"`
+	// Whether the project requires commits to be signed before deployments will be created.
+	RequireVerifiedCommits *bool `json:"requireVerifiedCommits,omitempty"`
+	// Whether Vercel should post commit statuses for this project. When omitted, commit statuses remain enabled.
+	GitCommitStatus *bool `json:"gitCommitStatus,omitempty"`
+	// Configuration for consolidated git commit status reporting. When enabled, Vercel will post a single consolidated commit status instead of individual statuses for each deployment.
+	ConsolidatedGitCommitStatus *UpdateMicrofrontendsConsolidatedGitCommitStatus `json:"consolidatedGitCommitStatus,omitempty"`
+}
+
+func (o *UpdateMicrofrontendsGitProviderOptions) GetCreateDeployments() UpdateMicrofrontendsCreateDeployments {
+	if o == nil {
+		return UpdateMicrofrontendsCreateDeployments("")
+	}
+	return o.CreateDeployments
+}
+
+func (o *UpdateMicrofrontendsGitProviderOptions) GetDisableRepositoryDispatchEvents() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.DisableRepositoryDispatchEvents
+}
+
+func (o *UpdateMicrofrontendsGitProviderOptions) GetRequireVerifiedCommits() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.RequireVerifiedCommits
+}
+
+func (o *UpdateMicrofrontendsGitProviderOptions) GetGitCommitStatus() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.GitCommitStatus
+}
+
+func (o *UpdateMicrofrontendsGitProviderOptions) GetConsolidatedGitCommitStatus() *UpdateMicrofrontendsConsolidatedGitCommitStatus {
+	if o == nil {
+		return nil
+	}
+	return o.ConsolidatedGitCommitStatus
+}
+
+type UpdateMicrofrontendsWebAnalytics struct {
+	ID         string   `json:"id"`
+	DisabledAt *float64 `json:"disabledAt,omitempty"`
+	CanceledAt *float64 `json:"canceledAt,omitempty"`
+	EnabledAt  *float64 `json:"enabledAt,omitempty"`
+	hasData    *bool    `const:"true" json:"hasData,omitempty"`
+}
+
+func (u UpdateMicrofrontendsWebAnalytics) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateMicrofrontendsWebAnalytics) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"id"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *UpdateMicrofrontendsWebAnalytics) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *UpdateMicrofrontendsWebAnalytics) GetDisabledAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.DisabledAt
+}
+
+func (o *UpdateMicrofrontendsWebAnalytics) GetCanceledAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.CanceledAt
+}
+
+func (o *UpdateMicrofrontendsWebAnalytics) GetEnabledAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.EnabledAt
+}
+
+func (o *UpdateMicrofrontendsWebAnalytics) GetHasData() *bool {
+	return types.Bool(true)
+}
+
+type UpdateMicrofrontendsVercelRulesetAction string
+
+const (
+	UpdateMicrofrontendsVercelRulesetActionLog       UpdateMicrofrontendsVercelRulesetAction = "log"
+	UpdateMicrofrontendsVercelRulesetActionDeny      UpdateMicrofrontendsVercelRulesetAction = "deny"
+	UpdateMicrofrontendsVercelRulesetActionChallenge UpdateMicrofrontendsVercelRulesetAction = "challenge"
+)
+
+func (e UpdateMicrofrontendsVercelRulesetAction) ToPointer() *UpdateMicrofrontendsVercelRulesetAction {
+	return &e
+}
+func (e *UpdateMicrofrontendsVercelRulesetAction) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "log":
+		fallthrough
+	case "deny":
+		fallthrough
+	case "challenge":
+		*e = UpdateMicrofrontendsVercelRulesetAction(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateMicrofrontendsVercelRulesetAction: %v", v)
+	}
+}
+
+type UpdateMicrofrontendsVercelRuleset struct {
+	Active bool                                     `json:"active"`
+	Action *UpdateMicrofrontendsVercelRulesetAction `json:"action,omitempty"`
+}
+
+func (o *UpdateMicrofrontendsVercelRuleset) GetActive() bool {
+	if o == nil {
+		return false
+	}
+	return o.Active
+}
+
+func (o *UpdateMicrofrontendsVercelRuleset) GetAction() *UpdateMicrofrontendsVercelRulesetAction {
+	if o == nil {
+		return nil
+	}
+	return o.Action
+}
+
+type UpdateMicrofrontendsBotFilterAction string
+
+const (
+	UpdateMicrofrontendsBotFilterActionLog       UpdateMicrofrontendsBotFilterAction = "log"
+	UpdateMicrofrontendsBotFilterActionDeny      UpdateMicrofrontendsBotFilterAction = "deny"
+	UpdateMicrofrontendsBotFilterActionChallenge UpdateMicrofrontendsBotFilterAction = "challenge"
+)
+
+func (e UpdateMicrofrontendsBotFilterAction) ToPointer() *UpdateMicrofrontendsBotFilterAction {
+	return &e
+}
+func (e *UpdateMicrofrontendsBotFilterAction) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "log":
+		fallthrough
+	case "deny":
+		fallthrough
+	case "challenge":
+		*e = UpdateMicrofrontendsBotFilterAction(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateMicrofrontendsBotFilterAction: %v", v)
+	}
+}
+
+type UpdateMicrofrontendsBotFilter struct {
+	Active bool                                 `json:"active"`
+	Action *UpdateMicrofrontendsBotFilterAction `json:"action,omitempty"`
+}
+
+func (o *UpdateMicrofrontendsBotFilter) GetActive() bool {
+	if o == nil {
+		return false
+	}
+	return o.Active
+}
+
+func (o *UpdateMicrofrontendsBotFilter) GetAction() *UpdateMicrofrontendsBotFilterAction {
+	if o == nil {
+		return nil
+	}
+	return o.Action
+}
+
+type UpdateMicrofrontendsAiBotsAction string
+
+const (
+	UpdateMicrofrontendsAiBotsActionLog       UpdateMicrofrontendsAiBotsAction = "log"
+	UpdateMicrofrontendsAiBotsActionDeny      UpdateMicrofrontendsAiBotsAction = "deny"
+	UpdateMicrofrontendsAiBotsActionChallenge UpdateMicrofrontendsAiBotsAction = "challenge"
+)
+
+func (e UpdateMicrofrontendsAiBotsAction) ToPointer() *UpdateMicrofrontendsAiBotsAction {
+	return &e
+}
+func (e *UpdateMicrofrontendsAiBotsAction) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "log":
+		fallthrough
+	case "deny":
+		fallthrough
+	case "challenge":
+		*e = UpdateMicrofrontendsAiBotsAction(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateMicrofrontendsAiBotsAction: %v", v)
+	}
+}
+
+type UpdateMicrofrontendsAiBots struct {
+	Active bool                              `json:"active"`
+	Action *UpdateMicrofrontendsAiBotsAction `json:"action,omitempty"`
+}
+
+func (o *UpdateMicrofrontendsAiBots) GetActive() bool {
+	if o == nil {
+		return false
+	}
+	return o.Active
+}
+
+func (o *UpdateMicrofrontendsAiBots) GetAction() *UpdateMicrofrontendsAiBotsAction {
+	if o == nil {
+		return nil
+	}
+	return o.Action
+}
+
+type UpdateMicrofrontendsOwaspAction string
+
+const (
+	UpdateMicrofrontendsOwaspActionLog       UpdateMicrofrontendsOwaspAction = "log"
+	UpdateMicrofrontendsOwaspActionDeny      UpdateMicrofrontendsOwaspAction = "deny"
+	UpdateMicrofrontendsOwaspActionChallenge UpdateMicrofrontendsOwaspAction = "challenge"
+)
+
+func (e UpdateMicrofrontendsOwaspAction) ToPointer() *UpdateMicrofrontendsOwaspAction {
+	return &e
+}
+func (e *UpdateMicrofrontendsOwaspAction) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "log":
+		fallthrough
+	case "deny":
+		fallthrough
+	case "challenge":
+		*e = UpdateMicrofrontendsOwaspAction(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateMicrofrontendsOwaspAction: %v", v)
+	}
+}
+
+type UpdateMicrofrontendsOwasp struct {
+	Active bool                             `json:"active"`
+	Action *UpdateMicrofrontendsOwaspAction `json:"action,omitempty"`
+}
+
+func (o *UpdateMicrofrontendsOwasp) GetActive() bool {
+	if o == nil {
+		return false
+	}
+	return o.Active
+}
+
+func (o *UpdateMicrofrontendsOwasp) GetAction() *UpdateMicrofrontendsOwaspAction {
+	if o == nil {
+		return nil
+	}
+	return o.Action
+}
+
+type UpdateMicrofrontendsManagedRules struct {
+	VercelRuleset UpdateMicrofrontendsVercelRuleset `json:"vercel_ruleset"`
+	BotFilter     UpdateMicrofrontendsBotFilter     `json:"bot_filter"`
+	AiBots        UpdateMicrofrontendsAiBots        `json:"ai_bots"`
+	Owasp         UpdateMicrofrontendsOwasp         `json:"owasp"`
+}
+
+func (o *UpdateMicrofrontendsManagedRules) GetVercelRuleset() UpdateMicrofrontendsVercelRuleset {
+	if o == nil {
+		return UpdateMicrofrontendsVercelRuleset{}
+	}
+	return o.VercelRuleset
+}
+
+func (o *UpdateMicrofrontendsManagedRules) GetBotFilter() UpdateMicrofrontendsBotFilter {
+	if o == nil {
+		return UpdateMicrofrontendsBotFilter{}
+	}
+	return o.BotFilter
+}
+
+func (o *UpdateMicrofrontendsManagedRules) GetAiBots() UpdateMicrofrontendsAiBots {
+	if o == nil {
+		return UpdateMicrofrontendsAiBots{}
+	}
+	return o.AiBots
+}
+
+func (o *UpdateMicrofrontendsManagedRules) GetOwasp() UpdateMicrofrontendsOwasp {
+	if o == nil {
+		return UpdateMicrofrontendsOwasp{}
+	}
+	return o.Owasp
+}
+
+type UpdateMicrofrontendsLogHeadersEnum string
+
+const (
+	UpdateMicrofrontendsLogHeadersEnumWildcard UpdateMicrofrontendsLogHeadersEnum = "*"
+)
+
+func (e UpdateMicrofrontendsLogHeadersEnum) ToPointer() *UpdateMicrofrontendsLogHeadersEnum {
+	return &e
+}
+func (e *UpdateMicrofrontendsLogHeadersEnum) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "*":
+		*e = UpdateMicrofrontendsLogHeadersEnum(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateMicrofrontendsLogHeadersEnum: %v", v)
+	}
+}
+
+type UpdateMicrofrontendsLogHeadersUnionType string
+
+const (
+	UpdateMicrofrontendsLogHeadersUnionTypeArrayOfStr                         UpdateMicrofrontendsLogHeadersUnionType = "arrayOfStr"
+	UpdateMicrofrontendsLogHeadersUnionTypeUpdateMicrofrontendsLogHeadersEnum UpdateMicrofrontendsLogHeadersUnionType = "updateMicrofrontends_log_headers_enum"
+)
+
+type UpdateMicrofrontendsLogHeadersUnion struct {
+	ArrayOfStr                         []string                            `queryParam:"inline"`
+	UpdateMicrofrontendsLogHeadersEnum *UpdateMicrofrontendsLogHeadersEnum `queryParam:"inline"`
+
+	Type UpdateMicrofrontendsLogHeadersUnionType
+}
+
+func CreateUpdateMicrofrontendsLogHeadersUnionArrayOfStr(arrayOfStr []string) UpdateMicrofrontendsLogHeadersUnion {
+	typ := UpdateMicrofrontendsLogHeadersUnionTypeArrayOfStr
+
+	return UpdateMicrofrontendsLogHeadersUnion{
+		ArrayOfStr: arrayOfStr,
+		Type:       typ,
+	}
+}
+
+func CreateUpdateMicrofrontendsLogHeadersUnionUpdateMicrofrontendsLogHeadersEnum(updateMicrofrontendsLogHeadersEnum UpdateMicrofrontendsLogHeadersEnum) UpdateMicrofrontendsLogHeadersUnion {
+	typ := UpdateMicrofrontendsLogHeadersUnionTypeUpdateMicrofrontendsLogHeadersEnum
+
+	return UpdateMicrofrontendsLogHeadersUnion{
+		UpdateMicrofrontendsLogHeadersEnum: &updateMicrofrontendsLogHeadersEnum,
+		Type:                               typ,
+	}
+}
+
+func (u *UpdateMicrofrontendsLogHeadersUnion) UnmarshalJSON(data []byte) error {
+
+	var arrayOfStr []string = []string{}
+	if err := utils.UnmarshalJSON(data, &arrayOfStr, "", true, nil); err == nil {
+		u.ArrayOfStr = arrayOfStr
+		u.Type = UpdateMicrofrontendsLogHeadersUnionTypeArrayOfStr
+		return nil
+	}
+
+	var updateMicrofrontendsLogHeadersEnum UpdateMicrofrontendsLogHeadersEnum = UpdateMicrofrontendsLogHeadersEnum("")
+	if err := utils.UnmarshalJSON(data, &updateMicrofrontendsLogHeadersEnum, "", true, nil); err == nil {
+		u.UpdateMicrofrontendsLogHeadersEnum = &updateMicrofrontendsLogHeadersEnum
+		u.Type = UpdateMicrofrontendsLogHeadersUnionTypeUpdateMicrofrontendsLogHeadersEnum
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateMicrofrontendsLogHeadersUnion", string(data))
+}
+
+func (u UpdateMicrofrontendsLogHeadersUnion) MarshalJSON() ([]byte, error) {
+	if u.ArrayOfStr != nil {
+		return utils.MarshalJSON(u.ArrayOfStr, "", true)
+	}
+
+	if u.UpdateMicrofrontendsLogHeadersEnum != nil {
+		return utils.MarshalJSON(u.UpdateMicrofrontendsLogHeadersEnum, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type UpdateMicrofrontendsLogHeadersUnion: all fields are null")
+}
 
 type UpdateMicrofrontendsSecurityPlusMetadata struct {
 	UpdatedAt float64 `json:"updatedAt"`
@@ -2910,6 +3502,7 @@ type UpdateMicrofrontendsResponseBody struct {
 	ProtectionBypass                     map[string]UpdateMicrofrontendsProtectionBypassUnion                      `json:"protectionBypass,omitempty"`
 	HasActiveBranches                    *bool                                                                     `json:"hasActiveBranches,omitempty"`
 	TrustedIps                           optionalnullable.OptionalNullable[UpdateMicrofrontendsTrustedIpsUnion]    `json:"trustedIps,omitempty"`
+	TrustedSources                       optionalnullable.OptionalNullable[UpdateMicrofrontendsTrustedSources]     `json:"trustedSources,omitempty"`
 	GitComments                          *UpdateMicrofrontendsGitComments                                          `json:"gitComments,omitempty"`
 	GitProviderOptions                   *UpdateMicrofrontendsGitProviderOptions                                   `json:"gitProviderOptions,omitempty"`
 	Paused                               *bool                                                                     `json:"paused,omitempty"`
@@ -3461,6 +4054,13 @@ func (o *UpdateMicrofrontendsResponseBody) GetTrustedIps() optionalnullable.Opti
 		return nil
 	}
 	return o.TrustedIps
+}
+
+func (o *UpdateMicrofrontendsResponseBody) GetTrustedSources() optionalnullable.OptionalNullable[UpdateMicrofrontendsTrustedSources] {
+	if o == nil {
+		return nil
+	}
+	return o.TrustedSources
 }
 
 func (o *UpdateMicrofrontendsResponseBody) GetGitComments() *UpdateMicrofrontendsGitComments {

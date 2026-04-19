@@ -1926,7 +1926,8 @@ func (o *FilterProjectEnvsEnv2) GetSystem() *bool {
 
 // FilterProjectEnvsResponseBody3 - The list of environment variables for the given project
 type FilterProjectEnvsResponseBody3 struct {
-	Envs []FilterProjectEnvsEnv2 `json:"envs"`
+	Envs                     []FilterProjectEnvsEnv2 `json:"envs"`
+	HiddenProductionEnvCount float64                 `json:"hiddenProductionEnvCount"`
 }
 
 func (f FilterProjectEnvsResponseBody3) MarshalJSON() ([]byte, error) {
@@ -1934,7 +1935,7 @@ func (f FilterProjectEnvsResponseBody3) MarshalJSON() ([]byte, error) {
 }
 
 func (f *FilterProjectEnvsResponseBody3) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"envs"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"envs", "hiddenProductionEnvCount"}); err != nil {
 		return err
 	}
 	return nil
@@ -1945,6 +1946,13 @@ func (o *FilterProjectEnvsResponseBody3) GetEnvs() []FilterProjectEnvsEnv2 {
 		return []FilterProjectEnvsEnv2{}
 	}
 	return o.Envs
+}
+
+func (o *FilterProjectEnvsResponseBody3) GetHiddenProductionEnvCount() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.HiddenProductionEnvCount
 }
 
 type FilterProjectEnvsTargetEnvEnum2 string

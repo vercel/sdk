@@ -9,6 +9,7 @@ import { FilterProjectEnvsResponseBody3 } from "@vercel/sdk/models/filterproject
 
 let value: FilterProjectEnvsResponseBody3 = {
   envs: [],
+  hiddenProductionEnvCount: 2226.57,
 };
 ```
 
@@ -17,3 +18,4 @@ let value: FilterProjectEnvsResponseBody3 = {
 | Field                                                      | Type                                                       | Required                                                   | Description                                                |
 | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
 | `envs`                                                     | [models.ResponseBodyEnvs](../models/responsebodyenvs.md)[] | :heavy_check_mark:                                         | N/A                                                        |
+| `hiddenProductionEnvCount`                                 | *number*                                                   | :heavy_check_mark:                                         | N/A                                                        |

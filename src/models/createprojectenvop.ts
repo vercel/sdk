@@ -46,7 +46,7 @@ export type CreateProjectEnv22 = {
   /**
    * The type of environment variable
    */
-  type: CreateProjectEnv2Type;
+  type?: CreateProjectEnv2Type | undefined;
   /**
    * The target environment of the environment variable
    */
@@ -98,7 +98,7 @@ export type CreateProjectEnv21 = {
   /**
    * The type of environment variable
    */
-  type: TwoType;
+  type?: TwoType | undefined;
   /**
    * The target environment of the environment variable
    */
@@ -156,7 +156,7 @@ export type CreateProjectEnv12 = {
   /**
    * The type of environment variable
    */
-  type: CreateProjectEnv1Type;
+  type?: CreateProjectEnv1Type | undefined;
   /**
    * The target environment of the environment variable
    */
@@ -208,7 +208,7 @@ export type CreateProjectEnv11 = {
   /**
    * The type of environment variable
    */
-  type: OneType;
+  type?: OneType | undefined;
   /**
    * The target environment of the environment variable
    */
@@ -733,7 +733,7 @@ export const CreateProjectEnv22$inboundSchema: z.ZodType<
 > = z.object({
   key: types.string(),
   value: types.string(),
-  type: CreateProjectEnv2Type$inboundSchema,
+  type: types.optional(CreateProjectEnv2Type$inboundSchema),
   target: types.optional(z.array(CreateProjectEnv2Target$inboundSchema)),
   gitBranch: z.nullable(types.string()).optional(),
   comment: types.optional(types.string()),
@@ -743,7 +743,7 @@ export const CreateProjectEnv22$inboundSchema: z.ZodType<
 export type CreateProjectEnv22$Outbound = {
   key: string;
   value: string;
-  type: string;
+  type?: string | undefined;
   target?: Array<string> | undefined;
   gitBranch?: string | null | undefined;
   comment?: string | undefined;
@@ -758,7 +758,7 @@ export const CreateProjectEnv22$outboundSchema: z.ZodType<
 > = z.object({
   key: z.string(),
   value: z.string(),
-  type: CreateProjectEnv2Type$outboundSchema,
+  type: CreateProjectEnv2Type$outboundSchema.optional(),
   target: z.array(CreateProjectEnv2Target$outboundSchema).optional(),
   gitBranch: z.nullable(z.string()).optional(),
   comment: z.string().optional(),
@@ -804,7 +804,7 @@ export const CreateProjectEnv21$inboundSchema: z.ZodType<
 > = z.object({
   key: types.string(),
   value: types.string(),
-  type: TwoType$inboundSchema,
+  type: types.optional(TwoType$inboundSchema),
   target: z.array(TwoTarget$inboundSchema),
   gitBranch: z.nullable(types.string()).optional(),
   comment: types.optional(types.string()),
@@ -814,7 +814,7 @@ export const CreateProjectEnv21$inboundSchema: z.ZodType<
 export type CreateProjectEnv21$Outbound = {
   key: string;
   value: string;
-  type: string;
+  type?: string | undefined;
   target: Array<string>;
   gitBranch?: string | null | undefined;
   comment?: string | undefined;
@@ -829,7 +829,7 @@ export const CreateProjectEnv21$outboundSchema: z.ZodType<
 > = z.object({
   key: z.string(),
   value: z.string(),
-  type: TwoType$outboundSchema,
+  type: TwoType$outboundSchema.optional(),
   target: z.array(TwoTarget$outboundSchema),
   gitBranch: z.nullable(z.string()).optional(),
   comment: z.string().optional(),
@@ -922,7 +922,7 @@ export const CreateProjectEnv12$inboundSchema: z.ZodType<
 > = z.object({
   key: types.string(),
   value: types.string(),
-  type: CreateProjectEnv1Type$inboundSchema,
+  type: types.optional(CreateProjectEnv1Type$inboundSchema),
   target: types.optional(z.array(CreateProjectEnv1Target$inboundSchema)),
   gitBranch: z.nullable(types.string()).optional(),
   comment: types.optional(types.string()),
@@ -932,7 +932,7 @@ export const CreateProjectEnv12$inboundSchema: z.ZodType<
 export type CreateProjectEnv12$Outbound = {
   key: string;
   value: string;
-  type: string;
+  type?: string | undefined;
   target?: Array<string> | undefined;
   gitBranch?: string | null | undefined;
   comment?: string | undefined;
@@ -947,7 +947,7 @@ export const CreateProjectEnv12$outboundSchema: z.ZodType<
 > = z.object({
   key: z.string(),
   value: z.string(),
-  type: CreateProjectEnv1Type$outboundSchema,
+  type: CreateProjectEnv1Type$outboundSchema.optional(),
   target: z.array(CreateProjectEnv1Target$outboundSchema).optional(),
   gitBranch: z.nullable(z.string()).optional(),
   comment: z.string().optional(),
@@ -993,7 +993,7 @@ export const CreateProjectEnv11$inboundSchema: z.ZodType<
 > = z.object({
   key: types.string(),
   value: types.string(),
-  type: OneType$inboundSchema,
+  type: types.optional(OneType$inboundSchema),
   target: z.array(OneTarget$inboundSchema),
   gitBranch: z.nullable(types.string()).optional(),
   comment: types.optional(types.string()),
@@ -1003,7 +1003,7 @@ export const CreateProjectEnv11$inboundSchema: z.ZodType<
 export type CreateProjectEnv11$Outbound = {
   key: string;
   value: string;
-  type: string;
+  type?: string | undefined;
   target: Array<string>;
   gitBranch?: string | null | undefined;
   comment?: string | undefined;
@@ -1018,7 +1018,7 @@ export const CreateProjectEnv11$outboundSchema: z.ZodType<
 > = z.object({
   key: z.string(),
   value: z.string(),
-  type: OneType$outboundSchema,
+  type: OneType$outboundSchema.optional(),
   target: z.array(OneTarget$outboundSchema),
   gitBranch: z.nullable(z.string()).optional(),
   comment: z.string().optional(),

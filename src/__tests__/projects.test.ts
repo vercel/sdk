@@ -256,6 +256,65 @@ test("Projects Create Project Env", async () => {
   expect(result).toBeDefined();
 });
 
+test("Projects Create Project Env Defaults Type", async () => {
+  const testHttpClient = createTestHTTPClient("createProjectEnv");
+
+  const vercel = new Vercel({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+  });
+
+  const result = await vercel.projects.createProjectEnv({
+    idOrName: "prj_XLKmu1DyR1eY7zq8UgeRKbA7yVLA",
+    upsert: "true",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+    requestBody: {
+      key: "API_TOKEN",
+      value: "super-secret-value",
+      target: [
+        "preview",
+      ],
+      comment: "preview token",
+      customEnvironmentIds: [
+        "env_1234567890",
+      ],
+    },
+  });
+  expect(result).toBeDefined();
+});
+
+test("Projects Create Project Env Allows Plain For Development", async () => {
+  const testHttpClient = createTestHTTPClient("createProjectEnv");
+
+  const vercel = new Vercel({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+  });
+
+  const result = await vercel.projects.createProjectEnv({
+    idOrName: "prj_XLKmu1DyR1eY7zq8UgeRKbA7yVLA",
+    upsert: "true",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+    requestBody: {
+      key: "LOCAL_ONLY_VALUE",
+      value: "value-for-dev",
+      type: "plain",
+      target: [
+        "development",
+      ],
+      comment: "development-only plain variable",
+      customEnvironmentIds: [
+        "env_1234567890",
+      ],
+    },
+  });
+  expect(result).toBeDefined();
+});
+
 test("Projects Get Project Env", async () => {
   const testHttpClient = createTestHTTPClient("getProjectEnv");
 

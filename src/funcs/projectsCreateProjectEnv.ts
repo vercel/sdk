@@ -30,6 +30,40 @@ import { VercelError } from "../models/vercelerror.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
+type EnvVarType = "system" | "encrypted" | "plain" | "sensitive";
+
+type EnvVarLike = {
+  type?: EnvVarType;
+  target?: Array<string>;
+};
+
+function withDefaultEnvType<T extends EnvVarLike>(envVar: T): T {
+  if (envVar.type) {
+    return envVar;
+  }
+
+  return {
+    ...envVar,
+    type: "sensitive",
+  };
+}
+
+export function applyDefaultCreateProjectEnvType(
+  request: CreateProjectEnvRequest,
+): CreateProjectEnvRequest {
+  if (Array.isArray(request.requestBody)) {
+    return {
+      ...request,
+      requestBody: request.requestBody.map((item) => withDefaultEnvType(item)),
+    };
+  }
+
+  return {
+    ...request,
+    requestBody: withDefaultEnvType(request.requestBody),
+  };
+}
+
 /**
  * Create one or more environment variables
  *
@@ -82,8 +116,10 @@ async function $do(
     APICall,
   ]
 > {
+  const requestWithDefaults = applyDefaultCreateProjectEnvType(request);
+
   const parsed = safeParse(
-    request,
+    requestWithDefaults,
     (value) => CreateProjectEnvRequest$outboundSchema.parse(value),
     "Input validation failed",
   );

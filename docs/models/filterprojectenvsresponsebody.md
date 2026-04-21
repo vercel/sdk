@@ -33,6 +33,7 @@ const value: models.FilterProjectEnvsResponseBody2 = {
 ```typescript
 const value: models.FilterProjectEnvsResponseBody3 = {
   envs: [],
+  hiddenProductionEnvCount: 2226.57,
 };
 ```
 

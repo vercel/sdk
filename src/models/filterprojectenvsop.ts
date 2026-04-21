@@ -277,6 +277,7 @@ export type ResponseBodyEnvs = {
  */
 export type FilterProjectEnvsResponseBody3 = {
   envs: Array<ResponseBodyEnvs>;
+  hiddenProductionEnvCount: number;
 };
 
 export const FilterProjectEnvsTargetProjects2 = {
@@ -2034,10 +2035,12 @@ export const FilterProjectEnvsResponseBody3$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   envs: z.array(z.lazy(() => ResponseBodyEnvs$inboundSchema)),
+  hiddenProductionEnvCount: types.number(),
 });
 /** @internal */
 export type FilterProjectEnvsResponseBody3$Outbound = {
   envs: Array<ResponseBodyEnvs$Outbound>;
+  hiddenProductionEnvCount: number;
 };
 
 /** @internal */
@@ -2047,6 +2050,7 @@ export const FilterProjectEnvsResponseBody3$outboundSchema: z.ZodType<
   FilterProjectEnvsResponseBody3
 > = z.object({
   envs: z.array(z.lazy(() => ResponseBodyEnvs$outboundSchema)),
+  hiddenProductionEnvCount: z.number(),
 });
 
 export function filterProjectEnvsResponseBody3ToJSON(

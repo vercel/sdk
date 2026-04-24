@@ -25,4 +25,4 @@ jobs:
         NODE_OPTIONS=--max-old-space-size=6144
     secrets:
       github_access_token: ${{ secrets.PR_CREATION_PAT }}
-      speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}
+      speakeasy_api_key: ${{ secrets.TF_SPEAKEASY_API_KEY }}

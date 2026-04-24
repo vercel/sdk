@@ -26,6 +26,7 @@ jobs:
       set_version: ${{ github.event.inputs.set_version }}
       speakeasy_version: latest
       enable_sdk_changelog: true
+      signed_commits: true
       target: vercel
       environment: |
         NODE_OPTIONS="--max-old-space-size=12288"

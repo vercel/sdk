@@ -3,23 +3,17 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsContentHint14 } from "@vercel/sdk/models/responsebodycve55182migrationappliedfrom.js";
+import { GetProjectsContentHint14 } from "@vercel/sdk/models/responsebodyresourceconfig.js";
 
 let value: GetProjectsContentHint14 = {
-  type: "integration-store-secret",
+  type: "postgres-url-no-ssl",
   storeId: "<id>",
-  integrationId: "<id>",
-  integrationProductId: "<id>",
-  integrationConfigurationId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field                        | Type                         | Required                     | Description                  |
-| ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- |
-| `type`                       | *"integration-store-secret"* | :heavy_check_mark:           | N/A                          |
-| `storeId`                    | *string*                     | :heavy_check_mark:           | N/A                          |
-| `integrationId`              | *string*                     | :heavy_check_mark:           | N/A                          |
-| `integrationProductId`       | *string*                     | :heavy_check_mark:           | N/A                          |
-| `integrationConfigurationId` | *string*                     | :heavy_check_mark:           | N/A                          |
+| Field                   | Type                    | Required                | Description             |
+| ----------------------- | ----------------------- | ----------------------- | ----------------------- |
+| `type`                  | *"postgres-url-no-ssl"* | :heavy_check_mark:      | N/A                     |
+| `storeId`               | *string*                | :heavy_check_mark:      | N/A                     |

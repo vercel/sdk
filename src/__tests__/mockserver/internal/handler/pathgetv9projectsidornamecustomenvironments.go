@@ -52,10 +52,10 @@ func testGetProjectsByIDOrNameCustomEnvironmentsGetProjectsByIDOrNameCustomEnvir
 		Environments: []operations.GetProjectsByIDOrNameCustomEnvironmentsEnvironment{
 			operations.GetProjectsByIDOrNameCustomEnvironmentsEnvironment{
 				Type:      operations.GetProjectsByIDOrNameCustomEnvironmentsTypeProduction,
-				CreatedAt: 2957.56,
-				UpdatedAt: 4025.44,
 				ID:        "<id>",
+				CreatedAt: 2957.56,
 				Slug:      "<value>",
+				UpdatedAt: 4025.44,
 			},
 		},
 	}

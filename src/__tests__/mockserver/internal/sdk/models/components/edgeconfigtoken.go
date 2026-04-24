@@ -4,19 +4,22 @@ package components
 
 // EdgeConfigToken - The EdgeConfig.
 type EdgeConfigToken struct {
-	Token string `json:"token"`
-	Label string `json:"label"`
+	// A partially-masked representation of the token, safe to display in UIs. The format is the first 3 characters of the token followed by a fixed 8-character `*` mask (e.g. `550e8400-e29b-41d4-a716-446655440000` → `550********`). The mask length is intentionally fixed (not proportional to the original token length) to avoid leaking the token length. Prefer this field for display/reference in UIs and logs. The full, plaintext token is only disclosed once at creation time via `POST /v1/edge-config/:edgeConfigId/token`; use `id` to reference a token in subsequent calls (e.g. when deleting).
+	PartialToken string `json:"partialToken"`
+	Label        string `json:"label"`
 	// This is not the token itself, but rather an id to identify the token by
 	ID           string  `json:"id"`
 	EdgeConfigID string  `json:"edgeConfigId"`
 	CreatedAt    float64 `json:"createdAt"`
+	// Deprecated: the full, plaintext token. - Returned once by `POST /v1/edge-config/:edgeConfigId/token` (create). - Still returned by `GET /v1/edge-config/:edgeConfigId/token/:token` (detail) for backwards compatibility, but scheduled for removal. - **Not** returned by `GET /v1/edge-config/:edgeConfigId/tokens` (list); use `partialToken` for display and `id` to reference tokens. Do not rely on this field being present on read operations. Prefer `partialToken` for display and `id` for references.
+	Token *string `json:"token,omitempty"`
 }
 
-func (o *EdgeConfigToken) GetToken() string {
+func (o *EdgeConfigToken) GetPartialToken() string {
 	if o == nil {
 		return ""
 	}
-	return o.Token
+	return o.PartialToken
 }
 
 func (o *EdgeConfigToken) GetLabel() string {
@@ -45,4 +48,11 @@ func (o *EdgeConfigToken) GetCreatedAt() float64 {
 		return 0.0
 	}
 	return o.CreatedAt
+}
+
+func (o *EdgeConfigToken) GetToken() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Token
 }

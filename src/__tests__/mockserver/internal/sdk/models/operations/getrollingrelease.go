@@ -78,19 +78,19 @@ func (o *GetRollingReleaseRequest) GetSlug() *string {
 	return o.Slug
 }
 
-// GetRollingReleaseStatePaused - The current state of the rolling release
-type GetRollingReleaseStatePaused string
+// GetRollingReleaseStateResponseBody - The current state of the rolling release
+type GetRollingReleaseStateResponseBody string
 
 const (
-	GetRollingReleaseStatePausedActive   GetRollingReleaseStatePaused = "ACTIVE"
-	GetRollingReleaseStatePausedComplete GetRollingReleaseStatePaused = "COMPLETE"
-	GetRollingReleaseStatePausedAborted  GetRollingReleaseStatePaused = "ABORTED"
+	GetRollingReleaseStateResponseBodyActive   GetRollingReleaseStateResponseBody = "ACTIVE"
+	GetRollingReleaseStateResponseBodyComplete GetRollingReleaseStateResponseBody = "COMPLETE"
+	GetRollingReleaseStateResponseBodyAborted  GetRollingReleaseStateResponseBody = "ABORTED"
 )
 
-func (e GetRollingReleaseStatePaused) ToPointer() *GetRollingReleaseStatePaused {
+func (e GetRollingReleaseStateResponseBody) ToPointer() *GetRollingReleaseStateResponseBody {
 	return &e
 }
-func (e *GetRollingReleaseStatePaused) UnmarshalJSON(data []byte) error {
+func (e *GetRollingReleaseStateResponseBody) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -101,10 +101,10 @@ func (e *GetRollingReleaseStatePaused) UnmarshalJSON(data []byte) error {
 	case "COMPLETE":
 		fallthrough
 	case "ABORTED":
-		*e = GetRollingReleaseStatePaused(v)
+		*e = GetRollingReleaseStateResponseBody(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetRollingReleaseStatePaused: %v", v)
+		return fmt.Errorf("invalid value for GetRollingReleaseStateResponseBody: %v", v)
 	}
 }
 
@@ -245,12 +245,12 @@ func (e *GetRollingReleaseCurrentDeploymentTarget) UnmarshalJSON(data []byte) er
 
 // GetRollingReleaseCurrentDeployment - The current deployment receiving production traffic
 type GetRollingReleaseCurrentDeployment struct {
+	// A string holding the unique ID of the deployment
+	ID string `json:"id"`
 	// The name of the project associated with the deployment at the time that the deployment was created
 	Name string `json:"name"`
 	// A number containing the date when the deployment was created in milliseconds
 	CreatedAt float64 `json:"createdAt"`
-	// A string holding the unique ID of the deployment
-	ID string `json:"id"`
 	// The state of the deployment depending on the process of deploying, or if it is ready or in an error state
 	ReadyState   GetRollingReleaseCurrentDeploymentReadyState `json:"readyState"`
 	ReadyStateAt *float64                                     `json:"readyStateAt,omitempty"`
@@ -260,6 +260,13 @@ type GetRollingReleaseCurrentDeployment struct {
 	Target optionalnullable.OptionalNullable[GetRollingReleaseCurrentDeploymentTarget] `json:"target,omitempty"`
 	// A string with the unique URL of the deployment
 	URL string `json:"url"`
+}
+
+func (o *GetRollingReleaseCurrentDeployment) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
 }
 
 func (o *GetRollingReleaseCurrentDeployment) GetName() string {
@@ -274,13 +281,6 @@ func (o *GetRollingReleaseCurrentDeployment) GetCreatedAt() float64 {
 		return 0.0
 	}
 	return o.CreatedAt
-}
-
-func (o *GetRollingReleaseCurrentDeployment) GetID() string {
-	if o == nil {
-		return ""
-	}
-	return o.ID
 }
 
 func (o *GetRollingReleaseCurrentDeployment) GetReadyState() GetRollingReleaseCurrentDeploymentReadyState {
@@ -431,12 +431,12 @@ func (e *GetRollingReleaseCanaryDeploymentTarget) UnmarshalJSON(data []byte) err
 
 // GetRollingReleaseCanaryDeployment - The canary deployment being rolled out
 type GetRollingReleaseCanaryDeployment struct {
+	// A string holding the unique ID of the deployment
+	ID string `json:"id"`
 	// The name of the project associated with the deployment at the time that the deployment was created
 	Name string `json:"name"`
 	// A number containing the date when the deployment was created in milliseconds
 	CreatedAt float64 `json:"createdAt"`
-	// A string holding the unique ID of the deployment
-	ID string `json:"id"`
 	// The state of the deployment depending on the process of deploying, or if it is ready or in an error state
 	ReadyState   GetRollingReleaseCanaryDeploymentReadyState `json:"readyState"`
 	ReadyStateAt *float64                                    `json:"readyStateAt,omitempty"`
@@ -446,6 +446,13 @@ type GetRollingReleaseCanaryDeployment struct {
 	Target optionalnullable.OptionalNullable[GetRollingReleaseCanaryDeploymentTarget] `json:"target,omitempty"`
 	// A string with the unique URL of the deployment
 	URL string `json:"url"`
+}
+
+func (o *GetRollingReleaseCanaryDeployment) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
 }
 
 func (o *GetRollingReleaseCanaryDeployment) GetName() string {
@@ -460,13 +467,6 @@ func (o *GetRollingReleaseCanaryDeployment) GetCreatedAt() float64 {
 		return 0.0
 	}
 	return o.CreatedAt
-}
-
-func (o *GetRollingReleaseCanaryDeployment) GetID() string {
-	if o == nil {
-		return ""
-	}
-	return o.ID
 }
 
 func (o *GetRollingReleaseCanaryDeployment) GetReadyState() GetRollingReleaseCanaryDeploymentReadyState {
@@ -708,7 +708,7 @@ func (o *GetRollingReleaseNextStage) GetLinearShift() *bool {
 // GetRollingReleaseRollingRelease - Rolling release information including configuration and document details, or null if no rolling release exists
 type GetRollingReleaseRollingRelease struct {
 	// The current state of the rolling release
-	State GetRollingReleaseStatePaused `json:"state"`
+	State GetRollingReleaseStateResponseBody `json:"state"`
 	// When set to `PAUSED`, the rollout is frozen at the current percentage until continued.
 	Substate *GetRollingReleaseSubstate `json:"substate"`
 	// The current deployment receiving production traffic
@@ -733,9 +733,9 @@ type GetRollingReleaseRollingRelease struct {
 	CurrentCanaryPercentage *float64 `json:"currentCanaryPercentage,omitempty"`
 }
 
-func (o *GetRollingReleaseRollingRelease) GetState() GetRollingReleaseStatePaused {
+func (o *GetRollingReleaseRollingRelease) GetState() GetRollingReleaseStateResponseBody {
 	if o == nil {
-		return GetRollingReleaseStatePaused("")
+		return GetRollingReleaseStateResponseBody("")
 	}
 	return o.State
 }

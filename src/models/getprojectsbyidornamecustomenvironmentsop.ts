@@ -124,21 +124,21 @@ export type GetProjectsByIdOrNameCustomEnvironmentsEnvironments = {
    */
   description?: string | undefined;
   /**
-   * Timestamp when the environment was created
-   */
-  createdAt: number;
-  /**
-   * Timestamp when the environment was last updated
-   */
-  updatedAt: number;
-  /**
    * Unique identifier for the custom environment (format: env_*)
    */
   id: string;
   /**
+   * Timestamp when the environment was created
+   */
+  createdAt: number;
+  /**
    * URL-friendly name of the environment
    */
   slug: string;
+  /**
+   * Timestamp when the environment was last updated
+   */
+  updatedAt: number;
   /**
    * List of domains associated with this environment
    */
@@ -488,10 +488,10 @@ export const GetProjectsByIdOrNameCustomEnvironmentsEnvironments$inboundSchema:
   > = z.object({
     type: GetProjectsByIdOrNameCustomEnvironmentsType$inboundSchema,
     description: types.optional(types.string()),
-    createdAt: types.number(),
-    updatedAt: types.number(),
     id: types.string(),
+    createdAt: types.number(),
     slug: types.string(),
+    updatedAt: types.number(),
     domains: types.optional(
       z.array(z.lazy(() =>
         GetProjectsByIdOrNameCustomEnvironmentsDomains$inboundSchema
@@ -508,10 +508,10 @@ export const GetProjectsByIdOrNameCustomEnvironmentsEnvironments$inboundSchema:
 export type GetProjectsByIdOrNameCustomEnvironmentsEnvironments$Outbound = {
   type: string;
   description?: string | undefined;
-  createdAt: number;
-  updatedAt: number;
   id: string;
+  createdAt: number;
   slug: string;
+  updatedAt: number;
   domains?:
     | Array<GetProjectsByIdOrNameCustomEnvironmentsDomains$Outbound>
     | undefined;
@@ -530,10 +530,10 @@ export const GetProjectsByIdOrNameCustomEnvironmentsEnvironments$outboundSchema:
   > = z.object({
     type: GetProjectsByIdOrNameCustomEnvironmentsType$outboundSchema,
     description: z.string().optional(),
-    createdAt: z.number(),
-    updatedAt: z.number(),
     id: z.string(),
+    createdAt: z.number(),
     slug: z.string(),
+    updatedAt: z.number(),
     domains: z.array(
       z.lazy(() =>
         GetProjectsByIdOrNameCustomEnvironmentsDomains$outboundSchema

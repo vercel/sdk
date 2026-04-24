@@ -29,3 +29,16 @@ const value: models.CreateSharedEnvVariableRequestBody2 = {
 };
 ```
 
+### `models.CreateSharedEnvVariableRequestBody3`
+
+```typescript
+const value: models.CreateSharedEnvVariableRequestBody3 = {
+  evs: [],
+  type: "encrypted",
+  target: [
+    "production",
+    "preview",
+  ],
+};
+```
+

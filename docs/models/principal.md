@@ -24,3 +24,11 @@ const value: models.Two = {
 };
 ```
 
+### `models.Three`
+
+```typescript
+const value: models.Three = {
+  type: "system",
+};
+```
+

@@ -101,10 +101,10 @@ func (o *GetEdgeConfigBackupUser2) GetAvatar() *string {
 }
 
 type GetEdgeConfigBackupItems2 struct {
-	Description *string                         `json:"description,omitempty"`
 	CreatedAt   float64                         `json:"createdAt"`
 	UpdatedAt   float64                         `json:"updatedAt"`
 	Value       *components.EdgeConfigItemValue `json:"value"`
+	Description *string                         `json:"description,omitempty"`
 }
 
 func (g GetEdgeConfigBackupItems2) MarshalJSON() ([]byte, error) {
@@ -116,13 +116,6 @@ func (g *GetEdgeConfigBackupItems2) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	return nil
-}
-
-func (o *GetEdgeConfigBackupItems2) GetDescription() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Description
 }
 
 func (o *GetEdgeConfigBackupItems2) GetCreatedAt() float64 {
@@ -146,12 +139,19 @@ func (o *GetEdgeConfigBackupItems2) GetValue() *components.EdgeConfigItemValue {
 	return o.Value
 }
 
+func (o *GetEdgeConfigBackupItems2) GetDescription() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Description
+}
+
 type GetEdgeConfigBackupBackup2 struct {
-	Items map[string]GetEdgeConfigBackupItems2 `json:"items"`
 	// Name for the Edge Config Names are not unique. Must start with an alphabetic character and can contain only alphanumeric characters and underscores).
-	Slug      string  `json:"slug"`
-	UpdatedAt float64 `json:"updatedAt"`
-	Digest    string  `json:"digest"`
+	Slug      string                               `json:"slug"`
+	UpdatedAt float64                              `json:"updatedAt"`
+	Items     map[string]GetEdgeConfigBackupItems2 `json:"items"`
+	Digest    string                               `json:"digest"`
 }
 
 func (g GetEdgeConfigBackupBackup2) MarshalJSON() ([]byte, error) {
@@ -159,17 +159,10 @@ func (g GetEdgeConfigBackupBackup2) MarshalJSON() ([]byte, error) {
 }
 
 func (g *GetEdgeConfigBackupBackup2) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"items", "slug", "updatedAt", "digest"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"slug", "updatedAt", "items", "digest"}); err != nil {
 		return err
 	}
 	return nil
-}
-
-func (o *GetEdgeConfigBackupBackup2) GetItems() map[string]GetEdgeConfigBackupItems2 {
-	if o == nil {
-		return map[string]GetEdgeConfigBackupItems2{}
-	}
-	return o.Items
 }
 
 func (o *GetEdgeConfigBackupBackup2) GetSlug() string {
@@ -184,6 +177,13 @@ func (o *GetEdgeConfigBackupBackup2) GetUpdatedAt() float64 {
 		return 0.0
 	}
 	return o.UpdatedAt
+}
+
+func (o *GetEdgeConfigBackupBackup2) GetItems() map[string]GetEdgeConfigBackupItems2 {
+	if o == nil {
+		return map[string]GetEdgeConfigBackupItems2{}
+	}
+	return o.Items
 }
 
 func (o *GetEdgeConfigBackupBackup2) GetDigest() string {
@@ -294,10 +294,10 @@ func (o *GetEdgeConfigBackupResponseBody2) GetMetadata() GetEdgeConfigBackupMeta
 }
 
 type GetEdgeConfigBackupItems1 struct {
-	Description *string                         `json:"description,omitempty"`
 	CreatedAt   float64                         `json:"createdAt"`
 	UpdatedAt   float64                         `json:"updatedAt"`
 	Value       *components.EdgeConfigItemValue `json:"value"`
+	Description *string                         `json:"description,omitempty"`
 }
 
 func (g GetEdgeConfigBackupItems1) MarshalJSON() ([]byte, error) {
@@ -309,13 +309,6 @@ func (g *GetEdgeConfigBackupItems1) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	return nil
-}
-
-func (o *GetEdgeConfigBackupItems1) GetDescription() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Description
 }
 
 func (o *GetEdgeConfigBackupItems1) GetCreatedAt() float64 {
@@ -339,12 +332,19 @@ func (o *GetEdgeConfigBackupItems1) GetValue() *components.EdgeConfigItemValue {
 	return o.Value
 }
 
+func (o *GetEdgeConfigBackupItems1) GetDescription() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Description
+}
+
 type GetEdgeConfigBackupBackup1 struct {
-	Items map[string]GetEdgeConfigBackupItems1 `json:"items"`
 	// Name for the Edge Config Names are not unique. Must start with an alphabetic character and can contain only alphanumeric characters and underscores).
-	Slug      string  `json:"slug"`
-	UpdatedAt float64 `json:"updatedAt"`
-	Digest    string  `json:"digest"`
+	Slug      string                               `json:"slug"`
+	UpdatedAt float64                              `json:"updatedAt"`
+	Items     map[string]GetEdgeConfigBackupItems1 `json:"items"`
+	Digest    string                               `json:"digest"`
 }
 
 func (g GetEdgeConfigBackupBackup1) MarshalJSON() ([]byte, error) {
@@ -352,17 +352,10 @@ func (g GetEdgeConfigBackupBackup1) MarshalJSON() ([]byte, error) {
 }
 
 func (g *GetEdgeConfigBackupBackup1) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"items", "slug", "updatedAt", "digest"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"slug", "updatedAt", "items", "digest"}); err != nil {
 		return err
 	}
 	return nil
-}
-
-func (o *GetEdgeConfigBackupBackup1) GetItems() map[string]GetEdgeConfigBackupItems1 {
-	if o == nil {
-		return map[string]GetEdgeConfigBackupItems1{}
-	}
-	return o.Items
 }
 
 func (o *GetEdgeConfigBackupBackup1) GetSlug() string {
@@ -377,6 +370,13 @@ func (o *GetEdgeConfigBackupBackup1) GetUpdatedAt() float64 {
 		return 0.0
 	}
 	return o.UpdatedAt
+}
+
+func (o *GetEdgeConfigBackupBackup1) GetItems() map[string]GetEdgeConfigBackupItems1 {
+	if o == nil {
+		return map[string]GetEdgeConfigBackupItems1{}
+	}
+	return o.Items
 }
 
 func (o *GetEdgeConfigBackupBackup1) GetDigest() string {

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PayloadImageOptimizationTransformation } from "@vercel/sdk/models/oldprojects.js";
+import { PayloadImageOptimizationTransformation } from "@vercel/sdk/models/version.js";
 
 let value: PayloadImageOptimizationTransformation = {
   updatedAt: 344.86,

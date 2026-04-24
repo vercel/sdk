@@ -18,9 +18,6 @@ import {
   CreateProjectConnectConfigurations$inboundSchema,
   CreateProjectConnectConfigurations$Outbound,
   CreateProjectConnectConfigurations$outboundSchema,
-  CreateProjectCreateDeployments,
-  CreateProjectCreateDeployments$inboundSchema,
-  CreateProjectCreateDeployments$outboundSchema,
   CreateProjectCrons,
   CreateProjectCrons$inboundSchema,
   CreateProjectCrons$Outbound,
@@ -33,10 +30,6 @@ import {
   CreateProjectEnv$inboundSchema,
   CreateProjectEnv$Outbound,
   CreateProjectEnv$outboundSchema,
-  CreateProjectGitComments,
-  CreateProjectGitComments$inboundSchema,
-  CreateProjectGitComments$Outbound,
-  CreateProjectGitComments$outboundSchema,
   CreateProjectIpBuckets,
   CreateProjectIpBuckets$inboundSchema,
   CreateProjectIpBuckets$Outbound,
@@ -139,8 +132,33 @@ import {
   SpeedInsights$inboundSchema,
   SpeedInsights$Outbound,
   SpeedInsights$outboundSchema,
-} from "./createprojectcreatedeployments.js";
+} from "./createprojecttrustedsources.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export type CreateProjectGitComments = {
+  /**
+   * Whether the Vercel bot should comment on PRs
+   */
+  onPullRequest: boolean;
+  /**
+   * Whether the Vercel bot should comment on commits
+   */
+  onCommit: boolean;
+};
+
+/**
+ * Whether the Vercel bot should automatically create GitHub deployments https://docs.github.com/en/rest/deployments/deployments#about-deployments NOTE: repository-dispatch events should be used instead
+ */
+export const CreateProjectCreateDeployments = {
+  Enabled: "enabled",
+  Disabled: "disabled",
+} as const;
+/**
+ * Whether the Vercel bot should automatically create GitHub deployments https://docs.github.com/en/rest/deployments/deployments#about-deployments NOTE: repository-dispatch events should be used instead
+ */
+export type CreateProjectCreateDeployments = ClosedEnum<
+  typeof CreateProjectCreateDeployments
+>;
 
 /**
  * Configuration for consolidated git commit status reporting. When enabled, Vercel will post a single consolidated commit status instead of individual statuses for each deployment.
@@ -166,7 +184,7 @@ export type GitProviderOptions = {
    */
   disableRepositoryDispatchEvents?: boolean | undefined;
   /**
-   * Whether the project requires commits to be signed before deployments will be created.
+   * Whether the project requires commits to be signed & verified before deployments will be created. - `true`: require verified commits for this project (explicit override of the team setting). - `false`: do not require verified commits (explicit override of the team setting). - absent: inherit from `team.requireVerifiedCommits`.
    */
   requireVerifiedCommits?: boolean | undefined;
   /**
@@ -757,6 +775,57 @@ export type CreateProjectResponseBody = {
   protectedSourcemaps?: boolean | undefined;
   tracing?: CreateProjectTracing | undefined;
 };
+
+/** @internal */
+export const CreateProjectGitComments$inboundSchema: z.ZodType<
+  CreateProjectGitComments,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  onPullRequest: types.boolean(),
+  onCommit: types.boolean(),
+});
+/** @internal */
+export type CreateProjectGitComments$Outbound = {
+  onPullRequest: boolean;
+  onCommit: boolean;
+};
+
+/** @internal */
+export const CreateProjectGitComments$outboundSchema: z.ZodType<
+  CreateProjectGitComments$Outbound,
+  z.ZodTypeDef,
+  CreateProjectGitComments
+> = z.object({
+  onPullRequest: z.boolean(),
+  onCommit: z.boolean(),
+});
+
+export function createProjectGitCommentsToJSON(
+  createProjectGitComments: CreateProjectGitComments,
+): string {
+  return JSON.stringify(
+    CreateProjectGitComments$outboundSchema.parse(createProjectGitComments),
+  );
+}
+export function createProjectGitCommentsFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateProjectGitComments, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateProjectGitComments$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProjectGitComments' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateProjectCreateDeployments$inboundSchema: z.ZodNativeEnum<
+  typeof CreateProjectCreateDeployments
+> = z.nativeEnum(CreateProjectCreateDeployments);
+/** @internal */
+export const CreateProjectCreateDeployments$outboundSchema: z.ZodNativeEnum<
+  typeof CreateProjectCreateDeployments
+> = CreateProjectCreateDeployments$inboundSchema;
 
 /** @internal */
 export const CreateProjectConsolidatedGitCommitStatus$inboundSchema: z.ZodType<
@@ -3649,7 +3718,9 @@ export const CreateProjectResponseBody$inboundSchema: z.ZodType<
   trustedIps: z.nullable(CreateProjectTrustedIps$inboundSchema).optional(),
   trustedSources: z.nullable(CreateProjectTrustedSources$inboundSchema)
     .optional(),
-  gitComments: types.optional(CreateProjectGitComments$inboundSchema),
+  gitComments: types.optional(
+    z.lazy(() => CreateProjectGitComments$inboundSchema),
+  ),
   gitProviderOptions: types.optional(
     z.lazy(() => GitProviderOptions$inboundSchema),
   ),
@@ -3874,7 +3945,7 @@ export const CreateProjectResponseBody$outboundSchema: z.ZodType<
   trustedIps: z.nullable(CreateProjectTrustedIps$outboundSchema).optional(),
   trustedSources: z.nullable(CreateProjectTrustedSources$outboundSchema)
     .optional(),
-  gitComments: CreateProjectGitComments$outboundSchema.optional(),
+  gitComments: z.lazy(() => CreateProjectGitComments$outboundSchema).optional(),
   gitProviderOptions: z.lazy(() => GitProviderOptions$outboundSchema)
     .optional(),
   paused: z.boolean().optional(),

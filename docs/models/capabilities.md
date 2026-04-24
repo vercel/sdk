@@ -21,3 +21,4 @@ let value: Capabilities = {};
 | `secretRotation`        | *models.SecretRotation* | :heavy_minus_sign:      | N/A                     |
 | `projects`              | *boolean*               | :heavy_minus_sign:      | N/A                     |
 | `v0`                    | *boolean*               | :heavy_minus_sign:      | N/A                     |
+| `autoSensitive`         | *boolean*               | :heavy_minus_sign:      | N/A                     |

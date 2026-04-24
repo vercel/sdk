@@ -769,6 +769,59 @@ func (o *RemoveProjectEnvContentHintPostgresURL3) GetStoreID() string {
 	return o.StoreID
 }
 
+type RemoveProjectEnvTypeBlobStoreID3 string
+
+const (
+	RemoveProjectEnvTypeBlobStoreID3BlobStoreID RemoveProjectEnvTypeBlobStoreID3 = "blob-store-id"
+)
+
+func (e RemoveProjectEnvTypeBlobStoreID3) ToPointer() *RemoveProjectEnvTypeBlobStoreID3 {
+	return &e
+}
+func (e *RemoveProjectEnvTypeBlobStoreID3) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "blob-store-id":
+		*e = RemoveProjectEnvTypeBlobStoreID3(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for RemoveProjectEnvTypeBlobStoreID3: %v", v)
+	}
+}
+
+type RemoveProjectEnvContentHintBlobStoreID3 struct {
+	Type    RemoveProjectEnvTypeBlobStoreID3 `json:"type"`
+	StoreID string                           `json:"storeId"`
+}
+
+func (r RemoveProjectEnvContentHintBlobStoreID3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RemoveProjectEnvContentHintBlobStoreID3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *RemoveProjectEnvContentHintBlobStoreID3) GetType() RemoveProjectEnvTypeBlobStoreID3 {
+	if o == nil {
+		return RemoveProjectEnvTypeBlobStoreID3("")
+	}
+	return o.Type
+}
+
+func (o *RemoveProjectEnvContentHintBlobStoreID3) GetStoreID() string {
+	if o == nil {
+		return ""
+	}
+	return o.StoreID
+}
+
 type RemoveProjectEnvTypeBlobReadWriteToken3 string
 
 const (
@@ -1042,6 +1095,7 @@ const (
 	RemoveProjectEnvContentHintUnion3TypeRedisRestAPIToken         RemoveProjectEnvContentHintUnion3Type = "redis-rest-api-token"
 	RemoveProjectEnvContentHintUnion3TypeRedisRestAPIReadOnlyToken RemoveProjectEnvContentHintUnion3Type = "redis-rest-api-read-only-token"
 	RemoveProjectEnvContentHintUnion3TypeBlobReadWriteToken        RemoveProjectEnvContentHintUnion3Type = "blob-read-write-token"
+	RemoveProjectEnvContentHintUnion3TypeBlobStoreID               RemoveProjectEnvContentHintUnion3Type = "blob-store-id"
 	RemoveProjectEnvContentHintUnion3TypePostgresURL               RemoveProjectEnvContentHintUnion3Type = "postgres-url"
 	RemoveProjectEnvContentHintUnion3TypePostgresURLNonPooling     RemoveProjectEnvContentHintUnion3Type = "postgres-url-non-pooling"
 	RemoveProjectEnvContentHintUnion3TypePostgresPrismaURL         RemoveProjectEnvContentHintUnion3Type = "postgres-prisma-url"
@@ -1060,6 +1114,7 @@ type RemoveProjectEnvContentHintUnion3 struct {
 	RemoveProjectEnvContentHintRedisRestAPIToken3         *RemoveProjectEnvContentHintRedisRestAPIToken3         `queryParam:"inline"`
 	RemoveProjectEnvContentHintRedisRestAPIReadOnlyToken3 *RemoveProjectEnvContentHintRedisRestAPIReadOnlyToken3 `queryParam:"inline"`
 	RemoveProjectEnvContentHintBlobReadWriteToken3        *RemoveProjectEnvContentHintBlobReadWriteToken3        `queryParam:"inline"`
+	RemoveProjectEnvContentHintBlobStoreID3               *RemoveProjectEnvContentHintBlobStoreID3               `queryParam:"inline"`
 	RemoveProjectEnvContentHintPostgresURL3               *RemoveProjectEnvContentHintPostgresURL3               `queryParam:"inline"`
 	RemoveProjectEnvContentHintPostgresURLNonPooling3     *RemoveProjectEnvContentHintPostgresURLNonPooling3     `queryParam:"inline"`
 	RemoveProjectEnvContentHintPostgresPrismaURL3         *RemoveProjectEnvContentHintPostgresPrismaURL3         `queryParam:"inline"`
@@ -1131,6 +1186,18 @@ func CreateRemoveProjectEnvContentHintUnion3BlobReadWriteToken(blobReadWriteToke
 	return RemoveProjectEnvContentHintUnion3{
 		RemoveProjectEnvContentHintBlobReadWriteToken3: &blobReadWriteToken,
 		Type: typ,
+	}
+}
+
+func CreateRemoveProjectEnvContentHintUnion3BlobStoreID(blobStoreID RemoveProjectEnvContentHintBlobStoreID3) RemoveProjectEnvContentHintUnion3 {
+	typ := RemoveProjectEnvContentHintUnion3TypeBlobStoreID
+
+	typStr := RemoveProjectEnvTypeBlobStoreID3(typ)
+	blobStoreID.Type = typStr
+
+	return RemoveProjectEnvContentHintUnion3{
+		RemoveProjectEnvContentHintBlobStoreID3: &blobStoreID,
+		Type:                                    typ,
 	}
 }
 
@@ -1311,6 +1378,15 @@ func (u *RemoveProjectEnvContentHintUnion3) UnmarshalJSON(data []byte) error {
 		u.RemoveProjectEnvContentHintBlobReadWriteToken3 = removeProjectEnvContentHintBlobReadWriteToken3
 		u.Type = RemoveProjectEnvContentHintUnion3TypeBlobReadWriteToken
 		return nil
+	case "blob-store-id":
+		removeProjectEnvContentHintBlobStoreID3 := new(RemoveProjectEnvContentHintBlobStoreID3)
+		if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintBlobStoreID3, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == blob-store-id) type RemoveProjectEnvContentHintBlobStoreID3 within RemoveProjectEnvContentHintUnion3: %w", string(data), err)
+		}
+
+		u.RemoveProjectEnvContentHintBlobStoreID3 = removeProjectEnvContentHintBlobStoreID3
+		u.Type = RemoveProjectEnvContentHintUnion3TypeBlobStoreID
+		return nil
 	case "postgres-url":
 		removeProjectEnvContentHintPostgresURL3 := new(RemoveProjectEnvContentHintPostgresURL3)
 		if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresURL3, "", true, nil); err != nil {
@@ -1427,6 +1503,10 @@ func (u RemoveProjectEnvContentHintUnion3) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.RemoveProjectEnvContentHintBlobReadWriteToken3, "", true)
 	}
 
+	if u.RemoveProjectEnvContentHintBlobStoreID3 != nil {
+		return utils.MarshalJSON(u.RemoveProjectEnvContentHintBlobStoreID3, "", true)
+	}
+
 	if u.RemoveProjectEnvContentHintPostgresURL3 != nil {
 		return utils.MarshalJSON(u.RemoveProjectEnvContentHintPostgresURL3, "", true)
 	}
@@ -1530,10 +1610,10 @@ type RemoveProjectEnvResponseBody3 struct {
 	Value             string                                    `json:"value"`
 	EdgeConfigID      optionalnullable.OptionalNullable[string] `json:"edgeConfigId,omitempty"`
 	EdgeConfigTokenID optionalnullable.OptionalNullable[string] `json:"edgeConfigTokenId,omitempty"`
-	CreatedAt         *float64                                  `json:"createdAt,omitempty"`
-	UpdatedAt         *float64                                  `json:"updatedAt,omitempty"`
 	ID                *string                                   `json:"id,omitempty"`
+	CreatedAt         *float64                                  `json:"createdAt,omitempty"`
 	CreatedBy         optionalnullable.OptionalNullable[string] `json:"createdBy,omitempty"`
+	UpdatedAt         *float64                                  `json:"updatedAt,omitempty"`
 	Target            *RemoveProjectEnvTargetUnion3             `json:"target,omitempty"`
 	Key               string                                    `json:"key"`
 	GitBranch         *string                                   `json:"gitBranch,omitempty"`
@@ -1590,20 +1670,6 @@ func (o *RemoveProjectEnvResponseBody3) GetEdgeConfigTokenID() optionalnullable.
 	return o.EdgeConfigTokenID
 }
 
-func (o *RemoveProjectEnvResponseBody3) GetCreatedAt() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.CreatedAt
-}
-
-func (o *RemoveProjectEnvResponseBody3) GetUpdatedAt() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.UpdatedAt
-}
-
 func (o *RemoveProjectEnvResponseBody3) GetID() *string {
 	if o == nil {
 		return nil
@@ -1611,11 +1677,25 @@ func (o *RemoveProjectEnvResponseBody3) GetID() *string {
 	return o.ID
 }
 
+func (o *RemoveProjectEnvResponseBody3) GetCreatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedAt
+}
+
 func (o *RemoveProjectEnvResponseBody3) GetCreatedBy() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
 	return o.CreatedBy
+}
+
+func (o *RemoveProjectEnvResponseBody3) GetUpdatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.UpdatedAt
 }
 
 func (o *RemoveProjectEnvResponseBody3) GetTarget() *RemoveProjectEnvTargetUnion3 {
@@ -1725,6 +1805,16 @@ func (o *RemoveProjectEnvResponseBody3) GetContentHintBlobReadWriteToken() *Remo
 	if v := o.GetContentHint(); v != nil {
 		if actualValue, ok := v.Get(); ok && actualValue != nil {
 			return actualValue.RemoveProjectEnvContentHintBlobReadWriteToken3
+		}
+		return nil
+	}
+	return nil
+}
+
+func (o *RemoveProjectEnvResponseBody3) GetContentHintBlobStoreID() *RemoveProjectEnvContentHintBlobStoreID3 {
+	if v := o.GetContentHint(); v != nil {
+		if actualValue, ok := v.Get(); ok && actualValue != nil {
+			return actualValue.RemoveProjectEnvContentHintBlobStoreID3
 		}
 		return nil
 	}
@@ -2562,6 +2652,59 @@ func (o *RemoveProjectEnvContentHintPostgresURL2) GetStoreID() string {
 	return o.StoreID
 }
 
+type RemoveProjectEnvTypeBlobStoreID2 string
+
+const (
+	RemoveProjectEnvTypeBlobStoreID2BlobStoreID RemoveProjectEnvTypeBlobStoreID2 = "blob-store-id"
+)
+
+func (e RemoveProjectEnvTypeBlobStoreID2) ToPointer() *RemoveProjectEnvTypeBlobStoreID2 {
+	return &e
+}
+func (e *RemoveProjectEnvTypeBlobStoreID2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "blob-store-id":
+		*e = RemoveProjectEnvTypeBlobStoreID2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for RemoveProjectEnvTypeBlobStoreID2: %v", v)
+	}
+}
+
+type RemoveProjectEnvContentHintBlobStoreID2 struct {
+	Type    RemoveProjectEnvTypeBlobStoreID2 `json:"type"`
+	StoreID string                           `json:"storeId"`
+}
+
+func (r RemoveProjectEnvContentHintBlobStoreID2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RemoveProjectEnvContentHintBlobStoreID2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *RemoveProjectEnvContentHintBlobStoreID2) GetType() RemoveProjectEnvTypeBlobStoreID2 {
+	if o == nil {
+		return RemoveProjectEnvTypeBlobStoreID2("")
+	}
+	return o.Type
+}
+
+func (o *RemoveProjectEnvContentHintBlobStoreID2) GetStoreID() string {
+	if o == nil {
+		return ""
+	}
+	return o.StoreID
+}
+
 type RemoveProjectEnvTypeBlobReadWriteToken2 string
 
 const (
@@ -2835,6 +2978,7 @@ const (
 	RemoveProjectEnvContentHintUnion2TypeRedisRestAPIToken         RemoveProjectEnvContentHintUnion2Type = "redis-rest-api-token"
 	RemoveProjectEnvContentHintUnion2TypeRedisRestAPIReadOnlyToken RemoveProjectEnvContentHintUnion2Type = "redis-rest-api-read-only-token"
 	RemoveProjectEnvContentHintUnion2TypeBlobReadWriteToken        RemoveProjectEnvContentHintUnion2Type = "blob-read-write-token"
+	RemoveProjectEnvContentHintUnion2TypeBlobStoreID               RemoveProjectEnvContentHintUnion2Type = "blob-store-id"
 	RemoveProjectEnvContentHintUnion2TypePostgresURL               RemoveProjectEnvContentHintUnion2Type = "postgres-url"
 	RemoveProjectEnvContentHintUnion2TypePostgresURLNonPooling     RemoveProjectEnvContentHintUnion2Type = "postgres-url-non-pooling"
 	RemoveProjectEnvContentHintUnion2TypePostgresPrismaURL         RemoveProjectEnvContentHintUnion2Type = "postgres-prisma-url"
@@ -2853,6 +2997,7 @@ type RemoveProjectEnvContentHintUnion2 struct {
 	RemoveProjectEnvContentHintRedisRestAPIToken2         *RemoveProjectEnvContentHintRedisRestAPIToken2         `queryParam:"inline"`
 	RemoveProjectEnvContentHintRedisRestAPIReadOnlyToken2 *RemoveProjectEnvContentHintRedisRestAPIReadOnlyToken2 `queryParam:"inline"`
 	RemoveProjectEnvContentHintBlobReadWriteToken2        *RemoveProjectEnvContentHintBlobReadWriteToken2        `queryParam:"inline"`
+	RemoveProjectEnvContentHintBlobStoreID2               *RemoveProjectEnvContentHintBlobStoreID2               `queryParam:"inline"`
 	RemoveProjectEnvContentHintPostgresURL2               *RemoveProjectEnvContentHintPostgresURL2               `queryParam:"inline"`
 	RemoveProjectEnvContentHintPostgresURLNonPooling2     *RemoveProjectEnvContentHintPostgresURLNonPooling2     `queryParam:"inline"`
 	RemoveProjectEnvContentHintPostgresPrismaURL2         *RemoveProjectEnvContentHintPostgresPrismaURL2         `queryParam:"inline"`
@@ -2924,6 +3069,18 @@ func CreateRemoveProjectEnvContentHintUnion2BlobReadWriteToken(blobReadWriteToke
 	return RemoveProjectEnvContentHintUnion2{
 		RemoveProjectEnvContentHintBlobReadWriteToken2: &blobReadWriteToken,
 		Type: typ,
+	}
+}
+
+func CreateRemoveProjectEnvContentHintUnion2BlobStoreID(blobStoreID RemoveProjectEnvContentHintBlobStoreID2) RemoveProjectEnvContentHintUnion2 {
+	typ := RemoveProjectEnvContentHintUnion2TypeBlobStoreID
+
+	typStr := RemoveProjectEnvTypeBlobStoreID2(typ)
+	blobStoreID.Type = typStr
+
+	return RemoveProjectEnvContentHintUnion2{
+		RemoveProjectEnvContentHintBlobStoreID2: &blobStoreID,
+		Type:                                    typ,
 	}
 }
 
@@ -3104,6 +3261,15 @@ func (u *RemoveProjectEnvContentHintUnion2) UnmarshalJSON(data []byte) error {
 		u.RemoveProjectEnvContentHintBlobReadWriteToken2 = removeProjectEnvContentHintBlobReadWriteToken2
 		u.Type = RemoveProjectEnvContentHintUnion2TypeBlobReadWriteToken
 		return nil
+	case "blob-store-id":
+		removeProjectEnvContentHintBlobStoreID2 := new(RemoveProjectEnvContentHintBlobStoreID2)
+		if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintBlobStoreID2, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == blob-store-id) type RemoveProjectEnvContentHintBlobStoreID2 within RemoveProjectEnvContentHintUnion2: %w", string(data), err)
+		}
+
+		u.RemoveProjectEnvContentHintBlobStoreID2 = removeProjectEnvContentHintBlobStoreID2
+		u.Type = RemoveProjectEnvContentHintUnion2TypeBlobStoreID
+		return nil
 	case "postgres-url":
 		removeProjectEnvContentHintPostgresURL2 := new(RemoveProjectEnvContentHintPostgresURL2)
 		if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresURL2, "", true, nil); err != nil {
@@ -3220,6 +3386,10 @@ func (u RemoveProjectEnvContentHintUnion2) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.RemoveProjectEnvContentHintBlobReadWriteToken2, "", true)
 	}
 
+	if u.RemoveProjectEnvContentHintBlobStoreID2 != nil {
+		return utils.MarshalJSON(u.RemoveProjectEnvContentHintBlobStoreID2, "", true)
+	}
+
 	if u.RemoveProjectEnvContentHintPostgresURL2 != nil {
 		return utils.MarshalJSON(u.RemoveProjectEnvContentHintPostgresURL2, "", true)
 	}
@@ -3324,10 +3494,10 @@ type RemoveProjectEnvResponseBody2 struct {
 	Value             string                                    `json:"value"`
 	EdgeConfigID      optionalnullable.OptionalNullable[string] `json:"edgeConfigId,omitempty"`
 	EdgeConfigTokenID optionalnullable.OptionalNullable[string] `json:"edgeConfigTokenId,omitempty"`
-	CreatedAt         *float64                                  `json:"createdAt,omitempty"`
-	UpdatedAt         *float64                                  `json:"updatedAt,omitempty"`
 	ID                *string                                   `json:"id,omitempty"`
+	CreatedAt         *float64                                  `json:"createdAt,omitempty"`
 	CreatedBy         optionalnullable.OptionalNullable[string] `json:"createdBy,omitempty"`
+	UpdatedAt         *float64                                  `json:"updatedAt,omitempty"`
 	Target            *RemoveProjectEnvTargetUnion2             `json:"target,omitempty"`
 	Key               string                                    `json:"key"`
 	GitBranch         *string                                   `json:"gitBranch,omitempty"`
@@ -3391,20 +3561,6 @@ func (o *RemoveProjectEnvResponseBody2) GetEdgeConfigTokenID() optionalnullable.
 	return o.EdgeConfigTokenID
 }
 
-func (o *RemoveProjectEnvResponseBody2) GetCreatedAt() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.CreatedAt
-}
-
-func (o *RemoveProjectEnvResponseBody2) GetUpdatedAt() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.UpdatedAt
-}
-
 func (o *RemoveProjectEnvResponseBody2) GetID() *string {
 	if o == nil {
 		return nil
@@ -3412,11 +3568,25 @@ func (o *RemoveProjectEnvResponseBody2) GetID() *string {
 	return o.ID
 }
 
+func (o *RemoveProjectEnvResponseBody2) GetCreatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedAt
+}
+
 func (o *RemoveProjectEnvResponseBody2) GetCreatedBy() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
 	return o.CreatedBy
+}
+
+func (o *RemoveProjectEnvResponseBody2) GetUpdatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.UpdatedAt
 }
 
 func (o *RemoveProjectEnvResponseBody2) GetTarget() *RemoveProjectEnvTargetUnion2 {
@@ -3526,6 +3696,16 @@ func (o *RemoveProjectEnvResponseBody2) GetContentHintBlobReadWriteToken() *Remo
 	if v := o.GetContentHint(); v != nil {
 		if actualValue, ok := v.Get(); ok && actualValue != nil {
 			return actualValue.RemoveProjectEnvContentHintBlobReadWriteToken2
+		}
+		return nil
+	}
+	return nil
+}
+
+func (o *RemoveProjectEnvResponseBody2) GetContentHintBlobStoreID() *RemoveProjectEnvContentHintBlobStoreID2 {
+	if v := o.GetContentHint(); v != nil {
+		if actualValue, ok := v.Get(); ok && actualValue != nil {
+			return actualValue.RemoveProjectEnvContentHintBlobStoreID2
 		}
 		return nil
 	}
@@ -4363,6 +4543,59 @@ func (o *RemoveProjectEnvContentHintPostgresURL1) GetStoreID() string {
 	return o.StoreID
 }
 
+type RemoveProjectEnvTypeBlobStoreID1 string
+
+const (
+	RemoveProjectEnvTypeBlobStoreID1BlobStoreID RemoveProjectEnvTypeBlobStoreID1 = "blob-store-id"
+)
+
+func (e RemoveProjectEnvTypeBlobStoreID1) ToPointer() *RemoveProjectEnvTypeBlobStoreID1 {
+	return &e
+}
+func (e *RemoveProjectEnvTypeBlobStoreID1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "blob-store-id":
+		*e = RemoveProjectEnvTypeBlobStoreID1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for RemoveProjectEnvTypeBlobStoreID1: %v", v)
+	}
+}
+
+type RemoveProjectEnvContentHintBlobStoreID1 struct {
+	Type    RemoveProjectEnvTypeBlobStoreID1 `json:"type"`
+	StoreID string                           `json:"storeId"`
+}
+
+func (r RemoveProjectEnvContentHintBlobStoreID1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RemoveProjectEnvContentHintBlobStoreID1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *RemoveProjectEnvContentHintBlobStoreID1) GetType() RemoveProjectEnvTypeBlobStoreID1 {
+	if o == nil {
+		return RemoveProjectEnvTypeBlobStoreID1("")
+	}
+	return o.Type
+}
+
+func (o *RemoveProjectEnvContentHintBlobStoreID1) GetStoreID() string {
+	if o == nil {
+		return ""
+	}
+	return o.StoreID
+}
+
 type RemoveProjectEnvTypeBlobReadWriteToken1 string
 
 const (
@@ -4636,6 +4869,7 @@ const (
 	RemoveProjectEnvContentHintUnion1TypeRedisRestAPIToken         RemoveProjectEnvContentHintUnion1Type = "redis-rest-api-token"
 	RemoveProjectEnvContentHintUnion1TypeRedisRestAPIReadOnlyToken RemoveProjectEnvContentHintUnion1Type = "redis-rest-api-read-only-token"
 	RemoveProjectEnvContentHintUnion1TypeBlobReadWriteToken        RemoveProjectEnvContentHintUnion1Type = "blob-read-write-token"
+	RemoveProjectEnvContentHintUnion1TypeBlobStoreID               RemoveProjectEnvContentHintUnion1Type = "blob-store-id"
 	RemoveProjectEnvContentHintUnion1TypePostgresURL               RemoveProjectEnvContentHintUnion1Type = "postgres-url"
 	RemoveProjectEnvContentHintUnion1TypePostgresURLNonPooling     RemoveProjectEnvContentHintUnion1Type = "postgres-url-non-pooling"
 	RemoveProjectEnvContentHintUnion1TypePostgresPrismaURL         RemoveProjectEnvContentHintUnion1Type = "postgres-prisma-url"
@@ -4654,6 +4888,7 @@ type RemoveProjectEnvContentHintUnion1 struct {
 	RemoveProjectEnvContentHintRedisRestAPIToken1         *RemoveProjectEnvContentHintRedisRestAPIToken1         `queryParam:"inline"`
 	RemoveProjectEnvContentHintRedisRestAPIReadOnlyToken1 *RemoveProjectEnvContentHintRedisRestAPIReadOnlyToken1 `queryParam:"inline"`
 	RemoveProjectEnvContentHintBlobReadWriteToken1        *RemoveProjectEnvContentHintBlobReadWriteToken1        `queryParam:"inline"`
+	RemoveProjectEnvContentHintBlobStoreID1               *RemoveProjectEnvContentHintBlobStoreID1               `queryParam:"inline"`
 	RemoveProjectEnvContentHintPostgresURL1               *RemoveProjectEnvContentHintPostgresURL1               `queryParam:"inline"`
 	RemoveProjectEnvContentHintPostgresURLNonPooling1     *RemoveProjectEnvContentHintPostgresURLNonPooling1     `queryParam:"inline"`
 	RemoveProjectEnvContentHintPostgresPrismaURL1         *RemoveProjectEnvContentHintPostgresPrismaURL1         `queryParam:"inline"`
@@ -4725,6 +4960,18 @@ func CreateRemoveProjectEnvContentHintUnion1BlobReadWriteToken(blobReadWriteToke
 	return RemoveProjectEnvContentHintUnion1{
 		RemoveProjectEnvContentHintBlobReadWriteToken1: &blobReadWriteToken,
 		Type: typ,
+	}
+}
+
+func CreateRemoveProjectEnvContentHintUnion1BlobStoreID(blobStoreID RemoveProjectEnvContentHintBlobStoreID1) RemoveProjectEnvContentHintUnion1 {
+	typ := RemoveProjectEnvContentHintUnion1TypeBlobStoreID
+
+	typStr := RemoveProjectEnvTypeBlobStoreID1(typ)
+	blobStoreID.Type = typStr
+
+	return RemoveProjectEnvContentHintUnion1{
+		RemoveProjectEnvContentHintBlobStoreID1: &blobStoreID,
+		Type:                                    typ,
 	}
 }
 
@@ -4905,6 +5152,15 @@ func (u *RemoveProjectEnvContentHintUnion1) UnmarshalJSON(data []byte) error {
 		u.RemoveProjectEnvContentHintBlobReadWriteToken1 = removeProjectEnvContentHintBlobReadWriteToken1
 		u.Type = RemoveProjectEnvContentHintUnion1TypeBlobReadWriteToken
 		return nil
+	case "blob-store-id":
+		removeProjectEnvContentHintBlobStoreID1 := new(RemoveProjectEnvContentHintBlobStoreID1)
+		if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintBlobStoreID1, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == blob-store-id) type RemoveProjectEnvContentHintBlobStoreID1 within RemoveProjectEnvContentHintUnion1: %w", string(data), err)
+		}
+
+		u.RemoveProjectEnvContentHintBlobStoreID1 = removeProjectEnvContentHintBlobStoreID1
+		u.Type = RemoveProjectEnvContentHintUnion1TypeBlobStoreID
+		return nil
 	case "postgres-url":
 		removeProjectEnvContentHintPostgresURL1 := new(RemoveProjectEnvContentHintPostgresURL1)
 		if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresURL1, "", true, nil); err != nil {
@@ -5021,6 +5277,10 @@ func (u RemoveProjectEnvContentHintUnion1) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.RemoveProjectEnvContentHintBlobReadWriteToken1, "", true)
 	}
 
+	if u.RemoveProjectEnvContentHintBlobStoreID1 != nil {
+		return utils.MarshalJSON(u.RemoveProjectEnvContentHintBlobStoreID1, "", true)
+	}
+
 	if u.RemoveProjectEnvContentHintPostgresURL1 != nil {
 		return utils.MarshalJSON(u.RemoveProjectEnvContentHintPostgresURL1, "", true)
 	}
@@ -5124,10 +5384,10 @@ type RemoveProjectEnvResponseBody1 struct {
 	Value             string                                    `json:"value"`
 	EdgeConfigID      optionalnullable.OptionalNullable[string] `json:"edgeConfigId,omitempty"`
 	EdgeConfigTokenID optionalnullable.OptionalNullable[string] `json:"edgeConfigTokenId,omitempty"`
-	CreatedAt         *float64                                  `json:"createdAt,omitempty"`
-	UpdatedAt         *float64                                  `json:"updatedAt,omitempty"`
 	ID                *string                                   `json:"id,omitempty"`
+	CreatedAt         *float64                                  `json:"createdAt,omitempty"`
 	CreatedBy         optionalnullable.OptionalNullable[string] `json:"createdBy,omitempty"`
+	UpdatedAt         *float64                                  `json:"updatedAt,omitempty"`
 	Target            *RemoveProjectEnvTargetUnion1             `json:"target,omitempty"`
 	Key               string                                    `json:"key"`
 	GitBranch         *string                                   `json:"gitBranch,omitempty"`
@@ -5184,20 +5444,6 @@ func (o *RemoveProjectEnvResponseBody1) GetEdgeConfigTokenID() optionalnullable.
 	return o.EdgeConfigTokenID
 }
 
-func (o *RemoveProjectEnvResponseBody1) GetCreatedAt() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.CreatedAt
-}
-
-func (o *RemoveProjectEnvResponseBody1) GetUpdatedAt() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.UpdatedAt
-}
-
 func (o *RemoveProjectEnvResponseBody1) GetID() *string {
 	if o == nil {
 		return nil
@@ -5205,11 +5451,25 @@ func (o *RemoveProjectEnvResponseBody1) GetID() *string {
 	return o.ID
 }
 
+func (o *RemoveProjectEnvResponseBody1) GetCreatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedAt
+}
+
 func (o *RemoveProjectEnvResponseBody1) GetCreatedBy() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
 	return o.CreatedBy
+}
+
+func (o *RemoveProjectEnvResponseBody1) GetUpdatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.UpdatedAt
 }
 
 func (o *RemoveProjectEnvResponseBody1) GetTarget() *RemoveProjectEnvTargetUnion1 {
@@ -5319,6 +5579,16 @@ func (o *RemoveProjectEnvResponseBody1) GetContentHintBlobReadWriteToken() *Remo
 	if v := o.GetContentHint(); v != nil {
 		if actualValue, ok := v.Get(); ok && actualValue != nil {
 			return actualValue.RemoveProjectEnvContentHintBlobReadWriteToken1
+		}
+		return nil
+	}
+	return nil
+}
+
+func (o *RemoveProjectEnvResponseBody1) GetContentHintBlobStoreID() *RemoveProjectEnvContentHintBlobStoreID1 {
+	if v := o.GetContentHint(); v != nil {
+		if actualValue, ok := v.Get(); ok && actualValue != nil {
+			return actualValue.RemoveProjectEnvContentHintBlobStoreID1
 		}
 		return nil
 	}

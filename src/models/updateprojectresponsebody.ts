@@ -51,10 +51,9 @@ import {
   UpdateProjectJobs$inboundSchema,
   UpdateProjectJobs$Outbound,
   UpdateProjectJobs$outboundSchema,
-  UpdateProjectLastAliasRequest,
-  UpdateProjectLastAliasRequest$inboundSchema,
-  UpdateProjectLastAliasRequest$Outbound,
-  UpdateProjectLastAliasRequest$outboundSchema,
+  UpdateProjectJobStatus,
+  UpdateProjectJobStatus$inboundSchema,
+  UpdateProjectJobStatus$outboundSchema,
   UpdateProjectLastRollbackTarget,
   UpdateProjectLastRollbackTarget$inboundSchema,
   UpdateProjectLastRollbackTarget$Outbound,
@@ -121,7 +120,27 @@ import {
   UpdateProjectTargets$inboundSchema,
   UpdateProjectTargets$Outbound,
   UpdateProjectTargets$outboundSchema,
-} from "./updateprojectlastaliasrequest.js";
+} from "./updateprojectjobstatus.js";
+
+export const UpdateProjectProjectsResponseType = {
+  Promote: "promote",
+  Rollback: "rollback",
+} as const;
+export type UpdateProjectProjectsResponseType = ClosedEnum<
+  typeof UpdateProjectProjectsResponseType
+>;
+
+export type UpdateProjectLastAliasRequest = {
+  fromDeploymentId: string | null;
+  toDeploymentId: string;
+  /**
+   * If rolling back from a rolling release, fromDeploymentId captures the "base" of that rolling release, and fromRollingReleaseId captures the "target" of that rolling release.
+   */
+  fromRollingReleaseId?: string | undefined;
+  jobStatus: UpdateProjectJobStatus;
+  requestedAt: number;
+  type: UpdateProjectProjectsResponseType;
+};
 
 export type UpdateProjectProtectionBypass2 = {
   createdAt: number;
@@ -395,7 +414,7 @@ export type UpdateProjectGitProviderOptions = {
    */
   disableRepositoryDispatchEvents?: boolean | undefined;
   /**
-   * Whether the project requires commits to be signed before deployments will be created.
+   * Whether the project requires commits to be signed & verified before deployments will be created. - `true`: require verified commits for this project (explicit override of the team setting). - `false`: do not require verified commits (explicit override of the team setting). - absent: inherit from `team.requireVerifiedCommits`.
    */
   requireVerifiedCommits?: boolean | undefined;
   /**
@@ -1028,6 +1047,71 @@ export type UpdateProjectResponseBody = {
   protectedSourcemaps?: boolean | undefined;
   tracing?: UpdateProjectTracing | undefined;
 };
+
+/** @internal */
+export const UpdateProjectProjectsResponseType$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateProjectProjectsResponseType
+> = z.nativeEnum(UpdateProjectProjectsResponseType);
+/** @internal */
+export const UpdateProjectProjectsResponseType$outboundSchema: z.ZodNativeEnum<
+  typeof UpdateProjectProjectsResponseType
+> = UpdateProjectProjectsResponseType$inboundSchema;
+
+/** @internal */
+export const UpdateProjectLastAliasRequest$inboundSchema: z.ZodType<
+  UpdateProjectLastAliasRequest,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  fromDeploymentId: types.nullable(types.string()),
+  toDeploymentId: types.string(),
+  fromRollingReleaseId: types.optional(types.string()),
+  jobStatus: UpdateProjectJobStatus$inboundSchema,
+  requestedAt: types.number(),
+  type: UpdateProjectProjectsResponseType$inboundSchema,
+});
+/** @internal */
+export type UpdateProjectLastAliasRequest$Outbound = {
+  fromDeploymentId: string | null;
+  toDeploymentId: string;
+  fromRollingReleaseId?: string | undefined;
+  jobStatus: string;
+  requestedAt: number;
+  type: string;
+};
+
+/** @internal */
+export const UpdateProjectLastAliasRequest$outboundSchema: z.ZodType<
+  UpdateProjectLastAliasRequest$Outbound,
+  z.ZodTypeDef,
+  UpdateProjectLastAliasRequest
+> = z.object({
+  fromDeploymentId: z.nullable(z.string()),
+  toDeploymentId: z.string(),
+  fromRollingReleaseId: z.string().optional(),
+  jobStatus: UpdateProjectJobStatus$outboundSchema,
+  requestedAt: z.number(),
+  type: UpdateProjectProjectsResponseType$outboundSchema,
+});
+
+export function updateProjectLastAliasRequestToJSON(
+  updateProjectLastAliasRequest: UpdateProjectLastAliasRequest,
+): string {
+  return JSON.stringify(
+    UpdateProjectLastAliasRequest$outboundSchema.parse(
+      updateProjectLastAliasRequest,
+    ),
+  );
+}
+export function updateProjectLastAliasRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectLastAliasRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectLastAliasRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectLastAliasRequest' from JSON`,
+  );
+}
 
 /** @internal */
 export const UpdateProjectProtectionBypass2$inboundSchema: z.ZodType<
@@ -5112,8 +5196,9 @@ export const UpdateProjectResponseBody$inboundSchema: z.ZodType<
   permissions: types.optional(UpdateProjectPermissions$inboundSchema),
   lastRollbackTarget: z.nullable(UpdateProjectLastRollbackTarget$inboundSchema)
     .optional(),
-  lastAliasRequest: z.nullable(UpdateProjectLastAliasRequest$inboundSchema)
-    .optional(),
+  lastAliasRequest: z.nullable(
+    z.lazy(() => UpdateProjectLastAliasRequest$inboundSchema),
+  ).optional(),
   protectionBypass: types.optional(
     z.record(z.union([
       z.lazy(() => UpdateProjectProtectionBypass1$inboundSchema),
@@ -5389,8 +5474,9 @@ export const UpdateProjectResponseBody$outboundSchema: z.ZodType<
   permissions: UpdateProjectPermissions$outboundSchema.optional(),
   lastRollbackTarget: z.nullable(UpdateProjectLastRollbackTarget$outboundSchema)
     .optional(),
-  lastAliasRequest: z.nullable(UpdateProjectLastAliasRequest$outboundSchema)
-    .optional(),
+  lastAliasRequest: z.nullable(
+    z.lazy(() => UpdateProjectLastAliasRequest$outboundSchema),
+  ).optional(),
   protectionBypass: z.record(
     z.union([
       z.lazy(() => UpdateProjectProtectionBypass1$outboundSchema),

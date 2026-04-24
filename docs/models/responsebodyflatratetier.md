@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyFlatRateTier } from "@vercel/sdk/models/getprojectsresponsebodyoidcproviders.js";
+import { ResponseBodyFlatRateTier } from "@vercel/sdk/models/getprojectstoprojectsresponse2.js";
 
 let value: ResponseBodyFlatRateTier = "advanced";
 ```

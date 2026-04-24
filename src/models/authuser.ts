@@ -11,6 +11,7 @@ import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export const Reason = {
+  EnterpriseUnpaidInvoice: "ENTERPRISE_UNPAID_INVOICE",
   SubscriptionCanceled: "SUBSCRIPTION_CANCELED",
   SubscriptionExpired: "SUBSCRIPTION_EXPIRED",
   UnpaidInvoice: "UNPAID_INVOICE",

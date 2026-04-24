@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodySamplingRules } from "@vercel/sdk/models/getprojectsresponsebodyoidcproviders.js";
+import { ResponseBodySamplingRules } from "@vercel/sdk/models/getprojectstoprojectsresponse2.js";
 
 let value: ResponseBodySamplingRules = {
   rate: 5390.08,

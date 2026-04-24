@@ -27,6 +27,7 @@ let value: PatchTeamRequest = {
     },
     hideIpAddresses: false,
     hideIpAddressesInLogDrains: false,
+    requireVerifiedCommits: true,
     defaultExpirationSettings: {
       expiration: "1y",
       expirationProduction: "1y",

@@ -46,6 +46,8 @@ type FlagsSDKKey struct {
 	UpdatedAt   float64         `json:"updatedAt"`
 	Label       *string         `json:"label,omitempty"`
 	DeletedAt   *float64        `json:"deletedAt,omitempty"`
+	// Partially-masked representation of the SDK key value, safe to display in UIs. The value is the `vf_<type>_` prefix followed by the first 3 characters of the secret portion and a fixed 8-character `*` mask (e.g. `vf_server_abc********`).
+	PartialKeyValue string `json:"partialKeyValue"`
 	// Cleartext value of the SDK key
 	KeyValue *string `json:"keyValue,omitempty"`
 	// Cleartext value of the Edge Config token
@@ -115,6 +117,13 @@ func (o *FlagsSDKKey) GetDeletedAt() *float64 {
 		return nil
 	}
 	return o.DeletedAt
+}
+
+func (o *FlagsSDKKey) GetPartialKeyValue() string {
+	if o == nil {
+		return ""
+	}
+	return o.PartialKeyValue
 }
 
 func (o *FlagsSDKKey) GetKeyValue() *string {

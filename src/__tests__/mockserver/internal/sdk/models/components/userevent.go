@@ -6,4475 +6,8 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"mockserver/internal/sdk/optionalnullable"
 	"mockserver/internal/sdk/utils"
 )
-
-// Payload54 - The payload of the event, if requested.
-type Payload54 struct {
-	GithubLogin string `json:"githubLogin"`
-	Host        string `json:"host"`
-}
-
-func (p Payload54) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *Payload54) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"githubLogin", "host"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *Payload54) GetGithubLogin() string {
-	if o == nil {
-		return ""
-	}
-	return o.GithubLogin
-}
-
-func (o *Payload54) GetHost() string {
-	if o == nil {
-		return ""
-	}
-	return o.Host
-}
-
-// Payload53 - The payload of the event, if requested.
-type Payload53 struct {
-	GithubLogin string `json:"githubLogin"`
-}
-
-func (p Payload53) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *Payload53) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"githubLogin"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *Payload53) GetGithubLogin() string {
-	if o == nil {
-		return ""
-	}
-	return o.GithubLogin
-}
-
-type UserEventTeam4 struct {
-	ID   string `json:"id"`
-	Name string `json:"name"`
-}
-
-func (u UserEventTeam4) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(u, "", false)
-}
-
-func (u *UserEventTeam4) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"id", "name"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *UserEventTeam4) GetID() string {
-	if o == nil {
-		return ""
-	}
-	return o.ID
-}
-
-func (o *UserEventTeam4) GetName() string {
-	if o == nil {
-		return ""
-	}
-	return o.Name
-}
-
-type UserEventConfiguration5 struct {
-	ID   string  `json:"id"`
-	Name *string `json:"name,omitempty"`
-}
-
-func (u UserEventConfiguration5) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(u, "", false)
-}
-
-func (u *UserEventConfiguration5) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"id"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *UserEventConfiguration5) GetID() string {
-	if o == nil {
-		return ""
-	}
-	return o.ID
-}
-
-func (o *UserEventConfiguration5) GetName() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Name
-}
-
-// Payload52 - The payload of the event, if requested.
-type Payload52 struct {
-	Team          UserEventTeam4          `json:"team"`
-	Configuration UserEventConfiguration5 `json:"configuration"`
-	NewName       string                  `json:"newName"`
-}
-
-func (p Payload52) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *Payload52) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"team", "configuration", "newName"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *Payload52) GetTeam() UserEventTeam4 {
-	if o == nil {
-		return UserEventTeam4{}
-	}
-	return o.Team
-}
-
-func (o *Payload52) GetConfiguration() UserEventConfiguration5 {
-	if o == nil {
-		return UserEventConfiguration5{}
-	}
-	return o.Configuration
-}
-
-func (o *Payload52) GetNewName() string {
-	if o == nil {
-		return ""
-	}
-	return o.NewName
-}
-
-type UserEventTeam3 struct {
-	ID   string `json:"id"`
-	Name string `json:"name"`
-}
-
-func (u UserEventTeam3) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(u, "", false)
-}
-
-func (u *UserEventTeam3) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"id", "name"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *UserEventTeam3) GetID() string {
-	if o == nil {
-		return ""
-	}
-	return o.ID
-}
-
-func (o *UserEventTeam3) GetName() string {
-	if o == nil {
-		return ""
-	}
-	return o.Name
-}
-
-type UserEventConfiguration4 struct {
-	ID   string  `json:"id"`
-	Name *string `json:"name,omitempty"`
-}
-
-func (u UserEventConfiguration4) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(u, "", false)
-}
-
-func (u *UserEventConfiguration4) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"id"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *UserEventConfiguration4) GetID() string {
-	if o == nil {
-		return ""
-	}
-	return o.ID
-}
-
-func (o *UserEventConfiguration4) GetName() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Name
-}
-
-type Project6 struct {
-	ID   string  `json:"id"`
-	Name *string `json:"name,omitempty"`
-}
-
-func (p Project6) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *Project6) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"id"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *Project6) GetID() string {
-	if o == nil {
-		return ""
-	}
-	return o.ID
-}
-
-func (o *Project6) GetName() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Name
-}
-
-// Payload51 - The payload of the event, if requested.
-type Payload51 struct {
-	Team          UserEventTeam3          `json:"team"`
-	Configuration UserEventConfiguration4 `json:"configuration"`
-	Project       Project6                `json:"project"`
-}
-
-func (p Payload51) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *Payload51) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"team", "configuration", "project"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *Payload51) GetTeam() UserEventTeam3 {
-	if o == nil {
-		return UserEventTeam3{}
-	}
-	return o.Team
-}
-
-func (o *Payload51) GetConfiguration() UserEventConfiguration4 {
-	if o == nil {
-		return UserEventConfiguration4{}
-	}
-	return o.Configuration
-}
-
-func (o *Payload51) GetProject() Project6 {
-	if o == nil {
-		return Project6{}
-	}
-	return o.Project
-}
-
-type UserEventTeam2 struct {
-	ID   string `json:"id"`
-	Name string `json:"name"`
-}
-
-func (u UserEventTeam2) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(u, "", false)
-}
-
-func (u *UserEventTeam2) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"id", "name"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *UserEventTeam2) GetID() string {
-	if o == nil {
-		return ""
-	}
-	return o.ID
-}
-
-func (o *UserEventTeam2) GetName() string {
-	if o == nil {
-		return ""
-	}
-	return o.Name
-}
-
-type UserEventConfiguration3 struct {
-	ID   string  `json:"id"`
-	Name *string `json:"name,omitempty"`
-}
-
-func (u UserEventConfiguration3) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(u, "", false)
-}
-
-func (u *UserEventConfiguration3) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"id"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *UserEventConfiguration3) GetID() string {
-	if o == nil {
-		return ""
-	}
-	return o.ID
-}
-
-func (o *UserEventConfiguration3) GetName() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Name
-}
-
-type Project5 struct {
-	ID   string  `json:"id"`
-	Name *string `json:"name,omitempty"`
-}
-
-func (p Project5) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *Project5) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"id"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *Project5) GetID() string {
-	if o == nil {
-		return ""
-	}
-	return o.ID
-}
-
-func (o *Project5) GetName() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Name
-}
-
-// Payload50 - The payload of the event, if requested.
-type Payload50 struct {
-	Team          UserEventTeam2          `json:"team"`
-	Configuration UserEventConfiguration3 `json:"configuration"`
-	Project       Project5                `json:"project"`
-	BuildsEnabled *bool                   `json:"buildsEnabled,omitempty"`
-	Passive       *bool                   `json:"passive,omitempty"`
-}
-
-func (p Payload50) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *Payload50) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"team", "configuration", "project"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *Payload50) GetTeam() UserEventTeam2 {
-	if o == nil {
-		return UserEventTeam2{}
-	}
-	return o.Team
-}
-
-func (o *Payload50) GetConfiguration() UserEventConfiguration3 {
-	if o == nil {
-		return UserEventConfiguration3{}
-	}
-	return o.Configuration
-}
-
-func (o *Payload50) GetProject() Project5 {
-	if o == nil {
-		return Project5{}
-	}
-	return o.Project
-}
-
-func (o *Payload50) GetBuildsEnabled() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.BuildsEnabled
-}
-
-func (o *Payload50) GetPassive() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.Passive
-}
-
-type UserEventTeam1 struct {
-	ID   string `json:"id"`
-	Name string `json:"name"`
-}
-
-func (u UserEventTeam1) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(u, "", false)
-}
-
-func (u *UserEventTeam1) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"id", "name"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *UserEventTeam1) GetID() string {
-	if o == nil {
-		return ""
-	}
-	return o.ID
-}
-
-func (o *UserEventTeam1) GetName() string {
-	if o == nil {
-		return ""
-	}
-	return o.Name
-}
-
-type UserEventConfiguration2 struct {
-	ID   string  `json:"id"`
-	Name *string `json:"name,omitempty"`
-}
-
-func (u UserEventConfiguration2) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(u, "", false)
-}
-
-func (u *UserEventConfiguration2) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"id"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *UserEventConfiguration2) GetID() string {
-	if o == nil {
-		return ""
-	}
-	return o.ID
-}
-
-func (o *UserEventConfiguration2) GetName() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Name
-}
-
-type Project4 struct {
-	ID   string  `json:"id"`
-	Name *string `json:"name,omitempty"`
-}
-
-func (p Project4) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *Project4) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"id"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *Project4) GetID() string {
-	if o == nil {
-		return ""
-	}
-	return o.ID
-}
-
-func (o *Project4) GetName() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Name
-}
-
-// Payload49 - The payload of the event, if requested.
-type Payload49 struct {
-	Team          UserEventTeam1          `json:"team"`
-	Configuration UserEventConfiguration2 `json:"configuration"`
-	Project       Project4                `json:"project"`
-	BuildsEnabled *bool                   `json:"buildsEnabled,omitempty"`
-}
-
-func (p Payload49) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *Payload49) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"team", "configuration", "project"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *Payload49) GetTeam() UserEventTeam1 {
-	if o == nil {
-		return UserEventTeam1{}
-	}
-	return o.Team
-}
-
-func (o *Payload49) GetConfiguration() UserEventConfiguration2 {
-	if o == nil {
-		return UserEventConfiguration2{}
-	}
-	return o.Configuration
-}
-
-func (o *Payload49) GetProject() Project4 {
-	if o == nil {
-		return Project4{}
-	}
-	return o.Project
-}
-
-func (o *Payload49) GetBuildsEnabled() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.BuildsEnabled
-}
-
-type UserEventConfiguration1 struct {
-	ID   string `json:"id"`
-	Name string `json:"name"`
-}
-
-func (u UserEventConfiguration1) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(u, "", false)
-}
-
-func (u *UserEventConfiguration1) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"id", "name"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *UserEventConfiguration1) GetID() string {
-	if o == nil {
-		return ""
-	}
-	return o.ID
-}
-
-func (o *UserEventConfiguration1) GetName() string {
-	if o == nil {
-		return ""
-	}
-	return o.Name
-}
-
-// Payload48 - The payload of the event, if requested.
-type Payload48 struct {
-	Configuration UserEventConfiguration1 `json:"configuration"`
-}
-
-func (p Payload48) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *Payload48) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"configuration"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *Payload48) GetConfiguration() UserEventConfiguration1 {
-	if o == nil {
-		return UserEventConfiguration1{}
-	}
-	return o.Configuration
-}
-
-// Payload47 - The payload of the event, if requested.
-type Payload47 struct {
-	Cn  *string  `json:"cn,omitempty"`
-	Cns []string `json:"cns,omitempty"`
-}
-
-func (p Payload47) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *Payload47) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *Payload47) GetCn() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Cn
-}
-
-func (o *Payload47) GetCns() []string {
-	if o == nil {
-		return nil
-	}
-	return o.Cns
-}
-
-// Payload46 - The payload of the event, if requested.
-type Payload46 struct {
-	ID  string   `json:"id"`
-	Cn  *string  `json:"cn,omitempty"`
-	Cns []string `json:"cns,omitempty"`
-}
-
-func (p Payload46) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *Payload46) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"id"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *Payload46) GetID() string {
-	if o == nil {
-		return ""
-	}
-	return o.ID
-}
-
-func (o *Payload46) GetCn() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Cn
-}
-
-func (o *Payload46) GetCns() []string {
-	if o == nil {
-		return nil
-	}
-	return o.Cns
-}
-
-// Payload45 - The payload of the event, if requested.
-type Payload45 struct {
-	Src string `json:"src"`
-	Dst string `json:"dst"`
-}
-
-func (p Payload45) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *Payload45) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"src", "dst"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *Payload45) GetSrc() string {
-	if o == nil {
-		return ""
-	}
-	return o.Src
-}
-
-func (o *Payload45) GetDst() string {
-	if o == nil {
-		return ""
-	}
-	return o.Dst
-}
-
-type OldTeam2 struct {
-	Name string `json:"name"`
-}
-
-func (o OldTeam2) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(o, "", false)
-}
-
-func (o *OldTeam2) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &o, "", false, []string{"name"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *OldTeam2) GetName() string {
-	if o == nil {
-		return ""
-	}
-	return o.Name
-}
-
-type NewTeam2 struct {
-	Name string `json:"name"`
-}
-
-func (n NewTeam2) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(n, "", false)
-}
-
-func (n *NewTeam2) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &n, "", false, []string{"name"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *NewTeam2) GetName() string {
-	if o == nil {
-		return ""
-	}
-	return o.Name
-}
-
-// Payload44 - The payload of the event, if requested.
-type Payload44 struct {
-	ID      string    `json:"id"`
-	OldTeam *OldTeam2 `json:"oldTeam,omitempty"`
-	NewTeam *NewTeam2 `json:"newTeam,omitempty"`
-}
-
-func (p Payload44) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *Payload44) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"id"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *Payload44) GetID() string {
-	if o == nil {
-		return ""
-	}
-	return o.ID
-}
-
-func (o *Payload44) GetOldTeam() *OldTeam2 {
-	if o == nil {
-		return nil
-	}
-	return o.OldTeam
-}
-
-func (o *Payload44) GetNewTeam() *NewTeam2 {
-	if o == nil {
-		return nil
-	}
-	return o.NewTeam
-}
-
-// Payload43 - The payload of the event, if requested.
-type Payload43 struct {
-	Cn  *string  `json:"cn,omitempty"`
-	Cns []string `json:"cns,omitempty"`
-	ID  *string  `json:"id,omitempty"`
-}
-
-func (p Payload43) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *Payload43) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *Payload43) GetCn() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Cn
-}
-
-func (o *Payload43) GetCns() []string {
-	if o == nil {
-		return nil
-	}
-	return o.Cns
-}
-
-func (o *Payload43) GetID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.ID
-}
-
-// Payload42 - The payload of the event, if requested.
-type Payload42 struct {
-	ID     string   `json:"id"`
-	Cns    []string `json:"cns"`
-	Custom bool     `json:"custom"`
-}
-
-func (p Payload42) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *Payload42) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"id", "cns", "custom"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *Payload42) GetID() string {
-	if o == nil {
-		return ""
-	}
-	return o.ID
-}
-
-func (o *Payload42) GetCns() []string {
-	if o == nil {
-		return []string{}
-	}
-	return o.Cns
-}
-
-func (o *Payload42) GetCustom() bool {
-	if o == nil {
-		return false
-	}
-	return o.Custom
-}
-
-// Payload41 - The payload of the event, if requested.
-type Payload41 struct {
-	Cn     *string  `json:"cn,omitempty"`
-	Cns    []string `json:"cns,omitempty"`
-	Custom bool     `json:"custom"`
-	ID     *string  `json:"id,omitempty"`
-}
-
-func (p Payload41) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *Payload41) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"custom"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *Payload41) GetCn() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Cn
-}
-
-func (o *Payload41) GetCns() []string {
-	if o == nil {
-		return nil
-	}
-	return o.Cns
-}
-
-func (o *Payload41) GetCustom() bool {
-	if o == nil {
-		return false
-	}
-	return o.Custom
-}
-
-func (o *Payload41) GetID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.ID
-}
-
-type Project3 struct {
-	ID   string `json:"id"`
-	Name string `json:"name"`
-}
-
-func (p Project3) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *Project3) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"id", "name"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *Project3) GetID() string {
-	if o == nil {
-		return ""
-	}
-	return o.ID
-}
-
-func (o *Project3) GetName() string {
-	if o == nil {
-		return ""
-	}
-	return o.Name
-}
-
-// Payload40 - The payload of the event, if requested.
-type Payload40 struct {
-	Project   Project3 `json:"project"`
-	VersionID string   `json:"versionId"`
-}
-
-func (p Payload40) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *Payload40) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"project", "versionId"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *Payload40) GetProject() Project3 {
-	if o == nil {
-		return Project3{}
-	}
-	return o.Project
-}
-
-func (o *Payload40) GetVersionID() string {
-	if o == nil {
-		return ""
-	}
-	return o.VersionID
-}
-
-type Project2 struct {
-	ID   string `json:"id"`
-	Name string `json:"name"`
-}
-
-func (p Project2) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *Project2) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"id", "name"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *Project2) GetID() string {
-	if o == nil {
-		return ""
-	}
-	return o.ID
-}
-
-func (o *Project2) GetName() string {
-	if o == nil {
-		return ""
-	}
-	return o.Name
-}
-
-// Payload39 - The payload of the event, if requested.
-type Payload39 struct {
-	Project                Project2 `json:"project"`
-	BulkRedirectsLimit     float64  `json:"bulkRedirectsLimit"`
-	PrevBulkRedirectsLimit float64  `json:"prevBulkRedirectsLimit"`
-}
-
-func (p Payload39) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *Payload39) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"project", "bulkRedirectsLimit", "prevBulkRedirectsLimit"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *Payload39) GetProject() Project2 {
-	if o == nil {
-		return Project2{}
-	}
-	return o.Project
-}
-
-func (o *Payload39) GetBulkRedirectsLimit() float64 {
-	if o == nil {
-		return 0.0
-	}
-	return o.BulkRedirectsLimit
-}
-
-func (o *Payload39) GetPrevBulkRedirectsLimit() float64 {
-	if o == nil {
-		return 0.0
-	}
-	return o.PrevBulkRedirectsLimit
-}
-
-// Payload38 - The payload of the event, if requested.
-type Payload38 struct {
-	SubscriptionID *string  `json:"subscriptionId,omitempty"`
-	ProductAliases []string `json:"productAliases"`
-}
-
-func (p Payload38) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *Payload38) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"productAliases"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *Payload38) GetSubscriptionID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.SubscriptionID
-}
-
-func (o *Payload38) GetProductAliases() []string {
-	if o == nil {
-		return []string{}
-	}
-	return o.ProductAliases
-}
-
-type ActionMutate string
-
-const (
-	ActionMutateMutate ActionMutate = "mutate"
-)
-
-func (e ActionMutate) ToPointer() *ActionMutate {
-	return &e
-}
-func (e *ActionMutate) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "mutate":
-		*e = ActionMutate(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for ActionMutate: %v", v)
-	}
-}
-
-// PayloadMutate - The payload of the event, if requested.
-type PayloadMutate struct {
-	SubscriptionID *string        `json:"subscriptionId,omitempty"`
-	Action         ActionMutate   `json:"action"`
-	Data           map[string]any `json:"data"`
-}
-
-func (p PayloadMutate) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *PayloadMutate) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"action", "data"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *PayloadMutate) GetSubscriptionID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.SubscriptionID
-}
-
-func (o *PayloadMutate) GetAction() ActionMutate {
-	if o == nil {
-		return ActionMutate("")
-	}
-	return o.Action
-}
-
-func (o *PayloadMutate) GetData() map[string]any {
-	if o == nil {
-		return map[string]any{}
-	}
-	return o.Data
-}
-
-type ActionResumePlan string
-
-const (
-	ActionResumePlanResumePlan ActionResumePlan = "resume_plan"
-)
-
-func (e ActionResumePlan) ToPointer() *ActionResumePlan {
-	return &e
-}
-func (e *ActionResumePlan) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "resume_plan":
-		*e = ActionResumePlan(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for ActionResumePlan: %v", v)
-	}
-}
-
-type DataPlanSlug string
-
-const (
-	DataPlanSlugV0Teams    DataPlanSlug = "v0_teams"
-	DataPlanSlugV0Business DataPlanSlug = "v0_business"
-)
-
-func (e DataPlanSlug) ToPointer() *DataPlanSlug {
-	return &e
-}
-func (e *DataPlanSlug) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "v0_teams":
-		fallthrough
-	case "v0_business":
-		*e = DataPlanSlug(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for DataPlanSlug: %v", v)
-	}
-}
-
-type UserEventData struct {
-	PlanSlug DataPlanSlug `json:"planSlug"`
-}
-
-func (u UserEventData) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(u, "", false)
-}
-
-func (u *UserEventData) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"planSlug"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *UserEventData) GetPlanSlug() DataPlanSlug {
-	if o == nil {
-		return DataPlanSlug("")
-	}
-	return o.PlanSlug
-}
-
-// PayloadResumePlan - The payload of the event, if requested.
-type PayloadResumePlan struct {
-	SubscriptionID *string          `json:"subscriptionId,omitempty"`
-	Action         ActionResumePlan `json:"action"`
-	Data           UserEventData    `json:"data"`
-}
-
-func (p PayloadResumePlan) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *PayloadResumePlan) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"action", "data"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *PayloadResumePlan) GetSubscriptionID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.SubscriptionID
-}
-
-func (o *PayloadResumePlan) GetAction() ActionResumePlan {
-	if o == nil {
-		return ActionResumePlan("")
-	}
-	return o.Action
-}
-
-func (o *PayloadResumePlan) GetData() UserEventData {
-	if o == nil {
-		return UserEventData{}
-	}
-	return o.Data
-}
-
-type ActionCancelPlan string
-
-const (
-	ActionCancelPlanCancelPlan ActionCancelPlan = "cancel_plan"
-)
-
-func (e ActionCancelPlan) ToPointer() *ActionCancelPlan {
-	return &e
-}
-func (e *ActionCancelPlan) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "cancel_plan":
-		*e = ActionCancelPlan(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for ActionCancelPlan: %v", v)
-	}
-}
-
-type PlanSlugNonPayment string
-
-const (
-	PlanSlugNonPaymentV0Teams    PlanSlugNonPayment = "v0_teams"
-	PlanSlugNonPaymentV0Business PlanSlugNonPayment = "v0_business"
-)
-
-func (e PlanSlugNonPayment) ToPointer() *PlanSlugNonPayment {
-	return &e
-}
-func (e *PlanSlugNonPayment) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "v0_teams":
-		fallthrough
-	case "v0_business":
-		*e = PlanSlugNonPayment(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for PlanSlugNonPayment: %v", v)
-	}
-}
-
-type ReasonNonPayment string
-
-const (
-	ReasonNonPaymentNonPayment ReasonNonPayment = "non-payment"
-)
-
-func (e ReasonNonPayment) ToPointer() *ReasonNonPayment {
-	return &e
-}
-func (e *ReasonNonPayment) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "non-payment":
-		*e = ReasonNonPayment(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for ReasonNonPayment: %v", v)
-	}
-}
-
-type DataNonPayment struct {
-	PlanSlug PlanSlugNonPayment `json:"planSlug"`
-	Reason   *ReasonNonPayment  `json:"reason,omitempty"`
-}
-
-func (d DataNonPayment) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(d, "", false)
-}
-
-func (d *DataNonPayment) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"planSlug"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *DataNonPayment) GetPlanSlug() PlanSlugNonPayment {
-	if o == nil {
-		return PlanSlugNonPayment("")
-	}
-	return o.PlanSlug
-}
-
-func (o *DataNonPayment) GetReason() *ReasonNonPayment {
-	if o == nil {
-		return nil
-	}
-	return o.Reason
-}
-
-// PayloadCancelPlan - The payload of the event, if requested.
-type PayloadCancelPlan struct {
-	SubscriptionID *string          `json:"subscriptionId,omitempty"`
-	Action         ActionCancelPlan `json:"action"`
-	Data           DataNonPayment   `json:"data"`
-}
-
-func (p PayloadCancelPlan) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *PayloadCancelPlan) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"action", "data"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *PayloadCancelPlan) GetSubscriptionID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.SubscriptionID
-}
-
-func (o *PayloadCancelPlan) GetAction() ActionCancelPlan {
-	if o == nil {
-		return ActionCancelPlan("")
-	}
-	return o.Action
-}
-
-func (o *PayloadCancelPlan) GetData() DataNonPayment {
-	if o == nil {
-		return DataNonPayment{}
-	}
-	return o.Data
-}
-
-// Payload37 - The payload of the event, if requested.
-type Payload37 struct {
-	SubscriptionID *string `json:"subscriptionId,omitempty"`
-	PlanSlug       string  `json:"planSlug"`
-}
-
-func (p Payload37) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *Payload37) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"planSlug"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *Payload37) GetSubscriptionID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.SubscriptionID
-}
-
-func (o *Payload37) GetPlanSlug() string {
-	if o == nil {
-		return ""
-	}
-	return o.PlanSlug
-}
-
-// Payload36 - The payload of the event, if requested.
-type Payload36 struct {
-	PaymentMethodID string  `json:"paymentMethodId"`
-	Brand           *string `json:"brand,omitempty"`
-	Last4           *string `json:"last4,omitempty"`
-}
-
-func (p Payload36) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *Payload36) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"paymentMethodId"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *Payload36) GetPaymentMethodID() string {
-	if o == nil {
-		return ""
-	}
-	return o.PaymentMethodID
-}
-
-func (o *Payload36) GetBrand() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Brand
-}
-
-func (o *Payload36) GetLast4() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Last4
-}
-
-type SettlementMethod string
-
-const (
-	SettlementMethodRefundedPaid SettlementMethod = "refunded-paid"
-	SettlementMethodCreditedPaid SettlementMethod = "credited-paid"
-)
-
-func (e SettlementMethod) ToPointer() *SettlementMethod {
-	return &e
-}
-func (e *SettlementMethod) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "refunded-paid":
-		fallthrough
-	case "credited-paid":
-		*e = SettlementMethod(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for SettlementMethod: %v", v)
-	}
-}
-
-// Payload35 - The payload of the event, if requested.
-type Payload35 struct {
-	InvoiceID        string           `json:"invoiceId"`
-	NewInvoiceID     string           `json:"newInvoiceId"`
-	SettlementMethod SettlementMethod `json:"settlementMethod"`
-	Amount           float64          `json:"amount"`
-}
-
-func (p Payload35) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *Payload35) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"invoiceId", "newInvoiceId", "settlementMethod", "amount"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *Payload35) GetInvoiceID() string {
-	if o == nil {
-		return ""
-	}
-	return o.InvoiceID
-}
-
-func (o *Payload35) GetNewInvoiceID() string {
-	if o == nil {
-		return ""
-	}
-	return o.NewInvoiceID
-}
-
-func (o *Payload35) GetSettlementMethod() SettlementMethod {
-	if o == nil {
-		return SettlementMethod("")
-	}
-	return o.SettlementMethod
-}
-
-func (o *Payload35) GetAmount() float64 {
-	if o == nil {
-		return 0.0
-	}
-	return o.Amount
-}
-
-// Payload34 - The payload of the event, if requested.
-type Payload34 struct {
-	InvoiceID     string  `json:"invoiceId"`
-	Amount        float64 `json:"amount"`
-	RefundReason  string  `json:"refundReason"`
-	LineItemCount float64 `json:"lineItemCount"`
-}
-
-func (p Payload34) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *Payload34) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"invoiceId", "amount", "refundReason", "lineItemCount"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *Payload34) GetInvoiceID() string {
-	if o == nil {
-		return ""
-	}
-	return o.InvoiceID
-}
-
-func (o *Payload34) GetAmount() float64 {
-	if o == nil {
-		return 0.0
-	}
-	return o.Amount
-}
-
-func (o *Payload34) GetRefundReason() string {
-	if o == nil {
-		return ""
-	}
-	return o.RefundReason
-}
-
-func (o *Payload34) GetLineItemCount() float64 {
-	if o == nil {
-		return 0.0
-	}
-	return o.LineItemCount
-}
-
-// Payload33 - The payload of the event, if requested.
-type Payload33 struct {
-	Avatar *string `json:"avatar,omitempty"`
-}
-
-func (p Payload33) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *Payload33) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *Payload33) GetAvatar() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Avatar
-}
-
-// Payload32 - The payload of the event, if requested.
-type Payload32 struct {
-	ProjectName          string `json:"projectName"`
-	AutoExposeSystemEnvs bool   `json:"autoExposeSystemEnvs"`
-}
-
-func (p Payload32) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *Payload32) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"projectName", "autoExposeSystemEnvs"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *Payload32) GetProjectName() string {
-	if o == nil {
-		return ""
-	}
-	return o.ProjectName
-}
-
-func (o *Payload32) GetAutoExposeSystemEnvs() bool {
-	if o == nil {
-		return false
-	}
-	return o.AutoExposeSystemEnvs
-}
-
-// Payload31 - The payload of the event, if requested.
-type Payload31 struct {
-	ProjectID                 string                                     `json:"projectId"`
-	PrevAttackModeEnabled     *bool                                      `json:"prevAttackModeEnabled,omitempty"`
-	PrevAttackModeActiveUntil optionalnullable.OptionalNullable[float64] `json:"prevAttackModeActiveUntil,omitempty"`
-	AttackModeEnabled         bool                                       `json:"attackModeEnabled"`
-	AttackModeActiveUntil     optionalnullable.OptionalNullable[float64] `json:"attackModeActiveUntil,omitempty"`
-}
-
-func (p Payload31) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *Payload31) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"projectId", "attackModeEnabled"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *Payload31) GetProjectID() string {
-	if o == nil {
-		return ""
-	}
-	return o.ProjectID
-}
-
-func (o *Payload31) GetPrevAttackModeEnabled() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.PrevAttackModeEnabled
-}
-
-func (o *Payload31) GetPrevAttackModeActiveUntil() optionalnullable.OptionalNullable[float64] {
-	if o == nil {
-		return nil
-	}
-	return o.PrevAttackModeActiveUntil
-}
-
-func (o *Payload31) GetAttackModeEnabled() bool {
-	if o == nil {
-		return false
-	}
-	return o.AttackModeEnabled
-}
-
-func (o *Payload31) GetAttackModeActiveUntil() optionalnullable.OptionalNullable[float64] {
-	if o == nil {
-		return nil
-	}
-	return o.AttackModeActiveUntil
-}
-
-// App1 - Note that not all historical events have this field.
-type App1 struct {
-	// The App's ID.
-	ID string `json:"id"`
-	// The App's name at the moment this even was published (it may have changed since then).
-	Name string `json:"name"`
-}
-
-func (a App1) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(a, "", false)
-}
-
-func (a *App1) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"id", "name"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *App1) GetID() string {
-	if o == nil {
-		return ""
-	}
-	return o.ID
-}
-
-func (o *App1) GetName() string {
-	if o == nil {
-		return ""
-	}
-	return o.Name
-}
-
-// Payload30 - The payload of the event, if requested.
-type Payload30 struct {
-	// The App's name at the moment this even was published (it may have changed since then).
-	AppName string `json:"appName"`
-	// The App's ID. Note that not all historical events have this field.
-	AppID *string `json:"appId,omitempty"`
-	// Note that not all historical events have this field.
-	App *App1 `json:"app,omitempty"`
-	// UNIX timestamp in seconds. Tokens issued before this timestamp will be revoked. Note that not all historical events have this field.
-	IssuedBefore *float64 `json:"issuedBefore,omitempty"`
-}
-
-func (p Payload30) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *Payload30) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"appName"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *Payload30) GetAppName() string {
-	if o == nil {
-		return ""
-	}
-	return o.AppName
-}
-
-func (o *Payload30) GetAppID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.AppID
-}
-
-func (o *Payload30) GetApp() *App1 {
-	if o == nil {
-		return nil
-	}
-	return o.App
-}
-
-func (o *Payload30) GetIssuedBefore() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.IssuedBefore
-}
-
-// Payload29 - The payload of the event, if requested.
-type Payload29 struct {
-	AppName             string  `json:"appName"`
-	AppID               *string `json:"appId,omitempty"`
-	SecretLastFourChars *string `json:"secretLastFourChars,omitempty"`
-}
-
-func (p Payload29) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *Payload29) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"appName"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *Payload29) GetAppName() string {
-	if o == nil {
-		return ""
-	}
-	return o.AppName
-}
-
-func (o *Payload29) GetAppID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.AppID
-}
-
-func (o *Payload29) GetSecretLastFourChars() *string {
-	if o == nil {
-		return nil
-	}
-	return o.SecretLastFourChars
-}
-
-type ResourcesType string
-
-const (
-	ResourcesTypeList ResourcesType = "list"
-)
-
-func (e ResourcesType) ToPointer() *ResourcesType {
-	return &e
-}
-func (e *ResourcesType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "list":
-		*e = ResourcesType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for ResourcesType: %v", v)
-	}
-}
-
-type TypeString string
-
-const (
-	TypeStringString TypeString = "string"
-)
-
-func (e TypeString) ToPointer() *TypeString {
-	return &e
-}
-func (e *TypeString) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "string":
-		*e = TypeString(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for TypeString: %v", v)
-	}
-}
-
-type Items struct {
-	Type TypeString `json:"type"`
-}
-
-func (i Items) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(i, "", false)
-}
-
-func (i *Items) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &i, "", false, []string{"type"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *Items) GetType() TypeString {
-	if o == nil {
-		return TypeString("")
-	}
-	return o.Type
-}
-
-type ResourcesProjectIds struct {
-	Type     ResourcesType `json:"type"`
-	required bool          `const:"true" json:"required"`
-	Items    Items         `json:"items"`
-}
-
-func (r ResourcesProjectIds) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(r, "", false)
-}
-
-func (r *ResourcesProjectIds) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"type", "required", "items"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *ResourcesProjectIds) GetType() ResourcesType {
-	if o == nil {
-		return ResourcesType("")
-	}
-	return o.Type
-}
-
-func (o *ResourcesProjectIds) GetRequired() bool {
-	return true
-}
-
-func (o *ResourcesProjectIds) GetItems() Items {
-	if o == nil {
-		return Items{}
-	}
-	return o.Items
-}
-
-type Resources struct {
-	ProjectIds ResourcesProjectIds `json:"projectIds"`
-}
-
-func (r Resources) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(r, "", false)
-}
-
-func (r *Resources) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"projectIds"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *Resources) GetProjectIds() ResourcesProjectIds {
-	if o == nil {
-		return ResourcesProjectIds{}
-	}
-	return o.ProjectIds
-}
-
-type Permission2 string
-
-const (
-	Permission2ReadDomain                           Permission2 = "read:domain"
-	Permission2ReadWriteDomain                      Permission2 = "read-write:domain"
-	Permission2ReadTeam                             Permission2 = "read:team"
-	Permission2ReadBilling                          Permission2 = "read:billing"
-	Permission2ReadWriteBilling                     Permission2 = "read-write:billing"
-	Permission2ReadWriteAiGatewayAPIKey             Permission2 = "read-write:ai-gateway-api-key"
-	Permission2UseAiGateway                         Permission2 = "use:ai-gateway"
-	Permission2ReadWriteProjectEnvVars              Permission2 = "read-write:project-env-vars"
-	Permission2ReadWriteDrains                      Permission2 = "read-write:drains"
-	Permission2ReadWriteEdgeConfig                  Permission2 = "read-write:edge-config"
-	Permission2ReadMonitoring                       Permission2 = "read:monitoring"
-	Permission2ReadAccessGroup                      Permission2 = "read:access-group"
-	Permission2ReadIntegrationConfiguration         Permission2 = "read:integration-configuration"
-	Permission2ReadWriteIntegrationConfiguration    Permission2 = "read-write:integration-configuration"
-	Permission2ReadWriteIntegrationResource         Permission2 = "read-write:integration-resource"
-	Permission2ReadWriteBlob                        Permission2 = "read-write:blob"
-	Permission2ReadEvent                            Permission2 = "read:event"
-	Permission2ReadWriteRemoteCache                 Permission2 = "read-write:remote-cache"
-	Permission2ReadProject                          Permission2 = "read:project"
-	Permission2ReadWriteProject                     Permission2 = "read-write:project"
-	Permission2ReadDeployment                       Permission2 = "read:deployment"
-	Permission2ReadWriteDeployment                  Permission2 = "read-write:deployment"
-	Permission2ReadWriteEdgeCache                   Permission2 = "read-write:edge-cache"
-	Permission2ReadWriteProjectProtectionBypass     Permission2 = "read-write:project-protection-bypass"
-	Permission2ReadProjectEnvVarsNonProduction      Permission2 = "read:project-env-vars-non-production"
-	Permission2ReadWriteProjectEnvVarsNonProduction Permission2 = "read-write:project-env-vars-non-production"
-	Permission2ReadProjectEnvVarsProduction         Permission2 = "read:project-env-vars-production"
-	Permission2ReadWriteProjectEnvVarsProduction    Permission2 = "read-write:project-env-vars-production"
-	Permission2ReadWriteProjectFlagsNonProduction   Permission2 = "read-write:project-flags-non-production"
-	Permission2ReadWriteProjectFlagsProduction      Permission2 = "read-write:project-flags-production"
-	Permission2ReadWriteDomainRegistrar             Permission2 = "read-write:domain-registrar"
-	Permission2ReadSandbox                          Permission2 = "read:sandbox"
-	Permission2ReadWriteSandbox                     Permission2 = "read-write:sandbox"
-)
-
-func (e Permission2) ToPointer() *Permission2 {
-	return &e
-}
-func (e *Permission2) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "read:domain":
-		fallthrough
-	case "read-write:domain":
-		fallthrough
-	case "read:team":
-		fallthrough
-	case "read:billing":
-		fallthrough
-	case "read-write:billing":
-		fallthrough
-	case "read-write:ai-gateway-api-key":
-		fallthrough
-	case "use:ai-gateway":
-		fallthrough
-	case "read-write:project-env-vars":
-		fallthrough
-	case "read-write:drains":
-		fallthrough
-	case "read-write:edge-config":
-		fallthrough
-	case "read:monitoring":
-		fallthrough
-	case "read:access-group":
-		fallthrough
-	case "read:integration-configuration":
-		fallthrough
-	case "read-write:integration-configuration":
-		fallthrough
-	case "read-write:integration-resource":
-		fallthrough
-	case "read-write:blob":
-		fallthrough
-	case "read:event":
-		fallthrough
-	case "read-write:remote-cache":
-		fallthrough
-	case "read:project":
-		fallthrough
-	case "read-write:project":
-		fallthrough
-	case "read:deployment":
-		fallthrough
-	case "read-write:deployment":
-		fallthrough
-	case "read-write:edge-cache":
-		fallthrough
-	case "read-write:project-protection-bypass":
-		fallthrough
-	case "read:project-env-vars-non-production":
-		fallthrough
-	case "read-write:project-env-vars-non-production":
-		fallthrough
-	case "read:project-env-vars-production":
-		fallthrough
-	case "read-write:project-env-vars-production":
-		fallthrough
-	case "read-write:project-flags-non-production":
-		fallthrough
-	case "read-write:project-flags-production":
-		fallthrough
-	case "read-write:domain-registrar":
-		fallthrough
-	case "read:sandbox":
-		fallthrough
-	case "read-write:sandbox":
-		*e = Permission2(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for Permission2: %v", v)
-	}
-}
-
-// Payload28 - The payload of the event, if requested.
-type Payload28 struct {
-	AppName     string        `json:"appName"`
-	AppID       *string       `json:"appId,omitempty"`
-	Resources   *Resources    `json:"resources,omitempty"`
-	Permissions []Permission2 `json:"permissions,omitempty"`
-}
-
-func (p Payload28) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *Payload28) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"appName"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *Payload28) GetAppName() string {
-	if o == nil {
-		return ""
-	}
-	return o.AppName
-}
-
-func (o *Payload28) GetAppID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.AppID
-}
-
-func (o *Payload28) GetResources() *Resources {
-	if o == nil {
-		return nil
-	}
-	return o.Resources
-}
-
-func (o *Payload28) GetPermissions() []Permission2 {
-	if o == nil {
-		return nil
-	}
-	return o.Permissions
-}
-
-type BeforeType string
-
-const (
-	BeforeTypeList BeforeType = "list"
-)
-
-func (e BeforeType) ToPointer() *BeforeType {
-	return &e
-}
-func (e *BeforeType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "list":
-		*e = BeforeType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for BeforeType: %v", v)
-	}
-}
-
-type BeforeTypeString string
-
-const (
-	BeforeTypeStringString BeforeTypeString = "string"
-)
-
-func (e BeforeTypeString) ToPointer() *BeforeTypeString {
-	return &e
-}
-func (e *BeforeTypeString) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "string":
-		*e = BeforeTypeString(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for BeforeTypeString: %v", v)
-	}
-}
-
-type BeforeItems struct {
-	Type BeforeTypeString `json:"type"`
-}
-
-func (b BeforeItems) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(b, "", false)
-}
-
-func (b *BeforeItems) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &b, "", false, []string{"type"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *BeforeItems) GetType() BeforeTypeString {
-	if o == nil {
-		return BeforeTypeString("")
-	}
-	return o.Type
-}
-
-type BeforeProjectIds struct {
-	Type     BeforeType  `json:"type"`
-	required bool        `const:"true" json:"required"`
-	Items    BeforeItems `json:"items"`
-}
-
-func (b BeforeProjectIds) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(b, "", false)
-}
-
-func (b *BeforeProjectIds) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &b, "", false, []string{"type", "required", "items"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *BeforeProjectIds) GetType() BeforeType {
-	if o == nil {
-		return BeforeType("")
-	}
-	return o.Type
-}
-
-func (o *BeforeProjectIds) GetRequired() bool {
-	return true
-}
-
-func (o *BeforeProjectIds) GetItems() BeforeItems {
-	if o == nil {
-		return BeforeItems{}
-	}
-	return o.Items
-}
-
-type BeforeResources struct {
-	ProjectIds BeforeProjectIds `json:"projectIds"`
-}
-
-func (b BeforeResources) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(b, "", false)
-}
-
-func (b *BeforeResources) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &b, "", false, []string{"projectIds"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *BeforeResources) GetProjectIds() BeforeProjectIds {
-	if o == nil {
-		return BeforeProjectIds{}
-	}
-	return o.ProjectIds
-}
-
-type BeforePermission string
-
-const (
-	BeforePermissionReadDomain                           BeforePermission = "read:domain"
-	BeforePermissionReadWriteDomain                      BeforePermission = "read-write:domain"
-	BeforePermissionReadTeam                             BeforePermission = "read:team"
-	BeforePermissionReadBilling                          BeforePermission = "read:billing"
-	BeforePermissionReadWriteBilling                     BeforePermission = "read-write:billing"
-	BeforePermissionReadWriteAiGatewayAPIKey             BeforePermission = "read-write:ai-gateway-api-key"
-	BeforePermissionUseAiGateway                         BeforePermission = "use:ai-gateway"
-	BeforePermissionReadWriteProjectEnvVars              BeforePermission = "read-write:project-env-vars"
-	BeforePermissionReadWriteDrains                      BeforePermission = "read-write:drains"
-	BeforePermissionReadWriteEdgeConfig                  BeforePermission = "read-write:edge-config"
-	BeforePermissionReadMonitoring                       BeforePermission = "read:monitoring"
-	BeforePermissionReadAccessGroup                      BeforePermission = "read:access-group"
-	BeforePermissionReadIntegrationConfiguration         BeforePermission = "read:integration-configuration"
-	BeforePermissionReadWriteIntegrationConfiguration    BeforePermission = "read-write:integration-configuration"
-	BeforePermissionReadWriteIntegrationResource         BeforePermission = "read-write:integration-resource"
-	BeforePermissionReadWriteBlob                        BeforePermission = "read-write:blob"
-	BeforePermissionReadEvent                            BeforePermission = "read:event"
-	BeforePermissionReadWriteRemoteCache                 BeforePermission = "read-write:remote-cache"
-	BeforePermissionReadProject                          BeforePermission = "read:project"
-	BeforePermissionReadWriteProject                     BeforePermission = "read-write:project"
-	BeforePermissionReadDeployment                       BeforePermission = "read:deployment"
-	BeforePermissionReadWriteDeployment                  BeforePermission = "read-write:deployment"
-	BeforePermissionReadWriteEdgeCache                   BeforePermission = "read-write:edge-cache"
-	BeforePermissionReadWriteProjectProtectionBypass     BeforePermission = "read-write:project-protection-bypass"
-	BeforePermissionReadProjectEnvVarsNonProduction      BeforePermission = "read:project-env-vars-non-production"
-	BeforePermissionReadWriteProjectEnvVarsNonProduction BeforePermission = "read-write:project-env-vars-non-production"
-	BeforePermissionReadProjectEnvVarsProduction         BeforePermission = "read:project-env-vars-production"
-	BeforePermissionReadWriteProjectEnvVarsProduction    BeforePermission = "read-write:project-env-vars-production"
-	BeforePermissionReadWriteProjectFlagsNonProduction   BeforePermission = "read-write:project-flags-non-production"
-	BeforePermissionReadWriteProjectFlagsProduction      BeforePermission = "read-write:project-flags-production"
-	BeforePermissionReadWriteDomainRegistrar             BeforePermission = "read-write:domain-registrar"
-	BeforePermissionReadSandbox                          BeforePermission = "read:sandbox"
-	BeforePermissionReadWriteSandbox                     BeforePermission = "read-write:sandbox"
-)
-
-func (e BeforePermission) ToPointer() *BeforePermission {
-	return &e
-}
-func (e *BeforePermission) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "read:domain":
-		fallthrough
-	case "read-write:domain":
-		fallthrough
-	case "read:team":
-		fallthrough
-	case "read:billing":
-		fallthrough
-	case "read-write:billing":
-		fallthrough
-	case "read-write:ai-gateway-api-key":
-		fallthrough
-	case "use:ai-gateway":
-		fallthrough
-	case "read-write:project-env-vars":
-		fallthrough
-	case "read-write:drains":
-		fallthrough
-	case "read-write:edge-config":
-		fallthrough
-	case "read:monitoring":
-		fallthrough
-	case "read:access-group":
-		fallthrough
-	case "read:integration-configuration":
-		fallthrough
-	case "read-write:integration-configuration":
-		fallthrough
-	case "read-write:integration-resource":
-		fallthrough
-	case "read-write:blob":
-		fallthrough
-	case "read:event":
-		fallthrough
-	case "read-write:remote-cache":
-		fallthrough
-	case "read:project":
-		fallthrough
-	case "read-write:project":
-		fallthrough
-	case "read:deployment":
-		fallthrough
-	case "read-write:deployment":
-		fallthrough
-	case "read-write:edge-cache":
-		fallthrough
-	case "read-write:project-protection-bypass":
-		fallthrough
-	case "read:project-env-vars-non-production":
-		fallthrough
-	case "read-write:project-env-vars-non-production":
-		fallthrough
-	case "read:project-env-vars-production":
-		fallthrough
-	case "read-write:project-env-vars-production":
-		fallthrough
-	case "read-write:project-flags-non-production":
-		fallthrough
-	case "read-write:project-flags-production":
-		fallthrough
-	case "read-write:domain-registrar":
-		fallthrough
-	case "read:sandbox":
-		fallthrough
-	case "read-write:sandbox":
-		*e = BeforePermission(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for BeforePermission: %v", v)
-	}
-}
-
-type Before struct {
-	Resources   *BeforeResources   `json:"resources,omitempty"`
-	Permissions []BeforePermission `json:"permissions,omitempty"`
-}
-
-func (b Before) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(b, "", false)
-}
-
-func (b *Before) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &b, "", false, nil); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *Before) GetResources() *BeforeResources {
-	if o == nil {
-		return nil
-	}
-	return o.Resources
-}
-
-func (o *Before) GetPermissions() []BeforePermission {
-	if o == nil {
-		return nil
-	}
-	return o.Permissions
-}
-
-type AfterType string
-
-const (
-	AfterTypeList AfterType = "list"
-)
-
-func (e AfterType) ToPointer() *AfterType {
-	return &e
-}
-func (e *AfterType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "list":
-		*e = AfterType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AfterType: %v", v)
-	}
-}
-
-type AfterTypeString string
-
-const (
-	AfterTypeStringString AfterTypeString = "string"
-)
-
-func (e AfterTypeString) ToPointer() *AfterTypeString {
-	return &e
-}
-func (e *AfterTypeString) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "string":
-		*e = AfterTypeString(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AfterTypeString: %v", v)
-	}
-}
-
-type AfterItems struct {
-	Type AfterTypeString `json:"type"`
-}
-
-func (a AfterItems) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(a, "", false)
-}
-
-func (a *AfterItems) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"type"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *AfterItems) GetType() AfterTypeString {
-	if o == nil {
-		return AfterTypeString("")
-	}
-	return o.Type
-}
-
-type AfterProjectIds struct {
-	Type     AfterType  `json:"type"`
-	required bool       `const:"true" json:"required"`
-	Items    AfterItems `json:"items"`
-}
-
-func (a AfterProjectIds) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(a, "", false)
-}
-
-func (a *AfterProjectIds) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"type", "required", "items"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *AfterProjectIds) GetType() AfterType {
-	if o == nil {
-		return AfterType("")
-	}
-	return o.Type
-}
-
-func (o *AfterProjectIds) GetRequired() bool {
-	return true
-}
-
-func (o *AfterProjectIds) GetItems() AfterItems {
-	if o == nil {
-		return AfterItems{}
-	}
-	return o.Items
-}
-
-type AfterResources struct {
-	ProjectIds AfterProjectIds `json:"projectIds"`
-}
-
-func (a AfterResources) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(a, "", false)
-}
-
-func (a *AfterResources) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"projectIds"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *AfterResources) GetProjectIds() AfterProjectIds {
-	if o == nil {
-		return AfterProjectIds{}
-	}
-	return o.ProjectIds
-}
-
-type AfterPermission string
-
-const (
-	AfterPermissionReadDomain                           AfterPermission = "read:domain"
-	AfterPermissionReadWriteDomain                      AfterPermission = "read-write:domain"
-	AfterPermissionReadTeam                             AfterPermission = "read:team"
-	AfterPermissionReadBilling                          AfterPermission = "read:billing"
-	AfterPermissionReadWriteBilling                     AfterPermission = "read-write:billing"
-	AfterPermissionReadWriteAiGatewayAPIKey             AfterPermission = "read-write:ai-gateway-api-key"
-	AfterPermissionUseAiGateway                         AfterPermission = "use:ai-gateway"
-	AfterPermissionReadWriteProjectEnvVars              AfterPermission = "read-write:project-env-vars"
-	AfterPermissionReadWriteDrains                      AfterPermission = "read-write:drains"
-	AfterPermissionReadWriteEdgeConfig                  AfterPermission = "read-write:edge-config"
-	AfterPermissionReadMonitoring                       AfterPermission = "read:monitoring"
-	AfterPermissionReadAccessGroup                      AfterPermission = "read:access-group"
-	AfterPermissionReadIntegrationConfiguration         AfterPermission = "read:integration-configuration"
-	AfterPermissionReadWriteIntegrationConfiguration    AfterPermission = "read-write:integration-configuration"
-	AfterPermissionReadWriteIntegrationResource         AfterPermission = "read-write:integration-resource"
-	AfterPermissionReadWriteBlob                        AfterPermission = "read-write:blob"
-	AfterPermissionReadEvent                            AfterPermission = "read:event"
-	AfterPermissionReadWriteRemoteCache                 AfterPermission = "read-write:remote-cache"
-	AfterPermissionReadProject                          AfterPermission = "read:project"
-	AfterPermissionReadWriteProject                     AfterPermission = "read-write:project"
-	AfterPermissionReadDeployment                       AfterPermission = "read:deployment"
-	AfterPermissionReadWriteDeployment                  AfterPermission = "read-write:deployment"
-	AfterPermissionReadWriteEdgeCache                   AfterPermission = "read-write:edge-cache"
-	AfterPermissionReadWriteProjectProtectionBypass     AfterPermission = "read-write:project-protection-bypass"
-	AfterPermissionReadProjectEnvVarsNonProduction      AfterPermission = "read:project-env-vars-non-production"
-	AfterPermissionReadWriteProjectEnvVarsNonProduction AfterPermission = "read-write:project-env-vars-non-production"
-	AfterPermissionReadProjectEnvVarsProduction         AfterPermission = "read:project-env-vars-production"
-	AfterPermissionReadWriteProjectEnvVarsProduction    AfterPermission = "read-write:project-env-vars-production"
-	AfterPermissionReadWriteProjectFlagsNonProduction   AfterPermission = "read-write:project-flags-non-production"
-	AfterPermissionReadWriteProjectFlagsProduction      AfterPermission = "read-write:project-flags-production"
-	AfterPermissionReadWriteDomainRegistrar             AfterPermission = "read-write:domain-registrar"
-	AfterPermissionReadSandbox                          AfterPermission = "read:sandbox"
-	AfterPermissionReadWriteSandbox                     AfterPermission = "read-write:sandbox"
-)
-
-func (e AfterPermission) ToPointer() *AfterPermission {
-	return &e
-}
-func (e *AfterPermission) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "read:domain":
-		fallthrough
-	case "read-write:domain":
-		fallthrough
-	case "read:team":
-		fallthrough
-	case "read:billing":
-		fallthrough
-	case "read-write:billing":
-		fallthrough
-	case "read-write:ai-gateway-api-key":
-		fallthrough
-	case "use:ai-gateway":
-		fallthrough
-	case "read-write:project-env-vars":
-		fallthrough
-	case "read-write:drains":
-		fallthrough
-	case "read-write:edge-config":
-		fallthrough
-	case "read:monitoring":
-		fallthrough
-	case "read:access-group":
-		fallthrough
-	case "read:integration-configuration":
-		fallthrough
-	case "read-write:integration-configuration":
-		fallthrough
-	case "read-write:integration-resource":
-		fallthrough
-	case "read-write:blob":
-		fallthrough
-	case "read:event":
-		fallthrough
-	case "read-write:remote-cache":
-		fallthrough
-	case "read:project":
-		fallthrough
-	case "read-write:project":
-		fallthrough
-	case "read:deployment":
-		fallthrough
-	case "read-write:deployment":
-		fallthrough
-	case "read-write:edge-cache":
-		fallthrough
-	case "read-write:project-protection-bypass":
-		fallthrough
-	case "read:project-env-vars-non-production":
-		fallthrough
-	case "read-write:project-env-vars-non-production":
-		fallthrough
-	case "read:project-env-vars-production":
-		fallthrough
-	case "read-write:project-env-vars-production":
-		fallthrough
-	case "read-write:project-flags-non-production":
-		fallthrough
-	case "read-write:project-flags-production":
-		fallthrough
-	case "read-write:domain-registrar":
-		fallthrough
-	case "read:sandbox":
-		fallthrough
-	case "read-write:sandbox":
-		*e = AfterPermission(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AfterPermission: %v", v)
-	}
-}
-
-type After struct {
-	Resources   *AfterResources   `json:"resources,omitempty"`
-	Permissions []AfterPermission `json:"permissions,omitempty"`
-}
-
-func (a After) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(a, "", false)
-}
-
-func (a *After) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *After) GetResources() *AfterResources {
-	if o == nil {
-		return nil
-	}
-	return o.Resources
-}
-
-func (o *After) GetPermissions() []AfterPermission {
-	if o == nil {
-		return nil
-	}
-	return o.Permissions
-}
-
-// Payload27 - The payload of the event, if requested.
-type Payload27 struct {
-	AppName        string  `json:"appName"`
-	AppID          *string `json:"appId,omitempty"`
-	InstallationID *string `json:"installationId,omitempty"`
-	Before         *Before `json:"before,omitempty"`
-	After          *After  `json:"after,omitempty"`
-}
-
-func (p Payload27) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *Payload27) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"appName"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *Payload27) GetAppName() string {
-	if o == nil {
-		return ""
-	}
-	return o.AppName
-}
-
-func (o *Payload27) GetAppID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.AppID
-}
-
-func (o *Payload27) GetInstallationID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.InstallationID
-}
-
-func (o *Payload27) GetBefore() *Before {
-	if o == nil {
-		return nil
-	}
-	return o.Before
-}
-
-func (o *Payload27) GetAfter() *After {
-	if o == nil {
-		return nil
-	}
-	return o.After
-}
-
-type NextScope1 string
-
-const (
-	NextScope1Openid        NextScope1 = "openid"
-	NextScope1Email         NextScope1 = "email"
-	NextScope1Profile       NextScope1 = "profile"
-	NextScope1OfflineAccess NextScope1 = "offline_access"
-)
-
-func (e NextScope1) ToPointer() *NextScope1 {
-	return &e
-}
-func (e *NextScope1) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "openid":
-		fallthrough
-	case "email":
-		fallthrough
-	case "profile":
-		fallthrough
-	case "offline_access":
-		*e = NextScope1(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for NextScope1: %v", v)
-	}
-}
-
-type NextPermission string
-
-const (
-	NextPermissionWildcard                             NextPermission = "*"
-	NextPermissionReadUser                             NextPermission = "read:user"
-	NextPermissionReadDomain                           NextPermission = "read:domain"
-	NextPermissionReadWriteDomain                      NextPermission = "read-write:domain"
-	NextPermissionReadTeam                             NextPermission = "read:team"
-	NextPermissionReadBilling                          NextPermission = "read:billing"
-	NextPermissionReadWriteBilling                     NextPermission = "read-write:billing"
-	NextPermissionReadWriteAiGatewayAPIKey             NextPermission = "read-write:ai-gateway-api-key"
-	NextPermissionUseAiGateway                         NextPermission = "use:ai-gateway"
-	NextPermissionReadWriteProjectEnvVars              NextPermission = "read-write:project-env-vars"
-	NextPermissionReadWriteDrains                      NextPermission = "read-write:drains"
-	NextPermissionReadWriteEdgeConfig                  NextPermission = "read-write:edge-config"
-	NextPermissionReadMonitoring                       NextPermission = "read:monitoring"
-	NextPermissionReadAccessGroup                      NextPermission = "read:access-group"
-	NextPermissionReadIntegrationConfiguration         NextPermission = "read:integration-configuration"
-	NextPermissionReadWriteIntegrationConfiguration    NextPermission = "read-write:integration-configuration"
-	NextPermissionReadWriteIntegrationResource         NextPermission = "read-write:integration-resource"
-	NextPermissionReadWriteBlob                        NextPermission = "read-write:blob"
-	NextPermissionReadEvent                            NextPermission = "read:event"
-	NextPermissionReadWriteRemoteCache                 NextPermission = "read-write:remote-cache"
-	NextPermissionReadProject                          NextPermission = "read:project"
-	NextPermissionReadWriteProject                     NextPermission = "read-write:project"
-	NextPermissionReadDeployment                       NextPermission = "read:deployment"
-	NextPermissionReadWriteDeployment                  NextPermission = "read-write:deployment"
-	NextPermissionReadWriteEdgeCache                   NextPermission = "read-write:edge-cache"
-	NextPermissionReadWriteProjectProtectionBypass     NextPermission = "read-write:project-protection-bypass"
-	NextPermissionReadProjectEnvVarsNonProduction      NextPermission = "read:project-env-vars-non-production"
-	NextPermissionReadWriteProjectEnvVarsNonProduction NextPermission = "read-write:project-env-vars-non-production"
-	NextPermissionReadProjectEnvVarsProduction         NextPermission = "read:project-env-vars-production"
-	NextPermissionReadWriteProjectEnvVarsProduction    NextPermission = "read-write:project-env-vars-production"
-	NextPermissionReadWriteProjectFlagsNonProduction   NextPermission = "read-write:project-flags-non-production"
-	NextPermissionReadWriteProjectFlagsProduction      NextPermission = "read-write:project-flags-production"
-	NextPermissionReadWriteDomainRegistrar             NextPermission = "read-write:domain-registrar"
-	NextPermissionReadSandbox                          NextPermission = "read:sandbox"
-	NextPermissionReadWriteSandbox                     NextPermission = "read-write:sandbox"
-)
-
-func (e NextPermission) ToPointer() *NextPermission {
-	return &e
-}
-func (e *NextPermission) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "*":
-		fallthrough
-	case "read:user":
-		fallthrough
-	case "read:domain":
-		fallthrough
-	case "read-write:domain":
-		fallthrough
-	case "read:team":
-		fallthrough
-	case "read:billing":
-		fallthrough
-	case "read-write:billing":
-		fallthrough
-	case "read-write:ai-gateway-api-key":
-		fallthrough
-	case "use:ai-gateway":
-		fallthrough
-	case "read-write:project-env-vars":
-		fallthrough
-	case "read-write:drains":
-		fallthrough
-	case "read-write:edge-config":
-		fallthrough
-	case "read:monitoring":
-		fallthrough
-	case "read:access-group":
-		fallthrough
-	case "read:integration-configuration":
-		fallthrough
-	case "read-write:integration-configuration":
-		fallthrough
-	case "read-write:integration-resource":
-		fallthrough
-	case "read-write:blob":
-		fallthrough
-	case "read:event":
-		fallthrough
-	case "read-write:remote-cache":
-		fallthrough
-	case "read:project":
-		fallthrough
-	case "read-write:project":
-		fallthrough
-	case "read:deployment":
-		fallthrough
-	case "read-write:deployment":
-		fallthrough
-	case "read-write:edge-cache":
-		fallthrough
-	case "read-write:project-protection-bypass":
-		fallthrough
-	case "read:project-env-vars-non-production":
-		fallthrough
-	case "read-write:project-env-vars-non-production":
-		fallthrough
-	case "read:project-env-vars-production":
-		fallthrough
-	case "read-write:project-env-vars-production":
-		fallthrough
-	case "read-write:project-flags-non-production":
-		fallthrough
-	case "read-write:project-flags-production":
-		fallthrough
-	case "read-write:domain-registrar":
-		fallthrough
-	case "read:sandbox":
-		fallthrough
-	case "read-write:sandbox":
-		*e = NextPermission(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for NextPermission: %v", v)
-	}
-}
-
-// Payload26 - The payload of the event, if requested.
-type Payload26 struct {
-	AppName         string           `json:"appName"`
-	AppID           *string          `json:"appId,omitempty"`
-	NextScopes      []NextScope1     `json:"nextScopes"`
-	NextPermissions []NextPermission `json:"nextPermissions,omitempty"`
-}
-
-func (p Payload26) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *Payload26) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"appName", "nextScopes"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *Payload26) GetAppName() string {
-	if o == nil {
-		return ""
-	}
-	return o.AppName
-}
-
-func (o *Payload26) GetAppID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.AppID
-}
-
-func (o *Payload26) GetNextScopes() []NextScope1 {
-	if o == nil {
-		return []NextScope1{}
-	}
-	return o.NextScopes
-}
-
-func (o *Payload26) GetNextPermissions() []NextPermission {
-	if o == nil {
-		return nil
-	}
-	return o.NextPermissions
-}
-
-// Payload25 - The payload of the event, if requested.
-type Payload25 struct {
-	AppName string  `json:"appName"`
-	AppID   *string `json:"appId,omitempty"`
-}
-
-func (p Payload25) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *Payload25) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"appName"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *Payload25) GetAppName() string {
-	if o == nil {
-		return ""
-	}
-	return o.AppName
-}
-
-func (o *Payload25) GetAppID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.AppID
-}
-
-type ScopeEnum1 string
-
-const (
-	ScopeEnum1Openid        ScopeEnum1 = "openid"
-	ScopeEnum1Email         ScopeEnum1 = "email"
-	ScopeEnum1Profile       ScopeEnum1 = "profile"
-	ScopeEnum1OfflineAccess ScopeEnum1 = "offline_access"
-)
-
-func (e ScopeEnum1) ToPointer() *ScopeEnum1 {
-	return &e
-}
-func (e *ScopeEnum1) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "openid":
-		fallthrough
-	case "email":
-		fallthrough
-	case "profile":
-		fallthrough
-	case "offline_access":
-		*e = ScopeEnum1(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for ScopeEnum1: %v", v)
-	}
-}
-
-type Permission1 string
-
-const (
-	Permission1Wildcard                             Permission1 = "*"
-	Permission1ReadUser                             Permission1 = "read:user"
-	Permission1ReadDomain                           Permission1 = "read:domain"
-	Permission1ReadWriteDomain                      Permission1 = "read-write:domain"
-	Permission1ReadTeam                             Permission1 = "read:team"
-	Permission1ReadBilling                          Permission1 = "read:billing"
-	Permission1ReadWriteBilling                     Permission1 = "read-write:billing"
-	Permission1ReadWriteAiGatewayAPIKey             Permission1 = "read-write:ai-gateway-api-key"
-	Permission1UseAiGateway                         Permission1 = "use:ai-gateway"
-	Permission1ReadWriteProjectEnvVars              Permission1 = "read-write:project-env-vars"
-	Permission1ReadWriteDrains                      Permission1 = "read-write:drains"
-	Permission1ReadWriteEdgeConfig                  Permission1 = "read-write:edge-config"
-	Permission1ReadMonitoring                       Permission1 = "read:monitoring"
-	Permission1ReadAccessGroup                      Permission1 = "read:access-group"
-	Permission1ReadIntegrationConfiguration         Permission1 = "read:integration-configuration"
-	Permission1ReadWriteIntegrationConfiguration    Permission1 = "read-write:integration-configuration"
-	Permission1ReadWriteIntegrationResource         Permission1 = "read-write:integration-resource"
-	Permission1ReadWriteBlob                        Permission1 = "read-write:blob"
-	Permission1ReadEvent                            Permission1 = "read:event"
-	Permission1ReadWriteRemoteCache                 Permission1 = "read-write:remote-cache"
-	Permission1ReadProject                          Permission1 = "read:project"
-	Permission1ReadWriteProject                     Permission1 = "read-write:project"
-	Permission1ReadDeployment                       Permission1 = "read:deployment"
-	Permission1ReadWriteDeployment                  Permission1 = "read-write:deployment"
-	Permission1ReadWriteEdgeCache                   Permission1 = "read-write:edge-cache"
-	Permission1ReadWriteProjectProtectionBypass     Permission1 = "read-write:project-protection-bypass"
-	Permission1ReadProjectEnvVarsNonProduction      Permission1 = "read:project-env-vars-non-production"
-	Permission1ReadWriteProjectEnvVarsNonProduction Permission1 = "read-write:project-env-vars-non-production"
-	Permission1ReadProjectEnvVarsProduction         Permission1 = "read:project-env-vars-production"
-	Permission1ReadWriteProjectEnvVarsProduction    Permission1 = "read-write:project-env-vars-production"
-	Permission1ReadWriteProjectFlagsNonProduction   Permission1 = "read-write:project-flags-non-production"
-	Permission1ReadWriteProjectFlagsProduction      Permission1 = "read-write:project-flags-production"
-	Permission1ReadWriteDomainRegistrar             Permission1 = "read-write:domain-registrar"
-	Permission1ReadSandbox                          Permission1 = "read:sandbox"
-	Permission1ReadWriteSandbox                     Permission1 = "read-write:sandbox"
-)
-
-func (e Permission1) ToPointer() *Permission1 {
-	return &e
-}
-func (e *Permission1) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "*":
-		fallthrough
-	case "read:user":
-		fallthrough
-	case "read:domain":
-		fallthrough
-	case "read-write:domain":
-		fallthrough
-	case "read:team":
-		fallthrough
-	case "read:billing":
-		fallthrough
-	case "read-write:billing":
-		fallthrough
-	case "read-write:ai-gateway-api-key":
-		fallthrough
-	case "use:ai-gateway":
-		fallthrough
-	case "read-write:project-env-vars":
-		fallthrough
-	case "read-write:drains":
-		fallthrough
-	case "read-write:edge-config":
-		fallthrough
-	case "read:monitoring":
-		fallthrough
-	case "read:access-group":
-		fallthrough
-	case "read:integration-configuration":
-		fallthrough
-	case "read-write:integration-configuration":
-		fallthrough
-	case "read-write:integration-resource":
-		fallthrough
-	case "read-write:blob":
-		fallthrough
-	case "read:event":
-		fallthrough
-	case "read-write:remote-cache":
-		fallthrough
-	case "read:project":
-		fallthrough
-	case "read-write:project":
-		fallthrough
-	case "read:deployment":
-		fallthrough
-	case "read-write:deployment":
-		fallthrough
-	case "read-write:edge-cache":
-		fallthrough
-	case "read-write:project-protection-bypass":
-		fallthrough
-	case "read:project-env-vars-non-production":
-		fallthrough
-	case "read-write:project-env-vars-non-production":
-		fallthrough
-	case "read:project-env-vars-production":
-		fallthrough
-	case "read-write:project-env-vars-production":
-		fallthrough
-	case "read-write:project-flags-non-production":
-		fallthrough
-	case "read-write:project-flags-production":
-		fallthrough
-	case "read-write:domain-registrar":
-		fallthrough
-	case "read:sandbox":
-		fallthrough
-	case "read-write:sandbox":
-		*e = Permission1(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for Permission1: %v", v)
-	}
-}
-
-// Payload24 - The payload of the event, if requested.
-type Payload24 struct {
-	AppName     string        `json:"appName"`
-	AppID       *string       `json:"appId,omitempty"`
-	Scopes      []ScopeEnum1  `json:"scopes"`
-	Permissions []Permission1 `json:"permissions,omitempty"`
-}
-
-func (p Payload24) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *Payload24) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"appName", "scopes"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *Payload24) GetAppName() string {
-	if o == nil {
-		return ""
-	}
-	return o.AppName
-}
-
-func (o *Payload24) GetAppID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.AppID
-}
-
-func (o *Payload24) GetScopes() []ScopeEnum1 {
-	if o == nil {
-		return []ScopeEnum1{}
-	}
-	return o.Scopes
-}
-
-func (o *Payload24) GetPermissions() []Permission1 {
-	if o == nil {
-		return nil
-	}
-	return o.Permissions
-}
-
-// Payload23 - The payload of the event, if requested.
-type Payload23 struct {
-	Alias    *string `json:"alias,omitempty"`
-	AliasID  *string `json:"aliasId,omitempty"`
-	UserID   *string `json:"userId,omitempty"`
-	Username *string `json:"username,omitempty"`
-}
-
-func (p Payload23) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *Payload23) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *Payload23) GetAlias() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Alias
-}
-
-func (o *Payload23) GetAliasID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.AliasID
-}
-
-func (o *Payload23) GetUserID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.UserID
-}
-
-func (o *Payload23) GetUsername() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Username
-}
-
-// Payload22 - The payload of the event, if requested.
-type Payload22 struct {
-	Alias    *string `json:"alias,omitempty"`
-	UserID   *string `json:"userId,omitempty"`
-	Username *string `json:"username,omitempty"`
-}
-
-func (p Payload22) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *Payload22) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *Payload22) GetAlias() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Alias
-}
-
-func (o *Payload22) GetUserID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.UserID
-}
-
-func (o *Payload22) GetUsername() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Username
-}
-
-// Payload21 - The payload of the event, if requested.
-type Payload21 struct {
-	Alias         string `json:"alias"`
-	DeploymentURL string `json:"deploymentUrl"`
-}
-
-func (p Payload21) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *Payload21) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"alias", "deploymentUrl"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *Payload21) GetAlias() string {
-	if o == nil {
-		return ""
-	}
-	return o.Alias
-}
-
-func (o *Payload21) GetDeploymentURL() string {
-	if o == nil {
-		return ""
-	}
-	return o.DeploymentURL
-}
-
-type Action3 string
-
-const (
-	Action3Created Action3 = "created"
-	Action3Removed Action3 = "removed"
-)
-
-func (e Action3) ToPointer() *Action3 {
-	return &e
-}
-func (e *Action3) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "created":
-		fallthrough
-	case "removed":
-		*e = Action3(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for Action3: %v", v)
-	}
-}
-
-// Payload20 - The payload of the event, if requested.
-type Payload20 struct {
-	ProjectName string  `json:"projectName"`
-	Alias       string  `json:"alias"`
-	Action      Action3 `json:"action"`
-}
-
-func (p Payload20) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *Payload20) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"projectName", "alias", "action"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *Payload20) GetProjectName() string {
-	if o == nil {
-		return ""
-	}
-	return o.ProjectName
-}
-
-func (o *Payload20) GetAlias() string {
-	if o == nil {
-		return ""
-	}
-	return o.Alias
-}
-
-func (o *Payload20) GetAction() Action3 {
-	if o == nil {
-		return Action3("")
-	}
-	return o.Action
-}
-
-// Payload19 - The payload of the event, if requested.
-type Payload19 struct {
-	AliasID     *string `json:"aliasId,omitempty"`
-	Alias       *string `json:"alias,omitempty"`
-	ProjectName *string `json:"projectName,omitempty"`
-}
-
-func (p Payload19) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *Payload19) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *Payload19) GetAliasID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.AliasID
-}
-
-func (o *Payload19) GetAlias() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Alias
-}
-
-func (o *Payload19) GetProjectName() *string {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectName
-}
-
-// Payload18 - The payload of the event, if requested.
-type Payload18 struct {
-	Alias *string `json:"alias,omitempty"`
-	Email *string `json:"email,omitempty"`
-}
-
-func (p Payload18) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *Payload18) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *Payload18) GetAlias() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Alias
-}
-
-func (o *Payload18) GetEmail() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Email
-}
-
-// Payload17 - The payload of the event, if requested.
-type Payload17 struct {
-	Alias *string `json:"alias,omitempty"`
-}
-
-func (p Payload17) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *Payload17) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *Payload17) GetAlias() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Alias
-}
-
-// Payload16 - The payload of the event, if requested.
-type Payload16 struct {
-	Alias    *string `json:"alias,omitempty"`
-	Email    *string `json:"email,omitempty"`
-	Username *string `json:"username,omitempty"`
-}
-
-func (p Payload16) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *Payload16) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *Payload16) GetAlias() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Alias
-}
-
-func (o *Payload16) GetEmail() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Email
-}
-
-func (o *Payload16) GetUsername() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Username
-}
-
-// Payload15 - The payload of the event, if requested.
-type Payload15 struct {
-	Name         *string `json:"name,omitempty"`
-	Alias        string  `json:"alias"`
-	AliasID      string  `json:"aliasId"`
-	DeploymentID *string `json:"deploymentId"`
-}
-
-func (p Payload15) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *Payload15) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"alias", "aliasId", "deploymentId"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *Payload15) GetName() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Name
-}
-
-func (o *Payload15) GetAlias() string {
-	if o == nil {
-		return ""
-	}
-	return o.Alias
-}
-
-func (o *Payload15) GetAliasID() string {
-	if o == nil {
-		return ""
-	}
-	return o.AliasID
-}
-
-func (o *Payload15) GetDeploymentID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.DeploymentID
-}
-
-type OldTeam1 struct {
-	Name string `json:"name"`
-}
-
-func (o OldTeam1) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(o, "", false)
-}
-
-func (o *OldTeam1) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &o, "", false, []string{"name"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *OldTeam1) GetName() string {
-	if o == nil {
-		return ""
-	}
-	return o.Name
-}
-
-type NewTeam1 struct {
-	Name string `json:"name"`
-}
-
-func (n NewTeam1) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(n, "", false)
-}
-
-func (n *NewTeam1) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &n, "", false, []string{"name"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *NewTeam1) GetName() string {
-	if o == nil {
-		return ""
-	}
-	return o.Name
-}
-
-// Payload14 - The payload of the event, if requested.
-type Payload14 struct {
-	Name    *string   `json:"name,omitempty"`
-	Alias   string    `json:"alias"`
-	OldTeam *OldTeam1 `json:"oldTeam,omitempty"`
-	NewTeam *NewTeam1 `json:"newTeam,omitempty"`
-}
-
-func (p Payload14) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *Payload14) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"alias"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *Payload14) GetName() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Name
-}
-
-func (o *Payload14) GetAlias() string {
-	if o == nil {
-		return ""
-	}
-	return o.Alias
-}
-
-func (o *Payload14) GetOldTeam() *OldTeam1 {
-	if o == nil {
-		return nil
-	}
-	return o.OldTeam
-}
-
-func (o *Payload14) GetNewTeam() *NewTeam1 {
-	if o == nil {
-		return nil
-	}
-	return o.NewTeam
-}
-
-type Deployment2 struct {
-	ID   string            `json:"id"`
-	Name string            `json:"name"`
-	URL  string            `json:"url"`
-	Meta map[string]string `json:"meta"`
-}
-
-func (d Deployment2) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(d, "", false)
-}
-
-func (d *Deployment2) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"id", "name", "url", "meta"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *Deployment2) GetID() string {
-	if o == nil {
-		return ""
-	}
-	return o.ID
-}
-
-func (o *Deployment2) GetName() string {
-	if o == nil {
-		return ""
-	}
-	return o.Name
-}
-
-func (o *Deployment2) GetURL() string {
-	if o == nil {
-		return ""
-	}
-	return o.URL
-}
-
-func (o *Deployment2) GetMeta() map[string]string {
-	if o == nil {
-		return map[string]string{}
-	}
-	return o.Meta
-}
-
-// Payload13 - The payload of the event, if requested.
-type Payload13 struct {
-	ProjectID  string                                         `json:"projectId"`
-	AliasCount float64                                        `json:"aliasCount"`
-	Deployment optionalnullable.OptionalNullable[Deployment2] `json:"deployment,omitempty"`
-}
-
-func (p Payload13) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *Payload13) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"projectId", "aliasCount"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *Payload13) GetProjectID() string {
-	if o == nil {
-		return ""
-	}
-	return o.ProjectID
-}
-
-func (o *Payload13) GetAliasCount() float64 {
-	if o == nil {
-		return 0.0
-	}
-	return o.AliasCount
-}
-
-func (o *Payload13) GetDeployment() optionalnullable.OptionalNullable[Deployment2] {
-	if o == nil {
-		return nil
-	}
-	return o.Deployment
-}
-
-type Deployment1 struct {
-	ID   string            `json:"id"`
-	Name string            `json:"name"`
-	URL  string            `json:"url"`
-	Meta map[string]string `json:"meta"`
-}
-
-func (d Deployment1) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(d, "", false)
-}
-
-func (d *Deployment1) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"id", "name", "url", "meta"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *Deployment1) GetID() string {
-	if o == nil {
-		return ""
-	}
-	return o.ID
-}
-
-func (o *Deployment1) GetName() string {
-	if o == nil {
-		return ""
-	}
-	return o.Name
-}
-
-func (o *Deployment1) GetURL() string {
-	if o == nil {
-		return ""
-	}
-	return o.URL
-}
-
-func (o *Deployment1) GetMeta() map[string]string {
-	if o == nil {
-		return map[string]string{}
-	}
-	return o.Meta
-}
-
-// Payload12 - The payload of the event, if requested.
-type Payload12 struct {
-	Alias              *string                                        `json:"alias,omitempty"`
-	Deployment         optionalnullable.OptionalNullable[Deployment1] `json:"deployment,omitempty"`
-	RuleCount          *float64                                       `json:"ruleCount,omitempty"`
-	DeploymentURL      *string                                        `json:"deploymentUrl,omitempty"`
-	AliasID            *string                                        `json:"aliasId,omitempty"`
-	DeploymentID       optionalnullable.OptionalNullable[string]      `json:"deploymentId,omitempty"`
-	OldDeploymentID    optionalnullable.OptionalNullable[string]      `json:"oldDeploymentId,omitempty"`
-	Redirect           *string                                        `json:"redirect,omitempty"`
-	RedirectStatusCode optionalnullable.OptionalNullable[float64]     `json:"redirectStatusCode,omitempty"`
-	Target             optionalnullable.OptionalNullable[string]      `json:"target,omitempty"`
-	System             *bool                                          `json:"system,omitempty"`
-	AliasUpdatedAt     *float64                                       `json:"aliasUpdatedAt,omitempty"`
-}
-
-func (p Payload12) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *Payload12) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *Payload12) GetAlias() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Alias
-}
-
-func (o *Payload12) GetDeployment() optionalnullable.OptionalNullable[Deployment1] {
-	if o == nil {
-		return nil
-	}
-	return o.Deployment
-}
-
-func (o *Payload12) GetRuleCount() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.RuleCount
-}
-
-func (o *Payload12) GetDeploymentURL() *string {
-	if o == nil {
-		return nil
-	}
-	return o.DeploymentURL
-}
-
-func (o *Payload12) GetAliasID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.AliasID
-}
-
-func (o *Payload12) GetDeploymentID() optionalnullable.OptionalNullable[string] {
-	if o == nil {
-		return nil
-	}
-	return o.DeploymentID
-}
-
-func (o *Payload12) GetOldDeploymentID() optionalnullable.OptionalNullable[string] {
-	if o == nil {
-		return nil
-	}
-	return o.OldDeploymentID
-}
-
-func (o *Payload12) GetRedirect() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Redirect
-}
-
-func (o *Payload12) GetRedirectStatusCode() optionalnullable.OptionalNullable[float64] {
-	if o == nil {
-		return nil
-	}
-	return o.RedirectStatusCode
-}
-
-func (o *Payload12) GetTarget() optionalnullable.OptionalNullable[string] {
-	if o == nil {
-		return nil
-	}
-	return o.Target
-}
-
-func (o *Payload12) GetSystem() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.System
-}
-
-func (o *Payload12) GetAliasUpdatedAt() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.AliasUpdatedAt
-}
-
-// Payload11 - The payload of the event, if requested.
-type Payload11 struct {
-	Price    *float64 `json:"price,omitempty"`
-	Currency *string  `json:"currency,omitempty"`
-}
-
-func (p Payload11) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *Payload11) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *Payload11) GetPrice() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.Price
-}
-
-func (o *Payload11) GetCurrency() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Currency
-}
-
-type AccessGroup5 struct {
-	ID   string  `json:"id"`
-	Name *string `json:"name,omitempty"`
-}
-
-func (a AccessGroup5) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(a, "", false)
-}
-
-func (a *AccessGroup5) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"id"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *AccessGroup5) GetID() string {
-	if o == nil {
-		return ""
-	}
-	return o.ID
-}
-
-func (o *AccessGroup5) GetName() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Name
-}
-
-type PayloadUser1 struct {
-	ID       string  `json:"id"`
-	Username *string `json:"username,omitempty"`
-}
-
-func (p PayloadUser1) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *PayloadUser1) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"id"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *PayloadUser1) GetID() string {
-	if o == nil {
-		return ""
-	}
-	return o.ID
-}
-
-func (o *PayloadUser1) GetUsername() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Username
-}
-
-// Payload10 - The payload of the event, if requested.
-type Payload10 struct {
-	AccessGroup   AccessGroup5 `json:"accessGroup"`
-	User          PayloadUser1 `json:"user"`
-	DirectoryType *string      `json:"directoryType,omitempty"`
-}
-
-func (p Payload10) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *Payload10) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"accessGroup", "user"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *Payload10) GetAccessGroup() AccessGroup5 {
-	if o == nil {
-		return AccessGroup5{}
-	}
-	return o.AccessGroup
-}
-
-func (o *Payload10) GetUser() PayloadUser1 {
-	if o == nil {
-		return PayloadUser1{}
-	}
-	return o.User
-}
-
-func (o *Payload10) GetDirectoryType() *string {
-	if o == nil {
-		return nil
-	}
-	return o.DirectoryType
-}
-
-type AccessGroup4 struct {
-	ID   string `json:"id"`
-	Name string `json:"name"`
-}
-
-func (a AccessGroup4) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(a, "", false)
-}
-
-func (a *AccessGroup4) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"id", "name"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *AccessGroup4) GetID() string {
-	if o == nil {
-		return ""
-	}
-	return o.ID
-}
-
-func (o *AccessGroup4) GetName() string {
-	if o == nil {
-		return ""
-	}
-	return o.Name
-}
-
-// Payload9 - The payload of the event, if requested.
-type Payload9 struct {
-	AccessGroup             AccessGroup4 `json:"accessGroup"`
-	Name                    *string      `json:"name,omitempty"`
-	PreviousName            *string      `json:"previousName,omitempty"`
-	TeamRoles               []string     `json:"teamRoles,omitempty"`
-	PreviousTeamRoles       []string     `json:"previousTeamRoles,omitempty"`
-	TeamPermissions         []string     `json:"teamPermissions,omitempty"`
-	PreviousTeamPermissions []string     `json:"previousTeamPermissions,omitempty"`
-	EntitlementsAdded       []string     `json:"entitlementsAdded,omitempty"`
-	EntitlementsRemoved     []string     `json:"entitlementsRemoved,omitempty"`
-}
-
-func (p Payload9) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *Payload9) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"accessGroup"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *Payload9) GetAccessGroup() AccessGroup4 {
-	if o == nil {
-		return AccessGroup4{}
-	}
-	return o.AccessGroup
-}
-
-func (o *Payload9) GetName() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Name
-}
-
-func (o *Payload9) GetPreviousName() *string {
-	if o == nil {
-		return nil
-	}
-	return o.PreviousName
-}
-
-func (o *Payload9) GetTeamRoles() []string {
-	if o == nil {
-		return nil
-	}
-	return o.TeamRoles
-}
-
-func (o *Payload9) GetPreviousTeamRoles() []string {
-	if o == nil {
-		return nil
-	}
-	return o.PreviousTeamRoles
-}
-
-func (o *Payload9) GetTeamPermissions() []string {
-	if o == nil {
-		return nil
-	}
-	return o.TeamPermissions
-}
-
-func (o *Payload9) GetPreviousTeamPermissions() []string {
-	if o == nil {
-		return nil
-	}
-	return o.PreviousTeamPermissions
-}
-
-func (o *Payload9) GetEntitlementsAdded() []string {
-	if o == nil {
-		return nil
-	}
-	return o.EntitlementsAdded
-}
-
-func (o *Payload9) GetEntitlementsRemoved() []string {
-	if o == nil {
-		return nil
-	}
-	return o.EntitlementsRemoved
-}
-
-type AccessGroup3 struct {
-	ID   string `json:"id"`
-	Name string `json:"name"`
-}
-
-func (a AccessGroup3) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(a, "", false)
-}
-
-func (a *AccessGroup3) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"id", "name"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *AccessGroup3) GetID() string {
-	if o == nil {
-		return ""
-	}
-	return o.ID
-}
-
-func (o *AccessGroup3) GetName() string {
-	if o == nil {
-		return ""
-	}
-	return o.Name
-}
-
-type Project1 struct {
-	ID   string  `json:"id"`
-	Name *string `json:"name,omitempty"`
-}
-
-func (p Project1) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *Project1) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"id"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *Project1) GetID() string {
-	if o == nil {
-		return ""
-	}
-	return o.ID
-}
-
-func (o *Project1) GetName() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Name
-}
-
-type NextRole string
-
-const (
-	NextRoleAdmin            NextRole = "ADMIN"
-	NextRoleProjectDeveloper NextRole = "PROJECT_DEVELOPER"
-	NextRoleProjectViewer    NextRole = "PROJECT_VIEWER"
-	NextRoleProjectGuest     NextRole = "PROJECT_GUEST"
-)
-
-func (e NextRole) ToPointer() *NextRole {
-	return &e
-}
-func (e *NextRole) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "ADMIN":
-		fallthrough
-	case "PROJECT_DEVELOPER":
-		fallthrough
-	case "PROJECT_VIEWER":
-		fallthrough
-	case "PROJECT_GUEST":
-		*e = NextRole(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for NextRole: %v", v)
-	}
-}
-
-type PreviousRole string
-
-const (
-	PreviousRoleAdmin            PreviousRole = "ADMIN"
-	PreviousRoleProjectDeveloper PreviousRole = "PROJECT_DEVELOPER"
-	PreviousRoleProjectViewer    PreviousRole = "PROJECT_VIEWER"
-	PreviousRoleProjectGuest     PreviousRole = "PROJECT_GUEST"
-)
-
-func (e PreviousRole) ToPointer() *PreviousRole {
-	return &e
-}
-func (e *PreviousRole) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "ADMIN":
-		fallthrough
-	case "PROJECT_DEVELOPER":
-		fallthrough
-	case "PROJECT_VIEWER":
-		fallthrough
-	case "PROJECT_GUEST":
-		*e = PreviousRole(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for PreviousRole: %v", v)
-	}
-}
-
-// Payload8 - The payload of the event, if requested.
-type Payload8 struct {
-	AccessGroup  AccessGroup3                                `json:"accessGroup"`
-	Project      Project1                                    `json:"project"`
-	NextRole     optionalnullable.OptionalNullable[NextRole] `json:"next_role,omitempty"`
-	PreviousRole *PreviousRole                               `json:"previous_role,omitempty"`
-}
-
-func (p Payload8) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *Payload8) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"accessGroup", "project"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *Payload8) GetAccessGroup() AccessGroup3 {
-	if o == nil {
-		return AccessGroup3{}
-	}
-	return o.AccessGroup
-}
-
-func (o *Payload8) GetProject() Project1 {
-	if o == nil {
-		return Project1{}
-	}
-	return o.Project
-}
-
-func (o *Payload8) GetNextRole() optionalnullable.OptionalNullable[NextRole] {
-	if o == nil {
-		return nil
-	}
-	return o.NextRole
-}
-
-func (o *Payload8) GetPreviousRole() *PreviousRole {
-	if o == nil {
-		return nil
-	}
-	return o.PreviousRole
-}
-
-type AccessGroup2 struct {
-	ID   string `json:"id"`
-	Name string `json:"name"`
-}
-
-func (a AccessGroup2) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(a, "", false)
-}
-
-func (a *AccessGroup2) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"id", "name"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *AccessGroup2) GetID() string {
-	if o == nil {
-		return ""
-	}
-	return o.ID
-}
-
-func (o *AccessGroup2) GetName() string {
-	if o == nil {
-		return ""
-	}
-	return o.Name
-}
-
-// Payload7 - The payload of the event, if requested.
-type Payload7 struct {
-	Author      string       `json:"author"`
-	AccessGroup AccessGroup2 `json:"accessGroup"`
-}
-
-func (p Payload7) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *Payload7) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"author", "accessGroup"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *Payload7) GetAuthor() string {
-	if o == nil {
-		return ""
-	}
-	return o.Author
-}
-
-func (o *Payload7) GetAccessGroup() AccessGroup2 {
-	if o == nil {
-		return AccessGroup2{}
-	}
-	return o.AccessGroup
-}
-
-type AccessGroup1 struct {
-	ID   string `json:"id"`
-	Name string `json:"name"`
-}
-
-func (a AccessGroup1) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(a, "", false)
-}
-
-func (a *AccessGroup1) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"id", "name"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *AccessGroup1) GetID() string {
-	if o == nil {
-		return ""
-	}
-	return o.ID
-}
-
-func (o *AccessGroup1) GetName() string {
-	if o == nil {
-		return ""
-	}
-	return o.Name
-}
-
-// Payload6 - The payload of the event, if requested.
-type Payload6 struct {
-	AccessGroup     AccessGroup1 `json:"accessGroup"`
-	TeamRoles       []string     `json:"teamRoles,omitempty"`
-	TeamPermissions []string     `json:"teamPermissions,omitempty"`
-	Entitlements    []string     `json:"entitlements,omitempty"`
-}
-
-func (p Payload6) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *Payload6) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"accessGroup"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *Payload6) GetAccessGroup() AccessGroup1 {
-	if o == nil {
-		return AccessGroup1{}
-	}
-	return o.AccessGroup
-}
-
-func (o *Payload6) GetTeamRoles() []string {
-	if o == nil {
-		return nil
-	}
-	return o.TeamRoles
-}
-
-func (o *Payload6) GetTeamPermissions() []string {
-	if o == nil {
-		return nil
-	}
-	return o.TeamPermissions
-}
-
-func (o *Payload6) GetEntitlements() []string {
-	if o == nil {
-		return nil
-	}
-	return o.Entitlements
-}
-
-type Credential struct {
-	ID           string `json:"id"`
-	Name         string `json:"name"`
-	ProviderSlug string `json:"providerSlug"`
-}
-
-func (c Credential) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(c, "", false)
-}
-
-func (c *Credential) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"id", "name", "providerSlug"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *Credential) GetID() string {
-	if o == nil {
-		return ""
-	}
-	return o.ID
-}
-
-func (o *Credential) GetName() string {
-	if o == nil {
-		return ""
-	}
-	return o.Name
-}
-
-func (o *Credential) GetProviderSlug() string {
-	if o == nil {
-		return ""
-	}
-	return o.ProviderSlug
-}
-
-// Payload5 - The payload of the event, if requested.
-type Payload5 struct {
-	Credential Credential `json:"credential"`
-}
-
-func (p Payload5) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *Payload5) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"credential"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *Payload5) GetCredential() Credential {
-	if o == nil {
-		return Credential{}
-	}
-	return o.Credential
-}
 
 type APIKey struct {
 	ID   string `json:"id"`
@@ -4928,6 +461,8 @@ const (
 	PayloadUnionTypePayload131        PayloadUnionType = "payload_131"
 	PayloadUnionTypePayload132        PayloadUnionType = "payload_132"
 	PayloadUnionTypePayload133        PayloadUnionType = "payload_133"
+	PayloadUnionTypePayloadScript     PayloadUnionType = "payload_Script"
+	PayloadUnionTypePayloadHeader     PayloadUnionType = "payload_Header"
 	PayloadUnionTypePayload134        PayloadUnionType = "payload_134"
 	PayloadUnionTypePayload135        PayloadUnionType = "payload_135"
 	PayloadUnionTypePayload136        PayloadUnionType = "payload_136"
@@ -5091,6 +626,13 @@ const (
 	PayloadUnionTypePayload294        PayloadUnionType = "payload_294"
 	PayloadUnionTypePayload295        PayloadUnionType = "payload_295"
 	PayloadUnionTypePayload296        PayloadUnionType = "payload_296"
+	PayloadUnionTypePayload297        PayloadUnionType = "payload_297"
+	PayloadUnionTypePayload298        PayloadUnionType = "payload_298"
+	PayloadUnionTypePayload299        PayloadUnionType = "payload_299"
+	PayloadUnionTypePayload300        PayloadUnionType = "payload_300"
+	PayloadUnionTypePayload301        PayloadUnionType = "payload_301"
+	PayloadUnionTypePayload302        PayloadUnionType = "payload_302"
+	PayloadUnionTypePayload303        PayloadUnionType = "payload_303"
 )
 
 type PayloadUnion struct {
@@ -5231,6 +773,8 @@ type PayloadUnion struct {
 	Payload131        *Payload131        `queryParam:"inline"`
 	Payload132        *Payload132        `queryParam:"inline"`
 	Payload133        *Payload133        `queryParam:"inline"`
+	PayloadScript     *PayloadScript     `queryParam:"inline"`
+	PayloadHeader     *PayloadHeader     `queryParam:"inline"`
 	Payload134        *Payload134        `queryParam:"inline"`
 	Payload135        *Payload135        `queryParam:"inline"`
 	Payload136        *Payload136        `queryParam:"inline"`
@@ -5394,6 +938,13 @@ type PayloadUnion struct {
 	Payload294        *Payload294        `queryParam:"inline"`
 	Payload295        *Payload295        `queryParam:"inline"`
 	Payload296        *Payload296        `queryParam:"inline"`
+	Payload297        *Payload297        `queryParam:"inline"`
+	Payload298        *Payload298        `queryParam:"inline"`
+	Payload299        *Payload299        `queryParam:"inline"`
+	Payload300        *Payload300        `queryParam:"inline"`
+	Payload301        *Payload301        `queryParam:"inline"`
+	Payload302        *Payload302        `queryParam:"inline"`
+	Payload303        *Payload303        `queryParam:"inline"`
 
 	Type PayloadUnionType
 }
@@ -6628,6 +2179,24 @@ func CreatePayloadUnionPayload133(payload133 Payload133) PayloadUnion {
 	return PayloadUnion{
 		Payload133: &payload133,
 		Type:       typ,
+	}
+}
+
+func CreatePayloadUnionPayloadScript(payloadScript PayloadScript) PayloadUnion {
+	typ := PayloadUnionTypePayloadScript
+
+	return PayloadUnion{
+		PayloadScript: &payloadScript,
+		Type:          typ,
+	}
+}
+
+func CreatePayloadUnionPayloadHeader(payloadHeader PayloadHeader) PayloadUnion {
+	typ := PayloadUnionTypePayloadHeader
+
+	return PayloadUnion{
+		PayloadHeader: &payloadHeader,
+		Type:          typ,
 	}
 }
 
@@ -8098,12 +3667,75 @@ func CreatePayloadUnionPayload296(payload296 Payload296) PayloadUnion {
 	}
 }
 
+func CreatePayloadUnionPayload297(payload297 Payload297) PayloadUnion {
+	typ := PayloadUnionTypePayload297
+
+	return PayloadUnion{
+		Payload297: &payload297,
+		Type:       typ,
+	}
+}
+
+func CreatePayloadUnionPayload298(payload298 Payload298) PayloadUnion {
+	typ := PayloadUnionTypePayload298
+
+	return PayloadUnion{
+		Payload298: &payload298,
+		Type:       typ,
+	}
+}
+
+func CreatePayloadUnionPayload299(payload299 Payload299) PayloadUnion {
+	typ := PayloadUnionTypePayload299
+
+	return PayloadUnion{
+		Payload299: &payload299,
+		Type:       typ,
+	}
+}
+
+func CreatePayloadUnionPayload300(payload300 Payload300) PayloadUnion {
+	typ := PayloadUnionTypePayload300
+
+	return PayloadUnion{
+		Payload300: &payload300,
+		Type:       typ,
+	}
+}
+
+func CreatePayloadUnionPayload301(payload301 Payload301) PayloadUnion {
+	typ := PayloadUnionTypePayload301
+
+	return PayloadUnion{
+		Payload301: &payload301,
+		Type:       typ,
+	}
+}
+
+func CreatePayloadUnionPayload302(payload302 Payload302) PayloadUnion {
+	typ := PayloadUnionTypePayload302
+
+	return PayloadUnion{
+		Payload302: &payload302,
+		Type:       typ,
+	}
+}
+
+func CreatePayloadUnionPayload303(payload303 Payload303) PayloadUnion {
+	typ := PayloadUnionTypePayload303
+
+	return PayloadUnion{
+		Payload303: &payload303,
+		Type:       typ,
+	}
+}
+
 func (u *PayloadUnion) UnmarshalJSON(data []byte) error {
 
-	var payload182 Payload182 = Payload182{}
-	if err := utils.UnmarshalJSON(data, &payload182, "", true, nil); err == nil {
-		u.Payload182 = &payload182
-		u.Type = PayloadUnionTypePayload182
+	var payload183 Payload183 = Payload183{}
+	if err := utils.UnmarshalJSON(data, &payload183, "", true, nil); err == nil {
+		u.Payload183 = &payload183
+		u.Type = PayloadUnionTypePayload183
 		return nil
 	}
 
@@ -8128,10 +3760,10 @@ func (u *PayloadUnion) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var payload228 Payload228 = Payload228{}
-	if err := utils.UnmarshalJSON(data, &payload228, "", true, nil); err == nil {
-		u.Payload228 = &payload228
-		u.Type = PayloadUnionTypePayload228
+	var payload217 Payload217 = Payload217{}
+	if err := utils.UnmarshalJSON(data, &payload217, "", true, nil); err == nil {
+		u.Payload217 = &payload217
+		u.Type = PayloadUnionTypePayload217
 		return nil
 	}
 
@@ -8139,6 +3771,13 @@ func (u *PayloadUnion) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &payload230, "", true, nil); err == nil {
 		u.Payload230 = &payload230
 		u.Type = PayloadUnionTypePayload230
+		return nil
+	}
+
+	var payload232 Payload232 = Payload232{}
+	if err := utils.UnmarshalJSON(data, &payload232, "", true, nil); err == nil {
+		u.Payload232 = &payload232
+		u.Type = PayloadUnionTypePayload232
 		return nil
 	}
 
@@ -8212,24 +3851,24 @@ func (u *PayloadUnion) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var payload184 Payload184 = Payload184{}
-	if err := utils.UnmarshalJSON(data, &payload184, "", true, nil); err == nil {
-		u.Payload184 = &payload184
-		u.Type = PayloadUnionTypePayload184
+	var payload185 Payload185 = Payload185{}
+	if err := utils.UnmarshalJSON(data, &payload185, "", true, nil); err == nil {
+		u.Payload185 = &payload185
+		u.Type = PayloadUnionTypePayload185
 		return nil
 	}
 
-	var payload194 Payload194 = Payload194{}
-	if err := utils.UnmarshalJSON(data, &payload194, "", true, nil); err == nil {
-		u.Payload194 = &payload194
-		u.Type = PayloadUnionTypePayload194
+	var payload195 Payload195 = Payload195{}
+	if err := utils.UnmarshalJSON(data, &payload195, "", true, nil); err == nil {
+		u.Payload195 = &payload195
+		u.Type = PayloadUnionTypePayload195
 		return nil
 	}
 
-	var payload296 Payload296 = Payload296{}
-	if err := utils.UnmarshalJSON(data, &payload296, "", true, nil); err == nil {
-		u.Payload296 = &payload296
-		u.Type = PayloadUnionTypePayload296
+	var payload302 Payload302 = Payload302{}
+	if err := utils.UnmarshalJSON(data, &payload302, "", true, nil); err == nil {
+		u.Payload302 = &payload302
+		u.Type = PayloadUnionTypePayload302
 		return nil
 	}
 
@@ -8345,38 +3984,31 @@ func (u *PayloadUnion) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var payload181 Payload181 = Payload181{}
-	if err := utils.UnmarshalJSON(data, &payload181, "", true, nil); err == nil {
-		u.Payload181 = &payload181
-		u.Type = PayloadUnionTypePayload181
+	var payload182 Payload182 = Payload182{}
+	if err := utils.UnmarshalJSON(data, &payload182, "", true, nil); err == nil {
+		u.Payload182 = &payload182
+		u.Type = PayloadUnionTypePayload182
 		return nil
 	}
 
-	var payload183 Payload183 = Payload183{}
-	if err := utils.UnmarshalJSON(data, &payload183, "", true, nil); err == nil {
-		u.Payload183 = &payload183
-		u.Type = PayloadUnionTypePayload183
+	var payload184 Payload184 = Payload184{}
+	if err := utils.UnmarshalJSON(data, &payload184, "", true, nil); err == nil {
+		u.Payload184 = &payload184
+		u.Type = PayloadUnionTypePayload184
 		return nil
 	}
 
-	var payload187 Payload187 = Payload187{}
-	if err := utils.UnmarshalJSON(data, &payload187, "", true, nil); err == nil {
-		u.Payload187 = &payload187
-		u.Type = PayloadUnionTypePayload187
+	var payload188 Payload188 = Payload188{}
+	if err := utils.UnmarshalJSON(data, &payload188, "", true, nil); err == nil {
+		u.Payload188 = &payload188
+		u.Type = PayloadUnionTypePayload188
 		return nil
 	}
 
-	var payload204 Payload204 = Payload204{}
-	if err := utils.UnmarshalJSON(data, &payload204, "", true, nil); err == nil {
-		u.Payload204 = &payload204
-		u.Type = PayloadUnionTypePayload204
-		return nil
-	}
-
-	var payload210 Payload210 = Payload210{}
-	if err := utils.UnmarshalJSON(data, &payload210, "", true, nil); err == nil {
-		u.Payload210 = &payload210
-		u.Type = PayloadUnionTypePayload210
+	var payload205 Payload205 = Payload205{}
+	if err := utils.UnmarshalJSON(data, &payload205, "", true, nil); err == nil {
+		u.Payload205 = &payload205
+		u.Type = PayloadUnionTypePayload205
 		return nil
 	}
 
@@ -8394,59 +4026,80 @@ func (u *PayloadUnion) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var payload214 Payload214 = Payload214{}
-	if err := utils.UnmarshalJSON(data, &payload214, "", true, nil); err == nil {
-		u.Payload214 = &payload214
-		u.Type = PayloadUnionTypePayload214
+	var payload213 Payload213 = Payload213{}
+	if err := utils.UnmarshalJSON(data, &payload213, "", true, nil); err == nil {
+		u.Payload213 = &payload213
+		u.Type = PayloadUnionTypePayload213
 		return nil
 	}
 
-	var payload226 Payload226 = Payload226{}
-	if err := utils.UnmarshalJSON(data, &payload226, "", true, nil); err == nil {
-		u.Payload226 = &payload226
-		u.Type = PayloadUnionTypePayload226
+	var payload215 Payload215 = Payload215{}
+	if err := utils.UnmarshalJSON(data, &payload215, "", true, nil); err == nil {
+		u.Payload215 = &payload215
+		u.Type = PayloadUnionTypePayload215
 		return nil
 	}
 
-	var payload229 Payload229 = Payload229{}
-	if err := utils.UnmarshalJSON(data, &payload229, "", true, nil); err == nil {
-		u.Payload229 = &payload229
-		u.Type = PayloadUnionTypePayload229
+	var payload228 Payload228 = Payload228{}
+	if err := utils.UnmarshalJSON(data, &payload228, "", true, nil); err == nil {
+		u.Payload228 = &payload228
+		u.Type = PayloadUnionTypePayload228
 		return nil
 	}
 
-	var payload238 Payload238 = Payload238{}
-	if err := utils.UnmarshalJSON(data, &payload238, "", true, nil); err == nil {
-		u.Payload238 = &payload238
-		u.Type = PayloadUnionTypePayload238
+	var payload231 Payload231 = Payload231{}
+	if err := utils.UnmarshalJSON(data, &payload231, "", true, nil); err == nil {
+		u.Payload231 = &payload231
+		u.Type = PayloadUnionTypePayload231
 		return nil
 	}
 
-	var payload239 Payload239 = Payload239{}
-	if err := utils.UnmarshalJSON(data, &payload239, "", true, nil); err == nil {
-		u.Payload239 = &payload239
-		u.Type = PayloadUnionTypePayload239
+	var payload240 Payload240 = Payload240{}
+	if err := utils.UnmarshalJSON(data, &payload240, "", true, nil); err == nil {
+		u.Payload240 = &payload240
+		u.Type = PayloadUnionTypePayload240
 		return nil
 	}
 
-	var payload245 Payload245 = Payload245{}
-	if err := utils.UnmarshalJSON(data, &payload245, "", true, nil); err == nil {
-		u.Payload245 = &payload245
-		u.Type = PayloadUnionTypePayload245
+	var payload241 Payload241 = Payload241{}
+	if err := utils.UnmarshalJSON(data, &payload241, "", true, nil); err == nil {
+		u.Payload241 = &payload241
+		u.Type = PayloadUnionTypePayload241
 		return nil
 	}
 
-	var payload249 Payload249 = Payload249{}
-	if err := utils.UnmarshalJSON(data, &payload249, "", true, nil); err == nil {
-		u.Payload249 = &payload249
-		u.Type = PayloadUnionTypePayload249
+	var payload248 Payload248 = Payload248{}
+	if err := utils.UnmarshalJSON(data, &payload248, "", true, nil); err == nil {
+		u.Payload248 = &payload248
+		u.Type = PayloadUnionTypePayload248
 		return nil
 	}
 
-	var payload274 Payload274 = Payload274{}
-	if err := utils.UnmarshalJSON(data, &payload274, "", true, nil); err == nil {
-		u.Payload274 = &payload274
-		u.Type = PayloadUnionTypePayload274
+	var payload252 Payload252 = Payload252{}
+	if err := utils.UnmarshalJSON(data, &payload252, "", true, nil); err == nil {
+		u.Payload252 = &payload252
+		u.Type = PayloadUnionTypePayload252
+		return nil
+	}
+
+	var payload266 Payload266 = Payload266{}
+	if err := utils.UnmarshalJSON(data, &payload266, "", true, nil); err == nil {
+		u.Payload266 = &payload266
+		u.Type = PayloadUnionTypePayload266
+		return nil
+	}
+
+	var payload280 Payload280 = Payload280{}
+	if err := utils.UnmarshalJSON(data, &payload280, "", true, nil); err == nil {
+		u.Payload280 = &payload280
+		u.Type = PayloadUnionTypePayload280
+		return nil
+	}
+
+	var payload303 Payload303 = Payload303{}
+	if err := utils.UnmarshalJSON(data, &payload303, "", true, nil); err == nil {
+		u.Payload303 = &payload303
+		u.Type = PayloadUnionTypePayload303
 		return nil
 	}
 
@@ -8688,6 +4341,20 @@ func (u *PayloadUnion) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
+	var payloadScript PayloadScript = PayloadScript{}
+	if err := utils.UnmarshalJSON(data, &payloadScript, "", true, nil); err == nil {
+		u.PayloadScript = &payloadScript
+		u.Type = PayloadUnionTypePayloadScript
+		return nil
+	}
+
+	var payloadHeader PayloadHeader = PayloadHeader{}
+	if err := utils.UnmarshalJSON(data, &payloadHeader, "", true, nil); err == nil {
+		u.PayloadHeader = &payloadHeader
+		u.Type = PayloadUnionTypePayloadHeader
+		return nil
+	}
+
 	var payload139 Payload139 = Payload139{}
 	if err := utils.UnmarshalJSON(data, &payload139, "", true, nil); err == nil {
 		u.Payload139 = &payload139
@@ -8828,13 +4495,6 @@ func (u *PayloadUnion) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var payload178 Payload178 = Payload178{}
-	if err := utils.UnmarshalJSON(data, &payload178, "", true, nil); err == nil {
-		u.Payload178 = &payload178
-		u.Type = PayloadUnionTypePayload178
-		return nil
-	}
-
 	var payload179 Payload179 = Payload179{}
 	if err := utils.UnmarshalJSON(data, &payload179, "", true, nil); err == nil {
 		u.Payload179 = &payload179
@@ -8849,24 +4509,24 @@ func (u *PayloadUnion) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var payload185 Payload185 = Payload185{}
-	if err := utils.UnmarshalJSON(data, &payload185, "", true, nil); err == nil {
-		u.Payload185 = &payload185
-		u.Type = PayloadUnionTypePayload185
+	var payload181 Payload181 = Payload181{}
+	if err := utils.UnmarshalJSON(data, &payload181, "", true, nil); err == nil {
+		u.Payload181 = &payload181
+		u.Type = PayloadUnionTypePayload181
 		return nil
 	}
 
-	var payload192 Payload192 = Payload192{}
-	if err := utils.UnmarshalJSON(data, &payload192, "", true, nil); err == nil {
-		u.Payload192 = &payload192
-		u.Type = PayloadUnionTypePayload192
+	var payload186 Payload186 = Payload186{}
+	if err := utils.UnmarshalJSON(data, &payload186, "", true, nil); err == nil {
+		u.Payload186 = &payload186
+		u.Type = PayloadUnionTypePayload186
 		return nil
 	}
 
-	var payload195 Payload195 = Payload195{}
-	if err := utils.UnmarshalJSON(data, &payload195, "", true, nil); err == nil {
-		u.Payload195 = &payload195
-		u.Type = PayloadUnionTypePayload195
+	var payload193 Payload193 = Payload193{}
+	if err := utils.UnmarshalJSON(data, &payload193, "", true, nil); err == nil {
+		u.Payload193 = &payload193
+		u.Type = PayloadUnionTypePayload193
 		return nil
 	}
 
@@ -8877,10 +4537,10 @@ func (u *PayloadUnion) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var payload205 Payload205 = Payload205{}
-	if err := utils.UnmarshalJSON(data, &payload205, "", true, nil); err == nil {
-		u.Payload205 = &payload205
-		u.Type = PayloadUnionTypePayload205
+	var payload197 Payload197 = Payload197{}
+	if err := utils.UnmarshalJSON(data, &payload197, "", true, nil); err == nil {
+		u.Payload197 = &payload197
+		u.Type = PayloadUnionTypePayload197
 		return nil
 	}
 
@@ -8905,59 +4565,66 @@ func (u *PayloadUnion) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var payload218 Payload218 = Payload218{}
-	if err := utils.UnmarshalJSON(data, &payload218, "", true, nil); err == nil {
-		u.Payload218 = &payload218
-		u.Type = PayloadUnionTypePayload218
+	var payload209 Payload209 = Payload209{}
+	if err := utils.UnmarshalJSON(data, &payload209, "", true, nil); err == nil {
+		u.Payload209 = &payload209
+		u.Type = PayloadUnionTypePayload209
 		return nil
 	}
 
-	var payload231 Payload231 = Payload231{}
-	if err := utils.UnmarshalJSON(data, &payload231, "", true, nil); err == nil {
-		u.Payload231 = &payload231
-		u.Type = PayloadUnionTypePayload231
+	var payload220 Payload220 = Payload220{}
+	if err := utils.UnmarshalJSON(data, &payload220, "", true, nil); err == nil {
+		u.Payload220 = &payload220
+		u.Type = PayloadUnionTypePayload220
 		return nil
 	}
 
-	var payload247 Payload247 = Payload247{}
-	if err := utils.UnmarshalJSON(data, &payload247, "", true, nil); err == nil {
-		u.Payload247 = &payload247
-		u.Type = PayloadUnionTypePayload247
+	var payload233 Payload233 = Payload233{}
+	if err := utils.UnmarshalJSON(data, &payload233, "", true, nil); err == nil {
+		u.Payload233 = &payload233
+		u.Type = PayloadUnionTypePayload233
 		return nil
 	}
 
-	var payload265 Payload265 = Payload265{}
-	if err := utils.UnmarshalJSON(data, &payload265, "", true, nil); err == nil {
-		u.Payload265 = &payload265
-		u.Type = PayloadUnionTypePayload265
+	var payload244 Payload244 = Payload244{}
+	if err := utils.UnmarshalJSON(data, &payload244, "", true, nil); err == nil {
+		u.Payload244 = &payload244
+		u.Type = PayloadUnionTypePayload244
 		return nil
 	}
 
-	var payload286 Payload286 = Payload286{}
-	if err := utils.UnmarshalJSON(data, &payload286, "", true, nil); err == nil {
-		u.Payload286 = &payload286
-		u.Type = PayloadUnionTypePayload286
+	var payload250 Payload250 = Payload250{}
+	if err := utils.UnmarshalJSON(data, &payload250, "", true, nil); err == nil {
+		u.Payload250 = &payload250
+		u.Type = PayloadUnionTypePayload250
 		return nil
 	}
 
-	var payload287 Payload287 = Payload287{}
-	if err := utils.UnmarshalJSON(data, &payload287, "", true, nil); err == nil {
-		u.Payload287 = &payload287
-		u.Type = PayloadUnionTypePayload287
+	var payload270 Payload270 = Payload270{}
+	if err := utils.UnmarshalJSON(data, &payload270, "", true, nil); err == nil {
+		u.Payload270 = &payload270
+		u.Type = PayloadUnionTypePayload270
 		return nil
 	}
 
-	var payload288 Payload288 = Payload288{}
-	if err := utils.UnmarshalJSON(data, &payload288, "", true, nil); err == nil {
-		u.Payload288 = &payload288
-		u.Type = PayloadUnionTypePayload288
+	var payload292 Payload292 = Payload292{}
+	if err := utils.UnmarshalJSON(data, &payload292, "", true, nil); err == nil {
+		u.Payload292 = &payload292
+		u.Type = PayloadUnionTypePayload292
 		return nil
 	}
 
-	var payload289 Payload289 = Payload289{}
-	if err := utils.UnmarshalJSON(data, &payload289, "", true, nil); err == nil {
-		u.Payload289 = &payload289
-		u.Type = PayloadUnionTypePayload289
+	var payload293 Payload293 = Payload293{}
+	if err := utils.UnmarshalJSON(data, &payload293, "", true, nil); err == nil {
+		u.Payload293 = &payload293
+		u.Type = PayloadUnionTypePayload293
+		return nil
+	}
+
+	var payload294 Payload294 = Payload294{}
+	if err := utils.UnmarshalJSON(data, &payload294, "", true, nil); err == nil {
+		u.Payload294 = &payload294
+		u.Type = PayloadUnionTypePayload294
 		return nil
 	}
 
@@ -8965,6 +4632,13 @@ func (u *PayloadUnion) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &payload295, "", true, nil); err == nil {
 		u.Payload295 = &payload295
 		u.Type = PayloadUnionTypePayload295
+		return nil
+	}
+
+	var payload301 Payload301 = Payload301{}
+	if err := utils.UnmarshalJSON(data, &payload301, "", true, nil); err == nil {
+		u.Payload301 = &payload301
+		u.Type = PayloadUnionTypePayload301
 		return nil
 	}
 
@@ -9255,24 +4929,10 @@ func (u *PayloadUnion) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var payload186 Payload186 = Payload186{}
-	if err := utils.UnmarshalJSON(data, &payload186, "", true, nil); err == nil {
-		u.Payload186 = &payload186
-		u.Type = PayloadUnionTypePayload186
-		return nil
-	}
-
-	var payload188 Payload188 = Payload188{}
-	if err := utils.UnmarshalJSON(data, &payload188, "", true, nil); err == nil {
-		u.Payload188 = &payload188
-		u.Type = PayloadUnionTypePayload188
-		return nil
-	}
-
-	var payload190 Payload190 = Payload190{}
-	if err := utils.UnmarshalJSON(data, &payload190, "", true, nil); err == nil {
-		u.Payload190 = &payload190
-		u.Type = PayloadUnionTypePayload190
+	var payload189 Payload189 = Payload189{}
+	if err := utils.UnmarshalJSON(data, &payload189, "", true, nil); err == nil {
+		u.Payload189 = &payload189
+		u.Type = PayloadUnionTypePayload189
 		return nil
 	}
 
@@ -9283,17 +4943,17 @@ func (u *PayloadUnion) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var payload193 Payload193 = Payload193{}
-	if err := utils.UnmarshalJSON(data, &payload193, "", true, nil); err == nil {
-		u.Payload193 = &payload193
-		u.Type = PayloadUnionTypePayload193
+	var payload192 Payload192 = Payload192{}
+	if err := utils.UnmarshalJSON(data, &payload192, "", true, nil); err == nil {
+		u.Payload192 = &payload192
+		u.Type = PayloadUnionTypePayload192
 		return nil
 	}
 
-	var payload197 Payload197 = Payload197{}
-	if err := utils.UnmarshalJSON(data, &payload197, "", true, nil); err == nil {
-		u.Payload197 = &payload197
-		u.Type = PayloadUnionTypePayload197
+	var payload194 Payload194 = Payload194{}
+	if err := utils.UnmarshalJSON(data, &payload194, "", true, nil); err == nil {
+		u.Payload194 = &payload194
+		u.Type = PayloadUnionTypePayload194
 		return nil
 	}
 
@@ -9304,10 +4964,10 @@ func (u *PayloadUnion) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var payload200 Payload200 = Payload200{}
-	if err := utils.UnmarshalJSON(data, &payload200, "", true, nil); err == nil {
-		u.Payload200 = &payload200
-		u.Type = PayloadUnionTypePayload200
+	var payload199 Payload199 = Payload199{}
+	if err := utils.UnmarshalJSON(data, &payload199, "", true, nil); err == nil {
+		u.Payload199 = &payload199
+		u.Type = PayloadUnionTypePayload199
 		return nil
 	}
 
@@ -9332,31 +4992,31 @@ func (u *PayloadUnion) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var payload209 Payload209 = Payload209{}
-	if err := utils.UnmarshalJSON(data, &payload209, "", true, nil); err == nil {
-		u.Payload209 = &payload209
-		u.Type = PayloadUnionTypePayload209
+	var payload204 Payload204 = Payload204{}
+	if err := utils.UnmarshalJSON(data, &payload204, "", true, nil); err == nil {
+		u.Payload204 = &payload204
+		u.Type = PayloadUnionTypePayload204
 		return nil
 	}
 
-	var payload213 Payload213 = Payload213{}
-	if err := utils.UnmarshalJSON(data, &payload213, "", true, nil); err == nil {
-		u.Payload213 = &payload213
-		u.Type = PayloadUnionTypePayload213
+	var payload210 Payload210 = Payload210{}
+	if err := utils.UnmarshalJSON(data, &payload210, "", true, nil); err == nil {
+		u.Payload210 = &payload210
+		u.Type = PayloadUnionTypePayload210
 		return nil
 	}
 
-	var payload215 Payload215 = Payload215{}
-	if err := utils.UnmarshalJSON(data, &payload215, "", true, nil); err == nil {
-		u.Payload215 = &payload215
-		u.Type = PayloadUnionTypePayload215
+	var payload214 Payload214 = Payload214{}
+	if err := utils.UnmarshalJSON(data, &payload214, "", true, nil); err == nil {
+		u.Payload214 = &payload214
+		u.Type = PayloadUnionTypePayload214
 		return nil
 	}
 
-	var payload217 Payload217 = Payload217{}
-	if err := utils.UnmarshalJSON(data, &payload217, "", true, nil); err == nil {
-		u.Payload217 = &payload217
-		u.Type = PayloadUnionTypePayload217
+	var payload216 Payload216 = Payload216{}
+	if err := utils.UnmarshalJSON(data, &payload216, "", true, nil); err == nil {
+		u.Payload216 = &payload216
+		u.Type = PayloadUnionTypePayload216
 		return nil
 	}
 
@@ -9367,10 +5027,10 @@ func (u *PayloadUnion) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var payload220 Payload220 = Payload220{}
-	if err := utils.UnmarshalJSON(data, &payload220, "", true, nil); err == nil {
-		u.Payload220 = &payload220
-		u.Type = PayloadUnionTypePayload220
+	var payload221 Payload221 = Payload221{}
+	if err := utils.UnmarshalJSON(data, &payload221, "", true, nil); err == nil {
+		u.Payload221 = &payload221
+		u.Type = PayloadUnionTypePayload221
 		return nil
 	}
 
@@ -9381,13 +5041,6 @@ func (u *PayloadUnion) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var payload223 Payload223 = Payload223{}
-	if err := utils.UnmarshalJSON(data, &payload223, "", true, nil); err == nil {
-		u.Payload223 = &payload223
-		u.Type = PayloadUnionTypePayload223
-		return nil
-	}
-
 	var payload224 Payload224 = Payload224{}
 	if err := utils.UnmarshalJSON(data, &payload224, "", true, nil); err == nil {
 		u.Payload224 = &payload224
@@ -9395,73 +5048,73 @@ func (u *PayloadUnion) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var payload237 Payload237 = Payload237{}
-	if err := utils.UnmarshalJSON(data, &payload237, "", true, nil); err == nil {
-		u.Payload237 = &payload237
-		u.Type = PayloadUnionTypePayload237
+	var payload225 Payload225 = Payload225{}
+	if err := utils.UnmarshalJSON(data, &payload225, "", true, nil); err == nil {
+		u.Payload225 = &payload225
+		u.Type = PayloadUnionTypePayload225
 		return nil
 	}
 
-	var payload240 Payload240 = Payload240{}
-	if err := utils.UnmarshalJSON(data, &payload240, "", true, nil); err == nil {
-		u.Payload240 = &payload240
-		u.Type = PayloadUnionTypePayload240
+	var payload226 Payload226 = Payload226{}
+	if err := utils.UnmarshalJSON(data, &payload226, "", true, nil); err == nil {
+		u.Payload226 = &payload226
+		u.Type = PayloadUnionTypePayload226
 		return nil
 	}
 
-	var payload250 Payload250 = Payload250{}
-	if err := utils.UnmarshalJSON(data, &payload250, "", true, nil); err == nil {
-		u.Payload250 = &payload250
-		u.Type = PayloadUnionTypePayload250
+	var payload239 Payload239 = Payload239{}
+	if err := utils.UnmarshalJSON(data, &payload239, "", true, nil); err == nil {
+		u.Payload239 = &payload239
+		u.Type = PayloadUnionTypePayload239
 		return nil
 	}
 
-	var payload252 Payload252 = Payload252{}
-	if err := utils.UnmarshalJSON(data, &payload252, "", true, nil); err == nil {
-		u.Payload252 = &payload252
-		u.Type = PayloadUnionTypePayload252
+	var payload242 Payload242 = Payload242{}
+	if err := utils.UnmarshalJSON(data, &payload242, "", true, nil); err == nil {
+		u.Payload242 = &payload242
+		u.Type = PayloadUnionTypePayload242
 		return nil
 	}
 
-	var payload257 Payload257 = Payload257{}
-	if err := utils.UnmarshalJSON(data, &payload257, "", true, nil); err == nil {
-		u.Payload257 = &payload257
-		u.Type = PayloadUnionTypePayload257
+	var payload253 Payload253 = Payload253{}
+	if err := utils.UnmarshalJSON(data, &payload253, "", true, nil); err == nil {
+		u.Payload253 = &payload253
+		u.Type = PayloadUnionTypePayload253
 		return nil
 	}
 
-	var payload258 Payload258 = Payload258{}
-	if err := utils.UnmarshalJSON(data, &payload258, "", true, nil); err == nil {
-		u.Payload258 = &payload258
-		u.Type = PayloadUnionTypePayload258
+	var payload255 Payload255 = Payload255{}
+	if err := utils.UnmarshalJSON(data, &payload255, "", true, nil); err == nil {
+		u.Payload255 = &payload255
+		u.Type = PayloadUnionTypePayload255
 		return nil
 	}
 
-	var payload263 Payload263 = Payload263{}
-	if err := utils.UnmarshalJSON(data, &payload263, "", true, nil); err == nil {
-		u.Payload263 = &payload263
-		u.Type = PayloadUnionTypePayload263
+	var payload260 Payload260 = Payload260{}
+	if err := utils.UnmarshalJSON(data, &payload260, "", true, nil); err == nil {
+		u.Payload260 = &payload260
+		u.Type = PayloadUnionTypePayload260
 		return nil
 	}
 
-	var payload271 Payload271 = Payload271{}
-	if err := utils.UnmarshalJSON(data, &payload271, "", true, nil); err == nil {
-		u.Payload271 = &payload271
-		u.Type = PayloadUnionTypePayload271
+	var payload261 Payload261 = Payload261{}
+	if err := utils.UnmarshalJSON(data, &payload261, "", true, nil); err == nil {
+		u.Payload261 = &payload261
+		u.Type = PayloadUnionTypePayload261
 		return nil
 	}
 
-	var payload273 Payload273 = Payload273{}
-	if err := utils.UnmarshalJSON(data, &payload273, "", true, nil); err == nil {
-		u.Payload273 = &payload273
-		u.Type = PayloadUnionTypePayload273
+	var payload268 Payload268 = Payload268{}
+	if err := utils.UnmarshalJSON(data, &payload268, "", true, nil); err == nil {
+		u.Payload268 = &payload268
+		u.Type = PayloadUnionTypePayload268
 		return nil
 	}
 
-	var payload277 Payload277 = Payload277{}
-	if err := utils.UnmarshalJSON(data, &payload277, "", true, nil); err == nil {
-		u.Payload277 = &payload277
-		u.Type = PayloadUnionTypePayload277
+	var payload276 Payload276 = Payload276{}
+	if err := utils.UnmarshalJSON(data, &payload276, "", true, nil); err == nil {
+		u.Payload276 = &payload276
+		u.Type = PayloadUnionTypePayload276
 		return nil
 	}
 
@@ -9472,20 +5125,6 @@ func (u *PayloadUnion) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var payload280 Payload280 = Payload280{}
-	if err := utils.UnmarshalJSON(data, &payload280, "", true, nil); err == nil {
-		u.Payload280 = &payload280
-		u.Type = PayloadUnionTypePayload280
-		return nil
-	}
-
-	var payload282 Payload282 = Payload282{}
-	if err := utils.UnmarshalJSON(data, &payload282, "", true, nil); err == nil {
-		u.Payload282 = &payload282
-		u.Type = PayloadUnionTypePayload282
-		return nil
-	}
-
 	var payload283 Payload283 = Payload283{}
 	if err := utils.UnmarshalJSON(data, &payload283, "", true, nil); err == nil {
 		u.Payload283 = &payload283
@@ -9493,24 +5132,52 @@ func (u *PayloadUnion) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var payload291 Payload291 = Payload291{}
-	if err := utils.UnmarshalJSON(data, &payload291, "", true, nil); err == nil {
-		u.Payload291 = &payload291
-		u.Type = PayloadUnionTypePayload291
+	var payload284 Payload284 = Payload284{}
+	if err := utils.UnmarshalJSON(data, &payload284, "", true, nil); err == nil {
+		u.Payload284 = &payload284
+		u.Type = PayloadUnionTypePayload284
 		return nil
 	}
 
-	var payload293 Payload293 = Payload293{}
-	if err := utils.UnmarshalJSON(data, &payload293, "", true, nil); err == nil {
-		u.Payload293 = &payload293
-		u.Type = PayloadUnionTypePayload293
+	var payload286 Payload286 = Payload286{}
+	if err := utils.UnmarshalJSON(data, &payload286, "", true, nil); err == nil {
+		u.Payload286 = &payload286
+		u.Type = PayloadUnionTypePayload286
 		return nil
 	}
 
-	var payload294 Payload294 = Payload294{}
-	if err := utils.UnmarshalJSON(data, &payload294, "", true, nil); err == nil {
-		u.Payload294 = &payload294
-		u.Type = PayloadUnionTypePayload294
+	var payload288 Payload288 = Payload288{}
+	if err := utils.UnmarshalJSON(data, &payload288, "", true, nil); err == nil {
+		u.Payload288 = &payload288
+		u.Type = PayloadUnionTypePayload288
+		return nil
+	}
+
+	var payload289 Payload289 = Payload289{}
+	if err := utils.UnmarshalJSON(data, &payload289, "", true, nil); err == nil {
+		u.Payload289 = &payload289
+		u.Type = PayloadUnionTypePayload289
+		return nil
+	}
+
+	var payload297 Payload297 = Payload297{}
+	if err := utils.UnmarshalJSON(data, &payload297, "", true, nil); err == nil {
+		u.Payload297 = &payload297
+		u.Type = PayloadUnionTypePayload297
+		return nil
+	}
+
+	var payload299 Payload299 = Payload299{}
+	if err := utils.UnmarshalJSON(data, &payload299, "", true, nil); err == nil {
+		u.Payload299 = &payload299
+		u.Type = PayloadUnionTypePayload299
+		return nil
+	}
+
+	var payload300 Payload300 = Payload300{}
+	if err := utils.UnmarshalJSON(data, &payload300, "", true, nil); err == nil {
+		u.Payload300 = &payload300
+		u.Type = PayloadUnionTypePayload300
 		return nil
 	}
 
@@ -9773,52 +5440,52 @@ func (u *PayloadUnion) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var payload189 Payload189 = Payload189{}
-	if err := utils.UnmarshalJSON(data, &payload189, "", true, nil); err == nil {
-		u.Payload189 = &payload189
-		u.Type = PayloadUnionTypePayload189
+	var payload178 Payload178 = Payload178{}
+	if err := utils.UnmarshalJSON(data, &payload178, "", true, nil); err == nil {
+		u.Payload178 = &payload178
+		u.Type = PayloadUnionTypePayload178
 		return nil
 	}
 
-	var payload199 Payload199 = Payload199{}
-	if err := utils.UnmarshalJSON(data, &payload199, "", true, nil); err == nil {
-		u.Payload199 = &payload199
-		u.Type = PayloadUnionTypePayload199
+	var payload187 Payload187 = Payload187{}
+	if err := utils.UnmarshalJSON(data, &payload187, "", true, nil); err == nil {
+		u.Payload187 = &payload187
+		u.Type = PayloadUnionTypePayload187
 		return nil
 	}
 
-	var payload216 Payload216 = Payload216{}
-	if err := utils.UnmarshalJSON(data, &payload216, "", true, nil); err == nil {
-		u.Payload216 = &payload216
-		u.Type = PayloadUnionTypePayload216
+	var payload190 Payload190 = Payload190{}
+	if err := utils.UnmarshalJSON(data, &payload190, "", true, nil); err == nil {
+		u.Payload190 = &payload190
+		u.Type = PayloadUnionTypePayload190
 		return nil
 	}
 
-	var payload221 Payload221 = Payload221{}
-	if err := utils.UnmarshalJSON(data, &payload221, "", true, nil); err == nil {
-		u.Payload221 = &payload221
-		u.Type = PayloadUnionTypePayload221
+	var payload200 Payload200 = Payload200{}
+	if err := utils.UnmarshalJSON(data, &payload200, "", true, nil); err == nil {
+		u.Payload200 = &payload200
+		u.Type = PayloadUnionTypePayload200
 		return nil
 	}
 
-	var payload225 Payload225 = Payload225{}
-	if err := utils.UnmarshalJSON(data, &payload225, "", true, nil); err == nil {
-		u.Payload225 = &payload225
-		u.Type = PayloadUnionTypePayload225
+	var payload218 Payload218 = Payload218{}
+	if err := utils.UnmarshalJSON(data, &payload218, "", true, nil); err == nil {
+		u.Payload218 = &payload218
+		u.Type = PayloadUnionTypePayload218
 		return nil
 	}
 
-	var payload232 Payload232 = Payload232{}
-	if err := utils.UnmarshalJSON(data, &payload232, "", true, nil); err == nil {
-		u.Payload232 = &payload232
-		u.Type = PayloadUnionTypePayload232
+	var payload223 Payload223 = Payload223{}
+	if err := utils.UnmarshalJSON(data, &payload223, "", true, nil); err == nil {
+		u.Payload223 = &payload223
+		u.Type = PayloadUnionTypePayload223
 		return nil
 	}
 
-	var payload233 Payload233 = Payload233{}
-	if err := utils.UnmarshalJSON(data, &payload233, "", true, nil); err == nil {
-		u.Payload233 = &payload233
-		u.Type = PayloadUnionTypePayload233
+	var payload227 Payload227 = Payload227{}
+	if err := utils.UnmarshalJSON(data, &payload227, "", true, nil); err == nil {
+		u.Payload227 = &payload227
+		u.Type = PayloadUnionTypePayload227
 		return nil
 	}
 
@@ -9829,6 +5496,13 @@ func (u *PayloadUnion) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
+	var payload235 Payload235 = Payload235{}
+	if err := utils.UnmarshalJSON(data, &payload235, "", true, nil); err == nil {
+		u.Payload235 = &payload235
+		u.Type = PayloadUnionTypePayload235
+		return nil
+	}
+
 	var payload236 Payload236 = Payload236{}
 	if err := utils.UnmarshalJSON(data, &payload236, "", true, nil); err == nil {
 		u.Payload236 = &payload236
@@ -9836,17 +5510,10 @@ func (u *PayloadUnion) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var payload241 Payload241 = Payload241{}
-	if err := utils.UnmarshalJSON(data, &payload241, "", true, nil); err == nil {
-		u.Payload241 = &payload241
-		u.Type = PayloadUnionTypePayload241
-		return nil
-	}
-
-	var payload242 Payload242 = Payload242{}
-	if err := utils.UnmarshalJSON(data, &payload242, "", true, nil); err == nil {
-		u.Payload242 = &payload242
-		u.Type = PayloadUnionTypePayload242
+	var payload238 Payload238 = Payload238{}
+	if err := utils.UnmarshalJSON(data, &payload238, "", true, nil); err == nil {
+		u.Payload238 = &payload238
+		u.Type = PayloadUnionTypePayload238
 		return nil
 	}
 
@@ -9857,52 +5524,45 @@ func (u *PayloadUnion) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var payload244 Payload244 = Payload244{}
-	if err := utils.UnmarshalJSON(data, &payload244, "", true, nil); err == nil {
-		u.Payload244 = &payload244
-		u.Type = PayloadUnionTypePayload244
+	var payload245 Payload245 = Payload245{}
+	if err := utils.UnmarshalJSON(data, &payload245, "", true, nil); err == nil {
+		u.Payload245 = &payload245
+		u.Type = PayloadUnionTypePayload245
 		return nil
 	}
 
-	var payload248 Payload248 = Payload248{}
-	if err := utils.UnmarshalJSON(data, &payload248, "", true, nil); err == nil {
-		u.Payload248 = &payload248
-		u.Type = PayloadUnionTypePayload248
+	var payload246 Payload246 = Payload246{}
+	if err := utils.UnmarshalJSON(data, &payload246, "", true, nil); err == nil {
+		u.Payload246 = &payload246
+		u.Type = PayloadUnionTypePayload246
 		return nil
 	}
 
-	var payload254 Payload254 = Payload254{}
-	if err := utils.UnmarshalJSON(data, &payload254, "", true, nil); err == nil {
-		u.Payload254 = &payload254
-		u.Type = PayloadUnionTypePayload254
+	var payload247 Payload247 = Payload247{}
+	if err := utils.UnmarshalJSON(data, &payload247, "", true, nil); err == nil {
+		u.Payload247 = &payload247
+		u.Type = PayloadUnionTypePayload247
 		return nil
 	}
 
-	var payload255 Payload255 = Payload255{}
-	if err := utils.UnmarshalJSON(data, &payload255, "", true, nil); err == nil {
-		u.Payload255 = &payload255
-		u.Type = PayloadUnionTypePayload255
+	var payload251 Payload251 = Payload251{}
+	if err := utils.UnmarshalJSON(data, &payload251, "", true, nil); err == nil {
+		u.Payload251 = &payload251
+		u.Type = PayloadUnionTypePayload251
 		return nil
 	}
 
-	var payload259 Payload259 = Payload259{}
-	if err := utils.UnmarshalJSON(data, &payload259, "", true, nil); err == nil {
-		u.Payload259 = &payload259
-		u.Type = PayloadUnionTypePayload259
+	var payload257 Payload257 = Payload257{}
+	if err := utils.UnmarshalJSON(data, &payload257, "", true, nil); err == nil {
+		u.Payload257 = &payload257
+		u.Type = PayloadUnionTypePayload257
 		return nil
 	}
 
-	var payload260 Payload260 = Payload260{}
-	if err := utils.UnmarshalJSON(data, &payload260, "", true, nil); err == nil {
-		u.Payload260 = &payload260
-		u.Type = PayloadUnionTypePayload260
-		return nil
-	}
-
-	var payload261 Payload261 = Payload261{}
-	if err := utils.UnmarshalJSON(data, &payload261, "", true, nil); err == nil {
-		u.Payload261 = &payload261
-		u.Type = PayloadUnionTypePayload261
+	var payload258 Payload258 = Payload258{}
+	if err := utils.UnmarshalJSON(data, &payload258, "", true, nil); err == nil {
+		u.Payload258 = &payload258
+		u.Type = PayloadUnionTypePayload258
 		return nil
 	}
 
@@ -9913,6 +5573,13 @@ func (u *PayloadUnion) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
+	var payload263 Payload263 = Payload263{}
+	if err := utils.UnmarshalJSON(data, &payload263, "", true, nil); err == nil {
+		u.Payload263 = &payload263
+		u.Type = PayloadUnionTypePayload263
+		return nil
+	}
+
 	var payload264 Payload264 = Payload264{}
 	if err := utils.UnmarshalJSON(data, &payload264, "", true, nil); err == nil {
 		u.Payload264 = &payload264
@@ -9920,17 +5587,31 @@ func (u *PayloadUnion) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var payload268 Payload268 = Payload268{}
-	if err := utils.UnmarshalJSON(data, &payload268, "", true, nil); err == nil {
-		u.Payload268 = &payload268
-		u.Type = PayloadUnionTypePayload268
+	var payload265 Payload265 = Payload265{}
+	if err := utils.UnmarshalJSON(data, &payload265, "", true, nil); err == nil {
+		u.Payload265 = &payload265
+		u.Type = PayloadUnionTypePayload265
 		return nil
 	}
 
-	var payload270 Payload270 = Payload270{}
-	if err := utils.UnmarshalJSON(data, &payload270, "", true, nil); err == nil {
-		u.Payload270 = &payload270
-		u.Type = PayloadUnionTypePayload270
+	var payload267 Payload267 = Payload267{}
+	if err := utils.UnmarshalJSON(data, &payload267, "", true, nil); err == nil {
+		u.Payload267 = &payload267
+		u.Type = PayloadUnionTypePayload267
+		return nil
+	}
+
+	var payload269 Payload269 = Payload269{}
+	if err := utils.UnmarshalJSON(data, &payload269, "", true, nil); err == nil {
+		u.Payload269 = &payload269
+		u.Type = PayloadUnionTypePayload269
+		return nil
+	}
+
+	var payload273 Payload273 = Payload273{}
+	if err := utils.UnmarshalJSON(data, &payload273, "", true, nil); err == nil {
+		u.Payload273 = &payload273
+		u.Type = PayloadUnionTypePayload273
 		return nil
 	}
 
@@ -9955,17 +5636,17 @@ func (u *PayloadUnion) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var payload284 Payload284 = Payload284{}
-	if err := utils.UnmarshalJSON(data, &payload284, "", true, nil); err == nil {
-		u.Payload284 = &payload284
-		u.Type = PayloadUnionTypePayload284
-		return nil
-	}
-
 	var payload285 Payload285 = Payload285{}
 	if err := utils.UnmarshalJSON(data, &payload285, "", true, nil); err == nil {
 		u.Payload285 = &payload285
 		u.Type = PayloadUnionTypePayload285
+		return nil
+	}
+
+	var payload287 Payload287 = Payload287{}
+	if err := utils.UnmarshalJSON(data, &payload287, "", true, nil); err == nil {
+		u.Payload287 = &payload287
+		u.Type = PayloadUnionTypePayload287
 		return nil
 	}
 
@@ -9976,10 +5657,24 @@ func (u *PayloadUnion) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var payload292 Payload292 = Payload292{}
-	if err := utils.UnmarshalJSON(data, &payload292, "", true, nil); err == nil {
-		u.Payload292 = &payload292
-		u.Type = PayloadUnionTypePayload292
+	var payload291 Payload291 = Payload291{}
+	if err := utils.UnmarshalJSON(data, &payload291, "", true, nil); err == nil {
+		u.Payload291 = &payload291
+		u.Type = PayloadUnionTypePayload291
+		return nil
+	}
+
+	var payload296 Payload296 = Payload296{}
+	if err := utils.UnmarshalJSON(data, &payload296, "", true, nil); err == nil {
+		u.Payload296 = &payload296
+		u.Type = PayloadUnionTypePayload296
+		return nil
+	}
+
+	var payload298 Payload298 = Payload298{}
+	if err := utils.UnmarshalJSON(data, &payload298, "", true, nil); err == nil {
+		u.Payload298 = &payload298
+		u.Type = PayloadUnionTypePayload298
 		return nil
 	}
 
@@ -10123,38 +5818,31 @@ func (u *PayloadUnion) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var payload227 Payload227 = Payload227{}
-	if err := utils.UnmarshalJSON(data, &payload227, "", true, nil); err == nil {
-		u.Payload227 = &payload227
-		u.Type = PayloadUnionTypePayload227
+	var payload229 Payload229 = Payload229{}
+	if err := utils.UnmarshalJSON(data, &payload229, "", true, nil); err == nil {
+		u.Payload229 = &payload229
+		u.Type = PayloadUnionTypePayload229
 		return nil
 	}
 
-	var payload235 Payload235 = Payload235{}
-	if err := utils.UnmarshalJSON(data, &payload235, "", true, nil); err == nil {
-		u.Payload235 = &payload235
-		u.Type = PayloadUnionTypePayload235
+	var payload237 Payload237 = Payload237{}
+	if err := utils.UnmarshalJSON(data, &payload237, "", true, nil); err == nil {
+		u.Payload237 = &payload237
+		u.Type = PayloadUnionTypePayload237
 		return nil
 	}
 
-	var payload246 Payload246 = Payload246{}
-	if err := utils.UnmarshalJSON(data, &payload246, "", true, nil); err == nil {
-		u.Payload246 = &payload246
-		u.Type = PayloadUnionTypePayload246
+	var payload249 Payload249 = Payload249{}
+	if err := utils.UnmarshalJSON(data, &payload249, "", true, nil); err == nil {
+		u.Payload249 = &payload249
+		u.Type = PayloadUnionTypePayload249
 		return nil
 	}
 
-	var payload251 Payload251 = Payload251{}
-	if err := utils.UnmarshalJSON(data, &payload251, "", true, nil); err == nil {
-		u.Payload251 = &payload251
-		u.Type = PayloadUnionTypePayload251
-		return nil
-	}
-
-	var payload253 Payload253 = Payload253{}
-	if err := utils.UnmarshalJSON(data, &payload253, "", true, nil); err == nil {
-		u.Payload253 = &payload253
-		u.Type = PayloadUnionTypePayload253
+	var payload254 Payload254 = Payload254{}
+	if err := utils.UnmarshalJSON(data, &payload254, "", true, nil); err == nil {
+		u.Payload254 = &payload254
+		u.Type = PayloadUnionTypePayload254
 		return nil
 	}
 
@@ -10165,24 +5853,17 @@ func (u *PayloadUnion) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var payload266 Payload266 = Payload266{}
-	if err := utils.UnmarshalJSON(data, &payload266, "", true, nil); err == nil {
-		u.Payload266 = &payload266
-		u.Type = PayloadUnionTypePayload266
+	var payload259 Payload259 = Payload259{}
+	if err := utils.UnmarshalJSON(data, &payload259, "", true, nil); err == nil {
+		u.Payload259 = &payload259
+		u.Type = PayloadUnionTypePayload259
 		return nil
 	}
 
-	var payload267 Payload267 = Payload267{}
-	if err := utils.UnmarshalJSON(data, &payload267, "", true, nil); err == nil {
-		u.Payload267 = &payload267
-		u.Type = PayloadUnionTypePayload267
-		return nil
-	}
-
-	var payload269 Payload269 = Payload269{}
-	if err := utils.UnmarshalJSON(data, &payload269, "", true, nil); err == nil {
-		u.Payload269 = &payload269
-		u.Type = PayloadUnionTypePayload269
+	var payload271 Payload271 = Payload271{}
+	if err := utils.UnmarshalJSON(data, &payload271, "", true, nil); err == nil {
+		u.Payload271 = &payload271
+		u.Type = PayloadUnionTypePayload271
 		return nil
 	}
 
@@ -10193,10 +5874,24 @@ func (u *PayloadUnion) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var payload276 Payload276 = Payload276{}
-	if err := utils.UnmarshalJSON(data, &payload276, "", true, nil); err == nil {
-		u.Payload276 = &payload276
-		u.Type = PayloadUnionTypePayload276
+	var payload274 Payload274 = Payload274{}
+	if err := utils.UnmarshalJSON(data, &payload274, "", true, nil); err == nil {
+		u.Payload274 = &payload274
+		u.Type = PayloadUnionTypePayload274
+		return nil
+	}
+
+	var payload277 Payload277 = Payload277{}
+	if err := utils.UnmarshalJSON(data, &payload277, "", true, nil); err == nil {
+		u.Payload277 = &payload277
+		u.Type = PayloadUnionTypePayload277
+		return nil
+	}
+
+	var payload282 Payload282 = Payload282{}
+	if err := utils.UnmarshalJSON(data, &payload282, "", true, nil); err == nil {
+		u.Payload282 = &payload282
+		u.Type = PayloadUnionTypePayload282
 		return nil
 	}
 
@@ -10750,6 +6445,14 @@ func (u PayloadUnion) MarshalJSON() ([]byte, error) {
 
 	if u.Payload133 != nil {
 		return utils.MarshalJSON(u.Payload133, "", true)
+	}
+
+	if u.PayloadScript != nil {
+		return utils.MarshalJSON(u.PayloadScript, "", true)
+	}
+
+	if u.PayloadHeader != nil {
+		return utils.MarshalJSON(u.PayloadHeader, "", true)
 	}
 
 	if u.Payload134 != nil {
@@ -11404,6 +7107,34 @@ func (u PayloadUnion) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.Payload296, "", true)
 	}
 
+	if u.Payload297 != nil {
+		return utils.MarshalJSON(u.Payload297, "", true)
+	}
+
+	if u.Payload298 != nil {
+		return utils.MarshalJSON(u.Payload298, "", true)
+	}
+
+	if u.Payload299 != nil {
+		return utils.MarshalJSON(u.Payload299, "", true)
+	}
+
+	if u.Payload300 != nil {
+		return utils.MarshalJSON(u.Payload300, "", true)
+	}
+
+	if u.Payload301 != nil {
+		return utils.MarshalJSON(u.Payload301, "", true)
+	}
+
+	if u.Payload302 != nil {
+		return utils.MarshalJSON(u.Payload302, "", true)
+	}
+
+	if u.Payload303 != nil {
+		return utils.MarshalJSON(u.Payload303, "", true)
+	}
+
 	return nil, errors.New("could not marshal union type PayloadUnion: all fields are null")
 }
 
@@ -11417,6 +7148,8 @@ type UserEvent struct {
 	Entities []Entity `json:"entities"`
 	// The type of the event.
 	Type *UserEventType `json:"type,omitempty"`
+	// The categories that group this event with related event types. An event can belong to multiple categories (e.g. a firewall event is both Firewall and Security). The first entry is the "primary" category. Use the `/events/types` endpoint to discover the full list of categories.
+	Categories []UserEventCategory `json:"categories,omitempty"`
 	// Timestamp (in milliseconds) of when the event was generated.
 	CreatedAt float64 `json:"createdAt"`
 	// Metadata for {@link userId}.
@@ -11431,17 +7164,6 @@ type UserEvent struct {
 	// If the principal delegated its authority (for example, a user delegating to an app), then this array contains the ID of the current actor. For example, if `principalId` is "user123" and `viaIds` is `["app456"]`, we can say the event was triggered by - "app456 on behalf of user123", or - "user123 via app4556". Both are equivalent. Arbitrarily long chains of delegation can be represented. For example, if `principalId` is "user123" and `viaIds` is `["service1", "service2"]`, we can say the event was triggered by "user123 via service1 via service2".
 	ViaIds  []string      `json:"viaIds,omitempty"`
 	Payload *PayloadUnion `json:"payload,omitempty"`
-}
-
-func (u UserEvent) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(u, "", false)
-}
-
-func (u *UserEvent) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"id", "text", "entities", "createdAt", "userId", "principalId"}); err != nil {
-		return err
-	}
-	return nil
 }
 
 func (o *UserEvent) GetID() string {
@@ -11470,6 +7192,13 @@ func (o *UserEvent) GetType() *UserEventType {
 		return nil
 	}
 	return o.Type
+}
+
+func (o *UserEvent) GetCategories() []UserEventCategory {
+	if o == nil {
+		return nil
+	}
+	return o.Categories
 }
 
 func (o *UserEvent) GetCreatedAt() float64 {

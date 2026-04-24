@@ -57,9 +57,9 @@ func testApproveRollingReleaseStageApproveRollingReleaseStage0(w http.ResponseWr
 			State:    operations.ApproveRollingReleaseStageStateActive,
 			Substate: operations.ApproveRollingReleaseStageSubstatePaused.ToPointer(),
 			CurrentDeployment: &operations.ApproveRollingReleaseStageCurrentDeployment{
+				ID:           "dpl_abc123",
 				Name:         "my-shop@main",
 				CreatedAt:    1716206500000,
-				ID:           "dpl_abc123",
 				ReadyState:   operations.ApproveRollingReleaseStageCurrentDeploymentReadyStateReady,
 				ReadyStateAt: types.Float64(1716206800000),
 				Source:       operations.ApproveRollingReleaseStageCurrentDeploymentSourceGit.ToPointer(),
@@ -67,9 +67,9 @@ func testApproveRollingReleaseStageApproveRollingReleaseStage0(w http.ResponseWr
 				URL:          "my-shop.vercel.app",
 			},
 			CanaryDeployment: &operations.ApproveRollingReleaseStageCanaryDeployment{
+				ID:           "dpl_def456",
 				Name:         "my-shop@9c7e2f4",
 				CreatedAt:    1716210100000,
-				ID:           "dpl_def456",
 				ReadyState:   operations.ApproveRollingReleaseStageCanaryDeploymentReadyStateReady,
 				ReadyStateAt: types.Float64(1716210400000),
 				Source:       operations.ApproveRollingReleaseStageCanaryDeploymentSourceGit.ToPointer(),

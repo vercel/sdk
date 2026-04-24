@@ -122,6 +122,10 @@ export type ApproveRollingReleaseStageTarget = ClosedEnum<
  */
 export type ApproveRollingReleaseStageCurrentDeployment = {
   /**
+   * A string holding the unique ID of the deployment
+   */
+  id: string;
+  /**
    * The name of the project associated with the deployment at the time that the deployment was created
    */
   name: string;
@@ -129,10 +133,6 @@ export type ApproveRollingReleaseStageCurrentDeployment = {
    * A number containing the date when the deployment was created in milliseconds
    */
   createdAt: number;
-  /**
-   * A string holding the unique ID of the deployment
-   */
-  id: string;
   /**
    * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
    */
@@ -209,6 +209,10 @@ export type ApproveRollingReleaseStageRollingReleaseTarget = ClosedEnum<
  */
 export type ApproveRollingReleaseStageCanaryDeployment = {
   /**
+   * A string holding the unique ID of the deployment
+   */
+  id: string;
+  /**
    * The name of the project associated with the deployment at the time that the deployment was created
    */
   name: string;
@@ -216,10 +220,6 @@ export type ApproveRollingReleaseStageCanaryDeployment = {
    * A number containing the date when the deployment was created in milliseconds
    */
   createdAt: number;
-  /**
-   * A string holding the unique ID of the deployment
-   */
-  id: string;
   /**
    * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
    */
@@ -567,9 +567,9 @@ export const ApproveRollingReleaseStageCurrentDeployment$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.object({
+    id: types.string(),
     name: types.string(),
     createdAt: types.number(),
-    id: types.string(),
     readyState: ApproveRollingReleaseStageReadyState$inboundSchema,
     readyStateAt: types.optional(types.number()),
     source: types.optional(ApproveRollingReleaseStageSource$inboundSchema),
@@ -579,9 +579,9 @@ export const ApproveRollingReleaseStageCurrentDeployment$inboundSchema:
   });
 /** @internal */
 export type ApproveRollingReleaseStageCurrentDeployment$Outbound = {
+  id: string;
   name: string;
   createdAt: number;
-  id: string;
   readyState: string;
   readyStateAt?: number | undefined;
   source?: string | undefined;
@@ -596,9 +596,9 @@ export const ApproveRollingReleaseStageCurrentDeployment$outboundSchema:
     z.ZodTypeDef,
     ApproveRollingReleaseStageCurrentDeployment
   > = z.object({
+    id: z.string(),
     name: z.string(),
     createdAt: z.number(),
-    id: z.string(),
     readyState: ApproveRollingReleaseStageReadyState$outboundSchema,
     readyStateAt: z.number().optional(),
     source: ApproveRollingReleaseStageSource$outboundSchema.optional(),
@@ -664,9 +664,9 @@ export const ApproveRollingReleaseStageRollingReleaseTarget$outboundSchema:
 export const ApproveRollingReleaseStageCanaryDeployment$inboundSchema:
   z.ZodType<ApproveRollingReleaseStageCanaryDeployment, z.ZodTypeDef, unknown> =
     z.object({
+      id: types.string(),
       name: types.string(),
       createdAt: types.number(),
-      id: types.string(),
       readyState:
         ApproveRollingReleaseStageRollingReleaseReadyState$inboundSchema,
       readyStateAt: types.optional(types.number()),
@@ -680,9 +680,9 @@ export const ApproveRollingReleaseStageCanaryDeployment$inboundSchema:
     });
 /** @internal */
 export type ApproveRollingReleaseStageCanaryDeployment$Outbound = {
+  id: string;
   name: string;
   createdAt: number;
-  id: string;
   readyState: string;
   readyStateAt?: number | undefined;
   source?: string | undefined;
@@ -697,9 +697,9 @@ export const ApproveRollingReleaseStageCanaryDeployment$outboundSchema:
     z.ZodTypeDef,
     ApproveRollingReleaseStageCanaryDeployment
   > = z.object({
+    id: z.string(),
     name: z.string(),
     createdAt: z.number(),
-    id: z.string(),
     readyState:
       ApproveRollingReleaseStageRollingReleaseReadyState$outboundSchema,
     readyStateAt: z.number().optional(),

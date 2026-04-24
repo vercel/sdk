@@ -8006,7 +8006,7 @@ workflows:
           - condition: $response.header.Content-Type == application/json
           - context: $response.body
             condition: |
-              {"types":[{"replacedBy":["<value 1>","<value 2>"],"deprecated":true,"name":"domain-transfer-in","description":"woot baritone lasting ah foot when worth whether bleakly"}]}
+              {"types":[{"name":"domain-transfer-in","description":"woot baritone lasting ah foot when worth whether bleakly","categories":["deployment"],"deprecated":true,"replacedBy":["alert-rule-created","project-delegated-protection-updated"]}],"categories":[{"name":"project","label":"<value>"}]}
             type: simple
     x-speakeasy-test-group: user
     x-speakeasy-test-rebuild: true
@@ -8404,7 +8404,7 @@ workflows:
           - condition: $response.header.Content-Type == application/json
           - context: $response.body
             condition: |
-              {"hashKey":"<value>","projectId":"<id>","type":"mobile","environment":"<value>","createdBy":"<value>","createdAt":4791.7,"updatedAt":3218.83}
+              {"hashKey":"<value>","projectId":"<id>","type":"mobile","environment":"<value>","createdBy":"<value>","createdAt":4791.7,"updatedAt":3218.83,"partialKeyValue":"<value>"}
             type: simple
     x-speakeasy-test-group: feature-flags
     x-speakeasy-test-rebuild: true
@@ -9020,7 +9020,7 @@ workflows:
           - condition: $response.header.Content-Type == application/json
           - context: $response.body
             condition: |
-              {"accountLimit":{"total":9047.58},"environments":[{"type":"production","createdAt":2957.56,"updatedAt":4025.44,"id":"<id>","slug":"<value>"}]}
+              {"accountLimit":{"total":9047.58},"environments":[{"type":"production","id":"<id>","createdAt":2957.56,"slug":"<value>","updatedAt":4025.44}]}
             type: simple
     x-speakeasy-test-group: environment
     x-speakeasy-test-rebuild: true
@@ -9362,7 +9362,7 @@ workflows:
           - condition: $response.header.Content-Type == application/json
           - context: $response.body
             condition: |
-              {"sandbox":{"name":"my-sandbox","currentSessionId":"<id>","status":"running","statusUpdatedAt":1750344501629,"persistent":true,"region":"iad1","vcpus":2,"memory":1024,"runtime":"node22","timeout":300000,"snapshotExpiration":604800000,"totalEgressBytes":4096,"totalIngressBytes":2048,"totalActiveCpuDurationMs":5000,"totalDurationMs":60000,"cwd":"/vercel/sandbox","tags":{"team":"hive","user":"bob"},"createdAt":1750344501629,"updatedAt":1750344501629},"session":{"sourceSandboxName":"my-sandbox","projectId":"prj_123a6c5209bc3778245d011443644c8d27dc2c50","id":"sbx_123a6c5209bc3778245d011443644c8d27dc2c50","memory":2048,"vcpus":2,"region":"iad1","runtime":"node22","timeout":3600000,"status":"running","requestedAt":1750344501629,"startedAt":1750344501629,"cwd":"/vercel/sandbox","requestedStopAt":1750344501629,"stoppedAt":1750344501629,"abortedAt":1750344501629,"duration":3600000,"sourceSnapshotId":"snap_123a6c5209bc3778245d011443644c8d27dc2c50","snapshottedAt":1750344501629,"createdAt":1750344501629,"updatedAt":1750344501629,"networkPolicy":{"mode":"custom","allowedDomains":["api.vercel.com","*.example.com"],"allowedCIDRs":["10.0.0.0/8"],"deniedCIDRs":["10.0.0.0/8"],"injectionRules":[{"domain":"api.vercel.com","headerNames":["Authorization","X-API-Key"]}]},"activeCpuDurationMs":42,"networkTransfer":{"ingress":3537.81,"egress":3912.91}},"routes":[{"url":"https://any-wasabi.com","port":4252.43,"subdomain":"<value>","system":true}],"resumed":true}
+              {"sandbox":{"name":"my-sandbox","currentSessionId":"<id>","status":"running","statusUpdatedAt":1750344501629,"persistent":true,"region":"iad1","vcpus":2,"memory":1024,"runtime":"node22","timeout":300000,"snapshotExpiration":604800000,"snapshotKeepLast":{"count":5,"expiration":604800000,"deleteEvicted":true},"totalEgressBytes":4096,"totalIngressBytes":2048,"totalActiveCpuDurationMs":5000,"totalDurationMs":60000,"cwd":"/vercel/sandbox","tags":{"team":"hive","user":"bob"},"createdAt":1750344501629,"updatedAt":1750344501629},"session":{"sourceSandboxName":"my-sandbox","projectId":"prj_123a6c5209bc3778245d011443644c8d27dc2c50","id":"sbx_123a6c5209bc3778245d011443644c8d27dc2c50","memory":2048,"vcpus":2,"region":"iad1","runtime":"node22","timeout":3600000,"status":"running","requestedAt":1750344501629,"startedAt":1750344501629,"cwd":"/vercel/sandbox","requestedStopAt":1750344501629,"stoppedAt":1750344501629,"abortedAt":1750344501629,"duration":3600000,"sourceSnapshotId":"snap_123a6c5209bc3778245d011443644c8d27dc2c50","snapshottedAt":1750344501629,"createdAt":1750344501629,"updatedAt":1750344501629,"networkPolicy":{"mode":"custom","allowedDomains":["api.vercel.com","*.example.com"],"allowedCIDRs":["10.0.0.0/8"],"deniedCIDRs":["10.0.0.0/8"],"injectionRules":[{"domain":"api.vercel.com","headerNames":["Authorization","X-API-Key"]}]},"activeCpuDurationMs":42,"networkTransfer":{"ingress":3537.81,"egress":3912.91}},"routes":[{"url":"https://any-wasabi.com","port":4252.43,"subdomain":"<value>","system":true}],"resumed":true}
             type: simple
     x-speakeasy-test-group: sandboxes-v2-beta
     x-speakeasy-test-rebuild: true
@@ -9410,7 +9410,7 @@ workflows:
           - condition: $response.header.Content-Type == application/json
           - context: $response.body
             condition: |
-              {"sandbox":{"name":"my-sandbox","currentSessionId":"<id>","status":"running","statusUpdatedAt":1750344501629,"persistent":true,"region":"iad1","vcpus":2,"memory":1024,"runtime":"node22","timeout":300000,"snapshotExpiration":604800000,"totalEgressBytes":4096,"totalIngressBytes":2048,"totalActiveCpuDurationMs":5000,"totalDurationMs":60000,"cwd":"/vercel/sandbox","tags":{"team":"hive","user":"bob"},"createdAt":1750344501629,"updatedAt":1750344501629}}
+              {"sandbox":{"name":"my-sandbox","currentSessionId":"<id>","status":"running","statusUpdatedAt":1750344501629,"persistent":true,"region":"iad1","vcpus":2,"memory":1024,"runtime":"node22","timeout":300000,"snapshotExpiration":604800000,"snapshotKeepLast":{"count":5,"expiration":604800000,"deleteEvicted":true},"totalEgressBytes":4096,"totalIngressBytes":2048,"totalActiveCpuDurationMs":5000,"totalDurationMs":60000,"cwd":"/vercel/sandbox","tags":{"team":"hive","user":"bob"},"createdAt":1750344501629,"updatedAt":1750344501629}}
             type: simple
     x-speakeasy-test-group: sandboxes-v2-beta
     x-speakeasy-test-rebuild: true
@@ -9433,7 +9433,7 @@ workflows:
           - condition: $response.header.Content-Type == application/json
           - context: $response.body
             condition: |
-              {"sandbox":{"name":"my-sandbox","currentSessionId":"<id>","status":"running","statusUpdatedAt":1750344501629,"persistent":true,"region":"iad1","vcpus":2,"memory":1024,"runtime":"node22","timeout":300000,"snapshotExpiration":604800000,"totalEgressBytes":4096,"totalIngressBytes":2048,"totalActiveCpuDurationMs":5000,"totalDurationMs":60000,"cwd":"/vercel/sandbox","tags":{"team":"hive","user":"bob"},"createdAt":1750344501629,"updatedAt":1750344501629}}
+              {"sandbox":{"name":"my-sandbox","currentSessionId":"<id>","status":"running","statusUpdatedAt":1750344501629,"persistent":true,"region":"iad1","vcpus":2,"memory":1024,"runtime":"node22","timeout":300000,"snapshotExpiration":604800000,"snapshotKeepLast":{"count":5,"expiration":604800000,"deleteEvicted":true},"totalEgressBytes":4096,"totalIngressBytes":2048,"totalActiveCpuDurationMs":5000,"totalDurationMs":60000,"cwd":"/vercel/sandbox","tags":{"team":"hive","user":"bob"},"createdAt":1750344501629,"updatedAt":1750344501629}}
             type: simple
     x-speakeasy-test-group: sandboxes-v2-beta
     x-speakeasy-test-rebuild: true

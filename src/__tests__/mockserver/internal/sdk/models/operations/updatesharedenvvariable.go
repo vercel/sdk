@@ -291,6 +291,8 @@ type Updated struct {
 	Target []UpdatedTarget `json:"target,omitempty"`
 	// whether or not this env varible applies to custom environments
 	ApplyToAllCustomEnvironments *bool `json:"applyToAllCustomEnvironments,omitempty"`
+	// The custom environment IDs that this Shared Env Var is scoped to.
+	CustomEnvironmentIds []string `json:"customEnvironmentIds,omitempty"`
 	// whether or not this env variable is decrypted
 	Decrypted *bool `json:"decrypted,omitempty"`
 	// A user provided comment that describes what this Shared Env Var is for.
@@ -413,6 +415,13 @@ func (o *Updated) GetApplyToAllCustomEnvironments() *bool {
 		return nil
 	}
 	return o.ApplyToAllCustomEnvironments
+}
+
+func (o *Updated) GetCustomEnvironmentIds() []string {
+	if o == nil {
+		return nil
+	}
+	return o.CustomEnvironmentIds
 }
 
 func (o *Updated) GetDecrypted() *bool {

@@ -3,17 +3,23 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsContentHintProjects15 } from "@vercel/sdk/models/getprojectsresponsebodyoidcproviders.js";
+import { GetProjectsContentHintProjects15 } from "@vercel/sdk/models/getprojectstoprojectsresponse2.js";
 
 let value: GetProjectsContentHintProjects15 = {
-  type: "flags-connection-string",
-  projectId: "<id>",
+  type: "integration-store-secret",
+  storeId: "<id>",
+  integrationId: "<id>",
+  integrationProductId: "<id>",
+  integrationConfigurationId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field                       | Type                        | Required                    | Description                 |
-| --------------------------- | --------------------------- | --------------------------- | --------------------------- |
-| `type`                      | *"flags-connection-string"* | :heavy_check_mark:          | N/A                         |
-| `projectId`                 | *string*                    | :heavy_check_mark:          | N/A                         |
+| Field                        | Type                         | Required                     | Description                  |
+| ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- |
+| `type`                       | *"integration-store-secret"* | :heavy_check_mark:           | N/A                          |
+| `storeId`                    | *string*                     | :heavy_check_mark:           | N/A                          |
+| `integrationId`              | *string*                     | :heavy_check_mark:           | N/A                          |
+| `integrationProductId`       | *string*                     | :heavy_check_mark:           | N/A                          |
+| `integrationConfigurationId` | *string*                     | :heavy_check_mark:           | N/A                          |

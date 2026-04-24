@@ -272,6 +272,7 @@ export type Capabilities = {
   secretRotation?: SecretRotation1 | boolean | undefined;
   projects?: boolean | undefined;
   v0?: boolean | undefined;
+  autoSensitive?: boolean | undefined;
 };
 
 export type CreateIntegrationStoreDirectIntegrationsMetadata =
@@ -320,6 +321,7 @@ export type CreateIntegrationStoreDirectCapabilities = {
   nativeImportResource?: boolean | undefined;
   databaseUI?: boolean | undefined;
   v0Flavors?: boolean | undefined;
+  autoSensitive?: boolean | undefined;
 };
 
 export const CreateIntegrationStoreDirectIntegrationsType = {
@@ -2015,6 +2017,7 @@ export const Capabilities$inboundSchema: z.ZodType<
   ),
   projects: types.optional(types.boolean()),
   v0: types.optional(types.boolean()),
+  autoSensitive: types.optional(types.boolean()),
 });
 /** @internal */
 export type Capabilities$Outbound = {
@@ -2027,6 +2030,7 @@ export type Capabilities$Outbound = {
   secretRotation?: SecretRotation1$Outbound | boolean | undefined;
   projects?: boolean | undefined;
   v0?: boolean | undefined;
+  autoSensitive?: boolean | undefined;
 };
 
 /** @internal */
@@ -2047,6 +2051,7 @@ export const Capabilities$outboundSchema: z.ZodType<
   ]).optional(),
   projects: z.boolean().optional(),
   v0: z.boolean().optional(),
+  autoSensitive: z.boolean().optional(),
 });
 
 export function capabilitiesToJSON(capabilities: Capabilities): string {
@@ -2258,6 +2263,7 @@ export const CreateIntegrationStoreDirectCapabilities$inboundSchema: z.ZodType<
   nativeImportResource: types.optional(types.boolean()),
   databaseUI: types.optional(types.boolean()),
   v0Flavors: types.optional(types.boolean()),
+  autoSensitive: types.optional(types.boolean()),
 });
 /** @internal */
 export type CreateIntegrationStoreDirectCapabilities$Outbound = {
@@ -2280,6 +2286,7 @@ export type CreateIntegrationStoreDirectCapabilities$Outbound = {
   nativeImportResource?: boolean | undefined;
   databaseUI?: boolean | undefined;
   v0Flavors?: boolean | undefined;
+  autoSensitive?: boolean | undefined;
 };
 
 /** @internal */
@@ -2307,6 +2314,7 @@ export const CreateIntegrationStoreDirectCapabilities$outboundSchema: z.ZodType<
   nativeImportResource: z.boolean().optional(),
   databaseUI: z.boolean().optional(),
   v0Flavors: z.boolean().optional(),
+  autoSensitive: z.boolean().optional(),
 });
 
 export function createIntegrationStoreDirectCapabilitiesToJSON(

@@ -12,7 +12,10 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
  * The EdgeConfig.
  */
 export type EdgeConfigToken = {
-  token: string;
+  /**
+   * A partially-masked representation of the token, safe to display in UIs. The format is the first 3 characters of the token followed by a fixed 8-character `*` mask (e.g. `550e8400-e29b-41d4-a716-446655440000` → `550********`). The mask length is intentionally fixed (not proportional to the original token length) to avoid leaking the token length. Prefer this field for display/reference in UIs and logs. The full, plaintext token is only disclosed once at creation time via `POST /v1/edge-config/:edgeConfigId/token`; use `id` to reference a token in subsequent calls (e.g. when deleting).
+   */
+  partialToken: string;
   label: string;
   /**
    * This is not the token itself, but rather an id to identify the token by
@@ -20,6 +23,10 @@ export type EdgeConfigToken = {
   id: string;
   edgeConfigId: string;
   createdAt: number;
+  /**
+   * Deprecated: the full, plaintext token. - Returned once by `POST /v1/edge-config/:edgeConfigId/token` (create). - Still returned by `GET /v1/edge-config/:edgeConfigId/token/:token` (detail) for backwards compatibility, but scheduled for removal. - **Not** returned by `GET /v1/edge-config/:edgeConfigId/tokens` (list); use `partialToken` for display and `id` to reference tokens. Do not rely on this field being present on read operations. Prefer `partialToken` for display and `id` for references.
+   */
+  token?: string | undefined;
 };
 
 /** @internal */
@@ -28,19 +35,21 @@ export const EdgeConfigToken$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  token: types.string(),
+  partialToken: types.string(),
   label: types.string(),
   id: types.string(),
   edgeConfigId: types.string(),
   createdAt: types.number(),
+  token: types.optional(types.string()),
 });
 /** @internal */
 export type EdgeConfigToken$Outbound = {
-  token: string;
+  partialToken: string;
   label: string;
   id: string;
   edgeConfigId: string;
   createdAt: number;
+  token?: string | undefined;
 };
 
 /** @internal */
@@ -49,11 +58,12 @@ export const EdgeConfigToken$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   EdgeConfigToken
 > = z.object({
-  token: z.string(),
+  partialToken: z.string(),
   label: z.string(),
   id: z.string(),
   edgeConfigId: z.string(),
   createdAt: z.number(),
+  token: z.string().optional(),
 });
 
 export function edgeConfigTokenToJSON(

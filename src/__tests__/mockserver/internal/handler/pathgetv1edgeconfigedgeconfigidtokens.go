@@ -8,6 +8,7 @@ import (
 	"mockserver/internal/handler/assert"
 	"mockserver/internal/logging"
 	"mockserver/internal/sdk/models/components"
+	"mockserver/internal/sdk/types"
 	"mockserver/internal/sdk/utils"
 	"mockserver/internal/tracking"
 	"net/http"
@@ -46,11 +47,12 @@ func testGetEdgeConfigTokensGetEdgeConfigTokens0(w http.ResponseWriter, req *htt
 		return
 	}
 	var respBody *components.EdgeConfigToken = &components.EdgeConfigToken{
-		Token:        "<value>",
+		PartialToken: "<value>",
 		Label:        "<value>",
 		ID:           "<id>",
 		EdgeConfigID: "<id>",
 		CreatedAt:    7767.4,
+		Token:        types.String("<value>"),
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

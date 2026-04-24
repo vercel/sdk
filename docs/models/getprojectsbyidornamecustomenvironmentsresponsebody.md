@@ -12,10 +12,10 @@ let value: GetProjectsByIdOrNameCustomEnvironmentsResponseBody = {
   environments: [
     {
       type: "preview",
-      createdAt: 518.37,
-      updatedAt: 1483.86,
       id: "<id>",
+      createdAt: 518.37,
       slug: "<value>",
+      updatedAt: 1483.86,
     },
   ],
 };

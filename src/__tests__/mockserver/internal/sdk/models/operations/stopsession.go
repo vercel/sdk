@@ -3,7 +3,10 @@
 package operations
 
 import (
+	"errors"
+	"fmt"
 	"mockserver/internal/sdk/models/components"
+	"mockserver/internal/sdk/utils"
 )
 
 type StopSessionRequest struct {
@@ -36,23 +39,138 @@ func (o *StopSessionRequest) GetSlug() *string {
 	return o.Slug
 }
 
-// StopSessionResponseBody - The session was stopped successfully.
-type StopSessionResponseBody struct {
+type StopSessionResponseBody2 struct {
+	// This object contains information related to a Snapshot of a Vercel Sandbox session (v2 API).
+	Snapshot components.Snapshot `json:"snapshot"`
+	// This object contains information related to a Vercel NamedSandbox.
+	Sandbox components.NamedSandbox `json:"sandbox"`
 	// This object contains information related to a Vercel Sandbox Session. v2 endpoints return "session" instead of "sandbox" as the response wrapper key.
 	Session components.Session `json:"session"`
 }
 
-func (o *StopSessionResponseBody) GetSession() components.Session {
+func (s StopSessionResponseBody2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(s, "", false)
+}
+
+func (s *StopSessionResponseBody2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &s, "", false, []string{"snapshot", "sandbox", "session"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *StopSessionResponseBody2) GetSnapshot() components.Snapshot {
+	if o == nil {
+		return components.Snapshot{}
+	}
+	return o.Snapshot
+}
+
+func (o *StopSessionResponseBody2) GetSandbox() components.NamedSandbox {
+	if o == nil {
+		return components.NamedSandbox{}
+	}
+	return o.Sandbox
+}
+
+func (o *StopSessionResponseBody2) GetSession() components.Session {
 	if o == nil {
 		return components.Session{}
 	}
 	return o.Session
 }
 
+type StopSessionResponseBody1 struct {
+	// This object contains information related to a Vercel Sandbox Session. v2 endpoints return "session" instead of "sandbox" as the response wrapper key.
+	Session components.Session `json:"session"`
+}
+
+func (s StopSessionResponseBody1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(s, "", false)
+}
+
+func (s *StopSessionResponseBody1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &s, "", false, []string{"session"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *StopSessionResponseBody1) GetSession() components.Session {
+	if o == nil {
+		return components.Session{}
+	}
+	return o.Session
+}
+
+type StopSessionResponseBodyType string
+
+const (
+	StopSessionResponseBodyTypeStopSessionResponseBody1 StopSessionResponseBodyType = "stopSession_ResponseBody_1"
+	StopSessionResponseBodyTypeStopSessionResponseBody2 StopSessionResponseBodyType = "stopSession_ResponseBody_2"
+)
+
+// StopSessionResponseBody - The session was stopped successfully.
+type StopSessionResponseBody struct {
+	StopSessionResponseBody1 *StopSessionResponseBody1 `queryParam:"inline"`
+	StopSessionResponseBody2 *StopSessionResponseBody2 `queryParam:"inline"`
+
+	Type StopSessionResponseBodyType
+}
+
+func CreateStopSessionResponseBodyStopSessionResponseBody1(stopSessionResponseBody1 StopSessionResponseBody1) StopSessionResponseBody {
+	typ := StopSessionResponseBodyTypeStopSessionResponseBody1
+
+	return StopSessionResponseBody{
+		StopSessionResponseBody1: &stopSessionResponseBody1,
+		Type:                     typ,
+	}
+}
+
+func CreateStopSessionResponseBodyStopSessionResponseBody2(stopSessionResponseBody2 StopSessionResponseBody2) StopSessionResponseBody {
+	typ := StopSessionResponseBodyTypeStopSessionResponseBody2
+
+	return StopSessionResponseBody{
+		StopSessionResponseBody2: &stopSessionResponseBody2,
+		Type:                     typ,
+	}
+}
+
+func (u *StopSessionResponseBody) UnmarshalJSON(data []byte) error {
+
+	var stopSessionResponseBody2 StopSessionResponseBody2 = StopSessionResponseBody2{}
+	if err := utils.UnmarshalJSON(data, &stopSessionResponseBody2, "", true, nil); err == nil {
+		u.StopSessionResponseBody2 = &stopSessionResponseBody2
+		u.Type = StopSessionResponseBodyTypeStopSessionResponseBody2
+		return nil
+	}
+
+	var stopSessionResponseBody1 StopSessionResponseBody1 = StopSessionResponseBody1{}
+	if err := utils.UnmarshalJSON(data, &stopSessionResponseBody1, "", true, nil); err == nil {
+		u.StopSessionResponseBody1 = &stopSessionResponseBody1
+		u.Type = StopSessionResponseBodyTypeStopSessionResponseBody1
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for StopSessionResponseBody", string(data))
+}
+
+func (u StopSessionResponseBody) MarshalJSON() ([]byte, error) {
+	if u.StopSessionResponseBody1 != nil {
+		return utils.MarshalJSON(u.StopSessionResponseBody1, "", true)
+	}
+
+	if u.StopSessionResponseBody2 != nil {
+		return utils.MarshalJSON(u.StopSessionResponseBody2, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type StopSessionResponseBody: all fields are null")
+}
+
 type StopSessionResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
 	// The session was stopped successfully.
-	Object *StopSessionResponseBody
+	OneOf *StopSessionResponseBody
 }
 
 func (o *StopSessionResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -62,9 +180,9 @@ func (o *StopSessionResponse) GetHTTPMeta() components.HTTPMetadata {
 	return o.HTTPMeta
 }
 
-func (o *StopSessionResponse) GetObject() *StopSessionResponseBody {
+func (o *StopSessionResponse) GetOneOf() *StopSessionResponseBody {
 	if o == nil {
 		return nil
 	}
-	return o.Object
+	return o.OneOf
 }

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { FluidCpuDuration } from "@vercel/sdk/models/oldprojects.js";
+import { FluidCpuDuration } from "@vercel/sdk/models/version.js";
 
 let value: FluidCpuDuration = {
   currentThreshold: 4994.98,

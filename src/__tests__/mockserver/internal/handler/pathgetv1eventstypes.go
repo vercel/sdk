@@ -7,7 +7,8 @@ import (
 	"log"
 	"mockserver/internal/handler/assert"
 	"mockserver/internal/logging"
-	"mockserver/internal/sdk/models/operations"
+	"mockserver/internal/sdk/models/components"
+	"mockserver/internal/sdk/types"
 	"mockserver/internal/sdk/utils"
 	"mockserver/internal/tracking"
 	"net/http"
@@ -45,15 +46,25 @@ func testListEventTypesListEventTypes0(w http.ResponseWriter, req *http.Request)
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	var respBody *operations.ListEventTypesResponseBody = &operations.ListEventTypesResponseBody{
-		Types: []operations.ListEventTypesType{
-			operations.ListEventTypesType{
-				ReplacedBy: []string{
-					"<value 1>",
-					"<value 2>",
-				},
-				Name:        operations.NameDomainTransferIn,
+	var respBody *components.ListEventTypesResponse = &components.ListEventTypesResponse{
+		Types: []components.ListEventType{
+			components.ListEventType{
+				Name:        components.ListEventTypeNameDomainTransferIn,
 				Description: "woot baritone lasting ah foot when worth whether bleakly",
+				Categories: []components.ListEventTypeCategory{
+					components.ListEventTypeCategoryDeployment,
+				},
+				Deprecated: types.Bool(true),
+				ReplacedBy: []components.ReplacedBy{
+					components.ReplacedByAlertRuleCreated,
+					components.ReplacedByProjectDelegatedProtectionUpdated,
+				},
+			},
+		},
+		Categories: []components.ListEventTypesResponseCategory{
+			components.ListEventTypesResponseCategory{
+				Name:  components.ListEventTypesResponseNameProject,
+				Label: "<value>",
 			},
 		},
 	}

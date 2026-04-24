@@ -27,6 +27,10 @@ export type FlagsSDKKey = {
   label?: string | undefined;
   deletedAt?: number | undefined;
   /**
+   * Partially-masked representation of the SDK key value, safe to display in UIs. The value is the `vf_<type>_` prefix followed by the first 3 characters of the secret portion and a fixed 8-character `*` mask (e.g. `vf_server_abc********`).
+   */
+  partialKeyValue: string;
+  /**
    * Cleartext value of the SDK key
    */
   keyValue?: string | undefined;
@@ -64,6 +68,7 @@ export const FlagsSDKKey$inboundSchema: z.ZodType<
   updatedAt: types.number(),
   label: types.optional(types.string()),
   deletedAt: types.optional(types.number()),
+  partialKeyValue: types.string(),
   keyValue: types.optional(types.string()),
   tokenValue: types.optional(types.string()),
   connectionString: types.optional(types.string()),
@@ -79,6 +84,7 @@ export type FlagsSDKKey$Outbound = {
   updatedAt: number;
   label?: string | undefined;
   deletedAt?: number | undefined;
+  partialKeyValue: string;
   keyValue?: string | undefined;
   tokenValue?: string | undefined;
   connectionString?: string | undefined;
@@ -99,6 +105,7 @@ export const FlagsSDKKey$outboundSchema: z.ZodType<
   updatedAt: z.number(),
   label: z.string().optional(),
   deletedAt: z.number().optional(),
+  partialKeyValue: z.string(),
   keyValue: z.string().optional(),
   tokenValue: z.string().optional(),
   connectionString: z.string().optional(),

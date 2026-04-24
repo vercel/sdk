@@ -10,15 +10,9 @@ const value: models.GetEdgeConfigBackupResponseBody1 = {
   id: "<id>",
   lastModified: 3370.31,
   backup: {
-    items: {
-      "key": {
-        createdAt: 1254.45,
-        updatedAt: 3018.16,
-        value: {},
-      },
-    },
     slug: "<value>",
-    updatedAt: 9984.91,
+    updatedAt: 7062.46,
+    items: {},
     digest: "<value>",
   },
   metadata: {},
@@ -37,9 +31,15 @@ const value: models.GetEdgeConfigBackupResponseBody2 = {
   id: "<id>",
   lastModified: 9287.58,
   backup: {
-    items: {},
     slug: "<value>",
-    updatedAt: 8767.37,
+    updatedAt: 3016.46,
+    items: {
+      "key": {
+        createdAt: 7230.66,
+        updatedAt: 4755.84,
+        value: 3802.88,
+      },
+    },
     digest: "<value>",
   },
   metadata: {},

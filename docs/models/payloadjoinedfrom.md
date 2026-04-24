@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PayloadJoinedFrom } from "@vercel/sdk/models/payloadimportflowgitnamespaceid.js";
+import { PayloadJoinedFrom } from "@vercel/sdk/models/two1.js";
 
 let value: PayloadJoinedFrom = {
   origin: "nsnb-redeploy-attribution-card",

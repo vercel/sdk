@@ -368,6 +368,10 @@ export type PatchTeamRequestBody = {
    */
   hideIpAddressesInLogDrains?: boolean | undefined;
   /**
+   * When enabled, all projects in the team require commits to be signed and verified by the git provider before deployments will be created.
+   */
+  requireVerifiedCommits?: boolean | undefined;
+  /**
    * Default deployment protection settings for new projects.
    */
   defaultDeploymentProtection?:
@@ -1257,6 +1261,7 @@ export const PatchTeamRequestBody$inboundSchema: z.ZodType<
   ),
   hideIpAddresses: types.optional(types.boolean()),
   hideIpAddressesInLogDrains: types.optional(types.boolean()),
+  requireVerifiedCommits: types.optional(types.boolean()),
   defaultDeploymentProtection: types.optional(
     z.lazy(() => PatchTeamDefaultDeploymentProtection$inboundSchema),
   ),
@@ -1298,6 +1303,7 @@ export type PatchTeamRequestBody$Outbound = {
   remoteCaching?: PatchTeamRemoteCaching$Outbound | undefined;
   hideIpAddresses?: boolean | undefined;
   hideIpAddressesInLogDrains?: boolean | undefined;
+  requireVerifiedCommits?: boolean | undefined;
   defaultDeploymentProtection?:
     | PatchTeamDefaultDeploymentProtection$Outbound
     | undefined;
@@ -1333,6 +1339,7 @@ export const PatchTeamRequestBody$outboundSchema: z.ZodType<
   remoteCaching: z.lazy(() => PatchTeamRemoteCaching$outboundSchema).optional(),
   hideIpAddresses: z.boolean().optional(),
   hideIpAddressesInLogDrains: z.boolean().optional(),
+  requireVerifiedCommits: z.boolean().optional(),
   defaultDeploymentProtection: z.lazy(() =>
     PatchTeamDefaultDeploymentProtection$outboundSchema
   ).optional(),

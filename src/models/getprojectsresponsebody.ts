@@ -14,7 +14,7 @@ import {
   GetProjectsResponseBody3$inboundSchema,
   GetProjectsResponseBody3$Outbound,
   GetProjectsResponseBody3$outboundSchema,
-} from "./getprojectsresponsebodyoidcproviders.js";
+} from "./getprojectstoprojectsresponse2.js";
 import {
   Alias,
   Alias$inboundSchema,
@@ -31,16 +31,10 @@ import {
   ResponseBodyAnalytics$inboundSchema,
   ResponseBodyAnalytics$Outbound,
   ResponseBodyAnalytics$outboundSchema,
-  ResponseBodyCve55182MigrationAppliedFrom,
-  ResponseBodyCve55182MigrationAppliedFrom$inboundSchema,
-  ResponseBodyCve55182MigrationAppliedFrom$outboundSchema,
   ResponseBodyDeploymentExpiration,
   ResponseBodyDeploymentExpiration$inboundSchema,
   ResponseBodyDeploymentExpiration$Outbound,
   ResponseBodyDeploymentExpiration$outboundSchema,
-  ResponseBodyDeploymentType,
-  ResponseBodyDeploymentType$inboundSchema,
-  ResponseBodyDeploymentType$outboundSchema,
   ResponseBodyEnv,
   ResponseBodyEnv$inboundSchema,
   ResponseBodyEnv$Outbound,
@@ -68,21 +62,95 @@ import {
   ResponseBodyResourceConfig$inboundSchema,
   ResponseBodyResourceConfig$Outbound,
   ResponseBodyResourceConfig$outboundSchema,
-  ResponseBodyRollingRelease,
-  ResponseBodyRollingRelease$inboundSchema,
-  ResponseBodyRollingRelease$Outbound,
-  ResponseBodyRollingRelease$outboundSchema,
-  ResponseBodySpeedInsights,
-  ResponseBodySpeedInsights$inboundSchema,
-  ResponseBodySpeedInsights$Outbound,
-  ResponseBodySpeedInsights$outboundSchema,
-} from "./responsebodycve55182migrationappliedfrom.js";
+} from "./responsebodyresourceconfig.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+/**
+ * An array of all the stages required during a deployment release. Each stage defines a target percentage and advancement rules. The final stage must always have targetPercentage: 100.
+ */
+export type ResponseBodyStages = {
+  /**
+   * The percentage of traffic to serve to the canary deployment (0-100)
+   */
+  targetPercentage: number;
+  /**
+   * Whether or not this stage requires manual approval to proceed
+   */
+  requireApproval?: boolean | undefined;
+  /**
+   * Duration in minutes for automatic advancement to the next stage
+   */
+  duration?: number | undefined;
+  /**
+   * Whether to linearly shift traffic over the duration of this stage
+   */
+  linearShift?: boolean | undefined;
+};
+
+/**
+ * Project-level rolling release configuration that defines how deployments should be gradually rolled out
+ */
+export type ResponseBodyRollingRelease = {
+  /**
+   * The environment that the release targets, currently only supports production. Adding in case we want to configure with alias groups or custom environments.
+   */
+  target: string;
+  /**
+   * An array of all the stages required during a deployment release. Each stage defines a target percentage and advancement rules. The final stage must always have targetPercentage: 100.
+   */
+  stages?: Array<ResponseBodyStages> | null | undefined;
+  /**
+   * Whether the request served by a canary deployment should return a header indicating a canary was served. Defaults to `false` when omitted.
+   */
+  canaryResponseHeader?: boolean | undefined;
+};
+
+export type ResponseBodySpeedInsights = {
+  id: string;
+  enabledAt?: number | undefined;
+  disabledAt?: number | undefined;
+  canceledAt?: number | undefined;
+  hasData?: boolean | undefined;
+  paidAt?: number | undefined;
+};
+
+export const ResponseBodyDeploymentType = {
+  Preview: "preview",
+  All: "all",
+  ProdDeploymentUrlsAndAllPreviews: "prod_deployment_urls_and_all_previews",
+  AllExceptCustomDomains: "all_except_custom_domains",
+} as const;
+export type ResponseBodyDeploymentType = ClosedEnum<
+  typeof ResponseBodyDeploymentType
+>;
+
+export const ResponseBodyCve55182MigrationAppliedFrom = {
+  Preview: "preview",
+  All: "all",
+  ProdDeploymentUrlsAndAllPreviews: "prod_deployment_urls_and_all_previews",
+  AllExceptCustomDomains: "all_except_custom_domains",
+} as const;
+export type ResponseBodyCve55182MigrationAppliedFrom = ClosedEnum<
+  typeof ResponseBodyCve55182MigrationAppliedFrom
+>;
+
+export const ResponseBodyApril2026SecurityIncidentMigrationAppliedFrom = {
+  Preview: "preview",
+  All: "all",
+  ProdDeploymentUrlsAndAllPreviews: "prod_deployment_urls_and_all_previews",
+  AllExceptCustomDomains: "all_except_custom_domains",
+} as const;
+export type ResponseBodyApril2026SecurityIncidentMigrationAppliedFrom =
+  ClosedEnum<typeof ResponseBodyApril2026SecurityIncidentMigrationAppliedFrom>;
 
 export type ResponseBodySsoProtection = {
   deploymentType: ResponseBodyDeploymentType;
   cve55182MigrationAppliedFrom?:
     | ResponseBodyCve55182MigrationAppliedFrom
+    | null
+    | undefined;
+  april2026SecurityIncidentMigrationAppliedFrom?:
+    | ResponseBodyApril2026SecurityIncidentMigrationAppliedFrom
     | null
     | undefined;
 };
@@ -317,7 +385,7 @@ export type ResponseBodyGitProviderOptions = {
    */
   disableRepositoryDispatchEvents?: boolean | undefined;
   /**
-   * Whether the project requires commits to be signed before deployments will be created.
+   * Whether the project requires commits to be signed & verified before deployments will be created. - `true`: require verified commits for this project (explicit override of the team setting). - `false`: do not require verified commits (explicit override of the team setting). - absent: inherit from `team.requireVerifiedCommits`.
    */
   requireVerifiedCommits?: boolean | undefined;
   /**
@@ -976,6 +1044,184 @@ export type GetProjectsResponseBody =
   | Array<GetProjectsResponseBody1>;
 
 /** @internal */
+export const ResponseBodyStages$inboundSchema: z.ZodType<
+  ResponseBodyStages,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  targetPercentage: types.number(),
+  requireApproval: types.optional(types.boolean()),
+  duration: types.optional(types.number()),
+  linearShift: types.optional(types.boolean()),
+});
+/** @internal */
+export type ResponseBodyStages$Outbound = {
+  targetPercentage: number;
+  requireApproval?: boolean | undefined;
+  duration?: number | undefined;
+  linearShift?: boolean | undefined;
+};
+
+/** @internal */
+export const ResponseBodyStages$outboundSchema: z.ZodType<
+  ResponseBodyStages$Outbound,
+  z.ZodTypeDef,
+  ResponseBodyStages
+> = z.object({
+  targetPercentage: z.number(),
+  requireApproval: z.boolean().optional(),
+  duration: z.number().optional(),
+  linearShift: z.boolean().optional(),
+});
+
+export function responseBodyStagesToJSON(
+  responseBodyStages: ResponseBodyStages,
+): string {
+  return JSON.stringify(
+    ResponseBodyStages$outboundSchema.parse(responseBodyStages),
+  );
+}
+export function responseBodyStagesFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodyStages, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodyStages$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyStages' from JSON`,
+  );
+}
+
+/** @internal */
+export const ResponseBodyRollingRelease$inboundSchema: z.ZodType<
+  ResponseBodyRollingRelease,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  target: types.string(),
+  stages: z.nullable(z.array(z.lazy(() => ResponseBodyStages$inboundSchema)))
+    .optional(),
+  canaryResponseHeader: types.optional(types.boolean()),
+});
+/** @internal */
+export type ResponseBodyRollingRelease$Outbound = {
+  target: string;
+  stages?: Array<ResponseBodyStages$Outbound> | null | undefined;
+  canaryResponseHeader?: boolean | undefined;
+};
+
+/** @internal */
+export const ResponseBodyRollingRelease$outboundSchema: z.ZodType<
+  ResponseBodyRollingRelease$Outbound,
+  z.ZodTypeDef,
+  ResponseBodyRollingRelease
+> = z.object({
+  target: z.string(),
+  stages: z.nullable(z.array(z.lazy(() => ResponseBodyStages$outboundSchema)))
+    .optional(),
+  canaryResponseHeader: z.boolean().optional(),
+});
+
+export function responseBodyRollingReleaseToJSON(
+  responseBodyRollingRelease: ResponseBodyRollingRelease,
+): string {
+  return JSON.stringify(
+    ResponseBodyRollingRelease$outboundSchema.parse(responseBodyRollingRelease),
+  );
+}
+export function responseBodyRollingReleaseFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodyRollingRelease, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodyRollingRelease$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyRollingRelease' from JSON`,
+  );
+}
+
+/** @internal */
+export const ResponseBodySpeedInsights$inboundSchema: z.ZodType<
+  ResponseBodySpeedInsights,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  id: types.string(),
+  enabledAt: types.optional(types.number()),
+  disabledAt: types.optional(types.number()),
+  canceledAt: types.optional(types.number()),
+  hasData: types.optional(types.boolean()),
+  paidAt: types.optional(types.number()),
+});
+/** @internal */
+export type ResponseBodySpeedInsights$Outbound = {
+  id: string;
+  enabledAt?: number | undefined;
+  disabledAt?: number | undefined;
+  canceledAt?: number | undefined;
+  hasData?: boolean | undefined;
+  paidAt?: number | undefined;
+};
+
+/** @internal */
+export const ResponseBodySpeedInsights$outboundSchema: z.ZodType<
+  ResponseBodySpeedInsights$Outbound,
+  z.ZodTypeDef,
+  ResponseBodySpeedInsights
+> = z.object({
+  id: z.string(),
+  enabledAt: z.number().optional(),
+  disabledAt: z.number().optional(),
+  canceledAt: z.number().optional(),
+  hasData: z.boolean().optional(),
+  paidAt: z.number().optional(),
+});
+
+export function responseBodySpeedInsightsToJSON(
+  responseBodySpeedInsights: ResponseBodySpeedInsights,
+): string {
+  return JSON.stringify(
+    ResponseBodySpeedInsights$outboundSchema.parse(responseBodySpeedInsights),
+  );
+}
+export function responseBodySpeedInsightsFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodySpeedInsights, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodySpeedInsights$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodySpeedInsights' from JSON`,
+  );
+}
+
+/** @internal */
+export const ResponseBodyDeploymentType$inboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyDeploymentType
+> = z.nativeEnum(ResponseBodyDeploymentType);
+/** @internal */
+export const ResponseBodyDeploymentType$outboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyDeploymentType
+> = ResponseBodyDeploymentType$inboundSchema;
+
+/** @internal */
+export const ResponseBodyCve55182MigrationAppliedFrom$inboundSchema:
+  z.ZodNativeEnum<typeof ResponseBodyCve55182MigrationAppliedFrom> = z
+    .nativeEnum(ResponseBodyCve55182MigrationAppliedFrom);
+/** @internal */
+export const ResponseBodyCve55182MigrationAppliedFrom$outboundSchema:
+  z.ZodNativeEnum<typeof ResponseBodyCve55182MigrationAppliedFrom> =
+    ResponseBodyCve55182MigrationAppliedFrom$inboundSchema;
+
+/** @internal */
+export const ResponseBodyApril2026SecurityIncidentMigrationAppliedFrom$inboundSchema:
+  z.ZodNativeEnum<
+    typeof ResponseBodyApril2026SecurityIncidentMigrationAppliedFrom
+  > = z.nativeEnum(ResponseBodyApril2026SecurityIncidentMigrationAppliedFrom);
+/** @internal */
+export const ResponseBodyApril2026SecurityIncidentMigrationAppliedFrom$outboundSchema:
+  z.ZodNativeEnum<
+    typeof ResponseBodyApril2026SecurityIncidentMigrationAppliedFrom
+  > = ResponseBodyApril2026SecurityIncidentMigrationAppliedFrom$inboundSchema;
+
+/** @internal */
 export const ResponseBodySsoProtection$inboundSchema: z.ZodType<
   ResponseBodySsoProtection,
   z.ZodTypeDef,
@@ -985,11 +1231,15 @@ export const ResponseBodySsoProtection$inboundSchema: z.ZodType<
   cve55182MigrationAppliedFrom: z.nullable(
     ResponseBodyCve55182MigrationAppliedFrom$inboundSchema,
   ).optional(),
+  april2026SecurityIncidentMigrationAppliedFrom: z.nullable(
+    ResponseBodyApril2026SecurityIncidentMigrationAppliedFrom$inboundSchema,
+  ).optional(),
 });
 /** @internal */
 export type ResponseBodySsoProtection$Outbound = {
   deploymentType: string;
   cve55182MigrationAppliedFrom?: string | null | undefined;
+  april2026SecurityIncidentMigrationAppliedFrom?: string | null | undefined;
 };
 
 /** @internal */
@@ -1001,6 +1251,9 @@ export const ResponseBodySsoProtection$outboundSchema: z.ZodType<
   deploymentType: ResponseBodyDeploymentType$outboundSchema,
   cve55182MigrationAppliedFrom: z.nullable(
     ResponseBodyCve55182MigrationAppliedFrom$outboundSchema,
+  ).optional(),
+  april2026SecurityIncidentMigrationAppliedFrom: z.nullable(
+    ResponseBodyApril2026SecurityIncidentMigrationAppliedFrom$outboundSchema,
   ).optional(),
 });
 
@@ -5233,12 +5486,15 @@ export const GetProjectsResponseBody1$inboundSchema: z.ZodType<
     .optional(),
   publicSource: z.nullable(types.boolean()).optional(),
   resourceConfig: ResponseBodyResourceConfig$inboundSchema,
-  rollingRelease: z.nullable(ResponseBodyRollingRelease$inboundSchema)
-    .optional(),
+  rollingRelease: z.nullable(
+    z.lazy(() => ResponseBodyRollingRelease$inboundSchema),
+  ).optional(),
   rootDirectory: z.nullable(types.string()).optional(),
   serverlessFunctionRegion: types.string(),
   serverlessFunctionZeroConfigFailover: types.optional(types.boolean()),
-  speedInsights: types.optional(ResponseBodySpeedInsights$inboundSchema),
+  speedInsights: types.optional(
+    z.lazy(() => ResponseBodySpeedInsights$inboundSchema),
+  ),
   skipGitConnectDuringLink: types.optional(types.boolean()),
   sourceFilesOutsideRootDirectory: types.optional(types.boolean()),
   ssoProtection: z.nullable(
@@ -5383,12 +5639,14 @@ export const GetProjectsResponseBody1$outboundSchema: z.ZodType<
     .optional(),
   publicSource: z.nullable(z.boolean()).optional(),
   resourceConfig: ResponseBodyResourceConfig$outboundSchema,
-  rollingRelease: z.nullable(ResponseBodyRollingRelease$outboundSchema)
-    .optional(),
+  rollingRelease: z.nullable(
+    z.lazy(() => ResponseBodyRollingRelease$outboundSchema),
+  ).optional(),
   rootDirectory: z.nullable(z.string()).optional(),
   serverlessFunctionRegion: z.string(),
   serverlessFunctionZeroConfigFailover: z.boolean().optional(),
-  speedInsights: ResponseBodySpeedInsights$outboundSchema.optional(),
+  speedInsights: z.lazy(() => ResponseBodySpeedInsights$outboundSchema)
+    .optional(),
   skipGitConnectDuringLink: z.boolean().optional(),
   sourceFilesOutsideRootDirectory: z.boolean().optional(),
   ssoProtection: z.nullable(

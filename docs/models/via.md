@@ -24,3 +24,11 @@ const value: models.Via2 = {
 };
 ```
 
+### `models.Via3`
+
+```typescript
+const value: models.Via3 = {
+  type: "system",
+};
+```
+

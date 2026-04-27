@@ -5,7 +5,7 @@ Optional overrides for the default same-env-by-slug matching. Provide explicit r
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupCustomAllow } from "@vercel/sdk/models/getmicrofrontendsingroupgitcomments.js";
+import { GetMicrofrontendsInGroupCustomAllow } from "@vercel/sdk/models/getmicrofrontendsingroupoidcproviders.js";
 
 let value: GetMicrofrontendsInGroupCustomAllow = {
   from: {

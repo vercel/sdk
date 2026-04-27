@@ -22,6 +22,24 @@ export const NamedSandboxStatus = {
  */
 export type NamedSandboxStatus = ClosedEnum<typeof NamedSandboxStatus>;
 
+/**
+ * Keep-last snapshot configuration.
+ */
+export type SnapshotKeepLast = {
+  /**
+   * Number of most recent snapshots to keep.
+   */
+  count: number;
+  /**
+   * Expiration time in milliseconds for kept snapshots.
+   */
+  expiration?: number | undefined;
+  /**
+   * Whether to immediately delete evicted snapshots.
+   */
+  deleteEvicted: boolean;
+};
+
 export const NamedSandboxMode = {
   AllowAll: "allow-all",
   DenyAll: "deny-all",
@@ -94,6 +112,10 @@ export type NamedSandbox = {
    */
   snapshotExpiration?: number | undefined;
   /**
+   * Keep-last snapshot configuration.
+   */
+  snapshotKeepLast?: SnapshotKeepLast | undefined;
+  /**
    * Network policy configuration.
    */
   networkPolicy?: NetworkPolicy | undefined;
@@ -139,6 +161,51 @@ export const NamedSandboxStatus$inboundSchema: z.ZodNativeEnum<
 export const NamedSandboxStatus$outboundSchema: z.ZodNativeEnum<
   typeof NamedSandboxStatus
 > = NamedSandboxStatus$inboundSchema;
+
+/** @internal */
+export const SnapshotKeepLast$inboundSchema: z.ZodType<
+  SnapshotKeepLast,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  count: types.number(),
+  expiration: types.optional(types.number()),
+  deleteEvicted: types.boolean(),
+});
+/** @internal */
+export type SnapshotKeepLast$Outbound = {
+  count: number;
+  expiration?: number | undefined;
+  deleteEvicted: boolean;
+};
+
+/** @internal */
+export const SnapshotKeepLast$outboundSchema: z.ZodType<
+  SnapshotKeepLast$Outbound,
+  z.ZodTypeDef,
+  SnapshotKeepLast
+> = z.object({
+  count: z.number(),
+  expiration: z.number().optional(),
+  deleteEvicted: z.boolean(),
+});
+
+export function snapshotKeepLastToJSON(
+  snapshotKeepLast: SnapshotKeepLast,
+): string {
+  return JSON.stringify(
+    SnapshotKeepLast$outboundSchema.parse(snapshotKeepLast),
+  );
+}
+export function snapshotKeepLastFromJSON(
+  jsonString: string,
+): SafeParseResult<SnapshotKeepLast, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SnapshotKeepLast$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SnapshotKeepLast' from JSON`,
+  );
+}
 
 /** @internal */
 export const NamedSandboxMode$inboundSchema: z.ZodNativeEnum<
@@ -211,6 +278,9 @@ export const NamedSandbox$inboundSchema: z.ZodType<
   runtime: types.optional(types.string()),
   timeout: types.optional(types.number()),
   snapshotExpiration: types.optional(types.number()),
+  snapshotKeepLast: types.optional(
+    z.lazy(() => SnapshotKeepLast$inboundSchema),
+  ),
   networkPolicy: types.optional(z.lazy(() => NetworkPolicy$inboundSchema)),
   totalEgressBytes: types.optional(types.number()),
   totalIngressBytes: types.optional(types.number()),
@@ -235,6 +305,7 @@ export type NamedSandbox$Outbound = {
   runtime?: string | undefined;
   timeout?: number | undefined;
   snapshotExpiration?: number | undefined;
+  snapshotKeepLast?: SnapshotKeepLast$Outbound | undefined;
   networkPolicy?: NetworkPolicy$Outbound | undefined;
   totalEgressBytes?: number | undefined;
   totalIngressBytes?: number | undefined;
@@ -264,6 +335,7 @@ export const NamedSandbox$outboundSchema: z.ZodType<
   runtime: z.string().optional(),
   timeout: z.number().optional(),
   snapshotExpiration: z.number().optional(),
+  snapshotKeepLast: z.lazy(() => SnapshotKeepLast$outboundSchema).optional(),
   networkPolicy: z.lazy(() => NetworkPolicy$outboundSchema).optional(),
   totalEgressBytes: z.number().optional(),
   totalIngressBytes: z.number().optional(),

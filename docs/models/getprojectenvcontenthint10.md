@@ -6,7 +6,7 @@
 import { GetProjectEnvContentHint10 } from "@vercel/sdk/models/getprojectenvop.js";
 
 let value: GetProjectEnvContentHint10 = {
-  type: "postgres-host",
+  type: "postgres-user",
   storeId: "<id>",
 };
 ```
@@ -15,5 +15,5 @@ let value: GetProjectEnvContentHint10 = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `type`             | *"postgres-host"*  | :heavy_check_mark: | N/A                |
+| `type`             | *"postgres-user"*  | :heavy_check_mark: | N/A                |
 | `storeId`          | *string*           | :heavy_check_mark: | N/A                |

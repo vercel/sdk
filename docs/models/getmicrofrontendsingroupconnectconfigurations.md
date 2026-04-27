@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupConnectConfigurations } from "@vercel/sdk/models/getmicrofrontendsingroupgitcomments.js";
+import { GetMicrofrontendsInGroupConnectConfigurations } from "@vercel/sdk/models/getmicrofrontendsingroupoidcproviders.js";
 
 let value: GetMicrofrontendsInGroupConnectConfigurations = {
   envId: "production",

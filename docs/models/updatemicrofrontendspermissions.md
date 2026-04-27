@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UpdateMicrofrontendsPermissions } from "@vercel/sdk/models/updatemicrofrontendsoidctokenconfig.js";
+import { UpdateMicrofrontendsPermissions } from "@vercel/sdk/models/updatemicrofrontendssecurity.js";
 
 let value: UpdateMicrofrontendsPermissions = {};
 ```
@@ -153,6 +153,8 @@ let value: UpdateMicrofrontendsPermissions = {};
 | `sharedEnvVarsProduction`                    | [models.ACLAction](../models/aclaction.md)[] | :heavy_minus_sign:                           | N/A                                          |
 | `space`                                      | [models.ACLAction](../models/aclaction.md)[] | :heavy_minus_sign:                           | N/A                                          |
 | `spaceRun`                                   | [models.ACLAction](../models/aclaction.md)[] | :heavy_minus_sign:                           | N/A                                          |
+| `storeIsLocked`                              | [models.ACLAction](../models/aclaction.md)[] | :heavy_minus_sign:                           | N/A                                          |
+| `storeTokenSetSensitive`                     | [models.ACLAction](../models/aclaction.md)[] | :heavy_minus_sign:                           | N/A                                          |
 | `storeTransfer`                              | [models.ACLAction](../models/aclaction.md)[] | :heavy_minus_sign:                           | N/A                                          |
 | `supportCase`                                | [models.ACLAction](../models/aclaction.md)[] | :heavy_minus_sign:                           | N/A                                          |
 | `supportCaseComment`                         | [models.ACLAction](../models/aclaction.md)[] | :heavy_minus_sign:                           | N/A                                          |
@@ -162,11 +164,13 @@ let value: UpdateMicrofrontendsPermissions = {};
 | `teamGitExclusivity`                         | [models.ACLAction](../models/aclaction.md)[] | :heavy_minus_sign:                           | N/A                                          |
 | `teamInvite`                                 | [models.ACLAction](../models/aclaction.md)[] | :heavy_minus_sign:                           | N/A                                          |
 | `teamInviteCode`                             | [models.ACLAction](../models/aclaction.md)[] | :heavy_minus_sign:                           | N/A                                          |
+| `teamInviteLink`                             | [models.ACLAction](../models/aclaction.md)[] | :heavy_minus_sign:                           | N/A                                          |
 | `teamJoin`                                   | [models.ACLAction](../models/aclaction.md)[] | :heavy_minus_sign:                           | N/A                                          |
 | `teamMemberMfaStatus`                        | [models.ACLAction](../models/aclaction.md)[] | :heavy_minus_sign:                           | N/A                                          |
 | `teamMicrofrontends`                         | [models.ACLAction](../models/aclaction.md)[] | :heavy_minus_sign:                           | N/A                                          |
 | `teamOwnMembership`                          | [models.ACLAction](../models/aclaction.md)[] | :heavy_minus_sign:                           | N/A                                          |
 | `teamOwnMembershipDisconnectSAML`            | [models.ACLAction](../models/aclaction.md)[] | :heavy_minus_sign:                           | N/A                                          |
+| `teamTokenInvalidation`                      | [models.ACLAction](../models/aclaction.md)[] | :heavy_minus_sign:                           | N/A                                          |
 | `token`                                      | [models.ACLAction](../models/aclaction.md)[] | :heavy_minus_sign:                           | N/A                                          |
 | `toolbarComment`                             | [models.ACLAction](../models/aclaction.md)[] | :heavy_minus_sign:                           | N/A                                          |
 | `usage`                                      | [models.ACLAction](../models/aclaction.md)[] | :heavy_minus_sign:                           | N/A                                          |

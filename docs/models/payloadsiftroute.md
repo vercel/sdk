@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PayloadSiftRoute } from "@vercel/sdk/models/oldprojects.js";
+import { PayloadSiftRoute } from "@vercel/sdk/models/version.js";
 
 let value: PayloadSiftRoute = {
   name: "string",
@@ -12,6 +12,6 @@ let value: PayloadSiftRoute = {
 
 ## Fields
 
-| Field                                          | Type                                           | Required                                       | Description                                    |
-| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| `name`                                         | [models.PayloadName](../models/payloadname.md) | :heavy_check_mark:                             | N/A                                            |
+| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `name`                                                           | [models.UserEventPayloadName](../models/usereventpayloadname.md) | :heavy_check_mark:                                               | N/A                                                              |

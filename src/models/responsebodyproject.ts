@@ -663,7 +663,7 @@ export type GetDeploymentResponseBodyDeploymentsState = ClosedEnum<
 >;
 
 /**
- * Present when deployment was created with VERCEL_MANUAL_PROVISIONING=true. The deployment stays in INITIALIZING until /continue is called.
+ * Present when deployment was created with manual provisioning enabled, either explicitly or via the experimental BYOC git flow. The deployment stays in INITIALIZING until /continue is called.
  */
 export type ResponseBodyManualProvisioning = {
   /**
@@ -886,7 +886,7 @@ export type GetDeploymentResponseBody2 = {
     | GetDeploymentGitSourceDeployments10
     | undefined;
   /**
-   * Present when deployment was created with VERCEL_MANUAL_PROVISIONING=true. The deployment stays in INITIALIZING until /continue is called.
+   * Present when deployment was created with manual provisioning enabled, either explicitly or via the experimental BYOC git flow. The deployment stays in INITIALIZING until /continue is called.
    */
   manualProvisioning?: ResponseBodyManualProvisioning | undefined;
   meta: { [k: string]: string };
@@ -1780,7 +1780,7 @@ export type GetDeploymentResponseBodyState = ClosedEnum<
 >;
 
 /**
- * Present when deployment was created with VERCEL_MANUAL_PROVISIONING=true. The deployment stays in INITIALIZING until /continue is called.
+ * Present when deployment was created with manual provisioning enabled, either explicitly or via the experimental BYOC git flow. The deployment stays in INITIALIZING until /continue is called.
  */
 export type GetDeploymentResponseBodyManualProvisioning = {
   /**

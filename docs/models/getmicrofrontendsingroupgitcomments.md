@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupGitComments } from "@vercel/sdk/models/getmicrofrontendsingroupgitcomments.js";
+import { GetMicrofrontendsInGroupGitComments } from "@vercel/sdk/models/getmicrofrontendsingroupresponsebody.js";
 
 let value: GetMicrofrontendsInGroupGitComments = {
   onPullRequest: true,

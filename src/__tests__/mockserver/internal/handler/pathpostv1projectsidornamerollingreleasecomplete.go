@@ -55,11 +55,11 @@ func testCompleteRollingReleaseCompleteRollingRelease0(w http.ResponseWriter, re
 	var respBody *operations.CompleteRollingReleaseResponseBody = &operations.CompleteRollingReleaseResponseBody{
 		RollingRelease: &operations.CompleteRollingReleaseRollingRelease{
 			State:    operations.CompleteRollingReleaseStateActive,
-			Substate: operations.CompleteRollingReleaseSubstatePaused.ToPointer(),
+			Substate: nil,
 			CurrentDeployment: &operations.CompleteRollingReleaseCurrentDeployment{
+				ID:           "dpl_abc123",
 				Name:         "my-shop@main",
 				CreatedAt:    1716206500000,
-				ID:           "dpl_abc123",
 				ReadyState:   operations.CompleteRollingReleaseCurrentDeploymentReadyStateReady,
 				ReadyStateAt: types.Float64(1716206800000),
 				Source:       operations.CompleteRollingReleaseCurrentDeploymentSourceGit.ToPointer(),
@@ -67,9 +67,9 @@ func testCompleteRollingReleaseCompleteRollingRelease0(w http.ResponseWriter, re
 				URL:          "my-shop.vercel.app",
 			},
 			CanaryDeployment: &operations.CompleteRollingReleaseCanaryDeployment{
+				ID:           "dpl_def456",
 				Name:         "my-shop@9c7e2f4",
 				CreatedAt:    1716210100000,
-				ID:           "dpl_def456",
 				ReadyState:   operations.CompleteRollingReleaseCanaryDeploymentReadyStateReady,
 				ReadyStateAt: types.Float64(1716210400000),
 				Source:       operations.CompleteRollingReleaseCanaryDeploymentSourceGit.ToPointer(),

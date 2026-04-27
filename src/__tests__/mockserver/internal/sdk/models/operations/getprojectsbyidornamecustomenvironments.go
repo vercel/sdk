@@ -277,14 +277,14 @@ type GetProjectsByIDOrNameCustomEnvironmentsEnvironment struct {
 	Type GetProjectsByIDOrNameCustomEnvironmentsType `json:"type"`
 	// Optional description of the environment's purpose
 	Description *string `json:"description,omitempty"`
-	// Timestamp when the environment was created
-	CreatedAt float64 `json:"createdAt"`
-	// Timestamp when the environment was last updated
-	UpdatedAt float64 `json:"updatedAt"`
 	// Unique identifier for the custom environment (format: env_*)
 	ID string `json:"id"`
+	// Timestamp when the environment was created
+	CreatedAt float64 `json:"createdAt"`
 	// URL-friendly name of the environment
 	Slug string `json:"slug"`
+	// Timestamp when the environment was last updated
+	UpdatedAt float64 `json:"updatedAt"`
 	// List of domains associated with this environment
 	Domains []GetProjectsByIDOrNameCustomEnvironmentsDomain `json:"domains,omitempty"`
 	// Configuration for matching git branches to this environment
@@ -307,20 +307,6 @@ func (o *GetProjectsByIDOrNameCustomEnvironmentsEnvironment) GetDescription() *s
 	return o.Description
 }
 
-func (o *GetProjectsByIDOrNameCustomEnvironmentsEnvironment) GetCreatedAt() float64 {
-	if o == nil {
-		return 0.0
-	}
-	return o.CreatedAt
-}
-
-func (o *GetProjectsByIDOrNameCustomEnvironmentsEnvironment) GetUpdatedAt() float64 {
-	if o == nil {
-		return 0.0
-	}
-	return o.UpdatedAt
-}
-
 func (o *GetProjectsByIDOrNameCustomEnvironmentsEnvironment) GetID() string {
 	if o == nil {
 		return ""
@@ -328,11 +314,25 @@ func (o *GetProjectsByIDOrNameCustomEnvironmentsEnvironment) GetID() string {
 	return o.ID
 }
 
+func (o *GetProjectsByIDOrNameCustomEnvironmentsEnvironment) GetCreatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CreatedAt
+}
+
 func (o *GetProjectsByIDOrNameCustomEnvironmentsEnvironment) GetSlug() string {
 	if o == nil {
 		return ""
 	}
 	return o.Slug
+}
+
+func (o *GetProjectsByIDOrNameCustomEnvironmentsEnvironment) GetUpdatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.UpdatedAt
 }
 
 func (o *GetProjectsByIDOrNameCustomEnvironmentsEnvironment) GetDomains() []GetProjectsByIDOrNameCustomEnvironmentsDomain {

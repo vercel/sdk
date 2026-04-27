@@ -1,0 +1,24 @@
+# Payload3
+
+The payload of the event, if requested.
+
+## Example Usage
+
+```typescript
+import { Payload3 } from "@vercel/sdk/models/payload1.js";
+
+let value: Payload3 = {
+  action: "rotated",
+  environment: "<value>",
+};
+```
+
+## Fields
+
+| Field                                              | Type                                               | Required                                           | Description                                        |
+| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
+| `action`                                           | [models.PayloadAction](../models/payloadaction.md) | :heavy_check_mark:                                 | N/A                                                |
+| `label`                                            | *string*                                           | :heavy_minus_sign:                                 | N/A                                                |
+| `projectName`                                      | *string*                                           | :heavy_minus_sign:                                 | N/A                                                |
+| `projectId`                                        | *string*                                           | :heavy_minus_sign:                                 | N/A                                                |
+| `environment`                                      | *string*                                           | :heavy_check_mark:                                 | N/A                                                |

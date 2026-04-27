@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupStaticIps } from "@vercel/sdk/models/getmicrofrontendsingroupgitcomments.js";
+import { GetMicrofrontendsInGroupStaticIps } from "@vercel/sdk/models/getmicrofrontendsingroupoidcproviders.js";
 
 let value: GetMicrofrontendsInGroupStaticIps = {
   builds: true,

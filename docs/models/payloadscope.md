@@ -1,17 +1,17 @@
 # PayloadScope
 
-Which repository visibilities get automatic reviews
+Scope of the token: - `'user'`: full-account token (not tied to any team). - `'team'`: scoped to a single team. - `'project'`: scoped to a single project within a team.
 
 ## Example Usage
 
 ```typescript
-import { PayloadScope } from "@vercel/sdk/models/budget.js";
+import { PayloadScope } from "@vercel/sdk/models/twohundredandfortyseven.js";
 
-let value: PayloadScope = "selected_repos";
+let value: PayloadScope = "project";
 ```
 
 ## Values
 
 ```typescript
-"public" | "private" | "all" | "selected_repos"
+"user" | "team" | "project"
 ```

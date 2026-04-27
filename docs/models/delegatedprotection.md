@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { DelegatedProtection } from "@vercel/sdk/models/createprojectcreatedeployments.js";
+import { DelegatedProtection } from "@vercel/sdk/models/createprojecttrustedsources.js";
 
 let value: DelegatedProtection = {};
 ```

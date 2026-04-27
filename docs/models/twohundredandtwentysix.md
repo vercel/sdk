@@ -5,19 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndTwentySix } from "@vercel/sdk/models/usereventpayload172next.js";
+import { TwoHundredAndTwentySix } from "@vercel/sdk/models/onehundredandninetytwo.js";
 
 let value: TwoHundredAndTwentySix = {
-  uid: "<id>",
-  name: {
-    name: "<value>",
-  },
+  gitProvider: "<value>",
+  gitProviderGroupDescriptor: "<value>",
+  gitScope: "<value>",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `uid`              | *string*           | :heavy_check_mark: | N/A                |
-| `name`             | *models.Name*      | :heavy_check_mark: | N/A                |
+| Field                        | Type                         | Required                     | Description                  |
+| ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- |
+| `gitProvider`                | *string*                     | :heavy_check_mark:           | N/A                          |
+| `gitProviderGroupDescriptor` | *string*                     | :heavy_check_mark:           | N/A                          |
+| `gitScope`                   | *string*                     | :heavy_check_mark:           | N/A                          |

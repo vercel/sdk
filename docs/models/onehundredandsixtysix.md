@@ -5,25 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndSixtySix } from "@vercel/sdk/models/payloadimportflowgitnamespaceid.js";
+import { OneHundredAndSixtySix } from "@vercel/sdk/models/two1.js";
 
 let value: OneHundredAndSixtySix = {
   projectId: "<id>",
   projectName: "<value>",
-  customEnvironmentId: "<id>",
-  customEnvironmentSlug: "<value>",
-  previous: {},
-  next: {},
+  autoAssignCustomDomains: true,
 };
 ```
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `projectId`                                                                    | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
-| `projectName`                                                                  | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
-| `customEnvironmentId`                                                          | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
-| `customEnvironmentSlug`                                                        | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
-| `previous`                                                                     | [models.UserEventPayload166Previous](../models/usereventpayload166previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
-| `next`                                                                         | [models.UserEventPayload166Next](../models/usereventpayload166next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
+| Field                     | Type                      | Required                  | Description               |
+| ------------------------- | ------------------------- | ------------------------- | ------------------------- |
+| `projectId`               | *string*                  | :heavy_check_mark:        | N/A                       |
+| `projectName`             | *string*                  | :heavy_check_mark:        | N/A                       |
+| `autoAssignCustomDomains` | *boolean*                 | :heavy_check_mark:        | N/A                       |

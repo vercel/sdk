@@ -5,19 +5,24 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndSeventySeven } from "@vercel/sdk/models/usereventpayload172next.js";
+import { OneHundredAndSeventySeven } from "@vercel/sdk/models/two1.js";
 
 let value: OneHundredAndSeventySeven = {
   projectId: "<id>",
   projectName: "<value>",
-  onPullRequest: false,
+  next: {
+    gitProvider: "bitbucket",
+    gitRepoId: "<id>",
+    gitRepositoryName: "<value>",
+  },
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
-| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
-| `onPullRequest`    | *boolean*          | :heavy_check_mark: | N/A                |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `projectId`                                                                    | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `projectName`                                                                  | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `previous`                                                                     | [models.UserEventPayload177Previous](../models/usereventpayload177previous.md) | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `next`                                                                         | [models.UserEventPayload177Next](../models/usereventpayload177next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |

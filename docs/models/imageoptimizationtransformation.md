@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ImageOptimizationTransformation } from "@vercel/sdk/models/oldprojects.js";
+import { ImageOptimizationTransformation } from "@vercel/sdk/models/version.js";
 
 let value: ImageOptimizationTransformation = {
   currentThreshold: 6667.74,

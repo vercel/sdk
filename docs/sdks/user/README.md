@@ -167,7 +167,7 @@ run();
 
 ### Response
 
-**Promise\<[models.ListEventTypesResponseBody](../../models/listeventtypesresponsebody.md)\>**
+**Promise\<[models.ListEventTypesResponse](../../models/listeventtypesresponse.md)\>**
 
 ### Errors
 

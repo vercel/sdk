@@ -5,33 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndSixtyOne } from "@vercel/sdk/models/payloadimportflowgitnamespaceid.js";
+import { OneHundredAndSixtyOne } from "@vercel/sdk/models/two1.js";
 
 let value: OneHundredAndSixtyOne = {
-  next: {
-    clientId: "<id>",
-    deploymentType: "<value>",
-    issuer: "visa",
-  },
-  previous: {
-    clientId: "<id>",
-    deploymentType: "<value>",
-    issuer: "discover",
-  },
   projectId: "<id>",
   projectName: "<value>",
-  updates: [
-    "clientSecret",
-  ],
+  action: "disabled",
 };
 ```
 
 ## Fields
 
-| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
-| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| `next`                                                                   | [models.UserEventPayloadNext](../models/usereventpayloadnext.md)         | :heavy_check_mark:                                                       | N/A                                                                      |
-| `previous`                                                               | [models.UserEventPayloadPrevious](../models/usereventpayloadprevious.md) | :heavy_check_mark:                                                       | N/A                                                                      |
-| `projectId`                                                              | *string*                                                                 | :heavy_check_mark:                                                       | N/A                                                                      |
-| `projectName`                                                            | *string*                                                                 | :heavy_check_mark:                                                       | N/A                                                                      |
-| `updates`                                                                | [models.Updates](../models/updates.md)[]                                 | :heavy_check_mark:                                                       | N/A                                                                      |
+| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `projectId`                                                                | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
+| `projectName`                                                              | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
+| `action`                                                                   | [models.UserEventPayload161Action](../models/usereventpayload161action.md) | :heavy_check_mark:                                                         | N/A                                                                        |

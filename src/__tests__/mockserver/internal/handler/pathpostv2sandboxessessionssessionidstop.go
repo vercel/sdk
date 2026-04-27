@@ -47,57 +47,59 @@ func testStopSessionStopSession0(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	var respBody *operations.StopSessionResponseBody = &operations.StopSessionResponseBody{
-		Session: components.Session{
-			SourceSandboxName: "my-sandbox",
-			ProjectID:         "prj_123a6c5209bc3778245d011443644c8d27dc2c50",
-			ID:                "sbx_123a6c5209bc3778245d011443644c8d27dc2c50",
-			Memory:            2048,
-			Vcpus:             2,
-			Region:            "iad1",
-			Runtime:           "node22",
-			Timeout:           3600000,
-			Status:            components.SessionStatusRunning,
-			RequestedAt:       1750344501629,
-			StartedAt:         types.Float64(1750344501629),
-			Cwd:               "/vercel/sandbox",
-			RequestedStopAt:   types.Float64(1750344501629),
-			StoppedAt:         types.Float64(1750344501629),
-			AbortedAt:         types.Float64(1750344501629),
-			Duration:          types.Float64(3600000),
-			SourceSnapshotID:  types.String("snap_123a6c5209bc3778245d011443644c8d27dc2c50"),
-			SnapshottedAt:     types.Float64(1750344501629),
-			CreatedAt:         1750344501629,
-			UpdatedAt:         1750344501629,
-			NetworkPolicy: &components.SandboxNetworkPolicy{
-				Mode: components.SandboxNetworkPolicyModeCustom,
-				AllowedDomains: []string{
-					"api.vercel.com",
-					"*.example.com",
-				},
-				AllowedCIDRs: []string{
-					"10.0.0.0/8",
-				},
-				DeniedCIDRs: []string{
-					"10.0.0.0/8",
-				},
-				InjectionRules: []components.SandboxInjectionRule{
-					components.SandboxInjectionRule{
-						Domain: "api.vercel.com",
-						HeaderNames: []string{
-							"Authorization",
-							"X-API-Key",
+	var respBody *operations.StopSessionResponseBody = types.Pointer(operations.CreateStopSessionResponseBodyStopSessionResponseBody1(
+		operations.StopSessionResponseBody1{
+			Session: components.Session{
+				SourceSandboxName: "my-sandbox",
+				ProjectID:         "prj_123a6c5209bc3778245d011443644c8d27dc2c50",
+				ID:                "sbx_123a6c5209bc3778245d011443644c8d27dc2c50",
+				Memory:            2048,
+				Vcpus:             2,
+				Region:            "iad1",
+				Runtime:           "node22",
+				Timeout:           3600000,
+				Status:            components.SessionStatusRunning,
+				RequestedAt:       1750344501629,
+				StartedAt:         types.Float64(1750344501629),
+				Cwd:               "/vercel/sandbox",
+				RequestedStopAt:   types.Float64(1750344501629),
+				StoppedAt:         types.Float64(1750344501629),
+				AbortedAt:         types.Float64(1750344501629),
+				Duration:          types.Float64(3600000),
+				SourceSnapshotID:  types.String("snap_123a6c5209bc3778245d011443644c8d27dc2c50"),
+				SnapshottedAt:     types.Float64(1750344501629),
+				CreatedAt:         1750344501629,
+				UpdatedAt:         1750344501629,
+				NetworkPolicy: &components.SandboxNetworkPolicy{
+					Mode: components.SandboxNetworkPolicyModeCustom,
+					AllowedDomains: []string{
+						"api.vercel.com",
+						"*.example.com",
+					},
+					AllowedCIDRs: []string{
+						"10.0.0.0/8",
+					},
+					DeniedCIDRs: []string{
+						"10.0.0.0/8",
+					},
+					InjectionRules: []components.SandboxInjectionRule{
+						components.SandboxInjectionRule{
+							Domain: "api.vercel.com",
+							HeaderNames: []string{
+								"Authorization",
+								"X-API-Key",
+							},
 						},
 					},
 				},
-			},
-			ActiveCPUDurationMs: types.Float64(42),
-			NetworkTransfer: &components.SessionNetworkTransfer{
-				Ingress: 7335.08,
-				Egress:  6426.83,
+				ActiveCPUDurationMs: types.Float64(42),
+				NetworkTransfer: &components.SessionNetworkTransfer{
+					Ingress: 7335.08,
+					Egress:  6426.83,
+				},
 			},
 		},
-	}
+	))
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 
 	if err != nil {

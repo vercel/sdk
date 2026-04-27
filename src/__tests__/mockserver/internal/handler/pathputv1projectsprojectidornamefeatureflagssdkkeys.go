@@ -51,13 +51,14 @@ func testCreateSDKKeyCreateSDKKey0(w http.ResponseWriter, req *http.Request) {
 		return
 	}
 	var respBody *components.FlagsSDKKey = &components.FlagsSDKKey{
-		HashKey:     "<value>",
-		ProjectID:   "<id>",
-		Type:        components.FlagsSDKKeyTypeMobile,
-		Environment: "<value>",
-		CreatedBy:   "<value>",
-		CreatedAt:   4791.7,
-		UpdatedAt:   3218.83,
+		HashKey:         "<value>",
+		ProjectID:       "<id>",
+		Type:            components.FlagsSDKKeyTypeMobile,
+		Environment:     "<value>",
+		CreatedBy:       "<value>",
+		CreatedAt:       4791.7,
+		UpdatedAt:       3218.83,
+		PartialKeyValue: "<value>",
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

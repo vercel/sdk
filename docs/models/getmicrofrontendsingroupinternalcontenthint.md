@@ -5,7 +5,7 @@ Similar to `contentHints`, but should not be exposed to the user.
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupInternalContentHint } from "@vercel/sdk/models/getmicrofrontendsingroupgitcomments.js";
+import { GetMicrofrontendsInGroupInternalContentHint } from "@vercel/sdk/models/getmicrofrontendsingroupoidcproviders.js";
 
 let value: GetMicrofrontendsInGroupInternalContentHint = {
   type: "flags-secret",

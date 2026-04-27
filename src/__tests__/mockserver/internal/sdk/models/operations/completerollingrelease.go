@@ -226,12 +226,12 @@ func (e *CompleteRollingReleaseCurrentDeploymentTarget) UnmarshalJSON(data []byt
 
 // CompleteRollingReleaseCurrentDeployment - The current deployment receiving production traffic
 type CompleteRollingReleaseCurrentDeployment struct {
+	// A string holding the unique ID of the deployment
+	ID string `json:"id"`
 	// The name of the project associated with the deployment at the time that the deployment was created
 	Name string `json:"name"`
 	// A number containing the date when the deployment was created in milliseconds
 	CreatedAt float64 `json:"createdAt"`
-	// A string holding the unique ID of the deployment
-	ID string `json:"id"`
 	// The state of the deployment depending on the process of deploying, or if it is ready or in an error state
 	ReadyState   CompleteRollingReleaseCurrentDeploymentReadyState `json:"readyState"`
 	ReadyStateAt *float64                                          `json:"readyStateAt,omitempty"`
@@ -241,6 +241,13 @@ type CompleteRollingReleaseCurrentDeployment struct {
 	Target optionalnullable.OptionalNullable[CompleteRollingReleaseCurrentDeploymentTarget] `json:"target,omitempty"`
 	// A string with the unique URL of the deployment
 	URL string `json:"url"`
+}
+
+func (o *CompleteRollingReleaseCurrentDeployment) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
 }
 
 func (o *CompleteRollingReleaseCurrentDeployment) GetName() string {
@@ -255,13 +262,6 @@ func (o *CompleteRollingReleaseCurrentDeployment) GetCreatedAt() float64 {
 		return 0.0
 	}
 	return o.CreatedAt
-}
-
-func (o *CompleteRollingReleaseCurrentDeployment) GetID() string {
-	if o == nil {
-		return ""
-	}
-	return o.ID
 }
 
 func (o *CompleteRollingReleaseCurrentDeployment) GetReadyState() CompleteRollingReleaseCurrentDeploymentReadyState {
@@ -412,12 +412,12 @@ func (e *CompleteRollingReleaseCanaryDeploymentTarget) UnmarshalJSON(data []byte
 
 // CompleteRollingReleaseCanaryDeployment - The canary deployment being rolled out
 type CompleteRollingReleaseCanaryDeployment struct {
+	// A string holding the unique ID of the deployment
+	ID string `json:"id"`
 	// The name of the project associated with the deployment at the time that the deployment was created
 	Name string `json:"name"`
 	// A number containing the date when the deployment was created in milliseconds
 	CreatedAt float64 `json:"createdAt"`
-	// A string holding the unique ID of the deployment
-	ID string `json:"id"`
 	// The state of the deployment depending on the process of deploying, or if it is ready or in an error state
 	ReadyState   CompleteRollingReleaseCanaryDeploymentReadyState `json:"readyState"`
 	ReadyStateAt *float64                                         `json:"readyStateAt,omitempty"`
@@ -427,6 +427,13 @@ type CompleteRollingReleaseCanaryDeployment struct {
 	Target optionalnullable.OptionalNullable[CompleteRollingReleaseCanaryDeploymentTarget] `json:"target,omitempty"`
 	// A string with the unique URL of the deployment
 	URL string `json:"url"`
+}
+
+func (o *CompleteRollingReleaseCanaryDeployment) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
 }
 
 func (o *CompleteRollingReleaseCanaryDeployment) GetName() string {
@@ -441,13 +448,6 @@ func (o *CompleteRollingReleaseCanaryDeployment) GetCreatedAt() float64 {
 		return 0.0
 	}
 	return o.CreatedAt
-}
-
-func (o *CompleteRollingReleaseCanaryDeployment) GetID() string {
-	if o == nil {
-		return ""
-	}
-	return o.ID
 }
 
 func (o *CompleteRollingReleaseCanaryDeployment) GetReadyState() CompleteRollingReleaseCanaryDeploymentReadyState {

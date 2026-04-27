@@ -871,7 +871,7 @@ export const CancelDeploymentState = {
 export type CancelDeploymentState = ClosedEnum<typeof CancelDeploymentState>;
 
 /**
- * Present when deployment was created with VERCEL_MANUAL_PROVISIONING=true. The deployment stays in INITIALIZING until /continue is called.
+ * Present when deployment was created with manual provisioning enabled, either explicitly or via the experimental BYOC git flow. The deployment stays in INITIALIZING until /continue is called.
  */
 export type CancelDeploymentManualProvisioning = {
   /**
@@ -2000,7 +2000,7 @@ export type CancelDeploymentResponseBody = {
     | GitSource10
     | undefined;
   /**
-   * Present when deployment was created with VERCEL_MANUAL_PROVISIONING=true. The deployment stays in INITIALIZING until /continue is called.
+   * Present when deployment was created with manual provisioning enabled, either explicitly or via the experimental BYOC git flow. The deployment stays in INITIALIZING until /continue is called.
    */
   manualProvisioning?: CancelDeploymentManualProvisioning | undefined;
   meta: { [k: string]: string };

@@ -8,10 +8,8 @@ import { userListUserEvents } from "../funcs/userListUserEvents.js";
 import { userRequestDelete } from "../funcs/userRequestDelete.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import { GetAuthUserResponseBody } from "../models/getauthuserop.js";
-import {
-  ListEventTypesRequest,
-  ListEventTypesResponseBody,
-} from "../models/listeventtypesop.js";
+import { ListEventTypesRequest } from "../models/listeventtypesop.js";
+import { ListEventTypesResponse } from "../models/listeventtypesresponse.js";
 import {
   ListUserEventsRequest,
   ListUserEventsResponseBody,
@@ -49,7 +47,7 @@ export class User extends ClientSDK {
   async listEventTypes(
     request: ListEventTypesRequest,
     options?: RequestOptions,
-  ): Promise<ListEventTypesResponseBody> {
+  ): Promise<ListEventTypesResponse> {
     return unwrapAsync(userListEventTypes(
       this,
       request,

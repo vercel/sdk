@@ -3,18 +3,133 @@
 package operations
 
 import (
+	"errors"
+	"fmt"
 	"mockserver/internal/sdk/models/components"
+	"mockserver/internal/sdk/utils"
 )
 
-type DeleteEdgeConfigTokensRequestBody struct {
-	Tokens []string `json:"tokens"`
+type DeleteEdgeConfigTokensRequestBody2 struct {
+	Tokens []string `json:"tokens,omitempty"`
+	Ids    []string `json:"ids"`
 }
 
-func (o *DeleteEdgeConfigTokensRequestBody) GetTokens() []string {
+func (d DeleteEdgeConfigTokensRequestBody2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DeleteEdgeConfigTokensRequestBody2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"ids"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *DeleteEdgeConfigTokensRequestBody2) GetTokens() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Tokens
+}
+
+func (o *DeleteEdgeConfigTokensRequestBody2) GetIds() []string {
+	if o == nil {
+		return []string{}
+	}
+	return o.Ids
+}
+
+type DeleteEdgeConfigTokensRequestBody1 struct {
+	Tokens []string `json:"tokens"`
+	Ids    []string `json:"ids,omitempty"`
+}
+
+func (d DeleteEdgeConfigTokensRequestBody1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DeleteEdgeConfigTokensRequestBody1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"tokens"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *DeleteEdgeConfigTokensRequestBody1) GetTokens() []string {
 	if o == nil {
 		return []string{}
 	}
 	return o.Tokens
+}
+
+func (o *DeleteEdgeConfigTokensRequestBody1) GetIds() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Ids
+}
+
+type DeleteEdgeConfigTokensRequestBodyType string
+
+const (
+	DeleteEdgeConfigTokensRequestBodyTypeDeleteEdgeConfigTokensRequestBody1 DeleteEdgeConfigTokensRequestBodyType = "deleteEdgeConfigTokens_RequestBody_1"
+	DeleteEdgeConfigTokensRequestBodyTypeDeleteEdgeConfigTokensRequestBody2 DeleteEdgeConfigTokensRequestBodyType = "deleteEdgeConfigTokens_RequestBody_2"
+)
+
+type DeleteEdgeConfigTokensRequestBody struct {
+	DeleteEdgeConfigTokensRequestBody1 *DeleteEdgeConfigTokensRequestBody1 `queryParam:"inline"`
+	DeleteEdgeConfigTokensRequestBody2 *DeleteEdgeConfigTokensRequestBody2 `queryParam:"inline"`
+
+	Type DeleteEdgeConfigTokensRequestBodyType
+}
+
+func CreateDeleteEdgeConfigTokensRequestBodyDeleteEdgeConfigTokensRequestBody1(deleteEdgeConfigTokensRequestBody1 DeleteEdgeConfigTokensRequestBody1) DeleteEdgeConfigTokensRequestBody {
+	typ := DeleteEdgeConfigTokensRequestBodyTypeDeleteEdgeConfigTokensRequestBody1
+
+	return DeleteEdgeConfigTokensRequestBody{
+		DeleteEdgeConfigTokensRequestBody1: &deleteEdgeConfigTokensRequestBody1,
+		Type:                               typ,
+	}
+}
+
+func CreateDeleteEdgeConfigTokensRequestBodyDeleteEdgeConfigTokensRequestBody2(deleteEdgeConfigTokensRequestBody2 DeleteEdgeConfigTokensRequestBody2) DeleteEdgeConfigTokensRequestBody {
+	typ := DeleteEdgeConfigTokensRequestBodyTypeDeleteEdgeConfigTokensRequestBody2
+
+	return DeleteEdgeConfigTokensRequestBody{
+		DeleteEdgeConfigTokensRequestBody2: &deleteEdgeConfigTokensRequestBody2,
+		Type:                               typ,
+	}
+}
+
+func (u *DeleteEdgeConfigTokensRequestBody) UnmarshalJSON(data []byte) error {
+
+	var deleteEdgeConfigTokensRequestBody1 DeleteEdgeConfigTokensRequestBody1 = DeleteEdgeConfigTokensRequestBody1{}
+	if err := utils.UnmarshalJSON(data, &deleteEdgeConfigTokensRequestBody1, "", true, nil); err == nil {
+		u.DeleteEdgeConfigTokensRequestBody1 = &deleteEdgeConfigTokensRequestBody1
+		u.Type = DeleteEdgeConfigTokensRequestBodyTypeDeleteEdgeConfigTokensRequestBody1
+		return nil
+	}
+
+	var deleteEdgeConfigTokensRequestBody2 DeleteEdgeConfigTokensRequestBody2 = DeleteEdgeConfigTokensRequestBody2{}
+	if err := utils.UnmarshalJSON(data, &deleteEdgeConfigTokensRequestBody2, "", true, nil); err == nil {
+		u.DeleteEdgeConfigTokensRequestBody2 = &deleteEdgeConfigTokensRequestBody2
+		u.Type = DeleteEdgeConfigTokensRequestBodyTypeDeleteEdgeConfigTokensRequestBody2
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for DeleteEdgeConfigTokensRequestBody", string(data))
+}
+
+func (u DeleteEdgeConfigTokensRequestBody) MarshalJSON() ([]byte, error) {
+	if u.DeleteEdgeConfigTokensRequestBody1 != nil {
+		return utils.MarshalJSON(u.DeleteEdgeConfigTokensRequestBody1, "", true)
+	}
+
+	if u.DeleteEdgeConfigTokensRequestBody2 != nil {
+		return utils.MarshalJSON(u.DeleteEdgeConfigTokensRequestBody2, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type DeleteEdgeConfigTokensRequestBody: all fields are null")
 }
 
 type DeleteEdgeConfigTokensRequest struct {

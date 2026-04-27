@@ -191,6 +191,10 @@ export type Updated = {
    */
   applyToAllCustomEnvironments?: boolean | undefined;
   /**
+   * The custom environment IDs that this Shared Env Var is scoped to.
+   */
+  customEnvironmentIds?: Array<string> | undefined;
+  /**
    * whether or not this env variable is decrypted
    */
   decrypted?: boolean | undefined;
@@ -527,6 +531,7 @@ export const Updated$inboundSchema: z.ZodType<Updated, z.ZodTypeDef, unknown> =
       z.array(UpdateSharedEnvVariableEnvironmentTarget$inboundSchema),
     ),
     applyToAllCustomEnvironments: types.optional(types.boolean()),
+    customEnvironmentIds: types.optional(z.array(types.string())),
     decrypted: types.optional(types.boolean()),
     comment: types.optional(types.string()),
     lastEditedByDisplayName: types.optional(types.string()),
@@ -548,6 +553,7 @@ export type Updated$Outbound = {
   type?: string | undefined;
   target?: Array<string> | undefined;
   applyToAllCustomEnvironments?: boolean | undefined;
+  customEnvironmentIds?: Array<string> | undefined;
   decrypted?: boolean | undefined;
   comment?: string | undefined;
   lastEditedByDisplayName?: string | undefined;
@@ -575,6 +581,7 @@ export const Updated$outboundSchema: z.ZodType<
   target: z.array(UpdateSharedEnvVariableEnvironmentTarget$outboundSchema)
     .optional(),
   applyToAllCustomEnvironments: z.boolean().optional(),
+  customEnvironmentIds: z.array(z.string()).optional(),
   decrypted: z.boolean().optional(),
   comment: z.string().optional(),
   lastEditedByDisplayName: z.string().optional(),

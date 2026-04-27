@@ -5,26 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndThirty } from "@vercel/sdk/models/usereventpayload172next.js";
+import { TwoHundredAndThirty } from "@vercel/sdk/models/onehundredandninetytwo.js";
 
 let value: TwoHundredAndThirty = {
-  scalingRules: {
-    "key": {
-      min: 7732.79,
-      max: 2712.29,
-    },
+  uid: "<id>",
+  name: {
+    name: "<value>",
   },
-  min: 6853.05,
-  max: 4549.47,
-  url: "https://mealy-baseboard.net/",
 };
 ```
 
 ## Fields
 
-| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `scalingRules`                                                   | Record<string, [models.ScalingRules](../models/scalingrules.md)> | :heavy_check_mark:                                               | N/A                                                              |
-| `min`                                                            | *number*                                                         | :heavy_check_mark:                                               | N/A                                                              |
-| `max`                                                            | *number*                                                         | :heavy_check_mark:                                               | N/A                                                              |
-| `url`                                                            | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
+| Field                | Type                 | Required             | Description          |
+| -------------------- | -------------------- | -------------------- | -------------------- |
+| `uid`                | *string*             | :heavy_check_mark:   | N/A                  |
+| `name`               | *models.PayloadName* | :heavy_check_mark:   | N/A                  |

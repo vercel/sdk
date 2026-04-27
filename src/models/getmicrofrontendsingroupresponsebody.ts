@@ -49,10 +49,6 @@ import {
   GetMicrofrontendsInGroupFramework,
   GetMicrofrontendsInGroupFramework$inboundSchema,
   GetMicrofrontendsInGroupFramework$outboundSchema,
-  GetMicrofrontendsInGroupGitComments,
-  GetMicrofrontendsInGroupGitComments$inboundSchema,
-  GetMicrofrontendsInGroupGitComments$Outbound,
-  GetMicrofrontendsInGroupGitComments$outboundSchema,
   GetMicrofrontendsInGroupIpBuckets,
   GetMicrofrontendsInGroupIpBuckets$inboundSchema,
   GetMicrofrontendsInGroupIpBuckets$Outbound,
@@ -81,9 +77,17 @@ import {
   GetMicrofrontendsInGroupMicrofrontends$inboundSchema,
   GetMicrofrontendsInGroupMicrofrontends$Outbound,
   GetMicrofrontendsInGroupMicrofrontends$outboundSchema,
+  GetMicrofrontendsInGroupMicrofrontendsProjects,
+  GetMicrofrontendsInGroupMicrofrontendsProjects$inboundSchema,
+  GetMicrofrontendsInGroupMicrofrontendsProjects$Outbound,
+  GetMicrofrontendsInGroupMicrofrontendsProjects$outboundSchema,
   GetMicrofrontendsInGroupNodeVersion,
   GetMicrofrontendsInGroupNodeVersion$inboundSchema,
   GetMicrofrontendsInGroupNodeVersion$outboundSchema,
+  GetMicrofrontendsInGroupOidcProviders,
+  GetMicrofrontendsInGroupOidcProviders$inboundSchema,
+  GetMicrofrontendsInGroupOidcProviders$Outbound,
+  GetMicrofrontendsInGroupOidcProviders$outboundSchema,
   GetMicrofrontendsInGroupOptionsAllowlist,
   GetMicrofrontendsInGroupOptionsAllowlist$inboundSchema,
   GetMicrofrontendsInGroupOptionsAllowlist$Outbound,
@@ -132,12 +136,28 @@ import {
   GetMicrofrontendsInGroupTrustedIps$inboundSchema,
   GetMicrofrontendsInGroupTrustedIps$Outbound,
   GetMicrofrontendsInGroupTrustedIps$outboundSchema,
-  GetMicrofrontendsInGroupTrustedSources,
-  GetMicrofrontendsInGroupTrustedSources$inboundSchema,
-  GetMicrofrontendsInGroupTrustedSources$Outbound,
-  GetMicrofrontendsInGroupTrustedSources$outboundSchema,
-} from "./getmicrofrontendsingroupgitcomments.js";
+} from "./getmicrofrontendsingroupoidcproviders.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export type GetMicrofrontendsInGroupTrustedSources = {
+  projects?:
+    | { [k: string]: GetMicrofrontendsInGroupMicrofrontendsProjects }
+    | undefined;
+  oidcProviders?:
+    | { [k: string]: Array<GetMicrofrontendsInGroupOidcProviders> }
+    | undefined;
+};
+
+export type GetMicrofrontendsInGroupGitComments = {
+  /**
+   * Whether the Vercel bot should comment on PRs
+   */
+  onPullRequest: boolean;
+  /**
+   * Whether the Vercel bot should comment on commits
+   */
+  onCommit: boolean;
+};
 
 /**
  * Whether the Vercel bot should automatically create GitHub deployments https://docs.github.com/en/rest/deployments/deployments#about-deployments NOTE: repository-dispatch events should be used instead
@@ -177,7 +197,7 @@ export type GetMicrofrontendsInGroupGitProviderOptions = {
    */
   disableRepositoryDispatchEvents?: boolean | undefined;
   /**
-   * Whether the project requires commits to be signed before deployments will be created.
+   * Whether the project requires commits to be signed & verified before deployments will be created. - `true`: require verified commits for this project (explicit override of the team setting). - `false`: do not require verified commits (explicit override of the team setting). - absent: inherit from `team.requireVerifiedCommits`.
    */
   requireVerifiedCommits?: boolean | undefined;
   /**
@@ -846,6 +866,109 @@ export type GetMicrofrontendsInGroupProjects = {
 export type GetMicrofrontendsInGroupResponseBody = {
   projects: Array<GetMicrofrontendsInGroupProjects>;
 };
+
+/** @internal */
+export const GetMicrofrontendsInGroupTrustedSources$inboundSchema: z.ZodType<
+  GetMicrofrontendsInGroupTrustedSources,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  projects: types.optional(
+    z.record(GetMicrofrontendsInGroupMicrofrontendsProjects$inboundSchema),
+  ),
+  oidcProviders: types.optional(
+    z.record(z.array(GetMicrofrontendsInGroupOidcProviders$inboundSchema)),
+  ),
+});
+/** @internal */
+export type GetMicrofrontendsInGroupTrustedSources$Outbound = {
+  projects?: {
+    [k: string]: GetMicrofrontendsInGroupMicrofrontendsProjects$Outbound;
+  } | undefined;
+  oidcProviders?: {
+    [k: string]: Array<GetMicrofrontendsInGroupOidcProviders$Outbound>;
+  } | undefined;
+};
+
+/** @internal */
+export const GetMicrofrontendsInGroupTrustedSources$outboundSchema: z.ZodType<
+  GetMicrofrontendsInGroupTrustedSources$Outbound,
+  z.ZodTypeDef,
+  GetMicrofrontendsInGroupTrustedSources
+> = z.object({
+  projects: z.record(
+    GetMicrofrontendsInGroupMicrofrontendsProjects$outboundSchema,
+  ).optional(),
+  oidcProviders: z.record(
+    z.array(GetMicrofrontendsInGroupOidcProviders$outboundSchema),
+  ).optional(),
+});
+
+export function getMicrofrontendsInGroupTrustedSourcesToJSON(
+  getMicrofrontendsInGroupTrustedSources:
+    GetMicrofrontendsInGroupTrustedSources,
+): string {
+  return JSON.stringify(
+    GetMicrofrontendsInGroupTrustedSources$outboundSchema.parse(
+      getMicrofrontendsInGroupTrustedSources,
+    ),
+  );
+}
+export function getMicrofrontendsInGroupTrustedSourcesFromJSON(
+  jsonString: string,
+): SafeParseResult<GetMicrofrontendsInGroupTrustedSources, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetMicrofrontendsInGroupTrustedSources$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetMicrofrontendsInGroupTrustedSources' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetMicrofrontendsInGroupGitComments$inboundSchema: z.ZodType<
+  GetMicrofrontendsInGroupGitComments,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  onPullRequest: types.boolean(),
+  onCommit: types.boolean(),
+});
+/** @internal */
+export type GetMicrofrontendsInGroupGitComments$Outbound = {
+  onPullRequest: boolean;
+  onCommit: boolean;
+};
+
+/** @internal */
+export const GetMicrofrontendsInGroupGitComments$outboundSchema: z.ZodType<
+  GetMicrofrontendsInGroupGitComments$Outbound,
+  z.ZodTypeDef,
+  GetMicrofrontendsInGroupGitComments
+> = z.object({
+  onPullRequest: z.boolean(),
+  onCommit: z.boolean(),
+});
+
+export function getMicrofrontendsInGroupGitCommentsToJSON(
+  getMicrofrontendsInGroupGitComments: GetMicrofrontendsInGroupGitComments,
+): string {
+  return JSON.stringify(
+    GetMicrofrontendsInGroupGitComments$outboundSchema.parse(
+      getMicrofrontendsInGroupGitComments,
+    ),
+  );
+}
+export function getMicrofrontendsInGroupGitCommentsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetMicrofrontendsInGroupGitComments, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetMicrofrontendsInGroupGitComments$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetMicrofrontendsInGroupGitComments' from JSON`,
+  );
+}
 
 /** @internal */
 export const GetMicrofrontendsInGroupCreateDeployments$inboundSchema:
@@ -4224,10 +4347,10 @@ export const GetMicrofrontendsInGroupProjects$inboundSchema: z.ZodType<
   trustedIps: z.nullable(GetMicrofrontendsInGroupTrustedIps$inboundSchema)
     .optional(),
   trustedSources: z.nullable(
-    GetMicrofrontendsInGroupTrustedSources$inboundSchema,
+    z.lazy(() => GetMicrofrontendsInGroupTrustedSources$inboundSchema),
   ).optional(),
   gitComments: types.optional(
-    GetMicrofrontendsInGroupGitComments$inboundSchema,
+    z.lazy(() => GetMicrofrontendsInGroupGitComments$inboundSchema),
   ),
   gitProviderOptions: types.optional(
     z.lazy(() => GetMicrofrontendsInGroupGitProviderOptions$inboundSchema),
@@ -4527,9 +4650,10 @@ export const GetMicrofrontendsInGroupProjects$outboundSchema: z.ZodType<
   trustedIps: z.nullable(GetMicrofrontendsInGroupTrustedIps$outboundSchema)
     .optional(),
   trustedSources: z.nullable(
-    GetMicrofrontendsInGroupTrustedSources$outboundSchema,
+    z.lazy(() => GetMicrofrontendsInGroupTrustedSources$outboundSchema),
   ).optional(),
-  gitComments: GetMicrofrontendsInGroupGitComments$outboundSchema.optional(),
+  gitComments: z.lazy(() => GetMicrofrontendsInGroupGitComments$outboundSchema)
+    .optional(),
   gitProviderOptions: z.lazy(() =>
     GetMicrofrontendsInGroupGitProviderOptions$outboundSchema
   ).optional(),

@@ -5,21 +5,20 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndTwo } from "@vercel/sdk/models/usereventpayload172next.js";
+import { TwoHundredAndTwo } from "@vercel/sdk/models/onehundredandninetytwo.js";
 
 let value: TwoHundredAndTwo = {
-  passwordProtection: "preview",
-  oldPasswordProtection: {
-    deploymentType: "preview",
-  },
+  previousProjectName: "<value>",
+  newProjectName: "<value>",
+  destinationAccountName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                              | Type                               | Required                           | Description                        |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| `projectId`                        | *string*                           | :heavy_minus_sign:                 | N/A                                |
-| `projectName`                      | *string*                           | :heavy_minus_sign:                 | N/A                                |
-| `passwordProtection`               | *models.PayloadPasswordProtection* | :heavy_check_mark:                 | N/A                                |
-| `oldPasswordProtection`            | *models.OldPasswordProtection*     | :heavy_check_mark:                 | N/A                                |
+| Field                    | Type                     | Required                 | Description              |
+| ------------------------ | ------------------------ | ------------------------ | ------------------------ |
+| `previousProjectName`    | *string*                 | :heavy_check_mark:       | N/A                      |
+| `newProjectName`         | *string*                 | :heavy_check_mark:       | N/A                      |
+| `destinationAccountName` | *string*                 | :heavy_check_mark:       | N/A                      |
+| `transferId`             | *string*                 | :heavy_minus_sign:       | N/A                      |

@@ -6,6 +6,13 @@ import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
+import { smartUnion } from "../types/smartUnion.js";
+import {
+  NamedSandbox,
+  NamedSandbox$inboundSchema,
+  NamedSandbox$Outbound,
+  NamedSandbox$outboundSchema,
+} from "./namedsandbox.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 import {
   Session,
@@ -13,6 +20,12 @@ import {
   Session$Outbound,
   Session$outboundSchema,
 } from "./session.js";
+import {
+  Snapshot,
+  Snapshot$inboundSchema,
+  Snapshot$Outbound,
+  Snapshot$outboundSchema,
+} from "./snapshot.js";
 
 export type StopSessionRequest = {
   /**
@@ -29,15 +42,34 @@ export type StopSessionRequest = {
   slug?: string | undefined;
 };
 
-/**
- * The session was stopped successfully.
- */
-export type StopSessionResponseBody = {
+export type StopSessionResponseBody2 = {
+  /**
+   * This object contains information related to a Snapshot of a Vercel Sandbox session (v2 API).
+   */
+  snapshot: Snapshot;
+  /**
+   * This object contains information related to a Vercel NamedSandbox.
+   */
+  sandbox: NamedSandbox;
   /**
    * This object contains information related to a Vercel Sandbox Session. v2 endpoints return "session" instead of "sandbox" as the response wrapper key.
    */
   session: Session;
 };
+
+export type StopSessionResponseBody1 = {
+  /**
+   * This object contains information related to a Vercel Sandbox Session. v2 endpoints return "session" instead of "sandbox" as the response wrapper key.
+   */
+  session: Session;
+};
+
+/**
+ * The session was stopped successfully.
+ */
+export type StopSessionResponseBody =
+  | StopSessionResponseBody2
+  | StopSessionResponseBody1;
 
 /** @internal */
 export const StopSessionRequest$inboundSchema: z.ZodType<
@@ -85,26 +117,112 @@ export function stopSessionRequestFromJSON(
 }
 
 /** @internal */
-export const StopSessionResponseBody$inboundSchema: z.ZodType<
-  StopSessionResponseBody,
+export const StopSessionResponseBody2$inboundSchema: z.ZodType<
+  StopSessionResponseBody2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  snapshot: Snapshot$inboundSchema,
+  sandbox: NamedSandbox$inboundSchema,
+  session: Session$inboundSchema,
+});
+/** @internal */
+export type StopSessionResponseBody2$Outbound = {
+  snapshot: Snapshot$Outbound;
+  sandbox: NamedSandbox$Outbound;
+  session: Session$Outbound;
+};
+
+/** @internal */
+export const StopSessionResponseBody2$outboundSchema: z.ZodType<
+  StopSessionResponseBody2$Outbound,
+  z.ZodTypeDef,
+  StopSessionResponseBody2
+> = z.object({
+  snapshot: Snapshot$outboundSchema,
+  sandbox: NamedSandbox$outboundSchema,
+  session: Session$outboundSchema,
+});
+
+export function stopSessionResponseBody2ToJSON(
+  stopSessionResponseBody2: StopSessionResponseBody2,
+): string {
+  return JSON.stringify(
+    StopSessionResponseBody2$outboundSchema.parse(stopSessionResponseBody2),
+  );
+}
+export function stopSessionResponseBody2FromJSON(
+  jsonString: string,
+): SafeParseResult<StopSessionResponseBody2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => StopSessionResponseBody2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'StopSessionResponseBody2' from JSON`,
+  );
+}
+
+/** @internal */
+export const StopSessionResponseBody1$inboundSchema: z.ZodType<
+  StopSessionResponseBody1,
   z.ZodTypeDef,
   unknown
 > = z.object({
   session: Session$inboundSchema,
 });
 /** @internal */
-export type StopSessionResponseBody$Outbound = {
+export type StopSessionResponseBody1$Outbound = {
   session: Session$Outbound;
 };
+
+/** @internal */
+export const StopSessionResponseBody1$outboundSchema: z.ZodType<
+  StopSessionResponseBody1$Outbound,
+  z.ZodTypeDef,
+  StopSessionResponseBody1
+> = z.object({
+  session: Session$outboundSchema,
+});
+
+export function stopSessionResponseBody1ToJSON(
+  stopSessionResponseBody1: StopSessionResponseBody1,
+): string {
+  return JSON.stringify(
+    StopSessionResponseBody1$outboundSchema.parse(stopSessionResponseBody1),
+  );
+}
+export function stopSessionResponseBody1FromJSON(
+  jsonString: string,
+): SafeParseResult<StopSessionResponseBody1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => StopSessionResponseBody1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'StopSessionResponseBody1' from JSON`,
+  );
+}
+
+/** @internal */
+export const StopSessionResponseBody$inboundSchema: z.ZodType<
+  StopSessionResponseBody,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  z.lazy(() => StopSessionResponseBody2$inboundSchema),
+  z.lazy(() => StopSessionResponseBody1$inboundSchema),
+]);
+/** @internal */
+export type StopSessionResponseBody$Outbound =
+  | StopSessionResponseBody2$Outbound
+  | StopSessionResponseBody1$Outbound;
 
 /** @internal */
 export const StopSessionResponseBody$outboundSchema: z.ZodType<
   StopSessionResponseBody$Outbound,
   z.ZodTypeDef,
   StopSessionResponseBody
-> = z.object({
-  session: Session$outboundSchema,
-});
+> = smartUnion([
+  z.lazy(() => StopSessionResponseBody2$outboundSchema),
+  z.lazy(() => StopSessionResponseBody1$outboundSchema),
+]);
 
 export function stopSessionResponseBodyToJSON(
   stopSessionResponseBody: StopSessionResponseBody,

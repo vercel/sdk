@@ -7,11 +7,22 @@ import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
+import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
-export type DeleteEdgeConfigTokensRequestBody = {
-  tokens: Array<string>;
+export type DeleteEdgeConfigTokensRequestBody2 = {
+  tokens?: Array<string> | undefined;
+  ids: Array<string>;
 };
+
+export type DeleteEdgeConfigTokensRequestBody1 = {
+  tokens: Array<string>;
+  ids?: Array<string> | undefined;
+};
+
+export type DeleteEdgeConfigTokensRequestBody =
+  | DeleteEdgeConfigTokensRequestBody1
+  | DeleteEdgeConfigTokensRequestBody2;
 
 export type DeleteEdgeConfigTokensRequest = {
   edgeConfigId: string;
@@ -23,30 +34,124 @@ export type DeleteEdgeConfigTokensRequest = {
    * The Team slug to perform the request on behalf of.
    */
   slug?: string | undefined;
-  requestBody: DeleteEdgeConfigTokensRequestBody;
+  requestBody:
+    | DeleteEdgeConfigTokensRequestBody1
+    | DeleteEdgeConfigTokensRequestBody2;
 };
+
+/** @internal */
+export const DeleteEdgeConfigTokensRequestBody2$inboundSchema: z.ZodType<
+  DeleteEdgeConfigTokensRequestBody2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  tokens: types.optional(z.array(types.string())),
+  ids: z.array(types.string()),
+});
+/** @internal */
+export type DeleteEdgeConfigTokensRequestBody2$Outbound = {
+  tokens?: Array<string> | undefined;
+  ids: Array<string>;
+};
+
+/** @internal */
+export const DeleteEdgeConfigTokensRequestBody2$outboundSchema: z.ZodType<
+  DeleteEdgeConfigTokensRequestBody2$Outbound,
+  z.ZodTypeDef,
+  DeleteEdgeConfigTokensRequestBody2
+> = z.object({
+  tokens: z.array(z.string()).optional(),
+  ids: z.array(z.string()),
+});
+
+export function deleteEdgeConfigTokensRequestBody2ToJSON(
+  deleteEdgeConfigTokensRequestBody2: DeleteEdgeConfigTokensRequestBody2,
+): string {
+  return JSON.stringify(
+    DeleteEdgeConfigTokensRequestBody2$outboundSchema.parse(
+      deleteEdgeConfigTokensRequestBody2,
+    ),
+  );
+}
+export function deleteEdgeConfigTokensRequestBody2FromJSON(
+  jsonString: string,
+): SafeParseResult<DeleteEdgeConfigTokensRequestBody2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      DeleteEdgeConfigTokensRequestBody2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeleteEdgeConfigTokensRequestBody2' from JSON`,
+  );
+}
+
+/** @internal */
+export const DeleteEdgeConfigTokensRequestBody1$inboundSchema: z.ZodType<
+  DeleteEdgeConfigTokensRequestBody1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  tokens: z.array(types.string()),
+  ids: types.optional(z.array(types.string())),
+});
+/** @internal */
+export type DeleteEdgeConfigTokensRequestBody1$Outbound = {
+  tokens: Array<string>;
+  ids?: Array<string> | undefined;
+};
+
+/** @internal */
+export const DeleteEdgeConfigTokensRequestBody1$outboundSchema: z.ZodType<
+  DeleteEdgeConfigTokensRequestBody1$Outbound,
+  z.ZodTypeDef,
+  DeleteEdgeConfigTokensRequestBody1
+> = z.object({
+  tokens: z.array(z.string()),
+  ids: z.array(z.string()).optional(),
+});
+
+export function deleteEdgeConfigTokensRequestBody1ToJSON(
+  deleteEdgeConfigTokensRequestBody1: DeleteEdgeConfigTokensRequestBody1,
+): string {
+  return JSON.stringify(
+    DeleteEdgeConfigTokensRequestBody1$outboundSchema.parse(
+      deleteEdgeConfigTokensRequestBody1,
+    ),
+  );
+}
+export function deleteEdgeConfigTokensRequestBody1FromJSON(
+  jsonString: string,
+): SafeParseResult<DeleteEdgeConfigTokensRequestBody1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      DeleteEdgeConfigTokensRequestBody1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeleteEdgeConfigTokensRequestBody1' from JSON`,
+  );
+}
 
 /** @internal */
 export const DeleteEdgeConfigTokensRequestBody$inboundSchema: z.ZodType<
   DeleteEdgeConfigTokensRequestBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  tokens: z.array(types.string()),
-});
+> = smartUnion([
+  z.lazy(() => DeleteEdgeConfigTokensRequestBody1$inboundSchema),
+  z.lazy(() => DeleteEdgeConfigTokensRequestBody2$inboundSchema),
+]);
 /** @internal */
-export type DeleteEdgeConfigTokensRequestBody$Outbound = {
-  tokens: Array<string>;
-};
+export type DeleteEdgeConfigTokensRequestBody$Outbound =
+  | DeleteEdgeConfigTokensRequestBody1$Outbound
+  | DeleteEdgeConfigTokensRequestBody2$Outbound;
 
 /** @internal */
 export const DeleteEdgeConfigTokensRequestBody$outboundSchema: z.ZodType<
   DeleteEdgeConfigTokensRequestBody$Outbound,
   z.ZodTypeDef,
   DeleteEdgeConfigTokensRequestBody
-> = z.object({
-  tokens: z.array(z.string()),
-});
+> = smartUnion([
+  z.lazy(() => DeleteEdgeConfigTokensRequestBody1$outboundSchema),
+  z.lazy(() => DeleteEdgeConfigTokensRequestBody2$outboundSchema),
+]);
 
 export function deleteEdgeConfigTokensRequestBodyToJSON(
   deleteEdgeConfigTokensRequestBody: DeleteEdgeConfigTokensRequestBody,
@@ -76,7 +181,10 @@ export const DeleteEdgeConfigTokensRequest$inboundSchema: z.ZodType<
   edgeConfigId: types.string(),
   teamId: types.optional(types.string()),
   slug: types.optional(types.string()),
-  RequestBody: z.lazy(() => DeleteEdgeConfigTokensRequestBody$inboundSchema),
+  RequestBody: smartUnion([
+    z.lazy(() => DeleteEdgeConfigTokensRequestBody1$inboundSchema),
+    z.lazy(() => DeleteEdgeConfigTokensRequestBody2$inboundSchema),
+  ]),
 }).transform((v) => {
   return remap$(v, {
     "RequestBody": "requestBody",
@@ -87,7 +195,9 @@ export type DeleteEdgeConfigTokensRequest$Outbound = {
   edgeConfigId: string;
   teamId?: string | undefined;
   slug?: string | undefined;
-  RequestBody: DeleteEdgeConfigTokensRequestBody$Outbound;
+  RequestBody:
+    | DeleteEdgeConfigTokensRequestBody1$Outbound
+    | DeleteEdgeConfigTokensRequestBody2$Outbound;
 };
 
 /** @internal */
@@ -99,7 +209,10 @@ export const DeleteEdgeConfigTokensRequest$outboundSchema: z.ZodType<
   edgeConfigId: z.string(),
   teamId: z.string().optional(),
   slug: z.string().optional(),
-  requestBody: z.lazy(() => DeleteEdgeConfigTokensRequestBody$outboundSchema),
+  requestBody: smartUnion([
+    z.lazy(() => DeleteEdgeConfigTokensRequestBody1$outboundSchema),
+    z.lazy(() => DeleteEdgeConfigTokensRequestBody2$outboundSchema),
+  ]),
 }).transform((v) => {
   return remap$(v, {
     requestBody: "RequestBody",

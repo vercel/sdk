@@ -1033,6 +1033,7 @@ type Capabilities struct {
 	SecretRotation *SecretRotationUnion `json:"secretRotation,omitempty"`
 	Projects       *bool                `json:"projects,omitempty"`
 	V0             *bool                `json:"v0,omitempty"`
+	AutoSensitive  *bool                `json:"autoSensitive,omitempty"`
 }
 
 func (o *Capabilities) GetMcp() *bool {
@@ -1096,6 +1097,13 @@ func (o *Capabilities) GetV0() *bool {
 		return nil
 	}
 	return o.V0
+}
+
+func (o *Capabilities) GetAutoSensitive() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.AutoSensitive
 }
 
 type StoreMetadataType string
@@ -1370,6 +1378,7 @@ type ProductCapabilities struct {
 	NativeImportResource    *bool                       `json:"nativeImportResource,omitempty"`
 	DatabaseUI              *bool                       `json:"databaseUI,omitempty"`
 	V0Flavors               *bool                       `json:"v0Flavors,omitempty"`
+	AutoSensitive           *bool                       `json:"autoSensitive,omitempty"`
 }
 
 func (o *ProductCapabilities) GetMcp() *bool {
@@ -1482,6 +1491,13 @@ func (o *ProductCapabilities) GetV0Flavors() *bool {
 		return nil
 	}
 	return o.V0Flavors
+}
+
+func (o *ProductCapabilities) GetAutoSensitive() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.AutoSensitive
 }
 
 type CreateIntegrationStoreDirectTypeObject string

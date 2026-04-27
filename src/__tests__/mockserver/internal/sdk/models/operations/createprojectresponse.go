@@ -12,6 +12,97 @@ import (
 	"mockserver/internal/sdk/utils"
 )
 
+type CreateProjectTrustedIpsDeploymentType1 string
+
+const (
+	CreateProjectTrustedIpsDeploymentType1Production                       CreateProjectTrustedIpsDeploymentType1 = "production"
+	CreateProjectTrustedIpsDeploymentType1Preview                          CreateProjectTrustedIpsDeploymentType1 = "preview"
+	CreateProjectTrustedIpsDeploymentType1All                              CreateProjectTrustedIpsDeploymentType1 = "all"
+	CreateProjectTrustedIpsDeploymentType1ProdDeploymentUrlsAndAllPreviews CreateProjectTrustedIpsDeploymentType1 = "prod_deployment_urls_and_all_previews"
+	CreateProjectTrustedIpsDeploymentType1AllExceptCustomDomains           CreateProjectTrustedIpsDeploymentType1 = "all_except_custom_domains"
+)
+
+func (e CreateProjectTrustedIpsDeploymentType1) ToPointer() *CreateProjectTrustedIpsDeploymentType1 {
+	return &e
+}
+func (e *CreateProjectTrustedIpsDeploymentType1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "production":
+		fallthrough
+	case "preview":
+		fallthrough
+	case "all":
+		fallthrough
+	case "prod_deployment_urls_and_all_previews":
+		fallthrough
+	case "all_except_custom_domains":
+		*e = CreateProjectTrustedIpsDeploymentType1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateProjectTrustedIpsDeploymentType1: %v", v)
+	}
+}
+
+type CreateProjectAddress struct {
+	Value string  `json:"value"`
+	Note  *string `json:"note,omitempty"`
+}
+
+func (c CreateProjectAddress) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateProjectAddress) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"value"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateProjectAddress) GetValue() string {
+	if o == nil {
+		return ""
+	}
+	return o.Value
+}
+
+func (o *CreateProjectAddress) GetNote() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Note
+}
+
+type CreateProjectProtectionMode string
+
+const (
+	CreateProjectProtectionModeAdditional CreateProjectProtectionMode = "additional"
+	CreateProjectProtectionModeExclusive  CreateProjectProtectionMode = "exclusive"
+)
+
+func (e CreateProjectProtectionMode) ToPointer() *CreateProjectProtectionMode {
+	return &e
+}
+func (e *CreateProjectProtectionMode) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "additional":
+		fallthrough
+	case "exclusive":
+		*e = CreateProjectProtectionMode(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateProjectProtectionMode: %v", v)
+	}
+}
+
 type CreateProjectTrustedIps1 struct {
 	DeploymentType CreateProjectTrustedIpsDeploymentType1 `json:"deploymentType"`
 	Addresses      []CreateProjectAddress                 `json:"addresses"`
@@ -793,7 +884,7 @@ type CreateProjectGitProviderOptions struct {
 	CreateDeployments CreateProjectCreateDeployments `json:"createDeployments"`
 	// Whether the Vercel bot should not automatically create GitHub repository-dispatch events on deployment events. https://vercel.com/docs/git/vercel-for-github#repository-dispatch-events
 	DisableRepositoryDispatchEvents *bool `json:"disableRepositoryDispatchEvents,omitempty"`
-	// Whether the project requires commits to be signed before deployments will be created.
+	// Whether the project requires commits to be signed & verified before deployments will be created. - `true`: require verified commits for this project (explicit override of the team setting). - `false`: do not require verified commits (explicit override of the team setting). - absent: inherit from `team.requireVerifiedCommits`.
 	RequireVerifiedCommits *bool `json:"requireVerifiedCommits,omitempty"`
 	// Whether Vercel should post commit statuses for this project. When omitted, commit statuses remain enabled.
 	GitCommitStatus *bool `json:"gitCommitStatus,omitempty"`

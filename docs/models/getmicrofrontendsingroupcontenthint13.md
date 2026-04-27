@@ -3,17 +3,17 @@
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupContentHint13 } from "@vercel/sdk/models/getmicrofrontendsingroupgitcomments.js";
+import { GetMicrofrontendsInGroupContentHint13 } from "@vercel/sdk/models/getmicrofrontendsingroupoidcproviders.js";
 
 let value: GetMicrofrontendsInGroupContentHint13 = {
-  type: "postgres-url-no-ssl",
+  type: "postgres-database",
   storeId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field                   | Type                    | Required                | Description             |
-| ----------------------- | ----------------------- | ----------------------- | ----------------------- |
-| `type`                  | *"postgres-url-no-ssl"* | :heavy_check_mark:      | N/A                     |
-| `storeId`               | *string*                | :heavy_check_mark:      | N/A                     |
+| Field                 | Type                  | Required              | Description           |
+| --------------------- | --------------------- | --------------------- | --------------------- |
+| `type`                | *"postgres-database"* | :heavy_check_mark:    | N/A                   |
+| `storeId`             | *string*              | :heavy_check_mark:    | N/A                   |

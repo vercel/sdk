@@ -3,17 +3,17 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsContentHintProjectsResponse8 } from "@vercel/sdk/models/getprojectsresponsebodyprojectssecurityplusmetadata.js";
+import { GetProjectsContentHintProjectsResponse8 } from "@vercel/sdk/models/getprojectslogheadersprojectsresponse2.js";
 
 let value: GetProjectsContentHintProjectsResponse8 = {
-  type: "postgres-prisma-url",
+  type: "postgres-url-non-pooling",
   storeId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field                   | Type                    | Required                | Description             |
-| ----------------------- | ----------------------- | ----------------------- | ----------------------- |
-| `type`                  | *"postgres-prisma-url"* | :heavy_check_mark:      | N/A                     |
-| `storeId`               | *string*                | :heavy_check_mark:      | N/A                     |
+| Field                        | Type                         | Required                     | Description                  |
+| ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- |
+| `type`                       | *"postgres-url-non-pooling"* | :heavy_check_mark:           | N/A                          |
+| `storeId`                    | *string*                     | :heavy_check_mark:           | N/A                          |

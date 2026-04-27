@@ -1,17 +1,25 @@
 # DeleteEdgeConfigTokensRequestBody
 
-## Example Usage
+
+## Supported Types
+
+### `models.DeleteEdgeConfigTokensRequestBody1`
 
 ```typescript
-import { DeleteEdgeConfigTokensRequestBody } from "@vercel/sdk/models/deleteedgeconfigtokensop.js";
-
-let value: DeleteEdgeConfigTokensRequestBody = {
-  tokens: [],
+const value: models.DeleteEdgeConfigTokensRequestBody1 = {
+  tokens: [
+    "<value 1>",
+    "<value 2>",
+    "<value 3>",
+  ],
 };
 ```
 
-## Fields
+### `models.DeleteEdgeConfigTokensRequestBody2`
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `tokens`           | *string*[]         | :heavy_check_mark: | N/A                |
+```typescript
+const value: models.DeleteEdgeConfigTokensRequestBody2 = {
+  ids: [],
+};
+```
+

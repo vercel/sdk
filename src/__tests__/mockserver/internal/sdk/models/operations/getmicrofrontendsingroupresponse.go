@@ -12,6 +12,124 @@ import (
 	"mockserver/internal/sdk/utils"
 )
 
+type GetMicrofrontendsInGroupToCustomAllowPreset1 string
+
+const (
+	GetMicrofrontendsInGroupToCustomAllowPreset1AllCustom GetMicrofrontendsInGroupToCustomAllowPreset1 = "all-custom"
+)
+
+func (e GetMicrofrontendsInGroupToCustomAllowPreset1) ToPointer() *GetMicrofrontendsInGroupToCustomAllowPreset1 {
+	return &e
+}
+func (e *GetMicrofrontendsInGroupToCustomAllowPreset1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "all-custom":
+		*e = GetMicrofrontendsInGroupToCustomAllowPreset1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetMicrofrontendsInGroupToCustomAllowPreset1: %v", v)
+	}
+}
+
+// GetMicrofrontendsInGroupToCustomAllowAllCustom1 - The target envs on the current project that may be accessed.
+type GetMicrofrontendsInGroupToCustomAllowAllCustom1 struct {
+	// System environment slugs (`production`, `preview`) and/or custom environment slugs defined on the referenced project.
+	Slugs  []string                                      `json:"slugs"`
+	Preset *GetMicrofrontendsInGroupToCustomAllowPreset1 `json:"preset,omitempty"`
+}
+
+func (g GetMicrofrontendsInGroupToCustomAllowAllCustom1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetMicrofrontendsInGroupToCustomAllowAllCustom1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"slugs"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetMicrofrontendsInGroupToCustomAllowAllCustom1) GetSlugs() []string {
+	if o == nil {
+		return []string{}
+	}
+	return o.Slugs
+}
+
+func (o *GetMicrofrontendsInGroupToCustomAllowAllCustom1) GetPreset() *GetMicrofrontendsInGroupToCustomAllowPreset1 {
+	if o == nil {
+		return nil
+	}
+	return o.Preset
+}
+
+type GetMicrofrontendsInGroupCustomAllowToUnionType string
+
+const (
+	GetMicrofrontendsInGroupCustomAllowToUnionTypeGetMicrofrontendsInGroupToCustomAllowAllCustom1 GetMicrofrontendsInGroupCustomAllowToUnionType = "getMicrofrontendsInGroup_to_customAllow_AllCustom_1"
+	GetMicrofrontendsInGroupCustomAllowToUnionTypeGetMicrofrontendsInGroupToCustomAllowAllCustom2 GetMicrofrontendsInGroupCustomAllowToUnionType = "getMicrofrontendsInGroup_to_customAllow_AllCustom_2"
+)
+
+type GetMicrofrontendsInGroupCustomAllowToUnion struct {
+	GetMicrofrontendsInGroupToCustomAllowAllCustom1 *GetMicrofrontendsInGroupToCustomAllowAllCustom1 `queryParam:"inline"`
+	GetMicrofrontendsInGroupToCustomAllowAllCustom2 *GetMicrofrontendsInGroupToCustomAllowAllCustom2 `queryParam:"inline"`
+
+	Type GetMicrofrontendsInGroupCustomAllowToUnionType
+}
+
+func CreateGetMicrofrontendsInGroupCustomAllowToUnionGetMicrofrontendsInGroupToCustomAllowAllCustom1(getMicrofrontendsInGroupToCustomAllowAllCustom1 GetMicrofrontendsInGroupToCustomAllowAllCustom1) GetMicrofrontendsInGroupCustomAllowToUnion {
+	typ := GetMicrofrontendsInGroupCustomAllowToUnionTypeGetMicrofrontendsInGroupToCustomAllowAllCustom1
+
+	return GetMicrofrontendsInGroupCustomAllowToUnion{
+		GetMicrofrontendsInGroupToCustomAllowAllCustom1: &getMicrofrontendsInGroupToCustomAllowAllCustom1,
+		Type: typ,
+	}
+}
+
+func CreateGetMicrofrontendsInGroupCustomAllowToUnionGetMicrofrontendsInGroupToCustomAllowAllCustom2(getMicrofrontendsInGroupToCustomAllowAllCustom2 GetMicrofrontendsInGroupToCustomAllowAllCustom2) GetMicrofrontendsInGroupCustomAllowToUnion {
+	typ := GetMicrofrontendsInGroupCustomAllowToUnionTypeGetMicrofrontendsInGroupToCustomAllowAllCustom2
+
+	return GetMicrofrontendsInGroupCustomAllowToUnion{
+		GetMicrofrontendsInGroupToCustomAllowAllCustom2: &getMicrofrontendsInGroupToCustomAllowAllCustom2,
+		Type: typ,
+	}
+}
+
+func (u *GetMicrofrontendsInGroupCustomAllowToUnion) UnmarshalJSON(data []byte) error {
+
+	var getMicrofrontendsInGroupToCustomAllowAllCustom1 GetMicrofrontendsInGroupToCustomAllowAllCustom1 = GetMicrofrontendsInGroupToCustomAllowAllCustom1{}
+	if err := utils.UnmarshalJSON(data, &getMicrofrontendsInGroupToCustomAllowAllCustom1, "", true, nil); err == nil {
+		u.GetMicrofrontendsInGroupToCustomAllowAllCustom1 = &getMicrofrontendsInGroupToCustomAllowAllCustom1
+		u.Type = GetMicrofrontendsInGroupCustomAllowToUnionTypeGetMicrofrontendsInGroupToCustomAllowAllCustom1
+		return nil
+	}
+
+	var getMicrofrontendsInGroupToCustomAllowAllCustom2 GetMicrofrontendsInGroupToCustomAllowAllCustom2 = GetMicrofrontendsInGroupToCustomAllowAllCustom2{}
+	if err := utils.UnmarshalJSON(data, &getMicrofrontendsInGroupToCustomAllowAllCustom2, "", true, nil); err == nil {
+		u.GetMicrofrontendsInGroupToCustomAllowAllCustom2 = &getMicrofrontendsInGroupToCustomAllowAllCustom2
+		u.Type = GetMicrofrontendsInGroupCustomAllowToUnionTypeGetMicrofrontendsInGroupToCustomAllowAllCustom2
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetMicrofrontendsInGroupCustomAllowToUnion", string(data))
+}
+
+func (u GetMicrofrontendsInGroupCustomAllowToUnion) MarshalJSON() ([]byte, error) {
+	if u.GetMicrofrontendsInGroupToCustomAllowAllCustom1 != nil {
+		return utils.MarshalJSON(u.GetMicrofrontendsInGroupToCustomAllowAllCustom1, "", true)
+	}
+
+	if u.GetMicrofrontendsInGroupToCustomAllowAllCustom2 != nil {
+		return utils.MarshalJSON(u.GetMicrofrontendsInGroupToCustomAllowAllCustom2, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type GetMicrofrontendsInGroupCustomAllowToUnion: all fields are null")
+}
+
 // GetMicrofrontendsInGroupCustomAllow - Optional overrides for the default same-env-by-slug matching. Provide explicit rules to allow cross-env access or presets.
 type GetMicrofrontendsInGroupCustomAllow struct {
 	From GetMicrofrontendsInGroupFromUnion          `json:"from"`
@@ -346,7 +464,7 @@ type GetMicrofrontendsInGroupGitProviderOptions struct {
 	CreateDeployments GetMicrofrontendsInGroupCreateDeployments `json:"createDeployments"`
 	// Whether the Vercel bot should not automatically create GitHub repository-dispatch events on deployment events. https://vercel.com/docs/git/vercel-for-github#repository-dispatch-events
 	DisableRepositoryDispatchEvents *bool `json:"disableRepositoryDispatchEvents,omitempty"`
-	// Whether the project requires commits to be signed before deployments will be created.
+	// Whether the project requires commits to be signed & verified before deployments will be created. - `true`: require verified commits for this project (explicit override of the team setting). - `false`: do not require verified commits (explicit override of the team setting). - absent: inherit from `team.requireVerifiedCommits`.
 	RequireVerifiedCommits *bool `json:"requireVerifiedCommits,omitempty"`
 	// Whether Vercel should post commit statuses for this project. When omitted, commit statuses remain enabled.
 	GitCommitStatus *bool `json:"gitCommitStatus,omitempty"`

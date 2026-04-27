@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { SsoProtection1 } from "@vercel/sdk/models/usereventpayload172next.js";
+import { SsoProtection1 } from "@vercel/sdk/models/onehundredandninetytwo.js";
 
 let value: SsoProtection1 = {
   deploymentType: "all",
@@ -12,7 +12,8 @@ let value: SsoProtection1 = {
 
 ## Fields
 
-| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
-| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `deploymentType`                                                                 | [models.SsoProtectionDeploymentType](../models/ssoprotectiondeploymenttype.md)   | :heavy_check_mark:                                                               | N/A                                                                              |
-| `cve55182MigrationAppliedFrom`                                                   | [models.Cve55182MigrationAppliedFrom](../models/cve55182migrationappliedfrom.md) | :heavy_minus_sign:                                                               | N/A                                                                              |
+| Field                                                                                                              | Type                                                                                                               | Required                                                                                                           | Description                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
+| `deploymentType`                                                                                                   | [models.SsoProtectionDeploymentType](../models/ssoprotectiondeploymenttype.md)                                     | :heavy_check_mark:                                                                                                 | N/A                                                                                                                |
+| `cve55182MigrationAppliedFrom`                                                                                     | [models.Cve55182MigrationAppliedFrom](../models/cve55182migrationappliedfrom.md)                                   | :heavy_minus_sign:                                                                                                 | N/A                                                                                                                |
+| `april2026SecurityIncidentMigrationAppliedFrom`                                                                    | [models.April2026SecurityIncidentMigrationAppliedFrom](../models/april2026securityincidentmigrationappliedfrom.md) | :heavy_minus_sign:                                                                                                 | N/A                                                                                                                |

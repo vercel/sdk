@@ -825,6 +825,59 @@ func (o *FilterProjectEnvsContentHintEnvPostgresURL2) GetStoreID() string {
 	return o.StoreID
 }
 
+type FilterProjectEnvsEnvTypeBlobStoreID2 string
+
+const (
+	FilterProjectEnvsEnvTypeBlobStoreID2BlobStoreID FilterProjectEnvsEnvTypeBlobStoreID2 = "blob-store-id"
+)
+
+func (e FilterProjectEnvsEnvTypeBlobStoreID2) ToPointer() *FilterProjectEnvsEnvTypeBlobStoreID2 {
+	return &e
+}
+func (e *FilterProjectEnvsEnvTypeBlobStoreID2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "blob-store-id":
+		*e = FilterProjectEnvsEnvTypeBlobStoreID2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FilterProjectEnvsEnvTypeBlobStoreID2: %v", v)
+	}
+}
+
+type FilterProjectEnvsContentHintEnvBlobStoreID2 struct {
+	Type    FilterProjectEnvsEnvTypeBlobStoreID2 `json:"type"`
+	StoreID string                               `json:"storeId"`
+}
+
+func (f FilterProjectEnvsContentHintEnvBlobStoreID2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FilterProjectEnvsContentHintEnvBlobStoreID2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *FilterProjectEnvsContentHintEnvBlobStoreID2) GetType() FilterProjectEnvsEnvTypeBlobStoreID2 {
+	if o == nil {
+		return FilterProjectEnvsEnvTypeBlobStoreID2("")
+	}
+	return o.Type
+}
+
+func (o *FilterProjectEnvsContentHintEnvBlobStoreID2) GetStoreID() string {
+	if o == nil {
+		return ""
+	}
+	return o.StoreID
+}
+
 type FilterProjectEnvsEnvTypeBlobReadWriteToken2 string
 
 const (
@@ -1098,6 +1151,7 @@ const (
 	FilterProjectEnvsEnvContentHintUnion2TypeRedisRestAPIToken         FilterProjectEnvsEnvContentHintUnion2Type = "redis-rest-api-token"
 	FilterProjectEnvsEnvContentHintUnion2TypeRedisRestAPIReadOnlyToken FilterProjectEnvsEnvContentHintUnion2Type = "redis-rest-api-read-only-token"
 	FilterProjectEnvsEnvContentHintUnion2TypeBlobReadWriteToken        FilterProjectEnvsEnvContentHintUnion2Type = "blob-read-write-token"
+	FilterProjectEnvsEnvContentHintUnion2TypeBlobStoreID               FilterProjectEnvsEnvContentHintUnion2Type = "blob-store-id"
 	FilterProjectEnvsEnvContentHintUnion2TypePostgresURL               FilterProjectEnvsEnvContentHintUnion2Type = "postgres-url"
 	FilterProjectEnvsEnvContentHintUnion2TypePostgresURLNonPooling     FilterProjectEnvsEnvContentHintUnion2Type = "postgres-url-non-pooling"
 	FilterProjectEnvsEnvContentHintUnion2TypePostgresPrismaURL         FilterProjectEnvsEnvContentHintUnion2Type = "postgres-prisma-url"
@@ -1116,6 +1170,7 @@ type FilterProjectEnvsEnvContentHintUnion2 struct {
 	FilterProjectEnvsContentHintEnvRedisRestAPIToken2         *FilterProjectEnvsContentHintEnvRedisRestAPIToken2         `queryParam:"inline"`
 	FilterProjectEnvsContentHintEnvRedisRestAPIReadOnlyToken2 *FilterProjectEnvsContentHintEnvRedisRestAPIReadOnlyToken2 `queryParam:"inline"`
 	FilterProjectEnvsContentHintEnvBlobReadWriteToken2        *FilterProjectEnvsContentHintEnvBlobReadWriteToken2        `queryParam:"inline"`
+	FilterProjectEnvsContentHintEnvBlobStoreID2               *FilterProjectEnvsContentHintEnvBlobStoreID2               `queryParam:"inline"`
 	FilterProjectEnvsContentHintEnvPostgresURL2               *FilterProjectEnvsContentHintEnvPostgresURL2               `queryParam:"inline"`
 	FilterProjectEnvsContentHintEnvPostgresURLNonPooling2     *FilterProjectEnvsContentHintEnvPostgresURLNonPooling2     `queryParam:"inline"`
 	FilterProjectEnvsContentHintEnvPostgresPrismaURL2         *FilterProjectEnvsContentHintEnvPostgresPrismaURL2         `queryParam:"inline"`
@@ -1186,6 +1241,18 @@ func CreateFilterProjectEnvsEnvContentHintUnion2BlobReadWriteToken(blobReadWrite
 
 	return FilterProjectEnvsEnvContentHintUnion2{
 		FilterProjectEnvsContentHintEnvBlobReadWriteToken2: &blobReadWriteToken,
+		Type: typ,
+	}
+}
+
+func CreateFilterProjectEnvsEnvContentHintUnion2BlobStoreID(blobStoreID FilterProjectEnvsContentHintEnvBlobStoreID2) FilterProjectEnvsEnvContentHintUnion2 {
+	typ := FilterProjectEnvsEnvContentHintUnion2TypeBlobStoreID
+
+	typStr := FilterProjectEnvsEnvTypeBlobStoreID2(typ)
+	blobStoreID.Type = typStr
+
+	return FilterProjectEnvsEnvContentHintUnion2{
+		FilterProjectEnvsContentHintEnvBlobStoreID2: &blobStoreID,
 		Type: typ,
 	}
 }
@@ -1367,6 +1434,15 @@ func (u *FilterProjectEnvsEnvContentHintUnion2) UnmarshalJSON(data []byte) error
 		u.FilterProjectEnvsContentHintEnvBlobReadWriteToken2 = filterProjectEnvsContentHintEnvBlobReadWriteToken2
 		u.Type = FilterProjectEnvsEnvContentHintUnion2TypeBlobReadWriteToken
 		return nil
+	case "blob-store-id":
+		filterProjectEnvsContentHintEnvBlobStoreID2 := new(FilterProjectEnvsContentHintEnvBlobStoreID2)
+		if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintEnvBlobStoreID2, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == blob-store-id) type FilterProjectEnvsContentHintEnvBlobStoreID2 within FilterProjectEnvsEnvContentHintUnion2: %w", string(data), err)
+		}
+
+		u.FilterProjectEnvsContentHintEnvBlobStoreID2 = filterProjectEnvsContentHintEnvBlobStoreID2
+		u.Type = FilterProjectEnvsEnvContentHintUnion2TypeBlobStoreID
+		return nil
 	case "postgres-url":
 		filterProjectEnvsContentHintEnvPostgresURL2 := new(FilterProjectEnvsContentHintEnvPostgresURL2)
 		if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintEnvPostgresURL2, "", true, nil); err != nil {
@@ -1481,6 +1557,10 @@ func (u FilterProjectEnvsEnvContentHintUnion2) MarshalJSON() ([]byte, error) {
 
 	if u.FilterProjectEnvsContentHintEnvBlobReadWriteToken2 != nil {
 		return utils.MarshalJSON(u.FilterProjectEnvsContentHintEnvBlobReadWriteToken2, "", true)
+	}
+
+	if u.FilterProjectEnvsContentHintEnvBlobStoreID2 != nil {
+		return utils.MarshalJSON(u.FilterProjectEnvsContentHintEnvBlobStoreID2, "", true)
 	}
 
 	if u.FilterProjectEnvsContentHintEnvPostgresURL2 != nil {
@@ -1790,6 +1870,16 @@ func (o *FilterProjectEnvsEnv2) GetContentHintBlobReadWriteToken() *FilterProjec
 	if v := o.GetContentHint(); v != nil {
 		if actualValue, ok := v.Get(); ok && actualValue != nil {
 			return actualValue.FilterProjectEnvsContentHintEnvBlobReadWriteToken2
+		}
+		return nil
+	}
+	return nil
+}
+
+func (o *FilterProjectEnvsEnv2) GetContentHintBlobStoreID() *FilterProjectEnvsContentHintEnvBlobStoreID2 {
+	if v := o.GetContentHint(); v != nil {
+		if actualValue, ok := v.Get(); ok && actualValue != nil {
+			return actualValue.FilterProjectEnvsContentHintEnvBlobStoreID2
 		}
 		return nil
 	}
@@ -2665,6 +2755,59 @@ func (o *FilterProjectEnvsContentHintEnvPostgresURL1) GetStoreID() string {
 	return o.StoreID
 }
 
+type FilterProjectEnvsEnvTypeBlobStoreID1 string
+
+const (
+	FilterProjectEnvsEnvTypeBlobStoreID1BlobStoreID FilterProjectEnvsEnvTypeBlobStoreID1 = "blob-store-id"
+)
+
+func (e FilterProjectEnvsEnvTypeBlobStoreID1) ToPointer() *FilterProjectEnvsEnvTypeBlobStoreID1 {
+	return &e
+}
+func (e *FilterProjectEnvsEnvTypeBlobStoreID1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "blob-store-id":
+		*e = FilterProjectEnvsEnvTypeBlobStoreID1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FilterProjectEnvsEnvTypeBlobStoreID1: %v", v)
+	}
+}
+
+type FilterProjectEnvsContentHintEnvBlobStoreID1 struct {
+	Type    FilterProjectEnvsEnvTypeBlobStoreID1 `json:"type"`
+	StoreID string                               `json:"storeId"`
+}
+
+func (f FilterProjectEnvsContentHintEnvBlobStoreID1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FilterProjectEnvsContentHintEnvBlobStoreID1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *FilterProjectEnvsContentHintEnvBlobStoreID1) GetType() FilterProjectEnvsEnvTypeBlobStoreID1 {
+	if o == nil {
+		return FilterProjectEnvsEnvTypeBlobStoreID1("")
+	}
+	return o.Type
+}
+
+func (o *FilterProjectEnvsContentHintEnvBlobStoreID1) GetStoreID() string {
+	if o == nil {
+		return ""
+	}
+	return o.StoreID
+}
+
 type FilterProjectEnvsEnvTypeBlobReadWriteToken1 string
 
 const (
@@ -2938,6 +3081,7 @@ const (
 	FilterProjectEnvsEnvContentHintUnion1TypeRedisRestAPIToken         FilterProjectEnvsEnvContentHintUnion1Type = "redis-rest-api-token"
 	FilterProjectEnvsEnvContentHintUnion1TypeRedisRestAPIReadOnlyToken FilterProjectEnvsEnvContentHintUnion1Type = "redis-rest-api-read-only-token"
 	FilterProjectEnvsEnvContentHintUnion1TypeBlobReadWriteToken        FilterProjectEnvsEnvContentHintUnion1Type = "blob-read-write-token"
+	FilterProjectEnvsEnvContentHintUnion1TypeBlobStoreID               FilterProjectEnvsEnvContentHintUnion1Type = "blob-store-id"
 	FilterProjectEnvsEnvContentHintUnion1TypePostgresURL               FilterProjectEnvsEnvContentHintUnion1Type = "postgres-url"
 	FilterProjectEnvsEnvContentHintUnion1TypePostgresURLNonPooling     FilterProjectEnvsEnvContentHintUnion1Type = "postgres-url-non-pooling"
 	FilterProjectEnvsEnvContentHintUnion1TypePostgresPrismaURL         FilterProjectEnvsEnvContentHintUnion1Type = "postgres-prisma-url"
@@ -2956,6 +3100,7 @@ type FilterProjectEnvsEnvContentHintUnion1 struct {
 	FilterProjectEnvsContentHintEnvRedisRestAPIToken1         *FilterProjectEnvsContentHintEnvRedisRestAPIToken1         `queryParam:"inline"`
 	FilterProjectEnvsContentHintEnvRedisRestAPIReadOnlyToken1 *FilterProjectEnvsContentHintEnvRedisRestAPIReadOnlyToken1 `queryParam:"inline"`
 	FilterProjectEnvsContentHintEnvBlobReadWriteToken1        *FilterProjectEnvsContentHintEnvBlobReadWriteToken1        `queryParam:"inline"`
+	FilterProjectEnvsContentHintEnvBlobStoreID1               *FilterProjectEnvsContentHintEnvBlobStoreID1               `queryParam:"inline"`
 	FilterProjectEnvsContentHintEnvPostgresURL1               *FilterProjectEnvsContentHintEnvPostgresURL1               `queryParam:"inline"`
 	FilterProjectEnvsContentHintEnvPostgresURLNonPooling1     *FilterProjectEnvsContentHintEnvPostgresURLNonPooling1     `queryParam:"inline"`
 	FilterProjectEnvsContentHintEnvPostgresPrismaURL1         *FilterProjectEnvsContentHintEnvPostgresPrismaURL1         `queryParam:"inline"`
@@ -3026,6 +3171,18 @@ func CreateFilterProjectEnvsEnvContentHintUnion1BlobReadWriteToken(blobReadWrite
 
 	return FilterProjectEnvsEnvContentHintUnion1{
 		FilterProjectEnvsContentHintEnvBlobReadWriteToken1: &blobReadWriteToken,
+		Type: typ,
+	}
+}
+
+func CreateFilterProjectEnvsEnvContentHintUnion1BlobStoreID(blobStoreID FilterProjectEnvsContentHintEnvBlobStoreID1) FilterProjectEnvsEnvContentHintUnion1 {
+	typ := FilterProjectEnvsEnvContentHintUnion1TypeBlobStoreID
+
+	typStr := FilterProjectEnvsEnvTypeBlobStoreID1(typ)
+	blobStoreID.Type = typStr
+
+	return FilterProjectEnvsEnvContentHintUnion1{
+		FilterProjectEnvsContentHintEnvBlobStoreID1: &blobStoreID,
 		Type: typ,
 	}
 }
@@ -3207,6 +3364,15 @@ func (u *FilterProjectEnvsEnvContentHintUnion1) UnmarshalJSON(data []byte) error
 		u.FilterProjectEnvsContentHintEnvBlobReadWriteToken1 = filterProjectEnvsContentHintEnvBlobReadWriteToken1
 		u.Type = FilterProjectEnvsEnvContentHintUnion1TypeBlobReadWriteToken
 		return nil
+	case "blob-store-id":
+		filterProjectEnvsContentHintEnvBlobStoreID1 := new(FilterProjectEnvsContentHintEnvBlobStoreID1)
+		if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintEnvBlobStoreID1, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == blob-store-id) type FilterProjectEnvsContentHintEnvBlobStoreID1 within FilterProjectEnvsEnvContentHintUnion1: %w", string(data), err)
+		}
+
+		u.FilterProjectEnvsContentHintEnvBlobStoreID1 = filterProjectEnvsContentHintEnvBlobStoreID1
+		u.Type = FilterProjectEnvsEnvContentHintUnion1TypeBlobStoreID
+		return nil
 	case "postgres-url":
 		filterProjectEnvsContentHintEnvPostgresURL1 := new(FilterProjectEnvsContentHintEnvPostgresURL1)
 		if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintEnvPostgresURL1, "", true, nil); err != nil {
@@ -3321,6 +3487,10 @@ func (u FilterProjectEnvsEnvContentHintUnion1) MarshalJSON() ([]byte, error) {
 
 	if u.FilterProjectEnvsContentHintEnvBlobReadWriteToken1 != nil {
 		return utils.MarshalJSON(u.FilterProjectEnvsContentHintEnvBlobReadWriteToken1, "", true)
+	}
+
+	if u.FilterProjectEnvsContentHintEnvBlobStoreID1 != nil {
+		return utils.MarshalJSON(u.FilterProjectEnvsContentHintEnvBlobStoreID1, "", true)
 	}
 
 	if u.FilterProjectEnvsContentHintEnvPostgresURL1 != nil {
@@ -3630,6 +3800,16 @@ func (o *FilterProjectEnvsEnv1) GetContentHintBlobReadWriteToken() *FilterProjec
 	if v := o.GetContentHint(); v != nil {
 		if actualValue, ok := v.Get(); ok && actualValue != nil {
 			return actualValue.FilterProjectEnvsContentHintEnvBlobReadWriteToken1
+		}
+		return nil
+	}
+	return nil
+}
+
+func (o *FilterProjectEnvsEnv1) GetContentHintBlobStoreID() *FilterProjectEnvsContentHintEnvBlobStoreID1 {
+	if v := o.GetContentHint(); v != nil {
+		if actualValue, ok := v.Get(); ok && actualValue != nil {
+			return actualValue.FilterProjectEnvsContentHintEnvBlobStoreID1
 		}
 		return nil
 	}
@@ -4505,6 +4685,59 @@ func (o *FilterProjectEnvsContentHintPostgresURL) GetStoreID() string {
 	return o.StoreID
 }
 
+type FilterProjectEnvsTypeBlobStoreID string
+
+const (
+	FilterProjectEnvsTypeBlobStoreIDBlobStoreID FilterProjectEnvsTypeBlobStoreID = "blob-store-id"
+)
+
+func (e FilterProjectEnvsTypeBlobStoreID) ToPointer() *FilterProjectEnvsTypeBlobStoreID {
+	return &e
+}
+func (e *FilterProjectEnvsTypeBlobStoreID) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "blob-store-id":
+		*e = FilterProjectEnvsTypeBlobStoreID(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FilterProjectEnvsTypeBlobStoreID: %v", v)
+	}
+}
+
+type FilterProjectEnvsContentHintBlobStoreID struct {
+	Type    FilterProjectEnvsTypeBlobStoreID `json:"type"`
+	StoreID string                           `json:"storeId"`
+}
+
+func (f FilterProjectEnvsContentHintBlobStoreID) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FilterProjectEnvsContentHintBlobStoreID) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *FilterProjectEnvsContentHintBlobStoreID) GetType() FilterProjectEnvsTypeBlobStoreID {
+	if o == nil {
+		return FilterProjectEnvsTypeBlobStoreID("")
+	}
+	return o.Type
+}
+
+func (o *FilterProjectEnvsContentHintBlobStoreID) GetStoreID() string {
+	if o == nil {
+		return ""
+	}
+	return o.StoreID
+}
+
 type FilterProjectEnvsTypeBlobReadWriteToken string
 
 const (
@@ -4778,6 +5011,7 @@ const (
 	FilterProjectEnvsContentHintUnionTypeRedisRestAPIToken         FilterProjectEnvsContentHintUnionType = "redis-rest-api-token"
 	FilterProjectEnvsContentHintUnionTypeRedisRestAPIReadOnlyToken FilterProjectEnvsContentHintUnionType = "redis-rest-api-read-only-token"
 	FilterProjectEnvsContentHintUnionTypeBlobReadWriteToken        FilterProjectEnvsContentHintUnionType = "blob-read-write-token"
+	FilterProjectEnvsContentHintUnionTypeBlobStoreID               FilterProjectEnvsContentHintUnionType = "blob-store-id"
 	FilterProjectEnvsContentHintUnionTypePostgresURL               FilterProjectEnvsContentHintUnionType = "postgres-url"
 	FilterProjectEnvsContentHintUnionTypePostgresURLNonPooling     FilterProjectEnvsContentHintUnionType = "postgres-url-non-pooling"
 	FilterProjectEnvsContentHintUnionTypePostgresPrismaURL         FilterProjectEnvsContentHintUnionType = "postgres-prisma-url"
@@ -4796,6 +5030,7 @@ type FilterProjectEnvsContentHintUnion struct {
 	FilterProjectEnvsContentHintRedisRestAPIToken         *FilterProjectEnvsContentHintRedisRestAPIToken         `queryParam:"inline"`
 	FilterProjectEnvsContentHintRedisRestAPIReadOnlyToken *FilterProjectEnvsContentHintRedisRestAPIReadOnlyToken `queryParam:"inline"`
 	FilterProjectEnvsContentHintBlobReadWriteToken        *FilterProjectEnvsContentHintBlobReadWriteToken        `queryParam:"inline"`
+	FilterProjectEnvsContentHintBlobStoreID               *FilterProjectEnvsContentHintBlobStoreID               `queryParam:"inline"`
 	FilterProjectEnvsContentHintPostgresURL               *FilterProjectEnvsContentHintPostgresURL               `queryParam:"inline"`
 	FilterProjectEnvsContentHintPostgresURLNonPooling     *FilterProjectEnvsContentHintPostgresURLNonPooling     `queryParam:"inline"`
 	FilterProjectEnvsContentHintPostgresPrismaURL         *FilterProjectEnvsContentHintPostgresPrismaURL         `queryParam:"inline"`
@@ -4867,6 +5102,18 @@ func CreateFilterProjectEnvsContentHintUnionBlobReadWriteToken(blobReadWriteToke
 	return FilterProjectEnvsContentHintUnion{
 		FilterProjectEnvsContentHintBlobReadWriteToken: &blobReadWriteToken,
 		Type: typ,
+	}
+}
+
+func CreateFilterProjectEnvsContentHintUnionBlobStoreID(blobStoreID FilterProjectEnvsContentHintBlobStoreID) FilterProjectEnvsContentHintUnion {
+	typ := FilterProjectEnvsContentHintUnionTypeBlobStoreID
+
+	typStr := FilterProjectEnvsTypeBlobStoreID(typ)
+	blobStoreID.Type = typStr
+
+	return FilterProjectEnvsContentHintUnion{
+		FilterProjectEnvsContentHintBlobStoreID: &blobStoreID,
+		Type:                                    typ,
 	}
 }
 
@@ -5047,6 +5294,15 @@ func (u *FilterProjectEnvsContentHintUnion) UnmarshalJSON(data []byte) error {
 		u.FilterProjectEnvsContentHintBlobReadWriteToken = filterProjectEnvsContentHintBlobReadWriteToken
 		u.Type = FilterProjectEnvsContentHintUnionTypeBlobReadWriteToken
 		return nil
+	case "blob-store-id":
+		filterProjectEnvsContentHintBlobStoreID := new(FilterProjectEnvsContentHintBlobStoreID)
+		if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintBlobStoreID, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == blob-store-id) type FilterProjectEnvsContentHintBlobStoreID within FilterProjectEnvsContentHintUnion: %w", string(data), err)
+		}
+
+		u.FilterProjectEnvsContentHintBlobStoreID = filterProjectEnvsContentHintBlobStoreID
+		u.Type = FilterProjectEnvsContentHintUnionTypeBlobStoreID
+		return nil
 	case "postgres-url":
 		filterProjectEnvsContentHintPostgresURL := new(FilterProjectEnvsContentHintPostgresURL)
 		if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintPostgresURL, "", true, nil); err != nil {
@@ -5161,6 +5417,10 @@ func (u FilterProjectEnvsContentHintUnion) MarshalJSON() ([]byte, error) {
 
 	if u.FilterProjectEnvsContentHintBlobReadWriteToken != nil {
 		return utils.MarshalJSON(u.FilterProjectEnvsContentHintBlobReadWriteToken, "", true)
+	}
+
+	if u.FilterProjectEnvsContentHintBlobStoreID != nil {
+		return utils.MarshalJSON(u.FilterProjectEnvsContentHintBlobStoreID, "", true)
 	}
 
 	if u.FilterProjectEnvsContentHintPostgresURL != nil {
@@ -5470,6 +5730,16 @@ func (o *FilterProjectEnvsResponseBody1) GetContentHintBlobReadWriteToken() *Fil
 	if v := o.GetContentHint(); v != nil {
 		if actualValue, ok := v.Get(); ok && actualValue != nil {
 			return actualValue.FilterProjectEnvsContentHintBlobReadWriteToken
+		}
+		return nil
+	}
+	return nil
+}
+
+func (o *FilterProjectEnvsResponseBody1) GetContentHintBlobStoreID() *FilterProjectEnvsContentHintBlobStoreID {
+	if v := o.GetContentHint(); v != nil {
+		if actualValue, ok := v.Get(); ok && actualValue != nil {
+			return actualValue.FilterProjectEnvsContentHintBlobStoreID
 		}
 		return nil
 	}

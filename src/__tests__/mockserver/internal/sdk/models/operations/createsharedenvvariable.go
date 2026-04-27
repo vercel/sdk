@@ -12,6 +12,154 @@ import (
 	"time"
 )
 
+type Ev3 struct {
+	// The name of the Shared Environment Variable
+	Key string `json:"key"`
+	// The value of the Shared Environment Variable
+	Value string `json:"value"`
+	// A comment to add context on what this Shared Environment Variable is for
+	Comment *string `json:"comment,omitempty"`
+}
+
+func (e Ev3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *Ev3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"key", "value"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *Ev3) GetKey() string {
+	if o == nil {
+		return ""
+	}
+	return o.Key
+}
+
+func (o *Ev3) GetValue() string {
+	if o == nil {
+		return ""
+	}
+	return o.Value
+}
+
+func (o *Ev3) GetComment() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Comment
+}
+
+// CreateSharedEnvVariableTypeRequest3 - The type of environment variable
+type CreateSharedEnvVariableTypeRequest3 string
+
+const (
+	CreateSharedEnvVariableTypeRequest3Encrypted CreateSharedEnvVariableTypeRequest3 = "encrypted"
+	CreateSharedEnvVariableTypeRequest3Sensitive CreateSharedEnvVariableTypeRequest3 = "sensitive"
+)
+
+func (e CreateSharedEnvVariableTypeRequest3) ToPointer() *CreateSharedEnvVariableTypeRequest3 {
+	return &e
+}
+func (e *CreateSharedEnvVariableTypeRequest3) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "encrypted":
+		fallthrough
+	case "sensitive":
+		*e = CreateSharedEnvVariableTypeRequest3(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateSharedEnvVariableTypeRequest3: %v", v)
+	}
+}
+
+type CreateSharedEnvVariableTargetRequest3 string
+
+const (
+	CreateSharedEnvVariableTargetRequest3Production  CreateSharedEnvVariableTargetRequest3 = "production"
+	CreateSharedEnvVariableTargetRequest3Preview     CreateSharedEnvVariableTargetRequest3 = "preview"
+	CreateSharedEnvVariableTargetRequest3Development CreateSharedEnvVariableTargetRequest3 = "development"
+)
+
+func (e CreateSharedEnvVariableTargetRequest3) ToPointer() *CreateSharedEnvVariableTargetRequest3 {
+	return &e
+}
+func (e *CreateSharedEnvVariableTargetRequest3) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "production":
+		fallthrough
+	case "preview":
+		fallthrough
+	case "development":
+		*e = CreateSharedEnvVariableTargetRequest3(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateSharedEnvVariableTargetRequest3: %v", v)
+	}
+}
+
+type CreateSharedEnvVariableRequestBody3 struct {
+	Evs []Ev3 `json:"evs"`
+	// The type of environment variable
+	Type *CreateSharedEnvVariableTypeRequest3 `json:"type,omitempty"`
+	// The target environment of the Shared Environment Variable
+	Target []CreateSharedEnvVariableTargetRequest3 `json:"target,omitempty"`
+	// Associate a Shared Environment Variable to projects.
+	//
+	// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
+	ProjectID []string `json:"projectId,omitempty"`
+}
+
+func (c CreateSharedEnvVariableRequestBody3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateSharedEnvVariableRequestBody3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"evs"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateSharedEnvVariableRequestBody3) GetEvs() []Ev3 {
+	if o == nil {
+		return []Ev3{}
+	}
+	return o.Evs
+}
+
+func (o *CreateSharedEnvVariableRequestBody3) GetType() *CreateSharedEnvVariableTypeRequest3 {
+	if o == nil {
+		return nil
+	}
+	return o.Type
+}
+
+func (o *CreateSharedEnvVariableRequestBody3) GetTarget() []CreateSharedEnvVariableTargetRequest3 {
+	if o == nil {
+		return nil
+	}
+	return o.Target
+}
+
+func (o *CreateSharedEnvVariableRequestBody3) GetProjectID() []string {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectID
+}
+
 type Ev2 struct {
 	// The name of the Shared Environment Variable
 	Key string `json:"key"`
@@ -313,11 +461,13 @@ type CreateSharedEnvVariableRequestBodyType string
 const (
 	CreateSharedEnvVariableRequestBodyTypeCreateSharedEnvVariableRequestBody1 CreateSharedEnvVariableRequestBodyType = "createSharedEnvVariable_RequestBody_1"
 	CreateSharedEnvVariableRequestBodyTypeCreateSharedEnvVariableRequestBody2 CreateSharedEnvVariableRequestBodyType = "createSharedEnvVariable_RequestBody_2"
+	CreateSharedEnvVariableRequestBodyTypeCreateSharedEnvVariableRequestBody3 CreateSharedEnvVariableRequestBodyType = "createSharedEnvVariable_RequestBody_3"
 )
 
 type CreateSharedEnvVariableRequestBody struct {
 	CreateSharedEnvVariableRequestBody1 *CreateSharedEnvVariableRequestBody1 `queryParam:"inline"`
 	CreateSharedEnvVariableRequestBody2 *CreateSharedEnvVariableRequestBody2 `queryParam:"inline"`
+	CreateSharedEnvVariableRequestBody3 *CreateSharedEnvVariableRequestBody3 `queryParam:"inline"`
 
 	Type CreateSharedEnvVariableRequestBodyType
 }
@@ -340,6 +490,15 @@ func CreateCreateSharedEnvVariableRequestBodyCreateSharedEnvVariableRequestBody2
 	}
 }
 
+func CreateCreateSharedEnvVariableRequestBodyCreateSharedEnvVariableRequestBody3(createSharedEnvVariableRequestBody3 CreateSharedEnvVariableRequestBody3) CreateSharedEnvVariableRequestBody {
+	typ := CreateSharedEnvVariableRequestBodyTypeCreateSharedEnvVariableRequestBody3
+
+	return CreateSharedEnvVariableRequestBody{
+		CreateSharedEnvVariableRequestBody3: &createSharedEnvVariableRequestBody3,
+		Type:                                typ,
+	}
+}
+
 func (u *CreateSharedEnvVariableRequestBody) UnmarshalJSON(data []byte) error {
 
 	var createSharedEnvVariableRequestBody1 CreateSharedEnvVariableRequestBody1 = CreateSharedEnvVariableRequestBody1{}
@@ -356,6 +515,13 @@ func (u *CreateSharedEnvVariableRequestBody) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
+	var createSharedEnvVariableRequestBody3 CreateSharedEnvVariableRequestBody3 = CreateSharedEnvVariableRequestBody3{}
+	if err := utils.UnmarshalJSON(data, &createSharedEnvVariableRequestBody3, "", true, nil); err == nil {
+		u.CreateSharedEnvVariableRequestBody3 = &createSharedEnvVariableRequestBody3
+		u.Type = CreateSharedEnvVariableRequestBodyTypeCreateSharedEnvVariableRequestBody3
+		return nil
+	}
+
 	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateSharedEnvVariableRequestBody", string(data))
 }
 
@@ -366,6 +532,10 @@ func (u CreateSharedEnvVariableRequestBody) MarshalJSON() ([]byte, error) {
 
 	if u.CreateSharedEnvVariableRequestBody2 != nil {
 		return utils.MarshalJSON(u.CreateSharedEnvVariableRequestBody2, "", true)
+	}
+
+	if u.CreateSharedEnvVariableRequestBody3 != nil {
+		return utils.MarshalJSON(u.CreateSharedEnvVariableRequestBody3, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type CreateSharedEnvVariableRequestBody: all fields are null")
@@ -494,6 +664,8 @@ type CreateSharedEnvVariableCreated struct {
 	Target []CreateSharedEnvVariableCreatedTarget `json:"target,omitempty"`
 	// whether or not this env varible applies to custom environments
 	ApplyToAllCustomEnvironments *bool `json:"applyToAllCustomEnvironments,omitempty"`
+	// The custom environment IDs that this Shared Env Var is scoped to.
+	CustomEnvironmentIds []string `json:"customEnvironmentIds,omitempty"`
 	// whether or not this env variable is decrypted
 	Decrypted *bool `json:"decrypted,omitempty"`
 	// A user provided comment that describes what this Shared Env Var is for.
@@ -616,6 +788,13 @@ func (o *CreateSharedEnvVariableCreated) GetApplyToAllCustomEnvironments() *bool
 		return nil
 	}
 	return o.ApplyToAllCustomEnvironments
+}
+
+func (o *CreateSharedEnvVariableCreated) GetCustomEnvironmentIds() []string {
+	if o == nil {
+		return nil
+	}
+	return o.CustomEnvironmentIds
 }
 
 func (o *CreateSharedEnvVariableCreated) GetDecrypted() *bool {

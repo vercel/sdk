@@ -1325,7 +1325,7 @@ export const CreateDeploymentState = {
 export type CreateDeploymentState = ClosedEnum<typeof CreateDeploymentState>;
 
 /**
- * Present when deployment was created with VERCEL_MANUAL_PROVISIONING=true. The deployment stays in INITIALIZING until /continue is called.
+ * Present when deployment was created with manual provisioning enabled, either explicitly or via the experimental BYOC git flow. The deployment stays in INITIALIZING until /continue is called.
  */
 export type ManualProvisioning = {
   /**

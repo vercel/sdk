@@ -1,15 +1,17 @@
 # Origin
 
+How the token was issued. Always `'manual'` for explicit PAT creation.
+
 ## Example Usage
 
 ```typescript
-import { Origin } from "@vercel/sdk/models/team.js";
+import { Origin } from "@vercel/sdk/models/twohundredandfortyseven.js";
 
-let value: Origin = "link";
+let value: Origin = "email";
 ```
 
 ## Values
 
 ```typescript
-"link" | "saml" | "mail" | "import" | "teams" | "github" | "gitlab" | "bitbucket" | "dsync" | "feedback" | "organization-teams" | "nsnb-auto-approve" | "nsnb-hobby-upgrade" | "nsnb-request-access" | "nsnb-viewer-upgrade" | "nsnb-invite" | "nsnb-redeploy" | "nsnb-redeploy-attribution-card"
+"email" | "saml" | "app" | "github" | "gitlab" | "bitbucket" | "google" | "apple" | "chatgpt" | "github-webhook" | "manual" | "passkey" | "otp" | "sms" | "invite" | "emu"
 ```

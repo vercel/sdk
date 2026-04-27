@@ -12,6 +12,145 @@ import (
 	"mockserver/internal/sdk/utils"
 )
 
+type UpdateProjectResourceConfigResponseBody struct {
+	ElasticConcurrencyEnabled      *bool                                                         `json:"elasticConcurrencyEnabled,omitempty"`
+	Fluid                          *bool                                                         `json:"fluid,omitempty"`
+	FunctionDefaultRegions         []string                                                      `json:"functionDefaultRegions"`
+	FunctionDefaultTimeout         *float64                                                      `json:"functionDefaultTimeout,omitempty"`
+	FunctionDefaultMemoryType      *UpdateProjectResourceConfigFunctionDefaultMemoryTypeResponse `json:"functionDefaultMemoryType,omitempty"`
+	FunctionZeroConfigFailover     *bool                                                         `json:"functionZeroConfigFailover,omitempty"`
+	BuildMachineType               *UpdateProjectResourceConfigBuildMachineTypeResponse          `json:"buildMachineType,omitempty"`
+	BuildMachineSelection          *UpdateProjectResourceConfigBuildMachineSelectionResponse     `json:"buildMachineSelection,omitempty"`
+	BuildMachineElasticLastUpdated *float64                                                      `json:"buildMachineElasticLastUpdated,omitempty"`
+	IsNSNBDisabled                 *bool                                                         `json:"isNSNBDisabled,omitempty"`
+	BuildQueue                     *UpdateProjectResourceConfigBuildQueueResponseBody            `json:"buildQueue,omitempty"`
+	EnableFunctionsBeta            *bool                                                         `json:"enableFunctionsBeta,omitempty"`
+}
+
+func (o *UpdateProjectResourceConfigResponseBody) GetElasticConcurrencyEnabled() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ElasticConcurrencyEnabled
+}
+
+func (o *UpdateProjectResourceConfigResponseBody) GetFluid() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Fluid
+}
+
+func (o *UpdateProjectResourceConfigResponseBody) GetFunctionDefaultRegions() []string {
+	if o == nil {
+		return []string{}
+	}
+	return o.FunctionDefaultRegions
+}
+
+func (o *UpdateProjectResourceConfigResponseBody) GetFunctionDefaultTimeout() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.FunctionDefaultTimeout
+}
+
+func (o *UpdateProjectResourceConfigResponseBody) GetFunctionDefaultMemoryType() *UpdateProjectResourceConfigFunctionDefaultMemoryTypeResponse {
+	if o == nil {
+		return nil
+	}
+	return o.FunctionDefaultMemoryType
+}
+
+func (o *UpdateProjectResourceConfigResponseBody) GetFunctionZeroConfigFailover() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.FunctionZeroConfigFailover
+}
+
+func (o *UpdateProjectResourceConfigResponseBody) GetBuildMachineType() *UpdateProjectResourceConfigBuildMachineTypeResponse {
+	if o == nil {
+		return nil
+	}
+	return o.BuildMachineType
+}
+
+func (o *UpdateProjectResourceConfigResponseBody) GetBuildMachineSelection() *UpdateProjectResourceConfigBuildMachineSelectionResponse {
+	if o == nil {
+		return nil
+	}
+	return o.BuildMachineSelection
+}
+
+func (o *UpdateProjectResourceConfigResponseBody) GetBuildMachineElasticLastUpdated() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.BuildMachineElasticLastUpdated
+}
+
+func (o *UpdateProjectResourceConfigResponseBody) GetIsNSNBDisabled() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IsNSNBDisabled
+}
+
+func (o *UpdateProjectResourceConfigResponseBody) GetBuildQueue() *UpdateProjectResourceConfigBuildQueueResponseBody {
+	if o == nil {
+		return nil
+	}
+	return o.BuildQueue
+}
+
+func (o *UpdateProjectResourceConfigResponseBody) GetEnableFunctionsBeta() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.EnableFunctionsBeta
+}
+
+// UpdateProjectRollbackDescription - Description of why a project was rolled back, and by whom. Note that lastAliasRequest contains the from/to details of the rollback.
+type UpdateProjectRollbackDescription struct {
+	// The user who rolled back the project.
+	UserID string `json:"userId"`
+	// The username of the user who rolled back the project.
+	Username string `json:"username"`
+	// User-supplied explanation of why they rolled back the project. Limited to 250 characters.
+	Description string `json:"description"`
+	// Timestamp of when the rollback was requested.
+	CreatedAt float64 `json:"createdAt"`
+}
+
+func (o *UpdateProjectRollbackDescription) GetUserID() string {
+	if o == nil {
+		return ""
+	}
+	return o.UserID
+}
+
+func (o *UpdateProjectRollbackDescription) GetUsername() string {
+	if o == nil {
+		return ""
+	}
+	return o.Username
+}
+
+func (o *UpdateProjectRollbackDescription) GetDescription() string {
+	if o == nil {
+		return ""
+	}
+	return o.Description
+}
+
+func (o *UpdateProjectRollbackDescription) GetCreatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CreatedAt
+}
+
 // UpdateProjectStage - An array of all the stages required during a deployment release. Each stage defines a target percentage and advancement rules. The final stage must always have targetPercentage: 100.
 type UpdateProjectStage struct {
 	// The percentage of traffic to serve to the canary deployment (0-100)
@@ -394,9 +533,42 @@ func (e *UpdateProjectCve55182MigrationAppliedFrom) UnmarshalJSON(data []byte) e
 	}
 }
 
+type UpdateProjectApril2026SecurityIncidentMigrationAppliedFrom string
+
+const (
+	UpdateProjectApril2026SecurityIncidentMigrationAppliedFromPreview                          UpdateProjectApril2026SecurityIncidentMigrationAppliedFrom = "preview"
+	UpdateProjectApril2026SecurityIncidentMigrationAppliedFromAll                              UpdateProjectApril2026SecurityIncidentMigrationAppliedFrom = "all"
+	UpdateProjectApril2026SecurityIncidentMigrationAppliedFromProdDeploymentUrlsAndAllPreviews UpdateProjectApril2026SecurityIncidentMigrationAppliedFrom = "prod_deployment_urls_and_all_previews"
+	UpdateProjectApril2026SecurityIncidentMigrationAppliedFromAllExceptCustomDomains           UpdateProjectApril2026SecurityIncidentMigrationAppliedFrom = "all_except_custom_domains"
+)
+
+func (e UpdateProjectApril2026SecurityIncidentMigrationAppliedFrom) ToPointer() *UpdateProjectApril2026SecurityIncidentMigrationAppliedFrom {
+	return &e
+}
+func (e *UpdateProjectApril2026SecurityIncidentMigrationAppliedFrom) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "preview":
+		fallthrough
+	case "all":
+		fallthrough
+	case "prod_deployment_urls_and_all_previews":
+		fallthrough
+	case "all_except_custom_domains":
+		*e = UpdateProjectApril2026SecurityIncidentMigrationAppliedFrom(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateProjectApril2026SecurityIncidentMigrationAppliedFrom: %v", v)
+	}
+}
+
 type UpdateProjectSsoProtectionResponse struct {
-	DeploymentType               UpdateProjectSsoProtectionDeploymentTypeResponse                             `json:"deploymentType"`
-	Cve55182MigrationAppliedFrom optionalnullable.OptionalNullable[UpdateProjectCve55182MigrationAppliedFrom] `json:"cve55182MigrationAppliedFrom,omitempty"`
+	DeploymentType                                UpdateProjectSsoProtectionDeploymentTypeResponse                                              `json:"deploymentType"`
+	Cve55182MigrationAppliedFrom                  optionalnullable.OptionalNullable[UpdateProjectCve55182MigrationAppliedFrom]                  `json:"cve55182MigrationAppliedFrom,omitempty"`
+	April2026SecurityIncidentMigrationAppliedFrom optionalnullable.OptionalNullable[UpdateProjectApril2026SecurityIncidentMigrationAppliedFrom] `json:"april2026SecurityIncidentMigrationAppliedFrom,omitempty"`
 }
 
 func (o *UpdateProjectSsoProtectionResponse) GetDeploymentType() UpdateProjectSsoProtectionDeploymentTypeResponse {
@@ -411,6 +583,13 @@ func (o *UpdateProjectSsoProtectionResponse) GetCve55182MigrationAppliedFrom() o
 		return nil
 	}
 	return o.Cve55182MigrationAppliedFrom
+}
+
+func (o *UpdateProjectSsoProtectionResponse) GetApril2026SecurityIncidentMigrationAppliedFrom() optionalnullable.OptionalNullable[UpdateProjectApril2026SecurityIncidentMigrationAppliedFrom] {
+	if o == nil {
+		return nil
+	}
+	return o.April2026SecurityIncidentMigrationAppliedFrom
 }
 
 type UpdateProjectTargetsAliasAssignedType string
@@ -859,6 +1038,8 @@ type UpdateProjectPermissions struct {
 	SharedEnvVarsProduction                  []components.ACLAction `json:"sharedEnvVarsProduction,omitempty"`
 	Space                                    []components.ACLAction `json:"space,omitempty"`
 	SpaceRun                                 []components.ACLAction `json:"spaceRun,omitempty"`
+	StoreIsLocked                            []components.ACLAction `json:"storeIsLocked,omitempty"`
+	StoreTokenSetSensitive                   []components.ACLAction `json:"storeTokenSetSensitive,omitempty"`
 	StoreTransfer                            []components.ACLAction `json:"storeTransfer,omitempty"`
 	SupportCase                              []components.ACLAction `json:"supportCase,omitempty"`
 	SupportCaseComment                       []components.ACLAction `json:"supportCaseComment,omitempty"`
@@ -868,11 +1049,13 @@ type UpdateProjectPermissions struct {
 	TeamGitExclusivity                       []components.ACLAction `json:"teamGitExclusivity,omitempty"`
 	TeamInvite                               []components.ACLAction `json:"teamInvite,omitempty"`
 	TeamInviteCode                           []components.ACLAction `json:"teamInviteCode,omitempty"`
+	TeamInviteLink                           []components.ACLAction `json:"teamInviteLink,omitempty"`
 	TeamJoin                                 []components.ACLAction `json:"teamJoin,omitempty"`
 	TeamMemberMfaStatus                      []components.ACLAction `json:"teamMemberMfaStatus,omitempty"`
 	TeamMicrofrontends                       []components.ACLAction `json:"teamMicrofrontends,omitempty"`
 	TeamOwnMembership                        []components.ACLAction `json:"teamOwnMembership,omitempty"`
 	TeamOwnMembershipDisconnectSAML          []components.ACLAction `json:"teamOwnMembershipDisconnectSAML,omitempty"`
+	TeamTokenInvalidation                    []components.ACLAction `json:"teamTokenInvalidation,omitempty"`
 	Token                                    []components.ACLAction `json:"token,omitempty"`
 	ToolbarComment                           []components.ACLAction `json:"toolbarComment,omitempty"`
 	Usage                                    []components.ACLAction `json:"usage,omitempty"`
@@ -1948,6 +2131,20 @@ func (o *UpdateProjectPermissions) GetSpaceRun() []components.ACLAction {
 	return o.SpaceRun
 }
 
+func (o *UpdateProjectPermissions) GetStoreIsLocked() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.StoreIsLocked
+}
+
+func (o *UpdateProjectPermissions) GetStoreTokenSetSensitive() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.StoreTokenSetSensitive
+}
+
 func (o *UpdateProjectPermissions) GetStoreTransfer() []components.ACLAction {
 	if o == nil {
 		return nil
@@ -2011,6 +2208,13 @@ func (o *UpdateProjectPermissions) GetTeamInviteCode() []components.ACLAction {
 	return o.TeamInviteCode
 }
 
+func (o *UpdateProjectPermissions) GetTeamInviteLink() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.TeamInviteLink
+}
+
 func (o *UpdateProjectPermissions) GetTeamJoin() []components.ACLAction {
 	if o == nil {
 		return nil
@@ -2044,6 +2248,13 @@ func (o *UpdateProjectPermissions) GetTeamOwnMembershipDisconnectSAML() []compon
 		return nil
 	}
 	return o.TeamOwnMembershipDisconnectSAML
+}
+
+func (o *UpdateProjectPermissions) GetTeamTokenInvalidation() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.TeamTokenInvalidation
 }
 
 func (o *UpdateProjectPermissions) GetToken() []components.ACLAction {
@@ -3934,7 +4145,7 @@ type UpdateProjectGitProviderOptions struct {
 	CreateDeployments UpdateProjectCreateDeployments `json:"createDeployments"`
 	// Whether the Vercel bot should not automatically create GitHub repository-dispatch events on deployment events. https://vercel.com/docs/git/vercel-for-github#repository-dispatch-events
 	DisableRepositoryDispatchEvents *bool `json:"disableRepositoryDispatchEvents,omitempty"`
-	// Whether the project requires commits to be signed before deployments will be created.
+	// Whether the project requires commits to be signed & verified before deployments will be created. - `true`: require verified commits for this project (explicit override of the team setting). - `false`: do not require verified commits (explicit override of the team setting). - absent: inherit from `team.requireVerifiedCommits`.
 	RequireVerifiedCommits *bool `json:"requireVerifiedCommits,omitempty"`
 	// Whether Vercel should post commit statuses for this project. When omitted, commit statuses remain enabled.
 	GitCommitStatus *bool `json:"gitCommitStatus,omitempty"`

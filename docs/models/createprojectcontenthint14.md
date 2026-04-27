@@ -3,23 +3,17 @@
 ## Example Usage
 
 ```typescript
-import { CreateProjectContentHint14 } from "@vercel/sdk/models/createprojectcreatedeployments.js";
+import { CreateProjectContentHint14 } from "@vercel/sdk/models/createprojecttrustedsources.js";
 
 let value: CreateProjectContentHint14 = {
-  type: "integration-store-secret",
+  type: "postgres-url-no-ssl",
   storeId: "<id>",
-  integrationId: "<id>",
-  integrationProductId: "<id>",
-  integrationConfigurationId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field                        | Type                         | Required                     | Description                  |
-| ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- |
-| `type`                       | *"integration-store-secret"* | :heavy_check_mark:           | N/A                          |
-| `storeId`                    | *string*                     | :heavy_check_mark:           | N/A                          |
-| `integrationId`              | *string*                     | :heavy_check_mark:           | N/A                          |
-| `integrationProductId`       | *string*                     | :heavy_check_mark:           | N/A                          |
-| `integrationConfigurationId` | *string*                     | :heavy_check_mark:           | N/A                          |
+| Field                   | Type                    | Required                | Description             |
+| ----------------------- | ----------------------- | ----------------------- | ----------------------- |
+| `type`                  | *"postgres-url-no-ssl"* | :heavy_check_mark:      | N/A                     |
+| `storeId`               | *string*                | :heavy_check_mark:      | N/A                     |

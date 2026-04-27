@@ -5,7 +5,7 @@ The source envs on the trusted project that are allowed to access `to`.
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupFrom2 } from "@vercel/sdk/models/getmicrofrontendsingroupgitcomments.js";
+import { GetMicrofrontendsInGroupFrom2 } from "@vercel/sdk/models/getmicrofrontendsingroupoidcproviders.js";
 
 let value: GetMicrofrontendsInGroupFrom2 = {
   preset: "all-custom",

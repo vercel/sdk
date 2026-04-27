@@ -1,0 +1,25 @@
+name: Fix Speakeasy-generated docs
+
+on:
+  push:
+    branches:
+      - speakeasy-sdk-regen-*
+
+jobs:
+  fix-generated-docs:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+      - name: Fix typos in Speakeasy-generated docs
+        run: sed -i 's/targetting/targeting/g' FUNCTIONS.md
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add FUNCTIONS.md
+          git diff --staged --quiet || git commit -m "fix: correct targetting typo in generated FUNCTIONS.md"
+          git push

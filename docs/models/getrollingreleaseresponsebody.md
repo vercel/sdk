@@ -12,9 +12,9 @@ let value: GetRollingReleaseResponseBody = {
     state: "ACTIVE",
     substate: "PAUSED",
     currentDeployment: {
+      id: "dpl_abc123",
       name: "my-shop@main",
       createdAt: 1716206500000,
-      id: "dpl_abc123",
       readyState: "READY",
       readyStateAt: 1716206800000,
       source: "git",
@@ -22,9 +22,9 @@ let value: GetRollingReleaseResponseBody = {
       url: "my-shop.vercel.app",
     },
     canaryDeployment: {
+      id: "dpl_def456",
       name: "my-shop@9c7e2f4",
       createdAt: 1716210100000,
-      id: "dpl_def456",
       readyState: "READY",
       readyStateAt: 1716210400000,
       source: "git",

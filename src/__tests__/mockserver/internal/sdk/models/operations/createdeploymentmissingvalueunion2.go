@@ -5629,7 +5629,7 @@ func (e *CreateDeploymentManualProvisioningState) UnmarshalJSON(data []byte) err
 	}
 }
 
-// CreateDeploymentManualProvisioning - Present when deployment was created with VERCEL_MANUAL_PROVISIONING=true. The deployment stays in INITIALIZING until /continue is called.
+// CreateDeploymentManualProvisioning - Present when deployment was created with manual provisioning enabled, either explicitly or via the experimental BYOC git flow. The deployment stays in INITIALIZING until /continue is called.
 type CreateDeploymentManualProvisioning struct {
 	// Current provisioning state
 	State CreateDeploymentManualProvisioningState `json:"state"`

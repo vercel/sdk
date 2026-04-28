@@ -3,10 +3,10 @@
 ## Example Usage
 
 ```typescript
-import { CreateProjectContentHint10 } from "@vercel/sdk/models/createprojectcreatedeployments.js";
+import { CreateProjectContentHint10 } from "@vercel/sdk/models/createprojecttrustedsources.js";
 
 let value: CreateProjectContentHint10 = {
-  type: "postgres-host",
+  type: "postgres-user",
   storeId: "<id>",
 };
 ```
@@ -15,5 +15,5 @@ let value: CreateProjectContentHint10 = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `type`             | *"postgres-host"*  | :heavy_check_mark: | N/A                |
+| `type`             | *"postgres-user"*  | :heavy_check_mark: | N/A                |
 | `storeId`          | *string*           | :heavy_check_mark: | N/A                |

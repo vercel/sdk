@@ -52,7 +52,7 @@ const value: models.RemoveProjectEnvContentHintProjects5 = {
 
 ```typescript
 const value: models.RemoveProjectEnvContentHintProjects6 = {
-  type: "postgres-url",
+  type: "blob-store-id",
   storeId: "<id>",
 };
 ```
@@ -61,7 +61,7 @@ const value: models.RemoveProjectEnvContentHintProjects6 = {
 
 ```typescript
 const value: models.RemoveProjectEnvContentHintProjects7 = {
-  type: "postgres-url-non-pooling",
+  type: "postgres-url",
   storeId: "<id>",
 };
 ```
@@ -70,7 +70,7 @@ const value: models.RemoveProjectEnvContentHintProjects7 = {
 
 ```typescript
 const value: models.RemoveProjectEnvContentHintProjects8 = {
-  type: "postgres-prisma-url",
+  type: "postgres-url-non-pooling",
   storeId: "<id>",
 };
 ```
@@ -79,7 +79,7 @@ const value: models.RemoveProjectEnvContentHintProjects8 = {
 
 ```typescript
 const value: models.RemoveProjectEnvContentHintProjects9 = {
-  type: "postgres-user",
+  type: "postgres-prisma-url",
   storeId: "<id>",
 };
 ```
@@ -88,7 +88,7 @@ const value: models.RemoveProjectEnvContentHintProjects9 = {
 
 ```typescript
 const value: models.RemoveProjectEnvContentHintProjects10 = {
-  type: "postgres-host",
+  type: "postgres-user",
   storeId: "<id>",
 };
 ```
@@ -97,7 +97,7 @@ const value: models.RemoveProjectEnvContentHintProjects10 = {
 
 ```typescript
 const value: models.RemoveProjectEnvContentHintProjects11 = {
-  type: "postgres-password",
+  type: "postgres-host",
   storeId: "<id>",
 };
 ```
@@ -106,7 +106,7 @@ const value: models.RemoveProjectEnvContentHintProjects11 = {
 
 ```typescript
 const value: models.RemoveProjectEnvContentHintProjects12 = {
-  type: "postgres-database",
+  type: "postgres-password",
   storeId: "<id>",
 };
 ```
@@ -115,7 +115,7 @@ const value: models.RemoveProjectEnvContentHintProjects12 = {
 
 ```typescript
 const value: models.RemoveProjectEnvContentHintProjects13 = {
-  type: "postgres-url-no-ssl",
+  type: "postgres-database",
   storeId: "<id>",
 };
 ```
@@ -124,6 +124,15 @@ const value: models.RemoveProjectEnvContentHintProjects13 = {
 
 ```typescript
 const value: models.RemoveProjectEnvContentHintProjects14 = {
+  type: "postgres-url-no-ssl",
+  storeId: "<id>",
+};
+```
+
+### `models.RemoveProjectEnvContentHintProjects15`
+
+```typescript
+const value: models.RemoveProjectEnvContentHintProjects15 = {
   type: "integration-store-secret",
   storeId: "<id>",
   integrationId: "<id>",
@@ -132,10 +141,10 @@ const value: models.RemoveProjectEnvContentHintProjects14 = {
 };
 ```
 
-### `models.RemoveProjectEnvContentHintProjects15`
+### `models.RemoveProjectEnvContentHintProjects16`
 
 ```typescript
-const value: models.RemoveProjectEnvContentHintProjects15 = {
+const value: models.RemoveProjectEnvContentHintProjects16 = {
   type: "flags-connection-string",
   projectId: "<id>",
 };

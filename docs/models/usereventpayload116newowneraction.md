@@ -5,7 +5,7 @@ The action that occurred
 ## Example Usage
 
 ```typescript
-import { UserEventPayload116NewOwnerAction } from "@vercel/sdk/models/oldprojects.js";
+import { UserEventPayload116NewOwnerAction } from "@vercel/sdk/models/jobdeployhook.js";
 
 let value: UserEventPayload116NewOwnerAction = "enabled";
 ```

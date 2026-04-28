@@ -6,7 +6,7 @@
 import { ContentHint6 } from "@vercel/sdk/models/editprojectenvop.js";
 
 let value: ContentHint6 = {
-  type: "postgres-url",
+  type: "blob-store-id",
   storeId: "<id>",
 };
 ```
@@ -15,5 +15,5 @@ let value: ContentHint6 = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `type`             | *"postgres-url"*   | :heavy_check_mark: | N/A                |
+| `type`             | *"blob-store-id"*  | :heavy_check_mark: | N/A                |
 | `storeId`          | *string*           | :heavy_check_mark: | N/A                |

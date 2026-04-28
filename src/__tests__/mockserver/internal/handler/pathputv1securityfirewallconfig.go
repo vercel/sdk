@@ -106,37 +106,33 @@ func testPutFirewallConfigPutFirewallConfig0(w http.ResponseWriter, req *http.Re
 				},
 			},
 			Rules: []operations.ActiveRuleUnion{
+				operations.CreateActiveRuleUnionRuleActive1(
+					operations.RuleActive1{
+						ID:               "<id>",
+						Name:             "<value>",
+						Active:           false,
+						ConditionGroup:   []operations.ActiveConditionGroup1{},
+						Action:           operations.RuleActiveAction1{},
+						ValidationErrors: types.String("<value>"),
+					},
+				),
 				operations.CreateActiveRuleUnionRuleActive2(
 					operations.RuleActive2{
 						ID:     "<id>",
 						Name:   "<value>",
-						Active: false,
+						Active: true,
 						ConditionGroup: []operations.ActiveConditionGroup2{
 							operations.ActiveConditionGroup2{
-								Conditions: []operations.ActiveCondition2{},
-							},
-						},
-						Action:           operations.RuleActiveAction2{},
-						ValidationErrors: []string{},
-					},
-				),
-				operations.CreateActiveRuleUnionRuleActive1(
-					operations.RuleActive1{
-						ID:     "<id>",
-						Name:   "<value>",
-						Active: false,
-						ConditionGroup: []operations.ActiveConditionGroup1{
-							operations.ActiveConditionGroup1{
-								Conditions: []operations.ActiveCondition1{
-									operations.ActiveCondition1{
-										Type: operations.ActiveType1BotProtection,
-										Op:   operations.ActiveOp1Nex,
+								Conditions: []operations.ActiveCondition2{
+									operations.ActiveCondition2{
+										Type: operations.ActiveType2GeoContinent,
+										Op:   operations.ActiveOp2Ninc,
 									},
 								},
 							},
 						},
-						Action:           operations.RuleActiveAction1{},
-						ValidationErrors: types.String("<value>"),
+						Action:           operations.RuleActiveAction2{},
+						ValidationErrors: []string{},
 					},
 				),
 			},

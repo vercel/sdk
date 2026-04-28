@@ -13,6 +13,7 @@ import (
 type AuthUserReason string
 
 const (
+	AuthUserReasonEnterpriseUnpaidInvoice AuthUserReason = "ENTERPRISE_UNPAID_INVOICE"
 	AuthUserReasonSubscriptionCanceled    AuthUserReason = "SUBSCRIPTION_CANCELED"
 	AuthUserReasonSubscriptionExpired     AuthUserReason = "SUBSCRIPTION_EXPIRED"
 	AuthUserReasonUnpaidInvoice           AuthUserReason = "UNPAID_INVOICE"
@@ -30,6 +31,8 @@ func (e *AuthUserReason) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
+	case "ENTERPRISE_UNPAID_INVOICE":
+		fallthrough
 	case "SUBSCRIPTION_CANCELED":
 		fallthrough
 	case "SUBSCRIPTION_EXPIRED":

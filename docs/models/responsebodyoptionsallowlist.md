@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyOptionsAllowlist } from "@vercel/sdk/models/getprojectsresponsebodyprojectssecurityplusmetadata.js";
+import { ResponseBodyOptionsAllowlist } from "@vercel/sdk/models/getprojectslogheadersprojectsresponse2.js";
 
 let value: ResponseBodyOptionsAllowlist = {
   paths: [],

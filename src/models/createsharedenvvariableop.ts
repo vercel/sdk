@@ -11,6 +11,63 @@ import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
+export type CreateSharedEnvVariableRequestBodyEvs = {
+  /**
+   * The name of the Shared Environment Variable
+   */
+  key: string;
+  /**
+   * The value of the Shared Environment Variable
+   */
+  value: string;
+  /**
+   * A comment to add context on what this Shared Environment Variable is for
+   */
+  comment?: string | undefined;
+};
+
+/**
+ * The type of environment variable
+ */
+export const CreateSharedEnvVariableRequestBodyEnvironmentRequestType = {
+  Encrypted: "encrypted",
+  Sensitive: "sensitive",
+} as const;
+/**
+ * The type of environment variable
+ */
+export type CreateSharedEnvVariableRequestBodyEnvironmentRequestType =
+  ClosedEnum<typeof CreateSharedEnvVariableRequestBodyEnvironmentRequestType>;
+
+export const CreateSharedEnvVariableRequestBodyEnvironmentTarget = {
+  Production: "production",
+  Preview: "preview",
+  Development: "development",
+} as const;
+export type CreateSharedEnvVariableRequestBodyEnvironmentTarget = ClosedEnum<
+  typeof CreateSharedEnvVariableRequestBodyEnvironmentTarget
+>;
+
+export type CreateSharedEnvVariableRequestBody3 = {
+  evs: Array<CreateSharedEnvVariableRequestBodyEvs>;
+  /**
+   * The type of environment variable
+   */
+  type?: CreateSharedEnvVariableRequestBodyEnvironmentRequestType | undefined;
+  /**
+   * The target environment of the Shared Environment Variable
+   */
+  target?:
+    | Array<CreateSharedEnvVariableRequestBodyEnvironmentTarget>
+    | undefined;
+  /**
+   * Associate a Shared Environment Variable to projects.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  projectId?: Array<string> | undefined;
+};
+
 export type RequestBodyEvs = {
   /**
    * The name of the Shared Environment Variable
@@ -123,7 +180,8 @@ export type CreateSharedEnvVariableRequestBody1 = {
 
 export type CreateSharedEnvVariableRequestBody =
   | CreateSharedEnvVariableRequestBody1
-  | CreateSharedEnvVariableRequestBody2;
+  | CreateSharedEnvVariableRequestBody2
+  | CreateSharedEnvVariableRequestBody3;
 
 export type CreateSharedEnvVariableRequest = {
   /**
@@ -137,6 +195,7 @@ export type CreateSharedEnvVariableRequest = {
   requestBody?:
     | CreateSharedEnvVariableRequestBody1
     | CreateSharedEnvVariableRequestBody2
+    | CreateSharedEnvVariableRequestBody3
     | undefined;
 };
 
@@ -233,6 +292,10 @@ export type Created = {
    */
   applyToAllCustomEnvironments?: boolean | undefined;
   /**
+   * The custom environment IDs that this Shared Env Var is scoped to.
+   */
+  customEnvironmentIds?: Array<string> | undefined;
+  /**
    * whether or not this env variable is decrypted
    */
   decrypted?: boolean | undefined;
@@ -302,6 +365,136 @@ export type CreateSharedEnvVariableResponseBody = {
   created: Array<Created>;
   failed: Array<Failed>;
 };
+
+/** @internal */
+export const CreateSharedEnvVariableRequestBodyEvs$inboundSchema: z.ZodType<
+  CreateSharedEnvVariableRequestBodyEvs,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  key: types.string(),
+  value: types.string(),
+  comment: types.optional(types.string()),
+});
+/** @internal */
+export type CreateSharedEnvVariableRequestBodyEvs$Outbound = {
+  key: string;
+  value: string;
+  comment?: string | undefined;
+};
+
+/** @internal */
+export const CreateSharedEnvVariableRequestBodyEvs$outboundSchema: z.ZodType<
+  CreateSharedEnvVariableRequestBodyEvs$Outbound,
+  z.ZodTypeDef,
+  CreateSharedEnvVariableRequestBodyEvs
+> = z.object({
+  key: z.string(),
+  value: z.string(),
+  comment: z.string().optional(),
+});
+
+export function createSharedEnvVariableRequestBodyEvsToJSON(
+  createSharedEnvVariableRequestBodyEvs: CreateSharedEnvVariableRequestBodyEvs,
+): string {
+  return JSON.stringify(
+    CreateSharedEnvVariableRequestBodyEvs$outboundSchema.parse(
+      createSharedEnvVariableRequestBodyEvs,
+    ),
+  );
+}
+export function createSharedEnvVariableRequestBodyEvsFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateSharedEnvVariableRequestBodyEvs, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateSharedEnvVariableRequestBodyEvs$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateSharedEnvVariableRequestBodyEvs' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateSharedEnvVariableRequestBodyEnvironmentRequestType$inboundSchema:
+  z.ZodNativeEnum<
+    typeof CreateSharedEnvVariableRequestBodyEnvironmentRequestType
+  > = z.nativeEnum(CreateSharedEnvVariableRequestBodyEnvironmentRequestType);
+/** @internal */
+export const CreateSharedEnvVariableRequestBodyEnvironmentRequestType$outboundSchema:
+  z.ZodNativeEnum<
+    typeof CreateSharedEnvVariableRequestBodyEnvironmentRequestType
+  > = CreateSharedEnvVariableRequestBodyEnvironmentRequestType$inboundSchema;
+
+/** @internal */
+export const CreateSharedEnvVariableRequestBodyEnvironmentTarget$inboundSchema:
+  z.ZodNativeEnum<typeof CreateSharedEnvVariableRequestBodyEnvironmentTarget> =
+    z.nativeEnum(CreateSharedEnvVariableRequestBodyEnvironmentTarget);
+/** @internal */
+export const CreateSharedEnvVariableRequestBodyEnvironmentTarget$outboundSchema:
+  z.ZodNativeEnum<typeof CreateSharedEnvVariableRequestBodyEnvironmentTarget> =
+    CreateSharedEnvVariableRequestBodyEnvironmentTarget$inboundSchema;
+
+/** @internal */
+export const CreateSharedEnvVariableRequestBody3$inboundSchema: z.ZodType<
+  CreateSharedEnvVariableRequestBody3,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  evs: z.array(
+    z.lazy(() => CreateSharedEnvVariableRequestBodyEvs$inboundSchema),
+  ),
+  type: types.optional(
+    CreateSharedEnvVariableRequestBodyEnvironmentRequestType$inboundSchema,
+  ),
+  target: types.optional(
+    z.array(CreateSharedEnvVariableRequestBodyEnvironmentTarget$inboundSchema),
+  ),
+  projectId: types.optional(z.array(types.string())),
+});
+/** @internal */
+export type CreateSharedEnvVariableRequestBody3$Outbound = {
+  evs: Array<CreateSharedEnvVariableRequestBodyEvs$Outbound>;
+  type?: string | undefined;
+  target?: Array<string> | undefined;
+  projectId?: Array<string> | undefined;
+};
+
+/** @internal */
+export const CreateSharedEnvVariableRequestBody3$outboundSchema: z.ZodType<
+  CreateSharedEnvVariableRequestBody3$Outbound,
+  z.ZodTypeDef,
+  CreateSharedEnvVariableRequestBody3
+> = z.object({
+  evs: z.array(
+    z.lazy(() => CreateSharedEnvVariableRequestBodyEvs$outboundSchema),
+  ),
+  type: CreateSharedEnvVariableRequestBodyEnvironmentRequestType$outboundSchema
+    .optional(),
+  target: z.array(
+    CreateSharedEnvVariableRequestBodyEnvironmentTarget$outboundSchema,
+  ).optional(),
+  projectId: z.array(z.string()).optional(),
+});
+
+export function createSharedEnvVariableRequestBody3ToJSON(
+  createSharedEnvVariableRequestBody3: CreateSharedEnvVariableRequestBody3,
+): string {
+  return JSON.stringify(
+    CreateSharedEnvVariableRequestBody3$outboundSchema.parse(
+      createSharedEnvVariableRequestBody3,
+    ),
+  );
+}
+export function createSharedEnvVariableRequestBody3FromJSON(
+  jsonString: string,
+): SafeParseResult<CreateSharedEnvVariableRequestBody3, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateSharedEnvVariableRequestBody3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateSharedEnvVariableRequestBody3' from JSON`,
+  );
+}
 
 /** @internal */
 export const RequestBodyEvs$inboundSchema: z.ZodType<
@@ -532,11 +725,13 @@ export const CreateSharedEnvVariableRequestBody$inboundSchema: z.ZodType<
 > = smartUnion([
   z.lazy(() => CreateSharedEnvVariableRequestBody1$inboundSchema),
   z.lazy(() => CreateSharedEnvVariableRequestBody2$inboundSchema),
+  z.lazy(() => CreateSharedEnvVariableRequestBody3$inboundSchema),
 ]);
 /** @internal */
 export type CreateSharedEnvVariableRequestBody$Outbound =
   | CreateSharedEnvVariableRequestBody1$Outbound
-  | CreateSharedEnvVariableRequestBody2$Outbound;
+  | CreateSharedEnvVariableRequestBody2$Outbound
+  | CreateSharedEnvVariableRequestBody3$Outbound;
 
 /** @internal */
 export const CreateSharedEnvVariableRequestBody$outboundSchema: z.ZodType<
@@ -546,6 +741,7 @@ export const CreateSharedEnvVariableRequestBody$outboundSchema: z.ZodType<
 > = smartUnion([
   z.lazy(() => CreateSharedEnvVariableRequestBody1$outboundSchema),
   z.lazy(() => CreateSharedEnvVariableRequestBody2$outboundSchema),
+  z.lazy(() => CreateSharedEnvVariableRequestBody3$outboundSchema),
 ]);
 
 export function createSharedEnvVariableRequestBodyToJSON(
@@ -580,6 +776,7 @@ export const CreateSharedEnvVariableRequest$inboundSchema: z.ZodType<
     smartUnion([
       z.lazy(() => CreateSharedEnvVariableRequestBody1$inboundSchema),
       z.lazy(() => CreateSharedEnvVariableRequestBody2$inboundSchema),
+      z.lazy(() => CreateSharedEnvVariableRequestBody3$inboundSchema),
     ]),
   ),
 }).transform((v) => {
@@ -594,6 +791,7 @@ export type CreateSharedEnvVariableRequest$Outbound = {
   RequestBody?:
     | CreateSharedEnvVariableRequestBody1$Outbound
     | CreateSharedEnvVariableRequestBody2$Outbound
+    | CreateSharedEnvVariableRequestBody3$Outbound
     | undefined;
 };
 
@@ -608,6 +806,7 @@ export const CreateSharedEnvVariableRequest$outboundSchema: z.ZodType<
   requestBody: smartUnion([
     z.lazy(() => CreateSharedEnvVariableRequestBody1$outboundSchema),
     z.lazy(() => CreateSharedEnvVariableRequestBody2$outboundSchema),
+    z.lazy(() => CreateSharedEnvVariableRequestBody3$outboundSchema),
   ]).optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -672,6 +871,7 @@ export const Created$inboundSchema: z.ZodType<Created, z.ZodTypeDef, unknown> =
       z.array(CreateSharedEnvVariableTarget$inboundSchema),
     ),
     applyToAllCustomEnvironments: types.optional(types.boolean()),
+    customEnvironmentIds: types.optional(z.array(types.string())),
     decrypted: types.optional(types.boolean()),
     comment: types.optional(types.string()),
     lastEditedByDisplayName: types.optional(types.string()),
@@ -693,6 +893,7 @@ export type Created$Outbound = {
   type?: string | undefined;
   target?: Array<string> | undefined;
   applyToAllCustomEnvironments?: boolean | undefined;
+  customEnvironmentIds?: Array<string> | undefined;
   decrypted?: boolean | undefined;
   comment?: string | undefined;
   lastEditedByDisplayName?: string | undefined;
@@ -719,6 +920,7 @@ export const Created$outboundSchema: z.ZodType<
   type: CreateSharedEnvVariableType$outboundSchema.optional(),
   target: z.array(CreateSharedEnvVariableTarget$outboundSchema).optional(),
   applyToAllCustomEnvironments: z.boolean().optional(),
+  customEnvironmentIds: z.array(z.string()).optional(),
   decrypted: z.boolean().optional(),
   comment: z.string().optional(),
   lastEditedByDisplayName: z.string().optional(),

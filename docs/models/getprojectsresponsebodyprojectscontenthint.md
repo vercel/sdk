@@ -52,7 +52,7 @@ const value: models.GetProjectsContentHintProjectsResponse5 = {
 
 ```typescript
 const value: models.GetProjectsContentHintProjectsResponse6 = {
-  type: "postgres-url",
+  type: "blob-store-id",
   storeId: "<id>",
 };
 ```
@@ -61,7 +61,7 @@ const value: models.GetProjectsContentHintProjectsResponse6 = {
 
 ```typescript
 const value: models.GetProjectsContentHintProjectsResponse7 = {
-  type: "postgres-url-non-pooling",
+  type: "postgres-url",
   storeId: "<id>",
 };
 ```
@@ -70,7 +70,7 @@ const value: models.GetProjectsContentHintProjectsResponse7 = {
 
 ```typescript
 const value: models.GetProjectsContentHintProjectsResponse8 = {
-  type: "postgres-prisma-url",
+  type: "postgres-url-non-pooling",
   storeId: "<id>",
 };
 ```
@@ -79,7 +79,7 @@ const value: models.GetProjectsContentHintProjectsResponse8 = {
 
 ```typescript
 const value: models.GetProjectsContentHintProjectsResponse9 = {
-  type: "postgres-user",
+  type: "postgres-prisma-url",
   storeId: "<id>",
 };
 ```
@@ -88,7 +88,7 @@ const value: models.GetProjectsContentHintProjectsResponse9 = {
 
 ```typescript
 const value: models.GetProjectsContentHintProjectsResponse10 = {
-  type: "postgres-host",
+  type: "postgres-user",
   storeId: "<id>",
 };
 ```
@@ -97,7 +97,7 @@ const value: models.GetProjectsContentHintProjectsResponse10 = {
 
 ```typescript
 const value: models.GetProjectsContentHintProjectsResponse11 = {
-  type: "postgres-password",
+  type: "postgres-host",
   storeId: "<id>",
 };
 ```
@@ -106,7 +106,7 @@ const value: models.GetProjectsContentHintProjectsResponse11 = {
 
 ```typescript
 const value: models.GetProjectsContentHintProjectsResponse12 = {
-  type: "postgres-database",
+  type: "postgres-password",
   storeId: "<id>",
 };
 ```
@@ -115,7 +115,7 @@ const value: models.GetProjectsContentHintProjectsResponse12 = {
 
 ```typescript
 const value: models.GetProjectsContentHintProjectsResponse13 = {
-  type: "postgres-url-no-ssl",
+  type: "postgres-database",
   storeId: "<id>",
 };
 ```
@@ -124,6 +124,15 @@ const value: models.GetProjectsContentHintProjectsResponse13 = {
 
 ```typescript
 const value: models.GetProjectsContentHintProjectsResponse14 = {
+  type: "postgres-url-no-ssl",
+  storeId: "<id>",
+};
+```
+
+### `models.GetProjectsContentHintProjectsResponse15`
+
+```typescript
+const value: models.GetProjectsContentHintProjectsResponse15 = {
   type: "integration-store-secret",
   storeId: "<id>",
   integrationId: "<id>",
@@ -132,10 +141,10 @@ const value: models.GetProjectsContentHintProjectsResponse14 = {
 };
 ```
 
-### `models.GetProjectsContentHintProjectsResponse15`
+### `models.GetProjectsContentHintProjectsResponse16`
 
 ```typescript
-const value: models.GetProjectsContentHintProjectsResponse15 = {
+const value: models.GetProjectsContentHintProjectsResponse16 = {
   type: "flags-connection-string",
   projectId: "<id>",
 };

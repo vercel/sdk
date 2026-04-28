@@ -52,7 +52,7 @@ const value: models.UpdateProjectContentHint5 = {
 
 ```typescript
 const value: models.UpdateProjectContentHint6 = {
-  type: "postgres-url",
+  type: "blob-store-id",
   storeId: "<id>",
 };
 ```
@@ -61,7 +61,7 @@ const value: models.UpdateProjectContentHint6 = {
 
 ```typescript
 const value: models.UpdateProjectContentHint7 = {
-  type: "postgres-url-non-pooling",
+  type: "postgres-url",
   storeId: "<id>",
 };
 ```
@@ -70,7 +70,7 @@ const value: models.UpdateProjectContentHint7 = {
 
 ```typescript
 const value: models.UpdateProjectContentHint8 = {
-  type: "postgres-prisma-url",
+  type: "postgres-url-non-pooling",
   storeId: "<id>",
 };
 ```
@@ -79,7 +79,7 @@ const value: models.UpdateProjectContentHint8 = {
 
 ```typescript
 const value: models.UpdateProjectContentHint9 = {
-  type: "postgres-user",
+  type: "postgres-prisma-url",
   storeId: "<id>",
 };
 ```
@@ -88,7 +88,7 @@ const value: models.UpdateProjectContentHint9 = {
 
 ```typescript
 const value: models.UpdateProjectContentHint10 = {
-  type: "postgres-host",
+  type: "postgres-user",
   storeId: "<id>",
 };
 ```
@@ -97,7 +97,7 @@ const value: models.UpdateProjectContentHint10 = {
 
 ```typescript
 const value: models.UpdateProjectContentHint11 = {
-  type: "postgres-password",
+  type: "postgres-host",
   storeId: "<id>",
 };
 ```
@@ -106,7 +106,7 @@ const value: models.UpdateProjectContentHint11 = {
 
 ```typescript
 const value: models.UpdateProjectContentHint12 = {
-  type: "postgres-database",
+  type: "postgres-password",
   storeId: "<id>",
 };
 ```
@@ -115,7 +115,7 @@ const value: models.UpdateProjectContentHint12 = {
 
 ```typescript
 const value: models.UpdateProjectContentHint13 = {
-  type: "postgres-url-no-ssl",
+  type: "postgres-database",
   storeId: "<id>",
 };
 ```
@@ -124,6 +124,15 @@ const value: models.UpdateProjectContentHint13 = {
 
 ```typescript
 const value: models.UpdateProjectContentHint14 = {
+  type: "postgres-url-no-ssl",
+  storeId: "<id>",
+};
+```
+
+### `models.UpdateProjectContentHint15`
+
+```typescript
+const value: models.UpdateProjectContentHint15 = {
   type: "integration-store-secret",
   storeId: "<id>",
   integrationId: "<id>",
@@ -132,10 +141,10 @@ const value: models.UpdateProjectContentHint14 = {
 };
 ```
 
-### `models.UpdateProjectContentHint15`
+### `models.UpdateProjectContentHint16`
 
 ```typescript
-const value: models.UpdateProjectContentHint15 = {
+const value: models.UpdateProjectContentHint16 = {
   type: "flags-connection-string",
   projectId: "<id>",
 };

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UpdateDiff } from "@vercel/sdk/models/usereventpayload54project.js";
+import { UpdateDiff } from "@vercel/sdk/models/jobdeployhook.js";
 
 let value: UpdateDiff = {
   id: "<id>",
@@ -24,4 +24,6 @@ let value: UpdateDiff = {
 | `newType`                                        | *string*                                         | :heavy_minus_sign:                               | N/A                                              |
 | `oldProjects`                                    | [models.OldProjects](../models/oldprojects.md)[] | :heavy_minus_sign:                               | N/A                                              |
 | `newProjects`                                    | [models.NewProjects](../models/newprojects.md)[] | :heavy_minus_sign:                               | N/A                                              |
+| `oldCustomEnvironmentIds`                        | *string*[]                                       | :heavy_minus_sign:                               | N/A                                              |
+| `newCustomEnvironmentIds`                        | *string*[]                                       | :heavy_minus_sign:                               | N/A                                              |
 | `changedValue`                                   | *boolean*                                        | :heavy_check_mark:                               | N/A                                              |

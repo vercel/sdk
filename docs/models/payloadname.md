@@ -1,15 +1,19 @@
 # PayloadName
 
-## Example Usage
+
+## Supported Types
+
+### `string`
 
 ```typescript
-import { PayloadName } from "@vercel/sdk/models/oldprojects.js";
-
-let value: PayloadName = "string";
+const value: string = "<value>";
 ```
 
-## Values
+### `models.Name2`
 
 ```typescript
-"string"
+const value: models.Name2 = {
+  name: "<value>",
+};
 ```
+

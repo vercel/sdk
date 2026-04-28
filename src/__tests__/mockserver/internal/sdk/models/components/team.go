@@ -1850,12 +1850,22 @@ type Team struct {
 	// Indicates if IP addresses should be accessible in log drains
 	HideIPAddressesInLogDrains optionalnullable.OptionalNullable[bool] `json:"hideIpAddressesInLogDrains,omitempty"`
 	IPBuckets                  []IPBucket                              `json:"ipBuckets,omitempty"`
+	// When enabled, all projects in the team require commits to be signed and verified by the git provider before deployments will be created. Projects may override this via `project.gitProviderOptions.requireVerifiedCommits` (gated by `Project:Update`).
+	RequireVerifiedCommits *bool `json:"requireVerifiedCommits,omitempty"`
 	// When enabled, deployment protection settings require stricter permissions (owner-only).
 	StrictDeploymentProtectionSettings *StrictDeploymentProtectionSettings `json:"strictDeploymentProtectionSettings,omitempty"`
 	// When enabled, creating shareable links requires Owner role.
 	StrictShareableLinks *StrictShareableLinks `json:"strictShareableLinks,omitempty"`
 	// NSNB configuration for the team.
 	NsnbConfig *NsnbConfig `json:"nsnbConfig,omitempty"`
+	// Timestamp (ms) after which personal access tokens created at or before this time are considered invalid for this team.
+	PersonalAccessTokensInvalidatedAt *float64 `json:"personalAccessTokensInvalidatedAt,omitempty"`
+	// Timestamp (ms) after which Vercel App tokens created at or before this time are considered invalid for this team.
+	AppTokensInvalidatedAt *float64 `json:"appTokensInvalidatedAt,omitempty"`
+	// Timestamp (ms) after which API keys created at or before this time are considered invalid for this team.
+	APIKeysInvalidatedAt *float64 `json:"apiKeysInvalidatedAt,omitempty"`
+	// Timestamp (ms) after which integration tokens created at or before this time are considered invalid for this team.
+	IntegrationTokensInvalidatedAt *float64 `json:"integrationTokensInvalidatedAt,omitempty"`
 	// The Team's unique identifier.
 	ID string `json:"id"`
 	// The Team's slug, which is unique across the Vercel platform.
@@ -2043,6 +2053,13 @@ func (o *Team) GetIPBuckets() []IPBucket {
 	return o.IPBuckets
 }
 
+func (o *Team) GetRequireVerifiedCommits() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.RequireVerifiedCommits
+}
+
 func (o *Team) GetStrictDeploymentProtectionSettings() *StrictDeploymentProtectionSettings {
 	if o == nil {
 		return nil
@@ -2062,6 +2079,34 @@ func (o *Team) GetNsnbConfig() *NsnbConfig {
 		return nil
 	}
 	return o.NsnbConfig
+}
+
+func (o *Team) GetPersonalAccessTokensInvalidatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.PersonalAccessTokensInvalidatedAt
+}
+
+func (o *Team) GetAppTokensInvalidatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.AppTokensInvalidatedAt
+}
+
+func (o *Team) GetAPIKeysInvalidatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.APIKeysInvalidatedAt
+}
+
+func (o *Team) GetIntegrationTokensInvalidatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.IntegrationTokensInvalidatedAt
 }
 
 func (o *Team) GetID() string {

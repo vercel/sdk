@@ -793,7 +793,7 @@ export type CreateDeploymentResponseBody = {
   passiveRegions?: Array<string> | undefined;
   gitSource?: CreateDeploymentGitSource | undefined;
   /**
-   * Present when deployment was created with VERCEL_MANUAL_PROVISIONING=true. The deployment stays in INITIALIZING until /continue is called.
+   * Present when deployment was created with manual provisioning enabled, either explicitly or via the experimental BYOC git flow. The deployment stays in INITIALIZING until /continue is called.
    */
   manualProvisioning?: ManualProvisioning | undefined;
   meta: { [k: string]: string };

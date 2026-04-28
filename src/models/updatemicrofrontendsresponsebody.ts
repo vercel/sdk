@@ -88,10 +88,6 @@ import {
   UpdateMicrofrontendsNodeVersion,
   UpdateMicrofrontendsNodeVersion$inboundSchema,
   UpdateMicrofrontendsNodeVersion$outboundSchema,
-  UpdateMicrofrontendsOidcTokenConfig,
-  UpdateMicrofrontendsOidcTokenConfig$inboundSchema,
-  UpdateMicrofrontendsOidcTokenConfig$Outbound,
-  UpdateMicrofrontendsOidcTokenConfig$outboundSchema,
   UpdateMicrofrontendsOptionsAllowlist,
   UpdateMicrofrontendsOptionsAllowlist$inboundSchema,
   UpdateMicrofrontendsOptionsAllowlist$Outbound,
@@ -152,7 +148,32 @@ import {
   UpdateMicrofrontendsWebAnalytics$inboundSchema,
   UpdateMicrofrontendsWebAnalytics$Outbound,
   UpdateMicrofrontendsWebAnalytics$outboundSchema,
-} from "./updatemicrofrontendsoidctokenconfig.js";
+} from "./updatemicrofrontendssecurity.js";
+
+/**
+ * - team: `https://oidc.vercel.com/[team_slug]` - global: `https://oidc.vercel.com`
+ */
+export const UpdateMicrofrontendsIssuerMode = {
+  Team: "team",
+  Global: "global",
+} as const;
+/**
+ * - team: `https://oidc.vercel.com/[team_slug]` - global: `https://oidc.vercel.com`
+ */
+export type UpdateMicrofrontendsIssuerMode = ClosedEnum<
+  typeof UpdateMicrofrontendsIssuerMode
+>;
+
+export type UpdateMicrofrontendsOidcTokenConfig = {
+  /**
+   * Whether or not to generate OpenID Connect JSON Web Tokens.
+   */
+  enabled?: boolean | undefined;
+  /**
+   * - team: `https://oidc.vercel.com/[team_slug]` - global: `https://oidc.vercel.com`
+   */
+  issuerMode?: UpdateMicrofrontendsIssuerMode | undefined;
+};
 
 export const UpdateMicrofrontendsFlatRateTier = {
   Standard: "standard",
@@ -640,6 +661,60 @@ export type UpdateMicrofrontendsResponseBody = {
   protectedSourcemaps?: boolean | undefined;
   tracing?: UpdateMicrofrontendsTracing | undefined;
 };
+
+/** @internal */
+export const UpdateMicrofrontendsIssuerMode$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateMicrofrontendsIssuerMode
+> = z.nativeEnum(UpdateMicrofrontendsIssuerMode);
+/** @internal */
+export const UpdateMicrofrontendsIssuerMode$outboundSchema: z.ZodNativeEnum<
+  typeof UpdateMicrofrontendsIssuerMode
+> = UpdateMicrofrontendsIssuerMode$inboundSchema;
+
+/** @internal */
+export const UpdateMicrofrontendsOidcTokenConfig$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsOidcTokenConfig,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  enabled: types.optional(types.boolean()),
+  issuerMode: types.optional(UpdateMicrofrontendsIssuerMode$inboundSchema),
+});
+/** @internal */
+export type UpdateMicrofrontendsOidcTokenConfig$Outbound = {
+  enabled?: boolean | undefined;
+  issuerMode?: string | undefined;
+};
+
+/** @internal */
+export const UpdateMicrofrontendsOidcTokenConfig$outboundSchema: z.ZodType<
+  UpdateMicrofrontendsOidcTokenConfig$Outbound,
+  z.ZodTypeDef,
+  UpdateMicrofrontendsOidcTokenConfig
+> = z.object({
+  enabled: z.boolean().optional(),
+  issuerMode: UpdateMicrofrontendsIssuerMode$outboundSchema.optional(),
+});
+
+export function updateMicrofrontendsOidcTokenConfigToJSON(
+  updateMicrofrontendsOidcTokenConfig: UpdateMicrofrontendsOidcTokenConfig,
+): string {
+  return JSON.stringify(
+    UpdateMicrofrontendsOidcTokenConfig$outboundSchema.parse(
+      updateMicrofrontendsOidcTokenConfig,
+    ),
+  );
+}
+export function updateMicrofrontendsOidcTokenConfigFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsOidcTokenConfig, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateMicrofrontendsOidcTokenConfig$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsOidcTokenConfig' from JSON`,
+  );
+}
 
 /** @internal */
 export const UpdateMicrofrontendsFlatRateTier$inboundSchema: z.ZodNativeEnum<
@@ -3101,7 +3176,7 @@ export const UpdateMicrofrontendsResponseBody$inboundSchema: z.ZodType<
   webAnalytics: types.optional(UpdateMicrofrontendsWebAnalytics$inboundSchema),
   security: types.optional(UpdateMicrofrontendsSecurity$inboundSchema),
   oidcTokenConfig: types.optional(
-    UpdateMicrofrontendsOidcTokenConfig$inboundSchema,
+    z.lazy(() => UpdateMicrofrontendsOidcTokenConfig$inboundSchema),
   ),
   tier: types.optional(types.string()),
   flatRateTier: types.optional(UpdateMicrofrontendsFlatRateTier$inboundSchema),
@@ -3378,8 +3453,9 @@ export const UpdateMicrofrontendsResponseBody$outboundSchema: z.ZodType<
   concurrencyBucketName: z.string().optional(),
   webAnalytics: UpdateMicrofrontendsWebAnalytics$outboundSchema.optional(),
   security: UpdateMicrofrontendsSecurity$outboundSchema.optional(),
-  oidcTokenConfig: UpdateMicrofrontendsOidcTokenConfig$outboundSchema
-    .optional(),
+  oidcTokenConfig: z.lazy(() =>
+    UpdateMicrofrontendsOidcTokenConfig$outboundSchema
+  ).optional(),
   tier: z.string().optional(),
   flatRateTier: UpdateMicrofrontendsFlatRateTier$outboundSchema.optional(),
   usageStatus: z.lazy(() => UpdateMicrofrontendsUsageStatus$outboundSchema)

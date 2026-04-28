@@ -18,6 +18,11 @@ let value: GetNamedSandboxResponseBody = {
     runtime: "node22",
     timeout: 300000,
     snapshotExpiration: 604800000,
+    snapshotKeepLast: {
+      count: 5,
+      expiration: 604800000,
+      deleteEvicted: true,
+    },
     totalEgressBytes: 4096,
     totalIngressBytes: 2048,
     totalActiveCpuDurationMs: 5000,

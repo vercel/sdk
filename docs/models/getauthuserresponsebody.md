@@ -12,7 +12,7 @@ let value: GetAuthUserResponseBody = {
     createdAt: 1630748523395,
     softBlock: {
       blockedAt: 3863.42,
-      reason: "ENTERPRISE_TRIAL_ENDED",
+      reason: "UNPAID_INVOICE",
     },
     billing: {},
     resourceConfig: {},

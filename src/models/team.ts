@@ -478,7 +478,7 @@ export type TeamMembershipTeamPermissions = ClosedEnum<
   typeof TeamMembershipTeamPermissions
 >;
 
-export const Origin = {
+export const TeamOrigin = {
   Link: "link",
   Saml: "saml",
   Mail: "mail",
@@ -498,12 +498,12 @@ export const Origin = {
   NsnbRedeploy: "nsnb-redeploy",
   NsnbRedeployAttributionCard: "nsnb-redeploy-attribution-card",
 } as const;
-export type Origin = ClosedEnum<typeof Origin>;
+export type TeamOrigin = ClosedEnum<typeof TeamOrigin>;
 
 export type GitUserId = string | number;
 
 export type JoinedFrom = {
-  origin: Origin;
+  origin: TeamOrigin;
   commitId?: string | undefined;
   repoId?: string | undefined;
   repoPath?: string | undefined;
@@ -621,6 +621,10 @@ export type Team = {
   hideIpAddressesInLogDrains?: boolean | null | undefined;
   ipBuckets?: Array<IpBuckets> | undefined;
   /**
+   * When enabled, all projects in the team require commits to be signed and verified by the git provider before deployments will be created. Projects may override this via `project.gitProviderOptions.requireVerifiedCommits` (gated by `Project:Update`).
+   */
+  requireVerifiedCommits?: boolean | undefined;
+  /**
    * When enabled, deployment protection settings require stricter permissions (owner-only).
    */
   strictDeploymentProtectionSettings?:
@@ -634,6 +638,22 @@ export type Team = {
    * NSNB configuration for the team.
    */
   nsnbConfig?: NsnbConfig | undefined;
+  /**
+   * Timestamp (ms) after which personal access tokens created at or before this time are considered invalid for this team.
+   */
+  personalAccessTokensInvalidatedAt?: number | undefined;
+  /**
+   * Timestamp (ms) after which Vercel App tokens created at or before this time are considered invalid for this team.
+   */
+  appTokensInvalidatedAt?: number | undefined;
+  /**
+   * Timestamp (ms) after which API keys created at or before this time are considered invalid for this team.
+   */
+  apiKeysInvalidatedAt?: number | undefined;
+  /**
+   * Timestamp (ms) after which integration tokens created at or before this time are considered invalid for this team.
+   */
+  integrationTokensInvalidatedAt?: number | undefined;
   /**
    * The Team's unique identifier.
    */
@@ -1738,11 +1758,11 @@ export const TeamMembershipTeamPermissions$outboundSchema: z.ZodNativeEnum<
 > = TeamMembershipTeamPermissions$inboundSchema;
 
 /** @internal */
-export const Origin$inboundSchema: z.ZodNativeEnum<typeof Origin> = z
-  .nativeEnum(Origin);
+export const TeamOrigin$inboundSchema: z.ZodNativeEnum<typeof TeamOrigin> = z
+  .nativeEnum(TeamOrigin);
 /** @internal */
-export const Origin$outboundSchema: z.ZodNativeEnum<typeof Origin> =
-  Origin$inboundSchema;
+export const TeamOrigin$outboundSchema: z.ZodNativeEnum<typeof TeamOrigin> =
+  TeamOrigin$inboundSchema;
 
 /** @internal */
 export const GitUserId$inboundSchema: z.ZodType<
@@ -1779,7 +1799,7 @@ export const JoinedFrom$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  origin: Origin$inboundSchema,
+  origin: TeamOrigin$inboundSchema,
   commitId: types.optional(types.string()),
   repoId: types.optional(types.string()),
   repoPath: types.optional(types.string()),
@@ -1812,7 +1832,7 @@ export const JoinedFrom$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   JoinedFrom
 > = z.object({
-  origin: Origin$outboundSchema,
+  origin: TeamOrigin$outboundSchema,
   commitId: z.string().optional(),
   repoId: z.string().optional(),
   repoPath: z.string().optional(),
@@ -1950,6 +1970,7 @@ export const Team$inboundSchema: z.ZodType<Team, z.ZodTypeDef, unknown> =
       hideIpAddresses: z.nullable(types.boolean()).optional(),
       hideIpAddressesInLogDrains: z.nullable(types.boolean()).optional(),
       ipBuckets: types.optional(z.array(z.lazy(() => IpBuckets$inboundSchema))),
+      requireVerifiedCommits: types.optional(types.boolean()),
       strictDeploymentProtectionSettings: types.optional(
         z.lazy(() => StrictDeploymentProtectionSettings$inboundSchema),
       ),
@@ -1957,6 +1978,10 @@ export const Team$inboundSchema: z.ZodType<Team, z.ZodTypeDef, unknown> =
         z.lazy(() => StrictShareableLinks$inboundSchema),
       ),
       nsnbConfig: types.optional(z.lazy(() => NsnbConfig$inboundSchema)),
+      personalAccessTokensInvalidatedAt: types.optional(types.number()),
+      appTokensInvalidatedAt: types.optional(types.number()),
+      apiKeysInvalidatedAt: types.optional(types.number()),
+      integrationTokensInvalidatedAt: types.optional(types.number()),
       id: types.string(),
       slug: types.string(),
       name: types.nullable(types.string()),
@@ -1994,11 +2019,16 @@ export type Team$Outbound = {
   hideIpAddresses?: boolean | null | undefined;
   hideIpAddressesInLogDrains?: boolean | null | undefined;
   ipBuckets?: Array<IpBuckets$Outbound> | undefined;
+  requireVerifiedCommits?: boolean | undefined;
   strictDeploymentProtectionSettings?:
     | StrictDeploymentProtectionSettings$Outbound
     | undefined;
   strictShareableLinks?: StrictShareableLinks$Outbound | undefined;
   nsnbConfig?: NsnbConfig$Outbound | undefined;
+  personalAccessTokensInvalidatedAt?: number | undefined;
+  appTokensInvalidatedAt?: number | undefined;
+  apiKeysInvalidatedAt?: number | undefined;
+  integrationTokensInvalidatedAt?: number | undefined;
   id: string;
   slug: string;
   name: string | null;
@@ -2044,12 +2074,17 @@ export const Team$outboundSchema: z.ZodType<Team$Outbound, z.ZodTypeDef, Team> =
     hideIpAddresses: z.nullable(z.boolean()).optional(),
     hideIpAddressesInLogDrains: z.nullable(z.boolean()).optional(),
     ipBuckets: z.array(z.lazy(() => IpBuckets$outboundSchema)).optional(),
+    requireVerifiedCommits: z.boolean().optional(),
     strictDeploymentProtectionSettings: z.lazy(() =>
       StrictDeploymentProtectionSettings$outboundSchema
     ).optional(),
     strictShareableLinks: z.lazy(() => StrictShareableLinks$outboundSchema)
       .optional(),
     nsnbConfig: z.lazy(() => NsnbConfig$outboundSchema).optional(),
+    personalAccessTokensInvalidatedAt: z.number().optional(),
+    appTokensInvalidatedAt: z.number().optional(),
+    apiKeysInvalidatedAt: z.number().optional(),
+    integrationTokensInvalidatedAt: z.number().optional(),
     id: z.string(),
     slug: z.string(),
     name: z.nullable(z.string()),

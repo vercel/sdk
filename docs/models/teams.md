@@ -3,14 +3,14 @@
 ## Example Usage
 
 ```typescript
-import { Teams } from "@vercel/sdk/models/oldprojects.js";
+import { Teams } from "@vercel/sdk/models/version.js";
 
 let value: Teams = {
   createdAt: 3009.16,
   teamId: "<id>",
+  role: "SECURITY",
   confirmed: true,
-  confirmedAt: 4453.66,
-  role: "CONTRIBUTOR",
+  confirmedAt: 9426.6,
   created: 7142.84,
 };
 ```
@@ -21,10 +21,10 @@ let value: Teams = {
 | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
 | `createdAt`                                                                  | *number*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
 | `teamId`                                                                     | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
+| `role`                                                                       | [models.UserEventPayload116Role](../models/usereventpayload116role.md)       | :heavy_check_mark:                                                           | N/A                                                                          |
 | `confirmed`                                                                  | *true*                                                                       | :heavy_check_mark:                                                           | N/A                                                                          |
 | `confirmedAt`                                                                | *number*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
 | `accessRequestedAt`                                                          | *number*                                                                     | :heavy_minus_sign:                                                           | N/A                                                                          |
-| `role`                                                                       | [models.UserEventPayload116Role](../models/usereventpayload116role.md)       | :heavy_check_mark:                                                           | N/A                                                                          |
 | `teamRoles`                                                                  | [models.PayloadTeamRoles](../models/payloadteamroles.md)[]                   | :heavy_minus_sign:                                                           | N/A                                                                          |
 | `teamPermissions`                                                            | [models.PayloadTeamPermissions](../models/payloadteampermissions.md)[]       | :heavy_minus_sign:                                                           | N/A                                                                          |
 | `created`                                                                    | *number*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |

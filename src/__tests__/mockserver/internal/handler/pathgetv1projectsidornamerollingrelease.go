@@ -49,12 +49,12 @@ func testGetRollingReleaseGetRollingRelease0(w http.ResponseWriter, req *http.Re
 	}
 	var respBody *operations.GetRollingReleaseResponseBody = &operations.GetRollingReleaseResponseBody{
 		RollingRelease: &operations.GetRollingReleaseRollingRelease{
-			State:    operations.GetRollingReleaseStatePausedActive,
+			State:    operations.GetRollingReleaseStateResponseBodyActive,
 			Substate: operations.GetRollingReleaseSubstatePaused.ToPointer(),
 			CurrentDeployment: &operations.GetRollingReleaseCurrentDeployment{
+				ID:           "dpl_abc123",
 				Name:         "my-shop@main",
 				CreatedAt:    1716206500000,
-				ID:           "dpl_abc123",
 				ReadyState:   operations.GetRollingReleaseCurrentDeploymentReadyStateReady,
 				ReadyStateAt: types.Float64(1716206800000),
 				Source:       operations.GetRollingReleaseCurrentDeploymentSourceGit.ToPointer(),
@@ -62,9 +62,9 @@ func testGetRollingReleaseGetRollingRelease0(w http.ResponseWriter, req *http.Re
 				URL:          "my-shop.vercel.app",
 			},
 			CanaryDeployment: &operations.GetRollingReleaseCanaryDeployment{
+				ID:           "dpl_def456",
 				Name:         "my-shop@9c7e2f4",
 				CreatedAt:    1716210100000,
-				ID:           "dpl_def456",
 				ReadyState:   operations.GetRollingReleaseCanaryDeploymentReadyStateReady,
 				ReadyStateAt: types.Float64(1716210400000),
 				Source:       operations.GetRollingReleaseCanaryDeploymentSourceGit.ToPointer(),

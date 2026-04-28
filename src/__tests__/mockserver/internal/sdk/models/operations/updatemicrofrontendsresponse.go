@@ -12,6 +12,93 @@ import (
 	"mockserver/internal/sdk/utils"
 )
 
+// UpdateMicrofrontendsToOidcProviderAllCustom2 - The target envs on the current project that may be accessed.
+type UpdateMicrofrontendsToOidcProviderAllCustom2 struct {
+	// System environment slugs (`production`, `preview`) and/or custom environment slugs defined on the referenced project.
+	Slugs  []string                                `json:"slugs,omitempty"`
+	Preset UpdateMicrofrontendsOidcProviderPreset2 `json:"preset"`
+}
+
+func (u UpdateMicrofrontendsToOidcProviderAllCustom2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateMicrofrontendsToOidcProviderAllCustom2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"preset"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *UpdateMicrofrontendsToOidcProviderAllCustom2) GetSlugs() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Slugs
+}
+
+func (o *UpdateMicrofrontendsToOidcProviderAllCustom2) GetPreset() UpdateMicrofrontendsOidcProviderPreset2 {
+	if o == nil {
+		return UpdateMicrofrontendsOidcProviderPreset2("")
+	}
+	return o.Preset
+}
+
+type UpdateMicrofrontendsOidcProviderPreset1 string
+
+const (
+	UpdateMicrofrontendsOidcProviderPreset1AllCustom UpdateMicrofrontendsOidcProviderPreset1 = "all-custom"
+)
+
+func (e UpdateMicrofrontendsOidcProviderPreset1) ToPointer() *UpdateMicrofrontendsOidcProviderPreset1 {
+	return &e
+}
+func (e *UpdateMicrofrontendsOidcProviderPreset1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "all-custom":
+		*e = UpdateMicrofrontendsOidcProviderPreset1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateMicrofrontendsOidcProviderPreset1: %v", v)
+	}
+}
+
+// UpdateMicrofrontendsToOidcProviderAllCustom1 - The target envs on the current project that may be accessed.
+type UpdateMicrofrontendsToOidcProviderAllCustom1 struct {
+	// System environment slugs (`production`, `preview`) and/or custom environment slugs defined on the referenced project.
+	Slugs  []string                                 `json:"slugs"`
+	Preset *UpdateMicrofrontendsOidcProviderPreset1 `json:"preset,omitempty"`
+}
+
+func (u UpdateMicrofrontendsToOidcProviderAllCustom1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateMicrofrontendsToOidcProviderAllCustom1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"slugs"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *UpdateMicrofrontendsToOidcProviderAllCustom1) GetSlugs() []string {
+	if o == nil {
+		return []string{}
+	}
+	return o.Slugs
+}
+
+func (o *UpdateMicrofrontendsToOidcProviderAllCustom1) GetPreset() *UpdateMicrofrontendsOidcProviderPreset1 {
+	if o == nil {
+		return nil
+	}
+	return o.Preset
+}
+
 type UpdateMicrofrontendsOidcProviderToUnionType string
 
 const (
@@ -196,7 +283,7 @@ type UpdateMicrofrontendsGitProviderOptions struct {
 	CreateDeployments UpdateMicrofrontendsCreateDeployments `json:"createDeployments"`
 	// Whether the Vercel bot should not automatically create GitHub repository-dispatch events on deployment events. https://vercel.com/docs/git/vercel-for-github#repository-dispatch-events
 	DisableRepositoryDispatchEvents *bool `json:"disableRepositoryDispatchEvents,omitempty"`
-	// Whether the project requires commits to be signed before deployments will be created.
+	// Whether the project requires commits to be signed & verified before deployments will be created. - `true`: require verified commits for this project (explicit override of the team setting). - `false`: do not require verified commits (explicit override of the team setting). - absent: inherit from `team.requireVerifiedCommits`.
 	RequireVerifiedCommits *bool `json:"requireVerifiedCommits,omitempty"`
 	// Whether Vercel should post commit statuses for this project. When omitted, commit statuses remain enabled.
 	GitCommitStatus *bool `json:"gitCommitStatus,omitempty"`

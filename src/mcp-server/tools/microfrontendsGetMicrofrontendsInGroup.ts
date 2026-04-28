@@ -3,7 +3,7 @@
  */
 
 import { microfrontendsGetMicrofrontendsInGroup } from "../../funcs/microfrontendsGetMicrofrontendsInGroup.js";
-import { GetMicrofrontendsInGroupRequest$inboundSchema } from "../../models/getmicrofrontendsingroupgitcomments.js";
+import { GetMicrofrontendsInGroupRequest$inboundSchema } from "../../models/getmicrofrontendsingroupoidcproviders.js";
 import { formatResult, ToolDefinition } from "../tools.js";
 
 const args = {

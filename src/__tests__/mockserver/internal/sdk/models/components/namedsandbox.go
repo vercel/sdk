@@ -5,6 +5,7 @@ package components
 import (
 	"encoding/json"
 	"fmt"
+	"mockserver/internal/sdk/utils"
 )
 
 // NamedSandboxStatus - The status of the current sandbox.
@@ -35,6 +36,48 @@ func (e *NamedSandboxStatus) UnmarshalJSON(data []byte) error {
 	default:
 		return fmt.Errorf("invalid value for NamedSandboxStatus: %v", v)
 	}
+}
+
+// SnapshotKeepLast - Keep-last snapshot configuration.
+type SnapshotKeepLast struct {
+	// Number of most recent snapshots to keep.
+	Count float64 `json:"count"`
+	// Expiration time in milliseconds for kept snapshots.
+	Expiration *float64 `json:"expiration,omitempty"`
+	// Whether to immediately delete evicted snapshots.
+	DeleteEvicted bool `json:"deleteEvicted"`
+}
+
+func (s SnapshotKeepLast) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(s, "", false)
+}
+
+func (s *SnapshotKeepLast) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &s, "", false, []string{"count", "deleteEvicted"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *SnapshotKeepLast) GetCount() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Count
+}
+
+func (o *SnapshotKeepLast) GetExpiration() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Expiration
+}
+
+func (o *SnapshotKeepLast) GetDeleteEvicted() bool {
+	if o == nil {
+		return false
+	}
+	return o.DeleteEvicted
 }
 
 type NamedSandboxMode string
@@ -78,6 +121,17 @@ type NetworkPolicy struct {
 	AllowedDomains []string         `json:"allowedDomains,omitempty"`
 	AllowedCIDRs   []string         `json:"allowedCIDRs,omitempty"`
 	DeniedCIDRs    []string         `json:"deniedCIDRs,omitempty"`
+}
+
+func (n NetworkPolicy) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(n, "", false)
+}
+
+func (n *NetworkPolicy) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &n, "", false, []string{"mode"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *NetworkPolicy) GetMode() NamedSandboxMode {
@@ -134,6 +188,8 @@ type NamedSandbox struct {
 	Timeout *float64 `json:"timeout,omitempty"`
 	// Default snapshot expiration time in milliseconds. 0 means no expiration.
 	SnapshotExpiration *float64 `json:"snapshotExpiration,omitempty"`
+	// Keep-last snapshot configuration.
+	SnapshotKeepLast *SnapshotKeepLast `json:"snapshotKeepLast,omitempty"`
 	// Network policy configuration.
 	NetworkPolicy *NetworkPolicy `json:"networkPolicy,omitempty"`
 	// Cumulative egress bytes across all sandbox runs.
@@ -152,6 +208,17 @@ type NamedSandbox struct {
 	CreatedAt float64 `json:"createdAt"`
 	// The time when the named sandbox was last updated, in milliseconds since the epoch.
 	UpdatedAt float64 `json:"updatedAt"`
+}
+
+func (n NamedSandbox) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(n, "", false)
+}
+
+func (n *NamedSandbox) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &n, "", false, []string{"name", "currentSessionId", "status", "statusUpdatedAt", "persistent", "createdAt", "updatedAt"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *NamedSandbox) GetName() string {
@@ -236,6 +303,13 @@ func (o *NamedSandbox) GetSnapshotExpiration() *float64 {
 		return nil
 	}
 	return o.SnapshotExpiration
+}
+
+func (o *NamedSandbox) GetSnapshotKeepLast() *SnapshotKeepLast {
+	if o == nil {
+		return nil
+	}
+	return o.SnapshotKeepLast
 }
 
 func (o *NamedSandbox) GetNetworkPolicy() *NetworkPolicy {

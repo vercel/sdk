@@ -3,17 +3,17 @@
 ## Example Usage
 
 ```typescript
-import { CreateProjectContentHint9 } from "@vercel/sdk/models/createprojectcreatedeployments.js";
+import { CreateProjectContentHint9 } from "@vercel/sdk/models/createprojecttrustedsources.js";
 
 let value: CreateProjectContentHint9 = {
-  type: "postgres-user",
+  type: "postgres-prisma-url",
   storeId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `type`             | *"postgres-user"*  | :heavy_check_mark: | N/A                |
-| `storeId`          | *string*           | :heavy_check_mark: | N/A                |
+| Field                   | Type                    | Required                | Description             |
+| ----------------------- | ----------------------- | ----------------------- | ----------------------- |
+| `type`                  | *"postgres-prisma-url"* | :heavy_check_mark:      | N/A                     |
+| `storeId`               | *string*                | :heavy_check_mark:      | N/A                     |

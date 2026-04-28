@@ -112,12 +112,12 @@ export type EditProjectEnvProjectsTarget =
   | Array<EditProjectEnvTarget1>
   | EditProjectEnvTarget2;
 
-export type ContentHint15 = {
+export type ContentHint16 = {
   type: "flags-connection-string";
   projectId: string;
 };
 
-export type ContentHint14 = {
+export type ContentHint15 = {
   type: "integration-store-secret";
   storeId: string;
   integrationId: string;
@@ -125,43 +125,48 @@ export type ContentHint14 = {
   integrationConfigurationId: string;
 };
 
-export type ContentHint13 = {
+export type ContentHint14 = {
   type: "postgres-url-no-ssl";
   storeId: string;
 };
 
-export type ContentHint12 = {
+export type ContentHint13 = {
   type: "postgres-database";
   storeId: string;
 };
 
-export type ContentHint11 = {
+export type ContentHint12 = {
   type: "postgres-password";
   storeId: string;
 };
 
-export type ContentHint10 = {
+export type ContentHint11 = {
   type: "postgres-host";
   storeId: string;
 };
 
-export type ContentHint9 = {
+export type ContentHint10 = {
   type: "postgres-user";
   storeId: string;
 };
 
-export type ContentHint8 = {
+export type ContentHint9 = {
   type: "postgres-prisma-url";
   storeId: string;
 };
 
-export type ContentHint7 = {
+export type ContentHint8 = {
   type: "postgres-url-non-pooling";
   storeId: string;
 };
 
-export type ContentHint6 = {
+export type ContentHint7 = {
   type: "postgres-url";
+  storeId: string;
+};
+
+export type ContentHint6 = {
+  type: "blob-store-id";
   storeId: string;
 };
 
@@ -205,7 +210,8 @@ export type ContentHint =
   | ContentHint12
   | ContentHint13
   | ContentHint14
-  | ContentHint15;
+  | ContentHint15
+  | ContentHint16;
 
 export const EditProjectEnvProjectsResponseType = {
   FlagsSecret: "flags-secret",
@@ -233,10 +239,10 @@ export type EditProjectEnvResponseBody = {
   value: string;
   edgeConfigId?: string | null | undefined;
   edgeConfigTokenId?: string | null | undefined;
-  createdAt?: number | undefined;
-  updatedAt?: number | undefined;
   id?: string | undefined;
+  createdAt?: number | undefined;
   createdBy?: string | null | undefined;
+  updatedAt?: number | undefined;
   target?: Array<EditProjectEnvTarget1> | EditProjectEnvTarget2 | undefined;
   key: string;
   gitBranch?: string | undefined;
@@ -267,6 +273,7 @@ export type EditProjectEnvResponseBody = {
     | ContentHint13
     | ContentHint14
     | ContentHint15
+    | ContentHint16
     | null
     | undefined;
   /**
@@ -480,8 +487,8 @@ export function editProjectEnvProjectsTargetFromJSON(
 }
 
 /** @internal */
-export const ContentHint15$inboundSchema: z.ZodType<
-  ContentHint15,
+export const ContentHint16$inboundSchema: z.ZodType<
+  ContentHint16,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -489,9 +496,53 @@ export const ContentHint15$inboundSchema: z.ZodType<
   projectId: types.string(),
 });
 /** @internal */
-export type ContentHint15$Outbound = {
+export type ContentHint16$Outbound = {
   type: "flags-connection-string";
   projectId: string;
+};
+
+/** @internal */
+export const ContentHint16$outboundSchema: z.ZodType<
+  ContentHint16$Outbound,
+  z.ZodTypeDef,
+  ContentHint16
+> = z.object({
+  type: z.literal("flags-connection-string"),
+  projectId: z.string(),
+});
+
+export function contentHint16ToJSON(contentHint16: ContentHint16): string {
+  return JSON.stringify(ContentHint16$outboundSchema.parse(contentHint16));
+}
+export function contentHint16FromJSON(
+  jsonString: string,
+): SafeParseResult<ContentHint16, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ContentHint16$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ContentHint16' from JSON`,
+  );
+}
+
+/** @internal */
+export const ContentHint15$inboundSchema: z.ZodType<
+  ContentHint15,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: types.literal("integration-store-secret"),
+  storeId: types.string(),
+  integrationId: types.string(),
+  integrationProductId: types.string(),
+  integrationConfigurationId: types.string(),
+});
+/** @internal */
+export type ContentHint15$Outbound = {
+  type: "integration-store-secret";
+  storeId: string;
+  integrationId: string;
+  integrationProductId: string;
+  integrationConfigurationId: string;
 };
 
 /** @internal */
@@ -500,8 +551,11 @@ export const ContentHint15$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ContentHint15
 > = z.object({
-  type: z.literal("flags-connection-string"),
-  projectId: z.string(),
+  type: z.literal("integration-store-secret"),
+  storeId: z.string(),
+  integrationId: z.string(),
+  integrationProductId: z.string(),
+  integrationConfigurationId: z.string(),
 });
 
 export function contentHint15ToJSON(contentHint15: ContentHint15): string {
@@ -523,19 +577,13 @@ export const ContentHint14$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.literal("integration-store-secret"),
+  type: types.literal("postgres-url-no-ssl"),
   storeId: types.string(),
-  integrationId: types.string(),
-  integrationProductId: types.string(),
-  integrationConfigurationId: types.string(),
 });
 /** @internal */
 export type ContentHint14$Outbound = {
-  type: "integration-store-secret";
+  type: "postgres-url-no-ssl";
   storeId: string;
-  integrationId: string;
-  integrationProductId: string;
-  integrationConfigurationId: string;
 };
 
 /** @internal */
@@ -544,11 +592,8 @@ export const ContentHint14$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ContentHint14
 > = z.object({
-  type: z.literal("integration-store-secret"),
+  type: z.literal("postgres-url-no-ssl"),
   storeId: z.string(),
-  integrationId: z.string(),
-  integrationProductId: z.string(),
-  integrationConfigurationId: z.string(),
 });
 
 export function contentHint14ToJSON(contentHint14: ContentHint14): string {
@@ -570,12 +615,12 @@ export const ContentHint13$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.literal("postgres-url-no-ssl"),
+  type: types.literal("postgres-database"),
   storeId: types.string(),
 });
 /** @internal */
 export type ContentHint13$Outbound = {
-  type: "postgres-url-no-ssl";
+  type: "postgres-database";
   storeId: string;
 };
 
@@ -585,7 +630,7 @@ export const ContentHint13$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ContentHint13
 > = z.object({
-  type: z.literal("postgres-url-no-ssl"),
+  type: z.literal("postgres-database"),
   storeId: z.string(),
 });
 
@@ -608,12 +653,12 @@ export const ContentHint12$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.literal("postgres-database"),
+  type: types.literal("postgres-password"),
   storeId: types.string(),
 });
 /** @internal */
 export type ContentHint12$Outbound = {
-  type: "postgres-database";
+  type: "postgres-password";
   storeId: string;
 };
 
@@ -623,7 +668,7 @@ export const ContentHint12$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ContentHint12
 > = z.object({
-  type: z.literal("postgres-database"),
+  type: z.literal("postgres-password"),
   storeId: z.string(),
 });
 
@@ -646,12 +691,12 @@ export const ContentHint11$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.literal("postgres-password"),
+  type: types.literal("postgres-host"),
   storeId: types.string(),
 });
 /** @internal */
 export type ContentHint11$Outbound = {
-  type: "postgres-password";
+  type: "postgres-host";
   storeId: string;
 };
 
@@ -661,7 +706,7 @@ export const ContentHint11$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ContentHint11
 > = z.object({
-  type: z.literal("postgres-password"),
+  type: z.literal("postgres-host"),
   storeId: z.string(),
 });
 
@@ -684,12 +729,12 @@ export const ContentHint10$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.literal("postgres-host"),
+  type: types.literal("postgres-user"),
   storeId: types.string(),
 });
 /** @internal */
 export type ContentHint10$Outbound = {
-  type: "postgres-host";
+  type: "postgres-user";
   storeId: string;
 };
 
@@ -699,7 +744,7 @@ export const ContentHint10$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ContentHint10
 > = z.object({
-  type: z.literal("postgres-host"),
+  type: z.literal("postgres-user"),
   storeId: z.string(),
 });
 
@@ -722,12 +767,12 @@ export const ContentHint9$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.literal("postgres-user"),
+  type: types.literal("postgres-prisma-url"),
   storeId: types.string(),
 });
 /** @internal */
 export type ContentHint9$Outbound = {
-  type: "postgres-user";
+  type: "postgres-prisma-url";
   storeId: string;
 };
 
@@ -737,7 +782,7 @@ export const ContentHint9$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ContentHint9
 > = z.object({
-  type: z.literal("postgres-user"),
+  type: z.literal("postgres-prisma-url"),
   storeId: z.string(),
 });
 
@@ -760,12 +805,12 @@ export const ContentHint8$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.literal("postgres-prisma-url"),
+  type: types.literal("postgres-url-non-pooling"),
   storeId: types.string(),
 });
 /** @internal */
 export type ContentHint8$Outbound = {
-  type: "postgres-prisma-url";
+  type: "postgres-url-non-pooling";
   storeId: string;
 };
 
@@ -775,7 +820,7 @@ export const ContentHint8$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ContentHint8
 > = z.object({
-  type: z.literal("postgres-prisma-url"),
+  type: z.literal("postgres-url-non-pooling"),
   storeId: z.string(),
 });
 
@@ -798,12 +843,12 @@ export const ContentHint7$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.literal("postgres-url-non-pooling"),
+  type: types.literal("postgres-url"),
   storeId: types.string(),
 });
 /** @internal */
 export type ContentHint7$Outbound = {
-  type: "postgres-url-non-pooling";
+  type: "postgres-url";
   storeId: string;
 };
 
@@ -813,7 +858,7 @@ export const ContentHint7$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ContentHint7
 > = z.object({
-  type: z.literal("postgres-url-non-pooling"),
+  type: z.literal("postgres-url"),
   storeId: z.string(),
 });
 
@@ -836,12 +881,12 @@ export const ContentHint6$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.literal("postgres-url"),
+  type: types.literal("blob-store-id"),
   storeId: types.string(),
 });
 /** @internal */
 export type ContentHint6$Outbound = {
-  type: "postgres-url";
+  type: "blob-store-id";
   storeId: string;
 };
 
@@ -851,7 +896,7 @@ export const ContentHint6$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ContentHint6
 > = z.object({
-  type: z.literal("postgres-url"),
+  type: z.literal("blob-store-id"),
   storeId: z.string(),
 });
 
@@ -1079,6 +1124,7 @@ export const ContentHint$inboundSchema: z.ZodType<
   z.lazy(() => ContentHint13$inboundSchema),
   z.lazy(() => ContentHint14$inboundSchema),
   z.lazy(() => ContentHint15$inboundSchema),
+  z.lazy(() => ContentHint16$inboundSchema),
 ]);
 /** @internal */
 export type ContentHint$Outbound =
@@ -1096,7 +1142,8 @@ export type ContentHint$Outbound =
   | ContentHint12$Outbound
   | ContentHint13$Outbound
   | ContentHint14$Outbound
-  | ContentHint15$Outbound;
+  | ContentHint15$Outbound
+  | ContentHint16$Outbound;
 
 /** @internal */
 export const ContentHint$outboundSchema: z.ZodType<
@@ -1119,6 +1166,7 @@ export const ContentHint$outboundSchema: z.ZodType<
   z.lazy(() => ContentHint13$outboundSchema),
   z.lazy(() => ContentHint14$outboundSchema),
   z.lazy(() => ContentHint15$outboundSchema),
+  z.lazy(() => ContentHint16$outboundSchema),
 ]);
 
 export function contentHintToJSON(contentHint: ContentHint): string {
@@ -1195,10 +1243,10 @@ export const EditProjectEnvResponseBody$inboundSchema: z.ZodType<
   value: types.string(),
   edgeConfigId: z.nullable(types.string()).optional(),
   edgeConfigTokenId: z.nullable(types.string()).optional(),
-  createdAt: types.optional(types.number()),
-  updatedAt: types.optional(types.number()),
   id: types.optional(types.string()),
+  createdAt: types.optional(types.number()),
   createdBy: z.nullable(types.string()).optional(),
+  updatedAt: types.optional(types.number()),
   target: types.optional(
     smartUnion([
       z.array(EditProjectEnvTarget1$inboundSchema),
@@ -1229,6 +1277,7 @@ export const EditProjectEnvResponseBody$inboundSchema: z.ZodType<
       z.lazy(() => ContentHint13$inboundSchema),
       z.lazy(() => ContentHint14$inboundSchema),
       z.lazy(() => ContentHint15$inboundSchema),
+      z.lazy(() => ContentHint16$inboundSchema),
     ]),
   ).optional(),
   internalContentHint: z.nullable(
@@ -1243,10 +1292,10 @@ export type EditProjectEnvResponseBody$Outbound = {
   value: string;
   edgeConfigId?: string | null | undefined;
   edgeConfigTokenId?: string | null | undefined;
-  createdAt?: number | undefined;
-  updatedAt?: number | undefined;
   id?: string | undefined;
+  createdAt?: number | undefined;
   createdBy?: string | null | undefined;
+  updatedAt?: number | undefined;
   target?: Array<string> | string | undefined;
   key: string;
   gitBranch?: string | undefined;
@@ -1271,6 +1320,7 @@ export type EditProjectEnvResponseBody$Outbound = {
     | ContentHint13$Outbound
     | ContentHint14$Outbound
     | ContentHint15$Outbound
+    | ContentHint16$Outbound
     | null
     | undefined;
   internalContentHint?: InternalContentHint$Outbound | null | undefined;
@@ -1288,10 +1338,10 @@ export const EditProjectEnvResponseBody$outboundSchema: z.ZodType<
   value: z.string(),
   edgeConfigId: z.nullable(z.string()).optional(),
   edgeConfigTokenId: z.nullable(z.string()).optional(),
-  createdAt: z.number().optional(),
-  updatedAt: z.number().optional(),
   id: z.string().optional(),
+  createdAt: z.number().optional(),
   createdBy: z.nullable(z.string()).optional(),
+  updatedAt: z.number().optional(),
   target: smartUnion([
     z.array(EditProjectEnvTarget1$outboundSchema),
     EditProjectEnvTarget2$outboundSchema,
@@ -1320,6 +1370,7 @@ export const EditProjectEnvResponseBody$outboundSchema: z.ZodType<
       z.lazy(() => ContentHint13$outboundSchema),
       z.lazy(() => ContentHint14$outboundSchema),
       z.lazy(() => ContentHint15$outboundSchema),
+      z.lazy(() => ContentHint16$outboundSchema),
     ]),
   ).optional(),
   internalContentHint: z.nullable(

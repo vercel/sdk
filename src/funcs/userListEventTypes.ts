@@ -21,9 +21,11 @@ import {
 import {
   ListEventTypesRequest,
   ListEventTypesRequest$outboundSchema,
-  ListEventTypesResponseBody,
-  ListEventTypesResponseBody$inboundSchema,
 } from "../models/listeventtypesop.js";
+import {
+  ListEventTypesResponse,
+  ListEventTypesResponse$inboundSchema,
+} from "../models/listeventtypesresponse.js";
 import { ResponseValidationError } from "../models/responsevalidationerror.js";
 import { SDKValidationError } from "../models/sdkvalidationerror.js";
 import { VercelError } from "../models/vercelerror.js";
@@ -44,7 +46,7 @@ export function userListEventTypes(
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    ListEventTypesResponseBody,
+    ListEventTypesResponse,
     | VercelError
     | ResponseValidationError
     | ConnectionError
@@ -69,7 +71,7 @@ async function $do(
 ): Promise<
   [
     Result<
-      ListEventTypesResponseBody,
+      ListEventTypesResponse,
       | VercelError
       | ResponseValidationError
       | ConnectionError
@@ -152,7 +154,7 @@ async function $do(
   const response = doResult.value;
 
   const [result] = await M.match<
-    ListEventTypesResponseBody,
+    ListEventTypesResponse,
     | VercelError
     | ResponseValidationError
     | ConnectionError
@@ -162,7 +164,7 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.json(200, ListEventTypesResponseBody$inboundSchema),
+    M.json(200, ListEventTypesResponse$inboundSchema),
     M.fail([400, 401, 403, "4XX"]),
     M.fail("5XX"),
   )(response, req);

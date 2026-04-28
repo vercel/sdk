@@ -11,6 +11,504 @@ import (
 	"mockserver/internal/sdk/utils"
 )
 
+type GetProjectsLogHeadersEnum string
+
+const (
+	GetProjectsLogHeadersEnumWildcard GetProjectsLogHeadersEnum = "*"
+)
+
+func (e GetProjectsLogHeadersEnum) ToPointer() *GetProjectsLogHeadersEnum {
+	return &e
+}
+func (e *GetProjectsLogHeadersEnum) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "*":
+		*e = GetProjectsLogHeadersEnum(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetProjectsLogHeadersEnum: %v", v)
+	}
+}
+
+type GetProjectsLogHeadersUnionType string
+
+const (
+	GetProjectsLogHeadersUnionTypeArrayOfStr                GetProjectsLogHeadersUnionType = "arrayOfStr"
+	GetProjectsLogHeadersUnionTypeGetProjectsLogHeadersEnum GetProjectsLogHeadersUnionType = "getProjects_log_headers_enum"
+)
+
+type GetProjectsLogHeadersUnion struct {
+	ArrayOfStr                []string                   `queryParam:"inline"`
+	GetProjectsLogHeadersEnum *GetProjectsLogHeadersEnum `queryParam:"inline"`
+
+	Type GetProjectsLogHeadersUnionType
+}
+
+func CreateGetProjectsLogHeadersUnionArrayOfStr(arrayOfStr []string) GetProjectsLogHeadersUnion {
+	typ := GetProjectsLogHeadersUnionTypeArrayOfStr
+
+	return GetProjectsLogHeadersUnion{
+		ArrayOfStr: arrayOfStr,
+		Type:       typ,
+	}
+}
+
+func CreateGetProjectsLogHeadersUnionGetProjectsLogHeadersEnum(getProjectsLogHeadersEnum GetProjectsLogHeadersEnum) GetProjectsLogHeadersUnion {
+	typ := GetProjectsLogHeadersUnionTypeGetProjectsLogHeadersEnum
+
+	return GetProjectsLogHeadersUnion{
+		GetProjectsLogHeadersEnum: &getProjectsLogHeadersEnum,
+		Type:                      typ,
+	}
+}
+
+func (u *GetProjectsLogHeadersUnion) UnmarshalJSON(data []byte) error {
+
+	var arrayOfStr []string = []string{}
+	if err := utils.UnmarshalJSON(data, &arrayOfStr, "", true, nil); err == nil {
+		u.ArrayOfStr = arrayOfStr
+		u.Type = GetProjectsLogHeadersUnionTypeArrayOfStr
+		return nil
+	}
+
+	var getProjectsLogHeadersEnum GetProjectsLogHeadersEnum = GetProjectsLogHeadersEnum("")
+	if err := utils.UnmarshalJSON(data, &getProjectsLogHeadersEnum, "", true, nil); err == nil {
+		u.GetProjectsLogHeadersEnum = &getProjectsLogHeadersEnum
+		u.Type = GetProjectsLogHeadersUnionTypeGetProjectsLogHeadersEnum
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetProjectsLogHeadersUnion", string(data))
+}
+
+func (u GetProjectsLogHeadersUnion) MarshalJSON() ([]byte, error) {
+	if u.ArrayOfStr != nil {
+		return utils.MarshalJSON(u.ArrayOfStr, "", true)
+	}
+
+	if u.GetProjectsLogHeadersEnum != nil {
+		return utils.MarshalJSON(u.GetProjectsLogHeadersEnum, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type GetProjectsLogHeadersUnion: all fields are null")
+}
+
+type GetProjectsSecurityPlusMetadata struct {
+	UpdatedAt float64 `json:"updatedAt"`
+	// Timestamp when the feature was first enabled. Never changes after initial enablement.
+	FirstEnabledAt *float64 `json:"firstEnabledAt,omitempty"`
+}
+
+func (g GetProjectsSecurityPlusMetadata) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetProjectsSecurityPlusMetadata) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"updatedAt"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetProjectsSecurityPlusMetadata) GetUpdatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.UpdatedAt
+}
+
+func (o *GetProjectsSecurityPlusMetadata) GetFirstEnabledAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.FirstEnabledAt
+}
+
+type GetProjectsSecurity struct {
+	AttackModeEnabled      *bool                                                      `json:"attackModeEnabled,omitempty"`
+	AttackModeUpdatedAt    *float64                                                   `json:"attackModeUpdatedAt,omitempty"`
+	FirewallEnabled        *bool                                                      `json:"firewallEnabled,omitempty"`
+	FirewallUpdatedAt      *float64                                                   `json:"firewallUpdatedAt,omitempty"`
+	AttackModeActiveUntil  optionalnullable.OptionalNullable[float64]                 `json:"attackModeActiveUntil,omitempty"`
+	FirewallConfigVersion  *float64                                                   `json:"firewallConfigVersion,omitempty"`
+	FirewallRoutes         []FirewallRoute                                            `json:"firewallRoutes,omitempty"`
+	FirewallSeawallEnabled *bool                                                      `json:"firewallSeawallEnabled,omitempty"`
+	Ja3Enabled             *bool                                                      `json:"ja3Enabled,omitempty"`
+	Ja4Enabled             *bool                                                      `json:"ja4Enabled,omitempty"`
+	FirewallBypassIps      []string                                                   `json:"firewallBypassIps,omitempty"`
+	ManagedRules           optionalnullable.OptionalNullable[GetProjectsManagedRules] `json:"managedRules,omitempty"`
+	BotIDEnabled           *bool                                                      `json:"botIdEnabled,omitempty"`
+	RequestLogsKey         []string                                                   `json:"requestLogsKey,omitempty"`
+	LogHeaders             *GetProjectsLogHeadersUnion                                `json:"log_headers,omitempty"`
+	SecurityPlus           *bool                                                      `json:"securityPlus,omitempty"`
+	SecurityPlusMetadata   *GetProjectsSecurityPlusMetadata                           `json:"securityPlusMetadata,omitempty"`
+	// Whether Page Integrity is enabled for this project. Used by the metadata service to gate DynamoDB lookups against the page-integrity-inventory table.
+	PageIntegrityEnabled *bool `json:"pageIntegrityEnabled,omitempty"`
+}
+
+func (g GetProjectsSecurity) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetProjectsSecurity) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetProjectsSecurity) GetAttackModeEnabled() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.AttackModeEnabled
+}
+
+func (o *GetProjectsSecurity) GetAttackModeUpdatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.AttackModeUpdatedAt
+}
+
+func (o *GetProjectsSecurity) GetFirewallEnabled() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.FirewallEnabled
+}
+
+func (o *GetProjectsSecurity) GetFirewallUpdatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.FirewallUpdatedAt
+}
+
+func (o *GetProjectsSecurity) GetAttackModeActiveUntil() optionalnullable.OptionalNullable[float64] {
+	if o == nil {
+		return nil
+	}
+	return o.AttackModeActiveUntil
+}
+
+func (o *GetProjectsSecurity) GetFirewallConfigVersion() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.FirewallConfigVersion
+}
+
+func (o *GetProjectsSecurity) GetFirewallRoutes() []FirewallRoute {
+	if o == nil {
+		return nil
+	}
+	return o.FirewallRoutes
+}
+
+func (o *GetProjectsSecurity) GetFirewallSeawallEnabled() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.FirewallSeawallEnabled
+}
+
+func (o *GetProjectsSecurity) GetJa3Enabled() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Ja3Enabled
+}
+
+func (o *GetProjectsSecurity) GetJa4Enabled() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Ja4Enabled
+}
+
+func (o *GetProjectsSecurity) GetFirewallBypassIps() []string {
+	if o == nil {
+		return nil
+	}
+	return o.FirewallBypassIps
+}
+
+func (o *GetProjectsSecurity) GetManagedRules() optionalnullable.OptionalNullable[GetProjectsManagedRules] {
+	if o == nil {
+		return nil
+	}
+	return o.ManagedRules
+}
+
+func (o *GetProjectsSecurity) GetBotIDEnabled() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.BotIDEnabled
+}
+
+func (o *GetProjectsSecurity) GetRequestLogsKey() []string {
+	if o == nil {
+		return nil
+	}
+	return o.RequestLogsKey
+}
+
+func (o *GetProjectsSecurity) GetLogHeaders() *GetProjectsLogHeadersUnion {
+	if o == nil {
+		return nil
+	}
+	return o.LogHeaders
+}
+
+func (o *GetProjectsSecurity) GetSecurityPlus() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.SecurityPlus
+}
+
+func (o *GetProjectsSecurity) GetSecurityPlusMetadata() *GetProjectsSecurityPlusMetadata {
+	if o == nil {
+		return nil
+	}
+	return o.SecurityPlusMetadata
+}
+
+func (o *GetProjectsSecurity) GetPageIntegrityEnabled() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.PageIntegrityEnabled
+}
+
+// GetProjectsIssuerMode - - team: `https://oidc.vercel.com/[team_slug]` - global: `https://oidc.vercel.com`
+type GetProjectsIssuerMode string
+
+const (
+	GetProjectsIssuerModeTeam   GetProjectsIssuerMode = "team"
+	GetProjectsIssuerModeGlobal GetProjectsIssuerMode = "global"
+)
+
+func (e GetProjectsIssuerMode) ToPointer() *GetProjectsIssuerMode {
+	return &e
+}
+func (e *GetProjectsIssuerMode) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "team":
+		fallthrough
+	case "global":
+		*e = GetProjectsIssuerMode(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetProjectsIssuerMode: %v", v)
+	}
+}
+
+type GetProjectsOidcTokenConfig struct {
+	// Whether or not to generate OpenID Connect JSON Web Tokens.
+	Enabled *bool `json:"enabled,omitempty"`
+	// - team: `https://oidc.vercel.com/[team_slug]` - global: `https://oidc.vercel.com`
+	IssuerMode *GetProjectsIssuerMode `json:"issuerMode,omitempty"`
+}
+
+func (g GetProjectsOidcTokenConfig) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetProjectsOidcTokenConfig) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetProjectsOidcTokenConfig) GetEnabled() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Enabled
+}
+
+func (o *GetProjectsOidcTokenConfig) GetIssuerMode() *GetProjectsIssuerMode {
+	if o == nil {
+		return nil
+	}
+	return o.IssuerMode
+}
+
+type GetProjectsHistory struct {
+	Scanner string  `json:"scanner"`
+	Reason  string  `json:"reason"`
+	By      string  `json:"by"`
+	ByID    string  `json:"byId"`
+	At      float64 `json:"at"`
+}
+
+func (g GetProjectsHistory) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetProjectsHistory) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"scanner", "reason", "by", "byId", "at"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetProjectsHistory) GetScanner() string {
+	if o == nil {
+		return ""
+	}
+	return o.Scanner
+}
+
+func (o *GetProjectsHistory) GetReason() string {
+	if o == nil {
+		return ""
+	}
+	return o.Reason
+}
+
+func (o *GetProjectsHistory) GetBy() string {
+	if o == nil {
+		return ""
+	}
+	return o.By
+}
+
+func (o *GetProjectsHistory) GetByID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ByID
+}
+
+func (o *GetProjectsHistory) GetAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.At
+}
+
+type GetProjectsActionBlocked string
+
+const (
+	GetProjectsActionBlockedBlocked GetProjectsActionBlocked = "blocked"
+)
+
+func (e GetProjectsActionBlocked) ToPointer() *GetProjectsActionBlocked {
+	return &e
+}
+func (e *GetProjectsActionBlocked) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "blocked":
+		*e = GetProjectsActionBlocked(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetProjectsActionBlocked: %v", v)
+	}
+}
+
+type GetProjectsBlock struct {
+	Action              GetProjectsActionBlocked `json:"action"`
+	Reason              string                   `json:"reason"`
+	StatusCode          float64                  `json:"statusCode"`
+	CreatedAt           float64                  `json:"createdAt"`
+	CaseID              *string                  `json:"caseId,omitempty"`
+	Actor               *string                  `json:"actor,omitempty"`
+	Comment             *string                  `json:"comment,omitempty"`
+	IneligibleForAppeal *bool                    `json:"ineligibleForAppeal,omitempty"`
+	IsCascading         *bool                    `json:"isCascading,omitempty"`
+}
+
+func (g GetProjectsBlock) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetProjectsBlock) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"action", "reason", "statusCode", "createdAt"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetProjectsBlock) GetAction() GetProjectsActionBlocked {
+	if o == nil {
+		return GetProjectsActionBlocked("")
+	}
+	return o.Action
+}
+
+func (o *GetProjectsBlock) GetReason() string {
+	if o == nil {
+		return ""
+	}
+	return o.Reason
+}
+
+func (o *GetProjectsBlock) GetStatusCode() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.StatusCode
+}
+
+func (o *GetProjectsBlock) GetCreatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CreatedAt
+}
+
+func (o *GetProjectsBlock) GetCaseID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.CaseID
+}
+
+func (o *GetProjectsBlock) GetActor() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Actor
+}
+
+func (o *GetProjectsBlock) GetComment() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Comment
+}
+
+func (o *GetProjectsBlock) GetIneligibleForAppeal() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IneligibleForAppeal
+}
+
+func (o *GetProjectsBlock) GetIsCascading() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IsCascading
+}
+
 type GetProjectsActionRouteUnblocked string
 
 const (

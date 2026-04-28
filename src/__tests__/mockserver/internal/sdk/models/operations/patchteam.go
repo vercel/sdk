@@ -918,6 +918,8 @@ type PatchTeamRequestBody struct {
 	HideIPAddresses *bool `json:"hideIpAddresses,omitempty"`
 	// Display or hide IP addresses in Log Drains.
 	HideIPAddressesInLogDrains *bool `json:"hideIpAddressesInLogDrains,omitempty"`
+	// When enabled, all projects in the team require commits to be signed and verified by the git provider before deployments will be created.
+	RequireVerifiedCommits *bool `json:"requireVerifiedCommits,omitempty"`
 	// Default deployment protection settings for new projects.
 	DefaultDeploymentProtection *DefaultDeploymentProtection `json:"defaultDeploymentProtection,omitempty"`
 	DefaultExpirationSettings   *DefaultExpirationSettings   `json:"defaultExpirationSettings,omitempty"`
@@ -1027,6 +1029,13 @@ func (o *PatchTeamRequestBody) GetHideIPAddressesInLogDrains() *bool {
 		return nil
 	}
 	return o.HideIPAddressesInLogDrains
+}
+
+func (o *PatchTeamRequestBody) GetRequireVerifiedCommits() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.RequireVerifiedCommits
 }
 
 func (o *PatchTeamRequestBody) GetDefaultDeploymentProtection() *DefaultDeploymentProtection {

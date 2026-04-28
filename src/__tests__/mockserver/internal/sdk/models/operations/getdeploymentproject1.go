@@ -3049,7 +3049,7 @@ func (e *GetDeploymentManualProvisioningState2) UnmarshalJSON(data []byte) error
 	}
 }
 
-// GetDeploymentManualProvisioning2 - Present when deployment was created with VERCEL_MANUAL_PROVISIONING=true. The deployment stays in INITIALIZING until /continue is called.
+// GetDeploymentManualProvisioning2 - Present when deployment was created with manual provisioning enabled, either explicitly or via the experimental BYOC git flow. The deployment stays in INITIALIZING until /continue is called.
 type GetDeploymentManualProvisioning2 struct {
 	// Current provisioning state
 	State GetDeploymentManualProvisioningState2 `json:"state"`
@@ -3434,7 +3434,7 @@ type Lambdas2 struct {
 	// Since November 2023 this field defines a set of regions that we will deploy the lambda to passively Lambdas will be deployed to these regions but only invoked if all of the primary `regions` are marked as out of service
 	PassiveRegions []string                      `json:"passiveRegions,omitempty"`
 	GitSource      *GetDeploymentGitSourceUnion2 `json:"gitSource,omitempty"`
-	// Present when deployment was created with VERCEL_MANUAL_PROVISIONING=true. The deployment stays in INITIALIZING until /continue is called.
+	// Present when deployment was created with manual provisioning enabled, either explicitly or via the experimental BYOC git flow. The deployment stays in INITIALIZING until /continue is called.
 	ManualProvisioning *GetDeploymentManualProvisioning2 `json:"manualProvisioning,omitempty"`
 	Meta               map[string]string                 `json:"meta"`
 	OriginCacheRegion  *string                           `json:"originCacheRegion,omitempty"`
@@ -7834,7 +7834,7 @@ func (e *GetDeploymentManualProvisioningState1) UnmarshalJSON(data []byte) error
 	}
 }
 
-// GetDeploymentManualProvisioning1 - Present when deployment was created with VERCEL_MANUAL_PROVISIONING=true. The deployment stays in INITIALIZING until /continue is called.
+// GetDeploymentManualProvisioning1 - Present when deployment was created with manual provisioning enabled, either explicitly or via the experimental BYOC git flow. The deployment stays in INITIALIZING until /continue is called.
 type GetDeploymentManualProvisioning1 struct {
 	// Current provisioning state
 	State GetDeploymentManualProvisioningState1 `json:"state"`

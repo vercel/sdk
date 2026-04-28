@@ -37,19 +37,19 @@ export type ResponseBodyUser = {
 };
 
 export type GetEdgeConfigBackupResponseBodyItems = {
-  description?: string | undefined;
   createdAt: number;
   updatedAt: number;
   value: EdgeConfigItemValue | null;
+  description?: string | undefined;
 };
 
 export type ResponseBodyBackup = {
-  items: { [k: string]: GetEdgeConfigBackupResponseBodyItems };
   /**
    * Name for the Edge Config Names are not unique. Must start with an alphabetic character and can contain only alphanumeric characters and underscores).
    */
   slug: string;
   updatedAt: number;
+  items: { [k: string]: GetEdgeConfigBackupResponseBodyItems };
   digest: string;
 };
 
@@ -69,19 +69,19 @@ export type GetEdgeConfigBackupResponseBody2 = {
 };
 
 export type ResponseBodyItems = {
-  description?: string | undefined;
   createdAt: number;
   updatedAt: number;
   value: EdgeConfigItemValue | null;
+  description?: string | undefined;
 };
 
 export type Backup = {
-  items: { [k: string]: ResponseBodyItems };
   /**
    * Name for the Edge Config Names are not unique. Must start with an alphabetic character and can contain only alphanumeric characters and underscores).
    */
   slug: string;
   updatedAt: number;
+  items: { [k: string]: ResponseBodyItems };
   digest: string;
 };
 
@@ -220,17 +220,17 @@ export const GetEdgeConfigBackupResponseBodyItems$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  description: types.optional(types.string()),
   createdAt: types.number(),
   updatedAt: types.number(),
   value: types.nullable(EdgeConfigItemValue$inboundSchema),
+  description: types.optional(types.string()),
 });
 /** @internal */
 export type GetEdgeConfigBackupResponseBodyItems$Outbound = {
-  description?: string | undefined;
   createdAt: number;
   updatedAt: number;
   value: EdgeConfigItemValue$Outbound | null;
+  description?: string | undefined;
 };
 
 /** @internal */
@@ -239,10 +239,10 @@ export const GetEdgeConfigBackupResponseBodyItems$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetEdgeConfigBackupResponseBodyItems
 > = z.object({
-  description: z.string().optional(),
   createdAt: z.number(),
   updatedAt: z.number(),
   value: z.nullable(EdgeConfigItemValue$outboundSchema),
+  description: z.string().optional(),
 });
 
 export function getEdgeConfigBackupResponseBodyItemsToJSON(
@@ -271,18 +271,18 @@ export const ResponseBodyBackup$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  slug: types.string(),
+  updatedAt: types.number(),
   items: z.record(
     z.lazy(() => GetEdgeConfigBackupResponseBodyItems$inboundSchema),
   ),
-  slug: types.string(),
-  updatedAt: types.number(),
   digest: types.string(),
 });
 /** @internal */
 export type ResponseBodyBackup$Outbound = {
-  items: { [k: string]: GetEdgeConfigBackupResponseBodyItems$Outbound };
   slug: string;
   updatedAt: number;
+  items: { [k: string]: GetEdgeConfigBackupResponseBodyItems$Outbound };
   digest: string;
 };
 
@@ -292,11 +292,11 @@ export const ResponseBodyBackup$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ResponseBodyBackup
 > = z.object({
+  slug: z.string(),
+  updatedAt: z.number(),
   items: z.record(
     z.lazy(() => GetEdgeConfigBackupResponseBodyItems$outboundSchema),
   ),
-  slug: z.string(),
-  updatedAt: z.number(),
   digest: z.string(),
 });
 
@@ -424,17 +424,17 @@ export const ResponseBodyItems$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  description: types.optional(types.string()),
   createdAt: types.number(),
   updatedAt: types.number(),
   value: types.nullable(EdgeConfigItemValue$inboundSchema),
+  description: types.optional(types.string()),
 });
 /** @internal */
 export type ResponseBodyItems$Outbound = {
-  description?: string | undefined;
   createdAt: number;
   updatedAt: number;
   value: EdgeConfigItemValue$Outbound | null;
+  description?: string | undefined;
 };
 
 /** @internal */
@@ -443,10 +443,10 @@ export const ResponseBodyItems$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ResponseBodyItems
 > = z.object({
-  description: z.string().optional(),
   createdAt: z.number(),
   updatedAt: z.number(),
   value: z.nullable(EdgeConfigItemValue$outboundSchema),
+  description: z.string().optional(),
 });
 
 export function responseBodyItemsToJSON(
@@ -469,16 +469,16 @@ export function responseBodyItemsFromJSON(
 /** @internal */
 export const Backup$inboundSchema: z.ZodType<Backup, z.ZodTypeDef, unknown> = z
   .object({
-    items: z.record(z.lazy(() => ResponseBodyItems$inboundSchema)),
     slug: types.string(),
     updatedAt: types.number(),
+    items: z.record(z.lazy(() => ResponseBodyItems$inboundSchema)),
     digest: types.string(),
   });
 /** @internal */
 export type Backup$Outbound = {
-  items: { [k: string]: ResponseBodyItems$Outbound };
   slug: string;
   updatedAt: number;
+  items: { [k: string]: ResponseBodyItems$Outbound };
   digest: string;
 };
 
@@ -488,9 +488,9 @@ export const Backup$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Backup
 > = z.object({
-  items: z.record(z.lazy(() => ResponseBodyItems$outboundSchema)),
   slug: z.string(),
   updatedAt: z.number(),
+  items: z.record(z.lazy(() => ResponseBodyItems$outboundSchema)),
   digest: z.string(),
 });
 

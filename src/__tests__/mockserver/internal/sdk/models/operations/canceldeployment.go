@@ -3841,7 +3841,7 @@ func (e *CancelDeploymentManualProvisioningState) UnmarshalJSON(data []byte) err
 	}
 }
 
-// CancelDeploymentManualProvisioning - Present when deployment was created with VERCEL_MANUAL_PROVISIONING=true. The deployment stays in INITIALIZING until /continue is called.
+// CancelDeploymentManualProvisioning - Present when deployment was created with manual provisioning enabled, either explicitly or via the experimental BYOC git flow. The deployment stays in INITIALIZING until /continue is called.
 type CancelDeploymentManualProvisioning struct {
 	// Current provisioning state
 	State CancelDeploymentManualProvisioningState `json:"state"`
@@ -8914,7 +8914,7 @@ type CancelDeploymentResponseBody struct {
 	// Since November 2023 this field defines a set of regions that we will deploy the lambda to passively Lambdas will be deployed to these regions but only invoked if all of the primary `regions` are marked as out of service
 	PassiveRegions []string                        `json:"passiveRegions,omitempty"`
 	GitSource      *CancelDeploymentGitSourceUnion `json:"gitSource,omitempty"`
-	// Present when deployment was created with VERCEL_MANUAL_PROVISIONING=true. The deployment stays in INITIALIZING until /continue is called.
+	// Present when deployment was created with manual provisioning enabled, either explicitly or via the experimental BYOC git flow. The deployment stays in INITIALIZING until /continue is called.
 	ManualProvisioning *CancelDeploymentManualProvisioning `json:"manualProvisioning,omitempty"`
 	Meta               map[string]string                   `json:"meta"`
 	OriginCacheRegion  *string                             `json:"originCacheRegion,omitempty"`

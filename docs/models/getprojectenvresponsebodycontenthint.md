@@ -52,7 +52,7 @@ const value: models.GetProjectEnvContentHint5 = {
 
 ```typescript
 const value: models.GetProjectEnvContentHint6 = {
-  type: "postgres-url",
+  type: "blob-store-id",
   storeId: "<id>",
 };
 ```
@@ -61,7 +61,7 @@ const value: models.GetProjectEnvContentHint6 = {
 
 ```typescript
 const value: models.GetProjectEnvContentHint7 = {
-  type: "postgres-url-non-pooling",
+  type: "postgres-url",
   storeId: "<id>",
 };
 ```
@@ -70,7 +70,7 @@ const value: models.GetProjectEnvContentHint7 = {
 
 ```typescript
 const value: models.GetProjectEnvContentHint8 = {
-  type: "postgres-prisma-url",
+  type: "postgres-url-non-pooling",
   storeId: "<id>",
 };
 ```
@@ -79,7 +79,7 @@ const value: models.GetProjectEnvContentHint8 = {
 
 ```typescript
 const value: models.GetProjectEnvContentHint9 = {
-  type: "postgres-user",
+  type: "postgres-prisma-url",
   storeId: "<id>",
 };
 ```
@@ -88,7 +88,7 @@ const value: models.GetProjectEnvContentHint9 = {
 
 ```typescript
 const value: models.GetProjectEnvContentHint10 = {
-  type: "postgres-host",
+  type: "postgres-user",
   storeId: "<id>",
 };
 ```
@@ -97,7 +97,7 @@ const value: models.GetProjectEnvContentHint10 = {
 
 ```typescript
 const value: models.GetProjectEnvContentHint11 = {
-  type: "postgres-password",
+  type: "postgres-host",
   storeId: "<id>",
 };
 ```
@@ -106,7 +106,7 @@ const value: models.GetProjectEnvContentHint11 = {
 
 ```typescript
 const value: models.GetProjectEnvContentHint12 = {
-  type: "postgres-database",
+  type: "postgres-password",
   storeId: "<id>",
 };
 ```
@@ -115,7 +115,7 @@ const value: models.GetProjectEnvContentHint12 = {
 
 ```typescript
 const value: models.GetProjectEnvContentHint13 = {
-  type: "postgres-url-no-ssl",
+  type: "postgres-database",
   storeId: "<id>",
 };
 ```
@@ -124,6 +124,15 @@ const value: models.GetProjectEnvContentHint13 = {
 
 ```typescript
 const value: models.GetProjectEnvContentHint14 = {
+  type: "postgres-url-no-ssl",
+  storeId: "<id>",
+};
+```
+
+### `models.GetProjectEnvContentHint15`
+
+```typescript
+const value: models.GetProjectEnvContentHint15 = {
   type: "integration-store-secret",
   storeId: "<id>",
   integrationId: "<id>",
@@ -132,10 +141,10 @@ const value: models.GetProjectEnvContentHint14 = {
 };
 ```
 
-### `models.GetProjectEnvContentHint15`
+### `models.GetProjectEnvContentHint16`
 
 ```typescript
-const value: models.GetProjectEnvContentHint15 = {
+const value: models.GetProjectEnvContentHint16 = {
   type: "flags-connection-string",
   projectId: "<id>",
 };

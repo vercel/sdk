@@ -207,6 +207,7 @@ export type CreateIntegrationStoreDirectProjectsMetadata = {
   envVarPrefix: string | null;
   environmentVariables: Array<string>;
   deployments?: CreateIntegrationStoreDirectDeployments | undefined;
+  makeEnvVarsSensitive?: boolean | undefined;
 };
 
 export const Providers2 = {
@@ -1733,6 +1734,7 @@ export const CreateIntegrationStoreDirectProjectsMetadata$inboundSchema:
     deployments: types.optional(
       z.lazy(() => CreateIntegrationStoreDirectDeployments$inboundSchema),
     ),
+    makeEnvVarsSensitive: types.optional(types.boolean()),
   });
 /** @internal */
 export type CreateIntegrationStoreDirectProjectsMetadata$Outbound = {
@@ -1745,6 +1747,7 @@ export type CreateIntegrationStoreDirectProjectsMetadata$Outbound = {
   envVarPrefix: string | null;
   environmentVariables: Array<string>;
   deployments?: CreateIntegrationStoreDirectDeployments$Outbound | undefined;
+  makeEnvVarsSensitive?: boolean | undefined;
 };
 
 /** @internal */
@@ -1768,6 +1771,7 @@ export const CreateIntegrationStoreDirectProjectsMetadata$outboundSchema:
     deployments: z.lazy(() =>
       CreateIntegrationStoreDirectDeployments$outboundSchema
     ).optional(),
+    makeEnvVarsSensitive: z.boolean().optional(),
   });
 
 export function createIntegrationStoreDirectProjectsMetadataToJSON(

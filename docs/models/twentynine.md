@@ -5,18 +5,15 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwentyNine } from "@vercel/sdk/models/payload1.js";
+import { TwentyNine } from "@vercel/sdk/models/newteam.js";
 
-let value: TwentyNine = {
-  appName: "<value>",
-};
+let value: TwentyNine = {};
 ```
 
 ## Fields
 
-| Field                                                          | Type                                                           | Required                                                       | Description                                                    |
-| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
-| `appName`                                                      | *string*                                                       | :heavy_check_mark:                                             | N/A                                                            |
-| `appId`                                                        | *string*                                                       | :heavy_minus_sign:                                             | N/A                                                            |
-| `resources`                                                    | [models.Resources](../models/resources.md)                     | :heavy_minus_sign:                                             | N/A                                                            |
-| `permissions`                                                  | [models.PayloadPermissions](../models/payloadpermissions.md)[] | :heavy_minus_sign:                                             | N/A                                                            |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `alias`            | *string*           | :heavy_minus_sign: | N/A                |
+| `userId`           | *string*           | :heavy_minus_sign: | N/A                |
+| `username`         | *string*           | :heavy_minus_sign: | N/A                |

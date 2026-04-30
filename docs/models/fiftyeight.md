@@ -5,17 +5,18 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FiftyEight } from "@vercel/sdk/models/payload1.js";
+import { FiftyEight } from "@vercel/sdk/models/newteam.js";
 
 let value: FiftyEight = {
-  githubLogin: "<value>",
-  host: "indolent-detective.com",
+  configuration: {
+    id: "<id>",
+    name: "<value>",
+  },
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `githubLogin`      | *string*           | :heavy_check_mark: | N/A                |
-| `host`             | *string*           | :heavy_check_mark: | N/A                |
+| Field                                              | Type                                               | Required                                           | Description                                        |
+| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
+| `configuration`                                    | [models.Configuration](../models/configuration.md) | :heavy_check_mark:                                 | N/A                                                |

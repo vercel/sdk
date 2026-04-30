@@ -5,28 +5,21 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { NinetyNine } from "@vercel/sdk/models/jobdeployhook.js";
+import { NinetyNine } from "@vercel/sdk/models/job6.js";
 
 let value: NinetyNine = {
-  edgeConfig: {
-    id: "<id>",
-    slug: "<value>",
-  },
-  fromAccount: {
-    id: "<id>",
-    type: "user",
-  },
-  toAccount: {
-    id: "<id>",
-    type: "team",
-  },
+  projectId: "<id>",
+  projectName: "<value>",
+  srcImages: [
+    "<value 1>",
+  ],
 };
 ```
 
 ## Fields
 
-| Field                                          | Type                                           | Required                                       | Description                                    |
-| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| `edgeConfig`                                   | [models.EdgeConfig](../models/edgeconfig.md)   | :heavy_check_mark:                             | N/A                                            |
-| `fromAccount`                                  | [models.FromAccount](../models/fromaccount.md) | :heavy_check_mark:                             | N/A                                            |
-| `toAccount`                                    | [models.ToAccount](../models/toaccount.md)     | :heavy_check_mark:                             | N/A                                            |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
+| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
+| `srcImages`        | *string*[]         | :heavy_check_mark: | N/A                |

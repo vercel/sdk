@@ -5,17 +5,26 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { SeventyNine } from "@vercel/sdk/models/jobdeployhook.js";
+import { SeventyNine } from "@vercel/sdk/models/job6.js";
 
 let value: SeventyNine = {
-  name: "<value>",
-  cdnEnabled: true,
+  deployment: {
+    id: "<id>",
+    name: "<value>",
+    meta: {
+      "key": "<value>",
+    },
+    url: "https://common-fuel.biz/",
+  },
+  deploymentId: "<id>",
+  url: "https://serpentine-divine.biz/",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `name`             | *string*           | :heavy_check_mark: | N/A                |
-| `cdnEnabled`       | *boolean*          | :heavy_check_mark: | N/A                |
+| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `deployment`                                                                     | [models.UserEventPayload79Deployment](../models/usereventpayload79deployment.md) | :heavy_check_mark:                                                               | N/A                                                                              |
+| `deploymentId`                                                                   | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |
+| `url`                                                                            | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |

@@ -5,30 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { Seventy } from "@vercel/sdk/models/payload1.js";
+import { Seventy } from "@vercel/sdk/models/newteam.js";
 
 let value: Seventy = {
-  job: {
-    type: "gitlab-push",
-    headInfo: {
-      project: {
-        id: "<id>",
-      },
-      ref: "<value>",
-      sha: "<value>",
-    },
-    project: {
-      id: "<id>",
-    },
-    ref: "<value>",
-    sha: "<value>",
-    provider: "gitlab",
-  },
+  status: "<value>",
+  suffix: "<value>",
 };
 ```
 
 ## Fields
 
-| Field               | Type                | Required            | Description         |
-| ------------------- | ------------------- | ------------------- | ------------------- |
-| `job`               | *models.PayloadJob* | :heavy_check_mark:  | N/A                 |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `status`           | *string*           | :heavy_check_mark: | N/A                |
+| `suffix`           | *string*           | :heavy_check_mark: | N/A                |

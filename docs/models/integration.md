@@ -3,12 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { Integration } from "@vercel/sdk/models/getconfigurationproductsresponsebody.js";
+import { Integration } from "@vercel/sdk/models/blocktype.js";
 
 let value: Integration = {
   id: "<id>",
   slug: "<value>",
   name: "<value>",
+  configurationId: "<id>",
 };
 ```
 
@@ -19,3 +20,4 @@ let value: Integration = {
 | `id`               | *string*           | :heavy_check_mark: | N/A                |
 | `slug`             | *string*           | :heavy_check_mark: | N/A                |
 | `name`             | *string*           | :heavy_check_mark: | N/A                |
+| `configurationId`  | *string*           | :heavy_check_mark: | N/A                |

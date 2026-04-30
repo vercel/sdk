@@ -1453,6 +1453,7 @@ export type ResponseBodyPermissions = {
   teamMicrofrontends?: Array<ACLAction> | undefined;
   teamOwnMembership?: Array<ACLAction> | undefined;
   teamOwnMembershipDisconnectSAML?: Array<ACLAction> | undefined;
+  teamSudo?: Array<ACLAction> | undefined;
   teamTokenInvalidation?: Array<ACLAction> | undefined;
   token?: Array<ACLAction> | undefined;
   toolbarComment?: Array<ACLAction> | undefined;
@@ -7084,6 +7085,7 @@ export const ResponseBodyPermissions$inboundSchema: z.ZodType<
   teamOwnMembershipDisconnectSAML: types.optional(
     z.array(ACLAction$inboundSchema),
   ),
+  teamSudo: types.optional(z.array(ACLAction$inboundSchema)),
   teamTokenInvalidation: types.optional(z.array(ACLAction$inboundSchema)),
   token: types.optional(z.array(ACLAction$inboundSchema)),
   toolbarComment: types.optional(z.array(ACLAction$inboundSchema)),
@@ -7348,6 +7350,7 @@ export type ResponseBodyPermissions$Outbound = {
   teamMicrofrontends?: Array<string> | undefined;
   teamOwnMembership?: Array<string> | undefined;
   teamOwnMembershipDisconnectSAML?: Array<string> | undefined;
+  teamSudo?: Array<string> | undefined;
   teamTokenInvalidation?: Array<string> | undefined;
   token?: Array<string> | undefined;
   toolbarComment?: Array<string> | undefined;
@@ -7606,6 +7609,7 @@ export const ResponseBodyPermissions$outboundSchema: z.ZodType<
   teamMicrofrontends: z.array(ACLAction$outboundSchema).optional(),
   teamOwnMembership: z.array(ACLAction$outboundSchema).optional(),
   teamOwnMembershipDisconnectSAML: z.array(ACLAction$outboundSchema).optional(),
+  teamSudo: z.array(ACLAction$outboundSchema).optional(),
   teamTokenInvalidation: z.array(ACLAction$outboundSchema).optional(),
   token: z.array(ACLAction$outboundSchema).optional(),
   toolbarComment: z.array(ACLAction$outboundSchema).optional(),

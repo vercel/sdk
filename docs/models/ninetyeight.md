@@ -5,11 +5,10 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { NinetyEight } from "@vercel/sdk/models/jobdeployhook.js";
+import { NinetyEight } from "@vercel/sdk/models/job6.js";
 
 let value: NinetyEight = {
-  edgeConfigId: "<id>",
-  edgeConfigSlug: "<value>",
+  drainUrl: "https://trivial-effector.name",
 };
 ```
 
@@ -17,6 +16,5 @@ let value: NinetyEight = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `edgeConfigId`     | *string*           | :heavy_check_mark: | N/A                |
-| `edgeConfigSlug`   | *string*           | :heavy_check_mark: | N/A                |
-| `edgeConfigDigest` | *string*           | :heavy_minus_sign: | N/A                |
+| `drainUrl`         | *string*           | :heavy_check_mark: | N/A                |
+| `integrationName`  | *string*           | :heavy_minus_sign: | N/A                |

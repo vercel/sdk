@@ -5,27 +5,24 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndTwentyFour } from "@vercel/sdk/models/version.js";
+import { OneHundredAndTwentyFour } from "@vercel/sdk/models/blocktype.js";
 
-let value: OneHundredAndTwentyFour = {};
+let value: OneHundredAndTwentyFour = {
+  integration: {
+    id: "<id>",
+    slug: "<value>",
+    name: "<value>",
+    configurationId: "<id>",
+  },
+  destinationTeamId: "<id>",
+  destinationTeamName: "<value>",
+};
 ```
 
 ## Fields
 
 | Field                                          | Type                                           | Required                                       | Description                                    |
 | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| `userAgent`                                    | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `geolocation`                                  | [models.Geolocation](../models/geolocation.md) | :heavy_minus_sign:                             | N/A                                            |
-| `env`                                          | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `os`                                           | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `username`                                     | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `ssoType`                                      | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `factors`                                      | *models.Factors*                               | :heavy_minus_sign:                             | N/A                                            |
-| `viaOTP`                                       | *boolean*                                      | :heavy_minus_sign:                             | N/A                                            |
-| `viaGithub`                                    | *boolean*                                      | :heavy_minus_sign:                             | N/A                                            |
-| `viaGitlab`                                    | *boolean*                                      | :heavy_minus_sign:                             | N/A                                            |
-| `viaBitbucket`                                 | *boolean*                                      | :heavy_minus_sign:                             | N/A                                            |
-| `viaGoogle`                                    | *boolean*                                      | :heavy_minus_sign:                             | N/A                                            |
-| `viaApple`                                     | *boolean*                                      | :heavy_minus_sign:                             | N/A                                            |
-| `viaSamlSso`                                   | *boolean*                                      | :heavy_minus_sign:                             | N/A                                            |
-| `viaPasskey`                                   | *boolean*                                      | :heavy_minus_sign:                             | N/A                                            |
+| `integration`                                  | [models.Integration](../models/integration.md) | :heavy_check_mark:                             | N/A                                            |
+| `destinationTeamId`                            | *string*                                       | :heavy_check_mark:                             | N/A                                            |
+| `destinationTeamName`                          | *string*                                       | :heavy_check_mark:                             | N/A                                            |

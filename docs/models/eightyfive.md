@@ -5,10 +5,11 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { EightyFive } from "@vercel/sdk/models/jobdeployhook.js";
+import { EightyFive } from "@vercel/sdk/models/job6.js";
 
 let value: EightyFive = {
-  domain: "motionless-designation.name",
+  name: "<value>",
+  cdnEnabled: false,
 };
 ```
 
@@ -16,4 +17,5 @@ let value: EightyFive = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `domain`           | *string*           | :heavy_check_mark: | N/A                |
+| `name`             | *string*           | :heavy_check_mark: | N/A                |
+| `cdnEnabled`       | *boolean*          | :heavy_check_mark: | N/A                |

@@ -103,8 +103,8 @@ func (o *CreateSDKKeyRequest) GetBody() *CreateSDKKeyRequestBody {
 }
 
 type CreateSDKKeyResponse struct {
-	HTTPMeta    components.HTTPMetadata `json:"-"`
-	FlagsSDKKey *components.FlagsSDKKey
+	HTTPMeta               components.HTTPMetadata `json:"-"`
+	FlagsSDKKeyWithSecrets *components.FlagsSDKKeyWithSecrets
 }
 
 func (o *CreateSDKKeyResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -114,9 +114,9 @@ func (o *CreateSDKKeyResponse) GetHTTPMeta() components.HTTPMetadata {
 	return o.HTTPMeta
 }
 
-func (o *CreateSDKKeyResponse) GetFlagsSDKKey() *components.FlagsSDKKey {
+func (o *CreateSDKKeyResponse) GetFlagsSDKKeyWithSecrets() *components.FlagsSDKKeyWithSecrets {
 	if o == nil {
 		return nil
 	}
-	return o.FlagsSDKKey
+	return o.FlagsSDKKeyWithSecrets
 }

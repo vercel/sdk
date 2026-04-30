@@ -5,26 +5,21 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { Ten } from "@vercel/sdk/models/payload1.js";
+import { Ten } from "@vercel/sdk/models/userevent.js";
 
 let value: Ten = {
-  accessGroup: {
-    id: "<id>",
-    name: "<value>",
-  },
+  teamId: "<id>",
+  resourceId: "<id>",
+  fromPlan: "pro",
+  toPlan: "hobby",
 };
 ```
 
 ## Fields
 
-| Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `accessGroup`                                                                      | [models.UserEventPayload10AccessGroup](../models/usereventpayload10accessgroup.md) | :heavy_check_mark:                                                                 | N/A                                                                                |
-| `name`                                                                             | *string*                                                                           | :heavy_minus_sign:                                                                 | N/A                                                                                |
-| `previousName`                                                                     | *string*                                                                           | :heavy_minus_sign:                                                                 | N/A                                                                                |
-| `teamRoles`                                                                        | *string*[]                                                                         | :heavy_minus_sign:                                                                 | N/A                                                                                |
-| `previousTeamRoles`                                                                | *string*[]                                                                         | :heavy_minus_sign:                                                                 | N/A                                                                                |
-| `teamPermissions`                                                                  | *string*[]                                                                         | :heavy_minus_sign:                                                                 | N/A                                                                                |
-| `previousTeamPermissions`                                                          | *string*[]                                                                         | :heavy_minus_sign:                                                                 | N/A                                                                                |
-| `entitlementsAdded`                                                                | *string*[]                                                                         | :heavy_minus_sign:                                                                 | N/A                                                                                |
-| `entitlementsRemoved`                                                              | *string*[]                                                                         | :heavy_minus_sign:                                                                 | N/A                                                                                |
+| Field                                    | Type                                     | Required                                 | Description                              |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| `teamId`                                 | *string*                                 | :heavy_check_mark:                       | N/A                                      |
+| `resourceId`                             | *string*                                 | :heavy_check_mark:                       | N/A                                      |
+| `fromPlan`                               | [models.FromPlan](../models/fromplan.md) | :heavy_check_mark:                       | N/A                                      |
+| `toPlan`                                 | [models.ToPlan](../models/toplan.md)     | :heavy_check_mark:                       | N/A                                      |

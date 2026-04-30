@@ -1,19 +1,19 @@
 # UserEventPayload292Previous
 
-## Example Usage
+
+## Supported Types
+
+### `models.Previous1`
 
 ```typescript
-import { UserEventPayload292Previous } from "@vercel/sdk/models/twohundredandfortyseven.js";
-
-let value: UserEventPayload292Previous = {
-  enabled: true,
-  totpVerified: false,
+const value: models.Previous1 = {
+  accessGroupId: "<id>",
 };
 ```
 
-## Fields
+### `models.Previous2`
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `enabled`          | *boolean*          | :heavy_check_mark: | N/A                |
-| `totpVerified`     | *boolean*          | :heavy_check_mark: | N/A                |
+```typescript
+const value: models.Previous2 = "OWNER";
+```
+

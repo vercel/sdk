@@ -816,7 +816,7 @@ export type Products = {
   metadataSchema: MetadataSchema;
 };
 
-export type Integration = {
+export type GetConfigurationProductsIntegration = {
   id: string;
   slug: string;
   name: string;
@@ -831,7 +831,7 @@ export type GetConfigurationProductsConfiguration = {
  */
 export type GetConfigurationProductsResponseBody = {
   products: Array<Products>;
-  integration: Integration;
+  integration: GetConfigurationProductsIntegration;
   configuration: GetConfigurationProductsConfiguration;
 };
 
@@ -5510,8 +5510,8 @@ export function productsFromJSON(
 }
 
 /** @internal */
-export const Integration$inboundSchema: z.ZodType<
-  Integration,
+export const GetConfigurationProductsIntegration$inboundSchema: z.ZodType<
+  GetConfigurationProductsIntegration,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -5520,33 +5520,40 @@ export const Integration$inboundSchema: z.ZodType<
   name: types.string(),
 });
 /** @internal */
-export type Integration$Outbound = {
+export type GetConfigurationProductsIntegration$Outbound = {
   id: string;
   slug: string;
   name: string;
 };
 
 /** @internal */
-export const Integration$outboundSchema: z.ZodType<
-  Integration$Outbound,
+export const GetConfigurationProductsIntegration$outboundSchema: z.ZodType<
+  GetConfigurationProductsIntegration$Outbound,
   z.ZodTypeDef,
-  Integration
+  GetConfigurationProductsIntegration
 > = z.object({
   id: z.string(),
   slug: z.string(),
   name: z.string(),
 });
 
-export function integrationToJSON(integration: Integration): string {
-  return JSON.stringify(Integration$outboundSchema.parse(integration));
+export function getConfigurationProductsIntegrationToJSON(
+  getConfigurationProductsIntegration: GetConfigurationProductsIntegration,
+): string {
+  return JSON.stringify(
+    GetConfigurationProductsIntegration$outboundSchema.parse(
+      getConfigurationProductsIntegration,
+    ),
+  );
 }
-export function integrationFromJSON(
+export function getConfigurationProductsIntegrationFromJSON(
   jsonString: string,
-): SafeParseResult<Integration, SDKValidationError> {
+): SafeParseResult<GetConfigurationProductsIntegration, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Integration$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Integration' from JSON`,
+    (x) =>
+      GetConfigurationProductsIntegration$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetConfigurationProductsIntegration' from JSON`,
   );
 }
 
@@ -5599,7 +5606,7 @@ export const GetConfigurationProductsResponseBody$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   products: z.array(z.lazy(() => Products$inboundSchema)),
-  integration: z.lazy(() => Integration$inboundSchema),
+  integration: z.lazy(() => GetConfigurationProductsIntegration$inboundSchema),
   configuration: z.lazy(() =>
     GetConfigurationProductsConfiguration$inboundSchema
   ),
@@ -5607,7 +5614,7 @@ export const GetConfigurationProductsResponseBody$inboundSchema: z.ZodType<
 /** @internal */
 export type GetConfigurationProductsResponseBody$Outbound = {
   products: Array<Products$Outbound>;
-  integration: Integration$Outbound;
+  integration: GetConfigurationProductsIntegration$Outbound;
   configuration: GetConfigurationProductsConfiguration$Outbound;
 };
 
@@ -5618,7 +5625,7 @@ export const GetConfigurationProductsResponseBody$outboundSchema: z.ZodType<
   GetConfigurationProductsResponseBody
 > = z.object({
   products: z.array(z.lazy(() => Products$outboundSchema)),
-  integration: z.lazy(() => Integration$outboundSchema),
+  integration: z.lazy(() => GetConfigurationProductsIntegration$outboundSchema),
   configuration: z.lazy(() =>
     GetConfigurationProductsConfiguration$outboundSchema
   ),

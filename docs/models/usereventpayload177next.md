@@ -3,19 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPayload177Next } from "@vercel/sdk/models/two1.js";
+import { UserEventPayload177Next } from "@vercel/sdk/models/microfrontends2.js";
 
-let value: UserEventPayload177Next = {
-  gitProvider: "bitbucket",
-  gitRepoId: "<id>",
-  gitRepositoryName: "<value>",
-};
+let value: UserEventPayload177Next = {};
 ```
 
 ## Fields
 
-| Field                                                        | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `gitProvider`                                                | [models.PayloadGitProvider](../models/payloadgitprovider.md) | :heavy_check_mark:                                           | N/A                                                          |
-| `gitRepoId`                                                  | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
-| `gitRepositoryName`                                          | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
+| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `branchMatcher`                                                  | [models.PayloadBranchMatcher](../models/payloadbranchmatcher.md) | :heavy_minus_sign:                                               | N/A                                                              |

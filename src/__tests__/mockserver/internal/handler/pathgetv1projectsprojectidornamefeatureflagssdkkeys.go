@@ -7,7 +7,6 @@ import (
 	"log"
 	"mockserver/internal/handler/assert"
 	"mockserver/internal/logging"
-	"mockserver/internal/sdk/models/components"
 	"mockserver/internal/sdk/models/operations"
 	"mockserver/internal/sdk/utils"
 	"mockserver/internal/tracking"
@@ -47,7 +46,7 @@ func testGetSDKKeysGetSDKKeys0(w http.ResponseWriter, req *http.Request) {
 		return
 	}
 	var respBody *operations.GetSDKKeysResponseBody = &operations.GetSDKKeysResponseBody{
-		Data: []components.FlagsSDKKey{},
+		Data: []operations.GetSDKKeysData{},
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

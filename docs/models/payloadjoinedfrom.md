@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PayloadJoinedFrom } from "@vercel/sdk/models/two1.js";
+import { PayloadJoinedFrom } from "@vercel/sdk/models/microfrontends2.js";
 
 let value: PayloadJoinedFrom = {
   origin: "nsnb-redeploy-attribution-card",
@@ -12,16 +12,16 @@ let value: PayloadJoinedFrom = {
 
 ## Fields
 
-| Field                                              | Type                                               | Required                                           | Description                                        |
-| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
-| `origin`                                           | [models.PayloadOrigin](../models/payloadorigin.md) | :heavy_check_mark:                                 | N/A                                                |
-| `commitId`                                         | *string*                                           | :heavy_minus_sign:                                 | N/A                                                |
-| `repoId`                                           | *string*                                           | :heavy_minus_sign:                                 | N/A                                                |
-| `repoPath`                                         | *string*                                           | :heavy_minus_sign:                                 | N/A                                                |
-| `gitUserId`                                        | *models.PayloadGitUserId*                          | :heavy_minus_sign:                                 | N/A                                                |
-| `gitUserLogin`                                     | *string*                                           | :heavy_minus_sign:                                 | N/A                                                |
-| `ssoUserId`                                        | *string*                                           | :heavy_minus_sign:                                 | N/A                                                |
-| `ssoConnectedAt`                                   | *number*                                           | :heavy_minus_sign:                                 | N/A                                                |
-| `idpUserId`                                        | *string*                                           | :heavy_minus_sign:                                 | N/A                                                |
-| `dsyncUserId`                                      | *string*                                           | :heavy_minus_sign:                                 | N/A                                                |
-| `dsyncConnectedAt`                                 | *number*                                           | :heavy_minus_sign:                                 | N/A                                                |
+| Field                                                                | Type                                                                 | Required                                                             | Description                                                          |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `origin`                                                             | [models.UserEventPayloadOrigin](../models/usereventpayloadorigin.md) | :heavy_check_mark:                                                   | N/A                                                                  |
+| `commitId`                                                           | *string*                                                             | :heavy_minus_sign:                                                   | N/A                                                                  |
+| `repoId`                                                             | *string*                                                             | :heavy_minus_sign:                                                   | N/A                                                                  |
+| `repoPath`                                                           | *string*                                                             | :heavy_minus_sign:                                                   | N/A                                                                  |
+| `gitUserId`                                                          | *models.PayloadGitUserId*                                            | :heavy_minus_sign:                                                   | N/A                                                                  |
+| `gitUserLogin`                                                       | *string*                                                             | :heavy_minus_sign:                                                   | N/A                                                                  |
+| `ssoUserId`                                                          | *string*                                                             | :heavy_minus_sign:                                                   | N/A                                                                  |
+| `ssoConnectedAt`                                                     | *number*                                                             | :heavy_minus_sign:                                                   | N/A                                                                  |
+| `idpUserId`                                                          | *string*                                                             | :heavy_minus_sign:                                                   | N/A                                                                  |
+| `dsyncUserId`                                                        | *string*                                                             | :heavy_minus_sign:                                                   | N/A                                                                  |
+| `dsyncConnectedAt`                                                   | *number*                                                             | :heavy_minus_sign:                                                   | N/A                                                                  |

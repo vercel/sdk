@@ -5,19 +5,14 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwentyFive } from "@vercel/sdk/models/payload1.js";
+import { TwentyFive } from "@vercel/sdk/models/newteam.js";
 
-let value: TwentyFive = {
-  appName: "<value>",
-  scopes: [],
-};
+let value: TwentyFive = {};
 ```
 
 ## Fields
 
-| Field                                                | Type                                                 | Required                                             | Description                                          |
-| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
-| `appName`                                            | *string*                                             | :heavy_check_mark:                                   | N/A                                                  |
-| `appId`                                              | *string*                                             | :heavy_minus_sign:                                   | N/A                                                  |
-| `scopes`                                             | [models.PayloadScopes](../models/payloadscopes.md)[] | :heavy_check_mark:                                   | N/A                                                  |
-| `permissions`                                        | [models.Permissions](../models/permissions.md)[]     | :heavy_minus_sign:                                   | N/A                                                  |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `alias`            | *string*           | :heavy_minus_sign: | N/A                |
+| `email`            | *string*           | :heavy_minus_sign: | N/A                |

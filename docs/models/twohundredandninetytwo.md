@@ -5,23 +5,14 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndNinetyTwo } from "@vercel/sdk/models/twohundredandfortyseven.js";
+import { TwoHundredAndNinetyTwo } from "@vercel/sdk/models/environment.js";
 
-let value: TwoHundredAndNinetyTwo = {
-  previous: {
-    enabled: true,
-    totpVerified: false,
-  },
-  next: {
-    enabled: false,
-    totpVerified: true,
-  },
-};
+let value: TwoHundredAndNinetyTwo = {};
 ```
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `previous`                                                                     | [models.UserEventPayload292Previous](../models/usereventpayload292previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
-| `next`                                                                         | [models.UserEventPayload292Next](../models/usereventpayload292next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
+| Field                                                | Type                                                 | Required                                             | Description                                          |
+| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
+| `previous`                                           | Record<string, *models.UserEventPayload292Previous*> | :heavy_minus_sign:                                   | N/A                                                  |
+| `next`                                               | Record<string, *models.UserEventPayload292Next*>     | :heavy_minus_sign:                                   | N/A                                                  |

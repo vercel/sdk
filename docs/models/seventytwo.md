@@ -5,14 +5,13 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { SeventyTwo } from "@vercel/sdk/models/jobdeployhook.js";
+import { SeventyTwo } from "@vercel/sdk/models/newteam.js";
 
 let value: SeventyTwo = {
-  sha: "<value>",
-  gitUserPlatform: "<value>",
+  projectId: "<id>",
   projectName: "<value>",
-  gitCommitterName: "<value>",
-  source: "<value>",
+  hookName: "<value>",
+  ref: "<value>",
 };
 ```
 
@@ -20,8 +19,7 @@ let value: SeventyTwo = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `sha`              | *string*           | :heavy_check_mark: | N/A                |
-| `gitUserPlatform`  | *string*           | :heavy_check_mark: | N/A                |
+| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
 | `projectName`      | *string*           | :heavy_check_mark: | N/A                |
-| `gitCommitterName` | *string*           | :heavy_check_mark: | N/A                |
-| `source`           | *string*           | :heavy_check_mark: | N/A                |
+| `hookName`         | *string*           | :heavy_check_mark: | N/A                |
+| `ref`              | *string*           | :heavy_check_mark: | N/A                |

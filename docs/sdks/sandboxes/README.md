@@ -8,13 +8,11 @@
 * [listSnapshots](#listsnapshots) - List snapshots
 * [getSandbox](#getsandbox) - Get a sandbox
 * [listCommands](#listcommands) - List commands
-* [runCommand](#runcommand) - Execute a command
 * [killCommand](#killcommand) - Kill a command
 * [stopSandbox](#stopsandbox) - Stop a sandbox
 * [extendSandboxTimeout](#extendsandboxtimeout) - Extend sandbox timeout
 * [updateNetworkPolicy](#updatenetworkpolicy) - Update network policy
 * [getCommand](#getcommand) - Get a command
-* [getCommandLogs](#getcommandlogs) - Stream command logs
 * [readFile](#readfile) - Read a file
 * [createDirectory](#createdirectory) - Create a directory
 * [writeFiles](#writefiles) - Write files
@@ -335,109 +333,6 @@ run();
 ### Response
 
 **Promise\<[models.ListCommandsResponseBody](../../models/listcommandsresponsebody.md)\>**
-
-### Errors
-
-| Error Type      | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| models.SDKError | 4XX, 5XX        | \*/\*           |
-
-## runCommand
-
-Executes a shell command inside a running sandbox. The command runs asynchronously and returns immediately with a command ID that can be used to track its progress and retrieve its output. Optionally, use the `wait` parameter to stream the command status until completion.
-
-### Example Usage
-
-<!-- UsageSnippet language="typescript" operationID="runCommand" method="post" path="/v1/sandboxes/{sandboxId}/cmd" -->
-```typescript
-import { Vercel } from "@vercel/sdk";
-
-const vercel = new Vercel({
-  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-});
-
-async function run() {
-  const result = await vercel.sandboxes.runCommand({
-    sandboxId: "sbx_abc123",
-    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
-    slug: "my-team-url-slug",
-    requestBody: {
-      command: "npm",
-      args: [
-        "install",
-        "--save",
-        "lodash",
-      ],
-      cwd: "/home/vercel-sandbox",
-      env: {
-        "NODE_ENV": "production",
-        "DEBUG": "true",
-      },
-    },
-  });
-
-  console.log(result);
-}
-
-run();
-```
-
-### Standalone function
-
-The standalone function version of this method:
-
-```typescript
-import { VercelCore } from "@vercel/sdk/core.js";
-import { sandboxesRunCommand } from "@vercel/sdk/funcs/sandboxesRunCommand.js";
-
-// Use `VercelCore` for best tree-shaking performance.
-// You can create one instance of it to use across an application.
-const vercel = new VercelCore({
-  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-});
-
-async function run() {
-  const res = await sandboxesRunCommand(vercel, {
-    sandboxId: "sbx_abc123",
-    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
-    slug: "my-team-url-slug",
-    requestBody: {
-      command: "npm",
-      args: [
-        "install",
-        "--save",
-        "lodash",
-      ],
-      cwd: "/home/vercel-sandbox",
-      env: {
-        "NODE_ENV": "production",
-        "DEBUG": "true",
-      },
-    },
-  });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("sandboxesRunCommand failed:", res.error);
-  }
-}
-
-run();
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [models.RunCommandRequest](../../models/runcommandrequest.md)                                                                                                                  | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-
-### Response
-
-**Promise\<[models.RunCommandResponse](../../models/runcommandresponse.md)\>**
 
 ### Errors
 
@@ -867,91 +762,6 @@ run();
 ### Response
 
 **Promise\<[models.GetCommandResponseBody](../../models/getcommandresponsebody.md)\>**
-
-### Errors
-
-| Error Type      | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| models.SDKError | 4XX, 5XX        | \*/\*           |
-
-## getCommandLogs
-
-Streams the output of a command in real-time using newline-delimited JSON (ND-JSON). Each entry includes the output data and stream type. Stream types include `stdout`, `stderr`, and `error` (for stream failures).
-
-### Example Usage
-
-<!-- UsageSnippet language="typescript" operationID="getCommandLogs" method="get" path="/v1/sandboxes/{sandboxId}/cmd/{cmdId}/logs" -->
-```typescript
-import { Vercel } from "@vercel/sdk";
-
-const vercel = new Vercel({
-  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-});
-
-async function run() {
-  const result = await vercel.sandboxes.getCommandLogs({
-    sandboxId: "sbx_abc123",
-    cmdId: "cmd_abc123",
-    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
-    slug: "my-team-url-slug",
-  });
-
-  for await (const event of result) {
-    // Handle the event
-    console.log(event);
-  }
-}
-
-run();
-```
-
-### Standalone function
-
-The standalone function version of this method:
-
-```typescript
-import { VercelCore } from "@vercel/sdk/core.js";
-import { sandboxesGetCommandLogs } from "@vercel/sdk/funcs/sandboxesGetCommandLogs.js";
-
-// Use `VercelCore` for best tree-shaking performance.
-// You can create one instance of it to use across an application.
-const vercel = new VercelCore({
-  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-});
-
-async function run() {
-  const res = await sandboxesGetCommandLogs(vercel, {
-    sandboxId: "sbx_abc123",
-    cmdId: "cmd_abc123",
-    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
-    slug: "my-team-url-slug",
-  });
-  if (res.ok) {
-    const { value: result } = res;
-    for await (const event of result) {
-    // Handle the event
-    console.log(event);
-  }
-  } else {
-    console.log("sandboxesGetCommandLogs failed:", res.error);
-  }
-}
-
-run();
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [models.GetCommandLogsRequest](../../models/getcommandlogsrequest.md)                                                                                                          | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-
-### Response
-
-**Promise\<[JsonLStream<models.GetCommandLogsResponseBody>](../../models/.md)\>**
 
 ### Errors
 

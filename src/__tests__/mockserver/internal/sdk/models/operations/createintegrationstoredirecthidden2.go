@@ -647,6 +647,7 @@ type CreateIntegrationStoreDirectProjectsMetadatum struct {
 	EnvVarPrefix         *string                                                                  `json:"envVarPrefix"`
 	EnvironmentVariables []string                                                                 `json:"environmentVariables"`
 	Deployments          *Deployments                                                             `json:"deployments,omitempty"`
+	MakeEnvVarsSensitive *bool                                                                    `json:"makeEnvVarsSensitive,omitempty"`
 }
 
 func (o *CreateIntegrationStoreDirectProjectsMetadatum) GetID() string {
@@ -710,6 +711,13 @@ func (o *CreateIntegrationStoreDirectProjectsMetadatum) GetDeployments() *Deploy
 		return nil
 	}
 	return o.Deployments
+}
+
+func (o *CreateIntegrationStoreDirectProjectsMetadatum) GetMakeEnvVarsSensitive() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.MakeEnvVarsSensitive
 }
 
 type ProvidersWildcard string

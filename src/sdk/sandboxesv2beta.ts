@@ -11,22 +11,16 @@ import { sandboxesV2BetaGetNamedSandbox } from "../funcs/sandboxesV2BetaGetNamed
 import { sandboxesV2BetaGetSandboxesV2 } from "../funcs/sandboxesV2BetaGetSandboxesV2.js";
 import { sandboxesV2BetaGetSession } from "../funcs/sandboxesV2BetaGetSession.js";
 import { sandboxesV2BetaGetSessionCommand } from "../funcs/sandboxesV2BetaGetSessionCommand.js";
-import { sandboxesV2BetaGetSessionCommandLogs } from "../funcs/sandboxesV2BetaGetSessionCommandLogs.js";
 import { sandboxesV2BetaGetSessionSnapshot } from "../funcs/sandboxesV2BetaGetSessionSnapshot.js";
 import { sandboxesV2BetaKillSessionCommand } from "../funcs/sandboxesV2BetaKillSessionCommand.js";
 import { sandboxesV2BetaListSessionCommands } from "../funcs/sandboxesV2BetaListSessionCommands.js";
 import { sandboxesV2BetaListSessions } from "../funcs/sandboxesV2BetaListSessions.js";
 import { sandboxesV2BetaListSessionSnapshots } from "../funcs/sandboxesV2BetaListSessionSnapshots.js";
 import { sandboxesV2BetaReadSessionFile } from "../funcs/sandboxesV2BetaReadSessionFile.js";
-import {
-  RunSessionCommandAcceptEnum,
-  sandboxesV2BetaRunSessionCommand,
-} from "../funcs/sandboxesV2BetaRunSessionCommand.js";
 import { sandboxesV2BetaStopSession } from "../funcs/sandboxesV2BetaStopSession.js";
 import { sandboxesV2BetaUpdateSandbox } from "../funcs/sandboxesV2BetaUpdateSandbox.js";
 import { sandboxesV2BetaUpdateSessionNetworkPolicy } from "../funcs/sandboxesV2BetaUpdateSessionNetworkPolicy.js";
 import { sandboxesV2BetaWriteSessionFiles } from "../funcs/sandboxesV2BetaWriteSessionFiles.js";
-import { JsonLStream } from "../lib/jsonl.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import {
   CreateSessionDirectoryRequest,
@@ -57,10 +51,6 @@ import {
   GetSandboxesV2ResponseBody,
 } from "../models/getsandboxesv2op.js";
 import {
-  GetSessionCommandLogsRequest,
-  GetSessionCommandLogsResponseBody,
-} from "../models/getsessioncommandlogsop.js";
-import {
   GetSessionCommandRequest,
   GetSessionCommandResponseBody,
 } from "../models/getsessioncommandop.js";
@@ -90,10 +80,6 @@ import {
 } from "../models/listsessionsop.js";
 import { ReadSessionFileRequest } from "../models/readsessionfileop.js";
 import {
-  RunSessionCommandRequest,
-  RunSessionCommandResponse,
-} from "../models/runsessioncommandop.js";
-import {
   StopSessionRequest,
   StopSessionResponseBody,
 } from "../models/stopsessionop.js";
@@ -110,8 +96,6 @@ import {
   WriteSessionFilesResponseBody,
 } from "../models/writesessionfilesop.js";
 import { unwrapAsync } from "../types/fp.js";
-
-export { RunSessionCommandAcceptEnum } from "../funcs/sandboxesV2BetaRunSessionCommand.js";
 
 export class SandboxesV2Beta extends ClientSDK {
   /**
@@ -285,25 +269,6 @@ export class SandboxesV2Beta extends ClientSDK {
   }
 
   /**
-   * Execute a command
-   *
-   * @remarks
-   * Executes a shell command inside a running session. The command runs asynchronously and returns immediately with a command ID that can be used to track its progress and retrieve its output. Optionally, use the `wait` parameter to stream the command status until completion.
-   */
-  async runSessionCommand(
-    request: RunSessionCommandRequest,
-    options?: RequestOptions & {
-      acceptHeaderOverride?: RunSessionCommandAcceptEnum;
-    },
-  ): Promise<RunSessionCommandResponse> {
-    return unwrapAsync(sandboxesV2BetaRunSessionCommand(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
    * Get a command
    *
    * @remarks
@@ -331,23 +296,6 @@ export class SandboxesV2Beta extends ClientSDK {
     options?: RequestOptions,
   ): Promise<KillSessionCommandResponseBody> {
     return unwrapAsync(sandboxesV2BetaKillSessionCommand(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Stream command logs
-   *
-   * @remarks
-   * Streams the output of a command in real-time using newline-delimited JSON (ND-JSON). Each entry includes the output data and stream type. Stream types include `stdout`, `stderr`, and `error` (for stream failures).
-   */
-  async getSessionCommandLogs(
-    request: GetSessionCommandLogsRequest,
-    options?: RequestOptions,
-  ): Promise<JsonLStream<GetSessionCommandLogsResponseBody>> {
-    return unwrapAsync(sandboxesV2BetaGetSessionCommandLogs(
       this,
       request,
       options,

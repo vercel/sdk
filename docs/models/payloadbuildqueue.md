@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PayloadBuildQueue } from "@vercel/sdk/models/version.js";
+import { PayloadBuildQueue } from "@vercel/sdk/models/blocktype.js";
 
 let value: PayloadBuildQueue = {};
 ```
@@ -12,4 +12,4 @@ let value: PayloadBuildQueue = {};
 
 | Field                                                                                    | Type                                                                                     | Required                                                                                 | Description                                                                              |
 | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| `configuration`                                                                          | [models.UserEventPayload116Configuration](../models/usereventpayload116configuration.md) | :heavy_minus_sign:                                                                       | N/A                                                                                      |
+| `configuration`                                                                          | [models.UserEventPayload122Configuration](../models/usereventpayload122configuration.md) | :heavy_minus_sign:                                                                       | N/A                                                                                      |

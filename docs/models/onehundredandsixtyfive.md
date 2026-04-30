@@ -5,23 +5,24 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndSixtyFive } from "@vercel/sdk/models/two1.js";
+import { OneHundredAndSixtyFive } from "@vercel/sdk/models/microfrontends2.js";
 
 let value: OneHundredAndSixtyFive = {
-  projectId: "<id>",
   projectName: "<value>",
-  elasticConcurrencyEnabled: true,
-  oldElasticConcurrencyEnabled: false,
+  nextBuildMachineType: "<value>",
+  previousBuildMachineSelection: "<value>",
+  nextBuildMachineSelection: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `projectId`                                                                  | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
-| `projectName`                                                                | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
-| `elasticConcurrencyEnabled`                                                  | *boolean*                                                                    | :heavy_check_mark:                                                           | N/A                                                                          |
-| `oldElasticConcurrencyEnabled`                                               | *boolean*                                                                    | :heavy_check_mark:                                                           | N/A                                                                          |
-| `buildQueueConfiguration`                                                    | [models.BuildQueueConfiguration](../models/buildqueueconfiguration.md)       | :heavy_minus_sign:                                                           | N/A                                                                          |
-| `oldBuildQueueConfiguration`                                                 | [models.OldBuildQueueConfiguration](../models/oldbuildqueueconfiguration.md) | :heavy_minus_sign:                                                           | N/A                                                                          |
+| Field                           | Type                            | Required                        | Description                     |
+| ------------------------------- | ------------------------------- | ------------------------------- | ------------------------------- |
+| `projectId`                     | *string*                        | :heavy_minus_sign:              | N/A                             |
+| `projectName`                   | *string*                        | :heavy_check_mark:              | N/A                             |
+| `previousBuildMachineType`      | *string*                        | :heavy_minus_sign:              | N/A                             |
+| `nextBuildMachineType`          | *string*                        | :heavy_check_mark:              | N/A                             |
+| `previousBuildMachineSelection` | *string*                        | :heavy_check_mark:              | N/A                             |
+| `nextBuildMachineSelection`     | *string*                        | :heavy_check_mark:              | N/A                             |
+| `isSystemInitiated`             | *boolean*                       | :heavy_minus_sign:              | N/A                             |

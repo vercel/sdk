@@ -3,6 +3,8 @@
 package operations
 
 import (
+	"encoding/json"
+	"fmt"
 	"mockserver/internal/sdk/models/components"
 )
 
@@ -36,13 +38,127 @@ func (o *GetSDKKeysRequest) GetSlug() *string {
 	return o.Slug
 }
 
-type GetSDKKeysResponseBody struct {
-	Data []components.FlagsSDKKey `json:"data"`
+type GetSDKKeysType string
+
+const (
+	GetSDKKeysTypeServer GetSDKKeysType = "server"
+	GetSDKKeysTypeMobile GetSDKKeysType = "mobile"
+	GetSDKKeysTypeClient GetSDKKeysType = "client"
+)
+
+func (e GetSDKKeysType) ToPointer() *GetSDKKeysType {
+	return &e
+}
+func (e *GetSDKKeysType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "server":
+		fallthrough
+	case "mobile":
+		fallthrough
+	case "client":
+		*e = GetSDKKeysType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetSDKKeysType: %v", v)
+	}
 }
 
-func (o *GetSDKKeysResponseBody) GetData() []components.FlagsSDKKey {
+// GetSDKKeysData - Shared metadata for a Flags SDK key, safe to return on both LIST and CREATE. Never contains cleartext secrets.
+type GetSDKKeysData struct {
+	HashKey     string         `json:"hashKey"`
+	ProjectID   string         `json:"projectId"`
+	Type        GetSDKKeysType `json:"type"`
+	Environment string         `json:"environment"`
+	CreatedBy   string         `json:"createdBy"`
+	CreatedAt   float64        `json:"createdAt"`
+	UpdatedAt   float64        `json:"updatedAt"`
+	Label       *string        `json:"label,omitempty"`
+	DeletedAt   *float64       `json:"deletedAt,omitempty"`
+	// Partially-masked representation of the SDK key value, safe to display in UIs. The value is the `vf_<type>_` prefix followed by the first 3 characters of the secret portion and a fixed 8-character `*` mask (e.g. `vf_server_abc********`).
+	PartialKeyValue string `json:"partialKeyValue"`
+}
+
+func (o *GetSDKKeysData) GetHashKey() string {
 	if o == nil {
-		return []components.FlagsSDKKey{}
+		return ""
+	}
+	return o.HashKey
+}
+
+func (o *GetSDKKeysData) GetProjectID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProjectID
+}
+
+func (o *GetSDKKeysData) GetType() GetSDKKeysType {
+	if o == nil {
+		return GetSDKKeysType("")
+	}
+	return o.Type
+}
+
+func (o *GetSDKKeysData) GetEnvironment() string {
+	if o == nil {
+		return ""
+	}
+	return o.Environment
+}
+
+func (o *GetSDKKeysData) GetCreatedBy() string {
+	if o == nil {
+		return ""
+	}
+	return o.CreatedBy
+}
+
+func (o *GetSDKKeysData) GetCreatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CreatedAt
+}
+
+func (o *GetSDKKeysData) GetUpdatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.UpdatedAt
+}
+
+func (o *GetSDKKeysData) GetLabel() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Label
+}
+
+func (o *GetSDKKeysData) GetDeletedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.DeletedAt
+}
+
+func (o *GetSDKKeysData) GetPartialKeyValue() string {
+	if o == nil {
+		return ""
+	}
+	return o.PartialKeyValue
+}
+
+type GetSDKKeysResponseBody struct {
+	Data []GetSDKKeysData `json:"data"`
+}
+
+func (o *GetSDKKeysResponseBody) GetData() []GetSDKKeysData {
+	if o == nil {
+		return []GetSDKKeysData{}
 	}
 	return o.Data
 }

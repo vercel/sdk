@@ -5,27 +5,18 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { EightyFour } from "@vercel/sdk/models/jobdeployhook.js";
+import { EightyFour } from "@vercel/sdk/models/job6.js";
 
 let value: EightyFour = {
-  domain: "glittering-carnival.name",
-  customNameservers: [
-    "<value 1>",
-    "<value 2>",
-    "<value 3>",
-  ],
-  prevCustomNameservers: [
-    "<value 1>",
-    "<value 2>",
-    "<value 3>",
-  ],
+  name: "<value>",
+  price: 3203.03,
 };
 ```
 
 ## Fields
 
-| Field                   | Type                    | Required                | Description             |
-| ----------------------- | ----------------------- | ----------------------- | ----------------------- |
-| `domain`                | *string*                | :heavy_check_mark:      | N/A                     |
-| `customNameservers`     | *string*[]              | :heavy_check_mark:      | N/A                     |
-| `prevCustomNameservers` | *string*[]              | :heavy_check_mark:      | N/A                     |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `name`             | *string*           | :heavy_check_mark: | N/A                |
+| `price`            | *number*           | :heavy_check_mark: | N/A                |
+| `currency`         | *string*           | :heavy_minus_sign: | N/A                |

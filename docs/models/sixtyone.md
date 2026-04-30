@@ -5,18 +5,26 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { SixtyOne } from "@vercel/sdk/models/payload1.js";
+import { SixtyOne } from "@vercel/sdk/models/newteam.js";
 
 let value: SixtyOne = {
-  bitbucketEmail: "<value>",
-  bitbucketLogin: "<value>",
+  team: {
+    id: "<id>",
+    name: "<value>",
+  },
+  configuration: {
+    id: "<id>",
+  },
+  project: {
+    id: "<id>",
+  },
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `bitbucketEmail`   | *string*           | :heavy_check_mark: | N/A                |
-| `bitbucketLogin`   | *string*           | :heavy_check_mark: | N/A                |
-| `bitbucketName`    | *string*           | :heavy_minus_sign: | N/A                |
+| Field                                                                                  | Type                                                                                   | Required                                                                               | Description                                                                            |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `team`                                                                                 | [models.UserEventPayloadTeam](../models/usereventpayloadteam.md)                       | :heavy_check_mark:                                                                     | N/A                                                                                    |
+| `configuration`                                                                        | [models.UserEventPayload61Configuration](../models/usereventpayload61configuration.md) | :heavy_check_mark:                                                                     | N/A                                                                                    |
+| `project`                                                                              | [models.UserEventPayload61Project](../models/usereventpayload61project.md)             | :heavy_check_mark:                                                                     | N/A                                                                                    |

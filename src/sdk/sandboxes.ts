@@ -7,7 +7,6 @@ import { sandboxesCreateSnapshot } from "../funcs/sandboxesCreateSnapshot.js";
 import { sandboxesDeleteSnapshot } from "../funcs/sandboxesDeleteSnapshot.js";
 import { sandboxesExtendSandboxTimeout } from "../funcs/sandboxesExtendSandboxTimeout.js";
 import { sandboxesGetCommand } from "../funcs/sandboxesGetCommand.js";
-import { sandboxesGetCommandLogs } from "../funcs/sandboxesGetCommandLogs.js";
 import { sandboxesGetSandbox } from "../funcs/sandboxesGetSandbox.js";
 import { sandboxesGetSandboxesV1 } from "../funcs/sandboxesGetSandboxesV1.js";
 import { sandboxesGetSnapshot } from "../funcs/sandboxesGetSnapshot.js";
@@ -15,14 +14,9 @@ import { sandboxesKillCommand } from "../funcs/sandboxesKillCommand.js";
 import { sandboxesListCommands } from "../funcs/sandboxesListCommands.js";
 import { sandboxesListSnapshots } from "../funcs/sandboxesListSnapshots.js";
 import { sandboxesReadFile } from "../funcs/sandboxesReadFile.js";
-import {
-  RunCommandAcceptEnum,
-  sandboxesRunCommand,
-} from "../funcs/sandboxesRunCommand.js";
 import { sandboxesStopSandbox } from "../funcs/sandboxesStopSandbox.js";
 import { sandboxesUpdateNetworkPolicy } from "../funcs/sandboxesUpdateNetworkPolicy.js";
 import { sandboxesWriteFiles } from "../funcs/sandboxesWriteFiles.js";
-import { JsonLStream } from "../lib/jsonl.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import {
   CreateDirectoryRequest,
@@ -40,10 +34,6 @@ import {
   ExtendSandboxTimeoutRequest,
   ExtendSandboxTimeoutResponseBody,
 } from "../models/extendsandboxtimeoutop.js";
-import {
-  GetCommandLogsRequest,
-  GetCommandLogsResponseBody,
-} from "../models/getcommandlogsop.js";
 import {
   GetCommandRequest,
   GetCommandResponseBody,
@@ -74,10 +64,6 @@ import {
 } from "../models/listsnapshotsop.js";
 import { ReadFileRequest } from "../models/readfileop.js";
 import {
-  RunCommandRequest,
-  RunCommandResponse,
-} from "../models/runcommandop.js";
-import {
   StopSandboxRequest,
   StopSandboxResponseBody,
 } from "../models/stopsandboxop.js";
@@ -90,8 +76,6 @@ import {
   WriteFilesResponseBody,
 } from "../models/writefilesop.js";
 import { unwrapAsync } from "../types/fp.js";
-
-export { RunCommandAcceptEnum } from "../funcs/sandboxesRunCommand.js";
 
 export class Sandboxes extends ClientSDK {
   /**
@@ -156,23 +140,6 @@ export class Sandboxes extends ClientSDK {
     options?: RequestOptions,
   ): Promise<ListCommandsResponseBody> {
     return unwrapAsync(sandboxesListCommands(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Execute a command
-   *
-   * @remarks
-   * Executes a shell command inside a running sandbox. The command runs asynchronously and returns immediately with a command ID that can be used to track its progress and retrieve its output. Optionally, use the `wait` parameter to stream the command status until completion.
-   */
-  async runCommand(
-    request: RunCommandRequest,
-    options?: RequestOptions & { acceptHeaderOverride?: RunCommandAcceptEnum },
-  ): Promise<RunCommandResponse> {
-    return unwrapAsync(sandboxesRunCommand(
       this,
       request,
       options,
@@ -258,23 +225,6 @@ export class Sandboxes extends ClientSDK {
     options?: RequestOptions,
   ): Promise<GetCommandResponseBody> {
     return unwrapAsync(sandboxesGetCommand(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Stream command logs
-   *
-   * @remarks
-   * Streams the output of a command in real-time using newline-delimited JSON (ND-JSON). Each entry includes the output data and stream type. Stream types include `stdout`, `stderr`, and `error` (for stream failures).
-   */
-  async getCommandLogs(
-    request: GetCommandLogsRequest,
-    options?: RequestOptions,
-  ): Promise<JsonLStream<GetCommandLogsResponseBody>> {
-    return unwrapAsync(sandboxesGetCommandLogs(
       this,
       request,
       options,

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Postgres1 } from "@vercel/sdk/models/version.js";
+import { Postgres1 } from "@vercel/sdk/models/job6.js";
 
 let value: Postgres1 = {
   updatedAt: 1277.44,

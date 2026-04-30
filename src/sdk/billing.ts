@@ -3,59 +3,14 @@
  */
 
 import { billingBuyCredits } from "../funcs/billingBuyCredits.js";
-import { billingListBillingCharges } from "../funcs/billingListBillingCharges.js";
-import { billingListContractCommitments } from "../funcs/billingListContractCommitments.js";
-import { JsonLStream } from "../lib/jsonl.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import {
   BuyCreditsRequest,
   BuyCreditsResponseBody,
 } from "../models/buycreditsop.js";
-import {
-  ListBillingChargesRequest,
-  ListBillingChargesResponseBody,
-} from "../models/listbillingchargesop.js";
-import {
-  ListContractCommitmentsRequest,
-  ListContractCommitmentsResponseBody,
-} from "../models/listcontractcommitmentsop.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class Billing extends ClientSDK {
-  /**
-   * List FOCUS billing charges
-   *
-   * @remarks
-   * Returns the billing charge data in FOCUS v1.3 JSONL format for a specified Vercel team, within a date range specified by `from` and `to` query parameters. Supports 1-day granularity with a maximum date range of 1 year. The response is streamed as newline-delimited JSON (JSONL) and can be optionally compressed with gzip if the `Accept-Encoding: gzip` header is provided. This is only available for Owner, Member, Developer, Security, Billing, and Enterprise Viewer roles for the supplied team.
-   */
-  async listBillingCharges(
-    request: ListBillingChargesRequest,
-    options?: RequestOptions,
-  ): Promise<JsonLStream<ListBillingChargesResponseBody>> {
-    return unwrapAsync(billingListBillingCharges(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * List FOCUS contract commitments
-   *
-   * @remarks
-   * Returns commitment allocations per contract period in FOCUS v1.3 JSONL format for a specified Vercel team. The response is streamed as newline-delimited JSON (JSONL). This endpoint is only applicable to Enterprise Vercel customers. An empty response is returned for non-Enterprise (Pro/Flex) customers.
-   */
-  async listContractCommitments(
-    request: ListContractCommitmentsRequest,
-    options?: RequestOptions,
-  ): Promise<JsonLStream<ListContractCommitmentsResponseBody>> {
-    return unwrapAsync(billingListContractCommitments(
-      this,
-      request,
-      options,
-    ));
-  }
-
   /**
    * Purchase credits
    *

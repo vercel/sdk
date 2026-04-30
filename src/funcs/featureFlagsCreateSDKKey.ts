@@ -16,9 +16,9 @@ import {
   CreateSDKKeyRequest$outboundSchema,
 } from "../models/createsdkkeyop.js";
 import {
-  FlagsSDKKey,
-  FlagsSDKKey$inboundSchema,
-} from "../models/flagssdkkey.js";
+  FlagsSDKKeyWithSecrets,
+  FlagsSDKKeyWithSecrets$inboundSchema,
+} from "../models/flagssdkkeywithsecrets.js";
 import {
   ConnectionError,
   InvalidRequestError,
@@ -46,7 +46,7 @@ export function featureFlagsCreateSDKKey(
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    FlagsSDKKey,
+    FlagsSDKKeyWithSecrets,
     | VercelError
     | ResponseValidationError
     | ConnectionError
@@ -71,7 +71,7 @@ async function $do(
 ): Promise<
   [
     Result<
-      FlagsSDKKey,
+      FlagsSDKKeyWithSecrets,
       | VercelError
       | ResponseValidationError
       | ConnectionError
@@ -163,7 +163,7 @@ async function $do(
   const response = doResult.value;
 
   const [result] = await M.match<
-    FlagsSDKKey,
+    FlagsSDKKeyWithSecrets,
     | VercelError
     | ResponseValidationError
     | ConnectionError
@@ -173,7 +173,7 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.json(200, FlagsSDKKey$inboundSchema),
+    M.json(200, FlagsSDKKeyWithSecrets$inboundSchema),
     M.fail([400, 401, 402, 403, 404, 409, "4XX"]),
     M.fail("5XX"),
   )(response, req);

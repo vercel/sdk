@@ -1,19 +1,19 @@
 # UserEventPayload292Next
 
-## Example Usage
+
+## Supported Types
+
+### `models.Next1`
 
 ```typescript
-import { UserEventPayload292Next } from "@vercel/sdk/models/twohundredandfortyseven.js";
-
-let value: UserEventPayload292Next = {
-  enabled: true,
-  totpVerified: true,
+const value: models.Next1 = {
+  accessGroupId: "<id>",
 };
 ```
 
-## Fields
+### `models.Next2`
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `enabled`          | *boolean*          | :heavy_check_mark: | N/A                |
-| `totpVerified`     | *boolean*          | :heavy_check_mark: | N/A                |
+```typescript
+const value: models.Next2 = "VIEWER_FOR_PLUS";
+```
+

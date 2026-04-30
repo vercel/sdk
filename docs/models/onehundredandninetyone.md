@@ -5,23 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndNinetyOne } from "@vercel/sdk/models/two1.js";
+import { OneHundredAndNinetyOne } from "@vercel/sdk/models/microfrontends2.js";
 
 let value: OneHundredAndNinetyOne = {
-  oldProjectId: "<id>",
-  oldProjectName: "<value>",
-  newProjectId: "<id>",
-  newProjectName: "<value>",
-  domain: "needy-interviewer.com",
+  projectId: "<id>",
+  projectName: "<value>",
+  createDeployments: "disabled",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `oldProjectId`     | *string*           | :heavy_check_mark: | N/A                |
-| `oldProjectName`   | *string*           | :heavy_check_mark: | N/A                |
-| `newProjectId`     | *string*           | :heavy_check_mark: | N/A                |
-| `newProjectName`   | *string*           | :heavy_check_mark: | N/A                |
-| `domain`           | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                      | Type                                                       | Required                                                   | Description                                                |
+| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
+| `projectId`                                                | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        |
+| `projectName`                                              | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        |
+| `createDeployments`                                        | [models.CreateDeployments](../models/createdeployments.md) | :heavy_check_mark:                                         | N/A                                                        |

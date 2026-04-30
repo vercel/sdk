@@ -35,7 +35,7 @@ import { DeleteFlagRequest } from "../models/deleteflagop.js";
 import { DeleteFlagSegmentRequest } from "../models/deleteflagsegmentop.js";
 import { DeleteSDKKeyRequest } from "../models/deletesdkkeyop.js";
 import { Flag } from "../models/flag.js";
-import { FlagsSDKKey } from "../models/flagssdkkey.js";
+import { FlagsSDKKeyWithSecrets } from "../models/flagssdkkeywithsecrets.js";
 import {
   GetDeploymentFeatureFlagsRequest,
   GetDeploymentFeatureFlagsResponseBody,
@@ -381,7 +381,7 @@ export class FeatureFlags extends ClientSDK {
   async createSDKKey(
     request: CreateSDKKeyRequest,
     options?: RequestOptions,
-  ): Promise<FlagsSDKKey> {
+  ): Promise<FlagsSDKKeyWithSecrets> {
     return unwrapAsync(featureFlagsCreateSDKKey(
       this,
       request,

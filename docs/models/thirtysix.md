@@ -5,21 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThirtySix } from "@vercel/sdk/models/payload1.js";
+import { ThirtySix } from "@vercel/sdk/models/newteam.js";
 
 let value: ThirtySix = {
-  invoiceId: "<id>",
-  newInvoiceId: "<id>",
-  settlementMethod: "credited-paid",
-  amount: 5713.64,
+  appName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                    | Type                                                     | Required                                                 | Description                                              |
-| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
-| `invoiceId`                                              | *string*                                                 | :heavy_check_mark:                                       | N/A                                                      |
-| `newInvoiceId`                                           | *string*                                                 | :heavy_check_mark:                                       | N/A                                                      |
-| `settlementMethod`                                       | [models.SettlementMethod](../models/settlementmethod.md) | :heavy_check_mark:                                       | N/A                                                      |
-| `amount`                                                 | *number*                                                 | :heavy_check_mark:                                       | N/A                                                      |
+| Field                 | Type                  | Required              | Description           |
+| --------------------- | --------------------- | --------------------- | --------------------- |
+| `appName`             | *string*              | :heavy_check_mark:    | N/A                   |
+| `appId`               | *string*              | :heavy_minus_sign:    | N/A                   |
+| `secretLastFourChars` | *string*              | :heavy_minus_sign:    | N/A                   |

@@ -5,24 +5,26 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndTwentySeven } from "@vercel/sdk/models/two1.js";
+import { OneHundredAndTwentySeven } from "@vercel/sdk/models/blocktype.js";
 
 let value: OneHundredAndTwentySeven = {
-  id: "<id>",
-  prev: {
-    name: "<value>",
-    slug: "<value>",
-    fallbackEnvironment: "<value>",
-  },
+  integrationId: "<id>",
+  configurationId: "<id>",
+  integrationSlug: "<value>",
+  integrationName: "<value>",
+  ownerId: "<id>",
+  billingPlanId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field                            | Type                             | Required                         | Description                      |
-| -------------------------------- | -------------------------------- | -------------------------------- | -------------------------------- |
-| `id`                             | *string*                         | :heavy_check_mark:               | N/A                              |
-| `slug`                           | *string*                         | :heavy_minus_sign:               | N/A                              |
-| `name`                           | *string*                         | :heavy_minus_sign:               | N/A                              |
-| `fallbackEnvironment`            | *string*                         | :heavy_minus_sign:               | N/A                              |
-| `prev`                           | [models.Prev](../models/prev.md) | :heavy_check_mark:               | N/A                              |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `integrationId`    | *string*           | :heavy_check_mark: | N/A                |
+| `configurationId`  | *string*           | :heavy_check_mark: | N/A                |
+| `integrationSlug`  | *string*           | :heavy_check_mark: | N/A                |
+| `integrationName`  | *string*           | :heavy_check_mark: | N/A                |
+| `ownerId`          | *string*           | :heavy_check_mark: | N/A                |
+| `billingPlanId`    | *string*           | :heavy_check_mark: | N/A                |
+| `billingPlanName`  | *string*           | :heavy_minus_sign: | N/A                |

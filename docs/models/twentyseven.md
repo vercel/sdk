@@ -5,19 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwentySeven } from "@vercel/sdk/models/payload1.js";
+import { TwentySeven } from "@vercel/sdk/models/newteam.js";
 
 let value: TwentySeven = {
-  appName: "<value>",
-  nextScopes: [],
+  projectName: "<value>",
+  alias: "<value>",
+  action: "created",
 };
 ```
 
 ## Fields
 
-| Field                                                    | Type                                                     | Required                                                 | Description                                              |
-| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
-| `appName`                                                | *string*                                                 | :heavy_check_mark:                                       | N/A                                                      |
-| `appId`                                                  | *string*                                                 | :heavy_minus_sign:                                       | N/A                                                      |
-| `nextScopes`                                             | [models.NextScopes](../models/nextscopes.md)[]           | :heavy_check_mark:                                       | N/A                                                      |
-| `nextPermissions`                                        | [models.NextPermissions](../models/nextpermissions.md)[] | :heavy_minus_sign:                                       | N/A                                                      |
+| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `projectName`                                                            | *string*                                                                 | :heavy_check_mark:                                                       | N/A                                                                      |
+| `alias`                                                                  | *string*                                                                 | :heavy_check_mark:                                                       | N/A                                                                      |
+| `action`                                                                 | [models.UserEventPayload27Action](../models/usereventpayload27action.md) | :heavy_check_mark:                                                       | N/A                                                                      |

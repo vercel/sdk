@@ -6,6 +6,7 @@
 **/.speakeasy/logs/
 .speakeasy/temp/
 .DS_Store
+.claude/
 /mcp-server
 /bin
 /.eslintcache

@@ -5,24 +5,21 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { Thirteen } from "@vercel/sdk/models/payload1.js";
+import { Thirteen } from "@vercel/sdk/models/userevent.js";
 
-let value: Thirteen = {};
+let value: Thirteen = {
+  accessGroup: {
+    id: "<id>",
+    name: "<value>",
+  },
+};
 ```
 
 ## Fields
 
-| Field                                        | Type                                         | Required                                     | Description                                  |
-| -------------------------------------------- | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
-| `alias`                                      | *string*                                     | :heavy_minus_sign:                           | N/A                                          |
-| `deployment`                                 | [models.Deployment](../models/deployment.md) | :heavy_minus_sign:                           | N/A                                          |
-| `ruleCount`                                  | *number*                                     | :heavy_minus_sign:                           | N/A                                          |
-| `deploymentUrl`                              | *string*                                     | :heavy_minus_sign:                           | N/A                                          |
-| `aliasId`                                    | *string*                                     | :heavy_minus_sign:                           | N/A                                          |
-| `deploymentId`                               | *string*                                     | :heavy_minus_sign:                           | N/A                                          |
-| `oldDeploymentId`                            | *string*                                     | :heavy_minus_sign:                           | N/A                                          |
-| `redirect`                                   | *string*                                     | :heavy_minus_sign:                           | N/A                                          |
-| `redirectStatusCode`                         | *number*                                     | :heavy_minus_sign:                           | N/A                                          |
-| `target`                                     | *string*                                     | :heavy_minus_sign:                           | N/A                                          |
-| `system`                                     | *boolean*                                    | :heavy_minus_sign:                           | N/A                                          |
-| `aliasUpdatedAt`                             | *number*                                     | :heavy_minus_sign:                           | N/A                                          |
+| Field                                          | Type                                           | Required                                       | Description                                    |
+| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
+| `accessGroup`                                  | [models.AccessGroup](../models/accessgroup.md) | :heavy_check_mark:                             | N/A                                            |
+| `teamRoles`                                    | *string*[]                                     | :heavy_minus_sign:                             | N/A                                            |
+| `teamPermissions`                              | *string*[]                                     | :heavy_minus_sign:                             | N/A                                            |
+| `entitlements`                                 | *string*[]                                     | :heavy_minus_sign:                             | N/A                                            |

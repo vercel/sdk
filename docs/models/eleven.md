@@ -5,22 +5,18 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { Eleven } from "@vercel/sdk/models/payload1.js";
+import { Eleven } from "@vercel/sdk/models/userevent.js";
 
 let value: Eleven = {
-  accessGroup: {
+  apiKey: {
     id: "<id>",
-  },
-  user: {
-    id: "<id>",
+    name: "<value>",
   },
 };
 ```
 
 ## Fields
 
-| Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `accessGroup`                                                                      | [models.UserEventPayload11AccessGroup](../models/usereventpayload11accessgroup.md) | :heavy_check_mark:                                                                 | N/A                                                                                |
-| `user`                                                                             | [models.PayloadUser](../models/payloaduser.md)                                     | :heavy_check_mark:                                                                 | N/A                                                                                |
-| `directoryType`                                                                    | *string*                                                                           | :heavy_minus_sign:                                                                 | N/A                                                                                |
+| Field                                | Type                                 | Required                             | Description                          |
+| ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
+| `apiKey`                             | [models.ApiKey](../models/apikey.md) | :heavy_check_mark:                   | N/A                                  |

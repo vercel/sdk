@@ -1,6 +1,6 @@
 # AuthTokenScopes1Origin
 
-Possible multi-factor origins
+Possible step-up auth origins
 
 ## Example Usage
 
@@ -13,5 +13,5 @@ let value: AuthTokenScopes1Origin = "webauthn";
 ## Values
 
 ```typescript
-"totp" | "webauthn" | "recovery-code"
+"otp" | "totp" | "webauthn" | "recovery-code"
 ```

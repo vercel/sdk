@@ -5,26 +5,20 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndFortyOne } from "@vercel/sdk/models/onehundredandninetytwo.js";
+import { TwoHundredAndFortyOne } from "@vercel/sdk/models/oldoptionsallowlist.js";
 
 let value: TwoHundredAndFortyOne = {
-  budget: {
-    type: "fixed",
-    fixedBudget: 6510.99,
-    previousSpend: [],
-    notifiedAt: [
-      2609.34,
-    ],
-    createdAt: 4261.79,
-    isActive: false,
-    teamId: "<id>",
-    id: "<id>",
-  },
+  enabled: false,
+  updatedAt: 2303.21,
 };
 ```
 
 ## Fields
 
-| Field                                                                   | Type                                                                    | Required                                                                | Description                                                             |
-| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| `budget`                                                                | [models.PayloadBudget](../models/payloadbudget.md)                      | :heavy_check_mark:                                                      | Represents a budget for tracking and notifying teams on their spending. |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `enabled`          | *boolean*          | :heavy_check_mark: | N/A                |
+| `updatedAt`        | *number*           | :heavy_check_mark: | N/A                |
+| `firstEnabledAt`   | *number*           | :heavy_minus_sign: | N/A                |
+| `projectId`        | *string*           | :heavy_minus_sign: | N/A                |
+| `projectName`      | *string*           | :heavy_minus_sign: | N/A                |

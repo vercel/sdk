@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { FromAccount } from "@vercel/sdk/models/jobdeployhook.js";
+import { FromAccount } from "@vercel/sdk/models/job6.js";
 
 let value: FromAccount = {
   id: "<id>",
@@ -13,9 +13,9 @@ let value: FromAccount = {
 
 ## Fields
 
-| Field                                                                | Type                                                                 | Required                                                             | Description                                                          |
-| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| `id`                                                                 | *string*                                                             | :heavy_check_mark:                                                   | N/A                                                                  |
-| `type`                                                               | [models.UserEventPayload99Type](../models/usereventpayload99type.md) | :heavy_check_mark:                                                   | N/A                                                                  |
-| `slug`                                                               | *string*                                                             | :heavy_minus_sign:                                                   | N/A                                                                  |
-| `username`                                                           | *string*                                                             | :heavy_minus_sign:                                                   | N/A                                                                  |
+| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `id`                                                                   | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
+| `type`                                                                 | [models.UserEventPayload105Type](../models/usereventpayload105type.md) | :heavy_check_mark:                                                     | N/A                                                                    |
+| `slug`                                                                 | *string*                                                               | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `username`                                                             | *string*                                                               | :heavy_minus_sign:                                                     | N/A                                                                    |

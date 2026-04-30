@@ -32,7 +32,6 @@ The `@vercel/sdk` is a type-safe Typescript SDK that gives you full control over
   * [SDK Example Usage](#sdk-example-usage)
   * [Available Resources and Operations](#available-resources-and-operations)
   * [Standalone functions](#standalone-functions)
-  * [Json Streaming](#json-streaming)
   * [File uploads](#file-uploads)
   * [Retries](#retries)
   * [Error Handling](#error-handling)
@@ -333,8 +332,6 @@ run();
 
 ### [Billing](docs/sdks/billing/README.md)
 
-* [listBillingCharges](docs/sdks/billing/README.md#listbillingcharges) - List FOCUS billing charges
-* [listContractCommitments](docs/sdks/billing/README.md#listcontractcommitments) - List FOCUS contract commitments
 * [buyCredits](docs/sdks/billing/README.md#buycredits) - Purchase credits
 
 ### [BulkRedirects](docs/sdks/bulkredirects/README.md)
@@ -629,13 +626,11 @@ run();
 * [listSnapshots](docs/sdks/sandboxes/README.md#listsnapshots) - List snapshots
 * [getSandbox](docs/sdks/sandboxes/README.md#getsandbox) - Get a sandbox
 * [listCommands](docs/sdks/sandboxes/README.md#listcommands) - List commands
-* [runCommand](docs/sdks/sandboxes/README.md#runcommand) - Execute a command
 * [killCommand](docs/sdks/sandboxes/README.md#killcommand) - Kill a command
 * [stopSandbox](docs/sdks/sandboxes/README.md#stopsandbox) - Stop a sandbox
 * [extendSandboxTimeout](docs/sdks/sandboxes/README.md#extendsandboxtimeout) - Extend sandbox timeout
 * [updateNetworkPolicy](docs/sdks/sandboxes/README.md#updatenetworkpolicy) - Update network policy
 * [getCommand](docs/sdks/sandboxes/README.md#getcommand) - Get a command
-* [getCommandLogs](docs/sdks/sandboxes/README.md#getcommandlogs) - Stream command logs
 * [readFile](docs/sdks/sandboxes/README.md#readfile) - Read a file
 * [createDirectory](docs/sdks/sandboxes/README.md#createdirectory) - Create a directory
 * [writeFiles](docs/sdks/sandboxes/README.md#writefiles) - Write files
@@ -655,10 +650,8 @@ run();
 * [updateSandbox](docs/sdks/sandboxesv2beta/README.md#updatesandbox) - Update a sandbox
 * [deleteSandbox](docs/sdks/sandboxesv2beta/README.md#deletesandbox) - Delete a sandbox
 * [listSessionCommands](docs/sdks/sandboxesv2beta/README.md#listsessioncommands) - List commands
-* [runSessionCommand](docs/sdks/sandboxesv2beta/README.md#runsessioncommand) - Execute a command
 * [getSessionCommand](docs/sdks/sandboxesv2beta/README.md#getsessioncommand) - Get a command
 * [killSessionCommand](docs/sdks/sandboxesv2beta/README.md#killsessioncommand) - Kill a command
-* [getSessionCommandLogs](docs/sdks/sandboxesv2beta/README.md#getsessioncommandlogs) - Stream command logs
 * [stopSession](docs/sdks/sandboxesv2beta/README.md#stopsession) - Stop a session
 * [extendSessionTimeout](docs/sdks/sandboxesv2beta/README.md#extendsessiontimeout) - Extend session timeout
 * [updateSessionNetworkPolicy](docs/sdks/sandboxesv2beta/README.md#updatesessionnetworkpolicy) - Update network policy
@@ -764,8 +757,6 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`authenticationGetAuthToken`](docs/sdks/authentication/README.md#getauthtoken) - Get Auth Token Metadata
 - [`authenticationListAuthTokens`](docs/sdks/authentication/README.md#listauthtokens) - List Auth Tokens
 - [`billingBuyCredits`](docs/sdks/billing/README.md#buycredits) - Purchase credits
-- [`billingListBillingCharges`](docs/sdks/billing/README.md#listbillingcharges) - List FOCUS billing charges
-- [`billingListContractCommitments`](docs/sdks/billing/README.md#listcontractcommitments) - List FOCUS contract commitments
 - [`bulkRedirectsDeleteRedirects`](docs/sdks/bulkredirects/README.md#deleteredirects) - Delete project-level redirects.
 - [`bulkRedirectsEditRedirect`](docs/sdks/bulkredirects/README.md#editredirect) - Edit a project-level redirect.
 - [`bulkRedirectsGetRedirects`](docs/sdks/bulkredirects/README.md#getredirects) - Gets project-level redirects.
@@ -984,7 +975,6 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`sandboxesDeleteSnapshot`](docs/sdks/sandboxes/README.md#deletesnapshot) - Delete a snapshot
 - [`sandboxesExtendSandboxTimeout`](docs/sdks/sandboxes/README.md#extendsandboxtimeout) - Extend sandbox timeout
 - [`sandboxesGetCommand`](docs/sdks/sandboxes/README.md#getcommand) - Get a command
-- [`sandboxesGetCommandLogs`](docs/sdks/sandboxes/README.md#getcommandlogs) - Stream command logs
 - [`sandboxesGetSandbox`](docs/sdks/sandboxes/README.md#getsandbox) - Get a sandbox
 - [`sandboxesGetSandboxesV1`](docs/sdks/sandboxes/README.md#getsandboxesv1) - List sandboxes
 - [`sandboxesGetSnapshot`](docs/sdks/sandboxes/README.md#getsnapshot) - Get a snapshot
@@ -992,7 +982,6 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`sandboxesListCommands`](docs/sdks/sandboxes/README.md#listcommands) - List commands
 - [`sandboxesListSnapshots`](docs/sdks/sandboxes/README.md#listsnapshots) - List snapshots
 - [`sandboxesReadFile`](docs/sdks/sandboxes/README.md#readfile) - Read a file
-- [`sandboxesRunCommand`](docs/sdks/sandboxes/README.md#runcommand) - Execute a command
 - [`sandboxesStopSandbox`](docs/sdks/sandboxes/README.md#stopsandbox) - Stop a sandbox
 - [`sandboxesUpdateNetworkPolicy`](docs/sdks/sandboxes/README.md#updatenetworkpolicy) - Update network policy
 - [`sandboxesV2BetaCreateSessionDirectory`](docs/sdks/sandboxesv2beta/README.md#createsessiondirectory) - Create a directory
@@ -1004,14 +993,12 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`sandboxesV2BetaGetSandboxesV2`](docs/sdks/sandboxesv2beta/README.md#getsandboxesv2) - List sandboxes
 - [`sandboxesV2BetaGetSession`](docs/sdks/sandboxesv2beta/README.md#getsession) - Get a session
 - [`sandboxesV2BetaGetSessionCommand`](docs/sdks/sandboxesv2beta/README.md#getsessioncommand) - Get a command
-- [`sandboxesV2BetaGetSessionCommandLogs`](docs/sdks/sandboxesv2beta/README.md#getsessioncommandlogs) - Stream command logs
 - [`sandboxesV2BetaGetSessionSnapshot`](docs/sdks/sandboxesv2beta/README.md#getsessionsnapshot) - Get a snapshot
 - [`sandboxesV2BetaKillSessionCommand`](docs/sdks/sandboxesv2beta/README.md#killsessioncommand) - Kill a command
 - [`sandboxesV2BetaListSessionCommands`](docs/sdks/sandboxesv2beta/README.md#listsessioncommands) - List commands
 - [`sandboxesV2BetaListSessions`](docs/sdks/sandboxesv2beta/README.md#listsessions) - List sessions
 - [`sandboxesV2BetaListSessionSnapshots`](docs/sdks/sandboxesv2beta/README.md#listsessionsnapshots) - List snapshots
 - [`sandboxesV2BetaReadSessionFile`](docs/sdks/sandboxesv2beta/README.md#readsessionfile) - Read a file
-- [`sandboxesV2BetaRunSessionCommand`](docs/sdks/sandboxesv2beta/README.md#runsessioncommand) - Execute a command
 - [`sandboxesV2BetaStopSession`](docs/sdks/sandboxesv2beta/README.md#stopsession) - Stop a session
 - [`sandboxesV2BetaUpdateSandbox`](docs/sdks/sandboxesv2beta/README.md#updatesandbox) - Update a sandbox
 - [`sandboxesV2BetaUpdateSessionNetworkPolicy`](docs/sdks/sandboxesv2beta/README.md#updatesessionnetworkpolicy) - Update network policy
@@ -1059,43 +1046,6 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 
 </details>
 <!-- End Standalone functions [standalone-funcs] -->
-
-<!-- Start Json Streaming [jsonl] -->
-## Json Streaming
-
-Json Streaming ([jsonl][jsonl-format] / [x-ndjson][x-ndjson]) content type can be used to stream content from certain operations. These operations expose the stream as an [AsyncGenerator][async-generator] that can be consumed using a `for await...of` loop in TypeScript/JavaScript. The loop will terminate when the server no longer has any events to send and closes the underlying connection.
-
-Here's an example of consuming a JSONL stream:
-
-```typescript
-import { Vercel } from "@vercel/sdk";
-
-const vercel = new Vercel({
-  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-});
-
-async function run() {
-  const result = await vercel.billing.listBillingCharges({
-    from: "2025-01-01T00:00:00.000Z",
-    to: "2025-01-31T00:00:00.000Z",
-    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
-    slug: "my-team-url-slug",
-  });
-
-  for await (const event of result) {
-    // Handle the event
-    console.log(event);
-  }
-}
-
-run();
-
-```
-
-[jsonl-format]: https://jsonlines.org/
-[x-ndjson]: https://github.com/ndjson/ndjson-spec
-[async-generator]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/AsyncGenerator
-<!-- End Json Streaming [jsonl] -->
 
 <!-- Start File uploads [file-upload] -->
 ## File uploads
@@ -1279,31 +1229,31 @@ run();
 
 
 **Inherit from [`VercelError`](./src/models/vercelerror.ts)**:
-* [`HttpApiDecodeError`](./src/models/httpapidecodeerror.ts): The request did not match the expected schema. Status code `400`. Applicable to 16 of 322 methods.*
-* [`Unauthorized`](./src/models/unauthorized.ts): Unauthorized. Status code `401`. Applicable to 16 of 322 methods.*
-* [`NotAuthorizedForScope`](./src/models/notauthorizedforscope.ts): NotAuthorizedForScope. Status code `403`. Applicable to 16 of 322 methods.*
-* [`TooManyRequests`](./src/models/toomanyrequests.ts): TooManyRequests. Status code `429`. Applicable to 16 of 322 methods.*
-* [`InternalServerError`](./src/models/internalservererror.ts): InternalServerError. Status code `500`. Applicable to 16 of 322 methods.*
-* [`Forbidden`](./src/models/forbidden.ts): NotAuthorizedForScope. Status code `403`. Applicable to 9 of 322 methods.*
-* [`TldNotSupported`](./src/models/tldnotsupported.ts): The TLD is not currently supported. Status code `400`. Applicable to 7 of 322 methods.*
-* [`DomainTooShort`](./src/models/domaintooshort.ts): The domain name (excluding the TLD) is too short. Status code `400`. Applicable to 5 of 322 methods.*
-* [`BadRequest`](./src/models/badrequest.ts): There was something wrong with the request. Status code `400`. Applicable to 4 of 322 methods.*
-* [`DomainNotRegistered`](./src/models/domainnotregistered.ts): The domain is not registered with Vercel. Status code `400`. Applicable to 4 of 322 methods.*
-* [`ExpectedPriceMismatch`](./src/models/expectedpricemismatch.ts): The expected price passed does not match the actual price. Status code `400`. Applicable to 4 of 322 methods.*
-* [`DomainNotAvailable`](./src/models/domainnotavailable.ts): The domain is not available. Status code `400`. Applicable to 4 of 322 methods.*
-* [`DomainNotFound`](./src/models/domainnotfound.ts): The domain was not found in our system. Status code `404`. Applicable to 4 of 322 methods.*
-* [`NotFound`](./src/models/notfound.ts): NotFound. Status code `404`. Applicable to 3 of 322 methods.*
-* [`OrderTooExpensive`](./src/models/ordertooexpensive.ts): The total price of the order is too high. Status code `400`. Applicable to 2 of 322 methods.*
-* [`InvalidAdditionalContactInfo`](./src/models/invalidadditionalcontactinfo.ts): Additional contact information provided for the TLD is invalid. Status code `400`. Applicable to 2 of 322 methods.*
-* [`AdditionalContactInfoRequired`](./src/models/additionalcontactinforequired.ts): Additional contact information is required for the TLD. Status code `400`. Applicable to 2 of 322 methods.*
-* [`LanguageCodeRequired`](./src/models/languagecoderequired.ts): A language code is required for punycode domains. Status code `400`. Applicable to 2 of 322 methods.*
-* [`TooManyDomains`](./src/models/toomanydomains.ts): The number of domains in the order is too high. Status code `400`. Applicable to 1 of 322 methods.*
-* [`DuplicateDomains`](./src/models/duplicatedomains.ts): Duplicate domains were provided. Status code `400`. Applicable to 1 of 322 methods.*
-* [`DomainAlreadyOwned`](./src/models/domainalreadyowned.ts): The domain is already owned by another team or user. Status code `400`. Applicable to 1 of 322 methods.*
-* [`DNSSECEnabled`](./src/models/dnssecenabled.ts): The operation cannot be completed because DNSSEC is enabled for the domain. Status code `400`. Applicable to 1 of 322 methods.*
-* [`DomainAlreadyRenewing`](./src/models/domainalreadyrenewing.ts): The domain is already renewing. Status code `400`. Applicable to 1 of 322 methods.*
-* [`DomainNotRenewable`](./src/models/domainnotrenewable.ts): The domain is not renewable. Status code `400`. Applicable to 1 of 322 methods.*
-* [`DomainCannotBeTransferedOutUntil`](./src/models/domaincannotbetransferedoutuntil.ts): The domain cannot be transfered out until the specified date. Status code `409`. Applicable to 1 of 322 methods.*
+* [`HttpApiDecodeError`](./src/models/httpapidecodeerror.ts): The request did not match the expected schema. Status code `400`. Applicable to 16 of 316 methods.*
+* [`Unauthorized`](./src/models/unauthorized.ts): Unauthorized. Status code `401`. Applicable to 16 of 316 methods.*
+* [`NotAuthorizedForScope`](./src/models/notauthorizedforscope.ts): NotAuthorizedForScope. Status code `403`. Applicable to 16 of 316 methods.*
+* [`TooManyRequests`](./src/models/toomanyrequests.ts): TooManyRequests. Status code `429`. Applicable to 16 of 316 methods.*
+* [`InternalServerError`](./src/models/internalservererror.ts): InternalServerError. Status code `500`. Applicable to 16 of 316 methods.*
+* [`Forbidden`](./src/models/forbidden.ts): NotAuthorizedForScope. Status code `403`. Applicable to 9 of 316 methods.*
+* [`TldNotSupported`](./src/models/tldnotsupported.ts): The TLD is not currently supported. Status code `400`. Applicable to 7 of 316 methods.*
+* [`DomainTooShort`](./src/models/domaintooshort.ts): The domain name (excluding the TLD) is too short. Status code `400`. Applicable to 5 of 316 methods.*
+* [`BadRequest`](./src/models/badrequest.ts): There was something wrong with the request. Status code `400`. Applicable to 4 of 316 methods.*
+* [`DomainNotRegistered`](./src/models/domainnotregistered.ts): The domain is not registered with Vercel. Status code `400`. Applicable to 4 of 316 methods.*
+* [`ExpectedPriceMismatch`](./src/models/expectedpricemismatch.ts): The expected price passed does not match the actual price. Status code `400`. Applicable to 4 of 316 methods.*
+* [`DomainNotAvailable`](./src/models/domainnotavailable.ts): The domain is not available. Status code `400`. Applicable to 4 of 316 methods.*
+* [`DomainNotFound`](./src/models/domainnotfound.ts): The domain was not found in our system. Status code `404`. Applicable to 4 of 316 methods.*
+* [`NotFound`](./src/models/notfound.ts): NotFound. Status code `404`. Applicable to 3 of 316 methods.*
+* [`OrderTooExpensive`](./src/models/ordertooexpensive.ts): The total price of the order is too high. Status code `400`. Applicable to 2 of 316 methods.*
+* [`InvalidAdditionalContactInfo`](./src/models/invalidadditionalcontactinfo.ts): Additional contact information provided for the TLD is invalid. Status code `400`. Applicable to 2 of 316 methods.*
+* [`AdditionalContactInfoRequired`](./src/models/additionalcontactinforequired.ts): Additional contact information is required for the TLD. Status code `400`. Applicable to 2 of 316 methods.*
+* [`LanguageCodeRequired`](./src/models/languagecoderequired.ts): A language code is required for punycode domains. Status code `400`. Applicable to 2 of 316 methods.*
+* [`TooManyDomains`](./src/models/toomanydomains.ts): The number of domains in the order is too high. Status code `400`. Applicable to 1 of 316 methods.*
+* [`DuplicateDomains`](./src/models/duplicatedomains.ts): Duplicate domains were provided. Status code `400`. Applicable to 1 of 316 methods.*
+* [`DomainAlreadyOwned`](./src/models/domainalreadyowned.ts): The domain is already owned by another team or user. Status code `400`. Applicable to 1 of 316 methods.*
+* [`DNSSECEnabled`](./src/models/dnssecenabled.ts): The operation cannot be completed because DNSSEC is enabled for the domain. Status code `400`. Applicable to 1 of 316 methods.*
+* [`DomainAlreadyRenewing`](./src/models/domainalreadyrenewing.ts): The domain is already renewing. Status code `400`. Applicable to 1 of 316 methods.*
+* [`DomainNotRenewable`](./src/models/domainnotrenewable.ts): The domain is not renewable. Status code `400`. Applicable to 1 of 316 methods.*
+* [`DomainCannotBeTransferedOutUntil`](./src/models/domaincannotbetransferedoutuntil.ts): The domain cannot be transfered out until the specified date. Status code `409`. Applicable to 1 of 316 methods.*
 * [`ResponseValidationError`](./src/models/responsevalidationerror.ts): Type mismatch between the data returned from the server and the structure expected by the SDK. See `error.rawValue` for the raw value and `error.pretty()` for a nicely formatted multi-line string.
 
 </details>

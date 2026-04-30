@@ -17,6 +17,13 @@ const (
 	ListEventTypeNamePlan                                            ListEventTypeName = "plan"
 	ListEventTypeNameFlag                                            ListEventTypeName = "flag"
 	ListEventTypeNameDeployment                                      ListEventTypeName = "deployment"
+	ListEventTypeNameAgenticProvisioningAccountLinked                ListEventTypeName = "agentic-provisioning-account-linked"
+	ListEventTypeNameAgenticProvisioningAccountRelinked              ListEventTypeName = "agentic-provisioning-account-relinked"
+	ListEventTypeNameAgenticProvisioningTeamCreated                  ListEventTypeName = "agentic-provisioning-team-created"
+	ListEventTypeNameAgenticProvisioningAccountBlocked               ListEventTypeName = "agentic-provisioning-account-blocked"
+	ListEventTypeNameAgenticProvisioningCredentialsRotated           ListEventTypeName = "agentic-provisioning-credentials-rotated"
+	ListEventTypeNameAgenticProvisioningAccountUnlinked              ListEventTypeName = "agentic-provisioning-account-unlinked"
+	ListEventTypeNameAgenticProvisioningPlanChanged                  ListEventTypeName = "agentic-provisioning-plan-changed"
 	ListEventTypeNameAiGatewayAPIKeyCreated                          ListEventTypeName = "ai-gateway-api-key-created"
 	ListEventTypeNameAiGatewayAPIKeyDeleted                          ListEventTypeName = "ai-gateway-api-key-deleted"
 	ListEventTypeNameAiGatewayByokCredentialCreated                  ListEventTypeName = "ai-gateway-byok-credential-created"
@@ -203,6 +210,8 @@ const (
 	ListEventTypeNameInstantRollbackCreated                          ListEventTypeName = "instant-rollback-created"
 	ListEventTypeNameIntegrationConfigurationOwnerChanged            ListEventTypeName = "integration-configuration-owner-changed"
 	ListEventTypeNameIntegrationConfigurationScopeChangeConfirmed    ListEventTypeName = "integration-configuration-scope-change-confirmed"
+	ListEventTypeNameIntegrationConfigurationTransferOutSuccess      ListEventTypeName = "integration-configuration-transfer-out-success"
+	ListEventTypeNameIntegrationConfigurationTransferInSuccess       ListEventTypeName = "integration-configuration-transfer-in-success"
 	ListEventTypeNameIntegrationConfigurationsDisabled               ListEventTypeName = "integration-configurations-disabled"
 	ListEventTypeNameIntegrationInstallationBillingPlanUpdated       ListEventTypeName = "integration-installation-billing-plan-updated"
 	ListEventTypeNameIntegrationInstallationCompleted                ListEventTypeName = "integration-installation-completed"
@@ -448,6 +457,8 @@ const (
 	ListEventTypeNameUserMfaTotpVerified                             ListEventTypeName = "user-mfa-totp-verified"
 	ListEventTypeNameUserPrimaryEmailUpdated                         ListEventTypeName = "user-primary-email-updated"
 	ListEventTypeNameUserTokenCreated                                ListEventTypeName = "user-token-created"
+	ListEventTypeNameUserTokenDeleted                                ListEventTypeName = "user-token-deleted"
+	ListEventTypeNameUserTokensDeleted                               ListEventTypeName = "user-tokens-deleted"
 	ListEventTypeNameUsername                                        ListEventTypeName = "username"
 	ListEventTypeNameAlertRuleCreated                                ListEventTypeName = "alert-rule-created"
 	ListEventTypeNameAlertRuleUpdated                                ListEventTypeName = "alert-rule-updated"
@@ -487,6 +498,20 @@ func (e *ListEventTypeName) UnmarshalJSON(data []byte) error {
 	case "flag":
 		fallthrough
 	case "deployment":
+		fallthrough
+	case "agentic-provisioning-account-linked":
+		fallthrough
+	case "agentic-provisioning-account-relinked":
+		fallthrough
+	case "agentic-provisioning-team-created":
+		fallthrough
+	case "agentic-provisioning-account-blocked":
+		fallthrough
+	case "agentic-provisioning-credentials-rotated":
+		fallthrough
+	case "agentic-provisioning-account-unlinked":
+		fallthrough
+	case "agentic-provisioning-plan-changed":
 		fallthrough
 	case "ai-gateway-api-key-created":
 		fallthrough
@@ -859,6 +884,10 @@ func (e *ListEventTypeName) UnmarshalJSON(data []byte) error {
 	case "integration-configuration-owner-changed":
 		fallthrough
 	case "integration-configuration-scope-change-confirmed":
+		fallthrough
+	case "integration-configuration-transfer-out-success":
+		fallthrough
+	case "integration-configuration-transfer-in-success":
 		fallthrough
 	case "integration-configurations-disabled":
 		fallthrough
@@ -1350,6 +1379,10 @@ func (e *ListEventTypeName) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "user-token-created":
 		fallthrough
+	case "user-token-deleted":
+		fallthrough
+	case "user-tokens-deleted":
+		fallthrough
 	case "username":
 		fallthrough
 	case "alert-rule-created":
@@ -1487,6 +1520,13 @@ const (
 	ReplacedByPlan                                            ReplacedBy = "plan"
 	ReplacedByFlag                                            ReplacedBy = "flag"
 	ReplacedByDeployment                                      ReplacedBy = "deployment"
+	ReplacedByAgenticProvisioningAccountLinked                ReplacedBy = "agentic-provisioning-account-linked"
+	ReplacedByAgenticProvisioningAccountRelinked              ReplacedBy = "agentic-provisioning-account-relinked"
+	ReplacedByAgenticProvisioningTeamCreated                  ReplacedBy = "agentic-provisioning-team-created"
+	ReplacedByAgenticProvisioningAccountBlocked               ReplacedBy = "agentic-provisioning-account-blocked"
+	ReplacedByAgenticProvisioningCredentialsRotated           ReplacedBy = "agentic-provisioning-credentials-rotated"
+	ReplacedByAgenticProvisioningAccountUnlinked              ReplacedBy = "agentic-provisioning-account-unlinked"
+	ReplacedByAgenticProvisioningPlanChanged                  ReplacedBy = "agentic-provisioning-plan-changed"
 	ReplacedByAiGatewayAPIKeyCreated                          ReplacedBy = "ai-gateway-api-key-created"
 	ReplacedByAiGatewayAPIKeyDeleted                          ReplacedBy = "ai-gateway-api-key-deleted"
 	ReplacedByAiGatewayByokCredentialCreated                  ReplacedBy = "ai-gateway-byok-credential-created"
@@ -1673,6 +1713,8 @@ const (
 	ReplacedByInstantRollbackCreated                          ReplacedBy = "instant-rollback-created"
 	ReplacedByIntegrationConfigurationOwnerChanged            ReplacedBy = "integration-configuration-owner-changed"
 	ReplacedByIntegrationConfigurationScopeChangeConfirmed    ReplacedBy = "integration-configuration-scope-change-confirmed"
+	ReplacedByIntegrationConfigurationTransferOutSuccess      ReplacedBy = "integration-configuration-transfer-out-success"
+	ReplacedByIntegrationConfigurationTransferInSuccess       ReplacedBy = "integration-configuration-transfer-in-success"
 	ReplacedByIntegrationConfigurationsDisabled               ReplacedBy = "integration-configurations-disabled"
 	ReplacedByIntegrationInstallationBillingPlanUpdated       ReplacedBy = "integration-installation-billing-plan-updated"
 	ReplacedByIntegrationInstallationCompleted                ReplacedBy = "integration-installation-completed"
@@ -1918,6 +1960,8 @@ const (
 	ReplacedByUserMfaTotpVerified                             ReplacedBy = "user-mfa-totp-verified"
 	ReplacedByUserPrimaryEmailUpdated                         ReplacedBy = "user-primary-email-updated"
 	ReplacedByUserTokenCreated                                ReplacedBy = "user-token-created"
+	ReplacedByUserTokenDeleted                                ReplacedBy = "user-token-deleted"
+	ReplacedByUserTokensDeleted                               ReplacedBy = "user-tokens-deleted"
 	ReplacedByUsername                                        ReplacedBy = "username"
 	ReplacedByAlertRuleCreated                                ReplacedBy = "alert-rule-created"
 	ReplacedByAlertRuleUpdated                                ReplacedBy = "alert-rule-updated"
@@ -1957,6 +2001,20 @@ func (e *ReplacedBy) UnmarshalJSON(data []byte) error {
 	case "flag":
 		fallthrough
 	case "deployment":
+		fallthrough
+	case "agentic-provisioning-account-linked":
+		fallthrough
+	case "agentic-provisioning-account-relinked":
+		fallthrough
+	case "agentic-provisioning-team-created":
+		fallthrough
+	case "agentic-provisioning-account-blocked":
+		fallthrough
+	case "agentic-provisioning-credentials-rotated":
+		fallthrough
+	case "agentic-provisioning-account-unlinked":
+		fallthrough
+	case "agentic-provisioning-plan-changed":
 		fallthrough
 	case "ai-gateway-api-key-created":
 		fallthrough
@@ -2329,6 +2387,10 @@ func (e *ReplacedBy) UnmarshalJSON(data []byte) error {
 	case "integration-configuration-owner-changed":
 		fallthrough
 	case "integration-configuration-scope-change-confirmed":
+		fallthrough
+	case "integration-configuration-transfer-out-success":
+		fallthrough
+	case "integration-configuration-transfer-in-success":
 		fallthrough
 	case "integration-configurations-disabled":
 		fallthrough
@@ -2819,6 +2881,10 @@ func (e *ReplacedBy) UnmarshalJSON(data []byte) error {
 	case "user-primary-email-updated":
 		fallthrough
 	case "user-token-created":
+		fallthrough
+	case "user-token-deleted":
+		fallthrough
+	case "user-tokens-deleted":
 		fallthrough
 	case "username":
 		fallthrough

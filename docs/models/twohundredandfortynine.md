@@ -5,19 +5,30 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndFortyNine } from "@vercel/sdk/models/twohundredandfortyseven.js";
+import { TwoHundredAndFortyNine } from "@vercel/sdk/models/oldoptionsallowlist.js";
 
 let value: TwoHundredAndFortyNine = {
-  store: {
-    name: "<value>",
-    id: "<id>",
+  budget: {
+    budgetItem: {
+      type: "fixed",
+      fixedBudget: 268.4,
+      previousSpend: [
+        2211.33,
+        3066.93,
+        9049.6,
+      ],
+      notifiedAt: [],
+      createdAt: 2535.69,
+      isActive: true,
+      teamId: "<id>",
+      id: "<id>",
+    },
   },
 };
 ```
 
 ## Fields
 
-| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
-| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| `store`                                                                  | [models.UserEventPayload249Store](../models/usereventpayload249store.md) | :heavy_check_mark:                                                       | N/A                                                                      |
-| `ownerId`                                                                | *string*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
+| Field                                | Type                                 | Required                             | Description                          |
+| ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
+| `budget`                             | [models.Budget](../models/budget.md) | :heavy_check_mark:                   | N/A                                  |

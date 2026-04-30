@@ -60,7 +60,7 @@ func testDeleteSandboxDeleteSandbox0(w http.ResponseWriter, req *http.Request) {
 			Runtime:            types.String("node22"),
 			Timeout:            types.Float64(300000),
 			SnapshotExpiration: types.Float64(604800000),
-			SnapshotKeepLast: &components.SnapshotKeepLast{
+			KeepLastSnapshots: &components.KeepLastSnapshots{
 				Count:         5,
 				Expiration:    types.Float64(604800000),
 				DeleteEvicted: true,

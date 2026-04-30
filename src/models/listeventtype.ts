@@ -19,6 +19,14 @@ export const Name = {
   Plan: "plan",
   Flag: "flag",
   Deployment: "deployment",
+  AgenticProvisioningAccountLinked: "agentic-provisioning-account-linked",
+  AgenticProvisioningAccountRelinked: "agentic-provisioning-account-relinked",
+  AgenticProvisioningTeamCreated: "agentic-provisioning-team-created",
+  AgenticProvisioningAccountBlocked: "agentic-provisioning-account-blocked",
+  AgenticProvisioningCredentialsRotated:
+    "agentic-provisioning-credentials-rotated",
+  AgenticProvisioningAccountUnlinked: "agentic-provisioning-account-unlinked",
+  AgenticProvisioningPlanChanged: "agentic-provisioning-plan-changed",
   AiGatewayApiKeyCreated: "ai-gateway-api-key-created",
   AiGatewayApiKeyDeleted: "ai-gateway-api-key-deleted",
   AiGatewayByokCredentialCreated: "ai-gateway-byok-credential-created",
@@ -210,6 +218,10 @@ export const Name = {
     "integration-configuration-owner-changed",
   IntegrationConfigurationScopeChangeConfirmed:
     "integration-configuration-scope-change-confirmed",
+  IntegrationConfigurationTransferOutSuccess:
+    "integration-configuration-transfer-out-success",
+  IntegrationConfigurationTransferInSuccess:
+    "integration-configuration-transfer-in-success",
   IntegrationConfigurationsDisabled: "integration-configurations-disabled",
   IntegrationInstallationBillingPlanUpdated:
     "integration-installation-billing-plan-updated",
@@ -475,6 +487,8 @@ export const Name = {
   UserMfaTotpVerified: "user-mfa-totp-verified",
   UserPrimaryEmailUpdated: "user-primary-email-updated",
   UserTokenCreated: "user-token-created",
+  UserTokenDeleted: "user-token-deleted",
+  UserTokensDeleted: "user-tokens-deleted",
   Username: "username",
   AlertRuleCreated: "alert-rule-created",
   AlertRuleUpdated: "alert-rule-updated",
@@ -542,6 +556,14 @@ export const ReplacedBy = {
   Plan: "plan",
   Flag: "flag",
   Deployment: "deployment",
+  AgenticProvisioningAccountLinked: "agentic-provisioning-account-linked",
+  AgenticProvisioningAccountRelinked: "agentic-provisioning-account-relinked",
+  AgenticProvisioningTeamCreated: "agentic-provisioning-team-created",
+  AgenticProvisioningAccountBlocked: "agentic-provisioning-account-blocked",
+  AgenticProvisioningCredentialsRotated:
+    "agentic-provisioning-credentials-rotated",
+  AgenticProvisioningAccountUnlinked: "agentic-provisioning-account-unlinked",
+  AgenticProvisioningPlanChanged: "agentic-provisioning-plan-changed",
   AiGatewayApiKeyCreated: "ai-gateway-api-key-created",
   AiGatewayApiKeyDeleted: "ai-gateway-api-key-deleted",
   AiGatewayByokCredentialCreated: "ai-gateway-byok-credential-created",
@@ -733,6 +755,10 @@ export const ReplacedBy = {
     "integration-configuration-owner-changed",
   IntegrationConfigurationScopeChangeConfirmed:
     "integration-configuration-scope-change-confirmed",
+  IntegrationConfigurationTransferOutSuccess:
+    "integration-configuration-transfer-out-success",
+  IntegrationConfigurationTransferInSuccess:
+    "integration-configuration-transfer-in-success",
   IntegrationConfigurationsDisabled: "integration-configurations-disabled",
   IntegrationInstallationBillingPlanUpdated:
     "integration-installation-billing-plan-updated",
@@ -998,6 +1024,8 @@ export const ReplacedBy = {
   UserMfaTotpVerified: "user-mfa-totp-verified",
   UserPrimaryEmailUpdated: "user-primary-email-updated",
   UserTokenCreated: "user-token-created",
+  UserTokenDeleted: "user-token-deleted",
+  UserTokensDeleted: "user-tokens-deleted",
   Username: "username",
   AlertRuleCreated: "alert-rule-created",
   AlertRuleUpdated: "alert-rule-updated",

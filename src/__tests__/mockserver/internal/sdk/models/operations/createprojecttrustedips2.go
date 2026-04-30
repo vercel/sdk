@@ -7102,6 +7102,7 @@ type CreateProjectPermissions struct {
 	TeamMicrofrontends                       []components.ACLAction `json:"teamMicrofrontends,omitempty"`
 	TeamOwnMembership                        []components.ACLAction `json:"teamOwnMembership,omitempty"`
 	TeamOwnMembershipDisconnectSAML          []components.ACLAction `json:"teamOwnMembershipDisconnectSAML,omitempty"`
+	TeamSudo                                 []components.ACLAction `json:"teamSudo,omitempty"`
 	TeamTokenInvalidation                    []components.ACLAction `json:"teamTokenInvalidation,omitempty"`
 	Token                                    []components.ACLAction `json:"token,omitempty"`
 	ToolbarComment                           []components.ACLAction `json:"toolbarComment,omitempty"`
@@ -8295,6 +8296,13 @@ func (o *CreateProjectPermissions) GetTeamOwnMembershipDisconnectSAML() []compon
 		return nil
 	}
 	return o.TeamOwnMembershipDisconnectSAML
+}
+
+func (o *CreateProjectPermissions) GetTeamSudo() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.TeamSudo
 }
 
 func (o *CreateProjectPermissions) GetTeamTokenInvalidation() []components.ACLAction {

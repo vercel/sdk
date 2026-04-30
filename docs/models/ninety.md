@@ -5,16 +5,25 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { Ninety } from "@vercel/sdk/models/jobdeployhook.js";
+import { Ninety } from "@vercel/sdk/models/job6.js";
 
 let value: Ninety = {
   domain: "aggressive-valuable.name",
+  customNameservers: [
+    "<value 1>",
+    "<value 2>",
+  ],
+  prevCustomNameservers: [
+    "<value 1>",
+    "<value 2>",
+  ],
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `renew`            | *boolean*          | :heavy_minus_sign: | N/A                |
-| `domain`           | *string*           | :heavy_check_mark: | N/A                |
+| Field                   | Type                    | Required                | Description             |
+| ----------------------- | ----------------------- | ----------------------- | ----------------------- |
+| `domain`                | *string*                | :heavy_check_mark:      | N/A                     |
+| `customNameservers`     | *string*[]              | :heavy_check_mark:      | N/A                     |
+| `prevCustomNameservers` | *string*[]              | :heavy_check_mark:      | N/A                     |

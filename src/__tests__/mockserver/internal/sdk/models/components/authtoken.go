@@ -178,10 +178,11 @@ func (e *AuthTokenTypeUser) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// SudoOrigin - Possible multi-factor origins
+// SudoOrigin - Possible step-up auth origins
 type SudoOrigin string
 
 const (
+	SudoOriginOtp          SudoOrigin = "otp"
 	SudoOriginTotp         SudoOrigin = "totp"
 	SudoOriginWebauthn     SudoOrigin = "webauthn"
 	SudoOriginRecoveryCode SudoOrigin = "recovery-code"
@@ -196,6 +197,8 @@ func (e *SudoOrigin) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
+	case "otp":
+		fallthrough
 	case "totp":
 		fallthrough
 	case "webauthn":
@@ -209,7 +212,7 @@ func (e *SudoOrigin) UnmarshalJSON(data []byte) error {
 }
 
 type Sudo struct {
-	// Possible multi-factor origins
+	// Possible step-up auth origins
 	Origin    SudoOrigin `json:"origin"`
 	ExpiresAt float64    `json:"expiresAt"`
 }

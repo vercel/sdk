@@ -38,8 +38,8 @@ func (e *NamedSandboxStatus) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// SnapshotKeepLast - Keep-last snapshot configuration.
-type SnapshotKeepLast struct {
+// KeepLastSnapshots - Keep-last snapshot configuration.
+type KeepLastSnapshots struct {
 	// Number of most recent snapshots to keep.
 	Count float64 `json:"count"`
 	// Expiration time in milliseconds for kept snapshots.
@@ -48,32 +48,32 @@ type SnapshotKeepLast struct {
 	DeleteEvicted bool `json:"deleteEvicted"`
 }
 
-func (s SnapshotKeepLast) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(s, "", false)
+func (k KeepLastSnapshots) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(k, "", false)
 }
 
-func (s *SnapshotKeepLast) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &s, "", false, []string{"count", "deleteEvicted"}); err != nil {
+func (k *KeepLastSnapshots) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &k, "", false, []string{"count", "deleteEvicted"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *SnapshotKeepLast) GetCount() float64 {
+func (o *KeepLastSnapshots) GetCount() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Count
 }
 
-func (o *SnapshotKeepLast) GetExpiration() *float64 {
+func (o *KeepLastSnapshots) GetExpiration() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.Expiration
 }
 
-func (o *SnapshotKeepLast) GetDeleteEvicted() bool {
+func (o *KeepLastSnapshots) GetDeleteEvicted() bool {
 	if o == nil {
 		return false
 	}
@@ -189,7 +189,7 @@ type NamedSandbox struct {
 	// Default snapshot expiration time in milliseconds. 0 means no expiration.
 	SnapshotExpiration *float64 `json:"snapshotExpiration,omitempty"`
 	// Keep-last snapshot configuration.
-	SnapshotKeepLast *SnapshotKeepLast `json:"snapshotKeepLast,omitempty"`
+	KeepLastSnapshots *KeepLastSnapshots `json:"keepLastSnapshots,omitempty"`
 	// Network policy configuration.
 	NetworkPolicy *NetworkPolicy `json:"networkPolicy,omitempty"`
 	// Cumulative egress bytes across all sandbox runs.
@@ -305,11 +305,11 @@ func (o *NamedSandbox) GetSnapshotExpiration() *float64 {
 	return o.SnapshotExpiration
 }
 
-func (o *NamedSandbox) GetSnapshotKeepLast() *SnapshotKeepLast {
+func (o *NamedSandbox) GetKeepLastSnapshots() *KeepLastSnapshots {
 	if o == nil {
 		return nil
 	}
-	return o.SnapshotKeepLast
+	return o.KeepLastSnapshots
 }
 
 func (o *NamedSandbox) GetNetworkPolicy() *NetworkPolicy {

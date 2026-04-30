@@ -18,7 +18,7 @@ let value: UpdateSandboxResponseBody = {
     runtime: "node22",
     timeout: 300000,
     snapshotExpiration: 604800000,
-    snapshotKeepLast: {
+    keepLastSnapshots: {
       count: 5,
       expiration: 604800000,
       deleteEvicted: true,

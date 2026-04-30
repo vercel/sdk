@@ -4,14 +4,9 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
+import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
-import {
-  FlagsSDKKey,
-  FlagsSDKKey$inboundSchema,
-  FlagsSDKKey$Outbound,
-  FlagsSDKKey$outboundSchema,
-} from "./flagssdkkey.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type GetSDKKeysRequest = {
@@ -29,8 +24,34 @@ export type GetSDKKeysRequest = {
   slug?: string | undefined;
 };
 
+export const GetSDKKeysType = {
+  Server: "server",
+  Mobile: "mobile",
+  Client: "client",
+} as const;
+export type GetSDKKeysType = ClosedEnum<typeof GetSDKKeysType>;
+
+/**
+ * Shared metadata for a Flags SDK key, safe to return on both LIST and CREATE. Never contains cleartext secrets.
+ */
+export type GetSDKKeysData = {
+  hashKey: string;
+  projectId: string;
+  type: GetSDKKeysType;
+  environment: string;
+  createdBy: string;
+  createdAt: number;
+  updatedAt: number;
+  label?: string | undefined;
+  deletedAt?: number | undefined;
+  /**
+   * Partially-masked representation of the SDK key value, safe to display in UIs. The value is the `vf_<type>_` prefix followed by the first 3 characters of the secret portion and a fixed 8-character `*` mask (e.g. `vf_server_abc********`).
+   */
+  partialKeyValue: string;
+};
+
 export type GetSDKKeysResponseBody = {
-  data: Array<FlagsSDKKey>;
+  data: Array<GetSDKKeysData>;
 };
 
 /** @internal */
@@ -79,16 +100,87 @@ export function getSDKKeysRequestFromJSON(
 }
 
 /** @internal */
+export const GetSDKKeysType$inboundSchema: z.ZodNativeEnum<
+  typeof GetSDKKeysType
+> = z.nativeEnum(GetSDKKeysType);
+/** @internal */
+export const GetSDKKeysType$outboundSchema: z.ZodNativeEnum<
+  typeof GetSDKKeysType
+> = GetSDKKeysType$inboundSchema;
+
+/** @internal */
+export const GetSDKKeysData$inboundSchema: z.ZodType<
+  GetSDKKeysData,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  hashKey: types.string(),
+  projectId: types.string(),
+  type: GetSDKKeysType$inboundSchema,
+  environment: types.string(),
+  createdBy: types.string(),
+  createdAt: types.number(),
+  updatedAt: types.number(),
+  label: types.optional(types.string()),
+  deletedAt: types.optional(types.number()),
+  partialKeyValue: types.string(),
+});
+/** @internal */
+export type GetSDKKeysData$Outbound = {
+  hashKey: string;
+  projectId: string;
+  type: string;
+  environment: string;
+  createdBy: string;
+  createdAt: number;
+  updatedAt: number;
+  label?: string | undefined;
+  deletedAt?: number | undefined;
+  partialKeyValue: string;
+};
+
+/** @internal */
+export const GetSDKKeysData$outboundSchema: z.ZodType<
+  GetSDKKeysData$Outbound,
+  z.ZodTypeDef,
+  GetSDKKeysData
+> = z.object({
+  hashKey: z.string(),
+  projectId: z.string(),
+  type: GetSDKKeysType$outboundSchema,
+  environment: z.string(),
+  createdBy: z.string(),
+  createdAt: z.number(),
+  updatedAt: z.number(),
+  label: z.string().optional(),
+  deletedAt: z.number().optional(),
+  partialKeyValue: z.string(),
+});
+
+export function getSDKKeysDataToJSON(getSDKKeysData: GetSDKKeysData): string {
+  return JSON.stringify(GetSDKKeysData$outboundSchema.parse(getSDKKeysData));
+}
+export function getSDKKeysDataFromJSON(
+  jsonString: string,
+): SafeParseResult<GetSDKKeysData, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetSDKKeysData$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetSDKKeysData' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetSDKKeysResponseBody$inboundSchema: z.ZodType<
   GetSDKKeysResponseBody,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  data: z.array(FlagsSDKKey$inboundSchema),
+  data: z.array(z.lazy(() => GetSDKKeysData$inboundSchema)),
 });
 /** @internal */
 export type GetSDKKeysResponseBody$Outbound = {
-  data: Array<FlagsSDKKey$Outbound>;
+  data: Array<GetSDKKeysData$Outbound>;
 };
 
 /** @internal */
@@ -97,7 +189,7 @@ export const GetSDKKeysResponseBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetSDKKeysResponseBody
 > = z.object({
-  data: z.array(FlagsSDKKey$outboundSchema),
+  data: z.array(z.lazy(() => GetSDKKeysData$outboundSchema)),
 });
 
 export function getSDKKeysResponseBodyToJSON(

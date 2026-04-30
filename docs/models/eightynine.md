@@ -5,19 +5,25 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { EightyNine } from "@vercel/sdk/models/jobdeployhook.js";
+import { EightyNine } from "@vercel/sdk/models/job6.js";
 
 let value: EightyNine = {
+  previousServiceType: "<value>",
+  serviceType: "<value>",
+  id: "<id>",
   name: "<value>",
-  destinationId: "<id>",
-  destinationName: "<value>",
+  nameservers: [
+    "<value 1>",
+  ],
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `name`             | *string*           | :heavy_check_mark: | N/A                |
-| `destinationId`    | *string*           | :heavy_check_mark: | N/A                |
-| `destinationName`  | *string*           | :heavy_check_mark: | N/A                |
+| Field                 | Type                  | Required              | Description           |
+| --------------------- | --------------------- | --------------------- | --------------------- |
+| `previousServiceType` | *string*              | :heavy_check_mark:    | N/A                   |
+| `serviceType`         | *string*              | :heavy_check_mark:    | N/A                   |
+| `id`                  | *string*              | :heavy_check_mark:    | N/A                   |
+| `name`                | *string*              | :heavy_check_mark:    | N/A                   |
+| `nameservers`         | *string*[]            | :heavy_check_mark:    | N/A                   |

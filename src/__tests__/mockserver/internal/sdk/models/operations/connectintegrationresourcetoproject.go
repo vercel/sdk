@@ -3,11 +3,44 @@
 package operations
 
 import (
+	"encoding/json"
+	"fmt"
 	"mockserver/internal/sdk/models/components"
 )
 
+type EnvVarEnvironment string
+
+const (
+	EnvVarEnvironmentProduction  EnvVarEnvironment = "production"
+	EnvVarEnvironmentPreview     EnvVarEnvironment = "preview"
+	EnvVarEnvironmentDevelopment EnvVarEnvironment = "development"
+)
+
+func (e EnvVarEnvironment) ToPointer() *EnvVarEnvironment {
+	return &e
+}
+func (e *EnvVarEnvironment) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "production":
+		fallthrough
+	case "preview":
+		fallthrough
+	case "development":
+		*e = EnvVarEnvironment(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvVarEnvironment: %v", v)
+	}
+}
+
 type ConnectIntegrationResourceToProjectRequestBody struct {
-	ProjectID string `json:"projectId"`
+	ProjectID            string              `json:"projectId"`
+	EnvVarEnvironments   []EnvVarEnvironment `json:"envVarEnvironments,omitempty"`
+	MakeEnvVarsSensitive *bool               `json:"makeEnvVarsSensitive,omitempty"`
 }
 
 func (o *ConnectIntegrationResourceToProjectRequestBody) GetProjectID() string {
@@ -15,6 +48,20 @@ func (o *ConnectIntegrationResourceToProjectRequestBody) GetProjectID() string {
 		return ""
 	}
 	return o.ProjectID
+}
+
+func (o *ConnectIntegrationResourceToProjectRequestBody) GetEnvVarEnvironments() []EnvVarEnvironment {
+	if o == nil {
+		return nil
+	}
+	return o.EnvVarEnvironments
+}
+
+func (o *ConnectIntegrationResourceToProjectRequestBody) GetMakeEnvVarsSensitive() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.MakeEnvVarsSensitive
 }
 
 type ConnectIntegrationResourceToProjectRequest struct {

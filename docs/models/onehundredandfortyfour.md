@@ -5,20 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndFortyFour } from "@vercel/sdk/models/two1.js";
+import { OneHundredAndFortyFour } from "@vercel/sdk/models/microfrontends2.js";
 
 let value: OneHundredAndFortyFour = {
-  privateLinkEndpoint: {
-    id: "<id>",
-    name: "<value>",
-  },
   projectId: "<id>",
+  headerName: "<value>",
+  previousStatus: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                          | Type                                                           | Required                                                       | Description                                                    |
-| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
-| `privateLinkEndpoint`                                          | [models.PrivateLinkEndpoint](../models/privatelinkendpoint.md) | :heavy_check_mark:                                             | N/A                                                            |
-| `projectId`                                                    | *string*                                                       | :heavy_check_mark:                                             | N/A                                                            |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
+| `headerName`       | *string*           | :heavy_check_mark: | N/A                |
+| `previousStatus`   | *string*           | :heavy_check_mark: | N/A                |

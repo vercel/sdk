@@ -5,21 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { Seven } from "@vercel/sdk/models/payload1.js";
+import { Seven } from "@vercel/sdk/models/userevent.js";
 
 let value: Seven = {
-  accessGroup: {
-    id: "<id>",
-    name: "<value>",
-  },
+  teamId: "<id>",
+  teamSlug: "<value>",
+  stripeAccount: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                          | Type                                           | Required                                       | Description                                    |
-| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| `accessGroup`                                  | [models.AccessGroup](../models/accessgroup.md) | :heavy_check_mark:                             | N/A                                            |
-| `teamRoles`                                    | *string*[]                                     | :heavy_minus_sign:                             | N/A                                            |
-| `teamPermissions`                              | *string*[]                                     | :heavy_minus_sign:                             | N/A                                            |
-| `entitlements`                                 | *string*[]                                     | :heavy_minus_sign:                             | N/A                                            |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `teamId`           | *string*           | :heavy_check_mark: | N/A                |
+| `teamSlug`         | *string*           | :heavy_check_mark: | N/A                |
+| `stripeAccount`    | *string*           | :heavy_check_mark: | N/A                |

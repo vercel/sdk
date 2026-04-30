@@ -5,12 +5,22 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
+import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
+export const EnvVarEnvironments = {
+  Production: "production",
+  Preview: "preview",
+  Development: "development",
+} as const;
+export type EnvVarEnvironments = ClosedEnum<typeof EnvVarEnvironments>;
+
 export type ConnectIntegrationResourceToProjectRequestBody = {
   projectId: string;
+  envVarEnvironments?: Array<EnvVarEnvironments> | undefined;
+  makeEnvVarsSensitive?: boolean | undefined;
 };
 
 export type ConnectIntegrationResourceToProjectRequest = {
@@ -28,6 +38,15 @@ export type ConnectIntegrationResourceToProjectRequest = {
 };
 
 /** @internal */
+export const EnvVarEnvironments$inboundSchema: z.ZodNativeEnum<
+  typeof EnvVarEnvironments
+> = z.nativeEnum(EnvVarEnvironments);
+/** @internal */
+export const EnvVarEnvironments$outboundSchema: z.ZodNativeEnum<
+  typeof EnvVarEnvironments
+> = EnvVarEnvironments$inboundSchema;
+
+/** @internal */
 export const ConnectIntegrationResourceToProjectRequestBody$inboundSchema:
   z.ZodType<
     ConnectIntegrationResourceToProjectRequestBody,
@@ -35,10 +54,16 @@ export const ConnectIntegrationResourceToProjectRequestBody$inboundSchema:
     unknown
   > = z.object({
     projectId: types.string(),
+    envVarEnvironments: types.optional(
+      z.array(EnvVarEnvironments$inboundSchema),
+    ),
+    makeEnvVarsSensitive: types.optional(types.boolean()),
   });
 /** @internal */
 export type ConnectIntegrationResourceToProjectRequestBody$Outbound = {
   projectId: string;
+  envVarEnvironments?: Array<string> | undefined;
+  makeEnvVarsSensitive?: boolean | undefined;
 };
 
 /** @internal */
@@ -49,6 +74,8 @@ export const ConnectIntegrationResourceToProjectRequestBody$outboundSchema:
     ConnectIntegrationResourceToProjectRequestBody
   > = z.object({
     projectId: z.string(),
+    envVarEnvironments: z.array(EnvVarEnvironments$outboundSchema).optional(),
+    makeEnvVarsSensitive: z.boolean().optional(),
   });
 
 export function connectIntegrationResourceToProjectRequestBodyToJSON(

@@ -5,27 +5,27 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { SeventyThree } from "@vercel/sdk/models/jobdeployhook.js";
+import { SeventyThree } from "@vercel/sdk/models/newteam.js";
 
 let value: SeventyThree = {
-  deployment: {
-    id: "<id>",
+  project: {
     name: "<value>",
-    meta: {
-      "key": "<value>",
-      "key1": "<value>",
-    },
-    url: "https://puny-descendant.name/",
   },
-  deploymentId: "<id>",
-  url: "https://fatherly-bandwidth.net/",
+  job: {
+    deployHook: {
+      createdAt: 3393.49,
+      id: "<id>",
+      name: "<value>",
+      ref: "<value>",
+    },
+    state: "Montana",
+  },
 };
 ```
 
 ## Fields
 
-| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
-| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `deployment`                                                                     | [models.UserEventPayload73Deployment](../models/usereventpayload73deployment.md) | :heavy_check_mark:                                                               | N/A                                                                              |
-| `deploymentId`                                                                   | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |
-| `url`                                                                            | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |
+| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `project`                                                                  | [models.UserEventPayload73Project](../models/usereventpayload73project.md) | :heavy_check_mark:                                                         | N/A                                                                        |
+| `job`                                                                      | [models.Job](../models/job.md)                                             | :heavy_check_mark:                                                         | N/A                                                                        |

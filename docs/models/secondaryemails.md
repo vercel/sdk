@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { SecondaryEmails } from "@vercel/sdk/models/version.js";
+import { SecondaryEmails } from "@vercel/sdk/models/blocktype.js";
 
 let value: SecondaryEmails = {
   email: "Lindsay.Gorczany-Terry93@gmail.com",

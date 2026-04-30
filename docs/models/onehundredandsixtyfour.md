@@ -5,17 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndSixtyFour } from "@vercel/sdk/models/two1.js";
+import { OneHundredAndSixtyFour } from "@vercel/sdk/models/microfrontends2.js";
 
 let value: OneHundredAndSixtyFour = {
-  name: "<value>",
-  ownerId: "<id>",
+  projectId: "<id>",
+  projectName: "<value>",
+  sourceFilesOutsideRootDirectory: true,
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `name`             | *string*           | :heavy_check_mark: | N/A                |
-| `ownerId`          | *string*           | :heavy_check_mark: | N/A                |
+| Field                             | Type                              | Required                          | Description                       |
+| --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- |
+| `projectId`                       | *string*                          | :heavy_check_mark:                | N/A                               |
+| `projectName`                     | *string*                          | :heavy_check_mark:                | N/A                               |
+| `sourceFilesOutsideRootDirectory` | *boolean*                         | :heavy_check_mark:                | N/A                               |

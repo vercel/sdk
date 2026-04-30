@@ -1412,7 +1412,7 @@ run();
 
 ### Response
 
-**Promise\<[models.FlagsSDKKey](../../models/flagssdkkey.md)\>**
+**Promise\<[models.FlagsSDKKeyWithSecrets](../../models/flagssdkkeywithsecrets.md)\>**
 
 ### Errors
 

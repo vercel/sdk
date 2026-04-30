@@ -6535,6 +6535,7 @@ type GetMicrofrontendsInGroupPermissions struct {
 	TeamMicrofrontends                       []components.ACLAction `json:"teamMicrofrontends,omitempty"`
 	TeamOwnMembership                        []components.ACLAction `json:"teamOwnMembership,omitempty"`
 	TeamOwnMembershipDisconnectSAML          []components.ACLAction `json:"teamOwnMembershipDisconnectSAML,omitempty"`
+	TeamSudo                                 []components.ACLAction `json:"teamSudo,omitempty"`
 	TeamTokenInvalidation                    []components.ACLAction `json:"teamTokenInvalidation,omitempty"`
 	Token                                    []components.ACLAction `json:"token,omitempty"`
 	ToolbarComment                           []components.ACLAction `json:"toolbarComment,omitempty"`
@@ -7728,6 +7729,13 @@ func (o *GetMicrofrontendsInGroupPermissions) GetTeamOwnMembershipDisconnectSAML
 		return nil
 	}
 	return o.TeamOwnMembershipDisconnectSAML
+}
+
+func (o *GetMicrofrontendsInGroupPermissions) GetTeamSudo() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.TeamSudo
 }
 
 func (o *GetMicrofrontendsInGroupPermissions) GetTeamTokenInvalidation() []components.ACLAction {

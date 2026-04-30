@@ -14,10 +14,8 @@
 * [updateSandbox](#updatesandbox) - Update a sandbox
 * [deleteSandbox](#deletesandbox) - Delete a sandbox
 * [listSessionCommands](#listsessioncommands) - List commands
-* [runSessionCommand](#runsessioncommand) - Execute a command
 * [getSessionCommand](#getsessioncommand) - Get a command
 * [killSessionCommand](#killsessioncommand) - Kill a command
-* [getSessionCommandLogs](#getsessioncommandlogs) - Stream command logs
 * [stopSession](#stopsession) - Stop a session
 * [extendSessionTimeout](#extendsessiontimeout) - Extend session timeout
 * [updateSessionNetworkPolicy](#updatesessionnetworkpolicy) - Update network policy
@@ -864,109 +862,6 @@ run();
 | --------------- | --------------- | --------------- |
 | models.SDKError | 4XX, 5XX        | \*/\*           |
 
-## runSessionCommand
-
-Executes a shell command inside a running session. The command runs asynchronously and returns immediately with a command ID that can be used to track its progress and retrieve its output. Optionally, use the `wait` parameter to stream the command status until completion.
-
-### Example Usage
-
-<!-- UsageSnippet language="typescript" operationID="runSessionCommand" method="post" path="/v2/sandboxes/sessions/{sessionId}/cmd" -->
-```typescript
-import { Vercel } from "@vercel/sdk";
-
-const vercel = new Vercel({
-  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-});
-
-async function run() {
-  const result = await vercel.sandboxesV2Beta.runSessionCommand({
-    sessionId: "sbx_abc123",
-    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
-    slug: "my-team-url-slug",
-    requestBody: {
-      command: "npm",
-      args: [
-        "install",
-        "--save",
-        "lodash",
-      ],
-      cwd: "/home/vercel-sandbox",
-      env: {
-        "NODE_ENV": "production",
-        "DEBUG": "true",
-      },
-    },
-  });
-
-  console.log(result);
-}
-
-run();
-```
-
-### Standalone function
-
-The standalone function version of this method:
-
-```typescript
-import { VercelCore } from "@vercel/sdk/core.js";
-import { sandboxesV2BetaRunSessionCommand } from "@vercel/sdk/funcs/sandboxesV2BetaRunSessionCommand.js";
-
-// Use `VercelCore` for best tree-shaking performance.
-// You can create one instance of it to use across an application.
-const vercel = new VercelCore({
-  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-});
-
-async function run() {
-  const res = await sandboxesV2BetaRunSessionCommand(vercel, {
-    sessionId: "sbx_abc123",
-    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
-    slug: "my-team-url-slug",
-    requestBody: {
-      command: "npm",
-      args: [
-        "install",
-        "--save",
-        "lodash",
-      ],
-      cwd: "/home/vercel-sandbox",
-      env: {
-        "NODE_ENV": "production",
-        "DEBUG": "true",
-      },
-    },
-  });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("sandboxesV2BetaRunSessionCommand failed:", res.error);
-  }
-}
-
-run();
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [models.RunSessionCommandRequest](../../models/runsessioncommandrequest.md)                                                                                                    | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-
-### Response
-
-**Promise\<[models.RunSessionCommandResponse](../../models/runsessioncommandresponse.md)\>**
-
-### Errors
-
-| Error Type      | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| models.SDKError | 4XX, 5XX        | \*/\*           |
-
 ## getSessionCommand
 
 Retrieves the current status and details of a command executed in a session. Use the `wait` parameter to block until the command finishes execution.
@@ -1124,91 +1019,6 @@ run();
 ### Response
 
 **Promise\<[models.KillSessionCommandResponseBody](../../models/killsessioncommandresponsebody.md)\>**
-
-### Errors
-
-| Error Type      | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| models.SDKError | 4XX, 5XX        | \*/\*           |
-
-## getSessionCommandLogs
-
-Streams the output of a command in real-time using newline-delimited JSON (ND-JSON). Each entry includes the output data and stream type. Stream types include `stdout`, `stderr`, and `error` (for stream failures).
-
-### Example Usage
-
-<!-- UsageSnippet language="typescript" operationID="getSessionCommandLogs" method="get" path="/v2/sandboxes/sessions/{sessionId}/cmd/{cmdId}/logs" -->
-```typescript
-import { Vercel } from "@vercel/sdk";
-
-const vercel = new Vercel({
-  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-});
-
-async function run() {
-  const result = await vercel.sandboxesV2Beta.getSessionCommandLogs({
-    sessionId: "sbx_abc123",
-    cmdId: "cmd_abc123",
-    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
-    slug: "my-team-url-slug",
-  });
-
-  for await (const event of result) {
-    // Handle the event
-    console.log(event);
-  }
-}
-
-run();
-```
-
-### Standalone function
-
-The standalone function version of this method:
-
-```typescript
-import { VercelCore } from "@vercel/sdk/core.js";
-import { sandboxesV2BetaGetSessionCommandLogs } from "@vercel/sdk/funcs/sandboxesV2BetaGetSessionCommandLogs.js";
-
-// Use `VercelCore` for best tree-shaking performance.
-// You can create one instance of it to use across an application.
-const vercel = new VercelCore({
-  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-});
-
-async function run() {
-  const res = await sandboxesV2BetaGetSessionCommandLogs(vercel, {
-    sessionId: "sbx_abc123",
-    cmdId: "cmd_abc123",
-    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
-    slug: "my-team-url-slug",
-  });
-  if (res.ok) {
-    const { value: result } = res;
-    for await (const event of result) {
-    // Handle the event
-    console.log(event);
-  }
-  } else {
-    console.log("sandboxesV2BetaGetSessionCommandLogs failed:", res.error);
-  }
-}
-
-run();
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [models.GetSessionCommandLogsRequest](../../models/getsessioncommandlogsrequest.md)                                                                                            | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-
-### Response
-
-**Promise\<[JsonLStream<models.GetSessionCommandLogsResponseBody>](../../models/.md)\>**
 
 ### Errors
 

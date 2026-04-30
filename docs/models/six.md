@@ -5,19 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { Six } from "@vercel/sdk/models/payload1.js";
+import { Six } from "@vercel/sdk/models/userevent.js";
 
 let value: Six = {
-  credential: {
-    id: "<id>",
-    name: "<value>",
-    providerSlug: "<value>",
-  },
+  teamId: "<id>",
+  stripeAccount: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                        | Type                                         | Required                                     | Description                                  |
-| -------------------------------------------- | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
-| `credential`                                 | [models.Credential](../models/credential.md) | :heavy_check_mark:                           | N/A                                          |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `teamId`           | *string*           | :heavy_check_mark: | N/A                |
+| `stripeAccount`    | *string*           | :heavy_check_mark: | N/A                |

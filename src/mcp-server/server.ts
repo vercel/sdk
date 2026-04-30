@@ -43,8 +43,6 @@ import { tool$authenticationDeleteAuthToken } from "./tools/authenticationDelete
 import { tool$authenticationGetAuthToken } from "./tools/authenticationGetAuthToken.js";
 import { tool$authenticationListAuthTokens } from "./tools/authenticationListAuthTokens.js";
 import { tool$billingBuyCredits } from "./tools/billingBuyCredits.js";
-import { tool$billingListBillingCharges } from "./tools/billingListBillingCharges.js";
-import { tool$billingListContractCommitments } from "./tools/billingListContractCommitments.js";
 import { tool$bulkRedirectsDeleteRedirects } from "./tools/bulkRedirectsDeleteRedirects.js";
 import { tool$bulkRedirectsEditRedirect } from "./tools/bulkRedirectsEditRedirect.js";
 import { tool$bulkRedirectsGetRedirects } from "./tools/bulkRedirectsGetRedirects.js";
@@ -268,7 +266,6 @@ import { tool$sandboxesCreateSnapshot } from "./tools/sandboxesCreateSnapshot.js
 import { tool$sandboxesDeleteSnapshot } from "./tools/sandboxesDeleteSnapshot.js";
 import { tool$sandboxesExtendSandboxTimeout } from "./tools/sandboxesExtendSandboxTimeout.js";
 import { tool$sandboxesGetCommand } from "./tools/sandboxesGetCommand.js";
-import { tool$sandboxesGetCommandLogs } from "./tools/sandboxesGetCommandLogs.js";
 import { tool$sandboxesGetSandbox } from "./tools/sandboxesGetSandbox.js";
 import { tool$sandboxesGetSandboxesV1 } from "./tools/sandboxesGetSandboxesV1.js";
 import { tool$sandboxesGetSnapshot } from "./tools/sandboxesGetSnapshot.js";
@@ -276,7 +273,6 @@ import { tool$sandboxesKillCommand } from "./tools/sandboxesKillCommand.js";
 import { tool$sandboxesListCommands } from "./tools/sandboxesListCommands.js";
 import { tool$sandboxesListSnapshots } from "./tools/sandboxesListSnapshots.js";
 import { tool$sandboxesReadFile } from "./tools/sandboxesReadFile.js";
-import { tool$sandboxesRunCommand } from "./tools/sandboxesRunCommand.js";
 import { tool$sandboxesStopSandbox } from "./tools/sandboxesStopSandbox.js";
 import { tool$sandboxesUpdateNetworkPolicy } from "./tools/sandboxesUpdateNetworkPolicy.js";
 import { tool$sandboxesV2BetaCreateSessionDirectory } from "./tools/sandboxesV2BetaCreateSessionDirectory.js";
@@ -288,14 +284,12 @@ import { tool$sandboxesV2BetaGetNamedSandbox } from "./tools/sandboxesV2BetaGetN
 import { tool$sandboxesV2BetaGetSandboxesV2 } from "./tools/sandboxesV2BetaGetSandboxesV2.js";
 import { tool$sandboxesV2BetaGetSession } from "./tools/sandboxesV2BetaGetSession.js";
 import { tool$sandboxesV2BetaGetSessionCommand } from "./tools/sandboxesV2BetaGetSessionCommand.js";
-import { tool$sandboxesV2BetaGetSessionCommandLogs } from "./tools/sandboxesV2BetaGetSessionCommandLogs.js";
 import { tool$sandboxesV2BetaGetSessionSnapshot } from "./tools/sandboxesV2BetaGetSessionSnapshot.js";
 import { tool$sandboxesV2BetaKillSessionCommand } from "./tools/sandboxesV2BetaKillSessionCommand.js";
 import { tool$sandboxesV2BetaListSessionCommands } from "./tools/sandboxesV2BetaListSessionCommands.js";
 import { tool$sandboxesV2BetaListSessions } from "./tools/sandboxesV2BetaListSessions.js";
 import { tool$sandboxesV2BetaListSessionSnapshots } from "./tools/sandboxesV2BetaListSessionSnapshots.js";
 import { tool$sandboxesV2BetaReadSessionFile } from "./tools/sandboxesV2BetaReadSessionFile.js";
-import { tool$sandboxesV2BetaRunSessionCommand } from "./tools/sandboxesV2BetaRunSessionCommand.js";
 import { tool$sandboxesV2BetaStopSession } from "./tools/sandboxesV2BetaStopSession.js";
 import { tool$sandboxesV2BetaUpdateSandbox } from "./tools/sandboxesV2BetaUpdateSandbox.js";
 import { tool$sandboxesV2BetaUpdateSessionNetworkPolicy } from "./tools/sandboxesV2BetaUpdateSessionNetworkPolicy.js";
@@ -345,7 +339,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Vercel",
-    version: "1.19.41",
+    version: "1.20.0",
   });
 
   const client = new VercelCore({
@@ -392,8 +386,6 @@ export function createMCPServer(deps: {
   tool(tool$artifactsDownloadArtifact);
   tool(tool$artifactsArtifactExists);
   tool(tool$artifactsArtifactQuery);
-  tool(tool$billingListBillingCharges);
-  tool(tool$billingListContractCommitments);
   tool(tool$billingBuyCredits);
   tool(tool$bulkRedirectsStageRedirects);
   tool(tool$bulkRedirectsGetRedirects);
@@ -625,13 +617,11 @@ export function createMCPServer(deps: {
   tool(tool$sandboxesListSnapshots);
   tool(tool$sandboxesGetSandbox);
   tool(tool$sandboxesListCommands);
-  tool(tool$sandboxesRunCommand);
   tool(tool$sandboxesKillCommand);
   tool(tool$sandboxesStopSandbox);
   tool(tool$sandboxesExtendSandboxTimeout);
   tool(tool$sandboxesUpdateNetworkPolicy);
   tool(tool$sandboxesGetCommand);
-  tool(tool$sandboxesGetCommandLogs);
   tool(tool$sandboxesReadFile);
   tool(tool$sandboxesCreateDirectory);
   tool(tool$sandboxesWriteFiles);
@@ -648,10 +638,8 @@ export function createMCPServer(deps: {
   tool(tool$sandboxesV2BetaUpdateSandbox);
   tool(tool$sandboxesV2BetaDeleteSandbox);
   tool(tool$sandboxesV2BetaListSessionCommands);
-  tool(tool$sandboxesV2BetaRunSessionCommand);
   tool(tool$sandboxesV2BetaGetSessionCommand);
   tool(tool$sandboxesV2BetaKillSessionCommand);
-  tool(tool$sandboxesV2BetaGetSessionCommandLogs);
   tool(tool$sandboxesV2BetaStopSession);
   tool(tool$sandboxesV2BetaExtendSessionTimeout);
   tool(tool$sandboxesV2BetaUpdateSessionNetworkPolicy);

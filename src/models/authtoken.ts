@@ -41,21 +41,22 @@ export type Scopes2 = {
 };
 
 /**
- * Possible multi-factor origins
+ * Possible step-up auth origins
  */
 export const AuthTokenScopes1Origin = {
+  Otp: "otp",
   Totp: "totp",
   Webauthn: "webauthn",
   RecoveryCode: "recovery-code",
 } as const;
 /**
- * Possible multi-factor origins
+ * Possible step-up auth origins
  */
 export type AuthTokenScopes1Origin = ClosedEnum<typeof AuthTokenScopes1Origin>;
 
 export type Sudo = {
   /**
-   * Possible multi-factor origins
+   * Possible step-up auth origins
    */
   origin: AuthTokenScopes1Origin;
   expiresAt: number;

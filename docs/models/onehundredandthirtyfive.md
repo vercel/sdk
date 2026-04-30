@@ -5,27 +5,24 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndThirtyFive } from "@vercel/sdk/models/two1.js";
+import { OneHundredAndThirtyFive } from "@vercel/sdk/models/blocktype.js";
 
 let value: OneHundredAndThirtyFive = {
-  projectId: "<id>",
-  previous: {
-    enabled: false,
-    mode: "<value>",
-    enforcePercentage: 5892.14,
-  },
-  next: {
-    enabled: false,
-    mode: "<value>",
-    enforcePercentage: 5305.26,
+  id: "<id>",
+  prev: {
+    name: "<value>",
+    slug: "<value>",
+    fallbackEnvironment: "<value>",
   },
 };
 ```
 
 ## Fields
 
-| Field                                    | Type                                     | Required                                 | Description                              |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| `projectId`                              | *string*                                 | :heavy_check_mark:                       | N/A                                      |
-| `previous`                               | [models.Previous](../models/previous.md) | :heavy_check_mark:                       | N/A                                      |
-| `next`                                   | [models.Next](../models/next.md)         | :heavy_check_mark:                       | N/A                                      |
+| Field                            | Type                             | Required                         | Description                      |
+| -------------------------------- | -------------------------------- | -------------------------------- | -------------------------------- |
+| `id`                             | *string*                         | :heavy_check_mark:               | N/A                              |
+| `slug`                           | *string*                         | :heavy_minus_sign:               | N/A                              |
+| `name`                           | *string*                         | :heavy_minus_sign:               | N/A                              |
+| `fallbackEnvironment`            | *string*                         | :heavy_minus_sign:               | N/A                              |
+| `prev`                           | [models.Prev](../models/prev.md) | :heavy_check_mark:               | N/A                              |

@@ -5,21 +5,20 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndFiftyThree } from "@vercel/sdk/models/two1.js";
+import { OneHundredAndFiftyThree } from "@vercel/sdk/models/microfrontends2.js";
 
 let value: OneHundredAndFiftyThree = {
+  privateLinkEndpoint: {
+    id: "<id>",
+    name: "<value>",
+  },
   projectId: "<id>",
-  projectName: "<value>",
-  previous: {},
-  next: {},
 };
 ```
 
 ## Fields
 
-| Field                                                  | Type                                                   | Required                                               | Description                                            |
-| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
-| `projectId`                                            | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |
-| `projectName`                                          | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |
-| `previous`                                             | [models.PayloadPrevious](../models/payloadprevious.md) | :heavy_check_mark:                                     | N/A                                                    |
-| `next`                                                 | [models.PayloadNext](../models/payloadnext.md)         | :heavy_check_mark:                                     | N/A                                                    |
+| Field                                                          | Type                                                           | Required                                                       | Description                                                    |
+| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
+| `privateLinkEndpoint`                                          | [models.PrivateLinkEndpoint](../models/privatelinkendpoint.md) | :heavy_check_mark:                                             | N/A                                                            |
+| `projectId`                                                    | *string*                                                       | :heavy_check_mark:                                             | N/A                                                            |

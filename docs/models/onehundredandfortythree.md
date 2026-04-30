@@ -5,14 +5,27 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndFortyThree } from "@vercel/sdk/models/two1.js";
+import { OneHundredAndFortyThree } from "@vercel/sdk/models/microfrontends2.js";
 
-let value: OneHundredAndFortyThree = {};
+let value: OneHundredAndFortyThree = {
+  projectId: "<id>",
+  previous: {
+    enabled: true,
+    mode: "<value>",
+    enforcePercentage: 597.51,
+  },
+  next: {
+    enabled: true,
+    mode: "<value>",
+    enforcePercentage: 7509.23,
+  },
+};
 ```
 
 ## Fields
 
-| Field                             | Type                              | Required                          | Description                       |
-| --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- |
-| `previewDeploymentSuffix`         | *string*                          | :heavy_minus_sign:                | N/A                               |
-| `previousPreviewDeploymentSuffix` | *string*                          | :heavy_minus_sign:                | N/A                               |
+| Field                                    | Type                                     | Required                                 | Description                              |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| `projectId`                              | *string*                                 | :heavy_check_mark:                       | N/A                                      |
+| `previous`                               | [models.Previous](../models/previous.md) | :heavy_check_mark:                       | N/A                                      |
+| `next`                                   | [models.Next](../models/next.md)         | :heavy_check_mark:                       | N/A                                      |

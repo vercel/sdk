@@ -5,19 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwentyEight } from "@vercel/sdk/models/payload1.js";
+import { TwentyEight } from "@vercel/sdk/models/newteam.js";
 
 let value: TwentyEight = {
-  appName: "<value>",
+  alias: "<value>",
+  deploymentUrl: "https://hidden-apricot.biz",
 };
 ```
 
 ## Fields
 
-| Field                                | Type                                 | Required                             | Description                          |
-| ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
-| `appName`                            | *string*                             | :heavy_check_mark:                   | N/A                                  |
-| `appId`                              | *string*                             | :heavy_minus_sign:                   | N/A                                  |
-| `installationId`                     | *string*                             | :heavy_minus_sign:                   | N/A                                  |
-| `before`                             | [models.Before](../models/before.md) | :heavy_minus_sign:                   | N/A                                  |
-| `after`                              | [models.After](../models/after.md)   | :heavy_minus_sign:                   | N/A                                  |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `alias`            | *string*           | :heavy_check_mark: | N/A                |
+| `deploymentUrl`    | *string*           | :heavy_check_mark: | N/A                |

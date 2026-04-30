@@ -5,19 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndNinetyEight } from "@vercel/sdk/models/twohundredandfortyseven.js";
+import { TwoHundredAndNinetyEight } from "@vercel/sdk/models/environment.js";
 
 let value: TwoHundredAndNinetyEight = {
-  vulnerabilities: [],
-  protectionEnabled: true,
-  protectedProjectCount: 2171.77,
+  provider: "github",
+  login: "Bertha_Marvin",
 };
 ```
 
 ## Fields
 
-| Field                   | Type                    | Required                | Description             |
-| ----------------------- | ----------------------- | ----------------------- | ----------------------- |
-| `vulnerabilities`       | *string*[]              | :heavy_check_mark:      | N/A                     |
-| `protectionEnabled`     | *boolean*               | :heavy_check_mark:      | N/A                     |
-| `protectedProjectCount` | *number*                | :heavy_check_mark:      | N/A                     |
+| Field                                    | Type                                     | Required                                 | Description                              |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| `provider`                               | [models.Provider](../models/provider.md) | :heavy_check_mark:                       | N/A                                      |
+| `login`                                  | *string*                                 | :heavy_check_mark:                       | N/A                                      |

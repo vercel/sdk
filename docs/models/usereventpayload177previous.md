@@ -3,19 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPayload177Previous } from "@vercel/sdk/models/two1.js";
+import { UserEventPayload177Previous } from "@vercel/sdk/models/microfrontends2.js";
 
-let value: UserEventPayload177Previous = {
-  gitProvider: "github",
-  gitRepoId: "<id>",
-  gitRepositoryName: "<value>",
-};
+let value: UserEventPayload177Previous = {};
 ```
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `gitProvider`                                                                  | [models.UserEventPayloadGitProvider](../models/usereventpayloadgitprovider.md) | :heavy_check_mark:                                                             | N/A                                                                            |
-| `gitRepoId`                                                                    | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
-| `gitRepositoryName`                                                            | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| Field                                              | Type                                               | Required                                           | Description                                        |
+| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
+| `branchMatcher`                                    | [models.BranchMatcher](../models/branchmatcher.md) | :heavy_minus_sign:                                 | N/A                                                |

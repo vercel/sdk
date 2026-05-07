@@ -6,7 +6,6 @@ sources:
             - location: https://openapi.vercel.sh/
         overlays:
             - location: overlay-title.yaml
-            - location: overlay-disambiguate-inline-oneof-variants.yaml
         output: vercel-spec.json
         ruleset: vercelRestAPIRuleset
         registry:

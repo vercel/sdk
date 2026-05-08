@@ -14,7 +14,7 @@ targets:
         sourceRevisionDigest: sha256:cb129ba81bd90324bbd43e6b5b95eeddd1fd1be1c4d034cacdfe002a83e0a3e1
         sourceBlobDigest: sha256:2ef631fc37600db4fdf77ab373a09a869407c3f3e4843b011b7302983a79f761
         codeSamplesNamespace: vercel-oas-typescript-code-samples
-        codeSamplesRevisionDigest: sha256:9b5d6c9ac51593faf71821d621a7ab8b69a284b243fac71f31f33bb7d9687164
+        codeSamplesRevisionDigest: sha256:3a9333ad4a2a34ed6541804b85afa17fac88050329b34fea24dc4595aae47d22
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest

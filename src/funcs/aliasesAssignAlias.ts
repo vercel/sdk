@@ -34,7 +34,7 @@ import { Result } from "../types/fp.js";
  * Assign an Alias
  *
  * @remarks
- * Creates a new alias for the deployment with the given deployment ID. The authenticated user or team must own this deployment. If the desired alias is already assigned to another deployment, then it will be removed from the old deployment and assigned to the new one.
+ * Creates a new alias for the deployment resolved from the given deployment or alias ID or URL. The authenticated user or team must own this deployment. If the desired alias is already assigned to another deployment, then it will be removed from the old deployment and assigned to the new one.
  *
  * If set, this operation will use {@link Security.bearerToken} from the global security.
  */

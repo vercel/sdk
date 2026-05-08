@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UpdateMicrofrontendsDefaultResourceConfig } from "@vercel/sdk/models/updatemicrofrontendssecurity.js";
+import { UpdateMicrofrontendsDefaultResourceConfig } from "@vercel/sdk/models/updatemicrofrontendslogheaders.js";
 
 let value: UpdateMicrofrontendsDefaultResourceConfig = {
   functionDefaultRegions: [

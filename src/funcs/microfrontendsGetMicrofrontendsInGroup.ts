@@ -12,13 +12,13 @@ import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
 import {
-  GetMicrofrontendsInGroupRequest,
-  GetMicrofrontendsInGroupRequest$outboundSchema,
-} from "../models/getmicrofrontendsingroupoidcproviders.js";
-import {
   GetMicrofrontendsInGroupResponseBody,
   GetMicrofrontendsInGroupResponseBody$inboundSchema,
 } from "../models/getmicrofrontendsingroupresponsebody.js";
+import {
+  GetMicrofrontendsInGroupRequest,
+  GetMicrofrontendsInGroupRequest$outboundSchema,
+} from "../models/getmicrofrontendsingroupto1.js";
 import {
   ConnectionError,
   InvalidRequestError,

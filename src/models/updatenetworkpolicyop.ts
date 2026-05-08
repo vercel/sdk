@@ -34,6 +34,135 @@ export type UpdateNetworkPolicyMode = ClosedEnum<
 >;
 
 /**
+ * Match on the request path. Comparison is case-sensitive.
+ */
+export type Path = {
+  /**
+   * Match the value exactly. Case-sensitive for paths, header values, and methods; case-insensitive for domains and header keys.
+   */
+  exact?: string | undefined;
+  /**
+   * Match values that start with the given prefix.
+   */
+  startsWith?: string | undefined;
+};
+
+/**
+ * Matcher for the entry key (header name or query key).
+ */
+export type Key = {
+  /**
+   * Match the value exactly. Case-sensitive for paths, header values, and methods; case-insensitive for domains and header keys.
+   */
+  exact?: string | undefined;
+  /**
+   * Match values that start with the given prefix.
+   */
+  startsWith?: string | undefined;
+};
+
+/**
+ * Matcher for the entry value.
+ */
+export type UpdateNetworkPolicyValue = {
+  /**
+   * Match the value exactly. Case-sensitive for paths, header values, and methods; case-insensitive for domains and header keys.
+   */
+  exact?: string | undefined;
+  /**
+   * Match values that start with the given prefix.
+   */
+  startsWith?: string | undefined;
+};
+
+export type QueryString = {
+  /**
+   * Matcher for the entry key (header name or query key).
+   */
+  key?: Key | undefined;
+  /**
+   * Matcher for the entry value.
+   */
+  value?: UpdateNetworkPolicyValue | undefined;
+};
+
+/**
+ * Matcher for the entry key (header name or query key).
+ */
+export type UpdateNetworkPolicyKey = {
+  /**
+   * Match the value exactly. Case-sensitive for paths, header values, and methods; case-insensitive for domains and header keys.
+   */
+  exact?: string | undefined;
+  /**
+   * Match values that start with the given prefix.
+   */
+  startsWith?: string | undefined;
+};
+
+/**
+ * Matcher for the entry value.
+ */
+export type UpdateNetworkPolicySandboxesValue = {
+  /**
+   * Match the value exactly. Case-sensitive for paths, header values, and methods; case-insensitive for domains and header keys.
+   */
+  exact?: string | undefined;
+  /**
+   * Match values that start with the given prefix.
+   */
+  startsWith?: string | undefined;
+};
+
+export type UpdateNetworkPolicyHeaders = {
+  /**
+   * Matcher for the entry key (header name or query key).
+   */
+  key?: UpdateNetworkPolicyKey | undefined;
+  /**
+   * Matcher for the entry value.
+   */
+  value?: UpdateNetworkPolicySandboxesValue | undefined;
+};
+
+/**
+ * Optional L7 match. When provided, the injection rule only applies to requests that satisfy every specified dimension. When multiple injection rules target the same domain they are evaluated in order and the first match wins; a rule without `match` matches any request and shadows later rules for the same domain.
+ */
+export type Match = {
+  /**
+   * Match on the request path. Comparison is case-sensitive.
+   */
+  path?: Path | undefined;
+  /**
+   * HTTP methods to match. Any single match succeeds (OR semantics).
+   */
+  method?: Array<string> | undefined;
+  /**
+   * Query-string entry matchers. Multiple entries are ANDed. Query parameter names and values are both compared case-sensitively (RFC 3986). When a request has multiple values for the same key, any matching value satisfies the matcher.
+   */
+  queryString?: Array<QueryString> | undefined;
+  /**
+   * Header matchers. Multiple entries are ANDed. Header names are compared case-insensitively (RFC 9110); header values are compared case-sensitively. When a request has multiple values for the same header, any matching value satisfies the matcher.
+   */
+  headers?: Array<UpdateNetworkPolicyHeaders> | undefined;
+};
+
+export type InjectionRules = {
+  /**
+   * The domain (or pattern) of requests to add headers for. Supports wildcards like *.example.com.
+   */
+  domain: string;
+  /**
+   * HTTP headers to inject into requests for this domain. Existing headers with the same name will be overridden.
+   */
+  headers: { [k: string]: string };
+  /**
+   * Optional L7 match. When provided, the injection rule only applies to requests that satisfy every specified dimension. When multiple injection rules target the same domain they are evaluated in order and the first match wins; a rule without `match` matches any request and shadows later rules for the same domain.
+   */
+  match?: Match | undefined;
+};
+
+/**
  * Network access policy for the sandbox.\n    Controls which external hosts the sandbox can communicate with.\n    Use \"allow-all\" mode to allow all traffic, \"deny-all\" to block all traffic or \"custom\" to provide specific rules.
  */
 export type UpdateNetworkPolicyRequestBody = {
@@ -53,6 +182,10 @@ export type UpdateNetworkPolicyRequestBody = {
    * List of IP address ranges (in CIDR notation) the sandbox is blocked from connecting to. These rules take precedence over all allowed rules.
    */
   deniedCIDRs?: Array<string> | undefined;
+  /**
+   * HTTP header injection rules for outgoing requests matching specific domains. Traffic to matching domains will be intercepted instead of proxied through encrypted connections.
+   */
+  injectionRules?: Array<InjectionRules> | undefined;
 };
 
 export type UpdateNetworkPolicyRequest = {
@@ -91,6 +224,368 @@ export const UpdateNetworkPolicyMode$outboundSchema: z.ZodNativeEnum<
 > = UpdateNetworkPolicyMode$inboundSchema;
 
 /** @internal */
+export const Path$inboundSchema: z.ZodType<Path, z.ZodTypeDef, unknown> = z
+  .object({
+    exact: types.optional(types.string()),
+    startsWith: types.optional(types.string()),
+  });
+/** @internal */
+export type Path$Outbound = {
+  exact?: string | undefined;
+  startsWith?: string | undefined;
+};
+
+/** @internal */
+export const Path$outboundSchema: z.ZodType<Path$Outbound, z.ZodTypeDef, Path> =
+  z.object({
+    exact: z.string().optional(),
+    startsWith: z.string().optional(),
+  });
+
+export function pathToJSON(path: Path): string {
+  return JSON.stringify(Path$outboundSchema.parse(path));
+}
+export function pathFromJSON(
+  jsonString: string,
+): SafeParseResult<Path, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Path$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Path' from JSON`,
+  );
+}
+
+/** @internal */
+export const Key$inboundSchema: z.ZodType<Key, z.ZodTypeDef, unknown> = z
+  .object({
+    exact: types.optional(types.string()),
+    startsWith: types.optional(types.string()),
+  });
+/** @internal */
+export type Key$Outbound = {
+  exact?: string | undefined;
+  startsWith?: string | undefined;
+};
+
+/** @internal */
+export const Key$outboundSchema: z.ZodType<Key$Outbound, z.ZodTypeDef, Key> = z
+  .object({
+    exact: z.string().optional(),
+    startsWith: z.string().optional(),
+  });
+
+export function keyToJSON(key: Key): string {
+  return JSON.stringify(Key$outboundSchema.parse(key));
+}
+export function keyFromJSON(
+  jsonString: string,
+): SafeParseResult<Key, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Key$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Key' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateNetworkPolicyValue$inboundSchema: z.ZodType<
+  UpdateNetworkPolicyValue,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  exact: types.optional(types.string()),
+  startsWith: types.optional(types.string()),
+});
+/** @internal */
+export type UpdateNetworkPolicyValue$Outbound = {
+  exact?: string | undefined;
+  startsWith?: string | undefined;
+};
+
+/** @internal */
+export const UpdateNetworkPolicyValue$outboundSchema: z.ZodType<
+  UpdateNetworkPolicyValue$Outbound,
+  z.ZodTypeDef,
+  UpdateNetworkPolicyValue
+> = z.object({
+  exact: z.string().optional(),
+  startsWith: z.string().optional(),
+});
+
+export function updateNetworkPolicyValueToJSON(
+  updateNetworkPolicyValue: UpdateNetworkPolicyValue,
+): string {
+  return JSON.stringify(
+    UpdateNetworkPolicyValue$outboundSchema.parse(updateNetworkPolicyValue),
+  );
+}
+export function updateNetworkPolicyValueFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateNetworkPolicyValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateNetworkPolicyValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateNetworkPolicyValue' from JSON`,
+  );
+}
+
+/** @internal */
+export const QueryString$inboundSchema: z.ZodType<
+  QueryString,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  key: types.optional(z.lazy(() => Key$inboundSchema)),
+  value: types.optional(z.lazy(() => UpdateNetworkPolicyValue$inboundSchema)),
+});
+/** @internal */
+export type QueryString$Outbound = {
+  key?: Key$Outbound | undefined;
+  value?: UpdateNetworkPolicyValue$Outbound | undefined;
+};
+
+/** @internal */
+export const QueryString$outboundSchema: z.ZodType<
+  QueryString$Outbound,
+  z.ZodTypeDef,
+  QueryString
+> = z.object({
+  key: z.lazy(() => Key$outboundSchema).optional(),
+  value: z.lazy(() => UpdateNetworkPolicyValue$outboundSchema).optional(),
+});
+
+export function queryStringToJSON(queryString: QueryString): string {
+  return JSON.stringify(QueryString$outboundSchema.parse(queryString));
+}
+export function queryStringFromJSON(
+  jsonString: string,
+): SafeParseResult<QueryString, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => QueryString$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'QueryString' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateNetworkPolicyKey$inboundSchema: z.ZodType<
+  UpdateNetworkPolicyKey,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  exact: types.optional(types.string()),
+  startsWith: types.optional(types.string()),
+});
+/** @internal */
+export type UpdateNetworkPolicyKey$Outbound = {
+  exact?: string | undefined;
+  startsWith?: string | undefined;
+};
+
+/** @internal */
+export const UpdateNetworkPolicyKey$outboundSchema: z.ZodType<
+  UpdateNetworkPolicyKey$Outbound,
+  z.ZodTypeDef,
+  UpdateNetworkPolicyKey
+> = z.object({
+  exact: z.string().optional(),
+  startsWith: z.string().optional(),
+});
+
+export function updateNetworkPolicyKeyToJSON(
+  updateNetworkPolicyKey: UpdateNetworkPolicyKey,
+): string {
+  return JSON.stringify(
+    UpdateNetworkPolicyKey$outboundSchema.parse(updateNetworkPolicyKey),
+  );
+}
+export function updateNetworkPolicyKeyFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateNetworkPolicyKey, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateNetworkPolicyKey$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateNetworkPolicyKey' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateNetworkPolicySandboxesValue$inboundSchema: z.ZodType<
+  UpdateNetworkPolicySandboxesValue,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  exact: types.optional(types.string()),
+  startsWith: types.optional(types.string()),
+});
+/** @internal */
+export type UpdateNetworkPolicySandboxesValue$Outbound = {
+  exact?: string | undefined;
+  startsWith?: string | undefined;
+};
+
+/** @internal */
+export const UpdateNetworkPolicySandboxesValue$outboundSchema: z.ZodType<
+  UpdateNetworkPolicySandboxesValue$Outbound,
+  z.ZodTypeDef,
+  UpdateNetworkPolicySandboxesValue
+> = z.object({
+  exact: z.string().optional(),
+  startsWith: z.string().optional(),
+});
+
+export function updateNetworkPolicySandboxesValueToJSON(
+  updateNetworkPolicySandboxesValue: UpdateNetworkPolicySandboxesValue,
+): string {
+  return JSON.stringify(
+    UpdateNetworkPolicySandboxesValue$outboundSchema.parse(
+      updateNetworkPolicySandboxesValue,
+    ),
+  );
+}
+export function updateNetworkPolicySandboxesValueFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateNetworkPolicySandboxesValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateNetworkPolicySandboxesValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateNetworkPolicySandboxesValue' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateNetworkPolicyHeaders$inboundSchema: z.ZodType<
+  UpdateNetworkPolicyHeaders,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  key: types.optional(z.lazy(() => UpdateNetworkPolicyKey$inboundSchema)),
+  value: types.optional(
+    z.lazy(() => UpdateNetworkPolicySandboxesValue$inboundSchema),
+  ),
+});
+/** @internal */
+export type UpdateNetworkPolicyHeaders$Outbound = {
+  key?: UpdateNetworkPolicyKey$Outbound | undefined;
+  value?: UpdateNetworkPolicySandboxesValue$Outbound | undefined;
+};
+
+/** @internal */
+export const UpdateNetworkPolicyHeaders$outboundSchema: z.ZodType<
+  UpdateNetworkPolicyHeaders$Outbound,
+  z.ZodTypeDef,
+  UpdateNetworkPolicyHeaders
+> = z.object({
+  key: z.lazy(() => UpdateNetworkPolicyKey$outboundSchema).optional(),
+  value: z.lazy(() => UpdateNetworkPolicySandboxesValue$outboundSchema)
+    .optional(),
+});
+
+export function updateNetworkPolicyHeadersToJSON(
+  updateNetworkPolicyHeaders: UpdateNetworkPolicyHeaders,
+): string {
+  return JSON.stringify(
+    UpdateNetworkPolicyHeaders$outboundSchema.parse(updateNetworkPolicyHeaders),
+  );
+}
+export function updateNetworkPolicyHeadersFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateNetworkPolicyHeaders, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateNetworkPolicyHeaders$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateNetworkPolicyHeaders' from JSON`,
+  );
+}
+
+/** @internal */
+export const Match$inboundSchema: z.ZodType<Match, z.ZodTypeDef, unknown> = z
+  .object({
+    path: types.optional(z.lazy(() => Path$inboundSchema)),
+    method: types.optional(z.array(types.string())),
+    queryString: types.optional(
+      z.array(z.lazy(() => QueryString$inboundSchema)),
+    ),
+    headers: types.optional(
+      z.array(z.lazy(() => UpdateNetworkPolicyHeaders$inboundSchema)),
+    ),
+  });
+/** @internal */
+export type Match$Outbound = {
+  path?: Path$Outbound | undefined;
+  method?: Array<string> | undefined;
+  queryString?: Array<QueryString$Outbound> | undefined;
+  headers?: Array<UpdateNetworkPolicyHeaders$Outbound> | undefined;
+};
+
+/** @internal */
+export const Match$outboundSchema: z.ZodType<
+  Match$Outbound,
+  z.ZodTypeDef,
+  Match
+> = z.object({
+  path: z.lazy(() => Path$outboundSchema).optional(),
+  method: z.array(z.string()).optional(),
+  queryString: z.array(z.lazy(() => QueryString$outboundSchema)).optional(),
+  headers: z.array(z.lazy(() => UpdateNetworkPolicyHeaders$outboundSchema))
+    .optional(),
+});
+
+export function matchToJSON(match: Match): string {
+  return JSON.stringify(Match$outboundSchema.parse(match));
+}
+export function matchFromJSON(
+  jsonString: string,
+): SafeParseResult<Match, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Match$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Match' from JSON`,
+  );
+}
+
+/** @internal */
+export const InjectionRules$inboundSchema: z.ZodType<
+  InjectionRules,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  domain: types.string(),
+  headers: z.record(types.string()),
+  match: types.optional(z.lazy(() => Match$inboundSchema)),
+});
+/** @internal */
+export type InjectionRules$Outbound = {
+  domain: string;
+  headers: { [k: string]: string };
+  match?: Match$Outbound | undefined;
+};
+
+/** @internal */
+export const InjectionRules$outboundSchema: z.ZodType<
+  InjectionRules$Outbound,
+  z.ZodTypeDef,
+  InjectionRules
+> = z.object({
+  domain: z.string(),
+  headers: z.record(z.string()),
+  match: z.lazy(() => Match$outboundSchema).optional(),
+});
+
+export function injectionRulesToJSON(injectionRules: InjectionRules): string {
+  return JSON.stringify(InjectionRules$outboundSchema.parse(injectionRules));
+}
+export function injectionRulesFromJSON(
+  jsonString: string,
+): SafeParseResult<InjectionRules, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => InjectionRules$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'InjectionRules' from JSON`,
+  );
+}
+
+/** @internal */
 export const UpdateNetworkPolicyRequestBody$inboundSchema: z.ZodType<
   UpdateNetworkPolicyRequestBody,
   z.ZodTypeDef,
@@ -100,6 +595,9 @@ export const UpdateNetworkPolicyRequestBody$inboundSchema: z.ZodType<
   allowedDomains: types.optional(z.array(types.string())),
   allowedCIDRs: types.optional(z.array(types.string())),
   deniedCIDRs: types.optional(z.array(types.string())),
+  injectionRules: types.optional(
+    z.array(z.lazy(() => InjectionRules$inboundSchema)),
+  ),
 });
 /** @internal */
 export type UpdateNetworkPolicyRequestBody$Outbound = {
@@ -107,6 +605,7 @@ export type UpdateNetworkPolicyRequestBody$Outbound = {
   allowedDomains?: Array<string> | undefined;
   allowedCIDRs?: Array<string> | undefined;
   deniedCIDRs?: Array<string> | undefined;
+  injectionRules?: Array<InjectionRules$Outbound> | undefined;
 };
 
 /** @internal */
@@ -119,6 +618,8 @@ export const UpdateNetworkPolicyRequestBody$outboundSchema: z.ZodType<
   allowedDomains: z.array(z.string()).optional(),
   allowedCIDRs: z.array(z.string()).optional(),
   deniedCIDRs: z.array(z.string()).optional(),
+  injectionRules: z.array(z.lazy(() => InjectionRules$outboundSchema))
+    .optional(),
 });
 
 export function updateNetworkPolicyRequestBodyToJSON(

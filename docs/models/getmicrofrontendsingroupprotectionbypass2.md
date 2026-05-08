@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupProtectionBypass2 } from "@vercel/sdk/models/getmicrofrontendsingroupoidcproviders.js";
+import { GetMicrofrontendsInGroupProtectionBypass2 } from "@vercel/sdk/models/getmicrofrontendsingroupto1.js";
 
 let value: GetMicrofrontendsInGroupProtectionBypass2 = {
   createdAt: 8148.12,

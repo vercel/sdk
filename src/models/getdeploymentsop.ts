@@ -108,6 +108,7 @@ export type GetDeploymentsSource = ClosedEnum<typeof GetDeploymentsSource>;
 export const GetDeploymentsState = {
   Building: "BUILDING",
   Error: "ERROR",
+  Blocked: "BLOCKED",
   Initializing: "INITIALIZING",
   Queued: "QUEUED",
   Ready: "READY",
@@ -125,6 +126,7 @@ export type GetDeploymentsState = ClosedEnum<typeof GetDeploymentsState>;
 export const GetDeploymentsReadyState = {
   Building: "BUILDING",
   Error: "ERROR",
+  Blocked: "BLOCKED",
   Initializing: "INITIALIZING",
   Queued: "QUEUED",
   Ready: "READY",

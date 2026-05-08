@@ -5,14 +5,15 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndFiftyTwo } from "@vercel/sdk/models/microfrontends2.js";
+import { OneHundredAndFiftyTwo } from "@vercel/sdk/models/payloadgituserid.js";
 
 let value: OneHundredAndFiftyTwo = {};
 ```
 
 ## Fields
 
-| Field                             | Type                              | Required                          | Description                       |
-| --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- |
-| `previewDeploymentSuffix`         | *string*                          | :heavy_minus_sign:                | N/A                               |
-| `previousPreviewDeploymentSuffix` | *string*                          | :heavy_minus_sign:                | N/A                               |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `price`            | *number*           | :heavy_minus_sign: | N/A                |
+| `currency`         | *string*           | :heavy_minus_sign: | N/A                |
+| `enabled`          | *boolean*          | :heavy_minus_sign: | N/A                |

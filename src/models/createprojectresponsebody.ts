@@ -30,6 +30,10 @@ import {
   CreateProjectEnv$inboundSchema,
   CreateProjectEnv$Outbound,
   CreateProjectEnv$outboundSchema,
+  CreateProjectExpiration,
+  CreateProjectExpiration$inboundSchema,
+  CreateProjectExpiration$Outbound,
+  CreateProjectExpiration$outboundSchema,
   CreateProjectIpBuckets,
   CreateProjectIpBuckets$inboundSchema,
   CreateProjectIpBuckets$Outbound,
@@ -53,6 +57,10 @@ import {
   CreateProjectPermissions$inboundSchema,
   CreateProjectPermissions$Outbound,
   CreateProjectPermissions$outboundSchema,
+  CreateProjectProjects,
+  CreateProjectProjects$inboundSchema,
+  CreateProjectProjects$Outbound,
+  CreateProjectProjects$outboundSchema,
   CreateProjectProjectsFramework,
   CreateProjectProjectsFramework$inboundSchema,
   CreateProjectProjectsFramework$outboundSchema,
@@ -72,14 +80,14 @@ import {
   CreateProjectTargets$inboundSchema,
   CreateProjectTargets$Outbound,
   CreateProjectTargets$outboundSchema,
+  CreateProjectTo,
+  CreateProjectTo$inboundSchema,
+  CreateProjectTo$Outbound,
+  CreateProjectTo$outboundSchema,
   CreateProjectTrustedIps,
   CreateProjectTrustedIps$inboundSchema,
   CreateProjectTrustedIps$Outbound,
   CreateProjectTrustedIps$outboundSchema,
-  CreateProjectTrustedSources,
-  CreateProjectTrustedSources$inboundSchema,
-  CreateProjectTrustedSources$Outbound,
-  CreateProjectTrustedSources$outboundSchema,
   CustomEnvironments,
   CustomEnvironments$inboundSchema,
   CustomEnvironments$Outbound,
@@ -132,8 +140,21 @@ import {
   SpeedInsights$inboundSchema,
   SpeedInsights$Outbound,
   SpeedInsights$outboundSchema,
-} from "./createprojecttrustedsources.js";
+} from "./createprojectto.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export type CreateProjectOidcProviders = {
+  to: CreateProjectTo;
+  label?: string | undefined;
+  claims: { [k: string]: Array<string> };
+};
+
+export type CreateProjectTrustedSources = {
+  projects?: { [k: string]: CreateProjectProjects } | undefined;
+  oidcProviders?:
+    | { [k: string]: Array<CreateProjectOidcProviders> }
+    | undefined;
+};
 
 export type CreateProjectGitComments = {
   /**
@@ -180,7 +201,7 @@ export type GitProviderOptions = {
    */
   createDeployments: CreateProjectCreateDeployments;
   /**
-   * Whether the Vercel bot should not automatically create GitHub repository-dispatch events on deployment events. https://vercel.com/docs/git/vercel-for-github#repository-dispatch-events
+   * Whether the Vercel bot should not automatically create GitHub repository-dispatch events on deployment events. https://vercel.com/docs/git/vercel-for-github#repository-dispatch-events - `true`: disable repository-dispatch events for this project (explicit override of the team setting). - `false`: enable repository-dispatch events for this project (explicit override of the team setting). - absent: inherit from `team.disableRepositoryDispatchEvents`.
    */
   disableRepositoryDispatchEvents?: boolean | undefined;
   /**
@@ -370,6 +391,10 @@ export type UsageStatus = {
    * Timestamp until which throttling is bypassed (project pays list rates for overage).
    */
   bypassThrottleUntil?: number | undefined;
+  /**
+   * Whether the project is currently throttled.
+   */
+  throttled?: boolean | undefined;
 };
 
 export type Features = {
@@ -697,6 +722,7 @@ export type CreateProjectResponseBody = {
    * Retention policies for deployments. These are enforced at the project level, but we also maintain an instance of this at the team level as a default policy that gets applied to new projects.
    */
   deploymentExpiration: DeploymentExpiration;
+  expiration?: CreateProjectExpiration | undefined;
   devCommand?: string | null | undefined;
   directoryListing: boolean;
   installCommand?: string | null | undefined;
@@ -775,6 +801,101 @@ export type CreateProjectResponseBody = {
   protectedSourcemaps?: boolean | undefined;
   tracing?: CreateProjectTracing | undefined;
 };
+
+/** @internal */
+export const CreateProjectOidcProviders$inboundSchema: z.ZodType<
+  CreateProjectOidcProviders,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  to: CreateProjectTo$inboundSchema,
+  label: types.optional(types.string()),
+  claims: z.record(z.array(types.string())),
+});
+/** @internal */
+export type CreateProjectOidcProviders$Outbound = {
+  to: CreateProjectTo$Outbound;
+  label?: string | undefined;
+  claims: { [k: string]: Array<string> };
+};
+
+/** @internal */
+export const CreateProjectOidcProviders$outboundSchema: z.ZodType<
+  CreateProjectOidcProviders$Outbound,
+  z.ZodTypeDef,
+  CreateProjectOidcProviders
+> = z.object({
+  to: CreateProjectTo$outboundSchema,
+  label: z.string().optional(),
+  claims: z.record(z.array(z.string())),
+});
+
+export function createProjectOidcProvidersToJSON(
+  createProjectOidcProviders: CreateProjectOidcProviders,
+): string {
+  return JSON.stringify(
+    CreateProjectOidcProviders$outboundSchema.parse(createProjectOidcProviders),
+  );
+}
+export function createProjectOidcProvidersFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateProjectOidcProviders, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateProjectOidcProviders$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProjectOidcProviders' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateProjectTrustedSources$inboundSchema: z.ZodType<
+  CreateProjectTrustedSources,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  projects: types.optional(z.record(CreateProjectProjects$inboundSchema)),
+  oidcProviders: types.optional(
+    z.record(z.array(z.lazy(() => CreateProjectOidcProviders$inboundSchema))),
+  ),
+});
+/** @internal */
+export type CreateProjectTrustedSources$Outbound = {
+  projects?: { [k: string]: CreateProjectProjects$Outbound } | undefined;
+  oidcProviders?:
+    | { [k: string]: Array<CreateProjectOidcProviders$Outbound> }
+    | undefined;
+};
+
+/** @internal */
+export const CreateProjectTrustedSources$outboundSchema: z.ZodType<
+  CreateProjectTrustedSources$Outbound,
+  z.ZodTypeDef,
+  CreateProjectTrustedSources
+> = z.object({
+  projects: z.record(CreateProjectProjects$outboundSchema).optional(),
+  oidcProviders: z.record(
+    z.array(z.lazy(() => CreateProjectOidcProviders$outboundSchema)),
+  ).optional(),
+});
+
+export function createProjectTrustedSourcesToJSON(
+  createProjectTrustedSources: CreateProjectTrustedSources,
+): string {
+  return JSON.stringify(
+    CreateProjectTrustedSources$outboundSchema.parse(
+      createProjectTrustedSources,
+    ),
+  );
+}
+export function createProjectTrustedSourcesFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateProjectTrustedSources, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateProjectTrustedSources$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProjectTrustedSources' from JSON`,
+  );
+}
 
 /** @internal */
 export const CreateProjectGitComments$inboundSchema: z.ZodType<
@@ -1533,12 +1654,14 @@ export const UsageStatus$inboundSchema: z.ZodType<
   kind: CreateProjectKind$inboundSchema,
   exceededAllowanceUntil: types.optional(types.number()),
   bypassThrottleUntil: types.optional(types.number()),
+  throttled: types.optional(types.boolean()),
 });
 /** @internal */
 export type UsageStatus$Outbound = {
   kind: string;
   exceededAllowanceUntil?: number | undefined;
   bypassThrottleUntil?: number | undefined;
+  throttled?: boolean | undefined;
 };
 
 /** @internal */
@@ -1550,6 +1673,7 @@ export const UsageStatus$outboundSchema: z.ZodType<
   kind: CreateProjectKind$outboundSchema,
   exceededAllowanceUntil: z.number().optional(),
   bypassThrottleUntil: z.number().optional(),
+  throttled: z.boolean().optional(),
 });
 
 export function usageStatusToJSON(usageStatus: UsageStatus): string {
@@ -3659,6 +3783,7 @@ export const CreateProjectResponseBody$inboundSchema: z.ZodType<
   dataCache: types.optional(CreateProjectDataCache$inboundSchema),
   delegatedProtection: z.nullable(DelegatedProtection$inboundSchema).optional(),
   deploymentExpiration: DeploymentExpiration$inboundSchema,
+  expiration: types.optional(CreateProjectExpiration$inboundSchema),
   devCommand: z.nullable(types.string()).optional(),
   directoryListing: types.boolean(),
   installCommand: z.nullable(types.string()).optional(),
@@ -3716,8 +3841,9 @@ export const CreateProjectResponseBody$inboundSchema: z.ZodType<
   protectionBypass: types.optional(z.record(ProtectionBypass$inboundSchema)),
   hasActiveBranches: types.optional(types.boolean()),
   trustedIps: z.nullable(CreateProjectTrustedIps$inboundSchema).optional(),
-  trustedSources: z.nullable(CreateProjectTrustedSources$inboundSchema)
-    .optional(),
+  trustedSources: z.nullable(
+    z.lazy(() => CreateProjectTrustedSources$inboundSchema),
+  ).optional(),
   gitComments: types.optional(
     z.lazy(() => CreateProjectGitComments$inboundSchema),
   ),
@@ -3779,6 +3905,7 @@ export type CreateProjectResponseBody$Outbound = {
   dataCache?: CreateProjectDataCache$Outbound | undefined;
   delegatedProtection?: DelegatedProtection$Outbound | null | undefined;
   deploymentExpiration: DeploymentExpiration$Outbound;
+  expiration?: CreateProjectExpiration$Outbound | undefined;
   devCommand?: string | null | undefined;
   directoryListing: boolean;
   installCommand?: string | null | undefined;
@@ -3888,6 +4015,7 @@ export const CreateProjectResponseBody$outboundSchema: z.ZodType<
   delegatedProtection: z.nullable(DelegatedProtection$outboundSchema)
     .optional(),
   deploymentExpiration: DeploymentExpiration$outboundSchema,
+  expiration: CreateProjectExpiration$outboundSchema.optional(),
   devCommand: z.nullable(z.string()).optional(),
   directoryListing: z.boolean(),
   installCommand: z.nullable(z.string()).optional(),
@@ -3943,8 +4071,9 @@ export const CreateProjectResponseBody$outboundSchema: z.ZodType<
   protectionBypass: z.record(ProtectionBypass$outboundSchema).optional(),
   hasActiveBranches: z.boolean().optional(),
   trustedIps: z.nullable(CreateProjectTrustedIps$outboundSchema).optional(),
-  trustedSources: z.nullable(CreateProjectTrustedSources$outboundSchema)
-    .optional(),
+  trustedSources: z.nullable(
+    z.lazy(() => CreateProjectTrustedSources$outboundSchema),
+  ).optional(),
   gitComments: z.lazy(() => CreateProjectGitComments$outboundSchema).optional(),
   gitProviderOptions: z.lazy(() => GitProviderOptions$outboundSchema)
     .optional(),

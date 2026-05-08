@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupDeploymentType } from "@vercel/sdk/models/getmicrofrontendsingroupoidcproviders.js";
+import { GetMicrofrontendsInGroupDeploymentType } from "@vercel/sdk/models/getmicrofrontendsingroupto1.js";
 
 let value: GetMicrofrontendsInGroupDeploymentType = "all_except_custom_domains";
 ```

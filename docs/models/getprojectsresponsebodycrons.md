@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsResponseBodyCrons } from "@vercel/sdk/models/getprojectslogheadersprojectsresponse2.js";
+import { GetProjectsResponseBodyCrons } from "@vercel/sdk/models/getprojectsresponsebodyprojectsowasp.js";
 
 let value: GetProjectsResponseBodyCrons = {
   enabledAt: 1074.56,

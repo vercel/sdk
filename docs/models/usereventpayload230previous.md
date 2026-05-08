@@ -3,19 +3,16 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPayload230Previous } from "@vercel/sdk/models/oldoptionsallowlist.js";
+import { UserEventPayload230Previous } from "@vercel/sdk/models/twohundredandtwentythree.js";
 
-let value: UserEventPayload230Previous = {
-  project: {
-    staticIps: {
-      enabled: true,
-    },
-  },
-};
+let value: UserEventPayload230Previous = {};
 ```
 
 ## Fields
 
-| Field                                                                                        | Type                                                                                         | Required                                                                                     | Description                                                                                  |
-| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
-| `project`                                                                                    | [models.UserEventPayload230PreviousProject](../models/usereventpayload230previousproject.md) | :heavy_check_mark:                                                                           | N/A                                                                                          |
+| Field                  | Type                   | Required               | Description            |
+| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
+| `expiration`           | *string*               | :heavy_minus_sign:     | N/A                    |
+| `expirationProduction` | *string*               | :heavy_minus_sign:     | N/A                    |
+| `expirationCanceled`   | *string*               | :heavy_minus_sign:     | N/A                    |
+| `expirationErrored`    | *string*               | :heavy_minus_sign:     | N/A                    |

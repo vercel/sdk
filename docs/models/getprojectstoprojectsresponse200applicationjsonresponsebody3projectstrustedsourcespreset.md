@@ -5,7 +5,7 @@
 ```typescript
 import {
   GetProjectsToProjectsResponse200ApplicationJSONResponseBody3ProjectsTrustedSourcesPreset,
-} from "@vercel/sdk/models/getprojectslogheadersprojectsresponse2.js";
+} from "@vercel/sdk/models/getprojectsresponsebodyprojectsowasp.js";
 
 let value:
   GetProjectsToProjectsResponse200ApplicationJSONResponseBody3ProjectsTrustedSourcesPreset =

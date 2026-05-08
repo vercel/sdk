@@ -43,6 +43,7 @@ export const GetWebhookEvents = {
   DeploymentBuildRequested: "deployment.build-requested",
   DeploymentCleanup: "deployment.cleanup",
   DeploymentError: "deployment.error",
+  DeploymentBlocked: "deployment.blocked",
   DeploymentCanceled: "deployment.canceled",
   DeploymentSucceeded: "deployment.succeeded",
   DeploymentReady: "deployment.ready",

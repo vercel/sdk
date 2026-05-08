@@ -5,7 +5,7 @@ Type of actor
 ## Example Usage
 
 ```typescript
-import { PayloadActorType } from "@vercel/sdk/models/job6.js";
+import { PayloadActorType } from "@vercel/sdk/models/usereventjobpayload76githashtagvercel.js";
 
 let value: PayloadActorType = "admin";
 ```

@@ -31,7 +31,7 @@ const value: models.GetDeploymentResponseBody1 = {
     username: "john-doe",
   },
   public: false,
-  status: "BUILDING",
+  status: "ERROR",
   userAliases: [
     "sub1.example.com",
     "sub2.example.com",

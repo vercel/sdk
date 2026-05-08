@@ -3,17 +3,17 @@
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupContentHint7 } from "@vercel/sdk/models/getmicrofrontendsingroupoidcproviders.js";
+import { GetMicrofrontendsInGroupContentHint7 } from "@vercel/sdk/models/getmicrofrontendsingroupto1.js";
 
 let value: GetMicrofrontendsInGroupContentHint7 = {
-  type: "postgres-url",
+  type: "blob-webhook-public-key",
   storeId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `type`             | *"postgres-url"*   | :heavy_check_mark: | N/A                |
-| `storeId`          | *string*           | :heavy_check_mark: | N/A                |
+| Field                       | Type                        | Required                    | Description                 |
+| --------------------------- | --------------------------- | --------------------------- | --------------------------- |
+| `type`                      | *"blob-webhook-public-key"* | :heavy_check_mark:          | N/A                         |
+| `storeId`                   | *string*                    | :heavy_check_mark:          | N/A                         |

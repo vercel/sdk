@@ -61,7 +61,7 @@ const value: models.FilterProjectEnvsContentHintProjectsResponse6 = {
 
 ```typescript
 const value: models.FilterProjectEnvsContentHintProjectsResponse7 = {
-  type: "postgres-url",
+  type: "blob-webhook-public-key",
   storeId: "<id>",
 };
 ```
@@ -70,7 +70,7 @@ const value: models.FilterProjectEnvsContentHintProjectsResponse7 = {
 
 ```typescript
 const value: models.FilterProjectEnvsContentHintProjectsResponse8 = {
-  type: "postgres-url-non-pooling",
+  type: "postgres-url",
   storeId: "<id>",
 };
 ```
@@ -79,7 +79,7 @@ const value: models.FilterProjectEnvsContentHintProjectsResponse8 = {
 
 ```typescript
 const value: models.FilterProjectEnvsContentHintProjectsResponse9 = {
-  type: "postgres-prisma-url",
+  type: "postgres-url-non-pooling",
   storeId: "<id>",
 };
 ```
@@ -88,7 +88,7 @@ const value: models.FilterProjectEnvsContentHintProjectsResponse9 = {
 
 ```typescript
 const value: models.FilterProjectEnvsContentHintProjectsResponse10 = {
-  type: "postgres-user",
+  type: "postgres-prisma-url",
   storeId: "<id>",
 };
 ```
@@ -97,7 +97,7 @@ const value: models.FilterProjectEnvsContentHintProjectsResponse10 = {
 
 ```typescript
 const value: models.FilterProjectEnvsContentHintProjectsResponse11 = {
-  type: "postgres-host",
+  type: "postgres-user",
   storeId: "<id>",
 };
 ```
@@ -106,7 +106,7 @@ const value: models.FilterProjectEnvsContentHintProjectsResponse11 = {
 
 ```typescript
 const value: models.FilterProjectEnvsContentHintProjectsResponse12 = {
-  type: "postgres-password",
+  type: "postgres-host",
   storeId: "<id>",
 };
 ```
@@ -115,7 +115,7 @@ const value: models.FilterProjectEnvsContentHintProjectsResponse12 = {
 
 ```typescript
 const value: models.FilterProjectEnvsContentHintProjectsResponse13 = {
-  type: "postgres-database",
+  type: "postgres-password",
   storeId: "<id>",
 };
 ```
@@ -124,7 +124,7 @@ const value: models.FilterProjectEnvsContentHintProjectsResponse13 = {
 
 ```typescript
 const value: models.FilterProjectEnvsContentHintProjectsResponse14 = {
-  type: "postgres-url-no-ssl",
+  type: "postgres-database",
   storeId: "<id>",
 };
 ```
@@ -133,6 +133,15 @@ const value: models.FilterProjectEnvsContentHintProjectsResponse14 = {
 
 ```typescript
 const value: models.FilterProjectEnvsContentHintProjectsResponse15 = {
+  type: "postgres-url-no-ssl",
+  storeId: "<id>",
+};
+```
+
+### `models.FilterProjectEnvsContentHintProjectsResponse16`
+
+```typescript
+const value: models.FilterProjectEnvsContentHintProjectsResponse16 = {
   type: "integration-store-secret",
   storeId: "<id>",
   integrationId: "<id>",
@@ -141,10 +150,10 @@ const value: models.FilterProjectEnvsContentHintProjectsResponse15 = {
 };
 ```
 
-### `models.FilterProjectEnvsContentHintProjectsResponse16`
+### `models.FilterProjectEnvsContentHintProjectsResponse17`
 
 ```typescript
-const value: models.FilterProjectEnvsContentHintProjectsResponse16 = {
+const value: models.FilterProjectEnvsContentHintProjectsResponse17 = {
   type: "flags-connection-string",
   projectId: "<id>",
 };

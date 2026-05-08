@@ -1,0 +1,15 @@
+# UserEventPayload151Role
+
+## Example Usage
+
+```typescript
+import { UserEventPayload151Role } from "@vercel/sdk/models/payloadgituserid.js";
+
+let value: UserEventPayload151Role = "VIEWER_FOR_PLUS";
+```
+
+## Values
+
+```typescript
+"OWNER" | "MEMBER" | "DEVELOPER" | "SECURITY" | "BILLING" | "VIEWER" | "VIEWER_FOR_PLUS" | "CONTRIBUTOR"
+```

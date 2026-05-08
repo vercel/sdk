@@ -236,6 +236,8 @@ export const Name = {
   LogDrainEnabled: "log-drain-enabled",
   Login: "login",
   ManualDeploymentPromotionCreated: "manual-deployment-promotion-created",
+  MarketplaceIntegrationAllowlistUpdated:
+    "marketplace-integration-allowlist-updated",
   MicrofrontendGroupAdded: "microfrontend-group-added",
   MicrofrontendGroupDeleted: "microfrontend-group-deleted",
   MicrofrontendGroupUpdated: "microfrontend-group-updated",
@@ -326,6 +328,8 @@ export const Name = {
     "project-git-require-verified-commits-toggled",
   TeamGitRequireVerifiedCommitsToggled:
     "team-git-require-verified-commits-toggled",
+  TeamGitRepositoryDispatchEventsToggled:
+    "team-git-repository-dispatch-events-toggled",
   ProjectGitCommitStatusToggled: "project-git-commit-status-toggled",
   ProjectGitLfsToggled: "project-git-lfs-toggled",
   ProjectConsolidatedGitCommitStatusUpdated:
@@ -349,6 +353,8 @@ export const Name = {
   ProjectOidcTokenCreated: "project-oidc-token-created",
   ProjectOptionsAllowlist: "project-options-allowlist",
   ProjectPasswordProtection: "project-password-protection",
+  ProjectExpirationLocked: "project-expiration-locked",
+  ProjectExpirationScheduled: "project-expiration-scheduled",
   ProjectPaused: "project-paused",
   ProjectProgramEnrollmentChanged: "project-program-enrollment-changed",
   ProjectRollingReleaseEnabled: "project-rolling-release-enabled",
@@ -365,6 +371,7 @@ export const Name = {
     "project-rolling-release-suggested-actions-generated",
   ProjectRoutesVersionPromoted: "project-routes-version-promoted",
   ProjectRoutesVersionRestored: "project-routes-version-restored",
+  ProjectDeploymentPolicyUpdated: "project-deployment-policy-updated",
   ProjectOidcIssuerModeUpdated: "project-oidc-issuer-mode-updated",
   ProjectCustomerSuccessCodeVisibilityUpdated:
     "project-customer-success-code-visibility-updated",
@@ -436,6 +443,7 @@ export const Name = {
   TeamDefaultBuildMachineUpdated: "team-default-build-machine-updated",
   TeamDelete: "team-delete",
   StrictDeploymentProtectionSettings: "strict-deployment-protection-settings",
+  TeamDeploymentPolicyUpdated: "team-deployment-policy-updated",
   StrictShareableLinks: "strict-shareable-links",
   TeamDomainVerificationCreated: "team-domain-verification-created",
   TeamDomainVerificationDeleted: "team-domain-verification-deleted",
@@ -773,6 +781,8 @@ export const ReplacedBy = {
   LogDrainEnabled: "log-drain-enabled",
   Login: "login",
   ManualDeploymentPromotionCreated: "manual-deployment-promotion-created",
+  MarketplaceIntegrationAllowlistUpdated:
+    "marketplace-integration-allowlist-updated",
   MicrofrontendGroupAdded: "microfrontend-group-added",
   MicrofrontendGroupDeleted: "microfrontend-group-deleted",
   MicrofrontendGroupUpdated: "microfrontend-group-updated",
@@ -863,6 +873,8 @@ export const ReplacedBy = {
     "project-git-require-verified-commits-toggled",
   TeamGitRequireVerifiedCommitsToggled:
     "team-git-require-verified-commits-toggled",
+  TeamGitRepositoryDispatchEventsToggled:
+    "team-git-repository-dispatch-events-toggled",
   ProjectGitCommitStatusToggled: "project-git-commit-status-toggled",
   ProjectGitLfsToggled: "project-git-lfs-toggled",
   ProjectConsolidatedGitCommitStatusUpdated:
@@ -886,6 +898,8 @@ export const ReplacedBy = {
   ProjectOidcTokenCreated: "project-oidc-token-created",
   ProjectOptionsAllowlist: "project-options-allowlist",
   ProjectPasswordProtection: "project-password-protection",
+  ProjectExpirationLocked: "project-expiration-locked",
+  ProjectExpirationScheduled: "project-expiration-scheduled",
   ProjectPaused: "project-paused",
   ProjectProgramEnrollmentChanged: "project-program-enrollment-changed",
   ProjectRollingReleaseEnabled: "project-rolling-release-enabled",
@@ -902,6 +916,7 @@ export const ReplacedBy = {
     "project-rolling-release-suggested-actions-generated",
   ProjectRoutesVersionPromoted: "project-routes-version-promoted",
   ProjectRoutesVersionRestored: "project-routes-version-restored",
+  ProjectDeploymentPolicyUpdated: "project-deployment-policy-updated",
   ProjectOidcIssuerModeUpdated: "project-oidc-issuer-mode-updated",
   ProjectCustomerSuccessCodeVisibilityUpdated:
     "project-customer-success-code-visibility-updated",
@@ -973,6 +988,7 @@ export const ReplacedBy = {
   TeamDefaultBuildMachineUpdated: "team-default-build-machine-updated",
   TeamDelete: "team-delete",
   StrictDeploymentProtectionSettings: "strict-deployment-protection-settings",
+  TeamDeploymentPolicyUpdated: "team-deployment-policy-updated",
   StrictShareableLinks: "strict-shareable-links",
   TeamDomainVerificationCreated: "team-domain-verification-created",
   TeamDomainVerificationDeleted: "team-domain-verification-deleted",

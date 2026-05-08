@@ -5,21 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndSixtyThree } from "@vercel/sdk/models/oldoptionsallowlist.js";
+import { TwoHundredAndSixtyThree } from "@vercel/sdk/models/twohundredandtwentythree.js";
 
 let value: TwoHundredAndSixtyThree = {
-  trialCreditsIssuedAt: 8969.75,
-  expiresAt: "1746357025663",
-  amount: "858.79",
-  currency: "Moldovan Leu",
+  store: {
+    name: "<value>",
+    id: "<id>",
+  },
 };
 ```
 
 ## Fields
 
-| Field                  | Type                   | Required               | Description            |
-| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
-| `trialCreditsIssuedAt` | *number*               | :heavy_check_mark:     | N/A                    |
-| `expiresAt`            | *string*               | :heavy_check_mark:     | N/A                    |
-| `amount`               | *string*               | :heavy_check_mark:     | N/A                    |
-| `currency`             | *string*               | :heavy_check_mark:     | N/A                    |
+| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `store`                                                                  | [models.UserEventPayload263Store](../models/usereventpayload263store.md) | :heavy_check_mark:                                                       | N/A                                                                      |
+| `ownerId`                                                                | *string*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |

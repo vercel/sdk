@@ -47,11 +47,11 @@ import {
   CreateProjectEnvResponseBody,
 } from "../models/createprojectenvop.js";
 import { CreateProjectResponseBody } from "../models/createprojectresponsebody.js";
+import { CreateProjectRequest } from "../models/createprojectto.js";
 import {
   CreateProjectTransferRequestRequest,
   CreateProjectTransferRequestResponseBody,
 } from "../models/createprojecttransferrequestop.js";
-import { CreateProjectRequest } from "../models/createprojecttrustedsources.js";
 import { DeleteProjectRequest } from "../models/deleteprojectop.js";
 import {
   EditProjectEnvRequest,
@@ -73,8 +73,8 @@ import {
   GetProjectEnvRequest,
   GetProjectEnvResponseBody,
 } from "../models/getprojectenvop.js";
-import { GetProjectsRequest } from "../models/getprojectslogheadersprojectsresponse2.js";
 import { GetProjectsResponseBody } from "../models/getprojectsresponsebody.js";
+import { GetProjectsRequest } from "../models/getprojectsresponsebodyprojectsowasp.js";
 import {
   ListPromoteAliasesRequest,
   ListPromoteAliasesResponseBody,
@@ -95,13 +95,13 @@ import {
 import { RequestPromoteRequest } from "../models/requestpromoteop.js";
 import { RequestRollbackRequest } from "../models/requestrollbackop.js";
 import { UnpauseProjectRequest } from "../models/unpauseprojectop.js";
+import { UpdateMicrofrontendsRequest } from "../models/updatemicrofrontendslogheaders.js";
 import { UpdateMicrofrontendsResponseBody } from "../models/updatemicrofrontendsresponsebody.js";
-import { UpdateMicrofrontendsRequest } from "../models/updatemicrofrontendssecurity.js";
 import {
   UpdateProjectDomainRequest,
   UpdateProjectDomainResponseBody,
 } from "../models/updateprojectdomainop.js";
-import { UpdateProjectRequest } from "../models/updateprojectjobstatus.js";
+import { UpdateProjectRequest } from "../models/updateprojectprojectsresponsebuildqueue.js";
 import {
   UpdateProjectProtectionBypassRequest,
   UpdateProjectProtectionBypassResponseBody,

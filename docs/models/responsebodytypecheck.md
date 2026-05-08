@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyTypecheck } from "@vercel/sdk/models/getprojectslogheadersprojectsresponse2.js";
+import { ResponseBodyTypecheck } from "@vercel/sdk/models/getprojectsresponsebodyprojectsowasp.js";
 
 let value: ResponseBodyTypecheck = {
   targets: [

@@ -18,7 +18,7 @@ import {
 import {
   CreateProjectRequest,
   CreateProjectRequest$outboundSchema,
-} from "../models/createprojecttrustedsources.js";
+} from "../models/createprojectto.js";
 import {
   ConnectionError,
   InvalidRequestError,

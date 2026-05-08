@@ -5,13 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndNinetySeven } from "@vercel/sdk/models/environment.js";
+import { TwoHundredAndNinetySeven } from "@vercel/sdk/models/twohundredandseventyfour.js";
 
-let value: TwoHundredAndNinetySeven = {};
+let value: TwoHundredAndNinetySeven = {
+  enabled: true,
+  scope: "log-drains",
+};
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `slug`             | *string*           | :heavy_minus_sign: | N/A                |
+| Field                              | Type                               | Required                           | Description                        |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| `enabled`                          | *boolean*                          | :heavy_check_mark:                 | N/A                                |
+| `scope`                            | [models.Scope](../models/scope.md) | :heavy_check_mark:                 | N/A                                |

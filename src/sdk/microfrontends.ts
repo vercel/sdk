@@ -24,8 +24,8 @@ import {
   GetMicrofrontendsGroupsRequest,
   GetMicrofrontendsGroupsResponseBody,
 } from "../models/getmicrofrontendsgroupsop.js";
-import { GetMicrofrontendsInGroupRequest } from "../models/getmicrofrontendsingroupoidcproviders.js";
 import { GetMicrofrontendsInGroupResponseBody } from "../models/getmicrofrontendsingroupresponsebody.js";
+import { GetMicrofrontendsInGroupRequest } from "../models/getmicrofrontendsingroupto1.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class Microfrontends extends ClientSDK {

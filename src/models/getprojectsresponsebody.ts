@@ -14,7 +14,7 @@ import {
   GetProjectsResponseBody3$inboundSchema,
   GetProjectsResponseBody3$Outbound,
   GetProjectsResponseBody3$outboundSchema,
-} from "./getprojectstoprojectsresponse2.js";
+} from "./getprojectsresponsebodycustomallow.js";
 import {
   Alias,
   Alias$inboundSchema,
@@ -31,6 +31,9 @@ import {
   ResponseBodyAnalytics$inboundSchema,
   ResponseBodyAnalytics$Outbound,
   ResponseBodyAnalytics$outboundSchema,
+  ResponseBodyBuildMachineType,
+  ResponseBodyBuildMachineType$inboundSchema,
+  ResponseBodyBuildMachineType$outboundSchema,
   ResponseBodyDeploymentExpiration,
   ResponseBodyDeploymentExpiration$inboundSchema,
   ResponseBodyDeploymentExpiration$Outbound,
@@ -42,6 +45,9 @@ import {
   ResponseBodyFramework,
   ResponseBodyFramework$inboundSchema,
   ResponseBodyFramework$outboundSchema,
+  ResponseBodyFunctionDefaultMemoryType,
+  ResponseBodyFunctionDefaultMemoryType$inboundSchema,
+  ResponseBodyFunctionDefaultMemoryType$outboundSchema,
   ResponseBodyIpBuckets,
   ResponseBodyIpBuckets$inboundSchema,
   ResponseBodyIpBuckets$Outbound,
@@ -58,12 +64,43 @@ import {
   ResponseBodyPasswordProtection$inboundSchema,
   ResponseBodyPasswordProtection$Outbound,
   ResponseBodyPasswordProtection$outboundSchema,
-  ResponseBodyResourceConfig,
-  ResponseBodyResourceConfig$inboundSchema,
-  ResponseBodyResourceConfig$Outbound,
-  ResponseBodyResourceConfig$outboundSchema,
-} from "./responsebodyresourceconfig.js";
+} from "./responsebodybuildmachinetype.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export const ResponseBodyBuildMachineSelection = {
+  Fixed: "fixed",
+  Elastic: "elastic",
+} as const;
+export type ResponseBodyBuildMachineSelection = ClosedEnum<
+  typeof ResponseBodyBuildMachineSelection
+>;
+
+export const GetProjectsResponseBodyConfiguration = {
+  SkipNamespaceQueue: "SKIP_NAMESPACE_QUEUE",
+  WaitForNamespaceQueue: "WAIT_FOR_NAMESPACE_QUEUE",
+} as const;
+export type GetProjectsResponseBodyConfiguration = ClosedEnum<
+  typeof GetProjectsResponseBodyConfiguration
+>;
+
+export type ResponseBodyBuildQueue = {
+  configuration?: GetProjectsResponseBodyConfiguration | undefined;
+};
+
+export type ResponseBodyResourceConfig = {
+  elasticConcurrencyEnabled?: boolean | undefined;
+  fluid?: boolean | undefined;
+  functionDefaultRegions: Array<string>;
+  functionDefaultTimeout?: number | undefined;
+  functionDefaultMemoryType?: ResponseBodyFunctionDefaultMemoryType | undefined;
+  functionZeroConfigFailover?: boolean | undefined;
+  buildMachineType?: ResponseBodyBuildMachineType | undefined;
+  buildMachineSelection?: ResponseBodyBuildMachineSelection | undefined;
+  buildMachineElasticLastUpdated?: number | undefined;
+  isNSNBDisabled?: boolean | undefined;
+  buildQueue?: ResponseBodyBuildQueue | undefined;
+  enableFunctionsBeta?: boolean | undefined;
+};
 
 /**
  * An array of all the stages required during a deployment release. Each stage defines a target percentage and advancement rules. The final stage must always have targetPercentage: 100.
@@ -381,7 +418,7 @@ export type ResponseBodyGitProviderOptions = {
    */
   createDeployments: ResponseBodyCreateDeployments;
   /**
-   * Whether the Vercel bot should not automatically create GitHub repository-dispatch events on deployment events. https://vercel.com/docs/git/vercel-for-github#repository-dispatch-events
+   * Whether the Vercel bot should not automatically create GitHub repository-dispatch events on deployment events. https://vercel.com/docs/git/vercel-for-github#repository-dispatch-events - `true`: disable repository-dispatch events for this project (explicit override of the team setting). - `false`: enable repository-dispatch events for this project (explicit override of the team setting). - absent: inherit from `team.disableRepositoryDispatchEvents`.
    */
   disableRepositoryDispatchEvents?: boolean | undefined;
   /**
@@ -1042,6 +1079,146 @@ export type GetProjectsResponseBody =
   | GetProjectsResponseBody2
   | GetProjectsResponseBody3
   | Array<GetProjectsResponseBody1>;
+
+/** @internal */
+export const ResponseBodyBuildMachineSelection$inboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyBuildMachineSelection
+> = z.nativeEnum(ResponseBodyBuildMachineSelection);
+/** @internal */
+export const ResponseBodyBuildMachineSelection$outboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyBuildMachineSelection
+> = ResponseBodyBuildMachineSelection$inboundSchema;
+
+/** @internal */
+export const GetProjectsResponseBodyConfiguration$inboundSchema:
+  z.ZodNativeEnum<typeof GetProjectsResponseBodyConfiguration> = z.nativeEnum(
+    GetProjectsResponseBodyConfiguration,
+  );
+/** @internal */
+export const GetProjectsResponseBodyConfiguration$outboundSchema:
+  z.ZodNativeEnum<typeof GetProjectsResponseBodyConfiguration> =
+    GetProjectsResponseBodyConfiguration$inboundSchema;
+
+/** @internal */
+export const ResponseBodyBuildQueue$inboundSchema: z.ZodType<
+  ResponseBodyBuildQueue,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  configuration: types.optional(
+    GetProjectsResponseBodyConfiguration$inboundSchema,
+  ),
+});
+/** @internal */
+export type ResponseBodyBuildQueue$Outbound = {
+  configuration?: string | undefined;
+};
+
+/** @internal */
+export const ResponseBodyBuildQueue$outboundSchema: z.ZodType<
+  ResponseBodyBuildQueue$Outbound,
+  z.ZodTypeDef,
+  ResponseBodyBuildQueue
+> = z.object({
+  configuration: GetProjectsResponseBodyConfiguration$outboundSchema.optional(),
+});
+
+export function responseBodyBuildQueueToJSON(
+  responseBodyBuildQueue: ResponseBodyBuildQueue,
+): string {
+  return JSON.stringify(
+    ResponseBodyBuildQueue$outboundSchema.parse(responseBodyBuildQueue),
+  );
+}
+export function responseBodyBuildQueueFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodyBuildQueue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodyBuildQueue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyBuildQueue' from JSON`,
+  );
+}
+
+/** @internal */
+export const ResponseBodyResourceConfig$inboundSchema: z.ZodType<
+  ResponseBodyResourceConfig,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  elasticConcurrencyEnabled: types.optional(types.boolean()),
+  fluid: types.optional(types.boolean()),
+  functionDefaultRegions: z.array(types.string()),
+  functionDefaultTimeout: types.optional(types.number()),
+  functionDefaultMemoryType: types.optional(
+    ResponseBodyFunctionDefaultMemoryType$inboundSchema,
+  ),
+  functionZeroConfigFailover: types.optional(types.boolean()),
+  buildMachineType: types.optional(ResponseBodyBuildMachineType$inboundSchema),
+  buildMachineSelection: types.optional(
+    ResponseBodyBuildMachineSelection$inboundSchema,
+  ),
+  buildMachineElasticLastUpdated: types.optional(types.number()),
+  isNSNBDisabled: types.optional(types.boolean()),
+  buildQueue: types.optional(
+    z.lazy(() => ResponseBodyBuildQueue$inboundSchema),
+  ),
+  enableFunctionsBeta: types.optional(types.boolean()),
+});
+/** @internal */
+export type ResponseBodyResourceConfig$Outbound = {
+  elasticConcurrencyEnabled?: boolean | undefined;
+  fluid?: boolean | undefined;
+  functionDefaultRegions: Array<string>;
+  functionDefaultTimeout?: number | undefined;
+  functionDefaultMemoryType?: string | undefined;
+  functionZeroConfigFailover?: boolean | undefined;
+  buildMachineType?: string | undefined;
+  buildMachineSelection?: string | undefined;
+  buildMachineElasticLastUpdated?: number | undefined;
+  isNSNBDisabled?: boolean | undefined;
+  buildQueue?: ResponseBodyBuildQueue$Outbound | undefined;
+  enableFunctionsBeta?: boolean | undefined;
+};
+
+/** @internal */
+export const ResponseBodyResourceConfig$outboundSchema: z.ZodType<
+  ResponseBodyResourceConfig$Outbound,
+  z.ZodTypeDef,
+  ResponseBodyResourceConfig
+> = z.object({
+  elasticConcurrencyEnabled: z.boolean().optional(),
+  fluid: z.boolean().optional(),
+  functionDefaultRegions: z.array(z.string()),
+  functionDefaultTimeout: z.number().optional(),
+  functionDefaultMemoryType:
+    ResponseBodyFunctionDefaultMemoryType$outboundSchema.optional(),
+  functionZeroConfigFailover: z.boolean().optional(),
+  buildMachineType: ResponseBodyBuildMachineType$outboundSchema.optional(),
+  buildMachineSelection: ResponseBodyBuildMachineSelection$outboundSchema
+    .optional(),
+  buildMachineElasticLastUpdated: z.number().optional(),
+  isNSNBDisabled: z.boolean().optional(),
+  buildQueue: z.lazy(() => ResponseBodyBuildQueue$outboundSchema).optional(),
+  enableFunctionsBeta: z.boolean().optional(),
+});
+
+export function responseBodyResourceConfigToJSON(
+  responseBodyResourceConfig: ResponseBodyResourceConfig,
+): string {
+  return JSON.stringify(
+    ResponseBodyResourceConfig$outboundSchema.parse(responseBodyResourceConfig),
+  );
+}
+export function responseBodyResourceConfigFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodyResourceConfig, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodyResourceConfig$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyResourceConfig' from JSON`,
+  );
+}
 
 /** @internal */
 export const ResponseBodyStages$inboundSchema: z.ZodType<
@@ -5485,7 +5662,7 @@ export const GetProjectsResponseBody1$inboundSchema: z.ZodType<
   passwordProtection: z.nullable(ResponseBodyPasswordProtection$inboundSchema)
     .optional(),
   publicSource: z.nullable(types.boolean()).optional(),
-  resourceConfig: ResponseBodyResourceConfig$inboundSchema,
+  resourceConfig: z.lazy(() => ResponseBodyResourceConfig$inboundSchema),
   rollingRelease: z.nullable(
     z.lazy(() => ResponseBodyRollingRelease$inboundSchema),
   ).optional(),
@@ -5638,7 +5815,7 @@ export const GetProjectsResponseBody1$outboundSchema: z.ZodType<
   passwordProtection: z.nullable(ResponseBodyPasswordProtection$outboundSchema)
     .optional(),
   publicSource: z.nullable(z.boolean()).optional(),
-  resourceConfig: ResponseBodyResourceConfig$outboundSchema,
+  resourceConfig: z.lazy(() => ResponseBodyResourceConfig$outboundSchema),
   rollingRelease: z.nullable(
     z.lazy(() => ResponseBodyRollingRelease$outboundSchema),
   ).optional(),

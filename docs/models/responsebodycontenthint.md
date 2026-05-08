@@ -61,7 +61,7 @@ const value: models.FilterProjectEnvsContentHint6 = {
 
 ```typescript
 const value: models.FilterProjectEnvsContentHint7 = {
-  type: "postgres-url",
+  type: "blob-webhook-public-key",
   storeId: "<id>",
 };
 ```
@@ -70,7 +70,7 @@ const value: models.FilterProjectEnvsContentHint7 = {
 
 ```typescript
 const value: models.FilterProjectEnvsContentHint8 = {
-  type: "postgres-url-non-pooling",
+  type: "postgres-url",
   storeId: "<id>",
 };
 ```
@@ -79,7 +79,7 @@ const value: models.FilterProjectEnvsContentHint8 = {
 
 ```typescript
 const value: models.FilterProjectEnvsContentHint9 = {
-  type: "postgres-prisma-url",
+  type: "postgres-url-non-pooling",
   storeId: "<id>",
 };
 ```
@@ -88,7 +88,7 @@ const value: models.FilterProjectEnvsContentHint9 = {
 
 ```typescript
 const value: models.FilterProjectEnvsContentHint10 = {
-  type: "postgres-user",
+  type: "postgres-prisma-url",
   storeId: "<id>",
 };
 ```
@@ -97,7 +97,7 @@ const value: models.FilterProjectEnvsContentHint10 = {
 
 ```typescript
 const value: models.FilterProjectEnvsContentHint11 = {
-  type: "postgres-host",
+  type: "postgres-user",
   storeId: "<id>",
 };
 ```
@@ -106,7 +106,7 @@ const value: models.FilterProjectEnvsContentHint11 = {
 
 ```typescript
 const value: models.FilterProjectEnvsContentHint12 = {
-  type: "postgres-password",
+  type: "postgres-host",
   storeId: "<id>",
 };
 ```
@@ -115,7 +115,7 @@ const value: models.FilterProjectEnvsContentHint12 = {
 
 ```typescript
 const value: models.FilterProjectEnvsContentHint13 = {
-  type: "postgres-database",
+  type: "postgres-password",
   storeId: "<id>",
 };
 ```
@@ -124,7 +124,7 @@ const value: models.FilterProjectEnvsContentHint13 = {
 
 ```typescript
 const value: models.FilterProjectEnvsContentHint14 = {
-  type: "postgres-url-no-ssl",
+  type: "postgres-database",
   storeId: "<id>",
 };
 ```
@@ -133,6 +133,15 @@ const value: models.FilterProjectEnvsContentHint14 = {
 
 ```typescript
 const value: models.FilterProjectEnvsContentHint15 = {
+  type: "postgres-url-no-ssl",
+  storeId: "<id>",
+};
+```
+
+### `models.FilterProjectEnvsContentHint16`
+
+```typescript
+const value: models.FilterProjectEnvsContentHint16 = {
   type: "integration-store-secret",
   storeId: "<id>",
   integrationId: "<id>",
@@ -141,10 +150,10 @@ const value: models.FilterProjectEnvsContentHint15 = {
 };
 ```
 
-### `models.FilterProjectEnvsContentHint16`
+### `models.FilterProjectEnvsContentHint17`
 
 ```typescript
-const value: models.FilterProjectEnvsContentHint16 = {
+const value: models.FilterProjectEnvsContentHint17 = {
   type: "flags-connection-string",
   projectId: "<id>",
 };

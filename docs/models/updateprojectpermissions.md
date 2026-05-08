@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UpdateProjectPermissions } from "@vercel/sdk/models/updateprojectjobstatus.js";
+import { UpdateProjectPermissions } from "@vercel/sdk/models/updateprojectresponsebody.js";
 
 let value: UpdateProjectPermissions = {};
 ```
@@ -60,6 +60,7 @@ let value: UpdateProjectPermissions = {};
 | `buildMachineDefault`                        | [models.ACLAction](../models/aclaction.md)[] | :heavy_minus_sign:                           | N/A                                          |
 | `dataCacheBillingSettings`                   | [models.ACLAction](../models/aclaction.md)[] | :heavy_minus_sign:                           | N/A                                          |
 | `defaultDeploymentProtection`                | [models.ACLAction](../models/aclaction.md)[] | :heavy_minus_sign:                           | N/A                                          |
+| `deploymentPolicy`                           | [models.ACLAction](../models/aclaction.md)[] | :heavy_minus_sign:                           | N/A                                          |
 | `domain`                                     | [models.ACLAction](../models/aclaction.md)[] | :heavy_minus_sign:                           | N/A                                          |
 | `domainAcceptDelegation`                     | [models.ACLAction](../models/aclaction.md)[] | :heavy_minus_sign:                           | N/A                                          |
 | `domainAuthCodes`                            | [models.ACLAction](../models/aclaction.md)[] | :heavy_minus_sign:                           | N/A                                          |

@@ -3,17 +3,17 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsContentHint7 } from "@vercel/sdk/models/responsebodyresourceconfig.js";
+import { GetProjectsContentHint7 } from "@vercel/sdk/models/responsebodybuildmachinetype.js";
 
 let value: GetProjectsContentHint7 = {
-  type: "postgres-url",
+  type: "blob-webhook-public-key",
   storeId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `type`             | *"postgres-url"*   | :heavy_check_mark: | N/A                |
-| `storeId`          | *string*           | :heavy_check_mark: | N/A                |
+| Field                       | Type                        | Required                    | Description                 |
+| --------------------------- | --------------------------- | --------------------------- | --------------------------- |
+| `type`                      | *"blob-webhook-public-key"* | :heavy_check_mark:          | N/A                         |
+| `storeId`                   | *string*                    | :heavy_check_mark:          | N/A                         |

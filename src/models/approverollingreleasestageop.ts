@@ -71,6 +71,7 @@ export type ApproveRollingReleaseStageSubstate = ClosedEnum<
 export const ApproveRollingReleaseStageReadyState = {
   Building: "BUILDING",
   Error: "ERROR",
+  Blocked: "BLOCKED",
   Initializing: "INITIALIZING",
   Queued: "QUEUED",
   Ready: "READY",
@@ -158,6 +159,7 @@ export type ApproveRollingReleaseStageCurrentDeployment = {
 export const ApproveRollingReleaseStageRollingReleaseReadyState = {
   Building: "BUILDING",
   Error: "ERROR",
+  Blocked: "BLOCKED",
   Initializing: "INITIALIZING",
   Queued: "QUEUED",
   Ready: "READY",

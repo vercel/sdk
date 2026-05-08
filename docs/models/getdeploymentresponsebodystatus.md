@@ -11,5 +11,5 @@ let value: GetDeploymentResponseBodyStatus = "ERROR";
 ## Values
 
 ```typescript
-"QUEUED" | "BUILDING" | "ERROR" | "INITIALIZING" | "READY" | "CANCELED"
+"QUEUED" | "BUILDING" | "ERROR" | "BLOCKED" | "INITIALIZING" | "READY" | "CANCELED"
 ```

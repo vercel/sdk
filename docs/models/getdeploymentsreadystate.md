@@ -13,5 +13,5 @@ let value: GetDeploymentsReadyState = "READY";
 ## Values
 
 ```typescript
-"BUILDING" | "ERROR" | "INITIALIZING" | "QUEUED" | "READY" | "CANCELED" | "DELETED"
+"BUILDING" | "ERROR" | "BLOCKED" | "INITIALIZING" | "QUEUED" | "READY" | "CANCELED" | "DELETED"
 ```

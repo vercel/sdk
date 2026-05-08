@@ -3,17 +3,17 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsContentHintProjectsResponse12 } from "@vercel/sdk/models/getprojectslogheadersprojectsresponse2.js";
+import { GetProjectsContentHintProjectsResponse12 } from "@vercel/sdk/models/getprojectsresponsebodyprojectsowasp.js";
 
 let value: GetProjectsContentHintProjectsResponse12 = {
-  type: "postgres-password",
+  type: "postgres-host",
   storeId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field                 | Type                  | Required              | Description           |
-| --------------------- | --------------------- | --------------------- | --------------------- |
-| `type`                | *"postgres-password"* | :heavy_check_mark:    | N/A                   |
-| `storeId`             | *string*              | :heavy_check_mark:    | N/A                   |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `type`             | *"postgres-host"*  | :heavy_check_mark: | N/A                |
+| `storeId`          | *string*           | :heavy_check_mark: | N/A                |

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { OverageReason } from "@vercel/sdk/models/job6.js";
+import { OverageReason } from "@vercel/sdk/models/usereventjobpayload76githashtagvercel.js";
 
 let value: OverageReason = "fluidCpuDuration";
 ```

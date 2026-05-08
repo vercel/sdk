@@ -73,6 +73,7 @@ export type Substate = ClosedEnum<typeof Substate>;
 export const GetRollingReleaseReadyState = {
   Building: "BUILDING",
   Error: "ERROR",
+  Blocked: "BLOCKED",
   Initializing: "INITIALIZING",
   Queued: "QUEUED",
   Ready: "READY",
@@ -160,6 +161,7 @@ export type CurrentDeployment = {
 export const GetRollingReleaseRollingReleaseReadyState = {
   Building: "BUILDING",
   Error: "ERROR",
+  Blocked: "BLOCKED",
   Initializing: "INITIALIZING",
   Queued: "QUEUED",
   Ready: "READY",

@@ -1,0 +1,15 @@
+# UserEventPayload269Previous
+
+## Example Usage
+
+```typescript
+import { UserEventPayload269Previous } from "@vercel/sdk/models/twohundredandtwentythree.js";
+
+let value: UserEventPayload269Previous = "turbo";
+```
+
+## Values
+
+```typescript
+"enhanced" | "turbo" | "standard" | "elastic"
+```

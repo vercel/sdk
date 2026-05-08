@@ -46,6 +46,10 @@ import {
   GetMicrofrontendsInGroupEnv$inboundSchema,
   GetMicrofrontendsInGroupEnv$Outbound,
   GetMicrofrontendsInGroupEnv$outboundSchema,
+  GetMicrofrontendsInGroupExpiration,
+  GetMicrofrontendsInGroupExpiration$inboundSchema,
+  GetMicrofrontendsInGroupExpiration$Outbound,
+  GetMicrofrontendsInGroupExpiration$outboundSchema,
   GetMicrofrontendsInGroupFramework,
   GetMicrofrontendsInGroupFramework$inboundSchema,
   GetMicrofrontendsInGroupFramework$outboundSchema,
@@ -84,10 +88,6 @@ import {
   GetMicrofrontendsInGroupNodeVersion,
   GetMicrofrontendsInGroupNodeVersion$inboundSchema,
   GetMicrofrontendsInGroupNodeVersion$outboundSchema,
-  GetMicrofrontendsInGroupOidcProviders,
-  GetMicrofrontendsInGroupOidcProviders$inboundSchema,
-  GetMicrofrontendsInGroupOidcProviders$Outbound,
-  GetMicrofrontendsInGroupOidcProviders$outboundSchema,
   GetMicrofrontendsInGroupOptionsAllowlist,
   GetMicrofrontendsInGroupOptionsAllowlist$inboundSchema,
   GetMicrofrontendsInGroupOptionsAllowlist$Outbound,
@@ -132,12 +132,30 @@ import {
   GetMicrofrontendsInGroupTargets$inboundSchema,
   GetMicrofrontendsInGroupTargets$Outbound,
   GetMicrofrontendsInGroupTargets$outboundSchema,
+  GetMicrofrontendsInGroupTo1,
+  GetMicrofrontendsInGroupTo1$inboundSchema,
+  GetMicrofrontendsInGroupTo1$Outbound,
+  GetMicrofrontendsInGroupTo1$outboundSchema,
+  GetMicrofrontendsInGroupTo2,
+  GetMicrofrontendsInGroupTo2$inboundSchema,
+  GetMicrofrontendsInGroupTo2$Outbound,
+  GetMicrofrontendsInGroupTo2$outboundSchema,
   GetMicrofrontendsInGroupTrustedIps,
   GetMicrofrontendsInGroupTrustedIps$inboundSchema,
   GetMicrofrontendsInGroupTrustedIps$Outbound,
   GetMicrofrontendsInGroupTrustedIps$outboundSchema,
-} from "./getmicrofrontendsingroupoidcproviders.js";
+} from "./getmicrofrontendsingroupto1.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export type GetMicrofrontendsInGroupTo =
+  | GetMicrofrontendsInGroupTo1
+  | GetMicrofrontendsInGroupTo2;
+
+export type GetMicrofrontendsInGroupOidcProviders = {
+  to: GetMicrofrontendsInGroupTo1 | GetMicrofrontendsInGroupTo2;
+  label?: string | undefined;
+  claims: { [k: string]: Array<string> };
+};
 
 export type GetMicrofrontendsInGroupTrustedSources = {
   projects?:
@@ -193,7 +211,7 @@ export type GetMicrofrontendsInGroupGitProviderOptions = {
    */
   createDeployments: GetMicrofrontendsInGroupCreateDeployments;
   /**
-   * Whether the Vercel bot should not automatically create GitHub repository-dispatch events on deployment events. https://vercel.com/docs/git/vercel-for-github#repository-dispatch-events
+   * Whether the Vercel bot should not automatically create GitHub repository-dispatch events on deployment events. https://vercel.com/docs/git/vercel-for-github#repository-dispatch-events - `true`: disable repository-dispatch events for this project (explicit override of the team setting). - `false`: enable repository-dispatch events for this project (explicit override of the team setting). - absent: inherit from `team.disableRepositoryDispatchEvents`.
    */
   disableRepositoryDispatchEvents?: boolean | undefined;
   /**
@@ -394,6 +412,10 @@ export type GetMicrofrontendsInGroupUsageStatus = {
    * Timestamp until which throttling is bypassed (project pays list rates for overage).
    */
   bypassThrottleUntil?: number | undefined;
+  /**
+   * Whether the project is currently throttled.
+   */
+  throttled?: boolean | undefined;
 };
 
 export type GetMicrofrontendsInGroupFeatures = {
@@ -761,6 +783,7 @@ export type GetMicrofrontendsInGroupProjects = {
    * Retention policies for deployments. These are enforced at the project level, but we also maintain an instance of this at the team level as a default policy that gets applied to new projects.
    */
   deploymentExpiration: GetMicrofrontendsInGroupDeploymentExpiration;
+  expiration?: GetMicrofrontendsInGroupExpiration | undefined;
   devCommand?: string | null | undefined;
   directoryListing: boolean;
   installCommand?: string | null | undefined;
@@ -868,6 +891,103 @@ export type GetMicrofrontendsInGroupResponseBody = {
 };
 
 /** @internal */
+export const GetMicrofrontendsInGroupTo$inboundSchema: z.ZodType<
+  GetMicrofrontendsInGroupTo,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  GetMicrofrontendsInGroupTo1$inboundSchema,
+  GetMicrofrontendsInGroupTo2$inboundSchema,
+]);
+/** @internal */
+export type GetMicrofrontendsInGroupTo$Outbound =
+  | GetMicrofrontendsInGroupTo1$Outbound
+  | GetMicrofrontendsInGroupTo2$Outbound;
+
+/** @internal */
+export const GetMicrofrontendsInGroupTo$outboundSchema: z.ZodType<
+  GetMicrofrontendsInGroupTo$Outbound,
+  z.ZodTypeDef,
+  GetMicrofrontendsInGroupTo
+> = smartUnion([
+  GetMicrofrontendsInGroupTo1$outboundSchema,
+  GetMicrofrontendsInGroupTo2$outboundSchema,
+]);
+
+export function getMicrofrontendsInGroupToToJSON(
+  getMicrofrontendsInGroupTo: GetMicrofrontendsInGroupTo,
+): string {
+  return JSON.stringify(
+    GetMicrofrontendsInGroupTo$outboundSchema.parse(getMicrofrontendsInGroupTo),
+  );
+}
+export function getMicrofrontendsInGroupToFromJSON(
+  jsonString: string,
+): SafeParseResult<GetMicrofrontendsInGroupTo, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetMicrofrontendsInGroupTo$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetMicrofrontendsInGroupTo' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetMicrofrontendsInGroupOidcProviders$inboundSchema: z.ZodType<
+  GetMicrofrontendsInGroupOidcProviders,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  to: smartUnion([
+    GetMicrofrontendsInGroupTo1$inboundSchema,
+    GetMicrofrontendsInGroupTo2$inboundSchema,
+  ]),
+  label: types.optional(types.string()),
+  claims: z.record(z.array(types.string())),
+});
+/** @internal */
+export type GetMicrofrontendsInGroupOidcProviders$Outbound = {
+  to:
+    | GetMicrofrontendsInGroupTo1$Outbound
+    | GetMicrofrontendsInGroupTo2$Outbound;
+  label?: string | undefined;
+  claims: { [k: string]: Array<string> };
+};
+
+/** @internal */
+export const GetMicrofrontendsInGroupOidcProviders$outboundSchema: z.ZodType<
+  GetMicrofrontendsInGroupOidcProviders$Outbound,
+  z.ZodTypeDef,
+  GetMicrofrontendsInGroupOidcProviders
+> = z.object({
+  to: smartUnion([
+    GetMicrofrontendsInGroupTo1$outboundSchema,
+    GetMicrofrontendsInGroupTo2$outboundSchema,
+  ]),
+  label: z.string().optional(),
+  claims: z.record(z.array(z.string())),
+});
+
+export function getMicrofrontendsInGroupOidcProvidersToJSON(
+  getMicrofrontendsInGroupOidcProviders: GetMicrofrontendsInGroupOidcProviders,
+): string {
+  return JSON.stringify(
+    GetMicrofrontendsInGroupOidcProviders$outboundSchema.parse(
+      getMicrofrontendsInGroupOidcProviders,
+    ),
+  );
+}
+export function getMicrofrontendsInGroupOidcProvidersFromJSON(
+  jsonString: string,
+): SafeParseResult<GetMicrofrontendsInGroupOidcProviders, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetMicrofrontendsInGroupOidcProviders$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetMicrofrontendsInGroupOidcProviders' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetMicrofrontendsInGroupTrustedSources$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupTrustedSources,
   z.ZodTypeDef,
@@ -877,7 +997,9 @@ export const GetMicrofrontendsInGroupTrustedSources$inboundSchema: z.ZodType<
     z.record(GetMicrofrontendsInGroupMicrofrontendsProjects$inboundSchema),
   ),
   oidcProviders: types.optional(
-    z.record(z.array(GetMicrofrontendsInGroupOidcProviders$inboundSchema)),
+    z.record(z.array(z.lazy(() =>
+      GetMicrofrontendsInGroupOidcProviders$inboundSchema
+    ))),
   ),
 });
 /** @internal */
@@ -900,7 +1022,7 @@ export const GetMicrofrontendsInGroupTrustedSources$outboundSchema: z.ZodType<
     GetMicrofrontendsInGroupMicrofrontendsProjects$outboundSchema,
   ).optional(),
   oidcProviders: z.record(
-    z.array(GetMicrofrontendsInGroupOidcProviders$outboundSchema),
+    z.array(z.lazy(() => GetMicrofrontendsInGroupOidcProviders$outboundSchema)),
   ).optional(),
 });
 
@@ -1769,12 +1891,14 @@ export const GetMicrofrontendsInGroupUsageStatus$inboundSchema: z.ZodType<
   kind: GetMicrofrontendsInGroupKind$inboundSchema,
   exceededAllowanceUntil: types.optional(types.number()),
   bypassThrottleUntil: types.optional(types.number()),
+  throttled: types.optional(types.boolean()),
 });
 /** @internal */
 export type GetMicrofrontendsInGroupUsageStatus$Outbound = {
   kind: string;
   exceededAllowanceUntil?: number | undefined;
   bypassThrottleUntil?: number | undefined;
+  throttled?: boolean | undefined;
 };
 
 /** @internal */
@@ -1786,6 +1910,7 @@ export const GetMicrofrontendsInGroupUsageStatus$outboundSchema: z.ZodType<
   kind: GetMicrofrontendsInGroupKind$outboundSchema,
   exceededAllowanceUntil: z.number().optional(),
   bypassThrottleUntil: z.number().optional(),
+  throttled: z.boolean().optional(),
 });
 
 export function getMicrofrontendsInGroupUsageStatusToJSON(
@@ -4265,6 +4390,7 @@ export const GetMicrofrontendsInGroupProjects$inboundSchema: z.ZodType<
   ).optional(),
   deploymentExpiration:
     GetMicrofrontendsInGroupDeploymentExpiration$inboundSchema,
+  expiration: types.optional(GetMicrofrontendsInGroupExpiration$inboundSchema),
   devCommand: z.nullable(types.string()).optional(),
   directoryListing: types.boolean(),
   installCommand: z.nullable(types.string()).optional(),
@@ -4427,6 +4553,7 @@ export type GetMicrofrontendsInGroupProjects$Outbound = {
     | null
     | undefined;
   deploymentExpiration: GetMicrofrontendsInGroupDeploymentExpiration$Outbound;
+  expiration?: GetMicrofrontendsInGroupExpiration$Outbound | undefined;
   devCommand?: string | null | undefined;
   directoryListing: boolean;
   installCommand?: string | null | undefined;
@@ -4573,6 +4700,7 @@ export const GetMicrofrontendsInGroupProjects$outboundSchema: z.ZodType<
   ).optional(),
   deploymentExpiration:
     GetMicrofrontendsInGroupDeploymentExpiration$outboundSchema,
+  expiration: GetMicrofrontendsInGroupExpiration$outboundSchema.optional(),
   devCommand: z.nullable(z.string()).optional(),
   directoryListing: z.boolean(),
   installCommand: z.nullable(z.string()).optional(),

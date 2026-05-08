@@ -21,13 +21,13 @@ import {
 import { ResponseValidationError } from "../models/responsevalidationerror.js";
 import { SDKValidationError } from "../models/sdkvalidationerror.js";
 import {
+  UpdateMicrofrontendsRequest,
+  UpdateMicrofrontendsRequest$outboundSchema,
+} from "../models/updatemicrofrontendslogheaders.js";
+import {
   UpdateMicrofrontendsResponseBody,
   UpdateMicrofrontendsResponseBody$inboundSchema,
 } from "../models/updatemicrofrontendsresponsebody.js";
-import {
-  UpdateMicrofrontendsRequest,
-  UpdateMicrofrontendsRequest$outboundSchema,
-} from "../models/updatemicrofrontendssecurity.js";
 import { VercelError } from "../models/vercelerror.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";

@@ -48,6 +48,7 @@ export const AuthTokenScopes1Origin = {
   Totp: "totp",
   Webauthn: "webauthn",
   RecoveryCode: "recovery-code",
+  EmailOtp: "email-otp",
 } as const;
 /**
  * Possible step-up auth origins
@@ -59,6 +60,7 @@ export type Sudo = {
    * Possible step-up auth origins
    */
   origin: AuthTokenScopes1Origin;
+  verifiedAt?: number | undefined;
   expiresAt: number;
 };
 
@@ -219,11 +221,13 @@ export const AuthTokenScopes1Origin$outboundSchema: z.ZodNativeEnum<
 export const Sudo$inboundSchema: z.ZodType<Sudo, z.ZodTypeDef, unknown> = z
   .object({
     origin: AuthTokenScopes1Origin$inboundSchema,
+    verifiedAt: types.optional(types.number()),
     expiresAt: types.number(),
   });
 /** @internal */
 export type Sudo$Outbound = {
   origin: string;
+  verifiedAt?: number | undefined;
   expiresAt: number;
 };
 
@@ -231,6 +235,7 @@ export type Sudo$Outbound = {
 export const Sudo$outboundSchema: z.ZodType<Sudo$Outbound, z.ZodTypeDef, Sudo> =
   z.object({
     origin: AuthTokenScopes1Origin$outboundSchema,
+    verifiedAt: z.number().optional(),
     expiresAt: z.number(),
   });
 

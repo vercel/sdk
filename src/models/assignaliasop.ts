@@ -22,7 +22,7 @@ export type AssignAliasRequestBody = {
 
 export type AssignAliasRequest = {
   /**
-   * The ID of the deployment the aliases should be listed for
+   * The deployment or alias ID or URL to assign from
    */
   id: string;
   /**

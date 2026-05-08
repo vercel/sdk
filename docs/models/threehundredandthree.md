@@ -5,17 +5,13 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndThree } from "@vercel/sdk/models/environment.js";
+import { ThreeHundredAndThree } from "@vercel/sdk/models/twohundredandseventyfour.js";
 
-let value: ThreeHundredAndThree = {
-  enabled: false,
-  totpVerified: true,
-};
+let value: ThreeHundredAndThree = {};
 ```
 
 ## Fields
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `enabled`          | *boolean*          | :heavy_check_mark: | N/A                |
-| `totpVerified`     | *boolean*          | :heavy_check_mark: | N/A                |
+| `slug`             | *string*           | :heavy_minus_sign: | N/A                |

@@ -213,7 +213,7 @@ run();
 
 ## requestAccessToTeam
 
-Request access to a team as a member. An owner has to approve the request. Only 10 users can request access to a team at the same time.
+Request access to a team as a member. An owner has to approve the request. Only 100 users can request access to a team at the same time.
 
 ### Example Usage
 
@@ -764,6 +764,7 @@ async function run() {
       hideIpAddresses: false,
       hideIpAddressesInLogDrains: false,
       requireVerifiedCommits: true,
+      disableRepositoryDispatchEvents: false,
       defaultExpirationSettings: {
         expiration: "1y",
         expirationProduction: "1y",
@@ -827,6 +828,7 @@ async function run() {
       hideIpAddresses: false,
       hideIpAddressesInLogDrains: false,
       requireVerifiedCommits: true,
+      disableRepositoryDispatchEvents: false,
       defaultExpirationSettings: {
         expiration: "1y",
         expirationProduction: "1y",

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { OnDemandConcurrencyMinutes } from "@vercel/sdk/models/blocktype.js";
+import { OnDemandConcurrencyMinutes } from "@vercel/sdk/models/usereventjobpayload76githashtagvercel.js";
 
 let value: OnDemandConcurrencyMinutes = {
   currentThreshold: 2281.01,

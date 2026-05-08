@@ -27,7 +27,12 @@ let value: ListUserEventsResponseBody = {
       userId: "zTuNVUXEAvvnNN3IaqinkyMw",
       principalId: "<id>",
       payload: {
-        productAliases: [],
+        project: {
+          id: "<id>",
+          name: "<value>",
+        },
+        bulkRedirectsLimit: 1688.33,
+        prevBulkRedirectsLimit: 666.15,
       },
     },
   ],

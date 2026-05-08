@@ -625,6 +625,10 @@ export type Team = {
    */
   requireVerifiedCommits?: boolean | undefined;
   /**
+   * Default for projects in the team. When `true`, projects in this team will not emit GitHub repository-dispatch events on deployment events unless the project explicitly overrides this setting via `project.gitProviderOptions.disableRepositoryDispatchEvents`.
+   */
+  disableRepositoryDispatchEvents?: boolean | undefined;
+  /**
    * When enabled, deployment protection settings require stricter permissions (owner-only).
    */
   strictDeploymentProtectionSettings?:
@@ -1971,6 +1975,7 @@ export const Team$inboundSchema: z.ZodType<Team, z.ZodTypeDef, unknown> =
       hideIpAddressesInLogDrains: z.nullable(types.boolean()).optional(),
       ipBuckets: types.optional(z.array(z.lazy(() => IpBuckets$inboundSchema))),
       requireVerifiedCommits: types.optional(types.boolean()),
+      disableRepositoryDispatchEvents: types.optional(types.boolean()),
       strictDeploymentProtectionSettings: types.optional(
         z.lazy(() => StrictDeploymentProtectionSettings$inboundSchema),
       ),
@@ -2020,6 +2025,7 @@ export type Team$Outbound = {
   hideIpAddressesInLogDrains?: boolean | null | undefined;
   ipBuckets?: Array<IpBuckets$Outbound> | undefined;
   requireVerifiedCommits?: boolean | undefined;
+  disableRepositoryDispatchEvents?: boolean | undefined;
   strictDeploymentProtectionSettings?:
     | StrictDeploymentProtectionSettings$Outbound
     | undefined;
@@ -2075,6 +2081,7 @@ export const Team$outboundSchema: z.ZodType<Team$Outbound, z.ZodTypeDef, Team> =
     hideIpAddressesInLogDrains: z.nullable(z.boolean()).optional(),
     ipBuckets: z.array(z.lazy(() => IpBuckets$outboundSchema)).optional(),
     requireVerifiedCommits: z.boolean().optional(),
+    disableRepositoryDispatchEvents: z.boolean().optional(),
     strictDeploymentProtectionSettings: z.lazy(() =>
       StrictDeploymentProtectionSettings$outboundSchema
     ).optional(),

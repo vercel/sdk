@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { IssuerMode } from "@vercel/sdk/models/oldoptionsallowlist.js";
+import { IssuerMode } from "@vercel/sdk/models/twohundredandtwentythree.js";
 
 let value: IssuerMode = "team";
 ```

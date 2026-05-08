@@ -3,7 +3,7 @@
  */
 
 import { projectsGetProjects } from "../../funcs/projectsGetProjects.js";
-import { GetProjectsRequest$inboundSchema } from "../../models/getprojectslogheadersprojectsresponse2.js";
+import { GetProjectsRequest$inboundSchema } from "../../models/getprojectsresponsebodyprojectsowasp.js";
 import { formatResult, ToolDefinition } from "../tools.js";
 
 const args = {

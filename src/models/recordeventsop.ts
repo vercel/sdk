@@ -13,14 +13,14 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
 /**
  * One of `LOCAL` or `REMOTE`. `LOCAL` specifies that the cache event was from the user's filesystem cache. `REMOTE` specifies that the cache event is from a remote cache.
  */
-export const Source = {
+export const RecordEventsSource = {
   Local: "LOCAL",
   Remote: "REMOTE",
 } as const;
 /**
  * One of `LOCAL` or `REMOTE`. `LOCAL` specifies that the cache event was from the user's filesystem cache. `REMOTE` specifies that the cache event is from a remote cache.
  */
-export type Source = ClosedEnum<typeof Source>;
+export type RecordEventsSource = ClosedEnum<typeof RecordEventsSource>;
 
 /**
  * One of `HIT` or `MISS`. `HIT` specifies that a cached artifact for `hash` was found in the cache. `MISS` specifies that a cached artifact with `hash` was not found.
@@ -42,7 +42,7 @@ export type RequestBody = {
   /**
    * One of `LOCAL` or `REMOTE`. `LOCAL` specifies that the cache event was from the user's filesystem cache. `REMOTE` specifies that the cache event is from a remote cache.
    */
-  source: Source;
+  source: RecordEventsSource;
   /**
    * One of `HIT` or `MISS`. `HIT` specifies that a cached artifact for `hash` was found in the cache. `MISS` specifies that a cached artifact with `hash` was not found.
    */
@@ -78,11 +78,13 @@ export type RecordEventsRequest = {
 };
 
 /** @internal */
-export const Source$inboundSchema: z.ZodNativeEnum<typeof Source> = z
-  .nativeEnum(Source);
+export const RecordEventsSource$inboundSchema: z.ZodNativeEnum<
+  typeof RecordEventsSource
+> = z.nativeEnum(RecordEventsSource);
 /** @internal */
-export const Source$outboundSchema: z.ZodNativeEnum<typeof Source> =
-  Source$inboundSchema;
+export const RecordEventsSource$outboundSchema: z.ZodNativeEnum<
+  typeof RecordEventsSource
+> = RecordEventsSource$inboundSchema;
 
 /** @internal */
 export const Event$inboundSchema: z.ZodNativeEnum<typeof Event> = z.nativeEnum(
@@ -99,7 +101,7 @@ export const RequestBody$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   sessionId: types.string(),
-  source: Source$inboundSchema,
+  source: RecordEventsSource$inboundSchema,
   event: Event$inboundSchema,
   hash: types.string(),
   duration: types.optional(types.number()),
@@ -120,7 +122,7 @@ export const RequestBody$outboundSchema: z.ZodType<
   RequestBody
 > = z.object({
   sessionId: z.string(),
-  source: Source$outboundSchema,
+  source: RecordEventsSource$outboundSchema,
   event: Event$outboundSchema,
   hash: z.string(),
   duration: z.number().optional(),

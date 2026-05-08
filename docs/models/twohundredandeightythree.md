@@ -5,17 +5,22 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndEightyThree } from "@vercel/sdk/models/environment.js";
+import { TwoHundredAndEightyThree } from "@vercel/sdk/models/twohundredandseventyfour.js";
 
 let value: TwoHundredAndEightyThree = {
-  previousConcurrentBuilds: 1701.73,
-  nextConcurrentBuilds: 9448.54,
+  uid: "<id>",
 };
 ```
 
 ## Fields
 
-| Field                      | Type                       | Required                   | Description                |
-| -------------------------- | -------------------------- | -------------------------- | -------------------------- |
-| `previousConcurrentBuilds` | *number*                   | :heavy_check_mark:         | N/A                        |
-| `nextConcurrentBuilds`     | *number*                   | :heavy_check_mark:         | N/A                        |
+| Field                                      | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `role`                                     | *string*                                   | :heavy_minus_sign:                         | N/A                                        |
+| `uid`                                      | *string*                                   | :heavy_check_mark:                         | N/A                                        |
+| `origin`                                   | *string*                                   | :heavy_minus_sign:                         | N/A                                        |
+| `teamSlug`                                 | *string*                                   | :heavy_minus_sign:                         | N/A                                        |
+| `teamRoles`                                | *string*[]                                 | :heavy_minus_sign:                         | N/A                                        |
+| `teamPermissions`                          | *string*[]                                 | :heavy_minus_sign:                         | N/A                                        |
+| `entitlements`                             | *string*[]                                 | :heavy_minus_sign:                         | N/A                                        |
+| `invitedBy`                                | [models.InvitedBy](../models/invitedby.md) | :heavy_minus_sign:                         | N/A                                        |

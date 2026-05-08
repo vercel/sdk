@@ -6,7 +6,7 @@
 import { GetProjectEnvContentHintProjects13 } from "@vercel/sdk/models/getprojectenvop.js";
 
 let value: GetProjectEnvContentHintProjects13 = {
-  type: "postgres-database",
+  type: "postgres-password",
   storeId: "<id>",
 };
 ```
@@ -15,5 +15,5 @@ let value: GetProjectEnvContentHintProjects13 = {
 
 | Field                 | Type                  | Required              | Description           |
 | --------------------- | --------------------- | --------------------- | --------------------- |
-| `type`                | *"postgres-database"* | :heavy_check_mark:    | N/A                   |
+| `type`                | *"postgres-password"* | :heavy_check_mark:    | N/A                   |
 | `storeId`             | *string*              | :heavy_check_mark:    | N/A                   |

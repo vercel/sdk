@@ -5,7 +5,7 @@ Note that not all historical events have this field.
 ## Example Usage
 
 ```typescript
-import { App } from "@vercel/sdk/models/newteam.js";
+import { App } from "@vercel/sdk/models/usereventpayload34afterresourcestype.js";
 
 let value: App = {
   id: "<id>",

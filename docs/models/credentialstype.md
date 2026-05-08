@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CredentialsType } from "@vercel/sdk/models/blocktype.js";
+import { CredentialsType } from "@vercel/sdk/models/fluidduration.js";
 
 let value: CredentialsType = "github-oauth-limited";
 ```

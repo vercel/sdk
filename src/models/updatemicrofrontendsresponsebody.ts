@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
@@ -46,6 +47,10 @@ import {
   UpdateMicrofrontendsEnv$inboundSchema,
   UpdateMicrofrontendsEnv$Outbound,
   UpdateMicrofrontendsEnv$outboundSchema,
+  UpdateMicrofrontendsExpiration,
+  UpdateMicrofrontendsExpiration$inboundSchema,
+  UpdateMicrofrontendsExpiration$Outbound,
+  UpdateMicrofrontendsExpiration$outboundSchema,
   UpdateMicrofrontendsFramework,
   UpdateMicrofrontendsFramework$inboundSchema,
   UpdateMicrofrontendsFramework$outboundSchema,
@@ -81,6 +86,14 @@ import {
   UpdateMicrofrontendsLink$inboundSchema,
   UpdateMicrofrontendsLink$Outbound,
   UpdateMicrofrontendsLink$outboundSchema,
+  UpdateMicrofrontendsLogHeaders,
+  UpdateMicrofrontendsLogHeaders$inboundSchema,
+  UpdateMicrofrontendsLogHeaders$Outbound,
+  UpdateMicrofrontendsLogHeaders$outboundSchema,
+  UpdateMicrofrontendsManagedRules,
+  UpdateMicrofrontendsManagedRules$inboundSchema,
+  UpdateMicrofrontendsManagedRules$Outbound,
+  UpdateMicrofrontendsManagedRules$outboundSchema,
   UpdateMicrofrontendsMicrofrontends,
   UpdateMicrofrontendsMicrofrontends$inboundSchema,
   UpdateMicrofrontendsMicrofrontends$Outbound,
@@ -116,10 +129,6 @@ import {
   UpdateMicrofrontendsRollingRelease$inboundSchema,
   UpdateMicrofrontendsRollingRelease$Outbound,
   UpdateMicrofrontendsRollingRelease$outboundSchema,
-  UpdateMicrofrontendsSecurity,
-  UpdateMicrofrontendsSecurity$inboundSchema,
-  UpdateMicrofrontendsSecurity$Outbound,
-  UpdateMicrofrontendsSecurity$outboundSchema,
   UpdateMicrofrontendsSpeedInsights,
   UpdateMicrofrontendsSpeedInsights$inboundSchema,
   UpdateMicrofrontendsSpeedInsights$Outbound,
@@ -148,7 +157,37 @@ import {
   UpdateMicrofrontendsWebAnalytics$inboundSchema,
   UpdateMicrofrontendsWebAnalytics$Outbound,
   UpdateMicrofrontendsWebAnalytics$outboundSchema,
-} from "./updatemicrofrontendssecurity.js";
+} from "./updatemicrofrontendslogheaders.js";
+
+export type UpdateMicrofrontendsSecurityPlusMetadata = {
+  updatedAt: number;
+  /**
+   * Timestamp when the feature was first enabled. Never changes after initial enablement.
+   */
+  firstEnabledAt?: number | undefined;
+};
+
+export type UpdateMicrofrontendsSecurity = {
+  attackModeEnabled?: boolean | undefined;
+  attackModeUpdatedAt?: number | undefined;
+  firewallEnabled?: boolean | undefined;
+  firewallUpdatedAt?: number | undefined;
+  attackModeActiveUntil?: number | null | undefined;
+  firewallConfigVersion?: number | undefined;
+  firewallSeawallEnabled?: boolean | undefined;
+  ja3Enabled?: boolean | undefined;
+  ja4Enabled?: boolean | undefined;
+  firewallBypassIps?: Array<string> | undefined;
+  managedRules?: UpdateMicrofrontendsManagedRules | null | undefined;
+  botIdEnabled?: boolean | undefined;
+  logHeaders?: UpdateMicrofrontendsLogHeaders | undefined;
+  securityPlus?: boolean | undefined;
+  securityPlusMetadata?: UpdateMicrofrontendsSecurityPlusMetadata | undefined;
+  /**
+   * Whether Page Integrity is enabled for this project. Used by the metadata service to gate DynamoDB lookups against the page-integrity-inventory table.
+   */
+  pageIntegrityEnabled?: boolean | undefined;
+};
 
 /**
  * - team: `https://oidc.vercel.com/[team_slug]` - global: `https://oidc.vercel.com`
@@ -211,6 +250,10 @@ export type UpdateMicrofrontendsUsageStatus = {
    * Timestamp until which throttling is bypassed (project pays list rates for overage).
    */
   bypassThrottleUntil?: number | undefined;
+  /**
+   * Whether the project is currently throttled.
+   */
+  throttled?: boolean | undefined;
 };
 
 export type UpdateMicrofrontendsFeatures = {
@@ -569,6 +612,7 @@ export type UpdateMicrofrontendsResponseBody = {
    * Retention policies for deployments. These are enforced at the project level, but we also maintain an instance of this at the team level as a default policy that gets applied to new projects.
    */
   deploymentExpiration: UpdateMicrofrontendsDeploymentExpiration;
+  expiration?: UpdateMicrofrontendsExpiration | undefined;
   devCommand?: string | null | undefined;
   directoryListing: boolean;
   installCommand?: string | null | undefined;
@@ -663,6 +707,159 @@ export type UpdateMicrofrontendsResponseBody = {
 };
 
 /** @internal */
+export const UpdateMicrofrontendsSecurityPlusMetadata$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsSecurityPlusMetadata,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  updatedAt: types.number(),
+  firstEnabledAt: types.optional(types.number()),
+});
+/** @internal */
+export type UpdateMicrofrontendsSecurityPlusMetadata$Outbound = {
+  updatedAt: number;
+  firstEnabledAt?: number | undefined;
+};
+
+/** @internal */
+export const UpdateMicrofrontendsSecurityPlusMetadata$outboundSchema: z.ZodType<
+  UpdateMicrofrontendsSecurityPlusMetadata$Outbound,
+  z.ZodTypeDef,
+  UpdateMicrofrontendsSecurityPlusMetadata
+> = z.object({
+  updatedAt: z.number(),
+  firstEnabledAt: z.number().optional(),
+});
+
+export function updateMicrofrontendsSecurityPlusMetadataToJSON(
+  updateMicrofrontendsSecurityPlusMetadata:
+    UpdateMicrofrontendsSecurityPlusMetadata,
+): string {
+  return JSON.stringify(
+    UpdateMicrofrontendsSecurityPlusMetadata$outboundSchema.parse(
+      updateMicrofrontendsSecurityPlusMetadata,
+    ),
+  );
+}
+export function updateMicrofrontendsSecurityPlusMetadataFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UpdateMicrofrontendsSecurityPlusMetadata,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateMicrofrontendsSecurityPlusMetadata$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UpdateMicrofrontendsSecurityPlusMetadata' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsSecurity$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsSecurity,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  attackModeEnabled: types.optional(types.boolean()),
+  attackModeUpdatedAt: types.optional(types.number()),
+  firewallEnabled: types.optional(types.boolean()),
+  firewallUpdatedAt: types.optional(types.number()),
+  attackModeActiveUntil: z.nullable(types.number()).optional(),
+  firewallConfigVersion: types.optional(types.number()),
+  firewallSeawallEnabled: types.optional(types.boolean()),
+  ja3Enabled: types.optional(types.boolean()),
+  ja4Enabled: types.optional(types.boolean()),
+  firewallBypassIps: types.optional(z.array(types.string())),
+  managedRules: z.nullable(UpdateMicrofrontendsManagedRules$inboundSchema)
+    .optional(),
+  botIdEnabled: types.optional(types.boolean()),
+  log_headers: types.optional(UpdateMicrofrontendsLogHeaders$inboundSchema),
+  securityPlus: types.optional(types.boolean()),
+  securityPlusMetadata: types.optional(
+    z.lazy(() => UpdateMicrofrontendsSecurityPlusMetadata$inboundSchema),
+  ),
+  pageIntegrityEnabled: types.optional(types.boolean()),
+}).transform((v) => {
+  return remap$(v, {
+    "log_headers": "logHeaders",
+  });
+});
+/** @internal */
+export type UpdateMicrofrontendsSecurity$Outbound = {
+  attackModeEnabled?: boolean | undefined;
+  attackModeUpdatedAt?: number | undefined;
+  firewallEnabled?: boolean | undefined;
+  firewallUpdatedAt?: number | undefined;
+  attackModeActiveUntil?: number | null | undefined;
+  firewallConfigVersion?: number | undefined;
+  firewallSeawallEnabled?: boolean | undefined;
+  ja3Enabled?: boolean | undefined;
+  ja4Enabled?: boolean | undefined;
+  firewallBypassIps?: Array<string> | undefined;
+  managedRules?: UpdateMicrofrontendsManagedRules$Outbound | null | undefined;
+  botIdEnabled?: boolean | undefined;
+  log_headers?: UpdateMicrofrontendsLogHeaders$Outbound | undefined;
+  securityPlus?: boolean | undefined;
+  securityPlusMetadata?:
+    | UpdateMicrofrontendsSecurityPlusMetadata$Outbound
+    | undefined;
+  pageIntegrityEnabled?: boolean | undefined;
+};
+
+/** @internal */
+export const UpdateMicrofrontendsSecurity$outboundSchema: z.ZodType<
+  UpdateMicrofrontendsSecurity$Outbound,
+  z.ZodTypeDef,
+  UpdateMicrofrontendsSecurity
+> = z.object({
+  attackModeEnabled: z.boolean().optional(),
+  attackModeUpdatedAt: z.number().optional(),
+  firewallEnabled: z.boolean().optional(),
+  firewallUpdatedAt: z.number().optional(),
+  attackModeActiveUntil: z.nullable(z.number()).optional(),
+  firewallConfigVersion: z.number().optional(),
+  firewallSeawallEnabled: z.boolean().optional(),
+  ja3Enabled: z.boolean().optional(),
+  ja4Enabled: z.boolean().optional(),
+  firewallBypassIps: z.array(z.string()).optional(),
+  managedRules: z.nullable(UpdateMicrofrontendsManagedRules$outboundSchema)
+    .optional(),
+  botIdEnabled: z.boolean().optional(),
+  logHeaders: UpdateMicrofrontendsLogHeaders$outboundSchema.optional(),
+  securityPlus: z.boolean().optional(),
+  securityPlusMetadata: z.lazy(() =>
+    UpdateMicrofrontendsSecurityPlusMetadata$outboundSchema
+  ).optional(),
+  pageIntegrityEnabled: z.boolean().optional(),
+}).transform((v) => {
+  return remap$(v, {
+    logHeaders: "log_headers",
+  });
+});
+
+export function updateMicrofrontendsSecurityToJSON(
+  updateMicrofrontendsSecurity: UpdateMicrofrontendsSecurity,
+): string {
+  return JSON.stringify(
+    UpdateMicrofrontendsSecurity$outboundSchema.parse(
+      updateMicrofrontendsSecurity,
+    ),
+  );
+}
+export function updateMicrofrontendsSecurityFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsSecurity, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateMicrofrontendsSecurity$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsSecurity' from JSON`,
+  );
+}
+
+/** @internal */
 export const UpdateMicrofrontendsIssuerMode$inboundSchema: z.ZodNativeEnum<
   typeof UpdateMicrofrontendsIssuerMode
 > = z.nativeEnum(UpdateMicrofrontendsIssuerMode);
@@ -743,12 +940,14 @@ export const UpdateMicrofrontendsUsageStatus$inboundSchema: z.ZodType<
   kind: UpdateMicrofrontendsKind$inboundSchema,
   exceededAllowanceUntil: types.optional(types.number()),
   bypassThrottleUntil: types.optional(types.number()),
+  throttled: types.optional(types.boolean()),
 });
 /** @internal */
 export type UpdateMicrofrontendsUsageStatus$Outbound = {
   kind: string;
   exceededAllowanceUntil?: number | undefined;
   bypassThrottleUntil?: number | undefined;
+  throttled?: boolean | undefined;
 };
 
 /** @internal */
@@ -760,6 +959,7 @@ export const UpdateMicrofrontendsUsageStatus$outboundSchema: z.ZodType<
   kind: UpdateMicrofrontendsKind$outboundSchema,
   exceededAllowanceUntil: z.number().optional(),
   bypassThrottleUntil: z.number().optional(),
+  throttled: z.boolean().optional(),
 });
 
 export function updateMicrofrontendsUsageStatusToJSON(
@@ -3088,6 +3288,7 @@ export const UpdateMicrofrontendsResponseBody$inboundSchema: z.ZodType<
     UpdateMicrofrontendsDelegatedProtection$inboundSchema,
   ).optional(),
   deploymentExpiration: UpdateMicrofrontendsDeploymentExpiration$inboundSchema,
+  expiration: types.optional(UpdateMicrofrontendsExpiration$inboundSchema),
   devCommand: z.nullable(types.string()).optional(),
   directoryListing: types.boolean(),
   installCommand: z.nullable(types.string()).optional(),
@@ -3174,7 +3375,9 @@ export const UpdateMicrofrontendsResponseBody$inboundSchema: z.ZodType<
   paused: types.optional(types.boolean()),
   concurrencyBucketName: types.optional(types.string()),
   webAnalytics: types.optional(UpdateMicrofrontendsWebAnalytics$inboundSchema),
-  security: types.optional(UpdateMicrofrontendsSecurity$inboundSchema),
+  security: types.optional(
+    z.lazy(() => UpdateMicrofrontendsSecurity$inboundSchema),
+  ),
   oidcTokenConfig: types.optional(
     z.lazy(() => UpdateMicrofrontendsOidcTokenConfig$inboundSchema),
   ),
@@ -3233,6 +3436,7 @@ export type UpdateMicrofrontendsResponseBody$Outbound = {
     | null
     | undefined;
   deploymentExpiration: UpdateMicrofrontendsDeploymentExpiration$Outbound;
+  expiration?: UpdateMicrofrontendsExpiration$Outbound | undefined;
   devCommand?: string | null | undefined;
   directoryListing: boolean;
   installCommand?: string | null | undefined;
@@ -3372,6 +3576,7 @@ export const UpdateMicrofrontendsResponseBody$outboundSchema: z.ZodType<
     UpdateMicrofrontendsDelegatedProtection$outboundSchema,
   ).optional(),
   deploymentExpiration: UpdateMicrofrontendsDeploymentExpiration$outboundSchema,
+  expiration: UpdateMicrofrontendsExpiration$outboundSchema.optional(),
   devCommand: z.nullable(z.string()).optional(),
   directoryListing: z.boolean(),
   installCommand: z.nullable(z.string()).optional(),
@@ -3452,7 +3657,8 @@ export const UpdateMicrofrontendsResponseBody$outboundSchema: z.ZodType<
   paused: z.boolean().optional(),
   concurrencyBucketName: z.string().optional(),
   webAnalytics: UpdateMicrofrontendsWebAnalytics$outboundSchema.optional(),
-  security: UpdateMicrofrontendsSecurity$outboundSchema.optional(),
+  security: z.lazy(() => UpdateMicrofrontendsSecurity$outboundSchema)
+    .optional(),
   oidcTokenConfig: z.lazy(() =>
     UpdateMicrofrontendsOidcTokenConfig$outboundSchema
   ).optional(),

@@ -12,6 +12,7 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export const Reason = {
   EnterpriseUnpaidInvoice: "ENTERPRISE_UNPAID_INVOICE",
+  ExposureCapExceeded: "EXPOSURE_CAP_EXCEEDED",
   SubscriptionCanceled: "SUBSCRIPTION_CANCELED",
   SubscriptionExpired: "SUBSCRIPTION_EXPIRED",
   UnpaidInvoice: "UNPAID_INVOICE",

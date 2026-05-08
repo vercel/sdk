@@ -202,7 +202,7 @@ export type Key2 = {
   lte?: number | undefined;
 };
 
-export type Key = string | Key2;
+export type CreateDeploymentRoutesKey = string | Key2;
 
 export type RoutesTarget = {
   key: string | Key2;
@@ -1157,25 +1157,35 @@ export function key2FromJSON(
 }
 
 /** @internal */
-export const Key$inboundSchema: z.ZodType<Key, z.ZodTypeDef, unknown> =
-  smartUnion([types.string(), z.lazy(() => Key2$inboundSchema)]);
+export const CreateDeploymentRoutesKey$inboundSchema: z.ZodType<
+  CreateDeploymentRoutesKey,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([types.string(), z.lazy(() => Key2$inboundSchema)]);
 /** @internal */
-export type Key$Outbound = string | Key2$Outbound;
+export type CreateDeploymentRoutesKey$Outbound = string | Key2$Outbound;
 
 /** @internal */
-export const Key$outboundSchema: z.ZodType<Key$Outbound, z.ZodTypeDef, Key> =
-  smartUnion([z.string(), z.lazy(() => Key2$outboundSchema)]);
+export const CreateDeploymentRoutesKey$outboundSchema: z.ZodType<
+  CreateDeploymentRoutesKey$Outbound,
+  z.ZodTypeDef,
+  CreateDeploymentRoutesKey
+> = smartUnion([z.string(), z.lazy(() => Key2$outboundSchema)]);
 
-export function keyToJSON(key: Key): string {
-  return JSON.stringify(Key$outboundSchema.parse(key));
+export function createDeploymentRoutesKeyToJSON(
+  createDeploymentRoutesKey: CreateDeploymentRoutesKey,
+): string {
+  return JSON.stringify(
+    CreateDeploymentRoutesKey$outboundSchema.parse(createDeploymentRoutesKey),
+  );
 }
-export function keyFromJSON(
+export function createDeploymentRoutesKeyFromJSON(
   jsonString: string,
-): SafeParseResult<Key, SDKValidationError> {
+): SafeParseResult<CreateDeploymentRoutesKey, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Key$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Key' from JSON`,
+    (x) => CreateDeploymentRoutesKey$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateDeploymentRoutesKey' from JSON`,
   );
 }
 

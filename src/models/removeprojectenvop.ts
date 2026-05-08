@@ -66,12 +66,12 @@ export type RemoveProjectEnvResponseBodyProjectsResponseTarget =
   | Array<RemoveProjectEnvTargetProjectsResponse1>
   | RemoveProjectEnvTargetProjectsResponse2;
 
-export type RemoveProjectEnvContentHintProjectsResponse16 = {
+export type RemoveProjectEnvContentHintProjectsResponse17 = {
   type: "flags-connection-string";
   projectId: string;
 };
 
-export type RemoveProjectEnvContentHintProjectsResponse15 = {
+export type RemoveProjectEnvContentHintProjectsResponse16 = {
   type: "integration-store-secret";
   storeId: string;
   integrationId: string;
@@ -79,43 +79,48 @@ export type RemoveProjectEnvContentHintProjectsResponse15 = {
   integrationConfigurationId: string;
 };
 
-export type RemoveProjectEnvContentHintProjectsResponse14 = {
+export type RemoveProjectEnvContentHintProjectsResponse15 = {
   type: "postgres-url-no-ssl";
   storeId: string;
 };
 
-export type RemoveProjectEnvContentHintProjectsResponse13 = {
+export type RemoveProjectEnvContentHintProjectsResponse14 = {
   type: "postgres-database";
   storeId: string;
 };
 
-export type RemoveProjectEnvContentHintProjectsResponse12 = {
+export type RemoveProjectEnvContentHintProjectsResponse13 = {
   type: "postgres-password";
   storeId: string;
 };
 
-export type RemoveProjectEnvContentHintProjectsResponse11 = {
+export type RemoveProjectEnvContentHintProjectsResponse12 = {
   type: "postgres-host";
   storeId: string;
 };
 
-export type RemoveProjectEnvContentHintProjectsResponse10 = {
+export type RemoveProjectEnvContentHintProjectsResponse11 = {
   type: "postgres-user";
   storeId: string;
 };
 
-export type RemoveProjectEnvContentHintProjectsResponse9 = {
+export type RemoveProjectEnvContentHintProjectsResponse10 = {
   type: "postgres-prisma-url";
   storeId: string;
 };
 
-export type RemoveProjectEnvContentHintProjectsResponse8 = {
+export type RemoveProjectEnvContentHintProjectsResponse9 = {
   type: "postgres-url-non-pooling";
   storeId: string;
 };
 
-export type RemoveProjectEnvContentHintProjectsResponse7 = {
+export type RemoveProjectEnvContentHintProjectsResponse8 = {
   type: "postgres-url";
+  storeId: string;
+};
+
+export type RemoveProjectEnvContentHintProjectsResponse7 = {
+  type: "blob-webhook-public-key";
   storeId: string;
 };
 
@@ -165,7 +170,8 @@ export type RemoveProjectEnvResponseBodyProjectsResponseContentHint =
   | RemoveProjectEnvContentHintProjectsResponse13
   | RemoveProjectEnvContentHintProjectsResponse14
   | RemoveProjectEnvContentHintProjectsResponse15
-  | RemoveProjectEnvContentHintProjectsResponse16;
+  | RemoveProjectEnvContentHintProjectsResponse16
+  | RemoveProjectEnvContentHintProjectsResponse17;
 
 export const RemoveProjectEnvResponseBodyProjectsResponse200ApplicationJson3Type =
   {
@@ -230,6 +236,7 @@ export type RemoveProjectEnvResponseBody3 = {
     | RemoveProjectEnvContentHintProjectsResponse14
     | RemoveProjectEnvContentHintProjectsResponse15
     | RemoveProjectEnvContentHintProjectsResponse16
+    | RemoveProjectEnvContentHintProjectsResponse17
     | null
     | undefined;
   /**
@@ -276,12 +283,12 @@ export type RemoveProjectEnvResponseBodyProjectsTarget =
   | Array<RemoveProjectEnvTargetProjects1>
   | RemoveProjectEnvTargetProjects2;
 
-export type RemoveProjectEnvContentHintProjects16 = {
+export type RemoveProjectEnvContentHintProjects17 = {
   type: "flags-connection-string";
   projectId: string;
 };
 
-export type RemoveProjectEnvContentHintProjects15 = {
+export type RemoveProjectEnvContentHintProjects16 = {
   type: "integration-store-secret";
   storeId: string;
   integrationId: string;
@@ -289,43 +296,48 @@ export type RemoveProjectEnvContentHintProjects15 = {
   integrationConfigurationId: string;
 };
 
-export type RemoveProjectEnvContentHintProjects14 = {
+export type RemoveProjectEnvContentHintProjects15 = {
   type: "postgres-url-no-ssl";
   storeId: string;
 };
 
-export type RemoveProjectEnvContentHintProjects13 = {
+export type RemoveProjectEnvContentHintProjects14 = {
   type: "postgres-database";
   storeId: string;
 };
 
-export type RemoveProjectEnvContentHintProjects12 = {
+export type RemoveProjectEnvContentHintProjects13 = {
   type: "postgres-password";
   storeId: string;
 };
 
-export type RemoveProjectEnvContentHintProjects11 = {
+export type RemoveProjectEnvContentHintProjects12 = {
   type: "postgres-host";
   storeId: string;
 };
 
-export type RemoveProjectEnvContentHintProjects10 = {
+export type RemoveProjectEnvContentHintProjects11 = {
   type: "postgres-user";
   storeId: string;
 };
 
-export type RemoveProjectEnvContentHintProjects9 = {
+export type RemoveProjectEnvContentHintProjects10 = {
   type: "postgres-prisma-url";
   storeId: string;
 };
 
-export type RemoveProjectEnvContentHintProjects8 = {
+export type RemoveProjectEnvContentHintProjects9 = {
   type: "postgres-url-non-pooling";
   storeId: string;
 };
 
-export type RemoveProjectEnvContentHintProjects7 = {
+export type RemoveProjectEnvContentHintProjects8 = {
   type: "postgres-url";
+  storeId: string;
+};
+
+export type RemoveProjectEnvContentHintProjects7 = {
+  type: "blob-webhook-public-key";
   storeId: string;
 };
 
@@ -375,7 +387,8 @@ export type RemoveProjectEnvResponseBodyProjectsContentHint =
   | RemoveProjectEnvContentHintProjects13
   | RemoveProjectEnvContentHintProjects14
   | RemoveProjectEnvContentHintProjects15
-  | RemoveProjectEnvContentHintProjects16;
+  | RemoveProjectEnvContentHintProjects16
+  | RemoveProjectEnvContentHintProjects17;
 
 export const RemoveProjectEnvResponseBodyProjectsResponse200Type = {
   FlagsSecret: "flags-secret",
@@ -439,6 +452,7 @@ export type RemoveProjectEnvResponseBody2 = {
     | RemoveProjectEnvContentHintProjects14
     | RemoveProjectEnvContentHintProjects15
     | RemoveProjectEnvContentHintProjects16
+    | RemoveProjectEnvContentHintProjects17
     | null
     | undefined;
   /**
@@ -485,12 +499,12 @@ export type RemoveProjectEnvResponseBodyTarget =
   | Array<RemoveProjectEnvTarget1>
   | RemoveProjectEnvTarget2;
 
-export type RemoveProjectEnvContentHint16 = {
+export type RemoveProjectEnvContentHint17 = {
   type: "flags-connection-string";
   projectId: string;
 };
 
-export type RemoveProjectEnvContentHint15 = {
+export type RemoveProjectEnvContentHint16 = {
   type: "integration-store-secret";
   storeId: string;
   integrationId: string;
@@ -498,43 +512,48 @@ export type RemoveProjectEnvContentHint15 = {
   integrationConfigurationId: string;
 };
 
-export type RemoveProjectEnvContentHint14 = {
+export type RemoveProjectEnvContentHint15 = {
   type: "postgres-url-no-ssl";
   storeId: string;
 };
 
-export type RemoveProjectEnvContentHint13 = {
+export type RemoveProjectEnvContentHint14 = {
   type: "postgres-database";
   storeId: string;
 };
 
-export type RemoveProjectEnvContentHint12 = {
+export type RemoveProjectEnvContentHint13 = {
   type: "postgres-password";
   storeId: string;
 };
 
-export type RemoveProjectEnvContentHint11 = {
+export type RemoveProjectEnvContentHint12 = {
   type: "postgres-host";
   storeId: string;
 };
 
-export type RemoveProjectEnvContentHint10 = {
+export type RemoveProjectEnvContentHint11 = {
   type: "postgres-user";
   storeId: string;
 };
 
-export type RemoveProjectEnvContentHint9 = {
+export type RemoveProjectEnvContentHint10 = {
   type: "postgres-prisma-url";
   storeId: string;
 };
 
-export type RemoveProjectEnvContentHint8 = {
+export type RemoveProjectEnvContentHint9 = {
   type: "postgres-url-non-pooling";
   storeId: string;
 };
 
-export type RemoveProjectEnvContentHint7 = {
+export type RemoveProjectEnvContentHint8 = {
   type: "postgres-url";
+  storeId: string;
+};
+
+export type RemoveProjectEnvContentHint7 = {
+  type: "blob-webhook-public-key";
   storeId: string;
 };
 
@@ -584,7 +603,8 @@ export type RemoveProjectEnvResponseBodyContentHint =
   | RemoveProjectEnvContentHint13
   | RemoveProjectEnvContentHint14
   | RemoveProjectEnvContentHint15
-  | RemoveProjectEnvContentHint16;
+  | RemoveProjectEnvContentHint16
+  | RemoveProjectEnvContentHint17;
 
 export const RemoveProjectEnvResponseBodyProjectsResponse200ApplicationJSONType =
   {
@@ -646,6 +666,7 @@ export type RemoveProjectEnvResponseBody1 = {
     | RemoveProjectEnvContentHint14
     | RemoveProjectEnvContentHint15
     | RemoveProjectEnvContentHint16
+    | RemoveProjectEnvContentHint17
     | null
     | undefined;
   /**
@@ -798,9 +819,9 @@ export function removeProjectEnvResponseBodyProjectsResponseTargetFromJSON(
 }
 
 /** @internal */
-export const RemoveProjectEnvContentHintProjectsResponse16$inboundSchema:
+export const RemoveProjectEnvContentHintProjectsResponse17$inboundSchema:
   z.ZodType<
-    RemoveProjectEnvContentHintProjectsResponse16,
+    RemoveProjectEnvContentHintProjectsResponse17,
     z.ZodTypeDef,
     unknown
   > = z.object({
@@ -808,9 +829,68 @@ export const RemoveProjectEnvContentHintProjectsResponse16$inboundSchema:
     projectId: types.string(),
   });
 /** @internal */
-export type RemoveProjectEnvContentHintProjectsResponse16$Outbound = {
+export type RemoveProjectEnvContentHintProjectsResponse17$Outbound = {
   type: "flags-connection-string";
   projectId: string;
+};
+
+/** @internal */
+export const RemoveProjectEnvContentHintProjectsResponse17$outboundSchema:
+  z.ZodType<
+    RemoveProjectEnvContentHintProjectsResponse17$Outbound,
+    z.ZodTypeDef,
+    RemoveProjectEnvContentHintProjectsResponse17
+  > = z.object({
+    type: z.literal("flags-connection-string"),
+    projectId: z.string(),
+  });
+
+export function removeProjectEnvContentHintProjectsResponse17ToJSON(
+  removeProjectEnvContentHintProjectsResponse17:
+    RemoveProjectEnvContentHintProjectsResponse17,
+): string {
+  return JSON.stringify(
+    RemoveProjectEnvContentHintProjectsResponse17$outboundSchema.parse(
+      removeProjectEnvContentHintProjectsResponse17,
+    ),
+  );
+}
+export function removeProjectEnvContentHintProjectsResponse17FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  RemoveProjectEnvContentHintProjectsResponse17,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      RemoveProjectEnvContentHintProjectsResponse17$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'RemoveProjectEnvContentHintProjectsResponse17' from JSON`,
+  );
+}
+
+/** @internal */
+export const RemoveProjectEnvContentHintProjectsResponse16$inboundSchema:
+  z.ZodType<
+    RemoveProjectEnvContentHintProjectsResponse16,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    type: types.literal("integration-store-secret"),
+    storeId: types.string(),
+    integrationId: types.string(),
+    integrationProductId: types.string(),
+    integrationConfigurationId: types.string(),
+  });
+/** @internal */
+export type RemoveProjectEnvContentHintProjectsResponse16$Outbound = {
+  type: "integration-store-secret";
+  storeId: string;
+  integrationId: string;
+  integrationProductId: string;
+  integrationConfigurationId: string;
 };
 
 /** @internal */
@@ -820,8 +900,11 @@ export const RemoveProjectEnvContentHintProjectsResponse16$outboundSchema:
     z.ZodTypeDef,
     RemoveProjectEnvContentHintProjectsResponse16
   > = z.object({
-    type: z.literal("flags-connection-string"),
-    projectId: z.string(),
+    type: z.literal("integration-store-secret"),
+    storeId: z.string(),
+    integrationId: z.string(),
+    integrationProductId: z.string(),
+    integrationConfigurationId: z.string(),
   });
 
 export function removeProjectEnvContentHintProjectsResponse16ToJSON(
@@ -857,19 +940,13 @@ export const RemoveProjectEnvContentHintProjectsResponse15$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.object({
-    type: types.literal("integration-store-secret"),
+    type: types.literal("postgres-url-no-ssl"),
     storeId: types.string(),
-    integrationId: types.string(),
-    integrationProductId: types.string(),
-    integrationConfigurationId: types.string(),
   });
 /** @internal */
 export type RemoveProjectEnvContentHintProjectsResponse15$Outbound = {
-  type: "integration-store-secret";
+  type: "postgres-url-no-ssl";
   storeId: string;
-  integrationId: string;
-  integrationProductId: string;
-  integrationConfigurationId: string;
 };
 
 /** @internal */
@@ -879,11 +956,8 @@ export const RemoveProjectEnvContentHintProjectsResponse15$outboundSchema:
     z.ZodTypeDef,
     RemoveProjectEnvContentHintProjectsResponse15
   > = z.object({
-    type: z.literal("integration-store-secret"),
+    type: z.literal("postgres-url-no-ssl"),
     storeId: z.string(),
-    integrationId: z.string(),
-    integrationProductId: z.string(),
-    integrationConfigurationId: z.string(),
   });
 
 export function removeProjectEnvContentHintProjectsResponse15ToJSON(
@@ -919,12 +993,12 @@ export const RemoveProjectEnvContentHintProjectsResponse14$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.object({
-    type: types.literal("postgres-url-no-ssl"),
+    type: types.literal("postgres-database"),
     storeId: types.string(),
   });
 /** @internal */
 export type RemoveProjectEnvContentHintProjectsResponse14$Outbound = {
-  type: "postgres-url-no-ssl";
+  type: "postgres-database";
   storeId: string;
 };
 
@@ -935,7 +1009,7 @@ export const RemoveProjectEnvContentHintProjectsResponse14$outboundSchema:
     z.ZodTypeDef,
     RemoveProjectEnvContentHintProjectsResponse14
   > = z.object({
-    type: z.literal("postgres-url-no-ssl"),
+    type: z.literal("postgres-database"),
     storeId: z.string(),
   });
 
@@ -972,12 +1046,12 @@ export const RemoveProjectEnvContentHintProjectsResponse13$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.object({
-    type: types.literal("postgres-database"),
+    type: types.literal("postgres-password"),
     storeId: types.string(),
   });
 /** @internal */
 export type RemoveProjectEnvContentHintProjectsResponse13$Outbound = {
-  type: "postgres-database";
+  type: "postgres-password";
   storeId: string;
 };
 
@@ -988,7 +1062,7 @@ export const RemoveProjectEnvContentHintProjectsResponse13$outboundSchema:
     z.ZodTypeDef,
     RemoveProjectEnvContentHintProjectsResponse13
   > = z.object({
-    type: z.literal("postgres-database"),
+    type: z.literal("postgres-password"),
     storeId: z.string(),
   });
 
@@ -1025,12 +1099,12 @@ export const RemoveProjectEnvContentHintProjectsResponse12$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.object({
-    type: types.literal("postgres-password"),
+    type: types.literal("postgres-host"),
     storeId: types.string(),
   });
 /** @internal */
 export type RemoveProjectEnvContentHintProjectsResponse12$Outbound = {
-  type: "postgres-password";
+  type: "postgres-host";
   storeId: string;
 };
 
@@ -1041,7 +1115,7 @@ export const RemoveProjectEnvContentHintProjectsResponse12$outboundSchema:
     z.ZodTypeDef,
     RemoveProjectEnvContentHintProjectsResponse12
   > = z.object({
-    type: z.literal("postgres-password"),
+    type: z.literal("postgres-host"),
     storeId: z.string(),
   });
 
@@ -1078,12 +1152,12 @@ export const RemoveProjectEnvContentHintProjectsResponse11$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.object({
-    type: types.literal("postgres-host"),
+    type: types.literal("postgres-user"),
     storeId: types.string(),
   });
 /** @internal */
 export type RemoveProjectEnvContentHintProjectsResponse11$Outbound = {
-  type: "postgres-host";
+  type: "postgres-user";
   storeId: string;
 };
 
@@ -1094,7 +1168,7 @@ export const RemoveProjectEnvContentHintProjectsResponse11$outboundSchema:
     z.ZodTypeDef,
     RemoveProjectEnvContentHintProjectsResponse11
   > = z.object({
-    type: z.literal("postgres-host"),
+    type: z.literal("postgres-user"),
     storeId: z.string(),
   });
 
@@ -1131,12 +1205,12 @@ export const RemoveProjectEnvContentHintProjectsResponse10$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.object({
-    type: types.literal("postgres-user"),
+    type: types.literal("postgres-prisma-url"),
     storeId: types.string(),
   });
 /** @internal */
 export type RemoveProjectEnvContentHintProjectsResponse10$Outbound = {
-  type: "postgres-user";
+  type: "postgres-prisma-url";
   storeId: string;
 };
 
@@ -1147,7 +1221,7 @@ export const RemoveProjectEnvContentHintProjectsResponse10$outboundSchema:
     z.ZodTypeDef,
     RemoveProjectEnvContentHintProjectsResponse10
   > = z.object({
-    type: z.literal("postgres-user"),
+    type: z.literal("postgres-prisma-url"),
     storeId: z.string(),
   });
 
@@ -1184,12 +1258,12 @@ export const RemoveProjectEnvContentHintProjectsResponse9$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.object({
-    type: types.literal("postgres-prisma-url"),
+    type: types.literal("postgres-url-non-pooling"),
     storeId: types.string(),
   });
 /** @internal */
 export type RemoveProjectEnvContentHintProjectsResponse9$Outbound = {
-  type: "postgres-prisma-url";
+  type: "postgres-url-non-pooling";
   storeId: string;
 };
 
@@ -1200,7 +1274,7 @@ export const RemoveProjectEnvContentHintProjectsResponse9$outboundSchema:
     z.ZodTypeDef,
     RemoveProjectEnvContentHintProjectsResponse9
   > = z.object({
-    type: z.literal("postgres-prisma-url"),
+    type: z.literal("postgres-url-non-pooling"),
     storeId: z.string(),
   });
 
@@ -1237,12 +1311,12 @@ export const RemoveProjectEnvContentHintProjectsResponse8$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.object({
-    type: types.literal("postgres-url-non-pooling"),
+    type: types.literal("postgres-url"),
     storeId: types.string(),
   });
 /** @internal */
 export type RemoveProjectEnvContentHintProjectsResponse8$Outbound = {
-  type: "postgres-url-non-pooling";
+  type: "postgres-url";
   storeId: string;
 };
 
@@ -1253,7 +1327,7 @@ export const RemoveProjectEnvContentHintProjectsResponse8$outboundSchema:
     z.ZodTypeDef,
     RemoveProjectEnvContentHintProjectsResponse8
   > = z.object({
-    type: z.literal("postgres-url-non-pooling"),
+    type: z.literal("postgres-url"),
     storeId: z.string(),
   });
 
@@ -1290,12 +1364,12 @@ export const RemoveProjectEnvContentHintProjectsResponse7$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.object({
-    type: types.literal("postgres-url"),
+    type: types.literal("blob-webhook-public-key"),
     storeId: types.string(),
   });
 /** @internal */
 export type RemoveProjectEnvContentHintProjectsResponse7$Outbound = {
-  type: "postgres-url";
+  type: "blob-webhook-public-key";
   storeId: string;
 };
 
@@ -1306,7 +1380,7 @@ export const RemoveProjectEnvContentHintProjectsResponse7$outboundSchema:
     z.ZodTypeDef,
     RemoveProjectEnvContentHintProjectsResponse7
   > = z.object({
-    type: z.literal("postgres-url"),
+    type: z.literal("blob-webhook-public-key"),
     storeId: z.string(),
   });
 
@@ -1677,6 +1751,7 @@ export const RemoveProjectEnvResponseBodyProjectsResponseContentHint$inboundSche
     z.lazy(() => RemoveProjectEnvContentHintProjectsResponse14$inboundSchema),
     z.lazy(() => RemoveProjectEnvContentHintProjectsResponse15$inboundSchema),
     z.lazy(() => RemoveProjectEnvContentHintProjectsResponse16$inboundSchema),
+    z.lazy(() => RemoveProjectEnvContentHintProjectsResponse17$inboundSchema),
   ]);
 /** @internal */
 export type RemoveProjectEnvResponseBodyProjectsResponseContentHint$Outbound =
@@ -1695,7 +1770,8 @@ export type RemoveProjectEnvResponseBodyProjectsResponseContentHint$Outbound =
   | RemoveProjectEnvContentHintProjectsResponse13$Outbound
   | RemoveProjectEnvContentHintProjectsResponse14$Outbound
   | RemoveProjectEnvContentHintProjectsResponse15$Outbound
-  | RemoveProjectEnvContentHintProjectsResponse16$Outbound;
+  | RemoveProjectEnvContentHintProjectsResponse16$Outbound
+  | RemoveProjectEnvContentHintProjectsResponse17$Outbound;
 
 /** @internal */
 export const RemoveProjectEnvResponseBodyProjectsResponseContentHint$outboundSchema:
@@ -1720,6 +1796,7 @@ export const RemoveProjectEnvResponseBodyProjectsResponseContentHint$outboundSch
     z.lazy(() => RemoveProjectEnvContentHintProjectsResponse14$outboundSchema),
     z.lazy(() => RemoveProjectEnvContentHintProjectsResponse15$outboundSchema),
     z.lazy(() => RemoveProjectEnvContentHintProjectsResponse16$outboundSchema),
+    z.lazy(() => RemoveProjectEnvContentHintProjectsResponse17$outboundSchema),
   ]);
 
 export function removeProjectEnvResponseBodyProjectsResponseContentHintToJSON(
@@ -1859,6 +1936,7 @@ export const RemoveProjectEnvResponseBody3$inboundSchema: z.ZodType<
       z.lazy(() => RemoveProjectEnvContentHintProjectsResponse14$inboundSchema),
       z.lazy(() => RemoveProjectEnvContentHintProjectsResponse15$inboundSchema),
       z.lazy(() => RemoveProjectEnvContentHintProjectsResponse16$inboundSchema),
+      z.lazy(() => RemoveProjectEnvContentHintProjectsResponse17$inboundSchema),
     ]),
   ).optional(),
   internalContentHint: z.nullable(
@@ -1904,6 +1982,7 @@ export type RemoveProjectEnvResponseBody3$Outbound = {
     | RemoveProjectEnvContentHintProjectsResponse14$Outbound
     | RemoveProjectEnvContentHintProjectsResponse15$Outbound
     | RemoveProjectEnvContentHintProjectsResponse16$Outbound
+    | RemoveProjectEnvContentHintProjectsResponse17$Outbound
     | null
     | undefined;
   internalContentHint?:
@@ -1972,6 +2051,9 @@ export const RemoveProjectEnvResponseBody3$outboundSchema: z.ZodType<
       ),
       z.lazy(() =>
         RemoveProjectEnvContentHintProjectsResponse16$outboundSchema
+      ),
+      z.lazy(() =>
+        RemoveProjectEnvContentHintProjectsResponse17$outboundSchema
       ),
     ]),
   ).optional(),
@@ -2080,8 +2162,8 @@ export function removeProjectEnvResponseBodyProjectsTargetFromJSON(
 }
 
 /** @internal */
-export const RemoveProjectEnvContentHintProjects16$inboundSchema: z.ZodType<
-  RemoveProjectEnvContentHintProjects16,
+export const RemoveProjectEnvContentHintProjects17$inboundSchema: z.ZodType<
+  RemoveProjectEnvContentHintProjects17,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -2089,9 +2171,60 @@ export const RemoveProjectEnvContentHintProjects16$inboundSchema: z.ZodType<
   projectId: types.string(),
 });
 /** @internal */
-export type RemoveProjectEnvContentHintProjects16$Outbound = {
+export type RemoveProjectEnvContentHintProjects17$Outbound = {
   type: "flags-connection-string";
   projectId: string;
+};
+
+/** @internal */
+export const RemoveProjectEnvContentHintProjects17$outboundSchema: z.ZodType<
+  RemoveProjectEnvContentHintProjects17$Outbound,
+  z.ZodTypeDef,
+  RemoveProjectEnvContentHintProjects17
+> = z.object({
+  type: z.literal("flags-connection-string"),
+  projectId: z.string(),
+});
+
+export function removeProjectEnvContentHintProjects17ToJSON(
+  removeProjectEnvContentHintProjects17: RemoveProjectEnvContentHintProjects17,
+): string {
+  return JSON.stringify(
+    RemoveProjectEnvContentHintProjects17$outboundSchema.parse(
+      removeProjectEnvContentHintProjects17,
+    ),
+  );
+}
+export function removeProjectEnvContentHintProjects17FromJSON(
+  jsonString: string,
+): SafeParseResult<RemoveProjectEnvContentHintProjects17, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      RemoveProjectEnvContentHintProjects17$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RemoveProjectEnvContentHintProjects17' from JSON`,
+  );
+}
+
+/** @internal */
+export const RemoveProjectEnvContentHintProjects16$inboundSchema: z.ZodType<
+  RemoveProjectEnvContentHintProjects16,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: types.literal("integration-store-secret"),
+  storeId: types.string(),
+  integrationId: types.string(),
+  integrationProductId: types.string(),
+  integrationConfigurationId: types.string(),
+});
+/** @internal */
+export type RemoveProjectEnvContentHintProjects16$Outbound = {
+  type: "integration-store-secret";
+  storeId: string;
+  integrationId: string;
+  integrationProductId: string;
+  integrationConfigurationId: string;
 };
 
 /** @internal */
@@ -2100,8 +2233,11 @@ export const RemoveProjectEnvContentHintProjects16$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   RemoveProjectEnvContentHintProjects16
 > = z.object({
-  type: z.literal("flags-connection-string"),
-  projectId: z.string(),
+  type: z.literal("integration-store-secret"),
+  storeId: z.string(),
+  integrationId: z.string(),
+  integrationProductId: z.string(),
+  integrationConfigurationId: z.string(),
 });
 
 export function removeProjectEnvContentHintProjects16ToJSON(
@@ -2130,19 +2266,13 @@ export const RemoveProjectEnvContentHintProjects15$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.literal("integration-store-secret"),
+  type: types.literal("postgres-url-no-ssl"),
   storeId: types.string(),
-  integrationId: types.string(),
-  integrationProductId: types.string(),
-  integrationConfigurationId: types.string(),
 });
 /** @internal */
 export type RemoveProjectEnvContentHintProjects15$Outbound = {
-  type: "integration-store-secret";
+  type: "postgres-url-no-ssl";
   storeId: string;
-  integrationId: string;
-  integrationProductId: string;
-  integrationConfigurationId: string;
 };
 
 /** @internal */
@@ -2151,11 +2281,8 @@ export const RemoveProjectEnvContentHintProjects15$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   RemoveProjectEnvContentHintProjects15
 > = z.object({
-  type: z.literal("integration-store-secret"),
+  type: z.literal("postgres-url-no-ssl"),
   storeId: z.string(),
-  integrationId: z.string(),
-  integrationProductId: z.string(),
-  integrationConfigurationId: z.string(),
 });
 
 export function removeProjectEnvContentHintProjects15ToJSON(
@@ -2184,12 +2311,12 @@ export const RemoveProjectEnvContentHintProjects14$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.literal("postgres-url-no-ssl"),
+  type: types.literal("postgres-database"),
   storeId: types.string(),
 });
 /** @internal */
 export type RemoveProjectEnvContentHintProjects14$Outbound = {
-  type: "postgres-url-no-ssl";
+  type: "postgres-database";
   storeId: string;
 };
 
@@ -2199,7 +2326,7 @@ export const RemoveProjectEnvContentHintProjects14$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   RemoveProjectEnvContentHintProjects14
 > = z.object({
-  type: z.literal("postgres-url-no-ssl"),
+  type: z.literal("postgres-database"),
   storeId: z.string(),
 });
 
@@ -2229,12 +2356,12 @@ export const RemoveProjectEnvContentHintProjects13$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.literal("postgres-database"),
+  type: types.literal("postgres-password"),
   storeId: types.string(),
 });
 /** @internal */
 export type RemoveProjectEnvContentHintProjects13$Outbound = {
-  type: "postgres-database";
+  type: "postgres-password";
   storeId: string;
 };
 
@@ -2244,7 +2371,7 @@ export const RemoveProjectEnvContentHintProjects13$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   RemoveProjectEnvContentHintProjects13
 > = z.object({
-  type: z.literal("postgres-database"),
+  type: z.literal("postgres-password"),
   storeId: z.string(),
 });
 
@@ -2274,12 +2401,12 @@ export const RemoveProjectEnvContentHintProjects12$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.literal("postgres-password"),
+  type: types.literal("postgres-host"),
   storeId: types.string(),
 });
 /** @internal */
 export type RemoveProjectEnvContentHintProjects12$Outbound = {
-  type: "postgres-password";
+  type: "postgres-host";
   storeId: string;
 };
 
@@ -2289,7 +2416,7 @@ export const RemoveProjectEnvContentHintProjects12$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   RemoveProjectEnvContentHintProjects12
 > = z.object({
-  type: z.literal("postgres-password"),
+  type: z.literal("postgres-host"),
   storeId: z.string(),
 });
 
@@ -2319,12 +2446,12 @@ export const RemoveProjectEnvContentHintProjects11$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.literal("postgres-host"),
+  type: types.literal("postgres-user"),
   storeId: types.string(),
 });
 /** @internal */
 export type RemoveProjectEnvContentHintProjects11$Outbound = {
-  type: "postgres-host";
+  type: "postgres-user";
   storeId: string;
 };
 
@@ -2334,7 +2461,7 @@ export const RemoveProjectEnvContentHintProjects11$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   RemoveProjectEnvContentHintProjects11
 > = z.object({
-  type: z.literal("postgres-host"),
+  type: z.literal("postgres-user"),
   storeId: z.string(),
 });
 
@@ -2364,12 +2491,12 @@ export const RemoveProjectEnvContentHintProjects10$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.literal("postgres-user"),
+  type: types.literal("postgres-prisma-url"),
   storeId: types.string(),
 });
 /** @internal */
 export type RemoveProjectEnvContentHintProjects10$Outbound = {
-  type: "postgres-user";
+  type: "postgres-prisma-url";
   storeId: string;
 };
 
@@ -2379,7 +2506,7 @@ export const RemoveProjectEnvContentHintProjects10$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   RemoveProjectEnvContentHintProjects10
 > = z.object({
-  type: z.literal("postgres-user"),
+  type: z.literal("postgres-prisma-url"),
   storeId: z.string(),
 });
 
@@ -2409,12 +2536,12 @@ export const RemoveProjectEnvContentHintProjects9$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.literal("postgres-prisma-url"),
+  type: types.literal("postgres-url-non-pooling"),
   storeId: types.string(),
 });
 /** @internal */
 export type RemoveProjectEnvContentHintProjects9$Outbound = {
-  type: "postgres-prisma-url";
+  type: "postgres-url-non-pooling";
   storeId: string;
 };
 
@@ -2424,7 +2551,7 @@ export const RemoveProjectEnvContentHintProjects9$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   RemoveProjectEnvContentHintProjects9
 > = z.object({
-  type: z.literal("postgres-prisma-url"),
+  type: z.literal("postgres-url-non-pooling"),
   storeId: z.string(),
 });
 
@@ -2454,12 +2581,12 @@ export const RemoveProjectEnvContentHintProjects8$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.literal("postgres-url-non-pooling"),
+  type: types.literal("postgres-url"),
   storeId: types.string(),
 });
 /** @internal */
 export type RemoveProjectEnvContentHintProjects8$Outbound = {
-  type: "postgres-url-non-pooling";
+  type: "postgres-url";
   storeId: string;
 };
 
@@ -2469,7 +2596,7 @@ export const RemoveProjectEnvContentHintProjects8$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   RemoveProjectEnvContentHintProjects8
 > = z.object({
-  type: z.literal("postgres-url-non-pooling"),
+  type: z.literal("postgres-url"),
   storeId: z.string(),
 });
 
@@ -2499,12 +2626,12 @@ export const RemoveProjectEnvContentHintProjects7$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.literal("postgres-url"),
+  type: types.literal("blob-webhook-public-key"),
   storeId: types.string(),
 });
 /** @internal */
 export type RemoveProjectEnvContentHintProjects7$Outbound = {
-  type: "postgres-url";
+  type: "blob-webhook-public-key";
   storeId: string;
 };
 
@@ -2514,7 +2641,7 @@ export const RemoveProjectEnvContentHintProjects7$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   RemoveProjectEnvContentHintProjects7
 > = z.object({
-  type: z.literal("postgres-url"),
+  type: z.literal("blob-webhook-public-key"),
   storeId: z.string(),
 });
 
@@ -2831,6 +2958,7 @@ export const RemoveProjectEnvResponseBodyProjectsContentHint$inboundSchema:
     z.lazy(() => RemoveProjectEnvContentHintProjects14$inboundSchema),
     z.lazy(() => RemoveProjectEnvContentHintProjects15$inboundSchema),
     z.lazy(() => RemoveProjectEnvContentHintProjects16$inboundSchema),
+    z.lazy(() => RemoveProjectEnvContentHintProjects17$inboundSchema),
   ]);
 /** @internal */
 export type RemoveProjectEnvResponseBodyProjectsContentHint$Outbound =
@@ -2849,7 +2977,8 @@ export type RemoveProjectEnvResponseBodyProjectsContentHint$Outbound =
   | RemoveProjectEnvContentHintProjects13$Outbound
   | RemoveProjectEnvContentHintProjects14$Outbound
   | RemoveProjectEnvContentHintProjects15$Outbound
-  | RemoveProjectEnvContentHintProjects16$Outbound;
+  | RemoveProjectEnvContentHintProjects16$Outbound
+  | RemoveProjectEnvContentHintProjects17$Outbound;
 
 /** @internal */
 export const RemoveProjectEnvResponseBodyProjectsContentHint$outboundSchema:
@@ -2874,6 +3003,7 @@ export const RemoveProjectEnvResponseBodyProjectsContentHint$outboundSchema:
     z.lazy(() => RemoveProjectEnvContentHintProjects14$outboundSchema),
     z.lazy(() => RemoveProjectEnvContentHintProjects15$outboundSchema),
     z.lazy(() => RemoveProjectEnvContentHintProjects16$outboundSchema),
+    z.lazy(() => RemoveProjectEnvContentHintProjects17$outboundSchema),
   ]);
 
 export function removeProjectEnvResponseBodyProjectsContentHintToJSON(
@@ -3008,6 +3138,7 @@ export const RemoveProjectEnvResponseBody2$inboundSchema: z.ZodType<
       z.lazy(() => RemoveProjectEnvContentHintProjects14$inboundSchema),
       z.lazy(() => RemoveProjectEnvContentHintProjects15$inboundSchema),
       z.lazy(() => RemoveProjectEnvContentHintProjects16$inboundSchema),
+      z.lazy(() => RemoveProjectEnvContentHintProjects17$inboundSchema),
     ]),
   ).optional(),
   internalContentHint: z.nullable(
@@ -3054,6 +3185,7 @@ export type RemoveProjectEnvResponseBody2$Outbound = {
     | RemoveProjectEnvContentHintProjects14$Outbound
     | RemoveProjectEnvContentHintProjects15$Outbound
     | RemoveProjectEnvContentHintProjects16$Outbound
+    | RemoveProjectEnvContentHintProjects17$Outbound
     | null
     | undefined;
   internalContentHint?:
@@ -3108,6 +3240,7 @@ export const RemoveProjectEnvResponseBody2$outboundSchema: z.ZodType<
       z.lazy(() => RemoveProjectEnvContentHintProjects14$outboundSchema),
       z.lazy(() => RemoveProjectEnvContentHintProjects15$outboundSchema),
       z.lazy(() => RemoveProjectEnvContentHintProjects16$outboundSchema),
+      z.lazy(() => RemoveProjectEnvContentHintProjects17$outboundSchema),
     ]),
   ).optional(),
   internalContentHint: z.nullable(
@@ -3210,8 +3343,8 @@ export function removeProjectEnvResponseBodyTargetFromJSON(
 }
 
 /** @internal */
-export const RemoveProjectEnvContentHint16$inboundSchema: z.ZodType<
-  RemoveProjectEnvContentHint16,
+export const RemoveProjectEnvContentHint17$inboundSchema: z.ZodType<
+  RemoveProjectEnvContentHint17,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -3219,9 +3352,59 @@ export const RemoveProjectEnvContentHint16$inboundSchema: z.ZodType<
   projectId: types.string(),
 });
 /** @internal */
-export type RemoveProjectEnvContentHint16$Outbound = {
+export type RemoveProjectEnvContentHint17$Outbound = {
   type: "flags-connection-string";
   projectId: string;
+};
+
+/** @internal */
+export const RemoveProjectEnvContentHint17$outboundSchema: z.ZodType<
+  RemoveProjectEnvContentHint17$Outbound,
+  z.ZodTypeDef,
+  RemoveProjectEnvContentHint17
+> = z.object({
+  type: z.literal("flags-connection-string"),
+  projectId: z.string(),
+});
+
+export function removeProjectEnvContentHint17ToJSON(
+  removeProjectEnvContentHint17: RemoveProjectEnvContentHint17,
+): string {
+  return JSON.stringify(
+    RemoveProjectEnvContentHint17$outboundSchema.parse(
+      removeProjectEnvContentHint17,
+    ),
+  );
+}
+export function removeProjectEnvContentHint17FromJSON(
+  jsonString: string,
+): SafeParseResult<RemoveProjectEnvContentHint17, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RemoveProjectEnvContentHint17$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RemoveProjectEnvContentHint17' from JSON`,
+  );
+}
+
+/** @internal */
+export const RemoveProjectEnvContentHint16$inboundSchema: z.ZodType<
+  RemoveProjectEnvContentHint16,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: types.literal("integration-store-secret"),
+  storeId: types.string(),
+  integrationId: types.string(),
+  integrationProductId: types.string(),
+  integrationConfigurationId: types.string(),
+});
+/** @internal */
+export type RemoveProjectEnvContentHint16$Outbound = {
+  type: "integration-store-secret";
+  storeId: string;
+  integrationId: string;
+  integrationProductId: string;
+  integrationConfigurationId: string;
 };
 
 /** @internal */
@@ -3230,8 +3413,11 @@ export const RemoveProjectEnvContentHint16$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   RemoveProjectEnvContentHint16
 > = z.object({
-  type: z.literal("flags-connection-string"),
-  projectId: z.string(),
+  type: z.literal("integration-store-secret"),
+  storeId: z.string(),
+  integrationId: z.string(),
+  integrationProductId: z.string(),
+  integrationConfigurationId: z.string(),
 });
 
 export function removeProjectEnvContentHint16ToJSON(
@@ -3259,19 +3445,13 @@ export const RemoveProjectEnvContentHint15$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.literal("integration-store-secret"),
+  type: types.literal("postgres-url-no-ssl"),
   storeId: types.string(),
-  integrationId: types.string(),
-  integrationProductId: types.string(),
-  integrationConfigurationId: types.string(),
 });
 /** @internal */
 export type RemoveProjectEnvContentHint15$Outbound = {
-  type: "integration-store-secret";
+  type: "postgres-url-no-ssl";
   storeId: string;
-  integrationId: string;
-  integrationProductId: string;
-  integrationConfigurationId: string;
 };
 
 /** @internal */
@@ -3280,11 +3460,8 @@ export const RemoveProjectEnvContentHint15$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   RemoveProjectEnvContentHint15
 > = z.object({
-  type: z.literal("integration-store-secret"),
+  type: z.literal("postgres-url-no-ssl"),
   storeId: z.string(),
-  integrationId: z.string(),
-  integrationProductId: z.string(),
-  integrationConfigurationId: z.string(),
 });
 
 export function removeProjectEnvContentHint15ToJSON(
@@ -3312,12 +3489,12 @@ export const RemoveProjectEnvContentHint14$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.literal("postgres-url-no-ssl"),
+  type: types.literal("postgres-database"),
   storeId: types.string(),
 });
 /** @internal */
 export type RemoveProjectEnvContentHint14$Outbound = {
-  type: "postgres-url-no-ssl";
+  type: "postgres-database";
   storeId: string;
 };
 
@@ -3327,7 +3504,7 @@ export const RemoveProjectEnvContentHint14$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   RemoveProjectEnvContentHint14
 > = z.object({
-  type: z.literal("postgres-url-no-ssl"),
+  type: z.literal("postgres-database"),
   storeId: z.string(),
 });
 
@@ -3356,12 +3533,12 @@ export const RemoveProjectEnvContentHint13$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.literal("postgres-database"),
+  type: types.literal("postgres-password"),
   storeId: types.string(),
 });
 /** @internal */
 export type RemoveProjectEnvContentHint13$Outbound = {
-  type: "postgres-database";
+  type: "postgres-password";
   storeId: string;
 };
 
@@ -3371,7 +3548,7 @@ export const RemoveProjectEnvContentHint13$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   RemoveProjectEnvContentHint13
 > = z.object({
-  type: z.literal("postgres-database"),
+  type: z.literal("postgres-password"),
   storeId: z.string(),
 });
 
@@ -3400,12 +3577,12 @@ export const RemoveProjectEnvContentHint12$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.literal("postgres-password"),
+  type: types.literal("postgres-host"),
   storeId: types.string(),
 });
 /** @internal */
 export type RemoveProjectEnvContentHint12$Outbound = {
-  type: "postgres-password";
+  type: "postgres-host";
   storeId: string;
 };
 
@@ -3415,7 +3592,7 @@ export const RemoveProjectEnvContentHint12$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   RemoveProjectEnvContentHint12
 > = z.object({
-  type: z.literal("postgres-password"),
+  type: z.literal("postgres-host"),
   storeId: z.string(),
 });
 
@@ -3444,12 +3621,12 @@ export const RemoveProjectEnvContentHint11$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.literal("postgres-host"),
+  type: types.literal("postgres-user"),
   storeId: types.string(),
 });
 /** @internal */
 export type RemoveProjectEnvContentHint11$Outbound = {
-  type: "postgres-host";
+  type: "postgres-user";
   storeId: string;
 };
 
@@ -3459,7 +3636,7 @@ export const RemoveProjectEnvContentHint11$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   RemoveProjectEnvContentHint11
 > = z.object({
-  type: z.literal("postgres-host"),
+  type: z.literal("postgres-user"),
   storeId: z.string(),
 });
 
@@ -3488,12 +3665,12 @@ export const RemoveProjectEnvContentHint10$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.literal("postgres-user"),
+  type: types.literal("postgres-prisma-url"),
   storeId: types.string(),
 });
 /** @internal */
 export type RemoveProjectEnvContentHint10$Outbound = {
-  type: "postgres-user";
+  type: "postgres-prisma-url";
   storeId: string;
 };
 
@@ -3503,7 +3680,7 @@ export const RemoveProjectEnvContentHint10$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   RemoveProjectEnvContentHint10
 > = z.object({
-  type: z.literal("postgres-user"),
+  type: z.literal("postgres-prisma-url"),
   storeId: z.string(),
 });
 
@@ -3532,12 +3709,12 @@ export const RemoveProjectEnvContentHint9$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.literal("postgres-prisma-url"),
+  type: types.literal("postgres-url-non-pooling"),
   storeId: types.string(),
 });
 /** @internal */
 export type RemoveProjectEnvContentHint9$Outbound = {
-  type: "postgres-prisma-url";
+  type: "postgres-url-non-pooling";
   storeId: string;
 };
 
@@ -3547,7 +3724,7 @@ export const RemoveProjectEnvContentHint9$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   RemoveProjectEnvContentHint9
 > = z.object({
-  type: z.literal("postgres-prisma-url"),
+  type: z.literal("postgres-url-non-pooling"),
   storeId: z.string(),
 });
 
@@ -3576,12 +3753,12 @@ export const RemoveProjectEnvContentHint8$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.literal("postgres-url-non-pooling"),
+  type: types.literal("postgres-url"),
   storeId: types.string(),
 });
 /** @internal */
 export type RemoveProjectEnvContentHint8$Outbound = {
-  type: "postgres-url-non-pooling";
+  type: "postgres-url";
   storeId: string;
 };
 
@@ -3591,7 +3768,7 @@ export const RemoveProjectEnvContentHint8$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   RemoveProjectEnvContentHint8
 > = z.object({
-  type: z.literal("postgres-url-non-pooling"),
+  type: z.literal("postgres-url"),
   storeId: z.string(),
 });
 
@@ -3620,12 +3797,12 @@ export const RemoveProjectEnvContentHint7$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.literal("postgres-url"),
+  type: types.literal("blob-webhook-public-key"),
   storeId: types.string(),
 });
 /** @internal */
 export type RemoveProjectEnvContentHint7$Outbound = {
-  type: "postgres-url";
+  type: "blob-webhook-public-key";
   storeId: string;
 };
 
@@ -3635,7 +3812,7 @@ export const RemoveProjectEnvContentHint7$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   RemoveProjectEnvContentHint7
 > = z.object({
-  type: z.literal("postgres-url"),
+  type: z.literal("blob-webhook-public-key"),
   storeId: z.string(),
 });
 
@@ -3944,6 +4121,7 @@ export const RemoveProjectEnvResponseBodyContentHint$inboundSchema: z.ZodType<
   z.lazy(() => RemoveProjectEnvContentHint14$inboundSchema),
   z.lazy(() => RemoveProjectEnvContentHint15$inboundSchema),
   z.lazy(() => RemoveProjectEnvContentHint16$inboundSchema),
+  z.lazy(() => RemoveProjectEnvContentHint17$inboundSchema),
 ]);
 /** @internal */
 export type RemoveProjectEnvResponseBodyContentHint$Outbound =
@@ -3962,7 +4140,8 @@ export type RemoveProjectEnvResponseBodyContentHint$Outbound =
   | RemoveProjectEnvContentHint13$Outbound
   | RemoveProjectEnvContentHint14$Outbound
   | RemoveProjectEnvContentHint15$Outbound
-  | RemoveProjectEnvContentHint16$Outbound;
+  | RemoveProjectEnvContentHint16$Outbound
+  | RemoveProjectEnvContentHint17$Outbound;
 
 /** @internal */
 export const RemoveProjectEnvResponseBodyContentHint$outboundSchema: z.ZodType<
@@ -3986,6 +4165,7 @@ export const RemoveProjectEnvResponseBodyContentHint$outboundSchema: z.ZodType<
   z.lazy(() => RemoveProjectEnvContentHint14$outboundSchema),
   z.lazy(() => RemoveProjectEnvContentHint15$outboundSchema),
   z.lazy(() => RemoveProjectEnvContentHint16$outboundSchema),
+  z.lazy(() => RemoveProjectEnvContentHint17$outboundSchema),
 ]);
 
 export function removeProjectEnvResponseBodyContentHintToJSON(
@@ -4128,6 +4308,7 @@ export const RemoveProjectEnvResponseBody1$inboundSchema: z.ZodType<
       z.lazy(() => RemoveProjectEnvContentHint14$inboundSchema),
       z.lazy(() => RemoveProjectEnvContentHint15$inboundSchema),
       z.lazy(() => RemoveProjectEnvContentHint16$inboundSchema),
+      z.lazy(() => RemoveProjectEnvContentHint17$inboundSchema),
     ]),
   ).optional(),
   internalContentHint: z.nullable(
@@ -4171,6 +4352,7 @@ export type RemoveProjectEnvResponseBody1$Outbound = {
     | RemoveProjectEnvContentHint14$Outbound
     | RemoveProjectEnvContentHint15$Outbound
     | RemoveProjectEnvContentHint16$Outbound
+    | RemoveProjectEnvContentHint17$Outbound
     | null
     | undefined;
   internalContentHint?:
@@ -4224,6 +4406,7 @@ export const RemoveProjectEnvResponseBody1$outboundSchema: z.ZodType<
       z.lazy(() => RemoveProjectEnvContentHint14$outboundSchema),
       z.lazy(() => RemoveProjectEnvContentHint15$outboundSchema),
       z.lazy(() => RemoveProjectEnvContentHint16$outboundSchema),
+      z.lazy(() => RemoveProjectEnvContentHint17$outboundSchema),
     ]),
   ).optional(),
   internalContentHint: z.nullable(

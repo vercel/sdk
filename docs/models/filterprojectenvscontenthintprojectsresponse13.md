@@ -6,7 +6,7 @@
 import { FilterProjectEnvsContentHintProjectsResponse13 } from "@vercel/sdk/models/filterprojectenvsop.js";
 
 let value: FilterProjectEnvsContentHintProjectsResponse13 = {
-  type: "postgres-database",
+  type: "postgres-password",
   storeId: "<id>",
 };
 ```
@@ -15,5 +15,5 @@ let value: FilterProjectEnvsContentHintProjectsResponse13 = {
 
 | Field                 | Type                  | Required              | Description           |
 | --------------------- | --------------------- | --------------------- | --------------------- |
-| `type`                | *"postgres-database"* | :heavy_check_mark:    | N/A                   |
+| `type`                | *"postgres-password"* | :heavy_check_mark:    | N/A                   |
 | `storeId`             | *string*              | :heavy_check_mark:    | N/A                   |

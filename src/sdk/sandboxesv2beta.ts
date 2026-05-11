@@ -18,7 +18,6 @@ import { sandboxesV2BetaListSessions } from "../funcs/sandboxesV2BetaListSession
 import { sandboxesV2BetaListSessionSnapshots } from "../funcs/sandboxesV2BetaListSessionSnapshots.js";
 import { sandboxesV2BetaReadSessionFile } from "../funcs/sandboxesV2BetaReadSessionFile.js";
 import { sandboxesV2BetaStopSession } from "../funcs/sandboxesV2BetaStopSession.js";
-import { sandboxesV2BetaUpdateSandbox } from "../funcs/sandboxesV2BetaUpdateSandbox.js";
 import { sandboxesV2BetaUpdateSessionNetworkPolicy } from "../funcs/sandboxesV2BetaUpdateSessionNetworkPolicy.js";
 import { sandboxesV2BetaWriteSessionFiles } from "../funcs/sandboxesV2BetaWriteSessionFiles.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
@@ -83,10 +82,6 @@ import {
   StopSessionRequest,
   StopSessionResponseBody,
 } from "../models/stopsessionop.js";
-import {
-  UpdateSandboxRequest,
-  UpdateSandboxResponseBody,
-} from "../models/updatesandboxop.js";
 import {
   UpdateSessionNetworkPolicyRequest,
   UpdateSessionNetworkPolicyResponseBody,
@@ -211,23 +206,6 @@ export class SandboxesV2Beta extends ClientSDK {
     options?: RequestOptions,
   ): Promise<GetNamedSandboxResponseBody> {
     return unwrapAsync(sandboxesV2BetaGetNamedSandbox(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Update a sandbox
-   *
-   * @remarks
-   * Updates the configuration of a sandbox. Only the provided fields will be modified; omitted fields remain unchanged.
-   */
-  async updateSandbox(
-    request: UpdateSandboxRequest,
-    options?: RequestOptions,
-  ): Promise<UpdateSandboxResponseBody> {
-    return unwrapAsync(sandboxesV2BetaUpdateSandbox(
       this,
       request,
       options,

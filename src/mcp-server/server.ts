@@ -291,7 +291,6 @@ import { tool$sandboxesV2BetaListSessions } from "./tools/sandboxesV2BetaListSes
 import { tool$sandboxesV2BetaListSessionSnapshots } from "./tools/sandboxesV2BetaListSessionSnapshots.js";
 import { tool$sandboxesV2BetaReadSessionFile } from "./tools/sandboxesV2BetaReadSessionFile.js";
 import { tool$sandboxesV2BetaStopSession } from "./tools/sandboxesV2BetaStopSession.js";
-import { tool$sandboxesV2BetaUpdateSandbox } from "./tools/sandboxesV2BetaUpdateSandbox.js";
 import { tool$sandboxesV2BetaUpdateSessionNetworkPolicy } from "./tools/sandboxesV2BetaUpdateSessionNetworkPolicy.js";
 import { tool$sandboxesV2BetaWriteSessionFiles } from "./tools/sandboxesV2BetaWriteSessionFiles.js";
 import { tool$sandboxesWriteFiles } from "./tools/sandboxesWriteFiles.js";
@@ -339,7 +338,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Vercel",
-    version: "1.21.1",
+    version: "1.21.2",
   });
 
   const client = new VercelCore({
@@ -635,7 +634,6 @@ export function createMCPServer(deps: {
   tool(tool$sandboxesV2BetaListSessions);
   tool(tool$sandboxesV2BetaGetSession);
   tool(tool$sandboxesV2BetaGetNamedSandbox);
-  tool(tool$sandboxesV2BetaUpdateSandbox);
   tool(tool$sandboxesV2BetaDeleteSandbox);
   tool(tool$sandboxesV2BetaListSessionCommands);
   tool(tool$sandboxesV2BetaGetSessionCommand);

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UpdateMicrofrontendsDataCache } from "@vercel/sdk/models/updatemicrofrontendslogheaders.js";
+import { UpdateMicrofrontendsDataCache } from "@vercel/sdk/models/updatemicrofrontendsmanagedrules.js";
 
 let value: UpdateMicrofrontendsDataCache = {
   userDisabled: false,

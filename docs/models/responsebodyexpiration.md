@@ -1,17 +1,24 @@
 # ResponseBodyExpiration
 
-## Example Usage
+
+## Supported Types
+
+### `models.GetProjectsExpiration1`
 
 ```typescript
-import { ResponseBodyExpiration } from "@vercel/sdk/models/getprojectsresponsebodyprojectsowasp.js";
-
-let value: ResponseBodyExpiration = {};
+const value: models.GetProjectsExpiration1 = {
+  expiresAt: 5309.34,
+  version: 2074.84,
+};
 ```
 
-## Fields
+### `models.GetProjectsExpiration2`
 
-| Field                                                                                                                    | Type                                                                                                                     | Required                                                                                                                 | Description                                                                                                              |
-| ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
-| `expiresAt`                                                                                                              | *number*                                                                                                                 | :heavy_minus_sign:                                                                                                       | Unix ms timestamp when the project is scheduled to expire. Absent when the project is locked without a pending schedule. |
-| `lockedAt`                                                                                                               | *number*                                                                                                                 | :heavy_minus_sign:                                                                                                       | Unix ms timestamp when the project was locked.                                                                           |
-| `lockedBy`                                                                                                               | *string*                                                                                                                 | :heavy_minus_sign:                                                                                                       | userId of the actor that triggered the lock (system or admin).                                                           |
+```typescript
+const value: models.GetProjectsExpiration2 = {
+  lockedAt: 6394.37,
+  lockedBy: "<value>",
+  version: 5054.04,
+};
+```
+

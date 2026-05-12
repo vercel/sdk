@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsResponseBodyProjectsSecurityPlusMetadata } from "@vercel/sdk/models/getprojectsresponsebodycustomallow.js";
+import { GetProjectsResponseBodyProjectsSecurityPlusMetadata } from "@vercel/sdk/models/getprojectstoprojectsresponse200applicationjsonresponsebody1.js";
 
 let value: GetProjectsResponseBodyProjectsSecurityPlusMetadata = {
   updatedAt: 3802.18,

@@ -3448,7 +3448,7 @@ const value: models.ThreeHundredAndTwentyThree = {
   appName: "<value>",
   atTTL: 4312.5,
   scope: "<value>",
-  authMethod: "sms",
+  authMethod: "invite",
 };
 ```
 
@@ -3458,7 +3458,7 @@ const value: models.ThreeHundredAndTwentyThree = {
 const value: models.ThreeHundredAndTwentyFour = {
   tokenId: "<id>",
   tokenName: "<value>",
-  origin: "app",
+  origin: "github",
   scope: "user",
 };
 ```

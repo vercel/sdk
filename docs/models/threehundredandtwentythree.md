@@ -12,7 +12,7 @@ let value: ThreeHundredAndTwentyThree = {
   appName: "<value>",
   atTTL: 4312.5,
   scope: "<value>",
-  authMethod: "sms",
+  authMethod: "invite",
 };
 ```
 

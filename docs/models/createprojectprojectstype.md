@@ -5,7 +5,7 @@ The Git Provider of the repository
 ## Example Usage
 
 ```typescript
-import { CreateProjectProjectsType } from "@vercel/sdk/models/createprojectto.js";
+import { CreateProjectProjectsType } from "@vercel/sdk/models/createprojecttopreset.js";
 
 let value: CreateProjectProjectsType = "gitlab";
 ```

@@ -69,6 +69,7 @@ export const Type = {
   Avatar: "avatar",
   Alias: "alias",
   Plan: "plan",
+  Domain: "domain",
   Flag: "flag",
   Deployment: "deployment",
   AgenticProvisioningAccountLinked: "agentic-provisioning-account-linked",
@@ -187,7 +188,6 @@ export const Type = {
   DnsAdd: "dns-add",
   DnsDelete: "dns-delete",
   DnsUpdate: "dns-update",
-  Domain: "domain",
   DomainBuy: "domain-buy",
   DomainCdn: "domain-cdn",
   DomainChown: "domain-chown",
@@ -407,6 +407,7 @@ export const Type = {
   ProjectPasswordProtection: "project-password-protection",
   ProjectExpirationLocked: "project-expiration-locked",
   ProjectExpirationScheduled: "project-expiration-scheduled",
+  ProjectExpirationUnlocked: "project-expiration-unlocked",
   ProjectPaused: "project-paused",
   ProjectProgramEnrollmentChanged: "project-program-enrollment-changed",
   ProjectRollingReleaseEnabled: "project-rolling-release-enabled",
@@ -610,9 +611,9 @@ export type Categories = ClosedEnum<typeof Categories>;
 export type User = {
   slug?: string | undefined;
   avatar: string;
+  uid: string;
   email: string;
   username: string;
-  uid: string;
 };
 
 export const UserEventPrincipal3Type = {
@@ -745,6 +746,9 @@ export type UserEventPayload326Geolocation = {
  */
 export type ThreeHundredAndTwentySix = {
   deletedCount: number;
+  /**
+   * The token's public ID.
+   */
   actorTokenId: string;
   ip?: string | null | undefined;
   geolocation?: UserEventPayload326Geolocation | null | undefined;
@@ -769,6 +773,7 @@ export const PayloadOrigin = {
   Otp: "otp",
   Sms: "sms",
   Invite: "invite",
+  TokenExchangeOidc: "token-exchange-oidc",
   Emu: "emu",
 } as const;
 export type PayloadOrigin = ClosedEnum<typeof PayloadOrigin>;
@@ -813,6 +818,9 @@ export type ThreeHundredAndTwentyFive = {
   tokenId: string;
   tokenType: string;
   tokenName: string;
+  /**
+   * The token's public ID.
+   */
   actorTokenId: string;
   origin?: PayloadOrigin | undefined;
   teamId?: string | undefined;
@@ -856,6 +864,7 @@ export const Origin = {
   Otp: "otp",
   Sms: "sms",
   Invite: "invite",
+  TokenExchangeOidc: "token-exchange-oidc",
   Emu: "emu",
 } as const;
 /**
@@ -987,6 +996,7 @@ export const AuthMethod = {
   Otp: "otp",
   Sms: "sms",
   Invite: "invite",
+  TokenExchangeOidc: "token-exchange-oidc",
   Emu: "emu",
 } as const;
 export type AuthMethod = ClosedEnum<typeof AuthMethod>;
@@ -1916,17 +1926,17 @@ export const User$inboundSchema: z.ZodType<User, z.ZodTypeDef, unknown> = z
   .object({
     slug: types.optional(types.string()),
     avatar: types.string(),
+    uid: types.string(),
     email: types.string(),
     username: types.string(),
-    uid: types.string(),
   });
 /** @internal */
 export type User$Outbound = {
   slug?: string | undefined;
   avatar: string;
+  uid: string;
   email: string;
   username: string;
-  uid: string;
 };
 
 /** @internal */
@@ -1934,9 +1944,9 @@ export const User$outboundSchema: z.ZodType<User$Outbound, z.ZodTypeDef, User> =
   z.object({
     slug: z.string().optional(),
     avatar: z.string(),
+    uid: z.string(),
     email: z.string(),
     username: z.string(),
-    uid: z.string(),
   });
 
 export function userToJSON(user: User): string {

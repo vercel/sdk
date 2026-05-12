@@ -25,6 +25,7 @@ export const AuthTokenScopesOrigin = {
   Google: "google",
   Apple: "apple",
   Chatgpt: "chatgpt",
+  TokenExchangeOidc: "token-exchange-oidc",
   Emu: "emu",
 } as const;
 export type AuthTokenScopesOrigin = ClosedEnum<typeof AuthTokenScopesOrigin>;
@@ -80,6 +81,7 @@ export const ScopesOrigin = {
   Google: "google",
   Apple: "apple",
   Chatgpt: "chatgpt",
+  TokenExchangeOidc: "token-exchange-oidc",
   Emu: "emu",
 } as const;
 export type ScopesOrigin = ClosedEnum<typeof ScopesOrigin>;

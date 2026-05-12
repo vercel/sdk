@@ -6,8 +6,8 @@
 import { Teams } from "@vercel/sdk/models/fluidduration.js";
 
 let value: Teams = {
-  createdAt: 3009.16,
   teamId: "<id>",
+  createdAt: 3009.16,
   role: "SECURITY",
   confirmed: true,
   confirmedAt: 9426.6,
@@ -19,8 +19,8 @@ let value: Teams = {
 
 | Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
 | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `createdAt`                                                                  | *number*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
 | `teamId`                                                                     | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
+| `createdAt`                                                                  | *number*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
 | `role`                                                                       | [models.UserEventPayload122Role](../models/usereventpayload122role.md)       | :heavy_check_mark:                                                           | N/A                                                                          |
 | `confirmed`                                                                  | *true*                                                                       | :heavy_check_mark:                                                           | N/A                                                                          |
 | `confirmedAt`                                                                | *number*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |

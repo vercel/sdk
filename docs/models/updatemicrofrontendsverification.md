@@ -5,7 +5,7 @@ A list of verification challenges, one of which must be completed to verify the 
 ## Example Usage
 
 ```typescript
-import { UpdateMicrofrontendsVerification } from "@vercel/sdk/models/updatemicrofrontendslogheaders.js";
+import { UpdateMicrofrontendsVerification } from "@vercel/sdk/models/updatemicrofrontendsmanagedrules.js";
 
 let value: UpdateMicrofrontendsVerification = {
   type: "<value>",

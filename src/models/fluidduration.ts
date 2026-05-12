@@ -1171,8 +1171,8 @@ export type UserEventPayloadJoinedFrom = {
 };
 
 export type Teams = {
-  createdAt: number;
   teamId: string;
+  createdAt: number;
   role: UserEventPayload122Role;
   confirmed: true;
   confirmedAt: number;
@@ -6102,8 +6102,8 @@ export function userEventPayloadJoinedFromFromJSON(
 /** @internal */
 export const Teams$inboundSchema: z.ZodType<Teams, z.ZodTypeDef, unknown> = z
   .object({
-    createdAt: types.number(),
     teamId: types.string(),
+    createdAt: types.number(),
     role: UserEventPayload122Role$inboundSchema,
     confirmed: types.literal(true),
     confirmedAt: types.number(),
@@ -6119,8 +6119,8 @@ export const Teams$inboundSchema: z.ZodType<Teams, z.ZodTypeDef, unknown> = z
   });
 /** @internal */
 export type Teams$Outbound = {
-  createdAt: number;
   teamId: string;
+  createdAt: number;
   role: string;
   confirmed: true;
   confirmedAt: number;
@@ -6137,8 +6137,8 @@ export const Teams$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Teams
 > = z.object({
-  createdAt: z.number(),
   teamId: z.string(),
+  createdAt: z.number(),
   role: UserEventPayload122Role$outboundSchema,
   confirmed: z.literal(true),
   confirmedAt: z.number(),

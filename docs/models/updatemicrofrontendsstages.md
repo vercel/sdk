@@ -5,7 +5,7 @@ An array of all the stages required during a deployment release. Each stage defi
 ## Example Usage
 
 ```typescript
-import { UpdateMicrofrontendsStages } from "@vercel/sdk/models/updatemicrofrontendslogheaders.js";
+import { UpdateMicrofrontendsStages } from "@vercel/sdk/models/updatemicrofrontendsmanagedrules.js";
 
 let value: UpdateMicrofrontendsStages = {
   targetPercentage: 25,

@@ -47,7 +47,7 @@ import {
   CreateProjectEnvResponseBody,
 } from "../models/createprojectenvop.js";
 import { CreateProjectResponseBody } from "../models/createprojectresponsebody.js";
-import { CreateProjectRequest } from "../models/createprojectto.js";
+import { CreateProjectRequest } from "../models/createprojecttopreset.js";
 import {
   CreateProjectTransferRequestRequest,
   CreateProjectTransferRequestResponseBody,
@@ -74,7 +74,7 @@ import {
   GetProjectEnvResponseBody,
 } from "../models/getprojectenvop.js";
 import { GetProjectsResponseBody } from "../models/getprojectsresponsebody.js";
-import { GetProjectsRequest } from "../models/getprojectsresponsebodyprojectsowasp.js";
+import { GetProjectsRequest } from "../models/getprojectsresponsebodyprojectsaibots.js";
 import {
   ListPromoteAliasesRequest,
   ListPromoteAliasesResponseBody,
@@ -95,13 +95,13 @@ import {
 import { RequestPromoteRequest } from "../models/requestpromoteop.js";
 import { RequestRollbackRequest } from "../models/requestrollbackop.js";
 import { UnpauseProjectRequest } from "../models/unpauseprojectop.js";
-import { UpdateMicrofrontendsRequest } from "../models/updatemicrofrontendslogheaders.js";
+import { UpdateMicrofrontendsRequest } from "../models/updatemicrofrontendsmanagedrules.js";
 import { UpdateMicrofrontendsResponseBody } from "../models/updatemicrofrontendsresponsebody.js";
 import {
   UpdateProjectDomainRequest,
   UpdateProjectDomainResponseBody,
 } from "../models/updateprojectdomainop.js";
-import { UpdateProjectRequest } from "../models/updateprojectprojectsresponsebuildqueue.js";
+import { UpdateProjectRequest } from "../models/updateprojectprojectsresponsebuildmachineselection.js";
 import {
   UpdateProjectProtectionBypassRequest,
   UpdateProjectProtectionBypassResponseBody,

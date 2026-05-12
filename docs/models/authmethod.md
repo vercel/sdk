@@ -5,11 +5,11 @@
 ```typescript
 import { AuthMethod } from "@vercel/sdk/models/twohundredandseventyfour.js";
 
-let value: AuthMethod = "github-webhook";
+let value: AuthMethod = "manual";
 ```
 
 ## Values
 
 ```typescript
-"email" | "saml" | "app" | "github" | "gitlab" | "bitbucket" | "google" | "apple" | "chatgpt" | "github-webhook" | "manual" | "passkey" | "otp" | "sms" | "invite" | "emu"
+"email" | "saml" | "app" | "github" | "gitlab" | "bitbucket" | "google" | "apple" | "chatgpt" | "github-webhook" | "manual" | "passkey" | "otp" | "sms" | "invite" | "token-exchange-oidc" | "emu"
 ```

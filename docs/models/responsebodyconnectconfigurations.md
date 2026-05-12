@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyConnectConfigurations } from "@vercel/sdk/models/getprojectsresponsebodyprojectsowasp.js";
+import { ResponseBodyConnectConfigurations } from "@vercel/sdk/models/getprojectsresponsebodyprojectsaibots.js";
 
 let value: ResponseBodyConnectConfigurations = {
   envId: "preview",

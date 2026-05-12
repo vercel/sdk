@@ -14,7 +14,7 @@ import {
   GetProjectsResponseBody3$inboundSchema,
   GetProjectsResponseBody3$Outbound,
   GetProjectsResponseBody3$outboundSchema,
-} from "./getprojectsresponsebodycustomallow.js";
+} from "./getprojectstoprojectsresponse200applicationjsonresponsebody1.js";
 import {
   Alias,
   Alias$inboundSchema,
@@ -31,9 +31,6 @@ import {
   ResponseBodyAnalytics$inboundSchema,
   ResponseBodyAnalytics$Outbound,
   ResponseBodyAnalytics$outboundSchema,
-  ResponseBodyBuildMachineType,
-  ResponseBodyBuildMachineType$inboundSchema,
-  ResponseBodyBuildMachineType$outboundSchema,
   ResponseBodyDeploymentExpiration,
   ResponseBodyDeploymentExpiration$inboundSchema,
   ResponseBodyDeploymentExpiration$Outbound,
@@ -45,9 +42,6 @@ import {
   ResponseBodyFramework,
   ResponseBodyFramework$inboundSchema,
   ResponseBodyFramework$outboundSchema,
-  ResponseBodyFunctionDefaultMemoryType,
-  ResponseBodyFunctionDefaultMemoryType$inboundSchema,
-  ResponseBodyFunctionDefaultMemoryType$outboundSchema,
   ResponseBodyIpBuckets,
   ResponseBodyIpBuckets$inboundSchema,
   ResponseBodyIpBuckets$Outbound,
@@ -64,8 +58,26 @@ import {
   ResponseBodyPasswordProtection$inboundSchema,
   ResponseBodyPasswordProtection$Outbound,
   ResponseBodyPasswordProtection$outboundSchema,
-} from "./responsebodybuildmachinetype.js";
+} from "./responsebodypasswordprotection.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export const ResponseBodyFunctionDefaultMemoryType = {
+  StandardLegacy: "standard_legacy",
+  Standard: "standard",
+  Performance: "performance",
+} as const;
+export type ResponseBodyFunctionDefaultMemoryType = ClosedEnum<
+  typeof ResponseBodyFunctionDefaultMemoryType
+>;
+
+export const ResponseBodyBuildMachineType = {
+  Standard: "standard",
+  Enhanced: "enhanced",
+  Turbo: "turbo",
+} as const;
+export type ResponseBodyBuildMachineType = ClosedEnum<
+  typeof ResponseBodyBuildMachineType
+>;
 
 export const ResponseBodyBuildMachineSelection = {
   Fixed: "fixed",
@@ -1079,6 +1091,25 @@ export type GetProjectsResponseBody =
   | GetProjectsResponseBody2
   | GetProjectsResponseBody3
   | Array<GetProjectsResponseBody1>;
+
+/** @internal */
+export const ResponseBodyFunctionDefaultMemoryType$inboundSchema:
+  z.ZodNativeEnum<typeof ResponseBodyFunctionDefaultMemoryType> = z.nativeEnum(
+    ResponseBodyFunctionDefaultMemoryType,
+  );
+/** @internal */
+export const ResponseBodyFunctionDefaultMemoryType$outboundSchema:
+  z.ZodNativeEnum<typeof ResponseBodyFunctionDefaultMemoryType> =
+    ResponseBodyFunctionDefaultMemoryType$inboundSchema;
+
+/** @internal */
+export const ResponseBodyBuildMachineType$inboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyBuildMachineType
+> = z.nativeEnum(ResponseBodyBuildMachineType);
+/** @internal */
+export const ResponseBodyBuildMachineType$outboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyBuildMachineType
+> = ResponseBodyBuildMachineType$inboundSchema;
 
 /** @internal */
 export const ResponseBodyBuildMachineSelection$inboundSchema: z.ZodNativeEnum<

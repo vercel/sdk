@@ -1,17 +1,24 @@
 # GetMicrofrontendsInGroupExpiration
 
-## Example Usage
+
+## Supported Types
+
+### `models.GetMicrofrontendsInGroupExpiration1`
 
 ```typescript
-import { GetMicrofrontendsInGroupExpiration } from "@vercel/sdk/models/getmicrofrontendsingroupto1.js";
-
-let value: GetMicrofrontendsInGroupExpiration = {};
+const value: models.GetMicrofrontendsInGroupExpiration1 = {
+  expiresAt: 9296.07,
+  version: 6248,
+};
 ```
 
-## Fields
+### `models.GetMicrofrontendsInGroupExpiration2`
 
-| Field                                                                                                                    | Type                                                                                                                     | Required                                                                                                                 | Description                                                                                                              |
-| ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
-| `expiresAt`                                                                                                              | *number*                                                                                                                 | :heavy_minus_sign:                                                                                                       | Unix ms timestamp when the project is scheduled to expire. Absent when the project is locked without a pending schedule. |
-| `lockedAt`                                                                                                               | *number*                                                                                                                 | :heavy_minus_sign:                                                                                                       | Unix ms timestamp when the project was locked.                                                                           |
-| `lockedBy`                                                                                                               | *string*                                                                                                                 | :heavy_minus_sign:                                                                                                       | userId of the actor that triggered the lock (system or admin).                                                           |
+```typescript
+const value: models.GetMicrofrontendsInGroupExpiration2 = {
+  lockedAt: 1688.3,
+  lockedBy: "<value>",
+  version: 8023.32,
+};
+```
+

@@ -18,7 +18,7 @@ import {
 import {
   GetProjectsRequest,
   GetProjectsRequest$outboundSchema,
-} from "../models/getprojectsresponsebodyprojectsowasp.js";
+} from "../models/getprojectsresponsebodyprojectsaibots.js";
 import {
   ConnectionError,
   InvalidRequestError,

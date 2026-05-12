@@ -230,6 +230,7 @@ export const GetWebhooksResponseBodyFramework = {
   Flask: "flask",
   Fasthtml: "fasthtml",
   Django: "django",
+  Ash: "ash",
   SanityV3: "sanity-v3",
   Sanity: "sanity",
   Storybook: "storybook",

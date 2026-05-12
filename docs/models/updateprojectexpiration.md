@@ -1,17 +1,24 @@
 # UpdateProjectExpiration
 
-## Example Usage
+
+## Supported Types
+
+### `models.UpdateProjectExpiration1`
 
 ```typescript
-import { UpdateProjectExpiration } from "@vercel/sdk/models/updateprojectprojectsresponsebuildqueue.js";
-
-let value: UpdateProjectExpiration = {};
+const value: models.UpdateProjectExpiration1 = {
+  expiresAt: 9939.05,
+  version: 3759.69,
+};
 ```
 
-## Fields
+### `models.UpdateProjectExpiration2`
 
-| Field                                                                                                                    | Type                                                                                                                     | Required                                                                                                                 | Description                                                                                                              |
-| ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
-| `expiresAt`                                                                                                              | *number*                                                                                                                 | :heavy_minus_sign:                                                                                                       | Unix ms timestamp when the project is scheduled to expire. Absent when the project is locked without a pending schedule. |
-| `lockedAt`                                                                                                               | *number*                                                                                                                 | :heavy_minus_sign:                                                                                                       | Unix ms timestamp when the project was locked.                                                                           |
-| `lockedBy`                                                                                                               | *string*                                                                                                                 | :heavy_minus_sign:                                                                                                       | userId of the actor that triggered the lock (system or admin).                                                           |
+```typescript
+const value: models.UpdateProjectExpiration2 = {
+  lockedAt: 9187.83,
+  lockedBy: "<value>",
+  version: 2695.46,
+};
+```
+

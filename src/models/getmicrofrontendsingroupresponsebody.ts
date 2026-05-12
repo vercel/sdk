@@ -132,10 +132,6 @@ import {
   GetMicrofrontendsInGroupTargets$inboundSchema,
   GetMicrofrontendsInGroupTargets$Outbound,
   GetMicrofrontendsInGroupTargets$outboundSchema,
-  GetMicrofrontendsInGroupTo1,
-  GetMicrofrontendsInGroupTo1$inboundSchema,
-  GetMicrofrontendsInGroupTo1$Outbound,
-  GetMicrofrontendsInGroupTo1$outboundSchema,
   GetMicrofrontendsInGroupTo2,
   GetMicrofrontendsInGroupTo2$inboundSchema,
   GetMicrofrontendsInGroupTo2$Outbound,
@@ -144,8 +140,26 @@ import {
   GetMicrofrontendsInGroupTrustedIps$inboundSchema,
   GetMicrofrontendsInGroupTrustedIps$Outbound,
   GetMicrofrontendsInGroupTrustedIps$outboundSchema,
-} from "./getmicrofrontendsingroupto1.js";
+} from "./getmicrofrontendsingroupto2.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export const GetMicrofrontendsInGroupToPreset = {
+  AllCustom: "all-custom",
+} as const;
+export type GetMicrofrontendsInGroupToPreset = ClosedEnum<
+  typeof GetMicrofrontendsInGroupToPreset
+>;
+
+/**
+ * The target envs on the current project that may be accessed.
+ */
+export type GetMicrofrontendsInGroupTo1 = {
+  /**
+   * System environment slugs (`production`, `preview`) and/or custom environment slugs defined on the referenced project.
+   */
+  slugs: Array<string>;
+  preset?: GetMicrofrontendsInGroupToPreset | undefined;
+};
 
 export type GetMicrofrontendsInGroupTo =
   | GetMicrofrontendsInGroupTo1
@@ -891,12 +905,65 @@ export type GetMicrofrontendsInGroupResponseBody = {
 };
 
 /** @internal */
+export const GetMicrofrontendsInGroupToPreset$inboundSchema: z.ZodNativeEnum<
+  typeof GetMicrofrontendsInGroupToPreset
+> = z.nativeEnum(GetMicrofrontendsInGroupToPreset);
+/** @internal */
+export const GetMicrofrontendsInGroupToPreset$outboundSchema: z.ZodNativeEnum<
+  typeof GetMicrofrontendsInGroupToPreset
+> = GetMicrofrontendsInGroupToPreset$inboundSchema;
+
+/** @internal */
+export const GetMicrofrontendsInGroupTo1$inboundSchema: z.ZodType<
+  GetMicrofrontendsInGroupTo1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  slugs: z.array(types.string()),
+  preset: types.optional(GetMicrofrontendsInGroupToPreset$inboundSchema),
+});
+/** @internal */
+export type GetMicrofrontendsInGroupTo1$Outbound = {
+  slugs: Array<string>;
+  preset?: string | undefined;
+};
+
+/** @internal */
+export const GetMicrofrontendsInGroupTo1$outboundSchema: z.ZodType<
+  GetMicrofrontendsInGroupTo1$Outbound,
+  z.ZodTypeDef,
+  GetMicrofrontendsInGroupTo1
+> = z.object({
+  slugs: z.array(z.string()),
+  preset: GetMicrofrontendsInGroupToPreset$outboundSchema.optional(),
+});
+
+export function getMicrofrontendsInGroupTo1ToJSON(
+  getMicrofrontendsInGroupTo1: GetMicrofrontendsInGroupTo1,
+): string {
+  return JSON.stringify(
+    GetMicrofrontendsInGroupTo1$outboundSchema.parse(
+      getMicrofrontendsInGroupTo1,
+    ),
+  );
+}
+export function getMicrofrontendsInGroupTo1FromJSON(
+  jsonString: string,
+): SafeParseResult<GetMicrofrontendsInGroupTo1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetMicrofrontendsInGroupTo1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetMicrofrontendsInGroupTo1' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetMicrofrontendsInGroupTo$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupTo,
   z.ZodTypeDef,
   unknown
 > = smartUnion([
-  GetMicrofrontendsInGroupTo1$inboundSchema,
+  z.lazy(() => GetMicrofrontendsInGroupTo1$inboundSchema),
   GetMicrofrontendsInGroupTo2$inboundSchema,
 ]);
 /** @internal */
@@ -910,7 +977,7 @@ export const GetMicrofrontendsInGroupTo$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetMicrofrontendsInGroupTo
 > = smartUnion([
-  GetMicrofrontendsInGroupTo1$outboundSchema,
+  z.lazy(() => GetMicrofrontendsInGroupTo1$outboundSchema),
   GetMicrofrontendsInGroupTo2$outboundSchema,
 ]);
 
@@ -938,7 +1005,7 @@ export const GetMicrofrontendsInGroupOidcProviders$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   to: smartUnion([
-    GetMicrofrontendsInGroupTo1$inboundSchema,
+    z.lazy(() => GetMicrofrontendsInGroupTo1$inboundSchema),
     GetMicrofrontendsInGroupTo2$inboundSchema,
   ]),
   label: types.optional(types.string()),
@@ -960,7 +1027,7 @@ export const GetMicrofrontendsInGroupOidcProviders$outboundSchema: z.ZodType<
   GetMicrofrontendsInGroupOidcProviders
 > = z.object({
   to: smartUnion([
-    GetMicrofrontendsInGroupTo1$outboundSchema,
+    z.lazy(() => GetMicrofrontendsInGroupTo1$outboundSchema),
     GetMicrofrontendsInGroupTo2$outboundSchema,
   ]),
   label: z.string().optional(),

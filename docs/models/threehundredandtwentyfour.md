@@ -10,7 +10,7 @@ import { ThreeHundredAndTwentyFour } from "@vercel/sdk/models/twohundredandseven
 let value: ThreeHundredAndTwentyFour = {
   tokenId: "<id>",
   tokenName: "<value>",
-  origin: "app",
+  origin: "github",
   scope: "user",
 };
 ```

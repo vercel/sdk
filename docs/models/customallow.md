@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CustomAllow } from "@vercel/sdk/models/updateprojectprojectsresponsebuildqueue.js";
+import { CustomAllow } from "@vercel/sdk/models/updateprojectprojectsresponsebuildmachineselection.js";
 
 let value: CustomAllow = {
   to: {

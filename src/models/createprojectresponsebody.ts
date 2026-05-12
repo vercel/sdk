@@ -80,10 +80,13 @@ import {
   CreateProjectTargets$inboundSchema,
   CreateProjectTargets$Outbound,
   CreateProjectTargets$outboundSchema,
-  CreateProjectTo,
-  CreateProjectTo$inboundSchema,
-  CreateProjectTo$Outbound,
-  CreateProjectTo$outboundSchema,
+  CreateProjectTo2,
+  CreateProjectTo2$inboundSchema,
+  CreateProjectTo2$Outbound,
+  CreateProjectTo2$outboundSchema,
+  CreateProjectToPreset,
+  CreateProjectToPreset$inboundSchema,
+  CreateProjectToPreset$outboundSchema,
   CreateProjectTrustedIps,
   CreateProjectTrustedIps$inboundSchema,
   CreateProjectTrustedIps$Outbound,
@@ -140,11 +143,24 @@ import {
   SpeedInsights$inboundSchema,
   SpeedInsights$Outbound,
   SpeedInsights$outboundSchema,
-} from "./createprojectto.js";
+} from "./createprojecttopreset.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
+/**
+ * The target envs on the current project that may be accessed.
+ */
+export type CreateProjectTo1 = {
+  /**
+   * System environment slugs (`production`, `preview`) and/or custom environment slugs defined on the referenced project.
+   */
+  slugs: Array<string>;
+  preset?: CreateProjectToPreset | undefined;
+};
+
+export type CreateProjectTo = CreateProjectTo1 | CreateProjectTo2;
+
 export type CreateProjectOidcProviders = {
-  to: CreateProjectTo;
+  to: CreateProjectTo1 | CreateProjectTo2;
   label?: string | undefined;
   claims: { [k: string]: Array<string> };
 };
@@ -803,18 +819,102 @@ export type CreateProjectResponseBody = {
 };
 
 /** @internal */
+export const CreateProjectTo1$inboundSchema: z.ZodType<
+  CreateProjectTo1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  slugs: z.array(types.string()),
+  preset: types.optional(CreateProjectToPreset$inboundSchema),
+});
+/** @internal */
+export type CreateProjectTo1$Outbound = {
+  slugs: Array<string>;
+  preset?: string | undefined;
+};
+
+/** @internal */
+export const CreateProjectTo1$outboundSchema: z.ZodType<
+  CreateProjectTo1$Outbound,
+  z.ZodTypeDef,
+  CreateProjectTo1
+> = z.object({
+  slugs: z.array(z.string()),
+  preset: CreateProjectToPreset$outboundSchema.optional(),
+});
+
+export function createProjectTo1ToJSON(
+  createProjectTo1: CreateProjectTo1,
+): string {
+  return JSON.stringify(
+    CreateProjectTo1$outboundSchema.parse(createProjectTo1),
+  );
+}
+export function createProjectTo1FromJSON(
+  jsonString: string,
+): SafeParseResult<CreateProjectTo1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateProjectTo1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProjectTo1' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateProjectTo$inboundSchema: z.ZodType<
+  CreateProjectTo,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  z.lazy(() => CreateProjectTo1$inboundSchema),
+  CreateProjectTo2$inboundSchema,
+]);
+/** @internal */
+export type CreateProjectTo$Outbound =
+  | CreateProjectTo1$Outbound
+  | CreateProjectTo2$Outbound;
+
+/** @internal */
+export const CreateProjectTo$outboundSchema: z.ZodType<
+  CreateProjectTo$Outbound,
+  z.ZodTypeDef,
+  CreateProjectTo
+> = smartUnion([
+  z.lazy(() => CreateProjectTo1$outboundSchema),
+  CreateProjectTo2$outboundSchema,
+]);
+
+export function createProjectToToJSON(
+  createProjectTo: CreateProjectTo,
+): string {
+  return JSON.stringify(CreateProjectTo$outboundSchema.parse(createProjectTo));
+}
+export function createProjectToFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateProjectTo, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateProjectTo$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProjectTo' from JSON`,
+  );
+}
+
+/** @internal */
 export const CreateProjectOidcProviders$inboundSchema: z.ZodType<
   CreateProjectOidcProviders,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  to: CreateProjectTo$inboundSchema,
+  to: smartUnion([
+    z.lazy(() => CreateProjectTo1$inboundSchema),
+    CreateProjectTo2$inboundSchema,
+  ]),
   label: types.optional(types.string()),
   claims: z.record(z.array(types.string())),
 });
 /** @internal */
 export type CreateProjectOidcProviders$Outbound = {
-  to: CreateProjectTo$Outbound;
+  to: CreateProjectTo1$Outbound | CreateProjectTo2$Outbound;
   label?: string | undefined;
   claims: { [k: string]: Array<string> };
 };
@@ -825,7 +925,10 @@ export const CreateProjectOidcProviders$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateProjectOidcProviders
 > = z.object({
-  to: CreateProjectTo$outboundSchema,
+  to: smartUnion([
+    z.lazy(() => CreateProjectTo1$outboundSchema),
+    CreateProjectTo2$outboundSchema,
+  ]),
   label: z.string().optional(),
   claims: z.record(z.array(z.string())),
 });

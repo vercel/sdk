@@ -5,11 +5,11 @@
 ```typescript
 import { PayloadOrigin } from "@vercel/sdk/models/twohundredandseventyfour.js";
 
-let value: PayloadOrigin = "github-webhook";
+let value: PayloadOrigin = "manual";
 ```
 
 ## Values
 
 ```typescript
-"email" | "saml" | "app" | "github" | "gitlab" | "bitbucket" | "google" | "apple" | "chatgpt" | "github-webhook" | "manual" | "passkey" | "otp" | "sms" | "invite" | "emu"
+"email" | "saml" | "app" | "github" | "gitlab" | "bitbucket" | "google" | "apple" | "chatgpt" | "github-webhook" | "manual" | "passkey" | "otp" | "sms" | "invite" | "token-exchange-oidc" | "emu"
 ```

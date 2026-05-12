@@ -96,10 +96,6 @@ import {
   UpdateProjectProjectsResponseBuildMachineType,
   UpdateProjectProjectsResponseBuildMachineType$inboundSchema,
   UpdateProjectProjectsResponseBuildMachineType$outboundSchema,
-  UpdateProjectProjectsResponseBuildQueue,
-  UpdateProjectProjectsResponseBuildQueue$inboundSchema,
-  UpdateProjectProjectsResponseBuildQueue$Outbound,
-  UpdateProjectProjectsResponseBuildQueue$outboundSchema,
   UpdateProjectProjectsResponseFunctionDefaultMemoryType,
   UpdateProjectProjectsResponseFunctionDefaultMemoryType$inboundSchema,
   UpdateProjectProjectsResponseFunctionDefaultMemoryType$outboundSchema,
@@ -115,7 +111,19 @@ import {
   UpdateProjectSpeedInsights$inboundSchema,
   UpdateProjectSpeedInsights$Outbound,
   UpdateProjectSpeedInsights$outboundSchema,
-} from "./updateprojectprojectsresponsebuildqueue.js";
+} from "./updateprojectprojectsresponsebuildmachineselection.js";
+
+export const UpdateProjectProjectsResponseConfiguration = {
+  SkipNamespaceQueue: "SKIP_NAMESPACE_QUEUE",
+  WaitForNamespaceQueue: "WAIT_FOR_NAMESPACE_QUEUE",
+} as const;
+export type UpdateProjectProjectsResponseConfiguration = ClosedEnum<
+  typeof UpdateProjectProjectsResponseConfiguration
+>;
+
+export type UpdateProjectProjectsResponseBuildQueue = {
+  configuration?: UpdateProjectProjectsResponseConfiguration | undefined;
+};
 
 export type UpdateProjectDefaultResourceConfig = {
   elasticConcurrencyEnabled?: boolean | undefined;
@@ -1416,6 +1424,66 @@ export type UpdateProjectResponseBody = {
 };
 
 /** @internal */
+export const UpdateProjectProjectsResponseConfiguration$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateProjectProjectsResponseConfiguration> = z
+    .nativeEnum(UpdateProjectProjectsResponseConfiguration);
+/** @internal */
+export const UpdateProjectProjectsResponseConfiguration$outboundSchema:
+  z.ZodNativeEnum<typeof UpdateProjectProjectsResponseConfiguration> =
+    UpdateProjectProjectsResponseConfiguration$inboundSchema;
+
+/** @internal */
+export const UpdateProjectProjectsResponseBuildQueue$inboundSchema: z.ZodType<
+  UpdateProjectProjectsResponseBuildQueue,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  configuration: types.optional(
+    UpdateProjectProjectsResponseConfiguration$inboundSchema,
+  ),
+});
+/** @internal */
+export type UpdateProjectProjectsResponseBuildQueue$Outbound = {
+  configuration?: string | undefined;
+};
+
+/** @internal */
+export const UpdateProjectProjectsResponseBuildQueue$outboundSchema: z.ZodType<
+  UpdateProjectProjectsResponseBuildQueue$Outbound,
+  z.ZodTypeDef,
+  UpdateProjectProjectsResponseBuildQueue
+> = z.object({
+  configuration: UpdateProjectProjectsResponseConfiguration$outboundSchema
+    .optional(),
+});
+
+export function updateProjectProjectsResponseBuildQueueToJSON(
+  updateProjectProjectsResponseBuildQueue:
+    UpdateProjectProjectsResponseBuildQueue,
+): string {
+  return JSON.stringify(
+    UpdateProjectProjectsResponseBuildQueue$outboundSchema.parse(
+      updateProjectProjectsResponseBuildQueue,
+    ),
+  );
+}
+export function updateProjectProjectsResponseBuildQueueFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UpdateProjectProjectsResponseBuildQueue,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateProjectProjectsResponseBuildQueue$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UpdateProjectProjectsResponseBuildQueue' from JSON`,
+  );
+}
+
+/** @internal */
 export const UpdateProjectDefaultResourceConfig$inboundSchema: z.ZodType<
   UpdateProjectDefaultResourceConfig,
   z.ZodTypeDef,
@@ -1438,7 +1506,7 @@ export const UpdateProjectDefaultResourceConfig$inboundSchema: z.ZodType<
   buildMachineElasticLastUpdated: types.optional(types.number()),
   isNSNBDisabled: types.optional(types.boolean()),
   buildQueue: types.optional(
-    UpdateProjectProjectsResponseBuildQueue$inboundSchema,
+    z.lazy(() => UpdateProjectProjectsResponseBuildQueue$inboundSchema),
   ),
   enableFunctionsBeta: types.optional(types.boolean()),
 });
@@ -1479,7 +1547,9 @@ export const UpdateProjectDefaultResourceConfig$outboundSchema: z.ZodType<
       .optional(),
   buildMachineElasticLastUpdated: z.number().optional(),
   isNSNBDisabled: z.boolean().optional(),
-  buildQueue: UpdateProjectProjectsResponseBuildQueue$outboundSchema.optional(),
+  buildQueue: z.lazy(() =>
+    UpdateProjectProjectsResponseBuildQueue$outboundSchema
+  ).optional(),
   enableFunctionsBeta: z.boolean().optional(),
 });
 

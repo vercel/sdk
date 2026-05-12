@@ -86,10 +86,6 @@ import {
   UpdateMicrofrontendsLink$inboundSchema,
   UpdateMicrofrontendsLink$Outbound,
   UpdateMicrofrontendsLink$outboundSchema,
-  UpdateMicrofrontendsLogHeaders,
-  UpdateMicrofrontendsLogHeaders$inboundSchema,
-  UpdateMicrofrontendsLogHeaders$Outbound,
-  UpdateMicrofrontendsLogHeaders$outboundSchema,
   UpdateMicrofrontendsManagedRules,
   UpdateMicrofrontendsManagedRules$inboundSchema,
   UpdateMicrofrontendsManagedRules$Outbound,
@@ -157,7 +153,18 @@ import {
   UpdateMicrofrontendsWebAnalytics$inboundSchema,
   UpdateMicrofrontendsWebAnalytics$Outbound,
   UpdateMicrofrontendsWebAnalytics$outboundSchema,
-} from "./updatemicrofrontendslogheaders.js";
+} from "./updatemicrofrontendsmanagedrules.js";
+
+export const UpdateMicrofrontendsLogHeaders2 = {
+  Wildcard: "*",
+} as const;
+export type UpdateMicrofrontendsLogHeaders2 = ClosedEnum<
+  typeof UpdateMicrofrontendsLogHeaders2
+>;
+
+export type UpdateMicrofrontendsLogHeaders =
+  | Array<string>
+  | UpdateMicrofrontendsLogHeaders2;
 
 export type UpdateMicrofrontendsSecurityPlusMetadata = {
   updatedAt: number;
@@ -180,7 +187,7 @@ export type UpdateMicrofrontendsSecurity = {
   firewallBypassIps?: Array<string> | undefined;
   managedRules?: UpdateMicrofrontendsManagedRules | null | undefined;
   botIdEnabled?: boolean | undefined;
-  logHeaders?: UpdateMicrofrontendsLogHeaders | undefined;
+  logHeaders?: Array<string> | UpdateMicrofrontendsLogHeaders2 | undefined;
   securityPlus?: boolean | undefined;
   securityPlusMetadata?: UpdateMicrofrontendsSecurityPlusMetadata | undefined;
   /**
@@ -707,6 +714,56 @@ export type UpdateMicrofrontendsResponseBody = {
 };
 
 /** @internal */
+export const UpdateMicrofrontendsLogHeaders2$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateMicrofrontendsLogHeaders2
+> = z.nativeEnum(UpdateMicrofrontendsLogHeaders2);
+/** @internal */
+export const UpdateMicrofrontendsLogHeaders2$outboundSchema: z.ZodNativeEnum<
+  typeof UpdateMicrofrontendsLogHeaders2
+> = UpdateMicrofrontendsLogHeaders2$inboundSchema;
+
+/** @internal */
+export const UpdateMicrofrontendsLogHeaders$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsLogHeaders,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  z.array(types.string()),
+  UpdateMicrofrontendsLogHeaders2$inboundSchema,
+]);
+/** @internal */
+export type UpdateMicrofrontendsLogHeaders$Outbound = Array<string> | string;
+
+/** @internal */
+export const UpdateMicrofrontendsLogHeaders$outboundSchema: z.ZodType<
+  UpdateMicrofrontendsLogHeaders$Outbound,
+  z.ZodTypeDef,
+  UpdateMicrofrontendsLogHeaders
+> = smartUnion([
+  z.array(z.string()),
+  UpdateMicrofrontendsLogHeaders2$outboundSchema,
+]);
+
+export function updateMicrofrontendsLogHeadersToJSON(
+  updateMicrofrontendsLogHeaders: UpdateMicrofrontendsLogHeaders,
+): string {
+  return JSON.stringify(
+    UpdateMicrofrontendsLogHeaders$outboundSchema.parse(
+      updateMicrofrontendsLogHeaders,
+    ),
+  );
+}
+export function updateMicrofrontendsLogHeadersFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsLogHeaders, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateMicrofrontendsLogHeaders$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsLogHeaders' from JSON`,
+  );
+}
+
+/** @internal */
 export const UpdateMicrofrontendsSecurityPlusMetadata$inboundSchema: z.ZodType<
   UpdateMicrofrontendsSecurityPlusMetadata,
   z.ZodTypeDef,
@@ -776,7 +833,12 @@ export const UpdateMicrofrontendsSecurity$inboundSchema: z.ZodType<
   managedRules: z.nullable(UpdateMicrofrontendsManagedRules$inboundSchema)
     .optional(),
   botIdEnabled: types.optional(types.boolean()),
-  log_headers: types.optional(UpdateMicrofrontendsLogHeaders$inboundSchema),
+  log_headers: types.optional(
+    smartUnion([
+      z.array(types.string()),
+      UpdateMicrofrontendsLogHeaders2$inboundSchema,
+    ]),
+  ),
   securityPlus: types.optional(types.boolean()),
   securityPlusMetadata: types.optional(
     z.lazy(() => UpdateMicrofrontendsSecurityPlusMetadata$inboundSchema),
@@ -801,7 +863,7 @@ export type UpdateMicrofrontendsSecurity$Outbound = {
   firewallBypassIps?: Array<string> | undefined;
   managedRules?: UpdateMicrofrontendsManagedRules$Outbound | null | undefined;
   botIdEnabled?: boolean | undefined;
-  log_headers?: UpdateMicrofrontendsLogHeaders$Outbound | undefined;
+  log_headers?: Array<string> | string | undefined;
   securityPlus?: boolean | undefined;
   securityPlusMetadata?:
     | UpdateMicrofrontendsSecurityPlusMetadata$Outbound
@@ -828,7 +890,10 @@ export const UpdateMicrofrontendsSecurity$outboundSchema: z.ZodType<
   managedRules: z.nullable(UpdateMicrofrontendsManagedRules$outboundSchema)
     .optional(),
   botIdEnabled: z.boolean().optional(),
-  logHeaders: UpdateMicrofrontendsLogHeaders$outboundSchema.optional(),
+  logHeaders: smartUnion([
+    z.array(z.string()),
+    UpdateMicrofrontendsLogHeaders2$outboundSchema,
+  ]).optional(),
   securityPlus: z.boolean().optional(),
   securityPlusMetadata: z.lazy(() =>
     UpdateMicrofrontendsSecurityPlusMetadata$outboundSchema

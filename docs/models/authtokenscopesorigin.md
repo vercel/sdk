@@ -11,5 +11,5 @@ let value: AuthTokenScopesOrigin = "invite";
 ## Values
 
 ```typescript
-"app" | "saml" | "github" | "github-webhook" | "gitlab" | "bitbucket" | "email" | "manual" | "passkey" | "otp" | "sms" | "invite" | "google" | "apple" | "chatgpt" | "emu"
+"app" | "saml" | "github" | "github-webhook" | "gitlab" | "bitbucket" | "email" | "manual" | "passkey" | "otp" | "sms" | "invite" | "google" | "apple" | "chatgpt" | "token-exchange-oidc" | "emu"
 ```

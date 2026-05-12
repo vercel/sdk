@@ -1062,14 +1062,6 @@ export type NewOwner = {
    * Indicates that the underlying user entity is a managed user for the enterprise it's associated with The intention is that this field is only set to true for users that are provisioned by the enterprise which means that the domain associated with the user's email is the same domain associated with the team Allowing us to query information about the user's team at login time through the domain verification service
    */
   isEnterpriseManaged?: boolean | undefined;
-  /**
-   * On a personal account, points to the managed account created during EMU account separation. Set by the split utility when an existing team member is converted into a separate managed account.
-   */
-  linkedManagedAccountId?: string | undefined;
-  /**
-   * On a managed account, points back to the personal account it was split from during EMU account separation. When set together with `isEnterpriseManaged`, the managed account's email is excluded from global secondary-key indexing so it doesn't conflict with the personal account's email.
-   */
-  linkedPersonalAccountId?: string | undefined;
 };
 
 /**
@@ -4619,8 +4611,6 @@ export const NewOwner$inboundSchema: z.ZodType<
     z.lazy(() => MfaConfiguration$inboundSchema),
   ),
   isEnterpriseManaged: types.optional(types.boolean()),
-  linkedManagedAccountId: types.optional(types.string()),
-  linkedPersonalAccountId: types.optional(types.string()),
 });
 /** @internal */
 export type NewOwner$Outbound = {
@@ -4712,8 +4702,6 @@ export type NewOwner$Outbound = {
   opportunityId?: string | undefined;
   mfaConfiguration?: MfaConfiguration$Outbound | undefined;
   isEnterpriseManaged?: boolean | undefined;
-  linkedManagedAccountId?: string | undefined;
-  linkedPersonalAccountId?: string | undefined;
 };
 
 /** @internal */
@@ -4810,8 +4798,6 @@ export const NewOwner$outboundSchema: z.ZodType<
   opportunityId: z.string().optional(),
   mfaConfiguration: z.lazy(() => MfaConfiguration$outboundSchema).optional(),
   isEnterpriseManaged: z.boolean().optional(),
-  linkedManagedAccountId: z.string().optional(),
-  linkedPersonalAccountId: z.string().optional(),
 });
 
 export function newOwnerToJSON(newOwner: NewOwner): string {

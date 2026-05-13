@@ -69,12 +69,6 @@ import { tool$checksV2ListDeploymentCheckRuns } from "./tools/checksV2ListDeploy
 import { tool$checksV2ListProjectChecks } from "./tools/checksV2ListProjectChecks.js";
 import { tool$checksV2UpdateDeploymentCheckRun } from "./tools/checksV2UpdateDeploymentCheckRun.js";
 import { tool$checksV2UpdateProjectCheck } from "./tools/checksV2UpdateProjectCheck.js";
-import { tool$connectCreateNetwork } from "./tools/connectCreateNetwork.js";
-import { tool$connectDeleteNetwork } from "./tools/connectDeleteNetwork.js";
-import { tool$connectListNetworks } from "./tools/connectListNetworks.js";
-import { tool$connectReadNetwork } from "./tools/connectReadNetwork.js";
-import { tool$connectUpdateNetwork } from "./tools/connectUpdateNetwork.js";
-import { tool$connectUpdateStaticIps } from "./tools/connectUpdateStaticIps.js";
 import { tool$deploymentsCancelDeployment } from "./tools/deploymentsCancelDeployment.js";
 import { tool$deploymentsCreateDeployment } from "./tools/deploymentsCreateDeployment.js";
 import { tool$deploymentsDeleteDeployment } from "./tools/deploymentsDeleteDeployment.js";
@@ -216,6 +210,12 @@ import { tool$microfrontendsGetMicrofrontendsConfig } from "./tools/microfronten
 import { tool$microfrontendsGetMicrofrontendsConfigForProject } from "./tools/microfrontendsGetMicrofrontendsConfigForProject.js";
 import { tool$microfrontendsGetMicrofrontendsGroups } from "./tools/microfrontendsGetMicrofrontendsGroups.js";
 import { tool$microfrontendsGetMicrofrontendsInGroup } from "./tools/microfrontendsGetMicrofrontendsInGroup.js";
+import { tool$networkingCreateNetwork } from "./tools/networkingCreateNetwork.js";
+import { tool$networkingDeleteNetwork } from "./tools/networkingDeleteNetwork.js";
+import { tool$networkingListNetworks } from "./tools/networkingListNetworks.js";
+import { tool$networkingReadNetwork } from "./tools/networkingReadNetwork.js";
+import { tool$networkingUpdateNetwork } from "./tools/networkingUpdateNetwork.js";
+import { tool$networkingUpdateStaticIps } from "./tools/networkingUpdateStaticIps.js";
 import { tool$projectMembersAddProjectMember } from "./tools/projectMembersAddProjectMember.js";
 import { tool$projectMembersGetProjectMembers } from "./tools/projectMembersGetProjectMembers.js";
 import { tool$projectMembersRemoveProjectMember } from "./tools/projectMembersRemoveProjectMember.js";
@@ -338,7 +338,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Vercel",
-    version: "1.21.3",
+    version: "1.21.4",
   });
 
   const client = new VercelCore({
@@ -408,12 +408,12 @@ export function createMCPServer(deps: {
   tool(tool$checksGetCheck);
   tool(tool$checksUpdateCheck);
   tool(tool$checksRerequestCheck);
-  tool(tool$connectListNetworks);
-  tool(tool$connectCreateNetwork);
-  tool(tool$connectDeleteNetwork);
-  tool(tool$connectUpdateNetwork);
-  tool(tool$connectReadNetwork);
-  tool(tool$connectUpdateStaticIps);
+  tool(tool$networkingListNetworks);
+  tool(tool$networkingCreateNetwork);
+  tool(tool$networkingDeleteNetwork);
+  tool(tool$networkingUpdateNetwork);
+  tool(tool$networkingReadNetwork);
+  tool(tool$networkingUpdateStaticIps);
   tool(tool$deploymentsGetDeploymentEvents);
   tool(tool$deploymentsUpdateIntegrationDeploymentAction);
   tool(tool$deploymentsGetDeployment);

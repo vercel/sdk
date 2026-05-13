@@ -5,11 +5,11 @@
 ```typescript
 import { AcceptProjectTransferRequestResponseBodyStatus } from "@vercel/sdk/models/acceptprojecttransferrequestop.js";
 
-let value: AcceptProjectTransferRequestResponseBodyStatus = "errored";
+let value: AcceptProjectTransferRequestResponseBodyStatus = "fulfilled";
 ```
 
 ## Values
 
 ```typescript
-"errored" | "fulfilled"
+"fulfilled" | "errored"
 ```

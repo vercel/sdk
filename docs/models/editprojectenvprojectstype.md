@@ -5,11 +5,11 @@
 ```typescript
 import { EditProjectEnvProjectsType } from "@vercel/sdk/models/editprojectenvop.js";
 
-let value: EditProjectEnvProjectsType = "plain";
+let value: EditProjectEnvProjectsType = "sensitive";
 ```
 
 ## Values
 
 ```typescript
-"secret" | "system" | "encrypted" | "plain" | "sensitive"
+"system" | "encrypted" | "plain" | "sensitive" | "secret"
 ```

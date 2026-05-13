@@ -540,9 +540,9 @@ export type UpdateMicrofrontendsInternalRoutes =
   | UpdateMicrofrontendsInternalRoutes2;
 
 export const UpdateMicrofrontendsAction = {
-  Delete: "delete",
   Cancel: "cancel",
   Accept: "accept",
+  Delete: "delete",
 } as const;
 export type UpdateMicrofrontendsAction = ClosedEnum<
   typeof UpdateMicrofrontendsAction

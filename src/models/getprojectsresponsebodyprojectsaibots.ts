@@ -323,11 +323,11 @@ export type GetProjectsResponseBodyProjectsResponse200ApplicationJSONTarget =
   | GetProjectsTargetProjectsResponse2;
 
 export const GetProjectsResponseBodyProjectsResponse200Type = {
-  Secret: "secret",
   System: "system",
   Encrypted: "encrypted",
   Plain: "plain",
   Sensitive: "sensitive",
+  Secret: "secret",
 } as const;
 export type GetProjectsResponseBodyProjectsResponse200Type = ClosedEnum<
   typeof GetProjectsResponseBodyProjectsResponse200Type
@@ -642,7 +642,6 @@ export type ResponseBodyCustomEnvironments = {
 };
 
 export const GetProjectsResponseBodyProjectsFramework = {
-  Services: "services",
   Blitzjs: "blitzjs",
   Nextjs: "nextjs",
   Gatsby: "gatsby",
@@ -710,6 +709,7 @@ export const GetProjectsResponseBodyProjectsFramework = {
   ActixWeb: "actix-web",
   Node: "node",
   Go: "go",
+  Services: "services",
   Mastra: "mastra",
 } as const;
 export type GetProjectsResponseBodyProjectsFramework = ClosedEnum<
@@ -1585,11 +1585,11 @@ export type ResponseBodyPermissions = {
 export type ResponseBodyLastRollbackTarget = {};
 
 export const ResponseBodyJobStatus = {
+  Pending: "pending",
+  InProgress: "in-progress",
   Succeeded: "succeeded",
   Failed: "failed",
   Skipped: "skipped",
-  Pending: "pending",
-  InProgress: "in-progress",
 } as const;
 export type ResponseBodyJobStatus = ClosedEnum<typeof ResponseBodyJobStatus>;
 
@@ -1931,9 +1931,9 @@ export type GetProjectsResponseBodyProjectsWebAnalytics = {
 
 export const GetProjectsResponseBodyProjectsResponse200ApplicationJson3ProjectsSecurityManagedRulesVercelRulesetAction =
   {
-    Log: "log",
     Deny: "deny",
     Challenge: "challenge",
+    Log: "log",
   } as const;
 export type GetProjectsResponseBodyProjectsResponse200ApplicationJson3ProjectsSecurityManagedRulesVercelRulesetAction =
   ClosedEnum<
@@ -1949,9 +1949,9 @@ export type GetProjectsResponseBodyProjectsVercelRuleset = {
 
 export const GetProjectsResponseBodyProjectsResponse200ApplicationJson3ProjectsAction =
   {
-    Log: "log",
     Deny: "deny",
     Challenge: "challenge",
+    Log: "log",
   } as const;
 export type GetProjectsResponseBodyProjectsResponse200ApplicationJson3ProjectsAction =
   ClosedEnum<
@@ -1967,9 +1967,9 @@ export type GetProjectsResponseBodyProjectsBotFilter = {
 
 export const GetProjectsResponseBodyProjectsResponse200ApplicationJson3ProjectsSecurityAction =
   {
-    Log: "log",
     Deny: "deny",
     Challenge: "challenge",
+    Log: "log",
   } as const;
 export type GetProjectsResponseBodyProjectsResponse200ApplicationJson3ProjectsSecurityAction =
   ClosedEnum<

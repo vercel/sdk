@@ -6,7 +6,7 @@
 import { GetProjectsResponseBodyEnv } from "@vercel/sdk/models/getprojectstoprojectsresponse200applicationjsonresponsebody1.js";
 
 let value: GetProjectsResponseBodyEnv = {
-  type: "encrypted",
+  type: "plain",
   value: "<value>",
   key: "<key>",
 };

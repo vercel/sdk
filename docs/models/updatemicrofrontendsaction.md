@@ -5,11 +5,11 @@
 ```typescript
 import { UpdateMicrofrontendsAction } from "@vercel/sdk/models/updatemicrofrontendsresponsebody.js";
 
-let value: UpdateMicrofrontendsAction = "cancel";
+let value: UpdateMicrofrontendsAction = "accept";
 ```
 
 ## Values
 
 ```typescript
-"delete" | "cancel" | "accept"
+"cancel" | "accept" | "delete"
 ```

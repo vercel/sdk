@@ -6,7 +6,7 @@
 import { ResponseBodyEnv } from "@vercel/sdk/models/responsebodypasswordprotection.js";
 
 let value: ResponseBodyEnv = {
-  type: "sensitive",
+  type: "secret",
   value: "<value>",
   key: "<key>",
 };

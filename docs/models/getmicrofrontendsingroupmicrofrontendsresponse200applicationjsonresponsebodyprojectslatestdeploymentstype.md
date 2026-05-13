@@ -11,11 +11,11 @@ import {
 
 let value:
   GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyProjectsLatestDeploymentsType =
-    "endsWith";
+    "startsWith";
 ```
 
 ## Values
 
 ```typescript
-"endsWith" | "startsWith" | "equals"
+"startsWith" | "equals" | "endsWith"
 ```

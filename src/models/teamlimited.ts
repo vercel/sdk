@@ -13,6 +13,7 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
 export const LimitedBy = {
   Mfa: "mfa",
   Scope: "scope",
+  Invalidated: "invalidated",
 } as const;
 export type LimitedBy = ClosedEnum<typeof LimitedBy>;
 

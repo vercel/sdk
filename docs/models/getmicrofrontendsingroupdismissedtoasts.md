@@ -8,7 +8,7 @@ import { GetMicrofrontendsInGroupDismissedToasts } from "@vercel/sdk/models/getm
 let value: GetMicrofrontendsInGroupDismissedToasts = {
   key: "<key>",
   dismissedAt: 1752.12,
-  action: "accept",
+  action: "delete",
   value: null,
 };
 ```

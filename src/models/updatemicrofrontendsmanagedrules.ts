@@ -248,11 +248,11 @@ export type UpdateMicrofrontendsTarget =
   | UpdateMicrofrontendsTarget2;
 
 export const UpdateMicrofrontendsType = {
-  Secret: "secret",
   System: "system",
   Encrypted: "encrypted",
   Plain: "plain",
   Sensitive: "sensitive",
+  Secret: "secret",
 } as const;
 export type UpdateMicrofrontendsType = ClosedEnum<
   typeof UpdateMicrofrontendsType
@@ -560,7 +560,6 @@ export type UpdateMicrofrontendsCustomEnvironments = {
 };
 
 export const UpdateMicrofrontendsFramework = {
-  Services: "services",
   Blitzjs: "blitzjs",
   Nextjs: "nextjs",
   Gatsby: "gatsby",
@@ -628,6 +627,7 @@ export const UpdateMicrofrontendsFramework = {
   ActixWeb: "actix-web",
   Node: "node",
   Go: "go",
+  Services: "services",
   Mastra: "mastra",
 } as const;
 export type UpdateMicrofrontendsFramework = ClosedEnum<
@@ -1463,11 +1463,11 @@ export type UpdateMicrofrontendsPermissions = {
 export type UpdateMicrofrontendsLastRollbackTarget = {};
 
 export const UpdateMicrofrontendsJobStatus = {
+  Pending: "pending",
+  InProgress: "in-progress",
   Succeeded: "succeeded",
   Failed: "failed",
   Skipped: "skipped",
-  Pending: "pending",
-  InProgress: "in-progress",
 } as const;
 export type UpdateMicrofrontendsJobStatus = ClosedEnum<
   typeof UpdateMicrofrontendsJobStatus
@@ -1790,9 +1790,9 @@ export type UpdateMicrofrontendsWebAnalytics = {
 };
 
 export const UpdateMicrofrontendsProjectsResponse200ApplicationJSONAction = {
-  Log: "log",
   Deny: "deny",
   Challenge: "challenge",
+  Log: "log",
 } as const;
 export type UpdateMicrofrontendsProjectsResponse200ApplicationJSONAction =
   ClosedEnum<
@@ -1808,9 +1808,9 @@ export type UpdateMicrofrontendsVercelRuleset = {
 
 export const UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodyAction =
   {
-    Log: "log",
     Deny: "deny",
     Challenge: "challenge",
+    Log: "log",
   } as const;
 export type UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodyAction =
   ClosedEnum<
@@ -1825,9 +1825,9 @@ export type UpdateMicrofrontendsBotFilter = {
 };
 
 export const UpdateMicrofrontendsProjectsResponseAction = {
-  Log: "log",
   Deny: "deny",
   Challenge: "challenge",
+  Log: "log",
 } as const;
 export type UpdateMicrofrontendsProjectsResponseAction = ClosedEnum<
   typeof UpdateMicrofrontendsProjectsResponseAction
@@ -1839,9 +1839,9 @@ export type UpdateMicrofrontendsAiBots = {
 };
 
 export const UpdateMicrofrontendsProjectsResponse200Action = {
-  Log: "log",
   Deny: "deny",
   Challenge: "challenge",
+  Log: "log",
 } as const;
 export type UpdateMicrofrontendsProjectsResponse200Action = ClosedEnum<
   typeof UpdateMicrofrontendsProjectsResponse200Action

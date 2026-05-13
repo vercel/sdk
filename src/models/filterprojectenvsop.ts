@@ -90,11 +90,11 @@ export type FilterProjectEnvsResponseBodyProjectsResponseTarget =
   | FilterProjectEnvsTargetProjectsResponse2;
 
 export const FilterProjectEnvsResponseBodyProjectsResponse200Type = {
-  Secret: "secret",
   System: "system",
   Encrypted: "encrypted",
   Plain: "plain",
   Sensitive: "sensitive",
+  Secret: "secret",
 } as const;
 export type FilterProjectEnvsResponseBodyProjectsResponse200Type = ClosedEnum<
   typeof FilterProjectEnvsResponseBodyProjectsResponse200Type
@@ -317,11 +317,11 @@ export type FilterProjectEnvsResponseBodyProjectsTarget =
   | FilterProjectEnvsTargetProjects2;
 
 export const FilterProjectEnvsResponseBodyProjectsResponseType = {
-  Secret: "secret",
   System: "system",
   Encrypted: "encrypted",
   Plain: "plain",
   Sensitive: "sensitive",
+  Secret: "secret",
 } as const;
 export type FilterProjectEnvsResponseBodyProjectsResponseType = ClosedEnum<
   typeof FilterProjectEnvsResponseBodyProjectsResponseType
@@ -544,11 +544,11 @@ export type FilterProjectEnvsResponseBodyTarget =
   | FilterProjectEnvsTarget2;
 
 export const FilterProjectEnvsResponseBodyType = {
-  Secret: "secret",
   System: "system",
   Encrypted: "encrypted",
   Plain: "plain",
   Sensitive: "sensitive",
+  Secret: "secret",
 } as const;
 export type FilterProjectEnvsResponseBodyType = ClosedEnum<
   typeof FilterProjectEnvsResponseBodyType

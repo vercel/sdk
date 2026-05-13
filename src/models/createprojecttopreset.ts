@@ -76,7 +76,6 @@ export type EnvironmentVariables = {
  * The framework that is being used for this project. When `null` is used no framework is selected
  */
 export const CreateProjectFramework = {
-  Services: "services",
   Blitzjs: "blitzjs",
   Nextjs: "nextjs",
   Gatsby: "gatsby",
@@ -144,6 +143,7 @@ export const CreateProjectFramework = {
   ActixWeb: "actix-web",
   Node: "node",
   Go: "go",
+  Services: "services",
   Mastra: "mastra",
 } as const;
 /**
@@ -569,11 +569,11 @@ export type CreateProjectProjectsTarget =
   | CreateProjectTarget2;
 
 export const CreateProjectProjectsResponseType = {
-  Secret: "secret",
   System: "system",
   Encrypted: "encrypted",
   Plain: "plain",
   Sensitive: "sensitive",
+  Secret: "secret",
 } as const;
 export type CreateProjectProjectsResponseType = ClosedEnum<
   typeof CreateProjectProjectsResponseType
@@ -879,7 +879,6 @@ export type CustomEnvironments = {
 };
 
 export const CreateProjectProjectsFramework = {
-  Services: "services",
   Blitzjs: "blitzjs",
   Nextjs: "nextjs",
   Gatsby: "gatsby",
@@ -947,6 +946,7 @@ export const CreateProjectProjectsFramework = {
   ActixWeb: "actix-web",
   Node: "node",
   Go: "go",
+  Services: "services",
   Mastra: "mastra",
 } as const;
 export type CreateProjectProjectsFramework = ClosedEnum<
@@ -1767,11 +1767,11 @@ export type CreateProjectPermissions = {
 export type LastRollbackTarget = {};
 
 export const JobStatus = {
+  Pending: "pending",
+  InProgress: "in-progress",
   Succeeded: "succeeded",
   Failed: "failed",
   Skipped: "skipped",
-  Pending: "pending",
-  InProgress: "in-progress",
 } as const;
 export type JobStatus = ClosedEnum<typeof JobStatus>;
 

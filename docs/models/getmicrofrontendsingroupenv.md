@@ -6,7 +6,7 @@
 import { GetMicrofrontendsInGroupEnv } from "@vercel/sdk/models/getmicrofrontendsingroupto2.js";
 
 let value: GetMicrofrontendsInGroupEnv = {
-  type: "system",
+  type: "encrypted",
   value: "<value>",
   key: "<key>",
 };

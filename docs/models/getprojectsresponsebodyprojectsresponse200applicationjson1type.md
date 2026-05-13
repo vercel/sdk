@@ -6,11 +6,11 @@
 import { GetProjectsResponseBodyProjectsResponse200ApplicationJson1Type } from "@vercel/sdk/models/getprojectsresponsebody.js";
 
 let value: GetProjectsResponseBodyProjectsResponse200ApplicationJson1Type =
-  "path";
+  "host";
 ```
 
 ## Values
 
 ```typescript
-"path" | "query" | "host" | "method" | "header" | "cookie" | "ip_address" | "protocol" | "scheme" | "environment" | "region" | "initial_request_path"
+"host" | "method" | "path" | "header" | "cookie" | "query" | "ip_address" | "protocol" | "scheme" | "environment" | "region" | "initial_request_path"
 ```

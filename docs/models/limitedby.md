@@ -11,5 +11,5 @@ let value: LimitedBy = "mfa";
 ## Values
 
 ```typescript
-"mfa" | "scope"
+"mfa" | "scope" | "invalidated"
 ```

@@ -5,11 +5,11 @@
 ```typescript
 import { GetMicrofrontendsInGroupAction } from "@vercel/sdk/models/getmicrofrontendsingroupresponsebody.js";
 
-let value: GetMicrofrontendsInGroupAction = "cancel";
+let value: GetMicrofrontendsInGroupAction = "accept";
 ```
 
 ## Values
 
 ```typescript
-"delete" | "cancel" | "accept"
+"cancel" | "accept" | "delete"
 ```

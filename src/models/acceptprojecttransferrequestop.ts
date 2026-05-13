@@ -54,8 +54,8 @@ export type AcceptProjectTransferRequestRequest = {
 export type AcceptProjectTransferRequestResponseBody2 = {};
 
 export const AcceptProjectTransferRequestResponseBodyStatus = {
-  Errored: "errored",
   Fulfilled: "fulfilled",
+  Errored: "errored",
 } as const;
 export type AcceptProjectTransferRequestResponseBodyStatus = ClosedEnum<
   typeof AcceptProjectTransferRequestResponseBodyStatus

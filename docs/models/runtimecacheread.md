@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { RuntimeCacheRead } from "@vercel/sdk/models/usereventjobpayload76githashtagvercel.js";
+import { RuntimeCacheRead } from "@vercel/sdk/models/usereventjobpayload768deployhook.js";
 
 let value: RuntimeCacheRead = {
   currentThreshold: 9785.5,

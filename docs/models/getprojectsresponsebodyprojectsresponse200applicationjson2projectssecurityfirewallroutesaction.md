@@ -15,5 +15,5 @@ let value:
 ## Values
 
 ```typescript
-"log" | "deny" | "challenge" | "bypass" | "rate_limit" | "redirect"
+"deny" | "challenge" | "log" | "bypass" | "rate_limit" | "redirect"
 ```

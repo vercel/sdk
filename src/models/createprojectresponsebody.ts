@@ -245,9 +245,9 @@ export type CreateProjectWebAnalytics = {
 };
 
 export const CreateProjectProjectsResponse200ApplicationJSONAction = {
-  Log: "log",
   Deny: "deny",
   Challenge: "challenge",
+  Log: "log",
 } as const;
 export type CreateProjectProjectsResponse200ApplicationJSONAction = ClosedEnum<
   typeof CreateProjectProjectsResponse200ApplicationJSONAction
@@ -260,9 +260,9 @@ export type CreateProjectVercelRuleset = {
 
 export const CreateProjectProjectsResponse200ApplicationJSONResponseBodyAction =
   {
-    Log: "log",
     Deny: "deny",
     Challenge: "challenge",
+    Log: "log",
   } as const;
 export type CreateProjectProjectsResponse200ApplicationJSONResponseBodyAction =
   ClosedEnum<
@@ -277,9 +277,9 @@ export type BotFilter = {
 };
 
 export const CreateProjectProjectsResponseAction = {
-  Log: "log",
   Deny: "deny",
   Challenge: "challenge",
+  Log: "log",
 } as const;
 export type CreateProjectProjectsResponseAction = ClosedEnum<
   typeof CreateProjectProjectsResponseAction
@@ -291,9 +291,9 @@ export type CreateProjectAiBots = {
 };
 
 export const CreateProjectProjectsResponse200Action = {
-  Log: "log",
   Deny: "deny",
   Challenge: "challenge",
+  Log: "log",
 } as const;
 export type CreateProjectProjectsResponse200Action = ClosedEnum<
   typeof CreateProjectProjectsResponse200Action
@@ -665,9 +665,9 @@ export type InternalRoutes1 = {
 export type InternalRoutes = InternalRoutes1 | InternalRoutes2;
 
 export const CreateProjectAction = {
-  Delete: "delete",
   Cancel: "cancel",
   Accept: "accept",
+  Delete: "delete",
 } as const;
 export type CreateProjectAction = ClosedEnum<typeof CreateProjectAction>;
 

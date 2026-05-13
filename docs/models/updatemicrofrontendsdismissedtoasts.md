@@ -8,7 +8,7 @@ import { UpdateMicrofrontendsDismissedToasts } from "@vercel/sdk/models/updatemi
 let value: UpdateMicrofrontendsDismissedToasts = {
   key: "<key>",
   dismissedAt: 6429.29,
-  action: "accept",
+  action: "delete",
   value: {
     previousValue: false,
     currentValue: false,

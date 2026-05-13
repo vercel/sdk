@@ -8,7 +8,7 @@ import { ResponseBodyDismissedToasts } from "@vercel/sdk/models/getprojectstopro
 let value: ResponseBodyDismissedToasts = {
   key: "<key>",
   dismissedAt: 9794.9,
-  action: "accept",
+  action: "delete",
   value: {
     previousValue: false,
     currentValue: 9956.01,

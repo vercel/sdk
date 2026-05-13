@@ -5,11 +5,11 @@
 ```typescript
 import { UpdateMicrofrontendsJobStatus } from "@vercel/sdk/models/updatemicrofrontendsmanagedrules.js";
 
-let value: UpdateMicrofrontendsJobStatus = "pending";
+let value: UpdateMicrofrontendsJobStatus = "failed";
 ```
 
 ## Values
 
 ```typescript
-"succeeded" | "failed" | "skipped" | "pending" | "in-progress"
+"pending" | "in-progress" | "succeeded" | "failed" | "skipped"
 ```

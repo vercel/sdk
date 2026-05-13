@@ -5,11 +5,11 @@
 ```typescript
 import { GetProjectEnvResponseBodyProjectsType } from "@vercel/sdk/models/getprojectenvop.js";
 
-let value: GetProjectEnvResponseBodyProjectsType = "secret";
+let value: GetProjectEnvResponseBodyProjectsType = "system";
 ```
 
 ## Values
 
 ```typescript
-"secret" | "system" | "encrypted" | "plain" | "sensitive"
+"system" | "encrypted" | "plain" | "sensitive" | "secret"
 ```

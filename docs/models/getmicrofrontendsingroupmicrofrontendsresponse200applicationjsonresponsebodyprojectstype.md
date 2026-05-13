@@ -11,11 +11,11 @@ import {
 
 let value:
   GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyProjectsType =
-    "equals";
+    "endsWith";
 ```
 
 ## Values
 
 ```typescript
-"endsWith" | "startsWith" | "equals"
+"startsWith" | "equals" | "endsWith"
 ```

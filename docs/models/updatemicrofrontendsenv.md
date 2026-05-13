@@ -6,7 +6,7 @@
 import { UpdateMicrofrontendsEnv } from "@vercel/sdk/models/updatemicrofrontendsmanagedrules.js";
 
 let value: UpdateMicrofrontendsEnv = {
-  type: "secret",
+  type: "system",
   value: "<value>",
   key: "<key>",
 };

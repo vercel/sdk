@@ -5,11 +5,11 @@
 ```typescript
 import { ResponseBodyConfiguredBy } from "@vercel/sdk/models/responsebodypasswordprotection.js";
 
-let value: ResponseBodyConfiguredBy = "CNAME";
+let value: ResponseBodyConfiguredBy = "A";
 ```
 
 ## Values
 
 ```typescript
-"A" | "CNAME" | "http" | "dns-01"
+"CNAME" | "A" | "http" | "dns-01"
 ```

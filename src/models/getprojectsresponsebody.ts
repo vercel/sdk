@@ -475,12 +475,12 @@ export type Src = string | Src2;
 
 export const GetProjectsResponseBodyProjectsResponse200ApplicationJson1SecurityType =
   {
-    Path: "path",
-    Query: "query",
     Host: "host",
     Method: "method",
+    Path: "path",
     Header: "header",
     Cookie: "cookie",
+    Query: "query",
     IpAddress: "ip_address",
     Protocol: "protocol",
     Scheme: "scheme",
@@ -516,12 +516,12 @@ export type GetProjectsResponseBodyHas = {
 };
 
 export const GetProjectsResponseBodyProjectsResponse200ApplicationJson1Type = {
-  Path: "path",
-  Query: "query",
   Host: "host",
   Method: "method",
+  Path: "path",
   Header: "header",
   Cookie: "cookie",
+  Query: "query",
   IpAddress: "ip_address",
   Protocol: "protocol",
   Scheme: "scheme",
@@ -564,9 +564,9 @@ export type ResponseBodyHandle = ClosedEnum<typeof ResponseBodyHandle>;
 
 export const GetProjectsResponseBodyProjectsResponse200ApplicationJson1Action =
   {
-    Log: "log",
     Deny: "deny",
     Challenge: "challenge",
+    Log: "log",
     Bypass: "bypass",
     RateLimit: "rate_limit",
     Redirect: "redirect",
@@ -623,9 +623,9 @@ export type FirewallRoutes = {
 
 export const GetProjectsResponseBodyProjectsResponse200ApplicationJson1SecurityAction =
   {
-    Log: "log",
     Deny: "deny",
     Challenge: "challenge",
+    Log: "log",
   } as const;
 export type GetProjectsResponseBodyProjectsResponse200ApplicationJson1SecurityAction =
   ClosedEnum<
@@ -640,9 +640,9 @@ export type ResponseBodyVercelRuleset = {
 };
 
 export const GetProjectsResponseBodyProjectsResponseAction = {
-  Log: "log",
   Deny: "deny",
   Challenge: "challenge",
+  Log: "log",
 } as const;
 export type GetProjectsResponseBodyProjectsResponseAction = ClosedEnum<
   typeof GetProjectsResponseBodyProjectsResponseAction
@@ -654,9 +654,9 @@ export type ResponseBodyBotFilter = {
 };
 
 export const GetProjectsResponseBodyProjectsResponse200Action = {
-  Log: "log",
   Deny: "deny",
   Challenge: "challenge",
+  Log: "log",
 } as const;
 export type GetProjectsResponseBodyProjectsResponse200Action = ClosedEnum<
   typeof GetProjectsResponseBodyProjectsResponse200Action
@@ -668,9 +668,9 @@ export type ResponseBodyAiBots = {
 };
 
 export const GetProjectsResponseBodyProjectsResponse200ApplicationJSONAction = {
-  Log: "log",
   Deny: "deny",
   Challenge: "challenge",
+  Log: "log",
 } as const;
 export type GetProjectsResponseBodyProjectsResponse200ApplicationJSONAction =
   ClosedEnum<

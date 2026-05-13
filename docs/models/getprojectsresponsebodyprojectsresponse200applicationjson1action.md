@@ -12,5 +12,5 @@ let value: GetProjectsResponseBodyProjectsResponse200ApplicationJson1Action =
 ## Values
 
 ```typescript
-"log" | "deny" | "challenge" | "bypass" | "rate_limit" | "redirect"
+"deny" | "challenge" | "log" | "bypass" | "rate_limit" | "redirect"
 ```

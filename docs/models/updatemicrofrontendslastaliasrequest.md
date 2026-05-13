@@ -8,7 +8,7 @@ import { UpdateMicrofrontendsLastAliasRequest } from "@vercel/sdk/models/updatem
 let value: UpdateMicrofrontendsLastAliasRequest = {
   fromDeploymentId: null,
   toDeploymentId: "<id>",
-  jobStatus: "in-progress",
+  jobStatus: "skipped",
   requestedAt: 7933.81,
   type: "rollback",
 };

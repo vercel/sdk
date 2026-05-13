@@ -5,11 +5,11 @@
 ```typescript
 import { UpdateProjectProjectsResponse200ApplicationJSONAction } from "@vercel/sdk/models/updateprojectresponsebody.js";
 
-let value: UpdateProjectProjectsResponse200ApplicationJSONAction = "deny";
+let value: UpdateProjectProjectsResponse200ApplicationJSONAction = "challenge";
 ```
 
 ## Values
 
 ```typescript
-"log" | "deny" | "challenge"
+"deny" | "challenge" | "log"
 ```

@@ -372,15 +372,6 @@ run();
 * [getDeploymentCheckRun](docs/sdks/checksv2/README.md#getdeploymentcheckrun) - Get a check run
 * [updateDeploymentCheckRun](docs/sdks/checksv2/README.md#updatedeploymentcheckrun) - Update a check run
 
-### [Connect](docs/sdks/connect/README.md)
-
-* [listNetworks](docs/sdks/connect/README.md#listnetworks) - List Secure Compute networks
-* [createNetwork](docs/sdks/connect/README.md#createnetwork) - Create a Secure Compute network
-* [deleteNetwork](docs/sdks/connect/README.md#deletenetwork) - Delete a Secure Compute network
-* [updateNetwork](docs/sdks/connect/README.md#updatenetwork) - Update a Secure Compute network
-* [readNetwork](docs/sdks/connect/README.md#readnetwork) - Read a Secure Compute network
-* [updateStaticIps](docs/sdks/connect/README.md#updatestaticips) - Configures Static IPs for a project
-
 ### [Deployments](docs/sdks/deployments/README.md)
 
 * [getDeploymentEvents](docs/sdks/deployments/README.md#getdeploymentevents) - Get deployment events
@@ -562,6 +553,15 @@ run();
 * [getMicrofrontendsConfig](docs/sdks/microfrontends/README.md#getmicrofrontendsconfig) - Get microfrontends config for a deployment
 * [getMicrofrontendsConfigForProject](docs/sdks/microfrontends/README.md#getmicrofrontendsconfigforproject) - Get microfrontends config for a project
 * [createMicrofrontendsGroupWithApplications](docs/sdks/microfrontends/README.md#createmicrofrontendsgroupwithapplications) - Create a microfrontends group with applications
+
+### [Networking](docs/sdks/networking/README.md)
+
+* [listNetworks](docs/sdks/networking/README.md#listnetworks) - List Secure Compute networks
+* [createNetwork](docs/sdks/networking/README.md#createnetwork) - Create a Secure Compute network
+* [deleteNetwork](docs/sdks/networking/README.md#deletenetwork) - Delete a Secure Compute network
+* [updateNetwork](docs/sdks/networking/README.md#updatenetwork) - Update a Secure Compute network
+* [readNetwork](docs/sdks/networking/README.md#readnetwork) - Read a Secure Compute network
+* [updateStaticIps](docs/sdks/networking/README.md#updatestaticips) - Configures Static IPs for a project
 
 ### [ProjectRoutes](docs/sdks/projectroutes/README.md)
 
@@ -777,13 +777,6 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`checksV2ListProjectChecks`](docs/sdks/checksv2/README.md#listprojectchecks) - List all checks for a project
 - [`checksV2UpdateDeploymentCheckRun`](docs/sdks/checksv2/README.md#updatedeploymentcheckrun) - Update a check run
 - [`checksV2UpdateProjectCheck`](docs/sdks/checksv2/README.md#updateprojectcheck) - Update a check
-- [`connectCreateNetwork`](docs/sdks/connect/README.md#createnetwork) - Create a Secure Compute network
-- [`connectDeleteNetwork`](docs/sdks/connect/README.md#deletenetwork) - Delete a Secure Compute network
-- [`connectListNetworks`](docs/sdks/connect/README.md#listnetworks) - List Secure Compute networks
-- [`connectReadNetwork`](docs/sdks/connect/README.md#readnetwork) - Read a Secure Compute network
-- [`connectUpdateNetwork`](docs/sdks/connect/README.md#updatenetwork) - Update a Secure Compute network
-- [`connectUpdateStaticIps`](docs/sdks/connect/README.md#updatestaticips) - Configures Static IPs for a project
-- [`connectUpdateStaticIps`](docs/sdks/staticips/README.md#updatestaticips) - Configures Static IPs for a project
 - [`deploymentsCancelDeployment`](docs/sdks/deployments/README.md#canceldeployment) - Cancel a deployment
 - [`deploymentsCreateDeployment`](docs/sdks/deployments/README.md#createdeployment) - Create a new deployment
 - [`deploymentsDeleteDeployment`](docs/sdks/deployments/README.md#deletedeployment) - Delete a Deployment
@@ -924,6 +917,13 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`microfrontendsGetMicrofrontendsConfigForProject`](docs/sdks/microfrontends/README.md#getmicrofrontendsconfigforproject) - Get microfrontends config for a project
 - [`microfrontendsGetMicrofrontendsGroups`](docs/sdks/microfrontends/README.md#getmicrofrontendsgroups) - List microfrontends groups
 - [`microfrontendsGetMicrofrontendsInGroup`](docs/sdks/microfrontends/README.md#getmicrofrontendsingroup) - List projects in a microfrontends group
+- [`networkingCreateNetwork`](docs/sdks/networking/README.md#createnetwork) - Create a Secure Compute network
+- [`networkingDeleteNetwork`](docs/sdks/networking/README.md#deletenetwork) - Delete a Secure Compute network
+- [`networkingListNetworks`](docs/sdks/networking/README.md#listnetworks) - List Secure Compute networks
+- [`networkingReadNetwork`](docs/sdks/networking/README.md#readnetwork) - Read a Secure Compute network
+- [`networkingUpdateNetwork`](docs/sdks/networking/README.md#updatenetwork) - Update a Secure Compute network
+- [`networkingUpdateStaticIps`](docs/sdks/networking/README.md#updatestaticips) - Configures Static IPs for a project
+- [`networkingUpdateStaticIps`](docs/sdks/staticips/README.md#updatestaticips) - Configures Static IPs for a project
 - [`projectMembersAddProjectMember`](docs/sdks/projectmembers/README.md#addprojectmember) - Adds a new member to a project.
 - [`projectMembersGetProjectMembers`](docs/sdks/projectmembers/README.md#getprojectmembers) - List project members
 - [`projectMembersRemoveProjectMember`](docs/sdks/projectmembers/README.md#removeprojectmember) - Remove a Project Member

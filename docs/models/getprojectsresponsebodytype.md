@@ -5,11 +5,11 @@
 ```typescript
 import { GetProjectsResponseBodyType } from "@vercel/sdk/models/responsebodypasswordprotection.js";
 
-let value: GetProjectsResponseBodyType = "encrypted";
+let value: GetProjectsResponseBodyType = "plain";
 ```
 
 ## Values
 
 ```typescript
-"secret" | "system" | "encrypted" | "plain" | "sensitive"
+"system" | "encrypted" | "plain" | "sensitive" | "secret"
 ```

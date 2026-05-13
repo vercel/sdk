@@ -5,11 +5,11 @@
 ```typescript
 import { CreateProjectProjectsResponseType } from "@vercel/sdk/models/createprojecttopreset.js";
 
-let value: CreateProjectProjectsResponseType = "plain";
+let value: CreateProjectProjectsResponseType = "sensitive";
 ```
 
 ## Values
 
 ```typescript
-"secret" | "system" | "encrypted" | "plain" | "sensitive"
+"system" | "encrypted" | "plain" | "sensitive" | "secret"
 ```

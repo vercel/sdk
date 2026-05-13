@@ -84,11 +84,11 @@ export type EditProjectEnvRequest = {
 };
 
 export const EditProjectEnvProjectsType = {
-  Secret: "secret",
   System: "system",
   Encrypted: "encrypted",
   Plain: "plain",
   Sensitive: "sensitive",
+  Secret: "secret",
 } as const;
 export type EditProjectEnvProjectsType = ClosedEnum<
   typeof EditProjectEnvProjectsType
@@ -245,13 +245,13 @@ export type EditProjectEnvResponseBody = {
   value: string;
   edgeConfigId?: string | null | undefined;
   edgeConfigTokenId?: string | null | undefined;
-  id?: string | undefined;
   createdAt?: number | undefined;
-  createdBy?: string | null | undefined;
   updatedAt?: number | undefined;
-  target?: Array<EditProjectEnvTarget1> | EditProjectEnvTarget2 | undefined;
+  id?: string | undefined;
   key: string;
+  target?: Array<EditProjectEnvTarget1> | EditProjectEnvTarget2 | undefined;
   gitBranch?: string | undefined;
+  createdBy?: string | null | undefined;
   updatedBy?: string | null | undefined;
   /**
    * This is used to identify variables that have been migrated from type secret to sensitive.
@@ -1291,18 +1291,18 @@ export const EditProjectEnvResponseBody$inboundSchema: z.ZodType<
   value: types.string(),
   edgeConfigId: z.nullable(types.string()).optional(),
   edgeConfigTokenId: z.nullable(types.string()).optional(),
-  id: types.optional(types.string()),
   createdAt: types.optional(types.number()),
-  createdBy: z.nullable(types.string()).optional(),
   updatedAt: types.optional(types.number()),
+  id: types.optional(types.string()),
+  key: types.string(),
   target: types.optional(
     smartUnion([
       z.array(EditProjectEnvTarget1$inboundSchema),
       EditProjectEnvTarget2$inboundSchema,
     ]),
   ),
-  key: types.string(),
   gitBranch: types.optional(types.string()),
+  createdBy: z.nullable(types.string()).optional(),
   updatedBy: z.nullable(types.string()).optional(),
   sunsetSecretId: types.optional(types.string()),
   legacyValue: types.optional(types.string()),
@@ -1341,13 +1341,13 @@ export type EditProjectEnvResponseBody$Outbound = {
   value: string;
   edgeConfigId?: string | null | undefined;
   edgeConfigTokenId?: string | null | undefined;
-  id?: string | undefined;
   createdAt?: number | undefined;
-  createdBy?: string | null | undefined;
   updatedAt?: number | undefined;
-  target?: Array<string> | string | undefined;
+  id?: string | undefined;
   key: string;
+  target?: Array<string> | string | undefined;
   gitBranch?: string | undefined;
+  createdBy?: string | null | undefined;
   updatedBy?: string | null | undefined;
   sunsetSecretId?: string | undefined;
   legacyValue?: string | undefined;
@@ -1388,16 +1388,16 @@ export const EditProjectEnvResponseBody$outboundSchema: z.ZodType<
   value: z.string(),
   edgeConfigId: z.nullable(z.string()).optional(),
   edgeConfigTokenId: z.nullable(z.string()).optional(),
-  id: z.string().optional(),
   createdAt: z.number().optional(),
-  createdBy: z.nullable(z.string()).optional(),
   updatedAt: z.number().optional(),
+  id: z.string().optional(),
+  key: z.string(),
   target: smartUnion([
     z.array(EditProjectEnvTarget1$outboundSchema),
     EditProjectEnvTarget2$outboundSchema,
   ]).optional(),
-  key: z.string(),
   gitBranch: z.string().optional(),
+  createdBy: z.nullable(z.string()).optional(),
   updatedBy: z.nullable(z.string()).optional(),
   sunsetSecretId: z.string().optional(),
   legacyValue: z.string().optional(),

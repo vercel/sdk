@@ -5,11 +5,12 @@
 ```typescript
 import { GetMicrofrontendsInGroupFunctionDefaultMemoryType } from "@vercel/sdk/models/getmicrofrontendsingroupto2.js";
 
-let value: GetMicrofrontendsInGroupFunctionDefaultMemoryType = "standard";
+let value: GetMicrofrontendsInGroupFunctionDefaultMemoryType =
+  "standard_legacy";
 ```
 
 ## Values
 
 ```typescript
-"standard" | "standard_legacy" | "performance"
+"standard_legacy" | "standard" | "performance"
 ```

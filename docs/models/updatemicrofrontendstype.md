@@ -5,11 +5,11 @@
 ```typescript
 import { UpdateMicrofrontendsType } from "@vercel/sdk/models/updatemicrofrontendsmanagedrules.js";
 
-let value: UpdateMicrofrontendsType = "plain";
+let value: UpdateMicrofrontendsType = "sensitive";
 ```
 
 ## Values
 
 ```typescript
-"secret" | "system" | "encrypted" | "plain" | "sensitive"
+"system" | "encrypted" | "plain" | "sensitive" | "secret"
 ```

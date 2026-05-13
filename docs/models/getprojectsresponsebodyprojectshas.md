@@ -6,7 +6,7 @@
 import { GetProjectsResponseBodyProjectsHas } from "@vercel/sdk/models/responsebodypasswordprotection.js";
 
 let value: GetProjectsResponseBodyProjectsHas = {
-  type: "host",
+  type: "path",
 };
 ```
 

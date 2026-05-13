@@ -8,7 +8,7 @@ import { LastAliasRequest } from "@vercel/sdk/models/createprojecttopreset.js";
 let value: LastAliasRequest = {
   fromDeploymentId: "<id>",
   toDeploymentId: "<id>",
-  jobStatus: "in-progress",
+  jobStatus: "skipped",
   requestedAt: 9203.99,
   type: "promote",
 };

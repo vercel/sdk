@@ -8,7 +8,7 @@ import { ResponseBodyLastAliasRequest } from "@vercel/sdk/models/getprojectsresp
 let value: ResponseBodyLastAliasRequest = {
   fromDeploymentId: null,
   toDeploymentId: "<id>",
-  jobStatus: "in-progress",
+  jobStatus: "skipped",
   requestedAt: 7630.72,
   type: "rollback",
 };

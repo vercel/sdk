@@ -13,7 +13,6 @@ import { BulkRedirects } from "./bulkredirects.js";
 import { Certs } from "./certs.js";
 import { Checks } from "./checks.js";
 import { ChecksV2 } from "./checksv2.js";
-import { Connect } from "./connect.js";
 import { Deployments } from "./deployments.js";
 import { Dns } from "./dns.js";
 import { Domains } from "./domains.js";
@@ -28,6 +27,7 @@ import { LogDrains } from "./logdrains.js";
 import { Logs } from "./logs.js";
 import { Marketplace } from "./marketplace.js";
 import { Microfrontends } from "./microfrontends.js";
+import { Networking } from "./networking.js";
 import { ProjectMembers } from "./projectmembers.js";
 import { ProjectRoutes } from "./projectroutes.js";
 import { Projects } from "./projects.js";
@@ -71,9 +71,9 @@ export class Vercel extends ClientSDK {
     return (this._checks ??= new Checks(this._options));
   }
 
-  private _connect?: Connect;
-  get connect(): Connect {
-    return (this._connect ??= new Connect(this._options));
+  private _networking?: Networking;
+  get networking(): Networking {
+    return (this._networking ??= new Networking(this._options));
   }
 
   private _deployments?: Deployments;

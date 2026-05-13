@@ -5,11 +5,11 @@
 ```typescript
 import { CreateProjectProjectsResponse200Action } from "@vercel/sdk/models/createprojectresponsebody.js";
 
-let value: CreateProjectProjectsResponse200Action = "deny";
+let value: CreateProjectProjectsResponse200Action = "challenge";
 ```
 
 ## Values
 
 ```typescript
-"log" | "deny" | "challenge"
+"deny" | "challenge" | "log"
 ```

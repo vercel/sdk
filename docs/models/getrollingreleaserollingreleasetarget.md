@@ -7,11 +7,11 @@ If defined, either `staging` if a staging alias in the format `<project>.<team>.
 ```typescript
 import { GetRollingReleaseRollingReleaseTarget } from "@vercel/sdk/models/getrollingreleaseop.js";
 
-let value: GetRollingReleaseRollingReleaseTarget = "staging";
+let value: GetRollingReleaseRollingReleaseTarget = "production";
 ```
 
 ## Values
 
 ```typescript
-"staging" | "production"
+"production" | "staging"
 ```

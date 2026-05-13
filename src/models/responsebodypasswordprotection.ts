@@ -258,12 +258,12 @@ export type ResponseBodySrc = string | GetProjectsSrc2;
 
 export const GetProjectsResponseBodyProjectsResponse200ApplicationJson2ProjectsType =
   {
-    Path: "path",
-    Query: "query",
     Host: "host",
     Method: "method",
+    Path: "path",
     Header: "header",
     Cookie: "cookie",
+    Query: "query",
     IpAddress: "ip_address",
     Protocol: "protocol",
     Scheme: "scheme",
@@ -302,12 +302,12 @@ export type GetProjectsResponseBodyProjectsHas = {
 
 export const GetProjectsResponseBodyProjectsResponse200ApplicationJson2ProjectsSecurityType =
   {
-    Path: "path",
-    Query: "query",
     Host: "host",
     Method: "method",
+    Path: "path",
     Header: "header",
     Cookie: "cookie",
+    Query: "query",
     IpAddress: "ip_address",
     Protocol: "protocol",
     Scheme: "scheme",
@@ -355,9 +355,9 @@ export type GetProjectsResponseBodyHandle = ClosedEnum<
 
 export const GetProjectsResponseBodyProjectsResponse200ApplicationJson2ProjectsSecurityFirewallRoutesAction =
   {
-    Log: "log",
     Deny: "deny",
     Challenge: "challenge",
+    Log: "log",
     Bypass: "bypass",
     RateLimit: "rate_limit",
     Redirect: "redirect",
@@ -416,9 +416,9 @@ export type ResponseBodyFirewallRoutes = {
 
 export const GetProjectsResponseBodyProjectsResponse200ApplicationJson2ProjectsAction =
   {
-    Log: "log",
     Deny: "deny",
     Challenge: "challenge",
+    Log: "log",
   } as const;
 export type GetProjectsResponseBodyProjectsResponse200ApplicationJson2ProjectsAction =
   ClosedEnum<
@@ -434,9 +434,9 @@ export type GetProjectsResponseBodyVercelRuleset = {
 
 export const GetProjectsResponseBodyProjectsResponse200ApplicationJson2ProjectsSecurityAction =
   {
-    Log: "log",
     Deny: "deny",
     Challenge: "challenge",
+    Log: "log",
   } as const;
 export type GetProjectsResponseBodyProjectsResponse200ApplicationJson2ProjectsSecurityAction =
   ClosedEnum<
@@ -452,9 +452,9 @@ export type GetProjectsResponseBodyBotFilter = {
 
 export const GetProjectsResponseBodyProjectsResponse200ApplicationJson2ProjectsSecurityManagedRulesAction =
   {
-    Log: "log",
     Deny: "deny",
     Challenge: "challenge",
+    Log: "log",
   } as const;
 export type GetProjectsResponseBodyProjectsResponse200ApplicationJson2ProjectsSecurityManagedRulesAction =
   ClosedEnum<
@@ -470,9 +470,9 @@ export type GetProjectsResponseBodyAiBots = {
 
 export const GetProjectsResponseBodyProjectsResponse200ApplicationJson2ProjectsSecurityManagedRulesOwaspAction =
   {
-    Log: "log",
     Deny: "deny",
     Challenge: "challenge",
+    Log: "log",
   } as const;
 export type GetProjectsResponseBodyProjectsResponse200ApplicationJson2ProjectsSecurityManagedRulesOwaspAction =
   ClosedEnum<
@@ -940,8 +940,8 @@ export type GetProjectsResponseBody2 = {
 };
 
 export const ResponseBodyConfiguredBy = {
-  A: "A",
   Cname: "CNAME",
+  A: "A",
   Http: "http",
   Dns01: "dns-01",
 } as const;
@@ -1080,11 +1080,11 @@ export type GetProjectsResponseBodyProjectsTarget =
   | GetProjectsTarget2;
 
 export const GetProjectsResponseBodyType = {
-  Secret: "secret",
   System: "system",
   Encrypted: "encrypted",
   Plain: "plain",
   Sensitive: "sensitive",
+  Secret: "secret",
 } as const;
 export type GetProjectsResponseBodyType = ClosedEnum<
   typeof GetProjectsResponseBodyType
@@ -1271,7 +1271,6 @@ export type ResponseBodyEnv = {
 };
 
 export const ResponseBodyFramework = {
-  Services: "services",
   Blitzjs: "blitzjs",
   Nextjs: "nextjs",
   Gatsby: "gatsby",
@@ -1339,6 +1338,7 @@ export const ResponseBodyFramework = {
   ActixWeb: "actix-web",
   Node: "node",
   Go: "go",
+  Services: "services",
   Mastra: "mastra",
 } as const;
 export type ResponseBodyFramework = ClosedEnum<typeof ResponseBodyFramework>;

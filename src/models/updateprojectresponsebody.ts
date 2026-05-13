@@ -484,11 +484,11 @@ export type UpdateProjectPermissions = {
 export type UpdateProjectLastRollbackTarget = {};
 
 export const UpdateProjectJobStatus = {
+  Pending: "pending",
+  InProgress: "in-progress",
   Succeeded: "succeeded",
   Failed: "failed",
   Skipped: "skipped",
-  Pending: "pending",
-  InProgress: "in-progress",
 } as const;
 export type UpdateProjectJobStatus = ClosedEnum<typeof UpdateProjectJobStatus>;
 
@@ -809,9 +809,9 @@ export type UpdateProjectWebAnalytics = {
 
 export const UpdateProjectProjectsResponse200ApplicationJSONResponseBodyAction =
   {
-    Log: "log",
     Deny: "deny",
     Challenge: "challenge",
+    Log: "log",
   } as const;
 export type UpdateProjectProjectsResponse200ApplicationJSONResponseBodyAction =
   ClosedEnum<
@@ -827,9 +827,9 @@ export type UpdateProjectVercelRuleset = {
 
 export const UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityAction =
   {
-    Log: "log",
     Deny: "deny",
     Challenge: "challenge",
+    Log: "log",
   } as const;
 export type UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityAction =
   ClosedEnum<
@@ -844,9 +844,9 @@ export type UpdateProjectBotFilter = {
 };
 
 export const UpdateProjectProjectsResponse200Action = {
-  Log: "log",
   Deny: "deny",
   Challenge: "challenge",
+  Log: "log",
 } as const;
 export type UpdateProjectProjectsResponse200Action = ClosedEnum<
   typeof UpdateProjectProjectsResponse200Action
@@ -858,9 +858,9 @@ export type UpdateProjectAiBots = {
 };
 
 export const UpdateProjectProjectsResponse200ApplicationJSONAction = {
-  Log: "log",
   Deny: "deny",
   Challenge: "challenge",
+  Log: "log",
 } as const;
 export type UpdateProjectProjectsResponse200ApplicationJSONAction = ClosedEnum<
   typeof UpdateProjectProjectsResponse200ApplicationJSONAction
@@ -1251,9 +1251,9 @@ export type UpdateProjectInternalRoutes =
   | UpdateProjectInternalRoutes2;
 
 export const UpdateProjectProjectsAction = {
-  Delete: "delete",
   Cancel: "cancel",
   Accept: "accept",
+  Delete: "delete",
 } as const;
 export type UpdateProjectProjectsAction = ClosedEnum<
   typeof UpdateProjectProjectsAction

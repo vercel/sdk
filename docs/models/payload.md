@@ -3325,11 +3325,7 @@ const value: models.ThreeHundredAndTwelve = {
 
 ```typescript
 const value: models.ThreeHundredAndThirteen = {
-  vulnerabilities: [
-    "<value 1>",
-  ],
-  protectionEnabled: true,
-  protectedProjectCount: 5785.43,
+  customAlertTitle: "<value>",
 };
 ```
 
@@ -3337,19 +3333,12 @@ const value: models.ThreeHundredAndThirteen = {
 
 ```typescript
 const value: models.ThreeHundredAndFourteen = {
-  team: {
-    id: "<id>",
-    name: "<value>",
-  },
-  configuration: {
-    id: "<id>",
-  },
-  peering: {
-    id: "<id>",
-    accountId: "<id>",
-    region: "<value>",
-    vpcId: "<id>",
-  },
+  vulnerabilities: [
+    "<value 1>",
+    "<value 2>",
+  ],
+  protectionEnabled: false,
+  protectedProjectCount: 7327.87,
 };
 ```
 
@@ -3366,6 +3355,9 @@ const value: models.ThreeHundredAndFifteen = {
   },
   peering: {
     id: "<id>",
+    accountId: "<id>",
+    region: "<value>",
+    vpcId: "<id>",
   },
 };
 ```
@@ -3391,7 +3383,16 @@ const value: models.ThreeHundredAndSixteen = {
 
 ```typescript
 const value: models.ThreeHundredAndSeventeen = {
-  tier: "pro",
+  team: {
+    id: "<id>",
+    name: "<value>",
+  },
+  configuration: {
+    id: "<id>",
+  },
+  peering: {
+    id: "<id>",
+  },
 };
 ```
 
@@ -3399,8 +3400,7 @@ const value: models.ThreeHundredAndSeventeen = {
 
 ```typescript
 const value: models.ThreeHundredAndEighteen = {
-  id: "<id>",
-  url: "https://reasonable-farm.com/",
+  tier: "pro",
 };
 ```
 
@@ -3408,7 +3408,8 @@ const value: models.ThreeHundredAndEighteen = {
 
 ```typescript
 const value: models.ThreeHundredAndNineteen = {
-  chatId: "<id>",
+  id: "<id>",
+  url: "https://stable-bungalow.name",
 };
 ```
 
@@ -3416,8 +3417,7 @@ const value: models.ThreeHundredAndNineteen = {
 
 ```typescript
 const value: models.ThreeHundredAndTwenty = {
-  model: "CTS",
-  useCase: "<value>",
+  chatId: "<id>",
 };
 ```
 
@@ -3425,8 +3425,8 @@ const value: models.ThreeHundredAndTwenty = {
 
 ```typescript
 const value: models.ThreeHundredAndTwentyOne = {
-  chatId: "<id>",
-  messageId: "<id>",
+  model: "Sentra",
+  useCase: "<value>",
 };
 ```
 
@@ -3434,9 +3434,8 @@ const value: models.ThreeHundredAndTwentyOne = {
 
 ```typescript
 const value: models.ThreeHundredAndTwentyTwo = {
-  deploymentId: "<id>",
-  projectId: "<id>",
-  runId: "<id>",
+  chatId: "<id>",
+  messageId: "<id>",
 };
 ```
 
@@ -3444,11 +3443,9 @@ const value: models.ThreeHundredAndTwentyTwo = {
 
 ```typescript
 const value: models.ThreeHundredAndTwentyThree = {
-  grantType: "authorization_code",
-  appName: "<value>",
-  atTTL: 4312.5,
-  scope: "<value>",
-  authMethod: "invite",
+  deploymentId: "<id>",
+  projectId: "<id>",
+  runId: "<id>",
 };
 ```
 
@@ -3456,10 +3453,11 @@ const value: models.ThreeHundredAndTwentyThree = {
 
 ```typescript
 const value: models.ThreeHundredAndTwentyFour = {
-  tokenId: "<id>",
-  tokenName: "<value>",
-  origin: "github",
-  scope: "user",
+  grantType: "authorization_code",
+  appName: "<value>",
+  atTTL: 840.75,
+  scope: "<value>",
+  authMethod: "bitbucket",
 };
 ```
 
@@ -3468,9 +3466,9 @@ const value: models.ThreeHundredAndTwentyFour = {
 ```typescript
 const value: models.ThreeHundredAndTwentyFive = {
   tokenId: "<id>",
-  tokenType: "<value>",
   tokenName: "<value>",
-  actorTokenId: "<id>",
+  origin: "manual",
+  scope: "team",
 };
 ```
 
@@ -3478,7 +3476,18 @@ const value: models.ThreeHundredAndTwentyFive = {
 
 ```typescript
 const value: models.ThreeHundredAndTwentySix = {
-  deletedCount: 1856.3,
+  tokenId: "<id>",
+  tokenType: "<value>",
+  tokenName: "<value>",
+  actorTokenId: "<id>",
+};
+```
+
+### `models.ThreeHundredAndTwentySeven`
+
+```typescript
+const value: models.ThreeHundredAndTwentySeven = {
+  deletedCount: 1375.78,
   actorTokenId: "<id>",
 };
 ```

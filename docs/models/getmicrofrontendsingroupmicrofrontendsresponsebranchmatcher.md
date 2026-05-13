@@ -6,7 +6,7 @@
 import { GetMicrofrontendsInGroupMicrofrontendsResponseBranchMatcher } from "@vercel/sdk/models/getmicrofrontendsingroupto2.js";
 
 let value: GetMicrofrontendsInGroupMicrofrontendsResponseBranchMatcher = {
-  type: "endsWith",
+  type: "startsWith",
   pattern: "<value>",
 };
 ```

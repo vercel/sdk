@@ -7,11 +7,11 @@ import { UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodyActio
 
 let value:
   UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodyAction =
-    "log";
+    "deny";
 ```
 
 ## Values
 
 ```typescript
-"log" | "deny" | "challenge"
+"deny" | "challenge" | "log"
 ```

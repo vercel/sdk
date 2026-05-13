@@ -15,7 +15,6 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
  * The framework that is being used for this project. When `null` is used no framework is selected
  */
 export const UpdateProjectFramework = {
-  Services: "services",
   Blitzjs: "blitzjs",
   Nextjs: "nextjs",
   Gatsby: "gatsby",
@@ -83,6 +82,7 @@ export const UpdateProjectFramework = {
   ActixWeb: "actix-web",
   Node: "node",
   Go: "go",
+  Services: "services",
   Mastra: "mastra",
 } as const;
 /**
@@ -957,11 +957,11 @@ export type UpdateProjectTarget2 = ClosedEnum<typeof UpdateProjectTarget2>;
 export type UpdateProjectTarget = Array<string> | UpdateProjectTarget2;
 
 export const UpdateProjectType = {
-  Secret: "secret",
   System: "system",
   Encrypted: "encrypted",
   Plain: "plain",
   Sensitive: "sensitive",
+  Secret: "secret",
 } as const;
 export type UpdateProjectType = ClosedEnum<typeof UpdateProjectType>;
 
@@ -1262,7 +1262,6 @@ export type UpdateProjectCustomEnvironments = {
 };
 
 export const UpdateProjectProjectsFramework = {
-  Services: "services",
   Blitzjs: "blitzjs",
   Nextjs: "nextjs",
   Gatsby: "gatsby",
@@ -1330,6 +1329,7 @@ export const UpdateProjectProjectsFramework = {
   ActixWeb: "actix-web",
   Node: "node",
   Go: "go",
+  Services: "services",
   Mastra: "mastra",
 } as const;
 export type UpdateProjectProjectsFramework = ClosedEnum<

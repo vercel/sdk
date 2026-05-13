@@ -6,7 +6,7 @@
 import { GetProjectsResponseBodyProjectsEnv } from "@vercel/sdk/models/getprojectsresponsebodyprojectsaibots.js";
 
 let value: GetProjectsResponseBodyProjectsEnv = {
-  type: "secret",
+  type: "system",
   value: "<value>",
   key: "<key>",
 };

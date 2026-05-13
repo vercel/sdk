@@ -5,11 +5,12 @@
 ```typescript
 import { UpdateMicrofrontendsProjectsResponse200ApplicationJSONAction } from "@vercel/sdk/models/updatemicrofrontendsmanagedrules.js";
 
-let value: UpdateMicrofrontendsProjectsResponse200ApplicationJSONAction = "log";
+let value: UpdateMicrofrontendsProjectsResponse200ApplicationJSONAction =
+  "deny";
 ```
 
 ## Values
 
 ```typescript
-"log" | "deny" | "challenge"
+"deny" | "challenge" | "log"
 ```

@@ -712,9 +712,9 @@ export type GetMicrofrontendsInGroupInternalRoutes =
   | GetMicrofrontendsInGroupInternalRoutes2;
 
 export const GetMicrofrontendsInGroupAction = {
-  Delete: "delete",
   Cancel: "cancel",
   Accept: "accept",
+  Delete: "delete",
 } as const;
 export type GetMicrofrontendsInGroupAction = ClosedEnum<
   typeof GetMicrofrontendsInGroupAction

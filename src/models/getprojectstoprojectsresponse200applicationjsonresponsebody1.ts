@@ -171,9 +171,9 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export const GetProjectsResponseBodyProjectsResponse200ApplicationJson3ProjectsSecurityManagedRulesAction =
   {
-    Log: "log",
     Deny: "deny",
     Challenge: "challenge",
+    Log: "log",
   } as const;
 export type GetProjectsResponseBodyProjectsResponse200ApplicationJson3ProjectsSecurityManagedRulesAction =
   ClosedEnum<
@@ -606,9 +606,9 @@ export type GetProjectsResponseBodyProjectsInternalRoutes =
   | GetProjectsInternalRoutesProjectsResponse2;
 
 export const GetProjectsResponseBodyAction = {
-  Delete: "delete",
   Cancel: "cancel",
   Accept: "accept",
+  Delete: "delete",
 } as const;
 export type GetProjectsResponseBodyAction = ClosedEnum<
   typeof GetProjectsResponseBodyAction
@@ -805,8 +805,8 @@ export type GetProjectsResponseBody3 = {
 };
 
 export const GetProjectsResponseBodyConfiguredBy = {
-  A: "A",
   Cname: "CNAME",
+  A: "A",
   Http: "http",
   Dns01: "dns-01",
 } as const;
@@ -956,11 +956,11 @@ export type GetProjectsResponseBodyProjectsResponse200Target =
   | GetProjectsTargetProjects2;
 
 export const GetProjectsResponseBodyProjectsResponseType = {
-  Secret: "secret",
   System: "system",
   Encrypted: "encrypted",
   Plain: "plain",
   Sensitive: "sensitive",
+  Secret: "secret",
 } as const;
 export type GetProjectsResponseBodyProjectsResponseType = ClosedEnum<
   typeof GetProjectsResponseBodyProjectsResponseType
@@ -1151,7 +1151,6 @@ export type GetProjectsResponseBodyEnv = {
 };
 
 export const GetProjectsResponseBodyFramework = {
-  Services: "services",
   Blitzjs: "blitzjs",
   Nextjs: "nextjs",
   Gatsby: "gatsby",
@@ -1219,6 +1218,7 @@ export const GetProjectsResponseBodyFramework = {
   ActixWeb: "actix-web",
   Node: "node",
   Go: "go",
+  Services: "services",
   Mastra: "mastra",
 } as const;
 export type GetProjectsResponseBodyFramework = ClosedEnum<

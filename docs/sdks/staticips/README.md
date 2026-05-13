@@ -44,7 +44,7 @@ The standalone function version of this method:
 
 ```typescript
 import { VercelCore } from "@vercel/sdk/core.js";
-import { connectUpdateStaticIps } from "@vercel/sdk/funcs/connectUpdateStaticIps.js";
+import { networkingUpdateStaticIps } from "@vercel/sdk/funcs/networkingUpdateStaticIps.js";
 
 // Use `VercelCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -53,7 +53,7 @@ const vercel = new VercelCore({
 });
 
 async function run() {
-  const res = await connectUpdateStaticIps(vercel, {
+  const res = await networkingUpdateStaticIps(vercel, {
     idOrName: "<value>",
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     slug: "my-team-url-slug",
@@ -67,7 +67,7 @@ async function run() {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("connectUpdateStaticIps failed:", res.error);
+    console.log("networkingUpdateStaticIps failed:", res.error);
   }
 }
 

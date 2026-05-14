@@ -280,6 +280,7 @@ export type UpdateProjectPermissions = {
   buildMachineDefault?: Array<ACLAction> | undefined;
   dataCacheBillingSettings?: Array<ACLAction> | undefined;
   defaultDeploymentProtection?: Array<ACLAction> | undefined;
+  delegatedProtectionClient?: Array<ACLAction> | undefined;
   deploymentPolicy?: Array<ACLAction> | undefined;
   domain?: Array<ACLAction> | undefined;
   domainAcceptDelegation?: Array<ACLAction> | undefined;
@@ -2006,6 +2007,7 @@ export const UpdateProjectPermissions$inboundSchema: z.ZodType<
   buildMachineDefault: types.optional(z.array(ACLAction$inboundSchema)),
   dataCacheBillingSettings: types.optional(z.array(ACLAction$inboundSchema)),
   defaultDeploymentProtection: types.optional(z.array(ACLAction$inboundSchema)),
+  delegatedProtectionClient: types.optional(z.array(ACLAction$inboundSchema)),
   deploymentPolicy: types.optional(z.array(ACLAction$inboundSchema)),
   domain: types.optional(z.array(ACLAction$inboundSchema)),
   domainAcceptDelegation: types.optional(z.array(ACLAction$inboundSchema)),
@@ -2302,6 +2304,7 @@ export type UpdateProjectPermissions$Outbound = {
   buildMachineDefault?: Array<string> | undefined;
   dataCacheBillingSettings?: Array<string> | undefined;
   defaultDeploymentProtection?: Array<string> | undefined;
+  delegatedProtectionClient?: Array<string> | undefined;
   deploymentPolicy?: Array<string> | undefined;
   domain?: Array<string> | undefined;
   domainAcceptDelegation?: Array<string> | undefined;
@@ -2557,6 +2560,7 @@ export const UpdateProjectPermissions$outboundSchema: z.ZodType<
   buildMachineDefault: z.array(ACLAction$outboundSchema).optional(),
   dataCacheBillingSettings: z.array(ACLAction$outboundSchema).optional(),
   defaultDeploymentProtection: z.array(ACLAction$outboundSchema).optional(),
+  delegatedProtectionClient: z.array(ACLAction$outboundSchema).optional(),
   deploymentPolicy: z.array(ACLAction$outboundSchema).optional(),
   domain: z.array(ACLAction$outboundSchema).optional(),
   domainAcceptDelegation: z.array(ACLAction$outboundSchema).optional(),

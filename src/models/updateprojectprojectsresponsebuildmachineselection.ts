@@ -926,10 +926,6 @@ export type UpdateProjectExpiration2 = {
    * userId of the actor that triggered the lock (system or admin).
    */
   lockedBy: string;
-  /**
-   * Last version observed at lock time, carried forward unchanged. Lock is terminal and does not produce a new event, so it does not bump the counter — but the field is retained so a later re-schedule increments from a known number.
-   */
-  version: number;
 };
 
 export type UpdateProjectExpiration1 = {
@@ -937,10 +933,6 @@ export type UpdateProjectExpiration1 = {
    * Unix ms timestamp when the project is scheduled to expire.
    */
   expiresAt: number;
-  /**
-   * Version stamped on the in-flight `ExpireProject` event.
-   */
-  version: number;
 };
 
 export type UpdateProjectExpiration =
@@ -4389,13 +4381,11 @@ export const UpdateProjectExpiration2$inboundSchema: z.ZodType<
 > = z.object({
   lockedAt: types.number(),
   lockedBy: types.string(),
-  version: types.number(),
 });
 /** @internal */
 export type UpdateProjectExpiration2$Outbound = {
   lockedAt: number;
   lockedBy: string;
-  version: number;
 };
 
 /** @internal */
@@ -4406,7 +4396,6 @@ export const UpdateProjectExpiration2$outboundSchema: z.ZodType<
 > = z.object({
   lockedAt: z.number(),
   lockedBy: z.string(),
-  version: z.number(),
 });
 
 export function updateProjectExpiration2ToJSON(
@@ -4433,12 +4422,10 @@ export const UpdateProjectExpiration1$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   expiresAt: types.number(),
-  version: types.number(),
 });
 /** @internal */
 export type UpdateProjectExpiration1$Outbound = {
   expiresAt: number;
-  version: number;
 };
 
 /** @internal */
@@ -4448,7 +4435,6 @@ export const UpdateProjectExpiration1$outboundSchema: z.ZodType<
   UpdateProjectExpiration1
 > = z.object({
   expiresAt: z.number(),
-  version: z.number(),
 });
 
 export function updateProjectExpiration1ToJSON(

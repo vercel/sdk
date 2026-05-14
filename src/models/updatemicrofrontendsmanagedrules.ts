@@ -204,10 +204,6 @@ export type UpdateMicrofrontendsExpiration2 = {
    * userId of the actor that triggered the lock (system or admin).
    */
   lockedBy: string;
-  /**
-   * Last version observed at lock time, carried forward unchanged. Lock is terminal and does not produce a new event, so it does not bump the counter — but the field is retained so a later re-schedule increments from a known number.
-   */
-  version: number;
 };
 
 export type UpdateMicrofrontendsExpiration1 = {
@@ -215,10 +211,6 @@ export type UpdateMicrofrontendsExpiration1 = {
    * Unix ms timestamp when the project is scheduled to expire.
    */
   expiresAt: number;
-  /**
-   * Version stamped on the in-flight `ExpireProject` event.
-   */
-  version: number;
 };
 
 export type UpdateMicrofrontendsExpiration =
@@ -1259,6 +1251,7 @@ export type UpdateMicrofrontendsPermissions = {
   buildMachineDefault?: Array<ACLAction> | undefined;
   dataCacheBillingSettings?: Array<ACLAction> | undefined;
   defaultDeploymentProtection?: Array<ACLAction> | undefined;
+  delegatedProtectionClient?: Array<ACLAction> | undefined;
   deploymentPolicy?: Array<ACLAction> | undefined;
   domain?: Array<ACLAction> | undefined;
   domainAcceptDelegation?: Array<ACLAction> | undefined;
@@ -2522,13 +2515,11 @@ export const UpdateMicrofrontendsExpiration2$inboundSchema: z.ZodType<
 > = z.object({
   lockedAt: types.number(),
   lockedBy: types.string(),
-  version: types.number(),
 });
 /** @internal */
 export type UpdateMicrofrontendsExpiration2$Outbound = {
   lockedAt: number;
   lockedBy: string;
-  version: number;
 };
 
 /** @internal */
@@ -2539,7 +2530,6 @@ export const UpdateMicrofrontendsExpiration2$outboundSchema: z.ZodType<
 > = z.object({
   lockedAt: z.number(),
   lockedBy: z.string(),
-  version: z.number(),
 });
 
 export function updateMicrofrontendsExpiration2ToJSON(
@@ -2568,12 +2558,10 @@ export const UpdateMicrofrontendsExpiration1$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   expiresAt: types.number(),
-  version: types.number(),
 });
 /** @internal */
 export type UpdateMicrofrontendsExpiration1$Outbound = {
   expiresAt: number;
-  version: number;
 };
 
 /** @internal */
@@ -2583,7 +2571,6 @@ export const UpdateMicrofrontendsExpiration1$outboundSchema: z.ZodType<
   UpdateMicrofrontendsExpiration1
 > = z.object({
   expiresAt: z.number(),
-  version: z.number(),
 });
 
 export function updateMicrofrontendsExpiration1ToJSON(
@@ -6663,6 +6650,7 @@ export const UpdateMicrofrontendsPermissions$inboundSchema: z.ZodType<
   buildMachineDefault: types.optional(z.array(ACLAction$inboundSchema)),
   dataCacheBillingSettings: types.optional(z.array(ACLAction$inboundSchema)),
   defaultDeploymentProtection: types.optional(z.array(ACLAction$inboundSchema)),
+  delegatedProtectionClient: types.optional(z.array(ACLAction$inboundSchema)),
   deploymentPolicy: types.optional(z.array(ACLAction$inboundSchema)),
   domain: types.optional(z.array(ACLAction$inboundSchema)),
   domainAcceptDelegation: types.optional(z.array(ACLAction$inboundSchema)),
@@ -6959,6 +6947,7 @@ export type UpdateMicrofrontendsPermissions$Outbound = {
   buildMachineDefault?: Array<string> | undefined;
   dataCacheBillingSettings?: Array<string> | undefined;
   defaultDeploymentProtection?: Array<string> | undefined;
+  delegatedProtectionClient?: Array<string> | undefined;
   deploymentPolicy?: Array<string> | undefined;
   domain?: Array<string> | undefined;
   domainAcceptDelegation?: Array<string> | undefined;
@@ -7214,6 +7203,7 @@ export const UpdateMicrofrontendsPermissions$outboundSchema: z.ZodType<
   buildMachineDefault: z.array(ACLAction$outboundSchema).optional(),
   dataCacheBillingSettings: z.array(ACLAction$outboundSchema).optional(),
   defaultDeploymentProtection: z.array(ACLAction$outboundSchema).optional(),
+  delegatedProtectionClient: z.array(ACLAction$outboundSchema).optional(),
   deploymentPolicy: z.array(ACLAction$outboundSchema).optional(),
   domain: z.array(ACLAction$outboundSchema).optional(),
   domainAcceptDelegation: z.array(ACLAction$outboundSchema).optional(),

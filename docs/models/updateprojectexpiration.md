@@ -8,7 +8,6 @@
 ```typescript
 const value: models.UpdateProjectExpiration1 = {
   expiresAt: 9939.05,
-  version: 3759.69,
 };
 ```
 
@@ -18,7 +17,6 @@ const value: models.UpdateProjectExpiration1 = {
 const value: models.UpdateProjectExpiration2 = {
   lockedAt: 9187.83,
   lockedBy: "<value>",
-  version: 2695.46,
 };
 ```
 

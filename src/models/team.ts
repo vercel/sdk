@@ -677,7 +677,7 @@ export type Team = {
   /**
    * The membership of the authenticated User in relation to the Team.
    */
-  membership: Membership;
+  membership?: Membership | undefined;
   /**
    * UNIX timestamp (in milliseconds) when the Team was created.
    */
@@ -1991,7 +1991,7 @@ export const Team$inboundSchema: z.ZodType<Team, z.ZodTypeDef, unknown> =
       slug: types.string(),
       name: types.nullable(types.string()),
       avatar: types.nullable(types.string()),
-      membership: z.lazy(() => Membership$inboundSchema),
+      membership: types.optional(z.lazy(() => Membership$inboundSchema)),
       createdAt: types.number(),
     }).catchall(z.any()),
     "additionalProperties",
@@ -2039,7 +2039,7 @@ export type Team$Outbound = {
   slug: string;
   name: string | null;
   avatar: string | null;
-  membership: Membership$Outbound;
+  membership?: Membership$Outbound | undefined;
   createdAt: number;
   [additionalProperties: string]: unknown;
 };
@@ -2096,7 +2096,7 @@ export const Team$outboundSchema: z.ZodType<Team$Outbound, z.ZodTypeDef, Team> =
     slug: z.string(),
     name: z.nullable(z.string()),
     avatar: z.nullable(z.string()),
-    membership: z.lazy(() => Membership$outboundSchema),
+    membership: z.lazy(() => Membership$outboundSchema).optional(),
     createdAt: z.number(),
     additionalProperties: z.record(z.any()).optional(),
   }).transform((v) => {

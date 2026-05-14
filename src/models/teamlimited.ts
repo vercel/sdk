@@ -255,7 +255,7 @@ export type TeamLimited = {
   /**
    * The membership of the authenticated User in relation to the Team.
    */
-  membership: TeamLimitedMembership;
+  membership?: TeamLimitedMembership | undefined;
   /**
    * UNIX timestamp (in milliseconds) when the Team was created.
    */
@@ -706,7 +706,7 @@ export const TeamLimited$inboundSchema: z.ZodType<
   slug: types.string(),
   name: types.nullable(types.string()),
   avatar: types.nullable(types.string()),
-  membership: z.lazy(() => TeamLimitedMembership$inboundSchema),
+  membership: types.optional(z.lazy(() => TeamLimitedMembership$inboundSchema)),
   createdAt: types.number(),
 });
 /** @internal */
@@ -718,7 +718,7 @@ export type TeamLimited$Outbound = {
   slug: string;
   name: string | null;
   avatar: string | null;
-  membership: TeamLimitedMembership$Outbound;
+  membership?: TeamLimitedMembership$Outbound | undefined;
   createdAt: number;
 };
 
@@ -735,7 +735,7 @@ export const TeamLimited$outboundSchema: z.ZodType<
   slug: z.string(),
   name: z.nullable(z.string()),
   avatar: z.nullable(z.string()),
-  membership: z.lazy(() => TeamLimitedMembership$outboundSchema),
+  membership: z.lazy(() => TeamLimitedMembership$outboundSchema).optional(),
   createdAt: z.number(),
 });
 

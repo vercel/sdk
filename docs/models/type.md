@@ -5,7 +5,7 @@ The type of the event.
 ## Example Usage
 
 ```typescript
-import { Type } from "@vercel/sdk/models/enabled.js";
+import { Type } from "@vercel/sdk/models/payloadenvironment.js";
 
 let value: Type = "login";
 ```

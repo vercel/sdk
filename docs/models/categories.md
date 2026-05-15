@@ -5,7 +5,7 @@ The categories that group this event with related event types. An event can belo
 ## Example Usage
 
 ```typescript
-import { Categories } from "@vercel/sdk/models/enabled.js";
+import { Categories } from "@vercel/sdk/models/payloadenvironment.js";
 
 let value: Categories = "deployment";
 ```

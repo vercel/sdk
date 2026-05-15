@@ -5,7 +5,7 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { SeventySeven } from "@vercel/sdk/models/usereventjobpayload768deployhook.js";
+import { SeventySeven } from "@vercel/sdk/models/seventyseven.js";
 
 let value: SeventySeven = {
   url: "https://diligent-stay.net/",

@@ -1673,6 +1673,7 @@ export type CreateProjectPermissions = {
   toolbarComment?: Array<ACLAction> | undefined;
   usage?: Array<ACLAction> | undefined;
   usageCycle?: Array<ACLAction> | undefined;
+  vcrRepository?: Array<ACLAction> | undefined;
   vercelRun?: Array<ACLAction> | undefined;
   vpcPeeringConnection?: Array<ACLAction> | undefined;
   webAnalyticsPlan?: Array<ACLAction> | undefined;
@@ -7070,6 +7071,7 @@ export const CreateProjectPermissions$inboundSchema: z.ZodType<
   toolbarComment: types.optional(z.array(ACLAction$inboundSchema)),
   usage: types.optional(z.array(ACLAction$inboundSchema)),
   usageCycle: types.optional(z.array(ACLAction$inboundSchema)),
+  vcrRepository: types.optional(z.array(ACLAction$inboundSchema)),
   vercelRun: types.optional(z.array(ACLAction$inboundSchema)),
   vpcPeeringConnection: types.optional(z.array(ACLAction$inboundSchema)),
   webAnalyticsPlan: types.optional(z.array(ACLAction$inboundSchema)),
@@ -7337,6 +7339,7 @@ export type CreateProjectPermissions$Outbound = {
   toolbarComment?: Array<string> | undefined;
   usage?: Array<string> | undefined;
   usageCycle?: Array<string> | undefined;
+  vcrRepository?: Array<string> | undefined;
   vercelRun?: Array<string> | undefined;
   vpcPeeringConnection?: Array<string> | undefined;
   webAnalyticsPlan?: Array<string> | undefined;
@@ -7598,6 +7601,7 @@ export const CreateProjectPermissions$outboundSchema: z.ZodType<
   toolbarComment: z.array(ACLAction$outboundSchema).optional(),
   usage: z.array(ACLAction$outboundSchema).optional(),
   usageCycle: z.array(ACLAction$outboundSchema).optional(),
+  vcrRepository: z.array(ACLAction$outboundSchema).optional(),
   vercelRun: z.array(ACLAction$outboundSchema).optional(),
   vpcPeeringConnection: z.array(ACLAction$outboundSchema).optional(),
   webAnalyticsPlan: z.array(ACLAction$outboundSchema).optional(),

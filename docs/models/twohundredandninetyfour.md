@@ -5,7 +5,7 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndNinetyFour } from "@vercel/sdk/models/enabled.js";
+import { TwoHundredAndNinetyFour } from "@vercel/sdk/models/payloadenvironment.js";
 
 let value: TwoHundredAndNinetyFour = {
   consent: "granted",

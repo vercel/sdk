@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { EdgeRequestAdditionalCpuDuration } from "@vercel/sdk/models/fluidcpuduration.js";
+import { EdgeRequestAdditionalCpuDuration } from "@vercel/sdk/models/fastorigintransfer.js";
 
 let value: EdgeRequestAdditionalCpuDuration = {
   currentThreshold: 4053.61,

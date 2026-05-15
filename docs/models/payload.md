@@ -3068,9 +3068,7 @@ const value: models.TwoHundredAndEightyTwo = {
 ### `models.TwoHundredAndEightyThree`
 
 ```typescript
-const value: models.TwoHundredAndEightyThree = {
-  uid: "<id>",
-};
+const value: models.TwoHundredAndEightyThree = {};
 ```
 
 ### `models.TwoHundredAndEightyFour`

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PayloadMostSpecificSubdivision } from "@vercel/sdk/models/twohundredandtwentyfour.js";
+import { PayloadMostSpecificSubdivision } from "@vercel/sdk/models/usereventpayload224next.js";
 
 let value: PayloadMostSpecificSubdivision = {
   names: {

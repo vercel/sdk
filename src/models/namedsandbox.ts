@@ -59,6 +59,20 @@ export type NetworkPolicy = {
   deniedCIDRs?: Array<string> | undefined;
 };
 
+export const NamedSandboxMountsMode = {
+  ReadOnly: "read-only",
+  ReadWrite: "read-write",
+} as const;
+export type NamedSandboxMountsMode = ClosedEnum<typeof NamedSandboxMountsMode>;
+
+/**
+ * Key-value pairs of mount path and volume.
+ */
+export type Mounts = {
+  volume: string;
+  mode?: NamedSandboxMountsMode | undefined;
+};
+
 /**
  * This object contains information related to a Vercel NamedSandbox.
  */
@@ -143,6 +157,10 @@ export type NamedSandbox = {
    * Key-value tags attached to the named sandbox.
    */
   tags?: { [k: string]: string } | undefined;
+  /**
+   * Key-value pairs of mount path and volume.
+   */
+  mounts?: { [k: string]: Mounts } | undefined;
   /**
    * The time when the named sandbox was created, in milliseconds since the epoch.
    */
@@ -261,6 +279,50 @@ export function networkPolicyFromJSON(
 }
 
 /** @internal */
+export const NamedSandboxMountsMode$inboundSchema: z.ZodNativeEnum<
+  typeof NamedSandboxMountsMode
+> = z.nativeEnum(NamedSandboxMountsMode);
+/** @internal */
+export const NamedSandboxMountsMode$outboundSchema: z.ZodNativeEnum<
+  typeof NamedSandboxMountsMode
+> = NamedSandboxMountsMode$inboundSchema;
+
+/** @internal */
+export const Mounts$inboundSchema: z.ZodType<Mounts, z.ZodTypeDef, unknown> = z
+  .object({
+    volume: types.string(),
+    mode: types.optional(NamedSandboxMountsMode$inboundSchema),
+  });
+/** @internal */
+export type Mounts$Outbound = {
+  volume: string;
+  mode?: string | undefined;
+};
+
+/** @internal */
+export const Mounts$outboundSchema: z.ZodType<
+  Mounts$Outbound,
+  z.ZodTypeDef,
+  Mounts
+> = z.object({
+  volume: z.string(),
+  mode: NamedSandboxMountsMode$outboundSchema.optional(),
+});
+
+export function mountsToJSON(mounts: Mounts): string {
+  return JSON.stringify(Mounts$outboundSchema.parse(mounts));
+}
+export function mountsFromJSON(
+  jsonString: string,
+): SafeParseResult<Mounts, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Mounts$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Mounts' from JSON`,
+  );
+}
+
+/** @internal */
 export const NamedSandbox$inboundSchema: z.ZodType<
   NamedSandbox,
   z.ZodTypeDef,
@@ -288,6 +350,7 @@ export const NamedSandbox$inboundSchema: z.ZodType<
   totalDurationMs: types.optional(types.number()),
   cwd: types.optional(types.string()),
   tags: types.optional(z.record(types.string())),
+  mounts: types.optional(z.record(z.lazy(() => Mounts$inboundSchema))),
   createdAt: types.number(),
   updatedAt: types.number(),
 });
@@ -313,6 +376,7 @@ export type NamedSandbox$Outbound = {
   totalDurationMs?: number | undefined;
   cwd?: string | undefined;
   tags?: { [k: string]: string } | undefined;
+  mounts?: { [k: string]: Mounts$Outbound } | undefined;
   createdAt: number;
   updatedAt: number;
 };
@@ -343,6 +407,7 @@ export const NamedSandbox$outboundSchema: z.ZodType<
   totalDurationMs: z.number().optional(),
   cwd: z.string().optional(),
   tags: z.record(z.string()).optional(),
+  mounts: z.record(z.lazy(() => Mounts$outboundSchema)).optional(),
   createdAt: z.number(),
   updatedAt: z.number(),
 });

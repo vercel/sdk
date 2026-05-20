@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Redis1 } from "@vercel/sdk/models/usereventjobpayload768deployhook.js";
+import { Redis1 } from "@vercel/sdk/models/seventyseven.js";
 
 let value: Redis1 = {
   updatedAt: 8275.72,

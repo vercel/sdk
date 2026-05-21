@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { RuleGroups } from "@vercel/sdk/models/seventyseven.js";
+import { RuleGroups } from "@vercel/sdk/models/usereventpayload80deployment.js";
 
 let value: RuleGroups = {
   active: false,
@@ -15,4 +15,4 @@ let value: RuleGroups = {
 | Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
 | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
 | `active`                                                                   | *boolean*                                                                  | :heavy_check_mark:                                                         | N/A                                                                        |
-| `action`                                                                   | [models.UserEventPayload118Action](../models/usereventpayload118action.md) | :heavy_minus_sign:                                                         | N/A                                                                        |
+| `action`                                                                   | [models.UserEventPayload119Action](../models/usereventpayload119action.md) | :heavy_minus_sign:                                                         | N/A                                                                        |

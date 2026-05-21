@@ -8,14 +8,18 @@ The payload of the event, if requested.
 import { ThreeHundredAndFour } from "@vercel/sdk/models/payloadenvironment.js";
 
 let value: ThreeHundredAndFour = {
-  provider: "google",
-  login: "Ethyl.Fisher",
+  exportId: "<id>",
+  from: 6362.94,
+  to: 3369.23,
+  format: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                    | Type                                     | Required                                 | Description                              |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| `provider`                               | [models.Provider](../models/provider.md) | :heavy_check_mark:                       | N/A                                      |
-| `login`                                  | *string*                                 | :heavy_check_mark:                       | N/A                                      |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `exportId`         | *string*           | :heavy_check_mark: | N/A                |
+| `from`             | *number*           | :heavy_check_mark: | N/A                |
+| `to`               | *number*           | :heavy_check_mark: | N/A                |
+| `format`           | *string*           | :heavy_check_mark: | N/A                |

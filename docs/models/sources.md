@@ -1,15 +1,24 @@
 # Sources
 
-## Example Usage
+
+## Supported Types
+
+### `models.Sources1`
 
 ```typescript
-import { Sources } from "@vercel/sdk/models/createconfigurablelogdrainop.js";
-
-let value: Sources = "edge";
+const value: models.Sources1 = {
+  provider: "gitlab",
+  org: "<value>",
+};
 ```
 
-## Values
+### `models.Sources2`
 
 ```typescript
-"static" | "lambda" | "build" | "edge" | "external" | "firewall"
+const value: models.Sources2 = {
+  provider: "gitlab",
+  org: "<value>",
+  repo: "<value>",
+};
 ```
+

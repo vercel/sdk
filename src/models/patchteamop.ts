@@ -244,7 +244,9 @@ export type PatchTeamDeploymentPolicyGitSources = PatchTeamGitSources1 | string;
 export const PatchTeamDeploymentSourcesSources = {
   Git: "git",
   Cli: "cli",
-  Api: "api",
+  RestApi: "rest-api",
+  DeployHook: "deploy-hook",
+  Integration: "integration",
 } as const;
 export type PatchTeamDeploymentSourcesSources = ClosedEnum<
   typeof PatchTeamDeploymentSourcesSources

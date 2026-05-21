@@ -5,17 +5,16 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndFortyOne } from "@vercel/sdk/models/usereventpayload224next.js";
+import { TwoHundredAndFortyOne } from "@vercel/sdk/models/usereventpayload227next.js";
 
 let value: TwoHundredAndFortyOne = {
-  instances: 6510.99,
-  url: "https://limp-distinction.info/",
+  projectId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `instances`        | *number*           | :heavy_check_mark: | N/A                |
-| `url`              | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                      | Type                                                       | Required                                                   | Description                                                |
+| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
+| `projectId`                                                | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        |
+| `reasonCode`                                               | [models.PayloadReasonCode](../models/payloadreasoncode.md) | :heavy_minus_sign:                                         | N/A                                                        |

@@ -5,19 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndSeventySeven } from "@vercel/sdk/models/payloadenvironment.js";
+import { TwoHundredAndSeventySeven } from "@vercel/sdk/models/usereventpayload227next.js";
 
-let value: TwoHundredAndSeventySeven = {};
+let value: TwoHundredAndSeventySeven = {
+  environment: "production",
+  enabled: "default-force",
+};
 ```
 
 ## Fields
 
-| Field                                          | Type                                           | Required                                       | Description                                    |
-| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| `directoryType`                                | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `ssoType`                                      | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `invitedUser`                                  | [models.InvitedUser](../models/inviteduser.md) | :heavy_minus_sign:                             | N/A                                            |
-| `invitedEmail`                                 | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `invitationRole`                               | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `entitlements`                                 | *string*[]                                     | :heavy_minus_sign:                             | N/A                                            |
-| `invitedUid`                                   | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
+| Field                                                        | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `environment`                                                | [models.PayloadEnvironment](../models/payloadenvironment.md) | :heavy_check_mark:                                           | N/A                                                          |
+| `enabled`                                                    | [models.Enabled](../models/enabled.md)                       | :heavy_check_mark:                                           | N/A                                                          |

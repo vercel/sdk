@@ -75,7 +75,7 @@ export type Endpoint1 = {
   traces: string;
 };
 
-export type Endpoint = Endpoint1;
+export type CreateDrainDeliveryEndpoint = Endpoint1;
 
 export const CreateDrainDeliveryEncoding = {
   Proto: "proto",
@@ -249,7 +249,7 @@ export type CreateDrainDelivery3 = {
   table: string;
 };
 
-export type CreateDrainDeliveryEndpoint = {
+export type CreateDrainDeliveryDrainsResponseEndpoint = {
   traces: string;
 };
 
@@ -279,7 +279,7 @@ export type CreateDrainDeliveryDrainsSecret =
 
 export type CreateDrainDeliveryDrains2 = {
   type: "otlphttp";
-  endpoint: CreateDrainDeliveryEndpoint;
+  endpoint: CreateDrainDeliveryDrainsResponseEndpoint;
   encoding: CreateDrainDeliveryDrainsResponse200ApplicationJSONEncoding;
   headers: { [k: string]: string };
   secret?: CreateDrainSecretDrainsResponse2 | string | undefined;
@@ -1124,31 +1124,37 @@ export function endpoint1FromJSON(
 }
 
 /** @internal */
-export const Endpoint$inboundSchema: z.ZodType<
-  Endpoint,
+export const CreateDrainDeliveryEndpoint$inboundSchema: z.ZodType<
+  CreateDrainDeliveryEndpoint,
   z.ZodTypeDef,
   unknown
 > = z.lazy(() => Endpoint1$inboundSchema);
 /** @internal */
-export type Endpoint$Outbound = Endpoint1$Outbound;
+export type CreateDrainDeliveryEndpoint$Outbound = Endpoint1$Outbound;
 
 /** @internal */
-export const Endpoint$outboundSchema: z.ZodType<
-  Endpoint$Outbound,
+export const CreateDrainDeliveryEndpoint$outboundSchema: z.ZodType<
+  CreateDrainDeliveryEndpoint$Outbound,
   z.ZodTypeDef,
-  Endpoint
+  CreateDrainDeliveryEndpoint
 > = z.lazy(() => Endpoint1$outboundSchema);
 
-export function endpointToJSON(endpoint: Endpoint): string {
-  return JSON.stringify(Endpoint$outboundSchema.parse(endpoint));
+export function createDrainDeliveryEndpointToJSON(
+  createDrainDeliveryEndpoint: CreateDrainDeliveryEndpoint,
+): string {
+  return JSON.stringify(
+    CreateDrainDeliveryEndpoint$outboundSchema.parse(
+      createDrainDeliveryEndpoint,
+    ),
+  );
 }
-export function endpointFromJSON(
+export function createDrainDeliveryEndpointFromJSON(
   jsonString: string,
-): SafeParseResult<Endpoint, SDKValidationError> {
+): SafeParseResult<CreateDrainDeliveryEndpoint, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Endpoint$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Endpoint' from JSON`,
+    (x) => CreateDrainDeliveryEndpoint$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateDrainDeliveryEndpoint' from JSON`,
   );
 }
 
@@ -2127,43 +2133,51 @@ export function createDrainDelivery3FromJSON(
 }
 
 /** @internal */
-export const CreateDrainDeliveryEndpoint$inboundSchema: z.ZodType<
-  CreateDrainDeliveryEndpoint,
+export const CreateDrainDeliveryDrainsResponseEndpoint$inboundSchema: z.ZodType<
+  CreateDrainDeliveryDrainsResponseEndpoint,
   z.ZodTypeDef,
   unknown
 > = z.object({
   traces: types.string(),
 });
 /** @internal */
-export type CreateDrainDeliveryEndpoint$Outbound = {
+export type CreateDrainDeliveryDrainsResponseEndpoint$Outbound = {
   traces: string;
 };
 
 /** @internal */
-export const CreateDrainDeliveryEndpoint$outboundSchema: z.ZodType<
-  CreateDrainDeliveryEndpoint$Outbound,
-  z.ZodTypeDef,
-  CreateDrainDeliveryEndpoint
-> = z.object({
-  traces: z.string(),
-});
+export const CreateDrainDeliveryDrainsResponseEndpoint$outboundSchema:
+  z.ZodType<
+    CreateDrainDeliveryDrainsResponseEndpoint$Outbound,
+    z.ZodTypeDef,
+    CreateDrainDeliveryDrainsResponseEndpoint
+  > = z.object({
+    traces: z.string(),
+  });
 
-export function createDrainDeliveryEndpointToJSON(
-  createDrainDeliveryEndpoint: CreateDrainDeliveryEndpoint,
+export function createDrainDeliveryDrainsResponseEndpointToJSON(
+  createDrainDeliveryDrainsResponseEndpoint:
+    CreateDrainDeliveryDrainsResponseEndpoint,
 ): string {
   return JSON.stringify(
-    CreateDrainDeliveryEndpoint$outboundSchema.parse(
-      createDrainDeliveryEndpoint,
+    CreateDrainDeliveryDrainsResponseEndpoint$outboundSchema.parse(
+      createDrainDeliveryDrainsResponseEndpoint,
     ),
   );
 }
-export function createDrainDeliveryEndpointFromJSON(
+export function createDrainDeliveryDrainsResponseEndpointFromJSON(
   jsonString: string,
-): SafeParseResult<CreateDrainDeliveryEndpoint, SDKValidationError> {
+): SafeParseResult<
+  CreateDrainDeliveryDrainsResponseEndpoint,
+  SDKValidationError
+> {
   return safeParse(
     jsonString,
-    (x) => CreateDrainDeliveryEndpoint$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateDrainDeliveryEndpoint' from JSON`,
+    (x) =>
+      CreateDrainDeliveryDrainsResponseEndpoint$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CreateDrainDeliveryDrainsResponseEndpoint' from JSON`,
   );
 }
 
@@ -2278,7 +2292,9 @@ export const CreateDrainDeliveryDrains2$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   type: types.literal("otlphttp"),
-  endpoint: z.lazy(() => CreateDrainDeliveryEndpoint$inboundSchema),
+  endpoint: z.lazy(() =>
+    CreateDrainDeliveryDrainsResponseEndpoint$inboundSchema
+  ),
   encoding:
     CreateDrainDeliveryDrainsResponse200ApplicationJSONEncoding$inboundSchema,
   headers: z.record(types.string()),
@@ -2292,7 +2308,7 @@ export const CreateDrainDeliveryDrains2$inboundSchema: z.ZodType<
 /** @internal */
 export type CreateDrainDeliveryDrains2$Outbound = {
   type: "otlphttp";
-  endpoint: CreateDrainDeliveryEndpoint$Outbound;
+  endpoint: CreateDrainDeliveryDrainsResponseEndpoint$Outbound;
   encoding: string;
   headers: { [k: string]: string };
   secret?: CreateDrainSecretDrainsResponse2$Outbound | string | undefined;
@@ -2305,7 +2321,9 @@ export const CreateDrainDeliveryDrains2$outboundSchema: z.ZodType<
   CreateDrainDeliveryDrains2
 > = z.object({
   type: z.literal("otlphttp"),
-  endpoint: z.lazy(() => CreateDrainDeliveryEndpoint$outboundSchema),
+  endpoint: z.lazy(() =>
+    CreateDrainDeliveryDrainsResponseEndpoint$outboundSchema
+  ),
   encoding:
     CreateDrainDeliveryDrainsResponse200ApplicationJSONEncoding$outboundSchema,
   headers: z.record(z.string()),

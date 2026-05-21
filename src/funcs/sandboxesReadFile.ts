@@ -170,7 +170,7 @@ async function $do(
   >(
     M.stream(200, z.instanceof(ReadableStream<Uint8Array>)),
     M.fail([400, 401, 403, 404, 410, 422, "4XX"]),
-    M.fail("5XX"),
+    M.fail([500, "5XX"]),
   )(response, req);
   if (!result.ok) {
     return [result, { status: "complete", request: req, response }];

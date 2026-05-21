@@ -7,14 +7,11 @@ The payload of the event, if requested.
 ```typescript
 import { ThreeHundredAndSix } from "@vercel/sdk/models/payloadenvironment.js";
 
-let value: ThreeHundredAndSix = {
-  username: "Ines_Schowalter27",
-};
+let value: ThreeHundredAndSix = {};
 ```
 
 ## Fields
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `deletedAt`        | *number*           | :heavy_minus_sign: | N/A                |
-| `username`         | *string*           | :heavy_check_mark: | N/A                |
+| `slug`             | *string*           | :heavy_minus_sign: | N/A                |

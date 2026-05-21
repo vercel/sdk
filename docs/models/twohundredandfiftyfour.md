@@ -5,30 +5,21 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndFiftyFour } from "@vercel/sdk/models/usereventpayload224next.js";
+import { TwoHundredAndFiftyFour } from "@vercel/sdk/models/usereventpayload227next.js";
 
 let value: TwoHundredAndFiftyFour = {
-  budget: {
-    budgetItem: {
-      type: "fixed",
-      fixedBudget: 268.4,
-      previousSpend: [
-        2211.33,
-        3066.93,
-        9049.6,
-      ],
-      notifiedAt: [],
-      createdAt: 2535.69,
-      isActive: true,
-      teamId: "<id>",
-      id: "<id>",
-    },
-  },
+  email: "Brando97@hotmail.com",
+  githubLogin: "<value>",
+  zeitAccount: "<value>",
+  zeitAccountType: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                | Type                                 | Required                             | Description                          |
-| ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
-| `budget`                             | [models.Budget](../models/budget.md) | :heavy_check_mark:                   | N/A                                  |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `email`            | *string*           | :heavy_check_mark: | N/A                |
+| `githubLogin`      | *string*           | :heavy_check_mark: | N/A                |
+| `zeitAccount`      | *string*           | :heavy_check_mark: | N/A                |
+| `zeitAccountType`  | *string*           | :heavy_check_mark: | N/A                |

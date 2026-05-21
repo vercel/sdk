@@ -10,23 +10,26 @@ import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import {
-  GetProjectsResponseBody3,
-  GetProjectsResponseBody3$inboundSchema,
-  GetProjectsResponseBody3$Outbound,
-  GetProjectsResponseBody3$outboundSchema,
-} from "./getprojectstoprojectsresponse200applicationjsonresponsebody1.js";
-import {
   Alias,
   Alias$inboundSchema,
   Alias$Outbound,
   Alias$outboundSchema,
+  GetProjectsLink5,
+  GetProjectsLink5$inboundSchema,
+  GetProjectsLink5$Outbound,
+  GetProjectsLink5$outboundSchema,
+  GetProjectsLink6,
+  GetProjectsLink6$inboundSchema,
+  GetProjectsLink6$Outbound,
+  GetProjectsLink6$outboundSchema,
+  GetProjectsLinkProjectsResponse200DeployHooks,
+  GetProjectsLinkProjectsResponse200DeployHooks$inboundSchema,
+  GetProjectsLinkProjectsResponse200DeployHooks$Outbound,
+  GetProjectsLinkProjectsResponse200DeployHooks$outboundSchema,
   GetProjectsResponseBody2,
   GetProjectsResponseBody2$inboundSchema,
   GetProjectsResponseBody2$Outbound,
   GetProjectsResponseBody2$outboundSchema,
-  GetProjectsResponseBodyNodeVersion,
-  GetProjectsResponseBodyNodeVersion$inboundSchema,
-  GetProjectsResponseBodyNodeVersion$outboundSchema,
   ResponseBodyAnalytics,
   ResponseBodyAnalytics$inboundSchema,
   ResponseBodyAnalytics$Outbound,
@@ -50,16 +53,134 @@ import {
   ResponseBodyLatestDeployments$inboundSchema,
   ResponseBodyLatestDeployments$Outbound,
   ResponseBodyLatestDeployments$outboundSchema,
-  ResponseBodyLink,
-  ResponseBodyLink$inboundSchema,
-  ResponseBodyLink$Outbound,
-  ResponseBodyLink$outboundSchema,
-  ResponseBodyPasswordProtection,
-  ResponseBodyPasswordProtection$inboundSchema,
-  ResponseBodyPasswordProtection$Outbound,
-  ResponseBodyPasswordProtection$outboundSchema,
-} from "./responsebodypasswordprotection.js";
+} from "./getprojectslinkprojectsresponse200deployhooks.js";
+import {
+  GetProjectsResponseBody3,
+  GetProjectsResponseBody3$inboundSchema,
+  GetProjectsResponseBody3$Outbound,
+  GetProjectsResponseBody3$outboundSchema,
+} from "./getprojectsresponsebodyprojectsresponse200applicationjsoncreator.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export type GetProjectsLink4 = {
+  projectId: string;
+  projectName: string;
+  projectNameWithNamespace: string;
+  projectNamespace: string;
+  /**
+   * A new field, should be included in all new project links, is being added just in time when a deployment is created. This is needed for Protected Git scopes. This is the id of the top level group that a namespace belongs to. Gitlab supports group nesting (up to 20 levels).
+   */
+  projectOwnerId?: number | undefined;
+  projectUrl: string;
+  type: "gitlab";
+  createdAt?: number | undefined;
+  deployHooks: Array<GetProjectsLinkProjectsResponse200DeployHooks>;
+  gitCredentialId: string;
+  updatedAt?: number | undefined;
+  sourceless?: boolean | undefined;
+  productionBranch: string;
+};
+
+export type GetProjectsLinkProjectsResponseDeployHooks = {
+  createdAt?: number | undefined;
+  id: string;
+  name: string;
+  ref: string;
+  url: string;
+};
+
+export type GetProjectsLink3 = {
+  org: string;
+  /**
+   * A new field, should be included in all new project links, is being added just in time when a deployment is created. This is needed for Protected Git scopes.
+   */
+  repoOwnerId?: number | undefined;
+  repo?: string | undefined;
+  repoId?: number | undefined;
+  type: "github-custom-host";
+  host: string;
+  createdAt?: number | undefined;
+  deployHooks: Array<GetProjectsLinkProjectsResponseDeployHooks>;
+  gitCredentialId: string;
+  updatedAt?: number | undefined;
+  sourceless?: boolean | undefined;
+  productionBranch: string;
+};
+
+export type GetProjectsLinkProjectsDeployHooks = {
+  createdAt?: number | undefined;
+  id: string;
+  name: string;
+  ref: string;
+  url: string;
+};
+
+export type GetProjectsLink2 = {
+  type: "github-limited";
+  repo?: string | undefined;
+  repoId?: number | undefined;
+  createdAt?: number | undefined;
+  updatedAt?: number | undefined;
+  org: string;
+  /**
+   * A new field, should be included in all new project links, is being added just in time when a deployment is created. This is needed for Protected Git scopes.
+   */
+  repoOwnerId?: number | undefined;
+  deployHooks: Array<GetProjectsLinkProjectsDeployHooks>;
+  gitCredentialId: string;
+  sourceless?: boolean | undefined;
+  productionBranch: string;
+};
+
+export type GetProjectsLinkDeployHooks = {
+  createdAt?: number | undefined;
+  id: string;
+  name: string;
+  ref: string;
+  url: string;
+};
+
+export type GetProjectsLink1 = {
+  org: string;
+  /**
+   * A new field, should be included in all new project links, is being added just in time when a deployment is created. This is needed for Protected Git scopes.
+   */
+  repoOwnerId?: number | undefined;
+  repo?: string | undefined;
+  repoId?: number | undefined;
+  type: "github";
+  createdAt?: number | undefined;
+  deployHooks: Array<GetProjectsLinkDeployHooks>;
+  gitCredentialId: string;
+  updatedAt?: number | undefined;
+  sourceless?: boolean | undefined;
+  productionBranch: string;
+};
+
+export type ResponseBodyLink =
+  | GetProjectsLink1
+  | GetProjectsLink2
+  | GetProjectsLink3
+  | GetProjectsLink4
+  | GetProjectsLink5
+  | GetProjectsLink6;
+
+export const GetProjectsResponseBodyNodeVersion = {
+  TwentyFourDotX: "24.x",
+  TwentyTwoDotX: "22.x",
+  TwentyDotX: "20.x",
+  EighteenDotX: "18.x",
+  SixteenDotX: "16.x",
+  FourteenDotX: "14.x",
+  TwelveDotX: "12.x",
+  TenDotX: "10.x",
+  EightDot10DotX: "8.10.x",
+} as const;
+export type GetProjectsResponseBodyNodeVersion = ClosedEnum<
+  typeof GetProjectsResponseBodyNodeVersion
+>;
+
+export type ResponseBodyPasswordProtection = {};
 
 export const ResponseBodyFunctionDefaultMemoryType = {
   StandardLegacy: "standard_legacy",
@@ -1047,7 +1168,14 @@ export type GetProjectsResponseBody1 = {
   gitForkProtection?: boolean | undefined;
   id: string;
   latestDeployments?: Array<ResponseBodyLatestDeployments> | undefined;
-  link?: ResponseBodyLink | undefined;
+  link?:
+    | GetProjectsLink1
+    | GetProjectsLink2
+    | GetProjectsLink3
+    | GetProjectsLink4
+    | GetProjectsLink5
+    | GetProjectsLink6
+    | undefined;
   name: string;
   nodeVersion: GetProjectsResponseBodyNodeVersion;
   outputDirectory?: string | null | undefined;
@@ -1091,6 +1219,564 @@ export type GetProjectsResponseBody =
   | GetProjectsResponseBody2
   | GetProjectsResponseBody3
   | Array<GetProjectsResponseBody1>;
+
+/** @internal */
+export const GetProjectsLink4$inboundSchema: z.ZodType<
+  GetProjectsLink4,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  projectId: types.string(),
+  projectName: types.string(),
+  projectNameWithNamespace: types.string(),
+  projectNamespace: types.string(),
+  projectOwnerId: types.optional(types.number()),
+  projectUrl: types.string(),
+  type: types.literal("gitlab"),
+  createdAt: types.optional(types.number()),
+  deployHooks: z.array(
+    GetProjectsLinkProjectsResponse200DeployHooks$inboundSchema,
+  ),
+  gitCredentialId: types.string(),
+  updatedAt: types.optional(types.number()),
+  sourceless: types.optional(types.boolean()),
+  productionBranch: types.string(),
+});
+/** @internal */
+export type GetProjectsLink4$Outbound = {
+  projectId: string;
+  projectName: string;
+  projectNameWithNamespace: string;
+  projectNamespace: string;
+  projectOwnerId?: number | undefined;
+  projectUrl: string;
+  type: "gitlab";
+  createdAt?: number | undefined;
+  deployHooks: Array<GetProjectsLinkProjectsResponse200DeployHooks$Outbound>;
+  gitCredentialId: string;
+  updatedAt?: number | undefined;
+  sourceless?: boolean | undefined;
+  productionBranch: string;
+};
+
+/** @internal */
+export const GetProjectsLink4$outboundSchema: z.ZodType<
+  GetProjectsLink4$Outbound,
+  z.ZodTypeDef,
+  GetProjectsLink4
+> = z.object({
+  projectId: z.string(),
+  projectName: z.string(),
+  projectNameWithNamespace: z.string(),
+  projectNamespace: z.string(),
+  projectOwnerId: z.number().optional(),
+  projectUrl: z.string(),
+  type: z.literal("gitlab"),
+  createdAt: z.number().optional(),
+  deployHooks: z.array(
+    GetProjectsLinkProjectsResponse200DeployHooks$outboundSchema,
+  ),
+  gitCredentialId: z.string(),
+  updatedAt: z.number().optional(),
+  sourceless: z.boolean().optional(),
+  productionBranch: z.string(),
+});
+
+export function getProjectsLink4ToJSON(
+  getProjectsLink4: GetProjectsLink4,
+): string {
+  return JSON.stringify(
+    GetProjectsLink4$outboundSchema.parse(getProjectsLink4),
+  );
+}
+export function getProjectsLink4FromJSON(
+  jsonString: string,
+): SafeParseResult<GetProjectsLink4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetProjectsLink4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectsLink4' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetProjectsLinkProjectsResponseDeployHooks$inboundSchema:
+  z.ZodType<GetProjectsLinkProjectsResponseDeployHooks, z.ZodTypeDef, unknown> =
+    z.object({
+      createdAt: types.optional(types.number()),
+      id: types.string(),
+      name: types.string(),
+      ref: types.string(),
+      url: types.string(),
+    });
+/** @internal */
+export type GetProjectsLinkProjectsResponseDeployHooks$Outbound = {
+  createdAt?: number | undefined;
+  id: string;
+  name: string;
+  ref: string;
+  url: string;
+};
+
+/** @internal */
+export const GetProjectsLinkProjectsResponseDeployHooks$outboundSchema:
+  z.ZodType<
+    GetProjectsLinkProjectsResponseDeployHooks$Outbound,
+    z.ZodTypeDef,
+    GetProjectsLinkProjectsResponseDeployHooks
+  > = z.object({
+    createdAt: z.number().optional(),
+    id: z.string(),
+    name: z.string(),
+    ref: z.string(),
+    url: z.string(),
+  });
+
+export function getProjectsLinkProjectsResponseDeployHooksToJSON(
+  getProjectsLinkProjectsResponseDeployHooks:
+    GetProjectsLinkProjectsResponseDeployHooks,
+): string {
+  return JSON.stringify(
+    GetProjectsLinkProjectsResponseDeployHooks$outboundSchema.parse(
+      getProjectsLinkProjectsResponseDeployHooks,
+    ),
+  );
+}
+export function getProjectsLinkProjectsResponseDeployHooksFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetProjectsLinkProjectsResponseDeployHooks,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetProjectsLinkProjectsResponseDeployHooks$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetProjectsLinkProjectsResponseDeployHooks' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetProjectsLink3$inboundSchema: z.ZodType<
+  GetProjectsLink3,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  org: types.string(),
+  repoOwnerId: types.optional(types.number()),
+  repo: types.optional(types.string()),
+  repoId: types.optional(types.number()),
+  type: types.literal("github-custom-host"),
+  host: types.string(),
+  createdAt: types.optional(types.number()),
+  deployHooks: z.array(
+    z.lazy(() => GetProjectsLinkProjectsResponseDeployHooks$inboundSchema),
+  ),
+  gitCredentialId: types.string(),
+  updatedAt: types.optional(types.number()),
+  sourceless: types.optional(types.boolean()),
+  productionBranch: types.string(),
+});
+/** @internal */
+export type GetProjectsLink3$Outbound = {
+  org: string;
+  repoOwnerId?: number | undefined;
+  repo?: string | undefined;
+  repoId?: number | undefined;
+  type: "github-custom-host";
+  host: string;
+  createdAt?: number | undefined;
+  deployHooks: Array<GetProjectsLinkProjectsResponseDeployHooks$Outbound>;
+  gitCredentialId: string;
+  updatedAt?: number | undefined;
+  sourceless?: boolean | undefined;
+  productionBranch: string;
+};
+
+/** @internal */
+export const GetProjectsLink3$outboundSchema: z.ZodType<
+  GetProjectsLink3$Outbound,
+  z.ZodTypeDef,
+  GetProjectsLink3
+> = z.object({
+  org: z.string(),
+  repoOwnerId: z.number().optional(),
+  repo: z.string().optional(),
+  repoId: z.number().optional(),
+  type: z.literal("github-custom-host"),
+  host: z.string(),
+  createdAt: z.number().optional(),
+  deployHooks: z.array(
+    z.lazy(() => GetProjectsLinkProjectsResponseDeployHooks$outboundSchema),
+  ),
+  gitCredentialId: z.string(),
+  updatedAt: z.number().optional(),
+  sourceless: z.boolean().optional(),
+  productionBranch: z.string(),
+});
+
+export function getProjectsLink3ToJSON(
+  getProjectsLink3: GetProjectsLink3,
+): string {
+  return JSON.stringify(
+    GetProjectsLink3$outboundSchema.parse(getProjectsLink3),
+  );
+}
+export function getProjectsLink3FromJSON(
+  jsonString: string,
+): SafeParseResult<GetProjectsLink3, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetProjectsLink3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectsLink3' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetProjectsLinkProjectsDeployHooks$inboundSchema: z.ZodType<
+  GetProjectsLinkProjectsDeployHooks,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  createdAt: types.optional(types.number()),
+  id: types.string(),
+  name: types.string(),
+  ref: types.string(),
+  url: types.string(),
+});
+/** @internal */
+export type GetProjectsLinkProjectsDeployHooks$Outbound = {
+  createdAt?: number | undefined;
+  id: string;
+  name: string;
+  ref: string;
+  url: string;
+};
+
+/** @internal */
+export const GetProjectsLinkProjectsDeployHooks$outboundSchema: z.ZodType<
+  GetProjectsLinkProjectsDeployHooks$Outbound,
+  z.ZodTypeDef,
+  GetProjectsLinkProjectsDeployHooks
+> = z.object({
+  createdAt: z.number().optional(),
+  id: z.string(),
+  name: z.string(),
+  ref: z.string(),
+  url: z.string(),
+});
+
+export function getProjectsLinkProjectsDeployHooksToJSON(
+  getProjectsLinkProjectsDeployHooks: GetProjectsLinkProjectsDeployHooks,
+): string {
+  return JSON.stringify(
+    GetProjectsLinkProjectsDeployHooks$outboundSchema.parse(
+      getProjectsLinkProjectsDeployHooks,
+    ),
+  );
+}
+export function getProjectsLinkProjectsDeployHooksFromJSON(
+  jsonString: string,
+): SafeParseResult<GetProjectsLinkProjectsDeployHooks, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetProjectsLinkProjectsDeployHooks$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectsLinkProjectsDeployHooks' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetProjectsLink2$inboundSchema: z.ZodType<
+  GetProjectsLink2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: types.literal("github-limited"),
+  repo: types.optional(types.string()),
+  repoId: types.optional(types.number()),
+  createdAt: types.optional(types.number()),
+  updatedAt: types.optional(types.number()),
+  org: types.string(),
+  repoOwnerId: types.optional(types.number()),
+  deployHooks: z.array(
+    z.lazy(() => GetProjectsLinkProjectsDeployHooks$inboundSchema),
+  ),
+  gitCredentialId: types.string(),
+  sourceless: types.optional(types.boolean()),
+  productionBranch: types.string(),
+});
+/** @internal */
+export type GetProjectsLink2$Outbound = {
+  type: "github-limited";
+  repo?: string | undefined;
+  repoId?: number | undefined;
+  createdAt?: number | undefined;
+  updatedAt?: number | undefined;
+  org: string;
+  repoOwnerId?: number | undefined;
+  deployHooks: Array<GetProjectsLinkProjectsDeployHooks$Outbound>;
+  gitCredentialId: string;
+  sourceless?: boolean | undefined;
+  productionBranch: string;
+};
+
+/** @internal */
+export const GetProjectsLink2$outboundSchema: z.ZodType<
+  GetProjectsLink2$Outbound,
+  z.ZodTypeDef,
+  GetProjectsLink2
+> = z.object({
+  type: z.literal("github-limited"),
+  repo: z.string().optional(),
+  repoId: z.number().optional(),
+  createdAt: z.number().optional(),
+  updatedAt: z.number().optional(),
+  org: z.string(),
+  repoOwnerId: z.number().optional(),
+  deployHooks: z.array(
+    z.lazy(() => GetProjectsLinkProjectsDeployHooks$outboundSchema),
+  ),
+  gitCredentialId: z.string(),
+  sourceless: z.boolean().optional(),
+  productionBranch: z.string(),
+});
+
+export function getProjectsLink2ToJSON(
+  getProjectsLink2: GetProjectsLink2,
+): string {
+  return JSON.stringify(
+    GetProjectsLink2$outboundSchema.parse(getProjectsLink2),
+  );
+}
+export function getProjectsLink2FromJSON(
+  jsonString: string,
+): SafeParseResult<GetProjectsLink2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetProjectsLink2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectsLink2' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetProjectsLinkDeployHooks$inboundSchema: z.ZodType<
+  GetProjectsLinkDeployHooks,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  createdAt: types.optional(types.number()),
+  id: types.string(),
+  name: types.string(),
+  ref: types.string(),
+  url: types.string(),
+});
+/** @internal */
+export type GetProjectsLinkDeployHooks$Outbound = {
+  createdAt?: number | undefined;
+  id: string;
+  name: string;
+  ref: string;
+  url: string;
+};
+
+/** @internal */
+export const GetProjectsLinkDeployHooks$outboundSchema: z.ZodType<
+  GetProjectsLinkDeployHooks$Outbound,
+  z.ZodTypeDef,
+  GetProjectsLinkDeployHooks
+> = z.object({
+  createdAt: z.number().optional(),
+  id: z.string(),
+  name: z.string(),
+  ref: z.string(),
+  url: z.string(),
+});
+
+export function getProjectsLinkDeployHooksToJSON(
+  getProjectsLinkDeployHooks: GetProjectsLinkDeployHooks,
+): string {
+  return JSON.stringify(
+    GetProjectsLinkDeployHooks$outboundSchema.parse(getProjectsLinkDeployHooks),
+  );
+}
+export function getProjectsLinkDeployHooksFromJSON(
+  jsonString: string,
+): SafeParseResult<GetProjectsLinkDeployHooks, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetProjectsLinkDeployHooks$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectsLinkDeployHooks' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetProjectsLink1$inboundSchema: z.ZodType<
+  GetProjectsLink1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  org: types.string(),
+  repoOwnerId: types.optional(types.number()),
+  repo: types.optional(types.string()),
+  repoId: types.optional(types.number()),
+  type: types.literal("github"),
+  createdAt: types.optional(types.number()),
+  deployHooks: z.array(z.lazy(() => GetProjectsLinkDeployHooks$inboundSchema)),
+  gitCredentialId: types.string(),
+  updatedAt: types.optional(types.number()),
+  sourceless: types.optional(types.boolean()),
+  productionBranch: types.string(),
+});
+/** @internal */
+export type GetProjectsLink1$Outbound = {
+  org: string;
+  repoOwnerId?: number | undefined;
+  repo?: string | undefined;
+  repoId?: number | undefined;
+  type: "github";
+  createdAt?: number | undefined;
+  deployHooks: Array<GetProjectsLinkDeployHooks$Outbound>;
+  gitCredentialId: string;
+  updatedAt?: number | undefined;
+  sourceless?: boolean | undefined;
+  productionBranch: string;
+};
+
+/** @internal */
+export const GetProjectsLink1$outboundSchema: z.ZodType<
+  GetProjectsLink1$Outbound,
+  z.ZodTypeDef,
+  GetProjectsLink1
+> = z.object({
+  org: z.string(),
+  repoOwnerId: z.number().optional(),
+  repo: z.string().optional(),
+  repoId: z.number().optional(),
+  type: z.literal("github"),
+  createdAt: z.number().optional(),
+  deployHooks: z.array(z.lazy(() => GetProjectsLinkDeployHooks$outboundSchema)),
+  gitCredentialId: z.string(),
+  updatedAt: z.number().optional(),
+  sourceless: z.boolean().optional(),
+  productionBranch: z.string(),
+});
+
+export function getProjectsLink1ToJSON(
+  getProjectsLink1: GetProjectsLink1,
+): string {
+  return JSON.stringify(
+    GetProjectsLink1$outboundSchema.parse(getProjectsLink1),
+  );
+}
+export function getProjectsLink1FromJSON(
+  jsonString: string,
+): SafeParseResult<GetProjectsLink1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetProjectsLink1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectsLink1' from JSON`,
+  );
+}
+
+/** @internal */
+export const ResponseBodyLink$inboundSchema: z.ZodType<
+  ResponseBodyLink,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() => GetProjectsLink1$inboundSchema),
+  z.lazy(() => GetProjectsLink2$inboundSchema),
+  z.lazy(() => GetProjectsLink3$inboundSchema),
+  z.lazy(() => GetProjectsLink4$inboundSchema),
+  GetProjectsLink5$inboundSchema,
+  GetProjectsLink6$inboundSchema,
+]);
+/** @internal */
+export type ResponseBodyLink$Outbound =
+  | GetProjectsLink1$Outbound
+  | GetProjectsLink2$Outbound
+  | GetProjectsLink3$Outbound
+  | GetProjectsLink4$Outbound
+  | GetProjectsLink5$Outbound
+  | GetProjectsLink6$Outbound;
+
+/** @internal */
+export const ResponseBodyLink$outboundSchema: z.ZodType<
+  ResponseBodyLink$Outbound,
+  z.ZodTypeDef,
+  ResponseBodyLink
+> = z.union([
+  z.lazy(() => GetProjectsLink1$outboundSchema),
+  z.lazy(() => GetProjectsLink2$outboundSchema),
+  z.lazy(() => GetProjectsLink3$outboundSchema),
+  z.lazy(() => GetProjectsLink4$outboundSchema),
+  GetProjectsLink5$outboundSchema,
+  GetProjectsLink6$outboundSchema,
+]);
+
+export function responseBodyLinkToJSON(
+  responseBodyLink: ResponseBodyLink,
+): string {
+  return JSON.stringify(
+    ResponseBodyLink$outboundSchema.parse(responseBodyLink),
+  );
+}
+export function responseBodyLinkFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodyLink, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodyLink$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyLink' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetProjectsResponseBodyNodeVersion$inboundSchema: z.ZodNativeEnum<
+  typeof GetProjectsResponseBodyNodeVersion
+> = z.nativeEnum(GetProjectsResponseBodyNodeVersion);
+/** @internal */
+export const GetProjectsResponseBodyNodeVersion$outboundSchema: z.ZodNativeEnum<
+  typeof GetProjectsResponseBodyNodeVersion
+> = GetProjectsResponseBodyNodeVersion$inboundSchema;
+
+/** @internal */
+export const ResponseBodyPasswordProtection$inboundSchema: z.ZodType<
+  ResponseBodyPasswordProtection,
+  z.ZodTypeDef,
+  unknown
+> = z.object({});
+/** @internal */
+export type ResponseBodyPasswordProtection$Outbound = {};
+
+/** @internal */
+export const ResponseBodyPasswordProtection$outboundSchema: z.ZodType<
+  ResponseBodyPasswordProtection$Outbound,
+  z.ZodTypeDef,
+  ResponseBodyPasswordProtection
+> = z.object({});
+
+export function responseBodyPasswordProtectionToJSON(
+  responseBodyPasswordProtection: ResponseBodyPasswordProtection,
+): string {
+  return JSON.stringify(
+    ResponseBodyPasswordProtection$outboundSchema.parse(
+      responseBodyPasswordProtection,
+    ),
+  );
+}
+export function responseBodyPasswordProtectionFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodyPasswordProtection, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodyPasswordProtection$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyPasswordProtection' from JSON`,
+  );
+}
 
 /** @internal */
 export const ResponseBodyFunctionDefaultMemoryType$inboundSchema:
@@ -5686,12 +6372,22 @@ export const GetProjectsResponseBody1$inboundSchema: z.ZodType<
   latestDeployments: types.optional(
     z.array(ResponseBodyLatestDeployments$inboundSchema),
   ),
-  link: types.optional(ResponseBodyLink$inboundSchema),
+  link: types.optional(
+    z.union([
+      z.lazy(() => GetProjectsLink1$inboundSchema),
+      z.lazy(() => GetProjectsLink2$inboundSchema),
+      z.lazy(() => GetProjectsLink3$inboundSchema),
+      z.lazy(() => GetProjectsLink4$inboundSchema),
+      GetProjectsLink5$inboundSchema,
+      GetProjectsLink6$inboundSchema,
+    ]),
+  ),
   name: types.string(),
   nodeVersion: GetProjectsResponseBodyNodeVersion$inboundSchema,
   outputDirectory: z.nullable(types.string()).optional(),
-  passwordProtection: z.nullable(ResponseBodyPasswordProtection$inboundSchema)
-    .optional(),
+  passwordProtection: z.nullable(
+    z.lazy(() => ResponseBodyPasswordProtection$inboundSchema),
+  ).optional(),
   publicSource: z.nullable(types.boolean()).optional(),
   resourceConfig: z.lazy(() => ResponseBodyResourceConfig$inboundSchema),
   rollingRelease: z.nullable(
@@ -5769,7 +6465,14 @@ export type GetProjectsResponseBody1$Outbound = {
   gitForkProtection?: boolean | undefined;
   id: string;
   latestDeployments?: Array<ResponseBodyLatestDeployments$Outbound> | undefined;
-  link?: ResponseBodyLink$Outbound | undefined;
+  link?:
+    | GetProjectsLink1$Outbound
+    | GetProjectsLink2$Outbound
+    | GetProjectsLink3$Outbound
+    | GetProjectsLink4$Outbound
+    | GetProjectsLink5$Outbound
+    | GetProjectsLink6$Outbound
+    | undefined;
   name: string;
   nodeVersion: string;
   outputDirectory?: string | null | undefined;
@@ -5839,12 +6542,20 @@ export const GetProjectsResponseBody1$outboundSchema: z.ZodType<
   id: z.string(),
   latestDeployments: z.array(ResponseBodyLatestDeployments$outboundSchema)
     .optional(),
-  link: ResponseBodyLink$outboundSchema.optional(),
+  link: z.union([
+    z.lazy(() => GetProjectsLink1$outboundSchema),
+    z.lazy(() => GetProjectsLink2$outboundSchema),
+    z.lazy(() => GetProjectsLink3$outboundSchema),
+    z.lazy(() => GetProjectsLink4$outboundSchema),
+    GetProjectsLink5$outboundSchema,
+    GetProjectsLink6$outboundSchema,
+  ]).optional(),
   name: z.string(),
   nodeVersion: GetProjectsResponseBodyNodeVersion$outboundSchema,
   outputDirectory: z.nullable(z.string()).optional(),
-  passwordProtection: z.nullable(ResponseBodyPasswordProtection$outboundSchema)
-    .optional(),
+  passwordProtection: z.nullable(
+    z.lazy(() => ResponseBodyPasswordProtection$outboundSchema),
+  ).optional(),
   publicSource: z.nullable(z.boolean()).optional(),
   resourceConfig: z.lazy(() => ResponseBodyResourceConfig$outboundSchema),
   rollingRelease: z.nullable(

@@ -944,6 +944,98 @@ export type UpdateProjectProjectsOidcTokenConfig = {
   issuerMode?: UpdateProjectProjectsIssuerMode | undefined;
 };
 
+export const UpdateProjectSourcesProjectsProvider = {
+  Github: "github",
+  Gitlab: "gitlab",
+  Bitbucket: "bitbucket",
+} as const;
+export type UpdateProjectSourcesProjectsProvider = ClosedEnum<
+  typeof UpdateProjectSourcesProjectsProvider
+>;
+
+export type UpdateProjectSources2 = {
+  provider: UpdateProjectSourcesProjectsProvider;
+  org: string;
+  repo: string;
+};
+
+export const UpdateProjectSourcesProvider = {
+  Github: "github",
+  Gitlab: "gitlab",
+  Bitbucket: "bitbucket",
+} as const;
+export type UpdateProjectSourcesProvider = ClosedEnum<
+  typeof UpdateProjectSourcesProvider
+>;
+
+export type UpdateProjectSources1 = {
+  provider: UpdateProjectSourcesProvider;
+  org: string;
+};
+
+export type UpdateProjectSources =
+  | UpdateProjectSources2
+  | UpdateProjectSources1;
+
+/**
+ * Restricts inbound Git deployments to an allowlist of orgs and/or repos. `enabled: true` with an empty `sources` list is treated as deny-all.
+ */
+export type UpdateProjectGitSources = {
+  sources: Array<UpdateProjectSources2 | UpdateProjectSources1>;
+  enabled: boolean;
+};
+
+/**
+ * The mechanism that produced a deployment, expressed as values a customer can write in a {@link DeploymentSourcesRule} allowlist. The JSON schema at `packages/deployment-policy/schemas/body.ts` enumerates exactly these values. - `'git'`: a Git provider webhook (GitHub / GitLab / Bitbucket). - `'cli'`: an upload via the Vercel CLI. Covers both the legacy CLI (classic user token, identified by `vercel`/`now` user-agent) and the Sign-In-With-Vercel CLI (a first-party Vercel App token whose `clientId` is the CLI's). The canonical CLI client IDs are tracked in `packages/acl/app-has-all-permissions.ts` (`isVercelCliApp`). - `'rest-api'`: a direct REST API upload — a user or team token POSTing directly. Does NOT cover deploy-hook URLs, Marketplace integration tokens, or first-party Vercel App tokens; those are their own sources. - `'deploy-hook'`: a trigger via a project deploy-hook URL. The URL itself is the credential, so the request has no authenticated principal. - `'integration'`: a **third-party Marketplace** OAuth2 actor — a Marketplace integration token, a user-delegated OAuth flow where a Marketplace integration is acting on a user's behalf, or an unrecognized third-party Vercel App token. First-party Vercel Apps are NEVER `'integration'`. Vercel-owned first-party apps other than the CLI (e.g. v0, Toolbar, Omni Agent) are *not* in this type — they aren't customer-configurable. They classify as `'first-party'` (see `ClassifiedSource` in `@api/deployment-policy/checks`) and are auto-allowed by `checkDeploymentSources`. The split is intentional: a team can permit their own automation and CLI usage while blocking third-party Marketplace integrators — and Vercel's own first-party tooling always works.
+ */
+export const UpdateProjectProjectsSources = {
+  Git: "git",
+  Cli: "cli",
+  RestApi: "rest-api",
+  DeployHook: "deploy-hook",
+  Integration: "integration",
+} as const;
+/**
+ * The mechanism that produced a deployment, expressed as values a customer can write in a {@link DeploymentSourcesRule} allowlist. The JSON schema at `packages/deployment-policy/schemas/body.ts` enumerates exactly these values. - `'git'`: a Git provider webhook (GitHub / GitLab / Bitbucket). - `'cli'`: an upload via the Vercel CLI. Covers both the legacy CLI (classic user token, identified by `vercel`/`now` user-agent) and the Sign-In-With-Vercel CLI (a first-party Vercel App token whose `clientId` is the CLI's). The canonical CLI client IDs are tracked in `packages/acl/app-has-all-permissions.ts` (`isVercelCliApp`). - `'rest-api'`: a direct REST API upload — a user or team token POSTing directly. Does NOT cover deploy-hook URLs, Marketplace integration tokens, or first-party Vercel App tokens; those are their own sources. - `'deploy-hook'`: a trigger via a project deploy-hook URL. The URL itself is the credential, so the request has no authenticated principal. - `'integration'`: a **third-party Marketplace** OAuth2 actor — a Marketplace integration token, a user-delegated OAuth flow where a Marketplace integration is acting on a user's behalf, or an unrecognized third-party Vercel App token. First-party Vercel Apps are NEVER `'integration'`. Vercel-owned first-party apps other than the CLI (e.g. v0, Toolbar, Omni Agent) are *not* in this type — they aren't customer-configurable. They classify as `'first-party'` (see `ClassifiedSource` in `@api/deployment-policy/checks`) and are auto-allowed by `checkDeploymentSources`. The split is intentional: a team can permit their own automation and CLI usage while blocking third-party Marketplace integrators — and Vercel's own first-party tooling always works.
+ */
+export type UpdateProjectProjectsSources = ClosedEnum<
+  typeof UpdateProjectProjectsSources
+>;
+
+/**
+ * Restricts which deployment sources are allowed. A deployment passes if its source is in `sources`. Multiple entries are evaluated as OR. `enabled: true` with an empty `sources` list is treated as deny-all.
+ */
+export type UpdateProjectDeploymentSources = {
+  sources: Array<UpdateProjectProjectsSources>;
+  enabled: boolean;
+};
+
+/**
+ * Controls whether deployments may have their source and logs available publicly (i.e. the deployment's `public` boolean set to `true`). This rule does NOT control whether the deployment URL itself requires authentication — see deployment protection settings for that. - `allowPublicDeployments: false`: deployments must be created with `public: false`. Public deployments are blocked. - `allowPublicDeployments: true`: equivalent to `enabled: false`; here only so the field is always present on an enabled rule.
+ */
+export type UpdateProjectPublicDeployments = {
+  allowPublicDeployments: boolean;
+  enabled: boolean;
+};
+
+/**
+ * Project-level shape. Each rule may be: - an object: overrides the team's value for that rule - `null`: explicitly clears the override on just that rule (inherit team) - omitted: inherit team To clear all overrides and inherit fully, set the project's `deploymentPolicy` field itself to `null`. Defined independently from {@link TeamDeploymentPolicy} so the two are not coupled by a shared type — the underlying data lives in separate stores.
+ */
+export type UpdateProjectProjectsDeploymentPolicy = {
+  /**
+   * Restricts inbound Git deployments to an allowlist of orgs and/or repos. `enabled: true` with an empty `sources` list is treated as deny-all.
+   */
+  gitSources?: UpdateProjectGitSources | null | undefined;
+  /**
+   * Restricts which deployment sources are allowed. A deployment passes if its source is in `sources`. Multiple entries are evaluated as OR. `enabled: true` with an empty `sources` list is treated as deny-all.
+   */
+  deploymentSources?: UpdateProjectDeploymentSources | null | undefined;
+  /**
+   * Controls whether deployments may have their source and logs available publicly (i.e. the deployment's `public` boolean set to `true`). This rule does NOT control whether the deployment URL itself requires authentication — see deployment protection settings for that. - `allowPublicDeployments: false`: deployments must be created with `public: false`. Public deployments are blocked. - `allowPublicDeployments: true`: equivalent to `enabled: false`; here only so the field is always present on an enabled rule.
+   */
+  publicDeployments?: UpdateProjectPublicDeployments | null | undefined;
+};
+
 export const UpdateProjectFlatRateTier = {
   Standard: "standard",
   Base: "base",
@@ -1409,6 +1501,10 @@ export type UpdateProjectResponseBody = {
   webAnalytics?: UpdateProjectWebAnalytics | undefined;
   security?: UpdateProjectSecurity | undefined;
   oidcTokenConfig?: UpdateProjectProjectsOidcTokenConfig | undefined;
+  /**
+   * Project-level shape. Each rule may be: - an object: overrides the team's value for that rule - `null`: explicitly clears the override on just that rule (inherit team) - omitted: inherit team To clear all overrides and inherit fully, set the project's `deploymentPolicy` field itself to `null`. Defined independently from {@link TeamDeploymentPolicy} so the two are not coupled by a shared type — the underlying data lives in separate stores.
+   */
+  deploymentPolicy?: UpdateProjectProjectsDeploymentPolicy | null | undefined;
   tier?: string | undefined;
   flatRateTier?: UpdateProjectFlatRateTier | undefined;
   usageStatus?: UpdateProjectUsageStatus | undefined;
@@ -4668,6 +4764,368 @@ export function updateProjectProjectsOidcTokenConfigFromJSON(
 }
 
 /** @internal */
+export const UpdateProjectSourcesProjectsProvider$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateProjectSourcesProjectsProvider> = z.nativeEnum(
+    UpdateProjectSourcesProjectsProvider,
+  );
+/** @internal */
+export const UpdateProjectSourcesProjectsProvider$outboundSchema:
+  z.ZodNativeEnum<typeof UpdateProjectSourcesProjectsProvider> =
+    UpdateProjectSourcesProjectsProvider$inboundSchema;
+
+/** @internal */
+export const UpdateProjectSources2$inboundSchema: z.ZodType<
+  UpdateProjectSources2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  provider: UpdateProjectSourcesProjectsProvider$inboundSchema,
+  org: types.string(),
+  repo: types.string(),
+});
+/** @internal */
+export type UpdateProjectSources2$Outbound = {
+  provider: string;
+  org: string;
+  repo: string;
+};
+
+/** @internal */
+export const UpdateProjectSources2$outboundSchema: z.ZodType<
+  UpdateProjectSources2$Outbound,
+  z.ZodTypeDef,
+  UpdateProjectSources2
+> = z.object({
+  provider: UpdateProjectSourcesProjectsProvider$outboundSchema,
+  org: z.string(),
+  repo: z.string(),
+});
+
+export function updateProjectSources2ToJSON(
+  updateProjectSources2: UpdateProjectSources2,
+): string {
+  return JSON.stringify(
+    UpdateProjectSources2$outboundSchema.parse(updateProjectSources2),
+  );
+}
+export function updateProjectSources2FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectSources2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectSources2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectSources2' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateProjectSourcesProvider$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateProjectSourcesProvider
+> = z.nativeEnum(UpdateProjectSourcesProvider);
+/** @internal */
+export const UpdateProjectSourcesProvider$outboundSchema: z.ZodNativeEnum<
+  typeof UpdateProjectSourcesProvider
+> = UpdateProjectSourcesProvider$inboundSchema;
+
+/** @internal */
+export const UpdateProjectSources1$inboundSchema: z.ZodType<
+  UpdateProjectSources1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  provider: UpdateProjectSourcesProvider$inboundSchema,
+  org: types.string(),
+});
+/** @internal */
+export type UpdateProjectSources1$Outbound = {
+  provider: string;
+  org: string;
+};
+
+/** @internal */
+export const UpdateProjectSources1$outboundSchema: z.ZodType<
+  UpdateProjectSources1$Outbound,
+  z.ZodTypeDef,
+  UpdateProjectSources1
+> = z.object({
+  provider: UpdateProjectSourcesProvider$outboundSchema,
+  org: z.string(),
+});
+
+export function updateProjectSources1ToJSON(
+  updateProjectSources1: UpdateProjectSources1,
+): string {
+  return JSON.stringify(
+    UpdateProjectSources1$outboundSchema.parse(updateProjectSources1),
+  );
+}
+export function updateProjectSources1FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectSources1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectSources1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectSources1' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateProjectSources$inboundSchema: z.ZodType<
+  UpdateProjectSources,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  z.lazy(() => UpdateProjectSources2$inboundSchema),
+  z.lazy(() => UpdateProjectSources1$inboundSchema),
+]);
+/** @internal */
+export type UpdateProjectSources$Outbound =
+  | UpdateProjectSources2$Outbound
+  | UpdateProjectSources1$Outbound;
+
+/** @internal */
+export const UpdateProjectSources$outboundSchema: z.ZodType<
+  UpdateProjectSources$Outbound,
+  z.ZodTypeDef,
+  UpdateProjectSources
+> = smartUnion([
+  z.lazy(() => UpdateProjectSources2$outboundSchema),
+  z.lazy(() => UpdateProjectSources1$outboundSchema),
+]);
+
+export function updateProjectSourcesToJSON(
+  updateProjectSources: UpdateProjectSources,
+): string {
+  return JSON.stringify(
+    UpdateProjectSources$outboundSchema.parse(updateProjectSources),
+  );
+}
+export function updateProjectSourcesFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectSources, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectSources$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectSources' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateProjectGitSources$inboundSchema: z.ZodType<
+  UpdateProjectGitSources,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  sources: z.array(
+    smartUnion([
+      z.lazy(() => UpdateProjectSources2$inboundSchema),
+      z.lazy(() => UpdateProjectSources1$inboundSchema),
+    ]),
+  ),
+  enabled: types.boolean(),
+});
+/** @internal */
+export type UpdateProjectGitSources$Outbound = {
+  sources: Array<
+    UpdateProjectSources2$Outbound | UpdateProjectSources1$Outbound
+  >;
+  enabled: boolean;
+};
+
+/** @internal */
+export const UpdateProjectGitSources$outboundSchema: z.ZodType<
+  UpdateProjectGitSources$Outbound,
+  z.ZodTypeDef,
+  UpdateProjectGitSources
+> = z.object({
+  sources: z.array(
+    smartUnion([
+      z.lazy(() => UpdateProjectSources2$outboundSchema),
+      z.lazy(() => UpdateProjectSources1$outboundSchema),
+    ]),
+  ),
+  enabled: z.boolean(),
+});
+
+export function updateProjectGitSourcesToJSON(
+  updateProjectGitSources: UpdateProjectGitSources,
+): string {
+  return JSON.stringify(
+    UpdateProjectGitSources$outboundSchema.parse(updateProjectGitSources),
+  );
+}
+export function updateProjectGitSourcesFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectGitSources, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectGitSources$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectGitSources' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateProjectProjectsSources$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateProjectProjectsSources
+> = z.nativeEnum(UpdateProjectProjectsSources);
+/** @internal */
+export const UpdateProjectProjectsSources$outboundSchema: z.ZodNativeEnum<
+  typeof UpdateProjectProjectsSources
+> = UpdateProjectProjectsSources$inboundSchema;
+
+/** @internal */
+export const UpdateProjectDeploymentSources$inboundSchema: z.ZodType<
+  UpdateProjectDeploymentSources,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  sources: z.array(UpdateProjectProjectsSources$inboundSchema),
+  enabled: types.boolean(),
+});
+/** @internal */
+export type UpdateProjectDeploymentSources$Outbound = {
+  sources: Array<string>;
+  enabled: boolean;
+};
+
+/** @internal */
+export const UpdateProjectDeploymentSources$outboundSchema: z.ZodType<
+  UpdateProjectDeploymentSources$Outbound,
+  z.ZodTypeDef,
+  UpdateProjectDeploymentSources
+> = z.object({
+  sources: z.array(UpdateProjectProjectsSources$outboundSchema),
+  enabled: z.boolean(),
+});
+
+export function updateProjectDeploymentSourcesToJSON(
+  updateProjectDeploymentSources: UpdateProjectDeploymentSources,
+): string {
+  return JSON.stringify(
+    UpdateProjectDeploymentSources$outboundSchema.parse(
+      updateProjectDeploymentSources,
+    ),
+  );
+}
+export function updateProjectDeploymentSourcesFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectDeploymentSources, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectDeploymentSources$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectDeploymentSources' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateProjectPublicDeployments$inboundSchema: z.ZodType<
+  UpdateProjectPublicDeployments,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  allowPublicDeployments: types.boolean(),
+  enabled: types.boolean(),
+});
+/** @internal */
+export type UpdateProjectPublicDeployments$Outbound = {
+  allowPublicDeployments: boolean;
+  enabled: boolean;
+};
+
+/** @internal */
+export const UpdateProjectPublicDeployments$outboundSchema: z.ZodType<
+  UpdateProjectPublicDeployments$Outbound,
+  z.ZodTypeDef,
+  UpdateProjectPublicDeployments
+> = z.object({
+  allowPublicDeployments: z.boolean(),
+  enabled: z.boolean(),
+});
+
+export function updateProjectPublicDeploymentsToJSON(
+  updateProjectPublicDeployments: UpdateProjectPublicDeployments,
+): string {
+  return JSON.stringify(
+    UpdateProjectPublicDeployments$outboundSchema.parse(
+      updateProjectPublicDeployments,
+    ),
+  );
+}
+export function updateProjectPublicDeploymentsFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectPublicDeployments, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectPublicDeployments$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectPublicDeployments' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateProjectProjectsDeploymentPolicy$inboundSchema: z.ZodType<
+  UpdateProjectProjectsDeploymentPolicy,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  gitSources: z.nullable(z.lazy(() => UpdateProjectGitSources$inboundSchema))
+    .optional(),
+  deploymentSources: z.nullable(
+    z.lazy(() => UpdateProjectDeploymentSources$inboundSchema),
+  ).optional(),
+  publicDeployments: z.nullable(
+    z.lazy(() => UpdateProjectPublicDeployments$inboundSchema),
+  ).optional(),
+});
+/** @internal */
+export type UpdateProjectProjectsDeploymentPolicy$Outbound = {
+  gitSources?: UpdateProjectGitSources$Outbound | null | undefined;
+  deploymentSources?:
+    | UpdateProjectDeploymentSources$Outbound
+    | null
+    | undefined;
+  publicDeployments?:
+    | UpdateProjectPublicDeployments$Outbound
+    | null
+    | undefined;
+};
+
+/** @internal */
+export const UpdateProjectProjectsDeploymentPolicy$outboundSchema: z.ZodType<
+  UpdateProjectProjectsDeploymentPolicy$Outbound,
+  z.ZodTypeDef,
+  UpdateProjectProjectsDeploymentPolicy
+> = z.object({
+  gitSources: z.nullable(z.lazy(() => UpdateProjectGitSources$outboundSchema))
+    .optional(),
+  deploymentSources: z.nullable(
+    z.lazy(() => UpdateProjectDeploymentSources$outboundSchema),
+  ).optional(),
+  publicDeployments: z.nullable(
+    z.lazy(() => UpdateProjectPublicDeployments$outboundSchema),
+  ).optional(),
+});
+
+export function updateProjectProjectsDeploymentPolicyToJSON(
+  updateProjectProjectsDeploymentPolicy: UpdateProjectProjectsDeploymentPolicy,
+): string {
+  return JSON.stringify(
+    UpdateProjectProjectsDeploymentPolicy$outboundSchema.parse(
+      updateProjectProjectsDeploymentPolicy,
+    ),
+  );
+}
+export function updateProjectProjectsDeploymentPolicyFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectProjectsDeploymentPolicy, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateProjectProjectsDeploymentPolicy$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectProjectsDeploymentPolicy' from JSON`,
+  );
+}
+
+/** @internal */
 export const UpdateProjectFlatRateTier$inboundSchema: z.ZodNativeEnum<
   typeof UpdateProjectFlatRateTier
 > = z.nativeEnum(UpdateProjectFlatRateTier);
@@ -7037,6 +7495,9 @@ export const UpdateProjectResponseBody$inboundSchema: z.ZodType<
   oidcTokenConfig: types.optional(
     z.lazy(() => UpdateProjectProjectsOidcTokenConfig$inboundSchema),
   ),
+  deploymentPolicy: z.nullable(
+    z.lazy(() => UpdateProjectProjectsDeploymentPolicy$inboundSchema),
+  ).optional(),
   tier: types.optional(types.string()),
   flatRateTier: types.optional(UpdateProjectFlatRateTier$inboundSchema),
   usageStatus: types.optional(
@@ -7172,6 +7633,10 @@ export type UpdateProjectResponseBody$Outbound = {
   webAnalytics?: UpdateProjectWebAnalytics$Outbound | undefined;
   security?: UpdateProjectSecurity$Outbound | undefined;
   oidcTokenConfig?: UpdateProjectProjectsOidcTokenConfig$Outbound | undefined;
+  deploymentPolicy?:
+    | UpdateProjectProjectsDeploymentPolicy$Outbound
+    | null
+    | undefined;
   tier?: string | undefined;
   flatRateTier?: string | undefined;
   usageStatus?: UpdateProjectUsageStatus$Outbound | undefined;
@@ -7318,6 +7783,9 @@ export const UpdateProjectResponseBody$outboundSchema: z.ZodType<
   security: z.lazy(() => UpdateProjectSecurity$outboundSchema).optional(),
   oidcTokenConfig: z.lazy(() =>
     UpdateProjectProjectsOidcTokenConfig$outboundSchema
+  ).optional(),
+  deploymentPolicy: z.nullable(
+    z.lazy(() => UpdateProjectProjectsDeploymentPolicy$outboundSchema),
   ).optional(),
   tier: z.string().optional(),
   flatRateTier: UpdateProjectFlatRateTier$outboundSchema.optional(),

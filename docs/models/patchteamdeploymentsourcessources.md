@@ -5,11 +5,11 @@
 ```typescript
 import { PatchTeamDeploymentSourcesSources } from "@vercel/sdk/models/patchteamop.js";
 
-let value: PatchTeamDeploymentSourcesSources = "cli";
+let value: PatchTeamDeploymentSourcesSources = "rest-api";
 ```
 
 ## Values
 
 ```typescript
-"git" | "cli" | "api"
+"git" | "cli" | "rest-api" | "deploy-hook" | "integration"
 ```

@@ -25,9 +25,20 @@ export type GitNamespacesRequest = {
    */
   host?: string | undefined;
   provider?: QueryParamProvider | undefined;
+  /**
+   * When true, includes the viewer object for each namespace.
+   */
+  viewerMetadata?: boolean | undefined;
 };
 
 export type GitNamespacesId = string | number;
+
+export type GitNamespacesRole = string | number;
+
+export type Viewer = {
+  canCreateApp?: boolean | undefined;
+  role?: string | number | undefined;
+};
 
 export type GitNamespacesResponseBody = {
   provider: string;
@@ -38,6 +49,7 @@ export type GitNamespacesResponseBody = {
   isAccessRestricted?: boolean | undefined;
   installationId?: number | undefined;
   requireReauth?: boolean | undefined;
+  viewer?: Viewer | undefined;
 };
 
 /** @internal */
@@ -57,11 +69,13 @@ export const GitNamespacesRequest$inboundSchema: z.ZodType<
 > = z.object({
   host: types.optional(types.string()),
   provider: types.optional(QueryParamProvider$inboundSchema),
+  viewerMetadata: types.optional(types.boolean()),
 });
 /** @internal */
 export type GitNamespacesRequest$Outbound = {
   host?: string | undefined;
   provider?: string | undefined;
+  viewerMetadata?: boolean | undefined;
 };
 
 /** @internal */
@@ -72,6 +86,7 @@ export const GitNamespacesRequest$outboundSchema: z.ZodType<
 > = z.object({
   host: z.string().optional(),
   provider: QueryParamProvider$outboundSchema.optional(),
+  viewerMetadata: z.boolean().optional(),
 });
 
 export function gitNamespacesRequestToJSON(
@@ -123,6 +138,74 @@ export function gitNamespacesIdFromJSON(
 }
 
 /** @internal */
+export const GitNamespacesRole$inboundSchema: z.ZodType<
+  GitNamespacesRole,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([types.string(), types.number()]);
+/** @internal */
+export type GitNamespacesRole$Outbound = string | number;
+
+/** @internal */
+export const GitNamespacesRole$outboundSchema: z.ZodType<
+  GitNamespacesRole$Outbound,
+  z.ZodTypeDef,
+  GitNamespacesRole
+> = smartUnion([z.string(), z.number()]);
+
+export function gitNamespacesRoleToJSON(
+  gitNamespacesRole: GitNamespacesRole,
+): string {
+  return JSON.stringify(
+    GitNamespacesRole$outboundSchema.parse(gitNamespacesRole),
+  );
+}
+export function gitNamespacesRoleFromJSON(
+  jsonString: string,
+): SafeParseResult<GitNamespacesRole, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GitNamespacesRole$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GitNamespacesRole' from JSON`,
+  );
+}
+
+/** @internal */
+export const Viewer$inboundSchema: z.ZodType<Viewer, z.ZodTypeDef, unknown> = z
+  .object({
+    canCreateApp: types.optional(types.boolean()),
+    role: types.optional(smartUnion([types.string(), types.number()])),
+  });
+/** @internal */
+export type Viewer$Outbound = {
+  canCreateApp?: boolean | undefined;
+  role?: string | number | undefined;
+};
+
+/** @internal */
+export const Viewer$outboundSchema: z.ZodType<
+  Viewer$Outbound,
+  z.ZodTypeDef,
+  Viewer
+> = z.object({
+  canCreateApp: z.boolean().optional(),
+  role: smartUnion([z.string(), z.number()]).optional(),
+});
+
+export function viewerToJSON(viewer: Viewer): string {
+  return JSON.stringify(Viewer$outboundSchema.parse(viewer));
+}
+export function viewerFromJSON(
+  jsonString: string,
+): SafeParseResult<Viewer, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Viewer$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Viewer' from JSON`,
+  );
+}
+
+/** @internal */
 export const GitNamespacesResponseBody$inboundSchema: z.ZodType<
   GitNamespacesResponseBody,
   z.ZodTypeDef,
@@ -136,6 +219,7 @@ export const GitNamespacesResponseBody$inboundSchema: z.ZodType<
   isAccessRestricted: types.optional(types.boolean()),
   installationId: types.optional(types.number()),
   requireReauth: types.optional(types.boolean()),
+  viewer: types.optional(z.lazy(() => Viewer$inboundSchema)),
 });
 /** @internal */
 export type GitNamespacesResponseBody$Outbound = {
@@ -147,6 +231,7 @@ export type GitNamespacesResponseBody$Outbound = {
   isAccessRestricted?: boolean | undefined;
   installationId?: number | undefined;
   requireReauth?: boolean | undefined;
+  viewer?: Viewer$Outbound | undefined;
 };
 
 /** @internal */
@@ -163,6 +248,7 @@ export const GitNamespacesResponseBody$outboundSchema: z.ZodType<
   isAccessRestricted: z.boolean().optional(),
   installationId: z.number().optional(),
   requireReauth: z.boolean().optional(),
+  viewer: z.lazy(() => Viewer$outboundSchema).optional(),
 });
 
 export function gitNamespacesResponseBodyToJSON(

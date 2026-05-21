@@ -8,7 +8,7 @@ import { DeploymentSources1 } from "@vercel/sdk/models/updateprojectprojectsresp
 let value: DeploymentSources1 = {
   enabled: false,
   sources: [
-    "api",
+    "deploy-hook",
   ],
 };
 ```

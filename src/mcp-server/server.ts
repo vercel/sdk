@@ -83,11 +83,13 @@ import { tool$dnsCreateRecord } from "./tools/dnsCreateRecord.js";
 import { tool$dnsGetRecords } from "./tools/dnsGetRecords.js";
 import { tool$dnsRemoveRecord } from "./tools/dnsRemoveRecord.js";
 import { tool$dnsUpdateRecord } from "./tools/dnsUpdateRecord.js";
+import { tool$domainsClaimDomainOwnership } from "./tools/domainsClaimDomainOwnership.js";
 import { tool$domainsCreateOrTransferDomain } from "./tools/domainsCreateOrTransferDomain.js";
 import { tool$domainsDeleteDomain } from "./tools/domainsDeleteDomain.js";
 import { tool$domainsGetDomain } from "./tools/domainsGetDomain.js";
 import { tool$domainsGetDomainConfig } from "./tools/domainsGetDomainConfig.js";
 import { tool$domainsGetDomains } from "./tools/domainsGetDomains.js";
+import { tool$domainsGetDomainVerificationRecord } from "./tools/domainsGetDomainVerificationRecord.js";
 import { tool$domainsPatchDomain } from "./tools/domainsPatchDomain.js";
 import { tool$domainsRegistrarBuyDomains } from "./tools/domainsRegistrarBuyDomains.js";
 import { tool$domainsRegistrarBuySingleDomain } from "./tools/domainsRegistrarBuySingleDomain.js";
@@ -338,7 +340,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Vercel",
-    version: "1.21.6",
+    version: "1.21.7",
   });
 
   const client = new VercelCore({
@@ -454,6 +456,8 @@ export function createMCPServer(deps: {
   tool(tool$domainsRegistrarGetContactInfoSchema);
   tool(tool$domainsRegistrarGetOrder);
   tool(tool$domainsGetDomainConfig);
+  tool(tool$domainsGetDomainVerificationRecord);
+  tool(tool$domainsClaimDomainOwnership);
   tool(tool$domainsGetDomain);
   tool(tool$domainsGetDomains);
   tool(tool$domainsCreateOrTransferDomain);

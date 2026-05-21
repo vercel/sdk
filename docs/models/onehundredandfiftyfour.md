@@ -5,20 +5,14 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndFiftyFour } from "@vercel/sdk/models/usereventpayload151role.js";
+import { OneHundredAndFiftyFour } from "@vercel/sdk/models/edgemiddlewareinvocations.js";
 
-let value: OneHundredAndFiftyFour = {
-  privateLinkEndpoint: {
-    id: "<id>",
-    name: "<value>",
-  },
-  projectId: "<id>",
-};
+let value: OneHundredAndFiftyFour = {};
 ```
 
 ## Fields
 
-| Field                                                          | Type                                                           | Required                                                       | Description                                                    |
-| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
-| `privateLinkEndpoint`                                          | [models.PrivateLinkEndpoint](../models/privatelinkendpoint.md) | :heavy_check_mark:                                             | N/A                                                            |
-| `projectId`                                                    | *string*                                                       | :heavy_check_mark:                                             | N/A                                                            |
+| Field                             | Type                              | Required                          | Description                       |
+| --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- |
+| `previewDeploymentSuffix`         | *string*                          | :heavy_minus_sign:                | N/A                               |
+| `previousPreviewDeploymentSuffix` | *string*                          | :heavy_minus_sign:                | N/A                               |

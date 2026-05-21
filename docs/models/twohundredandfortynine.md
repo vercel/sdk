@@ -5,27 +5,20 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndFortyNine } from "@vercel/sdk/models/usereventpayload224next.js";
+import { TwoHundredAndFortyNine } from "@vercel/sdk/models/usereventpayload227next.js";
 
-let value: TwoHundredAndFortyNine = {};
+let value: TwoHundredAndFortyNine = {
+  enabled: false,
+  updatedAt: 6350.41,
+};
 ```
 
 ## Fields
 
-| Field                                                        | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `userAgent`                                                  | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          |
-| `geolocation`                                                | [models.PayloadGeolocation](../models/payloadgeolocation.md) | :heavy_minus_sign:                                           | N/A                                                          |
-| `env`                                                        | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          |
-| `os`                                                         | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          |
-| `username`                                                   | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          |
-| `ssoType`                                                    | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          |
-| `factors`                                                    | *models.PayloadFactors*[]                                    | :heavy_minus_sign:                                           | N/A                                                          |
-| `viaOTP`                                                     | *boolean*                                                    | :heavy_minus_sign:                                           | N/A                                                          |
-| `viaGithub`                                                  | *boolean*                                                    | :heavy_minus_sign:                                           | N/A                                                          |
-| `viaGitlab`                                                  | *boolean*                                                    | :heavy_minus_sign:                                           | N/A                                                          |
-| `viaBitbucket`                                               | *boolean*                                                    | :heavy_minus_sign:                                           | N/A                                                          |
-| `viaGoogle`                                                  | *boolean*                                                    | :heavy_minus_sign:                                           | N/A                                                          |
-| `viaApple`                                                   | *boolean*                                                    | :heavy_minus_sign:                                           | N/A                                                          |
-| `viaSamlSso`                                                 | *boolean*                                                    | :heavy_minus_sign:                                           | N/A                                                          |
-| `viaPasskey`                                                 | *boolean*                                                    | :heavy_minus_sign:                                           | N/A                                                          |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `enabled`          | *boolean*          | :heavy_check_mark: | N/A                |
+| `updatedAt`        | *number*           | :heavy_check_mark: | N/A                |
+| `firstEnabledAt`   | *number*           | :heavy_minus_sign: | N/A                |
+| `projectId`        | *string*           | :heavy_minus_sign: | N/A                |
+| `projectName`      | *string*           | :heavy_minus_sign: | N/A                |

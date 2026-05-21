@@ -8,18 +8,17 @@ The payload of the event, if requested.
 import { TwoHundredAndEightyTwo } from "@vercel/sdk/models/payloadenvironment.js";
 
 let value: TwoHundredAndEightyTwo = {
-  entitlement: "<value>",
-  user: {
-    id: "<id>",
-    username: "Mariam73",
-  },
+  teamName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
-| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `entitlement`                                                          | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
-| `user`                                                                 | [models.UserEventPayload282User](../models/usereventpayload282user.md) | :heavy_check_mark:                                                     | N/A                                                                    |
-| `previousCanceledAt`                                                   | *string*                                                               | :heavy_minus_sign:                                                     | N/A                                                                    |
+| Field               | Type                | Required            | Description         |
+| ------------------- | ------------------- | ------------------- | ------------------- |
+| `teamName`          | *string*            | :heavy_check_mark:  | N/A                 |
+| `username`          | *string*            | :heavy_minus_sign:  | N/A                 |
+| `gitUsername`       | *string*            | :heavy_minus_sign:  | N/A                 |
+| `githubUsername`    | *string*            | :heavy_minus_sign:  | N/A                 |
+| `gitlabUsername`    | *string*            | :heavy_minus_sign:  | N/A                 |
+| `bitbucketUsername` | *string*            | :heavy_minus_sign:  | N/A                 |

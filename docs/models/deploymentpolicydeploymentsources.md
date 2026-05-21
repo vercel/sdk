@@ -9,7 +9,7 @@
 const value: models.DeploymentSources1 = {
   enabled: false,
   sources: [
-    "api",
+    "deploy-hook",
   ],
 };
 ```

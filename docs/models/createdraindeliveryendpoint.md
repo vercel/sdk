@@ -1,17 +1,13 @@
 # CreateDrainDeliveryEndpoint
 
-## Example Usage
+
+## Supported Types
+
+### `models.Endpoint1`
 
 ```typescript
-import { CreateDrainDeliveryEndpoint } from "@vercel/sdk/models/createdrainop.js";
-
-let value: CreateDrainDeliveryEndpoint = {
+const value: models.Endpoint1 = {
   traces: "<value>",
 };
 ```
 
-## Fields
-
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `traces`           | *string*           | :heavy_check_mark: | N/A                |

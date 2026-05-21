@@ -12,7 +12,6 @@ let value: TwoHundredAndNinetyEight = {};
 
 ## Fields
 
-| Field                                                | Type                                                 | Required                                             | Description                                          |
-| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
-| `previous`                                           | Record<string, *models.UserEventPayload298Previous*> | :heavy_minus_sign:                                   | N/A                                                  |
-| `next`                                               | Record<string, *models.UserEventPayload298Next*>     | :heavy_minus_sign:                                   | N/A                                                  |
+| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `remoteCaching`                                                  | [models.PayloadRemoteCaching](../models/payloadremotecaching.md) | :heavy_minus_sign:                                               | Represents configuration for remote caching                      |

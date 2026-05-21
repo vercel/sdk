@@ -13,5 +13,5 @@ let value: ApproveRollingReleaseStageRollingReleaseSource = "cli";
 ## Values
 
 ```typescript
-"import" | "api-trigger-git-deploy" | "cli" | "clone/repo" | "git" | "import/repo" | "redeploy" | "v0-web"
+"git" | "cli" | "import" | "api-trigger-git-deploy" | "clone/repo" | "import/repo" | "redeploy" | "v0-web"
 ```

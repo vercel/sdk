@@ -5,7 +5,7 @@ Billing mode. Always 'flat' for flat-rate projects.
 ## Example Usage
 
 ```typescript
-import { GetProjectsResponseBodyKind } from "@vercel/sdk/models/getprojectstoprojectsresponse200applicationjsonresponsebody1.js";
+import { GetProjectsResponseBodyKind } from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponse200applicationjsoncreator.js";
 
 let value: GetProjectsResponseBodyKind = "flat";
 ```

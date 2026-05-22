@@ -5,7 +5,7 @@ Since June 2023
 ## Example Usage
 
 ```typescript
-import { BlockHistory } from "@vercel/sdk/models/fastorigintransfer.js";
+import { BlockHistory } from "@vercel/sdk/models/edgemiddlewareinvocations.js";
 
 let value: BlockHistory = {
   action: "unblocked",
@@ -18,7 +18,7 @@ let value: BlockHistory = {
 
 | Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
 | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `action`                                                                   | [models.UserEventPayload122Action](../models/usereventpayload122action.md) | :heavy_check_mark:                                                         | N/A                                                                        |
+| `action`                                                                   | [models.UserEventPayload123Action](../models/usereventpayload123action.md) | :heavy_check_mark:                                                         | N/A                                                                        |
 | `createdAt`                                                                | *number*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
 | `caseId`                                                                   | *string*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |
 | `reason`                                                                   | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |

@@ -8,12 +8,17 @@ The payload of the event, if requested.
 import { ThreeHundredAndEight } from "@vercel/sdk/models/payloadenvironment.js";
 
 let value: ThreeHundredAndEight = {
-  mfaEnabled: true,
+  totp: true,
+  recoveryCodes: 3311.25,
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `mfaEnabled`       | *boolean*          | :heavy_check_mark: | N/A                |
+| Field                                      | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `totp`                                     | *boolean*                                  | :heavy_check_mark:                         | N/A                                        |
+| `recoveryCodes`                            | *number*                                   | :heavy_check_mark:                         | N/A                                        |
+| `actorId`                                  | *string*                                   | :heavy_minus_sign:                         | N/A                                        |
+| `actorType`                                | [models.ActorType](../models/actortype.md) | :heavy_minus_sign:                         | N/A                                        |
+| `reason`                                   | *string*                                   | :heavy_minus_sign:                         | N/A                                        |

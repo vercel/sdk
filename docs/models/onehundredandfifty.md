@@ -5,11 +5,12 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndFifty } from "@vercel/sdk/models/fastorigintransfer.js";
+import { OneHundredAndFifty } from "@vercel/sdk/models/edgemiddlewareinvocations.js";
 
 let value: OneHundredAndFifty = {
-  oldName: "<value>",
-  newName: "<value>",
+  projectId: "<id>",
+  previousStatus: "<value>",
+  justification: "<value>",
 };
 ```
 
@@ -17,5 +18,8 @@ let value: OneHundredAndFifty = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `oldName`          | *string*           | :heavy_check_mark: | N/A                |
-| `newName`          | *string*           | :heavy_check_mark: | N/A                |
+| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
+| `url`              | *string*           | :heavy_minus_sign: | N/A                |
+| `headerName`       | *string*           | :heavy_minus_sign: | N/A                |
+| `previousStatus`   | *string*           | :heavy_check_mark: | N/A                |
+| `justification`    | *string*           | :heavy_check_mark: | N/A                |

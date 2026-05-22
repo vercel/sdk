@@ -1,13 +1,26 @@
 # Endpoint
 
-
-## Supported Types
-
-### `models.Endpoint1`
+## Example Usage
 
 ```typescript
-const value: models.Endpoint1 = {
-  traces: "<value>",
+import { Endpoint } from "@vercel/sdk/models/edgemiddlewareinvocations.js";
+
+let value: Endpoint = {
+  id: "<id>",
+  name: "<value>",
+  projectId: "<id>",
+  vercelRegion: "<value>",
+  awsServiceName: "<value>",
 };
 ```
 
+## Fields
+
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `id`               | *string*           | :heavy_check_mark: | N/A                |
+| `name`             | *string*           | :heavy_check_mark: | N/A                |
+| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
+| `vercelRegion`     | *string*           | :heavy_check_mark: | N/A                |
+| `awsServiceName`   | *string*           | :heavy_check_mark: | N/A                |
+| `privateDnsNames`  | *string*[]         | :heavy_minus_sign: | N/A                |

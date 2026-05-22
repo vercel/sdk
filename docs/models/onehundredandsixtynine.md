@@ -5,33 +5,24 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndSixtyNine } from "@vercel/sdk/models/usereventpayload151role.js";
+import { OneHundredAndSixtyNine } from "@vercel/sdk/models/onehundredandfiftysix.js";
 
 let value: OneHundredAndSixtyNine = {
-  team: {
-    id: "<id>",
-    name: "<value>",
-  },
-  project: {
-    id: "<id>",
-    oldConnectConfigurations: [
-      {
-        envId: "<id>",
-        connectConfigurationId: "<id>",
-        passive: false,
-        buildsEnabled: true,
-        createdAt: 9005.75,
-        updatedAt: 8968.35,
-      },
-    ],
-    newConnectConfigurations: [],
-  },
+  projectName: "<value>",
+  nextBuildMachineType: "<value>",
+  previousBuildMachineSelection: "<value>",
+  nextBuildMachineSelection: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `team`                                                                       | [models.UserEventPayload169Team](../models/usereventpayload169team.md)       | :heavy_check_mark:                                                           | N/A                                                                          |
-| `project`                                                                    | [models.UserEventPayload169Project](../models/usereventpayload169project.md) | :heavy_check_mark:                                                           | N/A                                                                          |
+| Field                           | Type                            | Required                        | Description                     |
+| ------------------------------- | ------------------------------- | ------------------------------- | ------------------------------- |
+| `projectId`                     | *string*                        | :heavy_minus_sign:              | N/A                             |
+| `projectName`                   | *string*                        | :heavy_check_mark:              | N/A                             |
+| `previousBuildMachineType`      | *string*                        | :heavy_minus_sign:              | N/A                             |
+| `nextBuildMachineType`          | *string*                        | :heavy_check_mark:              | N/A                             |
+| `previousBuildMachineSelection` | *string*                        | :heavy_check_mark:              | N/A                             |
+| `nextBuildMachineSelection`     | *string*                        | :heavy_check_mark:              | N/A                             |
+| `isSystemInitiated`             | *boolean*                       | :heavy_minus_sign:              | N/A                             |

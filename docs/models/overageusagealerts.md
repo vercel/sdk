@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { OverageUsageAlerts } from "@vercel/sdk/models/seventyseven.js";
+import { OverageUsageAlerts } from "@vercel/sdk/models/usereventpayload80deployment.js";
 
 let value: OverageUsageAlerts = {};
 ```

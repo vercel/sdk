@@ -509,7 +509,9 @@ export type DeploymentPolicyGitSources = GitSources1 | string;
 export const DeploymentSourcesSources = {
   Git: "git",
   Cli: "cli",
-  Api: "api",
+  RestApi: "rest-api",
+  DeployHook: "deploy-hook",
+  Integration: "integration",
 } as const;
 export type DeploymentSourcesSources = ClosedEnum<
   typeof DeploymentSourcesSources
@@ -538,7 +540,7 @@ export type DeploymentPolicy1 = {
   publicDeployments?: PublicDeployments1 | string | undefined;
 };
 
-export type DeploymentPolicy = DeploymentPolicy1 | string;
+export type UpdateProjectDeploymentPolicy = DeploymentPolicy1 | string;
 
 export type UpdateProjectPaths = {
   /**
@@ -3257,35 +3259,39 @@ export function deploymentPolicy1FromJSON(
 }
 
 /** @internal */
-export const DeploymentPolicy$inboundSchema: z.ZodType<
-  DeploymentPolicy,
+export const UpdateProjectDeploymentPolicy$inboundSchema: z.ZodType<
+  UpdateProjectDeploymentPolicy,
   z.ZodTypeDef,
   unknown
 > = smartUnion([z.lazy(() => DeploymentPolicy1$inboundSchema), types.string()]);
 /** @internal */
-export type DeploymentPolicy$Outbound = DeploymentPolicy1$Outbound | string;
+export type UpdateProjectDeploymentPolicy$Outbound =
+  | DeploymentPolicy1$Outbound
+  | string;
 
 /** @internal */
-export const DeploymentPolicy$outboundSchema: z.ZodType<
-  DeploymentPolicy$Outbound,
+export const UpdateProjectDeploymentPolicy$outboundSchema: z.ZodType<
+  UpdateProjectDeploymentPolicy$Outbound,
   z.ZodTypeDef,
-  DeploymentPolicy
+  UpdateProjectDeploymentPolicy
 > = smartUnion([z.lazy(() => DeploymentPolicy1$outboundSchema), z.string()]);
 
-export function deploymentPolicyToJSON(
-  deploymentPolicy: DeploymentPolicy,
+export function updateProjectDeploymentPolicyToJSON(
+  updateProjectDeploymentPolicy: UpdateProjectDeploymentPolicy,
 ): string {
   return JSON.stringify(
-    DeploymentPolicy$outboundSchema.parse(deploymentPolicy),
+    UpdateProjectDeploymentPolicy$outboundSchema.parse(
+      updateProjectDeploymentPolicy,
+    ),
   );
 }
-export function deploymentPolicyFromJSON(
+export function updateProjectDeploymentPolicyFromJSON(
   jsonString: string,
-): SafeParseResult<DeploymentPolicy, SDKValidationError> {
+): SafeParseResult<UpdateProjectDeploymentPolicy, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => DeploymentPolicy$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DeploymentPolicy' from JSON`,
+    (x) => UpdateProjectDeploymentPolicy$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectDeploymentPolicy' from JSON`,
   );
 }
 

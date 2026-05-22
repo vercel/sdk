@@ -433,6 +433,90 @@ export type NsnbConfig = {
   preference: Preference;
 };
 
+export const TeamSourcesProvider = {
+  Github: "github",
+  Gitlab: "gitlab",
+  Bitbucket: "bitbucket",
+} as const;
+export type TeamSourcesProvider = ClosedEnum<typeof TeamSourcesProvider>;
+
+export type Sources2 = {
+  provider: TeamSourcesProvider;
+  org: string;
+  repo: string;
+};
+
+export const SourcesProvider = {
+  Github: "github",
+  Gitlab: "gitlab",
+  Bitbucket: "bitbucket",
+} as const;
+export type SourcesProvider = ClosedEnum<typeof SourcesProvider>;
+
+export type Sources1 = {
+  provider: SourcesProvider;
+  org: string;
+};
+
+export type Sources = Sources2 | Sources1;
+
+/**
+ * Restricts inbound Git deployments to an allowlist of orgs and/or repos. `enabled: true` with an empty `sources` list is treated as deny-all.
+ */
+export type GitSources = {
+  sources: Array<Sources2 | Sources1>;
+  enabled: boolean;
+};
+
+/**
+ * The mechanism that produced a deployment, expressed as values a customer can write in a {@link DeploymentSourcesRule} allowlist. The JSON schema at `packages/deployment-policy/schemas/body.ts` enumerates exactly these values. - `'git'`: a Git provider webhook (GitHub / GitLab / Bitbucket). - `'cli'`: an upload via the Vercel CLI. Covers both the legacy CLI (classic user token, identified by `vercel`/`now` user-agent) and the Sign-In-With-Vercel CLI (a first-party Vercel App token whose `clientId` is the CLI's). The canonical CLI client IDs are tracked in `packages/acl/app-has-all-permissions.ts` (`isVercelCliApp`). - `'rest-api'`: a direct REST API upload — a user or team token POSTing directly. Does NOT cover deploy-hook URLs, Marketplace integration tokens, or first-party Vercel App tokens; those are their own sources. - `'deploy-hook'`: a trigger via a project deploy-hook URL. The URL itself is the credential, so the request has no authenticated principal. - `'integration'`: a **third-party Marketplace** OAuth2 actor — a Marketplace integration token, a user-delegated OAuth flow where a Marketplace integration is acting on a user's behalf, or an unrecognized third-party Vercel App token. First-party Vercel Apps are NEVER `'integration'`. Vercel-owned first-party apps other than the CLI (e.g. v0, Toolbar, Omni Agent) are *not* in this type — they aren't customer-configurable. They classify as `'first-party'` (see `ClassifiedSource` in `@api/deployment-policy/checks`) and are auto-allowed by `checkDeploymentSources`. The split is intentional: a team can permit their own automation and CLI usage while blocking third-party Marketplace integrators — and Vercel's own first-party tooling always works.
+ */
+export const TeamSources = {
+  Integration: "integration",
+  Git: "git",
+  Cli: "cli",
+  RestApi: "rest-api",
+  DeployHook: "deploy-hook",
+} as const;
+/**
+ * The mechanism that produced a deployment, expressed as values a customer can write in a {@link DeploymentSourcesRule} allowlist. The JSON schema at `packages/deployment-policy/schemas/body.ts` enumerates exactly these values. - `'git'`: a Git provider webhook (GitHub / GitLab / Bitbucket). - `'cli'`: an upload via the Vercel CLI. Covers both the legacy CLI (classic user token, identified by `vercel`/`now` user-agent) and the Sign-In-With-Vercel CLI (a first-party Vercel App token whose `clientId` is the CLI's). The canonical CLI client IDs are tracked in `packages/acl/app-has-all-permissions.ts` (`isVercelCliApp`). - `'rest-api'`: a direct REST API upload — a user or team token POSTing directly. Does NOT cover deploy-hook URLs, Marketplace integration tokens, or first-party Vercel App tokens; those are their own sources. - `'deploy-hook'`: a trigger via a project deploy-hook URL. The URL itself is the credential, so the request has no authenticated principal. - `'integration'`: a **third-party Marketplace** OAuth2 actor — a Marketplace integration token, a user-delegated OAuth flow where a Marketplace integration is acting on a user's behalf, or an unrecognized third-party Vercel App token. First-party Vercel Apps are NEVER `'integration'`. Vercel-owned first-party apps other than the CLI (e.g. v0, Toolbar, Omni Agent) are *not* in this type — they aren't customer-configurable. They classify as `'first-party'` (see `ClassifiedSource` in `@api/deployment-policy/checks`) and are auto-allowed by `checkDeploymentSources`. The split is intentional: a team can permit their own automation and CLI usage while blocking third-party Marketplace integrators — and Vercel's own first-party tooling always works.
+ */
+export type TeamSources = ClosedEnum<typeof TeamSources>;
+
+/**
+ * Restricts which deployment sources are allowed. A deployment passes if its source is in `sources`. Multiple entries are evaluated as OR. `enabled: true` with an empty `sources` list is treated as deny-all.
+ */
+export type DeploymentSources = {
+  sources: Array<TeamSources>;
+  enabled: boolean;
+};
+
+/**
+ * Controls whether deployments may have their source and logs available publicly (i.e. the deployment's `public` boolean set to `true`). This rule does NOT control whether the deployment URL itself requires authentication — see deployment protection settings for that. - `allowPublicDeployments: false`: deployments must be created with `public: false`. Public deployments are blocked. - `allowPublicDeployments: true`: equivalent to `enabled: false`; here only so the field is always present on an enabled rule.
+ */
+export type PublicDeployments = {
+  allowPublicDeployments: boolean;
+  enabled: boolean;
+};
+
+/**
+ * Composable deployment-time policy for the team. Used as the default for every project on the team, with optional per-project overrides on `project.deploymentPolicy`.
+ */
+export type DeploymentPolicy = {
+  /**
+   * Restricts inbound Git deployments to an allowlist of orgs and/or repos. `enabled: true` with an empty `sources` list is treated as deny-all.
+   */
+  gitSources?: GitSources | undefined;
+  /**
+   * Restricts which deployment sources are allowed. A deployment passes if its source is in `sources`. Multiple entries are evaluated as OR. `enabled: true` with an empty `sources` list is treated as deny-all.
+   */
+  deploymentSources?: DeploymentSources | undefined;
+  /**
+   * Controls whether deployments may have their source and logs available publicly (i.e. the deployment's `public` boolean set to `true`). This rule does NOT control whether the deployment URL itself requires authentication — see deployment protection settings for that. - `allowPublicDeployments: false`: deployments must be created with `public: false`. Public deployments are blocked. - `allowPublicDeployments: true`: equivalent to `enabled: false`; here only so the field is always present on an enabled rule.
+   */
+  publicDeployments?: PublicDeployments | undefined;
+};
+
 export type Entitlements = {
   entitlement: string;
 };
@@ -481,12 +565,12 @@ export type TeamMembershipTeamPermissions = ClosedEnum<
 export const TeamOrigin = {
   Link: "link",
   Saml: "saml",
-  Mail: "mail",
-  Import: "import",
-  Teams: "teams",
   Github: "github",
   Gitlab: "gitlab",
   Bitbucket: "bitbucket",
+  Mail: "mail",
+  Import: "import",
+  Teams: "teams",
   Dsync: "dsync",
   Feedback: "feedback",
   OrganizationTeams: "organization-teams",
@@ -642,6 +726,10 @@ export type Team = {
    * NSNB configuration for the team.
    */
   nsnbConfig?: NsnbConfig | undefined;
+  /**
+   * Composable deployment-time policy for the team. Used as the default for every project on the team, with optional per-project overrides on `project.deploymentPolicy`.
+   */
+  deploymentPolicy?: DeploymentPolicy | undefined;
   /**
    * Timestamp (ms) after which personal access tokens created at or before this time are considered invalid for this team.
    */
@@ -1702,6 +1790,323 @@ export function nsnbConfigFromJSON(
 }
 
 /** @internal */
+export const TeamSourcesProvider$inboundSchema: z.ZodNativeEnum<
+  typeof TeamSourcesProvider
+> = z.nativeEnum(TeamSourcesProvider);
+/** @internal */
+export const TeamSourcesProvider$outboundSchema: z.ZodNativeEnum<
+  typeof TeamSourcesProvider
+> = TeamSourcesProvider$inboundSchema;
+
+/** @internal */
+export const Sources2$inboundSchema: z.ZodType<
+  Sources2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  provider: TeamSourcesProvider$inboundSchema,
+  org: types.string(),
+  repo: types.string(),
+});
+/** @internal */
+export type Sources2$Outbound = {
+  provider: string;
+  org: string;
+  repo: string;
+};
+
+/** @internal */
+export const Sources2$outboundSchema: z.ZodType<
+  Sources2$Outbound,
+  z.ZodTypeDef,
+  Sources2
+> = z.object({
+  provider: TeamSourcesProvider$outboundSchema,
+  org: z.string(),
+  repo: z.string(),
+});
+
+export function sources2ToJSON(sources2: Sources2): string {
+  return JSON.stringify(Sources2$outboundSchema.parse(sources2));
+}
+export function sources2FromJSON(
+  jsonString: string,
+): SafeParseResult<Sources2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Sources2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Sources2' from JSON`,
+  );
+}
+
+/** @internal */
+export const SourcesProvider$inboundSchema: z.ZodNativeEnum<
+  typeof SourcesProvider
+> = z.nativeEnum(SourcesProvider);
+/** @internal */
+export const SourcesProvider$outboundSchema: z.ZodNativeEnum<
+  typeof SourcesProvider
+> = SourcesProvider$inboundSchema;
+
+/** @internal */
+export const Sources1$inboundSchema: z.ZodType<
+  Sources1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  provider: SourcesProvider$inboundSchema,
+  org: types.string(),
+});
+/** @internal */
+export type Sources1$Outbound = {
+  provider: string;
+  org: string;
+};
+
+/** @internal */
+export const Sources1$outboundSchema: z.ZodType<
+  Sources1$Outbound,
+  z.ZodTypeDef,
+  Sources1
+> = z.object({
+  provider: SourcesProvider$outboundSchema,
+  org: z.string(),
+});
+
+export function sources1ToJSON(sources1: Sources1): string {
+  return JSON.stringify(Sources1$outboundSchema.parse(sources1));
+}
+export function sources1FromJSON(
+  jsonString: string,
+): SafeParseResult<Sources1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Sources1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Sources1' from JSON`,
+  );
+}
+
+/** @internal */
+export const Sources$inboundSchema: z.ZodType<Sources, z.ZodTypeDef, unknown> =
+  smartUnion([
+    z.lazy(() => Sources2$inboundSchema),
+    z.lazy(() => Sources1$inboundSchema),
+  ]);
+/** @internal */
+export type Sources$Outbound = Sources2$Outbound | Sources1$Outbound;
+
+/** @internal */
+export const Sources$outboundSchema: z.ZodType<
+  Sources$Outbound,
+  z.ZodTypeDef,
+  Sources
+> = smartUnion([
+  z.lazy(() => Sources2$outboundSchema),
+  z.lazy(() => Sources1$outboundSchema),
+]);
+
+export function sourcesToJSON(sources: Sources): string {
+  return JSON.stringify(Sources$outboundSchema.parse(sources));
+}
+export function sourcesFromJSON(
+  jsonString: string,
+): SafeParseResult<Sources, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Sources$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Sources' from JSON`,
+  );
+}
+
+/** @internal */
+export const GitSources$inboundSchema: z.ZodType<
+  GitSources,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  sources: z.array(
+    smartUnion([
+      z.lazy(() => Sources2$inboundSchema),
+      z.lazy(() => Sources1$inboundSchema),
+    ]),
+  ),
+  enabled: types.boolean(),
+});
+/** @internal */
+export type GitSources$Outbound = {
+  sources: Array<Sources2$Outbound | Sources1$Outbound>;
+  enabled: boolean;
+};
+
+/** @internal */
+export const GitSources$outboundSchema: z.ZodType<
+  GitSources$Outbound,
+  z.ZodTypeDef,
+  GitSources
+> = z.object({
+  sources: z.array(
+    smartUnion([
+      z.lazy(() => Sources2$outboundSchema),
+      z.lazy(() => Sources1$outboundSchema),
+    ]),
+  ),
+  enabled: z.boolean(),
+});
+
+export function gitSourcesToJSON(gitSources: GitSources): string {
+  return JSON.stringify(GitSources$outboundSchema.parse(gitSources));
+}
+export function gitSourcesFromJSON(
+  jsonString: string,
+): SafeParseResult<GitSources, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GitSources$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GitSources' from JSON`,
+  );
+}
+
+/** @internal */
+export const TeamSources$inboundSchema: z.ZodNativeEnum<typeof TeamSources> = z
+  .nativeEnum(TeamSources);
+/** @internal */
+export const TeamSources$outboundSchema: z.ZodNativeEnum<typeof TeamSources> =
+  TeamSources$inboundSchema;
+
+/** @internal */
+export const DeploymentSources$inboundSchema: z.ZodType<
+  DeploymentSources,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  sources: z.array(TeamSources$inboundSchema),
+  enabled: types.boolean(),
+});
+/** @internal */
+export type DeploymentSources$Outbound = {
+  sources: Array<string>;
+  enabled: boolean;
+};
+
+/** @internal */
+export const DeploymentSources$outboundSchema: z.ZodType<
+  DeploymentSources$Outbound,
+  z.ZodTypeDef,
+  DeploymentSources
+> = z.object({
+  sources: z.array(TeamSources$outboundSchema),
+  enabled: z.boolean(),
+});
+
+export function deploymentSourcesToJSON(
+  deploymentSources: DeploymentSources,
+): string {
+  return JSON.stringify(
+    DeploymentSources$outboundSchema.parse(deploymentSources),
+  );
+}
+export function deploymentSourcesFromJSON(
+  jsonString: string,
+): SafeParseResult<DeploymentSources, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeploymentSources$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeploymentSources' from JSON`,
+  );
+}
+
+/** @internal */
+export const PublicDeployments$inboundSchema: z.ZodType<
+  PublicDeployments,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  allowPublicDeployments: types.boolean(),
+  enabled: types.boolean(),
+});
+/** @internal */
+export type PublicDeployments$Outbound = {
+  allowPublicDeployments: boolean;
+  enabled: boolean;
+};
+
+/** @internal */
+export const PublicDeployments$outboundSchema: z.ZodType<
+  PublicDeployments$Outbound,
+  z.ZodTypeDef,
+  PublicDeployments
+> = z.object({
+  allowPublicDeployments: z.boolean(),
+  enabled: z.boolean(),
+});
+
+export function publicDeploymentsToJSON(
+  publicDeployments: PublicDeployments,
+): string {
+  return JSON.stringify(
+    PublicDeployments$outboundSchema.parse(publicDeployments),
+  );
+}
+export function publicDeploymentsFromJSON(
+  jsonString: string,
+): SafeParseResult<PublicDeployments, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PublicDeployments$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PublicDeployments' from JSON`,
+  );
+}
+
+/** @internal */
+export const DeploymentPolicy$inboundSchema: z.ZodType<
+  DeploymentPolicy,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  gitSources: types.optional(z.lazy(() => GitSources$inboundSchema)),
+  deploymentSources: types.optional(
+    z.lazy(() => DeploymentSources$inboundSchema),
+  ),
+  publicDeployments: types.optional(
+    z.lazy(() => PublicDeployments$inboundSchema),
+  ),
+});
+/** @internal */
+export type DeploymentPolicy$Outbound = {
+  gitSources?: GitSources$Outbound | undefined;
+  deploymentSources?: DeploymentSources$Outbound | undefined;
+  publicDeployments?: PublicDeployments$Outbound | undefined;
+};
+
+/** @internal */
+export const DeploymentPolicy$outboundSchema: z.ZodType<
+  DeploymentPolicy$Outbound,
+  z.ZodTypeDef,
+  DeploymentPolicy
+> = z.object({
+  gitSources: z.lazy(() => GitSources$outboundSchema).optional(),
+  deploymentSources: z.lazy(() => DeploymentSources$outboundSchema).optional(),
+  publicDeployments: z.lazy(() => PublicDeployments$outboundSchema).optional(),
+});
+
+export function deploymentPolicyToJSON(
+  deploymentPolicy: DeploymentPolicy,
+): string {
+  return JSON.stringify(
+    DeploymentPolicy$outboundSchema.parse(deploymentPolicy),
+  );
+}
+export function deploymentPolicyFromJSON(
+  jsonString: string,
+): SafeParseResult<DeploymentPolicy, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeploymentPolicy$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeploymentPolicy' from JSON`,
+  );
+}
+
+/** @internal */
 export const Entitlements$inboundSchema: z.ZodType<
   Entitlements,
   z.ZodTypeDef,
@@ -1983,6 +2388,9 @@ export const Team$inboundSchema: z.ZodType<Team, z.ZodTypeDef, unknown> =
         z.lazy(() => StrictShareableLinks$inboundSchema),
       ),
       nsnbConfig: types.optional(z.lazy(() => NsnbConfig$inboundSchema)),
+      deploymentPolicy: types.optional(
+        z.lazy(() => DeploymentPolicy$inboundSchema),
+      ),
       personalAccessTokensInvalidatedAt: types.optional(types.number()),
       appTokensInvalidatedAt: types.optional(types.number()),
       apiKeysInvalidatedAt: types.optional(types.number()),
@@ -2031,6 +2439,7 @@ export type Team$Outbound = {
     | undefined;
   strictShareableLinks?: StrictShareableLinks$Outbound | undefined;
   nsnbConfig?: NsnbConfig$Outbound | undefined;
+  deploymentPolicy?: DeploymentPolicy$Outbound | undefined;
   personalAccessTokensInvalidatedAt?: number | undefined;
   appTokensInvalidatedAt?: number | undefined;
   apiKeysInvalidatedAt?: number | undefined;
@@ -2088,6 +2497,7 @@ export const Team$outboundSchema: z.ZodType<Team$Outbound, z.ZodTypeDef, Team> =
     strictShareableLinks: z.lazy(() => StrictShareableLinks$outboundSchema)
       .optional(),
     nsnbConfig: z.lazy(() => NsnbConfig$outboundSchema).optional(),
+    deploymentPolicy: z.lazy(() => DeploymentPolicy$outboundSchema).optional(),
     personalAccessTokensInvalidatedAt: z.number().optional(),
     appTokensInvalidatedAt: z.number().optional(),
     apiKeysInvalidatedAt: z.number().optional(),

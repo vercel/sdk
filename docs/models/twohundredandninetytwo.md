@@ -7,11 +7,15 @@ The payload of the event, if requested.
 ```typescript
 import { TwoHundredAndNinetyTwo } from "@vercel/sdk/models/payloadenvironment.js";
 
-let value: TwoHundredAndNinetyTwo = {};
+let value: TwoHundredAndNinetyTwo = {
+  previousConcurrentBuilds: 3709.71,
+  nextConcurrentBuilds: 8966.71,
+};
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `inviteCode`       | *string*           | :heavy_minus_sign: | N/A                |
+| Field                      | Type                       | Required                   | Description                |
+| -------------------------- | -------------------------- | -------------------------- | -------------------------- |
+| `previousConcurrentBuilds` | *number*                   | :heavy_check_mark:         | N/A                        |
+| `nextConcurrentBuilds`     | *number*                   | :heavy_check_mark:         | N/A                        |

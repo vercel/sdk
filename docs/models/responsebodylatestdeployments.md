@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyLatestDeployments } from "@vercel/sdk/models/responsebodypasswordprotection.js";
+import { ResponseBodyLatestDeployments } from "@vercel/sdk/models/getprojectslinkprojectsresponse200deployhooks.js";
 
 let value: ResponseBodyLatestDeployments = {
   createdAt: 840.06,

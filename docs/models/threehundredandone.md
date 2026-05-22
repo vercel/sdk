@@ -7,19 +7,12 @@ The payload of the event, if requested.
 ```typescript
 import { ThreeHundredAndOne } from "@vercel/sdk/models/payloadenvironment.js";
 
-let value: ThreeHundredAndOne = {
-  exportId: "<id>",
-  from: 5681.15,
-  to: 5179.77,
-  format: "<value>",
-};
+let value: ThreeHundredAndOne = {};
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `exportId`         | *string*           | :heavy_check_mark: | N/A                |
-| `from`             | *number*           | :heavy_check_mark: | N/A                |
-| `to`               | *number*           | :heavy_check_mark: | N/A                |
-| `format`           | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                | Type                                                 | Required                                             | Description                                          |
+| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
+| `previous`                                           | Record<string, *models.UserEventPayload301Previous*> | :heavy_minus_sign:                                   | N/A                                                  |
+| `next`                                               | Record<string, *models.UserEventPayload301Next*>     | :heavy_minus_sign:                                   | N/A                                                  |

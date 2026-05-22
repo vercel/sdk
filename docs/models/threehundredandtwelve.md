@@ -8,7 +8,8 @@ The payload of the event, if requested.
 import { ThreeHundredAndTwelve } from "@vercel/sdk/models/payloadenvironment.js";
 
 let value: ThreeHundredAndTwelve = {
-  ruleName: "<value>",
+  enabled: true,
+  totpVerified: false,
 };
 ```
 
@@ -16,4 +17,5 @@ let value: ThreeHundredAndTwelve = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `ruleName`         | *string*           | :heavy_check_mark: | N/A                |
+| `enabled`          | *boolean*          | :heavy_check_mark: | N/A                |
+| `totpVerified`     | *boolean*          | :heavy_check_mark: | N/A                |

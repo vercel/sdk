@@ -11,5 +11,5 @@ let value: DeploymentSourcesSources = "git";
 ## Values
 
 ```typescript
-"git" | "cli" | "api"
+"git" | "cli" | "rest-api" | "deploy-hook" | "integration"
 ```

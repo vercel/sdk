@@ -8,7 +8,10 @@ The payload of the event, if requested.
 import { ThreeHundredAndTwo } from "@vercel/sdk/models/payloadenvironment.js";
 
 let value: ThreeHundredAndTwo = {
-  fileId: "<id>",
+  domain: "uneven-council.org",
+  ips: [
+    "<value 1>",
+  ],
 };
 ```
 
@@ -16,4 +19,5 @@ let value: ThreeHundredAndTwo = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `fileId`           | *string*           | :heavy_check_mark: | N/A                |
+| `domain`           | *string*           | :heavy_check_mark: | N/A                |
+| `ips`              | *string*[]         | :heavy_check_mark: | N/A                |

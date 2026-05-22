@@ -8,14 +8,12 @@ The payload of the event, if requested.
 import { ThreeHundredAndTwentyOne } from "@vercel/sdk/models/payloadenvironment.js";
 
 let value: ThreeHundredAndTwentyOne = {
-  model: "Sentra",
-  useCase: "<value>",
+  tier: "plus",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `model`            | *string*           | :heavy_check_mark: | N/A                |
-| `useCase`          | *string*           | :heavy_check_mark: | N/A                |
+| Field                            | Type                             | Required                         | Description                      |
+| -------------------------------- | -------------------------------- | -------------------------------- | -------------------------------- |
+| `tier`                           | [models.Tier](../models/tier.md) | :heavy_check_mark:               | N/A                              |

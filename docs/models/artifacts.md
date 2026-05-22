@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Artifacts } from "@vercel/sdk/models/fastorigintransfer.js";
+import { Artifacts } from "@vercel/sdk/models/edgemiddlewareinvocations.js";
 
 let value: Artifacts = {
   currentThreshold: 4601.52,

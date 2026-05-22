@@ -99,6 +99,7 @@ async function $do(
   const query = encodeFormQuery({
     "host": payload.host,
     "provider": payload.provider,
+    "viewerMetadata": payload.viewerMetadata,
   });
 
   const headers = new Headers(compactMap({

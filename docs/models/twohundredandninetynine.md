@@ -8,16 +8,12 @@ The payload of the event, if requested.
 import { TwoHundredAndNinetyNine } from "@vercel/sdk/models/payloadenvironment.js";
 
 let value: TwoHundredAndNinetyNine = {
-  domain: "wide-eyed-assist.name",
-  ips: [
-    "<value 1>",
-  ],
+  enabled: "off",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `domain`           | *string*           | :heavy_check_mark: | N/A                |
-| `ips`              | *string*[]         | :heavy_check_mark: | N/A                |
+| Field                                                | Type                                                 | Required                                             | Description                                          |
+| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
+| `enabled`                                            | [models.PayloadEnabled](../models/payloadenabled.md) | :heavy_check_mark:                                   | N/A                                                  |

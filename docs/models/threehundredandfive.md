@@ -8,7 +8,9 @@ The payload of the event, if requested.
 import { ThreeHundredAndFive } from "@vercel/sdk/models/payloadenvironment.js";
 
 let value: ThreeHundredAndFive = {
-  fileId: "<id>",
+  tokenTypes: [
+    "<value 1>",
+  ],
 };
 ```
 
@@ -16,4 +18,4 @@ let value: ThreeHundredAndFive = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `fileId`           | *string*           | :heavy_check_mark: | N/A                |
+| `tokenTypes`       | *string*[]         | :heavy_check_mark: | N/A                |

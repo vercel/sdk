@@ -9,8 +9,9 @@ import { OneHundredAndFortyEight } from "@vercel/sdk/models/edgemiddlewareinvoca
 
 let value: OneHundredAndFortyEight = {
   projectId: "<id>",
-  type: "script",
-  resourceUrl: "https://dead-lace.info/",
+  url: "https://dead-lace.info/",
+  previousStatus: "<value>",
+  justification: "<value>",
 };
 ```
 
@@ -19,5 +20,7 @@ let value: OneHundredAndFortyEight = {
 | Field                                                            | Type                                                             | Required                                                         | Description                                                      |
 | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
 | `projectId`                                                      | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
-| `type`                                                           | [models.UserEventPayloadType](../models/usereventpayloadtype.md) | :heavy_check_mark:                                               | N/A                                                              |
-| `resourceUrl`                                                    | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
+| `url`                                                            | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
+| `previousStatus`                                                 | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
+| `justification`                                                  | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
+| `kind`                                                           | [models.UserEventPayloadKind](../models/usereventpayloadkind.md) | :heavy_minus_sign:                                               | N/A                                                              |

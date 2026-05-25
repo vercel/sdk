@@ -223,12 +223,15 @@ export type CreateDrainResponseBodyDrainsSpeedInsights = {};
 
 export type ResponseBodyAiGateway = {};
 
+export type ResponseBodyAuditLog = {};
+
 export type CreateDrainResponseBodySchemas = {
   log?: CreateDrainResponseBodyLog | undefined;
   trace?: ResponseBodyTrace | undefined;
   analytics?: CreateDrainResponseBodyDrainsAnalytics | undefined;
   speedInsights?: CreateDrainResponseBodyDrainsSpeedInsights | undefined;
   aiGateway?: ResponseBodyAiGateway | undefined;
+  auditLog?: ResponseBodyAuditLog | undefined;
 };
 
 export const CreateDrainDeliveryTarget = {
@@ -509,12 +512,15 @@ export type CreateDrainResponseBodySpeedInsights = {};
 
 export type AiGateway = {};
 
+export type AuditLog = {};
+
 export type ResponseBodySchemas = {
   log?: ResponseBodyLog | undefined;
   trace?: Trace | undefined;
   analytics?: CreateDrainResponseBodyAnalytics | undefined;
   speedInsights?: CreateDrainResponseBodySpeedInsights | undefined;
   aiGateway?: AiGateway | undefined;
+  auditLog?: AuditLog | undefined;
 };
 
 export const DeliveryTarget = {
@@ -1965,6 +1971,39 @@ export function responseBodyAiGatewayFromJSON(
 }
 
 /** @internal */
+export const ResponseBodyAuditLog$inboundSchema: z.ZodType<
+  ResponseBodyAuditLog,
+  z.ZodTypeDef,
+  unknown
+> = z.object({});
+/** @internal */
+export type ResponseBodyAuditLog$Outbound = {};
+
+/** @internal */
+export const ResponseBodyAuditLog$outboundSchema: z.ZodType<
+  ResponseBodyAuditLog$Outbound,
+  z.ZodTypeDef,
+  ResponseBodyAuditLog
+> = z.object({});
+
+export function responseBodyAuditLogToJSON(
+  responseBodyAuditLog: ResponseBodyAuditLog,
+): string {
+  return JSON.stringify(
+    ResponseBodyAuditLog$outboundSchema.parse(responseBodyAuditLog),
+  );
+}
+export function responseBodyAuditLogFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodyAuditLog, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodyAuditLog$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyAuditLog' from JSON`,
+  );
+}
+
+/** @internal */
 export const CreateDrainResponseBodySchemas$inboundSchema: z.ZodType<
   CreateDrainResponseBodySchemas,
   z.ZodTypeDef,
@@ -1979,10 +2018,12 @@ export const CreateDrainResponseBodySchemas$inboundSchema: z.ZodType<
     z.lazy(() => CreateDrainResponseBodyDrainsSpeedInsights$inboundSchema),
   ),
   ai_gateway: types.optional(z.lazy(() => ResponseBodyAiGateway$inboundSchema)),
+  audit_log: types.optional(z.lazy(() => ResponseBodyAuditLog$inboundSchema)),
 }).transform((v) => {
   return remap$(v, {
     "speed_insights": "speedInsights",
     "ai_gateway": "aiGateway",
+    "audit_log": "auditLog",
   });
 });
 /** @internal */
@@ -1994,6 +2035,7 @@ export type CreateDrainResponseBodySchemas$Outbound = {
     | CreateDrainResponseBodyDrainsSpeedInsights$Outbound
     | undefined;
   ai_gateway?: ResponseBodyAiGateway$Outbound | undefined;
+  audit_log?: ResponseBodyAuditLog$Outbound | undefined;
 };
 
 /** @internal */
@@ -2010,10 +2052,12 @@ export const CreateDrainResponseBodySchemas$outboundSchema: z.ZodType<
     CreateDrainResponseBodyDrainsSpeedInsights$outboundSchema
   ).optional(),
   aiGateway: z.lazy(() => ResponseBodyAiGateway$outboundSchema).optional(),
+  auditLog: z.lazy(() => ResponseBodyAuditLog$outboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     speedInsights: "speed_insights",
     aiGateway: "ai_gateway",
+    auditLog: "audit_log",
   });
 });
 
@@ -3658,6 +3702,35 @@ export function aiGatewayFromJSON(
 }
 
 /** @internal */
+export const AuditLog$inboundSchema: z.ZodType<
+  AuditLog,
+  z.ZodTypeDef,
+  unknown
+> = z.object({});
+/** @internal */
+export type AuditLog$Outbound = {};
+
+/** @internal */
+export const AuditLog$outboundSchema: z.ZodType<
+  AuditLog$Outbound,
+  z.ZodTypeDef,
+  AuditLog
+> = z.object({});
+
+export function auditLogToJSON(auditLog: AuditLog): string {
+  return JSON.stringify(AuditLog$outboundSchema.parse(auditLog));
+}
+export function auditLogFromJSON(
+  jsonString: string,
+): SafeParseResult<AuditLog, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AuditLog$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AuditLog' from JSON`,
+  );
+}
+
+/** @internal */
 export const ResponseBodySchemas$inboundSchema: z.ZodType<
   ResponseBodySchemas,
   z.ZodTypeDef,
@@ -3672,10 +3745,12 @@ export const ResponseBodySchemas$inboundSchema: z.ZodType<
     z.lazy(() => CreateDrainResponseBodySpeedInsights$inboundSchema),
   ),
   ai_gateway: types.optional(z.lazy(() => AiGateway$inboundSchema)),
+  audit_log: types.optional(z.lazy(() => AuditLog$inboundSchema)),
 }).transform((v) => {
   return remap$(v, {
     "speed_insights": "speedInsights",
     "ai_gateway": "aiGateway",
+    "audit_log": "auditLog",
   });
 });
 /** @internal */
@@ -3685,6 +3760,7 @@ export type ResponseBodySchemas$Outbound = {
   analytics?: CreateDrainResponseBodyAnalytics$Outbound | undefined;
   speed_insights?: CreateDrainResponseBodySpeedInsights$Outbound | undefined;
   ai_gateway?: AiGateway$Outbound | undefined;
+  audit_log?: AuditLog$Outbound | undefined;
 };
 
 /** @internal */
@@ -3701,10 +3777,12 @@ export const ResponseBodySchemas$outboundSchema: z.ZodType<
     CreateDrainResponseBodySpeedInsights$outboundSchema
   ).optional(),
   aiGateway: z.lazy(() => AiGateway$outboundSchema).optional(),
+  auditLog: z.lazy(() => AuditLog$outboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     speedInsights: "speed_insights",
     aiGateway: "ai_gateway",
+    auditLog: "audit_log",
   });
 });
 

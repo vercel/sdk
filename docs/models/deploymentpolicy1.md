@@ -5,7 +5,7 @@ Composable deployment-time policy. Each rule key controls an independent restric
 ## Example Usage
 
 ```typescript
-import { DeploymentPolicy1 } from "@vercel/sdk/models/updateprojectprojectsresponsebuildmachineselection.js";
+import { DeploymentPolicy1 } from "@vercel/sdk/models/updateprojectprojectsresponsebuildqueue.js";
 
 let value: DeploymentPolicy1 = {};
 ```
@@ -16,4 +16,3 @@ let value: DeploymentPolicy1 = {};
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
 | `gitSources`                               | *models.DeploymentPolicyGitSources*        | :heavy_minus_sign:                         | N/A                                        |
 | `deploymentSources`                        | *models.DeploymentPolicyDeploymentSources* | :heavy_minus_sign:                         | N/A                                        |
-| `publicDeployments`                        | *models.DeploymentPolicyPublicDeployments* | :heavy_minus_sign:                         | N/A                                        |

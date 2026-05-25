@@ -1,19 +1,16 @@
 # UserEventPayload276Previous
 
-
-## Supported Types
-
-### `models.Previous1`
+## Example Usage
 
 ```typescript
-const value: models.Previous1 = {
-  accessGroupId: "<id>",
-};
+import { UserEventPayload276Previous } from "@vercel/sdk/models/twohundredandtwentysix.js";
+
+let value: UserEventPayload276Previous = {};
 ```
 
-### `models.Previous2`
+## Fields
 
-```typescript
-const value: models.Previous2 = "OWNER";
-```
-
+| Field                                                                                      | Type                                                                                       | Required                                                                                   | Description                                                                                |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| `gitSources`                                                                               | [models.UserEventPayloadGitSources](../models/usereventpayloadgitsources.md)               | :heavy_minus_sign:                                                                         | N/A                                                                                        |
+| `deploymentSources`                                                                        | [models.UserEventPayloadDeploymentSources](../models/usereventpayloaddeploymentsources.md) | :heavy_minus_sign:                                                                         | N/A                                                                                        |

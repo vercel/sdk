@@ -5,7 +5,7 @@ Restricts which deployment sources are allowed. A deployment passes if its sourc
 ## Example Usage
 
 ```typescript
-import { ResponseBodyDeploymentSources } from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponse200applicationjsoncreator.js";
+import { ResponseBodyDeploymentSources } from "@vercel/sdk/models/getprojectsresponsebodytargets.js";
 
 let value: ResponseBodyDeploymentSources = {
   sources: [

@@ -15,7 +15,6 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
  * The framework that is being used for this project. When `null` is used no framework is selected
  */
 export const UpdateProjectFramework = {
-  Services: "services",
   Blitzjs: "blitzjs",
   Nextjs: "nextjs",
   Gatsby: "gatsby",
@@ -63,6 +62,7 @@ export const UpdateProjectFramework = {
   Flask: "flask",
   Fasthtml: "fasthtml",
   Django: "django",
+  Ash: "ash",
   SanityV3: "sanity-v3",
   Sanity: "sanity",
   Storybook: "storybook",
@@ -82,6 +82,7 @@ export const UpdateProjectFramework = {
   ActixWeb: "actix-web",
   Node: "node",
   Go: "go",
+  Services: "services",
   Mastra: "mastra",
 } as const;
 /**
@@ -508,7 +509,9 @@ export type DeploymentPolicyGitSources = GitSources1 | string;
 export const DeploymentSourcesSources = {
   Git: "git",
   Cli: "cli",
-  Api: "api",
+  RestApi: "rest-api",
+  DeployHook: "deploy-hook",
+  Integration: "integration",
 } as const;
 export type DeploymentSourcesSources = ClosedEnum<
   typeof DeploymentSourcesSources
@@ -521,23 +524,15 @@ export type DeploymentSources1 = {
 
 export type DeploymentPolicyDeploymentSources = DeploymentSources1 | string;
 
-export type PublicDeployments1 = {
-  enabled: boolean;
-  allowPublicDeployments: boolean;
-};
-
-export type DeploymentPolicyPublicDeployments = PublicDeployments1 | string;
-
 /**
  * Composable deployment-time policy. Each rule key controls an independent restriction.
  */
 export type DeploymentPolicy1 = {
   gitSources?: GitSources1 | string | undefined;
   deploymentSources?: DeploymentSources1 | string | undefined;
-  publicDeployments?: PublicDeployments1 | string | undefined;
 };
 
-export type DeploymentPolicy = DeploymentPolicy1 | string;
+export type UpdateProjectDeploymentPolicy = DeploymentPolicy1 | string;
 
 export type UpdateProjectPaths = {
   /**
@@ -916,20 +911,27 @@ export type UpdateProjectDeploymentExpiration = {
   deploymentsToKeep?: number | undefined;
 };
 
-export type UpdateProjectExpiration = {
-  /**
-   * Unix ms timestamp when the project is scheduled to expire. Absent when the project is locked without a pending schedule.
-   */
-  expiresAt?: number | undefined;
+export type UpdateProjectExpiration2 = {
   /**
    * Unix ms timestamp when the project was locked.
    */
-  lockedAt?: number | undefined;
+  lockedAt: number;
   /**
    * userId of the actor that triggered the lock (system or admin).
    */
-  lockedBy?: string | undefined;
+  lockedBy: string;
 };
+
+export type UpdateProjectExpiration1 = {
+  /**
+   * Unix ms timestamp when the project is scheduled to expire.
+   */
+  expiresAt: number;
+};
+
+export type UpdateProjectExpiration =
+  | UpdateProjectExpiration2
+  | UpdateProjectExpiration1;
 
 export const UpdateProjectTarget2 = {
   Production: "production",
@@ -941,11 +943,11 @@ export type UpdateProjectTarget2 = ClosedEnum<typeof UpdateProjectTarget2>;
 export type UpdateProjectTarget = Array<string> | UpdateProjectTarget2;
 
 export const UpdateProjectType = {
-  Secret: "secret",
   System: "system",
   Encrypted: "encrypted",
   Plain: "plain",
   Sensitive: "sensitive",
+  Secret: "secret",
 } as const;
 export type UpdateProjectType = ClosedEnum<typeof UpdateProjectType>;
 
@@ -1246,7 +1248,6 @@ export type UpdateProjectCustomEnvironments = {
 };
 
 export const UpdateProjectProjectsFramework = {
-  Services: "services",
   Blitzjs: "blitzjs",
   Nextjs: "nextjs",
   Gatsby: "gatsby",
@@ -1294,6 +1295,7 @@ export const UpdateProjectProjectsFramework = {
   Flask: "flask",
   Fasthtml: "fasthtml",
   Django: "django",
+  Ash: "ash",
   SanityV3: "sanity-v3",
   Sanity: "sanity",
   Storybook: "storybook",
@@ -1313,6 +1315,7 @@ export const UpdateProjectProjectsFramework = {
   ActixWeb: "actix-web",
   Node: "node",
   Go: "go",
+  Services: "services",
   Mastra: "mastra",
 } as const;
 export type UpdateProjectProjectsFramework = ClosedEnum<
@@ -3114,88 +3117,6 @@ export function deploymentPolicyDeploymentSourcesFromJSON(
 }
 
 /** @internal */
-export const PublicDeployments1$inboundSchema: z.ZodType<
-  PublicDeployments1,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  enabled: types.boolean(),
-  allowPublicDeployments: types.boolean(),
-});
-/** @internal */
-export type PublicDeployments1$Outbound = {
-  enabled: boolean;
-  allowPublicDeployments: boolean;
-};
-
-/** @internal */
-export const PublicDeployments1$outboundSchema: z.ZodType<
-  PublicDeployments1$Outbound,
-  z.ZodTypeDef,
-  PublicDeployments1
-> = z.object({
-  enabled: z.boolean(),
-  allowPublicDeployments: z.boolean(),
-});
-
-export function publicDeployments1ToJSON(
-  publicDeployments1: PublicDeployments1,
-): string {
-  return JSON.stringify(
-    PublicDeployments1$outboundSchema.parse(publicDeployments1),
-  );
-}
-export function publicDeployments1FromJSON(
-  jsonString: string,
-): SafeParseResult<PublicDeployments1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PublicDeployments1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PublicDeployments1' from JSON`,
-  );
-}
-
-/** @internal */
-export const DeploymentPolicyPublicDeployments$inboundSchema: z.ZodType<
-  DeploymentPolicyPublicDeployments,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([
-  z.lazy(() => PublicDeployments1$inboundSchema),
-  types.string(),
-]);
-/** @internal */
-export type DeploymentPolicyPublicDeployments$Outbound =
-  | PublicDeployments1$Outbound
-  | string;
-
-/** @internal */
-export const DeploymentPolicyPublicDeployments$outboundSchema: z.ZodType<
-  DeploymentPolicyPublicDeployments$Outbound,
-  z.ZodTypeDef,
-  DeploymentPolicyPublicDeployments
-> = smartUnion([z.lazy(() => PublicDeployments1$outboundSchema), z.string()]);
-
-export function deploymentPolicyPublicDeploymentsToJSON(
-  deploymentPolicyPublicDeployments: DeploymentPolicyPublicDeployments,
-): string {
-  return JSON.stringify(
-    DeploymentPolicyPublicDeployments$outboundSchema.parse(
-      deploymentPolicyPublicDeployments,
-    ),
-  );
-}
-export function deploymentPolicyPublicDeploymentsFromJSON(
-  jsonString: string,
-): SafeParseResult<DeploymentPolicyPublicDeployments, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => DeploymentPolicyPublicDeployments$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DeploymentPolicyPublicDeployments' from JSON`,
-  );
-}
-
-/** @internal */
 export const DeploymentPolicy1$inboundSchema: z.ZodType<
   DeploymentPolicy1,
   z.ZodTypeDef,
@@ -3210,18 +3131,11 @@ export const DeploymentPolicy1$inboundSchema: z.ZodType<
       types.string(),
     ]),
   ),
-  publicDeployments: types.optional(
-    smartUnion([
-      z.lazy(() => PublicDeployments1$inboundSchema),
-      types.string(),
-    ]),
-  ),
 });
 /** @internal */
 export type DeploymentPolicy1$Outbound = {
   gitSources?: GitSources1$Outbound | string | undefined;
   deploymentSources?: DeploymentSources1$Outbound | string | undefined;
-  publicDeployments?: PublicDeployments1$Outbound | string | undefined;
 };
 
 /** @internal */
@@ -3234,10 +3148,6 @@ export const DeploymentPolicy1$outboundSchema: z.ZodType<
     .optional(),
   deploymentSources: smartUnion([
     z.lazy(() => DeploymentSources1$outboundSchema),
-    z.string(),
-  ]).optional(),
-  publicDeployments: smartUnion([
-    z.lazy(() => PublicDeployments1$outboundSchema),
     z.string(),
   ]).optional(),
 });
@@ -3260,35 +3170,39 @@ export function deploymentPolicy1FromJSON(
 }
 
 /** @internal */
-export const DeploymentPolicy$inboundSchema: z.ZodType<
-  DeploymentPolicy,
+export const UpdateProjectDeploymentPolicy$inboundSchema: z.ZodType<
+  UpdateProjectDeploymentPolicy,
   z.ZodTypeDef,
   unknown
 > = smartUnion([z.lazy(() => DeploymentPolicy1$inboundSchema), types.string()]);
 /** @internal */
-export type DeploymentPolicy$Outbound = DeploymentPolicy1$Outbound | string;
+export type UpdateProjectDeploymentPolicy$Outbound =
+  | DeploymentPolicy1$Outbound
+  | string;
 
 /** @internal */
-export const DeploymentPolicy$outboundSchema: z.ZodType<
-  DeploymentPolicy$Outbound,
+export const UpdateProjectDeploymentPolicy$outboundSchema: z.ZodType<
+  UpdateProjectDeploymentPolicy$Outbound,
   z.ZodTypeDef,
-  DeploymentPolicy
+  UpdateProjectDeploymentPolicy
 > = smartUnion([z.lazy(() => DeploymentPolicy1$outboundSchema), z.string()]);
 
-export function deploymentPolicyToJSON(
-  deploymentPolicy: DeploymentPolicy,
+export function updateProjectDeploymentPolicyToJSON(
+  updateProjectDeploymentPolicy: UpdateProjectDeploymentPolicy,
 ): string {
   return JSON.stringify(
-    DeploymentPolicy$outboundSchema.parse(deploymentPolicy),
+    UpdateProjectDeploymentPolicy$outboundSchema.parse(
+      updateProjectDeploymentPolicy,
+    ),
   );
 }
-export function deploymentPolicyFromJSON(
+export function updateProjectDeploymentPolicyFromJSON(
   jsonString: string,
-): SafeParseResult<DeploymentPolicy, SDKValidationError> {
+): SafeParseResult<UpdateProjectDeploymentPolicy, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => DeploymentPolicy$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DeploymentPolicy' from JSON`,
+    (x) => UpdateProjectDeploymentPolicy$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectDeploymentPolicy' from JSON`,
   );
 }
 
@@ -4377,32 +4291,109 @@ export function updateProjectDeploymentExpirationFromJSON(
 }
 
 /** @internal */
+export const UpdateProjectExpiration2$inboundSchema: z.ZodType<
+  UpdateProjectExpiration2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  lockedAt: types.number(),
+  lockedBy: types.string(),
+});
+/** @internal */
+export type UpdateProjectExpiration2$Outbound = {
+  lockedAt: number;
+  lockedBy: string;
+};
+
+/** @internal */
+export const UpdateProjectExpiration2$outboundSchema: z.ZodType<
+  UpdateProjectExpiration2$Outbound,
+  z.ZodTypeDef,
+  UpdateProjectExpiration2
+> = z.object({
+  lockedAt: z.number(),
+  lockedBy: z.string(),
+});
+
+export function updateProjectExpiration2ToJSON(
+  updateProjectExpiration2: UpdateProjectExpiration2,
+): string {
+  return JSON.stringify(
+    UpdateProjectExpiration2$outboundSchema.parse(updateProjectExpiration2),
+  );
+}
+export function updateProjectExpiration2FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectExpiration2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectExpiration2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectExpiration2' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateProjectExpiration1$inboundSchema: z.ZodType<
+  UpdateProjectExpiration1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  expiresAt: types.number(),
+});
+/** @internal */
+export type UpdateProjectExpiration1$Outbound = {
+  expiresAt: number;
+};
+
+/** @internal */
+export const UpdateProjectExpiration1$outboundSchema: z.ZodType<
+  UpdateProjectExpiration1$Outbound,
+  z.ZodTypeDef,
+  UpdateProjectExpiration1
+> = z.object({
+  expiresAt: z.number(),
+});
+
+export function updateProjectExpiration1ToJSON(
+  updateProjectExpiration1: UpdateProjectExpiration1,
+): string {
+  return JSON.stringify(
+    UpdateProjectExpiration1$outboundSchema.parse(updateProjectExpiration1),
+  );
+}
+export function updateProjectExpiration1FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectExpiration1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectExpiration1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectExpiration1' from JSON`,
+  );
+}
+
+/** @internal */
 export const UpdateProjectExpiration$inboundSchema: z.ZodType<
   UpdateProjectExpiration,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  expiresAt: types.optional(types.number()),
-  lockedAt: types.optional(types.number()),
-  lockedBy: types.optional(types.string()),
-});
+> = smartUnion([
+  z.lazy(() => UpdateProjectExpiration2$inboundSchema),
+  z.lazy(() => UpdateProjectExpiration1$inboundSchema),
+]);
 /** @internal */
-export type UpdateProjectExpiration$Outbound = {
-  expiresAt?: number | undefined;
-  lockedAt?: number | undefined;
-  lockedBy?: string | undefined;
-};
+export type UpdateProjectExpiration$Outbound =
+  | UpdateProjectExpiration2$Outbound
+  | UpdateProjectExpiration1$Outbound;
 
 /** @internal */
 export const UpdateProjectExpiration$outboundSchema: z.ZodType<
   UpdateProjectExpiration$Outbound,
   z.ZodTypeDef,
   UpdateProjectExpiration
-> = z.object({
-  expiresAt: z.number().optional(),
-  lockedAt: z.number().optional(),
-  lockedBy: z.string().optional(),
-});
+> = smartUnion([
+  z.lazy(() => UpdateProjectExpiration2$outboundSchema),
+  z.lazy(() => UpdateProjectExpiration1$outboundSchema),
+]);
 
 export function updateProjectExpirationToJSON(
   updateProjectExpiration: UpdateProjectExpiration,

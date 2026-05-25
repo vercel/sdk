@@ -8,7 +8,8 @@ The payload of the event, if requested.
 import { ThreeHundredAndFifteen } from "@vercel/sdk/models/payloadenvironment.js";
 
 let value: ThreeHundredAndFifteen = {
-  ruleName: "<value>",
+  email: "Mattie.Hayes@gmail.com",
+  prevEmail: "<value>",
 };
 ```
 
@@ -16,4 +17,5 @@ let value: ThreeHundredAndFifteen = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `ruleName`         | *string*           | :heavy_check_mark: | N/A                |
+| `email`            | *string*           | :heavy_check_mark: | N/A                |
+| `prevEmail`        | *string*           | :heavy_check_mark: | N/A                |

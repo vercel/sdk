@@ -101,7 +101,7 @@ import {
   UpdateProjectDomainRequest,
   UpdateProjectDomainResponseBody,
 } from "../models/updateprojectdomainop.js";
-import { UpdateProjectRequest } from "../models/updateprojectprojectsresponsebuildmachineselection.js";
+import { UpdateProjectRequest } from "../models/updateprojectprojectsresponsebuildqueue.js";
 import {
   UpdateProjectProtectionBypassRequest,
   UpdateProjectProtectionBypassResponseBody,

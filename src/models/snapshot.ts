@@ -13,9 +13,9 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
  * The status of the snapshot.
  */
 export const SnapshotStatus = {
-  Failed: "failed",
   Created: "created",
   Deleted: "deleted",
+  Failed: "failed",
 } as const;
 /**
  * The status of the snapshot.

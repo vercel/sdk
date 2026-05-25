@@ -21,16 +21,18 @@ export type StatusRequest = {
   slug?: string | undefined;
 };
 
-export const ResponseBodyStatus = {
+export const StatusResponseBodyStatus = {
   Disabled: "disabled",
   Enabled: "enabled",
   OverLimit: "over_limit",
   Paused: "paused",
 } as const;
-export type ResponseBodyStatus = ClosedEnum<typeof ResponseBodyStatus>;
+export type StatusResponseBodyStatus = ClosedEnum<
+  typeof StatusResponseBodyStatus
+>;
 
 export type ResponseBody2 = {
-  status: ResponseBodyStatus;
+  status: StatusResponseBodyStatus;
 };
 
 export type ResponseBody1 = {
@@ -78,13 +80,13 @@ export function statusRequestFromJSON(
 }
 
 /** @internal */
-export const ResponseBodyStatus$inboundSchema: z.ZodNativeEnum<
-  typeof ResponseBodyStatus
-> = z.nativeEnum(ResponseBodyStatus);
+export const StatusResponseBodyStatus$inboundSchema: z.ZodNativeEnum<
+  typeof StatusResponseBodyStatus
+> = z.nativeEnum(StatusResponseBodyStatus);
 /** @internal */
-export const ResponseBodyStatus$outboundSchema: z.ZodNativeEnum<
-  typeof ResponseBodyStatus
-> = ResponseBodyStatus$inboundSchema;
+export const StatusResponseBodyStatus$outboundSchema: z.ZodNativeEnum<
+  typeof StatusResponseBodyStatus
+> = StatusResponseBodyStatus$inboundSchema;
 
 /** @internal */
 export const ResponseBody2$inboundSchema: z.ZodType<
@@ -92,7 +94,7 @@ export const ResponseBody2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  status: ResponseBodyStatus$inboundSchema,
+  status: StatusResponseBodyStatus$inboundSchema,
 });
 /** @internal */
 export type ResponseBody2$Outbound = {
@@ -105,7 +107,7 @@ export const ResponseBody2$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ResponseBody2
 > = z.object({
-  status: ResponseBodyStatus$outboundSchema,
+  status: StatusResponseBodyStatus$outboundSchema,
 });
 
 export function responseBody2ToJSON(responseBody2: ResponseBody2): string {

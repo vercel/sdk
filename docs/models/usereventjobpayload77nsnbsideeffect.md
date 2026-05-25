@@ -5,7 +5,7 @@ Since March 2026 Records a successful NSNB auto-add result so later GitHub PR co
 ## Example Usage
 
 ```typescript
-import { UserEventJobPayload77NsnbSideEffect } from "@vercel/sdk/models/thirtyfive.js";
+import { UserEventJobPayload77NsnbSideEffect } from "@vercel/sdk/models/resources.js";
 
 let value: UserEventJobPayload77NsnbSideEffect = {
   action: "auto-approved-member",

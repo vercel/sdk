@@ -54,12 +54,15 @@ export type GetAllLogDrainsDrainsSpeedInsights = {};
 
 export type GetAllLogDrainsDrainsLogDrainsAiGateway = {};
 
+export type GetAllLogDrainsDrainsLogDrainsAuditLog = {};
+
 export type GetAllLogDrainsDrainsLogDrainsSchemas = {
   log?: GetAllLogDrainsDrainsLogDrainsLog | undefined;
   trace?: GetAllLogDrainsDrainsLogDrainsTrace | undefined;
   analytics?: GetAllLogDrainsDrainsLogDrainsAnalytics | undefined;
   speedInsights?: GetAllLogDrainsDrainsSpeedInsights | undefined;
   aiGateway?: GetAllLogDrainsDrainsLogDrainsAiGateway | undefined;
+  auditLog?: GetAllLogDrainsDrainsLogDrainsAuditLog | undefined;
 };
 
 export const GetAllLogDrainsDeliveryTarget = {
@@ -354,12 +357,15 @@ export type GetAllLogDrainsDrainsLogDrainsSpeedInsights = {};
 
 export type GetAllLogDrainsDrainsAiGateway = {};
 
+export type GetAllLogDrainsDrainsAuditLog = {};
+
 export type GetAllLogDrainsDrainsSchemas = {
   log?: GetAllLogDrainsDrainsLog | undefined;
   trace?: GetAllLogDrainsDrainsTrace | undefined;
   analytics?: GetAllLogDrainsDrainsAnalytics | undefined;
   speedInsights?: GetAllLogDrainsDrainsLogDrainsSpeedInsights | undefined;
   aiGateway?: GetAllLogDrainsDrainsAiGateway | undefined;
+  auditLog?: GetAllLogDrainsDrainsAuditLog | undefined;
 };
 
 export const GetAllLogDrainsDeliveryLogDrainsTarget = {
@@ -955,6 +961,43 @@ export function getAllLogDrainsDrainsLogDrainsAiGatewayFromJSON(
 }
 
 /** @internal */
+export const GetAllLogDrainsDrainsLogDrainsAuditLog$inboundSchema: z.ZodType<
+  GetAllLogDrainsDrainsLogDrainsAuditLog,
+  z.ZodTypeDef,
+  unknown
+> = z.object({});
+/** @internal */
+export type GetAllLogDrainsDrainsLogDrainsAuditLog$Outbound = {};
+
+/** @internal */
+export const GetAllLogDrainsDrainsLogDrainsAuditLog$outboundSchema: z.ZodType<
+  GetAllLogDrainsDrainsLogDrainsAuditLog$Outbound,
+  z.ZodTypeDef,
+  GetAllLogDrainsDrainsLogDrainsAuditLog
+> = z.object({});
+
+export function getAllLogDrainsDrainsLogDrainsAuditLogToJSON(
+  getAllLogDrainsDrainsLogDrainsAuditLog:
+    GetAllLogDrainsDrainsLogDrainsAuditLog,
+): string {
+  return JSON.stringify(
+    GetAllLogDrainsDrainsLogDrainsAuditLog$outboundSchema.parse(
+      getAllLogDrainsDrainsLogDrainsAuditLog,
+    ),
+  );
+}
+export function getAllLogDrainsDrainsLogDrainsAuditLogFromJSON(
+  jsonString: string,
+): SafeParseResult<GetAllLogDrainsDrainsLogDrainsAuditLog, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetAllLogDrainsDrainsLogDrainsAuditLog$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAllLogDrainsDrainsLogDrainsAuditLog' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetAllLogDrainsDrainsLogDrainsSchemas$inboundSchema: z.ZodType<
   GetAllLogDrainsDrainsLogDrainsSchemas,
   z.ZodTypeDef,
@@ -975,10 +1018,14 @@ export const GetAllLogDrainsDrainsLogDrainsSchemas$inboundSchema: z.ZodType<
   ai_gateway: types.optional(
     z.lazy(() => GetAllLogDrainsDrainsLogDrainsAiGateway$inboundSchema),
   ),
+  audit_log: types.optional(
+    z.lazy(() => GetAllLogDrainsDrainsLogDrainsAuditLog$inboundSchema),
+  ),
 }).transform((v) => {
   return remap$(v, {
     "speed_insights": "speedInsights",
     "ai_gateway": "aiGateway",
+    "audit_log": "auditLog",
   });
 });
 /** @internal */
@@ -988,6 +1035,7 @@ export type GetAllLogDrainsDrainsLogDrainsSchemas$Outbound = {
   analytics?: GetAllLogDrainsDrainsLogDrainsAnalytics$Outbound | undefined;
   speed_insights?: GetAllLogDrainsDrainsSpeedInsights$Outbound | undefined;
   ai_gateway?: GetAllLogDrainsDrainsLogDrainsAiGateway$Outbound | undefined;
+  audit_log?: GetAllLogDrainsDrainsLogDrainsAuditLog$Outbound | undefined;
 };
 
 /** @internal */
@@ -1008,10 +1056,13 @@ export const GetAllLogDrainsDrainsLogDrainsSchemas$outboundSchema: z.ZodType<
   aiGateway: z.lazy(() =>
     GetAllLogDrainsDrainsLogDrainsAiGateway$outboundSchema
   ).optional(),
+  auditLog: z.lazy(() => GetAllLogDrainsDrainsLogDrainsAuditLog$outboundSchema)
+    .optional(),
 }).transform((v) => {
   return remap$(v, {
     speedInsights: "speed_insights",
     aiGateway: "ai_gateway",
+    auditLog: "audit_log",
   });
 });
 
@@ -2735,6 +2786,41 @@ export function getAllLogDrainsDrainsAiGatewayFromJSON(
 }
 
 /** @internal */
+export const GetAllLogDrainsDrainsAuditLog$inboundSchema: z.ZodType<
+  GetAllLogDrainsDrainsAuditLog,
+  z.ZodTypeDef,
+  unknown
+> = z.object({});
+/** @internal */
+export type GetAllLogDrainsDrainsAuditLog$Outbound = {};
+
+/** @internal */
+export const GetAllLogDrainsDrainsAuditLog$outboundSchema: z.ZodType<
+  GetAllLogDrainsDrainsAuditLog$Outbound,
+  z.ZodTypeDef,
+  GetAllLogDrainsDrainsAuditLog
+> = z.object({});
+
+export function getAllLogDrainsDrainsAuditLogToJSON(
+  getAllLogDrainsDrainsAuditLog: GetAllLogDrainsDrainsAuditLog,
+): string {
+  return JSON.stringify(
+    GetAllLogDrainsDrainsAuditLog$outboundSchema.parse(
+      getAllLogDrainsDrainsAuditLog,
+    ),
+  );
+}
+export function getAllLogDrainsDrainsAuditLogFromJSON(
+  jsonString: string,
+): SafeParseResult<GetAllLogDrainsDrainsAuditLog, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetAllLogDrainsDrainsAuditLog$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAllLogDrainsDrainsAuditLog' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetAllLogDrainsDrainsSchemas$inboundSchema: z.ZodType<
   GetAllLogDrainsDrainsSchemas,
   z.ZodTypeDef,
@@ -2751,10 +2837,14 @@ export const GetAllLogDrainsDrainsSchemas$inboundSchema: z.ZodType<
   ai_gateway: types.optional(
     z.lazy(() => GetAllLogDrainsDrainsAiGateway$inboundSchema),
   ),
+  audit_log: types.optional(
+    z.lazy(() => GetAllLogDrainsDrainsAuditLog$inboundSchema),
+  ),
 }).transform((v) => {
   return remap$(v, {
     "speed_insights": "speedInsights",
     "ai_gateway": "aiGateway",
+    "audit_log": "auditLog",
   });
 });
 /** @internal */
@@ -2766,6 +2856,7 @@ export type GetAllLogDrainsDrainsSchemas$Outbound = {
     | GetAllLogDrainsDrainsLogDrainsSpeedInsights$Outbound
     | undefined;
   ai_gateway?: GetAllLogDrainsDrainsAiGateway$Outbound | undefined;
+  audit_log?: GetAllLogDrainsDrainsAuditLog$Outbound | undefined;
 };
 
 /** @internal */
@@ -2783,10 +2874,13 @@ export const GetAllLogDrainsDrainsSchemas$outboundSchema: z.ZodType<
   ).optional(),
   aiGateway: z.lazy(() => GetAllLogDrainsDrainsAiGateway$outboundSchema)
     .optional(),
+  auditLog: z.lazy(() => GetAllLogDrainsDrainsAuditLog$outboundSchema)
+    .optional(),
 }).transform((v) => {
   return remap$(v, {
     speedInsights: "speed_insights",
     aiGateway: "ai_gateway",
+    auditLog: "audit_log",
   });
 });
 

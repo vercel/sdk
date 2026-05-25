@@ -73,7 +73,7 @@ export type UpdateSessionNetworkPolicyAllowQueryString = {
 /**
  * Matcher for the entry key (header name or query key).
  */
-export type UpdateSessionNetworkPolicyAllowSandboxesV2BetaKey = {
+export type UpdateSessionNetworkPolicyAllowSandboxesKey = {
   /**
    * Match the value exactly. Case-sensitive for paths, header values, and methods; case-insensitive for domains and header keys.
    */
@@ -87,7 +87,7 @@ export type UpdateSessionNetworkPolicyAllowSandboxesV2BetaKey = {
 /**
  * Matcher for the entry value.
  */
-export type UpdateSessionNetworkPolicyAllowSandboxesV2BetaValue = {
+export type UpdateSessionNetworkPolicyAllowSandboxesValue = {
   /**
    * Match the value exactly. Case-sensitive for paths, header values, and methods; case-insensitive for domains and header keys.
    */
@@ -102,11 +102,11 @@ export type UpdateSessionNetworkPolicyAllowHeaders = {
   /**
    * Matcher for the entry key (header name or query key).
    */
-  key?: UpdateSessionNetworkPolicyAllowSandboxesV2BetaKey | undefined;
+  key?: UpdateSessionNetworkPolicyAllowSandboxesKey | undefined;
   /**
    * Matcher for the entry value.
    */
-  value?: UpdateSessionNetworkPolicyAllowSandboxesV2BetaValue | undefined;
+  value?: UpdateSessionNetworkPolicyAllowSandboxesValue | undefined;
 };
 
 /**
@@ -209,7 +209,7 @@ export type RequestBodyKey = {
 /**
  * Matcher for the entry value.
  */
-export type UpdateSessionNetworkPolicyRequestBodySandboxesV2BetaValue = {
+export type UpdateSessionNetworkPolicyRequestBodySandboxesValue = {
   /**
    * Match the value exactly. Case-sensitive for paths, header values, and methods; case-insensitive for domains and header keys.
    */
@@ -228,7 +228,7 @@ export type RequestBodyQueryString = {
   /**
    * Matcher for the entry value.
    */
-  value?: UpdateSessionNetworkPolicyRequestBodySandboxesV2BetaValue | undefined;
+  value?: UpdateSessionNetworkPolicyRequestBodySandboxesValue | undefined;
 };
 
 /**
@@ -558,9 +558,9 @@ export function updateSessionNetworkPolicyAllowQueryStringFromJSON(
 }
 
 /** @internal */
-export const UpdateSessionNetworkPolicyAllowSandboxesV2BetaKey$inboundSchema:
+export const UpdateSessionNetworkPolicyAllowSandboxesKey$inboundSchema:
   z.ZodType<
-    UpdateSessionNetworkPolicyAllowSandboxesV2BetaKey,
+    UpdateSessionNetworkPolicyAllowSandboxesKey,
     z.ZodTypeDef,
     unknown
   > = z.object({
@@ -568,52 +568,52 @@ export const UpdateSessionNetworkPolicyAllowSandboxesV2BetaKey$inboundSchema:
     startsWith: types.optional(types.string()),
   });
 /** @internal */
-export type UpdateSessionNetworkPolicyAllowSandboxesV2BetaKey$Outbound = {
+export type UpdateSessionNetworkPolicyAllowSandboxesKey$Outbound = {
   exact?: string | undefined;
   startsWith?: string | undefined;
 };
 
 /** @internal */
-export const UpdateSessionNetworkPolicyAllowSandboxesV2BetaKey$outboundSchema:
+export const UpdateSessionNetworkPolicyAllowSandboxesKey$outboundSchema:
   z.ZodType<
-    UpdateSessionNetworkPolicyAllowSandboxesV2BetaKey$Outbound,
+    UpdateSessionNetworkPolicyAllowSandboxesKey$Outbound,
     z.ZodTypeDef,
-    UpdateSessionNetworkPolicyAllowSandboxesV2BetaKey
+    UpdateSessionNetworkPolicyAllowSandboxesKey
   > = z.object({
     exact: z.string().optional(),
     startsWith: z.string().optional(),
   });
 
-export function updateSessionNetworkPolicyAllowSandboxesV2BetaKeyToJSON(
-  updateSessionNetworkPolicyAllowSandboxesV2BetaKey:
-    UpdateSessionNetworkPolicyAllowSandboxesV2BetaKey,
+export function updateSessionNetworkPolicyAllowSandboxesKeyToJSON(
+  updateSessionNetworkPolicyAllowSandboxesKey:
+    UpdateSessionNetworkPolicyAllowSandboxesKey,
 ): string {
   return JSON.stringify(
-    UpdateSessionNetworkPolicyAllowSandboxesV2BetaKey$outboundSchema.parse(
-      updateSessionNetworkPolicyAllowSandboxesV2BetaKey,
+    UpdateSessionNetworkPolicyAllowSandboxesKey$outboundSchema.parse(
+      updateSessionNetworkPolicyAllowSandboxesKey,
     ),
   );
 }
-export function updateSessionNetworkPolicyAllowSandboxesV2BetaKeyFromJSON(
+export function updateSessionNetworkPolicyAllowSandboxesKeyFromJSON(
   jsonString: string,
 ): SafeParseResult<
-  UpdateSessionNetworkPolicyAllowSandboxesV2BetaKey,
+  UpdateSessionNetworkPolicyAllowSandboxesKey,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      UpdateSessionNetworkPolicyAllowSandboxesV2BetaKey$inboundSchema.parse(
+      UpdateSessionNetworkPolicyAllowSandboxesKey$inboundSchema.parse(
         JSON.parse(x),
       ),
-    `Failed to parse 'UpdateSessionNetworkPolicyAllowSandboxesV2BetaKey' from JSON`,
+    `Failed to parse 'UpdateSessionNetworkPolicyAllowSandboxesKey' from JSON`,
   );
 }
 
 /** @internal */
-export const UpdateSessionNetworkPolicyAllowSandboxesV2BetaValue$inboundSchema:
+export const UpdateSessionNetworkPolicyAllowSandboxesValue$inboundSchema:
   z.ZodType<
-    UpdateSessionNetworkPolicyAllowSandboxesV2BetaValue,
+    UpdateSessionNetworkPolicyAllowSandboxesValue,
     z.ZodTypeDef,
     unknown
   > = z.object({
@@ -621,45 +621,45 @@ export const UpdateSessionNetworkPolicyAllowSandboxesV2BetaValue$inboundSchema:
     startsWith: types.optional(types.string()),
   });
 /** @internal */
-export type UpdateSessionNetworkPolicyAllowSandboxesV2BetaValue$Outbound = {
+export type UpdateSessionNetworkPolicyAllowSandboxesValue$Outbound = {
   exact?: string | undefined;
   startsWith?: string | undefined;
 };
 
 /** @internal */
-export const UpdateSessionNetworkPolicyAllowSandboxesV2BetaValue$outboundSchema:
+export const UpdateSessionNetworkPolicyAllowSandboxesValue$outboundSchema:
   z.ZodType<
-    UpdateSessionNetworkPolicyAllowSandboxesV2BetaValue$Outbound,
+    UpdateSessionNetworkPolicyAllowSandboxesValue$Outbound,
     z.ZodTypeDef,
-    UpdateSessionNetworkPolicyAllowSandboxesV2BetaValue
+    UpdateSessionNetworkPolicyAllowSandboxesValue
   > = z.object({
     exact: z.string().optional(),
     startsWith: z.string().optional(),
   });
 
-export function updateSessionNetworkPolicyAllowSandboxesV2BetaValueToJSON(
-  updateSessionNetworkPolicyAllowSandboxesV2BetaValue:
-    UpdateSessionNetworkPolicyAllowSandboxesV2BetaValue,
+export function updateSessionNetworkPolicyAllowSandboxesValueToJSON(
+  updateSessionNetworkPolicyAllowSandboxesValue:
+    UpdateSessionNetworkPolicyAllowSandboxesValue,
 ): string {
   return JSON.stringify(
-    UpdateSessionNetworkPolicyAllowSandboxesV2BetaValue$outboundSchema.parse(
-      updateSessionNetworkPolicyAllowSandboxesV2BetaValue,
+    UpdateSessionNetworkPolicyAllowSandboxesValue$outboundSchema.parse(
+      updateSessionNetworkPolicyAllowSandboxesValue,
     ),
   );
 }
-export function updateSessionNetworkPolicyAllowSandboxesV2BetaValueFromJSON(
+export function updateSessionNetworkPolicyAllowSandboxesValueFromJSON(
   jsonString: string,
 ): SafeParseResult<
-  UpdateSessionNetworkPolicyAllowSandboxesV2BetaValue,
+  UpdateSessionNetworkPolicyAllowSandboxesValue,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      UpdateSessionNetworkPolicyAllowSandboxesV2BetaValue$inboundSchema.parse(
+      UpdateSessionNetworkPolicyAllowSandboxesValue$inboundSchema.parse(
         JSON.parse(x),
       ),
-    `Failed to parse 'UpdateSessionNetworkPolicyAllowSandboxesV2BetaValue' from JSON`,
+    `Failed to parse 'UpdateSessionNetworkPolicyAllowSandboxesValue' from JSON`,
   );
 }
 
@@ -670,22 +670,16 @@ export const UpdateSessionNetworkPolicyAllowHeaders$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   key: types.optional(
-    z.lazy(() =>
-      UpdateSessionNetworkPolicyAllowSandboxesV2BetaKey$inboundSchema
-    ),
+    z.lazy(() => UpdateSessionNetworkPolicyAllowSandboxesKey$inboundSchema),
   ),
   value: types.optional(
-    z.lazy(() =>
-      UpdateSessionNetworkPolicyAllowSandboxesV2BetaValue$inboundSchema
-    ),
+    z.lazy(() => UpdateSessionNetworkPolicyAllowSandboxesValue$inboundSchema),
   ),
 });
 /** @internal */
 export type UpdateSessionNetworkPolicyAllowHeaders$Outbound = {
-  key?: UpdateSessionNetworkPolicyAllowSandboxesV2BetaKey$Outbound | undefined;
-  value?:
-    | UpdateSessionNetworkPolicyAllowSandboxesV2BetaValue$Outbound
-    | undefined;
+  key?: UpdateSessionNetworkPolicyAllowSandboxesKey$Outbound | undefined;
+  value?: UpdateSessionNetworkPolicyAllowSandboxesValue$Outbound | undefined;
 };
 
 /** @internal */
@@ -694,11 +688,10 @@ export const UpdateSessionNetworkPolicyAllowHeaders$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpdateSessionNetworkPolicyAllowHeaders
 > = z.object({
-  key: z.lazy(() =>
-    UpdateSessionNetworkPolicyAllowSandboxesV2BetaKey$outboundSchema
-  ).optional(),
+  key: z.lazy(() => UpdateSessionNetworkPolicyAllowSandboxesKey$outboundSchema)
+    .optional(),
   value: z.lazy(() =>
-    UpdateSessionNetworkPolicyAllowSandboxesV2BetaValue$outboundSchema
+    UpdateSessionNetworkPolicyAllowSandboxesValue$outboundSchema
   ).optional(),
 });
 
@@ -1130,9 +1123,9 @@ export function requestBodyKeyFromJSON(
 }
 
 /** @internal */
-export const UpdateSessionNetworkPolicyRequestBodySandboxesV2BetaValue$inboundSchema:
+export const UpdateSessionNetworkPolicyRequestBodySandboxesValue$inboundSchema:
   z.ZodType<
-    UpdateSessionNetworkPolicyRequestBodySandboxesV2BetaValue,
+    UpdateSessionNetworkPolicyRequestBodySandboxesValue,
     z.ZodTypeDef,
     unknown
   > = z.object({
@@ -1140,44 +1133,45 @@ export const UpdateSessionNetworkPolicyRequestBodySandboxesV2BetaValue$inboundSc
     startsWith: types.optional(types.string()),
   });
 /** @internal */
-export type UpdateSessionNetworkPolicyRequestBodySandboxesV2BetaValue$Outbound =
-  {
-    exact?: string | undefined;
-    startsWith?: string | undefined;
-  };
+export type UpdateSessionNetworkPolicyRequestBodySandboxesValue$Outbound = {
+  exact?: string | undefined;
+  startsWith?: string | undefined;
+};
 
 /** @internal */
-export const UpdateSessionNetworkPolicyRequestBodySandboxesV2BetaValue$outboundSchema:
+export const UpdateSessionNetworkPolicyRequestBodySandboxesValue$outboundSchema:
   z.ZodType<
-    UpdateSessionNetworkPolicyRequestBodySandboxesV2BetaValue$Outbound,
+    UpdateSessionNetworkPolicyRequestBodySandboxesValue$Outbound,
     z.ZodTypeDef,
-    UpdateSessionNetworkPolicyRequestBodySandboxesV2BetaValue
+    UpdateSessionNetworkPolicyRequestBodySandboxesValue
   > = z.object({
     exact: z.string().optional(),
     startsWith: z.string().optional(),
   });
 
-export function updateSessionNetworkPolicyRequestBodySandboxesV2BetaValueToJSON(
-  updateSessionNetworkPolicyRequestBodySandboxesV2BetaValue:
-    UpdateSessionNetworkPolicyRequestBodySandboxesV2BetaValue,
+export function updateSessionNetworkPolicyRequestBodySandboxesValueToJSON(
+  updateSessionNetworkPolicyRequestBodySandboxesValue:
+    UpdateSessionNetworkPolicyRequestBodySandboxesValue,
 ): string {
   return JSON.stringify(
-    UpdateSessionNetworkPolicyRequestBodySandboxesV2BetaValue$outboundSchema
-      .parse(updateSessionNetworkPolicyRequestBodySandboxesV2BetaValue),
+    UpdateSessionNetworkPolicyRequestBodySandboxesValue$outboundSchema.parse(
+      updateSessionNetworkPolicyRequestBodySandboxesValue,
+    ),
   );
 }
-export function updateSessionNetworkPolicyRequestBodySandboxesV2BetaValueFromJSON(
+export function updateSessionNetworkPolicyRequestBodySandboxesValueFromJSON(
   jsonString: string,
 ): SafeParseResult<
-  UpdateSessionNetworkPolicyRequestBodySandboxesV2BetaValue,
+  UpdateSessionNetworkPolicyRequestBodySandboxesValue,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      UpdateSessionNetworkPolicyRequestBodySandboxesV2BetaValue$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'UpdateSessionNetworkPolicyRequestBodySandboxesV2BetaValue' from JSON`,
+      UpdateSessionNetworkPolicyRequestBodySandboxesValue$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UpdateSessionNetworkPolicyRequestBodySandboxesValue' from JSON`,
   );
 }
 
@@ -1190,7 +1184,7 @@ export const RequestBodyQueryString$inboundSchema: z.ZodType<
   key: types.optional(z.lazy(() => RequestBodyKey$inboundSchema)),
   value: types.optional(
     z.lazy(() =>
-      UpdateSessionNetworkPolicyRequestBodySandboxesV2BetaValue$inboundSchema
+      UpdateSessionNetworkPolicyRequestBodySandboxesValue$inboundSchema
     ),
   ),
 });
@@ -1198,7 +1192,7 @@ export const RequestBodyQueryString$inboundSchema: z.ZodType<
 export type RequestBodyQueryString$Outbound = {
   key?: RequestBodyKey$Outbound | undefined;
   value?:
-    | UpdateSessionNetworkPolicyRequestBodySandboxesV2BetaValue$Outbound
+    | UpdateSessionNetworkPolicyRequestBodySandboxesValue$Outbound
     | undefined;
 };
 
@@ -1210,7 +1204,7 @@ export const RequestBodyQueryString$outboundSchema: z.ZodType<
 > = z.object({
   key: z.lazy(() => RequestBodyKey$outboundSchema).optional(),
   value: z.lazy(() =>
-    UpdateSessionNetworkPolicyRequestBodySandboxesV2BetaValue$outboundSchema
+    UpdateSessionNetworkPolicyRequestBodySandboxesValue$outboundSchema
   ).optional(),
 });
 

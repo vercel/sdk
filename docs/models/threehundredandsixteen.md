@@ -8,7 +8,7 @@ The payload of the event, if requested.
 import { ThreeHundredAndSixteen } from "@vercel/sdk/models/payloadenvironment.js";
 
 let value: ThreeHundredAndSixteen = {
-  customAlertTitle: "<value>",
+  username: "Waylon.Herzog",
 };
 ```
 
@@ -16,4 +16,4 @@ let value: ThreeHundredAndSixteen = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `customAlertTitle` | *string*           | :heavy_check_mark: | N/A                |
+| `username`         | *string*           | :heavy_check_mark: | N/A                |

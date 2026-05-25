@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Resources } from "@vercel/sdk/models/thirtyfive.js";
+import { Resources } from "@vercel/sdk/models/resources.js";
 
 let value: Resources = {
   projectIds: {
@@ -18,6 +18,6 @@ let value: Resources = {
 
 ## Fields
 
-| Field                                                      | Type                                                       | Required                                                   | Description                                                |
-| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
-| `projectIds`                                               | [models.PayloadProjectIds](../models/payloadprojectids.md) | :heavy_check_mark:                                         | N/A                                                        |
+| Field                                                       | Type                                                        | Required                                                    | Description                                                 |
+| ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
+| `projectIds`                                                | [models.PayloadProjectIds](../models/payloadprojectids.md)  | :heavy_check_mark:                                          | Specific project IDs or all projects on the team (`['*']`). |

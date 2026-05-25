@@ -459,14 +459,6 @@ export type GetMicrofrontendsInGroupDeploymentSources = {
 };
 
 /**
- * Controls whether deployments may have their source and logs available publicly (i.e. the deployment's `public` boolean set to `true`). This rule does NOT control whether the deployment URL itself requires authentication — see deployment protection settings for that. - `allowPublicDeployments: false`: deployments must be created with `public: false`. Public deployments are blocked. - `allowPublicDeployments: true`: equivalent to `enabled: false`; here only so the field is always present on an enabled rule.
- */
-export type GetMicrofrontendsInGroupPublicDeployments = {
-  allowPublicDeployments: boolean;
-  enabled: boolean;
-};
-
-/**
  * Project-level shape. Each rule may be: - an object: overrides the team's value for that rule - `null`: explicitly clears the override on just that rule (inherit team) - omitted: inherit team To clear all overrides and inherit fully, set the project's `deploymentPolicy` field itself to `null`. Defined independently from {@link TeamDeploymentPolicy} so the two are not coupled by a shared type — the underlying data lives in separate stores.
  */
 export type GetMicrofrontendsInGroupDeploymentPolicy = {
@@ -479,13 +471,6 @@ export type GetMicrofrontendsInGroupDeploymentPolicy = {
    */
   deploymentSources?:
     | GetMicrofrontendsInGroupDeploymentSources
-    | null
-    | undefined;
-  /**
-   * Controls whether deployments may have their source and logs available publicly (i.e. the deployment's `public` boolean set to `true`). This rule does NOT control whether the deployment URL itself requires authentication — see deployment protection settings for that. - `allowPublicDeployments: false`: deployments must be created with `public: false`. Public deployments are blocked. - `allowPublicDeployments: true`: equivalent to `enabled: false`; here only so the field is always present on an enabled rule.
-   */
-  publicDeployments?:
-    | GetMicrofrontendsInGroupPublicDeployments
     | null
     | undefined;
 };
@@ -2314,58 +2299,6 @@ export function getMicrofrontendsInGroupDeploymentSourcesFromJSON(
 }
 
 /** @internal */
-export const GetMicrofrontendsInGroupPublicDeployments$inboundSchema: z.ZodType<
-  GetMicrofrontendsInGroupPublicDeployments,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  allowPublicDeployments: types.boolean(),
-  enabled: types.boolean(),
-});
-/** @internal */
-export type GetMicrofrontendsInGroupPublicDeployments$Outbound = {
-  allowPublicDeployments: boolean;
-  enabled: boolean;
-};
-
-/** @internal */
-export const GetMicrofrontendsInGroupPublicDeployments$outboundSchema:
-  z.ZodType<
-    GetMicrofrontendsInGroupPublicDeployments$Outbound,
-    z.ZodTypeDef,
-    GetMicrofrontendsInGroupPublicDeployments
-  > = z.object({
-    allowPublicDeployments: z.boolean(),
-    enabled: z.boolean(),
-  });
-
-export function getMicrofrontendsInGroupPublicDeploymentsToJSON(
-  getMicrofrontendsInGroupPublicDeployments:
-    GetMicrofrontendsInGroupPublicDeployments,
-): string {
-  return JSON.stringify(
-    GetMicrofrontendsInGroupPublicDeployments$outboundSchema.parse(
-      getMicrofrontendsInGroupPublicDeployments,
-    ),
-  );
-}
-export function getMicrofrontendsInGroupPublicDeploymentsFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  GetMicrofrontendsInGroupPublicDeployments,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetMicrofrontendsInGroupPublicDeployments$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'GetMicrofrontendsInGroupPublicDeployments' from JSON`,
-  );
-}
-
-/** @internal */
 export const GetMicrofrontendsInGroupDeploymentPolicy$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupDeploymentPolicy,
   z.ZodTypeDef,
@@ -2377,19 +2310,12 @@ export const GetMicrofrontendsInGroupDeploymentPolicy$inboundSchema: z.ZodType<
   deploymentSources: z.nullable(
     z.lazy(() => GetMicrofrontendsInGroupDeploymentSources$inboundSchema),
   ).optional(),
-  publicDeployments: z.nullable(
-    z.lazy(() => GetMicrofrontendsInGroupPublicDeployments$inboundSchema),
-  ).optional(),
 });
 /** @internal */
 export type GetMicrofrontendsInGroupDeploymentPolicy$Outbound = {
   gitSources?: GetMicrofrontendsInGroupGitSources$Outbound | null | undefined;
   deploymentSources?:
     | GetMicrofrontendsInGroupDeploymentSources$Outbound
-    | null
-    | undefined;
-  publicDeployments?:
-    | GetMicrofrontendsInGroupPublicDeployments$Outbound
     | null
     | undefined;
 };
@@ -2405,9 +2331,6 @@ export const GetMicrofrontendsInGroupDeploymentPolicy$outboundSchema: z.ZodType<
   ).optional(),
   deploymentSources: z.nullable(
     z.lazy(() => GetMicrofrontendsInGroupDeploymentSources$outboundSchema),
-  ).optional(),
-  publicDeployments: z.nullable(
-    z.lazy(() => GetMicrofrontendsInGroupPublicDeployments$outboundSchema),
   ).optional(),
 });
 

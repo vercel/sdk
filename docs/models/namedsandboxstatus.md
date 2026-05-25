@@ -13,5 +13,5 @@ let value: NamedSandboxStatus = "running";
 ## Values
 
 ```typescript
-"stopping" | "running" | "stopped"
+"running" | "stopping" | "stopped"
 ```

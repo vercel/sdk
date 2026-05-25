@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsContentHint3 } from "@vercel/sdk/models/getprojectslinkprojectsresponse200deployhooks.js";
+import { GetProjectsContentHint3 } from "@vercel/sdk/models/getprojectslink4.js";
 
 let value: GetProjectsContentHint3 = {
   type: "redis-rest-api-token",

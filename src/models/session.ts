@@ -19,13 +19,13 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
  * The status of the sandbox.
  */
 export const SessionStatus = {
-  Failed: "failed",
-  Aborted: "aborted",
-  Pending: "pending",
-  Stopping: "stopping",
-  Snapshotting: "snapshotting",
   Running: "running",
+  Stopping: "stopping",
   Stopped: "stopped",
+  Failed: "failed",
+  Pending: "pending",
+  Aborted: "aborted",
+  Snapshotting: "snapshotting",
 } as const;
 /**
  * The status of the sandbox.
@@ -35,7 +35,7 @@ export type SessionStatus = ClosedEnum<typeof SessionStatus>;
 /**
  * The quantity of data transfered to and from the sandbox, in bytes. This value is only available once the sandbox is stopped, and only if it stopped successfully.
  */
-export type SessionNetworkTransfer = {
+export type NetworkTransfer = {
   ingress: number;
   egress: number;
 };
@@ -135,7 +135,7 @@ export type Session = {
   /**
    * The quantity of data transfered to and from the sandbox, in bytes. This value is only available once the sandbox is stopped, and only if it stopped successfully.
    */
-  networkTransfer?: SessionNetworkTransfer | undefined;
+  networkTransfer?: NetworkTransfer | undefined;
 };
 
 /** @internal */
@@ -148,8 +148,8 @@ export const SessionStatus$outboundSchema: z.ZodNativeEnum<
 > = SessionStatus$inboundSchema;
 
 /** @internal */
-export const SessionNetworkTransfer$inboundSchema: z.ZodType<
-  SessionNetworkTransfer,
+export const NetworkTransfer$inboundSchema: z.ZodType<
+  NetworkTransfer,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -157,35 +157,33 @@ export const SessionNetworkTransfer$inboundSchema: z.ZodType<
   egress: types.number(),
 });
 /** @internal */
-export type SessionNetworkTransfer$Outbound = {
+export type NetworkTransfer$Outbound = {
   ingress: number;
   egress: number;
 };
 
 /** @internal */
-export const SessionNetworkTransfer$outboundSchema: z.ZodType<
-  SessionNetworkTransfer$Outbound,
+export const NetworkTransfer$outboundSchema: z.ZodType<
+  NetworkTransfer$Outbound,
   z.ZodTypeDef,
-  SessionNetworkTransfer
+  NetworkTransfer
 > = z.object({
   ingress: z.number(),
   egress: z.number(),
 });
 
-export function sessionNetworkTransferToJSON(
-  sessionNetworkTransfer: SessionNetworkTransfer,
+export function networkTransferToJSON(
+  networkTransfer: NetworkTransfer,
 ): string {
-  return JSON.stringify(
-    SessionNetworkTransfer$outboundSchema.parse(sessionNetworkTransfer),
-  );
+  return JSON.stringify(NetworkTransfer$outboundSchema.parse(networkTransfer));
 }
-export function sessionNetworkTransferFromJSON(
+export function networkTransferFromJSON(
   jsonString: string,
-): SafeParseResult<SessionNetworkTransfer, SDKValidationError> {
+): SafeParseResult<NetworkTransfer, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => SessionNetworkTransfer$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'SessionNetworkTransfer' from JSON`,
+    (x) => NetworkTransfer$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'NetworkTransfer' from JSON`,
   );
 }
 
@@ -215,7 +213,7 @@ export const Session$inboundSchema: z.ZodType<Session, z.ZodTypeDef, unknown> =
     networkPolicy: types.optional(SandboxNetworkPolicy$inboundSchema),
     activeCpuDurationMs: types.optional(types.number()),
     networkTransfer: types.optional(
-      z.lazy(() => SessionNetworkTransfer$inboundSchema),
+      z.lazy(() => NetworkTransfer$inboundSchema),
     ),
   });
 /** @internal */
@@ -242,7 +240,7 @@ export type Session$Outbound = {
   updatedAt: number;
   networkPolicy?: SandboxNetworkPolicy$Outbound | undefined;
   activeCpuDurationMs?: number | undefined;
-  networkTransfer?: SessionNetworkTransfer$Outbound | undefined;
+  networkTransfer?: NetworkTransfer$Outbound | undefined;
 };
 
 /** @internal */
@@ -273,8 +271,7 @@ export const Session$outboundSchema: z.ZodType<
   updatedAt: z.number(),
   networkPolicy: SandboxNetworkPolicy$outboundSchema.optional(),
   activeCpuDurationMs: z.number().optional(),
-  networkTransfer: z.lazy(() => SessionNetworkTransfer$outboundSchema)
-    .optional(),
+  networkTransfer: z.lazy(() => NetworkTransfer$outboundSchema).optional(),
 });
 
 export function sessionToJSON(session: Session): string {

@@ -13,8 +13,8 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
  * The status of the current sandbox.
  */
 export const NamedSandboxStatus = {
-  Stopping: "stopping",
   Running: "running",
+  Stopping: "stopping",
   Stopped: "stopped",
 } as const;
 /**
@@ -40,37 +40,39 @@ export type KeepLastSnapshots = {
   deleteEvicted: boolean;
 };
 
-export const NamedSandboxMode = {
+export const NamedSandboxNetworkPolicyMode = {
   AllowAll: "allow-all",
   DenyAll: "deny-all",
   Custom: "custom",
   DefaultAllow: "default-allow",
   DefaultDeny: "default-deny",
 } as const;
-export type NamedSandboxMode = ClosedEnum<typeof NamedSandboxMode>;
+export type NamedSandboxNetworkPolicyMode = ClosedEnum<
+  typeof NamedSandboxNetworkPolicyMode
+>;
 
 /**
  * Network policy configuration.
  */
 export type NetworkPolicy = {
-  mode: NamedSandboxMode;
+  mode: NamedSandboxNetworkPolicyMode;
   allowedDomains?: Array<string> | undefined;
   allowedCIDRs?: Array<string> | undefined;
   deniedCIDRs?: Array<string> | undefined;
 };
 
-export const NamedSandboxMountsMode = {
+export const NamedSandboxMode = {
   ReadOnly: "read-only",
   ReadWrite: "read-write",
 } as const;
-export type NamedSandboxMountsMode = ClosedEnum<typeof NamedSandboxMountsMode>;
+export type NamedSandboxMode = ClosedEnum<typeof NamedSandboxMode>;
 
 /**
  * Key-value pairs of mount path and volume.
  */
 export type Mounts = {
   volume: string;
-  mode?: NamedSandboxMountsMode | undefined;
+  mode?: NamedSandboxMode | undefined;
 };
 
 /**
@@ -226,13 +228,13 @@ export function keepLastSnapshotsFromJSON(
 }
 
 /** @internal */
-export const NamedSandboxMode$inboundSchema: z.ZodNativeEnum<
-  typeof NamedSandboxMode
-> = z.nativeEnum(NamedSandboxMode);
+export const NamedSandboxNetworkPolicyMode$inboundSchema: z.ZodNativeEnum<
+  typeof NamedSandboxNetworkPolicyMode
+> = z.nativeEnum(NamedSandboxNetworkPolicyMode);
 /** @internal */
-export const NamedSandboxMode$outboundSchema: z.ZodNativeEnum<
-  typeof NamedSandboxMode
-> = NamedSandboxMode$inboundSchema;
+export const NamedSandboxNetworkPolicyMode$outboundSchema: z.ZodNativeEnum<
+  typeof NamedSandboxNetworkPolicyMode
+> = NamedSandboxNetworkPolicyMode$inboundSchema;
 
 /** @internal */
 export const NetworkPolicy$inboundSchema: z.ZodType<
@@ -240,7 +242,7 @@ export const NetworkPolicy$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  mode: NamedSandboxMode$inboundSchema,
+  mode: NamedSandboxNetworkPolicyMode$inboundSchema,
   allowedDomains: types.optional(z.array(types.string())),
   allowedCIDRs: types.optional(z.array(types.string())),
   deniedCIDRs: types.optional(z.array(types.string())),
@@ -259,7 +261,7 @@ export const NetworkPolicy$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   NetworkPolicy
 > = z.object({
-  mode: NamedSandboxMode$outboundSchema,
+  mode: NamedSandboxNetworkPolicyMode$outboundSchema,
   allowedDomains: z.array(z.string()).optional(),
   allowedCIDRs: z.array(z.string()).optional(),
   deniedCIDRs: z.array(z.string()).optional(),
@@ -279,19 +281,19 @@ export function networkPolicyFromJSON(
 }
 
 /** @internal */
-export const NamedSandboxMountsMode$inboundSchema: z.ZodNativeEnum<
-  typeof NamedSandboxMountsMode
-> = z.nativeEnum(NamedSandboxMountsMode);
+export const NamedSandboxMode$inboundSchema: z.ZodNativeEnum<
+  typeof NamedSandboxMode
+> = z.nativeEnum(NamedSandboxMode);
 /** @internal */
-export const NamedSandboxMountsMode$outboundSchema: z.ZodNativeEnum<
-  typeof NamedSandboxMountsMode
-> = NamedSandboxMountsMode$inboundSchema;
+export const NamedSandboxMode$outboundSchema: z.ZodNativeEnum<
+  typeof NamedSandboxMode
+> = NamedSandboxMode$inboundSchema;
 
 /** @internal */
 export const Mounts$inboundSchema: z.ZodType<Mounts, z.ZodTypeDef, unknown> = z
   .object({
     volume: types.string(),
-    mode: types.optional(NamedSandboxMountsMode$inboundSchema),
+    mode: types.optional(NamedSandboxMode$inboundSchema),
   });
 /** @internal */
 export type Mounts$Outbound = {
@@ -306,7 +308,7 @@ export const Mounts$outboundSchema: z.ZodType<
   Mounts
 > = z.object({
   volume: z.string(),
-  mode: NamedSandboxMountsMode$outboundSchema.optional(),
+  mode: NamedSandboxMode$outboundSchema.optional(),
 });
 
 export function mountsToJSON(mounts: Mounts): string {

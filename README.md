@@ -624,42 +624,24 @@ run();
 
 ### [Sandboxes](docs/sdks/sandboxes/README.md)
 
-* [getSandboxesV1](docs/sdks/sandboxes/README.md#getsandboxesv1) - List sandboxes
-* [listSnapshots](docs/sdks/sandboxes/README.md#listsnapshots) - List snapshots
-* [getSandbox](docs/sdks/sandboxes/README.md#getsandbox) - Get a sandbox
-* [listCommands](docs/sdks/sandboxes/README.md#listcommands) - List commands
-* [killCommand](docs/sdks/sandboxes/README.md#killcommand) - Kill a command
-* [stopSandbox](docs/sdks/sandboxes/README.md#stopsandbox) - Stop a sandbox
-* [extendSandboxTimeout](docs/sdks/sandboxes/README.md#extendsandboxtimeout) - Extend sandbox timeout
-* [updateNetworkPolicy](docs/sdks/sandboxes/README.md#updatenetworkpolicy) - Update network policy
-* [getCommand](docs/sdks/sandboxes/README.md#getcommand) - Get a command
-* [readFile](docs/sdks/sandboxes/README.md#readfile) - Read a file
-* [createDirectory](docs/sdks/sandboxes/README.md#createdirectory) - Create a directory
-* [writeFiles](docs/sdks/sandboxes/README.md#writefiles) - Write files
-* [getSnapshot](docs/sdks/sandboxes/README.md#getsnapshot) - Get a snapshot
-* [deleteSnapshot](docs/sdks/sandboxes/README.md#deletesnapshot) - Delete a snapshot
-* [createSnapshot](docs/sdks/sandboxes/README.md#createsnapshot) - Create a snapshot
-
-### [SandboxesV2Beta](docs/sdks/sandboxesv2beta/README.md)
-
-* [getSandboxesV2](docs/sdks/sandboxesv2beta/README.md#getsandboxesv2) - List sandboxes
-* [listSessionSnapshots](docs/sdks/sandboxesv2beta/README.md#listsessionsnapshots) - List snapshots
-* [getSessionSnapshot](docs/sdks/sandboxesv2beta/README.md#getsessionsnapshot) - Get a snapshot
-* [deleteSessionSnapshot](docs/sdks/sandboxesv2beta/README.md#deletesessionsnapshot) - Delete a snapshot
-* [listSessions](docs/sdks/sandboxesv2beta/README.md#listsessions) - List sessions
-* [getSession](docs/sdks/sandboxesv2beta/README.md#getsession) - Get a session
-* [getNamedSandbox](docs/sdks/sandboxesv2beta/README.md#getnamedsandbox) - Get a named sandbox
-* [deleteSandbox](docs/sdks/sandboxesv2beta/README.md#deletesandbox) - Delete a sandbox
-* [listSessionCommands](docs/sdks/sandboxesv2beta/README.md#listsessioncommands) - List commands
-* [getSessionCommand](docs/sdks/sandboxesv2beta/README.md#getsessioncommand) - Get a command
-* [killSessionCommand](docs/sdks/sandboxesv2beta/README.md#killsessioncommand) - Kill a command
-* [stopSession](docs/sdks/sandboxesv2beta/README.md#stopsession) - Stop a session
-* [extendSessionTimeout](docs/sdks/sandboxesv2beta/README.md#extendsessiontimeout) - Extend session timeout
-* [updateSessionNetworkPolicy](docs/sdks/sandboxesv2beta/README.md#updatesessionnetworkpolicy) - Update network policy
-* [readSessionFile](docs/sdks/sandboxesv2beta/README.md#readsessionfile) - Read a file
-* [createSessionDirectory](docs/sdks/sandboxesv2beta/README.md#createsessiondirectory) - Create a directory
-* [writeSessionFiles](docs/sdks/sandboxesv2beta/README.md#writesessionfiles) - Write files
-* [createSessionSnapshot](docs/sdks/sandboxesv2beta/README.md#createsessionsnapshot) - Create a snapshot
+* [listSandboxes](docs/sdks/sandboxes/README.md#listsandboxes) - List sandboxes
+* [listSessionSnapshots](docs/sdks/sandboxes/README.md#listsessionsnapshots) - List snapshots
+* [getSessionSnapshot](docs/sdks/sandboxes/README.md#getsessionsnapshot) - Get a snapshot
+* [deleteSessionSnapshot](docs/sdks/sandboxes/README.md#deletesessionsnapshot) - Delete a snapshot
+* [listSessions](docs/sdks/sandboxes/README.md#listsessions) - List sessions
+* [getSession](docs/sdks/sandboxes/README.md#getsession) - Get a session
+* [getNamedSandbox](docs/sdks/sandboxes/README.md#getnamedsandbox) - Get a named sandbox
+* [deleteSandbox](docs/sdks/sandboxes/README.md#deletesandbox) - Delete a sandbox
+* [listSessionCommands](docs/sdks/sandboxes/README.md#listsessioncommands) - List commands
+* [getSessionCommand](docs/sdks/sandboxes/README.md#getsessioncommand) - Get a command
+* [killSessionCommand](docs/sdks/sandboxes/README.md#killsessioncommand) - Kill a command
+* [stopSession](docs/sdks/sandboxes/README.md#stopsession) - Stop a session
+* [extendSessionTimeout](docs/sdks/sandboxes/README.md#extendsessiontimeout) - Extend session timeout
+* [updateSessionNetworkPolicy](docs/sdks/sandboxes/README.md#updatesessionnetworkpolicy) - Update network policy
+* [readSessionFile](docs/sdks/sandboxes/README.md#readsessionfile) - Read a file
+* [createSessionDirectory](docs/sdks/sandboxes/README.md#createsessiondirectory) - Create a directory
+* [writeSessionFiles](docs/sdks/sandboxes/README.md#writesessionfiles) - Write files
+* [createSessionSnapshot](docs/sdks/sandboxes/README.md#createsessionsnapshot) - Create a snapshot
 
 ### [Security](docs/sdks/security/README.md)
 
@@ -973,39 +955,24 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`rollingReleaseGetRollingReleaseBillingStatus`](docs/sdks/rollingrelease/README.md#getrollingreleasebillingstatus) - Get rolling release billing status
 - [`rollingReleaseGetRollingReleaseConfig`](docs/sdks/rollingrelease/README.md#getrollingreleaseconfig) - Get rolling release configuration
 - [`rollingReleaseUpdateRollingReleaseConfig`](docs/sdks/rollingrelease/README.md#updaterollingreleaseconfig) - Update the rolling release settings for the project
-- [`sandboxesCreateDirectory`](docs/sdks/sandboxes/README.md#createdirectory) - Create a directory
-- [`sandboxesCreateSnapshot`](docs/sdks/sandboxes/README.md#createsnapshot) - Create a snapshot
-- [`sandboxesDeleteSnapshot`](docs/sdks/sandboxes/README.md#deletesnapshot) - Delete a snapshot
-- [`sandboxesExtendSandboxTimeout`](docs/sdks/sandboxes/README.md#extendsandboxtimeout) - Extend sandbox timeout
-- [`sandboxesGetCommand`](docs/sdks/sandboxes/README.md#getcommand) - Get a command
-- [`sandboxesGetSandbox`](docs/sdks/sandboxes/README.md#getsandbox) - Get a sandbox
-- [`sandboxesGetSandboxesV1`](docs/sdks/sandboxes/README.md#getsandboxesv1) - List sandboxes
-- [`sandboxesGetSnapshot`](docs/sdks/sandboxes/README.md#getsnapshot) - Get a snapshot
-- [`sandboxesKillCommand`](docs/sdks/sandboxes/README.md#killcommand) - Kill a command
-- [`sandboxesListCommands`](docs/sdks/sandboxes/README.md#listcommands) - List commands
-- [`sandboxesListSnapshots`](docs/sdks/sandboxes/README.md#listsnapshots) - List snapshots
-- [`sandboxesReadFile`](docs/sdks/sandboxes/README.md#readfile) - Read a file
-- [`sandboxesStopSandbox`](docs/sdks/sandboxes/README.md#stopsandbox) - Stop a sandbox
-- [`sandboxesUpdateNetworkPolicy`](docs/sdks/sandboxes/README.md#updatenetworkpolicy) - Update network policy
-- [`sandboxesV2BetaCreateSessionDirectory`](docs/sdks/sandboxesv2beta/README.md#createsessiondirectory) - Create a directory
-- [`sandboxesV2BetaCreateSessionSnapshot`](docs/sdks/sandboxesv2beta/README.md#createsessionsnapshot) - Create a snapshot
-- [`sandboxesV2BetaDeleteSandbox`](docs/sdks/sandboxesv2beta/README.md#deletesandbox) - Delete a sandbox
-- [`sandboxesV2BetaDeleteSessionSnapshot`](docs/sdks/sandboxesv2beta/README.md#deletesessionsnapshot) - Delete a snapshot
-- [`sandboxesV2BetaExtendSessionTimeout`](docs/sdks/sandboxesv2beta/README.md#extendsessiontimeout) - Extend session timeout
-- [`sandboxesV2BetaGetNamedSandbox`](docs/sdks/sandboxesv2beta/README.md#getnamedsandbox) - Get a named sandbox
-- [`sandboxesV2BetaGetSandboxesV2`](docs/sdks/sandboxesv2beta/README.md#getsandboxesv2) - List sandboxes
-- [`sandboxesV2BetaGetSession`](docs/sdks/sandboxesv2beta/README.md#getsession) - Get a session
-- [`sandboxesV2BetaGetSessionCommand`](docs/sdks/sandboxesv2beta/README.md#getsessioncommand) - Get a command
-- [`sandboxesV2BetaGetSessionSnapshot`](docs/sdks/sandboxesv2beta/README.md#getsessionsnapshot) - Get a snapshot
-- [`sandboxesV2BetaKillSessionCommand`](docs/sdks/sandboxesv2beta/README.md#killsessioncommand) - Kill a command
-- [`sandboxesV2BetaListSessionCommands`](docs/sdks/sandboxesv2beta/README.md#listsessioncommands) - List commands
-- [`sandboxesV2BetaListSessions`](docs/sdks/sandboxesv2beta/README.md#listsessions) - List sessions
-- [`sandboxesV2BetaListSessionSnapshots`](docs/sdks/sandboxesv2beta/README.md#listsessionsnapshots) - List snapshots
-- [`sandboxesV2BetaReadSessionFile`](docs/sdks/sandboxesv2beta/README.md#readsessionfile) - Read a file
-- [`sandboxesV2BetaStopSession`](docs/sdks/sandboxesv2beta/README.md#stopsession) - Stop a session
-- [`sandboxesV2BetaUpdateSessionNetworkPolicy`](docs/sdks/sandboxesv2beta/README.md#updatesessionnetworkpolicy) - Update network policy
-- [`sandboxesV2BetaWriteSessionFiles`](docs/sdks/sandboxesv2beta/README.md#writesessionfiles) - Write files
-- [`sandboxesWriteFiles`](docs/sdks/sandboxes/README.md#writefiles) - Write files
+- [`sandboxesCreateSessionDirectory`](docs/sdks/sandboxes/README.md#createsessiondirectory) - Create a directory
+- [`sandboxesCreateSessionSnapshot`](docs/sdks/sandboxes/README.md#createsessionsnapshot) - Create a snapshot
+- [`sandboxesDeleteSandbox`](docs/sdks/sandboxes/README.md#deletesandbox) - Delete a sandbox
+- [`sandboxesDeleteSessionSnapshot`](docs/sdks/sandboxes/README.md#deletesessionsnapshot) - Delete a snapshot
+- [`sandboxesExtendSessionTimeout`](docs/sdks/sandboxes/README.md#extendsessiontimeout) - Extend session timeout
+- [`sandboxesGetNamedSandbox`](docs/sdks/sandboxes/README.md#getnamedsandbox) - Get a named sandbox
+- [`sandboxesGetSession`](docs/sdks/sandboxes/README.md#getsession) - Get a session
+- [`sandboxesGetSessionCommand`](docs/sdks/sandboxes/README.md#getsessioncommand) - Get a command
+- [`sandboxesGetSessionSnapshot`](docs/sdks/sandboxes/README.md#getsessionsnapshot) - Get a snapshot
+- [`sandboxesKillSessionCommand`](docs/sdks/sandboxes/README.md#killsessioncommand) - Kill a command
+- [`sandboxesListSandboxes`](docs/sdks/sandboxes/README.md#listsandboxes) - List sandboxes
+- [`sandboxesListSessionCommands`](docs/sdks/sandboxes/README.md#listsessioncommands) - List commands
+- [`sandboxesListSessions`](docs/sdks/sandboxes/README.md#listsessions) - List sessions
+- [`sandboxesListSessionSnapshots`](docs/sdks/sandboxes/README.md#listsessionsnapshots) - List snapshots
+- [`sandboxesReadSessionFile`](docs/sdks/sandboxes/README.md#readsessionfile) - Read a file
+- [`sandboxesStopSession`](docs/sdks/sandboxes/README.md#stopsession) - Stop a session
+- [`sandboxesUpdateSessionNetworkPolicy`](docs/sdks/sandboxes/README.md#updatesessionnetworkpolicy) - Update network policy
+- [`sandboxesWriteSessionFiles`](docs/sdks/sandboxes/README.md#writesessionfiles) - Write files
 - [`securityAddBypassIp`](docs/sdks/security/README.md#addbypassip) - Create System Bypass Rule
 - [`securityGetActiveAttackStatus`](docs/sdks/security/README.md#getactiveattackstatus) - Read active attack data
 - [`securityGetBypassIp`](docs/sdks/security/README.md#getbypassip) - Read System Bypass
@@ -1231,31 +1198,31 @@ run();
 
 
 **Inherit from [`VercelError`](./src/models/vercelerror.ts)**:
-* [`HttpApiDecodeError`](./src/models/httpapidecodeerror.ts): The request did not match the expected schema. Status code `400`. Applicable to 16 of 317 methods.*
-* [`Unauthorized`](./src/models/unauthorized.ts): Unauthorized. Status code `401`. Applicable to 16 of 317 methods.*
-* [`NotAuthorizedForScope`](./src/models/notauthorizedforscope.ts): NotAuthorizedForScope. Status code `403`. Applicable to 16 of 317 methods.*
-* [`TooManyRequests`](./src/models/toomanyrequests.ts): TooManyRequests. Status code `429`. Applicable to 16 of 317 methods.*
-* [`InternalServerError`](./src/models/internalservererror.ts): InternalServerError. Status code `500`. Applicable to 16 of 317 methods.*
-* [`Forbidden`](./src/models/forbidden.ts): NotAuthorizedForScope. Status code `403`. Applicable to 9 of 317 methods.*
-* [`TldNotSupported`](./src/models/tldnotsupported.ts): The TLD is not currently supported. Status code `400`. Applicable to 7 of 317 methods.*
-* [`DomainTooShort`](./src/models/domaintooshort.ts): The domain name (excluding the TLD) is too short. Status code `400`. Applicable to 5 of 317 methods.*
-* [`BadRequest`](./src/models/badrequest.ts): There was something wrong with the request. Status code `400`. Applicable to 4 of 317 methods.*
-* [`DomainNotRegistered`](./src/models/domainnotregistered.ts): The domain is not registered with Vercel. Status code `400`. Applicable to 4 of 317 methods.*
-* [`ExpectedPriceMismatch`](./src/models/expectedpricemismatch.ts): The expected price passed does not match the actual price. Status code `400`. Applicable to 4 of 317 methods.*
-* [`DomainNotAvailable`](./src/models/domainnotavailable.ts): The domain is not available. Status code `400`. Applicable to 4 of 317 methods.*
-* [`DomainNotFound`](./src/models/domainnotfound.ts): The domain was not found in our system. Status code `404`. Applicable to 4 of 317 methods.*
-* [`NotFound`](./src/models/notfound.ts): NotFound. Status code `404`. Applicable to 3 of 317 methods.*
-* [`OrderTooExpensive`](./src/models/ordertooexpensive.ts): The total price of the order is too high. Status code `400`. Applicable to 2 of 317 methods.*
-* [`InvalidAdditionalContactInfo`](./src/models/invalidadditionalcontactinfo.ts): Additional contact information provided for the TLD is invalid. Status code `400`. Applicable to 2 of 317 methods.*
-* [`AdditionalContactInfoRequired`](./src/models/additionalcontactinforequired.ts): Additional contact information is required for the TLD. Status code `400`. Applicable to 2 of 317 methods.*
-* [`LanguageCodeRequired`](./src/models/languagecoderequired.ts): A language code is required for punycode domains. Status code `400`. Applicable to 2 of 317 methods.*
-* [`TooManyDomains`](./src/models/toomanydomains.ts): The number of domains in the order is too high. Status code `400`. Applicable to 1 of 317 methods.*
-* [`DuplicateDomains`](./src/models/duplicatedomains.ts): Duplicate domains were provided. Status code `400`. Applicable to 1 of 317 methods.*
-* [`DomainAlreadyOwned`](./src/models/domainalreadyowned.ts): The domain is already owned by another team or user. Status code `400`. Applicable to 1 of 317 methods.*
-* [`DNSSECEnabled`](./src/models/dnssecenabled.ts): The operation cannot be completed because DNSSEC is enabled for the domain. Status code `400`. Applicable to 1 of 317 methods.*
-* [`DomainAlreadyRenewing`](./src/models/domainalreadyrenewing.ts): The domain is already renewing. Status code `400`. Applicable to 1 of 317 methods.*
-* [`DomainNotRenewable`](./src/models/domainnotrenewable.ts): The domain is not renewable. Status code `400`. Applicable to 1 of 317 methods.*
-* [`DomainCannotBeTransferedOutUntil`](./src/models/domaincannotbetransferedoutuntil.ts): The domain cannot be transfered out until the specified date. Status code `409`. Applicable to 1 of 317 methods.*
+* [`HttpApiDecodeError`](./src/models/httpapidecodeerror.ts): The request did not match the expected schema. Status code `400`. Applicable to 16 of 302 methods.*
+* [`Unauthorized`](./src/models/unauthorized.ts): Unauthorized. Status code `401`. Applicable to 16 of 302 methods.*
+* [`NotAuthorizedForScope`](./src/models/notauthorizedforscope.ts): NotAuthorizedForScope. Status code `403`. Applicable to 16 of 302 methods.*
+* [`TooManyRequests`](./src/models/toomanyrequests.ts): TooManyRequests. Status code `429`. Applicable to 16 of 302 methods.*
+* [`InternalServerError`](./src/models/internalservererror.ts): InternalServerError. Status code `500`. Applicable to 16 of 302 methods.*
+* [`Forbidden`](./src/models/forbidden.ts): NotAuthorizedForScope. Status code `403`. Applicable to 9 of 302 methods.*
+* [`TldNotSupported`](./src/models/tldnotsupported.ts): The TLD is not currently supported. Status code `400`. Applicable to 7 of 302 methods.*
+* [`DomainTooShort`](./src/models/domaintooshort.ts): The domain name (excluding the TLD) is too short. Status code `400`. Applicable to 5 of 302 methods.*
+* [`BadRequest`](./src/models/badrequest.ts): There was something wrong with the request. Status code `400`. Applicable to 4 of 302 methods.*
+* [`DomainNotRegistered`](./src/models/domainnotregistered.ts): The domain is not registered with Vercel. Status code `400`. Applicable to 4 of 302 methods.*
+* [`ExpectedPriceMismatch`](./src/models/expectedpricemismatch.ts): The expected price passed does not match the actual price. Status code `400`. Applicable to 4 of 302 methods.*
+* [`DomainNotAvailable`](./src/models/domainnotavailable.ts): The domain is not available. Status code `400`. Applicable to 4 of 302 methods.*
+* [`DomainNotFound`](./src/models/domainnotfound.ts): The domain was not found in our system. Status code `404`. Applicable to 4 of 302 methods.*
+* [`NotFound`](./src/models/notfound.ts): NotFound. Status code `404`. Applicable to 3 of 302 methods.*
+* [`OrderTooExpensive`](./src/models/ordertooexpensive.ts): The total price of the order is too high. Status code `400`. Applicable to 2 of 302 methods.*
+* [`InvalidAdditionalContactInfo`](./src/models/invalidadditionalcontactinfo.ts): Additional contact information provided for the TLD is invalid. Status code `400`. Applicable to 2 of 302 methods.*
+* [`AdditionalContactInfoRequired`](./src/models/additionalcontactinforequired.ts): Additional contact information is required for the TLD. Status code `400`. Applicable to 2 of 302 methods.*
+* [`LanguageCodeRequired`](./src/models/languagecoderequired.ts): A language code is required for punycode domains. Status code `400`. Applicable to 2 of 302 methods.*
+* [`TooManyDomains`](./src/models/toomanydomains.ts): The number of domains in the order is too high. Status code `400`. Applicable to 1 of 302 methods.*
+* [`DuplicateDomains`](./src/models/duplicatedomains.ts): Duplicate domains were provided. Status code `400`. Applicable to 1 of 302 methods.*
+* [`DomainAlreadyOwned`](./src/models/domainalreadyowned.ts): The domain is already owned by another team or user. Status code `400`. Applicable to 1 of 302 methods.*
+* [`DNSSECEnabled`](./src/models/dnssecenabled.ts): The operation cannot be completed because DNSSEC is enabled for the domain. Status code `400`. Applicable to 1 of 302 methods.*
+* [`DomainAlreadyRenewing`](./src/models/domainalreadyrenewing.ts): The domain is already renewing. Status code `400`. Applicable to 1 of 302 methods.*
+* [`DomainNotRenewable`](./src/models/domainnotrenewable.ts): The domain is not renewable. Status code `400`. Applicable to 1 of 302 methods.*
+* [`DomainCannotBeTransferedOutUntil`](./src/models/domaincannotbetransferedoutuntil.ts): The domain cannot be transfered out until the specified date. Status code `409`. Applicable to 1 of 302 methods.*
 * [`ResponseValidationError`](./src/models/responsevalidationerror.ts): Type mismatch between the data returned from the server and the structure expected by the SDK. See `error.rawValue` for the raw value and `error.pretty()` for a nicely formatted multi-line string.
 
 </details>

@@ -16,4 +16,3 @@ let value: PatchTeamDeploymentPolicy1 = {};
 | --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
 | `gitSources`                                        | *models.PatchTeamDeploymentPolicyGitSources*        | :heavy_minus_sign:                                  | N/A                                                 |
 | `deploymentSources`                                 | *models.PatchTeamDeploymentPolicyDeploymentSources* | :heavy_minus_sign:                                  | N/A                                                 |
-| `publicDeployments`                                 | *models.PatchTeamDeploymentPolicyPublicDeployments* | :heavy_minus_sign:                                  | N/A                                                 |

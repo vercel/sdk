@@ -5,7 +5,7 @@ If set to "true", the request will block until the command finishes execution. U
 ## Example Usage
 
 ```typescript
-import { Wait } from "@vercel/sdk/models/getcommandop.js";
+import { Wait } from "@vercel/sdk/models/getsessioncommandop.js";
 
 let value: Wait = "true";
 ```

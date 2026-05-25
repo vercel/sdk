@@ -260,6 +260,10 @@ export type TeamLimited = {
    * UNIX timestamp (in milliseconds) when the Team was created.
    */
   createdAt: number;
+  /**
+   * The organizationId for child teams created under an organization.
+   */
+  parentId?: string | undefined;
 };
 
 /** @internal */
@@ -708,6 +712,7 @@ export const TeamLimited$inboundSchema: z.ZodType<
   avatar: types.nullable(types.string()),
   membership: types.optional(z.lazy(() => TeamLimitedMembership$inboundSchema)),
   createdAt: types.number(),
+  parentId: types.optional(types.string()),
 });
 /** @internal */
 export type TeamLimited$Outbound = {
@@ -720,6 +725,7 @@ export type TeamLimited$Outbound = {
   avatar: string | null;
   membership?: TeamLimitedMembership$Outbound | undefined;
   createdAt: number;
+  parentId?: string | undefined;
 };
 
 /** @internal */
@@ -737,6 +743,7 @@ export const TeamLimited$outboundSchema: z.ZodType<
   avatar: z.nullable(z.string()),
   membership: z.lazy(() => TeamLimitedMembership$outboundSchema).optional(),
   createdAt: z.number(),
+  parentId: z.string().optional(),
 });
 
 export function teamLimitedToJSON(teamLimited: TeamLimited): string {

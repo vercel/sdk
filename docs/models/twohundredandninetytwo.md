@@ -8,14 +8,19 @@ The payload of the event, if requested.
 import { TwoHundredAndNinetyTwo } from "@vercel/sdk/models/payloadenvironment.js";
 
 let value: TwoHundredAndNinetyTwo = {
-  previousConcurrentBuilds: 3709.71,
-  nextConcurrentBuilds: 8966.71,
+  publicId: "<id>",
+  role: "<value>",
+  maxUses: 3709.71,
+  expiresAt: "1763966990559",
 };
 ```
 
 ## Fields
 
-| Field                      | Type                       | Required                   | Description                |
-| -------------------------- | -------------------------- | -------------------------- | -------------------------- |
-| `previousConcurrentBuilds` | *number*                   | :heavy_check_mark:         | N/A                        |
-| `nextConcurrentBuilds`     | *number*                   | :heavy_check_mark:         | N/A                        |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `publicId`         | *string*           | :heavy_check_mark: | N/A                |
+| `role`             | *string*           | :heavy_check_mark: | N/A                |
+| `maxUses`          | *number*           | :heavy_check_mark: | N/A                |
+| `expiresAt`        | *string*           | :heavy_check_mark: | N/A                |
+| `name`             | *string*           | :heavy_minus_sign: | N/A                |

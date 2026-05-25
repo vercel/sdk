@@ -492,14 +492,6 @@ export type DeploymentSources = {
 };
 
 /**
- * Controls whether deployments may have their source and logs available publicly (i.e. the deployment's `public` boolean set to `true`). This rule does NOT control whether the deployment URL itself requires authentication — see deployment protection settings for that. - `allowPublicDeployments: false`: deployments must be created with `public: false`. Public deployments are blocked. - `allowPublicDeployments: true`: equivalent to `enabled: false`; here only so the field is always present on an enabled rule.
- */
-export type PublicDeployments = {
-  allowPublicDeployments: boolean;
-  enabled: boolean;
-};
-
-/**
  * Composable deployment-time policy for the team. Used as the default for every project on the team, with optional per-project overrides on `project.deploymentPolicy`.
  */
 export type DeploymentPolicy = {
@@ -511,10 +503,6 @@ export type DeploymentPolicy = {
    * Restricts which deployment sources are allowed. A deployment passes if its source is in `sources`. Multiple entries are evaluated as OR. `enabled: true` with an empty `sources` list is treated as deny-all.
    */
   deploymentSources?: DeploymentSources | undefined;
-  /**
-   * Controls whether deployments may have their source and logs available publicly (i.e. the deployment's `public` boolean set to `true`). This rule does NOT control whether the deployment URL itself requires authentication — see deployment protection settings for that. - `allowPublicDeployments: false`: deployments must be created with `public: false`. Public deployments are blocked. - `allowPublicDeployments: true`: equivalent to `enabled: false`; here only so the field is always present on an enabled rule.
-   */
-  publicDeployments?: PublicDeployments | undefined;
 };
 
 export type Entitlements = {
@@ -770,6 +758,10 @@ export type Team = {
    * UNIX timestamp (in milliseconds) when the Team was created.
    */
   createdAt: number;
+  /**
+   * The organizationId for child teams created under an organization.
+   */
+  parentId?: string | undefined;
   additionalProperties?: { [k: string]: any } | undefined;
 };
 
@@ -2016,48 +2008,6 @@ export function deploymentSourcesFromJSON(
 }
 
 /** @internal */
-export const PublicDeployments$inboundSchema: z.ZodType<
-  PublicDeployments,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  allowPublicDeployments: types.boolean(),
-  enabled: types.boolean(),
-});
-/** @internal */
-export type PublicDeployments$Outbound = {
-  allowPublicDeployments: boolean;
-  enabled: boolean;
-};
-
-/** @internal */
-export const PublicDeployments$outboundSchema: z.ZodType<
-  PublicDeployments$Outbound,
-  z.ZodTypeDef,
-  PublicDeployments
-> = z.object({
-  allowPublicDeployments: z.boolean(),
-  enabled: z.boolean(),
-});
-
-export function publicDeploymentsToJSON(
-  publicDeployments: PublicDeployments,
-): string {
-  return JSON.stringify(
-    PublicDeployments$outboundSchema.parse(publicDeployments),
-  );
-}
-export function publicDeploymentsFromJSON(
-  jsonString: string,
-): SafeParseResult<PublicDeployments, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PublicDeployments$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PublicDeployments' from JSON`,
-  );
-}
-
-/** @internal */
 export const DeploymentPolicy$inboundSchema: z.ZodType<
   DeploymentPolicy,
   z.ZodTypeDef,
@@ -2067,15 +2017,11 @@ export const DeploymentPolicy$inboundSchema: z.ZodType<
   deploymentSources: types.optional(
     z.lazy(() => DeploymentSources$inboundSchema),
   ),
-  publicDeployments: types.optional(
-    z.lazy(() => PublicDeployments$inboundSchema),
-  ),
 });
 /** @internal */
 export type DeploymentPolicy$Outbound = {
   gitSources?: GitSources$Outbound | undefined;
   deploymentSources?: DeploymentSources$Outbound | undefined;
-  publicDeployments?: PublicDeployments$Outbound | undefined;
 };
 
 /** @internal */
@@ -2086,7 +2032,6 @@ export const DeploymentPolicy$outboundSchema: z.ZodType<
 > = z.object({
   gitSources: z.lazy(() => GitSources$outboundSchema).optional(),
   deploymentSources: z.lazy(() => DeploymentSources$outboundSchema).optional(),
-  publicDeployments: z.lazy(() => PublicDeployments$outboundSchema).optional(),
 });
 
 export function deploymentPolicyToJSON(
@@ -2401,6 +2346,7 @@ export const Team$inboundSchema: z.ZodType<Team, z.ZodTypeDef, unknown> =
       avatar: types.nullable(types.string()),
       membership: types.optional(z.lazy(() => Membership$inboundSchema)),
       createdAt: types.number(),
+      parentId: types.optional(types.string()),
     }).catchall(z.any()),
     "additionalProperties",
     true,
@@ -2450,6 +2396,7 @@ export type Team$Outbound = {
   avatar: string | null;
   membership?: Membership$Outbound | undefined;
   createdAt: number;
+  parentId?: string | undefined;
   [additionalProperties: string]: unknown;
 };
 
@@ -2508,6 +2455,7 @@ export const Team$outboundSchema: z.ZodType<Team$Outbound, z.ZodTypeDef, Team> =
     avatar: z.nullable(z.string()),
     membership: z.lazy(() => Membership$outboundSchema).optional(),
     createdAt: z.number(),
+    parentId: z.string().optional(),
     additionalProperties: z.record(z.any()).optional(),
   }).transform((v) => {
     return {

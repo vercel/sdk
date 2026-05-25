@@ -7,13 +7,15 @@ The payload of the event, if requested.
 ```typescript
 import { OneHundredAndFiftyThree } from "@vercel/sdk/models/edgemiddlewareinvocations.js";
 
-let value: OneHundredAndFiftyThree = {};
+let value: OneHundredAndFiftyThree = {
+  oldName: "<value>",
+  newName: "<value>",
+};
 ```
 
 ## Fields
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `price`            | *number*           | :heavy_minus_sign: | N/A                |
-| `currency`         | *string*           | :heavy_minus_sign: | N/A                |
-| `enabled`          | *boolean*          | :heavy_minus_sign: | N/A                |
+| `oldName`          | *string*           | :heavy_check_mark: | N/A                |
+| `newName`          | *string*           | :heavy_check_mark: | N/A                |

@@ -5,7 +5,7 @@ Field to sort by.
 ## Example Usage
 
 ```typescript
-import { QueryParamSortBy } from "@vercel/sdk/models/getsandboxesv2op.js";
+import { QueryParamSortBy } from "@vercel/sdk/models/listsandboxesop.js";
 
 let value: QueryParamSortBy = "createdAt";
 ```

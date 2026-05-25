@@ -3,13 +3,15 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPayload188Previous } from "@vercel/sdk/models/two1.js";
+import { UserEventPayload188Previous } from "@vercel/sdk/models/onehundredandfiftyfive.js";
 
-let value: UserEventPayload188Previous = {};
+let value: UserEventPayload188Previous = {
+  functionDefaultRegions: null,
+};
 ```
 
 ## Fields
 
-| Field                         | Type                          | Required                      | Description                   |
-| ----------------------------- | ----------------------------- | ----------------------------- | ----------------------------- |
-| `commandForIgnoringBuildStep` | *string*                      | :heavy_minus_sign:            | N/A                           |
+| Field                    | Type                     | Required                 | Description              |
+| ------------------------ | ------------------------ | ------------------------ | ------------------------ |
+| `functionDefaultRegions` | *string*[]               | :heavy_check_mark:       | N/A                      |

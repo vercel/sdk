@@ -38,6 +38,7 @@ const value: models.Team = {
   name: "My Team",
   avatar: "6eb07268bcfadd309905ffb1579354084c24655c",
   createdAt: 1630748523395,
+  parentId: "org_nllPyCtREAqxxdyFKbbMDlxd",
 };
 ```
 
@@ -70,6 +71,7 @@ const value: models.TeamLimited = {
   name: "My Team",
   avatar: "6eb07268bcfadd309905ffb1579354084c24655c",
   createdAt: 1630748523395,
+  parentId: "org_nllPyCtREAqxxdyFKbbMDlxd",
 };
 ```
 

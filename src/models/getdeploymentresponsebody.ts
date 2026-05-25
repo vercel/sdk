@@ -122,7 +122,7 @@ export type GetDeploymentResponseBodyReadySubstate = ClosedEnum<
 /**
  * Where was the deployment created from
  */
-export const ResponseBodySource = {
+export const GetDeploymentResponseBodySource = {
   ApiTriggerGitDeploy: "api-trigger-git-deploy",
   Cli: "cli",
   CloneRepo: "clone/repo",
@@ -135,7 +135,9 @@ export const ResponseBodySource = {
 /**
  * Where was the deployment created from
  */
-export type ResponseBodySource = ClosedEnum<typeof ResponseBodySource>;
+export type GetDeploymentResponseBodySource = ClosedEnum<
+  typeof GetDeploymentResponseBodySource
+>;
 
 /**
  * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
@@ -175,7 +177,7 @@ export type ResponseBodyPlan = ClosedEnum<typeof ResponseBodyPlan>;
 /**
  * The external platform that created the deployment (e.g. its display name).
  */
-export type GetDeploymentResponseBodyDeploymentsSource = {
+export type GetDeploymentResponseBodyDeploymentsResponseSource = {
   /**
    * Display name of the platform.
    */
@@ -231,7 +233,7 @@ export type ResponseBodyPlatform = {
   /**
    * The external platform that created the deployment (e.g. its display name).
    */
-  source: GetDeploymentResponseBodyDeploymentsSource;
+  source: GetDeploymentResponseBodyDeploymentsResponseSource;
   /**
    * Reference back to the entity on the platform that initiated the deployment.
    */
@@ -1199,7 +1201,7 @@ export type GetDeploymentResponseBody1 = {
   /**
    * Where was the deployment created from
    */
-  source?: ResponseBodySource | undefined;
+  source?: GetDeploymentResponseBodySource | undefined;
   /**
    * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
    */
@@ -1289,13 +1291,13 @@ export const GetDeploymentResponseBodyReadySubstate$outboundSchema:
     GetDeploymentResponseBodyReadySubstate$inboundSchema;
 
 /** @internal */
-export const ResponseBodySource$inboundSchema: z.ZodNativeEnum<
-  typeof ResponseBodySource
-> = z.nativeEnum(ResponseBodySource);
+export const GetDeploymentResponseBodySource$inboundSchema: z.ZodNativeEnum<
+  typeof GetDeploymentResponseBodySource
+> = z.nativeEnum(GetDeploymentResponseBodySource);
 /** @internal */
-export const ResponseBodySource$outboundSchema: z.ZodNativeEnum<
-  typeof ResponseBodySource
-> = ResponseBodySource$inboundSchema;
+export const GetDeploymentResponseBodySource$outboundSchema: z.ZodNativeEnum<
+  typeof GetDeploymentResponseBodySource
+> = GetDeploymentResponseBodySource$inboundSchema;
 
 /** @internal */
 export const GetDeploymentResponseBodyTarget$inboundSchema: z.ZodNativeEnum<
@@ -1406,49 +1408,52 @@ export const ResponseBodyPlan$outboundSchema: z.ZodNativeEnum<
 > = ResponseBodyPlan$inboundSchema;
 
 /** @internal */
-export const GetDeploymentResponseBodyDeploymentsSource$inboundSchema:
-  z.ZodType<GetDeploymentResponseBodyDeploymentsSource, z.ZodTypeDef, unknown> =
-    z.object({
-      name: types.string(),
-    });
+export const GetDeploymentResponseBodyDeploymentsResponseSource$inboundSchema:
+  z.ZodType<
+    GetDeploymentResponseBodyDeploymentsResponseSource,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    name: types.string(),
+  });
 /** @internal */
-export type GetDeploymentResponseBodyDeploymentsSource$Outbound = {
+export type GetDeploymentResponseBodyDeploymentsResponseSource$Outbound = {
   name: string;
 };
 
 /** @internal */
-export const GetDeploymentResponseBodyDeploymentsSource$outboundSchema:
+export const GetDeploymentResponseBodyDeploymentsResponseSource$outboundSchema:
   z.ZodType<
-    GetDeploymentResponseBodyDeploymentsSource$Outbound,
+    GetDeploymentResponseBodyDeploymentsResponseSource$Outbound,
     z.ZodTypeDef,
-    GetDeploymentResponseBodyDeploymentsSource
+    GetDeploymentResponseBodyDeploymentsResponseSource
   > = z.object({
     name: z.string(),
   });
 
-export function getDeploymentResponseBodyDeploymentsSourceToJSON(
-  getDeploymentResponseBodyDeploymentsSource:
-    GetDeploymentResponseBodyDeploymentsSource,
+export function getDeploymentResponseBodyDeploymentsResponseSourceToJSON(
+  getDeploymentResponseBodyDeploymentsResponseSource:
+    GetDeploymentResponseBodyDeploymentsResponseSource,
 ): string {
   return JSON.stringify(
-    GetDeploymentResponseBodyDeploymentsSource$outboundSchema.parse(
-      getDeploymentResponseBodyDeploymentsSource,
+    GetDeploymentResponseBodyDeploymentsResponseSource$outboundSchema.parse(
+      getDeploymentResponseBodyDeploymentsResponseSource,
     ),
   );
 }
-export function getDeploymentResponseBodyDeploymentsSourceFromJSON(
+export function getDeploymentResponseBodyDeploymentsResponseSourceFromJSON(
   jsonString: string,
 ): SafeParseResult<
-  GetDeploymentResponseBodyDeploymentsSource,
+  GetDeploymentResponseBodyDeploymentsResponseSource,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      GetDeploymentResponseBodyDeploymentsSource$inboundSchema.parse(
+      GetDeploymentResponseBodyDeploymentsResponseSource$inboundSchema.parse(
         JSON.parse(x),
       ),
-    `Failed to parse 'GetDeploymentResponseBodyDeploymentsSource' from JSON`,
+    `Failed to parse 'GetDeploymentResponseBodyDeploymentsResponseSource' from JSON`,
   );
 }
 
@@ -1563,7 +1568,7 @@ export const ResponseBodyPlatform$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   source: z.lazy(() =>
-    GetDeploymentResponseBodyDeploymentsSource$inboundSchema
+    GetDeploymentResponseBodyDeploymentsResponseSource$inboundSchema
   ),
   origin: z.lazy(() => ResponseBodyOrigin$inboundSchema),
   creator: z.lazy(() =>
@@ -1573,7 +1578,7 @@ export const ResponseBodyPlatform$inboundSchema: z.ZodType<
 });
 /** @internal */
 export type ResponseBodyPlatform$Outbound = {
-  source: GetDeploymentResponseBodyDeploymentsSource$Outbound;
+  source: GetDeploymentResponseBodyDeploymentsResponseSource$Outbound;
   origin: ResponseBodyOrigin$Outbound;
   creator: GetDeploymentResponseBodyDeploymentsCreator$Outbound;
   meta?: { [k: string]: string } | undefined;
@@ -1586,7 +1591,7 @@ export const ResponseBodyPlatform$outboundSchema: z.ZodType<
   ResponseBodyPlatform
 > = z.object({
   source: z.lazy(() =>
-    GetDeploymentResponseBodyDeploymentsSource$outboundSchema
+    GetDeploymentResponseBodyDeploymentsResponseSource$outboundSchema
   ),
   origin: z.lazy(() => ResponseBodyOrigin$outboundSchema),
   creator: z.lazy(() =>
@@ -5069,7 +5074,7 @@ export const GetDeploymentResponseBody1$inboundSchema: z.ZodType<
   ),
   regions: z.array(types.string()),
   softDeletedByRetention: types.optional(types.boolean()),
-  source: types.optional(ResponseBodySource$inboundSchema),
+  source: types.optional(GetDeploymentResponseBodySource$inboundSchema),
   target: z.nullable(GetDeploymentResponseBodyTarget$inboundSchema).optional(),
   undeletedAt: types.optional(types.number()),
   url: types.string(),
@@ -5326,7 +5331,7 @@ export const GetDeploymentResponseBody1$outboundSchema: z.ZodType<
     .optional(),
   regions: z.array(z.string()),
   softDeletedByRetention: z.boolean().optional(),
-  source: ResponseBodySource$outboundSchema.optional(),
+  source: GetDeploymentResponseBodySource$outboundSchema.optional(),
   target: z.nullable(GetDeploymentResponseBodyTarget$outboundSchema).optional(),
   undeletedAt: z.number().optional(),
   url: z.string(),

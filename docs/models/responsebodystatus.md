@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyStatus } from "@vercel/sdk/models/statusop.js";
+import { ResponseBodyStatus } from "@vercel/sdk/models/createdeploymentcheckrunop.js";
 
-let value: ResponseBodyStatus = "paused";
+let value: ResponseBodyStatus = "completed";
 ```
 
 ## Values
 
 ```typescript
-"disabled" | "enabled" | "over_limit" | "paused"
+"queued" | "running" | "completed"
 ```

@@ -8,8 +8,8 @@ The payload of the event, if requested.
 import { ThreeHundredAndTwentyFour } from "@vercel/sdk/models/payloadenvironment.js";
 
 let value: ThreeHundredAndTwentyFour = {
-  model: "CTS",
-  useCase: "<value>",
+  id: "<id>",
+  url: "https://bowed-flu.net/",
 };
 ```
 
@@ -17,5 +17,5 @@ let value: ThreeHundredAndTwentyFour = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `model`            | *string*           | :heavy_check_mark: | N/A                |
-| `useCase`          | *string*           | :heavy_check_mark: | N/A                |
+| `id`               | *string*           | :heavy_check_mark: | N/A                |
+| `url`              | *string*           | :heavy_check_mark: | N/A                |

@@ -14,6 +14,10 @@ import {
   Alias$inboundSchema,
   Alias$Outbound,
   Alias$outboundSchema,
+  GetProjectsLink4,
+  GetProjectsLink4$inboundSchema,
+  GetProjectsLink4$Outbound,
+  GetProjectsLink4$outboundSchema,
   GetProjectsLink5,
   GetProjectsLink5$inboundSchema,
   GetProjectsLink5$Outbound,
@@ -22,10 +26,6 @@ import {
   GetProjectsLink6$inboundSchema,
   GetProjectsLink6$Outbound,
   GetProjectsLink6$outboundSchema,
-  GetProjectsLinkProjectsResponse200DeployHooks,
-  GetProjectsLinkProjectsResponse200DeployHooks$inboundSchema,
-  GetProjectsLinkProjectsResponse200DeployHooks$Outbound,
-  GetProjectsLinkProjectsResponse200DeployHooks$outboundSchema,
   GetProjectsResponseBody2,
   GetProjectsResponseBody2$inboundSchema,
   GetProjectsResponseBody2$Outbound,
@@ -53,33 +53,14 @@ import {
   ResponseBodyLatestDeployments$inboundSchema,
   ResponseBodyLatestDeployments$Outbound,
   ResponseBodyLatestDeployments$outboundSchema,
-} from "./getprojectslinkprojectsresponse200deployhooks.js";
+} from "./getprojectslink4.js";
 import {
   GetProjectsResponseBody3,
   GetProjectsResponseBody3$inboundSchema,
   GetProjectsResponseBody3$Outbound,
   GetProjectsResponseBody3$outboundSchema,
-} from "./getprojectsresponsebodyprojectsresponse200applicationjsoncreator.js";
+} from "./getprojectsresponsebodytargets.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
-
-export type GetProjectsLink4 = {
-  projectId: string;
-  projectName: string;
-  projectNameWithNamespace: string;
-  projectNamespace: string;
-  /**
-   * A new field, should be included in all new project links, is being added just in time when a deployment is created. This is needed for Protected Git scopes. This is the id of the top level group that a namespace belongs to. Gitlab supports group nesting (up to 20 levels).
-   */
-  projectOwnerId?: number | undefined;
-  projectUrl: string;
-  type: "gitlab";
-  createdAt?: number | undefined;
-  deployHooks: Array<GetProjectsLinkProjectsResponse200DeployHooks>;
-  gitCredentialId: string;
-  updatedAt?: number | undefined;
-  sourceless?: boolean | undefined;
-  productionBranch: string;
-};
 
 export type GetProjectsLinkProjectsResponseDeployHooks = {
   createdAt?: number | undefined;
@@ -1221,85 +1202,6 @@ export type GetProjectsResponseBody =
   | Array<GetProjectsResponseBody1>;
 
 /** @internal */
-export const GetProjectsLink4$inboundSchema: z.ZodType<
-  GetProjectsLink4,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  projectId: types.string(),
-  projectName: types.string(),
-  projectNameWithNamespace: types.string(),
-  projectNamespace: types.string(),
-  projectOwnerId: types.optional(types.number()),
-  projectUrl: types.string(),
-  type: types.literal("gitlab"),
-  createdAt: types.optional(types.number()),
-  deployHooks: z.array(
-    GetProjectsLinkProjectsResponse200DeployHooks$inboundSchema,
-  ),
-  gitCredentialId: types.string(),
-  updatedAt: types.optional(types.number()),
-  sourceless: types.optional(types.boolean()),
-  productionBranch: types.string(),
-});
-/** @internal */
-export type GetProjectsLink4$Outbound = {
-  projectId: string;
-  projectName: string;
-  projectNameWithNamespace: string;
-  projectNamespace: string;
-  projectOwnerId?: number | undefined;
-  projectUrl: string;
-  type: "gitlab";
-  createdAt?: number | undefined;
-  deployHooks: Array<GetProjectsLinkProjectsResponse200DeployHooks$Outbound>;
-  gitCredentialId: string;
-  updatedAt?: number | undefined;
-  sourceless?: boolean | undefined;
-  productionBranch: string;
-};
-
-/** @internal */
-export const GetProjectsLink4$outboundSchema: z.ZodType<
-  GetProjectsLink4$Outbound,
-  z.ZodTypeDef,
-  GetProjectsLink4
-> = z.object({
-  projectId: z.string(),
-  projectName: z.string(),
-  projectNameWithNamespace: z.string(),
-  projectNamespace: z.string(),
-  projectOwnerId: z.number().optional(),
-  projectUrl: z.string(),
-  type: z.literal("gitlab"),
-  createdAt: z.number().optional(),
-  deployHooks: z.array(
-    GetProjectsLinkProjectsResponse200DeployHooks$outboundSchema,
-  ),
-  gitCredentialId: z.string(),
-  updatedAt: z.number().optional(),
-  sourceless: z.boolean().optional(),
-  productionBranch: z.string(),
-});
-
-export function getProjectsLink4ToJSON(
-  getProjectsLink4: GetProjectsLink4,
-): string {
-  return JSON.stringify(
-    GetProjectsLink4$outboundSchema.parse(getProjectsLink4),
-  );
-}
-export function getProjectsLink4FromJSON(
-  jsonString: string,
-): SafeParseResult<GetProjectsLink4, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetProjectsLink4$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetProjectsLink4' from JSON`,
-  );
-}
-
-/** @internal */
 export const GetProjectsLinkProjectsResponseDeployHooks$inboundSchema:
   z.ZodType<GetProjectsLinkProjectsResponseDeployHooks, z.ZodTypeDef, unknown> =
     z.object({
@@ -1690,7 +1592,7 @@ export const ResponseBodyLink$inboundSchema: z.ZodType<
   z.lazy(() => GetProjectsLink1$inboundSchema),
   z.lazy(() => GetProjectsLink2$inboundSchema),
   z.lazy(() => GetProjectsLink3$inboundSchema),
-  z.lazy(() => GetProjectsLink4$inboundSchema),
+  GetProjectsLink4$inboundSchema,
   GetProjectsLink5$inboundSchema,
   GetProjectsLink6$inboundSchema,
 ]);
@@ -1712,7 +1614,7 @@ export const ResponseBodyLink$outboundSchema: z.ZodType<
   z.lazy(() => GetProjectsLink1$outboundSchema),
   z.lazy(() => GetProjectsLink2$outboundSchema),
   z.lazy(() => GetProjectsLink3$outboundSchema),
-  z.lazy(() => GetProjectsLink4$outboundSchema),
+  GetProjectsLink4$outboundSchema,
   GetProjectsLink5$outboundSchema,
   GetProjectsLink6$outboundSchema,
 ]);
@@ -6377,7 +6279,7 @@ export const GetProjectsResponseBody1$inboundSchema: z.ZodType<
       z.lazy(() => GetProjectsLink1$inboundSchema),
       z.lazy(() => GetProjectsLink2$inboundSchema),
       z.lazy(() => GetProjectsLink3$inboundSchema),
-      z.lazy(() => GetProjectsLink4$inboundSchema),
+      GetProjectsLink4$inboundSchema,
       GetProjectsLink5$inboundSchema,
       GetProjectsLink6$inboundSchema,
     ]),
@@ -6546,7 +6448,7 @@ export const GetProjectsResponseBody1$outboundSchema: z.ZodType<
     z.lazy(() => GetProjectsLink1$outboundSchema),
     z.lazy(() => GetProjectsLink2$outboundSchema),
     z.lazy(() => GetProjectsLink3$outboundSchema),
-    z.lazy(() => GetProjectsLink4$outboundSchema),
+    GetProjectsLink4$outboundSchema,
     GetProjectsLink5$outboundSchema,
     GetProjectsLink6$outboundSchema,
   ]).optional(),

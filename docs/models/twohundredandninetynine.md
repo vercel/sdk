@@ -8,7 +8,7 @@ The payload of the event, if requested.
 import { TwoHundredAndNinetyNine } from "@vercel/sdk/models/payloadenvironment.js";
 
 let value: TwoHundredAndNinetyNine = {
-  enabled: "off",
+  consent: "refused",
 };
 ```
 
@@ -16,4 +16,4 @@ let value: TwoHundredAndNinetyNine = {
 
 | Field                                                | Type                                                 | Required                                             | Description                                          |
 | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
-| `enabled`                                            | [models.PayloadEnabled](../models/payloadenabled.md) | :heavy_check_mark:                                   | N/A                                                  |
+| `consent`                                            | [models.PayloadConsent](../models/payloadconsent.md) | :heavy_check_mark:                                   | N/A                                                  |

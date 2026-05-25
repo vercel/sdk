@@ -1,17 +1,39 @@
 # ResponseBodySource
 
-Where was the deployment created from
 
-## Example Usage
+## Supported Types
 
-```typescript
-import { ResponseBodySource } from "@vercel/sdk/models/getdeploymentresponsebody.js";
-
-let value: ResponseBodySource = "cli";
-```
-
-## Values
+### `models.CreateDeploymentCheckRunSource1`
 
 ```typescript
-"api-trigger-git-deploy" | "cli" | "clone/repo" | "git" | "import" | "import/repo" | "redeploy" | "v0-web"
+const value: models.CreateDeploymentCheckRunSource1 = {
+  kind: "integration",
+  integrationId: "<id>",
+  integrationConfigurationId: "<id>",
+};
 ```
+
+### `models.CreateDeploymentCheckRunSource2`
+
+```typescript
+const value: models.CreateDeploymentCheckRunSource2 = {
+  kind: "webhook",
+};
+```
+
+### `models.CreateDeploymentCheckRunSource3`
+
+```typescript
+const value: models.CreateDeploymentCheckRunSource3 = {
+  kind: "git-provider",
+  provider: "gitlab",
+  externalCheckName: "<value>",
+};
+```
+
+### `models.CreateDeploymentCheckRunSource4`
+
+```typescript
+const value: models.CreateDeploymentCheckRunSource4 = {};
+```
+

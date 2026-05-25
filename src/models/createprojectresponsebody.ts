@@ -442,14 +442,6 @@ export type CreateProjectDeploymentSources = {
 };
 
 /**
- * Controls whether deployments may have their source and logs available publicly (i.e. the deployment's `public` boolean set to `true`). This rule does NOT control whether the deployment URL itself requires authentication — see deployment protection settings for that. - `allowPublicDeployments: false`: deployments must be created with `public: false`. Public deployments are blocked. - `allowPublicDeployments: true`: equivalent to `enabled: false`; here only so the field is always present on an enabled rule.
- */
-export type CreateProjectPublicDeployments = {
-  allowPublicDeployments: boolean;
-  enabled: boolean;
-};
-
-/**
  * Project-level shape. Each rule may be: - an object: overrides the team's value for that rule - `null`: explicitly clears the override on just that rule (inherit team) - omitted: inherit team To clear all overrides and inherit fully, set the project's `deploymentPolicy` field itself to `null`. Defined independently from {@link TeamDeploymentPolicy} so the two are not coupled by a shared type — the underlying data lives in separate stores.
  */
 export type CreateProjectDeploymentPolicy = {
@@ -461,10 +453,6 @@ export type CreateProjectDeploymentPolicy = {
    * Restricts which deployment sources are allowed. A deployment passes if its source is in `sources`. Multiple entries are evaluated as OR. `enabled: true` with an empty `sources` list is treated as deny-all.
    */
   deploymentSources?: CreateProjectDeploymentSources | null | undefined;
-  /**
-   * Controls whether deployments may have their source and logs available publicly (i.e. the deployment's `public` boolean set to `true`). This rule does NOT control whether the deployment URL itself requires authentication — see deployment protection settings for that. - `allowPublicDeployments: false`: deployments must be created with `public: false`. Public deployments are blocked. - `allowPublicDeployments: true`: equivalent to `enabled: false`; here only so the field is always present on an enabled rule.
-   */
-  publicDeployments?: CreateProjectPublicDeployments | null | undefined;
 };
 
 export const FlatRateTier = {
@@ -2083,50 +2071,6 @@ export function createProjectDeploymentSourcesFromJSON(
 }
 
 /** @internal */
-export const CreateProjectPublicDeployments$inboundSchema: z.ZodType<
-  CreateProjectPublicDeployments,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  allowPublicDeployments: types.boolean(),
-  enabled: types.boolean(),
-});
-/** @internal */
-export type CreateProjectPublicDeployments$Outbound = {
-  allowPublicDeployments: boolean;
-  enabled: boolean;
-};
-
-/** @internal */
-export const CreateProjectPublicDeployments$outboundSchema: z.ZodType<
-  CreateProjectPublicDeployments$Outbound,
-  z.ZodTypeDef,
-  CreateProjectPublicDeployments
-> = z.object({
-  allowPublicDeployments: z.boolean(),
-  enabled: z.boolean(),
-});
-
-export function createProjectPublicDeploymentsToJSON(
-  createProjectPublicDeployments: CreateProjectPublicDeployments,
-): string {
-  return JSON.stringify(
-    CreateProjectPublicDeployments$outboundSchema.parse(
-      createProjectPublicDeployments,
-    ),
-  );
-}
-export function createProjectPublicDeploymentsFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateProjectPublicDeployments, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateProjectPublicDeployments$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateProjectPublicDeployments' from JSON`,
-  );
-}
-
-/** @internal */
 export const CreateProjectDeploymentPolicy$inboundSchema: z.ZodType<
   CreateProjectDeploymentPolicy,
   z.ZodTypeDef,
@@ -2137,19 +2081,12 @@ export const CreateProjectDeploymentPolicy$inboundSchema: z.ZodType<
   deploymentSources: z.nullable(
     z.lazy(() => CreateProjectDeploymentSources$inboundSchema),
   ).optional(),
-  publicDeployments: z.nullable(
-    z.lazy(() => CreateProjectPublicDeployments$inboundSchema),
-  ).optional(),
 });
 /** @internal */
 export type CreateProjectDeploymentPolicy$Outbound = {
   gitSources?: CreateProjectGitSources$Outbound | null | undefined;
   deploymentSources?:
     | CreateProjectDeploymentSources$Outbound
-    | null
-    | undefined;
-  publicDeployments?:
-    | CreateProjectPublicDeployments$Outbound
     | null
     | undefined;
 };
@@ -2164,9 +2101,6 @@ export const CreateProjectDeploymentPolicy$outboundSchema: z.ZodType<
     .optional(),
   deploymentSources: z.nullable(
     z.lazy(() => CreateProjectDeploymentSources$outboundSchema),
-  ).optional(),
-  publicDeployments: z.nullable(
-    z.lazy(() => CreateProjectPublicDeployments$outboundSchema),
   ).optional(),
 });
 

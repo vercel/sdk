@@ -18,14 +18,14 @@ import {
 /**
  * If set to "true", the request will block until the command finishes execution. Useful for synchronously waiting for command completion.
  */
-export const QueryParamWait = {
+export const Wait = {
   True: "true",
   False: "false",
 } as const;
 /**
  * If set to "true", the request will block until the command finishes execution. Useful for synchronously waiting for command completion.
  */
-export type QueryParamWait = ClosedEnum<typeof QueryParamWait>;
+export type Wait = ClosedEnum<typeof Wait>;
 
 export type GetSessionCommandRequest = {
   /**
@@ -39,7 +39,7 @@ export type GetSessionCommandRequest = {
   /**
    * If set to "true", the request will block until the command finishes execution. Useful for synchronously waiting for command completion.
    */
-  wait?: QueryParamWait | undefined;
+  wait?: Wait | undefined;
   /**
    * The Team identifier to perform the request on behalf of.
    */
@@ -61,13 +61,12 @@ export type GetSessionCommandResponseBody = {
 };
 
 /** @internal */
-export const QueryParamWait$inboundSchema: z.ZodNativeEnum<
-  typeof QueryParamWait
-> = z.nativeEnum(QueryParamWait);
+export const Wait$inboundSchema: z.ZodNativeEnum<typeof Wait> = z.nativeEnum(
+  Wait,
+);
 /** @internal */
-export const QueryParamWait$outboundSchema: z.ZodNativeEnum<
-  typeof QueryParamWait
-> = QueryParamWait$inboundSchema;
+export const Wait$outboundSchema: z.ZodNativeEnum<typeof Wait> =
+  Wait$inboundSchema;
 
 /** @internal */
 export const GetSessionCommandRequest$inboundSchema: z.ZodType<
@@ -77,7 +76,7 @@ export const GetSessionCommandRequest$inboundSchema: z.ZodType<
 > = z.object({
   sessionId: types.string(),
   cmdId: types.string(),
-  wait: QueryParamWait$inboundSchema.default("false"),
+  wait: Wait$inboundSchema.default("false"),
   teamId: types.optional(types.string()),
   slug: types.optional(types.string()),
 });
@@ -98,7 +97,7 @@ export const GetSessionCommandRequest$outboundSchema: z.ZodType<
 > = z.object({
   sessionId: z.string(),
   cmdId: z.string(),
-  wait: QueryParamWait$outboundSchema.default("false"),
+  wait: Wait$outboundSchema.default("false"),
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });

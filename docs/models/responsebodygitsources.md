@@ -5,7 +5,7 @@ Restricts inbound Git deployments to an allowlist of orgs and/or repos. `enabled
 ## Example Usage
 
 ```typescript
-import { ResponseBodyGitSources } from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponse200applicationjsoncreator.js";
+import { ResponseBodyGitSources } from "@vercel/sdk/models/getprojectsresponsebodytargets.js";
 
 let value: ResponseBodyGitSources = {
   sources: [],

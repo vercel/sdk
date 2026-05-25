@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { DeploymentSources1 } from "@vercel/sdk/models/updateprojectprojectsresponsebuildmachineselection.js";
+import { DeploymentSources1 } from "@vercel/sdk/models/updateprojectprojectsresponsebuildqueue.js";
 
 let value: DeploymentSources1 = {
   enabled: false,

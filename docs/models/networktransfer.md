@@ -5,7 +5,7 @@ The quantity of data transfered to and from the sandbox, in bytes. This value is
 ## Example Usage
 
 ```typescript
-import { NetworkTransfer } from "@vercel/sdk/models/sandbox.js";
+import { NetworkTransfer } from "@vercel/sdk/models/session.js";
 
 let value: NetworkTransfer = {
   ingress: 5357.53,

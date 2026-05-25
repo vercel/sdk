@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsHasProjectsResponse200ApplicationJSONResponseBody31 } from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponse200applicationjsoncreator.js";
+import { GetProjectsHasProjectsResponse200ApplicationJSONResponseBody31 } from "@vercel/sdk/models/getprojectsresponsebodytargets.js";
 
 let value: GetProjectsHasProjectsResponse200ApplicationJSONResponseBody31 = {
   type: "header",

@@ -288,14 +288,6 @@ export type UpdateMicrofrontendsDeploymentSources = {
 };
 
 /**
- * Controls whether deployments may have their source and logs available publicly (i.e. the deployment's `public` boolean set to `true`). This rule does NOT control whether the deployment URL itself requires authentication — see deployment protection settings for that. - `allowPublicDeployments: false`: deployments must be created with `public: false`. Public deployments are blocked. - `allowPublicDeployments: true`: equivalent to `enabled: false`; here only so the field is always present on an enabled rule.
- */
-export type UpdateMicrofrontendsPublicDeployments = {
-  allowPublicDeployments: boolean;
-  enabled: boolean;
-};
-
-/**
  * Project-level shape. Each rule may be: - an object: overrides the team's value for that rule - `null`: explicitly clears the override on just that rule (inherit team) - omitted: inherit team To clear all overrides and inherit fully, set the project's `deploymentPolicy` field itself to `null`. Defined independently from {@link TeamDeploymentPolicy} so the two are not coupled by a shared type — the underlying data lives in separate stores.
  */
 export type UpdateMicrofrontendsDeploymentPolicy = {
@@ -307,10 +299,6 @@ export type UpdateMicrofrontendsDeploymentPolicy = {
    * Restricts which deployment sources are allowed. A deployment passes if its source is in `sources`. Multiple entries are evaluated as OR. `enabled: true` with an empty `sources` list is treated as deny-all.
    */
   deploymentSources?: UpdateMicrofrontendsDeploymentSources | null | undefined;
-  /**
-   * Controls whether deployments may have their source and logs available publicly (i.e. the deployment's `public` boolean set to `true`). This rule does NOT control whether the deployment URL itself requires authentication — see deployment protection settings for that. - `allowPublicDeployments: false`: deployments must be created with `public: false`. Public deployments are blocked. - `allowPublicDeployments: true`: equivalent to `enabled: false`; here only so the field is always present on an enabled rule.
-   */
-  publicDeployments?: UpdateMicrofrontendsPublicDeployments | null | undefined;
 };
 
 export const UpdateMicrofrontendsFlatRateTier = {
@@ -1338,51 +1326,6 @@ export function updateMicrofrontendsDeploymentSourcesFromJSON(
 }
 
 /** @internal */
-export const UpdateMicrofrontendsPublicDeployments$inboundSchema: z.ZodType<
-  UpdateMicrofrontendsPublicDeployments,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  allowPublicDeployments: types.boolean(),
-  enabled: types.boolean(),
-});
-/** @internal */
-export type UpdateMicrofrontendsPublicDeployments$Outbound = {
-  allowPublicDeployments: boolean;
-  enabled: boolean;
-};
-
-/** @internal */
-export const UpdateMicrofrontendsPublicDeployments$outboundSchema: z.ZodType<
-  UpdateMicrofrontendsPublicDeployments$Outbound,
-  z.ZodTypeDef,
-  UpdateMicrofrontendsPublicDeployments
-> = z.object({
-  allowPublicDeployments: z.boolean(),
-  enabled: z.boolean(),
-});
-
-export function updateMicrofrontendsPublicDeploymentsToJSON(
-  updateMicrofrontendsPublicDeployments: UpdateMicrofrontendsPublicDeployments,
-): string {
-  return JSON.stringify(
-    UpdateMicrofrontendsPublicDeployments$outboundSchema.parse(
-      updateMicrofrontendsPublicDeployments,
-    ),
-  );
-}
-export function updateMicrofrontendsPublicDeploymentsFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateMicrofrontendsPublicDeployments, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      UpdateMicrofrontendsPublicDeployments$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateMicrofrontendsPublicDeployments' from JSON`,
-  );
-}
-
-/** @internal */
 export const UpdateMicrofrontendsDeploymentPolicy$inboundSchema: z.ZodType<
   UpdateMicrofrontendsDeploymentPolicy,
   z.ZodTypeDef,
@@ -1394,19 +1337,12 @@ export const UpdateMicrofrontendsDeploymentPolicy$inboundSchema: z.ZodType<
   deploymentSources: z.nullable(
     z.lazy(() => UpdateMicrofrontendsDeploymentSources$inboundSchema),
   ).optional(),
-  publicDeployments: z.nullable(
-    z.lazy(() => UpdateMicrofrontendsPublicDeployments$inboundSchema),
-  ).optional(),
 });
 /** @internal */
 export type UpdateMicrofrontendsDeploymentPolicy$Outbound = {
   gitSources?: UpdateMicrofrontendsGitSources$Outbound | null | undefined;
   deploymentSources?:
     | UpdateMicrofrontendsDeploymentSources$Outbound
-    | null
-    | undefined;
-  publicDeployments?:
-    | UpdateMicrofrontendsPublicDeployments$Outbound
     | null
     | undefined;
 };
@@ -1422,9 +1358,6 @@ export const UpdateMicrofrontendsDeploymentPolicy$outboundSchema: z.ZodType<
   ).optional(),
   deploymentSources: z.nullable(
     z.lazy(() => UpdateMicrofrontendsDeploymentSources$outboundSchema),
-  ).optional(),
-  publicDeployments: z.nullable(
-    z.lazy(() => UpdateMicrofrontendsPublicDeployments$outboundSchema),
   ).optional(),
 });
 

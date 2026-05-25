@@ -5,11 +5,11 @@
 ```typescript
 import { NamedSandboxMode } from "@vercel/sdk/models/namedsandbox.js";
 
-let value: NamedSandboxMode = "default-allow";
+let value: NamedSandboxMode = "read-write";
 ```
 
 ## Values
 
 ```typescript
-"allow-all" | "deny-all" | "custom" | "default-allow" | "default-deny"
+"read-only" | "read-write"
 ```

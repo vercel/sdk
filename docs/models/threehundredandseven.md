@@ -8,14 +8,12 @@ The payload of the event, if requested.
 import { ThreeHundredAndSeven } from "@vercel/sdk/models/payloadenvironment.js";
 
 let value: ThreeHundredAndSeven = {
-  provider: "gitlab",
-  login: "Annabell75",
+  fileId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field                                    | Type                                     | Required                                 | Description                              |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| `provider`                               | [models.Provider](../models/provider.md) | :heavy_check_mark:                       | N/A                                      |
-| `login`                                  | *string*                                 | :heavy_check_mark:                       | N/A                                      |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `fileId`           | *string*           | :heavy_check_mark: | N/A                |

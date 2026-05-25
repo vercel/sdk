@@ -9,7 +9,7 @@ import { OneHundredAndFortySeven } from "@vercel/sdk/models/edgemiddlewareinvoca
 
 let value: OneHundredAndFortySeven = {
   projectId: "<id>",
-  url: "https://winding-hovercraft.com",
+  headerName: "<value>",
   previousStatus: "<value>",
   justification: "<value>",
 };
@@ -20,6 +20,6 @@ let value: OneHundredAndFortySeven = {
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `projectId`        | *string*           | :heavy_check_mark: | N/A                |
-| `url`              | *string*           | :heavy_check_mark: | N/A                |
+| `headerName`       | *string*           | :heavy_check_mark: | N/A                |
 | `previousStatus`   | *string*           | :heavy_check_mark: | N/A                |
 | `justification`    | *string*           | :heavy_check_mark: | N/A                |

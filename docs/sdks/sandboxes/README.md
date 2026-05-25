@@ -4,29 +4,32 @@
 
 ### Available Operations
 
-* [getSandboxesV1](#getsandboxesv1) - List sandboxes
-* [listSnapshots](#listsnapshots) - List snapshots
-* [getSandbox](#getsandbox) - Get a sandbox
-* [listCommands](#listcommands) - List commands
-* [killCommand](#killcommand) - Kill a command
-* [stopSandbox](#stopsandbox) - Stop a sandbox
-* [extendSandboxTimeout](#extendsandboxtimeout) - Extend sandbox timeout
-* [updateNetworkPolicy](#updatenetworkpolicy) - Update network policy
-* [getCommand](#getcommand) - Get a command
-* [readFile](#readfile) - Read a file
-* [createDirectory](#createdirectory) - Create a directory
-* [writeFiles](#writefiles) - Write files
-* [getSnapshot](#getsnapshot) - Get a snapshot
-* [deleteSnapshot](#deletesnapshot) - Delete a snapshot
-* [createSnapshot](#createsnapshot) - Create a snapshot
+* [listSandboxes](#listsandboxes) - List sandboxes
+* [listSessionSnapshots](#listsessionsnapshots) - List snapshots
+* [getSessionSnapshot](#getsessionsnapshot) - Get a snapshot
+* [deleteSessionSnapshot](#deletesessionsnapshot) - Delete a snapshot
+* [listSessions](#listsessions) - List sessions
+* [getSession](#getsession) - Get a session
+* [getNamedSandbox](#getnamedsandbox) - Get a named sandbox
+* [deleteSandbox](#deletesandbox) - Delete a sandbox
+* [listSessionCommands](#listsessioncommands) - List commands
+* [getSessionCommand](#getsessioncommand) - Get a command
+* [killSessionCommand](#killsessioncommand) - Kill a command
+* [stopSession](#stopsession) - Stop a session
+* [extendSessionTimeout](#extendsessiontimeout) - Extend session timeout
+* [updateSessionNetworkPolicy](#updatesessionnetworkpolicy) - Update network policy
+* [readSessionFile](#readsessionfile) - Read a file
+* [createSessionDirectory](#createsessiondirectory) - Create a directory
+* [writeSessionFiles](#writesessionfiles) - Write files
+* [createSessionSnapshot](#createsessionsnapshot) - Create a snapshot
 
-## getSandboxesV1
+## listSandboxes
 
-Retrieves a paginated list of sandboxes belonging to a specific project. Results can be filtered by creation time using the `since` and `until` parameters.
+Retrieves a paginated list of named sandboxes belonging to a specific project. Results can be sorted by creation time or name, and optionally filtered by name prefix.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="getSandboxesV1" method="get" path="/v1/sandboxes" -->
+<!-- UsageSnippet language="typescript" operationID="listSandboxes" method="get" path="/v2/sandboxes" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -35,11 +38,8 @@ const vercel = new Vercel({
 });
 
 async function run() {
-  const result = await vercel.sandboxes.getSandboxesV1({
+  const result = await vercel.sandboxes.listSandboxes({
     project: "prj_abc123",
-    limit: 20,
-    since: 1540095775941,
-    until: 1540095775951,
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     slug: "my-team-url-slug",
   });
@@ -56,7 +56,7 @@ The standalone function version of this method:
 
 ```typescript
 import { VercelCore } from "@vercel/sdk/core.js";
-import { sandboxesGetSandboxesV1 } from "@vercel/sdk/funcs/sandboxesGetSandboxesV1.js";
+import { sandboxesListSandboxes } from "@vercel/sdk/funcs/sandboxesListSandboxes.js";
 
 // Use `VercelCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -65,11 +65,8 @@ const vercel = new VercelCore({
 });
 
 async function run() {
-  const res = await sandboxesGetSandboxesV1(vercel, {
+  const res = await sandboxesListSandboxes(vercel, {
     project: "prj_abc123",
-    limit: 20,
-    since: 1540095775941,
-    until: 1540095775951,
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     slug: "my-team-url-slug",
   });
@@ -77,7 +74,7 @@ async function run() {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("sandboxesGetSandboxesV1 failed:", res.error);
+    console.log("sandboxesListSandboxes failed:", res.error);
   }
 }
 
@@ -88,14 +85,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [models.GetSandboxesV1Request](../../models/getsandboxesv1request.md)                                                                                                          | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [models.ListSandboxesRequest](../../models/listsandboxesrequest.md)                                                                                                            | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[models.GetSandboxesV1ResponseBody](../../models/getsandboxesv1responsebody.md)\>**
+**Promise\<[models.ListSandboxesResponseBody](../../models/listsandboxesresponsebody.md)\>**
 
 ### Errors
 
@@ -103,13 +100,13 @@ run();
 | --------------- | --------------- | --------------- |
 | models.SDKError | 4XX, 5XX        | \*/\*           |
 
-## listSnapshots
+## listSessionSnapshots
 
 Retrieves a paginated list of snapshots for a specific project.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="listSnapshots" method="get" path="/v1/sandboxes/snapshots" -->
+<!-- UsageSnippet language="typescript" operationID="listSessionSnapshots" method="get" path="/v2/sandboxes/snapshots" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -118,11 +115,9 @@ const vercel = new Vercel({
 });
 
 async function run() {
-  const result = await vercel.sandboxes.listSnapshots({
+  const result = await vercel.sandboxes.listSessionSnapshots({
     project: "prj_abc123",
-    limit: 20,
-    since: 1540095775941,
-    until: 1540095775951,
+    name: "my-sandbox",
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     slug: "my-team-url-slug",
   });
@@ -139,7 +134,7 @@ The standalone function version of this method:
 
 ```typescript
 import { VercelCore } from "@vercel/sdk/core.js";
-import { sandboxesListSnapshots } from "@vercel/sdk/funcs/sandboxesListSnapshots.js";
+import { sandboxesListSessionSnapshots } from "@vercel/sdk/funcs/sandboxesListSessionSnapshots.js";
 
 // Use `VercelCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -148,11 +143,9 @@ const vercel = new VercelCore({
 });
 
 async function run() {
-  const res = await sandboxesListSnapshots(vercel, {
+  const res = await sandboxesListSessionSnapshots(vercel, {
     project: "prj_abc123",
-    limit: 20,
-    since: 1540095775941,
-    until: 1540095775951,
+    name: "my-sandbox",
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     slug: "my-team-url-slug",
   });
@@ -160,7 +153,7 @@ async function run() {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("sandboxesListSnapshots failed:", res.error);
+    console.log("sandboxesListSessionSnapshots failed:", res.error);
   }
 }
 
@@ -171,14 +164,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [models.ListSnapshotsRequest](../../models/listsnapshotsrequest.md)                                                                                                            | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [models.ListSessionSnapshotsRequest](../../models/listsessionsnapshotsrequest.md)                                                                                              | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[models.ListSnapshotsResponseBody](../../models/listsnapshotsresponsebody.md)\>**
+**Promise\<[models.ListSessionSnapshotsResponseBody](../../models/listsessionsnapshotsresponsebody.md)\>**
 
 ### Errors
 
@@ -186,13 +179,13 @@ run();
 | --------------- | --------------- | --------------- |
 | models.SDKError | 4XX, 5XX        | \*/\*           |
 
-## getSandbox
+## getSessionSnapshot
 
-Retrieves detailed information about a specific sandbox, including its current status, resource configuration, and exposed routes.
+Retrieves detailed information about a specific snapshot, including its creation time, size, expiration date, and the source session it was created from.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="getSandbox" method="get" path="/v1/sandboxes/{sandboxId}" -->
+<!-- UsageSnippet language="typescript" operationID="getSessionSnapshot" method="get" path="/v2/sandboxes/snapshots/{snapshotId}" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -201,8 +194,8 @@ const vercel = new Vercel({
 });
 
 async function run() {
-  const result = await vercel.sandboxes.getSandbox({
-    sandboxId: "sbx_abc123",
+  const result = await vercel.sandboxes.getSessionSnapshot({
+    snapshotId: "snap_abc123",
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     slug: "my-team-url-slug",
   });
@@ -219,7 +212,7 @@ The standalone function version of this method:
 
 ```typescript
 import { VercelCore } from "@vercel/sdk/core.js";
-import { sandboxesGetSandbox } from "@vercel/sdk/funcs/sandboxesGetSandbox.js";
+import { sandboxesGetSessionSnapshot } from "@vercel/sdk/funcs/sandboxesGetSessionSnapshot.js";
 
 // Use `VercelCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -228,8 +221,8 @@ const vercel = new VercelCore({
 });
 
 async function run() {
-  const res = await sandboxesGetSandbox(vercel, {
-    sandboxId: "sbx_abc123",
+  const res = await sandboxesGetSessionSnapshot(vercel, {
+    snapshotId: "snap_abc123",
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     slug: "my-team-url-slug",
   });
@@ -237,7 +230,7 @@ async function run() {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("sandboxesGetSandbox failed:", res.error);
+    console.log("sandboxesGetSessionSnapshot failed:", res.error);
   }
 }
 
@@ -248,14 +241,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [models.GetSandboxRequest](../../models/getsandboxrequest.md)                                                                                                                  | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [models.GetSessionSnapshotRequest](../../models/getsessionsnapshotrequest.md)                                                                                                  | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[models.GetSandboxResponseBody](../../models/getsandboxresponsebody.md)\>**
+**Promise\<[models.GetSessionSnapshotResponseBody](../../models/getsessionsnapshotresponsebody.md)\>**
 
 ### Errors
 
@@ -263,13 +256,13 @@ run();
 | --------------- | --------------- | --------------- |
 | models.SDKError | 4XX, 5XX        | \*/\*           |
 
-## listCommands
+## deleteSessionSnapshot
 
-Retrieves a list of all commands that have been executed in a sandbox, including their current status, exit codes, and execution times, ordered from the most recent to the oldest.
+Permanently deletes a snapshot and frees its associated storage. This action cannot be undone. After deletion, the snapshot can no longer be used to create new sessions.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="listCommands" method="get" path="/v1/sandboxes/{sandboxId}/cmd" -->
+<!-- UsageSnippet language="typescript" operationID="deleteSessionSnapshot" method="delete" path="/v2/sandboxes/snapshots/{snapshotId}" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -278,8 +271,8 @@ const vercel = new Vercel({
 });
 
 async function run() {
-  const result = await vercel.sandboxes.listCommands({
-    sandboxId: "sbx_abc123",
+  const result = await vercel.sandboxes.deleteSessionSnapshot({
+    snapshotId: "snap_abc123",
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     slug: "my-team-url-slug",
   });
@@ -296,7 +289,7 @@ The standalone function version of this method:
 
 ```typescript
 import { VercelCore } from "@vercel/sdk/core.js";
-import { sandboxesListCommands } from "@vercel/sdk/funcs/sandboxesListCommands.js";
+import { sandboxesDeleteSessionSnapshot } from "@vercel/sdk/funcs/sandboxesDeleteSessionSnapshot.js";
 
 // Use `VercelCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -305,8 +298,8 @@ const vercel = new VercelCore({
 });
 
 async function run() {
-  const res = await sandboxesListCommands(vercel, {
-    sandboxId: "sbx_abc123",
+  const res = await sandboxesDeleteSessionSnapshot(vercel, {
+    snapshotId: "snap_abc123",
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     slug: "my-team-url-slug",
   });
@@ -314,7 +307,7 @@ async function run() {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("sandboxesListCommands failed:", res.error);
+    console.log("sandboxesDeleteSessionSnapshot failed:", res.error);
   }
 }
 
@@ -325,14 +318,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [models.ListCommandsRequest](../../models/listcommandsrequest.md)                                                                                                              | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [models.DeleteSessionSnapshotRequest](../../models/deletesessionsnapshotrequest.md)                                                                                            | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[models.ListCommandsResponseBody](../../models/listcommandsresponsebody.md)\>**
+**Promise\<[models.DeleteSessionSnapshotResponseBody](../../models/deletesessionsnapshotresponsebody.md)\>**
 
 ### Errors
 
@@ -340,13 +333,13 @@ run();
 | --------------- | --------------- | --------------- |
 | models.SDKError | 4XX, 5XX        | \*/\*           |
 
-## killCommand
+## listSessions
 
-Sends a signal to terminate a running command in a sandbox. The signal can be used to gracefully stop (SIGTERM) or forcefully kill (SIGKILL) the process. The command must still be running for this operation to succeed.
+Retrieves a paginated list of sessions belonging to a specific sandbox. Results are sorted by creation time and paginated using an opaque cursor.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="killCommand" method="post" path="/v1/sandboxes/{sandboxId}/{cmdId}/kill" -->
+<!-- UsageSnippet language="typescript" operationID="listSessions" method="get" path="/v2/sandboxes/sessions" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -355,9 +348,477 @@ const vercel = new Vercel({
 });
 
 async function run() {
-  const result = await vercel.sandboxes.killCommand({
+  const result = await vercel.sandboxes.listSessions({
+    project: "prj_abc123",
+    name: "my-sandbox",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { VercelCore } from "@vercel/sdk/core.js";
+import { sandboxesListSessions } from "@vercel/sdk/funcs/sandboxesListSessions.js";
+
+// Use `VercelCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const vercel = new VercelCore({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await sandboxesListSessions(vercel, {
+    project: "prj_abc123",
+    name: "my-sandbox",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("sandboxesListSessions failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [models.ListSessionsRequest](../../models/listsessionsrequest.md)                                                                                                              | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[models.ListSessionsResponseBody](../../models/listsessionsresponsebody.md)\>**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| models.SDKError | 4XX, 5XX        | \*/\*           |
+
+## getSession
+
+Retrieves detailed information about a specific session, including its current status, resource configuration, and exposed routes.
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="getSession" method="get" path="/v2/sandboxes/sessions/{sessionId}" -->
+```typescript
+import { Vercel } from "@vercel/sdk";
+
+const vercel = new Vercel({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await vercel.sandboxes.getSession({
+    sessionId: "sbx_abc123",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { VercelCore } from "@vercel/sdk/core.js";
+import { sandboxesGetSession } from "@vercel/sdk/funcs/sandboxesGetSession.js";
+
+// Use `VercelCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const vercel = new VercelCore({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await sandboxesGetSession(vercel, {
+    sessionId: "sbx_abc123",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("sandboxesGetSession failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [models.GetSessionRequest](../../models/getsessionrequest.md)                                                                                                                  | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[models.GetSessionResponseBody](../../models/getsessionresponsebody.md)\>**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| models.SDKError | 4XX, 5XX        | \*/\*           |
+
+## getNamedSandbox
+
+Retrieves a named sandbox by name, including its current sandbox and routes. If the sandbox is stopped and resume is true, a new sandbox will be created from the most recent snapshot.
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="getNamedSandbox" method="get" path="/v2/sandboxes/{name}" -->
+```typescript
+import { Vercel } from "@vercel/sdk";
+
+const vercel = new Vercel({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await vercel.sandboxes.getNamedSandbox({
+    name: "my-sandbox",
+    projectId: "prj_abc123",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { VercelCore } from "@vercel/sdk/core.js";
+import { sandboxesGetNamedSandbox } from "@vercel/sdk/funcs/sandboxesGetNamedSandbox.js";
+
+// Use `VercelCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const vercel = new VercelCore({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await sandboxesGetNamedSandbox(vercel, {
+    name: "my-sandbox",
+    projectId: "prj_abc123",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("sandboxesGetNamedSandbox failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [models.GetNamedSandboxRequest](../../models/getnamedsandboxrequest.md)                                                                                                        | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[models.GetNamedSandboxResponseBody](../../models/getnamedsandboxresponsebody.md)\>**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| models.SDKError | 4XX, 5XX        | \*/\*           |
+
+## deleteSandbox
+
+Deletes a sandbox by name. If sandboxes are currently running, they will be stopped first. This operation deletes all sandbox entities with the given name and the named sandbox metadata.
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="deleteSandbox" method="delete" path="/v2/sandboxes/{name}" -->
+```typescript
+import { Vercel } from "@vercel/sdk";
+
+const vercel = new Vercel({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await vercel.sandboxes.deleteSandbox({
+    name: "my-sandbox",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { VercelCore } from "@vercel/sdk/core.js";
+import { sandboxesDeleteSandbox } from "@vercel/sdk/funcs/sandboxesDeleteSandbox.js";
+
+// Use `VercelCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const vercel = new VercelCore({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await sandboxesDeleteSandbox(vercel, {
+    name: "my-sandbox",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("sandboxesDeleteSandbox failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [models.DeleteSandboxRequest](../../models/deletesandboxrequest.md)                                                                                                            | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[models.DeleteSandboxResponseBody](../../models/deletesandboxresponsebody.md)\>**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| models.SDKError | 4XX, 5XX        | \*/\*           |
+
+## listSessionCommands
+
+Retrieves a list of all commands that have been executed in a session, including their current status, exit codes, and execution times, ordered from the most recent to the oldest.
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="listSessionCommands" method="get" path="/v2/sandboxes/sessions/{sessionId}/cmd" -->
+```typescript
+import { Vercel } from "@vercel/sdk";
+
+const vercel = new Vercel({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await vercel.sandboxes.listSessionCommands({
+    sessionId: "sbx_abc123",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { VercelCore } from "@vercel/sdk/core.js";
+import { sandboxesListSessionCommands } from "@vercel/sdk/funcs/sandboxesListSessionCommands.js";
+
+// Use `VercelCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const vercel = new VercelCore({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await sandboxesListSessionCommands(vercel, {
+    sessionId: "sbx_abc123",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("sandboxesListSessionCommands failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [models.ListSessionCommandsRequest](../../models/listsessioncommandsrequest.md)                                                                                                | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[models.ListSessionCommandsResponseBody](../../models/listsessioncommandsresponsebody.md)\>**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| models.SDKError | 4XX, 5XX        | \*/\*           |
+
+## getSessionCommand
+
+Retrieves the current status and details of a command executed in a session. Use the `wait` parameter to block until the command finishes execution.
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="getSessionCommand" method="get" path="/v2/sandboxes/sessions/{sessionId}/cmd/{cmdId}" -->
+```typescript
+import { Vercel } from "@vercel/sdk";
+
+const vercel = new Vercel({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await vercel.sandboxes.getSessionCommand({
+    sessionId: "sbx_abc123",
     cmdId: "cmd_abc123",
-    sandboxId: "sbx_abc123",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { VercelCore } from "@vercel/sdk/core.js";
+import { sandboxesGetSessionCommand } from "@vercel/sdk/funcs/sandboxesGetSessionCommand.js";
+
+// Use `VercelCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const vercel = new VercelCore({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await sandboxesGetSessionCommand(vercel, {
+    sessionId: "sbx_abc123",
+    cmdId: "cmd_abc123",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("sandboxesGetSessionCommand failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [models.GetSessionCommandRequest](../../models/getsessioncommandrequest.md)                                                                                                    | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[models.GetSessionCommandResponseBody](../../models/getsessioncommandresponsebody.md)\>**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| models.SDKError | 4XX, 5XX        | \*/\*           |
+
+## killSessionCommand
+
+Sends a signal to terminate a running command in a session. The signal can be used to gracefully stop (SIGTERM) or forcefully kill (SIGKILL) the process. The command must still be running for this operation to succeed.
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="killSessionCommand" method="post" path="/v2/sandboxes/sessions/{sessionId}/cmd/{cmdId}/kill" -->
+```typescript
+import { Vercel } from "@vercel/sdk";
+
+const vercel = new Vercel({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await vercel.sandboxes.killSessionCommand({
+    cmdId: "cmd_abc123",
+    sessionId: "sbx_abc123",
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     slug: "my-team-url-slug",
     requestBody: {
@@ -377,7 +838,7 @@ The standalone function version of this method:
 
 ```typescript
 import { VercelCore } from "@vercel/sdk/core.js";
-import { sandboxesKillCommand } from "@vercel/sdk/funcs/sandboxesKillCommand.js";
+import { sandboxesKillSessionCommand } from "@vercel/sdk/funcs/sandboxesKillSessionCommand.js";
 
 // Use `VercelCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -386,9 +847,9 @@ const vercel = new VercelCore({
 });
 
 async function run() {
-  const res = await sandboxesKillCommand(vercel, {
+  const res = await sandboxesKillSessionCommand(vercel, {
     cmdId: "cmd_abc123",
-    sandboxId: "sbx_abc123",
+    sessionId: "sbx_abc123",
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     slug: "my-team-url-slug",
     requestBody: {
@@ -399,7 +860,7 @@ async function run() {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("sandboxesKillCommand failed:", res.error);
+    console.log("sandboxesKillSessionCommand failed:", res.error);
   }
 }
 
@@ -410,14 +871,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [models.KillCommandRequest](../../models/killcommandrequest.md)                                                                                                                | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [models.KillSessionCommandRequest](../../models/killsessioncommandrequest.md)                                                                                                  | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[models.KillCommandResponseBody](../../models/killcommandresponsebody.md)\>**
+**Promise\<[models.KillSessionCommandResponseBody](../../models/killsessioncommandresponsebody.md)\>**
 
 ### Errors
 
@@ -425,13 +886,13 @@ run();
 | --------------- | --------------- | --------------- |
 | models.SDKError | 4XX, 5XX        | \*/\*           |
 
-## stopSandbox
+## stopSession
 
-Stops a running sandbox and releases its allocated resources. All running processes within the sandbox will be terminated. This action cannot be undone. A stopped sandbox cannot be restarted.
+Stops a running session and releases its allocated resources. All running processes within the session will be terminated. This action cannot be undone. A stopped session cannot be restarted.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="stopSandbox" method="post" path="/v1/sandboxes/{sandboxId}/stop" -->
+<!-- UsageSnippet language="typescript" operationID="stopSession" method="post" path="/v2/sandboxes/sessions/{sessionId}/stop" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -440,8 +901,8 @@ const vercel = new Vercel({
 });
 
 async function run() {
-  const result = await vercel.sandboxes.stopSandbox({
-    sandboxId: "sbx_abc123",
+  const result = await vercel.sandboxes.stopSession({
+    sessionId: "sbx_abc123",
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     slug: "my-team-url-slug",
   });
@@ -458,7 +919,7 @@ The standalone function version of this method:
 
 ```typescript
 import { VercelCore } from "@vercel/sdk/core.js";
-import { sandboxesStopSandbox } from "@vercel/sdk/funcs/sandboxesStopSandbox.js";
+import { sandboxesStopSession } from "@vercel/sdk/funcs/sandboxesStopSession.js";
 
 // Use `VercelCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -467,8 +928,8 @@ const vercel = new VercelCore({
 });
 
 async function run() {
-  const res = await sandboxesStopSandbox(vercel, {
-    sandboxId: "sbx_abc123",
+  const res = await sandboxesStopSession(vercel, {
+    sessionId: "sbx_abc123",
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     slug: "my-team-url-slug",
   });
@@ -476,7 +937,7 @@ async function run() {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("sandboxesStopSandbox failed:", res.error);
+    console.log("sandboxesStopSession failed:", res.error);
   }
 }
 
@@ -487,14 +948,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [models.StopSandboxRequest](../../models/stopsandboxrequest.md)                                                                                                                | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [models.StopSessionRequest](../../models/stopsessionrequest.md)                                                                                                                | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[models.StopSandboxResponseBody](../../models/stopsandboxresponsebody.md)\>**
+**Promise\<[models.StopSessionResponseBody](../../models/stopsessionresponsebody.md)\>**
 
 ### Errors
 
@@ -502,13 +963,13 @@ run();
 | --------------- | --------------- | --------------- |
 | models.SDKError | 4XX, 5XX        | \*/\*           |
 
-## extendSandboxTimeout
+## extendSessionTimeout
 
-Extends the maximum execution time of a running sandbox. The sandbox must be active and able to accept commands. The total timeout cannot exceed the maximum allowed limit for your account.
+Extends the maximum execution time of a running session. The session must be active and able to accept commands. The total timeout cannot exceed the maximum allowed limit for your account.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="extendSandboxTimeout" method="post" path="/v1/sandboxes/{sandboxId}/extend-timeout" -->
+<!-- UsageSnippet language="typescript" operationID="extendSessionTimeout" method="post" path="/v2/sandboxes/sessions/{sessionId}/extend-timeout" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -517,8 +978,8 @@ const vercel = new Vercel({
 });
 
 async function run() {
-  const result = await vercel.sandboxes.extendSandboxTimeout({
-    sandboxId: "sbx_abc123",
+  const result = await vercel.sandboxes.extendSessionTimeout({
+    sessionId: "sbx_abc123",
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     slug: "my-team-url-slug",
     requestBody: {
@@ -538,7 +999,7 @@ The standalone function version of this method:
 
 ```typescript
 import { VercelCore } from "@vercel/sdk/core.js";
-import { sandboxesExtendSandboxTimeout } from "@vercel/sdk/funcs/sandboxesExtendSandboxTimeout.js";
+import { sandboxesExtendSessionTimeout } from "@vercel/sdk/funcs/sandboxesExtendSessionTimeout.js";
 
 // Use `VercelCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -547,8 +1008,8 @@ const vercel = new VercelCore({
 });
 
 async function run() {
-  const res = await sandboxesExtendSandboxTimeout(vercel, {
-    sandboxId: "sbx_abc123",
+  const res = await sandboxesExtendSessionTimeout(vercel, {
+    sessionId: "sbx_abc123",
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     slug: "my-team-url-slug",
     requestBody: {
@@ -559,7 +1020,7 @@ async function run() {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("sandboxesExtendSandboxTimeout failed:", res.error);
+    console.log("sandboxesExtendSessionTimeout failed:", res.error);
   }
 }
 
@@ -570,14 +1031,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [models.ExtendSandboxTimeoutRequest](../../models/extendsandboxtimeoutrequest.md)                                                                                              | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [models.ExtendSessionTimeoutRequest](../../models/extendsessiontimeoutrequest.md)                                                                                              | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[models.ExtendSandboxTimeoutResponseBody](../../models/extendsandboxtimeoutresponsebody.md)\>**
+**Promise\<[models.ExtendSessionTimeoutResponseBody](../../models/extendsessiontimeoutresponsebody.md)\>**
 
 ### Errors
 
@@ -585,13 +1046,13 @@ run();
 | --------------- | --------------- | --------------- |
 | models.SDKError | 4XX, 5XX        | \*/\*           |
 
-## updateNetworkPolicy
+## updateSessionNetworkPolicy
 
-Replaces the network access policy of a running sandbox. Use this to control which external hosts the sandbox can communicate with. This is a full replacement. Any previously configured network rules will be overwritten.
+Replaces the network access policy of a running session. Use this to control which external hosts the session can communicate with. This is a full replacement. Any previously configured network rules will be overwritten.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="updateNetworkPolicy" method="post" path="/v1/sandboxes/{sandboxId}/network-policy" -->
+<!-- UsageSnippet language="typescript" operationID="updateSessionNetworkPolicy" method="post" path="/v2/sandboxes/sessions/{sessionId}/network-policy" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -600,8 +1061,8 @@ const vercel = new Vercel({
 });
 
 async function run() {
-  const result = await vercel.sandboxes.updateNetworkPolicy({
-    sandboxId: "sbx_abc123",
+  const result = await vercel.sandboxes.updateSessionNetworkPolicy({
+    sessionId: "sbx_abc123",
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     slug: "my-team-url-slug",
     requestBody: {
@@ -632,7 +1093,7 @@ The standalone function version of this method:
 
 ```typescript
 import { VercelCore } from "@vercel/sdk/core.js";
-import { sandboxesUpdateNetworkPolicy } from "@vercel/sdk/funcs/sandboxesUpdateNetworkPolicy.js";
+import { sandboxesUpdateSessionNetworkPolicy } from "@vercel/sdk/funcs/sandboxesUpdateSessionNetworkPolicy.js";
 
 // Use `VercelCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -641,8 +1102,8 @@ const vercel = new VercelCore({
 });
 
 async function run() {
-  const res = await sandboxesUpdateNetworkPolicy(vercel, {
-    sandboxId: "sbx_abc123",
+  const res = await sandboxesUpdateSessionNetworkPolicy(vercel, {
+    sessionId: "sbx_abc123",
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     slug: "my-team-url-slug",
     requestBody: {
@@ -664,7 +1125,7 @@ async function run() {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("sandboxesUpdateNetworkPolicy failed:", res.error);
+    console.log("sandboxesUpdateSessionNetworkPolicy failed:", res.error);
   }
 }
 
@@ -675,14 +1136,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [models.UpdateNetworkPolicyRequest](../../models/updatenetworkpolicyrequest.md)                                                                                                | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [models.UpdateSessionNetworkPolicyRequest](../../models/updatesessionnetworkpolicyrequest.md)                                                                                  | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[models.UpdateNetworkPolicyResponseBody](../../models/updatenetworkpolicyresponsebody.md)\>**
+**Promise\<[models.UpdateSessionNetworkPolicyResponseBody](../../models/updatesessionnetworkpolicyresponsebody.md)\>**
 
 ### Errors
 
@@ -690,13 +1151,13 @@ run();
 | --------------- | --------------- | --------------- |
 | models.SDKError | 4XX, 5XX        | \*/\*           |
 
-## getCommand
+## readSessionFile
 
-Retrieves the current status and details of a command executed in a sandbox. Use the `wait` parameter to block until the command finishes execution.
+Downloads the contents of a file from a session's filesystem. The file content is returned as a binary stream with appropriate Content-Disposition headers for file download.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="getCommand" method="get" path="/v1/sandboxes/{sandboxId}/cmd/{cmdId}" -->
+<!-- UsageSnippet language="typescript" operationID="readSessionFile" method="post" path="/v2/sandboxes/sessions/{sessionId}/fs/read" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -705,87 +1166,8 @@ const vercel = new Vercel({
 });
 
 async function run() {
-  const result = await vercel.sandboxes.getCommand({
-    sandboxId: "sbx_abc123",
-    cmdId: "cmd_abc123",
-    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
-    slug: "my-team-url-slug",
-  });
-
-  console.log(result);
-}
-
-run();
-```
-
-### Standalone function
-
-The standalone function version of this method:
-
-```typescript
-import { VercelCore } from "@vercel/sdk/core.js";
-import { sandboxesGetCommand } from "@vercel/sdk/funcs/sandboxesGetCommand.js";
-
-// Use `VercelCore` for best tree-shaking performance.
-// You can create one instance of it to use across an application.
-const vercel = new VercelCore({
-  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-});
-
-async function run() {
-  const res = await sandboxesGetCommand(vercel, {
-    sandboxId: "sbx_abc123",
-    cmdId: "cmd_abc123",
-    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
-    slug: "my-team-url-slug",
-  });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("sandboxesGetCommand failed:", res.error);
-  }
-}
-
-run();
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [models.GetCommandRequest](../../models/getcommandrequest.md)                                                                                                                  | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-
-### Response
-
-**Promise\<[models.GetCommandResponseBody](../../models/getcommandresponsebody.md)\>**
-
-### Errors
-
-| Error Type      | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| models.SDKError | 4XX, 5XX        | \*/\*           |
-
-## readFile
-
-Downloads the contents of a file from a sandbox's filesystem. The file content is returned as a binary stream with appropriate Content-Disposition headers for file download.
-
-### Example Usage
-
-<!-- UsageSnippet language="typescript" operationID="readFile" method="post" path="/v1/sandboxes/{sandboxId}/fs/read" -->
-```typescript
-import { Vercel } from "@vercel/sdk";
-
-const vercel = new Vercel({
-  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-});
-
-async function run() {
-  const result = await vercel.sandboxes.readFile({
-    sandboxId: "sbx_abc123",
+  const result = await vercel.sandboxes.readSessionFile({
+    sessionId: "sbx_abc123",
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     slug: "my-team-url-slug",
     requestBody: {
@@ -806,7 +1188,7 @@ The standalone function version of this method:
 
 ```typescript
 import { VercelCore } from "@vercel/sdk/core.js";
-import { sandboxesReadFile } from "@vercel/sdk/funcs/sandboxesReadFile.js";
+import { sandboxesReadSessionFile } from "@vercel/sdk/funcs/sandboxesReadSessionFile.js";
 
 // Use `VercelCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -815,8 +1197,8 @@ const vercel = new VercelCore({
 });
 
 async function run() {
-  const res = await sandboxesReadFile(vercel, {
-    sandboxId: "sbx_abc123",
+  const res = await sandboxesReadSessionFile(vercel, {
+    sessionId: "sbx_abc123",
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     slug: "my-team-url-slug",
     requestBody: {
@@ -828,7 +1210,7 @@ async function run() {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("sandboxesReadFile failed:", res.error);
+    console.log("sandboxesReadSessionFile failed:", res.error);
   }
 }
 
@@ -839,7 +1221,7 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [models.ReadFileRequest](../../models/readfilerequest.md)                                                                                                                      | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [models.ReadSessionFileRequest](../../models/readsessionfilerequest.md)                                                                                                        | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
@@ -854,13 +1236,13 @@ run();
 | --------------- | --------------- | --------------- |
 | models.SDKError | 4XX, 5XX        | \*/\*           |
 
-## createDirectory
+## createSessionDirectory
 
-Creates a new directory in a sandbox's filesystem. By default, parent directories are created recursively if they don't exist (similar to `mkdir -p`).
+Creates a new directory in a session's filesystem. By default, parent directories are created recursively if they don't exist (similar to `mkdir -p`).
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="createDirectory" method="post" path="/v1/sandboxes/{sandboxId}/fs/mkdir" -->
+<!-- UsageSnippet language="typescript" operationID="createSessionDirectory" method="post" path="/v2/sandboxes/sessions/{sessionId}/fs/mkdir" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -869,8 +1251,8 @@ const vercel = new Vercel({
 });
 
 async function run() {
-  const result = await vercel.sandboxes.createDirectory({
-    sandboxId: "sbx_abc123",
+  const result = await vercel.sandboxes.createSessionDirectory({
+    sessionId: "sbx_abc123",
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     slug: "my-team-url-slug",
     requestBody: {
@@ -891,7 +1273,7 @@ The standalone function version of this method:
 
 ```typescript
 import { VercelCore } from "@vercel/sdk/core.js";
-import { sandboxesCreateDirectory } from "@vercel/sdk/funcs/sandboxesCreateDirectory.js";
+import { sandboxesCreateSessionDirectory } from "@vercel/sdk/funcs/sandboxesCreateSessionDirectory.js";
 
 // Use `VercelCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -900,8 +1282,8 @@ const vercel = new VercelCore({
 });
 
 async function run() {
-  const res = await sandboxesCreateDirectory(vercel, {
-    sandboxId: "sbx_abc123",
+  const res = await sandboxesCreateSessionDirectory(vercel, {
+    sessionId: "sbx_abc123",
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     slug: "my-team-url-slug",
     requestBody: {
@@ -913,7 +1295,7 @@ async function run() {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("sandboxesCreateDirectory failed:", res.error);
+    console.log("sandboxesCreateSessionDirectory failed:", res.error);
   }
 }
 
@@ -924,14 +1306,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [models.CreateDirectoryRequest](../../models/createdirectoryrequest.md)                                                                                                        | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [models.CreateSessionDirectoryRequest](../../models/createsessiondirectoryrequest.md)                                                                                          | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[models.CreateDirectoryResponseBody](../../models/createdirectoryresponsebody.md)\>**
+**Promise\<[models.CreateSessionDirectoryResponseBody](../../models/createsessiondirectoryresponsebody.md)\>**
 
 ### Errors
 
@@ -939,13 +1321,13 @@ run();
 | --------------- | --------------- | --------------- |
 | models.SDKError | 4XX, 5XX        | \*/\*           |
 
-## writeFiles
+## writeSessionFiles
 
-Uploads and extracts files to a sandbox's filesystem. Files must be uploaded as a gzipped tarball (`.tar.gz`) with the `Content-Type` header set to `application/gzip`. The tarball contents are extracted to the sandbox's working directory, or to a custom directory specified via the `x-cwd` header.
+Uploads and extracts files to a session's filesystem. Files must be uploaded as a gzipped tarball (`.tar.gz`) with the `Content-Type` header set to `application/gzip`. The tarball contents are extracted to the session's working directory, or to a custom directory specified via the `x-cwd` header.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="writeFiles" method="post" path="/v1/sandboxes/{sandboxId}/fs/write" -->
+<!-- UsageSnippet language="typescript" operationID="writeSessionFiles" method="post" path="/v2/sandboxes/sessions/{sessionId}/fs/write" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -954,9 +1336,9 @@ const vercel = new Vercel({
 });
 
 async function run() {
-  const result = await vercel.sandboxes.writeFiles({
+  const result = await vercel.sandboxes.writeSessionFiles({
     xCwd: "/home/vercel-sandbox",
-    sandboxId: "sbx_abc123",
+    sessionId: "sbx_abc123",
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     slug: "my-team-url-slug",
   });
@@ -973,7 +1355,7 @@ The standalone function version of this method:
 
 ```typescript
 import { VercelCore } from "@vercel/sdk/core.js";
-import { sandboxesWriteFiles } from "@vercel/sdk/funcs/sandboxesWriteFiles.js";
+import { sandboxesWriteSessionFiles } from "@vercel/sdk/funcs/sandboxesWriteSessionFiles.js";
 
 // Use `VercelCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -982,9 +1364,9 @@ const vercel = new VercelCore({
 });
 
 async function run() {
-  const res = await sandboxesWriteFiles(vercel, {
+  const res = await sandboxesWriteSessionFiles(vercel, {
     xCwd: "/home/vercel-sandbox",
-    sandboxId: "sbx_abc123",
+    sessionId: "sbx_abc123",
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     slug: "my-team-url-slug",
   });
@@ -992,7 +1374,7 @@ async function run() {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("sandboxesWriteFiles failed:", res.error);
+    console.log("sandboxesWriteSessionFiles failed:", res.error);
   }
 }
 
@@ -1003,14 +1385,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [models.WriteFilesRequest](../../models/writefilesrequest.md)                                                                                                                  | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [models.WriteSessionFilesRequest](../../models/writesessionfilesrequest.md)                                                                                                    | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[models.WriteFilesResponseBody](../../models/writefilesresponsebody.md)\>**
+**Promise\<[models.WriteSessionFilesResponseBody](../../models/writesessionfilesresponsebody.md)\>**
 
 ### Errors
 
@@ -1018,13 +1400,13 @@ run();
 | --------------- | --------------- | --------------- |
 | models.SDKError | 4XX, 5XX        | \*/\*           |
 
-## getSnapshot
+## createSessionSnapshot
 
-Retrieves detailed information about a specific snapshot, including its creation time, size, expiration date, and the source sandbox it was created from.
+Creates a point-in-time snapshot of a running session's filesystem. Snapshots can be used to quickly restore a session to a previous state or to create new sessions with pre-configured environments. The session must be running and able to accept commands for a snapshot to be created. The session will be terminated after the snapshot is created.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="getSnapshot" method="get" path="/v1/sandboxes/snapshots/{snapshotId}" -->
+<!-- UsageSnippet language="typescript" operationID="createSessionSnapshot" method="post" path="/v2/sandboxes/sessions/{sessionId}/snapshot" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -1033,8 +1415,8 @@ const vercel = new Vercel({
 });
 
 async function run() {
-  const result = await vercel.sandboxes.getSnapshot({
-    snapshotId: "snap_abc123",
+  const result = await vercel.sandboxes.createSessionSnapshot({
+    sessionId: "sbx_abc123",
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     slug: "my-team-url-slug",
   });
@@ -1051,7 +1433,7 @@ The standalone function version of this method:
 
 ```typescript
 import { VercelCore } from "@vercel/sdk/core.js";
-import { sandboxesGetSnapshot } from "@vercel/sdk/funcs/sandboxesGetSnapshot.js";
+import { sandboxesCreateSessionSnapshot } from "@vercel/sdk/funcs/sandboxesCreateSessionSnapshot.js";
 
 // Use `VercelCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -1060,8 +1442,8 @@ const vercel = new VercelCore({
 });
 
 async function run() {
-  const res = await sandboxesGetSnapshot(vercel, {
-    snapshotId: "snap_abc123",
+  const res = await sandboxesCreateSessionSnapshot(vercel, {
+    sessionId: "sbx_abc123",
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     slug: "my-team-url-slug",
   });
@@ -1069,7 +1451,7 @@ async function run() {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("sandboxesGetSnapshot failed:", res.error);
+    console.log("sandboxesCreateSessionSnapshot failed:", res.error);
   }
 }
 
@@ -1080,168 +1462,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [models.GetSnapshotRequest](../../models/getsnapshotrequest.md)                                                                                                                | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [models.CreateSessionSnapshotRequest](../../models/createsessionsnapshotrequest.md)                                                                                            | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[models.GetSnapshotResponseBody](../../models/getsnapshotresponsebody.md)\>**
-
-### Errors
-
-| Error Type      | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| models.SDKError | 4XX, 5XX        | \*/\*           |
-
-## deleteSnapshot
-
-Permanently deletes a snapshot and frees its associated storage. This action cannot be undone. After deletion, the snapshot can no longer be used to create new sandboxes.
-
-### Example Usage
-
-<!-- UsageSnippet language="typescript" operationID="deleteSnapshot" method="delete" path="/v1/sandboxes/snapshots/{snapshotId}" -->
-```typescript
-import { Vercel } from "@vercel/sdk";
-
-const vercel = new Vercel({
-  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-});
-
-async function run() {
-  const result = await vercel.sandboxes.deleteSnapshot({
-    snapshotId: "snap_abc123",
-    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
-    slug: "my-team-url-slug",
-  });
-
-  console.log(result);
-}
-
-run();
-```
-
-### Standalone function
-
-The standalone function version of this method:
-
-```typescript
-import { VercelCore } from "@vercel/sdk/core.js";
-import { sandboxesDeleteSnapshot } from "@vercel/sdk/funcs/sandboxesDeleteSnapshot.js";
-
-// Use `VercelCore` for best tree-shaking performance.
-// You can create one instance of it to use across an application.
-const vercel = new VercelCore({
-  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-});
-
-async function run() {
-  const res = await sandboxesDeleteSnapshot(vercel, {
-    snapshotId: "snap_abc123",
-    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
-    slug: "my-team-url-slug",
-  });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("sandboxesDeleteSnapshot failed:", res.error);
-  }
-}
-
-run();
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [models.DeleteSnapshotRequest](../../models/deletesnapshotrequest.md)                                                                                                          | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-
-### Response
-
-**Promise\<[models.DeleteSnapshotResponseBody](../../models/deletesnapshotresponsebody.md)\>**
-
-### Errors
-
-| Error Type      | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| models.SDKError | 4XX, 5XX        | \*/\*           |
-
-## createSnapshot
-
-Creates a point-in-time snapshot of a running sandbox's filesystem. Snapshots can be used to quickly restore a sandbox to a previous state or to create new sandboxes with pre-configured environments. The sandbox must be running and able to accept commands for a snapshot to be created. The sandbox will be terminated after the snapshot is created.
-
-### Example Usage
-
-<!-- UsageSnippet language="typescript" operationID="createSnapshot" method="post" path="/v1/sandboxes/{sandboxId}/snapshot" -->
-```typescript
-import { Vercel } from "@vercel/sdk";
-
-const vercel = new Vercel({
-  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-});
-
-async function run() {
-  const result = await vercel.sandboxes.createSnapshot({
-    sandboxId: "sbx_abc123",
-    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
-    slug: "my-team-url-slug",
-  });
-
-  console.log(result);
-}
-
-run();
-```
-
-### Standalone function
-
-The standalone function version of this method:
-
-```typescript
-import { VercelCore } from "@vercel/sdk/core.js";
-import { sandboxesCreateSnapshot } from "@vercel/sdk/funcs/sandboxesCreateSnapshot.js";
-
-// Use `VercelCore` for best tree-shaking performance.
-// You can create one instance of it to use across an application.
-const vercel = new VercelCore({
-  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-});
-
-async function run() {
-  const res = await sandboxesCreateSnapshot(vercel, {
-    sandboxId: "sbx_abc123",
-    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
-    slug: "my-team-url-slug",
-  });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("sandboxesCreateSnapshot failed:", res.error);
-  }
-}
-
-run();
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [models.CreateSnapshotRequest](../../models/createsnapshotrequest.md)                                                                                                          | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-
-### Response
-
-**Promise\<[models.CreateSnapshotResponseBody](../../models/createsnapshotresponsebody.md)\>**
+**Promise\<[models.CreateSessionSnapshotResponseBody](../../models/createsessionsnapshotresponsebody.md)\>**
 
 ### Errors
 

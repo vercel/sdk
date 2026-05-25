@@ -1,19 +1,17 @@
 # GetDeploymentResponseBodyDeploymentsSource
 
-The external platform that created the deployment (e.g. its display name).
+Where was the deployment created from
 
 ## Example Usage
 
 ```typescript
-import { GetDeploymentResponseBodyDeploymentsSource } from "@vercel/sdk/models/getdeploymentresponsebody.js";
+import { GetDeploymentResponseBodyDeploymentsSource } from "@vercel/sdk/models/responsebodyproject.js";
 
-let value: GetDeploymentResponseBodyDeploymentsSource = {
-  name: "<value>",
-};
+let value: GetDeploymentResponseBodyDeploymentsSource = "cli";
 ```
 
-## Fields
+## Values
 
-| Field                         | Type                          | Required                      | Description                   |
-| ----------------------------- | ----------------------------- | ----------------------------- | ----------------------------- |
-| `name`                        | *string*                      | :heavy_check_mark:            | Display name of the platform. |
+```typescript
+"api-trigger-git-deploy" | "cli" | "clone/repo" | "git" | "import" | "import/repo" | "redeploy" | "v0-web"
+```

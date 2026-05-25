@@ -5,7 +5,7 @@ MFA configuration. When enabled, the user will be required to provide a second f
 ## Example Usage
 
 ```typescript
-import { MfaConfiguration } from "@vercel/sdk/models/usereventpayload80deployment.js";
+import { MfaConfiguration } from "@vercel/sdk/models/eightytwo.js";
 
 let value: MfaConfiguration = {
   enabled: true,

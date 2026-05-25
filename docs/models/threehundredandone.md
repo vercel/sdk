@@ -7,12 +7,13 @@ The payload of the event, if requested.
 ```typescript
 import { ThreeHundredAndOne } from "@vercel/sdk/models/payloadenvironment.js";
 
-let value: ThreeHundredAndOne = {};
+let value: ThreeHundredAndOne = {
+  enabled: "on",
+};
 ```
 
 ## Fields
 
 | Field                                                | Type                                                 | Required                                             | Description                                          |
 | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
-| `previous`                                           | Record<string, *models.UserEventPayload301Previous*> | :heavy_minus_sign:                                   | N/A                                                  |
-| `next`                                               | Record<string, *models.UserEventPayload301Next*>     | :heavy_minus_sign:                                   | N/A                                                  |
+| `enabled`                                            | [models.PayloadEnabled](../models/payloadenabled.md) | :heavy_check_mark:                                   | N/A                                                  |

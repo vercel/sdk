@@ -248,12 +248,15 @@ export type UpdateDrainResponseBodyDrainsSpeedInsights = {};
 
 export type UpdateDrainResponseBodyDrainsAiGateway = {};
 
+export type UpdateDrainResponseBodyDrainsAuditLog = {};
+
 export type UpdateDrainResponseBodyDrainsSchemas = {
   log?: UpdateDrainResponseBodyDrainsLog | undefined;
   trace?: UpdateDrainResponseBodyDrainsTrace | undefined;
   analytics?: UpdateDrainResponseBodyDrainsAnalytics | undefined;
   speedInsights?: UpdateDrainResponseBodyDrainsSpeedInsights | undefined;
   aiGateway?: UpdateDrainResponseBodyDrainsAiGateway | undefined;
+  auditLog?: UpdateDrainResponseBodyDrainsAuditLog | undefined;
 };
 
 export const UpdateDrainDeliveryDrainsTarget = {
@@ -557,12 +560,15 @@ export type UpdateDrainResponseBodySpeedInsights = {};
 
 export type UpdateDrainResponseBodyAiGateway = {};
 
+export type UpdateDrainResponseBodyAuditLog = {};
+
 export type UpdateDrainResponseBodySchemas = {
   log?: UpdateDrainResponseBodyLog | undefined;
   trace?: UpdateDrainResponseBodyTrace | undefined;
   analytics?: UpdateDrainResponseBodyAnalytics | undefined;
   speedInsights?: UpdateDrainResponseBodySpeedInsights | undefined;
   aiGateway?: UpdateDrainResponseBodyAiGateway | undefined;
+  auditLog?: UpdateDrainResponseBodyAuditLog | undefined;
 };
 
 export const UpdateDrainDeliveryTarget = {
@@ -2153,6 +2159,42 @@ export function updateDrainResponseBodyDrainsAiGatewayFromJSON(
 }
 
 /** @internal */
+export const UpdateDrainResponseBodyDrainsAuditLog$inboundSchema: z.ZodType<
+  UpdateDrainResponseBodyDrainsAuditLog,
+  z.ZodTypeDef,
+  unknown
+> = z.object({});
+/** @internal */
+export type UpdateDrainResponseBodyDrainsAuditLog$Outbound = {};
+
+/** @internal */
+export const UpdateDrainResponseBodyDrainsAuditLog$outboundSchema: z.ZodType<
+  UpdateDrainResponseBodyDrainsAuditLog$Outbound,
+  z.ZodTypeDef,
+  UpdateDrainResponseBodyDrainsAuditLog
+> = z.object({});
+
+export function updateDrainResponseBodyDrainsAuditLogToJSON(
+  updateDrainResponseBodyDrainsAuditLog: UpdateDrainResponseBodyDrainsAuditLog,
+): string {
+  return JSON.stringify(
+    UpdateDrainResponseBodyDrainsAuditLog$outboundSchema.parse(
+      updateDrainResponseBodyDrainsAuditLog,
+    ),
+  );
+}
+export function updateDrainResponseBodyDrainsAuditLogFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateDrainResponseBodyDrainsAuditLog, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateDrainResponseBodyDrainsAuditLog$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateDrainResponseBodyDrainsAuditLog' from JSON`,
+  );
+}
+
+/** @internal */
 export const UpdateDrainResponseBodyDrainsSchemas$inboundSchema: z.ZodType<
   UpdateDrainResponseBodyDrainsSchemas,
   z.ZodTypeDef,
@@ -2173,10 +2215,14 @@ export const UpdateDrainResponseBodyDrainsSchemas$inboundSchema: z.ZodType<
   ai_gateway: types.optional(
     z.lazy(() => UpdateDrainResponseBodyDrainsAiGateway$inboundSchema),
   ),
+  audit_log: types.optional(
+    z.lazy(() => UpdateDrainResponseBodyDrainsAuditLog$inboundSchema),
+  ),
 }).transform((v) => {
   return remap$(v, {
     "speed_insights": "speedInsights",
     "ai_gateway": "aiGateway",
+    "audit_log": "auditLog",
   });
 });
 /** @internal */
@@ -2188,6 +2234,7 @@ export type UpdateDrainResponseBodyDrainsSchemas$Outbound = {
     | UpdateDrainResponseBodyDrainsSpeedInsights$Outbound
     | undefined;
   ai_gateway?: UpdateDrainResponseBodyDrainsAiGateway$Outbound | undefined;
+  audit_log?: UpdateDrainResponseBodyDrainsAuditLog$Outbound | undefined;
 };
 
 /** @internal */
@@ -2206,10 +2253,13 @@ export const UpdateDrainResponseBodyDrainsSchemas$outboundSchema: z.ZodType<
   ).optional(),
   aiGateway: z.lazy(() => UpdateDrainResponseBodyDrainsAiGateway$outboundSchema)
     .optional(),
+  auditLog: z.lazy(() => UpdateDrainResponseBodyDrainsAuditLog$outboundSchema)
+    .optional(),
 }).transform((v) => {
   return remap$(v, {
     speedInsights: "speed_insights",
     aiGateway: "ai_gateway",
+    auditLog: "audit_log",
   });
 });
 
@@ -3927,6 +3977,41 @@ export function updateDrainResponseBodyAiGatewayFromJSON(
 }
 
 /** @internal */
+export const UpdateDrainResponseBodyAuditLog$inboundSchema: z.ZodType<
+  UpdateDrainResponseBodyAuditLog,
+  z.ZodTypeDef,
+  unknown
+> = z.object({});
+/** @internal */
+export type UpdateDrainResponseBodyAuditLog$Outbound = {};
+
+/** @internal */
+export const UpdateDrainResponseBodyAuditLog$outboundSchema: z.ZodType<
+  UpdateDrainResponseBodyAuditLog$Outbound,
+  z.ZodTypeDef,
+  UpdateDrainResponseBodyAuditLog
+> = z.object({});
+
+export function updateDrainResponseBodyAuditLogToJSON(
+  updateDrainResponseBodyAuditLog: UpdateDrainResponseBodyAuditLog,
+): string {
+  return JSON.stringify(
+    UpdateDrainResponseBodyAuditLog$outboundSchema.parse(
+      updateDrainResponseBodyAuditLog,
+    ),
+  );
+}
+export function updateDrainResponseBodyAuditLogFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateDrainResponseBodyAuditLog, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateDrainResponseBodyAuditLog$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateDrainResponseBodyAuditLog' from JSON`,
+  );
+}
+
+/** @internal */
 export const UpdateDrainResponseBodySchemas$inboundSchema: z.ZodType<
   UpdateDrainResponseBodySchemas,
   z.ZodTypeDef,
@@ -3945,10 +4030,14 @@ export const UpdateDrainResponseBodySchemas$inboundSchema: z.ZodType<
   ai_gateway: types.optional(
     z.lazy(() => UpdateDrainResponseBodyAiGateway$inboundSchema),
   ),
+  audit_log: types.optional(
+    z.lazy(() => UpdateDrainResponseBodyAuditLog$inboundSchema),
+  ),
 }).transform((v) => {
   return remap$(v, {
     "speed_insights": "speedInsights",
     "ai_gateway": "aiGateway",
+    "audit_log": "auditLog",
   });
 });
 /** @internal */
@@ -3958,6 +4047,7 @@ export type UpdateDrainResponseBodySchemas$Outbound = {
   analytics?: UpdateDrainResponseBodyAnalytics$Outbound | undefined;
   speed_insights?: UpdateDrainResponseBodySpeedInsights$Outbound | undefined;
   ai_gateway?: UpdateDrainResponseBodyAiGateway$Outbound | undefined;
+  audit_log?: UpdateDrainResponseBodyAuditLog$Outbound | undefined;
 };
 
 /** @internal */
@@ -3975,10 +4065,13 @@ export const UpdateDrainResponseBodySchemas$outboundSchema: z.ZodType<
   ).optional(),
   aiGateway: z.lazy(() => UpdateDrainResponseBodyAiGateway$outboundSchema)
     .optional(),
+  auditLog: z.lazy(() => UpdateDrainResponseBodyAuditLog$outboundSchema)
+    .optional(),
 }).transform((v) => {
   return remap$(v, {
     speedInsights: "speed_insights",
     aiGateway: "ai_gateway",
+    auditLog: "audit_log",
   });
 });
 

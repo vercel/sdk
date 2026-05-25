@@ -13,5 +13,5 @@ let value: SnapshotStatus = "created";
 ## Values
 
 ```typescript
-"failed" | "created" | "deleted"
+"created" | "deleted" | "failed"
 ```

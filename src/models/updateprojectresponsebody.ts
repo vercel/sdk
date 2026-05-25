@@ -96,6 +96,10 @@ import {
   UpdateProjectProjectsResponseBuildMachineType,
   UpdateProjectProjectsResponseBuildMachineType$inboundSchema,
   UpdateProjectProjectsResponseBuildMachineType$outboundSchema,
+  UpdateProjectProjectsResponseBuildQueue,
+  UpdateProjectProjectsResponseBuildQueue$inboundSchema,
+  UpdateProjectProjectsResponseBuildQueue$Outbound,
+  UpdateProjectProjectsResponseBuildQueue$outboundSchema,
   UpdateProjectProjectsResponseFunctionDefaultMemoryType,
   UpdateProjectProjectsResponseFunctionDefaultMemoryType$inboundSchema,
   UpdateProjectProjectsResponseFunctionDefaultMemoryType$outboundSchema,
@@ -111,19 +115,7 @@ import {
   UpdateProjectSpeedInsights$inboundSchema,
   UpdateProjectSpeedInsights$Outbound,
   UpdateProjectSpeedInsights$outboundSchema,
-} from "./updateprojectprojectsresponsebuildmachineselection.js";
-
-export const UpdateProjectProjectsResponseConfiguration = {
-  SkipNamespaceQueue: "SKIP_NAMESPACE_QUEUE",
-  WaitForNamespaceQueue: "WAIT_FOR_NAMESPACE_QUEUE",
-} as const;
-export type UpdateProjectProjectsResponseConfiguration = ClosedEnum<
-  typeof UpdateProjectProjectsResponseConfiguration
->;
-
-export type UpdateProjectProjectsResponseBuildQueue = {
-  configuration?: UpdateProjectProjectsResponseConfiguration | undefined;
-};
+} from "./updateprojectprojectsresponsebuildqueue.js";
 
 export type UpdateProjectDefaultResourceConfig = {
   elasticConcurrencyEnabled?: boolean | undefined;
@@ -1011,14 +1003,6 @@ export type UpdateProjectDeploymentSources = {
 };
 
 /**
- * Controls whether deployments may have their source and logs available publicly (i.e. the deployment's `public` boolean set to `true`). This rule does NOT control whether the deployment URL itself requires authentication — see deployment protection settings for that. - `allowPublicDeployments: false`: deployments must be created with `public: false`. Public deployments are blocked. - `allowPublicDeployments: true`: equivalent to `enabled: false`; here only so the field is always present on an enabled rule.
- */
-export type UpdateProjectPublicDeployments = {
-  allowPublicDeployments: boolean;
-  enabled: boolean;
-};
-
-/**
  * Project-level shape. Each rule may be: - an object: overrides the team's value for that rule - `null`: explicitly clears the override on just that rule (inherit team) - omitted: inherit team To clear all overrides and inherit fully, set the project's `deploymentPolicy` field itself to `null`. Defined independently from {@link TeamDeploymentPolicy} so the two are not coupled by a shared type — the underlying data lives in separate stores.
  */
 export type UpdateProjectProjectsDeploymentPolicy = {
@@ -1030,10 +1014,6 @@ export type UpdateProjectProjectsDeploymentPolicy = {
    * Restricts which deployment sources are allowed. A deployment passes if its source is in `sources`. Multiple entries are evaluated as OR. `enabled: true` with an empty `sources` list is treated as deny-all.
    */
   deploymentSources?: UpdateProjectDeploymentSources | null | undefined;
-  /**
-   * Controls whether deployments may have their source and logs available publicly (i.e. the deployment's `public` boolean set to `true`). This rule does NOT control whether the deployment URL itself requires authentication — see deployment protection settings for that. - `allowPublicDeployments: false`: deployments must be created with `public: false`. Public deployments are blocked. - `allowPublicDeployments: true`: equivalent to `enabled: false`; here only so the field is always present on an enabled rule.
-   */
-  publicDeployments?: UpdateProjectPublicDeployments | null | undefined;
 };
 
 export const UpdateProjectFlatRateTier = {
@@ -1522,66 +1502,6 @@ export type UpdateProjectResponseBody = {
 };
 
 /** @internal */
-export const UpdateProjectProjectsResponseConfiguration$inboundSchema:
-  z.ZodNativeEnum<typeof UpdateProjectProjectsResponseConfiguration> = z
-    .nativeEnum(UpdateProjectProjectsResponseConfiguration);
-/** @internal */
-export const UpdateProjectProjectsResponseConfiguration$outboundSchema:
-  z.ZodNativeEnum<typeof UpdateProjectProjectsResponseConfiguration> =
-    UpdateProjectProjectsResponseConfiguration$inboundSchema;
-
-/** @internal */
-export const UpdateProjectProjectsResponseBuildQueue$inboundSchema: z.ZodType<
-  UpdateProjectProjectsResponseBuildQueue,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  configuration: types.optional(
-    UpdateProjectProjectsResponseConfiguration$inboundSchema,
-  ),
-});
-/** @internal */
-export type UpdateProjectProjectsResponseBuildQueue$Outbound = {
-  configuration?: string | undefined;
-};
-
-/** @internal */
-export const UpdateProjectProjectsResponseBuildQueue$outboundSchema: z.ZodType<
-  UpdateProjectProjectsResponseBuildQueue$Outbound,
-  z.ZodTypeDef,
-  UpdateProjectProjectsResponseBuildQueue
-> = z.object({
-  configuration: UpdateProjectProjectsResponseConfiguration$outboundSchema
-    .optional(),
-});
-
-export function updateProjectProjectsResponseBuildQueueToJSON(
-  updateProjectProjectsResponseBuildQueue:
-    UpdateProjectProjectsResponseBuildQueue,
-): string {
-  return JSON.stringify(
-    UpdateProjectProjectsResponseBuildQueue$outboundSchema.parse(
-      updateProjectProjectsResponseBuildQueue,
-    ),
-  );
-}
-export function updateProjectProjectsResponseBuildQueueFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  UpdateProjectProjectsResponseBuildQueue,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      UpdateProjectProjectsResponseBuildQueue$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'UpdateProjectProjectsResponseBuildQueue' from JSON`,
-  );
-}
-
-/** @internal */
 export const UpdateProjectDefaultResourceConfig$inboundSchema: z.ZodType<
   UpdateProjectDefaultResourceConfig,
   z.ZodTypeDef,
@@ -1604,7 +1524,7 @@ export const UpdateProjectDefaultResourceConfig$inboundSchema: z.ZodType<
   buildMachineElasticLastUpdated: types.optional(types.number()),
   isNSNBDisabled: types.optional(types.boolean()),
   buildQueue: types.optional(
-    z.lazy(() => UpdateProjectProjectsResponseBuildQueue$inboundSchema),
+    UpdateProjectProjectsResponseBuildQueue$inboundSchema,
   ),
   enableFunctionsBeta: types.optional(types.boolean()),
 });
@@ -1645,9 +1565,7 @@ export const UpdateProjectDefaultResourceConfig$outboundSchema: z.ZodType<
       .optional(),
   buildMachineElasticLastUpdated: z.number().optional(),
   isNSNBDisabled: z.boolean().optional(),
-  buildQueue: z.lazy(() =>
-    UpdateProjectProjectsResponseBuildQueue$outboundSchema
-  ).optional(),
+  buildQueue: UpdateProjectProjectsResponseBuildQueue$outboundSchema.optional(),
   enableFunctionsBeta: z.boolean().optional(),
 });
 
@@ -5018,50 +4936,6 @@ export function updateProjectDeploymentSourcesFromJSON(
 }
 
 /** @internal */
-export const UpdateProjectPublicDeployments$inboundSchema: z.ZodType<
-  UpdateProjectPublicDeployments,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  allowPublicDeployments: types.boolean(),
-  enabled: types.boolean(),
-});
-/** @internal */
-export type UpdateProjectPublicDeployments$Outbound = {
-  allowPublicDeployments: boolean;
-  enabled: boolean;
-};
-
-/** @internal */
-export const UpdateProjectPublicDeployments$outboundSchema: z.ZodType<
-  UpdateProjectPublicDeployments$Outbound,
-  z.ZodTypeDef,
-  UpdateProjectPublicDeployments
-> = z.object({
-  allowPublicDeployments: z.boolean(),
-  enabled: z.boolean(),
-});
-
-export function updateProjectPublicDeploymentsToJSON(
-  updateProjectPublicDeployments: UpdateProjectPublicDeployments,
-): string {
-  return JSON.stringify(
-    UpdateProjectPublicDeployments$outboundSchema.parse(
-      updateProjectPublicDeployments,
-    ),
-  );
-}
-export function updateProjectPublicDeploymentsFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateProjectPublicDeployments, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateProjectPublicDeployments$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateProjectPublicDeployments' from JSON`,
-  );
-}
-
-/** @internal */
 export const UpdateProjectProjectsDeploymentPolicy$inboundSchema: z.ZodType<
   UpdateProjectProjectsDeploymentPolicy,
   z.ZodTypeDef,
@@ -5072,19 +4946,12 @@ export const UpdateProjectProjectsDeploymentPolicy$inboundSchema: z.ZodType<
   deploymentSources: z.nullable(
     z.lazy(() => UpdateProjectDeploymentSources$inboundSchema),
   ).optional(),
-  publicDeployments: z.nullable(
-    z.lazy(() => UpdateProjectPublicDeployments$inboundSchema),
-  ).optional(),
 });
 /** @internal */
 export type UpdateProjectProjectsDeploymentPolicy$Outbound = {
   gitSources?: UpdateProjectGitSources$Outbound | null | undefined;
   deploymentSources?:
     | UpdateProjectDeploymentSources$Outbound
-    | null
-    | undefined;
-  publicDeployments?:
-    | UpdateProjectPublicDeployments$Outbound
     | null
     | undefined;
 };
@@ -5099,9 +4966,6 @@ export const UpdateProjectProjectsDeploymentPolicy$outboundSchema: z.ZodType<
     .optional(),
   deploymentSources: z.nullable(
     z.lazy(() => UpdateProjectDeploymentSources$outboundSchema),
-  ).optional(),
-  publicDeployments: z.nullable(
-    z.lazy(() => UpdateProjectPublicDeployments$outboundSchema),
   ).optional(),
 });
 

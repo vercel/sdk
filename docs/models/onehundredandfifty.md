@@ -9,17 +9,15 @@ import { OneHundredAndFifty } from "@vercel/sdk/models/edgemiddlewareinvocations
 
 let value: OneHundredAndFifty = {
   projectId: "<id>",
-  previousStatus: "<value>",
-  justification: "<value>",
+  type: "header",
+  headerName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
-| `url`              | *string*           | :heavy_minus_sign: | N/A                |
-| `headerName`       | *string*           | :heavy_minus_sign: | N/A                |
-| `previousStatus`   | *string*           | :heavy_check_mark: | N/A                |
-| `justification`    | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `projectId`                                                            | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
+| `type`                                                                 | [models.UserEventPayload150Type](../models/usereventpayload150type.md) | :heavy_check_mark:                                                     | N/A                                                                    |
+| `headerName`                                                           | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |

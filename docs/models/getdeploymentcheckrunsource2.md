@@ -12,7 +12,7 @@ let value: GetDeploymentCheckRunSource2 = {
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `kind`             | *"webhook"*        | :heavy_check_mark: | N/A                |
-| `webhookId`        | *string*           | :heavy_minus_sign: | N/A                |
+| Field                                                                                                  | Type                                                                                                   | Required                                                                                               | Description                                                                                            |
+| ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
+| `kind`                                                                                                 | [models.GetDeploymentCheckRunSourceChecksV2Kind](../models/getdeploymentcheckrunsourcechecksv2kind.md) | :heavy_check_mark:                                                                                     | N/A                                                                                                    |
+| `webhookId`                                                                                            | *string*                                                                                               | :heavy_minus_sign:                                                                                     | N/A                                                                                                    |

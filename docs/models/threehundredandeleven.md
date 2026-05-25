@@ -8,7 +8,7 @@ The payload of the event, if requested.
 import { ThreeHundredAndEleven } from "@vercel/sdk/models/payloadenvironment.js";
 
 let value: ThreeHundredAndEleven = {
-  mfaEnabled: false,
+  username: "Thomas_Turner55",
 };
 ```
 
@@ -16,4 +16,5 @@ let value: ThreeHundredAndEleven = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `mfaEnabled`       | *boolean*          | :heavy_check_mark: | N/A                |
+| `deletedAt`        | *number*           | :heavy_minus_sign: | N/A                |
+| `username`         | *string*           | :heavy_check_mark: | N/A                |

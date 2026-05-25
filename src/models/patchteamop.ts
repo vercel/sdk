@@ -261,22 +261,12 @@ export type PatchTeamDeploymentPolicyDeploymentSources =
   | PatchTeamDeploymentSources1
   | string;
 
-export type PatchTeamPublicDeployments1 = {
-  enabled: boolean;
-  allowPublicDeployments: boolean;
-};
-
-export type PatchTeamDeploymentPolicyPublicDeployments =
-  | PatchTeamPublicDeployments1
-  | string;
-
 /**
  * Composable deployment-time policy. Each rule key controls an independent restriction.
  */
 export type PatchTeamDeploymentPolicy1 = {
   gitSources?: PatchTeamGitSources1 | string | undefined;
   deploymentSources?: PatchTeamDeploymentSources1 | string | undefined;
-  publicDeployments?: PatchTeamPublicDeployments1 | string | undefined;
 };
 
 export type PatchTeamDeploymentPolicy = PatchTeamDeploymentPolicy1 | string;
@@ -1124,99 +1114,6 @@ export function patchTeamDeploymentPolicyDeploymentSourcesFromJSON(
 }
 
 /** @internal */
-export const PatchTeamPublicDeployments1$inboundSchema: z.ZodType<
-  PatchTeamPublicDeployments1,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  enabled: types.boolean(),
-  allowPublicDeployments: types.boolean(),
-});
-/** @internal */
-export type PatchTeamPublicDeployments1$Outbound = {
-  enabled: boolean;
-  allowPublicDeployments: boolean;
-};
-
-/** @internal */
-export const PatchTeamPublicDeployments1$outboundSchema: z.ZodType<
-  PatchTeamPublicDeployments1$Outbound,
-  z.ZodTypeDef,
-  PatchTeamPublicDeployments1
-> = z.object({
-  enabled: z.boolean(),
-  allowPublicDeployments: z.boolean(),
-});
-
-export function patchTeamPublicDeployments1ToJSON(
-  patchTeamPublicDeployments1: PatchTeamPublicDeployments1,
-): string {
-  return JSON.stringify(
-    PatchTeamPublicDeployments1$outboundSchema.parse(
-      patchTeamPublicDeployments1,
-    ),
-  );
-}
-export function patchTeamPublicDeployments1FromJSON(
-  jsonString: string,
-): SafeParseResult<PatchTeamPublicDeployments1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PatchTeamPublicDeployments1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PatchTeamPublicDeployments1' from JSON`,
-  );
-}
-
-/** @internal */
-export const PatchTeamDeploymentPolicyPublicDeployments$inboundSchema:
-  z.ZodType<PatchTeamDeploymentPolicyPublicDeployments, z.ZodTypeDef, unknown> =
-    smartUnion([
-      z.lazy(() => PatchTeamPublicDeployments1$inboundSchema),
-      types.string(),
-    ]);
-/** @internal */
-export type PatchTeamDeploymentPolicyPublicDeployments$Outbound =
-  | PatchTeamPublicDeployments1$Outbound
-  | string;
-
-/** @internal */
-export const PatchTeamDeploymentPolicyPublicDeployments$outboundSchema:
-  z.ZodType<
-    PatchTeamDeploymentPolicyPublicDeployments$Outbound,
-    z.ZodTypeDef,
-    PatchTeamDeploymentPolicyPublicDeployments
-  > = smartUnion([
-    z.lazy(() => PatchTeamPublicDeployments1$outboundSchema),
-    z.string(),
-  ]);
-
-export function patchTeamDeploymentPolicyPublicDeploymentsToJSON(
-  patchTeamDeploymentPolicyPublicDeployments:
-    PatchTeamDeploymentPolicyPublicDeployments,
-): string {
-  return JSON.stringify(
-    PatchTeamDeploymentPolicyPublicDeployments$outboundSchema.parse(
-      patchTeamDeploymentPolicyPublicDeployments,
-    ),
-  );
-}
-export function patchTeamDeploymentPolicyPublicDeploymentsFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  PatchTeamDeploymentPolicyPublicDeployments,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      PatchTeamDeploymentPolicyPublicDeployments$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'PatchTeamDeploymentPolicyPublicDeployments' from JSON`,
-  );
-}
-
-/** @internal */
 export const PatchTeamDeploymentPolicy1$inboundSchema: z.ZodType<
   PatchTeamDeploymentPolicy1,
   z.ZodTypeDef,
@@ -1234,18 +1131,11 @@ export const PatchTeamDeploymentPolicy1$inboundSchema: z.ZodType<
       types.string(),
     ]),
   ),
-  publicDeployments: types.optional(
-    smartUnion([
-      z.lazy(() => PatchTeamPublicDeployments1$inboundSchema),
-      types.string(),
-    ]),
-  ),
 });
 /** @internal */
 export type PatchTeamDeploymentPolicy1$Outbound = {
   gitSources?: PatchTeamGitSources1$Outbound | string | undefined;
   deploymentSources?: PatchTeamDeploymentSources1$Outbound | string | undefined;
-  publicDeployments?: PatchTeamPublicDeployments1$Outbound | string | undefined;
 };
 
 /** @internal */
@@ -1260,10 +1150,6 @@ export const PatchTeamDeploymentPolicy1$outboundSchema: z.ZodType<
   ]).optional(),
   deploymentSources: smartUnion([
     z.lazy(() => PatchTeamDeploymentSources1$outboundSchema),
-    z.string(),
-  ]).optional(),
-  publicDeployments: smartUnion([
-    z.lazy(() => PatchTeamPublicDeployments1$outboundSchema),
     z.string(),
   ]).optional(),
 });

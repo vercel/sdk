@@ -1,17 +1,20 @@
 # PayloadTarget
 
-environments this env variable targets
 
-## Example Usage
+## Supported Types
 
-```typescript
-import { PayloadTarget } from "@vercel/sdk/models/usereventpayload80deployment.js";
-
-let value: PayloadTarget = "production";
-```
-
-## Values
+### `string`
 
 ```typescript
-"production" | "preview" | "development"
+const value: string = "<value>";
 ```
+
+### `string[]`
+
+```typescript
+const value: string[] = [
+  "<value 1>",
+  "<value 2>",
+];
+```
+

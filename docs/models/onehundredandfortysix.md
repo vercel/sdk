@@ -9,17 +9,27 @@ import { OneHundredAndFortySix } from "@vercel/sdk/models/edgemiddlewareinvocati
 
 let value: OneHundredAndFortySix = {
   projectId: "<id>",
-  headerName: "<value>",
-  previousStatus: "<value>",
-  justification: "<value>",
+  previous: {
+    enabled: true,
+    mode: "<value>",
+    enforcePercentage: 9147.05,
+    newResourceBlockingPolicy: "allow",
+    allowUnsafeScriptSrcKeywords: false,
+  },
+  next: {
+    enabled: false,
+    mode: "<value>",
+    enforcePercentage: 6386.02,
+    newResourceBlockingPolicy: "allow",
+    allowUnsafeScriptSrcKeywords: false,
+  },
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
-| `headerName`       | *string*           | :heavy_check_mark: | N/A                |
-| `previousStatus`   | *string*           | :heavy_check_mark: | N/A                |
-| `justification`    | *string*           | :heavy_check_mark: | N/A                |
+| Field                                    | Type                                     | Required                                 | Description                              |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| `projectId`                              | *string*                                 | :heavy_check_mark:                       | N/A                                      |
+| `previous`                               | [models.Previous](../models/previous.md) | :heavy_check_mark:                       | N/A                                      |
+| `next`                                   | [models.Next](../models/next.md)         | :heavy_check_mark:                       | N/A                                      |

@@ -12,6 +12,6 @@ let value: ListDeploymentCheckRunsResponseBody = {
 
 ## Fields
 
-| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
-| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `runs`                                                                           | [models.ListDeploymentCheckRunsRuns](../models/listdeploymentcheckrunsruns.md)[] | :heavy_check_mark:                                                               | N/A                                                                              |
+| Field                                  | Type                                   | Required                               | Description                            |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| `runs`                                 | *models.ListDeploymentCheckRunsRuns*[] | :heavy_check_mark:                     | N/A                                    |

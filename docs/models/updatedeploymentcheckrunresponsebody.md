@@ -1,49 +1,45 @@
 # UpdateDeploymentCheckRunResponseBody
 
-## Example Usage
+
+## Supported Types
+
+### `models.UpdateDeploymentCheckRunResponseBody1`
 
 ```typescript
-import { UpdateDeploymentCheckRunResponseBody } from "@vercel/sdk/models/updatedeploymentcheckrunop.js";
-
-let value: UpdateDeploymentCheckRunResponseBody = {
+const value: models.UpdateDeploymentCheckRunResponseBody1 = {
   id: "<id>",
   name: "<value>",
-  checkId: "<id>",
   ownerId: "<id>",
   deploymentId: "<id>",
+  status: "running",
+  timeout: 6527.32,
+  createdAt: 2125,
+  updatedAt: 4265.19,
+  checkId: "<id>",
   source: {
     kind: "git-provider",
-    provider: "gitlab",
+    provider: "github",
     externalCheckName: "<value>",
   },
-  status: "queued",
-  timeout: 4541.95,
-  createdAt: 942.81,
-  updatedAt: 7273.82,
 };
 ```
 
-## Fields
+### `models.UpdateDeploymentCheckRunResponseBody2`
 
-| Field                                                                                                | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
-| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| `id`                                                                                                 | *string*                                                                                             | :heavy_check_mark:                                                                                   | N/A                                                                                                  |
-| `name`                                                                                               | *string*                                                                                             | :heavy_check_mark:                                                                                   | N/A                                                                                                  |
-| `checkId`                                                                                            | *string*                                                                                             | :heavy_check_mark:                                                                                   | N/A                                                                                                  |
-| `ownerId`                                                                                            | *string*                                                                                             | :heavy_check_mark:                                                                                   | N/A                                                                                                  |
-| `deploymentId`                                                                                       | *string*                                                                                             | :heavy_check_mark:                                                                                   | N/A                                                                                                  |
-| `projectId`                                                                                          | *string*                                                                                             | :heavy_minus_sign:                                                                                   | N/A                                                                                                  |
-| `source`                                                                                             | *models.UpdateDeploymentCheckRunSource*                                                              | :heavy_check_mark:                                                                                   | N/A                                                                                                  |
-| `requires`                                                                                           | [models.UpdateDeploymentCheckRunRequires](../models/updatedeploymentcheckrunrequires.md)             | :heavy_minus_sign:                                                                                   | N/A                                                                                                  |
-| `blocks`                                                                                             | [models.UpdateDeploymentCheckRunBlocks](../models/updatedeploymentcheckrunblocks.md)                 | :heavy_minus_sign:                                                                                   | N/A                                                                                                  |
-| `targets`                                                                                            | *string*[]                                                                                           | :heavy_minus_sign:                                                                                   | N/A                                                                                                  |
-| `status`                                                                                             | [models.UpdateDeploymentCheckRunChecksV2Status](../models/updatedeploymentcheckrunchecksv2status.md) | :heavy_check_mark:                                                                                   | N/A                                                                                                  |
-| `conclusion`                                                                                         | [models.UpdateDeploymentCheckRunConclusion](../models/updatedeploymentcheckrunconclusion.md)         | :heavy_minus_sign:                                                                                   | N/A                                                                                                  |
-| `conclusionText`                                                                                     | *string*                                                                                             | :heavy_minus_sign:                                                                                   | N/A                                                                                                  |
-| `externalId`                                                                                         | *string*                                                                                             | :heavy_minus_sign:                                                                                   | N/A                                                                                                  |
-| `externalUrl`                                                                                        | *string*                                                                                             | :heavy_minus_sign:                                                                                   | N/A                                                                                                  |
-| `output`                                                                                             | Record<string, *any*>                                                                                | :heavy_minus_sign:                                                                                   | N/A                                                                                                  |
-| `timeout`                                                                                            | *number*                                                                                             | :heavy_check_mark:                                                                                   | N/A                                                                                                  |
-| `createdAt`                                                                                          | *number*                                                                                             | :heavy_check_mark:                                                                                   | N/A                                                                                                  |
-| `updatedAt`                                                                                          | *number*                                                                                             | :heavy_check_mark:                                                                                   | N/A                                                                                                  |
-| `completedAt`                                                                                        | *number*                                                                                             | :heavy_minus_sign:                                                                                   | N/A                                                                                                  |
+```typescript
+const value: models.UpdateDeploymentCheckRunResponseBody2 = {
+  id: "<id>",
+  name: "<value>",
+  ownerId: "<id>",
+  deploymentId: "<id>",
+  status: "queued",
+  timeout: 9135.25,
+  createdAt: 2810.18,
+  updatedAt: 967.97,
+  source: {
+    subKind: "vercel-ci-sentinel",
+    origin: "platform",
+  },
+};
+```
+

@@ -11,7 +11,7 @@ let value: OneHundredAndNinetyTwo = {
   projectId: "<id>",
   projectName: "<value>",
   next: {
-    gitProvider: "github-custom-host",
+    gitProvider: "gitlab",
     gitRepoId: "<id>",
     gitRepositoryName: "<value>",
   },

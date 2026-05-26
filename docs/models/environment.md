@@ -5,11 +5,11 @@
 ```typescript
 import { Environment } from "@vercel/sdk/models/twohundredandtwentysix.js";
 
-let value: Environment = "preview";
+let value: Environment = "production";
 ```
 
 ## Values
 
 ```typescript
-"production" | "preview"
+"preview" | "production"
 ```

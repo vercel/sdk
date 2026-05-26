@@ -100,9 +100,9 @@ export type CompleteRollingReleaseReadyState = ClosedEnum<
 export const CompleteRollingReleaseSource = {
   Git: "git",
   Cli: "cli",
-  Import: "import",
   ApiTriggerGitDeploy: "api-trigger-git-deploy",
   CloneRepo: "clone/repo",
+  Import: "import",
   ImportRepo: "import/repo",
   Redeploy: "redeploy",
   V0Web: "v0-web",
@@ -188,9 +188,9 @@ export type CompleteRollingReleaseRollingReleaseReadyState = ClosedEnum<
 export const CompleteRollingReleaseRollingReleaseSource = {
   Git: "git",
   Cli: "cli",
-  Import: "import",
   ApiTriggerGitDeploy: "api-trigger-git-deploy",
   CloneRepo: "clone/repo",
+  Import: "import",
   ImportRepo: "import/repo",
   Redeploy: "redeploy",
   V0Web: "v0-web",

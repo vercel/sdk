@@ -1415,6 +1415,8 @@ export type ResponseBodyPermissions = {
   integrationPullRequest?: Array<ACLAction> | undefined;
   ipBlocking?: Array<ACLAction> | undefined;
   jobGlobal?: Array<ACLAction> | undefined;
+  kmsIssuer?: Array<ACLAction> | undefined;
+  kmsProjectGrant?: Array<ACLAction> | undefined;
   logDrain?: Array<ACLAction> | undefined;
   marketplaceBillingData?: Array<ACLAction> | undefined;
   marketplaceExperimentationEdgeConfigData?: Array<ACLAction> | undefined;
@@ -7177,6 +7179,8 @@ export const ResponseBodyPermissions$inboundSchema: z.ZodType<
   integrationPullRequest: types.optional(z.array(ACLAction$inboundSchema)),
   ipBlocking: types.optional(z.array(ACLAction$inboundSchema)),
   jobGlobal: types.optional(z.array(ACLAction$inboundSchema)),
+  kmsIssuer: types.optional(z.array(ACLAction$inboundSchema)),
+  kmsProjectGrant: types.optional(z.array(ACLAction$inboundSchema)),
   logDrain: types.optional(z.array(ACLAction$inboundSchema)),
   marketplaceBillingData: types.optional(z.array(ACLAction$inboundSchema)),
   marketplaceExperimentationEdgeConfigData: types.optional(
@@ -7465,6 +7469,8 @@ export type ResponseBodyPermissions$Outbound = {
   integrationPullRequest?: Array<string> | undefined;
   ipBlocking?: Array<string> | undefined;
   jobGlobal?: Array<string> | undefined;
+  kmsIssuer?: Array<string> | undefined;
+  kmsProjectGrant?: Array<string> | undefined;
   logDrain?: Array<string> | undefined;
   marketplaceBillingData?: Array<string> | undefined;
   marketplaceExperimentationEdgeConfigData?: Array<string> | undefined;
@@ -7725,6 +7731,8 @@ export const ResponseBodyPermissions$outboundSchema: z.ZodType<
   integrationPullRequest: z.array(ACLAction$outboundSchema).optional(),
   ipBlocking: z.array(ACLAction$outboundSchema).optional(),
   jobGlobal: z.array(ACLAction$outboundSchema).optional(),
+  kmsIssuer: z.array(ACLAction$outboundSchema).optional(),
+  kmsProjectGrant: z.array(ACLAction$outboundSchema).optional(),
   logDrain: z.array(ACLAction$outboundSchema).optional(),
   marketplaceBillingData: z.array(ACLAction$outboundSchema).optional(),
   marketplaceExperimentationEdgeConfigData: z.array(ACLAction$outboundSchema)

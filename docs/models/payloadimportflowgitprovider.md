@@ -5,11 +5,11 @@
 ```typescript
 import { PayloadImportFlowGitProvider } from "@vercel/sdk/models/edgemiddlewareinvocations.js";
 
-let value: PayloadImportFlowGitProvider = "github-custom-host";
+let value: PayloadImportFlowGitProvider = "gitlab";
 ```
 
 ## Values
 
 ```typescript
-"vercel" | "github" | "github-limited" | "github-custom-host" | "gitlab" | "bitbucket"
+"github" | "github-limited" | "github-custom-host" | "gitlab" | "bitbucket" | "vercel"
 ```

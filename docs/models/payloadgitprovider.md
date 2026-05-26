@@ -5,11 +5,11 @@
 ```typescript
 import { PayloadGitProvider } from "@vercel/sdk/models/onehundredandfiftyfive.js";
 
-let value: PayloadGitProvider = "vercel";
+let value: PayloadGitProvider = "github";
 ```
 
 ## Values
 
 ```typescript
-"vercel" | "github" | "github-limited" | "github-custom-host" | "gitlab" | "bitbucket"
+"github" | "github-limited" | "github-custom-host" | "gitlab" | "bitbucket" | "vercel"
 ```

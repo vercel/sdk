@@ -74,8 +74,8 @@ export type RequestAccessToTeamRequest = {
 export const RequestAccessToTeamTeamsOrigin = {
   Teams: "teams",
   Link: "link",
-  Import: "import",
   Mail: "mail",
+  Import: "import",
   Github: "github",
   Gitlab: "gitlab",
   Bitbucket: "bitbucket",

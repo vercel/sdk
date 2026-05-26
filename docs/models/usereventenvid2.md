@@ -5,11 +5,11 @@
 ```typescript
 import { UserEventEnvId2 } from "@vercel/sdk/models/onehundredandfiftyfive.js";
 
-let value: UserEventEnvId2 = "preview";
+let value: UserEventEnvId2 = "production";
 ```
 
 ## Values
 
 ```typescript
-"production" | "preview"
+"preview" | "production"
 ```

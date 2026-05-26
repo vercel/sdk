@@ -5,11 +5,11 @@
 ```typescript
 import { TrustedIps } from "@vercel/sdk/models/twohundredandtwentysix.js";
 
-let value: TrustedIps = "production";
+let value: TrustedIps = "all";
 ```
 
 ## Values
 
 ```typescript
-"production" | "all" | "preview" | "prod_deployment_urls_and_all_previews" | "all_except_custom_domains"
+"all" | "preview" | "prod_deployment_urls_and_all_previews" | "all_except_custom_domains" | "production"
 ```

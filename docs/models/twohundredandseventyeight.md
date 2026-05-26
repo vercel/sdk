@@ -11,7 +11,7 @@ let value: TwoHundredAndSeventyEight = {
   projectId: "<id>",
   projectName: "<value>",
   enabled: true,
-  environment: "preview",
+  environment: "production",
 };
 ```
 

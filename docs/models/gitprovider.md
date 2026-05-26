@@ -5,11 +5,11 @@
 ```typescript
 import { GitProvider } from "@vercel/sdk/models/onehundredandfiftyfive.js";
 
-let value: GitProvider = "gitlab";
+let value: GitProvider = "bitbucket";
 ```
 
 ## Values
 
 ```typescript
-"vercel" | "github" | "github-limited" | "github-custom-host" | "gitlab" | "bitbucket"
+"github" | "github-limited" | "github-custom-host" | "gitlab" | "bitbucket" | "vercel"
 ```

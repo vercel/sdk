@@ -6,7 +6,7 @@
 import { UserEventPayloadJoinedFrom } from "@vercel/sdk/models/edgemiddlewareinvocations.js";
 
 let value: UserEventPayloadJoinedFrom = {
-  origin: "github",
+  origin: "gitlab",
 };
 ```
 

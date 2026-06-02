@@ -8,7 +8,7 @@ The payload of the event, if requested.
 import { TwoHundredAndSeventyNine } from "@vercel/sdk/models/twohundredandtwentysix.js";
 
 let value: TwoHundredAndSeventyNine = {
-  environment: "preview",
+  environment: "production",
   enabled: "off",
 };
 ```

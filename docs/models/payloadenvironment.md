@@ -5,11 +5,11 @@
 ```typescript
 import { PayloadEnvironment } from "@vercel/sdk/models/payloadenvironment.js";
 
-let value: PayloadEnvironment = "preview";
+let value: PayloadEnvironment = "production";
 ```
 
 ## Values
 
 ```typescript
-"production" | "preview"
+"preview" | "production"
 ```

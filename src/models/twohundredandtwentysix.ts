@@ -35,8 +35,8 @@ export type TwoHundredAndSeventyNine = {
 };
 
 export const Environment = {
-  Production: "production",
   Preview: "preview",
+  Production: "production",
 } as const;
 export type Environment = ClosedEnum<typeof Environment>;
 
@@ -1013,20 +1013,20 @@ export type TwoHundredAndFortyTwo = {
 };
 
 export const TrustedIps = {
-  Production: "production",
   All: "all",
   Preview: "preview",
   ProdDeploymentUrlsAndAllPreviews: "prod_deployment_urls_and_all_previews",
   AllExceptCustomDomains: "all_except_custom_domains",
+  Production: "production",
 } as const;
 export type TrustedIps = ClosedEnum<typeof TrustedIps>;
 
 export const OldTrustedIps = {
-  Production: "production",
   All: "all",
   Preview: "preview",
   ProdDeploymentUrlsAndAllPreviews: "prod_deployment_urls_and_all_previews",
   AllExceptCustomDomains: "all_except_custom_domains",
+  Production: "production",
 } as const;
 export type OldTrustedIps = ClosedEnum<typeof OldTrustedIps>;
 

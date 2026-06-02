@@ -2081,7 +2081,7 @@ const value: models.OneHundredAndNinetyTwo = {
   projectId: "<id>",
   projectName: "<value>",
   next: {
-    gitProvider: "github-custom-host",
+    gitProvider: "gitlab",
     gitRepoId: "<id>",
     gitRepositoryName: "<value>",
   },
@@ -2094,7 +2094,7 @@ const value: models.OneHundredAndNinetyTwo = {
 const value: models.OneHundredAndNinetyThree = {
   projectId: "<id>",
   projectName: "<value>",
-  gitProvider: "github",
+  gitProvider: "github-limited",
   gitRepoId: "<id>",
   gitRepositoryName: "<value>",
 };
@@ -3043,7 +3043,7 @@ const value: models.TwoHundredAndSeventyEight = {
   projectId: "<id>",
   projectName: "<value>",
   enabled: true,
-  environment: "preview",
+  environment: "production",
 };
 ```
 
@@ -3051,7 +3051,7 @@ const value: models.TwoHundredAndSeventyEight = {
 
 ```typescript
 const value: models.TwoHundredAndSeventyNine = {
-  environment: "preview",
+  environment: "production",
   enabled: "off",
 };
 ```

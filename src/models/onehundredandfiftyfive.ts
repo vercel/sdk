@@ -518,12 +518,12 @@ export type OneHundredAndNinetyFour = {
 };
 
 export const GitProvider = {
-  Vercel: "vercel",
   Github: "github",
   GithubLimited: "github-limited",
   GithubCustomHost: "github-custom-host",
   Gitlab: "gitlab",
   Bitbucket: "bitbucket",
+  Vercel: "vercel",
 } as const;
 export type GitProvider = ClosedEnum<typeof GitProvider>;
 
@@ -539,12 +539,12 @@ export type OneHundredAndNinetyThree = {
 };
 
 export const UserEventPayloadGitProvider = {
-  Vercel: "vercel",
   Github: "github",
   GithubLimited: "github-limited",
   GithubCustomHost: "github-custom-host",
   Gitlab: "gitlab",
   Bitbucket: "bitbucket",
+  Vercel: "vercel",
 } as const;
 export type UserEventPayloadGitProvider = ClosedEnum<
   typeof UserEventPayloadGitProvider
@@ -557,12 +557,12 @@ export type UserEventPayload192Previous = {
 };
 
 export const PayloadGitProvider = {
-  Vercel: "vercel",
   Github: "github",
   GithubLimited: "github-limited",
   GithubCustomHost: "github-custom-host",
   Gitlab: "gitlab",
   Bitbucket: "bitbucket",
+  Vercel: "vercel",
 } as const;
 export type PayloadGitProvider = ClosedEnum<typeof PayloadGitProvider>;
 
@@ -891,8 +891,8 @@ export type UserEventPayload174Team = {
 };
 
 export const EnvId2 = {
-  Production: "production",
   Preview: "preview",
+  Production: "production",
 } as const;
 export type EnvId2 = ClosedEnum<typeof EnvId2>;
 
@@ -915,8 +915,8 @@ export type OldConnectConfigurations = {
 };
 
 export const UserEventEnvId2 = {
-  Production: "production",
   Preview: "preview",
+  Production: "production",
 } as const;
 export type UserEventEnvId2 = ClosedEnum<typeof UserEventEnvId2>;
 

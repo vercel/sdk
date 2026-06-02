@@ -109,8 +109,8 @@ export type GetTeamMembersRole = ClosedEnum<typeof GetTeamMembersRole>;
 export const GetTeamMembersOrigin = {
   Teams: "teams",
   Link: "link",
-  Import: "import",
   Mail: "mail",
+  Import: "import",
   Github: "github",
   Gitlab: "gitlab",
   Bitbucket: "bitbucket",

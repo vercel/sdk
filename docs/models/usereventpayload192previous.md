@@ -6,7 +6,7 @@
 import { UserEventPayload192Previous } from "@vercel/sdk/models/onehundredandfiftyfive.js";
 
 let value: UserEventPayload192Previous = {
-  gitProvider: "github-limited",
+  gitProvider: "github-custom-host",
   gitRepoId: "<id>",
   gitRepositoryName: "<value>",
 };

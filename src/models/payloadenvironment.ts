@@ -70,8 +70,6 @@ export const Type = {
   Alias: "alias",
   Plan: "plan",
   Domain: "domain",
-  Flag: "flag",
-  Deployment: "deployment",
   AgenticProvisioningAccountLinked: "agentic-provisioning-account-linked",
   AgenticProvisioningAccountRelinked: "agentic-provisioning-account-relinked",
   AgenticProvisioningTeamCreated: "agentic-provisioning-team-created",
@@ -188,6 +186,7 @@ export const Type = {
   DeploymentCheckCreated: "deployment-check-created",
   DeploymentCheckUpdated: "deployment-check-updated",
   DeploymentCheckDeleted: "deployment-check-deleted",
+  Deployment: "deployment",
   AuthorizeGitDeployment: "authorize-git-deployment",
   DeploymentChown: "deployment-chown",
   DeploymentCreationBlocked: "deployment-creation-blocked",
@@ -263,6 +262,7 @@ export const Type = {
   FirewallConfigRemoved: "firewall-config-removed",
   FirewallManagedRulegroupUpdated: "firewall-managed-rulegroup-updated",
   FirewallManagedRulesetUpdated: "firewall-managed-ruleset-updated",
+  Flag: "flag",
   FlagsSegment: "flags-segment",
   FlagsSettings: "flags-settings",
   FlagCreated: "flag-created",
@@ -1660,13 +1660,13 @@ export type TwoHundredAndNinety = {
 
 export const Source = {
   Link: "link",
-  Import: "import",
   Teams: "teams",
   Saml: "saml",
   Github: "github",
   Gitlab: "gitlab",
   Bitbucket: "bitbucket",
   Mail: "mail",
+  Import: "import",
   Dsync: "dsync",
   Feedback: "feedback",
   OrganizationTeams: "organization-teams",
@@ -1862,8 +1862,8 @@ export type TwoHundredAndEighty = {
 };
 
 export const PayloadEnvironment = {
-  Production: "production",
   Preview: "preview",
+  Production: "production",
 } as const;
 export type PayloadEnvironment = ClosedEnum<typeof PayloadEnvironment>;
 

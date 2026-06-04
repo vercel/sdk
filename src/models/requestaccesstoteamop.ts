@@ -81,6 +81,7 @@ export const RequestAccessToTeamTeamsOrigin = {
   Bitbucket: "bitbucket",
   Saml: "saml",
   Dsync: "dsync",
+  AccountUpdate: "account-update",
   Feedback: "feedback",
   OrganizationTeams: "organization-teams",
   NsnbAutoApprove: "nsnb-auto-approve",

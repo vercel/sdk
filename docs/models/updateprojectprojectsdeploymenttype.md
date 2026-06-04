@@ -1,11 +1,9 @@
 # UpdateProjectProjectsDeploymentType
 
-Specify if the Vercel Authentication (SSO Protection) will apply to every Deployment Target or just Preview
-
 ## Example Usage
 
 ```typescript
-import { UpdateProjectProjectsDeploymentType } from "@vercel/sdk/models/updateprojectprojectsresponsebuildqueue.js";
+import { UpdateProjectProjectsDeploymentType } from "@vercel/sdk/models/updateprojectprojectsfunctiondefaultmemorytype.js";
 
 let value: UpdateProjectProjectsDeploymentType =
   "prod_deployment_urls_and_all_previews";

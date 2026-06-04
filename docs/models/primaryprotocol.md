@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PrimaryProtocol } from "@vercel/sdk/models/getconfigurationproductspropertiesintegrationsresponse200uicontrol.js";
+import { PrimaryProtocol } from "@vercel/sdk/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyuidisabled.js";
 
 let value: PrimaryProtocol = "other";
 ```

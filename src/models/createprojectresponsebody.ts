@@ -49,6 +49,10 @@ import {
   CreateProjectOptionsAllowlist$inboundSchema,
   CreateProjectOptionsAllowlist$Outbound,
   CreateProjectOptionsAllowlist$outboundSchema,
+  CreateProjectPassport,
+  CreateProjectPassport$inboundSchema,
+  CreateProjectPassport$Outbound,
+  CreateProjectPassport$outboundSchema,
   CreateProjectPasswordProtection,
   CreateProjectPasswordProtection$inboundSchema,
   CreateProjectPasswordProtection$Outbound,
@@ -84,9 +88,6 @@ import {
   CreateProjectTo2$inboundSchema,
   CreateProjectTo2$Outbound,
   CreateProjectTo2$outboundSchema,
-  CreateProjectToPreset,
-  CreateProjectToPreset$inboundSchema,
-  CreateProjectToPreset$outboundSchema,
   CreateProjectTrustedIps,
   CreateProjectTrustedIps$inboundSchema,
   CreateProjectTrustedIps$Outbound,
@@ -99,10 +100,6 @@ import {
   DefaultResourceConfig$inboundSchema,
   DefaultResourceConfig$Outbound,
   DefaultResourceConfig$outboundSchema,
-  DelegatedProtection,
-  DelegatedProtection$inboundSchema,
-  DelegatedProtection$Outbound,
-  DelegatedProtection$outboundSchema,
   DeploymentExpiration,
   DeploymentExpiration$inboundSchema,
   DeploymentExpiration$Outbound,
@@ -143,8 +140,13 @@ import {
   SpeedInsights$inboundSchema,
   SpeedInsights$Outbound,
   SpeedInsights$outboundSchema,
-} from "./createprojecttopreset.js";
+} from "./createprojectto2.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export const CreateProjectToPreset = {
+  AllCustom: "all-custom",
+} as const;
+export type CreateProjectToPreset = ClosedEnum<typeof CreateProjectToPreset>;
 
 /**
  * The target envs on the current project that may be accessed.
@@ -276,18 +278,22 @@ export type BotFilter = {
     | undefined;
 };
 
-export const CreateProjectProjectsResponseAction = {
-  Deny: "deny",
-  Challenge: "challenge",
-  Log: "log",
-} as const;
-export type CreateProjectProjectsResponseAction = ClosedEnum<
-  typeof CreateProjectProjectsResponseAction
->;
+export const CreateProjectProjectsResponse200ApplicationJSONResponseBodySecurityAction =
+  {
+    Deny: "deny",
+    Challenge: "challenge",
+    Log: "log",
+  } as const;
+export type CreateProjectProjectsResponse200ApplicationJSONResponseBodySecurityAction =
+  ClosedEnum<
+    typeof CreateProjectProjectsResponse200ApplicationJSONResponseBodySecurityAction
+  >;
 
 export type CreateProjectAiBots = {
   active: boolean;
-  action?: CreateProjectProjectsResponseAction | undefined;
+  action?:
+    | CreateProjectProjectsResponse200ApplicationJSONResponseBodySecurityAction
+    | undefined;
 };
 
 export const CreateProjectProjectsResponse200Action = {
@@ -375,49 +381,76 @@ export type CreateProjectOidcTokenConfig = {
   issuerMode?: CreateProjectProjectsIssuerMode | undefined;
 };
 
-export const CreateProjectSourcesProvider = {
-  Github: "github",
-  Gitlab: "gitlab",
-  Bitbucket: "bitbucket",
-} as const;
-export type CreateProjectSourcesProvider = ClosedEnum<
-  typeof CreateProjectSourcesProvider
->;
-
+/**
+ * Allowlist entry for GitLab, which uses nested groups rather than a flat org/repo. `namespace` is the full group path (e.g. `group` or `group/subgroup`); `project` is the leaf project name. Omit `project` to match any project under the namespace. Namespace is matched case-insensitively.
+ */
 export type CreateProjectSources2 = {
-  provider: CreateProjectSourcesProvider;
-  org: string;
-  repo: string;
+  provider: "gitlab";
+  namespace: string;
+  project?: string | undefined;
 };
 
 export const CreateProjectSourcesProjectsProvider = {
   Github: "github",
-  Gitlab: "gitlab",
   Bitbucket: "bitbucket",
 } as const;
 export type CreateProjectSourcesProjectsProvider = ClosedEnum<
   typeof CreateProjectSourcesProjectsProvider
 >;
 
+/**
+ * Allowlist entry for GitHub and Bitbucket, whose repos are identified by a flat `org`/`repo` (Bitbucket's workspace/owner maps to `org`, its repo slug to `repo`). Omit `repo` to match any repo in the org. Org is matched case-insensitively.
+ */
 export type CreateProjectSources1 = {
   provider: CreateProjectSourcesProjectsProvider;
   org: string;
+  repo?: string | undefined;
 };
 
 export type CreateProjectSources =
-  | CreateProjectSources2
-  | CreateProjectSources1;
+  | (CreateProjectSources1 & { provider: "github" })
+  | (CreateProjectSources1 & { provider: "bitbucket" })
+  | CreateProjectSources2;
+
+export type CreateProjectEnvironmentsProjects2 = {
+  type: "custom";
+  environmentId: string;
+};
+
+export const CreateProjectEnvironmentsProjectsTarget = {
+  Production: "production",
+  Preview: "preview",
+} as const;
+export type CreateProjectEnvironmentsProjectsTarget = ClosedEnum<
+  typeof CreateProjectEnvironmentsProjectsTarget
+>;
+
+export type CreateProjectEnvironmentsProjects1 = {
+  type: "system";
+  target: CreateProjectEnvironmentsProjectsTarget;
+};
+
+export type CreateProjectEnvironments =
+  | CreateProjectEnvironmentsProjects1
+  | CreateProjectEnvironmentsProjects2;
 
 /**
- * Restricts inbound Git deployments to an allowlist of orgs and/or repos. `enabled: true` with an empty `sources` list is treated as deny-all.
+ * `enabled: true` with empty `sources` is deny-all.
  */
 export type CreateProjectGitSources = {
-  sources: Array<CreateProjectSources2 | CreateProjectSources1>;
+  sources: Array<
+    | (CreateProjectSources1 & { provider: "github" })
+    | (CreateProjectSources1 & { provider: "bitbucket" })
+    | CreateProjectSources2
+  >;
   enabled: boolean;
+  environments: Array<
+    CreateProjectEnvironmentsProjects1 | CreateProjectEnvironmentsProjects2
+  >;
 };
 
 /**
- * The mechanism that produced a deployment, expressed as values a customer can write in a {@link DeploymentSourcesRule} allowlist. The JSON schema at `packages/deployment-policy/schemas/body.ts` enumerates exactly these values. - `'git'`: a Git provider webhook (GitHub / GitLab / Bitbucket). - `'cli'`: an upload via the Vercel CLI. Covers both the legacy CLI (classic user token, identified by `vercel`/`now` user-agent) and the Sign-In-With-Vercel CLI (a first-party Vercel App token whose `clientId` is the CLI's). The canonical CLI client IDs are tracked in `packages/acl/app-has-all-permissions.ts` (`isVercelCliApp`). - `'rest-api'`: a direct REST API upload — a user or team token POSTing directly. Does NOT cover deploy-hook URLs, Marketplace integration tokens, or first-party Vercel App tokens; those are their own sources. - `'deploy-hook'`: a trigger via a project deploy-hook URL. The URL itself is the credential, so the request has no authenticated principal. - `'integration'`: a **third-party Marketplace** OAuth2 actor — a Marketplace integration token, a user-delegated OAuth flow where a Marketplace integration is acting on a user's behalf, or an unrecognized third-party Vercel App token. First-party Vercel Apps are NEVER `'integration'`. Vercel-owned first-party apps other than the CLI (e.g. v0, Toolbar, Omni Agent) are *not* in this type — they aren't customer-configurable. They classify as `'first-party'` (see `ClassifiedSource` in `@api/deployment-policy/checks`) and are auto-allowed by `checkDeploymentSources`. The split is intentional: a team can permit their own automation and CLI usage while blocking third-party Marketplace integrators — and Vercel's own first-party tooling always works.
+ * Customer-configurable deployment sources. Every deploy classifies to exactly one. JSON schema in `packages/deployment-policy/schemas/body.ts` enumerates exactly these values. - `'git'` — git provider webhook. - `'cli'` — Vercel CLI (legacy classic-token CLI and SIWV CLI both). - `'rest-api'` — direct user/team-token REST upload. Does NOT cover deploy hooks, Marketplace integrations, or first-party app tokens. - `'deploy-hook'` — project deploy-hook URL. The URL is the credential. - `'integration'` — third-party Marketplace actor: Marketplace integration token, user-delegated OAuth from a Marketplace app, or an unrecognized third-party Vercel App. First-party Vercel Apps are never `'integration'`. First-party Vercel apps (v0, Toolbar, etc.) classify as `'first-party'` — see `ClassifiedSource` in `./checks`. They're not in this union because they aren't customer-configurable; they bypass `checkDeploymentSources` entirely.
  */
 export const CreateProjectProjectsSources = {
   Git: "git",
@@ -427,32 +460,49 @@ export const CreateProjectProjectsSources = {
   Integration: "integration",
 } as const;
 /**
- * The mechanism that produced a deployment, expressed as values a customer can write in a {@link DeploymentSourcesRule} allowlist. The JSON schema at `packages/deployment-policy/schemas/body.ts` enumerates exactly these values. - `'git'`: a Git provider webhook (GitHub / GitLab / Bitbucket). - `'cli'`: an upload via the Vercel CLI. Covers both the legacy CLI (classic user token, identified by `vercel`/`now` user-agent) and the Sign-In-With-Vercel CLI (a first-party Vercel App token whose `clientId` is the CLI's). The canonical CLI client IDs are tracked in `packages/acl/app-has-all-permissions.ts` (`isVercelCliApp`). - `'rest-api'`: a direct REST API upload — a user or team token POSTing directly. Does NOT cover deploy-hook URLs, Marketplace integration tokens, or first-party Vercel App tokens; those are their own sources. - `'deploy-hook'`: a trigger via a project deploy-hook URL. The URL itself is the credential, so the request has no authenticated principal. - `'integration'`: a **third-party Marketplace** OAuth2 actor — a Marketplace integration token, a user-delegated OAuth flow where a Marketplace integration is acting on a user's behalf, or an unrecognized third-party Vercel App token. First-party Vercel Apps are NEVER `'integration'`. Vercel-owned first-party apps other than the CLI (e.g. v0, Toolbar, Omni Agent) are *not* in this type — they aren't customer-configurable. They classify as `'first-party'` (see `ClassifiedSource` in `@api/deployment-policy/checks`) and are auto-allowed by `checkDeploymentSources`. The split is intentional: a team can permit their own automation and CLI usage while blocking third-party Marketplace integrators — and Vercel's own first-party tooling always works.
+ * Customer-configurable deployment sources. Every deploy classifies to exactly one. JSON schema in `packages/deployment-policy/schemas/body.ts` enumerates exactly these values. - `'git'` — git provider webhook. - `'cli'` — Vercel CLI (legacy classic-token CLI and SIWV CLI both). - `'rest-api'` — direct user/team-token REST upload. Does NOT cover deploy hooks, Marketplace integrations, or first-party app tokens. - `'deploy-hook'` — project deploy-hook URL. The URL is the credential. - `'integration'` — third-party Marketplace actor: Marketplace integration token, user-delegated OAuth from a Marketplace app, or an unrecognized third-party Vercel App. First-party Vercel Apps are never `'integration'`. First-party Vercel apps (v0, Toolbar, etc.) classify as `'first-party'` — see `ClassifiedSource` in `./checks`. They're not in this union because they aren't customer-configurable; they bypass `checkDeploymentSources` entirely.
  */
 export type CreateProjectProjectsSources = ClosedEnum<
   typeof CreateProjectProjectsSources
 >;
 
+export type CreateProjectEnvironments2 = {
+  type: "custom";
+  environmentId: string;
+};
+
+export const CreateProjectEnvironmentsTarget = {
+  Production: "production",
+  Preview: "preview",
+} as const;
+export type CreateProjectEnvironmentsTarget = ClosedEnum<
+  typeof CreateProjectEnvironmentsTarget
+>;
+
+export type CreateProjectEnvironments1 = {
+  type: "system";
+  target: CreateProjectEnvironmentsTarget;
+};
+
+export type CreateProjectProjectsEnvironments =
+  | CreateProjectEnvironments1
+  | CreateProjectEnvironments2;
+
 /**
- * Restricts which deployment sources are allowed. A deployment passes if its source is in `sources`. Multiple entries are evaluated as OR. `enabled: true` with an empty `sources` list is treated as deny-all.
+ * `enabled: true` with empty `sources` is deny-all.
  */
 export type CreateProjectDeploymentSources = {
   sources: Array<CreateProjectProjectsSources>;
   enabled: boolean;
+  environments: Array<CreateProjectEnvironments1 | CreateProjectEnvironments2>;
 };
 
 /**
- * Project-level shape. Each rule may be: - an object: overrides the team's value for that rule - `null`: explicitly clears the override on just that rule (inherit team) - omitted: inherit team To clear all overrides and inherit fully, set the project's `deploymentPolicy` field itself to `null`. Defined independently from {@link TeamDeploymentPolicy} so the two are not coupled by a shared type — the underlying data lives in separate stores.
+ * Project shape. `null` on a rule list clears the project's override for that rule type (fall back to team for every env); omitting is equivalent. Setting `deploymentPolicy` itself to `null` clears every override at once. Kept structurally distinct from {@link TeamDeploymentPolicy} so the two storage locations don't share a type by accident.
  */
 export type CreateProjectDeploymentPolicy = {
-  /**
-   * Restricts inbound Git deployments to an allowlist of orgs and/or repos. `enabled: true` with an empty `sources` list is treated as deny-all.
-   */
-  gitSources?: CreateProjectGitSources | null | undefined;
-  /**
-   * Restricts which deployment sources are allowed. A deployment passes if its source is in `sources`. Multiple entries are evaluated as OR. `enabled: true` with an empty `sources` list is treated as deny-all.
-   */
-  deploymentSources?: CreateProjectDeploymentSources | null | undefined;
+  gitSources?: Array<CreateProjectGitSources> | null | undefined;
+  deploymentSources?: Array<CreateProjectDeploymentSources> | null | undefined;
 };
 
 export const FlatRateTier = {
@@ -505,15 +555,15 @@ export type CreateProjectHistory = {
   at: number;
 };
 
-export const CreateProjectProjectsAction = {
+export const CreateProjectProjectsResponseAction = {
   Blocked: "blocked",
 } as const;
-export type CreateProjectProjectsAction = ClosedEnum<
-  typeof CreateProjectProjectsAction
+export type CreateProjectProjectsResponseAction = ClosedEnum<
+  typeof CreateProjectProjectsResponseAction
 >;
 
 export type Block = {
-  action: CreateProjectProjectsAction;
+  action: CreateProjectProjectsResponseAction;
   reason: string;
   statusCode: number;
   createdAt: number;
@@ -685,6 +735,25 @@ export type CreateProjectBlockHistory =
   | BlockHistory3
   | BlockHistory4;
 
+export const CreateProjectProjectsAction = {
+  AddProjectInterstitial: "add-project-interstitial",
+  RemoveProjectInterstitial: "remove-project-interstitial",
+  AddDeploymentInterstitial: "add-deployment-interstitial",
+  RemoveDeploymentInterstitial: "remove-deployment-interstitial",
+} as const;
+export type CreateProjectProjectsAction = ClosedEnum<
+  typeof CreateProjectProjectsAction
+>;
+
+export type InterstitialHistory = {
+  action: CreateProjectProjectsAction;
+  createdAt: number;
+  caseId?: string | undefined;
+  reason?: string | undefined;
+  actor?: string | undefined;
+  comment?: string | undefined;
+};
+
 export type CreateProjectAbuse = {
   scanner?: string | undefined;
   history: Array<CreateProjectHistory>;
@@ -694,6 +763,7 @@ export type CreateProjectAbuse = {
     | Array<BlockHistory1 | BlockHistory2 | BlockHistory3 | BlockHistory4>
     | undefined;
   interstitial?: boolean | undefined;
+  interstitialHistory?: Array<InterstitialHistory> | undefined;
 };
 
 export type CreateProjectHasProjectsValue = {
@@ -813,7 +883,6 @@ export type CreateProjectResponseBody = {
   customerSupportCodeVisibility?: boolean | undefined;
   crons?: CreateProjectCrons | undefined;
   dataCache?: CreateProjectDataCache | undefined;
-  delegatedProtection?: DelegatedProtection | null | undefined;
   /**
    * Retention policies for deployments. These are enforced at the project level, but we also maintain an instance of this at the team level as a default policy that gets applied to new projects.
    */
@@ -838,6 +907,7 @@ export type CreateProjectResponseBody = {
   optionsAllowlist?: CreateProjectOptionsAllowlist | null | undefined;
   outputDirectory?: string | null | undefined;
   passwordProtection?: CreateProjectPasswordProtection | null | undefined;
+  passport?: CreateProjectPassport | null | undefined;
   productionDeploymentsFastLane?: boolean | undefined;
   publicSource?: boolean | null | undefined;
   resourceConfig: CreateProjectProjectsResourceConfig;
@@ -885,7 +955,7 @@ export type CreateProjectResponseBody = {
   security?: CreateProjectSecurity | undefined;
   oidcTokenConfig?: CreateProjectOidcTokenConfig | undefined;
   /**
-   * Project-level shape. Each rule may be: - an object: overrides the team's value for that rule - `null`: explicitly clears the override on just that rule (inherit team) - omitted: inherit team To clear all overrides and inherit fully, set the project's `deploymentPolicy` field itself to `null`. Defined independently from {@link TeamDeploymentPolicy} so the two are not coupled by a shared type — the underlying data lives in separate stores.
+   * Project shape. `null` on a rule list clears the project's override for that rule type (fall back to team for every env); omitting is equivalent. Setting `deploymentPolicy` itself to `null` clears every override at once. Kept structurally distinct from {@link TeamDeploymentPolicy} so the two storage locations don't share a type by accident.
    */
   deploymentPolicy?: CreateProjectDeploymentPolicy | null | undefined;
   tier?: string | undefined;
@@ -900,7 +970,17 @@ export type CreateProjectResponseBody = {
   dismissedToasts?: Array<CreateProjectDismissedToasts> | undefined;
   protectedSourcemaps?: boolean | undefined;
   tracing?: CreateProjectTracing | undefined;
+  avatar?: string | undefined;
 };
+
+/** @internal */
+export const CreateProjectToPreset$inboundSchema: z.ZodNativeEnum<
+  typeof CreateProjectToPreset
+> = z.nativeEnum(CreateProjectToPreset);
+/** @internal */
+export const CreateProjectToPreset$outboundSchema: z.ZodNativeEnum<
+  typeof CreateProjectToPreset
+> = CreateProjectToPreset$inboundSchema;
 
 /** @internal */
 export const CreateProjectTo1$inboundSchema: z.ZodType<
@@ -1407,13 +1487,18 @@ export function botFilterFromJSON(
 }
 
 /** @internal */
-export const CreateProjectProjectsResponseAction$inboundSchema: z.ZodNativeEnum<
-  typeof CreateProjectProjectsResponseAction
-> = z.nativeEnum(CreateProjectProjectsResponseAction);
+export const CreateProjectProjectsResponse200ApplicationJSONResponseBodySecurityAction$inboundSchema:
+  z.ZodNativeEnum<
+    typeof CreateProjectProjectsResponse200ApplicationJSONResponseBodySecurityAction
+  > = z.nativeEnum(
+    CreateProjectProjectsResponse200ApplicationJSONResponseBodySecurityAction,
+  );
 /** @internal */
-export const CreateProjectProjectsResponseAction$outboundSchema:
-  z.ZodNativeEnum<typeof CreateProjectProjectsResponseAction> =
-    CreateProjectProjectsResponseAction$inboundSchema;
+export const CreateProjectProjectsResponse200ApplicationJSONResponseBodySecurityAction$outboundSchema:
+  z.ZodNativeEnum<
+    typeof CreateProjectProjectsResponse200ApplicationJSONResponseBodySecurityAction
+  > =
+    CreateProjectProjectsResponse200ApplicationJSONResponseBodySecurityAction$inboundSchema;
 
 /** @internal */
 export const CreateProjectAiBots$inboundSchema: z.ZodType<
@@ -1422,7 +1507,9 @@ export const CreateProjectAiBots$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   active: types.boolean(),
-  action: types.optional(CreateProjectProjectsResponseAction$inboundSchema),
+  action: types.optional(
+    CreateProjectProjectsResponse200ApplicationJSONResponseBodySecurityAction$inboundSchema,
+  ),
 });
 /** @internal */
 export type CreateProjectAiBots$Outbound = {
@@ -1437,7 +1524,9 @@ export const CreateProjectAiBots$outboundSchema: z.ZodType<
   CreateProjectAiBots
 > = z.object({
   active: z.boolean(),
-  action: CreateProjectProjectsResponseAction$outboundSchema.optional(),
+  action:
+    CreateProjectProjectsResponse200ApplicationJSONResponseBodySecurityAction$outboundSchema
+      .optional(),
 });
 
 export function createProjectAiBotsToJSON(
@@ -1817,29 +1906,20 @@ export function createProjectOidcTokenConfigFromJSON(
 }
 
 /** @internal */
-export const CreateProjectSourcesProvider$inboundSchema: z.ZodNativeEnum<
-  typeof CreateProjectSourcesProvider
-> = z.nativeEnum(CreateProjectSourcesProvider);
-/** @internal */
-export const CreateProjectSourcesProvider$outboundSchema: z.ZodNativeEnum<
-  typeof CreateProjectSourcesProvider
-> = CreateProjectSourcesProvider$inboundSchema;
-
-/** @internal */
 export const CreateProjectSources2$inboundSchema: z.ZodType<
   CreateProjectSources2,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  provider: CreateProjectSourcesProvider$inboundSchema,
-  org: types.string(),
-  repo: types.string(),
+  provider: types.literal("gitlab"),
+  namespace: types.string(),
+  project: types.optional(types.string()),
 });
 /** @internal */
 export type CreateProjectSources2$Outbound = {
-  provider: string;
-  org: string;
-  repo: string;
+  provider: "gitlab";
+  namespace: string;
+  project?: string | undefined;
 };
 
 /** @internal */
@@ -1848,9 +1928,9 @@ export const CreateProjectSources2$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateProjectSources2
 > = z.object({
-  provider: CreateProjectSourcesProvider$outboundSchema,
-  org: z.string(),
-  repo: z.string(),
+  provider: z.literal("gitlab"),
+  namespace: z.string(),
+  project: z.string().optional(),
 });
 
 export function createProjectSources2ToJSON(
@@ -1888,11 +1968,13 @@ export const CreateProjectSources1$inboundSchema: z.ZodType<
 > = z.object({
   provider: CreateProjectSourcesProjectsProvider$inboundSchema,
   org: types.string(),
+  repo: types.optional(types.string()),
 });
 /** @internal */
 export type CreateProjectSources1$Outbound = {
   provider: string;
   org: string;
+  repo?: string | undefined;
 };
 
 /** @internal */
@@ -1903,6 +1985,7 @@ export const CreateProjectSources1$outboundSchema: z.ZodType<
 > = z.object({
   provider: CreateProjectSourcesProjectsProvider$outboundSchema,
   org: z.string(),
+  repo: z.string().optional(),
 });
 
 export function createProjectSources1ToJSON(
@@ -1927,23 +2010,34 @@ export const CreateProjectSources$inboundSchema: z.ZodType<
   CreateProjectSources,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
+> = z.union([
+  z.lazy(() => CreateProjectSources1$inboundSchema).and(
+    z.object({ provider: z.literal("github") }),
+  ),
+  z.lazy(() => CreateProjectSources1$inboundSchema).and(
+    z.object({ provider: z.literal("bitbucket") }),
+  ),
   z.lazy(() => CreateProjectSources2$inboundSchema),
-  z.lazy(() => CreateProjectSources1$inboundSchema),
 ]);
 /** @internal */
 export type CreateProjectSources$Outbound =
-  | CreateProjectSources2$Outbound
-  | CreateProjectSources1$Outbound;
+  | (CreateProjectSources1$Outbound & { provider: "github" })
+  | (CreateProjectSources1$Outbound & { provider: "bitbucket" })
+  | CreateProjectSources2$Outbound;
 
 /** @internal */
 export const CreateProjectSources$outboundSchema: z.ZodType<
   CreateProjectSources$Outbound,
   z.ZodTypeDef,
   CreateProjectSources
-> = smartUnion([
+> = z.union([
+  z.lazy(() => CreateProjectSources1$outboundSchema).and(
+    z.object({ provider: z.literal("github") }),
+  ),
+  z.lazy(() => CreateProjectSources1$outboundSchema).and(
+    z.object({ provider: z.literal("bitbucket") }),
+  ),
   z.lazy(() => CreateProjectSources2$outboundSchema),
-  z.lazy(() => CreateProjectSources1$outboundSchema),
 ]);
 
 export function createProjectSourcesToJSON(
@@ -1964,25 +2058,182 @@ export function createProjectSourcesFromJSON(
 }
 
 /** @internal */
+export const CreateProjectEnvironmentsProjects2$inboundSchema: z.ZodType<
+  CreateProjectEnvironmentsProjects2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: types.literal("custom"),
+  environmentId: types.string(),
+});
+/** @internal */
+export type CreateProjectEnvironmentsProjects2$Outbound = {
+  type: "custom";
+  environmentId: string;
+};
+
+/** @internal */
+export const CreateProjectEnvironmentsProjects2$outboundSchema: z.ZodType<
+  CreateProjectEnvironmentsProjects2$Outbound,
+  z.ZodTypeDef,
+  CreateProjectEnvironmentsProjects2
+> = z.object({
+  type: z.literal("custom"),
+  environmentId: z.string(),
+});
+
+export function createProjectEnvironmentsProjects2ToJSON(
+  createProjectEnvironmentsProjects2: CreateProjectEnvironmentsProjects2,
+): string {
+  return JSON.stringify(
+    CreateProjectEnvironmentsProjects2$outboundSchema.parse(
+      createProjectEnvironmentsProjects2,
+    ),
+  );
+}
+export function createProjectEnvironmentsProjects2FromJSON(
+  jsonString: string,
+): SafeParseResult<CreateProjectEnvironmentsProjects2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateProjectEnvironmentsProjects2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProjectEnvironmentsProjects2' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateProjectEnvironmentsProjectsTarget$inboundSchema:
+  z.ZodNativeEnum<typeof CreateProjectEnvironmentsProjectsTarget> = z
+    .nativeEnum(CreateProjectEnvironmentsProjectsTarget);
+/** @internal */
+export const CreateProjectEnvironmentsProjectsTarget$outboundSchema:
+  z.ZodNativeEnum<typeof CreateProjectEnvironmentsProjectsTarget> =
+    CreateProjectEnvironmentsProjectsTarget$inboundSchema;
+
+/** @internal */
+export const CreateProjectEnvironmentsProjects1$inboundSchema: z.ZodType<
+  CreateProjectEnvironmentsProjects1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: types.literal("system"),
+  target: CreateProjectEnvironmentsProjectsTarget$inboundSchema,
+});
+/** @internal */
+export type CreateProjectEnvironmentsProjects1$Outbound = {
+  type: "system";
+  target: string;
+};
+
+/** @internal */
+export const CreateProjectEnvironmentsProjects1$outboundSchema: z.ZodType<
+  CreateProjectEnvironmentsProjects1$Outbound,
+  z.ZodTypeDef,
+  CreateProjectEnvironmentsProjects1
+> = z.object({
+  type: z.literal("system"),
+  target: CreateProjectEnvironmentsProjectsTarget$outboundSchema,
+});
+
+export function createProjectEnvironmentsProjects1ToJSON(
+  createProjectEnvironmentsProjects1: CreateProjectEnvironmentsProjects1,
+): string {
+  return JSON.stringify(
+    CreateProjectEnvironmentsProjects1$outboundSchema.parse(
+      createProjectEnvironmentsProjects1,
+    ),
+  );
+}
+export function createProjectEnvironmentsProjects1FromJSON(
+  jsonString: string,
+): SafeParseResult<CreateProjectEnvironmentsProjects1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateProjectEnvironmentsProjects1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProjectEnvironmentsProjects1' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateProjectEnvironments$inboundSchema: z.ZodType<
+  CreateProjectEnvironments,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() => CreateProjectEnvironmentsProjects1$inboundSchema),
+  z.lazy(() => CreateProjectEnvironmentsProjects2$inboundSchema),
+]);
+/** @internal */
+export type CreateProjectEnvironments$Outbound =
+  | CreateProjectEnvironmentsProjects1$Outbound
+  | CreateProjectEnvironmentsProjects2$Outbound;
+
+/** @internal */
+export const CreateProjectEnvironments$outboundSchema: z.ZodType<
+  CreateProjectEnvironments$Outbound,
+  z.ZodTypeDef,
+  CreateProjectEnvironments
+> = z.union([
+  z.lazy(() => CreateProjectEnvironmentsProjects1$outboundSchema),
+  z.lazy(() => CreateProjectEnvironmentsProjects2$outboundSchema),
+]);
+
+export function createProjectEnvironmentsToJSON(
+  createProjectEnvironments: CreateProjectEnvironments,
+): string {
+  return JSON.stringify(
+    CreateProjectEnvironments$outboundSchema.parse(createProjectEnvironments),
+  );
+}
+export function createProjectEnvironmentsFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateProjectEnvironments, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateProjectEnvironments$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProjectEnvironments' from JSON`,
+  );
+}
+
+/** @internal */
 export const CreateProjectGitSources$inboundSchema: z.ZodType<
   CreateProjectGitSources,
   z.ZodTypeDef,
   unknown
 > = z.object({
   sources: z.array(
-    smartUnion([
+    z.union([
+      z.lazy(() => CreateProjectSources1$inboundSchema).and(
+        z.object({ provider: z.literal("github") }),
+      ),
+      z.lazy(() => CreateProjectSources1$inboundSchema).and(
+        z.object({ provider: z.literal("bitbucket") }),
+      ),
       z.lazy(() => CreateProjectSources2$inboundSchema),
-      z.lazy(() => CreateProjectSources1$inboundSchema),
     ]),
   ),
   enabled: types.boolean(),
+  environments: z.array(
+    z.union([
+      z.lazy(() => CreateProjectEnvironmentsProjects1$inboundSchema),
+      z.lazy(() => CreateProjectEnvironmentsProjects2$inboundSchema),
+    ]),
+  ),
 });
 /** @internal */
 export type CreateProjectGitSources$Outbound = {
   sources: Array<
-    CreateProjectSources2$Outbound | CreateProjectSources1$Outbound
+    | (CreateProjectSources1$Outbound & { provider: "github" })
+    | (CreateProjectSources1$Outbound & { provider: "bitbucket" })
+    | CreateProjectSources2$Outbound
   >;
   enabled: boolean;
+  environments: Array<
+    | CreateProjectEnvironmentsProjects1$Outbound
+    | CreateProjectEnvironmentsProjects2$Outbound
+  >;
 };
 
 /** @internal */
@@ -1992,12 +2243,23 @@ export const CreateProjectGitSources$outboundSchema: z.ZodType<
   CreateProjectGitSources
 > = z.object({
   sources: z.array(
-    smartUnion([
+    z.union([
+      z.lazy(() => CreateProjectSources1$outboundSchema).and(
+        z.object({ provider: z.literal("github") }),
+      ),
+      z.lazy(() => CreateProjectSources1$outboundSchema).and(
+        z.object({ provider: z.literal("bitbucket") }),
+      ),
       z.lazy(() => CreateProjectSources2$outboundSchema),
-      z.lazy(() => CreateProjectSources1$outboundSchema),
     ]),
   ),
   enabled: z.boolean(),
+  environments: z.array(
+    z.union([
+      z.lazy(() => CreateProjectEnvironmentsProjects1$outboundSchema),
+      z.lazy(() => CreateProjectEnvironmentsProjects2$outboundSchema),
+    ]),
+  ),
 });
 
 export function createProjectGitSourcesToJSON(
@@ -2027,6 +2289,142 @@ export const CreateProjectProjectsSources$outboundSchema: z.ZodNativeEnum<
 > = CreateProjectProjectsSources$inboundSchema;
 
 /** @internal */
+export const CreateProjectEnvironments2$inboundSchema: z.ZodType<
+  CreateProjectEnvironments2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: types.literal("custom"),
+  environmentId: types.string(),
+});
+/** @internal */
+export type CreateProjectEnvironments2$Outbound = {
+  type: "custom";
+  environmentId: string;
+};
+
+/** @internal */
+export const CreateProjectEnvironments2$outboundSchema: z.ZodType<
+  CreateProjectEnvironments2$Outbound,
+  z.ZodTypeDef,
+  CreateProjectEnvironments2
+> = z.object({
+  type: z.literal("custom"),
+  environmentId: z.string(),
+});
+
+export function createProjectEnvironments2ToJSON(
+  createProjectEnvironments2: CreateProjectEnvironments2,
+): string {
+  return JSON.stringify(
+    CreateProjectEnvironments2$outboundSchema.parse(createProjectEnvironments2),
+  );
+}
+export function createProjectEnvironments2FromJSON(
+  jsonString: string,
+): SafeParseResult<CreateProjectEnvironments2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateProjectEnvironments2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProjectEnvironments2' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateProjectEnvironmentsTarget$inboundSchema: z.ZodNativeEnum<
+  typeof CreateProjectEnvironmentsTarget
+> = z.nativeEnum(CreateProjectEnvironmentsTarget);
+/** @internal */
+export const CreateProjectEnvironmentsTarget$outboundSchema: z.ZodNativeEnum<
+  typeof CreateProjectEnvironmentsTarget
+> = CreateProjectEnvironmentsTarget$inboundSchema;
+
+/** @internal */
+export const CreateProjectEnvironments1$inboundSchema: z.ZodType<
+  CreateProjectEnvironments1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: types.literal("system"),
+  target: CreateProjectEnvironmentsTarget$inboundSchema,
+});
+/** @internal */
+export type CreateProjectEnvironments1$Outbound = {
+  type: "system";
+  target: string;
+};
+
+/** @internal */
+export const CreateProjectEnvironments1$outboundSchema: z.ZodType<
+  CreateProjectEnvironments1$Outbound,
+  z.ZodTypeDef,
+  CreateProjectEnvironments1
+> = z.object({
+  type: z.literal("system"),
+  target: CreateProjectEnvironmentsTarget$outboundSchema,
+});
+
+export function createProjectEnvironments1ToJSON(
+  createProjectEnvironments1: CreateProjectEnvironments1,
+): string {
+  return JSON.stringify(
+    CreateProjectEnvironments1$outboundSchema.parse(createProjectEnvironments1),
+  );
+}
+export function createProjectEnvironments1FromJSON(
+  jsonString: string,
+): SafeParseResult<CreateProjectEnvironments1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateProjectEnvironments1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProjectEnvironments1' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateProjectProjectsEnvironments$inboundSchema: z.ZodType<
+  CreateProjectProjectsEnvironments,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() => CreateProjectEnvironments1$inboundSchema),
+  z.lazy(() => CreateProjectEnvironments2$inboundSchema),
+]);
+/** @internal */
+export type CreateProjectProjectsEnvironments$Outbound =
+  | CreateProjectEnvironments1$Outbound
+  | CreateProjectEnvironments2$Outbound;
+
+/** @internal */
+export const CreateProjectProjectsEnvironments$outboundSchema: z.ZodType<
+  CreateProjectProjectsEnvironments$Outbound,
+  z.ZodTypeDef,
+  CreateProjectProjectsEnvironments
+> = z.union([
+  z.lazy(() => CreateProjectEnvironments1$outboundSchema),
+  z.lazy(() => CreateProjectEnvironments2$outboundSchema),
+]);
+
+export function createProjectProjectsEnvironmentsToJSON(
+  createProjectProjectsEnvironments: CreateProjectProjectsEnvironments,
+): string {
+  return JSON.stringify(
+    CreateProjectProjectsEnvironments$outboundSchema.parse(
+      createProjectProjectsEnvironments,
+    ),
+  );
+}
+export function createProjectProjectsEnvironmentsFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateProjectProjectsEnvironments, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateProjectProjectsEnvironments$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProjectProjectsEnvironments' from JSON`,
+  );
+}
+
+/** @internal */
 export const CreateProjectDeploymentSources$inboundSchema: z.ZodType<
   CreateProjectDeploymentSources,
   z.ZodTypeDef,
@@ -2034,11 +2432,20 @@ export const CreateProjectDeploymentSources$inboundSchema: z.ZodType<
 > = z.object({
   sources: z.array(CreateProjectProjectsSources$inboundSchema),
   enabled: types.boolean(),
+  environments: z.array(
+    z.union([
+      z.lazy(() => CreateProjectEnvironments1$inboundSchema),
+      z.lazy(() => CreateProjectEnvironments2$inboundSchema),
+    ]),
+  ),
 });
 /** @internal */
 export type CreateProjectDeploymentSources$Outbound = {
   sources: Array<string>;
   enabled: boolean;
+  environments: Array<
+    CreateProjectEnvironments1$Outbound | CreateProjectEnvironments2$Outbound
+  >;
 };
 
 /** @internal */
@@ -2049,6 +2456,12 @@ export const CreateProjectDeploymentSources$outboundSchema: z.ZodType<
 > = z.object({
   sources: z.array(CreateProjectProjectsSources$outboundSchema),
   enabled: z.boolean(),
+  environments: z.array(
+    z.union([
+      z.lazy(() => CreateProjectEnvironments1$outboundSchema),
+      z.lazy(() => CreateProjectEnvironments2$outboundSchema),
+    ]),
+  ),
 });
 
 export function createProjectDeploymentSourcesToJSON(
@@ -2076,17 +2489,18 @@ export const CreateProjectDeploymentPolicy$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  gitSources: z.nullable(z.lazy(() => CreateProjectGitSources$inboundSchema))
-    .optional(),
+  gitSources: z.nullable(
+    z.array(z.lazy(() => CreateProjectGitSources$inboundSchema)),
+  ).optional(),
   deploymentSources: z.nullable(
-    z.lazy(() => CreateProjectDeploymentSources$inboundSchema),
+    z.array(z.lazy(() => CreateProjectDeploymentSources$inboundSchema)),
   ).optional(),
 });
 /** @internal */
 export type CreateProjectDeploymentPolicy$Outbound = {
-  gitSources?: CreateProjectGitSources$Outbound | null | undefined;
+  gitSources?: Array<CreateProjectGitSources$Outbound> | null | undefined;
   deploymentSources?:
-    | CreateProjectDeploymentSources$Outbound
+    | Array<CreateProjectDeploymentSources$Outbound>
     | null
     | undefined;
 };
@@ -2097,10 +2511,11 @@ export const CreateProjectDeploymentPolicy$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateProjectDeploymentPolicy
 > = z.object({
-  gitSources: z.nullable(z.lazy(() => CreateProjectGitSources$outboundSchema))
-    .optional(),
+  gitSources: z.nullable(
+    z.array(z.lazy(() => CreateProjectGitSources$outboundSchema)),
+  ).optional(),
   deploymentSources: z.nullable(
-    z.lazy(() => CreateProjectDeploymentSources$outboundSchema),
+    z.array(z.lazy(() => CreateProjectDeploymentSources$outboundSchema)),
   ).optional(),
 });
 
@@ -2270,18 +2685,18 @@ export function createProjectHistoryFromJSON(
 }
 
 /** @internal */
-export const CreateProjectProjectsAction$inboundSchema: z.ZodNativeEnum<
-  typeof CreateProjectProjectsAction
-> = z.nativeEnum(CreateProjectProjectsAction);
+export const CreateProjectProjectsResponseAction$inboundSchema: z.ZodNativeEnum<
+  typeof CreateProjectProjectsResponseAction
+> = z.nativeEnum(CreateProjectProjectsResponseAction);
 /** @internal */
-export const CreateProjectProjectsAction$outboundSchema: z.ZodNativeEnum<
-  typeof CreateProjectProjectsAction
-> = CreateProjectProjectsAction$inboundSchema;
+export const CreateProjectProjectsResponseAction$outboundSchema:
+  z.ZodNativeEnum<typeof CreateProjectProjectsResponseAction> =
+    CreateProjectProjectsResponseAction$inboundSchema;
 
 /** @internal */
 export const Block$inboundSchema: z.ZodType<Block, z.ZodTypeDef, unknown> = z
   .object({
-    action: CreateProjectProjectsAction$inboundSchema,
+    action: CreateProjectProjectsResponseAction$inboundSchema,
     reason: types.string(),
     statusCode: types.number(),
     createdAt: types.number(),
@@ -2310,7 +2725,7 @@ export const Block$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Block
 > = z.object({
-  action: CreateProjectProjectsAction$outboundSchema,
+  action: CreateProjectProjectsResponseAction$outboundSchema,
   reason: z.string(),
   statusCode: z.number(),
   createdAt: z.number(),
@@ -3453,6 +3868,69 @@ export function createProjectBlockHistoryFromJSON(
 }
 
 /** @internal */
+export const CreateProjectProjectsAction$inboundSchema: z.ZodNativeEnum<
+  typeof CreateProjectProjectsAction
+> = z.nativeEnum(CreateProjectProjectsAction);
+/** @internal */
+export const CreateProjectProjectsAction$outboundSchema: z.ZodNativeEnum<
+  typeof CreateProjectProjectsAction
+> = CreateProjectProjectsAction$inboundSchema;
+
+/** @internal */
+export const InterstitialHistory$inboundSchema: z.ZodType<
+  InterstitialHistory,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  action: CreateProjectProjectsAction$inboundSchema,
+  createdAt: types.number(),
+  caseId: types.optional(types.string()),
+  reason: types.optional(types.string()),
+  actor: types.optional(types.string()),
+  comment: types.optional(types.string()),
+});
+/** @internal */
+export type InterstitialHistory$Outbound = {
+  action: string;
+  createdAt: number;
+  caseId?: string | undefined;
+  reason?: string | undefined;
+  actor?: string | undefined;
+  comment?: string | undefined;
+};
+
+/** @internal */
+export const InterstitialHistory$outboundSchema: z.ZodType<
+  InterstitialHistory$Outbound,
+  z.ZodTypeDef,
+  InterstitialHistory
+> = z.object({
+  action: CreateProjectProjectsAction$outboundSchema,
+  createdAt: z.number(),
+  caseId: z.string().optional(),
+  reason: z.string().optional(),
+  actor: z.string().optional(),
+  comment: z.string().optional(),
+});
+
+export function interstitialHistoryToJSON(
+  interstitialHistory: InterstitialHistory,
+): string {
+  return JSON.stringify(
+    InterstitialHistory$outboundSchema.parse(interstitialHistory),
+  );
+}
+export function interstitialHistoryFromJSON(
+  jsonString: string,
+): SafeParseResult<InterstitialHistory, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => InterstitialHistory$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'InterstitialHistory' from JSON`,
+  );
+}
+
+/** @internal */
 export const CreateProjectAbuse$inboundSchema: z.ZodType<
   CreateProjectAbuse,
   z.ZodTypeDef,
@@ -3473,6 +3951,9 @@ export const CreateProjectAbuse$inboundSchema: z.ZodType<
     ])),
   ),
   interstitial: types.optional(types.boolean()),
+  interstitialHistory: types.optional(
+    z.array(z.lazy(() => InterstitialHistory$inboundSchema)),
+  ),
 });
 /** @internal */
 export type CreateProjectAbuse$Outbound = {
@@ -3489,6 +3970,7 @@ export type CreateProjectAbuse$Outbound = {
     >
     | undefined;
   interstitial?: boolean | undefined;
+  interstitialHistory?: Array<InterstitialHistory$Outbound> | undefined;
 };
 
 /** @internal */
@@ -3510,6 +3992,8 @@ export const CreateProjectAbuse$outboundSchema: z.ZodType<
     ]),
   ).optional(),
   interstitial: z.boolean().optional(),
+  interstitialHistory: z.array(z.lazy(() => InterstitialHistory$outboundSchema))
+    .optional(),
 });
 
 export function createProjectAbuseToJSON(
@@ -4275,7 +4759,6 @@ export const CreateProjectResponseBody$inboundSchema: z.ZodType<
   customerSupportCodeVisibility: types.optional(types.boolean()),
   crons: types.optional(CreateProjectCrons$inboundSchema),
   dataCache: types.optional(CreateProjectDataCache$inboundSchema),
-  delegatedProtection: z.nullable(DelegatedProtection$inboundSchema).optional(),
   deploymentExpiration: DeploymentExpiration$inboundSchema,
   expiration: types.optional(CreateProjectExpiration$inboundSchema),
   devCommand: z.nullable(types.string()).optional(),
@@ -4300,6 +4783,7 @@ export const CreateProjectResponseBody$inboundSchema: z.ZodType<
   outputDirectory: z.nullable(types.string()).optional(),
   passwordProtection: z.nullable(CreateProjectPasswordProtection$inboundSchema)
     .optional(),
+  passport: z.nullable(CreateProjectPassport$inboundSchema).optional(),
   productionDeploymentsFastLane: types.optional(types.boolean()),
   publicSource: z.nullable(types.boolean()).optional(),
   resourceConfig: CreateProjectProjectsResourceConfig$inboundSchema,
@@ -4377,6 +4861,7 @@ export const CreateProjectResponseBody$inboundSchema: z.ZodType<
   ),
   protectedSourcemaps: types.optional(types.boolean()),
   tracing: types.optional(z.lazy(() => CreateProjectTracing$inboundSchema)),
+  avatar: types.optional(types.string()),
 });
 /** @internal */
 export type CreateProjectResponseBody$Outbound = {
@@ -4400,7 +4885,6 @@ export type CreateProjectResponseBody$Outbound = {
   customerSupportCodeVisibility?: boolean | undefined;
   crons?: CreateProjectCrons$Outbound | undefined;
   dataCache?: CreateProjectDataCache$Outbound | undefined;
-  delegatedProtection?: DelegatedProtection$Outbound | null | undefined;
   deploymentExpiration: DeploymentExpiration$Outbound;
   expiration?: CreateProjectExpiration$Outbound | undefined;
   devCommand?: string | null | undefined;
@@ -4425,6 +4909,7 @@ export type CreateProjectResponseBody$Outbound = {
     | CreateProjectPasswordProtection$Outbound
     | null
     | undefined;
+  passport?: CreateProjectPassport$Outbound | null | undefined;
   productionDeploymentsFastLane?: boolean | undefined;
   publicSource?: boolean | null | undefined;
   resourceConfig: CreateProjectProjectsResourceConfig$Outbound;
@@ -4483,6 +4968,7 @@ export type CreateProjectResponseBody$Outbound = {
   dismissedToasts?: Array<CreateProjectDismissedToasts$Outbound> | undefined;
   protectedSourcemaps?: boolean | undefined;
   tracing?: CreateProjectTracing$Outbound | undefined;
+  avatar?: string | undefined;
 };
 
 /** @internal */
@@ -4510,8 +4996,6 @@ export const CreateProjectResponseBody$outboundSchema: z.ZodType<
   customerSupportCodeVisibility: z.boolean().optional(),
   crons: CreateProjectCrons$outboundSchema.optional(),
   dataCache: CreateProjectDataCache$outboundSchema.optional(),
-  delegatedProtection: z.nullable(DelegatedProtection$outboundSchema)
-    .optional(),
   deploymentExpiration: DeploymentExpiration$outboundSchema,
   expiration: CreateProjectExpiration$outboundSchema.optional(),
   devCommand: z.nullable(z.string()).optional(),
@@ -4536,6 +5020,7 @@ export const CreateProjectResponseBody$outboundSchema: z.ZodType<
   outputDirectory: z.nullable(z.string()).optional(),
   passwordProtection: z.nullable(CreateProjectPasswordProtection$outboundSchema)
     .optional(),
+  passport: z.nullable(CreateProjectPassport$outboundSchema).optional(),
   productionDeploymentsFastLane: z.boolean().optional(),
   publicSource: z.nullable(z.boolean()).optional(),
   resourceConfig: CreateProjectProjectsResourceConfig$outboundSchema,
@@ -4604,6 +5089,7 @@ export const CreateProjectResponseBody$outboundSchema: z.ZodType<
   ).optional(),
   protectedSourcemaps: z.boolean().optional(),
   tracing: z.lazy(() => CreateProjectTracing$outboundSchema).optional(),
+  avatar: z.string().optional(),
 });
 
 export function createProjectResponseBodyToJSON(

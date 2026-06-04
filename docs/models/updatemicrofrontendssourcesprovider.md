@@ -11,5 +11,5 @@ let value: UpdateMicrofrontendsSourcesProvider = "bitbucket";
 ## Values
 
 ```typescript
-"github" | "gitlab" | "bitbucket"
+"github" | "bitbucket"
 ```

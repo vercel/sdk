@@ -1,42 +1,4 @@
 <!-- Start SDK Example Usage [usage] -->
-### List deployments
-
-List deployments under the authenticated user or team.
-
-```typescript
-import { Vercel } from "@vercel/sdk";
-
-const vercel = new Vercel({
-  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-});
-
-async function run() {
-  const result = await vercel.deployments.getDeployments({
-    app: "docs",
-    from: 1612948664566,
-    limit: 10,
-    projectId: "QmXGTs7mvAMMC7WW5ebrM33qKG32QK3h4vmQMjmY",
-    projectIds: [
-      "prj_123",
-      "prj_456",
-    ],
-    target: "production",
-    to: 1612948664566,
-    users: "kr1PsOIzqEL5Xg6M4VZcZosf,K4amb7K9dAt5R2vBJWF32bmY",
-    since: 1540095775941,
-    until: 1540095775951,
-    state: "BUILDING,READY",
-    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
-    slug: "my-team-url-slug",
-  });
-
-  console.log(result);
-}
-
-run();
-
-```
-
 ### Update an existing project
 
 Update the fields of a project using either its name or id.

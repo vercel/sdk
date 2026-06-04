@@ -28,6 +28,7 @@ import { projectsUpdateProject } from "../funcs/projectsUpdateProject.js";
 import { projectsUpdateProjectDomain } from "../funcs/projectsUpdateProjectDomain.js";
 import { projectsUpdateProjectProtectionBypass } from "../funcs/projectsUpdateProjectProtectionBypass.js";
 import { projectsUpdateProjectsByProjectIdRollbackByDeploymentIdUpdateDescription } from "../funcs/projectsUpdateProjectsByProjectIdRollbackByDeploymentIdUpdateDescription.js";
+import { projectsUploadProjectAvatar } from "../funcs/projectsUploadProjectAvatar.js";
 import { projectsVerifyProjectDomain } from "../funcs/projectsVerifyProjectDomain.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import {
@@ -47,7 +48,7 @@ import {
   CreateProjectEnvResponseBody,
 } from "../models/createprojectenvop.js";
 import { CreateProjectResponseBody } from "../models/createprojectresponsebody.js";
-import { CreateProjectRequest } from "../models/createprojecttopreset.js";
+import { CreateProjectRequest } from "../models/createprojectto2.js";
 import {
   CreateProjectTransferRequestRequest,
   CreateProjectTransferRequestResponseBody,
@@ -74,7 +75,7 @@ import {
   GetProjectEnvResponseBody,
 } from "../models/getprojectenvop.js";
 import { GetProjectsResponseBody } from "../models/getprojectsresponsebody.js";
-import { GetProjectsRequest } from "../models/getprojectsresponsebodyprojectsaibots.js";
+import { GetProjectsRequest } from "../models/getprojectsresponsebodyprojectsresponse200applicationjson3projectssecurityaction.js";
 import {
   ListPromoteAliasesRequest,
   ListPromoteAliasesResponseBody,
@@ -95,19 +96,21 @@ import {
 import { RequestPromoteRequest } from "../models/requestpromoteop.js";
 import { RequestRollbackRequest } from "../models/requestrollbackop.js";
 import { UnpauseProjectRequest } from "../models/unpauseprojectop.js";
-import { UpdateMicrofrontendsRequest } from "../models/updatemicrofrontendsmanagedrules.js";
+import { UpdateMicrofrontendsRequest } from "../models/updatemicrofrontendsowasp.js";
 import { UpdateMicrofrontendsResponseBody } from "../models/updatemicrofrontendsresponsebody.js";
 import {
   UpdateProjectDomainRequest,
   UpdateProjectDomainResponseBody,
 } from "../models/updateprojectdomainop.js";
-import { UpdateProjectRequest } from "../models/updateprojectprojectsresponsebuildqueue.js";
+import { UpdateProjectRequest } from "../models/updateprojectprojectsfunctiondefaultmemorytype.js";
 import {
   UpdateProjectProtectionBypassRequest,
   UpdateProjectProtectionBypassResponseBody,
 } from "../models/updateprojectprotectionbypassop.js";
 import { UpdateProjectResponseBody } from "../models/updateprojectresponsebody.js";
 import { UpdateProjectsByProjectIdRollbackByDeploymentIdUpdateDescriptionRequest } from "../models/updateprojectsbyprojectidrollbackbydeploymentidupdatedescriptionop.js";
+import { UploadProjectAvatarRequest } from "../models/uploadprojectavatarmanagedrules.js";
+import { UploadProjectAvatarResponseBody } from "../models/uploadprojectavatarresponsebody.js";
 import {
   VerifyProjectDomainRequest,
   VerifyProjectDomainResponseBody,
@@ -177,6 +180,23 @@ export class Projects extends ClientSDK {
     options?: RequestOptions,
   ): Promise<void> {
     return unwrapAsync(projectsDeleteProject(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Upload a project avatar
+   *
+   * @remarks
+   * Upload an image as the avatar of the project identified by `idOrName`. The request body is the raw bytes of a JPG, PNG, or SVG image; the `Content-Type` header must declare which. SVG payloads are sanitized and optimized server-side before storage. The final SHA-1 of the stored bytes becomes the project's `avatar` value.
+   */
+  async uploadProjectAvatar(
+    request: UploadProjectAvatarRequest,
+    options?: RequestOptions,
+  ): Promise<UploadProjectAvatarResponseBody> {
+    return unwrapAsync(projectsUploadProjectAvatar(
       this,
       request,
       options,

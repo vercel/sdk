@@ -108,8 +108,8 @@ export const CancelDeploymentFramework = {
   Fasthtml: "fasthtml",
   Django: "django",
   Ash: "ash",
-  SanityV3: "sanity-v3",
   Sanity: "sanity",
+  SanityV2: "sanity-v2",
   Storybook: "storybook",
   Nitro: "nitro",
   Hono: "hono",
@@ -337,8 +337,8 @@ export type CancelDeploymentCustomEnvironment2 = {
  * The type of environment (production, preview, or development)
  */
 export const CancelDeploymentCustomEnvironmentType = {
-  Production: "production",
   Preview: "preview",
+  Production: "production",
   Development: "development",
 } as const;
 /**
@@ -933,7 +933,7 @@ export type CancelDeploymentReadySubstate = ClosedEnum<
 >;
 
 /**
- * Where was the deployment created from
+ * Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it.
  */
 export const CancelDeploymentSource = {
   ApiTriggerGitDeploy: "api-trigger-git-deploy",
@@ -944,9 +944,10 @@ export const CancelDeploymentSource = {
   ImportRepo: "import/repo",
   Redeploy: "redeploy",
   V0Web: "v0-web",
+  Drop: "drop",
 } as const;
 /**
- * Where was the deployment created from
+ * Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it.
  */
 export type CancelDeploymentSource = ClosedEnum<typeof CancelDeploymentSource>;
 
@@ -1609,8 +1610,8 @@ export type CancelDeploymentMicrofrontends =
   | CancelDeploymentMicrofrontends1;
 
 export const CancelDeploymentFunctionType = {
-  Standard: "standard",
   Fluid: "fluid",
+  Standard: "standard",
 } as const;
 export type CancelDeploymentFunctionType = ClosedEnum<
   typeof CancelDeploymentFunctionType
@@ -1668,9 +1669,9 @@ export type CancelDeploymentElasticConcurrency = ClosedEnum<
  * Machine type that was used for the build.
  */
 export const CancelDeploymentPurchaseType = {
+  Standard: "standard",
   Enhanced: "enhanced",
   Turbo: "turbo",
-  Standard: "standard",
 } as const;
 /**
  * Machine type that was used for the build.
@@ -1953,6 +1954,7 @@ export type CancelDeploymentResponseBody = {
    */
   name: string;
   type: CancelDeploymentType;
+  errorMessage?: string | null | undefined;
   /**
    * An object that will contain a `code` and a `message` when the aliasing fails, otherwise the value will be `null`
    */
@@ -1977,7 +1979,6 @@ export type CancelDeploymentResponseBody = {
   canceledAt?: number | undefined;
   errorCode?: string | undefined;
   errorLink?: string | undefined;
-  errorMessage?: string | null | undefined;
   errorStep?: string | undefined;
   /**
    * Since November 2023 this field defines a set of regions that we will deploy the lambda to passively Lambdas will be deployed to these regions but only invoked if all of the primary `regions` are marked as out of service
@@ -2030,7 +2031,7 @@ export type CancelDeploymentResponseBody = {
    */
   softDeletedByRetention?: boolean | undefined;
   /**
-   * Where was the deployment created from
+   * Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it.
    */
   source?: CancelDeploymentSource | undefined;
   /**
@@ -8619,6 +8620,7 @@ export const CancelDeploymentResponseBody$inboundSchema: z.ZodType<
   readyState: CancelDeploymentReadyState$inboundSchema,
   name: types.string(),
   type: CancelDeploymentType$inboundSchema,
+  errorMessage: z.nullable(types.string()).optional(),
   aliasError: z.nullable(z.lazy(() => CancelDeploymentAliasError$inboundSchema))
     .optional(),
   aliasFinal: z.nullable(types.string()).optional(),
@@ -8634,7 +8636,6 @@ export const CancelDeploymentResponseBody$inboundSchema: z.ZodType<
   canceledAt: types.optional(types.number()),
   errorCode: types.optional(types.string()),
   errorLink: types.optional(types.string()),
-  errorMessage: z.nullable(types.string()).optional(),
   errorStep: types.optional(types.string()),
   passiveRegions: types.optional(z.array(types.string())),
   gitSource: types.optional(
@@ -8776,6 +8777,7 @@ export type CancelDeploymentResponseBody$Outbound = {
   readyState: string;
   name: string;
   type: string;
+  errorMessage?: string | null | undefined;
   aliasError?: CancelDeploymentAliasError$Outbound | null | undefined;
   aliasFinal?: string | null | undefined;
   autoAssignCustomDomains?: boolean | undefined;
@@ -8788,7 +8790,6 @@ export type CancelDeploymentResponseBody$Outbound = {
   canceledAt?: number | undefined;
   errorCode?: string | undefined;
   errorLink?: string | undefined;
-  errorMessage?: string | null | undefined;
   errorStep?: string | undefined;
   passiveRegions?: Array<string> | undefined;
   gitSource?:
@@ -8920,6 +8921,7 @@ export const CancelDeploymentResponseBody$outboundSchema: z.ZodType<
   readyState: CancelDeploymentReadyState$outboundSchema,
   name: z.string(),
   type: CancelDeploymentType$outboundSchema,
+  errorMessage: z.nullable(z.string()).optional(),
   aliasError: z.nullable(
     z.lazy(() => CancelDeploymentAliasError$outboundSchema),
   ).optional(),
@@ -8934,7 +8936,6 @@ export const CancelDeploymentResponseBody$outboundSchema: z.ZodType<
   canceledAt: z.number().optional(),
   errorCode: z.string().optional(),
   errorLink: z.string().optional(),
-  errorMessage: z.nullable(z.string()).optional(),
   errorStep: z.string().optional(),
   passiveRegions: z.array(z.string()).optional(),
   gitSource: smartUnion([

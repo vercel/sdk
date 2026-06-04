@@ -10,18 +10,24 @@ import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
-export const Category = {
-  Experiment: "experiment",
-  Flag: "flag",
-} as const;
-export type Category = ClosedEnum<typeof Category>;
+export const CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsCategory =
+  {
+    Experiment: "experiment",
+    Flag: "flag",
+  } as const;
+export type CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsCategory =
+  ClosedEnum<
+    typeof CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsCategory
+  >;
 
 export type CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsItems =
   {
     id: string;
     slug: string;
     origin: string;
-    category?: Category | undefined;
+    category?:
+      | CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsCategory
+      | undefined;
     name?: string | undefined;
     description?: string | undefined;
     isArchived?: boolean | undefined;
@@ -46,11 +52,18 @@ export type CreateInstallationsByIntegrationConfigurationIdResourcesByResourceId
   };
 
 /** @internal */
-export const Category$inboundSchema: z.ZodNativeEnum<typeof Category> = z
-  .nativeEnum(Category);
+export const CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsCategory$inboundSchema:
+  z.ZodNativeEnum<
+    typeof CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsCategory
+  > = z.nativeEnum(
+    CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsCategory,
+  );
 /** @internal */
-export const Category$outboundSchema: z.ZodNativeEnum<typeof Category> =
-  Category$inboundSchema;
+export const CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsCategory$outboundSchema:
+  z.ZodNativeEnum<
+    typeof CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsCategory
+  > =
+    CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsCategory$inboundSchema;
 
 /** @internal */
 export const CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsItems$inboundSchema:
@@ -62,7 +75,9 @@ export const CreateInstallationsByIntegrationConfigurationIdResourcesByResourceI
     id: types.string(),
     slug: types.string(),
     origin: types.string(),
-    category: types.optional(Category$inboundSchema),
+    category: types.optional(
+      CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsCategory$inboundSchema,
+    ),
     name: types.optional(types.string()),
     description: types.optional(types.string()),
     isArchived: types.optional(types.boolean()),
@@ -93,7 +108,9 @@ export const CreateInstallationsByIntegrationConfigurationIdResourcesByResourceI
     id: z.string(),
     slug: z.string(),
     origin: z.string(),
-    category: Category$outboundSchema.optional(),
+    category:
+      CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsCategory$outboundSchema
+        .optional(),
     name: z.string().optional(),
     description: z.string().optional(),
     isArchived: z.boolean().optional(),

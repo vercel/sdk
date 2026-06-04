@@ -7185,7 +7185,7 @@ workflows:
             condition: |
               [{"envId":"<id>","connectConfigurationId":"<id>","passive":true,"buildsEnabled":false,"createdAt":5943.97,"updatedAt":7734.38}]
             type: simple
-    x-speakeasy-test-group: connect
+    x-speakeasy-test-group: networking
     x-speakeasy-test-rebuild: true
   - workflowId: getProjectClientCerts
     steps:
@@ -7626,7 +7626,7 @@ workflows:
             condition: |
               [{"awsAccountId":"<id>","awsRegion":"<value>","cidr":"<value>","createdAt":9379.76,"id":"<id>","name":"<value>","status":"create_in_progress","teamId":"<id>"}]
             type: simple
-    x-speakeasy-test-group: connect
+    x-speakeasy-test-group: networking
     x-speakeasy-test-rebuild: true
   - workflowId: createNetwork
     steps:
@@ -7654,7 +7654,7 @@ workflows:
             condition: |
               {"awsAccountId":"<id>","awsRegion":"<value>","cidr":"<value>","createdAt":4149.44,"id":"<id>","name":"<value>","status":"error","teamId":"<id>"}
             type: simple
-    x-speakeasy-test-group: connect
+    x-speakeasy-test-group: networking
     x-speakeasy-test-rebuild: true
   - workflowId: updateNetwork
     steps:
@@ -7677,7 +7677,7 @@ workflows:
             condition: |
               {"awsAccountId":"<id>","awsRegion":"<value>","cidr":"<value>","createdAt":9676.6,"id":"<id>","name":"<value>","status":"error","teamId":"<id>"}
             type: simple
-    x-speakeasy-test-group: connect
+    x-speakeasy-test-group: networking
     x-speakeasy-test-rebuild: true
   - workflowId: readNetwork
     steps:
@@ -7700,7 +7700,7 @@ workflows:
             condition: |
               {"awsAccountId":"<id>","awsRegion":"<value>","cidr":"<value>","createdAt":1571.54,"id":"<id>","name":"<value>","status":"delete_in_progress","teamId":"<id>"}
             type: simple
-    x-speakeasy-test-group: connect
+    x-speakeasy-test-group: networking
     x-speakeasy-test-rebuild: true
   - workflowId: get_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/edge-config
     steps:
@@ -7868,7 +7868,7 @@ workflows:
           - condition: $response.header.Content-Type == application/json
           - context: $response.body
             condition: |
-              {"runs":[{"id":"<id>","name":"<value>","checkId":"<id>","ownerId":"<id>","deploymentId":"<id>","source":{"kind":"git-provider","provider":"gitlab","externalCheckName":"<value>"},"status":"running","timeout":2183.78,"createdAt":8028.57,"updatedAt":5968.89}]}
+              {"runs":[{"id":"<id>","name":"<value>","ownerId":"<id>","deploymentId":"<id>","status":"running","timeout":2183.78,"createdAt":8028.57,"updatedAt":5968.89,"checkId":"<id>","source":{"kind":"git-provider","provider":"gitlab","externalCheckName":"<value>"}}]}
             type: simple
     x-speakeasy-test-group: checks-v2
     x-speakeasy-test-rebuild: true
@@ -7914,7 +7914,7 @@ workflows:
           - condition: $response.header.Content-Type == application/json
           - context: $response.body
             condition: |
-              {"id":"<id>","name":"<value>","checkId":"<id>","ownerId":"<id>","deploymentId":"<id>","source":{"kind":"git-provider","provider":"gitlab","externalCheckName":"<value>"},"status":"queued","timeout":900.28,"createdAt":917.6,"updatedAt":853.91}
+              {"id":"<id>","name":"<value>","ownerId":"<id>","deploymentId":"<id>","status":"queued","timeout":900.28,"createdAt":917.6,"updatedAt":853.91,"checkId":"<id>","source":{"kind":"git-provider","provider":"gitlab","externalCheckName":"<value>"}}
             type: simple
     x-speakeasy-test-group: checks-v2
     x-speakeasy-test-rebuild: true
@@ -7940,7 +7940,7 @@ workflows:
           - condition: $response.header.Content-Type == application/json
           - context: $response.body
             condition: |
-              {"id":"<id>","name":"<value>","checkId":"<id>","ownerId":"<id>","deploymentId":"<id>","source":{"kind":"integration","integrationId":"<id>","integrationConfigurationId":"<id>"},"status":"running","timeout":9092.1,"createdAt":1450.24,"updatedAt":966.92}
+              {"id":"<id>","name":"<value>","ownerId":"<id>","deploymentId":"<id>","status":"running","timeout":9092.1,"createdAt":1450.24,"updatedAt":966.92,"checkId":"<id>","source":{"kind":"integration","integrationId":"<id>","integrationConfigurationId":"<id>"}}
             type: simple
     x-speakeasy-test-group: checks-v2
     x-speakeasy-test-rebuild: true
@@ -7966,7 +7966,7 @@ workflows:
           - condition: $response.header.Content-Type == application/json
           - context: $response.body
             condition: |
-              {"id":"<id>","name":"<value>","checkId":"<id>","ownerId":"<id>","deploymentId":"<id>","source":{"kind":"integration","integrationId":"<id>","integrationConfigurationId":"<id>"},"status":"running","timeout":49.19,"createdAt":3033.31,"updatedAt":5693.16}
+              {"id":"<id>","name":"<value>","ownerId":"<id>","deploymentId":"<id>","status":"running","timeout":49.19,"createdAt":3033.31,"updatedAt":5693.16,"checkId":"<id>","source":{"kind":"integration","integrationId":"<id>","integrationConfigurationId":"<id>"}}
             type: simple
     x-speakeasy-test-group: checks-v2
     x-speakeasy-test-rebuild: true
@@ -8006,7 +8006,7 @@ workflows:
           - condition: $response.header.Content-Type == application/json
           - context: $response.body
             condition: |
-              {"types":[{"name":"domain-transfer-in","description":"woot baritone lasting ah foot when worth whether bleakly","categories":["deployment"],"deprecated":true,"replacedBy":["alert-rule-created","project-delegated-protection-updated"]}],"categories":[{"name":"project","label":"<value>"}]}
+              {"types":[{"name":"domain-transfer-in","description":"woot baritone lasting ah foot when worth whether bleakly","categories":["deployment"],"deprecated":true,"replacedBy":["alert-rule-created","alert-rule-updated"]}],"categories":[{"name":"project","label":"<value>"}]}
             type: simple
     x-speakeasy-test-group: user
     x-speakeasy-test-rebuild: true
@@ -8251,7 +8251,7 @@ workflows:
           - condition: $response.header.Content-Type == application/json
           - context: $response.body
             condition: |
-              {"id":"<id>","label":"<value>","slug":"<value>","createdAt":3411.5,"updatedAt":7820.53,"projectId":"<id>","typeName":"segment","data":{},"hint":"<value>"}
+              {"data":{},"id":"<id>","label":"<value>","slug":"<value>","createdAt":3411.5,"updatedAt":7820.53,"projectId":"<id>","typeName":"segment","hint":"<value>"}
             type: simple
     x-speakeasy-test-group: feature-flags
     x-speakeasy-test-rebuild: true
@@ -8306,7 +8306,7 @@ workflows:
           - condition: $response.header.Content-Type == application/json
           - context: $response.body
             condition: |
-              {"id":"<id>","label":"<value>","slug":"<value>","createdAt":9261.28,"updatedAt":346.59,"projectId":"<id>","typeName":"segment","data":{},"hint":"<value>"}
+              {"data":{},"id":"<id>","label":"<value>","slug":"<value>","createdAt":9261.28,"updatedAt":346.59,"projectId":"<id>","typeName":"segment","hint":"<value>"}
             type: simple
     x-speakeasy-test-group: feature-flags
     x-speakeasy-test-rebuild: true
@@ -8335,7 +8335,7 @@ workflows:
           - condition: $response.header.Content-Type == application/json
           - context: $response.body
             condition: |
-              {"id":"<id>","label":"<value>","slug":"<value>","createdAt":2949.22,"updatedAt":6371.72,"projectId":"<id>","typeName":"segment","data":{},"hint":"<value>"}
+              {"data":{},"id":"<id>","label":"<value>","slug":"<value>","createdAt":2949.22,"updatedAt":6371.72,"projectId":"<id>","typeName":"segment","hint":"<value>"}
             type: simple
     x-speakeasy-test-group: feature-flags
     x-speakeasy-test-rebuild: true
@@ -8419,24 +8419,24 @@ workflows:
           - name: limit
             in: query
             value: 20
-          - name: since
-            in: query
-            value: 1540095775941
-          - name: until
-            in: query
-            value: 1540095775951
           - name: teamId
             in: query
             value: team_1a2b3c4d5e6f7g8h9i0j1k2l
           - name: slug
             in: query
             value: my-team-url-slug
+          - name: sortBy
+            in: query
+            value: createdAt
+          - name: sortOrder
+            in: query
+            value: desc
         successCriteria:
           - condition: $statusCode == 200
           - condition: $response.header.Content-Type == application/json
           - context: $response.body
             condition: |
-              {"sandboxes":[],"pagination":{"total":3903.28,"count":20,"next":1540095775951,"prev":1540095775951}}
+              {"sandboxes":[],"pagination":{"count":20,"next":"1540095775951"}}
             type: simple
     x-speakeasy-test-group: sandboxes
     x-speakeasy-test-rebuild: true
@@ -9020,7 +9020,7 @@ workflows:
           - condition: $response.header.Content-Type == application/json
           - context: $response.body
             condition: |
-              {"accountLimit":{"total":9047.58},"environments":[{"type":"production","id":"<id>","createdAt":2957.56,"slug":"<value>","updatedAt":4025.44}]}
+              {"accountLimit":{"total":9047.58},"environments":[{"type":"production","createdAt":2957.56,"updatedAt":4025.44,"slug":"<value>","id":"<id>"}]}
             type: simple
     x-speakeasy-test-group: environment
     x-speakeasy-test-rebuild: true
@@ -9234,7 +9234,7 @@ workflows:
             condition: |
               {"snapshots":[{"id":"snap_123a6c5209bc3778245d011443644c8d27dc2c50","sourceSessionId":"sbx_123a6c5209bc3778245d011443644c8d27dc2c50","region":"iad1","status":"created","sizeBytes":104857600,"expiresAt":1750344501629,"createdAt":1750344501629,"updatedAt":1750344501629,"lastUsedAt":1750344501629}],"pagination":{"count":2117.85,"next":"<value>"}}
             type: simple
-    x-speakeasy-test-group: sandboxes-v2-beta
+    x-speakeasy-test-group: sandboxes
     x-speakeasy-test-rebuild: true
   - workflowId: getSessionSnapshot
     steps:
@@ -9257,7 +9257,7 @@ workflows:
             condition: |
               {"snapshot":{"id":"snap_123a6c5209bc3778245d011443644c8d27dc2c50","sourceSessionId":"sbx_123a6c5209bc3778245d011443644c8d27dc2c50","region":"iad1","status":"created","sizeBytes":104857600,"expiresAt":1750344501629,"createdAt":1750344501629,"updatedAt":1750344501629,"lastUsedAt":1750344501629,"creationMethod":"manual","parentId":"snap_parent123"}}
             type: simple
-    x-speakeasy-test-group: sandboxes-v2-beta
+    x-speakeasy-test-group: sandboxes
     x-speakeasy-test-rebuild: true
   - workflowId: deleteSessionSnapshot
     steps:
@@ -9280,7 +9280,7 @@ workflows:
             condition: |
               {"snapshot":{"id":"snap_123a6c5209bc3778245d011443644c8d27dc2c50","sourceSessionId":"sbx_123a6c5209bc3778245d011443644c8d27dc2c50","region":"iad1","status":"created","sizeBytes":104857600,"expiresAt":1750344501629,"createdAt":1750344501629,"updatedAt":1750344501629,"lastUsedAt":1750344501629,"creationMethod":"manual","parentId":"snap_parent123"}}
             type: simple
-    x-speakeasy-test-group: sandboxes-v2-beta
+    x-speakeasy-test-group: sandboxes
     x-speakeasy-test-rebuild: true
   - workflowId: listSessions
     steps:
@@ -9312,7 +9312,7 @@ workflows:
             condition: |
               {}
             type: simple
-    x-speakeasy-test-group: sandboxes-v2-beta
+    x-speakeasy-test-group: sandboxes
     x-speakeasy-test-rebuild: true
   - workflowId: getSession
     steps:
@@ -9335,7 +9335,7 @@ workflows:
             condition: |
               {"session":{"sourceSandboxName":"my-sandbox","projectId":"prj_123a6c5209bc3778245d011443644c8d27dc2c50","id":"sbx_123a6c5209bc3778245d011443644c8d27dc2c50","memory":2048,"vcpus":2,"region":"iad1","runtime":"node22","timeout":3600000,"status":"running","requestedAt":1750344501629,"startedAt":1750344501629,"cwd":"/vercel/sandbox","requestedStopAt":1750344501629,"stoppedAt":1750344501629,"abortedAt":1750344501629,"duration":3600000,"sourceSnapshotId":"snap_123a6c5209bc3778245d011443644c8d27dc2c50","snapshottedAt":1750344501629,"createdAt":1750344501629,"updatedAt":1750344501629,"networkPolicy":{"mode":"custom","allowedDomains":["api.vercel.com","*.example.com"],"allowedCIDRs":["10.0.0.0/8"],"deniedCIDRs":["10.0.0.0/8"],"injectionRules":[{"domain":"api.vercel.com","headerNames":["Authorization","X-API-Key"]}]},"activeCpuDurationMs":42,"networkTransfer":{"ingress":3878.34,"egress":4078.62}},"routes":[]}
             type: simple
-    x-speakeasy-test-group: sandboxes-v2-beta
+    x-speakeasy-test-group: sandboxes
     x-speakeasy-test-rebuild: true
   - workflowId: getNamedSandbox
     steps:
@@ -9364,7 +9364,7 @@ workflows:
             condition: |
               {"sandbox":{"name":"my-sandbox","currentSessionId":"<id>","status":"running","statusUpdatedAt":1750344501629,"persistent":true,"region":"iad1","vcpus":2,"memory":1024,"runtime":"node22","timeout":300000,"snapshotExpiration":604800000,"keepLastSnapshots":{"count":5,"expiration":604800000,"deleteEvicted":true},"totalEgressBytes":4096,"totalIngressBytes":2048,"totalActiveCpuDurationMs":5000,"totalDurationMs":60000,"cwd":"/vercel/sandbox","tags":{"team":"hive","user":"bob"},"createdAt":1750344501629,"updatedAt":1750344501629},"session":{"sourceSandboxName":"my-sandbox","projectId":"prj_123a6c5209bc3778245d011443644c8d27dc2c50","id":"sbx_123a6c5209bc3778245d011443644c8d27dc2c50","memory":2048,"vcpus":2,"region":"iad1","runtime":"node22","timeout":3600000,"status":"running","requestedAt":1750344501629,"startedAt":1750344501629,"cwd":"/vercel/sandbox","requestedStopAt":1750344501629,"stoppedAt":1750344501629,"abortedAt":1750344501629,"duration":3600000,"sourceSnapshotId":"snap_123a6c5209bc3778245d011443644c8d27dc2c50","snapshottedAt":1750344501629,"createdAt":1750344501629,"updatedAt":1750344501629,"networkPolicy":{"mode":"custom","allowedDomains":["api.vercel.com","*.example.com"],"allowedCIDRs":["10.0.0.0/8"],"deniedCIDRs":["10.0.0.0/8"],"injectionRules":[{"domain":"api.vercel.com","headerNames":["Authorization","X-API-Key"]}]},"activeCpuDurationMs":42,"networkTransfer":{"ingress":3537.81,"egress":3912.91}},"routes":[{"url":"https://any-wasabi.com","port":4252.43,"subdomain":"<value>","system":true}],"resumed":true}
             type: simple
-    x-speakeasy-test-group: sandboxes-v2-beta
+    x-speakeasy-test-group: sandboxes
     x-speakeasy-test-rebuild: true
   - workflowId: updateSandbox
     steps:
@@ -9435,7 +9435,7 @@ workflows:
             condition: |
               {"sandbox":{"name":"my-sandbox","currentSessionId":"<id>","status":"running","statusUpdatedAt":1750344501629,"persistent":true,"region":"iad1","vcpus":2,"memory":1024,"runtime":"node22","timeout":300000,"snapshotExpiration":604800000,"keepLastSnapshots":{"count":5,"expiration":604800000,"deleteEvicted":true},"totalEgressBytes":4096,"totalIngressBytes":2048,"totalActiveCpuDurationMs":5000,"totalDurationMs":60000,"cwd":"/vercel/sandbox","tags":{"team":"hive","user":"bob"},"createdAt":1750344501629,"updatedAt":1750344501629}}
             type: simple
-    x-speakeasy-test-group: sandboxes-v2-beta
+    x-speakeasy-test-group: sandboxes
     x-speakeasy-test-rebuild: true
   - workflowId: listSessionCommands
     steps:
@@ -9458,7 +9458,7 @@ workflows:
             condition: |
               {"commands":[]}
             type: simple
-    x-speakeasy-test-group: sandboxes-v2-beta
+    x-speakeasy-test-group: sandboxes
     x-speakeasy-test-rebuild: true
   - workflowId: getSessionCommand
     steps:
@@ -9487,7 +9487,7 @@ workflows:
             condition: |
               {"command":{"id":"cmd_123a6c5209bc3778245d011443644c8d27dc2c50","name":"npm","args":["run","build"],"cwd":"/vercel/sandbox","sessionId":"sbx_123a6c5209bc3778245d011443644c8d27dc2c50","exitCode":0,"startedAt":1673123456789}}
             type: simple
-    x-speakeasy-test-group: sandboxes-v2-beta
+    x-speakeasy-test-group: sandboxes
     x-speakeasy-test-rebuild: true
   - workflowId: killSessionCommand
     steps:
@@ -9517,7 +9517,7 @@ workflows:
             condition: |
               {"command":{"id":"cmd_123a6c5209bc3778245d011443644c8d27dc2c50","name":"npm","args":["run","build"],"cwd":"/vercel/sandbox","sessionId":"sbx_123a6c5209bc3778245d011443644c8d27dc2c50","exitCode":0,"startedAt":1673123456789}}
             type: simple
-    x-speakeasy-test-group: sandboxes-v2-beta
+    x-speakeasy-test-group: sandboxes
     x-speakeasy-test-rebuild: true
   - workflowId: stopSession
     steps:
@@ -9540,7 +9540,7 @@ workflows:
             condition: |
               {"session":{"sourceSandboxName":"my-sandbox","projectId":"prj_123a6c5209bc3778245d011443644c8d27dc2c50","id":"sbx_123a6c5209bc3778245d011443644c8d27dc2c50","memory":2048,"vcpus":2,"region":"iad1","runtime":"node22","timeout":3600000,"status":"running","requestedAt":1750344501629,"startedAt":1750344501629,"cwd":"/vercel/sandbox","requestedStopAt":1750344501629,"stoppedAt":1750344501629,"abortedAt":1750344501629,"duration":3600000,"sourceSnapshotId":"snap_123a6c5209bc3778245d011443644c8d27dc2c50","snapshottedAt":1750344501629,"createdAt":1750344501629,"updatedAt":1750344501629,"networkPolicy":{"mode":"custom","allowedDomains":["api.vercel.com","*.example.com"],"allowedCIDRs":["10.0.0.0/8"],"deniedCIDRs":["10.0.0.0/8"],"injectionRules":[{"domain":"api.vercel.com","headerNames":["Authorization","X-API-Key"]}]},"activeCpuDurationMs":42,"networkTransfer":{"ingress":7335.08,"egress":6426.83}}}
             type: simple
-    x-speakeasy-test-group: sandboxes-v2-beta
+    x-speakeasy-test-group: sandboxes
     x-speakeasy-test-rebuild: true
   - workflowId: extendSessionTimeout
     steps:
@@ -9567,7 +9567,7 @@ workflows:
             condition: |
               {"session":{"sourceSandboxName":"my-sandbox","projectId":"prj_123a6c5209bc3778245d011443644c8d27dc2c50","id":"sbx_123a6c5209bc3778245d011443644c8d27dc2c50","memory":2048,"vcpus":2,"region":"iad1","runtime":"node22","timeout":3600000,"status":"running","requestedAt":1750344501629,"startedAt":1750344501629,"cwd":"/vercel/sandbox","requestedStopAt":1750344501629,"stoppedAt":1750344501629,"abortedAt":1750344501629,"duration":3600000,"sourceSnapshotId":"snap_123a6c5209bc3778245d011443644c8d27dc2c50","snapshottedAt":1750344501629,"createdAt":1750344501629,"updatedAt":1750344501629,"networkPolicy":{"mode":"custom","allowedDomains":["api.vercel.com","*.example.com"],"allowedCIDRs":["10.0.0.0/8"],"deniedCIDRs":["10.0.0.0/8"],"injectionRules":[{"domain":"api.vercel.com","headerNames":["Authorization","X-API-Key"]}]},"activeCpuDurationMs":42,"networkTransfer":{"ingress":2879.78,"egress":8960.7}}}
             type: simple
-    x-speakeasy-test-group: sandboxes-v2-beta
+    x-speakeasy-test-group: sandboxes
     x-speakeasy-test-rebuild: true
   - workflowId: updateSessionNetworkPolicy
     steps:
@@ -9602,7 +9602,7 @@ workflows:
             condition: |
               {"session":{"sourceSandboxName":"my-sandbox","projectId":"prj_123a6c5209bc3778245d011443644c8d27dc2c50","id":"sbx_123a6c5209bc3778245d011443644c8d27dc2c50","memory":2048,"vcpus":2,"region":"iad1","runtime":"node22","timeout":3600000,"status":"running","requestedAt":1750344501629,"startedAt":1750344501629,"cwd":"/vercel/sandbox","requestedStopAt":1750344501629,"stoppedAt":1750344501629,"abortedAt":1750344501629,"duration":3600000,"sourceSnapshotId":"snap_123a6c5209bc3778245d011443644c8d27dc2c50","snapshottedAt":1750344501629,"createdAt":1750344501629,"updatedAt":1750344501629,"networkPolicy":{"mode":"custom","allowedDomains":["api.vercel.com","*.example.com"],"allowedCIDRs":["10.0.0.0/8"],"deniedCIDRs":["10.0.0.0/8"],"injectionRules":[{"domain":"api.vercel.com","headerNames":["Authorization","X-API-Key"]}]},"activeCpuDurationMs":42,"networkTransfer":{"ingress":4717.67,"egress":3225.72}}}
             type: simple
-    x-speakeasy-test-group: sandboxes-v2-beta
+    x-speakeasy-test-group: sandboxes
     x-speakeasy-test-rebuild: true
   - workflowId: readSessionFile
     steps:
@@ -9630,7 +9630,7 @@ workflows:
             condition: |
               "x-file: example.file"
             type: simple
-    x-speakeasy-test-group: sandboxes-v2-beta
+    x-speakeasy-test-group: sandboxes
     x-speakeasy-test-rebuild: true
   - workflowId: createSessionDirectory
     steps:
@@ -9659,7 +9659,7 @@ workflows:
             condition: |
               {}
             type: simple
-    x-speakeasy-test-group: sandboxes-v2-beta
+    x-speakeasy-test-group: sandboxes
     x-speakeasy-test-rebuild: true
   - workflowId: writeSessionFiles
     steps:
@@ -9685,7 +9685,7 @@ workflows:
             condition: |
               {}
             type: simple
-    x-speakeasy-test-group: sandboxes-v2-beta
+    x-speakeasy-test-group: sandboxes
     x-speakeasy-test-rebuild: true
   - workflowId: createSessionSnapshot
     steps:
@@ -9708,7 +9708,7 @@ workflows:
             condition: |
               {"snapshot":{"id":"snap_123a6c5209bc3778245d011443644c8d27dc2c50","sourceSessionId":"sbx_123a6c5209bc3778245d011443644c8d27dc2c50","region":"iad1","status":"created","sizeBytes":104857600,"expiresAt":1750344501629,"createdAt":1750344501629,"updatedAt":1750344501629,"lastUsedAt":1750344501629,"creationMethod":"manual","parentId":"snap_parent123"},"session":{"sourceSandboxName":"my-sandbox","projectId":"prj_123a6c5209bc3778245d011443644c8d27dc2c50","id":"sbx_123a6c5209bc3778245d011443644c8d27dc2c50","memory":2048,"vcpus":2,"region":"iad1","runtime":"node22","timeout":3600000,"status":"running","requestedAt":1750344501629,"startedAt":1750344501629,"cwd":"/vercel/sandbox","requestedStopAt":1750344501629,"stoppedAt":1750344501629,"abortedAt":1750344501629,"duration":3600000,"sourceSnapshotId":"snap_123a6c5209bc3778245d011443644c8d27dc2c50","snapshottedAt":1750344501629,"createdAt":1750344501629,"updatedAt":1750344501629,"networkPolicy":{"mode":"custom","allowedDomains":["api.vercel.com","*.example.com"],"allowedCIDRs":["10.0.0.0/8"],"deniedCIDRs":["10.0.0.0/8"],"injectionRules":[{"domain":"api.vercel.com","headerNames":["Authorization","X-API-Key"]}]},"activeCpuDurationMs":42,"networkTransfer":{"ingress":2235.65,"egress":2151.72}}}
             type: simple
-    x-speakeasy-test-group: sandboxes-v2-beta
+    x-speakeasy-test-group: sandboxes
     x-speakeasy-test-rebuild: true
   - workflowId: getObservabilityConfigurationProjects
     steps:
@@ -9949,4 +9949,122 @@ workflows:
               {}
             type: simple
     x-speakeasy-test-group: teams
+    x-speakeasy-test-rebuild: true
+  - workflowId: getDomainVerificationRecord
+    steps:
+      - stepId: test
+        operationId: getDomainVerificationRecord
+        parameters:
+          - name: domain
+            in: path
+            value: example.com
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"txtRecord":"<value>","verificationDomain":"<value>"}
+            type: simple
+    x-speakeasy-test-group: domains
+    x-speakeasy-test-rebuild: true
+  - workflowId: claimDomainOwnership
+    steps:
+      - stepId: test
+        operationId: claimDomainOwnership
+        parameters:
+          - name: domain
+            in: path
+            value: example.com
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"domain":{"expiresAt":5532,"verified":true,"nameservers":["ns1.nameserver.net","ns2.nameserver.net"],"intendedNameservers":["ns1.vercel-dns.com","ns2.vercel-dns.com"],"customNameservers":["ns1.nameserver.net","ns2.nameserver.net"],"creator":{"username":"vercel_user","email":"demo@example.com","id":"ZspSRT4ljIEEmMHgoDwKWDei"},"name":"example.com","teamId":null,"boughtAt":1613602938882,"createdAt":1613602938882,"id":"EmTbe5CEJyTk2yVAHBUWy4A3sRusca3GCwRjTC1bpeVnt1","renew":true,"serviceType":"zeit.world","transferredAt":1613602938882,"transferStartedAt":1613602938882,"userId":"<id>"}}
+            type: simple
+    x-speakeasy-test-group: domains
+    x-speakeasy-test-rebuild: true
+  - workflowId: listFlagsV2
+    steps:
+      - stepId: test
+        operationId: listFlagsV2
+        parameters:
+          - name: projectIdOrName
+            in: path
+            value: <value>
+          - name: limit
+            in: query
+            value: 25
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"pagination":{"next":"<value>"},"data":[{"typeName":"marketplaceFlag","id":"<id>","externalId":"<id>","slug":"<value>","origin":"<value>","ownerId":"<id>","projectId":"<id>","resourceId":"<id>","integrationConfigurationId":"<id>","state":"archived"}]}
+            type: simple
+    x-speakeasy-test-group: feature-flags
+    x-speakeasy-test-rebuild: true
+  - workflowId: listTeamFlagsV2
+    steps:
+      - stepId: test
+        operationId: listTeamFlagsV2
+        parameters:
+          - name: teamId
+            in: path
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: limit
+            in: query
+            value: 25
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"pagination":{"next":"<value>"},"data":[{"typeName":"marketplaceFlag","id":"<id>","externalId":"<id>","slug":"<value>","origin":"<value>","ownerId":"<id>","projectId":"<id>","resourceId":"<id>","integrationConfigurationId":"<id>","state":"active"}]}
+            type: simple
+    x-speakeasy-test-group: feature-flags
+    x-speakeasy-test-rebuild: true
+  - workflowId: uploadProjectAvatar
+    steps:
+      - stepId: test
+        operationId: uploadProjectAvatar
+        parameters:
+          - name: idOrName
+            in: path
+            value: <value>
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"accountId":"<id>","crons":{"enabledAt":4259.85,"disabledAt":699.92,"updatedAt":7234.69,"deploymentId":"<id>","definitions":[]},"deploymentExpiration":{},"directoryListing":false,"id":"<id>","name":"<value>","nodeVersion":"18.x","resourceConfig":{"functionDefaultRegions":["<value 1>","<value 2>"]},"rollingRelease":{"target":"production","stages":[{"targetPercentage":25,"requireApproval":false,"duration":600,"linearShift":false}],"canaryResponseHeader":false},"defaultResourceConfig":{"functionDefaultRegions":["<value 1>","<value 2>"]}}
+            type: simple
+    x-speakeasy-test-group: projects
     x-speakeasy-test-rebuild: true

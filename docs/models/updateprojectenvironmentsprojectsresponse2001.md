@@ -1,0 +1,19 @@
+# UpdateProjectEnvironmentsProjectsResponse2001
+
+## Example Usage
+
+```typescript
+import { UpdateProjectEnvironmentsProjectsResponse2001 } from "@vercel/sdk/models/updateprojecttracing.js";
+
+let value: UpdateProjectEnvironmentsProjectsResponse2001 = {
+  type: "system",
+  target: "preview",
+};
+```
+
+## Fields
+
+| Field                                                                                                                        | Type                                                                                                                         | Required                                                                                                                     | Description                                                                                                                  |
+| ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| `type`                                                                                                                       | *"system"*                                                                                                                   | :heavy_check_mark:                                                                                                           | N/A                                                                                                                          |
+| `target`                                                                                                                     | [models.UpdateProjectEnvironmentsProjectsResponse200Target](../models/updateprojectenvironmentsprojectsresponse200target.md) | :heavy_check_mark:                                                                                                           | N/A                                                                                                                          |

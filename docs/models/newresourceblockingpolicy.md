@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { NewResourceBlockingPolicy } from "@vercel/sdk/models/edgemiddlewareinvocations.js";
+import { NewResourceBlockingPolicy } from "@vercel/sdk/models/datacacheread.js";
 
 let value: NewResourceBlockingPolicy = "allow";
 ```

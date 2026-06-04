@@ -5,7 +5,7 @@ optional since entries prior to 2026-04-23 do not contain this field
 ## Example Usage
 
 ```typescript
-import { UserEventPayloadGeolocation } from "@vercel/sdk/models/payloadenvironment.js";
+import { UserEventPayloadGeolocation } from "@vercel/sdk/models/twohundredandeightynine.js";
 
 let value: UserEventPayloadGeolocation = {
   country: {

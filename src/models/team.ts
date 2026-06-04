@@ -256,6 +256,10 @@ export type ResourceConfig = {
    * The maximum number of postgres databases an account can create.
    */
   postgresDatabases?: number | undefined;
+  /**
+   * The maximum number of custom environments allowed per project.
+   */
+  customEnvironmentsPerProject?: number | undefined;
   buildEntitlements?: BuildEntitlements | undefined;
   /**
    * Build machine configuration
@@ -286,6 +290,34 @@ export type SsoProtection = {
 export type DefaultDeploymentProtection = {
   passwordProtection?: PasswordProtection | null | undefined;
   ssoProtection?: SsoProtection | null | undefined;
+};
+
+/**
+ * Default Passport configuration for new projects in this team.
+ */
+export const DeploymentType = {
+  All: "all",
+  Preview: "preview",
+  ProdDeploymentUrlsAndAllPreviews: "prod_deployment_urls_and_all_previews",
+  AllExceptCustomDomains: "all_except_custom_domains",
+} as const;
+/**
+ * Default Passport configuration for new projects in this team.
+ */
+export type DeploymentType = ClosedEnum<typeof DeploymentType>;
+
+/**
+ * Default Passport configuration for new projects in this team.
+ */
+export type DefaultPassport = {
+  /**
+   * Default Passport configuration for new projects in this team.
+   */
+  connectorId: string;
+  /**
+   * Default Passport configuration for new projects in this team.
+   */
+  deploymentType: DeploymentType;
 };
 
 /**
@@ -397,6 +429,19 @@ export type SensitiveEnvironmentVariablePolicy = ClosedEnum<
   typeof SensitiveEnvironmentVariablePolicy
 >;
 
+/**
+ * Controls who can request access to protected deployments.
+ */
+export const DpAccessRequestsMode = {
+  All: "all",
+  None: "none",
+  EmailDomain: "email-domain",
+} as const;
+/**
+ * Controls who can request access to protected deployments.
+ */
+export type DpAccessRequestsMode = ClosedEnum<typeof DpAccessRequestsMode>;
+
 export type IpBuckets = {
   bucket: string;
   supportUntil?: number | undefined;
@@ -433,43 +478,68 @@ export type NsnbConfig = {
   preference: Preference;
 };
 
-export const TeamSourcesProvider = {
-  Github: "github",
-  Gitlab: "gitlab",
-  Bitbucket: "bitbucket",
-} as const;
-export type TeamSourcesProvider = ClosedEnum<typeof TeamSourcesProvider>;
-
+/**
+ * Allowlist entry for GitLab, which uses nested groups rather than a flat org/repo. `namespace` is the full group path (e.g. `group` or `group/subgroup`); `project` is the leaf project name. Omit `project` to match any project under the namespace. Namespace is matched case-insensitively.
+ */
 export type Sources2 = {
-  provider: TeamSourcesProvider;
-  org: string;
-  repo: string;
+  provider: "gitlab";
+  namespace: string;
+  project?: string | undefined;
 };
 
 export const SourcesProvider = {
   Github: "github",
-  Gitlab: "gitlab",
   Bitbucket: "bitbucket",
 } as const;
 export type SourcesProvider = ClosedEnum<typeof SourcesProvider>;
 
+/**
+ * Allowlist entry for GitHub and Bitbucket, whose repos are identified by a flat `org`/`repo` (Bitbucket's workspace/owner maps to `org`, its repo slug to `repo`). Omit `repo` to match any repo in the org. Org is matched case-insensitively.
+ */
 export type Sources1 = {
   provider: SourcesProvider;
   org: string;
+  repo?: string | undefined;
 };
 
-export type Sources = Sources2 | Sources1;
+export type Sources =
+  | (Sources1 & { provider: "github" })
+  | (Sources1 & { provider: "bitbucket" })
+  | Sources2;
+
+export type Environments2 = {
+  type: "custom";
+  environmentId: string;
+};
+
+export const EnvironmentsTarget = {
+  Preview: "preview",
+  Production: "production",
+} as const;
+export type EnvironmentsTarget = ClosedEnum<typeof EnvironmentsTarget>;
+
+export type Environments1 = {
+  type: "system";
+  target: EnvironmentsTarget;
+};
+
+export type TeamEnvironments = Environments1 | Environments2;
 
 /**
- * Restricts inbound Git deployments to an allowlist of orgs and/or repos. `enabled: true` with an empty `sources` list is treated as deny-all.
+ * `enabled: true` with empty `sources` is deny-all.
  */
 export type GitSources = {
-  sources: Array<Sources2 | Sources1>;
+  sources: Array<
+    | (Sources1 & { provider: "github" })
+    | (Sources1 & { provider: "bitbucket" })
+    | Sources2
+  >;
   enabled: boolean;
+  environments: Array<Environments1 | Environments2>;
 };
 
 /**
- * The mechanism that produced a deployment, expressed as values a customer can write in a {@link DeploymentSourcesRule} allowlist. The JSON schema at `packages/deployment-policy/schemas/body.ts` enumerates exactly these values. - `'git'`: a Git provider webhook (GitHub / GitLab / Bitbucket). - `'cli'`: an upload via the Vercel CLI. Covers both the legacy CLI (classic user token, identified by `vercel`/`now` user-agent) and the Sign-In-With-Vercel CLI (a first-party Vercel App token whose `clientId` is the CLI's). The canonical CLI client IDs are tracked in `packages/acl/app-has-all-permissions.ts` (`isVercelCliApp`). - `'rest-api'`: a direct REST API upload — a user or team token POSTing directly. Does NOT cover deploy-hook URLs, Marketplace integration tokens, or first-party Vercel App tokens; those are their own sources. - `'deploy-hook'`: a trigger via a project deploy-hook URL. The URL itself is the credential, so the request has no authenticated principal. - `'integration'`: a **third-party Marketplace** OAuth2 actor — a Marketplace integration token, a user-delegated OAuth flow where a Marketplace integration is acting on a user's behalf, or an unrecognized third-party Vercel App token. First-party Vercel Apps are NEVER `'integration'`. Vercel-owned first-party apps other than the CLI (e.g. v0, Toolbar, Omni Agent) are *not* in this type — they aren't customer-configurable. They classify as `'first-party'` (see `ClassifiedSource` in `@api/deployment-policy/checks`) and are auto-allowed by `checkDeploymentSources`. The split is intentional: a team can permit their own automation and CLI usage while blocking third-party Marketplace integrators — and Vercel's own first-party tooling always works.
+ * Customer-configurable deployment sources. Every deploy classifies to exactly one. JSON schema in `packages/deployment-policy/schemas/body.ts` enumerates exactly these values. - `'git'` — git provider webhook. - `'cli'` — Vercel CLI (legacy classic-token CLI and SIWV CLI both). - `'rest-api'` — direct user/team-token REST upload. Does NOT cover deploy hooks, Marketplace integrations, or first-party app tokens. - `'deploy-hook'` — project deploy-hook URL. The URL is the credential. - `'integration'` — third-party Marketplace actor: Marketplace integration token, user-delegated OAuth from a Marketplace app, or an unrecognized third-party Vercel App. First-party Vercel Apps are never `'integration'`. First-party Vercel apps (v0, Toolbar, etc.) classify as `'first-party'` — see `ClassifiedSource` in `./checks`. They're not in this union because they aren't customer-configurable; they bypass `checkDeploymentSources` entirely.
  */
 export const TeamSources = {
   Integration: "integration",
@@ -479,30 +549,45 @@ export const TeamSources = {
   DeployHook: "deploy-hook",
 } as const;
 /**
- * The mechanism that produced a deployment, expressed as values a customer can write in a {@link DeploymentSourcesRule} allowlist. The JSON schema at `packages/deployment-policy/schemas/body.ts` enumerates exactly these values. - `'git'`: a Git provider webhook (GitHub / GitLab / Bitbucket). - `'cli'`: an upload via the Vercel CLI. Covers both the legacy CLI (classic user token, identified by `vercel`/`now` user-agent) and the Sign-In-With-Vercel CLI (a first-party Vercel App token whose `clientId` is the CLI's). The canonical CLI client IDs are tracked in `packages/acl/app-has-all-permissions.ts` (`isVercelCliApp`). - `'rest-api'`: a direct REST API upload — a user or team token POSTing directly. Does NOT cover deploy-hook URLs, Marketplace integration tokens, or first-party Vercel App tokens; those are their own sources. - `'deploy-hook'`: a trigger via a project deploy-hook URL. The URL itself is the credential, so the request has no authenticated principal. - `'integration'`: a **third-party Marketplace** OAuth2 actor — a Marketplace integration token, a user-delegated OAuth flow where a Marketplace integration is acting on a user's behalf, or an unrecognized third-party Vercel App token. First-party Vercel Apps are NEVER `'integration'`. Vercel-owned first-party apps other than the CLI (e.g. v0, Toolbar, Omni Agent) are *not* in this type — they aren't customer-configurable. They classify as `'first-party'` (see `ClassifiedSource` in `@api/deployment-policy/checks`) and are auto-allowed by `checkDeploymentSources`. The split is intentional: a team can permit their own automation and CLI usage while blocking third-party Marketplace integrators — and Vercel's own first-party tooling always works.
+ * Customer-configurable deployment sources. Every deploy classifies to exactly one. JSON schema in `packages/deployment-policy/schemas/body.ts` enumerates exactly these values. - `'git'` — git provider webhook. - `'cli'` — Vercel CLI (legacy classic-token CLI and SIWV CLI both). - `'rest-api'` — direct user/team-token REST upload. Does NOT cover deploy hooks, Marketplace integrations, or first-party app tokens. - `'deploy-hook'` — project deploy-hook URL. The URL is the credential. - `'integration'` — third-party Marketplace actor: Marketplace integration token, user-delegated OAuth from a Marketplace app, or an unrecognized third-party Vercel App. First-party Vercel Apps are never `'integration'`. First-party Vercel apps (v0, Toolbar, etc.) classify as `'first-party'` — see `ClassifiedSource` in `./checks`. They're not in this union because they aren't customer-configurable; they bypass `checkDeploymentSources` entirely.
  */
 export type TeamSources = ClosedEnum<typeof TeamSources>;
 
+export type TeamEnvironments2 = {
+  type: "custom";
+  environmentId: string;
+};
+
+export const TeamEnvironmentsTarget = {
+  Preview: "preview",
+  Production: "production",
+} as const;
+export type TeamEnvironmentsTarget = ClosedEnum<typeof TeamEnvironmentsTarget>;
+
+export type TeamEnvironments1 = {
+  type: "system";
+  target: TeamEnvironmentsTarget;
+};
+
+export type TeamDeploymentPolicyEnvironments =
+  | TeamEnvironments1
+  | TeamEnvironments2;
+
 /**
- * Restricts which deployment sources are allowed. A deployment passes if its source is in `sources`. Multiple entries are evaluated as OR. `enabled: true` with an empty `sources` list is treated as deny-all.
+ * `enabled: true` with empty `sources` is deny-all.
  */
 export type DeploymentSources = {
   sources: Array<TeamSources>;
   enabled: boolean;
+  environments: Array<TeamEnvironments1 | TeamEnvironments2>;
 };
 
 /**
  * Composable deployment-time policy for the team. Used as the default for every project on the team, with optional per-project overrides on `project.deploymentPolicy`.
  */
 export type DeploymentPolicy = {
-  /**
-   * Restricts inbound Git deployments to an allowlist of orgs and/or repos. `enabled: true` with an empty `sources` list is treated as deny-all.
-   */
-  gitSources?: GitSources | undefined;
-  /**
-   * Restricts which deployment sources are allowed. A deployment passes if its source is in `sources`. Multiple entries are evaluated as OR. `enabled: true` with an empty `sources` list is treated as deny-all.
-   */
-  deploymentSources?: DeploymentSources | undefined;
+  gitSources?: Array<GitSources> | undefined;
+  deploymentSources?: Array<DeploymentSources> | undefined;
 };
 
 export type Entitlements = {
@@ -554,12 +639,13 @@ export const TeamOrigin = {
   Link: "link",
   Saml: "saml",
   Github: "github",
-  Gitlab: "gitlab",
   Bitbucket: "bitbucket",
+  Gitlab: "gitlab",
   Mail: "mail",
   Import: "import",
   Teams: "teams",
   Dsync: "dsync",
+  AccountUpdate: "account-update",
   Feedback: "feedback",
   OrganizationTeams: "organization-teams",
   NsnbAutoApprove: "nsnb-auto-approve",
@@ -661,6 +747,10 @@ export type Team = {
    */
   defaultDeploymentProtection?: DefaultDeploymentProtection | undefined;
   /**
+   * Default Passport configuration for new projects in this team.
+   */
+  defaultPassport?: DefaultPassport | null | undefined;
+  /**
    * Default deployment expiration settings for this team
    */
   defaultExpirationSettings?: DefaultExpirationSettings | undefined;
@@ -691,6 +781,10 @@ export type Team = {
    * Indicates if IP addresses should be accessible in log drains
    */
   hideIpAddressesInLogDrains?: boolean | null | undefined;
+  /**
+   * Controls who can request access to protected deployments.
+   */
+  dpAccessRequestsMode?: DpAccessRequestsMode | undefined;
   ipBuckets?: Array<IpBuckets> | undefined;
   /**
    * When enabled, all projects in the team require commits to be signed and verified by the git provider before deployments will be created. Projects may override this via `project.gitProviderOptions.requireVerifiedCommits` (gated by `Project:Update`).
@@ -1188,6 +1282,7 @@ export const ResourceConfig$inboundSchema: z.ZodType<
   kvDatabases: types.optional(types.number()),
   blobStores: types.optional(types.number()),
   postgresDatabases: types.optional(types.number()),
+  customEnvironmentsPerProject: types.optional(types.number()),
   buildEntitlements: types.optional(
     z.lazy(() => BuildEntitlements$inboundSchema),
   ),
@@ -1202,6 +1297,7 @@ export type ResourceConfig$Outbound = {
   kvDatabases?: number | undefined;
   blobStores?: number | undefined;
   postgresDatabases?: number | undefined;
+  customEnvironmentsPerProject?: number | undefined;
   buildEntitlements?: BuildEntitlements$Outbound | undefined;
   buildMachine?: BuildMachine$Outbound | undefined;
 };
@@ -1219,6 +1315,7 @@ export const ResourceConfig$outboundSchema: z.ZodType<
   kvDatabases: z.number().optional(),
   blobStores: z.number().optional(),
   postgresDatabases: z.number().optional(),
+  customEnvironmentsPerProject: z.number().optional(),
   buildEntitlements: z.lazy(() => BuildEntitlements$outboundSchema).optional(),
   buildMachine: z.lazy(() => BuildMachine$outboundSchema).optional(),
 });
@@ -1428,6 +1525,55 @@ export function defaultDeploymentProtectionFromJSON(
 }
 
 /** @internal */
+export const DeploymentType$inboundSchema: z.ZodNativeEnum<
+  typeof DeploymentType
+> = z.nativeEnum(DeploymentType);
+/** @internal */
+export const DeploymentType$outboundSchema: z.ZodNativeEnum<
+  typeof DeploymentType
+> = DeploymentType$inboundSchema;
+
+/** @internal */
+export const DefaultPassport$inboundSchema: z.ZodType<
+  DefaultPassport,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  connectorId: types.string(),
+  deploymentType: DeploymentType$inboundSchema,
+});
+/** @internal */
+export type DefaultPassport$Outbound = {
+  connectorId: string;
+  deploymentType: string;
+};
+
+/** @internal */
+export const DefaultPassport$outboundSchema: z.ZodType<
+  DefaultPassport$Outbound,
+  z.ZodTypeDef,
+  DefaultPassport
+> = z.object({
+  connectorId: z.string(),
+  deploymentType: DeploymentType$outboundSchema,
+});
+
+export function defaultPassportToJSON(
+  defaultPassport: DefaultPassport,
+): string {
+  return JSON.stringify(DefaultPassport$outboundSchema.parse(defaultPassport));
+}
+export function defaultPassportFromJSON(
+  jsonString: string,
+): SafeParseResult<DefaultPassport, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DefaultPassport$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DefaultPassport' from JSON`,
+  );
+}
+
+/** @internal */
 export const DefaultExpirationSettings$inboundSchema: z.ZodType<
   DefaultExpirationSettings,
   z.ZodTypeDef,
@@ -1612,6 +1758,15 @@ export const SensitiveEnvironmentVariablePolicy$outboundSchema: z.ZodNativeEnum<
 > = SensitiveEnvironmentVariablePolicy$inboundSchema;
 
 /** @internal */
+export const DpAccessRequestsMode$inboundSchema: z.ZodNativeEnum<
+  typeof DpAccessRequestsMode
+> = z.nativeEnum(DpAccessRequestsMode);
+/** @internal */
+export const DpAccessRequestsMode$outboundSchema: z.ZodNativeEnum<
+  typeof DpAccessRequestsMode
+> = DpAccessRequestsMode$inboundSchema;
+
+/** @internal */
 export const IpBuckets$inboundSchema: z.ZodType<
   IpBuckets,
   z.ZodTypeDef,
@@ -1782,29 +1937,20 @@ export function nsnbConfigFromJSON(
 }
 
 /** @internal */
-export const TeamSourcesProvider$inboundSchema: z.ZodNativeEnum<
-  typeof TeamSourcesProvider
-> = z.nativeEnum(TeamSourcesProvider);
-/** @internal */
-export const TeamSourcesProvider$outboundSchema: z.ZodNativeEnum<
-  typeof TeamSourcesProvider
-> = TeamSourcesProvider$inboundSchema;
-
-/** @internal */
 export const Sources2$inboundSchema: z.ZodType<
   Sources2,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  provider: TeamSourcesProvider$inboundSchema,
-  org: types.string(),
-  repo: types.string(),
+  provider: types.literal("gitlab"),
+  namespace: types.string(),
+  project: types.optional(types.string()),
 });
 /** @internal */
 export type Sources2$Outbound = {
-  provider: string;
-  org: string;
-  repo: string;
+  provider: "gitlab";
+  namespace: string;
+  project?: string | undefined;
 };
 
 /** @internal */
@@ -1813,9 +1959,9 @@ export const Sources2$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Sources2
 > = z.object({
-  provider: TeamSourcesProvider$outboundSchema,
-  org: z.string(),
-  repo: z.string(),
+  provider: z.literal("gitlab"),
+  namespace: z.string(),
+  project: z.string().optional(),
 });
 
 export function sources2ToJSON(sources2: Sources2): string {
@@ -1848,11 +1994,13 @@ export const Sources1$inboundSchema: z.ZodType<
 > = z.object({
   provider: SourcesProvider$inboundSchema,
   org: types.string(),
+  repo: types.optional(types.string()),
 });
 /** @internal */
 export type Sources1$Outbound = {
   provider: string;
   org: string;
+  repo?: string | undefined;
 };
 
 /** @internal */
@@ -1863,6 +2011,7 @@ export const Sources1$outboundSchema: z.ZodType<
 > = z.object({
   provider: SourcesProvider$outboundSchema,
   org: z.string(),
+  repo: z.string().optional(),
 });
 
 export function sources1ToJSON(sources1: Sources1): string {
@@ -1880,21 +2029,34 @@ export function sources1FromJSON(
 
 /** @internal */
 export const Sources$inboundSchema: z.ZodType<Sources, z.ZodTypeDef, unknown> =
-  smartUnion([
+  z.union([
+    z.lazy(() => Sources1$inboundSchema).and(
+      z.object({ provider: z.literal("github") }),
+    ),
+    z.lazy(() => Sources1$inboundSchema).and(
+      z.object({ provider: z.literal("bitbucket") }),
+    ),
     z.lazy(() => Sources2$inboundSchema),
-    z.lazy(() => Sources1$inboundSchema),
   ]);
 /** @internal */
-export type Sources$Outbound = Sources2$Outbound | Sources1$Outbound;
+export type Sources$Outbound =
+  | (Sources1$Outbound & { provider: "github" })
+  | (Sources1$Outbound & { provider: "bitbucket" })
+  | Sources2$Outbound;
 
 /** @internal */
 export const Sources$outboundSchema: z.ZodType<
   Sources$Outbound,
   z.ZodTypeDef,
   Sources
-> = smartUnion([
+> = z.union([
+  z.lazy(() => Sources1$outboundSchema).and(
+    z.object({ provider: z.literal("github") }),
+  ),
+  z.lazy(() => Sources1$outboundSchema).and(
+    z.object({ provider: z.literal("bitbucket") }),
+  ),
   z.lazy(() => Sources2$outboundSchema),
-  z.lazy(() => Sources1$outboundSchema),
 ]);
 
 export function sourcesToJSON(sources: Sources): string {
@@ -1911,23 +2073,165 @@ export function sourcesFromJSON(
 }
 
 /** @internal */
+export const Environments2$inboundSchema: z.ZodType<
+  Environments2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: types.literal("custom"),
+  environmentId: types.string(),
+});
+/** @internal */
+export type Environments2$Outbound = {
+  type: "custom";
+  environmentId: string;
+};
+
+/** @internal */
+export const Environments2$outboundSchema: z.ZodType<
+  Environments2$Outbound,
+  z.ZodTypeDef,
+  Environments2
+> = z.object({
+  type: z.literal("custom"),
+  environmentId: z.string(),
+});
+
+export function environments2ToJSON(environments2: Environments2): string {
+  return JSON.stringify(Environments2$outboundSchema.parse(environments2));
+}
+export function environments2FromJSON(
+  jsonString: string,
+): SafeParseResult<Environments2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Environments2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Environments2' from JSON`,
+  );
+}
+
+/** @internal */
+export const EnvironmentsTarget$inboundSchema: z.ZodNativeEnum<
+  typeof EnvironmentsTarget
+> = z.nativeEnum(EnvironmentsTarget);
+/** @internal */
+export const EnvironmentsTarget$outboundSchema: z.ZodNativeEnum<
+  typeof EnvironmentsTarget
+> = EnvironmentsTarget$inboundSchema;
+
+/** @internal */
+export const Environments1$inboundSchema: z.ZodType<
+  Environments1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: types.literal("system"),
+  target: EnvironmentsTarget$inboundSchema,
+});
+/** @internal */
+export type Environments1$Outbound = {
+  type: "system";
+  target: string;
+};
+
+/** @internal */
+export const Environments1$outboundSchema: z.ZodType<
+  Environments1$Outbound,
+  z.ZodTypeDef,
+  Environments1
+> = z.object({
+  type: z.literal("system"),
+  target: EnvironmentsTarget$outboundSchema,
+});
+
+export function environments1ToJSON(environments1: Environments1): string {
+  return JSON.stringify(Environments1$outboundSchema.parse(environments1));
+}
+export function environments1FromJSON(
+  jsonString: string,
+): SafeParseResult<Environments1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Environments1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Environments1' from JSON`,
+  );
+}
+
+/** @internal */
+export const TeamEnvironments$inboundSchema: z.ZodType<
+  TeamEnvironments,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() => Environments1$inboundSchema),
+  z.lazy(() => Environments2$inboundSchema),
+]);
+/** @internal */
+export type TeamEnvironments$Outbound =
+  | Environments1$Outbound
+  | Environments2$Outbound;
+
+/** @internal */
+export const TeamEnvironments$outboundSchema: z.ZodType<
+  TeamEnvironments$Outbound,
+  z.ZodTypeDef,
+  TeamEnvironments
+> = z.union([
+  z.lazy(() => Environments1$outboundSchema),
+  z.lazy(() => Environments2$outboundSchema),
+]);
+
+export function teamEnvironmentsToJSON(
+  teamEnvironments: TeamEnvironments,
+): string {
+  return JSON.stringify(
+    TeamEnvironments$outboundSchema.parse(teamEnvironments),
+  );
+}
+export function teamEnvironmentsFromJSON(
+  jsonString: string,
+): SafeParseResult<TeamEnvironments, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TeamEnvironments$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TeamEnvironments' from JSON`,
+  );
+}
+
+/** @internal */
 export const GitSources$inboundSchema: z.ZodType<
   GitSources,
   z.ZodTypeDef,
   unknown
 > = z.object({
   sources: z.array(
-    smartUnion([
+    z.union([
+      z.lazy(() => Sources1$inboundSchema).and(
+        z.object({ provider: z.literal("github") }),
+      ),
+      z.lazy(() => Sources1$inboundSchema).and(
+        z.object({ provider: z.literal("bitbucket") }),
+      ),
       z.lazy(() => Sources2$inboundSchema),
-      z.lazy(() => Sources1$inboundSchema),
     ]),
   ),
   enabled: types.boolean(),
+  environments: z.array(
+    z.union([
+      z.lazy(() => Environments1$inboundSchema),
+      z.lazy(() => Environments2$inboundSchema),
+    ]),
+  ),
 });
 /** @internal */
 export type GitSources$Outbound = {
-  sources: Array<Sources2$Outbound | Sources1$Outbound>;
+  sources: Array<
+    | (Sources1$Outbound & { provider: "github" })
+    | (Sources1$Outbound & { provider: "bitbucket" })
+    | Sources2$Outbound
+  >;
   enabled: boolean;
+  environments: Array<Environments1$Outbound | Environments2$Outbound>;
 };
 
 /** @internal */
@@ -1937,12 +2241,23 @@ export const GitSources$outboundSchema: z.ZodType<
   GitSources
 > = z.object({
   sources: z.array(
-    smartUnion([
+    z.union([
+      z.lazy(() => Sources1$outboundSchema).and(
+        z.object({ provider: z.literal("github") }),
+      ),
+      z.lazy(() => Sources1$outboundSchema).and(
+        z.object({ provider: z.literal("bitbucket") }),
+      ),
       z.lazy(() => Sources2$outboundSchema),
-      z.lazy(() => Sources1$outboundSchema),
     ]),
   ),
   enabled: z.boolean(),
+  environments: z.array(
+    z.union([
+      z.lazy(() => Environments1$outboundSchema),
+      z.lazy(() => Environments2$outboundSchema),
+    ]),
+  ),
 });
 
 export function gitSourcesToJSON(gitSources: GitSources): string {
@@ -1966,6 +2281,142 @@ export const TeamSources$outboundSchema: z.ZodNativeEnum<typeof TeamSources> =
   TeamSources$inboundSchema;
 
 /** @internal */
+export const TeamEnvironments2$inboundSchema: z.ZodType<
+  TeamEnvironments2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: types.literal("custom"),
+  environmentId: types.string(),
+});
+/** @internal */
+export type TeamEnvironments2$Outbound = {
+  type: "custom";
+  environmentId: string;
+};
+
+/** @internal */
+export const TeamEnvironments2$outboundSchema: z.ZodType<
+  TeamEnvironments2$Outbound,
+  z.ZodTypeDef,
+  TeamEnvironments2
+> = z.object({
+  type: z.literal("custom"),
+  environmentId: z.string(),
+});
+
+export function teamEnvironments2ToJSON(
+  teamEnvironments2: TeamEnvironments2,
+): string {
+  return JSON.stringify(
+    TeamEnvironments2$outboundSchema.parse(teamEnvironments2),
+  );
+}
+export function teamEnvironments2FromJSON(
+  jsonString: string,
+): SafeParseResult<TeamEnvironments2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TeamEnvironments2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TeamEnvironments2' from JSON`,
+  );
+}
+
+/** @internal */
+export const TeamEnvironmentsTarget$inboundSchema: z.ZodNativeEnum<
+  typeof TeamEnvironmentsTarget
+> = z.nativeEnum(TeamEnvironmentsTarget);
+/** @internal */
+export const TeamEnvironmentsTarget$outboundSchema: z.ZodNativeEnum<
+  typeof TeamEnvironmentsTarget
+> = TeamEnvironmentsTarget$inboundSchema;
+
+/** @internal */
+export const TeamEnvironments1$inboundSchema: z.ZodType<
+  TeamEnvironments1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: types.literal("system"),
+  target: TeamEnvironmentsTarget$inboundSchema,
+});
+/** @internal */
+export type TeamEnvironments1$Outbound = {
+  type: "system";
+  target: string;
+};
+
+/** @internal */
+export const TeamEnvironments1$outboundSchema: z.ZodType<
+  TeamEnvironments1$Outbound,
+  z.ZodTypeDef,
+  TeamEnvironments1
+> = z.object({
+  type: z.literal("system"),
+  target: TeamEnvironmentsTarget$outboundSchema,
+});
+
+export function teamEnvironments1ToJSON(
+  teamEnvironments1: TeamEnvironments1,
+): string {
+  return JSON.stringify(
+    TeamEnvironments1$outboundSchema.parse(teamEnvironments1),
+  );
+}
+export function teamEnvironments1FromJSON(
+  jsonString: string,
+): SafeParseResult<TeamEnvironments1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TeamEnvironments1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TeamEnvironments1' from JSON`,
+  );
+}
+
+/** @internal */
+export const TeamDeploymentPolicyEnvironments$inboundSchema: z.ZodType<
+  TeamDeploymentPolicyEnvironments,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() => TeamEnvironments1$inboundSchema),
+  z.lazy(() => TeamEnvironments2$inboundSchema),
+]);
+/** @internal */
+export type TeamDeploymentPolicyEnvironments$Outbound =
+  | TeamEnvironments1$Outbound
+  | TeamEnvironments2$Outbound;
+
+/** @internal */
+export const TeamDeploymentPolicyEnvironments$outboundSchema: z.ZodType<
+  TeamDeploymentPolicyEnvironments$Outbound,
+  z.ZodTypeDef,
+  TeamDeploymentPolicyEnvironments
+> = z.union([
+  z.lazy(() => TeamEnvironments1$outboundSchema),
+  z.lazy(() => TeamEnvironments2$outboundSchema),
+]);
+
+export function teamDeploymentPolicyEnvironmentsToJSON(
+  teamDeploymentPolicyEnvironments: TeamDeploymentPolicyEnvironments,
+): string {
+  return JSON.stringify(
+    TeamDeploymentPolicyEnvironments$outboundSchema.parse(
+      teamDeploymentPolicyEnvironments,
+    ),
+  );
+}
+export function teamDeploymentPolicyEnvironmentsFromJSON(
+  jsonString: string,
+): SafeParseResult<TeamDeploymentPolicyEnvironments, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TeamDeploymentPolicyEnvironments$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TeamDeploymentPolicyEnvironments' from JSON`,
+  );
+}
+
+/** @internal */
 export const DeploymentSources$inboundSchema: z.ZodType<
   DeploymentSources,
   z.ZodTypeDef,
@@ -1973,11 +2424,18 @@ export const DeploymentSources$inboundSchema: z.ZodType<
 > = z.object({
   sources: z.array(TeamSources$inboundSchema),
   enabled: types.boolean(),
+  environments: z.array(
+    z.union([
+      z.lazy(() => TeamEnvironments1$inboundSchema),
+      z.lazy(() => TeamEnvironments2$inboundSchema),
+    ]),
+  ),
 });
 /** @internal */
 export type DeploymentSources$Outbound = {
   sources: Array<string>;
   enabled: boolean;
+  environments: Array<TeamEnvironments1$Outbound | TeamEnvironments2$Outbound>;
 };
 
 /** @internal */
@@ -1988,6 +2446,12 @@ export const DeploymentSources$outboundSchema: z.ZodType<
 > = z.object({
   sources: z.array(TeamSources$outboundSchema),
   enabled: z.boolean(),
+  environments: z.array(
+    z.union([
+      z.lazy(() => TeamEnvironments1$outboundSchema),
+      z.lazy(() => TeamEnvironments2$outboundSchema),
+    ]),
+  ),
 });
 
 export function deploymentSourcesToJSON(
@@ -2013,15 +2477,15 @@ export const DeploymentPolicy$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  gitSources: types.optional(z.lazy(() => GitSources$inboundSchema)),
+  gitSources: types.optional(z.array(z.lazy(() => GitSources$inboundSchema))),
   deploymentSources: types.optional(
-    z.lazy(() => DeploymentSources$inboundSchema),
+    z.array(z.lazy(() => DeploymentSources$inboundSchema)),
   ),
 });
 /** @internal */
 export type DeploymentPolicy$Outbound = {
-  gitSources?: GitSources$Outbound | undefined;
-  deploymentSources?: DeploymentSources$Outbound | undefined;
+  gitSources?: Array<GitSources$Outbound> | undefined;
+  deploymentSources?: Array<DeploymentSources$Outbound> | undefined;
 };
 
 /** @internal */
@@ -2030,8 +2494,9 @@ export const DeploymentPolicy$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   DeploymentPolicy
 > = z.object({
-  gitSources: z.lazy(() => GitSources$outboundSchema).optional(),
-  deploymentSources: z.lazy(() => DeploymentSources$outboundSchema).optional(),
+  gitSources: z.array(z.lazy(() => GitSources$outboundSchema)).optional(),
+  deploymentSources: z.array(z.lazy(() => DeploymentSources$outboundSchema))
+    .optional(),
 });
 
 export function deploymentPolicyToJSON(
@@ -2307,6 +2772,8 @@ export const Team$inboundSchema: z.ZodType<Team, z.ZodTypeDef, unknown> =
       defaultDeploymentProtection: types.optional(
         z.lazy(() => DefaultDeploymentProtection$inboundSchema),
       ),
+      defaultPassport: z.nullable(z.lazy(() => DefaultPassport$inboundSchema))
+        .optional(),
       defaultExpirationSettings: types.optional(
         z.lazy(() => DefaultExpirationSettings$inboundSchema),
       ),
@@ -2323,6 +2790,7 @@ export const Team$inboundSchema: z.ZodType<Team, z.ZodTypeDef, unknown> =
       ).optional(),
       hideIpAddresses: z.nullable(types.boolean()).optional(),
       hideIpAddressesInLogDrains: z.nullable(types.boolean()).optional(),
+      dpAccessRequestsMode: types.optional(DpAccessRequestsMode$inboundSchema),
       ipBuckets: types.optional(z.array(z.lazy(() => IpBuckets$inboundSchema))),
       requireVerifiedCommits: types.optional(types.boolean()),
       disableRepositoryDispatchEvents: types.optional(types.boolean()),
@@ -2370,6 +2838,7 @@ export type Team$Outbound = {
   defaultDeploymentProtection?:
     | DefaultDeploymentProtection$Outbound
     | undefined;
+  defaultPassport?: DefaultPassport$Outbound | null | undefined;
   defaultExpirationSettings?: DefaultExpirationSettings$Outbound | undefined;
   defaultProjectJobs?: DefaultProjectJobs$Outbound | undefined;
   enablePreviewFeedback?: string | null | undefined;
@@ -2377,6 +2846,7 @@ export type Team$Outbound = {
   sensitiveEnvironmentVariablePolicy?: string | null | undefined;
   hideIpAddresses?: boolean | null | undefined;
   hideIpAddressesInLogDrains?: boolean | null | undefined;
+  dpAccessRequestsMode?: string | undefined;
   ipBuckets?: Array<IpBuckets$Outbound> | undefined;
   requireVerifiedCommits?: boolean | undefined;
   disableRepositoryDispatchEvents?: boolean | undefined;
@@ -2420,6 +2890,8 @@ export const Team$outboundSchema: z.ZodType<Team$Outbound, z.ZodTypeDef, Team> =
     defaultDeploymentProtection: z.lazy(() =>
       DefaultDeploymentProtection$outboundSchema
     ).optional(),
+    defaultPassport: z.nullable(z.lazy(() => DefaultPassport$outboundSchema))
+      .optional(),
     defaultExpirationSettings: z.lazy(() =>
       DefaultExpirationSettings$outboundSchema
     ).optional(),
@@ -2435,6 +2907,7 @@ export const Team$outboundSchema: z.ZodType<Team$Outbound, z.ZodTypeDef, Team> =
     ).optional(),
     hideIpAddresses: z.nullable(z.boolean()).optional(),
     hideIpAddressesInLogDrains: z.nullable(z.boolean()).optional(),
+    dpAccessRequestsMode: DpAccessRequestsMode$outboundSchema.optional(),
     ipBuckets: z.array(z.lazy(() => IpBuckets$outboundSchema)).optional(),
     requireVerifiedCommits: z.boolean().optional(),
     disableRepositoryDispatchEvents: z.boolean().optional(),

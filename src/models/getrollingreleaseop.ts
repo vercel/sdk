@@ -101,7 +101,7 @@ export type GetRollingReleaseReadyState = ClosedEnum<
 >;
 
 /**
- * Where was the deployment created from
+ * Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it.
  */
 export const GetRollingReleaseSource = {
   Git: "git",
@@ -112,9 +112,10 @@ export const GetRollingReleaseSource = {
   ImportRepo: "import/repo",
   Redeploy: "redeploy",
   V0Web: "v0-web",
+  Drop: "drop",
 } as const;
 /**
- * Where was the deployment created from
+ * Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it.
  */
 export type GetRollingReleaseSource = ClosedEnum<
   typeof GetRollingReleaseSource
@@ -146,7 +147,7 @@ export type CurrentDeployment = {
   readyState: GetRollingReleaseReadyState;
   readyStateAt?: number | undefined;
   /**
-   * Where was the deployment created from
+   * Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it.
    */
   source?: GetRollingReleaseSource | undefined;
   /**
@@ -189,7 +190,7 @@ export type GetRollingReleaseRollingReleaseReadyState = ClosedEnum<
 >;
 
 /**
- * Where was the deployment created from
+ * Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it.
  */
 export const GetRollingReleaseRollingReleaseSource = {
   Git: "git",
@@ -200,9 +201,10 @@ export const GetRollingReleaseRollingReleaseSource = {
   ImportRepo: "import/repo",
   Redeploy: "redeploy",
   V0Web: "v0-web",
+  Drop: "drop",
 } as const;
 /**
- * Where was the deployment created from
+ * Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it.
  */
 export type GetRollingReleaseRollingReleaseSource = ClosedEnum<
   typeof GetRollingReleaseRollingReleaseSource
@@ -234,7 +236,7 @@ export type CanaryDeployment = {
   readyState: GetRollingReleaseRollingReleaseReadyState;
   readyStateAt?: number | undefined;
   /**
-   * Where was the deployment created from
+   * Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it.
    */
   source?: GetRollingReleaseRollingReleaseSource | undefined;
   /**

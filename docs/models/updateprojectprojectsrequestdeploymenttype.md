@@ -1,11 +1,11 @@
 # UpdateProjectProjectsRequestDeploymentType
 
-Specify if the Trusted IPs will apply to every Deployment Target or just Preview
+Specify if the Vercel Authentication (SSO Protection) will apply to every Deployment Target or just Preview
 
 ## Example Usage
 
 ```typescript
-import { UpdateProjectProjectsRequestDeploymentType } from "@vercel/sdk/models/updateprojectprojectsresponsebuildqueue.js";
+import { UpdateProjectProjectsRequestDeploymentType } from "@vercel/sdk/models/updateprojectprojectsfunctiondefaultmemorytype.js";
 
 let value: UpdateProjectProjectsRequestDeploymentType = "preview";
 ```
@@ -13,5 +13,5 @@ let value: UpdateProjectProjectsRequestDeploymentType = "preview";
 ## Values
 
 ```typescript
-"all" | "preview" | "production" | "prod_deployment_urls_and_all_previews" | "all_except_custom_domains"
+"all" | "preview" | "prod_deployment_urls_and_all_previews" | "all_except_custom_domains"
 ```

@@ -1,17 +1,23 @@
 # ResponseBodyDeploymentSources
 
-Restricts which deployment sources are allowed. A deployment passes if its source is in `sources`. Multiple entries are evaluated as OR. `enabled: true` with an empty `sources` list is treated as deny-all.
+`enabled: true` with empty `sources` is deny-all.
 
 ## Example Usage
 
 ```typescript
-import { ResponseBodyDeploymentSources } from "@vercel/sdk/models/getprojectsresponsebodytargets.js";
+import { ResponseBodyDeploymentSources } from "@vercel/sdk/models/getprojectsresponsebodybuildqueue.js";
 
 let value: ResponseBodyDeploymentSources = {
   sources: [
     "git",
   ],
   enabled: false,
+  environments: [
+    {
+      type: "system",
+      target: "production",
+    },
+  ],
 };
 ```
 
@@ -21,3 +27,4 @@ let value: ResponseBodyDeploymentSources = {
 | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
 | `sources`                                                                              | [models.GetProjectsResponseBodySources](../models/getprojectsresponsebodysources.md)[] | :heavy_check_mark:                                                                     | N/A                                                                                    |
 | `enabled`                                                                              | *boolean*                                                                              | :heavy_check_mark:                                                                     | N/A                                                                                    |
+| `environments`                                                                         | *models.GetProjectsResponseBodyProjectsEnvironments*[]                                 | :heavy_check_mark:                                                                     | N/A                                                                                    |

@@ -158,9 +158,11 @@ import { tool$featureFlagsGetFlagSettings } from "./tools/featureFlagsGetFlagSet
 import { tool$featureFlagsGetSDKKeys } from "./tools/featureFlagsGetSDKKeys.js";
 import { tool$featureFlagsListFlags } from "./tools/featureFlagsListFlags.js";
 import { tool$featureFlagsListFlagSegments } from "./tools/featureFlagsListFlagSegments.js";
+import { tool$featureFlagsListFlagsV2 } from "./tools/featureFlagsListFlagsV2.js";
 import { tool$featureFlagsListFlagVersions } from "./tools/featureFlagsListFlagVersions.js";
 import { tool$featureFlagsListTeamFlags } from "./tools/featureFlagsListTeamFlags.js";
 import { tool$featureFlagsListTeamFlagSettings } from "./tools/featureFlagsListTeamFlagSettings.js";
+import { tool$featureFlagsListTeamFlagsV2 } from "./tools/featureFlagsListTeamFlagsV2.js";
 import { tool$featureFlagsUpdateFlag } from "./tools/featureFlagsUpdateFlag.js";
 import { tool$featureFlagsUpdateFlagSegment } from "./tools/featureFlagsUpdateFlagSegment.js";
 import { tool$featureFlagsUpdateFlagSettings } from "./tools/featureFlagsUpdateFlagSettings.js";
@@ -255,6 +257,7 @@ import { tool$projectsUpdateProject } from "./tools/projectsUpdateProject.js";
 import { tool$projectsUpdateProjectDomain } from "./tools/projectsUpdateProjectDomain.js";
 import { tool$projectsUpdateProjectProtectionBypass } from "./tools/projectsUpdateProjectProtectionBypass.js";
 import { tool$projectsUpdateProjectsByProjectIdRollbackByDeploymentIdUpdateDescription } from "./tools/projectsUpdateProjectsByProjectIdRollbackByDeploymentIdUpdateDescription.js";
+import { tool$projectsUploadProjectAvatar } from "./tools/projectsUploadProjectAvatar.js";
 import { tool$projectsVerifyProjectDomain } from "./tools/projectsVerifyProjectDomain.js";
 import { tool$rollingReleaseApproveRollingReleaseStage } from "./tools/rollingReleaseApproveRollingReleaseStage.js";
 import { tool$rollingReleaseCompleteRollingRelease } from "./tools/rollingReleaseCompleteRollingRelease.js";
@@ -325,7 +328,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Vercel",
-    version: "1.21.9",
+    version: "1.22.0",
   });
 
   const client = new VercelCore({
@@ -497,6 +500,7 @@ export function createMCPServer(deps: {
   tool(tool$userListEventTypes);
   tool(tool$userGetAuthUser);
   tool(tool$userRequestDelete);
+  tool(tool$featureFlagsListFlagsV2);
   tool(tool$featureFlagsListFlags);
   tool(tool$featureFlagsCreateFlag);
   tool(tool$featureFlagsGetFlag);
@@ -506,6 +510,7 @@ export function createMCPServer(deps: {
   tool(tool$featureFlagsGetFlagSettings);
   tool(tool$featureFlagsUpdateFlagSettings);
   tool(tool$featureFlagsListTeamFlagSettings);
+  tool(tool$featureFlagsListTeamFlagsV2);
   tool(tool$featureFlagsListTeamFlags);
   tool(tool$featureFlagsCreateFlagSegment);
   tool(tool$featureFlagsListFlagSegments);
@@ -569,6 +574,7 @@ export function createMCPServer(deps: {
   tool(tool$projectsCreateProject);
   tool(tool$projectsUpdateProject);
   tool(tool$projectsDeleteProject);
+  tool(tool$projectsUploadProjectAvatar);
   tool(tool$projectsGetProjectDomains);
   tool(tool$projectsGetProjectDomain);
   tool(tool$projectsUpdateProjectDomain);

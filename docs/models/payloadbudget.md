@@ -1,43 +1,21 @@
 # PayloadBudget
 
-Represents a budget for tracking and notifying teams on their spending.
+Spend budget on an AI Gateway API key, as surfaced in activity messages. Defined locally (rather than imported from `@api/pubsub-types`) because `@api/pubsub-types` already depends on `@api/events`; importing it here would create a circular dependency. Must stay structurally aligned with `APIKeyBudget` in `@api/pubsub-types/event-payloads/api-keys`.
 
 ## Example Usage
 
 ```typescript
-import { PayloadBudget } from "@vercel/sdk/models/twohundredandtwentysix.js";
+import { PayloadBudget } from "@vercel/sdk/models/userevent.js";
 
 let value: PayloadBudget = {
-  type: "fixed",
-  fixedBudget: 3089.34,
-  previousSpend: [
-    8881.12,
-  ],
-  notifiedAt: [
-    6992.68,
-    7286.47,
-  ],
-  createdAt: 3556.79,
-  isActive: false,
-  teamId: "<id>",
-  id: "<id>",
+  limitAmount: 3089.34,
+  refreshPeriod: "daily",
 };
 ```
 
 ## Fields
 
-| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
-| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `type`                                                                 | [models.UserEventPayload260Type](../models/usereventpayload260type.md) | :heavy_check_mark:                                                     | The budget type                                                        |
-| `fixedBudget`                                                          | *number*                                                               | :heavy_check_mark:                                                     | Budget amount (USD / dollars)                                          |
-| `previousSpend`                                                        | *number*[]                                                             | :heavy_check_mark:                                                     | Array of the last 3 months of spend data                               |
-| `notifiedAt`                                                           | *number*[]                                                             | :heavy_check_mark:                                                     | Array of 50, 75, 100 to keep track of notifications sent out           |
-| `webhookId`                                                            | *string*                                                               | :heavy_minus_sign:                                                     | Webhook id that corresponds to a webhook in Cosmos webhook collection  |
-| `webhookNotified`                                                      | *boolean*                                                              | :heavy_minus_sign:                                                     | Keep track if the webhook has been called for the month                |
-| `createdAt`                                                            | *number*                                                               | :heavy_check_mark:                                                     | Date time when budget is created                                       |
-| `updatedAt`                                                            | *number*                                                               | :heavy_minus_sign:                                                     | Date time when budget is updated last                                  |
-| `isActive`                                                             | *boolean*                                                              | :heavy_check_mark:                                                     | Is the budget currently active for a customer                          |
-| `pauseProjects`                                                        | *boolean*                                                              | :heavy_minus_sign:                                                     | Should all projects be paused if budget is exceeded                    |
-| `pricingPlan`                                                          | [models.PricingPlan](../models/pricingplan.md)                         | :heavy_minus_sign:                                                     | The acive pricing plan the team is billed with                         |
-| `teamId`                                                               | *string*                                                               | :heavy_check_mark:                                                     | Partition key                                                          |
-| `id`                                                                   | *string*                                                               | :heavy_check_mark:                                                     | Sort key that needs to be unique per teamId                            |
+| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `limitAmount`                                                    | *number*                                                         | :heavy_check_mark:                                               | Spend cap, in dollars.                                           |
+| `refreshPeriod`                                                  | [models.PayloadRefreshPeriod](../models/payloadrefreshperiod.md) | :heavy_check_mark:                                               | N/A                                                              |

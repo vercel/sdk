@@ -3,13 +3,12 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPayload178Next } from "@vercel/sdk/models/usereventpayload151role.js";
+import { UserEventPayload178Next } from "@vercel/sdk/models/usereventpayload162deploymenttype.js";
 
 let value: UserEventPayload178Next = {};
 ```
 
 ## Fields
 
-| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `branchMatcher`                                                  | [models.PayloadBranchMatcher](../models/payloadbranchmatcher.md) | :heavy_minus_sign:                                               | N/A                                                              |
+| Field       | Type        | Required    | Description |
+| ----------- | ----------- | ----------- | ----------- |

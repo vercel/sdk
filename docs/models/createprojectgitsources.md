@@ -1,6 +1,6 @@
 # CreateProjectGitSources
 
-Restricts inbound Git deployments to an allowlist of orgs and/or repos. `enabled: true` with an empty `sources` list is treated as deny-all.
+`enabled: true` with empty `sources` is deny-all.
 
 ## Example Usage
 
@@ -10,12 +10,19 @@ import { CreateProjectGitSources } from "@vercel/sdk/models/createprojectrespons
 let value: CreateProjectGitSources = {
   sources: [],
   enabled: true,
+  environments: [
+    {
+      type: "system",
+      target: "preview",
+    },
+  ],
 };
 ```
 
 ## Fields
 
-| Field                           | Type                            | Required                        | Description                     |
-| ------------------------------- | ------------------------------- | ------------------------------- | ------------------------------- |
-| `sources`                       | *models.CreateProjectSources*[] | :heavy_check_mark:              | N/A                             |
-| `enabled`                       | *boolean*                       | :heavy_check_mark:              | N/A                             |
+| Field                                | Type                                 | Required                             | Description                          |
+| ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
+| `sources`                            | *models.CreateProjectSources*[]      | :heavy_check_mark:                   | N/A                                  |
+| `enabled`                            | *boolean*                            | :heavy_check_mark:                   | N/A                                  |
+| `environments`                       | *models.CreateProjectEnvironments*[] | :heavy_check_mark:                   | N/A                                  |

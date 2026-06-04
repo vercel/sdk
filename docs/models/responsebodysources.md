@@ -12,13 +12,21 @@ const value: models.GetProjectsSources1 = {
 };
 ```
 
+### `models.GetProjectsSources1`
+
+```typescript
+const value: models.GetProjectsSources1 = {
+  provider: "github",
+  org: "<value>",
+};
+```
+
 ### `models.GetProjectsSources2`
 
 ```typescript
 const value: models.GetProjectsSources2 = {
   provider: "gitlab",
-  org: "<value>",
-  repo: "<value>",
+  namespace: "<value>",
 };
 ```
 

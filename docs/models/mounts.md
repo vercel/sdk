@@ -1,6 +1,6 @@
 # Mounts
 
-Key-value pairs of mount path and volume.
+Key-value pairs of mount path and drive.
 
 ## Example Usage
 
@@ -8,7 +8,7 @@ Key-value pairs of mount path and volume.
 import { Mounts } from "@vercel/sdk/models/namedsandbox.js";
 
 let value: Mounts = {
-  volume: "<value>",
+  drive: "<value>",
 };
 ```
 
@@ -16,5 +16,5 @@ let value: Mounts = {
 
 | Field                                                    | Type                                                     | Required                                                 | Description                                              |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
-| `volume`                                                 | *string*                                                 | :heavy_check_mark:                                       | N/A                                                      |
+| `drive`                                                  | *string*                                                 | :heavy_check_mark:                                       | N/A                                                      |
 | `mode`                                                   | [models.NamedSandboxMode](../models/namedsandboxmode.md) | :heavy_minus_sign:                                       | N/A                                                      |

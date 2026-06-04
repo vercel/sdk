@@ -27,6 +27,7 @@ let value: PatchTeamRequest = {
     },
     hideIpAddresses: false,
     hideIpAddressesInLogDrains: false,
+    dpAccessRequestsMode: "none",
     requireVerifiedCommits: true,
     disableRepositoryDispatchEvents: false,
     defaultExpirationSettings: {

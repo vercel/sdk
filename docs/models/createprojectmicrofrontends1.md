@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CreateProjectMicrofrontends1 } from "@vercel/sdk/models/createprojecttopreset.js";
+import { CreateProjectMicrofrontends1 } from "@vercel/sdk/models/createprojectto2.js";
 
 let value: CreateProjectMicrofrontends1 = {
   isDefaultApp: true,

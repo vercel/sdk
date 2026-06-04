@@ -28,11 +28,11 @@ generation:
   versioningStrategy: automatic
   persistentEdits: {}
   tests:
-    generateTests: false
-    generateNewTests: false
+    generateTests: true
+    generateNewTests: true
     skipResponseBodyAssertions: true
 typescript:
-  version: 1.21.9
+  version: 1.22.0
   acceptHeaderEnum: true
   additionalDependencies:
     dependencies: {}

@@ -763,6 +763,7 @@ async function run() {
       },
       hideIpAddresses: false,
       hideIpAddressesInLogDrains: false,
+      dpAccessRequestsMode: "none",
       requireVerifiedCommits: true,
       disableRepositoryDispatchEvents: false,
       defaultExpirationSettings: {
@@ -827,6 +828,7 @@ async function run() {
       },
       hideIpAddresses: false,
       hideIpAddressesInLogDrains: false,
+      dpAccessRequestsMode: "none",
       requireVerifiedCommits: true,
       disableRepositoryDispatchEvents: false,
       defaultExpirationSettings: {

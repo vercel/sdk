@@ -3,17 +3,18 @@
 ## Example Usage
 
 ```typescript
-import { UpdateProjectSources1 } from "@vercel/sdk/models/updateprojectresponsebody.js";
+import { UpdateProjectSources1 } from "@vercel/sdk/models/updateprojectprojectsfunctiondefaultmemorytype.js";
 
 let value: UpdateProjectSources1 = {
-  provider: "gitlab",
+  provider: "github",
   org: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
-| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `provider`                                                                       | [models.UpdateProjectSourcesProvider](../models/updateprojectsourcesprovider.md) | :heavy_check_mark:                                                               | N/A                                                                              |
-| `org`                                                                            | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |
+| Field                                                                                            | Type                                                                                             | Required                                                                                         | Description                                                                                      |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| `provider`                                                                                       | [models.UpdateProjectSourcesProjectsProvider](../models/updateprojectsourcesprojectsprovider.md) | :heavy_check_mark:                                                                               | N/A                                                                                              |
+| `org`                                                                                            | *string*                                                                                         | :heavy_check_mark:                                                                               | N/A                                                                                              |
+| `repo`                                                                                           | *string*                                                                                         | :heavy_minus_sign:                                                                               | N/A                                                                                              |

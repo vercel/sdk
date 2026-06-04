@@ -140,8 +140,8 @@ export const ListFlagVersionsStatus = {
 export type ListFlagVersionsStatus = ClosedEnum<typeof ListFlagVersionsStatus>;
 
 export type ListFlagVersionsExperiment = {
-  name?: string | undefined;
   id?: string | undefined;
+  name?: string | undefined;
   numVariants?: number | undefined;
   surfaceArea?: string | undefined;
   stickyRequirement?: boolean | undefined;
@@ -465,10 +465,10 @@ export type ListFlagVersionsMetadata = {
 export type ListFlagVersionsVersions = {
   createdBy?: string | undefined;
   message?: string | undefined;
+  data: ListFlagVersionsData;
   id: string;
   revision: number;
   createdAt: number;
-  data: ListFlagVersionsData;
   flagId: string;
   changedEnvironments: Array<string>;
   metadata?: ListFlagVersionsMetadata | undefined;
@@ -751,8 +751,8 @@ export const ListFlagVersionsExperiment$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: types.optional(types.string()),
   id: types.optional(types.string()),
+  name: types.optional(types.string()),
   numVariants: types.optional(types.number()),
   surfaceArea: types.optional(types.string()),
   stickyRequirement: types.optional(types.boolean()),
@@ -778,8 +778,8 @@ export const ListFlagVersionsExperiment$inboundSchema: z.ZodType<
 });
 /** @internal */
 export type ListFlagVersionsExperiment$Outbound = {
-  name?: string | undefined;
   id?: string | undefined;
+  name?: string | undefined;
   numVariants?: number | undefined;
   surfaceArea?: string | undefined;
   stickyRequirement?: boolean | undefined;
@@ -808,8 +808,8 @@ export const ListFlagVersionsExperiment$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ListFlagVersionsExperiment
 > = z.object({
-  name: z.string().optional(),
   id: z.string().optional(),
+  name: z.string().optional(),
   numVariants: z.number().optional(),
   surfaceArea: z.string().optional(),
   stickyRequirement: z.boolean().optional(),
@@ -2611,10 +2611,10 @@ export const ListFlagVersionsVersions$inboundSchema: z.ZodType<
 > = z.object({
   createdBy: types.optional(types.string()),
   message: types.optional(types.string()),
+  data: z.lazy(() => ListFlagVersionsData$inboundSchema),
   id: types.string(),
   revision: types.number(),
   createdAt: types.number(),
-  data: z.lazy(() => ListFlagVersionsData$inboundSchema),
   flagId: types.string(),
   changedEnvironments: z.array(types.string()),
   metadata: types.optional(
@@ -2625,10 +2625,10 @@ export const ListFlagVersionsVersions$inboundSchema: z.ZodType<
 export type ListFlagVersionsVersions$Outbound = {
   createdBy?: string | undefined;
   message?: string | undefined;
+  data: ListFlagVersionsData$Outbound;
   id: string;
   revision: number;
   createdAt: number;
-  data: ListFlagVersionsData$Outbound;
   flagId: string;
   changedEnvironments: Array<string>;
   metadata?: ListFlagVersionsMetadata$Outbound | undefined;
@@ -2642,10 +2642,10 @@ export const ListFlagVersionsVersions$outboundSchema: z.ZodType<
 > = z.object({
   createdBy: z.string().optional(),
   message: z.string().optional(),
+  data: z.lazy(() => ListFlagVersionsData$outboundSchema),
   id: z.string(),
   revision: z.number(),
   createdAt: z.number(),
-  data: z.lazy(() => ListFlagVersionsData$outboundSchema),
   flagId: z.string(),
   changedEnvironments: z.array(z.string()),
   metadata: z.lazy(() => ListFlagVersionsMetadata$outboundSchema).optional(),

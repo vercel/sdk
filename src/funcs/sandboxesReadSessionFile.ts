@@ -171,7 +171,7 @@ async function $do(
     | SDKValidationError
   >(
     M.stream(200, z.instanceof(ReadableStream<Uint8Array>)),
-    M.fail([400, 401, 403, 404, 410, 422, "4XX"]),
+    M.fail([400, 401, 403, 404, 410, 422, 429, "4XX"]),
     M.fail([500, "5XX"]),
   )(response, req);
   if (!result.ok) {

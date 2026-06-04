@@ -1,6 +1,6 @@
 # UpdateMicrofrontendsGitSources
 
-Restricts inbound Git deployments to an allowlist of orgs and/or repos. `enabled: true` with an empty `sources` list is treated as deny-all.
+`enabled: true` with empty `sources` is deny-all.
 
 ## Example Usage
 
@@ -10,17 +10,19 @@ import { UpdateMicrofrontendsGitSources } from "@vercel/sdk/models/updatemicrofr
 let value: UpdateMicrofrontendsGitSources = {
   sources: [
     {
-      provider: "gitlab",
+      provider: "bitbucket",
       org: "<value>",
     },
   ],
   enabled: true,
+  environments: [],
 };
 ```
 
 ## Fields
 
-| Field                                  | Type                                   | Required                               | Description                            |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| `sources`                              | *models.UpdateMicrofrontendsSources*[] | :heavy_check_mark:                     | N/A                                    |
-| `enabled`                              | *boolean*                              | :heavy_check_mark:                     | N/A                                    |
+| Field                                       | Type                                        | Required                                    | Description                                 |
+| ------------------------------------------- | ------------------------------------------- | ------------------------------------------- | ------------------------------------------- |
+| `sources`                                   | *models.UpdateMicrofrontendsSources*[]      | :heavy_check_mark:                          | N/A                                         |
+| `enabled`                                   | *boolean*                                   | :heavy_check_mark:                          | N/A                                         |
+| `environments`                              | *models.UpdateMicrofrontendsEnvironments*[] | :heavy_check_mark:                          | N/A                                         |

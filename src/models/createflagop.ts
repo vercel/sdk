@@ -482,8 +482,8 @@ export const CreateFlagStatus = {
 export type CreateFlagStatus = ClosedEnum<typeof CreateFlagStatus>;
 
 export type CreateFlagExperiment = {
-  name?: string | undefined;
   id?: string | undefined;
+  name?: string | undefined;
   numVariants?: number | undefined;
   surfaceArea?: string | undefined;
   stickyRequirement?: boolean | undefined;
@@ -2640,8 +2640,8 @@ export const CreateFlagExperiment$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: types.optional(types.string()),
   id: types.optional(types.string()),
+  name: types.optional(types.string()),
   numVariants: types.optional(types.number()),
   surfaceArea: types.optional(types.string()),
   stickyRequirement: types.optional(types.boolean()),
@@ -2665,8 +2665,8 @@ export const CreateFlagExperiment$inboundSchema: z.ZodType<
 });
 /** @internal */
 export type CreateFlagExperiment$Outbound = {
-  name?: string | undefined;
   id?: string | undefined;
+  name?: string | undefined;
   numVariants?: number | undefined;
   surfaceArea?: string | undefined;
   stickyRequirement?: boolean | undefined;
@@ -2693,8 +2693,8 @@ export const CreateFlagExperiment$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateFlagExperiment
 > = z.object({
-  name: z.string().optional(),
   id: z.string().optional(),
+  name: z.string().optional(),
   numVariants: z.number().optional(),
   surfaceArea: z.string().optional(),
   stickyRequirement: z.boolean().optional(),

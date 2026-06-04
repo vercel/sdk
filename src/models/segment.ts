@@ -10,11 +10,6 @@ import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
-export const SegmentTypeName = {
-  Segment: "segment",
-} as const;
-export type SegmentTypeName = ClosedEnum<typeof SegmentTypeName>;
-
 export const SegmentOutcomeDataRulesType = {
   Entity: "entity",
 } as const;
@@ -150,6 +145,11 @@ export type Data = {
   exclude?: { [k: string]: { [k: string]: Array<ExcludeT> } } | undefined;
 };
 
+export const SegmentTypeName = {
+  Segment: "segment",
+} as const;
+export type SegmentTypeName = ClosedEnum<typeof SegmentTypeName>;
+
 export type SegmentCreator = {
   id: string;
   name: string;
@@ -164,6 +164,7 @@ export type Segment = {
   createdBy?: string | undefined;
   usedByFlags?: Array<string> | undefined;
   usedBySegments?: Array<string> | undefined;
+  data: Data;
   id: string;
   label: string;
   slug: string;
@@ -171,19 +172,9 @@ export type Segment = {
   updatedAt: number;
   projectId: string;
   typeName: SegmentTypeName;
-  data: Data;
   hint: string;
   metadata?: SegmentMetadata | undefined;
 };
-
-/** @internal */
-export const SegmentTypeName$inboundSchema: z.ZodNativeEnum<
-  typeof SegmentTypeName
-> = z.nativeEnum(SegmentTypeName);
-/** @internal */
-export const SegmentTypeName$outboundSchema: z.ZodNativeEnum<
-  typeof SegmentTypeName
-> = SegmentTypeName$inboundSchema;
 
 /** @internal */
 export const SegmentOutcomeDataRulesType$inboundSchema: z.ZodNativeEnum<
@@ -1027,6 +1018,15 @@ export function dataFromJSON(
 }
 
 /** @internal */
+export const SegmentTypeName$inboundSchema: z.ZodNativeEnum<
+  typeof SegmentTypeName
+> = z.nativeEnum(SegmentTypeName);
+/** @internal */
+export const SegmentTypeName$outboundSchema: z.ZodNativeEnum<
+  typeof SegmentTypeName
+> = SegmentTypeName$inboundSchema;
+
+/** @internal */
 export const SegmentCreator$inboundSchema: z.ZodType<
   SegmentCreator,
   z.ZodTypeDef,
@@ -1108,6 +1108,7 @@ export const Segment$inboundSchema: z.ZodType<Segment, z.ZodTypeDef, unknown> =
     createdBy: types.optional(types.string()),
     usedByFlags: types.optional(z.array(types.string())),
     usedBySegments: types.optional(z.array(types.string())),
+    data: z.lazy(() => Data$inboundSchema),
     id: types.string(),
     label: types.string(),
     slug: types.string(),
@@ -1115,7 +1116,6 @@ export const Segment$inboundSchema: z.ZodType<Segment, z.ZodTypeDef, unknown> =
     updatedAt: types.number(),
     projectId: types.string(),
     typeName: SegmentTypeName$inboundSchema,
-    data: z.lazy(() => Data$inboundSchema),
     hint: types.string(),
     metadata: types.optional(z.lazy(() => SegmentMetadata$inboundSchema)),
   });
@@ -1125,6 +1125,7 @@ export type Segment$Outbound = {
   createdBy?: string | undefined;
   usedByFlags?: Array<string> | undefined;
   usedBySegments?: Array<string> | undefined;
+  data: Data$Outbound;
   id: string;
   label: string;
   slug: string;
@@ -1132,7 +1133,6 @@ export type Segment$Outbound = {
   updatedAt: number;
   projectId: string;
   typeName: string;
-  data: Data$Outbound;
   hint: string;
   metadata?: SegmentMetadata$Outbound | undefined;
 };
@@ -1147,6 +1147,7 @@ export const Segment$outboundSchema: z.ZodType<
   createdBy: z.string().optional(),
   usedByFlags: z.array(z.string()).optional(),
   usedBySegments: z.array(z.string()).optional(),
+  data: z.lazy(() => Data$outboundSchema),
   id: z.string(),
   label: z.string(),
   slug: z.string(),
@@ -1154,7 +1155,6 @@ export const Segment$outboundSchema: z.ZodType<
   updatedAt: z.number(),
   projectId: z.string(),
   typeName: SegmentTypeName$outboundSchema,
-  data: z.lazy(() => Data$outboundSchema),
   hint: z.string(),
   metadata: z.lazy(() => SegmentMetadata$outboundSchema).optional(),
 });

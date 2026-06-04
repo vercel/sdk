@@ -1,0 +1,20 @@
+# UploadProjectAvatarFrom2
+
+The source envs on the trusted project that are allowed to access `to`.
+
+## Example Usage
+
+```typescript
+import { UploadProjectAvatarFrom2 } from "@vercel/sdk/models/uploadprojectavatarmanagedrules.js";
+
+let value: UploadProjectAvatarFrom2 = {
+  preset: "all-custom",
+};
+```
+
+## Fields
+
+| Field                                                                                                                 | Type                                                                                                                  | Required                                                                                                              | Description                                                                                                           |
+| --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| `slugs`                                                                                                               | *string*[]                                                                                                            | :heavy_minus_sign:                                                                                                    | System environment slugs (`production`, `preview`) and/or custom environment slugs defined on the referenced project. |
+| `preset`                                                                                                              | [models.UploadProjectAvatarFromProjectsPreset](../models/uploadprojectavatarfromprojectspreset.md)                    | :heavy_check_mark:                                                                                                    | N/A                                                                                                                   |

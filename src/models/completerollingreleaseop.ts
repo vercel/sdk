@@ -95,7 +95,7 @@ export type CompleteRollingReleaseReadyState = ClosedEnum<
 >;
 
 /**
- * Where was the deployment created from
+ * Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it.
  */
 export const CompleteRollingReleaseSource = {
   Git: "git",
@@ -106,9 +106,10 @@ export const CompleteRollingReleaseSource = {
   ImportRepo: "import/repo",
   Redeploy: "redeploy",
   V0Web: "v0-web",
+  Drop: "drop",
 } as const;
 /**
- * Where was the deployment created from
+ * Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it.
  */
 export type CompleteRollingReleaseSource = ClosedEnum<
   typeof CompleteRollingReleaseSource
@@ -140,7 +141,7 @@ export type CompleteRollingReleaseCurrentDeployment = {
   readyState: CompleteRollingReleaseReadyState;
   readyStateAt?: number | undefined;
   /**
-   * Where was the deployment created from
+   * Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it.
    */
   source?: CompleteRollingReleaseSource | undefined;
   /**
@@ -183,7 +184,7 @@ export type CompleteRollingReleaseRollingReleaseReadyState = ClosedEnum<
 >;
 
 /**
- * Where was the deployment created from
+ * Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it.
  */
 export const CompleteRollingReleaseRollingReleaseSource = {
   Git: "git",
@@ -194,9 +195,10 @@ export const CompleteRollingReleaseRollingReleaseSource = {
   ImportRepo: "import/repo",
   Redeploy: "redeploy",
   V0Web: "v0-web",
+  Drop: "drop",
 } as const;
 /**
- * Where was the deployment created from
+ * Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it.
  */
 export type CompleteRollingReleaseRollingReleaseSource = ClosedEnum<
   typeof CompleteRollingReleaseRollingReleaseSource
@@ -228,7 +230,7 @@ export type CompleteRollingReleaseCanaryDeployment = {
   readyState: CompleteRollingReleaseRollingReleaseReadyState;
   readyStateAt?: number | undefined;
   /**
-   * Where was the deployment created from
+   * Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it.
    */
   source?: CompleteRollingReleaseRollingReleaseSource | undefined;
   /**

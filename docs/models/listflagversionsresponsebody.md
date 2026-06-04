@@ -8,17 +8,61 @@ import { ListFlagVersionsResponseBody } from "@vercel/sdk/models/listflagversion
 let value: ListFlagVersionsResponseBody = {
   versions: [
     {
+      data: {
+        variants: [],
+        environments: {
+          "key": {
+            pausedOutcome: {
+              type: "variant",
+              variantId: "<id>",
+            },
+            fallthrough: {
+              type: "split",
+              base: {
+                type: "entity",
+                kind: "<value>",
+                attribute: "<value>",
+              },
+              weights: {
+                "key": 1241.07,
+              },
+              defaultVariantId: "<id>",
+            },
+            active: true,
+            rules: [
+              {
+                id: "<id>",
+                outcome: {
+                  type: "rollout",
+                  base: {
+                    type: "entity",
+                    kind: "<value>",
+                    attribute: "<value>",
+                  },
+                  defaultVariantId: "<id>",
+                  startTimestamp: 3373.54,
+                  rollFromVariantId: "<id>",
+                  rollToVariantId: "<id>",
+                  slots: [],
+                },
+                conditions: [
+                  {
+                    lhs: {
+                      type: "segment",
+                    },
+                    cmp: "gte",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+        seed: 7932.89,
+        state: "active",
+      },
       id: "<id>",
       revision: 9589.96,
       createdAt: 3078.07,
-      data: {
-        variants: [
-          {},
-        ],
-        environments: {},
-        seed: 1241.07,
-        state: "active",
-      },
       flagId: "<id>",
       changedEnvironments: [
         "<value 1>",

@@ -18,14 +18,16 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
 /**
  * The state of the flags to retrieve. Defaults to `active`.
  */
-export const QueryParamState = {
+export const ListFlagsQueryParamState = {
   Active: "active",
   Archived: "archived",
 } as const;
 /**
  * The state of the flags to retrieve. Defaults to `active`.
  */
-export type QueryParamState = ClosedEnum<typeof QueryParamState>;
+export type ListFlagsQueryParamState = ClosedEnum<
+  typeof ListFlagsQueryParamState
+>;
 
 export type ListFlagsRequest = {
   /**
@@ -35,9 +37,9 @@ export type ListFlagsRequest = {
   /**
    * The state of the flags to retrieve. Defaults to `active`.
    */
-  state?: QueryParamState | undefined;
+  state?: ListFlagsQueryParamState | undefined;
   /**
-   * Whether to include metadata in the response
+   * Deprecated. Whether to include creator metadata in each flag in the response. Resolve creator identity client-side (e.g. via the team members endpoint) instead; this parameter will be removed in a future release. Use `GET /v1/projects/:id/feature-flags/flags/:flagIdOrSlug?withMetadata=true` for single-flag lookups that need creator metadata.
    */
   withMetadata?: boolean | undefined;
   /**
@@ -76,13 +78,13 @@ export type ListFlagsResponseBody = {
 };
 
 /** @internal */
-export const QueryParamState$inboundSchema: z.ZodNativeEnum<
-  typeof QueryParamState
-> = z.nativeEnum(QueryParamState);
+export const ListFlagsQueryParamState$inboundSchema: z.ZodNativeEnum<
+  typeof ListFlagsQueryParamState
+> = z.nativeEnum(ListFlagsQueryParamState);
 /** @internal */
-export const QueryParamState$outboundSchema: z.ZodNativeEnum<
-  typeof QueryParamState
-> = QueryParamState$inboundSchema;
+export const ListFlagsQueryParamState$outboundSchema: z.ZodNativeEnum<
+  typeof ListFlagsQueryParamState
+> = ListFlagsQueryParamState$inboundSchema;
 
 /** @internal */
 export const ListFlagsRequest$inboundSchema: z.ZodType<
@@ -91,7 +93,7 @@ export const ListFlagsRequest$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   projectIdOrName: types.string(),
-  state: types.optional(QueryParamState$inboundSchema),
+  state: types.optional(ListFlagsQueryParamState$inboundSchema),
   withMetadata: types.optional(types.boolean()),
   limit: types.optional(types.number()),
   cursor: types.optional(types.string()),
@@ -120,7 +122,7 @@ export const ListFlagsRequest$outboundSchema: z.ZodType<
   ListFlagsRequest
 > = z.object({
   projectIdOrName: z.string(),
-  state: QueryParamState$outboundSchema.optional(),
+  state: ListFlagsQueryParamState$outboundSchema.optional(),
   withMetadata: z.boolean().optional(),
   limit: z.number().int().optional(),
   cursor: z.string().optional(),

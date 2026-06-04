@@ -1,6 +1,6 @@
 # DeploymentSources
 
-Restricts which deployment sources are allowed. A deployment passes if its source is in `sources`. Multiple entries are evaluated as OR. `enabled: true` with an empty `sources` list is treated as deny-all.
+`enabled: true` with empty `sources` is deny-all.
 
 ## Example Usage
 
@@ -10,6 +10,7 @@ import { DeploymentSources } from "@vercel/sdk/models/team.js";
 let value: DeploymentSources = {
   sources: [],
   enabled: false,
+  environments: [],
 };
 ```
 
@@ -19,3 +20,4 @@ let value: DeploymentSources = {
 | ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
 | `sources`                                        | [models.TeamSources](../models/teamsources.md)[] | :heavy_check_mark:                               | N/A                                              |
 | `enabled`                                        | *boolean*                                        | :heavy_check_mark:                               | N/A                                              |
+| `environments`                                   | *models.TeamDeploymentPolicyEnvironments*[]      | :heavy_check_mark:                               | N/A                                              |

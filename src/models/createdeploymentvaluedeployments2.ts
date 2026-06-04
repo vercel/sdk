@@ -322,8 +322,8 @@ export const Framework = {
   Fasthtml: "fasthtml",
   Django: "django",
   Ash: "ash",
-  SanityV3: "sanity-v3",
   Sanity: "sanity",
+  SanityV2: "sanity-v2",
   Storybook: "storybook",
   Nitro: "nitro",
   Hono: "hono",
@@ -573,8 +573,8 @@ export const CreateDeploymentFramework = {
   Fasthtml: "fasthtml",
   Django: "django",
   Ash: "ash",
-  SanityV3: "sanity-v3",
   Sanity: "sanity",
+  SanityV2: "sanity-v2",
   Storybook: "storybook",
   Nitro: "nitro",
   Hono: "hono",
@@ -796,8 +796,8 @@ export type CustomEnvironment2 = {
  * The type of environment (production, preview, or development)
  */
 export const CustomEnvironmentType = {
-  Production: "production",
   Preview: "preview",
+  Production: "production",
   Development: "development",
 } as const;
 /**
@@ -1386,7 +1386,7 @@ export const ReadySubstate = {
 export type ReadySubstate = ClosedEnum<typeof ReadySubstate>;
 
 /**
- * Where was the deployment created from
+ * Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it.
  */
 export const CreateDeploymentSource = {
   ApiTriggerGitDeploy: "api-trigger-git-deploy",
@@ -1397,9 +1397,10 @@ export const CreateDeploymentSource = {
   ImportRepo: "import/repo",
   Redeploy: "redeploy",
   V0Web: "v0-web",
+  Drop: "drop",
 } as const;
 /**
- * Where was the deployment created from
+ * Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it.
  */
 export type CreateDeploymentSource = ClosedEnum<typeof CreateDeploymentSource>;
 

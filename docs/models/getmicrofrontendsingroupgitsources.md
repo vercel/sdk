@@ -1,6 +1,6 @@
 # GetMicrofrontendsInGroupGitSources
 
-Restricts inbound Git deployments to an allowlist of orgs and/or repos. `enabled: true` with an empty `sources` list is treated as deny-all.
+`enabled: true` with empty `sources` is deny-all.
 
 ## Example Usage
 
@@ -10,17 +10,24 @@ import { GetMicrofrontendsInGroupGitSources } from "@vercel/sdk/models/getmicrof
 let value: GetMicrofrontendsInGroupGitSources = {
   sources: [
     {
-      provider: "bitbucket",
+      provider: "github",
       org: "<value>",
     },
   ],
   enabled: false,
+  environments: [
+    {
+      type: "custom",
+      environmentId: "<id>",
+    },
+  ],
 };
 ```
 
 ## Fields
 
-| Field                                      | Type                                       | Required                                   | Description                                |
-| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `sources`                                  | *models.GetMicrofrontendsInGroupSources*[] | :heavy_check_mark:                         | N/A                                        |
-| `enabled`                                  | *boolean*                                  | :heavy_check_mark:                         | N/A                                        |
+| Field                                           | Type                                            | Required                                        | Description                                     |
+| ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
+| `sources`                                       | *models.GetMicrofrontendsInGroupSources*[]      | :heavy_check_mark:                              | N/A                                             |
+| `enabled`                                       | *boolean*                                       | :heavy_check_mark:                              | N/A                                             |
+| `environments`                                  | *models.GetMicrofrontendsInGroupEnvironments*[] | :heavy_check_mark:                              | N/A                                             |

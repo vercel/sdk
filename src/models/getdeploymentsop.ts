@@ -59,7 +59,7 @@ export type GetDeploymentsRequest = {
    */
   until?: number | undefined;
   /**
-   * Filter deployments based on their state (`BUILDING`, `ERROR`, `INITIALIZING`, `QUEUED`, `READY`, `CANCELED`)
+   * Filter deployments based on their state (`BUILDING`, `ERROR`, `INITIALIZING`, `QUEUED`, `READY`, `CANCELED`, `BLOCKED`)
    */
   state?: string | undefined;
   /**
@@ -96,6 +96,7 @@ export const GetDeploymentsSource = {
   ImportRepo: "import/repo",
   Redeploy: "redeploy",
   V0Web: "v0-web",
+  Drop: "drop",
 } as const;
 /**
  * The source of the deployment.
@@ -361,8 +362,8 @@ export const GetDeploymentsFramework = {
   Fasthtml: "fasthtml",
   Django: "django",
   Ash: "ash",
-  SanityV3: "sanity-v3",
   Sanity: "sanity",
+  SanityV2: "sanity-v2",
   Storybook: "storybook",
   Nitro: "nitro",
   Hono: "hono",

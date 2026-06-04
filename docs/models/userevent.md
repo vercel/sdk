@@ -22,7 +22,7 @@ let value: UserEvent = {
     entitlement: "<value>",
     user: {
       id: "<id>",
-      username: "Adell.Little86",
+      username: "Ezekiel.Reynolds",
     },
   },
 };

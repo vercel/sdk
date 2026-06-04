@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsSourcesProvider } from "@vercel/sdk/models/getprojectsresponsebodytargets.js";
+import { GetProjectsSourcesProvider } from "@vercel/sdk/models/getprojectsresponsebodybuildqueue.js";
 
-let value: GetProjectsSourcesProvider = "gitlab";
+let value: GetProjectsSourcesProvider = "github";
 ```
 
 ## Values
 
 ```typescript
-"github" | "gitlab" | "bitbucket"
+"github" | "bitbucket"
 ```

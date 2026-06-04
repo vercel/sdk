@@ -99,7 +99,7 @@ export type ApproveRollingReleaseStageReadyState = ClosedEnum<
 >;
 
 /**
- * Where was the deployment created from
+ * Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it.
  */
 export const ApproveRollingReleaseStageSource = {
   Git: "git",
@@ -110,9 +110,10 @@ export const ApproveRollingReleaseStageSource = {
   ImportRepo: "import/repo",
   Redeploy: "redeploy",
   V0Web: "v0-web",
+  Drop: "drop",
 } as const;
 /**
- * Where was the deployment created from
+ * Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it.
  */
 export type ApproveRollingReleaseStageSource = ClosedEnum<
   typeof ApproveRollingReleaseStageSource
@@ -144,7 +145,7 @@ export type ApproveRollingReleaseStageCurrentDeployment = {
   readyState: ApproveRollingReleaseStageReadyState;
   readyStateAt?: number | undefined;
   /**
-   * Where was the deployment created from
+   * Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it.
    */
   source?: ApproveRollingReleaseStageSource | undefined;
   /**
@@ -187,7 +188,7 @@ export type ApproveRollingReleaseStageRollingReleaseReadyState = ClosedEnum<
 >;
 
 /**
- * Where was the deployment created from
+ * Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it.
  */
 export const ApproveRollingReleaseStageRollingReleaseSource = {
   Git: "git",
@@ -198,9 +199,10 @@ export const ApproveRollingReleaseStageRollingReleaseSource = {
   ImportRepo: "import/repo",
   Redeploy: "redeploy",
   V0Web: "v0-web",
+  Drop: "drop",
 } as const;
 /**
- * Where was the deployment created from
+ * Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it.
  */
 export type ApproveRollingReleaseStageRollingReleaseSource = ClosedEnum<
   typeof ApproveRollingReleaseStageRollingReleaseSource
@@ -232,7 +234,7 @@ export type ApproveRollingReleaseStageCanaryDeployment = {
   readyState: ApproveRollingReleaseStageRollingReleaseReadyState;
   readyStateAt?: number | undefined;
   /**
-   * Where was the deployment created from
+   * Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it.
    */
   source?: ApproveRollingReleaseStageRollingReleaseSource | undefined;
   /**

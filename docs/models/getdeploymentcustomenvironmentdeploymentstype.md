@@ -7,11 +7,11 @@ The type of environment (production, preview, or development)
 ```typescript
 import { GetDeploymentCustomEnvironmentDeploymentsType } from "@vercel/sdk/models/responsebodyproject.js";
 
-let value: GetDeploymentCustomEnvironmentDeploymentsType = "production";
+let value: GetDeploymentCustomEnvironmentDeploymentsType = "preview";
 ```
 
 ## Values
 
 ```typescript
-"production" | "preview" | "development"
+"preview" | "production" | "development"
 ```

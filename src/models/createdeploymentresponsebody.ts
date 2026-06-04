@@ -428,8 +428,8 @@ export type CreateDeploymentMicrofrontends =
   | CreateDeploymentMicrofrontends1;
 
 export const FunctionType = {
-  Standard: "standard",
   Fluid: "fluid",
+  Standard: "standard",
 } as const;
 export type FunctionType = ClosedEnum<typeof FunctionType>;
 
@@ -481,9 +481,9 @@ export type ElasticConcurrency = ClosedEnum<typeof ElasticConcurrency>;
  * Machine type that was used for the build.
  */
 export const CreateDeploymentPurchaseType = {
+  Standard: "standard",
   Enhanced: "enhanced",
   Turbo: "turbo",
-  Standard: "standard",
 } as const;
 /**
  * Machine type that was used for the build.
@@ -761,6 +761,7 @@ export type CreateDeploymentResponseBody = {
    */
   name: string;
   type: CreateDeploymentType;
+  errorMessage?: string | null | undefined;
   /**
    * An object that will contain a `code` and a `message` when the aliasing fails, otherwise the value will be `null`
    */
@@ -785,7 +786,6 @@ export type CreateDeploymentResponseBody = {
   canceledAt?: number | undefined;
   errorCode?: string | undefined;
   errorLink?: string | undefined;
-  errorMessage?: string | null | undefined;
   errorStep?: string | undefined;
   /**
    * Since November 2023 this field defines a set of regions that we will deploy the lambda to passively Lambdas will be deployed to these regions but only invoked if all of the primary `regions` are marked as out of service
@@ -820,7 +820,7 @@ export type CreateDeploymentResponseBody = {
    */
   softDeletedByRetention?: boolean | undefined;
   /**
-   * Where was the deployment created from
+   * Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it.
    */
   source?: CreateDeploymentSource | undefined;
   /**
@@ -2837,6 +2837,7 @@ export const CreateDeploymentResponseBody$inboundSchema: z.ZodType<
   readyState: ReadyState$inboundSchema,
   name: types.string(),
   type: CreateDeploymentType$inboundSchema,
+  errorMessage: z.nullable(types.string()).optional(),
   aliasError: z.nullable(AliasError$inboundSchema).optional(),
   aliasFinal: z.nullable(types.string()).optional(),
   autoAssignCustomDomains: types.optional(types.boolean()),
@@ -2849,7 +2850,6 @@ export const CreateDeploymentResponseBody$inboundSchema: z.ZodType<
   canceledAt: types.optional(types.number()),
   errorCode: types.optional(types.string()),
   errorLink: types.optional(types.string()),
-  errorMessage: z.nullable(types.string()).optional(),
   errorStep: types.optional(types.string()),
   passiveRegions: types.optional(z.array(types.string())),
   gitSource: types.optional(CreateDeploymentGitSource$inboundSchema),
@@ -2954,6 +2954,7 @@ export type CreateDeploymentResponseBody$Outbound = {
   readyState: string;
   name: string;
   type: string;
+  errorMessage?: string | null | undefined;
   aliasError?: AliasError$Outbound | null | undefined;
   aliasFinal?: string | null | undefined;
   autoAssignCustomDomains?: boolean | undefined;
@@ -2966,7 +2967,6 @@ export type CreateDeploymentResponseBody$Outbound = {
   canceledAt?: number | undefined;
   errorCode?: string | undefined;
   errorLink?: string | undefined;
-  errorMessage?: string | null | undefined;
   errorStep?: string | undefined;
   passiveRegions?: Array<string> | undefined;
   gitSource?: CreateDeploymentGitSource$Outbound | undefined;
@@ -3060,6 +3060,7 @@ export const CreateDeploymentResponseBody$outboundSchema: z.ZodType<
   readyState: ReadyState$outboundSchema,
   name: z.string(),
   type: CreateDeploymentType$outboundSchema,
+  errorMessage: z.nullable(z.string()).optional(),
   aliasError: z.nullable(AliasError$outboundSchema).optional(),
   aliasFinal: z.nullable(z.string()).optional(),
   autoAssignCustomDomains: z.boolean().optional(),
@@ -3072,7 +3073,6 @@ export const CreateDeploymentResponseBody$outboundSchema: z.ZodType<
   canceledAt: z.number().optional(),
   errorCode: z.string().optional(),
   errorLink: z.string().optional(),
-  errorMessage: z.nullable(z.string()).optional(),
   errorStep: z.string().optional(),
   passiveRegions: z.array(z.string()).optional(),
   gitSource: CreateDeploymentGitSource$outboundSchema.optional(),

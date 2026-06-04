@@ -5,7 +5,7 @@ The token prefix used when showing a safe checksum-style fingerprint.
 ## Example Usage
 
 ```typescript
-import { PayloadTokenPrefix } from "@vercel/sdk/models/payloadenvironment.js";
+import { PayloadTokenPrefix } from "@vercel/sdk/models/twohundredandeightynine.js";
 
 let value: PayloadTokenPrefix = "vcp_";
 ```

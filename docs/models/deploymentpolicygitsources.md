@@ -3,18 +3,26 @@
 
 ## Supported Types
 
-### `models.GitSources1`
+### `models.GitSources1[]`
 
 ```typescript
-const value: models.GitSources1 = {
-  enabled: false,
-  sources: [
-    {
-      provider: "gitlab",
-      org: "<value>",
-    },
-  ],
-};
+const value: models.GitSources1[] = [
+  {
+    enabled: false,
+    environments: [
+      {
+        type: "custom",
+        environmentId: "<id>",
+      },
+    ],
+    sources: [
+      {
+        provider: "github",
+        org: "<value>",
+      },
+    ],
+  },
+];
 ```
 
 ### `string`

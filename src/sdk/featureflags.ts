@@ -15,9 +15,11 @@ import { featureFlagsGetFlagSettings } from "../funcs/featureFlagsGetFlagSetting
 import { featureFlagsGetSDKKeys } from "../funcs/featureFlagsGetSDKKeys.js";
 import { featureFlagsListFlags } from "../funcs/featureFlagsListFlags.js";
 import { featureFlagsListFlagSegments } from "../funcs/featureFlagsListFlagSegments.js";
+import { featureFlagsListFlagsV2 } from "../funcs/featureFlagsListFlagsV2.js";
 import { featureFlagsListFlagVersions } from "../funcs/featureFlagsListFlagVersions.js";
 import { featureFlagsListTeamFlags } from "../funcs/featureFlagsListTeamFlags.js";
 import { featureFlagsListTeamFlagSettings } from "../funcs/featureFlagsListTeamFlagSettings.js";
+import { featureFlagsListTeamFlagsV2 } from "../funcs/featureFlagsListTeamFlagsV2.js";
 import { featureFlagsUpdateFlag } from "../funcs/featureFlagsUpdateFlag.js";
 import { featureFlagsUpdateFlagSegment } from "../funcs/featureFlagsUpdateFlagSegment.js";
 import { featureFlagsUpdateFlagSettings } from "../funcs/featureFlagsUpdateFlagSettings.js";
@@ -59,6 +61,10 @@ import {
   ListFlagsResponseBody,
 } from "../models/listflagsop.js";
 import {
+  ListFlagsV2Request,
+  ListFlagsV2ResponseBody,
+} from "../models/listflagsv2op.js";
+import {
   ListFlagVersionsRequest,
   ListFlagVersionsResponseBody,
 } from "../models/listflagversionsop.js";
@@ -70,6 +76,10 @@ import {
   ListTeamFlagsRequest,
   ListTeamFlagsResponseBody,
 } from "../models/listteamflagsop.js";
+import {
+  ListTeamFlagsV2Request,
+  ListTeamFlagsV2ResponseBody,
+} from "../models/listteamflagsv2op.js";
 import { Segment } from "../models/segment.js";
 import {
   UpdateFlagRequest,
@@ -83,6 +93,23 @@ import {
 import { unwrapAsync } from "../types/fp.js";
 
 export class FeatureFlags extends ClientSDK {
+  /**
+   * List flags
+   *
+   * @remarks
+   * Retrieve feature flags for a project. Returns an opaque cursor for pagination.
+   */
+  async listFlagsV2(
+    request: ListFlagsV2Request,
+    options?: RequestOptions,
+  ): Promise<ListFlagsV2ResponseBody> {
+    return unwrapAsync(featureFlagsListFlagsV2(
+      this,
+      request,
+      options,
+    ));
+  }
+
   /**
    * List flags
    *
@@ -230,6 +257,23 @@ export class FeatureFlags extends ClientSDK {
     options?: RequestOptions,
   ): Promise<ListTeamFlagSettingsResponseBody> {
     return unwrapAsync(featureFlagsListTeamFlagSettings(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * List all flags for a team
+   *
+   * @remarks
+   * Retrieve all feature flags for a team across all projects. Returns an opaque cursor for pagination.
+   */
+  async listTeamFlagsV2(
+    request: ListTeamFlagsV2Request,
+    options?: RequestOptions,
+  ): Promise<ListTeamFlagsV2ResponseBody> {
+    return unwrapAsync(featureFlagsListTeamFlagsV2(
       this,
       request,
       options,

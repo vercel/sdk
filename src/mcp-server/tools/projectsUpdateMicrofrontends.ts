@@ -3,7 +3,7 @@
  */
 
 import { projectsUpdateMicrofrontends } from "../../funcs/projectsUpdateMicrofrontends.js";
-import { UpdateMicrofrontendsRequest$inboundSchema } from "../../models/updatemicrofrontendsmanagedrules.js";
+import { UpdateMicrofrontendsRequest$inboundSchema } from "../../models/updatemicrofrontendsowasp.js";
 import { formatResult, ToolDefinition } from "../tools.js";
 
 const args = {

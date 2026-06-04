@@ -116,6 +116,7 @@ export const GetTeamMembersOrigin = {
   Bitbucket: "bitbucket",
   Saml: "saml",
   Dsync: "dsync",
+  AccountUpdate: "account-update",
   Feedback: "feedback",
   OrganizationTeams: "organization-teams",
   NsnbAutoApprove: "nsnb-auto-approve",

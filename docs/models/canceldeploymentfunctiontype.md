@@ -5,11 +5,11 @@
 ```typescript
 import { CancelDeploymentFunctionType } from "@vercel/sdk/models/canceldeploymentop.js";
 
-let value: CancelDeploymentFunctionType = "fluid";
+let value: CancelDeploymentFunctionType = "standard";
 ```
 
 ## Values
 
 ```typescript
-"standard" | "fluid"
+"fluid" | "standard"
 ```

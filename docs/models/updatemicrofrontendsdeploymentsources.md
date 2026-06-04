@@ -1,6 +1,6 @@
 # UpdateMicrofrontendsDeploymentSources
 
-Restricts which deployment sources are allowed. A deployment passes if its source is in `sources`. Multiple entries are evaluated as OR. `enabled: true` with an empty `sources` list is treated as deny-all.
+`enabled: true` with empty `sources` is deny-all.
 
 ## Example Usage
 
@@ -12,6 +12,12 @@ let value: UpdateMicrofrontendsDeploymentSources = {
     "deploy-hook",
   ],
   enabled: true,
+  environments: [
+    {
+      type: "custom",
+      environmentId: "<id>",
+    },
+  ],
 };
 ```
 
@@ -21,3 +27,4 @@ let value: UpdateMicrofrontendsDeploymentSources = {
 | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
 | `sources`                                                                                        | [models.UpdateMicrofrontendsProjectsSources](../models/updatemicrofrontendsprojectssources.md)[] | :heavy_check_mark:                                                                               | N/A                                                                                              |
 | `enabled`                                                                                        | *boolean*                                                                                        | :heavy_check_mark:                                                                               | N/A                                                                                              |
+| `environments`                                                                                   | *models.UpdateMicrofrontendsProjectsEnvironments*[]                                              | :heavy_check_mark:                                                                               | N/A                                                                                              |

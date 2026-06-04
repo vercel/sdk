@@ -5,7 +5,7 @@ The state of the flags to retrieve. Defaults to `active`.
 ## Example Usage
 
 ```typescript
-import { QueryParamState } from "@vercel/sdk/models/listflagsop.js";
+import { QueryParamState } from "@vercel/sdk/models/listflagsv2op.js";
 
 let value: QueryParamState = "active";
 ```

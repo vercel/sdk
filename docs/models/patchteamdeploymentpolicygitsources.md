@@ -3,18 +3,21 @@
 
 ## Supported Types
 
-### `models.PatchTeamGitSources1`
+### `models.PatchTeamGitSources1[]`
 
 ```typescript
-const value: models.PatchTeamGitSources1 = {
-  enabled: false,
-  sources: [
-    {
-      provider: "github",
-      org: "<value>",
-    },
-  ],
-};
+const value: models.PatchTeamGitSources1[] = [
+  {
+    enabled: true,
+    environments: [
+      {
+        type: "system",
+        target: "production",
+      },
+    ],
+    sources: [],
+  },
+];
 ```
 
 ### `string`

@@ -3,15 +3,15 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsResponseBodyProjectsResponse200ApplicationJson3ProjectsAction } from "@vercel/sdk/models/getprojectsresponsebodyprojectsaibots.js";
+import { GetProjectsResponseBodyProjectsResponse200ApplicationJson3ProjectsAction } from "@vercel/sdk/models/getprojectsresponsebodybuildqueue.js";
 
 let value:
   GetProjectsResponseBodyProjectsResponse200ApplicationJson3ProjectsAction =
-    "challenge";
+    "remove-project-interstitial";
 ```
 
 ## Values
 
 ```typescript
-"deny" | "challenge" | "log"
+"add-project-interstitial" | "remove-project-interstitial" | "add-deployment-interstitial" | "remove-deployment-interstitial"
 ```

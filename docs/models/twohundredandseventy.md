@@ -5,15 +5,13 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndSeventy } from "@vercel/sdk/models/twohundredandtwentysix.js";
+import { TwoHundredAndSeventy } from "@vercel/sdk/models/twohundredandthirty.js";
 
-let value: TwoHundredAndSeventy = {
-  slug: "<value>",
-};
+let value: TwoHundredAndSeventy = {};
 ```
 
 ## Fields
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `slug`             | *string*           | :heavy_check_mark: | N/A                |
+| `webhookUrl`       | *string*           | :heavy_minus_sign: | N/A                |

@@ -111,8 +111,8 @@ export type GetDeploymentCustomEnvironment2 = {
  * The type of environment (production, preview, or development)
  */
 export const GetDeploymentCustomEnvironmentType = {
-  Production: "production",
   Preview: "preview",
+  Production: "production",
   Development: "development",
 } as const;
 /**
@@ -724,7 +724,7 @@ export type ResponseBodyReadySubstate = ClosedEnum<
 >;
 
 /**
- * Where was the deployment created from
+ * Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it.
  */
 export const GetDeploymentResponseBodyDeploymentsSource = {
   ApiTriggerGitDeploy: "api-trigger-git-deploy",
@@ -735,9 +735,10 @@ export const GetDeploymentResponseBodyDeploymentsSource = {
   ImportRepo: "import/repo",
   Redeploy: "redeploy",
   V0Web: "v0-web",
+  Drop: "drop",
 } as const;
 /**
- * Where was the deployment created from
+ * Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it.
  */
 export type GetDeploymentResponseBodyDeploymentsSource = ClosedEnum<
   typeof GetDeploymentResponseBodyDeploymentsSource
@@ -838,6 +839,7 @@ export type GetDeploymentResponseBody2 = {
    */
   name: string;
   type: GetDeploymentResponseBodyDeploymentsType;
+  errorMessage?: string | null | undefined;
   /**
    * An object that will contain a `code` and a `message` when the aliasing fails, otherwise the value will be `null`
    */
@@ -862,7 +864,6 @@ export type GetDeploymentResponseBody2 = {
   canceledAt?: number | undefined;
   errorCode?: string | undefined;
   errorLink?: string | undefined;
-  errorMessage?: string | null | undefined;
   errorStep?: string | undefined;
   /**
    * Since November 2023 this field defines a set of regions that we will deploy the lambda to passively Lambdas will be deployed to these regions but only invoked if all of the primary `regions` are marked as out of service
@@ -915,7 +916,7 @@ export type GetDeploymentResponseBody2 = {
    */
   softDeletedByRetention?: boolean | undefined;
   /**
-   * Where was the deployment created from
+   * Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it.
    */
   source?: GetDeploymentResponseBodyDeploymentsSource | undefined;
   /**
@@ -1017,8 +1018,8 @@ export const GetDeploymentResponseBodyFramework = {
   Fasthtml: "fasthtml",
   Django: "django",
   Ash: "ash",
-  SanityV3: "sanity-v3",
   Sanity: "sanity",
+  SanityV2: "sanity-v2",
   Storybook: "storybook",
   Nitro: "nitro",
   Hono: "hono",
@@ -1244,8 +1245,8 @@ export type GetDeploymentCustomEnvironmentDeployments2 = {
  * The type of environment (production, preview, or development)
  */
 export const GetDeploymentCustomEnvironmentDeploymentsType = {
-  Production: "production",
   Preview: "preview",
+  Production: "production",
   Development: "development",
 } as const;
 /**
@@ -4356,6 +4357,7 @@ export const GetDeploymentResponseBody2$inboundSchema: z.ZodType<
   readyState: ResponseBodyReadyState$inboundSchema,
   name: types.string(),
   type: GetDeploymentResponseBodyDeploymentsType$inboundSchema,
+  errorMessage: z.nullable(types.string()).optional(),
   aliasError: z.nullable(z.lazy(() => ResponseBodyAliasError$inboundSchema))
     .optional(),
   aliasFinal: z.nullable(types.string()).optional(),
@@ -4369,7 +4371,6 @@ export const GetDeploymentResponseBody2$inboundSchema: z.ZodType<
   canceledAt: types.optional(types.number()),
   errorCode: types.optional(types.string()),
   errorLink: types.optional(types.string()),
-  errorMessage: z.nullable(types.string()).optional(),
   errorStep: types.optional(types.string()),
   passiveRegions: types.optional(z.array(types.string())),
   gitSource: types.optional(
@@ -4449,6 +4450,7 @@ export type GetDeploymentResponseBody2$Outbound = {
   readyState: string;
   name: string;
   type: string;
+  errorMessage?: string | null | undefined;
   aliasError?: ResponseBodyAliasError$Outbound | null | undefined;
   aliasFinal?: string | null | undefined;
   autoAssignCustomDomains?: boolean | undefined;
@@ -4461,7 +4463,6 @@ export type GetDeploymentResponseBody2$Outbound = {
   canceledAt?: number | undefined;
   errorCode?: string | undefined;
   errorLink?: string | undefined;
-  errorMessage?: string | null | undefined;
   errorStep?: string | undefined;
   passiveRegions?: Array<string> | undefined;
   gitSource?:
@@ -4538,6 +4539,7 @@ export const GetDeploymentResponseBody2$outboundSchema: z.ZodType<
   readyState: ResponseBodyReadyState$outboundSchema,
   name: z.string(),
   type: GetDeploymentResponseBodyDeploymentsType$outboundSchema,
+  errorMessage: z.nullable(z.string()).optional(),
   aliasError: z.nullable(z.lazy(() => ResponseBodyAliasError$outboundSchema))
     .optional(),
   aliasFinal: z.nullable(z.string()).optional(),
@@ -4551,7 +4553,6 @@ export const GetDeploymentResponseBody2$outboundSchema: z.ZodType<
   canceledAt: z.number().optional(),
   errorCode: z.string().optional(),
   errorLink: z.string().optional(),
-  errorMessage: z.nullable(z.string()).optional(),
   errorStep: z.string().optional(),
   passiveRegions: z.array(z.string()).optional(),
   gitSource: smartUnion([

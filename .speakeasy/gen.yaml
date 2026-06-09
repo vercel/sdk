@@ -47,7 +47,7 @@ typescript:
   constFieldsAlwaysOptional: false
   defaultErrorName: SDKError
   enableCustomCodeRegions: false
-  enableMCPServer: true
+  enableMCPServer: false
   enableReactQuery: false
   enumFormat: union
   exportZodModelNamespace: false

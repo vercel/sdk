@@ -6,16 +6,16 @@
 import { ListFlagVersionsExperiment } from "@vercel/sdk/models/listflagversionsop.js";
 
 let value: ListFlagVersionsExperiment = {
-  allocationUnit: "visitorId",
+  allocationUnit: "userId",
   primaryMetrics: [
     {
       name: "<value>",
-      metricType: "percentage",
-      metricUnit: "session",
-      directionality: "decreaseIsGood",
+      metricType: "count",
+      metricUnit: "user",
+      directionality: "increaseIsGood",
     },
   ],
-  status: "draft",
+  status: "closed",
 };
 ```
 
@@ -23,8 +23,8 @@ let value: ListFlagVersionsExperiment = {
 
 | Field                                                                                      | Type                                                                                       | Required                                                                                   | Description                                                                                |
 | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| `name`                                                                                     | *string*                                                                                   | :heavy_minus_sign:                                                                         | N/A                                                                                        |
 | `id`                                                                                       | *string*                                                                                   | :heavy_minus_sign:                                                                         | N/A                                                                                        |
+| `name`                                                                                     | *string*                                                                                   | :heavy_minus_sign:                                                                         | N/A                                                                                        |
 | `numVariants`                                                                              | *number*                                                                                   | :heavy_minus_sign:                                                                         | N/A                                                                                        |
 | `surfaceArea`                                                                              | *string*                                                                                   | :heavy_minus_sign:                                                                         | N/A                                                                                        |
 | `stickyRequirement`                                                                        | *boolean*                                                                                  | :heavy_minus_sign:                                                                         | N/A                                                                                        |

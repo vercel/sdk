@@ -5,11 +5,11 @@
 ```typescript
 import { ResponseBodyArchitecture } from "@vercel/sdk/models/getdeploymentresponsebody.js";
 
-let value: ResponseBodyArchitecture = "arm64";
+let value: ResponseBodyArchitecture = "x86_64";
 ```
 
 ## Values
 
 ```typescript
-"x86_64" | "arm64"
+"arm64" | "x86_64"
 ```

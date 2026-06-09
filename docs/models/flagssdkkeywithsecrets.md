@@ -10,7 +10,7 @@ import { FlagsSDKKeyWithSecrets } from "@vercel/sdk/models/flagssdkkeywithsecret
 let value: FlagsSDKKeyWithSecrets = {
   hashKey: "<value>",
   projectId: "<id>",
-  type: "server",
+  type: "client",
   environment: "<value>",
   createdBy: "<value>",
   createdAt: 3191.79,

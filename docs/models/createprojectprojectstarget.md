@@ -12,6 +12,6 @@ const value: models.CreateProjectTarget1[] = [];
 ### `models.CreateProjectTarget2`
 
 ```typescript
-const value: models.CreateProjectTarget2 = "production";
+const value: models.CreateProjectTarget2 = "development";
 ```
 

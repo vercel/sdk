@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { UpdateMicrofrontendsJobStatus } from "@vercel/sdk/models/updatemicrofrontendsmanagedrules.js";
+import { UpdateMicrofrontendsJobStatus } from "@vercel/sdk/models/updatemicrofrontendsbotfilter.js";
 
-let value: UpdateMicrofrontendsJobStatus = "failed";
+let value: UpdateMicrofrontendsJobStatus = "skipped";
 ```
 
 ## Values
 
 ```typescript
-"pending" | "in-progress" | "succeeded" | "failed" | "skipped"
+"failed" | "in-progress" | "pending" | "skipped" | "succeeded"
 ```

@@ -11,5 +11,5 @@ let value: GetDrainsDrainsStatus = "errored";
 ## Values
 
 ```typescript
-"enabled" | "disabled" | "errored"
+"disabled" | "enabled" | "errored"
 ```

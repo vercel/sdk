@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyFlatRateTier } from "@vercel/sdk/models/getprojectsresponsebodytargets.js";
+import { ResponseBodyFlatRateTier } from "@vercel/sdk/models/getprojectsresponsebodyfunctiondefaultmemorytype.js";
 
-let value: ResponseBodyFlatRateTier = "advanced";
+let value: ResponseBodyFlatRateTier = "critical";
 ```
 
 ## Values
 
 ```typescript
-"standard" | "base" | "advanced" | "critical"
+"advanced" | "base" | "critical" | "standard"
 ```

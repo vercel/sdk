@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupDefaultResourceConfig } from "@vercel/sdk/models/getmicrofrontendsingroupto2.js";
+import { GetMicrofrontendsInGroupDefaultResourceConfig } from "@vercel/sdk/models/getmicrofrontendsingrouptomicrofrontends1.js";
 
 let value: GetMicrofrontendsInGroupDefaultResourceConfig = {
   functionDefaultRegions: [],
@@ -26,3 +26,4 @@ let value: GetMicrofrontendsInGroupDefaultResourceConfig = {
 | `isNSNBDisabled`                                                                                                           | *boolean*                                                                                                                  | :heavy_minus_sign:                                                                                                         | N/A                                                                                                                        |
 | `buildQueue`                                                                                                               | [models.GetMicrofrontendsInGroupMicrofrontendsBuildQueue](../models/getmicrofrontendsingroupmicrofrontendsbuildqueue.md)   | :heavy_minus_sign:                                                                                                         | N/A                                                                                                                        |
 | `enableFunctionsBeta`                                                                                                      | *boolean*                                                                                                                  | :heavy_minus_sign:                                                                                                         | N/A                                                                                                                        |
+| `enableFunctionsExtendedMaxDuration`                                                                                       | *boolean*                                                                                                                  | :heavy_minus_sign:                                                                                                         | N/A                                                                                                                        |

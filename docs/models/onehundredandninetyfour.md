@@ -5,19 +5,18 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndNinetyFour } from "@vercel/sdk/models/onehundredandfiftyfive.js";
+import { OneHundredAndNinetyFour } from "@vercel/sdk/models/usereventpayloadprevious.js";
 
 let value: OneHundredAndNinetyFour = {
   projectId: "<id>",
-  projectName: "<value>",
-  onPullRequest: true,
+  enableFunctionsExtendedMaxDuration: true,
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
-| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
-| `onPullRequest`    | *boolean*          | :heavy_check_mark: | N/A                |
+| Field                                | Type                                 | Required                             | Description                          |
+| ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
+| `projectName`                        | *string*                             | :heavy_minus_sign:                   | N/A                                  |
+| `projectId`                          | *string*                             | :heavy_check_mark:                   | N/A                                  |
+| `enableFunctionsExtendedMaxDuration` | *boolean*                            | :heavy_check_mark:                   | N/A                                  |

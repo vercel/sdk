@@ -5,7 +5,7 @@
 ```typescript
 import {
   GetProjectsHasProjectsResponse200ApplicationJSONResponseBody3ProjectsAbuseBlockHistoryValue,
-} from "@vercel/sdk/models/getprojectsresponsebodytargets.js";
+} from "@vercel/sdk/models/getprojectsresponsebodyfunctiondefaultmemorytype.js";
 
 let value:
   GetProjectsHasProjectsResponse200ApplicationJSONResponseBody3ProjectsAbuseBlockHistoryValue =

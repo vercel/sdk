@@ -11,5 +11,5 @@ let value: ListFlagVersionsDevice = "mweb";
 ## Values
 
 ```typescript
-"android" | "ios" | "desktop" | "mweb"
+"android" | "desktop" | "ios" | "mweb"
 ```

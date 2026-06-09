@@ -13,5 +13,5 @@ let value: GetDeploymentCustomEnvironmentDeploymentsResponseType = "endsWith";
 ## Values
 
 ```typescript
-"endsWith" | "startsWith" | "equals"
+"endsWith" | "equals" | "startsWith"
 ```

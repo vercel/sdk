@@ -99,13 +99,13 @@ export type CreateLogDrainLogDrainsDeliveryFormat = ClosedEnum<
  * The sources from which logs are currently being delivered to this log drain.
  */
 export const CreateLogDrainLogDrainsSources = {
-  External: "external",
   Build: "build",
   Edge: "edge",
-  Lambda: "lambda",
-  Static: "static",
+  External: "external",
   Firewall: "firewall",
+  Lambda: "lambda",
   Redirect: "redirect",
+  Static: "static",
 } as const;
 /**
  * The sources from which logs are currently being delivered to this log drain.
@@ -132,8 +132,8 @@ export type CreateLogDrainCreatedFrom = ClosedEnum<
  * The environment of log drain
  */
 export const CreateLogDrainLogDrainsEnvironments = {
-  Production: "production",
   Preview: "preview",
+  Production: "production",
 } as const;
 /**
  * The environment of log drain

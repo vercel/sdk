@@ -5,11 +5,11 @@
 ```typescript
 import { UpdateProjectCheckSourceKind } from "@vercel/sdk/models/updateprojectcheckop.js";
 
-let value: UpdateProjectCheckSourceKind = "integration";
+let value: UpdateProjectCheckSourceKind = "git-provider";
 ```
 
 ## Values
 
 ```typescript
-"integration" | "webhook" | "git-provider" | "vercel"
+"git-provider" | "integration" | "vercel" | "webhook"
 ```

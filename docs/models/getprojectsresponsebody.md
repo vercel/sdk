@@ -30,15 +30,15 @@ const value: models.GetProjectsResponseBody1[] = [
           userId: "<id>",
         },
         domain: "ordinary-tray.org",
-        environment: "preview",
-        target: "PREVIEW",
+        environment: "production",
+        target: "STAGING",
       },
     ],
     directoryListing: false,
     deploymentExpiration: {},
     id: "<id>",
     name: "<value>",
-    nodeVersion: "22.x",
+    nodeVersion: "12.x",
     resourceConfig: {
       functionDefaultRegions: [
         "<value 1>",
@@ -94,7 +94,7 @@ const value: models.GetProjectsResponseBody3 = {
       directoryListing: true,
       id: "<id>",
       name: "<value>",
-      nodeVersion: "10.x",
+      nodeVersion: "24.x",
       resourceConfig: {
         functionDefaultRegions: [
           "<value 1>",

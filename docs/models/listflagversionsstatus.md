@@ -5,11 +5,11 @@
 ```typescript
 import { ListFlagVersionsStatus } from "@vercel/sdk/models/listflagversionsop.js";
 
-let value: ListFlagVersionsStatus = "draft";
+let value: ListFlagVersionsStatus = "closed";
 ```
 
 ## Values
 
 ```typescript
-"draft" | "running" | "paused" | "closed"
+"closed" | "draft" | "paused" | "running"
 ```

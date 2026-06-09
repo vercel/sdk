@@ -7,7 +7,7 @@
 
 ```typescript
 const value: models.UserEventFactors1 = {
-  origin: "email",
+  origin: "apple",
 };
 ```
 

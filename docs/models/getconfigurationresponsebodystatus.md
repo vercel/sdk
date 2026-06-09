@@ -7,11 +7,11 @@ The configuration status. Optional. If not defined, assume 'ready'.
 ```typescript
 import { GetConfigurationResponseBodyStatus } from "@vercel/sdk/models/getconfigurationop.js";
 
-let value: GetConfigurationResponseBodyStatus = "suspended";
+let value: GetConfigurationResponseBodyStatus = "resumed";
 ```
 
 ## Values
 
 ```typescript
-"error" | "ready" | "pending" | "onboarding" | "suspended" | "resumed" | "uninstalled"
+"error" | "onboarding" | "pending" | "ready" | "resumed" | "suspended" | "uninstalled"
 ```

@@ -3,10 +3,10 @@
 ## Example Usage
 
 ```typescript
-import { PayloadBilling } from "@vercel/sdk/models/edgemiddlewareinvocations.js";
+import { PayloadBilling } from "@vercel/sdk/models/connectdatatransfer.js";
 
 let value: PayloadBilling = {
-  plan: "hobby",
+  plan: "pro",
 };
 ```
 

@@ -11,9 +11,9 @@ import { ClosedEnum } from "../types/enums.js";
 export const ACLAction = {
   Create: "create",
   Delete: "delete",
+  List: "list",
   Read: "read",
   Update: "update",
-  List: "list",
 } as const;
 /**
  * Enum containing the actions that can be performed against a resource. Group operations are included.

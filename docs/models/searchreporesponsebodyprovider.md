@@ -11,5 +11,5 @@ let value: SearchRepoResponseBodyProvider = "vercel";
 ## Values
 
 ```typescript
-"github" | "github-limited" | "github-custom-host" | "gitlab" | "bitbucket" | "vercel"
+"bitbucket" | "github" | "github-custom-host" | "github-limited" | "gitlab" | "vercel"
 ```

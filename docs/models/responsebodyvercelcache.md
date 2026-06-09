@@ -5,11 +5,11 @@
 ```typescript
 import { ResponseBodyVercelCache } from "@vercel/sdk/models/getdeploymenteventsop.js";
 
-let value: ResponseBodyVercelCache = "REVALIDATED";
+let value: ResponseBodyVercelCache = "STALE";
 ```
 
 ## Values
 
 ```typescript
-"MISS" | "HIT" | "STALE" | "BYPASS" | "PRERENDER" | "REVALIDATED"
+"BYPASS" | "HIT" | "MISS" | "PRERENDER" | "REVALIDATED" | "STALE"
 ```

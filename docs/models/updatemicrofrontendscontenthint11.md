@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UpdateMicrofrontendsContentHint11 } from "@vercel/sdk/models/updatemicrofrontendsmanagedrules.js";
+import { UpdateMicrofrontendsContentHint11 } from "@vercel/sdk/models/updatemicrofrontendsbotfilter.js";
 
 let value: UpdateMicrofrontendsContentHint11 = {
   type: "postgres-user",

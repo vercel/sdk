@@ -5,11 +5,11 @@
 ```typescript
 import { UpdateDeploymentCheckRunSourceProvider } from "@vercel/sdk/models/updatedeploymentcheckrunop.js";
 
-let value: UpdateDeploymentCheckRunSourceProvider = "github";
+let value: UpdateDeploymentCheckRunSourceProvider = "bitbucket";
 ```
 
 ## Values
 
 ```typescript
-"github" | "gitlab" | "bitbucket"
+"bitbucket" | "github" | "gitlab"
 ```

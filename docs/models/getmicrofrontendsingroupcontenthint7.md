@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupContentHint7 } from "@vercel/sdk/models/getmicrofrontendsingroupto2.js";
+import { GetMicrofrontendsInGroupContentHint7 } from "@vercel/sdk/models/getmicrofrontendsingrouptomicrofrontends1.js";
 
 let value: GetMicrofrontendsInGroupContentHint7 = {
   type: "blob-webhook-public-key",

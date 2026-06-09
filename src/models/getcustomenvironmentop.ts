@@ -32,9 +32,9 @@ export type GetCustomEnvironmentRequest = {
  * The type of environment (production, preview, or development)
  */
 export const GetCustomEnvironmentType = {
-  Production: "production",
-  Preview: "preview",
   Development: "development",
+  Preview: "preview",
+  Production: "production",
 } as const;
 /**
  * The type of environment (production, preview, or development)
@@ -48,8 +48,8 @@ export type GetCustomEnvironmentType = ClosedEnum<
  */
 export const GetCustomEnvironmentEnvironmentType = {
   EndsWith: "endsWith",
-  StartsWith: "startsWith",
   Equals: "equals",
+  StartsWith: "startsWith",
 } as const;
 /**
  * The type of matching to perform

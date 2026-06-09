@@ -3,14 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { UpdateMicrofrontendsTrustedIpsDeploymentType } from "@vercel/sdk/models/updatemicrofrontendsmanagedrules.js";
+import { UpdateMicrofrontendsTrustedIpsDeploymentType } from "@vercel/sdk/models/updatemicrofrontendsbotfilter.js";
 
-let value: UpdateMicrofrontendsTrustedIpsDeploymentType =
-  "all_except_custom_domains";
+let value: UpdateMicrofrontendsTrustedIpsDeploymentType = "production";
 ```
 
 ## Values
 
 ```typescript
-"production" | "preview" | "all" | "prod_deployment_urls_and_all_previews" | "all_except_custom_domains"
+"all" | "all_except_custom_domains" | "preview" | "prod_deployment_urls_and_all_previews" | "production"
 ```

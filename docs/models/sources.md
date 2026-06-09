@@ -7,7 +7,16 @@
 
 ```typescript
 const value: models.Sources1 = {
-  provider: "gitlab",
+  provider: "github",
+  org: "<value>",
+};
+```
+
+### `models.Sources1`
+
+```typescript
+const value: models.Sources1 = {
+  provider: "github",
   org: "<value>",
 };
 ```
@@ -17,8 +26,7 @@ const value: models.Sources1 = {
 ```typescript
 const value: models.Sources2 = {
   provider: "gitlab",
-  org: "<value>",
-  repo: "<value>",
+  namespace: "<value>",
 };
 ```
 

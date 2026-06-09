@@ -5,11 +5,11 @@
 ```typescript
 import { RecordType } from "@vercel/sdk/models/updaterecordop.js";
 
-let value: RecordType = "NS";
+let value: RecordType = "TXT";
 ```
 
 ## Values
 
 ```typescript
-"A" | "AAAA" | "ALIAS" | "CAA" | "CNAME" | "HTTPS" | "MX" | "SRV" | "TXT" | "NS"
+"A" | "AAAA" | "ALIAS" | "CAA" | "CNAME" | "HTTPS" | "MX" | "NS" | "SRV" | "TXT"
 ```

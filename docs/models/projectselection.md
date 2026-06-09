@@ -13,5 +13,5 @@ let value: ProjectSelection = "all";
 ## Values
 
 ```typescript
-"selected" | "all"
+"all" | "selected"
 ```

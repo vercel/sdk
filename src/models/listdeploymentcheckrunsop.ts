@@ -32,32 +32,32 @@ export type ListDeploymentCheckRunsRunsChecksV2Requires = ClosedEnum<
 >;
 
 export const ListDeploymentCheckRunsRunsChecksV2Blocks = {
-  None: "none",
   BuildStart: "build-start",
-  DeploymentStart: "deployment-start",
   DeploymentAlias: "deployment-alias",
   DeploymentPromotion: "deployment-promotion",
+  DeploymentStart: "deployment-start",
+  None: "none",
 } as const;
 export type ListDeploymentCheckRunsRunsChecksV2Blocks = ClosedEnum<
   typeof ListDeploymentCheckRunsRunsChecksV2Blocks
 >;
 
 export const ListDeploymentCheckRunsRunsChecksV2Status = {
+  Completed: "completed",
   Queued: "queued",
   Running: "running",
-  Completed: "completed",
 } as const;
 export type ListDeploymentCheckRunsRunsChecksV2Status = ClosedEnum<
   typeof ListDeploymentCheckRunsRunsChecksV2Status
 >;
 
 export const ListDeploymentCheckRunsRunsChecksV2Conclusion = {
-  Timeout: "timeout",
   Canceled: "canceled",
-  Skipped: "skipped",
   Failed: "failed",
   Neutral: "neutral",
+  Skipped: "skipped",
   Succeeded: "succeeded",
+  Timeout: "timeout",
 } as const;
 export type ListDeploymentCheckRunsRunsChecksV2Conclusion = ClosedEnum<
   typeof ListDeploymentCheckRunsRunsChecksV2Conclusion
@@ -136,32 +136,32 @@ export type ListDeploymentCheckRunsRunsRequires = ClosedEnum<
 >;
 
 export const ListDeploymentCheckRunsRunsBlocks = {
-  None: "none",
   BuildStart: "build-start",
-  DeploymentStart: "deployment-start",
   DeploymentAlias: "deployment-alias",
   DeploymentPromotion: "deployment-promotion",
+  DeploymentStart: "deployment-start",
+  None: "none",
 } as const;
 export type ListDeploymentCheckRunsRunsBlocks = ClosedEnum<
   typeof ListDeploymentCheckRunsRunsBlocks
 >;
 
 export const ListDeploymentCheckRunsRunsStatus = {
+  Completed: "completed",
   Queued: "queued",
   Running: "running",
-  Completed: "completed",
 } as const;
 export type ListDeploymentCheckRunsRunsStatus = ClosedEnum<
   typeof ListDeploymentCheckRunsRunsStatus
 >;
 
 export const ListDeploymentCheckRunsRunsConclusion = {
-  Timeout: "timeout",
   Canceled: "canceled",
-  Skipped: "skipped",
   Failed: "failed",
   Neutral: "neutral",
+  Skipped: "skipped",
   Succeeded: "succeeded",
+  Timeout: "timeout",
 } as const;
 export type ListDeploymentCheckRunsRunsConclusion = ClosedEnum<
   typeof ListDeploymentCheckRunsRunsConclusion
@@ -175,15 +175,15 @@ export type ListDeploymentCheckRunsSourceSubKind = ClosedEnum<
 >;
 
 export const ListDeploymentCheckRunsSourceOrigin = {
-  Platform: "platform",
   Api: "api",
+  Platform: "platform",
 } as const;
 export type ListDeploymentCheckRunsSourceOrigin = ClosedEnum<
   typeof ListDeploymentCheckRunsSourceOrigin
 >;
 
 /**
- * Native lint/typecheck — check definition and check run `source`.
+ * Native Vercel checks — check definition and check run `source`.
  */
 export type ListDeploymentCheckRunsSource4 = {
   subKind?: ListDeploymentCheckRunsSourceSubKind | undefined;
@@ -198,9 +198,9 @@ export type ListDeploymentCheckRunsSourceChecksV2ResponseKind = ClosedEnum<
 >;
 
 export const ListDeploymentCheckRunsSourceProvider = {
+  Bitbucket: "bitbucket",
   Github: "github",
   Gitlab: "gitlab",
-  Bitbucket: "bitbucket",
 } as const;
 export type ListDeploymentCheckRunsSourceProvider = ClosedEnum<
   typeof ListDeploymentCheckRunsSourceProvider

@@ -11,5 +11,5 @@ let value: GetTeamMembersTeamsProjects = "PROJECT_DEVELOPER";
 ## Values
 
 ```typescript
-"ADMIN" | "PROJECT_DEVELOPER" | "PROJECT_VIEWER" | "PROJECT_GUEST"
+"ADMIN" | "PROJECT_DEVELOPER" | "PROJECT_GUEST" | "PROJECT_VIEWER"
 ```

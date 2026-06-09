@@ -3,19 +3,18 @@
 ## Example Usage
 
 ```typescript
-import { UpdateProjectSources2 } from "@vercel/sdk/models/updateprojectresponsebody.js";
+import { UpdateProjectSources2 } from "@vercel/sdk/models/updateprojectprojectsoptionsallowlist.js";
 
 let value: UpdateProjectSources2 = {
-  provider: "github",
-  org: "<value>",
-  repo: "<value>",
+  provider: "gitlab",
+  namespace: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                                            | Type                                                                                             | Required                                                                                         | Description                                                                                      |
-| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
-| `provider`                                                                                       | [models.UpdateProjectSourcesProjectsProvider](../models/updateprojectsourcesprojectsprovider.md) | :heavy_check_mark:                                                                               | N/A                                                                                              |
-| `org`                                                                                            | *string*                                                                                         | :heavy_check_mark:                                                                               | N/A                                                                                              |
-| `repo`                                                                                           | *string*                                                                                         | :heavy_check_mark:                                                                               | N/A                                                                                              |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `provider`         | *"gitlab"*         | :heavy_check_mark: | N/A                |
+| `namespace`        | *string*           | :heavy_check_mark: | N/A                |
+| `project`          | *string*           | :heavy_minus_sign: | N/A                |

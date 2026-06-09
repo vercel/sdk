@@ -6,7 +6,7 @@
 import { GetRoutesMissingProjectRoutesResponse2 } from "@vercel/sdk/models/getroutesop.js";
 
 let value: GetRoutesMissingProjectRoutesResponse2 = {
-  type: "cookie",
+  type: "header",
   key: "<key>",
 };
 ```

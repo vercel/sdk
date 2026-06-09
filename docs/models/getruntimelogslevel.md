@@ -5,11 +5,11 @@
 ```typescript
 import { GetRuntimeLogsLevel } from "@vercel/sdk/models/getruntimelogsop.js";
 
-let value: GetRuntimeLogsLevel = "info";
+let value: GetRuntimeLogsLevel = "fatal";
 ```
 
 ## Values
 
 ```typescript
-"trace" | "debug" | "info" | "warning" | "error" | "fatal"
+"debug" | "error" | "fatal" | "info" | "trace" | "warning"
 ```

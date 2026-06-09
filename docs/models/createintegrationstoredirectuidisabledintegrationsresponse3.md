@@ -3,14 +3,14 @@
 ## Example Usage
 
 ```typescript
-import { CreateIntegrationStoreDirectUiDisabledIntegrationsResponse3 } from "@vercel/sdk/models/createintegrationstoredirectresponsebody.js";
+import { CreateIntegrationStoreDirectUiDisabledIntegrationsResponse3 } from "@vercel/sdk/models/createintegrationstoredirectnotification.js";
 
 let value: CreateIntegrationStoreDirectUiDisabledIntegrationsResponse3 =
-  "update";
+  "create";
 ```
 
 ## Values
 
 ```typescript
-"update" | "create"
+"create" | "update"
 ```

@@ -5,11 +5,11 @@
 ```typescript
 import { Operator } from "@vercel/sdk/models/generaterouteop.js";
 
-let value: Operator = "re";
+let value: Operator = "exists";
 ```
 
 ## Values
 
 ```typescript
-"contains" | "eq" | "re" | "exists"
+"contains" | "eq" | "exists" | "re"
 ```

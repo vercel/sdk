@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsRequest } from "@vercel/sdk/models/getprojectsresponsebodyprojectsaibots.js";
+import { GetProjectsRequest } from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponse200applicationjson3projectssecuritymanagedrulesvercelrulesetaction.js";
 
 let value: GetProjectsRequest = {
   gitForkProtection: "1",

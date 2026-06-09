@@ -5,11 +5,11 @@
 ```typescript
 import { CancelDeploymentMissingDeploymentsType } from "@vercel/sdk/models/canceldeploymentop.js";
 
-let value: CancelDeploymentMissingDeploymentsType = "cookie";
+let value: CancelDeploymentMissingDeploymentsType = "header";
 ```
 
 ## Values
 
 ```typescript
-"header" | "cookie" | "query"
+"cookie" | "header" | "query"
 ```

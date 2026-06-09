@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { UpdateProjectProjectsResponseBuildMachineSelection } from "@vercel/sdk/models/updateprojectprojectsresponsebuildqueue.js";
+import { UpdateProjectProjectsResponseBuildMachineSelection } from "@vercel/sdk/models/updateprojectvalue.js";
 
-let value: UpdateProjectProjectsResponseBuildMachineSelection = "elastic";
+let value: UpdateProjectProjectsResponseBuildMachineSelection = "fixed";
 ```
 
 ## Values
 
 ```typescript
-"fixed" | "elastic"
+"elastic" | "fixed"
 ```

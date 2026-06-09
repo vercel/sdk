@@ -11,5 +11,5 @@ let value: UpdateMicrofrontendsFlatRateTier = "base";
 ## Values
 
 ```typescript
-"standard" | "base" | "advanced" | "critical"
+"advanced" | "base" | "critical" | "standard"
 ```

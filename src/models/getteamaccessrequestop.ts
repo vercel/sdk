@@ -16,24 +16,25 @@ export type GetTeamAccessRequestRequest = {
 };
 
 export const GetTeamAccessRequestOrigin = {
-  Teams: "teams",
-  Link: "link",
-  Mail: "mail",
-  Import: "import",
-  Github: "github",
-  Gitlab: "gitlab",
+  AccountUpdate: "account-update",
   Bitbucket: "bitbucket",
-  Saml: "saml",
   Dsync: "dsync",
   Feedback: "feedback",
-  OrganizationTeams: "organization-teams",
+  Github: "github",
+  Gitlab: "gitlab",
+  Import: "import",
+  Link: "link",
+  Mail: "mail",
   NsnbAutoApprove: "nsnb-auto-approve",
   NsnbHobbyUpgrade: "nsnb-hobby-upgrade",
-  NsnbRequestAccess: "nsnb-request-access",
-  NsnbViewerUpgrade: "nsnb-viewer-upgrade",
   NsnbInvite: "nsnb-invite",
   NsnbRedeploy: "nsnb-redeploy",
   NsnbRedeployAttributionCard: "nsnb-redeploy-attribution-card",
+  NsnbRequestAccess: "nsnb-request-access",
+  NsnbViewerUpgrade: "nsnb-viewer-upgrade",
+  OrganizationTeams: "organization-teams",
+  Saml: "saml",
+  Teams: "teams",
 } as const;
 export type GetTeamAccessRequestOrigin = ClosedEnum<
   typeof GetTeamAccessRequestOrigin

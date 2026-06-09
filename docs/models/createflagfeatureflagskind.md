@@ -5,11 +5,11 @@
 ```typescript
 import { CreateFlagFeatureFlagsKind } from "@vercel/sdk/models/createflagop.js";
 
-let value: CreateFlagFeatureFlagsKind = "number";
+let value: CreateFlagFeatureFlagsKind = "json";
 ```
 
 ## Values
 
 ```typescript
-"string" | "number" | "boolean" | "json"
+"boolean" | "json" | "number" | "string"
 ```

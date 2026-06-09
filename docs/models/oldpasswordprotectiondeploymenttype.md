@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { OldPasswordProtectionDeploymentType } from "@vercel/sdk/models/onehundredandfiftyfive.js";
+import { OldPasswordProtectionDeploymentType } from "@vercel/sdk/models/usereventpayloadprevious.js";
 
-let value: OldPasswordProtectionDeploymentType = "preview";
+let value: OldPasswordProtectionDeploymentType = "all_except_custom_domains";
 ```
 
 ## Values
 
 ```typescript
-"all" | "preview" | "prod_deployment_urls_and_all_previews" | "all_except_custom_domains"
+"all" | "all_except_custom_domains" | "preview" | "prod_deployment_urls_and_all_previews"
 ```

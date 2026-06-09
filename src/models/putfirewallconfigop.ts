@@ -679,54 +679,54 @@ export type PutFirewallConfigCrs = {
 };
 
 export const PutFirewallConfigRulesType = {
-  Host: "host",
-  Path: "path",
-  Method: "method",
-  Header: "header",
-  Query: "query",
+  BotCategory: "bot_category",
+  BotName: "bot_name",
+  BotProtection: "bot_protection",
+  BotStatus: "bot_status",
   Cookie: "cookie",
-  TargetPath: "target_path",
-  Route: "route",
-  RawPath: "raw_path",
-  IpAddress: "ip_address",
-  Protocol: "protocol",
-  Region: "region",
-  Scheme: "scheme",
   Environment: "environment",
-  UserAgent: "user_agent",
+  GeoAsNumber: "geo_as_number",
+  GeoCity: "geo_city",
   GeoContinent: "geo_continent",
   GeoCountry: "geo_country",
   GeoCountryRegion: "geo_country_region",
-  GeoCity: "geo_city",
-  GeoAsNumber: "geo_as_number",
-  Ja4Digest: "ja4_digest",
+  Header: "header",
+  Host: "host",
+  IpAddress: "ip_address",
   Ja3Digest: "ja3_digest",
+  Ja4Digest: "ja4_digest",
+  Method: "method",
+  Path: "path",
+  Protocol: "protocol",
+  Query: "query",
   RateLimitApiId: "rate_limit_api_id",
+  RawPath: "raw_path",
+  Region: "region",
+  Route: "route",
+  Scheme: "scheme",
   ServerAction: "server_action",
-  BotName: "bot_name",
-  BotCategory: "bot_category",
-  BotStatus: "bot_status",
-  BotProtection: "bot_protection",
+  TargetPath: "target_path",
+  UserAgent: "user_agent",
 } as const;
 export type PutFirewallConfigRulesType = ClosedEnum<
   typeof PutFirewallConfigRulesType
 >;
 
 export const PutFirewallConfigRulesOp = {
-  Sub: "sub",
-  Re: "re",
   Eq: "eq",
   Ex: "ex",
-  Inc: "inc",
-  Pre: "pre",
-  Suf: "suf",
   Gt: "gt",
   Gte: "gte",
+  Inc: "inc",
   Lt: "lt",
   Lte: "lte",
+  Neq: "neq",
   Nex: "nex",
   Ninc: "ninc",
-  Neq: "neq",
+  Pre: "pre",
+  Re: "re",
+  Sub: "sub",
+  Suf: "suf",
 } as const;
 export type PutFirewallConfigRulesOp = ClosedEnum<
   typeof PutFirewallConfigRulesOp
@@ -747,10 +747,10 @@ export type PutFirewallConfigRulesConditionGroup = {
 };
 
 export const PutFirewallConfigRulesSecurityResponse200Action = {
+  Bypass: "bypass",
+  Challenge: "challenge",
   Deny: "deny",
   Log: "log",
-  Challenge: "challenge",
-  Bypass: "bypass",
   RateLimit: "rate_limit",
   Redirect: "redirect",
 } as const;
@@ -768,9 +768,9 @@ export type PutFirewallConfigRulesAlgo = ClosedEnum<
 
 export const PutFirewallConfigRulesSecurityResponse200ApplicationJSONResponseBodyAction =
   {
+    Challenge: "challenge",
     Deny: "deny",
     Log: "log",
-    Challenge: "challenge",
     RateLimit: "rate_limit",
   } as const;
 export type PutFirewallConfigRulesSecurityResponse200ApplicationJSONResponseBodyAction =
@@ -830,54 +830,54 @@ export type PutFirewallConfigRules2 = {
 };
 
 export const PutFirewallConfigRulesSecurityType = {
-  Host: "host",
-  Path: "path",
-  Method: "method",
-  Header: "header",
-  Query: "query",
+  BotCategory: "bot_category",
+  BotName: "bot_name",
+  BotProtection: "bot_protection",
+  BotStatus: "bot_status",
   Cookie: "cookie",
-  TargetPath: "target_path",
-  Route: "route",
-  RawPath: "raw_path",
-  IpAddress: "ip_address",
-  Protocol: "protocol",
-  Region: "region",
-  Scheme: "scheme",
   Environment: "environment",
-  UserAgent: "user_agent",
+  GeoAsNumber: "geo_as_number",
+  GeoCity: "geo_city",
   GeoContinent: "geo_continent",
   GeoCountry: "geo_country",
   GeoCountryRegion: "geo_country_region",
-  GeoCity: "geo_city",
-  GeoAsNumber: "geo_as_number",
-  Ja4Digest: "ja4_digest",
+  Header: "header",
+  Host: "host",
+  IpAddress: "ip_address",
   Ja3Digest: "ja3_digest",
+  Ja4Digest: "ja4_digest",
+  Method: "method",
+  Path: "path",
+  Protocol: "protocol",
+  Query: "query",
   RateLimitApiId: "rate_limit_api_id",
+  RawPath: "raw_path",
+  Region: "region",
+  Route: "route",
+  Scheme: "scheme",
   ServerAction: "server_action",
-  BotName: "bot_name",
-  BotCategory: "bot_category",
-  BotStatus: "bot_status",
-  BotProtection: "bot_protection",
+  TargetPath: "target_path",
+  UserAgent: "user_agent",
 } as const;
 export type PutFirewallConfigRulesSecurityType = ClosedEnum<
   typeof PutFirewallConfigRulesSecurityType
 >;
 
 export const PutFirewallConfigRulesSecurityOp = {
-  Sub: "sub",
-  Re: "re",
   Eq: "eq",
   Ex: "ex",
-  Inc: "inc",
-  Pre: "pre",
-  Suf: "suf",
   Gt: "gt",
   Gte: "gte",
+  Inc: "inc",
   Lt: "lt",
   Lte: "lte",
+  Neq: "neq",
   Nex: "nex",
   Ninc: "ninc",
-  Neq: "neq",
+  Pre: "pre",
+  Re: "re",
+  Sub: "sub",
+  Suf: "suf",
 } as const;
 export type PutFirewallConfigRulesSecurityOp = ClosedEnum<
   typeof PutFirewallConfigRulesSecurityOp
@@ -901,10 +901,10 @@ export type PutFirewallConfigRulesSecurityConditionGroup = {
 };
 
 export const PutFirewallConfigRulesSecurityResponseAction = {
+  Bypass: "bypass",
+  Challenge: "challenge",
   Deny: "deny",
   Log: "log",
-  Challenge: "challenge",
-  Bypass: "bypass",
   RateLimit: "rate_limit",
   Redirect: "redirect",
 } as const;
@@ -921,9 +921,9 @@ export type PutFirewallConfigRulesSecurityAlgo = ClosedEnum<
 >;
 
 export const PutFirewallConfigRulesSecurityResponse200ApplicationJSONAction = {
+  Challenge: "challenge",
   Deny: "deny",
   Log: "log",
-  Challenge: "challenge",
   RateLimit: "rate_limit",
 } as const;
 export type PutFirewallConfigRulesSecurityResponse200ApplicationJSONAction =
@@ -990,10 +990,10 @@ export type PutFirewallConfigSecurityRules =
   | PutFirewallConfigRules2;
 
 export const PutFirewallConfigSecurityResponseAction = {
+  Bypass: "bypass",
+  Challenge: "challenge",
   Deny: "deny",
   Log: "log",
-  Challenge: "challenge",
-  Bypass: "bypass",
 } as const;
 export type PutFirewallConfigSecurityResponseAction = ClosedEnum<
   typeof PutFirewallConfigSecurityResponseAction
@@ -1011,9 +1011,9 @@ export type PutFirewallConfigChanges = {};
 
 export const PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesAction =
   {
+    Challenge: "challenge",
     Deny: "deny",
     Log: "log",
-    Challenge: "challenge",
   } as const;
 export type PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesAction =
   ClosedEnum<
@@ -1032,9 +1032,9 @@ export type PutFirewallConfigBotProtection = {
 
 export const PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesAiBotsAction =
   {
+    Challenge: "challenge",
     Deny: "deny",
     Log: "log",
-    Challenge: "challenge",
   } as const;
 export type PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesAiBotsAction =
   ClosedEnum<
@@ -1053,9 +1053,9 @@ export type PutFirewallConfigAiBots = {
 
 export const PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesOwaspAction =
   {
+    Challenge: "challenge",
     Deny: "deny",
     Log: "log",
-    Challenge: "challenge",
   } as const;
 export type PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesOwaspAction =
   ClosedEnum<
@@ -1074,9 +1074,9 @@ export type PutFirewallConfigOwasp = {
 
 export const PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesVercelRulesetAction =
   {
+    Challenge: "challenge",
     Deny: "deny",
     Log: "log",
-    Challenge: "challenge",
   } as const;
 export type PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesVercelRulesetAction =
   ClosedEnum<

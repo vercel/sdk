@@ -5,11 +5,11 @@
 ```typescript
 import { ContentDispositionType } from "@vercel/sdk/models/createdeploymentvaluedeployments2.js";
 
-let value: ContentDispositionType = "attachment";
+let value: ContentDispositionType = "inline";
 ```
 
 ## Values
 
 ```typescript
-"inline" | "attachment"
+"attachment" | "inline"
 ```

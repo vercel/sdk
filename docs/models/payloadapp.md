@@ -5,13 +5,13 @@ optional since entries prior to 2025-10-13 do not contain app information
 ## Example Usage
 
 ```typescript
-import { PayloadApp } from "@vercel/sdk/models/payloadenvironment.js";
+import { PayloadApp } from "@vercel/sdk/models/twohundredandninety.js";
 
 let value: PayloadApp = {
   clientId: "<id>",
   name: "<value>",
   clientAuthenticationUsed: {
-    method: "client_secret_basic",
+    method: "client_secret_jwt",
   },
 };
 ```

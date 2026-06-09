@@ -8,7 +8,7 @@ Network policy configuration.
 import { NetworkPolicy } from "@vercel/sdk/models/namedsandbox.js";
 
 let value: NetworkPolicy = {
-  mode: "default-allow",
+  mode: "default-deny",
 };
 ```
 

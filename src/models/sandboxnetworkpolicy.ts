@@ -20,8 +20,8 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
  */
 export const Mode = {
   AllowAll: "allow-all",
-  DenyAll: "deny-all",
   Custom: "custom",
+  DenyAll: "deny-all",
 } as const;
 /**
  * The network policy mode. - 'allow-all': All traffic is allowed. - 'deny-all': All traffic is blocked. - 'custom': Traffic is controlled by explicit allow/deny rules.

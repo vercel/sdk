@@ -13,5 +13,5 @@ let value: GetIntegrationLogDrainsEnvironments = "production";
 ## Values
 
 ```typescript
-"production" | "preview"
+"preview" | "production"
 ```

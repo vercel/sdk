@@ -7,9 +7,9 @@ import { ResponseBodyPrimaryMetrics } from "@vercel/sdk/models/updateflagop.js";
 
 let value: ResponseBodyPrimaryMetrics = {
   name: "<value>",
-  metricType: "count",
+  metricType: "percentage",
   metricUnit: "visitor",
-  directionality: "decreaseIsGood",
+  directionality: "increaseIsGood",
 };
 ```
 

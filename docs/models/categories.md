@@ -5,7 +5,7 @@ The categories that group this event with related event types. An event can belo
 ## Example Usage
 
 ```typescript
-import { Categories } from "@vercel/sdk/models/payloadenvironment.js";
+import { Categories } from "@vercel/sdk/models/twohundredandninety.js";
 
 let value: Categories = "deployment";
 ```
@@ -13,5 +13,5 @@ let value: Categories = "deployment";
 ## Values
 
 ```typescript
-"account" | "ai" | "ai-gateway" | "billing" | "deployment" | "domain" | "edge" | "env-variable" | "feature-flags" | "firewall" | "integration" | "microfrontends" | "network" | "observability" | "project" | "security" | "storage" | "team" | "v0" | "vercel-app" | "workflow" | "other"
+"account" | "ai" | "ai-gateway" | "billing" | "deployment" | "domain" | "edge" | "env-variable" | "feature-flags" | "firewall" | "integration" | "microfrontends" | "network" | "observability" | "other" | "project" | "security" | "storage" | "team" | "v0" | "vercel-app" | "workflow"
 ```

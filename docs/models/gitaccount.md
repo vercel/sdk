@@ -6,7 +6,7 @@
 import { GitAccount } from "@vercel/sdk/models/searchrepoop.js";
 
 let value: GitAccount = {
-  provider: "gitlab",
+  provider: "github-limited",
   namespaceId: 7968.2,
 };
 ```

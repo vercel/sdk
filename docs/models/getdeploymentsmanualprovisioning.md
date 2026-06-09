@@ -6,7 +6,7 @@
 import { GetDeploymentsManualProvisioning } from "@vercel/sdk/models/getdeploymentsop.js";
 
 let value: GetDeploymentsManualProvisioning = {
-  state: "COMPLETE",
+  state: "PENDING",
 };
 ```
 

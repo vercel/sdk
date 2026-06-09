@@ -9,11 +9,11 @@ import {
 
 let value:
   GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesOwaspAction =
-    "challenge";
+    "log";
 ```
 
 ## Values
 
 ```typescript
-"deny" | "log" | "challenge"
+"challenge" | "deny" | "log"
 ```

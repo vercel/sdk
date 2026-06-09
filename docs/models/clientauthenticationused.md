@@ -3,10 +3,10 @@
 ## Example Usage
 
 ```typescript
-import { ClientAuthenticationUsed } from "@vercel/sdk/models/payloadenvironment.js";
+import { ClientAuthenticationUsed } from "@vercel/sdk/models/twohundredandninety.js";
 
 let value: ClientAuthenticationUsed = {
-  method: "client_secret_jwt",
+  method: "none",
 };
 ```
 

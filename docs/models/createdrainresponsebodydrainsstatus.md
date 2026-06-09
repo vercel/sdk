@@ -5,11 +5,11 @@
 ```typescript
 import { CreateDrainResponseBodyDrainsStatus } from "@vercel/sdk/models/createdrainop.js";
 
-let value: CreateDrainResponseBodyDrainsStatus = "disabled";
+let value: CreateDrainResponseBodyDrainsStatus = "enabled";
 ```
 
 ## Values
 
 ```typescript
-"enabled" | "disabled" | "errored"
+"disabled" | "enabled" | "errored"
 ```

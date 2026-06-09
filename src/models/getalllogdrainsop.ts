@@ -26,8 +26,8 @@ export type GetAllLogDrainsRequest = {
 };
 
 export const GetAllLogDrainsDrainsStatus = {
-  Enabled: "enabled",
   Disabled: "disabled",
+  Enabled: "enabled",
   Errored: "errored",
 } as const;
 export type GetAllLogDrainsDrainsStatus = ClosedEnum<
@@ -35,10 +35,10 @@ export type GetAllLogDrainsDrainsStatus = ClosedEnum<
 >;
 
 export const GetAllLogDrainsDrainsLogDrainsDisabledReason = {
-  DisabledByOwner: "disabled-by-owner",
-  FeatureNotAvailable: "feature-not-available",
   AccountPlanDowngrade: "account-plan-downgrade",
   DisabledByAdmin: "disabled-by-admin",
+  DisabledByOwner: "disabled-by-owner",
+  FeatureNotAvailable: "feature-not-available",
 } as const;
 export type GetAllLogDrainsDrainsLogDrainsDisabledReason = ClosedEnum<
   typeof GetAllLogDrainsDrainsLogDrainsDisabledReason
@@ -127,8 +127,8 @@ export type GetAllLogDrainsDeliveryLogDrainsEncoding = ClosedEnum<
 >;
 
 export const GetAllLogDrainsDeliveryLogDrainsCompression = {
-  None: "none",
   Gzip: "gzip",
+  None: "none",
 } as const;
 export type GetAllLogDrainsDeliveryLogDrainsCompression = ClosedEnum<
   typeof GetAllLogDrainsDeliveryLogDrainsCompression
@@ -172,8 +172,8 @@ export type GetAllLogDrainsDrainsType = ClosedEnum<
 >;
 
 export const GetAllLogDrainsDrainsLogDrainsEnv = {
-  Production: "production",
   Preview: "preview",
+  Production: "production",
 } as const;
 export type GetAllLogDrainsDrainsLogDrainsEnv = ClosedEnum<
   typeof GetAllLogDrainsDrainsLogDrainsEnv
@@ -214,11 +214,11 @@ export type GetAllLogDrainsFilterProject = {
 export const GetAllLogDrainsFilterLogDrainsSources = {
   Build: "build",
   Edge: "edge",
-  Lambda: "lambda",
-  Static: "static",
   External: "external",
   Firewall: "firewall",
+  Lambda: "lambda",
   Redirect: "redirect",
+  Static: "static",
 } as const;
 export type GetAllLogDrainsFilterLogDrainsSources = ClosedEnum<
   typeof GetAllLogDrainsFilterLogDrainsSources
@@ -229,16 +229,16 @@ export type GetAllLogDrainsFilterLog = {
   legacyExcludeCachedStaticAssetLogs?: boolean | undefined;
 };
 
-export const GetAllLogDrainsFilterLogDrainsEnvironments = {
-  Production: "production",
+export const GetAllLogDrainsFilterEnvironments = {
   Preview: "preview",
+  Production: "production",
 } as const;
-export type GetAllLogDrainsFilterLogDrainsEnvironments = ClosedEnum<
-  typeof GetAllLogDrainsFilterLogDrainsEnvironments
+export type GetAllLogDrainsFilterEnvironments = ClosedEnum<
+  typeof GetAllLogDrainsFilterEnvironments
 >;
 
 export type GetAllLogDrainsFilterLogDrainsDeployment = {
-  environments?: Array<GetAllLogDrainsFilterLogDrainsEnvironments> | undefined;
+  environments?: Array<GetAllLogDrainsFilterEnvironments> | undefined;
 };
 
 export type GetAllLogDrainsFilter1 = {
@@ -266,8 +266,8 @@ export type GetAllLogDrainsDrainsLogDrainsFilterV2 =
   | GetAllLogDrainsFilterV22;
 
 export const GetAllLogDrainsProjectAccessLogDrainsManagedBy = {
-  Integration: "integration",
   Drain: "drain",
+  Integration: "integration",
 } as const;
 export type GetAllLogDrainsProjectAccessLogDrainsManagedBy = ClosedEnum<
   typeof GetAllLogDrainsProjectAccessLogDrainsManagedBy
@@ -280,8 +280,8 @@ export type GetAllLogDrainsProjectAccess2 = {
 };
 
 export const GetAllLogDrainsProjectAccessManagedBy = {
-  Integration: "integration",
   Drain: "drain",
+  Integration: "integration",
 } as const;
 export type GetAllLogDrainsProjectAccessManagedBy = ClosedEnum<
   typeof GetAllLogDrainsProjectAccessManagedBy
@@ -329,8 +329,8 @@ export type GetAllLogDrainsDrains2 = {
 };
 
 export const GetAllLogDrainsDrainsLogDrainsStatus = {
-  Enabled: "enabled",
   Disabled: "disabled",
+  Enabled: "enabled",
   Errored: "errored",
 } as const;
 export type GetAllLogDrainsDrainsLogDrainsStatus = ClosedEnum<
@@ -338,10 +338,10 @@ export type GetAllLogDrainsDrainsLogDrainsStatus = ClosedEnum<
 >;
 
 export const GetAllLogDrainsDrainsDisabledReason = {
-  DisabledByOwner: "disabled-by-owner",
-  FeatureNotAvailable: "feature-not-available",
   AccountPlanDowngrade: "account-plan-downgrade",
   DisabledByAdmin: "disabled-by-admin",
+  DisabledByOwner: "disabled-by-owner",
+  FeatureNotAvailable: "feature-not-available",
 } as const;
 export type GetAllLogDrainsDrainsDisabledReason = ClosedEnum<
   typeof GetAllLogDrainsDrainsDisabledReason
@@ -430,8 +430,8 @@ export type GetAllLogDrainsDeliveryLogDrainsResponse200Encoding = ClosedEnum<
 >;
 
 export const GetAllLogDrainsDeliveryCompression = {
-  None: "none",
   Gzip: "gzip",
+  None: "none",
 } as const;
 export type GetAllLogDrainsDeliveryCompression = ClosedEnum<
   typeof GetAllLogDrainsDeliveryCompression
@@ -475,8 +475,8 @@ export type GetAllLogDrainsDrainsLogDrainsType = ClosedEnum<
 >;
 
 export const GetAllLogDrainsDrainsEnv = {
-  Production: "production",
   Preview: "preview",
+  Production: "production",
 } as const;
 export type GetAllLogDrainsDrainsEnv = ClosedEnum<
   typeof GetAllLogDrainsDrainsEnv
@@ -517,11 +517,11 @@ export type GetAllLogDrainsFilterLogDrainsProject = {
 export const GetAllLogDrainsFilterSources = {
   Build: "build",
   Edge: "edge",
-  Lambda: "lambda",
-  Static: "static",
   External: "external",
   Firewall: "firewall",
+  Lambda: "lambda",
   Redirect: "redirect",
+  Static: "static",
 } as const;
 export type GetAllLogDrainsFilterSources = ClosedEnum<
   typeof GetAllLogDrainsFilterSources
@@ -532,16 +532,16 @@ export type GetAllLogDrainsFilterLogDrainsLog = {
   legacyExcludeCachedStaticAssetLogs?: boolean | undefined;
 };
 
-export const GetAllLogDrainsFilterEnvironments = {
-  Production: "production",
+export const GetAllLogDrainsFilterLogDrainsEnvironments = {
   Preview: "preview",
+  Production: "production",
 } as const;
-export type GetAllLogDrainsFilterEnvironments = ClosedEnum<
-  typeof GetAllLogDrainsFilterEnvironments
+export type GetAllLogDrainsFilterLogDrainsEnvironments = ClosedEnum<
+  typeof GetAllLogDrainsFilterLogDrainsEnvironments
 >;
 
 export type GetAllLogDrainsFilterDeployment = {
-  environments?: Array<GetAllLogDrainsFilterEnvironments> | undefined;
+  environments?: Array<GetAllLogDrainsFilterLogDrainsEnvironments> | undefined;
 };
 
 export type GetAllLogDrainsFilterLogDrains1 = {
@@ -605,75 +605,75 @@ export type GetAllLogDrainsResponseBody2 = {
 };
 
 export const GetAllLogDrainsResponseBodyFramework = {
-  Blitzjs: "blitzjs",
-  Nextjs: "nextjs",
-  Gatsby: "gatsby",
-  Remix: "remix",
-  ReactRouter: "react-router",
-  Astro: "astro",
-  Hexo: "hexo",
-  Eleventy: "eleventy",
-  Docusaurus2: "docusaurus-2",
-  Docusaurus: "docusaurus",
-  Preact: "preact",
-  Solidstart1: "solidstart-1",
-  Solidstart: "solidstart",
-  Dojo: "dojo",
-  Ember: "ember",
-  Vue: "vue",
-  Scully: "scully",
-  IonicAngular: "ionic-angular",
+  ActixWeb: "actix-web",
   Angular: "angular",
+  Ash: "ash",
+  Astro: "astro",
+  Axum: "axum",
+  Blitzjs: "blitzjs",
+  Brunch: "brunch",
+  CreateReactApp: "create-react-app",
+  Django: "django",
+  Docusaurus: "docusaurus",
+  Docusaurus2: "docusaurus-2",
+  Dojo: "dojo",
+  Eleventy: "eleventy",
+  Elysia: "elysia",
+  Ember: "ember",
+  Express: "express",
+  Fastapi: "fastapi",
+  Fasthtml: "fasthtml",
+  Fastify: "fastify",
+  Flask: "flask",
+  Gatsby: "gatsby",
+  Go: "go",
+  Gridsome: "gridsome",
+  H3: "h3",
+  Hexo: "hexo",
+  Hono: "hono",
+  Hugo: "hugo",
+  Hydrogen: "hydrogen",
+  IonicAngular: "ionic-angular",
+  IonicReact: "ionic-react",
+  Jekyll: "jekyll",
+  Koa: "koa",
+  Mastra: "mastra",
+  Middleman: "middleman",
+  Nestjs: "nestjs",
+  Nextjs: "nextjs",
+  Nitro: "nitro",
+  Node: "node",
+  Nuxtjs: "nuxtjs",
+  Parcel: "parcel",
   Polymer: "polymer",
+  Preact: "preact",
+  Python: "python",
+  ReactRouter: "react-router",
+  Redwoodjs: "redwoodjs",
+  Remix: "remix",
+  Ruby: "ruby",
+  Rust: "rust",
+  Saber: "saber",
+  Sanity: "sanity",
+  SanityV2: "sanity-v2",
+  Sapper: "sapper",
+  Scully: "scully",
+  Services: "services",
+  Solidstart: "solidstart",
+  Solidstart1: "solidstart-1",
+  Stencil: "stencil",
+  Storybook: "storybook",
   Svelte: "svelte",
   Sveltekit: "sveltekit",
   Sveltekit1: "sveltekit-1",
-  IonicReact: "ionic-react",
-  CreateReactApp: "create-react-app",
-  Gridsome: "gridsome",
-  Umijs: "umijs",
-  Sapper: "sapper",
-  Saber: "saber",
-  Stencil: "stencil",
-  Nuxtjs: "nuxtjs",
-  Redwoodjs: "redwoodjs",
-  Hugo: "hugo",
-  Jekyll: "jekyll",
-  Brunch: "brunch",
-  Middleman: "middleman",
-  Zola: "zola",
-  Hydrogen: "hydrogen",
-  Vite: "vite",
   TanstackStart: "tanstack-start",
+  Umijs: "umijs",
+  Vite: "vite",
   Vitepress: "vitepress",
+  Vue: "vue",
   Vuepress: "vuepress",
-  Parcel: "parcel",
-  Fastapi: "fastapi",
-  Flask: "flask",
-  Fasthtml: "fasthtml",
-  Django: "django",
-  Ash: "ash",
-  SanityV3: "sanity-v3",
-  Sanity: "sanity",
-  Storybook: "storybook",
-  Nitro: "nitro",
-  Hono: "hono",
-  Express: "express",
-  H3: "h3",
-  Koa: "koa",
-  Nestjs: "nestjs",
-  Elysia: "elysia",
-  Fastify: "fastify",
   Xmcp: "xmcp",
-  Python: "python",
-  Ruby: "ruby",
-  Rust: "rust",
-  Axum: "axum",
-  ActixWeb: "actix-web",
-  Node: "node",
-  Go: "go",
-  Services: "services",
-  Mastra: "mastra",
+  Zola: "zola",
 } as const;
 export type GetAllLogDrainsResponseBodyFramework = ClosedEnum<
   typeof GetAllLogDrainsResponseBodyFramework
@@ -1988,13 +1988,13 @@ export function getAllLogDrainsFilterLogFromJSON(
 }
 
 /** @internal */
-export const GetAllLogDrainsFilterLogDrainsEnvironments$inboundSchema:
-  z.ZodNativeEnum<typeof GetAllLogDrainsFilterLogDrainsEnvironments> = z
-    .nativeEnum(GetAllLogDrainsFilterLogDrainsEnvironments);
+export const GetAllLogDrainsFilterEnvironments$inboundSchema: z.ZodNativeEnum<
+  typeof GetAllLogDrainsFilterEnvironments
+> = z.nativeEnum(GetAllLogDrainsFilterEnvironments);
 /** @internal */
-export const GetAllLogDrainsFilterLogDrainsEnvironments$outboundSchema:
-  z.ZodNativeEnum<typeof GetAllLogDrainsFilterLogDrainsEnvironments> =
-    GetAllLogDrainsFilterLogDrainsEnvironments$inboundSchema;
+export const GetAllLogDrainsFilterEnvironments$outboundSchema: z.ZodNativeEnum<
+  typeof GetAllLogDrainsFilterEnvironments
+> = GetAllLogDrainsFilterEnvironments$inboundSchema;
 
 /** @internal */
 export const GetAllLogDrainsFilterLogDrainsDeployment$inboundSchema: z.ZodType<
@@ -2003,7 +2003,7 @@ export const GetAllLogDrainsFilterLogDrainsDeployment$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   environments: types.optional(
-    z.array(GetAllLogDrainsFilterLogDrainsEnvironments$inboundSchema),
+    z.array(GetAllLogDrainsFilterEnvironments$inboundSchema),
   ),
 });
 /** @internal */
@@ -2017,9 +2017,8 @@ export const GetAllLogDrainsFilterLogDrainsDeployment$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetAllLogDrainsFilterLogDrainsDeployment
 > = z.object({
-  environments: z.array(
-    GetAllLogDrainsFilterLogDrainsEnvironments$outboundSchema,
-  ).optional(),
+  environments: z.array(GetAllLogDrainsFilterEnvironments$outboundSchema)
+    .optional(),
 });
 
 export function getAllLogDrainsFilterLogDrainsDeploymentToJSON(
@@ -3807,13 +3806,13 @@ export function getAllLogDrainsFilterLogDrainsLogFromJSON(
 }
 
 /** @internal */
-export const GetAllLogDrainsFilterEnvironments$inboundSchema: z.ZodNativeEnum<
-  typeof GetAllLogDrainsFilterEnvironments
-> = z.nativeEnum(GetAllLogDrainsFilterEnvironments);
+export const GetAllLogDrainsFilterLogDrainsEnvironments$inboundSchema:
+  z.ZodNativeEnum<typeof GetAllLogDrainsFilterLogDrainsEnvironments> = z
+    .nativeEnum(GetAllLogDrainsFilterLogDrainsEnvironments);
 /** @internal */
-export const GetAllLogDrainsFilterEnvironments$outboundSchema: z.ZodNativeEnum<
-  typeof GetAllLogDrainsFilterEnvironments
-> = GetAllLogDrainsFilterEnvironments$inboundSchema;
+export const GetAllLogDrainsFilterLogDrainsEnvironments$outboundSchema:
+  z.ZodNativeEnum<typeof GetAllLogDrainsFilterLogDrainsEnvironments> =
+    GetAllLogDrainsFilterLogDrainsEnvironments$inboundSchema;
 
 /** @internal */
 export const GetAllLogDrainsFilterDeployment$inboundSchema: z.ZodType<
@@ -3822,7 +3821,7 @@ export const GetAllLogDrainsFilterDeployment$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   environments: types.optional(
-    z.array(GetAllLogDrainsFilterEnvironments$inboundSchema),
+    z.array(GetAllLogDrainsFilterLogDrainsEnvironments$inboundSchema),
   ),
 });
 /** @internal */
@@ -3836,8 +3835,9 @@ export const GetAllLogDrainsFilterDeployment$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetAllLogDrainsFilterDeployment
 > = z.object({
-  environments: z.array(GetAllLogDrainsFilterEnvironments$outboundSchema)
-    .optional(),
+  environments: z.array(
+    GetAllLogDrainsFilterLogDrainsEnvironments$outboundSchema,
+  ).optional(),
 });
 
 export function getAllLogDrainsFilterDeploymentToJSON(

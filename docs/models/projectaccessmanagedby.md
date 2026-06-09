@@ -5,11 +5,11 @@
 ```typescript
 import { ProjectAccessManagedBy } from "@vercel/sdk/models/createdrainop.js";
 
-let value: ProjectAccessManagedBy = "drain";
+let value: ProjectAccessManagedBy = "integration";
 ```
 
 ## Values
 
 ```typescript
-"integration" | "drain"
+"drain" | "integration"
 ```

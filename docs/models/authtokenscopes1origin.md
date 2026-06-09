@@ -7,11 +7,11 @@ Possible step-up auth origins
 ```typescript
 import { AuthTokenScopes1Origin } from "@vercel/sdk/models/authtoken.js";
 
-let value: AuthTokenScopes1Origin = "recovery-code";
+let value: AuthTokenScopes1Origin = "totp";
 ```
 
 ## Values
 
 ```typescript
-"otp" | "totp" | "webauthn" | "recovery-code" | "email-otp"
+"email-otp" | "otp" | "recovery-code" | "totp" | "webauthn"
 ```

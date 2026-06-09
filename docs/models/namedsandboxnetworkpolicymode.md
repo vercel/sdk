@@ -11,5 +11,5 @@ let value: NamedSandboxNetworkPolicyMode = "allow-all";
 ## Values
 
 ```typescript
-"allow-all" | "deny-all" | "custom" | "default-allow" | "default-deny"
+"allow-all" | "custom" | "default-allow" | "default-deny" | "deny-all"
 ```

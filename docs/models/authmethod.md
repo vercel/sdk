@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { AuthMethod } from "@vercel/sdk/models/payloadenvironment.js";
+import { AuthMethod } from "@vercel/sdk/models/twohundredandninety.js";
 
-let value: AuthMethod = "manual";
+let value: AuthMethod = "invite";
 ```
 
 ## Values
 
 ```typescript
-"email" | "saml" | "app" | "github" | "gitlab" | "bitbucket" | "google" | "apple" | "chatgpt" | "github-webhook" | "manual" | "passkey" | "otp" | "sms" | "invite" | "token-exchange-oidc" | "emu"
+"app" | "apple" | "bitbucket" | "chatgpt" | "email" | "emu" | "github" | "github-webhook" | "gitlab" | "google" | "invite" | "manual" | "otp" | "passkey" | "saml" | "sms" | "token-exchange-oidc"
 ```

@@ -43,11 +43,11 @@ export type SearchRepoRequest = {
 };
 
 export const SearchRepoResponseBodyProvider = {
-  Github: "github",
-  GithubLimited: "github-limited",
-  GithubCustomHost: "github-custom-host",
-  Gitlab: "gitlab",
   Bitbucket: "bitbucket",
+  Github: "github",
+  GithubCustomHost: "github-custom-host",
+  GithubLimited: "github-limited",
+  Gitlab: "gitlab",
   Vercel: "vercel",
 } as const;
 export type SearchRepoResponseBodyProvider = ClosedEnum<
@@ -64,11 +64,11 @@ export type GitAccount = {
 export type ResponseBodyId = string | number;
 
 export const SearchRepoResponseBodyIntegrationsProvider = {
-  Github: "github",
-  GithubLimited: "github-limited",
-  GithubCustomHost: "github-custom-host",
-  Gitlab: "gitlab",
   Bitbucket: "bitbucket",
+  Github: "github",
+  GithubCustomHost: "github-custom-host",
+  GithubLimited: "github-limited",
+  Gitlab: "gitlab",
   Vercel: "vercel",
 } as const;
 export type SearchRepoResponseBodyIntegrationsProvider = ClosedEnum<
@@ -77,14 +77,14 @@ export type SearchRepoResponseBodyIntegrationsProvider = ClosedEnum<
 
 export type SearchRepoResponseBodyId = string | number;
 
-export type Owner = {
+export type ResponseBodyOwner = {
   id: string | number;
   name: string;
 };
 
 export const ResponseBodyOwnerType = {
-  User: "user",
   Team: "team",
+  User: "user",
 } as const;
 export type ResponseBodyOwnerType = ClosedEnum<typeof ResponseBodyOwnerType>;
 
@@ -95,7 +95,7 @@ export type Repos = {
   name: string;
   slug: string;
   namespace: string;
-  owner: Owner;
+  owner: ResponseBodyOwner;
   ownerType: ResponseBodyOwnerType;
   private: boolean;
   defaultBranch: string;
@@ -361,37 +361,44 @@ export function searchRepoResponseBodyIdFromJSON(
 }
 
 /** @internal */
-export const Owner$inboundSchema: z.ZodType<Owner, z.ZodTypeDef, unknown> = z
-  .object({
-    id: smartUnion([types.string(), types.number()]),
-    name: types.string(),
-  });
+export const ResponseBodyOwner$inboundSchema: z.ZodType<
+  ResponseBodyOwner,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  id: smartUnion([types.string(), types.number()]),
+  name: types.string(),
+});
 /** @internal */
-export type Owner$Outbound = {
+export type ResponseBodyOwner$Outbound = {
   id: string | number;
   name: string;
 };
 
 /** @internal */
-export const Owner$outboundSchema: z.ZodType<
-  Owner$Outbound,
+export const ResponseBodyOwner$outboundSchema: z.ZodType<
+  ResponseBodyOwner$Outbound,
   z.ZodTypeDef,
-  Owner
+  ResponseBodyOwner
 > = z.object({
   id: smartUnion([z.string(), z.number()]),
   name: z.string(),
 });
 
-export function ownerToJSON(owner: Owner): string {
-  return JSON.stringify(Owner$outboundSchema.parse(owner));
+export function responseBodyOwnerToJSON(
+  responseBodyOwner: ResponseBodyOwner,
+): string {
+  return JSON.stringify(
+    ResponseBodyOwner$outboundSchema.parse(responseBodyOwner),
+  );
 }
-export function ownerFromJSON(
+export function responseBodyOwnerFromJSON(
   jsonString: string,
-): SafeParseResult<Owner, SDKValidationError> {
+): SafeParseResult<ResponseBodyOwner, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Owner$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Owner' from JSON`,
+    (x) => ResponseBodyOwner$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyOwner' from JSON`,
   );
 }
 
@@ -413,7 +420,7 @@ export const Repos$inboundSchema: z.ZodType<Repos, z.ZodTypeDef, unknown> = z
     name: types.string(),
     slug: types.string(),
     namespace: types.string(),
-    owner: z.lazy(() => Owner$inboundSchema),
+    owner: z.lazy(() => ResponseBodyOwner$inboundSchema),
     ownerType: ResponseBodyOwnerType$inboundSchema,
     private: types.boolean(),
     defaultBranch: types.string(),
@@ -427,7 +434,7 @@ export type Repos$Outbound = {
   name: string;
   slug: string;
   namespace: string;
-  owner: Owner$Outbound;
+  owner: ResponseBodyOwner$Outbound;
   ownerType: string;
   private: boolean;
   defaultBranch: string;
@@ -446,7 +453,7 @@ export const Repos$outboundSchema: z.ZodType<
   name: z.string(),
   slug: z.string(),
   namespace: z.string(),
-  owner: z.lazy(() => Owner$outboundSchema),
+  owner: z.lazy(() => ResponseBodyOwner$outboundSchema),
   ownerType: ResponseBodyOwnerType$outboundSchema,
   private: z.boolean(),
   defaultBranch: z.string(),

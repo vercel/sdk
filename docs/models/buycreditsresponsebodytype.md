@@ -7,11 +7,11 @@ The type of the purchase provider
 ```typescript
 import { BuyCreditsResponseBodyType } from "@vercel/sdk/models/buycreditsop.js";
 
-let value: BuyCreditsResponseBodyType = "stripe_invoice_immediate";
+let value: BuyCreditsResponseBodyType = "stripe_hosted";
 ```
 
 ## Values
 
 ```typescript
-"stripe_elements" | "stripe_hosted" | "stripe_invoice_deferred" | "stripe_invoice_immediate" | "stripe_invoice_elements" | "tackle_aws_marketplace" | "orb_ledger" | "apple_in_app_purchase"
+"apple_in_app_purchase" | "orb_ledger" | "stripe_elements" | "stripe_hosted" | "stripe_invoice_deferred" | "stripe_invoice_elements" | "stripe_invoice_immediate" | "tackle_aws_marketplace"
 ```

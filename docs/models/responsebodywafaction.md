@@ -5,11 +5,11 @@
 ```typescript
 import { ResponseBodyWafAction } from "@vercel/sdk/models/getdeploymenteventsop.js";
 
-let value: ResponseBodyWafAction = "log";
+let value: ResponseBodyWafAction = "bypass";
 ```
 
 ## Values
 
 ```typescript
-"log" | "challenge" | "deny" | "bypass" | "rate_limit"
+"bypass" | "challenge" | "deny" | "log" | "rate_limit"
 ```

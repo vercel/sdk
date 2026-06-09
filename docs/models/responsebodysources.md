@@ -7,7 +7,16 @@
 
 ```typescript
 const value: models.GetProjectsSources1 = {
-  provider: "github",
+  provider: "bitbucket",
+  org: "<value>",
+};
+```
+
+### `models.GetProjectsSources1`
+
+```typescript
+const value: models.GetProjectsSources1 = {
+  provider: "bitbucket",
   org: "<value>",
 };
 ```
@@ -17,8 +26,7 @@ const value: models.GetProjectsSources1 = {
 ```typescript
 const value: models.GetProjectsSources2 = {
   provider: "gitlab",
-  org: "<value>",
-  repo: "<value>",
+  namespace: "<value>",
 };
 ```
 

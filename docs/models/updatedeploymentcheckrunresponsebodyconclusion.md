@@ -5,11 +5,11 @@
 ```typescript
 import { UpdateDeploymentCheckRunResponseBodyConclusion } from "@vercel/sdk/models/updatedeploymentcheckrunop.js";
 
-let value: UpdateDeploymentCheckRunResponseBodyConclusion = "failed";
+let value: UpdateDeploymentCheckRunResponseBodyConclusion = "skipped";
 ```
 
 ## Values
 
 ```typescript
-"timeout" | "canceled" | "skipped" | "failed" | "neutral" | "succeeded"
+"canceled" | "failed" | "neutral" | "skipped" | "succeeded" | "timeout"
 ```

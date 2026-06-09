@@ -7,7 +7,7 @@ import { GetRoutesResponseBodyProjectRoutesTransforms } from "@vercel/sdk/models
 
 let value: GetRoutesResponseBodyProjectRoutesTransforms = {
   type: "request.query",
-  op: "delete",
+  op: "set",
   target: {
     key: {},
   },

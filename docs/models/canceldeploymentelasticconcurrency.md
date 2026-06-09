@@ -7,11 +7,11 @@ When elastic concurrency is used for this deployment, a value is set. The value 
 ```typescript
 import { CancelDeploymentElasticConcurrency } from "@vercel/sdk/models/canceldeploymentop.js";
 
-let value: CancelDeploymentElasticConcurrency = "PROJECT_SETTING";
+let value: CancelDeploymentElasticConcurrency = "SKIP_QUEUE";
 ```
 
 ## Values
 
 ```typescript
-"TEAM_SETTING" | "PROJECT_SETTING" | "SKIP_QUEUE"
+"PROJECT_SETTING" | "SKIP_QUEUE" | "TEAM_SETTING"
 ```

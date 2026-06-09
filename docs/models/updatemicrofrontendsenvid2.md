@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { UpdateMicrofrontendsEnvId2 } from "@vercel/sdk/models/updatemicrofrontendsmanagedrules.js";
+import { UpdateMicrofrontendsEnvId2 } from "@vercel/sdk/models/updatemicrofrontendsbotfilter.js";
 
-let value: UpdateMicrofrontendsEnvId2 = "production";
+let value: UpdateMicrofrontendsEnvId2 = "preview";
 ```
 
 ## Values
 
 ```typescript
-"production" | "preview"
+"preview" | "production"
 ```

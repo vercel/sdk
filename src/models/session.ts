@@ -19,13 +19,13 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
  * The status of the sandbox.
  */
 export const SessionStatus = {
-  Running: "running",
-  Stopping: "stopping",
-  Stopped: "stopped",
+  Aborted: "aborted",
   Failed: "failed",
   Pending: "pending",
-  Aborted: "aborted",
+  Running: "running",
   Snapshotting: "snapshotting",
+  Stopped: "stopped",
+  Stopping: "stopping",
 } as const;
 /**
  * The status of the sandbox.

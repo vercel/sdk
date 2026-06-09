@@ -5,11 +5,11 @@
 ```typescript
 import { ResponseBodyAllocationUnit } from "@vercel/sdk/models/updateflagop.js";
 
-let value: ResponseBodyAllocationUnit = "userId";
+let value: ResponseBodyAllocationUnit = "visitorId";
 ```
 
 ## Values
 
 ```typescript
-"cookieId" | "visitorId" | "userId"
+"cookieId" | "userId" | "visitorId"
 ```

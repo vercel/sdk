@@ -3,10 +3,10 @@
 ## Example Usage
 
 ```typescript
-import { UpdateMicrofrontendsEnv } from "@vercel/sdk/models/updatemicrofrontendsmanagedrules.js";
+import { UpdateMicrofrontendsEnv } from "@vercel/sdk/models/updatemicrofrontendsbotfilter.js";
 
 let value: UpdateMicrofrontendsEnv = {
-  type: "system",
+  type: "encrypted",
   value: "<value>",
   key: "<key>",
 };

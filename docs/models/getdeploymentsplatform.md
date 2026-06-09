@@ -12,7 +12,7 @@ let value: GetDeploymentsPlatform = {
     name: "<value>",
   },
   origin: {
-    type: "url",
+    type: "id",
     value: "<value>",
   },
   creator: {

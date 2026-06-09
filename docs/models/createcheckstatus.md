@@ -11,5 +11,5 @@ let value: CreateCheckStatus = "completed";
 ## Values
 
 ```typescript
-"running" | "completed" | "registered"
+"completed" | "registered" | "running"
 ```

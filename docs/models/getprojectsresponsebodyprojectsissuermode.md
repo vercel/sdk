@@ -5,13 +5,13 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsResponseBodyProjectsIssuerMode } from "@vercel/sdk/models/getprojectsresponsebodytargets.js";
+import { GetProjectsResponseBodyProjectsIssuerMode } from "@vercel/sdk/models/getprojectsresponsebodyfunctiondefaultmemorytype.js";
 
-let value: GetProjectsResponseBodyProjectsIssuerMode = "team";
+let value: GetProjectsResponseBodyProjectsIssuerMode = "global";
 ```
 
 ## Values
 
 ```typescript
-"team" | "global"
+"global" | "team"
 ```

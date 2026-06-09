@@ -11,5 +11,5 @@ let value: GetRoutesResponseBodyProjectRoutesOp = "append";
 ## Values
 
 ```typescript
-"append" | "set" | "delete"
+"append" | "delete" | "set"
 ```

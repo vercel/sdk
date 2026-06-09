@@ -155,16 +155,16 @@ export type AddRouteRequest = {
 };
 
 export const RouteType = {
-  Rewrite: "rewrite",
   Redirect: "redirect",
+  Rewrite: "rewrite",
   SetStatus: "set_status",
   Transform: "transform",
 } as const;
 export type RouteType = ClosedEnum<typeof RouteType>;
 
 export const AddRouteHasProjectRoutesType = {
-  Header: "header",
   Cookie: "cookie",
+  Header: "header",
   Query: "query",
 } as const;
 export type AddRouteHasProjectRoutesType = ClosedEnum<
@@ -222,13 +222,13 @@ export type AddRouteHas1 = {
 
 export type AddRouteProjectRoutesHas =
   | AddRouteHas1
-  | (AddRouteHas2 & { type: "header" })
   | (AddRouteHas2 & { type: "cookie" })
+  | (AddRouteHas2 & { type: "header" })
   | (AddRouteHas2 & { type: "query" });
 
 export const AddRouteMissingProjectRoutesType = {
-  Header: "header",
   Cookie: "cookie",
+  Header: "header",
   Query: "query",
 } as const;
 export type AddRouteMissingProjectRoutesType = ClosedEnum<
@@ -286,8 +286,8 @@ export type AddRouteMissing1 = {
 
 export type AddRouteProjectRoutesMissing =
   | AddRouteMissing1
-  | (AddRouteMissing2 & { type: "header" })
   | (AddRouteMissing2 & { type: "cookie" })
+  | (AddRouteMissing2 & { type: "header" })
   | (AddRouteMissing2 & { type: "query" });
 
 export const AddRouteAction = {
@@ -311,8 +311,8 @@ export type AddRouteProjectRoutesResponseType = ClosedEnum<
 
 export const AddRouteProjectRoutesOp = {
   Append: "append",
-  Set: "set",
   Delete: "delete",
+  Set: "set",
 } as const;
 export type AddRouteProjectRoutesOp = ClosedEnum<
   typeof AddRouteProjectRoutesOp
@@ -371,16 +371,16 @@ export type AddRouteProjectRoutesResponse200Route = {
   has?:
     | Array<
       | AddRouteHas1
-      | (AddRouteHas2 & { type: "header" })
       | (AddRouteHas2 & { type: "cookie" })
+      | (AddRouteHas2 & { type: "header" })
       | (AddRouteHas2 & { type: "query" })
     >
     | undefined;
   missing?:
     | Array<
       | AddRouteMissing1
-      | (AddRouteMissing2 & { type: "header" })
       | (AddRouteMissing2 & { type: "cookie" })
+      | (AddRouteMissing2 & { type: "header" })
       | (AddRouteMissing2 & { type: "query" })
     >
     | undefined;
@@ -1388,10 +1388,10 @@ export const AddRouteProjectRoutesHas$inboundSchema: z.ZodType<
 > = z.union([
   z.lazy(() => AddRouteHas1$inboundSchema),
   z.lazy(() => AddRouteHas2$inboundSchema).and(
-    z.object({ type: z.literal("header") }),
+    z.object({ type: z.literal("cookie") }),
   ),
   z.lazy(() => AddRouteHas2$inboundSchema).and(
-    z.object({ type: z.literal("cookie") }),
+    z.object({ type: z.literal("header") }),
   ),
   z.lazy(() => AddRouteHas2$inboundSchema).and(
     z.object({ type: z.literal("query") }),
@@ -1400,8 +1400,8 @@ export const AddRouteProjectRoutesHas$inboundSchema: z.ZodType<
 /** @internal */
 export type AddRouteProjectRoutesHas$Outbound =
   | AddRouteHas1$Outbound
-  | (AddRouteHas2$Outbound & { type: "header" })
   | (AddRouteHas2$Outbound & { type: "cookie" })
+  | (AddRouteHas2$Outbound & { type: "header" })
   | (AddRouteHas2$Outbound & { type: "query" });
 
 /** @internal */
@@ -1412,10 +1412,10 @@ export const AddRouteProjectRoutesHas$outboundSchema: z.ZodType<
 > = z.union([
   z.lazy(() => AddRouteHas1$outboundSchema),
   z.lazy(() => AddRouteHas2$outboundSchema).and(
-    z.object({ type: z.literal("header") }),
+    z.object({ type: z.literal("cookie") }),
   ),
   z.lazy(() => AddRouteHas2$outboundSchema).and(
-    z.object({ type: z.literal("cookie") }),
+    z.object({ type: z.literal("header") }),
   ),
   z.lazy(() => AddRouteHas2$outboundSchema).and(
     z.object({ type: z.literal("query") }),
@@ -1864,10 +1864,10 @@ export const AddRouteProjectRoutesMissing$inboundSchema: z.ZodType<
 > = z.union([
   z.lazy(() => AddRouteMissing1$inboundSchema),
   z.lazy(() => AddRouteMissing2$inboundSchema).and(
-    z.object({ type: z.literal("header") }),
+    z.object({ type: z.literal("cookie") }),
   ),
   z.lazy(() => AddRouteMissing2$inboundSchema).and(
-    z.object({ type: z.literal("cookie") }),
+    z.object({ type: z.literal("header") }),
   ),
   z.lazy(() => AddRouteMissing2$inboundSchema).and(
     z.object({ type: z.literal("query") }),
@@ -1876,8 +1876,8 @@ export const AddRouteProjectRoutesMissing$inboundSchema: z.ZodType<
 /** @internal */
 export type AddRouteProjectRoutesMissing$Outbound =
   | AddRouteMissing1$Outbound
-  | (AddRouteMissing2$Outbound & { type: "header" })
   | (AddRouteMissing2$Outbound & { type: "cookie" })
+  | (AddRouteMissing2$Outbound & { type: "header" })
   | (AddRouteMissing2$Outbound & { type: "query" });
 
 /** @internal */
@@ -1888,10 +1888,10 @@ export const AddRouteProjectRoutesMissing$outboundSchema: z.ZodType<
 > = z.union([
   z.lazy(() => AddRouteMissing1$outboundSchema),
   z.lazy(() => AddRouteMissing2$outboundSchema).and(
-    z.object({ type: z.literal("header") }),
+    z.object({ type: z.literal("cookie") }),
   ),
   z.lazy(() => AddRouteMissing2$outboundSchema).and(
-    z.object({ type: z.literal("cookie") }),
+    z.object({ type: z.literal("header") }),
   ),
   z.lazy(() => AddRouteMissing2$outboundSchema).and(
     z.object({ type: z.literal("query") }),
@@ -2285,9 +2285,9 @@ export const AddRouteProjectRoutesResponse200Route$inboundSchema: z.ZodType<
       z.lazy(() => AddRouteHas1$inboundSchema),
       z.lazy(() =>
         AddRouteHas2$inboundSchema
-      ).and(z.object({ type: z.literal("header") })),
+      ).and(z.object({ type: z.literal("cookie") })),
       z.lazy(() => AddRouteHas2$inboundSchema).and(
-        z.object({ type: z.literal("cookie") }),
+        z.object({ type: z.literal("header") }),
       ),
       z.lazy(() => AddRouteHas2$inboundSchema).and(
         z.object({ type: z.literal("query") }),
@@ -2299,9 +2299,9 @@ export const AddRouteProjectRoutesResponse200Route$inboundSchema: z.ZodType<
       z.lazy(() => AddRouteMissing1$inboundSchema),
       z.lazy(() =>
         AddRouteMissing2$inboundSchema
-      ).and(z.object({ type: z.literal("header") })),
+      ).and(z.object({ type: z.literal("cookie") })),
       z.lazy(() => AddRouteMissing2$inboundSchema).and(
-        z.object({ type: z.literal("cookie") }),
+        z.object({ type: z.literal("header") }),
       ),
       z.lazy(() => AddRouteMissing2$inboundSchema).and(
         z.object({ type: z.literal("query") }),
@@ -2337,16 +2337,16 @@ export type AddRouteProjectRoutesResponse200Route$Outbound = {
   has?:
     | Array<
       | AddRouteHas1$Outbound
-      | (AddRouteHas2$Outbound & { type: "header" })
       | (AddRouteHas2$Outbound & { type: "cookie" })
+      | (AddRouteHas2$Outbound & { type: "header" })
       | (AddRouteHas2$Outbound & { type: "query" })
     >
     | undefined;
   missing?:
     | Array<
       | AddRouteMissing1$Outbound
-      | (AddRouteMissing2$Outbound & { type: "header" })
       | (AddRouteMissing2$Outbound & { type: "cookie" })
+      | (AddRouteMissing2$Outbound & { type: "header" })
       | (AddRouteMissing2$Outbound & { type: "query" })
     >
     | undefined;
@@ -2384,10 +2384,10 @@ export const AddRouteProjectRoutesResponse200Route$outboundSchema: z.ZodType<
       z.lazy(() => AddRouteHas1$outboundSchema),
       z.lazy(() =>
         AddRouteHas2$outboundSchema
-      ).and(z.object({ type: z.literal("header") })),
+      ).and(z.object({ type: z.literal("cookie") })),
       z.lazy(() =>
         AddRouteHas2$outboundSchema
-      ).and(z.object({ type: z.literal("cookie") })),
+      ).and(z.object({ type: z.literal("header") })),
       z.lazy(() =>
         AddRouteHas2$outboundSchema
       ).and(z.object({ type: z.literal("query") })),
@@ -2398,10 +2398,10 @@ export const AddRouteProjectRoutesResponse200Route$outboundSchema: z.ZodType<
       z.lazy(() => AddRouteMissing1$outboundSchema),
       z.lazy(() =>
         AddRouteMissing2$outboundSchema
-      ).and(z.object({ type: z.literal("header") })),
+      ).and(z.object({ type: z.literal("cookie") })),
       z.lazy(() =>
         AddRouteMissing2$outboundSchema
-      ).and(z.object({ type: z.literal("cookie") })),
+      ).and(z.object({ type: z.literal("header") })),
       z.lazy(() =>
         AddRouteMissing2$outboundSchema
       ).and(z.object({ type: z.literal("query") })),

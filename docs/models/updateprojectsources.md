@@ -3,22 +3,30 @@
 
 ## Supported Types
 
-### `models.UpdateProjectSources1`
+### `models.UpdateProjectSourcesProjects1`
 
 ```typescript
-const value: models.UpdateProjectSources1 = {
-  provider: "gitlab",
+const value: models.UpdateProjectSourcesProjects1 = {
+  provider: "bitbucket",
   org: "<value>",
 };
 ```
 
-### `models.UpdateProjectSources2`
+### `models.UpdateProjectSourcesProjects1`
 
 ```typescript
-const value: models.UpdateProjectSources2 = {
-  provider: "github",
+const value: models.UpdateProjectSourcesProjects1 = {
+  provider: "bitbucket",
   org: "<value>",
-  repo: "<value>",
+};
+```
+
+### `models.UpdateProjectSourcesProjects2`
+
+```typescript
+const value: models.UpdateProjectSourcesProjects2 = {
+  provider: "gitlab",
+  namespace: "<value>",
 };
 ```
 

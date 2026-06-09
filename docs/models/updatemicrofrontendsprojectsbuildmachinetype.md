@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { UpdateMicrofrontendsProjectsBuildMachineType } from "@vercel/sdk/models/updatemicrofrontendsmanagedrules.js";
+import { UpdateMicrofrontendsProjectsBuildMachineType } from "@vercel/sdk/models/updatemicrofrontendsbotfilter.js";
 
-let value: UpdateMicrofrontendsProjectsBuildMachineType = "enhanced";
+let value: UpdateMicrofrontendsProjectsBuildMachineType = "standard";
 ```
 
 ## Values
 
 ```typescript
-"standard" | "enhanced" | "turbo"
+"enhanced" | "standard" | "turbo"
 ```

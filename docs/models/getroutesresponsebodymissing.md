@@ -16,7 +16,7 @@ const value: models.GetRoutesMissingProjectRoutes1 = {
 
 ```typescript
 const value: models.GetRoutesMissingProjectRoutes2 = {
-  type: "cookie",
+  type: "header",
   key: "<key>",
 };
 ```
@@ -25,7 +25,7 @@ const value: models.GetRoutesMissingProjectRoutes2 = {
 
 ```typescript
 const value: models.GetRoutesMissingProjectRoutes2 = {
-  type: "cookie",
+  type: "header",
   key: "<key>",
 };
 ```
@@ -34,7 +34,7 @@ const value: models.GetRoutesMissingProjectRoutes2 = {
 
 ```typescript
 const value: models.GetRoutesMissingProjectRoutes2 = {
-  type: "cookie",
+  type: "header",
   key: "<key>",
 };
 ```

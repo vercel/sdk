@@ -3,12 +3,12 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyLastAliasRequest } from "@vercel/sdk/models/getprojectsresponsebodyprojectsaibots.js";
+import { ResponseBodyLastAliasRequest } from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponse200applicationjson3projectssecuritymanagedrulesvercelrulesetaction.js";
 
 let value: ResponseBodyLastAliasRequest = {
   fromDeploymentId: null,
   toDeploymentId: "<id>",
-  jobStatus: "skipped",
+  jobStatus: "succeeded",
   requestedAt: 7630.72,
   type: "rollback",
 };

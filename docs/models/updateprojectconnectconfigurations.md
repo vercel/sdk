@@ -3,10 +3,10 @@
 ## Example Usage
 
 ```typescript
-import { UpdateProjectConnectConfigurations } from "@vercel/sdk/models/updateprojectprojectsresponsebuildqueue.js";
+import { UpdateProjectConnectConfigurations } from "@vercel/sdk/models/updateprojectprojectsoptionsallowlist.js";
 
 let value: UpdateProjectConnectConfigurations = {
-  envId: "production",
+  envId: "preview",
   connectConfigurationId: "<id>",
   passive: true,
   buildsEnabled: false,

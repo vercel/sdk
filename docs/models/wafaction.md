@@ -5,11 +5,11 @@
 ```typescript
 import { WafAction } from "@vercel/sdk/models/getdeploymenteventsop.js";
 
-let value: WafAction = "bypass";
+let value: WafAction = "log";
 ```
 
 ## Values
 
 ```typescript
-"log" | "challenge" | "deny" | "bypass" | "rate_limit"
+"bypass" | "challenge" | "deny" | "log" | "rate_limit"
 ```

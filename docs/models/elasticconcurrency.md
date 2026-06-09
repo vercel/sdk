@@ -7,11 +7,11 @@ When elastic concurrency is used for this deployment, a value is set. The value 
 ```typescript
 import { ElasticConcurrency } from "@vercel/sdk/models/createdeploymentresponsebody.js";
 
-let value: ElasticConcurrency = "PROJECT_SETTING";
+let value: ElasticConcurrency = "SKIP_QUEUE";
 ```
 
 ## Values
 
 ```typescript
-"TEAM_SETTING" | "PROJECT_SETTING" | "SKIP_QUEUE"
+"PROJECT_SETTING" | "SKIP_QUEUE" | "TEAM_SETTING"
 ```

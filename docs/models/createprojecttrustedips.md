@@ -21,7 +21,7 @@ const value: models.TrustedIps1 = {
 
 ```typescript
 const value: models.TrustedIps2 = {
-  deploymentType: "all",
+  deploymentType: "preview",
 };
 ```
 

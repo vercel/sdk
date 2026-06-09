@@ -9,7 +9,7 @@ let value: ListFlagVersionsPrimaryMetrics = {
   name: "<value>",
   metricType: "currency",
   metricUnit: "visitor",
-  directionality: "increaseIsGood",
+  directionality: "decreaseIsGood",
 };
 ```
 

@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { NewTarget } from "@vercel/sdk/models/eightytwo.js";
+import { NewTarget } from "@vercel/sdk/models/ninetyfour.js";
 
-let value: NewTarget = "development";
+let value: NewTarget = "production";
 ```
 
 ## Values
 
 ```typescript
-"production" | "preview" | "development"
+"development" | "preview" | "production"
 ```

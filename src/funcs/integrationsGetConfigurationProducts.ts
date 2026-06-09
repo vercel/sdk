@@ -14,7 +14,7 @@ import { pathToFunc } from "../lib/url.js";
 import {
   GetConfigurationProductsRequest,
   GetConfigurationProductsRequest$outboundSchema,
-} from "../models/getconfigurationproductspropertiesintegrationsresponse200uicontrol.js";
+} from "../models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyuidisabled.js";
 import {
   GetConfigurationProductsResponseBody,
   GetConfigurationProductsResponseBody$inboundSchema,

@@ -29,9 +29,9 @@ export type GetSharedEnvVarRequest = {
  */
 export const GetSharedEnvVarType = {
   Encrypted: "encrypted",
+  Plain: "plain",
   Sensitive: "sensitive",
   System: "system",
-  Plain: "plain",
 } as const;
 /**
  * The type of this cosmos doc instance, if blank, assume secret.
@@ -42,9 +42,9 @@ export type GetSharedEnvVarType = ClosedEnum<typeof GetSharedEnvVarType>;
  * environments this env variable targets
  */
 export const GetSharedEnvVarTarget = {
-  Production: "production",
-  Preview: "preview",
   Development: "development",
+  Preview: "preview",
+  Production: "production",
 } as const;
 /**
  * environments this env variable targets

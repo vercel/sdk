@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupMicrofrontendsFunctionDefaultMemoryType } from "@vercel/sdk/models/getmicrofrontendsingroupto2.js";
+import { GetMicrofrontendsInGroupMicrofrontendsFunctionDefaultMemoryType } from "@vercel/sdk/models/getmicrofrontendsingrouptomicrofrontends1.js";
 
 let value: GetMicrofrontendsInGroupMicrofrontendsFunctionDefaultMemoryType =
   "standard";
@@ -12,5 +12,5 @@ let value: GetMicrofrontendsInGroupMicrofrontendsFunctionDefaultMemoryType =
 ## Values
 
 ```typescript
-"standard_legacy" | "standard" | "performance"
+"performance" | "standard" | "standard_legacy"
 ```

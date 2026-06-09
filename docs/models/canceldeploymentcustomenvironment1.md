@@ -10,7 +10,7 @@ import { CancelDeploymentCustomEnvironment1 } from "@vercel/sdk/models/canceldep
 let value: CancelDeploymentCustomEnvironment1 = {
   id: "<id>",
   slug: "<value>",
-  type: "development",
+  type: "production",
   createdAt: 1483.58,
   updatedAt: 6852.54,
 };

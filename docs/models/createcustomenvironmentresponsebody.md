@@ -10,7 +10,7 @@ import { CreateCustomEnvironmentResponseBody } from "@vercel/sdk/models/createcu
 let value: CreateCustomEnvironmentResponseBody = {
   id: "<id>",
   slug: "<value>",
-  type: "development",
+  type: "production",
   createdAt: 9984.42,
   updatedAt: 6827.93,
 };

@@ -21,6 +21,6 @@ const value: boolean = true;
 
 ```typescript
 const value: models.CreateIntegrationStoreDirectUiDisabledIntegrations3 =
-  "update";
+  "create";
 ```
 

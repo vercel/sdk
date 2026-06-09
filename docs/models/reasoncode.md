@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { ReasonCode } from "@vercel/sdk/models/onehundredandfiftyfive.js";
+import { ReasonCode } from "@vercel/sdk/models/twohundredandthirtyone.js";
 
-let value: ReasonCode = "BACKOFFICE";
+let value: ReasonCode = "PUBLIC_API";
 ```
 
 ## Values
 
 ```typescript
-"BUDGET_REACHED" | "PUBLIC_API" | "BACKOFFICE"
+"BACKOFFICE" | "BUDGET_REACHED" | "PUBLIC_API"
 ```

@@ -5,15 +5,15 @@
 ```typescript
 import {
   GetProjectsResponseBodyProjectsResponse200ApplicationJson3ProjectsSecurityManagedRulesVercelRulesetAction,
-} from "@vercel/sdk/models/getprojectsresponsebodyprojectsaibots.js";
+} from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponse200applicationjson3projectssecuritymanagedrulesvercelrulesetaction.js";
 
 let value:
   GetProjectsResponseBodyProjectsResponse200ApplicationJson3ProjectsSecurityManagedRulesVercelRulesetAction =
-    "deny";
+    "challenge";
 ```
 
 ## Values
 
 ```typescript
-"deny" | "challenge" | "log"
+"challenge" | "deny" | "log"
 ```

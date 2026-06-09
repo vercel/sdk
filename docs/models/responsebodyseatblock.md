@@ -8,7 +8,7 @@ NSNB Blocked metadata
 import { ResponseBodySeatBlock } from "@vercel/sdk/models/getdeploymentresponsebody.js";
 
 let value: ResponseBodySeatBlock = {
-  blockCode: "TEAM_ACCESS_REQUIRED",
+  blockCode: "COMMIT_AUTHOR_REQUIRED",
 };
 ```
 

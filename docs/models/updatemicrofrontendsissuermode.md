@@ -7,11 +7,11 @@
 ```typescript
 import { UpdateMicrofrontendsIssuerMode } from "@vercel/sdk/models/updatemicrofrontendsresponsebody.js";
 
-let value: UpdateMicrofrontendsIssuerMode = "team";
+let value: UpdateMicrofrontendsIssuerMode = "global";
 ```
 
 ## Values
 
 ```typescript
-"team" | "global"
+"global" | "team"
 ```

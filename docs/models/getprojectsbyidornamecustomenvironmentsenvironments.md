@@ -6,7 +6,7 @@
 import { GetProjectsByIdOrNameCustomEnvironmentsEnvironments } from "@vercel/sdk/models/getprojectsbyidornamecustomenvironmentsop.js";
 
 let value: GetProjectsByIdOrNameCustomEnvironmentsEnvironments = {
-  type: "development",
+  type: "production",
   createdAt: 7763.99,
   updatedAt: 7737.35,
   slug: "<value>",

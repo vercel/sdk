@@ -39,13 +39,13 @@ export type GetIntegrationLogDrainsDeliveryFormat = ClosedEnum<
  * The sources from which logs are currently being delivered to this log drain.
  */
 export const GetIntegrationLogDrainsSources = {
-  External: "external",
   Build: "build",
   Edge: "edge",
-  Lambda: "lambda",
-  Static: "static",
+  External: "external",
   Firewall: "firewall",
+  Lambda: "lambda",
   Redirect: "redirect",
+  Static: "static",
 } as const;
 /**
  * The sources from which logs are currently being delivered to this log drain.
@@ -70,8 +70,8 @@ export type CreatedFrom = ClosedEnum<typeof CreatedFrom>;
  * The environment of log drain
  */
 export const GetIntegrationLogDrainsEnvironments = {
-  Production: "production",
   Preview: "preview",
+  Production: "production",
 } as const;
 /**
  * The environment of log drain

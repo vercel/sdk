@@ -10,7 +10,7 @@ import { GetDeploymentCustomEnvironmentDeployments1 } from "@vercel/sdk/models/r
 let value: GetDeploymentCustomEnvironmentDeployments1 = {
   id: "<id>",
   slug: "<value>",
-  type: "production",
+  type: "development",
   createdAt: 7799.26,
   updatedAt: 1685.64,
 };

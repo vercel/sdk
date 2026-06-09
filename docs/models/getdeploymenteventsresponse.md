@@ -17,7 +17,7 @@ const value: models.GetDeploymentEventsDeploymentsResponseBody[] = [
       name: "<value>",
     },
     serial: "<value>",
-    type: "middleware-invocation",
+    type: "middleware",
   },
 ];
 ```
@@ -35,7 +35,7 @@ const value: models.GetDeploymentEventsResponseBody = {
     name: "<value>",
   },
   serial: "<value>",
-  type: "fatal",
+  type: "stdout",
 };
 ```
 

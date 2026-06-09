@@ -5,11 +5,11 @@
 ```typescript
 import { CreateDeploymentDeploymentsState } from "@vercel/sdk/models/createdeploymentresponsebody.js";
 
-let value: CreateDeploymentDeploymentsState = "succeeded";
+let value: CreateDeploymentDeploymentsState = "failed";
 ```
 
 ## Values
 
 ```typescript
-"succeeded" | "failed" | "pending"
+"failed" | "pending" | "succeeded"
 ```

@@ -7,11 +7,11 @@
 ```typescript
 import { CreateProjectProjectsIssuerMode } from "@vercel/sdk/models/createprojectresponsebody.js";
 
-let value: CreateProjectProjectsIssuerMode = "team";
+let value: CreateProjectProjectsIssuerMode = "global";
 ```
 
 ## Values
 
 ```typescript
-"team" | "global"
+"global" | "team"
 ```

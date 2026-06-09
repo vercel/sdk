@@ -5,7 +5,7 @@ List of domains associated with this environment
 ## Example Usage
 
 ```typescript
-import { UpdateMicrofrontendsDomains } from "@vercel/sdk/models/updatemicrofrontendsmanagedrules.js";
+import { UpdateMicrofrontendsDomains } from "@vercel/sdk/models/updatemicrofrontendsbotfilter.js";
 
 let value: UpdateMicrofrontendsDomains = {
   name: "<value>",

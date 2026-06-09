@@ -7,7 +7,16 @@
 
 ```typescript
 const value: models.UpdateMicrofrontendsSources1 = {
-  provider: "bitbucket",
+  provider: "github",
+  org: "<value>",
+};
+```
+
+### `models.UpdateMicrofrontendsSources1`
+
+```typescript
+const value: models.UpdateMicrofrontendsSources1 = {
+  provider: "github",
   org: "<value>",
 };
 ```
@@ -16,9 +25,8 @@ const value: models.UpdateMicrofrontendsSources1 = {
 
 ```typescript
 const value: models.UpdateMicrofrontendsSources2 = {
-  provider: "bitbucket",
-  org: "<value>",
-  repo: "<value>",
+  provider: "gitlab",
+  namespace: "<value>",
 };
 ```
 

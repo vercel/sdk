@@ -5,11 +5,11 @@
 ```typescript
 import { CancelDeploymentFunctionMemoryType } from "@vercel/sdk/models/canceldeploymentop.js";
 
-let value: CancelDeploymentFunctionMemoryType = "performance";
+let value: CancelDeploymentFunctionMemoryType = "standard_legacy";
 ```
 
 ## Values
 
 ```typescript
-"standard" | "standard_legacy" | "performance"
+"performance" | "standard" | "standard_legacy"
 ```

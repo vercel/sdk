@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { Previous } from "@vercel/sdk/models/edgemiddlewareinvocations.js";
+import { Previous } from "@vercel/sdk/models/connectdatatransfer.js";
 
 let value: Previous = {
   enabled: false,
   mode: "<value>",
   enforcePercentage: 3597.09,
-  newResourceBlockingPolicy: "allow",
+  newResourceBlockingPolicy: "block",
   allowUnsafeScriptSrcKeywords: false,
 };
 ```

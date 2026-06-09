@@ -5,11 +5,11 @@
 ```typescript
 import { ResponseBodyBuildMachineSelection } from "@vercel/sdk/models/getprojectsresponsebody.js";
 
-let value: ResponseBodyBuildMachineSelection = "fixed";
+let value: ResponseBodyBuildMachineSelection = "elastic";
 ```
 
 ## Values
 
 ```typescript
-"fixed" | "elastic"
+"elastic" | "fixed"
 ```

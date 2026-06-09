@@ -7,11 +7,11 @@ Current provisioning state
 ```typescript
 import { GetDeploymentsDeploymentsState } from "@vercel/sdk/models/getdeploymentsop.js";
 
-let value: GetDeploymentsDeploymentsState = "PENDING";
+let value: GetDeploymentsDeploymentsState = "COMPLETE";
 ```
 
 ## Values
 
 ```typescript
-"PENDING" | "COMPLETE" | "TIMEOUT"
+"COMPLETE" | "PENDING" | "TIMEOUT"
 ```

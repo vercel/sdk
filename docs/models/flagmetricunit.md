@@ -5,11 +5,11 @@
 ```typescript
 import { FlagMetricUnit } from "@vercel/sdk/models/flag.js";
 
-let value: FlagMetricUnit = "user";
+let value: FlagMetricUnit = "session";
 ```
 
 ## Values
 
 ```typescript
-"user" | "session" | "visitor"
+"session" | "user" | "visitor"
 ```

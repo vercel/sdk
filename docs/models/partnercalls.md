@@ -12,7 +12,7 @@ let value: PartnerCalls = {
     "<value 2>",
   ],
   result: {
-    status: "fulfilled",
+    status: "errored",
   },
 };
 ```

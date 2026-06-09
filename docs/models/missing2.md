@@ -6,7 +6,7 @@
 import { Missing2 } from "@vercel/sdk/models/createdeploymentvaluedeployments2.js";
 
 let value: Missing2 = {
-  type: "header",
+  type: "cookie",
   key: "<key>",
 };
 ```

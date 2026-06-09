@@ -5,11 +5,11 @@
 ```typescript
 import { DeleteSharedEnvVariableTarget2 } from "@vercel/sdk/models/deletesharedenvvariableop.js";
 
-let value: DeleteSharedEnvVariableTarget2 = "production";
+let value: DeleteSharedEnvVariableTarget2 = "development";
 ```
 
 ## Values
 
 ```typescript
-"production" | "preview" | "development"
+"development" | "preview" | "production"
 ```

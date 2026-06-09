@@ -23,8 +23,8 @@ export type GetInstallationsByIntegrationConfigurationIdResourcesByResourceIdExp
 
 export const GetInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigPurpose =
   {
-    Flags: "flags",
     Experimentation: "experimentation",
+    Flags: "flags",
   } as const;
 export type GetInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigPurpose =
   ClosedEnum<

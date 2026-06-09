@@ -9,7 +9,7 @@
 const value: models.GetDeploymentCustomEnvironment1 = {
   id: "<id>",
   slug: "<value>",
-  type: "development",
+  type: "production",
   createdAt: 7461.08,
   updatedAt: 9318.74,
 };

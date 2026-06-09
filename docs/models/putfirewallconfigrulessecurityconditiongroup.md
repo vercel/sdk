@@ -8,7 +8,7 @@ import { PutFirewallConfigRulesSecurityConditionGroup } from "@vercel/sdk/models
 let value: PutFirewallConfigRulesSecurityConditionGroup = {
   conditions: [
     {
-      type: "bot_protection",
+      type: "user_agent",
       op: "inc",
     },
   ],

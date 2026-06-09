@@ -5,11 +5,11 @@
 ```typescript
 import { GenerateRouteType } from "@vercel/sdk/models/generaterouteop.js";
 
-let value: GenerateRouteType = "set-status";
+let value: GenerateRouteType = "rewrite";
 ```
 
 ## Values
 
 ```typescript
-"rewrite" | "redirect" | "set-status" | "modify"
+"modify" | "redirect" | "rewrite" | "set-status"
 ```

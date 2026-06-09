@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetConfigurationProductsPropertiesIntegrationsResponse200UiControl } from "@vercel/sdk/models/getconfigurationproductspropertiesintegrationsresponse200uicontrol.js";
+import { GetConfigurationProductsPropertiesIntegrationsResponse200UiControl } from "@vercel/sdk/models/getconfigurationproductsresponsebody.js";
 
 let value: GetConfigurationProductsPropertiesIntegrationsResponse200UiControl =
   "radio-button";

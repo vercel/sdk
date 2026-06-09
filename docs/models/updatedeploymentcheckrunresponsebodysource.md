@@ -26,7 +26,7 @@ const value: models.UpdateDeploymentCheckRunSource2 = {
 ```typescript
 const value: models.UpdateDeploymentCheckRunSource3 = {
   kind: "git-provider",
-  provider: "github",
+  provider: "bitbucket",
   externalCheckName: "<value>",
 };
 ```

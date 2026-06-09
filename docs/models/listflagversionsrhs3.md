@@ -6,7 +6,7 @@
 import { ListFlagVersionsRhs3 } from "@vercel/sdk/models/listflagversionsop.js";
 
 let value: ListFlagVersionsRhs3 = {
-  type: "list",
+  type: "list/inline",
   items: [
     {
       value: "<value>",

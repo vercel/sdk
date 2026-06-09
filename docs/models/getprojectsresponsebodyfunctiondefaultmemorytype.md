@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsResponseBodyFunctionDefaultMemoryType } from "@vercel/sdk/models/getprojectsresponsebodytargets.js";
+import { GetProjectsResponseBodyFunctionDefaultMemoryType } from "@vercel/sdk/models/getprojectsresponsebodyfunctiondefaultmemorytype.js";
 
-let value: GetProjectsResponseBodyFunctionDefaultMemoryType = "standard_legacy";
+let value: GetProjectsResponseBodyFunctionDefaultMemoryType = "performance";
 ```
 
 ## Values
 
 ```typescript
-"standard_legacy" | "standard" | "performance"
+"performance" | "standard" | "standard_legacy"
 ```

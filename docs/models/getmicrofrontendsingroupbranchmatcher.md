@@ -5,10 +5,10 @@ Configuration for matching git branches to this environment
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupBranchMatcher } from "@vercel/sdk/models/getmicrofrontendsingroupto2.js";
+import { GetMicrofrontendsInGroupBranchMatcher } from "@vercel/sdk/models/getmicrofrontendsingrouptomicrofrontends1.js";
 
 let value: GetMicrofrontendsInGroupBranchMatcher = {
-  type: "endsWith",
+  type: "startsWith",
   pattern: "<value>",
 };
 ```

@@ -15,11 +15,11 @@ let value: CreateProjectCheckResponseBody = {
   source: {
     kind: "webhook",
   },
-  blocks: "deployment-alias",
+  blocks: "deployment-start",
   targets: [
     "<value 1>",
   ],
-  sourceKind: "integration",
+  sourceKind: "git-provider",
   timeout: 4049.49,
   createdAt: 1008.16,
   updatedAt: 6105.04,

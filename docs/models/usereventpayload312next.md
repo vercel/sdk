@@ -1,19 +1,19 @@
 # UserEventPayload312Next
 
-## Example Usage
+
+## Supported Types
+
+### `models.Next1`
 
 ```typescript
-import { UserEventPayload312Next } from "@vercel/sdk/models/payloadenvironment.js";
-
-let value: UserEventPayload312Next = {
-  enabled: false,
-  totpVerified: false,
+const value: models.Next1 = {
+  accessGroupId: "<id>",
 };
 ```
 
-## Fields
+### `models.Next2`
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `enabled`          | *boolean*          | :heavy_check_mark: | N/A                |
-| `totpVerified`     | *boolean*          | :heavy_check_mark: | N/A                |
+```typescript
+const value: models.Next2 = "VIEWER";
+```
+

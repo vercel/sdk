@@ -20,7 +20,7 @@ const value: models.ListDeploymentAliasesProtectionBypass2 = {
   createdAt: 9476.4,
   lastUpdatedAt: 3486.87,
   lastUpdatedBy: "<value>",
-  access: "granted",
+  access: "requested",
   scope: "user",
 };
 ```

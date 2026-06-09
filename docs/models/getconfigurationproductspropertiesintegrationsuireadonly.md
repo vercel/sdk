@@ -21,6 +21,6 @@ const value: boolean = true;
 
 ```typescript
 const value: models.GetConfigurationProductsUiReadOnlyIntegrationsResponse3 =
-  "create";
+  "update";
 ```
 

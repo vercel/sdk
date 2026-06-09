@@ -3,14 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { CreateIntegrationStoreDirectIntegrationsResponseType } from "@vercel/sdk/models/createintegrationstoredirectresponsebody.js";
+import { CreateIntegrationStoreDirectIntegrationsResponseType } from "@vercel/sdk/models/createintegrationstoredirectnotification.js";
 
-let value: CreateIntegrationStoreDirectIntegrationsResponseType =
-  "connect_to_project";
+let value: CreateIntegrationStoreDirectIntegrationsResponseType = "add_drain";
 ```
 
 ## Values
 
 ```typescript
-"connect_to_project" | "configure_project_connections" | "add_drain"
+"add_drain" | "configure_project_connections" | "connect_to_project"
 ```

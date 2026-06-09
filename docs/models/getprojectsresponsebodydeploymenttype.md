@@ -3,14 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsResponseBodyDeploymentType } from "@vercel/sdk/models/getprojectsresponsebodytargets.js";
+import { GetProjectsResponseBodyDeploymentType } from "@vercel/sdk/models/getprojectsresponsebody.js";
 
-let value: GetProjectsResponseBodyDeploymentType =
-  "prod_deployment_urls_and_all_previews";
+let value: GetProjectsResponseBodyDeploymentType = "preview";
 ```
 
 ## Values
 
 ```typescript
-"preview" | "all" | "prod_deployment_urls_and_all_previews" | "all_except_custom_domains"
+"all" | "all_except_custom_domains" | "preview" | "prod_deployment_urls_and_all_previews"
 ```

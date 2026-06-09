@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { GetConfigurationProductsHiddenIntegrationsResponse3 } from "@vercel/sdk/models/getconfigurationproductspropertiesintegrationsresponse200uicontrol.js";
+import { GetConfigurationProductsHiddenIntegrationsResponse3 } from "@vercel/sdk/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyuidisabled.js";
 
-let value: GetConfigurationProductsHiddenIntegrationsResponse3 = "create";
+let value: GetConfigurationProductsHiddenIntegrationsResponse3 = "update";
 ```
 
 ## Values
 
 ```typescript
-"update" | "create"
+"create" | "update"
 ```

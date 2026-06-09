@@ -11,5 +11,5 @@ let value: MetricUnit = "visitor";
 ## Values
 
 ```typescript
-"user" | "session" | "visitor"
+"session" | "user" | "visitor"
 ```

@@ -5,11 +5,11 @@
 ```typescript
 import { ResponseBodyDeploymentType } from "@vercel/sdk/models/getprojectsresponsebody.js";
 
-let value: ResponseBodyDeploymentType = "all_except_custom_domains";
+let value: ResponseBodyDeploymentType = "prod_deployment_urls_and_all_previews";
 ```
 
 ## Values
 
 ```typescript
-"preview" | "all" | "prod_deployment_urls_and_all_previews" | "all_except_custom_domains"
+"all" | "all_except_custom_domains" | "preview" | "prod_deployment_urls_and_all_previews"
 ```

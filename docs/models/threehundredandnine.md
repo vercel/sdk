@@ -5,17 +5,13 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndNine } from "@vercel/sdk/models/payloadenvironment.js";
+import { ThreeHundredAndNine } from "@vercel/sdk/models/twohundredandninety.js";
 
-let value: ThreeHundredAndNine = {
-  provider: "chatgpt",
-  login: "Amaya11",
-};
+let value: ThreeHundredAndNine = {};
 ```
 
 ## Fields
 
-| Field                                    | Type                                     | Required                                 | Description                              |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| `provider`                               | [models.Provider](../models/provider.md) | :heavy_check_mark:                       | N/A                                      |
-| `login`                                  | *string*                                 | :heavy_check_mark:                       | N/A                                      |
+| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `remoteCaching`                                                  | [models.PayloadRemoteCaching](../models/payloadremotecaching.md) | :heavy_minus_sign:                                               | Represents configuration for remote caching                      |

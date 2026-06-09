@@ -3,14 +3,14 @@
 ## Example Usage
 
 ```typescript
-import { UpdateMicrofrontendsProjectsResponse200ApplicationJSONAction } from "@vercel/sdk/models/updatemicrofrontendsmanagedrules.js";
+import { UpdateMicrofrontendsProjectsResponse200ApplicationJSONAction } from "@vercel/sdk/models/updatemicrofrontendsbotfilter.js";
 
 let value: UpdateMicrofrontendsProjectsResponse200ApplicationJSONAction =
-  "deny";
+  "challenge";
 ```
 
 ## Values
 
 ```typescript
-"deny" | "challenge" | "log"
+"challenge" | "deny" | "log"
 ```

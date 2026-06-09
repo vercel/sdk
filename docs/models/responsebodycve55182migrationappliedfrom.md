@@ -5,12 +5,11 @@
 ```typescript
 import { ResponseBodyCve55182MigrationAppliedFrom } from "@vercel/sdk/models/getprojectsresponsebody.js";
 
-let value: ResponseBodyCve55182MigrationAppliedFrom =
-  "prod_deployment_urls_and_all_previews";
+let value: ResponseBodyCve55182MigrationAppliedFrom = "preview";
 ```
 
 ## Values
 
 ```typescript
-"preview" | "all" | "prod_deployment_urls_and_all_previews" | "all_except_custom_domains"
+"all" | "all_except_custom_domains" | "preview" | "prod_deployment_urls_and_all_previews"
 ```

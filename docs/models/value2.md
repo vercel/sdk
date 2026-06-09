@@ -5,11 +5,11 @@
 ```typescript
 import { Value2 } from "@vercel/sdk/models/createsharedenvvariableop.js";
 
-let value: Value2 = "development";
+let value: Value2 = "production";
 ```
 
 ## Values
 
 ```typescript
-"production" | "preview" | "development"
+"development" | "preview" | "production"
 ```

@@ -108,9 +108,9 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
  * Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic
  */
 export const GetDeploymentResponseBodyReadySubstate = {
-  Staged: "STAGED",
-  Rolling: "ROLLING",
   Promoted: "PROMOTED",
+  Rolling: "ROLLING",
+  Staged: "STAGED",
 } as const;
 /**
  * Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic
@@ -120,12 +120,13 @@ export type GetDeploymentResponseBodyReadySubstate = ClosedEnum<
 >;
 
 /**
- * Where was the deployment created from
+ * Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it.
  */
 export const GetDeploymentResponseBodySource = {
   ApiTriggerGitDeploy: "api-trigger-git-deploy",
   Cli: "cli",
   CloneRepo: "clone/repo",
+  Drop: "drop",
   Git: "git",
   Import: "import",
   ImportRepo: "import/repo",
@@ -133,7 +134,7 @@ export const GetDeploymentResponseBodySource = {
   V0Web: "v0-web",
 } as const;
 /**
- * Where was the deployment created from
+ * Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it.
  */
 export type GetDeploymentResponseBodySource = ClosedEnum<
   typeof GetDeploymentResponseBodySource
@@ -143,8 +144,8 @@ export type GetDeploymentResponseBodySource = ClosedEnum<
  * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
  */
 export const GetDeploymentResponseBodyTarget = {
-  Staging: "staging",
   Production: "production",
+  Staging: "staging",
 } as const;
 /**
  * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
@@ -168,9 +169,9 @@ export type GetDeploymentResponseBodyOidcTokenClaims = {
 };
 
 export const ResponseBodyPlan = {
-  Pro: "pro",
   Enterprise: "enterprise",
   Hobby: "hobby",
+  Pro: "pro",
 } as const;
 export type ResponseBodyPlan = ClosedEnum<typeof ResponseBodyPlan>;
 
@@ -254,8 +255,8 @@ export type ResponseBodyCrons = {
 };
 
 export const ResponseBodyArchitecture = {
-  X8664: "x86_64",
   Arm64: "arm64",
+  X8664: "x86_64",
 } as const;
 export type ResponseBodyArchitecture = ClosedEnum<
   typeof ResponseBodyArchitecture
@@ -366,8 +367,8 @@ export const GetDeploymentRoutesHandle = {
   Filesystem: "filesystem",
   Hit: "hit",
   Miss: "miss",
-  Rewrite: "rewrite",
   Resource: "resource",
+  Rewrite: "rewrite",
 } as const;
 export type GetDeploymentRoutesHandle = ClosedEnum<
   typeof GetDeploymentRoutesHandle
@@ -381,8 +382,8 @@ export type GetDeploymentRoutes2 = {
 };
 
 export const GetDeploymentHasType = {
-  Header: "header",
   Cookie: "cookie",
+  Header: "header",
   Query: "query",
 } as const;
 export type GetDeploymentHasType = ClosedEnum<typeof GetDeploymentHasType>;
@@ -438,13 +439,13 @@ export type GetDeploymentHas1 = {
 
 export type GetDeploymentRoutesHas =
   | GetDeploymentHas1
-  | (GetDeploymentHas2 & { type: "header" })
   | (GetDeploymentHas2 & { type: "cookie" })
+  | (GetDeploymentHas2 & { type: "header" })
   | (GetDeploymentHas2 & { type: "query" });
 
 export const GetDeploymentMissingType = {
-  Header: "header",
   Cookie: "cookie",
+  Header: "header",
   Query: "query",
 } as const;
 export type GetDeploymentMissingType = ClosedEnum<
@@ -504,8 +505,8 @@ export type GetDeploymentMissing1 = {
 
 export type GetDeploymentRoutesMissing =
   | GetDeploymentMissing1
-  | (GetDeploymentMissing2 & { type: "header" })
   | (GetDeploymentMissing2 & { type: "cookie" })
+  | (GetDeploymentMissing2 & { type: "header" })
   | (GetDeploymentMissing2 & { type: "query" });
 
 export const GetDeploymentRoutesAction = {
@@ -531,8 +532,8 @@ export type GetDeploymentRoutesType = ClosedEnum<
 
 export const GetDeploymentRoutesOp = {
   Append: "append",
-  Set: "set",
   Delete: "delete",
+  Set: "set",
 } as const;
 export type GetDeploymentRoutesOp = ClosedEnum<typeof GetDeploymentRoutesOp>;
 
@@ -586,16 +587,16 @@ export type GetDeploymentRoutes1 = {
   has?:
     | Array<
       | GetDeploymentHas1
-      | (GetDeploymentHas2 & { type: "header" })
       | (GetDeploymentHas2 & { type: "cookie" })
+      | (GetDeploymentHas2 & { type: "header" })
       | (GetDeploymentHas2 & { type: "query" })
     >
     | undefined;
   missing?:
     | Array<
       | GetDeploymentMissing1
-      | (GetDeploymentMissing2 & { type: "header" })
       | (GetDeploymentMissing2 & { type: "cookie" })
+      | (GetDeploymentMissing2 & { type: "header" })
       | (GetDeploymentMissing2 & { type: "query" })
     >
     | undefined;
@@ -747,9 +748,9 @@ export type ResponseBodyFlags =
  * The result of the microfrontends config upload during deployment creation / build. Only set for default app deployments. The config upload is attempted during deployment create, and then again during the build. If the config is not in the root directory, or the deployment is prebuilt, the config cannot be uploaded during deployment create. The upload during deployment build finds the config even if it's not in the root directory, as it has access to all files. Uploading the config during create is ideal, as then all child deployments are guaranteed to have access to the default app deployment config even if the default app has not yet started building. If the config is not uploaded, the child app will show as building until the config has been uploaded during the default app build. - `success` - The config was uploaded successfully, either when the deployment was created or during the build. - `waiting_on_build` - The config could not be uploaded during deployment create, will be attempted again during the build. - `no_config` - No config was found. Only set once the build has not found the config in any of the deployment's files. - `undefined` - Legacy deployments, or there was an error uploading the config during deployment create.
  */
 export const GetDeploymentMicrofrontendsMfeConfigUploadState = {
+  NoConfig: "no_config",
   Success: "success",
   WaitingOnBuild: "waiting_on_build",
-  NoConfig: "no_config",
 } as const;
 /**
  * The result of the microfrontends config upload during deployment creation / build. Only set for default app deployments. The config upload is attempted during deployment create, and then again during the build. If the config is not in the root directory, or the deployment is prebuilt, the config cannot be uploaded during deployment create. The upload during deployment build finds the config even if it's not in the root directory, as it has access to all files. Uploading the config during create is ideal, as then all child deployments are guaranteed to have access to the default app deployment config even if the default app has not yet started building. If the config is not uploaded, the child app will show as building until the config has been uploaded during the default app build. - `success` - The config was uploaded successfully, either when the deployment was created or during the build. - `waiting_on_build` - The config could not be uploaded during deployment create, will be attempted again during the build. - `no_config` - No config was found. Only set once the build has not found the config in any of the deployment's files. - `undefined` - Legacy deployments, or there was an error uploading the config during deployment create.
@@ -801,17 +802,17 @@ export type ResponseBodyMicrofrontends =
   | GetDeploymentMicrofrontends1;
 
 export const ResponseBodyFunctionType = {
-  Standard: "standard",
   Fluid: "fluid",
+  Standard: "standard",
 } as const;
 export type ResponseBodyFunctionType = ClosedEnum<
   typeof ResponseBodyFunctionType
 >;
 
 export const ResponseBodyFunctionMemoryType = {
+  Performance: "performance",
   Standard: "standard",
   StandardLegacy: "standard_legacy",
-  Performance: "performance",
 } as const;
 export type ResponseBodyFunctionMemoryType = ClosedEnum<
   typeof ResponseBodyFunctionMemoryType
@@ -845,9 +846,9 @@ export type GetDeploymentResponseBodyBuildQueue = {
  * When elastic concurrency is used for this deployment, a value is set. The value tells the reason where the setting was coming from. - TEAM_SETTING: Inherited from team settings - PROJECT_SETTING: Inherited from project settings - SKIP_QUEUE: Manually triggered by user to skip the queues
  */
 export const ResponseBodyElasticConcurrency = {
-  TeamSetting: "TEAM_SETTING",
   ProjectSetting: "PROJECT_SETTING",
   SkipQueue: "SKIP_QUEUE",
+  TeamSetting: "TEAM_SETTING",
 } as const;
 /**
  * When elastic concurrency is used for this deployment, a value is set. The value tells the reason where the setting was coming from. - TEAM_SETTING: Inherited from team settings - PROJECT_SETTING: Inherited from project settings - SKIP_QUEUE: Manually triggered by user to skip the queues
@@ -861,8 +862,8 @@ export type ResponseBodyElasticConcurrency = ClosedEnum<
  */
 export const ResponseBodyPurchaseType = {
   Enhanced: "enhanced",
-  Turbo: "turbo",
   Standard: "standard",
+  Turbo: "turbo",
 } as const;
 /**
  * Machine type that was used for the build.
@@ -911,9 +912,9 @@ export type ResponseBodyConfig = {
 };
 
 export const GetDeploymentResponseBodyDeploymentsResponseState = {
-  Succeeded: "succeeded",
   Failed: "failed",
   Pending: "pending",
+  Succeeded: "succeeded",
 } as const;
 export type GetDeploymentResponseBodyDeploymentsResponseState = ClosedEnum<
   typeof GetDeploymentResponseBodyDeploymentsResponseState
@@ -939,8 +940,8 @@ export type ResponseBodyChecks = {
  * The NSNB decision code for the seat block. TODO: We should consolidate block types.
  */
 export const ResponseBodyBlockCode = {
-  TeamAccessRequired: "TEAM_ACCESS_REQUIRED",
   CommitAuthorRequired: "COMMIT_AUTHOR_REQUIRED",
+  TeamAccessRequired: "TEAM_ACCESS_REQUIRED",
 } as const;
 /**
  * The NSNB decision code for the seat block. TODO: We should consolidate block types.
@@ -953,9 +954,9 @@ export type ResponseBodyGitUserId = string | number;
  * The git provider type associated with gitUserId.
  */
 export const ResponseBodyGitProvider = {
-  Gitlab: "gitlab",
   Bitbucket: "bitbucket",
   Github: "github",
+  Gitlab: "gitlab",
 } as const;
 /**
  * The git provider type associated with gitUserId.
@@ -1140,6 +1141,7 @@ export type GetDeploymentResponseBody1 = {
    */
   name: string;
   type: GetDeploymentResponseBodyType;
+  errorMessage?: string | null | undefined;
   /**
    * An object that will contain a `code` and a `message` when the aliasing fails, otherwise the value will be `null`
    */
@@ -1164,7 +1166,6 @@ export type GetDeploymentResponseBody1 = {
   canceledAt?: number | undefined;
   errorCode?: string | undefined;
   errorLink?: string | undefined;
-  errorMessage?: string | null | undefined;
   errorStep?: string | undefined;
   /**
    * Since November 2023 this field defines a set of regions that we will deploy the lambda to passively Lambdas will be deployed to these regions but only invoked if all of the primary `regions` are marked as out of service
@@ -1199,7 +1200,7 @@ export type GetDeploymentResponseBody1 = {
    */
   softDeletedByRetention?: boolean | undefined;
   /**
-   * Where was the deployment created from
+   * Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it.
    */
   source?: GetDeploymentResponseBodySource | undefined;
   /**
@@ -2492,10 +2493,10 @@ export const GetDeploymentRoutesHas$inboundSchema: z.ZodType<
 > = z.union([
   z.lazy(() => GetDeploymentHas1$inboundSchema),
   z.lazy(() => GetDeploymentHas2$inboundSchema).and(
-    z.object({ type: z.literal("header") }),
+    z.object({ type: z.literal("cookie") }),
   ),
   z.lazy(() => GetDeploymentHas2$inboundSchema).and(
-    z.object({ type: z.literal("cookie") }),
+    z.object({ type: z.literal("header") }),
   ),
   z.lazy(() => GetDeploymentHas2$inboundSchema).and(
     z.object({ type: z.literal("query") }),
@@ -2504,8 +2505,8 @@ export const GetDeploymentRoutesHas$inboundSchema: z.ZodType<
 /** @internal */
 export type GetDeploymentRoutesHas$Outbound =
   | GetDeploymentHas1$Outbound
-  | (GetDeploymentHas2$Outbound & { type: "header" })
   | (GetDeploymentHas2$Outbound & { type: "cookie" })
+  | (GetDeploymentHas2$Outbound & { type: "header" })
   | (GetDeploymentHas2$Outbound & { type: "query" });
 
 /** @internal */
@@ -2516,10 +2517,10 @@ export const GetDeploymentRoutesHas$outboundSchema: z.ZodType<
 > = z.union([
   z.lazy(() => GetDeploymentHas1$outboundSchema),
   z.lazy(() => GetDeploymentHas2$outboundSchema).and(
-    z.object({ type: z.literal("header") }),
+    z.object({ type: z.literal("cookie") }),
   ),
   z.lazy(() => GetDeploymentHas2$outboundSchema).and(
-    z.object({ type: z.literal("cookie") }),
+    z.object({ type: z.literal("header") }),
   ),
   z.lazy(() => GetDeploymentHas2$outboundSchema).and(
     z.object({ type: z.literal("query") }),
@@ -2958,10 +2959,10 @@ export const GetDeploymentRoutesMissing$inboundSchema: z.ZodType<
 > = z.union([
   z.lazy(() => GetDeploymentMissing1$inboundSchema),
   z.lazy(() => GetDeploymentMissing2$inboundSchema).and(
-    z.object({ type: z.literal("header") }),
+    z.object({ type: z.literal("cookie") }),
   ),
   z.lazy(() => GetDeploymentMissing2$inboundSchema).and(
-    z.object({ type: z.literal("cookie") }),
+    z.object({ type: z.literal("header") }),
   ),
   z.lazy(() => GetDeploymentMissing2$inboundSchema).and(
     z.object({ type: z.literal("query") }),
@@ -2970,8 +2971,8 @@ export const GetDeploymentRoutesMissing$inboundSchema: z.ZodType<
 /** @internal */
 export type GetDeploymentRoutesMissing$Outbound =
   | GetDeploymentMissing1$Outbound
-  | (GetDeploymentMissing2$Outbound & { type: "header" })
   | (GetDeploymentMissing2$Outbound & { type: "cookie" })
+  | (GetDeploymentMissing2$Outbound & { type: "header" })
   | (GetDeploymentMissing2$Outbound & { type: "query" });
 
 /** @internal */
@@ -2982,10 +2983,10 @@ export const GetDeploymentRoutesMissing$outboundSchema: z.ZodType<
 > = z.union([
   z.lazy(() => GetDeploymentMissing1$outboundSchema),
   z.lazy(() => GetDeploymentMissing2$outboundSchema).and(
-    z.object({ type: z.literal("header") }),
+    z.object({ type: z.literal("cookie") }),
   ),
   z.lazy(() => GetDeploymentMissing2$outboundSchema).and(
-    z.object({ type: z.literal("cookie") }),
+    z.object({ type: z.literal("header") }),
   ),
   z.lazy(() => GetDeploymentMissing2$outboundSchema).and(
     z.object({ type: z.literal("query") }),
@@ -3402,9 +3403,9 @@ export const GetDeploymentRoutes1$inboundSchema: z.ZodType<
       z.lazy(() => GetDeploymentHas1$inboundSchema),
       z.lazy(() =>
         GetDeploymentHas2$inboundSchema
-      ).and(z.object({ type: z.literal("header") })),
+      ).and(z.object({ type: z.literal("cookie") })),
       z.lazy(() => GetDeploymentHas2$inboundSchema).and(
-        z.object({ type: z.literal("cookie") }),
+        z.object({ type: z.literal("header") }),
       ),
       z.lazy(() => GetDeploymentHas2$inboundSchema).and(
         z.object({ type: z.literal("query") }),
@@ -3416,9 +3417,9 @@ export const GetDeploymentRoutes1$inboundSchema: z.ZodType<
       z.lazy(() => GetDeploymentMissing1$inboundSchema),
       z.lazy(() =>
         GetDeploymentMissing2$inboundSchema
-      ).and(z.object({ type: z.literal("header") })),
+      ).and(z.object({ type: z.literal("cookie") })),
       z.lazy(() => GetDeploymentMissing2$inboundSchema).and(
-        z.object({ type: z.literal("cookie") }),
+        z.object({ type: z.literal("header") }),
       ),
       z.lazy(() => GetDeploymentMissing2$inboundSchema).and(
         z.object({ type: z.literal("query") }),
@@ -3456,16 +3457,16 @@ export type GetDeploymentRoutes1$Outbound = {
   has?:
     | Array<
       | GetDeploymentHas1$Outbound
-      | (GetDeploymentHas2$Outbound & { type: "header" })
       | (GetDeploymentHas2$Outbound & { type: "cookie" })
+      | (GetDeploymentHas2$Outbound & { type: "header" })
       | (GetDeploymentHas2$Outbound & { type: "query" })
     >
     | undefined;
   missing?:
     | Array<
       | GetDeploymentMissing1$Outbound
-      | (GetDeploymentMissing2$Outbound & { type: "header" })
       | (GetDeploymentMissing2$Outbound & { type: "cookie" })
+      | (GetDeploymentMissing2$Outbound & { type: "header" })
       | (GetDeploymentMissing2$Outbound & { type: "query" })
     >
     | undefined;
@@ -3503,10 +3504,10 @@ export const GetDeploymentRoutes1$outboundSchema: z.ZodType<
       z.lazy(() => GetDeploymentHas1$outboundSchema),
       z.lazy(() =>
         GetDeploymentHas2$outboundSchema
-      ).and(z.object({ type: z.literal("header") })),
+      ).and(z.object({ type: z.literal("cookie") })),
       z.lazy(() =>
         GetDeploymentHas2$outboundSchema
-      ).and(z.object({ type: z.literal("cookie") })),
+      ).and(z.object({ type: z.literal("header") })),
       z.lazy(() =>
         GetDeploymentHas2$outboundSchema
       ).and(z.object({ type: z.literal("query") })),
@@ -3517,10 +3518,10 @@ export const GetDeploymentRoutes1$outboundSchema: z.ZodType<
       z.lazy(() => GetDeploymentMissing1$outboundSchema),
       z.lazy(() =>
         GetDeploymentMissing2$outboundSchema
-      ).and(z.object({ type: z.literal("header") })),
+      ).and(z.object({ type: z.literal("cookie") })),
       z.lazy(() =>
         GetDeploymentMissing2$outboundSchema
-      ).and(z.object({ type: z.literal("cookie") })),
+      ).and(z.object({ type: z.literal("header") })),
       z.lazy(() =>
         GetDeploymentMissing2$outboundSchema
       ).and(z.object({ type: z.literal("query") })),
@@ -5038,6 +5039,7 @@ export const GetDeploymentResponseBody1$inboundSchema: z.ZodType<
   readyState: GetDeploymentResponseBodyReadyState$inboundSchema,
   name: types.string(),
   type: GetDeploymentResponseBodyType$inboundSchema,
+  errorMessage: z.nullable(types.string()).optional(),
   aliasError: z.nullable(GetDeploymentResponseBodyAliasError$inboundSchema)
     .optional(),
   aliasFinal: z.nullable(types.string()).optional(),
@@ -5055,7 +5057,6 @@ export const GetDeploymentResponseBody1$inboundSchema: z.ZodType<
   canceledAt: types.optional(types.number()),
   errorCode: types.optional(types.string()),
   errorLink: types.optional(types.string()),
-  errorMessage: z.nullable(types.string()).optional(),
   errorStep: types.optional(types.string()),
   passiveRegions: types.optional(z.array(types.string())),
   gitSource: types.optional(GetDeploymentResponseBodyGitSource$inboundSchema),
@@ -5177,6 +5178,7 @@ export type GetDeploymentResponseBody1$Outbound = {
   readyState: string;
   name: string;
   type: string;
+  errorMessage?: string | null | undefined;
   aliasError?: GetDeploymentResponseBodyAliasError$Outbound | null | undefined;
   aliasFinal?: string | null | undefined;
   autoAssignCustomDomains?: boolean | undefined;
@@ -5189,7 +5191,6 @@ export type GetDeploymentResponseBody1$Outbound = {
   canceledAt?: number | undefined;
   errorCode?: string | undefined;
   errorLink?: string | undefined;
-  errorMessage?: string | null | undefined;
   errorStep?: string | undefined;
   passiveRegions?: Array<string> | undefined;
   gitSource?: GetDeploymentResponseBodyGitSource$Outbound | undefined;
@@ -5302,6 +5303,7 @@ export const GetDeploymentResponseBody1$outboundSchema: z.ZodType<
   readyState: GetDeploymentResponseBodyReadyState$outboundSchema,
   name: z.string(),
   type: GetDeploymentResponseBodyType$outboundSchema,
+  errorMessage: z.nullable(z.string()).optional(),
   aliasError: z.nullable(GetDeploymentResponseBodyAliasError$outboundSchema)
     .optional(),
   aliasFinal: z.nullable(z.string()).optional(),
@@ -5316,7 +5318,6 @@ export const GetDeploymentResponseBody1$outboundSchema: z.ZodType<
   canceledAt: z.number().optional(),
   errorCode: z.string().optional(),
   errorLink: z.string().optional(),
-  errorMessage: z.nullable(z.string()).optional(),
   errorStep: z.string().optional(),
   passiveRegions: z.array(z.string()).optional(),
   gitSource: GetDeploymentResponseBodyGitSource$outboundSchema.optional(),

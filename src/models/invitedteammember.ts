@@ -13,14 +13,14 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
  * The role used for the invitation
  */
 export const Role = {
-  Owner: "OWNER",
-  Member: "MEMBER",
-  Developer: "DEVELOPER",
-  Security: "SECURITY",
   Billing: "BILLING",
+  Contributor: "CONTRIBUTOR",
+  Developer: "DEVELOPER",
+  Member: "MEMBER",
+  Owner: "OWNER",
+  Security: "SECURITY",
   Viewer: "VIEWER",
   ViewerForPlus: "VIEWER_FOR_PLUS",
-  Contributor: "CONTRIBUTOR",
 } as const;
 /**
  * The role used for the invitation
@@ -31,14 +31,14 @@ export type Role = ClosedEnum<typeof Role>;
  * The team roles of the user
  */
 export const TeamRoles = {
-  Owner: "OWNER",
-  Member: "MEMBER",
-  Developer: "DEVELOPER",
-  Security: "SECURITY",
   Billing: "BILLING",
+  Contributor: "CONTRIBUTOR",
+  Developer: "DEVELOPER",
+  Member: "MEMBER",
+  Owner: "OWNER",
+  Security: "SECURITY",
   Viewer: "VIEWER",
   ViewerForPlus: "VIEWER_FOR_PLUS",
-  Contributor: "CONTRIBUTOR",
 } as const;
 /**
  * The team roles of the user
@@ -49,12 +49,14 @@ export type TeamRoles = ClosedEnum<typeof TeamRoles>;
  * The team permissions of the user
  */
 export const TeamPermissions = {
-  IntegrationManager: "IntegrationManager",
   CreateProject: "CreateProject",
-  FullProductionDeployment: "FullProductionDeployment",
-  UsageViewer: "UsageViewer",
   EnvVariableManager: "EnvVariableManager",
   EnvironmentManager: "EnvironmentManager",
+  FullProductionDeployment: "FullProductionDeployment",
+  IntegrationManager: "IntegrationManager",
+  OrgAdmin: "OrgAdmin",
+  OrgViewer: "OrgViewer",
+  UsageViewer: "UsageViewer",
   V0Builder: "V0Builder",
   V0Chatter: "V0Chatter",
   V0Viewer: "V0Viewer",

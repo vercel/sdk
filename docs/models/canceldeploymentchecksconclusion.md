@@ -11,5 +11,5 @@ let value: CancelDeploymentChecksConclusion = "skipped";
 ## Values
 
 ```typescript
-"succeeded" | "failed" | "skipped" | "canceled"
+"canceled" | "failed" | "skipped" | "succeeded"
 ```

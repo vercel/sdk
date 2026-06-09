@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { PlanSlug } from "@vercel/sdk/models/resources.js";
+import { PlanSlug } from "@vercel/sdk/models/fortyseven.js";
 
-let value: PlanSlug = "v0_business";
+let value: PlanSlug = "v0_teams";
 ```
 
 ## Values
 
 ```typescript
-"v0_teams" | "v0_business"
+"v0_business" | "v0_teams"
 ```

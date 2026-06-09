@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { CreateIntegrationStoreDirectOwnership } from "@vercel/sdk/models/createintegrationstoredirecthiddenintegrations1.js";
+import { CreateIntegrationStoreDirectOwnership } from "@vercel/sdk/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproductmetadataschema7type.js";
 
-let value: CreateIntegrationStoreDirectOwnership = "owned";
+let value: CreateIntegrationStoreDirectOwnership = "linked";
 ```
 
 ## Values
 
 ```typescript
-"owned" | "linked" | "sandbox"
+"linked" | "owned" | "sandbox"
 ```

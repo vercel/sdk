@@ -5,11 +5,11 @@
 ```typescript
 import { ListDeploymentCheckRunsRunsConclusion } from "@vercel/sdk/models/listdeploymentcheckrunsop.js";
 
-let value: ListDeploymentCheckRunsRunsConclusion = "skipped";
+let value: ListDeploymentCheckRunsRunsConclusion = "neutral";
 ```
 
 ## Values
 
 ```typescript
-"timeout" | "canceled" | "skipped" | "failed" | "neutral" | "succeeded"
+"canceled" | "failed" | "neutral" | "skipped" | "succeeded" | "timeout"
 ```

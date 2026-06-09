@@ -5,11 +5,11 @@
 ```typescript
 import { ResponseBodyDisabledReason } from "@vercel/sdk/models/createdrainop.js";
 
-let value: ResponseBodyDisabledReason = "feature-not-available";
+let value: ResponseBodyDisabledReason = "disabled-by-admin";
 ```
 
 ## Values
 
 ```typescript
-"disabled-by-owner" | "feature-not-available" | "account-plan-downgrade" | "disabled-by-admin"
+"account-plan-downgrade" | "disabled-by-admin" | "disabled-by-owner" | "feature-not-available"
 ```

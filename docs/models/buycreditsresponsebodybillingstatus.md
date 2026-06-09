@@ -7,11 +7,11 @@ The status of the Purchase Intent.
 ```typescript
 import { BuyCreditsResponseBodyBillingStatus } from "@vercel/sdk/models/buycreditsop.js";
 
-let value: BuyCreditsResponseBodyBillingStatus = "pending";
+let value: BuyCreditsResponseBodyBillingStatus = "failed";
 ```
 
 ## Values
 
 ```typescript
-"pending" | "succeeded" | "failed"
+"failed" | "pending" | "succeeded"
 ```

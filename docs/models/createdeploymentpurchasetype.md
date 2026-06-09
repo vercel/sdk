@@ -13,5 +13,5 @@ let value: CreateDeploymentPurchaseType = "enhanced";
 ## Values
 
 ```typescript
-"enhanced" | "turbo" | "standard"
+"enhanced" | "standard" | "turbo"
 ```

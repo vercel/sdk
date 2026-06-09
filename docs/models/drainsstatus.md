@@ -5,11 +5,11 @@
 ```typescript
 import { DrainsStatus } from "@vercel/sdk/models/getdrainsop.js";
 
-let value: DrainsStatus = "disabled";
+let value: DrainsStatus = "enabled";
 ```
 
 ## Values
 
 ```typescript
-"enabled" | "disabled" | "errored"
+"disabled" | "enabled" | "errored"
 ```

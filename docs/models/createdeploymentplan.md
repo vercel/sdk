@@ -5,11 +5,11 @@
 ```typescript
 import { CreateDeploymentPlan } from "@vercel/sdk/models/createdeploymentvaluedeployments2.js";
 
-let value: CreateDeploymentPlan = "hobby";
+let value: CreateDeploymentPlan = "pro";
 ```
 
 ## Values
 
 ```typescript
-"pro" | "enterprise" | "hobby"
+"enterprise" | "hobby" | "pro"
 ```

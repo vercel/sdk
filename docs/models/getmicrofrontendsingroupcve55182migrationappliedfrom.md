@@ -3,14 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupCve55182MigrationAppliedFrom } from "@vercel/sdk/models/getmicrofrontendsingroupto2.js";
+import { GetMicrofrontendsInGroupCve55182MigrationAppliedFrom } from "@vercel/sdk/models/getmicrofrontendsingrouptomicrofrontends1.js";
 
-let value: GetMicrofrontendsInGroupCve55182MigrationAppliedFrom =
-  "prod_deployment_urls_and_all_previews";
+let value: GetMicrofrontendsInGroupCve55182MigrationAppliedFrom = "preview";
 ```
 
 ## Values
 
 ```typescript
-"preview" | "all" | "prod_deployment_urls_and_all_previews" | "all_except_custom_domains"
+"all" | "all_except_custom_domains" | "preview" | "prod_deployment_urls_and_all_previews"
 ```

@@ -5,18 +5,16 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FortySeven } from "@vercel/sdk/models/resources.js";
+import { FortySeven } from "@vercel/sdk/models/fortyseven.js";
 
 let value: FortySeven = {
-  action: "mutate",
-  data: {},
+  planSlug: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
-| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| `subscriptionId`                                                         | *string*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
-| `action`                                                                 | [models.UserEventPayload47Action](../models/usereventpayload47action.md) | :heavy_check_mark:                                                       | N/A                                                                      |
-| `data`                                                                   | Record<string, *any*>                                                    | :heavy_check_mark:                                                       | N/A                                                                      |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `subscriptionId`   | *string*           | :heavy_minus_sign: | N/A                |
+| `planSlug`         | *string*           | :heavy_check_mark: | N/A                |

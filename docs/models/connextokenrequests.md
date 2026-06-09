@@ -1,0 +1,21 @@
+# ConnexTokenRequests
+
+## Example Usage
+
+```typescript
+import { ConnexTokenRequests } from "@vercel/sdk/models/ninetyfour.js";
+
+let value: ConnexTokenRequests = {
+  updatedAt: 1895.71,
+  blockReason: "admin_override",
+};
+```
+
+## Fields
+
+| Field                                                                                                                                                                | Type                                                                                                                                                                 | Required                                                                                                                                                             | Description                                                                                                                                                          |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `updatedAt`                                                                                                                                                          | *number*                                                                                                                                                             | :heavy_check_mark:                                                                                                                                                   | N/A                                                                                                                                                                  |
+| `blockedFrom`                                                                                                                                                        | *number*                                                                                                                                                             | :heavy_minus_sign:                                                                                                                                                   | N/A                                                                                                                                                                  |
+| `blockedUntil`                                                                                                                                                       | *number*                                                                                                                                                             | :heavy_minus_sign:                                                                                                                                                   | N/A                                                                                                                                                                  |
+| `blockReason`                                                                                                                                                        | [models.UserEventPayload130NewOwnerFeatureBlocksConnexTokenRequestsBlockReason](../models/usereventpayload130newownerfeatureblocksconnextokenrequestsblockreason.md) | :heavy_check_mark:                                                                                                                                                   | N/A                                                                                                                                                                  |

@@ -13,5 +13,5 @@ let value: CreateCustomEnvironmentEnvironmentType = "preview";
 ## Values
 
 ```typescript
-"production" | "preview" | "development"
+"development" | "preview" | "production"
 ```

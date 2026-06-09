@@ -7,15 +7,12 @@ The payload of the event, if requested.
 ```typescript
 import { TwentyEight } from "@vercel/sdk/models/userevent.js";
 
-let value: TwentyEight = {
-  alias: "<value>",
-  deploymentUrl: "https://hidden-apricot.biz",
-};
+let value: TwentyEight = {};
 ```
 
 ## Fields
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `alias`            | *string*           | :heavy_check_mark: | N/A                |
-| `deploymentUrl`    | *string*           | :heavy_check_mark: | N/A                |
+| `alias`            | *string*           | :heavy_minus_sign: | N/A                |
+| `email`            | *string*           | :heavy_minus_sign: | N/A                |

@@ -204,9 +204,9 @@ export type CreateSharedEnvVariableRequest = {
  */
 export const CreateSharedEnvVariableType = {
   Encrypted: "encrypted",
+  Plain: "plain",
   Sensitive: "sensitive",
   System: "system",
-  Plain: "plain",
 } as const;
 /**
  * The type of this cosmos doc instance, if blank, assume secret.
@@ -219,9 +219,9 @@ export type CreateSharedEnvVariableType = ClosedEnum<
  * environments this env variable targets
  */
 export const CreateSharedEnvVariableTarget = {
-  Production: "production",
-  Preview: "preview",
   Development: "development",
+  Preview: "preview",
+  Production: "production",
 } as const;
 /**
  * environments this env variable targets
@@ -310,27 +310,27 @@ export type Created = {
 };
 
 export const Value2 = {
-  Production: "production",
-  Preview: "preview",
   Development: "development",
+  Preview: "preview",
+  Production: "production",
 } as const;
 export type Value2 = ClosedEnum<typeof Value2>;
 
 export type CreateSharedEnvVariableValue = string | Array<Value2>;
 
 export const CreateSharedEnvVariableTarget2 = {
-  Production: "production",
-  Preview: "preview",
   Development: "development",
+  Preview: "preview",
+  Production: "production",
 } as const;
 export type CreateSharedEnvVariableTarget2 = ClosedEnum<
   typeof CreateSharedEnvVariableTarget2
 >;
 
 export const CreateSharedEnvVariableTarget1 = {
-  Production: "production",
-  Preview: "preview",
   Development: "development",
+  Preview: "preview",
+  Production: "production",
 } as const;
 export type CreateSharedEnvVariableTarget1 = ClosedEnum<
   typeof CreateSharedEnvVariableTarget1

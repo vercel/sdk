@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { PayloadAccess } from "@vercel/sdk/models/twohundredandtwentysix.js";
+import { PayloadAccess } from "@vercel/sdk/models/twohundredandthirtyone.js";
 
-let value: PayloadAccess = "private";
+let value: PayloadAccess = "public";
 ```
 
 ## Values
 
 ```typescript
-"public" | "private"
+"private" | "public"
 ```

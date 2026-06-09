@@ -8,7 +8,7 @@ Configuration for matching git branches to this environment
 import { RemoveCustomEnvironmentBranchMatcher } from "@vercel/sdk/models/removecustomenvironmentop.js";
 
 let value: RemoveCustomEnvironmentBranchMatcher = {
-  type: "equals",
+  type: "startsWith",
   pattern: "<value>",
 };
 ```

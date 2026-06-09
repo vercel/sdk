@@ -5,11 +5,11 @@
 ```typescript
 import { CancelDeploymentContentDispositionType } from "@vercel/sdk/models/canceldeploymentop.js";
 
-let value: CancelDeploymentContentDispositionType = "inline";
+let value: CancelDeploymentContentDispositionType = "attachment";
 ```
 
 ## Values
 
 ```typescript
-"inline" | "attachment"
+"attachment" | "inline"
 ```

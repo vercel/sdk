@@ -5,11 +5,11 @@
 ```typescript
 import { UpdateMicrofrontendsProjectsAction } from "@vercel/sdk/models/updatemicrofrontendsresponsebody.js";
 
-let value: UpdateMicrofrontendsProjectsAction = "blocked";
+let value: UpdateMicrofrontendsProjectsAction = "add-deployment-interstitial";
 ```
 
 ## Values
 
 ```typescript
-"blocked"
+"add-deployment-interstitial" | "add-project-interstitial" | "remove-deployment-interstitial" | "remove-project-interstitial"
 ```

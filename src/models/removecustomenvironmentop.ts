@@ -41,9 +41,9 @@ export type RemoveCustomEnvironmentRequest = {
  * The type of environment (production, preview, or development)
  */
 export const RemoveCustomEnvironmentType = {
-  Production: "production",
-  Preview: "preview",
   Development: "development",
+  Preview: "preview",
+  Production: "production",
 } as const;
 /**
  * The type of environment (production, preview, or development)
@@ -57,8 +57,8 @@ export type RemoveCustomEnvironmentType = ClosedEnum<
  */
 export const RemoveCustomEnvironmentEnvironmentType = {
   EndsWith: "endsWith",
-  StartsWith: "startsWith",
   Equals: "equals",
+  StartsWith: "startsWith",
 } as const;
 /**
  * The type of matching to perform

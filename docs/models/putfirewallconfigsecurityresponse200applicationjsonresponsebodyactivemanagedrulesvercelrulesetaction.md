@@ -9,11 +9,11 @@ import {
 
 let value:
   PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesVercelRulesetAction =
-    "deny";
+    "challenge";
 ```
 
 ## Values
 
 ```typescript
-"deny" | "log" | "challenge"
+"challenge" | "deny" | "log"
 ```

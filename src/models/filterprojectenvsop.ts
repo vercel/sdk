@@ -68,18 +68,18 @@ export type FilterProjectEnvsRequest = {
 };
 
 export const FilterProjectEnvsTargetProjectsResponse2 = {
-  Production: "production",
-  Preview: "preview",
   Development: "development",
+  Preview: "preview",
+  Production: "production",
 } as const;
 export type FilterProjectEnvsTargetProjectsResponse2 = ClosedEnum<
   typeof FilterProjectEnvsTargetProjectsResponse2
 >;
 
 export const FilterProjectEnvsTargetProjectsResponse1 = {
-  Production: "production",
-  Preview: "preview",
   Development: "development",
+  Preview: "preview",
+  Production: "production",
 } as const;
 export type FilterProjectEnvsTargetProjectsResponse1 = ClosedEnum<
   typeof FilterProjectEnvsTargetProjectsResponse1
@@ -90,11 +90,11 @@ export type FilterProjectEnvsResponseBodyProjectsResponseTarget =
   | FilterProjectEnvsTargetProjectsResponse2;
 
 export const FilterProjectEnvsResponseBodyProjectsResponse200Type = {
-  System: "system",
   Encrypted: "encrypted",
   Plain: "plain",
-  Sensitive: "sensitive",
   Secret: "secret",
+  Sensitive: "sensitive",
+  System: "system",
 } as const;
 export type FilterProjectEnvsResponseBodyProjectsResponse200Type = ClosedEnum<
   typeof FilterProjectEnvsResponseBodyProjectsResponse200Type
@@ -295,18 +295,18 @@ export type FilterProjectEnvsResponseBody3 = {
 };
 
 export const FilterProjectEnvsTargetProjects2 = {
-  Production: "production",
-  Preview: "preview",
   Development: "development",
+  Preview: "preview",
+  Production: "production",
 } as const;
 export type FilterProjectEnvsTargetProjects2 = ClosedEnum<
   typeof FilterProjectEnvsTargetProjects2
 >;
 
 export const FilterProjectEnvsTargetProjects1 = {
-  Production: "production",
-  Preview: "preview",
   Development: "development",
+  Preview: "preview",
+  Production: "production",
 } as const;
 export type FilterProjectEnvsTargetProjects1 = ClosedEnum<
   typeof FilterProjectEnvsTargetProjects1
@@ -317,11 +317,11 @@ export type FilterProjectEnvsResponseBodyProjectsTarget =
   | FilterProjectEnvsTargetProjects2;
 
 export const FilterProjectEnvsResponseBodyProjectsResponseType = {
-  System: "system",
   Encrypted: "encrypted",
   Plain: "plain",
-  Sensitive: "sensitive",
   Secret: "secret",
+  Sensitive: "sensitive",
+  System: "system",
 } as const;
 export type FilterProjectEnvsResponseBodyProjectsResponseType = ClosedEnum<
   typeof FilterProjectEnvsResponseBodyProjectsResponseType
@@ -522,18 +522,18 @@ export type FilterProjectEnvsResponseBody2 = {
 };
 
 export const FilterProjectEnvsTarget2 = {
-  Production: "production",
-  Preview: "preview",
   Development: "development",
+  Preview: "preview",
+  Production: "production",
 } as const;
 export type FilterProjectEnvsTarget2 = ClosedEnum<
   typeof FilterProjectEnvsTarget2
 >;
 
 export const FilterProjectEnvsTarget1 = {
-  Production: "production",
-  Preview: "preview",
   Development: "development",
+  Preview: "preview",
+  Production: "production",
 } as const;
 export type FilterProjectEnvsTarget1 = ClosedEnum<
   typeof FilterProjectEnvsTarget1
@@ -544,11 +544,11 @@ export type FilterProjectEnvsResponseBodyTarget =
   | FilterProjectEnvsTarget2;
 
 export const FilterProjectEnvsResponseBodyType = {
-  System: "system",
   Encrypted: "encrypted",
   Plain: "plain",
-  Sensitive: "sensitive",
   Secret: "secret",
+  Sensitive: "sensitive",
+  System: "system",
 } as const;
 export type FilterProjectEnvsResponseBodyType = ClosedEnum<
   typeof FilterProjectEnvsResponseBodyType

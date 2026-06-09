@@ -14,7 +14,7 @@ let value: GetAllChecksResponseBody = {
       name: "<value>",
       rerequestable: true,
       blocking: true,
-      status: "running",
+      status: "completed",
       updatedAt: 2249.21,
     },
   ],

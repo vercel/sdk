@@ -89,6 +89,9 @@ export type Test = {
 };
 
 export type SubmitInvoiceRequestBody = {
+  /**
+   * Partner-provided invoice identifier. If provided, it must be unique for this installation.
+   */
   externalId?: string | undefined;
   /**
    * Invoice date. Must be within the period's start and end.

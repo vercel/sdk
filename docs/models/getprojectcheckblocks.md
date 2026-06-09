@@ -5,11 +5,11 @@
 ```typescript
 import { GetProjectCheckBlocks } from "@vercel/sdk/models/getprojectcheckop.js";
 
-let value: GetProjectCheckBlocks = "deployment-start";
+let value: GetProjectCheckBlocks = "deployment-promotion";
 ```
 
 ## Values
 
 ```typescript
-"none" | "build-start" | "deployment-start" | "deployment-alias" | "deployment-promotion"
+"build-start" | "deployment-alias" | "deployment-promotion" | "deployment-start" | "none"
 ```

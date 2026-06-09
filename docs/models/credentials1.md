@@ -3,10 +3,10 @@
 ## Example Usage
 
 ```typescript
-import { Credentials1 } from "@vercel/sdk/models/edgemiddlewareinvocations.js";
+import { Credentials1 } from "@vercel/sdk/models/connectdatatransfer.js";
 
 let value: Credentials1 = {
-  type: "apple",
+  type: "github-oauth-limited",
   id: "<id>",
 };
 ```

@@ -5,11 +5,11 @@
 ```typescript
 import { Architecture } from "@vercel/sdk/models/createdeploymentvaluedeployments2.js";
 
-let value: Architecture = "x86_64";
+let value: Architecture = "arm64";
 ```
 
 ## Values
 
 ```typescript
-"x86_64" | "arm64"
+"arm64" | "x86_64"
 ```

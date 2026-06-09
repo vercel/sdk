@@ -5,11 +5,11 @@
 ```typescript
 import { GetAllLogDrainsDrainsDisabledReason } from "@vercel/sdk/models/getalllogdrainsop.js";
 
-let value: GetAllLogDrainsDrainsDisabledReason = "account-plan-downgrade";
+let value: GetAllLogDrainsDrainsDisabledReason = "disabled-by-owner";
 ```
 
 ## Values
 
 ```typescript
-"disabled-by-owner" | "feature-not-available" | "account-plan-downgrade" | "disabled-by-admin"
+"account-plan-downgrade" | "disabled-by-admin" | "disabled-by-owner" | "feature-not-available"
 ```

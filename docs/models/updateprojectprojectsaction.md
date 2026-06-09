@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UpdateProjectProjectsAction } from "@vercel/sdk/models/updateprojectresponsebody.js";
+import { UpdateProjectProjectsAction } from "@vercel/sdk/models/updateprojectvalue.js";
 
 let value: UpdateProjectProjectsAction = "delete";
 ```
@@ -11,5 +11,5 @@ let value: UpdateProjectProjectsAction = "delete";
 ## Values
 
 ```typescript
-"cancel" | "accept" | "delete"
+"accept" | "cancel" | "delete"
 ```

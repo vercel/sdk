@@ -10,7 +10,7 @@ import { CustomEnvironment1 } from "@vercel/sdk/models/createdeploymentvaluedepl
 let value: CustomEnvironment1 = {
   id: "<id>",
   slug: "<value>",
-  type: "production",
+  type: "development",
   createdAt: 7312.59,
   updatedAt: 6889.56,
 };

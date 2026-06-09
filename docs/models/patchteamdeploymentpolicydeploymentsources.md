@@ -3,15 +3,10 @@
 
 ## Supported Types
 
-### `models.PatchTeamDeploymentSources1`
+### `models.PatchTeamDeploymentSources1[]`
 
 ```typescript
-const value: models.PatchTeamDeploymentSources1 = {
-  enabled: false,
-  sources: [
-    "git",
-  ],
-};
+const value: models.PatchTeamDeploymentSources1[] = [];
 ```
 
 ### `string`

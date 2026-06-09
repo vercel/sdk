@@ -5,11 +5,11 @@
 ```typescript
 import { ChecksState } from "@vercel/sdk/models/createdeploymentvaluedeployments2.js";
 
-let value: ChecksState = "running";
+let value: ChecksState = "registered";
 ```
 
 ## Values
 
 ```typescript
-"registered" | "running" | "completed"
+"completed" | "registered" | "running"
 ```

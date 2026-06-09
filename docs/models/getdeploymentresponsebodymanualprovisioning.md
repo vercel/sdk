@@ -8,7 +8,7 @@ Present when deployment was created with manual provisioning enabled, either exp
 import { GetDeploymentResponseBodyManualProvisioning } from "@vercel/sdk/models/responsebodyproject.js";
 
 let value: GetDeploymentResponseBodyManualProvisioning = {
-  state: "COMPLETE",
+  state: "PENDING",
 };
 ```
 

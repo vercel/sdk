@@ -13,5 +13,5 @@ let value: Mode = "custom";
 ## Values
 
 ```typescript
-"allow-all" | "deny-all" | "custom"
+"allow-all" | "custom" | "deny-all"
 ```

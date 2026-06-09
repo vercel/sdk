@@ -7,11 +7,11 @@ Current provisioning state
 ```typescript
 import { GetDeploymentResponseBodyDeploymentsState } from "@vercel/sdk/models/responsebodyproject.js";
 
-let value: GetDeploymentResponseBodyDeploymentsState = "COMPLETE";
+let value: GetDeploymentResponseBodyDeploymentsState = "PENDING";
 ```
 
 ## Values
 
 ```typescript
-"PENDING" | "COMPLETE" | "TIMEOUT"
+"COMPLETE" | "PENDING" | "TIMEOUT"
 ```

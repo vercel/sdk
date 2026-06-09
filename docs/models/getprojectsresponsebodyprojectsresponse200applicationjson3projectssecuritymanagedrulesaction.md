@@ -5,15 +5,15 @@
 ```typescript
 import {
   GetProjectsResponseBodyProjectsResponse200ApplicationJson3ProjectsSecurityManagedRulesAction,
-} from "@vercel/sdk/models/getprojectsresponsebodytargets.js";
+} from "@vercel/sdk/models/getprojectsresponsebodyfunctiondefaultmemorytype.js";
 
 let value:
   GetProjectsResponseBodyProjectsResponse200ApplicationJson3ProjectsSecurityManagedRulesAction =
-    "challenge";
+    "deny";
 ```
 
 ## Values
 
 ```typescript
-"deny" | "challenge" | "log"
+"challenge" | "deny" | "log"
 ```

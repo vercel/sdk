@@ -5,11 +5,11 @@
 ```typescript
 import { FlatRateTier } from "@vercel/sdk/models/createprojectresponsebody.js";
 
-let value: FlatRateTier = "advanced";
+let value: FlatRateTier = "critical";
 ```
 
 ## Values
 
 ```typescript
-"standard" | "base" | "advanced" | "critical"
+"advanced" | "base" | "critical" | "standard"
 ```

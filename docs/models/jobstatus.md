@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { JobStatus } from "@vercel/sdk/models/createprojecttopreset.js";
+import { JobStatus } from "@vercel/sdk/models/createprojectprojectsto.js";
 
 let value: JobStatus = "in-progress";
 ```
@@ -11,5 +11,5 @@ let value: JobStatus = "in-progress";
 ## Values
 
 ```typescript
-"pending" | "in-progress" | "succeeded" | "failed" | "skipped"
+"failed" | "in-progress" | "pending" | "skipped" | "succeeded"
 ```

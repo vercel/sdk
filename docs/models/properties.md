@@ -113,7 +113,10 @@ const value: models.Properties9 = {
 ```typescript
 const value: models.Properties10 = {
   type: "string",
-  uiControl: "domain",
+  uiControl: "vercel-country",
+  uiOptions: [
+    "<value>",
+  ],
 };
 ```
 
@@ -121,6 +124,15 @@ const value: models.Properties10 = {
 
 ```typescript
 const value: models.Properties11 = {
+  type: "string",
+  uiControl: "domain",
+};
+```
+
+### `models.Properties12`
+
+```typescript
+const value: models.Properties12 = {
   type: "string",
   uiControl: "git-namespace",
 };

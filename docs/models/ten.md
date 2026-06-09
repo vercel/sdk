@@ -10,8 +10,8 @@ import { Ten } from "@vercel/sdk/models/userevent.js";
 let value: Ten = {
   teamId: "<id>",
   resourceId: "<id>",
-  fromPlan: "pro",
-  toPlan: "hobby",
+  fromPlan: "hobby",
+  toPlan: "pro",
 };
 ```
 

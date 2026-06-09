@@ -5,13 +5,13 @@ Whether the Vercel bot should automatically create GitHub deployments https://do
 ## Example Usage
 
 ```typescript
-import { UpdateMicrofrontendsCreateDeployments } from "@vercel/sdk/models/updatemicrofrontendsmanagedrules.js";
+import { UpdateMicrofrontendsCreateDeployments } from "@vercel/sdk/models/updatemicrofrontendsbotfilter.js";
 
-let value: UpdateMicrofrontendsCreateDeployments = "enabled";
+let value: UpdateMicrofrontendsCreateDeployments = "disabled";
 ```
 
 ## Values
 
 ```typescript
-"enabled" | "disabled"
+"disabled" | "enabled"
 ```

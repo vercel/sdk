@@ -5,11 +5,11 @@
 ```typescript
 import { GetRoutesResponseBodyOp } from "@vercel/sdk/models/getroutesop.js";
 
-let value: GetRoutesResponseBodyOp = "set";
+let value: GetRoutesResponseBodyOp = "delete";
 ```
 
 ## Values
 
 ```typescript
-"append" | "set" | "delete"
+"append" | "delete" | "set"
 ```

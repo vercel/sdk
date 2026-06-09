@@ -8,7 +8,7 @@
 ```typescript
 const value: models.UpdateDrainProjectAccess1 = {
   access: "all",
-  managedBy: "integration",
+  managedBy: "drain",
 };
 ```
 
@@ -20,7 +20,7 @@ const value: models.UpdateDrainProjectAccess2 = {
   projectIds: [
     "<value 1>",
   ],
-  managedBy: "drain",
+  managedBy: "integration",
 };
 ```
 

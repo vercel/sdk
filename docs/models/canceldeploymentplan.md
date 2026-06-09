@@ -5,11 +5,11 @@
 ```typescript
 import { CancelDeploymentPlan } from "@vercel/sdk/models/canceldeploymentop.js";
 
-let value: CancelDeploymentPlan = "hobby";
+let value: CancelDeploymentPlan = "pro";
 ```
 
 ## Values
 
 ```typescript
-"pro" | "enterprise" | "hobby"
+"enterprise" | "hobby" | "pro"
 ```

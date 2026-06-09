@@ -5,15 +5,15 @@
 ```typescript
 import {
   CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema11UiControl,
-} from "@vercel/sdk/models/createintegrationstoredirecthiddenintegrations1.js";
+} from "@vercel/sdk/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproductmetadataschema7type.js";
 
 let value:
   CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema11UiControl =
-    "git-namespace";
+    "domain";
 ```
 
 ## Values
 
 ```typescript
-"git-namespace"
+"domain"
 ```

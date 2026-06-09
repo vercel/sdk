@@ -3,10 +3,10 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsResponseBodyEnv } from "@vercel/sdk/models/getprojectsresponsebodytargets.js";
+import { GetProjectsResponseBodyEnv } from "@vercel/sdk/models/getprojectsresponsebodyfunctiondefaultmemorytype.js";
 
 let value: GetProjectsResponseBodyEnv = {
-  type: "plain",
+  type: "secret",
   value: "<value>",
   key: "<key>",
 };

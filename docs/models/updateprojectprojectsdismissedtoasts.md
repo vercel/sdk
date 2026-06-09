@@ -8,7 +8,7 @@ import { UpdateProjectProjectsDismissedToasts } from "@vercel/sdk/models/updatep
 let value: UpdateProjectProjectsDismissedToasts = {
   key: "<key>",
   dismissedAt: 2177.17,
-  action: "accept",
+  action: "cancel",
   value: true,
 };
 ```

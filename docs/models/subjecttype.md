@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { SubjectType } from "@vercel/sdk/models/resources.js";
+import { SubjectType } from "@vercel/sdk/models/fortyseven.js";
 
-let value: SubjectType = "user";
+let value: SubjectType = "app";
 ```
 
 ## Values
 
 ```typescript
-"user" | "app"
+"app" | "user"
 ```

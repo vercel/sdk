@@ -5,24 +5,25 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndSixtySix } from "@vercel/sdk/models/twohundredandtwentysix.js";
+import { TwoHundredAndSixtySix } from "@vercel/sdk/models/twohundredandthirtyone.js";
 
 let value: TwoHundredAndSixtySix = {
-  transferRequestCode: "<value>",
-  store: {
-    id: "<id>",
-    type: "edge-config",
-  },
-  originTeamId: "<id>",
-  originTeamName: "<value>",
+  email: "Newell.Johnson@hotmail.com",
+  gitlabLogin: "<value>",
+  gitlabEmail: "<value>",
+  gitlabName: "<value>",
+  zeitAccount: "<value>",
+  zeitAccountType: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                              | Type                                                               | Required                                                           | Description                                                        |
-| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
-| `transferRequestCode`                                              | *string*                                                           | :heavy_check_mark:                                                 | N/A                                                                |
-| `store`                                                            | [models.UserEventPayloadStore](../models/usereventpayloadstore.md) | :heavy_check_mark:                                                 | N/A                                                                |
-| `originTeamId`                                                     | *string*                                                           | :heavy_check_mark:                                                 | N/A                                                                |
-| `originTeamName`                                                   | *string*                                                           | :heavy_check_mark:                                                 | N/A                                                                |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `email`            | *string*           | :heavy_check_mark: | N/A                |
+| `gitlabLogin`      | *string*           | :heavy_check_mark: | N/A                |
+| `gitlabEmail`      | *string*           | :heavy_check_mark: | N/A                |
+| `gitlabName`       | *string*           | :heavy_check_mark: | N/A                |
+| `zeitAccount`      | *string*           | :heavy_check_mark: | N/A                |
+| `zeitAccountType`  | *string*           | :heavy_check_mark: | N/A                |

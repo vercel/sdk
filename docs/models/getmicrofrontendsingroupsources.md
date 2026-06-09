@@ -7,7 +7,16 @@
 
 ```typescript
 const value: models.GetMicrofrontendsInGroupSources1 = {
-  provider: "bitbucket",
+  provider: "github",
+  org: "<value>",
+};
+```
+
+### `models.GetMicrofrontendsInGroupSources1`
+
+```typescript
+const value: models.GetMicrofrontendsInGroupSources1 = {
+  provider: "github",
   org: "<value>",
 };
 ```
@@ -17,8 +26,7 @@ const value: models.GetMicrofrontendsInGroupSources1 = {
 ```typescript
 const value: models.GetMicrofrontendsInGroupSources2 = {
   provider: "gitlab",
-  org: "<value>",
-  repo: "<value>",
+  namespace: "<value>",
 };
 ```
 

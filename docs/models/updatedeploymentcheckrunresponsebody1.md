@@ -12,14 +12,14 @@ let value: UpdateDeploymentCheckRunResponseBody1 = {
   name: "<value>",
   ownerId: "<id>",
   deploymentId: "<id>",
-  status: "running",
+  status: "queued",
   timeout: 6527.32,
   createdAt: 2125,
   updatedAt: 4265.19,
   checkId: "<id>",
   source: {
     kind: "git-provider",
-    provider: "github",
+    provider: "bitbucket",
     externalCheckName: "<value>",
   },
 };

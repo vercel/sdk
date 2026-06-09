@@ -6,7 +6,7 @@
 import { Routes2 } from "@vercel/sdk/models/createdeploymentvaluedeployments2.js";
 
 let value: Routes2 = {
-  handle: "resource",
+  handle: "rewrite",
 };
 ```
 

@@ -11,7 +11,7 @@ let value: CreateFlagFeatureFlagsConditions = {
     kind: "<value>",
     attribute: "<value>",
   },
-  cmp: "oneOf",
+  cmp: "!eq",
 };
 ```
 

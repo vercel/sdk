@@ -7,11 +7,11 @@ If defined, either `staging` if a staging alias in the format `<project>.<team>.
 ```typescript
 import { GetDeploymentResponseBodyTarget } from "@vercel/sdk/models/getdeploymentresponsebody.js";
 
-let value: GetDeploymentResponseBodyTarget = "production";
+let value: GetDeploymentResponseBodyTarget = "staging";
 ```
 
 ## Values
 
 ```typescript
-"staging" | "production"
+"production" | "staging"
 ```

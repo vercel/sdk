@@ -4,14 +4,17 @@
 
 import { sandboxesCreateSessionDirectory } from "../funcs/sandboxesCreateSessionDirectory.js";
 import { sandboxesCreateSessionSnapshot } from "../funcs/sandboxesCreateSessionSnapshot.js";
+import { sandboxesDeleteDrive } from "../funcs/sandboxesDeleteDrive.js";
 import { sandboxesDeleteSandbox } from "../funcs/sandboxesDeleteSandbox.js";
 import { sandboxesDeleteSessionSnapshot } from "../funcs/sandboxesDeleteSessionSnapshot.js";
 import { sandboxesExtendSessionTimeout } from "../funcs/sandboxesExtendSessionTimeout.js";
 import { sandboxesGetNamedSandbox } from "../funcs/sandboxesGetNamedSandbox.js";
+import { sandboxesGetOrCreateDrive } from "../funcs/sandboxesGetOrCreateDrive.js";
 import { sandboxesGetSession } from "../funcs/sandboxesGetSession.js";
 import { sandboxesGetSessionCommand } from "../funcs/sandboxesGetSessionCommand.js";
 import { sandboxesGetSessionSnapshot } from "../funcs/sandboxesGetSessionSnapshot.js";
 import { sandboxesKillSessionCommand } from "../funcs/sandboxesKillSessionCommand.js";
+import { sandboxesListDrives } from "../funcs/sandboxesListDrives.js";
 import { sandboxesListSandboxes } from "../funcs/sandboxesListSandboxes.js";
 import { sandboxesListSessionCommands } from "../funcs/sandboxesListSessionCommands.js";
 import { sandboxesListSessions } from "../funcs/sandboxesListSessions.js";
@@ -30,6 +33,10 @@ import {
   CreateSessionSnapshotResponseBody,
 } from "../models/createsessionsnapshotop.js";
 import {
+  DeleteDriveRequest,
+  DeleteDriveResponseBody,
+} from "../models/deletedriveop.js";
+import {
   DeleteSandboxRequest,
   DeleteSandboxResponseBody,
 } from "../models/deletesandboxop.js";
@@ -46,6 +53,10 @@ import {
   GetNamedSandboxResponseBody,
 } from "../models/getnamedsandboxop.js";
 import {
+  GetOrCreateDriveRequest,
+  GetOrCreateDriveResponse,
+} from "../models/getorcreatedriveop.js";
+import {
   GetSessionCommandRequest,
   GetSessionCommandResponseBody,
 } from "../models/getsessioncommandop.js";
@@ -61,6 +72,10 @@ import {
   KillSessionCommandRequest,
   KillSessionCommandResponseBody,
 } from "../models/killsessioncommandop.js";
+import {
+  ListDrivesRequest,
+  ListDrivesResponseBody,
+} from "../models/listdrivesop.js";
 import {
   ListSandboxesRequest,
   ListSandboxesResponseBody,
@@ -104,6 +119,57 @@ export class Sandboxes extends ClientSDK {
     options?: RequestOptions,
   ): Promise<ListSandboxesResponseBody> {
     return unwrapAsync(sandboxesListSandboxes(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * List drives
+   *
+   * @remarks
+   * Retrieves a paginated list of drives belonging to a specific project. Drives are in private beta. Register your interest to get access: https://vercel.com/changelog/drives-for-vercel-sandbox-in-private-beta
+   */
+  async listDrives(
+    request: ListDrivesRequest,
+    options?: RequestOptions,
+  ): Promise<ListDrivesResponseBody> {
+    return unwrapAsync(sandboxesListDrives(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Get or create a drive
+   *
+   * @remarks
+   * Gets an existing drive by project and name, or creates it when it does not exist. Drives are in private beta. Register your interest to get access: https://vercel.com/changelog/drives-for-vercel-sandbox-in-private-beta
+   */
+  async getOrCreateDrive(
+    request: GetOrCreateDriveRequest,
+    options?: RequestOptions,
+  ): Promise<GetOrCreateDriveResponse> {
+    return unwrapAsync(sandboxesGetOrCreateDrive(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Delete a drive
+   *
+   * @remarks
+   * Deletes a drive by project and name. Attached drives cannot be deleted. Stop or replace the session currently using the drive before retrying deletion. Drives are in private beta. Register your interest to get access: https://vercel.com/changelog/drives-for-vercel-sandbox-in-private-beta
+   */
+  async deleteDrive(
+    request: DeleteDriveRequest,
+    options?: RequestOptions,
+  ): Promise<DeleteDriveResponseBody> {
+    return unwrapAsync(sandboxesDeleteDrive(
       this,
       request,
       options,

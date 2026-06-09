@@ -5,22 +5,25 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndSixtySeven } from "@vercel/sdk/models/twohundredandtwentysix.js";
+import { TwoHundredAndSixtySeven } from "@vercel/sdk/models/twohundredandthirtyone.js";
 
 let value: TwoHundredAndSixtySeven = {
-  id: "<id>",
-  type: "blob",
+  sampleRatePercent: 2145.4,
+  spendLimitInDollars: 4031.81,
+  previous: {
+    sampleRatePercent: 3040.53,
+    spendLimitInDollars: null,
+  },
 };
 ```
 
 ## Fields
 
-| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
-| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `id`                                                                   | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
-| `name`                                                                 | *string*                                                               | :heavy_minus_sign:                                                     | N/A                                                                    |
-| `computeUnitsMax`                                                      | *number*                                                               | :heavy_minus_sign:                                                     | N/A                                                                    |
-| `computeUnitsMin`                                                      | *number*                                                               | :heavy_minus_sign:                                                     | N/A                                                                    |
-| `suspendTimeoutSeconds`                                                | *number*                                                               | :heavy_minus_sign:                                                     | N/A                                                                    |
-| `type`                                                                 | [models.UserEventPayload267Type](../models/usereventpayload267type.md) | :heavy_check_mark:                                                     | N/A                                                                    |
-| `access`                                                               | [models.Access](../models/access.md)                                   | :heavy_minus_sign:                                                     | N/A                                                                    |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `projectId`                                                                    | *string*                                                                       | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `projectName`                                                                  | *string*                                                                       | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `analyticsId`                                                                  | *string*                                                                       | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `sampleRatePercent`                                                            | *number*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `spendLimitInDollars`                                                          | *number*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `previous`                                                                     | [models.UserEventPayload267Previous](../models/usereventpayload267previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |

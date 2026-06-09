@@ -15,7 +15,7 @@ let value: GetDeploymentEventsResponseBody2 = {
     name: "<value>",
   },
   serial: "<value>",
-  type: "middleware",
+  type: "metric",
 };
 ```
 

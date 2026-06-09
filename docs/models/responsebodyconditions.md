@@ -9,7 +9,7 @@ let value: ResponseBodyConditions = {
   lhs: {
     type: "segment",
   },
-  cmp: "regex",
+  cmp: "lte",
 };
 ```
 

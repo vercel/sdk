@@ -6,7 +6,7 @@
 import { ResponseBodyIntegrations } from "@vercel/sdk/models/responsebodyproject.js";
 
 let value: ResponseBodyIntegrations = {
-  status: "error",
+  status: "skipped",
   startedAt: 1770.55,
 };
 ```

@@ -10,7 +10,7 @@ const value: models.UpdateFlagResponseBody1 = {
   variants: [],
   id: "<id>",
   environments: {},
-  kind: "json",
+  kind: "string",
   revision: 9662.69,
   seed: 4558.32,
   state: "archived",
@@ -28,55 +28,18 @@ const value: models.UpdateFlagResponseBody1 = {
 
 ```typescript
 const value: models.Flag = {
-  variants: [],
+  variants: [
+    {},
+  ],
   id: "<id>",
-  environments: {
-    "key": {
-      pausedOutcome: {
-        type: "variant",
-        variantId: "<id>",
-      },
-      fallthrough: {
-        type: "split",
-        base: {
-          type: "entity",
-          kind: "<value>",
-          attribute: "<value>",
-        },
-        weights: {
-          "key": 167.7,
-        },
-        defaultVariantId: "<id>",
-      },
-      active: true,
-      rules: [
-        {
-          id: "<id>",
-          outcome: {
-            type: "rollout",
-            base: {
-              type: "entity",
-              kind: "<value>",
-              attribute: "<value>",
-            },
-            defaultVariantId: "<id>",
-            startTimestamp: 5347.28,
-            rollFromVariantId: "<id>",
-            rollToVariantId: "<id>",
-            slots: [],
-          },
-          conditions: [],
-        },
-      ],
-    },
-  },
+  environments: {},
   kind: "string",
-  revision: 2186.56,
-  seed: 8125.13,
+  revision: 7245.99,
+  seed: 4797.93,
   state: "archived",
   slug: "<value>",
-  createdAt: 8307.94,
-  updatedAt: 2132.63,
+  createdAt: 6977.76,
+  updatedAt: 4972.47,
   createdBy: "<value>",
   ownerId: "<id>",
   projectId: "<id>",

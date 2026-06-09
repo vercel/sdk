@@ -5,11 +5,11 @@
 ```typescript
 import { FlagMetricType } from "@vercel/sdk/models/flag.js";
 
-let value: FlagMetricType = "count";
+let value: FlagMetricType = "percentage";
 ```
 
 ## Values
 
 ```typescript
-"percentage" | "currency" | "count"
+"count" | "currency" | "percentage"
 ```

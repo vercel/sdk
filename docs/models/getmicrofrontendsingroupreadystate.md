@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupReadyState } from "@vercel/sdk/models/getmicrofrontendsingroupto2.js";
+import { GetMicrofrontendsInGroupReadyState } from "@vercel/sdk/models/getmicrofrontendsingrouptomicrofrontends1.js";
 
-let value: GetMicrofrontendsInGroupReadyState = "BUILDING";
+let value: GetMicrofrontendsInGroupReadyState = "BLOCKED";
 ```
 
 ## Values
 
 ```typescript
-"BUILDING" | "ERROR" | "BLOCKED" | "INITIALIZING" | "QUEUED" | "READY" | "CANCELED"
+"BLOCKED" | "BUILDING" | "CANCELED" | "ERROR" | "INITIALIZING" | "QUEUED" | "READY"
 ```

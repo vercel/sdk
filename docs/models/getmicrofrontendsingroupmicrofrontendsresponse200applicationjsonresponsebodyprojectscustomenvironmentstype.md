@@ -7,15 +7,15 @@ The type of matching to perform
 ```typescript
 import {
   GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyProjectsCustomEnvironmentsType,
-} from "@vercel/sdk/models/getmicrofrontendsingroupto2.js";
+} from "@vercel/sdk/models/getmicrofrontendsingrouptomicrofrontends1.js";
 
 let value:
   GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyProjectsCustomEnvironmentsType =
-    "startsWith";
+    "endsWith";
 ```
 
 ## Values
 
 ```typescript
-"startsWith" | "equals" | "endsWith"
+"endsWith" | "equals" | "startsWith"
 ```

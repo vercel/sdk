@@ -5,11 +5,11 @@
 ```typescript
 import { CreateFlagDevice } from "@vercel/sdk/models/createflagop.js";
 
-let value: CreateFlagDevice = "ios";
+let value: CreateFlagDevice = "desktop";
 ```
 
 ## Values
 
 ```typescript
-"android" | "ios" | "desktop" | "mweb"
+"android" | "desktop" | "ios" | "mweb"
 ```

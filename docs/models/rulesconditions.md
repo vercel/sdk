@@ -6,8 +6,8 @@
 import { RulesConditions } from "@vercel/sdk/models/getfirewallconfigop.js";
 
 let value: RulesConditions = {
-  type: "ip_address",
-  op: "nex",
+  type: "geo_country",
+  op: "re",
 };
 ```
 

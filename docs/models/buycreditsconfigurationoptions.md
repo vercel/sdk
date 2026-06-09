@@ -6,7 +6,7 @@
 import { BuyCreditsConfigurationOptions } from "@vercel/sdk/models/buycreditsop.js";
 
 let value: BuyCreditsConfigurationOptions = {
-  effectiveDate: "end_of_subscription_term",
+  effectiveDate: "immediate",
   orbSubscriptionId: "<id>",
 };
 ```

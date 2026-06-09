@@ -5,7 +5,7 @@ Retention policies for deployments. These are enforced at the project level, but
 ## Example Usage
 
 ```typescript
-import { UpdateMicrofrontendsDeploymentExpiration } from "@vercel/sdk/models/updatemicrofrontendsmanagedrules.js";
+import { UpdateMicrofrontendsDeploymentExpiration } from "@vercel/sdk/models/updatemicrofrontendsbotfilter.js";
 
 let value: UpdateMicrofrontendsDeploymentExpiration = {};
 ```

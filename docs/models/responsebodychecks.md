@@ -7,7 +7,7 @@ import { ResponseBodyChecks } from "@vercel/sdk/models/getdeploymentresponsebody
 
 let value: ResponseBodyChecks = {
   deploymentAlias: {
-    state: "failed",
+    state: "pending",
     startedAt: 9310.58,
   },
 };

@@ -5,7 +5,7 @@ Source of the store creation request
 ## Example Usage
 
 ```typescript
-import { CreateIntegrationStoreDirectSource } from "@vercel/sdk/models/createintegrationstoredirecthiddenintegrations1.js";
+import { CreateIntegrationStoreDirectSource } from "@vercel/sdk/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproductmetadataschema7type.js";
 
 let value: CreateIntegrationStoreDirectSource = "marketplace";
 ```

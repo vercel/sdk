@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { CreateDeployments } from "@vercel/sdk/models/onehundredandfiftyfive.js";
+import { CreateDeployments } from "@vercel/sdk/models/usereventpayloadprevious.js";
 
-let value: CreateDeployments = "disabled";
+let value: CreateDeployments = "enabled";
 ```
 
 ## Values
 
 ```typescript
-"enabled" | "disabled"
+"disabled" | "enabled"
 ```

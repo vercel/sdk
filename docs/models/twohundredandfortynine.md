@@ -5,19 +5,33 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndFortyNine } from "@vercel/sdk/models/twohundredandtwentysix.js";
+import { TwoHundredAndFortyNine } from "@vercel/sdk/models/twohundredandthirtyone.js";
 
 let value: TwoHundredAndFortyNine = {
-  uid: "<id>",
-  name: {
-    name: "<value>",
+  projectId: "<id>",
+  projectName: "<value>",
+  next: {
+    project: {
+      staticIps: {
+        enabled: true,
+      },
+    },
+  },
+  previous: {
+    project: {
+      staticIps: {
+        enabled: false,
+      },
+    },
   },
 };
 ```
 
 ## Fields
 
-| Field                | Type                 | Required             | Description          |
-| -------------------- | -------------------- | -------------------- | -------------------- |
-| `uid`                | *string*             | :heavy_check_mark:   | N/A                  |
-| `name`               | *models.PayloadName* | :heavy_check_mark:   | N/A                  |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `projectId`                                                                    | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `projectName`                                                                  | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `next`                                                                         | [models.UserEventPayload249Next](../models/usereventpayload249next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
+| `previous`                                                                     | [models.UserEventPayload249Previous](../models/usereventpayload249previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |

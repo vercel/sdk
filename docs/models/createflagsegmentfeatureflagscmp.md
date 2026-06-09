@@ -5,11 +5,11 @@
 ```typescript
 import { CreateFlagSegmentFeatureFlagsCmp } from "@vercel/sdk/models/createflagsegmentop.js";
 
-let value: CreateFlagSegmentFeatureFlagsCmp = "contains";
+let value: CreateFlagSegmentFeatureFlagsCmp = "containsAnyOf";
 ```
 
 ## Values
 
 ```typescript
-"eq" | "!eq" | "oneOf" | "!oneOf" | "containsAllOf" | "containsAnyOf" | "containsNoneOf" | "startsWith" | "!startsWith" | "endsWith" | "!endsWith" | "contains" | "!contains" | "ex" | "!ex" | "gt" | "gte" | "lt" | "lte" | "regex" | "!regex" | "before" | "after"
+"!contains" | "!endsWith" | "!eq" | "!ex" | "!oneOf" | "!regex" | "!startsWith" | "after" | "before" | "contains" | "containsAllOf" | "containsAnyOf" | "containsNoneOf" | "endsWith" | "eq" | "ex" | "gt" | "gte" | "lt" | "lte" | "oneOf" | "regex" | "startsWith"
 ```

@@ -11,22 +11,22 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export const AuthTokenScopesOrigin = {
   App: "app",
-  Saml: "saml",
+  Apple: "apple",
+  Bitbucket: "bitbucket",
+  Chatgpt: "chatgpt",
+  Email: "email",
+  Emu: "emu",
   Github: "github",
   GithubWebhook: "github-webhook",
   Gitlab: "gitlab",
-  Bitbucket: "bitbucket",
-  Email: "email",
-  Manual: "manual",
-  Passkey: "passkey",
-  Otp: "otp",
-  Sms: "sms",
-  Invite: "invite",
   Google: "google",
-  Apple: "apple",
-  Chatgpt: "chatgpt",
+  Invite: "invite",
+  Manual: "manual",
+  Otp: "otp",
+  Passkey: "passkey",
+  Saml: "saml",
+  Sms: "sms",
   TokenExchangeOidc: "token-exchange-oidc",
-  Emu: "emu",
 } as const;
 export type AuthTokenScopesOrigin = ClosedEnum<typeof AuthTokenScopesOrigin>;
 
@@ -45,11 +45,11 @@ export type Scopes2 = {
  * Possible step-up auth origins
  */
 export const AuthTokenScopes1Origin = {
+  EmailOtp: "email-otp",
   Otp: "otp",
+  RecoveryCode: "recovery-code",
   Totp: "totp",
   Webauthn: "webauthn",
-  RecoveryCode: "recovery-code",
-  EmailOtp: "email-otp",
 } as const;
 /**
  * Possible step-up auth origins
@@ -67,22 +67,22 @@ export type Sudo = {
 
 export const ScopesOrigin = {
   App: "app",
-  Saml: "saml",
+  Apple: "apple",
+  Bitbucket: "bitbucket",
+  Chatgpt: "chatgpt",
+  Email: "email",
+  Emu: "emu",
   Github: "github",
   GithubWebhook: "github-webhook",
   Gitlab: "gitlab",
-  Bitbucket: "bitbucket",
-  Email: "email",
-  Manual: "manual",
-  Passkey: "passkey",
-  Otp: "otp",
-  Sms: "sms",
-  Invite: "invite",
   Google: "google",
-  Apple: "apple",
-  Chatgpt: "chatgpt",
+  Invite: "invite",
+  Manual: "manual",
+  Otp: "otp",
+  Passkey: "passkey",
+  Saml: "saml",
+  Sms: "sms",
   TokenExchangeOidc: "token-exchange-oidc",
-  Emu: "emu",
 } as const;
 export type ScopesOrigin = ClosedEnum<typeof ScopesOrigin>;
 

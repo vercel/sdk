@@ -36,32 +36,32 @@ export type ListCheckRunsRunsRequires = ClosedEnum<
 >;
 
 export const ListCheckRunsRunsBlocks = {
-  None: "none",
   BuildStart: "build-start",
-  DeploymentStart: "deployment-start",
   DeploymentAlias: "deployment-alias",
   DeploymentPromotion: "deployment-promotion",
+  DeploymentStart: "deployment-start",
+  None: "none",
 } as const;
 export type ListCheckRunsRunsBlocks = ClosedEnum<
   typeof ListCheckRunsRunsBlocks
 >;
 
 export const ListCheckRunsRunsStatus = {
+  Completed: "completed",
   Queued: "queued",
   Running: "running",
-  Completed: "completed",
 } as const;
 export type ListCheckRunsRunsStatus = ClosedEnum<
   typeof ListCheckRunsRunsStatus
 >;
 
 export const RunsConclusion = {
-  Timeout: "timeout",
   Canceled: "canceled",
-  Skipped: "skipped",
   Failed: "failed",
   Neutral: "neutral",
+  Skipped: "skipped",
   Succeeded: "succeeded",
+  Timeout: "timeout",
 } as const;
 export type RunsConclusion = ClosedEnum<typeof RunsConclusion>;
 
@@ -134,28 +134,28 @@ export const RunsRequires = {
 export type RunsRequires = ClosedEnum<typeof RunsRequires>;
 
 export const RunsBlocks = {
-  None: "none",
   BuildStart: "build-start",
-  DeploymentStart: "deployment-start",
   DeploymentAlias: "deployment-alias",
   DeploymentPromotion: "deployment-promotion",
+  DeploymentStart: "deployment-start",
+  None: "none",
 } as const;
 export type RunsBlocks = ClosedEnum<typeof RunsBlocks>;
 
 export const RunsStatus = {
+  Completed: "completed",
   Queued: "queued",
   Running: "running",
-  Completed: "completed",
 } as const;
 export type RunsStatus = ClosedEnum<typeof RunsStatus>;
 
 export const ListCheckRunsRunsConclusion = {
-  Timeout: "timeout",
   Canceled: "canceled",
-  Skipped: "skipped",
   Failed: "failed",
   Neutral: "neutral",
+  Skipped: "skipped",
   Succeeded: "succeeded",
+  Timeout: "timeout",
 } as const;
 export type ListCheckRunsRunsConclusion = ClosedEnum<
   typeof ListCheckRunsRunsConclusion
@@ -169,15 +169,15 @@ export type ListCheckRunsSourceChecksV2SubKind = ClosedEnum<
 >;
 
 export const ListCheckRunsSourceChecksV2Origin = {
-  Platform: "platform",
   Api: "api",
+  Platform: "platform",
 } as const;
 export type ListCheckRunsSourceChecksV2Origin = ClosedEnum<
   typeof ListCheckRunsSourceChecksV2Origin
 >;
 
 /**
- * Native lint/typecheck — check definition and check run `source`.
+ * Native Vercel checks — check definition and check run `source`.
  */
 export type ListCheckRunsSource4 = {
   subKind?: ListCheckRunsSourceChecksV2SubKind | undefined;
@@ -192,9 +192,9 @@ export type ListCheckRunsSourceChecksV2ResponseKind = ClosedEnum<
 >;
 
 export const ListCheckRunsSourceProvider = {
+  Bitbucket: "bitbucket",
   Github: "github",
   Gitlab: "gitlab",
-  Bitbucket: "bitbucket",
 } as const;
 export type ListCheckRunsSourceProvider = ClosedEnum<
   typeof ListCheckRunsSourceProvider

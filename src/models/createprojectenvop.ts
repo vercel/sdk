@@ -273,11 +273,11 @@ export type CreateProjectEnvCreatedTarget =
   | CreateProjectEnvTargetProjects2;
 
 export const CreateProjectEnvCreatedType = {
-  System: "system",
   Encrypted: "encrypted",
   Plain: "plain",
-  Sensitive: "sensitive",
   Secret: "secret",
+  Sensitive: "sensitive",
+  System: "system",
 } as const;
 export type CreateProjectEnvCreatedType = ClosedEnum<
   typeof CreateProjectEnvCreatedType
@@ -487,11 +487,11 @@ export type CreatedTarget =
   | CreateProjectEnvTarget2;
 
 export const CreatedType = {
-  System: "system",
   Encrypted: "encrypted",
   Plain: "plain",
-  Sensitive: "sensitive",
   Secret: "secret",
+  Sensitive: "sensitive",
+  System: "system",
 } as const;
 export type CreatedType = ClosedEnum<typeof CreatedType>;
 
@@ -694,9 +694,9 @@ export type CreateProjectEnvTargetProjectsResponse2 = ClosedEnum<
 >;
 
 export const CreateProjectEnvTargetProjects1 = {
-  Production: "production",
-  Preview: "preview",
   Development: "development",
+  Preview: "preview",
+  Production: "production",
 } as const;
 export type CreateProjectEnvTargetProjects1 = ClosedEnum<
   typeof CreateProjectEnvTargetProjects1

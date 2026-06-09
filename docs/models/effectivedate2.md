@@ -5,11 +5,11 @@
 ```typescript
 import { EffectiveDate2 } from "@vercel/sdk/models/buycreditsop.js";
 
-let value: EffectiveDate2 = "immediate";
+let value: EffectiveDate2 = "end_of_subscription_term";
 ```
 
 ## Values
 
 ```typescript
-"immediate" | "end_of_subscription_term"
+"end_of_subscription_term" | "immediate"
 ```

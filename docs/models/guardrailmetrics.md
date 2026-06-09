@@ -7,9 +7,9 @@ import { GuardrailMetrics } from "@vercel/sdk/models/flag.js";
 
 let value: GuardrailMetrics = {
   name: "<value>",
-  metricType: "percentage",
-  metricUnit: "user",
-  directionality: "decreaseIsGood",
+  metricType: "count",
+  metricUnit: "session",
+  directionality: "increaseIsGood",
 };
 ```
 

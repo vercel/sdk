@@ -24,8 +24,8 @@ export type GetDrainRequest = {
 };
 
 export const GetDrainResponseBodyDrainsStatus = {
-  Enabled: "enabled",
   Disabled: "disabled",
+  Enabled: "enabled",
   Errored: "errored",
 } as const;
 export type GetDrainResponseBodyDrainsStatus = ClosedEnum<
@@ -33,10 +33,10 @@ export type GetDrainResponseBodyDrainsStatus = ClosedEnum<
 >;
 
 export const GetDrainResponseBodyDrainsDisabledReason = {
-  DisabledByOwner: "disabled-by-owner",
-  FeatureNotAvailable: "feature-not-available",
   AccountPlanDowngrade: "account-plan-downgrade",
   DisabledByAdmin: "disabled-by-admin",
+  DisabledByOwner: "disabled-by-owner",
+  FeatureNotAvailable: "feature-not-available",
 } as const;
 export type GetDrainResponseBodyDrainsDisabledReason = ClosedEnum<
   typeof GetDrainResponseBodyDrainsDisabledReason
@@ -125,8 +125,8 @@ export type GetDrainDeliveryDrainsResponseEncoding = ClosedEnum<
 >;
 
 export const GetDrainDeliveryDrainsCompression = {
-  None: "none",
   Gzip: "gzip",
+  None: "none",
 } as const;
 export type GetDrainDeliveryDrainsCompression = ClosedEnum<
   typeof GetDrainDeliveryDrainsCompression
@@ -170,8 +170,8 @@ export type GetDrainResponseBodyDrainsType = ClosedEnum<
 >;
 
 export const GetDrainResponseBodyDrainsEnv = {
-  Production: "production",
   Preview: "preview",
+  Production: "production",
 } as const;
 export type GetDrainResponseBodyDrainsEnv = ClosedEnum<
   typeof GetDrainResponseBodyDrainsEnv
@@ -212,11 +212,11 @@ export type GetDrainFilterDrainsProject = {
 export const GetDrainFilterDrainsSources = {
   Build: "build",
   Edge: "edge",
-  Lambda: "lambda",
-  Static: "static",
   External: "external",
   Firewall: "firewall",
+  Lambda: "lambda",
   Redirect: "redirect",
+  Static: "static",
 } as const;
 export type GetDrainFilterDrainsSources = ClosedEnum<
   typeof GetDrainFilterDrainsSources
@@ -228,8 +228,8 @@ export type GetDrainFilterDrainsLog = {
 };
 
 export const GetDrainFilterDrainsEnvironments = {
-  Production: "production",
   Preview: "preview",
+  Production: "production",
 } as const;
 export type GetDrainFilterDrainsEnvironments = ClosedEnum<
   typeof GetDrainFilterDrainsEnvironments
@@ -264,8 +264,8 @@ export type GetDrainResponseBodyDrainsFilterV2 =
   | GetDrainFilterV2Drains2;
 
 export const GetDrainProjectAccessDrainsManagedBy = {
-  Integration: "integration",
   Drain: "drain",
+  Integration: "integration",
 } as const;
 export type GetDrainProjectAccessDrainsManagedBy = ClosedEnum<
   typeof GetDrainProjectAccessDrainsManagedBy
@@ -278,8 +278,8 @@ export type GetDrainProjectAccess2 = {
 };
 
 export const GetDrainProjectAccessManagedBy = {
-  Integration: "integration",
   Drain: "drain",
+  Integration: "integration",
 } as const;
 export type GetDrainProjectAccessManagedBy = ClosedEnum<
   typeof GetDrainProjectAccessManagedBy
@@ -324,8 +324,8 @@ export type GetDrainResponseBody2 = {
 };
 
 export const GetDrainResponseBodyStatus = {
-  Enabled: "enabled",
   Disabled: "disabled",
+  Enabled: "enabled",
   Errored: "errored",
 } as const;
 export type GetDrainResponseBodyStatus = ClosedEnum<
@@ -333,10 +333,10 @@ export type GetDrainResponseBodyStatus = ClosedEnum<
 >;
 
 export const GetDrainResponseBodyDisabledReason = {
-  DisabledByOwner: "disabled-by-owner",
-  FeatureNotAvailable: "feature-not-available",
   AccountPlanDowngrade: "account-plan-downgrade",
   DisabledByAdmin: "disabled-by-admin",
+  DisabledByOwner: "disabled-by-owner",
+  FeatureNotAvailable: "feature-not-available",
 } as const;
 export type GetDrainResponseBodyDisabledReason = ClosedEnum<
   typeof GetDrainResponseBodyDisabledReason
@@ -421,8 +421,8 @@ export type GetDrainDeliveryEncoding = ClosedEnum<
 >;
 
 export const GetDrainDeliveryCompression = {
-  None: "none",
   Gzip: "gzip",
+  None: "none",
 } as const;
 export type GetDrainDeliveryCompression = ClosedEnum<
   typeof GetDrainDeliveryCompression
@@ -462,8 +462,8 @@ export type GetDrainResponseBodyType = ClosedEnum<
 >;
 
 export const GetDrainResponseBodyEnv = {
-  Production: "production",
   Preview: "preview",
+  Production: "production",
 } as const;
 export type GetDrainResponseBodyEnv = ClosedEnum<
   typeof GetDrainResponseBodyEnv
@@ -502,11 +502,11 @@ export type GetDrainFilterProject = {
 export const GetDrainFilterSources = {
   Build: "build",
   Edge: "edge",
-  Lambda: "lambda",
-  Static: "static",
   External: "external",
   Firewall: "firewall",
+  Lambda: "lambda",
   Redirect: "redirect",
+  Static: "static",
 } as const;
 export type GetDrainFilterSources = ClosedEnum<typeof GetDrainFilterSources>;
 
@@ -516,8 +516,8 @@ export type GetDrainFilterLog = {
 };
 
 export const GetDrainFilterEnvironments = {
-  Production: "production",
   Preview: "preview",
+  Production: "production",
 } as const;
 export type GetDrainFilterEnvironments = ClosedEnum<
   typeof GetDrainFilterEnvironments

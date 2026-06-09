@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyJobStatus } from "@vercel/sdk/models/getprojectsresponsebodyprojectsaibots.js";
+import { ResponseBodyJobStatus } from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponse200applicationjson3projectssecuritymanagedrulesvercelrulesetaction.js";
 
-let value: ResponseBodyJobStatus = "succeeded";
+let value: ResponseBodyJobStatus = "pending";
 ```
 
 ## Values
 
 ```typescript
-"pending" | "in-progress" | "succeeded" | "failed" | "skipped"
+"failed" | "in-progress" | "pending" | "skipped" | "succeeded"
 ```

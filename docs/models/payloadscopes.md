@@ -5,11 +5,11 @@
 ```typescript
 import { PayloadScopes } from "@vercel/sdk/models/userevent.js";
 
-let value: PayloadScopes = "profile";
+let value: PayloadScopes = "openid";
 ```
 
 ## Values
 
 ```typescript
-"openid" | "email" | "profile" | "offline_access"
+"email" | "offline_access" | "openid" | "profile"
 ```

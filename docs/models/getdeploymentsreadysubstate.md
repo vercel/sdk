@@ -7,11 +7,11 @@ Substate of deployment when readyState is 'READY' Tracks whether or not deployme
 ```typescript
 import { GetDeploymentsReadySubstate } from "@vercel/sdk/models/getdeploymentsop.js";
 
-let value: GetDeploymentsReadySubstate = "PROMOTED";
+let value: GetDeploymentsReadySubstate = "STAGED";
 ```
 
 ## Values
 
 ```typescript
-"STAGED" | "ROLLING" | "PROMOTED"
+"PROMOTED" | "ROLLING" | "STAGED"
 ```

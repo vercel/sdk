@@ -6,7 +6,7 @@
 import { Rhs3 } from "@vercel/sdk/models/flag.js";
 
 let value: Rhs3 = {
-  type: "list/inline",
+  type: "list",
   items: [
     {
       value: "<value>",

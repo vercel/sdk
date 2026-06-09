@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsInternalRoutesProjectsResponse1 } from "@vercel/sdk/models/getprojectsresponsebodytargets.js";
+import { GetProjectsInternalRoutesProjectsResponse1 } from "@vercel/sdk/models/getprojectsresponsebodyfunctiondefaultmemorytype.js";
 
 let value: GetProjectsInternalRoutesProjectsResponse1 = {
   src: "<value>",

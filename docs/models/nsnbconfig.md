@@ -8,7 +8,7 @@ NSNB configuration for the team.
 import { NsnbConfig } from "@vercel/sdk/models/team.js";
 
 let value: NsnbConfig = {
-  preference: "manual-approval",
+  preference: "block",
 };
 ```
 

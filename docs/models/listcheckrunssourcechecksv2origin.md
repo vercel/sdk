@@ -5,11 +5,11 @@
 ```typescript
 import { ListCheckRunsSourceChecksV2Origin } from "@vercel/sdk/models/listcheckrunsop.js";
 
-let value: ListCheckRunsSourceChecksV2Origin = "platform";
+let value: ListCheckRunsSourceChecksV2Origin = "api";
 ```
 
 ## Values
 
 ```typescript
-"platform" | "api"
+"api" | "platform"
 ```

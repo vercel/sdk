@@ -7,11 +7,11 @@ Sensitive environment variable policy for this team
 ```typescript
 import { SensitiveEnvironmentVariablePolicy } from "@vercel/sdk/models/team.js";
 
-let value: SensitiveEnvironmentVariablePolicy = "off";
+let value: SensitiveEnvironmentVariablePolicy = "on";
 ```
 
 ## Values
 
 ```typescript
-"default" | "on" | "off"
+"default" | "off" | "on"
 ```

@@ -5,7 +5,7 @@ The target envs on the current project that may be accessed.
 ## Example Usage
 
 ```typescript
-import { UpdateMicrofrontendsTo1 } from "@vercel/sdk/models/updatemicrofrontendsmanagedrules.js";
+import { UpdateMicrofrontendsTo1 } from "@vercel/sdk/models/updatemicrofrontendsbotfilter.js";
 
 let value: UpdateMicrofrontendsTo1 = {
   slugs: [

@@ -3,12 +3,12 @@
 ## Example Usage
 
 ```typescript
-import { ObservabilityPlus } from "@vercel/sdk/models/eightytwo.js";
+import { ObservabilityPlus } from "@vercel/sdk/models/ninetyfour.js";
 
 let value: ObservabilityPlus = {
   updatedAt: 6532.64,
-  blockReason: "limits_exceeded",
-  blockType: "hard",
+  blockReason: "hard_blocked",
+  blockType: "soft",
 };
 ```
 

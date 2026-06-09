@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPayloadOrigin } from "@vercel/sdk/models/edgemiddlewareinvocations.js";
+import { UserEventPayloadOrigin } from "@vercel/sdk/models/usereventpayloadprevious.js";
 
-let value: UserEventPayloadOrigin = "nsnb-redeploy";
+let value: UserEventPayloadOrigin = "saml";
 ```
 
 ## Values
 
 ```typescript
-"link" | "teams" | "saml" | "github" | "gitlab" | "bitbucket" | "mail" | "import" | "dsync" | "feedback" | "organization-teams" | "nsnb-auto-approve" | "nsnb-hobby-upgrade" | "nsnb-request-access" | "nsnb-viewer-upgrade" | "nsnb-invite" | "nsnb-redeploy" | "nsnb-redeploy-attribution-card"
+"account-update" | "bitbucket" | "dsync" | "feedback" | "github" | "gitlab" | "import" | "link" | "mail" | "nsnb-auto-approve" | "nsnb-hobby-upgrade" | "nsnb-invite" | "nsnb-redeploy" | "nsnb-redeploy-attribution-card" | "nsnb-request-access" | "nsnb-viewer-upgrade" | "organization-teams" | "saml" | "teams"
 ```

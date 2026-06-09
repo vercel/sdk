@@ -13,5 +13,5 @@ let value: GetRoutesResponseBodyProjectRoutesRouteType = "set_status";
 ## Values
 
 ```typescript
-"rewrite" | "redirect" | "set_status" | "transform"
+"redirect" | "rewrite" | "set_status" | "transform"
 ```

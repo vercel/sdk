@@ -7,11 +7,11 @@ import { PutFirewallConfigRulesSecurityResponse200ApplicationJSONResponseBodyAct
 
 let value:
   PutFirewallConfigRulesSecurityResponse200ApplicationJSONResponseBodyAction =
-    "challenge";
+    "log";
 ```
 
 ## Values
 
 ```typescript
-"deny" | "log" | "challenge" | "rate_limit"
+"challenge" | "deny" | "log" | "rate_limit"
 ```

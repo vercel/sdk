@@ -3,14 +3,14 @@
 ## Example Usage
 
 ```typescript
-import { CreateProjectCve55182MigrationAppliedFrom } from "@vercel/sdk/models/createprojecttopreset.js";
+import { CreateProjectCve55182MigrationAppliedFrom } from "@vercel/sdk/models/createprojectprojectsto.js";
 
 let value: CreateProjectCve55182MigrationAppliedFrom =
-  "all_except_custom_domains";
+  "prod_deployment_urls_and_all_previews";
 ```
 
 ## Values
 
 ```typescript
-"preview" | "all" | "prod_deployment_urls_and_all_previews" | "all_except_custom_domains"
+"all" | "all_except_custom_domains" | "preview" | "prod_deployment_urls_and_all_previews"
 ```

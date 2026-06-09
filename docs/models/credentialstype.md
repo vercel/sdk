@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { CredentialsType } from "@vercel/sdk/models/edgemiddlewareinvocations.js";
+import { CredentialsType } from "@vercel/sdk/models/connectdatatransfer.js";
 
-let value: CredentialsType = "github-oauth-limited";
+let value: CredentialsType = "vercel";
 ```
 
 ## Values
 
 ```typescript
-"gitlab" | "bitbucket" | "vercel" | "google" | "apple" | "chatgpt" | "github-oauth" | "github-oauth-limited"
+"apple" | "bitbucket" | "chatgpt" | "github-oauth" | "github-oauth-limited" | "gitlab" | "google" | "vercel"
 ```

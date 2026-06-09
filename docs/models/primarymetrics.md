@@ -7,9 +7,9 @@ import { PrimaryMetrics } from "@vercel/sdk/models/flag.js";
 
 let value: PrimaryMetrics = {
   name: "<value>",
-  metricType: "count",
-  metricUnit: "session",
-  directionality: "increaseIsGood",
+  metricType: "percentage",
+  metricUnit: "user",
+  directionality: "decreaseIsGood",
 };
 ```
 

@@ -7,7 +7,7 @@ import { CancelDeploymentChecks } from "@vercel/sdk/models/canceldeploymentop.js
 
 let value: CancelDeploymentChecks = {
   deploymentAlias: {
-    state: "pending",
+    state: "succeeded",
     startedAt: 2830.05,
   },
 };

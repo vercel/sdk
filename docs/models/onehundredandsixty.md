@@ -5,24 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndSixty } from "@vercel/sdk/models/onehundredandfiftyfive.js";
+import { OneHundredAndSixty } from "@vercel/sdk/models/connectdatatransfer.js";
 
 let value: OneHundredAndSixty = {
-  privateLinkEndpoint: {
-    id: "<id>",
-    name: "<value>",
-  },
-  projectId: "<id>",
-  previousEndpoint: {
-    name: "<value>",
-  },
+  oldName: "<value>",
+  newName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `privateLinkEndpoint`                                                        | [models.PayloadPrivateLinkEndpoint](../models/payloadprivatelinkendpoint.md) | :heavy_check_mark:                                                           | N/A                                                                          |
-| `projectId`                                                                  | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
-| `previousEndpoint`                                                           | [models.PreviousEndpoint](../models/previousendpoint.md)                     | :heavy_check_mark:                                                           | N/A                                                                          |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `oldName`          | *string*           | :heavy_check_mark: | N/A                |
+| `newName`          | *string*           | :heavy_check_mark: | N/A                |

@@ -57,9 +57,9 @@ export type ListSharedEnvVariableRequest = {
  */
 export const ListSharedEnvVariableType = {
   Encrypted: "encrypted",
+  Plain: "plain",
   Sensitive: "sensitive",
   System: "system",
-  Plain: "plain",
 } as const;
 /**
  * The type of this cosmos doc instance, if blank, assume secret.
@@ -72,9 +72,9 @@ export type ListSharedEnvVariableType = ClosedEnum<
  * environments this env variable targets
  */
 export const ListSharedEnvVariableTarget = {
-  Production: "production",
-  Preview: "preview",
   Development: "development",
+  Preview: "preview",
+  Production: "production",
 } as const;
 /**
  * environments this env variable targets

@@ -6,7 +6,7 @@
 import { GitProviderOptions } from "@vercel/sdk/models/createprojectresponsebody.js";
 
 let value: GitProviderOptions = {
-  createDeployments: "disabled",
+  createDeployments: "enabled",
 };
 ```
 

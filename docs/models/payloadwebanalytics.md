@@ -3,11 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { PayloadWebAnalytics } from "@vercel/sdk/models/eightytwo.js";
+import { PayloadWebAnalytics } from "@vercel/sdk/models/ninetyfour.js";
 
 let value: PayloadWebAnalytics = {
   updatedAt: 1881.72,
-  blockReason: "limits_exceeded",
+  blockReason: "hard_blocked",
 };
 ```
 

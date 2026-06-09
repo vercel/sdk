@@ -5,12 +5,12 @@ Internal representation of a custom environment with all required properties
 ## Example Usage
 
 ```typescript
-import { UpdateMicrofrontendsCustomEnvironments } from "@vercel/sdk/models/updatemicrofrontendsmanagedrules.js";
+import { UpdateMicrofrontendsCustomEnvironments } from "@vercel/sdk/models/updatemicrofrontendsbotfilter.js";
 
 let value: UpdateMicrofrontendsCustomEnvironments = {
   id: "<id>",
   slug: "<value>",
-  type: "production",
+  type: "development",
   createdAt: 8807.8,
   updatedAt: 1442.27,
 };

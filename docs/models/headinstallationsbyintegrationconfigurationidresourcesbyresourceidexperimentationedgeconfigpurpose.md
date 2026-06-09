@@ -9,11 +9,11 @@ import {
 
 let value:
   HeadInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigPurpose =
-    "flags";
+    "experimentation";
 ```
 
 ## Values
 
 ```typescript
-"flags" | "experimentation"
+"experimentation" | "flags"
 ```

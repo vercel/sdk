@@ -20,7 +20,7 @@ let value: CreateIntegrationStoreDirectStore = {
     },
     integrationConfigurationId: "<id>",
     supportedProtocols: [
-      "experimentation",
+      "ai",
     ],
   },
   secrets: [

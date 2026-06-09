@@ -3,15 +3,15 @@
 ## Example Usage
 
 ```typescript
-import { CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson3 } from "@vercel/sdk/models/createintegrationstoredirecthiddenintegrations1.js";
+import { CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson3 } from "@vercel/sdk/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproductmetadataschema7type.js";
 
 let value:
   CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson3 =
-    "update";
+    "create";
 ```
 
 ## Values
 
 ```typescript
-"update" | "create"
+"create" | "update"
 ```

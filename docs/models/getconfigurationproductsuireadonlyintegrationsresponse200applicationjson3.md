@@ -7,11 +7,11 @@ import { GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJso
 
 let value:
   GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJson3 =
-    "update";
+    "create";
 ```
 
 ## Values
 
 ```typescript
-"update" | "create"
+"create" | "update"
 ```

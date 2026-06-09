@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { TrustedIps } from "@vercel/sdk/models/twohundredandtwentysix.js";
+import { TrustedIps } from "@vercel/sdk/models/twohundredandthirtyone.js";
 
 let value: TrustedIps = "all";
 ```
@@ -11,5 +11,5 @@ let value: TrustedIps = "all";
 ## Values
 
 ```typescript
-"all" | "preview" | "prod_deployment_urls_and_all_previews" | "all_except_custom_domains" | "production"
+"all" | "all_except_custom_domains" | "preview" | "prod_deployment_urls_and_all_previews" | "production"
 ```

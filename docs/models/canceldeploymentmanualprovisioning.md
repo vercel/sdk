@@ -8,7 +8,7 @@ Present when deployment was created with manual provisioning enabled, either exp
 import { CancelDeploymentManualProvisioning } from "@vercel/sdk/models/canceldeploymentop.js";
 
 let value: CancelDeploymentManualProvisioning = {
-  state: "PENDING",
+  state: "COMPLETE",
 };
 ```
 

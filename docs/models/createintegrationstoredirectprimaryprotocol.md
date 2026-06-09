@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { CreateIntegrationStoreDirectPrimaryProtocol } from "@vercel/sdk/models/createintegrationstoredirectresponsebody.js";
+import { CreateIntegrationStoreDirectPrimaryProtocol } from "@vercel/sdk/models/createintegrationstoredirectnotification.js";
 
-let value: CreateIntegrationStoreDirectPrimaryProtocol = "storage";
+let value: CreateIntegrationStoreDirectPrimaryProtocol = "checks";
 ```
 
 ## Values
 
 ```typescript
-"experimentation" | "checks" | "storage" | "ai" | "observability" | "video" | "authentication" | "workflow" | "logDrain" | "traceDrain" | "messaging" | "other"
+"ai" | "authentication" | "checks" | "experimentation" | "logDrain" | "messaging" | "observability" | "other" | "storage" | "traceDrain" | "video" | "workflow"
 ```

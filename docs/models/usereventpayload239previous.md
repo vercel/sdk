@@ -3,17 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPayload239Previous } from "@vercel/sdk/models/onehundredandninetytwo.js";
+import { UserEventPayload239Previous } from "@vercel/sdk/models/twohundredandthirtyone.js";
 
-let value: UserEventPayload239Previous = {
-  sampleRatePercent: 3233.89,
-  spendLimitInDollars: 2192.85,
-};
+let value: UserEventPayload239Previous = {};
 ```
 
 ## Fields
 
-| Field                 | Type                  | Required              | Description           |
-| --------------------- | --------------------- | --------------------- | --------------------- |
-| `sampleRatePercent`   | *number*              | :heavy_check_mark:    | N/A                   |
-| `spendLimitInDollars` | *number*              | :heavy_check_mark:    | N/A                   |
+| Field                                        | Type                                         | Required                                     | Description                                  |
+| -------------------------------------------- | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
+| `issuerMode`                                 | [models.IssuerMode](../models/issuermode.md) | :heavy_minus_sign:                           | N/A                                          |

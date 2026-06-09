@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyLastRollbackTarget } from "@vercel/sdk/models/getprojectsresponsebodyprojectsaibots.js";
+import { ResponseBodyLastRollbackTarget } from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponse200applicationjson3projectssecuritymanagedrulesvercelrulesetaction.js";
 
 let value: ResponseBodyLastRollbackTarget = {};
 ```

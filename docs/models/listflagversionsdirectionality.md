@@ -5,11 +5,11 @@
 ```typescript
 import { ListFlagVersionsDirectionality } from "@vercel/sdk/models/listflagversionsop.js";
 
-let value: ListFlagVersionsDirectionality = "increaseIsGood";
+let value: ListFlagVersionsDirectionality = "decreaseIsGood";
 ```
 
 ## Values
 
 ```typescript
-"increaseIsGood" | "decreaseIsGood"
+"decreaseIsGood" | "increaseIsGood"
 ```

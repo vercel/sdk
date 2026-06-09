@@ -5,14 +5,14 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { EightyTwo } from "@vercel/sdk/models/eightytwo.js";
+import { EightyTwo } from "@vercel/sdk/models/fortyseven.js";
 
 let value: EightyTwo = {
-  id: "<id>",
-  value: "<value>",
-  name: "<value>",
-  domain: "irresponsible-alert.info",
-  type: "<value>",
+  sha: "<value>",
+  gitUserPlatform: "<value>",
+  projectName: "<value>",
+  gitCommitterName: "<value>",
+  source: "<value>",
 };
 ```
 
@@ -20,9 +20,9 @@ let value: EightyTwo = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `id`               | *string*           | :heavy_check_mark: | N/A                |
-| `value`            | *string*           | :heavy_check_mark: | N/A                |
-| `name`             | *string*           | :heavy_check_mark: | N/A                |
-| `domain`           | *string*           | :heavy_check_mark: | N/A                |
-| `type`             | *string*           | :heavy_check_mark: | N/A                |
-| `mxPriority`       | *number*           | :heavy_minus_sign: | N/A                |
+| `sha`              | *string*           | :heavy_check_mark: | N/A                |
+| `gitUserPlatform`  | *string*           | :heavy_check_mark: | N/A                |
+| `projectId`        | *string*           | :heavy_minus_sign: | N/A                |
+| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
+| `gitCommitterName` | *string*           | :heavy_check_mark: | N/A                |
+| `source`           | *string*           | :heavy_check_mark: | N/A                |

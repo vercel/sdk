@@ -6,16 +6,16 @@
 import { Experiment } from "@vercel/sdk/models/flag.js";
 
 let value: Experiment = {
-  allocationUnit: "userId",
+  allocationUnit: "visitorId",
   primaryMetrics: [
     {
       name: "<value>",
-      metricType: "count",
-      metricUnit: "session",
-      directionality: "increaseIsGood",
+      metricType: "percentage",
+      metricUnit: "user",
+      directionality: "decreaseIsGood",
     },
   ],
-  status: "running",
+  status: "draft",
 };
 ```
 
@@ -23,8 +23,8 @@ let value: Experiment = {
 
 | Field                                                      | Type                                                       | Required                                                   | Description                                                |
 | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
-| `name`                                                     | *string*                                                   | :heavy_minus_sign:                                         | N/A                                                        |
 | `id`                                                       | *string*                                                   | :heavy_minus_sign:                                         | N/A                                                        |
+| `name`                                                     | *string*                                                   | :heavy_minus_sign:                                         | N/A                                                        |
 | `numVariants`                                              | *number*                                                   | :heavy_minus_sign:                                         | N/A                                                        |
 | `surfaceArea`                                              | *string*                                                   | :heavy_minus_sign:                                         | N/A                                                        |
 | `stickyRequirement`                                        | *boolean*                                                  | :heavy_minus_sign:                                         | N/A                                                        |

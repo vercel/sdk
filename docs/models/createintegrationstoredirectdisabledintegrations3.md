@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { CreateIntegrationStoreDirectDisabledIntegrations3 } from "@vercel/sdk/models/createintegrationstoredirecthiddenintegrations1.js";
+import { CreateIntegrationStoreDirectDisabledIntegrations3 } from "@vercel/sdk/models/createintegrationstoredirectnotification.js";
 
-let value: CreateIntegrationStoreDirectDisabledIntegrations3 = "update";
+let value: CreateIntegrationStoreDirectDisabledIntegrations3 = "create";
 ```
 
 ## Values
 
 ```typescript
-"update" | "create"
+"create" | "update"
 ```

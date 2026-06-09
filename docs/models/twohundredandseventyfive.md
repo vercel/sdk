@@ -5,24 +5,24 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndSeventyFive } from "@vercel/sdk/models/twohundredandtwentysix.js";
+import { TwoHundredAndSeventyFive } from "@vercel/sdk/models/twohundredandthirtyone.js";
 
 let value: TwoHundredAndSeventyFive = {
-  slug: "<value>",
-  teamId: "<id>",
-  by: "<value>",
+  transferRequestCode: "<value>",
+  store: {
+    id: "<id>",
+    type: "edge-config",
+  },
+  originTeamId: "<id>",
+  originTeamName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `slug`                                                                         | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
-| `teamId`                                                                       | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
-| `by`                                                                           | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
-| `byUid`                                                                        | *string*                                                                       | :heavy_minus_sign:                                                             | N/A                                                                            |
-| `reasons`                                                                      | [models.Reasons](../models/reasons.md)[]                                       | :heavy_minus_sign:                                                             | N/A                                                                            |
-| `removedUsers`                                                                 | Record<string, [models.PayloadRemovedUsers](../models/payloadremovedusers.md)> | :heavy_minus_sign:                                                             | N/A                                                                            |
-| `removedMemberCount`                                                           | *number*                                                                       | :heavy_minus_sign:                                                             | N/A                                                                            |
-| `timestamp`                                                                    | *number*                                                                       | :heavy_minus_sign:                                                             | N/A                                                                            |
+| Field                                                              | Type                                                               | Required                                                           | Description                                                        |
+| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
+| `transferRequestCode`                                              | *string*                                                           | :heavy_check_mark:                                                 | N/A                                                                |
+| `store`                                                            | [models.UserEventPayloadStore](../models/usereventpayloadstore.md) | :heavy_check_mark:                                                 | N/A                                                                |
+| `originTeamId`                                                     | *string*                                                           | :heavy_check_mark:                                                 | N/A                                                                |
+| `originTeamName`                                                   | *string*                                                           | :heavy_check_mark:                                                 | N/A                                                                |

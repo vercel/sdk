@@ -5,11 +5,11 @@
 ```typescript
 import { GetConfigurationProductsUiDisabled3 } from "@vercel/sdk/models/getconfigurationproductsresponsebody.js";
 
-let value: GetConfigurationProductsUiDisabled3 = "create";
+let value: GetConfigurationProductsUiDisabled3 = "update";
 ```
 
 ## Values
 
 ```typescript
-"update" | "create"
+"create" | "update"
 ```

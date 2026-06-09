@@ -14,6 +14,6 @@ const value: models.Roles1 = {
 ### `models.Roles2`
 
 ```typescript
-const value: models.Roles2 = "SECURITY";
+const value: models.Roles2 = "MEMBER";
 ```
 

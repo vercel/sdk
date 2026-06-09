@@ -3,10 +3,10 @@
 ## Example Usage
 
 ```typescript
-import { UpdateMicrofrontendsTrustedIps2 } from "@vercel/sdk/models/updatemicrofrontendsmanagedrules.js";
+import { UpdateMicrofrontendsTrustedIps2 } from "@vercel/sdk/models/updatemicrofrontendsbotfilter.js";
 
 let value: UpdateMicrofrontendsTrustedIps2 = {
-  deploymentType: "preview",
+  deploymentType: "all_except_custom_domains",
 };
 ```
 

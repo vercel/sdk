@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsResponseBodyProjectsResponseType } from "@vercel/sdk/models/getprojectsresponsebodytargets.js";
+import { GetProjectsResponseBodyProjectsResponseType } from "@vercel/sdk/models/getprojectsresponsebodyfunctiondefaultmemorytype.js";
 
-let value: GetProjectsResponseBodyProjectsResponseType = "encrypted";
+let value: GetProjectsResponseBodyProjectsResponseType = "plain";
 ```
 
 ## Values
 
 ```typescript
-"system" | "encrypted" | "plain" | "sensitive" | "secret"
+"encrypted" | "plain" | "secret" | "sensitive" | "system"
 ```

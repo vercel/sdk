@@ -5,11 +5,11 @@
 ```typescript
 import { CreateSharedEnvVariableTarget1 } from "@vercel/sdk/models/createsharedenvvariableop.js";
 
-let value: CreateSharedEnvVariableTarget1 = "production";
+let value: CreateSharedEnvVariableTarget1 = "development";
 ```
 
 ## Values
 
 ```typescript
-"production" | "preview" | "development"
+"development" | "preview" | "production"
 ```

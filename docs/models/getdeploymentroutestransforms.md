@@ -7,7 +7,7 @@ import { GetDeploymentRoutesTransforms } from "@vercel/sdk/models/getdeploymentr
 
 let value: GetDeploymentRoutesTransforms = {
   type: "response.headers",
-  op: "delete",
+  op: "set",
   target: {
     key: {},
   },

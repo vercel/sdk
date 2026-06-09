@@ -5,11 +5,11 @@
 ```typescript
 import { GetDrainFilterEnvironments } from "@vercel/sdk/models/getdrainop.js";
 
-let value: GetDrainFilterEnvironments = "production";
+let value: GetDrainFilterEnvironments = "preview";
 ```
 
 ## Values
 
 ```typescript
-"production" | "preview"
+"preview" | "production"
 ```

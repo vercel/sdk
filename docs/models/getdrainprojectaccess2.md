@@ -12,7 +12,7 @@ let value: GetDrainProjectAccess2 = {
     "<value 2>",
     "<value 3>",
   ],
-  managedBy: "integration",
+  managedBy: "drain",
 };
 ```
 

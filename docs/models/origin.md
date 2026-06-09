@@ -5,13 +5,13 @@ How the token was issued. Always `'manual'` for explicit PAT creation.
 ## Example Usage
 
 ```typescript
-import { Origin } from "@vercel/sdk/models/payloadenvironment.js";
+import { Origin } from "@vercel/sdk/models/twohundredandninety.js";
 
-let value: Origin = "email";
+let value: Origin = "app";
 ```
 
 ## Values
 
 ```typescript
-"email" | "saml" | "app" | "github" | "gitlab" | "bitbucket" | "google" | "apple" | "chatgpt" | "github-webhook" | "manual" | "passkey" | "otp" | "sms" | "invite" | "token-exchange-oidc" | "emu"
+"app" | "apple" | "bitbucket" | "chatgpt" | "email" | "emu" | "github" | "github-webhook" | "gitlab" | "google" | "invite" | "manual" | "otp" | "passkey" | "saml" | "sms" | "token-exchange-oidc"
 ```

@@ -7,7 +7,7 @@ import { AddRouteProjectRoutesTransforms } from "@vercel/sdk/models/addrouteop.j
 
 let value: AddRouteProjectRoutesTransforms = {
   type: "request.headers",
-  op: "delete",
+  op: "set",
   target: {
     key: "<key>",
   },

@@ -1,11 +1,11 @@
 # DeploymentPolicy1
 
-Composable deployment-time policy. Each rule key controls an independent restriction.
+Composable deployment-time policy. Each rule type holds a list of rules, one per environment scope.
 
 ## Example Usage
 
 ```typescript
-import { DeploymentPolicy1 } from "@vercel/sdk/models/updateprojectprojectsresponsebuildqueue.js";
+import { DeploymentPolicy1 } from "@vercel/sdk/models/updateprojectprojectsoptionsallowlist.js";
 
 let value: DeploymentPolicy1 = {};
 ```

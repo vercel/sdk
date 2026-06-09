@@ -19,11 +19,11 @@ export type GetIntegrationResourcesRequest = {
  */
 export const GetIntegrationResourcesStatus = {
   Error: "error",
-  Ready: "ready",
-  Pending: "pending",
   Onboarding: "onboarding",
-  Suspended: "suspended",
+  Pending: "pending",
+  Ready: "ready",
   Resumed: "resumed",
+  Suspended: "suspended",
   Uninstalled: "uninstalled",
 } as const;
 /**

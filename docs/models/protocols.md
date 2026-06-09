@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Protocols } from "@vercel/sdk/models/getconfigurationproductspropertiesintegrationsresponse200uicontrol.js";
+import { Protocols } from "@vercel/sdk/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyuidisabled.js";
 
 let value: Protocols = {};
 ```

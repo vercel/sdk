@@ -5,11 +5,11 @@
 ```typescript
 import { GetDeploymentCheckRunSourceOrigin } from "@vercel/sdk/models/getdeploymentcheckrunop.js";
 
-let value: GetDeploymentCheckRunSourceOrigin = "platform";
+let value: GetDeploymentCheckRunSourceOrigin = "api";
 ```
 
 ## Values
 
 ```typescript
-"platform" | "api"
+"api" | "platform"
 ```

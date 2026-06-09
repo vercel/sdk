@@ -5,13 +5,15 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundred } from "@vercel/sdk/models/payloadenvironment.js";
+import { ThreeHundred } from "@vercel/sdk/models/twohundredandninety.js";
 
-let value: ThreeHundred = {};
+let value: ThreeHundred = {
+  enforced: true,
+};
 ```
 
 ## Fields
 
-| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `remoteCaching`                                                  | [models.PayloadRemoteCaching](../models/payloadremotecaching.md) | :heavy_minus_sign:                                               | Represents configuration for remote caching                      |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `enforced`         | *boolean*          | :heavy_check_mark: | N/A                |

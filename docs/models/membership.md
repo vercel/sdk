@@ -9,7 +9,7 @@ import { Membership } from "@vercel/sdk/models/team.js";
 
 let value: Membership = {
   confirmed: true,
-  role: "BILLING",
+  role: "OWNER",
   createdAt: 149.12,
   created: 2058.4,
 };

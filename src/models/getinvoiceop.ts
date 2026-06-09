@@ -18,15 +18,15 @@ export type GetInvoiceRequest = {
  * Invoice state.
  */
 export const GetInvoiceState = {
-  Pending: "pending",
   Draft: "draft",
-  Scheduled: "scheduled",
   Invoiced: "invoiced",
-  Paid: "paid",
   Notpaid: "notpaid",
   Overdue: "overdue",
+  Paid: "paid",
+  Pending: "pending",
   RefundRequested: "refund_requested",
   Refunded: "refunded",
+  Scheduled: "scheduled",
 } as const;
 /**
  * Invoice state.

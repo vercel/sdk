@@ -5,11 +5,11 @@
 ```typescript
 import { GetTeamAccessRequestOrigin } from "@vercel/sdk/models/getteamaccessrequestop.js";
 
-let value: GetTeamAccessRequestOrigin = "nsnb-redeploy-attribution-card";
+let value: GetTeamAccessRequestOrigin = "teams";
 ```
 
 ## Values
 
 ```typescript
-"teams" | "link" | "mail" | "import" | "github" | "gitlab" | "bitbucket" | "saml" | "dsync" | "feedback" | "organization-teams" | "nsnb-auto-approve" | "nsnb-hobby-upgrade" | "nsnb-request-access" | "nsnb-viewer-upgrade" | "nsnb-invite" | "nsnb-redeploy" | "nsnb-redeploy-attribution-card"
+"account-update" | "bitbucket" | "dsync" | "feedback" | "github" | "gitlab" | "import" | "link" | "mail" | "nsnb-auto-approve" | "nsnb-hobby-upgrade" | "nsnb-invite" | "nsnb-redeploy" | "nsnb-redeploy-attribution-card" | "nsnb-request-access" | "nsnb-viewer-upgrade" | "organization-teams" | "saml" | "teams"
 ```

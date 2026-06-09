@@ -92,14 +92,14 @@ export type GetTeamMembersBitbucket = {
  * Role of this user in the team.
  */
 export const GetTeamMembersRole = {
-  Owner: "OWNER",
-  Member: "MEMBER",
-  Developer: "DEVELOPER",
-  Security: "SECURITY",
   Billing: "BILLING",
+  Contributor: "CONTRIBUTOR",
+  Developer: "DEVELOPER",
+  Member: "MEMBER",
+  Owner: "OWNER",
+  Security: "SECURITY",
   Viewer: "VIEWER",
   ViewerForPlus: "VIEWER_FOR_PLUS",
-  Contributor: "CONTRIBUTOR",
 } as const;
 /**
  * Role of this user in the team.
@@ -107,24 +107,25 @@ export const GetTeamMembersRole = {
 export type GetTeamMembersRole = ClosedEnum<typeof GetTeamMembersRole>;
 
 export const GetTeamMembersOrigin = {
-  Teams: "teams",
-  Link: "link",
-  Mail: "mail",
-  Import: "import",
-  Github: "github",
-  Gitlab: "gitlab",
+  AccountUpdate: "account-update",
   Bitbucket: "bitbucket",
-  Saml: "saml",
   Dsync: "dsync",
   Feedback: "feedback",
-  OrganizationTeams: "organization-teams",
+  Github: "github",
+  Gitlab: "gitlab",
+  Import: "import",
+  Link: "link",
+  Mail: "mail",
   NsnbAutoApprove: "nsnb-auto-approve",
   NsnbHobbyUpgrade: "nsnb-hobby-upgrade",
-  NsnbRequestAccess: "nsnb-request-access",
-  NsnbViewerUpgrade: "nsnb-viewer-upgrade",
   NsnbInvite: "nsnb-invite",
   NsnbRedeploy: "nsnb-redeploy",
   NsnbRedeployAttributionCard: "nsnb-redeploy-attribution-card",
+  NsnbRequestAccess: "nsnb-request-access",
+  NsnbViewerUpgrade: "nsnb-viewer-upgrade",
+  OrganizationTeams: "organization-teams",
+  Saml: "saml",
+  Teams: "teams",
 } as const;
 export type GetTeamMembersOrigin = ClosedEnum<typeof GetTeamMembersOrigin>;
 
@@ -150,8 +151,8 @@ export type GetTeamMembersJoinedFrom = {
 export const GetTeamMembersTeamsResponseRole = {
   Admin: "ADMIN",
   ProjectDeveloper: "PROJECT_DEVELOPER",
-  ProjectViewer: "PROJECT_VIEWER",
   ProjectGuest: "PROJECT_GUEST",
+  ProjectViewer: "PROJECT_VIEWER",
 } as const;
 export type GetTeamMembersTeamsResponseRole = ClosedEnum<
   typeof GetTeamMembersTeamsResponseRole
@@ -230,40 +231,42 @@ export type GetTeamMembersMembers = {
 };
 
 export const GetTeamMembersTeamsRole = {
-  Owner: "OWNER",
-  Member: "MEMBER",
-  Developer: "DEVELOPER",
-  Security: "SECURITY",
   Billing: "BILLING",
+  Contributor: "CONTRIBUTOR",
+  Developer: "DEVELOPER",
+  Member: "MEMBER",
+  Owner: "OWNER",
+  Security: "SECURITY",
   Viewer: "VIEWER",
   ViewerForPlus: "VIEWER_FOR_PLUS",
-  Contributor: "CONTRIBUTOR",
 } as const;
 export type GetTeamMembersTeamsRole = ClosedEnum<
   typeof GetTeamMembersTeamsRole
 >;
 
 export const GetTeamMembersTeamRoles = {
-  Owner: "OWNER",
-  Member: "MEMBER",
-  Developer: "DEVELOPER",
-  Security: "SECURITY",
   Billing: "BILLING",
+  Contributor: "CONTRIBUTOR",
+  Developer: "DEVELOPER",
+  Member: "MEMBER",
+  Owner: "OWNER",
+  Security: "SECURITY",
   Viewer: "VIEWER",
   ViewerForPlus: "VIEWER_FOR_PLUS",
-  Contributor: "CONTRIBUTOR",
 } as const;
 export type GetTeamMembersTeamRoles = ClosedEnum<
   typeof GetTeamMembersTeamRoles
 >;
 
 export const GetTeamMembersTeamPermissions = {
-  IntegrationManager: "IntegrationManager",
   CreateProject: "CreateProject",
-  FullProductionDeployment: "FullProductionDeployment",
-  UsageViewer: "UsageViewer",
   EnvVariableManager: "EnvVariableManager",
   EnvironmentManager: "EnvironmentManager",
+  FullProductionDeployment: "FullProductionDeployment",
+  IntegrationManager: "IntegrationManager",
+  OrgAdmin: "OrgAdmin",
+  OrgViewer: "OrgViewer",
+  UsageViewer: "UsageViewer",
   V0Builder: "V0Builder",
   V0Chatter: "V0Chatter",
   V0Viewer: "V0Viewer",
@@ -275,8 +278,8 @@ export type GetTeamMembersTeamPermissions = ClosedEnum<
 export const GetTeamMembersTeamsProjects = {
   Admin: "ADMIN",
   ProjectDeveloper: "PROJECT_DEVELOPER",
-  ProjectViewer: "PROJECT_VIEWER",
   ProjectGuest: "PROJECT_GUEST",
+  ProjectViewer: "PROJECT_VIEWER",
 } as const;
 export type GetTeamMembersTeamsProjects = ClosedEnum<
   typeof GetTeamMembersTeamsProjects

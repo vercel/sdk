@@ -7,7 +7,7 @@ import { ListProjectChecksSource3 } from "@vercel/sdk/models/listprojectchecksop
 
 let value: ListProjectChecksSource3 = {
   kind: "git-provider",
-  provider: "bitbucket",
+  provider: "gitlab",
   externalCheckName: "<value>",
 };
 ```

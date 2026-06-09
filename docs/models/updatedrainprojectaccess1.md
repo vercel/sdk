@@ -7,7 +7,7 @@ import { UpdateDrainProjectAccess1 } from "@vercel/sdk/models/updatedrainop.js";
 
 let value: UpdateDrainProjectAccess1 = {
   access: "all",
-  managedBy: "integration",
+  managedBy: "drain",
 };
 ```
 

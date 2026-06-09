@@ -5,11 +5,11 @@
 ```typescript
 import { ListDeploymentCheckRunsRunsChecksV2Status } from "@vercel/sdk/models/listdeploymentcheckrunsop.js";
 
-let value: ListDeploymentCheckRunsRunsChecksV2Status = "running";
+let value: ListDeploymentCheckRunsRunsChecksV2Status = "queued";
 ```
 
 ## Values
 
 ```typescript
-"queued" | "running" | "completed"
+"completed" | "queued" | "running"
 ```

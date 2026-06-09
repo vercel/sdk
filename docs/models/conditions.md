@@ -9,7 +9,7 @@ let value: Conditions = {
   lhs: {
     type: "segment",
   },
-  cmp: "contains",
+  cmp: "containsAnyOf",
 };
 ```
 

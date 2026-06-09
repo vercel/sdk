@@ -5,11 +5,11 @@
 ```typescript
 import { RunsBlocks } from "@vercel/sdk/models/listcheckrunsop.js";
 
-let value: RunsBlocks = "deployment-alias";
+let value: RunsBlocks = "deployment-start";
 ```
 
 ## Values
 
 ```typescript
-"none" | "build-start" | "deployment-start" | "deployment-alias" | "deployment-promotion"
+"build-start" | "deployment-alias" | "deployment-promotion" | "deployment-start" | "none"
 ```

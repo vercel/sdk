@@ -5,11 +5,11 @@
 ```typescript
 import { UpdateCheckChecksConclusion } from "@vercel/sdk/models/updatecheckop.js";
 
-let value: UpdateCheckChecksConclusion = "stale";
+let value: UpdateCheckChecksConclusion = "succeeded";
 ```
 
 ## Values
 
 ```typescript
-"canceled" | "skipped" | "failed" | "neutral" | "succeeded" | "stale"
+"canceled" | "failed" | "neutral" | "skipped" | "stale" | "succeeded"
 ```

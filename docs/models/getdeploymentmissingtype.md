@@ -11,5 +11,5 @@ let value: GetDeploymentMissingType = "query";
 ## Values
 
 ```typescript
-"header" | "cookie" | "query"
+"cookie" | "header" | "query"
 ```

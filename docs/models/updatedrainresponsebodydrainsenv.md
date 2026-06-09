@@ -5,11 +5,11 @@
 ```typescript
 import { UpdateDrainResponseBodyDrainsEnv } from "@vercel/sdk/models/updatedrainop.js";
 
-let value: UpdateDrainResponseBodyDrainsEnv = "preview";
+let value: UpdateDrainResponseBodyDrainsEnv = "production";
 ```
 
 ## Values
 
 ```typescript
-"production" | "preview"
+"preview" | "production"
 ```

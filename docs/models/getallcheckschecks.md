@@ -12,7 +12,7 @@ let value: GetAllChecksChecks = {
   name: "<value>",
   rerequestable: true,
   blocking: false,
-  status: "completed",
+  status: "registered",
   updatedAt: 8923.96,
 };
 ```

@@ -1,0 +1,21 @@
+# AppTokens
+
+## Example Usage
+
+```typescript
+import { AppTokens } from "@vercel/sdk/models/createconnectorop.js";
+
+let value: AppTokens = {
+  crossInstallation: false,
+  supportsRefinement: true,
+};
+```
+
+## Fields
+
+| Field                                                                                                                                                               | Type                                                                                                                                                                | Required                                                                                                                                                            | Description                                                                                                                                                         |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `crossInstallation`                                                                                                                                                 | *boolean*                                                                                                                                                           | :heavy_check_mark:                                                                                                                                                  | N/A                                                                                                                                                                 |
+| `supportsRefinement`                                                                                                                                                | *boolean*                                                                                                                                                           | :heavy_check_mark:                                                                                                                                                  | N/A                                                                                                                                                                 |
+| `scopes`                                                                                                                                                            | *string*[]                                                                                                                                                          | :heavy_minus_sign:                                                                                                                                                  | Known allowed app-level scopes. For Slack this is the bot scope set configured on the app; for OAuth it is `scopes_supported` from the server's discovery document. |
+| `supportedAuthorizationDetails`                                                                                                                                     | *string*[]                                                                                                                                                          | :heavy_minus_sign:                                                                                                                                                  | N/A                                                                                                                                                                 |

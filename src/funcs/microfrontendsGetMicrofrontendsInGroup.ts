@@ -18,7 +18,7 @@ import {
 import {
   GetMicrofrontendsInGroupRequest,
   GetMicrofrontendsInGroupRequest$outboundSchema,
-} from "../models/getmicrofrontendsingroupto2.js";
+} from "../models/getmicrofrontendsingrouptomicrofrontends1.js";
 import {
   ConnectionError,
   InvalidRequestError,

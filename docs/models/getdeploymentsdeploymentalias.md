@@ -8,7 +8,7 @@ Detailed information about v2 deployment checks. Includes information about bloc
 import { GetDeploymentsDeploymentAlias } from "@vercel/sdk/models/getdeploymentsop.js";
 
 let value: GetDeploymentsDeploymentAlias = {
-  state: "succeeded",
+  state: "failed",
   startedAt: 2871.01,
 };
 ```

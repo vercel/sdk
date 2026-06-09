@@ -3,15 +3,15 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsResponseBodyProjectsApril2026SecurityIncidentMigrationAppliedFrom } from "@vercel/sdk/models/getprojectsresponsebodyprojectsaibots.js";
+import { GetProjectsResponseBodyProjectsApril2026SecurityIncidentMigrationAppliedFrom } from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponse200applicationjson3projectssecuritymanagedrulesvercelrulesetaction.js";
 
 let value:
   GetProjectsResponseBodyProjectsApril2026SecurityIncidentMigrationAppliedFrom =
-    "all";
+    "all_except_custom_domains";
 ```
 
 ## Values
 
 ```typescript
-"preview" | "all" | "prod_deployment_urls_and_all_previews" | "all_except_custom_domains"
+"all" | "all_except_custom_domains" | "preview" | "prod_deployment_urls_and_all_previews"
 ```

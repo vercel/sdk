@@ -6,7 +6,7 @@
 import { GetProjectsResponseBodyMissing } from "@vercel/sdk/models/getprojectsresponsebody.js";
 
 let value: GetProjectsResponseBodyMissing = {
-  type: "host",
+  type: "cookie",
 };
 ```
 

@@ -8,7 +8,7 @@ Reference back to the entity on the platform that initiated the deployment.
 import { GetDeploymentsOrigin } from "@vercel/sdk/models/getdeploymentsop.js";
 
 let value: GetDeploymentsOrigin = {
-  type: "url",
+  type: "id",
   value: "<value>",
 };
 ```

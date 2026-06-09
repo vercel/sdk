@@ -273,54 +273,54 @@ export type GetFirewallConfigCrs = {
 };
 
 export const GetFirewallConfigRulesType = {
-  Host: "host",
-  Path: "path",
-  Method: "method",
-  Header: "header",
-  Query: "query",
+  BotCategory: "bot_category",
+  BotName: "bot_name",
+  BotProtection: "bot_protection",
+  BotStatus: "bot_status",
   Cookie: "cookie",
-  TargetPath: "target_path",
-  Route: "route",
-  RawPath: "raw_path",
-  IpAddress: "ip_address",
-  Protocol: "protocol",
-  Region: "region",
-  Scheme: "scheme",
   Environment: "environment",
-  UserAgent: "user_agent",
+  GeoAsNumber: "geo_as_number",
+  GeoCity: "geo_city",
   GeoContinent: "geo_continent",
   GeoCountry: "geo_country",
   GeoCountryRegion: "geo_country_region",
-  GeoCity: "geo_city",
-  GeoAsNumber: "geo_as_number",
-  Ja4Digest: "ja4_digest",
+  Header: "header",
+  Host: "host",
+  IpAddress: "ip_address",
   Ja3Digest: "ja3_digest",
+  Ja4Digest: "ja4_digest",
+  Method: "method",
+  Path: "path",
+  Protocol: "protocol",
+  Query: "query",
   RateLimitApiId: "rate_limit_api_id",
+  RawPath: "raw_path",
+  Region: "region",
+  Route: "route",
+  Scheme: "scheme",
   ServerAction: "server_action",
-  BotName: "bot_name",
-  BotCategory: "bot_category",
-  BotStatus: "bot_status",
-  BotProtection: "bot_protection",
+  TargetPath: "target_path",
+  UserAgent: "user_agent",
 } as const;
 export type GetFirewallConfigRulesType = ClosedEnum<
   typeof GetFirewallConfigRulesType
 >;
 
 export const GetFirewallConfigRulesOp = {
-  Sub: "sub",
-  Re: "re",
   Eq: "eq",
   Ex: "ex",
-  Inc: "inc",
-  Pre: "pre",
-  Suf: "suf",
   Gt: "gt",
   Gte: "gte",
+  Inc: "inc",
   Lt: "lt",
   Lte: "lte",
+  Neq: "neq",
   Nex: "nex",
   Ninc: "ninc",
-  Neq: "neq",
+  Pre: "pre",
+  Re: "re",
+  Sub: "sub",
+  Suf: "suf",
 } as const;
 export type GetFirewallConfigRulesOp = ClosedEnum<
   typeof GetFirewallConfigRulesOp
@@ -341,10 +341,10 @@ export type GetFirewallConfigRulesConditionGroup = {
 };
 
 export const GetFirewallConfigRulesSecurityAction = {
+  Bypass: "bypass",
+  Challenge: "challenge",
   Deny: "deny",
   Log: "log",
-  Challenge: "challenge",
-  Bypass: "bypass",
   RateLimit: "rate_limit",
   Redirect: "redirect",
 } as const;
@@ -361,9 +361,9 @@ export type GetFirewallConfigRulesAlgo = ClosedEnum<
 >;
 
 export const GetFirewallConfigRulesSecurityResponse200Action = {
+  Challenge: "challenge",
   Deny: "deny",
   Log: "log",
-  Challenge: "challenge",
   RateLimit: "rate_limit",
 } as const;
 export type GetFirewallConfigRulesSecurityResponse200Action = ClosedEnum<
@@ -419,52 +419,52 @@ export type Rules2 = {
 };
 
 export const RulesType = {
-  Host: "host",
-  Path: "path",
-  Method: "method",
-  Header: "header",
-  Query: "query",
+  BotCategory: "bot_category",
+  BotName: "bot_name",
+  BotProtection: "bot_protection",
+  BotStatus: "bot_status",
   Cookie: "cookie",
-  TargetPath: "target_path",
-  Route: "route",
-  RawPath: "raw_path",
-  IpAddress: "ip_address",
-  Protocol: "protocol",
-  Region: "region",
-  Scheme: "scheme",
   Environment: "environment",
-  UserAgent: "user_agent",
+  GeoAsNumber: "geo_as_number",
+  GeoCity: "geo_city",
   GeoContinent: "geo_continent",
   GeoCountry: "geo_country",
   GeoCountryRegion: "geo_country_region",
-  GeoCity: "geo_city",
-  GeoAsNumber: "geo_as_number",
-  Ja4Digest: "ja4_digest",
+  Header: "header",
+  Host: "host",
+  IpAddress: "ip_address",
   Ja3Digest: "ja3_digest",
+  Ja4Digest: "ja4_digest",
+  Method: "method",
+  Path: "path",
+  Protocol: "protocol",
+  Query: "query",
   RateLimitApiId: "rate_limit_api_id",
+  RawPath: "raw_path",
+  Region: "region",
+  Route: "route",
+  Scheme: "scheme",
   ServerAction: "server_action",
-  BotName: "bot_name",
-  BotCategory: "bot_category",
-  BotStatus: "bot_status",
-  BotProtection: "bot_protection",
+  TargetPath: "target_path",
+  UserAgent: "user_agent",
 } as const;
 export type RulesType = ClosedEnum<typeof RulesType>;
 
 export const RulesOp = {
-  Sub: "sub",
-  Re: "re",
   Eq: "eq",
   Ex: "ex",
-  Inc: "inc",
-  Pre: "pre",
-  Suf: "suf",
   Gt: "gt",
   Gte: "gte",
+  Inc: "inc",
   Lt: "lt",
   Lte: "lte",
+  Neq: "neq",
   Nex: "nex",
   Ninc: "ninc",
-  Neq: "neq",
+  Pre: "pre",
+  Re: "re",
+  Sub: "sub",
+  Suf: "suf",
 } as const;
 export type RulesOp = ClosedEnum<typeof RulesOp>;
 
@@ -483,10 +483,10 @@ export type RulesConditionGroup = {
 };
 
 export const GetFirewallConfigRulesSecurityResponseAction = {
+  Bypass: "bypass",
+  Challenge: "challenge",
   Deny: "deny",
   Log: "log",
-  Challenge: "challenge",
-  Bypass: "bypass",
   RateLimit: "rate_limit",
   Redirect: "redirect",
 } as const;
@@ -501,9 +501,9 @@ export const RulesAlgo = {
 export type RulesAlgo = ClosedEnum<typeof RulesAlgo>;
 
 export const GetFirewallConfigRulesSecurityResponse200ApplicationJSONAction = {
+  Challenge: "challenge",
   Deny: "deny",
   Log: "log",
-  Challenge: "challenge",
   RateLimit: "rate_limit",
 } as const;
 export type GetFirewallConfigRulesSecurityResponse200ApplicationJSONAction =
@@ -563,10 +563,10 @@ export type Rules1 = {
 export type GetFirewallConfigRules = Rules1 | Rules2;
 
 export const GetFirewallConfigAction = {
+  Bypass: "bypass",
+  Challenge: "challenge",
   Deny: "deny",
   Log: "log",
-  Challenge: "challenge",
-  Bypass: "bypass",
 } as const;
 export type GetFirewallConfigAction = ClosedEnum<
   typeof GetFirewallConfigAction
@@ -584,9 +584,9 @@ export type Changes = {};
 
 export const GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesAction =
   {
+    Challenge: "challenge",
     Deny: "deny",
     Log: "log",
-    Challenge: "challenge",
   } as const;
 export type GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesAction =
   ClosedEnum<
@@ -605,9 +605,9 @@ export type BotProtection = {
 
 export const GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesAiBotsAction =
   {
+    Challenge: "challenge",
     Deny: "deny",
     Log: "log",
-    Challenge: "challenge",
   } as const;
 export type GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesAiBotsAction =
   ClosedEnum<
@@ -626,9 +626,9 @@ export type AiBots = {
 
 export const GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesOwaspAction =
   {
+    Challenge: "challenge",
     Deny: "deny",
     Log: "log",
-    Challenge: "challenge",
   } as const;
 export type GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesOwaspAction =
   ClosedEnum<
@@ -647,9 +647,9 @@ export type Owasp = {
 
 export const GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesVercelRulesetAction =
   {
+    Challenge: "challenge",
     Deny: "deny",
     Log: "log",
-    Challenge: "challenge",
   } as const;
 export type GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesVercelRulesetAction =
   ClosedEnum<

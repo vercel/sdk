@@ -203,9 +203,9 @@ export type UpdateCheckRequest = {
 };
 
 export const UpdateCheckChecksStatus = {
-  Running: "running",
   Completed: "completed",
   Registered: "registered",
+  Running: "running",
 } as const;
 export type UpdateCheckChecksStatus = ClosedEnum<
   typeof UpdateCheckChecksStatus
@@ -213,11 +213,11 @@ export type UpdateCheckChecksStatus = ClosedEnum<
 
 export const UpdateCheckChecksConclusion = {
   Canceled: "canceled",
-  Skipped: "skipped",
   Failed: "failed",
   Neutral: "neutral",
-  Succeeded: "succeeded",
+  Skipped: "skipped",
   Stale: "stale",
+  Succeeded: "succeeded",
 } as const;
 export type UpdateCheckChecksConclusion = ClosedEnum<
   typeof UpdateCheckChecksConclusion

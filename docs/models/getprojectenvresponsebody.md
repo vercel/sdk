@@ -17,7 +17,7 @@ const value: models.GetProjectEnvResponseBody1 = {
 
 ```typescript
 const value: models.GetProjectEnvResponseBody2 = {
-  type: "system",
+  type: "encrypted",
   value: "<value>",
   key: "<key>",
 };

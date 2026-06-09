@@ -6,7 +6,7 @@
 import { UpdateFlagRhs3 } from "@vercel/sdk/models/updateflagop.js";
 
 let value: UpdateFlagRhs3 = {
-  type: "list",
+  type: "list/inline",
   items: [
     {
       value: 8890.17,

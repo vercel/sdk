@@ -7,9 +7,9 @@ import { CreateFlagGuardrailMetrics } from "@vercel/sdk/models/createflagop.js";
 
 let value: CreateFlagGuardrailMetrics = {
   name: "<value>",
-  metricType: "count",
-  metricUnit: "session",
-  directionality: "increaseIsGood",
+  metricType: "percentage",
+  metricUnit: "user",
+  directionality: "decreaseIsGood",
 };
 ```
 

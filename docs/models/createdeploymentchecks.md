@@ -7,7 +7,7 @@ import { CreateDeploymentChecks } from "@vercel/sdk/models/createdeploymentrespo
 
 let value: CreateDeploymentChecks = {
   deploymentAlias: {
-    state: "pending",
+    state: "succeeded",
     startedAt: 2579.52,
   },
 };

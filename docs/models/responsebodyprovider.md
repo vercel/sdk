@@ -7,7 +7,7 @@ import { ResponseBodyProvider } from "@vercel/sdk/models/buycreditsop.js";
 
 let value: ResponseBodyProvider = {
   resourceId: "<id>",
-  type: "stripe_invoice_deferred",
+  type: "stripe_elements",
 };
 ```
 

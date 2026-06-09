@@ -16,7 +16,7 @@ const value: models.GetDeploymentMissing1 = {
 
 ```typescript
 const value: models.GetDeploymentMissing2 = {
-  type: "header",
+  type: "cookie",
   key: "<key>",
 };
 ```
@@ -25,7 +25,7 @@ const value: models.GetDeploymentMissing2 = {
 
 ```typescript
 const value: models.GetDeploymentMissing2 = {
-  type: "header",
+  type: "cookie",
   key: "<key>",
 };
 ```
@@ -34,7 +34,7 @@ const value: models.GetDeploymentMissing2 = {
 
 ```typescript
 const value: models.GetDeploymentMissing2 = {
-  type: "header",
+  type: "cookie",
   key: "<key>",
 };
 ```

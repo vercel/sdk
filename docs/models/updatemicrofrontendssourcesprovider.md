@@ -5,11 +5,11 @@
 ```typescript
 import { UpdateMicrofrontendsSourcesProvider } from "@vercel/sdk/models/updatemicrofrontendsresponsebody.js";
 
-let value: UpdateMicrofrontendsSourcesProvider = "bitbucket";
+let value: UpdateMicrofrontendsSourcesProvider = "github";
 ```
 
 ## Values
 
 ```typescript
-"github" | "gitlab" | "bitbucket"
+"bitbucket" | "github"
 ```

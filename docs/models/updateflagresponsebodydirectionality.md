@@ -5,11 +5,11 @@
 ```typescript
 import { UpdateFlagResponseBodyDirectionality } from "@vercel/sdk/models/updateflagop.js";
 
-let value: UpdateFlagResponseBodyDirectionality = "decreaseIsGood";
+let value: UpdateFlagResponseBodyDirectionality = "increaseIsGood";
 ```
 
 ## Values
 
 ```typescript
-"increaseIsGood" | "decreaseIsGood"
+"decreaseIsGood" | "increaseIsGood"
 ```

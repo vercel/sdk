@@ -54,19 +54,19 @@ export type CreateCheckRequest = {
 };
 
 export const CreateCheckStatus = {
-  Running: "running",
   Completed: "completed",
   Registered: "registered",
+  Running: "running",
 } as const;
 export type CreateCheckStatus = ClosedEnum<typeof CreateCheckStatus>;
 
 export const CreateCheckConclusion = {
   Canceled: "canceled",
-  Skipped: "skipped",
   Failed: "failed",
   Neutral: "neutral",
-  Succeeded: "succeeded",
+  Skipped: "skipped",
   Stale: "stale",
+  Succeeded: "succeeded",
 } as const;
 export type CreateCheckConclusion = ClosedEnum<typeof CreateCheckConclusion>;
 

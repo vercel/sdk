@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Capabilities } from "@vercel/sdk/models/createintegrationstoredirecthiddenintegrations1.js";
+import { Capabilities } from "@vercel/sdk/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproductmetadataschema7type.js";
 
 let value: Capabilities = {};
 ```
@@ -22,3 +22,4 @@ let value: Capabilities = {};
 | `projects`              | *boolean*               | :heavy_minus_sign:      | N/A                     |
 | `v0`                    | *boolean*               | :heavy_minus_sign:      | N/A                     |
 | `autoSensitive`         | *boolean*               | :heavy_minus_sign:      | N/A                     |
+| `agentTools`            | *boolean*               | :heavy_minus_sign:      | N/A                     |

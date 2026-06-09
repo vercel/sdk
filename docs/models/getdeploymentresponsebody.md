@@ -31,7 +31,7 @@ const value: models.GetDeploymentResponseBody1 = {
     username: "john-doe",
   },
   public: false,
-  status: "ERROR",
+  status: "CANCELED",
   userAliases: [
     "sub1.example.com",
     "sub2.example.com",
@@ -58,7 +58,7 @@ const value: models.GetDeploymentResponseBody1 = {
   userConfiguredDeploymentId: "abc123",
   version: 2,
   projectId: "<id>",
-  plan: "enterprise",
+  plan: "hobby",
   createdIn: "<value>",
   ownerId: "<id>",
   routes: [],

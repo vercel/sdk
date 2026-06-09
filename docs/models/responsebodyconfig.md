@@ -8,8 +8,8 @@ Since February 2025 the configuration must include snapshot data at the time of 
 import { ResponseBodyConfig } from "@vercel/sdk/models/getdeploymentresponsebody.js";
 
 let value: ResponseBodyConfig = {
-  functionType: "fluid",
-  functionMemoryType: "standard",
+  functionType: "standard",
+  functionMemoryType: "performance",
   functionTimeout: null,
   secureComputePrimaryRegion: "<value>",
   secureComputeFallbackRegion: null,

@@ -91,7 +91,7 @@ const value: models.Job4 = {
   prId: 1371.4,
   repo: "<value>",
   repoId: 3515.58,
-  provider: "github-custom-host",
+  provider: "github-limited",
 };
 ```
 

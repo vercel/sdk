@@ -10,7 +10,7 @@ import { GetSDKKeysData } from "@vercel/sdk/models/getsdkkeysop.js";
 let value: GetSDKKeysData = {
   hashKey: "<value>",
   projectId: "<id>",
-  type: "client",
+  type: "server",
   environment: "<value>",
   createdBy: "<value>",
   createdAt: 2509.12,

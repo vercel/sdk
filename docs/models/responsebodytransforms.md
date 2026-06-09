@@ -7,7 +7,7 @@ import { ResponseBodyTransforms } from "@vercel/sdk/models/getroutesop.js";
 
 let value: ResponseBodyTransforms = {
   type: "request.headers",
-  op: "set",
+  op: "delete",
   target: {
     key: {},
   },

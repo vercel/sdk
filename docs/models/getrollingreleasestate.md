@@ -13,5 +13,5 @@ let value: GetRollingReleaseState = "ACTIVE";
 ## Values
 
 ```typescript
-"ACTIVE" | "COMPLETE" | "ABORTED"
+"ABORTED" | "ACTIVE" | "COMPLETE"
 ```

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CreateProjectProjectsResponseType } from "@vercel/sdk/models/createprojecttopreset.js";
+import { CreateProjectProjectsResponseType } from "@vercel/sdk/models/createprojectprojectsto.js";
 
 let value: CreateProjectProjectsResponseType = "sensitive";
 ```
@@ -11,5 +11,5 @@ let value: CreateProjectProjectsResponseType = "sensitive";
 ## Values
 
 ```typescript
-"system" | "encrypted" | "plain" | "sensitive" | "secret"
+"encrypted" | "plain" | "secret" | "sensitive" | "system"
 ```

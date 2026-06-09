@@ -26,8 +26,8 @@ export type SnapshotStatus = ClosedEnum<typeof SnapshotStatus>;
  * The method used to create the snapshot.
  */
 export const CreationMethod = {
-  Manual: "manual",
   Automatic: "automatic",
+  Manual: "manual",
 } as const;
 /**
  * The method used to create the snapshot.

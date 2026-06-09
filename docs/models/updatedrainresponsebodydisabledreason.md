@@ -5,11 +5,11 @@
 ```typescript
 import { UpdateDrainResponseBodyDisabledReason } from "@vercel/sdk/models/updatedrainop.js";
 
-let value: UpdateDrainResponseBodyDisabledReason = "disabled-by-admin";
+let value: UpdateDrainResponseBodyDisabledReason = "feature-not-available";
 ```
 
 ## Values
 
 ```typescript
-"disabled-by-owner" | "feature-not-available" | "account-plan-downgrade" | "disabled-by-admin"
+"account-plan-downgrade" | "disabled-by-admin" | "disabled-by-owner" | "feature-not-available"
 ```

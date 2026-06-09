@@ -5,11 +5,11 @@
 ```typescript
 import { CreateFlagAllocationUnit } from "@vercel/sdk/models/createflagop.js";
 
-let value: CreateFlagAllocationUnit = "visitorId";
+let value: CreateFlagAllocationUnit = "userId";
 ```
 
 ## Values
 
 ```typescript
-"cookieId" | "visitorId" | "userId"
+"cookieId" | "userId" | "visitorId"
 ```

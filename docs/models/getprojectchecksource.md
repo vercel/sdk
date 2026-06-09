@@ -26,7 +26,7 @@ const value: models.GetProjectCheckSource2 = {
 ```typescript
 const value: models.GetProjectCheckSource3 = {
   kind: "git-provider",
-  provider: "github",
+  provider: "bitbucket",
   externalCheckName: "<value>",
 };
 ```

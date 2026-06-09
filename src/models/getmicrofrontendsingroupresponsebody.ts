@@ -34,10 +34,6 @@ import {
   GetMicrofrontendsInGroupDefaultResourceConfig$inboundSchema,
   GetMicrofrontendsInGroupDefaultResourceConfig$Outbound,
   GetMicrofrontendsInGroupDefaultResourceConfig$outboundSchema,
-  GetMicrofrontendsInGroupDelegatedProtection,
-  GetMicrofrontendsInGroupDelegatedProtection$inboundSchema,
-  GetMicrofrontendsInGroupDelegatedProtection$Outbound,
-  GetMicrofrontendsInGroupDelegatedProtection$outboundSchema,
   GetMicrofrontendsInGroupDeploymentExpiration,
   GetMicrofrontendsInGroupDeploymentExpiration$inboundSchema,
   GetMicrofrontendsInGroupDeploymentExpiration$Outbound,
@@ -53,6 +49,10 @@ import {
   GetMicrofrontendsInGroupFramework,
   GetMicrofrontendsInGroupFramework$inboundSchema,
   GetMicrofrontendsInGroupFramework$outboundSchema,
+  GetMicrofrontendsInGroupFrom,
+  GetMicrofrontendsInGroupFrom$inboundSchema,
+  GetMicrofrontendsInGroupFrom$Outbound,
+  GetMicrofrontendsInGroupFrom$outboundSchema,
   GetMicrofrontendsInGroupIpBuckets,
   GetMicrofrontendsInGroupIpBuckets$inboundSchema,
   GetMicrofrontendsInGroupIpBuckets$Outbound,
@@ -81,10 +81,6 @@ import {
   GetMicrofrontendsInGroupMicrofrontends$inboundSchema,
   GetMicrofrontendsInGroupMicrofrontends$Outbound,
   GetMicrofrontendsInGroupMicrofrontends$outboundSchema,
-  GetMicrofrontendsInGroupMicrofrontendsProjects,
-  GetMicrofrontendsInGroupMicrofrontendsProjects$inboundSchema,
-  GetMicrofrontendsInGroupMicrofrontendsProjects$Outbound,
-  GetMicrofrontendsInGroupMicrofrontendsProjects$outboundSchema,
   GetMicrofrontendsInGroupNodeVersion,
   GetMicrofrontendsInGroupNodeVersion$inboundSchema,
   GetMicrofrontendsInGroupNodeVersion$outboundSchema,
@@ -92,6 +88,10 @@ import {
   GetMicrofrontendsInGroupOptionsAllowlist$inboundSchema,
   GetMicrofrontendsInGroupOptionsAllowlist$Outbound,
   GetMicrofrontendsInGroupOptionsAllowlist$outboundSchema,
+  GetMicrofrontendsInGroupPassport,
+  GetMicrofrontendsInGroupPassport$inboundSchema,
+  GetMicrofrontendsInGroupPassport$Outbound,
+  GetMicrofrontendsInGroupPassport$outboundSchema,
   GetMicrofrontendsInGroupPasswordProtection,
   GetMicrofrontendsInGroupPasswordProtection$inboundSchema,
   GetMicrofrontendsInGroupPasswordProtection$Outbound,
@@ -116,6 +116,10 @@ import {
   GetMicrofrontendsInGroupRollingRelease$inboundSchema,
   GetMicrofrontendsInGroupRollingRelease$Outbound,
   GetMicrofrontendsInGroupRollingRelease$outboundSchema,
+  GetMicrofrontendsInGroupServices,
+  GetMicrofrontendsInGroupServices$inboundSchema,
+  GetMicrofrontendsInGroupServices$Outbound,
+  GetMicrofrontendsInGroupServices$outboundSchema,
   GetMicrofrontendsInGroupSpeedInsights,
   GetMicrofrontendsInGroupSpeedInsights$inboundSchema,
   GetMicrofrontendsInGroupSpeedInsights$Outbound,
@@ -132,16 +136,60 @@ import {
   GetMicrofrontendsInGroupTargets$inboundSchema,
   GetMicrofrontendsInGroupTargets$Outbound,
   GetMicrofrontendsInGroupTargets$outboundSchema,
-  GetMicrofrontendsInGroupTo2,
-  GetMicrofrontendsInGroupTo2$inboundSchema,
-  GetMicrofrontendsInGroupTo2$Outbound,
-  GetMicrofrontendsInGroupTo2$outboundSchema,
+  GetMicrofrontendsInGroupToMicrofrontends1,
+  GetMicrofrontendsInGroupToMicrofrontends1$inboundSchema,
+  GetMicrofrontendsInGroupToMicrofrontends1$Outbound,
+  GetMicrofrontendsInGroupToMicrofrontends1$outboundSchema,
+  GetMicrofrontendsInGroupToMicrofrontends2,
+  GetMicrofrontendsInGroupToMicrofrontends2$inboundSchema,
+  GetMicrofrontendsInGroupToMicrofrontends2$Outbound,
+  GetMicrofrontendsInGroupToMicrofrontends2$outboundSchema,
   GetMicrofrontendsInGroupTrustedIps,
   GetMicrofrontendsInGroupTrustedIps$inboundSchema,
   GetMicrofrontendsInGroupTrustedIps$Outbound,
   GetMicrofrontendsInGroupTrustedIps$outboundSchema,
-} from "./getmicrofrontendsingroupto2.js";
+} from "./getmicrofrontendsingrouptomicrofrontends1.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export type GetMicrofrontendsInGroupMicrofrontendsTo =
+  | GetMicrofrontendsInGroupToMicrofrontends1
+  | GetMicrofrontendsInGroupToMicrofrontends2;
+
+/**
+ * Optional overrides for the default same-env-by-slug matching. Provide explicit rules to allow cross-env access or presets.
+ */
+export type GetMicrofrontendsInGroupCustomAllow = {
+  from: GetMicrofrontendsInGroupFrom;
+  to:
+    | GetMicrofrontendsInGroupToMicrofrontends1
+    | GetMicrofrontendsInGroupToMicrofrontends2;
+};
+
+export type GetMicrofrontendsInGroupMicrofrontendsProjects = {
+  label?: string | undefined;
+  /**
+   * Optional overrides for the default same-env-by-slug matching. Provide explicit rules to allow cross-env access or presets.
+   */
+  customAllow?: Array<GetMicrofrontendsInGroupCustomAllow> | undefined;
+};
+
+export const GetMicrofrontendsInGroupToMicrofrontendsPreset = {
+  AllCustom: "all-custom",
+} as const;
+export type GetMicrofrontendsInGroupToMicrofrontendsPreset = ClosedEnum<
+  typeof GetMicrofrontendsInGroupToMicrofrontendsPreset
+>;
+
+/**
+ * The target envs on the current project that may be accessed.
+ */
+export type GetMicrofrontendsInGroupTo2 = {
+  /**
+   * System environment slugs (`production`, `preview`) and/or custom environment slugs defined on the referenced project.
+   */
+  slugs?: Array<string> | undefined;
+  preset: GetMicrofrontendsInGroupToMicrofrontendsPreset;
+};
 
 export const GetMicrofrontendsInGroupToPreset = {
   AllCustom: "all-custom",
@@ -195,8 +243,8 @@ export type GetMicrofrontendsInGroupGitComments = {
  * Whether the Vercel bot should automatically create GitHub deployments https://docs.github.com/en/rest/deployments/deployments#about-deployments NOTE: repository-dispatch events should be used instead
  */
 export const GetMicrofrontendsInGroupCreateDeployments = {
-  Enabled: "enabled",
   Disabled: "disabled",
+  Enabled: "enabled",
 } as const;
 /**
  * Whether the Vercel bot should automatically create GitHub deployments https://docs.github.com/en/rest/deployments/deployments#about-deployments NOTE: repository-dispatch events should be used instead
@@ -254,9 +302,9 @@ export type GetMicrofrontendsInGroupWebAnalytics = {
 
 export const GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONAction =
   {
-    Log: "log",
     Challenge: "challenge",
     Deny: "deny",
+    Log: "log",
   } as const;
 export type GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONAction =
   ClosedEnum<
@@ -272,9 +320,9 @@ export type GetMicrofrontendsInGroupVercelRuleset = {
 
 export const GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyAction =
   {
-    Log: "log",
     Challenge: "challenge",
     Deny: "deny",
+    Log: "log",
   } as const;
 export type GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyAction =
   ClosedEnum<
@@ -288,24 +336,28 @@ export type GetMicrofrontendsInGroupBotFilter = {
     | undefined;
 };
 
-export const GetMicrofrontendsInGroupMicrofrontendsResponseAction = {
-  Log: "log",
-  Challenge: "challenge",
-  Deny: "deny",
-} as const;
-export type GetMicrofrontendsInGroupMicrofrontendsResponseAction = ClosedEnum<
-  typeof GetMicrofrontendsInGroupMicrofrontendsResponseAction
->;
+export const GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyProjectsAction =
+  {
+    Challenge: "challenge",
+    Deny: "deny",
+    Log: "log",
+  } as const;
+export type GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyProjectsAction =
+  ClosedEnum<
+    typeof GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyProjectsAction
+  >;
 
 export type GetMicrofrontendsInGroupAiBots = {
   active: boolean;
-  action?: GetMicrofrontendsInGroupMicrofrontendsResponseAction | undefined;
+  action?:
+    | GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyProjectsAction
+    | undefined;
 };
 
 export const GetMicrofrontendsInGroupMicrofrontendsResponse200Action = {
-  Log: "log",
   Challenge: "challenge",
   Deny: "deny",
+  Log: "log",
 } as const;
 export type GetMicrofrontendsInGroupMicrofrontendsResponse200Action =
   ClosedEnum<typeof GetMicrofrontendsInGroupMicrofrontendsResponse200Action>;
@@ -369,8 +421,8 @@ export type GetMicrofrontendsInGroupSecurity = {
  * - team: `https://oidc.vercel.com/[team_slug]` - global: `https://oidc.vercel.com`
  */
 export const GetMicrofrontendsInGroupIssuerMode = {
-  Team: "team",
   Global: "global",
+  Team: "team",
 } as const;
 /**
  * - team: `https://oidc.vercel.com/[team_slug]` - global: `https://oidc.vercel.com`
@@ -390,96 +442,141 @@ export type GetMicrofrontendsInGroupOidcTokenConfig = {
   issuerMode?: GetMicrofrontendsInGroupIssuerMode | undefined;
 };
 
-export const GetMicrofrontendsInGroupSourcesProvider = {
-  Github: "github",
-  Gitlab: "gitlab",
-  Bitbucket: "bitbucket",
-} as const;
-export type GetMicrofrontendsInGroupSourcesProvider = ClosedEnum<
-  typeof GetMicrofrontendsInGroupSourcesProvider
->;
-
+/**
+ * Allowlist entry for GitLab, which uses nested groups rather than a flat org/repo. `namespace` is the full group path (e.g. `group` or `group/subgroup`); `project` is the leaf project name. Omit `project` to match any project under the namespace. Namespace is matched case-insensitively.
+ */
 export type GetMicrofrontendsInGroupSources2 = {
-  provider: GetMicrofrontendsInGroupSourcesProvider;
-  org: string;
-  repo: string;
+  provider: "gitlab";
+  namespace: string;
+  project?: string | undefined;
 };
 
 export const GetMicrofrontendsInGroupSourcesMicrofrontendsProvider = {
-  Github: "github",
-  Gitlab: "gitlab",
   Bitbucket: "bitbucket",
+  Github: "github",
 } as const;
 export type GetMicrofrontendsInGroupSourcesMicrofrontendsProvider = ClosedEnum<
   typeof GetMicrofrontendsInGroupSourcesMicrofrontendsProvider
 >;
 
+/**
+ * Allowlist entry for GitHub and Bitbucket, whose repos are identified by a flat `org`/`repo` (Bitbucket's workspace/owner maps to `org`, its repo slug to `repo`). Omit `repo` to match any repo in the org. Org is matched case-insensitively.
+ */
 export type GetMicrofrontendsInGroupSources1 = {
   provider: GetMicrofrontendsInGroupSourcesMicrofrontendsProvider;
   org: string;
+  repo?: string | undefined;
 };
 
 export type GetMicrofrontendsInGroupSources =
-  | GetMicrofrontendsInGroupSources2
-  | GetMicrofrontendsInGroupSources1;
+  | (GetMicrofrontendsInGroupSources1 & { provider: "bitbucket" })
+  | (GetMicrofrontendsInGroupSources1 & { provider: "github" })
+  | GetMicrofrontendsInGroupSources2;
+
+export type GetMicrofrontendsInGroupEnvironmentsMicrofrontends2 = {
+  type: "custom";
+  environmentId: string;
+};
+
+export const GetMicrofrontendsInGroupEnvironmentsMicrofrontendsTarget = {
+  Preview: "preview",
+  Production: "production",
+} as const;
+export type GetMicrofrontendsInGroupEnvironmentsMicrofrontendsTarget =
+  ClosedEnum<typeof GetMicrofrontendsInGroupEnvironmentsMicrofrontendsTarget>;
+
+export type GetMicrofrontendsInGroupEnvironmentsMicrofrontends1 = {
+  type: "system";
+  target: GetMicrofrontendsInGroupEnvironmentsMicrofrontendsTarget;
+};
+
+export type GetMicrofrontendsInGroupEnvironments =
+  | GetMicrofrontendsInGroupEnvironmentsMicrofrontends1
+  | GetMicrofrontendsInGroupEnvironmentsMicrofrontends2;
 
 /**
- * Restricts inbound Git deployments to an allowlist of orgs and/or repos. `enabled: true` with an empty `sources` list is treated as deny-all.
+ * `enabled: true` with empty `sources` is deny-all.
  */
 export type GetMicrofrontendsInGroupGitSources = {
   sources: Array<
-    GetMicrofrontendsInGroupSources2 | GetMicrofrontendsInGroupSources1
+    | (GetMicrofrontendsInGroupSources1 & { provider: "bitbucket" })
+    | (GetMicrofrontendsInGroupSources1 & { provider: "github" })
+    | GetMicrofrontendsInGroupSources2
   >;
   enabled: boolean;
+  environments: Array<
+    | GetMicrofrontendsInGroupEnvironmentsMicrofrontends1
+    | GetMicrofrontendsInGroupEnvironmentsMicrofrontends2
+  >;
 };
 
 /**
- * The mechanism that produced a deployment, expressed as values a customer can write in a {@link DeploymentSourcesRule} allowlist. The JSON schema at `packages/deployment-policy/schemas/body.ts` enumerates exactly these values. - `'git'`: a Git provider webhook (GitHub / GitLab / Bitbucket). - `'cli'`: an upload via the Vercel CLI. Covers both the legacy CLI (classic user token, identified by `vercel`/`now` user-agent) and the Sign-In-With-Vercel CLI (a first-party Vercel App token whose `clientId` is the CLI's). The canonical CLI client IDs are tracked in `packages/acl/app-has-all-permissions.ts` (`isVercelCliApp`). - `'rest-api'`: a direct REST API upload — a user or team token POSTing directly. Does NOT cover deploy-hook URLs, Marketplace integration tokens, or first-party Vercel App tokens; those are their own sources. - `'deploy-hook'`: a trigger via a project deploy-hook URL. The URL itself is the credential, so the request has no authenticated principal. - `'integration'`: a **third-party Marketplace** OAuth2 actor — a Marketplace integration token, a user-delegated OAuth flow where a Marketplace integration is acting on a user's behalf, or an unrecognized third-party Vercel App token. First-party Vercel Apps are NEVER `'integration'`. Vercel-owned first-party apps other than the CLI (e.g. v0, Toolbar, Omni Agent) are *not* in this type — they aren't customer-configurable. They classify as `'first-party'` (see `ClassifiedSource` in `@api/deployment-policy/checks`) and are auto-allowed by `checkDeploymentSources`. The split is intentional: a team can permit their own automation and CLI usage while blocking third-party Marketplace integrators — and Vercel's own first-party tooling always works.
+ * Customer-configurable deployment sources. Every deploy classifies to exactly one. JSON schema in `packages/deployment-policy/schemas/body.ts` enumerates exactly these values. - `'git'` — git provider webhook. - `'cli'` — Vercel CLI (legacy classic-token CLI and SIWV CLI both). - `'rest-api'` — direct user/team-token REST upload. Does NOT cover deploy hooks, Marketplace integrations, or first-party app tokens. - `'deploy-hook'` — project deploy-hook URL. The URL is the credential. - `'integration'` — third-party Marketplace actor: Marketplace integration token, user-delegated OAuth from a Marketplace app, or an unrecognized third-party Vercel App. First-party Vercel Apps are never `'integration'`. First-party Vercel apps (v0, Toolbar, etc.) classify as `'first-party'` — see `ClassifiedSource` in `./checks`. They're not in this union because they aren't customer-configurable; they bypass `checkDeploymentSources` entirely.
  */
 export const GetMicrofrontendsInGroupMicrofrontendsSources = {
-  Git: "git",
   Cli: "cli",
-  RestApi: "rest-api",
   DeployHook: "deploy-hook",
+  Git: "git",
   Integration: "integration",
+  RestApi: "rest-api",
 } as const;
 /**
- * The mechanism that produced a deployment, expressed as values a customer can write in a {@link DeploymentSourcesRule} allowlist. The JSON schema at `packages/deployment-policy/schemas/body.ts` enumerates exactly these values. - `'git'`: a Git provider webhook (GitHub / GitLab / Bitbucket). - `'cli'`: an upload via the Vercel CLI. Covers both the legacy CLI (classic user token, identified by `vercel`/`now` user-agent) and the Sign-In-With-Vercel CLI (a first-party Vercel App token whose `clientId` is the CLI's). The canonical CLI client IDs are tracked in `packages/acl/app-has-all-permissions.ts` (`isVercelCliApp`). - `'rest-api'`: a direct REST API upload — a user or team token POSTing directly. Does NOT cover deploy-hook URLs, Marketplace integration tokens, or first-party Vercel App tokens; those are their own sources. - `'deploy-hook'`: a trigger via a project deploy-hook URL. The URL itself is the credential, so the request has no authenticated principal. - `'integration'`: a **third-party Marketplace** OAuth2 actor — a Marketplace integration token, a user-delegated OAuth flow where a Marketplace integration is acting on a user's behalf, or an unrecognized third-party Vercel App token. First-party Vercel Apps are NEVER `'integration'`. Vercel-owned first-party apps other than the CLI (e.g. v0, Toolbar, Omni Agent) are *not* in this type — they aren't customer-configurable. They classify as `'first-party'` (see `ClassifiedSource` in `@api/deployment-policy/checks`) and are auto-allowed by `checkDeploymentSources`. The split is intentional: a team can permit their own automation and CLI usage while blocking third-party Marketplace integrators — and Vercel's own first-party tooling always works.
+ * Customer-configurable deployment sources. Every deploy classifies to exactly one. JSON schema in `packages/deployment-policy/schemas/body.ts` enumerates exactly these values. - `'git'` — git provider webhook. - `'cli'` — Vercel CLI (legacy classic-token CLI and SIWV CLI both). - `'rest-api'` — direct user/team-token REST upload. Does NOT cover deploy hooks, Marketplace integrations, or first-party app tokens. - `'deploy-hook'` — project deploy-hook URL. The URL is the credential. - `'integration'` — third-party Marketplace actor: Marketplace integration token, user-delegated OAuth from a Marketplace app, or an unrecognized third-party Vercel App. First-party Vercel Apps are never `'integration'`. First-party Vercel apps (v0, Toolbar, etc.) classify as `'first-party'` — see `ClassifiedSource` in `./checks`. They're not in this union because they aren't customer-configurable; they bypass `checkDeploymentSources` entirely.
  */
 export type GetMicrofrontendsInGroupMicrofrontendsSources = ClosedEnum<
   typeof GetMicrofrontendsInGroupMicrofrontendsSources
 >;
 
+export type GetMicrofrontendsInGroupEnvironments2 = {
+  type: "custom";
+  environmentId: string;
+};
+
+export const GetMicrofrontendsInGroupEnvironmentsTarget = {
+  Preview: "preview",
+  Production: "production",
+} as const;
+export type GetMicrofrontendsInGroupEnvironmentsTarget = ClosedEnum<
+  typeof GetMicrofrontendsInGroupEnvironmentsTarget
+>;
+
+export type GetMicrofrontendsInGroupEnvironments1 = {
+  type: "system";
+  target: GetMicrofrontendsInGroupEnvironmentsTarget;
+};
+
+export type GetMicrofrontendsInGroupMicrofrontendsEnvironments =
+  | GetMicrofrontendsInGroupEnvironments1
+  | GetMicrofrontendsInGroupEnvironments2;
+
 /**
- * Restricts which deployment sources are allowed. A deployment passes if its source is in `sources`. Multiple entries are evaluated as OR. `enabled: true` with an empty `sources` list is treated as deny-all.
+ * `enabled: true` with empty `sources` is deny-all.
  */
 export type GetMicrofrontendsInGroupDeploymentSources = {
   sources: Array<GetMicrofrontendsInGroupMicrofrontendsSources>;
   enabled: boolean;
+  environments: Array<
+    | GetMicrofrontendsInGroupEnvironments1
+    | GetMicrofrontendsInGroupEnvironments2
+  >;
 };
 
 /**
- * Project-level shape. Each rule may be: - an object: overrides the team's value for that rule - `null`: explicitly clears the override on just that rule (inherit team) - omitted: inherit team To clear all overrides and inherit fully, set the project's `deploymentPolicy` field itself to `null`. Defined independently from {@link TeamDeploymentPolicy} so the two are not coupled by a shared type — the underlying data lives in separate stores.
+ * Project shape. `null` on a rule list clears the project's override for that rule type (fall back to team for every env); omitting is equivalent. Setting `deploymentPolicy` itself to `null` clears every override at once. Kept structurally distinct from {@link TeamDeploymentPolicy} so the two storage locations don't share a type by accident.
  */
 export type GetMicrofrontendsInGroupDeploymentPolicy = {
-  /**
-   * Restricts inbound Git deployments to an allowlist of orgs and/or repos. `enabled: true` with an empty `sources` list is treated as deny-all.
-   */
-  gitSources?: GetMicrofrontendsInGroupGitSources | null | undefined;
-  /**
-   * Restricts which deployment sources are allowed. A deployment passes if its source is in `sources`. Multiple entries are evaluated as OR. `enabled: true` with an empty `sources` list is treated as deny-all.
-   */
+  gitSources?: Array<GetMicrofrontendsInGroupGitSources> | null | undefined;
   deploymentSources?:
-    | GetMicrofrontendsInGroupDeploymentSources
+    | Array<GetMicrofrontendsInGroupDeploymentSources>
     | null
     | undefined;
 };
 
 export const GetMicrofrontendsInGroupFlatRateTier = {
-  Standard: "standard",
-  Base: "base",
   Advanced: "advanced",
+  Base: "base",
   Critical: "critical",
+  Standard: "standard",
 } as const;
 export type GetMicrofrontendsInGroupFlatRateTier = ClosedEnum<
   typeof GetMicrofrontendsInGroupFlatRateTier
@@ -529,15 +626,15 @@ export type GetMicrofrontendsInGroupHistory = {
   at: number;
 };
 
-export const GetMicrofrontendsInGroupMicrofrontendsAction = {
+export const GetMicrofrontendsInGroupMicrofrontendsResponseAction = {
   Blocked: "blocked",
 } as const;
-export type GetMicrofrontendsInGroupMicrofrontendsAction = ClosedEnum<
-  typeof GetMicrofrontendsInGroupMicrofrontendsAction
+export type GetMicrofrontendsInGroupMicrofrontendsResponseAction = ClosedEnum<
+  typeof GetMicrofrontendsInGroupMicrofrontendsResponseAction
 >;
 
 export type GetMicrofrontendsInGroupBlock = {
-  action: GetMicrofrontendsInGroupMicrofrontendsAction;
+  action: GetMicrofrontendsInGroupMicrofrontendsResponseAction;
   reason: string;
   statusCode: number;
   createdAt: number;
@@ -724,6 +821,25 @@ export type GetMicrofrontendsInGroupBlockHistory =
   | GetMicrofrontendsInGroupBlockHistory3
   | GetMicrofrontendsInGroupBlockHistory4;
 
+export const GetMicrofrontendsInGroupMicrofrontendsAction = {
+  AddDeploymentInterstitial: "add-deployment-interstitial",
+  AddProjectInterstitial: "add-project-interstitial",
+  RemoveDeploymentInterstitial: "remove-deployment-interstitial",
+  RemoveProjectInterstitial: "remove-project-interstitial",
+} as const;
+export type GetMicrofrontendsInGroupMicrofrontendsAction = ClosedEnum<
+  typeof GetMicrofrontendsInGroupMicrofrontendsAction
+>;
+
+export type GetMicrofrontendsInGroupInterstitialHistory = {
+  action: GetMicrofrontendsInGroupMicrofrontendsAction;
+  createdAt: number;
+  caseId?: string | undefined;
+  reason?: string | undefined;
+  actor?: string | undefined;
+  comment?: string | undefined;
+};
+
 export type GetMicrofrontendsInGroupAbuse = {
   scanner?: string | undefined;
   history: Array<GetMicrofrontendsInGroupHistory>;
@@ -738,6 +854,9 @@ export type GetMicrofrontendsInGroupAbuse = {
     >
     | undefined;
   interstitial?: boolean | undefined;
+  interstitialHistory?:
+    | Array<GetMicrofrontendsInGroupInterstitialHistory>
+    | undefined;
 };
 
 export type GetMicrofrontendsInGroupHasMicrofrontendsValue = {
@@ -797,8 +916,8 @@ export type GetMicrofrontendsInGroupInternalRoutes =
   | GetMicrofrontendsInGroupInternalRoutes2;
 
 export const GetMicrofrontendsInGroupAction = {
-  Cancel: "cancel",
   Accept: "accept",
+  Cancel: "cancel",
   Delete: "delete",
 } as const;
 export type GetMicrofrontendsInGroupAction = ClosedEnum<
@@ -834,8 +953,8 @@ export type GetMicrofrontendsInGroupDismissedToasts = {
 };
 
 export const GetMicrofrontendsInGroupMicrofrontendsEnv = {
-  Production: "production",
   Preview: "preview",
+  Production: "production",
 } as const;
 export type GetMicrofrontendsInGroupMicrofrontendsEnv = ClosedEnum<
   typeof GetMicrofrontendsInGroupMicrofrontendsEnv
@@ -874,10 +993,6 @@ export type GetMicrofrontendsInGroupProjects = {
   customerSupportCodeVisibility?: boolean | undefined;
   crons?: GetMicrofrontendsInGroupCrons | undefined;
   dataCache?: GetMicrofrontendsInGroupDataCache | undefined;
-  delegatedProtection?:
-    | GetMicrofrontendsInGroupDelegatedProtection
-    | null
-    | undefined;
   /**
    * Retention policies for deployments. These are enforced at the project level, but we also maintain an instance of this at the team level as a default policy that gets applied to new projects.
    */
@@ -891,6 +1006,7 @@ export type GetMicrofrontendsInGroupProjects = {
     | Array<GetMicrofrontendsInGroupCustomEnvironments>
     | undefined;
   framework?: GetMicrofrontendsInGroupFramework | null | undefined;
+  services?: Array<GetMicrofrontendsInGroupServices> | undefined;
   gitForkProtection?: boolean | undefined;
   gitLFS?: boolean | undefined;
   id: string;
@@ -912,6 +1028,7 @@ export type GetMicrofrontendsInGroupProjects = {
     | GetMicrofrontendsInGroupPasswordProtection
     | null
     | undefined;
+  passport?: GetMicrofrontendsInGroupPassport | null | undefined;
   productionDeploymentsFastLane?: boolean | undefined;
   publicSource?: boolean | null | undefined;
   resourceConfig: GetMicrofrontendsInGroupResourceConfig;
@@ -967,7 +1084,7 @@ export type GetMicrofrontendsInGroupProjects = {
   security?: GetMicrofrontendsInGroupSecurity | undefined;
   oidcTokenConfig?: GetMicrofrontendsInGroupOidcTokenConfig | undefined;
   /**
-   * Project-level shape. Each rule may be: - an object: overrides the team's value for that rule - `null`: explicitly clears the override on just that rule (inherit team) - omitted: inherit team To clear all overrides and inherit fully, set the project's `deploymentPolicy` field itself to `null`. Defined independently from {@link TeamDeploymentPolicy} so the two are not coupled by a shared type — the underlying data lives in separate stores.
+   * Project shape. `null` on a rule list clears the project's override for that rule type (fall back to team for every env); omitting is equivalent. Setting `deploymentPolicy` itself to `null` clears every override at once. Kept structurally distinct from {@link TeamDeploymentPolicy} so the two storage locations don't share a type by accident.
    */
   deploymentPolicy?:
     | GetMicrofrontendsInGroupDeploymentPolicy
@@ -990,11 +1107,225 @@ export type GetMicrofrontendsInGroupProjects = {
   dismissedToasts?: Array<GetMicrofrontendsInGroupDismissedToasts> | undefined;
   protectedSourcemaps?: boolean | undefined;
   tracing?: GetMicrofrontendsInGroupTracing | undefined;
+  avatar?: string | undefined;
 };
 
 export type GetMicrofrontendsInGroupResponseBody = {
   projects: Array<GetMicrofrontendsInGroupProjects>;
 };
+
+/** @internal */
+export const GetMicrofrontendsInGroupMicrofrontendsTo$inboundSchema: z.ZodType<
+  GetMicrofrontendsInGroupMicrofrontendsTo,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  GetMicrofrontendsInGroupToMicrofrontends1$inboundSchema,
+  GetMicrofrontendsInGroupToMicrofrontends2$inboundSchema,
+]);
+/** @internal */
+export type GetMicrofrontendsInGroupMicrofrontendsTo$Outbound =
+  | GetMicrofrontendsInGroupToMicrofrontends1$Outbound
+  | GetMicrofrontendsInGroupToMicrofrontends2$Outbound;
+
+/** @internal */
+export const GetMicrofrontendsInGroupMicrofrontendsTo$outboundSchema: z.ZodType<
+  GetMicrofrontendsInGroupMicrofrontendsTo$Outbound,
+  z.ZodTypeDef,
+  GetMicrofrontendsInGroupMicrofrontendsTo
+> = smartUnion([
+  GetMicrofrontendsInGroupToMicrofrontends1$outboundSchema,
+  GetMicrofrontendsInGroupToMicrofrontends2$outboundSchema,
+]);
+
+export function getMicrofrontendsInGroupMicrofrontendsToToJSON(
+  getMicrofrontendsInGroupMicrofrontendsTo:
+    GetMicrofrontendsInGroupMicrofrontendsTo,
+): string {
+  return JSON.stringify(
+    GetMicrofrontendsInGroupMicrofrontendsTo$outboundSchema.parse(
+      getMicrofrontendsInGroupMicrofrontendsTo,
+    ),
+  );
+}
+export function getMicrofrontendsInGroupMicrofrontendsToFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetMicrofrontendsInGroupMicrofrontendsTo,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetMicrofrontendsInGroupMicrofrontendsTo$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetMicrofrontendsInGroupMicrofrontendsTo' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetMicrofrontendsInGroupCustomAllow$inboundSchema: z.ZodType<
+  GetMicrofrontendsInGroupCustomAllow,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  from: GetMicrofrontendsInGroupFrom$inboundSchema,
+  to: smartUnion([
+    GetMicrofrontendsInGroupToMicrofrontends1$inboundSchema,
+    GetMicrofrontendsInGroupToMicrofrontends2$inboundSchema,
+  ]),
+});
+/** @internal */
+export type GetMicrofrontendsInGroupCustomAllow$Outbound = {
+  from: GetMicrofrontendsInGroupFrom$Outbound;
+  to:
+    | GetMicrofrontendsInGroupToMicrofrontends1$Outbound
+    | GetMicrofrontendsInGroupToMicrofrontends2$Outbound;
+};
+
+/** @internal */
+export const GetMicrofrontendsInGroupCustomAllow$outboundSchema: z.ZodType<
+  GetMicrofrontendsInGroupCustomAllow$Outbound,
+  z.ZodTypeDef,
+  GetMicrofrontendsInGroupCustomAllow
+> = z.object({
+  from: GetMicrofrontendsInGroupFrom$outboundSchema,
+  to: smartUnion([
+    GetMicrofrontendsInGroupToMicrofrontends1$outboundSchema,
+    GetMicrofrontendsInGroupToMicrofrontends2$outboundSchema,
+  ]),
+});
+
+export function getMicrofrontendsInGroupCustomAllowToJSON(
+  getMicrofrontendsInGroupCustomAllow: GetMicrofrontendsInGroupCustomAllow,
+): string {
+  return JSON.stringify(
+    GetMicrofrontendsInGroupCustomAllow$outboundSchema.parse(
+      getMicrofrontendsInGroupCustomAllow,
+    ),
+  );
+}
+export function getMicrofrontendsInGroupCustomAllowFromJSON(
+  jsonString: string,
+): SafeParseResult<GetMicrofrontendsInGroupCustomAllow, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetMicrofrontendsInGroupCustomAllow$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetMicrofrontendsInGroupCustomAllow' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetMicrofrontendsInGroupMicrofrontendsProjects$inboundSchema:
+  z.ZodType<
+    GetMicrofrontendsInGroupMicrofrontendsProjects,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    label: types.optional(types.string()),
+    customAllow: types.optional(
+      z.array(z.lazy(() => GetMicrofrontendsInGroupCustomAllow$inboundSchema)),
+    ),
+  });
+/** @internal */
+export type GetMicrofrontendsInGroupMicrofrontendsProjects$Outbound = {
+  label?: string | undefined;
+  customAllow?: Array<GetMicrofrontendsInGroupCustomAllow$Outbound> | undefined;
+};
+
+/** @internal */
+export const GetMicrofrontendsInGroupMicrofrontendsProjects$outboundSchema:
+  z.ZodType<
+    GetMicrofrontendsInGroupMicrofrontendsProjects$Outbound,
+    z.ZodTypeDef,
+    GetMicrofrontendsInGroupMicrofrontendsProjects
+  > = z.object({
+    label: z.string().optional(),
+    customAllow: z.array(
+      z.lazy(() => GetMicrofrontendsInGroupCustomAllow$outboundSchema),
+    ).optional(),
+  });
+
+export function getMicrofrontendsInGroupMicrofrontendsProjectsToJSON(
+  getMicrofrontendsInGroupMicrofrontendsProjects:
+    GetMicrofrontendsInGroupMicrofrontendsProjects,
+): string {
+  return JSON.stringify(
+    GetMicrofrontendsInGroupMicrofrontendsProjects$outboundSchema.parse(
+      getMicrofrontendsInGroupMicrofrontendsProjects,
+    ),
+  );
+}
+export function getMicrofrontendsInGroupMicrofrontendsProjectsFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetMicrofrontendsInGroupMicrofrontendsProjects,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetMicrofrontendsInGroupMicrofrontendsProjects$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetMicrofrontendsInGroupMicrofrontendsProjects' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetMicrofrontendsInGroupToMicrofrontendsPreset$inboundSchema:
+  z.ZodNativeEnum<typeof GetMicrofrontendsInGroupToMicrofrontendsPreset> = z
+    .nativeEnum(GetMicrofrontendsInGroupToMicrofrontendsPreset);
+/** @internal */
+export const GetMicrofrontendsInGroupToMicrofrontendsPreset$outboundSchema:
+  z.ZodNativeEnum<typeof GetMicrofrontendsInGroupToMicrofrontendsPreset> =
+    GetMicrofrontendsInGroupToMicrofrontendsPreset$inboundSchema;
+
+/** @internal */
+export const GetMicrofrontendsInGroupTo2$inboundSchema: z.ZodType<
+  GetMicrofrontendsInGroupTo2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  slugs: types.optional(z.array(types.string())),
+  preset: GetMicrofrontendsInGroupToMicrofrontendsPreset$inboundSchema,
+});
+/** @internal */
+export type GetMicrofrontendsInGroupTo2$Outbound = {
+  slugs?: Array<string> | undefined;
+  preset: string;
+};
+
+/** @internal */
+export const GetMicrofrontendsInGroupTo2$outboundSchema: z.ZodType<
+  GetMicrofrontendsInGroupTo2$Outbound,
+  z.ZodTypeDef,
+  GetMicrofrontendsInGroupTo2
+> = z.object({
+  slugs: z.array(z.string()).optional(),
+  preset: GetMicrofrontendsInGroupToMicrofrontendsPreset$outboundSchema,
+});
+
+export function getMicrofrontendsInGroupTo2ToJSON(
+  getMicrofrontendsInGroupTo2: GetMicrofrontendsInGroupTo2,
+): string {
+  return JSON.stringify(
+    GetMicrofrontendsInGroupTo2$outboundSchema.parse(
+      getMicrofrontendsInGroupTo2,
+    ),
+  );
+}
+export function getMicrofrontendsInGroupTo2FromJSON(
+  jsonString: string,
+): SafeParseResult<GetMicrofrontendsInGroupTo2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetMicrofrontendsInGroupTo2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetMicrofrontendsInGroupTo2' from JSON`,
+  );
+}
 
 /** @internal */
 export const GetMicrofrontendsInGroupToPreset$inboundSchema: z.ZodNativeEnum<
@@ -1056,7 +1387,7 @@ export const GetMicrofrontendsInGroupTo$inboundSchema: z.ZodType<
   unknown
 > = smartUnion([
   z.lazy(() => GetMicrofrontendsInGroupTo1$inboundSchema),
-  GetMicrofrontendsInGroupTo2$inboundSchema,
+  z.lazy(() => GetMicrofrontendsInGroupTo2$inboundSchema),
 ]);
 /** @internal */
 export type GetMicrofrontendsInGroupTo$Outbound =
@@ -1070,7 +1401,7 @@ export const GetMicrofrontendsInGroupTo$outboundSchema: z.ZodType<
   GetMicrofrontendsInGroupTo
 > = smartUnion([
   z.lazy(() => GetMicrofrontendsInGroupTo1$outboundSchema),
-  GetMicrofrontendsInGroupTo2$outboundSchema,
+  z.lazy(() => GetMicrofrontendsInGroupTo2$outboundSchema),
 ]);
 
 export function getMicrofrontendsInGroupToToJSON(
@@ -1098,7 +1429,7 @@ export const GetMicrofrontendsInGroupOidcProviders$inboundSchema: z.ZodType<
 > = z.object({
   to: smartUnion([
     z.lazy(() => GetMicrofrontendsInGroupTo1$inboundSchema),
-    GetMicrofrontendsInGroupTo2$inboundSchema,
+    z.lazy(() => GetMicrofrontendsInGroupTo2$inboundSchema),
   ]),
   label: types.optional(types.string()),
   claims: z.record(z.array(types.string())),
@@ -1120,7 +1451,7 @@ export const GetMicrofrontendsInGroupOidcProviders$outboundSchema: z.ZodType<
 > = z.object({
   to: smartUnion([
     z.lazy(() => GetMicrofrontendsInGroupTo1$outboundSchema),
-    GetMicrofrontendsInGroupTo2$outboundSchema,
+    z.lazy(() => GetMicrofrontendsInGroupTo2$outboundSchema),
   ]),
   label: z.string().optional(),
   claims: z.record(z.array(z.string())),
@@ -1153,7 +1484,9 @@ export const GetMicrofrontendsInGroupTrustedSources$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   projects: types.optional(
-    z.record(GetMicrofrontendsInGroupMicrofrontendsProjects$inboundSchema),
+    z.record(z.lazy(() =>
+      GetMicrofrontendsInGroupMicrofrontendsProjects$inboundSchema
+    )),
   ),
   oidcProviders: types.optional(
     z.record(z.array(z.lazy(() =>
@@ -1178,7 +1511,7 @@ export const GetMicrofrontendsInGroupTrustedSources$outboundSchema: z.ZodType<
   GetMicrofrontendsInGroupTrustedSources
 > = z.object({
   projects: z.record(
-    GetMicrofrontendsInGroupMicrofrontendsProjects$outboundSchema,
+    z.lazy(() => GetMicrofrontendsInGroupMicrofrontendsProjects$outboundSchema),
   ).optional(),
   oidcProviders: z.record(
     z.array(z.lazy(() => GetMicrofrontendsInGroupOidcProviders$outboundSchema)),
@@ -1561,13 +1894,18 @@ export function getMicrofrontendsInGroupBotFilterFromJSON(
 }
 
 /** @internal */
-export const GetMicrofrontendsInGroupMicrofrontendsResponseAction$inboundSchema:
-  z.ZodNativeEnum<typeof GetMicrofrontendsInGroupMicrofrontendsResponseAction> =
-    z.nativeEnum(GetMicrofrontendsInGroupMicrofrontendsResponseAction);
+export const GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyProjectsAction$inboundSchema:
+  z.ZodNativeEnum<
+    typeof GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyProjectsAction
+  > = z.nativeEnum(
+    GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyProjectsAction,
+  );
 /** @internal */
-export const GetMicrofrontendsInGroupMicrofrontendsResponseAction$outboundSchema:
-  z.ZodNativeEnum<typeof GetMicrofrontendsInGroupMicrofrontendsResponseAction> =
-    GetMicrofrontendsInGroupMicrofrontendsResponseAction$inboundSchema;
+export const GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyProjectsAction$outboundSchema:
+  z.ZodNativeEnum<
+    typeof GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyProjectsAction
+  > =
+    GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyProjectsAction$inboundSchema;
 
 /** @internal */
 export const GetMicrofrontendsInGroupAiBots$inboundSchema: z.ZodType<
@@ -1577,7 +1915,7 @@ export const GetMicrofrontendsInGroupAiBots$inboundSchema: z.ZodType<
 > = z.object({
   active: types.boolean(),
   action: types.optional(
-    GetMicrofrontendsInGroupMicrofrontendsResponseAction$inboundSchema,
+    GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyProjectsAction$inboundSchema,
   ),
 });
 /** @internal */
@@ -1593,8 +1931,9 @@ export const GetMicrofrontendsInGroupAiBots$outboundSchema: z.ZodType<
   GetMicrofrontendsInGroupAiBots
 > = z.object({
   active: z.boolean(),
-  action: GetMicrofrontendsInGroupMicrofrontendsResponseAction$outboundSchema
-    .optional(),
+  action:
+    GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyProjectsAction$outboundSchema
+      .optional(),
 });
 
 export function getMicrofrontendsInGroupAiBotsToJSON(
@@ -2023,29 +2362,20 @@ export function getMicrofrontendsInGroupOidcTokenConfigFromJSON(
 }
 
 /** @internal */
-export const GetMicrofrontendsInGroupSourcesProvider$inboundSchema:
-  z.ZodNativeEnum<typeof GetMicrofrontendsInGroupSourcesProvider> = z
-    .nativeEnum(GetMicrofrontendsInGroupSourcesProvider);
-/** @internal */
-export const GetMicrofrontendsInGroupSourcesProvider$outboundSchema:
-  z.ZodNativeEnum<typeof GetMicrofrontendsInGroupSourcesProvider> =
-    GetMicrofrontendsInGroupSourcesProvider$inboundSchema;
-
-/** @internal */
 export const GetMicrofrontendsInGroupSources2$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupSources2,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  provider: GetMicrofrontendsInGroupSourcesProvider$inboundSchema,
-  org: types.string(),
-  repo: types.string(),
+  provider: types.literal("gitlab"),
+  namespace: types.string(),
+  project: types.optional(types.string()),
 });
 /** @internal */
 export type GetMicrofrontendsInGroupSources2$Outbound = {
-  provider: string;
-  org: string;
-  repo: string;
+  provider: "gitlab";
+  namespace: string;
+  project?: string | undefined;
 };
 
 /** @internal */
@@ -2054,9 +2384,9 @@ export const GetMicrofrontendsInGroupSources2$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetMicrofrontendsInGroupSources2
 > = z.object({
-  provider: GetMicrofrontendsInGroupSourcesProvider$outboundSchema,
-  org: z.string(),
-  repo: z.string(),
+  provider: z.literal("gitlab"),
+  namespace: z.string(),
+  project: z.string().optional(),
 });
 
 export function getMicrofrontendsInGroupSources2ToJSON(
@@ -2097,11 +2427,13 @@ export const GetMicrofrontendsInGroupSources1$inboundSchema: z.ZodType<
 > = z.object({
   provider: GetMicrofrontendsInGroupSourcesMicrofrontendsProvider$inboundSchema,
   org: types.string(),
+  repo: types.optional(types.string()),
 });
 /** @internal */
 export type GetMicrofrontendsInGroupSources1$Outbound = {
   provider: string;
   org: string;
+  repo?: string | undefined;
 };
 
 /** @internal */
@@ -2113,6 +2445,7 @@ export const GetMicrofrontendsInGroupSources1$outboundSchema: z.ZodType<
   provider:
     GetMicrofrontendsInGroupSourcesMicrofrontendsProvider$outboundSchema,
   org: z.string(),
+  repo: z.string().optional(),
 });
 
 export function getMicrofrontendsInGroupSources1ToJSON(
@@ -2139,23 +2472,34 @@ export const GetMicrofrontendsInGroupSources$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupSources,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
+> = z.union([
+  z.lazy(() => GetMicrofrontendsInGroupSources1$inboundSchema).and(
+    z.object({ provider: z.literal("bitbucket") }),
+  ),
+  z.lazy(() => GetMicrofrontendsInGroupSources1$inboundSchema).and(
+    z.object({ provider: z.literal("github") }),
+  ),
   z.lazy(() => GetMicrofrontendsInGroupSources2$inboundSchema),
-  z.lazy(() => GetMicrofrontendsInGroupSources1$inboundSchema),
 ]);
 /** @internal */
 export type GetMicrofrontendsInGroupSources$Outbound =
-  | GetMicrofrontendsInGroupSources2$Outbound
-  | GetMicrofrontendsInGroupSources1$Outbound;
+  | (GetMicrofrontendsInGroupSources1$Outbound & { provider: "bitbucket" })
+  | (GetMicrofrontendsInGroupSources1$Outbound & { provider: "github" })
+  | GetMicrofrontendsInGroupSources2$Outbound;
 
 /** @internal */
 export const GetMicrofrontendsInGroupSources$outboundSchema: z.ZodType<
   GetMicrofrontendsInGroupSources$Outbound,
   z.ZodTypeDef,
   GetMicrofrontendsInGroupSources
-> = smartUnion([
+> = z.union([
+  z.lazy(() => GetMicrofrontendsInGroupSources1$outboundSchema).and(
+    z.object({ provider: z.literal("bitbucket") }),
+  ),
+  z.lazy(() => GetMicrofrontendsInGroupSources1$outboundSchema).and(
+    z.object({ provider: z.literal("github") }),
+  ),
   z.lazy(() => GetMicrofrontendsInGroupSources2$outboundSchema),
-  z.lazy(() => GetMicrofrontendsInGroupSources1$outboundSchema),
 ]);
 
 export function getMicrofrontendsInGroupSourcesToJSON(
@@ -2178,26 +2522,217 @@ export function getMicrofrontendsInGroupSourcesFromJSON(
 }
 
 /** @internal */
+export const GetMicrofrontendsInGroupEnvironmentsMicrofrontends2$inboundSchema:
+  z.ZodType<
+    GetMicrofrontendsInGroupEnvironmentsMicrofrontends2,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    type: types.literal("custom"),
+    environmentId: types.string(),
+  });
+/** @internal */
+export type GetMicrofrontendsInGroupEnvironmentsMicrofrontends2$Outbound = {
+  type: "custom";
+  environmentId: string;
+};
+
+/** @internal */
+export const GetMicrofrontendsInGroupEnvironmentsMicrofrontends2$outboundSchema:
+  z.ZodType<
+    GetMicrofrontendsInGroupEnvironmentsMicrofrontends2$Outbound,
+    z.ZodTypeDef,
+    GetMicrofrontendsInGroupEnvironmentsMicrofrontends2
+  > = z.object({
+    type: z.literal("custom"),
+    environmentId: z.string(),
+  });
+
+export function getMicrofrontendsInGroupEnvironmentsMicrofrontends2ToJSON(
+  getMicrofrontendsInGroupEnvironmentsMicrofrontends2:
+    GetMicrofrontendsInGroupEnvironmentsMicrofrontends2,
+): string {
+  return JSON.stringify(
+    GetMicrofrontendsInGroupEnvironmentsMicrofrontends2$outboundSchema.parse(
+      getMicrofrontendsInGroupEnvironmentsMicrofrontends2,
+    ),
+  );
+}
+export function getMicrofrontendsInGroupEnvironmentsMicrofrontends2FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetMicrofrontendsInGroupEnvironmentsMicrofrontends2,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetMicrofrontendsInGroupEnvironmentsMicrofrontends2$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetMicrofrontendsInGroupEnvironmentsMicrofrontends2' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetMicrofrontendsInGroupEnvironmentsMicrofrontendsTarget$inboundSchema:
+  z.ZodNativeEnum<
+    typeof GetMicrofrontendsInGroupEnvironmentsMicrofrontendsTarget
+  > = z.nativeEnum(GetMicrofrontendsInGroupEnvironmentsMicrofrontendsTarget);
+/** @internal */
+export const GetMicrofrontendsInGroupEnvironmentsMicrofrontendsTarget$outboundSchema:
+  z.ZodNativeEnum<
+    typeof GetMicrofrontendsInGroupEnvironmentsMicrofrontendsTarget
+  > = GetMicrofrontendsInGroupEnvironmentsMicrofrontendsTarget$inboundSchema;
+
+/** @internal */
+export const GetMicrofrontendsInGroupEnvironmentsMicrofrontends1$inboundSchema:
+  z.ZodType<
+    GetMicrofrontendsInGroupEnvironmentsMicrofrontends1,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    type: types.literal("system"),
+    target:
+      GetMicrofrontendsInGroupEnvironmentsMicrofrontendsTarget$inboundSchema,
+  });
+/** @internal */
+export type GetMicrofrontendsInGroupEnvironmentsMicrofrontends1$Outbound = {
+  type: "system";
+  target: string;
+};
+
+/** @internal */
+export const GetMicrofrontendsInGroupEnvironmentsMicrofrontends1$outboundSchema:
+  z.ZodType<
+    GetMicrofrontendsInGroupEnvironmentsMicrofrontends1$Outbound,
+    z.ZodTypeDef,
+    GetMicrofrontendsInGroupEnvironmentsMicrofrontends1
+  > = z.object({
+    type: z.literal("system"),
+    target:
+      GetMicrofrontendsInGroupEnvironmentsMicrofrontendsTarget$outboundSchema,
+  });
+
+export function getMicrofrontendsInGroupEnvironmentsMicrofrontends1ToJSON(
+  getMicrofrontendsInGroupEnvironmentsMicrofrontends1:
+    GetMicrofrontendsInGroupEnvironmentsMicrofrontends1,
+): string {
+  return JSON.stringify(
+    GetMicrofrontendsInGroupEnvironmentsMicrofrontends1$outboundSchema.parse(
+      getMicrofrontendsInGroupEnvironmentsMicrofrontends1,
+    ),
+  );
+}
+export function getMicrofrontendsInGroupEnvironmentsMicrofrontends1FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetMicrofrontendsInGroupEnvironmentsMicrofrontends1,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetMicrofrontendsInGroupEnvironmentsMicrofrontends1$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetMicrofrontendsInGroupEnvironmentsMicrofrontends1' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetMicrofrontendsInGroupEnvironments$inboundSchema: z.ZodType<
+  GetMicrofrontendsInGroupEnvironments,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() =>
+    GetMicrofrontendsInGroupEnvironmentsMicrofrontends1$inboundSchema
+  ),
+  z.lazy(() =>
+    GetMicrofrontendsInGroupEnvironmentsMicrofrontends2$inboundSchema
+  ),
+]);
+/** @internal */
+export type GetMicrofrontendsInGroupEnvironments$Outbound =
+  | GetMicrofrontendsInGroupEnvironmentsMicrofrontends1$Outbound
+  | GetMicrofrontendsInGroupEnvironmentsMicrofrontends2$Outbound;
+
+/** @internal */
+export const GetMicrofrontendsInGroupEnvironments$outboundSchema: z.ZodType<
+  GetMicrofrontendsInGroupEnvironments$Outbound,
+  z.ZodTypeDef,
+  GetMicrofrontendsInGroupEnvironments
+> = z.union([
+  z.lazy(() =>
+    GetMicrofrontendsInGroupEnvironmentsMicrofrontends1$outboundSchema
+  ),
+  z.lazy(() =>
+    GetMicrofrontendsInGroupEnvironmentsMicrofrontends2$outboundSchema
+  ),
+]);
+
+export function getMicrofrontendsInGroupEnvironmentsToJSON(
+  getMicrofrontendsInGroupEnvironments: GetMicrofrontendsInGroupEnvironments,
+): string {
+  return JSON.stringify(
+    GetMicrofrontendsInGroupEnvironments$outboundSchema.parse(
+      getMicrofrontendsInGroupEnvironments,
+    ),
+  );
+}
+export function getMicrofrontendsInGroupEnvironmentsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetMicrofrontendsInGroupEnvironments, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetMicrofrontendsInGroupEnvironments$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetMicrofrontendsInGroupEnvironments' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetMicrofrontendsInGroupGitSources$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupGitSources,
   z.ZodTypeDef,
   unknown
 > = z.object({
   sources: z.array(
-    smartUnion([
+    z.union([
+      z.lazy(() => GetMicrofrontendsInGroupSources1$inboundSchema).and(
+        z.object({ provider: z.literal("bitbucket") }),
+      ),
+      z.lazy(() => GetMicrofrontendsInGroupSources1$inboundSchema).and(
+        z.object({ provider: z.literal("github") }),
+      ),
       z.lazy(() => GetMicrofrontendsInGroupSources2$inboundSchema),
-      z.lazy(() => GetMicrofrontendsInGroupSources1$inboundSchema),
     ]),
   ),
   enabled: types.boolean(),
+  environments: z.array(
+    z.union([
+      z.lazy(() =>
+        GetMicrofrontendsInGroupEnvironmentsMicrofrontends1$inboundSchema
+      ),
+      z.lazy(() =>
+        GetMicrofrontendsInGroupEnvironmentsMicrofrontends2$inboundSchema
+      ),
+    ]),
+  ),
 });
 /** @internal */
 export type GetMicrofrontendsInGroupGitSources$Outbound = {
   sources: Array<
+    | (GetMicrofrontendsInGroupSources1$Outbound & { provider: "bitbucket" })
+    | (GetMicrofrontendsInGroupSources1$Outbound & { provider: "github" })
     | GetMicrofrontendsInGroupSources2$Outbound
-    | GetMicrofrontendsInGroupSources1$Outbound
   >;
   enabled: boolean;
+  environments: Array<
+    | GetMicrofrontendsInGroupEnvironmentsMicrofrontends1$Outbound
+    | GetMicrofrontendsInGroupEnvironmentsMicrofrontends2$Outbound
+  >;
 };
 
 /** @internal */
@@ -2207,12 +2742,27 @@ export const GetMicrofrontendsInGroupGitSources$outboundSchema: z.ZodType<
   GetMicrofrontendsInGroupGitSources
 > = z.object({
   sources: z.array(
-    smartUnion([
+    z.union([
+      z.lazy(() => GetMicrofrontendsInGroupSources1$outboundSchema).and(
+        z.object({ provider: z.literal("bitbucket") }),
+      ),
+      z.lazy(() => GetMicrofrontendsInGroupSources1$outboundSchema).and(
+        z.object({ provider: z.literal("github") }),
+      ),
       z.lazy(() => GetMicrofrontendsInGroupSources2$outboundSchema),
-      z.lazy(() => GetMicrofrontendsInGroupSources1$outboundSchema),
     ]),
   ),
   enabled: z.boolean(),
+  environments: z.array(
+    z.union([
+      z.lazy(() =>
+        GetMicrofrontendsInGroupEnvironmentsMicrofrontends1$outboundSchema
+      ),
+      z.lazy(() =>
+        GetMicrofrontendsInGroupEnvironmentsMicrofrontends2$outboundSchema
+      ),
+    ]),
+  ),
 });
 
 export function getMicrofrontendsInGroupGitSourcesToJSON(
@@ -2245,6 +2795,157 @@ export const GetMicrofrontendsInGroupMicrofrontendsSources$outboundSchema:
     GetMicrofrontendsInGroupMicrofrontendsSources$inboundSchema;
 
 /** @internal */
+export const GetMicrofrontendsInGroupEnvironments2$inboundSchema: z.ZodType<
+  GetMicrofrontendsInGroupEnvironments2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: types.literal("custom"),
+  environmentId: types.string(),
+});
+/** @internal */
+export type GetMicrofrontendsInGroupEnvironments2$Outbound = {
+  type: "custom";
+  environmentId: string;
+};
+
+/** @internal */
+export const GetMicrofrontendsInGroupEnvironments2$outboundSchema: z.ZodType<
+  GetMicrofrontendsInGroupEnvironments2$Outbound,
+  z.ZodTypeDef,
+  GetMicrofrontendsInGroupEnvironments2
+> = z.object({
+  type: z.literal("custom"),
+  environmentId: z.string(),
+});
+
+export function getMicrofrontendsInGroupEnvironments2ToJSON(
+  getMicrofrontendsInGroupEnvironments2: GetMicrofrontendsInGroupEnvironments2,
+): string {
+  return JSON.stringify(
+    GetMicrofrontendsInGroupEnvironments2$outboundSchema.parse(
+      getMicrofrontendsInGroupEnvironments2,
+    ),
+  );
+}
+export function getMicrofrontendsInGroupEnvironments2FromJSON(
+  jsonString: string,
+): SafeParseResult<GetMicrofrontendsInGroupEnvironments2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetMicrofrontendsInGroupEnvironments2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetMicrofrontendsInGroupEnvironments2' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetMicrofrontendsInGroupEnvironmentsTarget$inboundSchema:
+  z.ZodNativeEnum<typeof GetMicrofrontendsInGroupEnvironmentsTarget> = z
+    .nativeEnum(GetMicrofrontendsInGroupEnvironmentsTarget);
+/** @internal */
+export const GetMicrofrontendsInGroupEnvironmentsTarget$outboundSchema:
+  z.ZodNativeEnum<typeof GetMicrofrontendsInGroupEnvironmentsTarget> =
+    GetMicrofrontendsInGroupEnvironmentsTarget$inboundSchema;
+
+/** @internal */
+export const GetMicrofrontendsInGroupEnvironments1$inboundSchema: z.ZodType<
+  GetMicrofrontendsInGroupEnvironments1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: types.literal("system"),
+  target: GetMicrofrontendsInGroupEnvironmentsTarget$inboundSchema,
+});
+/** @internal */
+export type GetMicrofrontendsInGroupEnvironments1$Outbound = {
+  type: "system";
+  target: string;
+};
+
+/** @internal */
+export const GetMicrofrontendsInGroupEnvironments1$outboundSchema: z.ZodType<
+  GetMicrofrontendsInGroupEnvironments1$Outbound,
+  z.ZodTypeDef,
+  GetMicrofrontendsInGroupEnvironments1
+> = z.object({
+  type: z.literal("system"),
+  target: GetMicrofrontendsInGroupEnvironmentsTarget$outboundSchema,
+});
+
+export function getMicrofrontendsInGroupEnvironments1ToJSON(
+  getMicrofrontendsInGroupEnvironments1: GetMicrofrontendsInGroupEnvironments1,
+): string {
+  return JSON.stringify(
+    GetMicrofrontendsInGroupEnvironments1$outboundSchema.parse(
+      getMicrofrontendsInGroupEnvironments1,
+    ),
+  );
+}
+export function getMicrofrontendsInGroupEnvironments1FromJSON(
+  jsonString: string,
+): SafeParseResult<GetMicrofrontendsInGroupEnvironments1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetMicrofrontendsInGroupEnvironments1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetMicrofrontendsInGroupEnvironments1' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetMicrofrontendsInGroupMicrofrontendsEnvironments$inboundSchema:
+  z.ZodType<
+    GetMicrofrontendsInGroupMicrofrontendsEnvironments,
+    z.ZodTypeDef,
+    unknown
+  > = z.union([
+    z.lazy(() => GetMicrofrontendsInGroupEnvironments1$inboundSchema),
+    z.lazy(() => GetMicrofrontendsInGroupEnvironments2$inboundSchema),
+  ]);
+/** @internal */
+export type GetMicrofrontendsInGroupMicrofrontendsEnvironments$Outbound =
+  | GetMicrofrontendsInGroupEnvironments1$Outbound
+  | GetMicrofrontendsInGroupEnvironments2$Outbound;
+
+/** @internal */
+export const GetMicrofrontendsInGroupMicrofrontendsEnvironments$outboundSchema:
+  z.ZodType<
+    GetMicrofrontendsInGroupMicrofrontendsEnvironments$Outbound,
+    z.ZodTypeDef,
+    GetMicrofrontendsInGroupMicrofrontendsEnvironments
+  > = z.union([
+    z.lazy(() => GetMicrofrontendsInGroupEnvironments1$outboundSchema),
+    z.lazy(() => GetMicrofrontendsInGroupEnvironments2$outboundSchema),
+  ]);
+
+export function getMicrofrontendsInGroupMicrofrontendsEnvironmentsToJSON(
+  getMicrofrontendsInGroupMicrofrontendsEnvironments:
+    GetMicrofrontendsInGroupMicrofrontendsEnvironments,
+): string {
+  return JSON.stringify(
+    GetMicrofrontendsInGroupMicrofrontendsEnvironments$outboundSchema.parse(
+      getMicrofrontendsInGroupMicrofrontendsEnvironments,
+    ),
+  );
+}
+export function getMicrofrontendsInGroupMicrofrontendsEnvironmentsFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetMicrofrontendsInGroupMicrofrontendsEnvironments,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetMicrofrontendsInGroupMicrofrontendsEnvironments$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetMicrofrontendsInGroupMicrofrontendsEnvironments' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetMicrofrontendsInGroupDeploymentSources$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupDeploymentSources,
   z.ZodTypeDef,
@@ -2252,11 +2953,21 @@ export const GetMicrofrontendsInGroupDeploymentSources$inboundSchema: z.ZodType<
 > = z.object({
   sources: z.array(GetMicrofrontendsInGroupMicrofrontendsSources$inboundSchema),
   enabled: types.boolean(),
+  environments: z.array(
+    z.union([
+      z.lazy(() => GetMicrofrontendsInGroupEnvironments1$inboundSchema),
+      z.lazy(() => GetMicrofrontendsInGroupEnvironments2$inboundSchema),
+    ]),
+  ),
 });
 /** @internal */
 export type GetMicrofrontendsInGroupDeploymentSources$Outbound = {
   sources: Array<string>;
   enabled: boolean;
+  environments: Array<
+    | GetMicrofrontendsInGroupEnvironments1$Outbound
+    | GetMicrofrontendsInGroupEnvironments2$Outbound
+  >;
 };
 
 /** @internal */
@@ -2270,6 +2981,12 @@ export const GetMicrofrontendsInGroupDeploymentSources$outboundSchema:
       GetMicrofrontendsInGroupMicrofrontendsSources$outboundSchema,
     ),
     enabled: z.boolean(),
+    environments: z.array(
+      z.union([
+        z.lazy(() => GetMicrofrontendsInGroupEnvironments1$outboundSchema),
+        z.lazy(() => GetMicrofrontendsInGroupEnvironments2$outboundSchema),
+      ]),
+    ),
   });
 
 export function getMicrofrontendsInGroupDeploymentSourcesToJSON(
@@ -2305,17 +3022,22 @@ export const GetMicrofrontendsInGroupDeploymentPolicy$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   gitSources: z.nullable(
-    z.lazy(() => GetMicrofrontendsInGroupGitSources$inboundSchema),
+    z.array(z.lazy(() => GetMicrofrontendsInGroupGitSources$inboundSchema)),
   ).optional(),
   deploymentSources: z.nullable(
-    z.lazy(() => GetMicrofrontendsInGroupDeploymentSources$inboundSchema),
+    z.array(
+      z.lazy(() => GetMicrofrontendsInGroupDeploymentSources$inboundSchema),
+    ),
   ).optional(),
 });
 /** @internal */
 export type GetMicrofrontendsInGroupDeploymentPolicy$Outbound = {
-  gitSources?: GetMicrofrontendsInGroupGitSources$Outbound | null | undefined;
+  gitSources?:
+    | Array<GetMicrofrontendsInGroupGitSources$Outbound>
+    | null
+    | undefined;
   deploymentSources?:
-    | GetMicrofrontendsInGroupDeploymentSources$Outbound
+    | Array<GetMicrofrontendsInGroupDeploymentSources$Outbound>
     | null
     | undefined;
 };
@@ -2327,10 +3049,12 @@ export const GetMicrofrontendsInGroupDeploymentPolicy$outboundSchema: z.ZodType<
   GetMicrofrontendsInGroupDeploymentPolicy
 > = z.object({
   gitSources: z.nullable(
-    z.lazy(() => GetMicrofrontendsInGroupGitSources$outboundSchema),
+    z.array(z.lazy(() => GetMicrofrontendsInGroupGitSources$outboundSchema)),
   ).optional(),
   deploymentSources: z.nullable(
-    z.lazy(() => GetMicrofrontendsInGroupDeploymentSources$outboundSchema),
+    z.array(z.lazy(() =>
+      GetMicrofrontendsInGroupDeploymentSources$outboundSchema
+    )),
   ).optional(),
 });
 
@@ -2525,13 +3249,13 @@ export function getMicrofrontendsInGroupHistoryFromJSON(
 }
 
 /** @internal */
-export const GetMicrofrontendsInGroupMicrofrontendsAction$inboundSchema:
-  z.ZodNativeEnum<typeof GetMicrofrontendsInGroupMicrofrontendsAction> = z
-    .nativeEnum(GetMicrofrontendsInGroupMicrofrontendsAction);
+export const GetMicrofrontendsInGroupMicrofrontendsResponseAction$inboundSchema:
+  z.ZodNativeEnum<typeof GetMicrofrontendsInGroupMicrofrontendsResponseAction> =
+    z.nativeEnum(GetMicrofrontendsInGroupMicrofrontendsResponseAction);
 /** @internal */
-export const GetMicrofrontendsInGroupMicrofrontendsAction$outboundSchema:
-  z.ZodNativeEnum<typeof GetMicrofrontendsInGroupMicrofrontendsAction> =
-    GetMicrofrontendsInGroupMicrofrontendsAction$inboundSchema;
+export const GetMicrofrontendsInGroupMicrofrontendsResponseAction$outboundSchema:
+  z.ZodNativeEnum<typeof GetMicrofrontendsInGroupMicrofrontendsResponseAction> =
+    GetMicrofrontendsInGroupMicrofrontendsResponseAction$inboundSchema;
 
 /** @internal */
 export const GetMicrofrontendsInGroupBlock$inboundSchema: z.ZodType<
@@ -2539,7 +3263,7 @@ export const GetMicrofrontendsInGroupBlock$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  action: GetMicrofrontendsInGroupMicrofrontendsAction$inboundSchema,
+  action: GetMicrofrontendsInGroupMicrofrontendsResponseAction$inboundSchema,
   reason: types.string(),
   statusCode: types.number(),
   createdAt: types.number(),
@@ -2568,7 +3292,7 @@ export const GetMicrofrontendsInGroupBlock$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetMicrofrontendsInGroupBlock
 > = z.object({
-  action: GetMicrofrontendsInGroupMicrofrontendsAction$outboundSchema,
+  action: GetMicrofrontendsInGroupMicrofrontendsResponseAction$outboundSchema,
   reason: z.string(),
   statusCode: z.number(),
   createdAt: z.number(),
@@ -3923,6 +4647,80 @@ export function getMicrofrontendsInGroupBlockHistoryFromJSON(
 }
 
 /** @internal */
+export const GetMicrofrontendsInGroupMicrofrontendsAction$inboundSchema:
+  z.ZodNativeEnum<typeof GetMicrofrontendsInGroupMicrofrontendsAction> = z
+    .nativeEnum(GetMicrofrontendsInGroupMicrofrontendsAction);
+/** @internal */
+export const GetMicrofrontendsInGroupMicrofrontendsAction$outboundSchema:
+  z.ZodNativeEnum<typeof GetMicrofrontendsInGroupMicrofrontendsAction> =
+    GetMicrofrontendsInGroupMicrofrontendsAction$inboundSchema;
+
+/** @internal */
+export const GetMicrofrontendsInGroupInterstitialHistory$inboundSchema:
+  z.ZodType<
+    GetMicrofrontendsInGroupInterstitialHistory,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    action: GetMicrofrontendsInGroupMicrofrontendsAction$inboundSchema,
+    createdAt: types.number(),
+    caseId: types.optional(types.string()),
+    reason: types.optional(types.string()),
+    actor: types.optional(types.string()),
+    comment: types.optional(types.string()),
+  });
+/** @internal */
+export type GetMicrofrontendsInGroupInterstitialHistory$Outbound = {
+  action: string;
+  createdAt: number;
+  caseId?: string | undefined;
+  reason?: string | undefined;
+  actor?: string | undefined;
+  comment?: string | undefined;
+};
+
+/** @internal */
+export const GetMicrofrontendsInGroupInterstitialHistory$outboundSchema:
+  z.ZodType<
+    GetMicrofrontendsInGroupInterstitialHistory$Outbound,
+    z.ZodTypeDef,
+    GetMicrofrontendsInGroupInterstitialHistory
+  > = z.object({
+    action: GetMicrofrontendsInGroupMicrofrontendsAction$outboundSchema,
+    createdAt: z.number(),
+    caseId: z.string().optional(),
+    reason: z.string().optional(),
+    actor: z.string().optional(),
+    comment: z.string().optional(),
+  });
+
+export function getMicrofrontendsInGroupInterstitialHistoryToJSON(
+  getMicrofrontendsInGroupInterstitialHistory:
+    GetMicrofrontendsInGroupInterstitialHistory,
+): string {
+  return JSON.stringify(
+    GetMicrofrontendsInGroupInterstitialHistory$outboundSchema.parse(
+      getMicrofrontendsInGroupInterstitialHistory,
+    ),
+  );
+}
+export function getMicrofrontendsInGroupInterstitialHistoryFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetMicrofrontendsInGroupInterstitialHistory,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetMicrofrontendsInGroupInterstitialHistory$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetMicrofrontendsInGroupInterstitialHistory' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetMicrofrontendsInGroupAbuse$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupAbuse,
   z.ZodTypeDef,
@@ -3945,6 +4743,11 @@ export const GetMicrofrontendsInGroupAbuse$inboundSchema: z.ZodType<
     ])),
   ),
   interstitial: types.optional(types.boolean()),
+  interstitialHistory: types.optional(
+    z.array(z.lazy(() =>
+      GetMicrofrontendsInGroupInterstitialHistory$inboundSchema
+    )),
+  ),
 });
 /** @internal */
 export type GetMicrofrontendsInGroupAbuse$Outbound = {
@@ -3961,6 +4764,9 @@ export type GetMicrofrontendsInGroupAbuse$Outbound = {
     >
     | undefined;
   interstitial?: boolean | undefined;
+  interstitialHistory?:
+    | Array<GetMicrofrontendsInGroupInterstitialHistory$Outbound>
+    | undefined;
 };
 
 /** @internal */
@@ -3984,6 +4790,9 @@ export const GetMicrofrontendsInGroupAbuse$outboundSchema: z.ZodType<
     ]),
   ).optional(),
   interstitial: z.boolean().optional(),
+  interstitialHistory: z.array(
+    z.lazy(() => GetMicrofrontendsInGroupInterstitialHistory$outboundSchema),
+  ).optional(),
 });
 
 export function getMicrofrontendsInGroupAbuseToJSON(
@@ -4882,9 +5691,6 @@ export const GetMicrofrontendsInGroupProjects$inboundSchema: z.ZodType<
   customerSupportCodeVisibility: types.optional(types.boolean()),
   crons: types.optional(GetMicrofrontendsInGroupCrons$inboundSchema),
   dataCache: types.optional(GetMicrofrontendsInGroupDataCache$inboundSchema),
-  delegatedProtection: z.nullable(
-    GetMicrofrontendsInGroupDelegatedProtection$inboundSchema,
-  ).optional(),
   deploymentExpiration:
     GetMicrofrontendsInGroupDeploymentExpiration$inboundSchema,
   expiration: types.optional(GetMicrofrontendsInGroupExpiration$inboundSchema),
@@ -4897,6 +5703,9 @@ export const GetMicrofrontendsInGroupProjects$inboundSchema: z.ZodType<
   ),
   framework: z.nullable(GetMicrofrontendsInGroupFramework$inboundSchema)
     .optional(),
+  services: types.optional(
+    z.array(GetMicrofrontendsInGroupServices$inboundSchema),
+  ),
   gitForkProtection: types.optional(types.boolean()),
   gitLFS: types.optional(types.boolean()),
   id: types.string(),
@@ -4920,6 +5729,8 @@ export const GetMicrofrontendsInGroupProjects$inboundSchema: z.ZodType<
   passwordProtection: z.nullable(
     GetMicrofrontendsInGroupPasswordProtection$inboundSchema,
   ).optional(),
+  passport: z.nullable(GetMicrofrontendsInGroupPassport$inboundSchema)
+    .optional(),
   productionDeploymentsFastLane: types.optional(types.boolean()),
   publicSource: z.nullable(types.boolean()).optional(),
   resourceConfig: GetMicrofrontendsInGroupResourceConfig$inboundSchema,
@@ -5025,6 +5836,7 @@ export const GetMicrofrontendsInGroupProjects$inboundSchema: z.ZodType<
   tracing: types.optional(
     z.lazy(() => GetMicrofrontendsInGroupTracing$inboundSchema),
   ),
+  avatar: types.optional(types.string()),
 });
 /** @internal */
 export type GetMicrofrontendsInGroupProjects$Outbound = {
@@ -5048,10 +5860,6 @@ export type GetMicrofrontendsInGroupProjects$Outbound = {
   customerSupportCodeVisibility?: boolean | undefined;
   crons?: GetMicrofrontendsInGroupCrons$Outbound | undefined;
   dataCache?: GetMicrofrontendsInGroupDataCache$Outbound | undefined;
-  delegatedProtection?:
-    | GetMicrofrontendsInGroupDelegatedProtection$Outbound
-    | null
-    | undefined;
   deploymentExpiration: GetMicrofrontendsInGroupDeploymentExpiration$Outbound;
   expiration?: GetMicrofrontendsInGroupExpiration$Outbound | undefined;
   devCommand?: string | null | undefined;
@@ -5062,6 +5870,7 @@ export type GetMicrofrontendsInGroupProjects$Outbound = {
     | Array<GetMicrofrontendsInGroupCustomEnvironments$Outbound>
     | undefined;
   framework?: string | null | undefined;
+  services?: Array<GetMicrofrontendsInGroupServices$Outbound> | undefined;
   gitForkProtection?: boolean | undefined;
   gitLFS?: boolean | undefined;
   id: string;
@@ -5083,6 +5892,7 @@ export type GetMicrofrontendsInGroupProjects$Outbound = {
     | GetMicrofrontendsInGroupPasswordProtection$Outbound
     | null
     | undefined;
+  passport?: GetMicrofrontendsInGroupPassport$Outbound | null | undefined;
   productionDeploymentsFastLane?: boolean | undefined;
   publicSource?: boolean | null | undefined;
   resourceConfig: GetMicrofrontendsInGroupResourceConfig$Outbound;
@@ -5171,6 +5981,7 @@ export type GetMicrofrontendsInGroupProjects$Outbound = {
     | undefined;
   protectedSourcemaps?: boolean | undefined;
   tracing?: GetMicrofrontendsInGroupTracing$Outbound | undefined;
+  avatar?: string | undefined;
 };
 
 /** @internal */
@@ -5199,9 +6010,6 @@ export const GetMicrofrontendsInGroupProjects$outboundSchema: z.ZodType<
   customerSupportCodeVisibility: z.boolean().optional(),
   crons: GetMicrofrontendsInGroupCrons$outboundSchema.optional(),
   dataCache: GetMicrofrontendsInGroupDataCache$outboundSchema.optional(),
-  delegatedProtection: z.nullable(
-    GetMicrofrontendsInGroupDelegatedProtection$outboundSchema,
-  ).optional(),
   deploymentExpiration:
     GetMicrofrontendsInGroupDeploymentExpiration$outboundSchema,
   expiration: GetMicrofrontendsInGroupExpiration$outboundSchema.optional(),
@@ -5214,6 +6022,7 @@ export const GetMicrofrontendsInGroupProjects$outboundSchema: z.ZodType<
   ).optional(),
   framework: z.nullable(GetMicrofrontendsInGroupFramework$outboundSchema)
     .optional(),
+  services: z.array(GetMicrofrontendsInGroupServices$outboundSchema).optional(),
   gitForkProtection: z.boolean().optional(),
   gitLFS: z.boolean().optional(),
   id: z.string(),
@@ -5235,6 +6044,8 @@ export const GetMicrofrontendsInGroupProjects$outboundSchema: z.ZodType<
   passwordProtection: z.nullable(
     GetMicrofrontendsInGroupPasswordProtection$outboundSchema,
   ).optional(),
+  passport: z.nullable(GetMicrofrontendsInGroupPassport$outboundSchema)
+    .optional(),
   productionDeploymentsFastLane: z.boolean().optional(),
   publicSource: z.nullable(z.boolean()).optional(),
   resourceConfig: GetMicrofrontendsInGroupResourceConfig$outboundSchema,
@@ -5324,6 +6135,7 @@ export const GetMicrofrontendsInGroupProjects$outboundSchema: z.ZodType<
   protectedSourcemaps: z.boolean().optional(),
   tracing: z.lazy(() => GetMicrofrontendsInGroupTracing$outboundSchema)
     .optional(),
+  avatar: z.string().optional(),
 });
 
 export function getMicrofrontendsInGroupProjectsToJSON(

@@ -24,6 +24,6 @@ const value: boolean = true;
 ```typescript
 const value:
   models.CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJSONResponseBodyStore3 =
-    "update";
+    "create";
 ```
 

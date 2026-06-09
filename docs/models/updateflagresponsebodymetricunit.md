@@ -5,11 +5,11 @@
 ```typescript
 import { UpdateFlagResponseBodyMetricUnit } from "@vercel/sdk/models/updateflagop.js";
 
-let value: UpdateFlagResponseBodyMetricUnit = "user";
+let value: UpdateFlagResponseBodyMetricUnit = "session";
 ```
 
 ## Values
 
 ```typescript
-"user" | "session" | "visitor"
+"session" | "user" | "visitor"
 ```

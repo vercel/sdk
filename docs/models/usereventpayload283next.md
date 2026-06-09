@@ -1,19 +1,15 @@
 # UserEventPayload283Next
 
-
-## Supported Types
-
-### `models.Next1`
+## Example Usage
 
 ```typescript
-const value: models.Next1 = {
-  accessGroupId: "<id>",
-};
+import { UserEventPayload283Next } from "@vercel/sdk/models/twohundredandthirtyone.js";
+
+let value: UserEventPayload283Next = "enhanced";
 ```
 
-### `models.Next2`
+## Values
 
 ```typescript
-const value: models.Next2 = "VIEWER_FOR_PLUS";
+"elastic" | "enhanced" | "standard" | "turbo"
 ```
-

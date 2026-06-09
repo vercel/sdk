@@ -7,7 +7,16 @@
 
 ```typescript
 const value: models.CreateProjectSources1 = {
-  provider: "gitlab",
+  provider: "bitbucket",
+  org: "<value>",
+};
+```
+
+### `models.CreateProjectSources1`
+
+```typescript
+const value: models.CreateProjectSources1 = {
+  provider: "bitbucket",
   org: "<value>",
 };
 ```
@@ -16,9 +25,8 @@ const value: models.CreateProjectSources1 = {
 
 ```typescript
 const value: models.CreateProjectSources2 = {
-  provider: "bitbucket",
-  org: "<value>",
-  repo: "<value>",
+  provider: "gitlab",
+  namespace: "<value>",
 };
 ```
 

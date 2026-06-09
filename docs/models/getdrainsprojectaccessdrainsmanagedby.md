@@ -5,11 +5,11 @@
 ```typescript
 import { GetDrainsProjectAccessDrainsManagedBy } from "@vercel/sdk/models/getdrainsop.js";
 
-let value: GetDrainsProjectAccessDrainsManagedBy = "drain";
+let value: GetDrainsProjectAccessDrainsManagedBy = "integration";
 ```
 
 ## Values
 
 ```typescript
-"integration" | "drain"
+"drain" | "integration"
 ```

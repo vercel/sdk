@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UpdateProjectDefaultResourceConfig } from "@vercel/sdk/models/updateprojectresponsebody.js";
+import { UpdateProjectDefaultResourceConfig } from "@vercel/sdk/models/updateprojectvalue.js";
 
 let value: UpdateProjectDefaultResourceConfig = {
   functionDefaultRegions: [],
@@ -26,3 +26,4 @@ let value: UpdateProjectDefaultResourceConfig = {
 | `isNSNBDisabled`                                                                                                                     | *boolean*                                                                                                                            | :heavy_minus_sign:                                                                                                                   | N/A                                                                                                                                  |
 | `buildQueue`                                                                                                                         | [models.UpdateProjectProjectsResponseBuildQueue](../models/updateprojectprojectsresponsebuildqueue.md)                               | :heavy_minus_sign:                                                                                                                   | N/A                                                                                                                                  |
 | `enableFunctionsBeta`                                                                                                                | *boolean*                                                                                                                            | :heavy_minus_sign:                                                                                                                   | N/A                                                                                                                                  |
+| `enableFunctionsExtendedMaxDuration`                                                                                                 | *boolean*                                                                                                                            | :heavy_minus_sign:                                                                                                                   | N/A                                                                                                                                  |

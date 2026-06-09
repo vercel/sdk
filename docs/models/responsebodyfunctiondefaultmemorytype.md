@@ -5,11 +5,11 @@
 ```typescript
 import { ResponseBodyFunctionDefaultMemoryType } from "@vercel/sdk/models/getprojectsresponsebody.js";
 
-let value: ResponseBodyFunctionDefaultMemoryType = "standard_legacy";
+let value: ResponseBodyFunctionDefaultMemoryType = "performance";
 ```
 
 ## Values
 
 ```typescript
-"standard_legacy" | "standard" | "performance"
+"performance" | "standard" | "standard_legacy"
 ```

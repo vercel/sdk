@@ -13,5 +13,5 @@ let value: CancelDeploymentCustomEnvironmentDeploymentsType = "endsWith";
 ## Values
 
 ```typescript
-"endsWith" | "startsWith" | "equals"
+"endsWith" | "equals" | "startsWith"
 ```

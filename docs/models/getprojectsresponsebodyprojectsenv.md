@@ -3,10 +3,10 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsResponseBodyProjectsEnv } from "@vercel/sdk/models/getprojectsresponsebodyprojectsaibots.js";
+import { GetProjectsResponseBodyProjectsEnv } from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponse200applicationjson3projectssecuritymanagedrulesvercelrulesetaction.js";
 
 let value: GetProjectsResponseBodyProjectsEnv = {
-  type: "system",
+  type: "encrypted",
   value: "<value>",
   key: "<key>",
 };

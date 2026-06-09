@@ -5,11 +5,11 @@
 ```typescript
 import { EditRouteMissingProjectRoutesType } from "@vercel/sdk/models/editrouteop.js";
 
-let value: EditRouteMissingProjectRoutesType = "cookie";
+let value: EditRouteMissingProjectRoutesType = "header";
 ```
 
 ## Values
 
 ```typescript
-"header" | "cookie" | "query"
+"cookie" | "header" | "query"
 ```

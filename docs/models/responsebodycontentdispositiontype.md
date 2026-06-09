@@ -5,11 +5,11 @@
 ```typescript
 import { ResponseBodyContentDispositionType } from "@vercel/sdk/models/responsebodyproject.js";
 
-let value: ResponseBodyContentDispositionType = "attachment";
+let value: ResponseBodyContentDispositionType = "inline";
 ```
 
 ## Values
 
 ```typescript
-"inline" | "attachment"
+"attachment" | "inline"
 ```

@@ -5,11 +5,11 @@
 ```typescript
 import { ImportFlowGitProvider } from "@vercel/sdk/models/authuser.js";
 
-let value: ImportFlowGitProvider = "github-custom-host";
+let value: ImportFlowGitProvider = "gitlab";
 ```
 
 ## Values
 
 ```typescript
-"gitlab" | "bitbucket" | "github" | "github-limited" | "github-custom-host" | "vercel"
+"bitbucket" | "github" | "github-custom-host" | "github-limited" | "gitlab" | "vercel"
 ```

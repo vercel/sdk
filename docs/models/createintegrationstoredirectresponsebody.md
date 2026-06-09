@@ -21,7 +21,7 @@ let value: CreateIntegrationStoreDirectResponseBody = {
       },
       integrationConfigurationId: "<id>",
       supportedProtocols: [
-        "experimentation",
+        "ai",
       ],
     },
     secrets: [],

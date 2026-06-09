@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsResponseBodyBuildMachineType } from "@vercel/sdk/models/getprojectsresponsebodytargets.js";
+import { GetProjectsResponseBodyBuildMachineType } from "@vercel/sdk/models/getprojectscontenthint4.js";
 
-let value: GetProjectsResponseBodyBuildMachineType = "standard";
+let value: GetProjectsResponseBodyBuildMachineType = "enhanced";
 ```
 
 ## Values
 
 ```typescript
-"standard" | "enhanced" | "turbo"
+"enhanced" | "standard" | "turbo"
 ```

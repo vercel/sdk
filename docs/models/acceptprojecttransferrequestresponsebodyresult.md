@@ -6,7 +6,7 @@
 import { AcceptProjectTransferRequestResponseBodyResult } from "@vercel/sdk/models/acceptprojecttransferrequestop.js";
 
 let value: AcceptProjectTransferRequestResponseBodyResult = {
-  status: "fulfilled",
+  status: "errored",
 };
 ```
 

@@ -12,7 +12,7 @@ let value: Runs2 = {
   name: "<value>",
   ownerId: "<id>",
   deploymentId: "<id>",
-  status: "running",
+  status: "queued",
   timeout: 7789.84,
   createdAt: 7213.59,
   updatedAt: 4371.74,

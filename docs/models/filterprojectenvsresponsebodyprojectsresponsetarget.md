@@ -12,6 +12,6 @@ const value: models.FilterProjectEnvsTargetProjectsResponse1[] = [];
 ### `models.FilterProjectEnvsTargetProjectsResponse2`
 
 ```typescript
-const value: models.FilterProjectEnvsTargetProjectsResponse2 = "development";
+const value: models.FilterProjectEnvsTargetProjectsResponse2 = "production";
 ```
 

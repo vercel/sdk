@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UpdateMicrofrontendsResourceConfig } from "@vercel/sdk/models/updatemicrofrontendsmanagedrules.js";
+import { UpdateMicrofrontendsResourceConfig } from "@vercel/sdk/models/updatemicrofrontendsbotfilter.js";
 
 let value: UpdateMicrofrontendsResourceConfig = {
   functionDefaultRegions: [
@@ -28,3 +28,4 @@ let value: UpdateMicrofrontendsResourceConfig = {
 | `isNSNBDisabled`                                                                                                   | *boolean*                                                                                                          | :heavy_minus_sign:                                                                                                 | N/A                                                                                                                |
 | `buildQueue`                                                                                                       | [models.UpdateMicrofrontendsBuildQueue](../models/updatemicrofrontendsbuildqueue.md)                               | :heavy_minus_sign:                                                                                                 | N/A                                                                                                                |
 | `enableFunctionsBeta`                                                                                              | *boolean*                                                                                                          | :heavy_minus_sign:                                                                                                 | N/A                                                                                                                |
+| `enableFunctionsExtendedMaxDuration`                                                                               | *boolean*                                                                                                          | :heavy_minus_sign:                                                                                                 | N/A                                                                                                                |

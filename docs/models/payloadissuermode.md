@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { PayloadIssuerMode } from "@vercel/sdk/models/twohundredandtwentysix.js";
+import { PayloadIssuerMode } from "@vercel/sdk/models/twohundredandthirtyone.js";
 
-let value: PayloadIssuerMode = "team";
+let value: PayloadIssuerMode = "global";
 ```
 
 ## Values
 
 ```typescript
-"team" | "global"
+"global" | "team"
 ```

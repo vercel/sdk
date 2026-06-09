@@ -11,7 +11,7 @@ let value: SegmentConditions = {
     kind: "<value>",
     attribute: "<value>",
   },
-  cmp: "lte",
+  cmp: "lt",
 };
 ```
 

@@ -5,11 +5,11 @@
 ```typescript
 import { TeamLimitedOrigin } from "@vercel/sdk/models/teamlimited.js";
 
-let value: TeamLimitedOrigin = "bitbucket";
+let value: TeamLimitedOrigin = "github";
 ```
 
 ## Values
 
 ```typescript
-"link" | "saml" | "github" | "gitlab" | "bitbucket" | "mail" | "import" | "teams" | "dsync" | "feedback" | "organization-teams" | "nsnb-auto-approve" | "nsnb-hobby-upgrade" | "nsnb-request-access" | "nsnb-viewer-upgrade" | "nsnb-invite" | "nsnb-redeploy" | "nsnb-redeploy-attribution-card"
+"account-update" | "bitbucket" | "dsync" | "feedback" | "github" | "gitlab" | "import" | "link" | "mail" | "nsnb-auto-approve" | "nsnb-hobby-upgrade" | "nsnb-invite" | "nsnb-redeploy" | "nsnb-redeploy-attribution-card" | "nsnb-request-access" | "nsnb-viewer-upgrade" | "organization-teams" | "saml" | "teams"
 ```

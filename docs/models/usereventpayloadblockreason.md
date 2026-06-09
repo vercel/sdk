@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPayloadBlockReason } from "@vercel/sdk/models/eightytwo.js";
+import { UserEventPayloadBlockReason } from "@vercel/sdk/models/ninetyfour.js";
 
-let value: UserEventPayloadBlockReason = "hard_blocked";
+let value: UserEventPayloadBlockReason = "limits_exceeded";
 ```
 
 ## Values
 
 ```typescript
-"admin_override" | "limits_exceeded" | "hard_blocked"
+"admin_override" | "hard_blocked" | "limits_exceeded"
 ```

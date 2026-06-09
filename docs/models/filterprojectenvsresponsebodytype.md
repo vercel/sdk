@@ -5,11 +5,11 @@
 ```typescript
 import { FilterProjectEnvsResponseBodyType } from "@vercel/sdk/models/filterprojectenvsop.js";
 
-let value: FilterProjectEnvsResponseBodyType = "secret";
+let value: FilterProjectEnvsResponseBodyType = "system";
 ```
 
 ## Values
 
 ```typescript
-"system" | "encrypted" | "plain" | "sensitive" | "secret"
+"encrypted" | "plain" | "secret" | "sensitive" | "system"
 ```

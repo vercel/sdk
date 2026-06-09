@@ -23,6 +23,7 @@ import {
   matchContentType,
 } from "./http.js";
 import { Logger } from "./logger.js";
+import { combineSignals } from "./primitives.js";
 import { retry, RetryConfig } from "./retries.js";
 import { SecurityState } from "./security.js";
 
@@ -194,9 +195,8 @@ export class ClientSDK {
       ...options?.fetchOptions,
       ...options,
     };
-    if (!fetchOptions?.signal && conf.timeoutMs && conf.timeoutMs > 0) {
-      const timeoutSignal = AbortSignal.timeout(conf.timeoutMs);
-      fetchOptions.signal = timeoutSignal;
+    if (!fetchOptions?.signal && conf.timeoutMs != null && conf.timeoutMs > 0) {
+      context.timeoutMs = conf.timeoutMs;
     }
 
     if (conf.body instanceof ReadableStream) {
@@ -243,10 +243,19 @@ export class ClientSDK {
     >
   > {
     const { context, isErrorStatusCode } = options;
+    const timeoutMs = context.timeoutMs;
 
     return retry(
       async () => {
-        const req = await this.#hooks.beforeRequest(context, request.clone());
+        const cloned = request.clone();
+        let attempt = cloned;
+        if (timeoutMs != null && timeoutMs > 0) {
+          const timeoutSignal = AbortSignal.timeout(timeoutMs);
+          const combined = combineSignals(cloned.signal, timeoutSignal)
+            ?? timeoutSignal;
+          attempt = new Request(cloned, { signal: combined });
+        }
+        const req = await this.#hooks.beforeRequest(context, attempt);
         await logRequest(this.#logger, req).catch((e) =>
           this.#logger?.log("Failed to log request:", e)
         );

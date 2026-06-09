@@ -7,11 +7,11 @@ Whether the Vercel bot should automatically create GitHub deployments https://do
 ```typescript
 import { GetMicrofrontendsInGroupCreateDeployments } from "@vercel/sdk/models/getmicrofrontendsingroupresponsebody.js";
 
-let value: GetMicrofrontendsInGroupCreateDeployments = "disabled";
+let value: GetMicrofrontendsInGroupCreateDeployments = "enabled";
 ```
 
 ## Values
 
 ```typescript
-"enabled" | "disabled"
+"disabled" | "enabled"
 ```

@@ -13,5 +13,5 @@ let value: GetDeploymentsSource = "cli";
 ## Values
 
 ```typescript
-"api-trigger-git-deploy" | "cli" | "clone/repo" | "git" | "import" | "import/repo" | "redeploy" | "v0-web"
+"api-trigger-git-deploy" | "cli" | "clone/repo" | "drop" | "git" | "import" | "import/repo" | "redeploy" | "v0-web"
 ```

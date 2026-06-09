@@ -3,10 +3,10 @@
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupMicrofrontendsResponseBranchMatcher } from "@vercel/sdk/models/getmicrofrontendsingroupto2.js";
+import { GetMicrofrontendsInGroupMicrofrontendsResponseBranchMatcher } from "@vercel/sdk/models/getmicrofrontendsingrouptomicrofrontends1.js";
 
 let value: GetMicrofrontendsInGroupMicrofrontendsResponseBranchMatcher = {
-  type: "startsWith",
+  type: "endsWith",
   pattern: "<value>",
 };
 ```

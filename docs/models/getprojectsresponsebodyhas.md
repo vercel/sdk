@@ -6,7 +6,7 @@
 import { GetProjectsResponseBodyHas } from "@vercel/sdk/models/getprojectsresponsebody.js";
 
 let value: GetProjectsResponseBodyHas = {
-  type: "header",
+  type: "host",
 };
 ```
 

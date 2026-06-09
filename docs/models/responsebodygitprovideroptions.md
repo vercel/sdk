@@ -6,7 +6,7 @@
 import { ResponseBodyGitProviderOptions } from "@vercel/sdk/models/getprojectsresponsebody.js";
 
 let value: ResponseBodyGitProviderOptions = {
-  createDeployments: "enabled",
+  createDeployments: "disabled",
 };
 ```
 

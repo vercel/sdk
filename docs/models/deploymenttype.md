@@ -1,15 +1,17 @@
 # DeploymentType
 
+Default Passport configuration for new projects in this team.
+
 ## Example Usage
 
 ```typescript
-import { DeploymentType } from "@vercel/sdk/models/onehundredandfiftyfive.js";
+import { DeploymentType } from "@vercel/sdk/models/team.js";
 
-let value: DeploymentType = "all_except_custom_domains";
+let value: DeploymentType = "prod_deployment_urls_and_all_previews";
 ```
 
 ## Values
 
 ```typescript
-"all" | "preview" | "prod_deployment_urls_and_all_previews" | "all_except_custom_domains"
+"all" | "all_except_custom_domains" | "preview" | "prod_deployment_urls_and_all_previews"
 ```

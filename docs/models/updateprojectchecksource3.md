@@ -7,7 +7,7 @@ import { UpdateProjectCheckSource3 } from "@vercel/sdk/models/updateprojectcheck
 
 let value: UpdateProjectCheckSource3 = {
   kind: "git-provider",
-  provider: "gitlab",
+  provider: "github",
   externalCheckName: "<value>",
 };
 ```

@@ -6,6 +6,7 @@
 import { CreateFlagSegmentResponseBody } from "@vercel/sdk/models/createflagsegmentop.js";
 
 let value: CreateFlagSegmentResponseBody = {
+  data: {},
   id: "<id>",
   label: "<value>",
   slug: "<value>",
@@ -13,7 +14,6 @@ let value: CreateFlagSegmentResponseBody = {
   updatedAt: 744.1,
   projectId: "<id>",
   typeName: "segment",
-  data: {},
   hint: "<value>",
 };
 ```
@@ -26,6 +26,7 @@ let value: CreateFlagSegmentResponseBody = {
 | `createdBy`                                                                                | *string*                                                                                   | :heavy_minus_sign:                                                                         | N/A                                                                                        |
 | `usedByFlags`                                                                              | *string*[]                                                                                 | :heavy_minus_sign:                                                                         | N/A                                                                                        |
 | `usedBySegments`                                                                           | *string*[]                                                                                 | :heavy_minus_sign:                                                                         | N/A                                                                                        |
+| `data`                                                                                     | [models.CreateFlagSegmentFeatureFlagsData](../models/createflagsegmentfeatureflagsdata.md) | :heavy_check_mark:                                                                         | N/A                                                                                        |
 | `id`                                                                                       | *string*                                                                                   | :heavy_check_mark:                                                                         | N/A                                                                                        |
 | `label`                                                                                    | *string*                                                                                   | :heavy_check_mark:                                                                         | N/A                                                                                        |
 | `slug`                                                                                     | *string*                                                                                   | :heavy_check_mark:                                                                         | N/A                                                                                        |
@@ -33,5 +34,4 @@ let value: CreateFlagSegmentResponseBody = {
 | `updatedAt`                                                                                | *number*                                                                                   | :heavy_check_mark:                                                                         | N/A                                                                                        |
 | `projectId`                                                                                | *string*                                                                                   | :heavy_check_mark:                                                                         | N/A                                                                                        |
 | `typeName`                                                                                 | [models.CreateFlagSegmentTypeName](../models/createflagsegmenttypename.md)                 | :heavy_check_mark:                                                                         | N/A                                                                                        |
-| `data`                                                                                     | [models.CreateFlagSegmentFeatureFlagsData](../models/createflagsegmentfeatureflagsdata.md) | :heavy_check_mark:                                                                         | N/A                                                                                        |
 | `hint`                                                                                     | *string*                                                                                   | :heavy_check_mark:                                                                         | N/A                                                                                        |

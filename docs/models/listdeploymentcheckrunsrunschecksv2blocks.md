@@ -5,11 +5,11 @@
 ```typescript
 import { ListDeploymentCheckRunsRunsChecksV2Blocks } from "@vercel/sdk/models/listdeploymentcheckrunsop.js";
 
-let value: ListDeploymentCheckRunsRunsChecksV2Blocks = "deployment-start";
+let value: ListDeploymentCheckRunsRunsChecksV2Blocks = "deployment-promotion";
 ```
 
 ## Values
 
 ```typescript
-"none" | "build-start" | "deployment-start" | "deployment-alias" | "deployment-promotion"
+"build-start" | "deployment-alias" | "deployment-promotion" | "deployment-start" | "none"
 ```

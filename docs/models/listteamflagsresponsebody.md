@@ -52,7 +52,7 @@ let value: ListTeamFlagsResponseBody = {
           ],
         },
       },
-      kind: "boolean",
+      kind: "number",
       revision: 3263.96,
       seed: 432.41,
       state: "active",

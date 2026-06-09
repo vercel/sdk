@@ -14,13 +14,13 @@ const value: models.SearchRepoResponseBody1 = {};
 ```typescript
 const value: models.SearchRepoResponseBody2 = {
   gitAccount: {
-    provider: "gitlab",
+    provider: "github-limited",
     namespaceId: 245.69,
   },
   repos: [
     {
       id: "<id>",
-      provider: "github",
+      provider: "bitbucket",
       url: "https://delectable-taxicab.com",
       name: "<value>",
       slug: "<value>",
@@ -29,7 +29,7 @@ const value: models.SearchRepoResponseBody2 = {
         id: "<id>",
         name: "<value>",
       },
-      ownerType: "team",
+      ownerType: "user",
       private: true,
       defaultBranch: "<value>",
       updatedAt: 3664.49,

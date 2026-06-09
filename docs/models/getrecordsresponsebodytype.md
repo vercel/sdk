@@ -11,5 +11,5 @@ let value: GetRecordsResponseBodyType = "MX";
 ## Values
 
 ```typescript
-"A" | "AAAA" | "ALIAS" | "CAA" | "CNAME" | "HTTPS" | "MX" | "SRV" | "TXT" | "NS"
+"A" | "AAAA" | "ALIAS" | "CAA" | "CNAME" | "HTTPS" | "MX" | "NS" | "SRV" | "TXT"
 ```

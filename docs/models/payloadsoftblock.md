@@ -3,11 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { PayloadSoftBlock } from "@vercel/sdk/models/edgemiddlewareinvocations.js";
+import { PayloadSoftBlock } from "@vercel/sdk/models/connectdatatransfer.js";
 
 let value: PayloadSoftBlock = {
   blockedAt: 5219.47,
-  reason: "FAIR_USE_LIMITS_EXCEEDED",
+  reason: "SUBSCRIPTION_EXPIRED",
 };
 ```
 

@@ -10,9 +10,9 @@ import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export const FlagsSDKKeyWithSecretsType = {
-  Server: "server",
-  Mobile: "mobile",
   Client: "client",
+  Mobile: "mobile",
+  Server: "server",
 } as const;
 export type FlagsSDKKeyWithSecretsType = ClosedEnum<
   typeof FlagsSDKKeyWithSecretsType

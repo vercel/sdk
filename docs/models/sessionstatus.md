@@ -13,5 +13,5 @@ let value: SessionStatus = "running";
 ## Values
 
 ```typescript
-"running" | "stopping" | "stopped" | "failed" | "pending" | "aborted" | "snapshotting"
+"aborted" | "failed" | "pending" | "running" | "snapshotting" | "stopped" | "stopping"
 ```

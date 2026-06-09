@@ -5,11 +5,12 @@
 ```typescript
 import { GetMicrofrontendsInGroupMicrofrontendsResponse200Action } from "@vercel/sdk/models/getmicrofrontendsingroupresponsebody.js";
 
-let value: GetMicrofrontendsInGroupMicrofrontendsResponse200Action = "log";
+let value: GetMicrofrontendsInGroupMicrofrontendsResponse200Action =
+  "challenge";
 ```
 
 ## Values
 
 ```typescript
-"log" | "challenge" | "deny"
+"challenge" | "deny" | "log"
 ```

@@ -5,11 +5,11 @@
 ```typescript
 import { NextRole } from "@vercel/sdk/models/userevent.js";
 
-let value: NextRole = "PROJECT_VIEWER";
+let value: NextRole = "PROJECT_GUEST";
 ```
 
 ## Values
 
 ```typescript
-"ADMIN" | "PROJECT_DEVELOPER" | "PROJECT_VIEWER" | "PROJECT_GUEST"
+"ADMIN" | "PROJECT_DEVELOPER" | "PROJECT_GUEST" | "PROJECT_VIEWER"
 ```

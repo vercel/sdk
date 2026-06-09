@@ -8,7 +8,7 @@ NSNB Blocked metadata
 import { GetDeploymentsSeatBlock } from "@vercel/sdk/models/getdeploymentsop.js";
 
 let value: GetDeploymentsSeatBlock = {
-  blockCode: "TEAM_ACCESS_REQUIRED",
+  blockCode: "COMMIT_AUTHOR_REQUIRED",
 };
 ```
 

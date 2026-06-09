@@ -11,7 +11,7 @@ let value:
   BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody2Options =
     {
       amount: "777.34",
-      currency: "ai_gateway_credits",
+      currency: "copper_test_units",
     };
 ```
 

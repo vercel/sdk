@@ -16,7 +16,7 @@ const value: models.CancelDeploymentMissing1 = {
 
 ```typescript
 const value: models.CancelDeploymentMissing2 = {
-  type: "header",
+  type: "cookie",
   key: "<key>",
 };
 ```
@@ -25,7 +25,7 @@ const value: models.CancelDeploymentMissing2 = {
 
 ```typescript
 const value: models.CancelDeploymentMissing2 = {
-  type: "header",
+  type: "cookie",
   key: "<key>",
 };
 ```
@@ -34,7 +34,7 @@ const value: models.CancelDeploymentMissing2 = {
 
 ```typescript
 const value: models.CancelDeploymentMissing2 = {
-  type: "header",
+  type: "cookie",
   key: "<key>",
 };
 ```

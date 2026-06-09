@@ -32,8 +32,8 @@ export type ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceI
 
 export const ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigPurpose =
   {
-    Flags: "flags",
     Experimentation: "experimentation",
+    Flags: "flags",
   } as const;
 export type ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigPurpose =
   ClosedEnum<

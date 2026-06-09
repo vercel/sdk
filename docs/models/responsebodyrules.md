@@ -24,7 +24,7 @@ let value: ResponseBodyRules = {
       lhs: {
         type: "segment",
       },
-      cmp: "containsAnyOf",
+      cmp: "!regex",
     },
   ],
 };

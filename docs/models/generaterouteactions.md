@@ -6,7 +6,7 @@
 import { GenerateRouteActions } from "@vercel/sdk/models/generaterouteop.js";
 
 let value: GenerateRouteActions = {
-  type: "set-status",
+  type: "rewrite",
 };
 ```
 

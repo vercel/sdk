@@ -6,11 +6,11 @@
 import { GetRoutesHasProjectRoutesResponse200ApplicationJSONResponseBodyType } from "@vercel/sdk/models/getroutesop.js";
 
 let value: GetRoutesHasProjectRoutesResponse200ApplicationJSONResponseBodyType =
-  "cookie";
+  "header";
 ```
 
 ## Values
 
 ```typescript
-"header" | "cookie" | "query"
+"cookie" | "header" | "query"
 ```

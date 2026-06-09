@@ -5,13 +5,13 @@ The type of matching to perform
 ## Example Usage
 
 ```typescript
-import { UpdateMicrofrontendsProjectsResponse200Type } from "@vercel/sdk/models/updatemicrofrontendsmanagedrules.js";
+import { UpdateMicrofrontendsProjectsResponse200Type } from "@vercel/sdk/models/updatemicrofrontendsbotfilter.js";
 
-let value: UpdateMicrofrontendsProjectsResponse200Type = "startsWith";
+let value: UpdateMicrofrontendsProjectsResponse200Type = "equals";
 ```
 
 ## Values
 
 ```typescript
-"endsWith" | "startsWith" | "equals"
+"endsWith" | "equals" | "startsWith"
 ```

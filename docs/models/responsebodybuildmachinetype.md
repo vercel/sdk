@@ -11,5 +11,5 @@ let value: ResponseBodyBuildMachineType = "turbo";
 ## Values
 
 ```typescript
-"standard" | "enhanced" | "turbo"
+"enhanced" | "standard" | "turbo"
 ```

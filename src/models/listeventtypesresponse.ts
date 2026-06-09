@@ -30,6 +30,7 @@ export const ListEventTypesResponseName = {
   Microfrontends: "microfrontends",
   Network: "network",
   Observability: "observability",
+  Other: "other",
   Project: "project",
   Security: "security",
   Storage: "storage",
@@ -37,7 +38,6 @@ export const ListEventTypesResponseName = {
   V0: "v0",
   VercelApp: "vercel-app",
   Workflow: "workflow",
-  Other: "other",
 } as const;
 export type ListEventTypesResponseName = ClosedEnum<
   typeof ListEventTypesResponseName

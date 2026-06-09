@@ -5,11 +5,11 @@
 ```typescript
 import { ResponseBodyMetricUnit } from "@vercel/sdk/models/updateflagop.js";
 
-let value: ResponseBodyMetricUnit = "session";
+let value: ResponseBodyMetricUnit = "user";
 ```
 
 ## Values
 
 ```typescript
-"user" | "session" | "visitor"
+"session" | "user" | "visitor"
 ```

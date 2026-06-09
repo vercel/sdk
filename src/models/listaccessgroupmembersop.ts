@@ -37,14 +37,14 @@ export type ListAccessGroupMembersRequest = {
 };
 
 export const ListAccessGroupMembersTeamRole = {
-  Owner: "OWNER",
-  Member: "MEMBER",
-  Developer: "DEVELOPER",
-  Security: "SECURITY",
   Billing: "BILLING",
+  Contributor: "CONTRIBUTOR",
+  Developer: "DEVELOPER",
+  Member: "MEMBER",
+  Owner: "OWNER",
+  Security: "SECURITY",
   Viewer: "VIEWER",
   ViewerForPlus: "VIEWER_FOR_PLUS",
-  Contributor: "CONTRIBUTOR",
 } as const;
 export type ListAccessGroupMembersTeamRole = ClosedEnum<
   typeof ListAccessGroupMembersTeamRole

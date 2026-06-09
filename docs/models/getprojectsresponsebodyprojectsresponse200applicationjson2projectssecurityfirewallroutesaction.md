@@ -5,7 +5,7 @@
 ```typescript
 import {
   GetProjectsResponseBodyProjectsResponse200ApplicationJson2ProjectsSecurityFirewallRoutesAction,
-} from "@vercel/sdk/models/getprojectslink4.js";
+} from "@vercel/sdk/models/getprojectscontenthint4.js";
 
 let value:
   GetProjectsResponseBodyProjectsResponse200ApplicationJson2ProjectsSecurityFirewallRoutesAction =
@@ -15,5 +15,5 @@ let value:
 ## Values
 
 ```typescript
-"deny" | "challenge" | "log" | "bypass" | "rate_limit" | "redirect"
+"bypass" | "challenge" | "deny" | "log" | "rate_limit" | "redirect"
 ```

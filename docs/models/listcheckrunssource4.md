@@ -1,6 +1,6 @@
 # ListCheckRunsSource4
 
-Native lint/typecheck — check definition and check run `source`.
+Native Vercel checks — check definition and check run `source`.
 
 ## Example Usage
 

@@ -11,22 +11,22 @@ import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export const MetricType = {
-  Percentage: "percentage",
-  Currency: "currency",
   Count: "count",
+  Currency: "currency",
+  Percentage: "percentage",
 } as const;
 export type MetricType = ClosedEnum<typeof MetricType>;
 
 export const MetricUnit = {
-  User: "user",
   Session: "session",
+  User: "user",
   Visitor: "visitor",
 } as const;
 export type MetricUnit = ClosedEnum<typeof MetricUnit>;
 
 export const Directionality = {
-  IncreaseIsGood: "increaseIsGood",
   DecreaseIsGood: "decreaseIsGood",
+  IncreaseIsGood: "increaseIsGood",
 } as const;
 export type Directionality = ClosedEnum<typeof Directionality>;
 
@@ -41,8 +41,8 @@ export type GuardrailMetrics = {
 
 export const Device = {
   Android: "android",
-  Ios: "ios",
   Desktop: "desktop",
+  Ios: "ios",
   Mweb: "mweb",
 } as const;
 export type Device = ClosedEnum<typeof Device>;
@@ -55,28 +55,28 @@ export type DurationUnit = ClosedEnum<typeof DurationUnit>;
 
 export const AllocationUnit = {
   CookieId: "cookieId",
-  VisitorId: "visitorId",
   UserId: "userId",
+  VisitorId: "visitorId",
 } as const;
 export type AllocationUnit = ClosedEnum<typeof AllocationUnit>;
 
 export const FlagMetricType = {
-  Percentage: "percentage",
-  Currency: "currency",
   Count: "count",
+  Currency: "currency",
+  Percentage: "percentage",
 } as const;
 export type FlagMetricType = ClosedEnum<typeof FlagMetricType>;
 
 export const FlagMetricUnit = {
-  User: "user",
   Session: "session",
+  User: "user",
   Visitor: "visitor",
 } as const;
 export type FlagMetricUnit = ClosedEnum<typeof FlagMetricUnit>;
 
 export const FlagDirectionality = {
-  IncreaseIsGood: "increaseIsGood",
   DecreaseIsGood: "decreaseIsGood",
+  IncreaseIsGood: "increaseIsGood",
 } as const;
 export type FlagDirectionality = ClosedEnum<typeof FlagDirectionality>;
 
@@ -90,16 +90,16 @@ export type PrimaryMetrics = {
 };
 
 export const FlagStatus = {
-  Draft: "draft",
-  Running: "running",
-  Paused: "paused",
   Closed: "closed",
+  Draft: "draft",
+  Paused: "paused",
+  Running: "running",
 } as const;
 export type FlagStatus = ClosedEnum<typeof FlagStatus>;
 
 export type Experiment = {
-  name?: string | undefined;
   id?: string | undefined;
+  name?: string | undefined;
   numVariants?: number | undefined;
   surfaceArea?: string | undefined;
   stickyRequirement?: boolean | undefined;
@@ -264,8 +264,8 @@ export type Rhs4 = {
 };
 
 export const RhsType = {
-  ListInline: "list/inline",
   List: "list",
+  ListInline: "list/inline",
 } as const;
 export type RhsType = ClosedEnum<typeof RhsType>;
 
@@ -307,29 +307,29 @@ export type Lhs1 = {
 export type Lhs = Lhs1 | Lhs2;
 
 export const Cmp = {
-  Eq: "eq",
+  NotContains: "!contains",
+  NotEndsWith: "!endsWith",
   NotEq: "!eq",
-  OneOf: "oneOf",
+  NotEx: "!ex",
   NotOneOf: "!oneOf",
+  NotRegex: "!regex",
+  NotStartsWith: "!startsWith",
+  After: "after",
+  Before: "before",
+  Contains: "contains",
   ContainsAllOf: "containsAllOf",
   ContainsAnyOf: "containsAnyOf",
   ContainsNoneOf: "containsNoneOf",
-  StartsWith: "startsWith",
-  NotStartsWith: "!startsWith",
   EndsWith: "endsWith",
-  NotEndsWith: "!endsWith",
-  Contains: "contains",
-  NotContains: "!contains",
+  Eq: "eq",
   Ex: "ex",
-  NotEx: "!ex",
   Gt: "gt",
   Gte: "gte",
   Lt: "lt",
   Lte: "lte",
+  OneOf: "oneOf",
   Regex: "regex",
-  NotRegex: "!regex",
-  Before: "before",
-  After: "after",
+  StartsWith: "startsWith",
 } as const;
 export type Cmp = ClosedEnum<typeof Cmp>;
 
@@ -359,10 +359,10 @@ export type Environments = {
 };
 
 export const Kind = {
-  String: "string",
-  Number: "number",
   Boolean: "boolean",
   Json: "json",
+  Number: "number",
+  String: "string",
 } as const;
 export type Kind = ClosedEnum<typeof Kind>;
 
@@ -599,8 +599,8 @@ export const Experiment$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: types.optional(types.string()),
   id: types.optional(types.string()),
+  name: types.optional(types.string()),
   numVariants: types.optional(types.number()),
   surfaceArea: types.optional(types.string()),
   stickyRequirement: types.optional(types.boolean()),
@@ -624,8 +624,8 @@ export const Experiment$inboundSchema: z.ZodType<
 });
 /** @internal */
 export type Experiment$Outbound = {
-  name?: string | undefined;
   id?: string | undefined;
+  name?: string | undefined;
   numVariants?: number | undefined;
   surfaceArea?: string | undefined;
   stickyRequirement?: boolean | undefined;
@@ -652,8 +652,8 @@ export const Experiment$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Experiment
 > = z.object({
-  name: z.string().optional(),
   id: z.string().optional(),
+  name: z.string().optional(),
   numVariants: z.number().optional(),
   surfaceArea: z.string().optional(),
   stickyRequirement: z.boolean().optional(),

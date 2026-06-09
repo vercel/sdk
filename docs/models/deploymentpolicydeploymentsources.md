@@ -3,15 +3,10 @@
 
 ## Supported Types
 
-### `models.DeploymentSources1`
+### `models.DeploymentSources1[]`
 
 ```typescript
-const value: models.DeploymentSources1 = {
-  enabled: false,
-  sources: [
-    "deploy-hook",
-  ],
-};
+const value: models.DeploymentSources1[] = [];
 ```
 
 ### `string`

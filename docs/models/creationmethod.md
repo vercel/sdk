@@ -13,5 +13,5 @@ let value: CreationMethod = "manual";
 ## Values
 
 ```typescript
-"manual" | "automatic"
+"automatic" | "manual"
 ```

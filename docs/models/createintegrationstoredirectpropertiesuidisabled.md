@@ -20,6 +20,6 @@ const value: boolean = true;
 ### `models.CreateIntegrationStoreDirectUiDisabled3`
 
 ```typescript
-const value: models.CreateIntegrationStoreDirectUiDisabled3 = "update";
+const value: models.CreateIntegrationStoreDirectUiDisabled3 = "create";
 ```
 

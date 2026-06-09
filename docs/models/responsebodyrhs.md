@@ -19,7 +19,7 @@ const value: number = 1284.03;
 
 ```typescript
 const value: models.UpdateFlagRhs3 = {
-  type: "list",
+  type: "list/inline",
   items: [
     {
       value: 8890.17,

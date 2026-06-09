@@ -5,11 +5,11 @@
 ```typescript
 import { UpdateCheckChecksStatus } from "@vercel/sdk/models/updatecheckop.js";
 
-let value: UpdateCheckChecksStatus = "running";
+let value: UpdateCheckChecksStatus = "completed";
 ```
 
 ## Values
 
 ```typescript
-"running" | "completed" | "registered"
+"completed" | "registered" | "running"
 ```

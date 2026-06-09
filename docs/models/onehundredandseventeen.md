@@ -5,19 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndSeventeen } from "@vercel/sdk/models/eightytwo.js";
+import { OneHundredAndSeventeen } from "@vercel/sdk/models/ninetyfour.js";
 
 let value: OneHundredAndSeventeen = {
-  projectId: "<id>",
-  scope: "<value>",
-  source: "<value>",
+  team: {
+    id: "<id>",
+  },
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
-| `scope`            | *string*           | :heavy_check_mark: | N/A                |
-| `source`           | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `team`                                                                 | [models.UserEventPayload117Team](../models/usereventpayload117team.md) | :heavy_check_mark:                                                     | N/A                                                                    |
+| `previousRule`                                                         | [models.PayloadPreviousRule](../models/payloadpreviousrule.md)         | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `nextRule`                                                             | [models.NextRule](../models/nextrule.md)                               | :heavy_minus_sign:                                                     | N/A                                                                    |

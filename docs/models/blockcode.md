@@ -7,11 +7,11 @@ The NSNB decision code for the seat block. TODO: We should consolidate block typ
 ```typescript
 import { BlockCode } from "@vercel/sdk/models/createdeploymentresponsebody.js";
 
-let value: BlockCode = "TEAM_ACCESS_REQUIRED";
+let value: BlockCode = "COMMIT_AUTHOR_REQUIRED";
 ```
 
 ## Values
 
 ```typescript
-"TEAM_ACCESS_REQUIRED" | "COMMIT_AUTHOR_REQUIRED"
+"COMMIT_AUTHOR_REQUIRED" | "TEAM_ACCESS_REQUIRED"
 ```

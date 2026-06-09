@@ -8,16 +8,15 @@ The payload of the event, if requested.
 import { Twelve } from "@vercel/sdk/models/userevent.js";
 
 let value: Twelve = {
-  credential: {
+  apiKey: {
     id: "<id>",
     name: "<value>",
-    providerSlug: "<value>",
   },
 };
 ```
 
 ## Fields
 
-| Field                                        | Type                                         | Required                                     | Description                                  |
-| -------------------------------------------- | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
-| `credential`                                 | [models.Credential](../models/credential.md) | :heavy_check_mark:                           | N/A                                          |
+| Field                                              | Type                                               | Required                                           | Description                                        |
+| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
+| `apiKey`                                           | [models.PayloadApiKey](../models/payloadapikey.md) | :heavy_check_mark:                                 | N/A                                                |

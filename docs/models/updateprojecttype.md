@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { UpdateProjectType } from "@vercel/sdk/models/updateprojectprojectsresponsebuildqueue.js";
+import { UpdateProjectType } from "@vercel/sdk/models/updateprojectprojectsoptionsallowlist.js";
 
-let value: UpdateProjectType = "plain";
+let value: UpdateProjectType = "secret";
 ```
 
 ## Values
 
 ```typescript
-"system" | "encrypted" | "plain" | "sensitive" | "secret"
+"encrypted" | "plain" | "secret" | "sensitive" | "system"
 ```

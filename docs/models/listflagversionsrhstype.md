@@ -5,11 +5,11 @@
 ```typescript
 import { ListFlagVersionsRhsType } from "@vercel/sdk/models/listflagversionsop.js";
 
-let value: ListFlagVersionsRhsType = "list/inline";
+let value: ListFlagVersionsRhsType = "list";
 ```
 
 ## Values
 
 ```typescript
-"list/inline" | "list"
+"list" | "list/inline"
 ```

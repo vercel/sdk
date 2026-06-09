@@ -93,7 +93,7 @@ async function $do(
   const payload = parsed.value;
   const body = null;
 
-  const path = pathToFunc("/v6/deployments")();
+  const path = pathToFunc("/v7/deployments")();
 
   const query = encodeFormQuery({
     "app": payload.app,

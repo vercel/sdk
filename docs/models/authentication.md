@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Authentication } from "@vercel/sdk/models/getconfigurationproductspropertiesintegrationsresponse200uicontrol.js";
+import { Authentication } from "@vercel/sdk/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyuidisabled.js";
 
 let value: Authentication = {
   status: "disabled",

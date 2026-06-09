@@ -6,7 +6,7 @@
 import { CreateFlagRhs3 } from "@vercel/sdk/models/createflagop.js";
 
 let value: CreateFlagRhs3 = {
-  type: "list",
+  type: "list/inline",
   items: [
     {
       value: 5935.6,

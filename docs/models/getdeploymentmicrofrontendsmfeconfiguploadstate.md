@@ -7,11 +7,11 @@ The result of the microfrontends config upload during deployment creation / buil
 ```typescript
 import { GetDeploymentMicrofrontendsMfeConfigUploadState } from "@vercel/sdk/models/getdeploymentresponsebody.js";
 
-let value: GetDeploymentMicrofrontendsMfeConfigUploadState = "success";
+let value: GetDeploymentMicrofrontendsMfeConfigUploadState = "no_config";
 ```
 
 ## Values
 
 ```typescript
-"success" | "waiting_on_build" | "no_config"
+"no_config" | "success" | "waiting_on_build"
 ```

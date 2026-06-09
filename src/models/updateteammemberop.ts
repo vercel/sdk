@@ -17,6 +17,8 @@ export const UpdateTeamMemberTeamPermissions = {
   UsageViewer: "UsageViewer",
   EnvVariableManager: "EnvVariableManager",
   EnvironmentManager: "EnvironmentManager",
+  OrgAdmin: "OrgAdmin",
+  OrgViewer: "OrgViewer",
   V0Builder: "V0Builder",
   V0Chatter: "V0Chatter",
   V0Viewer: "V0Viewer",

@@ -5,11 +5,11 @@
 ```typescript
 import { CreateProjectSourcesProjectsProvider } from "@vercel/sdk/models/createprojectresponsebody.js";
 
-let value: CreateProjectSourcesProjectsProvider = "gitlab";
+let value: CreateProjectSourcesProjectsProvider = "bitbucket";
 ```
 
 ## Values
 
 ```typescript
-"github" | "gitlab" | "bitbucket"
+"bitbucket" | "github"
 ```

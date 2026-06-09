@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyAlias } from "@vercel/sdk/models/getprojectsresponsebodytargets.js";
+import { ResponseBodyAlias } from "@vercel/sdk/models/getprojectsresponsebodyfunctiondefaultmemorytype.js";
 
 let value: ResponseBodyAlias = {
   deployment: {
@@ -25,8 +25,8 @@ let value: ResponseBodyAlias = {
     userId: "<id>",
   },
   domain: "similar-innovation.com",
-  environment: "production",
-  target: "PRODUCTION",
+  environment: "preview",
+  target: "PREVIEW",
 };
 ```
 

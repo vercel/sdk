@@ -5,11 +5,11 @@
 ```typescript
 import { PutFirewallConfigRulesSecurityType } from "@vercel/sdk/models/putfirewallconfigop.js";
 
-let value: PutFirewallConfigRulesSecurityType = "host";
+let value: PutFirewallConfigRulesSecurityType = "bot_category";
 ```
 
 ## Values
 
 ```typescript
-"host" | "path" | "method" | "header" | "query" | "cookie" | "target_path" | "route" | "raw_path" | "ip_address" | "protocol" | "region" | "scheme" | "environment" | "user_agent" | "geo_continent" | "geo_country" | "geo_country_region" | "geo_city" | "geo_as_number" | "ja4_digest" | "ja3_digest" | "rate_limit_api_id" | "server_action" | "bot_name" | "bot_category" | "bot_status" | "bot_protection"
+"bot_category" | "bot_name" | "bot_protection" | "bot_status" | "cookie" | "environment" | "geo_as_number" | "geo_city" | "geo_continent" | "geo_country" | "geo_country_region" | "header" | "host" | "ip_address" | "ja3_digest" | "ja4_digest" | "method" | "path" | "protocol" | "query" | "rate_limit_api_id" | "raw_path" | "region" | "route" | "scheme" | "server_action" | "target_path" | "user_agent"
 ```

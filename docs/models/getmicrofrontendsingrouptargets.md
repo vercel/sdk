@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupTargets } from "@vercel/sdk/models/getmicrofrontendsingroupto2.js";
+import { GetMicrofrontendsInGroupTargets } from "@vercel/sdk/models/getmicrofrontendsingrouptomicrofrontends1.js";
 
 let value: GetMicrofrontendsInGroupTargets = {
   id: "<id>",
@@ -16,10 +16,10 @@ let value: GetMicrofrontendsInGroupTargets = {
   },
   deploymentHostname: "<value>",
   name: "<value>",
-  plan: "hobby",
+  plan: "pro",
   previewCommentsEnabled: false,
   private: true,
-  readyState: "INITIALIZING",
+  readyState: "ERROR",
   type: "LAMBDAS",
   url: "https://different-popularity.com/",
   userId: "<id>",

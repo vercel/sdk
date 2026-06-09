@@ -5,11 +5,11 @@
 ```typescript
 import { VercelCache } from "@vercel/sdk/models/getdeploymenteventsop.js";
 
-let value: VercelCache = "MISS";
+let value: VercelCache = "BYPASS";
 ```
 
 ## Values
 
 ```typescript
-"MISS" | "HIT" | "STALE" | "BYPASS" | "PRERENDER" | "REVALIDATED"
+"BYPASS" | "HIT" | "MISS" | "PRERENDER" | "REVALIDATED" | "STALE"
 ```

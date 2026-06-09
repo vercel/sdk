@@ -5,11 +5,11 @@
 ```typescript
 import { AuthTokenScopesOrigin } from "@vercel/sdk/models/authtoken.js";
 
-let value: AuthTokenScopesOrigin = "invite";
+let value: AuthTokenScopesOrigin = "manual";
 ```
 
 ## Values
 
 ```typescript
-"app" | "saml" | "github" | "github-webhook" | "gitlab" | "bitbucket" | "email" | "manual" | "passkey" | "otp" | "sms" | "invite" | "google" | "apple" | "chatgpt" | "token-exchange-oidc" | "emu"
+"app" | "apple" | "bitbucket" | "chatgpt" | "email" | "emu" | "github" | "github-webhook" | "gitlab" | "google" | "invite" | "manual" | "otp" | "passkey" | "saml" | "sms" | "token-exchange-oidc"
 ```

@@ -13,5 +13,5 @@ let value: ListSharedEnvVariableType = "encrypted";
 ## Values
 
 ```typescript
-"encrypted" | "sensitive" | "system" | "plain"
+"encrypted" | "plain" | "sensitive" | "system"
 ```

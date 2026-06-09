@@ -394,22 +394,22 @@ export type UpdateFlagRequest = {
 };
 
 export const ResponseBodyMetricType = {
-  Percentage: "percentage",
-  Currency: "currency",
   Count: "count",
+  Currency: "currency",
+  Percentage: "percentage",
 } as const;
 export type ResponseBodyMetricType = ClosedEnum<typeof ResponseBodyMetricType>;
 
 export const ResponseBodyMetricUnit = {
-  User: "user",
   Session: "session",
+  User: "user",
   Visitor: "visitor",
 } as const;
 export type ResponseBodyMetricUnit = ClosedEnum<typeof ResponseBodyMetricUnit>;
 
 export const ResponseBodyDirectionality = {
-  IncreaseIsGood: "increaseIsGood",
   DecreaseIsGood: "decreaseIsGood",
+  IncreaseIsGood: "increaseIsGood",
 } as const;
 export type ResponseBodyDirectionality = ClosedEnum<
   typeof ResponseBodyDirectionality
@@ -426,8 +426,8 @@ export type ResponseBodyGuardrailMetrics = {
 
 export const ResponseBodyDevice = {
   Android: "android",
-  Ios: "ios",
   Desktop: "desktop",
+  Ios: "ios",
   Mweb: "mweb",
 } as const;
 export type ResponseBodyDevice = ClosedEnum<typeof ResponseBodyDevice>;
@@ -442,25 +442,25 @@ export type ResponseBodyDurationUnit = ClosedEnum<
 
 export const ResponseBodyAllocationUnit = {
   CookieId: "cookieId",
-  VisitorId: "visitorId",
   UserId: "userId",
+  VisitorId: "visitorId",
 } as const;
 export type ResponseBodyAllocationUnit = ClosedEnum<
   typeof ResponseBodyAllocationUnit
 >;
 
 export const UpdateFlagResponseBodyMetricType = {
-  Percentage: "percentage",
-  Currency: "currency",
   Count: "count",
+  Currency: "currency",
+  Percentage: "percentage",
 } as const;
 export type UpdateFlagResponseBodyMetricType = ClosedEnum<
   typeof UpdateFlagResponseBodyMetricType
 >;
 
 export const UpdateFlagResponseBodyMetricUnit = {
-  User: "user",
   Session: "session",
+  User: "user",
   Visitor: "visitor",
 } as const;
 export type UpdateFlagResponseBodyMetricUnit = ClosedEnum<
@@ -468,8 +468,8 @@ export type UpdateFlagResponseBodyMetricUnit = ClosedEnum<
 >;
 
 export const UpdateFlagResponseBodyDirectionality = {
-  IncreaseIsGood: "increaseIsGood",
   DecreaseIsGood: "decreaseIsGood",
+  IncreaseIsGood: "increaseIsGood",
 } as const;
 export type UpdateFlagResponseBodyDirectionality = ClosedEnum<
   typeof UpdateFlagResponseBodyDirectionality
@@ -485,18 +485,18 @@ export type ResponseBodyPrimaryMetrics = {
 };
 
 export const UpdateFlagResponseBodyStatus = {
-  Draft: "draft",
-  Running: "running",
-  Paused: "paused",
   Closed: "closed",
+  Draft: "draft",
+  Paused: "paused",
+  Running: "running",
 } as const;
 export type UpdateFlagResponseBodyStatus = ClosedEnum<
   typeof UpdateFlagResponseBodyStatus
 >;
 
 export type ResponseBodyExperiment = {
-  name?: string | undefined;
   id?: string | undefined;
+  name?: string | undefined;
   numVariants?: number | undefined;
   surfaceArea?: string | undefined;
   stickyRequirement?: boolean | undefined;
@@ -673,8 +673,8 @@ export type UpdateFlagRhs4 = {
 };
 
 export const UpdateFlagRhsFeatureFlagsType = {
-  ListInline: "list/inline",
   List: "list",
+  ListInline: "list/inline",
 } as const;
 export type UpdateFlagRhsFeatureFlagsType = ClosedEnum<
   typeof UpdateFlagRhsFeatureFlagsType
@@ -727,29 +727,29 @@ export type ResponseBodyLhs =
   | UpdateFlagLhsFeatureFlags2;
 
 export const ResponseBodyCmp = {
-  Eq: "eq",
+  NotContains: "!contains",
+  NotEndsWith: "!endsWith",
   NotEq: "!eq",
-  OneOf: "oneOf",
+  NotEx: "!ex",
   NotOneOf: "!oneOf",
+  NotRegex: "!regex",
+  NotStartsWith: "!startsWith",
+  After: "after",
+  Before: "before",
+  Contains: "contains",
   ContainsAllOf: "containsAllOf",
   ContainsAnyOf: "containsAnyOf",
   ContainsNoneOf: "containsNoneOf",
-  StartsWith: "startsWith",
-  NotStartsWith: "!startsWith",
   EndsWith: "endsWith",
-  NotEndsWith: "!endsWith",
-  Contains: "contains",
-  NotContains: "!contains",
+  Eq: "eq",
   Ex: "ex",
-  NotEx: "!ex",
   Gt: "gt",
   Gte: "gte",
   Lt: "lt",
   Lte: "lte",
+  OneOf: "oneOf",
   Regex: "regex",
-  NotRegex: "!regex",
-  Before: "before",
-  After: "after",
+  StartsWith: "startsWith",
 } as const;
 export type ResponseBodyCmp = ClosedEnum<typeof ResponseBodyCmp>;
 
@@ -787,10 +787,10 @@ export type ResponseBodyEnvironments = {
 };
 
 export const ResponseBodyKind = {
-  String: "string",
-  Number: "number",
   Boolean: "boolean",
   Json: "json",
+  Number: "number",
+  String: "string",
 } as const;
 export type ResponseBodyKind = ClosedEnum<typeof ResponseBodyKind>;
 
@@ -2681,8 +2681,8 @@ export const ResponseBodyExperiment$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: types.optional(types.string()),
   id: types.optional(types.string()),
+  name: types.optional(types.string()),
   numVariants: types.optional(types.number()),
   surfaceArea: types.optional(types.string()),
   stickyRequirement: types.optional(types.boolean()),
@@ -2708,8 +2708,8 @@ export const ResponseBodyExperiment$inboundSchema: z.ZodType<
 });
 /** @internal */
 export type ResponseBodyExperiment$Outbound = {
-  name?: string | undefined;
   id?: string | undefined;
+  name?: string | undefined;
   numVariants?: number | undefined;
   surfaceArea?: string | undefined;
   stickyRequirement?: boolean | undefined;
@@ -2736,8 +2736,8 @@ export const ResponseBodyExperiment$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ResponseBodyExperiment
 > = z.object({
-  name: z.string().optional(),
   id: z.string().optional(),
+  name: z.string().optional(),
   numVariants: z.number().optional(),
   surfaceArea: z.string().optional(),
   stickyRequirement: z.boolean().optional(),

@@ -7,11 +7,11 @@ Current provisioning state
 ```typescript
 import { CancelDeploymentState } from "@vercel/sdk/models/canceldeploymentop.js";
 
-let value: CancelDeploymentState = "COMPLETE";
+let value: CancelDeploymentState = "PENDING";
 ```
 
 ## Values
 
 ```typescript
-"PENDING" | "COMPLETE" | "TIMEOUT"
+"COMPLETE" | "PENDING" | "TIMEOUT"
 ```

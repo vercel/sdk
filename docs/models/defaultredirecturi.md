@@ -13,5 +13,5 @@ let value: DefaultRedirectUri = "v0.dev";
 ## Values
 
 ```typescript
-"vercel.com" | "v0.dev" | "v0.app"
+"v0.app" | "v0.dev" | "vercel.com"
 ```

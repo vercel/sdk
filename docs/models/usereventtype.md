@@ -5,7 +5,7 @@ The type of entity.
 ## Example Usage
 
 ```typescript
-import { UserEventType } from "@vercel/sdk/models/payloadenvironment.js";
+import { UserEventType } from "@vercel/sdk/models/twohundredandninety.js";
 
 let value: UserEventType = "author";
 ```
@@ -13,5 +13,5 @@ let value: UserEventType = "author";
 ## Values
 
 ```typescript
-"app" | "author" | "bitbucket_login" | "bold" | "deployment_host" | "dns_record" | "git_link" | "github_login" | "gitlab_login" | "hook_name" | "integration" | "edge-config" | "flag" | "flags-segment" | "flags-settings" | "link" | "project_name" | "scaling_rules" | "env_var_name" | "target" | "store" | "system"
+"app" | "author" | "bitbucket_login" | "bold" | "deployment_host" | "dns_record" | "edge-config" | "env_var_name" | "flag" | "flags-segment" | "flags-settings" | "git_link" | "github_login" | "gitlab_login" | "hook_name" | "integration" | "link" | "project_name" | "scaling_rules" | "store" | "system" | "target"
 ```

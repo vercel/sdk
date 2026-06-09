@@ -52,8 +52,8 @@ export type CreateAccessGroupProjectRequest = {
 export const CreateAccessGroupProjectAccessGroupsRole = {
   Admin: "ADMIN",
   ProjectDeveloper: "PROJECT_DEVELOPER",
-  ProjectViewer: "PROJECT_VIEWER",
   ProjectGuest: "PROJECT_GUEST",
+  ProjectViewer: "PROJECT_VIEWER",
 } as const;
 export type CreateAccessGroupProjectAccessGroupsRole = ClosedEnum<
   typeof CreateAccessGroupProjectAccessGroupsRole

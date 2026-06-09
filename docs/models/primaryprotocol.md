@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { PrimaryProtocol } from "@vercel/sdk/models/getconfigurationproductspropertiesintegrationsresponse200uicontrol.js";
+import { PrimaryProtocol } from "@vercel/sdk/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyuidisabled.js";
 
-let value: PrimaryProtocol = "other";
+let value: PrimaryProtocol = "workflow";
 ```
 
 ## Values
 
 ```typescript
-"checks" | "experimentation" | "ai" | "authentication" | "storage" | "messaging" | "observability" | "video" | "workflow" | "logDrain" | "traceDrain" | "other"
+"ai" | "authentication" | "checks" | "experimentation" | "logDrain" | "messaging" | "observability" | "other" | "storage" | "traceDrain" | "video" | "workflow"
 ```

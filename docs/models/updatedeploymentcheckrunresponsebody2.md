@@ -12,7 +12,7 @@ let value: UpdateDeploymentCheckRunResponseBody2 = {
   name: "<value>",
   ownerId: "<id>",
   deploymentId: "<id>",
-  status: "queued",
+  status: "completed",
   timeout: 9135.25,
   createdAt: 2810.18,
   updatedAt: 967.97,

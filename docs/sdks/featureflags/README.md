@@ -4,6 +4,7 @@
 
 ### Available Operations
 
+* [listFlagsV2](#listflagsv2) - List flags
 * [listFlags](#listflags) - List flags
 * [createFlag](#createflag) - Create a flag
 * [getFlag](#getflag) - Get a flag
@@ -13,6 +14,7 @@
 * [getFlagSettings](#getflagsettings) - Get project flag settings
 * [updateFlagSettings](#updateflagsettings) - Update project flag settings
 * [listTeamFlagSettings](#listteamflagsettings) - List team project flag settings
+* [listTeamFlagsV2](#listteamflagsv2) - List all flags for a team
 * [listTeamFlags](#listteamflags) - List all flags for a team
 * [createFlagSegment](#createflagsegment) - Create a segment
 * [listFlagSegments](#listflagsegments) - List segments
@@ -23,6 +25,83 @@
 * [getSDKKeys](#getsdkkeys) - Get all SDK keys
 * [createSDKKey](#createsdkkey) - Create an SDK key
 * [deleteSDKKey](#deletesdkkey) - Delete an SDK key
+
+## listFlagsV2
+
+Retrieve feature flags for a project. Returns an opaque cursor for pagination.
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="listFlagsV2" method="get" path="/v2/projects/{projectIdOrName}/feature-flags/flags" -->
+```typescript
+import { Vercel } from "@vercel/sdk";
+
+const vercel = new Vercel({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await vercel.featureFlags.listFlagsV2({
+    projectIdOrName: "<value>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { VercelCore } from "@vercel/sdk/core.js";
+import { featureFlagsListFlagsV2 } from "@vercel/sdk/funcs/featureFlagsListFlagsV2.js";
+
+// Use `VercelCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const vercel = new VercelCore({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await featureFlagsListFlagsV2(vercel, {
+    projectIdOrName: "<value>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("featureFlagsListFlagsV2 failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [models.ListFlagsV2Request](../../models/listflagsv2request.md)                                                                                                                | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[models.ListFlagsV2ResponseBody](../../models/listflagsv2responsebody.md)\>**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| models.SDKError | 4XX, 5XX        | \*/\*           |
 
 ## listFlags
 
@@ -716,6 +795,81 @@ run();
 ### Response
 
 **Promise\<[models.ListTeamFlagSettingsResponseBody](../../models/listteamflagsettingsresponsebody.md)\>**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| models.SDKError | 4XX, 5XX        | \*/\*           |
+
+## listTeamFlagsV2
+
+Retrieve all feature flags for a team across all projects. Returns an opaque cursor for pagination.
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="listTeamFlagsV2" method="get" path="/v2/teams/{teamId}/feature-flags/flags" -->
+```typescript
+import { Vercel } from "@vercel/sdk";
+
+const vercel = new Vercel({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await vercel.featureFlags.listTeamFlagsV2({
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { VercelCore } from "@vercel/sdk/core.js";
+import { featureFlagsListTeamFlagsV2 } from "@vercel/sdk/funcs/featureFlagsListTeamFlagsV2.js";
+
+// Use `VercelCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const vercel = new VercelCore({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await featureFlagsListTeamFlagsV2(vercel, {
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("featureFlagsListTeamFlagsV2 failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [models.ListTeamFlagsV2Request](../../models/listteamflagsv2request.md)                                                                                                        | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[models.ListTeamFlagsV2ResponseBody](../../models/listteamflagsv2responsebody.md)\>**
 
 ### Errors
 

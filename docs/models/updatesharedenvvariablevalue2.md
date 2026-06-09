@@ -11,5 +11,5 @@ let value: UpdateSharedEnvVariableValue2 = "preview";
 ## Values
 
 ```typescript
-"production" | "preview" | "development"
+"development" | "preview" | "production"
 ```

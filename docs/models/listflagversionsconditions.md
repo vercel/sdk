@@ -9,7 +9,7 @@ let value: ListFlagVersionsConditions = {
   lhs: {
     type: "segment",
   },
-  cmp: "regex",
+  cmp: "lte",
 };
 ```
 

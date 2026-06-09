@@ -11,9 +11,9 @@ import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export const LimitedBy = {
+  Invalidated: "invalidated",
   Mfa: "mfa",
   Scope: "scope",
-  Invalidated: "invalidated",
 } as const;
 export type LimitedBy = ClosedEnum<typeof LimitedBy>;
 
@@ -21,8 +21,8 @@ export type LimitedBy = ClosedEnum<typeof LimitedBy>;
  * Controls whether directory sync events are processed. - 'SETUP': Directory connected but role mappings not yet configured. Events are acknowledged but not processed. - 'ACTIVE': Fully configured. Events are processed normally. - undefined: Legacy directory (pre-feature), treat as 'ACTIVE' for backwards compatibility.
  */
 export const TeamLimitedSyncState = {
-  Setup: "SETUP",
   Active: "ACTIVE",
+  Setup: "SETUP",
 } as const;
 /**
  * Controls whether directory sync events are processed. - 'SETUP': Directory connected but role mappings not yet configured. Events are acknowledged but not processed. - 'ACTIVE': Fully configured. Events are processed normally. - undefined: Legacy directory (pre-feature), treat as 'ACTIVE' for backwards compatibility.
@@ -67,8 +67,8 @@ export type TeamLimitedConnection = {
  * Controls whether directory sync events are processed. - 'SETUP': Directory connected but role mappings not yet configured. Events are acknowledged but not processed. - 'ACTIVE': Fully configured. Events are processed normally. - undefined: Legacy directory (pre-feature), treat as 'ACTIVE' for backwards compatibility.
  */
 export const TeamLimitedSamlSyncState = {
-  Setup: "SETUP",
   Active: "ACTIVE",
+  Setup: "SETUP",
 } as const;
 /**
  * Controls whether directory sync events are processed. - 'SETUP': Directory connected but role mappings not yet configured. Events are acknowledged but not processed. - 'ACTIVE': Fully configured. Events are processed normally. - undefined: Legacy directory (pre-feature), treat as 'ACTIVE' for backwards compatibility.
@@ -130,36 +130,38 @@ export type TeamLimitedEntitlements = {
 };
 
 export const TeamLimitedRole = {
-  Owner: "OWNER",
-  Member: "MEMBER",
-  Developer: "DEVELOPER",
-  Security: "SECURITY",
   Billing: "BILLING",
+  Contributor: "CONTRIBUTOR",
+  Developer: "DEVELOPER",
+  Member: "MEMBER",
+  Owner: "OWNER",
+  Security: "SECURITY",
   Viewer: "VIEWER",
   ViewerForPlus: "VIEWER_FOR_PLUS",
-  Contributor: "CONTRIBUTOR",
 } as const;
 export type TeamLimitedRole = ClosedEnum<typeof TeamLimitedRole>;
 
 export const TeamLimitedTeamRoles = {
-  Owner: "OWNER",
-  Member: "MEMBER",
-  Developer: "DEVELOPER",
-  Security: "SECURITY",
   Billing: "BILLING",
+  Contributor: "CONTRIBUTOR",
+  Developer: "DEVELOPER",
+  Member: "MEMBER",
+  Owner: "OWNER",
+  Security: "SECURITY",
   Viewer: "VIEWER",
   ViewerForPlus: "VIEWER_FOR_PLUS",
-  Contributor: "CONTRIBUTOR",
 } as const;
 export type TeamLimitedTeamRoles = ClosedEnum<typeof TeamLimitedTeamRoles>;
 
 export const TeamLimitedTeamPermissions = {
-  IntegrationManager: "IntegrationManager",
   CreateProject: "CreateProject",
-  FullProductionDeployment: "FullProductionDeployment",
-  UsageViewer: "UsageViewer",
   EnvVariableManager: "EnvVariableManager",
   EnvironmentManager: "EnvironmentManager",
+  FullProductionDeployment: "FullProductionDeployment",
+  IntegrationManager: "IntegrationManager",
+  OrgAdmin: "OrgAdmin",
+  OrgViewer: "OrgViewer",
+  UsageViewer: "UsageViewer",
   V0Builder: "V0Builder",
   V0Chatter: "V0Chatter",
   V0Viewer: "V0Viewer",
@@ -169,24 +171,25 @@ export type TeamLimitedTeamPermissions = ClosedEnum<
 >;
 
 export const TeamLimitedOrigin = {
-  Link: "link",
-  Saml: "saml",
-  Github: "github",
-  Gitlab: "gitlab",
+  AccountUpdate: "account-update",
   Bitbucket: "bitbucket",
-  Mail: "mail",
-  Import: "import",
-  Teams: "teams",
   Dsync: "dsync",
   Feedback: "feedback",
-  OrganizationTeams: "organization-teams",
+  Github: "github",
+  Gitlab: "gitlab",
+  Import: "import",
+  Link: "link",
+  Mail: "mail",
   NsnbAutoApprove: "nsnb-auto-approve",
   NsnbHobbyUpgrade: "nsnb-hobby-upgrade",
-  NsnbRequestAccess: "nsnb-request-access",
-  NsnbViewerUpgrade: "nsnb-viewer-upgrade",
   NsnbInvite: "nsnb-invite",
   NsnbRedeploy: "nsnb-redeploy",
   NsnbRedeployAttributionCard: "nsnb-redeploy-attribution-card",
+  NsnbRequestAccess: "nsnb-request-access",
+  NsnbViewerUpgrade: "nsnb-viewer-upgrade",
+  OrganizationTeams: "organization-teams",
+  Saml: "saml",
+  Teams: "teams",
 } as const;
 export type TeamLimitedOrigin = ClosedEnum<typeof TeamLimitedOrigin>;
 

@@ -48,9 +48,9 @@ export const GetRecordsResponseBodyDnsType = {
   Cname: "CNAME",
   Https: "HTTPS",
   Mx: "MX",
+  Ns: "NS",
   Srv: "SRV",
   Txt: "TXT",
-  Ns: "NS",
 } as const;
 export type GetRecordsResponseBodyDnsType = ClosedEnum<
   typeof GetRecordsResponseBodyDnsType
@@ -92,9 +92,9 @@ export const GetRecordsResponseBodyType = {
   Cname: "CNAME",
   Https: "HTTPS",
   Mx: "MX",
+  Ns: "NS",
   Srv: "SRV",
   Txt: "TXT",
-  Ns: "NS",
 } as const;
 export type GetRecordsResponseBodyType = ClosedEnum<
   typeof GetRecordsResponseBodyType

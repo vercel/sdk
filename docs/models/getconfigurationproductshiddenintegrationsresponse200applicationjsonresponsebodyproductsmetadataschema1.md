@@ -1,0 +1,21 @@
+# GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema1
+
+## Example Usage
+
+```typescript
+import {
+  GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema1,
+} from "@vercel/sdk/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyuidisabled.js";
+
+let value:
+  GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema1 =
+    {
+      expr: "<value>",
+    };
+```
+
+## Fields
+
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `expr`             | *string*           | :heavy_check_mark: | N/A                |

@@ -24,6 +24,6 @@ const value: boolean = true;
 ```typescript
 const value:
   models.GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBody3 =
-    "create";
+    "update";
 ```
 

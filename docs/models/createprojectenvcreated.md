@@ -7,7 +7,7 @@
 
 ```typescript
 const value: models.Created1 = {
-  type: "secret",
+  type: "system",
   value: "<value>",
   key: "<key>",
 };

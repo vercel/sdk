@@ -6,8 +6,8 @@
 import { GetFirewallConfigRulesConditions } from "@vercel/sdk/models/getfirewallconfigop.js";
 
 let value: GetFirewallConfigRulesConditions = {
-  type: "bot_category",
-  op: "ninc",
+  type: "server_action",
+  op: "sub",
 };
 ```
 

@@ -5,11 +5,11 @@
 ```typescript
 import { FilterProjectEnvsTargetProjects2 } from "@vercel/sdk/models/filterprojectenvsop.js";
 
-let value: FilterProjectEnvsTargetProjects2 = "production";
+let value: FilterProjectEnvsTargetProjects2 = "development";
 ```
 
 ## Values
 
 ```typescript
-"production" | "preview" | "development"
+"development" | "preview" | "production"
 ```

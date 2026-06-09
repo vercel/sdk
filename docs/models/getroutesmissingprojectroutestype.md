@@ -5,11 +5,11 @@
 ```typescript
 import { GetRoutesMissingProjectRoutesType } from "@vercel/sdk/models/getroutesop.js";
 
-let value: GetRoutesMissingProjectRoutesType = "header";
+let value: GetRoutesMissingProjectRoutesType = "cookie";
 ```
 
 ## Values
 
 ```typescript
-"header" | "cookie" | "query"
+"cookie" | "header" | "query"
 ```

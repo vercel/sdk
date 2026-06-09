@@ -6,7 +6,7 @@
 import { SegmentRhs3 } from "@vercel/sdk/models/segment.js";
 
 let value: SegmentRhs3 = {
-  type: "list",
+  type: "list/inline",
   items: [],
 };
 ```

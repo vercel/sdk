@@ -7,11 +7,11 @@ import { GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONAction 
 
 let value:
   GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONAction =
-    "challenge";
+    "deny";
 ```
 
 ## Values
 
 ```typescript
-"log" | "challenge" | "deny"
+"challenge" | "deny" | "log"
 ```

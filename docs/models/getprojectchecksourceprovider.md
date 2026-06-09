@@ -5,11 +5,11 @@
 ```typescript
 import { GetProjectCheckSourceProvider } from "@vercel/sdk/models/getprojectcheckop.js";
 
-let value: GetProjectCheckSourceProvider = "github";
+let value: GetProjectCheckSourceProvider = "bitbucket";
 ```
 
 ## Values
 
 ```typescript
-"github" | "gitlab" | "bitbucket"
+"bitbucket" | "github" | "gitlab"
 ```

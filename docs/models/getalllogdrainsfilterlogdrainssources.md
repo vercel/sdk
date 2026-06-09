@@ -11,5 +11,5 @@ let value: GetAllLogDrainsFilterLogDrainsSources = "build";
 ## Values
 
 ```typescript
-"build" | "edge" | "lambda" | "static" | "external" | "firewall" | "redirect"
+"build" | "edge" | "external" | "firewall" | "lambda" | "redirect" | "static"
 ```

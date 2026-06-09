@@ -5,11 +5,11 @@
 ```typescript
 import { GetRuntimeLogsSource } from "@vercel/sdk/models/getruntimelogsop.js";
 
-let value: GetRuntimeLogsSource = "request";
+let value: GetRuntimeLogsSource = "serverless";
 ```
 
 ## Values
 
 ```typescript
-"delimiter" | "edge-function" | "edge-middleware" | "serverless" | "request"
+"delimiter" | "edge-function" | "edge-middleware" | "request" | "serverless"
 ```

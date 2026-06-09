@@ -5,11 +5,11 @@
 ```typescript
 import { GetDeploymentCheckRunResponseBodyChecksV2Status } from "@vercel/sdk/models/getdeploymentcheckrunop.js";
 
-let value: GetDeploymentCheckRunResponseBodyChecksV2Status = "completed";
+let value: GetDeploymentCheckRunResponseBodyChecksV2Status = "running";
 ```
 
 ## Values
 
 ```typescript
-"queued" | "running" | "completed"
+"completed" | "queued" | "running"
 ```

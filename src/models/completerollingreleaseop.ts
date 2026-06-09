@@ -37,9 +37,9 @@ export type CompleteRollingReleaseRequest = {
  * The current state of the rolling release
  */
 export const CompleteRollingReleaseState = {
+  Aborted: "ABORTED",
   Active: "ACTIVE",
   Complete: "COMPLETE",
-  Aborted: "ABORTED",
 } as const;
 /**
  * The current state of the rolling release
@@ -79,13 +79,13 @@ export type CompleteRollingReleaseTarget = ClosedEnum<
  * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
  */
 export const CompleteRollingReleaseReadyState = {
-  Building: "BUILDING",
-  Error: "ERROR",
   Blocked: "BLOCKED",
+  Building: "BUILDING",
+  Canceled: "CANCELED",
+  Error: "ERROR",
   Initializing: "INITIALIZING",
   Queued: "QUEUED",
   Ready: "READY",
-  Canceled: "CANCELED",
 } as const;
 /**
  * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
@@ -95,20 +95,21 @@ export type CompleteRollingReleaseReadyState = ClosedEnum<
 >;
 
 /**
- * Where was the deployment created from
+ * Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it.
  */
 export const CompleteRollingReleaseSource = {
-  Git: "git",
-  Cli: "cli",
   ApiTriggerGitDeploy: "api-trigger-git-deploy",
+  Cli: "cli",
   CloneRepo: "clone/repo",
+  Drop: "drop",
+  Git: "git",
   Import: "import",
   ImportRepo: "import/repo",
   Redeploy: "redeploy",
   V0Web: "v0-web",
 } as const;
 /**
- * Where was the deployment created from
+ * Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it.
  */
 export type CompleteRollingReleaseSource = ClosedEnum<
   typeof CompleteRollingReleaseSource
@@ -140,7 +141,7 @@ export type CompleteRollingReleaseCurrentDeployment = {
   readyState: CompleteRollingReleaseReadyState;
   readyStateAt?: number | undefined;
   /**
-   * Where was the deployment created from
+   * Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it.
    */
   source?: CompleteRollingReleaseSource | undefined;
   /**
@@ -167,13 +168,13 @@ export type CompleteRollingReleaseRollingReleaseTarget = ClosedEnum<
  * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
  */
 export const CompleteRollingReleaseRollingReleaseReadyState = {
-  Building: "BUILDING",
-  Error: "ERROR",
   Blocked: "BLOCKED",
+  Building: "BUILDING",
+  Canceled: "CANCELED",
+  Error: "ERROR",
   Initializing: "INITIALIZING",
   Queued: "QUEUED",
   Ready: "READY",
-  Canceled: "CANCELED",
 } as const;
 /**
  * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
@@ -183,20 +184,21 @@ export type CompleteRollingReleaseRollingReleaseReadyState = ClosedEnum<
 >;
 
 /**
- * Where was the deployment created from
+ * Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it.
  */
 export const CompleteRollingReleaseRollingReleaseSource = {
-  Git: "git",
-  Cli: "cli",
   ApiTriggerGitDeploy: "api-trigger-git-deploy",
+  Cli: "cli",
   CloneRepo: "clone/repo",
+  Drop: "drop",
+  Git: "git",
   Import: "import",
   ImportRepo: "import/repo",
   Redeploy: "redeploy",
   V0Web: "v0-web",
 } as const;
 /**
- * Where was the deployment created from
+ * Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it.
  */
 export type CompleteRollingReleaseRollingReleaseSource = ClosedEnum<
   typeof CompleteRollingReleaseRollingReleaseSource
@@ -228,7 +230,7 @@ export type CompleteRollingReleaseCanaryDeployment = {
   readyState: CompleteRollingReleaseRollingReleaseReadyState;
   readyStateAt?: number | undefined;
   /**
-   * Where was the deployment created from
+   * Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it.
    */
   source?: CompleteRollingReleaseRollingReleaseSource | undefined;
   /**

@@ -5,13 +5,13 @@ Scope of the token: - `'user'`: full-account token (not tied to any team). - `'t
 ## Example Usage
 
 ```typescript
-import { PayloadScope } from "@vercel/sdk/models/payloadenvironment.js";
+import { PayloadScope } from "@vercel/sdk/models/twohundredandninety.js";
 
-let value: PayloadScope = "project";
+let value: PayloadScope = "user";
 ```
 
 ## Values
 
 ```typescript
-"user" | "team" | "project"
+"project" | "team" | "user"
 ```

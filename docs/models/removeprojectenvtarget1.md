@@ -5,11 +5,11 @@
 ```typescript
 import { RemoveProjectEnvTarget1 } from "@vercel/sdk/models/removeprojectenvop.js";
 
-let value: RemoveProjectEnvTarget1 = "production";
+let value: RemoveProjectEnvTarget1 = "development";
 ```
 
 ## Values
 
 ```typescript
-"production" | "preview" | "development"
+"development" | "preview" | "production"
 ```

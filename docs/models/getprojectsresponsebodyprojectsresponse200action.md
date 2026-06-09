@@ -11,5 +11,5 @@ let value: GetProjectsResponseBodyProjectsResponse200Action = "log";
 ## Values
 
 ```typescript
-"deny" | "challenge" | "log"
+"challenge" | "deny" | "log"
 ```

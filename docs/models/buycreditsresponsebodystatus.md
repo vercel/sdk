@@ -7,11 +7,11 @@ The status of the Orb subscription intent.
 ```typescript
 import { BuyCreditsResponseBodyStatus } from "@vercel/sdk/models/buycreditsop.js";
 
-let value: BuyCreditsResponseBodyStatus = "pending";
+let value: BuyCreditsResponseBodyStatus = "failed";
 ```
 
 ## Values
 
 ```typescript
-"pending" | "succeeded" | "failed"
+"failed" | "pending" | "succeeded"
 ```

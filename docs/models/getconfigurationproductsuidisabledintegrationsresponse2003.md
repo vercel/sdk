@@ -6,11 +6,11 @@
 import { GetConfigurationProductsUiDisabledIntegrationsResponse2003 } from "@vercel/sdk/models/getconfigurationproductsresponsebody.js";
 
 let value: GetConfigurationProductsUiDisabledIntegrationsResponse2003 =
-  "update";
+  "create";
 ```
 
 ## Values
 
 ```typescript
-"update" | "create"
+"create" | "update"
 ```

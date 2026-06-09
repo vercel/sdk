@@ -5,11 +5,11 @@
 ```typescript
 import { ResponseBodyHandle } from "@vercel/sdk/models/getprojectsresponsebody.js";
 
-let value: ResponseBodyHandle = "finalize";
+let value: ResponseBodyHandle = "init";
 ```
 
 ## Values
 
 ```typescript
-"init" | "finalize"
+"finalize" | "init"
 ```

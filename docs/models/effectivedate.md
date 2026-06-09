@@ -12,6 +12,6 @@ const value: models.EffectiveDate1 = {};
 ### `models.EffectiveDate2`
 
 ```typescript
-const value: models.EffectiveDate2 = "immediate";
+const value: models.EffectiveDate2 = "end_of_subscription_term";
 ```
 

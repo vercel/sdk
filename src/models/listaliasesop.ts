@@ -116,8 +116,8 @@ export type ListAliasesProtectionBypass3 = {
 };
 
 export const ListAliasesProtectionBypassAccess = {
-  Requested: "requested",
   Granted: "granted",
+  Requested: "requested",
 } as const;
 export type ListAliasesProtectionBypassAccess = ClosedEnum<
   typeof ListAliasesProtectionBypassAccess

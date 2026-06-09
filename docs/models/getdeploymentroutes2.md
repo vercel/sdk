@@ -6,7 +6,7 @@
 import { GetDeploymentRoutes2 } from "@vercel/sdk/models/getdeploymentresponsebody.js";
 
 let value: GetDeploymentRoutes2 = {
-  handle: "resource",
+  handle: "rewrite",
 };
 ```
 

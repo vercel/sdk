@@ -5,11 +5,11 @@
 ```typescript
 import { ResponseBodyType } from "@vercel/sdk/models/getdeploymenteventsop.js";
 
-let value: ResponseBodyType = "fatal";
+let value: ResponseBodyType = "stdout";
 ```
 
 ## Values
 
 ```typescript
-"delimiter" | "command" | "stdout" | "stderr" | "exit" | "deployment-state" | "middleware" | "middleware-invocation" | "edge-function-invocation" | "metric" | "report" | "fatal"
+"command" | "delimiter" | "deployment-state" | "edge-function-invocation" | "exit" | "fatal" | "metric" | "middleware" | "middleware-invocation" | "report" | "stderr" | "stdout"
 ```

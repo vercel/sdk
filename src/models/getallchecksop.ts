@@ -27,11 +27,11 @@ export type GetAllChecksRequest = {
 
 export const GetAllChecksConclusion = {
   Canceled: "canceled",
-  Skipped: "skipped",
   Failed: "failed",
   Neutral: "neutral",
-  Succeeded: "succeeded",
+  Skipped: "skipped",
   Stale: "stale",
+  Succeeded: "succeeded",
 } as const;
 export type GetAllChecksConclusion = ClosedEnum<typeof GetAllChecksConclusion>;
 
@@ -111,9 +111,9 @@ export type GetAllChecksOutput = {
 };
 
 export const GetAllChecksStatus = {
-  Running: "running",
   Completed: "completed",
   Registered: "registered",
+  Running: "running",
 } as const;
 export type GetAllChecksStatus = ClosedEnum<typeof GetAllChecksStatus>;
 

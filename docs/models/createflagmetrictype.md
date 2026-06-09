@@ -11,5 +11,5 @@ let value: CreateFlagMetricType = "currency";
 ## Values
 
 ```typescript
-"percentage" | "currency" | "count"
+"count" | "currency" | "percentage"
 ```

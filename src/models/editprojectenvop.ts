@@ -84,27 +84,27 @@ export type EditProjectEnvRequest = {
 };
 
 export const EditProjectEnvProjectsType = {
-  System: "system",
   Encrypted: "encrypted",
   Plain: "plain",
-  Sensitive: "sensitive",
   Secret: "secret",
+  Sensitive: "sensitive",
+  System: "system",
 } as const;
 export type EditProjectEnvProjectsType = ClosedEnum<
   typeof EditProjectEnvProjectsType
 >;
 
 export const EditProjectEnvTarget2 = {
-  Production: "production",
-  Preview: "preview",
   Development: "development",
+  Preview: "preview",
+  Production: "production",
 } as const;
 export type EditProjectEnvTarget2 = ClosedEnum<typeof EditProjectEnvTarget2>;
 
 export const EditProjectEnvTarget1 = {
-  Production: "production",
-  Preview: "preview",
   Development: "development",
+  Preview: "preview",
+  Production: "production",
 } as const;
 export type EditProjectEnvTarget1 = ClosedEnum<typeof EditProjectEnvTarget1>;
 

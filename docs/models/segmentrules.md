@@ -15,7 +15,7 @@ let value: SegmentRules = {
       lhs: {
         type: "segment",
       },
-      cmp: "endsWith",
+      cmp: "contains",
     },
   ],
 };

@@ -36,7 +36,7 @@ let value: CreateFlagFeatureFlagsEnvironments = {
           lhs: {
             type: "segment",
           },
-          cmp: "containsNoneOf",
+          cmp: "!startsWith",
         },
       ],
     },

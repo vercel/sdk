@@ -157,8 +157,8 @@ export type Missing1 = {
 
 export type CreateDeploymentRoutesMissing =
   | Missing1
-  | (Missing2 & { type: "header" })
   | (Missing2 & { type: "cookie" })
+  | (Missing2 & { type: "header" })
   | (Missing2 & { type: "query" });
 
 export const RoutesAction = {
@@ -180,8 +180,8 @@ export type RoutesType = ClosedEnum<typeof RoutesType>;
 
 export const CreateDeploymentRoutesOp = {
   Append: "append",
-  Set: "set",
   Delete: "delete",
+  Set: "set",
 } as const;
 export type CreateDeploymentRoutesOp = ClosedEnum<
   typeof CreateDeploymentRoutesOp
@@ -238,8 +238,8 @@ export type Routes1 = {
   missing?:
     | Array<
       | Missing1
-      | (Missing2 & { type: "header" })
       | (Missing2 & { type: "cookie" })
+      | (Missing2 & { type: "header" })
       | (Missing2 & { type: "query" })
     >
     | undefined;
@@ -378,9 +378,9 @@ export type Flags = Flags1 | Array<Flags2>;
  * The result of the microfrontends config upload during deployment creation / build. Only set for default app deployments. The config upload is attempted during deployment create, and then again during the build. If the config is not in the root directory, or the deployment is prebuilt, the config cannot be uploaded during deployment create. The upload during deployment build finds the config even if it's not in the root directory, as it has access to all files. Uploading the config during create is ideal, as then all child deployments are guaranteed to have access to the default app deployment config even if the default app has not yet started building. If the config is not uploaded, the child app will show as building until the config has been uploaded during the default app build. - `success` - The config was uploaded successfully, either when the deployment was created or during the build. - `waiting_on_build` - The config could not be uploaded during deployment create, will be attempted again during the build. - `no_config` - No config was found. Only set once the build has not found the config in any of the deployment's files. - `undefined` - Legacy deployments, or there was an error uploading the config during deployment create.
  */
 export const MfeConfigUploadState = {
+  NoConfig: "no_config",
   Success: "success",
   WaitingOnBuild: "waiting_on_build",
-  NoConfig: "no_config",
 } as const;
 /**
  * The result of the microfrontends config upload during deployment creation / build. Only set for default app deployments. The config upload is attempted during deployment create, and then again during the build. If the config is not in the root directory, or the deployment is prebuilt, the config cannot be uploaded during deployment create. The upload during deployment build finds the config even if it's not in the root directory, as it has access to all files. Uploading the config during create is ideal, as then all child deployments are guaranteed to have access to the default app deployment config even if the default app has not yet started building. If the config is not uploaded, the child app will show as building until the config has been uploaded during the default app build. - `success` - The config was uploaded successfully, either when the deployment was created or during the build. - `waiting_on_build` - The config could not be uploaded during deployment create, will be attempted again during the build. - `no_config` - No config was found. Only set once the build has not found the config in any of the deployment's files. - `undefined` - Legacy deployments, or there was an error uploading the config during deployment create.
@@ -428,15 +428,15 @@ export type CreateDeploymentMicrofrontends =
   | CreateDeploymentMicrofrontends1;
 
 export const FunctionType = {
-  Standard: "standard",
   Fluid: "fluid",
+  Standard: "standard",
 } as const;
 export type FunctionType = ClosedEnum<typeof FunctionType>;
 
 export const FunctionMemoryType = {
+  Performance: "performance",
   Standard: "standard",
   StandardLegacy: "standard_legacy",
-  Performance: "performance",
 } as const;
 export type FunctionMemoryType = ClosedEnum<typeof FunctionMemoryType>;
 
@@ -468,9 +468,9 @@ export type CreateDeploymentBuildQueue = {
  * When elastic concurrency is used for this deployment, a value is set. The value tells the reason where the setting was coming from. - TEAM_SETTING: Inherited from team settings - PROJECT_SETTING: Inherited from project settings - SKIP_QUEUE: Manually triggered by user to skip the queues
  */
 export const ElasticConcurrency = {
-  TeamSetting: "TEAM_SETTING",
   ProjectSetting: "PROJECT_SETTING",
   SkipQueue: "SKIP_QUEUE",
+  TeamSetting: "TEAM_SETTING",
 } as const;
 /**
  * When elastic concurrency is used for this deployment, a value is set. The value tells the reason where the setting was coming from. - TEAM_SETTING: Inherited from team settings - PROJECT_SETTING: Inherited from project settings - SKIP_QUEUE: Manually triggered by user to skip the queues
@@ -482,8 +482,8 @@ export type ElasticConcurrency = ClosedEnum<typeof ElasticConcurrency>;
  */
 export const CreateDeploymentPurchaseType = {
   Enhanced: "enhanced",
-  Turbo: "turbo",
   Standard: "standard",
+  Turbo: "turbo",
 } as const;
 /**
  * Machine type that was used for the build.
@@ -532,9 +532,9 @@ export type Config = {
 };
 
 export const CreateDeploymentDeploymentsState = {
-  Succeeded: "succeeded",
   Failed: "failed",
   Pending: "pending",
+  Succeeded: "succeeded",
 } as const;
 export type CreateDeploymentDeploymentsState = ClosedEnum<
   typeof CreateDeploymentDeploymentsState
@@ -560,8 +560,8 @@ export type CreateDeploymentChecks = {
  * The NSNB decision code for the seat block. TODO: We should consolidate block types.
  */
 export const BlockCode = {
-  TeamAccessRequired: "TEAM_ACCESS_REQUIRED",
   CommitAuthorRequired: "COMMIT_AUTHOR_REQUIRED",
+  TeamAccessRequired: "TEAM_ACCESS_REQUIRED",
 } as const;
 /**
  * The NSNB decision code for the seat block. TODO: We should consolidate block types.
@@ -574,9 +574,9 @@ export type CreateDeploymentGitUserId = string | number;
  * The git provider type associated with gitUserId.
  */
 export const CreateDeploymentGitProvider = {
-  Gitlab: "gitlab",
   Bitbucket: "bitbucket",
   Github: "github",
+  Gitlab: "gitlab",
 } as const;
 /**
  * The git provider type associated with gitUserId.
@@ -761,6 +761,7 @@ export type CreateDeploymentResponseBody = {
    */
   name: string;
   type: CreateDeploymentType;
+  errorMessage?: string | null | undefined;
   /**
    * An object that will contain a `code` and a `message` when the aliasing fails, otherwise the value will be `null`
    */
@@ -785,7 +786,6 @@ export type CreateDeploymentResponseBody = {
   canceledAt?: number | undefined;
   errorCode?: string | undefined;
   errorLink?: string | undefined;
-  errorMessage?: string | null | undefined;
   errorStep?: string | undefined;
   /**
    * Since November 2023 this field defines a set of regions that we will deploy the lambda to passively Lambdas will be deployed to these regions but only invoked if all of the primary `regions` are marked as out of service
@@ -820,7 +820,7 @@ export type CreateDeploymentResponseBody = {
    */
   softDeletedByRetention?: boolean | undefined;
   /**
-   * Where was the deployment created from
+   * Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it.
    */
   source?: CreateDeploymentSource | undefined;
   /**
@@ -968,15 +968,15 @@ export const CreateDeploymentRoutesMissing$inboundSchema: z.ZodType<
   unknown
 > = z.union([
   z.lazy(() => Missing1$inboundSchema),
-  Missing2$inboundSchema.and(z.object({ type: z.literal("header") })),
   Missing2$inboundSchema.and(z.object({ type: z.literal("cookie") })),
+  Missing2$inboundSchema.and(z.object({ type: z.literal("header") })),
   Missing2$inboundSchema.and(z.object({ type: z.literal("query") })),
 ]);
 /** @internal */
 export type CreateDeploymentRoutesMissing$Outbound =
   | Missing1$Outbound
-  | (Missing2$Outbound & { type: "header" })
   | (Missing2$Outbound & { type: "cookie" })
+  | (Missing2$Outbound & { type: "header" })
   | (Missing2$Outbound & { type: "query" });
 
 /** @internal */
@@ -986,8 +986,8 @@ export const CreateDeploymentRoutesMissing$outboundSchema: z.ZodType<
   CreateDeploymentRoutesMissing
 > = z.union([
   z.lazy(() => Missing1$outboundSchema),
-  Missing2$outboundSchema.and(z.object({ type: z.literal("header") })),
   Missing2$outboundSchema.and(z.object({ type: z.literal("cookie") })),
+  Missing2$outboundSchema.and(z.object({ type: z.literal("header") })),
   Missing2$outboundSchema.and(z.object({ type: z.literal("query") })),
 ]);
 
@@ -1352,8 +1352,8 @@ export const Routes1$inboundSchema: z.ZodType<Routes1, z.ZodTypeDef, unknown> =
     missing: types.optional(
       z.array(z.union([
         z.lazy(() => Missing1$inboundSchema),
-        Missing2$inboundSchema.and(z.object({ type: z.literal("header") })),
         Missing2$inboundSchema.and(z.object({ type: z.literal("cookie") })),
+        Missing2$inboundSchema.and(z.object({ type: z.literal("header") })),
         Missing2$inboundSchema.and(z.object({ type: z.literal("query") })),
       ])),
     ),
@@ -1389,8 +1389,8 @@ export type Routes1$Outbound = {
   missing?:
     | Array<
       | Missing1$Outbound
-      | (Missing2$Outbound & { type: "header" })
       | (Missing2$Outbound & { type: "cookie" })
+      | (Missing2$Outbound & { type: "header" })
       | (Missing2$Outbound & { type: "query" })
     >
     | undefined;
@@ -1427,8 +1427,8 @@ export const Routes1$outboundSchema: z.ZodType<
   missing: z.array(
     z.union([
       z.lazy(() => Missing1$outboundSchema),
-      Missing2$outboundSchema.and(z.object({ type: z.literal("header") })),
       Missing2$outboundSchema.and(z.object({ type: z.literal("cookie") })),
+      Missing2$outboundSchema.and(z.object({ type: z.literal("header") })),
       Missing2$outboundSchema.and(z.object({ type: z.literal("query") })),
     ]),
   ).optional(),
@@ -2837,6 +2837,7 @@ export const CreateDeploymentResponseBody$inboundSchema: z.ZodType<
   readyState: ReadyState$inboundSchema,
   name: types.string(),
   type: CreateDeploymentType$inboundSchema,
+  errorMessage: z.nullable(types.string()).optional(),
   aliasError: z.nullable(AliasError$inboundSchema).optional(),
   aliasFinal: z.nullable(types.string()).optional(),
   autoAssignCustomDomains: types.optional(types.boolean()),
@@ -2849,7 +2850,6 @@ export const CreateDeploymentResponseBody$inboundSchema: z.ZodType<
   canceledAt: types.optional(types.number()),
   errorCode: types.optional(types.string()),
   errorLink: types.optional(types.string()),
-  errorMessage: z.nullable(types.string()).optional(),
   errorStep: types.optional(types.string()),
   passiveRegions: types.optional(z.array(types.string())),
   gitSource: types.optional(CreateDeploymentGitSource$inboundSchema),
@@ -2954,6 +2954,7 @@ export type CreateDeploymentResponseBody$Outbound = {
   readyState: string;
   name: string;
   type: string;
+  errorMessage?: string | null | undefined;
   aliasError?: AliasError$Outbound | null | undefined;
   aliasFinal?: string | null | undefined;
   autoAssignCustomDomains?: boolean | undefined;
@@ -2966,7 +2967,6 @@ export type CreateDeploymentResponseBody$Outbound = {
   canceledAt?: number | undefined;
   errorCode?: string | undefined;
   errorLink?: string | undefined;
-  errorMessage?: string | null | undefined;
   errorStep?: string | undefined;
   passiveRegions?: Array<string> | undefined;
   gitSource?: CreateDeploymentGitSource$Outbound | undefined;
@@ -3060,6 +3060,7 @@ export const CreateDeploymentResponseBody$outboundSchema: z.ZodType<
   readyState: ReadyState$outboundSchema,
   name: z.string(),
   type: CreateDeploymentType$outboundSchema,
+  errorMessage: z.nullable(z.string()).optional(),
   aliasError: z.nullable(AliasError$outboundSchema).optional(),
   aliasFinal: z.nullable(z.string()).optional(),
   autoAssignCustomDomains: z.boolean().optional(),
@@ -3072,7 +3073,6 @@ export const CreateDeploymentResponseBody$outboundSchema: z.ZodType<
   canceledAt: z.number().optional(),
   errorCode: z.string().optional(),
   errorLink: z.string().optional(),
-  errorMessage: z.nullable(z.string()).optional(),
   errorStep: z.string().optional(),
   passiveRegions: z.array(z.string()).optional(),
   gitSource: CreateDeploymentGitSource$outboundSchema.optional(),

@@ -6,9 +6,9 @@
 import { ResponseBodyExperiment } from "@vercel/sdk/models/updateflagop.js";
 
 let value: ResponseBodyExperiment = {
-  allocationUnit: "userId",
+  allocationUnit: "visitorId",
   primaryMetrics: [],
-  status: "closed",
+  status: "running",
 };
 ```
 
@@ -16,8 +16,8 @@ let value: ResponseBodyExperiment = {
 
 | Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        |
 | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `name`                                                                             | *string*                                                                           | :heavy_minus_sign:                                                                 | N/A                                                                                |
 | `id`                                                                               | *string*                                                                           | :heavy_minus_sign:                                                                 | N/A                                                                                |
+| `name`                                                                             | *string*                                                                           | :heavy_minus_sign:                                                                 | N/A                                                                                |
 | `numVariants`                                                                      | *number*                                                                           | :heavy_minus_sign:                                                                 | N/A                                                                                |
 | `surfaceArea`                                                                      | *string*                                                                           | :heavy_minus_sign:                                                                 | N/A                                                                                |
 | `stickyRequirement`                                                                | *boolean*                                                                          | :heavy_minus_sign:                                                                 | N/A                                                                                |

@@ -11,5 +11,5 @@ let value: CreateCheckConclusion = "succeeded";
 ## Values
 
 ```typescript
-"canceled" | "skipped" | "failed" | "neutral" | "succeeded" | "stale"
+"canceled" | "failed" | "neutral" | "skipped" | "stale" | "succeeded"
 ```

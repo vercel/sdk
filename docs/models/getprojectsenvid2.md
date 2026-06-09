@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsEnvId2 } from "@vercel/sdk/models/getprojectsresponsebodyprojectsaibots.js";
+import { GetProjectsEnvId2 } from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponse200applicationjson3projectssecuritymanagedrulesvercelrulesetaction.js";
 
-let value: GetProjectsEnvId2 = "preview";
+let value: GetProjectsEnvId2 = "production";
 ```
 
 ## Values
 
 ```typescript
-"production" | "preview"
+"preview" | "production"
 ```

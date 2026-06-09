@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupLatestDeployments } from "@vercel/sdk/models/getmicrofrontendsingroupto2.js";
+import { GetMicrofrontendsInGroupLatestDeployments } from "@vercel/sdk/models/getmicrofrontendsingrouptomicrofrontends1.js";
 
 let value: GetMicrofrontendsInGroupLatestDeployments = {
   id: "<id>",
@@ -16,10 +16,10 @@ let value: GetMicrofrontendsInGroupLatestDeployments = {
   },
   deploymentHostname: "<value>",
   name: "<value>",
-  plan: "enterprise",
+  plan: "hobby",
   previewCommentsEnabled: false,
   private: true,
-  readyState: "READY",
+  readyState: "QUEUED",
   type: "LAMBDAS",
   url: "https://scented-championship.org/",
   userId: "<id>",

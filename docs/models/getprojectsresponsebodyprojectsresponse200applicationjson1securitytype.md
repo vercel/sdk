@@ -7,11 +7,11 @@ import { GetProjectsResponseBodyProjectsResponse200ApplicationJson1SecurityType 
 
 let value:
   GetProjectsResponseBodyProjectsResponse200ApplicationJson1SecurityType =
-    "ip_address";
+    "method";
 ```
 
 ## Values
 
 ```typescript
-"host" | "method" | "path" | "header" | "cookie" | "query" | "ip_address" | "protocol" | "scheme" | "environment" | "region" | "initial_request_path"
+"cookie" | "environment" | "header" | "host" | "initial_request_path" | "ip_address" | "method" | "path" | "protocol" | "query" | "region" | "scheme"
 ```

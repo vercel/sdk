@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { FactorsOrigin } from "@vercel/sdk/models/twohundredandtwentysix.js";
+import { FactorsOrigin } from "@vercel/sdk/models/twohundredandthirtyone.js";
 
-let value: FactorsOrigin = "otp";
+let value: FactorsOrigin = "saml";
 ```
 
 ## Values
 
 ```typescript
-"email" | "saml" | "github" | "gitlab" | "bitbucket" | "google" | "apple" | "chatgpt" | "otp"
+"apple" | "bitbucket" | "chatgpt" | "email" | "github" | "gitlab" | "google" | "otp" | "saml"
 ```

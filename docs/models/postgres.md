@@ -9,7 +9,7 @@
 const value: models.Postgres1 = {
   updatedAt: 1277.44,
   blockReason: "limits_exceeded",
-  overageReason: "edgeConfigWrite",
+  overageReason: "edgeConfigRead",
 };
 ```
 

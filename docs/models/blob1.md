@@ -3,12 +3,12 @@
 ## Example Usage
 
 ```typescript
-import { Blob1 } from "@vercel/sdk/models/eightytwo.js";
+import { Blob1 } from "@vercel/sdk/models/ninetyfour.js";
 
 let value: Blob1 = {
   updatedAt: 5128.29,
   blockReason: "limits_exceeded",
-  overageReason: "imageOptimizationCacheRead",
+  overageReason: "functionInvocation",
 };
 ```
 

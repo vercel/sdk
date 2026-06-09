@@ -7,7 +7,7 @@
 
 ```typescript
 const value: models.DeleteSharedEnvVariableTarget1[] = [
-  "development",
+  "production",
 ];
 ```
 

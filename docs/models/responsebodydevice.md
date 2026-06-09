@@ -5,11 +5,11 @@
 ```typescript
 import { ResponseBodyDevice } from "@vercel/sdk/models/updateflagop.js";
 
-let value: ResponseBodyDevice = "desktop";
+let value: ResponseBodyDevice = "ios";
 ```
 
 ## Values
 
 ```typescript
-"android" | "ios" | "desktop" | "mweb"
+"android" | "desktop" | "ios" | "mweb"
 ```

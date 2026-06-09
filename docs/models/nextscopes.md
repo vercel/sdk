@@ -5,11 +5,11 @@
 ```typescript
 import { NextScopes } from "@vercel/sdk/models/userevent.js";
 
-let value: NextScopes = "profile";
+let value: NextScopes = "openid";
 ```
 
 ## Values
 
 ```typescript
-"openid" | "email" | "profile" | "offline_access"
+"email" | "offline_access" | "openid" | "profile"
 ```

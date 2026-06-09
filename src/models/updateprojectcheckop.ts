@@ -62,9 +62,9 @@ export type UpdateProjectCheckChecksV2Requires = ClosedEnum<
 >;
 
 export const UpdateProjectCheckSourceProvider = {
+  Bitbucket: "bitbucket",
   Github: "github",
   Gitlab: "gitlab",
-  Bitbucket: "bitbucket",
 } as const;
 export type UpdateProjectCheckSourceProvider = ClosedEnum<
   typeof UpdateProjectCheckSourceProvider
@@ -95,21 +95,21 @@ export type UpdateProjectCheckSource =
   | UpdateProjectCheckSource3;
 
 export const UpdateProjectCheckChecksV2Blocks = {
-  None: "none",
   BuildStart: "build-start",
-  DeploymentStart: "deployment-start",
   DeploymentAlias: "deployment-alias",
   DeploymentPromotion: "deployment-promotion",
+  DeploymentStart: "deployment-start",
+  None: "none",
 } as const;
 export type UpdateProjectCheckChecksV2Blocks = ClosedEnum<
   typeof UpdateProjectCheckChecksV2Blocks
 >;
 
 export const UpdateProjectCheckSourceKind = {
-  Integration: "integration",
-  Webhook: "webhook",
   GitProvider: "git-provider",
+  Integration: "integration",
   Vercel: "vercel",
+  Webhook: "webhook",
 } as const;
 export type UpdateProjectCheckSourceKind = ClosedEnum<
   typeof UpdateProjectCheckSourceKind

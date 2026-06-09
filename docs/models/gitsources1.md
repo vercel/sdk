@@ -3,13 +3,19 @@
 ## Example Usage
 
 ```typescript
-import { GitSources1 } from "@vercel/sdk/models/updateprojectprojectsresponsebuildqueue.js";
+import { GitSources1 } from "@vercel/sdk/models/updateprojectprojectsoptionsallowlist.js";
 
 let value: GitSources1 = {
   enabled: false,
+  environments: [
+    {
+      type: "system",
+      target: "production",
+    },
+  ],
   sources: [
     {
-      provider: "gitlab",
+      provider: "github",
       org: "<value>",
     },
   ],
@@ -18,7 +24,8 @@ let value: GitSources1 = {
 
 ## Fields
 
-| Field                                                        | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `enabled`                                                    | *boolean*                                                    | :heavy_check_mark:                                           | N/A                                                          |
-| `sources`                                                    | [models.GitSourcesSources](../models/gitsourcessources.md)[] | :heavy_check_mark:                                           | N/A                                                          |
+| Field                             | Type                              | Required                          | Description                       |
+| --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- |
+| `enabled`                         | *boolean*                         | :heavy_check_mark:                | N/A                               |
+| `environments`                    | *models.GitSourcesEnvironments*[] | :heavy_check_mark:                | N/A                               |
+| `sources`                         | *models.GitSourcesSources*[]      | :heavy_check_mark:                | N/A                               |

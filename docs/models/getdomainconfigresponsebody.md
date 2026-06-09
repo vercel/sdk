@@ -6,7 +6,7 @@
 import { GetDomainConfigResponseBody } from "@vercel/sdk/models/getdomainconfigop.js";
 
 let value: GetDomainConfigResponseBody = {
-  configuredBy: "http",
+  configuredBy: "dns-01",
   acceptedChallenges: [
     "dns-01",
   ],

@@ -7,13 +7,13 @@ import { SearchRepoResponseBody2 } from "@vercel/sdk/models/searchrepoop.js";
 
 let value: SearchRepoResponseBody2 = {
   gitAccount: {
-    provider: "gitlab",
+    provider: "github-limited",
     namespaceId: 245.69,
   },
   repos: [
     {
       id: "<id>",
-      provider: "github",
+      provider: "bitbucket",
       url: "https://delectable-taxicab.com",
       name: "<value>",
       slug: "<value>",
@@ -22,7 +22,7 @@ let value: SearchRepoResponseBody2 = {
         id: "<id>",
         name: "<value>",
       },
-      ownerType: "team",
+      ownerType: "user",
       private: true,
       defaultBranch: "<value>",
       updatedAt: 3664.49,

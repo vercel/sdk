@@ -3,13 +3,14 @@
 ## Example Usage
 
 ```typescript
-import { SsoProtectionDeploymentType } from "@vercel/sdk/models/twohundredandtwentysix.js";
+import { SsoProtectionDeploymentType } from "@vercel/sdk/models/twohundredandthirtyone.js";
 
-let value: SsoProtectionDeploymentType = "all_except_custom_domains";
+let value: SsoProtectionDeploymentType =
+  "prod_deployment_urls_and_all_previews";
 ```
 
 ## Values
 
 ```typescript
-"all" | "preview" | "prod_deployment_urls_and_all_previews" | "all_except_custom_domains"
+"all" | "all_except_custom_domains" | "preview" | "prod_deployment_urls_and_all_previews"
 ```

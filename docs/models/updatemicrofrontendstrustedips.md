@@ -7,7 +7,7 @@
 
 ```typescript
 const value: models.UpdateMicrofrontendsTrustedIps1 = {
-  deploymentType: "production",
+  deploymentType: "all",
   addresses: [],
   protectionMode: "exclusive",
 };
@@ -17,7 +17,7 @@ const value: models.UpdateMicrofrontendsTrustedIps1 = {
 
 ```typescript
 const value: models.UpdateMicrofrontendsTrustedIps2 = {
-  deploymentType: "preview",
+  deploymentType: "all_except_custom_domains",
 };
 ```
 

@@ -8,7 +8,7 @@ A user-facing event type.
 import { ListEventType } from "@vercel/sdk/models/listeventtype.js";
 
 let value: ListEventType = {
-  name: "project-source-files-outside-root-directory-updated",
+  name: "project-connect-configurations",
   description: "monocle jealous accurate vain obscure though",
   categories: [
     "deployment",

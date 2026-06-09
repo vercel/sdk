@@ -1,15 +1,21 @@
 # UpdateProjectDeploymentSources
 
-Restricts which deployment sources are allowed. A deployment passes if its source is in `sources`. Multiple entries are evaluated as OR. `enabled: true` with an empty `sources` list is treated as deny-all.
+`enabled: true` with empty `sources` is deny-all.
 
 ## Example Usage
 
 ```typescript
-import { UpdateProjectDeploymentSources } from "@vercel/sdk/models/updateprojectresponsebody.js";
+import { UpdateProjectDeploymentSources } from "@vercel/sdk/models/updateprojectvalue.js";
 
 let value: UpdateProjectDeploymentSources = {
   sources: [],
   enabled: true,
+  environments: [
+    {
+      type: "custom",
+      environmentId: "<id>",
+    },
+  ],
 };
 ```
 
@@ -19,3 +25,4 @@ let value: UpdateProjectDeploymentSources = {
 | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
 | `sources`                                                                          | [models.UpdateProjectProjectsSources](../models/updateprojectprojectssources.md)[] | :heavy_check_mark:                                                                 | N/A                                                                                |
 | `enabled`                                                                          | *boolean*                                                                          | :heavy_check_mark:                                                                 | N/A                                                                                |
+| `environments`                                                                     | *models.UpdateProjectProjectsEnvironments*[]                                       | :heavy_check_mark:                                                                 | N/A                                                                                |

@@ -13,5 +13,5 @@ let value: TeamPermissions = "CreateProject";
 ## Values
 
 ```typescript
-"IntegrationManager" | "CreateProject" | "FullProductionDeployment" | "UsageViewer" | "EnvVariableManager" | "EnvironmentManager" | "V0Builder" | "V0Chatter" | "V0Viewer"
+"CreateProject" | "EnvVariableManager" | "EnvironmentManager" | "FullProductionDeployment" | "IntegrationManager" | "OrgAdmin" | "OrgViewer" | "UsageViewer" | "V0Builder" | "V0Chatter" | "V0Viewer"
 ```

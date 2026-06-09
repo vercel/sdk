@@ -6,7 +6,7 @@
 import { GetRoutesHasProjectRoutes2 } from "@vercel/sdk/models/getroutesop.js";
 
 let value: GetRoutesHasProjectRoutes2 = {
-  type: "cookie",
+  type: "header",
   key: "<key>",
 };
 ```

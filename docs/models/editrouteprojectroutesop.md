@@ -5,11 +5,11 @@
 ```typescript
 import { EditRouteProjectRoutesOp } from "@vercel/sdk/models/editrouteop.js";
 
-let value: EditRouteProjectRoutesOp = "set";
+let value: EditRouteProjectRoutesOp = "delete";
 ```
 
 ## Values
 
 ```typescript
-"append" | "set" | "delete"
+"append" | "delete" | "set"
 ```

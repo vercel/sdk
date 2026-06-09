@@ -5,11 +5,11 @@
 ```typescript
 import { CreateFlagSegmentRhsFeatureFlagsType } from "@vercel/sdk/models/createflagsegmentop.js";
 
-let value: CreateFlagSegmentRhsFeatureFlagsType = "list/inline";
+let value: CreateFlagSegmentRhsFeatureFlagsType = "list";
 ```
 
 ## Values
 
 ```typescript
-"list/inline" | "list"
+"list" | "list/inline"
 ```

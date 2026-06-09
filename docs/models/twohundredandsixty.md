@@ -5,28 +5,20 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndSixty } from "@vercel/sdk/models/twohundredandtwentysix.js";
+import { TwoHundredAndSixty } from "@vercel/sdk/models/twohundredandthirtyone.js";
 
 let value: TwoHundredAndSixty = {
-  budget: {
-    type: "fixed",
-    fixedBudget: 7252.98,
-    previousSpend: [
-      5164.53,
-    ],
-    notifiedAt: [
-      7491.72,
-    ],
-    createdAt: 1121.48,
-    isActive: false,
-    teamId: "<id>",
-    id: "<id>",
-  },
+  enabled: false,
+  updatedAt: 3821.15,
 };
 ```
 
 ## Fields
 
-| Field                                                                   | Type                                                                    | Required                                                                | Description                                                             |
-| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| `budget`                                                                | [models.PayloadBudget](../models/payloadbudget.md)                      | :heavy_check_mark:                                                      | Represents a budget for tracking and notifying teams on their spending. |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `enabled`          | *boolean*          | :heavy_check_mark: | N/A                |
+| `updatedAt`        | *number*           | :heavy_check_mark: | N/A                |
+| `firstEnabledAt`   | *number*           | :heavy_minus_sign: | N/A                |
+| `projectId`        | *string*           | :heavy_minus_sign: | N/A                |
+| `projectName`      | *string*           | :heavy_minus_sign: | N/A                |

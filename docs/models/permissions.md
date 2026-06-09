@@ -5,11 +5,11 @@
 ```typescript
 import { Permissions } from "@vercel/sdk/models/userevent.js";
 
-let value: Permissions = "read:project-env-vars-non-production";
+let value: Permissions = "read:kms";
 ```
 
 ## Values
 
 ```typescript
-"*" | "read:user" | "read:domain" | "read-write:domain" | "read:team" | "read:billing" | "read-write:billing" | "read-write:ai-gateway-api-key" | "use:ai-gateway" | "read-write:project-env-vars" | "read-write:drains" | "read-write:edge-config" | "read:monitoring" | "read:access-group" | "read:integration-configuration" | "read-write:integration-configuration" | "read-write:integration-resource" | "read-write:blob" | "read:event" | "read-write:remote-cache" | "read:kms" | "read-write:kms" | "read:project" | "read-write:project" | "read:deployment" | "read-write:deployment" | "read-write:edge-cache" | "read-write:project-protection-bypass" | "read:project-env-vars-non-production" | "read-write:project-env-vars-non-production" | "read:project-env-vars-production" | "read-write:project-env-vars-production" | "read-write:project-flags-non-production" | "read-write:project-flags-production" | "read-write:domain-registrar" | "read:sandbox" | "read-write:sandbox"
+"*" | "read-write:ai-gateway-api-key" | "read-write:billing" | "read-write:blob" | "read-write:deployment" | "read-write:domain" | "read-write:domain-registrar" | "read-write:drains" | "read-write:edge-cache" | "read-write:edge-config" | "read-write:integration-configuration" | "read-write:integration-resource" | "read-write:kms" | "read-write:project" | "read-write:project-env-vars" | "read-write:project-env-vars-non-production" | "read-write:project-env-vars-production" | "read-write:project-flags-non-production" | "read-write:project-flags-production" | "read-write:project-protection-bypass" | "read-write:remote-cache" | "read-write:sandbox" | "read:access-group" | "read:billing" | "read:deployment" | "read:domain" | "read:event" | "read:integration-configuration" | "read:kms" | "read:monitoring" | "read:project" | "read:project-env-vars-non-production" | "read:project-env-vars-production" | "read:sandbox" | "read:team" | "read:user" | "use:ai-gateway"
 ```

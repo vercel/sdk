@@ -5,11 +5,11 @@
 ```typescript
 import { GenerateRouteOp } from "@vercel/sdk/models/generaterouteop.js";
 
-let value: GenerateRouteOp = "set";
+let value: GenerateRouteOp = "delete";
 ```
 
 ## Values
 
 ```typescript
-"append" | "set" | "delete"
+"append" | "delete" | "set"
 ```

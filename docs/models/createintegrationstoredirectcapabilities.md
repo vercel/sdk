@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CreateIntegrationStoreDirectCapabilities } from "@vercel/sdk/models/createintegrationstoredirecthiddenintegrations1.js";
+import { CreateIntegrationStoreDirectCapabilities } from "@vercel/sdk/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproductmetadataschema7type.js";
 
 let value: CreateIntegrationStoreDirectCapabilities = {};
 ```
@@ -29,3 +29,4 @@ let value: CreateIntegrationStoreDirectCapabilities = {};
 | `databaseUI`                                        | *boolean*                                           | :heavy_minus_sign:                                  | N/A                                                 |
 | `v0Flavors`                                         | *boolean*                                           | :heavy_minus_sign:                                  | N/A                                                 |
 | `autoSensitive`                                     | *boolean*                                           | :heavy_minus_sign:                                  | N/A                                                 |
+| `agentTools`                                        | *boolean*                                           | :heavy_minus_sign:                                  | N/A                                                 |

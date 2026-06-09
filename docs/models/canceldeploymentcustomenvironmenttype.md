@@ -7,11 +7,11 @@ The type of environment (production, preview, or development)
 ```typescript
 import { CancelDeploymentCustomEnvironmentType } from "@vercel/sdk/models/canceldeploymentop.js";
 
-let value: CancelDeploymentCustomEnvironmentType = "production";
+let value: CancelDeploymentCustomEnvironmentType = "development";
 ```
 
 ## Values
 
 ```typescript
-"production" | "preview" | "development"
+"development" | "preview" | "production"
 ```

@@ -752,9 +752,9 @@ export type ResponseBodyConfiguration =
  * The status of the Orb subscription intent.
  */
 export const BuyCreditsResponseBodyStatus = {
+  Failed: "failed",
   Pending: "pending",
   Succeeded: "succeeded",
-  Failed: "failed",
 } as const;
 /**
  * The status of the Orb subscription intent.
@@ -1007,8 +1007,8 @@ export type BuyCreditsConfiguration4 = {
 };
 
 export const EffectiveDate2 = {
-  Immediate: "immediate",
   EndOfSubscriptionTerm: "end_of_subscription_term",
+  Immediate: "immediate",
 } as const;
 export type EffectiveDate2 = ClosedEnum<typeof EffectiveDate2>;
 
@@ -1121,9 +1121,9 @@ export type Configuration2 = {
  * The currency being purchased
  */
 export const ConfigurationCurrency = {
-  CopperTestUnits: "copper_test_units",
   AiCredits: "ai_credits",
   AiGatewayCredits: "ai_gateway_credits",
+  CopperTestUnits: "copper_test_units",
   V0UserCredits: "v0_user_credits",
   VercelAgentCredits: "vercel_agent_credits",
 } as const;
@@ -1176,8 +1176,8 @@ export type BuyCreditsResponseBodyConfiguration =
  * The currency for the purchase intent
  */
 export const Currency = {
-  Usd: "usd",
   Miu: "miu",
+  Usd: "usd",
 } as const;
 /**
  * The currency for the purchase intent
@@ -1188,14 +1188,14 @@ export type Currency = ClosedEnum<typeof Currency>;
  * The type of the purchase provider
  */
 export const BuyCreditsResponseBodyType = {
+  AppleInAppPurchase: "apple_in_app_purchase",
+  OrbLedger: "orb_ledger",
   StripeElements: "stripe_elements",
   StripeHosted: "stripe_hosted",
   StripeInvoiceDeferred: "stripe_invoice_deferred",
-  StripeInvoiceImmediate: "stripe_invoice_immediate",
   StripeInvoiceElements: "stripe_invoice_elements",
+  StripeInvoiceImmediate: "stripe_invoice_immediate",
   TackleAwsMarketplace: "tackle_aws_marketplace",
-  OrbLedger: "orb_ledger",
-  AppleInAppPurchase: "apple_in_app_purchase",
 } as const;
 /**
  * The type of the purchase provider
@@ -1227,9 +1227,9 @@ export type ResponseBodyProvider = {
  * The status of the Purchase Intent.
  */
 export const BuyCreditsResponseBodyBillingStatus = {
+  Failed: "failed",
   Pending: "pending",
   Succeeded: "succeeded",
-  Failed: "failed",
 } as const;
 /**
  * The status of the Purchase Intent.

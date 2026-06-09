@@ -6,7 +6,7 @@
 import { GetDeploymentEventsResponseBodyDeployments1 } from "@vercel/sdk/models/getdeploymenteventsop.js";
 
 let value: GetDeploymentEventsResponseBodyDeployments1 = {
-  type: "report",
+  type: "stderr",
   created: 1498.12,
   payload: {
     deploymentId: "<id>",

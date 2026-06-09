@@ -3,11 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { ToAccount } from "@vercel/sdk/models/eightytwo.js";
+import { ToAccount } from "@vercel/sdk/models/ninetyfour.js";
 
 let value: ToAccount = {
   id: "<id>",
-  type: "user",
+  type: "team",
 };
 ```
 
@@ -16,6 +16,6 @@ let value: ToAccount = {
 | Field                                                                                    | Type                                                                                     | Required                                                                                 | Description                                                                              |
 | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
 | `id`                                                                                     | *string*                                                                                 | :heavy_check_mark:                                                                       | N/A                                                                                      |
-| `type`                                                                                   | [models.UserEventPayload106ToAccountType](../models/usereventpayload106toaccounttype.md) | :heavy_check_mark:                                                                       | N/A                                                                                      |
+| `type`                                                                                   | [models.UserEventPayload112ToAccountType](../models/usereventpayload112toaccounttype.md) | :heavy_check_mark:                                                                       | N/A                                                                                      |
 | `slug`                                                                                   | *string*                                                                                 | :heavy_minus_sign:                                                                       | N/A                                                                                      |
 | `username`                                                                               | *string*                                                                                 | :heavy_minus_sign:                                                                       | N/A                                                                                      |

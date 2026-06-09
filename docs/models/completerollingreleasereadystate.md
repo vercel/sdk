@@ -13,5 +13,5 @@ let value: CompleteRollingReleaseReadyState = "READY";
 ## Values
 
 ```typescript
-"BUILDING" | "ERROR" | "BLOCKED" | "INITIALIZING" | "QUEUED" | "READY" | "CANCELED"
+"BLOCKED" | "BUILDING" | "CANCELED" | "ERROR" | "INITIALIZING" | "QUEUED" | "READY"
 ```

@@ -31,9 +31,9 @@ export type DeleteSharedEnvVariableRequest = {
 };
 
 export const DeleteSharedEnvVariableValue2 = {
-  Production: "production",
-  Preview: "preview",
   Development: "development",
+  Preview: "preview",
+  Production: "production",
 } as const;
 export type DeleteSharedEnvVariableValue2 = ClosedEnum<
   typeof DeleteSharedEnvVariableValue2
@@ -44,18 +44,18 @@ export type DeleteSharedEnvVariableValue =
   | Array<DeleteSharedEnvVariableValue2>;
 
 export const DeleteSharedEnvVariableTarget2 = {
-  Production: "production",
-  Preview: "preview",
   Development: "development",
+  Preview: "preview",
+  Production: "production",
 } as const;
 export type DeleteSharedEnvVariableTarget2 = ClosedEnum<
   typeof DeleteSharedEnvVariableTarget2
 >;
 
 export const DeleteSharedEnvVariableTarget1 = {
-  Production: "production",
-  Preview: "preview",
   Development: "development",
+  Preview: "preview",
+  Production: "production",
 } as const;
 export type DeleteSharedEnvVariableTarget1 = ClosedEnum<
   typeof DeleteSharedEnvVariableTarget1

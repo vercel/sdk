@@ -11,5 +11,5 @@ let value: GetDeploymentResponseBodyDeploymentsResponseStatus = "pending";
 ## Values
 
 ```typescript
-"skipped" | "pending" | "ready" | "error" | "timeout"
+"error" | "pending" | "ready" | "skipped" | "timeout"
 ```

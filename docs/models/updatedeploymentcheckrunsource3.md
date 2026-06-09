@@ -7,7 +7,7 @@ import { UpdateDeploymentCheckRunSource3 } from "@vercel/sdk/models/updatedeploy
 
 let value: UpdateDeploymentCheckRunSource3 = {
   kind: "git-provider",
-  provider: "github",
+  provider: "bitbucket",
   externalCheckName: "<value>",
 };
 ```

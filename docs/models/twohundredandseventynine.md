@@ -5,17 +5,15 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndSeventyNine } from "@vercel/sdk/models/twohundredandtwentysix.js";
+import { TwoHundredAndSeventyNine } from "@vercel/sdk/models/twohundredandthirtyone.js";
 
 let value: TwoHundredAndSeventyNine = {
-  environment: "production",
-  enabled: "off",
+  slug: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                        | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `environment`                                                | [models.PayloadEnvironment](../models/payloadenvironment.md) | :heavy_check_mark:                                           | N/A                                                          |
-| `enabled`                                                    | [models.Enabled](../models/enabled.md)                       | :heavy_check_mark:                                           | N/A                                                          |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `slug`             | *string*           | :heavy_check_mark: | N/A                |

@@ -5,11 +5,11 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { SixtySeven } from "@vercel/sdk/models/resources.js";
+import { SixtySeven } from "@vercel/sdk/models/fortyseven.js";
 
 let value: SixtySeven = {
-  bitbucketEmail: "<value>",
-  bitbucketLogin: "<value>",
+  githubLogin: "<value>",
+  host: "negligible-napkin.name",
 };
 ```
 
@@ -17,6 +17,5 @@ let value: SixtySeven = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `bitbucketEmail`   | *string*           | :heavy_check_mark: | N/A                |
-| `bitbucketLogin`   | *string*           | :heavy_check_mark: | N/A                |
-| `bitbucketName`    | *string*           | :heavy_minus_sign: | N/A                |
+| `githubLogin`      | *string*           | :heavy_check_mark: | N/A                |
+| `host`             | *string*           | :heavy_check_mark: | N/A                |

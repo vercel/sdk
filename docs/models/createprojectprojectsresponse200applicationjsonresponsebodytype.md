@@ -5,7 +5,7 @@ The type of matching to perform
 ## Example Usage
 
 ```typescript
-import { CreateProjectProjectsResponse200ApplicationJSONResponseBodyType } from "@vercel/sdk/models/createprojecttopreset.js";
+import { CreateProjectProjectsResponse200ApplicationJSONResponseBodyType } from "@vercel/sdk/models/createprojectprojectsto.js";
 
 let value: CreateProjectProjectsResponse200ApplicationJSONResponseBodyType =
   "endsWith";
@@ -14,5 +14,5 @@ let value: CreateProjectProjectsResponse200ApplicationJSONResponseBodyType =
 ## Values
 
 ```typescript
-"endsWith" | "startsWith" | "equals"
+"endsWith" | "equals" | "startsWith"
 ```

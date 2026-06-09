@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { PayloadViewPreference } from "@vercel/sdk/models/edgemiddlewareinvocations.js";
+import { PayloadViewPreference } from "@vercel/sdk/models/connectdatatransfer.js";
 
-let value: PayloadViewPreference = "list";
+let value: PayloadViewPreference = "cards";
 ```
 
 ## Values
 
 ```typescript
-"list" | "cards"
+"cards" | "list"
 ```

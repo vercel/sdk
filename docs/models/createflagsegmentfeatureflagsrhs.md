@@ -19,7 +19,7 @@ const value: number = 1284.03;
 
 ```typescript
 const value: models.CreateFlagSegmentRhs3 = {
-  type: "list/inline",
+  type: "list",
   items: [],
 };
 ```

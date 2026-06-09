@@ -3,11 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { WorkflowStorage } from "@vercel/sdk/models/eightytwo.js";
+import { WorkflowStorage } from "@vercel/sdk/models/ninetyfour.js";
 
 let value: WorkflowStorage = {
   updatedAt: 3509.01,
-  blockReason: "hard_blocked",
+  blockReason: "limits_exceeded",
 };
 ```
 
@@ -18,4 +18,4 @@ let value: WorkflowStorage = {
 | `updatedAt`                                                                                                                                                  | *number*                                                                                                                                                     | :heavy_check_mark:                                                                                                                                           | N/A                                                                                                                                                          |
 | `blockedFrom`                                                                                                                                                | *number*                                                                                                                                                     | :heavy_minus_sign:                                                                                                                                           | N/A                                                                                                                                                          |
 | `blockedUntil`                                                                                                                                               | *number*                                                                                                                                                     | :heavy_minus_sign:                                                                                                                                           | N/A                                                                                                                                                          |
-| `blockReason`                                                                                                                                                | [models.UserEventPayload124NewOwnerFeatureBlocksWorkflowStorageBlockReason](../models/usereventpayload124newownerfeatureblocksworkflowstorageblockreason.md) | :heavy_check_mark:                                                                                                                                           | N/A                                                                                                                                                          |
+| `blockReason`                                                                                                                                                | [models.UserEventPayload130NewOwnerFeatureBlocksWorkflowStorageBlockReason](../models/usereventpayload130newownerfeatureblocksworkflowstorageblockreason.md) | :heavy_check_mark:                                                                                                                                           | N/A                                                                                                                                                          |

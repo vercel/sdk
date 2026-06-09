@@ -5,11 +5,11 @@
 ```typescript
 import { FlagsSDKKeyWithSecretsType } from "@vercel/sdk/models/flagssdkkeywithsecrets.js";
 
-let value: FlagsSDKKeyWithSecretsType = "client";
+let value: FlagsSDKKeyWithSecretsType = "server";
 ```
 
 ## Values
 
 ```typescript
-"server" | "mobile" | "client"
+"client" | "mobile" | "server"
 ```

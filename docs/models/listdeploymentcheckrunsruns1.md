@@ -12,14 +12,14 @@ let value: ListDeploymentCheckRunsRuns1 = {
   name: "<value>",
   ownerId: "<id>",
   deploymentId: "<id>",
-  status: "queued",
+  status: "completed",
   timeout: 1658.76,
   createdAt: 3693.18,
   updatedAt: 9022.83,
   checkId: "<id>",
   source: {
     kind: "git-provider",
-    provider: "gitlab",
+    provider: "github",
     externalCheckName: "<value>",
   },
 };

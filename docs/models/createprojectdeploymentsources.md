@@ -1,6 +1,6 @@
 # CreateProjectDeploymentSources
 
-Restricts which deployment sources are allowed. A deployment passes if its source is in `sources`. Multiple entries are evaluated as OR. `enabled: true` with an empty `sources` list is treated as deny-all.
+`enabled: true` with empty `sources` is deny-all.
 
 ## Example Usage
 
@@ -9,9 +9,10 @@ import { CreateProjectDeploymentSources } from "@vercel/sdk/models/createproject
 
 let value: CreateProjectDeploymentSources = {
   sources: [
-    "integration",
+    "rest-api",
   ],
   enabled: true,
+  environments: [],
 };
 ```
 
@@ -21,3 +22,4 @@ let value: CreateProjectDeploymentSources = {
 | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
 | `sources`                                                                          | [models.CreateProjectProjectsSources](../models/createprojectprojectssources.md)[] | :heavy_check_mark:                                                                 | N/A                                                                                |
 | `enabled`                                                                          | *boolean*                                                                          | :heavy_check_mark:                                                                 | N/A                                                                                |
+| `environments`                                                                     | *models.CreateProjectProjectsEnvironments*[]                                       | :heavy_check_mark:                                                                 | N/A                                                                                |

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Job4 } from "@vercel/sdk/models/resources.js";
+import { Job4 } from "@vercel/sdk/models/fortyseven.js";
 
 let value: Job4 = {
   repoPushedAt: 303.87,
@@ -21,7 +21,7 @@ let value: Job4 = {
   prId: 1371.4,
   repo: "<value>",
   repoId: 3515.58,
-  provider: "github-custom-host",
+  provider: "github-limited",
 };
 ```
 

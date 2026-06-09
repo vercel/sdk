@@ -5,11 +5,11 @@
 ```typescript
 import { GenerateRouteField } from "@vercel/sdk/models/generaterouteop.js";
 
-let value: GenerateRouteField = "cookie";
+let value: GenerateRouteField = "host";
 ```
 
 ## Values
 
 ```typescript
-"host" | "header" | "cookie" | "query"
+"cookie" | "header" | "host" | "query"
 ```

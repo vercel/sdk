@@ -5,11 +5,11 @@
 ```typescript
 import { CreateProjectProjectsAction } from "@vercel/sdk/models/createprojectresponsebody.js";
 
-let value: CreateProjectProjectsAction = "blocked";
+let value: CreateProjectProjectsAction = "add-deployment-interstitial";
 ```
 
 ## Values
 
 ```typescript
-"blocked"
+"add-deployment-interstitial" | "add-project-interstitial" | "remove-deployment-interstitial" | "remove-project-interstitial"
 ```

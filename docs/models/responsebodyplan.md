@@ -5,11 +5,11 @@
 ```typescript
 import { ResponseBodyPlan } from "@vercel/sdk/models/getdeploymentresponsebody.js";
 
-let value: ResponseBodyPlan = "enterprise";
+let value: ResponseBodyPlan = "hobby";
 ```
 
 ## Values
 
 ```typescript
-"pro" | "enterprise" | "hobby"
+"enterprise" | "hobby" | "pro"
 ```

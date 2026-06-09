@@ -7,11 +7,11 @@
 ```typescript
 import { GetMicrofrontendsInGroupIssuerMode } from "@vercel/sdk/models/getmicrofrontendsingroupresponsebody.js";
 
-let value: GetMicrofrontendsInGroupIssuerMode = "global";
+let value: GetMicrofrontendsInGroupIssuerMode = "team";
 ```
 
 ## Values
 
 ```typescript
-"team" | "global"
+"global" | "team"
 ```

@@ -7,7 +7,7 @@ import { GetAllLogDrainsProjectAccess1 } from "@vercel/sdk/models/getalllogdrain
 
 let value: GetAllLogDrainsProjectAccess1 = {
   access: "all",
-  managedBy: "drain",
+  managedBy: "integration",
 };
 ```
 

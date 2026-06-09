@@ -5,11 +5,11 @@
 ```typescript
 import { GetFirewallConfigRulesSecurityAction } from "@vercel/sdk/models/getfirewallconfigop.js";
 
-let value: GetFirewallConfigRulesSecurityAction = "challenge";
+let value: GetFirewallConfigRulesSecurityAction = "deny";
 ```
 
 ## Values
 
 ```typescript
-"deny" | "log" | "challenge" | "bypass" | "rate_limit" | "redirect"
+"bypass" | "challenge" | "deny" | "log" | "rate_limit" | "redirect"
 ```

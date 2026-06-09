@@ -1,0 +1,21 @@
+# UploadProjectAvatarWebAnalytics
+
+## Example Usage
+
+```typescript
+import { UploadProjectAvatarWebAnalytics } from "@vercel/sdk/models/uploadprojectavatarprojectsresponse200applicationjsonresponsebodysecurityaction.js";
+
+let value: UploadProjectAvatarWebAnalytics = {
+  id: "<id>",
+};
+```
+
+## Fields
+
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `id`               | *string*           | :heavy_check_mark: | N/A                |
+| `disabledAt`       | *number*           | :heavy_minus_sign: | N/A                |
+| `canceledAt`       | *number*           | :heavy_minus_sign: | N/A                |
+| `enabledAt`        | *number*           | :heavy_minus_sign: | N/A                |
+| `hasData`          | *true*             | :heavy_minus_sign: | N/A                |

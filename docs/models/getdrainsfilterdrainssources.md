@@ -5,11 +5,11 @@
 ```typescript
 import { GetDrainsFilterDrainsSources } from "@vercel/sdk/models/getdrainsop.js";
 
-let value: GetDrainsFilterDrainsSources = "redirect";
+let value: GetDrainsFilterDrainsSources = "static";
 ```
 
 ## Values
 
 ```typescript
-"build" | "edge" | "lambda" | "static" | "external" | "firewall" | "redirect"
+"build" | "edge" | "external" | "firewall" | "lambda" | "redirect" | "static"
 ```

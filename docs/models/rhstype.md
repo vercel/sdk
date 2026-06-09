@@ -5,11 +5,11 @@
 ```typescript
 import { RhsType } from "@vercel/sdk/models/flag.js";
 
-let value: RhsType = "list/inline";
+let value: RhsType = "list";
 ```
 
 ## Values
 
 ```typescript
-"list/inline" | "list"
+"list" | "list/inline"
 ```

@@ -7,11 +7,11 @@ Computed route type based on the route configuration. Only present in API respon
 ```typescript
 import { ResponseBodyRouteType } from "@vercel/sdk/models/getroutesop.js";
 
-let value: ResponseBodyRouteType = "rewrite";
+let value: ResponseBodyRouteType = "redirect";
 ```
 
 ## Values
 
 ```typescript
-"rewrite" | "redirect" | "set_status" | "transform"
+"redirect" | "rewrite" | "set_status" | "transform"
 ```

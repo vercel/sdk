@@ -7,7 +7,7 @@ import { ProjectAccess1 } from "@vercel/sdk/models/createdrainop.js";
 
 let value: ProjectAccess1 = {
   access: "all",
-  managedBy: "integration",
+  managedBy: "drain",
 };
 ```
 

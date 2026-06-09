@@ -11,7 +11,7 @@ let value: CreateFlagSegmentFeatureFlagsConditions = {
     kind: "<value>",
     attribute: "<value>",
   },
-  cmp: "!oneOf",
+  cmp: "!ex",
 };
 ```
 

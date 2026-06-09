@@ -7,7 +7,7 @@
 
 ```typescript
 const value: models.Credentials1 = {
-  type: "apple",
+  type: "github-oauth-limited",
   id: "<id>",
 };
 ```
@@ -16,7 +16,7 @@ const value: models.Credentials1 = {
 
 ```typescript
 const value: models.Credentials1 = {
-  type: "apple",
+  type: "github-oauth-limited",
   id: "<id>",
 };
 ```
@@ -25,7 +25,7 @@ const value: models.Credentials1 = {
 
 ```typescript
 const value: models.Credentials1 = {
-  type: "apple",
+  type: "github-oauth-limited",
   id: "<id>",
 };
 ```
@@ -34,7 +34,7 @@ const value: models.Credentials1 = {
 
 ```typescript
 const value: models.Credentials1 = {
-  type: "apple",
+  type: "github-oauth-limited",
   id: "<id>",
 };
 ```
@@ -43,7 +43,7 @@ const value: models.Credentials1 = {
 
 ```typescript
 const value: models.Credentials1 = {
-  type: "apple",
+  type: "github-oauth-limited",
   id: "<id>",
 };
 ```
@@ -52,7 +52,7 @@ const value: models.Credentials1 = {
 
 ```typescript
 const value: models.Credentials1 = {
-  type: "apple",
+  type: "github-oauth-limited",
   id: "<id>",
 };
 ```
@@ -61,7 +61,7 @@ const value: models.Credentials1 = {
 
 ```typescript
 const value: models.Credentials1 = {
-  type: "apple",
+  type: "github-oauth-limited",
   id: "<id>",
 };
 ```
@@ -70,7 +70,7 @@ const value: models.Credentials1 = {
 
 ```typescript
 const value: models.Credentials1 = {
-  type: "apple",
+  type: "github-oauth-limited",
   id: "<id>",
 };
 ```

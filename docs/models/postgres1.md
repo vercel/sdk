@@ -3,12 +3,12 @@
 ## Example Usage
 
 ```typescript
-import { Postgres1 } from "@vercel/sdk/models/eightytwo.js";
+import { Postgres1 } from "@vercel/sdk/models/ninetyfour.js";
 
 let value: Postgres1 = {
   updatedAt: 1277.44,
   blockReason: "limits_exceeded",
-  overageReason: "edgeConfigWrite",
+  overageReason: "edgeConfigRead",
 };
 ```
 

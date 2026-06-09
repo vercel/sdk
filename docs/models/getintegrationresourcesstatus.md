@@ -13,5 +13,5 @@ let value: GetIntegrationResourcesStatus = "uninstalled";
 ## Values
 
 ```typescript
-"error" | "ready" | "pending" | "onboarding" | "suspended" | "resumed" | "uninstalled"
+"error" | "onboarding" | "pending" | "ready" | "resumed" | "suspended" | "uninstalled"
 ```

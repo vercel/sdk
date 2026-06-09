@@ -5,10 +5,13 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndThirteen } from "@vercel/sdk/models/payloadenvironment.js";
+import { ThreeHundredAndThirteen } from "@vercel/sdk/models/twohundredandninety.js";
 
 let value: ThreeHundredAndThirteen = {
-  mfaEnabled: true,
+  domain: "gripping-coliseum.name",
+  ips: [
+    "<value 1>",
+  ],
 };
 ```
 
@@ -16,4 +19,5 @@ let value: ThreeHundredAndThirteen = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `mfaEnabled`       | *boolean*          | :heavy_check_mark: | N/A                |
+| `domain`           | *string*           | :heavy_check_mark: | N/A                |
+| `ips`              | *string*[]         | :heavy_check_mark: | N/A                |

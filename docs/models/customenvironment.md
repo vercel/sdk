@@ -9,7 +9,7 @@
 const value: models.CustomEnvironment1 = {
   id: "<id>",
   slug: "<value>",
-  type: "production",
+  type: "development",
   createdAt: 7312.59,
   updatedAt: 6889.56,
 };

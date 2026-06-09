@@ -7,9 +7,9 @@ import { ListFlagVersionsGuardrailMetrics } from "@vercel/sdk/models/listflagver
 
 let value: ListFlagVersionsGuardrailMetrics = {
   name: "<value>",
-  metricType: "count",
-  metricUnit: "user",
-  directionality: "decreaseIsGood",
+  metricType: "percentage",
+  metricUnit: "session",
+  directionality: "increaseIsGood",
 };
 ```
 

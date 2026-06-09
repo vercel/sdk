@@ -6,7 +6,7 @@
 import { CreateFlagSegmentRhs3 } from "@vercel/sdk/models/createflagsegmentop.js";
 
 let value: CreateFlagSegmentRhs3 = {
-  type: "list/inline",
+  type: "list",
   items: [],
 };
 ```

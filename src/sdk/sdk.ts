@@ -13,6 +13,7 @@ import { BulkRedirects } from "./bulkredirects.js";
 import { Certs } from "./certs.js";
 import { Checks } from "./checks.js";
 import { ChecksV2 } from "./checksv2.js";
+import { Connect } from "./connect.js";
 import { Deployments } from "./deployments.js";
 import { Dns } from "./dns.js";
 import { Domains } from "./domains.js";
@@ -73,6 +74,11 @@ export class Vercel extends ClientSDK {
   private _networking?: Networking;
   get networking(): Networking {
     return (this._networking ??= new Networking(this._options));
+  }
+
+  private _connect?: Connect;
+  get connect(): Connect {
+    return (this._connect ??= new Connect(this._options));
   }
 
   private _deployments?: Deployments;

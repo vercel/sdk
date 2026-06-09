@@ -1,20 +1,32 @@
 # PatchTeamGitSourcesSources
 
-## Example Usage
+
+## Supported Types
+
+### `models.PatchTeamSources1`
 
 ```typescript
-import { PatchTeamGitSourcesSources } from "@vercel/sdk/models/patchteamop.js";
-
-let value: PatchTeamGitSourcesSources = {
-  provider: "bitbucket",
+const value: models.PatchTeamSources1 = {
+  provider: "github",
   org: "<value>",
 };
 ```
 
-## Fields
+### `models.PatchTeamSources1`
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `provider`                                                                     | [models.PatchTeamGitSourcesProvider](../models/patchteamgitsourcesprovider.md) | :heavy_check_mark:                                                             | N/A                                                                            |
-| `org`                                                                          | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
-| `repo`                                                                         | *string*                                                                       | :heavy_minus_sign:                                                             | N/A                                                                            |
+```typescript
+const value: models.PatchTeamSources1 = {
+  provider: "github",
+  org: "<value>",
+};
+```
+
+### `models.PatchTeamSources2`
+
+```typescript
+const value: models.PatchTeamSources2 = {
+  provider: "gitlab",
+  namespace: "<value>",
+};
+```
+

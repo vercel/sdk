@@ -11,5 +11,5 @@ let value: CreateDeploymentStatus = "INITIALIZING";
 ## Values
 
 ```typescript
-"QUEUED" | "BUILDING" | "ERROR" | "BLOCKED" | "INITIALIZING" | "READY" | "CANCELED"
+"BLOCKED" | "BUILDING" | "CANCELED" | "ERROR" | "INITIALIZING" | "QUEUED" | "READY"
 ```

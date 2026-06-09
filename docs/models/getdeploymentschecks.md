@@ -9,7 +9,7 @@ import { GetDeploymentsChecks } from "@vercel/sdk/models/getdeploymentsop.js";
 
 let value: GetDeploymentsChecks = {
   deploymentAlias: {
-    state: "failed",
+    state: "pending",
     startedAt: 8487.28,
   },
 };

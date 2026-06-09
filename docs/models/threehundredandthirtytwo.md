@@ -5,22 +5,27 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndThirtyTwo } from "@vercel/sdk/models/payloadenvironment.js";
+import { ThreeHundredAndThirtyTwo } from "@vercel/sdk/models/twohundredandninety.js";
 
 let value: ThreeHundredAndThirtyTwo = {
-  deletedCount: 1446.46,
-  actorTokenId: "<id>",
+  team: {
+    id: "<id>",
+    name: "<value>",
+  },
+  configuration: {
+    id: "<id>",
+  },
+  peering: {
+    id: "<id>",
+  },
 };
 ```
 
 ## Fields
 
-| Field                                                                                | Type                                                                                 | Required                                                                             | Description                                                                          |
-| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| `deletedCount`                                                                       | *number*                                                                             | :heavy_check_mark:                                                                   | N/A                                                                                  |
-| `actorTokenId`                                                                       | *string*                                                                             | :heavy_check_mark:                                                                   | The token's public ID.                                                               |
-| `ip`                                                                                 | *string*                                                                             | :heavy_minus_sign:                                                                   | N/A                                                                                  |
-| `geolocation`                                                                        | [models.UserEventPayload332Geolocation](../models/usereventpayload332geolocation.md) | :heavy_minus_sign:                                                                   | N/A                                                                                  |
-| `userAgent`                                                                          | *string*                                                                             | :heavy_minus_sign:                                                                   | N/A                                                                                  |
-| `reqId`                                                                              | *string*                                                                             | :heavy_minus_sign:                                                                   | N/A                                                                                  |
-| `reqUrl`                                                                             | *string*                                                                             | :heavy_minus_sign:                                                                   | N/A                                                                                  |
+| Field                                                                                    | Type                                                                                     | Required                                                                                 | Description                                                                              |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `team`                                                                                   | [models.UserEventPayload332Team](../models/usereventpayload332team.md)                   | :heavy_check_mark:                                                                       | N/A                                                                                      |
+| `configuration`                                                                          | [models.UserEventPayload332Configuration](../models/usereventpayload332configuration.md) | :heavy_check_mark:                                                                       | N/A                                                                                      |
+| `peering`                                                                                | [models.UserEventPayloadPeering](../models/usereventpayloadpeering.md)                   | :heavy_check_mark:                                                                       | N/A                                                                                      |
+| `newName`                                                                                | *string*                                                                                 | :heavy_minus_sign:                                                                       | N/A                                                                                      |

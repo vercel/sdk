@@ -5,11 +5,11 @@
 ```typescript
 import { ResponseBodyKind } from "@vercel/sdk/models/updateflagop.js";
 
-let value: ResponseBodyKind = "string";
+let value: ResponseBodyKind = "boolean";
 ```
 
 ## Values
 
 ```typescript
-"string" | "number" | "boolean" | "json"
+"boolean" | "json" | "number" | "string"
 ```

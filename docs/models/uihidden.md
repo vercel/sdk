@@ -20,6 +20,6 @@ const value: boolean = true;
 ### `models.UiHidden3`
 
 ```typescript
-const value: models.UiHidden3 = "update";
+const value: models.UiHidden3 = "create";
 ```
 

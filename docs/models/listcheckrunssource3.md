@@ -7,7 +7,7 @@ import { ListCheckRunsSource3 } from "@vercel/sdk/models/listcheckrunsop.js";
 
 let value: ListCheckRunsSource3 = {
   kind: "git-provider",
-  provider: "github",
+  provider: "bitbucket",
   externalCheckName: "<value>",
 };
 ```

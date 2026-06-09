@@ -25,9 +25,9 @@ export type GetSDKKeysRequest = {
 };
 
 export const GetSDKKeysType = {
-  Server: "server",
-  Mobile: "mobile",
   Client: "client",
+  Mobile: "mobile",
+  Server: "server",
 } as const;
 export type GetSDKKeysType = ClosedEnum<typeof GetSDKKeysType>;
 

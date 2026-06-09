@@ -11,5 +11,5 @@ let value: RemoveProjectEnvTargetProjectsResponse1 = "preview";
 ## Values
 
 ```typescript
-"production" | "preview" | "development"
+"development" | "preview" | "production"
 ```

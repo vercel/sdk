@@ -11,14 +11,14 @@ import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export const Reason = {
+  BlockedForPlatformAbuse: "BLOCKED_FOR_PLATFORM_ABUSE",
+  EnterpriseTrialEnded: "ENTERPRISE_TRIAL_ENDED",
   EnterpriseUnpaidInvoice: "ENTERPRISE_UNPAID_INVOICE",
   ExposureCapExceeded: "EXPOSURE_CAP_EXCEEDED",
+  FairUseLimitsExceeded: "FAIR_USE_LIMITS_EXCEEDED",
   SubscriptionCanceled: "SUBSCRIPTION_CANCELED",
   SubscriptionExpired: "SUBSCRIPTION_EXPIRED",
   UnpaidInvoice: "UNPAID_INVOICE",
-  EnterpriseTrialEnded: "ENTERPRISE_TRIAL_ENDED",
-  FairUseLimitsExceeded: "FAIR_USE_LIMITS_EXCEEDED",
-  BlockedForPlatformAbuse: "BLOCKED_FOR_PLATFORM_ABUSE",
 } as const;
 export type Reason = ClosedEnum<typeof Reason>;
 
@@ -26,6 +26,7 @@ export const BlockedDueToOverageType = {
   AnalyticsUsage: "analyticsUsage",
   Artifacts: "artifacts",
   Bandwidth: "bandwidth",
+  BlobDataTransfer: "blobDataTransfer",
   BlobTotalAdvancedRequests: "blobTotalAdvancedRequests",
   BlobTotalAvgSizeInBytes: "blobTotalAvgSizeInBytes",
   BlobTotalGetResponseObjectSizeInBytes:
@@ -38,8 +39,8 @@ export const BlockedDueToOverageType = {
   EdgeConfigWrite: "edgeConfigWrite",
   EdgeFunctionExecutionUnits: "edgeFunctionExecutionUnits",
   EdgeMiddlewareInvocations: "edgeMiddlewareInvocations",
-  EdgeRequestAdditionalCpuDuration: "edgeRequestAdditionalCpuDuration",
   EdgeRequest: "edgeRequest",
+  EdgeRequestAdditionalCpuDuration: "edgeRequestAdditionalCpuDuration",
   ElasticConcurrencyBuildSlots: "elasticConcurrencyBuildSlots",
   FastDataTransfer: "fastDataTransfer",
   FastOriginTransfer: "fastOriginTransfer",
@@ -52,7 +53,6 @@ export const BlockedDueToOverageType = {
   ImageOptimizationTransformation: "imageOptimizationTransformation",
   LogDrainsVolume: "logDrainsVolume",
   MonitoringMetric: "monitoringMetric",
-  BlobDataTransfer: "blobDataTransfer",
   ObservabilityEvent: "observabilityEvent",
   OnDemandConcurrencyMinutes: "onDemandConcurrencyMinutes",
   RuntimeCacheRead: "runtimeCacheRead",
@@ -112,88 +112,6 @@ export type BuildQueue = {
    * An object containing infomation related to the amount of platform resources may be allocated to the User account.
    */
   configuration?: AuthUserConfiguration | undefined;
-};
-
-/**
- * An object containing infomation related to the amount of platform resources may be allocated to the User account.
- */
-export const AuthUserDefault = {
-  Enhanced: "enhanced",
-  Turbo: "turbo",
-  Standard: "standard",
-  Elastic: "elastic",
-} as const;
-/**
- * An object containing infomation related to the amount of platform resources may be allocated to the User account.
- */
-export type AuthUserDefault = ClosedEnum<typeof AuthUserDefault>;
-
-/**
- * An object containing infomation related to the amount of platform resources may be allocated to the User account.
- */
-export const PurchaseType = {
-  Enhanced: "enhanced",
-  Turbo: "turbo",
-  Standard: "standard",
-} as const;
-/**
- * An object containing infomation related to the amount of platform resources may be allocated to the User account.
- */
-export type PurchaseType = ClosedEnum<typeof PurchaseType>;
-
-/**
- * An object containing infomation related to the amount of platform resources may be allocated to the User account.
- */
-export const DefaultPurchaseType = {
-  Enhanced: "enhanced",
-  Turbo: "turbo",
-  Standard: "standard",
-} as const;
-/**
- * An object containing infomation related to the amount of platform resources may be allocated to the User account.
- */
-export type DefaultPurchaseType = ClosedEnum<typeof DefaultPurchaseType>;
-
-/**
- * An object containing infomation related to the amount of platform resources may be allocated to the User account.
- */
-export const MachineSelectionType = {
-  Fixed: "fixed",
-  Elastic: "elastic",
-} as const;
-/**
- * An object containing infomation related to the amount of platform resources may be allocated to the User account.
- */
-export type MachineSelectionType = ClosedEnum<typeof MachineSelectionType>;
-
-/**
- * An object containing infomation related to the amount of platform resources may be allocated to the User account.
- */
-export type AuthUserBuildMachine = {
-  /**
-   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
-   */
-  default?: AuthUserDefault | undefined;
-  /**
-   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
-   */
-  purchaseType?: PurchaseType | undefined;
-  /**
-   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
-   */
-  defaultPurchaseType?: DefaultPurchaseType | undefined;
-  /**
-   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
-   */
-  cores?: number | undefined;
-  /**
-   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
-   */
-  memory?: number | undefined;
-  /**
-   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
-   */
-  machineSelectionType?: MachineSelectionType | undefined;
 };
 
 /**
@@ -321,10 +239,6 @@ export type AuthUserResourceConfig = {
   /**
    * An object containing infomation related to the amount of platform resources may be allocated to the User account.
    */
-  buildMachine?: AuthUserBuildMachine | undefined;
-  /**
-   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
-   */
   security?: AuthUserSecurity | undefined;
   /**
    * An object containing infomation related to the amount of platform resources may be allocated to the User account.
@@ -333,22 +247,22 @@ export type AuthUserResourceConfig = {
 };
 
 export const ViewPreference = {
-  List: "list",
   Cards: "cards",
+  List: "list",
 } as const;
 export type ViewPreference = ClosedEnum<typeof ViewPreference>;
 
 export const FavoritesViewPreference = {
-  Open: "open",
   Closed: "closed",
+  Open: "open",
 } as const;
 export type FavoritesViewPreference = ClosedEnum<
   typeof FavoritesViewPreference
 >;
 
 export const RecentsViewPreference = {
-  Open: "open",
   Closed: "closed",
+  Open: "open",
 } as const;
 export type RecentsViewPreference = ClosedEnum<typeof RecentsViewPreference>;
 
@@ -367,11 +281,11 @@ export type ImportFlowGitNamespace = string | number;
 export type ImportFlowGitNamespaceId = string | number;
 
 export const ImportFlowGitProvider = {
-  Gitlab: "gitlab",
   Bitbucket: "bitbucket",
   Github: "github",
-  GithubLimited: "github-limited",
   GithubCustomHost: "github-custom-host",
+  GithubLimited: "github-limited",
+  Gitlab: "gitlab",
   Vercel: "vercel",
 } as const;
 export type ImportFlowGitProvider = ClosedEnum<typeof ImportFlowGitProvider>;
@@ -429,6 +343,18 @@ export type WebAnalytics = {
  */
 export type FeatureBlocks = {
   webAnalytics?: WebAnalytics | undefined;
+};
+
+export type ManagedTeams = {
+  name: string;
+  avatar: string | null;
+};
+
+/**
+ * Context for the Update Account screen. Present only when `isAccountUpdateRequired` is true. `managedTeams` is empty for orphan mode (user matches an EMU domain but is not on the team).
+ */
+export type AccountUpdateContext = {
+  managedTeams: Array<ManagedTeams>;
 };
 
 /**
@@ -489,6 +415,14 @@ export type AuthUser = {
    * Feature blocks for the user
    */
   featureBlocks?: FeatureBlocks | undefined;
+  /**
+   * When `true`, the user must complete the EMU Update Account flow before they can use the dashboard.
+   */
+  isAccountUpdateRequired?: boolean | undefined;
+  /**
+   * Context for the Update Account screen. Present only when `isAccountUpdateRequired` is true. `managedTeams` is empty for orphan mode (user matches an EMU domain but is not on the team).
+   */
+  accountUpdateContext?: AccountUpdateContext | undefined;
   /**
    * The User's unique identifier.
    */
@@ -688,94 +622,6 @@ export function buildQueueFromJSON(
 }
 
 /** @internal */
-export const AuthUserDefault$inboundSchema: z.ZodNativeEnum<
-  typeof AuthUserDefault
-> = z.nativeEnum(AuthUserDefault);
-/** @internal */
-export const AuthUserDefault$outboundSchema: z.ZodNativeEnum<
-  typeof AuthUserDefault
-> = AuthUserDefault$inboundSchema;
-
-/** @internal */
-export const PurchaseType$inboundSchema: z.ZodNativeEnum<typeof PurchaseType> =
-  z.nativeEnum(PurchaseType);
-/** @internal */
-export const PurchaseType$outboundSchema: z.ZodNativeEnum<typeof PurchaseType> =
-  PurchaseType$inboundSchema;
-
-/** @internal */
-export const DefaultPurchaseType$inboundSchema: z.ZodNativeEnum<
-  typeof DefaultPurchaseType
-> = z.nativeEnum(DefaultPurchaseType);
-/** @internal */
-export const DefaultPurchaseType$outboundSchema: z.ZodNativeEnum<
-  typeof DefaultPurchaseType
-> = DefaultPurchaseType$inboundSchema;
-
-/** @internal */
-export const MachineSelectionType$inboundSchema: z.ZodNativeEnum<
-  typeof MachineSelectionType
-> = z.nativeEnum(MachineSelectionType);
-/** @internal */
-export const MachineSelectionType$outboundSchema: z.ZodNativeEnum<
-  typeof MachineSelectionType
-> = MachineSelectionType$inboundSchema;
-
-/** @internal */
-export const AuthUserBuildMachine$inboundSchema: z.ZodType<
-  AuthUserBuildMachine,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  default: types.optional(AuthUserDefault$inboundSchema),
-  purchaseType: types.optional(PurchaseType$inboundSchema),
-  defaultPurchaseType: types.optional(DefaultPurchaseType$inboundSchema),
-  cores: types.optional(types.number()),
-  memory: types.optional(types.number()),
-  machineSelectionType: types.optional(MachineSelectionType$inboundSchema),
-});
-/** @internal */
-export type AuthUserBuildMachine$Outbound = {
-  default?: string | undefined;
-  purchaseType?: string | undefined;
-  defaultPurchaseType?: string | undefined;
-  cores?: number | undefined;
-  memory?: number | undefined;
-  machineSelectionType?: string | undefined;
-};
-
-/** @internal */
-export const AuthUserBuildMachine$outboundSchema: z.ZodType<
-  AuthUserBuildMachine$Outbound,
-  z.ZodTypeDef,
-  AuthUserBuildMachine
-> = z.object({
-  default: AuthUserDefault$outboundSchema.optional(),
-  purchaseType: PurchaseType$outboundSchema.optional(),
-  defaultPurchaseType: DefaultPurchaseType$outboundSchema.optional(),
-  cores: z.number().optional(),
-  memory: z.number().optional(),
-  machineSelectionType: MachineSelectionType$outboundSchema.optional(),
-});
-
-export function authUserBuildMachineToJSON(
-  authUserBuildMachine: AuthUserBuildMachine,
-): string {
-  return JSON.stringify(
-    AuthUserBuildMachine$outboundSchema.parse(authUserBuildMachine),
-  );
-}
-export function authUserBuildMachineFromJSON(
-  jsonString: string,
-): SafeParseResult<AuthUserBuildMachine, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AuthUserBuildMachine$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AuthUserBuildMachine' from JSON`,
-  );
-}
-
-/** @internal */
 export const AuthUserSecurity$inboundSchema: z.ZodType<
   AuthUserSecurity,
   z.ZodTypeDef,
@@ -855,9 +701,6 @@ export const AuthUserResourceConfig$inboundSchema: z.ZodType<
   flagsExplorerOverridesThreshold: types.optional(types.number()),
   flagsExplorerUnlimitedOverrides: types.optional(types.boolean()),
   customEnvironmentsPerProject: types.optional(types.number()),
-  buildMachine: types.optional(
-    z.lazy(() => AuthUserBuildMachine$inboundSchema),
-  ),
   security: types.optional(z.lazy(() => AuthUserSecurity$inboundSchema)),
   bulkRedirectsFreeLimitOverride: types.optional(types.number()),
 });
@@ -887,7 +730,6 @@ export type AuthUserResourceConfig$Outbound = {
   flagsExplorerOverridesThreshold?: number | undefined;
   flagsExplorerUnlimitedOverrides?: boolean | undefined;
   customEnvironmentsPerProject?: number | undefined;
-  buildMachine?: AuthUserBuildMachine$Outbound | undefined;
   security?: AuthUserSecurity$Outbound | undefined;
   bulkRedirectsFreeLimitOverride?: number | undefined;
 };
@@ -923,7 +765,6 @@ export const AuthUserResourceConfig$outboundSchema: z.ZodType<
   flagsExplorerOverridesThreshold: z.number().optional(),
   flagsExplorerUnlimitedOverrides: z.boolean().optional(),
   customEnvironmentsPerProject: z.number().optional(),
-  buildMachine: z.lazy(() => AuthUserBuildMachine$outboundSchema).optional(),
   security: z.lazy(() => AuthUserSecurity$outboundSchema).optional(),
   bulkRedirectsFreeLimitOverride: z.number().optional(),
 });
@@ -1443,6 +1284,83 @@ export function featureBlocksFromJSON(
 }
 
 /** @internal */
+export const ManagedTeams$inboundSchema: z.ZodType<
+  ManagedTeams,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  name: types.string(),
+  avatar: types.nullable(types.string()),
+});
+/** @internal */
+export type ManagedTeams$Outbound = {
+  name: string;
+  avatar: string | null;
+};
+
+/** @internal */
+export const ManagedTeams$outboundSchema: z.ZodType<
+  ManagedTeams$Outbound,
+  z.ZodTypeDef,
+  ManagedTeams
+> = z.object({
+  name: z.string(),
+  avatar: z.nullable(z.string()),
+});
+
+export function managedTeamsToJSON(managedTeams: ManagedTeams): string {
+  return JSON.stringify(ManagedTeams$outboundSchema.parse(managedTeams));
+}
+export function managedTeamsFromJSON(
+  jsonString: string,
+): SafeParseResult<ManagedTeams, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ManagedTeams$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ManagedTeams' from JSON`,
+  );
+}
+
+/** @internal */
+export const AccountUpdateContext$inboundSchema: z.ZodType<
+  AccountUpdateContext,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  managedTeams: z.array(z.lazy(() => ManagedTeams$inboundSchema)),
+});
+/** @internal */
+export type AccountUpdateContext$Outbound = {
+  managedTeams: Array<ManagedTeams$Outbound>;
+};
+
+/** @internal */
+export const AccountUpdateContext$outboundSchema: z.ZodType<
+  AccountUpdateContext$Outbound,
+  z.ZodTypeDef,
+  AccountUpdateContext
+> = z.object({
+  managedTeams: z.array(z.lazy(() => ManagedTeams$outboundSchema)),
+});
+
+export function accountUpdateContextToJSON(
+  accountUpdateContext: AccountUpdateContext,
+): string {
+  return JSON.stringify(
+    AccountUpdateContext$outboundSchema.parse(accountUpdateContext),
+  );
+}
+export function accountUpdateContextFromJSON(
+  jsonString: string,
+): SafeParseResult<AccountUpdateContext, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AccountUpdateContext$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AccountUpdateContext' from JSON`,
+  );
+}
+
+/** @internal */
 export const AuthUser$inboundSchema: z.ZodType<
   AuthUser,
   z.ZodTypeDef,
@@ -1479,6 +1397,10 @@ export const AuthUser$inboundSchema: z.ZodType<
   ),
   dataCache: types.optional(z.lazy(() => DataCache$inboundSchema)),
   featureBlocks: types.optional(z.lazy(() => FeatureBlocks$inboundSchema)),
+  isAccountUpdateRequired: types.optional(types.boolean()),
+  accountUpdateContext: types.optional(
+    z.lazy(() => AccountUpdateContext$inboundSchema),
+  ),
   id: types.string(),
   email: types.string(),
   name: types.nullable(types.string()),
@@ -1509,6 +1431,8 @@ export type AuthUser$Outbound = {
   remoteCaching?: AuthUserRemoteCaching$Outbound | undefined;
   dataCache?: DataCache$Outbound | undefined;
   featureBlocks?: FeatureBlocks$Outbound | undefined;
+  isAccountUpdateRequired?: boolean | undefined;
+  accountUpdateContext?: AccountUpdateContext$Outbound | undefined;
   id: string;
   email: string;
   name: string | null;
@@ -1550,6 +1474,9 @@ export const AuthUser$outboundSchema: z.ZodType<
   remoteCaching: z.lazy(() => AuthUserRemoteCaching$outboundSchema).optional(),
   dataCache: z.lazy(() => DataCache$outboundSchema).optional(),
   featureBlocks: z.lazy(() => FeatureBlocks$outboundSchema).optional(),
+  isAccountUpdateRequired: z.boolean().optional(),
+  accountUpdateContext: z.lazy(() => AccountUpdateContext$outboundSchema)
+    .optional(),
   id: z.string(),
   email: z.string(),
   name: z.nullable(z.string()),

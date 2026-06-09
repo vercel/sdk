@@ -13,5 +13,5 @@ let value: ConfiguredBy = "CNAME";
 ## Values
 
 ```typescript
-"A" | "CNAME" | "http" | "dns-01"
+"A" | "CNAME" | "dns-01" | "http"
 ```

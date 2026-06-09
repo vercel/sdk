@@ -13,5 +13,5 @@ let value: CreateLogDrainLogDrainsEnvironments = "production";
 ## Values
 
 ```typescript
-"production" | "preview"
+"preview" | "production"
 ```

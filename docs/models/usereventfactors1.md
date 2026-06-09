@@ -3,10 +3,10 @@
 ## Example Usage
 
 ```typescript
-import { UserEventFactors1 } from "@vercel/sdk/models/twohundredandtwentysix.js";
+import { UserEventFactors1 } from "@vercel/sdk/models/twohundredandthirtyone.js";
 
 let value: UserEventFactors1 = {
-  origin: "email",
+  origin: "apple",
 };
 ```
 

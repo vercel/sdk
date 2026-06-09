@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { ProjectConnectionScopes } from "@vercel/sdk/models/createintegrationstoredirectresponsebody.js";
+import { ProjectConnectionScopes } from "@vercel/sdk/models/createintegrationstoredirectnotification.js";
 
-let value: ProjectConnectionScopes = "read:domain";
+let value: ProjectConnectionScopes = "read-write:deployment-check";
 ```
 
 ## Values
 
 ```typescript
-"read:deployment" | "read:domain" | "read:project" | "read-write:deployment" | "read-write:deployment-check" | "read-write:domain" | "read-write:global-project-env-vars" | "read-write:integration-deployment-action" | "read-write:log-drain" | "read-write:drains" | "read-write:project-env-vars" | "read-write:project-protection-bypass"
+"read-write:deployment" | "read-write:deployment-check" | "read-write:domain" | "read-write:drains" | "read-write:global-project-env-vars" | "read-write:integration-deployment-action" | "read-write:log-drain" | "read-write:project-env-vars" | "read-write:project-protection-bypass" | "read:deployment" | "read:domain" | "read:project"
 ```

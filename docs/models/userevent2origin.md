@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { UserEvent2Origin } from "@vercel/sdk/models/edgemiddlewareinvocations.js";
+import { UserEvent2Origin } from "@vercel/sdk/models/connectdatatransfer.js";
 
-let value: UserEvent2Origin = "totp";
+let value: UserEvent2Origin = "recovery-code";
 ```
 
 ## Values
 
 ```typescript
-"totp" | "webauthn" | "recovery-code"
+"recovery-code" | "totp" | "webauthn"
 ```

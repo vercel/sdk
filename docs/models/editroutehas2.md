@@ -6,7 +6,7 @@
 import { EditRouteHas2 } from "@vercel/sdk/models/editrouteop.js";
 
 let value: EditRouteHas2 = {
-  type: "header",
+  type: "cookie",
   key: "<key>",
 };
 ```

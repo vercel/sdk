@@ -5,11 +5,11 @@
 ```typescript
 import { CreateFlagFeatureFlagsDirectionality } from "@vercel/sdk/models/createflagop.js";
 
-let value: CreateFlagFeatureFlagsDirectionality = "decreaseIsGood";
+let value: CreateFlagFeatureFlagsDirectionality = "increaseIsGood";
 ```
 
 ## Values
 
 ```typescript
-"increaseIsGood" | "decreaseIsGood"
+"decreaseIsGood" | "increaseIsGood"
 ```

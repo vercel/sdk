@@ -7,11 +7,11 @@ The git provider type associated with gitUserId.
 ```typescript
 import { CreateDeploymentGitProvider } from "@vercel/sdk/models/createdeploymentresponsebody.js";
 
-let value: CreateDeploymentGitProvider = "github";
+let value: CreateDeploymentGitProvider = "gitlab";
 ```
 
 ## Values
 
 ```typescript
-"gitlab" | "bitbucket" | "github"
+"bitbucket" | "github" | "gitlab"
 ```

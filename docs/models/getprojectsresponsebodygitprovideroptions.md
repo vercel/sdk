@@ -3,10 +3,10 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsResponseBodyGitProviderOptions } from "@vercel/sdk/models/getprojectslink4.js";
+import { GetProjectsResponseBodyGitProviderOptions } from "@vercel/sdk/models/getprojectscontenthint4.js";
 
 let value: GetProjectsResponseBodyGitProviderOptions = {
-  createDeployments: "disabled",
+  createDeployments: "enabled",
 };
 ```
 

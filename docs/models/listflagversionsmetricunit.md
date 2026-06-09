@@ -11,5 +11,5 @@ let value: ListFlagVersionsMetricUnit = "visitor";
 ## Values
 
 ```typescript
-"user" | "session" | "visitor"
+"session" | "user" | "visitor"
 ```

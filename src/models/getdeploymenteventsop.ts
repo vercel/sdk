@@ -82,18 +82,18 @@ export type ResponseBodyInfo = {
 };
 
 export const GetDeploymentEventsResponseBodyDeploymentsResponseType = {
-  Delimiter: "delimiter",
   Command: "command",
-  Stdout: "stdout",
-  Stderr: "stderr",
-  Exit: "exit",
+  Delimiter: "delimiter",
   DeploymentState: "deployment-state",
+  EdgeFunctionInvocation: "edge-function-invocation",
+  Exit: "exit",
+  Fatal: "fatal",
+  Metric: "metric",
   Middleware: "middleware",
   MiddlewareInvocation: "middleware-invocation",
-  EdgeFunctionInvocation: "edge-function-invocation",
-  Metric: "metric",
   Report: "report",
-  Fatal: "fatal",
+  Stderr: "stderr",
+  Stdout: "stdout",
 } as const;
 export type GetDeploymentEventsResponseBodyDeploymentsResponseType = ClosedEnum<
   typeof GetDeploymentEventsResponseBodyDeploymentsResponseType
@@ -118,18 +118,18 @@ export type GetDeploymentEventsResponseBodyDeployments2 = {
 };
 
 export const GetDeploymentEventsResponseBodyDeploymentsType = {
-  Delimiter: "delimiter",
   Command: "command",
-  Stdout: "stdout",
-  Stderr: "stderr",
-  Exit: "exit",
+  Delimiter: "delimiter",
   DeploymentState: "deployment-state",
+  EdgeFunctionInvocation: "edge-function-invocation",
+  Exit: "exit",
+  Fatal: "fatal",
+  Metric: "metric",
   Middleware: "middleware",
   MiddlewareInvocation: "middleware-invocation",
-  EdgeFunctionInvocation: "edge-function-invocation",
-  Metric: "metric",
   Report: "report",
-  Fatal: "fatal",
+  Stderr: "stderr",
+  Stdout: "stdout",
 } as const;
 export type GetDeploymentEventsResponseBodyDeploymentsType = ClosedEnum<
   typeof GetDeploymentEventsResponseBodyDeploymentsType
@@ -145,22 +145,22 @@ export type GetDeploymentEventsResponseBodyInfo = {
 };
 
 export const ResponseBodyVercelCache = {
-  Miss: "MISS",
-  Hit: "HIT",
-  Stale: "STALE",
   Bypass: "BYPASS",
+  Hit: "HIT",
+  Miss: "MISS",
   Prerender: "PRERENDER",
   Revalidated: "REVALIDATED",
+  Stale: "STALE",
 } as const;
 export type ResponseBodyVercelCache = ClosedEnum<
   typeof ResponseBodyVercelCache
 >;
 
 export const ResponseBodyWafAction = {
-  Log: "log",
+  Bypass: "bypass",
   Challenge: "challenge",
   Deny: "deny",
-  Bypass: "bypass",
+  Log: "log",
   RateLimit: "rate_limit",
 } as const;
 export type ResponseBodyWafAction = ClosedEnum<typeof ResponseBodyWafAction>;
@@ -220,18 +220,18 @@ export type Info = {
 };
 
 export const GetDeploymentEventsResponseBodyType = {
-  Delimiter: "delimiter",
   Command: "command",
-  Stdout: "stdout",
-  Stderr: "stderr",
-  Exit: "exit",
+  Delimiter: "delimiter",
   DeploymentState: "deployment-state",
+  EdgeFunctionInvocation: "edge-function-invocation",
+  Exit: "exit",
+  Fatal: "fatal",
+  Metric: "metric",
   Middleware: "middleware",
   MiddlewareInvocation: "middleware-invocation",
-  EdgeFunctionInvocation: "edge-function-invocation",
-  Metric: "metric",
   Report: "report",
-  Fatal: "fatal",
+  Stderr: "stderr",
+  Stdout: "stdout",
 } as const;
 export type GetDeploymentEventsResponseBodyType = ClosedEnum<
   typeof GetDeploymentEventsResponseBodyType
@@ -258,18 +258,18 @@ export type GetDeploymentEventsResponseBody2 = {
 };
 
 export const ResponseBodyType = {
-  Delimiter: "delimiter",
   Command: "command",
-  Stdout: "stdout",
-  Stderr: "stderr",
-  Exit: "exit",
+  Delimiter: "delimiter",
   DeploymentState: "deployment-state",
+  EdgeFunctionInvocation: "edge-function-invocation",
+  Exit: "exit",
+  Fatal: "fatal",
+  Metric: "metric",
   Middleware: "middleware",
   MiddlewareInvocation: "middleware-invocation",
-  EdgeFunctionInvocation: "edge-function-invocation",
-  Metric: "metric",
   Report: "report",
-  Fatal: "fatal",
+  Stderr: "stderr",
+  Stdout: "stdout",
 } as const;
 export type ResponseBodyType = ClosedEnum<typeof ResponseBodyType>;
 
@@ -283,20 +283,20 @@ export type GetDeploymentEventsResponseBodyDeploymentsInfo = {
 };
 
 export const VercelCache = {
-  Miss: "MISS",
-  Hit: "HIT",
-  Stale: "STALE",
   Bypass: "BYPASS",
+  Hit: "HIT",
+  Miss: "MISS",
   Prerender: "PRERENDER",
   Revalidated: "REVALIDATED",
+  Stale: "STALE",
 } as const;
 export type VercelCache = ClosedEnum<typeof VercelCache>;
 
 export const WafAction = {
-  Log: "log",
+  Bypass: "bypass",
   Challenge: "challenge",
   Deny: "deny",
-  Bypass: "bypass",
+  Log: "log",
   RateLimit: "rate_limit",
 } as const;
 export type WafAction = ClosedEnum<typeof WafAction>;

@@ -5,17 +5,31 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndFiftyThree } from "@vercel/sdk/models/edgemiddlewareinvocations.js";
+import { OneHundredAndFiftyThree } from "@vercel/sdk/models/connectdatatransfer.js";
 
 let value: OneHundredAndFiftyThree = {
-  oldName: "<value>",
-  newName: "<value>",
+  projectId: "<id>",
+  previous: {
+    enabled: false,
+    mode: "<value>",
+    enforcePercentage: 3063.44,
+    newResourceBlockingPolicy: "allow",
+    allowUnsafeScriptSrcKeywords: false,
+  },
+  next: {
+    enabled: true,
+    mode: "<value>",
+    enforcePercentage: 7438.21,
+    newResourceBlockingPolicy: "block",
+    allowUnsafeScriptSrcKeywords: false,
+  },
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `oldName`          | *string*           | :heavy_check_mark: | N/A                |
-| `newName`          | *string*           | :heavy_check_mark: | N/A                |
+| Field                                    | Type                                     | Required                                 | Description                              |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| `projectId`                              | *string*                                 | :heavy_check_mark:                       | N/A                                      |
+| `previous`                               | [models.Previous](../models/previous.md) | :heavy_check_mark:                       | N/A                                      |
+| `next`                                   | [models.Next](../models/next.md)         | :heavy_check_mark:                       | N/A                                      |

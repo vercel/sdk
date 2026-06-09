@@ -3,10 +3,10 @@
 ## Example Usage
 
 ```typescript
-import { UpdateProjectTrustedIps1 } from "@vercel/sdk/models/updateprojectresponsebody.js";
+import { UpdateProjectTrustedIps1 } from "@vercel/sdk/models/updateprojectvalue.js";
 
 let value: UpdateProjectTrustedIps1 = {
-  deploymentType: "production",
+  deploymentType: "all",
   addresses: [
     {
       value: "<value>",

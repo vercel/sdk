@@ -13,5 +13,5 @@ let value: CreateDeploymentState = "TIMEOUT";
 ## Values
 
 ```typescript
-"PENDING" | "COMPLETE" | "TIMEOUT"
+"COMPLETE" | "PENDING" | "TIMEOUT"
 ```

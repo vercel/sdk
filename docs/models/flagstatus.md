@@ -5,11 +5,11 @@
 ```typescript
 import { FlagStatus } from "@vercel/sdk/models/flag.js";
 
-let value: FlagStatus = "running";
+let value: FlagStatus = "draft";
 ```
 
 ## Values
 
 ```typescript
-"draft" | "running" | "paused" | "closed"
+"closed" | "draft" | "paused" | "running"
 ```

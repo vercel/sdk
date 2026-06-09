@@ -35,9 +35,9 @@ export type GetProjectCheckRequires = ClosedEnum<
 >;
 
 export const GetProjectCheckSourceProvider = {
+  Bitbucket: "bitbucket",
   Github: "github",
   Gitlab: "gitlab",
-  Bitbucket: "bitbucket",
 } as const;
 export type GetProjectCheckSourceProvider = ClosedEnum<
   typeof GetProjectCheckSourceProvider
@@ -68,19 +68,19 @@ export type GetProjectCheckSource =
   | GetProjectCheckSource3;
 
 export const GetProjectCheckBlocks = {
-  None: "none",
   BuildStart: "build-start",
-  DeploymentStart: "deployment-start",
   DeploymentAlias: "deployment-alias",
   DeploymentPromotion: "deployment-promotion",
+  DeploymentStart: "deployment-start",
+  None: "none",
 } as const;
 export type GetProjectCheckBlocks = ClosedEnum<typeof GetProjectCheckBlocks>;
 
 export const GetProjectCheckSourceKind = {
-  Integration: "integration",
-  Webhook: "webhook",
   GitProvider: "git-provider",
+  Integration: "integration",
   Vercel: "vercel",
+  Webhook: "webhook",
 } as const;
 export type GetProjectCheckSourceKind = ClosedEnum<
   typeof GetProjectCheckSourceKind

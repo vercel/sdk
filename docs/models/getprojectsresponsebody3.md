@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsResponseBody3 } from "@vercel/sdk/models/getprojectsresponsebodytargets.js";
+import { GetProjectsResponseBody3 } from "@vercel/sdk/models/getprojectsresponsebodyfunctiondefaultmemorytype.js";
 
 let value: GetProjectsResponseBody3 = {
   projects: [
@@ -20,7 +20,7 @@ let value: GetProjectsResponseBody3 = {
       directoryListing: true,
       id: "<id>",
       name: "<value>",
-      nodeVersion: "10.x",
+      nodeVersion: "24.x",
       resourceConfig: {
         functionDefaultRegions: [
           "<value 1>",

@@ -14,6 +14,7 @@ const value: models.PasswordProtection1 = {
 ### `models.PasswordProtection2`
 
 ```typescript
-const value: models.PasswordProtection2 = "all_except_custom_domains";
+const value: models.PasswordProtection2 =
+  "prod_deployment_urls_and_all_previews";
 ```
 

@@ -59,7 +59,7 @@ export type GetDeploymentsRequest = {
    */
   until?: number | undefined;
   /**
-   * Filter deployments based on their state (`BUILDING`, `ERROR`, `INITIALIZING`, `QUEUED`, `READY`, `CANCELED`)
+   * Filter deployments based on their state (`BUILDING`, `ERROR`, `INITIALIZING`, `QUEUED`, `READY`, `CANCELED`, `BLOCKED`)
    */
   state?: string | undefined;
   /**
@@ -91,6 +91,7 @@ export const GetDeploymentsSource = {
   ApiTriggerGitDeploy: "api-trigger-git-deploy",
   Cli: "cli",
   CloneRepo: "clone/repo",
+  Drop: "drop",
   Git: "git",
   Import: "import",
   ImportRepo: "import/repo",
@@ -106,14 +107,14 @@ export type GetDeploymentsSource = ClosedEnum<typeof GetDeploymentsSource>;
  * In which state is the deployment.
  */
 export const GetDeploymentsState = {
-  Building: "BUILDING",
-  Error: "ERROR",
   Blocked: "BLOCKED",
+  Building: "BUILDING",
+  Canceled: "CANCELED",
+  Deleted: "DELETED",
+  Error: "ERROR",
   Initializing: "INITIALIZING",
   Queued: "QUEUED",
   Ready: "READY",
-  Canceled: "CANCELED",
-  Deleted: "DELETED",
 } as const;
 /**
  * In which state is the deployment.
@@ -124,14 +125,14 @@ export type GetDeploymentsState = ClosedEnum<typeof GetDeploymentsState>;
  * In which state is the deployment.
  */
 export const GetDeploymentsReadyState = {
-  Building: "BUILDING",
-  Error: "ERROR",
   Blocked: "BLOCKED",
+  Building: "BUILDING",
+  Canceled: "CANCELED",
+  Deleted: "DELETED",
+  Error: "ERROR",
   Initializing: "INITIALIZING",
   Queued: "QUEUED",
   Ready: "READY",
-  Canceled: "CANCELED",
-  Deleted: "DELETED",
 } as const;
 /**
  * In which state is the deployment.
@@ -203,9 +204,9 @@ export type GetDeploymentsAliasAssigned = number | boolean;
  * Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of gradually transitioning production traffic - PROMOTED: has seen production traffic
  */
 export const GetDeploymentsReadySubstate = {
-  Staged: "STAGED",
-  Rolling: "ROLLING",
   Promoted: "PROMOTED",
+  Rolling: "ROLLING",
+  Staged: "STAGED",
 } as const;
 /**
  * Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of gradually transitioning production traffic - PROMOTED: has seen production traffic
@@ -218,9 +219,9 @@ export type GetDeploymentsReadySubstate = ClosedEnum<
  * State of all registered checks
  */
 export const GetDeploymentsChecksState = {
+  Completed: "completed",
   Registered: "registered",
   Running: "running",
-  Completed: "completed",
 } as const;
 /**
  * State of all registered checks
@@ -233,10 +234,10 @@ export type GetDeploymentsChecksState = ClosedEnum<
  * Conclusion for checks
  */
 export const GetDeploymentsChecksConclusion = {
-  Succeeded: "succeeded",
+  Canceled: "canceled",
   Failed: "failed",
   Skipped: "skipped",
-  Canceled: "canceled",
+  Succeeded: "succeeded",
 } as const;
 /**
  * Conclusion for checks
@@ -246,9 +247,9 @@ export type GetDeploymentsChecksConclusion = ClosedEnum<
 >;
 
 export const GetDeploymentsDeploymentsResponseState = {
-  Succeeded: "succeeded",
   Failed: "failed",
   Pending: "pending",
+  Succeeded: "succeeded",
 } as const;
 export type GetDeploymentsDeploymentsResponseState = ClosedEnum<
   typeof GetDeploymentsDeploymentsResponseState
@@ -290,8 +291,8 @@ export type GetDeploymentsOomReport = ClosedEnum<
  * Current provisioning state
  */
 export const GetDeploymentsDeploymentsState = {
-  Pending: "PENDING",
   Complete: "COMPLETE",
+  Pending: "PENDING",
   Timeout: "TIMEOUT",
 } as const;
 /**
@@ -313,89 +314,89 @@ export type GetDeploymentsManualProvisioning = {
 };
 
 export const GetDeploymentsFramework = {
-  Blitzjs: "blitzjs",
-  Nextjs: "nextjs",
-  Gatsby: "gatsby",
-  Remix: "remix",
-  ReactRouter: "react-router",
-  Astro: "astro",
-  Hexo: "hexo",
-  Eleventy: "eleventy",
-  Docusaurus2: "docusaurus-2",
-  Docusaurus: "docusaurus",
-  Preact: "preact",
-  Solidstart1: "solidstart-1",
-  Solidstart: "solidstart",
-  Dojo: "dojo",
-  Ember: "ember",
-  Vue: "vue",
-  Scully: "scully",
-  IonicAngular: "ionic-angular",
+  ActixWeb: "actix-web",
   Angular: "angular",
+  Ash: "ash",
+  Astro: "astro",
+  Axum: "axum",
+  Blitzjs: "blitzjs",
+  Brunch: "brunch",
+  CreateReactApp: "create-react-app",
+  Django: "django",
+  Docusaurus: "docusaurus",
+  Docusaurus2: "docusaurus-2",
+  Dojo: "dojo",
+  Eleventy: "eleventy",
+  Elysia: "elysia",
+  Ember: "ember",
+  Express: "express",
+  Fastapi: "fastapi",
+  Fasthtml: "fasthtml",
+  Fastify: "fastify",
+  Flask: "flask",
+  Gatsby: "gatsby",
+  Go: "go",
+  Gridsome: "gridsome",
+  H3: "h3",
+  Hexo: "hexo",
+  Hono: "hono",
+  Hugo: "hugo",
+  Hydrogen: "hydrogen",
+  IonicAngular: "ionic-angular",
+  IonicReact: "ionic-react",
+  Jekyll: "jekyll",
+  Koa: "koa",
+  Mastra: "mastra",
+  Middleman: "middleman",
+  Nestjs: "nestjs",
+  Nextjs: "nextjs",
+  Nitro: "nitro",
+  Node: "node",
+  Nuxtjs: "nuxtjs",
+  Parcel: "parcel",
   Polymer: "polymer",
+  Preact: "preact",
+  Python: "python",
+  ReactRouter: "react-router",
+  Redwoodjs: "redwoodjs",
+  Remix: "remix",
+  Ruby: "ruby",
+  Rust: "rust",
+  Saber: "saber",
+  Sanity: "sanity",
+  SanityV2: "sanity-v2",
+  Sapper: "sapper",
+  Scully: "scully",
+  Services: "services",
+  Solidstart: "solidstart",
+  Solidstart1: "solidstart-1",
+  Stencil: "stencil",
+  Storybook: "storybook",
   Svelte: "svelte",
   Sveltekit: "sveltekit",
   Sveltekit1: "sveltekit-1",
-  IonicReact: "ionic-react",
-  CreateReactApp: "create-react-app",
-  Gridsome: "gridsome",
-  Umijs: "umijs",
-  Sapper: "sapper",
-  Saber: "saber",
-  Stencil: "stencil",
-  Nuxtjs: "nuxtjs",
-  Redwoodjs: "redwoodjs",
-  Hugo: "hugo",
-  Jekyll: "jekyll",
-  Brunch: "brunch",
-  Middleman: "middleman",
-  Zola: "zola",
-  Hydrogen: "hydrogen",
-  Vite: "vite",
   TanstackStart: "tanstack-start",
+  Umijs: "umijs",
+  Vite: "vite",
   Vitepress: "vitepress",
+  Vue: "vue",
   Vuepress: "vuepress",
-  Parcel: "parcel",
-  Fastapi: "fastapi",
-  Flask: "flask",
-  Fasthtml: "fasthtml",
-  Django: "django",
-  Ash: "ash",
-  SanityV3: "sanity-v3",
-  Sanity: "sanity",
-  Storybook: "storybook",
-  Nitro: "nitro",
-  Hono: "hono",
-  Express: "express",
-  H3: "h3",
-  Koa: "koa",
-  Nestjs: "nestjs",
-  Elysia: "elysia",
-  Fastify: "fastify",
   Xmcp: "xmcp",
-  Python: "python",
-  Ruby: "ruby",
-  Rust: "rust",
-  Axum: "axum",
-  ActixWeb: "actix-web",
-  Node: "node",
-  Go: "go",
-  Services: "services",
-  Mastra: "mastra",
+  Zola: "zola",
 } as const;
 export type GetDeploymentsFramework = ClosedEnum<
   typeof GetDeploymentsFramework
 >;
 
 export const GetDeploymentsNodeVersion = {
-  TwentyFourDotX: "24.x",
-  TwentyTwoDotX: "22.x",
-  TwentyDotX: "20.x",
-  EighteenDotX: "18.x",
-  SixteenDotX: "16.x",
-  FourteenDotX: "14.x",
-  TwelveDotX: "12.x",
   TenDotX: "10.x",
+  TwelveDotX: "12.x",
+  FourteenDotX: "14.x",
+  SixteenDotX: "16.x",
+  EighteenDotX: "18.x",
+  TwentyDotX: "20.x",
+  TwentyTwoDotX: "22.x",
+  TwentyFourDotX: "24.x",
   EightDot10DotX: "8.10.x",
 } as const;
 export type GetDeploymentsNodeVersion = ClosedEnum<
@@ -474,8 +475,8 @@ export type GetDeploymentsDeploymentsSource = {
  * Whether the value is an opaque identifier or a URL.
  */
 export const GetDeploymentsDeploymentsType = {
-  Url: "url",
   Id: "id",
+  Url: "url",
 } as const;
 /**
  * Whether the value is an opaque identifier or a URL.
@@ -546,8 +547,8 @@ export type GetDeploymentsCustomEnvironment = {
  * The NSNB decision code for the seat block. TODO: We should consolidate block types.
  */
 export const GetDeploymentsBlockCode = {
-  TeamAccessRequired: "TEAM_ACCESS_REQUIRED",
   CommitAuthorRequired: "COMMIT_AUTHOR_REQUIRED",
+  TeamAccessRequired: "TEAM_ACCESS_REQUIRED",
 } as const;
 /**
  * The NSNB decision code for the seat block. TODO: We should consolidate block types.
@@ -562,9 +563,9 @@ export type GetDeploymentsGitUserId = string | number;
  * The git provider type associated with gitUserId.
  */
 export const GetDeploymentsGitProvider = {
+  Bitbucket: "bitbucket",
   Github: "github",
   Gitlab: "gitlab",
-  Bitbucket: "bitbucket",
 } as const;
 /**
  * The git provider type associated with gitUserId.

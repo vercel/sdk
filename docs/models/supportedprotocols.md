@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { SupportedProtocols } from "@vercel/sdk/models/createintegrationstoredirectresponsebody.js";
+import { SupportedProtocols } from "@vercel/sdk/models/createintegrationstoredirectnotification.js";
 
-let value: SupportedProtocols = "workflow";
+let value: SupportedProtocols = "other";
 ```
 
 ## Values
 
 ```typescript
-"experimentation" | "checks" | "storage" | "ai" | "observability" | "video" | "authentication" | "workflow" | "logDrain" | "traceDrain" | "messaging" | "other"
+"ai" | "authentication" | "checks" | "experimentation" | "logDrain" | "messaging" | "observability" | "other" | "storage" | "traceDrain" | "video" | "workflow"
 ```

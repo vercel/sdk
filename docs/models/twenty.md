@@ -8,15 +8,19 @@ The payload of the event, if requested.
 import { Twenty } from "@vercel/sdk/models/userevent.js";
 
 let value: Twenty = {
-  projectId: "<id>",
-  aliasCount: 5302.96,
+  accessGroup: {
+    id: "<id>",
+  },
+  user: {
+    id: "<id>",
+  },
 };
 ```
 
 ## Fields
 
-| Field                                                      | Type                                                       | Required                                                   | Description                                                |
-| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
-| `projectId`                                                | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        |
-| `aliasCount`                                               | *number*                                                   | :heavy_check_mark:                                         | N/A                                                        |
-| `deployment`                                               | [models.PayloadDeployment](../models/payloaddeployment.md) | :heavy_minus_sign:                                         | N/A                                                        |
+| Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `accessGroup`                                                                      | [models.UserEventPayload20AccessGroup](../models/usereventpayload20accessgroup.md) | :heavy_check_mark:                                                                 | N/A                                                                                |
+| `user`                                                                             | [models.PayloadUser](../models/payloaduser.md)                                     | :heavy_check_mark:                                                                 | N/A                                                                                |
+| `directoryType`                                                                    | *string*                                                                           | :heavy_minus_sign:                                                                 | N/A                                                                                |

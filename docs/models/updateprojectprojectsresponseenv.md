@@ -5,11 +5,11 @@
 ```typescript
 import { UpdateProjectProjectsResponseEnv } from "@vercel/sdk/models/updateprojectresponsebody.js";
 
-let value: UpdateProjectProjectsResponseEnv = "preview";
+let value: UpdateProjectProjectsResponseEnv = "production";
 ```
 
 ## Values
 
 ```typescript
-"production" | "preview"
+"preview" | "production"
 ```

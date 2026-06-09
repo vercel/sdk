@@ -7,11 +7,11 @@ Whether toolbar is enabled on preview deployments
 ```typescript
 import { EnablePreviewFeedback } from "@vercel/sdk/models/team.js";
 
-let value: EnablePreviewFeedback = "on-force";
+let value: EnablePreviewFeedback = "off-force";
 ```
 
 ## Values
 
 ```typescript
-"default" | "on" | "off" | "on-force" | "off-force" | "default-force"
+"default" | "default-force" | "off" | "off-force" | "on" | "on-force"
 ```

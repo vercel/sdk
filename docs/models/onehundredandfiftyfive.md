@@ -5,15 +5,22 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndFiftyFive } from "@vercel/sdk/models/onehundredandfiftyfive.js";
+import { OneHundredAndFiftyFive } from "@vercel/sdk/models/connectdatatransfer.js";
 
-let value: OneHundredAndFiftyFive = {};
+let value: OneHundredAndFiftyFive = {
+  projectId: "<id>",
+  url: "https://impish-vestment.info/",
+  previousStatus: "<value>",
+  justification: "<value>",
+};
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `price`            | *number*           | :heavy_minus_sign: | N/A                |
-| `currency`         | *string*           | :heavy_minus_sign: | N/A                |
-| `enabled`          | *boolean*          | :heavy_minus_sign: | N/A                |
+| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `projectId`                                                      | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
+| `url`                                                            | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
+| `previousStatus`                                                 | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
+| `justification`                                                  | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
+| `kind`                                                           | [models.UserEventPayloadKind](../models/usereventpayloadkind.md) | :heavy_minus_sign:                                               | N/A                                                              |

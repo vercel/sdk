@@ -6,7 +6,7 @@
 import { GetDeploymentHas2 } from "@vercel/sdk/models/getdeploymentresponsebody.js";
 
 let value: GetDeploymentHas2 = {
-  type: "cookie",
+  type: "header",
   key: "<key>",
 };
 ```

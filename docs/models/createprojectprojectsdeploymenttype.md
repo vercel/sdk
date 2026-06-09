@@ -3,13 +3,14 @@
 ## Example Usage
 
 ```typescript
-import { CreateProjectProjectsDeploymentType } from "@vercel/sdk/models/createprojecttopreset.js";
+import { CreateProjectProjectsDeploymentType } from "@vercel/sdk/models/createprojectprojectsto.js";
 
-let value: CreateProjectProjectsDeploymentType = "all_except_custom_domains";
+let value: CreateProjectProjectsDeploymentType =
+  "prod_deployment_urls_and_all_previews";
 ```
 
 ## Values
 
 ```typescript
-"preview" | "all" | "prod_deployment_urls_and_all_previews" | "all_except_custom_domains"
+"all" | "all_except_custom_domains" | "preview" | "prod_deployment_urls_and_all_previews"
 ```

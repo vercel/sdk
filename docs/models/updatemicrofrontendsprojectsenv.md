@@ -5,11 +5,11 @@
 ```typescript
 import { UpdateMicrofrontendsProjectsEnv } from "@vercel/sdk/models/updatemicrofrontendsresponsebody.js";
 
-let value: UpdateMicrofrontendsProjectsEnv = "preview";
+let value: UpdateMicrofrontendsProjectsEnv = "production";
 ```
 
 ## Values
 
 ```typescript
-"production" | "preview"
+"preview" | "production"
 ```

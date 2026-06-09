@@ -69,6 +69,9 @@ import { tool$checksV2ListDeploymentCheckRuns } from "./tools/checksV2ListDeploy
 import { tool$checksV2ListProjectChecks } from "./tools/checksV2ListProjectChecks.js";
 import { tool$checksV2UpdateDeploymentCheckRun } from "./tools/checksV2UpdateDeploymentCheckRun.js";
 import { tool$checksV2UpdateProjectCheck } from "./tools/checksV2UpdateProjectCheck.js";
+import { tool$connectCreateConnector } from "./tools/connectCreateConnector.js";
+import { tool$connectCreateConnectorAuthorizationRequest } from "./tools/connectCreateConnectorAuthorizationRequest.js";
+import { tool$connectGetConnectorToken } from "./tools/connectGetConnectorToken.js";
 import { tool$deploymentsCancelDeployment } from "./tools/deploymentsCancelDeployment.js";
 import { tool$deploymentsCreateDeployment } from "./tools/deploymentsCreateDeployment.js";
 import { tool$deploymentsDeleteDeployment } from "./tools/deploymentsDeleteDeployment.js";
@@ -158,9 +161,11 @@ import { tool$featureFlagsGetFlagSettings } from "./tools/featureFlagsGetFlagSet
 import { tool$featureFlagsGetSDKKeys } from "./tools/featureFlagsGetSDKKeys.js";
 import { tool$featureFlagsListFlags } from "./tools/featureFlagsListFlags.js";
 import { tool$featureFlagsListFlagSegments } from "./tools/featureFlagsListFlagSegments.js";
+import { tool$featureFlagsListFlagsV2 } from "./tools/featureFlagsListFlagsV2.js";
 import { tool$featureFlagsListFlagVersions } from "./tools/featureFlagsListFlagVersions.js";
 import { tool$featureFlagsListTeamFlags } from "./tools/featureFlagsListTeamFlags.js";
 import { tool$featureFlagsListTeamFlagSettings } from "./tools/featureFlagsListTeamFlagSettings.js";
+import { tool$featureFlagsListTeamFlagsV2 } from "./tools/featureFlagsListTeamFlagsV2.js";
 import { tool$featureFlagsUpdateFlag } from "./tools/featureFlagsUpdateFlag.js";
 import { tool$featureFlagsUpdateFlagSegment } from "./tools/featureFlagsUpdateFlagSegment.js";
 import { tool$featureFlagsUpdateFlagSettings } from "./tools/featureFlagsUpdateFlagSettings.js";
@@ -255,6 +260,7 @@ import { tool$projectsUpdateProject } from "./tools/projectsUpdateProject.js";
 import { tool$projectsUpdateProjectDomain } from "./tools/projectsUpdateProjectDomain.js";
 import { tool$projectsUpdateProjectProtectionBypass } from "./tools/projectsUpdateProjectProtectionBypass.js";
 import { tool$projectsUpdateProjectsByProjectIdRollbackByDeploymentIdUpdateDescription } from "./tools/projectsUpdateProjectsByProjectIdRollbackByDeploymentIdUpdateDescription.js";
+import { tool$projectsUploadProjectAvatar } from "./tools/projectsUploadProjectAvatar.js";
 import { tool$projectsVerifyProjectDomain } from "./tools/projectsVerifyProjectDomain.js";
 import { tool$rollingReleaseApproveRollingReleaseStage } from "./tools/rollingReleaseApproveRollingReleaseStage.js";
 import { tool$rollingReleaseCompleteRollingRelease } from "./tools/rollingReleaseCompleteRollingRelease.js";
@@ -265,14 +271,17 @@ import { tool$rollingReleaseGetRollingReleaseConfig } from "./tools/rollingRelea
 import { tool$rollingReleaseUpdateRollingReleaseConfig } from "./tools/rollingReleaseUpdateRollingReleaseConfig.js";
 import { tool$sandboxesCreateSessionDirectory } from "./tools/sandboxesCreateSessionDirectory.js";
 import { tool$sandboxesCreateSessionSnapshot } from "./tools/sandboxesCreateSessionSnapshot.js";
+import { tool$sandboxesDeleteDrive } from "./tools/sandboxesDeleteDrive.js";
 import { tool$sandboxesDeleteSandbox } from "./tools/sandboxesDeleteSandbox.js";
 import { tool$sandboxesDeleteSessionSnapshot } from "./tools/sandboxesDeleteSessionSnapshot.js";
 import { tool$sandboxesExtendSessionTimeout } from "./tools/sandboxesExtendSessionTimeout.js";
 import { tool$sandboxesGetNamedSandbox } from "./tools/sandboxesGetNamedSandbox.js";
+import { tool$sandboxesGetOrCreateDrive } from "./tools/sandboxesGetOrCreateDrive.js";
 import { tool$sandboxesGetSession } from "./tools/sandboxesGetSession.js";
 import { tool$sandboxesGetSessionCommand } from "./tools/sandboxesGetSessionCommand.js";
 import { tool$sandboxesGetSessionSnapshot } from "./tools/sandboxesGetSessionSnapshot.js";
 import { tool$sandboxesKillSessionCommand } from "./tools/sandboxesKillSessionCommand.js";
+import { tool$sandboxesListDrives } from "./tools/sandboxesListDrives.js";
 import { tool$sandboxesListSandboxes } from "./tools/sandboxesListSandboxes.js";
 import { tool$sandboxesListSessionCommands } from "./tools/sandboxesListSessionCommands.js";
 import { tool$sandboxesListSessions } from "./tools/sandboxesListSessions.js";
@@ -325,7 +334,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Vercel",
-    version: "1.21.9",
+    version: "1.26.0",
   });
 
   const client = new VercelCore({
@@ -401,6 +410,9 @@ export function createMCPServer(deps: {
   tool(tool$networkingUpdateNetwork);
   tool(tool$networkingReadNetwork);
   tool(tool$networkingUpdateStaticIps);
+  tool(tool$connectCreateConnector);
+  tool(tool$connectGetConnectorToken);
+  tool(tool$connectCreateConnectorAuthorizationRequest);
   tool(tool$deploymentsGetDeploymentEvents);
   tool(tool$deploymentsUpdateIntegrationDeploymentAction);
   tool(tool$deploymentsGetDeployment);
@@ -497,6 +509,7 @@ export function createMCPServer(deps: {
   tool(tool$userListEventTypes);
   tool(tool$userGetAuthUser);
   tool(tool$userRequestDelete);
+  tool(tool$featureFlagsListFlagsV2);
   tool(tool$featureFlagsListFlags);
   tool(tool$featureFlagsCreateFlag);
   tool(tool$featureFlagsGetFlag);
@@ -506,6 +519,7 @@ export function createMCPServer(deps: {
   tool(tool$featureFlagsGetFlagSettings);
   tool(tool$featureFlagsUpdateFlagSettings);
   tool(tool$featureFlagsListTeamFlagSettings);
+  tool(tool$featureFlagsListTeamFlagsV2);
   tool(tool$featureFlagsListTeamFlags);
   tool(tool$featureFlagsCreateFlagSegment);
   tool(tool$featureFlagsListFlagSegments);
@@ -569,6 +583,7 @@ export function createMCPServer(deps: {
   tool(tool$projectsCreateProject);
   tool(tool$projectsUpdateProject);
   tool(tool$projectsDeleteProject);
+  tool(tool$projectsUploadProjectAvatar);
   tool(tool$projectsGetProjectDomains);
   tool(tool$projectsGetProjectDomain);
   tool(tool$projectsUpdateProjectDomain);
@@ -602,6 +617,9 @@ export function createMCPServer(deps: {
   tool(tool$rollingReleaseApproveRollingReleaseStage);
   tool(tool$rollingReleaseCompleteRollingRelease);
   tool(tool$sandboxesListSandboxes);
+  tool(tool$sandboxesListDrives);
+  tool(tool$sandboxesGetOrCreateDrive);
+  tool(tool$sandboxesDeleteDrive);
   tool(tool$sandboxesListSessionSnapshots);
   tool(tool$sandboxesGetSessionSnapshot);
   tool(tool$sandboxesDeleteSessionSnapshot);

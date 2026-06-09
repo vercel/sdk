@@ -5,11 +5,11 @@
 ```typescript
 import { GetDeploymentRoutesOp } from "@vercel/sdk/models/getdeploymentresponsebody.js";
 
-let value: GetDeploymentRoutesOp = "delete";
+let value: GetDeploymentRoutesOp = "set";
 ```
 
 ## Values
 
 ```typescript
-"append" | "set" | "delete"
+"append" | "delete" | "set"
 ```

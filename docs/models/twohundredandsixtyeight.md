@@ -5,19 +5,29 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndSixtyEight } from "@vercel/sdk/models/twohundredandtwentysix.js";
+import { TwoHundredAndSixtyEight } from "@vercel/sdk/models/twohundredandthirtyone.js";
 
 let value: TwoHundredAndSixtyEight = {
-  store: {
-    name: "<value>",
-    id: "<id>",
+  budget: {
+    budgetItem: {
+      type: "fixed",
+      fixedBudget: 5322.24,
+      previousSpend: [],
+      notifiedAt: [
+        7813.67,
+        6171.37,
+      ],
+      createdAt: 7480.89,
+      isActive: true,
+      teamId: "<id>",
+      id: "<id>",
+    },
   },
 };
 ```
 
 ## Fields
 
-| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
-| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| `store`                                                                  | [models.UserEventPayload268Store](../models/usereventpayload268store.md) | :heavy_check_mark:                                                       | N/A                                                                      |
-| `ownerId`                                                                | *string*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
+| Field                                                                | Type                                                                 | Required                                                             | Description                                                          |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `budget`                                                             | [models.UserEventPayloadBudget](../models/usereventpayloadbudget.md) | :heavy_check_mark:                                                   | N/A                                                                  |

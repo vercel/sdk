@@ -5,11 +5,11 @@
 ```typescript
 import { CreateFlagStatus } from "@vercel/sdk/models/createflagop.js";
 
-let value: CreateFlagStatus = "running";
+let value: CreateFlagStatus = "draft";
 ```
 
 ## Values
 
 ```typescript
-"draft" | "running" | "paused" | "closed"
+"closed" | "draft" | "paused" | "running"
 ```

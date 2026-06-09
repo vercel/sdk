@@ -11,7 +11,7 @@ let value: ListAliasesProtectionBypass2 = {
   createdAt: 999,
   lastUpdatedAt: 4632.56,
   lastUpdatedBy: "<value>",
-  access: "requested",
+  access: "granted",
   scope: "user",
 };
 ```

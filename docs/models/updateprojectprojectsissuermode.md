@@ -5,13 +5,13 @@
 ## Example Usage
 
 ```typescript
-import { UpdateProjectProjectsIssuerMode } from "@vercel/sdk/models/updateprojectresponsebody.js";
+import { UpdateProjectProjectsIssuerMode } from "@vercel/sdk/models/updateprojectvalue.js";
 
-let value: UpdateProjectProjectsIssuerMode = "global";
+let value: UpdateProjectProjectsIssuerMode = "team";
 ```
 
 ## Values
 
 ```typescript
-"team" | "global"
+"global" | "team"
 ```

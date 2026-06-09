@@ -97,8 +97,8 @@ export type ProtectionBypass3 = {
 };
 
 export const ProtectionBypassAccess = {
-  Requested: "requested",
   Granted: "granted",
+  Requested: "requested",
 } as const;
 export type ProtectionBypassAccess = ClosedEnum<typeof ProtectionBypassAccess>;
 

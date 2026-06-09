@@ -7,7 +7,7 @@ import { GetDrainsProjectAccess1 } from "@vercel/sdk/models/getdrainsop.js";
 
 let value: GetDrainsProjectAccess1 = {
   access: "all",
-  managedBy: "integration",
+  managedBy: "drain",
 };
 ```
 

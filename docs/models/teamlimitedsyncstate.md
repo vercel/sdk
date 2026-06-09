@@ -7,11 +7,11 @@ Controls whether directory sync events are processed. - 'SETUP': Directory conne
 ```typescript
 import { TeamLimitedSyncState } from "@vercel/sdk/models/teamlimited.js";
 
-let value: TeamLimitedSyncState = "ACTIVE";
+let value: TeamLimitedSyncState = "SETUP";
 ```
 
 ## Values
 
 ```typescript
-"SETUP" | "ACTIVE"
+"ACTIVE" | "SETUP"
 ```

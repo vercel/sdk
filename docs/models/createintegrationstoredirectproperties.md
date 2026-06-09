@@ -117,7 +117,10 @@ const value: models.CreateIntegrationStoreDirectProperties9 = {
 ```typescript
 const value: models.CreateIntegrationStoreDirectProperties10 = {
   type: "string",
-  uiControl: "domain",
+  uiControl: "vercel-country",
+  uiOptions: [
+    "<value>",
+  ],
 };
 ```
 
@@ -125,6 +128,15 @@ const value: models.CreateIntegrationStoreDirectProperties10 = {
 
 ```typescript
 const value: models.CreateIntegrationStoreDirectProperties11 = {
+  type: "string",
+  uiControl: "domain",
+};
+```
+
+### `models.CreateIntegrationStoreDirectProperties12`
+
+```typescript
+const value: models.CreateIntegrationStoreDirectProperties12 = {
   type: "string",
   uiControl: "git-namespace",
 };

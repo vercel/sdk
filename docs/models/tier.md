@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { Tier } from "@vercel/sdk/models/payloadenvironment.js";
+import { Tier } from "@vercel/sdk/models/twohundredandninety.js";
 
-let value: Tier = "pro";
+let value: Tier = "plus";
 ```
 
 ## Values
 
 ```typescript
-"pro" | "plus"
+"plus" | "pro"
 ```

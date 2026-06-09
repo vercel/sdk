@@ -10,7 +10,7 @@ let value: GetAllLogDrainsProjectAccess2 = {
   projectIds: [
     "<value 1>",
   ],
-  managedBy: "integration",
+  managedBy: "drain",
 };
 ```
 

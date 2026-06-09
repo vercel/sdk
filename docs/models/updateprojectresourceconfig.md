@@ -5,7 +5,7 @@ Specifies resource override configuration for the project
 ## Example Usage
 
 ```typescript
-import { UpdateProjectResourceConfig } from "@vercel/sdk/models/updateprojectprojectsresponsebuildqueue.js";
+import { UpdateProjectResourceConfig } from "@vercel/sdk/models/updateprojectprojectsoptionsallowlist.js";
 
 let value: UpdateProjectResourceConfig = {};
 ```
@@ -26,3 +26,4 @@ let value: UpdateProjectResourceConfig = {};
 | `buildMachineElasticLastUpdated`                                                                     | *number*                                                                                             | :heavy_minus_sign:                                                                                   | N/A                                                                                                  |
 | `isNSNBDisabled`                                                                                     | *boolean*                                                                                            | :heavy_minus_sign:                                                                                   | N/A                                                                                                  |
 | `enableFunctionsBeta`                                                                                | *boolean*                                                                                            | :heavy_minus_sign:                                                                                   | N/A                                                                                                  |
+| `enableFunctionsExtendedMaxDuration`                                                                 | *boolean*                                                                                            | :heavy_minus_sign:                                                                                   | N/A                                                                                                  |

@@ -7,7 +7,7 @@
 
 ```typescript
 const value: models.GetDeploymentEventsResponseBody1 = {
-  type: "fatal",
+  type: "stdout",
   created: 6122.5,
   payload: {
     deploymentId: "<id>",
@@ -31,7 +31,7 @@ const value: models.GetDeploymentEventsResponseBody2 = {
     name: "<value>",
   },
   serial: "<value>",
-  type: "middleware",
+  type: "metric",
 };
 ```
 

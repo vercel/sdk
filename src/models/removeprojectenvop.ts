@@ -34,11 +34,11 @@ export type RemoveProjectEnvRequest = {
 };
 
 export const RemoveProjectEnvResponseBodyProjectsResponseType = {
-  System: "system",
   Encrypted: "encrypted",
   Plain: "plain",
-  Sensitive: "sensitive",
   Secret: "secret",
+  Sensitive: "sensitive",
+  System: "system",
 } as const;
 export type RemoveProjectEnvResponseBodyProjectsResponseType = ClosedEnum<
   typeof RemoveProjectEnvResponseBodyProjectsResponseType
@@ -54,9 +54,9 @@ export type RemoveProjectEnvTargetProjectsResponse2 = ClosedEnum<
 >;
 
 export const RemoveProjectEnvTargetProjectsResponse1 = {
-  Production: "production",
-  Preview: "preview",
   Development: "development",
+  Preview: "preview",
+  Production: "production",
 } as const;
 export type RemoveProjectEnvTargetProjectsResponse1 = ClosedEnum<
   typeof RemoveProjectEnvTargetProjectsResponse1
@@ -251,11 +251,11 @@ export type RemoveProjectEnvResponseBody3 = {
 };
 
 export const RemoveProjectEnvResponseBodyProjectsType = {
-  System: "system",
   Encrypted: "encrypted",
   Plain: "plain",
-  Sensitive: "sensitive",
   Secret: "secret",
+  Sensitive: "sensitive",
+  System: "system",
 } as const;
 export type RemoveProjectEnvResponseBodyProjectsType = ClosedEnum<
   typeof RemoveProjectEnvResponseBodyProjectsType
@@ -271,9 +271,9 @@ export type RemoveProjectEnvTargetProjects2 = ClosedEnum<
 >;
 
 export const RemoveProjectEnvTargetProjects1 = {
-  Production: "production",
-  Preview: "preview",
   Development: "development",
+  Preview: "preview",
+  Production: "production",
 } as const;
 export type RemoveProjectEnvTargetProjects1 = ClosedEnum<
   typeof RemoveProjectEnvTargetProjects1
@@ -467,11 +467,11 @@ export type RemoveProjectEnvResponseBody2 = {
 };
 
 export const RemoveProjectEnvResponseBodyType = {
-  System: "system",
   Encrypted: "encrypted",
   Plain: "plain",
-  Sensitive: "sensitive",
   Secret: "secret",
+  Sensitive: "sensitive",
+  System: "system",
 } as const;
 export type RemoveProjectEnvResponseBodyType = ClosedEnum<
   typeof RemoveProjectEnvResponseBodyType
@@ -487,9 +487,9 @@ export type RemoveProjectEnvTarget2 = ClosedEnum<
 >;
 
 export const RemoveProjectEnvTarget1 = {
-  Production: "production",
-  Preview: "preview",
   Development: "development",
+  Preview: "preview",
+  Production: "production",
 } as const;
 export type RemoveProjectEnvTarget1 = ClosedEnum<
   typeof RemoveProjectEnvTarget1

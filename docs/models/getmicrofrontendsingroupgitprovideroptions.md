@@ -6,7 +6,7 @@
 import { GetMicrofrontendsInGroupGitProviderOptions } from "@vercel/sdk/models/getmicrofrontendsingroupresponsebody.js";
 
 let value: GetMicrofrontendsInGroupGitProviderOptions = {
-  createDeployments: "disabled",
+  createDeployments: "enabled",
 };
 ```
 

@@ -13,5 +13,5 @@ let value: FileTreeType = "file";
 ## Values
 
 ```typescript
-"directory" | "file" | "symlink" | "lambda" | "middleware" | "invalid"
+"directory" | "file" | "invalid" | "lambda" | "middleware" | "symlink"
 ```

@@ -35,8 +35,8 @@ export type ListAccessGroupProjectsRequest = {
 export const ListAccessGroupProjectsRole = {
   Admin: "ADMIN",
   ProjectDeveloper: "PROJECT_DEVELOPER",
-  ProjectViewer: "PROJECT_VIEWER",
   ProjectGuest: "PROJECT_GUEST",
+  ProjectViewer: "PROJECT_VIEWER",
 } as const;
 export type ListAccessGroupProjectsRole = ClosedEnum<
   typeof ListAccessGroupProjectsRole

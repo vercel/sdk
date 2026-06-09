@@ -8,7 +8,7 @@
 ```typescript
 const value: models.GetDrainProjectAccess1 = {
   access: "all",
-  managedBy: "drain",
+  managedBy: "integration",
 };
 ```
 
@@ -22,7 +22,7 @@ const value: models.GetDrainProjectAccess2 = {
     "<value 2>",
     "<value 3>",
   ],
-  managedBy: "integration",
+  managedBy: "drain",
 };
 ```
 

@@ -5,11 +5,11 @@
 ```typescript
 import { ListAliasesProtectionBypassAccess } from "@vercel/sdk/models/listaliasesop.js";
 
-let value: ListAliasesProtectionBypassAccess = "requested";
+let value: ListAliasesProtectionBypassAccess = "granted";
 ```
 
 ## Values
 
 ```typescript
-"requested" | "granted"
+"granted" | "requested"
 ```

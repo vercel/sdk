@@ -5,11 +5,11 @@
 ```typescript
 import { GetAllLogDrainsDrainsEnv } from "@vercel/sdk/models/getalllogdrainsop.js";
 
-let value: GetAllLogDrainsDrainsEnv = "production";
+let value: GetAllLogDrainsDrainsEnv = "preview";
 ```
 
 ## Values
 
 ```typescript
-"production" | "preview"
+"preview" | "production"
 ```

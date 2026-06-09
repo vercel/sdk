@@ -23,12 +23,12 @@ export type GetRuntimeLogsRequest = {
 };
 
 export const GetRuntimeLogsLevel = {
-  Trace: "trace",
   Debug: "debug",
-  Info: "info",
-  Warning: "warning",
   Error: "error",
   Fatal: "fatal",
+  Info: "info",
+  Trace: "trace",
+  Warning: "warning",
 } as const;
 export type GetRuntimeLogsLevel = ClosedEnum<typeof GetRuntimeLogsLevel>;
 
@@ -36,8 +36,8 @@ export const GetRuntimeLogsSource = {
   Delimiter: "delimiter",
   EdgeFunction: "edge-function",
   EdgeMiddleware: "edge-middleware",
-  Serverless: "serverless",
   Request: "request",
+  Serverless: "serverless",
 } as const;
 export type GetRuntimeLogsSource = ClosedEnum<typeof GetRuntimeLogsSource>;
 

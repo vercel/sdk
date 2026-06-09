@@ -17,7 +17,7 @@ const value: models.GetMicrofrontendsInGroupTrustedIps1 = {
 
 ```typescript
 const value: models.GetMicrofrontendsInGroupTrustedIps2 = {
-  deploymentType: "all_except_custom_domains",
+  deploymentType: "production",
 };
 ```
 

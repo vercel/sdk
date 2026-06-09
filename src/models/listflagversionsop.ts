@@ -37,17 +37,17 @@ export type ListFlagVersionsRequest = {
 };
 
 export const ListFlagVersionsMetricType = {
-  Percentage: "percentage",
-  Currency: "currency",
   Count: "count",
+  Currency: "currency",
+  Percentage: "percentage",
 } as const;
 export type ListFlagVersionsMetricType = ClosedEnum<
   typeof ListFlagVersionsMetricType
 >;
 
 export const ListFlagVersionsMetricUnit = {
-  User: "user",
   Session: "session",
+  User: "user",
   Visitor: "visitor",
 } as const;
 export type ListFlagVersionsMetricUnit = ClosedEnum<
@@ -55,8 +55,8 @@ export type ListFlagVersionsMetricUnit = ClosedEnum<
 >;
 
 export const ListFlagVersionsDirectionality = {
-  IncreaseIsGood: "increaseIsGood",
   DecreaseIsGood: "decreaseIsGood",
+  IncreaseIsGood: "increaseIsGood",
 } as const;
 export type ListFlagVersionsDirectionality = ClosedEnum<
   typeof ListFlagVersionsDirectionality
@@ -73,8 +73,8 @@ export type ListFlagVersionsGuardrailMetrics = {
 
 export const ListFlagVersionsDevice = {
   Android: "android",
-  Ios: "ios",
   Desktop: "desktop",
+  Ios: "ios",
   Mweb: "mweb",
 } as const;
 export type ListFlagVersionsDevice = ClosedEnum<typeof ListFlagVersionsDevice>;
@@ -89,25 +89,25 @@ export type ListFlagVersionsDurationUnit = ClosedEnum<
 
 export const ListFlagVersionsAllocationUnit = {
   CookieId: "cookieId",
-  VisitorId: "visitorId",
   UserId: "userId",
+  VisitorId: "visitorId",
 } as const;
 export type ListFlagVersionsAllocationUnit = ClosedEnum<
   typeof ListFlagVersionsAllocationUnit
 >;
 
 export const ListFlagVersionsFeatureFlagsMetricType = {
-  Percentage: "percentage",
-  Currency: "currency",
   Count: "count",
+  Currency: "currency",
+  Percentage: "percentage",
 } as const;
 export type ListFlagVersionsFeatureFlagsMetricType = ClosedEnum<
   typeof ListFlagVersionsFeatureFlagsMetricType
 >;
 
 export const ListFlagVersionsFeatureFlagsMetricUnit = {
-  User: "user",
   Session: "session",
+  User: "user",
   Visitor: "visitor",
 } as const;
 export type ListFlagVersionsFeatureFlagsMetricUnit = ClosedEnum<
@@ -115,8 +115,8 @@ export type ListFlagVersionsFeatureFlagsMetricUnit = ClosedEnum<
 >;
 
 export const ListFlagVersionsFeatureFlagsDirectionality = {
-  IncreaseIsGood: "increaseIsGood",
   DecreaseIsGood: "decreaseIsGood",
+  IncreaseIsGood: "increaseIsGood",
 } as const;
 export type ListFlagVersionsFeatureFlagsDirectionality = ClosedEnum<
   typeof ListFlagVersionsFeatureFlagsDirectionality
@@ -132,16 +132,16 @@ export type ListFlagVersionsPrimaryMetrics = {
 };
 
 export const ListFlagVersionsStatus = {
-  Draft: "draft",
-  Running: "running",
-  Paused: "paused",
   Closed: "closed",
+  Draft: "draft",
+  Paused: "paused",
+  Running: "running",
 } as const;
 export type ListFlagVersionsStatus = ClosedEnum<typeof ListFlagVersionsStatus>;
 
 export type ListFlagVersionsExperiment = {
-  name?: string | undefined;
   id?: string | undefined;
+  name?: string | undefined;
   numVariants?: number | undefined;
   surfaceArea?: string | undefined;
   stickyRequirement?: boolean | undefined;
@@ -318,8 +318,8 @@ export type ListFlagVersionsRhs4 = {
 };
 
 export const ListFlagVersionsRhsType = {
-  ListInline: "list/inline",
   List: "list",
+  ListInline: "list/inline",
 } as const;
 export type ListFlagVersionsRhsType = ClosedEnum<
   typeof ListFlagVersionsRhsType
@@ -370,29 +370,29 @@ export type ListFlagVersionsLhs1 = {
 export type ListFlagVersionsLhs = ListFlagVersionsLhs1 | ListFlagVersionsLhs2;
 
 export const ListFlagVersionsCmp = {
-  Eq: "eq",
+  NotContains: "!contains",
+  NotEndsWith: "!endsWith",
   NotEq: "!eq",
-  OneOf: "oneOf",
+  NotEx: "!ex",
   NotOneOf: "!oneOf",
+  NotRegex: "!regex",
+  NotStartsWith: "!startsWith",
+  After: "after",
+  Before: "before",
+  Contains: "contains",
   ContainsAllOf: "containsAllOf",
   ContainsAnyOf: "containsAnyOf",
   ContainsNoneOf: "containsNoneOf",
-  StartsWith: "startsWith",
-  NotStartsWith: "!startsWith",
   EndsWith: "endsWith",
-  NotEndsWith: "!endsWith",
-  Contains: "contains",
-  NotContains: "!contains",
+  Eq: "eq",
   Ex: "ex",
-  NotEx: "!ex",
   Gt: "gt",
   Gte: "gte",
   Lt: "lt",
   Lte: "lte",
+  OneOf: "oneOf",
   Regex: "regex",
-  NotRegex: "!regex",
-  Before: "before",
-  After: "after",
+  StartsWith: "startsWith",
 } as const;
 export type ListFlagVersionsCmp = ClosedEnum<typeof ListFlagVersionsCmp>;
 
@@ -465,10 +465,10 @@ export type ListFlagVersionsMetadata = {
 export type ListFlagVersionsVersions = {
   createdBy?: string | undefined;
   message?: string | undefined;
+  data: ListFlagVersionsData;
   id: string;
   revision: number;
   createdAt: number;
-  data: ListFlagVersionsData;
   flagId: string;
   changedEnvironments: Array<string>;
   metadata?: ListFlagVersionsMetadata | undefined;
@@ -751,8 +751,8 @@ export const ListFlagVersionsExperiment$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: types.optional(types.string()),
   id: types.optional(types.string()),
+  name: types.optional(types.string()),
   numVariants: types.optional(types.number()),
   surfaceArea: types.optional(types.string()),
   stickyRequirement: types.optional(types.boolean()),
@@ -778,8 +778,8 @@ export const ListFlagVersionsExperiment$inboundSchema: z.ZodType<
 });
 /** @internal */
 export type ListFlagVersionsExperiment$Outbound = {
-  name?: string | undefined;
   id?: string | undefined;
+  name?: string | undefined;
   numVariants?: number | undefined;
   surfaceArea?: string | undefined;
   stickyRequirement?: boolean | undefined;
@@ -808,8 +808,8 @@ export const ListFlagVersionsExperiment$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ListFlagVersionsExperiment
 > = z.object({
-  name: z.string().optional(),
   id: z.string().optional(),
+  name: z.string().optional(),
   numVariants: z.number().optional(),
   surfaceArea: z.string().optional(),
   stickyRequirement: z.boolean().optional(),
@@ -2611,10 +2611,10 @@ export const ListFlagVersionsVersions$inboundSchema: z.ZodType<
 > = z.object({
   createdBy: types.optional(types.string()),
   message: types.optional(types.string()),
+  data: z.lazy(() => ListFlagVersionsData$inboundSchema),
   id: types.string(),
   revision: types.number(),
   createdAt: types.number(),
-  data: z.lazy(() => ListFlagVersionsData$inboundSchema),
   flagId: types.string(),
   changedEnvironments: z.array(types.string()),
   metadata: types.optional(
@@ -2625,10 +2625,10 @@ export const ListFlagVersionsVersions$inboundSchema: z.ZodType<
 export type ListFlagVersionsVersions$Outbound = {
   createdBy?: string | undefined;
   message?: string | undefined;
+  data: ListFlagVersionsData$Outbound;
   id: string;
   revision: number;
   createdAt: number;
-  data: ListFlagVersionsData$Outbound;
   flagId: string;
   changedEnvironments: Array<string>;
   metadata?: ListFlagVersionsMetadata$Outbound | undefined;
@@ -2642,10 +2642,10 @@ export const ListFlagVersionsVersions$outboundSchema: z.ZodType<
 > = z.object({
   createdBy: z.string().optional(),
   message: z.string().optional(),
+  data: z.lazy(() => ListFlagVersionsData$outboundSchema),
   id: z.string(),
   revision: z.number(),
   createdAt: z.number(),
-  data: z.lazy(() => ListFlagVersionsData$outboundSchema),
   flagId: z.string(),
   changedEnvironments: z.array(z.string()),
   metadata: z.lazy(() => ListFlagVersionsMetadata$outboundSchema).optional(),

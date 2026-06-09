@@ -9,7 +9,7 @@
 const value: models.Blob1 = {
   updatedAt: 5128.29,
   blockReason: "limits_exceeded",
-  overageReason: "imageOptimizationCacheRead",
+  overageReason: "functionInvocation",
 };
 ```
 

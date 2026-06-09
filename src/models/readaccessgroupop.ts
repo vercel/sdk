@@ -22,12 +22,14 @@ export type ReadAccessGroupRequest = {
 };
 
 export const ReadAccessGroupTeamPermissions = {
-  IntegrationManager: "IntegrationManager",
   CreateProject: "CreateProject",
-  FullProductionDeployment: "FullProductionDeployment",
-  UsageViewer: "UsageViewer",
   EnvVariableManager: "EnvVariableManager",
   EnvironmentManager: "EnvironmentManager",
+  FullProductionDeployment: "FullProductionDeployment",
+  IntegrationManager: "IntegrationManager",
+  OrgAdmin: "OrgAdmin",
+  OrgViewer: "OrgViewer",
+  UsageViewer: "UsageViewer",
   V0Builder: "V0Builder",
   V0Chatter: "V0Chatter",
   V0Viewer: "V0Viewer",

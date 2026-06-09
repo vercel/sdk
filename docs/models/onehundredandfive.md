@@ -5,11 +5,10 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndFive } from "@vercel/sdk/models/eightytwo.js";
+import { OneHundredAndFive } from "@vercel/sdk/models/ninetyfour.js";
 
 let value: OneHundredAndFive = {
-  edgeConfigId: "<id>",
-  edgeConfigSlug: "<value>",
+  drainUrl: "https://tricky-jet.org",
 };
 ```
 
@@ -17,6 +16,5 @@ let value: OneHundredAndFive = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `edgeConfigId`     | *string*           | :heavy_check_mark: | N/A                |
-| `edgeConfigSlug`   | *string*           | :heavy_check_mark: | N/A                |
-| `edgeConfigDigest` | *string*           | :heavy_minus_sign: | N/A                |
+| `drainUrl`         | *string*           | :heavy_check_mark: | N/A                |
+| `integrationName`  | *string*           | :heavy_minus_sign: | N/A                |

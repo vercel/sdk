@@ -5,20 +5,20 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { Fifty } from "@vercel/sdk/models/resources.js";
+import { Fifty } from "@vercel/sdk/models/fortyseven.js";
 
 let value: Fifty = {
-  project: {
-    id: "<id>",
-    name: "<value>",
+  action: "mutate",
+  data: {
+    "key": "<value>",
   },
-  versionId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
-| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `project`                                                              | [models.UserEventPayloadProject](../models/usereventpayloadproject.md) | :heavy_check_mark:                                                     | N/A                                                                    |
-| `versionId`                                                            | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
+| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `subscriptionId`                                                         | *string*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `action`                                                                 | [models.UserEventPayload50Action](../models/usereventpayload50action.md) | :heavy_check_mark:                                                       | N/A                                                                      |
+| `data`                                                                   | Record<string, *any*>                                                    | :heavy_check_mark:                                                       | N/A                                                                      |

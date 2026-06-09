@@ -15,10 +15,10 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
 export const FileTreeType = {
   Directory: "directory",
   File: "file",
-  Symlink: "symlink",
+  Invalid: "invalid",
   Lambda: "lambda",
   Middleware: "middleware",
-  Invalid: "invalid",
+  Symlink: "symlink",
 } as const;
 /**
  * String indicating the type of file tree entry.

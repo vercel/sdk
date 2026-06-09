@@ -6,8 +6,8 @@
 import { PutFirewallConfigRulesSecurityConditions } from "@vercel/sdk/models/putfirewallconfigop.js";
 
 let value: PutFirewallConfigRulesSecurityConditions = {
-  type: "environment",
-  op: "lt",
+  type: "ip_address",
+  op: "ninc",
 };
 ```
 

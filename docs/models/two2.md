@@ -3,10 +3,10 @@
 ## Example Usage
 
 ```typescript
-import { Two2 } from "@vercel/sdk/models/edgemiddlewareinvocations.js";
+import { Two2 } from "@vercel/sdk/models/connectdatatransfer.js";
 
 let value: Two2 = {
-  origin: "recovery-code",
+  origin: "webauthn",
 };
 ```
 

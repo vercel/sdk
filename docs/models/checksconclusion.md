@@ -11,5 +11,5 @@ let value: ChecksConclusion = "failed";
 ## Values
 
 ```typescript
-"succeeded" | "failed" | "skipped" | "canceled"
+"canceled" | "failed" | "skipped" | "succeeded"
 ```

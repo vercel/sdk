@@ -13,5 +13,5 @@ let value: ServiceType = "zeit.world";
 ## Values
 
 ```typescript
-"zeit.world" | "external" | "na"
+"external" | "na" | "zeit.world"
 ```

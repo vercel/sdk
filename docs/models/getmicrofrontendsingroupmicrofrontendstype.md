@@ -5,7 +5,7 @@ The type of environment (production, preview, or development)
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupMicrofrontendsType } from "@vercel/sdk/models/getmicrofrontendsingroupto2.js";
+import { GetMicrofrontendsInGroupMicrofrontendsType } from "@vercel/sdk/models/getmicrofrontendsingrouptomicrofrontends1.js";
 
 let value: GetMicrofrontendsInGroupMicrofrontendsType = "preview";
 ```
@@ -13,5 +13,5 @@ let value: GetMicrofrontendsInGroupMicrofrontendsType = "preview";
 ## Values
 
 ```typescript
-"production" | "preview" | "development"
+"development" | "preview" | "production"
 ```

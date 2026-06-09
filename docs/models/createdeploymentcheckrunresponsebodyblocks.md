@@ -5,11 +5,11 @@
 ```typescript
 import { CreateDeploymentCheckRunResponseBodyBlocks } from "@vercel/sdk/models/createdeploymentcheckrunop.js";
 
-let value: CreateDeploymentCheckRunResponseBodyBlocks = "none";
+let value: CreateDeploymentCheckRunResponseBodyBlocks = "build-start";
 ```
 
 ## Values
 
 ```typescript
-"none" | "build-start" | "deployment-start" | "deployment-alias" | "deployment-promotion"
+"build-start" | "deployment-alias" | "deployment-promotion" | "deployment-start" | "none"
 ```

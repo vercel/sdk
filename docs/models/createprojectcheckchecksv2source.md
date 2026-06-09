@@ -26,7 +26,7 @@ const value: models.CreateProjectCheckSourceChecksV22 = {
 ```typescript
 const value: models.CreateProjectCheckSource3 = {
   kind: "git-provider",
-  provider: "gitlab",
+  provider: "github",
   externalCheckName: "<value>",
 };
 ```

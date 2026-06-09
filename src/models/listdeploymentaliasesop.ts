@@ -44,8 +44,8 @@ export type ListDeploymentAliasesProtectionBypass3 = {
 };
 
 export const ListDeploymentAliasesProtectionBypassAccess = {
-  Requested: "requested",
   Granted: "granted",
+  Requested: "requested",
 } as const;
 export type ListDeploymentAliasesProtectionBypassAccess = ClosedEnum<
   typeof ListDeploymentAliasesProtectionBypassAccess

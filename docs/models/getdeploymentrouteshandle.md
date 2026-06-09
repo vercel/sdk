@@ -11,5 +11,5 @@ let value: GetDeploymentRoutesHandle = "filesystem";
 ## Values
 
 ```typescript
-"error" | "filesystem" | "hit" | "miss" | "rewrite" | "resource"
+"error" | "filesystem" | "hit" | "miss" | "resource" | "rewrite"
 ```

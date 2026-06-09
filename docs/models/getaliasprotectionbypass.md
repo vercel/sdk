@@ -20,7 +20,7 @@ const value: models.GetAliasProtectionBypass2 = {
   createdAt: 7811.81,
   lastUpdatedAt: 7676.73,
   lastUpdatedBy: "<value>",
-  access: "requested",
+  access: "granted",
   scope: "user",
 };
 ```

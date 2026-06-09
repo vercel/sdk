@@ -9,7 +9,7 @@ let value: GetFirewallConfigIps = {
   id: "<id>",
   hostname: "untimely-drive.org",
   ip: "ef4c:b7e4:cefe:dbb7:adfa:3bee:9ca7:dd0f",
-  action: "bypass",
+  action: "log",
 };
 ```
 

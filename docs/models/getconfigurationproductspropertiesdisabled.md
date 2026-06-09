@@ -20,6 +20,6 @@ const value: boolean = true;
 ### `models.GetConfigurationProductsDisabledIntegrations3`
 
 ```typescript
-const value: models.GetConfigurationProductsDisabledIntegrations3 = "update";
+const value: models.GetConfigurationProductsDisabledIntegrations3 = "create";
 ```
 

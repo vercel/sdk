@@ -78,13 +78,13 @@ export type ResponseBodyLambdas = {
 };
 
 export const GetDeploymentResponseBodyDeploymentsStatus = {
-  Queued: "QUEUED",
-  Building: "BUILDING",
-  Error: "ERROR",
   Blocked: "BLOCKED",
-  Initializing: "INITIALIZING",
-  Ready: "READY",
+  Building: "BUILDING",
   Canceled: "CANCELED",
+  Error: "ERROR",
+  Initializing: "INITIALIZING",
+  Queued: "QUEUED",
+  Ready: "READY",
 } as const;
 export type GetDeploymentResponseBodyDeploymentsStatus = ClosedEnum<
   typeof GetDeploymentResponseBodyDeploymentsStatus
@@ -111,9 +111,9 @@ export type GetDeploymentCustomEnvironment2 = {
  * The type of environment (production, preview, or development)
  */
 export const GetDeploymentCustomEnvironmentType = {
-  Production: "production",
-  Preview: "preview",
   Development: "development",
+  Preview: "preview",
+  Production: "production",
 } as const;
 /**
  * The type of environment (production, preview, or development)
@@ -127,8 +127,8 @@ export type GetDeploymentCustomEnvironmentType = ClosedEnum<
  */
 export const GetDeploymentCustomEnvironmentDeploymentsResponseType = {
   EndsWith: "endsWith",
-  StartsWith: "startsWith",
   Equals: "equals",
+  StartsWith: "startsWith",
 } as const;
 /**
  * The type of matching to perform
@@ -250,13 +250,13 @@ export type ResponseBodyAliasWarning = {
  * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
  */
 export const ResponseBodyReadyState = {
-  Queued: "QUEUED",
-  Building: "BUILDING",
-  Error: "ERROR",
   Blocked: "BLOCKED",
-  Initializing: "INITIALIZING",
-  Ready: "READY",
+  Building: "BUILDING",
   Canceled: "CANCELED",
+  Error: "ERROR",
+  Initializing: "INITIALIZING",
+  Queued: "QUEUED",
+  Ready: "READY",
 } as const;
 /**
  * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
@@ -279,19 +279,19 @@ export type ResponseBodyAliasError = {
 };
 
 export const ResponseBodyChecksState = {
+  Completed: "completed",
   Registered: "registered",
   Running: "running",
-  Completed: "completed",
 } as const;
 export type ResponseBodyChecksState = ClosedEnum<
   typeof ResponseBodyChecksState
 >;
 
 export const ResponseBodyChecksConclusion = {
-  Succeeded: "succeeded",
+  Canceled: "canceled",
   Failed: "failed",
   Skipped: "skipped",
-  Canceled: "canceled",
+  Succeeded: "succeeded",
 } as const;
 export type ResponseBodyChecksConclusion = ClosedEnum<
   typeof ResponseBodyChecksConclusion
@@ -653,8 +653,8 @@ export type ResponseBodyGitSource =
  * Current provisioning state
  */
 export const GetDeploymentResponseBodyDeploymentsState = {
-  Pending: "PENDING",
   Complete: "COMPLETE",
+  Pending: "PENDING",
   Timeout: "TIMEOUT",
 } as const;
 /**
@@ -682,14 +682,14 @@ export type ResponseBodyManualProvisioning = {
  * If set it overrides the `projectSettings.nodeVersion` for this deployment.
  */
 export const ResponseBodyNodeVersion = {
-  TwentyFourDotX: "24.x",
-  TwentyTwoDotX: "22.x",
-  TwentyDotX: "20.x",
-  EighteenDotX: "18.x",
-  SixteenDotX: "16.x",
-  FourteenDotX: "14.x",
-  TwelveDotX: "12.x",
   TenDotX: "10.x",
+  TwelveDotX: "12.x",
+  FourteenDotX: "14.x",
+  SixteenDotX: "16.x",
+  EighteenDotX: "18.x",
+  TwentyDotX: "20.x",
+  TwentyTwoDotX: "22.x",
+  TwentyFourDotX: "24.x",
   EightDot10DotX: "8.10.x",
 } as const;
 /**
@@ -712,9 +712,9 @@ export type GetDeploymentResponseBodyProject = {
  * Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic
  */
 export const ResponseBodyReadySubstate = {
-  Staged: "STAGED",
-  Rolling: "ROLLING",
   Promoted: "PROMOTED",
+  Rolling: "ROLLING",
+  Staged: "STAGED",
 } as const;
 /**
  * Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic
@@ -724,12 +724,13 @@ export type ResponseBodyReadySubstate = ClosedEnum<
 >;
 
 /**
- * Where was the deployment created from
+ * Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it.
  */
 export const GetDeploymentResponseBodyDeploymentsSource = {
   ApiTriggerGitDeploy: "api-trigger-git-deploy",
   Cli: "cli",
   CloneRepo: "clone/repo",
+  Drop: "drop",
   Git: "git",
   Import: "import",
   ImportRepo: "import/repo",
@@ -737,7 +738,7 @@ export const GetDeploymentResponseBodyDeploymentsSource = {
   V0Web: "v0-web",
 } as const;
 /**
- * Where was the deployment created from
+ * Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it.
  */
 export type GetDeploymentResponseBodyDeploymentsSource = ClosedEnum<
   typeof GetDeploymentResponseBodyDeploymentsSource
@@ -747,8 +748,8 @@ export type GetDeploymentResponseBodyDeploymentsSource = ClosedEnum<
  * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
  */
 export const ResponseBodyTarget = {
-  Staging: "staging",
   Production: "production",
+  Staging: "staging",
 } as const;
 /**
  * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
@@ -838,6 +839,7 @@ export type GetDeploymentResponseBody2 = {
    */
   name: string;
   type: GetDeploymentResponseBodyDeploymentsType;
+  errorMessage?: string | null | undefined;
   /**
    * An object that will contain a `code` and a `message` when the aliasing fails, otherwise the value will be `null`
    */
@@ -862,7 +864,6 @@ export type GetDeploymentResponseBody2 = {
   canceledAt?: number | undefined;
   errorCode?: string | undefined;
   errorLink?: string | undefined;
-  errorMessage?: string | null | undefined;
   errorStep?: string | undefined;
   /**
    * Since November 2023 this field defines a set of regions that we will deploy the lambda to passively Lambdas will be deployed to these regions but only invoked if all of the primary `regions` are marked as out of service
@@ -915,7 +916,7 @@ export type GetDeploymentResponseBody2 = {
    */
   softDeletedByRetention?: boolean | undefined;
   /**
-   * Where was the deployment created from
+   * Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it.
    */
   source?: GetDeploymentResponseBodyDeploymentsSource | undefined;
   /**
@@ -954,14 +955,14 @@ export type ResponseBodyBuilds = {
 };
 
 export const GetDeploymentResponseBodyDeploymentsNodeVersion = {
-  TwentyFourDotX: "24.x",
-  TwentyTwoDotX: "22.x",
-  TwentyDotX: "20.x",
-  EighteenDotX: "18.x",
-  SixteenDotX: "16.x",
-  FourteenDotX: "14.x",
-  TwelveDotX: "12.x",
   TenDotX: "10.x",
+  TwelveDotX: "12.x",
+  FourteenDotX: "14.x",
+  SixteenDotX: "16.x",
+  EighteenDotX: "18.x",
+  TwentyDotX: "20.x",
+  TwentyTwoDotX: "22.x",
+  TwentyFourDotX: "24.x",
   EightDot10DotX: "8.10.x",
 } as const;
 export type GetDeploymentResponseBodyDeploymentsNodeVersion = ClosedEnum<
@@ -969,75 +970,75 @@ export type GetDeploymentResponseBodyDeploymentsNodeVersion = ClosedEnum<
 >;
 
 export const GetDeploymentResponseBodyFramework = {
-  Blitzjs: "blitzjs",
-  Nextjs: "nextjs",
-  Gatsby: "gatsby",
-  Remix: "remix",
-  ReactRouter: "react-router",
-  Astro: "astro",
-  Hexo: "hexo",
-  Eleventy: "eleventy",
-  Docusaurus2: "docusaurus-2",
-  Docusaurus: "docusaurus",
-  Preact: "preact",
-  Solidstart1: "solidstart-1",
-  Solidstart: "solidstart",
-  Dojo: "dojo",
-  Ember: "ember",
-  Vue: "vue",
-  Scully: "scully",
-  IonicAngular: "ionic-angular",
+  ActixWeb: "actix-web",
   Angular: "angular",
+  Ash: "ash",
+  Astro: "astro",
+  Axum: "axum",
+  Blitzjs: "blitzjs",
+  Brunch: "brunch",
+  CreateReactApp: "create-react-app",
+  Django: "django",
+  Docusaurus: "docusaurus",
+  Docusaurus2: "docusaurus-2",
+  Dojo: "dojo",
+  Eleventy: "eleventy",
+  Elysia: "elysia",
+  Ember: "ember",
+  Express: "express",
+  Fastapi: "fastapi",
+  Fasthtml: "fasthtml",
+  Fastify: "fastify",
+  Flask: "flask",
+  Gatsby: "gatsby",
+  Go: "go",
+  Gridsome: "gridsome",
+  H3: "h3",
+  Hexo: "hexo",
+  Hono: "hono",
+  Hugo: "hugo",
+  Hydrogen: "hydrogen",
+  IonicAngular: "ionic-angular",
+  IonicReact: "ionic-react",
+  Jekyll: "jekyll",
+  Koa: "koa",
+  Mastra: "mastra",
+  Middleman: "middleman",
+  Nestjs: "nestjs",
+  Nextjs: "nextjs",
+  Nitro: "nitro",
+  Node: "node",
+  Nuxtjs: "nuxtjs",
+  Parcel: "parcel",
   Polymer: "polymer",
+  Preact: "preact",
+  Python: "python",
+  ReactRouter: "react-router",
+  Redwoodjs: "redwoodjs",
+  Remix: "remix",
+  Ruby: "ruby",
+  Rust: "rust",
+  Saber: "saber",
+  Sanity: "sanity",
+  SanityV2: "sanity-v2",
+  Sapper: "sapper",
+  Scully: "scully",
+  Services: "services",
+  Solidstart: "solidstart",
+  Solidstart1: "solidstart-1",
+  Stencil: "stencil",
+  Storybook: "storybook",
   Svelte: "svelte",
   Sveltekit: "sveltekit",
   Sveltekit1: "sveltekit-1",
-  IonicReact: "ionic-react",
-  CreateReactApp: "create-react-app",
-  Gridsome: "gridsome",
-  Umijs: "umijs",
-  Sapper: "sapper",
-  Saber: "saber",
-  Stencil: "stencil",
-  Nuxtjs: "nuxtjs",
-  Redwoodjs: "redwoodjs",
-  Hugo: "hugo",
-  Jekyll: "jekyll",
-  Brunch: "brunch",
-  Middleman: "middleman",
-  Zola: "zola",
-  Hydrogen: "hydrogen",
-  Vite: "vite",
   TanstackStart: "tanstack-start",
+  Umijs: "umijs",
+  Vite: "vite",
   Vitepress: "vitepress",
+  Vue: "vue",
   Vuepress: "vuepress",
-  Parcel: "parcel",
-  Fastapi: "fastapi",
-  Flask: "flask",
-  Fasthtml: "fasthtml",
-  Django: "django",
-  Ash: "ash",
-  SanityV3: "sanity-v3",
-  Sanity: "sanity",
-  Storybook: "storybook",
-  Nitro: "nitro",
-  Hono: "hono",
-  Express: "express",
-  H3: "h3",
-  Koa: "koa",
-  Nestjs: "nestjs",
-  Elysia: "elysia",
-  Fastify: "fastify",
   Xmcp: "xmcp",
-  Python: "python",
-  Ruby: "ruby",
-  Rust: "rust",
-  Axum: "axum",
-  ActixWeb: "actix-web",
-  Node: "node",
-  Go: "go",
-  Services: "services",
-  Mastra: "mastra",
+  Zola: "zola",
 } as const;
 export type GetDeploymentResponseBodyFramework = ClosedEnum<
   typeof GetDeploymentResponseBodyFramework
@@ -1073,10 +1074,10 @@ export type ResponseBodyProjectSettings = {
 };
 
 export const GetDeploymentResponseBodyDeploymentsResponseStatus = {
-  Skipped: "skipped",
+  Error: "error",
   Pending: "pending",
   Ready: "ready",
-  Error: "error",
+  Skipped: "skipped",
   Timeout: "timeout",
 } as const;
 export type GetDeploymentResponseBodyDeploymentsResponseStatus = ClosedEnum<
@@ -1145,8 +1146,8 @@ export const ResponseBodyFormats = {
 export type ResponseBodyFormats = ClosedEnum<typeof ResponseBodyFormats>;
 
 export const ResponseBodyContentDispositionType = {
-  Inline: "inline",
   Attachment: "attachment",
+  Inline: "inline",
 } as const;
 export type ResponseBodyContentDispositionType = ClosedEnum<
   typeof ResponseBodyContentDispositionType
@@ -1211,13 +1212,13 @@ export type GetDeploymentResponseBodyLambdas = {
 };
 
 export const GetDeploymentResponseBodyStatus = {
-  Queued: "QUEUED",
-  Building: "BUILDING",
-  Error: "ERROR",
   Blocked: "BLOCKED",
-  Initializing: "INITIALIZING",
-  Ready: "READY",
+  Building: "BUILDING",
   Canceled: "CANCELED",
+  Error: "ERROR",
+  Initializing: "INITIALIZING",
+  Queued: "QUEUED",
+  Ready: "READY",
 } as const;
 export type GetDeploymentResponseBodyStatus = ClosedEnum<
   typeof GetDeploymentResponseBodyStatus
@@ -1244,9 +1245,9 @@ export type GetDeploymentCustomEnvironmentDeployments2 = {
  * The type of environment (production, preview, or development)
  */
 export const GetDeploymentCustomEnvironmentDeploymentsType = {
-  Production: "production",
-  Preview: "preview",
   Development: "development",
+  Preview: "preview",
+  Production: "production",
 } as const;
 /**
  * The type of environment (production, preview, or development)
@@ -1260,8 +1261,8 @@ export type GetDeploymentCustomEnvironmentDeploymentsType = ClosedEnum<
  */
 export const GetDeploymentCustomEnvironmentDeploymentsResponse200Type = {
   EndsWith: "endsWith",
-  StartsWith: "startsWith",
   Equals: "equals",
+  StartsWith: "startsWith",
 } as const;
 /**
  * The type of matching to perform
@@ -1380,13 +1381,13 @@ export type GetDeploymentResponseBodyAliasWarning = {
  * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
  */
 export const GetDeploymentResponseBodyReadyState = {
-  Queued: "QUEUED",
-  Building: "BUILDING",
-  Error: "ERROR",
   Blocked: "BLOCKED",
-  Initializing: "INITIALIZING",
-  Ready: "READY",
+  Building: "BUILDING",
   Canceled: "CANCELED",
+  Error: "ERROR",
+  Initializing: "INITIALIZING",
+  Queued: "QUEUED",
+  Ready: "READY",
 } as const;
 /**
  * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
@@ -1411,19 +1412,19 @@ export type GetDeploymentResponseBodyAliasError = {
 };
 
 export const GetDeploymentResponseBodyChecksState = {
+  Completed: "completed",
   Registered: "registered",
   Running: "running",
-  Completed: "completed",
 } as const;
 export type GetDeploymentResponseBodyChecksState = ClosedEnum<
   typeof GetDeploymentResponseBodyChecksState
 >;
 
 export const GetDeploymentResponseBodyChecksConclusion = {
-  Succeeded: "succeeded",
+  Canceled: "canceled",
   Failed: "failed",
   Skipped: "skipped",
-  Canceled: "canceled",
+  Succeeded: "succeeded",
 } as const;
 export type GetDeploymentResponseBodyChecksConclusion = ClosedEnum<
   typeof GetDeploymentResponseBodyChecksConclusion
@@ -1773,8 +1774,8 @@ export type GetDeploymentResponseBodyGitSource =
  * Current provisioning state
  */
 export const GetDeploymentResponseBodyState = {
-  Pending: "PENDING",
   Complete: "COMPLETE",
+  Pending: "PENDING",
   Timeout: "TIMEOUT",
 } as const;
 /**
@@ -1802,14 +1803,14 @@ export type GetDeploymentResponseBodyManualProvisioning = {
  * If set it overrides the `projectSettings.nodeVersion` for this deployment.
  */
 export const GetDeploymentResponseBodyNodeVersion = {
-  TwentyFourDotX: "24.x",
-  TwentyTwoDotX: "22.x",
-  TwentyDotX: "20.x",
-  EighteenDotX: "18.x",
-  SixteenDotX: "16.x",
-  FourteenDotX: "14.x",
-  TwelveDotX: "12.x",
   TenDotX: "10.x",
+  TwelveDotX: "12.x",
+  FourteenDotX: "14.x",
+  SixteenDotX: "16.x",
+  EighteenDotX: "18.x",
+  TwentyDotX: "20.x",
+  TwentyTwoDotX: "22.x",
+  TwentyFourDotX: "24.x",
   EightDot10DotX: "8.10.x",
 } as const;
 /**
@@ -4356,6 +4357,7 @@ export const GetDeploymentResponseBody2$inboundSchema: z.ZodType<
   readyState: ResponseBodyReadyState$inboundSchema,
   name: types.string(),
   type: GetDeploymentResponseBodyDeploymentsType$inboundSchema,
+  errorMessage: z.nullable(types.string()).optional(),
   aliasError: z.nullable(z.lazy(() => ResponseBodyAliasError$inboundSchema))
     .optional(),
   aliasFinal: z.nullable(types.string()).optional(),
@@ -4369,7 +4371,6 @@ export const GetDeploymentResponseBody2$inboundSchema: z.ZodType<
   canceledAt: types.optional(types.number()),
   errorCode: types.optional(types.string()),
   errorLink: types.optional(types.string()),
-  errorMessage: z.nullable(types.string()).optional(),
   errorStep: types.optional(types.string()),
   passiveRegions: types.optional(z.array(types.string())),
   gitSource: types.optional(
@@ -4449,6 +4450,7 @@ export type GetDeploymentResponseBody2$Outbound = {
   readyState: string;
   name: string;
   type: string;
+  errorMessage?: string | null | undefined;
   aliasError?: ResponseBodyAliasError$Outbound | null | undefined;
   aliasFinal?: string | null | undefined;
   autoAssignCustomDomains?: boolean | undefined;
@@ -4461,7 +4463,6 @@ export type GetDeploymentResponseBody2$Outbound = {
   canceledAt?: number | undefined;
   errorCode?: string | undefined;
   errorLink?: string | undefined;
-  errorMessage?: string | null | undefined;
   errorStep?: string | undefined;
   passiveRegions?: Array<string> | undefined;
   gitSource?:
@@ -4538,6 +4539,7 @@ export const GetDeploymentResponseBody2$outboundSchema: z.ZodType<
   readyState: ResponseBodyReadyState$outboundSchema,
   name: z.string(),
   type: GetDeploymentResponseBodyDeploymentsType$outboundSchema,
+  errorMessage: z.nullable(z.string()).optional(),
   aliasError: z.nullable(z.lazy(() => ResponseBodyAliasError$outboundSchema))
     .optional(),
   aliasFinal: z.nullable(z.string()).optional(),
@@ -4551,7 +4553,6 @@ export const GetDeploymentResponseBody2$outboundSchema: z.ZodType<
   canceledAt: z.number().optional(),
   errorCode: z.string().optional(),
   errorLink: z.string().optional(),
-  errorMessage: z.nullable(z.string()).optional(),
   errorStep: z.string().optional(),
   passiveRegions: z.array(z.string()).optional(),
   gitSource: smartUnion([

@@ -5,11 +5,11 @@
 ```typescript
 import { ProtectionBypassAccess } from "@vercel/sdk/models/getaliasop.js";
 
-let value: ProtectionBypassAccess = "requested";
+let value: ProtectionBypassAccess = "granted";
 ```
 
 ## Values
 
 ```typescript
-"requested" | "granted"
+"granted" | "requested"
 ```

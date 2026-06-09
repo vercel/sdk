@@ -66,32 +66,32 @@ export type UpdateDeploymentCheckRunResponseBodyChecksV2Requires = ClosedEnum<
 >;
 
 export const UpdateDeploymentCheckRunResponseBodyChecksV2Blocks = {
-  None: "none",
   BuildStart: "build-start",
-  DeploymentStart: "deployment-start",
   DeploymentAlias: "deployment-alias",
   DeploymentPromotion: "deployment-promotion",
+  DeploymentStart: "deployment-start",
+  None: "none",
 } as const;
 export type UpdateDeploymentCheckRunResponseBodyChecksV2Blocks = ClosedEnum<
   typeof UpdateDeploymentCheckRunResponseBodyChecksV2Blocks
 >;
 
 export const UpdateDeploymentCheckRunResponseBodyChecksV2Status = {
+  Completed: "completed",
   Queued: "queued",
   Running: "running",
-  Completed: "completed",
 } as const;
 export type UpdateDeploymentCheckRunResponseBodyChecksV2Status = ClosedEnum<
   typeof UpdateDeploymentCheckRunResponseBodyChecksV2Status
 >;
 
 export const UpdateDeploymentCheckRunResponseBodyChecksV2Conclusion = {
-  Timeout: "timeout",
   Canceled: "canceled",
-  Skipped: "skipped",
   Failed: "failed",
   Neutral: "neutral",
+  Skipped: "skipped",
   Succeeded: "succeeded",
+  Timeout: "timeout",
 } as const;
 export type UpdateDeploymentCheckRunResponseBodyChecksV2Conclusion = ClosedEnum<
   typeof UpdateDeploymentCheckRunResponseBodyChecksV2Conclusion
@@ -172,32 +172,32 @@ export type UpdateDeploymentCheckRunResponseBodyRequires = ClosedEnum<
 >;
 
 export const UpdateDeploymentCheckRunResponseBodyBlocks = {
-  None: "none",
   BuildStart: "build-start",
-  DeploymentStart: "deployment-start",
   DeploymentAlias: "deployment-alias",
   DeploymentPromotion: "deployment-promotion",
+  DeploymentStart: "deployment-start",
+  None: "none",
 } as const;
 export type UpdateDeploymentCheckRunResponseBodyBlocks = ClosedEnum<
   typeof UpdateDeploymentCheckRunResponseBodyBlocks
 >;
 
 export const UpdateDeploymentCheckRunResponseBodyStatus = {
+  Completed: "completed",
   Queued: "queued",
   Running: "running",
-  Completed: "completed",
 } as const;
 export type UpdateDeploymentCheckRunResponseBodyStatus = ClosedEnum<
   typeof UpdateDeploymentCheckRunResponseBodyStatus
 >;
 
 export const UpdateDeploymentCheckRunResponseBodyConclusion = {
-  Timeout: "timeout",
   Canceled: "canceled",
-  Skipped: "skipped",
   Failed: "failed",
   Neutral: "neutral",
+  Skipped: "skipped",
   Succeeded: "succeeded",
+  Timeout: "timeout",
 } as const;
 export type UpdateDeploymentCheckRunResponseBodyConclusion = ClosedEnum<
   typeof UpdateDeploymentCheckRunResponseBodyConclusion
@@ -211,15 +211,15 @@ export type UpdateDeploymentCheckRunSourceSubKind = ClosedEnum<
 >;
 
 export const UpdateDeploymentCheckRunSourceOrigin = {
-  Platform: "platform",
   Api: "api",
+  Platform: "platform",
 } as const;
 export type UpdateDeploymentCheckRunSourceOrigin = ClosedEnum<
   typeof UpdateDeploymentCheckRunSourceOrigin
 >;
 
 /**
- * Native lint/typecheck — check definition and check run `source`.
+ * Native Vercel checks — check definition and check run `source`.
  */
 export type UpdateDeploymentCheckRunSource4 = {
   subKind?: UpdateDeploymentCheckRunSourceSubKind | undefined;
@@ -234,9 +234,9 @@ export type UpdateDeploymentCheckRunSourceChecksV2ResponseKind = ClosedEnum<
 >;
 
 export const UpdateDeploymentCheckRunSourceProvider = {
+  Bitbucket: "bitbucket",
   Github: "github",
   Gitlab: "gitlab",
-  Bitbucket: "bitbucket",
 } as const;
 export type UpdateDeploymentCheckRunSourceProvider = ClosedEnum<
   typeof UpdateDeploymentCheckRunSourceProvider

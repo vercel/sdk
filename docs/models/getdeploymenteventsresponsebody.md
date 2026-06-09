@@ -7,7 +7,7 @@
 
 ```typescript
 const value: models.GetDeploymentEventsResponseBodyDeployments1 = {
-  type: "report",
+  type: "stderr",
   created: 1498.12,
   payload: {
     deploymentId: "<id>",
@@ -31,7 +31,7 @@ const value: models.GetDeploymentEventsResponseBodyDeployments2 = {
     name: "<value>",
   },
   serial: "<value>",
-  type: "stderr",
+  type: "edge-function-invocation",
 };
 ```
 

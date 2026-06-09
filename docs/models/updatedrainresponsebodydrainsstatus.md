@@ -11,5 +11,5 @@ let value: UpdateDrainResponseBodyDrainsStatus = "errored";
 ## Values
 
 ```typescript
-"enabled" | "disabled" | "errored"
+"disabled" | "enabled" | "errored"
 ```

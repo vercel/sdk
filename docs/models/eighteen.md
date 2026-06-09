@@ -7,12 +7,22 @@ The payload of the event, if requested.
 ```typescript
 import { Eighteen } from "@vercel/sdk/models/userevent.js";
 
-let value: Eighteen = {};
+let value: Eighteen = {
+  accessGroup: {
+    id: "<id>",
+    name: "<value>",
+  },
+  project: {
+    id: "<id>",
+  },
+};
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `price`            | *number*           | :heavy_minus_sign: | N/A                |
-| `currency`         | *string*           | :heavy_minus_sign: | N/A                |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `accessGroup`                                                                  | [models.UserEventPayloadAccessGroup](../models/usereventpayloadaccessgroup.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| `project`                                                                      | [models.Project](../models/project.md)                                         | :heavy_check_mark:                                                             | N/A                                                                            |
+| `nextRole`                                                                     | [models.NextRole](../models/nextrole.md)                                       | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `previousRole`                                                                 | [models.PreviousRole](../models/previousrole.md)                               | :heavy_minus_sign:                                                             | N/A                                                                            |

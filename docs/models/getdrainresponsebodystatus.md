@@ -5,11 +5,11 @@
 ```typescript
 import { GetDrainResponseBodyStatus } from "@vercel/sdk/models/getdrainop.js";
 
-let value: GetDrainResponseBodyStatus = "disabled";
+let value: GetDrainResponseBodyStatus = "enabled";
 ```
 
 ## Values
 
 ```typescript
-"enabled" | "disabled" | "errored"
+"disabled" | "enabled" | "errored"
 ```

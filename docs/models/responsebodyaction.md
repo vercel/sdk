@@ -5,11 +5,11 @@
 ```typescript
 import { ResponseBodyAction } from "@vercel/sdk/models/addbypassipop.js";
 
-let value: ResponseBodyAction = "bypass";
+let value: ResponseBodyAction = "block";
 ```
 
 ## Values
 
 ```typescript
-"bypass" | "block"
+"block" | "bypass"
 ```

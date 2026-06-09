@@ -5,11 +5,11 @@
 ```typescript
 import { CreateFlagFeatureFlagsMetricUnit } from "@vercel/sdk/models/createflagop.js";
 
-let value: CreateFlagFeatureFlagsMetricUnit = "session";
+let value: CreateFlagFeatureFlagsMetricUnit = "user";
 ```
 
 ## Values
 
 ```typescript
-"user" | "session" | "visitor"
+"session" | "user" | "visitor"
 ```

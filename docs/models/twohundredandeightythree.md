@@ -5,22 +5,14 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndEightyThree } from "@vercel/sdk/models/payloadenvironment.js";
+import { TwoHundredAndEightyThree } from "@vercel/sdk/models/twohundredandthirtyone.js";
 
-let value: TwoHundredAndEightyThree = {
-  teamName: "<value>",
-};
+let value: TwoHundredAndEightyThree = {};
 ```
 
 ## Fields
 
-| Field               | Type                | Required            | Description         |
-| ------------------- | ------------------- | ------------------- | ------------------- |
-| `teamName`          | *string*            | :heavy_check_mark:  | N/A                 |
-| `username`          | *string*            | :heavy_minus_sign:  | N/A                 |
-| `gitUsername`       | *string*            | :heavy_minus_sign:  | N/A                 |
-| `githubUsername`    | *string*            | :heavy_minus_sign:  | N/A                 |
-| `gitlabUsername`    | *string*            | :heavy_minus_sign:  | N/A                 |
-| `bitbucketUsername` | *string*            | :heavy_minus_sign:  | N/A                 |
-| `updatedUid`        | *string*            | :heavy_minus_sign:  | N/A                 |
-| `teamId`            | *string*            | :heavy_minus_sign:  | N/A                 |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `previous`                                                                     | [models.UserEventPayload283Previous](../models/usereventpayload283previous.md) | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `next`                                                                         | [models.UserEventPayload283Next](../models/usereventpayload283next.md)         | :heavy_minus_sign:                                                             | N/A                                                                            |

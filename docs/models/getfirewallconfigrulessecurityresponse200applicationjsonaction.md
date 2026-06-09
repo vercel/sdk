@@ -6,11 +6,11 @@
 import { GetFirewallConfigRulesSecurityResponse200ApplicationJSONAction } from "@vercel/sdk/models/getfirewallconfigop.js";
 
 let value: GetFirewallConfigRulesSecurityResponse200ApplicationJSONAction =
-  "deny";
+  "challenge";
 ```
 
 ## Values
 
 ```typescript
-"deny" | "log" | "challenge" | "rate_limit"
+"challenge" | "deny" | "log" | "rate_limit"
 ```

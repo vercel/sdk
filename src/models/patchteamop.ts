@@ -51,6 +51,21 @@ export type PatchTeamRemoteCaching = {
 };
 
 /**
+ * Controls who can request access to protected deployments.
+ */
+export const PatchTeamDpAccessRequestsMode = {
+  All: "all",
+  None: "none",
+  EmailDomain: "email-domain",
+} as const;
+/**
+ * Controls who can request access to protected deployments.
+ */
+export type PatchTeamDpAccessRequestsMode = ClosedEnum<
+  typeof PatchTeamDpAccessRequestsMode
+>;
+
+/**
  * Specify if the password will apply to every Deployment Target or just Preview
  */
 export const PatchTeamDeploymentType = {
@@ -118,6 +133,24 @@ export type PatchTeamDefaultDeploymentProtection = {
    * Ensures visitors to your Preview Deployments are logged into Vercel and have a minimum of Viewer access on your team
    */
   ssoProtection?: PatchTeamSsoProtection | null | undefined;
+};
+
+export const PatchTeamTeamsRequestDeploymentType = {
+  All: "all",
+  Preview: "preview",
+  ProdDeploymentUrlsAndAllPreviews: "prod_deployment_urls_and_all_previews",
+  AllExceptCustomDomains: "all_except_custom_domains",
+} as const;
+export type PatchTeamTeamsRequestDeploymentType = ClosedEnum<
+  typeof PatchTeamTeamsRequestDeploymentType
+>;
+
+/**
+ * Default Passport configuration for new projects.
+ */
+export type PatchTeamDefaultPassport = {
+  connectorId: string;
+  deploymentType: PatchTeamTeamsRequestDeploymentType;
 };
 
 /**
@@ -219,27 +252,88 @@ export type PatchTeamDefaultExpirationSettings = {
   expirationErrored?: ExpirationErrored | undefined;
 };
 
-export const PatchTeamGitSourcesProvider = {
-  Github: "github",
-  Gitlab: "gitlab",
-  Bitbucket: "bitbucket",
+export type PatchTeamEnvironments2 = {
+  type: "custom";
+  environmentId: string;
+};
+
+export const PatchTeamEnvironmentsTarget = {
+  Production: "production",
+  Preview: "preview",
 } as const;
-export type PatchTeamGitSourcesProvider = ClosedEnum<
-  typeof PatchTeamGitSourcesProvider
+export type PatchTeamEnvironmentsTarget = ClosedEnum<
+  typeof PatchTeamEnvironmentsTarget
 >;
 
-export type PatchTeamGitSourcesSources = {
-  provider: PatchTeamGitSourcesProvider;
+export type PatchTeamEnvironments1 = {
+  type: "system";
+  target: PatchTeamEnvironmentsTarget;
+};
+
+export type PatchTeamGitSourcesEnvironments =
+  | PatchTeamEnvironments1
+  | PatchTeamEnvironments2;
+
+export type PatchTeamSources2 = {
+  provider: "gitlab";
+  namespace: string;
+  project?: string | undefined;
+};
+
+export const PatchTeamSourcesProvider = {
+  Github: "github",
+  Bitbucket: "bitbucket",
+} as const;
+export type PatchTeamSourcesProvider = ClosedEnum<
+  typeof PatchTeamSourcesProvider
+>;
+
+export type PatchTeamSources1 = {
+  provider: PatchTeamSourcesProvider;
   org: string;
   repo?: string | undefined;
 };
 
+export type PatchTeamGitSourcesSources =
+  | (PatchTeamSources1 & { provider: "github" })
+  | (PatchTeamSources1 & { provider: "bitbucket" })
+  | PatchTeamSources2;
+
 export type PatchTeamGitSources1 = {
   enabled: boolean;
-  sources: Array<PatchTeamGitSourcesSources>;
+  environments: Array<PatchTeamEnvironments1 | PatchTeamEnvironments2>;
+  sources: Array<
+    | (PatchTeamSources1 & { provider: "github" })
+    | (PatchTeamSources1 & { provider: "bitbucket" })
+    | PatchTeamSources2
+  >;
 };
 
-export type PatchTeamDeploymentPolicyGitSources = PatchTeamGitSources1 | string;
+export type PatchTeamDeploymentPolicyGitSources =
+  | Array<PatchTeamGitSources1>
+  | string;
+
+export type PatchTeamEnvironmentsTeams2 = {
+  type: "custom";
+  environmentId: string;
+};
+
+export const PatchTeamEnvironmentsTeamsTarget = {
+  Production: "production",
+  Preview: "preview",
+} as const;
+export type PatchTeamEnvironmentsTeamsTarget = ClosedEnum<
+  typeof PatchTeamEnvironmentsTeamsTarget
+>;
+
+export type PatchTeamEnvironmentsTeams1 = {
+  type: "system";
+  target: PatchTeamEnvironmentsTeamsTarget;
+};
+
+export type PatchTeamDeploymentSourcesEnvironments =
+  | PatchTeamEnvironmentsTeams1
+  | PatchTeamEnvironmentsTeams2;
 
 export const PatchTeamDeploymentSourcesSources = {
   Git: "git",
@@ -254,19 +348,22 @@ export type PatchTeamDeploymentSourcesSources = ClosedEnum<
 
 export type PatchTeamDeploymentSources1 = {
   enabled: boolean;
+  environments: Array<
+    PatchTeamEnvironmentsTeams1 | PatchTeamEnvironmentsTeams2
+  >;
   sources: Array<PatchTeamDeploymentSourcesSources>;
 };
 
 export type PatchTeamDeploymentPolicyDeploymentSources =
-  | PatchTeamDeploymentSources1
+  | Array<PatchTeamDeploymentSources1>
   | string;
 
 /**
- * Composable deployment-time policy. Each rule key controls an independent restriction.
+ * Composable deployment-time policy. Each rule type holds a list of rules, one per environment scope.
  */
 export type PatchTeamDeploymentPolicy1 = {
-  gitSources?: PatchTeamGitSources1 | string | undefined;
-  deploymentSources?: PatchTeamDeploymentSources1 | string | undefined;
+  gitSources?: Array<PatchTeamGitSources1> | string | undefined;
+  deploymentSources?: Array<PatchTeamDeploymentSources1> | string | undefined;
 };
 
 export type PatchTeamDeploymentPolicy = PatchTeamDeploymentPolicy1 | string;
@@ -420,6 +517,10 @@ export type PatchTeamRequestBody = {
    */
   hideIpAddressesInLogDrains?: boolean | undefined;
   /**
+   * Controls who can request access to protected deployments.
+   */
+  dpAccessRequestsMode?: PatchTeamDpAccessRequestsMode | undefined;
+  /**
    * When enabled, all projects in the team require commits to be signed and verified by the git provider before deployments will be created.
    */
   requireVerifiedCommits?: boolean | undefined;
@@ -433,6 +534,10 @@ export type PatchTeamRequestBody = {
   defaultDeploymentProtection?:
     | PatchTeamDefaultDeploymentProtection
     | undefined;
+  /**
+   * Default Passport configuration for new projects.
+   */
+  defaultPassport?: PatchTeamDefaultPassport | null | undefined;
   defaultExpirationSettings?: PatchTeamDefaultExpirationSettings | undefined;
   deploymentPolicy?: PatchTeamDeploymentPolicy1 | string | undefined;
   /**
@@ -634,6 +739,15 @@ export function patchTeamRemoteCachingFromJSON(
 }
 
 /** @internal */
+export const PatchTeamDpAccessRequestsMode$inboundSchema: z.ZodNativeEnum<
+  typeof PatchTeamDpAccessRequestsMode
+> = z.nativeEnum(PatchTeamDpAccessRequestsMode);
+/** @internal */
+export const PatchTeamDpAccessRequestsMode$outboundSchema: z.ZodNativeEnum<
+  typeof PatchTeamDpAccessRequestsMode
+> = PatchTeamDpAccessRequestsMode$inboundSchema;
+
+/** @internal */
 export const PatchTeamDeploymentType$inboundSchema: z.ZodNativeEnum<
   typeof PatchTeamDeploymentType
 > = z.nativeEnum(PatchTeamDeploymentType);
@@ -788,6 +902,57 @@ export function patchTeamDefaultDeploymentProtectionFromJSON(
 }
 
 /** @internal */
+export const PatchTeamTeamsRequestDeploymentType$inboundSchema: z.ZodNativeEnum<
+  typeof PatchTeamTeamsRequestDeploymentType
+> = z.nativeEnum(PatchTeamTeamsRequestDeploymentType);
+/** @internal */
+export const PatchTeamTeamsRequestDeploymentType$outboundSchema:
+  z.ZodNativeEnum<typeof PatchTeamTeamsRequestDeploymentType> =
+    PatchTeamTeamsRequestDeploymentType$inboundSchema;
+
+/** @internal */
+export const PatchTeamDefaultPassport$inboundSchema: z.ZodType<
+  PatchTeamDefaultPassport,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  connectorId: types.string(),
+  deploymentType: PatchTeamTeamsRequestDeploymentType$inboundSchema,
+});
+/** @internal */
+export type PatchTeamDefaultPassport$Outbound = {
+  connectorId: string;
+  deploymentType: string;
+};
+
+/** @internal */
+export const PatchTeamDefaultPassport$outboundSchema: z.ZodType<
+  PatchTeamDefaultPassport$Outbound,
+  z.ZodTypeDef,
+  PatchTeamDefaultPassport
+> = z.object({
+  connectorId: z.string(),
+  deploymentType: PatchTeamTeamsRequestDeploymentType$outboundSchema,
+});
+
+export function patchTeamDefaultPassportToJSON(
+  patchTeamDefaultPassport: PatchTeamDefaultPassport,
+): string {
+  return JSON.stringify(
+    PatchTeamDefaultPassport$outboundSchema.parse(patchTeamDefaultPassport),
+  );
+}
+export function patchTeamDefaultPassportFromJSON(
+  jsonString: string,
+): SafeParseResult<PatchTeamDefaultPassport, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PatchTeamDefaultPassport$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PatchTeamDefaultPassport' from JSON`,
+  );
+}
+
+/** @internal */
 export const PatchTeamExpiration$inboundSchema: z.ZodNativeEnum<
   typeof PatchTeamExpiration
 > = z.nativeEnum(PatchTeamExpiration);
@@ -875,41 +1040,274 @@ export function patchTeamDefaultExpirationSettingsFromJSON(
 }
 
 /** @internal */
-export const PatchTeamGitSourcesProvider$inboundSchema: z.ZodNativeEnum<
-  typeof PatchTeamGitSourcesProvider
-> = z.nativeEnum(PatchTeamGitSourcesProvider);
-/** @internal */
-export const PatchTeamGitSourcesProvider$outboundSchema: z.ZodNativeEnum<
-  typeof PatchTeamGitSourcesProvider
-> = PatchTeamGitSourcesProvider$inboundSchema;
-
-/** @internal */
-export const PatchTeamGitSourcesSources$inboundSchema: z.ZodType<
-  PatchTeamGitSourcesSources,
+export const PatchTeamEnvironments2$inboundSchema: z.ZodType<
+  PatchTeamEnvironments2,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  provider: PatchTeamGitSourcesProvider$inboundSchema,
+  type: types.literal("custom"),
+  environmentId: types.string(),
+});
+/** @internal */
+export type PatchTeamEnvironments2$Outbound = {
+  type: "custom";
+  environmentId: string;
+};
+
+/** @internal */
+export const PatchTeamEnvironments2$outboundSchema: z.ZodType<
+  PatchTeamEnvironments2$Outbound,
+  z.ZodTypeDef,
+  PatchTeamEnvironments2
+> = z.object({
+  type: z.literal("custom"),
+  environmentId: z.string(),
+});
+
+export function patchTeamEnvironments2ToJSON(
+  patchTeamEnvironments2: PatchTeamEnvironments2,
+): string {
+  return JSON.stringify(
+    PatchTeamEnvironments2$outboundSchema.parse(patchTeamEnvironments2),
+  );
+}
+export function patchTeamEnvironments2FromJSON(
+  jsonString: string,
+): SafeParseResult<PatchTeamEnvironments2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PatchTeamEnvironments2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PatchTeamEnvironments2' from JSON`,
+  );
+}
+
+/** @internal */
+export const PatchTeamEnvironmentsTarget$inboundSchema: z.ZodNativeEnum<
+  typeof PatchTeamEnvironmentsTarget
+> = z.nativeEnum(PatchTeamEnvironmentsTarget);
+/** @internal */
+export const PatchTeamEnvironmentsTarget$outboundSchema: z.ZodNativeEnum<
+  typeof PatchTeamEnvironmentsTarget
+> = PatchTeamEnvironmentsTarget$inboundSchema;
+
+/** @internal */
+export const PatchTeamEnvironments1$inboundSchema: z.ZodType<
+  PatchTeamEnvironments1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: types.literal("system"),
+  target: PatchTeamEnvironmentsTarget$inboundSchema,
+});
+/** @internal */
+export type PatchTeamEnvironments1$Outbound = {
+  type: "system";
+  target: string;
+};
+
+/** @internal */
+export const PatchTeamEnvironments1$outboundSchema: z.ZodType<
+  PatchTeamEnvironments1$Outbound,
+  z.ZodTypeDef,
+  PatchTeamEnvironments1
+> = z.object({
+  type: z.literal("system"),
+  target: PatchTeamEnvironmentsTarget$outboundSchema,
+});
+
+export function patchTeamEnvironments1ToJSON(
+  patchTeamEnvironments1: PatchTeamEnvironments1,
+): string {
+  return JSON.stringify(
+    PatchTeamEnvironments1$outboundSchema.parse(patchTeamEnvironments1),
+  );
+}
+export function patchTeamEnvironments1FromJSON(
+  jsonString: string,
+): SafeParseResult<PatchTeamEnvironments1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PatchTeamEnvironments1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PatchTeamEnvironments1' from JSON`,
+  );
+}
+
+/** @internal */
+export const PatchTeamGitSourcesEnvironments$inboundSchema: z.ZodType<
+  PatchTeamGitSourcesEnvironments,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() => PatchTeamEnvironments1$inboundSchema),
+  z.lazy(() => PatchTeamEnvironments2$inboundSchema),
+]);
+/** @internal */
+export type PatchTeamGitSourcesEnvironments$Outbound =
+  | PatchTeamEnvironments1$Outbound
+  | PatchTeamEnvironments2$Outbound;
+
+/** @internal */
+export const PatchTeamGitSourcesEnvironments$outboundSchema: z.ZodType<
+  PatchTeamGitSourcesEnvironments$Outbound,
+  z.ZodTypeDef,
+  PatchTeamGitSourcesEnvironments
+> = z.union([
+  z.lazy(() => PatchTeamEnvironments1$outboundSchema),
+  z.lazy(() => PatchTeamEnvironments2$outboundSchema),
+]);
+
+export function patchTeamGitSourcesEnvironmentsToJSON(
+  patchTeamGitSourcesEnvironments: PatchTeamGitSourcesEnvironments,
+): string {
+  return JSON.stringify(
+    PatchTeamGitSourcesEnvironments$outboundSchema.parse(
+      patchTeamGitSourcesEnvironments,
+    ),
+  );
+}
+export function patchTeamGitSourcesEnvironmentsFromJSON(
+  jsonString: string,
+): SafeParseResult<PatchTeamGitSourcesEnvironments, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PatchTeamGitSourcesEnvironments$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PatchTeamGitSourcesEnvironments' from JSON`,
+  );
+}
+
+/** @internal */
+export const PatchTeamSources2$inboundSchema: z.ZodType<
+  PatchTeamSources2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  provider: types.literal("gitlab"),
+  namespace: types.string(),
+  project: types.optional(types.string()),
+});
+/** @internal */
+export type PatchTeamSources2$Outbound = {
+  provider: "gitlab";
+  namespace: string;
+  project?: string | undefined;
+};
+
+/** @internal */
+export const PatchTeamSources2$outboundSchema: z.ZodType<
+  PatchTeamSources2$Outbound,
+  z.ZodTypeDef,
+  PatchTeamSources2
+> = z.object({
+  provider: z.literal("gitlab"),
+  namespace: z.string(),
+  project: z.string().optional(),
+});
+
+export function patchTeamSources2ToJSON(
+  patchTeamSources2: PatchTeamSources2,
+): string {
+  return JSON.stringify(
+    PatchTeamSources2$outboundSchema.parse(patchTeamSources2),
+  );
+}
+export function patchTeamSources2FromJSON(
+  jsonString: string,
+): SafeParseResult<PatchTeamSources2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PatchTeamSources2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PatchTeamSources2' from JSON`,
+  );
+}
+
+/** @internal */
+export const PatchTeamSourcesProvider$inboundSchema: z.ZodNativeEnum<
+  typeof PatchTeamSourcesProvider
+> = z.nativeEnum(PatchTeamSourcesProvider);
+/** @internal */
+export const PatchTeamSourcesProvider$outboundSchema: z.ZodNativeEnum<
+  typeof PatchTeamSourcesProvider
+> = PatchTeamSourcesProvider$inboundSchema;
+
+/** @internal */
+export const PatchTeamSources1$inboundSchema: z.ZodType<
+  PatchTeamSources1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  provider: PatchTeamSourcesProvider$inboundSchema,
   org: types.string(),
   repo: types.optional(types.string()),
 });
 /** @internal */
-export type PatchTeamGitSourcesSources$Outbound = {
+export type PatchTeamSources1$Outbound = {
   provider: string;
   org: string;
   repo?: string | undefined;
 };
 
 /** @internal */
+export const PatchTeamSources1$outboundSchema: z.ZodType<
+  PatchTeamSources1$Outbound,
+  z.ZodTypeDef,
+  PatchTeamSources1
+> = z.object({
+  provider: PatchTeamSourcesProvider$outboundSchema,
+  org: z.string(),
+  repo: z.string().optional(),
+});
+
+export function patchTeamSources1ToJSON(
+  patchTeamSources1: PatchTeamSources1,
+): string {
+  return JSON.stringify(
+    PatchTeamSources1$outboundSchema.parse(patchTeamSources1),
+  );
+}
+export function patchTeamSources1FromJSON(
+  jsonString: string,
+): SafeParseResult<PatchTeamSources1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PatchTeamSources1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PatchTeamSources1' from JSON`,
+  );
+}
+
+/** @internal */
+export const PatchTeamGitSourcesSources$inboundSchema: z.ZodType<
+  PatchTeamGitSourcesSources,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() => PatchTeamSources1$inboundSchema).and(
+    z.object({ provider: z.literal("github") }),
+  ),
+  z.lazy(() => PatchTeamSources1$inboundSchema).and(
+    z.object({ provider: z.literal("bitbucket") }),
+  ),
+  z.lazy(() => PatchTeamSources2$inboundSchema),
+]);
+/** @internal */
+export type PatchTeamGitSourcesSources$Outbound =
+  | (PatchTeamSources1$Outbound & { provider: "github" })
+  | (PatchTeamSources1$Outbound & { provider: "bitbucket" })
+  | PatchTeamSources2$Outbound;
+
+/** @internal */
 export const PatchTeamGitSourcesSources$outboundSchema: z.ZodType<
   PatchTeamGitSourcesSources$Outbound,
   z.ZodTypeDef,
   PatchTeamGitSourcesSources
-> = z.object({
-  provider: PatchTeamGitSourcesProvider$outboundSchema,
-  org: z.string(),
-  repo: z.string().optional(),
-});
+> = z.union([
+  z.lazy(() => PatchTeamSources1$outboundSchema).and(
+    z.object({ provider: z.literal("github") }),
+  ),
+  z.lazy(() => PatchTeamSources1$outboundSchema).and(
+    z.object({ provider: z.literal("bitbucket") }),
+  ),
+  z.lazy(() => PatchTeamSources2$outboundSchema),
+]);
 
 export function patchTeamGitSourcesSourcesToJSON(
   patchTeamGitSourcesSources: PatchTeamGitSourcesSources,
@@ -935,12 +1333,35 @@ export const PatchTeamGitSources1$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   enabled: types.boolean(),
-  sources: z.array(z.lazy(() => PatchTeamGitSourcesSources$inboundSchema)),
+  environments: z.array(
+    z.union([
+      z.lazy(() => PatchTeamEnvironments1$inboundSchema),
+      z.lazy(() => PatchTeamEnvironments2$inboundSchema),
+    ]),
+  ),
+  sources: z.array(
+    z.union([
+      z.lazy(() => PatchTeamSources1$inboundSchema).and(
+        z.object({ provider: z.literal("github") }),
+      ),
+      z.lazy(() => PatchTeamSources1$inboundSchema).and(
+        z.object({ provider: z.literal("bitbucket") }),
+      ),
+      z.lazy(() => PatchTeamSources2$inboundSchema),
+    ]),
+  ),
 });
 /** @internal */
 export type PatchTeamGitSources1$Outbound = {
   enabled: boolean;
-  sources: Array<PatchTeamGitSourcesSources$Outbound>;
+  environments: Array<
+    PatchTeamEnvironments1$Outbound | PatchTeamEnvironments2$Outbound
+  >;
+  sources: Array<
+    | (PatchTeamSources1$Outbound & { provider: "github" })
+    | (PatchTeamSources1$Outbound & { provider: "bitbucket" })
+    | PatchTeamSources2$Outbound
+  >;
 };
 
 /** @internal */
@@ -950,7 +1371,23 @@ export const PatchTeamGitSources1$outboundSchema: z.ZodType<
   PatchTeamGitSources1
 > = z.object({
   enabled: z.boolean(),
-  sources: z.array(z.lazy(() => PatchTeamGitSourcesSources$outboundSchema)),
+  environments: z.array(
+    z.union([
+      z.lazy(() => PatchTeamEnvironments1$outboundSchema),
+      z.lazy(() => PatchTeamEnvironments2$outboundSchema),
+    ]),
+  ),
+  sources: z.array(
+    z.union([
+      z.lazy(() => PatchTeamSources1$outboundSchema).and(
+        z.object({ provider: z.literal("github") }),
+      ),
+      z.lazy(() => PatchTeamSources1$outboundSchema).and(
+        z.object({ provider: z.literal("bitbucket") }),
+      ),
+      z.lazy(() => PatchTeamSources2$outboundSchema),
+    ]),
+  ),
 });
 
 export function patchTeamGitSources1ToJSON(
@@ -976,12 +1413,12 @@ export const PatchTeamDeploymentPolicyGitSources$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = smartUnion([
-  z.lazy(() => PatchTeamGitSources1$inboundSchema),
+  z.array(z.lazy(() => PatchTeamGitSources1$inboundSchema)),
   types.string(),
 ]);
 /** @internal */
 export type PatchTeamDeploymentPolicyGitSources$Outbound =
-  | PatchTeamGitSources1$Outbound
+  | Array<PatchTeamGitSources1$Outbound>
   | string;
 
 /** @internal */
@@ -989,7 +1426,10 @@ export const PatchTeamDeploymentPolicyGitSources$outboundSchema: z.ZodType<
   PatchTeamDeploymentPolicyGitSources$Outbound,
   z.ZodTypeDef,
   PatchTeamDeploymentPolicyGitSources
-> = smartUnion([z.lazy(() => PatchTeamGitSources1$outboundSchema), z.string()]);
+> = smartUnion([
+  z.array(z.lazy(() => PatchTeamGitSources1$outboundSchema)),
+  z.string(),
+]);
 
 export function patchTeamDeploymentPolicyGitSourcesToJSON(
   patchTeamDeploymentPolicyGitSources: PatchTeamDeploymentPolicyGitSources,
@@ -1012,6 +1452,148 @@ export function patchTeamDeploymentPolicyGitSourcesFromJSON(
 }
 
 /** @internal */
+export const PatchTeamEnvironmentsTeams2$inboundSchema: z.ZodType<
+  PatchTeamEnvironmentsTeams2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: types.literal("custom"),
+  environmentId: types.string(),
+});
+/** @internal */
+export type PatchTeamEnvironmentsTeams2$Outbound = {
+  type: "custom";
+  environmentId: string;
+};
+
+/** @internal */
+export const PatchTeamEnvironmentsTeams2$outboundSchema: z.ZodType<
+  PatchTeamEnvironmentsTeams2$Outbound,
+  z.ZodTypeDef,
+  PatchTeamEnvironmentsTeams2
+> = z.object({
+  type: z.literal("custom"),
+  environmentId: z.string(),
+});
+
+export function patchTeamEnvironmentsTeams2ToJSON(
+  patchTeamEnvironmentsTeams2: PatchTeamEnvironmentsTeams2,
+): string {
+  return JSON.stringify(
+    PatchTeamEnvironmentsTeams2$outboundSchema.parse(
+      patchTeamEnvironmentsTeams2,
+    ),
+  );
+}
+export function patchTeamEnvironmentsTeams2FromJSON(
+  jsonString: string,
+): SafeParseResult<PatchTeamEnvironmentsTeams2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PatchTeamEnvironmentsTeams2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PatchTeamEnvironmentsTeams2' from JSON`,
+  );
+}
+
+/** @internal */
+export const PatchTeamEnvironmentsTeamsTarget$inboundSchema: z.ZodNativeEnum<
+  typeof PatchTeamEnvironmentsTeamsTarget
+> = z.nativeEnum(PatchTeamEnvironmentsTeamsTarget);
+/** @internal */
+export const PatchTeamEnvironmentsTeamsTarget$outboundSchema: z.ZodNativeEnum<
+  typeof PatchTeamEnvironmentsTeamsTarget
+> = PatchTeamEnvironmentsTeamsTarget$inboundSchema;
+
+/** @internal */
+export const PatchTeamEnvironmentsTeams1$inboundSchema: z.ZodType<
+  PatchTeamEnvironmentsTeams1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: types.literal("system"),
+  target: PatchTeamEnvironmentsTeamsTarget$inboundSchema,
+});
+/** @internal */
+export type PatchTeamEnvironmentsTeams1$Outbound = {
+  type: "system";
+  target: string;
+};
+
+/** @internal */
+export const PatchTeamEnvironmentsTeams1$outboundSchema: z.ZodType<
+  PatchTeamEnvironmentsTeams1$Outbound,
+  z.ZodTypeDef,
+  PatchTeamEnvironmentsTeams1
+> = z.object({
+  type: z.literal("system"),
+  target: PatchTeamEnvironmentsTeamsTarget$outboundSchema,
+});
+
+export function patchTeamEnvironmentsTeams1ToJSON(
+  patchTeamEnvironmentsTeams1: PatchTeamEnvironmentsTeams1,
+): string {
+  return JSON.stringify(
+    PatchTeamEnvironmentsTeams1$outboundSchema.parse(
+      patchTeamEnvironmentsTeams1,
+    ),
+  );
+}
+export function patchTeamEnvironmentsTeams1FromJSON(
+  jsonString: string,
+): SafeParseResult<PatchTeamEnvironmentsTeams1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PatchTeamEnvironmentsTeams1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PatchTeamEnvironmentsTeams1' from JSON`,
+  );
+}
+
+/** @internal */
+export const PatchTeamDeploymentSourcesEnvironments$inboundSchema: z.ZodType<
+  PatchTeamDeploymentSourcesEnvironments,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() => PatchTeamEnvironmentsTeams1$inboundSchema),
+  z.lazy(() => PatchTeamEnvironmentsTeams2$inboundSchema),
+]);
+/** @internal */
+export type PatchTeamDeploymentSourcesEnvironments$Outbound =
+  | PatchTeamEnvironmentsTeams1$Outbound
+  | PatchTeamEnvironmentsTeams2$Outbound;
+
+/** @internal */
+export const PatchTeamDeploymentSourcesEnvironments$outboundSchema: z.ZodType<
+  PatchTeamDeploymentSourcesEnvironments$Outbound,
+  z.ZodTypeDef,
+  PatchTeamDeploymentSourcesEnvironments
+> = z.union([
+  z.lazy(() => PatchTeamEnvironmentsTeams1$outboundSchema),
+  z.lazy(() => PatchTeamEnvironmentsTeams2$outboundSchema),
+]);
+
+export function patchTeamDeploymentSourcesEnvironmentsToJSON(
+  patchTeamDeploymentSourcesEnvironments:
+    PatchTeamDeploymentSourcesEnvironments,
+): string {
+  return JSON.stringify(
+    PatchTeamDeploymentSourcesEnvironments$outboundSchema.parse(
+      patchTeamDeploymentSourcesEnvironments,
+    ),
+  );
+}
+export function patchTeamDeploymentSourcesEnvironmentsFromJSON(
+  jsonString: string,
+): SafeParseResult<PatchTeamDeploymentSourcesEnvironments, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      PatchTeamDeploymentSourcesEnvironments$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PatchTeamDeploymentSourcesEnvironments' from JSON`,
+  );
+}
+
+/** @internal */
 export const PatchTeamDeploymentSourcesSources$inboundSchema: z.ZodNativeEnum<
   typeof PatchTeamDeploymentSourcesSources
 > = z.nativeEnum(PatchTeamDeploymentSourcesSources);
@@ -1027,11 +1609,20 @@ export const PatchTeamDeploymentSources1$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   enabled: types.boolean(),
+  environments: z.array(
+    z.union([
+      z.lazy(() => PatchTeamEnvironmentsTeams1$inboundSchema),
+      z.lazy(() => PatchTeamEnvironmentsTeams2$inboundSchema),
+    ]),
+  ),
   sources: z.array(PatchTeamDeploymentSourcesSources$inboundSchema),
 });
 /** @internal */
 export type PatchTeamDeploymentSources1$Outbound = {
   enabled: boolean;
+  environments: Array<
+    PatchTeamEnvironmentsTeams1$Outbound | PatchTeamEnvironmentsTeams2$Outbound
+  >;
   sources: Array<string>;
 };
 
@@ -1042,6 +1633,12 @@ export const PatchTeamDeploymentSources1$outboundSchema: z.ZodType<
   PatchTeamDeploymentSources1
 > = z.object({
   enabled: z.boolean(),
+  environments: z.array(
+    z.union([
+      z.lazy(() => PatchTeamEnvironmentsTeams1$outboundSchema),
+      z.lazy(() => PatchTeamEnvironmentsTeams2$outboundSchema),
+    ]),
+  ),
   sources: z.array(PatchTeamDeploymentSourcesSources$outboundSchema),
 });
 
@@ -1068,12 +1665,12 @@ export function patchTeamDeploymentSources1FromJSON(
 export const PatchTeamDeploymentPolicyDeploymentSources$inboundSchema:
   z.ZodType<PatchTeamDeploymentPolicyDeploymentSources, z.ZodTypeDef, unknown> =
     smartUnion([
-      z.lazy(() => PatchTeamDeploymentSources1$inboundSchema),
+      z.array(z.lazy(() => PatchTeamDeploymentSources1$inboundSchema)),
       types.string(),
     ]);
 /** @internal */
 export type PatchTeamDeploymentPolicyDeploymentSources$Outbound =
-  | PatchTeamDeploymentSources1$Outbound
+  | Array<PatchTeamDeploymentSources1$Outbound>
   | string;
 
 /** @internal */
@@ -1083,7 +1680,7 @@ export const PatchTeamDeploymentPolicyDeploymentSources$outboundSchema:
     z.ZodTypeDef,
     PatchTeamDeploymentPolicyDeploymentSources
   > = smartUnion([
-    z.lazy(() => PatchTeamDeploymentSources1$outboundSchema),
+    z.array(z.lazy(() => PatchTeamDeploymentSources1$outboundSchema)),
     z.string(),
   ]);
 
@@ -1121,21 +1718,24 @@ export const PatchTeamDeploymentPolicy1$inboundSchema: z.ZodType<
 > = z.object({
   gitSources: types.optional(
     smartUnion([
-      z.lazy(() => PatchTeamGitSources1$inboundSchema),
+      z.array(z.lazy(() => PatchTeamGitSources1$inboundSchema)),
       types.string(),
     ]),
   ),
   deploymentSources: types.optional(
     smartUnion([
-      z.lazy(() => PatchTeamDeploymentSources1$inboundSchema),
+      z.array(z.lazy(() => PatchTeamDeploymentSources1$inboundSchema)),
       types.string(),
     ]),
   ),
 });
 /** @internal */
 export type PatchTeamDeploymentPolicy1$Outbound = {
-  gitSources?: PatchTeamGitSources1$Outbound | string | undefined;
-  deploymentSources?: PatchTeamDeploymentSources1$Outbound | string | undefined;
+  gitSources?: Array<PatchTeamGitSources1$Outbound> | string | undefined;
+  deploymentSources?:
+    | Array<PatchTeamDeploymentSources1$Outbound>
+    | string
+    | undefined;
 };
 
 /** @internal */
@@ -1145,11 +1745,11 @@ export const PatchTeamDeploymentPolicy1$outboundSchema: z.ZodType<
   PatchTeamDeploymentPolicy1
 > = z.object({
   gitSources: smartUnion([
-    z.lazy(() => PatchTeamGitSources1$outboundSchema),
+    z.array(z.lazy(() => PatchTeamGitSources1$outboundSchema)),
     z.string(),
   ]).optional(),
   deploymentSources: smartUnion([
-    z.lazy(() => PatchTeamDeploymentSources1$outboundSchema),
+    z.array(z.lazy(() => PatchTeamDeploymentSources1$outboundSchema)),
     z.string(),
   ]).optional(),
 });
@@ -1656,11 +2256,17 @@ export const PatchTeamRequestBody$inboundSchema: z.ZodType<
   ),
   hideIpAddresses: types.optional(types.boolean()),
   hideIpAddressesInLogDrains: types.optional(types.boolean()),
+  dpAccessRequestsMode: types.optional(
+    PatchTeamDpAccessRequestsMode$inboundSchema,
+  ),
   requireVerifiedCommits: types.optional(types.boolean()),
   disableRepositoryDispatchEvents: types.optional(types.boolean()),
   defaultDeploymentProtection: types.optional(
     z.lazy(() => PatchTeamDefaultDeploymentProtection$inboundSchema),
   ),
+  defaultPassport: z.nullable(
+    z.lazy(() => PatchTeamDefaultPassport$inboundSchema),
+  ).optional(),
   defaultExpirationSettings: types.optional(
     z.lazy(() => PatchTeamDefaultExpirationSettings$inboundSchema),
   ),
@@ -1705,11 +2311,13 @@ export type PatchTeamRequestBody$Outbound = {
   remoteCaching?: PatchTeamRemoteCaching$Outbound | undefined;
   hideIpAddresses?: boolean | undefined;
   hideIpAddressesInLogDrains?: boolean | undefined;
+  dpAccessRequestsMode?: string | undefined;
   requireVerifiedCommits?: boolean | undefined;
   disableRepositoryDispatchEvents?: boolean | undefined;
   defaultDeploymentProtection?:
     | PatchTeamDefaultDeploymentProtection$Outbound
     | undefined;
+  defaultPassport?: PatchTeamDefaultPassport$Outbound | null | undefined;
   defaultExpirationSettings?:
     | PatchTeamDefaultExpirationSettings$Outbound
     | undefined;
@@ -1743,10 +2351,14 @@ export const PatchTeamRequestBody$outboundSchema: z.ZodType<
   remoteCaching: z.lazy(() => PatchTeamRemoteCaching$outboundSchema).optional(),
   hideIpAddresses: z.boolean().optional(),
   hideIpAddressesInLogDrains: z.boolean().optional(),
+  dpAccessRequestsMode: PatchTeamDpAccessRequestsMode$outboundSchema.optional(),
   requireVerifiedCommits: z.boolean().optional(),
   disableRepositoryDispatchEvents: z.boolean().optional(),
   defaultDeploymentProtection: z.lazy(() =>
     PatchTeamDefaultDeploymentProtection$outboundSchema
+  ).optional(),
+  defaultPassport: z.nullable(
+    z.lazy(() => PatchTeamDefaultPassport$outboundSchema),
   ).optional(),
   defaultExpirationSettings: z.lazy(() =>
     PatchTeamDefaultExpirationSettings$outboundSchema

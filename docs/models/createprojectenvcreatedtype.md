@@ -11,5 +11,5 @@ let value: CreateProjectEnvCreatedType = "sensitive";
 ## Values
 
 ```typescript
-"system" | "encrypted" | "plain" | "sensitive" | "secret"
+"encrypted" | "plain" | "secret" | "sensitive" | "system"
 ```

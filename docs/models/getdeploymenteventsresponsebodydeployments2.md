@@ -15,7 +15,7 @@ let value: GetDeploymentEventsResponseBodyDeployments2 = {
     name: "<value>",
   },
   serial: "<value>",
-  type: "stderr",
+  type: "edge-function-invocation",
 };
 ```
 

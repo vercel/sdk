@@ -733,7 +733,7 @@ List deployments under the authenticated user or team. If a deployment hasn't fi
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="getDeployments" method="get" path="/v6/deployments" -->
+<!-- UsageSnippet language="typescript" operationID="getDeployments" method="get" path="/v7/deployments" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 

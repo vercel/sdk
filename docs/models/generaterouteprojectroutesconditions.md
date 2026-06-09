@@ -7,7 +7,7 @@ import { GenerateRouteProjectRoutesConditions } from "@vercel/sdk/models/generat
 
 let value: GenerateRouteProjectRoutesConditions = {
   field: "query",
-  operator: "re",
+  operator: "exists",
   missing: true,
 };
 ```

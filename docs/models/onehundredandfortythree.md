@@ -5,20 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndFortyThree } from "@vercel/sdk/models/edgemiddlewareinvocations.js";
+import { OneHundredAndFortyThree } from "@vercel/sdk/models/connectdatatransfer.js";
 
 let value: OneHundredAndFortyThree = {
-  ownerId: "<id>",
-  source: "<value>",
-  cause: "<value>",
+  enabled: true,
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `ownerId`          | *string*           | :heavy_check_mark: | N/A                |
-| `source`           | *string*           | :heavy_check_mark: | N/A                |
-| `cause`            | *string*           | :heavy_check_mark: | N/A                |
-| `reason`           | *string*           | :heavy_minus_sign: | N/A                |
+| Field                     | Type                      | Required                  | Description               |
+| ------------------------- | ------------------------- | ------------------------- | ------------------------- |
+| `enabled`                 | *boolean*                 | :heavy_check_mark:        | N/A                       |
+| `allowedIntegrationCount` | *number*                  | :heavy_minus_sign:        | N/A                       |
+| `allowedIntegrationIds`   | *string*[]                | :heavy_minus_sign:        | N/A                       |

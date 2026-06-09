@@ -32,7 +32,7 @@ export type ListTeamFlagsQueryParamState = ClosedEnum<
 /**
  * The kind of flags to retrieve.
  */
-export const QueryParamKind = {
+export const ListTeamFlagsQueryParamKind = {
   Boolean: "boolean",
   String: "string",
   Number: "number",
@@ -41,7 +41,9 @@ export const QueryParamKind = {
 /**
  * The kind of flags to retrieve.
  */
-export type QueryParamKind = ClosedEnum<typeof QueryParamKind>;
+export type ListTeamFlagsQueryParamKind = ClosedEnum<
+  typeof ListTeamFlagsQueryParamKind
+>;
 
 export type ListTeamFlagsRequest = {
   /**
@@ -49,7 +51,7 @@ export type ListTeamFlagsRequest = {
    */
   state?: ListTeamFlagsQueryParamState | undefined;
   /**
-   * Whether to include metadata in the response
+   * Deprecated. Whether to include creator metadata in each flag in the response. Resolve creator identity client-side (e.g. via the team members endpoint) instead; this parameter will be removed in a future release.
    */
   withMetadata?: boolean | undefined;
   /**
@@ -67,7 +69,7 @@ export type ListTeamFlagsRequest = {
   /**
    * The kind of flags to retrieve.
    */
-  kind?: QueryParamKind | undefined;
+  kind?: ListTeamFlagsQueryParamKind | undefined;
   /**
    * Filter flags by tag. Repeat the parameter for multiple tags (all must match).
    */
@@ -101,13 +103,13 @@ export const ListTeamFlagsQueryParamState$outboundSchema: z.ZodNativeEnum<
 > = ListTeamFlagsQueryParamState$inboundSchema;
 
 /** @internal */
-export const QueryParamKind$inboundSchema: z.ZodNativeEnum<
-  typeof QueryParamKind
-> = z.nativeEnum(QueryParamKind);
+export const ListTeamFlagsQueryParamKind$inboundSchema: z.ZodNativeEnum<
+  typeof ListTeamFlagsQueryParamKind
+> = z.nativeEnum(ListTeamFlagsQueryParamKind);
 /** @internal */
-export const QueryParamKind$outboundSchema: z.ZodNativeEnum<
-  typeof QueryParamKind
-> = QueryParamKind$inboundSchema;
+export const ListTeamFlagsQueryParamKind$outboundSchema: z.ZodNativeEnum<
+  typeof ListTeamFlagsQueryParamKind
+> = ListTeamFlagsQueryParamKind$inboundSchema;
 
 /** @internal */
 export const ListTeamFlagsRequest$inboundSchema: z.ZodType<
@@ -120,7 +122,7 @@ export const ListTeamFlagsRequest$inboundSchema: z.ZodType<
   limit: types.number().default(20),
   cursor: types.optional(types.string()),
   search: types.optional(types.string()),
-  kind: types.optional(QueryParamKind$inboundSchema),
+  kind: types.optional(ListTeamFlagsQueryParamKind$inboundSchema),
   tags: types.optional(z.array(types.string())),
   teamId: types.string(),
   slug: types.optional(types.string()),
@@ -149,7 +151,7 @@ export const ListTeamFlagsRequest$outboundSchema: z.ZodType<
   limit: z.number().int().default(20),
   cursor: z.string().optional(),
   search: z.string().optional(),
-  kind: QueryParamKind$outboundSchema.optional(),
+  kind: ListTeamFlagsQueryParamKind$outboundSchema.optional(),
   tags: z.array(z.string()).optional(),
   teamId: z.string(),
   slug: z.string().optional(),

@@ -10,7 +10,7 @@ let value: ProjectAccess2 = {
   projectIds: [
     "<value 1>",
   ],
-  managedBy: "drain",
+  managedBy: "integration",
 };
 ```
 

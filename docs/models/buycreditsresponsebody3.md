@@ -24,7 +24,7 @@ let value: BuyCreditsResponseBody3 = {
     createdAt: "1729837603767",
     orbSubscriptionId: "<id>",
     ownerId: "<id>",
-    status: "pending",
+    status: "failed",
     updatedAt: "1735639786259",
   },
 };

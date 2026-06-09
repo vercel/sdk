@@ -7,7 +7,7 @@
 
 ```typescript
 const value: models.GetMicrofrontendsInGroupTarget1[] = [
-  "production",
+  "development",
 ];
 ```
 

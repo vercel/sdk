@@ -9,7 +9,7 @@ let value: PutFirewallConfigIps = {
   id: "<id>",
   hostname: "important-phrase.org",
   ip: "38.85.164.59",
-  action: "bypass",
+  action: "log",
 };
 ```
 

@@ -5,11 +5,11 @@
 ```typescript
 import { GetMicrofrontendsInGroupSourcesMicrofrontendsProvider } from "@vercel/sdk/models/getmicrofrontendsingroupresponsebody.js";
 
-let value: GetMicrofrontendsInGroupSourcesMicrofrontendsProvider = "gitlab";
+let value: GetMicrofrontendsInGroupSourcesMicrofrontendsProvider = "github";
 ```
 
 ## Values
 
 ```typescript
-"github" | "gitlab" | "bitbucket"
+"bitbucket" | "github"
 ```

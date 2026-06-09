@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UpdateMicrofrontendsManagedRules } from "@vercel/sdk/models/updatemicrofrontendsmanagedrules.js";
+import { UpdateMicrofrontendsManagedRules } from "@vercel/sdk/models/updatemicrofrontendsresponsebody.js";
 
 let value: UpdateMicrofrontendsManagedRules = {
   vercelRuleset: {

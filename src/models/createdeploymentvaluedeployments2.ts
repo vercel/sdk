@@ -322,8 +322,8 @@ export const Framework = {
   Fasthtml: "fasthtml",
   Django: "django",
   Ash: "ash",
-  SanityV3: "sanity-v3",
   Sanity: "sanity",
+  SanityV2: "sanity-v2",
   Storybook: "storybook",
   Nitro: "nitro",
   Hono: "hono",
@@ -510,14 +510,14 @@ export type Builds = {
 };
 
 export const CreateDeploymentDeploymentsNodeVersion = {
-  TwentyFourDotX: "24.x",
-  TwentyTwoDotX: "22.x",
-  TwentyDotX: "20.x",
-  EighteenDotX: "18.x",
-  SixteenDotX: "16.x",
-  FourteenDotX: "14.x",
-  TwelveDotX: "12.x",
   TenDotX: "10.x",
+  TwelveDotX: "12.x",
+  FourteenDotX: "14.x",
+  SixteenDotX: "16.x",
+  EighteenDotX: "18.x",
+  TwentyDotX: "20.x",
+  TwentyTwoDotX: "22.x",
+  TwentyFourDotX: "24.x",
   EightDot10DotX: "8.10.x",
 } as const;
 export type CreateDeploymentDeploymentsNodeVersion = ClosedEnum<
@@ -525,75 +525,75 @@ export type CreateDeploymentDeploymentsNodeVersion = ClosedEnum<
 >;
 
 export const CreateDeploymentFramework = {
-  Blitzjs: "blitzjs",
-  Nextjs: "nextjs",
-  Gatsby: "gatsby",
-  Remix: "remix",
-  ReactRouter: "react-router",
-  Astro: "astro",
-  Hexo: "hexo",
-  Eleventy: "eleventy",
-  Docusaurus2: "docusaurus-2",
-  Docusaurus: "docusaurus",
-  Preact: "preact",
-  Solidstart1: "solidstart-1",
-  Solidstart: "solidstart",
-  Dojo: "dojo",
-  Ember: "ember",
-  Vue: "vue",
-  Scully: "scully",
-  IonicAngular: "ionic-angular",
+  ActixWeb: "actix-web",
   Angular: "angular",
+  Ash: "ash",
+  Astro: "astro",
+  Axum: "axum",
+  Blitzjs: "blitzjs",
+  Brunch: "brunch",
+  CreateReactApp: "create-react-app",
+  Django: "django",
+  Docusaurus: "docusaurus",
+  Docusaurus2: "docusaurus-2",
+  Dojo: "dojo",
+  Eleventy: "eleventy",
+  Elysia: "elysia",
+  Ember: "ember",
+  Express: "express",
+  Fastapi: "fastapi",
+  Fasthtml: "fasthtml",
+  Fastify: "fastify",
+  Flask: "flask",
+  Gatsby: "gatsby",
+  Go: "go",
+  Gridsome: "gridsome",
+  H3: "h3",
+  Hexo: "hexo",
+  Hono: "hono",
+  Hugo: "hugo",
+  Hydrogen: "hydrogen",
+  IonicAngular: "ionic-angular",
+  IonicReact: "ionic-react",
+  Jekyll: "jekyll",
+  Koa: "koa",
+  Mastra: "mastra",
+  Middleman: "middleman",
+  Nestjs: "nestjs",
+  Nextjs: "nextjs",
+  Nitro: "nitro",
+  Node: "node",
+  Nuxtjs: "nuxtjs",
+  Parcel: "parcel",
   Polymer: "polymer",
+  Preact: "preact",
+  Python: "python",
+  ReactRouter: "react-router",
+  Redwoodjs: "redwoodjs",
+  Remix: "remix",
+  Ruby: "ruby",
+  Rust: "rust",
+  Saber: "saber",
+  Sanity: "sanity",
+  SanityV2: "sanity-v2",
+  Sapper: "sapper",
+  Scully: "scully",
+  Services: "services",
+  Solidstart: "solidstart",
+  Solidstart1: "solidstart-1",
+  Stencil: "stencil",
+  Storybook: "storybook",
   Svelte: "svelte",
   Sveltekit: "sveltekit",
   Sveltekit1: "sveltekit-1",
-  IonicReact: "ionic-react",
-  CreateReactApp: "create-react-app",
-  Gridsome: "gridsome",
-  Umijs: "umijs",
-  Sapper: "sapper",
-  Saber: "saber",
-  Stencil: "stencil",
-  Nuxtjs: "nuxtjs",
-  Redwoodjs: "redwoodjs",
-  Hugo: "hugo",
-  Jekyll: "jekyll",
-  Brunch: "brunch",
-  Middleman: "middleman",
-  Zola: "zola",
-  Hydrogen: "hydrogen",
-  Vite: "vite",
   TanstackStart: "tanstack-start",
+  Umijs: "umijs",
+  Vite: "vite",
   Vitepress: "vitepress",
+  Vue: "vue",
   Vuepress: "vuepress",
-  Parcel: "parcel",
-  Fastapi: "fastapi",
-  Flask: "flask",
-  Fasthtml: "fasthtml",
-  Django: "django",
-  Ash: "ash",
-  SanityV3: "sanity-v3",
-  Sanity: "sanity",
-  Storybook: "storybook",
-  Nitro: "nitro",
-  Hono: "hono",
-  Express: "express",
-  H3: "h3",
-  Koa: "koa",
-  Nestjs: "nestjs",
-  Elysia: "elysia",
-  Fastify: "fastify",
   Xmcp: "xmcp",
-  Python: "python",
-  Ruby: "ruby",
-  Rust: "rust",
-  Axum: "axum",
-  ActixWeb: "actix-web",
-  Node: "node",
-  Go: "go",
-  Services: "services",
-  Mastra: "mastra",
+  Zola: "zola",
 } as const;
 export type CreateDeploymentFramework = ClosedEnum<
   typeof CreateDeploymentFramework
@@ -629,10 +629,10 @@ export type CreateDeploymentProjectSettings = {
 };
 
 export const CreateDeploymentDeploymentsStatus = {
-  Skipped: "skipped",
+  Error: "error",
   Pending: "pending",
   Ready: "ready",
-  Error: "error",
+  Skipped: "skipped",
   Timeout: "timeout",
 } as const;
 export type CreateDeploymentDeploymentsStatus = ClosedEnum<
@@ -701,8 +701,8 @@ export const Formats = {
 export type Formats = ClosedEnum<typeof Formats>;
 
 export const ContentDispositionType = {
-  Inline: "inline",
   Attachment: "attachment",
+  Inline: "inline",
 } as const;
 export type ContentDispositionType = ClosedEnum<typeof ContentDispositionType>;
 
@@ -765,13 +765,13 @@ export type Lambdas = {
 };
 
 export const CreateDeploymentStatus = {
-  Queued: "QUEUED",
-  Building: "BUILDING",
-  Error: "ERROR",
   Blocked: "BLOCKED",
-  Initializing: "INITIALIZING",
-  Ready: "READY",
+  Building: "BUILDING",
   Canceled: "CANCELED",
+  Error: "ERROR",
+  Initializing: "INITIALIZING",
+  Queued: "QUEUED",
+  Ready: "READY",
 } as const;
 export type CreateDeploymentStatus = ClosedEnum<typeof CreateDeploymentStatus>;
 
@@ -796,9 +796,9 @@ export type CustomEnvironment2 = {
  * The type of environment (production, preview, or development)
  */
 export const CustomEnvironmentType = {
-  Production: "production",
-  Preview: "preview",
   Development: "development",
+  Preview: "preview",
+  Production: "production",
 } as const;
 /**
  * The type of environment (production, preview, or development)
@@ -810,8 +810,8 @@ export type CustomEnvironmentType = ClosedEnum<typeof CustomEnvironmentType>;
  */
 export const CreateDeploymentCustomEnvironmentType = {
   EndsWith: "endsWith",
-  StartsWith: "startsWith",
   Equals: "equals",
+  StartsWith: "startsWith",
 } as const;
 /**
  * The type of matching to perform
@@ -929,13 +929,13 @@ export type AliasWarning = {
  * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
  */
 export const ReadyState = {
-  Queued: "QUEUED",
-  Building: "BUILDING",
-  Error: "ERROR",
   Blocked: "BLOCKED",
-  Initializing: "INITIALIZING",
-  Ready: "READY",
+  Building: "BUILDING",
   Canceled: "CANCELED",
+  Error: "ERROR",
+  Initializing: "INITIALIZING",
+  Queued: "QUEUED",
+  Ready: "READY",
 } as const;
 /**
  * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
@@ -956,17 +956,17 @@ export type AliasError = {
 };
 
 export const ChecksState = {
+  Completed: "completed",
   Registered: "registered",
   Running: "running",
-  Completed: "completed",
 } as const;
 export type ChecksState = ClosedEnum<typeof ChecksState>;
 
 export const ChecksConclusion = {
-  Succeeded: "succeeded",
+  Canceled: "canceled",
   Failed: "failed",
   Skipped: "skipped",
-  Canceled: "canceled",
+  Succeeded: "succeeded",
 } as const;
 export type ChecksConclusion = ClosedEnum<typeof ChecksConclusion>;
 
@@ -1319,8 +1319,8 @@ export type CreateDeploymentGitSource =
  * Current provisioning state
  */
 export const CreateDeploymentState = {
-  Pending: "PENDING",
   Complete: "COMPLETE",
+  Pending: "PENDING",
   Timeout: "TIMEOUT",
 } as const;
 /**
@@ -1346,14 +1346,14 @@ export type ManualProvisioning = {
  * If set it overrides the `projectSettings.nodeVersion` for this deployment.
  */
 export const CreateDeploymentNodeVersion = {
-  TwentyFourDotX: "24.x",
-  TwentyTwoDotX: "22.x",
-  TwentyDotX: "20.x",
-  EighteenDotX: "18.x",
-  SixteenDotX: "16.x",
-  FourteenDotX: "14.x",
-  TwelveDotX: "12.x",
   TenDotX: "10.x",
+  TwelveDotX: "12.x",
+  FourteenDotX: "14.x",
+  SixteenDotX: "16.x",
+  EighteenDotX: "18.x",
+  TwentyDotX: "20.x",
+  TwentyTwoDotX: "22.x",
+  TwentyFourDotX: "24.x",
   EightDot10DotX: "8.10.x",
 } as const;
 /**
@@ -1376,9 +1376,9 @@ export type CreateDeploymentProject = {
  * Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic
  */
 export const ReadySubstate = {
-  Staged: "STAGED",
-  Rolling: "ROLLING",
   Promoted: "PROMOTED",
+  Rolling: "ROLLING",
+  Staged: "STAGED",
 } as const;
 /**
  * Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic
@@ -1386,12 +1386,13 @@ export const ReadySubstate = {
 export type ReadySubstate = ClosedEnum<typeof ReadySubstate>;
 
 /**
- * Where was the deployment created from
+ * Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it.
  */
 export const CreateDeploymentSource = {
   ApiTriggerGitDeploy: "api-trigger-git-deploy",
   Cli: "cli",
   CloneRepo: "clone/repo",
+  Drop: "drop",
   Git: "git",
   Import: "import",
   ImportRepo: "import/repo",
@@ -1399,7 +1400,7 @@ export const CreateDeploymentSource = {
   V0Web: "v0-web",
 } as const;
 /**
- * Where was the deployment created from
+ * Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it.
  */
 export type CreateDeploymentSource = ClosedEnum<typeof CreateDeploymentSource>;
 
@@ -1407,8 +1408,8 @@ export type CreateDeploymentSource = ClosedEnum<typeof CreateDeploymentSource>;
  * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
  */
 export const CreateDeploymentTarget = {
-  Staging: "staging",
   Production: "production",
+  Staging: "staging",
 } as const;
 /**
  * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
@@ -1430,9 +1431,9 @@ export type OidcTokenClaims = {
 };
 
 export const CreateDeploymentPlan = {
-  Pro: "pro",
   Enterprise: "enterprise",
   Hobby: "hobby",
+  Pro: "pro",
 } as const;
 export type CreateDeploymentPlan = ClosedEnum<typeof CreateDeploymentPlan>;
 
@@ -1516,8 +1517,8 @@ export type Crons = {
 };
 
 export const Architecture = {
-  X8664: "x86_64",
   Arm64: "arm64",
+  X8664: "x86_64",
 } as const;
 export type Architecture = ClosedEnum<typeof Architecture>;
 
@@ -1622,8 +1623,8 @@ export const Handle = {
   Filesystem: "filesystem",
   Hit: "hit",
   Miss: "miss",
-  Rewrite: "rewrite",
   Resource: "resource",
+  Rewrite: "rewrite",
 } as const;
 export type Handle = ClosedEnum<typeof Handle>;
 
@@ -1635,8 +1636,8 @@ export type Routes2 = {
 };
 
 export const CreateDeploymentHasType = {
-  Header: "header",
   Cookie: "cookie",
+  Header: "header",
   Query: "query",
 } as const;
 export type CreateDeploymentHasType = ClosedEnum<
@@ -1694,13 +1695,13 @@ export type Has1 = {
 
 export type CreateDeploymentRoutesHas =
   | Has1
-  | (Has2 & { type: "header" })
   | (Has2 & { type: "cookie" })
+  | (Has2 & { type: "header" })
   | (Has2 & { type: "query" });
 
 export const CreateDeploymentMissingType = {
-  Header: "header",
   Cookie: "cookie",
+  Header: "header",
   Query: "query",
 } as const;
 export type CreateDeploymentMissingType = ClosedEnum<
@@ -6618,15 +6619,15 @@ export const CreateDeploymentRoutesHas$inboundSchema: z.ZodType<
   unknown
 > = z.union([
   z.lazy(() => Has1$inboundSchema),
-  z.lazy(() => Has2$inboundSchema).and(z.object({ type: z.literal("header") })),
   z.lazy(() => Has2$inboundSchema).and(z.object({ type: z.literal("cookie") })),
+  z.lazy(() => Has2$inboundSchema).and(z.object({ type: z.literal("header") })),
   z.lazy(() => Has2$inboundSchema).and(z.object({ type: z.literal("query") })),
 ]);
 /** @internal */
 export type CreateDeploymentRoutesHas$Outbound =
   | Has1$Outbound
-  | (Has2$Outbound & { type: "header" })
   | (Has2$Outbound & { type: "cookie" })
+  | (Has2$Outbound & { type: "header" })
   | (Has2$Outbound & { type: "query" });
 
 /** @internal */
@@ -6637,10 +6638,10 @@ export const CreateDeploymentRoutesHas$outboundSchema: z.ZodType<
 > = z.union([
   z.lazy(() => Has1$outboundSchema),
   z.lazy(() => Has2$outboundSchema).and(
-    z.object({ type: z.literal("header") }),
+    z.object({ type: z.literal("cookie") }),
   ),
   z.lazy(() => Has2$outboundSchema).and(
-    z.object({ type: z.literal("cookie") }),
+    z.object({ type: z.literal("header") }),
   ),
   z.lazy(() => Has2$outboundSchema).and(z.object({ type: z.literal("query") })),
 ]);

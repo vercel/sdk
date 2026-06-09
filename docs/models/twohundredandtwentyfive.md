@@ -5,17 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndTwentyFive } from "@vercel/sdk/models/onehundredandfiftyfive.js";
+import { TwoHundredAndTwentyFive } from "@vercel/sdk/models/usereventpayloadprevious.js";
 
 let value: TwoHundredAndTwentyFive = {
   projectName: "<value>",
-  consent: "refused",
+  destinationAccountName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                  | Type                                   | Required                               | Description                            |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| `projectName`                          | *string*                               | :heavy_check_mark:                     | N/A                                    |
-| `consent`                              | [models.Consent](../models/consent.md) | :heavy_check_mark:                     | N/A                                    |
+| Field                    | Type                     | Required                 | Description              |
+| ------------------------ | ------------------------ | ------------------------ | ------------------------ |
+| `previousProjectId`      | *string*                 | :heavy_minus_sign:       | N/A                      |
+| `projectName`            | *string*                 | :heavy_check_mark:       | N/A                      |
+| `destinationAccountName` | *string*                 | :heavy_check_mark:       | N/A                      |
+| `transferId`             | *string*                 | :heavy_minus_sign:       | N/A                      |

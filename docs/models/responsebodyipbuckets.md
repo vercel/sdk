@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyIpBuckets } from "@vercel/sdk/models/getprojectslink4.js";
+import { ResponseBodyIpBuckets } from "@vercel/sdk/models/getprojectscontenthint4.js";
 
 let value: ResponseBodyIpBuckets = {
   bucket: "<value>",

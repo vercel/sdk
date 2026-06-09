@@ -5,12 +5,12 @@ Internal representation of a custom environment with all required properties
 ## Example Usage
 
 ```typescript
-import { ResponseBodyCustomEnvironments } from "@vercel/sdk/models/getprojectsresponsebodyprojectsaibots.js";
+import { ResponseBodyCustomEnvironments } from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponse200applicationjson3projectssecuritymanagedrulesvercelrulesetaction.js";
 
 let value: ResponseBodyCustomEnvironments = {
   id: "<id>",
   slug: "<value>",
-  type: "development",
+  type: "production",
   createdAt: 17.04,
   updatedAt: 8654.41,
 };

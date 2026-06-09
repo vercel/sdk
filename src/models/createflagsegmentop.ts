@@ -191,13 +191,6 @@ export type CreateFlagSegmentRequest = {
   requestBody?: CreateFlagSegmentRequestBody | undefined;
 };
 
-export const CreateFlagSegmentTypeName = {
-  Segment: "segment",
-} as const;
-export type CreateFlagSegmentTypeName = ClosedEnum<
-  typeof CreateFlagSegmentTypeName
->;
-
 export const CreateFlagSegmentOutcomeFeatureFlagsResponseType = {
   Entity: "entity",
 } as const;
@@ -239,8 +232,8 @@ export type CreateFlagSegmentRhs4 = {
 };
 
 export const CreateFlagSegmentRhsFeatureFlagsType = {
-  ListInline: "list/inline",
   List: "list",
+  ListInline: "list/inline",
 } as const;
 export type CreateFlagSegmentRhsFeatureFlagsType = ClosedEnum<
   typeof CreateFlagSegmentRhsFeatureFlagsType
@@ -295,29 +288,29 @@ export type CreateFlagSegmentFeatureFlagsLhs =
   | CreateFlagSegmentLhsFeatureFlags2;
 
 export const CreateFlagSegmentFeatureFlagsCmp = {
-  Eq: "eq",
+  NotContains: "!contains",
+  NotEndsWith: "!endsWith",
   NotEq: "!eq",
-  OneOf: "oneOf",
+  NotEx: "!ex",
   NotOneOf: "!oneOf",
+  NotRegex: "!regex",
+  NotStartsWith: "!startsWith",
+  After: "after",
+  Before: "before",
+  Contains: "contains",
   ContainsAllOf: "containsAllOf",
   ContainsAnyOf: "containsAnyOf",
   ContainsNoneOf: "containsNoneOf",
-  StartsWith: "startsWith",
-  NotStartsWith: "!startsWith",
   EndsWith: "endsWith",
-  NotEndsWith: "!endsWith",
-  Contains: "contains",
-  NotContains: "!contains",
+  Eq: "eq",
   Ex: "ex",
-  NotEx: "!ex",
   Gt: "gt",
   Gte: "gte",
   Lt: "lt",
   Lte: "lte",
+  OneOf: "oneOf",
   Regex: "regex",
-  NotRegex: "!regex",
-  Before: "before",
-  After: "after",
+  StartsWith: "startsWith",
 } as const;
 export type CreateFlagSegmentFeatureFlagsCmp = ClosedEnum<
   typeof CreateFlagSegmentFeatureFlagsCmp
@@ -364,11 +357,19 @@ export type CreateFlagSegmentFeatureFlagsData = {
   } | undefined;
 };
 
+export const CreateFlagSegmentTypeName = {
+  Segment: "segment",
+} as const;
+export type CreateFlagSegmentTypeName = ClosedEnum<
+  typeof CreateFlagSegmentTypeName
+>;
+
 export type CreateFlagSegmentResponseBody = {
   description?: string | undefined;
   createdBy?: string | undefined;
   usedByFlags?: Array<string> | undefined;
   usedBySegments?: Array<string> | undefined;
+  data: CreateFlagSegmentFeatureFlagsData;
   id: string;
   label: string;
   slug: string;
@@ -376,7 +377,6 @@ export type CreateFlagSegmentResponseBody = {
   updatedAt: number;
   projectId: string;
   typeName: CreateFlagSegmentTypeName;
-  data: CreateFlagSegmentFeatureFlagsData;
   hint: string;
 };
 
@@ -1412,15 +1412,6 @@ export function createFlagSegmentRequestFromJSON(
 }
 
 /** @internal */
-export const CreateFlagSegmentTypeName$inboundSchema: z.ZodNativeEnum<
-  typeof CreateFlagSegmentTypeName
-> = z.nativeEnum(CreateFlagSegmentTypeName);
-/** @internal */
-export const CreateFlagSegmentTypeName$outboundSchema: z.ZodNativeEnum<
-  typeof CreateFlagSegmentTypeName
-> = CreateFlagSegmentTypeName$inboundSchema;
-
-/** @internal */
 export const CreateFlagSegmentOutcomeFeatureFlagsResponseType$inboundSchema:
   z.ZodNativeEnum<typeof CreateFlagSegmentOutcomeFeatureFlagsResponseType> = z
     .nativeEnum(CreateFlagSegmentOutcomeFeatureFlagsResponseType);
@@ -2431,6 +2422,15 @@ export function createFlagSegmentFeatureFlagsDataFromJSON(
 }
 
 /** @internal */
+export const CreateFlagSegmentTypeName$inboundSchema: z.ZodNativeEnum<
+  typeof CreateFlagSegmentTypeName
+> = z.nativeEnum(CreateFlagSegmentTypeName);
+/** @internal */
+export const CreateFlagSegmentTypeName$outboundSchema: z.ZodNativeEnum<
+  typeof CreateFlagSegmentTypeName
+> = CreateFlagSegmentTypeName$inboundSchema;
+
+/** @internal */
 export const CreateFlagSegmentResponseBody$inboundSchema: z.ZodType<
   CreateFlagSegmentResponseBody,
   z.ZodTypeDef,
@@ -2440,6 +2440,7 @@ export const CreateFlagSegmentResponseBody$inboundSchema: z.ZodType<
   createdBy: types.optional(types.string()),
   usedByFlags: types.optional(z.array(types.string())),
   usedBySegments: types.optional(z.array(types.string())),
+  data: z.lazy(() => CreateFlagSegmentFeatureFlagsData$inboundSchema),
   id: types.string(),
   label: types.string(),
   slug: types.string(),
@@ -2447,7 +2448,6 @@ export const CreateFlagSegmentResponseBody$inboundSchema: z.ZodType<
   updatedAt: types.number(),
   projectId: types.string(),
   typeName: CreateFlagSegmentTypeName$inboundSchema,
-  data: z.lazy(() => CreateFlagSegmentFeatureFlagsData$inboundSchema),
   hint: types.string(),
 });
 /** @internal */
@@ -2456,6 +2456,7 @@ export type CreateFlagSegmentResponseBody$Outbound = {
   createdBy?: string | undefined;
   usedByFlags?: Array<string> | undefined;
   usedBySegments?: Array<string> | undefined;
+  data: CreateFlagSegmentFeatureFlagsData$Outbound;
   id: string;
   label: string;
   slug: string;
@@ -2463,7 +2464,6 @@ export type CreateFlagSegmentResponseBody$Outbound = {
   updatedAt: number;
   projectId: string;
   typeName: string;
-  data: CreateFlagSegmentFeatureFlagsData$Outbound;
   hint: string;
 };
 
@@ -2477,6 +2477,7 @@ export const CreateFlagSegmentResponseBody$outboundSchema: z.ZodType<
   createdBy: z.string().optional(),
   usedByFlags: z.array(z.string()).optional(),
   usedBySegments: z.array(z.string()).optional(),
+  data: z.lazy(() => CreateFlagSegmentFeatureFlagsData$outboundSchema),
   id: z.string(),
   label: z.string(),
   slug: z.string(),
@@ -2484,7 +2485,6 @@ export const CreateFlagSegmentResponseBody$outboundSchema: z.ZodType<
   updatedAt: z.number(),
   projectId: z.string(),
   typeName: CreateFlagSegmentTypeName$outboundSchema,
-  data: z.lazy(() => CreateFlagSegmentFeatureFlagsData$outboundSchema),
   hint: z.string(),
 });
 

@@ -30,11 +30,11 @@ export type GetConfigurationRequest = {
  */
 export const GetConfigurationResponseBodyIntegrationsResponseStatus = {
   Error: "error",
-  Ready: "ready",
-  Pending: "pending",
   Onboarding: "onboarding",
-  Suspended: "suspended",
+  Pending: "pending",
+  Ready: "ready",
   Resumed: "resumed",
+  Suspended: "suspended",
   Uninstalled: "uninstalled",
 } as const;
 /**
@@ -48,14 +48,14 @@ export type GetConfigurationResponseBodyIntegrationsResponseStatus = ClosedEnum<
  * Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics.
  */
 export const GetConfigurationResponseBodyIntegrationsResponseSource = {
-  Marketplace: "marketplace",
+  Backoffice: "backoffice",
+  Cli: "cli",
   DeployButton: "deploy-button",
   External: "external",
-  V0: "v0",
-  ResourceClaims: "resource-claims",
-  Cli: "cli",
+  Marketplace: "marketplace",
   Oauth: "oauth",
-  Backoffice: "backoffice",
+  ResourceClaims: "resource-claims",
+  V0: "v0",
 } as const;
 /**
  * Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics.
@@ -72,11 +72,11 @@ export type GetConfigurationResponseBodyIntegrationsResponseType = ClosedEnum<
 >;
 
 export const GetConfigurationResponseBodyIntegrationsResponseDisabledReason = {
+  AccountPlanDowngrade: "account-plan-downgrade",
+  DisabledByAdmin: "disabled-by-admin",
   DisabledByOwner: "disabled-by-owner",
   FeatureNotAvailable: "feature-not-available",
-  DisabledByAdmin: "disabled-by-admin",
   OriginalOwnerLeftTheTeam: "original-owner-left-the-team",
-  AccountPlanDowngrade: "account-plan-downgrade",
   OriginalOwnerRoleDowngraded: "original-owner-role-downgraded",
 } as const;
 export type GetConfigurationResponseBodyIntegrationsResponseDisabledReason =
@@ -89,8 +89,8 @@ export type GetConfigurationResponseBodyIntegrationsResponseDisabledReason =
  */
 export const GetConfigurationResponseBodyIntegrationsResponseInstallationType =
   {
-    Marketplace: "marketplace",
     External: "external",
+    Marketplace: "marketplace",
   } as const;
 /**
  * Defines the installation type. - 'external' integrations are installed via the existing integrations flow - 'marketplace' integrations are natively installed: - when accepting the TOS of a partner during the store creation process - if undefined, assume 'external'
@@ -193,11 +193,11 @@ export type GetConfigurationResponseBody3 = {
  */
 export const GetConfigurationResponseBodyIntegrationsStatus = {
   Error: "error",
-  Ready: "ready",
-  Pending: "pending",
   Onboarding: "onboarding",
-  Suspended: "suspended",
+  Pending: "pending",
+  Ready: "ready",
   Resumed: "resumed",
+  Suspended: "suspended",
   Uninstalled: "uninstalled",
 } as const;
 /**
@@ -211,14 +211,14 @@ export type GetConfigurationResponseBodyIntegrationsStatus = ClosedEnum<
  * Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics.
  */
 export const GetConfigurationResponseBodyIntegrationsSource = {
-  Marketplace: "marketplace",
+  Backoffice: "backoffice",
+  Cli: "cli",
   DeployButton: "deploy-button",
   External: "external",
-  V0: "v0",
-  ResourceClaims: "resource-claims",
-  Cli: "cli",
+  Marketplace: "marketplace",
   Oauth: "oauth",
-  Backoffice: "backoffice",
+  ResourceClaims: "resource-claims",
+  V0: "v0",
 } as const;
 /**
  * Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics.
@@ -235,11 +235,11 @@ export type GetConfigurationResponseBodyIntegrationsType = ClosedEnum<
 >;
 
 export const GetConfigurationResponseBodyIntegrationsDisabledReason = {
+  AccountPlanDowngrade: "account-plan-downgrade",
+  DisabledByAdmin: "disabled-by-admin",
   DisabledByOwner: "disabled-by-owner",
   FeatureNotAvailable: "feature-not-available",
-  DisabledByAdmin: "disabled-by-admin",
   OriginalOwnerLeftTheTeam: "original-owner-left-the-team",
-  AccountPlanDowngrade: "account-plan-downgrade",
   OriginalOwnerRoleDowngraded: "original-owner-role-downgraded",
 } as const;
 export type GetConfigurationResponseBodyIntegrationsDisabledReason = ClosedEnum<
@@ -250,8 +250,8 @@ export type GetConfigurationResponseBodyIntegrationsDisabledReason = ClosedEnum<
  * Defines the installation type. - 'external' integrations are installed via the existing integrations flow - 'marketplace' integrations are natively installed: - when accepting the TOS of a partner during the store creation process - if undefined, assume 'external'
  */
 export const GetConfigurationResponseBodyIntegrationsInstallationType = {
-  Marketplace: "marketplace",
   External: "external",
+  Marketplace: "marketplace",
 } as const;
 /**
  * Defines the installation type. - 'external' integrations are installed via the existing integrations flow - 'marketplace' integrations are natively installed: - when accepting the TOS of a partner during the store creation process - if undefined, assume 'external'
@@ -351,8 +351,8 @@ export type GetConfigurationResponseBody2 = {
  * A string representing the permission for projects. Possible values are `all` or `selected`.
  */
 export const ProjectSelection = {
-  Selected: "selected",
   All: "all",
+  Selected: "selected",
 } as const;
 /**
  * A string representing the permission for projects. Possible values are `all` or `selected`.
@@ -444,11 +444,11 @@ export type TransferRequest = TransferRequest1 | TransferRequest2;
  */
 export const GetConfigurationResponseBodyStatus = {
   Error: "error",
-  Ready: "ready",
-  Pending: "pending",
   Onboarding: "onboarding",
-  Suspended: "suspended",
+  Pending: "pending",
+  Ready: "ready",
   Resumed: "resumed",
+  Suspended: "suspended",
   Uninstalled: "uninstalled",
 } as const;
 /**
@@ -469,14 +469,14 @@ export type GetConfigurationResponseBodyType = ClosedEnum<
  * Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics.
  */
 export const GetConfigurationResponseBodySource = {
-  Marketplace: "marketplace",
+  Backoffice: "backoffice",
+  Cli: "cli",
   DeployButton: "deploy-button",
   External: "external",
-  V0: "v0",
-  ResourceClaims: "resource-claims",
-  Cli: "cli",
+  Marketplace: "marketplace",
   Oauth: "oauth",
-  Backoffice: "backoffice",
+  ResourceClaims: "resource-claims",
+  V0: "v0",
 } as const;
 /**
  * Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics.
@@ -486,11 +486,11 @@ export type GetConfigurationResponseBodySource = ClosedEnum<
 >;
 
 export const GetConfigurationResponseBodyDisabledReason = {
+  AccountPlanDowngrade: "account-plan-downgrade",
+  DisabledByAdmin: "disabled-by-admin",
   DisabledByOwner: "disabled-by-owner",
   FeatureNotAvailable: "feature-not-available",
-  DisabledByAdmin: "disabled-by-admin",
   OriginalOwnerLeftTheTeam: "original-owner-left-the-team",
-  AccountPlanDowngrade: "account-plan-downgrade",
   OriginalOwnerRoleDowngraded: "original-owner-role-downgraded",
 } as const;
 export type GetConfigurationResponseBodyDisabledReason = ClosedEnum<
@@ -501,8 +501,8 @@ export type GetConfigurationResponseBodyDisabledReason = ClosedEnum<
  * Defines the installation type. - 'external' integrations are installed via the existing integrations flow - 'marketplace' integrations are natively installed: - when accepting the TOS of a partner during the store creation process - if undefined, assume 'external'
  */
 export const GetConfigurationResponseBodyInstallationType = {
-  Marketplace: "marketplace",
   External: "external",
+  Marketplace: "marketplace",
 } as const;
 /**
  * Defines the installation type. - 'external' integrations are installed via the existing integrations flow - 'marketplace' integrations are natively installed: - when accepting the TOS of a partner during the store creation process - if undefined, assume 'external'

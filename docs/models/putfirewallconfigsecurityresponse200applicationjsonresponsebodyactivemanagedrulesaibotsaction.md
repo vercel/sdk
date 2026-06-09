@@ -9,11 +9,11 @@ import {
 
 let value:
   PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesAiBotsAction =
-    "deny";
+    "challenge";
 ```
 
 ## Values
 
 ```typescript
-"deny" | "log" | "challenge"
+"challenge" | "deny" | "log"
 ```

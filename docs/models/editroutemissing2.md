@@ -6,7 +6,7 @@
 import { EditRouteMissing2 } from "@vercel/sdk/models/editrouteop.js";
 
 let value: EditRouteMissing2 = {
-  type: "cookie",
+  type: "header",
   key: "<key>",
 };
 ```

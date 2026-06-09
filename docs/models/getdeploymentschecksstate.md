@@ -7,11 +7,11 @@ State of all registered checks
 ```typescript
 import { GetDeploymentsChecksState } from "@vercel/sdk/models/getdeploymentsop.js";
 
-let value: GetDeploymentsChecksState = "running";
+let value: GetDeploymentsChecksState = "registered";
 ```
 
 ## Values
 
 ```typescript
-"registered" | "running" | "completed"
+"completed" | "registered" | "running"
 ```

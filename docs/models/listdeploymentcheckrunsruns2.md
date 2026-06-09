@@ -12,7 +12,7 @@ let value: ListDeploymentCheckRunsRuns2 = {
   name: "<value>",
   ownerId: "<id>",
   deploymentId: "<id>",
-  status: "running",
+  status: "queued",
   timeout: 7765.81,
   createdAt: 3580.63,
   updatedAt: 8998.16,

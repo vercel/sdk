@@ -7,11 +7,11 @@ Whether the value is an opaque identifier or a URL.
 ```typescript
 import { GetDeploymentsDeploymentsType } from "@vercel/sdk/models/getdeploymentsop.js";
 
-let value: GetDeploymentsDeploymentsType = "id";
+let value: GetDeploymentsDeploymentsType = "url";
 ```
 
 ## Values
 
 ```typescript
-"url" | "id"
+"id" | "url"
 ```

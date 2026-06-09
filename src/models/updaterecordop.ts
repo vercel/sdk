@@ -102,9 +102,9 @@ export const RecordType = {
   Cname: "CNAME",
   Https: "HTTPS",
   Mx: "MX",
+  Ns: "NS",
   Srv: "SRV",
   Txt: "TXT",
-  Ns: "NS",
 } as const;
 export type RecordType = ClosedEnum<typeof RecordType>;
 

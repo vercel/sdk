@@ -11,5 +11,5 @@ let value: Preference = "auto-approval";
 ## Values
 
 ```typescript
-"auto-approval" | "manual-approval" | "block"
+"auto-approval" | "block" | "manual-approval"
 ```

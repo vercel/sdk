@@ -5,24 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { EightyOne } from "@vercel/sdk/models/resources.js";
+import { EightyOne } from "@vercel/sdk/models/fortyseven.js";
 
 let value: EightyOne = {
-  integrationId: "<id>",
-  configurationId: "<id>",
-  integrationSlug: "<value>",
-  integrationName: "<value>",
-  ownerId: "<id>",
+  url: "https://reflecting-guard.name",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `integrationId`    | *string*           | :heavy_check_mark: | N/A                |
-| `configurationId`  | *string*           | :heavy_check_mark: | N/A                |
-| `integrationSlug`  | *string*           | :heavy_check_mark: | N/A                |
-| `integrationName`  | *string*           | :heavy_check_mark: | N/A                |
-| `ownerId`          | *string*           | :heavy_check_mark: | N/A                |
-| `projectIds`       | *string*[]         | :heavy_minus_sign: | N/A                |
+| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `url`                                                                  | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
+| `oldTeam`                                                              | [models.UserEventPayloadOldTeam](../models/usereventpayloadoldteam.md) | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `newTeam`                                                              | [models.UserEventPayloadNewTeam](../models/usereventpayloadnewteam.md) | :heavy_minus_sign:                                                     | N/A                                                                    |

@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsTrustedIpsDeploymentType } from "@vercel/sdk/models/getprojectsresponsebodyprojectsaibots.js";
+import { GetProjectsTrustedIpsDeploymentType } from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponse200applicationjson3projectssecuritymanagedrulesvercelrulesetaction.js";
 
-let value: GetProjectsTrustedIpsDeploymentType = "production";
+let value: GetProjectsTrustedIpsDeploymentType = "all";
 ```
 
 ## Values
 
 ```typescript
-"production" | "preview" | "all" | "prod_deployment_urls_and_all_previews" | "all_except_custom_domains"
+"all" | "all_except_custom_domains" | "preview" | "prod_deployment_urls_and_all_previews" | "production"
 ```

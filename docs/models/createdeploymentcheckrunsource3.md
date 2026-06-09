@@ -7,7 +7,7 @@ import { CreateDeploymentCheckRunSource3 } from "@vercel/sdk/models/createdeploy
 
 let value: CreateDeploymentCheckRunSource3 = {
   kind: "git-provider",
-  provider: "gitlab",
+  provider: "github",
   externalCheckName: "<value>",
 };
 ```

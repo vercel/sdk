@@ -7,11 +7,11 @@ The currency for the purchase intent
 ```typescript
 import { Currency } from "@vercel/sdk/models/buycreditsop.js";
 
-let value: Currency = "usd";
+let value: Currency = "miu";
 ```
 
 ## Values
 
 ```typescript
-"usd" | "miu"
+"miu" | "usd"
 ```

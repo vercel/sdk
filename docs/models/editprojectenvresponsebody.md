@@ -8,7 +8,7 @@ The environment variable was successfully edited
 import { EditProjectEnvResponseBody } from "@vercel/sdk/models/editprojectenvop.js";
 
 let value: EditProjectEnvResponseBody = {
-  type: "system",
+  type: "encrypted",
   value: "<value>",
   key: "<key>",
 };

@@ -7,9 +7,9 @@ import { CreateFlagPrimaryMetrics } from "@vercel/sdk/models/createflagop.js";
 
 let value: CreateFlagPrimaryMetrics = {
   name: "<value>",
-  metricType: "count",
-  metricUnit: "session",
-  directionality: "decreaseIsGood",
+  metricType: "percentage",
+  metricUnit: "user",
+  directionality: "increaseIsGood",
 };
 ```
 

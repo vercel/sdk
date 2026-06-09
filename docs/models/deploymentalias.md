@@ -8,7 +8,7 @@ Condensed check data. Retrieve individual check and check run data using api-che
 import { DeploymentAlias } from "@vercel/sdk/models/createdeploymentresponsebody.js";
 
 let value: DeploymentAlias = {
-  state: "failed",
+  state: "pending",
   startedAt: 1385.88,
 };
 ```

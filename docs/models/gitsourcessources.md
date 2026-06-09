@@ -1,20 +1,32 @@
 # GitSourcesSources
 
-## Example Usage
+
+## Supported Types
+
+### `models.UpdateProjectSources1`
 
 ```typescript
-import { GitSourcesSources } from "@vercel/sdk/models/updateprojectprojectsresponsebuildqueue.js";
-
-let value: GitSourcesSources = {
-  provider: "gitlab",
+const value: models.UpdateProjectSources1 = {
+  provider: "github",
   org: "<value>",
 };
 ```
 
-## Fields
+### `models.UpdateProjectSources1`
 
-| Field                                                        | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `provider`                                                   | [models.GitSourcesProvider](../models/gitsourcesprovider.md) | :heavy_check_mark:                                           | N/A                                                          |
-| `org`                                                        | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
-| `repo`                                                       | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          |
+```typescript
+const value: models.UpdateProjectSources1 = {
+  provider: "github",
+  org: "<value>",
+};
+```
+
+### `models.UpdateProjectSources2`
+
+```typescript
+const value: models.UpdateProjectSources2 = {
+  provider: "gitlab",
+  namespace: "<value>",
+};
+```
+

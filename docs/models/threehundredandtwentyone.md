@@ -5,26 +5,23 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndTwentyOne } from "@vercel/sdk/models/payloadenvironment.js";
+import { ThreeHundredAndTwentyOne } from "@vercel/sdk/models/twohundredandninety.js";
 
 let value: ThreeHundredAndTwentyOne = {
-  team: {
-    id: "<id>",
-    name: "<value>",
+  previous: {
+    enabled: false,
+    totpVerified: false,
   },
-  configuration: {
-    id: "<id>",
-  },
-  peering: {
-    id: "<id>",
+  next: {
+    enabled: true,
+    totpVerified: true,
   },
 };
 ```
 
 ## Fields
 
-| Field                                                                                    | Type                                                                                     | Required                                                                                 | Description                                                                              |
-| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| `team`                                                                                   | [models.UserEventPayload321Team](../models/usereventpayload321team.md)                   | :heavy_check_mark:                                                                       | N/A                                                                                      |
-| `configuration`                                                                          | [models.UserEventPayload321Configuration](../models/usereventpayload321configuration.md) | :heavy_check_mark:                                                                       | N/A                                                                                      |
-| `peering`                                                                                | [models.PayloadPeering](../models/payloadpeering.md)                                     | :heavy_check_mark:                                                                       | N/A                                                                                      |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `previous`                                                                     | [models.UserEventPayload321Previous](../models/usereventpayload321previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| `next`                                                                         | [models.UserEventPayload321Next](../models/usereventpayload321next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |

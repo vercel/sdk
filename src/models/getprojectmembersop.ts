@@ -47,8 +47,8 @@ export type GetProjectMembersRequest = {
 export const ResponseBodyRole = {
   Admin: "ADMIN",
   ProjectDeveloper: "PROJECT_DEVELOPER",
-  ProjectViewer: "PROJECT_VIEWER",
   ProjectGuest: "PROJECT_GUEST",
+  ProjectViewer: "PROJECT_VIEWER",
 } as const;
 /**
  * Role of this user in the project.
@@ -61,8 +61,8 @@ export type ResponseBodyRole = ClosedEnum<typeof ResponseBodyRole>;
 export const ComputedProjectRole = {
   Admin: "ADMIN",
   ProjectDeveloper: "PROJECT_DEVELOPER",
-  ProjectViewer: "PROJECT_VIEWER",
   ProjectGuest: "PROJECT_GUEST",
+  ProjectViewer: "PROJECT_VIEWER",
 } as const;
 /**
  * Role of this user in the project.
@@ -73,14 +73,14 @@ export type ComputedProjectRole = ClosedEnum<typeof ComputedProjectRole>;
  * The role of this user in the team.
  */
 export const ResponseBodyTeamRole = {
-  Owner: "OWNER",
-  Member: "MEMBER",
-  Developer: "DEVELOPER",
-  Security: "SECURITY",
   Billing: "BILLING",
+  Contributor: "CONTRIBUTOR",
+  Developer: "DEVELOPER",
+  Member: "MEMBER",
+  Owner: "OWNER",
+  Security: "SECURITY",
   Viewer: "VIEWER",
   ViewerForPlus: "VIEWER_FOR_PLUS",
-  Contributor: "CONTRIBUTOR",
 } as const;
 /**
  * The role of this user in the team.

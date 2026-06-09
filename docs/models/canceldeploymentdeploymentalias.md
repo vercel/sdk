@@ -8,7 +8,7 @@ Condensed check data. Retrieve individual check and check run data using api-che
 import { CancelDeploymentDeploymentAlias } from "@vercel/sdk/models/canceldeploymentop.js";
 
 let value: CancelDeploymentDeploymentAlias = {
-  state: "succeeded",
+  state: "failed",
   startedAt: 9990.81,
 };
 ```

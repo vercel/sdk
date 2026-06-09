@@ -5,11 +5,11 @@
 ```typescript
 import { EditRouteRouteType } from "@vercel/sdk/models/editrouteop.js";
 
-let value: EditRouteRouteType = "rewrite";
+let value: EditRouteRouteType = "redirect";
 ```
 
 ## Values
 
 ```typescript
-"rewrite" | "redirect" | "set_status" | "transform"
+"redirect" | "rewrite" | "set_status" | "transform"
 ```

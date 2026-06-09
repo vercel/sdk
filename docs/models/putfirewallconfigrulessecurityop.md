@@ -5,11 +5,11 @@
 ```typescript
 import { PutFirewallConfigRulesSecurityOp } from "@vercel/sdk/models/putfirewallconfigop.js";
 
-let value: PutFirewallConfigRulesSecurityOp = "re";
+let value: PutFirewallConfigRulesSecurityOp = "ex";
 ```
 
 ## Values
 
 ```typescript
-"sub" | "re" | "eq" | "ex" | "inc" | "pre" | "suf" | "gt" | "gte" | "lt" | "lte" | "nex" | "ninc" | "neq"
+"eq" | "ex" | "gt" | "gte" | "inc" | "lt" | "lte" | "neq" | "nex" | "ninc" | "pre" | "re" | "sub" | "suf"
 ```

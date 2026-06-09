@@ -7,7 +7,7 @@ import { CreateProjectCheckSource3 } from "@vercel/sdk/models/createprojectcheck
 
 let value: CreateProjectCheckSource3 = {
   kind: "git-provider",
-  provider: "gitlab",
+  provider: "github",
   externalCheckName: "<value>",
 };
 ```

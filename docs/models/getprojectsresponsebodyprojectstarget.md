@@ -7,13 +7,13 @@
 
 ```typescript
 const value: models.GetProjectsTarget1[] = [
-  "production",
+  "development",
 ];
 ```
 
 ### `models.GetProjectsTarget2`
 
 ```typescript
-const value: models.GetProjectsTarget2 = "production";
+const value: models.GetProjectsTarget2 = "development";
 ```
 

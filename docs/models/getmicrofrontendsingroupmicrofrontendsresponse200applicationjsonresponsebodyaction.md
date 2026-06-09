@@ -9,11 +9,11 @@ import {
 
 let value:
   GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyAction =
-    "deny";
+    "log";
 ```
 
 ## Values
 
 ```typescript
-"log" | "challenge" | "deny"
+"challenge" | "deny" | "log"
 ```

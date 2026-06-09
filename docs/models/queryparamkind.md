@@ -5,7 +5,7 @@ The kind of flags to retrieve.
 ## Example Usage
 
 ```typescript
-import { QueryParamKind } from "@vercel/sdk/models/listteamflagsop.js";
+import { QueryParamKind } from "@vercel/sdk/models/listteamflagsv2op.js";
 
 let value: QueryParamKind = "json";
 ```

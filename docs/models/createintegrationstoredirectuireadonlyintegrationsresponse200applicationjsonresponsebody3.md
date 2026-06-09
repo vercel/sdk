@@ -5,15 +5,15 @@
 ```typescript
 import {
   CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBody3,
-} from "@vercel/sdk/models/createintegrationstoredirectresponsebody.js";
+} from "@vercel/sdk/models/createintegrationstoredirectnotification.js";
 
 let value:
   CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBody3 =
-    "create";
+    "update";
 ```
 
 ## Values
 
 ```typescript
-"update" | "create"
+"create" | "update"
 ```

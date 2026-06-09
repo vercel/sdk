@@ -5,11 +5,11 @@
 ```typescript
 import { ResponseBodyMetricType } from "@vercel/sdk/models/updateflagop.js";
 
-let value: ResponseBodyMetricType = "percentage";
+let value: ResponseBodyMetricType = "count";
 ```
 
 ## Values
 
 ```typescript
-"percentage" | "currency" | "count"
+"count" | "currency" | "percentage"
 ```

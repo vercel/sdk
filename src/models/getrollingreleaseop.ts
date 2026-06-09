@@ -47,9 +47,9 @@ export type GetRollingReleaseRequest = {
  * The current state of the rolling release
  */
 export const GetRollingReleaseState = {
+  Aborted: "ABORTED",
   Active: "ACTIVE",
   Complete: "COMPLETE",
-  Aborted: "ABORTED",
 } as const;
 /**
  * The current state of the rolling release
@@ -85,13 +85,13 @@ export type GetRollingReleaseTarget = ClosedEnum<
  * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
  */
 export const GetRollingReleaseReadyState = {
-  Building: "BUILDING",
-  Error: "ERROR",
   Blocked: "BLOCKED",
+  Building: "BUILDING",
+  Canceled: "CANCELED",
+  Error: "ERROR",
   Initializing: "INITIALIZING",
   Queued: "QUEUED",
   Ready: "READY",
-  Canceled: "CANCELED",
 } as const;
 /**
  * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
@@ -101,20 +101,21 @@ export type GetRollingReleaseReadyState = ClosedEnum<
 >;
 
 /**
- * Where was the deployment created from
+ * Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it.
  */
 export const GetRollingReleaseSource = {
-  Git: "git",
-  Cli: "cli",
   ApiTriggerGitDeploy: "api-trigger-git-deploy",
+  Cli: "cli",
   CloneRepo: "clone/repo",
+  Drop: "drop",
+  Git: "git",
   Import: "import",
   ImportRepo: "import/repo",
   Redeploy: "redeploy",
   V0Web: "v0-web",
 } as const;
 /**
- * Where was the deployment created from
+ * Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it.
  */
 export type GetRollingReleaseSource = ClosedEnum<
   typeof GetRollingReleaseSource
@@ -146,7 +147,7 @@ export type CurrentDeployment = {
   readyState: GetRollingReleaseReadyState;
   readyStateAt?: number | undefined;
   /**
-   * Where was the deployment created from
+   * Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it.
    */
   source?: GetRollingReleaseSource | undefined;
   /**
@@ -173,13 +174,13 @@ export type GetRollingReleaseRollingReleaseTarget = ClosedEnum<
  * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
  */
 export const GetRollingReleaseRollingReleaseReadyState = {
-  Building: "BUILDING",
-  Error: "ERROR",
   Blocked: "BLOCKED",
+  Building: "BUILDING",
+  Canceled: "CANCELED",
+  Error: "ERROR",
   Initializing: "INITIALIZING",
   Queued: "QUEUED",
   Ready: "READY",
-  Canceled: "CANCELED",
 } as const;
 /**
  * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
@@ -189,20 +190,21 @@ export type GetRollingReleaseRollingReleaseReadyState = ClosedEnum<
 >;
 
 /**
- * Where was the deployment created from
+ * Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it.
  */
 export const GetRollingReleaseRollingReleaseSource = {
-  Git: "git",
-  Cli: "cli",
   ApiTriggerGitDeploy: "api-trigger-git-deploy",
+  Cli: "cli",
   CloneRepo: "clone/repo",
+  Drop: "drop",
+  Git: "git",
   Import: "import",
   ImportRepo: "import/repo",
   Redeploy: "redeploy",
   V0Web: "v0-web",
 } as const;
 /**
- * Where was the deployment created from
+ * Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it.
  */
 export type GetRollingReleaseRollingReleaseSource = ClosedEnum<
   typeof GetRollingReleaseRollingReleaseSource
@@ -234,7 +236,7 @@ export type CanaryDeployment = {
   readyState: GetRollingReleaseRollingReleaseReadyState;
   readyStateAt?: number | undefined;
   /**
-   * Where was the deployment created from
+   * Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it.
    */
   source?: GetRollingReleaseRollingReleaseSource | undefined;
   /**

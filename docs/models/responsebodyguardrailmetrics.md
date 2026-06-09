@@ -7,9 +7,9 @@ import { ResponseBodyGuardrailMetrics } from "@vercel/sdk/models/updateflagop.js
 
 let value: ResponseBodyGuardrailMetrics = {
   name: "<value>",
-  metricType: "percentage",
-  metricUnit: "session",
-  directionality: "decreaseIsGood",
+  metricType: "count",
+  metricUnit: "user",
+  directionality: "increaseIsGood",
 };
 ```
 

@@ -76,9 +76,9 @@ export type GenerateRoutePathCondition = {
 };
 
 export const GenerateRouteField = {
-  Host: "host",
-  Header: "header",
   Cookie: "cookie",
+  Header: "header",
+  Host: "host",
   Query: "query",
 } as const;
 export type GenerateRouteField = ClosedEnum<typeof GenerateRouteField>;
@@ -86,8 +86,8 @@ export type GenerateRouteField = ClosedEnum<typeof GenerateRouteField>;
 export const Operator = {
   Contains: "contains",
   Eq: "eq",
-  Re: "re",
   Exists: "exists",
+  Re: "re",
 } as const;
 export type Operator = ClosedEnum<typeof Operator>;
 
@@ -100,10 +100,10 @@ export type GenerateRouteProjectRoutesConditions = {
 };
 
 export const GenerateRouteType = {
-  Rewrite: "rewrite",
-  Redirect: "redirect",
-  SetStatus: "set-status",
   Modify: "modify",
+  Redirect: "redirect",
+  Rewrite: "rewrite",
+  SetStatus: "set-status",
 } as const;
 export type GenerateRouteType = ClosedEnum<typeof GenerateRouteType>;
 
@@ -116,8 +116,8 @@ export type SubType = ClosedEnum<typeof SubType>;
 
 export const GenerateRouteOp = {
   Append: "append",
-  Set: "set",
   Delete: "delete",
+  Set: "set",
 } as const;
 export type GenerateRouteOp = ClosedEnum<typeof GenerateRouteOp>;
 

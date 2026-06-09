@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Format } from "@vercel/sdk/models/getconfigurationproductspropertiesintegrationsresponse200uicontrol.js";
+import { Format } from "@vercel/sdk/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyuidisabled.js";
 
 let value: Format = "json";
 ```

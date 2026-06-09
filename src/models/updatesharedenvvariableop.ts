@@ -48,7 +48,7 @@ export type UpdateSharedEnvVariableType = ClosedEnum<
   typeof UpdateSharedEnvVariableType
 >;
 
-export type UpdateSharedEnvVariableUpdates = {
+export type Updates = {
   /**
    * The name of the Shared Environment Variable
    */
@@ -83,7 +83,7 @@ export type UpdateSharedEnvVariableRequestBody = {
   /**
    * An object where each key is an environment variable ID (not the key name) and the value is the update to apply
    */
-  updates: { [k: string]: UpdateSharedEnvVariableUpdates };
+  updates: { [k: string]: Updates };
 };
 
 export type UpdateSharedEnvVariableRequest = {
@@ -103,9 +103,9 @@ export type UpdateSharedEnvVariableRequest = {
  */
 export const UpdateSharedEnvVariableEnvironmentType = {
   Encrypted: "encrypted",
+  Plain: "plain",
   Sensitive: "sensitive",
   System: "system",
-  Plain: "plain",
 } as const;
 /**
  * The type of this cosmos doc instance, if blank, assume secret.
@@ -118,9 +118,9 @@ export type UpdateSharedEnvVariableEnvironmentType = ClosedEnum<
  * environments this env variable targets
  */
 export const UpdateSharedEnvVariableEnvironmentTarget = {
-  Production: "production",
-  Preview: "preview",
   Development: "development",
+  Preview: "preview",
+  Production: "production",
 } as const;
 /**
  * environments this env variable targets
@@ -209,9 +209,9 @@ export type Updated = {
 };
 
 export const UpdateSharedEnvVariableValue2 = {
-  Production: "production",
-  Preview: "preview",
   Development: "development",
+  Preview: "preview",
+  Production: "production",
 } as const;
 export type UpdateSharedEnvVariableValue2 = ClosedEnum<
   typeof UpdateSharedEnvVariableValue2
@@ -222,18 +222,18 @@ export type UpdateSharedEnvVariableValue =
   | Array<UpdateSharedEnvVariableValue2>;
 
 export const UpdateSharedEnvVariableTarget2 = {
-  Production: "production",
-  Preview: "preview",
   Development: "development",
+  Preview: "preview",
+  Production: "production",
 } as const;
 export type UpdateSharedEnvVariableTarget2 = ClosedEnum<
   typeof UpdateSharedEnvVariableTarget2
 >;
 
 export const UpdateSharedEnvVariableTarget1 = {
-  Production: "production",
-  Preview: "preview",
   Development: "development",
+  Preview: "preview",
+  Production: "production",
 } as const;
 export type UpdateSharedEnvVariableTarget1 = ClosedEnum<
   typeof UpdateSharedEnvVariableTarget1
@@ -330,23 +330,22 @@ export const UpdateSharedEnvVariableType$outboundSchema: z.ZodNativeEnum<
 > = UpdateSharedEnvVariableType$inboundSchema;
 
 /** @internal */
-export const UpdateSharedEnvVariableUpdates$inboundSchema: z.ZodType<
-  UpdateSharedEnvVariableUpdates,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  key: types.optional(types.string()),
-  value: types.optional(types.string()),
-  target: types.optional(z.array(UpdateSharedEnvVariableTarget$inboundSchema)),
-  projectId: types.optional(z.array(types.string())),
-  projectIdUpdates: types.optional(
-    z.lazy(() => ProjectIdUpdates$inboundSchema),
-  ),
-  type: types.optional(UpdateSharedEnvVariableType$inboundSchema),
-  comment: types.optional(types.string()),
-});
+export const Updates$inboundSchema: z.ZodType<Updates, z.ZodTypeDef, unknown> =
+  z.object({
+    key: types.optional(types.string()),
+    value: types.optional(types.string()),
+    target: types.optional(
+      z.array(UpdateSharedEnvVariableTarget$inboundSchema),
+    ),
+    projectId: types.optional(z.array(types.string())),
+    projectIdUpdates: types.optional(
+      z.lazy(() => ProjectIdUpdates$inboundSchema),
+    ),
+    type: types.optional(UpdateSharedEnvVariableType$inboundSchema),
+    comment: types.optional(types.string()),
+  });
 /** @internal */
-export type UpdateSharedEnvVariableUpdates$Outbound = {
+export type Updates$Outbound = {
   key?: string | undefined;
   value?: string | undefined;
   target?: Array<string> | undefined;
@@ -357,10 +356,10 @@ export type UpdateSharedEnvVariableUpdates$Outbound = {
 };
 
 /** @internal */
-export const UpdateSharedEnvVariableUpdates$outboundSchema: z.ZodType<
-  UpdateSharedEnvVariableUpdates$Outbound,
+export const Updates$outboundSchema: z.ZodType<
+  Updates$Outbound,
   z.ZodTypeDef,
-  UpdateSharedEnvVariableUpdates
+  Updates
 > = z.object({
   key: z.string().optional(),
   value: z.string().optional(),
@@ -371,22 +370,16 @@ export const UpdateSharedEnvVariableUpdates$outboundSchema: z.ZodType<
   comment: z.string().optional(),
 });
 
-export function updateSharedEnvVariableUpdatesToJSON(
-  updateSharedEnvVariableUpdates: UpdateSharedEnvVariableUpdates,
-): string {
-  return JSON.stringify(
-    UpdateSharedEnvVariableUpdates$outboundSchema.parse(
-      updateSharedEnvVariableUpdates,
-    ),
-  );
+export function updatesToJSON(updates: Updates): string {
+  return JSON.stringify(Updates$outboundSchema.parse(updates));
 }
-export function updateSharedEnvVariableUpdatesFromJSON(
+export function updatesFromJSON(
   jsonString: string,
-): SafeParseResult<UpdateSharedEnvVariableUpdates, SDKValidationError> {
+): SafeParseResult<Updates, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => UpdateSharedEnvVariableUpdates$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateSharedEnvVariableUpdates' from JSON`,
+    (x) => Updates$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Updates' from JSON`,
   );
 }
 
@@ -396,11 +389,11 @@ export const UpdateSharedEnvVariableRequestBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  updates: z.record(z.lazy(() => UpdateSharedEnvVariableUpdates$inboundSchema)),
+  updates: z.record(z.lazy(() => Updates$inboundSchema)),
 });
 /** @internal */
 export type UpdateSharedEnvVariableRequestBody$Outbound = {
-  updates: { [k: string]: UpdateSharedEnvVariableUpdates$Outbound };
+  updates: { [k: string]: Updates$Outbound };
 };
 
 /** @internal */
@@ -409,9 +402,7 @@ export const UpdateSharedEnvVariableRequestBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpdateSharedEnvVariableRequestBody
 > = z.object({
-  updates: z.record(
-    z.lazy(() => UpdateSharedEnvVariableUpdates$outboundSchema),
-  ),
+  updates: z.record(z.lazy(() => Updates$outboundSchema)),
 });
 
 export function updateSharedEnvVariableRequestBodyToJSON(

@@ -3,10 +3,10 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyConnectConfigurations } from "@vercel/sdk/models/getprojectsresponsebodyprojectsaibots.js";
+import { ResponseBodyConnectConfigurations } from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponse200applicationjson3projectssecuritymanagedrulesvercelrulesetaction.js";
 
 let value: ResponseBodyConnectConfigurations = {
-  envId: "preview",
+  envId: "production",
   connectConfigurationId: "<id>",
   passive: false,
   buildsEnabled: true,

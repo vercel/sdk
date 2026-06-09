@@ -26,7 +26,7 @@ const value: models.ListCheckRunsSource2 = {
 ```typescript
 const value: models.ListCheckRunsSource3 = {
   kind: "git-provider",
-  provider: "github",
+  provider: "bitbucket",
   externalCheckName: "<value>",
 };
 ```

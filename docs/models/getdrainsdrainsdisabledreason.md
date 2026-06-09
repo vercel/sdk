@@ -5,11 +5,11 @@
 ```typescript
 import { GetDrainsDrainsDisabledReason } from "@vercel/sdk/models/getdrainsop.js";
 
-let value: GetDrainsDrainsDisabledReason = "disabled-by-owner";
+let value: GetDrainsDrainsDisabledReason = "account-plan-downgrade";
 ```
 
 ## Values
 
 ```typescript
-"disabled-by-owner" | "feature-not-available" | "account-plan-downgrade" | "disabled-by-admin"
+"account-plan-downgrade" | "disabled-by-admin" | "disabled-by-owner" | "feature-not-available"
 ```

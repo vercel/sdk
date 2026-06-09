@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { Access } from "@vercel/sdk/models/twohundredandtwentysix.js";
+import { Access } from "@vercel/sdk/models/twohundredandthirtyone.js";
 
-let value: Access = "public";
+let value: Access = "private";
 ```
 
 ## Values
 
 ```typescript
-"public" | "private"
+"private" | "public"
 ```

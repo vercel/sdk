@@ -14,8 +14,8 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
  */
 export const NamedSandboxStatus = {
   Running: "running",
-  Stopping: "stopping",
   Stopped: "stopped",
+  Stopping: "stopping",
 } as const;
 /**
  * The status of the current sandbox.
@@ -42,10 +42,10 @@ export type KeepLastSnapshots = {
 
 export const NamedSandboxNetworkPolicyMode = {
   AllowAll: "allow-all",
-  DenyAll: "deny-all",
   Custom: "custom",
   DefaultAllow: "default-allow",
   DefaultDeny: "default-deny",
+  DenyAll: "deny-all",
 } as const;
 export type NamedSandboxNetworkPolicyMode = ClosedEnum<
   typeof NamedSandboxNetworkPolicyMode
@@ -68,10 +68,10 @@ export const NamedSandboxMode = {
 export type NamedSandboxMode = ClosedEnum<typeof NamedSandboxMode>;
 
 /**
- * Key-value pairs of mount path and volume.
+ * Key-value pairs of mount path and drive.
  */
 export type Mounts = {
-  volume: string;
+  drive: string;
   mode?: NamedSandboxMode | undefined;
 };
 
@@ -160,7 +160,7 @@ export type NamedSandbox = {
    */
   tags?: { [k: string]: string } | undefined;
   /**
-   * Key-value pairs of mount path and volume.
+   * Key-value pairs of mount path and drive.
    */
   mounts?: { [k: string]: Mounts } | undefined;
   /**
@@ -292,12 +292,12 @@ export const NamedSandboxMode$outboundSchema: z.ZodNativeEnum<
 /** @internal */
 export const Mounts$inboundSchema: z.ZodType<Mounts, z.ZodTypeDef, unknown> = z
   .object({
-    volume: types.string(),
+    drive: types.string(),
     mode: types.optional(NamedSandboxMode$inboundSchema),
   });
 /** @internal */
 export type Mounts$Outbound = {
-  volume: string;
+  drive: string;
   mode?: string | undefined;
 };
 
@@ -307,7 +307,7 @@ export const Mounts$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Mounts
 > = z.object({
-  volume: z.string(),
+  drive: z.string(),
   mode: NamedSandboxMode$outboundSchema.optional(),
 });
 

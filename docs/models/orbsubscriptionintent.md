@@ -29,7 +29,7 @@ let value: OrbSubscriptionIntent = {
   createdAt: "1728673646563",
   orbSubscriptionId: "<id>",
   ownerId: "<id>",
-  status: "failed",
+  status: "succeeded",
   updatedAt: "1735603530539",
 };
 ```

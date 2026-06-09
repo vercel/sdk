@@ -5,11 +5,11 @@
 ```typescript
 import { Kind } from "@vercel/sdk/models/flag.js";
 
-let value: Kind = "string";
+let value: Kind = "boolean";
 ```
 
 ## Values
 
 ```typescript
-"string" | "number" | "boolean" | "json"
+"boolean" | "json" | "number" | "string"
 ```

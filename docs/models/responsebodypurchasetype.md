@@ -13,5 +13,5 @@ let value: ResponseBodyPurchaseType = "enhanced";
 ## Values
 
 ```typescript
-"enhanced" | "turbo" | "standard"
+"enhanced" | "standard" | "turbo"
 ```

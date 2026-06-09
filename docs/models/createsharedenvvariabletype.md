@@ -13,5 +13,5 @@ let value: CreateSharedEnvVariableType = "encrypted";
 ## Values
 
 ```typescript
-"encrypted" | "sensitive" | "system" | "plain"
+"encrypted" | "plain" | "sensitive" | "system"
 ```

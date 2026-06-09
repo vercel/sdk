@@ -180,10 +180,6 @@ export type Segment = {
 export const SegmentOutcomeDataRulesType$inboundSchema: z.ZodNativeEnum<
   typeof SegmentOutcomeDataRulesType
 > = z.nativeEnum(SegmentOutcomeDataRulesType);
-/** @internal */
-export const SegmentOutcomeDataRulesType$outboundSchema: z.ZodNativeEnum<
-  typeof SegmentOutcomeDataRulesType
-> = SegmentOutcomeDataRulesType$inboundSchema;
 
 /** @internal */
 export const SegmentOutcomeBase$inboundSchema: z.ZodType<
@@ -195,31 +191,7 @@ export const SegmentOutcomeBase$inboundSchema: z.ZodType<
   kind: types.string(),
   attribute: types.string(),
 });
-/** @internal */
-export type SegmentOutcomeBase$Outbound = {
-  type: string;
-  kind: string;
-  attribute: string;
-};
 
-/** @internal */
-export const SegmentOutcomeBase$outboundSchema: z.ZodType<
-  SegmentOutcomeBase$Outbound,
-  z.ZodTypeDef,
-  SegmentOutcomeBase
-> = z.object({
-  type: SegmentOutcomeDataRulesType$outboundSchema,
-  kind: z.string(),
-  attribute: z.string(),
-});
-
-export function segmentOutcomeBaseToJSON(
-  segmentOutcomeBase: SegmentOutcomeBase,
-): string {
-  return JSON.stringify(
-    SegmentOutcomeBase$outboundSchema.parse(segmentOutcomeBase),
-  );
-}
 export function segmentOutcomeBaseFromJSON(
   jsonString: string,
 ): SafeParseResult<SegmentOutcomeBase, SDKValidationError> {
@@ -240,29 +212,7 @@ export const SegmentOutcome2$inboundSchema: z.ZodType<
   base: z.lazy(() => SegmentOutcomeBase$inboundSchema),
   passPromille: types.number(),
 });
-/** @internal */
-export type SegmentOutcome2$Outbound = {
-  type: "split";
-  base: SegmentOutcomeBase$Outbound;
-  passPromille: number;
-};
 
-/** @internal */
-export const SegmentOutcome2$outboundSchema: z.ZodType<
-  SegmentOutcome2$Outbound,
-  z.ZodTypeDef,
-  SegmentOutcome2
-> = z.object({
-  type: z.literal("split"),
-  base: z.lazy(() => SegmentOutcomeBase$outboundSchema),
-  passPromille: z.number(),
-});
-
-export function segmentOutcome2ToJSON(
-  segmentOutcome2: SegmentOutcome2,
-): string {
-  return JSON.stringify(SegmentOutcome2$outboundSchema.parse(segmentOutcome2));
-}
 export function segmentOutcome2FromJSON(
   jsonString: string,
 ): SafeParseResult<SegmentOutcome2, SDKValidationError> {
@@ -281,25 +231,7 @@ export const SegmentOutcome1$inboundSchema: z.ZodType<
 > = z.object({
   type: types.literal("all"),
 });
-/** @internal */
-export type SegmentOutcome1$Outbound = {
-  type: "all";
-};
 
-/** @internal */
-export const SegmentOutcome1$outboundSchema: z.ZodType<
-  SegmentOutcome1$Outbound,
-  z.ZodTypeDef,
-  SegmentOutcome1
-> = z.object({
-  type: z.literal("all"),
-});
-
-export function segmentOutcome1ToJSON(
-  segmentOutcome1: SegmentOutcome1,
-): string {
-  return JSON.stringify(SegmentOutcome1$outboundSchema.parse(segmentOutcome1));
-}
 export function segmentOutcome1FromJSON(
   jsonString: string,
 ): SafeParseResult<SegmentOutcome1, SDKValidationError> {
@@ -319,24 +251,7 @@ export const SegmentOutcome$inboundSchema: z.ZodType<
   z.lazy(() => SegmentOutcome1$inboundSchema),
   z.lazy(() => SegmentOutcome2$inboundSchema),
 ]);
-/** @internal */
-export type SegmentOutcome$Outbound =
-  | SegmentOutcome1$Outbound
-  | SegmentOutcome2$Outbound;
 
-/** @internal */
-export const SegmentOutcome$outboundSchema: z.ZodType<
-  SegmentOutcome$Outbound,
-  z.ZodTypeDef,
-  SegmentOutcome
-> = z.union([
-  z.lazy(() => SegmentOutcome1$outboundSchema),
-  z.lazy(() => SegmentOutcome2$outboundSchema),
-]);
-
-export function segmentOutcomeToJSON(segmentOutcome: SegmentOutcome): string {
-  return JSON.stringify(SegmentOutcome$outboundSchema.parse(segmentOutcome));
-}
 export function segmentOutcomeFromJSON(
   jsonString: string,
 ): SafeParseResult<SegmentOutcome, SDKValidationError> {
@@ -351,10 +266,6 @@ export function segmentOutcomeFromJSON(
 export const SegmentRhsDataType$inboundSchema: z.ZodNativeEnum<
   typeof SegmentRhsDataType
 > = z.nativeEnum(SegmentRhsDataType);
-/** @internal */
-export const SegmentRhsDataType$outboundSchema: z.ZodNativeEnum<
-  typeof SegmentRhsDataType
-> = SegmentRhsDataType$inboundSchema;
 
 /** @internal */
 export const SegmentRhs4$inboundSchema: z.ZodType<
@@ -366,27 +277,7 @@ export const SegmentRhs4$inboundSchema: z.ZodType<
   pattern: types.string(),
   flags: types.string(),
 });
-/** @internal */
-export type SegmentRhs4$Outbound = {
-  type: string;
-  pattern: string;
-  flags: string;
-};
 
-/** @internal */
-export const SegmentRhs4$outboundSchema: z.ZodType<
-  SegmentRhs4$Outbound,
-  z.ZodTypeDef,
-  SegmentRhs4
-> = z.object({
-  type: SegmentRhsDataType$outboundSchema,
-  pattern: z.string(),
-  flags: z.string(),
-});
-
-export function segmentRhs4ToJSON(segmentRhs4: SegmentRhs4): string {
-  return JSON.stringify(SegmentRhs4$outboundSchema.parse(segmentRhs4));
-}
 export function segmentRhs4FromJSON(
   jsonString: string,
 ): SafeParseResult<SegmentRhs4, SDKValidationError> {
@@ -401,10 +292,6 @@ export function segmentRhs4FromJSON(
 export const SegmentRhsType$inboundSchema: z.ZodNativeEnum<
   typeof SegmentRhsType
 > = z.nativeEnum(SegmentRhsType);
-/** @internal */
-export const SegmentRhsType$outboundSchema: z.ZodNativeEnum<
-  typeof SegmentRhsType
-> = SegmentRhsType$inboundSchema;
 
 /** @internal */
 export const SegmentItems2$inboundSchema: z.ZodType<
@@ -416,27 +303,7 @@ export const SegmentItems2$inboundSchema: z.ZodType<
   note: types.optional(types.string()),
   value: types.string(),
 });
-/** @internal */
-export type SegmentItems2$Outbound = {
-  label?: string | undefined;
-  note?: string | undefined;
-  value: string;
-};
 
-/** @internal */
-export const SegmentItems2$outboundSchema: z.ZodType<
-  SegmentItems2$Outbound,
-  z.ZodTypeDef,
-  SegmentItems2
-> = z.object({
-  label: z.string().optional(),
-  note: z.string().optional(),
-  value: z.string(),
-});
-
-export function segmentItems2ToJSON(segmentItems2: SegmentItems2): string {
-  return JSON.stringify(SegmentItems2$outboundSchema.parse(segmentItems2));
-}
 export function segmentItems2FromJSON(
   jsonString: string,
 ): SafeParseResult<SegmentItems2, SDKValidationError> {
@@ -457,27 +324,7 @@ export const SegmentItems1$inboundSchema: z.ZodType<
   note: types.optional(types.string()),
   value: types.number(),
 });
-/** @internal */
-export type SegmentItems1$Outbound = {
-  label?: string | undefined;
-  note?: string | undefined;
-  value: number;
-};
 
-/** @internal */
-export const SegmentItems1$outboundSchema: z.ZodType<
-  SegmentItems1$Outbound,
-  z.ZodTypeDef,
-  SegmentItems1
-> = z.object({
-  label: z.string().optional(),
-  note: z.string().optional(),
-  value: z.number(),
-});
-
-export function segmentItems1ToJSON(segmentItems1: SegmentItems1): string {
-  return JSON.stringify(SegmentItems1$outboundSchema.parse(segmentItems1));
-}
 export function segmentItems1FromJSON(
   jsonString: string,
 ): SafeParseResult<SegmentItems1, SDKValidationError> {
@@ -497,26 +344,7 @@ export const SegmentRhsItems$inboundSchema: z.ZodType<
   z.lazy(() => SegmentItems1$inboundSchema),
   z.lazy(() => SegmentItems2$inboundSchema),
 ]);
-/** @internal */
-export type SegmentRhsItems$Outbound =
-  | SegmentItems1$Outbound
-  | SegmentItems2$Outbound;
 
-/** @internal */
-export const SegmentRhsItems$outboundSchema: z.ZodType<
-  SegmentRhsItems$Outbound,
-  z.ZodTypeDef,
-  SegmentRhsItems
-> = smartUnion([
-  z.lazy(() => SegmentItems1$outboundSchema),
-  z.lazy(() => SegmentItems2$outboundSchema),
-]);
-
-export function segmentRhsItemsToJSON(
-  segmentRhsItems: SegmentRhsItems,
-): string {
-  return JSON.stringify(SegmentRhsItems$outboundSchema.parse(segmentRhsItems));
-}
 export function segmentRhsItemsFromJSON(
   jsonString: string,
 ): SafeParseResult<SegmentRhsItems, SDKValidationError> {
@@ -541,30 +369,7 @@ export const SegmentRhs3$inboundSchema: z.ZodType<
     ]),
   ),
 });
-/** @internal */
-export type SegmentRhs3$Outbound = {
-  type: string;
-  items: Array<SegmentItems1$Outbound | SegmentItems2$Outbound>;
-};
 
-/** @internal */
-export const SegmentRhs3$outboundSchema: z.ZodType<
-  SegmentRhs3$Outbound,
-  z.ZodTypeDef,
-  SegmentRhs3
-> = z.object({
-  type: SegmentRhsType$outboundSchema,
-  items: z.array(
-    smartUnion([
-      z.lazy(() => SegmentItems1$outboundSchema),
-      z.lazy(() => SegmentItems2$outboundSchema),
-    ]),
-  ),
-});
-
-export function segmentRhs3ToJSON(segmentRhs3: SegmentRhs3): string {
-  return JSON.stringify(SegmentRhs3$outboundSchema.parse(segmentRhs3));
-}
 export function segmentRhs3FromJSON(
   jsonString: string,
 ): SafeParseResult<SegmentRhs3, SDKValidationError> {
@@ -587,30 +392,7 @@ export const SegmentRhs$inboundSchema: z.ZodType<
   types.number(),
   types.boolean(),
 ]);
-/** @internal */
-export type SegmentRhs$Outbound =
-  | SegmentRhs4$Outbound
-  | SegmentRhs3$Outbound
-  | string
-  | number
-  | boolean;
 
-/** @internal */
-export const SegmentRhs$outboundSchema: z.ZodType<
-  SegmentRhs$Outbound,
-  z.ZodTypeDef,
-  SegmentRhs
-> = smartUnion([
-  z.lazy(() => SegmentRhs4$outboundSchema),
-  z.lazy(() => SegmentRhs3$outboundSchema),
-  z.string(),
-  z.number(),
-  z.boolean(),
-]);
-
-export function segmentRhsToJSON(segmentRhs: SegmentRhs): string {
-  return JSON.stringify(SegmentRhs$outboundSchema.parse(segmentRhs));
-}
 export function segmentRhsFromJSON(
   jsonString: string,
 ): SafeParseResult<SegmentRhs, SDKValidationError> {
@@ -629,27 +411,7 @@ export const SegmentCmpOptions$inboundSchema: z.ZodType<
 > = z.object({
   ignoreCase: types.optional(types.boolean()),
 });
-/** @internal */
-export type SegmentCmpOptions$Outbound = {
-  ignoreCase?: boolean | undefined;
-};
 
-/** @internal */
-export const SegmentCmpOptions$outboundSchema: z.ZodType<
-  SegmentCmpOptions$Outbound,
-  z.ZodTypeDef,
-  SegmentCmpOptions
-> = z.object({
-  ignoreCase: z.boolean().optional(),
-});
-
-export function segmentCmpOptionsToJSON(
-  segmentCmpOptions: SegmentCmpOptions,
-): string {
-  return JSON.stringify(
-    SegmentCmpOptions$outboundSchema.parse(segmentCmpOptions),
-  );
-}
 export function segmentCmpOptionsFromJSON(
   jsonString: string,
 ): SafeParseResult<SegmentCmpOptions, SDKValidationError> {
@@ -670,27 +432,7 @@ export const SegmentLhs2$inboundSchema: z.ZodType<
   kind: types.string(),
   attribute: types.string(),
 });
-/** @internal */
-export type SegmentLhs2$Outbound = {
-  type: "entity";
-  kind: string;
-  attribute: string;
-};
 
-/** @internal */
-export const SegmentLhs2$outboundSchema: z.ZodType<
-  SegmentLhs2$Outbound,
-  z.ZodTypeDef,
-  SegmentLhs2
-> = z.object({
-  type: z.literal("entity"),
-  kind: z.string(),
-  attribute: z.string(),
-});
-
-export function segmentLhs2ToJSON(segmentLhs2: SegmentLhs2): string {
-  return JSON.stringify(SegmentLhs2$outboundSchema.parse(segmentLhs2));
-}
 export function segmentLhs2FromJSON(
   jsonString: string,
 ): SafeParseResult<SegmentLhs2, SDKValidationError> {
@@ -709,23 +451,7 @@ export const SegmentLhs1$inboundSchema: z.ZodType<
 > = z.object({
   type: types.literal("segment"),
 });
-/** @internal */
-export type SegmentLhs1$Outbound = {
-  type: "segment";
-};
 
-/** @internal */
-export const SegmentLhs1$outboundSchema: z.ZodType<
-  SegmentLhs1$Outbound,
-  z.ZodTypeDef,
-  SegmentLhs1
-> = z.object({
-  type: z.literal("segment"),
-});
-
-export function segmentLhs1ToJSON(segmentLhs1: SegmentLhs1): string {
-  return JSON.stringify(SegmentLhs1$outboundSchema.parse(segmentLhs1));
-}
 export function segmentLhs1FromJSON(
   jsonString: string,
 ): SafeParseResult<SegmentLhs1, SDKValidationError> {
@@ -745,22 +471,7 @@ export const SegmentLhs$inboundSchema: z.ZodType<
   z.lazy(() => SegmentLhs1$inboundSchema),
   z.lazy(() => SegmentLhs2$inboundSchema),
 ]);
-/** @internal */
-export type SegmentLhs$Outbound = SegmentLhs1$Outbound | SegmentLhs2$Outbound;
 
-/** @internal */
-export const SegmentLhs$outboundSchema: z.ZodType<
-  SegmentLhs$Outbound,
-  z.ZodTypeDef,
-  SegmentLhs
-> = z.union([
-  z.lazy(() => SegmentLhs1$outboundSchema),
-  z.lazy(() => SegmentLhs2$outboundSchema),
-]);
-
-export function segmentLhsToJSON(segmentLhs: SegmentLhs): string {
-  return JSON.stringify(SegmentLhs$outboundSchema.parse(segmentLhs));
-}
 export function segmentLhsFromJSON(
   jsonString: string,
 ): SafeParseResult<SegmentLhs, SDKValidationError> {
@@ -774,9 +485,6 @@ export function segmentLhsFromJSON(
 /** @internal */
 export const SegmentCmp$inboundSchema: z.ZodNativeEnum<typeof SegmentCmp> = z
   .nativeEnum(SegmentCmp);
-/** @internal */
-export const SegmentCmp$outboundSchema: z.ZodNativeEnum<typeof SegmentCmp> =
-  SegmentCmp$inboundSchema;
 
 /** @internal */
 export const SegmentConditions$inboundSchema: z.ZodType<
@@ -800,48 +508,7 @@ export const SegmentConditions$inboundSchema: z.ZodType<
   ]),
   cmp: SegmentCmp$inboundSchema,
 });
-/** @internal */
-export type SegmentConditions$Outbound = {
-  rhs?:
-    | SegmentRhs4$Outbound
-    | SegmentRhs3$Outbound
-    | string
-    | number
-    | boolean
-    | undefined;
-  cmpOptions?: SegmentCmpOptions$Outbound | undefined;
-  lhs: SegmentLhs1$Outbound | SegmentLhs2$Outbound;
-  cmp: string;
-};
 
-/** @internal */
-export const SegmentConditions$outboundSchema: z.ZodType<
-  SegmentConditions$Outbound,
-  z.ZodTypeDef,
-  SegmentConditions
-> = z.object({
-  rhs: smartUnion([
-    z.lazy(() => SegmentRhs4$outboundSchema),
-    z.lazy(() => SegmentRhs3$outboundSchema),
-    z.string(),
-    z.number(),
-    z.boolean(),
-  ]).optional(),
-  cmpOptions: z.lazy(() => SegmentCmpOptions$outboundSchema).optional(),
-  lhs: z.union([
-    z.lazy(() => SegmentLhs1$outboundSchema),
-    z.lazy(() => SegmentLhs2$outboundSchema),
-  ]),
-  cmp: SegmentCmp$outboundSchema,
-});
-
-export function segmentConditionsToJSON(
-  segmentConditions: SegmentConditions,
-): string {
-  return JSON.stringify(
-    SegmentConditions$outboundSchema.parse(segmentConditions),
-  );
-}
 export function segmentConditionsFromJSON(
   jsonString: string,
 ): SafeParseResult<SegmentConditions, SDKValidationError> {
@@ -865,30 +532,7 @@ export const SegmentRules$inboundSchema: z.ZodType<
   ]),
   conditions: z.array(z.lazy(() => SegmentConditions$inboundSchema)),
 });
-/** @internal */
-export type SegmentRules$Outbound = {
-  id: string;
-  outcome: SegmentOutcome1$Outbound | SegmentOutcome2$Outbound;
-  conditions: Array<SegmentConditions$Outbound>;
-};
 
-/** @internal */
-export const SegmentRules$outboundSchema: z.ZodType<
-  SegmentRules$Outbound,
-  z.ZodTypeDef,
-  SegmentRules
-> = z.object({
-  id: z.string(),
-  outcome: z.union([
-    z.lazy(() => SegmentOutcome1$outboundSchema),
-    z.lazy(() => SegmentOutcome2$outboundSchema),
-  ]),
-  conditions: z.array(z.lazy(() => SegmentConditions$outboundSchema)),
-});
-
-export function segmentRulesToJSON(segmentRules: SegmentRules): string {
-  return JSON.stringify(SegmentRules$outboundSchema.parse(segmentRules));
-}
 export function segmentRulesFromJSON(
   jsonString: string,
 ): SafeParseResult<SegmentRules, SDKValidationError> {
@@ -905,25 +549,7 @@ export const Include$inboundSchema: z.ZodType<Include, z.ZodTypeDef, unknown> =
     note: types.optional(types.string()),
     value: types.string(),
   });
-/** @internal */
-export type Include$Outbound = {
-  note?: string | undefined;
-  value: string;
-};
 
-/** @internal */
-export const Include$outboundSchema: z.ZodType<
-  Include$Outbound,
-  z.ZodTypeDef,
-  Include
-> = z.object({
-  note: z.string().optional(),
-  value: z.string(),
-});
-
-export function includeToJSON(include: Include): string {
-  return JSON.stringify(Include$outboundSchema.parse(include));
-}
 export function includeFromJSON(
   jsonString: string,
 ): SafeParseResult<Include, SDKValidationError> {
@@ -943,25 +569,7 @@ export const ExcludeT$inboundSchema: z.ZodType<
   note: types.optional(types.string()),
   value: types.string(),
 });
-/** @internal */
-export type ExcludeT$Outbound = {
-  note?: string | undefined;
-  value: string;
-};
 
-/** @internal */
-export const ExcludeT$outboundSchema: z.ZodType<
-  ExcludeT$Outbound,
-  z.ZodTypeDef,
-  ExcludeT
-> = z.object({
-  note: z.string().optional(),
-  value: z.string(),
-});
-
-export function excludeToJSON(excludeT: ExcludeT): string {
-  return JSON.stringify(ExcludeT$outboundSchema.parse(excludeT));
-}
 export function excludeFromJSON(
   jsonString: string,
 ): SafeParseResult<ExcludeT, SDKValidationError> {
@@ -983,30 +591,7 @@ export const Data$inboundSchema: z.ZodType<Data, z.ZodTypeDef, unknown> = z
       z.record(z.record(z.array(z.lazy(() => ExcludeT$inboundSchema)))),
     ),
   });
-/** @internal */
-export type Data$Outbound = {
-  rules?: Array<SegmentRules$Outbound> | undefined;
-  include?:
-    | { [k: string]: { [k: string]: Array<Include$Outbound> } }
-    | undefined;
-  exclude?:
-    | { [k: string]: { [k: string]: Array<ExcludeT$Outbound> } }
-    | undefined;
-};
 
-/** @internal */
-export const Data$outboundSchema: z.ZodType<Data$Outbound, z.ZodTypeDef, Data> =
-  z.object({
-    rules: z.array(z.lazy(() => SegmentRules$outboundSchema)).optional(),
-    include: z.record(z.record(z.array(z.lazy(() => Include$outboundSchema))))
-      .optional(),
-    exclude: z.record(z.record(z.array(z.lazy(() => ExcludeT$outboundSchema))))
-      .optional(),
-  });
-
-export function dataToJSON(data: Data): string {
-  return JSON.stringify(Data$outboundSchema.parse(data));
-}
 export function dataFromJSON(
   jsonString: string,
 ): SafeParseResult<Data, SDKValidationError> {
@@ -1021,10 +606,6 @@ export function dataFromJSON(
 export const SegmentTypeName$inboundSchema: z.ZodNativeEnum<
   typeof SegmentTypeName
 > = z.nativeEnum(SegmentTypeName);
-/** @internal */
-export const SegmentTypeName$outboundSchema: z.ZodNativeEnum<
-  typeof SegmentTypeName
-> = SegmentTypeName$inboundSchema;
 
 /** @internal */
 export const SegmentCreator$inboundSchema: z.ZodType<
@@ -1035,25 +616,7 @@ export const SegmentCreator$inboundSchema: z.ZodType<
   id: types.string(),
   name: types.string(),
 });
-/** @internal */
-export type SegmentCreator$Outbound = {
-  id: string;
-  name: string;
-};
 
-/** @internal */
-export const SegmentCreator$outboundSchema: z.ZodType<
-  SegmentCreator$Outbound,
-  z.ZodTypeDef,
-  SegmentCreator
-> = z.object({
-  id: z.string(),
-  name: z.string(),
-});
-
-export function segmentCreatorToJSON(segmentCreator: SegmentCreator): string {
-  return JSON.stringify(SegmentCreator$outboundSchema.parse(segmentCreator));
-}
 export function segmentCreatorFromJSON(
   jsonString: string,
 ): SafeParseResult<SegmentCreator, SDKValidationError> {
@@ -1072,25 +635,7 @@ export const SegmentMetadata$inboundSchema: z.ZodType<
 > = z.object({
   creator: types.optional(z.lazy(() => SegmentCreator$inboundSchema)),
 });
-/** @internal */
-export type SegmentMetadata$Outbound = {
-  creator?: SegmentCreator$Outbound | undefined;
-};
 
-/** @internal */
-export const SegmentMetadata$outboundSchema: z.ZodType<
-  SegmentMetadata$Outbound,
-  z.ZodTypeDef,
-  SegmentMetadata
-> = z.object({
-  creator: z.lazy(() => SegmentCreator$outboundSchema).optional(),
-});
-
-export function segmentMetadataToJSON(
-  segmentMetadata: SegmentMetadata,
-): string {
-  return JSON.stringify(SegmentMetadata$outboundSchema.parse(segmentMetadata));
-}
 export function segmentMetadataFromJSON(
   jsonString: string,
 ): SafeParseResult<SegmentMetadata, SDKValidationError> {
@@ -1119,49 +664,7 @@ export const Segment$inboundSchema: z.ZodType<Segment, z.ZodTypeDef, unknown> =
     hint: types.string(),
     metadata: types.optional(z.lazy(() => SegmentMetadata$inboundSchema)),
   });
-/** @internal */
-export type Segment$Outbound = {
-  description?: string | undefined;
-  createdBy?: string | undefined;
-  usedByFlags?: Array<string> | undefined;
-  usedBySegments?: Array<string> | undefined;
-  data: Data$Outbound;
-  id: string;
-  label: string;
-  slug: string;
-  createdAt: number;
-  updatedAt: number;
-  projectId: string;
-  typeName: string;
-  hint: string;
-  metadata?: SegmentMetadata$Outbound | undefined;
-};
 
-/** @internal */
-export const Segment$outboundSchema: z.ZodType<
-  Segment$Outbound,
-  z.ZodTypeDef,
-  Segment
-> = z.object({
-  description: z.string().optional(),
-  createdBy: z.string().optional(),
-  usedByFlags: z.array(z.string()).optional(),
-  usedBySegments: z.array(z.string()).optional(),
-  data: z.lazy(() => Data$outboundSchema),
-  id: z.string(),
-  label: z.string(),
-  slug: z.string(),
-  createdAt: z.number(),
-  updatedAt: z.number(),
-  projectId: z.string(),
-  typeName: SegmentTypeName$outboundSchema,
-  hint: z.string(),
-  metadata: z.lazy(() => SegmentMetadata$outboundSchema).optional(),
-});
-
-export function segmentToJSON(segment: Segment): string {
-  return JSON.stringify(Segment$outboundSchema.parse(segment));
-}
 export function segmentFromJSON(
   jsonString: string,
 ): SafeParseResult<Segment, SDKValidationError> {

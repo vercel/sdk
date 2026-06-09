@@ -38,14 +38,6 @@ export type BatchRemoveProjectEnvResponseBody = {
 };
 
 /** @internal */
-export const BatchRemoveProjectEnvRequestBody$inboundSchema: z.ZodType<
-  BatchRemoveProjectEnvRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  ids: z.array(types.string()),
-});
-/** @internal */
 export type BatchRemoveProjectEnvRequestBody$Outbound = {
   ids: Array<string>;
 };
@@ -68,33 +60,7 @@ export function batchRemoveProjectEnvRequestBodyToJSON(
     ),
   );
 }
-export function batchRemoveProjectEnvRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<BatchRemoveProjectEnvRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => BatchRemoveProjectEnvRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'BatchRemoveProjectEnvRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const BatchRemoveProjectEnvRequest$inboundSchema: z.ZodType<
-  BatchRemoveProjectEnvRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  idOrName: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-  RequestBody: types.optional(
-    z.lazy(() => BatchRemoveProjectEnvRequestBody$inboundSchema),
-  ),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 /** @internal */
 export type BatchRemoveProjectEnvRequest$Outbound = {
   idOrName: string;
@@ -129,15 +95,6 @@ export function batchRemoveProjectEnvRequestToJSON(
     ),
   );
 }
-export function batchRemoveProjectEnvRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<BatchRemoveProjectEnvRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => BatchRemoveProjectEnvRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'BatchRemoveProjectEnvRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const BatchRemoveProjectEnvResponseBody$inboundSchema: z.ZodType<
@@ -148,31 +105,7 @@ export const BatchRemoveProjectEnvResponseBody$inboundSchema: z.ZodType<
   deleted: types.number(),
   ids: z.array(types.string()),
 });
-/** @internal */
-export type BatchRemoveProjectEnvResponseBody$Outbound = {
-  deleted: number;
-  ids: Array<string>;
-};
 
-/** @internal */
-export const BatchRemoveProjectEnvResponseBody$outboundSchema: z.ZodType<
-  BatchRemoveProjectEnvResponseBody$Outbound,
-  z.ZodTypeDef,
-  BatchRemoveProjectEnvResponseBody
-> = z.object({
-  deleted: z.number(),
-  ids: z.array(z.string()),
-});
-
-export function batchRemoveProjectEnvResponseBodyToJSON(
-  batchRemoveProjectEnvResponseBody: BatchRemoveProjectEnvResponseBody,
-): string {
-  return JSON.stringify(
-    BatchRemoveProjectEnvResponseBody$outboundSchema.parse(
-      batchRemoveProjectEnvResponseBody,
-    ),
-  );
-}
 export function batchRemoveProjectEnvResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<BatchRemoveProjectEnvResponseBody, SDKValidationError> {

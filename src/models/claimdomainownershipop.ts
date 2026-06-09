@@ -117,16 +117,6 @@ export type ClaimDomainOwnershipResponseBody = {
 };
 
 /** @internal */
-export const ClaimDomainOwnershipRequest$inboundSchema: z.ZodType<
-  ClaimDomainOwnershipRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  domain: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
-/** @internal */
 export type ClaimDomainOwnershipRequest$Outbound = {
   domain: string;
   teamId?: string | undefined;
@@ -153,15 +143,6 @@ export function claimDomainOwnershipRequestToJSON(
     ),
   );
 }
-export function claimDomainOwnershipRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<ClaimDomainOwnershipRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ClaimDomainOwnershipRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ClaimDomainOwnershipRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const ClaimDomainOwnershipCreator$inboundSchema: z.ZodType<
@@ -175,37 +156,7 @@ export const ClaimDomainOwnershipCreator$inboundSchema: z.ZodType<
   isDomainReseller: types.optional(types.boolean()),
   id: types.string(),
 });
-/** @internal */
-export type ClaimDomainOwnershipCreator$Outbound = {
-  username: string;
-  email: string;
-  customerId?: string | null | undefined;
-  isDomainReseller?: boolean | undefined;
-  id: string;
-};
 
-/** @internal */
-export const ClaimDomainOwnershipCreator$outboundSchema: z.ZodType<
-  ClaimDomainOwnershipCreator$Outbound,
-  z.ZodTypeDef,
-  ClaimDomainOwnershipCreator
-> = z.object({
-  username: z.string(),
-  email: z.string(),
-  customerId: z.nullable(z.string()).optional(),
-  isDomainReseller: z.boolean().optional(),
-  id: z.string(),
-});
-
-export function claimDomainOwnershipCreatorToJSON(
-  claimDomainOwnershipCreator: ClaimDomainOwnershipCreator,
-): string {
-  return JSON.stringify(
-    ClaimDomainOwnershipCreator$outboundSchema.parse(
-      claimDomainOwnershipCreator,
-    ),
-  );
-}
 export function claimDomainOwnershipCreatorFromJSON(
   jsonString: string,
 ): SafeParseResult<ClaimDomainOwnershipCreator, SDKValidationError> {
@@ -219,9 +170,6 @@ export function claimDomainOwnershipCreatorFromJSON(
 /** @internal */
 export const ServiceType$inboundSchema: z.ZodNativeEnum<typeof ServiceType> = z
   .nativeEnum(ServiceType);
-/** @internal */
-export const ServiceType$outboundSchema: z.ZodNativeEnum<typeof ServiceType> =
-  ServiceType$inboundSchema;
 
 /** @internal */
 export const ClaimDomainOwnershipDomain$inboundSchema: z.ZodType<
@@ -246,57 +194,7 @@ export const ClaimDomainOwnershipDomain$inboundSchema: z.ZodType<
   transferStartedAt: types.optional(types.number()),
   userId: types.string(),
 });
-/** @internal */
-export type ClaimDomainOwnershipDomain$Outbound = {
-  expiresAt: number | null;
-  verified: boolean;
-  nameservers: Array<string>;
-  intendedNameservers: Array<string>;
-  customNameservers?: Array<string> | undefined;
-  creator: ClaimDomainOwnershipCreator$Outbound;
-  name: string;
-  teamId: string | null;
-  boughtAt: number | null;
-  createdAt: number;
-  id: string;
-  renew?: boolean | undefined;
-  serviceType: string;
-  transferredAt?: number | null | undefined;
-  transferStartedAt?: number | undefined;
-  userId: string;
-};
 
-/** @internal */
-export const ClaimDomainOwnershipDomain$outboundSchema: z.ZodType<
-  ClaimDomainOwnershipDomain$Outbound,
-  z.ZodTypeDef,
-  ClaimDomainOwnershipDomain
-> = z.object({
-  expiresAt: z.nullable(z.number()),
-  verified: z.boolean(),
-  nameservers: z.array(z.string()),
-  intendedNameservers: z.array(z.string()),
-  customNameservers: z.array(z.string()).optional(),
-  creator: z.lazy(() => ClaimDomainOwnershipCreator$outboundSchema),
-  name: z.string(),
-  teamId: z.nullable(z.string()),
-  boughtAt: z.nullable(z.number()),
-  createdAt: z.number(),
-  id: z.string(),
-  renew: z.boolean().optional(),
-  serviceType: ServiceType$outboundSchema,
-  transferredAt: z.nullable(z.number()).optional(),
-  transferStartedAt: z.number().optional(),
-  userId: z.string(),
-});
-
-export function claimDomainOwnershipDomainToJSON(
-  claimDomainOwnershipDomain: ClaimDomainOwnershipDomain,
-): string {
-  return JSON.stringify(
-    ClaimDomainOwnershipDomain$outboundSchema.parse(claimDomainOwnershipDomain),
-  );
-}
 export function claimDomainOwnershipDomainFromJSON(
   jsonString: string,
 ): SafeParseResult<ClaimDomainOwnershipDomain, SDKValidationError> {
@@ -315,29 +213,7 @@ export const ClaimDomainOwnershipResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   domain: z.lazy(() => ClaimDomainOwnershipDomain$inboundSchema),
 });
-/** @internal */
-export type ClaimDomainOwnershipResponseBody$Outbound = {
-  domain: ClaimDomainOwnershipDomain$Outbound;
-};
 
-/** @internal */
-export const ClaimDomainOwnershipResponseBody$outboundSchema: z.ZodType<
-  ClaimDomainOwnershipResponseBody$Outbound,
-  z.ZodTypeDef,
-  ClaimDomainOwnershipResponseBody
-> = z.object({
-  domain: z.lazy(() => ClaimDomainOwnershipDomain$outboundSchema),
-});
-
-export function claimDomainOwnershipResponseBodyToJSON(
-  claimDomainOwnershipResponseBody: ClaimDomainOwnershipResponseBody,
-): string {
-  return JSON.stringify(
-    ClaimDomainOwnershipResponseBody$outboundSchema.parse(
-      claimDomainOwnershipResponseBody,
-    ),
-  );
-}
 export function claimDomainOwnershipResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<ClaimDomainOwnershipResponseBody, SDKValidationError> {

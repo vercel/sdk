@@ -509,18 +509,9 @@ export type AddRouteResponseBody = {
 };
 
 /** @internal */
-export const SrcSyntax$inboundSchema: z.ZodNativeEnum<typeof SrcSyntax> = z
+export const SrcSyntax$outboundSchema: z.ZodNativeEnum<typeof SrcSyntax> = z
   .nativeEnum(SrcSyntax);
-/** @internal */
-export const SrcSyntax$outboundSchema: z.ZodNativeEnum<typeof SrcSyntax> =
-  SrcSyntax$inboundSchema;
 
-/** @internal */
-export const AddRouteHeaders$inboundSchema: z.ZodType<
-  AddRouteHeaders,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
 /** @internal */
 export type AddRouteHeaders$Outbound = {};
 
@@ -536,33 +527,11 @@ export function addRouteHeadersToJSON(
 ): string {
   return JSON.stringify(AddRouteHeaders$outboundSchema.parse(addRouteHeaders));
 }
-export function addRouteHeadersFromJSON(
-  jsonString: string,
-): SafeParseResult<AddRouteHeaders, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AddRouteHeaders$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AddRouteHeaders' from JSON`,
-  );
-}
 
-/** @internal */
-export const AddRouteType$inboundSchema: z.ZodNativeEnum<typeof AddRouteType> =
-  z.nativeEnum(AddRouteType);
 /** @internal */
 export const AddRouteType$outboundSchema: z.ZodNativeEnum<typeof AddRouteType> =
-  AddRouteType$inboundSchema;
+  z.nativeEnum(AddRouteType);
 
-/** @internal */
-export const AddRouteHas$inboundSchema: z.ZodType<
-  AddRouteHas,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  type: types.optional(AddRouteType$inboundSchema),
-  key: types.optional(types.string()),
-  value: types.optional(types.string()),
-});
 /** @internal */
 export type AddRouteHas$Outbound = {
   type?: string | undefined;
@@ -584,35 +553,12 @@ export const AddRouteHas$outboundSchema: z.ZodType<
 export function addRouteHasToJSON(addRouteHas: AddRouteHas): string {
   return JSON.stringify(AddRouteHas$outboundSchema.parse(addRouteHas));
 }
-export function addRouteHasFromJSON(
-  jsonString: string,
-): SafeParseResult<AddRouteHas, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AddRouteHas$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AddRouteHas' from JSON`,
-  );
-}
 
-/** @internal */
-export const AddRouteProjectRoutesType$inboundSchema: z.ZodNativeEnum<
-  typeof AddRouteProjectRoutesType
-> = z.nativeEnum(AddRouteProjectRoutesType);
 /** @internal */
 export const AddRouteProjectRoutesType$outboundSchema: z.ZodNativeEnum<
   typeof AddRouteProjectRoutesType
-> = AddRouteProjectRoutesType$inboundSchema;
+> = z.nativeEnum(AddRouteProjectRoutesType);
 
-/** @internal */
-export const AddRouteMissing$inboundSchema: z.ZodType<
-  AddRouteMissing,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  type: types.optional(AddRouteProjectRoutesType$inboundSchema),
-  key: types.optional(types.string()),
-  value: types.optional(types.string()),
-});
 /** @internal */
 export type AddRouteMissing$Outbound = {
   type?: string | undefined;
@@ -636,38 +582,16 @@ export function addRouteMissingToJSON(
 ): string {
   return JSON.stringify(AddRouteMissing$outboundSchema.parse(addRouteMissing));
 }
-export function addRouteMissingFromJSON(
-  jsonString: string,
-): SafeParseResult<AddRouteMissing, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AddRouteMissing$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AddRouteMissing' from JSON`,
-  );
-}
 
-/** @internal */
-export const AddRouteProjectRoutesRequestType$inboundSchema: z.ZodNativeEnum<
-  typeof AddRouteProjectRoutesRequestType
-> = z.nativeEnum(AddRouteProjectRoutesRequestType);
 /** @internal */
 export const AddRouteProjectRoutesRequestType$outboundSchema: z.ZodNativeEnum<
   typeof AddRouteProjectRoutesRequestType
-> = AddRouteProjectRoutesRequestType$inboundSchema;
+> = z.nativeEnum(AddRouteProjectRoutesRequestType);
 
 /** @internal */
-export const AddRouteOp$inboundSchema: z.ZodNativeEnum<typeof AddRouteOp> = z
+export const AddRouteOp$outboundSchema: z.ZodNativeEnum<typeof AddRouteOp> = z
   .nativeEnum(AddRouteOp);
-/** @internal */
-export const AddRouteOp$outboundSchema: z.ZodNativeEnum<typeof AddRouteOp> =
-  AddRouteOp$inboundSchema;
 
-/** @internal */
-export const AddRouteTarget$inboundSchema: z.ZodType<
-  AddRouteTarget,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
 /** @internal */
 export type AddRouteTarget$Outbound = {};
 
@@ -681,28 +605,7 @@ export const AddRouteTarget$outboundSchema: z.ZodType<
 export function addRouteTargetToJSON(addRouteTarget: AddRouteTarget): string {
   return JSON.stringify(AddRouteTarget$outboundSchema.parse(addRouteTarget));
 }
-export function addRouteTargetFromJSON(
-  jsonString: string,
-): SafeParseResult<AddRouteTarget, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AddRouteTarget$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AddRouteTarget' from JSON`,
-  );
-}
 
-/** @internal */
-export const AddRouteTransforms$inboundSchema: z.ZodType<
-  AddRouteTransforms,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  type: types.optional(AddRouteProjectRoutesRequestType$inboundSchema),
-  op: types.optional(AddRouteOp$inboundSchema),
-  target: types.optional(z.lazy(() => AddRouteTarget$inboundSchema)),
-  args: types.optional(z.any()),
-  env: types.optional(z.array(types.string())),
-});
 /** @internal */
 export type AddRouteTransforms$Outbound = {
   type?: string | undefined;
@@ -732,34 +635,7 @@ export function addRouteTransformsToJSON(
     AddRouteTransforms$outboundSchema.parse(addRouteTransforms),
   );
 }
-export function addRouteTransformsFromJSON(
-  jsonString: string,
-): SafeParseResult<AddRouteTransforms, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AddRouteTransforms$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AddRouteTransforms' from JSON`,
-  );
-}
 
-/** @internal */
-export const AddRouteProjectRoutesRoute$inboundSchema: z.ZodType<
-  AddRouteProjectRoutesRoute,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  src: types.string(),
-  dest: types.optional(types.string()),
-  headers: types.optional(z.lazy(() => AddRouteHeaders$inboundSchema)),
-  caseSensitive: types.optional(types.boolean()),
-  status: types.optional(types.number()),
-  has: types.optional(z.array(z.lazy(() => AddRouteHas$inboundSchema))),
-  missing: types.optional(z.array(z.lazy(() => AddRouteMissing$inboundSchema))),
-  transforms: types.optional(
-    z.array(z.lazy(() => AddRouteTransforms$inboundSchema)),
-  ),
-  respectOriginCacheControl: types.optional(types.boolean()),
-});
 /** @internal */
 export type AddRouteProjectRoutesRoute$Outbound = {
   src: string;
@@ -798,28 +674,7 @@ export function addRouteProjectRoutesRouteToJSON(
     AddRouteProjectRoutesRoute$outboundSchema.parse(addRouteProjectRoutesRoute),
   );
 }
-export function addRouteProjectRoutesRouteFromJSON(
-  jsonString: string,
-): SafeParseResult<AddRouteProjectRoutesRoute, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AddRouteProjectRoutesRoute$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AddRouteProjectRoutesRoute' from JSON`,
-  );
-}
 
-/** @internal */
-export const AddRouteRoute$inboundSchema: z.ZodType<
-  AddRouteRoute,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  name: types.string(),
-  description: types.optional(types.string()),
-  enabled: types.optional(types.boolean()),
-  srcSyntax: types.optional(SrcSyntax$inboundSchema),
-  route: z.lazy(() => AddRouteProjectRoutesRoute$inboundSchema),
-});
 /** @internal */
 export type AddRouteRoute$Outbound = {
   name: string;
@@ -845,32 +700,11 @@ export const AddRouteRoute$outboundSchema: z.ZodType<
 export function addRouteRouteToJSON(addRouteRoute: AddRouteRoute): string {
   return JSON.stringify(AddRouteRoute$outboundSchema.parse(addRouteRoute));
 }
-export function addRouteRouteFromJSON(
-  jsonString: string,
-): SafeParseResult<AddRouteRoute, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AddRouteRoute$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AddRouteRoute' from JSON`,
-  );
-}
 
 /** @internal */
-export const Placement$inboundSchema: z.ZodNativeEnum<typeof Placement> = z
+export const Placement$outboundSchema: z.ZodNativeEnum<typeof Placement> = z
   .nativeEnum(Placement);
-/** @internal */
-export const Placement$outboundSchema: z.ZodNativeEnum<typeof Placement> =
-  Placement$inboundSchema;
 
-/** @internal */
-export const Position$inboundSchema: z.ZodType<
-  Position,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  placement: types.optional(Placement$inboundSchema),
-  referenceId: types.optional(types.string()),
-});
 /** @internal */
 export type Position$Outbound = {
   placement?: string | undefined;
@@ -890,25 +724,7 @@ export const Position$outboundSchema: z.ZodType<
 export function positionToJSON(position: Position): string {
   return JSON.stringify(Position$outboundSchema.parse(position));
 }
-export function positionFromJSON(
-  jsonString: string,
-): SafeParseResult<Position, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Position$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Position' from JSON`,
-  );
-}
 
-/** @internal */
-export const AddRouteRequestBody$inboundSchema: z.ZodType<
-  AddRouteRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  route: z.lazy(() => AddRouteRoute$inboundSchema),
-  position: types.optional(z.lazy(() => Position$inboundSchema)),
-});
 /** @internal */
 export type AddRouteRequestBody$Outbound = {
   route: AddRouteRoute$Outbound;
@@ -932,31 +748,7 @@ export function addRouteRequestBodyToJSON(
     AddRouteRequestBody$outboundSchema.parse(addRouteRequestBody),
   );
 }
-export function addRouteRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<AddRouteRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AddRouteRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AddRouteRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const AddRouteRequest$inboundSchema: z.ZodType<
-  AddRouteRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  projectId: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-  RequestBody: types.optional(z.lazy(() => AddRouteRequestBody$inboundSchema)),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 /** @internal */
 export type AddRouteRequest$Outbound = {
   projectId: string;
@@ -986,31 +778,15 @@ export function addRouteRequestToJSON(
 ): string {
   return JSON.stringify(AddRouteRequest$outboundSchema.parse(addRouteRequest));
 }
-export function addRouteRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<AddRouteRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AddRouteRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AddRouteRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const RouteType$inboundSchema: z.ZodNativeEnum<typeof RouteType> = z
   .nativeEnum(RouteType);
-/** @internal */
-export const RouteType$outboundSchema: z.ZodNativeEnum<typeof RouteType> =
-  RouteType$inboundSchema;
 
 /** @internal */
 export const AddRouteHasProjectRoutesType$inboundSchema: z.ZodNativeEnum<
   typeof AddRouteHasProjectRoutesType
 > = z.nativeEnum(AddRouteHasProjectRoutesType);
-/** @internal */
-export const AddRouteHasProjectRoutesType$outboundSchema: z.ZodNativeEnum<
-  typeof AddRouteHasProjectRoutesType
-> = AddRouteHasProjectRoutesType$inboundSchema;
 
 /** @internal */
 export const AddRouteValueProjectRoutesEq$inboundSchema: z.ZodType<
@@ -1018,25 +794,7 @@ export const AddRouteValueProjectRoutesEq$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = smartUnion([types.string(), types.number()]);
-/** @internal */
-export type AddRouteValueProjectRoutesEq$Outbound = string | number;
 
-/** @internal */
-export const AddRouteValueProjectRoutesEq$outboundSchema: z.ZodType<
-  AddRouteValueProjectRoutesEq$Outbound,
-  z.ZodTypeDef,
-  AddRouteValueProjectRoutesEq
-> = smartUnion([z.string(), z.number()]);
-
-export function addRouteValueProjectRoutesEqToJSON(
-  addRouteValueProjectRoutesEq: AddRouteValueProjectRoutesEq,
-): string {
-  return JSON.stringify(
-    AddRouteValueProjectRoutesEq$outboundSchema.parse(
-      addRouteValueProjectRoutesEq,
-    ),
-  );
-}
 export function addRouteValueProjectRoutesEqFromJSON(
   jsonString: string,
 ): SafeParseResult<AddRouteValueProjectRoutesEq, SDKValidationError> {
@@ -1065,49 +823,7 @@ export const AddRouteValueProjectRoutes2$inboundSchema: z.ZodType<
   lt: types.optional(types.number()),
   lte: types.optional(types.number()),
 });
-/** @internal */
-export type AddRouteValueProjectRoutes2$Outbound = {
-  eq?: string | number | undefined;
-  neq?: string | undefined;
-  inc?: Array<string> | undefined;
-  ninc?: Array<string> | undefined;
-  pre?: string | undefined;
-  suf?: string | undefined;
-  re?: string | undefined;
-  gt?: number | undefined;
-  gte?: number | undefined;
-  lt?: number | undefined;
-  lte?: number | undefined;
-};
 
-/** @internal */
-export const AddRouteValueProjectRoutes2$outboundSchema: z.ZodType<
-  AddRouteValueProjectRoutes2$Outbound,
-  z.ZodTypeDef,
-  AddRouteValueProjectRoutes2
-> = z.object({
-  eq: smartUnion([z.string(), z.number()]).optional(),
-  neq: z.string().optional(),
-  inc: z.array(z.string()).optional(),
-  ninc: z.array(z.string()).optional(),
-  pre: z.string().optional(),
-  suf: z.string().optional(),
-  re: z.string().optional(),
-  gt: z.number().optional(),
-  gte: z.number().optional(),
-  lt: z.number().optional(),
-  lte: z.number().optional(),
-});
-
-export function addRouteValueProjectRoutes2ToJSON(
-  addRouteValueProjectRoutes2: AddRouteValueProjectRoutes2,
-): string {
-  return JSON.stringify(
-    AddRouteValueProjectRoutes2$outboundSchema.parse(
-      addRouteValueProjectRoutes2,
-    ),
-  );
-}
 export function addRouteValueProjectRoutes2FromJSON(
   jsonString: string,
 ): SafeParseResult<AddRouteValueProjectRoutes2, SDKValidationError> {
@@ -1127,30 +843,7 @@ export const AddRouteHasProjectRoutesValue$inboundSchema: z.ZodType<
   types.string(),
   z.lazy(() => AddRouteValueProjectRoutes2$inboundSchema),
 ]);
-/** @internal */
-export type AddRouteHasProjectRoutesValue$Outbound =
-  | string
-  | AddRouteValueProjectRoutes2$Outbound;
 
-/** @internal */
-export const AddRouteHasProjectRoutesValue$outboundSchema: z.ZodType<
-  AddRouteHasProjectRoutesValue$Outbound,
-  z.ZodTypeDef,
-  AddRouteHasProjectRoutesValue
-> = smartUnion([
-  z.string(),
-  z.lazy(() => AddRouteValueProjectRoutes2$outboundSchema),
-]);
-
-export function addRouteHasProjectRoutesValueToJSON(
-  addRouteHasProjectRoutesValue: AddRouteHasProjectRoutesValue,
-): string {
-  return JSON.stringify(
-    AddRouteHasProjectRoutesValue$outboundSchema.parse(
-      addRouteHasProjectRoutesValue,
-    ),
-  );
-}
 export function addRouteHasProjectRoutesValueFromJSON(
   jsonString: string,
 ): SafeParseResult<AddRouteHasProjectRoutesValue, SDKValidationError> {
@@ -1176,30 +869,7 @@ export const AddRouteHas2$inboundSchema: z.ZodType<
     ]),
   ),
 });
-/** @internal */
-export type AddRouteHas2$Outbound = {
-  type: string;
-  key: string;
-  value?: string | AddRouteValueProjectRoutes2$Outbound | undefined;
-};
 
-/** @internal */
-export const AddRouteHas2$outboundSchema: z.ZodType<
-  AddRouteHas2$Outbound,
-  z.ZodTypeDef,
-  AddRouteHas2
-> = z.object({
-  type: AddRouteHasProjectRoutesType$outboundSchema,
-  key: z.string(),
-  value: smartUnion([
-    z.string(),
-    z.lazy(() => AddRouteValueProjectRoutes2$outboundSchema),
-  ]).optional(),
-});
-
-export function addRouteHas2ToJSON(addRouteHas2: AddRouteHas2): string {
-  return JSON.stringify(AddRouteHas2$outboundSchema.parse(addRouteHas2));
-}
 export function addRouteHas2FromJSON(
   jsonString: string,
 ): SafeParseResult<AddRouteHas2, SDKValidationError> {
@@ -1216,21 +886,7 @@ export const AddRouteValueEq$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = smartUnion([types.string(), types.number()]);
-/** @internal */
-export type AddRouteValueEq$Outbound = string | number;
 
-/** @internal */
-export const AddRouteValueEq$outboundSchema: z.ZodType<
-  AddRouteValueEq$Outbound,
-  z.ZodTypeDef,
-  AddRouteValueEq
-> = smartUnion([z.string(), z.number()]);
-
-export function addRouteValueEqToJSON(
-  addRouteValueEq: AddRouteValueEq,
-): string {
-  return JSON.stringify(AddRouteValueEq$outboundSchema.parse(addRouteValueEq));
-}
 export function addRouteValueEqFromJSON(
   jsonString: string,
 ): SafeParseResult<AddRouteValueEq, SDKValidationError> {
@@ -1259,43 +915,7 @@ export const AddRouteValue2$inboundSchema: z.ZodType<
   lt: types.optional(types.number()),
   lte: types.optional(types.number()),
 });
-/** @internal */
-export type AddRouteValue2$Outbound = {
-  eq?: string | number | undefined;
-  neq?: string | undefined;
-  inc?: Array<string> | undefined;
-  ninc?: Array<string> | undefined;
-  pre?: string | undefined;
-  suf?: string | undefined;
-  re?: string | undefined;
-  gt?: number | undefined;
-  gte?: number | undefined;
-  lt?: number | undefined;
-  lte?: number | undefined;
-};
 
-/** @internal */
-export const AddRouteValue2$outboundSchema: z.ZodType<
-  AddRouteValue2$Outbound,
-  z.ZodTypeDef,
-  AddRouteValue2
-> = z.object({
-  eq: smartUnion([z.string(), z.number()]).optional(),
-  neq: z.string().optional(),
-  inc: z.array(z.string()).optional(),
-  ninc: z.array(z.string()).optional(),
-  pre: z.string().optional(),
-  suf: z.string().optional(),
-  re: z.string().optional(),
-  gt: z.number().optional(),
-  gte: z.number().optional(),
-  lt: z.number().optional(),
-  lte: z.number().optional(),
-});
-
-export function addRouteValue2ToJSON(addRouteValue2: AddRouteValue2): string {
-  return JSON.stringify(AddRouteValue2$outboundSchema.parse(addRouteValue2));
-}
 export function addRouteValue2FromJSON(
   jsonString: string,
 ): SafeParseResult<AddRouteValue2, SDKValidationError> {
@@ -1312,23 +932,7 @@ export const AddRouteHasValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = smartUnion([types.string(), z.lazy(() => AddRouteValue2$inboundSchema)]);
-/** @internal */
-export type AddRouteHasValue$Outbound = string | AddRouteValue2$Outbound;
 
-/** @internal */
-export const AddRouteHasValue$outboundSchema: z.ZodType<
-  AddRouteHasValue$Outbound,
-  z.ZodTypeDef,
-  AddRouteHasValue
-> = smartUnion([z.string(), z.lazy(() => AddRouteValue2$outboundSchema)]);
-
-export function addRouteHasValueToJSON(
-  addRouteHasValue: AddRouteHasValue,
-): string {
-  return JSON.stringify(
-    AddRouteHasValue$outboundSchema.parse(addRouteHasValue),
-  );
-}
 export function addRouteHasValueFromJSON(
   jsonString: string,
 ): SafeParseResult<AddRouteHasValue, SDKValidationError> {
@@ -1351,25 +955,7 @@ export const AddRouteHas1$inboundSchema: z.ZodType<
     z.lazy(() => AddRouteValue2$inboundSchema),
   ]),
 });
-/** @internal */
-export type AddRouteHas1$Outbound = {
-  type: "host";
-  value: string | AddRouteValue2$Outbound;
-};
 
-/** @internal */
-export const AddRouteHas1$outboundSchema: z.ZodType<
-  AddRouteHas1$Outbound,
-  z.ZodTypeDef,
-  AddRouteHas1
-> = z.object({
-  type: z.literal("host"),
-  value: smartUnion([z.string(), z.lazy(() => AddRouteValue2$outboundSchema)]),
-});
-
-export function addRouteHas1ToJSON(addRouteHas1: AddRouteHas1): string {
-  return JSON.stringify(AddRouteHas1$outboundSchema.parse(addRouteHas1));
-}
 export function addRouteHas1FromJSON(
   jsonString: string,
 ): SafeParseResult<AddRouteHas1, SDKValidationError> {
@@ -1397,38 +983,7 @@ export const AddRouteProjectRoutesHas$inboundSchema: z.ZodType<
     z.object({ type: z.literal("query") }),
   ),
 ]);
-/** @internal */
-export type AddRouteProjectRoutesHas$Outbound =
-  | AddRouteHas1$Outbound
-  | (AddRouteHas2$Outbound & { type: "cookie" })
-  | (AddRouteHas2$Outbound & { type: "header" })
-  | (AddRouteHas2$Outbound & { type: "query" });
 
-/** @internal */
-export const AddRouteProjectRoutesHas$outboundSchema: z.ZodType<
-  AddRouteProjectRoutesHas$Outbound,
-  z.ZodTypeDef,
-  AddRouteProjectRoutesHas
-> = z.union([
-  z.lazy(() => AddRouteHas1$outboundSchema),
-  z.lazy(() => AddRouteHas2$outboundSchema).and(
-    z.object({ type: z.literal("cookie") }),
-  ),
-  z.lazy(() => AddRouteHas2$outboundSchema).and(
-    z.object({ type: z.literal("header") }),
-  ),
-  z.lazy(() => AddRouteHas2$outboundSchema).and(
-    z.object({ type: z.literal("query") }),
-  ),
-]);
-
-export function addRouteProjectRoutesHasToJSON(
-  addRouteProjectRoutesHas: AddRouteProjectRoutesHas,
-): string {
-  return JSON.stringify(
-    AddRouteProjectRoutesHas$outboundSchema.parse(addRouteProjectRoutesHas),
-  );
-}
 export function addRouteProjectRoutesHasFromJSON(
   jsonString: string,
 ): SafeParseResult<AddRouteProjectRoutesHas, SDKValidationError> {
@@ -1443,10 +998,6 @@ export function addRouteProjectRoutesHasFromJSON(
 export const AddRouteMissingProjectRoutesType$inboundSchema: z.ZodNativeEnum<
   typeof AddRouteMissingProjectRoutesType
 > = z.nativeEnum(AddRouteMissingProjectRoutesType);
-/** @internal */
-export const AddRouteMissingProjectRoutesType$outboundSchema: z.ZodNativeEnum<
-  typeof AddRouteMissingProjectRoutesType
-> = AddRouteMissingProjectRoutesType$inboundSchema;
 
 /** @internal */
 export const AddRouteValueProjectRoutesResponse200Eq$inboundSchema: z.ZodType<
@@ -1454,26 +1005,7 @@ export const AddRouteValueProjectRoutesResponse200Eq$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = smartUnion([types.string(), types.number()]);
-/** @internal */
-export type AddRouteValueProjectRoutesResponse200Eq$Outbound = string | number;
 
-/** @internal */
-export const AddRouteValueProjectRoutesResponse200Eq$outboundSchema: z.ZodType<
-  AddRouteValueProjectRoutesResponse200Eq$Outbound,
-  z.ZodTypeDef,
-  AddRouteValueProjectRoutesResponse200Eq
-> = smartUnion([z.string(), z.number()]);
-
-export function addRouteValueProjectRoutesResponse200EqToJSON(
-  addRouteValueProjectRoutesResponse200Eq:
-    AddRouteValueProjectRoutesResponse200Eq,
-): string {
-  return JSON.stringify(
-    AddRouteValueProjectRoutesResponse200Eq$outboundSchema.parse(
-      addRouteValueProjectRoutesResponse200Eq,
-    ),
-  );
-}
 export function addRouteValueProjectRoutesResponse200EqFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -1508,50 +1040,7 @@ export const AddRouteValueProjectRoutesResponse2002$inboundSchema: z.ZodType<
   lt: types.optional(types.number()),
   lte: types.optional(types.number()),
 });
-/** @internal */
-export type AddRouteValueProjectRoutesResponse2002$Outbound = {
-  eq?: string | number | undefined;
-  neq?: string | undefined;
-  inc?: Array<string> | undefined;
-  ninc?: Array<string> | undefined;
-  pre?: string | undefined;
-  suf?: string | undefined;
-  re?: string | undefined;
-  gt?: number | undefined;
-  gte?: number | undefined;
-  lt?: number | undefined;
-  lte?: number | undefined;
-};
 
-/** @internal */
-export const AddRouteValueProjectRoutesResponse2002$outboundSchema: z.ZodType<
-  AddRouteValueProjectRoutesResponse2002$Outbound,
-  z.ZodTypeDef,
-  AddRouteValueProjectRoutesResponse2002
-> = z.object({
-  eq: smartUnion([z.string(), z.number()]).optional(),
-  neq: z.string().optional(),
-  inc: z.array(z.string()).optional(),
-  ninc: z.array(z.string()).optional(),
-  pre: z.string().optional(),
-  suf: z.string().optional(),
-  re: z.string().optional(),
-  gt: z.number().optional(),
-  gte: z.number().optional(),
-  lt: z.number().optional(),
-  lte: z.number().optional(),
-});
-
-export function addRouteValueProjectRoutesResponse2002ToJSON(
-  addRouteValueProjectRoutesResponse2002:
-    AddRouteValueProjectRoutesResponse2002,
-): string {
-  return JSON.stringify(
-    AddRouteValueProjectRoutesResponse2002$outboundSchema.parse(
-      addRouteValueProjectRoutesResponse2002,
-    ),
-  );
-}
 export function addRouteValueProjectRoutesResponse2002FromJSON(
   jsonString: string,
 ): SafeParseResult<AddRouteValueProjectRoutesResponse2002, SDKValidationError> {
@@ -1572,30 +1061,7 @@ export const AddRouteMissingProjectRoutesValue$inboundSchema: z.ZodType<
   types.string(),
   z.lazy(() => AddRouteValueProjectRoutesResponse2002$inboundSchema),
 ]);
-/** @internal */
-export type AddRouteMissingProjectRoutesValue$Outbound =
-  | string
-  | AddRouteValueProjectRoutesResponse2002$Outbound;
 
-/** @internal */
-export const AddRouteMissingProjectRoutesValue$outboundSchema: z.ZodType<
-  AddRouteMissingProjectRoutesValue$Outbound,
-  z.ZodTypeDef,
-  AddRouteMissingProjectRoutesValue
-> = smartUnion([
-  z.string(),
-  z.lazy(() => AddRouteValueProjectRoutesResponse2002$outboundSchema),
-]);
-
-export function addRouteMissingProjectRoutesValueToJSON(
-  addRouteMissingProjectRoutesValue: AddRouteMissingProjectRoutesValue,
-): string {
-  return JSON.stringify(
-    AddRouteMissingProjectRoutesValue$outboundSchema.parse(
-      addRouteMissingProjectRoutesValue,
-    ),
-  );
-}
 export function addRouteMissingProjectRoutesValueFromJSON(
   jsonString: string,
 ): SafeParseResult<AddRouteMissingProjectRoutesValue, SDKValidationError> {
@@ -1621,34 +1087,7 @@ export const AddRouteMissing2$inboundSchema: z.ZodType<
     ]),
   ),
 });
-/** @internal */
-export type AddRouteMissing2$Outbound = {
-  type: string;
-  key: string;
-  value?: string | AddRouteValueProjectRoutesResponse2002$Outbound | undefined;
-};
 
-/** @internal */
-export const AddRouteMissing2$outboundSchema: z.ZodType<
-  AddRouteMissing2$Outbound,
-  z.ZodTypeDef,
-  AddRouteMissing2
-> = z.object({
-  type: AddRouteMissingProjectRoutesType$outboundSchema,
-  key: z.string(),
-  value: smartUnion([
-    z.string(),
-    z.lazy(() => AddRouteValueProjectRoutesResponse2002$outboundSchema),
-  ]).optional(),
-});
-
-export function addRouteMissing2ToJSON(
-  addRouteMissing2: AddRouteMissing2,
-): string {
-  return JSON.stringify(
-    AddRouteMissing2$outboundSchema.parse(addRouteMissing2),
-  );
-}
 export function addRouteMissing2FromJSON(
   jsonString: string,
 ): SafeParseResult<AddRouteMissing2, SDKValidationError> {
@@ -1665,25 +1104,7 @@ export const AddRouteValueProjectRoutesResponseEq$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = smartUnion([types.string(), types.number()]);
-/** @internal */
-export type AddRouteValueProjectRoutesResponseEq$Outbound = string | number;
 
-/** @internal */
-export const AddRouteValueProjectRoutesResponseEq$outboundSchema: z.ZodType<
-  AddRouteValueProjectRoutesResponseEq$Outbound,
-  z.ZodTypeDef,
-  AddRouteValueProjectRoutesResponseEq
-> = smartUnion([z.string(), z.number()]);
-
-export function addRouteValueProjectRoutesResponseEqToJSON(
-  addRouteValueProjectRoutesResponseEq: AddRouteValueProjectRoutesResponseEq,
-): string {
-  return JSON.stringify(
-    AddRouteValueProjectRoutesResponseEq$outboundSchema.parse(
-      addRouteValueProjectRoutesResponseEq,
-    ),
-  );
-}
 export function addRouteValueProjectRoutesResponseEqFromJSON(
   jsonString: string,
 ): SafeParseResult<AddRouteValueProjectRoutesResponseEq, SDKValidationError> {
@@ -1713,49 +1134,7 @@ export const AddRouteValueProjectRoutesResponse2$inboundSchema: z.ZodType<
   lt: types.optional(types.number()),
   lte: types.optional(types.number()),
 });
-/** @internal */
-export type AddRouteValueProjectRoutesResponse2$Outbound = {
-  eq?: string | number | undefined;
-  neq?: string | undefined;
-  inc?: Array<string> | undefined;
-  ninc?: Array<string> | undefined;
-  pre?: string | undefined;
-  suf?: string | undefined;
-  re?: string | undefined;
-  gt?: number | undefined;
-  gte?: number | undefined;
-  lt?: number | undefined;
-  lte?: number | undefined;
-};
 
-/** @internal */
-export const AddRouteValueProjectRoutesResponse2$outboundSchema: z.ZodType<
-  AddRouteValueProjectRoutesResponse2$Outbound,
-  z.ZodTypeDef,
-  AddRouteValueProjectRoutesResponse2
-> = z.object({
-  eq: smartUnion([z.string(), z.number()]).optional(),
-  neq: z.string().optional(),
-  inc: z.array(z.string()).optional(),
-  ninc: z.array(z.string()).optional(),
-  pre: z.string().optional(),
-  suf: z.string().optional(),
-  re: z.string().optional(),
-  gt: z.number().optional(),
-  gte: z.number().optional(),
-  lt: z.number().optional(),
-  lte: z.number().optional(),
-});
-
-export function addRouteValueProjectRoutesResponse2ToJSON(
-  addRouteValueProjectRoutesResponse2: AddRouteValueProjectRoutesResponse2,
-): string {
-  return JSON.stringify(
-    AddRouteValueProjectRoutesResponse2$outboundSchema.parse(
-      addRouteValueProjectRoutesResponse2,
-    ),
-  );
-}
 export function addRouteValueProjectRoutesResponse2FromJSON(
   jsonString: string,
 ): SafeParseResult<AddRouteValueProjectRoutesResponse2, SDKValidationError> {
@@ -1776,28 +1155,7 @@ export const AddRouteMissingValue$inboundSchema: z.ZodType<
   types.string(),
   z.lazy(() => AddRouteValueProjectRoutesResponse2$inboundSchema),
 ]);
-/** @internal */
-export type AddRouteMissingValue$Outbound =
-  | string
-  | AddRouteValueProjectRoutesResponse2$Outbound;
 
-/** @internal */
-export const AddRouteMissingValue$outboundSchema: z.ZodType<
-  AddRouteMissingValue$Outbound,
-  z.ZodTypeDef,
-  AddRouteMissingValue
-> = smartUnion([
-  z.string(),
-  z.lazy(() => AddRouteValueProjectRoutesResponse2$outboundSchema),
-]);
-
-export function addRouteMissingValueToJSON(
-  addRouteMissingValue: AddRouteMissingValue,
-): string {
-  return JSON.stringify(
-    AddRouteMissingValue$outboundSchema.parse(addRouteMissingValue),
-  );
-}
 export function addRouteMissingValueFromJSON(
   jsonString: string,
 ): SafeParseResult<AddRouteMissingValue, SDKValidationError> {
@@ -1820,32 +1178,7 @@ export const AddRouteMissing1$inboundSchema: z.ZodType<
     z.lazy(() => AddRouteValueProjectRoutesResponse2$inboundSchema),
   ]),
 });
-/** @internal */
-export type AddRouteMissing1$Outbound = {
-  type: "host";
-  value: string | AddRouteValueProjectRoutesResponse2$Outbound;
-};
 
-/** @internal */
-export const AddRouteMissing1$outboundSchema: z.ZodType<
-  AddRouteMissing1$Outbound,
-  z.ZodTypeDef,
-  AddRouteMissing1
-> = z.object({
-  type: z.literal("host"),
-  value: smartUnion([
-    z.string(),
-    z.lazy(() => AddRouteValueProjectRoutesResponse2$outboundSchema),
-  ]),
-});
-
-export function addRouteMissing1ToJSON(
-  addRouteMissing1: AddRouteMissing1,
-): string {
-  return JSON.stringify(
-    AddRouteMissing1$outboundSchema.parse(addRouteMissing1),
-  );
-}
 export function addRouteMissing1FromJSON(
   jsonString: string,
 ): SafeParseResult<AddRouteMissing1, SDKValidationError> {
@@ -1873,40 +1206,7 @@ export const AddRouteProjectRoutesMissing$inboundSchema: z.ZodType<
     z.object({ type: z.literal("query") }),
   ),
 ]);
-/** @internal */
-export type AddRouteProjectRoutesMissing$Outbound =
-  | AddRouteMissing1$Outbound
-  | (AddRouteMissing2$Outbound & { type: "cookie" })
-  | (AddRouteMissing2$Outbound & { type: "header" })
-  | (AddRouteMissing2$Outbound & { type: "query" });
 
-/** @internal */
-export const AddRouteProjectRoutesMissing$outboundSchema: z.ZodType<
-  AddRouteProjectRoutesMissing$Outbound,
-  z.ZodTypeDef,
-  AddRouteProjectRoutesMissing
-> = z.union([
-  z.lazy(() => AddRouteMissing1$outboundSchema),
-  z.lazy(() => AddRouteMissing2$outboundSchema).and(
-    z.object({ type: z.literal("cookie") }),
-  ),
-  z.lazy(() => AddRouteMissing2$outboundSchema).and(
-    z.object({ type: z.literal("header") }),
-  ),
-  z.lazy(() => AddRouteMissing2$outboundSchema).and(
-    z.object({ type: z.literal("query") }),
-  ),
-]);
-
-export function addRouteProjectRoutesMissingToJSON(
-  addRouteProjectRoutesMissing: AddRouteProjectRoutesMissing,
-): string {
-  return JSON.stringify(
-    AddRouteProjectRoutesMissing$outboundSchema.parse(
-      addRouteProjectRoutesMissing,
-    ),
-  );
-}
 export function addRouteProjectRoutesMissingFromJSON(
   jsonString: string,
 ): SafeParseResult<AddRouteProjectRoutesMissing, SDKValidationError> {
@@ -1921,10 +1221,6 @@ export function addRouteProjectRoutesMissingFromJSON(
 export const AddRouteAction$inboundSchema: z.ZodNativeEnum<
   typeof AddRouteAction
 > = z.nativeEnum(AddRouteAction);
-/** @internal */
-export const AddRouteAction$outboundSchema: z.ZodNativeEnum<
-  typeof AddRouteAction
-> = AddRouteAction$inboundSchema;
 
 /** @internal */
 export const AddRouteMitigate$inboundSchema: z.ZodType<
@@ -1934,27 +1230,7 @@ export const AddRouteMitigate$inboundSchema: z.ZodType<
 > = z.object({
   action: AddRouteAction$inboundSchema,
 });
-/** @internal */
-export type AddRouteMitigate$Outbound = {
-  action: string;
-};
 
-/** @internal */
-export const AddRouteMitigate$outboundSchema: z.ZodType<
-  AddRouteMitigate$Outbound,
-  z.ZodTypeDef,
-  AddRouteMitigate
-> = z.object({
-  action: AddRouteAction$outboundSchema,
-});
-
-export function addRouteMitigateToJSON(
-  addRouteMitigate: AddRouteMitigate,
-): string {
-  return JSON.stringify(
-    AddRouteMitigate$outboundSchema.parse(addRouteMitigate),
-  );
-}
 export function addRouteMitigateFromJSON(
   jsonString: string,
 ): SafeParseResult<AddRouteMitigate, SDKValidationError> {
@@ -1969,19 +1245,11 @@ export function addRouteMitigateFromJSON(
 export const AddRouteProjectRoutesResponseType$inboundSchema: z.ZodNativeEnum<
   typeof AddRouteProjectRoutesResponseType
 > = z.nativeEnum(AddRouteProjectRoutesResponseType);
-/** @internal */
-export const AddRouteProjectRoutesResponseType$outboundSchema: z.ZodNativeEnum<
-  typeof AddRouteProjectRoutesResponseType
-> = AddRouteProjectRoutesResponseType$inboundSchema;
 
 /** @internal */
 export const AddRouteProjectRoutesOp$inboundSchema: z.ZodNativeEnum<
   typeof AddRouteProjectRoutesOp
 > = z.nativeEnum(AddRouteProjectRoutesOp);
-/** @internal */
-export const AddRouteProjectRoutesOp$outboundSchema: z.ZodNativeEnum<
-  typeof AddRouteProjectRoutesOp
-> = AddRouteProjectRoutesOp$inboundSchema;
 
 /** @internal */
 export const AddRouteKeyEq$inboundSchema: z.ZodType<
@@ -1989,19 +1257,7 @@ export const AddRouteKeyEq$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = smartUnion([types.string(), types.number()]);
-/** @internal */
-export type AddRouteKeyEq$Outbound = string | number;
 
-/** @internal */
-export const AddRouteKeyEq$outboundSchema: z.ZodType<
-  AddRouteKeyEq$Outbound,
-  z.ZodTypeDef,
-  AddRouteKeyEq
-> = smartUnion([z.string(), z.number()]);
-
-export function addRouteKeyEqToJSON(addRouteKeyEq: AddRouteKeyEq): string {
-  return JSON.stringify(AddRouteKeyEq$outboundSchema.parse(addRouteKeyEq));
-}
 export function addRouteKeyEqFromJSON(
   jsonString: string,
 ): SafeParseResult<AddRouteKeyEq, SDKValidationError> {
@@ -2029,41 +1285,7 @@ export const AddRouteKey2$inboundSchema: z.ZodType<
   lt: types.optional(types.number()),
   lte: types.optional(types.number()),
 });
-/** @internal */
-export type AddRouteKey2$Outbound = {
-  eq?: string | number | undefined;
-  neq?: string | undefined;
-  inc?: Array<string> | undefined;
-  ninc?: Array<string> | undefined;
-  pre?: string | undefined;
-  suf?: string | undefined;
-  gt?: number | undefined;
-  gte?: number | undefined;
-  lt?: number | undefined;
-  lte?: number | undefined;
-};
 
-/** @internal */
-export const AddRouteKey2$outboundSchema: z.ZodType<
-  AddRouteKey2$Outbound,
-  z.ZodTypeDef,
-  AddRouteKey2
-> = z.object({
-  eq: smartUnion([z.string(), z.number()]).optional(),
-  neq: z.string().optional(),
-  inc: z.array(z.string()).optional(),
-  ninc: z.array(z.string()).optional(),
-  pre: z.string().optional(),
-  suf: z.string().optional(),
-  gt: z.number().optional(),
-  gte: z.number().optional(),
-  lt: z.number().optional(),
-  lte: z.number().optional(),
-});
-
-export function addRouteKey2ToJSON(addRouteKey2: AddRouteKey2): string {
-  return JSON.stringify(AddRouteKey2$outboundSchema.parse(addRouteKey2));
-}
 export function addRouteKey2FromJSON(
   jsonString: string,
 ): SafeParseResult<AddRouteKey2, SDKValidationError> {
@@ -2080,19 +1302,7 @@ export const AddRouteKey$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = smartUnion([types.string(), z.lazy(() => AddRouteKey2$inboundSchema)]);
-/** @internal */
-export type AddRouteKey$Outbound = string | AddRouteKey2$Outbound;
 
-/** @internal */
-export const AddRouteKey$outboundSchema: z.ZodType<
-  AddRouteKey$Outbound,
-  z.ZodTypeDef,
-  AddRouteKey
-> = smartUnion([z.string(), z.lazy(() => AddRouteKey2$outboundSchema)]);
-
-export function addRouteKeyToJSON(addRouteKey: AddRouteKey): string {
-  return JSON.stringify(AddRouteKey$outboundSchema.parse(addRouteKey));
-}
 export function addRouteKeyFromJSON(
   jsonString: string,
 ): SafeParseResult<AddRouteKey, SDKValidationError> {
@@ -2111,29 +1321,7 @@ export const AddRouteProjectRoutesTarget$inboundSchema: z.ZodType<
 > = z.object({
   key: smartUnion([types.string(), z.lazy(() => AddRouteKey2$inboundSchema)]),
 });
-/** @internal */
-export type AddRouteProjectRoutesTarget$Outbound = {
-  key: string | AddRouteKey2$Outbound;
-};
 
-/** @internal */
-export const AddRouteProjectRoutesTarget$outboundSchema: z.ZodType<
-  AddRouteProjectRoutesTarget$Outbound,
-  z.ZodTypeDef,
-  AddRouteProjectRoutesTarget
-> = z.object({
-  key: smartUnion([z.string(), z.lazy(() => AddRouteKey2$outboundSchema)]),
-});
-
-export function addRouteProjectRoutesTargetToJSON(
-  addRouteProjectRoutesTarget: AddRouteProjectRoutesTarget,
-): string {
-  return JSON.stringify(
-    AddRouteProjectRoutesTarget$outboundSchema.parse(
-      addRouteProjectRoutesTarget,
-    ),
-  );
-}
 export function addRouteProjectRoutesTargetFromJSON(
   jsonString: string,
 ): SafeParseResult<AddRouteProjectRoutesTarget, SDKValidationError> {
@@ -2150,19 +1338,7 @@ export const AddRouteArgs$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = smartUnion([types.string(), z.array(types.string())]);
-/** @internal */
-export type AddRouteArgs$Outbound = string | Array<string>;
 
-/** @internal */
-export const AddRouteArgs$outboundSchema: z.ZodType<
-  AddRouteArgs$Outbound,
-  z.ZodTypeDef,
-  AddRouteArgs
-> = smartUnion([z.string(), z.array(z.string())]);
-
-export function addRouteArgsToJSON(addRouteArgs: AddRouteArgs): string {
-  return JSON.stringify(AddRouteArgs$outboundSchema.parse(addRouteArgs));
-}
 export function addRouteArgsFromJSON(
   jsonString: string,
 ): SafeParseResult<AddRouteArgs, SDKValidationError> {
@@ -2185,37 +1361,7 @@ export const AddRouteProjectRoutesTransforms$inboundSchema: z.ZodType<
   args: types.optional(smartUnion([types.string(), z.array(types.string())])),
   env: types.optional(z.array(types.string())),
 });
-/** @internal */
-export type AddRouteProjectRoutesTransforms$Outbound = {
-  type: string;
-  op: string;
-  target: AddRouteProjectRoutesTarget$Outbound;
-  args?: string | Array<string> | undefined;
-  env?: Array<string> | undefined;
-};
 
-/** @internal */
-export const AddRouteProjectRoutesTransforms$outboundSchema: z.ZodType<
-  AddRouteProjectRoutesTransforms$Outbound,
-  z.ZodTypeDef,
-  AddRouteProjectRoutesTransforms
-> = z.object({
-  type: AddRouteProjectRoutesResponseType$outboundSchema,
-  op: AddRouteProjectRoutesOp$outboundSchema,
-  target: z.lazy(() => AddRouteProjectRoutesTarget$outboundSchema),
-  args: smartUnion([z.string(), z.array(z.string())]).optional(),
-  env: z.array(z.string()).optional(),
-});
-
-export function addRouteProjectRoutesTransformsToJSON(
-  addRouteProjectRoutesTransforms: AddRouteProjectRoutesTransforms,
-): string {
-  return JSON.stringify(
-    AddRouteProjectRoutesTransforms$outboundSchema.parse(
-      addRouteProjectRoutesTransforms,
-    ),
-  );
-}
 export function addRouteProjectRoutesTransformsFromJSON(
   jsonString: string,
 ): SafeParseResult<AddRouteProjectRoutesTransforms, SDKValidationError> {
@@ -2235,25 +1381,7 @@ export const AddRouteLocale$inboundSchema: z.ZodType<
   redirect: types.optional(z.record(types.string())),
   cookie: types.optional(types.string()),
 });
-/** @internal */
-export type AddRouteLocale$Outbound = {
-  redirect?: { [k: string]: string } | undefined;
-  cookie?: string | undefined;
-};
 
-/** @internal */
-export const AddRouteLocale$outboundSchema: z.ZodType<
-  AddRouteLocale$Outbound,
-  z.ZodTypeDef,
-  AddRouteLocale
-> = z.object({
-  redirect: z.record(z.string()).optional(),
-  cookie: z.string().optional(),
-});
-
-export function addRouteLocaleToJSON(addRouteLocale: AddRouteLocale): string {
-  return JSON.stringify(AddRouteLocale$outboundSchema.parse(addRouteLocale));
-}
 export function addRouteLocaleFromJSON(
   jsonString: string,
 ): SafeParseResult<AddRouteLocale, SDKValidationError> {
@@ -2322,115 +1450,7 @@ export const AddRouteProjectRoutesResponse200Route$inboundSchema: z.ZodType<
   middleware: types.optional(types.number()),
   respectOriginCacheControl: types.optional(types.boolean()),
 });
-/** @internal */
-export type AddRouteProjectRoutesResponse200Route$Outbound = {
-  src: string;
-  dest?: string | undefined;
-  headers?: { [k: string]: string } | undefined;
-  methods?: Array<string> | undefined;
-  continue?: boolean | undefined;
-  override?: boolean | undefined;
-  caseSensitive?: boolean | undefined;
-  check?: boolean | undefined;
-  important?: boolean | undefined;
-  status?: number | undefined;
-  has?:
-    | Array<
-      | AddRouteHas1$Outbound
-      | (AddRouteHas2$Outbound & { type: "cookie" })
-      | (AddRouteHas2$Outbound & { type: "header" })
-      | (AddRouteHas2$Outbound & { type: "query" })
-    >
-    | undefined;
-  missing?:
-    | Array<
-      | AddRouteMissing1$Outbound
-      | (AddRouteMissing2$Outbound & { type: "cookie" })
-      | (AddRouteMissing2$Outbound & { type: "header" })
-      | (AddRouteMissing2$Outbound & { type: "query" })
-    >
-    | undefined;
-  mitigate?: AddRouteMitigate$Outbound | undefined;
-  transforms?: Array<AddRouteProjectRoutesTransforms$Outbound> | undefined;
-  env?: Array<string> | undefined;
-  locale?: AddRouteLocale$Outbound | undefined;
-  source?: string | undefined;
-  destination?: string | undefined;
-  statusCode?: number | undefined;
-  middlewarePath?: string | undefined;
-  middlewareRawSrc?: Array<string> | undefined;
-  middleware?: number | undefined;
-  respectOriginCacheControl?: boolean | undefined;
-};
 
-/** @internal */
-export const AddRouteProjectRoutesResponse200Route$outboundSchema: z.ZodType<
-  AddRouteProjectRoutesResponse200Route$Outbound,
-  z.ZodTypeDef,
-  AddRouteProjectRoutesResponse200Route
-> = z.object({
-  src: z.string(),
-  dest: z.string().optional(),
-  headers: z.record(z.string()).optional(),
-  methods: z.array(z.string()).optional(),
-  continue: z.boolean().optional(),
-  override: z.boolean().optional(),
-  caseSensitive: z.boolean().optional(),
-  check: z.boolean().optional(),
-  important: z.boolean().optional(),
-  status: z.number().optional(),
-  has: z.array(
-    z.union([
-      z.lazy(() => AddRouteHas1$outboundSchema),
-      z.lazy(() =>
-        AddRouteHas2$outboundSchema
-      ).and(z.object({ type: z.literal("cookie") })),
-      z.lazy(() =>
-        AddRouteHas2$outboundSchema
-      ).and(z.object({ type: z.literal("header") })),
-      z.lazy(() =>
-        AddRouteHas2$outboundSchema
-      ).and(z.object({ type: z.literal("query") })),
-    ]),
-  ).optional(),
-  missing: z.array(
-    z.union([
-      z.lazy(() => AddRouteMissing1$outboundSchema),
-      z.lazy(() =>
-        AddRouteMissing2$outboundSchema
-      ).and(z.object({ type: z.literal("cookie") })),
-      z.lazy(() =>
-        AddRouteMissing2$outboundSchema
-      ).and(z.object({ type: z.literal("header") })),
-      z.lazy(() =>
-        AddRouteMissing2$outboundSchema
-      ).and(z.object({ type: z.literal("query") })),
-    ]),
-  ).optional(),
-  mitigate: z.lazy(() => AddRouteMitigate$outboundSchema).optional(),
-  transforms: z.array(
-    z.lazy(() => AddRouteProjectRoutesTransforms$outboundSchema),
-  ).optional(),
-  env: z.array(z.string()).optional(),
-  locale: z.lazy(() => AddRouteLocale$outboundSchema).optional(),
-  source: z.string().optional(),
-  destination: z.string().optional(),
-  statusCode: z.number().optional(),
-  middlewarePath: z.string().optional(),
-  middlewareRawSrc: z.array(z.string()).optional(),
-  middleware: z.number().optional(),
-  respectOriginCacheControl: z.boolean().optional(),
-});
-
-export function addRouteProjectRoutesResponse200RouteToJSON(
-  addRouteProjectRoutesResponse200Route: AddRouteProjectRoutesResponse200Route,
-): string {
-  return JSON.stringify(
-    AddRouteProjectRoutesResponse200Route$outboundSchema.parse(
-      addRouteProjectRoutesResponse200Route,
-    ),
-  );
-}
 export function addRouteProjectRoutesResponse200RouteFromJSON(
   jsonString: string,
 ): SafeParseResult<AddRouteProjectRoutesResponse200Route, SDKValidationError> {
@@ -2446,10 +1466,6 @@ export function addRouteProjectRoutesResponse200RouteFromJSON(
 export const AddRouteSrcSyntax$inboundSchema: z.ZodNativeEnum<
   typeof AddRouteSrcSyntax
 > = z.nativeEnum(AddRouteSrcSyntax);
-/** @internal */
-export const AddRouteSrcSyntax$outboundSchema: z.ZodNativeEnum<
-  typeof AddRouteSrcSyntax
-> = AddRouteSrcSyntax$inboundSchema;
 
 /** @internal */
 export const AddRouteProjectRoutesResponseRoute$inboundSchema: z.ZodType<
@@ -2468,47 +1484,7 @@ export const AddRouteProjectRoutesResponseRoute$inboundSchema: z.ZodType<
   rawDest: types.optional(types.string()),
   srcSyntax: types.optional(AddRouteSrcSyntax$inboundSchema),
 });
-/** @internal */
-export type AddRouteProjectRoutesResponseRoute$Outbound = {
-  routeType?: string | undefined;
-  id: string;
-  name: string;
-  description?: string | undefined;
-  enabled?: boolean | undefined;
-  staged?: boolean | undefined;
-  route: AddRouteProjectRoutesResponse200Route$Outbound;
-  rawSrc?: string | undefined;
-  rawDest?: string | undefined;
-  srcSyntax?: string | undefined;
-};
 
-/** @internal */
-export const AddRouteProjectRoutesResponseRoute$outboundSchema: z.ZodType<
-  AddRouteProjectRoutesResponseRoute$Outbound,
-  z.ZodTypeDef,
-  AddRouteProjectRoutesResponseRoute
-> = z.object({
-  routeType: RouteType$outboundSchema.optional(),
-  id: z.string(),
-  name: z.string(),
-  description: z.string().optional(),
-  enabled: z.boolean().optional(),
-  staged: z.boolean().optional(),
-  route: z.lazy(() => AddRouteProjectRoutesResponse200Route$outboundSchema),
-  rawSrc: z.string().optional(),
-  rawDest: z.string().optional(),
-  srcSyntax: AddRouteSrcSyntax$outboundSchema.optional(),
-});
-
-export function addRouteProjectRoutesResponseRouteToJSON(
-  addRouteProjectRoutesResponseRoute: AddRouteProjectRoutesResponseRoute,
-): string {
-  return JSON.stringify(
-    AddRouteProjectRoutesResponseRoute$outboundSchema.parse(
-      addRouteProjectRoutesResponseRoute,
-    ),
-  );
-}
 export function addRouteProjectRoutesResponseRouteFromJSON(
   jsonString: string,
 ): SafeParseResult<AddRouteProjectRoutesResponseRoute, SDKValidationError> {
@@ -2535,39 +1511,7 @@ export const AddRouteVersion$inboundSchema: z.ZodType<
   ruleCount: types.optional(types.number()),
   alias: types.optional(types.string()),
 });
-/** @internal */
-export type AddRouteVersion$Outbound = {
-  id: string;
-  s3Key: string;
-  lastModified: number;
-  createdBy: string;
-  isStaging?: boolean | undefined;
-  isLive?: boolean | undefined;
-  ruleCount?: number | undefined;
-  alias?: string | undefined;
-};
 
-/** @internal */
-export const AddRouteVersion$outboundSchema: z.ZodType<
-  AddRouteVersion$Outbound,
-  z.ZodTypeDef,
-  AddRouteVersion
-> = z.object({
-  id: z.string(),
-  s3Key: z.string(),
-  lastModified: z.number(),
-  createdBy: z.string(),
-  isStaging: z.boolean().optional(),
-  isLive: z.boolean().optional(),
-  ruleCount: z.number().optional(),
-  alias: z.string().optional(),
-});
-
-export function addRouteVersionToJSON(
-  addRouteVersion: AddRouteVersion,
-): string {
-  return JSON.stringify(AddRouteVersion$outboundSchema.parse(addRouteVersion));
-}
 export function addRouteVersionFromJSON(
   jsonString: string,
 ): SafeParseResult<AddRouteVersion, SDKValidationError> {
@@ -2587,29 +1531,7 @@ export const AddRouteResponseBody$inboundSchema: z.ZodType<
   route: z.lazy(() => AddRouteProjectRoutesResponseRoute$inboundSchema),
   version: z.lazy(() => AddRouteVersion$inboundSchema),
 });
-/** @internal */
-export type AddRouteResponseBody$Outbound = {
-  route: AddRouteProjectRoutesResponseRoute$Outbound;
-  version: AddRouteVersion$Outbound;
-};
 
-/** @internal */
-export const AddRouteResponseBody$outboundSchema: z.ZodType<
-  AddRouteResponseBody$Outbound,
-  z.ZodTypeDef,
-  AddRouteResponseBody
-> = z.object({
-  route: z.lazy(() => AddRouteProjectRoutesResponseRoute$outboundSchema),
-  version: z.lazy(() => AddRouteVersion$outboundSchema),
-});
-
-export function addRouteResponseBodyToJSON(
-  addRouteResponseBody: AddRouteResponseBody,
-): string {
-  return JSON.stringify(
-    AddRouteResponseBody$outboundSchema.parse(addRouteResponseBody),
-  );
-}
 export function addRouteResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<AddRouteResponseBody, SDKValidationError> {

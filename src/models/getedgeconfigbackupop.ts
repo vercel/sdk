@@ -10,8 +10,6 @@ import { smartUnion } from "../types/smartUnion.js";
 import {
   EdgeConfigItemValue,
   EdgeConfigItemValue$inboundSchema,
-  EdgeConfigItemValue$Outbound,
-  EdgeConfigItemValue$outboundSchema,
 } from "./edgeconfigitemvalue.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
@@ -116,17 +114,6 @@ export type GetEdgeConfigBackupResponseBody =
   | GetEdgeConfigBackupResponseBody1;
 
 /** @internal */
-export const GetEdgeConfigBackupRequest$inboundSchema: z.ZodType<
-  GetEdgeConfigBackupRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  edgeConfigId: types.string(),
-  edgeConfigBackupVersionId: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
-/** @internal */
 export type GetEdgeConfigBackupRequest$Outbound = {
   edgeConfigId: string;
   edgeConfigBackupVersionId: string;
@@ -153,15 +140,6 @@ export function getEdgeConfigBackupRequestToJSON(
     GetEdgeConfigBackupRequest$outboundSchema.parse(getEdgeConfigBackupRequest),
   );
 }
-export function getEdgeConfigBackupRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetEdgeConfigBackupRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetEdgeConfigBackupRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetEdgeConfigBackupRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const ResponseBodyUser$inboundSchema: z.ZodType<
@@ -175,35 +153,7 @@ export const ResponseBodyUser$inboundSchema: z.ZodType<
   name: types.optional(types.string()),
   avatar: types.optional(types.string()),
 });
-/** @internal */
-export type ResponseBodyUser$Outbound = {
-  id: string;
-  username: string;
-  email: string;
-  name?: string | undefined;
-  avatar?: string | undefined;
-};
 
-/** @internal */
-export const ResponseBodyUser$outboundSchema: z.ZodType<
-  ResponseBodyUser$Outbound,
-  z.ZodTypeDef,
-  ResponseBodyUser
-> = z.object({
-  id: z.string(),
-  username: z.string(),
-  email: z.string(),
-  name: z.string().optional(),
-  avatar: z.string().optional(),
-});
-
-export function responseBodyUserToJSON(
-  responseBodyUser: ResponseBodyUser,
-): string {
-  return JSON.stringify(
-    ResponseBodyUser$outboundSchema.parse(responseBodyUser),
-  );
-}
 export function responseBodyUserFromJSON(
   jsonString: string,
 ): SafeParseResult<ResponseBodyUser, SDKValidationError> {
@@ -225,35 +175,7 @@ export const GetEdgeConfigBackupResponseBodyItems$inboundSchema: z.ZodType<
   value: types.nullable(EdgeConfigItemValue$inboundSchema),
   description: types.optional(types.string()),
 });
-/** @internal */
-export type GetEdgeConfigBackupResponseBodyItems$Outbound = {
-  createdAt: number;
-  updatedAt: number;
-  value: EdgeConfigItemValue$Outbound | null;
-  description?: string | undefined;
-};
 
-/** @internal */
-export const GetEdgeConfigBackupResponseBodyItems$outboundSchema: z.ZodType<
-  GetEdgeConfigBackupResponseBodyItems$Outbound,
-  z.ZodTypeDef,
-  GetEdgeConfigBackupResponseBodyItems
-> = z.object({
-  createdAt: z.number(),
-  updatedAt: z.number(),
-  value: z.nullable(EdgeConfigItemValue$outboundSchema),
-  description: z.string().optional(),
-});
-
-export function getEdgeConfigBackupResponseBodyItemsToJSON(
-  getEdgeConfigBackupResponseBodyItems: GetEdgeConfigBackupResponseBodyItems,
-): string {
-  return JSON.stringify(
-    GetEdgeConfigBackupResponseBodyItems$outboundSchema.parse(
-      getEdgeConfigBackupResponseBodyItems,
-    ),
-  );
-}
 export function getEdgeConfigBackupResponseBodyItemsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetEdgeConfigBackupResponseBodyItems, SDKValidationError> {
@@ -278,35 +200,7 @@ export const ResponseBodyBackup$inboundSchema: z.ZodType<
   ),
   digest: types.string(),
 });
-/** @internal */
-export type ResponseBodyBackup$Outbound = {
-  slug: string;
-  updatedAt: number;
-  items: { [k: string]: GetEdgeConfigBackupResponseBodyItems$Outbound };
-  digest: string;
-};
 
-/** @internal */
-export const ResponseBodyBackup$outboundSchema: z.ZodType<
-  ResponseBodyBackup$Outbound,
-  z.ZodTypeDef,
-  ResponseBodyBackup
-> = z.object({
-  slug: z.string(),
-  updatedAt: z.number(),
-  items: z.record(
-    z.lazy(() => GetEdgeConfigBackupResponseBodyItems$outboundSchema),
-  ),
-  digest: z.string(),
-});
-
-export function responseBodyBackupToJSON(
-  responseBodyBackup: ResponseBodyBackup,
-): string {
-  return JSON.stringify(
-    ResponseBodyBackup$outboundSchema.parse(responseBodyBackup),
-  );
-}
 export function responseBodyBackupFromJSON(
   jsonString: string,
 ): SafeParseResult<ResponseBodyBackup, SDKValidationError> {
@@ -328,33 +222,7 @@ export const ResponseBodyMetadata$inboundSchema: z.ZodType<
   itemsCount: types.optional(types.number()),
   itemsBytes: types.optional(types.number()),
 });
-/** @internal */
-export type ResponseBodyMetadata$Outbound = {
-  updatedAt?: string | undefined;
-  updatedBy?: string | undefined;
-  itemsCount?: number | undefined;
-  itemsBytes?: number | undefined;
-};
 
-/** @internal */
-export const ResponseBodyMetadata$outboundSchema: z.ZodType<
-  ResponseBodyMetadata$Outbound,
-  z.ZodTypeDef,
-  ResponseBodyMetadata
-> = z.object({
-  updatedAt: z.string().optional(),
-  updatedBy: z.string().optional(),
-  itemsCount: z.number().optional(),
-  itemsBytes: z.number().optional(),
-});
-
-export function responseBodyMetadataToJSON(
-  responseBodyMetadata: ResponseBodyMetadata,
-): string {
-  return JSON.stringify(
-    ResponseBodyMetadata$outboundSchema.parse(responseBodyMetadata),
-  );
-}
 export function responseBodyMetadataFromJSON(
   jsonString: string,
 ): SafeParseResult<ResponseBodyMetadata, SDKValidationError> {
@@ -377,37 +245,7 @@ export const GetEdgeConfigBackupResponseBody2$inboundSchema: z.ZodType<
   backup: z.lazy(() => ResponseBodyBackup$inboundSchema),
   metadata: z.lazy(() => ResponseBodyMetadata$inboundSchema),
 });
-/** @internal */
-export type GetEdgeConfigBackupResponseBody2$Outbound = {
-  user: ResponseBodyUser$Outbound;
-  id: string;
-  lastModified: number;
-  backup: ResponseBodyBackup$Outbound;
-  metadata: ResponseBodyMetadata$Outbound;
-};
 
-/** @internal */
-export const GetEdgeConfigBackupResponseBody2$outboundSchema: z.ZodType<
-  GetEdgeConfigBackupResponseBody2$Outbound,
-  z.ZodTypeDef,
-  GetEdgeConfigBackupResponseBody2
-> = z.object({
-  user: z.lazy(() => ResponseBodyUser$outboundSchema),
-  id: z.string(),
-  lastModified: z.number(),
-  backup: z.lazy(() => ResponseBodyBackup$outboundSchema),
-  metadata: z.lazy(() => ResponseBodyMetadata$outboundSchema),
-});
-
-export function getEdgeConfigBackupResponseBody2ToJSON(
-  getEdgeConfigBackupResponseBody2: GetEdgeConfigBackupResponseBody2,
-): string {
-  return JSON.stringify(
-    GetEdgeConfigBackupResponseBody2$outboundSchema.parse(
-      getEdgeConfigBackupResponseBody2,
-    ),
-  );
-}
 export function getEdgeConfigBackupResponseBody2FromJSON(
   jsonString: string,
 ): SafeParseResult<GetEdgeConfigBackupResponseBody2, SDKValidationError> {
@@ -429,33 +267,7 @@ export const ResponseBodyItems$inboundSchema: z.ZodType<
   value: types.nullable(EdgeConfigItemValue$inboundSchema),
   description: types.optional(types.string()),
 });
-/** @internal */
-export type ResponseBodyItems$Outbound = {
-  createdAt: number;
-  updatedAt: number;
-  value: EdgeConfigItemValue$Outbound | null;
-  description?: string | undefined;
-};
 
-/** @internal */
-export const ResponseBodyItems$outboundSchema: z.ZodType<
-  ResponseBodyItems$Outbound,
-  z.ZodTypeDef,
-  ResponseBodyItems
-> = z.object({
-  createdAt: z.number(),
-  updatedAt: z.number(),
-  value: z.nullable(EdgeConfigItemValue$outboundSchema),
-  description: z.string().optional(),
-});
-
-export function responseBodyItemsToJSON(
-  responseBodyItems: ResponseBodyItems,
-): string {
-  return JSON.stringify(
-    ResponseBodyItems$outboundSchema.parse(responseBodyItems),
-  );
-}
 export function responseBodyItemsFromJSON(
   jsonString: string,
 ): SafeParseResult<ResponseBodyItems, SDKValidationError> {
@@ -474,29 +286,7 @@ export const Backup$inboundSchema: z.ZodType<Backup, z.ZodTypeDef, unknown> = z
     items: z.record(z.lazy(() => ResponseBodyItems$inboundSchema)),
     digest: types.string(),
   });
-/** @internal */
-export type Backup$Outbound = {
-  slug: string;
-  updatedAt: number;
-  items: { [k: string]: ResponseBodyItems$Outbound };
-  digest: string;
-};
 
-/** @internal */
-export const Backup$outboundSchema: z.ZodType<
-  Backup$Outbound,
-  z.ZodTypeDef,
-  Backup
-> = z.object({
-  slug: z.string(),
-  updatedAt: z.number(),
-  items: z.record(z.lazy(() => ResponseBodyItems$outboundSchema)),
-  digest: z.string(),
-});
-
-export function backupToJSON(backup: Backup): string {
-  return JSON.stringify(Backup$outboundSchema.parse(backup));
-}
 export function backupFromJSON(
   jsonString: string,
 ): SafeParseResult<Backup, SDKValidationError> {
@@ -518,36 +308,7 @@ export const GetEdgeConfigBackupResponseBodyMetadata$inboundSchema: z.ZodType<
   itemsCount: types.optional(types.number()),
   itemsBytes: types.optional(types.number()),
 });
-/** @internal */
-export type GetEdgeConfigBackupResponseBodyMetadata$Outbound = {
-  updatedAt?: string | undefined;
-  updatedBy?: string | undefined;
-  itemsCount?: number | undefined;
-  itemsBytes?: number | undefined;
-};
 
-/** @internal */
-export const GetEdgeConfigBackupResponseBodyMetadata$outboundSchema: z.ZodType<
-  GetEdgeConfigBackupResponseBodyMetadata$Outbound,
-  z.ZodTypeDef,
-  GetEdgeConfigBackupResponseBodyMetadata
-> = z.object({
-  updatedAt: z.string().optional(),
-  updatedBy: z.string().optional(),
-  itemsCount: z.number().optional(),
-  itemsBytes: z.number().optional(),
-});
-
-export function getEdgeConfigBackupResponseBodyMetadataToJSON(
-  getEdgeConfigBackupResponseBodyMetadata:
-    GetEdgeConfigBackupResponseBodyMetadata,
-): string {
-  return JSON.stringify(
-    GetEdgeConfigBackupResponseBodyMetadata$outboundSchema.parse(
-      getEdgeConfigBackupResponseBodyMetadata,
-    ),
-  );
-}
 export function getEdgeConfigBackupResponseBodyMetadataFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -576,37 +337,7 @@ export const GetEdgeConfigBackupResponseBodyUser$inboundSchema: z.ZodType<
   name: types.optional(types.string()),
   avatar: types.optional(types.string()),
 });
-/** @internal */
-export type GetEdgeConfigBackupResponseBodyUser$Outbound = {
-  id: string;
-  username: string;
-  email: string;
-  name?: string | undefined;
-  avatar?: string | undefined;
-};
 
-/** @internal */
-export const GetEdgeConfigBackupResponseBodyUser$outboundSchema: z.ZodType<
-  GetEdgeConfigBackupResponseBodyUser$Outbound,
-  z.ZodTypeDef,
-  GetEdgeConfigBackupResponseBodyUser
-> = z.object({
-  id: z.string(),
-  username: z.string(),
-  email: z.string(),
-  name: z.string().optional(),
-  avatar: z.string().optional(),
-});
-
-export function getEdgeConfigBackupResponseBodyUserToJSON(
-  getEdgeConfigBackupResponseBodyUser: GetEdgeConfigBackupResponseBodyUser,
-): string {
-  return JSON.stringify(
-    GetEdgeConfigBackupResponseBodyUser$outboundSchema.parse(
-      getEdgeConfigBackupResponseBodyUser,
-    ),
-  );
-}
 export function getEdgeConfigBackupResponseBodyUserFromJSON(
   jsonString: string,
 ): SafeParseResult<GetEdgeConfigBackupResponseBodyUser, SDKValidationError> {
@@ -632,40 +363,7 @@ export const GetEdgeConfigBackupResponseBody1$inboundSchema: z.ZodType<
     z.lazy(() => GetEdgeConfigBackupResponseBodyUser$inboundSchema),
   ),
 });
-/** @internal */
-export type GetEdgeConfigBackupResponseBody1$Outbound = {
-  id: string;
-  lastModified: number;
-  backup: Backup$Outbound;
-  metadata: GetEdgeConfigBackupResponseBodyMetadata$Outbound;
-  user?: GetEdgeConfigBackupResponseBodyUser$Outbound | undefined;
-};
 
-/** @internal */
-export const GetEdgeConfigBackupResponseBody1$outboundSchema: z.ZodType<
-  GetEdgeConfigBackupResponseBody1$Outbound,
-  z.ZodTypeDef,
-  GetEdgeConfigBackupResponseBody1
-> = z.object({
-  id: z.string(),
-  lastModified: z.number(),
-  backup: z.lazy(() => Backup$outboundSchema),
-  metadata: z.lazy(() =>
-    GetEdgeConfigBackupResponseBodyMetadata$outboundSchema
-  ),
-  user: z.lazy(() => GetEdgeConfigBackupResponseBodyUser$outboundSchema)
-    .optional(),
-});
-
-export function getEdgeConfigBackupResponseBody1ToJSON(
-  getEdgeConfigBackupResponseBody1: GetEdgeConfigBackupResponseBody1,
-): string {
-  return JSON.stringify(
-    GetEdgeConfigBackupResponseBody1$outboundSchema.parse(
-      getEdgeConfigBackupResponseBody1,
-    ),
-  );
-}
 export function getEdgeConfigBackupResponseBody1FromJSON(
   jsonString: string,
 ): SafeParseResult<GetEdgeConfigBackupResponseBody1, SDKValidationError> {
@@ -685,30 +383,7 @@ export const GetEdgeConfigBackupResponseBody$inboundSchema: z.ZodType<
   z.lazy(() => GetEdgeConfigBackupResponseBody2$inboundSchema),
   z.lazy(() => GetEdgeConfigBackupResponseBody1$inboundSchema),
 ]);
-/** @internal */
-export type GetEdgeConfigBackupResponseBody$Outbound =
-  | GetEdgeConfigBackupResponseBody2$Outbound
-  | GetEdgeConfigBackupResponseBody1$Outbound;
 
-/** @internal */
-export const GetEdgeConfigBackupResponseBody$outboundSchema: z.ZodType<
-  GetEdgeConfigBackupResponseBody$Outbound,
-  z.ZodTypeDef,
-  GetEdgeConfigBackupResponseBody
-> = smartUnion([
-  z.lazy(() => GetEdgeConfigBackupResponseBody2$outboundSchema),
-  z.lazy(() => GetEdgeConfigBackupResponseBody1$outboundSchema),
-]);
-
-export function getEdgeConfigBackupResponseBodyToJSON(
-  getEdgeConfigBackupResponseBody: GetEdgeConfigBackupResponseBody,
-): string {
-  return JSON.stringify(
-    GetEdgeConfigBackupResponseBody$outboundSchema.parse(
-      getEdgeConfigBackupResponseBody,
-    ),
-  );
-}
 export function getEdgeConfigBackupResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetEdgeConfigBackupResponseBody, SDKValidationError> {

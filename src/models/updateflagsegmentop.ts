@@ -4,12 +4,8 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
-import { Result as SafeParseResult } from "../types/fp.js";
-import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
-import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export const UpdateFlagSegmentAction = {
   Add: "add",
@@ -223,28 +219,15 @@ export type UpdateFlagSegmentRequest = {
 };
 
 /** @internal */
-export const UpdateFlagSegmentAction$inboundSchema: z.ZodNativeEnum<
-  typeof UpdateFlagSegmentAction
-> = z.nativeEnum(UpdateFlagSegmentAction);
-/** @internal */
 export const UpdateFlagSegmentAction$outboundSchema: z.ZodNativeEnum<
   typeof UpdateFlagSegmentAction
-> = UpdateFlagSegmentAction$inboundSchema;
+> = z.nativeEnum(UpdateFlagSegmentAction);
 
 /** @internal */
-export const Field$inboundSchema: z.ZodNativeEnum<typeof Field> = z.nativeEnum(
+export const Field$outboundSchema: z.ZodNativeEnum<typeof Field> = z.nativeEnum(
   Field,
 );
-/** @internal */
-export const Field$outboundSchema: z.ZodNativeEnum<typeof Field> =
-  Field$inboundSchema;
 
-/** @internal */
-export const Value$inboundSchema: z.ZodType<Value, z.ZodTypeDef, unknown> = z
-  .object({
-    note: types.optional(types.string()),
-    value: types.string(),
-  });
 /** @internal */
 export type Value$Outbound = {
   note?: string | undefined;
@@ -264,28 +247,7 @@ export const Value$outboundSchema: z.ZodType<
 export function valueToJSON(value: Value): string {
   return JSON.stringify(Value$outboundSchema.parse(value));
 }
-export function valueFromJSON(
-  jsonString: string,
-): SafeParseResult<Value, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Value$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Value' from JSON`,
-  );
-}
 
-/** @internal */
-export const Operations$inboundSchema: z.ZodType<
-  Operations,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  action: UpdateFlagSegmentAction$inboundSchema,
-  field: Field$inboundSchema,
-  entity: types.string(),
-  attribute: types.string(),
-  value: z.lazy(() => Value$inboundSchema),
-});
 /** @internal */
 export type Operations$Outbound = {
   action: string;
@@ -311,26 +273,7 @@ export const Operations$outboundSchema: z.ZodType<
 export function operationsToJSON(operations: Operations): string {
   return JSON.stringify(Operations$outboundSchema.parse(operations));
 }
-export function operationsFromJSON(
-  jsonString: string,
-): SafeParseResult<Operations, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Operations$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Operations' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateFlagSegmentLhs2$inboundSchema: z.ZodType<
-  UpdateFlagSegmentLhs2,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  type: types.optional(z.any()),
-  kind: types.string(),
-  attribute: types.string(),
-});
 /** @internal */
 export type UpdateFlagSegmentLhs2$Outbound = {
   type?: any | undefined;
@@ -356,24 +299,7 @@ export function updateFlagSegmentLhs2ToJSON(
     UpdateFlagSegmentLhs2$outboundSchema.parse(updateFlagSegmentLhs2),
   );
 }
-export function updateFlagSegmentLhs2FromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateFlagSegmentLhs2, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateFlagSegmentLhs2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateFlagSegmentLhs2' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateFlagSegmentLhs1$inboundSchema: z.ZodType<
-  UpdateFlagSegmentLhs1,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  type: types.optional(z.any()),
-});
 /** @internal */
 export type UpdateFlagSegmentLhs1$Outbound = {
   type?: any | undefined;
@@ -395,25 +321,7 @@ export function updateFlagSegmentLhs1ToJSON(
     UpdateFlagSegmentLhs1$outboundSchema.parse(updateFlagSegmentLhs1),
   );
 }
-export function updateFlagSegmentLhs1FromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateFlagSegmentLhs1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateFlagSegmentLhs1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateFlagSegmentLhs1' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateFlagSegmentLhs$inboundSchema: z.ZodType<
-  UpdateFlagSegmentLhs,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([
-  z.lazy(() => UpdateFlagSegmentLhs2$inboundSchema),
-  z.lazy(() => UpdateFlagSegmentLhs1$inboundSchema),
-]);
 /** @internal */
 export type UpdateFlagSegmentLhs$Outbound =
   | UpdateFlagSegmentLhs2$Outbound
@@ -436,35 +344,12 @@ export function updateFlagSegmentLhsToJSON(
     UpdateFlagSegmentLhs$outboundSchema.parse(updateFlagSegmentLhs),
   );
 }
-export function updateFlagSegmentLhsFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateFlagSegmentLhs, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateFlagSegmentLhs$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateFlagSegmentLhs' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateFlagSegmentCmp$inboundSchema: z.ZodNativeEnum<
-  typeof UpdateFlagSegmentCmp
-> = z.nativeEnum(UpdateFlagSegmentCmp);
 /** @internal */
 export const UpdateFlagSegmentCmp$outboundSchema: z.ZodNativeEnum<
   typeof UpdateFlagSegmentCmp
-> = UpdateFlagSegmentCmp$inboundSchema;
+> = z.nativeEnum(UpdateFlagSegmentCmp);
 
-/** @internal */
-export const UpdateFlagSegmentRhs2$inboundSchema: z.ZodType<
-  UpdateFlagSegmentRhs2,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  type: types.optional(z.any()),
-  pattern: types.string(),
-  flags: types.string(),
-});
 /** @internal */
 export type UpdateFlagSegmentRhs2$Outbound = {
   type?: any | undefined;
@@ -490,35 +375,12 @@ export function updateFlagSegmentRhs2ToJSON(
     UpdateFlagSegmentRhs2$outboundSchema.parse(updateFlagSegmentRhs2),
   );
 }
-export function updateFlagSegmentRhs2FromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateFlagSegmentRhs2, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateFlagSegmentRhs2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateFlagSegmentRhs2' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateFlagSegmentRhsType$inboundSchema: z.ZodNativeEnum<
-  typeof UpdateFlagSegmentRhsType
-> = z.nativeEnum(UpdateFlagSegmentRhsType);
 /** @internal */
 export const UpdateFlagSegmentRhsType$outboundSchema: z.ZodNativeEnum<
   typeof UpdateFlagSegmentRhsType
-> = UpdateFlagSegmentRhsType$inboundSchema;
+> = z.nativeEnum(UpdateFlagSegmentRhsType);
 
-/** @internal */
-export const UpdateFlagSegmentItems2$inboundSchema: z.ZodType<
-  UpdateFlagSegmentItems2,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  label: types.optional(types.string()),
-  note: types.optional(types.string()),
-  value: types.string(),
-});
 /** @internal */
 export type UpdateFlagSegmentItems2$Outbound = {
   label?: string | undefined;
@@ -544,26 +406,7 @@ export function updateFlagSegmentItems2ToJSON(
     UpdateFlagSegmentItems2$outboundSchema.parse(updateFlagSegmentItems2),
   );
 }
-export function updateFlagSegmentItems2FromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateFlagSegmentItems2, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateFlagSegmentItems2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateFlagSegmentItems2' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateFlagSegmentItems1$inboundSchema: z.ZodType<
-  UpdateFlagSegmentItems1,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  label: types.optional(types.string()),
-  note: types.optional(types.string()),
-  value: types.number(),
-});
 /** @internal */
 export type UpdateFlagSegmentItems1$Outbound = {
   label?: string | undefined;
@@ -589,25 +432,7 @@ export function updateFlagSegmentItems1ToJSON(
     UpdateFlagSegmentItems1$outboundSchema.parse(updateFlagSegmentItems1),
   );
 }
-export function updateFlagSegmentItems1FromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateFlagSegmentItems1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateFlagSegmentItems1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateFlagSegmentItems1' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateFlagSegmentRhsItems$inboundSchema: z.ZodType<
-  UpdateFlagSegmentRhsItems,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([
-  z.lazy(() => UpdateFlagSegmentItems1$inboundSchema),
-  z.lazy(() => UpdateFlagSegmentItems2$inboundSchema),
-]);
 /** @internal */
 export type UpdateFlagSegmentRhsItems$Outbound =
   | UpdateFlagSegmentItems1$Outbound
@@ -630,30 +455,7 @@ export function updateFlagSegmentRhsItemsToJSON(
     UpdateFlagSegmentRhsItems$outboundSchema.parse(updateFlagSegmentRhsItems),
   );
 }
-export function updateFlagSegmentRhsItemsFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateFlagSegmentRhsItems, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateFlagSegmentRhsItems$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateFlagSegmentRhsItems' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateFlagSegmentRhs1$inboundSchema: z.ZodType<
-  UpdateFlagSegmentRhs1,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  type: UpdateFlagSegmentRhsType$inboundSchema,
-  items: z.array(
-    smartUnion([
-      z.lazy(() => UpdateFlagSegmentItems1$inboundSchema),
-      z.lazy(() => UpdateFlagSegmentItems2$inboundSchema),
-    ]),
-  ),
-});
 /** @internal */
 export type UpdateFlagSegmentRhs1$Outbound = {
   type: string;
@@ -684,28 +486,7 @@ export function updateFlagSegmentRhs1ToJSON(
     UpdateFlagSegmentRhs1$outboundSchema.parse(updateFlagSegmentRhs1),
   );
 }
-export function updateFlagSegmentRhs1FromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateFlagSegmentRhs1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateFlagSegmentRhs1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateFlagSegmentRhs1' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateFlagSegmentRhs$inboundSchema: z.ZodType<
-  UpdateFlagSegmentRhs,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([
-  z.lazy(() => UpdateFlagSegmentRhs2$inboundSchema),
-  z.lazy(() => UpdateFlagSegmentRhs1$inboundSchema),
-  types.string(),
-  types.number(),
-  types.boolean(),
-]);
 /** @internal */
 export type UpdateFlagSegmentRhs$Outbound =
   | UpdateFlagSegmentRhs2$Outbound
@@ -734,24 +515,7 @@ export function updateFlagSegmentRhsToJSON(
     UpdateFlagSegmentRhs$outboundSchema.parse(updateFlagSegmentRhs),
   );
 }
-export function updateFlagSegmentRhsFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateFlagSegmentRhs, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateFlagSegmentRhs$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateFlagSegmentRhs' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateFlagSegmentCmpOptions$inboundSchema: z.ZodType<
-  UpdateFlagSegmentCmpOptions,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  ignoreCase: types.optional(types.boolean()),
-});
 /** @internal */
 export type UpdateFlagSegmentCmpOptions$Outbound = {
   ignoreCase?: boolean | undefined;
@@ -775,40 +539,7 @@ export function updateFlagSegmentCmpOptionsToJSON(
     ),
   );
 }
-export function updateFlagSegmentCmpOptionsFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateFlagSegmentCmpOptions, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateFlagSegmentCmpOptions$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateFlagSegmentCmpOptions' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateFlagSegmentConditions$inboundSchema: z.ZodType<
-  UpdateFlagSegmentConditions,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  lhs: smartUnion([
-    z.lazy(() => UpdateFlagSegmentLhs2$inboundSchema),
-    z.lazy(() => UpdateFlagSegmentLhs1$inboundSchema),
-  ]),
-  cmp: UpdateFlagSegmentCmp$inboundSchema,
-  rhs: types.optional(
-    smartUnion([
-      z.lazy(() => UpdateFlagSegmentRhs2$inboundSchema),
-      z.lazy(() => UpdateFlagSegmentRhs1$inboundSchema),
-      types.string(),
-      types.number(),
-      types.boolean(),
-    ]),
-  ),
-  cmpOptions: types.optional(
-    z.lazy(() => UpdateFlagSegmentCmpOptions$inboundSchema),
-  ),
-});
 /** @internal */
 export type UpdateFlagSegmentConditions$Outbound = {
   lhs: UpdateFlagSegmentLhs2$Outbound | UpdateFlagSegmentLhs1$Outbound;
@@ -854,26 +585,7 @@ export function updateFlagSegmentConditionsToJSON(
     ),
   );
 }
-export function updateFlagSegmentConditionsFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateFlagSegmentConditions, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateFlagSegmentConditions$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateFlagSegmentConditions' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateFlagSegmentOutcomeBase$inboundSchema: z.ZodType<
-  UpdateFlagSegmentOutcomeBase,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  type: types.optional(z.any()),
-  kind: types.string(),
-  attribute: types.string(),
-});
 /** @internal */
 export type UpdateFlagSegmentOutcomeBase$Outbound = {
   type?: any | undefined;
@@ -901,26 +613,7 @@ export function updateFlagSegmentOutcomeBaseToJSON(
     ),
   );
 }
-export function updateFlagSegmentOutcomeBaseFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateFlagSegmentOutcomeBase, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateFlagSegmentOutcomeBase$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateFlagSegmentOutcomeBase' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateFlagSegmentOutcome2$inboundSchema: z.ZodType<
-  UpdateFlagSegmentOutcome2,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  type: types.optional(z.any()),
-  base: z.lazy(() => UpdateFlagSegmentOutcomeBase$inboundSchema),
-  passPromille: types.number(),
-});
 /** @internal */
 export type UpdateFlagSegmentOutcome2$Outbound = {
   type?: any | undefined;
@@ -946,24 +639,7 @@ export function updateFlagSegmentOutcome2ToJSON(
     UpdateFlagSegmentOutcome2$outboundSchema.parse(updateFlagSegmentOutcome2),
   );
 }
-export function updateFlagSegmentOutcome2FromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateFlagSegmentOutcome2, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateFlagSegmentOutcome2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateFlagSegmentOutcome2' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateFlagSegmentOutcome1$inboundSchema: z.ZodType<
-  UpdateFlagSegmentOutcome1,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  type: types.optional(z.any()),
-});
 /** @internal */
 export type UpdateFlagSegmentOutcome1$Outbound = {
   type?: any | undefined;
@@ -985,25 +661,7 @@ export function updateFlagSegmentOutcome1ToJSON(
     UpdateFlagSegmentOutcome1$outboundSchema.parse(updateFlagSegmentOutcome1),
   );
 }
-export function updateFlagSegmentOutcome1FromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateFlagSegmentOutcome1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateFlagSegmentOutcome1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateFlagSegmentOutcome1' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateFlagSegmentOutcome$inboundSchema: z.ZodType<
-  UpdateFlagSegmentOutcome,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([
-  z.lazy(() => UpdateFlagSegmentOutcome2$inboundSchema),
-  z.lazy(() => UpdateFlagSegmentOutcome1$inboundSchema),
-]);
 /** @internal */
 export type UpdateFlagSegmentOutcome$Outbound =
   | UpdateFlagSegmentOutcome2$Outbound
@@ -1026,29 +684,7 @@ export function updateFlagSegmentOutcomeToJSON(
     UpdateFlagSegmentOutcome$outboundSchema.parse(updateFlagSegmentOutcome),
   );
 }
-export function updateFlagSegmentOutcomeFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateFlagSegmentOutcome, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateFlagSegmentOutcome$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateFlagSegmentOutcome' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateFlagSegmentRules$inboundSchema: z.ZodType<
-  UpdateFlagSegmentRules,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: types.string(),
-  conditions: z.array(z.lazy(() => UpdateFlagSegmentConditions$inboundSchema)),
-  outcome: smartUnion([
-    z.lazy(() => UpdateFlagSegmentOutcome2$inboundSchema),
-    z.lazy(() => UpdateFlagSegmentOutcome1$inboundSchema),
-  ]),
-});
 /** @internal */
 export type UpdateFlagSegmentRules$Outbound = {
   id: string;
@@ -1079,25 +715,7 @@ export function updateFlagSegmentRulesToJSON(
     UpdateFlagSegmentRules$outboundSchema.parse(updateFlagSegmentRules),
   );
 }
-export function updateFlagSegmentRulesFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateFlagSegmentRules, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateFlagSegmentRules$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateFlagSegmentRules' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateFlagSegmentInclude$inboundSchema: z.ZodType<
-  UpdateFlagSegmentInclude,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  note: types.optional(types.string()),
-  value: types.string(),
-});
 /** @internal */
 export type UpdateFlagSegmentInclude$Outbound = {
   note?: string | undefined;
@@ -1121,25 +739,7 @@ export function updateFlagSegmentIncludeToJSON(
     UpdateFlagSegmentInclude$outboundSchema.parse(updateFlagSegmentInclude),
   );
 }
-export function updateFlagSegmentIncludeFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateFlagSegmentInclude, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateFlagSegmentInclude$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateFlagSegmentInclude' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateFlagSegmentExclude$inboundSchema: z.ZodType<
-  UpdateFlagSegmentExclude,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  note: types.optional(types.string()),
-  value: types.string(),
-});
 /** @internal */
 export type UpdateFlagSegmentExclude$Outbound = {
   note?: string | undefined;
@@ -1163,36 +763,7 @@ export function updateFlagSegmentExcludeToJSON(
     UpdateFlagSegmentExclude$outboundSchema.parse(updateFlagSegmentExclude),
   );
 }
-export function updateFlagSegmentExcludeFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateFlagSegmentExclude, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateFlagSegmentExclude$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateFlagSegmentExclude' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateFlagSegmentData$inboundSchema: z.ZodType<
-  UpdateFlagSegmentData,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  rules: types.optional(
-    z.array(z.lazy(() => UpdateFlagSegmentRules$inboundSchema)),
-  ),
-  include: types.optional(
-    z.record(z.record(z.array(z.lazy(() =>
-      UpdateFlagSegmentInclude$inboundSchema
-    )))),
-  ),
-  exclude: types.optional(
-    z.record(z.record(z.array(z.lazy(() =>
-      UpdateFlagSegmentExclude$inboundSchema
-    )))),
-  ),
-});
 /** @internal */
 export type UpdateFlagSegmentData$Outbound = {
   rules?: Array<UpdateFlagSegmentRules$Outbound> | undefined;
@@ -1227,28 +798,7 @@ export function updateFlagSegmentDataToJSON(
     UpdateFlagSegmentData$outboundSchema.parse(updateFlagSegmentData),
   );
 }
-export function updateFlagSegmentDataFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateFlagSegmentData, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateFlagSegmentData$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateFlagSegmentData' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateFlagSegmentRequestBody$inboundSchema: z.ZodType<
-  UpdateFlagSegmentRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  operations: types.optional(z.array(z.lazy(() => Operations$inboundSchema))),
-  label: types.optional(types.string()),
-  description: types.optional(types.string()),
-  data: types.optional(z.lazy(() => UpdateFlagSegmentData$inboundSchema)),
-  hint: types.optional(types.string()),
-});
 /** @internal */
 export type UpdateFlagSegmentRequestBody$Outbound = {
   operations?: Array<Operations$Outbound> | undefined;
@@ -1280,35 +830,7 @@ export function updateFlagSegmentRequestBodyToJSON(
     ),
   );
 }
-export function updateFlagSegmentRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateFlagSegmentRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateFlagSegmentRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateFlagSegmentRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateFlagSegmentRequest$inboundSchema: z.ZodType<
-  UpdateFlagSegmentRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  projectIdOrName: types.string(),
-  segmentIdOrSlug: types.string(),
-  withMetadata: types.boolean().default(false),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-  RequestBody: types.optional(
-    z.lazy(() => UpdateFlagSegmentRequestBody$inboundSchema),
-  ),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 /** @internal */
 export type UpdateFlagSegmentRequest$Outbound = {
   projectIdOrName: string;
@@ -1343,14 +865,5 @@ export function updateFlagSegmentRequestToJSON(
 ): string {
   return JSON.stringify(
     UpdateFlagSegmentRequest$outboundSchema.parse(updateFlagSegmentRequest),
-  );
-}
-export function updateFlagSegmentRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateFlagSegmentRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateFlagSegmentRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateFlagSegmentRequest' from JSON`,
   );
 }

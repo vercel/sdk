@@ -161,10 +161,6 @@ export type AuthToken = {
 export const AuthTokenScopesOrigin$inboundSchema: z.ZodNativeEnum<
   typeof AuthTokenScopesOrigin
 > = z.nativeEnum(AuthTokenScopesOrigin);
-/** @internal */
-export const AuthTokenScopesOrigin$outboundSchema: z.ZodNativeEnum<
-  typeof AuthTokenScopesOrigin
-> = AuthTokenScopesOrigin$inboundSchema;
 
 /** @internal */
 export const Scopes2$inboundSchema: z.ZodType<Scopes2, z.ZodTypeDef, unknown> =
@@ -175,31 +171,7 @@ export const Scopes2$inboundSchema: z.ZodType<Scopes2, z.ZodTypeDef, unknown> =
     createdAt: types.number(),
     expiresAt: types.optional(types.number()),
   });
-/** @internal */
-export type Scopes2$Outbound = {
-  type: "team";
-  teamId: string;
-  origin?: string | undefined;
-  createdAt: number;
-  expiresAt?: number | undefined;
-};
 
-/** @internal */
-export const Scopes2$outboundSchema: z.ZodType<
-  Scopes2$Outbound,
-  z.ZodTypeDef,
-  Scopes2
-> = z.object({
-  type: z.literal("team"),
-  teamId: z.string(),
-  origin: AuthTokenScopesOrigin$outboundSchema.optional(),
-  createdAt: z.number(),
-  expiresAt: z.number().optional(),
-});
-
-export function scopes2ToJSON(scopes2: Scopes2): string {
-  return JSON.stringify(Scopes2$outboundSchema.parse(scopes2));
-}
 export function scopes2FromJSON(
   jsonString: string,
 ): SafeParseResult<Scopes2, SDKValidationError> {
@@ -214,10 +186,6 @@ export function scopes2FromJSON(
 export const AuthTokenScopes1Origin$inboundSchema: z.ZodNativeEnum<
   typeof AuthTokenScopes1Origin
 > = z.nativeEnum(AuthTokenScopes1Origin);
-/** @internal */
-export const AuthTokenScopes1Origin$outboundSchema: z.ZodNativeEnum<
-  typeof AuthTokenScopes1Origin
-> = AuthTokenScopes1Origin$inboundSchema;
 
 /** @internal */
 export const Sudo$inboundSchema: z.ZodType<Sudo, z.ZodTypeDef, unknown> = z
@@ -226,24 +194,7 @@ export const Sudo$inboundSchema: z.ZodType<Sudo, z.ZodTypeDef, unknown> = z
     verifiedAt: types.optional(types.number()),
     expiresAt: types.number(),
   });
-/** @internal */
-export type Sudo$Outbound = {
-  origin: string;
-  verifiedAt?: number | undefined;
-  expiresAt: number;
-};
 
-/** @internal */
-export const Sudo$outboundSchema: z.ZodType<Sudo$Outbound, z.ZodTypeDef, Sudo> =
-  z.object({
-    origin: AuthTokenScopes1Origin$outboundSchema,
-    verifiedAt: z.number().optional(),
-    expiresAt: z.number(),
-  });
-
-export function sudoToJSON(sudo: Sudo): string {
-  return JSON.stringify(Sudo$outboundSchema.parse(sudo));
-}
 export function sudoFromJSON(
   jsonString: string,
 ): SafeParseResult<Sudo, SDKValidationError> {
@@ -257,9 +208,6 @@ export function sudoFromJSON(
 /** @internal */
 export const ScopesOrigin$inboundSchema: z.ZodNativeEnum<typeof ScopesOrigin> =
   z.nativeEnum(ScopesOrigin);
-/** @internal */
-export const ScopesOrigin$outboundSchema: z.ZodNativeEnum<typeof ScopesOrigin> =
-  ScopesOrigin$inboundSchema;
 
 /** @internal */
 export const Scopes1$inboundSchema: z.ZodType<Scopes1, z.ZodTypeDef, unknown> =
@@ -270,31 +218,7 @@ export const Scopes1$inboundSchema: z.ZodType<Scopes1, z.ZodTypeDef, unknown> =
     createdAt: types.number(),
     expiresAt: types.optional(types.number()),
   });
-/** @internal */
-export type Scopes1$Outbound = {
-  type: "user";
-  sudo?: Sudo$Outbound | undefined;
-  origin?: string | undefined;
-  createdAt: number;
-  expiresAt?: number | undefined;
-};
 
-/** @internal */
-export const Scopes1$outboundSchema: z.ZodType<
-  Scopes1$Outbound,
-  z.ZodTypeDef,
-  Scopes1
-> = z.object({
-  type: z.literal("user"),
-  sudo: z.lazy(() => Sudo$outboundSchema).optional(),
-  origin: ScopesOrigin$outboundSchema.optional(),
-  createdAt: z.number(),
-  expiresAt: z.number().optional(),
-});
-
-export function scopes1ToJSON(scopes1: Scopes1): string {
-  return JSON.stringify(Scopes1$outboundSchema.parse(scopes1));
-}
 export function scopes1FromJSON(
   jsonString: string,
 ): SafeParseResult<Scopes1, SDKValidationError> {
@@ -311,22 +235,7 @@ export const Scopes$inboundSchema: z.ZodType<Scopes, z.ZodTypeDef, unknown> = z
     z.lazy(() => Scopes1$inboundSchema),
     z.lazy(() => Scopes2$inboundSchema),
   ]);
-/** @internal */
-export type Scopes$Outbound = Scopes1$Outbound | Scopes2$Outbound;
 
-/** @internal */
-export const Scopes$outboundSchema: z.ZodType<
-  Scopes$Outbound,
-  z.ZodTypeDef,
-  Scopes
-> = z.union([
-  z.lazy(() => Scopes1$outboundSchema),
-  z.lazy(() => Scopes2$outboundSchema),
-]);
-
-export function scopesToJSON(scopes: Scopes): string {
-  return JSON.stringify(Scopes$outboundSchema.parse(scopes));
-}
 export function scopesFromJSON(
   jsonString: string,
 ): SafeParseResult<Scopes, SDKValidationError> {
@@ -364,52 +273,7 @@ export const AuthToken$inboundSchema: z.ZodType<
   leakedAt: types.optional(types.number()),
   leakedUrl: types.optional(types.string()),
 });
-/** @internal */
-export type AuthToken$Outbound = {
-  id: string;
-  name: string;
-  type: string;
-  prefix?: string | undefined;
-  suffix?: string | undefined;
-  origin?: string | undefined;
-  scopes?: Array<Scopes1$Outbound | Scopes2$Outbound> | undefined;
-  createdAt: number;
-  activeAt: number;
-  expiresAt?: number | undefined;
-  revokedAt?: number | undefined;
-  leakedAt?: number | undefined;
-  leakedUrl?: string | undefined;
-};
 
-/** @internal */
-export const AuthToken$outboundSchema: z.ZodType<
-  AuthToken$Outbound,
-  z.ZodTypeDef,
-  AuthToken
-> = z.object({
-  id: z.string(),
-  name: z.string(),
-  type: z.string(),
-  prefix: z.string().optional(),
-  suffix: z.string().optional(),
-  origin: z.string().optional(),
-  scopes: z.array(
-    z.union([
-      z.lazy(() => Scopes1$outboundSchema),
-      z.lazy(() => Scopes2$outboundSchema),
-    ]),
-  ).optional(),
-  createdAt: z.number(),
-  activeAt: z.number(),
-  expiresAt: z.number().optional(),
-  revokedAt: z.number().optional(),
-  leakedAt: z.number().optional(),
-  leakedUrl: z.string().optional(),
-});
-
-export function authTokenToJSON(authToken: AuthToken): string {
-  return JSON.stringify(AuthToken$outboundSchema.parse(authToken));
-}
 export function authTokenFromJSON(
   jsonString: string,
 ): SafeParseResult<AuthToken, SDKValidationError> {

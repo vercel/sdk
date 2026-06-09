@@ -49,10 +49,6 @@ export class DomainNotAvailable extends VercelError {
 export const DomainNotAvailableCode$inboundSchema: z.ZodNativeEnum<
   typeof DomainNotAvailableCode
 > = z.nativeEnum(DomainNotAvailableCode);
-/** @internal */
-export const DomainNotAvailableCode$outboundSchema: z.ZodNativeEnum<
-  typeof DomainNotAvailableCode
-> = DomainNotAvailableCode$inboundSchema;
 
 /** @internal */
 export const DomainNotAvailable$inboundSchema: z.ZodType<
@@ -74,23 +70,3 @@ export const DomainNotAvailable$inboundSchema: z.ZodType<
       body: v.body$,
     });
   });
-
-/** @internal */
-export type DomainNotAvailable$Outbound = {
-  status: number;
-  code: string;
-  message: string;
-};
-
-/** @internal */
-export const DomainNotAvailable$outboundSchema: z.ZodType<
-  DomainNotAvailable$Outbound,
-  z.ZodTypeDef,
-  DomainNotAvailable
-> = z.instanceof(DomainNotAvailable)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    status: z.number(),
-    code: DomainNotAvailableCode$outboundSchema,
-    message: z.string(),
-  }));

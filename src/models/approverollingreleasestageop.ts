@@ -412,15 +412,6 @@ export type ApproveRollingReleaseStageResponseBody = {
 };
 
 /** @internal */
-export const ApproveRollingReleaseStageRequestBody$inboundSchema: z.ZodType<
-  ApproveRollingReleaseStageRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  nextStageIndex: types.number(),
-  canaryDeploymentId: types.string(),
-});
-/** @internal */
 export type ApproveRollingReleaseStageRequestBody$Outbound = {
   nextStageIndex: number;
   canaryDeploymentId: string;
@@ -445,34 +436,7 @@ export function approveRollingReleaseStageRequestBodyToJSON(
     ),
   );
 }
-export function approveRollingReleaseStageRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<ApproveRollingReleaseStageRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      ApproveRollingReleaseStageRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ApproveRollingReleaseStageRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const ApproveRollingReleaseStageRequest$inboundSchema: z.ZodType<
-  ApproveRollingReleaseStageRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  idOrName: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-  RequestBody: types.optional(
-    z.lazy(() => ApproveRollingReleaseStageRequestBody$inboundSchema),
-  ),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 /** @internal */
 export type ApproveRollingReleaseStageRequest$Outbound = {
   idOrName: string;
@@ -508,61 +472,32 @@ export function approveRollingReleaseStageRequestToJSON(
     ),
   );
 }
-export function approveRollingReleaseStageRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<ApproveRollingReleaseStageRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ApproveRollingReleaseStageRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ApproveRollingReleaseStageRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const ApproveRollingReleaseStageState$inboundSchema: z.ZodNativeEnum<
   typeof ApproveRollingReleaseStageState
 > = z.nativeEnum(ApproveRollingReleaseStageState);
-/** @internal */
-export const ApproveRollingReleaseStageState$outboundSchema: z.ZodNativeEnum<
-  typeof ApproveRollingReleaseStageState
-> = ApproveRollingReleaseStageState$inboundSchema;
 
 /** @internal */
 export const ApproveRollingReleaseStageSubstate$inboundSchema: z.ZodNativeEnum<
   typeof ApproveRollingReleaseStageSubstate
 > = z.nativeEnum(ApproveRollingReleaseStageSubstate);
-/** @internal */
-export const ApproveRollingReleaseStageSubstate$outboundSchema: z.ZodNativeEnum<
-  typeof ApproveRollingReleaseStageSubstate
-> = ApproveRollingReleaseStageSubstate$inboundSchema;
 
 /** @internal */
 export const ApproveRollingReleaseStageTarget$inboundSchema: z.ZodNativeEnum<
   typeof ApproveRollingReleaseStageTarget
 > = z.nativeEnum(ApproveRollingReleaseStageTarget);
-/** @internal */
-export const ApproveRollingReleaseStageTarget$outboundSchema: z.ZodNativeEnum<
-  typeof ApproveRollingReleaseStageTarget
-> = ApproveRollingReleaseStageTarget$inboundSchema;
 
 /** @internal */
 export const ApproveRollingReleaseStageReadyState$inboundSchema:
   z.ZodNativeEnum<typeof ApproveRollingReleaseStageReadyState> = z.nativeEnum(
     ApproveRollingReleaseStageReadyState,
   );
-/** @internal */
-export const ApproveRollingReleaseStageReadyState$outboundSchema:
-  z.ZodNativeEnum<typeof ApproveRollingReleaseStageReadyState> =
-    ApproveRollingReleaseStageReadyState$inboundSchema;
 
 /** @internal */
 export const ApproveRollingReleaseStageSource$inboundSchema: z.ZodNativeEnum<
   typeof ApproveRollingReleaseStageSource
 > = z.nativeEnum(ApproveRollingReleaseStageSource);
-/** @internal */
-export const ApproveRollingReleaseStageSource$outboundSchema: z.ZodNativeEnum<
-  typeof ApproveRollingReleaseStageSource
-> = ApproveRollingReleaseStageSource$inboundSchema;
 
 /** @internal */
 export const ApproveRollingReleaseStageCurrentDeployment$inboundSchema:
@@ -581,46 +516,7 @@ export const ApproveRollingReleaseStageCurrentDeployment$inboundSchema:
     source: types.optional(ApproveRollingReleaseStageSource$inboundSchema),
     url: types.string(),
   });
-/** @internal */
-export type ApproveRollingReleaseStageCurrentDeployment$Outbound = {
-  name: string;
-  createdAt: number;
-  id: string;
-  target?: string | null | undefined;
-  readyState: string;
-  readyStateAt?: number | undefined;
-  source?: string | undefined;
-  url: string;
-};
 
-/** @internal */
-export const ApproveRollingReleaseStageCurrentDeployment$outboundSchema:
-  z.ZodType<
-    ApproveRollingReleaseStageCurrentDeployment$Outbound,
-    z.ZodTypeDef,
-    ApproveRollingReleaseStageCurrentDeployment
-  > = z.object({
-    name: z.string(),
-    createdAt: z.number(),
-    id: z.string(),
-    target: z.nullable(ApproveRollingReleaseStageTarget$outboundSchema)
-      .optional(),
-    readyState: ApproveRollingReleaseStageReadyState$outboundSchema,
-    readyStateAt: z.number().optional(),
-    source: ApproveRollingReleaseStageSource$outboundSchema.optional(),
-    url: z.string(),
-  });
-
-export function approveRollingReleaseStageCurrentDeploymentToJSON(
-  approveRollingReleaseStageCurrentDeployment:
-    ApproveRollingReleaseStageCurrentDeployment,
-): string {
-  return JSON.stringify(
-    ApproveRollingReleaseStageCurrentDeployment$outboundSchema.parse(
-      approveRollingReleaseStageCurrentDeployment,
-    ),
-  );
-}
 export function approveRollingReleaseStageCurrentDeploymentFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -641,28 +537,16 @@ export function approveRollingReleaseStageCurrentDeploymentFromJSON(
 export const ApproveRollingReleaseStageRollingReleaseTarget$inboundSchema:
   z.ZodNativeEnum<typeof ApproveRollingReleaseStageRollingReleaseTarget> = z
     .nativeEnum(ApproveRollingReleaseStageRollingReleaseTarget);
-/** @internal */
-export const ApproveRollingReleaseStageRollingReleaseTarget$outboundSchema:
-  z.ZodNativeEnum<typeof ApproveRollingReleaseStageRollingReleaseTarget> =
-    ApproveRollingReleaseStageRollingReleaseTarget$inboundSchema;
 
 /** @internal */
 export const ApproveRollingReleaseStageRollingReleaseReadyState$inboundSchema:
   z.ZodNativeEnum<typeof ApproveRollingReleaseStageRollingReleaseReadyState> = z
     .nativeEnum(ApproveRollingReleaseStageRollingReleaseReadyState);
-/** @internal */
-export const ApproveRollingReleaseStageRollingReleaseReadyState$outboundSchema:
-  z.ZodNativeEnum<typeof ApproveRollingReleaseStageRollingReleaseReadyState> =
-    ApproveRollingReleaseStageRollingReleaseReadyState$inboundSchema;
 
 /** @internal */
 export const ApproveRollingReleaseStageRollingReleaseSource$inboundSchema:
   z.ZodNativeEnum<typeof ApproveRollingReleaseStageRollingReleaseSource> = z
     .nativeEnum(ApproveRollingReleaseStageRollingReleaseSource);
-/** @internal */
-export const ApproveRollingReleaseStageRollingReleaseSource$outboundSchema:
-  z.ZodNativeEnum<typeof ApproveRollingReleaseStageRollingReleaseSource> =
-    ApproveRollingReleaseStageRollingReleaseSource$inboundSchema;
 
 /** @internal */
 export const ApproveRollingReleaseStageCanaryDeployment$inboundSchema:
@@ -682,49 +566,7 @@ export const ApproveRollingReleaseStageCanaryDeployment$inboundSchema:
       ),
       url: types.string(),
     });
-/** @internal */
-export type ApproveRollingReleaseStageCanaryDeployment$Outbound = {
-  name: string;
-  createdAt: number;
-  id: string;
-  target?: string | null | undefined;
-  readyState: string;
-  readyStateAt?: number | undefined;
-  source?: string | undefined;
-  url: string;
-};
 
-/** @internal */
-export const ApproveRollingReleaseStageCanaryDeployment$outboundSchema:
-  z.ZodType<
-    ApproveRollingReleaseStageCanaryDeployment$Outbound,
-    z.ZodTypeDef,
-    ApproveRollingReleaseStageCanaryDeployment
-  > = z.object({
-    name: z.string(),
-    createdAt: z.number(),
-    id: z.string(),
-    target: z.nullable(
-      ApproveRollingReleaseStageRollingReleaseTarget$outboundSchema,
-    ).optional(),
-    readyState:
-      ApproveRollingReleaseStageRollingReleaseReadyState$outboundSchema,
-    readyStateAt: z.number().optional(),
-    source: ApproveRollingReleaseStageRollingReleaseSource$outboundSchema
-      .optional(),
-    url: z.string(),
-  });
-
-export function approveRollingReleaseStageCanaryDeploymentToJSON(
-  approveRollingReleaseStageCanaryDeployment:
-    ApproveRollingReleaseStageCanaryDeployment,
-): string {
-  return JSON.stringify(
-    ApproveRollingReleaseStageCanaryDeployment$outboundSchema.parse(
-      approveRollingReleaseStageCanaryDeployment,
-    ),
-  );
-}
 export function approveRollingReleaseStageCanaryDeploymentFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -745,10 +587,6 @@ export function approveRollingReleaseStageCanaryDeploymentFromJSON(
 export const ApproveRollingReleaseStageAdvancementType$inboundSchema:
   z.ZodNativeEnum<typeof ApproveRollingReleaseStageAdvancementType> = z
     .nativeEnum(ApproveRollingReleaseStageAdvancementType);
-/** @internal */
-export const ApproveRollingReleaseStageAdvancementType$outboundSchema:
-  z.ZodNativeEnum<typeof ApproveRollingReleaseStageAdvancementType> =
-    ApproveRollingReleaseStageAdvancementType$inboundSchema;
 
 /** @internal */
 export const ApproveRollingReleaseStageStages$inboundSchema: z.ZodType<
@@ -763,39 +601,7 @@ export const ApproveRollingReleaseStageStages$inboundSchema: z.ZodType<
   duration: types.nullable(types.number()),
   linearShift: types.optional(types.boolean()),
 });
-/** @internal */
-export type ApproveRollingReleaseStageStages$Outbound = {
-  index: number;
-  isFinalStage: boolean;
-  targetPercentage: number;
-  requireApproval: boolean;
-  duration: number | null;
-  linearShift?: boolean | undefined;
-};
 
-/** @internal */
-export const ApproveRollingReleaseStageStages$outboundSchema: z.ZodType<
-  ApproveRollingReleaseStageStages$Outbound,
-  z.ZodTypeDef,
-  ApproveRollingReleaseStageStages
-> = z.object({
-  index: z.number(),
-  isFinalStage: z.boolean(),
-  targetPercentage: z.number(),
-  requireApproval: z.boolean(),
-  duration: z.nullable(z.number()),
-  linearShift: z.boolean().optional(),
-});
-
-export function approveRollingReleaseStageStagesToJSON(
-  approveRollingReleaseStageStages: ApproveRollingReleaseStageStages,
-): string {
-  return JSON.stringify(
-    ApproveRollingReleaseStageStages$outboundSchema.parse(
-      approveRollingReleaseStageStages,
-    ),
-  );
-}
 export function approveRollingReleaseStageStagesFromJSON(
   jsonString: string,
 ): SafeParseResult<ApproveRollingReleaseStageStages, SDKValidationError> {
@@ -819,39 +625,7 @@ export const ApproveRollingReleaseStageActiveStage$inboundSchema: z.ZodType<
   duration: types.nullable(types.number()),
   linearShift: types.optional(types.boolean()),
 });
-/** @internal */
-export type ApproveRollingReleaseStageActiveStage$Outbound = {
-  index: number;
-  isFinalStage: boolean;
-  targetPercentage: number;
-  requireApproval: boolean;
-  duration: number | null;
-  linearShift?: boolean | undefined;
-};
 
-/** @internal */
-export const ApproveRollingReleaseStageActiveStage$outboundSchema: z.ZodType<
-  ApproveRollingReleaseStageActiveStage$Outbound,
-  z.ZodTypeDef,
-  ApproveRollingReleaseStageActiveStage
-> = z.object({
-  index: z.number(),
-  isFinalStage: z.boolean(),
-  targetPercentage: z.number(),
-  requireApproval: z.boolean(),
-  duration: z.nullable(z.number()),
-  linearShift: z.boolean().optional(),
-});
-
-export function approveRollingReleaseStageActiveStageToJSON(
-  approveRollingReleaseStageActiveStage: ApproveRollingReleaseStageActiveStage,
-): string {
-  return JSON.stringify(
-    ApproveRollingReleaseStageActiveStage$outboundSchema.parse(
-      approveRollingReleaseStageActiveStage,
-    ),
-  );
-}
 export function approveRollingReleaseStageActiveStageFromJSON(
   jsonString: string,
 ): SafeParseResult<ApproveRollingReleaseStageActiveStage, SDKValidationError> {
@@ -876,39 +650,7 @@ export const ApproveRollingReleaseStageNextStage$inboundSchema: z.ZodType<
   duration: types.nullable(types.number()),
   linearShift: types.optional(types.boolean()),
 });
-/** @internal */
-export type ApproveRollingReleaseStageNextStage$Outbound = {
-  index: number;
-  isFinalStage: boolean;
-  targetPercentage: number;
-  requireApproval: boolean;
-  duration: number | null;
-  linearShift?: boolean | undefined;
-};
 
-/** @internal */
-export const ApproveRollingReleaseStageNextStage$outboundSchema: z.ZodType<
-  ApproveRollingReleaseStageNextStage$Outbound,
-  z.ZodTypeDef,
-  ApproveRollingReleaseStageNextStage
-> = z.object({
-  index: z.number(),
-  isFinalStage: z.boolean(),
-  targetPercentage: z.number(),
-  requireApproval: z.boolean(),
-  duration: z.nullable(z.number()),
-  linearShift: z.boolean().optional(),
-});
-
-export function approveRollingReleaseStageNextStageToJSON(
-  approveRollingReleaseStageNextStage: ApproveRollingReleaseStageNextStage,
-): string {
-  return JSON.stringify(
-    ApproveRollingReleaseStageNextStage$outboundSchema.parse(
-      approveRollingReleaseStageNextStage,
-    ),
-  );
-}
 export function approveRollingReleaseStageNextStageFromJSON(
   jsonString: string,
 ): SafeParseResult<ApproveRollingReleaseStageNextStage, SDKValidationError> {
@@ -947,64 +689,7 @@ export const ApproveRollingReleaseStageRollingRelease$inboundSchema: z.ZodType<
   updatedAt: types.number(),
   currentCanaryPercentage: types.optional(types.number()),
 });
-/** @internal */
-export type ApproveRollingReleaseStageRollingRelease$Outbound = {
-  state: string;
-  substate: string | null;
-  currentDeployment:
-    | ApproveRollingReleaseStageCurrentDeployment$Outbound
-    | null;
-  canaryDeployment: ApproveRollingReleaseStageCanaryDeployment$Outbound | null;
-  queuedDeploymentId: string | null;
-  advancementType: string;
-  stages: Array<ApproveRollingReleaseStageStages$Outbound>;
-  activeStage: ApproveRollingReleaseStageActiveStage$Outbound | null;
-  nextStage: ApproveRollingReleaseStageNextStage$Outbound | null;
-  startedAt: number;
-  updatedAt: number;
-  currentCanaryPercentage?: number | undefined;
-};
 
-/** @internal */
-export const ApproveRollingReleaseStageRollingRelease$outboundSchema: z.ZodType<
-  ApproveRollingReleaseStageRollingRelease$Outbound,
-  z.ZodTypeDef,
-  ApproveRollingReleaseStageRollingRelease
-> = z.object({
-  state: ApproveRollingReleaseStageState$outboundSchema,
-  substate: z.nullable(ApproveRollingReleaseStageSubstate$outboundSchema),
-  currentDeployment: z.nullable(
-    z.lazy(() => ApproveRollingReleaseStageCurrentDeployment$outboundSchema),
-  ),
-  canaryDeployment: z.nullable(
-    z.lazy(() => ApproveRollingReleaseStageCanaryDeployment$outboundSchema),
-  ),
-  queuedDeploymentId: z.nullable(z.string()),
-  advancementType: ApproveRollingReleaseStageAdvancementType$outboundSchema,
-  stages: z.array(
-    z.lazy(() => ApproveRollingReleaseStageStages$outboundSchema),
-  ),
-  activeStage: z.nullable(
-    z.lazy(() => ApproveRollingReleaseStageActiveStage$outboundSchema),
-  ),
-  nextStage: z.nullable(
-    z.lazy(() => ApproveRollingReleaseStageNextStage$outboundSchema),
-  ),
-  startedAt: z.number(),
-  updatedAt: z.number(),
-  currentCanaryPercentage: z.number().optional(),
-});
-
-export function approveRollingReleaseStageRollingReleaseToJSON(
-  approveRollingReleaseStageRollingRelease:
-    ApproveRollingReleaseStageRollingRelease,
-): string {
-  return JSON.stringify(
-    ApproveRollingReleaseStageRollingRelease$outboundSchema.parse(
-      approveRollingReleaseStageRollingRelease,
-    ),
-  );
-}
 export function approveRollingReleaseStageRollingReleaseFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -1031,32 +716,7 @@ export const ApproveRollingReleaseStageResponseBody$inboundSchema: z.ZodType<
     z.lazy(() => ApproveRollingReleaseStageRollingRelease$inboundSchema),
   ),
 });
-/** @internal */
-export type ApproveRollingReleaseStageResponseBody$Outbound = {
-  rollingRelease: ApproveRollingReleaseStageRollingRelease$Outbound | null;
-};
 
-/** @internal */
-export const ApproveRollingReleaseStageResponseBody$outboundSchema: z.ZodType<
-  ApproveRollingReleaseStageResponseBody$Outbound,
-  z.ZodTypeDef,
-  ApproveRollingReleaseStageResponseBody
-> = z.object({
-  rollingRelease: z.nullable(
-    z.lazy(() => ApproveRollingReleaseStageRollingRelease$outboundSchema),
-  ),
-});
-
-export function approveRollingReleaseStageResponseBodyToJSON(
-  approveRollingReleaseStageResponseBody:
-    ApproveRollingReleaseStageResponseBody,
-): string {
-  return JSON.stringify(
-    ApproveRollingReleaseStageResponseBody$outboundSchema.parse(
-      approveRollingReleaseStageResponseBody,
-    ),
-  );
-}
 export function approveRollingReleaseStageResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<ApproveRollingReleaseStageResponseBody, SDKValidationError> {

@@ -5,7 +5,6 @@
 import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
-import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type RemoveCertRequest = {
@@ -25,16 +24,6 @@ export type RemoveCertRequest = {
 
 export type RemoveCertResponseBody = {};
 
-/** @internal */
-export const RemoveCertRequest$inboundSchema: z.ZodType<
-  RemoveCertRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
 /** @internal */
 export type RemoveCertRequest$Outbound = {
   id: string;
@@ -60,15 +49,6 @@ export function removeCertRequestToJSON(
     RemoveCertRequest$outboundSchema.parse(removeCertRequest),
   );
 }
-export function removeCertRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<RemoveCertRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RemoveCertRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RemoveCertRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const RemoveCertResponseBody$inboundSchema: z.ZodType<
@@ -76,23 +56,7 @@ export const RemoveCertResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-/** @internal */
-export type RemoveCertResponseBody$Outbound = {};
 
-/** @internal */
-export const RemoveCertResponseBody$outboundSchema: z.ZodType<
-  RemoveCertResponseBody$Outbound,
-  z.ZodTypeDef,
-  RemoveCertResponseBody
-> = z.object({});
-
-export function removeCertResponseBodyToJSON(
-  removeCertResponseBody: RemoveCertResponseBody,
-): string {
-  return JSON.stringify(
-    RemoveCertResponseBody$outboundSchema.parse(removeCertResponseBody),
-  );
-}
 export function removeCertResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveCertResponseBody, SDKValidationError> {

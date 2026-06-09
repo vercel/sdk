@@ -4,10 +4,6 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
-import { Result as SafeParseResult } from "../types/fp.js";
-import * as types from "../types/primitives.js";
-import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type InvalidateBySrcImagesRequestBody = {
   srcImages: Array<string>;
@@ -26,14 +22,6 @@ export type InvalidateBySrcImagesRequest = {
   requestBody?: InvalidateBySrcImagesRequestBody | undefined;
 };
 
-/** @internal */
-export const InvalidateBySrcImagesRequestBody$inboundSchema: z.ZodType<
-  InvalidateBySrcImagesRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  srcImages: z.array(types.string()),
-});
 /** @internal */
 export type InvalidateBySrcImagesRequestBody$Outbound = {
   srcImages: Array<string>;
@@ -57,33 +45,7 @@ export function invalidateBySrcImagesRequestBodyToJSON(
     ),
   );
 }
-export function invalidateBySrcImagesRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<InvalidateBySrcImagesRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => InvalidateBySrcImagesRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'InvalidateBySrcImagesRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const InvalidateBySrcImagesRequest$inboundSchema: z.ZodType<
-  InvalidateBySrcImagesRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  projectIdOrName: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-  RequestBody: types.optional(
-    z.lazy(() => InvalidateBySrcImagesRequestBody$inboundSchema),
-  ),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 /** @internal */
 export type InvalidateBySrcImagesRequest$Outbound = {
   projectIdOrName: string;
@@ -116,14 +78,5 @@ export function invalidateBySrcImagesRequestToJSON(
     InvalidateBySrcImagesRequest$outboundSchema.parse(
       invalidateBySrcImagesRequest,
     ),
-  );
-}
-export function invalidateBySrcImagesRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<InvalidateBySrcImagesRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => InvalidateBySrcImagesRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'InvalidateBySrcImagesRequest' from JSON`,
   );
 }

@@ -30,16 +30,6 @@ export type GetObservabilityConfigurationProjectsResponseBody = {
 };
 
 /** @internal */
-export const GetObservabilityConfigurationProjectsRequest$inboundSchema:
-  z.ZodType<
-    GetObservabilityConfigurationProjectsRequest,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    teamId: types.optional(types.string()),
-    slug: types.optional(types.string()),
-  });
-/** @internal */
 export type GetObservabilityConfigurationProjectsRequest$Outbound = {
   teamId?: string | undefined;
   slug?: string | undefined;
@@ -66,21 +56,6 @@ export function getObservabilityConfigurationProjectsRequestToJSON(
     ),
   );
 }
-export function getObservabilityConfigurationProjectsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  GetObservabilityConfigurationProjectsRequest,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetObservabilityConfigurationProjectsRequest$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'GetObservabilityConfigurationProjectsRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const DisabledProjects$inboundSchema: z.ZodType<
@@ -92,31 +67,7 @@ export const DisabledProjects$inboundSchema: z.ZodType<
   name: types.optional(types.string()),
   disabledAt: types.number(),
 });
-/** @internal */
-export type DisabledProjects$Outbound = {
-  id: string;
-  name?: string | undefined;
-  disabledAt: number;
-};
 
-/** @internal */
-export const DisabledProjects$outboundSchema: z.ZodType<
-  DisabledProjects$Outbound,
-  z.ZodTypeDef,
-  DisabledProjects
-> = z.object({
-  id: z.string(),
-  name: z.string().optional(),
-  disabledAt: z.number(),
-});
-
-export function disabledProjectsToJSON(
-  disabledProjects: DisabledProjects,
-): string {
-  return JSON.stringify(
-    DisabledProjects$outboundSchema.parse(disabledProjects),
-  );
-}
 export function disabledProjectsFromJSON(
   jsonString: string,
 ): SafeParseResult<DisabledProjects, SDKValidationError> {
@@ -136,31 +87,7 @@ export const GetObservabilityConfigurationProjectsResponseBody$inboundSchema:
   > = z.object({
     disabledProjects: z.array(z.lazy(() => DisabledProjects$inboundSchema)),
   });
-/** @internal */
-export type GetObservabilityConfigurationProjectsResponseBody$Outbound = {
-  disabledProjects: Array<DisabledProjects$Outbound>;
-};
 
-/** @internal */
-export const GetObservabilityConfigurationProjectsResponseBody$outboundSchema:
-  z.ZodType<
-    GetObservabilityConfigurationProjectsResponseBody$Outbound,
-    z.ZodTypeDef,
-    GetObservabilityConfigurationProjectsResponseBody
-  > = z.object({
-    disabledProjects: z.array(z.lazy(() => DisabledProjects$outboundSchema)),
-  });
-
-export function getObservabilityConfigurationProjectsResponseBodyToJSON(
-  getObservabilityConfigurationProjectsResponseBody:
-    GetObservabilityConfigurationProjectsResponseBody,
-): string {
-  return JSON.stringify(
-    GetObservabilityConfigurationProjectsResponseBody$outboundSchema.parse(
-      getObservabilityConfigurationProjectsResponseBody,
-    ),
-  );
-}
 export function getObservabilityConfigurationProjectsResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<

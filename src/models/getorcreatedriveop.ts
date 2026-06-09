@@ -6,14 +6,8 @@ import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
-import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
-import {
-  Drive,
-  Drive$inboundSchema,
-  Drive$Outbound,
-  Drive$outboundSchema,
-} from "./drive.js";
+import { Drive, Drive$inboundSchema } from "./drive.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type GetOrCreateDriveRequestBody = {
@@ -62,15 +56,6 @@ export type GetOrCreateDriveResponse =
   | GetOrCreateDriveSandboxesResponseBody;
 
 /** @internal */
-export const GetOrCreateDriveRequestBody$inboundSchema: z.ZodType<
-  GetOrCreateDriveRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  projectId: types.optional(types.string()),
-  maxSizeBytes: types.optional(types.number()),
-});
-/** @internal */
 export type GetOrCreateDriveRequestBody$Outbound = {
   projectId?: string | undefined;
   maxSizeBytes?: number | undefined;
@@ -95,33 +80,7 @@ export function getOrCreateDriveRequestBodyToJSON(
     ),
   );
 }
-export function getOrCreateDriveRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<GetOrCreateDriveRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetOrCreateDriveRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetOrCreateDriveRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const GetOrCreateDriveRequest$inboundSchema: z.ZodType<
-  GetOrCreateDriveRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  name: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-  RequestBody: types.optional(
-    z.lazy(() => GetOrCreateDriveRequestBody$inboundSchema),
-  ),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 /** @internal */
 export type GetOrCreateDriveRequest$Outbound = {
   name: string;
@@ -154,15 +113,6 @@ export function getOrCreateDriveRequestToJSON(
     GetOrCreateDriveRequest$outboundSchema.parse(getOrCreateDriveRequest),
   );
 }
-export function getOrCreateDriveRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetOrCreateDriveRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetOrCreateDriveRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetOrCreateDriveRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const GetOrCreateDriveSandboxesResponseBody$inboundSchema: z.ZodType<
@@ -172,29 +122,7 @@ export const GetOrCreateDriveSandboxesResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   drive: Drive$inboundSchema,
 });
-/** @internal */
-export type GetOrCreateDriveSandboxesResponseBody$Outbound = {
-  drive: Drive$Outbound;
-};
 
-/** @internal */
-export const GetOrCreateDriveSandboxesResponseBody$outboundSchema: z.ZodType<
-  GetOrCreateDriveSandboxesResponseBody$Outbound,
-  z.ZodTypeDef,
-  GetOrCreateDriveSandboxesResponseBody
-> = z.object({
-  drive: Drive$outboundSchema,
-});
-
-export function getOrCreateDriveSandboxesResponseBodyToJSON(
-  getOrCreateDriveSandboxesResponseBody: GetOrCreateDriveSandboxesResponseBody,
-): string {
-  return JSON.stringify(
-    GetOrCreateDriveSandboxesResponseBody$outboundSchema.parse(
-      getOrCreateDriveSandboxesResponseBody,
-    ),
-  );
-}
 export function getOrCreateDriveSandboxesResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetOrCreateDriveSandboxesResponseBody, SDKValidationError> {
@@ -214,29 +142,7 @@ export const GetOrCreateDriveResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   drive: Drive$inboundSchema,
 });
-/** @internal */
-export type GetOrCreateDriveResponseBody$Outbound = {
-  drive: Drive$Outbound;
-};
 
-/** @internal */
-export const GetOrCreateDriveResponseBody$outboundSchema: z.ZodType<
-  GetOrCreateDriveResponseBody$Outbound,
-  z.ZodTypeDef,
-  GetOrCreateDriveResponseBody
-> = z.object({
-  drive: Drive$outboundSchema,
-});
-
-export function getOrCreateDriveResponseBodyToJSON(
-  getOrCreateDriveResponseBody: GetOrCreateDriveResponseBody,
-): string {
-  return JSON.stringify(
-    GetOrCreateDriveResponseBody$outboundSchema.parse(
-      getOrCreateDriveResponseBody,
-    ),
-  );
-}
 export function getOrCreateDriveResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetOrCreateDriveResponseBody, SDKValidationError> {
@@ -256,28 +162,7 @@ export const GetOrCreateDriveResponse$inboundSchema: z.ZodType<
   z.lazy(() => GetOrCreateDriveResponseBody$inboundSchema),
   z.lazy(() => GetOrCreateDriveSandboxesResponseBody$inboundSchema),
 ]);
-/** @internal */
-export type GetOrCreateDriveResponse$Outbound =
-  | GetOrCreateDriveResponseBody$Outbound
-  | GetOrCreateDriveSandboxesResponseBody$Outbound;
 
-/** @internal */
-export const GetOrCreateDriveResponse$outboundSchema: z.ZodType<
-  GetOrCreateDriveResponse$Outbound,
-  z.ZodTypeDef,
-  GetOrCreateDriveResponse
-> = smartUnion([
-  z.lazy(() => GetOrCreateDriveResponseBody$outboundSchema),
-  z.lazy(() => GetOrCreateDriveSandboxesResponseBody$outboundSchema),
-]);
-
-export function getOrCreateDriveResponseToJSON(
-  getOrCreateDriveResponse: GetOrCreateDriveResponse,
-): string {
-  return JSON.stringify(
-    GetOrCreateDriveResponse$outboundSchema.parse(getOrCreateDriveResponse),
-  );
-}
 export function getOrCreateDriveResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<GetOrCreateDriveResponse, SDKValidationError> {

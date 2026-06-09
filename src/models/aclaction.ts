@@ -23,6 +23,3 @@ export type ACLAction = ClosedEnum<typeof ACLAction>;
 /** @internal */
 export const ACLAction$inboundSchema: z.ZodNativeEnum<typeof ACLAction> = z
   .nativeEnum(ACLAction);
-/** @internal */
-export const ACLAction$outboundSchema: z.ZodNativeEnum<typeof ACLAction> =
-  ACLAction$inboundSchema;

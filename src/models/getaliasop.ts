@@ -277,20 +277,6 @@ export type GetAliasResponseBody = {
 };
 
 /** @internal */
-export const GetAliasRequest$inboundSchema: z.ZodType<
-  GetAliasRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  from: types.optional(types.number()),
-  idOrAlias: types.string(),
-  projectId: types.optional(types.string()),
-  since: types.optional(types.number()),
-  until: types.optional(types.number()),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
-/** @internal */
 export type GetAliasRequest$Outbound = {
   from?: number | undefined;
   idOrAlias: string;
@@ -321,15 +307,6 @@ export function getAliasRequestToJSON(
 ): string {
   return JSON.stringify(GetAliasRequest$outboundSchema.parse(getAliasRequest));
 }
-export function getAliasRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetAliasRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetAliasRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetAliasRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const GetAliasCreator$inboundSchema: z.ZodType<
@@ -341,29 +318,7 @@ export const GetAliasCreator$inboundSchema: z.ZodType<
   email: types.string(),
   username: types.string(),
 });
-/** @internal */
-export type GetAliasCreator$Outbound = {
-  uid: string;
-  email: string;
-  username: string;
-};
 
-/** @internal */
-export const GetAliasCreator$outboundSchema: z.ZodType<
-  GetAliasCreator$Outbound,
-  z.ZodTypeDef,
-  GetAliasCreator
-> = z.object({
-  uid: z.string(),
-  email: z.string(),
-  username: z.string(),
-});
-
-export function getAliasCreatorToJSON(
-  getAliasCreator: GetAliasCreator,
-): string {
-  return JSON.stringify(GetAliasCreator$outboundSchema.parse(getAliasCreator));
-}
 export function getAliasCreatorFromJSON(
   jsonString: string,
 ): SafeParseResult<GetAliasCreator, SDKValidationError> {
@@ -384,31 +339,7 @@ export const GetAliasDeployment$inboundSchema: z.ZodType<
   url: types.string(),
   meta: types.optional(types.string()),
 });
-/** @internal */
-export type GetAliasDeployment$Outbound = {
-  id: string;
-  url: string;
-  meta?: string | undefined;
-};
 
-/** @internal */
-export const GetAliasDeployment$outboundSchema: z.ZodType<
-  GetAliasDeployment$Outbound,
-  z.ZodTypeDef,
-  GetAliasDeployment
-> = z.object({
-  id: z.string(),
-  url: z.string(),
-  meta: z.string().optional(),
-});
-
-export function getAliasDeploymentToJSON(
-  getAliasDeployment: GetAliasDeployment,
-): string {
-  return JSON.stringify(
-    GetAliasDeployment$outboundSchema.parse(getAliasDeployment),
-  );
-}
 export function getAliasDeploymentFromJSON(
   jsonString: string,
 ): SafeParseResult<GetAliasDeployment, SDKValidationError> {
@@ -430,33 +361,7 @@ export const ProtectionBypass4$inboundSchema: z.ZodType<
   lastUpdatedBy: types.string(),
   scope: types.literal("email_invite"),
 });
-/** @internal */
-export type ProtectionBypass4$Outbound = {
-  createdAt: number;
-  lastUpdatedAt: number;
-  lastUpdatedBy: string;
-  scope: "email_invite";
-};
 
-/** @internal */
-export const ProtectionBypass4$outboundSchema: z.ZodType<
-  ProtectionBypass4$Outbound,
-  z.ZodTypeDef,
-  ProtectionBypass4
-> = z.object({
-  createdAt: z.number(),
-  lastUpdatedAt: z.number(),
-  lastUpdatedBy: z.string(),
-  scope: z.literal("email_invite"),
-});
-
-export function protectionBypass4ToJSON(
-  protectionBypass4: ProtectionBypass4,
-): string {
-  return JSON.stringify(
-    ProtectionBypass4$outboundSchema.parse(protectionBypass4),
-  );
-}
 export function protectionBypass4FromJSON(
   jsonString: string,
 ): SafeParseResult<ProtectionBypass4, SDKValidationError> {
@@ -477,31 +382,7 @@ export const ProtectionBypass3$inboundSchema: z.ZodType<
   createdBy: types.string(),
   scope: types.literal("alias-protection-override"),
 });
-/** @internal */
-export type ProtectionBypass3$Outbound = {
-  createdAt: number;
-  createdBy: string;
-  scope: "alias-protection-override";
-};
 
-/** @internal */
-export const ProtectionBypass3$outboundSchema: z.ZodType<
-  ProtectionBypass3$Outbound,
-  z.ZodTypeDef,
-  ProtectionBypass3
-> = z.object({
-  createdAt: z.number(),
-  createdBy: z.string(),
-  scope: z.literal("alias-protection-override"),
-});
-
-export function protectionBypass3ToJSON(
-  protectionBypass3: ProtectionBypass3,
-): string {
-  return JSON.stringify(
-    ProtectionBypass3$outboundSchema.parse(protectionBypass3),
-  );
-}
 export function protectionBypass3FromJSON(
   jsonString: string,
 ): SafeParseResult<ProtectionBypass3, SDKValidationError> {
@@ -516,10 +397,6 @@ export function protectionBypass3FromJSON(
 export const ProtectionBypassAccess$inboundSchema: z.ZodNativeEnum<
   typeof ProtectionBypassAccess
 > = z.nativeEnum(ProtectionBypassAccess);
-/** @internal */
-export const ProtectionBypassAccess$outboundSchema: z.ZodNativeEnum<
-  typeof ProtectionBypassAccess
-> = ProtectionBypassAccess$inboundSchema;
 
 /** @internal */
 export const GetAliasProtectionBypass2$inboundSchema: z.ZodType<
@@ -533,35 +410,7 @@ export const GetAliasProtectionBypass2$inboundSchema: z.ZodType<
   access: ProtectionBypassAccess$inboundSchema,
   scope: types.literal("user"),
 });
-/** @internal */
-export type GetAliasProtectionBypass2$Outbound = {
-  createdAt: number;
-  lastUpdatedAt: number;
-  lastUpdatedBy: string;
-  access: string;
-  scope: "user";
-};
 
-/** @internal */
-export const GetAliasProtectionBypass2$outboundSchema: z.ZodType<
-  GetAliasProtectionBypass2$Outbound,
-  z.ZodTypeDef,
-  GetAliasProtectionBypass2
-> = z.object({
-  createdAt: z.number(),
-  lastUpdatedAt: z.number(),
-  lastUpdatedBy: z.string(),
-  access: ProtectionBypassAccess$outboundSchema,
-  scope: z.literal("user"),
-});
-
-export function getAliasProtectionBypass2ToJSON(
-  getAliasProtectionBypass2: GetAliasProtectionBypass2,
-): string {
-  return JSON.stringify(
-    GetAliasProtectionBypass2$outboundSchema.parse(getAliasProtectionBypass2),
-  );
-}
 export function getAliasProtectionBypass2FromJSON(
   jsonString: string,
 ): SafeParseResult<GetAliasProtectionBypass2, SDKValidationError> {
@@ -583,33 +432,7 @@ export const GetAliasProtectionBypass1$inboundSchema: z.ZodType<
   scope: types.literal("shareable-link"),
   expires: types.optional(types.number()),
 });
-/** @internal */
-export type GetAliasProtectionBypass1$Outbound = {
-  createdAt: number;
-  createdBy: string;
-  scope: "shareable-link";
-  expires?: number | undefined;
-};
 
-/** @internal */
-export const GetAliasProtectionBypass1$outboundSchema: z.ZodType<
-  GetAliasProtectionBypass1$Outbound,
-  z.ZodTypeDef,
-  GetAliasProtectionBypass1
-> = z.object({
-  createdAt: z.number(),
-  createdBy: z.string(),
-  scope: z.literal("shareable-link"),
-  expires: z.number().optional(),
-});
-
-export function getAliasProtectionBypass1ToJSON(
-  getAliasProtectionBypass1: GetAliasProtectionBypass1,
-): string {
-  return JSON.stringify(
-    GetAliasProtectionBypass1$outboundSchema.parse(getAliasProtectionBypass1),
-  );
-}
 export function getAliasProtectionBypass1FromJSON(
   jsonString: string,
 ): SafeParseResult<GetAliasProtectionBypass1, SDKValidationError> {
@@ -631,32 +454,7 @@ export const GetAliasProtectionBypass$inboundSchema: z.ZodType<
   z.lazy(() => ProtectionBypass3$inboundSchema),
   z.lazy(() => ProtectionBypass4$inboundSchema),
 ]);
-/** @internal */
-export type GetAliasProtectionBypass$Outbound =
-  | GetAliasProtectionBypass1$Outbound
-  | GetAliasProtectionBypass2$Outbound
-  | ProtectionBypass3$Outbound
-  | ProtectionBypass4$Outbound;
 
-/** @internal */
-export const GetAliasProtectionBypass$outboundSchema: z.ZodType<
-  GetAliasProtectionBypass$Outbound,
-  z.ZodTypeDef,
-  GetAliasProtectionBypass
-> = z.union([
-  z.lazy(() => GetAliasProtectionBypass1$outboundSchema),
-  z.lazy(() => GetAliasProtectionBypass2$outboundSchema),
-  z.lazy(() => ProtectionBypass3$outboundSchema),
-  z.lazy(() => ProtectionBypass4$outboundSchema),
-]);
-
-export function getAliasProtectionBypassToJSON(
-  getAliasProtectionBypass: GetAliasProtectionBypass,
-): string {
-  return JSON.stringify(
-    GetAliasProtectionBypass$outboundSchema.parse(getAliasProtectionBypass),
-  );
-}
 export function getAliasProtectionBypassFromJSON(
   jsonString: string,
 ): SafeParseResult<GetAliasProtectionBypass, SDKValidationError> {
@@ -675,27 +473,7 @@ export const GetAliasDefaultApp$inboundSchema: z.ZodType<
 > = z.object({
   projectId: types.string(),
 });
-/** @internal */
-export type GetAliasDefaultApp$Outbound = {
-  projectId: string;
-};
 
-/** @internal */
-export const GetAliasDefaultApp$outboundSchema: z.ZodType<
-  GetAliasDefaultApp$Outbound,
-  z.ZodTypeDef,
-  GetAliasDefaultApp
-> = z.object({
-  projectId: z.string(),
-});
-
-export function getAliasDefaultAppToJSON(
-  getAliasDefaultApp: GetAliasDefaultApp,
-): string {
-  return JSON.stringify(
-    GetAliasDefaultApp$outboundSchema.parse(getAliasDefaultApp),
-  );
-}
 export function getAliasDefaultAppFromJSON(
   jsonString: string,
 ): SafeParseResult<GetAliasDefaultApp, SDKValidationError> {
@@ -719,33 +497,7 @@ export const Applications3$inboundSchema: z.ZodType<
   branchAlias: types.optional(types.string()),
   projectId: types.string(),
 });
-/** @internal */
-export type Applications3$Outbound = {
-  deploymentId?: string | undefined;
-  branchDeploymentId?: string | undefined;
-  fallbackDeploymentId?: string | undefined;
-  fallbackHost?: string | undefined;
-  branchAlias?: string | undefined;
-  projectId: string;
-};
 
-/** @internal */
-export const Applications3$outboundSchema: z.ZodType<
-  Applications3$Outbound,
-  z.ZodTypeDef,
-  Applications3
-> = z.object({
-  deploymentId: z.string().optional(),
-  branchDeploymentId: z.string().optional(),
-  fallbackDeploymentId: z.string().optional(),
-  fallbackHost: z.string().optional(),
-  branchAlias: z.string().optional(),
-  projectId: z.string(),
-});
-
-export function applications3ToJSON(applications3: Applications3): string {
-  return JSON.stringify(Applications3$outboundSchema.parse(applications3));
-}
 export function applications3FromJSON(
   jsonString: string,
 ): SafeParseResult<Applications3, SDKValidationError> {
@@ -766,31 +518,7 @@ export const GetAliasApplications2$inboundSchema: z.ZodType<
   branchAlias: types.string(),
   projectId: types.string(),
 });
-/** @internal */
-export type GetAliasApplications2$Outbound = {
-  fallbackHost: string;
-  branchAlias: string;
-  projectId: string;
-};
 
-/** @internal */
-export const GetAliasApplications2$outboundSchema: z.ZodType<
-  GetAliasApplications2$Outbound,
-  z.ZodTypeDef,
-  GetAliasApplications2
-> = z.object({
-  fallbackHost: z.string(),
-  branchAlias: z.string(),
-  projectId: z.string(),
-});
-
-export function getAliasApplications2ToJSON(
-  getAliasApplications2: GetAliasApplications2,
-): string {
-  return JSON.stringify(
-    GetAliasApplications2$outboundSchema.parse(getAliasApplications2),
-  );
-}
 export function getAliasApplications2FromJSON(
   jsonString: string,
 ): SafeParseResult<GetAliasApplications2, SDKValidationError> {
@@ -810,29 +538,7 @@ export const GetAliasApplications1$inboundSchema: z.ZodType<
   fallbackHost: types.string(),
   projectId: types.string(),
 });
-/** @internal */
-export type GetAliasApplications1$Outbound = {
-  fallbackHost: string;
-  projectId: string;
-};
 
-/** @internal */
-export const GetAliasApplications1$outboundSchema: z.ZodType<
-  GetAliasApplications1$Outbound,
-  z.ZodTypeDef,
-  GetAliasApplications1
-> = z.object({
-  fallbackHost: z.string(),
-  projectId: z.string(),
-});
-
-export function getAliasApplications1ToJSON(
-  getAliasApplications1: GetAliasApplications1,
-): string {
-  return JSON.stringify(
-    GetAliasApplications1$outboundSchema.parse(getAliasApplications1),
-  );
-}
 export function getAliasApplications1FromJSON(
   jsonString: string,
 ): SafeParseResult<GetAliasApplications1, SDKValidationError> {
@@ -853,30 +559,7 @@ export const GetAliasApplications$inboundSchema: z.ZodType<
   z.array(z.lazy(() => GetAliasApplications2$inboundSchema)),
   z.array(z.lazy(() => Applications3$inboundSchema)),
 ]);
-/** @internal */
-export type GetAliasApplications$Outbound =
-  | Array<GetAliasApplications1$Outbound>
-  | Array<GetAliasApplications2$Outbound>
-  | Array<Applications3$Outbound>;
 
-/** @internal */
-export const GetAliasApplications$outboundSchema: z.ZodType<
-  GetAliasApplications$Outbound,
-  z.ZodTypeDef,
-  GetAliasApplications
-> = smartUnion([
-  z.array(z.lazy(() => GetAliasApplications1$outboundSchema)),
-  z.array(z.lazy(() => GetAliasApplications2$outboundSchema)),
-  z.array(z.lazy(() => Applications3$outboundSchema)),
-]);
-
-export function getAliasApplicationsToJSON(
-  getAliasApplications: GetAliasApplications,
-): string {
-  return JSON.stringify(
-    GetAliasApplications$outboundSchema.parse(getAliasApplications),
-  );
-}
 export function getAliasApplicationsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetAliasApplications, SDKValidationError> {
@@ -900,36 +583,7 @@ export const GetAliasMicrofrontends$inboundSchema: z.ZodType<
     z.array(z.lazy(() => Applications3$inboundSchema)),
   ]),
 });
-/** @internal */
-export type GetAliasMicrofrontends$Outbound = {
-  defaultApp: GetAliasDefaultApp$Outbound;
-  applications:
-    | Array<GetAliasApplications1$Outbound>
-    | Array<GetAliasApplications2$Outbound>
-    | Array<Applications3$Outbound>;
-};
 
-/** @internal */
-export const GetAliasMicrofrontends$outboundSchema: z.ZodType<
-  GetAliasMicrofrontends$Outbound,
-  z.ZodTypeDef,
-  GetAliasMicrofrontends
-> = z.object({
-  defaultApp: z.lazy(() => GetAliasDefaultApp$outboundSchema),
-  applications: smartUnion([
-    z.array(z.lazy(() => GetAliasApplications1$outboundSchema)),
-    z.array(z.lazy(() => GetAliasApplications2$outboundSchema)),
-    z.array(z.lazy(() => Applications3$outboundSchema)),
-  ]),
-});
-
-export function getAliasMicrofrontendsToJSON(
-  getAliasMicrofrontends: GetAliasMicrofrontends,
-): string {
-  return JSON.stringify(
-    GetAliasMicrofrontends$outboundSchema.parse(getAliasMicrofrontends),
-  );
-}
 export function getAliasMicrofrontendsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetAliasMicrofrontends, SDKValidationError> {
@@ -972,67 +626,7 @@ export const GetAliasResponseBody$inboundSchema: z.ZodType<
     z.lazy(() => GetAliasMicrofrontends$inboundSchema),
   ),
 });
-/** @internal */
-export type GetAliasResponseBody$Outbound = {
-  alias: string;
-  created: string;
-  createdAt?: number | null | undefined;
-  creator?: GetAliasCreator$Outbound | undefined;
-  deletedAt?: number | null | undefined;
-  deployment?: GetAliasDeployment$Outbound | undefined;
-  deploymentId: string | null;
-  projectId: string | null;
-  redirect?: string | null | undefined;
-  redirectStatusCode?: number | null | undefined;
-  uid: string;
-  updatedAt?: number | null | undefined;
-  protectionBypass?: {
-    [k: string]:
-      | GetAliasProtectionBypass1$Outbound
-      | GetAliasProtectionBypass2$Outbound
-      | ProtectionBypass3$Outbound
-      | ProtectionBypass4$Outbound;
-  } | undefined;
-  microfrontends?: GetAliasMicrofrontends$Outbound | undefined;
-};
 
-/** @internal */
-export const GetAliasResponseBody$outboundSchema: z.ZodType<
-  GetAliasResponseBody$Outbound,
-  z.ZodTypeDef,
-  GetAliasResponseBody
-> = z.object({
-  alias: z.string(),
-  created: z.date().transform(v => v.toISOString()),
-  createdAt: z.nullable(z.number()).optional(),
-  creator: z.lazy(() => GetAliasCreator$outboundSchema).optional(),
-  deletedAt: z.nullable(z.number()).optional(),
-  deployment: z.lazy(() => GetAliasDeployment$outboundSchema).optional(),
-  deploymentId: z.nullable(z.string()),
-  projectId: z.nullable(z.string()),
-  redirect: z.nullable(z.string()).optional(),
-  redirectStatusCode: z.nullable(z.number()).optional(),
-  uid: z.string(),
-  updatedAt: z.nullable(z.number()).optional(),
-  protectionBypass: z.record(
-    z.union([
-      z.lazy(() => GetAliasProtectionBypass1$outboundSchema),
-      z.lazy(() => GetAliasProtectionBypass2$outboundSchema),
-      z.lazy(() => ProtectionBypass3$outboundSchema),
-      z.lazy(() => ProtectionBypass4$outboundSchema),
-    ]),
-  ).optional(),
-  microfrontends: z.lazy(() => GetAliasMicrofrontends$outboundSchema)
-    .optional(),
-});
-
-export function getAliasResponseBodyToJSON(
-  getAliasResponseBody: GetAliasResponseBody,
-): string {
-  return JSON.stringify(
-    GetAliasResponseBody$outboundSchema.parse(getAliasResponseBody),
-  );
-}
 export function getAliasResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetAliasResponseBody, SDKValidationError> {

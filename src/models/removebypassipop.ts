@@ -51,18 +51,6 @@ export type RemoveBypassIpResponseBody = {
 };
 
 /** @internal */
-export const RemoveBypassIpRequestBody2$inboundSchema: z.ZodType<
-  RemoveBypassIpRequestBody2,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  domain: types.optional(types.string()),
-  projectScope: types.boolean(),
-  sourceIp: types.optional(types.string()),
-  allSources: types.optional(types.boolean()),
-  note: types.optional(types.string()),
-});
-/** @internal */
 export type RemoveBypassIpRequestBody2$Outbound = {
   domain?: string | undefined;
   projectScope: boolean;
@@ -91,28 +79,7 @@ export function removeBypassIpRequestBody2ToJSON(
     RemoveBypassIpRequestBody2$outboundSchema.parse(removeBypassIpRequestBody2),
   );
 }
-export function removeBypassIpRequestBody2FromJSON(
-  jsonString: string,
-): SafeParseResult<RemoveBypassIpRequestBody2, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RemoveBypassIpRequestBody2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RemoveBypassIpRequestBody2' from JSON`,
-  );
-}
 
-/** @internal */
-export const RemoveBypassIpRequestBody1$inboundSchema: z.ZodType<
-  RemoveBypassIpRequestBody1,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  domain: types.string(),
-  projectScope: types.optional(types.boolean()),
-  sourceIp: types.optional(types.string()),
-  allSources: types.optional(types.boolean()),
-  note: types.optional(types.string()),
-});
 /** @internal */
 export type RemoveBypassIpRequestBody1$Outbound = {
   domain: string;
@@ -142,25 +109,7 @@ export function removeBypassIpRequestBody1ToJSON(
     RemoveBypassIpRequestBody1$outboundSchema.parse(removeBypassIpRequestBody1),
   );
 }
-export function removeBypassIpRequestBody1FromJSON(
-  jsonString: string,
-): SafeParseResult<RemoveBypassIpRequestBody1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RemoveBypassIpRequestBody1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RemoveBypassIpRequestBody1' from JSON`,
-  );
-}
 
-/** @internal */
-export const RemoveBypassIpRequestBody$inboundSchema: z.ZodType<
-  RemoveBypassIpRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([
-  z.lazy(() => RemoveBypassIpRequestBody1$inboundSchema),
-  z.lazy(() => RemoveBypassIpRequestBody2$inboundSchema),
-]);
 /** @internal */
 export type RemoveBypassIpRequestBody$Outbound =
   | RemoveBypassIpRequestBody1$Outbound
@@ -183,36 +132,7 @@ export function removeBypassIpRequestBodyToJSON(
     RemoveBypassIpRequestBody$outboundSchema.parse(removeBypassIpRequestBody),
   );
 }
-export function removeBypassIpRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<RemoveBypassIpRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RemoveBypassIpRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RemoveBypassIpRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const RemoveBypassIpRequest$inboundSchema: z.ZodType<
-  RemoveBypassIpRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  projectId: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-  RequestBody: types.optional(
-    smartUnion([
-      z.lazy(() => RemoveBypassIpRequestBody1$inboundSchema),
-      z.lazy(() => RemoveBypassIpRequestBody2$inboundSchema),
-    ]),
-  ),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 /** @internal */
 export type RemoveBypassIpRequest$Outbound = {
   projectId: string;
@@ -250,15 +170,6 @@ export function removeBypassIpRequestToJSON(
     RemoveBypassIpRequest$outboundSchema.parse(removeBypassIpRequest),
   );
 }
-export function removeBypassIpRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<RemoveBypassIpRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RemoveBypassIpRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RemoveBypassIpRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const RemoveBypassIpResponseBody$inboundSchema: z.ZodType<
@@ -268,27 +179,7 @@ export const RemoveBypassIpResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   ok: types.boolean(),
 });
-/** @internal */
-export type RemoveBypassIpResponseBody$Outbound = {
-  ok: boolean;
-};
 
-/** @internal */
-export const RemoveBypassIpResponseBody$outboundSchema: z.ZodType<
-  RemoveBypassIpResponseBody$Outbound,
-  z.ZodTypeDef,
-  RemoveBypassIpResponseBody
-> = z.object({
-  ok: z.boolean(),
-});
-
-export function removeBypassIpResponseBodyToJSON(
-  removeBypassIpResponseBody: RemoveBypassIpResponseBody,
-): string {
-  return JSON.stringify(
-    RemoveBypassIpResponseBody$outboundSchema.parse(removeBypassIpResponseBody),
-  );
-}
 export function removeBypassIpResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveBypassIpResponseBody, SDKValidationError> {

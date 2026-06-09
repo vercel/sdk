@@ -6,18 +6,10 @@ import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
-import * as types from "../types/primitives.js";
-import {
-  Forbidden,
-  Forbidden$inboundSchema,
-  Forbidden$Outbound,
-  Forbidden$outboundSchema,
-} from "./forbidden.js";
+import { Forbidden, Forbidden$inboundSchema } from "./forbidden.js";
 import {
   NotAuthorizedForScope,
   NotAuthorizedForScope$inboundSchema,
-  NotAuthorizedForScope$Outbound,
-  NotAuthorizedForScope$outboundSchema,
 } from "./notauthorizedforscope.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
@@ -60,15 +52,6 @@ export type GetDomainTransferInResponseBody = {
 };
 
 /** @internal */
-export const GetDomainTransferInRequest$inboundSchema: z.ZodType<
-  GetDomainTransferInRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  domain: types.string(),
-  teamId: types.optional(types.string()),
-});
-/** @internal */
 export type GetDomainTransferInRequest$Outbound = {
   domain: string;
   teamId?: string | undefined;
@@ -91,15 +74,6 @@ export function getDomainTransferInRequestToJSON(
     GetDomainTransferInRequest$outboundSchema.parse(getDomainTransferInRequest),
   );
 }
-export function getDomainTransferInRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetDomainTransferInRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetDomainTransferInRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDomainTransferInRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const GetDomainTransferInDomainsRegistrarResponseBody$inboundSchema:
@@ -113,34 +87,7 @@ export const GetDomainTransferInDomainsRegistrarResponseBody$inboundSchema:
     ),
     Forbidden$inboundSchema,
   ]);
-/** @internal */
-export type GetDomainTransferInDomainsRegistrarResponseBody$Outbound =
-  | (NotAuthorizedForScope$Outbound & { code: "not_authorized_for_scope" })
-  | Forbidden$Outbound;
 
-/** @internal */
-export const GetDomainTransferInDomainsRegistrarResponseBody$outboundSchema:
-  z.ZodType<
-    GetDomainTransferInDomainsRegistrarResponseBody$Outbound,
-    z.ZodTypeDef,
-    unknown
-  > = z.union([
-    NotAuthorizedForScope$outboundSchema.and(
-      z.object({ code: z.literal("not_authorized_for_scope") }),
-    ),
-    Forbidden$outboundSchema,
-  ]);
-
-export function getDomainTransferInDomainsRegistrarResponseBodyToJSON(
-  getDomainTransferInDomainsRegistrarResponseBody:
-    GetDomainTransferInDomainsRegistrarResponseBody,
-): string {
-  return JSON.stringify(
-    GetDomainTransferInDomainsRegistrarResponseBody$outboundSchema.parse(
-      getDomainTransferInDomainsRegistrarResponseBody,
-    ),
-  );
-}
 export function getDomainTransferInDomainsRegistrarResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -161,10 +108,6 @@ export function getDomainTransferInDomainsRegistrarResponseBodyFromJSON(
 export const GetDomainTransferInStatus$inboundSchema: z.ZodNativeEnum<
   typeof GetDomainTransferInStatus
 > = z.nativeEnum(GetDomainTransferInStatus);
-/** @internal */
-export const GetDomainTransferInStatus$outboundSchema: z.ZodNativeEnum<
-  typeof GetDomainTransferInStatus
-> = GetDomainTransferInStatus$inboundSchema;
 
 /** @internal */
 export const GetDomainTransferInResponseBody$inboundSchema: z.ZodType<
@@ -174,29 +117,7 @@ export const GetDomainTransferInResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   status: GetDomainTransferInStatus$inboundSchema,
 });
-/** @internal */
-export type GetDomainTransferInResponseBody$Outbound = {
-  status: string;
-};
 
-/** @internal */
-export const GetDomainTransferInResponseBody$outboundSchema: z.ZodType<
-  GetDomainTransferInResponseBody$Outbound,
-  z.ZodTypeDef,
-  GetDomainTransferInResponseBody
-> = z.object({
-  status: GetDomainTransferInStatus$outboundSchema,
-});
-
-export function getDomainTransferInResponseBodyToJSON(
-  getDomainTransferInResponseBody: GetDomainTransferInResponseBody,
-): string {
-  return JSON.stringify(
-    GetDomainTransferInResponseBody$outboundSchema.parse(
-      getDomainTransferInResponseBody,
-    ),
-  );
-}
 export function getDomainTransferInResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetDomainTransferInResponseBody, SDKValidationError> {

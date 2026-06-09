@@ -1,20 +1,11 @@
 # GetDrainResponseBodyDrainsFilterV2
 
-
-## Supported Types
-
-### `models.GetDrainFilterV2Drains1`
+## Example Usage
 
 ```typescript
-const value: models.GetDrainFilterV2Drains1 = {
-  version: "v1",
-};
-```
+import { GetDrainResponseBodyDrainsFilterV2 } from "@vercel/sdk/models/getdrainop.js";
 
-### `models.GetDrainFilterV2Drains2`
-
-```typescript
-const value: models.GetDrainFilterV2Drains2 = {
+let value: GetDrainResponseBodyDrainsFilterV2 = {
   version: "v2",
   filter: {
     type: "odata",
@@ -23,3 +14,9 @@ const value: models.GetDrainFilterV2Drains2 = {
 };
 ```
 
+## Fields
+
+| Field                                                                                      | Type                                                                                       | Required                                                                                   | Description                                                                                |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| `version`                                                                                  | [models.GetDrainResponseBodyDrainsVersion](../models/getdrainresponsebodydrainsversion.md) | :heavy_check_mark:                                                                         | N/A                                                                                        |
+| `filter`                                                                                   | *models.GetDrainResponseBodyDrainsFilter*                                                  | :heavy_check_mark:                                                                         | N/A                                                                                        |

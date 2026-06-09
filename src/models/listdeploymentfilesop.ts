@@ -3,10 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
-import { Result as SafeParseResult } from "../types/fp.js";
-import * as types from "../types/primitives.js";
-import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type ListDeploymentFilesRequest = {
   /**
@@ -23,16 +19,6 @@ export type ListDeploymentFilesRequest = {
   slug?: string | undefined;
 };
 
-/** @internal */
-export const ListDeploymentFilesRequest$inboundSchema: z.ZodType<
-  ListDeploymentFilesRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
 /** @internal */
 export type ListDeploymentFilesRequest$Outbound = {
   id: string;
@@ -56,14 +42,5 @@ export function listDeploymentFilesRequestToJSON(
 ): string {
   return JSON.stringify(
     ListDeploymentFilesRequest$outboundSchema.parse(listDeploymentFilesRequest),
-  );
-}
-export function listDeploymentFilesRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<ListDeploymentFilesRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ListDeploymentFilesRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ListDeploymentFilesRequest' from JSON`,
   );
 }

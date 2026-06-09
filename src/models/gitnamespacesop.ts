@@ -53,24 +53,10 @@ export type GitNamespacesResponseBody = {
 };
 
 /** @internal */
-export const QueryParamProvider$inboundSchema: z.ZodNativeEnum<
-  typeof QueryParamProvider
-> = z.nativeEnum(QueryParamProvider);
-/** @internal */
 export const QueryParamProvider$outboundSchema: z.ZodNativeEnum<
   typeof QueryParamProvider
-> = QueryParamProvider$inboundSchema;
+> = z.nativeEnum(QueryParamProvider);
 
-/** @internal */
-export const GitNamespacesRequest$inboundSchema: z.ZodType<
-  GitNamespacesRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  host: types.optional(types.string()),
-  provider: types.optional(QueryParamProvider$inboundSchema),
-  viewerMetadata: types.optional(types.boolean()),
-});
 /** @internal */
 export type GitNamespacesRequest$Outbound = {
   host?: string | undefined;
@@ -96,15 +82,6 @@ export function gitNamespacesRequestToJSON(
     GitNamespacesRequest$outboundSchema.parse(gitNamespacesRequest),
   );
 }
-export function gitNamespacesRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GitNamespacesRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GitNamespacesRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GitNamespacesRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const GitNamespacesId$inboundSchema: z.ZodType<
@@ -112,21 +89,7 @@ export const GitNamespacesId$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = smartUnion([types.string(), types.number()]);
-/** @internal */
-export type GitNamespacesId$Outbound = string | number;
 
-/** @internal */
-export const GitNamespacesId$outboundSchema: z.ZodType<
-  GitNamespacesId$Outbound,
-  z.ZodTypeDef,
-  GitNamespacesId
-> = smartUnion([z.string(), z.number()]);
-
-export function gitNamespacesIdToJSON(
-  gitNamespacesId: GitNamespacesId,
-): string {
-  return JSON.stringify(GitNamespacesId$outboundSchema.parse(gitNamespacesId));
-}
 export function gitNamespacesIdFromJSON(
   jsonString: string,
 ): SafeParseResult<GitNamespacesId, SDKValidationError> {
@@ -143,23 +106,7 @@ export const GitNamespacesRole$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = smartUnion([types.string(), types.number()]);
-/** @internal */
-export type GitNamespacesRole$Outbound = string | number;
 
-/** @internal */
-export const GitNamespacesRole$outboundSchema: z.ZodType<
-  GitNamespacesRole$Outbound,
-  z.ZodTypeDef,
-  GitNamespacesRole
-> = smartUnion([z.string(), z.number()]);
-
-export function gitNamespacesRoleToJSON(
-  gitNamespacesRole: GitNamespacesRole,
-): string {
-  return JSON.stringify(
-    GitNamespacesRole$outboundSchema.parse(gitNamespacesRole),
-  );
-}
 export function gitNamespacesRoleFromJSON(
   jsonString: string,
 ): SafeParseResult<GitNamespacesRole, SDKValidationError> {
@@ -176,25 +123,7 @@ export const Viewer$inboundSchema: z.ZodType<Viewer, z.ZodTypeDef, unknown> = z
     canCreateApp: types.optional(types.boolean()),
     role: types.optional(smartUnion([types.string(), types.number()])),
   });
-/** @internal */
-export type Viewer$Outbound = {
-  canCreateApp?: boolean | undefined;
-  role?: string | number | undefined;
-};
 
-/** @internal */
-export const Viewer$outboundSchema: z.ZodType<
-  Viewer$Outbound,
-  z.ZodTypeDef,
-  Viewer
-> = z.object({
-  canCreateApp: z.boolean().optional(),
-  role: smartUnion([z.string(), z.number()]).optional(),
-});
-
-export function viewerToJSON(viewer: Viewer): string {
-  return JSON.stringify(Viewer$outboundSchema.parse(viewer));
-}
 export function viewerFromJSON(
   jsonString: string,
 ): SafeParseResult<Viewer, SDKValidationError> {
@@ -221,43 +150,7 @@ export const GitNamespacesResponseBody$inboundSchema: z.ZodType<
   requireReauth: types.optional(types.boolean()),
   viewer: types.optional(z.lazy(() => Viewer$inboundSchema)),
 });
-/** @internal */
-export type GitNamespacesResponseBody$Outbound = {
-  provider: string;
-  slug: string;
-  id: string | number;
-  ownerType: string;
-  name?: string | undefined;
-  isAccessRestricted?: boolean | undefined;
-  installationId?: number | undefined;
-  requireReauth?: boolean | undefined;
-  viewer?: Viewer$Outbound | undefined;
-};
 
-/** @internal */
-export const GitNamespacesResponseBody$outboundSchema: z.ZodType<
-  GitNamespacesResponseBody$Outbound,
-  z.ZodTypeDef,
-  GitNamespacesResponseBody
-> = z.object({
-  provider: z.string(),
-  slug: z.string(),
-  id: smartUnion([z.string(), z.number()]),
-  ownerType: z.string(),
-  name: z.string().optional(),
-  isAccessRestricted: z.boolean().optional(),
-  installationId: z.number().optional(),
-  requireReauth: z.boolean().optional(),
-  viewer: z.lazy(() => Viewer$outboundSchema).optional(),
-});
-
-export function gitNamespacesResponseBodyToJSON(
-  gitNamespacesResponseBody: GitNamespacesResponseBody,
-): string {
-  return JSON.stringify(
-    GitNamespacesResponseBody$outboundSchema.parse(gitNamespacesResponseBody),
-  );
-}
 export function gitNamespacesResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GitNamespacesResponseBody, SDKValidationError> {

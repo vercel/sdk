@@ -59,15 +59,6 @@ export type AssignAliasResponseBody = {
 };
 
 /** @internal */
-export const AssignAliasRequestBody$inboundSchema: z.ZodType<
-  AssignAliasRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  alias: types.optional(types.string()),
-  redirect: z.nullable(types.string()).optional(),
-});
-/** @internal */
 export type AssignAliasRequestBody$Outbound = {
   alias?: string | undefined;
   redirect?: string | null | undefined;
@@ -90,31 +81,7 @@ export function assignAliasRequestBodyToJSON(
     AssignAliasRequestBody$outboundSchema.parse(assignAliasRequestBody),
   );
 }
-export function assignAliasRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<AssignAliasRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AssignAliasRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AssignAliasRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const AssignAliasRequest$inboundSchema: z.ZodType<
-  AssignAliasRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-  RequestBody: z.lazy(() => AssignAliasRequestBody$inboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 /** @internal */
 export type AssignAliasRequest$Outbound = {
   id: string;
@@ -146,15 +113,6 @@ export function assignAliasRequestToJSON(
     AssignAliasRequest$outboundSchema.parse(assignAliasRequest),
   );
 }
-export function assignAliasRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<AssignAliasRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AssignAliasRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AssignAliasRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const AssignAliasResponseBody$inboundSchema: z.ZodType<
@@ -167,33 +125,7 @@ export const AssignAliasResponseBody$inboundSchema: z.ZodType<
   created: types.date(),
   oldDeploymentId: z.nullable(types.string()).optional(),
 });
-/** @internal */
-export type AssignAliasResponseBody$Outbound = {
-  uid: string;
-  alias: string;
-  created: string;
-  oldDeploymentId?: string | null | undefined;
-};
 
-/** @internal */
-export const AssignAliasResponseBody$outboundSchema: z.ZodType<
-  AssignAliasResponseBody$Outbound,
-  z.ZodTypeDef,
-  AssignAliasResponseBody
-> = z.object({
-  uid: z.string(),
-  alias: z.string(),
-  created: z.date().transform(v => v.toISOString()),
-  oldDeploymentId: z.nullable(z.string()).optional(),
-});
-
-export function assignAliasResponseBodyToJSON(
-  assignAliasResponseBody: AssignAliasResponseBody,
-): string {
-  return JSON.stringify(
-    AssignAliasResponseBody$outboundSchema.parse(assignAliasResponseBody),
-  );
-}
 export function assignAliasResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<AssignAliasResponseBody, SDKValidationError> {

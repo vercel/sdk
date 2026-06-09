@@ -10,8 +10,6 @@ import * as types from "../types/primitives.js";
 import {
   EdgeConfigItemValue,
   EdgeConfigItemValue$inboundSchema,
-  EdgeConfigItemValue$Outbound,
-  EdgeConfigItemValue$outboundSchema,
 } from "./edgeconfigitemvalue.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
@@ -45,16 +43,6 @@ export type GetInstallationsByIntegrationConfigurationIdResourcesByResourceIdExp
   };
 
 /** @internal */
-export const GetInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigRequest$inboundSchema:
-  z.ZodType<
-    GetInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigRequest,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    integrationConfigurationId: types.string(),
-    resourceId: types.string(),
-  });
-/** @internal */
 export type GetInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigRequest$Outbound =
   {
     integrationConfigurationId: string;
@@ -83,20 +71,6 @@ export function getInstallationsByIntegrationConfigurationIdResourcesByResourceI
       ),
   );
 }
-export function getInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  GetInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigRequest,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigRequest$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'GetInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const GetInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigPurpose$inboundSchema:
@@ -105,12 +79,6 @@ export const GetInstallationsByIntegrationConfigurationIdResourcesByResourceIdEx
   > = z.nativeEnum(
     GetInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigPurpose,
   );
-/** @internal */
-export const GetInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigPurpose$outboundSchema:
-  z.ZodNativeEnum<
-    typeof GetInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigPurpose
-  > =
-    GetInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigPurpose$inboundSchema;
 
 /** @internal */
 export const GetInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigResponseBody$inboundSchema:
@@ -126,41 +94,7 @@ export const GetInstallationsByIntegrationConfigurationIdResourcesByResourceIdEx
       GetInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigPurpose$inboundSchema,
     ),
   });
-/** @internal */
-export type GetInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigResponseBody$Outbound =
-  {
-    items: { [k: string]: EdgeConfigItemValue$Outbound | null };
-    updatedAt: number;
-    digest: string;
-    purpose?: string | undefined;
-  };
 
-/** @internal */
-export const GetInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigResponseBody$outboundSchema:
-  z.ZodType<
-    GetInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigResponseBody$Outbound,
-    z.ZodTypeDef,
-    GetInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigResponseBody
-  > = z.object({
-    items: z.record(z.nullable(EdgeConfigItemValue$outboundSchema)),
-    updatedAt: z.number(),
-    digest: z.string(),
-    purpose:
-      GetInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigPurpose$outboundSchema
-        .optional(),
-  });
-
-export function getInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigResponseBodyToJSON(
-  getInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigResponseBody:
-    GetInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigResponseBody,
-): string {
-  return JSON.stringify(
-    GetInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigResponseBody$outboundSchema
-      .parse(
-        getInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigResponseBody,
-      ),
-  );
-}
 export function getInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<

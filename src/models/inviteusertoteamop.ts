@@ -4,11 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
-import { Result as SafeParseResult } from "../types/fp.js";
-import * as types from "../types/primitives.js";
-import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
  * The role of the user to invite
@@ -80,32 +76,15 @@ export type InviteUserToTeamRequest = {
 };
 
 /** @internal */
-export const InviteUserToTeamRole$inboundSchema: z.ZodNativeEnum<
-  typeof InviteUserToTeamRole
-> = z.nativeEnum(InviteUserToTeamRole);
-/** @internal */
 export const InviteUserToTeamRole$outboundSchema: z.ZodNativeEnum<
   typeof InviteUserToTeamRole
-> = InviteUserToTeamRole$inboundSchema;
+> = z.nativeEnum(InviteUserToTeamRole);
 
-/** @internal */
-export const InviteUserToTeamTeamsRole$inboundSchema: z.ZodNativeEnum<
-  typeof InviteUserToTeamTeamsRole
-> = z.nativeEnum(InviteUserToTeamTeamsRole);
 /** @internal */
 export const InviteUserToTeamTeamsRole$outboundSchema: z.ZodNativeEnum<
   typeof InviteUserToTeamTeamsRole
-> = InviteUserToTeamTeamsRole$inboundSchema;
+> = z.nativeEnum(InviteUserToTeamTeamsRole);
 
-/** @internal */
-export const InviteUserToTeamProjects$inboundSchema: z.ZodType<
-  InviteUserToTeamProjects,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  projectId: types.string(),
-  role: InviteUserToTeamTeamsRole$inboundSchema,
-});
 /** @internal */
 export type InviteUserToTeamProjects$Outbound = {
   projectId: string;
@@ -129,28 +108,7 @@ export function inviteUserToTeamProjectsToJSON(
     InviteUserToTeamProjects$outboundSchema.parse(inviteUserToTeamProjects),
   );
 }
-export function inviteUserToTeamProjectsFromJSON(
-  jsonString: string,
-): SafeParseResult<InviteUserToTeamProjects, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => InviteUserToTeamProjects$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'InviteUserToTeamProjects' from JSON`,
-  );
-}
 
-/** @internal */
-export const InviteUserToTeamRequestBody$inboundSchema: z.ZodType<
-  InviteUserToTeamRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  email: types.string(),
-  role: InviteUserToTeamRole$inboundSchema.default("VIEWER"),
-  projects: types.optional(
-    z.array(z.lazy(() => InviteUserToTeamProjects$inboundSchema)),
-  ),
-});
 /** @internal */
 export type InviteUserToTeamRequestBody$Outbound = {
   email: string;
@@ -179,32 +137,7 @@ export function inviteUserToTeamRequestBodyToJSON(
     ),
   );
 }
-export function inviteUserToTeamRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<InviteUserToTeamRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => InviteUserToTeamRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'InviteUserToTeamRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const InviteUserToTeamRequest$inboundSchema: z.ZodType<
-  InviteUserToTeamRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  teamId: types.string(),
-  slug: types.optional(types.string()),
-  RequestBody: types.optional(
-    z.array(z.lazy(() => InviteUserToTeamRequestBody$inboundSchema)),
-  ),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 /** @internal */
 export type InviteUserToTeamRequest$Outbound = {
   teamId: string;
@@ -233,14 +166,5 @@ export function inviteUserToTeamRequestToJSON(
 ): string {
   return JSON.stringify(
     InviteUserToTeamRequest$outboundSchema.parse(inviteUserToTeamRequest),
-  );
-}
-export function inviteUserToTeamRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<InviteUserToTeamRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => InviteUserToTeamRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'InviteUserToTeamRequest' from JSON`,
   );
 }

@@ -3,10 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
-import { Result as SafeParseResult } from "../types/fp.js";
-import * as types from "../types/primitives.js";
-import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type UnpauseProjectRequest = {
   /**
@@ -23,16 +19,6 @@ export type UnpauseProjectRequest = {
   slug?: string | undefined;
 };
 
-/** @internal */
-export const UnpauseProjectRequest$inboundSchema: z.ZodType<
-  UnpauseProjectRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  projectId: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
 /** @internal */
 export type UnpauseProjectRequest$Outbound = {
   projectId: string;
@@ -56,14 +42,5 @@ export function unpauseProjectRequestToJSON(
 ): string {
   return JSON.stringify(
     UnpauseProjectRequest$outboundSchema.parse(unpauseProjectRequest),
-  );
-}
-export function unpauseProjectRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<UnpauseProjectRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UnpauseProjectRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UnpauseProjectRequest' from JSON`,
   );
 }

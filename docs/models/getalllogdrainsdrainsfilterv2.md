@@ -1,20 +1,11 @@
 # GetAllLogDrainsDrainsFilterV2
 
-
-## Supported Types
-
-### `models.GetAllLogDrainsFilterV2LogDrains1`
+## Example Usage
 
 ```typescript
-const value: models.GetAllLogDrainsFilterV2LogDrains1 = {
-  version: "v1",
-};
-```
+import { GetAllLogDrainsDrainsFilterV2 } from "@vercel/sdk/models/getalllogdrainsop.js";
 
-### `models.GetAllLogDrainsFilterV2LogDrains2`
-
-```typescript
-const value: models.GetAllLogDrainsFilterV2LogDrains2 = {
+let value: GetAllLogDrainsDrainsFilterV2 = {
   version: "v2",
   filter: {
     type: "basic",
@@ -22,3 +13,9 @@ const value: models.GetAllLogDrainsFilterV2LogDrains2 = {
 };
 ```
 
+## Fields
+
+| Field                                                                                              | Type                                                                                               | Required                                                                                           | Description                                                                                        |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `version`                                                                                          | [models.GetAllLogDrainsDrainsLogDrainsVersion](../models/getalllogdrainsdrainslogdrainsversion.md) | :heavy_check_mark:                                                                                 | N/A                                                                                                |
+| `filter`                                                                                           | *models.GetAllLogDrainsDrainsFilter*                                                               | :heavy_check_mark:                                                                                 | N/A                                                                                                |

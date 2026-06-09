@@ -36,27 +36,7 @@ export const Pagination$inboundSchema: z.ZodType<
   next: types.nullable(types.number()),
   prev: types.nullable(types.number()),
 });
-/** @internal */
-export type Pagination$Outbound = {
-  count: number;
-  next: number | null;
-  prev: number | null;
-};
 
-/** @internal */
-export const Pagination$outboundSchema: z.ZodType<
-  Pagination$Outbound,
-  z.ZodTypeDef,
-  Pagination
-> = z.object({
-  count: z.number(),
-  next: z.nullable(z.number()),
-  prev: z.nullable(z.number()),
-});
-
-export function paginationToJSON(pagination: Pagination): string {
-  return JSON.stringify(Pagination$outboundSchema.parse(pagination));
-}
 export function paginationFromJSON(
   jsonString: string,
 ): SafeParseResult<Pagination, SDKValidationError> {

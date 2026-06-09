@@ -412,25 +412,15 @@ export type Flag = {
 /** @internal */
 export const MetricType$inboundSchema: z.ZodNativeEnum<typeof MetricType> = z
   .nativeEnum(MetricType);
-/** @internal */
-export const MetricType$outboundSchema: z.ZodNativeEnum<typeof MetricType> =
-  MetricType$inboundSchema;
 
 /** @internal */
 export const MetricUnit$inboundSchema: z.ZodNativeEnum<typeof MetricUnit> = z
   .nativeEnum(MetricUnit);
-/** @internal */
-export const MetricUnit$outboundSchema: z.ZodNativeEnum<typeof MetricUnit> =
-  MetricUnit$inboundSchema;
 
 /** @internal */
 export const Directionality$inboundSchema: z.ZodNativeEnum<
   typeof Directionality
 > = z.nativeEnum(Directionality);
-/** @internal */
-export const Directionality$outboundSchema: z.ZodNativeEnum<
-  typeof Directionality
-> = Directionality$inboundSchema;
 
 /** @internal */
 export const GuardrailMetrics$inboundSchema: z.ZodType<
@@ -445,37 +435,7 @@ export const GuardrailMetrics$inboundSchema: z.ZodType<
   metricUnit: MetricUnit$inboundSchema,
   directionality: Directionality$inboundSchema,
 });
-/** @internal */
-export type GuardrailMetrics$Outbound = {
-  description?: string | undefined;
-  metricFormula?: string | undefined;
-  name: string;
-  metricType: string;
-  metricUnit: string;
-  directionality: string;
-};
 
-/** @internal */
-export const GuardrailMetrics$outboundSchema: z.ZodType<
-  GuardrailMetrics$Outbound,
-  z.ZodTypeDef,
-  GuardrailMetrics
-> = z.object({
-  description: z.string().optional(),
-  metricFormula: z.string().optional(),
-  name: z.string(),
-  metricType: MetricType$outboundSchema,
-  metricUnit: MetricUnit$outboundSchema,
-  directionality: Directionality$outboundSchema,
-});
-
-export function guardrailMetricsToJSON(
-  guardrailMetrics: GuardrailMetrics,
-): string {
-  return JSON.stringify(
-    GuardrailMetrics$outboundSchema.parse(guardrailMetrics),
-  );
-}
 export function guardrailMetricsFromJSON(
   jsonString: string,
 ): SafeParseResult<GuardrailMetrics, SDKValidationError> {
@@ -489,52 +449,30 @@ export function guardrailMetricsFromJSON(
 /** @internal */
 export const Device$inboundSchema: z.ZodNativeEnum<typeof Device> = z
   .nativeEnum(Device);
-/** @internal */
-export const Device$outboundSchema: z.ZodNativeEnum<typeof Device> =
-  Device$inboundSchema;
 
 /** @internal */
 export const DurationUnit$inboundSchema: z.ZodNativeEnum<typeof DurationUnit> =
   z.nativeEnum(DurationUnit);
-/** @internal */
-export const DurationUnit$outboundSchema: z.ZodNativeEnum<typeof DurationUnit> =
-  DurationUnit$inboundSchema;
 
 /** @internal */
 export const AllocationUnit$inboundSchema: z.ZodNativeEnum<
   typeof AllocationUnit
 > = z.nativeEnum(AllocationUnit);
-/** @internal */
-export const AllocationUnit$outboundSchema: z.ZodNativeEnum<
-  typeof AllocationUnit
-> = AllocationUnit$inboundSchema;
 
 /** @internal */
 export const FlagMetricType$inboundSchema: z.ZodNativeEnum<
   typeof FlagMetricType
 > = z.nativeEnum(FlagMetricType);
-/** @internal */
-export const FlagMetricType$outboundSchema: z.ZodNativeEnum<
-  typeof FlagMetricType
-> = FlagMetricType$inboundSchema;
 
 /** @internal */
 export const FlagMetricUnit$inboundSchema: z.ZodNativeEnum<
   typeof FlagMetricUnit
 > = z.nativeEnum(FlagMetricUnit);
-/** @internal */
-export const FlagMetricUnit$outboundSchema: z.ZodNativeEnum<
-  typeof FlagMetricUnit
-> = FlagMetricUnit$inboundSchema;
 
 /** @internal */
 export const FlagDirectionality$inboundSchema: z.ZodNativeEnum<
   typeof FlagDirectionality
 > = z.nativeEnum(FlagDirectionality);
-/** @internal */
-export const FlagDirectionality$outboundSchema: z.ZodNativeEnum<
-  typeof FlagDirectionality
-> = FlagDirectionality$inboundSchema;
 
 /** @internal */
 export const PrimaryMetrics$inboundSchema: z.ZodType<
@@ -549,33 +487,7 @@ export const PrimaryMetrics$inboundSchema: z.ZodType<
   metricUnit: FlagMetricUnit$inboundSchema,
   directionality: FlagDirectionality$inboundSchema,
 });
-/** @internal */
-export type PrimaryMetrics$Outbound = {
-  description?: string | undefined;
-  metricFormula?: string | undefined;
-  name: string;
-  metricType: string;
-  metricUnit: string;
-  directionality: string;
-};
 
-/** @internal */
-export const PrimaryMetrics$outboundSchema: z.ZodType<
-  PrimaryMetrics$Outbound,
-  z.ZodTypeDef,
-  PrimaryMetrics
-> = z.object({
-  description: z.string().optional(),
-  metricFormula: z.string().optional(),
-  name: z.string(),
-  metricType: FlagMetricType$outboundSchema,
-  metricUnit: FlagMetricUnit$outboundSchema,
-  directionality: FlagDirectionality$outboundSchema,
-});
-
-export function primaryMetricsToJSON(primaryMetrics: PrimaryMetrics): string {
-  return JSON.stringify(PrimaryMetrics$outboundSchema.parse(primaryMetrics));
-}
 export function primaryMetricsFromJSON(
   jsonString: string,
 ): SafeParseResult<PrimaryMetrics, SDKValidationError> {
@@ -589,9 +501,6 @@ export function primaryMetricsFromJSON(
 /** @internal */
 export const FlagStatus$inboundSchema: z.ZodNativeEnum<typeof FlagStatus> = z
   .nativeEnum(FlagStatus);
-/** @internal */
-export const FlagStatus$outboundSchema: z.ZodNativeEnum<typeof FlagStatus> =
-  FlagStatus$inboundSchema;
 
 /** @internal */
 export const Experiment$inboundSchema: z.ZodType<
@@ -622,62 +531,7 @@ export const Experiment$inboundSchema: z.ZodType<
   primaryMetrics: z.array(z.lazy(() => PrimaryMetrics$inboundSchema)),
   status: FlagStatus$inboundSchema,
 });
-/** @internal */
-export type Experiment$Outbound = {
-  id?: string | undefined;
-  name?: string | undefined;
-  numVariants?: number | undefined;
-  surfaceArea?: string | undefined;
-  stickyRequirement?: boolean | undefined;
-  layer?: string | undefined;
-  guardrailMetrics?: Array<GuardrailMetrics$Outbound> | undefined;
-  hypothesis?: string | undefined;
-  device?: string | undefined;
-  controlVariantId?: string | undefined;
-  startedAt?: number | undefined;
-  endedAt?: number | undefined;
-  decision?: string | undefined;
-  decisionReason?: string | undefined;
-  duration?: number | undefined;
-  durationUnit?: string | undefined;
-  allocationPercent?: number | undefined;
-  allocationUnit: string;
-  primaryMetrics: Array<PrimaryMetrics$Outbound>;
-  status: string;
-};
 
-/** @internal */
-export const Experiment$outboundSchema: z.ZodType<
-  Experiment$Outbound,
-  z.ZodTypeDef,
-  Experiment
-> = z.object({
-  id: z.string().optional(),
-  name: z.string().optional(),
-  numVariants: z.number().optional(),
-  surfaceArea: z.string().optional(),
-  stickyRequirement: z.boolean().optional(),
-  layer: z.string().optional(),
-  guardrailMetrics: z.array(z.lazy(() => GuardrailMetrics$outboundSchema))
-    .optional(),
-  hypothesis: z.string().optional(),
-  device: Device$outboundSchema.optional(),
-  controlVariantId: z.string().optional(),
-  startedAt: z.number().optional(),
-  endedAt: z.number().optional(),
-  decision: z.string().optional(),
-  decisionReason: z.string().optional(),
-  duration: z.number().optional(),
-  durationUnit: DurationUnit$outboundSchema.optional(),
-  allocationPercent: z.number().optional(),
-  allocationUnit: AllocationUnit$outboundSchema,
-  primaryMetrics: z.array(z.lazy(() => PrimaryMetrics$outboundSchema)),
-  status: FlagStatus$outboundSchema,
-});
-
-export function experimentToJSON(experiment: Experiment): string {
-  return JSON.stringify(Experiment$outboundSchema.parse(experiment));
-}
 export function experimentFromJSON(
   jsonString: string,
 ): SafeParseResult<Experiment, SDKValidationError> {
@@ -694,19 +548,7 @@ export const Variants$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-/** @internal */
-export type Variants$Outbound = {};
 
-/** @internal */
-export const Variants$outboundSchema: z.ZodType<
-  Variants$Outbound,
-  z.ZodTypeDef,
-  Variants
-> = z.object({});
-
-export function variantsToJSON(variants: Variants): string {
-  return JSON.stringify(Variants$outboundSchema.parse(variants));
-}
 export function variantsFromJSON(
   jsonString: string,
 ): SafeParseResult<Variants, SDKValidationError> {
@@ -723,25 +565,7 @@ export const Reuse$inboundSchema: z.ZodType<Reuse, z.ZodTypeDef, unknown> = z
     active: types.boolean(),
     environment: types.string(),
   });
-/** @internal */
-export type Reuse$Outbound = {
-  active: boolean;
-  environment: string;
-};
 
-/** @internal */
-export const Reuse$outboundSchema: z.ZodType<
-  Reuse$Outbound,
-  z.ZodTypeDef,
-  Reuse
-> = z.object({
-  active: z.boolean(),
-  environment: z.string(),
-});
-
-export function reuseToJSON(reuse: Reuse): string {
-  return JSON.stringify(Reuse$outboundSchema.parse(reuse));
-}
 export function reuseFromJSON(
   jsonString: string,
 ): SafeParseResult<Reuse, SDKValidationError> {
@@ -758,25 +582,7 @@ export const Targets$inboundSchema: z.ZodType<Targets, z.ZodTypeDef, unknown> =
     note: types.optional(types.string()),
     value: types.string(),
   });
-/** @internal */
-export type Targets$Outbound = {
-  note?: string | undefined;
-  value: string;
-};
 
-/** @internal */
-export const Targets$outboundSchema: z.ZodType<
-  Targets$Outbound,
-  z.ZodTypeDef,
-  Targets
-> = z.object({
-  note: z.string().optional(),
-  value: z.string(),
-});
-
-export function targetsToJSON(targets: Targets): string {
-  return JSON.stringify(Targets$outboundSchema.parse(targets));
-}
 export function targetsFromJSON(
   jsonString: string,
 ): SafeParseResult<Targets, SDKValidationError> {
@@ -790,9 +596,6 @@ export function targetsFromJSON(
 /** @internal */
 export const FlagType$inboundSchema: z.ZodNativeEnum<typeof FlagType> = z
   .nativeEnum(FlagType);
-/** @internal */
-export const FlagType$outboundSchema: z.ZodNativeEnum<typeof FlagType> =
-  FlagType$inboundSchema;
 
 /** @internal */
 export const PausedOutcome$inboundSchema: z.ZodType<
@@ -803,25 +606,7 @@ export const PausedOutcome$inboundSchema: z.ZodType<
   type: FlagType$inboundSchema,
   variantId: types.string(),
 });
-/** @internal */
-export type PausedOutcome$Outbound = {
-  type: string;
-  variantId: string;
-};
 
-/** @internal */
-export const PausedOutcome$outboundSchema: z.ZodType<
-  PausedOutcome$Outbound,
-  z.ZodTypeDef,
-  PausedOutcome
-> = z.object({
-  type: FlagType$outboundSchema,
-  variantId: z.string(),
-});
-
-export function pausedOutcomeToJSON(pausedOutcome: PausedOutcome): string {
-  return JSON.stringify(PausedOutcome$outboundSchema.parse(pausedOutcome));
-}
 export function pausedOutcomeFromJSON(
   jsonString: string,
 ): SafeParseResult<PausedOutcome, SDKValidationError> {
@@ -836,10 +621,6 @@ export function pausedOutcomeFromJSON(
 export const FlagFallthroughEnvironments3Type$inboundSchema: z.ZodNativeEnum<
   typeof FlagFallthroughEnvironments3Type
 > = z.nativeEnum(FlagFallthroughEnvironments3Type);
-/** @internal */
-export const FlagFallthroughEnvironments3Type$outboundSchema: z.ZodNativeEnum<
-  typeof FlagFallthroughEnvironments3Type
-> = FlagFallthroughEnvironments3Type$inboundSchema;
 
 /** @internal */
 export const FallthroughBase$inboundSchema: z.ZodType<
@@ -851,29 +632,7 @@ export const FallthroughBase$inboundSchema: z.ZodType<
   kind: types.string(),
   attribute: types.string(),
 });
-/** @internal */
-export type FallthroughBase$Outbound = {
-  type: string;
-  kind: string;
-  attribute: string;
-};
 
-/** @internal */
-export const FallthroughBase$outboundSchema: z.ZodType<
-  FallthroughBase$Outbound,
-  z.ZodTypeDef,
-  FallthroughBase
-> = z.object({
-  type: FlagFallthroughEnvironments3Type$outboundSchema,
-  kind: z.string(),
-  attribute: z.string(),
-});
-
-export function fallthroughBaseToJSON(
-  fallthroughBase: FallthroughBase,
-): string {
-  return JSON.stringify(FallthroughBase$outboundSchema.parse(fallthroughBase));
-}
 export function fallthroughBaseFromJSON(
   jsonString: string,
 ): SafeParseResult<FallthroughBase, SDKValidationError> {
@@ -890,25 +649,7 @@ export const Slots$inboundSchema: z.ZodType<Slots, z.ZodTypeDef, unknown> = z
     promille: types.number(),
     durationMs: types.number(),
   });
-/** @internal */
-export type Slots$Outbound = {
-  promille: number;
-  durationMs: number;
-};
 
-/** @internal */
-export const Slots$outboundSchema: z.ZodType<
-  Slots$Outbound,
-  z.ZodTypeDef,
-  Slots
-> = z.object({
-  promille: z.number(),
-  durationMs: z.number(),
-});
-
-export function slotsToJSON(slots: Slots): string {
-  return JSON.stringify(Slots$outboundSchema.parse(slots));
-}
 export function slotsFromJSON(
   jsonString: string,
 ): SafeParseResult<Slots, SDKValidationError> {
@@ -933,35 +674,7 @@ export const Fallthrough3$inboundSchema: z.ZodType<
   rollToVariantId: types.string(),
   slots: z.array(z.lazy(() => Slots$inboundSchema)),
 });
-/** @internal */
-export type Fallthrough3$Outbound = {
-  type: "rollout";
-  base: FallthroughBase$Outbound;
-  defaultVariantId: string;
-  startTimestamp: number;
-  rollFromVariantId: string;
-  rollToVariantId: string;
-  slots: Array<Slots$Outbound>;
-};
 
-/** @internal */
-export const Fallthrough3$outboundSchema: z.ZodType<
-  Fallthrough3$Outbound,
-  z.ZodTypeDef,
-  Fallthrough3
-> = z.object({
-  type: z.literal("rollout"),
-  base: z.lazy(() => FallthroughBase$outboundSchema),
-  defaultVariantId: z.string(),
-  startTimestamp: z.number(),
-  rollFromVariantId: z.string(),
-  rollToVariantId: z.string(),
-  slots: z.array(z.lazy(() => Slots$outboundSchema)),
-});
-
-export function fallthrough3ToJSON(fallthrough3: Fallthrough3): string {
-  return JSON.stringify(Fallthrough3$outboundSchema.parse(fallthrough3));
-}
 export function fallthrough3FromJSON(
   jsonString: string,
 ): SafeParseResult<Fallthrough3, SDKValidationError> {
@@ -976,10 +689,6 @@ export function fallthrough3FromJSON(
 export const FlagFallthroughEnvironments2Type$inboundSchema: z.ZodNativeEnum<
   typeof FlagFallthroughEnvironments2Type
 > = z.nativeEnum(FlagFallthroughEnvironments2Type);
-/** @internal */
-export const FlagFallthroughEnvironments2Type$outboundSchema: z.ZodNativeEnum<
-  typeof FlagFallthroughEnvironments2Type
-> = FlagFallthroughEnvironments2Type$inboundSchema;
 
 /** @internal */
 export const Base$inboundSchema: z.ZodType<Base, z.ZodTypeDef, unknown> = z
@@ -988,24 +697,7 @@ export const Base$inboundSchema: z.ZodType<Base, z.ZodTypeDef, unknown> = z
     kind: types.string(),
     attribute: types.string(),
   });
-/** @internal */
-export type Base$Outbound = {
-  type: string;
-  kind: string;
-  attribute: string;
-};
 
-/** @internal */
-export const Base$outboundSchema: z.ZodType<Base$Outbound, z.ZodTypeDef, Base> =
-  z.object({
-    type: FlagFallthroughEnvironments2Type$outboundSchema,
-    kind: z.string(),
-    attribute: z.string(),
-  });
-
-export function baseToJSON(base: Base): string {
-  return JSON.stringify(Base$outboundSchema.parse(base));
-}
 export function baseFromJSON(
   jsonString: string,
 ): SafeParseResult<Base, SDKValidationError> {
@@ -1027,29 +719,7 @@ export const Fallthrough2$inboundSchema: z.ZodType<
   weights: z.record(types.number()),
   defaultVariantId: types.string(),
 });
-/** @internal */
-export type Fallthrough2$Outbound = {
-  type: "split";
-  base: Base$Outbound;
-  weights: { [k: string]: number };
-  defaultVariantId: string;
-};
 
-/** @internal */
-export const Fallthrough2$outboundSchema: z.ZodType<
-  Fallthrough2$Outbound,
-  z.ZodTypeDef,
-  Fallthrough2
-> = z.object({
-  type: z.literal("split"),
-  base: z.lazy(() => Base$outboundSchema),
-  weights: z.record(z.number()),
-  defaultVariantId: z.string(),
-});
-
-export function fallthrough2ToJSON(fallthrough2: Fallthrough2): string {
-  return JSON.stringify(Fallthrough2$outboundSchema.parse(fallthrough2));
-}
 export function fallthrough2FromJSON(
   jsonString: string,
 ): SafeParseResult<Fallthrough2, SDKValidationError> {
@@ -1069,25 +739,7 @@ export const Fallthrough1$inboundSchema: z.ZodType<
   type: types.literal("variant"),
   variantId: types.string(),
 });
-/** @internal */
-export type Fallthrough1$Outbound = {
-  type: "variant";
-  variantId: string;
-};
 
-/** @internal */
-export const Fallthrough1$outboundSchema: z.ZodType<
-  Fallthrough1$Outbound,
-  z.ZodTypeDef,
-  Fallthrough1
-> = z.object({
-  type: z.literal("variant"),
-  variantId: z.string(),
-});
-
-export function fallthrough1ToJSON(fallthrough1: Fallthrough1): string {
-  return JSON.stringify(Fallthrough1$outboundSchema.parse(fallthrough1));
-}
 export function fallthrough1FromJSON(
   jsonString: string,
 ): SafeParseResult<Fallthrough1, SDKValidationError> {
@@ -1108,26 +760,7 @@ export const Fallthrough$inboundSchema: z.ZodType<
   z.lazy(() => Fallthrough2$inboundSchema),
   z.lazy(() => Fallthrough3$inboundSchema),
 ]);
-/** @internal */
-export type Fallthrough$Outbound =
-  | Fallthrough1$Outbound
-  | Fallthrough2$Outbound
-  | Fallthrough3$Outbound;
 
-/** @internal */
-export const Fallthrough$outboundSchema: z.ZodType<
-  Fallthrough$Outbound,
-  z.ZodTypeDef,
-  Fallthrough
-> = z.union([
-  z.lazy(() => Fallthrough1$outboundSchema),
-  z.lazy(() => Fallthrough2$outboundSchema),
-  z.lazy(() => Fallthrough3$outboundSchema),
-]);
-
-export function fallthroughToJSON(fallthrough: Fallthrough): string {
-  return JSON.stringify(Fallthrough$outboundSchema.parse(fallthrough));
-}
 export function fallthroughFromJSON(
   jsonString: string,
 ): SafeParseResult<Fallthrough, SDKValidationError> {
@@ -1142,10 +775,6 @@ export function fallthroughFromJSON(
 export const FlagOutcomeEnvironmentsRules3Type$inboundSchema: z.ZodNativeEnum<
   typeof FlagOutcomeEnvironmentsRules3Type
 > = z.nativeEnum(FlagOutcomeEnvironmentsRules3Type);
-/** @internal */
-export const FlagOutcomeEnvironmentsRules3Type$outboundSchema: z.ZodNativeEnum<
-  typeof FlagOutcomeEnvironmentsRules3Type
-> = FlagOutcomeEnvironmentsRules3Type$inboundSchema;
 
 /** @internal */
 export const FlagOutcomeBase$inboundSchema: z.ZodType<
@@ -1157,29 +786,7 @@ export const FlagOutcomeBase$inboundSchema: z.ZodType<
   kind: types.string(),
   attribute: types.string(),
 });
-/** @internal */
-export type FlagOutcomeBase$Outbound = {
-  type: string;
-  kind: string;
-  attribute: string;
-};
 
-/** @internal */
-export const FlagOutcomeBase$outboundSchema: z.ZodType<
-  FlagOutcomeBase$Outbound,
-  z.ZodTypeDef,
-  FlagOutcomeBase
-> = z.object({
-  type: FlagOutcomeEnvironmentsRules3Type$outboundSchema,
-  kind: z.string(),
-  attribute: z.string(),
-});
-
-export function flagOutcomeBaseToJSON(
-  flagOutcomeBase: FlagOutcomeBase,
-): string {
-  return JSON.stringify(FlagOutcomeBase$outboundSchema.parse(flagOutcomeBase));
-}
 export function flagOutcomeBaseFromJSON(
   jsonString: string,
 ): SafeParseResult<FlagOutcomeBase, SDKValidationError> {
@@ -1199,25 +806,7 @@ export const OutcomeSlots$inboundSchema: z.ZodType<
   promille: types.number(),
   durationMs: types.number(),
 });
-/** @internal */
-export type OutcomeSlots$Outbound = {
-  promille: number;
-  durationMs: number;
-};
 
-/** @internal */
-export const OutcomeSlots$outboundSchema: z.ZodType<
-  OutcomeSlots$Outbound,
-  z.ZodTypeDef,
-  OutcomeSlots
-> = z.object({
-  promille: z.number(),
-  durationMs: z.number(),
-});
-
-export function outcomeSlotsToJSON(outcomeSlots: OutcomeSlots): string {
-  return JSON.stringify(OutcomeSlots$outboundSchema.parse(outcomeSlots));
-}
 export function outcomeSlotsFromJSON(
   jsonString: string,
 ): SafeParseResult<OutcomeSlots, SDKValidationError> {
@@ -1242,35 +831,7 @@ export const Outcome3$inboundSchema: z.ZodType<
   rollToVariantId: types.string(),
   slots: z.array(z.lazy(() => OutcomeSlots$inboundSchema)),
 });
-/** @internal */
-export type Outcome3$Outbound = {
-  type: "rollout";
-  base: FlagOutcomeBase$Outbound;
-  defaultVariantId: string;
-  startTimestamp: number;
-  rollFromVariantId: string;
-  rollToVariantId: string;
-  slots: Array<OutcomeSlots$Outbound>;
-};
 
-/** @internal */
-export const Outcome3$outboundSchema: z.ZodType<
-  Outcome3$Outbound,
-  z.ZodTypeDef,
-  Outcome3
-> = z.object({
-  type: z.literal("rollout"),
-  base: z.lazy(() => FlagOutcomeBase$outboundSchema),
-  defaultVariantId: z.string(),
-  startTimestamp: z.number(),
-  rollFromVariantId: z.string(),
-  rollToVariantId: z.string(),
-  slots: z.array(z.lazy(() => OutcomeSlots$outboundSchema)),
-});
-
-export function outcome3ToJSON(outcome3: Outcome3): string {
-  return JSON.stringify(Outcome3$outboundSchema.parse(outcome3));
-}
 export function outcome3FromJSON(
   jsonString: string,
 ): SafeParseResult<Outcome3, SDKValidationError> {
@@ -1285,10 +846,6 @@ export function outcome3FromJSON(
 export const FlagOutcomeEnvironmentsRulesType$inboundSchema: z.ZodNativeEnum<
   typeof FlagOutcomeEnvironmentsRulesType
 > = z.nativeEnum(FlagOutcomeEnvironmentsRulesType);
-/** @internal */
-export const FlagOutcomeEnvironmentsRulesType$outboundSchema: z.ZodNativeEnum<
-  typeof FlagOutcomeEnvironmentsRulesType
-> = FlagOutcomeEnvironmentsRulesType$inboundSchema;
 
 /** @internal */
 export const OutcomeBase$inboundSchema: z.ZodType<
@@ -1300,27 +857,7 @@ export const OutcomeBase$inboundSchema: z.ZodType<
   kind: types.string(),
   attribute: types.string(),
 });
-/** @internal */
-export type OutcomeBase$Outbound = {
-  type: string;
-  kind: string;
-  attribute: string;
-};
 
-/** @internal */
-export const OutcomeBase$outboundSchema: z.ZodType<
-  OutcomeBase$Outbound,
-  z.ZodTypeDef,
-  OutcomeBase
-> = z.object({
-  type: FlagOutcomeEnvironmentsRulesType$outboundSchema,
-  kind: z.string(),
-  attribute: z.string(),
-});
-
-export function outcomeBaseToJSON(outcomeBase: OutcomeBase): string {
-  return JSON.stringify(OutcomeBase$outboundSchema.parse(outcomeBase));
-}
 export function outcomeBaseFromJSON(
   jsonString: string,
 ): SafeParseResult<OutcomeBase, SDKValidationError> {
@@ -1342,29 +879,7 @@ export const Outcome2$inboundSchema: z.ZodType<
   weights: z.record(types.number()),
   defaultVariantId: types.string(),
 });
-/** @internal */
-export type Outcome2$Outbound = {
-  type: "split";
-  base: OutcomeBase$Outbound;
-  weights: { [k: string]: number };
-  defaultVariantId: string;
-};
 
-/** @internal */
-export const Outcome2$outboundSchema: z.ZodType<
-  Outcome2$Outbound,
-  z.ZodTypeDef,
-  Outcome2
-> = z.object({
-  type: z.literal("split"),
-  base: z.lazy(() => OutcomeBase$outboundSchema),
-  weights: z.record(z.number()),
-  defaultVariantId: z.string(),
-});
-
-export function outcome2ToJSON(outcome2: Outcome2): string {
-  return JSON.stringify(Outcome2$outboundSchema.parse(outcome2));
-}
 export function outcome2FromJSON(
   jsonString: string,
 ): SafeParseResult<Outcome2, SDKValidationError> {
@@ -1384,25 +899,7 @@ export const Outcome1$inboundSchema: z.ZodType<
   type: types.literal("variant"),
   variantId: types.string(),
 });
-/** @internal */
-export type Outcome1$Outbound = {
-  type: "variant";
-  variantId: string;
-};
 
-/** @internal */
-export const Outcome1$outboundSchema: z.ZodType<
-  Outcome1$Outbound,
-  z.ZodTypeDef,
-  Outcome1
-> = z.object({
-  type: z.literal("variant"),
-  variantId: z.string(),
-});
-
-export function outcome1ToJSON(outcome1: Outcome1): string {
-  return JSON.stringify(Outcome1$outboundSchema.parse(outcome1));
-}
 export function outcome1FromJSON(
   jsonString: string,
 ): SafeParseResult<Outcome1, SDKValidationError> {
@@ -1420,26 +917,7 @@ export const Outcome$inboundSchema: z.ZodType<Outcome, z.ZodTypeDef, unknown> =
     z.lazy(() => Outcome2$inboundSchema),
     z.lazy(() => Outcome3$inboundSchema),
   ]);
-/** @internal */
-export type Outcome$Outbound =
-  | Outcome1$Outbound
-  | Outcome2$Outbound
-  | Outcome3$Outbound;
 
-/** @internal */
-export const Outcome$outboundSchema: z.ZodType<
-  Outcome$Outbound,
-  z.ZodTypeDef,
-  Outcome
-> = z.union([
-  z.lazy(() => Outcome1$outboundSchema),
-  z.lazy(() => Outcome2$outboundSchema),
-  z.lazy(() => Outcome3$outboundSchema),
-]);
-
-export function outcomeToJSON(outcome: Outcome): string {
-  return JSON.stringify(Outcome$outboundSchema.parse(outcome));
-}
 export function outcomeFromJSON(
   jsonString: string,
 ): SafeParseResult<Outcome, SDKValidationError> {
@@ -1453,9 +931,6 @@ export function outcomeFromJSON(
 /** @internal */
 export const FlagRhsType$inboundSchema: z.ZodNativeEnum<typeof FlagRhsType> = z
   .nativeEnum(FlagRhsType);
-/** @internal */
-export const FlagRhsType$outboundSchema: z.ZodNativeEnum<typeof FlagRhsType> =
-  FlagRhsType$inboundSchema;
 
 /** @internal */
 export const Rhs4$inboundSchema: z.ZodType<Rhs4, z.ZodTypeDef, unknown> = z
@@ -1464,24 +939,7 @@ export const Rhs4$inboundSchema: z.ZodType<Rhs4, z.ZodTypeDef, unknown> = z
     pattern: types.string(),
     flags: types.string(),
   });
-/** @internal */
-export type Rhs4$Outbound = {
-  type: string;
-  pattern: string;
-  flags: string;
-};
 
-/** @internal */
-export const Rhs4$outboundSchema: z.ZodType<Rhs4$Outbound, z.ZodTypeDef, Rhs4> =
-  z.object({
-    type: FlagRhsType$outboundSchema,
-    pattern: z.string(),
-    flags: z.string(),
-  });
-
-export function rhs4ToJSON(rhs4: Rhs4): string {
-  return JSON.stringify(Rhs4$outboundSchema.parse(rhs4));
-}
 export function rhs4FromJSON(
   jsonString: string,
 ): SafeParseResult<Rhs4, SDKValidationError> {
@@ -1495,9 +953,6 @@ export function rhs4FromJSON(
 /** @internal */
 export const RhsType$inboundSchema: z.ZodNativeEnum<typeof RhsType> = z
   .nativeEnum(RhsType);
-/** @internal */
-export const RhsType$outboundSchema: z.ZodNativeEnum<typeof RhsType> =
-  RhsType$inboundSchema;
 
 /** @internal */
 export const Items2$inboundSchema: z.ZodType<Items2, z.ZodTypeDef, unknown> = z
@@ -1506,27 +961,7 @@ export const Items2$inboundSchema: z.ZodType<Items2, z.ZodTypeDef, unknown> = z
     note: types.optional(types.string()),
     value: types.string(),
   });
-/** @internal */
-export type Items2$Outbound = {
-  label?: string | undefined;
-  note?: string | undefined;
-  value: string;
-};
 
-/** @internal */
-export const Items2$outboundSchema: z.ZodType<
-  Items2$Outbound,
-  z.ZodTypeDef,
-  Items2
-> = z.object({
-  label: z.string().optional(),
-  note: z.string().optional(),
-  value: z.string(),
-});
-
-export function items2ToJSON(items2: Items2): string {
-  return JSON.stringify(Items2$outboundSchema.parse(items2));
-}
 export function items2FromJSON(
   jsonString: string,
 ): SafeParseResult<Items2, SDKValidationError> {
@@ -1544,27 +979,7 @@ export const Items1$inboundSchema: z.ZodType<Items1, z.ZodTypeDef, unknown> = z
     note: types.optional(types.string()),
     value: types.number(),
   });
-/** @internal */
-export type Items1$Outbound = {
-  label?: string | undefined;
-  note?: string | undefined;
-  value: number;
-};
 
-/** @internal */
-export const Items1$outboundSchema: z.ZodType<
-  Items1$Outbound,
-  z.ZodTypeDef,
-  Items1
-> = z.object({
-  label: z.string().optional(),
-  note: z.string().optional(),
-  value: z.number(),
-});
-
-export function items1ToJSON(items1: Items1): string {
-  return JSON.stringify(Items1$outboundSchema.parse(items1));
-}
 export function items1FromJSON(
   jsonString: string,
 ): SafeParseResult<Items1, SDKValidationError> {
@@ -1584,22 +999,7 @@ export const RhsItems$inboundSchema: z.ZodType<
   z.lazy(() => Items1$inboundSchema),
   z.lazy(() => Items2$inboundSchema),
 ]);
-/** @internal */
-export type RhsItems$Outbound = Items1$Outbound | Items2$Outbound;
 
-/** @internal */
-export const RhsItems$outboundSchema: z.ZodType<
-  RhsItems$Outbound,
-  z.ZodTypeDef,
-  RhsItems
-> = smartUnion([
-  z.lazy(() => Items1$outboundSchema),
-  z.lazy(() => Items2$outboundSchema),
-]);
-
-export function rhsItemsToJSON(rhsItems: RhsItems): string {
-  return JSON.stringify(RhsItems$outboundSchema.parse(rhsItems));
-}
 export function rhsItemsFromJSON(
   jsonString: string,
 ): SafeParseResult<RhsItems, SDKValidationError> {
@@ -1621,27 +1021,7 @@ export const Rhs3$inboundSchema: z.ZodType<Rhs3, z.ZodTypeDef, unknown> = z
       ]),
     ),
   });
-/** @internal */
-export type Rhs3$Outbound = {
-  type: string;
-  items: Array<Items1$Outbound | Items2$Outbound>;
-};
 
-/** @internal */
-export const Rhs3$outboundSchema: z.ZodType<Rhs3$Outbound, z.ZodTypeDef, Rhs3> =
-  z.object({
-    type: RhsType$outboundSchema,
-    items: z.array(
-      smartUnion([
-        z.lazy(() => Items1$outboundSchema),
-        z.lazy(() => Items2$outboundSchema),
-      ]),
-    ),
-  });
-
-export function rhs3ToJSON(rhs3: Rhs3): string {
-  return JSON.stringify(Rhs3$outboundSchema.parse(rhs3));
-}
 export function rhs3FromJSON(
   jsonString: string,
 ): SafeParseResult<Rhs3, SDKValidationError> {
@@ -1661,27 +1041,7 @@ export const Rhs$inboundSchema: z.ZodType<Rhs, z.ZodTypeDef, unknown> =
     types.number(),
     types.boolean(),
   ]);
-/** @internal */
-export type Rhs$Outbound =
-  | Rhs4$Outbound
-  | Rhs3$Outbound
-  | string
-  | number
-  | boolean;
 
-/** @internal */
-export const Rhs$outboundSchema: z.ZodType<Rhs$Outbound, z.ZodTypeDef, Rhs> =
-  smartUnion([
-    z.lazy(() => Rhs4$outboundSchema),
-    z.lazy(() => Rhs3$outboundSchema),
-    z.string(),
-    z.number(),
-    z.boolean(),
-  ]);
-
-export function rhsToJSON(rhs: Rhs): string {
-  return JSON.stringify(Rhs$outboundSchema.parse(rhs));
-}
 export function rhsFromJSON(
   jsonString: string,
 ): SafeParseResult<Rhs, SDKValidationError> {
@@ -1700,23 +1060,7 @@ export const CmpOptions$inboundSchema: z.ZodType<
 > = z.object({
   ignoreCase: types.optional(types.boolean()),
 });
-/** @internal */
-export type CmpOptions$Outbound = {
-  ignoreCase?: boolean | undefined;
-};
 
-/** @internal */
-export const CmpOptions$outboundSchema: z.ZodType<
-  CmpOptions$Outbound,
-  z.ZodTypeDef,
-  CmpOptions
-> = z.object({
-  ignoreCase: z.boolean().optional(),
-});
-
-export function cmpOptionsToJSON(cmpOptions: CmpOptions): string {
-  return JSON.stringify(CmpOptions$outboundSchema.parse(cmpOptions));
-}
 export function cmpOptionsFromJSON(
   jsonString: string,
 ): SafeParseResult<CmpOptions, SDKValidationError> {
@@ -1734,24 +1078,7 @@ export const Lhs2$inboundSchema: z.ZodType<Lhs2, z.ZodTypeDef, unknown> = z
     kind: types.string(),
     attribute: types.string(),
   });
-/** @internal */
-export type Lhs2$Outbound = {
-  type: "entity";
-  kind: string;
-  attribute: string;
-};
 
-/** @internal */
-export const Lhs2$outboundSchema: z.ZodType<Lhs2$Outbound, z.ZodTypeDef, Lhs2> =
-  z.object({
-    type: z.literal("entity"),
-    kind: z.string(),
-    attribute: z.string(),
-  });
-
-export function lhs2ToJSON(lhs2: Lhs2): string {
-  return JSON.stringify(Lhs2$outboundSchema.parse(lhs2));
-}
 export function lhs2FromJSON(
   jsonString: string,
 ): SafeParseResult<Lhs2, SDKValidationError> {
@@ -1767,20 +1094,7 @@ export const Lhs1$inboundSchema: z.ZodType<Lhs1, z.ZodTypeDef, unknown> = z
   .object({
     type: types.literal("segment"),
   });
-/** @internal */
-export type Lhs1$Outbound = {
-  type: "segment";
-};
 
-/** @internal */
-export const Lhs1$outboundSchema: z.ZodType<Lhs1$Outbound, z.ZodTypeDef, Lhs1> =
-  z.object({
-    type: z.literal("segment"),
-  });
-
-export function lhs1ToJSON(lhs1: Lhs1): string {
-  return JSON.stringify(Lhs1$outboundSchema.parse(lhs1));
-}
 export function lhs1FromJSON(
   jsonString: string,
 ): SafeParseResult<Lhs1, SDKValidationError> {
@@ -1795,19 +1109,7 @@ export function lhs1FromJSON(
 export const Lhs$inboundSchema: z.ZodType<Lhs, z.ZodTypeDef, unknown> = z.union(
   [z.lazy(() => Lhs1$inboundSchema), z.lazy(() => Lhs2$inboundSchema)],
 );
-/** @internal */
-export type Lhs$Outbound = Lhs1$Outbound | Lhs2$Outbound;
 
-/** @internal */
-export const Lhs$outboundSchema: z.ZodType<Lhs$Outbound, z.ZodTypeDef, Lhs> = z
-  .union([
-    z.lazy(() => Lhs1$outboundSchema),
-    z.lazy(() => Lhs2$outboundSchema),
-  ]);
-
-export function lhsToJSON(lhs: Lhs): string {
-  return JSON.stringify(Lhs$outboundSchema.parse(lhs));
-}
 export function lhsFromJSON(
   jsonString: string,
 ): SafeParseResult<Lhs, SDKValidationError> {
@@ -1820,9 +1122,6 @@ export function lhsFromJSON(
 
 /** @internal */
 export const Cmp$inboundSchema: z.ZodNativeEnum<typeof Cmp> = z.nativeEnum(Cmp);
-/** @internal */
-export const Cmp$outboundSchema: z.ZodNativeEnum<typeof Cmp> =
-  Cmp$inboundSchema;
 
 /** @internal */
 export const Conditions$inboundSchema: z.ZodType<
@@ -1846,38 +1145,7 @@ export const Conditions$inboundSchema: z.ZodType<
   ]),
   cmp: Cmp$inboundSchema,
 });
-/** @internal */
-export type Conditions$Outbound = {
-  rhs?: Rhs4$Outbound | Rhs3$Outbound | string | number | boolean | undefined;
-  cmpOptions?: CmpOptions$Outbound | undefined;
-  lhs: Lhs1$Outbound | Lhs2$Outbound;
-  cmp: string;
-};
 
-/** @internal */
-export const Conditions$outboundSchema: z.ZodType<
-  Conditions$Outbound,
-  z.ZodTypeDef,
-  Conditions
-> = z.object({
-  rhs: smartUnion([
-    z.lazy(() => Rhs4$outboundSchema),
-    z.lazy(() => Rhs3$outboundSchema),
-    z.string(),
-    z.number(),
-    z.boolean(),
-  ]).optional(),
-  cmpOptions: z.lazy(() => CmpOptions$outboundSchema).optional(),
-  lhs: z.union([
-    z.lazy(() => Lhs1$outboundSchema),
-    z.lazy(() => Lhs2$outboundSchema),
-  ]),
-  cmp: Cmp$outboundSchema,
-});
-
-export function conditionsToJSON(conditions: Conditions): string {
-  return JSON.stringify(Conditions$outboundSchema.parse(conditions));
-}
 export function conditionsFromJSON(
   jsonString: string,
 ): SafeParseResult<Conditions, SDKValidationError> {
@@ -1899,31 +1167,7 @@ export const Rules$inboundSchema: z.ZodType<Rules, z.ZodTypeDef, unknown> = z
     ]),
     conditions: z.array(z.lazy(() => Conditions$inboundSchema)),
   });
-/** @internal */
-export type Rules$Outbound = {
-  id: string;
-  outcome: Outcome1$Outbound | Outcome2$Outbound | Outcome3$Outbound;
-  conditions: Array<Conditions$Outbound>;
-};
 
-/** @internal */
-export const Rules$outboundSchema: z.ZodType<
-  Rules$Outbound,
-  z.ZodTypeDef,
-  Rules
-> = z.object({
-  id: z.string(),
-  outcome: z.union([
-    z.lazy(() => Outcome1$outboundSchema),
-    z.lazy(() => Outcome2$outboundSchema),
-    z.lazy(() => Outcome3$outboundSchema),
-  ]),
-  conditions: z.array(z.lazy(() => Conditions$outboundSchema)),
-});
-
-export function rulesToJSON(rules: Rules): string {
-  return JSON.stringify(Rules$outboundSchema.parse(rules));
-}
 export function rulesFromJSON(
   jsonString: string,
 ): SafeParseResult<Rules, SDKValidationError> {
@@ -1954,46 +1198,7 @@ export const Environments$inboundSchema: z.ZodType<
   active: types.boolean(),
   rules: z.array(z.lazy(() => Rules$inboundSchema)),
 });
-/** @internal */
-export type Environments$Outbound = {
-  reuse?: Reuse$Outbound | undefined;
-  targets?: {
-    [k: string]: { [k: string]: { [k: string]: Array<Targets$Outbound> } };
-  } | undefined;
-  revision?: number | undefined;
-  pausedOutcome: PausedOutcome$Outbound;
-  fallthrough:
-    | Fallthrough1$Outbound
-    | Fallthrough2$Outbound
-    | Fallthrough3$Outbound;
-  active: boolean;
-  rules: Array<Rules$Outbound>;
-};
 
-/** @internal */
-export const Environments$outboundSchema: z.ZodType<
-  Environments$Outbound,
-  z.ZodTypeDef,
-  Environments
-> = z.object({
-  reuse: z.lazy(() => Reuse$outboundSchema).optional(),
-  targets: z.record(
-    z.record(z.record(z.array(z.lazy(() => Targets$outboundSchema)))),
-  ).optional(),
-  revision: z.number().optional(),
-  pausedOutcome: z.lazy(() => PausedOutcome$outboundSchema),
-  fallthrough: z.union([
-    z.lazy(() => Fallthrough1$outboundSchema),
-    z.lazy(() => Fallthrough2$outboundSchema),
-    z.lazy(() => Fallthrough3$outboundSchema),
-  ]),
-  active: z.boolean(),
-  rules: z.array(z.lazy(() => Rules$outboundSchema)),
-});
-
-export function environmentsToJSON(environments: Environments): string {
-  return JSON.stringify(Environments$outboundSchema.parse(environments));
-}
 export function environmentsFromJSON(
   jsonString: string,
 ): SafeParseResult<Environments, SDKValidationError> {
@@ -2008,24 +1213,15 @@ export function environmentsFromJSON(
 export const Kind$inboundSchema: z.ZodNativeEnum<typeof Kind> = z.nativeEnum(
   Kind,
 );
-/** @internal */
-export const Kind$outboundSchema: z.ZodNativeEnum<typeof Kind> =
-  Kind$inboundSchema;
 
 /** @internal */
 export const State$inboundSchema: z.ZodNativeEnum<typeof State> = z.nativeEnum(
   State,
 );
-/** @internal */
-export const State$outboundSchema: z.ZodNativeEnum<typeof State> =
-  State$inboundSchema;
 
 /** @internal */
 export const TypeName$inboundSchema: z.ZodNativeEnum<typeof TypeName> = z
   .nativeEnum(TypeName);
-/** @internal */
-export const TypeName$outboundSchema: z.ZodNativeEnum<typeof TypeName> =
-  TypeName$inboundSchema;
 
 /** @internal */
 export const Creator$inboundSchema: z.ZodType<Creator, z.ZodTypeDef, unknown> =
@@ -2033,25 +1229,7 @@ export const Creator$inboundSchema: z.ZodType<Creator, z.ZodTypeDef, unknown> =
     id: types.string(),
     name: types.string(),
   });
-/** @internal */
-export type Creator$Outbound = {
-  id: string;
-  name: string;
-};
 
-/** @internal */
-export const Creator$outboundSchema: z.ZodType<
-  Creator$Outbound,
-  z.ZodTypeDef,
-  Creator
-> = z.object({
-  id: z.string(),
-  name: z.string(),
-});
-
-export function creatorToJSON(creator: Creator): string {
-  return JSON.stringify(Creator$outboundSchema.parse(creator));
-}
 export function creatorFromJSON(
   jsonString: string,
 ): SafeParseResult<Creator, SDKValidationError> {
@@ -2070,23 +1248,7 @@ export const Metadata$inboundSchema: z.ZodType<
 > = z.object({
   creator: types.optional(z.lazy(() => Creator$inboundSchema)),
 });
-/** @internal */
-export type Metadata$Outbound = {
-  creator?: Creator$Outbound | undefined;
-};
 
-/** @internal */
-export const Metadata$outboundSchema: z.ZodType<
-  Metadata$Outbound,
-  z.ZodTypeDef,
-  Metadata
-> = z.object({
-  creator: z.lazy(() => Creator$outboundSchema).optional(),
-});
-
-export function metadataToJSON(metadata: Metadata): string {
-  return JSON.stringify(Metadata$outboundSchema.parse(metadata));
-}
 export function metadataFromJSON(
   jsonString: string,
 ): SafeParseResult<Metadata, SDKValidationError> {
@@ -2121,58 +1283,7 @@ export const Flag$inboundSchema: z.ZodType<Flag, z.ZodTypeDef, unknown> = z
     typeName: TypeName$inboundSchema,
     metadata: types.optional(z.lazy(() => Metadata$inboundSchema)),
   });
-/** @internal */
-export type Flag$Outbound = {
-  description?: string | undefined;
-  maintainerIds?: Array<string> | undefined;
-  permanent?: boolean | undefined;
-  tags?: Array<string> | undefined;
-  experiment?: Experiment$Outbound | undefined;
-  variants: Array<Variants$Outbound>;
-  id: string;
-  environments: { [k: string]: Environments$Outbound };
-  kind: string;
-  revision: number;
-  seed: number;
-  state: string;
-  slug: string;
-  createdAt: number;
-  updatedAt: number;
-  createdBy: string;
-  ownerId: string;
-  projectId: string;
-  typeName: string;
-  metadata?: Metadata$Outbound | undefined;
-};
 
-/** @internal */
-export const Flag$outboundSchema: z.ZodType<Flag$Outbound, z.ZodTypeDef, Flag> =
-  z.object({
-    description: z.string().optional(),
-    maintainerIds: z.array(z.string()).optional(),
-    permanent: z.boolean().optional(),
-    tags: z.array(z.string()).optional(),
-    experiment: z.lazy(() => Experiment$outboundSchema).optional(),
-    variants: z.array(z.lazy(() => Variants$outboundSchema)),
-    id: z.string(),
-    environments: z.record(z.lazy(() => Environments$outboundSchema)),
-    kind: Kind$outboundSchema,
-    revision: z.number(),
-    seed: z.number(),
-    state: State$outboundSchema,
-    slug: z.string(),
-    createdAt: z.number(),
-    updatedAt: z.number(),
-    createdBy: z.string(),
-    ownerId: z.string(),
-    projectId: z.string(),
-    typeName: TypeName$outboundSchema,
-    metadata: z.lazy(() => Metadata$outboundSchema).optional(),
-  });
-
-export function flagToJSON(flag: Flag): string {
-  return JSON.stringify(Flag$outboundSchema.parse(flag));
-}
 export function flagFromJSON(
   jsonString: string,
 ): SafeParseResult<Flag, SDKValidationError> {

@@ -5,14 +5,8 @@
 import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
-import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
-import {
-  UserEvent,
-  UserEvent$inboundSchema,
-  UserEvent$Outbound,
-  UserEvent$outboundSchema,
-} from "./userevent.js";
+import { UserEvent, UserEvent$inboundSchema } from "./userevent.js";
 
 export type ListUserEventsRequest = {
   /**
@@ -68,23 +62,6 @@ export type ListUserEventsResponseBody = {
 };
 
 /** @internal */
-export const ListUserEventsRequest$inboundSchema: z.ZodType<
-  ListUserEventsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  limit: types.optional(types.number()),
-  since: types.optional(types.string()),
-  until: types.optional(types.string()),
-  types: types.optional(types.string()),
-  userId: types.optional(types.string()),
-  principalId: types.optional(types.string()),
-  projectIds: types.optional(types.string()),
-  withPayload: types.optional(types.string()),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
-/** @internal */
 export type ListUserEventsRequest$Outbound = {
   limit?: number | undefined;
   since?: string | undefined;
@@ -123,15 +100,6 @@ export function listUserEventsRequestToJSON(
     ListUserEventsRequest$outboundSchema.parse(listUserEventsRequest),
   );
 }
-export function listUserEventsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<ListUserEventsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ListUserEventsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ListUserEventsRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const ListUserEventsResponseBody$inboundSchema: z.ZodType<
@@ -141,27 +109,7 @@ export const ListUserEventsResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   events: z.array(UserEvent$inboundSchema),
 });
-/** @internal */
-export type ListUserEventsResponseBody$Outbound = {
-  events: Array<UserEvent$Outbound>;
-};
 
-/** @internal */
-export const ListUserEventsResponseBody$outboundSchema: z.ZodType<
-  ListUserEventsResponseBody$Outbound,
-  z.ZodTypeDef,
-  ListUserEventsResponseBody
-> = z.object({
-  events: z.array(UserEvent$outboundSchema),
-});
-
-export function listUserEventsResponseBodyToJSON(
-  listUserEventsResponseBody: ListUserEventsResponseBody,
-): string {
-  return JSON.stringify(
-    ListUserEventsResponseBody$outboundSchema.parse(listUserEventsResponseBody),
-  );
-}
 export function listUserEventsResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<ListUserEventsResponseBody, SDKValidationError> {

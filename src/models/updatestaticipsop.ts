@@ -75,15 +75,6 @@ export type UpdateStaticIpsResponseBody = {
 };
 
 /** @internal */
-export const UpdateStaticIpsRequestBody2$inboundSchema: z.ZodType<
-  UpdateStaticIpsRequestBody2,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  builds: types.optional(types.boolean()),
-  regions: z.array(types.string()),
-});
-/** @internal */
 export type UpdateStaticIpsRequestBody2$Outbound = {
   builds?: boolean | undefined;
   regions: Array<string>;
@@ -108,25 +99,7 @@ export function updateStaticIpsRequestBody2ToJSON(
     ),
   );
 }
-export function updateStaticIpsRequestBody2FromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateStaticIpsRequestBody2, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateStaticIpsRequestBody2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateStaticIpsRequestBody2' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateStaticIpsRequestBody1$inboundSchema: z.ZodType<
-  UpdateStaticIpsRequestBody1,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  builds: types.boolean(),
-  regions: types.optional(z.array(types.string())),
-});
 /** @internal */
 export type UpdateStaticIpsRequestBody1$Outbound = {
   builds: boolean;
@@ -152,25 +125,7 @@ export function updateStaticIpsRequestBody1ToJSON(
     ),
   );
 }
-export function updateStaticIpsRequestBody1FromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateStaticIpsRequestBody1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateStaticIpsRequestBody1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateStaticIpsRequestBody1' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateStaticIpsRequestBody$inboundSchema: z.ZodType<
-  UpdateStaticIpsRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([
-  z.lazy(() => UpdateStaticIpsRequestBody1$inboundSchema),
-  z.lazy(() => UpdateStaticIpsRequestBody2$inboundSchema),
-]);
 /** @internal */
 export type UpdateStaticIpsRequestBody$Outbound =
   | UpdateStaticIpsRequestBody1$Outbound
@@ -193,36 +148,7 @@ export function updateStaticIpsRequestBodyToJSON(
     UpdateStaticIpsRequestBody$outboundSchema.parse(updateStaticIpsRequestBody),
   );
 }
-export function updateStaticIpsRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateStaticIpsRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateStaticIpsRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateStaticIpsRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateStaticIpsRequest$inboundSchema: z.ZodType<
-  UpdateStaticIpsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  idOrName: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-  RequestBody: types.optional(
-    smartUnion([
-      z.lazy(() => UpdateStaticIpsRequestBody1$inboundSchema),
-      z.lazy(() => UpdateStaticIpsRequestBody2$inboundSchema),
-    ]),
-  ),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 /** @internal */
 export type UpdateStaticIpsRequest$Outbound = {
   idOrName: string;
@@ -260,24 +186,11 @@ export function updateStaticIpsRequestToJSON(
     UpdateStaticIpsRequest$outboundSchema.parse(updateStaticIpsRequest),
   );
 }
-export function updateStaticIpsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateStaticIpsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateStaticIpsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateStaticIpsRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const UpdateStaticIpsEnvId2$inboundSchema: z.ZodNativeEnum<
   typeof UpdateStaticIpsEnvId2
 > = z.nativeEnum(UpdateStaticIpsEnvId2);
-/** @internal */
-export const UpdateStaticIpsEnvId2$outboundSchema: z.ZodNativeEnum<
-  typeof UpdateStaticIpsEnvId2
-> = UpdateStaticIpsEnvId2$inboundSchema;
 
 /** @internal */
 export const UpdateStaticIpsEnvId$inboundSchema: z.ZodType<
@@ -285,23 +198,7 @@ export const UpdateStaticIpsEnvId$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = smartUnion([types.string(), UpdateStaticIpsEnvId2$inboundSchema]);
-/** @internal */
-export type UpdateStaticIpsEnvId$Outbound = string | string;
 
-/** @internal */
-export const UpdateStaticIpsEnvId$outboundSchema: z.ZodType<
-  UpdateStaticIpsEnvId$Outbound,
-  z.ZodTypeDef,
-  UpdateStaticIpsEnvId
-> = smartUnion([z.string(), UpdateStaticIpsEnvId2$outboundSchema]);
-
-export function updateStaticIpsEnvIdToJSON(
-  updateStaticIpsEnvId: UpdateStaticIpsEnvId,
-): string {
-  return JSON.stringify(
-    UpdateStaticIpsEnvId$outboundSchema.parse(updateStaticIpsEnvId),
-  );
-}
 export function updateStaticIpsEnvIdFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateStaticIpsEnvId, SDKValidationError> {
@@ -321,29 +218,7 @@ export const UpdateStaticIpsAws$inboundSchema: z.ZodType<
   subnetIds: z.array(types.string()),
   securityGroupId: types.optional(types.string()),
 });
-/** @internal */
-export type UpdateStaticIpsAws$Outbound = {
-  subnetIds: Array<string>;
-  securityGroupId?: string | undefined;
-};
 
-/** @internal */
-export const UpdateStaticIpsAws$outboundSchema: z.ZodType<
-  UpdateStaticIpsAws$Outbound,
-  z.ZodTypeDef,
-  UpdateStaticIpsAws
-> = z.object({
-  subnetIds: z.array(z.string()),
-  securityGroupId: z.string().optional(),
-});
-
-export function updateStaticIpsAwsToJSON(
-  updateStaticIpsAws: UpdateStaticIpsAws,
-): string {
-  return JSON.stringify(
-    UpdateStaticIpsAws$outboundSchema.parse(updateStaticIpsAws),
-  );
-}
 export function updateStaticIpsAwsFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateStaticIpsAws, SDKValidationError> {
@@ -369,43 +244,7 @@ export const UpdateStaticIpsResponseBody$inboundSchema: z.ZodType<
   createdAt: types.number(),
   updatedAt: types.number(),
 });
-/** @internal */
-export type UpdateStaticIpsResponseBody$Outbound = {
-  envId: string | string;
-  connectConfigurationId: string;
-  dc?: string | undefined;
-  passive: boolean;
-  buildsEnabled: boolean;
-  aws?: UpdateStaticIpsAws$Outbound | undefined;
-  createdAt: number;
-  updatedAt: number;
-};
 
-/** @internal */
-export const UpdateStaticIpsResponseBody$outboundSchema: z.ZodType<
-  UpdateStaticIpsResponseBody$Outbound,
-  z.ZodTypeDef,
-  UpdateStaticIpsResponseBody
-> = z.object({
-  envId: smartUnion([z.string(), UpdateStaticIpsEnvId2$outboundSchema]),
-  connectConfigurationId: z.string(),
-  dc: z.string().optional(),
-  passive: z.boolean(),
-  buildsEnabled: z.boolean(),
-  aws: z.lazy(() => UpdateStaticIpsAws$outboundSchema).optional(),
-  createdAt: z.number(),
-  updatedAt: z.number(),
-});
-
-export function updateStaticIpsResponseBodyToJSON(
-  updateStaticIpsResponseBody: UpdateStaticIpsResponseBody,
-): string {
-  return JSON.stringify(
-    UpdateStaticIpsResponseBody$outboundSchema.parse(
-      updateStaticIpsResponseBody,
-    ),
-  );
-}
 export function updateStaticIpsResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateStaticIpsResponseBody, SDKValidationError> {

@@ -13,154 +13,80 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
 import {
   UpdateMicrofrontendsAnalytics,
   UpdateMicrofrontendsAnalytics$inboundSchema,
-  UpdateMicrofrontendsAnalytics$Outbound,
-  UpdateMicrofrontendsAnalytics$outboundSchema,
   UpdateMicrofrontendsBotFilter,
   UpdateMicrofrontendsBotFilter$inboundSchema,
-  UpdateMicrofrontendsBotFilter$Outbound,
-  UpdateMicrofrontendsBotFilter$outboundSchema,
   UpdateMicrofrontendsConnectConfigurations,
   UpdateMicrofrontendsConnectConfigurations$inboundSchema,
-  UpdateMicrofrontendsConnectConfigurations$Outbound,
-  UpdateMicrofrontendsConnectConfigurations$outboundSchema,
   UpdateMicrofrontendsCrons,
   UpdateMicrofrontendsCrons$inboundSchema,
-  UpdateMicrofrontendsCrons$Outbound,
-  UpdateMicrofrontendsCrons$outboundSchema,
   UpdateMicrofrontendsCustomEnvironments,
   UpdateMicrofrontendsCustomEnvironments$inboundSchema,
-  UpdateMicrofrontendsCustomEnvironments$Outbound,
-  UpdateMicrofrontendsCustomEnvironments$outboundSchema,
   UpdateMicrofrontendsDataCache,
   UpdateMicrofrontendsDataCache$inboundSchema,
-  UpdateMicrofrontendsDataCache$Outbound,
-  UpdateMicrofrontendsDataCache$outboundSchema,
   UpdateMicrofrontendsDefaultResourceConfig,
   UpdateMicrofrontendsDefaultResourceConfig$inboundSchema,
-  UpdateMicrofrontendsDefaultResourceConfig$Outbound,
-  UpdateMicrofrontendsDefaultResourceConfig$outboundSchema,
   UpdateMicrofrontendsDeploymentExpiration,
   UpdateMicrofrontendsDeploymentExpiration$inboundSchema,
-  UpdateMicrofrontendsDeploymentExpiration$Outbound,
-  UpdateMicrofrontendsDeploymentExpiration$outboundSchema,
   UpdateMicrofrontendsEnv,
   UpdateMicrofrontendsEnv$inboundSchema,
-  UpdateMicrofrontendsEnv$Outbound,
-  UpdateMicrofrontendsEnv$outboundSchema,
   UpdateMicrofrontendsExpiration,
   UpdateMicrofrontendsExpiration$inboundSchema,
-  UpdateMicrofrontendsExpiration$Outbound,
-  UpdateMicrofrontendsExpiration$outboundSchema,
   UpdateMicrofrontendsFramework,
   UpdateMicrofrontendsFramework$inboundSchema,
-  UpdateMicrofrontendsFramework$outboundSchema,
   UpdateMicrofrontendsGitComments,
   UpdateMicrofrontendsGitComments$inboundSchema,
-  UpdateMicrofrontendsGitComments$Outbound,
-  UpdateMicrofrontendsGitComments$outboundSchema,
   UpdateMicrofrontendsGitProviderOptions,
   UpdateMicrofrontendsGitProviderOptions$inboundSchema,
-  UpdateMicrofrontendsGitProviderOptions$Outbound,
-  UpdateMicrofrontendsGitProviderOptions$outboundSchema,
   UpdateMicrofrontendsIpBuckets,
   UpdateMicrofrontendsIpBuckets$inboundSchema,
-  UpdateMicrofrontendsIpBuckets$Outbound,
-  UpdateMicrofrontendsIpBuckets$outboundSchema,
   UpdateMicrofrontendsJobs,
   UpdateMicrofrontendsJobs$inboundSchema,
-  UpdateMicrofrontendsJobs$Outbound,
-  UpdateMicrofrontendsJobs$outboundSchema,
   UpdateMicrofrontendsLastAliasRequest,
   UpdateMicrofrontendsLastAliasRequest$inboundSchema,
-  UpdateMicrofrontendsLastAliasRequest$Outbound,
-  UpdateMicrofrontendsLastAliasRequest$outboundSchema,
   UpdateMicrofrontendsLastRollbackTarget,
   UpdateMicrofrontendsLastRollbackTarget$inboundSchema,
-  UpdateMicrofrontendsLastRollbackTarget$Outbound,
-  UpdateMicrofrontendsLastRollbackTarget$outboundSchema,
   UpdateMicrofrontendsLatestDeployments,
   UpdateMicrofrontendsLatestDeployments$inboundSchema,
-  UpdateMicrofrontendsLatestDeployments$Outbound,
-  UpdateMicrofrontendsLatestDeployments$outboundSchema,
   UpdateMicrofrontendsLink,
   UpdateMicrofrontendsLink$inboundSchema,
-  UpdateMicrofrontendsLink$Outbound,
-  UpdateMicrofrontendsLink$outboundSchema,
   UpdateMicrofrontendsMicrofrontends,
   UpdateMicrofrontendsMicrofrontends$inboundSchema,
-  UpdateMicrofrontendsMicrofrontends$Outbound,
-  UpdateMicrofrontendsMicrofrontends$outboundSchema,
   UpdateMicrofrontendsNodeVersion,
   UpdateMicrofrontendsNodeVersion$inboundSchema,
-  UpdateMicrofrontendsNodeVersion$outboundSchema,
   UpdateMicrofrontendsOptionsAllowlist,
   UpdateMicrofrontendsOptionsAllowlist$inboundSchema,
-  UpdateMicrofrontendsOptionsAllowlist$Outbound,
-  UpdateMicrofrontendsOptionsAllowlist$outboundSchema,
   UpdateMicrofrontendsPassport,
   UpdateMicrofrontendsPassport$inboundSchema,
-  UpdateMicrofrontendsPassport$Outbound,
-  UpdateMicrofrontendsPassport$outboundSchema,
   UpdateMicrofrontendsPasswordProtection,
   UpdateMicrofrontendsPasswordProtection$inboundSchema,
-  UpdateMicrofrontendsPasswordProtection$Outbound,
-  UpdateMicrofrontendsPasswordProtection$outboundSchema,
   UpdateMicrofrontendsPermissions,
   UpdateMicrofrontendsPermissions$inboundSchema,
-  UpdateMicrofrontendsPermissions$Outbound,
-  UpdateMicrofrontendsPermissions$outboundSchema,
   UpdateMicrofrontendsProtectionBypass,
   UpdateMicrofrontendsProtectionBypass$inboundSchema,
-  UpdateMicrofrontendsProtectionBypass$Outbound,
-  UpdateMicrofrontendsProtectionBypass$outboundSchema,
   UpdateMicrofrontendsResourceConfig,
   UpdateMicrofrontendsResourceConfig$inboundSchema,
-  UpdateMicrofrontendsResourceConfig$Outbound,
-  UpdateMicrofrontendsResourceConfig$outboundSchema,
   UpdateMicrofrontendsRollbackDescription,
   UpdateMicrofrontendsRollbackDescription$inboundSchema,
-  UpdateMicrofrontendsRollbackDescription$Outbound,
-  UpdateMicrofrontendsRollbackDescription$outboundSchema,
   UpdateMicrofrontendsRollingRelease,
   UpdateMicrofrontendsRollingRelease$inboundSchema,
-  UpdateMicrofrontendsRollingRelease$Outbound,
-  UpdateMicrofrontendsRollingRelease$outboundSchema,
   UpdateMicrofrontendsServices,
   UpdateMicrofrontendsServices$inboundSchema,
-  UpdateMicrofrontendsServices$Outbound,
-  UpdateMicrofrontendsServices$outboundSchema,
   UpdateMicrofrontendsSpeedInsights,
   UpdateMicrofrontendsSpeedInsights$inboundSchema,
-  UpdateMicrofrontendsSpeedInsights$Outbound,
-  UpdateMicrofrontendsSpeedInsights$outboundSchema,
   UpdateMicrofrontendsSsoProtection,
   UpdateMicrofrontendsSsoProtection$inboundSchema,
-  UpdateMicrofrontendsSsoProtection$Outbound,
-  UpdateMicrofrontendsSsoProtection$outboundSchema,
   UpdateMicrofrontendsStaticIps,
   UpdateMicrofrontendsStaticIps$inboundSchema,
-  UpdateMicrofrontendsStaticIps$Outbound,
-  UpdateMicrofrontendsStaticIps$outboundSchema,
   UpdateMicrofrontendsTargets,
   UpdateMicrofrontendsTargets$inboundSchema,
-  UpdateMicrofrontendsTargets$Outbound,
-  UpdateMicrofrontendsTargets$outboundSchema,
   UpdateMicrofrontendsTrustedIps,
   UpdateMicrofrontendsTrustedIps$inboundSchema,
-  UpdateMicrofrontendsTrustedIps$Outbound,
-  UpdateMicrofrontendsTrustedIps$outboundSchema,
   UpdateMicrofrontendsTrustedSources,
   UpdateMicrofrontendsTrustedSources$inboundSchema,
-  UpdateMicrofrontendsTrustedSources$Outbound,
-  UpdateMicrofrontendsTrustedSources$outboundSchema,
   UpdateMicrofrontendsVercelRuleset,
   UpdateMicrofrontendsVercelRuleset$inboundSchema,
-  UpdateMicrofrontendsVercelRuleset$Outbound,
-  UpdateMicrofrontendsVercelRuleset$outboundSchema,
   UpdateMicrofrontendsWebAnalytics,
   UpdateMicrofrontendsWebAnalytics$inboundSchema,
-  UpdateMicrofrontendsWebAnalytics$Outbound,
-  UpdateMicrofrontendsWebAnalytics$outboundSchema,
 } from "./updatemicrofrontendsbotfilter.js";
 
 export const UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodySecurityAction =
@@ -922,12 +848,6 @@ export const UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodyS
   > = z.nativeEnum(
     UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodySecurityAction,
   );
-/** @internal */
-export const UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodySecurityAction$outboundSchema:
-  z.ZodNativeEnum<
-    typeof UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodySecurityAction
-  > =
-    UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodySecurityAction$inboundSchema;
 
 /** @internal */
 export const UpdateMicrofrontendsAiBots$inboundSchema: z.ZodType<
@@ -940,31 +860,7 @@ export const UpdateMicrofrontendsAiBots$inboundSchema: z.ZodType<
     UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodySecurityAction$inboundSchema,
   ),
 });
-/** @internal */
-export type UpdateMicrofrontendsAiBots$Outbound = {
-  active: boolean;
-  action?: string | undefined;
-};
 
-/** @internal */
-export const UpdateMicrofrontendsAiBots$outboundSchema: z.ZodType<
-  UpdateMicrofrontendsAiBots$Outbound,
-  z.ZodTypeDef,
-  UpdateMicrofrontendsAiBots
-> = z.object({
-  active: z.boolean(),
-  action:
-    UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodySecurityAction$outboundSchema
-      .optional(),
-});
-
-export function updateMicrofrontendsAiBotsToJSON(
-  updateMicrofrontendsAiBots: UpdateMicrofrontendsAiBots,
-): string {
-  return JSON.stringify(
-    UpdateMicrofrontendsAiBots$outboundSchema.parse(updateMicrofrontendsAiBots),
-  );
-}
 export function updateMicrofrontendsAiBotsFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateMicrofrontendsAiBots, SDKValidationError> {
@@ -979,10 +875,6 @@ export function updateMicrofrontendsAiBotsFromJSON(
 export const UpdateMicrofrontendsProjectsResponse200Action$inboundSchema:
   z.ZodNativeEnum<typeof UpdateMicrofrontendsProjectsResponse200Action> = z
     .nativeEnum(UpdateMicrofrontendsProjectsResponse200Action);
-/** @internal */
-export const UpdateMicrofrontendsProjectsResponse200Action$outboundSchema:
-  z.ZodNativeEnum<typeof UpdateMicrofrontendsProjectsResponse200Action> =
-    UpdateMicrofrontendsProjectsResponse200Action$inboundSchema;
 
 /** @internal */
 export const UpdateMicrofrontendsOwasp$inboundSchema: z.ZodType<
@@ -995,30 +887,7 @@ export const UpdateMicrofrontendsOwasp$inboundSchema: z.ZodType<
     UpdateMicrofrontendsProjectsResponse200Action$inboundSchema,
   ),
 });
-/** @internal */
-export type UpdateMicrofrontendsOwasp$Outbound = {
-  active: boolean;
-  action?: string | undefined;
-};
 
-/** @internal */
-export const UpdateMicrofrontendsOwasp$outboundSchema: z.ZodType<
-  UpdateMicrofrontendsOwasp$Outbound,
-  z.ZodTypeDef,
-  UpdateMicrofrontendsOwasp
-> = z.object({
-  active: z.boolean(),
-  action: UpdateMicrofrontendsProjectsResponse200Action$outboundSchema
-    .optional(),
-});
-
-export function updateMicrofrontendsOwaspToJSON(
-  updateMicrofrontendsOwasp: UpdateMicrofrontendsOwasp,
-): string {
-  return JSON.stringify(
-    UpdateMicrofrontendsOwasp$outboundSchema.parse(updateMicrofrontendsOwasp),
-  );
-}
 export function updateMicrofrontendsOwaspFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateMicrofrontendsOwasp, SDKValidationError> {
@@ -1046,41 +915,7 @@ export const UpdateMicrofrontendsManagedRules$inboundSchema: z.ZodType<
     "ai_bots": "aiBots",
   });
 });
-/** @internal */
-export type UpdateMicrofrontendsManagedRules$Outbound = {
-  vercel_ruleset: UpdateMicrofrontendsVercelRuleset$Outbound;
-  bot_filter: UpdateMicrofrontendsBotFilter$Outbound;
-  ai_bots: UpdateMicrofrontendsAiBots$Outbound;
-  owasp: UpdateMicrofrontendsOwasp$Outbound;
-};
 
-/** @internal */
-export const UpdateMicrofrontendsManagedRules$outboundSchema: z.ZodType<
-  UpdateMicrofrontendsManagedRules$Outbound,
-  z.ZodTypeDef,
-  UpdateMicrofrontendsManagedRules
-> = z.object({
-  vercelRuleset: UpdateMicrofrontendsVercelRuleset$outboundSchema,
-  botFilter: UpdateMicrofrontendsBotFilter$outboundSchema,
-  aiBots: z.lazy(() => UpdateMicrofrontendsAiBots$outboundSchema),
-  owasp: z.lazy(() => UpdateMicrofrontendsOwasp$outboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    vercelRuleset: "vercel_ruleset",
-    botFilter: "bot_filter",
-    aiBots: "ai_bots",
-  });
-});
-
-export function updateMicrofrontendsManagedRulesToJSON(
-  updateMicrofrontendsManagedRules: UpdateMicrofrontendsManagedRules,
-): string {
-  return JSON.stringify(
-    UpdateMicrofrontendsManagedRules$outboundSchema.parse(
-      updateMicrofrontendsManagedRules,
-    ),
-  );
-}
 export function updateMicrofrontendsManagedRulesFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateMicrofrontendsManagedRules, SDKValidationError> {
@@ -1095,10 +930,6 @@ export function updateMicrofrontendsManagedRulesFromJSON(
 export const UpdateMicrofrontendsLogHeaders2$inboundSchema: z.ZodNativeEnum<
   typeof UpdateMicrofrontendsLogHeaders2
 > = z.nativeEnum(UpdateMicrofrontendsLogHeaders2);
-/** @internal */
-export const UpdateMicrofrontendsLogHeaders2$outboundSchema: z.ZodNativeEnum<
-  typeof UpdateMicrofrontendsLogHeaders2
-> = UpdateMicrofrontendsLogHeaders2$inboundSchema;
 
 /** @internal */
 export const UpdateMicrofrontendsLogHeaders$inboundSchema: z.ZodType<
@@ -1109,28 +940,7 @@ export const UpdateMicrofrontendsLogHeaders$inboundSchema: z.ZodType<
   z.array(types.string()),
   UpdateMicrofrontendsLogHeaders2$inboundSchema,
 ]);
-/** @internal */
-export type UpdateMicrofrontendsLogHeaders$Outbound = Array<string> | string;
 
-/** @internal */
-export const UpdateMicrofrontendsLogHeaders$outboundSchema: z.ZodType<
-  UpdateMicrofrontendsLogHeaders$Outbound,
-  z.ZodTypeDef,
-  UpdateMicrofrontendsLogHeaders
-> = smartUnion([
-  z.array(z.string()),
-  UpdateMicrofrontendsLogHeaders2$outboundSchema,
-]);
-
-export function updateMicrofrontendsLogHeadersToJSON(
-  updateMicrofrontendsLogHeaders: UpdateMicrofrontendsLogHeaders,
-): string {
-  return JSON.stringify(
-    UpdateMicrofrontendsLogHeaders$outboundSchema.parse(
-      updateMicrofrontendsLogHeaders,
-    ),
-  );
-}
 export function updateMicrofrontendsLogHeadersFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateMicrofrontendsLogHeaders, SDKValidationError> {
@@ -1150,32 +960,7 @@ export const UpdateMicrofrontendsSecurityPlusMetadata$inboundSchema: z.ZodType<
   updatedAt: types.number(),
   firstEnabledAt: types.optional(types.number()),
 });
-/** @internal */
-export type UpdateMicrofrontendsSecurityPlusMetadata$Outbound = {
-  updatedAt: number;
-  firstEnabledAt?: number | undefined;
-};
 
-/** @internal */
-export const UpdateMicrofrontendsSecurityPlusMetadata$outboundSchema: z.ZodType<
-  UpdateMicrofrontendsSecurityPlusMetadata$Outbound,
-  z.ZodTypeDef,
-  UpdateMicrofrontendsSecurityPlusMetadata
-> = z.object({
-  updatedAt: z.number(),
-  firstEnabledAt: z.number().optional(),
-});
-
-export function updateMicrofrontendsSecurityPlusMetadataToJSON(
-  updateMicrofrontendsSecurityPlusMetadata:
-    UpdateMicrofrontendsSecurityPlusMetadata,
-): string {
-  return JSON.stringify(
-    UpdateMicrofrontendsSecurityPlusMetadata$outboundSchema.parse(
-      updateMicrofrontendsSecurityPlusMetadata,
-    ),
-  );
-}
 export function updateMicrofrontendsSecurityPlusMetadataFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -1228,72 +1013,7 @@ export const UpdateMicrofrontendsSecurity$inboundSchema: z.ZodType<
     "log_headers": "logHeaders",
   });
 });
-/** @internal */
-export type UpdateMicrofrontendsSecurity$Outbound = {
-  attackModeEnabled?: boolean | undefined;
-  attackModeUpdatedAt?: number | undefined;
-  firewallEnabled?: boolean | undefined;
-  firewallUpdatedAt?: number | undefined;
-  attackModeActiveUntil?: number | null | undefined;
-  firewallConfigVersion?: number | undefined;
-  firewallSeawallEnabled?: boolean | undefined;
-  ja3Enabled?: boolean | undefined;
-  ja4Enabled?: boolean | undefined;
-  firewallBypassIps?: Array<string> | undefined;
-  managedRules?: UpdateMicrofrontendsManagedRules$Outbound | null | undefined;
-  botIdEnabled?: boolean | undefined;
-  log_headers?: Array<string> | string | undefined;
-  securityPlus?: boolean | undefined;
-  securityPlusMetadata?:
-    | UpdateMicrofrontendsSecurityPlusMetadata$Outbound
-    | undefined;
-  pageIntegrityEnabled?: boolean | undefined;
-};
 
-/** @internal */
-export const UpdateMicrofrontendsSecurity$outboundSchema: z.ZodType<
-  UpdateMicrofrontendsSecurity$Outbound,
-  z.ZodTypeDef,
-  UpdateMicrofrontendsSecurity
-> = z.object({
-  attackModeEnabled: z.boolean().optional(),
-  attackModeUpdatedAt: z.number().optional(),
-  firewallEnabled: z.boolean().optional(),
-  firewallUpdatedAt: z.number().optional(),
-  attackModeActiveUntil: z.nullable(z.number()).optional(),
-  firewallConfigVersion: z.number().optional(),
-  firewallSeawallEnabled: z.boolean().optional(),
-  ja3Enabled: z.boolean().optional(),
-  ja4Enabled: z.boolean().optional(),
-  firewallBypassIps: z.array(z.string()).optional(),
-  managedRules: z.nullable(
-    z.lazy(() => UpdateMicrofrontendsManagedRules$outboundSchema),
-  ).optional(),
-  botIdEnabled: z.boolean().optional(),
-  logHeaders: smartUnion([
-    z.array(z.string()),
-    UpdateMicrofrontendsLogHeaders2$outboundSchema,
-  ]).optional(),
-  securityPlus: z.boolean().optional(),
-  securityPlusMetadata: z.lazy(() =>
-    UpdateMicrofrontendsSecurityPlusMetadata$outboundSchema
-  ).optional(),
-  pageIntegrityEnabled: z.boolean().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    logHeaders: "log_headers",
-  });
-});
-
-export function updateMicrofrontendsSecurityToJSON(
-  updateMicrofrontendsSecurity: UpdateMicrofrontendsSecurity,
-): string {
-  return JSON.stringify(
-    UpdateMicrofrontendsSecurity$outboundSchema.parse(
-      updateMicrofrontendsSecurity,
-    ),
-  );
-}
 export function updateMicrofrontendsSecurityFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateMicrofrontendsSecurity, SDKValidationError> {
@@ -1308,10 +1028,6 @@ export function updateMicrofrontendsSecurityFromJSON(
 export const UpdateMicrofrontendsIssuerMode$inboundSchema: z.ZodNativeEnum<
   typeof UpdateMicrofrontendsIssuerMode
 > = z.nativeEnum(UpdateMicrofrontendsIssuerMode);
-/** @internal */
-export const UpdateMicrofrontendsIssuerMode$outboundSchema: z.ZodNativeEnum<
-  typeof UpdateMicrofrontendsIssuerMode
-> = UpdateMicrofrontendsIssuerMode$inboundSchema;
 
 /** @internal */
 export const UpdateMicrofrontendsOidcTokenConfig$inboundSchema: z.ZodType<
@@ -1322,31 +1038,7 @@ export const UpdateMicrofrontendsOidcTokenConfig$inboundSchema: z.ZodType<
   enabled: types.optional(types.boolean()),
   issuerMode: types.optional(UpdateMicrofrontendsIssuerMode$inboundSchema),
 });
-/** @internal */
-export type UpdateMicrofrontendsOidcTokenConfig$Outbound = {
-  enabled?: boolean | undefined;
-  issuerMode?: string | undefined;
-};
 
-/** @internal */
-export const UpdateMicrofrontendsOidcTokenConfig$outboundSchema: z.ZodType<
-  UpdateMicrofrontendsOidcTokenConfig$Outbound,
-  z.ZodTypeDef,
-  UpdateMicrofrontendsOidcTokenConfig
-> = z.object({
-  enabled: z.boolean().optional(),
-  issuerMode: UpdateMicrofrontendsIssuerMode$outboundSchema.optional(),
-});
-
-export function updateMicrofrontendsOidcTokenConfigToJSON(
-  updateMicrofrontendsOidcTokenConfig: UpdateMicrofrontendsOidcTokenConfig,
-): string {
-  return JSON.stringify(
-    UpdateMicrofrontendsOidcTokenConfig$outboundSchema.parse(
-      updateMicrofrontendsOidcTokenConfig,
-    ),
-  );
-}
 export function updateMicrofrontendsOidcTokenConfigFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateMicrofrontendsOidcTokenConfig, SDKValidationError> {
@@ -1368,33 +1060,7 @@ export const UpdateMicrofrontendsSources2$inboundSchema: z.ZodType<
   namespace: types.string(),
   project: types.optional(types.string()),
 });
-/** @internal */
-export type UpdateMicrofrontendsSources2$Outbound = {
-  provider: "gitlab";
-  namespace: string;
-  project?: string | undefined;
-};
 
-/** @internal */
-export const UpdateMicrofrontendsSources2$outboundSchema: z.ZodType<
-  UpdateMicrofrontendsSources2$Outbound,
-  z.ZodTypeDef,
-  UpdateMicrofrontendsSources2
-> = z.object({
-  provider: z.literal("gitlab"),
-  namespace: z.string(),
-  project: z.string().optional(),
-});
-
-export function updateMicrofrontendsSources2ToJSON(
-  updateMicrofrontendsSources2: UpdateMicrofrontendsSources2,
-): string {
-  return JSON.stringify(
-    UpdateMicrofrontendsSources2$outboundSchema.parse(
-      updateMicrofrontendsSources2,
-    ),
-  );
-}
 export function updateMicrofrontendsSources2FromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateMicrofrontendsSources2, SDKValidationError> {
@@ -1409,10 +1075,6 @@ export function updateMicrofrontendsSources2FromJSON(
 export const UpdateMicrofrontendsSourcesProvider$inboundSchema: z.ZodNativeEnum<
   typeof UpdateMicrofrontendsSourcesProvider
 > = z.nativeEnum(UpdateMicrofrontendsSourcesProvider);
-/** @internal */
-export const UpdateMicrofrontendsSourcesProvider$outboundSchema:
-  z.ZodNativeEnum<typeof UpdateMicrofrontendsSourcesProvider> =
-    UpdateMicrofrontendsSourcesProvider$inboundSchema;
 
 /** @internal */
 export const UpdateMicrofrontendsSources1$inboundSchema: z.ZodType<
@@ -1424,33 +1086,7 @@ export const UpdateMicrofrontendsSources1$inboundSchema: z.ZodType<
   org: types.string(),
   repo: types.optional(types.string()),
 });
-/** @internal */
-export type UpdateMicrofrontendsSources1$Outbound = {
-  provider: string;
-  org: string;
-  repo?: string | undefined;
-};
 
-/** @internal */
-export const UpdateMicrofrontendsSources1$outboundSchema: z.ZodType<
-  UpdateMicrofrontendsSources1$Outbound,
-  z.ZodTypeDef,
-  UpdateMicrofrontendsSources1
-> = z.object({
-  provider: UpdateMicrofrontendsSourcesProvider$outboundSchema,
-  org: z.string(),
-  repo: z.string().optional(),
-});
-
-export function updateMicrofrontendsSources1ToJSON(
-  updateMicrofrontendsSources1: UpdateMicrofrontendsSources1,
-): string {
-  return JSON.stringify(
-    UpdateMicrofrontendsSources1$outboundSchema.parse(
-      updateMicrofrontendsSources1,
-    ),
-  );
-}
 export function updateMicrofrontendsSources1FromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateMicrofrontendsSources1, SDKValidationError> {
@@ -1475,36 +1111,7 @@ export const UpdateMicrofrontendsSources$inboundSchema: z.ZodType<
   ),
   z.lazy(() => UpdateMicrofrontendsSources2$inboundSchema),
 ]);
-/** @internal */
-export type UpdateMicrofrontendsSources$Outbound =
-  | (UpdateMicrofrontendsSources1$Outbound & { provider: "bitbucket" })
-  | (UpdateMicrofrontendsSources1$Outbound & { provider: "github" })
-  | UpdateMicrofrontendsSources2$Outbound;
 
-/** @internal */
-export const UpdateMicrofrontendsSources$outboundSchema: z.ZodType<
-  UpdateMicrofrontendsSources$Outbound,
-  z.ZodTypeDef,
-  UpdateMicrofrontendsSources
-> = z.union([
-  z.lazy(() => UpdateMicrofrontendsSources1$outboundSchema).and(
-    z.object({ provider: z.literal("bitbucket") }),
-  ),
-  z.lazy(() => UpdateMicrofrontendsSources1$outboundSchema).and(
-    z.object({ provider: z.literal("github") }),
-  ),
-  z.lazy(() => UpdateMicrofrontendsSources2$outboundSchema),
-]);
-
-export function updateMicrofrontendsSourcesToJSON(
-  updateMicrofrontendsSources: UpdateMicrofrontendsSources,
-): string {
-  return JSON.stringify(
-    UpdateMicrofrontendsSources$outboundSchema.parse(
-      updateMicrofrontendsSources,
-    ),
-  );
-}
 export function updateMicrofrontendsSourcesFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateMicrofrontendsSources, SDKValidationError> {
@@ -1524,31 +1131,7 @@ export const UpdateMicrofrontendsEnvironments2$inboundSchema: z.ZodType<
   type: types.literal("custom"),
   environmentId: types.string(),
 });
-/** @internal */
-export type UpdateMicrofrontendsEnvironments2$Outbound = {
-  type: "custom";
-  environmentId: string;
-};
 
-/** @internal */
-export const UpdateMicrofrontendsEnvironments2$outboundSchema: z.ZodType<
-  UpdateMicrofrontendsEnvironments2$Outbound,
-  z.ZodTypeDef,
-  UpdateMicrofrontendsEnvironments2
-> = z.object({
-  type: z.literal("custom"),
-  environmentId: z.string(),
-});
-
-export function updateMicrofrontendsEnvironments2ToJSON(
-  updateMicrofrontendsEnvironments2: UpdateMicrofrontendsEnvironments2,
-): string {
-  return JSON.stringify(
-    UpdateMicrofrontendsEnvironments2$outboundSchema.parse(
-      updateMicrofrontendsEnvironments2,
-    ),
-  );
-}
 export function updateMicrofrontendsEnvironments2FromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateMicrofrontendsEnvironments2, SDKValidationError> {
@@ -1564,10 +1147,6 @@ export const UpdateMicrofrontendsEnvironmentsTarget$inboundSchema:
   z.ZodNativeEnum<typeof UpdateMicrofrontendsEnvironmentsTarget> = z.nativeEnum(
     UpdateMicrofrontendsEnvironmentsTarget,
   );
-/** @internal */
-export const UpdateMicrofrontendsEnvironmentsTarget$outboundSchema:
-  z.ZodNativeEnum<typeof UpdateMicrofrontendsEnvironmentsTarget> =
-    UpdateMicrofrontendsEnvironmentsTarget$inboundSchema;
 
 /** @internal */
 export const UpdateMicrofrontendsEnvironments1$inboundSchema: z.ZodType<
@@ -1578,31 +1157,7 @@ export const UpdateMicrofrontendsEnvironments1$inboundSchema: z.ZodType<
   type: types.literal("system"),
   target: UpdateMicrofrontendsEnvironmentsTarget$inboundSchema,
 });
-/** @internal */
-export type UpdateMicrofrontendsEnvironments1$Outbound = {
-  type: "system";
-  target: string;
-};
 
-/** @internal */
-export const UpdateMicrofrontendsEnvironments1$outboundSchema: z.ZodType<
-  UpdateMicrofrontendsEnvironments1$Outbound,
-  z.ZodTypeDef,
-  UpdateMicrofrontendsEnvironments1
-> = z.object({
-  type: z.literal("system"),
-  target: UpdateMicrofrontendsEnvironmentsTarget$outboundSchema,
-});
-
-export function updateMicrofrontendsEnvironments1ToJSON(
-  updateMicrofrontendsEnvironments1: UpdateMicrofrontendsEnvironments1,
-): string {
-  return JSON.stringify(
-    UpdateMicrofrontendsEnvironments1$outboundSchema.parse(
-      updateMicrofrontendsEnvironments1,
-    ),
-  );
-}
 export function updateMicrofrontendsEnvironments1FromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateMicrofrontendsEnvironments1, SDKValidationError> {
@@ -1622,30 +1177,7 @@ export const UpdateMicrofrontendsEnvironments$inboundSchema: z.ZodType<
   z.lazy(() => UpdateMicrofrontendsEnvironments1$inboundSchema),
   z.lazy(() => UpdateMicrofrontendsEnvironments2$inboundSchema),
 ]);
-/** @internal */
-export type UpdateMicrofrontendsEnvironments$Outbound =
-  | UpdateMicrofrontendsEnvironments1$Outbound
-  | UpdateMicrofrontendsEnvironments2$Outbound;
 
-/** @internal */
-export const UpdateMicrofrontendsEnvironments$outboundSchema: z.ZodType<
-  UpdateMicrofrontendsEnvironments$Outbound,
-  z.ZodTypeDef,
-  UpdateMicrofrontendsEnvironments
-> = z.union([
-  z.lazy(() => UpdateMicrofrontendsEnvironments1$outboundSchema),
-  z.lazy(() => UpdateMicrofrontendsEnvironments2$outboundSchema),
-]);
-
-export function updateMicrofrontendsEnvironmentsToJSON(
-  updateMicrofrontendsEnvironments: UpdateMicrofrontendsEnvironments,
-): string {
-  return JSON.stringify(
-    UpdateMicrofrontendsEnvironments$outboundSchema.parse(
-      updateMicrofrontendsEnvironments,
-    ),
-  );
-}
 export function updateMicrofrontendsEnvironmentsFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateMicrofrontendsEnvironments, SDKValidationError> {
@@ -1681,55 +1213,7 @@ export const UpdateMicrofrontendsGitSources$inboundSchema: z.ZodType<
     ]),
   ),
 });
-/** @internal */
-export type UpdateMicrofrontendsGitSources$Outbound = {
-  sources: Array<
-    | (UpdateMicrofrontendsSources1$Outbound & { provider: "bitbucket" })
-    | (UpdateMicrofrontendsSources1$Outbound & { provider: "github" })
-    | UpdateMicrofrontendsSources2$Outbound
-  >;
-  enabled: boolean;
-  environments: Array<
-    | UpdateMicrofrontendsEnvironments1$Outbound
-    | UpdateMicrofrontendsEnvironments2$Outbound
-  >;
-};
 
-/** @internal */
-export const UpdateMicrofrontendsGitSources$outboundSchema: z.ZodType<
-  UpdateMicrofrontendsGitSources$Outbound,
-  z.ZodTypeDef,
-  UpdateMicrofrontendsGitSources
-> = z.object({
-  sources: z.array(
-    z.union([
-      z.lazy(() => UpdateMicrofrontendsSources1$outboundSchema).and(
-        z.object({ provider: z.literal("bitbucket") }),
-      ),
-      z.lazy(() => UpdateMicrofrontendsSources1$outboundSchema).and(
-        z.object({ provider: z.literal("github") }),
-      ),
-      z.lazy(() => UpdateMicrofrontendsSources2$outboundSchema),
-    ]),
-  ),
-  enabled: z.boolean(),
-  environments: z.array(
-    z.union([
-      z.lazy(() => UpdateMicrofrontendsEnvironments1$outboundSchema),
-      z.lazy(() => UpdateMicrofrontendsEnvironments2$outboundSchema),
-    ]),
-  ),
-});
-
-export function updateMicrofrontendsGitSourcesToJSON(
-  updateMicrofrontendsGitSources: UpdateMicrofrontendsGitSources,
-): string {
-  return JSON.stringify(
-    UpdateMicrofrontendsGitSources$outboundSchema.parse(
-      updateMicrofrontendsGitSources,
-    ),
-  );
-}
 export function updateMicrofrontendsGitSourcesFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateMicrofrontendsGitSources, SDKValidationError> {
@@ -1744,10 +1228,6 @@ export function updateMicrofrontendsGitSourcesFromJSON(
 export const UpdateMicrofrontendsProjectsSources$inboundSchema: z.ZodNativeEnum<
   typeof UpdateMicrofrontendsProjectsSources
 > = z.nativeEnum(UpdateMicrofrontendsProjectsSources);
-/** @internal */
-export const UpdateMicrofrontendsProjectsSources$outboundSchema:
-  z.ZodNativeEnum<typeof UpdateMicrofrontendsProjectsSources> =
-    UpdateMicrofrontendsProjectsSources$inboundSchema;
 
 /** @internal */
 export const UpdateMicrofrontendsEnvironmentsProjects2$inboundSchema: z.ZodType<
@@ -1758,33 +1238,7 @@ export const UpdateMicrofrontendsEnvironmentsProjects2$inboundSchema: z.ZodType<
   type: types.literal("custom"),
   environmentId: types.string(),
 });
-/** @internal */
-export type UpdateMicrofrontendsEnvironmentsProjects2$Outbound = {
-  type: "custom";
-  environmentId: string;
-};
 
-/** @internal */
-export const UpdateMicrofrontendsEnvironmentsProjects2$outboundSchema:
-  z.ZodType<
-    UpdateMicrofrontendsEnvironmentsProjects2$Outbound,
-    z.ZodTypeDef,
-    UpdateMicrofrontendsEnvironmentsProjects2
-  > = z.object({
-    type: z.literal("custom"),
-    environmentId: z.string(),
-  });
-
-export function updateMicrofrontendsEnvironmentsProjects2ToJSON(
-  updateMicrofrontendsEnvironmentsProjects2:
-    UpdateMicrofrontendsEnvironmentsProjects2,
-): string {
-  return JSON.stringify(
-    UpdateMicrofrontendsEnvironmentsProjects2$outboundSchema.parse(
-      updateMicrofrontendsEnvironmentsProjects2,
-    ),
-  );
-}
 export function updateMicrofrontendsEnvironmentsProjects2FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -1805,10 +1259,6 @@ export function updateMicrofrontendsEnvironmentsProjects2FromJSON(
 export const UpdateMicrofrontendsEnvironmentsProjectsTarget$inboundSchema:
   z.ZodNativeEnum<typeof UpdateMicrofrontendsEnvironmentsProjectsTarget> = z
     .nativeEnum(UpdateMicrofrontendsEnvironmentsProjectsTarget);
-/** @internal */
-export const UpdateMicrofrontendsEnvironmentsProjectsTarget$outboundSchema:
-  z.ZodNativeEnum<typeof UpdateMicrofrontendsEnvironmentsProjectsTarget> =
-    UpdateMicrofrontendsEnvironmentsProjectsTarget$inboundSchema;
 
 /** @internal */
 export const UpdateMicrofrontendsEnvironmentsProjects1$inboundSchema: z.ZodType<
@@ -1819,33 +1269,7 @@ export const UpdateMicrofrontendsEnvironmentsProjects1$inboundSchema: z.ZodType<
   type: types.literal("system"),
   target: UpdateMicrofrontendsEnvironmentsProjectsTarget$inboundSchema,
 });
-/** @internal */
-export type UpdateMicrofrontendsEnvironmentsProjects1$Outbound = {
-  type: "system";
-  target: string;
-};
 
-/** @internal */
-export const UpdateMicrofrontendsEnvironmentsProjects1$outboundSchema:
-  z.ZodType<
-    UpdateMicrofrontendsEnvironmentsProjects1$Outbound,
-    z.ZodTypeDef,
-    UpdateMicrofrontendsEnvironmentsProjects1
-  > = z.object({
-    type: z.literal("system"),
-    target: UpdateMicrofrontendsEnvironmentsProjectsTarget$outboundSchema,
-  });
-
-export function updateMicrofrontendsEnvironmentsProjects1ToJSON(
-  updateMicrofrontendsEnvironmentsProjects1:
-    UpdateMicrofrontendsEnvironmentsProjects1,
-): string {
-  return JSON.stringify(
-    UpdateMicrofrontendsEnvironmentsProjects1$outboundSchema.parse(
-      updateMicrofrontendsEnvironmentsProjects1,
-    ),
-  );
-}
 export function updateMicrofrontendsEnvironmentsProjects1FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -1871,31 +1295,7 @@ export const UpdateMicrofrontendsProjectsEnvironments$inboundSchema: z.ZodType<
   z.lazy(() => UpdateMicrofrontendsEnvironmentsProjects1$inboundSchema),
   z.lazy(() => UpdateMicrofrontendsEnvironmentsProjects2$inboundSchema),
 ]);
-/** @internal */
-export type UpdateMicrofrontendsProjectsEnvironments$Outbound =
-  | UpdateMicrofrontendsEnvironmentsProjects1$Outbound
-  | UpdateMicrofrontendsEnvironmentsProjects2$Outbound;
 
-/** @internal */
-export const UpdateMicrofrontendsProjectsEnvironments$outboundSchema: z.ZodType<
-  UpdateMicrofrontendsProjectsEnvironments$Outbound,
-  z.ZodTypeDef,
-  UpdateMicrofrontendsProjectsEnvironments
-> = z.union([
-  z.lazy(() => UpdateMicrofrontendsEnvironmentsProjects1$outboundSchema),
-  z.lazy(() => UpdateMicrofrontendsEnvironmentsProjects2$outboundSchema),
-]);
-
-export function updateMicrofrontendsProjectsEnvironmentsToJSON(
-  updateMicrofrontendsProjectsEnvironments:
-    UpdateMicrofrontendsProjectsEnvironments,
-): string {
-  return JSON.stringify(
-    UpdateMicrofrontendsProjectsEnvironments$outboundSchema.parse(
-      updateMicrofrontendsProjectsEnvironments,
-    ),
-  );
-}
 export function updateMicrofrontendsProjectsEnvironmentsFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -1927,41 +1327,7 @@ export const UpdateMicrofrontendsDeploymentSources$inboundSchema: z.ZodType<
     ]),
   ),
 });
-/** @internal */
-export type UpdateMicrofrontendsDeploymentSources$Outbound = {
-  sources: Array<string>;
-  enabled: boolean;
-  environments: Array<
-    | UpdateMicrofrontendsEnvironmentsProjects1$Outbound
-    | UpdateMicrofrontendsEnvironmentsProjects2$Outbound
-  >;
-};
 
-/** @internal */
-export const UpdateMicrofrontendsDeploymentSources$outboundSchema: z.ZodType<
-  UpdateMicrofrontendsDeploymentSources$Outbound,
-  z.ZodTypeDef,
-  UpdateMicrofrontendsDeploymentSources
-> = z.object({
-  sources: z.array(UpdateMicrofrontendsProjectsSources$outboundSchema),
-  enabled: z.boolean(),
-  environments: z.array(
-    z.union([
-      z.lazy(() => UpdateMicrofrontendsEnvironmentsProjects1$outboundSchema),
-      z.lazy(() => UpdateMicrofrontendsEnvironmentsProjects2$outboundSchema),
-    ]),
-  ),
-});
-
-export function updateMicrofrontendsDeploymentSourcesToJSON(
-  updateMicrofrontendsDeploymentSources: UpdateMicrofrontendsDeploymentSources,
-): string {
-  return JSON.stringify(
-    UpdateMicrofrontendsDeploymentSources$outboundSchema.parse(
-      updateMicrofrontendsDeploymentSources,
-    ),
-  );
-}
 export function updateMicrofrontendsDeploymentSourcesFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateMicrofrontendsDeploymentSources, SDKValidationError> {
@@ -1986,41 +1352,7 @@ export const UpdateMicrofrontendsDeploymentPolicy$inboundSchema: z.ZodType<
     z.array(z.lazy(() => UpdateMicrofrontendsDeploymentSources$inboundSchema)),
   ).optional(),
 });
-/** @internal */
-export type UpdateMicrofrontendsDeploymentPolicy$Outbound = {
-  gitSources?:
-    | Array<UpdateMicrofrontendsGitSources$Outbound>
-    | null
-    | undefined;
-  deploymentSources?:
-    | Array<UpdateMicrofrontendsDeploymentSources$Outbound>
-    | null
-    | undefined;
-};
 
-/** @internal */
-export const UpdateMicrofrontendsDeploymentPolicy$outboundSchema: z.ZodType<
-  UpdateMicrofrontendsDeploymentPolicy$Outbound,
-  z.ZodTypeDef,
-  UpdateMicrofrontendsDeploymentPolicy
-> = z.object({
-  gitSources: z.nullable(
-    z.array(z.lazy(() => UpdateMicrofrontendsGitSources$outboundSchema)),
-  ).optional(),
-  deploymentSources: z.nullable(
-    z.array(z.lazy(() => UpdateMicrofrontendsDeploymentSources$outboundSchema)),
-  ).optional(),
-});
-
-export function updateMicrofrontendsDeploymentPolicyToJSON(
-  updateMicrofrontendsDeploymentPolicy: UpdateMicrofrontendsDeploymentPolicy,
-): string {
-  return JSON.stringify(
-    UpdateMicrofrontendsDeploymentPolicy$outboundSchema.parse(
-      updateMicrofrontendsDeploymentPolicy,
-    ),
-  );
-}
 export function updateMicrofrontendsDeploymentPolicyFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateMicrofrontendsDeploymentPolicy, SDKValidationError> {
@@ -2036,19 +1368,11 @@ export function updateMicrofrontendsDeploymentPolicyFromJSON(
 export const UpdateMicrofrontendsFlatRateTier$inboundSchema: z.ZodNativeEnum<
   typeof UpdateMicrofrontendsFlatRateTier
 > = z.nativeEnum(UpdateMicrofrontendsFlatRateTier);
-/** @internal */
-export const UpdateMicrofrontendsFlatRateTier$outboundSchema: z.ZodNativeEnum<
-  typeof UpdateMicrofrontendsFlatRateTier
-> = UpdateMicrofrontendsFlatRateTier$inboundSchema;
 
 /** @internal */
 export const UpdateMicrofrontendsKind$inboundSchema: z.ZodNativeEnum<
   typeof UpdateMicrofrontendsKind
 > = z.nativeEnum(UpdateMicrofrontendsKind);
-/** @internal */
-export const UpdateMicrofrontendsKind$outboundSchema: z.ZodNativeEnum<
-  typeof UpdateMicrofrontendsKind
-> = UpdateMicrofrontendsKind$inboundSchema;
 
 /** @internal */
 export const UpdateMicrofrontendsUsageStatus$inboundSchema: z.ZodType<
@@ -2061,35 +1385,7 @@ export const UpdateMicrofrontendsUsageStatus$inboundSchema: z.ZodType<
   bypassThrottleUntil: types.optional(types.number()),
   throttled: types.optional(types.boolean()),
 });
-/** @internal */
-export type UpdateMicrofrontendsUsageStatus$Outbound = {
-  kind: string;
-  exceededAllowanceUntil?: number | undefined;
-  bypassThrottleUntil?: number | undefined;
-  throttled?: boolean | undefined;
-};
 
-/** @internal */
-export const UpdateMicrofrontendsUsageStatus$outboundSchema: z.ZodType<
-  UpdateMicrofrontendsUsageStatus$Outbound,
-  z.ZodTypeDef,
-  UpdateMicrofrontendsUsageStatus
-> = z.object({
-  kind: UpdateMicrofrontendsKind$outboundSchema,
-  exceededAllowanceUntil: z.number().optional(),
-  bypassThrottleUntil: z.number().optional(),
-  throttled: z.boolean().optional(),
-});
-
-export function updateMicrofrontendsUsageStatusToJSON(
-  updateMicrofrontendsUsageStatus: UpdateMicrofrontendsUsageStatus,
-): string {
-  return JSON.stringify(
-    UpdateMicrofrontendsUsageStatus$outboundSchema.parse(
-      updateMicrofrontendsUsageStatus,
-    ),
-  );
-}
 export function updateMicrofrontendsUsageStatusFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateMicrofrontendsUsageStatus, SDKValidationError> {
@@ -2108,29 +1404,7 @@ export const UpdateMicrofrontendsFeatures$inboundSchema: z.ZodType<
 > = z.object({
   webAnalytics: types.optional(types.boolean()),
 });
-/** @internal */
-export type UpdateMicrofrontendsFeatures$Outbound = {
-  webAnalytics?: boolean | undefined;
-};
 
-/** @internal */
-export const UpdateMicrofrontendsFeatures$outboundSchema: z.ZodType<
-  UpdateMicrofrontendsFeatures$Outbound,
-  z.ZodTypeDef,
-  UpdateMicrofrontendsFeatures
-> = z.object({
-  webAnalytics: z.boolean().optional(),
-});
-
-export function updateMicrofrontendsFeaturesToJSON(
-  updateMicrofrontendsFeatures: UpdateMicrofrontendsFeatures,
-): string {
-  return JSON.stringify(
-    UpdateMicrofrontendsFeatures$outboundSchema.parse(
-      updateMicrofrontendsFeatures,
-    ),
-  );
-}
 export function updateMicrofrontendsFeaturesFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateMicrofrontendsFeatures, SDKValidationError> {
@@ -2153,37 +1427,7 @@ export const UpdateMicrofrontendsHistory$inboundSchema: z.ZodType<
   byId: types.string(),
   at: types.number(),
 });
-/** @internal */
-export type UpdateMicrofrontendsHistory$Outbound = {
-  scanner: string;
-  reason: string;
-  by: string;
-  byId: string;
-  at: number;
-};
 
-/** @internal */
-export const UpdateMicrofrontendsHistory$outboundSchema: z.ZodType<
-  UpdateMicrofrontendsHistory$Outbound,
-  z.ZodTypeDef,
-  UpdateMicrofrontendsHistory
-> = z.object({
-  scanner: z.string(),
-  reason: z.string(),
-  by: z.string(),
-  byId: z.string(),
-  at: z.number(),
-});
-
-export function updateMicrofrontendsHistoryToJSON(
-  updateMicrofrontendsHistory: UpdateMicrofrontendsHistory,
-): string {
-  return JSON.stringify(
-    UpdateMicrofrontendsHistory$outboundSchema.parse(
-      updateMicrofrontendsHistory,
-    ),
-  );
-}
 export function updateMicrofrontendsHistoryFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateMicrofrontendsHistory, SDKValidationError> {
@@ -2198,10 +1442,6 @@ export function updateMicrofrontendsHistoryFromJSON(
 export const UpdateMicrofrontendsProjectsResponseAction$inboundSchema:
   z.ZodNativeEnum<typeof UpdateMicrofrontendsProjectsResponseAction> = z
     .nativeEnum(UpdateMicrofrontendsProjectsResponseAction);
-/** @internal */
-export const UpdateMicrofrontendsProjectsResponseAction$outboundSchema:
-  z.ZodNativeEnum<typeof UpdateMicrofrontendsProjectsResponseAction> =
-    UpdateMicrofrontendsProjectsResponseAction$inboundSchema;
 
 /** @internal */
 export const UpdateMicrofrontendsBlock$inboundSchema: z.ZodType<
@@ -2219,43 +1459,7 @@ export const UpdateMicrofrontendsBlock$inboundSchema: z.ZodType<
   ineligibleForAppeal: types.optional(types.boolean()),
   isCascading: types.optional(types.boolean()),
 });
-/** @internal */
-export type UpdateMicrofrontendsBlock$Outbound = {
-  action: string;
-  reason: string;
-  statusCode: number;
-  createdAt: number;
-  caseId?: string | undefined;
-  actor?: string | undefined;
-  comment?: string | undefined;
-  ineligibleForAppeal?: boolean | undefined;
-  isCascading?: boolean | undefined;
-};
 
-/** @internal */
-export const UpdateMicrofrontendsBlock$outboundSchema: z.ZodType<
-  UpdateMicrofrontendsBlock$Outbound,
-  z.ZodTypeDef,
-  UpdateMicrofrontendsBlock
-> = z.object({
-  action: UpdateMicrofrontendsProjectsResponseAction$outboundSchema,
-  reason: z.string(),
-  statusCode: z.number(),
-  createdAt: z.number(),
-  caseId: z.string().optional(),
-  actor: z.string().optional(),
-  comment: z.string().optional(),
-  ineligibleForAppeal: z.boolean().optional(),
-  isCascading: z.boolean().optional(),
-});
-
-export function updateMicrofrontendsBlockToJSON(
-  updateMicrofrontendsBlock: UpdateMicrofrontendsBlock,
-): string {
-  return JSON.stringify(
-    UpdateMicrofrontendsBlock$outboundSchema.parse(updateMicrofrontendsBlock),
-  );
-}
 export function updateMicrofrontendsBlockFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateMicrofrontendsBlock, SDKValidationError> {
@@ -2275,31 +1479,7 @@ export const UpdateMicrofrontendsHasProjectsResponse200Value$inboundSchema:
   > = z.object({
     eq: types.string(),
   });
-/** @internal */
-export type UpdateMicrofrontendsHasProjectsResponse200Value$Outbound = {
-  eq: string;
-};
 
-/** @internal */
-export const UpdateMicrofrontendsHasProjectsResponse200Value$outboundSchema:
-  z.ZodType<
-    UpdateMicrofrontendsHasProjectsResponse200Value$Outbound,
-    z.ZodTypeDef,
-    UpdateMicrofrontendsHasProjectsResponse200Value
-  > = z.object({
-    eq: z.string(),
-  });
-
-export function updateMicrofrontendsHasProjectsResponse200ValueToJSON(
-  updateMicrofrontendsHasProjectsResponse200Value:
-    UpdateMicrofrontendsHasProjectsResponse200Value,
-): string {
-  return JSON.stringify(
-    UpdateMicrofrontendsHasProjectsResponse200Value$outboundSchema.parse(
-      updateMicrofrontendsHasProjectsResponse200Value,
-    ),
-  );
-}
 export function updateMicrofrontendsHasProjectsResponse200ValueFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -2327,33 +1507,7 @@ export const UpdateMicrofrontendsHasProjects2$inboundSchema: z.ZodType<
     UpdateMicrofrontendsHasProjectsResponse200Value$inboundSchema
   ),
 });
-/** @internal */
-export type UpdateMicrofrontendsHasProjects2$Outbound = {
-  type: "host";
-  value: UpdateMicrofrontendsHasProjectsResponse200Value$Outbound;
-};
 
-/** @internal */
-export const UpdateMicrofrontendsHasProjects2$outboundSchema: z.ZodType<
-  UpdateMicrofrontendsHasProjects2$Outbound,
-  z.ZodTypeDef,
-  UpdateMicrofrontendsHasProjects2
-> = z.object({
-  type: z.literal("host"),
-  value: z.lazy(() =>
-    UpdateMicrofrontendsHasProjectsResponse200Value$outboundSchema
-  ),
-});
-
-export function updateMicrofrontendsHasProjects2ToJSON(
-  updateMicrofrontendsHasProjects2: UpdateMicrofrontendsHasProjects2,
-): string {
-  return JSON.stringify(
-    UpdateMicrofrontendsHasProjects2$outboundSchema.parse(
-      updateMicrofrontendsHasProjects2,
-    ),
-  );
-}
 export function updateMicrofrontendsHasProjects2FromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateMicrofrontendsHasProjects2, SDKValidationError> {
@@ -2368,10 +1522,6 @@ export function updateMicrofrontendsHasProjects2FromJSON(
 export const UpdateMicrofrontendsHasProjectsKey$inboundSchema: z.ZodNativeEnum<
   typeof UpdateMicrofrontendsHasProjectsKey
 > = z.nativeEnum(UpdateMicrofrontendsHasProjectsKey);
-/** @internal */
-export const UpdateMicrofrontendsHasProjectsKey$outboundSchema: z.ZodNativeEnum<
-  typeof UpdateMicrofrontendsHasProjectsKey
-> = UpdateMicrofrontendsHasProjectsKey$inboundSchema;
 
 /** @internal */
 export const UpdateMicrofrontendsHasProjectsResponseValue$inboundSchema:
@@ -2382,31 +1532,7 @@ export const UpdateMicrofrontendsHasProjectsResponseValue$inboundSchema:
   > = z.object({
     eq: types.string(),
   });
-/** @internal */
-export type UpdateMicrofrontendsHasProjectsResponseValue$Outbound = {
-  eq: string;
-};
 
-/** @internal */
-export const UpdateMicrofrontendsHasProjectsResponseValue$outboundSchema:
-  z.ZodType<
-    UpdateMicrofrontendsHasProjectsResponseValue$Outbound,
-    z.ZodTypeDef,
-    UpdateMicrofrontendsHasProjectsResponseValue
-  > = z.object({
-    eq: z.string(),
-  });
-
-export function updateMicrofrontendsHasProjectsResponseValueToJSON(
-  updateMicrofrontendsHasProjectsResponseValue:
-    UpdateMicrofrontendsHasProjectsResponseValue,
-): string {
-  return JSON.stringify(
-    UpdateMicrofrontendsHasProjectsResponseValue$outboundSchema.parse(
-      updateMicrofrontendsHasProjectsResponseValue,
-    ),
-  );
-}
 export function updateMicrofrontendsHasProjectsResponseValueFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -2435,35 +1561,7 @@ export const UpdateMicrofrontendsHasProjects1$inboundSchema: z.ZodType<
     UpdateMicrofrontendsHasProjectsResponseValue$inboundSchema
   ),
 });
-/** @internal */
-export type UpdateMicrofrontendsHasProjects1$Outbound = {
-  type: "header";
-  key: string;
-  value: UpdateMicrofrontendsHasProjectsResponseValue$Outbound;
-};
 
-/** @internal */
-export const UpdateMicrofrontendsHasProjects1$outboundSchema: z.ZodType<
-  UpdateMicrofrontendsHasProjects1$Outbound,
-  z.ZodTypeDef,
-  UpdateMicrofrontendsHasProjects1
-> = z.object({
-  type: z.literal("header"),
-  key: UpdateMicrofrontendsHasProjectsKey$outboundSchema,
-  value: z.lazy(() =>
-    UpdateMicrofrontendsHasProjectsResponseValue$outboundSchema
-  ),
-});
-
-export function updateMicrofrontendsHasProjects1ToJSON(
-  updateMicrofrontendsHasProjects1: UpdateMicrofrontendsHasProjects1,
-): string {
-  return JSON.stringify(
-    UpdateMicrofrontendsHasProjects1$outboundSchema.parse(
-      updateMicrofrontendsHasProjects1,
-    ),
-  );
-}
 export function updateMicrofrontendsHasProjects1FromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateMicrofrontendsHasProjects1, SDKValidationError> {
@@ -2483,30 +1581,7 @@ export const UpdateMicrofrontendsRouteProjectsHas$inboundSchema: z.ZodType<
   z.lazy(() => UpdateMicrofrontendsHasProjects1$inboundSchema),
   z.lazy(() => UpdateMicrofrontendsHasProjects2$inboundSchema),
 ]);
-/** @internal */
-export type UpdateMicrofrontendsRouteProjectsHas$Outbound =
-  | UpdateMicrofrontendsHasProjects1$Outbound
-  | UpdateMicrofrontendsHasProjects2$Outbound;
 
-/** @internal */
-export const UpdateMicrofrontendsRouteProjectsHas$outboundSchema: z.ZodType<
-  UpdateMicrofrontendsRouteProjectsHas$Outbound,
-  z.ZodTypeDef,
-  UpdateMicrofrontendsRouteProjectsHas
-> = z.union([
-  z.lazy(() => UpdateMicrofrontendsHasProjects1$outboundSchema),
-  z.lazy(() => UpdateMicrofrontendsHasProjects2$outboundSchema),
-]);
-
-export function updateMicrofrontendsRouteProjectsHasToJSON(
-  updateMicrofrontendsRouteProjectsHas: UpdateMicrofrontendsRouteProjectsHas,
-): string {
-  return JSON.stringify(
-    UpdateMicrofrontendsRouteProjectsHas$outboundSchema.parse(
-      updateMicrofrontendsRouteProjectsHas,
-    ),
-  );
-}
 export function updateMicrofrontendsRouteProjectsHasFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateMicrofrontendsRouteProjectsHas, SDKValidationError> {
@@ -2522,10 +1597,6 @@ export function updateMicrofrontendsRouteProjectsHasFromJSON(
 export const UpdateMicrofrontendsRouteProjectsAction$inboundSchema:
   z.ZodNativeEnum<typeof UpdateMicrofrontendsRouteProjectsAction> = z
     .nativeEnum(UpdateMicrofrontendsRouteProjectsAction);
-/** @internal */
-export const UpdateMicrofrontendsRouteProjectsAction$outboundSchema:
-  z.ZodNativeEnum<typeof UpdateMicrofrontendsRouteProjectsAction> =
-    UpdateMicrofrontendsRouteProjectsAction$inboundSchema;
 
 /** @internal */
 export const UpdateMicrofrontendsRouteProjectsMitigate$inboundSchema: z.ZodType<
@@ -2535,31 +1606,7 @@ export const UpdateMicrofrontendsRouteProjectsMitigate$inboundSchema: z.ZodType<
 > = z.object({
   action: UpdateMicrofrontendsRouteProjectsAction$inboundSchema,
 });
-/** @internal */
-export type UpdateMicrofrontendsRouteProjectsMitigate$Outbound = {
-  action: string;
-};
 
-/** @internal */
-export const UpdateMicrofrontendsRouteProjectsMitigate$outboundSchema:
-  z.ZodType<
-    UpdateMicrofrontendsRouteProjectsMitigate$Outbound,
-    z.ZodTypeDef,
-    UpdateMicrofrontendsRouteProjectsMitigate
-  > = z.object({
-    action: UpdateMicrofrontendsRouteProjectsAction$outboundSchema,
-  });
-
-export function updateMicrofrontendsRouteProjectsMitigateToJSON(
-  updateMicrofrontendsRouteProjectsMitigate:
-    UpdateMicrofrontendsRouteProjectsMitigate,
-): string {
-  return JSON.stringify(
-    UpdateMicrofrontendsRouteProjectsMitigate$outboundSchema.parse(
-      updateMicrofrontendsRouteProjectsMitigate,
-    ),
-  );
-}
 export function updateMicrofrontendsRouteProjectsMitigateFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -2593,43 +1640,7 @@ export const UpdateMicrofrontendsRouteProjects2$inboundSchema: z.ZodType<
   ),
   src: types.optional(types.string()),
 });
-/** @internal */
-export type UpdateMicrofrontendsRouteProjects2$Outbound = {
-  has: Array<
-    | UpdateMicrofrontendsHasProjects1$Outbound
-    | UpdateMicrofrontendsHasProjects2$Outbound
-  >;
-  mitigate: UpdateMicrofrontendsRouteProjectsMitigate$Outbound;
-  src?: string | undefined;
-};
 
-/** @internal */
-export const UpdateMicrofrontendsRouteProjects2$outboundSchema: z.ZodType<
-  UpdateMicrofrontendsRouteProjects2$Outbound,
-  z.ZodTypeDef,
-  UpdateMicrofrontendsRouteProjects2
-> = z.object({
-  has: z.array(
-    z.union([
-      z.lazy(() => UpdateMicrofrontendsHasProjects1$outboundSchema),
-      z.lazy(() => UpdateMicrofrontendsHasProjects2$outboundSchema),
-    ]),
-  ),
-  mitigate: z.lazy(() =>
-    UpdateMicrofrontendsRouteProjectsMitigate$outboundSchema
-  ),
-  src: z.string().optional(),
-});
-
-export function updateMicrofrontendsRouteProjects2ToJSON(
-  updateMicrofrontendsRouteProjects2: UpdateMicrofrontendsRouteProjects2,
-): string {
-  return JSON.stringify(
-    UpdateMicrofrontendsRouteProjects2$outboundSchema.parse(
-      updateMicrofrontendsRouteProjects2,
-    ),
-  );
-}
 export function updateMicrofrontendsRouteProjects2FromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateMicrofrontendsRouteProjects2, SDKValidationError> {
@@ -2650,31 +1661,7 @@ export const UpdateMicrofrontendsRouteProjects1$inboundSchema: z.ZodType<
   src: types.string(),
   status: types.number(),
 });
-/** @internal */
-export type UpdateMicrofrontendsRouteProjects1$Outbound = {
-  src: string;
-  status: number;
-};
 
-/** @internal */
-export const UpdateMicrofrontendsRouteProjects1$outboundSchema: z.ZodType<
-  UpdateMicrofrontendsRouteProjects1$Outbound,
-  z.ZodTypeDef,
-  UpdateMicrofrontendsRouteProjects1
-> = z.object({
-  src: z.string(),
-  status: z.number(),
-});
-
-export function updateMicrofrontendsRouteProjects1ToJSON(
-  updateMicrofrontendsRouteProjects1: UpdateMicrofrontendsRouteProjects1,
-): string {
-  return JSON.stringify(
-    UpdateMicrofrontendsRouteProjects1$outboundSchema.parse(
-      updateMicrofrontendsRouteProjects1,
-    ),
-  );
-}
 export function updateMicrofrontendsRouteProjects1FromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateMicrofrontendsRouteProjects1, SDKValidationError> {
@@ -2696,32 +1683,7 @@ export const UpdateMicrofrontendsBlockHistoryProjectsRoute$inboundSchema:
     z.lazy(() => UpdateMicrofrontendsRouteProjects1$inboundSchema),
     z.lazy(() => UpdateMicrofrontendsRouteProjects2$inboundSchema),
   ]);
-/** @internal */
-export type UpdateMicrofrontendsBlockHistoryProjectsRoute$Outbound =
-  | UpdateMicrofrontendsRouteProjects1$Outbound
-  | UpdateMicrofrontendsRouteProjects2$Outbound;
 
-/** @internal */
-export const UpdateMicrofrontendsBlockHistoryProjectsRoute$outboundSchema:
-  z.ZodType<
-    UpdateMicrofrontendsBlockHistoryProjectsRoute$Outbound,
-    z.ZodTypeDef,
-    UpdateMicrofrontendsBlockHistoryProjectsRoute
-  > = smartUnion([
-    z.lazy(() => UpdateMicrofrontendsRouteProjects1$outboundSchema),
-    z.lazy(() => UpdateMicrofrontendsRouteProjects2$outboundSchema),
-  ]);
-
-export function updateMicrofrontendsBlockHistoryProjectsRouteToJSON(
-  updateMicrofrontendsBlockHistoryProjectsRoute:
-    UpdateMicrofrontendsBlockHistoryProjectsRoute,
-): string {
-  return JSON.stringify(
-    UpdateMicrofrontendsBlockHistoryProjectsRoute$outboundSchema.parse(
-      updateMicrofrontendsBlockHistoryProjectsRoute,
-    ),
-  );
-}
 export function updateMicrofrontendsBlockHistoryProjectsRouteFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -2757,50 +1719,7 @@ export const UpdateMicrofrontendsBlockHistory4$inboundSchema: z.ZodType<
   ineligibleForAppeal: types.optional(types.boolean()),
   isCascading: types.optional(types.boolean()),
 });
-/** @internal */
-export type UpdateMicrofrontendsBlockHistory4$Outbound = {
-  action: "route-unblocked";
-  route:
-    | UpdateMicrofrontendsRouteProjects1$Outbound
-    | UpdateMicrofrontendsRouteProjects2$Outbound;
-  statusCode?: number | undefined;
-  createdAt: number;
-  caseId?: string | undefined;
-  actor?: string | undefined;
-  comment?: string | undefined;
-  ineligibleForAppeal?: boolean | undefined;
-  isCascading?: boolean | undefined;
-};
 
-/** @internal */
-export const UpdateMicrofrontendsBlockHistory4$outboundSchema: z.ZodType<
-  UpdateMicrofrontendsBlockHistory4$Outbound,
-  z.ZodTypeDef,
-  UpdateMicrofrontendsBlockHistory4
-> = z.object({
-  action: z.literal("route-unblocked"),
-  route: smartUnion([
-    z.lazy(() => UpdateMicrofrontendsRouteProjects1$outboundSchema),
-    z.lazy(() => UpdateMicrofrontendsRouteProjects2$outboundSchema),
-  ]),
-  statusCode: z.number().optional(),
-  createdAt: z.number(),
-  caseId: z.string().optional(),
-  actor: z.string().optional(),
-  comment: z.string().optional(),
-  ineligibleForAppeal: z.boolean().optional(),
-  isCascading: z.boolean().optional(),
-});
-
-export function updateMicrofrontendsBlockHistory4ToJSON(
-  updateMicrofrontendsBlockHistory4: UpdateMicrofrontendsBlockHistory4,
-): string {
-  return JSON.stringify(
-    UpdateMicrofrontendsBlockHistory4$outboundSchema.parse(
-      updateMicrofrontendsBlockHistory4,
-    ),
-  );
-}
 export function updateMicrofrontendsBlockHistory4FromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateMicrofrontendsBlockHistory4, SDKValidationError> {
@@ -2820,33 +1739,7 @@ export const UpdateMicrofrontendsHasProjectsResponse200ApplicationJSONResponseBo
   > = z.object({
     eq: types.string(),
   });
-/** @internal */
-export type UpdateMicrofrontendsHasProjectsResponse200ApplicationJSONResponseBodyValue$Outbound =
-  {
-    eq: string;
-  };
 
-/** @internal */
-export const UpdateMicrofrontendsHasProjectsResponse200ApplicationJSONResponseBodyValue$outboundSchema:
-  z.ZodType<
-    UpdateMicrofrontendsHasProjectsResponse200ApplicationJSONResponseBodyValue$Outbound,
-    z.ZodTypeDef,
-    UpdateMicrofrontendsHasProjectsResponse200ApplicationJSONResponseBodyValue
-  > = z.object({
-    eq: z.string(),
-  });
-
-export function updateMicrofrontendsHasProjectsResponse200ApplicationJSONResponseBodyValueToJSON(
-  updateMicrofrontendsHasProjectsResponse200ApplicationJSONResponseBodyValue:
-    UpdateMicrofrontendsHasProjectsResponse200ApplicationJSONResponseBodyValue,
-): string {
-  return JSON.stringify(
-    UpdateMicrofrontendsHasProjectsResponse200ApplicationJSONResponseBodyValue$outboundSchema
-      .parse(
-        updateMicrofrontendsHasProjectsResponse200ApplicationJSONResponseBodyValue,
-      ),
-  );
-}
 export function updateMicrofrontendsHasProjectsResponse200ApplicationJSONResponseBodyValueFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -2873,35 +1766,7 @@ export const UpdateMicrofrontendsHasProjectsResponse2$inboundSchema: z.ZodType<
     UpdateMicrofrontendsHasProjectsResponse200ApplicationJSONResponseBodyValue$inboundSchema
   ),
 });
-/** @internal */
-export type UpdateMicrofrontendsHasProjectsResponse2$Outbound = {
-  type: "host";
-  value:
-    UpdateMicrofrontendsHasProjectsResponse200ApplicationJSONResponseBodyValue$Outbound;
-};
 
-/** @internal */
-export const UpdateMicrofrontendsHasProjectsResponse2$outboundSchema: z.ZodType<
-  UpdateMicrofrontendsHasProjectsResponse2$Outbound,
-  z.ZodTypeDef,
-  UpdateMicrofrontendsHasProjectsResponse2
-> = z.object({
-  type: z.literal("host"),
-  value: z.lazy(() =>
-    UpdateMicrofrontendsHasProjectsResponse200ApplicationJSONResponseBodyValue$outboundSchema
-  ),
-});
-
-export function updateMicrofrontendsHasProjectsResponse2ToJSON(
-  updateMicrofrontendsHasProjectsResponse2:
-    UpdateMicrofrontendsHasProjectsResponse2,
-): string {
-  return JSON.stringify(
-    UpdateMicrofrontendsHasProjectsResponse2$outboundSchema.parse(
-      updateMicrofrontendsHasProjectsResponse2,
-    ),
-  );
-}
 export function updateMicrofrontendsHasProjectsResponse2FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -2922,10 +1787,6 @@ export function updateMicrofrontendsHasProjectsResponse2FromJSON(
 export const UpdateMicrofrontendsHasProjectsResponseKey$inboundSchema:
   z.ZodNativeEnum<typeof UpdateMicrofrontendsHasProjectsResponseKey> = z
     .nativeEnum(UpdateMicrofrontendsHasProjectsResponseKey);
-/** @internal */
-export const UpdateMicrofrontendsHasProjectsResponseKey$outboundSchema:
-  z.ZodNativeEnum<typeof UpdateMicrofrontendsHasProjectsResponseKey> =
-    UpdateMicrofrontendsHasProjectsResponseKey$inboundSchema;
 
 /** @internal */
 export const UpdateMicrofrontendsHasProjectsResponse200ApplicationJSONValue$inboundSchema:
@@ -2936,31 +1797,7 @@ export const UpdateMicrofrontendsHasProjectsResponse200ApplicationJSONValue$inbo
   > = z.object({
     eq: types.string(),
   });
-/** @internal */
-export type UpdateMicrofrontendsHasProjectsResponse200ApplicationJSONValue$Outbound =
-  {
-    eq: string;
-  };
 
-/** @internal */
-export const UpdateMicrofrontendsHasProjectsResponse200ApplicationJSONValue$outboundSchema:
-  z.ZodType<
-    UpdateMicrofrontendsHasProjectsResponse200ApplicationJSONValue$Outbound,
-    z.ZodTypeDef,
-    UpdateMicrofrontendsHasProjectsResponse200ApplicationJSONValue
-  > = z.object({
-    eq: z.string(),
-  });
-
-export function updateMicrofrontendsHasProjectsResponse200ApplicationJSONValueToJSON(
-  updateMicrofrontendsHasProjectsResponse200ApplicationJSONValue:
-    UpdateMicrofrontendsHasProjectsResponse200ApplicationJSONValue,
-): string {
-  return JSON.stringify(
-    UpdateMicrofrontendsHasProjectsResponse200ApplicationJSONValue$outboundSchema
-      .parse(updateMicrofrontendsHasProjectsResponse200ApplicationJSONValue),
-  );
-}
 export function updateMicrofrontendsHasProjectsResponse200ApplicationJSONValueFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -2988,37 +1825,7 @@ export const UpdateMicrofrontendsHasProjectsResponse1$inboundSchema: z.ZodType<
     UpdateMicrofrontendsHasProjectsResponse200ApplicationJSONValue$inboundSchema
   ),
 });
-/** @internal */
-export type UpdateMicrofrontendsHasProjectsResponse1$Outbound = {
-  type: "header";
-  key: string;
-  value:
-    UpdateMicrofrontendsHasProjectsResponse200ApplicationJSONValue$Outbound;
-};
 
-/** @internal */
-export const UpdateMicrofrontendsHasProjectsResponse1$outboundSchema: z.ZodType<
-  UpdateMicrofrontendsHasProjectsResponse1$Outbound,
-  z.ZodTypeDef,
-  UpdateMicrofrontendsHasProjectsResponse1
-> = z.object({
-  type: z.literal("header"),
-  key: UpdateMicrofrontendsHasProjectsResponseKey$outboundSchema,
-  value: z.lazy(() =>
-    UpdateMicrofrontendsHasProjectsResponse200ApplicationJSONValue$outboundSchema
-  ),
-});
-
-export function updateMicrofrontendsHasProjectsResponse1ToJSON(
-  updateMicrofrontendsHasProjectsResponse1:
-    UpdateMicrofrontendsHasProjectsResponse1,
-): string {
-  return JSON.stringify(
-    UpdateMicrofrontendsHasProjectsResponse1$outboundSchema.parse(
-      updateMicrofrontendsHasProjectsResponse1,
-    ),
-  );
-}
 export function updateMicrofrontendsHasProjectsResponse1FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -3044,30 +1851,7 @@ export const UpdateMicrofrontendsRouteHas$inboundSchema: z.ZodType<
   z.lazy(() => UpdateMicrofrontendsHasProjectsResponse1$inboundSchema),
   z.lazy(() => UpdateMicrofrontendsHasProjectsResponse2$inboundSchema),
 ]);
-/** @internal */
-export type UpdateMicrofrontendsRouteHas$Outbound =
-  | UpdateMicrofrontendsHasProjectsResponse1$Outbound
-  | UpdateMicrofrontendsHasProjectsResponse2$Outbound;
 
-/** @internal */
-export const UpdateMicrofrontendsRouteHas$outboundSchema: z.ZodType<
-  UpdateMicrofrontendsRouteHas$Outbound,
-  z.ZodTypeDef,
-  UpdateMicrofrontendsRouteHas
-> = z.union([
-  z.lazy(() => UpdateMicrofrontendsHasProjectsResponse1$outboundSchema),
-  z.lazy(() => UpdateMicrofrontendsHasProjectsResponse2$outboundSchema),
-]);
-
-export function updateMicrofrontendsRouteHasToJSON(
-  updateMicrofrontendsRouteHas: UpdateMicrofrontendsRouteHas,
-): string {
-  return JSON.stringify(
-    UpdateMicrofrontendsRouteHas$outboundSchema.parse(
-      updateMicrofrontendsRouteHas,
-    ),
-  );
-}
 export function updateMicrofrontendsRouteHasFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateMicrofrontendsRouteHas, SDKValidationError> {
@@ -3082,10 +1866,6 @@ export function updateMicrofrontendsRouteHasFromJSON(
 export const UpdateMicrofrontendsRouteAction$inboundSchema: z.ZodNativeEnum<
   typeof UpdateMicrofrontendsRouteAction
 > = z.nativeEnum(UpdateMicrofrontendsRouteAction);
-/** @internal */
-export const UpdateMicrofrontendsRouteAction$outboundSchema: z.ZodNativeEnum<
-  typeof UpdateMicrofrontendsRouteAction
-> = UpdateMicrofrontendsRouteAction$inboundSchema;
 
 /** @internal */
 export const UpdateMicrofrontendsRouteMitigate$inboundSchema: z.ZodType<
@@ -3095,29 +1875,7 @@ export const UpdateMicrofrontendsRouteMitigate$inboundSchema: z.ZodType<
 > = z.object({
   action: UpdateMicrofrontendsRouteAction$inboundSchema,
 });
-/** @internal */
-export type UpdateMicrofrontendsRouteMitigate$Outbound = {
-  action: string;
-};
 
-/** @internal */
-export const UpdateMicrofrontendsRouteMitigate$outboundSchema: z.ZodType<
-  UpdateMicrofrontendsRouteMitigate$Outbound,
-  z.ZodTypeDef,
-  UpdateMicrofrontendsRouteMitigate
-> = z.object({
-  action: UpdateMicrofrontendsRouteAction$outboundSchema,
-});
-
-export function updateMicrofrontendsRouteMitigateToJSON(
-  updateMicrofrontendsRouteMitigate: UpdateMicrofrontendsRouteMitigate,
-): string {
-  return JSON.stringify(
-    UpdateMicrofrontendsRouteMitigate$outboundSchema.parse(
-      updateMicrofrontendsRouteMitigate,
-    ),
-  );
-}
 export function updateMicrofrontendsRouteMitigateFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateMicrofrontendsRouteMitigate, SDKValidationError> {
@@ -3143,39 +1901,7 @@ export const UpdateMicrofrontendsRoute2$inboundSchema: z.ZodType<
   mitigate: z.lazy(() => UpdateMicrofrontendsRouteMitigate$inboundSchema),
   src: types.optional(types.string()),
 });
-/** @internal */
-export type UpdateMicrofrontendsRoute2$Outbound = {
-  has: Array<
-    | UpdateMicrofrontendsHasProjectsResponse1$Outbound
-    | UpdateMicrofrontendsHasProjectsResponse2$Outbound
-  >;
-  mitigate: UpdateMicrofrontendsRouteMitigate$Outbound;
-  src?: string | undefined;
-};
 
-/** @internal */
-export const UpdateMicrofrontendsRoute2$outboundSchema: z.ZodType<
-  UpdateMicrofrontendsRoute2$Outbound,
-  z.ZodTypeDef,
-  UpdateMicrofrontendsRoute2
-> = z.object({
-  has: z.array(
-    z.union([
-      z.lazy(() => UpdateMicrofrontendsHasProjectsResponse1$outboundSchema),
-      z.lazy(() => UpdateMicrofrontendsHasProjectsResponse2$outboundSchema),
-    ]),
-  ),
-  mitigate: z.lazy(() => UpdateMicrofrontendsRouteMitigate$outboundSchema),
-  src: z.string().optional(),
-});
-
-export function updateMicrofrontendsRoute2ToJSON(
-  updateMicrofrontendsRoute2: UpdateMicrofrontendsRoute2,
-): string {
-  return JSON.stringify(
-    UpdateMicrofrontendsRoute2$outboundSchema.parse(updateMicrofrontendsRoute2),
-  );
-}
 export function updateMicrofrontendsRoute2FromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateMicrofrontendsRoute2, SDKValidationError> {
@@ -3195,29 +1921,7 @@ export const UpdateMicrofrontendsRoute1$inboundSchema: z.ZodType<
   src: types.string(),
   status: types.number(),
 });
-/** @internal */
-export type UpdateMicrofrontendsRoute1$Outbound = {
-  src: string;
-  status: number;
-};
 
-/** @internal */
-export const UpdateMicrofrontendsRoute1$outboundSchema: z.ZodType<
-  UpdateMicrofrontendsRoute1$Outbound,
-  z.ZodTypeDef,
-  UpdateMicrofrontendsRoute1
-> = z.object({
-  src: z.string(),
-  status: z.number(),
-});
-
-export function updateMicrofrontendsRoute1ToJSON(
-  updateMicrofrontendsRoute1: UpdateMicrofrontendsRoute1,
-): string {
-  return JSON.stringify(
-    UpdateMicrofrontendsRoute1$outboundSchema.parse(updateMicrofrontendsRoute1),
-  );
-}
 export function updateMicrofrontendsRoute1FromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateMicrofrontendsRoute1, SDKValidationError> {
@@ -3237,30 +1941,7 @@ export const UpdateMicrofrontendsBlockHistoryRoute$inboundSchema: z.ZodType<
   z.lazy(() => UpdateMicrofrontendsRoute1$inboundSchema),
   z.lazy(() => UpdateMicrofrontendsRoute2$inboundSchema),
 ]);
-/** @internal */
-export type UpdateMicrofrontendsBlockHistoryRoute$Outbound =
-  | UpdateMicrofrontendsRoute1$Outbound
-  | UpdateMicrofrontendsRoute2$Outbound;
 
-/** @internal */
-export const UpdateMicrofrontendsBlockHistoryRoute$outboundSchema: z.ZodType<
-  UpdateMicrofrontendsBlockHistoryRoute$Outbound,
-  z.ZodTypeDef,
-  UpdateMicrofrontendsBlockHistoryRoute
-> = smartUnion([
-  z.lazy(() => UpdateMicrofrontendsRoute1$outboundSchema),
-  z.lazy(() => UpdateMicrofrontendsRoute2$outboundSchema),
-]);
-
-export function updateMicrofrontendsBlockHistoryRouteToJSON(
-  updateMicrofrontendsBlockHistoryRoute: UpdateMicrofrontendsBlockHistoryRoute,
-): string {
-  return JSON.stringify(
-    UpdateMicrofrontendsBlockHistoryRoute$outboundSchema.parse(
-      updateMicrofrontendsBlockHistoryRoute,
-    ),
-  );
-}
 export function updateMicrofrontendsBlockHistoryRouteFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateMicrofrontendsBlockHistoryRoute, SDKValidationError> {
@@ -3291,50 +1972,7 @@ export const UpdateMicrofrontendsBlockHistory3$inboundSchema: z.ZodType<
   ineligibleForAppeal: types.optional(types.boolean()),
   isCascading: types.optional(types.boolean()),
 });
-/** @internal */
-export type UpdateMicrofrontendsBlockHistory3$Outbound = {
-  action: "route-blocked";
-  route:
-    | UpdateMicrofrontendsRoute1$Outbound
-    | UpdateMicrofrontendsRoute2$Outbound;
-  reason: string;
-  createdAt: number;
-  caseId?: string | undefined;
-  actor?: string | undefined;
-  comment?: string | undefined;
-  ineligibleForAppeal?: boolean | undefined;
-  isCascading?: boolean | undefined;
-};
 
-/** @internal */
-export const UpdateMicrofrontendsBlockHistory3$outboundSchema: z.ZodType<
-  UpdateMicrofrontendsBlockHistory3$Outbound,
-  z.ZodTypeDef,
-  UpdateMicrofrontendsBlockHistory3
-> = z.object({
-  action: z.literal("route-blocked"),
-  route: smartUnion([
-    z.lazy(() => UpdateMicrofrontendsRoute1$outboundSchema),
-    z.lazy(() => UpdateMicrofrontendsRoute2$outboundSchema),
-  ]),
-  reason: z.string(),
-  createdAt: z.number(),
-  caseId: z.string().optional(),
-  actor: z.string().optional(),
-  comment: z.string().optional(),
-  ineligibleForAppeal: z.boolean().optional(),
-  isCascading: z.boolean().optional(),
-});
-
-export function updateMicrofrontendsBlockHistory3ToJSON(
-  updateMicrofrontendsBlockHistory3: UpdateMicrofrontendsBlockHistory3,
-): string {
-  return JSON.stringify(
-    UpdateMicrofrontendsBlockHistory3$outboundSchema.parse(
-      updateMicrofrontendsBlockHistory3,
-    ),
-  );
-}
 export function updateMicrofrontendsBlockHistory3FromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateMicrofrontendsBlockHistory3, SDKValidationError> {
@@ -3359,41 +1997,7 @@ export const UpdateMicrofrontendsBlockHistory2$inboundSchema: z.ZodType<
   ineligibleForAppeal: types.optional(types.boolean()),
   isCascading: types.optional(types.boolean()),
 });
-/** @internal */
-export type UpdateMicrofrontendsBlockHistory2$Outbound = {
-  action: "unblocked";
-  createdAt: number;
-  caseId?: string | undefined;
-  actor?: string | undefined;
-  comment?: string | undefined;
-  ineligibleForAppeal?: boolean | undefined;
-  isCascading?: boolean | undefined;
-};
 
-/** @internal */
-export const UpdateMicrofrontendsBlockHistory2$outboundSchema: z.ZodType<
-  UpdateMicrofrontendsBlockHistory2$Outbound,
-  z.ZodTypeDef,
-  UpdateMicrofrontendsBlockHistory2
-> = z.object({
-  action: z.literal("unblocked"),
-  createdAt: z.number(),
-  caseId: z.string().optional(),
-  actor: z.string().optional(),
-  comment: z.string().optional(),
-  ineligibleForAppeal: z.boolean().optional(),
-  isCascading: z.boolean().optional(),
-});
-
-export function updateMicrofrontendsBlockHistory2ToJSON(
-  updateMicrofrontendsBlockHistory2: UpdateMicrofrontendsBlockHistory2,
-): string {
-  return JSON.stringify(
-    UpdateMicrofrontendsBlockHistory2$outboundSchema.parse(
-      updateMicrofrontendsBlockHistory2,
-    ),
-  );
-}
 export function updateMicrofrontendsBlockHistory2FromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateMicrofrontendsBlockHistory2, SDKValidationError> {
@@ -3420,45 +2024,7 @@ export const UpdateMicrofrontendsBlockHistory1$inboundSchema: z.ZodType<
   ineligibleForAppeal: types.optional(types.boolean()),
   isCascading: types.optional(types.boolean()),
 });
-/** @internal */
-export type UpdateMicrofrontendsBlockHistory1$Outbound = {
-  action: "blocked";
-  reason: string;
-  statusCode: number;
-  createdAt: number;
-  caseId?: string | undefined;
-  actor?: string | undefined;
-  comment?: string | undefined;
-  ineligibleForAppeal?: boolean | undefined;
-  isCascading?: boolean | undefined;
-};
 
-/** @internal */
-export const UpdateMicrofrontendsBlockHistory1$outboundSchema: z.ZodType<
-  UpdateMicrofrontendsBlockHistory1$Outbound,
-  z.ZodTypeDef,
-  UpdateMicrofrontendsBlockHistory1
-> = z.object({
-  action: z.literal("blocked"),
-  reason: z.string(),
-  statusCode: z.number(),
-  createdAt: z.number(),
-  caseId: z.string().optional(),
-  actor: z.string().optional(),
-  comment: z.string().optional(),
-  ineligibleForAppeal: z.boolean().optional(),
-  isCascading: z.boolean().optional(),
-});
-
-export function updateMicrofrontendsBlockHistory1ToJSON(
-  updateMicrofrontendsBlockHistory1: UpdateMicrofrontendsBlockHistory1,
-): string {
-  return JSON.stringify(
-    UpdateMicrofrontendsBlockHistory1$outboundSchema.parse(
-      updateMicrofrontendsBlockHistory1,
-    ),
-  );
-}
 export function updateMicrofrontendsBlockHistory1FromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateMicrofrontendsBlockHistory1, SDKValidationError> {
@@ -3480,34 +2046,7 @@ export const UpdateMicrofrontendsBlockHistory$inboundSchema: z.ZodType<
   z.lazy(() => UpdateMicrofrontendsBlockHistory3$inboundSchema),
   z.lazy(() => UpdateMicrofrontendsBlockHistory4$inboundSchema),
 ]);
-/** @internal */
-export type UpdateMicrofrontendsBlockHistory$Outbound =
-  | UpdateMicrofrontendsBlockHistory1$Outbound
-  | UpdateMicrofrontendsBlockHistory2$Outbound
-  | UpdateMicrofrontendsBlockHistory3$Outbound
-  | UpdateMicrofrontendsBlockHistory4$Outbound;
 
-/** @internal */
-export const UpdateMicrofrontendsBlockHistory$outboundSchema: z.ZodType<
-  UpdateMicrofrontendsBlockHistory$Outbound,
-  z.ZodTypeDef,
-  UpdateMicrofrontendsBlockHistory
-> = z.union([
-  z.lazy(() => UpdateMicrofrontendsBlockHistory1$outboundSchema),
-  z.lazy(() => UpdateMicrofrontendsBlockHistory2$outboundSchema),
-  z.lazy(() => UpdateMicrofrontendsBlockHistory3$outboundSchema),
-  z.lazy(() => UpdateMicrofrontendsBlockHistory4$outboundSchema),
-]);
-
-export function updateMicrofrontendsBlockHistoryToJSON(
-  updateMicrofrontendsBlockHistory: UpdateMicrofrontendsBlockHistory,
-): string {
-  return JSON.stringify(
-    UpdateMicrofrontendsBlockHistory$outboundSchema.parse(
-      updateMicrofrontendsBlockHistory,
-    ),
-  );
-}
 export function updateMicrofrontendsBlockHistoryFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateMicrofrontendsBlockHistory, SDKValidationError> {
@@ -3522,10 +2061,6 @@ export function updateMicrofrontendsBlockHistoryFromJSON(
 export const UpdateMicrofrontendsProjectsAction$inboundSchema: z.ZodNativeEnum<
   typeof UpdateMicrofrontendsProjectsAction
 > = z.nativeEnum(UpdateMicrofrontendsProjectsAction);
-/** @internal */
-export const UpdateMicrofrontendsProjectsAction$outboundSchema: z.ZodNativeEnum<
-  typeof UpdateMicrofrontendsProjectsAction
-> = UpdateMicrofrontendsProjectsAction$inboundSchema;
 
 /** @internal */
 export const UpdateMicrofrontendsInterstitialHistory$inboundSchema: z.ZodType<
@@ -3540,40 +2075,7 @@ export const UpdateMicrofrontendsInterstitialHistory$inboundSchema: z.ZodType<
   actor: types.optional(types.string()),
   comment: types.optional(types.string()),
 });
-/** @internal */
-export type UpdateMicrofrontendsInterstitialHistory$Outbound = {
-  action: string;
-  createdAt: number;
-  caseId?: string | undefined;
-  reason?: string | undefined;
-  actor?: string | undefined;
-  comment?: string | undefined;
-};
 
-/** @internal */
-export const UpdateMicrofrontendsInterstitialHistory$outboundSchema: z.ZodType<
-  UpdateMicrofrontendsInterstitialHistory$Outbound,
-  z.ZodTypeDef,
-  UpdateMicrofrontendsInterstitialHistory
-> = z.object({
-  action: UpdateMicrofrontendsProjectsAction$outboundSchema,
-  createdAt: z.number(),
-  caseId: z.string().optional(),
-  reason: z.string().optional(),
-  actor: z.string().optional(),
-  comment: z.string().optional(),
-});
-
-export function updateMicrofrontendsInterstitialHistoryToJSON(
-  updateMicrofrontendsInterstitialHistory:
-    UpdateMicrofrontendsInterstitialHistory,
-): string {
-  return JSON.stringify(
-    UpdateMicrofrontendsInterstitialHistory$outboundSchema.parse(
-      updateMicrofrontendsInterstitialHistory,
-    ),
-  );
-}
 export function updateMicrofrontendsInterstitialHistoryFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -3617,57 +2119,7 @@ export const UpdateMicrofrontendsAbuse$inboundSchema: z.ZodType<
     ),
   ),
 });
-/** @internal */
-export type UpdateMicrofrontendsAbuse$Outbound = {
-  scanner?: string | undefined;
-  history: Array<UpdateMicrofrontendsHistory$Outbound>;
-  updatedAt: number;
-  block?: UpdateMicrofrontendsBlock$Outbound | undefined;
-  blockHistory?:
-    | Array<
-      | UpdateMicrofrontendsBlockHistory1$Outbound
-      | UpdateMicrofrontendsBlockHistory2$Outbound
-      | UpdateMicrofrontendsBlockHistory3$Outbound
-      | UpdateMicrofrontendsBlockHistory4$Outbound
-    >
-    | undefined;
-  interstitial?: boolean | undefined;
-  interstitialHistory?:
-    | Array<UpdateMicrofrontendsInterstitialHistory$Outbound>
-    | undefined;
-};
 
-/** @internal */
-export const UpdateMicrofrontendsAbuse$outboundSchema: z.ZodType<
-  UpdateMicrofrontendsAbuse$Outbound,
-  z.ZodTypeDef,
-  UpdateMicrofrontendsAbuse
-> = z.object({
-  scanner: z.string().optional(),
-  history: z.array(z.lazy(() => UpdateMicrofrontendsHistory$outboundSchema)),
-  updatedAt: z.number(),
-  block: z.lazy(() => UpdateMicrofrontendsBlock$outboundSchema).optional(),
-  blockHistory: z.array(
-    z.union([
-      z.lazy(() => UpdateMicrofrontendsBlockHistory1$outboundSchema),
-      z.lazy(() => UpdateMicrofrontendsBlockHistory2$outboundSchema),
-      z.lazy(() => UpdateMicrofrontendsBlockHistory3$outboundSchema),
-      z.lazy(() => UpdateMicrofrontendsBlockHistory4$outboundSchema),
-    ]),
-  ).optional(),
-  interstitial: z.boolean().optional(),
-  interstitialHistory: z.array(
-    z.lazy(() => UpdateMicrofrontendsInterstitialHistory$outboundSchema),
-  ).optional(),
-});
-
-export function updateMicrofrontendsAbuseToJSON(
-  updateMicrofrontendsAbuse: UpdateMicrofrontendsAbuse,
-): string {
-  return JSON.stringify(
-    UpdateMicrofrontendsAbuse$outboundSchema.parse(updateMicrofrontendsAbuse),
-  );
-}
 export function updateMicrofrontendsAbuseFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateMicrofrontendsAbuse, SDKValidationError> {
@@ -3686,29 +2138,7 @@ export const UpdateMicrofrontendsHasProjectsValue$inboundSchema: z.ZodType<
 > = z.object({
   eq: types.string(),
 });
-/** @internal */
-export type UpdateMicrofrontendsHasProjectsValue$Outbound = {
-  eq: string;
-};
 
-/** @internal */
-export const UpdateMicrofrontendsHasProjectsValue$outboundSchema: z.ZodType<
-  UpdateMicrofrontendsHasProjectsValue$Outbound,
-  z.ZodTypeDef,
-  UpdateMicrofrontendsHasProjectsValue
-> = z.object({
-  eq: z.string(),
-});
-
-export function updateMicrofrontendsHasProjectsValueToJSON(
-  updateMicrofrontendsHasProjectsValue: UpdateMicrofrontendsHasProjectsValue,
-): string {
-  return JSON.stringify(
-    UpdateMicrofrontendsHasProjectsValue$outboundSchema.parse(
-      updateMicrofrontendsHasProjectsValue,
-    ),
-  );
-}
 export function updateMicrofrontendsHasProjectsValueFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateMicrofrontendsHasProjectsValue, SDKValidationError> {
@@ -3729,29 +2159,7 @@ export const UpdateMicrofrontendsHas2$inboundSchema: z.ZodType<
   type: types.literal("host"),
   value: z.lazy(() => UpdateMicrofrontendsHasProjectsValue$inboundSchema),
 });
-/** @internal */
-export type UpdateMicrofrontendsHas2$Outbound = {
-  type: "host";
-  value: UpdateMicrofrontendsHasProjectsValue$Outbound;
-};
 
-/** @internal */
-export const UpdateMicrofrontendsHas2$outboundSchema: z.ZodType<
-  UpdateMicrofrontendsHas2$Outbound,
-  z.ZodTypeDef,
-  UpdateMicrofrontendsHas2
-> = z.object({
-  type: z.literal("host"),
-  value: z.lazy(() => UpdateMicrofrontendsHasProjectsValue$outboundSchema),
-});
-
-export function updateMicrofrontendsHas2ToJSON(
-  updateMicrofrontendsHas2: UpdateMicrofrontendsHas2,
-): string {
-  return JSON.stringify(
-    UpdateMicrofrontendsHas2$outboundSchema.parse(updateMicrofrontendsHas2),
-  );
-}
 export function updateMicrofrontendsHas2FromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateMicrofrontendsHas2, SDKValidationError> {
@@ -3766,10 +2174,6 @@ export function updateMicrofrontendsHas2FromJSON(
 export const UpdateMicrofrontendsHasKey$inboundSchema: z.ZodNativeEnum<
   typeof UpdateMicrofrontendsHasKey
 > = z.nativeEnum(UpdateMicrofrontendsHasKey);
-/** @internal */
-export const UpdateMicrofrontendsHasKey$outboundSchema: z.ZodNativeEnum<
-  typeof UpdateMicrofrontendsHasKey
-> = UpdateMicrofrontendsHasKey$inboundSchema;
 
 /** @internal */
 export const UpdateMicrofrontendsHasValue$inboundSchema: z.ZodType<
@@ -3779,29 +2183,7 @@ export const UpdateMicrofrontendsHasValue$inboundSchema: z.ZodType<
 > = z.object({
   eq: types.string(),
 });
-/** @internal */
-export type UpdateMicrofrontendsHasValue$Outbound = {
-  eq: string;
-};
 
-/** @internal */
-export const UpdateMicrofrontendsHasValue$outboundSchema: z.ZodType<
-  UpdateMicrofrontendsHasValue$Outbound,
-  z.ZodTypeDef,
-  UpdateMicrofrontendsHasValue
-> = z.object({
-  eq: z.string(),
-});
-
-export function updateMicrofrontendsHasValueToJSON(
-  updateMicrofrontendsHasValue: UpdateMicrofrontendsHasValue,
-): string {
-  return JSON.stringify(
-    UpdateMicrofrontendsHasValue$outboundSchema.parse(
-      updateMicrofrontendsHasValue,
-    ),
-  );
-}
 export function updateMicrofrontendsHasValueFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateMicrofrontendsHasValue, SDKValidationError> {
@@ -3822,31 +2204,7 @@ export const UpdateMicrofrontendsHas1$inboundSchema: z.ZodType<
   key: UpdateMicrofrontendsHasKey$inboundSchema,
   value: z.lazy(() => UpdateMicrofrontendsHasValue$inboundSchema),
 });
-/** @internal */
-export type UpdateMicrofrontendsHas1$Outbound = {
-  type: "header";
-  key: string;
-  value: UpdateMicrofrontendsHasValue$Outbound;
-};
 
-/** @internal */
-export const UpdateMicrofrontendsHas1$outboundSchema: z.ZodType<
-  UpdateMicrofrontendsHas1$Outbound,
-  z.ZodTypeDef,
-  UpdateMicrofrontendsHas1
-> = z.object({
-  type: z.literal("header"),
-  key: UpdateMicrofrontendsHasKey$outboundSchema,
-  value: z.lazy(() => UpdateMicrofrontendsHasValue$outboundSchema),
-});
-
-export function updateMicrofrontendsHas1ToJSON(
-  updateMicrofrontendsHas1: UpdateMicrofrontendsHas1,
-): string {
-  return JSON.stringify(
-    UpdateMicrofrontendsHas1$outboundSchema.parse(updateMicrofrontendsHas1),
-  );
-}
 export function updateMicrofrontendsHas1FromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateMicrofrontendsHas1, SDKValidationError> {
@@ -3866,30 +2224,7 @@ export const UpdateMicrofrontendsInternalRoutesHas$inboundSchema: z.ZodType<
   z.lazy(() => UpdateMicrofrontendsHas1$inboundSchema),
   z.lazy(() => UpdateMicrofrontendsHas2$inboundSchema),
 ]);
-/** @internal */
-export type UpdateMicrofrontendsInternalRoutesHas$Outbound =
-  | UpdateMicrofrontendsHas1$Outbound
-  | UpdateMicrofrontendsHas2$Outbound;
 
-/** @internal */
-export const UpdateMicrofrontendsInternalRoutesHas$outboundSchema: z.ZodType<
-  UpdateMicrofrontendsInternalRoutesHas$Outbound,
-  z.ZodTypeDef,
-  UpdateMicrofrontendsInternalRoutesHas
-> = z.union([
-  z.lazy(() => UpdateMicrofrontendsHas1$outboundSchema),
-  z.lazy(() => UpdateMicrofrontendsHas2$outboundSchema),
-]);
-
-export function updateMicrofrontendsInternalRoutesHasToJSON(
-  updateMicrofrontendsInternalRoutesHas: UpdateMicrofrontendsInternalRoutesHas,
-): string {
-  return JSON.stringify(
-    UpdateMicrofrontendsInternalRoutesHas$outboundSchema.parse(
-      updateMicrofrontendsInternalRoutesHas,
-    ),
-  );
-}
 export function updateMicrofrontendsInternalRoutesHasFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateMicrofrontendsInternalRoutesHas, SDKValidationError> {
@@ -3905,10 +2240,6 @@ export function updateMicrofrontendsInternalRoutesHasFromJSON(
 export const UpdateMicrofrontendsInternalRoutesAction$inboundSchema:
   z.ZodNativeEnum<typeof UpdateMicrofrontendsInternalRoutesAction> = z
     .nativeEnum(UpdateMicrofrontendsInternalRoutesAction);
-/** @internal */
-export const UpdateMicrofrontendsInternalRoutesAction$outboundSchema:
-  z.ZodNativeEnum<typeof UpdateMicrofrontendsInternalRoutesAction> =
-    UpdateMicrofrontendsInternalRoutesAction$inboundSchema;
 
 /** @internal */
 export const UpdateMicrofrontendsInternalRoutesMitigate$inboundSchema:
@@ -3916,31 +2247,7 @@ export const UpdateMicrofrontendsInternalRoutesMitigate$inboundSchema:
     z.object({
       action: UpdateMicrofrontendsInternalRoutesAction$inboundSchema,
     });
-/** @internal */
-export type UpdateMicrofrontendsInternalRoutesMitigate$Outbound = {
-  action: string;
-};
 
-/** @internal */
-export const UpdateMicrofrontendsInternalRoutesMitigate$outboundSchema:
-  z.ZodType<
-    UpdateMicrofrontendsInternalRoutesMitigate$Outbound,
-    z.ZodTypeDef,
-    UpdateMicrofrontendsInternalRoutesMitigate
-  > = z.object({
-    action: UpdateMicrofrontendsInternalRoutesAction$outboundSchema,
-  });
-
-export function updateMicrofrontendsInternalRoutesMitigateToJSON(
-  updateMicrofrontendsInternalRoutesMitigate:
-    UpdateMicrofrontendsInternalRoutesMitigate,
-): string {
-  return JSON.stringify(
-    UpdateMicrofrontendsInternalRoutesMitigate$outboundSchema.parse(
-      updateMicrofrontendsInternalRoutesMitigate,
-    ),
-  );
-}
 export function updateMicrofrontendsInternalRoutesMitigateFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -3974,42 +2281,7 @@ export const UpdateMicrofrontendsInternalRoutes2$inboundSchema: z.ZodType<
   ),
   src: types.optional(types.string()),
 });
-/** @internal */
-export type UpdateMicrofrontendsInternalRoutes2$Outbound = {
-  has: Array<
-    UpdateMicrofrontendsHas1$Outbound | UpdateMicrofrontendsHas2$Outbound
-  >;
-  mitigate: UpdateMicrofrontendsInternalRoutesMitigate$Outbound;
-  src?: string | undefined;
-};
 
-/** @internal */
-export const UpdateMicrofrontendsInternalRoutes2$outboundSchema: z.ZodType<
-  UpdateMicrofrontendsInternalRoutes2$Outbound,
-  z.ZodTypeDef,
-  UpdateMicrofrontendsInternalRoutes2
-> = z.object({
-  has: z.array(
-    z.union([
-      z.lazy(() => UpdateMicrofrontendsHas1$outboundSchema),
-      z.lazy(() => UpdateMicrofrontendsHas2$outboundSchema),
-    ]),
-  ),
-  mitigate: z.lazy(() =>
-    UpdateMicrofrontendsInternalRoutesMitigate$outboundSchema
-  ),
-  src: z.string().optional(),
-});
-
-export function updateMicrofrontendsInternalRoutes2ToJSON(
-  updateMicrofrontendsInternalRoutes2: UpdateMicrofrontendsInternalRoutes2,
-): string {
-  return JSON.stringify(
-    UpdateMicrofrontendsInternalRoutes2$outboundSchema.parse(
-      updateMicrofrontendsInternalRoutes2,
-    ),
-  );
-}
 export function updateMicrofrontendsInternalRoutes2FromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateMicrofrontendsInternalRoutes2, SDKValidationError> {
@@ -4030,31 +2302,7 @@ export const UpdateMicrofrontendsInternalRoutes1$inboundSchema: z.ZodType<
   src: types.string(),
   status: types.number(),
 });
-/** @internal */
-export type UpdateMicrofrontendsInternalRoutes1$Outbound = {
-  src: string;
-  status: number;
-};
 
-/** @internal */
-export const UpdateMicrofrontendsInternalRoutes1$outboundSchema: z.ZodType<
-  UpdateMicrofrontendsInternalRoutes1$Outbound,
-  z.ZodTypeDef,
-  UpdateMicrofrontendsInternalRoutes1
-> = z.object({
-  src: z.string(),
-  status: z.number(),
-});
-
-export function updateMicrofrontendsInternalRoutes1ToJSON(
-  updateMicrofrontendsInternalRoutes1: UpdateMicrofrontendsInternalRoutes1,
-): string {
-  return JSON.stringify(
-    UpdateMicrofrontendsInternalRoutes1$outboundSchema.parse(
-      updateMicrofrontendsInternalRoutes1,
-    ),
-  );
-}
 export function updateMicrofrontendsInternalRoutes1FromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateMicrofrontendsInternalRoutes1, SDKValidationError> {
@@ -4075,30 +2323,7 @@ export const UpdateMicrofrontendsInternalRoutes$inboundSchema: z.ZodType<
   z.lazy(() => UpdateMicrofrontendsInternalRoutes1$inboundSchema),
   z.lazy(() => UpdateMicrofrontendsInternalRoutes2$inboundSchema),
 ]);
-/** @internal */
-export type UpdateMicrofrontendsInternalRoutes$Outbound =
-  | UpdateMicrofrontendsInternalRoutes1$Outbound
-  | UpdateMicrofrontendsInternalRoutes2$Outbound;
 
-/** @internal */
-export const UpdateMicrofrontendsInternalRoutes$outboundSchema: z.ZodType<
-  UpdateMicrofrontendsInternalRoutes$Outbound,
-  z.ZodTypeDef,
-  UpdateMicrofrontendsInternalRoutes
-> = smartUnion([
-  z.lazy(() => UpdateMicrofrontendsInternalRoutes1$outboundSchema),
-  z.lazy(() => UpdateMicrofrontendsInternalRoutes2$outboundSchema),
-]);
-
-export function updateMicrofrontendsInternalRoutesToJSON(
-  updateMicrofrontendsInternalRoutes: UpdateMicrofrontendsInternalRoutes,
-): string {
-  return JSON.stringify(
-    UpdateMicrofrontendsInternalRoutes$outboundSchema.parse(
-      updateMicrofrontendsInternalRoutes,
-    ),
-  );
-}
 export function updateMicrofrontendsInternalRoutesFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateMicrofrontendsInternalRoutes, SDKValidationError> {
@@ -4114,10 +2339,6 @@ export function updateMicrofrontendsInternalRoutesFromJSON(
 export const UpdateMicrofrontendsAction$inboundSchema: z.ZodNativeEnum<
   typeof UpdateMicrofrontendsAction
 > = z.nativeEnum(UpdateMicrofrontendsAction);
-/** @internal */
-export const UpdateMicrofrontendsAction$outboundSchema: z.ZodNativeEnum<
-  typeof UpdateMicrofrontendsAction
-> = UpdateMicrofrontendsAction$inboundSchema;
 
 /** @internal */
 export const UpdateMicrofrontendsValuePreviousValue$inboundSchema: z.ZodType<
@@ -4125,29 +2346,7 @@ export const UpdateMicrofrontendsValuePreviousValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = smartUnion([types.string(), types.number(), types.boolean()]);
-/** @internal */
-export type UpdateMicrofrontendsValuePreviousValue$Outbound =
-  | string
-  | number
-  | boolean;
 
-/** @internal */
-export const UpdateMicrofrontendsValuePreviousValue$outboundSchema: z.ZodType<
-  UpdateMicrofrontendsValuePreviousValue$Outbound,
-  z.ZodTypeDef,
-  UpdateMicrofrontendsValuePreviousValue
-> = smartUnion([z.string(), z.number(), z.boolean()]);
-
-export function updateMicrofrontendsValuePreviousValueToJSON(
-  updateMicrofrontendsValuePreviousValue:
-    UpdateMicrofrontendsValuePreviousValue,
-): string {
-  return JSON.stringify(
-    UpdateMicrofrontendsValuePreviousValue$outboundSchema.parse(
-      updateMicrofrontendsValuePreviousValue,
-    ),
-  );
-}
 export function updateMicrofrontendsValuePreviousValueFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateMicrofrontendsValuePreviousValue, SDKValidationError> {
@@ -4165,28 +2364,7 @@ export const UpdateMicrofrontendsValueCurrentValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = smartUnion([types.string(), types.number(), types.boolean()]);
-/** @internal */
-export type UpdateMicrofrontendsValueCurrentValue$Outbound =
-  | string
-  | number
-  | boolean;
 
-/** @internal */
-export const UpdateMicrofrontendsValueCurrentValue$outboundSchema: z.ZodType<
-  UpdateMicrofrontendsValueCurrentValue$Outbound,
-  z.ZodTypeDef,
-  UpdateMicrofrontendsValueCurrentValue
-> = smartUnion([z.string(), z.number(), z.boolean()]);
-
-export function updateMicrofrontendsValueCurrentValueToJSON(
-  updateMicrofrontendsValueCurrentValue: UpdateMicrofrontendsValueCurrentValue,
-): string {
-  return JSON.stringify(
-    UpdateMicrofrontendsValueCurrentValue$outboundSchema.parse(
-      updateMicrofrontendsValueCurrentValue,
-    ),
-  );
-}
 export function updateMicrofrontendsValueCurrentValueFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateMicrofrontendsValueCurrentValue, SDKValidationError> {
@@ -4207,29 +2385,7 @@ export const UpdateMicrofrontendsValue3$inboundSchema: z.ZodType<
   previousValue: smartUnion([types.string(), types.number(), types.boolean()]),
   currentValue: smartUnion([types.string(), types.number(), types.boolean()]),
 });
-/** @internal */
-export type UpdateMicrofrontendsValue3$Outbound = {
-  previousValue: string | number | boolean;
-  currentValue: string | number | boolean;
-};
 
-/** @internal */
-export const UpdateMicrofrontendsValue3$outboundSchema: z.ZodType<
-  UpdateMicrofrontendsValue3$Outbound,
-  z.ZodTypeDef,
-  UpdateMicrofrontendsValue3
-> = z.object({
-  previousValue: smartUnion([z.string(), z.number(), z.boolean()]),
-  currentValue: smartUnion([z.string(), z.number(), z.boolean()]),
-});
-
-export function updateMicrofrontendsValue3ToJSON(
-  updateMicrofrontendsValue3: UpdateMicrofrontendsValue3,
-): string {
-  return JSON.stringify(
-    UpdateMicrofrontendsValue3$outboundSchema.parse(updateMicrofrontendsValue3),
-  );
-}
 export function updateMicrofrontendsValue3FromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateMicrofrontendsValue3, SDKValidationError> {
@@ -4251,32 +2407,7 @@ export const UpdateMicrofrontendsValue$inboundSchema: z.ZodType<
   types.number(),
   types.boolean(),
 ]);
-/** @internal */
-export type UpdateMicrofrontendsValue$Outbound =
-  | UpdateMicrofrontendsValue3$Outbound
-  | string
-  | number
-  | boolean;
 
-/** @internal */
-export const UpdateMicrofrontendsValue$outboundSchema: z.ZodType<
-  UpdateMicrofrontendsValue$Outbound,
-  z.ZodTypeDef,
-  UpdateMicrofrontendsValue
-> = smartUnion([
-  z.lazy(() => UpdateMicrofrontendsValue3$outboundSchema),
-  z.string(),
-  z.number(),
-  z.boolean(),
-]);
-
-export function updateMicrofrontendsValueToJSON(
-  updateMicrofrontendsValue: UpdateMicrofrontendsValue,
-): string {
-  return JSON.stringify(
-    UpdateMicrofrontendsValue$outboundSchema.parse(updateMicrofrontendsValue),
-  );
-}
 export function updateMicrofrontendsValueFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateMicrofrontendsValue, SDKValidationError> {
@@ -4305,42 +2436,7 @@ export const UpdateMicrofrontendsDismissedToasts$inboundSchema: z.ZodType<
     ]),
   ),
 });
-/** @internal */
-export type UpdateMicrofrontendsDismissedToasts$Outbound = {
-  key: string;
-  dismissedAt: number;
-  action: string;
-  value: UpdateMicrofrontendsValue3$Outbound | string | number | boolean | null;
-};
 
-/** @internal */
-export const UpdateMicrofrontendsDismissedToasts$outboundSchema: z.ZodType<
-  UpdateMicrofrontendsDismissedToasts$Outbound,
-  z.ZodTypeDef,
-  UpdateMicrofrontendsDismissedToasts
-> = z.object({
-  key: z.string(),
-  dismissedAt: z.number(),
-  action: UpdateMicrofrontendsAction$outboundSchema,
-  value: z.nullable(
-    smartUnion([
-      z.lazy(() => UpdateMicrofrontendsValue3$outboundSchema),
-      z.string(),
-      z.number(),
-      z.boolean(),
-    ]),
-  ),
-});
-
-export function updateMicrofrontendsDismissedToastsToJSON(
-  updateMicrofrontendsDismissedToasts: UpdateMicrofrontendsDismissedToasts,
-): string {
-  return JSON.stringify(
-    UpdateMicrofrontendsDismissedToasts$outboundSchema.parse(
-      updateMicrofrontendsDismissedToasts,
-    ),
-  );
-}
 export function updateMicrofrontendsDismissedToastsFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateMicrofrontendsDismissedToasts, SDKValidationError> {
@@ -4356,10 +2452,6 @@ export function updateMicrofrontendsDismissedToastsFromJSON(
 export const UpdateMicrofrontendsProjectsEnv$inboundSchema: z.ZodNativeEnum<
   typeof UpdateMicrofrontendsProjectsEnv
 > = z.nativeEnum(UpdateMicrofrontendsProjectsEnv);
-/** @internal */
-export const UpdateMicrofrontendsProjectsEnv$outboundSchema: z.ZodNativeEnum<
-  typeof UpdateMicrofrontendsProjectsEnv
-> = UpdateMicrofrontendsProjectsEnv$inboundSchema;
 
 /** @internal */
 export const UpdateMicrofrontendsSamplingRules$inboundSchema: z.ZodType<
@@ -4371,33 +2463,7 @@ export const UpdateMicrofrontendsSamplingRules$inboundSchema: z.ZodType<
   env: types.optional(UpdateMicrofrontendsProjectsEnv$inboundSchema),
   requestPath: types.optional(types.string()),
 });
-/** @internal */
-export type UpdateMicrofrontendsSamplingRules$Outbound = {
-  rate: number;
-  env?: string | undefined;
-  requestPath?: string | undefined;
-};
 
-/** @internal */
-export const UpdateMicrofrontendsSamplingRules$outboundSchema: z.ZodType<
-  UpdateMicrofrontendsSamplingRules$Outbound,
-  z.ZodTypeDef,
-  UpdateMicrofrontendsSamplingRules
-> = z.object({
-  rate: z.number(),
-  env: UpdateMicrofrontendsProjectsEnv$outboundSchema.optional(),
-  requestPath: z.string().optional(),
-});
-
-export function updateMicrofrontendsSamplingRulesToJSON(
-  updateMicrofrontendsSamplingRules: UpdateMicrofrontendsSamplingRules,
-): string {
-  return JSON.stringify(
-    UpdateMicrofrontendsSamplingRules$outboundSchema.parse(
-      updateMicrofrontendsSamplingRules,
-    ),
-  );
-}
 export function updateMicrofrontendsSamplingRulesFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateMicrofrontendsSamplingRules, SDKValidationError> {
@@ -4420,35 +2486,7 @@ export const UpdateMicrofrontendsTracing$inboundSchema: z.ZodType<
     z.array(z.lazy(() => UpdateMicrofrontendsSamplingRules$inboundSchema)),
   ),
 });
-/** @internal */
-export type UpdateMicrofrontendsTracing$Outbound = {
-  domains?: string | undefined;
-  ignorePaths?: Array<string> | undefined;
-  samplingRules?: Array<UpdateMicrofrontendsSamplingRules$Outbound> | undefined;
-};
 
-/** @internal */
-export const UpdateMicrofrontendsTracing$outboundSchema: z.ZodType<
-  UpdateMicrofrontendsTracing$Outbound,
-  z.ZodTypeDef,
-  UpdateMicrofrontendsTracing
-> = z.object({
-  domains: z.string().optional(),
-  ignorePaths: z.array(z.string()).optional(),
-  samplingRules: z.array(
-    z.lazy(() => UpdateMicrofrontendsSamplingRules$outboundSchema),
-  ).optional(),
-});
-
-export function updateMicrofrontendsTracingToJSON(
-  updateMicrofrontendsTracing: UpdateMicrofrontendsTracing,
-): string {
-  return JSON.stringify(
-    UpdateMicrofrontendsTracing$outboundSchema.parse(
-      updateMicrofrontendsTracing,
-    ),
-  );
-}
 export function updateMicrofrontendsTracingFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateMicrofrontendsTracing, SDKValidationError> {
@@ -4614,297 +2652,7 @@ export const UpdateMicrofrontendsResponseBody$inboundSchema: z.ZodType<
   ),
   avatar: types.optional(types.string()),
 });
-/** @internal */
-export type UpdateMicrofrontendsResponseBody$Outbound = {
-  accountId: string;
-  analytics?: UpdateMicrofrontendsAnalytics$Outbound | undefined;
-  appliedCve55182Migration?: boolean | undefined;
-  speedInsights?: UpdateMicrofrontendsSpeedInsights$Outbound | undefined;
-  autoExposeSystemEnvs?: boolean | undefined;
-  autoAssignCustomDomains?: boolean | undefined;
-  autoAssignCustomDomainsUpdatedBy?: string | undefined;
-  buildCommand?: string | null | undefined;
-  commandForIgnoringBuildStep?: string | null | undefined;
-  connectConfigurations?:
-    | Array<UpdateMicrofrontendsConnectConfigurations$Outbound>
-    | null
-    | undefined;
-  connectConfigurationId?: string | null | undefined;
-  connectBuildsEnabled?: boolean | undefined;
-  passiveConnectConfigurationId?: string | null | undefined;
-  createdAt?: number | undefined;
-  customerSupportCodeVisibility?: boolean | undefined;
-  crons?: UpdateMicrofrontendsCrons$Outbound | undefined;
-  dataCache?: UpdateMicrofrontendsDataCache$Outbound | undefined;
-  deploymentExpiration: UpdateMicrofrontendsDeploymentExpiration$Outbound;
-  expiration?: UpdateMicrofrontendsExpiration$Outbound | undefined;
-  devCommand?: string | null | undefined;
-  directoryListing: boolean;
-  installCommand?: string | null | undefined;
-  env?: Array<UpdateMicrofrontendsEnv$Outbound> | undefined;
-  customEnvironments?:
-    | Array<UpdateMicrofrontendsCustomEnvironments$Outbound>
-    | undefined;
-  framework?: string | null | undefined;
-  services?: Array<UpdateMicrofrontendsServices$Outbound> | undefined;
-  gitForkProtection?: boolean | undefined;
-  gitLFS?: boolean | undefined;
-  id: string;
-  ipBuckets?: Array<UpdateMicrofrontendsIpBuckets$Outbound> | undefined;
-  jobs?: UpdateMicrofrontendsJobs$Outbound | undefined;
-  latestDeployments?:
-    | Array<UpdateMicrofrontendsLatestDeployments$Outbound>
-    | undefined;
-  link?: UpdateMicrofrontendsLink$Outbound | undefined;
-  microfrontends?: UpdateMicrofrontendsMicrofrontends$Outbound | undefined;
-  name: string;
-  nodeVersion: string;
-  optionsAllowlist?:
-    | UpdateMicrofrontendsOptionsAllowlist$Outbound
-    | null
-    | undefined;
-  outputDirectory?: string | null | undefined;
-  passwordProtection?:
-    | UpdateMicrofrontendsPasswordProtection$Outbound
-    | null
-    | undefined;
-  passport?: UpdateMicrofrontendsPassport$Outbound | null | undefined;
-  productionDeploymentsFastLane?: boolean | undefined;
-  publicSource?: boolean | null | undefined;
-  resourceConfig: UpdateMicrofrontendsResourceConfig$Outbound;
-  rollbackDescription?:
-    | UpdateMicrofrontendsRollbackDescription$Outbound
-    | undefined;
-  rollingRelease?:
-    | UpdateMicrofrontendsRollingRelease$Outbound
-    | null
-    | undefined;
-  defaultResourceConfig: UpdateMicrofrontendsDefaultResourceConfig$Outbound;
-  rootDirectory?: string | null | undefined;
-  serverlessFunctionZeroConfigFailover?: boolean | undefined;
-  skewProtectionBoundaryAt?: number | undefined;
-  skewProtectionMaxAge?: number | undefined;
-  skewProtectionAllowedDomains?: Array<string> | undefined;
-  skipGitConnectDuringLink?: boolean | undefined;
-  staticIps?: UpdateMicrofrontendsStaticIps$Outbound | undefined;
-  sourceFilesOutsideRootDirectory?: boolean | undefined;
-  enableAffectedProjectsDeployments?: boolean | undefined;
-  enableExternalRewriteCaching?: boolean | undefined;
-  ssoProtection?: UpdateMicrofrontendsSsoProtection$Outbound | null | undefined;
-  targets?:
-    | { [k: string]: UpdateMicrofrontendsTargets$Outbound | null }
-    | undefined;
-  transferCompletedAt?: number | undefined;
-  transferStartedAt?: number | undefined;
-  transferToAccountId?: string | undefined;
-  transferredFromAccountId?: string | undefined;
-  updatedAt?: number | undefined;
-  live?: boolean | undefined;
-  enablePreviewFeedback?: boolean | null | undefined;
-  enableProductionFeedback?: boolean | null | undefined;
-  permissions?: UpdateMicrofrontendsPermissions$Outbound | undefined;
-  lastRollbackTarget?:
-    | UpdateMicrofrontendsLastRollbackTarget$Outbound
-    | null
-    | undefined;
-  lastAliasRequest?:
-    | UpdateMicrofrontendsLastAliasRequest$Outbound
-    | null
-    | undefined;
-  protectionBypass?: {
-    [k: string]: UpdateMicrofrontendsProtectionBypass$Outbound;
-  } | undefined;
-  hasActiveBranches?: boolean | undefined;
-  trustedIps?: UpdateMicrofrontendsTrustedIps$Outbound | null | undefined;
-  trustedSources?:
-    | UpdateMicrofrontendsTrustedSources$Outbound
-    | null
-    | undefined;
-  gitComments?: UpdateMicrofrontendsGitComments$Outbound | undefined;
-  gitProviderOptions?:
-    | UpdateMicrofrontendsGitProviderOptions$Outbound
-    | undefined;
-  paused?: boolean | undefined;
-  concurrencyBucketName?: string | undefined;
-  webAnalytics?: UpdateMicrofrontendsWebAnalytics$Outbound | undefined;
-  security?: UpdateMicrofrontendsSecurity$Outbound | undefined;
-  oidcTokenConfig?: UpdateMicrofrontendsOidcTokenConfig$Outbound | undefined;
-  deploymentPolicy?:
-    | UpdateMicrofrontendsDeploymentPolicy$Outbound
-    | null
-    | undefined;
-  tier?: string | undefined;
-  flatRateTier?: string | undefined;
-  usageStatus?: UpdateMicrofrontendsUsageStatus$Outbound | undefined;
-  features?: UpdateMicrofrontendsFeatures$Outbound | undefined;
-  v0?: boolean | undefined;
-  v0Created?: boolean | undefined;
-  abuse?: UpdateMicrofrontendsAbuse$Outbound | undefined;
-  internalRoutes?:
-    | Array<
-      | UpdateMicrofrontendsInternalRoutes1$Outbound
-      | UpdateMicrofrontendsInternalRoutes2$Outbound
-    >
-    | undefined;
-  hasDeployments?: boolean | undefined;
-  dismissedToasts?:
-    | Array<UpdateMicrofrontendsDismissedToasts$Outbound>
-    | undefined;
-  protectedSourcemaps?: boolean | undefined;
-  tracing?: UpdateMicrofrontendsTracing$Outbound | undefined;
-  avatar?: string | undefined;
-};
 
-/** @internal */
-export const UpdateMicrofrontendsResponseBody$outboundSchema: z.ZodType<
-  UpdateMicrofrontendsResponseBody$Outbound,
-  z.ZodTypeDef,
-  UpdateMicrofrontendsResponseBody
-> = z.object({
-  accountId: z.string(),
-  analytics: UpdateMicrofrontendsAnalytics$outboundSchema.optional(),
-  appliedCve55182Migration: z.boolean().optional(),
-  speedInsights: UpdateMicrofrontendsSpeedInsights$outboundSchema.optional(),
-  autoExposeSystemEnvs: z.boolean().optional(),
-  autoAssignCustomDomains: z.boolean().optional(),
-  autoAssignCustomDomainsUpdatedBy: z.string().optional(),
-  buildCommand: z.nullable(z.string()).optional(),
-  commandForIgnoringBuildStep: z.nullable(z.string()).optional(),
-  connectConfigurations: z.nullable(
-    z.array(UpdateMicrofrontendsConnectConfigurations$outboundSchema),
-  ).optional(),
-  connectConfigurationId: z.nullable(z.string()).optional(),
-  connectBuildsEnabled: z.boolean().optional(),
-  passiveConnectConfigurationId: z.nullable(z.string()).optional(),
-  createdAt: z.number().optional(),
-  customerSupportCodeVisibility: z.boolean().optional(),
-  crons: UpdateMicrofrontendsCrons$outboundSchema.optional(),
-  dataCache: UpdateMicrofrontendsDataCache$outboundSchema.optional(),
-  deploymentExpiration: UpdateMicrofrontendsDeploymentExpiration$outboundSchema,
-  expiration: UpdateMicrofrontendsExpiration$outboundSchema.optional(),
-  devCommand: z.nullable(z.string()).optional(),
-  directoryListing: z.boolean(),
-  installCommand: z.nullable(z.string()).optional(),
-  env: z.array(UpdateMicrofrontendsEnv$outboundSchema).optional(),
-  customEnvironments: z.array(
-    UpdateMicrofrontendsCustomEnvironments$outboundSchema,
-  ).optional(),
-  framework: z.nullable(UpdateMicrofrontendsFramework$outboundSchema)
-    .optional(),
-  services: z.array(UpdateMicrofrontendsServices$outboundSchema).optional(),
-  gitForkProtection: z.boolean().optional(),
-  gitLFS: z.boolean().optional(),
-  id: z.string(),
-  ipBuckets: z.array(UpdateMicrofrontendsIpBuckets$outboundSchema).optional(),
-  jobs: UpdateMicrofrontendsJobs$outboundSchema.optional(),
-  latestDeployments: z.array(
-    UpdateMicrofrontendsLatestDeployments$outboundSchema,
-  ).optional(),
-  link: UpdateMicrofrontendsLink$outboundSchema.optional(),
-  microfrontends: UpdateMicrofrontendsMicrofrontends$outboundSchema.optional(),
-  name: z.string(),
-  nodeVersion: UpdateMicrofrontendsNodeVersion$outboundSchema,
-  optionsAllowlist: z.nullable(
-    UpdateMicrofrontendsOptionsAllowlist$outboundSchema,
-  ).optional(),
-  outputDirectory: z.nullable(z.string()).optional(),
-  passwordProtection: z.nullable(
-    UpdateMicrofrontendsPasswordProtection$outboundSchema,
-  ).optional(),
-  passport: z.nullable(UpdateMicrofrontendsPassport$outboundSchema).optional(),
-  productionDeploymentsFastLane: z.boolean().optional(),
-  publicSource: z.nullable(z.boolean()).optional(),
-  resourceConfig: UpdateMicrofrontendsResourceConfig$outboundSchema,
-  rollbackDescription: UpdateMicrofrontendsRollbackDescription$outboundSchema
-    .optional(),
-  rollingRelease: z.nullable(UpdateMicrofrontendsRollingRelease$outboundSchema)
-    .optional(),
-  defaultResourceConfig:
-    UpdateMicrofrontendsDefaultResourceConfig$outboundSchema,
-  rootDirectory: z.nullable(z.string()).optional(),
-  serverlessFunctionZeroConfigFailover: z.boolean().optional(),
-  skewProtectionBoundaryAt: z.number().optional(),
-  skewProtectionMaxAge: z.number().optional(),
-  skewProtectionAllowedDomains: z.array(z.string()).optional(),
-  skipGitConnectDuringLink: z.boolean().optional(),
-  staticIps: UpdateMicrofrontendsStaticIps$outboundSchema.optional(),
-  sourceFilesOutsideRootDirectory: z.boolean().optional(),
-  enableAffectedProjectsDeployments: z.boolean().optional(),
-  enableExternalRewriteCaching: z.boolean().optional(),
-  ssoProtection: z.nullable(UpdateMicrofrontendsSsoProtection$outboundSchema)
-    .optional(),
-  targets: z.record(z.nullable(UpdateMicrofrontendsTargets$outboundSchema))
-    .optional(),
-  transferCompletedAt: z.number().optional(),
-  transferStartedAt: z.number().optional(),
-  transferToAccountId: z.string().optional(),
-  transferredFromAccountId: z.string().optional(),
-  updatedAt: z.number().optional(),
-  live: z.boolean().optional(),
-  enablePreviewFeedback: z.nullable(z.boolean()).optional(),
-  enableProductionFeedback: z.nullable(z.boolean()).optional(),
-  permissions: UpdateMicrofrontendsPermissions$outboundSchema.optional(),
-  lastRollbackTarget: z.nullable(
-    UpdateMicrofrontendsLastRollbackTarget$outboundSchema,
-  ).optional(),
-  lastAliasRequest: z.nullable(
-    UpdateMicrofrontendsLastAliasRequest$outboundSchema,
-  ).optional(),
-  protectionBypass: z.record(
-    UpdateMicrofrontendsProtectionBypass$outboundSchema,
-  ).optional(),
-  hasActiveBranches: z.boolean().optional(),
-  trustedIps: z.nullable(UpdateMicrofrontendsTrustedIps$outboundSchema)
-    .optional(),
-  trustedSources: z.nullable(UpdateMicrofrontendsTrustedSources$outboundSchema)
-    .optional(),
-  gitComments: UpdateMicrofrontendsGitComments$outboundSchema.optional(),
-  gitProviderOptions: UpdateMicrofrontendsGitProviderOptions$outboundSchema
-    .optional(),
-  paused: z.boolean().optional(),
-  concurrencyBucketName: z.string().optional(),
-  webAnalytics: UpdateMicrofrontendsWebAnalytics$outboundSchema.optional(),
-  security: z.lazy(() => UpdateMicrofrontendsSecurity$outboundSchema)
-    .optional(),
-  oidcTokenConfig: z.lazy(() =>
-    UpdateMicrofrontendsOidcTokenConfig$outboundSchema
-  ).optional(),
-  deploymentPolicy: z.nullable(
-    z.lazy(() => UpdateMicrofrontendsDeploymentPolicy$outboundSchema),
-  ).optional(),
-  tier: z.string().optional(),
-  flatRateTier: UpdateMicrofrontendsFlatRateTier$outboundSchema.optional(),
-  usageStatus: z.lazy(() => UpdateMicrofrontendsUsageStatus$outboundSchema)
-    .optional(),
-  features: z.lazy(() => UpdateMicrofrontendsFeatures$outboundSchema)
-    .optional(),
-  v0: z.boolean().optional(),
-  v0Created: z.boolean().optional(),
-  abuse: z.lazy(() => UpdateMicrofrontendsAbuse$outboundSchema).optional(),
-  internalRoutes: z.array(
-    smartUnion([
-      z.lazy(() => UpdateMicrofrontendsInternalRoutes1$outboundSchema),
-      z.lazy(() => UpdateMicrofrontendsInternalRoutes2$outboundSchema),
-    ]),
-  ).optional(),
-  hasDeployments: z.boolean().optional(),
-  dismissedToasts: z.array(
-    z.lazy(() => UpdateMicrofrontendsDismissedToasts$outboundSchema),
-  ).optional(),
-  protectedSourcemaps: z.boolean().optional(),
-  tracing: z.lazy(() => UpdateMicrofrontendsTracing$outboundSchema).optional(),
-  avatar: z.string().optional(),
-});
-
-export function updateMicrofrontendsResponseBodyToJSON(
-  updateMicrofrontendsResponseBody: UpdateMicrofrontendsResponseBody,
-): string {
-  return JSON.stringify(
-    UpdateMicrofrontendsResponseBody$outboundSchema.parse(
-      updateMicrofrontendsResponseBody,
-    ),
-  );
-}
 export function updateMicrofrontendsResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateMicrofrontendsResponseBody, SDKValidationError> {

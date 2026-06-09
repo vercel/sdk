@@ -42,35 +42,7 @@ export const EdgeConfigToken$inboundSchema: z.ZodType<
   createdAt: types.number(),
   token: types.optional(types.string()),
 });
-/** @internal */
-export type EdgeConfigToken$Outbound = {
-  partialToken: string;
-  label: string;
-  id: string;
-  edgeConfigId: string;
-  createdAt: number;
-  token?: string | undefined;
-};
 
-/** @internal */
-export const EdgeConfigToken$outboundSchema: z.ZodType<
-  EdgeConfigToken$Outbound,
-  z.ZodTypeDef,
-  EdgeConfigToken
-> = z.object({
-  partialToken: z.string(),
-  label: z.string(),
-  id: z.string(),
-  edgeConfigId: z.string(),
-  createdAt: z.number(),
-  token: z.string().optional(),
-});
-
-export function edgeConfigTokenToJSON(
-  edgeConfigToken: EdgeConfigToken,
-): string {
-  return JSON.stringify(EdgeConfigToken$outboundSchema.parse(edgeConfigToken));
-}
 export function edgeConfigTokenFromJSON(
   jsonString: string,
 ): SafeParseResult<EdgeConfigToken, SDKValidationError> {

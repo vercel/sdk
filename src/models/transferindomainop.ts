@@ -9,66 +9,37 @@ import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
-import {
-  BadRequest,
-  BadRequest$inboundSchema,
-  BadRequest$Outbound,
-  BadRequest$outboundSchema,
-} from "./badrequest.js";
-import {
-  DNSSECEnabled,
-  DNSSECEnabled$inboundSchema,
-  DNSSECEnabled$Outbound,
-  DNSSECEnabled$outboundSchema,
-} from "./dnssecenabled.js";
+import { BadRequest, BadRequest$inboundSchema } from "./badrequest.js";
+import { DNSSECEnabled, DNSSECEnabled$inboundSchema } from "./dnssecenabled.js";
 import {
   DomainAlreadyOwned,
   DomainAlreadyOwned$inboundSchema,
-  DomainAlreadyOwned$Outbound,
-  DomainAlreadyOwned$outboundSchema,
 } from "./domainalreadyowned.js";
 import {
   DomainNotAvailable,
   DomainNotAvailable$inboundSchema,
-  DomainNotAvailable$Outbound,
-  DomainNotAvailable$outboundSchema,
 } from "./domainnotavailable.js";
 import {
   DomainTooShort,
   DomainTooShort$inboundSchema,
-  DomainTooShort$Outbound,
-  DomainTooShort$outboundSchema,
 } from "./domaintooshort.js";
 import {
   ExpectedPriceMismatch,
   ExpectedPriceMismatch$inboundSchema,
-  ExpectedPriceMismatch$Outbound,
-  ExpectedPriceMismatch$outboundSchema,
 } from "./expectedpricemismatch.js";
-import {
-  Forbidden,
-  Forbidden$inboundSchema,
-  Forbidden$Outbound,
-  Forbidden$outboundSchema,
-} from "./forbidden.js";
+import { Forbidden, Forbidden$inboundSchema } from "./forbidden.js";
 import {
   HttpApiDecodeError,
   HttpApiDecodeError$inboundSchema,
-  HttpApiDecodeError$Outbound,
-  HttpApiDecodeError$outboundSchema,
 } from "./httpapidecodeerror.js";
 import {
   NotAuthorizedForScope,
   NotAuthorizedForScope$inboundSchema,
-  NotAuthorizedForScope$Outbound,
-  NotAuthorizedForScope$outboundSchema,
 } from "./notauthorizedforscope.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 import {
   TldNotSupported,
   TldNotSupported$inboundSchema,
-  TldNotSupported$Outbound,
-  TldNotSupported$outboundSchema,
 } from "./tldnotsupported.js";
 
 export type TransferInDomainContactInformation = {
@@ -191,25 +162,6 @@ export type TransferInDomainResponseBody = {
 };
 
 /** @internal */
-export const TransferInDomainContactInformation$inboundSchema: z.ZodType<
-  TransferInDomainContactInformation,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  firstName: types.string(),
-  lastName: types.string(),
-  email: types.string(),
-  phone: types.string(),
-  address1: types.string(),
-  address2: types.optional(types.string()),
-  city: types.string(),
-  state: types.string(),
-  zip: types.string(),
-  country: types.string(),
-  companyName: types.optional(types.string()),
-  fax: types.optional(types.string()),
-});
-/** @internal */
 export type TransferInDomainContactInformation$Outbound = {
   firstName: string;
   lastName: string;
@@ -254,31 +206,7 @@ export function transferInDomainContactInformationToJSON(
     ),
   );
 }
-export function transferInDomainContactInformationFromJSON(
-  jsonString: string,
-): SafeParseResult<TransferInDomainContactInformation, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      TransferInDomainContactInformation$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'TransferInDomainContactInformation' from JSON`,
-  );
-}
 
-/** @internal */
-export const TransferInDomainRequestBody$inboundSchema: z.ZodType<
-  TransferInDomainRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  authCode: types.string(),
-  autoRenew: types.boolean(),
-  years: types.number(),
-  expectedPrice: types.number(),
-  contactInformation: z.lazy(() =>
-    TransferInDomainContactInformation$inboundSchema
-  ),
-});
 /** @internal */
 export type TransferInDomainRequestBody$Outbound = {
   authCode: string;
@@ -312,30 +240,7 @@ export function transferInDomainRequestBodyToJSON(
     ),
   );
 }
-export function transferInDomainRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<TransferInDomainRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => TransferInDomainRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'TransferInDomainRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const TransferInDomainRequest$inboundSchema: z.ZodType<
-  TransferInDomainRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  domain: types.string(),
-  teamId: types.optional(types.string()),
-  RequestBody: z.lazy(() => TransferInDomainRequestBody$inboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 /** @internal */
 export type TransferInDomainRequest$Outbound = {
   domain: string;
@@ -365,15 +270,6 @@ export function transferInDomainRequestToJSON(
     TransferInDomainRequest$outboundSchema.parse(transferInDomainRequest),
   );
 }
-export function transferInDomainRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<TransferInDomainRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => TransferInDomainRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'TransferInDomainRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const TransferInDomainDomainsRegistrarResponseResponseBody$inboundSchema:
@@ -387,34 +283,7 @@ export const TransferInDomainDomainsRegistrarResponseResponseBody$inboundSchema:
     ),
     Forbidden$inboundSchema,
   ]);
-/** @internal */
-export type TransferInDomainDomainsRegistrarResponseResponseBody$Outbound =
-  | (NotAuthorizedForScope$Outbound & { code: "not_authorized_for_scope" })
-  | Forbidden$Outbound;
 
-/** @internal */
-export const TransferInDomainDomainsRegistrarResponseResponseBody$outboundSchema:
-  z.ZodType<
-    TransferInDomainDomainsRegistrarResponseResponseBody$Outbound,
-    z.ZodTypeDef,
-    unknown
-  > = z.union([
-    NotAuthorizedForScope$outboundSchema.and(
-      z.object({ code: z.literal("not_authorized_for_scope") }),
-    ),
-    Forbidden$outboundSchema,
-  ]);
-
-export function transferInDomainDomainsRegistrarResponseResponseBodyToJSON(
-  transferInDomainDomainsRegistrarResponseResponseBody:
-    TransferInDomainDomainsRegistrarResponseResponseBody,
-): string {
-  return JSON.stringify(
-    TransferInDomainDomainsRegistrarResponseResponseBody$outboundSchema.parse(
-      transferInDomainDomainsRegistrarResponseResponseBody,
-    ),
-  );
-}
 export function transferInDomainDomainsRegistrarResponseResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -447,44 +316,7 @@ export const TransferInDomainDomainsRegistrarResponseBody$inboundSchema:
     TldNotSupported$inboundSchema,
     HttpApiDecodeError$inboundSchema,
   ]);
-/** @internal */
-export type TransferInDomainDomainsRegistrarResponseBody$Outbound =
-  | BadRequest$Outbound
-  | DomainAlreadyOwned$Outbound
-  | DomainTooShort$Outbound
-  | DNSSECEnabled$Outbound
-  | ExpectedPriceMismatch$Outbound
-  | DomainNotAvailable$Outbound
-  | TldNotSupported$Outbound
-  | HttpApiDecodeError$Outbound;
 
-/** @internal */
-export const TransferInDomainDomainsRegistrarResponseBody$outboundSchema:
-  z.ZodType<
-    TransferInDomainDomainsRegistrarResponseBody$Outbound,
-    z.ZodTypeDef,
-    unknown
-  > = smartUnion([
-    BadRequest$outboundSchema,
-    DomainAlreadyOwned$outboundSchema,
-    DomainTooShort$outboundSchema,
-    DNSSECEnabled$outboundSchema,
-    ExpectedPriceMismatch$outboundSchema,
-    DomainNotAvailable$outboundSchema,
-    TldNotSupported$outboundSchema,
-    HttpApiDecodeError$outboundSchema,
-  ]);
-
-export function transferInDomainDomainsRegistrarResponseBodyToJSON(
-  transferInDomainDomainsRegistrarResponseBody:
-    TransferInDomainDomainsRegistrarResponseBody,
-): string {
-  return JSON.stringify(
-    TransferInDomainDomainsRegistrarResponseBody$outboundSchema.parse(
-      transferInDomainDomainsRegistrarResponseBody,
-    ),
-  );
-}
 export function transferInDomainDomainsRegistrarResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -505,10 +337,6 @@ export function transferInDomainDomainsRegistrarResponseBodyFromJSON(
 export const TransferInDomainMethod$inboundSchema: z.ZodNativeEnum<
   typeof TransferInDomainMethod
 > = z.nativeEnum(TransferInDomainMethod);
-/** @internal */
-export const TransferInDomainMethod$outboundSchema: z.ZodNativeEnum<
-  typeof TransferInDomainMethod
-> = TransferInDomainMethod$inboundSchema;
 
 /** @internal */
 export const TransferInDomainLinks$inboundSchema: z.ZodType<
@@ -519,29 +347,7 @@ export const TransferInDomainLinks$inboundSchema: z.ZodType<
   href: types.string(),
   method: TransferInDomainMethod$inboundSchema,
 });
-/** @internal */
-export type TransferInDomainLinks$Outbound = {
-  href: string;
-  method: string;
-};
 
-/** @internal */
-export const TransferInDomainLinks$outboundSchema: z.ZodType<
-  TransferInDomainLinks$Outbound,
-  z.ZodTypeDef,
-  TransferInDomainLinks
-> = z.object({
-  href: z.string(),
-  method: TransferInDomainMethod$outboundSchema,
-});
-
-export function transferInDomainLinksToJSON(
-  transferInDomainLinks: TransferInDomainLinks,
-): string {
-  return JSON.stringify(
-    TransferInDomainLinks$outboundSchema.parse(transferInDomainLinks),
-  );
-}
 export function transferInDomainLinksFromJSON(
   jsonString: string,
 ): SafeParseResult<TransferInDomainLinks, SDKValidationError> {
@@ -565,35 +371,7 @@ export const TransferInDomainResponseBody$inboundSchema: z.ZodType<
     "_links": "links",
   });
 });
-/** @internal */
-export type TransferInDomainResponseBody$Outbound = {
-  orderId: string;
-  _links: { [k: string]: TransferInDomainLinks$Outbound };
-};
 
-/** @internal */
-export const TransferInDomainResponseBody$outboundSchema: z.ZodType<
-  TransferInDomainResponseBody$Outbound,
-  z.ZodTypeDef,
-  TransferInDomainResponseBody
-> = z.object({
-  orderId: z.string(),
-  links: z.record(z.lazy(() => TransferInDomainLinks$outboundSchema)),
-}).transform((v) => {
-  return remap$(v, {
-    links: "_links",
-  });
-});
-
-export function transferInDomainResponseBodyToJSON(
-  transferInDomainResponseBody: TransferInDomainResponseBody,
-): string {
-  return JSON.stringify(
-    TransferInDomainResponseBody$outboundSchema.parse(
-      transferInDomainResponseBody,
-    ),
-  );
-}
 export function transferInDomainResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<TransferInDomainResponseBody, SDKValidationError> {

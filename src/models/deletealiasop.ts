@@ -6,7 +6,6 @@ import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
-import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type DeleteAliasRequest = {
@@ -37,16 +36,6 @@ export type DeleteAliasResponseBody = {
 };
 
 /** @internal */
-export const DeleteAliasRequest$inboundSchema: z.ZodType<
-  DeleteAliasRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  aliasId: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
-/** @internal */
 export type DeleteAliasRequest$Outbound = {
   aliasId: string;
   teamId?: string | undefined;
@@ -71,24 +60,11 @@ export function deleteAliasRequestToJSON(
     DeleteAliasRequest$outboundSchema.parse(deleteAliasRequest),
   );
 }
-export function deleteAliasRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<DeleteAliasRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => DeleteAliasRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DeleteAliasRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const DeleteAliasStatus$inboundSchema: z.ZodNativeEnum<
   typeof DeleteAliasStatus
 > = z.nativeEnum(DeleteAliasStatus);
-/** @internal */
-export const DeleteAliasStatus$outboundSchema: z.ZodNativeEnum<
-  typeof DeleteAliasStatus
-> = DeleteAliasStatus$inboundSchema;
 
 /** @internal */
 export const DeleteAliasResponseBody$inboundSchema: z.ZodType<
@@ -98,27 +74,7 @@ export const DeleteAliasResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   status: DeleteAliasStatus$inboundSchema,
 });
-/** @internal */
-export type DeleteAliasResponseBody$Outbound = {
-  status: string;
-};
 
-/** @internal */
-export const DeleteAliasResponseBody$outboundSchema: z.ZodType<
-  DeleteAliasResponseBody$Outbound,
-  z.ZodTypeDef,
-  DeleteAliasResponseBody
-> = z.object({
-  status: DeleteAliasStatus$outboundSchema,
-});
-
-export function deleteAliasResponseBodyToJSON(
-  deleteAliasResponseBody: DeleteAliasResponseBody,
-): string {
-  return JSON.stringify(
-    DeleteAliasResponseBody$outboundSchema.parse(deleteAliasResponseBody),
-  );
-}
 export function deleteAliasResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<DeleteAliasResponseBody, SDKValidationError> {

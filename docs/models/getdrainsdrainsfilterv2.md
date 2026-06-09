@@ -1,20 +1,11 @@
 # GetDrainsDrainsFilterV2
 
-
-## Supported Types
-
-### `models.GetDrainsFilterV2Drains1`
+## Example Usage
 
 ```typescript
-const value: models.GetDrainsFilterV2Drains1 = {
-  version: "v1",
-};
-```
+import { GetDrainsDrainsFilterV2 } from "@vercel/sdk/models/getdrainsop.js";
 
-### `models.GetDrainsFilterV2Drains2`
-
-```typescript
-const value: models.GetDrainsFilterV2Drains2 = {
+let value: GetDrainsDrainsFilterV2 = {
   version: "v2",
   filter: {
     type: "odata",
@@ -23,3 +14,9 @@ const value: models.GetDrainsFilterV2Drains2 = {
 };
 ```
 
+## Fields
+
+| Field                                                                | Type                                                                 | Required                                                             | Description                                                          |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `version`                                                            | [models.GetDrainsDrainsVersion](../models/getdrainsdrainsversion.md) | :heavy_check_mark:                                                   | N/A                                                                  |
+| `filter`                                                             | *models.GetDrainsDrainsFilter*                                       | :heavy_check_mark:                                                   | N/A                                                                  |

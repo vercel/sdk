@@ -110,24 +110,9 @@ export type GetDomainConfigResponseBody = {
 };
 
 /** @internal */
-export const Strict$inboundSchema: z.ZodNativeEnum<typeof Strict> = z
+export const Strict$outboundSchema: z.ZodNativeEnum<typeof Strict> = z
   .nativeEnum(Strict);
-/** @internal */
-export const Strict$outboundSchema: z.ZodNativeEnum<typeof Strict> =
-  Strict$inboundSchema;
 
-/** @internal */
-export const GetDomainConfigRequest$inboundSchema: z.ZodType<
-  GetDomainConfigRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  domain: types.string(),
-  projectIdOrName: types.optional(types.string()),
-  strict: types.optional(Strict$inboundSchema),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
 /** @internal */
 export type GetDomainConfigRequest$Outbound = {
   domain: string;
@@ -157,31 +142,15 @@ export function getDomainConfigRequestToJSON(
     GetDomainConfigRequest$outboundSchema.parse(getDomainConfigRequest),
   );
 }
-export function getDomainConfigRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetDomainConfigRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetDomainConfigRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDomainConfigRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const ConfiguredBy$inboundSchema: z.ZodNativeEnum<typeof ConfiguredBy> =
   z.nativeEnum(ConfiguredBy);
-/** @internal */
-export const ConfiguredBy$outboundSchema: z.ZodNativeEnum<typeof ConfiguredBy> =
-  ConfiguredBy$inboundSchema;
 
 /** @internal */
 export const AcceptedChallenges$inboundSchema: z.ZodNativeEnum<
   typeof AcceptedChallenges
 > = z.nativeEnum(AcceptedChallenges);
-/** @internal */
-export const AcceptedChallenges$outboundSchema: z.ZodNativeEnum<
-  typeof AcceptedChallenges
-> = AcceptedChallenges$inboundSchema;
 
 /** @internal */
 export const RecommendedIPv4$inboundSchema: z.ZodType<
@@ -192,27 +161,7 @@ export const RecommendedIPv4$inboundSchema: z.ZodType<
   rank: types.number(),
   value: z.array(types.string()),
 });
-/** @internal */
-export type RecommendedIPv4$Outbound = {
-  rank: number;
-  value: Array<string>;
-};
 
-/** @internal */
-export const RecommendedIPv4$outboundSchema: z.ZodType<
-  RecommendedIPv4$Outbound,
-  z.ZodTypeDef,
-  RecommendedIPv4
-> = z.object({
-  rank: z.number(),
-  value: z.array(z.string()),
-});
-
-export function recommendedIPv4ToJSON(
-  recommendedIPv4: RecommendedIPv4,
-): string {
-  return JSON.stringify(RecommendedIPv4$outboundSchema.parse(recommendedIPv4));
-}
 export function recommendedIPv4FromJSON(
   jsonString: string,
 ): SafeParseResult<RecommendedIPv4, SDKValidationError> {
@@ -232,29 +181,7 @@ export const RecommendedCNAME$inboundSchema: z.ZodType<
   rank: types.number(),
   value: types.string(),
 });
-/** @internal */
-export type RecommendedCNAME$Outbound = {
-  rank: number;
-  value: string;
-};
 
-/** @internal */
-export const RecommendedCNAME$outboundSchema: z.ZodType<
-  RecommendedCNAME$Outbound,
-  z.ZodTypeDef,
-  RecommendedCNAME
-> = z.object({
-  rank: z.number(),
-  value: z.string(),
-});
-
-export function recommendedCNAMEToJSON(
-  recommendedCNAME: RecommendedCNAME,
-): string {
-  return JSON.stringify(
-    RecommendedCNAME$outboundSchema.parse(recommendedCNAME),
-  );
-}
 export function recommendedCNAMEFromJSON(
   jsonString: string,
 ): SafeParseResult<RecommendedCNAME, SDKValidationError> {
@@ -277,37 +204,7 @@ export const GetDomainConfigResponseBody$inboundSchema: z.ZodType<
   recommendedCNAME: z.array(z.lazy(() => RecommendedCNAME$inboundSchema)),
   misconfigured: types.boolean(),
 });
-/** @internal */
-export type GetDomainConfigResponseBody$Outbound = {
-  configuredBy: string | null;
-  acceptedChallenges: Array<string>;
-  recommendedIPv4: Array<RecommendedIPv4$Outbound>;
-  recommendedCNAME: Array<RecommendedCNAME$Outbound>;
-  misconfigured: boolean;
-};
 
-/** @internal */
-export const GetDomainConfigResponseBody$outboundSchema: z.ZodType<
-  GetDomainConfigResponseBody$Outbound,
-  z.ZodTypeDef,
-  GetDomainConfigResponseBody
-> = z.object({
-  configuredBy: z.nullable(ConfiguredBy$outboundSchema),
-  acceptedChallenges: z.array(AcceptedChallenges$outboundSchema),
-  recommendedIPv4: z.array(z.lazy(() => RecommendedIPv4$outboundSchema)),
-  recommendedCNAME: z.array(z.lazy(() => RecommendedCNAME$outboundSchema)),
-  misconfigured: z.boolean(),
-});
-
-export function getDomainConfigResponseBodyToJSON(
-  getDomainConfigResponseBody: GetDomainConfigResponseBody,
-): string {
-  return JSON.stringify(
-    GetDomainConfigResponseBody$outboundSchema.parse(
-      getDomainConfigResponseBody,
-    ),
-  );
-}
 export function getDomainConfigResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetDomainConfigResponseBody, SDKValidationError> {

@@ -61,39 +61,7 @@ export const AuthUserLimited$inboundSchema: z.ZodType<
   defaultTeamId: types.nullable(types.string()),
   isEnterpriseManaged: types.optional(types.boolean()),
 });
-/** @internal */
-export type AuthUserLimited$Outbound = {
-  limited: true;
-  id: string;
-  email: string;
-  name: string | null;
-  username: string;
-  avatar: string | null;
-  defaultTeamId: string | null;
-  isEnterpriseManaged?: boolean | undefined;
-};
 
-/** @internal */
-export const AuthUserLimited$outboundSchema: z.ZodType<
-  AuthUserLimited$Outbound,
-  z.ZodTypeDef,
-  AuthUserLimited
-> = z.object({
-  limited: z.literal(true),
-  id: z.string(),
-  email: z.string(),
-  name: z.nullable(z.string()),
-  username: z.string(),
-  avatar: z.nullable(z.string()),
-  defaultTeamId: z.nullable(z.string()),
-  isEnterpriseManaged: z.boolean().optional(),
-});
-
-export function authUserLimitedToJSON(
-  authUserLimited: AuthUserLimited,
-): string {
-  return JSON.stringify(AuthUserLimited$outboundSchema.parse(authUserLimited));
-}
 export function authUserLimitedFromJSON(
   jsonString: string,
 ): SafeParseResult<AuthUserLimited, SDKValidationError> {

@@ -6,13 +6,10 @@ import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
-import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 import {
   SessionCommand,
   SessionCommand$inboundSchema,
-  SessionCommand$Outbound,
-  SessionCommand$outboundSchema,
 } from "./sessioncommand.js";
 
 export type KillSessionCommandRequestBody = {
@@ -53,14 +50,6 @@ export type KillSessionCommandResponseBody = {
 };
 
 /** @internal */
-export const KillSessionCommandRequestBody$inboundSchema: z.ZodType<
-  KillSessionCommandRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  signal: types.number(),
-});
-/** @internal */
 export type KillSessionCommandRequestBody$Outbound = {
   signal: number;
 };
@@ -83,34 +72,7 @@ export function killSessionCommandRequestBodyToJSON(
     ),
   );
 }
-export function killSessionCommandRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<KillSessionCommandRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => KillSessionCommandRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'KillSessionCommandRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const KillSessionCommandRequest$inboundSchema: z.ZodType<
-  KillSessionCommandRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  cmdId: types.string(),
-  sessionId: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-  RequestBody: types.optional(
-    z.lazy(() => KillSessionCommandRequestBody$inboundSchema),
-  ),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 /** @internal */
 export type KillSessionCommandRequest$Outbound = {
   cmdId: string;
@@ -145,15 +107,6 @@ export function killSessionCommandRequestToJSON(
     KillSessionCommandRequest$outboundSchema.parse(killSessionCommandRequest),
   );
 }
-export function killSessionCommandRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<KillSessionCommandRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => KillSessionCommandRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'KillSessionCommandRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const KillSessionCommandResponseBody$inboundSchema: z.ZodType<
@@ -163,29 +116,7 @@ export const KillSessionCommandResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   command: SessionCommand$inboundSchema,
 });
-/** @internal */
-export type KillSessionCommandResponseBody$Outbound = {
-  command: SessionCommand$Outbound;
-};
 
-/** @internal */
-export const KillSessionCommandResponseBody$outboundSchema: z.ZodType<
-  KillSessionCommandResponseBody$Outbound,
-  z.ZodTypeDef,
-  KillSessionCommandResponseBody
-> = z.object({
-  command: SessionCommand$outboundSchema,
-});
-
-export function killSessionCommandResponseBodyToJSON(
-  killSessionCommandResponseBody: KillSessionCommandResponseBody,
-): string {
-  return JSON.stringify(
-    KillSessionCommandResponseBody$outboundSchema.parse(
-      killSessionCommandResponseBody,
-    ),
-  );
-}
 export function killSessionCommandResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<KillSessionCommandResponseBody, SDKValidationError> {

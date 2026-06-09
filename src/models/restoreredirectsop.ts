@@ -70,15 +70,6 @@ export type RestoreRedirectsResponseBody = {
 };
 
 /** @internal */
-export const RestoreRedirectsRequestBody$inboundSchema: z.ZodType<
-  RestoreRedirectsRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  name: types.optional(types.string()),
-  redirects: z.array(types.string()),
-});
-/** @internal */
 export type RestoreRedirectsRequestBody$Outbound = {
   name?: string | undefined;
   redirects: Array<string>;
@@ -103,33 +94,7 @@ export function restoreRedirectsRequestBodyToJSON(
     ),
   );
 }
-export function restoreRedirectsRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<RestoreRedirectsRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RestoreRedirectsRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RestoreRedirectsRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const RestoreRedirectsRequest$inboundSchema: z.ZodType<
-  RestoreRedirectsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  projectId: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-  RequestBody: types.optional(
-    z.lazy(() => RestoreRedirectsRequestBody$inboundSchema),
-  ),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 /** @internal */
 export type RestoreRedirectsRequest$Outbound = {
   projectId: string;
@@ -162,15 +127,6 @@ export function restoreRedirectsRequestToJSON(
     RestoreRedirectsRequest$outboundSchema.parse(restoreRedirectsRequest),
   );
 }
-export function restoreRedirectsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<RestoreRedirectsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RestoreRedirectsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RestoreRedirectsRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const RestoreRedirectsVersion$inboundSchema: z.ZodType<
@@ -188,43 +144,7 @@ export const RestoreRedirectsVersion$inboundSchema: z.ZodType<
   redirectCount: types.optional(types.number()),
   alias: types.optional(types.string()),
 });
-/** @internal */
-export type RestoreRedirectsVersion$Outbound = {
-  id: string;
-  key: string;
-  lastModified: number;
-  createdBy: string;
-  name?: string | undefined;
-  isStaging?: boolean | undefined;
-  isLive?: boolean | undefined;
-  redirectCount?: number | undefined;
-  alias?: string | undefined;
-};
 
-/** @internal */
-export const RestoreRedirectsVersion$outboundSchema: z.ZodType<
-  RestoreRedirectsVersion$Outbound,
-  z.ZodTypeDef,
-  RestoreRedirectsVersion
-> = z.object({
-  id: z.string(),
-  key: z.string(),
-  lastModified: z.number(),
-  createdBy: z.string(),
-  name: z.string().optional(),
-  isStaging: z.boolean().optional(),
-  isLive: z.boolean().optional(),
-  redirectCount: z.number().optional(),
-  alias: z.string().optional(),
-});
-
-export function restoreRedirectsVersionToJSON(
-  restoreRedirectsVersion: RestoreRedirectsVersion,
-): string {
-  return JSON.stringify(
-    RestoreRedirectsVersion$outboundSchema.parse(restoreRedirectsVersion),
-  );
-}
 export function restoreRedirectsVersionFromJSON(
   jsonString: string,
 ): SafeParseResult<RestoreRedirectsVersion, SDKValidationError> {
@@ -245,33 +165,7 @@ export const RestoreRedirectsResponseBody$inboundSchema: z.ZodType<
   restored: z.array(types.string()),
   failedToRestore: z.array(types.string()),
 });
-/** @internal */
-export type RestoreRedirectsResponseBody$Outbound = {
-  version: RestoreRedirectsVersion$Outbound;
-  restored: Array<string>;
-  failedToRestore: Array<string>;
-};
 
-/** @internal */
-export const RestoreRedirectsResponseBody$outboundSchema: z.ZodType<
-  RestoreRedirectsResponseBody$Outbound,
-  z.ZodTypeDef,
-  RestoreRedirectsResponseBody
-> = z.object({
-  version: z.lazy(() => RestoreRedirectsVersion$outboundSchema),
-  restored: z.array(z.string()),
-  failedToRestore: z.array(z.string()),
-});
-
-export function restoreRedirectsResponseBodyToJSON(
-  restoreRedirectsResponseBody: RestoreRedirectsResponseBody,
-): string {
-  return JSON.stringify(
-    RestoreRedirectsResponseBody$outboundSchema.parse(
-      restoreRedirectsResponseBody,
-    ),
-  );
-}
 export function restoreRedirectsResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<RestoreRedirectsResponseBody, SDKValidationError> {

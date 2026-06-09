@@ -25,30 +25,7 @@ export const FlagJSONValue$inboundSchema: z.ZodType<
   z.record(types.nullable(z.lazy(() => FlagJSONValue$inboundSchema))),
   types.boolean(),
 ]);
-/** @internal */
-export type FlagJSONValue$Outbound =
-  | string
-  | number
-  | Array<FlagJSONValue$Outbound | null>
-  | { [k: string]: FlagJSONValue$Outbound | null }
-  | boolean;
 
-/** @internal */
-export const FlagJSONValue$outboundSchema: z.ZodType<
-  FlagJSONValue$Outbound,
-  z.ZodTypeDef,
-  FlagJSONValue
-> = smartUnion([
-  z.string(),
-  z.number(),
-  z.array(z.nullable(z.lazy(() => FlagJSONValue$outboundSchema))),
-  z.record(z.nullable(z.lazy(() => FlagJSONValue$outboundSchema))),
-  z.boolean(),
-]);
-
-export function flagJSONValueToJSON(flagJSONValue: FlagJSONValue): string {
-  return JSON.stringify(FlagJSONValue$outboundSchema.parse(flagJSONValue));
-}
 export function flagJSONValueFromJSON(
   jsonString: string,
 ): SafeParseResult<FlagJSONValue, SDKValidationError> {

@@ -83,23 +83,10 @@ export type UpdateRouteVersionsResponseBody = {
 };
 
 /** @internal */
-export const UpdateRouteVersionsAction$inboundSchema: z.ZodNativeEnum<
-  typeof UpdateRouteVersionsAction
-> = z.nativeEnum(UpdateRouteVersionsAction);
-/** @internal */
 export const UpdateRouteVersionsAction$outboundSchema: z.ZodNativeEnum<
   typeof UpdateRouteVersionsAction
-> = UpdateRouteVersionsAction$inboundSchema;
+> = z.nativeEnum(UpdateRouteVersionsAction);
 
-/** @internal */
-export const UpdateRouteVersionsRequestBody$inboundSchema: z.ZodType<
-  UpdateRouteVersionsRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: types.string(),
-  action: UpdateRouteVersionsAction$inboundSchema,
-});
 /** @internal */
 export type UpdateRouteVersionsRequestBody$Outbound = {
   id: string;
@@ -125,33 +112,7 @@ export function updateRouteVersionsRequestBodyToJSON(
     ),
   );
 }
-export function updateRouteVersionsRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateRouteVersionsRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateRouteVersionsRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateRouteVersionsRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateRouteVersionsRequest$inboundSchema: z.ZodType<
-  UpdateRouteVersionsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  projectId: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-  RequestBody: types.optional(
-    z.lazy(() => UpdateRouteVersionsRequestBody$inboundSchema),
-  ),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 /** @internal */
 export type UpdateRouteVersionsRequest$Outbound = {
   projectId: string;
@@ -184,15 +145,6 @@ export function updateRouteVersionsRequestToJSON(
     UpdateRouteVersionsRequest$outboundSchema.parse(updateRouteVersionsRequest),
   );
 }
-export function updateRouteVersionsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateRouteVersionsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateRouteVersionsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateRouteVersionsRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const UpdateRouteVersionsVersion$inboundSchema: z.ZodType<
@@ -209,41 +161,7 @@ export const UpdateRouteVersionsVersion$inboundSchema: z.ZodType<
   ruleCount: types.optional(types.number()),
   alias: types.optional(types.string()),
 });
-/** @internal */
-export type UpdateRouteVersionsVersion$Outbound = {
-  id: string;
-  s3Key: string;
-  lastModified: number;
-  createdBy: string;
-  isStaging?: boolean | undefined;
-  isLive?: boolean | undefined;
-  ruleCount?: number | undefined;
-  alias?: string | undefined;
-};
 
-/** @internal */
-export const UpdateRouteVersionsVersion$outboundSchema: z.ZodType<
-  UpdateRouteVersionsVersion$Outbound,
-  z.ZodTypeDef,
-  UpdateRouteVersionsVersion
-> = z.object({
-  id: z.string(),
-  s3Key: z.string(),
-  lastModified: z.number(),
-  createdBy: z.string(),
-  isStaging: z.boolean().optional(),
-  isLive: z.boolean().optional(),
-  ruleCount: z.number().optional(),
-  alias: z.string().optional(),
-});
-
-export function updateRouteVersionsVersionToJSON(
-  updateRouteVersionsVersion: UpdateRouteVersionsVersion,
-): string {
-  return JSON.stringify(
-    UpdateRouteVersionsVersion$outboundSchema.parse(updateRouteVersionsVersion),
-  );
-}
 export function updateRouteVersionsVersionFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateRouteVersionsVersion, SDKValidationError> {
@@ -262,29 +180,7 @@ export const UpdateRouteVersionsResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   version: z.lazy(() => UpdateRouteVersionsVersion$inboundSchema),
 });
-/** @internal */
-export type UpdateRouteVersionsResponseBody$Outbound = {
-  version: UpdateRouteVersionsVersion$Outbound;
-};
 
-/** @internal */
-export const UpdateRouteVersionsResponseBody$outboundSchema: z.ZodType<
-  UpdateRouteVersionsResponseBody$Outbound,
-  z.ZodTypeDef,
-  UpdateRouteVersionsResponseBody
-> = z.object({
-  version: z.lazy(() => UpdateRouteVersionsVersion$outboundSchema),
-});
-
-export function updateRouteVersionsResponseBodyToJSON(
-  updateRouteVersionsResponseBody: UpdateRouteVersionsResponseBody,
-): string {
-  return JSON.stringify(
-    UpdateRouteVersionsResponseBody$outboundSchema.parse(
-      updateRouteVersionsResponseBody,
-    ),
-  );
-}
 export function updateRouteVersionsResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateRouteVersionsResponseBody, SDKValidationError> {

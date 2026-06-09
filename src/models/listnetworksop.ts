@@ -3,10 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
-import { Result as SafeParseResult } from "../types/fp.js";
-import * as types from "../types/primitives.js";
-import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type ListNetworksRequest = {
   /**
@@ -36,19 +32,6 @@ export type ListNetworksRequest = {
 };
 
 /** @internal */
-export const ListNetworksRequest$inboundSchema: z.ZodType<
-  ListNetworksRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  includeHostedZones: types.boolean().default(true),
-  includePeeringConnections: types.boolean().default(true),
-  includeProjects: types.boolean().default(true),
-  search: types.optional(types.string()),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
-/** @internal */
 export type ListNetworksRequest$Outbound = {
   includeHostedZones: boolean;
   includePeeringConnections: boolean;
@@ -77,14 +60,5 @@ export function listNetworksRequestToJSON(
 ): string {
   return JSON.stringify(
     ListNetworksRequest$outboundSchema.parse(listNetworksRequest),
-  );
-}
-export function listNetworksRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<ListNetworksRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ListNetworksRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ListNetworksRequest' from JSON`,
   );
 }

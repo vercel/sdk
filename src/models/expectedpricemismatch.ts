@@ -51,10 +51,6 @@ export class ExpectedPriceMismatch extends VercelError {
 export const ExpectedPriceMismatchCode$inboundSchema: z.ZodNativeEnum<
   typeof ExpectedPriceMismatchCode
 > = z.nativeEnum(ExpectedPriceMismatchCode);
-/** @internal */
-export const ExpectedPriceMismatchCode$outboundSchema: z.ZodNativeEnum<
-  typeof ExpectedPriceMismatchCode
-> = ExpectedPriceMismatchCode$inboundSchema;
 
 /** @internal */
 export const ExpectedPriceMismatch$inboundSchema: z.ZodType<
@@ -76,23 +72,3 @@ export const ExpectedPriceMismatch$inboundSchema: z.ZodType<
       body: v.body$,
     });
   });
-
-/** @internal */
-export type ExpectedPriceMismatch$Outbound = {
-  status: number;
-  code: string;
-  message: string;
-};
-
-/** @internal */
-export const ExpectedPriceMismatch$outboundSchema: z.ZodType<
-  ExpectedPriceMismatch$Outbound,
-  z.ZodTypeDef,
-  ExpectedPriceMismatch
-> = z.instanceof(ExpectedPriceMismatch)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    status: z.number(),
-    code: ExpectedPriceMismatchCode$outboundSchema,
-    message: z.string(),
-  }));

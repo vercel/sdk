@@ -26,14 +26,6 @@ export type DeleteAuthTokenResponseBody = {
 };
 
 /** @internal */
-export const DeleteAuthTokenRequest$inboundSchema: z.ZodType<
-  DeleteAuthTokenRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  tokenId: types.string(),
-});
-/** @internal */
 export type DeleteAuthTokenRequest$Outbound = {
   tokenId: string;
 };
@@ -54,15 +46,6 @@ export function deleteAuthTokenRequestToJSON(
     DeleteAuthTokenRequest$outboundSchema.parse(deleteAuthTokenRequest),
   );
 }
-export function deleteAuthTokenRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<DeleteAuthTokenRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => DeleteAuthTokenRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DeleteAuthTokenRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const DeleteAuthTokenResponseBody$inboundSchema: z.ZodType<
@@ -72,29 +55,7 @@ export const DeleteAuthTokenResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   tokenId: types.string(),
 });
-/** @internal */
-export type DeleteAuthTokenResponseBody$Outbound = {
-  tokenId: string;
-};
 
-/** @internal */
-export const DeleteAuthTokenResponseBody$outboundSchema: z.ZodType<
-  DeleteAuthTokenResponseBody$Outbound,
-  z.ZodTypeDef,
-  DeleteAuthTokenResponseBody
-> = z.object({
-  tokenId: z.string(),
-});
-
-export function deleteAuthTokenResponseBodyToJSON(
-  deleteAuthTokenResponseBody: DeleteAuthTokenResponseBody,
-): string {
-  return JSON.stringify(
-    DeleteAuthTokenResponseBody$outboundSchema.parse(
-      deleteAuthTokenResponseBody,
-    ),
-  );
-}
 export function deleteAuthTokenResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<DeleteAuthTokenResponseBody, SDKValidationError> {

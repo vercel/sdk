@@ -4,12 +4,8 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
-import { Result as SafeParseResult } from "../types/fp.js";
-import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
-import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type PatchTeamRoles2 = {
   accessGroupId: string;
@@ -571,14 +567,6 @@ export type PatchTeamRequest = {
 };
 
 /** @internal */
-export const PatchTeamRoles2$inboundSchema: z.ZodType<
-  PatchTeamRoles2,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  accessGroupId: types.string(),
-});
-/** @internal */
 export type PatchTeamRoles2$Outbound = {
   accessGroupId: string;
 };
@@ -597,34 +585,12 @@ export function patchTeamRoles2ToJSON(
 ): string {
   return JSON.stringify(PatchTeamRoles2$outboundSchema.parse(patchTeamRoles2));
 }
-export function patchTeamRoles2FromJSON(
-  jsonString: string,
-): SafeParseResult<PatchTeamRoles2, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PatchTeamRoles2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PatchTeamRoles2' from JSON`,
-  );
-}
 
-/** @internal */
-export const PatchTeamRoles1$inboundSchema: z.ZodNativeEnum<
-  typeof PatchTeamRoles1
-> = z.nativeEnum(PatchTeamRoles1);
 /** @internal */
 export const PatchTeamRoles1$outboundSchema: z.ZodNativeEnum<
   typeof PatchTeamRoles1
-> = PatchTeamRoles1$inboundSchema;
+> = z.nativeEnum(PatchTeamRoles1);
 
-/** @internal */
-export const PatchTeamRoles$inboundSchema: z.ZodType<
-  PatchTeamRoles,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([
-  z.lazy(() => PatchTeamRoles2$inboundSchema),
-  PatchTeamRoles1$inboundSchema,
-]);
 /** @internal */
 export type PatchTeamRoles$Outbound = PatchTeamRoles2$Outbound | string;
 
@@ -641,30 +607,7 @@ export const PatchTeamRoles$outboundSchema: z.ZodType<
 export function patchTeamRolesToJSON(patchTeamRoles: PatchTeamRoles): string {
   return JSON.stringify(PatchTeamRoles$outboundSchema.parse(patchTeamRoles));
 }
-export function patchTeamRolesFromJSON(
-  jsonString: string,
-): SafeParseResult<PatchTeamRoles, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PatchTeamRoles$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PatchTeamRoles' from JSON`,
-  );
-}
 
-/** @internal */
-export const PatchTeamSaml$inboundSchema: z.ZodType<
-  PatchTeamSaml,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  enforced: types.optional(types.boolean()),
-  roles: types.optional(
-    z.record(smartUnion([
-      z.lazy(() => PatchTeamRoles2$inboundSchema),
-      PatchTeamRoles1$inboundSchema,
-    ])),
-  ),
-});
 /** @internal */
 export type PatchTeamSaml$Outbound = {
   enforced?: boolean | undefined;
@@ -689,24 +632,7 @@ export const PatchTeamSaml$outboundSchema: z.ZodType<
 export function patchTeamSamlToJSON(patchTeamSaml: PatchTeamSaml): string {
   return JSON.stringify(PatchTeamSaml$outboundSchema.parse(patchTeamSaml));
 }
-export function patchTeamSamlFromJSON(
-  jsonString: string,
-): SafeParseResult<PatchTeamSaml, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PatchTeamSaml$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PatchTeamSaml' from JSON`,
-  );
-}
 
-/** @internal */
-export const PatchTeamRemoteCaching$inboundSchema: z.ZodType<
-  PatchTeamRemoteCaching,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  enabled: types.optional(types.boolean()),
-});
 /** @internal */
 export type PatchTeamRemoteCaching$Outbound = {
   enabled?: boolean | undefined;
@@ -728,43 +654,17 @@ export function patchTeamRemoteCachingToJSON(
     PatchTeamRemoteCaching$outboundSchema.parse(patchTeamRemoteCaching),
   );
 }
-export function patchTeamRemoteCachingFromJSON(
-  jsonString: string,
-): SafeParseResult<PatchTeamRemoteCaching, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PatchTeamRemoteCaching$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PatchTeamRemoteCaching' from JSON`,
-  );
-}
 
-/** @internal */
-export const PatchTeamDpAccessRequestsMode$inboundSchema: z.ZodNativeEnum<
-  typeof PatchTeamDpAccessRequestsMode
-> = z.nativeEnum(PatchTeamDpAccessRequestsMode);
 /** @internal */
 export const PatchTeamDpAccessRequestsMode$outboundSchema: z.ZodNativeEnum<
   typeof PatchTeamDpAccessRequestsMode
-> = PatchTeamDpAccessRequestsMode$inboundSchema;
+> = z.nativeEnum(PatchTeamDpAccessRequestsMode);
 
-/** @internal */
-export const PatchTeamDeploymentType$inboundSchema: z.ZodNativeEnum<
-  typeof PatchTeamDeploymentType
-> = z.nativeEnum(PatchTeamDeploymentType);
 /** @internal */
 export const PatchTeamDeploymentType$outboundSchema: z.ZodNativeEnum<
   typeof PatchTeamDeploymentType
-> = PatchTeamDeploymentType$inboundSchema;
+> = z.nativeEnum(PatchTeamDeploymentType);
 
-/** @internal */
-export const PatchTeamPasswordProtection$inboundSchema: z.ZodType<
-  PatchTeamPasswordProtection,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  deploymentType: PatchTeamDeploymentType$inboundSchema,
-  password: z.nullable(types.string()).optional(),
-});
 /** @internal */
 export type PatchTeamPasswordProtection$Outbound = {
   deploymentType: string;
@@ -790,33 +690,12 @@ export function patchTeamPasswordProtectionToJSON(
     ),
   );
 }
-export function patchTeamPasswordProtectionFromJSON(
-  jsonString: string,
-): SafeParseResult<PatchTeamPasswordProtection, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PatchTeamPasswordProtection$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PatchTeamPasswordProtection' from JSON`,
-  );
-}
 
-/** @internal */
-export const PatchTeamTeamsDeploymentType$inboundSchema: z.ZodNativeEnum<
-  typeof PatchTeamTeamsDeploymentType
-> = z.nativeEnum(PatchTeamTeamsDeploymentType);
 /** @internal */
 export const PatchTeamTeamsDeploymentType$outboundSchema: z.ZodNativeEnum<
   typeof PatchTeamTeamsDeploymentType
-> = PatchTeamTeamsDeploymentType$inboundSchema;
+> = z.nativeEnum(PatchTeamTeamsDeploymentType);
 
-/** @internal */
-export const PatchTeamSsoProtection$inboundSchema: z.ZodType<
-  PatchTeamSsoProtection,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  deploymentType: PatchTeamTeamsDeploymentType$inboundSchema.default("preview"),
-});
 /** @internal */
 export type PatchTeamSsoProtection$Outbound = {
   deploymentType: string;
@@ -840,28 +719,7 @@ export function patchTeamSsoProtectionToJSON(
     PatchTeamSsoProtection$outboundSchema.parse(patchTeamSsoProtection),
   );
 }
-export function patchTeamSsoProtectionFromJSON(
-  jsonString: string,
-): SafeParseResult<PatchTeamSsoProtection, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PatchTeamSsoProtection$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PatchTeamSsoProtection' from JSON`,
-  );
-}
 
-/** @internal */
-export const PatchTeamDefaultDeploymentProtection$inboundSchema: z.ZodType<
-  PatchTeamDefaultDeploymentProtection,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  passwordProtection: z.nullable(
-    z.lazy(() => PatchTeamPasswordProtection$inboundSchema),
-  ).optional(),
-  ssoProtection: z.nullable(z.lazy(() => PatchTeamSsoProtection$inboundSchema))
-    .optional(),
-});
 /** @internal */
 export type PatchTeamDefaultDeploymentProtection$Outbound = {
   passwordProtection?: PatchTeamPasswordProtection$Outbound | null | undefined;
@@ -890,35 +748,13 @@ export function patchTeamDefaultDeploymentProtectionToJSON(
     ),
   );
 }
-export function patchTeamDefaultDeploymentProtectionFromJSON(
-  jsonString: string,
-): SafeParseResult<PatchTeamDefaultDeploymentProtection, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      PatchTeamDefaultDeploymentProtection$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PatchTeamDefaultDeploymentProtection' from JSON`,
-  );
-}
 
-/** @internal */
-export const PatchTeamTeamsRequestDeploymentType$inboundSchema: z.ZodNativeEnum<
-  typeof PatchTeamTeamsRequestDeploymentType
-> = z.nativeEnum(PatchTeamTeamsRequestDeploymentType);
 /** @internal */
 export const PatchTeamTeamsRequestDeploymentType$outboundSchema:
-  z.ZodNativeEnum<typeof PatchTeamTeamsRequestDeploymentType> =
-    PatchTeamTeamsRequestDeploymentType$inboundSchema;
+  z.ZodNativeEnum<typeof PatchTeamTeamsRequestDeploymentType> = z.nativeEnum(
+    PatchTeamTeamsRequestDeploymentType,
+  );
 
-/** @internal */
-export const PatchTeamDefaultPassport$inboundSchema: z.ZodType<
-  PatchTeamDefaultPassport,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  connectorId: types.string(),
-  deploymentType: PatchTeamTeamsRequestDeploymentType$inboundSchema,
-});
 /** @internal */
 export type PatchTeamDefaultPassport$Outbound = {
   connectorId: string;
@@ -942,63 +778,27 @@ export function patchTeamDefaultPassportToJSON(
     PatchTeamDefaultPassport$outboundSchema.parse(patchTeamDefaultPassport),
   );
 }
-export function patchTeamDefaultPassportFromJSON(
-  jsonString: string,
-): SafeParseResult<PatchTeamDefaultPassport, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PatchTeamDefaultPassport$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PatchTeamDefaultPassport' from JSON`,
-  );
-}
 
-/** @internal */
-export const PatchTeamExpiration$inboundSchema: z.ZodNativeEnum<
-  typeof PatchTeamExpiration
-> = z.nativeEnum(PatchTeamExpiration);
 /** @internal */
 export const PatchTeamExpiration$outboundSchema: z.ZodNativeEnum<
   typeof PatchTeamExpiration
-> = PatchTeamExpiration$inboundSchema;
+> = z.nativeEnum(PatchTeamExpiration);
 
-/** @internal */
-export const ExpirationProduction$inboundSchema: z.ZodNativeEnum<
-  typeof ExpirationProduction
-> = z.nativeEnum(ExpirationProduction);
 /** @internal */
 export const ExpirationProduction$outboundSchema: z.ZodNativeEnum<
   typeof ExpirationProduction
-> = ExpirationProduction$inboundSchema;
+> = z.nativeEnum(ExpirationProduction);
 
-/** @internal */
-export const ExpirationCanceled$inboundSchema: z.ZodNativeEnum<
-  typeof ExpirationCanceled
-> = z.nativeEnum(ExpirationCanceled);
 /** @internal */
 export const ExpirationCanceled$outboundSchema: z.ZodNativeEnum<
   typeof ExpirationCanceled
-> = ExpirationCanceled$inboundSchema;
+> = z.nativeEnum(ExpirationCanceled);
 
-/** @internal */
-export const ExpirationErrored$inboundSchema: z.ZodNativeEnum<
-  typeof ExpirationErrored
-> = z.nativeEnum(ExpirationErrored);
 /** @internal */
 export const ExpirationErrored$outboundSchema: z.ZodNativeEnum<
   typeof ExpirationErrored
-> = ExpirationErrored$inboundSchema;
+> = z.nativeEnum(ExpirationErrored);
 
-/** @internal */
-export const PatchTeamDefaultExpirationSettings$inboundSchema: z.ZodType<
-  PatchTeamDefaultExpirationSettings,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  expiration: types.optional(PatchTeamExpiration$inboundSchema),
-  expirationProduction: types.optional(ExpirationProduction$inboundSchema),
-  expirationCanceled: types.optional(ExpirationCanceled$inboundSchema),
-  expirationErrored: types.optional(ExpirationErrored$inboundSchema),
-});
 /** @internal */
 export type PatchTeamDefaultExpirationSettings$Outbound = {
   expiration?: string | undefined;
@@ -1028,26 +828,7 @@ export function patchTeamDefaultExpirationSettingsToJSON(
     ),
   );
 }
-export function patchTeamDefaultExpirationSettingsFromJSON(
-  jsonString: string,
-): SafeParseResult<PatchTeamDefaultExpirationSettings, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      PatchTeamDefaultExpirationSettings$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PatchTeamDefaultExpirationSettings' from JSON`,
-  );
-}
 
-/** @internal */
-export const PatchTeamEnvironments2$inboundSchema: z.ZodType<
-  PatchTeamEnvironments2,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  type: types.literal("custom"),
-  environmentId: types.string(),
-});
 /** @internal */
 export type PatchTeamEnvironments2$Outbound = {
   type: "custom";
@@ -1071,34 +852,12 @@ export function patchTeamEnvironments2ToJSON(
     PatchTeamEnvironments2$outboundSchema.parse(patchTeamEnvironments2),
   );
 }
-export function patchTeamEnvironments2FromJSON(
-  jsonString: string,
-): SafeParseResult<PatchTeamEnvironments2, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PatchTeamEnvironments2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PatchTeamEnvironments2' from JSON`,
-  );
-}
 
-/** @internal */
-export const PatchTeamEnvironmentsTarget$inboundSchema: z.ZodNativeEnum<
-  typeof PatchTeamEnvironmentsTarget
-> = z.nativeEnum(PatchTeamEnvironmentsTarget);
 /** @internal */
 export const PatchTeamEnvironmentsTarget$outboundSchema: z.ZodNativeEnum<
   typeof PatchTeamEnvironmentsTarget
-> = PatchTeamEnvironmentsTarget$inboundSchema;
+> = z.nativeEnum(PatchTeamEnvironmentsTarget);
 
-/** @internal */
-export const PatchTeamEnvironments1$inboundSchema: z.ZodType<
-  PatchTeamEnvironments1,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  type: types.literal("system"),
-  target: PatchTeamEnvironmentsTarget$inboundSchema,
-});
 /** @internal */
 export type PatchTeamEnvironments1$Outbound = {
   type: "system";
@@ -1122,25 +881,7 @@ export function patchTeamEnvironments1ToJSON(
     PatchTeamEnvironments1$outboundSchema.parse(patchTeamEnvironments1),
   );
 }
-export function patchTeamEnvironments1FromJSON(
-  jsonString: string,
-): SafeParseResult<PatchTeamEnvironments1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PatchTeamEnvironments1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PatchTeamEnvironments1' from JSON`,
-  );
-}
 
-/** @internal */
-export const PatchTeamGitSourcesEnvironments$inboundSchema: z.ZodType<
-  PatchTeamGitSourcesEnvironments,
-  z.ZodTypeDef,
-  unknown
-> = z.union([
-  z.lazy(() => PatchTeamEnvironments1$inboundSchema),
-  z.lazy(() => PatchTeamEnvironments2$inboundSchema),
-]);
 /** @internal */
 export type PatchTeamGitSourcesEnvironments$Outbound =
   | PatchTeamEnvironments1$Outbound
@@ -1165,26 +906,7 @@ export function patchTeamGitSourcesEnvironmentsToJSON(
     ),
   );
 }
-export function patchTeamGitSourcesEnvironmentsFromJSON(
-  jsonString: string,
-): SafeParseResult<PatchTeamGitSourcesEnvironments, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PatchTeamGitSourcesEnvironments$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PatchTeamGitSourcesEnvironments' from JSON`,
-  );
-}
 
-/** @internal */
-export const PatchTeamSources2$inboundSchema: z.ZodType<
-  PatchTeamSources2,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  provider: types.literal("gitlab"),
-  namespace: types.string(),
-  project: types.optional(types.string()),
-});
 /** @internal */
 export type PatchTeamSources2$Outbound = {
   provider: "gitlab";
@@ -1210,35 +932,12 @@ export function patchTeamSources2ToJSON(
     PatchTeamSources2$outboundSchema.parse(patchTeamSources2),
   );
 }
-export function patchTeamSources2FromJSON(
-  jsonString: string,
-): SafeParseResult<PatchTeamSources2, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PatchTeamSources2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PatchTeamSources2' from JSON`,
-  );
-}
 
-/** @internal */
-export const PatchTeamSourcesProvider$inboundSchema: z.ZodNativeEnum<
-  typeof PatchTeamSourcesProvider
-> = z.nativeEnum(PatchTeamSourcesProvider);
 /** @internal */
 export const PatchTeamSourcesProvider$outboundSchema: z.ZodNativeEnum<
   typeof PatchTeamSourcesProvider
-> = PatchTeamSourcesProvider$inboundSchema;
+> = z.nativeEnum(PatchTeamSourcesProvider);
 
-/** @internal */
-export const PatchTeamSources1$inboundSchema: z.ZodType<
-  PatchTeamSources1,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  provider: PatchTeamSourcesProvider$inboundSchema,
-  org: types.string(),
-  repo: types.optional(types.string()),
-});
 /** @internal */
 export type PatchTeamSources1$Outbound = {
   provider: string;
@@ -1264,30 +963,7 @@ export function patchTeamSources1ToJSON(
     PatchTeamSources1$outboundSchema.parse(patchTeamSources1),
   );
 }
-export function patchTeamSources1FromJSON(
-  jsonString: string,
-): SafeParseResult<PatchTeamSources1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PatchTeamSources1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PatchTeamSources1' from JSON`,
-  );
-}
 
-/** @internal */
-export const PatchTeamGitSourcesSources$inboundSchema: z.ZodType<
-  PatchTeamGitSourcesSources,
-  z.ZodTypeDef,
-  unknown
-> = z.union([
-  z.lazy(() => PatchTeamSources1$inboundSchema).and(
-    z.object({ provider: z.literal("github") }),
-  ),
-  z.lazy(() => PatchTeamSources1$inboundSchema).and(
-    z.object({ provider: z.literal("bitbucket") }),
-  ),
-  z.lazy(() => PatchTeamSources2$inboundSchema),
-]);
 /** @internal */
 export type PatchTeamGitSourcesSources$Outbound =
   | (PatchTeamSources1$Outbound & { provider: "github" })
@@ -1316,41 +992,7 @@ export function patchTeamGitSourcesSourcesToJSON(
     PatchTeamGitSourcesSources$outboundSchema.parse(patchTeamGitSourcesSources),
   );
 }
-export function patchTeamGitSourcesSourcesFromJSON(
-  jsonString: string,
-): SafeParseResult<PatchTeamGitSourcesSources, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PatchTeamGitSourcesSources$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PatchTeamGitSourcesSources' from JSON`,
-  );
-}
 
-/** @internal */
-export const PatchTeamGitSources1$inboundSchema: z.ZodType<
-  PatchTeamGitSources1,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  enabled: types.boolean(),
-  environments: z.array(
-    z.union([
-      z.lazy(() => PatchTeamEnvironments1$inboundSchema),
-      z.lazy(() => PatchTeamEnvironments2$inboundSchema),
-    ]),
-  ),
-  sources: z.array(
-    z.union([
-      z.lazy(() => PatchTeamSources1$inboundSchema).and(
-        z.object({ provider: z.literal("github") }),
-      ),
-      z.lazy(() => PatchTeamSources1$inboundSchema).and(
-        z.object({ provider: z.literal("bitbucket") }),
-      ),
-      z.lazy(() => PatchTeamSources2$inboundSchema),
-    ]),
-  ),
-});
 /** @internal */
 export type PatchTeamGitSources1$Outbound = {
   enabled: boolean;
@@ -1397,25 +1039,7 @@ export function patchTeamGitSources1ToJSON(
     PatchTeamGitSources1$outboundSchema.parse(patchTeamGitSources1),
   );
 }
-export function patchTeamGitSources1FromJSON(
-  jsonString: string,
-): SafeParseResult<PatchTeamGitSources1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PatchTeamGitSources1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PatchTeamGitSources1' from JSON`,
-  );
-}
 
-/** @internal */
-export const PatchTeamDeploymentPolicyGitSources$inboundSchema: z.ZodType<
-  PatchTeamDeploymentPolicyGitSources,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([
-  z.array(z.lazy(() => PatchTeamGitSources1$inboundSchema)),
-  types.string(),
-]);
 /** @internal */
 export type PatchTeamDeploymentPolicyGitSources$Outbound =
   | Array<PatchTeamGitSources1$Outbound>
@@ -1440,26 +1064,7 @@ export function patchTeamDeploymentPolicyGitSourcesToJSON(
     ),
   );
 }
-export function patchTeamDeploymentPolicyGitSourcesFromJSON(
-  jsonString: string,
-): SafeParseResult<PatchTeamDeploymentPolicyGitSources, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      PatchTeamDeploymentPolicyGitSources$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PatchTeamDeploymentPolicyGitSources' from JSON`,
-  );
-}
 
-/** @internal */
-export const PatchTeamEnvironmentsTeams2$inboundSchema: z.ZodType<
-  PatchTeamEnvironmentsTeams2,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  type: types.literal("custom"),
-  environmentId: types.string(),
-});
 /** @internal */
 export type PatchTeamEnvironmentsTeams2$Outbound = {
   type: "custom";
@@ -1485,34 +1090,12 @@ export function patchTeamEnvironmentsTeams2ToJSON(
     ),
   );
 }
-export function patchTeamEnvironmentsTeams2FromJSON(
-  jsonString: string,
-): SafeParseResult<PatchTeamEnvironmentsTeams2, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PatchTeamEnvironmentsTeams2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PatchTeamEnvironmentsTeams2' from JSON`,
-  );
-}
 
-/** @internal */
-export const PatchTeamEnvironmentsTeamsTarget$inboundSchema: z.ZodNativeEnum<
-  typeof PatchTeamEnvironmentsTeamsTarget
-> = z.nativeEnum(PatchTeamEnvironmentsTeamsTarget);
 /** @internal */
 export const PatchTeamEnvironmentsTeamsTarget$outboundSchema: z.ZodNativeEnum<
   typeof PatchTeamEnvironmentsTeamsTarget
-> = PatchTeamEnvironmentsTeamsTarget$inboundSchema;
+> = z.nativeEnum(PatchTeamEnvironmentsTeamsTarget);
 
-/** @internal */
-export const PatchTeamEnvironmentsTeams1$inboundSchema: z.ZodType<
-  PatchTeamEnvironmentsTeams1,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  type: types.literal("system"),
-  target: PatchTeamEnvironmentsTeamsTarget$inboundSchema,
-});
 /** @internal */
 export type PatchTeamEnvironmentsTeams1$Outbound = {
   type: "system";
@@ -1538,25 +1121,7 @@ export function patchTeamEnvironmentsTeams1ToJSON(
     ),
   );
 }
-export function patchTeamEnvironmentsTeams1FromJSON(
-  jsonString: string,
-): SafeParseResult<PatchTeamEnvironmentsTeams1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PatchTeamEnvironmentsTeams1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PatchTeamEnvironmentsTeams1' from JSON`,
-  );
-}
 
-/** @internal */
-export const PatchTeamDeploymentSourcesEnvironments$inboundSchema: z.ZodType<
-  PatchTeamDeploymentSourcesEnvironments,
-  z.ZodTypeDef,
-  unknown
-> = z.union([
-  z.lazy(() => PatchTeamEnvironmentsTeams1$inboundSchema),
-  z.lazy(() => PatchTeamEnvironmentsTeams2$inboundSchema),
-]);
 /** @internal */
 export type PatchTeamDeploymentSourcesEnvironments$Outbound =
   | PatchTeamEnvironmentsTeams1$Outbound
@@ -1582,41 +1147,12 @@ export function patchTeamDeploymentSourcesEnvironmentsToJSON(
     ),
   );
 }
-export function patchTeamDeploymentSourcesEnvironmentsFromJSON(
-  jsonString: string,
-): SafeParseResult<PatchTeamDeploymentSourcesEnvironments, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      PatchTeamDeploymentSourcesEnvironments$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PatchTeamDeploymentSourcesEnvironments' from JSON`,
-  );
-}
 
-/** @internal */
-export const PatchTeamDeploymentSourcesSources$inboundSchema: z.ZodNativeEnum<
-  typeof PatchTeamDeploymentSourcesSources
-> = z.nativeEnum(PatchTeamDeploymentSourcesSources);
 /** @internal */
 export const PatchTeamDeploymentSourcesSources$outboundSchema: z.ZodNativeEnum<
   typeof PatchTeamDeploymentSourcesSources
-> = PatchTeamDeploymentSourcesSources$inboundSchema;
+> = z.nativeEnum(PatchTeamDeploymentSourcesSources);
 
-/** @internal */
-export const PatchTeamDeploymentSources1$inboundSchema: z.ZodType<
-  PatchTeamDeploymentSources1,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  enabled: types.boolean(),
-  environments: z.array(
-    z.union([
-      z.lazy(() => PatchTeamEnvironmentsTeams1$inboundSchema),
-      z.lazy(() => PatchTeamEnvironmentsTeams2$inboundSchema),
-    ]),
-  ),
-  sources: z.array(PatchTeamDeploymentSourcesSources$inboundSchema),
-});
 /** @internal */
 export type PatchTeamDeploymentSources1$Outbound = {
   enabled: boolean;
@@ -1651,23 +1187,7 @@ export function patchTeamDeploymentSources1ToJSON(
     ),
   );
 }
-export function patchTeamDeploymentSources1FromJSON(
-  jsonString: string,
-): SafeParseResult<PatchTeamDeploymentSources1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PatchTeamDeploymentSources1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PatchTeamDeploymentSources1' from JSON`,
-  );
-}
 
-/** @internal */
-export const PatchTeamDeploymentPolicyDeploymentSources$inboundSchema:
-  z.ZodType<PatchTeamDeploymentPolicyDeploymentSources, z.ZodTypeDef, unknown> =
-    smartUnion([
-      z.array(z.lazy(() => PatchTeamDeploymentSources1$inboundSchema)),
-      types.string(),
-    ]);
 /** @internal */
 export type PatchTeamDeploymentPolicyDeploymentSources$Outbound =
   | Array<PatchTeamDeploymentSources1$Outbound>
@@ -1694,41 +1214,7 @@ export function patchTeamDeploymentPolicyDeploymentSourcesToJSON(
     ),
   );
 }
-export function patchTeamDeploymentPolicyDeploymentSourcesFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  PatchTeamDeploymentPolicyDeploymentSources,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      PatchTeamDeploymentPolicyDeploymentSources$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'PatchTeamDeploymentPolicyDeploymentSources' from JSON`,
-  );
-}
 
-/** @internal */
-export const PatchTeamDeploymentPolicy1$inboundSchema: z.ZodType<
-  PatchTeamDeploymentPolicy1,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  gitSources: types.optional(
-    smartUnion([
-      z.array(z.lazy(() => PatchTeamGitSources1$inboundSchema)),
-      types.string(),
-    ]),
-  ),
-  deploymentSources: types.optional(
-    smartUnion([
-      z.array(z.lazy(() => PatchTeamDeploymentSources1$inboundSchema)),
-      types.string(),
-    ]),
-  ),
-});
 /** @internal */
 export type PatchTeamDeploymentPolicy1$Outbound = {
   gitSources?: Array<PatchTeamGitSources1$Outbound> | string | undefined;
@@ -1761,25 +1247,7 @@ export function patchTeamDeploymentPolicy1ToJSON(
     PatchTeamDeploymentPolicy1$outboundSchema.parse(patchTeamDeploymentPolicy1),
   );
 }
-export function patchTeamDeploymentPolicy1FromJSON(
-  jsonString: string,
-): SafeParseResult<PatchTeamDeploymentPolicy1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PatchTeamDeploymentPolicy1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PatchTeamDeploymentPolicy1' from JSON`,
-  );
-}
 
-/** @internal */
-export const PatchTeamDeploymentPolicy$inboundSchema: z.ZodType<
-  PatchTeamDeploymentPolicy,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([
-  z.lazy(() => PatchTeamDeploymentPolicy1$inboundSchema),
-  types.string(),
-]);
 /** @internal */
 export type PatchTeamDeploymentPolicy$Outbound =
   | PatchTeamDeploymentPolicy1$Outbound
@@ -1802,25 +1270,7 @@ export function patchTeamDeploymentPolicyToJSON(
     PatchTeamDeploymentPolicy$outboundSchema.parse(patchTeamDeploymentPolicy),
   );
 }
-export function patchTeamDeploymentPolicyFromJSON(
-  jsonString: string,
-): SafeParseResult<PatchTeamDeploymentPolicy, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PatchTeamDeploymentPolicy$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PatchTeamDeploymentPolicy' from JSON`,
-  );
-}
 
-/** @internal */
-export const PatchTeamStrictDeploymentProtectionSettings$inboundSchema:
-  z.ZodType<
-    PatchTeamStrictDeploymentProtectionSettings,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    enabled: types.boolean(),
-  });
 /** @internal */
 export type PatchTeamStrictDeploymentProtectionSettings$Outbound = {
   enabled: boolean;
@@ -1846,30 +1296,7 @@ export function patchTeamStrictDeploymentProtectionSettingsToJSON(
     ),
   );
 }
-export function patchTeamStrictDeploymentProtectionSettingsFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  PatchTeamStrictDeploymentProtectionSettings,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      PatchTeamStrictDeploymentProtectionSettings$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'PatchTeamStrictDeploymentProtectionSettings' from JSON`,
-  );
-}
 
-/** @internal */
-export const PatchTeamStrictShareableLinks$inboundSchema: z.ZodType<
-  PatchTeamStrictShareableLinks,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  enabled: types.boolean(),
-});
 /** @internal */
 export type PatchTeamStrictShareableLinks$Outbound = {
   enabled: boolean;
@@ -1893,33 +1320,12 @@ export function patchTeamStrictShareableLinksToJSON(
     ),
   );
 }
-export function patchTeamStrictShareableLinksFromJSON(
-  jsonString: string,
-): SafeParseResult<PatchTeamStrictShareableLinks, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PatchTeamStrictShareableLinks$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PatchTeamStrictShareableLinks' from JSON`,
-  );
-}
 
-/** @internal */
-export const NsnbConfigPreference$inboundSchema: z.ZodNativeEnum<
-  typeof NsnbConfigPreference
-> = z.nativeEnum(NsnbConfigPreference);
 /** @internal */
 export const NsnbConfigPreference$outboundSchema: z.ZodNativeEnum<
   typeof NsnbConfigPreference
-> = NsnbConfigPreference$inboundSchema;
+> = z.nativeEnum(NsnbConfigPreference);
 
-/** @internal */
-export const NsnbConfig1$inboundSchema: z.ZodType<
-  NsnbConfig1,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  preference: NsnbConfigPreference$inboundSchema,
-});
 /** @internal */
 export type NsnbConfig1$Outbound = {
   preference: string;
@@ -1937,22 +1343,7 @@ export const NsnbConfig1$outboundSchema: z.ZodType<
 export function nsnbConfig1ToJSON(nsnbConfig1: NsnbConfig1): string {
   return JSON.stringify(NsnbConfig1$outboundSchema.parse(nsnbConfig1));
 }
-export function nsnbConfig1FromJSON(
-  jsonString: string,
-): SafeParseResult<NsnbConfig1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => NsnbConfig1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'NsnbConfig1' from JSON`,
-  );
-}
 
-/** @internal */
-export const PatchTeamNsnbConfig$inboundSchema: z.ZodType<
-  PatchTeamNsnbConfig,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([z.lazy(() => NsnbConfig1$inboundSchema), types.string()]);
 /** @internal */
 export type PatchTeamNsnbConfig$Outbound = NsnbConfig1$Outbound | string;
 
@@ -1970,24 +1361,7 @@ export function patchTeamNsnbConfigToJSON(
     PatchTeamNsnbConfig$outboundSchema.parse(patchTeamNsnbConfig),
   );
 }
-export function patchTeamNsnbConfigFromJSON(
-  jsonString: string,
-): SafeParseResult<PatchTeamNsnbConfig, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PatchTeamNsnbConfig$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PatchTeamNsnbConfig' from JSON`,
-  );
-}
 
-/** @internal */
-export const DefaultProjectJobsLint$inboundSchema: z.ZodType<
-  DefaultProjectJobsLint,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  targets: z.array(types.string()),
-});
 /** @internal */
 export type DefaultProjectJobsLint$Outbound = {
   targets: Array<string>;
@@ -2009,24 +1383,7 @@ export function defaultProjectJobsLintToJSON(
     DefaultProjectJobsLint$outboundSchema.parse(defaultProjectJobsLint),
   );
 }
-export function defaultProjectJobsLintFromJSON(
-  jsonString: string,
-): SafeParseResult<DefaultProjectJobsLint, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => DefaultProjectJobsLint$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DefaultProjectJobsLint' from JSON`,
-  );
-}
 
-/** @internal */
-export const DefaultProjectJobsTypecheck$inboundSchema: z.ZodType<
-  DefaultProjectJobsTypecheck,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  targets: z.array(types.string()),
-});
 /** @internal */
 export type DefaultProjectJobsTypecheck$Outbound = {
   targets: Array<string>;
@@ -2050,27 +1407,7 @@ export function defaultProjectJobsTypecheckToJSON(
     ),
   );
 }
-export function defaultProjectJobsTypecheckFromJSON(
-  jsonString: string,
-): SafeParseResult<DefaultProjectJobsTypecheck, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => DefaultProjectJobsTypecheck$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DefaultProjectJobsTypecheck' from JSON`,
-  );
-}
 
-/** @internal */
-export const DefaultProjectJobs1$inboundSchema: z.ZodType<
-  DefaultProjectJobs1,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  lint: types.optional(z.lazy(() => DefaultProjectJobsLint$inboundSchema)),
-  typecheck: types.optional(
-    z.lazy(() => DefaultProjectJobsTypecheck$inboundSchema),
-  ),
-});
 /** @internal */
 export type DefaultProjectJobs1$Outbound = {
   lint?: DefaultProjectJobsLint$Outbound | undefined;
@@ -2095,25 +1432,7 @@ export function defaultProjectJobs1ToJSON(
     DefaultProjectJobs1$outboundSchema.parse(defaultProjectJobs1),
   );
 }
-export function defaultProjectJobs1FromJSON(
-  jsonString: string,
-): SafeParseResult<DefaultProjectJobs1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => DefaultProjectJobs1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DefaultProjectJobs1' from JSON`,
-  );
-}
 
-/** @internal */
-export const PatchTeamDefaultProjectJobs$inboundSchema: z.ZodType<
-  PatchTeamDefaultProjectJobs,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([
-  z.lazy(() => DefaultProjectJobs1$inboundSchema),
-  types.string(),
-]);
 /** @internal */
 export type PatchTeamDefaultProjectJobs$Outbound =
   | DefaultProjectJobs1$Outbound
@@ -2135,33 +1454,12 @@ export function patchTeamDefaultProjectJobsToJSON(
     ),
   );
 }
-export function patchTeamDefaultProjectJobsFromJSON(
-  jsonString: string,
-): SafeParseResult<PatchTeamDefaultProjectJobs, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PatchTeamDefaultProjectJobs$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PatchTeamDefaultProjectJobs' from JSON`,
-  );
-}
 
-/** @internal */
-export const PatchTeamDefault$inboundSchema: z.ZodNativeEnum<
-  typeof PatchTeamDefault
-> = z.nativeEnum(PatchTeamDefault);
 /** @internal */
 export const PatchTeamDefault$outboundSchema: z.ZodNativeEnum<
   typeof PatchTeamDefault
-> = PatchTeamDefault$inboundSchema;
+> = z.nativeEnum(PatchTeamDefault);
 
-/** @internal */
-export const PatchTeamBuildMachine$inboundSchema: z.ZodType<
-  PatchTeamBuildMachine,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  default: types.optional(PatchTeamDefault$inboundSchema),
-});
 /** @internal */
 export type PatchTeamBuildMachine$Outbound = {
   default?: string | undefined;
@@ -2183,26 +1481,7 @@ export function patchTeamBuildMachineToJSON(
     PatchTeamBuildMachine$outboundSchema.parse(patchTeamBuildMachine),
   );
 }
-export function patchTeamBuildMachineFromJSON(
-  jsonString: string,
-): SafeParseResult<PatchTeamBuildMachine, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PatchTeamBuildMachine$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PatchTeamBuildMachine' from JSON`,
-  );
-}
 
-/** @internal */
-export const PatchTeamResourceConfig$inboundSchema: z.ZodType<
-  PatchTeamResourceConfig,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  buildMachine: types.optional(
-    z.lazy(() => PatchTeamBuildMachine$inboundSchema),
-  ),
-});
 /** @internal */
 export type PatchTeamResourceConfig$Outbound = {
   buildMachine?: PatchTeamBuildMachine$Outbound | undefined;
@@ -2224,77 +1503,7 @@ export function patchTeamResourceConfigToJSON(
     PatchTeamResourceConfig$outboundSchema.parse(patchTeamResourceConfig),
   );
 }
-export function patchTeamResourceConfigFromJSON(
-  jsonString: string,
-): SafeParseResult<PatchTeamResourceConfig, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PatchTeamResourceConfig$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PatchTeamResourceConfig' from JSON`,
-  );
-}
 
-/** @internal */
-export const PatchTeamRequestBody$inboundSchema: z.ZodType<
-  PatchTeamRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  avatar: types.optional(types.string()),
-  description: types.optional(types.string()),
-  emailDomain: z.nullable(types.string()).optional(),
-  name: types.optional(types.string()),
-  previewDeploymentSuffix: z.nullable(types.string()).optional(),
-  regenerateInviteCode: types.optional(types.boolean()),
-  saml: types.optional(z.lazy(() => PatchTeamSaml$inboundSchema)),
-  slug: types.optional(types.string()),
-  enablePreviewFeedback: types.optional(types.string()),
-  enableProductionFeedback: types.optional(types.string()),
-  sensitiveEnvironmentVariablePolicy: types.optional(types.string()),
-  remoteCaching: types.optional(
-    z.lazy(() => PatchTeamRemoteCaching$inboundSchema),
-  ),
-  hideIpAddresses: types.optional(types.boolean()),
-  hideIpAddressesInLogDrains: types.optional(types.boolean()),
-  dpAccessRequestsMode: types.optional(
-    PatchTeamDpAccessRequestsMode$inboundSchema,
-  ),
-  requireVerifiedCommits: types.optional(types.boolean()),
-  disableRepositoryDispatchEvents: types.optional(types.boolean()),
-  defaultDeploymentProtection: types.optional(
-    z.lazy(() => PatchTeamDefaultDeploymentProtection$inboundSchema),
-  ),
-  defaultPassport: z.nullable(
-    z.lazy(() => PatchTeamDefaultPassport$inboundSchema),
-  ).optional(),
-  defaultExpirationSettings: types.optional(
-    z.lazy(() => PatchTeamDefaultExpirationSettings$inboundSchema),
-  ),
-  deploymentPolicy: types.optional(
-    smartUnion([
-      z.lazy(() => PatchTeamDeploymentPolicy1$inboundSchema),
-      types.string(),
-    ]),
-  ),
-  strictDeploymentProtectionSettings: types.optional(
-    z.lazy(() => PatchTeamStrictDeploymentProtectionSettings$inboundSchema),
-  ),
-  strictShareableLinks: types.optional(
-    z.lazy(() => PatchTeamStrictShareableLinks$inboundSchema),
-  ),
-  nsnbConfig: types.optional(
-    smartUnion([z.lazy(() => NsnbConfig1$inboundSchema), types.string()]),
-  ),
-  defaultProjectJobs: types.optional(
-    smartUnion([
-      z.lazy(() => DefaultProjectJobs1$inboundSchema),
-      types.string(),
-    ]),
-  ),
-  resourceConfig: types.optional(
-    z.lazy(() => PatchTeamResourceConfig$inboundSchema),
-  ),
-});
 /** @internal */
 export type PatchTeamRequestBody$Outbound = {
   avatar?: string | undefined;
@@ -2390,30 +1599,7 @@ export function patchTeamRequestBodyToJSON(
     PatchTeamRequestBody$outboundSchema.parse(patchTeamRequestBody),
   );
 }
-export function patchTeamRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<PatchTeamRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PatchTeamRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PatchTeamRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const PatchTeamRequest$inboundSchema: z.ZodType<
-  PatchTeamRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  teamId: types.string(),
-  slug: types.optional(types.string()),
-  RequestBody: z.lazy(() => PatchTeamRequestBody$inboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 /** @internal */
 export type PatchTeamRequest$Outbound = {
   teamId: string;
@@ -2441,14 +1627,5 @@ export function patchTeamRequestToJSON(
 ): string {
   return JSON.stringify(
     PatchTeamRequest$outboundSchema.parse(patchTeamRequest),
-  );
-}
-export function patchTeamRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<PatchTeamRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PatchTeamRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PatchTeamRequest' from JSON`,
   );
 }

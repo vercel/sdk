@@ -73,21 +73,6 @@ export type GetBypassIpResponseBody = {
 };
 
 /** @internal */
-export const GetBypassIpRequest$inboundSchema: z.ZodType<
-  GetBypassIpRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  projectId: types.string(),
-  limit: types.optional(types.number()),
-  sourceIp: types.optional(types.string()),
-  domain: types.optional(types.string()),
-  projectScope: types.optional(types.boolean()),
-  offset: types.optional(types.string()),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
-/** @internal */
 export type GetBypassIpRequest$Outbound = {
   projectId: string;
   limit?: number | undefined;
@@ -122,24 +107,11 @@ export function getBypassIpRequestToJSON(
     GetBypassIpRequest$outboundSchema.parse(getBypassIpRequest),
   );
 }
-export function getBypassIpRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetBypassIpRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetBypassIpRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetBypassIpRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const GetBypassIpAction$inboundSchema: z.ZodNativeEnum<
   typeof GetBypassIpAction
 > = z.nativeEnum(GetBypassIpAction);
-/** @internal */
-export const GetBypassIpAction$outboundSchema: z.ZodNativeEnum<
-  typeof GetBypassIpAction
-> = GetBypassIpAction$inboundSchema;
 
 /** @internal */
 export const GetBypassIpResult$inboundSchema: z.ZodType<
@@ -179,70 +151,7 @@ export const GetBypassIpResult$inboundSchema: z.ZodType<
     "ExpiresAt": "expiresAt",
   });
 });
-/** @internal */
-export type GetBypassIpResult$Outbound = {
-  OwnerId: string;
-  Id: string;
-  Domain: string;
-  Ip: string;
-  Action?: string | undefined;
-  ProjectId?: string | undefined;
-  IsProjectRule?: boolean | undefined;
-  Note?: string | undefined;
-  CreatedAt: string;
-  ActorId?: string | undefined;
-  UpdatedAt: string;
-  UpdatedAtHour: string;
-  DeletedAt?: string | undefined;
-  ExpiresAt?: number | null | undefined;
-};
 
-/** @internal */
-export const GetBypassIpResult$outboundSchema: z.ZodType<
-  GetBypassIpResult$Outbound,
-  z.ZodTypeDef,
-  GetBypassIpResult
-> = z.object({
-  ownerId: z.string(),
-  id: z.string(),
-  domain: z.string(),
-  ip: z.string(),
-  action: GetBypassIpAction$outboundSchema.optional(),
-  projectId: z.string().optional(),
-  isProjectRule: z.boolean().optional(),
-  note: z.string().optional(),
-  createdAt: z.string(),
-  actorId: z.string().optional(),
-  updatedAt: z.string(),
-  updatedAtHour: z.string(),
-  deletedAt: z.string().optional(),
-  expiresAt: z.nullable(z.number()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    ownerId: "OwnerId",
-    id: "Id",
-    domain: "Domain",
-    ip: "Ip",
-    action: "Action",
-    projectId: "ProjectId",
-    isProjectRule: "IsProjectRule",
-    note: "Note",
-    createdAt: "CreatedAt",
-    actorId: "ActorId",
-    updatedAt: "UpdatedAt",
-    updatedAtHour: "UpdatedAtHour",
-    deletedAt: "DeletedAt",
-    expiresAt: "ExpiresAt",
-  });
-});
-
-export function getBypassIpResultToJSON(
-  getBypassIpResult: GetBypassIpResult,
-): string {
-  return JSON.stringify(
-    GetBypassIpResult$outboundSchema.parse(getBypassIpResult),
-  );
-}
 export function getBypassIpResultFromJSON(
   jsonString: string,
 ): SafeParseResult<GetBypassIpResult, SDKValidationError> {
@@ -267,34 +176,7 @@ export const GetBypassIpPagination$inboundSchema: z.ZodType<
     "Id": "id",
   });
 });
-/** @internal */
-export type GetBypassIpPagination$Outbound = {
-  OwnerId: string;
-  Id: string;
-};
 
-/** @internal */
-export const GetBypassIpPagination$outboundSchema: z.ZodType<
-  GetBypassIpPagination$Outbound,
-  z.ZodTypeDef,
-  GetBypassIpPagination
-> = z.object({
-  ownerId: z.string(),
-  id: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    ownerId: "OwnerId",
-    id: "Id",
-  });
-});
-
-export function getBypassIpPaginationToJSON(
-  getBypassIpPagination: GetBypassIpPagination,
-): string {
-  return JSON.stringify(
-    GetBypassIpPagination$outboundSchema.parse(getBypassIpPagination),
-  );
-}
 export function getBypassIpPaginationFromJSON(
   jsonString: string,
 ): SafeParseResult<GetBypassIpPagination, SDKValidationError> {
@@ -314,29 +196,7 @@ export const GetBypassIpResponseBody$inboundSchema: z.ZodType<
   result: z.array(z.lazy(() => GetBypassIpResult$inboundSchema)),
   pagination: types.optional(z.lazy(() => GetBypassIpPagination$inboundSchema)),
 });
-/** @internal */
-export type GetBypassIpResponseBody$Outbound = {
-  result: Array<GetBypassIpResult$Outbound>;
-  pagination?: GetBypassIpPagination$Outbound | undefined;
-};
 
-/** @internal */
-export const GetBypassIpResponseBody$outboundSchema: z.ZodType<
-  GetBypassIpResponseBody$Outbound,
-  z.ZodTypeDef,
-  GetBypassIpResponseBody
-> = z.object({
-  result: z.array(z.lazy(() => GetBypassIpResult$outboundSchema)),
-  pagination: z.lazy(() => GetBypassIpPagination$outboundSchema).optional(),
-});
-
-export function getBypassIpResponseBodyToJSON(
-  getBypassIpResponseBody: GetBypassIpResponseBody,
-): string {
-  return JSON.stringify(
-    GetBypassIpResponseBody$outboundSchema.parse(getBypassIpResponseBody),
-  );
-}
 export function getBypassIpResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetBypassIpResponseBody, SDKValidationError> {

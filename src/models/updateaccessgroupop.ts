@@ -111,23 +111,10 @@ export type UpdateAccessGroupResponseBody = {
 };
 
 /** @internal */
-export const UpdateAccessGroupRole$inboundSchema: z.ZodNativeEnum<
-  typeof UpdateAccessGroupRole
-> = z.nativeEnum(UpdateAccessGroupRole);
-/** @internal */
 export const UpdateAccessGroupRole$outboundSchema: z.ZodNativeEnum<
   typeof UpdateAccessGroupRole
-> = UpdateAccessGroupRole$inboundSchema;
+> = z.nativeEnum(UpdateAccessGroupRole);
 
-/** @internal */
-export const UpdateAccessGroupProjects$inboundSchema: z.ZodType<
-  UpdateAccessGroupProjects,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  projectId: types.string(),
-  role: types.nullable(UpdateAccessGroupRole$inboundSchema),
-});
 /** @internal */
 export type UpdateAccessGroupProjects$Outbound = {
   projectId: string;
@@ -151,29 +138,7 @@ export function updateAccessGroupProjectsToJSON(
     UpdateAccessGroupProjects$outboundSchema.parse(updateAccessGroupProjects),
   );
 }
-export function updateAccessGroupProjectsFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateAccessGroupProjects, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateAccessGroupProjects$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateAccessGroupProjects' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateAccessGroupRequestBody$inboundSchema: z.ZodType<
-  UpdateAccessGroupRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  name: types.optional(types.string()),
-  projects: types.optional(
-    z.array(z.lazy(() => UpdateAccessGroupProjects$inboundSchema)),
-  ),
-  membersToAdd: types.optional(z.array(types.string())),
-  membersToRemove: types.optional(z.array(types.string())),
-});
 /** @internal */
 export type UpdateAccessGroupRequestBody$Outbound = {
   name?: string | undefined;
@@ -204,31 +169,7 @@ export function updateAccessGroupRequestBodyToJSON(
     ),
   );
 }
-export function updateAccessGroupRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateAccessGroupRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateAccessGroupRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateAccessGroupRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateAccessGroupRequest$inboundSchema: z.ZodType<
-  UpdateAccessGroupRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  idOrName: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-  RequestBody: z.lazy(() => UpdateAccessGroupRequestBody$inboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 /** @internal */
 export type UpdateAccessGroupRequest$Outbound = {
   idOrName: string;
@@ -260,24 +201,11 @@ export function updateAccessGroupRequestToJSON(
     UpdateAccessGroupRequest$outboundSchema.parse(updateAccessGroupRequest),
   );
 }
-export function updateAccessGroupRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateAccessGroupRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateAccessGroupRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateAccessGroupRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const UpdateAccessGroupEntitlements$inboundSchema: z.ZodNativeEnum<
   typeof UpdateAccessGroupEntitlements
 > = z.nativeEnum(UpdateAccessGroupEntitlements);
-/** @internal */
-export const UpdateAccessGroupEntitlements$outboundSchema: z.ZodNativeEnum<
-  typeof UpdateAccessGroupEntitlements
-> = UpdateAccessGroupEntitlements$inboundSchema;
 
 /** @internal */
 export const UpdateAccessGroupResponseBody$inboundSchema: z.ZodType<
@@ -296,47 +224,7 @@ export const UpdateAccessGroupResponseBody$inboundSchema: z.ZodType<
   teamRoles: types.optional(z.array(types.string())),
   teamPermissions: types.optional(z.array(types.string())),
 });
-/** @internal */
-export type UpdateAccessGroupResponseBody$Outbound = {
-  entitlements: Array<string>;
-  name: string;
-  createdAt: string;
-  teamId: string;
-  updatedAt: string;
-  accessGroupId: string;
-  membersCount: number;
-  projectsCount: number;
-  teamRoles?: Array<string> | undefined;
-  teamPermissions?: Array<string> | undefined;
-};
 
-/** @internal */
-export const UpdateAccessGroupResponseBody$outboundSchema: z.ZodType<
-  UpdateAccessGroupResponseBody$Outbound,
-  z.ZodTypeDef,
-  UpdateAccessGroupResponseBody
-> = z.object({
-  entitlements: z.array(UpdateAccessGroupEntitlements$outboundSchema),
-  name: z.string(),
-  createdAt: z.string(),
-  teamId: z.string(),
-  updatedAt: z.string(),
-  accessGroupId: z.string(),
-  membersCount: z.number(),
-  projectsCount: z.number(),
-  teamRoles: z.array(z.string()).optional(),
-  teamPermissions: z.array(z.string()).optional(),
-});
-
-export function updateAccessGroupResponseBodyToJSON(
-  updateAccessGroupResponseBody: UpdateAccessGroupResponseBody,
-): string {
-  return JSON.stringify(
-    UpdateAccessGroupResponseBody$outboundSchema.parse(
-      updateAccessGroupResponseBody,
-    ),
-  );
-}
 export function updateAccessGroupResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateAccessGroupResponseBody, SDKValidationError> {

@@ -4,10 +4,6 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
-import { Result as SafeParseResult } from "../types/fp.js";
-import * as types from "../types/primitives.js";
-import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
  * A map of environments to override values for the secret, used for setting different values across deployments in production, preview, and development environments. Note: the same value will be used for all deployments in the given environment.
@@ -53,16 +49,6 @@ export type UpdateResourceSecretsRequest = {
 };
 
 /** @internal */
-export const UpdateResourceSecretsEnvironmentOverrides$inboundSchema: z.ZodType<
-  UpdateResourceSecretsEnvironmentOverrides,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  development: types.optional(types.string()),
-  preview: types.optional(types.string()),
-  production: types.optional(types.string()),
-});
-/** @internal */
 export type UpdateResourceSecretsEnvironmentOverrides$Outbound = {
   development?: string | undefined;
   preview?: string | undefined;
@@ -91,35 +77,7 @@ export function updateResourceSecretsEnvironmentOverridesToJSON(
     ),
   );
 }
-export function updateResourceSecretsEnvironmentOverridesFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  UpdateResourceSecretsEnvironmentOverrides,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      UpdateResourceSecretsEnvironmentOverrides$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'UpdateResourceSecretsEnvironmentOverrides' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateResourceSecretsSecrets$inboundSchema: z.ZodType<
-  UpdateResourceSecretsSecrets,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  name: types.string(),
-  value: types.string(),
-  prefix: types.optional(types.string()),
-  environmentOverrides: types.optional(
-    z.lazy(() => UpdateResourceSecretsEnvironmentOverrides$inboundSchema),
-  ),
-});
 /** @internal */
 export type UpdateResourceSecretsSecrets$Outbound = {
   name: string;
@@ -153,25 +111,7 @@ export function updateResourceSecretsSecretsToJSON(
     ),
   );
 }
-export function updateResourceSecretsSecretsFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateResourceSecretsSecrets, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateResourceSecretsSecrets$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateResourceSecretsSecrets' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateResourceSecretsRequestBody$inboundSchema: z.ZodType<
-  UpdateResourceSecretsRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  secrets: z.array(z.lazy(() => UpdateResourceSecretsSecrets$inboundSchema)),
-  partial: types.optional(types.boolean()),
-});
 /** @internal */
 export type UpdateResourceSecretsRequestBody$Outbound = {
   secrets: Array<UpdateResourceSecretsSecrets$Outbound>;
@@ -197,31 +137,7 @@ export function updateResourceSecretsRequestBodyToJSON(
     ),
   );
 }
-export function updateResourceSecretsRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateResourceSecretsRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateResourceSecretsRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateResourceSecretsRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateResourceSecretsRequest$inboundSchema: z.ZodType<
-  UpdateResourceSecretsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  integrationConfigurationId: types.string(),
-  integrationProductIdOrSlug: types.string(),
-  resourceId: types.string(),
-  RequestBody: z.lazy(() => UpdateResourceSecretsRequestBody$inboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 /** @internal */
 export type UpdateResourceSecretsRequest$Outbound = {
   integrationConfigurationId: string;
@@ -253,14 +169,5 @@ export function updateResourceSecretsRequestToJSON(
     UpdateResourceSecretsRequest$outboundSchema.parse(
       updateResourceSecretsRequest,
     ),
-  );
-}
-export function updateResourceSecretsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateResourceSecretsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateResourceSecretsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateResourceSecretsRequest' from JSON`,
   );
 }

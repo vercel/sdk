@@ -42,17 +42,6 @@ export type ReadAccessGroupProjectResponseBody = {
 };
 
 /** @internal */
-export const ReadAccessGroupProjectRequest$inboundSchema: z.ZodType<
-  ReadAccessGroupProjectRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  accessGroupIdOrName: types.string(),
-  projectId: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
-/** @internal */
 export type ReadAccessGroupProjectRequest$Outbound = {
   accessGroupIdOrName: string;
   projectId: string;
@@ -81,24 +70,11 @@ export function readAccessGroupProjectRequestToJSON(
     ),
   );
 }
-export function readAccessGroupProjectRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<ReadAccessGroupProjectRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ReadAccessGroupProjectRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ReadAccessGroupProjectRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const ReadAccessGroupProjectRole$inboundSchema: z.ZodNativeEnum<
   typeof ReadAccessGroupProjectRole
 > = z.nativeEnum(ReadAccessGroupProjectRole);
-/** @internal */
-export const ReadAccessGroupProjectRole$outboundSchema: z.ZodNativeEnum<
-  typeof ReadAccessGroupProjectRole
-> = ReadAccessGroupProjectRole$inboundSchema;
 
 /** @internal */
 export const ReadAccessGroupProjectResponseBody$inboundSchema: z.ZodType<
@@ -113,39 +89,7 @@ export const ReadAccessGroupProjectResponseBody$inboundSchema: z.ZodType<
   createdAt: types.string(),
   updatedAt: types.string(),
 });
-/** @internal */
-export type ReadAccessGroupProjectResponseBody$Outbound = {
-  teamId: string;
-  accessGroupId: string;
-  projectId: string;
-  role: string;
-  createdAt: string;
-  updatedAt: string;
-};
 
-/** @internal */
-export const ReadAccessGroupProjectResponseBody$outboundSchema: z.ZodType<
-  ReadAccessGroupProjectResponseBody$Outbound,
-  z.ZodTypeDef,
-  ReadAccessGroupProjectResponseBody
-> = z.object({
-  teamId: z.string(),
-  accessGroupId: z.string(),
-  projectId: z.string(),
-  role: ReadAccessGroupProjectRole$outboundSchema,
-  createdAt: z.string(),
-  updatedAt: z.string(),
-});
-
-export function readAccessGroupProjectResponseBodyToJSON(
-  readAccessGroupProjectResponseBody: ReadAccessGroupProjectResponseBody,
-): string {
-  return JSON.stringify(
-    ReadAccessGroupProjectResponseBody$outboundSchema.parse(
-      readAccessGroupProjectResponseBody,
-    ),
-  );
-}
 export function readAccessGroupProjectResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<ReadAccessGroupProjectResponseBody, SDKValidationError> {

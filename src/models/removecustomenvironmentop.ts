@@ -157,14 +157,6 @@ export type RemoveCustomEnvironmentResponseBody = {
 };
 
 /** @internal */
-export const RemoveCustomEnvironmentRequestBody$inboundSchema: z.ZodType<
-  RemoveCustomEnvironmentRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  deleteUnassignedEnvironmentVariables: types.optional(types.boolean()),
-});
-/** @internal */
 export type RemoveCustomEnvironmentRequestBody$Outbound = {
   deleteUnassignedEnvironmentVariables?: boolean | undefined;
 };
@@ -187,35 +179,7 @@ export function removeCustomEnvironmentRequestBodyToJSON(
     ),
   );
 }
-export function removeCustomEnvironmentRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<RemoveCustomEnvironmentRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      RemoveCustomEnvironmentRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RemoveCustomEnvironmentRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const RemoveCustomEnvironmentRequest$inboundSchema: z.ZodType<
-  RemoveCustomEnvironmentRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  idOrName: types.string(),
-  environmentSlugOrId: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-  RequestBody: types.optional(
-    z.lazy(() => RemoveCustomEnvironmentRequestBody$inboundSchema),
-  ),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 /** @internal */
 export type RemoveCustomEnvironmentRequest$Outbound = {
   idOrName: string;
@@ -252,34 +216,17 @@ export function removeCustomEnvironmentRequestToJSON(
     ),
   );
 }
-export function removeCustomEnvironmentRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<RemoveCustomEnvironmentRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RemoveCustomEnvironmentRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RemoveCustomEnvironmentRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const RemoveCustomEnvironmentType$inboundSchema: z.ZodNativeEnum<
   typeof RemoveCustomEnvironmentType
 > = z.nativeEnum(RemoveCustomEnvironmentType);
-/** @internal */
-export const RemoveCustomEnvironmentType$outboundSchema: z.ZodNativeEnum<
-  typeof RemoveCustomEnvironmentType
-> = RemoveCustomEnvironmentType$inboundSchema;
 
 /** @internal */
 export const RemoveCustomEnvironmentEnvironmentType$inboundSchema:
   z.ZodNativeEnum<typeof RemoveCustomEnvironmentEnvironmentType> = z.nativeEnum(
     RemoveCustomEnvironmentEnvironmentType,
   );
-/** @internal */
-export const RemoveCustomEnvironmentEnvironmentType$outboundSchema:
-  z.ZodNativeEnum<typeof RemoveCustomEnvironmentEnvironmentType> =
-    RemoveCustomEnvironmentEnvironmentType$inboundSchema;
 
 /** @internal */
 export const RemoveCustomEnvironmentBranchMatcher$inboundSchema: z.ZodType<
@@ -290,31 +237,7 @@ export const RemoveCustomEnvironmentBranchMatcher$inboundSchema: z.ZodType<
   type: RemoveCustomEnvironmentEnvironmentType$inboundSchema,
   pattern: types.string(),
 });
-/** @internal */
-export type RemoveCustomEnvironmentBranchMatcher$Outbound = {
-  type: string;
-  pattern: string;
-};
 
-/** @internal */
-export const RemoveCustomEnvironmentBranchMatcher$outboundSchema: z.ZodType<
-  RemoveCustomEnvironmentBranchMatcher$Outbound,
-  z.ZodTypeDef,
-  RemoveCustomEnvironmentBranchMatcher
-> = z.object({
-  type: RemoveCustomEnvironmentEnvironmentType$outboundSchema,
-  pattern: z.string(),
-});
-
-export function removeCustomEnvironmentBranchMatcherToJSON(
-  removeCustomEnvironmentBranchMatcher: RemoveCustomEnvironmentBranchMatcher,
-): string {
-  return JSON.stringify(
-    RemoveCustomEnvironmentBranchMatcher$outboundSchema.parse(
-      removeCustomEnvironmentBranchMatcher,
-    ),
-  );
-}
 export function removeCustomEnvironmentBranchMatcherFromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveCustomEnvironmentBranchMatcher, SDKValidationError> {
@@ -337,35 +260,7 @@ export const RemoveCustomEnvironmentVerification$inboundSchema: z.ZodType<
   value: types.string(),
   reason: types.string(),
 });
-/** @internal */
-export type RemoveCustomEnvironmentVerification$Outbound = {
-  type: string;
-  domain: string;
-  value: string;
-  reason: string;
-};
 
-/** @internal */
-export const RemoveCustomEnvironmentVerification$outboundSchema: z.ZodType<
-  RemoveCustomEnvironmentVerification$Outbound,
-  z.ZodTypeDef,
-  RemoveCustomEnvironmentVerification
-> = z.object({
-  type: z.string(),
-  domain: z.string(),
-  value: z.string(),
-  reason: z.string(),
-});
-
-export function removeCustomEnvironmentVerificationToJSON(
-  removeCustomEnvironmentVerification: RemoveCustomEnvironmentVerification,
-): string {
-  return JSON.stringify(
-    RemoveCustomEnvironmentVerification$outboundSchema.parse(
-      removeCustomEnvironmentVerification,
-    ),
-  );
-}
 export function removeCustomEnvironmentVerificationFromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveCustomEnvironmentVerification, SDKValidationError> {
@@ -397,53 +292,7 @@ export const RemoveCustomEnvironmentDomains$inboundSchema: z.ZodType<
     z.array(z.lazy(() => RemoveCustomEnvironmentVerification$inboundSchema)),
   ),
 });
-/** @internal */
-export type RemoveCustomEnvironmentDomains$Outbound = {
-  name: string;
-  apexName: string;
-  projectId: string;
-  redirect?: string | null | undefined;
-  redirectStatusCode?: number | null | undefined;
-  gitBranch?: string | null | undefined;
-  customEnvironmentId?: string | null | undefined;
-  updatedAt?: number | undefined;
-  createdAt?: number | undefined;
-  verified: boolean;
-  verification?:
-    | Array<RemoveCustomEnvironmentVerification$Outbound>
-    | undefined;
-};
 
-/** @internal */
-export const RemoveCustomEnvironmentDomains$outboundSchema: z.ZodType<
-  RemoveCustomEnvironmentDomains$Outbound,
-  z.ZodTypeDef,
-  RemoveCustomEnvironmentDomains
-> = z.object({
-  name: z.string(),
-  apexName: z.string(),
-  projectId: z.string(),
-  redirect: z.nullable(z.string()).optional(),
-  redirectStatusCode: z.nullable(z.number()).optional(),
-  gitBranch: z.nullable(z.string()).optional(),
-  customEnvironmentId: z.nullable(z.string()).optional(),
-  updatedAt: z.number().optional(),
-  createdAt: z.number().optional(),
-  verified: z.boolean(),
-  verification: z.array(
-    z.lazy(() => RemoveCustomEnvironmentVerification$outboundSchema),
-  ).optional(),
-});
-
-export function removeCustomEnvironmentDomainsToJSON(
-  removeCustomEnvironmentDomains: RemoveCustomEnvironmentDomains,
-): string {
-  return JSON.stringify(
-    RemoveCustomEnvironmentDomains$outboundSchema.parse(
-      removeCustomEnvironmentDomains,
-    ),
-  );
-}
 export function removeCustomEnvironmentDomainsFromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveCustomEnvironmentDomains, SDKValidationError> {
@@ -474,48 +323,7 @@ export const RemoveCustomEnvironmentResponseBody$inboundSchema: z.ZodType<
   createdAt: types.number(),
   updatedAt: types.number(),
 });
-/** @internal */
-export type RemoveCustomEnvironmentResponseBody$Outbound = {
-  id: string;
-  slug: string;
-  type: string;
-  description?: string | undefined;
-  branchMatcher?: RemoveCustomEnvironmentBranchMatcher$Outbound | undefined;
-  domains?: Array<RemoveCustomEnvironmentDomains$Outbound> | undefined;
-  currentDeploymentAliases?: Array<string> | undefined;
-  createdAt: number;
-  updatedAt: number;
-};
 
-/** @internal */
-export const RemoveCustomEnvironmentResponseBody$outboundSchema: z.ZodType<
-  RemoveCustomEnvironmentResponseBody$Outbound,
-  z.ZodTypeDef,
-  RemoveCustomEnvironmentResponseBody
-> = z.object({
-  id: z.string(),
-  slug: z.string(),
-  type: RemoveCustomEnvironmentType$outboundSchema,
-  description: z.string().optional(),
-  branchMatcher: z.lazy(() =>
-    RemoveCustomEnvironmentBranchMatcher$outboundSchema
-  ).optional(),
-  domains: z.array(z.lazy(() => RemoveCustomEnvironmentDomains$outboundSchema))
-    .optional(),
-  currentDeploymentAliases: z.array(z.string()).optional(),
-  createdAt: z.number(),
-  updatedAt: z.number(),
-});
-
-export function removeCustomEnvironmentResponseBodyToJSON(
-  removeCustomEnvironmentResponseBody: RemoveCustomEnvironmentResponseBody,
-): string {
-  return JSON.stringify(
-    RemoveCustomEnvironmentResponseBody$outboundSchema.parse(
-      removeCustomEnvironmentResponseBody,
-    ),
-  );
-}
 export function removeCustomEnvironmentResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveCustomEnvironmentResponseBody, SDKValidationError> {

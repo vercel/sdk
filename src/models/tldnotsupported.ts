@@ -49,10 +49,6 @@ export class TldNotSupported extends VercelError {
 export const TldNotSupportedCode$inboundSchema: z.ZodNativeEnum<
   typeof TldNotSupportedCode
 > = z.nativeEnum(TldNotSupportedCode);
-/** @internal */
-export const TldNotSupportedCode$outboundSchema: z.ZodNativeEnum<
-  typeof TldNotSupportedCode
-> = TldNotSupportedCode$inboundSchema;
 
 /** @internal */
 export const TldNotSupported$inboundSchema: z.ZodType<
@@ -74,23 +70,3 @@ export const TldNotSupported$inboundSchema: z.ZodType<
       body: v.body$,
     });
   });
-
-/** @internal */
-export type TldNotSupported$Outbound = {
-  status: number;
-  code: string;
-  message: string;
-};
-
-/** @internal */
-export const TldNotSupported$outboundSchema: z.ZodType<
-  TldNotSupported$Outbound,
-  z.ZodTypeDef,
-  TldNotSupported
-> = z.instanceof(TldNotSupported)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    status: z.number(),
-    code: TldNotSupportedCode$outboundSchema,
-    message: z.string(),
-  }));

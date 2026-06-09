@@ -49,10 +49,6 @@ export class TooManyDomains extends VercelError {
 export const TooManyDomainsCode$inboundSchema: z.ZodNativeEnum<
   typeof TooManyDomainsCode
 > = z.nativeEnum(TooManyDomainsCode);
-/** @internal */
-export const TooManyDomainsCode$outboundSchema: z.ZodNativeEnum<
-  typeof TooManyDomainsCode
-> = TooManyDomainsCode$inboundSchema;
 
 /** @internal */
 export const TooManyDomains$inboundSchema: z.ZodType<
@@ -74,23 +70,3 @@ export const TooManyDomains$inboundSchema: z.ZodType<
       body: v.body$,
     });
   });
-
-/** @internal */
-export type TooManyDomains$Outbound = {
-  status: number;
-  code: string;
-  message: string;
-};
-
-/** @internal */
-export const TooManyDomains$outboundSchema: z.ZodType<
-  TooManyDomains$Outbound,
-  z.ZodTypeDef,
-  TooManyDomains
-> = z.instanceof(TooManyDomains)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    status: z.number(),
-    code: TooManyDomainsCode$outboundSchema,
-    message: z.string(),
-  }));

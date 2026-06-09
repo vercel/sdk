@@ -312,22 +312,9 @@ export type CreateWebhookResponseBody = {
 };
 
 /** @internal */
-export const Events$inboundSchema: z.ZodNativeEnum<typeof Events> = z
+export const Events$outboundSchema: z.ZodNativeEnum<typeof Events> = z
   .nativeEnum(Events);
-/** @internal */
-export const Events$outboundSchema: z.ZodNativeEnum<typeof Events> =
-  Events$inboundSchema;
 
-/** @internal */
-export const CreateWebhookRequestBody$inboundSchema: z.ZodType<
-  CreateWebhookRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  url: types.string(),
-  events: z.array(Events$inboundSchema),
-  projectIds: types.optional(z.array(types.string())),
-});
 /** @internal */
 export type CreateWebhookRequestBody$Outbound = {
   url: string;
@@ -353,30 +340,7 @@ export function createWebhookRequestBodyToJSON(
     CreateWebhookRequestBody$outboundSchema.parse(createWebhookRequestBody),
   );
 }
-export function createWebhookRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateWebhookRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateWebhookRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateWebhookRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const CreateWebhookRequest$inboundSchema: z.ZodType<
-  CreateWebhookRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-  RequestBody: z.lazy(() => CreateWebhookRequestBody$inboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 /** @internal */
 export type CreateWebhookRequest$Outbound = {
   teamId?: string | undefined;
@@ -406,24 +370,11 @@ export function createWebhookRequestToJSON(
     CreateWebhookRequest$outboundSchema.parse(createWebhookRequest),
   );
 }
-export function createWebhookRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateWebhookRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateWebhookRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateWebhookRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const CreateWebhookEvents$inboundSchema: z.ZodNativeEnum<
   typeof CreateWebhookEvents
 > = z.nativeEnum(CreateWebhookEvents);
-/** @internal */
-export const CreateWebhookEvents$outboundSchema: z.ZodNativeEnum<
-  typeof CreateWebhookEvents
-> = CreateWebhookEvents$inboundSchema;
 
 /** @internal */
 export const CreateWebhookResponseBody$inboundSchema: z.ZodType<
@@ -440,41 +391,7 @@ export const CreateWebhookResponseBody$inboundSchema: z.ZodType<
   updatedAt: types.number(),
   projectIds: types.optional(z.array(types.string())),
 });
-/** @internal */
-export type CreateWebhookResponseBody$Outbound = {
-  secret: string;
-  events: Array<string>;
-  id: string;
-  url: string;
-  ownerId: string;
-  createdAt: number;
-  updatedAt: number;
-  projectIds?: Array<string> | undefined;
-};
 
-/** @internal */
-export const CreateWebhookResponseBody$outboundSchema: z.ZodType<
-  CreateWebhookResponseBody$Outbound,
-  z.ZodTypeDef,
-  CreateWebhookResponseBody
-> = z.object({
-  secret: z.string(),
-  events: z.array(CreateWebhookEvents$outboundSchema),
-  id: z.string(),
-  url: z.string(),
-  ownerId: z.string(),
-  createdAt: z.number(),
-  updatedAt: z.number(),
-  projectIds: z.array(z.string()).optional(),
-});
-
-export function createWebhookResponseBodyToJSON(
-  createWebhookResponseBody: CreateWebhookResponseBody,
-): string {
-  return JSON.stringify(
-    CreateWebhookResponseBody$outboundSchema.parse(createWebhookResponseBody),
-  );
-}
 export function createWebhookResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateWebhookResponseBody, SDKValidationError> {

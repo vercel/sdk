@@ -86,20 +86,6 @@ export type EditRedirectResponseBody = {
 };
 
 /** @internal */
-export const Redirect$inboundSchema: z.ZodType<
-  Redirect,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  source: types.string(),
-  destination: types.optional(types.string()),
-  statusCode: types.optional(types.number()),
-  permanent: types.optional(types.boolean()),
-  caseSensitive: types.optional(types.boolean()),
-  query: types.optional(types.boolean()),
-  preserveQueryParams: types.optional(types.boolean()),
-});
-/** @internal */
 export type Redirect$Outbound = {
   source: string;
   destination?: string | undefined;
@@ -128,26 +114,7 @@ export const Redirect$outboundSchema: z.ZodType<
 export function redirectToJSON(redirect: Redirect): string {
   return JSON.stringify(Redirect$outboundSchema.parse(redirect));
 }
-export function redirectFromJSON(
-  jsonString: string,
-): SafeParseResult<Redirect, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Redirect$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Redirect' from JSON`,
-  );
-}
 
-/** @internal */
-export const EditRedirectRequestBody$inboundSchema: z.ZodType<
-  EditRedirectRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  name: types.optional(types.string()),
-  redirect: z.lazy(() => Redirect$inboundSchema),
-  restore: types.optional(types.boolean()),
-});
 /** @internal */
 export type EditRedirectRequestBody$Outbound = {
   name?: string | undefined;
@@ -173,33 +140,7 @@ export function editRedirectRequestBodyToJSON(
     EditRedirectRequestBody$outboundSchema.parse(editRedirectRequestBody),
   );
 }
-export function editRedirectRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<EditRedirectRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => EditRedirectRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'EditRedirectRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const EditRedirectRequest$inboundSchema: z.ZodType<
-  EditRedirectRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  projectId: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-  RequestBody: types.optional(
-    z.lazy(() => EditRedirectRequestBody$inboundSchema),
-  ),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 /** @internal */
 export type EditRedirectRequest$Outbound = {
   projectId: string;
@@ -231,15 +172,6 @@ export function editRedirectRequestToJSON(
     EditRedirectRequest$outboundSchema.parse(editRedirectRequest),
   );
 }
-export function editRedirectRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<EditRedirectRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => EditRedirectRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'EditRedirectRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const EditRedirectVersion$inboundSchema: z.ZodType<
@@ -257,43 +189,7 @@ export const EditRedirectVersion$inboundSchema: z.ZodType<
   redirectCount: types.optional(types.number()),
   alias: types.optional(types.string()),
 });
-/** @internal */
-export type EditRedirectVersion$Outbound = {
-  id: string;
-  key: string;
-  lastModified: number;
-  createdBy: string;
-  name?: string | undefined;
-  isStaging?: boolean | undefined;
-  isLive?: boolean | undefined;
-  redirectCount?: number | undefined;
-  alias?: string | undefined;
-};
 
-/** @internal */
-export const EditRedirectVersion$outboundSchema: z.ZodType<
-  EditRedirectVersion$Outbound,
-  z.ZodTypeDef,
-  EditRedirectVersion
-> = z.object({
-  id: z.string(),
-  key: z.string(),
-  lastModified: z.number(),
-  createdBy: z.string(),
-  name: z.string().optional(),
-  isStaging: z.boolean().optional(),
-  isLive: z.boolean().optional(),
-  redirectCount: z.number().optional(),
-  alias: z.string().optional(),
-});
-
-export function editRedirectVersionToJSON(
-  editRedirectVersion: EditRedirectVersion,
-): string {
-  return JSON.stringify(
-    EditRedirectVersion$outboundSchema.parse(editRedirectVersion),
-  );
-}
 export function editRedirectVersionFromJSON(
   jsonString: string,
 ): SafeParseResult<EditRedirectVersion, SDKValidationError> {
@@ -313,29 +209,7 @@ export const EditRedirectResponseBody$inboundSchema: z.ZodType<
   alias: types.nullable(types.string()),
   version: z.lazy(() => EditRedirectVersion$inboundSchema),
 });
-/** @internal */
-export type EditRedirectResponseBody$Outbound = {
-  alias: string | null;
-  version: EditRedirectVersion$Outbound;
-};
 
-/** @internal */
-export const EditRedirectResponseBody$outboundSchema: z.ZodType<
-  EditRedirectResponseBody$Outbound,
-  z.ZodTypeDef,
-  EditRedirectResponseBody
-> = z.object({
-  alias: z.nullable(z.string()),
-  version: z.lazy(() => EditRedirectVersion$outboundSchema),
-});
-
-export function editRedirectResponseBodyToJSON(
-  editRedirectResponseBody: EditRedirectResponseBody,
-): string {
-  return JSON.stringify(
-    EditRedirectResponseBody$outboundSchema.parse(editRedirectResponseBody),
-  );
-}
 export function editRedirectResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<EditRedirectResponseBody, SDKValidationError> {

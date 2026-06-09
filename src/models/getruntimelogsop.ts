@@ -55,17 +55,6 @@ export type GetRuntimeLogsResponseBody = {
 };
 
 /** @internal */
-export const GetRuntimeLogsRequest$inboundSchema: z.ZodType<
-  GetRuntimeLogsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  projectId: types.string(),
-  deploymentId: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
-/** @internal */
 export type GetRuntimeLogsRequest$Outbound = {
   projectId: string;
   deploymentId: string;
@@ -92,33 +81,16 @@ export function getRuntimeLogsRequestToJSON(
     GetRuntimeLogsRequest$outboundSchema.parse(getRuntimeLogsRequest),
   );
 }
-export function getRuntimeLogsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetRuntimeLogsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetRuntimeLogsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetRuntimeLogsRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const GetRuntimeLogsLevel$inboundSchema: z.ZodNativeEnum<
   typeof GetRuntimeLogsLevel
 > = z.nativeEnum(GetRuntimeLogsLevel);
-/** @internal */
-export const GetRuntimeLogsLevel$outboundSchema: z.ZodNativeEnum<
-  typeof GetRuntimeLogsLevel
-> = GetRuntimeLogsLevel$inboundSchema;
 
 /** @internal */
 export const GetRuntimeLogsSource$inboundSchema: z.ZodNativeEnum<
   typeof GetRuntimeLogsSource
 > = z.nativeEnum(GetRuntimeLogsSource);
-/** @internal */
-export const GetRuntimeLogsSource$outboundSchema: z.ZodNativeEnum<
-  typeof GetRuntimeLogsSource
-> = GetRuntimeLogsSource$inboundSchema;
 
 /** @internal */
 export const GetRuntimeLogsResponseBody$inboundSchema: z.ZodType<
@@ -137,45 +109,7 @@ export const GetRuntimeLogsResponseBody$inboundSchema: z.ZodType<
   requestPath: types.string(),
   responseStatusCode: types.number(),
 });
-/** @internal */
-export type GetRuntimeLogsResponseBody$Outbound = {
-  level: string;
-  message: string;
-  rowId: string;
-  source: string;
-  timestampInMs: number;
-  domain: string;
-  messageTruncated: boolean;
-  requestMethod: string;
-  requestPath: string;
-  responseStatusCode: number;
-};
 
-/** @internal */
-export const GetRuntimeLogsResponseBody$outboundSchema: z.ZodType<
-  GetRuntimeLogsResponseBody$Outbound,
-  z.ZodTypeDef,
-  GetRuntimeLogsResponseBody
-> = z.object({
-  level: GetRuntimeLogsLevel$outboundSchema,
-  message: z.string(),
-  rowId: z.string(),
-  source: GetRuntimeLogsSource$outboundSchema,
-  timestampInMs: z.number(),
-  domain: z.string(),
-  messageTruncated: z.boolean(),
-  requestMethod: z.string(),
-  requestPath: z.string(),
-  responseStatusCode: z.number(),
-});
-
-export function getRuntimeLogsResponseBodyToJSON(
-  getRuntimeLogsResponseBody: GetRuntimeLogsResponseBody,
-): string {
-  return JSON.stringify(
-    GetRuntimeLogsResponseBody$outboundSchema.parse(getRuntimeLogsResponseBody),
-  );
-}
 export function getRuntimeLogsResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetRuntimeLogsResponseBody, SDKValidationError> {

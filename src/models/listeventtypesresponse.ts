@@ -7,12 +7,7 @@ import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
-import {
-  ListEventType,
-  ListEventType$inboundSchema,
-  ListEventType$Outbound,
-  ListEventType$outboundSchema,
-} from "./listeventtype.js";
+import { ListEventType, ListEventType$inboundSchema } from "./listeventtype.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export const ListEventTypesResponseName = {
@@ -60,10 +55,6 @@ export type ListEventTypesResponse = {
 export const ListEventTypesResponseName$inboundSchema: z.ZodNativeEnum<
   typeof ListEventTypesResponseName
 > = z.nativeEnum(ListEventTypesResponseName);
-/** @internal */
-export const ListEventTypesResponseName$outboundSchema: z.ZodNativeEnum<
-  typeof ListEventTypesResponseName
-> = ListEventTypesResponseName$inboundSchema;
 
 /** @internal */
 export const ListEventTypesResponseCategories$inboundSchema: z.ZodType<
@@ -74,31 +65,7 @@ export const ListEventTypesResponseCategories$inboundSchema: z.ZodType<
   name: ListEventTypesResponseName$inboundSchema,
   label: types.string(),
 });
-/** @internal */
-export type ListEventTypesResponseCategories$Outbound = {
-  name: string;
-  label: string;
-};
 
-/** @internal */
-export const ListEventTypesResponseCategories$outboundSchema: z.ZodType<
-  ListEventTypesResponseCategories$Outbound,
-  z.ZodTypeDef,
-  ListEventTypesResponseCategories
-> = z.object({
-  name: ListEventTypesResponseName$outboundSchema,
-  label: z.string(),
-});
-
-export function listEventTypesResponseCategoriesToJSON(
-  listEventTypesResponseCategories: ListEventTypesResponseCategories,
-): string {
-  return JSON.stringify(
-    ListEventTypesResponseCategories$outboundSchema.parse(
-      listEventTypesResponseCategories,
-    ),
-  );
-}
 export function listEventTypesResponseCategoriesFromJSON(
   jsonString: string,
 ): SafeParseResult<ListEventTypesResponseCategories, SDKValidationError> {
@@ -120,31 +87,7 @@ export const ListEventTypesResponse$inboundSchema: z.ZodType<
     z.lazy(() => ListEventTypesResponseCategories$inboundSchema),
   ),
 });
-/** @internal */
-export type ListEventTypesResponse$Outbound = {
-  types: Array<ListEventType$Outbound>;
-  categories: Array<ListEventTypesResponseCategories$Outbound>;
-};
 
-/** @internal */
-export const ListEventTypesResponse$outboundSchema: z.ZodType<
-  ListEventTypesResponse$Outbound,
-  z.ZodTypeDef,
-  ListEventTypesResponse
-> = z.object({
-  types: z.array(ListEventType$outboundSchema),
-  categories: z.array(
-    z.lazy(() => ListEventTypesResponseCategories$outboundSchema),
-  ),
-});
-
-export function listEventTypesResponseToJSON(
-  listEventTypesResponse: ListEventTypesResponse,
-): string {
-  return JSON.stringify(
-    ListEventTypesResponse$outboundSchema.parse(listEventTypesResponse),
-  );
-}
 export function listEventTypesResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<ListEventTypesResponse, SDKValidationError> {

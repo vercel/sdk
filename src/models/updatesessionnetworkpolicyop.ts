@@ -7,15 +7,9 @@ import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
-import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
-import {
-  Session,
-  Session$inboundSchema,
-  Session$Outbound,
-  Session$outboundSchema,
-} from "./session.js";
+import { Session, Session$inboundSchema } from "./session.js";
 
 /**
  * Match on the request path. Comparison is case-sensitive.
@@ -367,15 +361,6 @@ export type UpdateSessionNetworkPolicyResponseBody = {
 };
 
 /** @internal */
-export const UpdateSessionNetworkPolicyAllowPath$inboundSchema: z.ZodType<
-  UpdateSessionNetworkPolicyAllowPath,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  exact: types.optional(types.string()),
-  startsWith: types.optional(types.string()),
-});
-/** @internal */
 export type UpdateSessionNetworkPolicyAllowPath$Outbound = {
   exact?: string | undefined;
   startsWith?: string | undefined;
@@ -400,26 +385,7 @@ export function updateSessionNetworkPolicyAllowPathToJSON(
     ),
   );
 }
-export function updateSessionNetworkPolicyAllowPathFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateSessionNetworkPolicyAllowPath, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      UpdateSessionNetworkPolicyAllowPath$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateSessionNetworkPolicyAllowPath' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateSessionNetworkPolicyAllowKey$inboundSchema: z.ZodType<
-  UpdateSessionNetworkPolicyAllowKey,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  exact: types.optional(types.string()),
-  startsWith: types.optional(types.string()),
-});
 /** @internal */
 export type UpdateSessionNetworkPolicyAllowKey$Outbound = {
   exact?: string | undefined;
@@ -445,26 +411,7 @@ export function updateSessionNetworkPolicyAllowKeyToJSON(
     ),
   );
 }
-export function updateSessionNetworkPolicyAllowKeyFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateSessionNetworkPolicyAllowKey, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      UpdateSessionNetworkPolicyAllowKey$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateSessionNetworkPolicyAllowKey' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateSessionNetworkPolicyAllowValue$inboundSchema: z.ZodType<
-  UpdateSessionNetworkPolicyAllowValue,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  exact: types.optional(types.string()),
-  startsWith: types.optional(types.string()),
-});
 /** @internal */
 export type UpdateSessionNetworkPolicyAllowValue$Outbound = {
   exact?: string | undefined;
@@ -490,28 +437,7 @@ export function updateSessionNetworkPolicyAllowValueToJSON(
     ),
   );
 }
-export function updateSessionNetworkPolicyAllowValueFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateSessionNetworkPolicyAllowValue, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      UpdateSessionNetworkPolicyAllowValue$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateSessionNetworkPolicyAllowValue' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateSessionNetworkPolicyAllowQueryString$inboundSchema:
-  z.ZodType<UpdateSessionNetworkPolicyAllowQueryString, z.ZodTypeDef, unknown> =
-    z.object({
-      key: types.optional(
-        z.lazy(() => UpdateSessionNetworkPolicyAllowKey$inboundSchema),
-      ),
-      value: types.optional(
-        z.lazy(() => UpdateSessionNetworkPolicyAllowValue$inboundSchema),
-      ),
-    });
 /** @internal */
 export type UpdateSessionNetworkPolicyAllowQueryString$Outbound = {
   key?: UpdateSessionNetworkPolicyAllowKey$Outbound | undefined;
@@ -541,32 +467,7 @@ export function updateSessionNetworkPolicyAllowQueryStringToJSON(
     ),
   );
 }
-export function updateSessionNetworkPolicyAllowQueryStringFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  UpdateSessionNetworkPolicyAllowQueryString,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      UpdateSessionNetworkPolicyAllowQueryString$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'UpdateSessionNetworkPolicyAllowQueryString' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateSessionNetworkPolicyAllowSandboxesKey$inboundSchema:
-  z.ZodType<
-    UpdateSessionNetworkPolicyAllowSandboxesKey,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    exact: types.optional(types.string()),
-    startsWith: types.optional(types.string()),
-  });
 /** @internal */
 export type UpdateSessionNetworkPolicyAllowSandboxesKey$Outbound = {
   exact?: string | undefined;
@@ -594,32 +495,7 @@ export function updateSessionNetworkPolicyAllowSandboxesKeyToJSON(
     ),
   );
 }
-export function updateSessionNetworkPolicyAllowSandboxesKeyFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  UpdateSessionNetworkPolicyAllowSandboxesKey,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      UpdateSessionNetworkPolicyAllowSandboxesKey$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'UpdateSessionNetworkPolicyAllowSandboxesKey' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateSessionNetworkPolicyAllowSandboxesValue$inboundSchema:
-  z.ZodType<
-    UpdateSessionNetworkPolicyAllowSandboxesValue,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    exact: types.optional(types.string()),
-    startsWith: types.optional(types.string()),
-  });
 /** @internal */
 export type UpdateSessionNetworkPolicyAllowSandboxesValue$Outbound = {
   exact?: string | undefined;
@@ -647,35 +523,7 @@ export function updateSessionNetworkPolicyAllowSandboxesValueToJSON(
     ),
   );
 }
-export function updateSessionNetworkPolicyAllowSandboxesValueFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  UpdateSessionNetworkPolicyAllowSandboxesValue,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      UpdateSessionNetworkPolicyAllowSandboxesValue$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'UpdateSessionNetworkPolicyAllowSandboxesValue' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateSessionNetworkPolicyAllowHeaders$inboundSchema: z.ZodType<
-  UpdateSessionNetworkPolicyAllowHeaders,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  key: types.optional(
-    z.lazy(() => UpdateSessionNetworkPolicyAllowSandboxesKey$inboundSchema),
-  ),
-  value: types.optional(
-    z.lazy(() => UpdateSessionNetworkPolicyAllowSandboxesValue$inboundSchema),
-  ),
-});
 /** @internal */
 export type UpdateSessionNetworkPolicyAllowHeaders$Outbound = {
   key?: UpdateSessionNetworkPolicyAllowSandboxesKey$Outbound | undefined;
@@ -705,36 +553,7 @@ export function updateSessionNetworkPolicyAllowHeadersToJSON(
     ),
   );
 }
-export function updateSessionNetworkPolicyAllowHeadersFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateSessionNetworkPolicyAllowHeaders, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      UpdateSessionNetworkPolicyAllowHeaders$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateSessionNetworkPolicyAllowHeaders' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateSessionNetworkPolicyAllowMatch$inboundSchema: z.ZodType<
-  UpdateSessionNetworkPolicyAllowMatch,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  path: types.optional(
-    z.lazy(() => UpdateSessionNetworkPolicyAllowPath$inboundSchema),
-  ),
-  method: types.optional(z.array(types.string())),
-  queryString: types.optional(
-    z.array(z.lazy(() =>
-      UpdateSessionNetworkPolicyAllowQueryString$inboundSchema
-    )),
-  ),
-  headers: types.optional(
-    z.array(z.lazy(() => UpdateSessionNetworkPolicyAllowHeaders$inboundSchema)),
-  ),
-});
 /** @internal */
 export type UpdateSessionNetworkPolicyAllowMatch$Outbound = {
   path?: UpdateSessionNetworkPolicyAllowPath$Outbound | undefined;
@@ -771,25 +590,7 @@ export function updateSessionNetworkPolicyAllowMatchToJSON(
     ),
   );
 }
-export function updateSessionNetworkPolicyAllowMatchFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateSessionNetworkPolicyAllowMatch, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      UpdateSessionNetworkPolicyAllowMatch$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateSessionNetworkPolicyAllowMatch' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateSessionNetworkPolicyAllowTransform$inboundSchema: z.ZodType<
-  UpdateSessionNetworkPolicyAllowTransform,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  headers: types.optional(z.record(types.string())),
-});
 /** @internal */
 export type UpdateSessionNetworkPolicyAllowTransform$Outbound = {
   headers?: { [k: string]: string } | undefined;
@@ -814,38 +615,7 @@ export function updateSessionNetworkPolicyAllowTransformToJSON(
     ),
   );
 }
-export function updateSessionNetworkPolicyAllowTransformFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  UpdateSessionNetworkPolicyAllowTransform,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      UpdateSessionNetworkPolicyAllowTransform$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'UpdateSessionNetworkPolicyAllowTransform' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateSessionNetworkPolicyAllow2$inboundSchema: z.ZodType<
-  UpdateSessionNetworkPolicyAllow2,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  match: types.optional(
-    z.lazy(() => UpdateSessionNetworkPolicyAllowMatch$inboundSchema),
-  ),
-  transform: types.optional(
-    z.array(
-      z.lazy(() => UpdateSessionNetworkPolicyAllowTransform$inboundSchema),
-    ),
-  ),
-  forwardURL: types.optional(types.string()),
-});
 /** @internal */
 export type UpdateSessionNetworkPolicyAllow2$Outbound = {
   match?: UpdateSessionNetworkPolicyAllowMatch$Outbound | undefined;
@@ -878,27 +648,7 @@ export function updateSessionNetworkPolicyAllow2ToJSON(
     ),
   );
 }
-export function updateSessionNetworkPolicyAllow2FromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateSessionNetworkPolicyAllow2, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateSessionNetworkPolicyAllow2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateSessionNetworkPolicyAllow2' from JSON`,
-  );
-}
 
-/** @internal */
-export const RequestBodyAllow$inboundSchema: z.ZodType<
-  RequestBodyAllow,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([
-  z.array(types.string()),
-  z.record(
-    z.array(z.lazy(() => UpdateSessionNetworkPolicyAllow2$inboundSchema)),
-  ),
-]);
 /** @internal */
 export type RequestBodyAllow$Outbound = Array<string> | {
   [k: string]: Array<UpdateSessionNetworkPolicyAllow2$Outbound>;
@@ -923,25 +673,7 @@ export function requestBodyAllowToJSON(
     RequestBodyAllow$outboundSchema.parse(requestBodyAllow),
   );
 }
-export function requestBodyAllowFromJSON(
-  jsonString: string,
-): SafeParseResult<RequestBodyAllow, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RequestBodyAllow$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RequestBodyAllow' from JSON`,
-  );
-}
 
-/** @internal */
-export const RequestBodySubnets$inboundSchema: z.ZodType<
-  RequestBodySubnets,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  allow: types.optional(z.array(types.string())),
-  deny: types.optional(z.array(types.string())),
-});
 /** @internal */
 export type RequestBodySubnets$Outbound = {
   allow?: Array<string> | undefined;
@@ -965,32 +697,7 @@ export function requestBodySubnetsToJSON(
     RequestBodySubnets$outboundSchema.parse(requestBodySubnets),
   );
 }
-export function requestBodySubnetsFromJSON(
-  jsonString: string,
-): SafeParseResult<RequestBodySubnets, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RequestBodySubnets$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RequestBodySubnets' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateSessionNetworkPolicyRequestBody2$inboundSchema: z.ZodType<
-  UpdateSessionNetworkPolicyRequestBody2,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  allow: types.optional(
-    smartUnion([
-      z.array(types.string()),
-      z.record(
-        z.array(z.lazy(() => UpdateSessionNetworkPolicyAllow2$inboundSchema)),
-      ),
-    ]),
-  ),
-  subnets: types.optional(z.lazy(() => RequestBodySubnets$inboundSchema)),
-});
 /** @internal */
 export type UpdateSessionNetworkPolicyRequestBody2$Outbound = {
   allow?: Array<string> | {
@@ -1024,35 +731,12 @@ export function updateSessionNetworkPolicyRequestBody2ToJSON(
     ),
   );
 }
-export function updateSessionNetworkPolicyRequestBody2FromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateSessionNetworkPolicyRequestBody2, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      UpdateSessionNetworkPolicyRequestBody2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateSessionNetworkPolicyRequestBody2' from JSON`,
-  );
-}
 
-/** @internal */
-export const RequestBodyMode$inboundSchema: z.ZodNativeEnum<
-  typeof RequestBodyMode
-> = z.nativeEnum(RequestBodyMode);
 /** @internal */
 export const RequestBodyMode$outboundSchema: z.ZodNativeEnum<
   typeof RequestBodyMode
-> = RequestBodyMode$inboundSchema;
+> = z.nativeEnum(RequestBodyMode);
 
-/** @internal */
-export const RequestBodyPath$inboundSchema: z.ZodType<
-  RequestBodyPath,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  exact: types.optional(types.string()),
-  startsWith: types.optional(types.string()),
-});
 /** @internal */
 export type RequestBodyPath$Outbound = {
   exact?: string | undefined;
@@ -1074,25 +758,7 @@ export function requestBodyPathToJSON(
 ): string {
   return JSON.stringify(RequestBodyPath$outboundSchema.parse(requestBodyPath));
 }
-export function requestBodyPathFromJSON(
-  jsonString: string,
-): SafeParseResult<RequestBodyPath, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RequestBodyPath$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RequestBodyPath' from JSON`,
-  );
-}
 
-/** @internal */
-export const RequestBodyKey$inboundSchema: z.ZodType<
-  RequestBodyKey,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  exact: types.optional(types.string()),
-  startsWith: types.optional(types.string()),
-});
 /** @internal */
 export type RequestBodyKey$Outbound = {
   exact?: string | undefined;
@@ -1112,26 +778,7 @@ export const RequestBodyKey$outboundSchema: z.ZodType<
 export function requestBodyKeyToJSON(requestBodyKey: RequestBodyKey): string {
   return JSON.stringify(RequestBodyKey$outboundSchema.parse(requestBodyKey));
 }
-export function requestBodyKeyFromJSON(
-  jsonString: string,
-): SafeParseResult<RequestBodyKey, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RequestBodyKey$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RequestBodyKey' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateSessionNetworkPolicyRequestBodySandboxesValue$inboundSchema:
-  z.ZodType<
-    UpdateSessionNetworkPolicyRequestBodySandboxesValue,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    exact: types.optional(types.string()),
-    startsWith: types.optional(types.string()),
-  });
 /** @internal */
 export type UpdateSessionNetworkPolicyRequestBodySandboxesValue$Outbound = {
   exact?: string | undefined;
@@ -1159,35 +806,7 @@ export function updateSessionNetworkPolicyRequestBodySandboxesValueToJSON(
     ),
   );
 }
-export function updateSessionNetworkPolicyRequestBodySandboxesValueFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  UpdateSessionNetworkPolicyRequestBodySandboxesValue,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      UpdateSessionNetworkPolicyRequestBodySandboxesValue$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'UpdateSessionNetworkPolicyRequestBodySandboxesValue' from JSON`,
-  );
-}
 
-/** @internal */
-export const RequestBodyQueryString$inboundSchema: z.ZodType<
-  RequestBodyQueryString,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  key: types.optional(z.lazy(() => RequestBodyKey$inboundSchema)),
-  value: types.optional(
-    z.lazy(() =>
-      UpdateSessionNetworkPolicyRequestBodySandboxesValue$inboundSchema
-    ),
-  ),
-});
 /** @internal */
 export type RequestBodyQueryString$Outbound = {
   key?: RequestBodyKey$Outbound | undefined;
@@ -1215,25 +834,7 @@ export function requestBodyQueryStringToJSON(
     RequestBodyQueryString$outboundSchema.parse(requestBodyQueryString),
   );
 }
-export function requestBodyQueryStringFromJSON(
-  jsonString: string,
-): SafeParseResult<RequestBodyQueryString, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RequestBodyQueryString$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RequestBodyQueryString' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateSessionNetworkPolicyRequestBodyKey$inboundSchema: z.ZodType<
-  UpdateSessionNetworkPolicyRequestBodyKey,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  exact: types.optional(types.string()),
-  startsWith: types.optional(types.string()),
-});
 /** @internal */
 export type UpdateSessionNetworkPolicyRequestBodyKey$Outbound = {
   exact?: string | undefined;
@@ -1260,29 +861,7 @@ export function updateSessionNetworkPolicyRequestBodyKeyToJSON(
     ),
   );
 }
-export function updateSessionNetworkPolicyRequestBodyKeyFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  UpdateSessionNetworkPolicyRequestBodyKey,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      UpdateSessionNetworkPolicyRequestBodyKey$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'UpdateSessionNetworkPolicyRequestBodyKey' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateSessionNetworkPolicyRequestBodyValue$inboundSchema:
-  z.ZodType<UpdateSessionNetworkPolicyRequestBodyValue, z.ZodTypeDef, unknown> =
-    z.object({
-      exact: types.optional(types.string()),
-      startsWith: types.optional(types.string()),
-    });
 /** @internal */
 export type UpdateSessionNetworkPolicyRequestBodyValue$Outbound = {
   exact?: string | undefined;
@@ -1310,35 +889,7 @@ export function updateSessionNetworkPolicyRequestBodyValueToJSON(
     ),
   );
 }
-export function updateSessionNetworkPolicyRequestBodyValueFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  UpdateSessionNetworkPolicyRequestBodyValue,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      UpdateSessionNetworkPolicyRequestBodyValue$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'UpdateSessionNetworkPolicyRequestBodyValue' from JSON`,
-  );
-}
 
-/** @internal */
-export const RequestBodyHeaders$inboundSchema: z.ZodType<
-  RequestBodyHeaders,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  key: types.optional(
-    z.lazy(() => UpdateSessionNetworkPolicyRequestBodyKey$inboundSchema),
-  ),
-  value: types.optional(
-    z.lazy(() => UpdateSessionNetworkPolicyRequestBodyValue$inboundSchema),
-  ),
-});
 /** @internal */
 export type RequestBodyHeaders$Outbound = {
   key?: UpdateSessionNetworkPolicyRequestBodyKey$Outbound | undefined;
@@ -1364,31 +915,7 @@ export function requestBodyHeadersToJSON(
     RequestBodyHeaders$outboundSchema.parse(requestBodyHeaders),
   );
 }
-export function requestBodyHeadersFromJSON(
-  jsonString: string,
-): SafeParseResult<RequestBodyHeaders, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RequestBodyHeaders$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RequestBodyHeaders' from JSON`,
-  );
-}
 
-/** @internal */
-export const RequestBodyMatch$inboundSchema: z.ZodType<
-  RequestBodyMatch,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  path: types.optional(z.lazy(() => RequestBodyPath$inboundSchema)),
-  method: types.optional(z.array(types.string())),
-  queryString: types.optional(
-    z.array(z.lazy(() => RequestBodyQueryString$inboundSchema)),
-  ),
-  headers: types.optional(
-    z.array(z.lazy(() => RequestBodyHeaders$inboundSchema)),
-  ),
-});
 /** @internal */
 export type RequestBodyMatch$Outbound = {
   path?: RequestBodyPath$Outbound | undefined;
@@ -1417,26 +944,7 @@ export function requestBodyMatchToJSON(
     RequestBodyMatch$outboundSchema.parse(requestBodyMatch),
   );
 }
-export function requestBodyMatchFromJSON(
-  jsonString: string,
-): SafeParseResult<RequestBodyMatch, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RequestBodyMatch$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RequestBodyMatch' from JSON`,
-  );
-}
 
-/** @internal */
-export const RequestBodyInjectionRules$inboundSchema: z.ZodType<
-  RequestBodyInjectionRules,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  domain: types.string(),
-  headers: z.record(types.string()),
-  match: types.optional(z.lazy(() => RequestBodyMatch$inboundSchema)),
-});
 /** @internal */
 export type RequestBodyInjectionRules$Outbound = {
   domain: string;
@@ -1462,30 +970,7 @@ export function requestBodyInjectionRulesToJSON(
     RequestBodyInjectionRules$outboundSchema.parse(requestBodyInjectionRules),
   );
 }
-export function requestBodyInjectionRulesFromJSON(
-  jsonString: string,
-): SafeParseResult<RequestBodyInjectionRules, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RequestBodyInjectionRules$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RequestBodyInjectionRules' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateSessionNetworkPolicyRequestBody1$inboundSchema: z.ZodType<
-  UpdateSessionNetworkPolicyRequestBody1,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  mode: RequestBodyMode$inboundSchema,
-  allowedDomains: types.optional(z.array(types.string())),
-  allowedCIDRs: types.optional(z.array(types.string())),
-  deniedCIDRs: types.optional(z.array(types.string())),
-  injectionRules: types.optional(
-    z.array(z.lazy(() => RequestBodyInjectionRules$inboundSchema)),
-  ),
-});
 /** @internal */
 export type UpdateSessionNetworkPolicyRequestBody1$Outbound = {
   mode: string;
@@ -1520,26 +1005,7 @@ export function updateSessionNetworkPolicyRequestBody1ToJSON(
     ),
   );
 }
-export function updateSessionNetworkPolicyRequestBody1FromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateSessionNetworkPolicyRequestBody1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      UpdateSessionNetworkPolicyRequestBody1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateSessionNetworkPolicyRequestBody1' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateSessionNetworkPolicyRequestBody$inboundSchema: z.ZodType<
-  UpdateSessionNetworkPolicyRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([
-  z.lazy(() => UpdateSessionNetworkPolicyRequestBody1$inboundSchema),
-  z.lazy(() => UpdateSessionNetworkPolicyRequestBody2$inboundSchema),
-]);
 /** @internal */
 export type UpdateSessionNetworkPolicyRequestBody$Outbound =
   | UpdateSessionNetworkPolicyRequestBody1$Outbound
@@ -1564,37 +1030,7 @@ export function updateSessionNetworkPolicyRequestBodyToJSON(
     ),
   );
 }
-export function updateSessionNetworkPolicyRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateSessionNetworkPolicyRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      UpdateSessionNetworkPolicyRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateSessionNetworkPolicyRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateSessionNetworkPolicyRequest$inboundSchema: z.ZodType<
-  UpdateSessionNetworkPolicyRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  sessionId: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-  RequestBody: types.optional(
-    smartUnion([
-      z.lazy(() => UpdateSessionNetworkPolicyRequestBody1$inboundSchema),
-      z.lazy(() => UpdateSessionNetworkPolicyRequestBody2$inboundSchema),
-    ]),
-  ),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 /** @internal */
 export type UpdateSessionNetworkPolicyRequest$Outbound = {
   sessionId: string;
@@ -1634,15 +1070,6 @@ export function updateSessionNetworkPolicyRequestToJSON(
     ),
   );
 }
-export function updateSessionNetworkPolicyRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateSessionNetworkPolicyRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateSessionNetworkPolicyRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateSessionNetworkPolicyRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const UpdateSessionNetworkPolicyResponseBody$inboundSchema: z.ZodType<
@@ -1652,30 +1079,7 @@ export const UpdateSessionNetworkPolicyResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   session: Session$inboundSchema,
 });
-/** @internal */
-export type UpdateSessionNetworkPolicyResponseBody$Outbound = {
-  session: Session$Outbound;
-};
 
-/** @internal */
-export const UpdateSessionNetworkPolicyResponseBody$outboundSchema: z.ZodType<
-  UpdateSessionNetworkPolicyResponseBody$Outbound,
-  z.ZodTypeDef,
-  UpdateSessionNetworkPolicyResponseBody
-> = z.object({
-  session: Session$outboundSchema,
-});
-
-export function updateSessionNetworkPolicyResponseBodyToJSON(
-  updateSessionNetworkPolicyResponseBody:
-    UpdateSessionNetworkPolicyResponseBody,
-): string {
-  return JSON.stringify(
-    UpdateSessionNetworkPolicyResponseBody$outboundSchema.parse(
-      updateSessionNetworkPolicyResponseBody,
-    ),
-  );
-}
 export function updateSessionNetworkPolicyResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateSessionNetworkPolicyResponseBody, SDKValidationError> {

@@ -47,15 +47,6 @@ export type CreateProjectTransferRequestResponseBody = {
 };
 
 /** @internal */
-export const CreateProjectTransferRequestRequestBody$inboundSchema: z.ZodType<
-  CreateProjectTransferRequestRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  callbackUrl: types.optional(types.string()),
-  callbackSecret: types.optional(types.string()),
-});
-/** @internal */
 export type CreateProjectTransferRequestRequestBody$Outbound = {
   callbackUrl?: string | undefined;
   callbackSecret?: string | undefined;
@@ -81,39 +72,7 @@ export function createProjectTransferRequestRequestBodyToJSON(
     ),
   );
 }
-export function createProjectTransferRequestRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  CreateProjectTransferRequestRequestBody,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      CreateProjectTransferRequestRequestBody$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'CreateProjectTransferRequestRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const CreateProjectTransferRequestRequest$inboundSchema: z.ZodType<
-  CreateProjectTransferRequestRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  idOrName: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-  RequestBody: types.optional(
-    z.lazy(() => CreateProjectTransferRequestRequestBody$inboundSchema),
-  ),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 /** @internal */
 export type CreateProjectTransferRequestRequest$Outbound = {
   idOrName: string;
@@ -149,16 +108,6 @@ export function createProjectTransferRequestRequestToJSON(
     ),
   );
 }
-export function createProjectTransferRequestRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateProjectTransferRequestRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      CreateProjectTransferRequestRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateProjectTransferRequestRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const CreateProjectTransferRequestResponseBody$inboundSchema: z.ZodType<
@@ -168,30 +117,7 @@ export const CreateProjectTransferRequestResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   code: types.string(),
 });
-/** @internal */
-export type CreateProjectTransferRequestResponseBody$Outbound = {
-  code: string;
-};
 
-/** @internal */
-export const CreateProjectTransferRequestResponseBody$outboundSchema: z.ZodType<
-  CreateProjectTransferRequestResponseBody$Outbound,
-  z.ZodTypeDef,
-  CreateProjectTransferRequestResponseBody
-> = z.object({
-  code: z.string(),
-});
-
-export function createProjectTransferRequestResponseBodyToJSON(
-  createProjectTransferRequestResponseBody:
-    CreateProjectTransferRequestResponseBody,
-): string {
-  return JSON.stringify(
-    CreateProjectTransferRequestResponseBody$outboundSchema.parse(
-      createProjectTransferRequestResponseBody,
-    ),
-  );
-}
 export function createProjectTransferRequestResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<

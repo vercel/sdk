@@ -131,16 +131,6 @@ export type GetSharedEnvVarResponseBody = {
 };
 
 /** @internal */
-export const GetSharedEnvVarRequest$inboundSchema: z.ZodType<
-  GetSharedEnvVarRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
-/** @internal */
 export type GetSharedEnvVarRequest$Outbound = {
   id: string;
   teamId?: string | undefined;
@@ -165,33 +155,16 @@ export function getSharedEnvVarRequestToJSON(
     GetSharedEnvVarRequest$outboundSchema.parse(getSharedEnvVarRequest),
   );
 }
-export function getSharedEnvVarRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetSharedEnvVarRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetSharedEnvVarRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetSharedEnvVarRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const GetSharedEnvVarType$inboundSchema: z.ZodNativeEnum<
   typeof GetSharedEnvVarType
 > = z.nativeEnum(GetSharedEnvVarType);
-/** @internal */
-export const GetSharedEnvVarType$outboundSchema: z.ZodNativeEnum<
-  typeof GetSharedEnvVarType
-> = GetSharedEnvVarType$inboundSchema;
 
 /** @internal */
 export const GetSharedEnvVarTarget$inboundSchema: z.ZodNativeEnum<
   typeof GetSharedEnvVarTarget
 > = z.nativeEnum(GetSharedEnvVarTarget);
-/** @internal */
-export const GetSharedEnvVarTarget$outboundSchema: z.ZodNativeEnum<
-  typeof GetSharedEnvVarTarget
-> = GetSharedEnvVarTarget$inboundSchema;
 
 /** @internal */
 export const GetSharedEnvVarResponseBody$inboundSchema: z.ZodType<
@@ -219,65 +192,7 @@ export const GetSharedEnvVarResponseBody$inboundSchema: z.ZodType<
   comment: types.optional(types.string()),
   lastEditedByDisplayName: types.optional(types.string()),
 });
-/** @internal */
-export type GetSharedEnvVarResponseBody$Outbound = {
-  created?: string | undefined;
-  key?: string | undefined;
-  ownerId?: string | null | undefined;
-  id?: string | undefined;
-  createdBy?: string | null | undefined;
-  deletedBy?: string | null | undefined;
-  updatedBy?: string | null | undefined;
-  createdAt?: number | undefined;
-  deletedAt?: number | undefined;
-  updatedAt?: number | undefined;
-  value?: string | undefined;
-  projectId?: Array<string> | undefined;
-  type?: string | undefined;
-  target?: Array<string> | undefined;
-  applyToAllCustomEnvironments?: boolean | undefined;
-  customEnvironmentIds?: Array<string> | undefined;
-  decrypted?: boolean | undefined;
-  comment?: string | undefined;
-  lastEditedByDisplayName?: string | undefined;
-};
 
-/** @internal */
-export const GetSharedEnvVarResponseBody$outboundSchema: z.ZodType<
-  GetSharedEnvVarResponseBody$Outbound,
-  z.ZodTypeDef,
-  GetSharedEnvVarResponseBody
-> = z.object({
-  created: z.date().transform(v => v.toISOString()).optional(),
-  key: z.string().optional(),
-  ownerId: z.nullable(z.string()).optional(),
-  id: z.string().optional(),
-  createdBy: z.nullable(z.string()).optional(),
-  deletedBy: z.nullable(z.string()).optional(),
-  updatedBy: z.nullable(z.string()).optional(),
-  createdAt: z.number().optional(),
-  deletedAt: z.number().optional(),
-  updatedAt: z.number().optional(),
-  value: z.string().optional(),
-  projectId: z.array(z.string()).optional(),
-  type: GetSharedEnvVarType$outboundSchema.optional(),
-  target: z.array(GetSharedEnvVarTarget$outboundSchema).optional(),
-  applyToAllCustomEnvironments: z.boolean().optional(),
-  customEnvironmentIds: z.array(z.string()).optional(),
-  decrypted: z.boolean().optional(),
-  comment: z.string().optional(),
-  lastEditedByDisplayName: z.string().optional(),
-});
-
-export function getSharedEnvVarResponseBodyToJSON(
-  getSharedEnvVarResponseBody: GetSharedEnvVarResponseBody,
-): string {
-  return JSON.stringify(
-    GetSharedEnvVarResponseBody$outboundSchema.parse(
-      getSharedEnvVarResponseBody,
-    ),
-  );
-}
 export function getSharedEnvVarResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetSharedEnvVarResponseBody, SDKValidationError> {

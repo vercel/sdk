@@ -3,10 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
-import { Result as SafeParseResult } from "../types/fp.js";
-import * as types from "../types/primitives.js";
-import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type DeleteFlagSegmentRequest = {
   /**
@@ -31,18 +27,6 @@ export type DeleteFlagSegmentRequest = {
   slug?: string | undefined;
 };
 
-/** @internal */
-export const DeleteFlagSegmentRequest$inboundSchema: z.ZodType<
-  DeleteFlagSegmentRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  projectIdOrName: types.string(),
-  segmentIdOrSlug: types.string(),
-  withMetadata: types.boolean().default(false),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
 /** @internal */
 export type DeleteFlagSegmentRequest$Outbound = {
   projectIdOrName: string;
@@ -70,14 +54,5 @@ export function deleteFlagSegmentRequestToJSON(
 ): string {
   return JSON.stringify(
     DeleteFlagSegmentRequest$outboundSchema.parse(deleteFlagSegmentRequest),
-  );
-}
-export function deleteFlagSegmentRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<DeleteFlagSegmentRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => DeleteFlagSegmentRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DeleteFlagSegmentRequest' from JSON`,
   );
 }

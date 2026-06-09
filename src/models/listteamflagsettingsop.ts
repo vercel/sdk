@@ -99,17 +99,6 @@ export type ListTeamFlagSettingsResponseBody =
   | ListTeamFlagSettingsResponseBody1;
 
 /** @internal */
-export const ListTeamFlagSettingsRequest$inboundSchema: z.ZodType<
-  ListTeamFlagSettingsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  limit: types.number().default(20),
-  cursor: types.optional(types.string()),
-  teamId: types.string(),
-  slug: types.optional(types.string()),
-});
-/** @internal */
 export type ListTeamFlagSettingsRequest$Outbound = {
   limit: number;
   cursor?: string | undefined;
@@ -138,24 +127,11 @@ export function listTeamFlagSettingsRequestToJSON(
     ),
   );
 }
-export function listTeamFlagSettingsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<ListTeamFlagSettingsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ListTeamFlagSettingsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ListTeamFlagSettingsRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const ListTeamFlagSettingsResponseBodyTypeName$inboundSchema:
   z.ZodNativeEnum<typeof ListTeamFlagSettingsResponseBodyTypeName> = z
     .nativeEnum(ListTeamFlagSettingsResponseBodyTypeName);
-/** @internal */
-export const ListTeamFlagSettingsResponseBodyTypeName$outboundSchema:
-  z.ZodNativeEnum<typeof ListTeamFlagSettingsResponseBodyTypeName> =
-    ListTeamFlagSettingsResponseBodyTypeName$inboundSchema;
 
 /** @internal */
 export const ResponseBodyConnections$inboundSchema: z.ZodType<
@@ -166,29 +142,7 @@ export const ResponseBodyConnections$inboundSchema: z.ZodType<
   edgeConfigId: types.string(),
   edgeConfigItemKey: types.string(),
 });
-/** @internal */
-export type ResponseBodyConnections$Outbound = {
-  edgeConfigId: string;
-  edgeConfigItemKey: string;
-};
 
-/** @internal */
-export const ResponseBodyConnections$outboundSchema: z.ZodType<
-  ResponseBodyConnections$Outbound,
-  z.ZodTypeDef,
-  ResponseBodyConnections
-> = z.object({
-  edgeConfigId: z.string(),
-  edgeConfigItemKey: z.string(),
-});
-
-export function responseBodyConnectionsToJSON(
-  responseBodyConnections: ResponseBodyConnections,
-): string {
-  return JSON.stringify(
-    ResponseBodyConnections$outboundSchema.parse(responseBodyConnections),
-  );
-}
 export function responseBodyConnectionsFromJSON(
   jsonString: string,
 ): SafeParseResult<ResponseBodyConnections, SDKValidationError> {
@@ -208,29 +162,7 @@ export const ResponseBodyLabels$inboundSchema: z.ZodType<
   label: types.string(),
   value: types.string(),
 });
-/** @internal */
-export type ResponseBodyLabels$Outbound = {
-  label: string;
-  value: string;
-};
 
-/** @internal */
-export const ResponseBodyLabels$outboundSchema: z.ZodType<
-  ResponseBodyLabels$Outbound,
-  z.ZodTypeDef,
-  ResponseBodyLabels
-> = z.object({
-  label: z.string(),
-  value: z.string(),
-});
-
-export function responseBodyLabelsToJSON(
-  responseBodyLabels: ResponseBodyLabels,
-): string {
-  return JSON.stringify(
-    ResponseBodyLabels$outboundSchema.parse(responseBodyLabels),
-  );
-}
 export function responseBodyLabelsFromJSON(
   jsonString: string,
 ): SafeParseResult<ResponseBodyLabels, SDKValidationError> {
@@ -253,31 +185,7 @@ export const ResponseBodyAttributes$inboundSchema: z.ZodType<
     z.array(z.lazy(() => ResponseBodyLabels$inboundSchema)),
   ),
 });
-/** @internal */
-export type ResponseBodyAttributes$Outbound = {
-  key: string;
-  type: string;
-  labels?: Array<ResponseBodyLabels$Outbound> | undefined;
-};
 
-/** @internal */
-export const ResponseBodyAttributes$outboundSchema: z.ZodType<
-  ResponseBodyAttributes$Outbound,
-  z.ZodTypeDef,
-  ResponseBodyAttributes
-> = z.object({
-  key: z.string(),
-  type: z.string(),
-  labels: z.array(z.lazy(() => ResponseBodyLabels$outboundSchema)).optional(),
-});
-
-export function responseBodyAttributesToJSON(
-  responseBodyAttributes: ResponseBodyAttributes,
-): string {
-  return JSON.stringify(
-    ResponseBodyAttributes$outboundSchema.parse(responseBodyAttributes),
-  );
-}
 export function responseBodyAttributesFromJSON(
   jsonString: string,
 ): SafeParseResult<ResponseBodyAttributes, SDKValidationError> {
@@ -298,31 +206,7 @@ export const ResponseBodyEntities$inboundSchema: z.ZodType<
   label: types.string(),
   attributes: z.array(z.lazy(() => ResponseBodyAttributes$inboundSchema)),
 });
-/** @internal */
-export type ResponseBodyEntities$Outbound = {
-  kind: string;
-  label: string;
-  attributes: Array<ResponseBodyAttributes$Outbound>;
-};
 
-/** @internal */
-export const ResponseBodyEntities$outboundSchema: z.ZodType<
-  ResponseBodyEntities$Outbound,
-  z.ZodTypeDef,
-  ResponseBodyEntities
-> = z.object({
-  kind: z.string(),
-  label: z.string(),
-  attributes: z.array(z.lazy(() => ResponseBodyAttributes$outboundSchema)),
-});
-
-export function responseBodyEntitiesToJSON(
-  responseBodyEntities: ResponseBodyEntities,
-): string {
-  return JSON.stringify(
-    ResponseBodyEntities$outboundSchema.parse(responseBodyEntities),
-  );
-}
 export function responseBodyEntitiesFromJSON(
   jsonString: string,
 ): SafeParseResult<ResponseBodyEntities, SDKValidationError> {
@@ -346,40 +230,7 @@ export const ListTeamFlagSettingsResponseBodyMetadata$inboundSchema: z.ZodType<
   packRevision: types.optional(types.number()),
   configUpdatedAt: types.optional(types.number()),
 });
-/** @internal */
-export type ListTeamFlagSettingsResponseBodyMetadata$Outbound = {
-  activeFlagCount: number;
-  archivedFlagCount: number;
-  segmentCount: number;
-  packSizeInBytes: number;
-  packRevision?: number | undefined;
-  configUpdatedAt?: number | undefined;
-};
 
-/** @internal */
-export const ListTeamFlagSettingsResponseBodyMetadata$outboundSchema: z.ZodType<
-  ListTeamFlagSettingsResponseBodyMetadata$Outbound,
-  z.ZodTypeDef,
-  ListTeamFlagSettingsResponseBodyMetadata
-> = z.object({
-  activeFlagCount: z.number(),
-  archivedFlagCount: z.number(),
-  segmentCount: z.number(),
-  packSizeInBytes: z.number(),
-  packRevision: z.number().optional(),
-  configUpdatedAt: z.number().optional(),
-});
-
-export function listTeamFlagSettingsResponseBodyMetadataToJSON(
-  listTeamFlagSettingsResponseBodyMetadata:
-    ListTeamFlagSettingsResponseBodyMetadata,
-): string {
-  return JSON.stringify(
-    ListTeamFlagSettingsResponseBodyMetadata$outboundSchema.parse(
-      listTeamFlagSettingsResponseBodyMetadata,
-    ),
-  );
-}
 export function listTeamFlagSettingsResponseBodyMetadataFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -417,48 +268,7 @@ export const ResponseBodyData$inboundSchema: z.ZodType<
     ListTeamFlagSettingsResponseBodyMetadata$inboundSchema
   ),
 });
-/** @internal */
-export type ResponseBodyData$Outbound = {
-  typeName: string;
-  projectId: string;
-  ownerId?: string | undefined;
-  enabled: boolean;
-  environments: Array<string>;
-  connections?: Array<ResponseBodyConnections$Outbound> | undefined;
-  entities: Array<ResponseBodyEntities$Outbound>;
-  createdAt?: number | undefined;
-  updatedAt?: number | undefined;
-  metadata: ListTeamFlagSettingsResponseBodyMetadata$Outbound;
-};
 
-/** @internal */
-export const ResponseBodyData$outboundSchema: z.ZodType<
-  ResponseBodyData$Outbound,
-  z.ZodTypeDef,
-  ResponseBodyData
-> = z.object({
-  typeName: ListTeamFlagSettingsResponseBodyTypeName$outboundSchema,
-  projectId: z.string(),
-  ownerId: z.string().optional(),
-  enabled: z.boolean(),
-  environments: z.array(z.string()),
-  connections: z.array(z.lazy(() => ResponseBodyConnections$outboundSchema))
-    .optional(),
-  entities: z.array(z.lazy(() => ResponseBodyEntities$outboundSchema)),
-  createdAt: z.number().optional(),
-  updatedAt: z.number().optional(),
-  metadata: z.lazy(() =>
-    ListTeamFlagSettingsResponseBodyMetadata$outboundSchema
-  ),
-});
-
-export function responseBodyDataToJSON(
-  responseBodyData: ResponseBodyData,
-): string {
-  return JSON.stringify(
-    ResponseBodyData$outboundSchema.parse(responseBodyData),
-  );
-}
 export function responseBodyDataFromJSON(
   jsonString: string,
 ): SafeParseResult<ResponseBodyData, SDKValidationError> {
@@ -475,31 +285,7 @@ export const ListTeamFlagSettingsResponseBodyPagination$inboundSchema:
     z.object({
       next: types.nullable(types.string()),
     });
-/** @internal */
-export type ListTeamFlagSettingsResponseBodyPagination$Outbound = {
-  next: string | null;
-};
 
-/** @internal */
-export const ListTeamFlagSettingsResponseBodyPagination$outboundSchema:
-  z.ZodType<
-    ListTeamFlagSettingsResponseBodyPagination$Outbound,
-    z.ZodTypeDef,
-    ListTeamFlagSettingsResponseBodyPagination
-  > = z.object({
-    next: z.nullable(z.string()),
-  });
-
-export function listTeamFlagSettingsResponseBodyPaginationToJSON(
-  listTeamFlagSettingsResponseBodyPagination:
-    ListTeamFlagSettingsResponseBodyPagination,
-): string {
-  return JSON.stringify(
-    ListTeamFlagSettingsResponseBodyPagination$outboundSchema.parse(
-      listTeamFlagSettingsResponseBodyPagination,
-    ),
-  );
-}
 export function listTeamFlagSettingsResponseBodyPaginationFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -527,33 +313,7 @@ export const ListTeamFlagSettingsResponseBody2$inboundSchema: z.ZodType<
     ListTeamFlagSettingsResponseBodyPagination$inboundSchema
   ),
 });
-/** @internal */
-export type ListTeamFlagSettingsResponseBody2$Outbound = {
-  data: Array<ResponseBodyData$Outbound>;
-  pagination: ListTeamFlagSettingsResponseBodyPagination$Outbound;
-};
 
-/** @internal */
-export const ListTeamFlagSettingsResponseBody2$outboundSchema: z.ZodType<
-  ListTeamFlagSettingsResponseBody2$Outbound,
-  z.ZodTypeDef,
-  ListTeamFlagSettingsResponseBody2
-> = z.object({
-  data: z.array(z.lazy(() => ResponseBodyData$outboundSchema)),
-  pagination: z.lazy(() =>
-    ListTeamFlagSettingsResponseBodyPagination$outboundSchema
-  ),
-});
-
-export function listTeamFlagSettingsResponseBody2ToJSON(
-  listTeamFlagSettingsResponseBody2: ListTeamFlagSettingsResponseBody2,
-): string {
-  return JSON.stringify(
-    ListTeamFlagSettingsResponseBody2$outboundSchema.parse(
-      listTeamFlagSettingsResponseBody2,
-    ),
-  );
-}
 export function listTeamFlagSettingsResponseBody2FromJSON(
   jsonString: string,
 ): SafeParseResult<ListTeamFlagSettingsResponseBody2, SDKValidationError> {
@@ -570,25 +330,7 @@ export const ListTeamFlagSettingsResponseBody1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-/** @internal */
-export type ListTeamFlagSettingsResponseBody1$Outbound = {};
 
-/** @internal */
-export const ListTeamFlagSettingsResponseBody1$outboundSchema: z.ZodType<
-  ListTeamFlagSettingsResponseBody1$Outbound,
-  z.ZodTypeDef,
-  ListTeamFlagSettingsResponseBody1
-> = z.object({});
-
-export function listTeamFlagSettingsResponseBody1ToJSON(
-  listTeamFlagSettingsResponseBody1: ListTeamFlagSettingsResponseBody1,
-): string {
-  return JSON.stringify(
-    ListTeamFlagSettingsResponseBody1$outboundSchema.parse(
-      listTeamFlagSettingsResponseBody1,
-    ),
-  );
-}
 export function listTeamFlagSettingsResponseBody1FromJSON(
   jsonString: string,
 ): SafeParseResult<ListTeamFlagSettingsResponseBody1, SDKValidationError> {
@@ -608,30 +350,7 @@ export const ListTeamFlagSettingsResponseBody$inboundSchema: z.ZodType<
   z.lazy(() => ListTeamFlagSettingsResponseBody2$inboundSchema),
   z.lazy(() => ListTeamFlagSettingsResponseBody1$inboundSchema),
 ]);
-/** @internal */
-export type ListTeamFlagSettingsResponseBody$Outbound =
-  | ListTeamFlagSettingsResponseBody2$Outbound
-  | ListTeamFlagSettingsResponseBody1$Outbound;
 
-/** @internal */
-export const ListTeamFlagSettingsResponseBody$outboundSchema: z.ZodType<
-  ListTeamFlagSettingsResponseBody$Outbound,
-  z.ZodTypeDef,
-  ListTeamFlagSettingsResponseBody
-> = smartUnion([
-  z.lazy(() => ListTeamFlagSettingsResponseBody2$outboundSchema),
-  z.lazy(() => ListTeamFlagSettingsResponseBody1$outboundSchema),
-]);
-
-export function listTeamFlagSettingsResponseBodyToJSON(
-  listTeamFlagSettingsResponseBody: ListTeamFlagSettingsResponseBody,
-): string {
-  return JSON.stringify(
-    ListTeamFlagSettingsResponseBody$outboundSchema.parse(
-      listTeamFlagSettingsResponseBody,
-    ),
-  );
-}
 export function listTeamFlagSettingsResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<ListTeamFlagSettingsResponseBody, SDKValidationError> {

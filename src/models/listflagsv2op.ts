@@ -7,17 +7,10 @@ import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
-import {
-  Flag,
-  Flag$inboundSchema,
-  Flag$Outbound,
-  Flag$outboundSchema,
-} from "./flag.js";
+import { Flag, Flag$inboundSchema } from "./flag.js";
 import {
   MarketplaceFlag,
   MarketplaceFlag$inboundSchema,
-  MarketplaceFlag$Outbound,
-  MarketplaceFlag$outboundSchema,
 } from "./marketplaceflag.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
@@ -84,30 +77,10 @@ export type ListFlagsV2ResponseBody = {
 };
 
 /** @internal */
-export const QueryParamState$inboundSchema: z.ZodNativeEnum<
-  typeof QueryParamState
-> = z.nativeEnum(QueryParamState);
-/** @internal */
 export const QueryParamState$outboundSchema: z.ZodNativeEnum<
   typeof QueryParamState
-> = QueryParamState$inboundSchema;
+> = z.nativeEnum(QueryParamState);
 
-/** @internal */
-export const ListFlagsV2Request$inboundSchema: z.ZodType<
-  ListFlagsV2Request,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  projectIdOrName: types.string(),
-  state: types.optional(QueryParamState$inboundSchema),
-  limit: types.number().default(25),
-  cursor: types.optional(types.string()),
-  search: types.optional(types.string()),
-  tags: types.optional(z.array(types.string())),
-  includeMarketplaceFlags: types.optional(types.boolean()),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
 /** @internal */
 export type ListFlagsV2Request$Outbound = {
   projectIdOrName: string;
@@ -145,15 +118,6 @@ export function listFlagsV2RequestToJSON(
     ListFlagsV2Request$outboundSchema.parse(listFlagsV2Request),
   );
 }
-export function listFlagsV2RequestFromJSON(
-  jsonString: string,
-): SafeParseResult<ListFlagsV2Request, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ListFlagsV2Request$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ListFlagsV2Request' from JSON`,
-  );
-}
 
 /** @internal */
 export const ListFlagsV2Pagination$inboundSchema: z.ZodType<
@@ -163,27 +127,7 @@ export const ListFlagsV2Pagination$inboundSchema: z.ZodType<
 > = z.object({
   next: types.nullable(types.string()),
 });
-/** @internal */
-export type ListFlagsV2Pagination$Outbound = {
-  next: string | null;
-};
 
-/** @internal */
-export const ListFlagsV2Pagination$outboundSchema: z.ZodType<
-  ListFlagsV2Pagination$Outbound,
-  z.ZodTypeDef,
-  ListFlagsV2Pagination
-> = z.object({
-  next: z.nullable(z.string()),
-});
-
-export function listFlagsV2PaginationToJSON(
-  listFlagsV2Pagination: ListFlagsV2Pagination,
-): string {
-  return JSON.stringify(
-    ListFlagsV2Pagination$outboundSchema.parse(listFlagsV2Pagination),
-  );
-}
 export function listFlagsV2PaginationFromJSON(
   jsonString: string,
 ): SafeParseResult<ListFlagsV2Pagination, SDKValidationError> {
@@ -203,26 +147,7 @@ export const ListFlagsV2Data$inboundSchema: z.ZodType<
   Flag$inboundSchema.and(z.object({ typeName: z.literal("flag") })),
   MarketplaceFlag$inboundSchema,
 ]);
-/** @internal */
-export type ListFlagsV2Data$Outbound =
-  | (Flag$Outbound & { typeName: "flag" })
-  | MarketplaceFlag$Outbound;
 
-/** @internal */
-export const ListFlagsV2Data$outboundSchema: z.ZodType<
-  ListFlagsV2Data$Outbound,
-  z.ZodTypeDef,
-  ListFlagsV2Data
-> = z.union([
-  Flag$outboundSchema.and(z.object({ typeName: z.literal("flag") })),
-  MarketplaceFlag$outboundSchema,
-]);
-
-export function listFlagsV2DataToJSON(
-  listFlagsV2Data: ListFlagsV2Data,
-): string {
-  return JSON.stringify(ListFlagsV2Data$outboundSchema.parse(listFlagsV2Data));
-}
 export function listFlagsV2DataFromJSON(
   jsonString: string,
 ): SafeParseResult<ListFlagsV2Data, SDKValidationError> {
@@ -247,36 +172,7 @@ export const ListFlagsV2ResponseBody$inboundSchema: z.ZodType<
     ]),
   ),
 });
-/** @internal */
-export type ListFlagsV2ResponseBody$Outbound = {
-  pagination: ListFlagsV2Pagination$Outbound;
-  data: Array<
-    (Flag$Outbound & { typeName: "flag" }) | MarketplaceFlag$Outbound
-  >;
-};
 
-/** @internal */
-export const ListFlagsV2ResponseBody$outboundSchema: z.ZodType<
-  ListFlagsV2ResponseBody$Outbound,
-  z.ZodTypeDef,
-  ListFlagsV2ResponseBody
-> = z.object({
-  pagination: z.lazy(() => ListFlagsV2Pagination$outboundSchema),
-  data: z.array(
-    z.union([
-      Flag$outboundSchema.and(z.object({ typeName: z.literal("flag") })),
-      MarketplaceFlag$outboundSchema,
-    ]),
-  ),
-});
-
-export function listFlagsV2ResponseBodyToJSON(
-  listFlagsV2ResponseBody: ListFlagsV2ResponseBody,
-): string {
-  return JSON.stringify(
-    ListFlagsV2ResponseBody$outboundSchema.parse(listFlagsV2ResponseBody),
-  );
-}
 export function listFlagsV2ResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<ListFlagsV2ResponseBody, SDKValidationError> {

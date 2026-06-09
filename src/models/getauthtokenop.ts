@@ -5,13 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
-import * as types from "../types/primitives.js";
-import {
-  AuthToken,
-  AuthToken$inboundSchema,
-  AuthToken$Outbound,
-  AuthToken$outboundSchema,
-} from "./authtoken.js";
+import { AuthToken, AuthToken$inboundSchema } from "./authtoken.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type GetAuthTokenRequest = {
@@ -31,14 +25,6 @@ export type GetAuthTokenResponseBody = {
   token: AuthToken;
 };
 
-/** @internal */
-export const GetAuthTokenRequest$inboundSchema: z.ZodType<
-  GetAuthTokenRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  tokenId: types.string(),
-});
 /** @internal */
 export type GetAuthTokenRequest$Outbound = {
   tokenId: string;
@@ -60,15 +46,6 @@ export function getAuthTokenRequestToJSON(
     GetAuthTokenRequest$outboundSchema.parse(getAuthTokenRequest),
   );
 }
-export function getAuthTokenRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetAuthTokenRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetAuthTokenRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetAuthTokenRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const GetAuthTokenResponseBody$inboundSchema: z.ZodType<
@@ -78,27 +55,7 @@ export const GetAuthTokenResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   token: AuthToken$inboundSchema,
 });
-/** @internal */
-export type GetAuthTokenResponseBody$Outbound = {
-  token: AuthToken$Outbound;
-};
 
-/** @internal */
-export const GetAuthTokenResponseBody$outboundSchema: z.ZodType<
-  GetAuthTokenResponseBody$Outbound,
-  z.ZodTypeDef,
-  GetAuthTokenResponseBody
-> = z.object({
-  token: AuthToken$outboundSchema,
-});
-
-export function getAuthTokenResponseBodyToJSON(
-  getAuthTokenResponseBody: GetAuthTokenResponseBody,
-): string {
-  return JSON.stringify(
-    GetAuthTokenResponseBody$outboundSchema.parse(getAuthTokenResponseBody),
-  );
-}
 export function getAuthTokenResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetAuthTokenResponseBody, SDKValidationError> {

@@ -4,11 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
-import { Result as SafeParseResult } from "../types/fp.js";
-import * as types from "../types/primitives.js";
-import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
  * One of `LOCAL` or `REMOTE`. `LOCAL` specifies that the cache event was from the user's filesystem cache. `REMOTE` specifies that the cache event is from a remote cache.
@@ -78,34 +74,15 @@ export type RecordEventsRequest = {
 };
 
 /** @internal */
-export const RecordEventsSource$inboundSchema: z.ZodNativeEnum<
-  typeof RecordEventsSource
-> = z.nativeEnum(RecordEventsSource);
-/** @internal */
 export const RecordEventsSource$outboundSchema: z.ZodNativeEnum<
   typeof RecordEventsSource
-> = RecordEventsSource$inboundSchema;
+> = z.nativeEnum(RecordEventsSource);
 
 /** @internal */
-export const Event$inboundSchema: z.ZodNativeEnum<typeof Event> = z.nativeEnum(
+export const Event$outboundSchema: z.ZodNativeEnum<typeof Event> = z.nativeEnum(
   Event,
 );
-/** @internal */
-export const Event$outboundSchema: z.ZodNativeEnum<typeof Event> =
-  Event$inboundSchema;
 
-/** @internal */
-export const RequestBody$inboundSchema: z.ZodType<
-  RequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  sessionId: types.string(),
-  source: RecordEventsSource$inboundSchema,
-  event: Event$inboundSchema,
-  hash: types.string(),
-  duration: types.optional(types.number()),
-});
 /** @internal */
 export type RequestBody$Outbound = {
   sessionId: string;
@@ -131,34 +108,7 @@ export const RequestBody$outboundSchema: z.ZodType<
 export function requestBodyToJSON(requestBody: RequestBody): string {
   return JSON.stringify(RequestBody$outboundSchema.parse(requestBody));
 }
-export function requestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<RequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const RecordEventsRequest$inboundSchema: z.ZodType<
-  RecordEventsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  "'x-Artifact-Client-Ci'": types.optional(types.string()),
-  "'x-Artifact-Client-Interactive'": types.optional(types.number()),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-  RequestBody: z.array(z.lazy(() => RequestBody$inboundSchema)),
-}).transform((v) => {
-  return remap$(v, {
-    "'x-Artifact-Client-Ci'": "xArtifactClientCi",
-    "'x-Artifact-Client-Interactive'": "xArtifactClientInteractive",
-    "RequestBody": "requestBody",
-  });
-});
 /** @internal */
 export type RecordEventsRequest$Outbound = {
   "'x-Artifact-Client-Ci'"?: string | undefined;
@@ -192,14 +142,5 @@ export function recordEventsRequestToJSON(
 ): string {
   return JSON.stringify(
     RecordEventsRequest$outboundSchema.parse(recordEventsRequest),
-  );
-}
-export function recordEventsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<RecordEventsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RecordEventsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RecordEventsRequest' from JSON`,
   );
 }

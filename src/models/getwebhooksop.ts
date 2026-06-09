@@ -198,6 +198,7 @@ export const GetWebhooksResponseBodyFramework = {
   Eleventy: "eleventy",
   Elysia: "elysia",
   Ember: "ember",
+  Eve: "eve",
   Express: "express",
   Fastapi: "fastapi",
   Fasthtml: "fasthtml",
@@ -428,16 +429,6 @@ export type GetWebhooksResponseBody =
   | Array<GetWebhooksResponseBody2>;
 
 /** @internal */
-export const GetWebhooksRequest$inboundSchema: z.ZodType<
-  GetWebhooksRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  projectId: types.optional(types.string()),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
-/** @internal */
 export type GetWebhooksRequest$Outbound = {
   projectId?: string | undefined;
   teamId?: string | undefined;
@@ -462,24 +453,11 @@ export function getWebhooksRequestToJSON(
     GetWebhooksRequest$outboundSchema.parse(getWebhooksRequest),
   );
 }
-export function getWebhooksRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetWebhooksRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetWebhooksRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetWebhooksRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const GetWebhooksResponseBodyEvents$inboundSchema: z.ZodNativeEnum<
   typeof GetWebhooksResponseBodyEvents
 > = z.nativeEnum(GetWebhooksResponseBodyEvents);
-/** @internal */
-export const GetWebhooksResponseBodyEvents$outboundSchema: z.ZodNativeEnum<
-  typeof GetWebhooksResponseBodyEvents
-> = GetWebhooksResponseBodyEvents$inboundSchema;
 
 /** @internal */
 export const GetWebhooksResponseBody2$inboundSchema: z.ZodType<
@@ -495,39 +473,7 @@ export const GetWebhooksResponseBody2$inboundSchema: z.ZodType<
   updatedAt: types.number(),
   projectIds: types.optional(z.array(types.string())),
 });
-/** @internal */
-export type GetWebhooksResponseBody2$Outbound = {
-  events: Array<string>;
-  id: string;
-  url: string;
-  ownerId: string;
-  createdAt: number;
-  updatedAt: number;
-  projectIds?: Array<string> | undefined;
-};
 
-/** @internal */
-export const GetWebhooksResponseBody2$outboundSchema: z.ZodType<
-  GetWebhooksResponseBody2$Outbound,
-  z.ZodTypeDef,
-  GetWebhooksResponseBody2
-> = z.object({
-  events: z.array(GetWebhooksResponseBodyEvents$outboundSchema),
-  id: z.string(),
-  url: z.string(),
-  ownerId: z.string(),
-  createdAt: z.number(),
-  updatedAt: z.number(),
-  projectIds: z.array(z.string()).optional(),
-});
-
-export function getWebhooksResponseBody2ToJSON(
-  getWebhooksResponseBody2: GetWebhooksResponseBody2,
-): string {
-  return JSON.stringify(
-    GetWebhooksResponseBody2$outboundSchema.parse(getWebhooksResponseBody2),
-  );
-}
 export function getWebhooksResponseBody2FromJSON(
   jsonString: string,
 ): SafeParseResult<GetWebhooksResponseBody2, SDKValidationError> {
@@ -542,10 +488,6 @@ export function getWebhooksResponseBody2FromJSON(
 export const GetWebhooksResponseBodyFramework$inboundSchema: z.ZodNativeEnum<
   typeof GetWebhooksResponseBodyFramework
 > = z.nativeEnum(GetWebhooksResponseBodyFramework);
-/** @internal */
-export const GetWebhooksResponseBodyFramework$outboundSchema: z.ZodNativeEnum<
-  typeof GetWebhooksResponseBodyFramework
-> = GetWebhooksResponseBodyFramework$inboundSchema;
 
 /** @internal */
 export const GetWebhooksResponseBodyProjectsMetadata$inboundSchema: z.ZodType<
@@ -559,37 +501,7 @@ export const GetWebhooksResponseBodyProjectsMetadata$inboundSchema: z.ZodType<
     .optional(),
   latestDeployment: types.optional(types.string()),
 });
-/** @internal */
-export type GetWebhooksResponseBodyProjectsMetadata$Outbound = {
-  id: string;
-  name: string;
-  framework?: string | null | undefined;
-  latestDeployment?: string | undefined;
-};
 
-/** @internal */
-export const GetWebhooksResponseBodyProjectsMetadata$outboundSchema: z.ZodType<
-  GetWebhooksResponseBodyProjectsMetadata$Outbound,
-  z.ZodTypeDef,
-  GetWebhooksResponseBodyProjectsMetadata
-> = z.object({
-  id: z.string(),
-  name: z.string(),
-  framework: z.nullable(GetWebhooksResponseBodyFramework$outboundSchema)
-    .optional(),
-  latestDeployment: z.string().optional(),
-});
-
-export function getWebhooksResponseBodyProjectsMetadataToJSON(
-  getWebhooksResponseBodyProjectsMetadata:
-    GetWebhooksResponseBodyProjectsMetadata,
-): string {
-  return JSON.stringify(
-    GetWebhooksResponseBodyProjectsMetadata$outboundSchema.parse(
-      getWebhooksResponseBodyProjectsMetadata,
-    ),
-  );
-}
 export function getWebhooksResponseBodyProjectsMetadataFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -610,10 +522,6 @@ export function getWebhooksResponseBodyProjectsMetadataFromJSON(
 export const ResponseBodyEvents$inboundSchema: z.ZodNativeEnum<
   typeof ResponseBodyEvents
 > = z.nativeEnum(ResponseBodyEvents);
-/** @internal */
-export const ResponseBodyEvents$outboundSchema: z.ZodNativeEnum<
-  typeof ResponseBodyEvents
-> = ResponseBodyEvents$inboundSchema;
 
 /** @internal */
 export const GetWebhooksResponseBody1$inboundSchema: z.ZodType<
@@ -634,47 +542,7 @@ export const GetWebhooksResponseBody1$inboundSchema: z.ZodType<
   updatedAt: types.number(),
   projectIds: types.optional(z.array(types.string())),
 });
-/** @internal */
-export type GetWebhooksResponseBody1$Outbound = {
-  projectsMetadata:
-    | Array<GetWebhooksResponseBodyProjectsMetadata$Outbound>
-    | null;
-  events: Array<string>;
-  id: string;
-  url: string;
-  ownerId: string;
-  createdAt: number;
-  updatedAt: number;
-  projectIds?: Array<string> | undefined;
-};
 
-/** @internal */
-export const GetWebhooksResponseBody1$outboundSchema: z.ZodType<
-  GetWebhooksResponseBody1$Outbound,
-  z.ZodTypeDef,
-  GetWebhooksResponseBody1
-> = z.object({
-  projectsMetadata: z.nullable(
-    z.array(
-      z.lazy(() => GetWebhooksResponseBodyProjectsMetadata$outboundSchema),
-    ),
-  ),
-  events: z.array(ResponseBodyEvents$outboundSchema),
-  id: z.string(),
-  url: z.string(),
-  ownerId: z.string(),
-  createdAt: z.number(),
-  updatedAt: z.number(),
-  projectIds: z.array(z.string()).optional(),
-});
-
-export function getWebhooksResponseBody1ToJSON(
-  getWebhooksResponseBody1: GetWebhooksResponseBody1,
-): string {
-  return JSON.stringify(
-    GetWebhooksResponseBody1$outboundSchema.parse(getWebhooksResponseBody1),
-  );
-}
 export function getWebhooksResponseBody1FromJSON(
   jsonString: string,
 ): SafeParseResult<GetWebhooksResponseBody1, SDKValidationError> {
@@ -694,28 +562,7 @@ export const GetWebhooksResponseBody$inboundSchema: z.ZodType<
   z.array(z.lazy(() => GetWebhooksResponseBody1$inboundSchema)),
   z.array(z.lazy(() => GetWebhooksResponseBody2$inboundSchema)),
 ]);
-/** @internal */
-export type GetWebhooksResponseBody$Outbound =
-  | Array<GetWebhooksResponseBody1$Outbound>
-  | Array<GetWebhooksResponseBody2$Outbound>;
 
-/** @internal */
-export const GetWebhooksResponseBody$outboundSchema: z.ZodType<
-  GetWebhooksResponseBody$Outbound,
-  z.ZodTypeDef,
-  GetWebhooksResponseBody
-> = smartUnion([
-  z.array(z.lazy(() => GetWebhooksResponseBody1$outboundSchema)),
-  z.array(z.lazy(() => GetWebhooksResponseBody2$outboundSchema)),
-]);
-
-export function getWebhooksResponseBodyToJSON(
-  getWebhooksResponseBody: GetWebhooksResponseBody,
-): string {
-  return JSON.stringify(
-    GetWebhooksResponseBody$outboundSchema.parse(getWebhooksResponseBody),
-  );
-}
 export function getWebhooksResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetWebhooksResponseBody, SDKValidationError> {

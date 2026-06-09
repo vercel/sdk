@@ -82,15 +82,6 @@ export type PatchDomainResponseBody =
   | PatchDomainResponseBody3;
 
 /** @internal */
-export const PatchDomainRequestBody2$inboundSchema: z.ZodType<
-  PatchDomainRequestBody2,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  op: types.optional(types.string()),
-  destination: types.optional(types.string()),
-});
-/** @internal */
 export type PatchDomainRequestBody2$Outbound = {
   op?: string | undefined;
   destination?: string | undefined;
@@ -113,27 +104,7 @@ export function patchDomainRequestBody2ToJSON(
     PatchDomainRequestBody2$outboundSchema.parse(patchDomainRequestBody2),
   );
 }
-export function patchDomainRequestBody2FromJSON(
-  jsonString: string,
-): SafeParseResult<PatchDomainRequestBody2, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PatchDomainRequestBody2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PatchDomainRequestBody2' from JSON`,
-  );
-}
 
-/** @internal */
-export const PatchDomainRequestBody1$inboundSchema: z.ZodType<
-  PatchDomainRequestBody1,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  op: types.optional(types.string()),
-  renew: types.optional(types.boolean()),
-  customNameservers: types.optional(z.array(types.string())),
-  zone: types.optional(types.boolean()),
-});
 /** @internal */
 export type PatchDomainRequestBody1$Outbound = {
   op?: string | undefined;
@@ -161,25 +132,7 @@ export function patchDomainRequestBody1ToJSON(
     PatchDomainRequestBody1$outboundSchema.parse(patchDomainRequestBody1),
   );
 }
-export function patchDomainRequestBody1FromJSON(
-  jsonString: string,
-): SafeParseResult<PatchDomainRequestBody1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PatchDomainRequestBody1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PatchDomainRequestBody1' from JSON`,
-  );
-}
 
-/** @internal */
-export const PatchDomainRequestBody$inboundSchema: z.ZodType<
-  PatchDomainRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([
-  z.lazy(() => PatchDomainRequestBody1$inboundSchema),
-  z.lazy(() => PatchDomainRequestBody2$inboundSchema),
-]);
 /** @internal */
 export type PatchDomainRequestBody$Outbound =
   | PatchDomainRequestBody1$Outbound
@@ -202,34 +155,7 @@ export function patchDomainRequestBodyToJSON(
     PatchDomainRequestBody$outboundSchema.parse(patchDomainRequestBody),
   );
 }
-export function patchDomainRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<PatchDomainRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PatchDomainRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PatchDomainRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const PatchDomainRequest$inboundSchema: z.ZodType<
-  PatchDomainRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  domain: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-  RequestBody: smartUnion([
-    z.lazy(() => PatchDomainRequestBody1$inboundSchema),
-    z.lazy(() => PatchDomainRequestBody2$inboundSchema),
-  ]),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 /** @internal */
 export type PatchDomainRequest$Outbound = {
   domain: string;
@@ -266,15 +192,6 @@ export function patchDomainRequestToJSON(
     PatchDomainRequest$outboundSchema.parse(patchDomainRequest),
   );
 }
-export function patchDomainRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<PatchDomainRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PatchDomainRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PatchDomainRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const PatchDomainResponseBody3$inboundSchema: z.ZodType<
@@ -286,31 +203,7 @@ export const PatchDomainResponseBody3$inboundSchema: z.ZodType<
   customNameservers: types.optional(z.array(types.string())),
   zone: types.optional(types.boolean()),
 });
-/** @internal */
-export type PatchDomainResponseBody3$Outbound = {
-  renew?: boolean | undefined;
-  customNameservers?: Array<string> | undefined;
-  zone?: boolean | undefined;
-};
 
-/** @internal */
-export const PatchDomainResponseBody3$outboundSchema: z.ZodType<
-  PatchDomainResponseBody3$Outbound,
-  z.ZodTypeDef,
-  PatchDomainResponseBody3
-> = z.object({
-  renew: z.boolean().optional(),
-  customNameservers: z.array(z.string()).optional(),
-  zone: z.boolean().optional(),
-});
-
-export function patchDomainResponseBody3ToJSON(
-  patchDomainResponseBody3: PatchDomainResponseBody3,
-): string {
-  return JSON.stringify(
-    PatchDomainResponseBody3$outboundSchema.parse(patchDomainResponseBody3),
-  );
-}
 export function patchDomainResponseBody3FromJSON(
   jsonString: string,
 ): SafeParseResult<PatchDomainResponseBody3, SDKValidationError> {
@@ -330,29 +223,7 @@ export const PatchDomainResponseBody2$inboundSchema: z.ZodType<
   moved: types.boolean(),
   token: types.string(),
 });
-/** @internal */
-export type PatchDomainResponseBody2$Outbound = {
-  moved: boolean;
-  token: string;
-};
 
-/** @internal */
-export const PatchDomainResponseBody2$outboundSchema: z.ZodType<
-  PatchDomainResponseBody2$Outbound,
-  z.ZodTypeDef,
-  PatchDomainResponseBody2
-> = z.object({
-  moved: z.boolean(),
-  token: z.string(),
-});
-
-export function patchDomainResponseBody2ToJSON(
-  patchDomainResponseBody2: PatchDomainResponseBody2,
-): string {
-  return JSON.stringify(
-    PatchDomainResponseBody2$outboundSchema.parse(patchDomainResponseBody2),
-  );
-}
 export function patchDomainResponseBody2FromJSON(
   jsonString: string,
 ): SafeParseResult<PatchDomainResponseBody2, SDKValidationError> {
@@ -371,27 +242,7 @@ export const PatchDomainResponseBody1$inboundSchema: z.ZodType<
 > = z.object({
   moved: types.boolean(),
 });
-/** @internal */
-export type PatchDomainResponseBody1$Outbound = {
-  moved: boolean;
-};
 
-/** @internal */
-export const PatchDomainResponseBody1$outboundSchema: z.ZodType<
-  PatchDomainResponseBody1$Outbound,
-  z.ZodTypeDef,
-  PatchDomainResponseBody1
-> = z.object({
-  moved: z.boolean(),
-});
-
-export function patchDomainResponseBody1ToJSON(
-  patchDomainResponseBody1: PatchDomainResponseBody1,
-): string {
-  return JSON.stringify(
-    PatchDomainResponseBody1$outboundSchema.parse(patchDomainResponseBody1),
-  );
-}
 export function patchDomainResponseBody1FromJSON(
   jsonString: string,
 ): SafeParseResult<PatchDomainResponseBody1, SDKValidationError> {
@@ -412,30 +263,7 @@ export const PatchDomainResponseBody$inboundSchema: z.ZodType<
   z.lazy(() => PatchDomainResponseBody1$inboundSchema),
   z.lazy(() => PatchDomainResponseBody3$inboundSchema),
 ]);
-/** @internal */
-export type PatchDomainResponseBody$Outbound =
-  | PatchDomainResponseBody2$Outbound
-  | PatchDomainResponseBody1$Outbound
-  | PatchDomainResponseBody3$Outbound;
 
-/** @internal */
-export const PatchDomainResponseBody$outboundSchema: z.ZodType<
-  PatchDomainResponseBody$Outbound,
-  z.ZodTypeDef,
-  PatchDomainResponseBody
-> = smartUnion([
-  z.lazy(() => PatchDomainResponseBody2$outboundSchema),
-  z.lazy(() => PatchDomainResponseBody1$outboundSchema),
-  z.lazy(() => PatchDomainResponseBody3$outboundSchema),
-]);
-
-export function patchDomainResponseBodyToJSON(
-  patchDomainResponseBody: PatchDomainResponseBody,
-): string {
-  return JSON.stringify(
-    PatchDomainResponseBody$outboundSchema.parse(patchDomainResponseBody),
-  );
-}
 export function patchDomainResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<PatchDomainResponseBody, SDKValidationError> {

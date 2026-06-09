@@ -50,17 +50,6 @@ export type VerifyProjectDomainResponseBody = {
 };
 
 /** @internal */
-export const VerifyProjectDomainRequest$inboundSchema: z.ZodType<
-  VerifyProjectDomainRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  idOrName: types.string(),
-  domain: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
-/** @internal */
 export type VerifyProjectDomainRequest$Outbound = {
   idOrName: string;
   domain: string;
@@ -87,15 +76,6 @@ export function verifyProjectDomainRequestToJSON(
     VerifyProjectDomainRequest$outboundSchema.parse(verifyProjectDomainRequest),
   );
 }
-export function verifyProjectDomainRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<VerifyProjectDomainRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => VerifyProjectDomainRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'VerifyProjectDomainRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const VerifyProjectDomainResponseBody$inboundSchema: z.ZodType<
@@ -114,47 +94,7 @@ export const VerifyProjectDomainResponseBody$inboundSchema: z.ZodType<
   createdAt: types.optional(types.number()),
   verified: types.boolean(),
 });
-/** @internal */
-export type VerifyProjectDomainResponseBody$Outbound = {
-  name: string;
-  apexName: string;
-  projectId: string;
-  redirect?: string | null | undefined;
-  redirectStatusCode?: number | null | undefined;
-  gitBranch?: string | null | undefined;
-  customEnvironmentId?: string | null | undefined;
-  updatedAt?: number | undefined;
-  createdAt?: number | undefined;
-  verified: boolean;
-};
 
-/** @internal */
-export const VerifyProjectDomainResponseBody$outboundSchema: z.ZodType<
-  VerifyProjectDomainResponseBody$Outbound,
-  z.ZodTypeDef,
-  VerifyProjectDomainResponseBody
-> = z.object({
-  name: z.string(),
-  apexName: z.string(),
-  projectId: z.string(),
-  redirect: z.nullable(z.string()).optional(),
-  redirectStatusCode: z.nullable(z.number()).optional(),
-  gitBranch: z.nullable(z.string()).optional(),
-  customEnvironmentId: z.nullable(z.string()).optional(),
-  updatedAt: z.number().optional(),
-  createdAt: z.number().optional(),
-  verified: z.boolean(),
-});
-
-export function verifyProjectDomainResponseBodyToJSON(
-  verifyProjectDomainResponseBody: VerifyProjectDomainResponseBody,
-): string {
-  return JSON.stringify(
-    VerifyProjectDomainResponseBody$outboundSchema.parse(
-      verifyProjectDomainResponseBody,
-    ),
-  );
-}
 export function verifyProjectDomainResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<VerifyProjectDomainResponseBody, SDKValidationError> {

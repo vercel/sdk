@@ -4,12 +4,8 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
-import { Result as SafeParseResult } from "../types/fp.js";
-import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
-import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type DangerouslyDeleteByTagsTags = Array<string> | string;
 
@@ -41,12 +37,6 @@ export type DangerouslyDeleteByTagsRequest = {
 };
 
 /** @internal */
-export const DangerouslyDeleteByTagsTags$inboundSchema: z.ZodType<
-  DangerouslyDeleteByTagsTags,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([z.array(types.string()), types.string()]);
-/** @internal */
 export type DangerouslyDeleteByTagsTags$Outbound = Array<string> | string;
 
 /** @internal */
@@ -65,35 +55,12 @@ export function dangerouslyDeleteByTagsTagsToJSON(
     ),
   );
 }
-export function dangerouslyDeleteByTagsTagsFromJSON(
-  jsonString: string,
-): SafeParseResult<DangerouslyDeleteByTagsTags, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => DangerouslyDeleteByTagsTags$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DangerouslyDeleteByTagsTags' from JSON`,
-  );
-}
 
-/** @internal */
-export const DangerouslyDeleteByTagsTarget$inboundSchema: z.ZodNativeEnum<
-  typeof DangerouslyDeleteByTagsTarget
-> = z.nativeEnum(DangerouslyDeleteByTagsTarget);
 /** @internal */
 export const DangerouslyDeleteByTagsTarget$outboundSchema: z.ZodNativeEnum<
   typeof DangerouslyDeleteByTagsTarget
-> = DangerouslyDeleteByTagsTarget$inboundSchema;
+> = z.nativeEnum(DangerouslyDeleteByTagsTarget);
 
-/** @internal */
-export const DangerouslyDeleteByTagsRequestBody$inboundSchema: z.ZodType<
-  DangerouslyDeleteByTagsRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  revalidationDeadlineSeconds: types.optional(types.number()),
-  tags: smartUnion([z.array(types.string()), types.string()]),
-  target: types.optional(DangerouslyDeleteByTagsTarget$inboundSchema),
-});
 /** @internal */
 export type DangerouslyDeleteByTagsRequestBody$Outbound = {
   revalidationDeadlineSeconds?: number | undefined;
@@ -121,34 +88,7 @@ export function dangerouslyDeleteByTagsRequestBodyToJSON(
     ),
   );
 }
-export function dangerouslyDeleteByTagsRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<DangerouslyDeleteByTagsRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      DangerouslyDeleteByTagsRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DangerouslyDeleteByTagsRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const DangerouslyDeleteByTagsRequest$inboundSchema: z.ZodType<
-  DangerouslyDeleteByTagsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  projectIdOrName: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-  RequestBody: types.optional(
-    z.lazy(() => DangerouslyDeleteByTagsRequestBody$inboundSchema),
-  ),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 /** @internal */
 export type DangerouslyDeleteByTagsRequest$Outbound = {
   projectIdOrName: string;
@@ -181,14 +121,5 @@ export function dangerouslyDeleteByTagsRequestToJSON(
     DangerouslyDeleteByTagsRequest$outboundSchema.parse(
       dangerouslyDeleteByTagsRequest,
     ),
-  );
-}
-export function dangerouslyDeleteByTagsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<DangerouslyDeleteByTagsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => DangerouslyDeleteByTagsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DangerouslyDeleteByTagsRequest' from JSON`,
   );
 }

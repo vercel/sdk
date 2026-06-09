@@ -193,15 +193,6 @@ export type GetInvoiceResponseBody = {
 };
 
 /** @internal */
-export const GetInvoiceRequest$inboundSchema: z.ZodType<
-  GetInvoiceRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  integrationConfigurationId: types.string(),
-  invoiceId: types.string(),
-});
-/** @internal */
 export type GetInvoiceRequest$Outbound = {
   integrationConfigurationId: string;
   invoiceId: string;
@@ -224,24 +215,11 @@ export function getInvoiceRequestToJSON(
     GetInvoiceRequest$outboundSchema.parse(getInvoiceRequest),
   );
 }
-export function getInvoiceRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetInvoiceRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetInvoiceRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetInvoiceRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const GetInvoiceState$inboundSchema: z.ZodNativeEnum<
   typeof GetInvoiceState
 > = z.nativeEnum(GetInvoiceState);
-/** @internal */
-export const GetInvoiceState$outboundSchema: z.ZodNativeEnum<
-  typeof GetInvoiceState
-> = GetInvoiceState$inboundSchema;
 
 /** @internal */
 export const GetInvoicePeriod$inboundSchema: z.ZodType<
@@ -252,29 +230,7 @@ export const GetInvoicePeriod$inboundSchema: z.ZodType<
   start: types.string(),
   end: types.string(),
 });
-/** @internal */
-export type GetInvoicePeriod$Outbound = {
-  start: string;
-  end: string;
-};
 
-/** @internal */
-export const GetInvoicePeriod$outboundSchema: z.ZodType<
-  GetInvoicePeriod$Outbound,
-  z.ZodTypeDef,
-  GetInvoicePeriod
-> = z.object({
-  start: z.string(),
-  end: z.string(),
-});
-
-export function getInvoicePeriodToJSON(
-  getInvoicePeriod: GetInvoicePeriod,
-): string {
-  return JSON.stringify(
-    GetInvoicePeriod$outboundSchema.parse(getInvoicePeriod),
-  );
-}
 export function getInvoicePeriodFromJSON(
   jsonString: string,
 ): SafeParseResult<GetInvoicePeriod, SDKValidationError> {
@@ -302,43 +258,7 @@ export const GetInvoiceItems$inboundSchema: z.ZodType<
   units: types.string(),
   total: types.string(),
 });
-/** @internal */
-export type GetInvoiceItems$Outbound = {
-  billingPlanId: string;
-  resourceId?: string | undefined;
-  start?: string | undefined;
-  end?: string | undefined;
-  name: string;
-  details?: string | undefined;
-  price: string;
-  quantity: number;
-  units: string;
-  total: string;
-};
 
-/** @internal */
-export const GetInvoiceItems$outboundSchema: z.ZodType<
-  GetInvoiceItems$Outbound,
-  z.ZodTypeDef,
-  GetInvoiceItems
-> = z.object({
-  billingPlanId: z.string(),
-  resourceId: z.string().optional(),
-  start: z.string().optional(),
-  end: z.string().optional(),
-  name: z.string(),
-  details: z.string().optional(),
-  price: z.string(),
-  quantity: z.number(),
-  units: z.string(),
-  total: z.string(),
-});
-
-export function getInvoiceItemsToJSON(
-  getInvoiceItems: GetInvoiceItems,
-): string {
-  return JSON.stringify(GetInvoiceItems$outboundSchema.parse(getInvoiceItems));
-}
 export function getInvoiceItemsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetInvoiceItems, SDKValidationError> {
@@ -363,39 +283,7 @@ export const GetInvoiceDiscounts$inboundSchema: z.ZodType<
   details: types.optional(types.string()),
   amount: types.string(),
 });
-/** @internal */
-export type GetInvoiceDiscounts$Outbound = {
-  billingPlanId: string;
-  resourceId?: string | undefined;
-  start?: string | undefined;
-  end?: string | undefined;
-  name: string;
-  details?: string | undefined;
-  amount: string;
-};
 
-/** @internal */
-export const GetInvoiceDiscounts$outboundSchema: z.ZodType<
-  GetInvoiceDiscounts$Outbound,
-  z.ZodTypeDef,
-  GetInvoiceDiscounts
-> = z.object({
-  billingPlanId: z.string(),
-  resourceId: z.string().optional(),
-  start: z.string().optional(),
-  end: z.string().optional(),
-  name: z.string(),
-  details: z.string().optional(),
-  amount: z.string(),
-});
-
-export function getInvoiceDiscountsToJSON(
-  getInvoiceDiscounts: GetInvoiceDiscounts,
-): string {
-  return JSON.stringify(
-    GetInvoiceDiscounts$outboundSchema.parse(getInvoiceDiscounts),
-  );
-}
 export function getInvoiceDiscountsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetInvoiceDiscounts, SDKValidationError> {
@@ -432,60 +320,7 @@ export const GetInvoiceResponseBody$inboundSchema: z.ZodType<
   created: types.string(),
   updated: types.string(),
 });
-/** @internal */
-export type GetInvoiceResponseBody$Outbound = {
-  test?: boolean | undefined;
-  invoiceId: string;
-  externalId?: string | undefined;
-  state: string;
-  invoiceNumber?: string | undefined;
-  invoiceDate: string;
-  period: GetInvoicePeriod$Outbound;
-  paidAt?: string | undefined;
-  refundedAt?: string | undefined;
-  memo?: string | undefined;
-  items: Array<GetInvoiceItems$Outbound>;
-  discounts?: Array<GetInvoiceDiscounts$Outbound> | undefined;
-  total: string;
-  refundReason?: string | undefined;
-  refundTotal?: string | undefined;
-  created: string;
-  updated: string;
-};
 
-/** @internal */
-export const GetInvoiceResponseBody$outboundSchema: z.ZodType<
-  GetInvoiceResponseBody$Outbound,
-  z.ZodTypeDef,
-  GetInvoiceResponseBody
-> = z.object({
-  test: z.boolean().optional(),
-  invoiceId: z.string(),
-  externalId: z.string().optional(),
-  state: GetInvoiceState$outboundSchema,
-  invoiceNumber: z.string().optional(),
-  invoiceDate: z.string(),
-  period: z.lazy(() => GetInvoicePeriod$outboundSchema),
-  paidAt: z.string().optional(),
-  refundedAt: z.string().optional(),
-  memo: z.string().optional(),
-  items: z.array(z.lazy(() => GetInvoiceItems$outboundSchema)),
-  discounts: z.array(z.lazy(() => GetInvoiceDiscounts$outboundSchema))
-    .optional(),
-  total: z.string(),
-  refundReason: z.string().optional(),
-  refundTotal: z.string().optional(),
-  created: z.string(),
-  updated: z.string(),
-});
-
-export function getInvoiceResponseBodyToJSON(
-  getInvoiceResponseBody: GetInvoiceResponseBody,
-): string {
-  return JSON.stringify(
-    GetInvoiceResponseBody$outboundSchema.parse(getInvoiceResponseBody),
-  );
-}
 export function getInvoiceResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetInvoiceResponseBody, SDKValidationError> {

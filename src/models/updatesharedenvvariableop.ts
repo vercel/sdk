@@ -270,23 +270,10 @@ export type UpdateSharedEnvVariableResponseBody = {
 };
 
 /** @internal */
-export const UpdateSharedEnvVariableTarget$inboundSchema: z.ZodNativeEnum<
-  typeof UpdateSharedEnvVariableTarget
-> = z.nativeEnum(UpdateSharedEnvVariableTarget);
-/** @internal */
 export const UpdateSharedEnvVariableTarget$outboundSchema: z.ZodNativeEnum<
   typeof UpdateSharedEnvVariableTarget
-> = UpdateSharedEnvVariableTarget$inboundSchema;
+> = z.nativeEnum(UpdateSharedEnvVariableTarget);
 
-/** @internal */
-export const ProjectIdUpdates$inboundSchema: z.ZodType<
-  ProjectIdUpdates,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  link: types.optional(z.array(types.string())),
-  unlink: types.optional(z.array(types.string())),
-});
 /** @internal */
 export type ProjectIdUpdates$Outbound = {
   link?: Array<string> | undefined;
@@ -310,40 +297,12 @@ export function projectIdUpdatesToJSON(
     ProjectIdUpdates$outboundSchema.parse(projectIdUpdates),
   );
 }
-export function projectIdUpdatesFromJSON(
-  jsonString: string,
-): SafeParseResult<ProjectIdUpdates, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ProjectIdUpdates$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ProjectIdUpdates' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateSharedEnvVariableType$inboundSchema: z.ZodNativeEnum<
-  typeof UpdateSharedEnvVariableType
-> = z.nativeEnum(UpdateSharedEnvVariableType);
 /** @internal */
 export const UpdateSharedEnvVariableType$outboundSchema: z.ZodNativeEnum<
   typeof UpdateSharedEnvVariableType
-> = UpdateSharedEnvVariableType$inboundSchema;
+> = z.nativeEnum(UpdateSharedEnvVariableType);
 
-/** @internal */
-export const Updates$inboundSchema: z.ZodType<Updates, z.ZodTypeDef, unknown> =
-  z.object({
-    key: types.optional(types.string()),
-    value: types.optional(types.string()),
-    target: types.optional(
-      z.array(UpdateSharedEnvVariableTarget$inboundSchema),
-    ),
-    projectId: types.optional(z.array(types.string())),
-    projectIdUpdates: types.optional(
-      z.lazy(() => ProjectIdUpdates$inboundSchema),
-    ),
-    type: types.optional(UpdateSharedEnvVariableType$inboundSchema),
-    comment: types.optional(types.string()),
-  });
 /** @internal */
 export type Updates$Outbound = {
   key?: string | undefined;
@@ -373,24 +332,7 @@ export const Updates$outboundSchema: z.ZodType<
 export function updatesToJSON(updates: Updates): string {
   return JSON.stringify(Updates$outboundSchema.parse(updates));
 }
-export function updatesFromJSON(
-  jsonString: string,
-): SafeParseResult<Updates, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Updates$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Updates' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateSharedEnvVariableRequestBody$inboundSchema: z.ZodType<
-  UpdateSharedEnvVariableRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  updates: z.record(z.lazy(() => Updates$inboundSchema)),
-});
 /** @internal */
 export type UpdateSharedEnvVariableRequestBody$Outbound = {
   updates: { [k: string]: Updates$Outbound };
@@ -414,33 +356,7 @@ export function updateSharedEnvVariableRequestBodyToJSON(
     ),
   );
 }
-export function updateSharedEnvVariableRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateSharedEnvVariableRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      UpdateSharedEnvVariableRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateSharedEnvVariableRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateSharedEnvVariableRequest$inboundSchema: z.ZodType<
-  UpdateSharedEnvVariableRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-  RequestBody: types.optional(
-    z.lazy(() => UpdateSharedEnvVariableRequestBody$inboundSchema),
-  ),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 /** @internal */
 export type UpdateSharedEnvVariableRequest$Outbound = {
   teamId?: string | undefined;
@@ -473,34 +389,17 @@ export function updateSharedEnvVariableRequestToJSON(
     ),
   );
 }
-export function updateSharedEnvVariableRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateSharedEnvVariableRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateSharedEnvVariableRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateSharedEnvVariableRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const UpdateSharedEnvVariableEnvironmentType$inboundSchema:
   z.ZodNativeEnum<typeof UpdateSharedEnvVariableEnvironmentType> = z.nativeEnum(
     UpdateSharedEnvVariableEnvironmentType,
   );
-/** @internal */
-export const UpdateSharedEnvVariableEnvironmentType$outboundSchema:
-  z.ZodNativeEnum<typeof UpdateSharedEnvVariableEnvironmentType> =
-    UpdateSharedEnvVariableEnvironmentType$inboundSchema;
 
 /** @internal */
 export const UpdateSharedEnvVariableEnvironmentTarget$inboundSchema:
   z.ZodNativeEnum<typeof UpdateSharedEnvVariableEnvironmentTarget> = z
     .nativeEnum(UpdateSharedEnvVariableEnvironmentTarget);
-/** @internal */
-export const UpdateSharedEnvVariableEnvironmentTarget$outboundSchema:
-  z.ZodNativeEnum<typeof UpdateSharedEnvVariableEnvironmentTarget> =
-    UpdateSharedEnvVariableEnvironmentTarget$inboundSchema;
 
 /** @internal */
 export const Updated$inboundSchema: z.ZodType<Updated, z.ZodTypeDef, unknown> =
@@ -527,60 +426,7 @@ export const Updated$inboundSchema: z.ZodType<Updated, z.ZodTypeDef, unknown> =
     comment: types.optional(types.string()),
     lastEditedByDisplayName: types.optional(types.string()),
   });
-/** @internal */
-export type Updated$Outbound = {
-  created?: string | undefined;
-  key?: string | undefined;
-  ownerId?: string | null | undefined;
-  id?: string | undefined;
-  createdBy?: string | null | undefined;
-  deletedBy?: string | null | undefined;
-  updatedBy?: string | null | undefined;
-  createdAt?: number | undefined;
-  deletedAt?: number | undefined;
-  updatedAt?: number | undefined;
-  value?: string | undefined;
-  projectId?: Array<string> | undefined;
-  type?: string | undefined;
-  target?: Array<string> | undefined;
-  applyToAllCustomEnvironments?: boolean | undefined;
-  customEnvironmentIds?: Array<string> | undefined;
-  decrypted?: boolean | undefined;
-  comment?: string | undefined;
-  lastEditedByDisplayName?: string | undefined;
-};
 
-/** @internal */
-export const Updated$outboundSchema: z.ZodType<
-  Updated$Outbound,
-  z.ZodTypeDef,
-  Updated
-> = z.object({
-  created: z.date().transform(v => v.toISOString()).optional(),
-  key: z.string().optional(),
-  ownerId: z.nullable(z.string()).optional(),
-  id: z.string().optional(),
-  createdBy: z.nullable(z.string()).optional(),
-  deletedBy: z.nullable(z.string()).optional(),
-  updatedBy: z.nullable(z.string()).optional(),
-  createdAt: z.number().optional(),
-  deletedAt: z.number().optional(),
-  updatedAt: z.number().optional(),
-  value: z.string().optional(),
-  projectId: z.array(z.string()).optional(),
-  type: UpdateSharedEnvVariableEnvironmentType$outboundSchema.optional(),
-  target: z.array(UpdateSharedEnvVariableEnvironmentTarget$outboundSchema)
-    .optional(),
-  applyToAllCustomEnvironments: z.boolean().optional(),
-  customEnvironmentIds: z.array(z.string()).optional(),
-  decrypted: z.boolean().optional(),
-  comment: z.string().optional(),
-  lastEditedByDisplayName: z.string().optional(),
-});
-
-export function updatedToJSON(updated: Updated): string {
-  return JSON.stringify(Updated$outboundSchema.parse(updated));
-}
 export function updatedFromJSON(
   jsonString: string,
 ): SafeParseResult<Updated, SDKValidationError> {
@@ -595,10 +441,6 @@ export function updatedFromJSON(
 export const UpdateSharedEnvVariableValue2$inboundSchema: z.ZodNativeEnum<
   typeof UpdateSharedEnvVariableValue2
 > = z.nativeEnum(UpdateSharedEnvVariableValue2);
-/** @internal */
-export const UpdateSharedEnvVariableValue2$outboundSchema: z.ZodNativeEnum<
-  typeof UpdateSharedEnvVariableValue2
-> = UpdateSharedEnvVariableValue2$inboundSchema;
 
 /** @internal */
 export const UpdateSharedEnvVariableValue$inboundSchema: z.ZodType<
@@ -609,28 +451,7 @@ export const UpdateSharedEnvVariableValue$inboundSchema: z.ZodType<
   types.string(),
   z.array(UpdateSharedEnvVariableValue2$inboundSchema),
 ]);
-/** @internal */
-export type UpdateSharedEnvVariableValue$Outbound = string | Array<string>;
 
-/** @internal */
-export const UpdateSharedEnvVariableValue$outboundSchema: z.ZodType<
-  UpdateSharedEnvVariableValue$Outbound,
-  z.ZodTypeDef,
-  UpdateSharedEnvVariableValue
-> = smartUnion([
-  z.string(),
-  z.array(UpdateSharedEnvVariableValue2$outboundSchema),
-]);
-
-export function updateSharedEnvVariableValueToJSON(
-  updateSharedEnvVariableValue: UpdateSharedEnvVariableValue,
-): string {
-  return JSON.stringify(
-    UpdateSharedEnvVariableValue$outboundSchema.parse(
-      updateSharedEnvVariableValue,
-    ),
-  );
-}
 export function updateSharedEnvVariableValueFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateSharedEnvVariableValue, SDKValidationError> {
@@ -645,19 +466,11 @@ export function updateSharedEnvVariableValueFromJSON(
 export const UpdateSharedEnvVariableTarget2$inboundSchema: z.ZodNativeEnum<
   typeof UpdateSharedEnvVariableTarget2
 > = z.nativeEnum(UpdateSharedEnvVariableTarget2);
-/** @internal */
-export const UpdateSharedEnvVariableTarget2$outboundSchema: z.ZodNativeEnum<
-  typeof UpdateSharedEnvVariableTarget2
-> = UpdateSharedEnvVariableTarget2$inboundSchema;
 
 /** @internal */
 export const UpdateSharedEnvVariableTarget1$inboundSchema: z.ZodNativeEnum<
   typeof UpdateSharedEnvVariableTarget1
 > = z.nativeEnum(UpdateSharedEnvVariableTarget1);
-/** @internal */
-export const UpdateSharedEnvVariableTarget1$outboundSchema: z.ZodNativeEnum<
-  typeof UpdateSharedEnvVariableTarget1
-> = UpdateSharedEnvVariableTarget1$inboundSchema;
 
 /** @internal */
 export const UpdateSharedEnvVariableEnvironmentResponseTarget$inboundSchema:
@@ -669,32 +482,7 @@ export const UpdateSharedEnvVariableEnvironmentResponseTarget$inboundSchema:
     z.array(UpdateSharedEnvVariableTarget1$inboundSchema),
     UpdateSharedEnvVariableTarget2$inboundSchema,
   ]);
-/** @internal */
-export type UpdateSharedEnvVariableEnvironmentResponseTarget$Outbound =
-  | Array<string>
-  | string;
 
-/** @internal */
-export const UpdateSharedEnvVariableEnvironmentResponseTarget$outboundSchema:
-  z.ZodType<
-    UpdateSharedEnvVariableEnvironmentResponseTarget$Outbound,
-    z.ZodTypeDef,
-    UpdateSharedEnvVariableEnvironmentResponseTarget
-  > = smartUnion([
-    z.array(UpdateSharedEnvVariableTarget1$outboundSchema),
-    UpdateSharedEnvVariableTarget2$outboundSchema,
-  ]);
-
-export function updateSharedEnvVariableEnvironmentResponseTargetToJSON(
-  updateSharedEnvVariableEnvironmentResponseTarget:
-    UpdateSharedEnvVariableEnvironmentResponseTarget,
-): string {
-  return JSON.stringify(
-    UpdateSharedEnvVariableEnvironmentResponseTarget$outboundSchema.parse(
-      updateSharedEnvVariableEnvironmentResponseTarget,
-    ),
-  );
-}
 export function updateSharedEnvVariableEnvironmentResponseTargetFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -739,55 +527,7 @@ export const UpdateSharedEnvVariableError$inboundSchema: z.ZodType<
   ),
   project: types.optional(types.string()),
 });
-/** @internal */
-export type UpdateSharedEnvVariableError$Outbound = {
-  code: string;
-  message: string;
-  key?: string | undefined;
-  envVarId?: string | undefined;
-  envVarKey?: string | undefined;
-  action?: string | undefined;
-  link?: string | undefined;
-  value?: string | Array<string> | undefined;
-  gitBranch?: string | undefined;
-  target?: Array<string> | string | undefined;
-  project?: string | undefined;
-};
 
-/** @internal */
-export const UpdateSharedEnvVariableError$outboundSchema: z.ZodType<
-  UpdateSharedEnvVariableError$Outbound,
-  z.ZodTypeDef,
-  UpdateSharedEnvVariableError
-> = z.object({
-  code: z.string(),
-  message: z.string(),
-  key: z.string().optional(),
-  envVarId: z.string().optional(),
-  envVarKey: z.string().optional(),
-  action: z.string().optional(),
-  link: z.string().optional(),
-  value: smartUnion([
-    z.string(),
-    z.array(UpdateSharedEnvVariableValue2$outboundSchema),
-  ]).optional(),
-  gitBranch: z.string().optional(),
-  target: smartUnion([
-    z.array(UpdateSharedEnvVariableTarget1$outboundSchema),
-    UpdateSharedEnvVariableTarget2$outboundSchema,
-  ]).optional(),
-  project: z.string().optional(),
-});
-
-export function updateSharedEnvVariableErrorToJSON(
-  updateSharedEnvVariableError: UpdateSharedEnvVariableError,
-): string {
-  return JSON.stringify(
-    UpdateSharedEnvVariableError$outboundSchema.parse(
-      updateSharedEnvVariableError,
-    ),
-  );
-}
 export function updateSharedEnvVariableErrorFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateSharedEnvVariableError, SDKValidationError> {
@@ -806,29 +546,7 @@ export const UpdateSharedEnvVariableFailed$inboundSchema: z.ZodType<
 > = z.object({
   error: z.lazy(() => UpdateSharedEnvVariableError$inboundSchema),
 });
-/** @internal */
-export type UpdateSharedEnvVariableFailed$Outbound = {
-  error: UpdateSharedEnvVariableError$Outbound;
-};
 
-/** @internal */
-export const UpdateSharedEnvVariableFailed$outboundSchema: z.ZodType<
-  UpdateSharedEnvVariableFailed$Outbound,
-  z.ZodTypeDef,
-  UpdateSharedEnvVariableFailed
-> = z.object({
-  error: z.lazy(() => UpdateSharedEnvVariableError$outboundSchema),
-});
-
-export function updateSharedEnvVariableFailedToJSON(
-  updateSharedEnvVariableFailed: UpdateSharedEnvVariableFailed,
-): string {
-  return JSON.stringify(
-    UpdateSharedEnvVariableFailed$outboundSchema.parse(
-      updateSharedEnvVariableFailed,
-    ),
-  );
-}
 export function updateSharedEnvVariableFailedFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateSharedEnvVariableFailed, SDKValidationError> {
@@ -848,31 +566,7 @@ export const UpdateSharedEnvVariableResponseBody$inboundSchema: z.ZodType<
   updated: z.array(z.lazy(() => Updated$inboundSchema)),
   failed: z.array(z.lazy(() => UpdateSharedEnvVariableFailed$inboundSchema)),
 });
-/** @internal */
-export type UpdateSharedEnvVariableResponseBody$Outbound = {
-  updated: Array<Updated$Outbound>;
-  failed: Array<UpdateSharedEnvVariableFailed$Outbound>;
-};
 
-/** @internal */
-export const UpdateSharedEnvVariableResponseBody$outboundSchema: z.ZodType<
-  UpdateSharedEnvVariableResponseBody$Outbound,
-  z.ZodTypeDef,
-  UpdateSharedEnvVariableResponseBody
-> = z.object({
-  updated: z.array(z.lazy(() => Updated$outboundSchema)),
-  failed: z.array(z.lazy(() => UpdateSharedEnvVariableFailed$outboundSchema)),
-});
-
-export function updateSharedEnvVariableResponseBodyToJSON(
-  updateSharedEnvVariableResponseBody: UpdateSharedEnvVariableResponseBody,
-): string {
-  return JSON.stringify(
-    UpdateSharedEnvVariableResponseBody$outboundSchema.parse(
-      updateSharedEnvVariableResponseBody,
-    ),
-  );
-}
 export function updateSharedEnvVariableResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateSharedEnvVariableResponseBody, SDKValidationError> {

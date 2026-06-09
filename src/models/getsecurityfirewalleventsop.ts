@@ -31,17 +31,6 @@ export type GetSecurityFirewallEventsResponseBody = {
 };
 
 /** @internal */
-export const GetSecurityFirewallEventsRequest$inboundSchema: z.ZodType<
-  GetSecurityFirewallEventsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  projectId: types.string(),
-  startTimestamp: types.optional(types.number()),
-  endTimestamp: types.optional(types.number()),
-  hosts: types.optional(types.string()),
-});
-/** @internal */
 export type GetSecurityFirewallEventsRequest$Outbound = {
   projectId: string;
   startTimestamp?: number | undefined;
@@ -70,15 +59,6 @@ export function getSecurityFirewallEventsRequestToJSON(
     ),
   );
 }
-export function getSecurityFirewallEventsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetSecurityFirewallEventsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetSecurityFirewallEventsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetSecurityFirewallEventsRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const GetSecurityFirewallEventsActions$inboundSchema: z.ZodType<
@@ -99,46 +79,7 @@ export const GetSecurityFirewallEventsActions$inboundSchema: z.ZodType<
     "public_ip": "publicIp",
   });
 });
-/** @internal */
-export type GetSecurityFirewallEventsActions$Outbound = {
-  startTime: string;
-  endTime: string;
-  isActive: boolean;
-  action_type: string;
-  host: string;
-  public_ip: string;
-  count: number;
-};
 
-/** @internal */
-export const GetSecurityFirewallEventsActions$outboundSchema: z.ZodType<
-  GetSecurityFirewallEventsActions$Outbound,
-  z.ZodTypeDef,
-  GetSecurityFirewallEventsActions
-> = z.object({
-  startTime: z.string(),
-  endTime: z.string(),
-  isActive: z.boolean(),
-  actionType: z.string(),
-  host: z.string(),
-  publicIp: z.string(),
-  count: z.number(),
-}).transform((v) => {
-  return remap$(v, {
-    actionType: "action_type",
-    publicIp: "public_ip",
-  });
-});
-
-export function getSecurityFirewallEventsActionsToJSON(
-  getSecurityFirewallEventsActions: GetSecurityFirewallEventsActions,
-): string {
-  return JSON.stringify(
-    GetSecurityFirewallEventsActions$outboundSchema.parse(
-      getSecurityFirewallEventsActions,
-    ),
-  );
-}
 export function getSecurityFirewallEventsActionsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetSecurityFirewallEventsActions, SDKValidationError> {
@@ -159,31 +100,7 @@ export const GetSecurityFirewallEventsResponseBody$inboundSchema: z.ZodType<
     z.lazy(() => GetSecurityFirewallEventsActions$inboundSchema),
   ),
 });
-/** @internal */
-export type GetSecurityFirewallEventsResponseBody$Outbound = {
-  actions: Array<GetSecurityFirewallEventsActions$Outbound>;
-};
 
-/** @internal */
-export const GetSecurityFirewallEventsResponseBody$outboundSchema: z.ZodType<
-  GetSecurityFirewallEventsResponseBody$Outbound,
-  z.ZodTypeDef,
-  GetSecurityFirewallEventsResponseBody
-> = z.object({
-  actions: z.array(
-    z.lazy(() => GetSecurityFirewallEventsActions$outboundSchema),
-  ),
-});
-
-export function getSecurityFirewallEventsResponseBodyToJSON(
-  getSecurityFirewallEventsResponseBody: GetSecurityFirewallEventsResponseBody,
-): string {
-  return JSON.stringify(
-    GetSecurityFirewallEventsResponseBody$outboundSchema.parse(
-      getSecurityFirewallEventsResponseBody,
-    ),
-  );
-}
 export function getSecurityFirewallEventsResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetSecurityFirewallEventsResponseBody, SDKValidationError> {

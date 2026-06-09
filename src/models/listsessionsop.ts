@@ -9,12 +9,7 @@ import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
-import {
-  Session,
-  Session$inboundSchema,
-  Session$Outbound,
-  Session$outboundSchema,
-} from "./session.js";
+import { Session, Session$inboundSchema } from "./session.js";
 
 /**
  * Sort direction for results by creation time.
@@ -81,28 +76,10 @@ export type ListSessionsResponseBody =
   | ListSessionsResponseBody1;
 
 /** @internal */
-export const ListSessionsQueryParamSortOrder$inboundSchema: z.ZodNativeEnum<
-  typeof ListSessionsQueryParamSortOrder
-> = z.nativeEnum(ListSessionsQueryParamSortOrder);
-/** @internal */
 export const ListSessionsQueryParamSortOrder$outboundSchema: z.ZodNativeEnum<
   typeof ListSessionsQueryParamSortOrder
-> = ListSessionsQueryParamSortOrder$inboundSchema;
+> = z.nativeEnum(ListSessionsQueryParamSortOrder);
 
-/** @internal */
-export const ListSessionsRequest$inboundSchema: z.ZodType<
-  ListSessionsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  project: types.optional(types.string()),
-  name: types.optional(types.string()),
-  limit: types.number().default(20),
-  cursor: types.optional(types.string()),
-  sortOrder: ListSessionsQueryParamSortOrder$inboundSchema.default("desc"),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
 /** @internal */
 export type ListSessionsRequest$Outbound = {
   project?: string | undefined;
@@ -136,15 +113,6 @@ export function listSessionsRequestToJSON(
     ListSessionsRequest$outboundSchema.parse(listSessionsRequest),
   );
 }
-export function listSessionsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<ListSessionsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ListSessionsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ListSessionsRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const ListSessionsResponseBodyPagination$inboundSchema: z.ZodType<
@@ -155,31 +123,7 @@ export const ListSessionsResponseBodyPagination$inboundSchema: z.ZodType<
   count: types.number(),
   next: types.nullable(types.string()),
 });
-/** @internal */
-export type ListSessionsResponseBodyPagination$Outbound = {
-  count: number;
-  next: string | null;
-};
 
-/** @internal */
-export const ListSessionsResponseBodyPagination$outboundSchema: z.ZodType<
-  ListSessionsResponseBodyPagination$Outbound,
-  z.ZodTypeDef,
-  ListSessionsResponseBodyPagination
-> = z.object({
-  count: z.number(),
-  next: z.nullable(z.string()),
-});
-
-export function listSessionsResponseBodyPaginationToJSON(
-  listSessionsResponseBodyPagination: ListSessionsResponseBodyPagination,
-): string {
-  return JSON.stringify(
-    ListSessionsResponseBodyPagination$outboundSchema.parse(
-      listSessionsResponseBodyPagination,
-    ),
-  );
-}
 export function listSessionsResponseBodyPaginationFromJSON(
   jsonString: string,
 ): SafeParseResult<ListSessionsResponseBodyPagination, SDKValidationError> {
@@ -200,29 +144,7 @@ export const ListSessionsResponseBody2$inboundSchema: z.ZodType<
   sessions: z.array(Session$inboundSchema),
   pagination: z.lazy(() => ListSessionsResponseBodyPagination$inboundSchema),
 });
-/** @internal */
-export type ListSessionsResponseBody2$Outbound = {
-  sessions: Array<Session$Outbound>;
-  pagination: ListSessionsResponseBodyPagination$Outbound;
-};
 
-/** @internal */
-export const ListSessionsResponseBody2$outboundSchema: z.ZodType<
-  ListSessionsResponseBody2$Outbound,
-  z.ZodTypeDef,
-  ListSessionsResponseBody2
-> = z.object({
-  sessions: z.array(Session$outboundSchema),
-  pagination: z.lazy(() => ListSessionsResponseBodyPagination$outboundSchema),
-});
-
-export function listSessionsResponseBody2ToJSON(
-  listSessionsResponseBody2: ListSessionsResponseBody2,
-): string {
-  return JSON.stringify(
-    ListSessionsResponseBody2$outboundSchema.parse(listSessionsResponseBody2),
-  );
-}
 export function listSessionsResponseBody2FromJSON(
   jsonString: string,
 ): SafeParseResult<ListSessionsResponseBody2, SDKValidationError> {
@@ -239,23 +161,7 @@ export const ListSessionsResponseBody1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-/** @internal */
-export type ListSessionsResponseBody1$Outbound = {};
 
-/** @internal */
-export const ListSessionsResponseBody1$outboundSchema: z.ZodType<
-  ListSessionsResponseBody1$Outbound,
-  z.ZodTypeDef,
-  ListSessionsResponseBody1
-> = z.object({});
-
-export function listSessionsResponseBody1ToJSON(
-  listSessionsResponseBody1: ListSessionsResponseBody1,
-): string {
-  return JSON.stringify(
-    ListSessionsResponseBody1$outboundSchema.parse(listSessionsResponseBody1),
-  );
-}
 export function listSessionsResponseBody1FromJSON(
   jsonString: string,
 ): SafeParseResult<ListSessionsResponseBody1, SDKValidationError> {
@@ -275,28 +181,7 @@ export const ListSessionsResponseBody$inboundSchema: z.ZodType<
   z.lazy(() => ListSessionsResponseBody2$inboundSchema),
   z.lazy(() => ListSessionsResponseBody1$inboundSchema),
 ]);
-/** @internal */
-export type ListSessionsResponseBody$Outbound =
-  | ListSessionsResponseBody2$Outbound
-  | ListSessionsResponseBody1$Outbound;
 
-/** @internal */
-export const ListSessionsResponseBody$outboundSchema: z.ZodType<
-  ListSessionsResponseBody$Outbound,
-  z.ZodTypeDef,
-  ListSessionsResponseBody
-> = smartUnion([
-  z.lazy(() => ListSessionsResponseBody2$outboundSchema),
-  z.lazy(() => ListSessionsResponseBody1$outboundSchema),
-]);
-
-export function listSessionsResponseBodyToJSON(
-  listSessionsResponseBody: ListSessionsResponseBody,
-): string {
-  return JSON.stringify(
-    ListSessionsResponseBody$outboundSchema.parse(listSessionsResponseBody),
-  );
-}
 export function listSessionsResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<ListSessionsResponseBody, SDKValidationError> {

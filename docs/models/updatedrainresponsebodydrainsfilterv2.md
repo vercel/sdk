@@ -1,24 +1,22 @@
 # UpdateDrainResponseBodyDrainsFilterV2
 
-
-## Supported Types
-
-### `models.UpdateDrainFilterV2Drains1`
+## Example Usage
 
 ```typescript
-const value: models.UpdateDrainFilterV2Drains1 = {
-  version: "v1",
-};
-```
+import { UpdateDrainResponseBodyDrainsFilterV2 } from "@vercel/sdk/models/updatedrainop.js";
 
-### `models.UpdateDrainFilterV2Drains2`
-
-```typescript
-const value: models.UpdateDrainFilterV2Drains2 = {
+let value: UpdateDrainResponseBodyDrainsFilterV2 = {
   version: "v2",
   filter: {
-    type: "basic",
+    type: "odata",
+    text: "<value>",
   },
 };
 ```
 
+## Fields
+
+| Field                                                                                            | Type                                                                                             | Required                                                                                         | Description                                                                                      |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| `version`                                                                                        | [models.UpdateDrainResponseBodyDrainsVersion](../models/updatedrainresponsebodydrainsversion.md) | :heavy_check_mark:                                                                               | N/A                                                                                              |
+| `filter`                                                                                         | *models.UpdateDrainResponseBodyDrainsFilter*                                                     | :heavy_check_mark:                                                                               | N/A                                                                                              |

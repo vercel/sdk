@@ -55,16 +55,6 @@ export type GetSDKKeysResponseBody = {
 };
 
 /** @internal */
-export const GetSDKKeysRequest$inboundSchema: z.ZodType<
-  GetSDKKeysRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  projectIdOrName: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
-/** @internal */
 export type GetSDKKeysRequest$Outbound = {
   projectIdOrName: string;
   teamId?: string | undefined;
@@ -89,24 +79,11 @@ export function getSDKKeysRequestToJSON(
     GetSDKKeysRequest$outboundSchema.parse(getSDKKeysRequest),
   );
 }
-export function getSDKKeysRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetSDKKeysRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetSDKKeysRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetSDKKeysRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const GetSDKKeysType$inboundSchema: z.ZodNativeEnum<
   typeof GetSDKKeysType
 > = z.nativeEnum(GetSDKKeysType);
-/** @internal */
-export const GetSDKKeysType$outboundSchema: z.ZodNativeEnum<
-  typeof GetSDKKeysType
-> = GetSDKKeysType$inboundSchema;
 
 /** @internal */
 export const GetSDKKeysData$inboundSchema: z.ZodType<
@@ -125,41 +102,7 @@ export const GetSDKKeysData$inboundSchema: z.ZodType<
   deletedAt: types.optional(types.number()),
   partialKeyValue: types.string(),
 });
-/** @internal */
-export type GetSDKKeysData$Outbound = {
-  hashKey: string;
-  projectId: string;
-  type: string;
-  environment: string;
-  createdBy: string;
-  createdAt: number;
-  updatedAt: number;
-  label?: string | undefined;
-  deletedAt?: number | undefined;
-  partialKeyValue: string;
-};
 
-/** @internal */
-export const GetSDKKeysData$outboundSchema: z.ZodType<
-  GetSDKKeysData$Outbound,
-  z.ZodTypeDef,
-  GetSDKKeysData
-> = z.object({
-  hashKey: z.string(),
-  projectId: z.string(),
-  type: GetSDKKeysType$outboundSchema,
-  environment: z.string(),
-  createdBy: z.string(),
-  createdAt: z.number(),
-  updatedAt: z.number(),
-  label: z.string().optional(),
-  deletedAt: z.number().optional(),
-  partialKeyValue: z.string(),
-});
-
-export function getSDKKeysDataToJSON(getSDKKeysData: GetSDKKeysData): string {
-  return JSON.stringify(GetSDKKeysData$outboundSchema.parse(getSDKKeysData));
-}
 export function getSDKKeysDataFromJSON(
   jsonString: string,
 ): SafeParseResult<GetSDKKeysData, SDKValidationError> {
@@ -178,27 +121,7 @@ export const GetSDKKeysResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   data: z.array(z.lazy(() => GetSDKKeysData$inboundSchema)),
 });
-/** @internal */
-export type GetSDKKeysResponseBody$Outbound = {
-  data: Array<GetSDKKeysData$Outbound>;
-};
 
-/** @internal */
-export const GetSDKKeysResponseBody$outboundSchema: z.ZodType<
-  GetSDKKeysResponseBody$Outbound,
-  z.ZodTypeDef,
-  GetSDKKeysResponseBody
-> = z.object({
-  data: z.array(z.lazy(() => GetSDKKeysData$outboundSchema)),
-});
-
-export function getSDKKeysResponseBodyToJSON(
-  getSDKKeysResponseBody: GetSDKKeysResponseBody,
-): string {
-  return JSON.stringify(
-    GetSDKKeysResponseBody$outboundSchema.parse(getSDKKeysResponseBody),
-  );
-}
 export function getSDKKeysResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetSDKKeysResponseBody, SDKValidationError> {

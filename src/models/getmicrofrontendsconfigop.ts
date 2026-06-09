@@ -166,16 +166,6 @@ export type GetMicrofrontendsConfigResponseBody = {
 };
 
 /** @internal */
-export const GetMicrofrontendsConfigRequest$inboundSchema: z.ZodType<
-  GetMicrofrontendsConfigRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  deploymentId: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
-/** @internal */
 export type GetMicrofrontendsConfigRequest$Outbound = {
   deploymentId: string;
   teamId?: string | undefined;
@@ -202,24 +192,11 @@ export function getMicrofrontendsConfigRequestToJSON(
     ),
   );
 }
-export function getMicrofrontendsConfigRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetMicrofrontendsConfigRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetMicrofrontendsConfigRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetMicrofrontendsConfigRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const GetMicrofrontendsConfigVersion$inboundSchema: z.ZodNativeEnum<
   typeof GetMicrofrontendsConfigVersion
 > = z.nativeEnum(GetMicrofrontendsConfigVersion);
-/** @internal */
-export const GetMicrofrontendsConfigVersion$outboundSchema: z.ZodNativeEnum<
-  typeof GetMicrofrontendsConfigVersion
-> = GetMicrofrontendsConfigVersion$inboundSchema;
 
 /** @internal */
 export const ApplicationsLocal$inboundSchema: z.ZodType<
@@ -227,23 +204,7 @@ export const ApplicationsLocal$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = smartUnion([types.string(), types.number()]);
-/** @internal */
-export type ApplicationsLocal$Outbound = string | number;
 
-/** @internal */
-export const ApplicationsLocal$outboundSchema: z.ZodType<
-  ApplicationsLocal$Outbound,
-  z.ZodTypeDef,
-  ApplicationsLocal
-> = smartUnion([z.string(), z.number()]);
-
-export function applicationsLocalToJSON(
-  applicationsLocal: ApplicationsLocal,
-): string {
-  return JSON.stringify(
-    ApplicationsLocal$outboundSchema.parse(applicationsLocal),
-  );
-}
 export function applicationsLocalFromJSON(
   jsonString: string,
 ): SafeParseResult<ApplicationsLocal, SDKValidationError> {
@@ -264,31 +225,7 @@ export const ApplicationsDevelopment$inboundSchema: z.ZodType<
   local: types.optional(smartUnion([types.string(), types.number()])),
   task: types.optional(types.string()),
 });
-/** @internal */
-export type ApplicationsDevelopment$Outbound = {
-  fallback?: string | undefined;
-  local?: string | number | undefined;
-  task?: string | undefined;
-};
 
-/** @internal */
-export const ApplicationsDevelopment$outboundSchema: z.ZodType<
-  ApplicationsDevelopment$Outbound,
-  z.ZodTypeDef,
-  ApplicationsDevelopment
-> = z.object({
-  fallback: z.string().optional(),
-  local: smartUnion([z.string(), z.number()]).optional(),
-  task: z.string().optional(),
-});
-
-export function applicationsDevelopmentToJSON(
-  applicationsDevelopment: ApplicationsDevelopment,
-): string {
-  return JSON.stringify(
-    ApplicationsDevelopment$outboundSchema.parse(applicationsDevelopment),
-  );
-}
 export function applicationsDevelopmentFromJSON(
   jsonString: string,
 ): SafeParseResult<ApplicationsDevelopment, SDKValidationError> {
@@ -306,27 +243,7 @@ export const Routing$inboundSchema: z.ZodType<Routing, z.ZodTypeDef, unknown> =
     flag: types.optional(types.string()),
     paths: z.array(types.string()),
   });
-/** @internal */
-export type Routing$Outbound = {
-  group?: string | undefined;
-  flag?: string | undefined;
-  paths: Array<string>;
-};
 
-/** @internal */
-export const Routing$outboundSchema: z.ZodType<
-  Routing$Outbound,
-  z.ZodTypeDef,
-  Routing
-> = z.object({
-  group: z.string().optional(),
-  flag: z.string().optional(),
-  paths: z.array(z.string()),
-});
-
-export function routingToJSON(routing: Routing): string {
-  return JSON.stringify(Routing$outboundSchema.parse(routing));
-}
 export function routingFromJSON(
   jsonString: string,
 ): SafeParseResult<Routing, SDKValidationError> {
@@ -351,31 +268,7 @@ export const Applications2$inboundSchema: z.ZodType<
   packageName: types.optional(types.string()),
   projectId: types.string(),
 });
-/** @internal */
-export type Applications2$Outbound = {
-  development?: ApplicationsDevelopment$Outbound | undefined;
-  routing: Array<Routing$Outbound>;
-  assetPrefix?: string | undefined;
-  packageName?: string | undefined;
-  projectId: string;
-};
 
-/** @internal */
-export const Applications2$outboundSchema: z.ZodType<
-  Applications2$Outbound,
-  z.ZodTypeDef,
-  Applications2
-> = z.object({
-  development: z.lazy(() => ApplicationsDevelopment$outboundSchema).optional(),
-  routing: z.array(z.lazy(() => Routing$outboundSchema)),
-  assetPrefix: z.string().optional(),
-  packageName: z.string().optional(),
-  projectId: z.string(),
-});
-
-export function applications2ToJSON(applications2: Applications2): string {
-  return JSON.stringify(Applications2$outboundSchema.parse(applications2));
-}
 export function applications2FromJSON(
   jsonString: string,
 ): SafeParseResult<Applications2, SDKValidationError> {
@@ -389,19 +282,7 @@ export function applications2FromJSON(
 /** @internal */
 export const Local$inboundSchema: z.ZodType<Local, z.ZodTypeDef, unknown> =
   smartUnion([types.string(), types.number()]);
-/** @internal */
-export type Local$Outbound = string | number;
 
-/** @internal */
-export const Local$outboundSchema: z.ZodType<
-  Local$Outbound,
-  z.ZodTypeDef,
-  Local
-> = smartUnion([z.string(), z.number()]);
-
-export function localToJSON(local: Local): string {
-  return JSON.stringify(Local$outboundSchema.parse(local));
-}
 export function localFromJSON(
   jsonString: string,
 ): SafeParseResult<Local, SDKValidationError> {
@@ -422,27 +303,7 @@ export const Development$inboundSchema: z.ZodType<
   local: types.optional(smartUnion([types.string(), types.number()])),
   task: types.optional(types.string()),
 });
-/** @internal */
-export type Development$Outbound = {
-  fallback: string;
-  local?: string | number | undefined;
-  task?: string | undefined;
-};
 
-/** @internal */
-export const Development$outboundSchema: z.ZodType<
-  Development$Outbound,
-  z.ZodTypeDef,
-  Development
-> = z.object({
-  fallback: z.string(),
-  local: smartUnion([z.string(), z.number()]).optional(),
-  task: z.string().optional(),
-});
-
-export function developmentToJSON(development: Development): string {
-  return JSON.stringify(Development$outboundSchema.parse(development));
-}
 export function developmentFromJSON(
   jsonString: string,
 ): SafeParseResult<Development, SDKValidationError> {
@@ -463,27 +324,7 @@ export const Applications1$inboundSchema: z.ZodType<
   packageName: types.optional(types.string()),
   projectId: types.string(),
 });
-/** @internal */
-export type Applications1$Outbound = {
-  development: Development$Outbound;
-  packageName?: string | undefined;
-  projectId: string;
-};
 
-/** @internal */
-export const Applications1$outboundSchema: z.ZodType<
-  Applications1$Outbound,
-  z.ZodTypeDef,
-  Applications1
-> = z.object({
-  development: z.lazy(() => Development$outboundSchema),
-  packageName: z.string().optional(),
-  projectId: z.string(),
-});
-
-export function applications1ToJSON(applications1: Applications1): string {
-  return JSON.stringify(Applications1$outboundSchema.parse(applications1));
-}
 export function applications1FromJSON(
   jsonString: string,
 ): SafeParseResult<Applications1, SDKValidationError> {
@@ -503,24 +344,7 @@ export const Applications$inboundSchema: z.ZodType<
   z.lazy(() => Applications1$inboundSchema),
   z.lazy(() => Applications2$inboundSchema),
 ]);
-/** @internal */
-export type Applications$Outbound =
-  | Applications1$Outbound
-  | Applications2$Outbound;
 
-/** @internal */
-export const Applications$outboundSchema: z.ZodType<
-  Applications$Outbound,
-  z.ZodTypeDef,
-  Applications
-> = smartUnion([
-  z.lazy(() => Applications1$outboundSchema),
-  z.lazy(() => Applications2$outboundSchema),
-]);
-
-export function applicationsToJSON(applications: Applications): string {
-  return JSON.stringify(Applications$outboundSchema.parse(applications));
-}
 export function applicationsFromJSON(
   jsonString: string,
 ): SafeParseResult<Applications, SDKValidationError> {
@@ -537,25 +361,7 @@ export const Options$inboundSchema: z.ZodType<Options, z.ZodTypeDef, unknown> =
     disableOverrides: types.optional(types.boolean()),
     localProxyPort: types.optional(types.number()),
   });
-/** @internal */
-export type Options$Outbound = {
-  disableOverrides?: boolean | undefined;
-  localProxyPort?: number | undefined;
-};
 
-/** @internal */
-export const Options$outboundSchema: z.ZodType<
-  Options$Outbound,
-  z.ZodTypeDef,
-  Options
-> = z.object({
-  disableOverrides: z.boolean().optional(),
-  localProxyPort: z.number().optional(),
-});
-
-export function optionsToJSON(options: Options): string {
-  return JSON.stringify(Options$outboundSchema.parse(options));
-}
 export function optionsFromJSON(
   jsonString: string,
 ): SafeParseResult<Options, SDKValidationError> {
@@ -586,46 +392,7 @@ export const GetMicrofrontendsConfigConfig$inboundSchema: z.ZodType<
     "$schema": "dollarSchema",
   });
 });
-/** @internal */
-export type GetMicrofrontendsConfigConfig$Outbound = {
-  $schema?: string | undefined;
-  version?: string | undefined;
-  applications: {
-    [k: string]: Applications1$Outbound | Applications2$Outbound;
-  };
-  options?: Options$Outbound | undefined;
-};
 
-/** @internal */
-export const GetMicrofrontendsConfigConfig$outboundSchema: z.ZodType<
-  GetMicrofrontendsConfigConfig$Outbound,
-  z.ZodTypeDef,
-  GetMicrofrontendsConfigConfig
-> = z.object({
-  dollarSchema: z.string().optional(),
-  version: GetMicrofrontendsConfigVersion$outboundSchema.optional(),
-  applications: z.record(
-    smartUnion([
-      z.lazy(() => Applications1$outboundSchema),
-      z.lazy(() => Applications2$outboundSchema),
-    ]),
-  ),
-  options: z.lazy(() => Options$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    dollarSchema: "$schema",
-  });
-});
-
-export function getMicrofrontendsConfigConfigToJSON(
-  getMicrofrontendsConfigConfig: GetMicrofrontendsConfigConfig,
-): string {
-  return JSON.stringify(
-    GetMicrofrontendsConfigConfig$outboundSchema.parse(
-      getMicrofrontendsConfigConfig,
-    ),
-  );
-}
 export function getMicrofrontendsConfigConfigFromJSON(
   jsonString: string,
 ): SafeParseResult<GetMicrofrontendsConfigConfig, SDKValidationError> {
@@ -646,31 +413,7 @@ export const GetMicrofrontendsConfigResponseBody$inboundSchema: z.ZodType<
     z.lazy(() => GetMicrofrontendsConfigConfig$inboundSchema),
   ),
 });
-/** @internal */
-export type GetMicrofrontendsConfigResponseBody$Outbound = {
-  config: GetMicrofrontendsConfigConfig$Outbound | null;
-};
 
-/** @internal */
-export const GetMicrofrontendsConfigResponseBody$outboundSchema: z.ZodType<
-  GetMicrofrontendsConfigResponseBody$Outbound,
-  z.ZodTypeDef,
-  GetMicrofrontendsConfigResponseBody
-> = z.object({
-  config: z.nullable(
-    z.lazy(() => GetMicrofrontendsConfigConfig$outboundSchema),
-  ),
-});
-
-export function getMicrofrontendsConfigResponseBodyToJSON(
-  getMicrofrontendsConfigResponseBody: GetMicrofrontendsConfigResponseBody,
-): string {
-  return JSON.stringify(
-    GetMicrofrontendsConfigResponseBody$outboundSchema.parse(
-      getMicrofrontendsConfigResponseBody,
-    ),
-  );
-}
 export function getMicrofrontendsConfigResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetMicrofrontendsConfigResponseBody, SDKValidationError> {

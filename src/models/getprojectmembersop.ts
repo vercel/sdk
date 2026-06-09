@@ -160,20 +160,6 @@ export type GetProjectMembersResponseBody =
   | GetProjectMembersResponseBody1;
 
 /** @internal */
-export const GetProjectMembersRequest$inboundSchema: z.ZodType<
-  GetProjectMembersRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  idOrName: types.string(),
-  limit: types.optional(types.number()),
-  since: types.optional(types.number()),
-  until: types.optional(types.number()),
-  search: types.optional(types.string()),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
-/** @internal */
 export type GetProjectMembersRequest$Outbound = {
   idOrName: string;
   limit?: number | undefined;
@@ -206,42 +192,21 @@ export function getProjectMembersRequestToJSON(
     GetProjectMembersRequest$outboundSchema.parse(getProjectMembersRequest),
   );
 }
-export function getProjectMembersRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetProjectMembersRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetProjectMembersRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetProjectMembersRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const ResponseBodyRole$inboundSchema: z.ZodNativeEnum<
   typeof ResponseBodyRole
 > = z.nativeEnum(ResponseBodyRole);
-/** @internal */
-export const ResponseBodyRole$outboundSchema: z.ZodNativeEnum<
-  typeof ResponseBodyRole
-> = ResponseBodyRole$inboundSchema;
 
 /** @internal */
 export const ComputedProjectRole$inboundSchema: z.ZodNativeEnum<
   typeof ComputedProjectRole
 > = z.nativeEnum(ComputedProjectRole);
-/** @internal */
-export const ComputedProjectRole$outboundSchema: z.ZodNativeEnum<
-  typeof ComputedProjectRole
-> = ComputedProjectRole$inboundSchema;
 
 /** @internal */
 export const ResponseBodyTeamRole$inboundSchema: z.ZodNativeEnum<
   typeof ResponseBodyTeamRole
 > = z.nativeEnum(ResponseBodyTeamRole);
-/** @internal */
-export const ResponseBodyTeamRole$outboundSchema: z.ZodNativeEnum<
-  typeof ResponseBodyTeamRole
-> = ResponseBodyTeamRole$inboundSchema;
 
 /** @internal */
 export const ResponseBodyMembers$inboundSchema: z.ZodType<
@@ -259,43 +224,7 @@ export const ResponseBodyMembers$inboundSchema: z.ZodType<
   createdAt: types.number(),
   teamRole: ResponseBodyTeamRole$inboundSchema,
 });
-/** @internal */
-export type ResponseBodyMembers$Outbound = {
-  avatar?: string | undefined;
-  email: string;
-  role: string;
-  computedProjectRole: string;
-  uid: string;
-  username: string;
-  name?: string | undefined;
-  createdAt: number;
-  teamRole: string;
-};
 
-/** @internal */
-export const ResponseBodyMembers$outboundSchema: z.ZodType<
-  ResponseBodyMembers$Outbound,
-  z.ZodTypeDef,
-  ResponseBodyMembers
-> = z.object({
-  avatar: z.string().optional(),
-  email: z.string(),
-  role: ResponseBodyRole$outboundSchema,
-  computedProjectRole: ComputedProjectRole$outboundSchema,
-  uid: z.string(),
-  username: z.string(),
-  name: z.string().optional(),
-  createdAt: z.number(),
-  teamRole: ResponseBodyTeamRole$outboundSchema,
-});
-
-export function responseBodyMembersToJSON(
-  responseBodyMembers: ResponseBodyMembers,
-): string {
-  return JSON.stringify(
-    ResponseBodyMembers$outboundSchema.parse(responseBodyMembers),
-  );
-}
 export function responseBodyMembersFromJSON(
   jsonString: string,
 ): SafeParseResult<ResponseBodyMembers, SDKValidationError> {
@@ -317,36 +246,7 @@ export const GetProjectMembersResponseBodyPagination$inboundSchema: z.ZodType<
   next: types.nullable(types.number()),
   prev: types.nullable(types.number()),
 });
-/** @internal */
-export type GetProjectMembersResponseBodyPagination$Outbound = {
-  hasNext: boolean;
-  count: number;
-  next: number | null;
-  prev: number | null;
-};
 
-/** @internal */
-export const GetProjectMembersResponseBodyPagination$outboundSchema: z.ZodType<
-  GetProjectMembersResponseBodyPagination$Outbound,
-  z.ZodTypeDef,
-  GetProjectMembersResponseBodyPagination
-> = z.object({
-  hasNext: z.boolean(),
-  count: z.number(),
-  next: z.nullable(z.number()),
-  prev: z.nullable(z.number()),
-});
-
-export function getProjectMembersResponseBodyPaginationToJSON(
-  getProjectMembersResponseBodyPagination:
-    GetProjectMembersResponseBodyPagination,
-): string {
-  return JSON.stringify(
-    GetProjectMembersResponseBodyPagination$outboundSchema.parse(
-      getProjectMembersResponseBodyPagination,
-    ),
-  );
-}
 export function getProjectMembersResponseBodyPaginationFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -374,33 +274,7 @@ export const GetProjectMembersResponseBody2$inboundSchema: z.ZodType<
     GetProjectMembersResponseBodyPagination$inboundSchema
   ),
 });
-/** @internal */
-export type GetProjectMembersResponseBody2$Outbound = {
-  members: Array<ResponseBodyMembers$Outbound>;
-  pagination: GetProjectMembersResponseBodyPagination$Outbound;
-};
 
-/** @internal */
-export const GetProjectMembersResponseBody2$outboundSchema: z.ZodType<
-  GetProjectMembersResponseBody2$Outbound,
-  z.ZodTypeDef,
-  GetProjectMembersResponseBody2
-> = z.object({
-  members: z.array(z.lazy(() => ResponseBodyMembers$outboundSchema)),
-  pagination: z.lazy(() =>
-    GetProjectMembersResponseBodyPagination$outboundSchema
-  ),
-});
-
-export function getProjectMembersResponseBody2ToJSON(
-  getProjectMembersResponseBody2: GetProjectMembersResponseBody2,
-): string {
-  return JSON.stringify(
-    GetProjectMembersResponseBody2$outboundSchema.parse(
-      getProjectMembersResponseBody2,
-    ),
-  );
-}
 export function getProjectMembersResponseBody2FromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectMembersResponseBody2, SDKValidationError> {
@@ -417,25 +291,7 @@ export const GetProjectMembersResponseBody1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-/** @internal */
-export type GetProjectMembersResponseBody1$Outbound = {};
 
-/** @internal */
-export const GetProjectMembersResponseBody1$outboundSchema: z.ZodType<
-  GetProjectMembersResponseBody1$Outbound,
-  z.ZodTypeDef,
-  GetProjectMembersResponseBody1
-> = z.object({});
-
-export function getProjectMembersResponseBody1ToJSON(
-  getProjectMembersResponseBody1: GetProjectMembersResponseBody1,
-): string {
-  return JSON.stringify(
-    GetProjectMembersResponseBody1$outboundSchema.parse(
-      getProjectMembersResponseBody1,
-    ),
-  );
-}
 export function getProjectMembersResponseBody1FromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectMembersResponseBody1, SDKValidationError> {
@@ -455,30 +311,7 @@ export const GetProjectMembersResponseBody$inboundSchema: z.ZodType<
   z.lazy(() => GetProjectMembersResponseBody2$inboundSchema),
   z.lazy(() => GetProjectMembersResponseBody1$inboundSchema),
 ]);
-/** @internal */
-export type GetProjectMembersResponseBody$Outbound =
-  | GetProjectMembersResponseBody2$Outbound
-  | GetProjectMembersResponseBody1$Outbound;
 
-/** @internal */
-export const GetProjectMembersResponseBody$outboundSchema: z.ZodType<
-  GetProjectMembersResponseBody$Outbound,
-  z.ZodTypeDef,
-  GetProjectMembersResponseBody
-> = smartUnion([
-  z.lazy(() => GetProjectMembersResponseBody2$outboundSchema),
-  z.lazy(() => GetProjectMembersResponseBody1$outboundSchema),
-]);
-
-export function getProjectMembersResponseBodyToJSON(
-  getProjectMembersResponseBody: GetProjectMembersResponseBody,
-): string {
-  return JSON.stringify(
-    GetProjectMembersResponseBody$outboundSchema.parse(
-      getProjectMembersResponseBody,
-    ),
-  );
-}
 export function getProjectMembersResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectMembersResponseBody, SDKValidationError> {

@@ -52,10 +52,6 @@ export const DomainCannotBeTransferedOutUntilCode$inboundSchema:
   z.ZodNativeEnum<typeof DomainCannotBeTransferedOutUntilCode> = z.nativeEnum(
     DomainCannotBeTransferedOutUntilCode,
   );
-/** @internal */
-export const DomainCannotBeTransferedOutUntilCode$outboundSchema:
-  z.ZodNativeEnum<typeof DomainCannotBeTransferedOutUntilCode> =
-    DomainCannotBeTransferedOutUntilCode$inboundSchema;
 
 /** @internal */
 export const DomainCannotBeTransferedOutUntil$inboundSchema: z.ZodType<
@@ -77,23 +73,3 @@ export const DomainCannotBeTransferedOutUntil$inboundSchema: z.ZodType<
       body: v.body$,
     });
   });
-
-/** @internal */
-export type DomainCannotBeTransferedOutUntil$Outbound = {
-  status: number;
-  code: string;
-  message: string;
-};
-
-/** @internal */
-export const DomainCannotBeTransferedOutUntil$outboundSchema: z.ZodType<
-  DomainCannotBeTransferedOutUntil$Outbound,
-  z.ZodTypeDef,
-  DomainCannotBeTransferedOutUntil
-> = z.instanceof(DomainCannotBeTransferedOutUntil)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    status: z.number(),
-    code: DomainCannotBeTransferedOutUntilCode$outboundSchema,
-    message: z.string(),
-  }));

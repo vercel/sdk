@@ -194,23 +194,10 @@ export type CreateCustomEnvironmentResponseBody = {
 };
 
 /** @internal */
-export const CreateCustomEnvironmentType$inboundSchema: z.ZodNativeEnum<
-  typeof CreateCustomEnvironmentType
-> = z.nativeEnum(CreateCustomEnvironmentType);
-/** @internal */
 export const CreateCustomEnvironmentType$outboundSchema: z.ZodNativeEnum<
   typeof CreateCustomEnvironmentType
-> = CreateCustomEnvironmentType$inboundSchema;
+> = z.nativeEnum(CreateCustomEnvironmentType);
 
-/** @internal */
-export const CreateCustomEnvironmentBranchMatcher$inboundSchema: z.ZodType<
-  CreateCustomEnvironmentBranchMatcher,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  type: CreateCustomEnvironmentType$inboundSchema,
-  pattern: types.string(),
-});
 /** @internal */
 export type CreateCustomEnvironmentBranchMatcher$Outbound = {
   type: string;
@@ -236,30 +223,7 @@ export function createCustomEnvironmentBranchMatcherToJSON(
     ),
   );
 }
-export function createCustomEnvironmentBranchMatcherFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateCustomEnvironmentBranchMatcher, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      CreateCustomEnvironmentBranchMatcher$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateCustomEnvironmentBranchMatcher' from JSON`,
-  );
-}
 
-/** @internal */
-export const CreateCustomEnvironmentRequestBody$inboundSchema: z.ZodType<
-  CreateCustomEnvironmentRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  slug: types.optional(types.string()),
-  description: types.optional(types.string()),
-  branchMatcher: types.optional(
-    z.lazy(() => CreateCustomEnvironmentBranchMatcher$inboundSchema),
-  ),
-  copyEnvVarsFrom: types.optional(types.string()),
-});
 /** @internal */
 export type CreateCustomEnvironmentRequestBody$Outbound = {
   slug?: string | undefined;
@@ -291,34 +255,7 @@ export function createCustomEnvironmentRequestBodyToJSON(
     ),
   );
 }
-export function createCustomEnvironmentRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateCustomEnvironmentRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      CreateCustomEnvironmentRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateCustomEnvironmentRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const CreateCustomEnvironmentRequest$inboundSchema: z.ZodType<
-  CreateCustomEnvironmentRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  idOrName: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-  RequestBody: types.optional(
-    z.lazy(() => CreateCustomEnvironmentRequestBody$inboundSchema),
-  ),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 /** @internal */
 export type CreateCustomEnvironmentRequest$Outbound = {
   idOrName: string;
@@ -353,34 +290,17 @@ export function createCustomEnvironmentRequestToJSON(
     ),
   );
 }
-export function createCustomEnvironmentRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateCustomEnvironmentRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateCustomEnvironmentRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateCustomEnvironmentRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const CreateCustomEnvironmentEnvironmentType$inboundSchema:
   z.ZodNativeEnum<typeof CreateCustomEnvironmentEnvironmentType> = z.nativeEnum(
     CreateCustomEnvironmentEnvironmentType,
   );
-/** @internal */
-export const CreateCustomEnvironmentEnvironmentType$outboundSchema:
-  z.ZodNativeEnum<typeof CreateCustomEnvironmentEnvironmentType> =
-    CreateCustomEnvironmentEnvironmentType$inboundSchema;
 
 /** @internal */
 export const CreateCustomEnvironmentEnvironmentResponseType$inboundSchema:
   z.ZodNativeEnum<typeof CreateCustomEnvironmentEnvironmentResponseType> = z
     .nativeEnum(CreateCustomEnvironmentEnvironmentResponseType);
-/** @internal */
-export const CreateCustomEnvironmentEnvironmentResponseType$outboundSchema:
-  z.ZodNativeEnum<typeof CreateCustomEnvironmentEnvironmentResponseType> =
-    CreateCustomEnvironmentEnvironmentResponseType$inboundSchema;
 
 /** @internal */
 export const CreateCustomEnvironmentEnvironmentBranchMatcher$inboundSchema:
@@ -392,33 +312,7 @@ export const CreateCustomEnvironmentEnvironmentBranchMatcher$inboundSchema:
     type: CreateCustomEnvironmentEnvironmentResponseType$inboundSchema,
     pattern: types.string(),
   });
-/** @internal */
-export type CreateCustomEnvironmentEnvironmentBranchMatcher$Outbound = {
-  type: string;
-  pattern: string;
-};
 
-/** @internal */
-export const CreateCustomEnvironmentEnvironmentBranchMatcher$outboundSchema:
-  z.ZodType<
-    CreateCustomEnvironmentEnvironmentBranchMatcher$Outbound,
-    z.ZodTypeDef,
-    CreateCustomEnvironmentEnvironmentBranchMatcher
-  > = z.object({
-    type: CreateCustomEnvironmentEnvironmentResponseType$outboundSchema,
-    pattern: z.string(),
-  });
-
-export function createCustomEnvironmentEnvironmentBranchMatcherToJSON(
-  createCustomEnvironmentEnvironmentBranchMatcher:
-    CreateCustomEnvironmentEnvironmentBranchMatcher,
-): string {
-  return JSON.stringify(
-    CreateCustomEnvironmentEnvironmentBranchMatcher$outboundSchema.parse(
-      createCustomEnvironmentEnvironmentBranchMatcher,
-    ),
-  );
-}
 export function createCustomEnvironmentEnvironmentBranchMatcherFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -446,35 +340,7 @@ export const CreateCustomEnvironmentVerification$inboundSchema: z.ZodType<
   value: types.string(),
   reason: types.string(),
 });
-/** @internal */
-export type CreateCustomEnvironmentVerification$Outbound = {
-  type: string;
-  domain: string;
-  value: string;
-  reason: string;
-};
 
-/** @internal */
-export const CreateCustomEnvironmentVerification$outboundSchema: z.ZodType<
-  CreateCustomEnvironmentVerification$Outbound,
-  z.ZodTypeDef,
-  CreateCustomEnvironmentVerification
-> = z.object({
-  type: z.string(),
-  domain: z.string(),
-  value: z.string(),
-  reason: z.string(),
-});
-
-export function createCustomEnvironmentVerificationToJSON(
-  createCustomEnvironmentVerification: CreateCustomEnvironmentVerification,
-): string {
-  return JSON.stringify(
-    CreateCustomEnvironmentVerification$outboundSchema.parse(
-      createCustomEnvironmentVerification,
-    ),
-  );
-}
 export function createCustomEnvironmentVerificationFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateCustomEnvironmentVerification, SDKValidationError> {
@@ -506,53 +372,7 @@ export const CreateCustomEnvironmentDomains$inboundSchema: z.ZodType<
     z.array(z.lazy(() => CreateCustomEnvironmentVerification$inboundSchema)),
   ),
 });
-/** @internal */
-export type CreateCustomEnvironmentDomains$Outbound = {
-  name: string;
-  apexName: string;
-  projectId: string;
-  redirect?: string | null | undefined;
-  redirectStatusCode?: number | null | undefined;
-  gitBranch?: string | null | undefined;
-  customEnvironmentId?: string | null | undefined;
-  updatedAt?: number | undefined;
-  createdAt?: number | undefined;
-  verified: boolean;
-  verification?:
-    | Array<CreateCustomEnvironmentVerification$Outbound>
-    | undefined;
-};
 
-/** @internal */
-export const CreateCustomEnvironmentDomains$outboundSchema: z.ZodType<
-  CreateCustomEnvironmentDomains$Outbound,
-  z.ZodTypeDef,
-  CreateCustomEnvironmentDomains
-> = z.object({
-  name: z.string(),
-  apexName: z.string(),
-  projectId: z.string(),
-  redirect: z.nullable(z.string()).optional(),
-  redirectStatusCode: z.nullable(z.number()).optional(),
-  gitBranch: z.nullable(z.string()).optional(),
-  customEnvironmentId: z.nullable(z.string()).optional(),
-  updatedAt: z.number().optional(),
-  createdAt: z.number().optional(),
-  verified: z.boolean(),
-  verification: z.array(
-    z.lazy(() => CreateCustomEnvironmentVerification$outboundSchema),
-  ).optional(),
-});
-
-export function createCustomEnvironmentDomainsToJSON(
-  createCustomEnvironmentDomains: CreateCustomEnvironmentDomains,
-): string {
-  return JSON.stringify(
-    CreateCustomEnvironmentDomains$outboundSchema.parse(
-      createCustomEnvironmentDomains,
-    ),
-  );
-}
 export function createCustomEnvironmentDomainsFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateCustomEnvironmentDomains, SDKValidationError> {
@@ -583,50 +403,7 @@ export const CreateCustomEnvironmentResponseBody$inboundSchema: z.ZodType<
   createdAt: types.number(),
   updatedAt: types.number(),
 });
-/** @internal */
-export type CreateCustomEnvironmentResponseBody$Outbound = {
-  id: string;
-  slug: string;
-  type: string;
-  description?: string | undefined;
-  branchMatcher?:
-    | CreateCustomEnvironmentEnvironmentBranchMatcher$Outbound
-    | undefined;
-  domains?: Array<CreateCustomEnvironmentDomains$Outbound> | undefined;
-  currentDeploymentAliases?: Array<string> | undefined;
-  createdAt: number;
-  updatedAt: number;
-};
 
-/** @internal */
-export const CreateCustomEnvironmentResponseBody$outboundSchema: z.ZodType<
-  CreateCustomEnvironmentResponseBody$Outbound,
-  z.ZodTypeDef,
-  CreateCustomEnvironmentResponseBody
-> = z.object({
-  id: z.string(),
-  slug: z.string(),
-  type: CreateCustomEnvironmentEnvironmentType$outboundSchema,
-  description: z.string().optional(),
-  branchMatcher: z.lazy(() =>
-    CreateCustomEnvironmentEnvironmentBranchMatcher$outboundSchema
-  ).optional(),
-  domains: z.array(z.lazy(() => CreateCustomEnvironmentDomains$outboundSchema))
-    .optional(),
-  currentDeploymentAliases: z.array(z.string()).optional(),
-  createdAt: z.number(),
-  updatedAt: z.number(),
-});
-
-export function createCustomEnvironmentResponseBodyToJSON(
-  createCustomEnvironmentResponseBody: CreateCustomEnvironmentResponseBody,
-): string {
-  return JSON.stringify(
-    CreateCustomEnvironmentResponseBody$outboundSchema.parse(
-      createCustomEnvironmentResponseBody,
-    ),
-  );
-}
 export function createCustomEnvironmentResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateCustomEnvironmentResponseBody, SDKValidationError> {

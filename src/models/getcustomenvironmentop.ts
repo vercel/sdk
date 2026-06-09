@@ -148,17 +148,6 @@ export type GetCustomEnvironmentResponseBody = {
 };
 
 /** @internal */
-export const GetCustomEnvironmentRequest$inboundSchema: z.ZodType<
-  GetCustomEnvironmentRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  idOrName: types.string(),
-  environmentSlugOrId: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
-/** @internal */
 export type GetCustomEnvironmentRequest$Outbound = {
   idOrName: string;
   environmentSlugOrId: string;
@@ -187,33 +176,16 @@ export function getCustomEnvironmentRequestToJSON(
     ),
   );
 }
-export function getCustomEnvironmentRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetCustomEnvironmentRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetCustomEnvironmentRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetCustomEnvironmentRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const GetCustomEnvironmentType$inboundSchema: z.ZodNativeEnum<
   typeof GetCustomEnvironmentType
 > = z.nativeEnum(GetCustomEnvironmentType);
-/** @internal */
-export const GetCustomEnvironmentType$outboundSchema: z.ZodNativeEnum<
-  typeof GetCustomEnvironmentType
-> = GetCustomEnvironmentType$inboundSchema;
 
 /** @internal */
 export const GetCustomEnvironmentEnvironmentType$inboundSchema: z.ZodNativeEnum<
   typeof GetCustomEnvironmentEnvironmentType
 > = z.nativeEnum(GetCustomEnvironmentEnvironmentType);
-/** @internal */
-export const GetCustomEnvironmentEnvironmentType$outboundSchema:
-  z.ZodNativeEnum<typeof GetCustomEnvironmentEnvironmentType> =
-    GetCustomEnvironmentEnvironmentType$inboundSchema;
 
 /** @internal */
 export const GetCustomEnvironmentBranchMatcher$inboundSchema: z.ZodType<
@@ -224,31 +196,7 @@ export const GetCustomEnvironmentBranchMatcher$inboundSchema: z.ZodType<
   type: GetCustomEnvironmentEnvironmentType$inboundSchema,
   pattern: types.string(),
 });
-/** @internal */
-export type GetCustomEnvironmentBranchMatcher$Outbound = {
-  type: string;
-  pattern: string;
-};
 
-/** @internal */
-export const GetCustomEnvironmentBranchMatcher$outboundSchema: z.ZodType<
-  GetCustomEnvironmentBranchMatcher$Outbound,
-  z.ZodTypeDef,
-  GetCustomEnvironmentBranchMatcher
-> = z.object({
-  type: GetCustomEnvironmentEnvironmentType$outboundSchema,
-  pattern: z.string(),
-});
-
-export function getCustomEnvironmentBranchMatcherToJSON(
-  getCustomEnvironmentBranchMatcher: GetCustomEnvironmentBranchMatcher,
-): string {
-  return JSON.stringify(
-    GetCustomEnvironmentBranchMatcher$outboundSchema.parse(
-      getCustomEnvironmentBranchMatcher,
-    ),
-  );
-}
 export function getCustomEnvironmentBranchMatcherFromJSON(
   jsonString: string,
 ): SafeParseResult<GetCustomEnvironmentBranchMatcher, SDKValidationError> {
@@ -270,35 +218,7 @@ export const GetCustomEnvironmentVerification$inboundSchema: z.ZodType<
   value: types.string(),
   reason: types.string(),
 });
-/** @internal */
-export type GetCustomEnvironmentVerification$Outbound = {
-  type: string;
-  domain: string;
-  value: string;
-  reason: string;
-};
 
-/** @internal */
-export const GetCustomEnvironmentVerification$outboundSchema: z.ZodType<
-  GetCustomEnvironmentVerification$Outbound,
-  z.ZodTypeDef,
-  GetCustomEnvironmentVerification
-> = z.object({
-  type: z.string(),
-  domain: z.string(),
-  value: z.string(),
-  reason: z.string(),
-});
-
-export function getCustomEnvironmentVerificationToJSON(
-  getCustomEnvironmentVerification: GetCustomEnvironmentVerification,
-): string {
-  return JSON.stringify(
-    GetCustomEnvironmentVerification$outboundSchema.parse(
-      getCustomEnvironmentVerification,
-    ),
-  );
-}
 export function getCustomEnvironmentVerificationFromJSON(
   jsonString: string,
 ): SafeParseResult<GetCustomEnvironmentVerification, SDKValidationError> {
@@ -329,51 +249,7 @@ export const GetCustomEnvironmentDomains$inboundSchema: z.ZodType<
     z.array(z.lazy(() => GetCustomEnvironmentVerification$inboundSchema)),
   ),
 });
-/** @internal */
-export type GetCustomEnvironmentDomains$Outbound = {
-  name: string;
-  apexName: string;
-  projectId: string;
-  redirect?: string | null | undefined;
-  redirectStatusCode?: number | null | undefined;
-  gitBranch?: string | null | undefined;
-  customEnvironmentId?: string | null | undefined;
-  updatedAt?: number | undefined;
-  createdAt?: number | undefined;
-  verified: boolean;
-  verification?: Array<GetCustomEnvironmentVerification$Outbound> | undefined;
-};
 
-/** @internal */
-export const GetCustomEnvironmentDomains$outboundSchema: z.ZodType<
-  GetCustomEnvironmentDomains$Outbound,
-  z.ZodTypeDef,
-  GetCustomEnvironmentDomains
-> = z.object({
-  name: z.string(),
-  apexName: z.string(),
-  projectId: z.string(),
-  redirect: z.nullable(z.string()).optional(),
-  redirectStatusCode: z.nullable(z.number()).optional(),
-  gitBranch: z.nullable(z.string()).optional(),
-  customEnvironmentId: z.nullable(z.string()).optional(),
-  updatedAt: z.number().optional(),
-  createdAt: z.number().optional(),
-  verified: z.boolean(),
-  verification: z.array(
-    z.lazy(() => GetCustomEnvironmentVerification$outboundSchema),
-  ).optional(),
-});
-
-export function getCustomEnvironmentDomainsToJSON(
-  getCustomEnvironmentDomains: GetCustomEnvironmentDomains,
-): string {
-  return JSON.stringify(
-    GetCustomEnvironmentDomains$outboundSchema.parse(
-      getCustomEnvironmentDomains,
-    ),
-  );
-}
 export function getCustomEnvironmentDomainsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetCustomEnvironmentDomains, SDKValidationError> {
@@ -404,47 +280,7 @@ export const GetCustomEnvironmentResponseBody$inboundSchema: z.ZodType<
   createdAt: types.number(),
   updatedAt: types.number(),
 });
-/** @internal */
-export type GetCustomEnvironmentResponseBody$Outbound = {
-  id: string;
-  slug: string;
-  type: string;
-  description?: string | undefined;
-  branchMatcher?: GetCustomEnvironmentBranchMatcher$Outbound | undefined;
-  domains?: Array<GetCustomEnvironmentDomains$Outbound> | undefined;
-  currentDeploymentAliases?: Array<string> | undefined;
-  createdAt: number;
-  updatedAt: number;
-};
 
-/** @internal */
-export const GetCustomEnvironmentResponseBody$outboundSchema: z.ZodType<
-  GetCustomEnvironmentResponseBody$Outbound,
-  z.ZodTypeDef,
-  GetCustomEnvironmentResponseBody
-> = z.object({
-  id: z.string(),
-  slug: z.string(),
-  type: GetCustomEnvironmentType$outboundSchema,
-  description: z.string().optional(),
-  branchMatcher: z.lazy(() => GetCustomEnvironmentBranchMatcher$outboundSchema)
-    .optional(),
-  domains: z.array(z.lazy(() => GetCustomEnvironmentDomains$outboundSchema))
-    .optional(),
-  currentDeploymentAliases: z.array(z.string()).optional(),
-  createdAt: z.number(),
-  updatedAt: z.number(),
-});
-
-export function getCustomEnvironmentResponseBodyToJSON(
-  getCustomEnvironmentResponseBody: GetCustomEnvironmentResponseBody,
-): string {
-  return JSON.stringify(
-    GetCustomEnvironmentResponseBody$outboundSchema.parse(
-      getCustomEnvironmentResponseBody,
-    ),
-  );
-}
 export function getCustomEnvironmentResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetCustomEnvironmentResponseBody, SDKValidationError> {

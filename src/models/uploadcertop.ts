@@ -49,17 +49,6 @@ export type UploadCertResponseBody = {
 };
 
 /** @internal */
-export const UploadCertRequestBody$inboundSchema: z.ZodType<
-  UploadCertRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  ca: types.string(),
-  key: types.string(),
-  cert: types.string(),
-  skipValidation: types.optional(types.boolean()),
-});
-/** @internal */
 export type UploadCertRequestBody$Outbound = {
   ca: string;
   key: string;
@@ -86,32 +75,7 @@ export function uploadCertRequestBodyToJSON(
     UploadCertRequestBody$outboundSchema.parse(uploadCertRequestBody),
   );
 }
-export function uploadCertRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<UploadCertRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UploadCertRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UploadCertRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const UploadCertRequest$inboundSchema: z.ZodType<
-  UploadCertRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-  RequestBody: types.optional(
-    z.lazy(() => UploadCertRequestBody$inboundSchema),
-  ),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 /** @internal */
 export type UploadCertRequest$Outbound = {
   teamId?: string | undefined;
@@ -141,15 +105,6 @@ export function uploadCertRequestToJSON(
     UploadCertRequest$outboundSchema.parse(uploadCertRequest),
   );
 }
-export function uploadCertRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<UploadCertRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UploadCertRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UploadCertRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const UploadCertResponseBody$inboundSchema: z.ZodType<
@@ -163,35 +118,7 @@ export const UploadCertResponseBody$inboundSchema: z.ZodType<
   autoRenew: types.boolean(),
   cns: z.array(types.string()),
 });
-/** @internal */
-export type UploadCertResponseBody$Outbound = {
-  id: string;
-  createdAt: number;
-  expiresAt: number;
-  autoRenew: boolean;
-  cns: Array<string>;
-};
 
-/** @internal */
-export const UploadCertResponseBody$outboundSchema: z.ZodType<
-  UploadCertResponseBody$Outbound,
-  z.ZodTypeDef,
-  UploadCertResponseBody
-> = z.object({
-  id: z.string(),
-  createdAt: z.number(),
-  expiresAt: z.number(),
-  autoRenew: z.boolean(),
-  cns: z.array(z.string()),
-});
-
-export function uploadCertResponseBodyToJSON(
-  uploadCertResponseBody: UploadCertResponseBody,
-): string {
-  return JSON.stringify(
-    UploadCertResponseBody$outboundSchema.parse(uploadCertResponseBody),
-  );
-}
 export function uploadCertResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<UploadCertResponseBody, SDKValidationError> {

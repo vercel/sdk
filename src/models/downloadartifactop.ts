@@ -4,10 +4,6 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
-import { Result as SafeParseResult } from "../types/fp.js";
-import * as types from "../types/primitives.js";
-import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type DownloadArtifactRequest = {
   /**
@@ -32,23 +28,6 @@ export type DownloadArtifactRequest = {
   slug?: string | undefined;
 };
 
-/** @internal */
-export const DownloadArtifactRequest$inboundSchema: z.ZodType<
-  DownloadArtifactRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  "'x-Artifact-Client-Ci'": types.optional(types.string()),
-  "'x-Artifact-Client-Interactive'": types.optional(types.number()),
-  hash: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-}).transform((v) => {
-  return remap$(v, {
-    "'x-Artifact-Client-Ci'": "xArtifactClientCi",
-    "'x-Artifact-Client-Interactive'": "xArtifactClientInteractive",
-  });
-});
 /** @internal */
 export type DownloadArtifactRequest$Outbound = {
   "'x-Artifact-Client-Ci'"?: string | undefined;
@@ -81,14 +60,5 @@ export function downloadArtifactRequestToJSON(
 ): string {
   return JSON.stringify(
     DownloadArtifactRequest$outboundSchema.parse(downloadArtifactRequest),
-  );
-}
-export function downloadArtifactRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<DownloadArtifactRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => DownloadArtifactRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DownloadArtifactRequest' from JSON`,
   );
 }

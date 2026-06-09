@@ -139,17 +139,6 @@ export type GetCheckResponseBody = {
 };
 
 /** @internal */
-export const GetCheckRequest$inboundSchema: z.ZodType<
-  GetCheckRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  deploymentId: types.string(),
-  checkId: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
-/** @internal */
 export type GetCheckRequest$Outbound = {
   deploymentId: string;
   checkId: string;
@@ -174,42 +163,21 @@ export function getCheckRequestToJSON(
 ): string {
   return JSON.stringify(GetCheckRequest$outboundSchema.parse(getCheckRequest));
 }
-export function getCheckRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetCheckRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetCheckRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetCheckRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const GetCheckStatus$inboundSchema: z.ZodNativeEnum<
   typeof GetCheckStatus
 > = z.nativeEnum(GetCheckStatus);
-/** @internal */
-export const GetCheckStatus$outboundSchema: z.ZodNativeEnum<
-  typeof GetCheckStatus
-> = GetCheckStatus$inboundSchema;
 
 /** @internal */
 export const GetCheckConclusion$inboundSchema: z.ZodNativeEnum<
   typeof GetCheckConclusion
 > = z.nativeEnum(GetCheckConclusion);
-/** @internal */
-export const GetCheckConclusion$outboundSchema: z.ZodNativeEnum<
-  typeof GetCheckConclusion
-> = GetCheckConclusion$inboundSchema;
 
 /** @internal */
 export const GetCheckSource$inboundSchema: z.ZodNativeEnum<
   typeof GetCheckSource
 > = z.nativeEnum(GetCheckSource);
-/** @internal */
-export const GetCheckSource$outboundSchema: z.ZodNativeEnum<
-  typeof GetCheckSource
-> = GetCheckSource$inboundSchema;
 
 /** @internal */
 export const GetCheckFCP$inboundSchema: z.ZodType<
@@ -221,27 +189,7 @@ export const GetCheckFCP$inboundSchema: z.ZodType<
   previousValue: types.optional(types.number()),
   source: GetCheckSource$inboundSchema,
 });
-/** @internal */
-export type GetCheckFCP$Outbound = {
-  value: number | null;
-  previousValue?: number | undefined;
-  source: string;
-};
 
-/** @internal */
-export const GetCheckFCP$outboundSchema: z.ZodType<
-  GetCheckFCP$Outbound,
-  z.ZodTypeDef,
-  GetCheckFCP
-> = z.object({
-  value: z.nullable(z.number()),
-  previousValue: z.number().optional(),
-  source: GetCheckSource$outboundSchema,
-});
-
-export function getCheckFCPToJSON(getCheckFCP: GetCheckFCP): string {
-  return JSON.stringify(GetCheckFCP$outboundSchema.parse(getCheckFCP));
-}
 export function getCheckFCPFromJSON(
   jsonString: string,
 ): SafeParseResult<GetCheckFCP, SDKValidationError> {
@@ -256,10 +204,6 @@ export function getCheckFCPFromJSON(
 export const GetCheckChecksSource$inboundSchema: z.ZodNativeEnum<
   typeof GetCheckChecksSource
 > = z.nativeEnum(GetCheckChecksSource);
-/** @internal */
-export const GetCheckChecksSource$outboundSchema: z.ZodNativeEnum<
-  typeof GetCheckChecksSource
-> = GetCheckChecksSource$inboundSchema;
 
 /** @internal */
 export const GetCheckLCP$inboundSchema: z.ZodType<
@@ -271,27 +215,7 @@ export const GetCheckLCP$inboundSchema: z.ZodType<
   previousValue: types.optional(types.number()),
   source: GetCheckChecksSource$inboundSchema,
 });
-/** @internal */
-export type GetCheckLCP$Outbound = {
-  value: number | null;
-  previousValue?: number | undefined;
-  source: string;
-};
 
-/** @internal */
-export const GetCheckLCP$outboundSchema: z.ZodType<
-  GetCheckLCP$Outbound,
-  z.ZodTypeDef,
-  GetCheckLCP
-> = z.object({
-  value: z.nullable(z.number()),
-  previousValue: z.number().optional(),
-  source: GetCheckChecksSource$outboundSchema,
-});
-
-export function getCheckLCPToJSON(getCheckLCP: GetCheckLCP): string {
-  return JSON.stringify(GetCheckLCP$outboundSchema.parse(getCheckLCP));
-}
 export function getCheckLCPFromJSON(
   jsonString: string,
 ): SafeParseResult<GetCheckLCP, SDKValidationError> {
@@ -306,10 +230,6 @@ export function getCheckLCPFromJSON(
 export const GetCheckChecksResponseSource$inboundSchema: z.ZodNativeEnum<
   typeof GetCheckChecksResponseSource
 > = z.nativeEnum(GetCheckChecksResponseSource);
-/** @internal */
-export const GetCheckChecksResponseSource$outboundSchema: z.ZodNativeEnum<
-  typeof GetCheckChecksResponseSource
-> = GetCheckChecksResponseSource$inboundSchema;
 
 /** @internal */
 export const GetCheckCLS$inboundSchema: z.ZodType<
@@ -321,27 +241,7 @@ export const GetCheckCLS$inboundSchema: z.ZodType<
   previousValue: types.optional(types.number()),
   source: GetCheckChecksResponseSource$inboundSchema,
 });
-/** @internal */
-export type GetCheckCLS$Outbound = {
-  value: number | null;
-  previousValue?: number | undefined;
-  source: string;
-};
 
-/** @internal */
-export const GetCheckCLS$outboundSchema: z.ZodType<
-  GetCheckCLS$Outbound,
-  z.ZodTypeDef,
-  GetCheckCLS
-> = z.object({
-  value: z.nullable(z.number()),
-  previousValue: z.number().optional(),
-  source: GetCheckChecksResponseSource$outboundSchema,
-});
-
-export function getCheckCLSToJSON(getCheckCLS: GetCheckCLS): string {
-  return JSON.stringify(GetCheckCLS$outboundSchema.parse(getCheckCLS));
-}
 export function getCheckCLSFromJSON(
   jsonString: string,
 ): SafeParseResult<GetCheckCLS, SDKValidationError> {
@@ -356,10 +256,6 @@ export function getCheckCLSFromJSON(
 export const GetCheckChecksResponse200Source$inboundSchema: z.ZodNativeEnum<
   typeof GetCheckChecksResponse200Source
 > = z.nativeEnum(GetCheckChecksResponse200Source);
-/** @internal */
-export const GetCheckChecksResponse200Source$outboundSchema: z.ZodNativeEnum<
-  typeof GetCheckChecksResponse200Source
-> = GetCheckChecksResponse200Source$inboundSchema;
 
 /** @internal */
 export const GetCheckTBT$inboundSchema: z.ZodType<
@@ -371,27 +267,7 @@ export const GetCheckTBT$inboundSchema: z.ZodType<
   previousValue: types.optional(types.number()),
   source: GetCheckChecksResponse200Source$inboundSchema,
 });
-/** @internal */
-export type GetCheckTBT$Outbound = {
-  value: number | null;
-  previousValue?: number | undefined;
-  source: string;
-};
 
-/** @internal */
-export const GetCheckTBT$outboundSchema: z.ZodType<
-  GetCheckTBT$Outbound,
-  z.ZodTypeDef,
-  GetCheckTBT
-> = z.object({
-  value: z.nullable(z.number()),
-  previousValue: z.number().optional(),
-  source: GetCheckChecksResponse200Source$outboundSchema,
-});
-
-export function getCheckTBTToJSON(getCheckTBT: GetCheckTBT): string {
-  return JSON.stringify(GetCheckTBT$outboundSchema.parse(getCheckTBT));
-}
 export function getCheckTBTFromJSON(
   jsonString: string,
 ): SafeParseResult<GetCheckTBT, SDKValidationError> {
@@ -406,10 +282,6 @@ export function getCheckTBTFromJSON(
 export const GetCheckChecksResponse200ApplicationJSONSource$inboundSchema:
   z.ZodNativeEnum<typeof GetCheckChecksResponse200ApplicationJSONSource> = z
     .nativeEnum(GetCheckChecksResponse200ApplicationJSONSource);
-/** @internal */
-export const GetCheckChecksResponse200ApplicationJSONSource$outboundSchema:
-  z.ZodNativeEnum<typeof GetCheckChecksResponse200ApplicationJSONSource> =
-    GetCheckChecksResponse200ApplicationJSONSource$inboundSchema;
 
 /** @internal */
 export const GetCheckVirtualExperienceScore$inboundSchema: z.ZodType<
@@ -421,33 +293,7 @@ export const GetCheckVirtualExperienceScore$inboundSchema: z.ZodType<
   previousValue: types.optional(types.number()),
   source: GetCheckChecksResponse200ApplicationJSONSource$inboundSchema,
 });
-/** @internal */
-export type GetCheckVirtualExperienceScore$Outbound = {
-  value: number | null;
-  previousValue?: number | undefined;
-  source: string;
-};
 
-/** @internal */
-export const GetCheckVirtualExperienceScore$outboundSchema: z.ZodType<
-  GetCheckVirtualExperienceScore$Outbound,
-  z.ZodTypeDef,
-  GetCheckVirtualExperienceScore
-> = z.object({
-  value: z.nullable(z.number()),
-  previousValue: z.number().optional(),
-  source: GetCheckChecksResponse200ApplicationJSONSource$outboundSchema,
-});
-
-export function getCheckVirtualExperienceScoreToJSON(
-  getCheckVirtualExperienceScore: GetCheckVirtualExperienceScore,
-): string {
-  return JSON.stringify(
-    GetCheckVirtualExperienceScore$outboundSchema.parse(
-      getCheckVirtualExperienceScore,
-    ),
-  );
-}
 export function getCheckVirtualExperienceScoreFromJSON(
   jsonString: string,
 ): SafeParseResult<GetCheckVirtualExperienceScore, SDKValidationError> {
@@ -479,42 +325,7 @@ export const GetCheckMetrics$inboundSchema: z.ZodType<
     "TBT": "tbt",
   });
 });
-/** @internal */
-export type GetCheckMetrics$Outbound = {
-  FCP: GetCheckFCP$Outbound;
-  LCP: GetCheckLCP$Outbound;
-  CLS: GetCheckCLS$Outbound;
-  TBT: GetCheckTBT$Outbound;
-  virtualExperienceScore?: GetCheckVirtualExperienceScore$Outbound | undefined;
-};
 
-/** @internal */
-export const GetCheckMetrics$outboundSchema: z.ZodType<
-  GetCheckMetrics$Outbound,
-  z.ZodTypeDef,
-  GetCheckMetrics
-> = z.object({
-  fcp: z.lazy(() => GetCheckFCP$outboundSchema),
-  lcp: z.lazy(() => GetCheckLCP$outboundSchema),
-  cls: z.lazy(() => GetCheckCLS$outboundSchema),
-  tbt: z.lazy(() => GetCheckTBT$outboundSchema),
-  virtualExperienceScore: z.lazy(() =>
-    GetCheckVirtualExperienceScore$outboundSchema
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    fcp: "FCP",
-    lcp: "LCP",
-    cls: "CLS",
-    tbt: "TBT",
-  });
-});
-
-export function getCheckMetricsToJSON(
-  getCheckMetrics: GetCheckMetrics,
-): string {
-  return JSON.stringify(GetCheckMetrics$outboundSchema.parse(getCheckMetrics));
-}
 export function getCheckMetricsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetCheckMetrics, SDKValidationError> {
@@ -533,23 +344,7 @@ export const GetCheckOutput$inboundSchema: z.ZodType<
 > = z.object({
   metrics: types.optional(z.lazy(() => GetCheckMetrics$inboundSchema)),
 });
-/** @internal */
-export type GetCheckOutput$Outbound = {
-  metrics?: GetCheckMetrics$Outbound | undefined;
-};
 
-/** @internal */
-export const GetCheckOutput$outboundSchema: z.ZodType<
-  GetCheckOutput$Outbound,
-  z.ZodTypeDef,
-  GetCheckOutput
-> = z.object({
-  metrics: z.lazy(() => GetCheckMetrics$outboundSchema).optional(),
-});
-
-export function getCheckOutputToJSON(getCheckOutput: GetCheckOutput): string {
-  return JSON.stringify(GetCheckOutput$outboundSchema.parse(getCheckOutput));
-}
 export function getCheckOutputFromJSON(
   jsonString: string,
 ): SafeParseResult<GetCheckOutput, SDKValidationError> {
@@ -583,57 +378,7 @@ export const GetCheckResponseBody$inboundSchema: z.ZodType<
   startedAt: types.optional(types.number()),
   rerequestable: types.optional(types.boolean()),
 });
-/** @internal */
-export type GetCheckResponseBody$Outbound = {
-  id: string;
-  name: string;
-  createdAt: number;
-  updatedAt: number;
-  deploymentId: string;
-  status: string;
-  conclusion?: string | undefined;
-  externalId?: string | undefined;
-  output?: GetCheckOutput$Outbound | undefined;
-  completedAt?: number | undefined;
-  path?: string | undefined;
-  blocking: boolean;
-  detailsUrl?: string | undefined;
-  integrationId: string;
-  startedAt?: number | undefined;
-  rerequestable?: boolean | undefined;
-};
 
-/** @internal */
-export const GetCheckResponseBody$outboundSchema: z.ZodType<
-  GetCheckResponseBody$Outbound,
-  z.ZodTypeDef,
-  GetCheckResponseBody
-> = z.object({
-  id: z.string(),
-  name: z.string(),
-  createdAt: z.number(),
-  updatedAt: z.number(),
-  deploymentId: z.string(),
-  status: GetCheckStatus$outboundSchema,
-  conclusion: GetCheckConclusion$outboundSchema.optional(),
-  externalId: z.string().optional(),
-  output: z.lazy(() => GetCheckOutput$outboundSchema).optional(),
-  completedAt: z.number().optional(),
-  path: z.string().optional(),
-  blocking: z.boolean(),
-  detailsUrl: z.string().optional(),
-  integrationId: z.string(),
-  startedAt: z.number().optional(),
-  rerequestable: z.boolean().optional(),
-});
-
-export function getCheckResponseBodyToJSON(
-  getCheckResponseBody: GetCheckResponseBody,
-): string {
-  return JSON.stringify(
-    GetCheckResponseBody$outboundSchema.parse(getCheckResponseBody),
-  );
-}
 export function getCheckResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetCheckResponseBody, SDKValidationError> {

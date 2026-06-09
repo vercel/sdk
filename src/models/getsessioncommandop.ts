@@ -6,13 +6,10 @@ import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
-import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 import {
   SessionCommand,
   SessionCommand$inboundSchema,
-  SessionCommand$Outbound,
-  SessionCommand$outboundSchema,
 } from "./sessioncommand.js";
 
 /**
@@ -61,25 +58,10 @@ export type GetSessionCommandResponseBody = {
 };
 
 /** @internal */
-export const Wait$inboundSchema: z.ZodNativeEnum<typeof Wait> = z.nativeEnum(
+export const Wait$outboundSchema: z.ZodNativeEnum<typeof Wait> = z.nativeEnum(
   Wait,
 );
-/** @internal */
-export const Wait$outboundSchema: z.ZodNativeEnum<typeof Wait> =
-  Wait$inboundSchema;
 
-/** @internal */
-export const GetSessionCommandRequest$inboundSchema: z.ZodType<
-  GetSessionCommandRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  sessionId: types.string(),
-  cmdId: types.string(),
-  wait: Wait$inboundSchema.default("false"),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
 /** @internal */
 export type GetSessionCommandRequest$Outbound = {
   sessionId: string;
@@ -109,15 +91,6 @@ export function getSessionCommandRequestToJSON(
     GetSessionCommandRequest$outboundSchema.parse(getSessionCommandRequest),
   );
 }
-export function getSessionCommandRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetSessionCommandRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetSessionCommandRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetSessionCommandRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const GetSessionCommandResponseBody$inboundSchema: z.ZodType<
@@ -127,29 +100,7 @@ export const GetSessionCommandResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   command: SessionCommand$inboundSchema,
 });
-/** @internal */
-export type GetSessionCommandResponseBody$Outbound = {
-  command: SessionCommand$Outbound;
-};
 
-/** @internal */
-export const GetSessionCommandResponseBody$outboundSchema: z.ZodType<
-  GetSessionCommandResponseBody$Outbound,
-  z.ZodTypeDef,
-  GetSessionCommandResponseBody
-> = z.object({
-  command: SessionCommand$outboundSchema,
-});
-
-export function getSessionCommandResponseBodyToJSON(
-  getSessionCommandResponseBody: GetSessionCommandResponseBody,
-): string {
-  return JSON.stringify(
-    GetSessionCommandResponseBody$outboundSchema.parse(
-      getSessionCommandResponseBody,
-    ),
-  );
-}
 export function getSessionCommandResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetSessionCommandResponseBody, SDKValidationError> {

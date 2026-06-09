@@ -5,7 +5,6 @@
 import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
-import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type RemoveRecordRequest = {
@@ -26,17 +25,6 @@ export type RemoveRecordRequest = {
  */
 export type RemoveRecordResponseBody = {};
 
-/** @internal */
-export const RemoveRecordRequest$inboundSchema: z.ZodType<
-  RemoveRecordRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  domain: types.string(),
-  recordId: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
 /** @internal */
 export type RemoveRecordRequest$Outbound = {
   domain: string;
@@ -64,15 +52,6 @@ export function removeRecordRequestToJSON(
     RemoveRecordRequest$outboundSchema.parse(removeRecordRequest),
   );
 }
-export function removeRecordRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<RemoveRecordRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RemoveRecordRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RemoveRecordRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const RemoveRecordResponseBody$inboundSchema: z.ZodType<
@@ -80,23 +59,7 @@ export const RemoveRecordResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-/** @internal */
-export type RemoveRecordResponseBody$Outbound = {};
 
-/** @internal */
-export const RemoveRecordResponseBody$outboundSchema: z.ZodType<
-  RemoveRecordResponseBody$Outbound,
-  z.ZodTypeDef,
-  RemoveRecordResponseBody
-> = z.object({});
-
-export function removeRecordResponseBodyToJSON(
-  removeRecordResponseBody: RemoveRecordResponseBody,
-): string {
-  return JSON.stringify(
-    RemoveRecordResponseBody$outboundSchema.parse(removeRecordResponseBody),
-  );
-}
 export function removeRecordResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveRecordResponseBody, SDKValidationError> {

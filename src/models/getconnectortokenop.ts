@@ -4,10 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import {
-  collectExtraKeys as collectExtraKeys$,
-  safeParse,
-} from "../lib/schemas.js";
+import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -104,18 +101,6 @@ export type GetConnectorTokenResponseBody = {
 };
 
 /** @internal */
-export const TypeOther$inboundSchema: z.ZodType<
-  TypeOther,
-  z.ZodTypeDef,
-  unknown
-> = collectExtraKeys$(
-  z.object({
-    type: types.string(),
-  }).catchall(z.any()),
-  "additionalProperties",
-  true,
-);
-/** @internal */
 export type TypeOther$Outbound = {
   type: string;
   [additionalProperties: string]: unknown;
@@ -141,41 +126,12 @@ export const TypeOther$outboundSchema: z.ZodType<
 export function typeOtherToJSON(typeOther: TypeOther): string {
   return JSON.stringify(TypeOther$outboundSchema.parse(typeOther));
 }
-export function typeOtherFromJSON(
-  jsonString: string,
-): SafeParseResult<TypeOther, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => TypeOther$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'TypeOther' from JSON`,
-  );
-}
 
-/** @internal */
-export const GetConnectorTokenSubjectConnectRequestType$inboundSchema:
-  z.ZodNativeEnum<typeof GetConnectorTokenSubjectConnectRequestType> = z
-    .nativeEnum(GetConnectorTokenSubjectConnectRequestType);
 /** @internal */
 export const GetConnectorTokenSubjectConnectRequestType$outboundSchema:
-  z.ZodNativeEnum<typeof GetConnectorTokenSubjectConnectRequestType> =
-    GetConnectorTokenSubjectConnectRequestType$inboundSchema;
+  z.ZodNativeEnum<typeof GetConnectorTokenSubjectConnectRequestType> = z
+    .nativeEnum(GetConnectorTokenSubjectConnectRequestType);
 
-/** @internal */
-export const TypeJwtBearer$inboundSchema: z.ZodType<
-  TypeJwtBearer,
-  z.ZodTypeDef,
-  unknown
-> = collectExtraKeys$(
-  z.object({
-    type: GetConnectorTokenSubjectConnectRequestType$inboundSchema,
-    sub: types.optional(types.string()),
-    iss: types.optional(types.string()),
-    aud: types.optional(types.string()),
-    additionalClaims: types.optional(z.record(z.any())),
-  }).catchall(z.any()),
-  "additionalProperties",
-  true,
-);
 /** @internal */
 export type TypeJwtBearer$Outbound = {
   type: string;
@@ -210,39 +166,13 @@ export const TypeJwtBearer$outboundSchema: z.ZodType<
 export function typeJwtBearerToJSON(typeJwtBearer: TypeJwtBearer): string {
   return JSON.stringify(TypeJwtBearer$outboundSchema.parse(typeJwtBearer));
 }
-export function typeJwtBearerFromJSON(
-  jsonString: string,
-): SafeParseResult<TypeJwtBearer, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => TypeJwtBearer$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'TypeJwtBearer' from JSON`,
-  );
-}
 
-/** @internal */
-export const GetConnectorTokenSubjectConnectType$inboundSchema: z.ZodNativeEnum<
-  typeof GetConnectorTokenSubjectConnectType
-> = z.nativeEnum(GetConnectorTokenSubjectConnectType);
 /** @internal */
 export const GetConnectorTokenSubjectConnectType$outboundSchema:
-  z.ZodNativeEnum<typeof GetConnectorTokenSubjectConnectType> =
-    GetConnectorTokenSubjectConnectType$inboundSchema;
+  z.ZodNativeEnum<typeof GetConnectorTokenSubjectConnectType> = z.nativeEnum(
+    GetConnectorTokenSubjectConnectType,
+  );
 
-/** @internal */
-export const TypeUser$inboundSchema: z.ZodType<
-  TypeUser,
-  z.ZodTypeDef,
-  unknown
-> = collectExtraKeys$(
-  z.object({
-    type: GetConnectorTokenSubjectConnectType$inboundSchema,
-    id: types.optional(types.string()),
-    issuer: types.optional(types.string()),
-  }).catchall(z.any()),
-  "additionalProperties",
-  true,
-);
 /** @internal */
 export type TypeUser$Outbound = {
   type: string;
@@ -273,34 +203,12 @@ export const TypeUser$outboundSchema: z.ZodType<
 export function typeUserToJSON(typeUser: TypeUser): string {
   return JSON.stringify(TypeUser$outboundSchema.parse(typeUser));
 }
-export function typeUserFromJSON(
-  jsonString: string,
-): SafeParseResult<TypeUser, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => TypeUser$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'TypeUser' from JSON`,
-  );
-}
 
-/** @internal */
-export const GetConnectorTokenSubjectType$inboundSchema: z.ZodNativeEnum<
-  typeof GetConnectorTokenSubjectType
-> = z.nativeEnum(GetConnectorTokenSubjectType);
 /** @internal */
 export const GetConnectorTokenSubjectType$outboundSchema: z.ZodNativeEnum<
   typeof GetConnectorTokenSubjectType
-> = GetConnectorTokenSubjectType$inboundSchema;
+> = z.nativeEnum(GetConnectorTokenSubjectType);
 
-/** @internal */
-export const TypeApp$inboundSchema: z.ZodType<TypeApp, z.ZodTypeDef, unknown> =
-  collectExtraKeys$(
-    z.object({
-      type: GetConnectorTokenSubjectType$inboundSchema,
-    }).catchall(z.any()),
-    "additionalProperties",
-    true,
-  );
 /** @internal */
 export type TypeApp$Outbound = {
   type: string;
@@ -327,24 +235,7 @@ export const TypeApp$outboundSchema: z.ZodType<
 export function typeAppToJSON(typeApp: TypeApp): string {
   return JSON.stringify(TypeApp$outboundSchema.parse(typeApp));
 }
-export function typeAppFromJSON(
-  jsonString: string,
-): SafeParseResult<TypeApp, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => TypeApp$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'TypeApp' from JSON`,
-  );
-}
 
-/** @internal */
-export const Subject$inboundSchema: z.ZodType<Subject, z.ZodTypeDef, unknown> =
-  smartUnion([
-    z.lazy(() => TypeApp$inboundSchema),
-    z.lazy(() => TypeUser$inboundSchema),
-    z.lazy(() => TypeJwtBearer$inboundSchema),
-    z.lazy(() => TypeOther$inboundSchema),
-  ]);
 /** @internal */
 export type Subject$Outbound =
   | TypeApp$Outbound
@@ -367,28 +258,7 @@ export const Subject$outboundSchema: z.ZodType<
 export function subjectToJSON(subject: Subject): string {
   return JSON.stringify(Subject$outboundSchema.parse(subject));
 }
-export function subjectFromJSON(
-  jsonString: string,
-): SafeParseResult<Subject, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Subject$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Subject' from JSON`,
-  );
-}
 
-/** @internal */
-export const AuthorizationDetails$inboundSchema: z.ZodType<
-  AuthorizationDetails,
-  z.ZodTypeDef,
-  unknown
-> = collectExtraKeys$(
-  z.object({
-    type: types.optional(types.string()),
-  }).catchall(z.any()),
-  "additionalProperties",
-  true,
-);
 /** @internal */
 export type AuthorizationDetails$Outbound = {
   type?: string | undefined;
@@ -419,39 +289,7 @@ export function authorizationDetailsToJSON(
     AuthorizationDetails$outboundSchema.parse(authorizationDetails),
   );
 }
-export function authorizationDetailsFromJSON(
-  jsonString: string,
-): SafeParseResult<AuthorizationDetails, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AuthorizationDetails$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AuthorizationDetails' from JSON`,
-  );
-}
 
-/** @internal */
-export const GetConnectorTokenRequestBody$inboundSchema: z.ZodType<
-  GetConnectorTokenRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  subject: types.optional(
-    smartUnion([
-      z.lazy(() => TypeApp$inboundSchema),
-      z.lazy(() => TypeUser$inboundSchema),
-      z.lazy(() => TypeJwtBearer$inboundSchema),
-      z.lazy(() => TypeOther$inboundSchema),
-    ]),
-  ),
-  installationId: types.optional(types.string()),
-  audience: types.optional(z.array(types.string())),
-  scopes: types.optional(z.array(types.string())),
-  resources: types.optional(z.array(types.string())),
-  authorizationDetails: types.optional(
-    z.array(z.lazy(() => AuthorizationDetails$inboundSchema)),
-  ),
-  validityBufferMs: types.optional(types.number()),
-});
 /** @internal */
 export type GetConnectorTokenRequestBody$Outbound = {
   subject?:
@@ -499,31 +337,7 @@ export function getConnectorTokenRequestBodyToJSON(
     ),
   );
 }
-export function getConnectorTokenRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<GetConnectorTokenRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetConnectorTokenRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetConnectorTokenRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const GetConnectorTokenRequest$inboundSchema: z.ZodType<
-  GetConnectorTokenRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  connector: types.string(),
-  RequestBody: types.optional(
-    z.lazy(() => GetConnectorTokenRequestBody$inboundSchema),
-  ),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 /** @internal */
 export type GetConnectorTokenRequest$Outbound = {
   connector: string;
@@ -552,15 +366,6 @@ export function getConnectorTokenRequestToJSON(
     GetConnectorTokenRequest$outboundSchema.parse(getConnectorTokenRequest),
   );
 }
-export function getConnectorTokenRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetConnectorTokenRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetConnectorTokenRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetConnectorTokenRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const Connector$inboundSchema: z.ZodType<
@@ -572,27 +377,7 @@ export const Connector$inboundSchema: z.ZodType<
   uid: types.string(),
   type: types.string(),
 });
-/** @internal */
-export type Connector$Outbound = {
-  id: string;
-  uid: string;
-  type: string;
-};
 
-/** @internal */
-export const Connector$outboundSchema: z.ZodType<
-  Connector$Outbound,
-  z.ZodTypeDef,
-  Connector
-> = z.object({
-  id: z.string(),
-  uid: z.string(),
-  type: z.string(),
-});
-
-export function connectorToJSON(connector: Connector): string {
-  return JSON.stringify(Connector$outboundSchema.parse(connector));
-}
 export function connectorFromJSON(
   jsonString: string,
 ): SafeParseResult<Connector, SDKValidationError> {
@@ -618,43 +403,7 @@ export const GetConnectorTokenResponseBody$inboundSchema: z.ZodType<
   externalSubject: types.optional(types.string()),
   metadata: types.optional(z.record(z.any())),
 });
-/** @internal */
-export type GetConnectorTokenResponseBody$Outbound = {
-  token: string;
-  expiresAt: number;
-  connector: Connector$Outbound;
-  name?: string | undefined;
-  installationId?: string | undefined;
-  tenantId?: string | undefined;
-  externalSubject?: string | undefined;
-  metadata?: { [k: string]: any } | undefined;
-};
 
-/** @internal */
-export const GetConnectorTokenResponseBody$outboundSchema: z.ZodType<
-  GetConnectorTokenResponseBody$Outbound,
-  z.ZodTypeDef,
-  GetConnectorTokenResponseBody
-> = z.object({
-  token: z.string(),
-  expiresAt: z.number(),
-  connector: z.lazy(() => Connector$outboundSchema),
-  name: z.string().optional(),
-  installationId: z.string().optional(),
-  tenantId: z.string().optional(),
-  externalSubject: z.string().optional(),
-  metadata: z.record(z.any()).optional(),
-});
-
-export function getConnectorTokenResponseBodyToJSON(
-  getConnectorTokenResponseBody: GetConnectorTokenResponseBody,
-): string {
-  return JSON.stringify(
-    GetConnectorTokenResponseBody$outboundSchema.parse(
-      getConnectorTokenResponseBody,
-    ),
-  );
-}
 export function getConnectorTokenResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetConnectorTokenResponseBody, SDKValidationError> {

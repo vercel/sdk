@@ -5,13 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
-import * as types from "../types/primitives.js";
-import {
-  NamedSandbox,
-  NamedSandbox$inboundSchema,
-  NamedSandbox$Outbound,
-  NamedSandbox$outboundSchema,
-} from "./namedsandbox.js";
+import { NamedSandbox, NamedSandbox$inboundSchema } from "./namedsandbox.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type DeleteSandboxRequest = {
@@ -41,17 +35,6 @@ export type DeleteSandboxResponseBody = {
 };
 
 /** @internal */
-export const DeleteSandboxRequest$inboundSchema: z.ZodType<
-  DeleteSandboxRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  name: types.string(),
-  projectId: types.optional(types.string()),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
-/** @internal */
 export type DeleteSandboxRequest$Outbound = {
   name: string;
   projectId?: string | undefined;
@@ -78,15 +61,6 @@ export function deleteSandboxRequestToJSON(
     DeleteSandboxRequest$outboundSchema.parse(deleteSandboxRequest),
   );
 }
-export function deleteSandboxRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<DeleteSandboxRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => DeleteSandboxRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DeleteSandboxRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const DeleteSandboxResponseBody$inboundSchema: z.ZodType<
@@ -96,27 +70,7 @@ export const DeleteSandboxResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   sandbox: NamedSandbox$inboundSchema,
 });
-/** @internal */
-export type DeleteSandboxResponseBody$Outbound = {
-  sandbox: NamedSandbox$Outbound;
-};
 
-/** @internal */
-export const DeleteSandboxResponseBody$outboundSchema: z.ZodType<
-  DeleteSandboxResponseBody$Outbound,
-  z.ZodTypeDef,
-  DeleteSandboxResponseBody
-> = z.object({
-  sandbox: NamedSandbox$outboundSchema,
-});
-
-export function deleteSandboxResponseBodyToJSON(
-  deleteSandboxResponseBody: DeleteSandboxResponseBody,
-): string {
-  return JSON.stringify(
-    DeleteSandboxResponseBody$outboundSchema.parse(deleteSandboxResponseBody),
-  );
-}
 export function deleteSandboxResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<DeleteSandboxResponseBody, SDKValidationError> {

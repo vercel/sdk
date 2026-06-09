@@ -284,16 +284,6 @@ export type ListDeploymentCheckRunsResponseBody = {
 };
 
 /** @internal */
-export const ListDeploymentCheckRunsRequest$inboundSchema: z.ZodType<
-  ListDeploymentCheckRunsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  deploymentId: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
-/** @internal */
 export type ListDeploymentCheckRunsRequest$Outbound = {
   deploymentId: string;
   teamId?: string | undefined;
@@ -320,60 +310,31 @@ export function listDeploymentCheckRunsRequestToJSON(
     ),
   );
 }
-export function listDeploymentCheckRunsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<ListDeploymentCheckRunsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ListDeploymentCheckRunsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ListDeploymentCheckRunsRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const ListDeploymentCheckRunsRunsChecksV2Requires$inboundSchema:
   z.ZodNativeEnum<typeof ListDeploymentCheckRunsRunsChecksV2Requires> = z
     .nativeEnum(ListDeploymentCheckRunsRunsChecksV2Requires);
-/** @internal */
-export const ListDeploymentCheckRunsRunsChecksV2Requires$outboundSchema:
-  z.ZodNativeEnum<typeof ListDeploymentCheckRunsRunsChecksV2Requires> =
-    ListDeploymentCheckRunsRunsChecksV2Requires$inboundSchema;
 
 /** @internal */
 export const ListDeploymentCheckRunsRunsChecksV2Blocks$inboundSchema:
   z.ZodNativeEnum<typeof ListDeploymentCheckRunsRunsChecksV2Blocks> = z
     .nativeEnum(ListDeploymentCheckRunsRunsChecksV2Blocks);
-/** @internal */
-export const ListDeploymentCheckRunsRunsChecksV2Blocks$outboundSchema:
-  z.ZodNativeEnum<typeof ListDeploymentCheckRunsRunsChecksV2Blocks> =
-    ListDeploymentCheckRunsRunsChecksV2Blocks$inboundSchema;
 
 /** @internal */
 export const ListDeploymentCheckRunsRunsChecksV2Status$inboundSchema:
   z.ZodNativeEnum<typeof ListDeploymentCheckRunsRunsChecksV2Status> = z
     .nativeEnum(ListDeploymentCheckRunsRunsChecksV2Status);
-/** @internal */
-export const ListDeploymentCheckRunsRunsChecksV2Status$outboundSchema:
-  z.ZodNativeEnum<typeof ListDeploymentCheckRunsRunsChecksV2Status> =
-    ListDeploymentCheckRunsRunsChecksV2Status$inboundSchema;
 
 /** @internal */
 export const ListDeploymentCheckRunsRunsChecksV2Conclusion$inboundSchema:
   z.ZodNativeEnum<typeof ListDeploymentCheckRunsRunsChecksV2Conclusion> = z
     .nativeEnum(ListDeploymentCheckRunsRunsChecksV2Conclusion);
-/** @internal */
-export const ListDeploymentCheckRunsRunsChecksV2Conclusion$outboundSchema:
-  z.ZodNativeEnum<typeof ListDeploymentCheckRunsRunsChecksV2Conclusion> =
-    ListDeploymentCheckRunsRunsChecksV2Conclusion$inboundSchema;
 
 /** @internal */
 export const ListDeploymentCheckRunsSourceChecksV2ResponseOrigin$inboundSchema:
   z.ZodNativeEnum<typeof ListDeploymentCheckRunsSourceChecksV2ResponseOrigin> =
     z.nativeEnum(ListDeploymentCheckRunsSourceChecksV2ResponseOrigin);
-/** @internal */
-export const ListDeploymentCheckRunsSourceChecksV2ResponseOrigin$outboundSchema:
-  z.ZodNativeEnum<typeof ListDeploymentCheckRunsSourceChecksV2ResponseOrigin> =
-    ListDeploymentCheckRunsSourceChecksV2ResponseOrigin$inboundSchema;
 
 /** @internal */
 export const ListDeploymentCheckRunsSourceChecksV22$inboundSchema: z.ZodType<
@@ -384,32 +345,7 @@ export const ListDeploymentCheckRunsSourceChecksV22$inboundSchema: z.ZodType<
   subKind: types.literal("vercel-ci-sentinel"),
   origin: ListDeploymentCheckRunsSourceChecksV2ResponseOrigin$inboundSchema,
 });
-/** @internal */
-export type ListDeploymentCheckRunsSourceChecksV22$Outbound = {
-  subKind: "vercel-ci-sentinel";
-  origin: string;
-};
 
-/** @internal */
-export const ListDeploymentCheckRunsSourceChecksV22$outboundSchema: z.ZodType<
-  ListDeploymentCheckRunsSourceChecksV22$Outbound,
-  z.ZodTypeDef,
-  ListDeploymentCheckRunsSourceChecksV22
-> = z.object({
-  subKind: z.literal("vercel-ci-sentinel"),
-  origin: ListDeploymentCheckRunsSourceChecksV2ResponseOrigin$outboundSchema,
-});
-
-export function listDeploymentCheckRunsSourceChecksV22ToJSON(
-  listDeploymentCheckRunsSourceChecksV22:
-    ListDeploymentCheckRunsSourceChecksV22,
-): string {
-  return JSON.stringify(
-    ListDeploymentCheckRunsSourceChecksV22$outboundSchema.parse(
-      listDeploymentCheckRunsSourceChecksV22,
-    ),
-  );
-}
 export function listDeploymentCheckRunsSourceChecksV22FromJSON(
   jsonString: string,
 ): SafeParseResult<ListDeploymentCheckRunsSourceChecksV22, SDKValidationError> {
@@ -425,10 +361,6 @@ export function listDeploymentCheckRunsSourceChecksV22FromJSON(
 export const ListDeploymentCheckRunsSourceChecksV2Origin$inboundSchema:
   z.ZodNativeEnum<typeof ListDeploymentCheckRunsSourceChecksV2Origin> = z
     .nativeEnum(ListDeploymentCheckRunsSourceChecksV2Origin);
-/** @internal */
-export const ListDeploymentCheckRunsSourceChecksV2Origin$outboundSchema:
-  z.ZodNativeEnum<typeof ListDeploymentCheckRunsSourceChecksV2Origin> =
-    ListDeploymentCheckRunsSourceChecksV2Origin$inboundSchema;
 
 /** @internal */
 export const ListDeploymentCheckRunsSourceChecksV21$inboundSchema: z.ZodType<
@@ -441,36 +373,7 @@ export const ListDeploymentCheckRunsSourceChecksV21$inboundSchema: z.ZodType<
   invocationId: types.string(),
   jobDefinitionId: types.string(),
 });
-/** @internal */
-export type ListDeploymentCheckRunsSourceChecksV21$Outbound = {
-  subKind: "vercel-ci";
-  origin: string;
-  invocationId: string;
-  jobDefinitionId: string;
-};
 
-/** @internal */
-export const ListDeploymentCheckRunsSourceChecksV21$outboundSchema: z.ZodType<
-  ListDeploymentCheckRunsSourceChecksV21$Outbound,
-  z.ZodTypeDef,
-  ListDeploymentCheckRunsSourceChecksV21
-> = z.object({
-  subKind: z.literal("vercel-ci"),
-  origin: ListDeploymentCheckRunsSourceChecksV2Origin$outboundSchema,
-  invocationId: z.string(),
-  jobDefinitionId: z.string(),
-});
-
-export function listDeploymentCheckRunsSourceChecksV21ToJSON(
-  listDeploymentCheckRunsSourceChecksV21:
-    ListDeploymentCheckRunsSourceChecksV21,
-): string {
-  return JSON.stringify(
-    ListDeploymentCheckRunsSourceChecksV21$outboundSchema.parse(
-      listDeploymentCheckRunsSourceChecksV21,
-    ),
-  );
-}
 export function listDeploymentCheckRunsSourceChecksV21FromJSON(
   jsonString: string,
 ): SafeParseResult<ListDeploymentCheckRunsSourceChecksV21, SDKValidationError> {
@@ -491,32 +394,7 @@ export const ListDeploymentCheckRunsRunsChecksV2Source$inboundSchema: z.ZodType<
   z.lazy(() => ListDeploymentCheckRunsSourceChecksV21$inboundSchema),
   z.lazy(() => ListDeploymentCheckRunsSourceChecksV22$inboundSchema),
 ]);
-/** @internal */
-export type ListDeploymentCheckRunsRunsChecksV2Source$Outbound =
-  | ListDeploymentCheckRunsSourceChecksV21$Outbound
-  | ListDeploymentCheckRunsSourceChecksV22$Outbound;
 
-/** @internal */
-export const ListDeploymentCheckRunsRunsChecksV2Source$outboundSchema:
-  z.ZodType<
-    ListDeploymentCheckRunsRunsChecksV2Source$Outbound,
-    z.ZodTypeDef,
-    ListDeploymentCheckRunsRunsChecksV2Source
-  > = z.union([
-    z.lazy(() => ListDeploymentCheckRunsSourceChecksV21$outboundSchema),
-    z.lazy(() => ListDeploymentCheckRunsSourceChecksV22$outboundSchema),
-  ]);
-
-export function listDeploymentCheckRunsRunsChecksV2SourceToJSON(
-  listDeploymentCheckRunsRunsChecksV2Source:
-    ListDeploymentCheckRunsRunsChecksV2Source,
-): string {
-  return JSON.stringify(
-    ListDeploymentCheckRunsRunsChecksV2Source$outboundSchema.parse(
-      listDeploymentCheckRunsRunsChecksV2Source,
-    ),
-  );
-}
 export function listDeploymentCheckRunsRunsChecksV2SourceFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -568,72 +446,7 @@ export const ListDeploymentCheckRunsRuns2$inboundSchema: z.ZodType<
     z.lazy(() => ListDeploymentCheckRunsSourceChecksV22$inboundSchema),
   ]),
 });
-/** @internal */
-export type ListDeploymentCheckRunsRuns2$Outbound = {
-  id: string;
-  name: string;
-  ownerId: string;
-  deploymentId: string;
-  projectId?: string | undefined;
-  requires?: string | undefined;
-  blocks?: string | undefined;
-  targets?: Array<string> | undefined;
-  status: string;
-  conclusion?: string | undefined;
-  conclusionText?: string | undefined;
-  externalId?: string | undefined;
-  externalUrl?: string | undefined;
-  output?: { [k: string]: any } | undefined;
-  timeout: number;
-  createdAt: number;
-  updatedAt: number;
-  completedAt?: number | undefined;
-  source:
-    | ListDeploymentCheckRunsSourceChecksV21$Outbound
-    | ListDeploymentCheckRunsSourceChecksV22$Outbound;
-};
 
-/** @internal */
-export const ListDeploymentCheckRunsRuns2$outboundSchema: z.ZodType<
-  ListDeploymentCheckRunsRuns2$Outbound,
-  z.ZodTypeDef,
-  ListDeploymentCheckRunsRuns2
-> = z.object({
-  id: z.string(),
-  name: z.string(),
-  ownerId: z.string(),
-  deploymentId: z.string(),
-  projectId: z.string().optional(),
-  requires: ListDeploymentCheckRunsRunsChecksV2Requires$outboundSchema
-    .optional(),
-  blocks: ListDeploymentCheckRunsRunsChecksV2Blocks$outboundSchema.optional(),
-  targets: z.array(z.string()).optional(),
-  status: ListDeploymentCheckRunsRunsChecksV2Status$outboundSchema,
-  conclusion: ListDeploymentCheckRunsRunsChecksV2Conclusion$outboundSchema
-    .optional(),
-  conclusionText: z.string().optional(),
-  externalId: z.string().optional(),
-  externalUrl: z.string().optional(),
-  output: z.record(z.any()).optional(),
-  timeout: z.number(),
-  createdAt: z.number(),
-  updatedAt: z.number(),
-  completedAt: z.number().optional(),
-  source: z.union([
-    z.lazy(() => ListDeploymentCheckRunsSourceChecksV21$outboundSchema),
-    z.lazy(() => ListDeploymentCheckRunsSourceChecksV22$outboundSchema),
-  ]),
-});
-
-export function listDeploymentCheckRunsRuns2ToJSON(
-  listDeploymentCheckRunsRuns2: ListDeploymentCheckRunsRuns2,
-): string {
-  return JSON.stringify(
-    ListDeploymentCheckRunsRuns2$outboundSchema.parse(
-      listDeploymentCheckRunsRuns2,
-    ),
-  );
-}
 export function listDeploymentCheckRunsRuns2FromJSON(
   jsonString: string,
 ): SafeParseResult<ListDeploymentCheckRunsRuns2, SDKValidationError> {
@@ -648,57 +461,33 @@ export function listDeploymentCheckRunsRuns2FromJSON(
 export const ListDeploymentCheckRunsRunsRequires$inboundSchema: z.ZodNativeEnum<
   typeof ListDeploymentCheckRunsRunsRequires
 > = z.nativeEnum(ListDeploymentCheckRunsRunsRequires);
-/** @internal */
-export const ListDeploymentCheckRunsRunsRequires$outboundSchema:
-  z.ZodNativeEnum<typeof ListDeploymentCheckRunsRunsRequires> =
-    ListDeploymentCheckRunsRunsRequires$inboundSchema;
 
 /** @internal */
 export const ListDeploymentCheckRunsRunsBlocks$inboundSchema: z.ZodNativeEnum<
   typeof ListDeploymentCheckRunsRunsBlocks
 > = z.nativeEnum(ListDeploymentCheckRunsRunsBlocks);
-/** @internal */
-export const ListDeploymentCheckRunsRunsBlocks$outboundSchema: z.ZodNativeEnum<
-  typeof ListDeploymentCheckRunsRunsBlocks
-> = ListDeploymentCheckRunsRunsBlocks$inboundSchema;
 
 /** @internal */
 export const ListDeploymentCheckRunsRunsStatus$inboundSchema: z.ZodNativeEnum<
   typeof ListDeploymentCheckRunsRunsStatus
 > = z.nativeEnum(ListDeploymentCheckRunsRunsStatus);
-/** @internal */
-export const ListDeploymentCheckRunsRunsStatus$outboundSchema: z.ZodNativeEnum<
-  typeof ListDeploymentCheckRunsRunsStatus
-> = ListDeploymentCheckRunsRunsStatus$inboundSchema;
 
 /** @internal */
 export const ListDeploymentCheckRunsRunsConclusion$inboundSchema:
   z.ZodNativeEnum<typeof ListDeploymentCheckRunsRunsConclusion> = z.nativeEnum(
     ListDeploymentCheckRunsRunsConclusion,
   );
-/** @internal */
-export const ListDeploymentCheckRunsRunsConclusion$outboundSchema:
-  z.ZodNativeEnum<typeof ListDeploymentCheckRunsRunsConclusion> =
-    ListDeploymentCheckRunsRunsConclusion$inboundSchema;
 
 /** @internal */
 export const ListDeploymentCheckRunsSourceSubKind$inboundSchema:
   z.ZodNativeEnum<typeof ListDeploymentCheckRunsSourceSubKind> = z.nativeEnum(
     ListDeploymentCheckRunsSourceSubKind,
   );
-/** @internal */
-export const ListDeploymentCheckRunsSourceSubKind$outboundSchema:
-  z.ZodNativeEnum<typeof ListDeploymentCheckRunsSourceSubKind> =
-    ListDeploymentCheckRunsSourceSubKind$inboundSchema;
 
 /** @internal */
 export const ListDeploymentCheckRunsSourceOrigin$inboundSchema: z.ZodNativeEnum<
   typeof ListDeploymentCheckRunsSourceOrigin
 > = z.nativeEnum(ListDeploymentCheckRunsSourceOrigin);
-/** @internal */
-export const ListDeploymentCheckRunsSourceOrigin$outboundSchema:
-  z.ZodNativeEnum<typeof ListDeploymentCheckRunsSourceOrigin> =
-    ListDeploymentCheckRunsSourceOrigin$inboundSchema;
 
 /** @internal */
 export const ListDeploymentCheckRunsSource4$inboundSchema: z.ZodType<
@@ -709,31 +498,7 @@ export const ListDeploymentCheckRunsSource4$inboundSchema: z.ZodType<
   subKind: types.optional(ListDeploymentCheckRunsSourceSubKind$inboundSchema),
   origin: types.optional(ListDeploymentCheckRunsSourceOrigin$inboundSchema),
 });
-/** @internal */
-export type ListDeploymentCheckRunsSource4$Outbound = {
-  subKind?: string | undefined;
-  origin?: string | undefined;
-};
 
-/** @internal */
-export const ListDeploymentCheckRunsSource4$outboundSchema: z.ZodType<
-  ListDeploymentCheckRunsSource4$Outbound,
-  z.ZodTypeDef,
-  ListDeploymentCheckRunsSource4
-> = z.object({
-  subKind: ListDeploymentCheckRunsSourceSubKind$outboundSchema.optional(),
-  origin: ListDeploymentCheckRunsSourceOrigin$outboundSchema.optional(),
-});
-
-export function listDeploymentCheckRunsSource4ToJSON(
-  listDeploymentCheckRunsSource4: ListDeploymentCheckRunsSource4,
-): string {
-  return JSON.stringify(
-    ListDeploymentCheckRunsSource4$outboundSchema.parse(
-      listDeploymentCheckRunsSource4,
-    ),
-  );
-}
 export function listDeploymentCheckRunsSource4FromJSON(
   jsonString: string,
 ): SafeParseResult<ListDeploymentCheckRunsSource4, SDKValidationError> {
@@ -748,20 +513,12 @@ export function listDeploymentCheckRunsSource4FromJSON(
 export const ListDeploymentCheckRunsSourceChecksV2ResponseKind$inboundSchema:
   z.ZodNativeEnum<typeof ListDeploymentCheckRunsSourceChecksV2ResponseKind> = z
     .nativeEnum(ListDeploymentCheckRunsSourceChecksV2ResponseKind);
-/** @internal */
-export const ListDeploymentCheckRunsSourceChecksV2ResponseKind$outboundSchema:
-  z.ZodNativeEnum<typeof ListDeploymentCheckRunsSourceChecksV2ResponseKind> =
-    ListDeploymentCheckRunsSourceChecksV2ResponseKind$inboundSchema;
 
 /** @internal */
 export const ListDeploymentCheckRunsSourceProvider$inboundSchema:
   z.ZodNativeEnum<typeof ListDeploymentCheckRunsSourceProvider> = z.nativeEnum(
     ListDeploymentCheckRunsSourceProvider,
   );
-/** @internal */
-export const ListDeploymentCheckRunsSourceProvider$outboundSchema:
-  z.ZodNativeEnum<typeof ListDeploymentCheckRunsSourceProvider> =
-    ListDeploymentCheckRunsSourceProvider$inboundSchema;
 
 /** @internal */
 export const ListDeploymentCheckRunsSource3$inboundSchema: z.ZodType<
@@ -773,33 +530,7 @@ export const ListDeploymentCheckRunsSource3$inboundSchema: z.ZodType<
   provider: ListDeploymentCheckRunsSourceProvider$inboundSchema,
   externalCheckName: types.string(),
 });
-/** @internal */
-export type ListDeploymentCheckRunsSource3$Outbound = {
-  kind: string;
-  provider: string;
-  externalCheckName: string;
-};
 
-/** @internal */
-export const ListDeploymentCheckRunsSource3$outboundSchema: z.ZodType<
-  ListDeploymentCheckRunsSource3$Outbound,
-  z.ZodTypeDef,
-  ListDeploymentCheckRunsSource3
-> = z.object({
-  kind: ListDeploymentCheckRunsSourceChecksV2ResponseKind$outboundSchema,
-  provider: ListDeploymentCheckRunsSourceProvider$outboundSchema,
-  externalCheckName: z.string(),
-});
-
-export function listDeploymentCheckRunsSource3ToJSON(
-  listDeploymentCheckRunsSource3: ListDeploymentCheckRunsSource3,
-): string {
-  return JSON.stringify(
-    ListDeploymentCheckRunsSource3$outboundSchema.parse(
-      listDeploymentCheckRunsSource3,
-    ),
-  );
-}
 export function listDeploymentCheckRunsSource3FromJSON(
   jsonString: string,
 ): SafeParseResult<ListDeploymentCheckRunsSource3, SDKValidationError> {
@@ -814,10 +545,6 @@ export function listDeploymentCheckRunsSource3FromJSON(
 export const ListDeploymentCheckRunsSourceChecksV2Kind$inboundSchema:
   z.ZodNativeEnum<typeof ListDeploymentCheckRunsSourceChecksV2Kind> = z
     .nativeEnum(ListDeploymentCheckRunsSourceChecksV2Kind);
-/** @internal */
-export const ListDeploymentCheckRunsSourceChecksV2Kind$outboundSchema:
-  z.ZodNativeEnum<typeof ListDeploymentCheckRunsSourceChecksV2Kind> =
-    ListDeploymentCheckRunsSourceChecksV2Kind$inboundSchema;
 
 /** @internal */
 export const ListDeploymentCheckRunsSource2$inboundSchema: z.ZodType<
@@ -828,31 +555,7 @@ export const ListDeploymentCheckRunsSource2$inboundSchema: z.ZodType<
   kind: ListDeploymentCheckRunsSourceChecksV2Kind$inboundSchema,
   webhookId: types.optional(types.string()),
 });
-/** @internal */
-export type ListDeploymentCheckRunsSource2$Outbound = {
-  kind: string;
-  webhookId?: string | undefined;
-};
 
-/** @internal */
-export const ListDeploymentCheckRunsSource2$outboundSchema: z.ZodType<
-  ListDeploymentCheckRunsSource2$Outbound,
-  z.ZodTypeDef,
-  ListDeploymentCheckRunsSource2
-> = z.object({
-  kind: ListDeploymentCheckRunsSourceChecksV2Kind$outboundSchema,
-  webhookId: z.string().optional(),
-});
-
-export function listDeploymentCheckRunsSource2ToJSON(
-  listDeploymentCheckRunsSource2: ListDeploymentCheckRunsSource2,
-): string {
-  return JSON.stringify(
-    ListDeploymentCheckRunsSource2$outboundSchema.parse(
-      listDeploymentCheckRunsSource2,
-    ),
-  );
-}
 export function listDeploymentCheckRunsSource2FromJSON(
   jsonString: string,
 ): SafeParseResult<ListDeploymentCheckRunsSource2, SDKValidationError> {
@@ -867,10 +570,6 @@ export function listDeploymentCheckRunsSource2FromJSON(
 export const ListDeploymentCheckRunsSourceKind$inboundSchema: z.ZodNativeEnum<
   typeof ListDeploymentCheckRunsSourceKind
 > = z.nativeEnum(ListDeploymentCheckRunsSourceKind);
-/** @internal */
-export const ListDeploymentCheckRunsSourceKind$outboundSchema: z.ZodNativeEnum<
-  typeof ListDeploymentCheckRunsSourceKind
-> = ListDeploymentCheckRunsSourceKind$inboundSchema;
 
 /** @internal */
 export const ListDeploymentCheckRunsSource1$inboundSchema: z.ZodType<
@@ -884,37 +583,7 @@ export const ListDeploymentCheckRunsSource1$inboundSchema: z.ZodType<
   resourceId: types.optional(types.string()),
   externalResourceId: types.optional(types.string()),
 });
-/** @internal */
-export type ListDeploymentCheckRunsSource1$Outbound = {
-  kind: string;
-  integrationId: string;
-  integrationConfigurationId: string;
-  resourceId?: string | undefined;
-  externalResourceId?: string | undefined;
-};
 
-/** @internal */
-export const ListDeploymentCheckRunsSource1$outboundSchema: z.ZodType<
-  ListDeploymentCheckRunsSource1$Outbound,
-  z.ZodTypeDef,
-  ListDeploymentCheckRunsSource1
-> = z.object({
-  kind: ListDeploymentCheckRunsSourceKind$outboundSchema,
-  integrationId: z.string(),
-  integrationConfigurationId: z.string(),
-  resourceId: z.string().optional(),
-  externalResourceId: z.string().optional(),
-});
-
-export function listDeploymentCheckRunsSource1ToJSON(
-  listDeploymentCheckRunsSource1: ListDeploymentCheckRunsSource1,
-): string {
-  return JSON.stringify(
-    ListDeploymentCheckRunsSource1$outboundSchema.parse(
-      listDeploymentCheckRunsSource1,
-    ),
-  );
-}
 export function listDeploymentCheckRunsSource1FromJSON(
   jsonString: string,
 ): SafeParseResult<ListDeploymentCheckRunsSource1, SDKValidationError> {
@@ -936,34 +605,7 @@ export const ListDeploymentCheckRunsRunsSource$inboundSchema: z.ZodType<
   z.lazy(() => ListDeploymentCheckRunsSource2$inboundSchema),
   z.lazy(() => ListDeploymentCheckRunsSource4$inboundSchema),
 ]);
-/** @internal */
-export type ListDeploymentCheckRunsRunsSource$Outbound =
-  | ListDeploymentCheckRunsSource1$Outbound
-  | ListDeploymentCheckRunsSource3$Outbound
-  | ListDeploymentCheckRunsSource2$Outbound
-  | ListDeploymentCheckRunsSource4$Outbound;
 
-/** @internal */
-export const ListDeploymentCheckRunsRunsSource$outboundSchema: z.ZodType<
-  ListDeploymentCheckRunsRunsSource$Outbound,
-  z.ZodTypeDef,
-  ListDeploymentCheckRunsRunsSource
-> = smartUnion([
-  z.lazy(() => ListDeploymentCheckRunsSource1$outboundSchema),
-  z.lazy(() => ListDeploymentCheckRunsSource3$outboundSchema),
-  z.lazy(() => ListDeploymentCheckRunsSource2$outboundSchema),
-  z.lazy(() => ListDeploymentCheckRunsSource4$outboundSchema),
-]);
-
-export function listDeploymentCheckRunsRunsSourceToJSON(
-  listDeploymentCheckRunsRunsSource: ListDeploymentCheckRunsRunsSource,
-): string {
-  return JSON.stringify(
-    ListDeploymentCheckRunsRunsSource$outboundSchema.parse(
-      listDeploymentCheckRunsRunsSource,
-    ),
-  );
-}
 export function listDeploymentCheckRunsRunsSourceFromJSON(
   jsonString: string,
 ): SafeParseResult<ListDeploymentCheckRunsRunsSource, SDKValidationError> {
@@ -1008,76 +650,7 @@ export const ListDeploymentCheckRunsRuns1$inboundSchema: z.ZodType<
     z.lazy(() => ListDeploymentCheckRunsSource4$inboundSchema),
   ]),
 });
-/** @internal */
-export type ListDeploymentCheckRunsRuns1$Outbound = {
-  id: string;
-  name: string;
-  ownerId: string;
-  deploymentId: string;
-  projectId?: string | undefined;
-  requires?: string | undefined;
-  blocks?: string | undefined;
-  targets?: Array<string> | undefined;
-  status: string;
-  conclusion?: string | undefined;
-  conclusionText?: string | undefined;
-  externalId?: string | undefined;
-  externalUrl?: string | undefined;
-  output?: { [k: string]: any } | undefined;
-  timeout: number;
-  createdAt: number;
-  updatedAt: number;
-  completedAt?: number | undefined;
-  checkId: string;
-  source:
-    | ListDeploymentCheckRunsSource1$Outbound
-    | ListDeploymentCheckRunsSource3$Outbound
-    | ListDeploymentCheckRunsSource2$Outbound
-    | ListDeploymentCheckRunsSource4$Outbound;
-};
 
-/** @internal */
-export const ListDeploymentCheckRunsRuns1$outboundSchema: z.ZodType<
-  ListDeploymentCheckRunsRuns1$Outbound,
-  z.ZodTypeDef,
-  ListDeploymentCheckRunsRuns1
-> = z.object({
-  id: z.string(),
-  name: z.string(),
-  ownerId: z.string(),
-  deploymentId: z.string(),
-  projectId: z.string().optional(),
-  requires: ListDeploymentCheckRunsRunsRequires$outboundSchema.optional(),
-  blocks: ListDeploymentCheckRunsRunsBlocks$outboundSchema.optional(),
-  targets: z.array(z.string()).optional(),
-  status: ListDeploymentCheckRunsRunsStatus$outboundSchema,
-  conclusion: ListDeploymentCheckRunsRunsConclusion$outboundSchema.optional(),
-  conclusionText: z.string().optional(),
-  externalId: z.string().optional(),
-  externalUrl: z.string().optional(),
-  output: z.record(z.any()).optional(),
-  timeout: z.number(),
-  createdAt: z.number(),
-  updatedAt: z.number(),
-  completedAt: z.number().optional(),
-  checkId: z.string(),
-  source: smartUnion([
-    z.lazy(() => ListDeploymentCheckRunsSource1$outboundSchema),
-    z.lazy(() => ListDeploymentCheckRunsSource3$outboundSchema),
-    z.lazy(() => ListDeploymentCheckRunsSource2$outboundSchema),
-    z.lazy(() => ListDeploymentCheckRunsSource4$outboundSchema),
-  ]),
-});
-
-export function listDeploymentCheckRunsRuns1ToJSON(
-  listDeploymentCheckRunsRuns1: ListDeploymentCheckRunsRuns1,
-): string {
-  return JSON.stringify(
-    ListDeploymentCheckRunsRuns1$outboundSchema.parse(
-      listDeploymentCheckRunsRuns1,
-    ),
-  );
-}
 export function listDeploymentCheckRunsRuns1FromJSON(
   jsonString: string,
 ): SafeParseResult<ListDeploymentCheckRunsRuns1, SDKValidationError> {
@@ -1097,30 +670,7 @@ export const ListDeploymentCheckRunsRuns$inboundSchema: z.ZodType<
   z.lazy(() => ListDeploymentCheckRunsRuns1$inboundSchema),
   z.lazy(() => ListDeploymentCheckRunsRuns2$inboundSchema),
 ]);
-/** @internal */
-export type ListDeploymentCheckRunsRuns$Outbound =
-  | ListDeploymentCheckRunsRuns1$Outbound
-  | ListDeploymentCheckRunsRuns2$Outbound;
 
-/** @internal */
-export const ListDeploymentCheckRunsRuns$outboundSchema: z.ZodType<
-  ListDeploymentCheckRunsRuns$Outbound,
-  z.ZodTypeDef,
-  ListDeploymentCheckRunsRuns
-> = smartUnion([
-  z.lazy(() => ListDeploymentCheckRunsRuns1$outboundSchema),
-  z.lazy(() => ListDeploymentCheckRunsRuns2$outboundSchema),
-]);
-
-export function listDeploymentCheckRunsRunsToJSON(
-  listDeploymentCheckRunsRuns: ListDeploymentCheckRunsRuns,
-): string {
-  return JSON.stringify(
-    ListDeploymentCheckRunsRuns$outboundSchema.parse(
-      listDeploymentCheckRunsRuns,
-    ),
-  );
-}
 export function listDeploymentCheckRunsRunsFromJSON(
   jsonString: string,
 ): SafeParseResult<ListDeploymentCheckRunsRuns, SDKValidationError> {
@@ -1144,37 +694,7 @@ export const ListDeploymentCheckRunsResponseBody$inboundSchema: z.ZodType<
     ]),
   ),
 });
-/** @internal */
-export type ListDeploymentCheckRunsResponseBody$Outbound = {
-  runs: Array<
-    | ListDeploymentCheckRunsRuns1$Outbound
-    | ListDeploymentCheckRunsRuns2$Outbound
-  >;
-};
 
-/** @internal */
-export const ListDeploymentCheckRunsResponseBody$outboundSchema: z.ZodType<
-  ListDeploymentCheckRunsResponseBody$Outbound,
-  z.ZodTypeDef,
-  ListDeploymentCheckRunsResponseBody
-> = z.object({
-  runs: z.array(
-    smartUnion([
-      z.lazy(() => ListDeploymentCheckRunsRuns1$outboundSchema),
-      z.lazy(() => ListDeploymentCheckRunsRuns2$outboundSchema),
-    ]),
-  ),
-});
-
-export function listDeploymentCheckRunsResponseBodyToJSON(
-  listDeploymentCheckRunsResponseBody: ListDeploymentCheckRunsResponseBody,
-): string {
-  return JSON.stringify(
-    ListDeploymentCheckRunsResponseBody$outboundSchema.parse(
-      listDeploymentCheckRunsResponseBody,
-    ),
-  );
-}
 export function listDeploymentCheckRunsResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<ListDeploymentCheckRunsResponseBody, SDKValidationError> {

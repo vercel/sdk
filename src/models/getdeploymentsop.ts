@@ -9,12 +9,7 @@ import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
-import {
-  Pagination,
-  Pagination$inboundSchema,
-  Pagination$Outbound,
-  Pagination$outboundSchema,
-} from "./pagination.js";
+import { Pagination, Pagination$inboundSchema } from "./pagination.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type GetDeploymentsRequest = {
@@ -329,6 +324,7 @@ export const GetDeploymentsFramework = {
   Eleventy: "eleventy",
   Elysia: "elysia",
   Ember: "ember",
+  Eve: "eve",
   Express: "express",
   Fastapi: "fastapi",
   Fasthtml: "fasthtml",
@@ -843,29 +839,6 @@ export type GetDeploymentsResponseBody = {
 };
 
 /** @internal */
-export const GetDeploymentsRequest$inboundSchema: z.ZodType<
-  GetDeploymentsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  app: types.optional(types.string()),
-  from: types.optional(types.number()),
-  limit: types.optional(types.number()),
-  projectId: types.optional(types.string()),
-  projectIds: types.optional(z.array(types.string())),
-  target: types.optional(types.string()),
-  to: types.optional(types.number()),
-  users: types.optional(types.string()),
-  since: types.optional(types.number()),
-  until: types.optional(types.number()),
-  state: types.optional(types.string()),
-  rollbackCandidate: types.optional(types.boolean()),
-  branch: types.optional(types.string()),
-  sha: types.optional(types.string()),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
-/** @internal */
 export type GetDeploymentsRequest$Outbound = {
   app?: string | undefined;
   from?: number | undefined;
@@ -916,51 +889,26 @@ export function getDeploymentsRequestToJSON(
     GetDeploymentsRequest$outboundSchema.parse(getDeploymentsRequest),
   );
 }
-export function getDeploymentsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetDeploymentsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetDeploymentsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDeploymentsRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const GetDeploymentsSource$inboundSchema: z.ZodNativeEnum<
   typeof GetDeploymentsSource
 > = z.nativeEnum(GetDeploymentsSource);
-/** @internal */
-export const GetDeploymentsSource$outboundSchema: z.ZodNativeEnum<
-  typeof GetDeploymentsSource
-> = GetDeploymentsSource$inboundSchema;
 
 /** @internal */
 export const GetDeploymentsState$inboundSchema: z.ZodNativeEnum<
   typeof GetDeploymentsState
 > = z.nativeEnum(GetDeploymentsState);
-/** @internal */
-export const GetDeploymentsState$outboundSchema: z.ZodNativeEnum<
-  typeof GetDeploymentsState
-> = GetDeploymentsState$inboundSchema;
 
 /** @internal */
 export const GetDeploymentsReadyState$inboundSchema: z.ZodNativeEnum<
   typeof GetDeploymentsReadyState
 > = z.nativeEnum(GetDeploymentsReadyState);
-/** @internal */
-export const GetDeploymentsReadyState$outboundSchema: z.ZodNativeEnum<
-  typeof GetDeploymentsReadyState
-> = GetDeploymentsReadyState$inboundSchema;
 
 /** @internal */
 export const GetDeploymentsType$inboundSchema: z.ZodNativeEnum<
   typeof GetDeploymentsType
 > = z.nativeEnum(GetDeploymentsType);
-/** @internal */
-export const GetDeploymentsType$outboundSchema: z.ZodNativeEnum<
-  typeof GetDeploymentsType
-> = GetDeploymentsType$inboundSchema;
 
 /** @internal */
 export const GetDeploymentsCreator$inboundSchema: z.ZodType<
@@ -974,35 +922,7 @@ export const GetDeploymentsCreator$inboundSchema: z.ZodType<
   githubLogin: types.optional(types.string()),
   gitlabLogin: types.optional(types.string()),
 });
-/** @internal */
-export type GetDeploymentsCreator$Outbound = {
-  uid: string;
-  email?: string | undefined;
-  username?: string | undefined;
-  githubLogin?: string | undefined;
-  gitlabLogin?: string | undefined;
-};
 
-/** @internal */
-export const GetDeploymentsCreator$outboundSchema: z.ZodType<
-  GetDeploymentsCreator$Outbound,
-  z.ZodTypeDef,
-  GetDeploymentsCreator
-> = z.object({
-  uid: z.string(),
-  email: z.string().optional(),
-  username: z.string().optional(),
-  githubLogin: z.string().optional(),
-  gitlabLogin: z.string().optional(),
-});
-
-export function getDeploymentsCreatorToJSON(
-  getDeploymentsCreator: GetDeploymentsCreator,
-): string {
-  return JSON.stringify(
-    GetDeploymentsCreator$outboundSchema.parse(getDeploymentsCreator),
-  );
-}
 export function getDeploymentsCreatorFromJSON(
   jsonString: string,
 ): SafeParseResult<GetDeploymentsCreator, SDKValidationError> {
@@ -1017,10 +937,6 @@ export function getDeploymentsCreatorFromJSON(
 export const GetDeploymentsTarget$inboundSchema: z.ZodNativeEnum<
   typeof GetDeploymentsTarget
 > = z.nativeEnum(GetDeploymentsTarget);
-/** @internal */
-export const GetDeploymentsTarget$outboundSchema: z.ZodNativeEnum<
-  typeof GetDeploymentsTarget
-> = GetDeploymentsTarget$inboundSchema;
 
 /** @internal */
 export const GetDeploymentsAliasError$inboundSchema: z.ZodType<
@@ -1031,29 +947,7 @@ export const GetDeploymentsAliasError$inboundSchema: z.ZodType<
   code: types.string(),
   message: types.string(),
 });
-/** @internal */
-export type GetDeploymentsAliasError$Outbound = {
-  code: string;
-  message: string;
-};
 
-/** @internal */
-export const GetDeploymentsAliasError$outboundSchema: z.ZodType<
-  GetDeploymentsAliasError$Outbound,
-  z.ZodTypeDef,
-  GetDeploymentsAliasError
-> = z.object({
-  code: z.string(),
-  message: z.string(),
-});
-
-export function getDeploymentsAliasErrorToJSON(
-  getDeploymentsAliasError: GetDeploymentsAliasError,
-): string {
-  return JSON.stringify(
-    GetDeploymentsAliasError$outboundSchema.parse(getDeploymentsAliasError),
-  );
-}
 export function getDeploymentsAliasErrorFromJSON(
   jsonString: string,
 ): SafeParseResult<GetDeploymentsAliasError, SDKValidationError> {
@@ -1070,25 +964,7 @@ export const GetDeploymentsAliasAssigned$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = smartUnion([types.number(), types.boolean()]);
-/** @internal */
-export type GetDeploymentsAliasAssigned$Outbound = number | boolean;
 
-/** @internal */
-export const GetDeploymentsAliasAssigned$outboundSchema: z.ZodType<
-  GetDeploymentsAliasAssigned$Outbound,
-  z.ZodTypeDef,
-  GetDeploymentsAliasAssigned
-> = smartUnion([z.number(), z.boolean()]);
-
-export function getDeploymentsAliasAssignedToJSON(
-  getDeploymentsAliasAssigned: GetDeploymentsAliasAssigned,
-): string {
-  return JSON.stringify(
-    GetDeploymentsAliasAssigned$outboundSchema.parse(
-      getDeploymentsAliasAssigned,
-    ),
-  );
-}
 export function getDeploymentsAliasAssignedFromJSON(
   jsonString: string,
 ): SafeParseResult<GetDeploymentsAliasAssigned, SDKValidationError> {
@@ -1103,38 +979,22 @@ export function getDeploymentsAliasAssignedFromJSON(
 export const GetDeploymentsReadySubstate$inboundSchema: z.ZodNativeEnum<
   typeof GetDeploymentsReadySubstate
 > = z.nativeEnum(GetDeploymentsReadySubstate);
-/** @internal */
-export const GetDeploymentsReadySubstate$outboundSchema: z.ZodNativeEnum<
-  typeof GetDeploymentsReadySubstate
-> = GetDeploymentsReadySubstate$inboundSchema;
 
 /** @internal */
 export const GetDeploymentsChecksState$inboundSchema: z.ZodNativeEnum<
   typeof GetDeploymentsChecksState
 > = z.nativeEnum(GetDeploymentsChecksState);
-/** @internal */
-export const GetDeploymentsChecksState$outboundSchema: z.ZodNativeEnum<
-  typeof GetDeploymentsChecksState
-> = GetDeploymentsChecksState$inboundSchema;
 
 /** @internal */
 export const GetDeploymentsChecksConclusion$inboundSchema: z.ZodNativeEnum<
   typeof GetDeploymentsChecksConclusion
 > = z.nativeEnum(GetDeploymentsChecksConclusion);
-/** @internal */
-export const GetDeploymentsChecksConclusion$outboundSchema: z.ZodNativeEnum<
-  typeof GetDeploymentsChecksConclusion
-> = GetDeploymentsChecksConclusion$inboundSchema;
 
 /** @internal */
 export const GetDeploymentsDeploymentsResponseState$inboundSchema:
   z.ZodNativeEnum<typeof GetDeploymentsDeploymentsResponseState> = z.nativeEnum(
     GetDeploymentsDeploymentsResponseState,
   );
-/** @internal */
-export const GetDeploymentsDeploymentsResponseState$outboundSchema:
-  z.ZodNativeEnum<typeof GetDeploymentsDeploymentsResponseState> =
-    GetDeploymentsDeploymentsResponseState$inboundSchema;
 
 /** @internal */
 export const GetDeploymentsDeploymentAlias$inboundSchema: z.ZodType<
@@ -1146,33 +1006,7 @@ export const GetDeploymentsDeploymentAlias$inboundSchema: z.ZodType<
   startedAt: types.number(),
   completedAt: types.optional(types.number()),
 });
-/** @internal */
-export type GetDeploymentsDeploymentAlias$Outbound = {
-  state: string;
-  startedAt: number;
-  completedAt?: number | undefined;
-};
 
-/** @internal */
-export const GetDeploymentsDeploymentAlias$outboundSchema: z.ZodType<
-  GetDeploymentsDeploymentAlias$Outbound,
-  z.ZodTypeDef,
-  GetDeploymentsDeploymentAlias
-> = z.object({
-  state: GetDeploymentsDeploymentsResponseState$outboundSchema,
-  startedAt: z.number(),
-  completedAt: z.number().optional(),
-});
-
-export function getDeploymentsDeploymentAliasToJSON(
-  getDeploymentsDeploymentAlias: GetDeploymentsDeploymentAlias,
-): string {
-  return JSON.stringify(
-    GetDeploymentsDeploymentAlias$outboundSchema.parse(
-      getDeploymentsDeploymentAlias,
-    ),
-  );
-}
 export function getDeploymentsDeploymentAliasFromJSON(
   jsonString: string,
 ): SafeParseResult<GetDeploymentsDeploymentAlias, SDKValidationError> {
@@ -1195,31 +1029,7 @@ export const GetDeploymentsChecks$inboundSchema: z.ZodType<
     "deployment-alias": "deploymentAlias",
   });
 });
-/** @internal */
-export type GetDeploymentsChecks$Outbound = {
-  "deployment-alias": GetDeploymentsDeploymentAlias$Outbound;
-};
 
-/** @internal */
-export const GetDeploymentsChecks$outboundSchema: z.ZodType<
-  GetDeploymentsChecks$Outbound,
-  z.ZodTypeDef,
-  GetDeploymentsChecks
-> = z.object({
-  deploymentAlias: z.lazy(() => GetDeploymentsDeploymentAlias$outboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    deploymentAlias: "deployment-alias",
-  });
-});
-
-export function getDeploymentsChecksToJSON(
-  getDeploymentsChecks: GetDeploymentsChecks,
-): string {
-  return JSON.stringify(
-    GetDeploymentsChecks$outboundSchema.parse(getDeploymentsChecks),
-  );
-}
 export function getDeploymentsChecksFromJSON(
   jsonString: string,
 ): SafeParseResult<GetDeploymentsChecks, SDKValidationError> {
@@ -1234,19 +1044,11 @@ export function getDeploymentsChecksFromJSON(
 export const GetDeploymentsOomReport$inboundSchema: z.ZodNativeEnum<
   typeof GetDeploymentsOomReport
 > = z.nativeEnum(GetDeploymentsOomReport);
-/** @internal */
-export const GetDeploymentsOomReport$outboundSchema: z.ZodNativeEnum<
-  typeof GetDeploymentsOomReport
-> = GetDeploymentsOomReport$inboundSchema;
 
 /** @internal */
 export const GetDeploymentsDeploymentsState$inboundSchema: z.ZodNativeEnum<
   typeof GetDeploymentsDeploymentsState
 > = z.nativeEnum(GetDeploymentsDeploymentsState);
-/** @internal */
-export const GetDeploymentsDeploymentsState$outboundSchema: z.ZodNativeEnum<
-  typeof GetDeploymentsDeploymentsState
-> = GetDeploymentsDeploymentsState$inboundSchema;
 
 /** @internal */
 export const GetDeploymentsManualProvisioning$inboundSchema: z.ZodType<
@@ -1257,31 +1059,7 @@ export const GetDeploymentsManualProvisioning$inboundSchema: z.ZodType<
   state: GetDeploymentsDeploymentsState$inboundSchema,
   completedAt: types.optional(types.number()),
 });
-/** @internal */
-export type GetDeploymentsManualProvisioning$Outbound = {
-  state: string;
-  completedAt?: number | undefined;
-};
 
-/** @internal */
-export const GetDeploymentsManualProvisioning$outboundSchema: z.ZodType<
-  GetDeploymentsManualProvisioning$Outbound,
-  z.ZodTypeDef,
-  GetDeploymentsManualProvisioning
-> = z.object({
-  state: GetDeploymentsDeploymentsState$outboundSchema,
-  completedAt: z.number().optional(),
-});
-
-export function getDeploymentsManualProvisioningToJSON(
-  getDeploymentsManualProvisioning: GetDeploymentsManualProvisioning,
-): string {
-  return JSON.stringify(
-    GetDeploymentsManualProvisioning$outboundSchema.parse(
-      getDeploymentsManualProvisioning,
-    ),
-  );
-}
 export function getDeploymentsManualProvisioningFromJSON(
   jsonString: string,
 ): SafeParseResult<GetDeploymentsManualProvisioning, SDKValidationError> {
@@ -1296,19 +1074,11 @@ export function getDeploymentsManualProvisioningFromJSON(
 export const GetDeploymentsFramework$inboundSchema: z.ZodNativeEnum<
   typeof GetDeploymentsFramework
 > = z.nativeEnum(GetDeploymentsFramework);
-/** @internal */
-export const GetDeploymentsFramework$outboundSchema: z.ZodNativeEnum<
-  typeof GetDeploymentsFramework
-> = GetDeploymentsFramework$inboundSchema;
 
 /** @internal */
 export const GetDeploymentsNodeVersion$inboundSchema: z.ZodNativeEnum<
   typeof GetDeploymentsNodeVersion
 > = z.nativeEnum(GetDeploymentsNodeVersion);
-/** @internal */
-export const GetDeploymentsNodeVersion$outboundSchema: z.ZodNativeEnum<
-  typeof GetDeploymentsNodeVersion
-> = GetDeploymentsNodeVersion$inboundSchema;
 
 /** @internal */
 export const GetDeploymentsSpeedInsights$inboundSchema: z.ZodType<
@@ -1323,39 +1093,7 @@ export const GetDeploymentsSpeedInsights$inboundSchema: z.ZodType<
   hasData: types.optional(types.boolean()),
   paidAt: types.optional(types.number()),
 });
-/** @internal */
-export type GetDeploymentsSpeedInsights$Outbound = {
-  id: string;
-  enabledAt?: number | undefined;
-  disabledAt?: number | undefined;
-  canceledAt?: number | undefined;
-  hasData?: boolean | undefined;
-  paidAt?: number | undefined;
-};
 
-/** @internal */
-export const GetDeploymentsSpeedInsights$outboundSchema: z.ZodType<
-  GetDeploymentsSpeedInsights$Outbound,
-  z.ZodTypeDef,
-  GetDeploymentsSpeedInsights
-> = z.object({
-  id: z.string(),
-  enabledAt: z.number().optional(),
-  disabledAt: z.number().optional(),
-  canceledAt: z.number().optional(),
-  hasData: z.boolean().optional(),
-  paidAt: z.number().optional(),
-});
-
-export function getDeploymentsSpeedInsightsToJSON(
-  getDeploymentsSpeedInsights: GetDeploymentsSpeedInsights,
-): string {
-  return JSON.stringify(
-    GetDeploymentsSpeedInsights$outboundSchema.parse(
-      getDeploymentsSpeedInsights,
-    ),
-  );
-}
 export function getDeploymentsSpeedInsightsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetDeploymentsSpeedInsights, SDKValidationError> {
@@ -1378,35 +1116,7 @@ export const GetDeploymentsWebAnalytics$inboundSchema: z.ZodType<
   enabledAt: types.optional(types.number()),
   hasData: types.optional(types.literal(true)),
 });
-/** @internal */
-export type GetDeploymentsWebAnalytics$Outbound = {
-  id: string;
-  disabledAt?: number | undefined;
-  canceledAt?: number | undefined;
-  enabledAt?: number | undefined;
-  hasData?: true | undefined;
-};
 
-/** @internal */
-export const GetDeploymentsWebAnalytics$outboundSchema: z.ZodType<
-  GetDeploymentsWebAnalytics$Outbound,
-  z.ZodTypeDef,
-  GetDeploymentsWebAnalytics
-> = z.object({
-  id: z.string(),
-  disabledAt: z.number().optional(),
-  canceledAt: z.number().optional(),
-  enabledAt: z.number().optional(),
-  hasData: z.literal(true).optional(),
-});
-
-export function getDeploymentsWebAnalyticsToJSON(
-  getDeploymentsWebAnalytics: GetDeploymentsWebAnalytics,
-): string {
-  return JSON.stringify(
-    GetDeploymentsWebAnalytics$outboundSchema.parse(getDeploymentsWebAnalytics),
-  );
-}
 export function getDeploymentsWebAnalyticsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetDeploymentsWebAnalytics, SDKValidationError> {
@@ -1426,29 +1136,7 @@ export const GetDeploymentsGitComments$inboundSchema: z.ZodType<
   onPullRequest: types.boolean(),
   onCommit: types.boolean(),
 });
-/** @internal */
-export type GetDeploymentsGitComments$Outbound = {
-  onPullRequest: boolean;
-  onCommit: boolean;
-};
 
-/** @internal */
-export const GetDeploymentsGitComments$outboundSchema: z.ZodType<
-  GetDeploymentsGitComments$Outbound,
-  z.ZodTypeDef,
-  GetDeploymentsGitComments
-> = z.object({
-  onPullRequest: z.boolean(),
-  onCommit: z.boolean(),
-});
-
-export function getDeploymentsGitCommentsToJSON(
-  getDeploymentsGitComments: GetDeploymentsGitComments,
-): string {
-  return JSON.stringify(
-    GetDeploymentsGitComments$outboundSchema.parse(getDeploymentsGitComments),
-  );
-}
 export function getDeploymentsGitCommentsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetDeploymentsGitComments, SDKValidationError> {
@@ -1490,66 +1178,7 @@ export const GetDeploymentsProjectSettings$inboundSchema: z.ZodType<
     z.lazy(() => GetDeploymentsGitComments$inboundSchema),
   ),
 });
-/** @internal */
-export type GetDeploymentsProjectSettings$Outbound = {
-  framework?: string | null | undefined;
-  gitForkProtection?: boolean | undefined;
-  customerSupportCodeVisibility?: boolean | undefined;
-  gitLFS?: boolean | undefined;
-  devCommand?: string | null | undefined;
-  installCommand?: string | null | undefined;
-  buildCommand?: string | null | undefined;
-  nodeVersion?: string | undefined;
-  outputDirectory?: string | null | undefined;
-  publicSource?: boolean | null | undefined;
-  rootDirectory?: string | null | undefined;
-  sourceFilesOutsideRootDirectory?: boolean | undefined;
-  commandForIgnoringBuildStep?: string | null | undefined;
-  createdAt?: number | undefined;
-  speedInsights?: GetDeploymentsSpeedInsights$Outbound | undefined;
-  webAnalytics?: GetDeploymentsWebAnalytics$Outbound | undefined;
-  skipGitConnectDuringLink?: boolean | undefined;
-  gitComments?: GetDeploymentsGitComments$Outbound | undefined;
-};
 
-/** @internal */
-export const GetDeploymentsProjectSettings$outboundSchema: z.ZodType<
-  GetDeploymentsProjectSettings$Outbound,
-  z.ZodTypeDef,
-  GetDeploymentsProjectSettings
-> = z.object({
-  framework: z.nullable(GetDeploymentsFramework$outboundSchema).optional(),
-  gitForkProtection: z.boolean().optional(),
-  customerSupportCodeVisibility: z.boolean().optional(),
-  gitLFS: z.boolean().optional(),
-  devCommand: z.nullable(z.string()).optional(),
-  installCommand: z.nullable(z.string()).optional(),
-  buildCommand: z.nullable(z.string()).optional(),
-  nodeVersion: GetDeploymentsNodeVersion$outboundSchema.optional(),
-  outputDirectory: z.nullable(z.string()).optional(),
-  publicSource: z.nullable(z.boolean()).optional(),
-  rootDirectory: z.nullable(z.string()).optional(),
-  sourceFilesOutsideRootDirectory: z.boolean().optional(),
-  commandForIgnoringBuildStep: z.nullable(z.string()).optional(),
-  createdAt: z.number().optional(),
-  speedInsights: z.lazy(() => GetDeploymentsSpeedInsights$outboundSchema)
-    .optional(),
-  webAnalytics: z.lazy(() => GetDeploymentsWebAnalytics$outboundSchema)
-    .optional(),
-  skipGitConnectDuringLink: z.boolean().optional(),
-  gitComments: z.lazy(() => GetDeploymentsGitComments$outboundSchema)
-    .optional(),
-});
-
-export function getDeploymentsProjectSettingsToJSON(
-  getDeploymentsProjectSettings: GetDeploymentsProjectSettings,
-): string {
-  return JSON.stringify(
-    GetDeploymentsProjectSettings$outboundSchema.parse(
-      getDeploymentsProjectSettings,
-    ),
-  );
-}
 export function getDeploymentsProjectSettingsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetDeploymentsProjectSettings, SDKValidationError> {
@@ -1568,29 +1197,7 @@ export const GetDeploymentsDeploymentsSource$inboundSchema: z.ZodType<
 > = z.object({
   name: types.string(),
 });
-/** @internal */
-export type GetDeploymentsDeploymentsSource$Outbound = {
-  name: string;
-};
 
-/** @internal */
-export const GetDeploymentsDeploymentsSource$outboundSchema: z.ZodType<
-  GetDeploymentsDeploymentsSource$Outbound,
-  z.ZodTypeDef,
-  GetDeploymentsDeploymentsSource
-> = z.object({
-  name: z.string(),
-});
-
-export function getDeploymentsDeploymentsSourceToJSON(
-  getDeploymentsDeploymentsSource: GetDeploymentsDeploymentsSource,
-): string {
-  return JSON.stringify(
-    GetDeploymentsDeploymentsSource$outboundSchema.parse(
-      getDeploymentsDeploymentsSource,
-    ),
-  );
-}
 export function getDeploymentsDeploymentsSourceFromJSON(
   jsonString: string,
 ): SafeParseResult<GetDeploymentsDeploymentsSource, SDKValidationError> {
@@ -1605,10 +1212,6 @@ export function getDeploymentsDeploymentsSourceFromJSON(
 export const GetDeploymentsDeploymentsType$inboundSchema: z.ZodNativeEnum<
   typeof GetDeploymentsDeploymentsType
 > = z.nativeEnum(GetDeploymentsDeploymentsType);
-/** @internal */
-export const GetDeploymentsDeploymentsType$outboundSchema: z.ZodNativeEnum<
-  typeof GetDeploymentsDeploymentsType
-> = GetDeploymentsDeploymentsType$inboundSchema;
 
 /** @internal */
 export const GetDeploymentsOrigin$inboundSchema: z.ZodType<
@@ -1619,29 +1222,7 @@ export const GetDeploymentsOrigin$inboundSchema: z.ZodType<
   type: GetDeploymentsDeploymentsType$inboundSchema,
   value: types.string(),
 });
-/** @internal */
-export type GetDeploymentsOrigin$Outbound = {
-  type: string;
-  value: string;
-};
 
-/** @internal */
-export const GetDeploymentsOrigin$outboundSchema: z.ZodType<
-  GetDeploymentsOrigin$Outbound,
-  z.ZodTypeDef,
-  GetDeploymentsOrigin
-> = z.object({
-  type: GetDeploymentsDeploymentsType$outboundSchema,
-  value: z.string(),
-});
-
-export function getDeploymentsOriginToJSON(
-  getDeploymentsOrigin: GetDeploymentsOrigin,
-): string {
-  return JSON.stringify(
-    GetDeploymentsOrigin$outboundSchema.parse(getDeploymentsOrigin),
-  );
-}
 export function getDeploymentsOriginFromJSON(
   jsonString: string,
 ): SafeParseResult<GetDeploymentsOrigin, SDKValidationError> {
@@ -1661,31 +1242,7 @@ export const GetDeploymentsDeploymentsCreator$inboundSchema: z.ZodType<
   name: types.string(),
   avatar: types.optional(types.string()),
 });
-/** @internal */
-export type GetDeploymentsDeploymentsCreator$Outbound = {
-  name: string;
-  avatar?: string | undefined;
-};
 
-/** @internal */
-export const GetDeploymentsDeploymentsCreator$outboundSchema: z.ZodType<
-  GetDeploymentsDeploymentsCreator$Outbound,
-  z.ZodTypeDef,
-  GetDeploymentsDeploymentsCreator
-> = z.object({
-  name: z.string(),
-  avatar: z.string().optional(),
-});
-
-export function getDeploymentsDeploymentsCreatorToJSON(
-  getDeploymentsDeploymentsCreator: GetDeploymentsDeploymentsCreator,
-): string {
-  return JSON.stringify(
-    GetDeploymentsDeploymentsCreator$outboundSchema.parse(
-      getDeploymentsDeploymentsCreator,
-    ),
-  );
-}
 export function getDeploymentsDeploymentsCreatorFromJSON(
   jsonString: string,
 ): SafeParseResult<GetDeploymentsDeploymentsCreator, SDKValidationError> {
@@ -1707,33 +1264,7 @@ export const GetDeploymentsPlatform$inboundSchema: z.ZodType<
   creator: z.lazy(() => GetDeploymentsDeploymentsCreator$inboundSchema),
   meta: types.optional(z.record(types.string())),
 });
-/** @internal */
-export type GetDeploymentsPlatform$Outbound = {
-  source: GetDeploymentsDeploymentsSource$Outbound;
-  origin: GetDeploymentsOrigin$Outbound;
-  creator: GetDeploymentsDeploymentsCreator$Outbound;
-  meta?: { [k: string]: string } | undefined;
-};
 
-/** @internal */
-export const GetDeploymentsPlatform$outboundSchema: z.ZodType<
-  GetDeploymentsPlatform$Outbound,
-  z.ZodTypeDef,
-  GetDeploymentsPlatform
-> = z.object({
-  source: z.lazy(() => GetDeploymentsDeploymentsSource$outboundSchema),
-  origin: z.lazy(() => GetDeploymentsOrigin$outboundSchema),
-  creator: z.lazy(() => GetDeploymentsDeploymentsCreator$outboundSchema),
-  meta: z.record(z.string()).optional(),
-});
-
-export function getDeploymentsPlatformToJSON(
-  getDeploymentsPlatform: GetDeploymentsPlatform,
-): string {
-  return JSON.stringify(
-    GetDeploymentsPlatform$outboundSchema.parse(getDeploymentsPlatform),
-  );
-}
 export function getDeploymentsPlatformFromJSON(
   jsonString: string,
 ): SafeParseResult<GetDeploymentsPlatform, SDKValidationError> {
@@ -1753,31 +1284,7 @@ export const GetDeploymentsCustomEnvironment$inboundSchema: z.ZodType<
   id: types.string(),
   slug: types.optional(types.string()),
 });
-/** @internal */
-export type GetDeploymentsCustomEnvironment$Outbound = {
-  id: string;
-  slug?: string | undefined;
-};
 
-/** @internal */
-export const GetDeploymentsCustomEnvironment$outboundSchema: z.ZodType<
-  GetDeploymentsCustomEnvironment$Outbound,
-  z.ZodTypeDef,
-  GetDeploymentsCustomEnvironment
-> = z.object({
-  id: z.string(),
-  slug: z.string().optional(),
-});
-
-export function getDeploymentsCustomEnvironmentToJSON(
-  getDeploymentsCustomEnvironment: GetDeploymentsCustomEnvironment,
-): string {
-  return JSON.stringify(
-    GetDeploymentsCustomEnvironment$outboundSchema.parse(
-      getDeploymentsCustomEnvironment,
-    ),
-  );
-}
 export function getDeploymentsCustomEnvironmentFromJSON(
   jsonString: string,
 ): SafeParseResult<GetDeploymentsCustomEnvironment, SDKValidationError> {
@@ -1792,10 +1299,6 @@ export function getDeploymentsCustomEnvironmentFromJSON(
 export const GetDeploymentsBlockCode$inboundSchema: z.ZodNativeEnum<
   typeof GetDeploymentsBlockCode
 > = z.nativeEnum(GetDeploymentsBlockCode);
-/** @internal */
-export const GetDeploymentsBlockCode$outboundSchema: z.ZodNativeEnum<
-  typeof GetDeploymentsBlockCode
-> = GetDeploymentsBlockCode$inboundSchema;
 
 /** @internal */
 export const GetDeploymentsGitUserId$inboundSchema: z.ZodType<
@@ -1803,23 +1306,7 @@ export const GetDeploymentsGitUserId$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = smartUnion([types.string(), types.number()]);
-/** @internal */
-export type GetDeploymentsGitUserId$Outbound = string | number;
 
-/** @internal */
-export const GetDeploymentsGitUserId$outboundSchema: z.ZodType<
-  GetDeploymentsGitUserId$Outbound,
-  z.ZodTypeDef,
-  GetDeploymentsGitUserId
-> = smartUnion([z.string(), z.number()]);
-
-export function getDeploymentsGitUserIdToJSON(
-  getDeploymentsGitUserId: GetDeploymentsGitUserId,
-): string {
-  return JSON.stringify(
-    GetDeploymentsGitUserId$outboundSchema.parse(getDeploymentsGitUserId),
-  );
-}
 export function getDeploymentsGitUserIdFromJSON(
   jsonString: string,
 ): SafeParseResult<GetDeploymentsGitUserId, SDKValidationError> {
@@ -1834,10 +1321,6 @@ export function getDeploymentsGitUserIdFromJSON(
 export const GetDeploymentsGitProvider$inboundSchema: z.ZodNativeEnum<
   typeof GetDeploymentsGitProvider
 > = z.nativeEnum(GetDeploymentsGitProvider);
-/** @internal */
-export const GetDeploymentsGitProvider$outboundSchema: z.ZodNativeEnum<
-  typeof GetDeploymentsGitProvider
-> = GetDeploymentsGitProvider$inboundSchema;
 
 /** @internal */
 export const GetDeploymentsSeatBlock$inboundSchema: z.ZodType<
@@ -1851,35 +1334,7 @@ export const GetDeploymentsSeatBlock$inboundSchema: z.ZodType<
   gitUserId: types.optional(smartUnion([types.string(), types.number()])),
   gitProvider: types.optional(GetDeploymentsGitProvider$inboundSchema),
 });
-/** @internal */
-export type GetDeploymentsSeatBlock$Outbound = {
-  blockCode: string;
-  userId?: string | undefined;
-  isVerified?: boolean | undefined;
-  gitUserId?: string | number | undefined;
-  gitProvider?: string | undefined;
-};
 
-/** @internal */
-export const GetDeploymentsSeatBlock$outboundSchema: z.ZodType<
-  GetDeploymentsSeatBlock$Outbound,
-  z.ZodTypeDef,
-  GetDeploymentsSeatBlock
-> = z.object({
-  blockCode: GetDeploymentsBlockCode$outboundSchema,
-  userId: z.string().optional(),
-  isVerified: z.boolean().optional(),
-  gitUserId: smartUnion([z.string(), z.number()]).optional(),
-  gitProvider: GetDeploymentsGitProvider$outboundSchema.optional(),
-});
-
-export function getDeploymentsSeatBlockToJSON(
-  getDeploymentsSeatBlock: GetDeploymentsSeatBlock,
-): string {
-  return JSON.stringify(
-    GetDeploymentsSeatBlock$outboundSchema.parse(getDeploymentsSeatBlock),
-  );
-}
 export function getDeploymentsSeatBlockFromJSON(
   jsonString: string,
 ): SafeParseResult<GetDeploymentsSeatBlock, SDKValidationError> {
@@ -1900,31 +1355,7 @@ export const GetDeploymentsCommitMeta$inboundSchema: z.ZodType<
   name: types.optional(types.string()),
   isVerified: types.optional(types.boolean()),
 });
-/** @internal */
-export type GetDeploymentsCommitMeta$Outbound = {
-  email?: string | undefined;
-  name?: string | undefined;
-  isVerified?: boolean | undefined;
-};
 
-/** @internal */
-export const GetDeploymentsCommitMeta$outboundSchema: z.ZodType<
-  GetDeploymentsCommitMeta$Outbound,
-  z.ZodTypeDef,
-  GetDeploymentsCommitMeta
-> = z.object({
-  email: z.string().optional(),
-  name: z.string().optional(),
-  isVerified: z.boolean().optional(),
-});
-
-export function getDeploymentsCommitMetaToJSON(
-  getDeploymentsCommitMeta: GetDeploymentsCommitMeta,
-): string {
-  return JSON.stringify(
-    GetDeploymentsCommitMeta$outboundSchema.parse(getDeploymentsCommitMeta),
-  );
-}
 export function getDeploymentsCommitMetaFromJSON(
   jsonString: string,
 ): SafeParseResult<GetDeploymentsCommitMeta, SDKValidationError> {
@@ -1941,23 +1372,7 @@ export const GetDeploymentsId$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = smartUnion([types.string(), types.number()]);
-/** @internal */
-export type GetDeploymentsId$Outbound = string | number;
 
-/** @internal */
-export const GetDeploymentsId$outboundSchema: z.ZodType<
-  GetDeploymentsId$Outbound,
-  z.ZodTypeDef,
-  GetDeploymentsId
-> = smartUnion([z.string(), z.number()]);
-
-export function getDeploymentsIdToJSON(
-  getDeploymentsId: GetDeploymentsId,
-): string {
-  return JSON.stringify(
-    GetDeploymentsId$outboundSchema.parse(getDeploymentsId),
-  );
-}
 export function getDeploymentsIdFromJSON(
   jsonString: string,
 ): SafeParseResult<GetDeploymentsId, SDKValidationError> {
@@ -1979,33 +1394,7 @@ export const GetDeploymentsGitUser$inboundSchema: z.ZodType<
   type: types.optional(types.string()),
   provider: types.optional(types.string()),
 });
-/** @internal */
-export type GetDeploymentsGitUser$Outbound = {
-  id: string | number;
-  login: string;
-  type?: string | undefined;
-  provider?: string | undefined;
-};
 
-/** @internal */
-export const GetDeploymentsGitUser$outboundSchema: z.ZodType<
-  GetDeploymentsGitUser$Outbound,
-  z.ZodTypeDef,
-  GetDeploymentsGitUser
-> = z.object({
-  id: smartUnion([z.string(), z.number()]),
-  login: z.string(),
-  type: z.string().optional(),
-  provider: z.string().optional(),
-});
-
-export function getDeploymentsGitUserToJSON(
-  getDeploymentsGitUser: GetDeploymentsGitUser,
-): string {
-  return JSON.stringify(
-    GetDeploymentsGitUser$outboundSchema.parse(getDeploymentsGitUser),
-  );
-}
 export function getDeploymentsGitUserFromJSON(
   jsonString: string,
 ): SafeParseResult<GetDeploymentsGitUser, SDKValidationError> {
@@ -2026,31 +1415,7 @@ export const GetDeploymentsVercelUser$inboundSchema: z.ZodType<
   username: types.string(),
   teamRoles: types.optional(z.array(types.string())),
 });
-/** @internal */
-export type GetDeploymentsVercelUser$Outbound = {
-  id: string;
-  username: string;
-  teamRoles?: Array<string> | undefined;
-};
 
-/** @internal */
-export const GetDeploymentsVercelUser$outboundSchema: z.ZodType<
-  GetDeploymentsVercelUser$Outbound,
-  z.ZodTypeDef,
-  GetDeploymentsVercelUser
-> = z.object({
-  id: z.string(),
-  username: z.string(),
-  teamRoles: z.array(z.string()).optional(),
-});
-
-export function getDeploymentsVercelUserToJSON(
-  getDeploymentsVercelUser: GetDeploymentsVercelUser,
-): string {
-  return JSON.stringify(
-    GetDeploymentsVercelUser$outboundSchema.parse(getDeploymentsVercelUser),
-  );
-}
 export function getDeploymentsVercelUserFromJSON(
   jsonString: string,
 ): SafeParseResult<GetDeploymentsVercelUser, SDKValidationError> {
@@ -2075,31 +1440,7 @@ export const GetDeploymentsAttribution$inboundSchema: z.ZodType<
     z.lazy(() => GetDeploymentsVercelUser$inboundSchema),
   ),
 });
-/** @internal */
-export type GetDeploymentsAttribution$Outbound = {
-  commitMeta?: GetDeploymentsCommitMeta$Outbound | undefined;
-  gitUser?: GetDeploymentsGitUser$Outbound | undefined;
-  vercelUser?: GetDeploymentsVercelUser$Outbound | undefined;
-};
 
-/** @internal */
-export const GetDeploymentsAttribution$outboundSchema: z.ZodType<
-  GetDeploymentsAttribution$Outbound,
-  z.ZodTypeDef,
-  GetDeploymentsAttribution
-> = z.object({
-  commitMeta: z.lazy(() => GetDeploymentsCommitMeta$outboundSchema).optional(),
-  gitUser: z.lazy(() => GetDeploymentsGitUser$outboundSchema).optional(),
-  vercelUser: z.lazy(() => GetDeploymentsVercelUser$outboundSchema).optional(),
-});
-
-export function getDeploymentsAttributionToJSON(
-  getDeploymentsAttribution: GetDeploymentsAttribution,
-): string {
-  return JSON.stringify(
-    GetDeploymentsAttribution$outboundSchema.parse(getDeploymentsAttribution),
-  );
-}
 export function getDeploymentsAttributionFromJSON(
   jsonString: string,
 ): SafeParseResult<GetDeploymentsAttribution, SDKValidationError> {
@@ -2173,112 +1514,7 @@ export const Deployments$inboundSchema: z.ZodType<
     z.lazy(() => GetDeploymentsAttribution$inboundSchema),
   ),
 });
-/** @internal */
-export type Deployments$Outbound = {
-  uid: string;
-  name: string;
-  projectId: string;
-  url: string;
-  created: number;
-  defaultRoute?: string | undefined;
-  deleted?: number | undefined;
-  undeleted?: number | undefined;
-  softDeletedByRetention?: boolean | undefined;
-  source?: string | undefined;
-  state?: string | undefined;
-  readyState?: string | undefined;
-  type: string;
-  creator: GetDeploymentsCreator$Outbound;
-  meta?: { [k: string]: string } | undefined;
-  target?: string | null | undefined;
-  aliasError?: GetDeploymentsAliasError$Outbound | null | undefined;
-  aliasAssigned?: number | boolean | null | undefined;
-  createdAt?: number | undefined;
-  buildingAt?: number | undefined;
-  ready?: number | undefined;
-  readySubstate?: string | undefined;
-  checksState?: string | undefined;
-  checksConclusion?: string | undefined;
-  checks?: GetDeploymentsChecks$Outbound | undefined;
-  inspectorUrl: string | null;
-  errorCode?: string | undefined;
-  errorMessage?: string | null | undefined;
-  oomReport?: string | undefined;
-  isRollbackCandidate?: boolean | null | undefined;
-  prebuilt?: boolean | undefined;
-  manualProvisioning?: GetDeploymentsManualProvisioning$Outbound | undefined;
-  projectSettings?: GetDeploymentsProjectSettings$Outbound | undefined;
-  connectBuildsEnabled?: boolean | undefined;
-  connectConfigurationId?: string | undefined;
-  passiveConnectConfigurationId?: string | undefined;
-  expiration?: number | undefined;
-  proposedExpiration?: number | undefined;
-  platform?: GetDeploymentsPlatform$Outbound | undefined;
-  customEnvironment?: GetDeploymentsCustomEnvironment$Outbound | undefined;
-  seatBlock?: GetDeploymentsSeatBlock$Outbound | undefined;
-  attribution?: GetDeploymentsAttribution$Outbound | undefined;
-};
 
-/** @internal */
-export const Deployments$outboundSchema: z.ZodType<
-  Deployments$Outbound,
-  z.ZodTypeDef,
-  Deployments
-> = z.object({
-  uid: z.string(),
-  name: z.string(),
-  projectId: z.string(),
-  url: z.string(),
-  created: z.number(),
-  defaultRoute: z.string().optional(),
-  deleted: z.number().optional(),
-  undeleted: z.number().optional(),
-  softDeletedByRetention: z.boolean().optional(),
-  source: GetDeploymentsSource$outboundSchema.optional(),
-  state: GetDeploymentsState$outboundSchema.optional(),
-  readyState: GetDeploymentsReadyState$outboundSchema.optional(),
-  type: GetDeploymentsType$outboundSchema,
-  creator: z.lazy(() => GetDeploymentsCreator$outboundSchema),
-  meta: z.record(z.string()).optional(),
-  target: z.nullable(GetDeploymentsTarget$outboundSchema).optional(),
-  aliasError: z.nullable(z.lazy(() => GetDeploymentsAliasError$outboundSchema))
-    .optional(),
-  aliasAssigned: z.nullable(smartUnion([z.number(), z.boolean()])).optional(),
-  createdAt: z.number().optional(),
-  buildingAt: z.number().optional(),
-  ready: z.number().optional(),
-  readySubstate: GetDeploymentsReadySubstate$outboundSchema.optional(),
-  checksState: GetDeploymentsChecksState$outboundSchema.optional(),
-  checksConclusion: GetDeploymentsChecksConclusion$outboundSchema.optional(),
-  checks: z.lazy(() => GetDeploymentsChecks$outboundSchema).optional(),
-  inspectorUrl: z.nullable(z.string()),
-  errorCode: z.string().optional(),
-  errorMessage: z.nullable(z.string()).optional(),
-  oomReport: GetDeploymentsOomReport$outboundSchema.optional(),
-  isRollbackCandidate: z.nullable(z.boolean()).optional(),
-  prebuilt: z.boolean().optional(),
-  manualProvisioning: z.lazy(() =>
-    GetDeploymentsManualProvisioning$outboundSchema
-  ).optional(),
-  projectSettings: z.lazy(() => GetDeploymentsProjectSettings$outboundSchema)
-    .optional(),
-  connectBuildsEnabled: z.boolean().optional(),
-  connectConfigurationId: z.string().optional(),
-  passiveConnectConfigurationId: z.string().optional(),
-  expiration: z.number().optional(),
-  proposedExpiration: z.number().optional(),
-  platform: z.lazy(() => GetDeploymentsPlatform$outboundSchema).optional(),
-  customEnvironment: z.lazy(() =>
-    GetDeploymentsCustomEnvironment$outboundSchema
-  ).optional(),
-  seatBlock: z.lazy(() => GetDeploymentsSeatBlock$outboundSchema).optional(),
-  attribution: z.lazy(() => GetDeploymentsAttribution$outboundSchema)
-    .optional(),
-});
-
-export function deploymentsToJSON(deployments: Deployments): string {
-  return JSON.stringify(Deployments$outboundSchema.parse(deployments));
-}
 export function deploymentsFromJSON(
   jsonString: string,
 ): SafeParseResult<Deployments, SDKValidationError> {
@@ -2298,29 +1534,7 @@ export const GetDeploymentsResponseBody$inboundSchema: z.ZodType<
   pagination: Pagination$inboundSchema,
   deployments: z.array(z.lazy(() => Deployments$inboundSchema)),
 });
-/** @internal */
-export type GetDeploymentsResponseBody$Outbound = {
-  pagination: Pagination$Outbound;
-  deployments: Array<Deployments$Outbound>;
-};
 
-/** @internal */
-export const GetDeploymentsResponseBody$outboundSchema: z.ZodType<
-  GetDeploymentsResponseBody$Outbound,
-  z.ZodTypeDef,
-  GetDeploymentsResponseBody
-> = z.object({
-  pagination: Pagination$outboundSchema,
-  deployments: z.array(z.lazy(() => Deployments$outboundSchema)),
-});
-
-export function getDeploymentsResponseBodyToJSON(
-  getDeploymentsResponseBody: GetDeploymentsResponseBody,
-): string {
-  return JSON.stringify(
-    GetDeploymentsResponseBody$outboundSchema.parse(getDeploymentsResponseBody),
-  );
-}
 export function getDeploymentsResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetDeploymentsResponseBody, SDKValidationError> {

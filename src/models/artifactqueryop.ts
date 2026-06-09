@@ -50,14 +50,6 @@ export type ResponseBody =
   | ArtifactQueryResponseBody2;
 
 /** @internal */
-export const ArtifactQueryRequestBody$inboundSchema: z.ZodType<
-  ArtifactQueryRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  hashes: z.array(types.string()),
-});
-/** @internal */
 export type ArtifactQueryRequestBody$Outbound = {
   hashes: Array<string>;
 };
@@ -78,30 +70,7 @@ export function artifactQueryRequestBodyToJSON(
     ArtifactQueryRequestBody$outboundSchema.parse(artifactQueryRequestBody),
   );
 }
-export function artifactQueryRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<ArtifactQueryRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ArtifactQueryRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ArtifactQueryRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const ArtifactQueryRequest$inboundSchema: z.ZodType<
-  ArtifactQueryRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-  RequestBody: z.lazy(() => ArtifactQueryRequestBody$inboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 /** @internal */
 export type ArtifactQueryRequest$Outbound = {
   teamId?: string | undefined;
@@ -131,15 +100,6 @@ export function artifactQueryRequestToJSON(
     ArtifactQueryRequest$outboundSchema.parse(artifactQueryRequest),
   );
 }
-export function artifactQueryRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<ArtifactQueryRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ArtifactQueryRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ArtifactQueryRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const ResponseBodyError$inboundSchema: z.ZodType<
@@ -149,27 +109,7 @@ export const ResponseBodyError$inboundSchema: z.ZodType<
 > = z.object({
   message: types.string(),
 });
-/** @internal */
-export type ResponseBodyError$Outbound = {
-  message: string;
-};
 
-/** @internal */
-export const ResponseBodyError$outboundSchema: z.ZodType<
-  ResponseBodyError$Outbound,
-  z.ZodTypeDef,
-  ResponseBodyError
-> = z.object({
-  message: z.string(),
-});
-
-export function responseBodyErrorToJSON(
-  responseBodyError: ResponseBodyError,
-): string {
-  return JSON.stringify(
-    ResponseBodyError$outboundSchema.parse(responseBodyError),
-  );
-}
 export function responseBodyErrorFromJSON(
   jsonString: string,
 ): SafeParseResult<ResponseBodyError, SDKValidationError> {
@@ -188,27 +128,7 @@ export const ArtifactQueryResponseBody2$inboundSchema: z.ZodType<
 > = z.object({
   error: z.lazy(() => ResponseBodyError$inboundSchema),
 });
-/** @internal */
-export type ArtifactQueryResponseBody2$Outbound = {
-  error: ResponseBodyError$Outbound;
-};
 
-/** @internal */
-export const ArtifactQueryResponseBody2$outboundSchema: z.ZodType<
-  ArtifactQueryResponseBody2$Outbound,
-  z.ZodTypeDef,
-  ArtifactQueryResponseBody2
-> = z.object({
-  error: z.lazy(() => ResponseBodyError$outboundSchema),
-});
-
-export function artifactQueryResponseBody2ToJSON(
-  artifactQueryResponseBody2: ArtifactQueryResponseBody2,
-): string {
-  return JSON.stringify(
-    ArtifactQueryResponseBody2$outboundSchema.parse(artifactQueryResponseBody2),
-  );
-}
 export function artifactQueryResponseBody2FromJSON(
   jsonString: string,
 ): SafeParseResult<ArtifactQueryResponseBody2, SDKValidationError> {
@@ -231,35 +151,7 @@ export const ArtifactQueryResponseBody1$inboundSchema: z.ZodType<
   sha: types.optional(types.string()),
   dirtyHash: types.optional(types.string()),
 });
-/** @internal */
-export type ArtifactQueryResponseBody1$Outbound = {
-  size: number;
-  taskDurationMs: number;
-  tag?: string | undefined;
-  sha?: string | undefined;
-  dirtyHash?: string | undefined;
-};
 
-/** @internal */
-export const ArtifactQueryResponseBody1$outboundSchema: z.ZodType<
-  ArtifactQueryResponseBody1$Outbound,
-  z.ZodTypeDef,
-  ArtifactQueryResponseBody1
-> = z.object({
-  size: z.number(),
-  taskDurationMs: z.number(),
-  tag: z.string().optional(),
-  sha: z.string().optional(),
-  dirtyHash: z.string().optional(),
-});
-
-export function artifactQueryResponseBody1ToJSON(
-  artifactQueryResponseBody1: ArtifactQueryResponseBody1,
-): string {
-  return JSON.stringify(
-    ArtifactQueryResponseBody1$outboundSchema.parse(artifactQueryResponseBody1),
-  );
-}
 export function artifactQueryResponseBody1FromJSON(
   jsonString: string,
 ): SafeParseResult<ArtifactQueryResponseBody1, SDKValidationError> {
@@ -279,24 +171,7 @@ export const ResponseBody$inboundSchema: z.ZodType<
   z.lazy(() => ArtifactQueryResponseBody1$inboundSchema),
   z.lazy(() => ArtifactQueryResponseBody2$inboundSchema),
 ]);
-/** @internal */
-export type ResponseBody$Outbound =
-  | ArtifactQueryResponseBody1$Outbound
-  | ArtifactQueryResponseBody2$Outbound;
 
-/** @internal */
-export const ResponseBody$outboundSchema: z.ZodType<
-  ResponseBody$Outbound,
-  z.ZodTypeDef,
-  ResponseBody
-> = smartUnion([
-  z.lazy(() => ArtifactQueryResponseBody1$outboundSchema),
-  z.lazy(() => ArtifactQueryResponseBody2$outboundSchema),
-]);
-
-export function responseBodyToJSON(responseBody: ResponseBody): string {
-  return JSON.stringify(ResponseBody$outboundSchema.parse(responseBody));
-}
 export function responseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<ResponseBody, SDKValidationError> {

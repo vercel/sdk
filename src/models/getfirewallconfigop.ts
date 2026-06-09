@@ -703,17 +703,6 @@ export type GetFirewallConfigResponseBody = {
 };
 
 /** @internal */
-export const GetFirewallConfigRequest$inboundSchema: z.ZodType<
-  GetFirewallConfigRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  projectId: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-  configVersion: types.string(),
-});
-/** @internal */
 export type GetFirewallConfigRequest$Outbound = {
   projectId: string;
   teamId?: string | undefined;
@@ -740,15 +729,6 @@ export function getFirewallConfigRequestToJSON(
     GetFirewallConfigRequest$outboundSchema.parse(getFirewallConfigRequest),
   );
 }
-export function getFirewallConfigRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetFirewallConfigRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetFirewallConfigRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetFirewallConfigRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsSdAction$inboundSchema:
@@ -757,12 +737,6 @@ export const GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsS
   > = z.nativeEnum(
     GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsSdAction,
   );
-/** @internal */
-export const GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsSdAction$outboundSchema:
-  z.ZodNativeEnum<
-    typeof GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsSdAction
-  > =
-    GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsSdAction$inboundSchema;
 
 /** @internal */
 export const GetFirewallConfigSd$inboundSchema: z.ZodType<
@@ -774,30 +748,7 @@ export const GetFirewallConfigSd$inboundSchema: z.ZodType<
   action:
     GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsSdAction$inboundSchema,
 });
-/** @internal */
-export type GetFirewallConfigSd$Outbound = {
-  active: boolean;
-  action: string;
-};
 
-/** @internal */
-export const GetFirewallConfigSd$outboundSchema: z.ZodType<
-  GetFirewallConfigSd$Outbound,
-  z.ZodTypeDef,
-  GetFirewallConfigSd
-> = z.object({
-  active: z.boolean(),
-  action:
-    GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsSdAction$outboundSchema,
-});
-
-export function getFirewallConfigSdToJSON(
-  getFirewallConfigSd: GetFirewallConfigSd,
-): string {
-  return JSON.stringify(
-    GetFirewallConfigSd$outboundSchema.parse(getFirewallConfigSd),
-  );
-}
 export function getFirewallConfigSdFromJSON(
   jsonString: string,
 ): SafeParseResult<GetFirewallConfigSd, SDKValidationError> {
@@ -812,10 +763,6 @@ export function getFirewallConfigSdFromJSON(
 export const GetFirewallConfigSecurityAction$inboundSchema: z.ZodNativeEnum<
   typeof GetFirewallConfigSecurityAction
 > = z.nativeEnum(GetFirewallConfigSecurityAction);
-/** @internal */
-export const GetFirewallConfigSecurityAction$outboundSchema: z.ZodNativeEnum<
-  typeof GetFirewallConfigSecurityAction
-> = GetFirewallConfigSecurityAction$inboundSchema;
 
 /** @internal */
 export const GetFirewallConfigMa$inboundSchema: z.ZodType<
@@ -826,29 +773,7 @@ export const GetFirewallConfigMa$inboundSchema: z.ZodType<
   active: types.boolean(),
   action: GetFirewallConfigSecurityAction$inboundSchema,
 });
-/** @internal */
-export type GetFirewallConfigMa$Outbound = {
-  active: boolean;
-  action: string;
-};
 
-/** @internal */
-export const GetFirewallConfigMa$outboundSchema: z.ZodType<
-  GetFirewallConfigMa$Outbound,
-  z.ZodTypeDef,
-  GetFirewallConfigMa
-> = z.object({
-  active: z.boolean(),
-  action: GetFirewallConfigSecurityAction$outboundSchema,
-});
-
-export function getFirewallConfigMaToJSON(
-  getFirewallConfigMa: GetFirewallConfigMa,
-): string {
-  return JSON.stringify(
-    GetFirewallConfigMa$outboundSchema.parse(getFirewallConfigMa),
-  );
-}
 export function getFirewallConfigMaFromJSON(
   jsonString: string,
 ): SafeParseResult<GetFirewallConfigMa, SDKValidationError> {
@@ -863,10 +788,6 @@ export function getFirewallConfigMaFromJSON(
 export const GetFirewallConfigSecurityResponseAction$inboundSchema:
   z.ZodNativeEnum<typeof GetFirewallConfigSecurityResponseAction> = z
     .nativeEnum(GetFirewallConfigSecurityResponseAction);
-/** @internal */
-export const GetFirewallConfigSecurityResponseAction$outboundSchema:
-  z.ZodNativeEnum<typeof GetFirewallConfigSecurityResponseAction> =
-    GetFirewallConfigSecurityResponseAction$inboundSchema;
 
 /** @internal */
 export const GetFirewallConfigLfi$inboundSchema: z.ZodType<
@@ -877,29 +798,7 @@ export const GetFirewallConfigLfi$inboundSchema: z.ZodType<
   active: types.boolean(),
   action: GetFirewallConfigSecurityResponseAction$inboundSchema,
 });
-/** @internal */
-export type GetFirewallConfigLfi$Outbound = {
-  active: boolean;
-  action: string;
-};
 
-/** @internal */
-export const GetFirewallConfigLfi$outboundSchema: z.ZodType<
-  GetFirewallConfigLfi$Outbound,
-  z.ZodTypeDef,
-  GetFirewallConfigLfi
-> = z.object({
-  active: z.boolean(),
-  action: GetFirewallConfigSecurityResponseAction$outboundSchema,
-});
-
-export function getFirewallConfigLfiToJSON(
-  getFirewallConfigLfi: GetFirewallConfigLfi,
-): string {
-  return JSON.stringify(
-    GetFirewallConfigLfi$outboundSchema.parse(getFirewallConfigLfi),
-  );
-}
 export function getFirewallConfigLfiFromJSON(
   jsonString: string,
 ): SafeParseResult<GetFirewallConfigLfi, SDKValidationError> {
@@ -914,10 +813,6 @@ export function getFirewallConfigLfiFromJSON(
 export const GetFirewallConfigSecurityResponse200Action$inboundSchema:
   z.ZodNativeEnum<typeof GetFirewallConfigSecurityResponse200Action> = z
     .nativeEnum(GetFirewallConfigSecurityResponse200Action);
-/** @internal */
-export const GetFirewallConfigSecurityResponse200Action$outboundSchema:
-  z.ZodNativeEnum<typeof GetFirewallConfigSecurityResponse200Action> =
-    GetFirewallConfigSecurityResponse200Action$inboundSchema;
 
 /** @internal */
 export const GetFirewallConfigRfi$inboundSchema: z.ZodType<
@@ -928,29 +823,7 @@ export const GetFirewallConfigRfi$inboundSchema: z.ZodType<
   active: types.boolean(),
   action: GetFirewallConfigSecurityResponse200Action$inboundSchema,
 });
-/** @internal */
-export type GetFirewallConfigRfi$Outbound = {
-  active: boolean;
-  action: string;
-};
 
-/** @internal */
-export const GetFirewallConfigRfi$outboundSchema: z.ZodType<
-  GetFirewallConfigRfi$Outbound,
-  z.ZodTypeDef,
-  GetFirewallConfigRfi
-> = z.object({
-  active: z.boolean(),
-  action: GetFirewallConfigSecurityResponse200Action$outboundSchema,
-});
-
-export function getFirewallConfigRfiToJSON(
-  getFirewallConfigRfi: GetFirewallConfigRfi,
-): string {
-  return JSON.stringify(
-    GetFirewallConfigRfi$outboundSchema.parse(getFirewallConfigRfi),
-  );
-}
 export function getFirewallConfigRfiFromJSON(
   jsonString: string,
 ): SafeParseResult<GetFirewallConfigRfi, SDKValidationError> {
@@ -966,11 +839,6 @@ export const GetFirewallConfigSecurityResponse200ApplicationJSONAction$inboundSc
   z.ZodNativeEnum<
     typeof GetFirewallConfigSecurityResponse200ApplicationJSONAction
   > = z.nativeEnum(GetFirewallConfigSecurityResponse200ApplicationJSONAction);
-/** @internal */
-export const GetFirewallConfigSecurityResponse200ApplicationJSONAction$outboundSchema:
-  z.ZodNativeEnum<
-    typeof GetFirewallConfigSecurityResponse200ApplicationJSONAction
-  > = GetFirewallConfigSecurityResponse200ApplicationJSONAction$inboundSchema;
 
 /** @internal */
 export const GetFirewallConfigRce$inboundSchema: z.ZodType<
@@ -982,30 +850,7 @@ export const GetFirewallConfigRce$inboundSchema: z.ZodType<
   action:
     GetFirewallConfigSecurityResponse200ApplicationJSONAction$inboundSchema,
 });
-/** @internal */
-export type GetFirewallConfigRce$Outbound = {
-  active: boolean;
-  action: string;
-};
 
-/** @internal */
-export const GetFirewallConfigRce$outboundSchema: z.ZodType<
-  GetFirewallConfigRce$Outbound,
-  z.ZodTypeDef,
-  GetFirewallConfigRce
-> = z.object({
-  active: z.boolean(),
-  action:
-    GetFirewallConfigSecurityResponse200ApplicationJSONAction$outboundSchema,
-});
-
-export function getFirewallConfigRceToJSON(
-  getFirewallConfigRce: GetFirewallConfigRce,
-): string {
-  return JSON.stringify(
-    GetFirewallConfigRce$outboundSchema.parse(getFirewallConfigRce),
-  );
-}
 export function getFirewallConfigRceFromJSON(
   jsonString: string,
 ): SafeParseResult<GetFirewallConfigRce, SDKValidationError> {
@@ -1023,12 +868,6 @@ export const GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActi
   > = z.nativeEnum(
     GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyAction,
   );
-/** @internal */
-export const GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyAction$outboundSchema:
-  z.ZodNativeEnum<
-    typeof GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyAction
-  > =
-    GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyAction$inboundSchema;
 
 /** @internal */
 export const GetFirewallConfigPhp$inboundSchema: z.ZodType<
@@ -1040,30 +879,7 @@ export const GetFirewallConfigPhp$inboundSchema: z.ZodType<
   action:
     GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyAction$inboundSchema,
 });
-/** @internal */
-export type GetFirewallConfigPhp$Outbound = {
-  active: boolean;
-  action: string;
-};
 
-/** @internal */
-export const GetFirewallConfigPhp$outboundSchema: z.ZodType<
-  GetFirewallConfigPhp$Outbound,
-  z.ZodTypeDef,
-  GetFirewallConfigPhp
-> = z.object({
-  active: z.boolean(),
-  action:
-    GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyAction$outboundSchema,
-});
-
-export function getFirewallConfigPhpToJSON(
-  getFirewallConfigPhp: GetFirewallConfigPhp,
-): string {
-  return JSON.stringify(
-    GetFirewallConfigPhp$outboundSchema.parse(getFirewallConfigPhp),
-  );
-}
 export function getFirewallConfigPhpFromJSON(
   jsonString: string,
 ): SafeParseResult<GetFirewallConfigPhp, SDKValidationError> {
@@ -1081,12 +897,6 @@ export const GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsA
   > = z.nativeEnum(
     GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsAction,
   );
-/** @internal */
-export const GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsAction$outboundSchema:
-  z.ZodNativeEnum<
-    typeof GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsAction
-  > =
-    GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsAction$inboundSchema;
 
 /** @internal */
 export const GetFirewallConfigGen$inboundSchema: z.ZodType<
@@ -1098,30 +908,7 @@ export const GetFirewallConfigGen$inboundSchema: z.ZodType<
   action:
     GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsAction$inboundSchema,
 });
-/** @internal */
-export type GetFirewallConfigGen$Outbound = {
-  active: boolean;
-  action: string;
-};
 
-/** @internal */
-export const GetFirewallConfigGen$outboundSchema: z.ZodType<
-  GetFirewallConfigGen$Outbound,
-  z.ZodTypeDef,
-  GetFirewallConfigGen
-> = z.object({
-  active: z.boolean(),
-  action:
-    GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsAction$outboundSchema,
-});
-
-export function getFirewallConfigGenToJSON(
-  getFirewallConfigGen: GetFirewallConfigGen,
-): string {
-  return JSON.stringify(
-    GetFirewallConfigGen$outboundSchema.parse(getFirewallConfigGen),
-  );
-}
 export function getFirewallConfigGenFromJSON(
   jsonString: string,
 ): SafeParseResult<GetFirewallConfigGen, SDKValidationError> {
@@ -1139,12 +926,6 @@ export const GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsX
   > = z.nativeEnum(
     GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsXssAction,
   );
-/** @internal */
-export const GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsXssAction$outboundSchema:
-  z.ZodNativeEnum<
-    typeof GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsXssAction
-  > =
-    GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsXssAction$inboundSchema;
 
 /** @internal */
 export const GetFirewallConfigXss$inboundSchema: z.ZodType<
@@ -1156,30 +937,7 @@ export const GetFirewallConfigXss$inboundSchema: z.ZodType<
   action:
     GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsXssAction$inboundSchema,
 });
-/** @internal */
-export type GetFirewallConfigXss$Outbound = {
-  active: boolean;
-  action: string;
-};
 
-/** @internal */
-export const GetFirewallConfigXss$outboundSchema: z.ZodType<
-  GetFirewallConfigXss$Outbound,
-  z.ZodTypeDef,
-  GetFirewallConfigXss
-> = z.object({
-  active: z.boolean(),
-  action:
-    GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsXssAction$outboundSchema,
-});
-
-export function getFirewallConfigXssToJSON(
-  getFirewallConfigXss: GetFirewallConfigXss,
-): string {
-  return JSON.stringify(
-    GetFirewallConfigXss$outboundSchema.parse(getFirewallConfigXss),
-  );
-}
 export function getFirewallConfigXssFromJSON(
   jsonString: string,
 ): SafeParseResult<GetFirewallConfigXss, SDKValidationError> {
@@ -1197,12 +955,6 @@ export const GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsS
   > = z.nativeEnum(
     GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsSqliAction,
   );
-/** @internal */
-export const GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsSqliAction$outboundSchema:
-  z.ZodNativeEnum<
-    typeof GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsSqliAction
-  > =
-    GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsSqliAction$inboundSchema;
 
 /** @internal */
 export const GetFirewallConfigSqli$inboundSchema: z.ZodType<
@@ -1214,30 +966,7 @@ export const GetFirewallConfigSqli$inboundSchema: z.ZodType<
   action:
     GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsSqliAction$inboundSchema,
 });
-/** @internal */
-export type GetFirewallConfigSqli$Outbound = {
-  active: boolean;
-  action: string;
-};
 
-/** @internal */
-export const GetFirewallConfigSqli$outboundSchema: z.ZodType<
-  GetFirewallConfigSqli$Outbound,
-  z.ZodTypeDef,
-  GetFirewallConfigSqli
-> = z.object({
-  active: z.boolean(),
-  action:
-    GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsSqliAction$outboundSchema,
-});
-
-export function getFirewallConfigSqliToJSON(
-  getFirewallConfigSqli: GetFirewallConfigSqli,
-): string {
-  return JSON.stringify(
-    GetFirewallConfigSqli$outboundSchema.parse(getFirewallConfigSqli),
-  );
-}
 export function getFirewallConfigSqliFromJSON(
   jsonString: string,
 ): SafeParseResult<GetFirewallConfigSqli, SDKValidationError> {
@@ -1255,12 +984,6 @@ export const GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsS
   > = z.nativeEnum(
     GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsSfAction,
   );
-/** @internal */
-export const GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsSfAction$outboundSchema:
-  z.ZodNativeEnum<
-    typeof GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsSfAction
-  > =
-    GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsSfAction$inboundSchema;
 
 /** @internal */
 export const GetFirewallConfigSf$inboundSchema: z.ZodType<
@@ -1272,30 +995,7 @@ export const GetFirewallConfigSf$inboundSchema: z.ZodType<
   action:
     GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsSfAction$inboundSchema,
 });
-/** @internal */
-export type GetFirewallConfigSf$Outbound = {
-  active: boolean;
-  action: string;
-};
 
-/** @internal */
-export const GetFirewallConfigSf$outboundSchema: z.ZodType<
-  GetFirewallConfigSf$Outbound,
-  z.ZodTypeDef,
-  GetFirewallConfigSf
-> = z.object({
-  active: z.boolean(),
-  action:
-    GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsSfAction$outboundSchema,
-});
-
-export function getFirewallConfigSfToJSON(
-  getFirewallConfigSf: GetFirewallConfigSf,
-): string {
-  return JSON.stringify(
-    GetFirewallConfigSf$outboundSchema.parse(getFirewallConfigSf),
-  );
-}
 export function getFirewallConfigSfFromJSON(
   jsonString: string,
 ): SafeParseResult<GetFirewallConfigSf, SDKValidationError> {
@@ -1313,12 +1013,6 @@ export const GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsJ
   > = z.nativeEnum(
     GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsJavaAction,
   );
-/** @internal */
-export const GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsJavaAction$outboundSchema:
-  z.ZodNativeEnum<
-    typeof GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsJavaAction
-  > =
-    GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsJavaAction$inboundSchema;
 
 /** @internal */
 export const GetFirewallConfigJava$inboundSchema: z.ZodType<
@@ -1330,30 +1024,7 @@ export const GetFirewallConfigJava$inboundSchema: z.ZodType<
   action:
     GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsJavaAction$inboundSchema,
 });
-/** @internal */
-export type GetFirewallConfigJava$Outbound = {
-  active: boolean;
-  action: string;
-};
 
-/** @internal */
-export const GetFirewallConfigJava$outboundSchema: z.ZodType<
-  GetFirewallConfigJava$Outbound,
-  z.ZodTypeDef,
-  GetFirewallConfigJava
-> = z.object({
-  active: z.boolean(),
-  action:
-    GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsJavaAction$outboundSchema,
-});
-
-export function getFirewallConfigJavaToJSON(
-  getFirewallConfigJava: GetFirewallConfigJava,
-): string {
-  return JSON.stringify(
-    GetFirewallConfigJava$outboundSchema.parse(getFirewallConfigJava),
-  );
-}
 export function getFirewallConfigJavaFromJSON(
   jsonString: string,
 ): SafeParseResult<GetFirewallConfigJava, SDKValidationError> {
@@ -1382,47 +1053,7 @@ export const GetFirewallConfigCrs$inboundSchema: z.ZodType<
   sf: z.lazy(() => GetFirewallConfigSf$inboundSchema),
   java: z.lazy(() => GetFirewallConfigJava$inboundSchema),
 });
-/** @internal */
-export type GetFirewallConfigCrs$Outbound = {
-  sd: GetFirewallConfigSd$Outbound;
-  ma: GetFirewallConfigMa$Outbound;
-  lfi: GetFirewallConfigLfi$Outbound;
-  rfi: GetFirewallConfigRfi$Outbound;
-  rce: GetFirewallConfigRce$Outbound;
-  php: GetFirewallConfigPhp$Outbound;
-  gen: GetFirewallConfigGen$Outbound;
-  xss: GetFirewallConfigXss$Outbound;
-  sqli: GetFirewallConfigSqli$Outbound;
-  sf: GetFirewallConfigSf$Outbound;
-  java: GetFirewallConfigJava$Outbound;
-};
 
-/** @internal */
-export const GetFirewallConfigCrs$outboundSchema: z.ZodType<
-  GetFirewallConfigCrs$Outbound,
-  z.ZodTypeDef,
-  GetFirewallConfigCrs
-> = z.object({
-  sd: z.lazy(() => GetFirewallConfigSd$outboundSchema),
-  ma: z.lazy(() => GetFirewallConfigMa$outboundSchema),
-  lfi: z.lazy(() => GetFirewallConfigLfi$outboundSchema),
-  rfi: z.lazy(() => GetFirewallConfigRfi$outboundSchema),
-  rce: z.lazy(() => GetFirewallConfigRce$outboundSchema),
-  php: z.lazy(() => GetFirewallConfigPhp$outboundSchema),
-  gen: z.lazy(() => GetFirewallConfigGen$outboundSchema),
-  xss: z.lazy(() => GetFirewallConfigXss$outboundSchema),
-  sqli: z.lazy(() => GetFirewallConfigSqli$outboundSchema),
-  sf: z.lazy(() => GetFirewallConfigSf$outboundSchema),
-  java: z.lazy(() => GetFirewallConfigJava$outboundSchema),
-});
-
-export function getFirewallConfigCrsToJSON(
-  getFirewallConfigCrs: GetFirewallConfigCrs,
-): string {
-  return JSON.stringify(
-    GetFirewallConfigCrs$outboundSchema.parse(getFirewallConfigCrs),
-  );
-}
 export function getFirewallConfigCrsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetFirewallConfigCrs, SDKValidationError> {
@@ -1437,19 +1068,11 @@ export function getFirewallConfigCrsFromJSON(
 export const GetFirewallConfigRulesType$inboundSchema: z.ZodNativeEnum<
   typeof GetFirewallConfigRulesType
 > = z.nativeEnum(GetFirewallConfigRulesType);
-/** @internal */
-export const GetFirewallConfigRulesType$outboundSchema: z.ZodNativeEnum<
-  typeof GetFirewallConfigRulesType
-> = GetFirewallConfigRulesType$inboundSchema;
 
 /** @internal */
 export const GetFirewallConfigRulesOp$inboundSchema: z.ZodNativeEnum<
   typeof GetFirewallConfigRulesOp
 > = z.nativeEnum(GetFirewallConfigRulesOp);
-/** @internal */
-export const GetFirewallConfigRulesOp$outboundSchema: z.ZodNativeEnum<
-  typeof GetFirewallConfigRulesOp
-> = GetFirewallConfigRulesOp$inboundSchema;
 
 /** @internal */
 export const GetFirewallConfigRulesValue$inboundSchema: z.ZodType<
@@ -1457,28 +1080,7 @@ export const GetFirewallConfigRulesValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = smartUnion([types.string(), types.number(), z.array(types.string())]);
-/** @internal */
-export type GetFirewallConfigRulesValue$Outbound =
-  | string
-  | number
-  | Array<string>;
 
-/** @internal */
-export const GetFirewallConfigRulesValue$outboundSchema: z.ZodType<
-  GetFirewallConfigRulesValue$Outbound,
-  z.ZodTypeDef,
-  GetFirewallConfigRulesValue
-> = smartUnion([z.string(), z.number(), z.array(z.string())]);
-
-export function getFirewallConfigRulesValueToJSON(
-  getFirewallConfigRulesValue: GetFirewallConfigRulesValue,
-): string {
-  return JSON.stringify(
-    GetFirewallConfigRulesValue$outboundSchema.parse(
-      getFirewallConfigRulesValue,
-    ),
-  );
-}
 export function getFirewallConfigRulesValueFromJSON(
   jsonString: string,
 ): SafeParseResult<GetFirewallConfigRulesValue, SDKValidationError> {
@@ -1503,37 +1105,7 @@ export const GetFirewallConfigRulesConditions$inboundSchema: z.ZodType<
     smartUnion([types.string(), types.number(), z.array(types.string())]),
   ),
 });
-/** @internal */
-export type GetFirewallConfigRulesConditions$Outbound = {
-  type: string;
-  op: string;
-  neg?: boolean | undefined;
-  key?: string | undefined;
-  value?: string | number | Array<string> | undefined;
-};
 
-/** @internal */
-export const GetFirewallConfigRulesConditions$outboundSchema: z.ZodType<
-  GetFirewallConfigRulesConditions$Outbound,
-  z.ZodTypeDef,
-  GetFirewallConfigRulesConditions
-> = z.object({
-  type: GetFirewallConfigRulesType$outboundSchema,
-  op: GetFirewallConfigRulesOp$outboundSchema,
-  neg: z.boolean().optional(),
-  key: z.string().optional(),
-  value: smartUnion([z.string(), z.number(), z.array(z.string())]).optional(),
-});
-
-export function getFirewallConfigRulesConditionsToJSON(
-  getFirewallConfigRulesConditions: GetFirewallConfigRulesConditions,
-): string {
-  return JSON.stringify(
-    GetFirewallConfigRulesConditions$outboundSchema.parse(
-      getFirewallConfigRulesConditions,
-    ),
-  );
-}
 export function getFirewallConfigRulesConditionsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetFirewallConfigRulesConditions, SDKValidationError> {
@@ -1554,31 +1126,7 @@ export const GetFirewallConfigRulesConditionGroup$inboundSchema: z.ZodType<
     z.lazy(() => GetFirewallConfigRulesConditions$inboundSchema),
   ),
 });
-/** @internal */
-export type GetFirewallConfigRulesConditionGroup$Outbound = {
-  conditions: Array<GetFirewallConfigRulesConditions$Outbound>;
-};
 
-/** @internal */
-export const GetFirewallConfigRulesConditionGroup$outboundSchema: z.ZodType<
-  GetFirewallConfigRulesConditionGroup$Outbound,
-  z.ZodTypeDef,
-  GetFirewallConfigRulesConditionGroup
-> = z.object({
-  conditions: z.array(
-    z.lazy(() => GetFirewallConfigRulesConditions$outboundSchema),
-  ),
-});
-
-export function getFirewallConfigRulesConditionGroupToJSON(
-  getFirewallConfigRulesConditionGroup: GetFirewallConfigRulesConditionGroup,
-): string {
-  return JSON.stringify(
-    GetFirewallConfigRulesConditionGroup$outboundSchema.parse(
-      getFirewallConfigRulesConditionGroup,
-    ),
-  );
-}
 export function getFirewallConfigRulesConditionGroupFromJSON(
   jsonString: string,
 ): SafeParseResult<GetFirewallConfigRulesConditionGroup, SDKValidationError> {
@@ -1595,28 +1143,16 @@ export const GetFirewallConfigRulesSecurityAction$inboundSchema:
   z.ZodNativeEnum<typeof GetFirewallConfigRulesSecurityAction> = z.nativeEnum(
     GetFirewallConfigRulesSecurityAction,
   );
-/** @internal */
-export const GetFirewallConfigRulesSecurityAction$outboundSchema:
-  z.ZodNativeEnum<typeof GetFirewallConfigRulesSecurityAction> =
-    GetFirewallConfigRulesSecurityAction$inboundSchema;
 
 /** @internal */
 export const GetFirewallConfigRulesAlgo$inboundSchema: z.ZodNativeEnum<
   typeof GetFirewallConfigRulesAlgo
 > = z.nativeEnum(GetFirewallConfigRulesAlgo);
-/** @internal */
-export const GetFirewallConfigRulesAlgo$outboundSchema: z.ZodNativeEnum<
-  typeof GetFirewallConfigRulesAlgo
-> = GetFirewallConfigRulesAlgo$inboundSchema;
 
 /** @internal */
 export const GetFirewallConfigRulesSecurityResponse200Action$inboundSchema:
   z.ZodNativeEnum<typeof GetFirewallConfigRulesSecurityResponse200Action> = z
     .nativeEnum(GetFirewallConfigRulesSecurityResponse200Action);
-/** @internal */
-export const GetFirewallConfigRulesSecurityResponse200Action$outboundSchema:
-  z.ZodNativeEnum<typeof GetFirewallConfigRulesSecurityResponse200Action> =
-    GetFirewallConfigRulesSecurityResponse200Action$inboundSchema;
 
 /** @internal */
 export const GetFirewallConfigRulesRateLimit$inboundSchema: z.ZodType<
@@ -1632,39 +1168,7 @@ export const GetFirewallConfigRulesRateLimit$inboundSchema: z.ZodType<
     GetFirewallConfigRulesSecurityResponse200Action$inboundSchema,
   ).optional(),
 });
-/** @internal */
-export type GetFirewallConfigRulesRateLimit$Outbound = {
-  algo: string;
-  window: number;
-  limit: number;
-  keys: Array<string>;
-  action?: string | null | undefined;
-};
 
-/** @internal */
-export const GetFirewallConfigRulesRateLimit$outboundSchema: z.ZodType<
-  GetFirewallConfigRulesRateLimit$Outbound,
-  z.ZodTypeDef,
-  GetFirewallConfigRulesRateLimit
-> = z.object({
-  algo: GetFirewallConfigRulesAlgo$outboundSchema,
-  window: z.number(),
-  limit: z.number(),
-  keys: z.array(z.string()),
-  action: z.nullable(
-    GetFirewallConfigRulesSecurityResponse200Action$outboundSchema,
-  ).optional(),
-});
-
-export function getFirewallConfigRulesRateLimitToJSON(
-  getFirewallConfigRulesRateLimit: GetFirewallConfigRulesRateLimit,
-): string {
-  return JSON.stringify(
-    GetFirewallConfigRulesRateLimit$outboundSchema.parse(
-      getFirewallConfigRulesRateLimit,
-    ),
-  );
-}
 export function getFirewallConfigRulesRateLimitFromJSON(
   jsonString: string,
 ): SafeParseResult<GetFirewallConfigRulesRateLimit, SDKValidationError> {
@@ -1684,31 +1188,7 @@ export const GetFirewallConfigRulesRedirect$inboundSchema: z.ZodType<
   location: types.string(),
   permanent: types.boolean(),
 });
-/** @internal */
-export type GetFirewallConfigRulesRedirect$Outbound = {
-  location: string;
-  permanent: boolean;
-};
 
-/** @internal */
-export const GetFirewallConfigRulesRedirect$outboundSchema: z.ZodType<
-  GetFirewallConfigRulesRedirect$Outbound,
-  z.ZodTypeDef,
-  GetFirewallConfigRulesRedirect
-> = z.object({
-  location: z.string(),
-  permanent: z.boolean(),
-});
-
-export function getFirewallConfigRulesRedirectToJSON(
-  getFirewallConfigRulesRedirect: GetFirewallConfigRulesRedirect,
-): string {
-  return JSON.stringify(
-    GetFirewallConfigRulesRedirect$outboundSchema.parse(
-      getFirewallConfigRulesRedirect,
-    ),
-  );
-}
 export function getFirewallConfigRulesRedirectFromJSON(
   jsonString: string,
 ): SafeParseResult<GetFirewallConfigRulesRedirect, SDKValidationError> {
@@ -1724,10 +1204,6 @@ export const GetFirewallConfigLogHeadersSecurity2$inboundSchema:
   z.ZodNativeEnum<typeof GetFirewallConfigLogHeadersSecurity2> = z.nativeEnum(
     GetFirewallConfigLogHeadersSecurity2,
   );
-/** @internal */
-export const GetFirewallConfigLogHeadersSecurity2$outboundSchema:
-  z.ZodNativeEnum<typeof GetFirewallConfigLogHeadersSecurity2> =
-    GetFirewallConfigLogHeadersSecurity2$inboundSchema;
 
 /** @internal */
 export const GetFirewallConfigRulesLogHeaders$inboundSchema: z.ZodType<
@@ -1738,28 +1214,7 @@ export const GetFirewallConfigRulesLogHeaders$inboundSchema: z.ZodType<
   z.array(types.string()),
   GetFirewallConfigLogHeadersSecurity2$inboundSchema,
 ]);
-/** @internal */
-export type GetFirewallConfigRulesLogHeaders$Outbound = Array<string> | string;
 
-/** @internal */
-export const GetFirewallConfigRulesLogHeaders$outboundSchema: z.ZodType<
-  GetFirewallConfigRulesLogHeaders$Outbound,
-  z.ZodTypeDef,
-  GetFirewallConfigRulesLogHeaders
-> = smartUnion([
-  z.array(z.string()),
-  GetFirewallConfigLogHeadersSecurity2$outboundSchema,
-]);
-
-export function getFirewallConfigRulesLogHeadersToJSON(
-  getFirewallConfigRulesLogHeaders: GetFirewallConfigRulesLogHeaders,
-): string {
-  return JSON.stringify(
-    GetFirewallConfigRulesLogHeaders$outboundSchema.parse(
-      getFirewallConfigRulesLogHeaders,
-    ),
-  );
-}
 export function getFirewallConfigRulesLogHeadersFromJSON(
   jsonString: string,
 ): SafeParseResult<GetFirewallConfigRulesLogHeaders, SDKValidationError> {
@@ -1792,46 +1247,7 @@ export const GetFirewallConfigRulesMitigate$inboundSchema: z.ZodType<
     ]),
   ),
 });
-/** @internal */
-export type GetFirewallConfigRulesMitigate$Outbound = {
-  action: string;
-  rateLimit?: GetFirewallConfigRulesRateLimit$Outbound | null | undefined;
-  redirect?: GetFirewallConfigRulesRedirect$Outbound | null | undefined;
-  actionDuration?: string | null | undefined;
-  bypassSystem?: boolean | null | undefined;
-  logHeaders?: Array<string> | string | undefined;
-};
 
-/** @internal */
-export const GetFirewallConfigRulesMitigate$outboundSchema: z.ZodType<
-  GetFirewallConfigRulesMitigate$Outbound,
-  z.ZodTypeDef,
-  GetFirewallConfigRulesMitigate
-> = z.object({
-  action: GetFirewallConfigRulesSecurityAction$outboundSchema,
-  rateLimit: z.nullable(
-    z.lazy(() => GetFirewallConfigRulesRateLimit$outboundSchema),
-  ).optional(),
-  redirect: z.nullable(
-    z.lazy(() => GetFirewallConfigRulesRedirect$outboundSchema),
-  ).optional(),
-  actionDuration: z.nullable(z.string()).optional(),
-  bypassSystem: z.nullable(z.boolean()).optional(),
-  logHeaders: smartUnion([
-    z.array(z.string()),
-    GetFirewallConfigLogHeadersSecurity2$outboundSchema,
-  ]).optional(),
-});
-
-export function getFirewallConfigRulesMitigateToJSON(
-  getFirewallConfigRulesMitigate: GetFirewallConfigRulesMitigate,
-): string {
-  return JSON.stringify(
-    GetFirewallConfigRulesMitigate$outboundSchema.parse(
-      getFirewallConfigRulesMitigate,
-    ),
-  );
-}
 export function getFirewallConfigRulesMitigateFromJSON(
   jsonString: string,
 ): SafeParseResult<GetFirewallConfigRulesMitigate, SDKValidationError> {
@@ -1852,30 +1268,7 @@ export const GetFirewallConfigRulesAction$inboundSchema: z.ZodType<
     z.lazy(() => GetFirewallConfigRulesMitigate$inboundSchema),
   ),
 });
-/** @internal */
-export type GetFirewallConfigRulesAction$Outbound = {
-  mitigate?: GetFirewallConfigRulesMitigate$Outbound | undefined;
-};
 
-/** @internal */
-export const GetFirewallConfigRulesAction$outboundSchema: z.ZodType<
-  GetFirewallConfigRulesAction$Outbound,
-  z.ZodTypeDef,
-  GetFirewallConfigRulesAction
-> = z.object({
-  mitigate: z.lazy(() => GetFirewallConfigRulesMitigate$outboundSchema)
-    .optional(),
-});
-
-export function getFirewallConfigRulesActionToJSON(
-  getFirewallConfigRulesAction: GetFirewallConfigRulesAction,
-): string {
-  return JSON.stringify(
-    GetFirewallConfigRulesAction$outboundSchema.parse(
-      getFirewallConfigRulesAction,
-    ),
-  );
-}
 export function getFirewallConfigRulesActionFromJSON(
   jsonString: string,
 ): SafeParseResult<GetFirewallConfigRulesAction, SDKValidationError> {
@@ -1900,39 +1293,7 @@ export const Rules2$inboundSchema: z.ZodType<Rules2, z.ZodTypeDef, unknown> = z
     valid: types.literal(false),
     validationErrors: z.array(types.string()),
   });
-/** @internal */
-export type Rules2$Outbound = {
-  id: string;
-  name: string;
-  description?: string | undefined;
-  active: boolean;
-  conditionGroup: Array<GetFirewallConfigRulesConditionGroup$Outbound>;
-  action: GetFirewallConfigRulesAction$Outbound;
-  valid: false;
-  validationErrors: Array<string>;
-};
 
-/** @internal */
-export const Rules2$outboundSchema: z.ZodType<
-  Rules2$Outbound,
-  z.ZodTypeDef,
-  Rules2
-> = z.object({
-  id: z.string(),
-  name: z.string(),
-  description: z.string().optional(),
-  active: z.boolean(),
-  conditionGroup: z.array(
-    z.lazy(() => GetFirewallConfigRulesConditionGroup$outboundSchema),
-  ),
-  action: z.lazy(() => GetFirewallConfigRulesAction$outboundSchema),
-  valid: z.literal(false),
-  validationErrors: z.array(z.string()),
-});
-
-export function rules2ToJSON(rules2: Rules2): string {
-  return JSON.stringify(Rules2$outboundSchema.parse(rules2));
-}
 export function rules2FromJSON(
   jsonString: string,
 ): SafeParseResult<Rules2, SDKValidationError> {
@@ -1946,16 +1307,10 @@ export function rules2FromJSON(
 /** @internal */
 export const RulesType$inboundSchema: z.ZodNativeEnum<typeof RulesType> = z
   .nativeEnum(RulesType);
-/** @internal */
-export const RulesType$outboundSchema: z.ZodNativeEnum<typeof RulesType> =
-  RulesType$inboundSchema;
 
 /** @internal */
 export const RulesOp$inboundSchema: z.ZodNativeEnum<typeof RulesOp> = z
   .nativeEnum(RulesOp);
-/** @internal */
-export const RulesOp$outboundSchema: z.ZodNativeEnum<typeof RulesOp> =
-  RulesOp$inboundSchema;
 
 /** @internal */
 export const RulesValue$inboundSchema: z.ZodType<
@@ -1963,19 +1318,7 @@ export const RulesValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = smartUnion([types.string(), types.number(), z.array(types.string())]);
-/** @internal */
-export type RulesValue$Outbound = string | number | Array<string>;
 
-/** @internal */
-export const RulesValue$outboundSchema: z.ZodType<
-  RulesValue$Outbound,
-  z.ZodTypeDef,
-  RulesValue
-> = smartUnion([z.string(), z.number(), z.array(z.string())]);
-
-export function rulesValueToJSON(rulesValue: RulesValue): string {
-  return JSON.stringify(RulesValue$outboundSchema.parse(rulesValue));
-}
 export function rulesValueFromJSON(
   jsonString: string,
 ): SafeParseResult<RulesValue, SDKValidationError> {
@@ -2000,33 +1343,7 @@ export const RulesConditions$inboundSchema: z.ZodType<
     smartUnion([types.string(), types.number(), z.array(types.string())]),
   ),
 });
-/** @internal */
-export type RulesConditions$Outbound = {
-  type: string;
-  op: string;
-  neg?: boolean | undefined;
-  key?: string | undefined;
-  value?: string | number | Array<string> | undefined;
-};
 
-/** @internal */
-export const RulesConditions$outboundSchema: z.ZodType<
-  RulesConditions$Outbound,
-  z.ZodTypeDef,
-  RulesConditions
-> = z.object({
-  type: RulesType$outboundSchema,
-  op: RulesOp$outboundSchema,
-  neg: z.boolean().optional(),
-  key: z.string().optional(),
-  value: smartUnion([z.string(), z.number(), z.array(z.string())]).optional(),
-});
-
-export function rulesConditionsToJSON(
-  rulesConditions: RulesConditions,
-): string {
-  return JSON.stringify(RulesConditions$outboundSchema.parse(rulesConditions));
-}
 export function rulesConditionsFromJSON(
   jsonString: string,
 ): SafeParseResult<RulesConditions, SDKValidationError> {
@@ -2045,27 +1362,7 @@ export const RulesConditionGroup$inboundSchema: z.ZodType<
 > = z.object({
   conditions: z.array(z.lazy(() => RulesConditions$inboundSchema)),
 });
-/** @internal */
-export type RulesConditionGroup$Outbound = {
-  conditions: Array<RulesConditions$Outbound>;
-};
 
-/** @internal */
-export const RulesConditionGroup$outboundSchema: z.ZodType<
-  RulesConditionGroup$Outbound,
-  z.ZodTypeDef,
-  RulesConditionGroup
-> = z.object({
-  conditions: z.array(z.lazy(() => RulesConditions$outboundSchema)),
-});
-
-export function rulesConditionGroupToJSON(
-  rulesConditionGroup: RulesConditionGroup,
-): string {
-  return JSON.stringify(
-    RulesConditionGroup$outboundSchema.parse(rulesConditionGroup),
-  );
-}
 export function rulesConditionGroupFromJSON(
   jsonString: string,
 ): SafeParseResult<RulesConditionGroup, SDKValidationError> {
@@ -2080,17 +1377,10 @@ export function rulesConditionGroupFromJSON(
 export const GetFirewallConfigRulesSecurityResponseAction$inboundSchema:
   z.ZodNativeEnum<typeof GetFirewallConfigRulesSecurityResponseAction> = z
     .nativeEnum(GetFirewallConfigRulesSecurityResponseAction);
-/** @internal */
-export const GetFirewallConfigRulesSecurityResponseAction$outboundSchema:
-  z.ZodNativeEnum<typeof GetFirewallConfigRulesSecurityResponseAction> =
-    GetFirewallConfigRulesSecurityResponseAction$inboundSchema;
 
 /** @internal */
 export const RulesAlgo$inboundSchema: z.ZodNativeEnum<typeof RulesAlgo> = z
   .nativeEnum(RulesAlgo);
-/** @internal */
-export const RulesAlgo$outboundSchema: z.ZodNativeEnum<typeof RulesAlgo> =
-  RulesAlgo$inboundSchema;
 
 /** @internal */
 export const GetFirewallConfigRulesSecurityResponse200ApplicationJSONAction$inboundSchema:
@@ -2099,12 +1389,6 @@ export const GetFirewallConfigRulesSecurityResponse200ApplicationJSONAction$inbo
   > = z.nativeEnum(
     GetFirewallConfigRulesSecurityResponse200ApplicationJSONAction,
   );
-/** @internal */
-export const GetFirewallConfigRulesSecurityResponse200ApplicationJSONAction$outboundSchema:
-  z.ZodNativeEnum<
-    typeof GetFirewallConfigRulesSecurityResponse200ApplicationJSONAction
-  > =
-    GetFirewallConfigRulesSecurityResponse200ApplicationJSONAction$inboundSchema;
 
 /** @internal */
 export const RulesRateLimit$inboundSchema: z.ZodType<
@@ -2120,33 +1404,7 @@ export const RulesRateLimit$inboundSchema: z.ZodType<
     GetFirewallConfigRulesSecurityResponse200ApplicationJSONAction$inboundSchema,
   ).optional(),
 });
-/** @internal */
-export type RulesRateLimit$Outbound = {
-  algo: string;
-  window: number;
-  limit: number;
-  keys: Array<string>;
-  action?: string | null | undefined;
-};
 
-/** @internal */
-export const RulesRateLimit$outboundSchema: z.ZodType<
-  RulesRateLimit$Outbound,
-  z.ZodTypeDef,
-  RulesRateLimit
-> = z.object({
-  algo: RulesAlgo$outboundSchema,
-  window: z.number(),
-  limit: z.number(),
-  keys: z.array(z.string()),
-  action: z.nullable(
-    GetFirewallConfigRulesSecurityResponse200ApplicationJSONAction$outboundSchema,
-  ).optional(),
-});
-
-export function rulesRateLimitToJSON(rulesRateLimit: RulesRateLimit): string {
-  return JSON.stringify(RulesRateLimit$outboundSchema.parse(rulesRateLimit));
-}
 export function rulesRateLimitFromJSON(
   jsonString: string,
 ): SafeParseResult<RulesRateLimit, SDKValidationError> {
@@ -2166,25 +1424,7 @@ export const RulesRedirect$inboundSchema: z.ZodType<
   location: types.string(),
   permanent: types.boolean(),
 });
-/** @internal */
-export type RulesRedirect$Outbound = {
-  location: string;
-  permanent: boolean;
-};
 
-/** @internal */
-export const RulesRedirect$outboundSchema: z.ZodType<
-  RulesRedirect$Outbound,
-  z.ZodTypeDef,
-  RulesRedirect
-> = z.object({
-  location: z.string(),
-  permanent: z.boolean(),
-});
-
-export function rulesRedirectToJSON(rulesRedirect: RulesRedirect): string {
-  return JSON.stringify(RulesRedirect$outboundSchema.parse(rulesRedirect));
-}
 export function rulesRedirectFromJSON(
   jsonString: string,
 ): SafeParseResult<RulesRedirect, SDKValidationError> {
@@ -2199,10 +1439,6 @@ export function rulesRedirectFromJSON(
 export const GetFirewallConfigLogHeaders2$inboundSchema: z.ZodNativeEnum<
   typeof GetFirewallConfigLogHeaders2
 > = z.nativeEnum(GetFirewallConfigLogHeaders2);
-/** @internal */
-export const GetFirewallConfigLogHeaders2$outboundSchema: z.ZodNativeEnum<
-  typeof GetFirewallConfigLogHeaders2
-> = GetFirewallConfigLogHeaders2$inboundSchema;
 
 /** @internal */
 export const RulesLogHeaders$inboundSchema: z.ZodType<
@@ -2213,24 +1449,7 @@ export const RulesLogHeaders$inboundSchema: z.ZodType<
   z.array(types.string()),
   GetFirewallConfigLogHeaders2$inboundSchema,
 ]);
-/** @internal */
-export type RulesLogHeaders$Outbound = Array<string> | string;
 
-/** @internal */
-export const RulesLogHeaders$outboundSchema: z.ZodType<
-  RulesLogHeaders$Outbound,
-  z.ZodTypeDef,
-  RulesLogHeaders
-> = smartUnion([
-  z.array(z.string()),
-  GetFirewallConfigLogHeaders2$outboundSchema,
-]);
-
-export function rulesLogHeadersToJSON(
-  rulesLogHeaders: RulesLogHeaders,
-): string {
-  return JSON.stringify(RulesLogHeaders$outboundSchema.parse(rulesLogHeaders));
-}
 export function rulesLogHeadersFromJSON(
   jsonString: string,
 ): SafeParseResult<RulesLogHeaders, SDKValidationError> {
@@ -2259,36 +1478,7 @@ export const RulesMitigate$inboundSchema: z.ZodType<
     ]),
   ),
 });
-/** @internal */
-export type RulesMitigate$Outbound = {
-  action: string;
-  rateLimit?: RulesRateLimit$Outbound | null | undefined;
-  redirect?: RulesRedirect$Outbound | null | undefined;
-  actionDuration?: string | null | undefined;
-  bypassSystem?: boolean | null | undefined;
-  logHeaders?: Array<string> | string | undefined;
-};
 
-/** @internal */
-export const RulesMitigate$outboundSchema: z.ZodType<
-  RulesMitigate$Outbound,
-  z.ZodTypeDef,
-  RulesMitigate
-> = z.object({
-  action: GetFirewallConfigRulesSecurityResponseAction$outboundSchema,
-  rateLimit: z.nullable(z.lazy(() => RulesRateLimit$outboundSchema)).optional(),
-  redirect: z.nullable(z.lazy(() => RulesRedirect$outboundSchema)).optional(),
-  actionDuration: z.nullable(z.string()).optional(),
-  bypassSystem: z.nullable(z.boolean()).optional(),
-  logHeaders: smartUnion([
-    z.array(z.string()),
-    GetFirewallConfigLogHeaders2$outboundSchema,
-  ]).optional(),
-});
-
-export function rulesMitigateToJSON(rulesMitigate: RulesMitigate): string {
-  return JSON.stringify(RulesMitigate$outboundSchema.parse(rulesMitigate));
-}
 export function rulesMitigateFromJSON(
   jsonString: string,
 ): SafeParseResult<RulesMitigate, SDKValidationError> {
@@ -2307,23 +1497,7 @@ export const RulesAction$inboundSchema: z.ZodType<
 > = z.object({
   mitigate: types.optional(z.lazy(() => RulesMitigate$inboundSchema)),
 });
-/** @internal */
-export type RulesAction$Outbound = {
-  mitigate?: RulesMitigate$Outbound | undefined;
-};
 
-/** @internal */
-export const RulesAction$outboundSchema: z.ZodType<
-  RulesAction$Outbound,
-  z.ZodTypeDef,
-  RulesAction
-> = z.object({
-  mitigate: z.lazy(() => RulesMitigate$outboundSchema).optional(),
-});
-
-export function rulesActionToJSON(rulesAction: RulesAction): string {
-  return JSON.stringify(RulesAction$outboundSchema.parse(rulesAction));
-}
 export function rulesActionFromJSON(
   jsonString: string,
 ): SafeParseResult<RulesAction, SDKValidationError> {
@@ -2346,37 +1520,7 @@ export const Rules1$inboundSchema: z.ZodType<Rules1, z.ZodTypeDef, unknown> = z
     valid: types.literal(true),
     validationErrors: z.nullable(z.any()).optional(),
   });
-/** @internal */
-export type Rules1$Outbound = {
-  id: string;
-  name: string;
-  description?: string | undefined;
-  active: boolean;
-  conditionGroup: Array<RulesConditionGroup$Outbound>;
-  action: RulesAction$Outbound;
-  valid: true;
-  validationErrors?: any | null | undefined;
-};
 
-/** @internal */
-export const Rules1$outboundSchema: z.ZodType<
-  Rules1$Outbound,
-  z.ZodTypeDef,
-  Rules1
-> = z.object({
-  id: z.string(),
-  name: z.string(),
-  description: z.string().optional(),
-  active: z.boolean(),
-  conditionGroup: z.array(z.lazy(() => RulesConditionGroup$outboundSchema)),
-  action: z.lazy(() => RulesAction$outboundSchema),
-  valid: z.literal(true),
-  validationErrors: z.nullable(z.any()).optional(),
-});
-
-export function rules1ToJSON(rules1: Rules1): string {
-  return JSON.stringify(Rules1$outboundSchema.parse(rules1));
-}
 export function rules1FromJSON(
   jsonString: string,
 ): SafeParseResult<Rules1, SDKValidationError> {
@@ -2396,26 +1540,7 @@ export const GetFirewallConfigRules$inboundSchema: z.ZodType<
   z.lazy(() => Rules1$inboundSchema),
   z.lazy(() => Rules2$inboundSchema),
 ]);
-/** @internal */
-export type GetFirewallConfigRules$Outbound = Rules1$Outbound | Rules2$Outbound;
 
-/** @internal */
-export const GetFirewallConfigRules$outboundSchema: z.ZodType<
-  GetFirewallConfigRules$Outbound,
-  z.ZodTypeDef,
-  GetFirewallConfigRules
-> = smartUnion([
-  z.lazy(() => Rules1$outboundSchema),
-  z.lazy(() => Rules2$outboundSchema),
-]);
-
-export function getFirewallConfigRulesToJSON(
-  getFirewallConfigRules: GetFirewallConfigRules,
-): string {
-  return JSON.stringify(
-    GetFirewallConfigRules$outboundSchema.parse(getFirewallConfigRules),
-  );
-}
 export function getFirewallConfigRulesFromJSON(
   jsonString: string,
 ): SafeParseResult<GetFirewallConfigRules, SDKValidationError> {
@@ -2430,10 +1555,6 @@ export function getFirewallConfigRulesFromJSON(
 export const GetFirewallConfigAction$inboundSchema: z.ZodNativeEnum<
   typeof GetFirewallConfigAction
 > = z.nativeEnum(GetFirewallConfigAction);
-/** @internal */
-export const GetFirewallConfigAction$outboundSchema: z.ZodNativeEnum<
-  typeof GetFirewallConfigAction
-> = GetFirewallConfigAction$inboundSchema;
 
 /** @internal */
 export const GetFirewallConfigIps$inboundSchema: z.ZodType<
@@ -2447,35 +1568,7 @@ export const GetFirewallConfigIps$inboundSchema: z.ZodType<
   notes: types.optional(types.string()),
   action: GetFirewallConfigAction$inboundSchema,
 });
-/** @internal */
-export type GetFirewallConfigIps$Outbound = {
-  id: string;
-  hostname: string;
-  ip: string;
-  notes?: string | undefined;
-  action: string;
-};
 
-/** @internal */
-export const GetFirewallConfigIps$outboundSchema: z.ZodType<
-  GetFirewallConfigIps$Outbound,
-  z.ZodTypeDef,
-  GetFirewallConfigIps
-> = z.object({
-  id: z.string(),
-  hostname: z.string(),
-  ip: z.string(),
-  notes: z.string().optional(),
-  action: GetFirewallConfigAction$outboundSchema,
-});
-
-export function getFirewallConfigIpsToJSON(
-  getFirewallConfigIps: GetFirewallConfigIps,
-): string {
-  return JSON.stringify(
-    GetFirewallConfigIps$outboundSchema.parse(getFirewallConfigIps),
-  );
-}
 export function getFirewallConfigIpsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetFirewallConfigIps, SDKValidationError> {
@@ -2489,19 +1582,7 @@ export function getFirewallConfigIpsFromJSON(
 /** @internal */
 export const Changes$inboundSchema: z.ZodType<Changes, z.ZodTypeDef, unknown> =
   z.object({});
-/** @internal */
-export type Changes$Outbound = {};
 
-/** @internal */
-export const Changes$outboundSchema: z.ZodType<
-  Changes$Outbound,
-  z.ZodTypeDef,
-  Changes
-> = z.object({});
-
-export function changesToJSON(changes: Changes): string {
-  return JSON.stringify(Changes$outboundSchema.parse(changes));
-}
 export function changesFromJSON(
   jsonString: string,
 ): SafeParseResult<Changes, SDKValidationError> {
@@ -2519,12 +1600,6 @@ export const GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyMana
   > = z.nativeEnum(
     GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesAction,
   );
-/** @internal */
-export const GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesAction$outboundSchema:
-  z.ZodNativeEnum<
-    typeof GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesAction
-  > =
-    GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesAction$inboundSchema;
 
 /** @internal */
 export const BotProtection$inboundSchema: z.ZodType<
@@ -2540,33 +1615,7 @@ export const BotProtection$inboundSchema: z.ZodType<
   userId: types.optional(types.string()),
   username: types.optional(types.string()),
 });
-/** @internal */
-export type BotProtection$Outbound = {
-  active: boolean;
-  action?: string | undefined;
-  updatedAt?: string | undefined;
-  userId?: string | undefined;
-  username?: string | undefined;
-};
 
-/** @internal */
-export const BotProtection$outboundSchema: z.ZodType<
-  BotProtection$Outbound,
-  z.ZodTypeDef,
-  BotProtection
-> = z.object({
-  active: z.boolean(),
-  action:
-    GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesAction$outboundSchema
-      .optional(),
-  updatedAt: z.string().optional(),
-  userId: z.string().optional(),
-  username: z.string().optional(),
-});
-
-export function botProtectionToJSON(botProtection: BotProtection): string {
-  return JSON.stringify(BotProtection$outboundSchema.parse(botProtection));
-}
 export function botProtectionFromJSON(
   jsonString: string,
 ): SafeParseResult<BotProtection, SDKValidationError> {
@@ -2584,12 +1633,6 @@ export const GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyMana
   > = z.nativeEnum(
     GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesAiBotsAction,
   );
-/** @internal */
-export const GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesAiBotsAction$outboundSchema:
-  z.ZodNativeEnum<
-    typeof GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesAiBotsAction
-  > =
-    GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesAiBotsAction$inboundSchema;
 
 /** @internal */
 export const AiBots$inboundSchema: z.ZodType<AiBots, z.ZodTypeDef, unknown> = z
@@ -2602,33 +1645,7 @@ export const AiBots$inboundSchema: z.ZodType<AiBots, z.ZodTypeDef, unknown> = z
     userId: types.optional(types.string()),
     username: types.optional(types.string()),
   });
-/** @internal */
-export type AiBots$Outbound = {
-  active: boolean;
-  action?: string | undefined;
-  updatedAt?: string | undefined;
-  userId?: string | undefined;
-  username?: string | undefined;
-};
 
-/** @internal */
-export const AiBots$outboundSchema: z.ZodType<
-  AiBots$Outbound,
-  z.ZodTypeDef,
-  AiBots
-> = z.object({
-  active: z.boolean(),
-  action:
-    GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesAiBotsAction$outboundSchema
-      .optional(),
-  updatedAt: z.string().optional(),
-  userId: z.string().optional(),
-  username: z.string().optional(),
-});
-
-export function aiBotsToJSON(aiBots: AiBots): string {
-  return JSON.stringify(AiBots$outboundSchema.parse(aiBots));
-}
 export function aiBotsFromJSON(
   jsonString: string,
 ): SafeParseResult<AiBots, SDKValidationError> {
@@ -2646,12 +1663,6 @@ export const GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyMana
   > = z.nativeEnum(
     GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesOwaspAction,
   );
-/** @internal */
-export const GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesOwaspAction$outboundSchema:
-  z.ZodNativeEnum<
-    typeof GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesOwaspAction
-  > =
-    GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesOwaspAction$inboundSchema;
 
 /** @internal */
 export const Owasp$inboundSchema: z.ZodType<Owasp, z.ZodTypeDef, unknown> = z
@@ -2664,33 +1675,7 @@ export const Owasp$inboundSchema: z.ZodType<Owasp, z.ZodTypeDef, unknown> = z
     userId: types.optional(types.string()),
     username: types.optional(types.string()),
   });
-/** @internal */
-export type Owasp$Outbound = {
-  active: boolean;
-  action?: string | undefined;
-  updatedAt?: string | undefined;
-  userId?: string | undefined;
-  username?: string | undefined;
-};
 
-/** @internal */
-export const Owasp$outboundSchema: z.ZodType<
-  Owasp$Outbound,
-  z.ZodTypeDef,
-  Owasp
-> = z.object({
-  active: z.boolean(),
-  action:
-    GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesOwaspAction$outboundSchema
-      .optional(),
-  updatedAt: z.string().optional(),
-  userId: z.string().optional(),
-  username: z.string().optional(),
-});
-
-export function owaspToJSON(owasp: Owasp): string {
-  return JSON.stringify(Owasp$outboundSchema.parse(owasp));
-}
 export function owaspFromJSON(
   jsonString: string,
 ): SafeParseResult<Owasp, SDKValidationError> {
@@ -2708,12 +1693,6 @@ export const GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyMana
   > = z.nativeEnum(
     GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesVercelRulesetAction,
   );
-/** @internal */
-export const GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesVercelRulesetAction$outboundSchema:
-  z.ZodNativeEnum<
-    typeof GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesVercelRulesetAction
-  > =
-    GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesVercelRulesetAction$inboundSchema;
 
 /** @internal */
 export const VercelRuleset$inboundSchema: z.ZodType<
@@ -2729,33 +1708,7 @@ export const VercelRuleset$inboundSchema: z.ZodType<
   userId: types.optional(types.string()),
   username: types.optional(types.string()),
 });
-/** @internal */
-export type VercelRuleset$Outbound = {
-  active: boolean;
-  action?: string | undefined;
-  updatedAt?: string | undefined;
-  userId?: string | undefined;
-  username?: string | undefined;
-};
 
-/** @internal */
-export const VercelRuleset$outboundSchema: z.ZodType<
-  VercelRuleset$Outbound,
-  z.ZodTypeDef,
-  VercelRuleset
-> = z.object({
-  active: z.boolean(),
-  action:
-    GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesVercelRulesetAction$outboundSchema
-      .optional(),
-  updatedAt: z.string().optional(),
-  userId: z.string().optional(),
-  username: z.string().optional(),
-});
-
-export function vercelRulesetToJSON(vercelRuleset: VercelRuleset): string {
-  return JSON.stringify(VercelRuleset$outboundSchema.parse(vercelRuleset));
-}
 export function vercelRulesetFromJSON(
   jsonString: string,
 ): SafeParseResult<VercelRuleset, SDKValidationError> {
@@ -2783,41 +1736,7 @@ export const GetFirewallConfigManagedRules$inboundSchema: z.ZodType<
     "vercel_ruleset": "vercelRuleset",
   });
 });
-/** @internal */
-export type GetFirewallConfigManagedRules$Outbound = {
-  bot_protection?: BotProtection$Outbound | undefined;
-  ai_bots?: AiBots$Outbound | undefined;
-  owasp?: Owasp$Outbound | undefined;
-  vercel_ruleset?: VercelRuleset$Outbound | undefined;
-};
 
-/** @internal */
-export const GetFirewallConfigManagedRules$outboundSchema: z.ZodType<
-  GetFirewallConfigManagedRules$Outbound,
-  z.ZodTypeDef,
-  GetFirewallConfigManagedRules
-> = z.object({
-  botProtection: z.lazy(() => BotProtection$outboundSchema).optional(),
-  aiBots: z.lazy(() => AiBots$outboundSchema).optional(),
-  owasp: z.lazy(() => Owasp$outboundSchema).optional(),
-  vercelRuleset: z.lazy(() => VercelRuleset$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    botProtection: "bot_protection",
-    aiBots: "ai_bots",
-    vercelRuleset: "vercel_ruleset",
-  });
-});
-
-export function getFirewallConfigManagedRulesToJSON(
-  getFirewallConfigManagedRules: GetFirewallConfigManagedRules,
-): string {
-  return JSON.stringify(
-    GetFirewallConfigManagedRules$outboundSchema.parse(
-      getFirewallConfigManagedRules,
-    ),
-  );
-}
 export function getFirewallConfigManagedRulesFromJSON(
   jsonString: string,
 ): SafeParseResult<GetFirewallConfigManagedRules, SDKValidationError> {
@@ -2831,9 +1750,6 @@ export function getFirewallConfigManagedRulesFromJSON(
 /** @internal */
 export const LogHeaders2$inboundSchema: z.ZodNativeEnum<typeof LogHeaders2> = z
   .nativeEnum(LogHeaders2);
-/** @internal */
-export const LogHeaders2$outboundSchema: z.ZodNativeEnum<typeof LogHeaders2> =
-  LogHeaders2$inboundSchema;
 
 /** @internal */
 export const GetFirewallConfigLogHeaders$inboundSchema: z.ZodType<
@@ -2841,25 +1757,7 @@ export const GetFirewallConfigLogHeaders$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = smartUnion([z.array(types.string()), LogHeaders2$inboundSchema]);
-/** @internal */
-export type GetFirewallConfigLogHeaders$Outbound = Array<string> | string;
 
-/** @internal */
-export const GetFirewallConfigLogHeaders$outboundSchema: z.ZodType<
-  GetFirewallConfigLogHeaders$Outbound,
-  z.ZodTypeDef,
-  GetFirewallConfigLogHeaders
-> = smartUnion([z.array(z.string()), LogHeaders2$outboundSchema]);
-
-export function getFirewallConfigLogHeadersToJSON(
-  getFirewallConfigLogHeaders: GetFirewallConfigLogHeaders,
-): string {
-  return JSON.stringify(
-    GetFirewallConfigLogHeaders$outboundSchema.parse(
-      getFirewallConfigLogHeaders,
-    ),
-  );
-}
 export function getFirewallConfigLogHeadersFromJSON(
   jsonString: string,
 ): SafeParseResult<GetFirewallConfigLogHeaders, SDKValidationError> {
@@ -2899,60 +1797,7 @@ export const GetFirewallConfigResponseBody$inboundSchema: z.ZodType<
     smartUnion([z.array(types.string()), LogHeaders2$inboundSchema]),
   ),
 });
-/** @internal */
-export type GetFirewallConfigResponseBody$Outbound = {
-  ownerId: string;
-  projectKey: string;
-  id: string;
-  version: number;
-  updatedAt: string;
-  firewallEnabled: boolean;
-  crs: GetFirewallConfigCrs$Outbound;
-  rules: Array<Rules1$Outbound | Rules2$Outbound>;
-  ips: Array<GetFirewallConfigIps$Outbound>;
-  changes: Array<Changes$Outbound>;
-  managedRules?: GetFirewallConfigManagedRules$Outbound | undefined;
-  botIdEnabled?: boolean | undefined;
-  logHeaders?: Array<string> | string | undefined;
-};
 
-/** @internal */
-export const GetFirewallConfigResponseBody$outboundSchema: z.ZodType<
-  GetFirewallConfigResponseBody$Outbound,
-  z.ZodTypeDef,
-  GetFirewallConfigResponseBody
-> = z.object({
-  ownerId: z.string(),
-  projectKey: z.string(),
-  id: z.string(),
-  version: z.number(),
-  updatedAt: z.string(),
-  firewallEnabled: z.boolean(),
-  crs: z.lazy(() => GetFirewallConfigCrs$outboundSchema),
-  rules: z.array(
-    smartUnion([
-      z.lazy(() => Rules1$outboundSchema),
-      z.lazy(() => Rules2$outboundSchema),
-    ]),
-  ),
-  ips: z.array(z.lazy(() => GetFirewallConfigIps$outboundSchema)),
-  changes: z.array(z.lazy(() => Changes$outboundSchema)),
-  managedRules: z.lazy(() => GetFirewallConfigManagedRules$outboundSchema)
-    .optional(),
-  botIdEnabled: z.boolean().optional(),
-  logHeaders: smartUnion([z.array(z.string()), LogHeaders2$outboundSchema])
-    .optional(),
-});
-
-export function getFirewallConfigResponseBodyToJSON(
-  getFirewallConfigResponseBody: GetFirewallConfigResponseBody,
-): string {
-  return JSON.stringify(
-    GetFirewallConfigResponseBody$outboundSchema.parse(
-      getFirewallConfigResponseBody,
-    ),
-  );
-}
 export function getFirewallConfigResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetFirewallConfigResponseBody, SDKValidationError> {

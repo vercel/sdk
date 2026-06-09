@@ -6,12 +6,7 @@ import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
-import {
-  PropertyKey,
-  PropertyKey$inboundSchema,
-  PropertyKey$Outbound,
-  PropertyKey$outboundSchema,
-} from "./propertykey.js";
+import { PropertyKey, PropertyKey$inboundSchema } from "./propertykey.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
@@ -34,25 +29,7 @@ export const Issue$inboundSchema: z.ZodType<Issue, z.ZodTypeDef, unknown> = z
     path: z.array(PropertyKey$inboundSchema),
     message: types.string(),
   });
-/** @internal */
-export type Issue$Outbound = {
-  path: Array<PropertyKey$Outbound>;
-  message: string;
-};
 
-/** @internal */
-export const Issue$outboundSchema: z.ZodType<
-  Issue$Outbound,
-  z.ZodTypeDef,
-  Issue
-> = z.object({
-  path: z.array(PropertyKey$outboundSchema),
-  message: z.string(),
-});
-
-export function issueToJSON(issue: Issue): string {
-  return JSON.stringify(Issue$outboundSchema.parse(issue));
-}
 export function issueFromJSON(
   jsonString: string,
 ): SafeParseResult<Issue, SDKValidationError> {

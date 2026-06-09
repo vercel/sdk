@@ -92,14 +92,6 @@ export type DeleteSharedEnvVariableResponseBody = {
 };
 
 /** @internal */
-export const DeleteSharedEnvVariableRequestBody$inboundSchema: z.ZodType<
-  DeleteSharedEnvVariableRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  ids: z.array(types.string()),
-});
-/** @internal */
 export type DeleteSharedEnvVariableRequestBody$Outbound = {
   ids: Array<string>;
 };
@@ -122,33 +114,7 @@ export function deleteSharedEnvVariableRequestBodyToJSON(
     ),
   );
 }
-export function deleteSharedEnvVariableRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<DeleteSharedEnvVariableRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      DeleteSharedEnvVariableRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DeleteSharedEnvVariableRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const DeleteSharedEnvVariableRequest$inboundSchema: z.ZodType<
-  DeleteSharedEnvVariableRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-  RequestBody: types.optional(
-    z.lazy(() => DeleteSharedEnvVariableRequestBody$inboundSchema),
-  ),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 /** @internal */
 export type DeleteSharedEnvVariableRequest$Outbound = {
   teamId?: string | undefined;
@@ -181,24 +147,11 @@ export function deleteSharedEnvVariableRequestToJSON(
     ),
   );
 }
-export function deleteSharedEnvVariableRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<DeleteSharedEnvVariableRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => DeleteSharedEnvVariableRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DeleteSharedEnvVariableRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const DeleteSharedEnvVariableValue2$inboundSchema: z.ZodNativeEnum<
   typeof DeleteSharedEnvVariableValue2
 > = z.nativeEnum(DeleteSharedEnvVariableValue2);
-/** @internal */
-export const DeleteSharedEnvVariableValue2$outboundSchema: z.ZodNativeEnum<
-  typeof DeleteSharedEnvVariableValue2
-> = DeleteSharedEnvVariableValue2$inboundSchema;
 
 /** @internal */
 export const DeleteSharedEnvVariableValue$inboundSchema: z.ZodType<
@@ -209,28 +162,7 @@ export const DeleteSharedEnvVariableValue$inboundSchema: z.ZodType<
   types.string(),
   z.array(DeleteSharedEnvVariableValue2$inboundSchema),
 ]);
-/** @internal */
-export type DeleteSharedEnvVariableValue$Outbound = string | Array<string>;
 
-/** @internal */
-export const DeleteSharedEnvVariableValue$outboundSchema: z.ZodType<
-  DeleteSharedEnvVariableValue$Outbound,
-  z.ZodTypeDef,
-  DeleteSharedEnvVariableValue
-> = smartUnion([
-  z.string(),
-  z.array(DeleteSharedEnvVariableValue2$outboundSchema),
-]);
-
-export function deleteSharedEnvVariableValueToJSON(
-  deleteSharedEnvVariableValue: DeleteSharedEnvVariableValue,
-): string {
-  return JSON.stringify(
-    DeleteSharedEnvVariableValue$outboundSchema.parse(
-      deleteSharedEnvVariableValue,
-    ),
-  );
-}
 export function deleteSharedEnvVariableValueFromJSON(
   jsonString: string,
 ): SafeParseResult<DeleteSharedEnvVariableValue, SDKValidationError> {
@@ -245,19 +177,11 @@ export function deleteSharedEnvVariableValueFromJSON(
 export const DeleteSharedEnvVariableTarget2$inboundSchema: z.ZodNativeEnum<
   typeof DeleteSharedEnvVariableTarget2
 > = z.nativeEnum(DeleteSharedEnvVariableTarget2);
-/** @internal */
-export const DeleteSharedEnvVariableTarget2$outboundSchema: z.ZodNativeEnum<
-  typeof DeleteSharedEnvVariableTarget2
-> = DeleteSharedEnvVariableTarget2$inboundSchema;
 
 /** @internal */
 export const DeleteSharedEnvVariableTarget1$inboundSchema: z.ZodNativeEnum<
   typeof DeleteSharedEnvVariableTarget1
 > = z.nativeEnum(DeleteSharedEnvVariableTarget1);
-/** @internal */
-export const DeleteSharedEnvVariableTarget1$outboundSchema: z.ZodNativeEnum<
-  typeof DeleteSharedEnvVariableTarget1
-> = DeleteSharedEnvVariableTarget1$inboundSchema;
 
 /** @internal */
 export const DeleteSharedEnvVariableTarget$inboundSchema: z.ZodType<
@@ -268,28 +192,7 @@ export const DeleteSharedEnvVariableTarget$inboundSchema: z.ZodType<
   z.array(DeleteSharedEnvVariableTarget1$inboundSchema),
   DeleteSharedEnvVariableTarget2$inboundSchema,
 ]);
-/** @internal */
-export type DeleteSharedEnvVariableTarget$Outbound = Array<string> | string;
 
-/** @internal */
-export const DeleteSharedEnvVariableTarget$outboundSchema: z.ZodType<
-  DeleteSharedEnvVariableTarget$Outbound,
-  z.ZodTypeDef,
-  DeleteSharedEnvVariableTarget
-> = smartUnion([
-  z.array(DeleteSharedEnvVariableTarget1$outboundSchema),
-  DeleteSharedEnvVariableTarget2$outboundSchema,
-]);
-
-export function deleteSharedEnvVariableTargetToJSON(
-  deleteSharedEnvVariableTarget: DeleteSharedEnvVariableTarget,
-): string {
-  return JSON.stringify(
-    DeleteSharedEnvVariableTarget$outboundSchema.parse(
-      deleteSharedEnvVariableTarget,
-    ),
-  );
-}
 export function deleteSharedEnvVariableTargetFromJSON(
   jsonString: string,
 ): SafeParseResult<DeleteSharedEnvVariableTarget, SDKValidationError> {
@@ -328,55 +231,7 @@ export const DeleteSharedEnvVariableError$inboundSchema: z.ZodType<
   ),
   project: types.optional(types.string()),
 });
-/** @internal */
-export type DeleteSharedEnvVariableError$Outbound = {
-  code: string;
-  message: string;
-  key?: string | undefined;
-  envVarId?: string | undefined;
-  envVarKey?: string | undefined;
-  action?: string | undefined;
-  link?: string | undefined;
-  value?: string | Array<string> | undefined;
-  gitBranch?: string | undefined;
-  target?: Array<string> | string | undefined;
-  project?: string | undefined;
-};
 
-/** @internal */
-export const DeleteSharedEnvVariableError$outboundSchema: z.ZodType<
-  DeleteSharedEnvVariableError$Outbound,
-  z.ZodTypeDef,
-  DeleteSharedEnvVariableError
-> = z.object({
-  code: z.string(),
-  message: z.string(),
-  key: z.string().optional(),
-  envVarId: z.string().optional(),
-  envVarKey: z.string().optional(),
-  action: z.string().optional(),
-  link: z.string().optional(),
-  value: smartUnion([
-    z.string(),
-    z.array(DeleteSharedEnvVariableValue2$outboundSchema),
-  ]).optional(),
-  gitBranch: z.string().optional(),
-  target: smartUnion([
-    z.array(DeleteSharedEnvVariableTarget1$outboundSchema),
-    DeleteSharedEnvVariableTarget2$outboundSchema,
-  ]).optional(),
-  project: z.string().optional(),
-});
-
-export function deleteSharedEnvVariableErrorToJSON(
-  deleteSharedEnvVariableError: DeleteSharedEnvVariableError,
-): string {
-  return JSON.stringify(
-    DeleteSharedEnvVariableError$outboundSchema.parse(
-      deleteSharedEnvVariableError,
-    ),
-  );
-}
 export function deleteSharedEnvVariableErrorFromJSON(
   jsonString: string,
 ): SafeParseResult<DeleteSharedEnvVariableError, SDKValidationError> {
@@ -395,29 +250,7 @@ export const DeleteSharedEnvVariableFailed$inboundSchema: z.ZodType<
 > = z.object({
   error: z.lazy(() => DeleteSharedEnvVariableError$inboundSchema),
 });
-/** @internal */
-export type DeleteSharedEnvVariableFailed$Outbound = {
-  error: DeleteSharedEnvVariableError$Outbound;
-};
 
-/** @internal */
-export const DeleteSharedEnvVariableFailed$outboundSchema: z.ZodType<
-  DeleteSharedEnvVariableFailed$Outbound,
-  z.ZodTypeDef,
-  DeleteSharedEnvVariableFailed
-> = z.object({
-  error: z.lazy(() => DeleteSharedEnvVariableError$outboundSchema),
-});
-
-export function deleteSharedEnvVariableFailedToJSON(
-  deleteSharedEnvVariableFailed: DeleteSharedEnvVariableFailed,
-): string {
-  return JSON.stringify(
-    DeleteSharedEnvVariableFailed$outboundSchema.parse(
-      deleteSharedEnvVariableFailed,
-    ),
-  );
-}
 export function deleteSharedEnvVariableFailedFromJSON(
   jsonString: string,
 ): SafeParseResult<DeleteSharedEnvVariableFailed, SDKValidationError> {
@@ -437,31 +270,7 @@ export const DeleteSharedEnvVariableResponseBody$inboundSchema: z.ZodType<
   deleted: z.array(types.string()),
   failed: z.array(z.lazy(() => DeleteSharedEnvVariableFailed$inboundSchema)),
 });
-/** @internal */
-export type DeleteSharedEnvVariableResponseBody$Outbound = {
-  deleted: Array<string>;
-  failed: Array<DeleteSharedEnvVariableFailed$Outbound>;
-};
 
-/** @internal */
-export const DeleteSharedEnvVariableResponseBody$outboundSchema: z.ZodType<
-  DeleteSharedEnvVariableResponseBody$Outbound,
-  z.ZodTypeDef,
-  DeleteSharedEnvVariableResponseBody
-> = z.object({
-  deleted: z.array(z.string()),
-  failed: z.array(z.lazy(() => DeleteSharedEnvVariableFailed$outboundSchema)),
-});
-
-export function deleteSharedEnvVariableResponseBodyToJSON(
-  deleteSharedEnvVariableResponseBody: DeleteSharedEnvVariableResponseBody,
-): string {
-  return JSON.stringify(
-    DeleteSharedEnvVariableResponseBody$outboundSchema.parse(
-      deleteSharedEnvVariableResponseBody,
-    ),
-  );
-}
 export function deleteSharedEnvVariableResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<DeleteSharedEnvVariableResponseBody, SDKValidationError> {

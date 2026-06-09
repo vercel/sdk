@@ -57,14 +57,6 @@ export type PostTeamDsyncRolesResponseBody = {
 };
 
 /** @internal */
-export const PostTeamDsyncRolesRoles2$inboundSchema: z.ZodType<
-  PostTeamDsyncRolesRoles2,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  accessGroupId: types.string(),
-});
-/** @internal */
 export type PostTeamDsyncRolesRoles2$Outbound = {
   accessGroupId: string;
 };
@@ -85,34 +77,12 @@ export function postTeamDsyncRolesRoles2ToJSON(
     PostTeamDsyncRolesRoles2$outboundSchema.parse(postTeamDsyncRolesRoles2),
   );
 }
-export function postTeamDsyncRolesRoles2FromJSON(
-  jsonString: string,
-): SafeParseResult<PostTeamDsyncRolesRoles2, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PostTeamDsyncRolesRoles2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PostTeamDsyncRolesRoles2' from JSON`,
-  );
-}
 
-/** @internal */
-export const PostTeamDsyncRolesRoles1$inboundSchema: z.ZodNativeEnum<
-  typeof PostTeamDsyncRolesRoles1
-> = z.nativeEnum(PostTeamDsyncRolesRoles1);
 /** @internal */
 export const PostTeamDsyncRolesRoles1$outboundSchema: z.ZodNativeEnum<
   typeof PostTeamDsyncRolesRoles1
-> = PostTeamDsyncRolesRoles1$inboundSchema;
+> = z.nativeEnum(PostTeamDsyncRolesRoles1);
 
-/** @internal */
-export const PostTeamDsyncRolesRoles$inboundSchema: z.ZodType<
-  PostTeamDsyncRolesRoles,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([
-  z.lazy(() => PostTeamDsyncRolesRoles2$inboundSchema),
-  PostTeamDsyncRolesRoles1$inboundSchema,
-]);
 /** @internal */
 export type PostTeamDsyncRolesRoles$Outbound =
   | PostTeamDsyncRolesRoles2$Outbound
@@ -135,29 +105,7 @@ export function postTeamDsyncRolesRolesToJSON(
     PostTeamDsyncRolesRoles$outboundSchema.parse(postTeamDsyncRolesRoles),
   );
 }
-export function postTeamDsyncRolesRolesFromJSON(
-  jsonString: string,
-): SafeParseResult<PostTeamDsyncRolesRoles, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PostTeamDsyncRolesRoles$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PostTeamDsyncRolesRoles' from JSON`,
-  );
-}
 
-/** @internal */
-export const PostTeamDsyncRolesRequestBody$inboundSchema: z.ZodType<
-  PostTeamDsyncRolesRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  roles: z.record(
-    smartUnion([
-      z.lazy(() => PostTeamDsyncRolesRoles2$inboundSchema),
-      PostTeamDsyncRolesRoles1$inboundSchema,
-    ]),
-  ),
-});
 /** @internal */
 export type PostTeamDsyncRolesRequestBody$Outbound = {
   roles: { [k: string]: PostTeamDsyncRolesRoles2$Outbound | string };
@@ -186,32 +134,7 @@ export function postTeamDsyncRolesRequestBodyToJSON(
     ),
   );
 }
-export function postTeamDsyncRolesRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<PostTeamDsyncRolesRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PostTeamDsyncRolesRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PostTeamDsyncRolesRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const PostTeamDsyncRolesRequest$inboundSchema: z.ZodType<
-  PostTeamDsyncRolesRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  teamId: types.string(),
-  slug: types.optional(types.string()),
-  RequestBody: types.optional(
-    z.lazy(() => PostTeamDsyncRolesRequestBody$inboundSchema),
-  ),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 /** @internal */
 export type PostTeamDsyncRolesRequest$Outbound = {
   teamId: string;
@@ -242,15 +165,6 @@ export function postTeamDsyncRolesRequestToJSON(
     PostTeamDsyncRolesRequest$outboundSchema.parse(postTeamDsyncRolesRequest),
   );
 }
-export function postTeamDsyncRolesRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<PostTeamDsyncRolesRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PostTeamDsyncRolesRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PostTeamDsyncRolesRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const PostTeamDsyncRolesResponseBody$inboundSchema: z.ZodType<
@@ -260,29 +174,7 @@ export const PostTeamDsyncRolesResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   ok: types.boolean(),
 });
-/** @internal */
-export type PostTeamDsyncRolesResponseBody$Outbound = {
-  ok: boolean;
-};
 
-/** @internal */
-export const PostTeamDsyncRolesResponseBody$outboundSchema: z.ZodType<
-  PostTeamDsyncRolesResponseBody$Outbound,
-  z.ZodTypeDef,
-  PostTeamDsyncRolesResponseBody
-> = z.object({
-  ok: z.boolean(),
-});
-
-export function postTeamDsyncRolesResponseBodyToJSON(
-  postTeamDsyncRolesResponseBody: PostTeamDsyncRolesResponseBody,
-): string {
-  return JSON.stringify(
-    PostTeamDsyncRolesResponseBody$outboundSchema.parse(
-      postTeamDsyncRolesResponseBody,
-    ),
-  );
-}
 export function postTeamDsyncRolesResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<PostTeamDsyncRolesResponseBody, SDKValidationError> {

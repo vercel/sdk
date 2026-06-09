@@ -129,15 +129,6 @@ export type SubmitInvoiceResponseBody = {
 };
 
 /** @internal */
-export const SubmitInvoicePeriod$inboundSchema: z.ZodType<
-  SubmitInvoicePeriod,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  start: types.date(),
-  end: types.date(),
-});
-/** @internal */
 export type SubmitInvoicePeriod$Outbound = {
   start: string;
   end: string;
@@ -160,33 +151,7 @@ export function submitInvoicePeriodToJSON(
     SubmitInvoicePeriod$outboundSchema.parse(submitInvoicePeriod),
   );
 }
-export function submitInvoicePeriodFromJSON(
-  jsonString: string,
-): SafeParseResult<SubmitInvoicePeriod, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => SubmitInvoicePeriod$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'SubmitInvoicePeriod' from JSON`,
-  );
-}
 
-/** @internal */
-export const SubmitInvoiceItems$inboundSchema: z.ZodType<
-  SubmitInvoiceItems,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  resourceId: types.optional(types.string()),
-  billingPlanId: types.string(),
-  start: types.optional(types.date()),
-  end: types.optional(types.date()),
-  name: types.string(),
-  details: types.optional(types.string()),
-  price: types.string(),
-  quantity: types.number(),
-  units: types.string(),
-  total: types.string(),
-});
 /** @internal */
 export type SubmitInvoiceItems$Outbound = {
   resourceId?: string | undefined;
@@ -226,30 +191,7 @@ export function submitInvoiceItemsToJSON(
     SubmitInvoiceItems$outboundSchema.parse(submitInvoiceItems),
   );
 }
-export function submitInvoiceItemsFromJSON(
-  jsonString: string,
-): SafeParseResult<SubmitInvoiceItems, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => SubmitInvoiceItems$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'SubmitInvoiceItems' from JSON`,
-  );
-}
 
-/** @internal */
-export const SubmitInvoiceDiscounts$inboundSchema: z.ZodType<
-  SubmitInvoiceDiscounts,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  resourceId: types.optional(types.string()),
-  billingPlanId: types.string(),
-  start: types.optional(types.date()),
-  end: types.optional(types.date()),
-  name: types.string(),
-  details: types.optional(types.string()),
-  amount: types.string(),
-});
 /** @internal */
 export type SubmitInvoiceDiscounts$Outbound = {
   resourceId?: string | undefined;
@@ -283,29 +225,11 @@ export function submitInvoiceDiscountsToJSON(
     SubmitInvoiceDiscounts$outboundSchema.parse(submitInvoiceDiscounts),
   );
 }
-export function submitInvoiceDiscountsFromJSON(
-  jsonString: string,
-): SafeParseResult<SubmitInvoiceDiscounts, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => SubmitInvoiceDiscounts$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'SubmitInvoiceDiscounts' from JSON`,
-  );
-}
 
 /** @internal */
-export const Result$inboundSchema: z.ZodNativeEnum<typeof Result> = z
+export const Result$outboundSchema: z.ZodNativeEnum<typeof Result> = z
   .nativeEnum(Result);
-/** @internal */
-export const Result$outboundSchema: z.ZodNativeEnum<typeof Result> =
-  Result$inboundSchema;
 
-/** @internal */
-export const Test$inboundSchema: z.ZodType<Test, z.ZodTypeDef, unknown> = z
-  .object({
-    validate: types.optional(types.boolean()),
-    result: types.optional(Result$inboundSchema),
-  });
 /** @internal */
 export type Test$Outbound = {
   validate?: boolean | undefined;
@@ -322,33 +246,7 @@ export const Test$outboundSchema: z.ZodType<Test$Outbound, z.ZodTypeDef, Test> =
 export function testToJSON(test: Test): string {
   return JSON.stringify(Test$outboundSchema.parse(test));
 }
-export function testFromJSON(
-  jsonString: string,
-): SafeParseResult<Test, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Test$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Test' from JSON`,
-  );
-}
 
-/** @internal */
-export const SubmitInvoiceRequestBody$inboundSchema: z.ZodType<
-  SubmitInvoiceRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  externalId: types.optional(types.string()),
-  invoiceDate: types.date(),
-  memo: types.optional(types.string()),
-  period: z.lazy(() => SubmitInvoicePeriod$inboundSchema),
-  items: z.array(z.lazy(() => SubmitInvoiceItems$inboundSchema)),
-  discounts: types.optional(
-    z.array(z.lazy(() => SubmitInvoiceDiscounts$inboundSchema)),
-  ),
-  final: types.optional(types.boolean()),
-  test: types.optional(z.lazy(() => Test$inboundSchema)),
-});
 /** @internal */
 export type SubmitInvoiceRequestBody$Outbound = {
   externalId?: string | undefined;
@@ -385,29 +283,7 @@ export function submitInvoiceRequestBodyToJSON(
     SubmitInvoiceRequestBody$outboundSchema.parse(submitInvoiceRequestBody),
   );
 }
-export function submitInvoiceRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<SubmitInvoiceRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => SubmitInvoiceRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'SubmitInvoiceRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const SubmitInvoiceRequest$inboundSchema: z.ZodType<
-  SubmitInvoiceRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  integrationConfigurationId: types.string(),
-  RequestBody: z.lazy(() => SubmitInvoiceRequestBody$inboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 /** @internal */
 export type SubmitInvoiceRequest$Outbound = {
   integrationConfigurationId: string;
@@ -435,15 +311,6 @@ export function submitInvoiceRequestToJSON(
     SubmitInvoiceRequest$outboundSchema.parse(submitInvoiceRequest),
   );
 }
-export function submitInvoiceRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<SubmitInvoiceRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => SubmitInvoiceRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'SubmitInvoiceRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const SubmitInvoiceResponseBody$inboundSchema: z.ZodType<
@@ -455,31 +322,7 @@ export const SubmitInvoiceResponseBody$inboundSchema: z.ZodType<
   test: types.optional(types.boolean()),
   validationErrors: types.optional(z.array(types.string())),
 });
-/** @internal */
-export type SubmitInvoiceResponseBody$Outbound = {
-  invoiceId?: string | undefined;
-  test?: boolean | undefined;
-  validationErrors?: Array<string> | undefined;
-};
 
-/** @internal */
-export const SubmitInvoiceResponseBody$outboundSchema: z.ZodType<
-  SubmitInvoiceResponseBody$Outbound,
-  z.ZodTypeDef,
-  SubmitInvoiceResponseBody
-> = z.object({
-  invoiceId: z.string().optional(),
-  test: z.boolean().optional(),
-  validationErrors: z.array(z.string()).optional(),
-});
-
-export function submitInvoiceResponseBodyToJSON(
-  submitInvoiceResponseBody: SubmitInvoiceResponseBody,
-): string {
-  return JSON.stringify(
-    SubmitInvoiceResponseBody$outboundSchema.parse(submitInvoiceResponseBody),
-  );
-}
 export function submitInvoiceResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<SubmitInvoiceResponseBody, SDKValidationError> {

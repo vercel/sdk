@@ -5,7 +5,6 @@
 import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
-import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type DeleteMicrofrontendsGroupRequest = {
@@ -25,16 +24,6 @@ export type DeleteMicrofrontendsGroupRequest = {
 
 export type DeleteMicrofrontendsGroupResponseBody = {};
 
-/** @internal */
-export const DeleteMicrofrontendsGroupRequest$inboundSchema: z.ZodType<
-  DeleteMicrofrontendsGroupRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  groupId: types.string(),
-  teamId: types.string(),
-  slug: types.optional(types.string()),
-});
 /** @internal */
 export type DeleteMicrofrontendsGroupRequest$Outbound = {
   groupId: string;
@@ -62,15 +51,6 @@ export function deleteMicrofrontendsGroupRequestToJSON(
     ),
   );
 }
-export function deleteMicrofrontendsGroupRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<DeleteMicrofrontendsGroupRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => DeleteMicrofrontendsGroupRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DeleteMicrofrontendsGroupRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const DeleteMicrofrontendsGroupResponseBody$inboundSchema: z.ZodType<
@@ -78,25 +58,7 @@ export const DeleteMicrofrontendsGroupResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-/** @internal */
-export type DeleteMicrofrontendsGroupResponseBody$Outbound = {};
 
-/** @internal */
-export const DeleteMicrofrontendsGroupResponseBody$outboundSchema: z.ZodType<
-  DeleteMicrofrontendsGroupResponseBody$Outbound,
-  z.ZodTypeDef,
-  DeleteMicrofrontendsGroupResponseBody
-> = z.object({});
-
-export function deleteMicrofrontendsGroupResponseBodyToJSON(
-  deleteMicrofrontendsGroupResponseBody: DeleteMicrofrontendsGroupResponseBody,
-): string {
-  return JSON.stringify(
-    DeleteMicrofrontendsGroupResponseBody$outboundSchema.parse(
-      deleteMicrofrontendsGroupResponseBody,
-    ),
-  );
-}
 export function deleteMicrofrontendsGroupResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<DeleteMicrofrontendsGroupResponseBody, SDKValidationError> {

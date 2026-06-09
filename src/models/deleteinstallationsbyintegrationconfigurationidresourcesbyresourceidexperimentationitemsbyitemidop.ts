@@ -3,10 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
-import { Result as SafeParseResult } from "../types/fp.js";
-import * as types from "../types/primitives.js";
-import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type DeleteInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdRequest =
   {
@@ -15,17 +11,6 @@ export type DeleteInstallationsByIntegrationConfigurationIdResourcesByResourceId
     itemId: string;
   };
 
-/** @internal */
-export const DeleteInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdRequest$inboundSchema:
-  z.ZodType<
-    DeleteInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdRequest,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    integrationConfigurationId: types.string(),
-    resourceId: types.string(),
-    itemId: types.string(),
-  });
 /** @internal */
 export type DeleteInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdRequest$Outbound =
   {
@@ -55,19 +40,5 @@ export function deleteInstallationsByIntegrationConfigurationIdResourcesByResour
       .parse(
         deleteInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdRequest,
       ),
-  );
-}
-export function deleteInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  DeleteInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdRequest,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      DeleteInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdRequest$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'DeleteInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdRequest' from JSON`,
   );
 }

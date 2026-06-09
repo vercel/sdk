@@ -66,16 +66,6 @@ export type UpdateRollingReleaseConfigResponseBody =
   | UpdateRollingReleaseConfigResponseBody2;
 
 /** @internal */
-export const UpdateRollingReleaseConfigRequest$inboundSchema: z.ZodType<
-  UpdateRollingReleaseConfigRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  idOrName: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
-/** @internal */
 export type UpdateRollingReleaseConfigRequest$Outbound = {
   idOrName: string;
   teamId?: string | undefined;
@@ -102,15 +92,6 @@ export function updateRollingReleaseConfigRequestToJSON(
     ),
   );
 }
-export function updateRollingReleaseConfigRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateRollingReleaseConfigRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateRollingReleaseConfigRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateRollingReleaseConfigRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const UpdateRollingReleaseConfigResponseBodyStages$inboundSchema:
@@ -124,37 +105,7 @@ export const UpdateRollingReleaseConfigResponseBodyStages$inboundSchema:
     duration: types.optional(types.number()),
     linearShift: types.optional(types.boolean()),
   });
-/** @internal */
-export type UpdateRollingReleaseConfigResponseBodyStages$Outbound = {
-  targetPercentage: number;
-  requireApproval?: boolean | undefined;
-  duration?: number | undefined;
-  linearShift?: boolean | undefined;
-};
 
-/** @internal */
-export const UpdateRollingReleaseConfigResponseBodyStages$outboundSchema:
-  z.ZodType<
-    UpdateRollingReleaseConfigResponseBodyStages$Outbound,
-    z.ZodTypeDef,
-    UpdateRollingReleaseConfigResponseBodyStages
-  > = z.object({
-    targetPercentage: z.number(),
-    requireApproval: z.boolean().optional(),
-    duration: z.number().optional(),
-    linearShift: z.boolean().optional(),
-  });
-
-export function updateRollingReleaseConfigResponseBodyStagesToJSON(
-  updateRollingReleaseConfigResponseBodyStages:
-    UpdateRollingReleaseConfigResponseBodyStages,
-): string {
-  return JSON.stringify(
-    UpdateRollingReleaseConfigResponseBodyStages$outboundSchema.parse(
-      updateRollingReleaseConfigResponseBodyStages,
-    ),
-  );
-}
 export function updateRollingReleaseConfigResponseBodyStagesFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -184,38 +135,7 @@ export const UpdateRollingReleaseConfigResponseBodyRollingRelease$inboundSchema:
       )),
     ).optional(),
   });
-/** @internal */
-export type UpdateRollingReleaseConfigResponseBodyRollingRelease$Outbound = {
-  stages?:
-    | Array<UpdateRollingReleaseConfigResponseBodyStages$Outbound>
-    | null
-    | undefined;
-};
 
-/** @internal */
-export const UpdateRollingReleaseConfigResponseBodyRollingRelease$outboundSchema:
-  z.ZodType<
-    UpdateRollingReleaseConfigResponseBodyRollingRelease$Outbound,
-    z.ZodTypeDef,
-    UpdateRollingReleaseConfigResponseBodyRollingRelease
-  > = z.object({
-    stages: z.nullable(
-      z.array(z.lazy(() =>
-        UpdateRollingReleaseConfigResponseBodyStages$outboundSchema
-      )),
-    ).optional(),
-  });
-
-export function updateRollingReleaseConfigResponseBodyRollingReleaseToJSON(
-  updateRollingReleaseConfigResponseBodyRollingRelease:
-    UpdateRollingReleaseConfigResponseBodyRollingRelease,
-): string {
-  return JSON.stringify(
-    UpdateRollingReleaseConfigResponseBodyRollingRelease$outboundSchema.parse(
-      updateRollingReleaseConfigResponseBodyRollingRelease,
-    ),
-  );
-}
 export function updateRollingReleaseConfigResponseBodyRollingReleaseFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -244,36 +164,7 @@ export const UpdateRollingReleaseConfigResponseBody2$inboundSchema: z.ZodType<
     ),
   ),
 });
-/** @internal */
-export type UpdateRollingReleaseConfigResponseBody2$Outbound = {
-  rollingRelease:
-    | UpdateRollingReleaseConfigResponseBodyRollingRelease$Outbound
-    | null;
-};
 
-/** @internal */
-export const UpdateRollingReleaseConfigResponseBody2$outboundSchema: z.ZodType<
-  UpdateRollingReleaseConfigResponseBody2$Outbound,
-  z.ZodTypeDef,
-  UpdateRollingReleaseConfigResponseBody2
-> = z.object({
-  rollingRelease: z.nullable(
-    z.lazy(() =>
-      UpdateRollingReleaseConfigResponseBodyRollingRelease$outboundSchema
-    ),
-  ),
-});
-
-export function updateRollingReleaseConfigResponseBody2ToJSON(
-  updateRollingReleaseConfigResponseBody2:
-    UpdateRollingReleaseConfigResponseBody2,
-): string {
-  return JSON.stringify(
-    UpdateRollingReleaseConfigResponseBody2$outboundSchema.parse(
-      updateRollingReleaseConfigResponseBody2,
-    ),
-  );
-}
 export function updateRollingReleaseConfigResponseBody2FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -298,30 +189,7 @@ export const UpdateRollingReleaseConfigResponseBody1$inboundSchema: z.ZodType<
 > = z.object({
   rollingRelease: z.nullable(z.any()).optional(),
 });
-/** @internal */
-export type UpdateRollingReleaseConfigResponseBody1$Outbound = {
-  rollingRelease?: any | null | undefined;
-};
 
-/** @internal */
-export const UpdateRollingReleaseConfigResponseBody1$outboundSchema: z.ZodType<
-  UpdateRollingReleaseConfigResponseBody1$Outbound,
-  z.ZodTypeDef,
-  UpdateRollingReleaseConfigResponseBody1
-> = z.object({
-  rollingRelease: z.nullable(z.any()).optional(),
-});
-
-export function updateRollingReleaseConfigResponseBody1ToJSON(
-  updateRollingReleaseConfigResponseBody1:
-    UpdateRollingReleaseConfigResponseBody1,
-): string {
-  return JSON.stringify(
-    UpdateRollingReleaseConfigResponseBody1$outboundSchema.parse(
-      updateRollingReleaseConfigResponseBody1,
-    ),
-  );
-}
 export function updateRollingReleaseConfigResponseBody1FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -347,31 +215,7 @@ export const UpdateRollingReleaseConfigResponseBody$inboundSchema: z.ZodType<
   z.lazy(() => UpdateRollingReleaseConfigResponseBody1$inboundSchema),
   z.lazy(() => UpdateRollingReleaseConfigResponseBody2$inboundSchema),
 ]);
-/** @internal */
-export type UpdateRollingReleaseConfigResponseBody$Outbound =
-  | UpdateRollingReleaseConfigResponseBody1$Outbound
-  | UpdateRollingReleaseConfigResponseBody2$Outbound;
 
-/** @internal */
-export const UpdateRollingReleaseConfigResponseBody$outboundSchema: z.ZodType<
-  UpdateRollingReleaseConfigResponseBody$Outbound,
-  z.ZodTypeDef,
-  UpdateRollingReleaseConfigResponseBody
-> = smartUnion([
-  z.lazy(() => UpdateRollingReleaseConfigResponseBody1$outboundSchema),
-  z.lazy(() => UpdateRollingReleaseConfigResponseBody2$outboundSchema),
-]);
-
-export function updateRollingReleaseConfigResponseBodyToJSON(
-  updateRollingReleaseConfigResponseBody:
-    UpdateRollingReleaseConfigResponseBody,
-): string {
-  return JSON.stringify(
-    UpdateRollingReleaseConfigResponseBody$outboundSchema.parse(
-      updateRollingReleaseConfigResponseBody,
-    ),
-  );
-}
 export function updateRollingReleaseConfigResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateRollingReleaseConfigResponseBody, SDKValidationError> {

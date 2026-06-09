@@ -4,12 +4,8 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
-import { Result as SafeParseResult } from "../types/fp.js";
-import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
-import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
  * Period for the billing cycle. The period end date cannot be older than 24 hours earlier than our current server's time.
@@ -228,12 +224,6 @@ export type SubmitBillingDataRequest = {
 };
 
 /** @internal */
-export const Period$inboundSchema: z.ZodType<Period, z.ZodTypeDef, unknown> = z
-  .object({
-    start: types.date(),
-    end: types.date(),
-  });
-/** @internal */
 export type Period$Outbound = {
   start: string;
   end: string;
@@ -252,33 +242,7 @@ export const Period$outboundSchema: z.ZodType<
 export function periodToJSON(period: Period): string {
   return JSON.stringify(Period$outboundSchema.parse(period));
 }
-export function periodFromJSON(
-  jsonString: string,
-): SafeParseResult<Period, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Period$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Period' from JSON`,
-  );
-}
 
-/** @internal */
-export const BillingItems$inboundSchema: z.ZodType<
-  BillingItems,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  billingPlanId: types.string(),
-  resourceId: types.optional(types.string()),
-  start: types.optional(types.date()),
-  end: types.optional(types.date()),
-  name: types.string(),
-  details: types.optional(types.string()),
-  price: types.string(),
-  quantity: types.number(),
-  units: types.string(),
-  total: types.string(),
-});
 /** @internal */
 export type BillingItems$Outbound = {
   billingPlanId: string;
@@ -314,30 +278,7 @@ export const BillingItems$outboundSchema: z.ZodType<
 export function billingItemsToJSON(billingItems: BillingItems): string {
   return JSON.stringify(BillingItems$outboundSchema.parse(billingItems));
 }
-export function billingItemsFromJSON(
-  jsonString: string,
-): SafeParseResult<BillingItems, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => BillingItems$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'BillingItems' from JSON`,
-  );
-}
 
-/** @internal */
-export const Discounts$inboundSchema: z.ZodType<
-  Discounts,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  billingPlanId: types.string(),
-  resourceId: types.optional(types.string()),
-  start: types.optional(types.date()),
-  end: types.optional(types.date()),
-  name: types.string(),
-  details: types.optional(types.string()),
-  amount: types.string(),
-});
 /** @internal */
 export type Discounts$Outbound = {
   billingPlanId: string;
@@ -367,25 +308,7 @@ export const Discounts$outboundSchema: z.ZodType<
 export function discountsToJSON(discounts: Discounts): string {
   return JSON.stringify(Discounts$outboundSchema.parse(discounts));
 }
-export function discountsFromJSON(
-  jsonString: string,
-): SafeParseResult<Discounts, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Discounts$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Discounts' from JSON`,
-  );
-}
 
-/** @internal */
-export const Billing2$inboundSchema: z.ZodType<
-  Billing2,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  items: z.array(z.lazy(() => BillingItems$inboundSchema)),
-  discounts: types.optional(z.array(z.lazy(() => Discounts$inboundSchema))),
-});
 /** @internal */
 export type Billing2$Outbound = {
   items: Array<BillingItems$Outbound>;
@@ -405,33 +328,7 @@ export const Billing2$outboundSchema: z.ZodType<
 export function billing2ToJSON(billing2: Billing2): string {
   return JSON.stringify(Billing2$outboundSchema.parse(billing2));
 }
-export function billing2FromJSON(
-  jsonString: string,
-): SafeParseResult<Billing2, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Billing2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Billing2' from JSON`,
-  );
-}
 
-/** @internal */
-export const Billing1$inboundSchema: z.ZodType<
-  Billing1,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  billingPlanId: types.string(),
-  resourceId: types.optional(types.string()),
-  start: types.optional(types.date()),
-  end: types.optional(types.date()),
-  name: types.string(),
-  details: types.optional(types.string()),
-  price: types.string(),
-  quantity: types.number(),
-  units: types.string(),
-  total: types.string(),
-});
 /** @internal */
 export type Billing1$Outbound = {
   billingPlanId: string;
@@ -467,25 +364,7 @@ export const Billing1$outboundSchema: z.ZodType<
 export function billing1ToJSON(billing1: Billing1): string {
   return JSON.stringify(Billing1$outboundSchema.parse(billing1));
 }
-export function billing1FromJSON(
-  jsonString: string,
-): SafeParseResult<Billing1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Billing1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Billing1' from JSON`,
-  );
-}
 
-/** @internal */
-export const SubmitBillingDataBilling$inboundSchema: z.ZodType<
-  SubmitBillingDataBilling,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([
-  z.lazy(() => Billing2$inboundSchema),
-  z.array(z.lazy(() => Billing1$inboundSchema)),
-]);
 /** @internal */
 export type SubmitBillingDataBilling$Outbound =
   | Billing2$Outbound
@@ -508,36 +387,12 @@ export function submitBillingDataBillingToJSON(
     SubmitBillingDataBilling$outboundSchema.parse(submitBillingDataBilling),
   );
 }
-export function submitBillingDataBillingFromJSON(
-  jsonString: string,
-): SafeParseResult<SubmitBillingDataBilling, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => SubmitBillingDataBilling$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'SubmitBillingDataBilling' from JSON`,
-  );
-}
 
-/** @internal */
-export const SubmitBillingDataType$inboundSchema: z.ZodNativeEnum<
-  typeof SubmitBillingDataType
-> = z.nativeEnum(SubmitBillingDataType);
 /** @internal */
 export const SubmitBillingDataType$outboundSchema: z.ZodNativeEnum<
   typeof SubmitBillingDataType
-> = SubmitBillingDataType$inboundSchema;
+> = z.nativeEnum(SubmitBillingDataType);
 
-/** @internal */
-export const Usage$inboundSchema: z.ZodType<Usage, z.ZodTypeDef, unknown> = z
-  .object({
-    resourceId: types.optional(types.string()),
-    name: types.string(),
-    type: SubmitBillingDataType$inboundSchema,
-    units: types.string(),
-    dayValue: types.number(),
-    periodValue: types.number(),
-    planValue: types.optional(types.number()),
-  });
 /** @internal */
 export type Usage$Outbound = {
   resourceId?: string | undefined;
@@ -567,31 +422,7 @@ export const Usage$outboundSchema: z.ZodType<
 export function usageToJSON(usage: Usage): string {
   return JSON.stringify(Usage$outboundSchema.parse(usage));
 }
-export function usageFromJSON(
-  jsonString: string,
-): SafeParseResult<Usage, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Usage$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Usage' from JSON`,
-  );
-}
 
-/** @internal */
-export const SubmitBillingDataRequestBody$inboundSchema: z.ZodType<
-  SubmitBillingDataRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  timestamp: types.date(),
-  eod: types.date(),
-  period: z.lazy(() => Period$inboundSchema),
-  billing: smartUnion([
-    z.lazy(() => Billing2$inboundSchema),
-    z.array(z.lazy(() => Billing1$inboundSchema)),
-  ]),
-  usage: z.array(z.lazy(() => Usage$inboundSchema)),
-});
 /** @internal */
 export type SubmitBillingDataRequestBody$Outbound = {
   timestamp: string;
@@ -626,29 +457,7 @@ export function submitBillingDataRequestBodyToJSON(
     ),
   );
 }
-export function submitBillingDataRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<SubmitBillingDataRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => SubmitBillingDataRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'SubmitBillingDataRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const SubmitBillingDataRequest$inboundSchema: z.ZodType<
-  SubmitBillingDataRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  integrationConfigurationId: types.string(),
-  RequestBody: z.lazy(() => SubmitBillingDataRequestBody$inboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 /** @internal */
 export type SubmitBillingDataRequest$Outbound = {
   integrationConfigurationId: string;
@@ -674,14 +483,5 @@ export function submitBillingDataRequestToJSON(
 ): string {
   return JSON.stringify(
     SubmitBillingDataRequest$outboundSchema.parse(submitBillingDataRequest),
-  );
-}
-export function submitBillingDataRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<SubmitBillingDataRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => SubmitBillingDataRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'SubmitBillingDataRequest' from JSON`,
   );
 }

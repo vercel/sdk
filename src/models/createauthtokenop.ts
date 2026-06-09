@@ -7,12 +7,7 @@ import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
-import {
-  AuthToken,
-  AuthToken$inboundSchema,
-  AuthToken$Outbound,
-  AuthToken$outboundSchema,
-} from "./authtoken.js";
+import { AuthToken, AuthToken$inboundSchema } from "./authtoken.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type CreateAuthTokenRequestBody = {
@@ -47,15 +42,6 @@ export type CreateAuthTokenResponseBody = {
 };
 
 /** @internal */
-export const CreateAuthTokenRequestBody$inboundSchema: z.ZodType<
-  CreateAuthTokenRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  name: types.string(),
-  expiresAt: types.optional(types.number()),
-});
-/** @internal */
 export type CreateAuthTokenRequestBody$Outbound = {
   name: string;
   expiresAt?: number | undefined;
@@ -78,30 +64,7 @@ export function createAuthTokenRequestBodyToJSON(
     CreateAuthTokenRequestBody$outboundSchema.parse(createAuthTokenRequestBody),
   );
 }
-export function createAuthTokenRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateAuthTokenRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateAuthTokenRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateAuthTokenRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const CreateAuthTokenRequest$inboundSchema: z.ZodType<
-  CreateAuthTokenRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-  RequestBody: z.lazy(() => CreateAuthTokenRequestBody$inboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 /** @internal */
 export type CreateAuthTokenRequest$Outbound = {
   teamId?: string | undefined;
@@ -131,15 +94,6 @@ export function createAuthTokenRequestToJSON(
     CreateAuthTokenRequest$outboundSchema.parse(createAuthTokenRequest),
   );
 }
-export function createAuthTokenRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateAuthTokenRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateAuthTokenRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateAuthTokenRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const CreateAuthTokenResponseBody$inboundSchema: z.ZodType<
@@ -150,31 +104,7 @@ export const CreateAuthTokenResponseBody$inboundSchema: z.ZodType<
   token: AuthToken$inboundSchema,
   bearerToken: types.string(),
 });
-/** @internal */
-export type CreateAuthTokenResponseBody$Outbound = {
-  token: AuthToken$Outbound;
-  bearerToken: string;
-};
 
-/** @internal */
-export const CreateAuthTokenResponseBody$outboundSchema: z.ZodType<
-  CreateAuthTokenResponseBody$Outbound,
-  z.ZodTypeDef,
-  CreateAuthTokenResponseBody
-> = z.object({
-  token: AuthToken$outboundSchema,
-  bearerToken: z.string(),
-});
-
-export function createAuthTokenResponseBodyToJSON(
-  createAuthTokenResponseBody: CreateAuthTokenResponseBody,
-): string {
-  return JSON.stringify(
-    CreateAuthTokenResponseBody$outboundSchema.parse(
-      createAuthTokenResponseBody,
-    ),
-  );
-}
 export function createAuthTokenResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateAuthTokenResponseBody, SDKValidationError> {

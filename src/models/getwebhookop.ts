@@ -180,16 +180,6 @@ export type GetWebhookResponseBody = {
 };
 
 /** @internal */
-export const GetWebhookRequest$inboundSchema: z.ZodType<
-  GetWebhookRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
-/** @internal */
 export type GetWebhookRequest$Outbound = {
   id: string;
   teamId?: string | undefined;
@@ -214,24 +204,11 @@ export function getWebhookRequestToJSON(
     GetWebhookRequest$outboundSchema.parse(getWebhookRequest),
   );
 }
-export function getWebhookRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetWebhookRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetWebhookRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetWebhookRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const GetWebhookEvents$inboundSchema: z.ZodNativeEnum<
   typeof GetWebhookEvents
 > = z.nativeEnum(GetWebhookEvents);
-/** @internal */
-export const GetWebhookEvents$outboundSchema: z.ZodNativeEnum<
-  typeof GetWebhookEvents
-> = GetWebhookEvents$inboundSchema;
 
 /** @internal */
 export const GetWebhookResponseBody$inboundSchema: z.ZodType<
@@ -247,39 +224,7 @@ export const GetWebhookResponseBody$inboundSchema: z.ZodType<
   updatedAt: types.number(),
   projectIds: types.optional(z.array(types.string())),
 });
-/** @internal */
-export type GetWebhookResponseBody$Outbound = {
-  events: Array<string>;
-  id: string;
-  url: string;
-  ownerId: string;
-  createdAt: number;
-  updatedAt: number;
-  projectIds?: Array<string> | undefined;
-};
 
-/** @internal */
-export const GetWebhookResponseBody$outboundSchema: z.ZodType<
-  GetWebhookResponseBody$Outbound,
-  z.ZodTypeDef,
-  GetWebhookResponseBody
-> = z.object({
-  events: z.array(GetWebhookEvents$outboundSchema),
-  id: z.string(),
-  url: z.string(),
-  ownerId: z.string(),
-  createdAt: z.number(),
-  updatedAt: z.number(),
-  projectIds: z.array(z.string()).optional(),
-});
-
-export function getWebhookResponseBodyToJSON(
-  getWebhookResponseBody: GetWebhookResponseBody,
-): string {
-  return JSON.stringify(
-    GetWebhookResponseBody$outboundSchema.parse(getWebhookResponseBody),
-  );
-}
 export function getWebhookResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetWebhookResponseBody, SDKValidationError> {

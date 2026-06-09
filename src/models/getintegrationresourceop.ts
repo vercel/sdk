@@ -121,15 +121,6 @@ export type GetIntegrationResourceResponseBody = {
 };
 
 /** @internal */
-export const GetIntegrationResourceRequest$inboundSchema: z.ZodType<
-  GetIntegrationResourceRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  integrationConfigurationId: types.string(),
-  resourceId: types.string(),
-});
-/** @internal */
 export type GetIntegrationResourceRequest$Outbound = {
   integrationConfigurationId: string;
   resourceId: string;
@@ -154,24 +145,11 @@ export function getIntegrationResourceRequestToJSON(
     ),
   );
 }
-export function getIntegrationResourceRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetIntegrationResourceRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetIntegrationResourceRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetIntegrationResourceRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const GetIntegrationResourceStatus$inboundSchema: z.ZodNativeEnum<
   typeof GetIntegrationResourceStatus
 > = z.nativeEnum(GetIntegrationResourceStatus);
-/** @internal */
-export const GetIntegrationResourceStatus$outboundSchema: z.ZodNativeEnum<
-  typeof GetIntegrationResourceStatus
-> = GetIntegrationResourceStatus$inboundSchema;
 
 /** @internal */
 export const Experimentation$inboundSchema: z.ZodType<
@@ -183,29 +161,7 @@ export const Experimentation$inboundSchema: z.ZodType<
   edgeConfigId: types.optional(types.string()),
   edgeConfigTokenId: types.optional(types.string()),
 });
-/** @internal */
-export type Experimentation$Outbound = {
-  edgeConfigSyncingEnabled?: boolean | undefined;
-  edgeConfigId?: string | undefined;
-  edgeConfigTokenId?: string | undefined;
-};
 
-/** @internal */
-export const Experimentation$outboundSchema: z.ZodType<
-  Experimentation$Outbound,
-  z.ZodTypeDef,
-  Experimentation
-> = z.object({
-  edgeConfigSyncingEnabled: z.boolean().optional(),
-  edgeConfigId: z.string().optional(),
-  edgeConfigTokenId: z.string().optional(),
-});
-
-export function experimentationToJSON(
-  experimentation: Experimentation,
-): string {
-  return JSON.stringify(Experimentation$outboundSchema.parse(experimentation));
-}
 export function experimentationFromJSON(
   jsonString: string,
 ): SafeParseResult<Experimentation, SDKValidationError> {
@@ -224,27 +180,7 @@ export const ProtocolSettings$inboundSchema: z.ZodType<
 > = z.object({
   experimentation: types.optional(z.lazy(() => Experimentation$inboundSchema)),
 });
-/** @internal */
-export type ProtocolSettings$Outbound = {
-  experimentation?: Experimentation$Outbound | undefined;
-};
 
-/** @internal */
-export const ProtocolSettings$outboundSchema: z.ZodType<
-  ProtocolSettings$Outbound,
-  z.ZodTypeDef,
-  ProtocolSettings
-> = z.object({
-  experimentation: z.lazy(() => Experimentation$outboundSchema).optional(),
-});
-
-export function protocolSettingsToJSON(
-  protocolSettings: ProtocolSettings,
-): string {
-  return JSON.stringify(
-    ProtocolSettings$outboundSchema.parse(protocolSettings),
-  );
-}
 export function protocolSettingsFromJSON(
   jsonString: string,
 ): SafeParseResult<ProtocolSettings, SDKValidationError> {
@@ -259,10 +195,6 @@ export function protocolSettingsFromJSON(
 export const GetIntegrationResourceLevel$inboundSchema: z.ZodNativeEnum<
   typeof GetIntegrationResourceLevel
 > = z.nativeEnum(GetIntegrationResourceLevel);
-/** @internal */
-export const GetIntegrationResourceLevel$outboundSchema: z.ZodNativeEnum<
-  typeof GetIntegrationResourceLevel
-> = GetIntegrationResourceLevel$inboundSchema;
 
 /** @internal */
 export const GetIntegrationResourceNotification$inboundSchema: z.ZodType<
@@ -275,35 +207,7 @@ export const GetIntegrationResourceNotification$inboundSchema: z.ZodType<
   message: types.optional(types.string()),
   href: types.optional(types.string()),
 });
-/** @internal */
-export type GetIntegrationResourceNotification$Outbound = {
-  level: string;
-  title: string;
-  message?: string | undefined;
-  href?: string | undefined;
-};
 
-/** @internal */
-export const GetIntegrationResourceNotification$outboundSchema: z.ZodType<
-  GetIntegrationResourceNotification$Outbound,
-  z.ZodTypeDef,
-  GetIntegrationResourceNotification
-> = z.object({
-  level: GetIntegrationResourceLevel$outboundSchema,
-  title: z.string(),
-  message: z.string().optional(),
-  href: z.string().optional(),
-});
-
-export function getIntegrationResourceNotificationToJSON(
-  getIntegrationResourceNotification: GetIntegrationResourceNotification,
-): string {
-  return JSON.stringify(
-    GetIntegrationResourceNotification$outboundSchema.parse(
-      getIntegrationResourceNotification,
-    ),
-  );
-}
 export function getIntegrationResourceNotificationFromJSON(
   jsonString: string,
 ): SafeParseResult<GetIntegrationResourceNotification, SDKValidationError> {
@@ -327,36 +231,7 @@ export const GetIntegrationResourceMetadata$inboundSchema: z.ZodType<
   z.array(types.number()),
   types.boolean(),
 ]);
-/** @internal */
-export type GetIntegrationResourceMetadata$Outbound =
-  | string
-  | number
-  | Array<string>
-  | Array<number>
-  | boolean;
 
-/** @internal */
-export const GetIntegrationResourceMetadata$outboundSchema: z.ZodType<
-  GetIntegrationResourceMetadata$Outbound,
-  z.ZodTypeDef,
-  GetIntegrationResourceMetadata
-> = smartUnion([
-  z.string(),
-  z.number(),
-  z.array(z.string()),
-  z.array(z.number()),
-  z.boolean(),
-]);
-
-export function getIntegrationResourceMetadataToJSON(
-  getIntegrationResourceMetadata: GetIntegrationResourceMetadata,
-): string {
-  return JSON.stringify(
-    GetIntegrationResourceMetadata$outboundSchema.parse(
-      getIntegrationResourceMetadata,
-    ),
-  );
-}
 export function getIntegrationResourceMetadataFromJSON(
   jsonString: string,
 ): SafeParseResult<GetIntegrationResourceMetadata, SDKValidationError> {
@@ -397,56 +272,7 @@ export const GetIntegrationResourceResponseBody$inboundSchema: z.ZodType<
     ),
   ),
 });
-/** @internal */
-export type GetIntegrationResourceResponseBody$Outbound = {
-  id: string;
-  internalId: string;
-  name: string;
-  status?: string | undefined;
-  productId: string;
-  protocolSettings?: ProtocolSettings$Outbound | undefined;
-  notification?: GetIntegrationResourceNotification$Outbound | undefined;
-  billingPlanId?: string | undefined;
-  metadata?: {
-    [k: string]: string | number | Array<string> | Array<number> | boolean;
-  } | undefined;
-};
 
-/** @internal */
-export const GetIntegrationResourceResponseBody$outboundSchema: z.ZodType<
-  GetIntegrationResourceResponseBody$Outbound,
-  z.ZodTypeDef,
-  GetIntegrationResourceResponseBody
-> = z.object({
-  id: z.string(),
-  internalId: z.string(),
-  name: z.string(),
-  status: GetIntegrationResourceStatus$outboundSchema.optional(),
-  productId: z.string(),
-  protocolSettings: z.lazy(() => ProtocolSettings$outboundSchema).optional(),
-  notification: z.lazy(() => GetIntegrationResourceNotification$outboundSchema)
-    .optional(),
-  billingPlanId: z.string().optional(),
-  metadata: z.record(
-    smartUnion([
-      z.string(),
-      z.number(),
-      z.array(z.string()),
-      z.array(z.number()),
-      z.boolean(),
-    ]),
-  ).optional(),
-});
-
-export function getIntegrationResourceResponseBodyToJSON(
-  getIntegrationResourceResponseBody: GetIntegrationResourceResponseBody,
-): string {
-  return JSON.stringify(
-    GetIntegrationResourceResponseBody$outboundSchema.parse(
-      getIntegrationResourceResponseBody,
-    ),
-  );
-}
 export function getIntegrationResourceResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetIntegrationResourceResponseBody, SDKValidationError> {

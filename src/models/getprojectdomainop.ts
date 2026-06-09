@@ -58,17 +58,6 @@ export type GetProjectDomainResponseBody = {
 };
 
 /** @internal */
-export const GetProjectDomainRequest$inboundSchema: z.ZodType<
-  GetProjectDomainRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  idOrName: types.string(),
-  domain: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
-/** @internal */
 export type GetProjectDomainRequest$Outbound = {
   idOrName: string;
   domain: string;
@@ -95,15 +84,6 @@ export function getProjectDomainRequestToJSON(
     GetProjectDomainRequest$outboundSchema.parse(getProjectDomainRequest),
   );
 }
-export function getProjectDomainRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetProjectDomainRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetProjectDomainRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetProjectDomainRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const Verification$inboundSchema: z.ZodType<
@@ -116,29 +96,7 @@ export const Verification$inboundSchema: z.ZodType<
   value: types.string(),
   reason: types.string(),
 });
-/** @internal */
-export type Verification$Outbound = {
-  type: string;
-  domain: string;
-  value: string;
-  reason: string;
-};
 
-/** @internal */
-export const Verification$outboundSchema: z.ZodType<
-  Verification$Outbound,
-  z.ZodTypeDef,
-  Verification
-> = z.object({
-  type: z.string(),
-  domain: z.string(),
-  value: z.string(),
-  reason: z.string(),
-});
-
-export function verificationToJSON(verification: Verification): string {
-  return JSON.stringify(Verification$outboundSchema.parse(verification));
-}
 export function verificationFromJSON(
   jsonString: string,
 ): SafeParseResult<Verification, SDKValidationError> {
@@ -169,49 +127,7 @@ export const GetProjectDomainResponseBody$inboundSchema: z.ZodType<
     z.array(z.lazy(() => Verification$inboundSchema)),
   ),
 });
-/** @internal */
-export type GetProjectDomainResponseBody$Outbound = {
-  name: string;
-  apexName: string;
-  projectId: string;
-  redirect?: string | null | undefined;
-  redirectStatusCode?: number | null | undefined;
-  gitBranch?: string | null | undefined;
-  customEnvironmentId?: string | null | undefined;
-  updatedAt?: number | undefined;
-  createdAt?: number | undefined;
-  verified: boolean;
-  verification?: Array<Verification$Outbound> | undefined;
-};
 
-/** @internal */
-export const GetProjectDomainResponseBody$outboundSchema: z.ZodType<
-  GetProjectDomainResponseBody$Outbound,
-  z.ZodTypeDef,
-  GetProjectDomainResponseBody
-> = z.object({
-  name: z.string(),
-  apexName: z.string(),
-  projectId: z.string(),
-  redirect: z.nullable(z.string()).optional(),
-  redirectStatusCode: z.nullable(z.number()).optional(),
-  gitBranch: z.nullable(z.string()).optional(),
-  customEnvironmentId: z.nullable(z.string()).optional(),
-  updatedAt: z.number().optional(),
-  createdAt: z.number().optional(),
-  verified: z.boolean(),
-  verification: z.array(z.lazy(() => Verification$outboundSchema)).optional(),
-});
-
-export function getProjectDomainResponseBodyToJSON(
-  getProjectDomainResponseBody: GetProjectDomainResponseBody,
-): string {
-  return JSON.stringify(
-    GetProjectDomainResponseBody$outboundSchema.parse(
-      getProjectDomainResponseBody,
-    ),
-  );
-}
 export function getProjectDomainResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectDomainResponseBody, SDKValidationError> {

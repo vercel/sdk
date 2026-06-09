@@ -5,20 +5,12 @@
 import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
-import * as types from "../types/primitives.js";
 import {
   SandboxPublicRoute,
   SandboxPublicRoute$inboundSchema,
-  SandboxPublicRoute$Outbound,
-  SandboxPublicRoute$outboundSchema,
 } from "./sandboxpublicroute.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
-import {
-  Session,
-  Session$inboundSchema,
-  Session$Outbound,
-  Session$outboundSchema,
-} from "./session.js";
+import { Session, Session$inboundSchema } from "./session.js";
 
 export type GetSessionRequest = {
   /**
@@ -47,16 +39,6 @@ export type GetSessionResponseBody = {
 };
 
 /** @internal */
-export const GetSessionRequest$inboundSchema: z.ZodType<
-  GetSessionRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  sessionId: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
-/** @internal */
 export type GetSessionRequest$Outbound = {
   sessionId: string;
   teamId?: string | undefined;
@@ -81,15 +63,6 @@ export function getSessionRequestToJSON(
     GetSessionRequest$outboundSchema.parse(getSessionRequest),
   );
 }
-export function getSessionRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetSessionRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetSessionRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetSessionRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const GetSessionResponseBody$inboundSchema: z.ZodType<
@@ -100,29 +73,7 @@ export const GetSessionResponseBody$inboundSchema: z.ZodType<
   session: Session$inboundSchema,
   routes: z.array(SandboxPublicRoute$inboundSchema),
 });
-/** @internal */
-export type GetSessionResponseBody$Outbound = {
-  session: Session$Outbound;
-  routes: Array<SandboxPublicRoute$Outbound>;
-};
 
-/** @internal */
-export const GetSessionResponseBody$outboundSchema: z.ZodType<
-  GetSessionResponseBody$Outbound,
-  z.ZodTypeDef,
-  GetSessionResponseBody
-> = z.object({
-  session: Session$outboundSchema,
-  routes: z.array(SandboxPublicRoute$outboundSchema),
-});
-
-export function getSessionResponseBodyToJSON(
-  getSessionResponseBody: GetSessionResponseBody,
-): string {
-  return JSON.stringify(
-    GetSessionResponseBody$outboundSchema.parse(getSessionResponseBody),
-  );
-}
 export function getSessionResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetSessionResponseBody, SDKValidationError> {

@@ -408,14 +408,6 @@ export type CompleteRollingReleaseResponseBody = {
 };
 
 /** @internal */
-export const CompleteRollingReleaseRequestBody$inboundSchema: z.ZodType<
-  CompleteRollingReleaseRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  canaryDeploymentId: types.string(),
-});
-/** @internal */
 export type CompleteRollingReleaseRequestBody$Outbound = {
   canaryDeploymentId: string;
 };
@@ -438,33 +430,7 @@ export function completeRollingReleaseRequestBodyToJSON(
     ),
   );
 }
-export function completeRollingReleaseRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<CompleteRollingReleaseRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CompleteRollingReleaseRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CompleteRollingReleaseRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const CompleteRollingReleaseRequest$inboundSchema: z.ZodType<
-  CompleteRollingReleaseRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  idOrName: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-  RequestBody: types.optional(
-    z.lazy(() => CompleteRollingReleaseRequestBody$inboundSchema),
-  ),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 /** @internal */
 export type CompleteRollingReleaseRequest$Outbound = {
   idOrName: string;
@@ -499,60 +465,31 @@ export function completeRollingReleaseRequestToJSON(
     ),
   );
 }
-export function completeRollingReleaseRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<CompleteRollingReleaseRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CompleteRollingReleaseRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CompleteRollingReleaseRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const CompleteRollingReleaseState$inboundSchema: z.ZodNativeEnum<
   typeof CompleteRollingReleaseState
 > = z.nativeEnum(CompleteRollingReleaseState);
-/** @internal */
-export const CompleteRollingReleaseState$outboundSchema: z.ZodNativeEnum<
-  typeof CompleteRollingReleaseState
-> = CompleteRollingReleaseState$inboundSchema;
 
 /** @internal */
 export const CompleteRollingReleaseSubstate$inboundSchema: z.ZodNativeEnum<
   typeof CompleteRollingReleaseSubstate
 > = z.nativeEnum(CompleteRollingReleaseSubstate);
-/** @internal */
-export const CompleteRollingReleaseSubstate$outboundSchema: z.ZodNativeEnum<
-  typeof CompleteRollingReleaseSubstate
-> = CompleteRollingReleaseSubstate$inboundSchema;
 
 /** @internal */
 export const CompleteRollingReleaseTarget$inboundSchema: z.ZodNativeEnum<
   typeof CompleteRollingReleaseTarget
 > = z.nativeEnum(CompleteRollingReleaseTarget);
-/** @internal */
-export const CompleteRollingReleaseTarget$outboundSchema: z.ZodNativeEnum<
-  typeof CompleteRollingReleaseTarget
-> = CompleteRollingReleaseTarget$inboundSchema;
 
 /** @internal */
 export const CompleteRollingReleaseReadyState$inboundSchema: z.ZodNativeEnum<
   typeof CompleteRollingReleaseReadyState
 > = z.nativeEnum(CompleteRollingReleaseReadyState);
-/** @internal */
-export const CompleteRollingReleaseReadyState$outboundSchema: z.ZodNativeEnum<
-  typeof CompleteRollingReleaseReadyState
-> = CompleteRollingReleaseReadyState$inboundSchema;
 
 /** @internal */
 export const CompleteRollingReleaseSource$inboundSchema: z.ZodNativeEnum<
   typeof CompleteRollingReleaseSource
 > = z.nativeEnum(CompleteRollingReleaseSource);
-/** @internal */
-export const CompleteRollingReleaseSource$outboundSchema: z.ZodNativeEnum<
-  typeof CompleteRollingReleaseSource
-> = CompleteRollingReleaseSource$inboundSchema;
 
 /** @internal */
 export const CompleteRollingReleaseCurrentDeployment$inboundSchema: z.ZodType<
@@ -569,44 +506,7 @@ export const CompleteRollingReleaseCurrentDeployment$inboundSchema: z.ZodType<
   source: types.optional(CompleteRollingReleaseSource$inboundSchema),
   url: types.string(),
 });
-/** @internal */
-export type CompleteRollingReleaseCurrentDeployment$Outbound = {
-  name: string;
-  createdAt: number;
-  id: string;
-  target?: string | null | undefined;
-  readyState: string;
-  readyStateAt?: number | undefined;
-  source?: string | undefined;
-  url: string;
-};
 
-/** @internal */
-export const CompleteRollingReleaseCurrentDeployment$outboundSchema: z.ZodType<
-  CompleteRollingReleaseCurrentDeployment$Outbound,
-  z.ZodTypeDef,
-  CompleteRollingReleaseCurrentDeployment
-> = z.object({
-  name: z.string(),
-  createdAt: z.number(),
-  id: z.string(),
-  target: z.nullable(CompleteRollingReleaseTarget$outboundSchema).optional(),
-  readyState: CompleteRollingReleaseReadyState$outboundSchema,
-  readyStateAt: z.number().optional(),
-  source: CompleteRollingReleaseSource$outboundSchema.optional(),
-  url: z.string(),
-});
-
-export function completeRollingReleaseCurrentDeploymentToJSON(
-  completeRollingReleaseCurrentDeployment:
-    CompleteRollingReleaseCurrentDeployment,
-): string {
-  return JSON.stringify(
-    CompleteRollingReleaseCurrentDeployment$outboundSchema.parse(
-      completeRollingReleaseCurrentDeployment,
-    ),
-  );
-}
 export function completeRollingReleaseCurrentDeploymentFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -627,28 +527,16 @@ export function completeRollingReleaseCurrentDeploymentFromJSON(
 export const CompleteRollingReleaseRollingReleaseTarget$inboundSchema:
   z.ZodNativeEnum<typeof CompleteRollingReleaseRollingReleaseTarget> = z
     .nativeEnum(CompleteRollingReleaseRollingReleaseTarget);
-/** @internal */
-export const CompleteRollingReleaseRollingReleaseTarget$outboundSchema:
-  z.ZodNativeEnum<typeof CompleteRollingReleaseRollingReleaseTarget> =
-    CompleteRollingReleaseRollingReleaseTarget$inboundSchema;
 
 /** @internal */
 export const CompleteRollingReleaseRollingReleaseReadyState$inboundSchema:
   z.ZodNativeEnum<typeof CompleteRollingReleaseRollingReleaseReadyState> = z
     .nativeEnum(CompleteRollingReleaseRollingReleaseReadyState);
-/** @internal */
-export const CompleteRollingReleaseRollingReleaseReadyState$outboundSchema:
-  z.ZodNativeEnum<typeof CompleteRollingReleaseRollingReleaseReadyState> =
-    CompleteRollingReleaseRollingReleaseReadyState$inboundSchema;
 
 /** @internal */
 export const CompleteRollingReleaseRollingReleaseSource$inboundSchema:
   z.ZodNativeEnum<typeof CompleteRollingReleaseRollingReleaseSource> = z
     .nativeEnum(CompleteRollingReleaseRollingReleaseSource);
-/** @internal */
-export const CompleteRollingReleaseRollingReleaseSource$outboundSchema:
-  z.ZodNativeEnum<typeof CompleteRollingReleaseRollingReleaseSource> =
-    CompleteRollingReleaseRollingReleaseSource$inboundSchema;
 
 /** @internal */
 export const CompleteRollingReleaseCanaryDeployment$inboundSchema: z.ZodType<
@@ -668,45 +556,7 @@ export const CompleteRollingReleaseCanaryDeployment$inboundSchema: z.ZodType<
   ),
   url: types.string(),
 });
-/** @internal */
-export type CompleteRollingReleaseCanaryDeployment$Outbound = {
-  name: string;
-  createdAt: number;
-  id: string;
-  target?: string | null | undefined;
-  readyState: string;
-  readyStateAt?: number | undefined;
-  source?: string | undefined;
-  url: string;
-};
 
-/** @internal */
-export const CompleteRollingReleaseCanaryDeployment$outboundSchema: z.ZodType<
-  CompleteRollingReleaseCanaryDeployment$Outbound,
-  z.ZodTypeDef,
-  CompleteRollingReleaseCanaryDeployment
-> = z.object({
-  name: z.string(),
-  createdAt: z.number(),
-  id: z.string(),
-  target: z.nullable(CompleteRollingReleaseRollingReleaseTarget$outboundSchema)
-    .optional(),
-  readyState: CompleteRollingReleaseRollingReleaseReadyState$outboundSchema,
-  readyStateAt: z.number().optional(),
-  source: CompleteRollingReleaseRollingReleaseSource$outboundSchema.optional(),
-  url: z.string(),
-});
-
-export function completeRollingReleaseCanaryDeploymentToJSON(
-  completeRollingReleaseCanaryDeployment:
-    CompleteRollingReleaseCanaryDeployment,
-): string {
-  return JSON.stringify(
-    CompleteRollingReleaseCanaryDeployment$outboundSchema.parse(
-      completeRollingReleaseCanaryDeployment,
-    ),
-  );
-}
 export function completeRollingReleaseCanaryDeploymentFromJSON(
   jsonString: string,
 ): SafeParseResult<CompleteRollingReleaseCanaryDeployment, SDKValidationError> {
@@ -723,10 +573,6 @@ export const CompleteRollingReleaseAdvancementType$inboundSchema:
   z.ZodNativeEnum<typeof CompleteRollingReleaseAdvancementType> = z.nativeEnum(
     CompleteRollingReleaseAdvancementType,
   );
-/** @internal */
-export const CompleteRollingReleaseAdvancementType$outboundSchema:
-  z.ZodNativeEnum<typeof CompleteRollingReleaseAdvancementType> =
-    CompleteRollingReleaseAdvancementType$inboundSchema;
 
 /** @internal */
 export const CompleteRollingReleaseStages$inboundSchema: z.ZodType<
@@ -741,39 +587,7 @@ export const CompleteRollingReleaseStages$inboundSchema: z.ZodType<
   duration: types.nullable(types.number()),
   linearShift: types.optional(types.boolean()),
 });
-/** @internal */
-export type CompleteRollingReleaseStages$Outbound = {
-  index: number;
-  isFinalStage: boolean;
-  targetPercentage: number;
-  requireApproval: boolean;
-  duration: number | null;
-  linearShift?: boolean | undefined;
-};
 
-/** @internal */
-export const CompleteRollingReleaseStages$outboundSchema: z.ZodType<
-  CompleteRollingReleaseStages$Outbound,
-  z.ZodTypeDef,
-  CompleteRollingReleaseStages
-> = z.object({
-  index: z.number(),
-  isFinalStage: z.boolean(),
-  targetPercentage: z.number(),
-  requireApproval: z.boolean(),
-  duration: z.nullable(z.number()),
-  linearShift: z.boolean().optional(),
-});
-
-export function completeRollingReleaseStagesToJSON(
-  completeRollingReleaseStages: CompleteRollingReleaseStages,
-): string {
-  return JSON.stringify(
-    CompleteRollingReleaseStages$outboundSchema.parse(
-      completeRollingReleaseStages,
-    ),
-  );
-}
 export function completeRollingReleaseStagesFromJSON(
   jsonString: string,
 ): SafeParseResult<CompleteRollingReleaseStages, SDKValidationError> {
@@ -797,39 +611,7 @@ export const CompleteRollingReleaseActiveStage$inboundSchema: z.ZodType<
   duration: types.nullable(types.number()),
   linearShift: types.optional(types.boolean()),
 });
-/** @internal */
-export type CompleteRollingReleaseActiveStage$Outbound = {
-  index: number;
-  isFinalStage: boolean;
-  targetPercentage: number;
-  requireApproval: boolean;
-  duration: number | null;
-  linearShift?: boolean | undefined;
-};
 
-/** @internal */
-export const CompleteRollingReleaseActiveStage$outboundSchema: z.ZodType<
-  CompleteRollingReleaseActiveStage$Outbound,
-  z.ZodTypeDef,
-  CompleteRollingReleaseActiveStage
-> = z.object({
-  index: z.number(),
-  isFinalStage: z.boolean(),
-  targetPercentage: z.number(),
-  requireApproval: z.boolean(),
-  duration: z.nullable(z.number()),
-  linearShift: z.boolean().optional(),
-});
-
-export function completeRollingReleaseActiveStageToJSON(
-  completeRollingReleaseActiveStage: CompleteRollingReleaseActiveStage,
-): string {
-  return JSON.stringify(
-    CompleteRollingReleaseActiveStage$outboundSchema.parse(
-      completeRollingReleaseActiveStage,
-    ),
-  );
-}
 export function completeRollingReleaseActiveStageFromJSON(
   jsonString: string,
 ): SafeParseResult<CompleteRollingReleaseActiveStage, SDKValidationError> {
@@ -853,39 +635,7 @@ export const CompleteRollingReleaseNextStage$inboundSchema: z.ZodType<
   duration: types.nullable(types.number()),
   linearShift: types.optional(types.boolean()),
 });
-/** @internal */
-export type CompleteRollingReleaseNextStage$Outbound = {
-  index: number;
-  isFinalStage: boolean;
-  targetPercentage: number;
-  requireApproval: boolean;
-  duration: number | null;
-  linearShift?: boolean | undefined;
-};
 
-/** @internal */
-export const CompleteRollingReleaseNextStage$outboundSchema: z.ZodType<
-  CompleteRollingReleaseNextStage$Outbound,
-  z.ZodTypeDef,
-  CompleteRollingReleaseNextStage
-> = z.object({
-  index: z.number(),
-  isFinalStage: z.boolean(),
-  targetPercentage: z.number(),
-  requireApproval: z.boolean(),
-  duration: z.nullable(z.number()),
-  linearShift: z.boolean().optional(),
-});
-
-export function completeRollingReleaseNextStageToJSON(
-  completeRollingReleaseNextStage: CompleteRollingReleaseNextStage,
-): string {
-  return JSON.stringify(
-    CompleteRollingReleaseNextStage$outboundSchema.parse(
-      completeRollingReleaseNextStage,
-    ),
-  );
-}
 export function completeRollingReleaseNextStageFromJSON(
   jsonString: string,
 ): SafeParseResult<CompleteRollingReleaseNextStage, SDKValidationError> {
@@ -923,59 +673,7 @@ export const CompleteRollingReleaseRollingRelease$inboundSchema: z.ZodType<
   updatedAt: types.number(),
   currentCanaryPercentage: types.optional(types.number()),
 });
-/** @internal */
-export type CompleteRollingReleaseRollingRelease$Outbound = {
-  state: string;
-  substate: string | null;
-  currentDeployment: CompleteRollingReleaseCurrentDeployment$Outbound | null;
-  canaryDeployment: CompleteRollingReleaseCanaryDeployment$Outbound | null;
-  queuedDeploymentId: string | null;
-  advancementType: string;
-  stages: Array<CompleteRollingReleaseStages$Outbound>;
-  activeStage: CompleteRollingReleaseActiveStage$Outbound | null;
-  nextStage: CompleteRollingReleaseNextStage$Outbound | null;
-  startedAt: number;
-  updatedAt: number;
-  currentCanaryPercentage?: number | undefined;
-};
 
-/** @internal */
-export const CompleteRollingReleaseRollingRelease$outboundSchema: z.ZodType<
-  CompleteRollingReleaseRollingRelease$Outbound,
-  z.ZodTypeDef,
-  CompleteRollingReleaseRollingRelease
-> = z.object({
-  state: CompleteRollingReleaseState$outboundSchema,
-  substate: z.nullable(CompleteRollingReleaseSubstate$outboundSchema),
-  currentDeployment: z.nullable(
-    z.lazy(() => CompleteRollingReleaseCurrentDeployment$outboundSchema),
-  ),
-  canaryDeployment: z.nullable(
-    z.lazy(() => CompleteRollingReleaseCanaryDeployment$outboundSchema),
-  ),
-  queuedDeploymentId: z.nullable(z.string()),
-  advancementType: CompleteRollingReleaseAdvancementType$outboundSchema,
-  stages: z.array(z.lazy(() => CompleteRollingReleaseStages$outboundSchema)),
-  activeStage: z.nullable(
-    z.lazy(() => CompleteRollingReleaseActiveStage$outboundSchema),
-  ),
-  nextStage: z.nullable(
-    z.lazy(() => CompleteRollingReleaseNextStage$outboundSchema),
-  ),
-  startedAt: z.number(),
-  updatedAt: z.number(),
-  currentCanaryPercentage: z.number().optional(),
-});
-
-export function completeRollingReleaseRollingReleaseToJSON(
-  completeRollingReleaseRollingRelease: CompleteRollingReleaseRollingRelease,
-): string {
-  return JSON.stringify(
-    CompleteRollingReleaseRollingRelease$outboundSchema.parse(
-      completeRollingReleaseRollingRelease,
-    ),
-  );
-}
 export function completeRollingReleaseRollingReleaseFromJSON(
   jsonString: string,
 ): SafeParseResult<CompleteRollingReleaseRollingRelease, SDKValidationError> {
@@ -997,31 +695,7 @@ export const CompleteRollingReleaseResponseBody$inboundSchema: z.ZodType<
     z.lazy(() => CompleteRollingReleaseRollingRelease$inboundSchema),
   ),
 });
-/** @internal */
-export type CompleteRollingReleaseResponseBody$Outbound = {
-  rollingRelease: CompleteRollingReleaseRollingRelease$Outbound | null;
-};
 
-/** @internal */
-export const CompleteRollingReleaseResponseBody$outboundSchema: z.ZodType<
-  CompleteRollingReleaseResponseBody$Outbound,
-  z.ZodTypeDef,
-  CompleteRollingReleaseResponseBody
-> = z.object({
-  rollingRelease: z.nullable(
-    z.lazy(() => CompleteRollingReleaseRollingRelease$outboundSchema),
-  ),
-});
-
-export function completeRollingReleaseResponseBodyToJSON(
-  completeRollingReleaseResponseBody: CompleteRollingReleaseResponseBody,
-): string {
-  return JSON.stringify(
-    CompleteRollingReleaseResponseBody$outboundSchema.parse(
-      completeRollingReleaseResponseBody,
-    ),
-  );
-}
 export function completeRollingReleaseResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<CompleteRollingReleaseResponseBody, SDKValidationError> {

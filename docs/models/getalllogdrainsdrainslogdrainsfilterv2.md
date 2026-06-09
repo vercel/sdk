@@ -1,20 +1,11 @@
 # GetAllLogDrainsDrainsLogDrainsFilterV2
 
-
-## Supported Types
-
-### `models.GetAllLogDrainsFilterV21`
+## Example Usage
 
 ```typescript
-const value: models.GetAllLogDrainsFilterV21 = {
-  version: "v1",
-};
-```
+import { GetAllLogDrainsDrainsLogDrainsFilterV2 } from "@vercel/sdk/models/getalllogdrainsop.js";
 
-### `models.GetAllLogDrainsFilterV22`
-
-```typescript
-const value: models.GetAllLogDrainsFilterV22 = {
+let value: GetAllLogDrainsDrainsLogDrainsFilterV2 = {
   version: "v2",
   filter: {
     type: "basic",
@@ -22,3 +13,9 @@ const value: models.GetAllLogDrainsFilterV22 = {
 };
 ```
 
+## Fields
+
+| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `version`                                                                        | [models.GetAllLogDrainsDrainsVersion](../models/getalllogdrainsdrainsversion.md) | :heavy_check_mark:                                                               | N/A                                                                              |
+| `filter`                                                                         | *models.GetAllLogDrainsDrainsLogDrainsFilter*                                    | :heavy_check_mark:                                                               | N/A                                                                              |

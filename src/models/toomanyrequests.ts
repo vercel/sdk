@@ -63,10 +63,6 @@ export class TooManyRequests extends VercelError {
 export const TooManyRequestsCode$inboundSchema: z.ZodNativeEnum<
   typeof TooManyRequestsCode
 > = z.nativeEnum(TooManyRequestsCode);
-/** @internal */
-export const TooManyRequestsCode$outboundSchema: z.ZodNativeEnum<
-  typeof TooManyRequestsCode
-> = TooManyRequestsCode$inboundSchema;
 
 /** @internal */
 export const RetryAfter$inboundSchema: z.ZodType<
@@ -77,25 +73,7 @@ export const RetryAfter$inboundSchema: z.ZodType<
   value: types.number(),
   str: types.string(),
 });
-/** @internal */
-export type RetryAfter$Outbound = {
-  value: number;
-  str: string;
-};
 
-/** @internal */
-export const RetryAfter$outboundSchema: z.ZodType<
-  RetryAfter$Outbound,
-  z.ZodTypeDef,
-  RetryAfter
-> = z.object({
-  value: z.number(),
-  str: z.string(),
-});
-
-export function retryAfterToJSON(retryAfter: RetryAfter): string {
-  return JSON.stringify(RetryAfter$outboundSchema.parse(retryAfter));
-}
 export function retryAfterFromJSON(
   jsonString: string,
 ): SafeParseResult<RetryAfter, SDKValidationError> {
@@ -113,27 +91,7 @@ export const Limit$inboundSchema: z.ZodType<Limit, z.ZodTypeDef, unknown> = z
     remaining: types.number(),
     reset: types.number(),
   });
-/** @internal */
-export type Limit$Outbound = {
-  total: number;
-  remaining: number;
-  reset: number;
-};
 
-/** @internal */
-export const Limit$outboundSchema: z.ZodType<
-  Limit$Outbound,
-  z.ZodTypeDef,
-  Limit
-> = z.object({
-  total: z.number(),
-  remaining: z.number(),
-  reset: z.number(),
-});
-
-export function limitToJSON(limit: Limit): string {
-  return JSON.stringify(Limit$outboundSchema.parse(limit));
-}
 export function limitFromJSON(
   jsonString: string,
 ): SafeParseResult<Limit, SDKValidationError> {
@@ -166,27 +124,3 @@ export const TooManyRequests$inboundSchema: z.ZodType<
       body: v.body$,
     });
   });
-
-/** @internal */
-export type TooManyRequests$Outbound = {
-  status: number;
-  code: string;
-  message: string;
-  retryAfter: RetryAfter$Outbound;
-  limit: Limit$Outbound;
-};
-
-/** @internal */
-export const TooManyRequests$outboundSchema: z.ZodType<
-  TooManyRequests$Outbound,
-  z.ZodTypeDef,
-  TooManyRequests
-> = z.instanceof(TooManyRequests)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    status: z.number(),
-    code: TooManyRequestsCode$outboundSchema,
-    message: z.string(),
-    retryAfter: z.lazy(() => RetryAfter$outboundSchema),
-    limit: z.lazy(() => Limit$outboundSchema),
-  }));

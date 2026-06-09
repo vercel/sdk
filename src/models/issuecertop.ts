@@ -37,14 +37,6 @@ export type IssueCertResponseBody = {
 };
 
 /** @internal */
-export const IssueCertRequestBody$inboundSchema: z.ZodType<
-  IssueCertRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  cns: types.optional(z.array(types.string())),
-});
-/** @internal */
 export type IssueCertRequestBody$Outbound = {
   cns?: Array<string> | undefined;
 };
@@ -65,30 +57,7 @@ export function issueCertRequestBodyToJSON(
     IssueCertRequestBody$outboundSchema.parse(issueCertRequestBody),
   );
 }
-export function issueCertRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<IssueCertRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => IssueCertRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'IssueCertRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const IssueCertRequest$inboundSchema: z.ZodType<
-  IssueCertRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-  RequestBody: types.optional(z.lazy(() => IssueCertRequestBody$inboundSchema)),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 /** @internal */
 export type IssueCertRequest$Outbound = {
   teamId?: string | undefined;
@@ -118,15 +87,6 @@ export function issueCertRequestToJSON(
     IssueCertRequest$outboundSchema.parse(issueCertRequest),
   );
 }
-export function issueCertRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<IssueCertRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => IssueCertRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'IssueCertRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const IssueCertResponseBody$inboundSchema: z.ZodType<
@@ -140,35 +100,7 @@ export const IssueCertResponseBody$inboundSchema: z.ZodType<
   autoRenew: types.boolean(),
   cns: z.array(types.string()),
 });
-/** @internal */
-export type IssueCertResponseBody$Outbound = {
-  id: string;
-  createdAt: number;
-  expiresAt: number;
-  autoRenew: boolean;
-  cns: Array<string>;
-};
 
-/** @internal */
-export const IssueCertResponseBody$outboundSchema: z.ZodType<
-  IssueCertResponseBody$Outbound,
-  z.ZodTypeDef,
-  IssueCertResponseBody
-> = z.object({
-  id: z.string(),
-  createdAt: z.number(),
-  expiresAt: z.number(),
-  autoRenew: z.boolean(),
-  cns: z.array(z.string()),
-});
-
-export function issueCertResponseBodyToJSON(
-  issueCertResponseBody: IssueCertResponseBody,
-): string {
-  return JSON.stringify(
-    IssueCertResponseBody$outboundSchema.parse(issueCertResponseBody),
-  );
-}
 export function issueCertResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<IssueCertResponseBody, SDKValidationError> {

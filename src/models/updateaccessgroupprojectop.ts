@@ -66,22 +66,10 @@ export type UpdateAccessGroupProjectResponseBody = {
 };
 
 /** @internal */
-export const UpdateAccessGroupProjectRole$inboundSchema: z.ZodNativeEnum<
-  typeof UpdateAccessGroupProjectRole
-> = z.nativeEnum(UpdateAccessGroupProjectRole);
-/** @internal */
 export const UpdateAccessGroupProjectRole$outboundSchema: z.ZodNativeEnum<
   typeof UpdateAccessGroupProjectRole
-> = UpdateAccessGroupProjectRole$inboundSchema;
+> = z.nativeEnum(UpdateAccessGroupProjectRole);
 
-/** @internal */
-export const UpdateAccessGroupProjectRequestBody$inboundSchema: z.ZodType<
-  UpdateAccessGroupProjectRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  role: UpdateAccessGroupProjectRole$inboundSchema,
-});
 /** @internal */
 export type UpdateAccessGroupProjectRequestBody$Outbound = {
   role: string;
@@ -105,33 +93,7 @@ export function updateAccessGroupProjectRequestBodyToJSON(
     ),
   );
 }
-export function updateAccessGroupProjectRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateAccessGroupProjectRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      UpdateAccessGroupProjectRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateAccessGroupProjectRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateAccessGroupProjectRequest$inboundSchema: z.ZodType<
-  UpdateAccessGroupProjectRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  accessGroupIdOrName: types.string(),
-  projectId: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-  RequestBody: z.lazy(() => UpdateAccessGroupProjectRequestBody$inboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 /** @internal */
 export type UpdateAccessGroupProjectRequest$Outbound = {
   accessGroupIdOrName: string;
@@ -167,24 +129,11 @@ export function updateAccessGroupProjectRequestToJSON(
     ),
   );
 }
-export function updateAccessGroupProjectRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateAccessGroupProjectRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateAccessGroupProjectRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateAccessGroupProjectRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const UpdateAccessGroupProjectAccessGroupsRole$inboundSchema:
   z.ZodNativeEnum<typeof UpdateAccessGroupProjectAccessGroupsRole> = z
     .nativeEnum(UpdateAccessGroupProjectAccessGroupsRole);
-/** @internal */
-export const UpdateAccessGroupProjectAccessGroupsRole$outboundSchema:
-  z.ZodNativeEnum<typeof UpdateAccessGroupProjectAccessGroupsRole> =
-    UpdateAccessGroupProjectAccessGroupsRole$inboundSchema;
 
 /** @internal */
 export const UpdateAccessGroupProjectResponseBody$inboundSchema: z.ZodType<
@@ -199,39 +148,7 @@ export const UpdateAccessGroupProjectResponseBody$inboundSchema: z.ZodType<
   createdAt: types.string(),
   updatedAt: types.string(),
 });
-/** @internal */
-export type UpdateAccessGroupProjectResponseBody$Outbound = {
-  teamId: string;
-  accessGroupId: string;
-  projectId: string;
-  role: string;
-  createdAt: string;
-  updatedAt: string;
-};
 
-/** @internal */
-export const UpdateAccessGroupProjectResponseBody$outboundSchema: z.ZodType<
-  UpdateAccessGroupProjectResponseBody$Outbound,
-  z.ZodTypeDef,
-  UpdateAccessGroupProjectResponseBody
-> = z.object({
-  teamId: z.string(),
-  accessGroupId: z.string(),
-  projectId: z.string(),
-  role: UpdateAccessGroupProjectAccessGroupsRole$outboundSchema,
-  createdAt: z.string(),
-  updatedAt: z.string(),
-});
-
-export function updateAccessGroupProjectResponseBodyToJSON(
-  updateAccessGroupProjectResponseBody: UpdateAccessGroupProjectResponseBody,
-): string {
-  return JSON.stringify(
-    UpdateAccessGroupProjectResponseBody$outboundSchema.parse(
-      updateAccessGroupProjectResponseBody,
-    ),
-  );
-}
 export function updateAccessGroupProjectResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateAccessGroupProjectResponseBody, SDKValidationError> {

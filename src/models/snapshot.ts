@@ -88,19 +88,11 @@ export type Snapshot = {
 export const SnapshotStatus$inboundSchema: z.ZodNativeEnum<
   typeof SnapshotStatus
 > = z.nativeEnum(SnapshotStatus);
-/** @internal */
-export const SnapshotStatus$outboundSchema: z.ZodNativeEnum<
-  typeof SnapshotStatus
-> = SnapshotStatus$inboundSchema;
 
 /** @internal */
 export const CreationMethod$inboundSchema: z.ZodNativeEnum<
   typeof CreationMethod
 > = z.nativeEnum(CreationMethod);
-/** @internal */
-export const CreationMethod$outboundSchema: z.ZodNativeEnum<
-  typeof CreationMethod
-> = CreationMethod$inboundSchema;
 
 /** @internal */
 export const Snapshot$inboundSchema: z.ZodType<
@@ -120,43 +112,7 @@ export const Snapshot$inboundSchema: z.ZodType<
   creationMethod: types.optional(CreationMethod$inboundSchema),
   parentId: types.optional(types.string()),
 });
-/** @internal */
-export type Snapshot$Outbound = {
-  id: string;
-  sourceSessionId: string;
-  region: string;
-  status: string;
-  sizeBytes: number;
-  expiresAt?: number | undefined;
-  createdAt: number;
-  updatedAt: number;
-  lastUsedAt: number;
-  creationMethod?: string | undefined;
-  parentId?: string | undefined;
-};
 
-/** @internal */
-export const Snapshot$outboundSchema: z.ZodType<
-  Snapshot$Outbound,
-  z.ZodTypeDef,
-  Snapshot
-> = z.object({
-  id: z.string(),
-  sourceSessionId: z.string(),
-  region: z.string(),
-  status: SnapshotStatus$outboundSchema,
-  sizeBytes: z.number(),
-  expiresAt: z.number().optional(),
-  createdAt: z.number(),
-  updatedAt: z.number(),
-  lastUsedAt: z.number(),
-  creationMethod: CreationMethod$outboundSchema.optional(),
-  parentId: z.string().optional(),
-});
-
-export function snapshotToJSON(snapshot: Snapshot): string {
-  return JSON.stringify(Snapshot$outboundSchema.parse(snapshot));
-}
 export function snapshotFromJSON(
   jsonString: string,
 ): SafeParseResult<Snapshot, SDKValidationError> {

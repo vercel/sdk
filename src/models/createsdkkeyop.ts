@@ -4,11 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
-import { Result as SafeParseResult } from "../types/fp.js";
-import * as types from "../types/primitives.js";
-import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export const SDKKeyType = {
   Server: "server",
@@ -40,22 +36,9 @@ export type CreateSDKKeyRequest = {
 };
 
 /** @internal */
-export const SDKKeyType$inboundSchema: z.ZodNativeEnum<typeof SDKKeyType> = z
+export const SDKKeyType$outboundSchema: z.ZodNativeEnum<typeof SDKKeyType> = z
   .nativeEnum(SDKKeyType);
-/** @internal */
-export const SDKKeyType$outboundSchema: z.ZodNativeEnum<typeof SDKKeyType> =
-  SDKKeyType$inboundSchema;
 
-/** @internal */
-export const CreateSDKKeyRequestBody$inboundSchema: z.ZodType<
-  CreateSDKKeyRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  sdkKeyType: SDKKeyType$inboundSchema,
-  environment: types.string(),
-  label: types.optional(types.string()),
-});
 /** @internal */
 export type CreateSDKKeyRequestBody$Outbound = {
   sdkKeyType: string;
@@ -81,33 +64,7 @@ export function createSDKKeyRequestBodyToJSON(
     CreateSDKKeyRequestBody$outboundSchema.parse(createSDKKeyRequestBody),
   );
 }
-export function createSDKKeyRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateSDKKeyRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateSDKKeyRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateSDKKeyRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const CreateSDKKeyRequest$inboundSchema: z.ZodType<
-  CreateSDKKeyRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  projectIdOrName: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-  RequestBody: types.optional(
-    z.lazy(() => CreateSDKKeyRequestBody$inboundSchema),
-  ),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 /** @internal */
 export type CreateSDKKeyRequest$Outbound = {
   projectIdOrName: string;
@@ -137,14 +94,5 @@ export function createSDKKeyRequestToJSON(
 ): string {
   return JSON.stringify(
     CreateSDKKeyRequest$outboundSchema.parse(createSDKKeyRequest),
-  );
-}
-export function createSDKKeyRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateSDKKeyRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateSDKKeyRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateSDKKeyRequest' from JSON`,
   );
 }

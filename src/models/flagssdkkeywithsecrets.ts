@@ -49,10 +49,6 @@ export type FlagsSDKKeyWithSecrets = {
 export const FlagsSDKKeyWithSecretsType$inboundSchema: z.ZodNativeEnum<
   typeof FlagsSDKKeyWithSecretsType
 > = z.nativeEnum(FlagsSDKKeyWithSecretsType);
-/** @internal */
-export const FlagsSDKKeyWithSecretsType$outboundSchema: z.ZodNativeEnum<
-  typeof FlagsSDKKeyWithSecretsType
-> = FlagsSDKKeyWithSecretsType$inboundSchema;
 
 /** @internal */
 export const FlagsSDKKeyWithSecrets$inboundSchema: z.ZodType<
@@ -73,49 +69,7 @@ export const FlagsSDKKeyWithSecrets$inboundSchema: z.ZodType<
   keyValue: types.string(),
   tokenValue: types.optional(types.string()),
 });
-/** @internal */
-export type FlagsSDKKeyWithSecrets$Outbound = {
-  hashKey: string;
-  projectId: string;
-  type: string;
-  environment: string;
-  createdBy: string;
-  createdAt: number;
-  updatedAt: number;
-  label?: string | undefined;
-  deletedAt?: number | undefined;
-  partialKeyValue: string;
-  keyValue: string;
-  tokenValue?: string | undefined;
-};
 
-/** @internal */
-export const FlagsSDKKeyWithSecrets$outboundSchema: z.ZodType<
-  FlagsSDKKeyWithSecrets$Outbound,
-  z.ZodTypeDef,
-  FlagsSDKKeyWithSecrets
-> = z.object({
-  hashKey: z.string(),
-  projectId: z.string(),
-  type: FlagsSDKKeyWithSecretsType$outboundSchema,
-  environment: z.string(),
-  createdBy: z.string(),
-  createdAt: z.number(),
-  updatedAt: z.number(),
-  label: z.string().optional(),
-  deletedAt: z.number().optional(),
-  partialKeyValue: z.string(),
-  keyValue: z.string(),
-  tokenValue: z.string().optional(),
-});
-
-export function flagsSDKKeyWithSecretsToJSON(
-  flagsSDKKeyWithSecrets: FlagsSDKKeyWithSecrets,
-): string {
-  return JSON.stringify(
-    FlagsSDKKeyWithSecrets$outboundSchema.parse(flagsSDKKeyWithSecrets),
-  );
-}
 export function flagsSDKKeyWithSecretsFromJSON(
   jsonString: string,
 ): SafeParseResult<FlagsSDKKeyWithSecrets, SDKValidationError> {

@@ -43,9 +43,6 @@ export class Unauthorized extends VercelError {
 export const Code$inboundSchema: z.ZodNativeEnum<typeof Code> = z.nativeEnum(
   Code,
 );
-/** @internal */
-export const Code$outboundSchema: z.ZodNativeEnum<typeof Code> =
-  Code$inboundSchema;
 
 /** @internal */
 export const Unauthorized$inboundSchema: z.ZodType<
@@ -67,23 +64,3 @@ export const Unauthorized$inboundSchema: z.ZodType<
       body: v.body$,
     });
   });
-
-/** @internal */
-export type Unauthorized$Outbound = {
-  status: number;
-  code: string;
-  message: string;
-};
-
-/** @internal */
-export const Unauthorized$outboundSchema: z.ZodType<
-  Unauthorized$Outbound,
-  z.ZodTypeDef,
-  Unauthorized
-> = z.instanceof(Unauthorized)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    status: z.number(),
-    code: Code$outboundSchema,
-    message: z.string(),
-  }));

@@ -4,11 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
-import { Result as SafeParseResult } from "../types/fp.js";
-import * as types from "../types/primitives.js";
-import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export const EnvVarEnvironments = {
   Production: "production",
@@ -38,27 +34,10 @@ export type ConnectIntegrationResourceToProjectRequest = {
 };
 
 /** @internal */
-export const EnvVarEnvironments$inboundSchema: z.ZodNativeEnum<
-  typeof EnvVarEnvironments
-> = z.nativeEnum(EnvVarEnvironments);
-/** @internal */
 export const EnvVarEnvironments$outboundSchema: z.ZodNativeEnum<
   typeof EnvVarEnvironments
-> = EnvVarEnvironments$inboundSchema;
+> = z.nativeEnum(EnvVarEnvironments);
 
-/** @internal */
-export const ConnectIntegrationResourceToProjectRequestBody$inboundSchema:
-  z.ZodType<
-    ConnectIntegrationResourceToProjectRequestBody,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    projectId: types.string(),
-    envVarEnvironments: types.optional(
-      z.array(EnvVarEnvironments$inboundSchema),
-    ),
-    makeEnvVarsSensitive: types.optional(types.boolean()),
-  });
 /** @internal */
 export type ConnectIntegrationResourceToProjectRequestBody$Outbound = {
   projectId: string;
@@ -88,40 +67,7 @@ export function connectIntegrationResourceToProjectRequestBodyToJSON(
     ),
   );
 }
-export function connectIntegrationResourceToProjectRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  ConnectIntegrationResourceToProjectRequestBody,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      ConnectIntegrationResourceToProjectRequestBody$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'ConnectIntegrationResourceToProjectRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const ConnectIntegrationResourceToProjectRequest$inboundSchema:
-  z.ZodType<ConnectIntegrationResourceToProjectRequest, z.ZodTypeDef, unknown> =
-    z.object({
-      integrationConfigurationId: types.string(),
-      resourceId: types.string(),
-      teamId: types.optional(types.string()),
-      slug: types.optional(types.string()),
-      RequestBody: types.optional(
-        z.lazy(() =>
-          ConnectIntegrationResourceToProjectRequestBody$inboundSchema
-        ),
-      ),
-    }).transform((v) => {
-      return remap$(v, {
-        "RequestBody": "requestBody",
-      });
-    });
 /** @internal */
 export type ConnectIntegrationResourceToProjectRequest$Outbound = {
   integrationConfigurationId: string;
@@ -161,20 +107,5 @@ export function connectIntegrationResourceToProjectRequestToJSON(
     ConnectIntegrationResourceToProjectRequest$outboundSchema.parse(
       connectIntegrationResourceToProjectRequest,
     ),
-  );
-}
-export function connectIntegrationResourceToProjectRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  ConnectIntegrationResourceToProjectRequest,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      ConnectIntegrationResourceToProjectRequest$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'ConnectIntegrationResourceToProjectRequest' from JSON`,
   );
 }

@@ -121,12 +121,6 @@ export type UpdateProjectProtectionBypassResponseBody = {
 };
 
 /** @internal */
-export const Revoke$inboundSchema: z.ZodType<Revoke, z.ZodTypeDef, unknown> = z
-  .object({
-    secret: types.string(),
-    regenerate: types.boolean(),
-  });
-/** @internal */
 export type Revoke$Outbound = {
   secret: string;
   regenerate: boolean;
@@ -145,25 +139,7 @@ export const Revoke$outboundSchema: z.ZodType<
 export function revokeToJSON(revoke: Revoke): string {
   return JSON.stringify(Revoke$outboundSchema.parse(revoke));
 }
-export function revokeFromJSON(
-  jsonString: string,
-): SafeParseResult<Revoke, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Revoke$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Revoke' from JSON`,
-  );
-}
 
-/** @internal */
-export const Generate$inboundSchema: z.ZodType<
-  Generate,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  secret: types.optional(types.string()),
-  note: types.optional(types.string()),
-});
 /** @internal */
 export type Generate$Outbound = {
   secret?: string | undefined;
@@ -183,23 +159,7 @@ export const Generate$outboundSchema: z.ZodType<
 export function generateToJSON(generate: Generate): string {
   return JSON.stringify(Generate$outboundSchema.parse(generate));
 }
-export function generateFromJSON(
-  jsonString: string,
-): SafeParseResult<Generate, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Generate$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Generate' from JSON`,
-  );
-}
 
-/** @internal */
-export const Update$inboundSchema: z.ZodType<Update, z.ZodTypeDef, unknown> = z
-  .object({
-    secret: types.string(),
-    isEnvVar: types.optional(types.boolean()),
-    note: types.optional(types.string()),
-  });
 /** @internal */
 export type Update$Outbound = {
   secret: string;
@@ -221,26 +181,7 @@ export const Update$outboundSchema: z.ZodType<
 export function updateToJSON(update: Update): string {
   return JSON.stringify(Update$outboundSchema.parse(update));
 }
-export function updateFromJSON(
-  jsonString: string,
-): SafeParseResult<Update, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Update$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Update' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateProjectProtectionBypassRequestBody$inboundSchema: z.ZodType<
-  UpdateProjectProtectionBypassRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  revoke: types.optional(z.lazy(() => Revoke$inboundSchema)),
-  generate: types.optional(z.lazy(() => Generate$inboundSchema)),
-  update: types.optional(z.lazy(() => Update$inboundSchema)),
-});
 /** @internal */
 export type UpdateProjectProtectionBypassRequestBody$Outbound = {
   revoke?: Revoke$Outbound | undefined;
@@ -269,39 +210,7 @@ export function updateProjectProtectionBypassRequestBodyToJSON(
     ),
   );
 }
-export function updateProjectProtectionBypassRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  UpdateProjectProtectionBypassRequestBody,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      UpdateProjectProtectionBypassRequestBody$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'UpdateProjectProtectionBypassRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateProjectProtectionBypassRequest$inboundSchema: z.ZodType<
-  UpdateProjectProtectionBypassRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  idOrName: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-  RequestBody: z.lazy(() =>
-    UpdateProjectProtectionBypassRequestBody$inboundSchema
-  ),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 /** @internal */
 export type UpdateProjectProtectionBypassRequest$Outbound = {
   idOrName: string;
@@ -337,16 +246,6 @@ export function updateProjectProtectionBypassRequestToJSON(
     ),
   );
 }
-export function updateProjectProtectionBypassRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateProjectProtectionBypassRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      UpdateProjectProtectionBypassRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateProjectProtectionBypassRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const UpdateProjectProtectionBypassProtectionBypass2$inboundSchema:
@@ -361,39 +260,7 @@ export const UpdateProjectProtectionBypassProtectionBypass2$inboundSchema:
     isEnvVar: types.optional(types.boolean()),
     note: types.optional(types.string()),
   });
-/** @internal */
-export type UpdateProjectProtectionBypassProtectionBypass2$Outbound = {
-  createdAt: number;
-  createdBy: string;
-  scope: "automation-bypass";
-  isEnvVar?: boolean | undefined;
-  note?: string | undefined;
-};
 
-/** @internal */
-export const UpdateProjectProtectionBypassProtectionBypass2$outboundSchema:
-  z.ZodType<
-    UpdateProjectProtectionBypassProtectionBypass2$Outbound,
-    z.ZodTypeDef,
-    UpdateProjectProtectionBypassProtectionBypass2
-  > = z.object({
-    createdAt: z.number(),
-    createdBy: z.string(),
-    scope: z.literal("automation-bypass"),
-    isEnvVar: z.boolean().optional(),
-    note: z.string().optional(),
-  });
-
-export function updateProjectProtectionBypassProtectionBypass2ToJSON(
-  updateProjectProtectionBypassProtectionBypass2:
-    UpdateProjectProtectionBypassProtectionBypass2,
-): string {
-  return JSON.stringify(
-    UpdateProjectProtectionBypassProtectionBypass2$outboundSchema.parse(
-      updateProjectProtectionBypassProtectionBypass2,
-    ),
-  );
-}
 export function updateProjectProtectionBypassProtectionBypass2FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -423,39 +290,7 @@ export const UpdateProjectProtectionBypassProtectionBypass1$inboundSchema:
     integrationId: types.string(),
     configurationId: types.string(),
   });
-/** @internal */
-export type UpdateProjectProtectionBypassProtectionBypass1$Outbound = {
-  createdAt: number;
-  createdBy: string;
-  scope: "integration-automation-bypass";
-  integrationId: string;
-  configurationId: string;
-};
 
-/** @internal */
-export const UpdateProjectProtectionBypassProtectionBypass1$outboundSchema:
-  z.ZodType<
-    UpdateProjectProtectionBypassProtectionBypass1$Outbound,
-    z.ZodTypeDef,
-    UpdateProjectProtectionBypassProtectionBypass1
-  > = z.object({
-    createdAt: z.number(),
-    createdBy: z.string(),
-    scope: z.literal("integration-automation-bypass"),
-    integrationId: z.string(),
-    configurationId: z.string(),
-  });
-
-export function updateProjectProtectionBypassProtectionBypass1ToJSON(
-  updateProjectProtectionBypassProtectionBypass1:
-    UpdateProjectProtectionBypassProtectionBypass1,
-): string {
-  return JSON.stringify(
-    UpdateProjectProtectionBypassProtectionBypass1$outboundSchema.parse(
-      updateProjectProtectionBypassProtectionBypass1,
-    ),
-  );
-}
 export function updateProjectProtectionBypassProtectionBypass1FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -482,32 +317,7 @@ export const UpdateProjectProtectionBypassProtectionBypass$inboundSchema:
     z.lazy(() => UpdateProjectProtectionBypassProtectionBypass1$inboundSchema),
     z.lazy(() => UpdateProjectProtectionBypassProtectionBypass2$inboundSchema),
   ]);
-/** @internal */
-export type UpdateProjectProtectionBypassProtectionBypass$Outbound =
-  | UpdateProjectProtectionBypassProtectionBypass1$Outbound
-  | UpdateProjectProtectionBypassProtectionBypass2$Outbound;
 
-/** @internal */
-export const UpdateProjectProtectionBypassProtectionBypass$outboundSchema:
-  z.ZodType<
-    UpdateProjectProtectionBypassProtectionBypass$Outbound,
-    z.ZodTypeDef,
-    UpdateProjectProtectionBypassProtectionBypass
-  > = z.union([
-    z.lazy(() => UpdateProjectProtectionBypassProtectionBypass1$outboundSchema),
-    z.lazy(() => UpdateProjectProtectionBypassProtectionBypass2$outboundSchema),
-  ]);
-
-export function updateProjectProtectionBypassProtectionBypassToJSON(
-  updateProjectProtectionBypassProtectionBypass:
-    UpdateProjectProtectionBypassProtectionBypass,
-): string {
-  return JSON.stringify(
-    UpdateProjectProtectionBypassProtectionBypass$outboundSchema.parse(
-      updateProjectProtectionBypassProtectionBypass,
-    ),
-  );
-}
 export function updateProjectProtectionBypassProtectionBypassFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -541,44 +351,7 @@ export const UpdateProjectProtectionBypassResponseBody$inboundSchema: z.ZodType<
     ])),
   ),
 });
-/** @internal */
-export type UpdateProjectProtectionBypassResponseBody$Outbound = {
-  protectionBypass?: {
-    [k: string]:
-      | UpdateProjectProtectionBypassProtectionBypass1$Outbound
-      | UpdateProjectProtectionBypassProtectionBypass2$Outbound;
-  } | undefined;
-};
 
-/** @internal */
-export const UpdateProjectProtectionBypassResponseBody$outboundSchema:
-  z.ZodType<
-    UpdateProjectProtectionBypassResponseBody$Outbound,
-    z.ZodTypeDef,
-    UpdateProjectProtectionBypassResponseBody
-  > = z.object({
-    protectionBypass: z.record(
-      z.union([
-        z.lazy(() =>
-          UpdateProjectProtectionBypassProtectionBypass1$outboundSchema
-        ),
-        z.lazy(() =>
-          UpdateProjectProtectionBypassProtectionBypass2$outboundSchema
-        ),
-      ]),
-    ).optional(),
-  });
-
-export function updateProjectProtectionBypassResponseBodyToJSON(
-  updateProjectProtectionBypassResponseBody:
-    UpdateProjectProtectionBypassResponseBody,
-): string {
-  return JSON.stringify(
-    UpdateProjectProtectionBypassResponseBody$outboundSchema.parse(
-      updateProjectProtectionBypassResponseBody,
-    ),
-  );
-}
 export function updateProjectProtectionBypassResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<

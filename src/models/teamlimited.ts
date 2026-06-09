@@ -272,18 +272,11 @@ export type TeamLimited = {
 /** @internal */
 export const LimitedBy$inboundSchema: z.ZodNativeEnum<typeof LimitedBy> = z
   .nativeEnum(LimitedBy);
-/** @internal */
-export const LimitedBy$outboundSchema: z.ZodNativeEnum<typeof LimitedBy> =
-  LimitedBy$inboundSchema;
 
 /** @internal */
 export const TeamLimitedSyncState$inboundSchema: z.ZodNativeEnum<
   typeof TeamLimitedSyncState
 > = z.nativeEnum(TeamLimitedSyncState);
-/** @internal */
-export const TeamLimitedSyncState$outboundSchema: z.ZodNativeEnum<
-  typeof TeamLimitedSyncState
-> = TeamLimitedSyncState$inboundSchema;
 
 /** @internal */
 export const TeamLimitedConnection$inboundSchema: z.ZodType<
@@ -299,39 +292,7 @@ export const TeamLimitedConnection$inboundSchema: z.ZodType<
   lastSyncedAt: types.optional(types.number()),
   syncState: types.optional(TeamLimitedSyncState$inboundSchema),
 });
-/** @internal */
-export type TeamLimitedConnection$Outbound = {
-  type: string;
-  status: string;
-  state: string;
-  connectedAt: number;
-  lastReceivedWebhookEvent?: number | undefined;
-  lastSyncedAt?: number | undefined;
-  syncState?: string | undefined;
-};
 
-/** @internal */
-export const TeamLimitedConnection$outboundSchema: z.ZodType<
-  TeamLimitedConnection$Outbound,
-  z.ZodTypeDef,
-  TeamLimitedConnection
-> = z.object({
-  type: z.string(),
-  status: z.string(),
-  state: z.string(),
-  connectedAt: z.number(),
-  lastReceivedWebhookEvent: z.number().optional(),
-  lastSyncedAt: z.number().optional(),
-  syncState: TeamLimitedSyncState$outboundSchema.optional(),
-});
-
-export function teamLimitedConnectionToJSON(
-  teamLimitedConnection: TeamLimitedConnection,
-): string {
-  return JSON.stringify(
-    TeamLimitedConnection$outboundSchema.parse(teamLimitedConnection),
-  );
-}
 export function teamLimitedConnectionFromJSON(
   jsonString: string,
 ): SafeParseResult<TeamLimitedConnection, SDKValidationError> {
@@ -346,10 +307,6 @@ export function teamLimitedConnectionFromJSON(
 export const TeamLimitedSamlSyncState$inboundSchema: z.ZodNativeEnum<
   typeof TeamLimitedSamlSyncState
 > = z.nativeEnum(TeamLimitedSamlSyncState);
-/** @internal */
-export const TeamLimitedSamlSyncState$outboundSchema: z.ZodNativeEnum<
-  typeof TeamLimitedSamlSyncState
-> = TeamLimitedSamlSyncState$inboundSchema;
 
 /** @internal */
 export const TeamLimitedDirectory$inboundSchema: z.ZodType<
@@ -364,37 +321,7 @@ export const TeamLimitedDirectory$inboundSchema: z.ZodType<
   lastSyncedAt: types.optional(types.number()),
   syncState: types.optional(TeamLimitedSamlSyncState$inboundSchema),
 });
-/** @internal */
-export type TeamLimitedDirectory$Outbound = {
-  type: string;
-  state: string;
-  connectedAt: number;
-  lastReceivedWebhookEvent?: number | undefined;
-  lastSyncedAt?: number | undefined;
-  syncState?: string | undefined;
-};
 
-/** @internal */
-export const TeamLimitedDirectory$outboundSchema: z.ZodType<
-  TeamLimitedDirectory$Outbound,
-  z.ZodTypeDef,
-  TeamLimitedDirectory
-> = z.object({
-  type: z.string(),
-  state: z.string(),
-  connectedAt: z.number(),
-  lastReceivedWebhookEvent: z.number().optional(),
-  lastSyncedAt: z.number().optional(),
-  syncState: TeamLimitedSamlSyncState$outboundSchema.optional(),
-});
-
-export function teamLimitedDirectoryToJSON(
-  teamLimitedDirectory: TeamLimitedDirectory,
-): string {
-  return JSON.stringify(
-    TeamLimitedDirectory$outboundSchema.parse(teamLimitedDirectory),
-  );
-}
 export function teamLimitedDirectoryFromJSON(
   jsonString: string,
 ): SafeParseResult<TeamLimitedDirectory, SDKValidationError> {
@@ -415,29 +342,7 @@ export const TeamLimitedSaml$inboundSchema: z.ZodType<
   directory: types.optional(z.lazy(() => TeamLimitedDirectory$inboundSchema)),
   enforced: types.boolean(),
 });
-/** @internal */
-export type TeamLimitedSaml$Outbound = {
-  connection?: TeamLimitedConnection$Outbound | undefined;
-  directory?: TeamLimitedDirectory$Outbound | undefined;
-  enforced: boolean;
-};
 
-/** @internal */
-export const TeamLimitedSaml$outboundSchema: z.ZodType<
-  TeamLimitedSaml$Outbound,
-  z.ZodTypeDef,
-  TeamLimitedSaml
-> = z.object({
-  connection: z.lazy(() => TeamLimitedConnection$outboundSchema).optional(),
-  directory: z.lazy(() => TeamLimitedDirectory$outboundSchema).optional(),
-  enforced: z.boolean(),
-});
-
-export function teamLimitedSamlToJSON(
-  teamLimitedSaml: TeamLimitedSaml,
-): string {
-  return JSON.stringify(TeamLimitedSaml$outboundSchema.parse(teamLimitedSaml));
-}
 export function teamLimitedSamlFromJSON(
   jsonString: string,
 ): SafeParseResult<TeamLimitedSaml, SDKValidationError> {
@@ -456,27 +361,7 @@ export const TeamLimitedEntitlements$inboundSchema: z.ZodType<
 > = z.object({
   entitlement: types.string(),
 });
-/** @internal */
-export type TeamLimitedEntitlements$Outbound = {
-  entitlement: string;
-};
 
-/** @internal */
-export const TeamLimitedEntitlements$outboundSchema: z.ZodType<
-  TeamLimitedEntitlements$Outbound,
-  z.ZodTypeDef,
-  TeamLimitedEntitlements
-> = z.object({
-  entitlement: z.string(),
-});
-
-export function teamLimitedEntitlementsToJSON(
-  teamLimitedEntitlements: TeamLimitedEntitlements,
-): string {
-  return JSON.stringify(
-    TeamLimitedEntitlements$outboundSchema.parse(teamLimitedEntitlements),
-  );
-}
 export function teamLimitedEntitlementsFromJSON(
   jsonString: string,
 ): SafeParseResult<TeamLimitedEntitlements, SDKValidationError> {
@@ -491,37 +376,21 @@ export function teamLimitedEntitlementsFromJSON(
 export const TeamLimitedRole$inboundSchema: z.ZodNativeEnum<
   typeof TeamLimitedRole
 > = z.nativeEnum(TeamLimitedRole);
-/** @internal */
-export const TeamLimitedRole$outboundSchema: z.ZodNativeEnum<
-  typeof TeamLimitedRole
-> = TeamLimitedRole$inboundSchema;
 
 /** @internal */
 export const TeamLimitedTeamRoles$inboundSchema: z.ZodNativeEnum<
   typeof TeamLimitedTeamRoles
 > = z.nativeEnum(TeamLimitedTeamRoles);
-/** @internal */
-export const TeamLimitedTeamRoles$outboundSchema: z.ZodNativeEnum<
-  typeof TeamLimitedTeamRoles
-> = TeamLimitedTeamRoles$inboundSchema;
 
 /** @internal */
 export const TeamLimitedTeamPermissions$inboundSchema: z.ZodNativeEnum<
   typeof TeamLimitedTeamPermissions
 > = z.nativeEnum(TeamLimitedTeamPermissions);
-/** @internal */
-export const TeamLimitedTeamPermissions$outboundSchema: z.ZodNativeEnum<
-  typeof TeamLimitedTeamPermissions
-> = TeamLimitedTeamPermissions$inboundSchema;
 
 /** @internal */
 export const TeamLimitedOrigin$inboundSchema: z.ZodNativeEnum<
   typeof TeamLimitedOrigin
 > = z.nativeEnum(TeamLimitedOrigin);
-/** @internal */
-export const TeamLimitedOrigin$outboundSchema: z.ZodNativeEnum<
-  typeof TeamLimitedOrigin
-> = TeamLimitedOrigin$inboundSchema;
 
 /** @internal */
 export const TeamLimitedGitUserId$inboundSchema: z.ZodType<
@@ -529,23 +398,7 @@ export const TeamLimitedGitUserId$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = smartUnion([types.string(), types.number()]);
-/** @internal */
-export type TeamLimitedGitUserId$Outbound = string | number;
 
-/** @internal */
-export const TeamLimitedGitUserId$outboundSchema: z.ZodType<
-  TeamLimitedGitUserId$Outbound,
-  z.ZodTypeDef,
-  TeamLimitedGitUserId
-> = smartUnion([z.string(), z.number()]);
-
-export function teamLimitedGitUserIdToJSON(
-  teamLimitedGitUserId: TeamLimitedGitUserId,
-): string {
-  return JSON.stringify(
-    TeamLimitedGitUserId$outboundSchema.parse(teamLimitedGitUserId),
-  );
-}
 export function teamLimitedGitUserIdFromJSON(
   jsonString: string,
 ): SafeParseResult<TeamLimitedGitUserId, SDKValidationError> {
@@ -574,47 +427,7 @@ export const TeamLimitedJoinedFrom$inboundSchema: z.ZodType<
   dsyncUserId: types.optional(types.string()),
   dsyncConnectedAt: types.optional(types.number()),
 });
-/** @internal */
-export type TeamLimitedJoinedFrom$Outbound = {
-  origin: string;
-  commitId?: string | undefined;
-  repoId?: string | undefined;
-  repoPath?: string | undefined;
-  gitUserId?: string | number | undefined;
-  gitUserLogin?: string | undefined;
-  ssoUserId?: string | undefined;
-  ssoConnectedAt?: number | undefined;
-  idpUserId?: string | undefined;
-  dsyncUserId?: string | undefined;
-  dsyncConnectedAt?: number | undefined;
-};
 
-/** @internal */
-export const TeamLimitedJoinedFrom$outboundSchema: z.ZodType<
-  TeamLimitedJoinedFrom$Outbound,
-  z.ZodTypeDef,
-  TeamLimitedJoinedFrom
-> = z.object({
-  origin: TeamLimitedOrigin$outboundSchema,
-  commitId: z.string().optional(),
-  repoId: z.string().optional(),
-  repoPath: z.string().optional(),
-  gitUserId: smartUnion([z.string(), z.number()]).optional(),
-  gitUserLogin: z.string().optional(),
-  ssoUserId: z.string().optional(),
-  ssoConnectedAt: z.number().optional(),
-  idpUserId: z.string().optional(),
-  dsyncUserId: z.string().optional(),
-  dsyncConnectedAt: z.number().optional(),
-});
-
-export function teamLimitedJoinedFromToJSON(
-  teamLimitedJoinedFrom: TeamLimitedJoinedFrom,
-): string {
-  return JSON.stringify(
-    TeamLimitedJoinedFrom$outboundSchema.parse(teamLimitedJoinedFrom),
-  );
-}
 export function teamLimitedJoinedFromFromJSON(
   jsonString: string,
 ): SafeParseResult<TeamLimitedJoinedFrom, SDKValidationError> {
@@ -647,49 +460,7 @@ export const TeamLimitedMembership$inboundSchema: z.ZodType<
   created: types.number(),
   joinedFrom: types.optional(z.lazy(() => TeamLimitedJoinedFrom$inboundSchema)),
 });
-/** @internal */
-export type TeamLimitedMembership$Outbound = {
-  uid?: string | undefined;
-  entitlements?: Array<TeamLimitedEntitlements$Outbound> | undefined;
-  teamId?: string | undefined;
-  confirmed: true;
-  accessRequestedAt?: number | undefined;
-  role: string;
-  teamRoles?: Array<string> | undefined;
-  teamPermissions?: Array<string> | undefined;
-  createdAt: number;
-  created: number;
-  joinedFrom?: TeamLimitedJoinedFrom$Outbound | undefined;
-};
 
-/** @internal */
-export const TeamLimitedMembership$outboundSchema: z.ZodType<
-  TeamLimitedMembership$Outbound,
-  z.ZodTypeDef,
-  TeamLimitedMembership
-> = z.object({
-  uid: z.string().optional(),
-  entitlements: z.array(z.lazy(() => TeamLimitedEntitlements$outboundSchema))
-    .optional(),
-  teamId: z.string().optional(),
-  confirmed: z.literal(true),
-  accessRequestedAt: z.number().optional(),
-  role: TeamLimitedRole$outboundSchema,
-  teamRoles: z.array(TeamLimitedTeamRoles$outboundSchema).optional(),
-  teamPermissions: z.array(TeamLimitedTeamPermissions$outboundSchema)
-    .optional(),
-  createdAt: z.number(),
-  created: z.number(),
-  joinedFrom: z.lazy(() => TeamLimitedJoinedFrom$outboundSchema).optional(),
-});
-
-export function teamLimitedMembershipToJSON(
-  teamLimitedMembership: TeamLimitedMembership,
-): string {
-  return JSON.stringify(
-    TeamLimitedMembership$outboundSchema.parse(teamLimitedMembership),
-  );
-}
 export function teamLimitedMembershipFromJSON(
   jsonString: string,
 ): SafeParseResult<TeamLimitedMembership, SDKValidationError> {
@@ -717,41 +488,7 @@ export const TeamLimited$inboundSchema: z.ZodType<
   createdAt: types.number(),
   parentId: types.optional(types.string()),
 });
-/** @internal */
-export type TeamLimited$Outbound = {
-  limited: true;
-  limitedBy: Array<string>;
-  saml?: TeamLimitedSaml$Outbound | undefined;
-  id: string;
-  slug: string;
-  name: string | null;
-  avatar: string | null;
-  membership?: TeamLimitedMembership$Outbound | undefined;
-  createdAt: number;
-  parentId?: string | undefined;
-};
 
-/** @internal */
-export const TeamLimited$outboundSchema: z.ZodType<
-  TeamLimited$Outbound,
-  z.ZodTypeDef,
-  TeamLimited
-> = z.object({
-  limited: z.literal(true),
-  limitedBy: z.array(LimitedBy$outboundSchema),
-  saml: z.lazy(() => TeamLimitedSaml$outboundSchema).optional(),
-  id: z.string(),
-  slug: z.string(),
-  name: z.nullable(z.string()),
-  avatar: z.nullable(z.string()),
-  membership: z.lazy(() => TeamLimitedMembership$outboundSchema).optional(),
-  createdAt: z.number(),
-  parentId: z.string().optional(),
-});
-
-export function teamLimitedToJSON(teamLimited: TeamLimited): string {
-  return JSON.stringify(TeamLimited$outboundSchema.parse(teamLimited));
-}
 export function teamLimitedFromJSON(
   jsonString: string,
 ): SafeParseResult<TeamLimited, SDKValidationError> {

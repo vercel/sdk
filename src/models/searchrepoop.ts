@@ -114,12 +114,6 @@ export type SearchRepoResponseBody =
   | SearchRepoResponseBody1;
 
 /** @internal */
-export const NamespaceId$inboundSchema: z.ZodType<
-  NamespaceId,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([types.string(), types.number()]);
-/** @internal */
 export type NamespaceId$Outbound = string | number;
 
 /** @internal */
@@ -132,40 +126,12 @@ export const NamespaceId$outboundSchema: z.ZodType<
 export function namespaceIdToJSON(namespaceId: NamespaceId): string {
   return JSON.stringify(NamespaceId$outboundSchema.parse(namespaceId));
 }
-export function namespaceIdFromJSON(
-  jsonString: string,
-): SafeParseResult<NamespaceId, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => NamespaceId$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'NamespaceId' from JSON`,
-  );
-}
 
-/** @internal */
-export const SearchRepoQueryParamProvider$inboundSchema: z.ZodNativeEnum<
-  typeof SearchRepoQueryParamProvider
-> = z.nativeEnum(SearchRepoQueryParamProvider);
 /** @internal */
 export const SearchRepoQueryParamProvider$outboundSchema: z.ZodNativeEnum<
   typeof SearchRepoQueryParamProvider
-> = SearchRepoQueryParamProvider$inboundSchema;
+> = z.nativeEnum(SearchRepoQueryParamProvider);
 
-/** @internal */
-export const SearchRepoRequest$inboundSchema: z.ZodType<
-  SearchRepoRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  query: types.optional(types.string()),
-  namespaceId: z.nullable(smartUnion([types.string(), types.number()]))
-    .optional(),
-  provider: types.optional(SearchRepoQueryParamProvider$inboundSchema),
-  installationId: types.optional(types.string()),
-  host: types.optional(types.string()),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
 /** @internal */
 export type SearchRepoRequest$Outbound = {
   query?: string | undefined;
@@ -199,24 +165,11 @@ export function searchRepoRequestToJSON(
     SearchRepoRequest$outboundSchema.parse(searchRepoRequest),
   );
 }
-export function searchRepoRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<SearchRepoRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => SearchRepoRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'SearchRepoRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const SearchRepoResponseBodyProvider$inboundSchema: z.ZodNativeEnum<
   typeof SearchRepoResponseBodyProvider
 > = z.nativeEnum(SearchRepoResponseBodyProvider);
-/** @internal */
-export const SearchRepoResponseBodyProvider$outboundSchema: z.ZodNativeEnum<
-  typeof SearchRepoResponseBodyProvider
-> = SearchRepoResponseBodyProvider$inboundSchema;
 
 /** @internal */
 export const ResponseBodyNamespaceId$inboundSchema: z.ZodType<
@@ -224,23 +177,7 @@ export const ResponseBodyNamespaceId$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = smartUnion([types.string(), types.number()]);
-/** @internal */
-export type ResponseBodyNamespaceId$Outbound = string | number;
 
-/** @internal */
-export const ResponseBodyNamespaceId$outboundSchema: z.ZodType<
-  ResponseBodyNamespaceId$Outbound,
-  z.ZodTypeDef,
-  ResponseBodyNamespaceId
-> = smartUnion([z.string(), z.number()]);
-
-export function responseBodyNamespaceIdToJSON(
-  responseBodyNamespaceId: ResponseBodyNamespaceId,
-): string {
-  return JSON.stringify(
-    ResponseBodyNamespaceId$outboundSchema.parse(responseBodyNamespaceId),
-  );
-}
 export function responseBodyNamespaceIdFromJSON(
   jsonString: string,
 ): SafeParseResult<ResponseBodyNamespaceId, SDKValidationError> {
@@ -260,25 +197,7 @@ export const GitAccount$inboundSchema: z.ZodType<
   provider: SearchRepoResponseBodyProvider$inboundSchema,
   namespaceId: types.nullable(smartUnion([types.string(), types.number()])),
 });
-/** @internal */
-export type GitAccount$Outbound = {
-  provider: string;
-  namespaceId: string | number | null;
-};
 
-/** @internal */
-export const GitAccount$outboundSchema: z.ZodType<
-  GitAccount$Outbound,
-  z.ZodTypeDef,
-  GitAccount
-> = z.object({
-  provider: SearchRepoResponseBodyProvider$outboundSchema,
-  namespaceId: z.nullable(smartUnion([z.string(), z.number()])),
-});
-
-export function gitAccountToJSON(gitAccount: GitAccount): string {
-  return JSON.stringify(GitAccount$outboundSchema.parse(gitAccount));
-}
 export function gitAccountFromJSON(
   jsonString: string,
 ): SafeParseResult<GitAccount, SDKValidationError> {
@@ -295,19 +214,7 @@ export const ResponseBodyId$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = smartUnion([types.string(), types.number()]);
-/** @internal */
-export type ResponseBodyId$Outbound = string | number;
 
-/** @internal */
-export const ResponseBodyId$outboundSchema: z.ZodType<
-  ResponseBodyId$Outbound,
-  z.ZodTypeDef,
-  ResponseBodyId
-> = smartUnion([z.string(), z.number()]);
-
-export function responseBodyIdToJSON(responseBodyId: ResponseBodyId): string {
-  return JSON.stringify(ResponseBodyId$outboundSchema.parse(responseBodyId));
-}
 export function responseBodyIdFromJSON(
   jsonString: string,
 ): SafeParseResult<ResponseBodyId, SDKValidationError> {
@@ -322,10 +229,6 @@ export function responseBodyIdFromJSON(
 export const SearchRepoResponseBodyIntegrationsProvider$inboundSchema:
   z.ZodNativeEnum<typeof SearchRepoResponseBodyIntegrationsProvider> = z
     .nativeEnum(SearchRepoResponseBodyIntegrationsProvider);
-/** @internal */
-export const SearchRepoResponseBodyIntegrationsProvider$outboundSchema:
-  z.ZodNativeEnum<typeof SearchRepoResponseBodyIntegrationsProvider> =
-    SearchRepoResponseBodyIntegrationsProvider$inboundSchema;
 
 /** @internal */
 export const SearchRepoResponseBodyId$inboundSchema: z.ZodType<
@@ -333,23 +236,7 @@ export const SearchRepoResponseBodyId$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = smartUnion([types.string(), types.number()]);
-/** @internal */
-export type SearchRepoResponseBodyId$Outbound = string | number;
 
-/** @internal */
-export const SearchRepoResponseBodyId$outboundSchema: z.ZodType<
-  SearchRepoResponseBodyId$Outbound,
-  z.ZodTypeDef,
-  SearchRepoResponseBodyId
-> = smartUnion([z.string(), z.number()]);
-
-export function searchRepoResponseBodyIdToJSON(
-  searchRepoResponseBodyId: SearchRepoResponseBodyId,
-): string {
-  return JSON.stringify(
-    SearchRepoResponseBodyId$outboundSchema.parse(searchRepoResponseBodyId),
-  );
-}
 export function searchRepoResponseBodyIdFromJSON(
   jsonString: string,
 ): SafeParseResult<SearchRepoResponseBodyId, SDKValidationError> {
@@ -369,29 +256,7 @@ export const ResponseBodyOwner$inboundSchema: z.ZodType<
   id: smartUnion([types.string(), types.number()]),
   name: types.string(),
 });
-/** @internal */
-export type ResponseBodyOwner$Outbound = {
-  id: string | number;
-  name: string;
-};
 
-/** @internal */
-export const ResponseBodyOwner$outboundSchema: z.ZodType<
-  ResponseBodyOwner$Outbound,
-  z.ZodTypeDef,
-  ResponseBodyOwner
-> = z.object({
-  id: smartUnion([z.string(), z.number()]),
-  name: z.string(),
-});
-
-export function responseBodyOwnerToJSON(
-  responseBodyOwner: ResponseBodyOwner,
-): string {
-  return JSON.stringify(
-    ResponseBodyOwner$outboundSchema.parse(responseBodyOwner),
-  );
-}
 export function responseBodyOwnerFromJSON(
   jsonString: string,
 ): SafeParseResult<ResponseBodyOwner, SDKValidationError> {
@@ -406,10 +271,6 @@ export function responseBodyOwnerFromJSON(
 export const ResponseBodyOwnerType$inboundSchema: z.ZodNativeEnum<
   typeof ResponseBodyOwnerType
 > = z.nativeEnum(ResponseBodyOwnerType);
-/** @internal */
-export const ResponseBodyOwnerType$outboundSchema: z.ZodNativeEnum<
-  typeof ResponseBodyOwnerType
-> = ResponseBodyOwnerType$inboundSchema;
 
 /** @internal */
 export const Repos$inboundSchema: z.ZodType<Repos, z.ZodTypeDef, unknown> = z
@@ -426,43 +287,7 @@ export const Repos$inboundSchema: z.ZodType<Repos, z.ZodTypeDef, unknown> = z
     defaultBranch: types.string(),
     updatedAt: types.number(),
   });
-/** @internal */
-export type Repos$Outbound = {
-  id: string | number;
-  provider: string;
-  url: string;
-  name: string;
-  slug: string;
-  namespace: string;
-  owner: ResponseBodyOwner$Outbound;
-  ownerType: string;
-  private: boolean;
-  defaultBranch: string;
-  updatedAt: number;
-};
 
-/** @internal */
-export const Repos$outboundSchema: z.ZodType<
-  Repos$Outbound,
-  z.ZodTypeDef,
-  Repos
-> = z.object({
-  id: smartUnion([z.string(), z.number()]),
-  provider: SearchRepoResponseBodyIntegrationsProvider$outboundSchema,
-  url: z.string(),
-  name: z.string(),
-  slug: z.string(),
-  namespace: z.string(),
-  owner: z.lazy(() => ResponseBodyOwner$outboundSchema),
-  ownerType: ResponseBodyOwnerType$outboundSchema,
-  private: z.boolean(),
-  defaultBranch: z.string(),
-  updatedAt: z.number(),
-});
-
-export function reposToJSON(repos: Repos): string {
-  return JSON.stringify(Repos$outboundSchema.parse(repos));
-}
 export function reposFromJSON(
   jsonString: string,
 ): SafeParseResult<Repos, SDKValidationError> {
@@ -482,29 +307,7 @@ export const SearchRepoResponseBody2$inboundSchema: z.ZodType<
   gitAccount: z.lazy(() => GitAccount$inboundSchema),
   repos: z.array(z.lazy(() => Repos$inboundSchema)),
 });
-/** @internal */
-export type SearchRepoResponseBody2$Outbound = {
-  gitAccount: GitAccount$Outbound;
-  repos: Array<Repos$Outbound>;
-};
 
-/** @internal */
-export const SearchRepoResponseBody2$outboundSchema: z.ZodType<
-  SearchRepoResponseBody2$Outbound,
-  z.ZodTypeDef,
-  SearchRepoResponseBody2
-> = z.object({
-  gitAccount: z.lazy(() => GitAccount$outboundSchema),
-  repos: z.array(z.lazy(() => Repos$outboundSchema)),
-});
-
-export function searchRepoResponseBody2ToJSON(
-  searchRepoResponseBody2: SearchRepoResponseBody2,
-): string {
-  return JSON.stringify(
-    SearchRepoResponseBody2$outboundSchema.parse(searchRepoResponseBody2),
-  );
-}
 export function searchRepoResponseBody2FromJSON(
   jsonString: string,
 ): SafeParseResult<SearchRepoResponseBody2, SDKValidationError> {
@@ -521,23 +324,7 @@ export const SearchRepoResponseBody1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-/** @internal */
-export type SearchRepoResponseBody1$Outbound = {};
 
-/** @internal */
-export const SearchRepoResponseBody1$outboundSchema: z.ZodType<
-  SearchRepoResponseBody1$Outbound,
-  z.ZodTypeDef,
-  SearchRepoResponseBody1
-> = z.object({});
-
-export function searchRepoResponseBody1ToJSON(
-  searchRepoResponseBody1: SearchRepoResponseBody1,
-): string {
-  return JSON.stringify(
-    SearchRepoResponseBody1$outboundSchema.parse(searchRepoResponseBody1),
-  );
-}
 export function searchRepoResponseBody1FromJSON(
   jsonString: string,
 ): SafeParseResult<SearchRepoResponseBody1, SDKValidationError> {
@@ -557,28 +344,7 @@ export const SearchRepoResponseBody$inboundSchema: z.ZodType<
   z.lazy(() => SearchRepoResponseBody2$inboundSchema),
   z.lazy(() => SearchRepoResponseBody1$inboundSchema),
 ]);
-/** @internal */
-export type SearchRepoResponseBody$Outbound =
-  | SearchRepoResponseBody2$Outbound
-  | SearchRepoResponseBody1$Outbound;
 
-/** @internal */
-export const SearchRepoResponseBody$outboundSchema: z.ZodType<
-  SearchRepoResponseBody$Outbound,
-  z.ZodTypeDef,
-  SearchRepoResponseBody
-> = smartUnion([
-  z.lazy(() => SearchRepoResponseBody2$outboundSchema),
-  z.lazy(() => SearchRepoResponseBody1$outboundSchema),
-]);
-
-export function searchRepoResponseBodyToJSON(
-  searchRepoResponseBody: SearchRepoResponseBody,
-): string {
-  return JSON.stringify(
-    SearchRepoResponseBody$outboundSchema.parse(searchRepoResponseBody),
-  );
-}
 export function searchRepoResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<SearchRepoResponseBody, SDKValidationError> {

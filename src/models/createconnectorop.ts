@@ -4,10 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import {
-  collectExtraKeys as collectExtraKeys$,
-  safeParse,
-} from "../lib/schemas.js";
+import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -131,6 +128,8 @@ export type ServerConfig = {
   responseModesSupported?: Array<string> | undefined;
   subjectTypesSupported?: Array<string> | undefined;
   idTokenSigningAlgValuesSupported?: Array<string> | undefined;
+  idTokenEncryptionAlgValuesSupported?: Array<string> | undefined;
+  idTokenEncryptionEncValuesSupported?: Array<string> | undefined;
   claimTypesSupported?: Array<string> | undefined;
   claimsSupported?: Array<string> | undefined;
   codeChallengeMethodsSupported?: Array<string> | undefined;
@@ -150,6 +149,10 @@ export type ServerConfig = {
 
 export type UserAuthorization = {
   enabled: boolean;
+  /**
+   * Default scopes to request when token params specify scopes: ["*"].
+   */
+  scopes?: Array<string> | undefined;
 };
 
 export type RefreshTokens = {
@@ -158,10 +161,18 @@ export type RefreshTokens = {
 
 export type ClientCredentials = {
   enabled: boolean;
+  /**
+   * Default scopes to request when token params specify scopes: ["*"].
+   */
+  scopes?: Array<string> | undefined;
 };
 
 export type JwtBearer = {
   enabled?: boolean | undefined;
+  /**
+   * Default scopes to request when token params specify scopes: ["*"].
+   */
+  scopes?: Array<string> | undefined;
   sub?: string | undefined;
   iss?: string | undefined;
   aud?: string | undefined;
@@ -312,6 +323,10 @@ export type AppTokens = {
   crossInstallation: boolean;
   supportsRefinement: boolean;
   /**
+   * True when changing app token grants requires reinstalling the app, so tokens cannot be partitioned independently by requester environment.
+   */
+  requiresReinstallation?: boolean | undefined;
+  /**
    * Known allowed app-level scopes. For Slack this is the bot scope set configured on the app; for OAuth it is `scopes_supported` from the server's discovery document.
    */
   scopes?: Array<string> | undefined;
@@ -322,7 +337,7 @@ export type UserTokens = {
   crossInstallation: boolean;
   supportsRefinement: boolean;
   /**
-   * Known allowed app-level scopes. For Slack this is the bot scope set configured on the app; for OAuth it is `scopes_supported` from the server's discovery document.
+   * Known allowed user-level scopes. For Slack this is the user scope set configured on the app; for OAuth it is `scopes_supported` from the server's discovery document.
    */
   scopes?: Array<string> | undefined;
   supportedAuthorizationDetails?: Array<string> | undefined;
@@ -463,22 +478,6 @@ export type CreateConnectorResponseBody = {
 };
 
 /** @internal */
-export const TypeSnowflake$inboundSchema: z.ZodType<
-  TypeSnowflake,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  clientName: types.string(),
-  accountIdentifier: types.string(),
-  serviceUsername: types.optional(types.string()),
-  serviceRole: types.optional(types.string()),
-  defaultSessionRole: types.optional(types.string()),
-  privateKeyPem: types.optional(types.string()),
-  publicKeyPem: types.optional(types.string()),
-  publicKeyFingerprint: types.optional(types.string()),
-  extras: types.optional(z.record(z.any())),
-});
-/** @internal */
 export type TypeSnowflake$Outbound = {
   clientName: string;
   accountIdentifier: string;
@@ -511,26 +510,7 @@ export const TypeSnowflake$outboundSchema: z.ZodType<
 export function typeSnowflakeToJSON(typeSnowflake: TypeSnowflake): string {
   return JSON.stringify(TypeSnowflake$outboundSchema.parse(typeSnowflake));
 }
-export function typeSnowflakeFromJSON(
-  jsonString: string,
-): SafeParseResult<TypeSnowflake, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => TypeSnowflake$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'TypeSnowflake' from JSON`,
-  );
-}
 
-/** @internal */
-export const SlackTeam$inboundSchema: z.ZodType<
-  SlackTeam,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: types.string(),
-  name: types.optional(types.string()),
-  domain: types.optional(types.string()),
-});
 /** @internal */
 export type SlackTeam$Outbound = {
   id: string;
@@ -552,33 +532,7 @@ export const SlackTeam$outboundSchema: z.ZodType<
 export function slackTeamToJSON(slackTeam: SlackTeam): string {
   return JSON.stringify(SlackTeam$outboundSchema.parse(slackTeam));
 }
-export function slackTeamFromJSON(
-  jsonString: string,
-): SafeParseResult<SlackTeam, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => SlackTeam$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'SlackTeam' from JSON`,
-  );
-}
 
-/** @internal */
-export const TypeSlack$inboundSchema: z.ZodType<
-  TypeSlack,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  appId: types.string(),
-  appName: types.string(),
-  clientId: types.string(),
-  clientSecret: types.string(),
-  slackTeam: types.optional(z.lazy(() => SlackTeam$inboundSchema)),
-  signingSecret: types.optional(types.string()),
-  verificationToken: types.optional(types.string()),
-  botScopes: types.optional(z.array(types.string())),
-  userScopes: types.optional(z.array(types.string())),
-  extras: types.optional(z.record(z.any())),
-});
 /** @internal */
 export type TypeSlack$Outbound = {
   appId: string;
@@ -614,26 +568,7 @@ export const TypeSlack$outboundSchema: z.ZodType<
 export function typeSlackToJSON(typeSlack: TypeSlack): string {
   return JSON.stringify(TypeSlack$outboundSchema.parse(typeSlack));
 }
-export function typeSlackFromJSON(
-  jsonString: string,
-): SafeParseResult<TypeSlack, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => TypeSlack$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'TypeSlack' from JSON`,
-  );
-}
 
-/** @internal */
-export const TypeSalesforce$inboundSchema: z.ZodType<
-  TypeSalesforce,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  consumerKey: types.string(),
-  consumerSecret: types.string(),
-  loginHost: types.string(),
-});
 /** @internal */
 export type TypeSalesforce$Outbound = {
   consumerKey: string;
@@ -655,31 +590,11 @@ export const TypeSalesforce$outboundSchema: z.ZodType<
 export function typeSalesforceToJSON(typeSalesforce: TypeSalesforce): string {
   return JSON.stringify(TypeSalesforce$outboundSchema.parse(typeSalesforce));
 }
-export function typeSalesforceFromJSON(
-  jsonString: string,
-): SafeParseResult<TypeSalesforce, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => TypeSalesforce$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'TypeSalesforce' from JSON`,
-  );
-}
 
 /** @internal */
-export const DataType$inboundSchema: z.ZodNativeEnum<typeof DataType> = z
+export const DataType$outboundSchema: z.ZodNativeEnum<typeof DataType> = z
   .nativeEnum(DataType);
-/** @internal */
-export const DataType$outboundSchema: z.ZodNativeEnum<typeof DataType> =
-  DataType$inboundSchema;
 
-/** @internal */
-export const Owner$inboundSchema: z.ZodType<Owner, z.ZodTypeDef, unknown> = z
-  .object({
-    type: DataType$inboundSchema,
-    id: types.number(),
-    slug: types.string(),
-    name: types.optional(types.string()),
-  });
 /** @internal */
 export type Owner$Outbound = {
   type: string;
@@ -703,32 +618,7 @@ export const Owner$outboundSchema: z.ZodType<
 export function ownerToJSON(owner: Owner): string {
   return JSON.stringify(Owner$outboundSchema.parse(owner));
 }
-export function ownerFromJSON(
-  jsonString: string,
-): SafeParseResult<Owner, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Owner$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Owner' from JSON`,
-  );
-}
 
-/** @internal */
-export const TypeGithub$inboundSchema: z.ZodType<
-  TypeGithub,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  appId: types.number(),
-  appSlug: types.string(),
-  appName: types.string(),
-  clientId: types.string(),
-  owner: types.optional(z.lazy(() => Owner$inboundSchema)),
-  clientSecret: types.optional(types.string()),
-  privateKeyPem: types.optional(types.string()),
-  webhookSecret: types.optional(types.string()),
-  extras: types.optional(z.record(z.any())),
-});
 /** @internal */
 export type TypeGithub$Outbound = {
   appId: number;
@@ -762,23 +652,7 @@ export const TypeGithub$outboundSchema: z.ZodType<
 export function typeGithubToJSON(typeGithub: TypeGithub): string {
   return JSON.stringify(TypeGithub$outboundSchema.parse(typeGithub));
 }
-export function typeGithubFromJSON(
-  jsonString: string,
-): SafeParseResult<TypeGithub, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => TypeGithub$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'TypeGithub' from JSON`,
-  );
-}
 
-/** @internal */
-export const Values$inboundSchema: z.ZodType<Values, z.ZodTypeDef, unknown> = z
-  .object({
-    value: types.string(),
-    scope: types.optional(types.string()),
-    expiresAt: types.optional(types.number()),
-  });
 /** @internal */
 export type Values$Outbound = {
   value: string;
@@ -800,24 +674,7 @@ export const Values$outboundSchema: z.ZodType<
 export function valuesToJSON(values: Values): string {
   return JSON.stringify(Values$outboundSchema.parse(values));
 }
-export function valuesFromJSON(
-  jsonString: string,
-): SafeParseResult<Values, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Values$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Values' from JSON`,
-  );
-}
 
-/** @internal */
-export const TypeApiKey$inboundSchema: z.ZodType<
-  TypeApiKey,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  values: z.array(z.lazy(() => Values$inboundSchema)),
-});
 /** @internal */
 export type TypeApiKey$Outbound = {
   values: Array<Values$Outbound>;
@@ -835,39 +692,12 @@ export const TypeApiKey$outboundSchema: z.ZodType<
 export function typeApiKeyToJSON(typeApiKey: TypeApiKey): string {
   return JSON.stringify(TypeApiKey$outboundSchema.parse(typeApiKey));
 }
-export function typeApiKeyFromJSON(
-  jsonString: string,
-): SafeParseResult<TypeApiKey, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => TypeApiKey$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'TypeApiKey' from JSON`,
-  );
-}
 
 /** @internal */
-export const Use$inboundSchema: z.ZodNativeEnum<typeof Use> = z.nativeEnum(Use);
-/** @internal */
-export const Use$outboundSchema: z.ZodNativeEnum<typeof Use> =
-  Use$inboundSchema;
+export const Use$outboundSchema: z.ZodNativeEnum<typeof Use> = z.nativeEnum(
+  Use,
+);
 
-/** @internal */
-export const Keys$inboundSchema: z.ZodType<Keys, z.ZodTypeDef, unknown> =
-  collectExtraKeys$(
-    z.object({
-      kty: types.string(),
-      kid: types.optional(types.string()),
-      use: types.optional(Use$inboundSchema),
-      key_ops: types.optional(z.array(types.string())),
-      alg: types.optional(types.string()),
-    }).catchall(z.any()),
-    "additionalProperties",
-    true,
-  ).transform((v) => {
-    return remap$(v, {
-      "key_ops": "keyOps",
-    });
-  });
 /** @internal */
 export type Keys$Outbound = {
   kty: string;
@@ -900,25 +730,7 @@ export const Keys$outboundSchema: z.ZodType<Keys$Outbound, z.ZodTypeDef, Keys> =
 export function keysToJSON(keys: Keys): string {
   return JSON.stringify(Keys$outboundSchema.parse(keys));
 }
-export function keysFromJSON(
-  jsonString: string,
-): SafeParseResult<Keys, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Keys$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Keys' from JSON`,
-  );
-}
 
-/** @internal */
-export const Jwks$inboundSchema: z.ZodType<Jwks, z.ZodTypeDef, unknown> =
-  collectExtraKeys$(
-    z.object({
-      keys: z.array(z.lazy(() => Keys$inboundSchema)),
-    }).catchall(z.any()),
-    "additionalProperties",
-    true,
-  );
 /** @internal */
 export type Jwks$Outbound = {
   keys: Array<Keys$Outbound>;
@@ -942,106 +754,7 @@ export const Jwks$outboundSchema: z.ZodType<Jwks$Outbound, z.ZodTypeDef, Jwks> =
 export function jwksToJSON(jwks: Jwks): string {
   return JSON.stringify(Jwks$outboundSchema.parse(jwks));
 }
-export function jwksFromJSON(
-  jsonString: string,
-): SafeParseResult<Jwks, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Jwks$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Jwks' from JSON`,
-  );
-}
 
-/** @internal */
-export const ServerConfig$inboundSchema: z.ZodType<
-  ServerConfig,
-  z.ZodTypeDef,
-  unknown
-> = collectExtraKeys$(
-  z.object({
-    issuer: types.optional(types.string()),
-    authorization_endpoint: types.optional(types.string()),
-    token_endpoint: types.optional(types.string()),
-    userinfo_endpoint: types.optional(types.string()),
-    jwks_uri: types.optional(types.string()),
-    jwks: types.optional(z.lazy(() => Jwks$inboundSchema)),
-    revocation_endpoint: types.optional(types.string()),
-    introspection_endpoint: types.optional(types.string()),
-    end_session_endpoint: types.optional(types.string()),
-    device_authorization_endpoint: types.optional(types.string()),
-    registration_endpoint: types.optional(types.string()),
-    response_types_supported: types.optional(z.array(types.string())),
-    token_endpoint_auth_methods_supported: types.optional(
-      z.array(types.string()),
-    ),
-    token_endpoint_auth_signing_alg_values_supported: types.optional(
-      z.array(types.string()),
-    ),
-    scopes_supported: types.optional(z.array(types.string())),
-    grant_types_supported: types.optional(z.array(types.string())),
-    response_modes_supported: types.optional(z.array(types.string())),
-    subject_types_supported: types.optional(z.array(types.string())),
-    id_token_signing_alg_values_supported: types.optional(
-      z.array(types.string()),
-    ),
-    claim_types_supported: types.optional(z.array(types.string())),
-    claims_supported: types.optional(z.array(types.string())),
-    code_challenge_methods_supported: types.optional(z.array(types.string())),
-    prompt_values_supported: types.optional(z.array(types.string())),
-    claims_parameter_supported: types.optional(types.boolean()),
-    request_parameter_supported: types.optional(types.boolean()),
-    request_uri_parameter_supported: types.optional(types.boolean()),
-    require_request_uri_registration: types.optional(types.boolean()),
-    service_documentation: types.optional(types.string()),
-    op_policy_uri: types.optional(types.string()),
-    op_tos_uri: types.optional(types.string()),
-    logo_uri: types.optional(types.string()),
-    client_id_metadata_document_supported: types.optional(types.boolean()),
-    authorization_details_types_supported: types.optional(
-      z.array(types.string()),
-    ),
-  }).catchall(z.any()),
-  "additionalProperties",
-  true,
-).transform((v) => {
-  return remap$(v, {
-    "authorization_endpoint": "authorizationEndpoint",
-    "token_endpoint": "tokenEndpoint",
-    "userinfo_endpoint": "userinfoEndpoint",
-    "jwks_uri": "jwksUri",
-    "revocation_endpoint": "revocationEndpoint",
-    "introspection_endpoint": "introspectionEndpoint",
-    "end_session_endpoint": "endSessionEndpoint",
-    "device_authorization_endpoint": "deviceAuthorizationEndpoint",
-    "registration_endpoint": "registrationEndpoint",
-    "response_types_supported": "responseTypesSupported",
-    "token_endpoint_auth_methods_supported":
-      "tokenEndpointAuthMethodsSupported",
-    "token_endpoint_auth_signing_alg_values_supported":
-      "tokenEndpointAuthSigningAlgValuesSupported",
-    "scopes_supported": "scopesSupported",
-    "grant_types_supported": "grantTypesSupported",
-    "response_modes_supported": "responseModesSupported",
-    "subject_types_supported": "subjectTypesSupported",
-    "id_token_signing_alg_values_supported": "idTokenSigningAlgValuesSupported",
-    "claim_types_supported": "claimTypesSupported",
-    "claims_supported": "claimsSupported",
-    "code_challenge_methods_supported": "codeChallengeMethodsSupported",
-    "prompt_values_supported": "promptValuesSupported",
-    "claims_parameter_supported": "claimsParameterSupported",
-    "request_parameter_supported": "requestParameterSupported",
-    "request_uri_parameter_supported": "requestUriParameterSupported",
-    "require_request_uri_registration": "requireRequestUriRegistration",
-    "service_documentation": "serviceDocumentation",
-    "op_policy_uri": "opPolicyUri",
-    "op_tos_uri": "opTosUri",
-    "logo_uri": "logoUri",
-    "client_id_metadata_document_supported":
-      "clientIdMetadataDocumentSupported",
-    "authorization_details_types_supported":
-      "authorizationDetailsTypesSupported",
-  });
-});
 /** @internal */
 export type ServerConfig$Outbound = {
   issuer?: string | undefined;
@@ -1063,6 +776,8 @@ export type ServerConfig$Outbound = {
   response_modes_supported?: Array<string> | undefined;
   subject_types_supported?: Array<string> | undefined;
   id_token_signing_alg_values_supported?: Array<string> | undefined;
+  id_token_encryption_alg_values_supported?: Array<string> | undefined;
+  id_token_encryption_enc_values_supported?: Array<string> | undefined;
   claim_types_supported?: Array<string> | undefined;
   claims_supported?: Array<string> | undefined;
   code_challenge_methods_supported?: Array<string> | undefined;
@@ -1105,6 +820,8 @@ export const ServerConfig$outboundSchema: z.ZodType<
   responseModesSupported: z.array(z.string()).optional(),
   subjectTypesSupported: z.array(z.string()).optional(),
   idTokenSigningAlgValuesSupported: z.array(z.string()).optional(),
+  idTokenEncryptionAlgValuesSupported: z.array(z.string()).optional(),
+  idTokenEncryptionEncValuesSupported: z.array(z.string()).optional(),
   claimTypesSupported: z.array(z.string()).optional(),
   claimsSupported: z.array(z.string()).optional(),
   codeChallengeMethodsSupported: z.array(z.string()).optional(),
@@ -1143,6 +860,10 @@ export const ServerConfig$outboundSchema: z.ZodType<
       responseModesSupported: "response_modes_supported",
       subjectTypesSupported: "subject_types_supported",
       idTokenSigningAlgValuesSupported: "id_token_signing_alg_values_supported",
+      idTokenEncryptionAlgValuesSupported:
+        "id_token_encryption_alg_values_supported",
+      idTokenEncryptionEncValuesSupported:
+        "id_token_encryption_enc_values_supported",
       claimTypesSupported: "claim_types_supported",
       claimsSupported: "claims_supported",
       codeChallengeMethodsSupported: "code_challenge_methods_supported",
@@ -1167,27 +888,11 @@ export const ServerConfig$outboundSchema: z.ZodType<
 export function serverConfigToJSON(serverConfig: ServerConfig): string {
   return JSON.stringify(ServerConfig$outboundSchema.parse(serverConfig));
 }
-export function serverConfigFromJSON(
-  jsonString: string,
-): SafeParseResult<ServerConfig, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ServerConfig$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ServerConfig' from JSON`,
-  );
-}
 
-/** @internal */
-export const UserAuthorization$inboundSchema: z.ZodType<
-  UserAuthorization,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  enabled: types.boolean(),
-});
 /** @internal */
 export type UserAuthorization$Outbound = {
   enabled: boolean;
+  scopes?: Array<string> | undefined;
 };
 
 /** @internal */
@@ -1197,6 +902,7 @@ export const UserAuthorization$outboundSchema: z.ZodType<
   UserAuthorization
 > = z.object({
   enabled: z.boolean(),
+  scopes: z.array(z.string()).optional(),
 });
 
 export function userAuthorizationToJSON(
@@ -1206,24 +912,7 @@ export function userAuthorizationToJSON(
     UserAuthorization$outboundSchema.parse(userAuthorization),
   );
 }
-export function userAuthorizationFromJSON(
-  jsonString: string,
-): SafeParseResult<UserAuthorization, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UserAuthorization$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UserAuthorization' from JSON`,
-  );
-}
 
-/** @internal */
-export const RefreshTokens$inboundSchema: z.ZodType<
-  RefreshTokens,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  enabled: types.boolean(),
-});
 /** @internal */
 export type RefreshTokens$Outbound = {
   enabled: boolean;
@@ -1241,27 +930,11 @@ export const RefreshTokens$outboundSchema: z.ZodType<
 export function refreshTokensToJSON(refreshTokens: RefreshTokens): string {
   return JSON.stringify(RefreshTokens$outboundSchema.parse(refreshTokens));
 }
-export function refreshTokensFromJSON(
-  jsonString: string,
-): SafeParseResult<RefreshTokens, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RefreshTokens$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RefreshTokens' from JSON`,
-  );
-}
 
-/** @internal */
-export const ClientCredentials$inboundSchema: z.ZodType<
-  ClientCredentials,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  enabled: types.boolean(),
-});
 /** @internal */
 export type ClientCredentials$Outbound = {
   enabled: boolean;
+  scopes?: Array<string> | undefined;
 };
 
 /** @internal */
@@ -1271,6 +944,7 @@ export const ClientCredentials$outboundSchema: z.ZodType<
   ClientCredentials
 > = z.object({
   enabled: z.boolean(),
+  scopes: z.array(z.string()).optional(),
 });
 
 export function clientCredentialsToJSON(
@@ -1280,33 +954,11 @@ export function clientCredentialsToJSON(
     ClientCredentials$outboundSchema.parse(clientCredentials),
   );
 }
-export function clientCredentialsFromJSON(
-  jsonString: string,
-): SafeParseResult<ClientCredentials, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ClientCredentials$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ClientCredentials' from JSON`,
-  );
-}
 
-/** @internal */
-export const JwtBearer$inboundSchema: z.ZodType<
-  JwtBearer,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  enabled: types.optional(types.boolean()),
-  sub: types.optional(types.string()),
-  iss: types.optional(types.string()),
-  aud: types.optional(types.string()),
-  additionalClaims: types.optional(z.record(z.any())),
-  ttl: types.optional(types.number()),
-  useClientCredentials: types.optional(types.boolean()),
-});
 /** @internal */
 export type JwtBearer$Outbound = {
   enabled?: boolean | undefined;
+  scopes?: Array<string> | undefined;
   sub?: string | undefined;
   iss?: string | undefined;
   aud?: string | undefined;
@@ -1322,6 +974,7 @@ export const JwtBearer$outboundSchema: z.ZodType<
   JwtBearer
 > = z.object({
   enabled: z.boolean().optional(),
+  scopes: z.array(z.string()).optional(),
   sub: z.string().optional(),
   iss: z.string().optional(),
   aud: z.string().optional(),
@@ -1333,41 +986,7 @@ export const JwtBearer$outboundSchema: z.ZodType<
 export function jwtBearerToJSON(jwtBearer: JwtBearer): string {
   return JSON.stringify(JwtBearer$outboundSchema.parse(jwtBearer));
 }
-export function jwtBearerFromJSON(
-  jsonString: string,
-): SafeParseResult<JwtBearer, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => JwtBearer$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'JwtBearer' from JSON`,
-  );
-}
 
-/** @internal */
-export const TypeOauth$inboundSchema: z.ZodType<
-  TypeOauth,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  serverUrl: types.optional(types.string()),
-  serverConfig: types.optional(z.lazy(() => ServerConfig$inboundSchema)),
-  clientId: types.string(),
-  clientSecret: types.optional(types.string()),
-  tokenEndpointAuthMethod: types.string().default("client_secret_post"),
-  responseType: types.optional(types.string()),
-  pkceRequired: types.optional(types.boolean()),
-  codeChallengeMethod: types.optional(types.string()),
-  userAuthorization: types.optional(
-    z.lazy(() => UserAuthorization$inboundSchema),
-  ),
-  refreshTokens: types.optional(z.lazy(() => RefreshTokens$inboundSchema)),
-  clientCredentials: types.optional(
-    z.lazy(() => ClientCredentials$inboundSchema),
-  ),
-  defaultAudience: types.optional(types.string()),
-  authorizationUrlParams: types.optional(z.record(types.string())),
-  jwtBearer: types.optional(z.lazy(() => JwtBearer$inboundSchema)),
-});
 /** @internal */
 export type TypeOauth$Outbound = {
   serverUrl?: string | undefined;
@@ -1411,30 +1030,7 @@ export const TypeOauth$outboundSchema: z.ZodType<
 export function typeOauthToJSON(typeOauth: TypeOauth): string {
   return JSON.stringify(TypeOauth$outboundSchema.parse(typeOauth));
 }
-export function typeOauthFromJSON(
-  jsonString: string,
-): SafeParseResult<TypeOauth, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => TypeOauth$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'TypeOauth' from JSON`,
-  );
-}
 
-/** @internal */
-export const CreateConnectorData$inboundSchema: z.ZodType<
-  CreateConnectorData,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([
-  z.lazy(() => TypeGithub$inboundSchema),
-  z.lazy(() => TypeSlack$inboundSchema),
-  z.lazy(() => TypeSalesforce$inboundSchema),
-  z.lazy(() => TypeSnowflake$inboundSchema),
-  z.lazy(() => TypeOauth$inboundSchema),
-  z.lazy(() => TypeApiKey$inboundSchema),
-  z.record(z.any()),
-]);
 /** @internal */
 export type CreateConnectorData$Outbound =
   | TypeGithub$Outbound
@@ -1467,43 +1063,7 @@ export function createConnectorDataToJSON(
     CreateConnectorData$outboundSchema.parse(createConnectorData),
   );
 }
-export function createConnectorDataFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateConnectorData, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateConnectorData$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateConnectorData' from JSON`,
-  );
-}
 
-/** @internal */
-export const CreateConnectorRequestBody$inboundSchema: z.ZodType<
-  CreateConnectorRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  type: types.string(),
-  service: types.optional(types.string()),
-  uid: types.optional(types.string()),
-  name: types.optional(types.string()),
-  projectId: types.optional(types.string()),
-  environments: types.optional(z.array(types.string())),
-  triggers: types.optional(types.boolean()),
-  events: types.optional(z.array(types.string())),
-  icon: types.optional(types.string()),
-  backgroundColor: types.optional(types.string()),
-  accentColor: types.optional(types.string()),
-  data: smartUnion([
-    z.lazy(() => TypeGithub$inboundSchema),
-    z.lazy(() => TypeSlack$inboundSchema),
-    z.lazy(() => TypeSalesforce$inboundSchema),
-    z.lazy(() => TypeSnowflake$inboundSchema),
-    z.lazy(() => TypeOauth$inboundSchema),
-    z.lazy(() => TypeApiKey$inboundSchema),
-    z.record(z.any()),
-  ]),
-});
 /** @internal */
 export type CreateConnectorRequestBody$Outbound = {
   type: string;
@@ -1562,24 +1122,11 @@ export function createConnectorRequestBodyToJSON(
     CreateConnectorRequestBody$outboundSchema.parse(createConnectorRequestBody),
   );
 }
-export function createConnectorRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateConnectorRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateConnectorRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateConnectorRequestBody' from JSON`,
-  );
-}
 
 /** @internal */
 export const CreatedByEnvironment$inboundSchema: z.ZodNativeEnum<
   typeof CreatedByEnvironment
 > = z.nativeEnum(CreatedByEnvironment);
-/** @internal */
-export const CreatedByEnvironment$outboundSchema: z.ZodNativeEnum<
-  typeof CreatedByEnvironment
-> = CreatedByEnvironment$inboundSchema;
 
 /** @internal */
 export const CreatedBy2$inboundSchema: z.ZodType<
@@ -1591,27 +1138,7 @@ export const CreatedBy2$inboundSchema: z.ZodType<
   id: types.string(),
   environment: CreatedByEnvironment$inboundSchema,
 });
-/** @internal */
-export type CreatedBy2$Outbound = {
-  type: "project";
-  id: string;
-  environment: string;
-};
 
-/** @internal */
-export const CreatedBy2$outboundSchema: z.ZodType<
-  CreatedBy2$Outbound,
-  z.ZodTypeDef,
-  CreatedBy2
-> = z.object({
-  type: z.literal("project"),
-  id: z.string(),
-  environment: CreatedByEnvironment$outboundSchema,
-});
-
-export function createdBy2ToJSON(createdBy2: CreatedBy2): string {
-  return JSON.stringify(CreatedBy2$outboundSchema.parse(createdBy2));
-}
 export function createdBy2FromJSON(
   jsonString: string,
 ): SafeParseResult<CreatedBy2, SDKValidationError> {
@@ -1631,25 +1158,7 @@ export const CreatedBy1$inboundSchema: z.ZodType<
   type: types.literal("user"),
   id: types.string(),
 });
-/** @internal */
-export type CreatedBy1$Outbound = {
-  type: "user";
-  id: string;
-};
 
-/** @internal */
-export const CreatedBy1$outboundSchema: z.ZodType<
-  CreatedBy1$Outbound,
-  z.ZodTypeDef,
-  CreatedBy1
-> = z.object({
-  type: z.literal("user"),
-  id: z.string(),
-});
-
-export function createdBy1ToJSON(createdBy1: CreatedBy1): string {
-  return JSON.stringify(CreatedBy1$outboundSchema.parse(createdBy1));
-}
 export function createdBy1FromJSON(
   jsonString: string,
 ): SafeParseResult<CreatedBy1, SDKValidationError> {
@@ -1669,22 +1178,7 @@ export const CreatedBy$inboundSchema: z.ZodType<
   z.lazy(() => CreatedBy1$inboundSchema),
   z.lazy(() => CreatedBy2$inboundSchema),
 ]);
-/** @internal */
-export type CreatedBy$Outbound = CreatedBy1$Outbound | CreatedBy2$Outbound;
 
-/** @internal */
-export const CreatedBy$outboundSchema: z.ZodType<
-  CreatedBy$Outbound,
-  z.ZodTypeDef,
-  CreatedBy
-> = z.union([
-  z.lazy(() => CreatedBy1$outboundSchema),
-  z.lazy(() => CreatedBy2$outboundSchema),
-]);
-
-export function createdByToJSON(createdBy: CreatedBy): string {
-  return JSON.stringify(CreatedBy$outboundSchema.parse(createdBy));
-}
 export function createdByFromJSON(
   jsonString: string,
 ): SafeParseResult<CreatedBy, SDKValidationError> {
@@ -1699,10 +1193,6 @@ export function createdByFromJSON(
 export const UpdatedByEnvironment$inboundSchema: z.ZodNativeEnum<
   typeof UpdatedByEnvironment
 > = z.nativeEnum(UpdatedByEnvironment);
-/** @internal */
-export const UpdatedByEnvironment$outboundSchema: z.ZodNativeEnum<
-  typeof UpdatedByEnvironment
-> = UpdatedByEnvironment$inboundSchema;
 
 /** @internal */
 export const UpdatedBy2$inboundSchema: z.ZodType<
@@ -1714,27 +1204,7 @@ export const UpdatedBy2$inboundSchema: z.ZodType<
   id: types.string(),
   environment: UpdatedByEnvironment$inboundSchema,
 });
-/** @internal */
-export type UpdatedBy2$Outbound = {
-  type: "project";
-  id: string;
-  environment: string;
-};
 
-/** @internal */
-export const UpdatedBy2$outboundSchema: z.ZodType<
-  UpdatedBy2$Outbound,
-  z.ZodTypeDef,
-  UpdatedBy2
-> = z.object({
-  type: z.literal("project"),
-  id: z.string(),
-  environment: UpdatedByEnvironment$outboundSchema,
-});
-
-export function updatedBy2ToJSON(updatedBy2: UpdatedBy2): string {
-  return JSON.stringify(UpdatedBy2$outboundSchema.parse(updatedBy2));
-}
 export function updatedBy2FromJSON(
   jsonString: string,
 ): SafeParseResult<UpdatedBy2, SDKValidationError> {
@@ -1754,25 +1224,7 @@ export const UpdatedBy1$inboundSchema: z.ZodType<
   type: types.literal("user"),
   id: types.string(),
 });
-/** @internal */
-export type UpdatedBy1$Outbound = {
-  type: "user";
-  id: string;
-};
 
-/** @internal */
-export const UpdatedBy1$outboundSchema: z.ZodType<
-  UpdatedBy1$Outbound,
-  z.ZodTypeDef,
-  UpdatedBy1
-> = z.object({
-  type: z.literal("user"),
-  id: z.string(),
-});
-
-export function updatedBy1ToJSON(updatedBy1: UpdatedBy1): string {
-  return JSON.stringify(UpdatedBy1$outboundSchema.parse(updatedBy1));
-}
 export function updatedBy1FromJSON(
   jsonString: string,
 ): SafeParseResult<UpdatedBy1, SDKValidationError> {
@@ -1792,22 +1244,7 @@ export const UpdatedBy$inboundSchema: z.ZodType<
   z.lazy(() => UpdatedBy1$inboundSchema),
   z.lazy(() => UpdatedBy2$inboundSchema),
 ]);
-/** @internal */
-export type UpdatedBy$Outbound = UpdatedBy1$Outbound | UpdatedBy2$Outbound;
 
-/** @internal */
-export const UpdatedBy$outboundSchema: z.ZodType<
-  UpdatedBy$Outbound,
-  z.ZodTypeDef,
-  UpdatedBy
-> = z.union([
-  z.lazy(() => UpdatedBy1$outboundSchema),
-  z.lazy(() => UpdatedBy2$outboundSchema),
-]);
-
-export function updatedByToJSON(updatedBy: UpdatedBy): string {
-  return JSON.stringify(UpdatedBy$outboundSchema.parse(updatedBy));
-}
 export function updatedByFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdatedBy, SDKValidationError> {
@@ -1822,10 +1259,6 @@ export function updatedByFromJSON(
 export const CreateConnectorType$inboundSchema: z.ZodNativeEnum<
   typeof CreateConnectorType
 > = z.nativeEnum(CreateConnectorType);
-/** @internal */
-export const CreateConnectorType$outboundSchema: z.ZodNativeEnum<
-  typeof CreateConnectorType
-> = CreateConnectorType$inboundSchema;
 
 /** @internal */
 export const AppTokens$inboundSchema: z.ZodType<
@@ -1835,32 +1268,11 @@ export const AppTokens$inboundSchema: z.ZodType<
 > = z.object({
   crossInstallation: types.boolean(),
   supportsRefinement: types.boolean(),
+  requiresReinstallation: types.optional(types.boolean()),
   scopes: types.optional(z.array(types.string())),
   supportedAuthorizationDetails: types.optional(z.array(types.string())),
 });
-/** @internal */
-export type AppTokens$Outbound = {
-  crossInstallation: boolean;
-  supportsRefinement: boolean;
-  scopes?: Array<string> | undefined;
-  supportedAuthorizationDetails?: Array<string> | undefined;
-};
 
-/** @internal */
-export const AppTokens$outboundSchema: z.ZodType<
-  AppTokens$Outbound,
-  z.ZodTypeDef,
-  AppTokens
-> = z.object({
-  crossInstallation: z.boolean(),
-  supportsRefinement: z.boolean(),
-  scopes: z.array(z.string()).optional(),
-  supportedAuthorizationDetails: z.array(z.string()).optional(),
-});
-
-export function appTokensToJSON(appTokens: AppTokens): string {
-  return JSON.stringify(AppTokens$outboundSchema.parse(appTokens));
-}
 export function appTokensFromJSON(
   jsonString: string,
 ): SafeParseResult<AppTokens, SDKValidationError> {
@@ -1882,29 +1294,7 @@ export const UserTokens$inboundSchema: z.ZodType<
   scopes: types.optional(z.array(types.string())),
   supportedAuthorizationDetails: types.optional(z.array(types.string())),
 });
-/** @internal */
-export type UserTokens$Outbound = {
-  crossInstallation: boolean;
-  supportsRefinement: boolean;
-  scopes?: Array<string> | undefined;
-  supportedAuthorizationDetails?: Array<string> | undefined;
-};
 
-/** @internal */
-export const UserTokens$outboundSchema: z.ZodType<
-  UserTokens$Outbound,
-  z.ZodTypeDef,
-  UserTokens
-> = z.object({
-  crossInstallation: z.boolean(),
-  supportsRefinement: z.boolean(),
-  scopes: z.array(z.string()).optional(),
-  supportedAuthorizationDetails: z.array(z.string()).optional(),
-});
-
-export function userTokensToJSON(userTokens: UserTokens): string {
-  return JSON.stringify(UserTokens$outboundSchema.parse(userTokens));
-}
 export function userTokensFromJSON(
   jsonString: string,
 ): SafeParseResult<UserTokens, SDKValidationError> {
@@ -1918,9 +1308,6 @@ export function userTokensFromJSON(
 /** @internal */
 export const SupportsIcon$inboundSchema: z.ZodNativeEnum<typeof SupportsIcon> =
   z.nativeEnum(SupportsIcon);
-/** @internal */
-export const SupportsIcon$outboundSchema: z.ZodNativeEnum<typeof SupportsIcon> =
-  SupportsIcon$inboundSchema;
 
 /** @internal */
 export const Triggers$inboundSchema: z.ZodType<
@@ -1930,23 +1317,7 @@ export const Triggers$inboundSchema: z.ZodType<
 > = z.object({
   enabled: types.boolean(),
 });
-/** @internal */
-export type Triggers$Outbound = {
-  enabled: boolean;
-};
 
-/** @internal */
-export const Triggers$outboundSchema: z.ZodType<
-  Triggers$Outbound,
-  z.ZodTypeDef,
-  Triggers
-> = z.object({
-  enabled: z.boolean(),
-});
-
-export function triggersToJSON(triggers: Triggers): string {
-  return JSON.stringify(Triggers$outboundSchema.parse(triggers));
-}
 export function triggersFromJSON(
   jsonString: string,
 ): SafeParseResult<Triggers, SDKValidationError> {
@@ -1967,31 +1338,7 @@ export const TriggerDestinations$inboundSchema: z.ZodType<
   branch: types.optional(types.string()),
   path: types.optional(types.string()),
 });
-/** @internal */
-export type TriggerDestinations$Outbound = {
-  projectId: string;
-  branch?: string | undefined;
-  path?: string | undefined;
-};
 
-/** @internal */
-export const TriggerDestinations$outboundSchema: z.ZodType<
-  TriggerDestinations$Outbound,
-  z.ZodTypeDef,
-  TriggerDestinations
-> = z.object({
-  projectId: z.string(),
-  branch: z.string().optional(),
-  path: z.string().optional(),
-});
-
-export function triggerDestinationsToJSON(
-  triggerDestinations: TriggerDestinations,
-): string {
-  return JSON.stringify(
-    TriggerDestinations$outboundSchema.parse(triggerDestinations),
-  );
-}
 export function triggerDestinationsFromJSON(
   jsonString: string,
 ): SafeParseResult<TriggerDestinations, SDKValidationError> {
@@ -2011,29 +1358,7 @@ export const CreateConnectorProject$inboundSchema: z.ZodType<
   id: types.string(),
   name: types.string(),
 });
-/** @internal */
-export type CreateConnectorProject$Outbound = {
-  id: string;
-  name: string;
-};
 
-/** @internal */
-export const CreateConnectorProject$outboundSchema: z.ZodType<
-  CreateConnectorProject$Outbound,
-  z.ZodTypeDef,
-  CreateConnectorProject
-> = z.object({
-  id: z.string(),
-  name: z.string(),
-});
-
-export function createConnectorProjectToJSON(
-  createConnectorProject: CreateConnectorProject,
-): string {
-  return JSON.stringify(
-    CreateConnectorProject$outboundSchema.parse(createConnectorProject),
-  );
-}
 export function createConnectorProjectFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateConnectorProject, SDKValidationError> {
@@ -2048,10 +1373,6 @@ export function createConnectorProjectFromJSON(
 export const CreateConnectorEnvironments$inboundSchema: z.ZodNativeEnum<
   typeof CreateConnectorEnvironments
 > = z.nativeEnum(CreateConnectorEnvironments);
-/** @internal */
-export const CreateConnectorEnvironments$outboundSchema: z.ZodNativeEnum<
-  typeof CreateConnectorEnvironments
-> = CreateConnectorEnvironments$inboundSchema;
 
 /** @internal */
 export const CreateConnectorItems$inboundSchema: z.ZodType<
@@ -2066,37 +1387,7 @@ export const CreateConnectorItems$inboundSchema: z.ZodType<
   createdAt: types.number(),
   updatedAt: types.number(),
 });
-/** @internal */
-export type CreateConnectorItems$Outbound = {
-  clientId: string;
-  projectId: string;
-  project?: CreateConnectorProject$Outbound | undefined;
-  environments: Array<string>;
-  createdAt: number;
-  updatedAt: number;
-};
 
-/** @internal */
-export const CreateConnectorItems$outboundSchema: z.ZodType<
-  CreateConnectorItems$Outbound,
-  z.ZodTypeDef,
-  CreateConnectorItems
-> = z.object({
-  clientId: z.string(),
-  projectId: z.string(),
-  project: z.lazy(() => CreateConnectorProject$outboundSchema).optional(),
-  environments: z.array(CreateConnectorEnvironments$outboundSchema),
-  createdAt: z.number(),
-  updatedAt: z.number(),
-});
-
-export function createConnectorItemsToJSON(
-  createConnectorItems: CreateConnectorItems,
-): string {
-  return JSON.stringify(
-    CreateConnectorItems$outboundSchema.parse(createConnectorItems),
-  );
-}
 export function createConnectorItemsFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateConnectorItems, SDKValidationError> {
@@ -2117,31 +1408,7 @@ export const CreateConnectorProjects$inboundSchema: z.ZodType<
   hasMore: types.boolean(),
   cursor: z.nullable(types.string()).optional(),
 });
-/** @internal */
-export type CreateConnectorProjects$Outbound = {
-  items: Array<CreateConnectorItems$Outbound>;
-  hasMore: boolean;
-  cursor?: string | null | undefined;
-};
 
-/** @internal */
-export const CreateConnectorProjects$outboundSchema: z.ZodType<
-  CreateConnectorProjects$Outbound,
-  z.ZodTypeDef,
-  CreateConnectorProjects
-> = z.object({
-  items: z.array(z.lazy(() => CreateConnectorItems$outboundSchema)),
-  hasMore: z.boolean(),
-  cursor: z.nullable(z.string()).optional(),
-});
-
-export function createConnectorProjectsToJSON(
-  createConnectorProjects: CreateConnectorProjects,
-): string {
-  return JSON.stringify(
-    CreateConnectorProjects$outboundSchema.parse(createConnectorProjects),
-  );
-}
 export function createConnectorProjectsFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateConnectorProjects, SDKValidationError> {
@@ -2160,23 +1427,7 @@ export const Includes$inboundSchema: z.ZodType<
 > = z.object({
   projects: types.optional(z.lazy(() => CreateConnectorProjects$inboundSchema)),
 });
-/** @internal */
-export type Includes$Outbound = {
-  projects?: CreateConnectorProjects$Outbound | undefined;
-};
 
-/** @internal */
-export const Includes$outboundSchema: z.ZodType<
-  Includes$Outbound,
-  z.ZodTypeDef,
-  Includes
-> = z.object({
-  projects: z.lazy(() => CreateConnectorProjects$outboundSchema).optional(),
-});
-
-export function includesToJSON(includes: Includes): string {
-  return JSON.stringify(Includes$outboundSchema.parse(includes));
-}
 export function includesFromJSON(
   jsonString: string,
 ): SafeParseResult<Includes, SDKValidationError> {
@@ -2242,106 +1493,7 @@ export const CreateConnectorResponseBody$inboundSchema: z.ZodType<
   ),
   includes: types.optional(z.lazy(() => Includes$inboundSchema)),
 });
-/** @internal */
-export type CreateConnectorResponseBody$Outbound = {
-  id: string;
-  ownerId: string;
-  createdAt: number;
-  updatedAt: number;
-  deletedAt?: number | undefined;
-  createdBy?: CreatedBy1$Outbound | CreatedBy2$Outbound | undefined;
-  updatedBy?: UpdatedBy1$Outbound | UpdatedBy2$Outbound | undefined;
-  public: boolean;
-  uid: string;
-  type: string;
-  service: string;
-  name: string;
-  clientUrl?: string | null | undefined;
-  redirectUri?: string | undefined;
-  defaultInstallationId?: string | undefined;
-  data: { [k: string]: any };
-  typeName: string;
-  typeIcon?: string | undefined;
-  website?: string | undefined;
-  devsite?: string | undefined;
-  docsite?: string | undefined;
-  icon?: string | undefined;
-  backgroundColor?: string | undefined;
-  accentColor?: string | undefined;
-  supportedSubjectTypes: Array<string>;
-  appTokens?: AppTokens$Outbound | undefined;
-  userTokens?: UserTokens$Outbound | undefined;
-  supportsInstallation: boolean;
-  supportsRevocation: boolean;
-  ownerTenantId?: string | undefined;
-  supportsTriggers: boolean;
-  supportsIcon: string;
-  triggers?: Triggers$Outbound | undefined;
-  events?: Array<string> | undefined;
-  triggerDestinations?: Array<TriggerDestinations$Outbound> | undefined;
-  includes?: Includes$Outbound | undefined;
-};
 
-/** @internal */
-export const CreateConnectorResponseBody$outboundSchema: z.ZodType<
-  CreateConnectorResponseBody$Outbound,
-  z.ZodTypeDef,
-  CreateConnectorResponseBody
-> = z.object({
-  id: z.string(),
-  ownerId: z.string(),
-  createdAt: z.number(),
-  updatedAt: z.number(),
-  deletedAt: z.number().optional(),
-  createdBy: z.union([
-    z.lazy(() => CreatedBy1$outboundSchema),
-    z.lazy(() => CreatedBy2$outboundSchema),
-  ]).optional(),
-  updatedBy: z.union([
-    z.lazy(() => UpdatedBy1$outboundSchema),
-    z.lazy(() => UpdatedBy2$outboundSchema),
-  ]).optional(),
-  public: z.boolean(),
-  uid: z.string(),
-  type: CreateConnectorType$outboundSchema,
-  service: z.string(),
-  name: z.string(),
-  clientUrl: z.nullable(z.string()).optional(),
-  redirectUri: z.string().optional(),
-  defaultInstallationId: z.string().optional(),
-  data: z.record(z.any()),
-  typeName: z.string(),
-  typeIcon: z.string().optional(),
-  website: z.string().optional(),
-  devsite: z.string().optional(),
-  docsite: z.string().optional(),
-  icon: z.string().optional(),
-  backgroundColor: z.string().optional(),
-  accentColor: z.string().optional(),
-  supportedSubjectTypes: z.array(z.string()),
-  appTokens: z.lazy(() => AppTokens$outboundSchema).optional(),
-  userTokens: z.lazy(() => UserTokens$outboundSchema).optional(),
-  supportsInstallation: z.boolean(),
-  supportsRevocation: z.boolean(),
-  ownerTenantId: z.string().optional(),
-  supportsTriggers: z.boolean(),
-  supportsIcon: SupportsIcon$outboundSchema,
-  triggers: z.lazy(() => Triggers$outboundSchema).optional(),
-  events: z.array(z.string()).optional(),
-  triggerDestinations: z.array(z.lazy(() => TriggerDestinations$outboundSchema))
-    .optional(),
-  includes: z.lazy(() => Includes$outboundSchema).optional(),
-});
-
-export function createConnectorResponseBodyToJSON(
-  createConnectorResponseBody: CreateConnectorResponseBody,
-): string {
-  return JSON.stringify(
-    CreateConnectorResponseBody$outboundSchema.parse(
-      createConnectorResponseBody,
-    ),
-  );
-}
 export function createConnectorResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateConnectorResponseBody, SDKValidationError> {

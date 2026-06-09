@@ -5,27 +5,11 @@
 import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
-import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
-import {
-  Pagination,
-  Pagination$inboundSchema,
-  Pagination$Outbound,
-  Pagination$outboundSchema,
-} from "./pagination.js";
+import { Pagination, Pagination$inboundSchema } from "./pagination.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
-import {
-  Team,
-  Team$inboundSchema,
-  Team$Outbound,
-  Team$outboundSchema,
-} from "./team.js";
-import {
-  TeamLimited,
-  TeamLimited$inboundSchema,
-  TeamLimited$Outbound,
-  TeamLimited$outboundSchema,
-} from "./teamlimited.js";
+import { Team, Team$inboundSchema } from "./team.js";
+import { TeamLimited, TeamLimited$inboundSchema } from "./teamlimited.js";
 
 export type GetTeamsRequest = {
   /**
@@ -56,16 +40,6 @@ export type GetTeamsResponseBody = {
 };
 
 /** @internal */
-export const GetTeamsRequest$inboundSchema: z.ZodType<
-  GetTeamsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  limit: types.optional(types.number()),
-  since: types.optional(types.number()),
-  until: types.optional(types.number()),
-});
-/** @internal */
 export type GetTeamsRequest$Outbound = {
   limit?: number | undefined;
   since?: number | undefined;
@@ -88,15 +62,6 @@ export function getTeamsRequestToJSON(
 ): string {
   return JSON.stringify(GetTeamsRequest$outboundSchema.parse(getTeamsRequest));
 }
-export function getTeamsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetTeamsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetTeamsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetTeamsRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const GetTeamsTeams$inboundSchema: z.ZodType<
@@ -104,19 +69,7 @@ export const GetTeamsTeams$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = smartUnion([Team$inboundSchema, TeamLimited$inboundSchema]);
-/** @internal */
-export type GetTeamsTeams$Outbound = Team$Outbound | TeamLimited$Outbound;
 
-/** @internal */
-export const GetTeamsTeams$outboundSchema: z.ZodType<
-  GetTeamsTeams$Outbound,
-  z.ZodTypeDef,
-  GetTeamsTeams
-> = smartUnion([Team$outboundSchema, TeamLimited$outboundSchema]);
-
-export function getTeamsTeamsToJSON(getTeamsTeams: GetTeamsTeams): string {
-  return JSON.stringify(GetTeamsTeams$outboundSchema.parse(getTeamsTeams));
-}
 export function getTeamsTeamsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetTeamsTeams, SDKValidationError> {
@@ -136,29 +89,7 @@ export const GetTeamsResponseBody$inboundSchema: z.ZodType<
   teams: z.array(smartUnion([Team$inboundSchema, TeamLimited$inboundSchema])),
   pagination: Pagination$inboundSchema,
 });
-/** @internal */
-export type GetTeamsResponseBody$Outbound = {
-  teams: Array<Team$Outbound | TeamLimited$Outbound>;
-  pagination: Pagination$Outbound;
-};
 
-/** @internal */
-export const GetTeamsResponseBody$outboundSchema: z.ZodType<
-  GetTeamsResponseBody$Outbound,
-  z.ZodTypeDef,
-  GetTeamsResponseBody
-> = z.object({
-  teams: z.array(smartUnion([Team$outboundSchema, TeamLimited$outboundSchema])),
-  pagination: Pagination$outboundSchema,
-});
-
-export function getTeamsResponseBodyToJSON(
-  getTeamsResponseBody: GetTeamsResponseBody,
-): string {
-  return JSON.stringify(
-    GetTeamsResponseBody$outboundSchema.parse(getTeamsResponseBody),
-  );
-}
 export function getTeamsResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetTeamsResponseBody, SDKValidationError> {

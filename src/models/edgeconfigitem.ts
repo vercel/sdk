@@ -9,8 +9,6 @@ import * as types from "../types/primitives.js";
 import {
   EdgeConfigItemValue,
   EdgeConfigItemValue$inboundSchema,
-  EdgeConfigItemValue$Outbound,
-  EdgeConfigItemValue$outboundSchema,
 } from "./edgeconfigitemvalue.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
@@ -39,33 +37,7 @@ export const EdgeConfigItem$inboundSchema: z.ZodType<
   createdAt: types.number(),
   updatedAt: types.number(),
 });
-/** @internal */
-export type EdgeConfigItem$Outbound = {
-  key: string;
-  value: EdgeConfigItemValue$Outbound | null;
-  description?: string | undefined;
-  edgeConfigId: string;
-  createdAt: number;
-  updatedAt: number;
-};
 
-/** @internal */
-export const EdgeConfigItem$outboundSchema: z.ZodType<
-  EdgeConfigItem$Outbound,
-  z.ZodTypeDef,
-  EdgeConfigItem
-> = z.object({
-  key: z.string(),
-  value: z.nullable(EdgeConfigItemValue$outboundSchema),
-  description: z.string().optional(),
-  edgeConfigId: z.string(),
-  createdAt: z.number(),
-  updatedAt: z.number(),
-});
-
-export function edgeConfigItemToJSON(edgeConfigItem: EdgeConfigItem): string {
-  return JSON.stringify(EdgeConfigItem$outboundSchema.parse(edgeConfigItem));
-}
 export function edgeConfigItemFromJSON(
   jsonString: string,
 ): SafeParseResult<EdgeConfigItem, SDKValidationError> {

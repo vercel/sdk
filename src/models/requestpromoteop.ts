@@ -3,10 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
-import { Result as SafeParseResult } from "../types/fp.js";
-import * as types from "../types/primitives.js";
-import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type RequestPromoteRequest = {
   projectId: string;
@@ -21,17 +17,6 @@ export type RequestPromoteRequest = {
   slug?: string | undefined;
 };
 
-/** @internal */
-export const RequestPromoteRequest$inboundSchema: z.ZodType<
-  RequestPromoteRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  projectId: types.string(),
-  deploymentId: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
 /** @internal */
 export type RequestPromoteRequest$Outbound = {
   projectId: string;
@@ -57,14 +42,5 @@ export function requestPromoteRequestToJSON(
 ): string {
   return JSON.stringify(
     RequestPromoteRequest$outboundSchema.parse(requestPromoteRequest),
-  );
-}
-export function requestPromoteRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<RequestPromoteRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RequestPromoteRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RequestPromoteRequest' from JSON`,
   );
 }

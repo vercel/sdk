@@ -9,60 +9,36 @@ import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
-import {
-  BadRequest,
-  BadRequest$inboundSchema,
-  BadRequest$Outbound,
-  BadRequest$outboundSchema,
-} from "./badrequest.js";
+import { BadRequest, BadRequest$inboundSchema } from "./badrequest.js";
 import {
   DomainNotAvailable,
   DomainNotAvailable$inboundSchema,
-  DomainNotAvailable$Outbound,
-  DomainNotAvailable$outboundSchema,
 } from "./domainnotavailable.js";
 import {
   DomainNotRegistered,
   DomainNotRegistered$inboundSchema,
-  DomainNotRegistered$Outbound,
-  DomainNotRegistered$outboundSchema,
 } from "./domainnotregistered.js";
 import {
   DomainTooShort,
   DomainTooShort$inboundSchema,
-  DomainTooShort$Outbound,
-  DomainTooShort$outboundSchema,
 } from "./domaintooshort.js";
 import {
   ExpectedPriceMismatch,
   ExpectedPriceMismatch$inboundSchema,
-  ExpectedPriceMismatch$Outbound,
-  ExpectedPriceMismatch$outboundSchema,
 } from "./expectedpricemismatch.js";
-import {
-  Forbidden,
-  Forbidden$inboundSchema,
-  Forbidden$Outbound,
-  Forbidden$outboundSchema,
-} from "./forbidden.js";
+import { Forbidden, Forbidden$inboundSchema } from "./forbidden.js";
 import {
   HttpApiDecodeError,
   HttpApiDecodeError$inboundSchema,
-  HttpApiDecodeError$Outbound,
-  HttpApiDecodeError$outboundSchema,
 } from "./httpapidecodeerror.js";
 import {
   NotAuthorizedForScope,
   NotAuthorizedForScope$inboundSchema,
-  NotAuthorizedForScope$Outbound,
-  NotAuthorizedForScope$outboundSchema,
 } from "./notauthorizedforscope.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 import {
   TldNotSupported,
   TldNotSupported$inboundSchema,
-  TldNotSupported$Outbound,
-  TldNotSupported$outboundSchema,
 } from "./tldnotsupported.js";
 
 export type RenewDomainContactInformation = {
@@ -176,25 +152,6 @@ export type RenewDomainResponseBody = {
 };
 
 /** @internal */
-export const RenewDomainContactInformation$inboundSchema: z.ZodType<
-  RenewDomainContactInformation,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  firstName: types.string(),
-  lastName: types.string(),
-  email: types.string(),
-  phone: types.string(),
-  address1: types.string(),
-  address2: types.optional(types.string()),
-  city: types.string(),
-  state: types.string(),
-  zip: types.string(),
-  country: types.string(),
-  companyName: types.optional(types.string()),
-  fax: types.optional(types.string()),
-});
-/** @internal */
 export type RenewDomainContactInformation$Outbound = {
   firstName: string;
   lastName: string;
@@ -239,28 +196,7 @@ export function renewDomainContactInformationToJSON(
     ),
   );
 }
-export function renewDomainContactInformationFromJSON(
-  jsonString: string,
-): SafeParseResult<RenewDomainContactInformation, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RenewDomainContactInformation$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RenewDomainContactInformation' from JSON`,
-  );
-}
 
-/** @internal */
-export const RenewDomainRequestBody$inboundSchema: z.ZodType<
-  RenewDomainRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  years: types.number(),
-  expectedPrice: types.number(),
-  contactInformation: types.optional(
-    z.lazy(() => RenewDomainContactInformation$inboundSchema),
-  ),
-});
 /** @internal */
 export type RenewDomainRequestBody$Outbound = {
   years: number;
@@ -287,30 +223,7 @@ export function renewDomainRequestBodyToJSON(
     RenewDomainRequestBody$outboundSchema.parse(renewDomainRequestBody),
   );
 }
-export function renewDomainRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<RenewDomainRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RenewDomainRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RenewDomainRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const RenewDomainRequest$inboundSchema: z.ZodType<
-  RenewDomainRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  domain: types.string(),
-  teamId: types.optional(types.string()),
-  RequestBody: z.lazy(() => RenewDomainRequestBody$inboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 /** @internal */
 export type RenewDomainRequest$Outbound = {
   domain: string;
@@ -340,15 +253,6 @@ export function renewDomainRequestToJSON(
     RenewDomainRequest$outboundSchema.parse(renewDomainRequest),
   );
 }
-export function renewDomainRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<RenewDomainRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RenewDomainRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RenewDomainRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const RenewDomainDomainsRegistrarResponseResponseBody$inboundSchema:
@@ -362,34 +266,7 @@ export const RenewDomainDomainsRegistrarResponseResponseBody$inboundSchema:
     ),
     Forbidden$inboundSchema,
   ]);
-/** @internal */
-export type RenewDomainDomainsRegistrarResponseResponseBody$Outbound =
-  | (NotAuthorizedForScope$Outbound & { code: "not_authorized_for_scope" })
-  | Forbidden$Outbound;
 
-/** @internal */
-export const RenewDomainDomainsRegistrarResponseResponseBody$outboundSchema:
-  z.ZodType<
-    RenewDomainDomainsRegistrarResponseResponseBody$Outbound,
-    z.ZodTypeDef,
-    unknown
-  > = z.union([
-    NotAuthorizedForScope$outboundSchema.and(
-      z.object({ code: z.literal("not_authorized_for_scope") }),
-    ),
-    Forbidden$outboundSchema,
-  ]);
-
-export function renewDomainDomainsRegistrarResponseResponseBodyToJSON(
-  renewDomainDomainsRegistrarResponseResponseBody:
-    RenewDomainDomainsRegistrarResponseResponseBody,
-): string {
-  return JSON.stringify(
-    RenewDomainDomainsRegistrarResponseResponseBody$outboundSchema.parse(
-      renewDomainDomainsRegistrarResponseResponseBody,
-    ),
-  );
-}
 export function renewDomainDomainsRegistrarResponseResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -420,41 +297,7 @@ export const RenewDomainDomainsRegistrarResponseBody$inboundSchema: z.ZodType<
   TldNotSupported$inboundSchema,
   HttpApiDecodeError$inboundSchema,
 ]);
-/** @internal */
-export type RenewDomainDomainsRegistrarResponseBody$Outbound =
-  | BadRequest$Outbound
-  | DomainTooShort$Outbound
-  | DomainNotRegistered$Outbound
-  | ExpectedPriceMismatch$Outbound
-  | DomainNotAvailable$Outbound
-  | TldNotSupported$Outbound
-  | HttpApiDecodeError$Outbound;
 
-/** @internal */
-export const RenewDomainDomainsRegistrarResponseBody$outboundSchema: z.ZodType<
-  RenewDomainDomainsRegistrarResponseBody$Outbound,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([
-  BadRequest$outboundSchema,
-  DomainTooShort$outboundSchema,
-  DomainNotRegistered$outboundSchema,
-  ExpectedPriceMismatch$outboundSchema,
-  DomainNotAvailable$outboundSchema,
-  TldNotSupported$outboundSchema,
-  HttpApiDecodeError$outboundSchema,
-]);
-
-export function renewDomainDomainsRegistrarResponseBodyToJSON(
-  renewDomainDomainsRegistrarResponseBody:
-    RenewDomainDomainsRegistrarResponseBody,
-): string {
-  return JSON.stringify(
-    RenewDomainDomainsRegistrarResponseBody$outboundSchema.parse(
-      renewDomainDomainsRegistrarResponseBody,
-    ),
-  );
-}
 export function renewDomainDomainsRegistrarResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -475,10 +318,6 @@ export function renewDomainDomainsRegistrarResponseBodyFromJSON(
 export const RenewDomainMethod$inboundSchema: z.ZodNativeEnum<
   typeof RenewDomainMethod
 > = z.nativeEnum(RenewDomainMethod);
-/** @internal */
-export const RenewDomainMethod$outboundSchema: z.ZodNativeEnum<
-  typeof RenewDomainMethod
-> = RenewDomainMethod$inboundSchema;
 
 /** @internal */
 export const RenewDomainLinks$inboundSchema: z.ZodType<
@@ -489,29 +328,7 @@ export const RenewDomainLinks$inboundSchema: z.ZodType<
   href: types.string(),
   method: RenewDomainMethod$inboundSchema,
 });
-/** @internal */
-export type RenewDomainLinks$Outbound = {
-  href: string;
-  method: string;
-};
 
-/** @internal */
-export const RenewDomainLinks$outboundSchema: z.ZodType<
-  RenewDomainLinks$Outbound,
-  z.ZodTypeDef,
-  RenewDomainLinks
-> = z.object({
-  href: z.string(),
-  method: RenewDomainMethod$outboundSchema,
-});
-
-export function renewDomainLinksToJSON(
-  renewDomainLinks: RenewDomainLinks,
-): string {
-  return JSON.stringify(
-    RenewDomainLinks$outboundSchema.parse(renewDomainLinks),
-  );
-}
 export function renewDomainLinksFromJSON(
   jsonString: string,
 ): SafeParseResult<RenewDomainLinks, SDKValidationError> {
@@ -535,33 +352,7 @@ export const RenewDomainResponseBody$inboundSchema: z.ZodType<
     "_links": "links",
   });
 });
-/** @internal */
-export type RenewDomainResponseBody$Outbound = {
-  orderId: string;
-  _links: { [k: string]: RenewDomainLinks$Outbound };
-};
 
-/** @internal */
-export const RenewDomainResponseBody$outboundSchema: z.ZodType<
-  RenewDomainResponseBody$Outbound,
-  z.ZodTypeDef,
-  RenewDomainResponseBody
-> = z.object({
-  orderId: z.string(),
-  links: z.record(z.lazy(() => RenewDomainLinks$outboundSchema)),
-}).transform((v) => {
-  return remap$(v, {
-    links: "_links",
-  });
-});
-
-export function renewDomainResponseBodyToJSON(
-  renewDomainResponseBody: RenewDomainResponseBody,
-): string {
-  return JSON.stringify(
-    RenewDomainResponseBody$outboundSchema.parse(renewDomainResponseBody),
-  );
-}
 export function renewDomainResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<RenewDomainResponseBody, SDKValidationError> {

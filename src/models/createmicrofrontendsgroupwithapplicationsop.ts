@@ -77,15 +77,6 @@ export type CreateMicrofrontendsGroupWithApplicationsResponseBody = {
 };
 
 /** @internal */
-export const DefaultApp$inboundSchema: z.ZodType<
-  DefaultApp,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  projectId: types.string(),
-  defaultRoute: types.optional(types.string()),
-});
-/** @internal */
 export type DefaultApp$Outbound = {
   projectId: string;
   defaultRoute?: string | undefined;
@@ -104,25 +95,7 @@ export const DefaultApp$outboundSchema: z.ZodType<
 export function defaultAppToJSON(defaultApp: DefaultApp): string {
   return JSON.stringify(DefaultApp$outboundSchema.parse(defaultApp));
 }
-export function defaultAppFromJSON(
-  jsonString: string,
-): SafeParseResult<DefaultApp, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => DefaultApp$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DefaultApp' from JSON`,
-  );
-}
 
-/** @internal */
-export const OtherApplications$inboundSchema: z.ZodType<
-  OtherApplications,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  projectId: types.string(),
-  defaultRoute: types.optional(types.string()),
-});
 /** @internal */
 export type OtherApplications$Outbound = {
   projectId: string;
@@ -146,27 +119,7 @@ export function otherApplicationsToJSON(
     OtherApplications$outboundSchema.parse(otherApplications),
   );
 }
-export function otherApplicationsFromJSON(
-  jsonString: string,
-): SafeParseResult<OtherApplications, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => OtherApplications$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'OtherApplications' from JSON`,
-  );
-}
 
-/** @internal */
-export const CreateMicrofrontendsGroupWithApplicationsRequestBody$inboundSchema:
-  z.ZodType<
-    CreateMicrofrontendsGroupWithApplicationsRequestBody,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    groupName: types.string(),
-    defaultApp: z.lazy(() => DefaultApp$inboundSchema),
-    otherApplications: z.array(z.lazy(() => OtherApplications$inboundSchema)),
-  });
 /** @internal */
 export type CreateMicrofrontendsGroupWithApplicationsRequestBody$Outbound = {
   groupName: string;
@@ -196,41 +149,7 @@ export function createMicrofrontendsGroupWithApplicationsRequestBodyToJSON(
     ),
   );
 }
-export function createMicrofrontendsGroupWithApplicationsRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  CreateMicrofrontendsGroupWithApplicationsRequestBody,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      CreateMicrofrontendsGroupWithApplicationsRequestBody$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'CreateMicrofrontendsGroupWithApplicationsRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const CreateMicrofrontendsGroupWithApplicationsRequest$inboundSchema:
-  z.ZodType<
-    CreateMicrofrontendsGroupWithApplicationsRequest,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    teamId: types.optional(types.string()),
-    slug: types.optional(types.string()),
-    RequestBody: types.optional(
-      z.lazy(() =>
-        CreateMicrofrontendsGroupWithApplicationsRequestBody$inboundSchema
-      ),
-    ),
-  }).transform((v) => {
-    return remap$(v, {
-      "RequestBody": "requestBody",
-    });
-  });
 /** @internal */
 export type CreateMicrofrontendsGroupWithApplicationsRequest$Outbound = {
   teamId?: string | undefined;
@@ -268,21 +187,6 @@ export function createMicrofrontendsGroupWithApplicationsRequestToJSON(
     ),
   );
 }
-export function createMicrofrontendsGroupWithApplicationsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  CreateMicrofrontendsGroupWithApplicationsRequest,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      CreateMicrofrontendsGroupWithApplicationsRequest$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'CreateMicrofrontendsGroupWithApplicationsRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const NewMicrofrontendsGroup$inboundSchema: z.ZodType<
@@ -297,37 +201,7 @@ export const NewMicrofrontendsGroup$inboundSchema: z.ZodType<
   createdAt: types.number(),
   updatedAt: types.number(),
 });
-/** @internal */
-export type NewMicrofrontendsGroup$Outbound = {
-  id: string;
-  slug: string;
-  name: string;
-  fallbackEnvironment: string;
-  createdAt: number;
-  updatedAt: number;
-};
 
-/** @internal */
-export const NewMicrofrontendsGroup$outboundSchema: z.ZodType<
-  NewMicrofrontendsGroup$Outbound,
-  z.ZodTypeDef,
-  NewMicrofrontendsGroup
-> = z.object({
-  id: z.string(),
-  slug: z.string(),
-  name: z.string(),
-  fallbackEnvironment: z.string(),
-  createdAt: z.number(),
-  updatedAt: z.number(),
-});
-
-export function newMicrofrontendsGroupToJSON(
-  newMicrofrontendsGroup: NewMicrofrontendsGroup,
-): string {
-  return JSON.stringify(
-    NewMicrofrontendsGroup$outboundSchema.parse(newMicrofrontendsGroup),
-  );
-}
 export function newMicrofrontendsGroupFromJSON(
   jsonString: string,
 ): SafeParseResult<NewMicrofrontendsGroup, SDKValidationError> {
@@ -347,31 +221,7 @@ export const CreateMicrofrontendsGroupWithApplicationsResponseBody$inboundSchema
   > = z.object({
     newMicrofrontendsGroup: z.lazy(() => NewMicrofrontendsGroup$inboundSchema),
   });
-/** @internal */
-export type CreateMicrofrontendsGroupWithApplicationsResponseBody$Outbound = {
-  newMicrofrontendsGroup: NewMicrofrontendsGroup$Outbound;
-};
 
-/** @internal */
-export const CreateMicrofrontendsGroupWithApplicationsResponseBody$outboundSchema:
-  z.ZodType<
-    CreateMicrofrontendsGroupWithApplicationsResponseBody$Outbound,
-    z.ZodTypeDef,
-    CreateMicrofrontendsGroupWithApplicationsResponseBody
-  > = z.object({
-    newMicrofrontendsGroup: z.lazy(() => NewMicrofrontendsGroup$outboundSchema),
-  });
-
-export function createMicrofrontendsGroupWithApplicationsResponseBodyToJSON(
-  createMicrofrontendsGroupWithApplicationsResponseBody:
-    CreateMicrofrontendsGroupWithApplicationsResponseBody,
-): string {
-  return JSON.stringify(
-    CreateMicrofrontendsGroupWithApplicationsResponseBody$outboundSchema.parse(
-      createMicrofrontendsGroupWithApplicationsResponseBody,
-    ),
-  );
-}
 export function createMicrofrontendsGroupWithApplicationsResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<

@@ -7,18 +7,8 @@ import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
-import {
-  AuthToken,
-  AuthToken$inboundSchema,
-  AuthToken$Outbound,
-  AuthToken$outboundSchema,
-} from "./authtoken.js";
-import {
-  Pagination,
-  Pagination$inboundSchema,
-  Pagination$Outbound,
-  Pagination$outboundSchema,
-} from "./pagination.js";
+import { AuthToken, AuthToken$inboundSchema } from "./authtoken.js";
+import { Pagination, Pagination$inboundSchema } from "./pagination.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type ListAuthTokensResponseBody2 = {
@@ -53,31 +43,7 @@ export const ListAuthTokensResponseBody2$inboundSchema: z.ZodType<
   tokens: z.array(AuthToken$inboundSchema),
   pagination: Pagination$inboundSchema,
 });
-/** @internal */
-export type ListAuthTokensResponseBody2$Outbound = {
-  tokens: Array<AuthToken$Outbound>;
-  pagination: Pagination$Outbound;
-};
 
-/** @internal */
-export const ListAuthTokensResponseBody2$outboundSchema: z.ZodType<
-  ListAuthTokensResponseBody2$Outbound,
-  z.ZodTypeDef,
-  ListAuthTokensResponseBody2
-> = z.object({
-  tokens: z.array(AuthToken$outboundSchema),
-  pagination: Pagination$outboundSchema,
-});
-
-export function listAuthTokensResponseBody2ToJSON(
-  listAuthTokensResponseBody2: ListAuthTokensResponseBody2,
-): string {
-  return JSON.stringify(
-    ListAuthTokensResponseBody2$outboundSchema.parse(
-      listAuthTokensResponseBody2,
-    ),
-  );
-}
 export function listAuthTokensResponseBody2FromJSON(
   jsonString: string,
 ): SafeParseResult<ListAuthTokensResponseBody2, SDKValidationError> {
@@ -98,33 +64,7 @@ export const ListAuthTokensResponseBodyPagination$inboundSchema: z.ZodType<
   next: types.nullable(types.string()),
   prev: types.nullable(types.string()),
 });
-/** @internal */
-export type ListAuthTokensResponseBodyPagination$Outbound = {
-  count: number;
-  next: string | null;
-  prev: string | null;
-};
 
-/** @internal */
-export const ListAuthTokensResponseBodyPagination$outboundSchema: z.ZodType<
-  ListAuthTokensResponseBodyPagination$Outbound,
-  z.ZodTypeDef,
-  ListAuthTokensResponseBodyPagination
-> = z.object({
-  count: z.number(),
-  next: z.nullable(z.string()),
-  prev: z.nullable(z.string()),
-});
-
-export function listAuthTokensResponseBodyPaginationToJSON(
-  listAuthTokensResponseBodyPagination: ListAuthTokensResponseBodyPagination,
-): string {
-  return JSON.stringify(
-    ListAuthTokensResponseBodyPagination$outboundSchema.parse(
-      listAuthTokensResponseBodyPagination,
-    ),
-  );
-}
 export function listAuthTokensResponseBodyPaginationFromJSON(
   jsonString: string,
 ): SafeParseResult<ListAuthTokensResponseBodyPagination, SDKValidationError> {
@@ -145,31 +85,7 @@ export const ListAuthTokensResponseBody1$inboundSchema: z.ZodType<
   tokens: z.array(AuthToken$inboundSchema),
   pagination: z.lazy(() => ListAuthTokensResponseBodyPagination$inboundSchema),
 });
-/** @internal */
-export type ListAuthTokensResponseBody1$Outbound = {
-  tokens: Array<AuthToken$Outbound>;
-  pagination: ListAuthTokensResponseBodyPagination$Outbound;
-};
 
-/** @internal */
-export const ListAuthTokensResponseBody1$outboundSchema: z.ZodType<
-  ListAuthTokensResponseBody1$Outbound,
-  z.ZodTypeDef,
-  ListAuthTokensResponseBody1
-> = z.object({
-  tokens: z.array(AuthToken$outboundSchema),
-  pagination: z.lazy(() => ListAuthTokensResponseBodyPagination$outboundSchema),
-});
-
-export function listAuthTokensResponseBody1ToJSON(
-  listAuthTokensResponseBody1: ListAuthTokensResponseBody1,
-): string {
-  return JSON.stringify(
-    ListAuthTokensResponseBody1$outboundSchema.parse(
-      listAuthTokensResponseBody1,
-    ),
-  );
-}
 export function listAuthTokensResponseBody1FromJSON(
   jsonString: string,
 ): SafeParseResult<ListAuthTokensResponseBody1, SDKValidationError> {
@@ -189,28 +105,7 @@ export const ListAuthTokensResponseBody$inboundSchema: z.ZodType<
   z.lazy(() => ListAuthTokensResponseBody1$inboundSchema),
   z.lazy(() => ListAuthTokensResponseBody2$inboundSchema),
 ]);
-/** @internal */
-export type ListAuthTokensResponseBody$Outbound =
-  | ListAuthTokensResponseBody1$Outbound
-  | ListAuthTokensResponseBody2$Outbound;
 
-/** @internal */
-export const ListAuthTokensResponseBody$outboundSchema: z.ZodType<
-  ListAuthTokensResponseBody$Outbound,
-  z.ZodTypeDef,
-  ListAuthTokensResponseBody
-> = smartUnion([
-  z.lazy(() => ListAuthTokensResponseBody1$outboundSchema),
-  z.lazy(() => ListAuthTokensResponseBody2$outboundSchema),
-]);
-
-export function listAuthTokensResponseBodyToJSON(
-  listAuthTokensResponseBody: ListAuthTokensResponseBody,
-): string {
-  return JSON.stringify(
-    ListAuthTokensResponseBody$outboundSchema.parse(listAuthTokensResponseBody),
-  );
-}
 export function listAuthTokensResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<ListAuthTokensResponseBody, SDKValidationError> {

@@ -400,34 +400,15 @@ export type GetConfigurationsResponseBody =
   | Array<GetConfigurationsResponseBody2>;
 
 /** @internal */
-export const View$inboundSchema: z.ZodNativeEnum<typeof View> = z.nativeEnum(
+export const View$outboundSchema: z.ZodNativeEnum<typeof View> = z.nativeEnum(
   View,
 );
-/** @internal */
-export const View$outboundSchema: z.ZodNativeEnum<typeof View> =
-  View$inboundSchema;
 
-/** @internal */
-export const InstallationType$inboundSchema: z.ZodNativeEnum<
-  typeof InstallationType
-> = z.nativeEnum(InstallationType);
 /** @internal */
 export const InstallationType$outboundSchema: z.ZodNativeEnum<
   typeof InstallationType
-> = InstallationType$inboundSchema;
+> = z.nativeEnum(InstallationType);
 
-/** @internal */
-export const GetConfigurationsRequest$inboundSchema: z.ZodType<
-  GetConfigurationsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  view: View$inboundSchema,
-  installationType: types.optional(InstallationType$inboundSchema),
-  integrationIdOrSlug: types.optional(types.string()),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
 /** @internal */
 export type GetConfigurationsRequest$Outbound = {
   view: string;
@@ -457,22 +438,10 @@ export function getConfigurationsRequestToJSON(
     GetConfigurationsRequest$outboundSchema.parse(getConfigurationsRequest),
   );
 }
-export function getConfigurationsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetConfigurationsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetConfigurationsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetConfigurationsRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const TagIds$inboundSchema: z.ZodNativeEnum<typeof TagIds> = z
   .nativeEnum(TagIds);
-/** @internal */
-export const TagIds$outboundSchema: z.ZodNativeEnum<typeof TagIds> =
-  TagIds$inboundSchema;
 
 /** @internal */
 export const ResponseBodyIntegration$inboundSchema: z.ZodType<
@@ -487,37 +456,7 @@ export const ResponseBodyIntegration$inboundSchema: z.ZodType<
   assignedBetaLabelAt: types.optional(types.number()),
   tagIds: types.optional(z.array(TagIds$inboundSchema)),
 });
-/** @internal */
-export type ResponseBodyIntegration$Outbound = {
-  name: string;
-  icon: string;
-  isLegacy: boolean;
-  flags?: Array<string> | undefined;
-  assignedBetaLabelAt?: number | undefined;
-  tagIds?: Array<string> | undefined;
-};
 
-/** @internal */
-export const ResponseBodyIntegration$outboundSchema: z.ZodType<
-  ResponseBodyIntegration$Outbound,
-  z.ZodTypeDef,
-  ResponseBodyIntegration
-> = z.object({
-  name: z.string(),
-  icon: z.string(),
-  isLegacy: z.boolean(),
-  flags: z.array(z.string()).optional(),
-  assignedBetaLabelAt: z.number().optional(),
-  tagIds: z.array(TagIds$outboundSchema).optional(),
-});
-
-export function responseBodyIntegrationToJSON(
-  responseBodyIntegration: ResponseBodyIntegration,
-): string {
-  return JSON.stringify(
-    ResponseBodyIntegration$outboundSchema.parse(responseBodyIntegration),
-  );
-}
 export function responseBodyIntegrationFromJSON(
   jsonString: string,
 ): SafeParseResult<ResponseBodyIntegration, SDKValidationError> {
@@ -532,48 +471,27 @@ export function responseBodyIntegrationFromJSON(
 export const GetConfigurationsResponseBodyIntegrationsStatus$inboundSchema:
   z.ZodNativeEnum<typeof GetConfigurationsResponseBodyIntegrationsStatus> = z
     .nativeEnum(GetConfigurationsResponseBodyIntegrationsStatus);
-/** @internal */
-export const GetConfigurationsResponseBodyIntegrationsStatus$outboundSchema:
-  z.ZodNativeEnum<typeof GetConfigurationsResponseBodyIntegrationsStatus> =
-    GetConfigurationsResponseBodyIntegrationsStatus$inboundSchema;
 
 /** @internal */
 export const GetConfigurationsResponseBodyIntegrationsSource$inboundSchema:
   z.ZodNativeEnum<typeof GetConfigurationsResponseBodyIntegrationsSource> = z
     .nativeEnum(GetConfigurationsResponseBodyIntegrationsSource);
-/** @internal */
-export const GetConfigurationsResponseBodyIntegrationsSource$outboundSchema:
-  z.ZodNativeEnum<typeof GetConfigurationsResponseBodyIntegrationsSource> =
-    GetConfigurationsResponseBodyIntegrationsSource$inboundSchema;
 
 /** @internal */
 export const GetConfigurationsResponseBodyIntegrationsType$inboundSchema:
   z.ZodNativeEnum<typeof GetConfigurationsResponseBodyIntegrationsType> = z
     .nativeEnum(GetConfigurationsResponseBodyIntegrationsType);
-/** @internal */
-export const GetConfigurationsResponseBodyIntegrationsType$outboundSchema:
-  z.ZodNativeEnum<typeof GetConfigurationsResponseBodyIntegrationsType> =
-    GetConfigurationsResponseBodyIntegrationsType$inboundSchema;
 
 /** @internal */
 export const GetConfigurationsResponseBodyIntegrationsDisabledReason$inboundSchema:
   z.ZodNativeEnum<
     typeof GetConfigurationsResponseBodyIntegrationsDisabledReason
   > = z.nativeEnum(GetConfigurationsResponseBodyIntegrationsDisabledReason);
-/** @internal */
-export const GetConfigurationsResponseBodyIntegrationsDisabledReason$outboundSchema:
-  z.ZodNativeEnum<
-    typeof GetConfigurationsResponseBodyIntegrationsDisabledReason
-  > = GetConfigurationsResponseBodyIntegrationsDisabledReason$inboundSchema;
 
 /** @internal */
 export const GetConfigurationsResponseBodyInstallationType$inboundSchema:
   z.ZodNativeEnum<typeof GetConfigurationsResponseBodyInstallationType> = z
     .nativeEnum(GetConfigurationsResponseBodyInstallationType);
-/** @internal */
-export const GetConfigurationsResponseBodyInstallationType$outboundSchema:
-  z.ZodNativeEnum<typeof GetConfigurationsResponseBodyInstallationType> =
-    GetConfigurationsResponseBodyInstallationType$inboundSchema;
 
 /** @internal */
 export const GetConfigurationsResponseBody2$inboundSchema: z.ZodType<
@@ -612,76 +530,7 @@ export const GetConfigurationsResponseBody2$inboundSchema: z.ZodType<
     GetConfigurationsResponseBodyInstallationType$inboundSchema,
   ),
 });
-/** @internal */
-export type GetConfigurationsResponseBody2$Outbound = {
-  integration: ResponseBodyIntegration$Outbound;
-  completedAt?: number | undefined;
-  createdAt: number;
-  id: string;
-  integrationId: string;
-  ownerId: string;
-  status?: string | undefined;
-  externalId?: string | undefined;
-  projects?: Array<string> | undefined;
-  source?: string | undefined;
-  slug: string;
-  teamId?: string | null | undefined;
-  type: string;
-  updatedAt: number;
-  userId: string;
-  scopes: Array<string>;
-  disabledAt?: number | undefined;
-  deletedAt?: number | null | undefined;
-  deleteRequestedAt?: number | null | undefined;
-  customerDeleteRequestedAt?: number | null | undefined;
-  disabledReason?: string | undefined;
-  installationType?: string | undefined;
-};
 
-/** @internal */
-export const GetConfigurationsResponseBody2$outboundSchema: z.ZodType<
-  GetConfigurationsResponseBody2$Outbound,
-  z.ZodTypeDef,
-  GetConfigurationsResponseBody2
-> = z.object({
-  integration: z.lazy(() => ResponseBodyIntegration$outboundSchema),
-  completedAt: z.number().optional(),
-  createdAt: z.number(),
-  id: z.string(),
-  integrationId: z.string(),
-  ownerId: z.string(),
-  status: GetConfigurationsResponseBodyIntegrationsStatus$outboundSchema
-    .optional(),
-  externalId: z.string().optional(),
-  projects: z.array(z.string()).optional(),
-  source: GetConfigurationsResponseBodyIntegrationsSource$outboundSchema
-    .optional(),
-  slug: z.string(),
-  teamId: z.nullable(z.string()).optional(),
-  type: GetConfigurationsResponseBodyIntegrationsType$outboundSchema,
-  updatedAt: z.number(),
-  userId: z.string(),
-  scopes: z.array(z.string()),
-  disabledAt: z.number().optional(),
-  deletedAt: z.nullable(z.number()).optional(),
-  deleteRequestedAt: z.nullable(z.number()).optional(),
-  customerDeleteRequestedAt: z.nullable(z.number()).optional(),
-  disabledReason:
-    GetConfigurationsResponseBodyIntegrationsDisabledReason$outboundSchema
-      .optional(),
-  installationType: GetConfigurationsResponseBodyInstallationType$outboundSchema
-    .optional(),
-});
-
-export function getConfigurationsResponseBody2ToJSON(
-  getConfigurationsResponseBody2: GetConfigurationsResponseBody2,
-): string {
-  return JSON.stringify(
-    GetConfigurationsResponseBody2$outboundSchema.parse(
-      getConfigurationsResponseBody2,
-    ),
-  );
-}
 export function getConfigurationsResponseBody2FromJSON(
   jsonString: string,
 ): SafeParseResult<GetConfigurationsResponseBody2, SDKValidationError> {
@@ -696,46 +545,26 @@ export function getConfigurationsResponseBody2FromJSON(
 export const GetConfigurationsResponseBodyStatus$inboundSchema: z.ZodNativeEnum<
   typeof GetConfigurationsResponseBodyStatus
 > = z.nativeEnum(GetConfigurationsResponseBodyStatus);
-/** @internal */
-export const GetConfigurationsResponseBodyStatus$outboundSchema:
-  z.ZodNativeEnum<typeof GetConfigurationsResponseBodyStatus> =
-    GetConfigurationsResponseBodyStatus$inboundSchema;
 
 /** @internal */
 export const GetConfigurationsResponseBodySource$inboundSchema: z.ZodNativeEnum<
   typeof GetConfigurationsResponseBodySource
 > = z.nativeEnum(GetConfigurationsResponseBodySource);
-/** @internal */
-export const GetConfigurationsResponseBodySource$outboundSchema:
-  z.ZodNativeEnum<typeof GetConfigurationsResponseBodySource> =
-    GetConfigurationsResponseBodySource$inboundSchema;
 
 /** @internal */
 export const GetConfigurationsResponseBodyType$inboundSchema: z.ZodNativeEnum<
   typeof GetConfigurationsResponseBodyType
 > = z.nativeEnum(GetConfigurationsResponseBodyType);
-/** @internal */
-export const GetConfigurationsResponseBodyType$outboundSchema: z.ZodNativeEnum<
-  typeof GetConfigurationsResponseBodyType
-> = GetConfigurationsResponseBodyType$inboundSchema;
 
 /** @internal */
 export const GetConfigurationsResponseBodyDisabledReason$inboundSchema:
   z.ZodNativeEnum<typeof GetConfigurationsResponseBodyDisabledReason> = z
     .nativeEnum(GetConfigurationsResponseBodyDisabledReason);
-/** @internal */
-export const GetConfigurationsResponseBodyDisabledReason$outboundSchema:
-  z.ZodNativeEnum<typeof GetConfigurationsResponseBodyDisabledReason> =
-    GetConfigurationsResponseBodyDisabledReason$inboundSchema;
 
 /** @internal */
 export const ResponseBodyInstallationType$inboundSchema: z.ZodNativeEnum<
   typeof ResponseBodyInstallationType
 > = z.nativeEnum(ResponseBodyInstallationType);
-/** @internal */
-export const ResponseBodyInstallationType$outboundSchema: z.ZodNativeEnum<
-  typeof ResponseBodyInstallationType
-> = ResponseBodyInstallationType$inboundSchema;
 
 /** @internal */
 export const GetConfigurationsResponseBody1$inboundSchema: z.ZodType<
@@ -767,70 +596,7 @@ export const GetConfigurationsResponseBody1$inboundSchema: z.ZodType<
   ),
   installationType: types.optional(ResponseBodyInstallationType$inboundSchema),
 });
-/** @internal */
-export type GetConfigurationsResponseBody1$Outbound = {
-  completedAt?: number | undefined;
-  createdAt?: number | undefined;
-  id?: string | undefined;
-  integrationId?: string | undefined;
-  ownerId?: string | undefined;
-  status?: string | undefined;
-  externalId?: string | undefined;
-  projects?: Array<string> | undefined;
-  source?: string | undefined;
-  slug?: string | undefined;
-  teamId?: string | null | undefined;
-  type?: string | undefined;
-  updatedAt?: number | undefined;
-  userId?: string | undefined;
-  scopes?: Array<string> | undefined;
-  disabledAt?: number | undefined;
-  deletedAt?: number | null | undefined;
-  deleteRequestedAt?: number | null | undefined;
-  customerDeleteRequestedAt?: number | null | undefined;
-  disabledReason?: string | undefined;
-  installationType?: string | undefined;
-};
 
-/** @internal */
-export const GetConfigurationsResponseBody1$outboundSchema: z.ZodType<
-  GetConfigurationsResponseBody1$Outbound,
-  z.ZodTypeDef,
-  GetConfigurationsResponseBody1
-> = z.object({
-  completedAt: z.number().optional(),
-  createdAt: z.number().optional(),
-  id: z.string().optional(),
-  integrationId: z.string().optional(),
-  ownerId: z.string().optional(),
-  status: GetConfigurationsResponseBodyStatus$outboundSchema.optional(),
-  externalId: z.string().optional(),
-  projects: z.array(z.string()).optional(),
-  source: GetConfigurationsResponseBodySource$outboundSchema.optional(),
-  slug: z.string().optional(),
-  teamId: z.nullable(z.string()).optional(),
-  type: GetConfigurationsResponseBodyType$outboundSchema.optional(),
-  updatedAt: z.number().optional(),
-  userId: z.string().optional(),
-  scopes: z.array(z.string()).optional(),
-  disabledAt: z.number().optional(),
-  deletedAt: z.nullable(z.number()).optional(),
-  deleteRequestedAt: z.nullable(z.number()).optional(),
-  customerDeleteRequestedAt: z.nullable(z.number()).optional(),
-  disabledReason: GetConfigurationsResponseBodyDisabledReason$outboundSchema
-    .optional(),
-  installationType: ResponseBodyInstallationType$outboundSchema.optional(),
-});
-
-export function getConfigurationsResponseBody1ToJSON(
-  getConfigurationsResponseBody1: GetConfigurationsResponseBody1,
-): string {
-  return JSON.stringify(
-    GetConfigurationsResponseBody1$outboundSchema.parse(
-      getConfigurationsResponseBody1,
-    ),
-  );
-}
 export function getConfigurationsResponseBody1FromJSON(
   jsonString: string,
 ): SafeParseResult<GetConfigurationsResponseBody1, SDKValidationError> {
@@ -850,30 +616,7 @@ export const GetConfigurationsResponseBody$inboundSchema: z.ZodType<
   z.array(z.lazy(() => GetConfigurationsResponseBody1$inboundSchema)),
   z.array(z.lazy(() => GetConfigurationsResponseBody2$inboundSchema)),
 ]);
-/** @internal */
-export type GetConfigurationsResponseBody$Outbound =
-  | Array<GetConfigurationsResponseBody1$Outbound>
-  | Array<GetConfigurationsResponseBody2$Outbound>;
 
-/** @internal */
-export const GetConfigurationsResponseBody$outboundSchema: z.ZodType<
-  GetConfigurationsResponseBody$Outbound,
-  z.ZodTypeDef,
-  GetConfigurationsResponseBody
-> = smartUnion([
-  z.array(z.lazy(() => GetConfigurationsResponseBody1$outboundSchema)),
-  z.array(z.lazy(() => GetConfigurationsResponseBody2$outboundSchema)),
-]);
-
-export function getConfigurationsResponseBodyToJSON(
-  getConfigurationsResponseBody: GetConfigurationsResponseBody,
-): string {
-  return JSON.stringify(
-    GetConfigurationsResponseBody$outboundSchema.parse(
-      getConfigurationsResponseBody,
-    ),
-  );
-}
 export function getConfigurationsResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetConfigurationsResponseBody, SDKValidationError> {

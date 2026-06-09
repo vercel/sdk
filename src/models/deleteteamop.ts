@@ -61,15 +61,6 @@ export type DeleteTeamResponseBody = {
 };
 
 /** @internal */
-export const DeleteTeamReasons$inboundSchema: z.ZodType<
-  DeleteTeamReasons,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  slug: types.string(),
-  description: types.string(),
-});
-/** @internal */
 export type DeleteTeamReasons$Outbound = {
   slug: string;
   description: string;
@@ -92,26 +83,7 @@ export function deleteTeamReasonsToJSON(
     DeleteTeamReasons$outboundSchema.parse(deleteTeamReasons),
   );
 }
-export function deleteTeamReasonsFromJSON(
-  jsonString: string,
-): SafeParseResult<DeleteTeamReasons, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => DeleteTeamReasons$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DeleteTeamReasons' from JSON`,
-  );
-}
 
-/** @internal */
-export const DeleteTeamRequestBody$inboundSchema: z.ZodType<
-  DeleteTeamRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  reasons: types.optional(
-    z.array(z.lazy(() => DeleteTeamReasons$inboundSchema)),
-  ),
-});
 /** @internal */
 export type DeleteTeamRequestBody$Outbound = {
   reasons?: Array<DeleteTeamReasons$Outbound> | undefined;
@@ -133,31 +105,7 @@ export function deleteTeamRequestBodyToJSON(
     DeleteTeamRequestBody$outboundSchema.parse(deleteTeamRequestBody),
   );
 }
-export function deleteTeamRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<DeleteTeamRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => DeleteTeamRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DeleteTeamRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const DeleteTeamRequest$inboundSchema: z.ZodType<
-  DeleteTeamRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  newDefaultTeamId: types.optional(types.string()),
-  teamId: types.string(),
-  slug: types.optional(types.string()),
-  RequestBody: z.lazy(() => DeleteTeamRequestBody$inboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 /** @internal */
 export type DeleteTeamRequest$Outbound = {
   newDefaultTeamId?: string | undefined;
@@ -189,15 +137,6 @@ export function deleteTeamRequestToJSON(
     DeleteTeamRequest$outboundSchema.parse(deleteTeamRequest),
   );
 }
-export function deleteTeamRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<DeleteTeamRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => DeleteTeamRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DeleteTeamRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const DeleteTeamResponseBody$inboundSchema: z.ZodType<
@@ -208,29 +147,7 @@ export const DeleteTeamResponseBody$inboundSchema: z.ZodType<
   id: types.string(),
   newDefaultTeamIdError: types.optional(types.boolean()),
 });
-/** @internal */
-export type DeleteTeamResponseBody$Outbound = {
-  id: string;
-  newDefaultTeamIdError?: boolean | undefined;
-};
 
-/** @internal */
-export const DeleteTeamResponseBody$outboundSchema: z.ZodType<
-  DeleteTeamResponseBody$Outbound,
-  z.ZodTypeDef,
-  DeleteTeamResponseBody
-> = z.object({
-  id: z.string(),
-  newDefaultTeamIdError: z.boolean().optional(),
-});
-
-export function deleteTeamResponseBodyToJSON(
-  deleteTeamResponseBody: DeleteTeamResponseBody,
-): string {
-  return JSON.stringify(
-    DeleteTeamResponseBody$outboundSchema.parse(deleteTeamResponseBody),
-  );
-}
 export function deleteTeamResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<DeleteTeamResponseBody, SDKValidationError> {

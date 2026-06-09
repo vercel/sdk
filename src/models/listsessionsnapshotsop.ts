@@ -9,12 +9,7 @@ import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
-import {
-  Snapshot,
-  Snapshot$inboundSchema,
-  Snapshot$Outbound,
-  Snapshot$outboundSchema,
-} from "./snapshot.js";
+import { Snapshot, Snapshot$inboundSchema } from "./snapshot.js";
 
 /**
  * Sort direction for results by creation time.
@@ -78,30 +73,10 @@ export type ListSessionSnapshotsResponseBody =
   | ListSessionSnapshotsResponseBody1;
 
 /** @internal */
-export const ListSessionSnapshotsQueryParamSortOrder$inboundSchema:
+export const ListSessionSnapshotsQueryParamSortOrder$outboundSchema:
   z.ZodNativeEnum<typeof ListSessionSnapshotsQueryParamSortOrder> = z
     .nativeEnum(ListSessionSnapshotsQueryParamSortOrder);
-/** @internal */
-export const ListSessionSnapshotsQueryParamSortOrder$outboundSchema:
-  z.ZodNativeEnum<typeof ListSessionSnapshotsQueryParamSortOrder> =
-    ListSessionSnapshotsQueryParamSortOrder$inboundSchema;
 
-/** @internal */
-export const ListSessionSnapshotsRequest$inboundSchema: z.ZodType<
-  ListSessionSnapshotsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  project: types.optional(types.string()),
-  name: types.optional(types.string()),
-  limit: types.number().default(20),
-  cursor: types.optional(types.string()),
-  sortOrder: ListSessionSnapshotsQueryParamSortOrder$inboundSchema.default(
-    "desc",
-  ),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
 /** @internal */
 export type ListSessionSnapshotsRequest$Outbound = {
   project?: string | undefined;
@@ -139,15 +114,6 @@ export function listSessionSnapshotsRequestToJSON(
     ),
   );
 }
-export function listSessionSnapshotsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<ListSessionSnapshotsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ListSessionSnapshotsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ListSessionSnapshotsRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const ListSessionSnapshotsResponseBodyPagination$inboundSchema:
@@ -156,33 +122,7 @@ export const ListSessionSnapshotsResponseBodyPagination$inboundSchema:
       count: types.number(),
       next: types.nullable(types.string()),
     });
-/** @internal */
-export type ListSessionSnapshotsResponseBodyPagination$Outbound = {
-  count: number;
-  next: string | null;
-};
 
-/** @internal */
-export const ListSessionSnapshotsResponseBodyPagination$outboundSchema:
-  z.ZodType<
-    ListSessionSnapshotsResponseBodyPagination$Outbound,
-    z.ZodTypeDef,
-    ListSessionSnapshotsResponseBodyPagination
-  > = z.object({
-    count: z.number(),
-    next: z.nullable(z.string()),
-  });
-
-export function listSessionSnapshotsResponseBodyPaginationToJSON(
-  listSessionSnapshotsResponseBodyPagination:
-    ListSessionSnapshotsResponseBodyPagination,
-): string {
-  return JSON.stringify(
-    ListSessionSnapshotsResponseBodyPagination$outboundSchema.parse(
-      listSessionSnapshotsResponseBodyPagination,
-    ),
-  );
-}
 export function listSessionSnapshotsResponseBodyPaginationFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -210,33 +150,7 @@ export const ListSessionSnapshotsResponseBody2$inboundSchema: z.ZodType<
     ListSessionSnapshotsResponseBodyPagination$inboundSchema
   ),
 });
-/** @internal */
-export type ListSessionSnapshotsResponseBody2$Outbound = {
-  snapshots: Array<Snapshot$Outbound>;
-  pagination: ListSessionSnapshotsResponseBodyPagination$Outbound;
-};
 
-/** @internal */
-export const ListSessionSnapshotsResponseBody2$outboundSchema: z.ZodType<
-  ListSessionSnapshotsResponseBody2$Outbound,
-  z.ZodTypeDef,
-  ListSessionSnapshotsResponseBody2
-> = z.object({
-  snapshots: z.array(Snapshot$outboundSchema),
-  pagination: z.lazy(() =>
-    ListSessionSnapshotsResponseBodyPagination$outboundSchema
-  ),
-});
-
-export function listSessionSnapshotsResponseBody2ToJSON(
-  listSessionSnapshotsResponseBody2: ListSessionSnapshotsResponseBody2,
-): string {
-  return JSON.stringify(
-    ListSessionSnapshotsResponseBody2$outboundSchema.parse(
-      listSessionSnapshotsResponseBody2,
-    ),
-  );
-}
 export function listSessionSnapshotsResponseBody2FromJSON(
   jsonString: string,
 ): SafeParseResult<ListSessionSnapshotsResponseBody2, SDKValidationError> {
@@ -253,25 +167,7 @@ export const ListSessionSnapshotsResponseBody1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-/** @internal */
-export type ListSessionSnapshotsResponseBody1$Outbound = {};
 
-/** @internal */
-export const ListSessionSnapshotsResponseBody1$outboundSchema: z.ZodType<
-  ListSessionSnapshotsResponseBody1$Outbound,
-  z.ZodTypeDef,
-  ListSessionSnapshotsResponseBody1
-> = z.object({});
-
-export function listSessionSnapshotsResponseBody1ToJSON(
-  listSessionSnapshotsResponseBody1: ListSessionSnapshotsResponseBody1,
-): string {
-  return JSON.stringify(
-    ListSessionSnapshotsResponseBody1$outboundSchema.parse(
-      listSessionSnapshotsResponseBody1,
-    ),
-  );
-}
 export function listSessionSnapshotsResponseBody1FromJSON(
   jsonString: string,
 ): SafeParseResult<ListSessionSnapshotsResponseBody1, SDKValidationError> {
@@ -291,30 +187,7 @@ export const ListSessionSnapshotsResponseBody$inboundSchema: z.ZodType<
   z.lazy(() => ListSessionSnapshotsResponseBody2$inboundSchema),
   z.lazy(() => ListSessionSnapshotsResponseBody1$inboundSchema),
 ]);
-/** @internal */
-export type ListSessionSnapshotsResponseBody$Outbound =
-  | ListSessionSnapshotsResponseBody2$Outbound
-  | ListSessionSnapshotsResponseBody1$Outbound;
 
-/** @internal */
-export const ListSessionSnapshotsResponseBody$outboundSchema: z.ZodType<
-  ListSessionSnapshotsResponseBody$Outbound,
-  z.ZodTypeDef,
-  ListSessionSnapshotsResponseBody
-> = smartUnion([
-  z.lazy(() => ListSessionSnapshotsResponseBody2$outboundSchema),
-  z.lazy(() => ListSessionSnapshotsResponseBody1$outboundSchema),
-]);
-
-export function listSessionSnapshotsResponseBodyToJSON(
-  listSessionSnapshotsResponseBody: ListSessionSnapshotsResponseBody,
-): string {
-  return JSON.stringify(
-    ListSessionSnapshotsResponseBody$outboundSchema.parse(
-      listSessionSnapshotsResponseBody,
-    ),
-  );
-}
 export function listSessionSnapshotsResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<ListSessionSnapshotsResponseBody, SDKValidationError> {

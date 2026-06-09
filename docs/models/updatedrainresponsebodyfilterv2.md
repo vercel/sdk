@@ -1,25 +1,21 @@
 # UpdateDrainResponseBodyFilterV2
 
-
-## Supported Types
-
-### `models.UpdateDrainFilterV21`
+## Example Usage
 
 ```typescript
-const value: models.UpdateDrainFilterV21 = {
-  version: "v1",
-};
-```
+import { UpdateDrainResponseBodyFilterV2 } from "@vercel/sdk/models/updatedrainop.js";
 
-### `models.UpdateDrainFilterV22`
-
-```typescript
-const value: models.UpdateDrainFilterV22 = {
+let value: UpdateDrainResponseBodyFilterV2 = {
   version: "v2",
   filter: {
-    type: "odata",
-    text: "<value>",
+    type: "basic",
   },
 };
 ```
 
+## Fields
+
+| Field                                                                                | Type                                                                                 | Required                                                                             | Description                                                                          |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `version`                                                                            | [models.UpdateDrainResponseBodyVersion](../models/updatedrainresponsebodyversion.md) | :heavy_check_mark:                                                                   | N/A                                                                                  |
+| `filter`                                                                             | *models.UpdateDrainResponseBodyFilter*                                               | :heavy_check_mark:                                                                   | N/A                                                                                  |

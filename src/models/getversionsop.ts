@@ -58,16 +58,6 @@ export type GetVersionsResponseBody = {
 };
 
 /** @internal */
-export const GetVersionsRequest$inboundSchema: z.ZodType<
-  GetVersionsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  projectId: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
-/** @internal */
 export type GetVersionsRequest$Outbound = {
   projectId: string;
   teamId?: string | undefined;
@@ -92,15 +82,6 @@ export function getVersionsRequestToJSON(
     GetVersionsRequest$outboundSchema.parse(getVersionsRequest),
   );
 }
-export function getVersionsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetVersionsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetVersionsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetVersionsRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const Versions$inboundSchema: z.ZodType<
@@ -118,39 +99,7 @@ export const Versions$inboundSchema: z.ZodType<
   redirectCount: types.optional(types.number()),
   alias: types.optional(types.string()),
 });
-/** @internal */
-export type Versions$Outbound = {
-  id: string;
-  key: string;
-  lastModified: number;
-  createdBy: string;
-  name?: string | undefined;
-  isStaging?: boolean | undefined;
-  isLive?: boolean | undefined;
-  redirectCount?: number | undefined;
-  alias?: string | undefined;
-};
 
-/** @internal */
-export const Versions$outboundSchema: z.ZodType<
-  Versions$Outbound,
-  z.ZodTypeDef,
-  Versions
-> = z.object({
-  id: z.string(),
-  key: z.string(),
-  lastModified: z.number(),
-  createdBy: z.string(),
-  name: z.string().optional(),
-  isStaging: z.boolean().optional(),
-  isLive: z.boolean().optional(),
-  redirectCount: z.number().optional(),
-  alias: z.string().optional(),
-});
-
-export function versionsToJSON(versions: Versions): string {
-  return JSON.stringify(Versions$outboundSchema.parse(versions));
-}
 export function versionsFromJSON(
   jsonString: string,
 ): SafeParseResult<Versions, SDKValidationError> {
@@ -169,27 +118,7 @@ export const GetVersionsResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   versions: z.array(z.lazy(() => Versions$inboundSchema)),
 });
-/** @internal */
-export type GetVersionsResponseBody$Outbound = {
-  versions: Array<Versions$Outbound>;
-};
 
-/** @internal */
-export const GetVersionsResponseBody$outboundSchema: z.ZodType<
-  GetVersionsResponseBody$Outbound,
-  z.ZodTypeDef,
-  GetVersionsResponseBody
-> = z.object({
-  versions: z.array(z.lazy(() => Versions$outboundSchema)),
-});
-
-export function getVersionsResponseBodyToJSON(
-  getVersionsResponseBody: GetVersionsResponseBody,
-): string {
-  return JSON.stringify(
-    GetVersionsResponseBody$outboundSchema.parse(getVersionsResponseBody),
-  );
-}
 export function getVersionsResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetVersionsResponseBody, SDKValidationError> {

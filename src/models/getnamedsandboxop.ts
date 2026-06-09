@@ -6,25 +6,13 @@ import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
-import {
-  NamedSandbox,
-  NamedSandbox$inboundSchema,
-  NamedSandbox$Outbound,
-  NamedSandbox$outboundSchema,
-} from "./namedsandbox.js";
+import { NamedSandbox, NamedSandbox$inboundSchema } from "./namedsandbox.js";
 import {
   SandboxPublicRoute,
   SandboxPublicRoute$inboundSchema,
-  SandboxPublicRoute$Outbound,
-  SandboxPublicRoute$outboundSchema,
 } from "./sandboxpublicroute.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
-import {
-  Session,
-  Session$inboundSchema,
-  Session$Outbound,
-  Session$outboundSchema,
-} from "./session.js";
+import { Session, Session$inboundSchema } from "./session.js";
 
 export type GetNamedSandboxRequest = {
   /**
@@ -63,18 +51,6 @@ export type GetNamedSandboxResponseBody = {
 };
 
 /** @internal */
-export const GetNamedSandboxRequest$inboundSchema: z.ZodType<
-  GetNamedSandboxRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  name: types.string(),
-  projectId: types.optional(types.string()),
-  resume: types.boolean().default(false),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
-/** @internal */
 export type GetNamedSandboxRequest$Outbound = {
   name: string;
   projectId?: string | undefined;
@@ -103,15 +79,6 @@ export function getNamedSandboxRequestToJSON(
     GetNamedSandboxRequest$outboundSchema.parse(getNamedSandboxRequest),
   );
 }
-export function getNamedSandboxRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetNamedSandboxRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetNamedSandboxRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetNamedSandboxRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const GetNamedSandboxResponseBody$inboundSchema: z.ZodType<
@@ -124,35 +91,7 @@ export const GetNamedSandboxResponseBody$inboundSchema: z.ZodType<
   routes: z.array(SandboxPublicRoute$inboundSchema),
   resumed: types.boolean(),
 });
-/** @internal */
-export type GetNamedSandboxResponseBody$Outbound = {
-  sandbox: NamedSandbox$Outbound;
-  session: Session$Outbound;
-  routes: Array<SandboxPublicRoute$Outbound>;
-  resumed: boolean;
-};
 
-/** @internal */
-export const GetNamedSandboxResponseBody$outboundSchema: z.ZodType<
-  GetNamedSandboxResponseBody$Outbound,
-  z.ZodTypeDef,
-  GetNamedSandboxResponseBody
-> = z.object({
-  sandbox: NamedSandbox$outboundSchema,
-  session: Session$outboundSchema,
-  routes: z.array(SandboxPublicRoute$outboundSchema),
-  resumed: z.boolean(),
-});
-
-export function getNamedSandboxResponseBodyToJSON(
-  getNamedSandboxResponseBody: GetNamedSandboxResponseBody,
-): string {
-  return JSON.stringify(
-    GetNamedSandboxResponseBody$outboundSchema.parse(
-      getNamedSandboxResponseBody,
-    ),
-  );
-}
 export function getNamedSandboxResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetNamedSandboxResponseBody, SDKValidationError> {

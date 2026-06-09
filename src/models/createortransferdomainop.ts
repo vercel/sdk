@@ -162,16 +162,6 @@ export type CreateOrTransferDomainResponseBody = {
 };
 
 /** @internal */
-export const CreateOrTransferDomainRequestBody2$inboundSchema: z.ZodType<
-  CreateOrTransferDomainRequestBody2,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  name: types.string(),
-  method: types.string(),
-  token: types.optional(types.string()),
-});
-/** @internal */
 export type CreateOrTransferDomainRequestBody2$Outbound = {
   name: string;
   method: string;
@@ -198,28 +188,7 @@ export function createOrTransferDomainRequestBody2ToJSON(
     ),
   );
 }
-export function createOrTransferDomainRequestBody2FromJSON(
-  jsonString: string,
-): SafeParseResult<CreateOrTransferDomainRequestBody2, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      CreateOrTransferDomainRequestBody2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateOrTransferDomainRequestBody2' from JSON`,
-  );
-}
 
-/** @internal */
-export const CreateOrTransferDomainRequestBody1$inboundSchema: z.ZodType<
-  CreateOrTransferDomainRequestBody1,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  name: types.string(),
-  cdnEnabled: types.optional(types.boolean()),
-  zone: types.optional(types.boolean()),
-  method: types.optional(types.string()),
-});
 /** @internal */
 export type CreateOrTransferDomainRequestBody1$Outbound = {
   name: string;
@@ -249,26 +218,7 @@ export function createOrTransferDomainRequestBody1ToJSON(
     ),
   );
 }
-export function createOrTransferDomainRequestBody1FromJSON(
-  jsonString: string,
-): SafeParseResult<CreateOrTransferDomainRequestBody1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      CreateOrTransferDomainRequestBody1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateOrTransferDomainRequestBody1' from JSON`,
-  );
-}
 
-/** @internal */
-export const CreateOrTransferDomainRequestBody$inboundSchema: z.ZodType<
-  CreateOrTransferDomainRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([
-  z.lazy(() => CreateOrTransferDomainRequestBody2$inboundSchema),
-  z.lazy(() => CreateOrTransferDomainRequestBody1$inboundSchema),
-]);
 /** @internal */
 export type CreateOrTransferDomainRequestBody$Outbound =
   | CreateOrTransferDomainRequestBody2$Outbound
@@ -293,35 +243,7 @@ export function createOrTransferDomainRequestBodyToJSON(
     ),
   );
 }
-export function createOrTransferDomainRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateOrTransferDomainRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateOrTransferDomainRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateOrTransferDomainRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const CreateOrTransferDomainRequest$inboundSchema: z.ZodType<
-  CreateOrTransferDomainRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-  RequestBody: types.optional(
-    smartUnion([
-      z.lazy(() => CreateOrTransferDomainRequestBody2$inboundSchema),
-      z.lazy(() => CreateOrTransferDomainRequestBody1$inboundSchema),
-    ]),
-  ),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 /** @internal */
 export type CreateOrTransferDomainRequest$Outbound = {
   teamId?: string | undefined;
@@ -359,15 +281,6 @@ export function createOrTransferDomainRequestToJSON(
     ),
   );
 }
-export function createOrTransferDomainRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateOrTransferDomainRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateOrTransferDomainRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateOrTransferDomainRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const CreateOrTransferDomainCreator$inboundSchema: z.ZodType<
@@ -381,37 +294,7 @@ export const CreateOrTransferDomainCreator$inboundSchema: z.ZodType<
   isDomainReseller: types.optional(types.boolean()),
   id: types.string(),
 });
-/** @internal */
-export type CreateOrTransferDomainCreator$Outbound = {
-  username: string;
-  email: string;
-  customerId?: string | null | undefined;
-  isDomainReseller?: boolean | undefined;
-  id: string;
-};
 
-/** @internal */
-export const CreateOrTransferDomainCreator$outboundSchema: z.ZodType<
-  CreateOrTransferDomainCreator$Outbound,
-  z.ZodTypeDef,
-  CreateOrTransferDomainCreator
-> = z.object({
-  username: z.string(),
-  email: z.string(),
-  customerId: z.nullable(z.string()).optional(),
-  isDomainReseller: z.boolean().optional(),
-  id: z.string(),
-});
-
-export function createOrTransferDomainCreatorToJSON(
-  createOrTransferDomainCreator: CreateOrTransferDomainCreator,
-): string {
-  return JSON.stringify(
-    CreateOrTransferDomainCreator$outboundSchema.parse(
-      createOrTransferDomainCreator,
-    ),
-  );
-}
 export function createOrTransferDomainCreatorFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateOrTransferDomainCreator, SDKValidationError> {
@@ -426,10 +309,6 @@ export function createOrTransferDomainCreatorFromJSON(
 export const CreateOrTransferDomainServiceType$inboundSchema: z.ZodNativeEnum<
   typeof CreateOrTransferDomainServiceType
 > = z.nativeEnum(CreateOrTransferDomainServiceType);
-/** @internal */
-export const CreateOrTransferDomainServiceType$outboundSchema: z.ZodNativeEnum<
-  typeof CreateOrTransferDomainServiceType
-> = CreateOrTransferDomainServiceType$inboundSchema;
 
 /** @internal */
 export const CreateOrTransferDomainDomain$inboundSchema: z.ZodType<
@@ -454,59 +333,7 @@ export const CreateOrTransferDomainDomain$inboundSchema: z.ZodType<
   transferStartedAt: types.optional(types.number()),
   userId: types.string(),
 });
-/** @internal */
-export type CreateOrTransferDomainDomain$Outbound = {
-  expiresAt: number | null;
-  verified: boolean;
-  nameservers: Array<string>;
-  intendedNameservers: Array<string>;
-  customNameservers?: Array<string> | undefined;
-  creator: CreateOrTransferDomainCreator$Outbound;
-  name: string;
-  teamId: string | null;
-  boughtAt: number | null;
-  createdAt: number;
-  id: string;
-  renew?: boolean | undefined;
-  serviceType: string;
-  transferredAt?: number | null | undefined;
-  transferStartedAt?: number | undefined;
-  userId: string;
-};
 
-/** @internal */
-export const CreateOrTransferDomainDomain$outboundSchema: z.ZodType<
-  CreateOrTransferDomainDomain$Outbound,
-  z.ZodTypeDef,
-  CreateOrTransferDomainDomain
-> = z.object({
-  expiresAt: z.nullable(z.number()),
-  verified: z.boolean(),
-  nameservers: z.array(z.string()),
-  intendedNameservers: z.array(z.string()),
-  customNameservers: z.array(z.string()).optional(),
-  creator: z.lazy(() => CreateOrTransferDomainCreator$outboundSchema),
-  name: z.string(),
-  teamId: z.nullable(z.string()),
-  boughtAt: z.nullable(z.number()),
-  createdAt: z.number(),
-  id: z.string(),
-  renew: z.boolean().optional(),
-  serviceType: CreateOrTransferDomainServiceType$outboundSchema,
-  transferredAt: z.nullable(z.number()).optional(),
-  transferStartedAt: z.number().optional(),
-  userId: z.string(),
-});
-
-export function createOrTransferDomainDomainToJSON(
-  createOrTransferDomainDomain: CreateOrTransferDomainDomain,
-): string {
-  return JSON.stringify(
-    CreateOrTransferDomainDomain$outboundSchema.parse(
-      createOrTransferDomainDomain,
-    ),
-  );
-}
 export function createOrTransferDomainDomainFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateOrTransferDomainDomain, SDKValidationError> {
@@ -525,29 +352,7 @@ export const CreateOrTransferDomainResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   domain: z.lazy(() => CreateOrTransferDomainDomain$inboundSchema),
 });
-/** @internal */
-export type CreateOrTransferDomainResponseBody$Outbound = {
-  domain: CreateOrTransferDomainDomain$Outbound;
-};
 
-/** @internal */
-export const CreateOrTransferDomainResponseBody$outboundSchema: z.ZodType<
-  CreateOrTransferDomainResponseBody$Outbound,
-  z.ZodTypeDef,
-  CreateOrTransferDomainResponseBody
-> = z.object({
-  domain: z.lazy(() => CreateOrTransferDomainDomain$outboundSchema),
-});
-
-export function createOrTransferDomainResponseBodyToJSON(
-  createOrTransferDomainResponseBody: CreateOrTransferDomainResponseBody,
-): string {
-  return JSON.stringify(
-    CreateOrTransferDomainResponseBody$outboundSchema.parse(
-      createOrTransferDomainResponseBody,
-    ),
-  );
-}
 export function createOrTransferDomainResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateOrTransferDomainResponseBody, SDKValidationError> {

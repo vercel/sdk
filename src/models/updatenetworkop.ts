@@ -4,10 +4,6 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
-import { Result as SafeParseResult } from "../types/fp.js";
-import * as types from "../types/primitives.js";
-import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type UpdateNetworkRequestBody = {
   /**
@@ -33,14 +29,6 @@ export type UpdateNetworkRequest = {
 };
 
 /** @internal */
-export const UpdateNetworkRequestBody$inboundSchema: z.ZodType<
-  UpdateNetworkRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  name: types.string(),
-});
-/** @internal */
 export type UpdateNetworkRequestBody$Outbound = {
   name: string;
 };
@@ -61,33 +49,7 @@ export function updateNetworkRequestBodyToJSON(
     UpdateNetworkRequestBody$outboundSchema.parse(updateNetworkRequestBody),
   );
 }
-export function updateNetworkRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateNetworkRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateNetworkRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateNetworkRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateNetworkRequest$inboundSchema: z.ZodType<
-  UpdateNetworkRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  networkId: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-  RequestBody: types.optional(
-    z.lazy(() => UpdateNetworkRequestBody$inboundSchema),
-  ),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 /** @internal */
 export type UpdateNetworkRequest$Outbound = {
   networkId: string;
@@ -117,14 +79,5 @@ export function updateNetworkRequestToJSON(
 ): string {
   return JSON.stringify(
     UpdateNetworkRequest$outboundSchema.parse(updateNetworkRequest),
-  );
-}
-export function updateNetworkRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateNetworkRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateNetworkRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateNetworkRequest' from JSON`,
   );
 }

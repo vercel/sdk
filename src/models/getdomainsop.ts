@@ -7,12 +7,7 @@ import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
-import {
-  Pagination,
-  Pagination$inboundSchema,
-  Pagination$Outbound,
-  Pagination$outboundSchema,
-} from "./pagination.js";
+import { Pagination, Pagination$inboundSchema } from "./pagination.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type GetDomainsRequest = {
@@ -135,18 +130,6 @@ export type GetDomainsResponseBody = {
 };
 
 /** @internal */
-export const GetDomainsRequest$inboundSchema: z.ZodType<
-  GetDomainsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  limit: types.optional(types.number()),
-  since: types.optional(types.number()),
-  until: types.optional(types.number()),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
-/** @internal */
 export type GetDomainsRequest$Outbound = {
   limit?: number | undefined;
   since?: number | undefined;
@@ -175,15 +158,6 @@ export function getDomainsRequestToJSON(
     GetDomainsRequest$outboundSchema.parse(getDomainsRequest),
   );
 }
-export function getDomainsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetDomainsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetDomainsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDomainsRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const GetDomainsCreator$inboundSchema: z.ZodType<
@@ -197,35 +171,7 @@ export const GetDomainsCreator$inboundSchema: z.ZodType<
   isDomainReseller: types.optional(types.boolean()),
   id: types.string(),
 });
-/** @internal */
-export type GetDomainsCreator$Outbound = {
-  username: string;
-  email: string;
-  customerId?: string | null | undefined;
-  isDomainReseller?: boolean | undefined;
-  id: string;
-};
 
-/** @internal */
-export const GetDomainsCreator$outboundSchema: z.ZodType<
-  GetDomainsCreator$Outbound,
-  z.ZodTypeDef,
-  GetDomainsCreator
-> = z.object({
-  username: z.string(),
-  email: z.string(),
-  customerId: z.nullable(z.string()).optional(),
-  isDomainReseller: z.boolean().optional(),
-  id: z.string(),
-});
-
-export function getDomainsCreatorToJSON(
-  getDomainsCreator: GetDomainsCreator,
-): string {
-  return JSON.stringify(
-    GetDomainsCreator$outboundSchema.parse(getDomainsCreator),
-  );
-}
 export function getDomainsCreatorFromJSON(
   jsonString: string,
 ): SafeParseResult<GetDomainsCreator, SDKValidationError> {
@@ -240,10 +186,6 @@ export function getDomainsCreatorFromJSON(
 export const GetDomainsServiceType$inboundSchema: z.ZodNativeEnum<
   typeof GetDomainsServiceType
 > = z.nativeEnum(GetDomainsServiceType);
-/** @internal */
-export const GetDomainsServiceType$outboundSchema: z.ZodNativeEnum<
-  typeof GetDomainsServiceType
-> = GetDomainsServiceType$inboundSchema;
 
 /** @internal */
 export const GetDomainsDomains$inboundSchema: z.ZodType<
@@ -268,57 +210,7 @@ export const GetDomainsDomains$inboundSchema: z.ZodType<
   transferStartedAt: types.optional(types.number()),
   userId: types.string(),
 });
-/** @internal */
-export type GetDomainsDomains$Outbound = {
-  expiresAt: number | null;
-  verified: boolean;
-  nameservers: Array<string>;
-  intendedNameservers: Array<string>;
-  customNameservers?: Array<string> | undefined;
-  creator: GetDomainsCreator$Outbound;
-  name: string;
-  teamId: string | null;
-  boughtAt: number | null;
-  createdAt: number;
-  id: string;
-  renew?: boolean | undefined;
-  serviceType: string;
-  transferredAt?: number | null | undefined;
-  transferStartedAt?: number | undefined;
-  userId: string;
-};
 
-/** @internal */
-export const GetDomainsDomains$outboundSchema: z.ZodType<
-  GetDomainsDomains$Outbound,
-  z.ZodTypeDef,
-  GetDomainsDomains
-> = z.object({
-  expiresAt: z.nullable(z.number()),
-  verified: z.boolean(),
-  nameservers: z.array(z.string()),
-  intendedNameservers: z.array(z.string()),
-  customNameservers: z.array(z.string()).optional(),
-  creator: z.lazy(() => GetDomainsCreator$outboundSchema),
-  name: z.string(),
-  teamId: z.nullable(z.string()),
-  boughtAt: z.nullable(z.number()),
-  createdAt: z.number(),
-  id: z.string(),
-  renew: z.boolean().optional(),
-  serviceType: GetDomainsServiceType$outboundSchema,
-  transferredAt: z.nullable(z.number()).optional(),
-  transferStartedAt: z.number().optional(),
-  userId: z.string(),
-});
-
-export function getDomainsDomainsToJSON(
-  getDomainsDomains: GetDomainsDomains,
-): string {
-  return JSON.stringify(
-    GetDomainsDomains$outboundSchema.parse(getDomainsDomains),
-  );
-}
 export function getDomainsDomainsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetDomainsDomains, SDKValidationError> {
@@ -338,29 +230,7 @@ export const GetDomainsResponseBody$inboundSchema: z.ZodType<
   domains: z.array(z.lazy(() => GetDomainsDomains$inboundSchema)),
   pagination: Pagination$inboundSchema,
 });
-/** @internal */
-export type GetDomainsResponseBody$Outbound = {
-  domains: Array<GetDomainsDomains$Outbound>;
-  pagination: Pagination$Outbound;
-};
 
-/** @internal */
-export const GetDomainsResponseBody$outboundSchema: z.ZodType<
-  GetDomainsResponseBody$Outbound,
-  z.ZodTypeDef,
-  GetDomainsResponseBody
-> = z.object({
-  domains: z.array(z.lazy(() => GetDomainsDomains$outboundSchema)),
-  pagination: Pagination$outboundSchema,
-});
-
-export function getDomainsResponseBodyToJSON(
-  getDomainsResponseBody: GetDomainsResponseBody,
-): string {
-  return JSON.stringify(
-    GetDomainsResponseBody$outboundSchema.parse(getDomainsResponseBody),
-  );
-}
 export function getDomainsResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetDomainsResponseBody, SDKValidationError> {

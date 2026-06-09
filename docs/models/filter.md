@@ -1,22 +1,22 @@
 # Filter
 
-
-## Supported Types
-
-### `string`
+## Example Usage
 
 ```typescript
-const value: string = "<value>";
-```
+import { Filter } from "@vercel/sdk/models/createdrainop.js";
 
-### `models.Filter2`
-
-```typescript
-const value: models.Filter2 = {
+let value: Filter = {
   version: "<value>",
   filter: {
     type: "<value>",
+    text: "<value>",
   },
 };
 ```
 
+## Fields
+
+| Field                      | Type                       | Required                   | Description                |
+| -------------------------- | -------------------------- | -------------------------- | -------------------------- |
+| `version`                  | *string*                   | :heavy_check_mark:         | N/A                        |
+| `filter`                   | *models.CreateDrainFilter* | :heavy_check_mark:         | N/A                        |

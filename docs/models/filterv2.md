@@ -1,25 +1,21 @@
 # FilterV2
 
-
-## Supported Types
-
-### `models.FilterV21`
+## Example Usage
 
 ```typescript
-const value: models.FilterV21 = {
-  version: "v1",
-};
-```
+import { FilterV2 } from "@vercel/sdk/models/createdrainop.js";
 
-### `models.FilterV22`
-
-```typescript
-const value: models.FilterV22 = {
+let value: FilterV2 = {
   version: "v2",
   filter: {
-    type: "odata",
-    text: "<value>",
+    type: "basic",
   },
 };
 ```
 
+## Fields
+
+| Field                                                                                | Type                                                                                 | Required                                                                             | Description                                                                          |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `version`                                                                            | [models.CreateDrainResponseBodyVersion](../models/createdrainresponsebodyversion.md) | :heavy_check_mark:                                                                   | N/A                                                                                  |
+| `filter`                                                                             | *models.ResponseBodyFilter*                                                          | :heavy_check_mark:                                                                   | N/A                                                                                  |

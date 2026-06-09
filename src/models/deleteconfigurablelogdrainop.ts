@@ -3,10 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
-import { Result as SafeParseResult } from "../types/fp.js";
-import * as types from "../types/primitives.js";
-import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type DeleteConfigurableLogDrainRequest = {
   id: string;
@@ -20,16 +16,6 @@ export type DeleteConfigurableLogDrainRequest = {
   slug?: string | undefined;
 };
 
-/** @internal */
-export const DeleteConfigurableLogDrainRequest$inboundSchema: z.ZodType<
-  DeleteConfigurableLogDrainRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
 /** @internal */
 export type DeleteConfigurableLogDrainRequest$Outbound = {
   id: string;
@@ -55,14 +41,5 @@ export function deleteConfigurableLogDrainRequestToJSON(
     DeleteConfigurableLogDrainRequest$outboundSchema.parse(
       deleteConfigurableLogDrainRequest,
     ),
-  );
-}
-export function deleteConfigurableLogDrainRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<DeleteConfigurableLogDrainRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => DeleteConfigurableLogDrainRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DeleteConfigurableLogDrainRequest' from JSON`,
   );
 }

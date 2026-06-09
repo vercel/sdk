@@ -6,17 +6,10 @@ import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { smartUnion } from "../types/smartUnion.js";
-import {
-  AuthUser,
-  AuthUser$inboundSchema,
-  AuthUser$Outbound,
-  AuthUser$outboundSchema,
-} from "./authuser.js";
+import { AuthUser, AuthUser$inboundSchema } from "./authuser.js";
 import {
   AuthUserLimited,
   AuthUserLimited$inboundSchema,
-  AuthUserLimited$Outbound,
-  AuthUserLimited$outboundSchema,
 } from "./authuserlimited.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
@@ -35,23 +28,7 @@ export const GetAuthUserUser$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = smartUnion([AuthUser$inboundSchema, AuthUserLimited$inboundSchema]);
-/** @internal */
-export type GetAuthUserUser$Outbound =
-  | AuthUser$Outbound
-  | AuthUserLimited$Outbound;
 
-/** @internal */
-export const GetAuthUserUser$outboundSchema: z.ZodType<
-  GetAuthUserUser$Outbound,
-  z.ZodTypeDef,
-  GetAuthUserUser
-> = smartUnion([AuthUser$outboundSchema, AuthUserLimited$outboundSchema]);
-
-export function getAuthUserUserToJSON(
-  getAuthUserUser: GetAuthUserUser,
-): string {
-  return JSON.stringify(GetAuthUserUser$outboundSchema.parse(getAuthUserUser));
-}
 export function getAuthUserUserFromJSON(
   jsonString: string,
 ): SafeParseResult<GetAuthUserUser, SDKValidationError> {
@@ -70,27 +47,7 @@ export const GetAuthUserResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   user: smartUnion([AuthUser$inboundSchema, AuthUserLimited$inboundSchema]),
 });
-/** @internal */
-export type GetAuthUserResponseBody$Outbound = {
-  user: AuthUser$Outbound | AuthUserLimited$Outbound;
-};
 
-/** @internal */
-export const GetAuthUserResponseBody$outboundSchema: z.ZodType<
-  GetAuthUserResponseBody$Outbound,
-  z.ZodTypeDef,
-  GetAuthUserResponseBody
-> = z.object({
-  user: smartUnion([AuthUser$outboundSchema, AuthUserLimited$outboundSchema]),
-});
-
-export function getAuthUserResponseBodyToJSON(
-  getAuthUserResponseBody: GetAuthUserResponseBody,
-): string {
-  return JSON.stringify(
-    GetAuthUserResponseBody$outboundSchema.parse(getAuthUserResponseBody),
-  );
-}
 export function getAuthUserResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetAuthUserResponseBody, SDKValidationError> {

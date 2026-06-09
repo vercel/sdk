@@ -51,10 +51,6 @@ export class DomainAlreadyRenewing extends VercelError {
 export const DomainAlreadyRenewingCode$inboundSchema: z.ZodNativeEnum<
   typeof DomainAlreadyRenewingCode
 > = z.nativeEnum(DomainAlreadyRenewingCode);
-/** @internal */
-export const DomainAlreadyRenewingCode$outboundSchema: z.ZodNativeEnum<
-  typeof DomainAlreadyRenewingCode
-> = DomainAlreadyRenewingCode$inboundSchema;
 
 /** @internal */
 export const DomainAlreadyRenewing$inboundSchema: z.ZodType<
@@ -76,23 +72,3 @@ export const DomainAlreadyRenewing$inboundSchema: z.ZodType<
       body: v.body$,
     });
   });
-
-/** @internal */
-export type DomainAlreadyRenewing$Outbound = {
-  status: number;
-  code: string;
-  message: string;
-};
-
-/** @internal */
-export const DomainAlreadyRenewing$outboundSchema: z.ZodType<
-  DomainAlreadyRenewing$Outbound,
-  z.ZodTypeDef,
-  DomainAlreadyRenewing
-> = z.instanceof(DomainAlreadyRenewing)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    status: z.number(),
-    code: DomainAlreadyRenewingCode$outboundSchema,
-    message: z.string(),
-  }));

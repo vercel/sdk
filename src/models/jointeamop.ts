@@ -44,14 +44,6 @@ export type JoinTeamResponseBody = {
 };
 
 /** @internal */
-export const JoinTeamRequestBody$inboundSchema: z.ZodType<
-  JoinTeamRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  inviteCode: types.optional(types.string()),
-});
-/** @internal */
 export type JoinTeamRequestBody$Outbound = {
   inviteCode?: string | undefined;
 };
@@ -72,29 +64,7 @@ export function joinTeamRequestBodyToJSON(
     JoinTeamRequestBody$outboundSchema.parse(joinTeamRequestBody),
   );
 }
-export function joinTeamRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<JoinTeamRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => JoinTeamRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'JoinTeamRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const JoinTeamRequest$inboundSchema: z.ZodType<
-  JoinTeamRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  teamId: types.string(),
-  RequestBody: z.lazy(() => JoinTeamRequestBody$inboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 /** @internal */
 export type JoinTeamRequest$Outbound = {
   teamId: string;
@@ -120,15 +90,6 @@ export function joinTeamRequestToJSON(
 ): string {
   return JSON.stringify(JoinTeamRequest$outboundSchema.parse(joinTeamRequest));
 }
-export function joinTeamRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<JoinTeamRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => JoinTeamRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'JoinTeamRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const JoinTeamResponseBody$inboundSchema: z.ZodType<
@@ -141,33 +102,7 @@ export const JoinTeamResponseBody$inboundSchema: z.ZodType<
   name: types.string(),
   from: types.string(),
 });
-/** @internal */
-export type JoinTeamResponseBody$Outbound = {
-  teamId: string;
-  slug: string;
-  name: string;
-  from: string;
-};
 
-/** @internal */
-export const JoinTeamResponseBody$outboundSchema: z.ZodType<
-  JoinTeamResponseBody$Outbound,
-  z.ZodTypeDef,
-  JoinTeamResponseBody
-> = z.object({
-  teamId: z.string(),
-  slug: z.string(),
-  name: z.string(),
-  from: z.string(),
-});
-
-export function joinTeamResponseBodyToJSON(
-  joinTeamResponseBody: JoinTeamResponseBody,
-): string {
-  return JSON.stringify(
-    JoinTeamResponseBody$outboundSchema.parse(joinTeamResponseBody),
-  );
-}
 export function joinTeamResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<JoinTeamResponseBody, SDKValidationError> {

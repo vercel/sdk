@@ -49,10 +49,6 @@ export class DomainAlreadyOwned extends VercelError {
 export const DomainAlreadyOwnedCode$inboundSchema: z.ZodNativeEnum<
   typeof DomainAlreadyOwnedCode
 > = z.nativeEnum(DomainAlreadyOwnedCode);
-/** @internal */
-export const DomainAlreadyOwnedCode$outboundSchema: z.ZodNativeEnum<
-  typeof DomainAlreadyOwnedCode
-> = DomainAlreadyOwnedCode$inboundSchema;
 
 /** @internal */
 export const DomainAlreadyOwned$inboundSchema: z.ZodType<
@@ -74,23 +70,3 @@ export const DomainAlreadyOwned$inboundSchema: z.ZodType<
       body: v.body$,
     });
   });
-
-/** @internal */
-export type DomainAlreadyOwned$Outbound = {
-  status: number;
-  code: string;
-  message: string;
-};
-
-/** @internal */
-export const DomainAlreadyOwned$outboundSchema: z.ZodType<
-  DomainAlreadyOwned$Outbound,
-  z.ZodTypeDef,
-  DomainAlreadyOwned
-> = z.instanceof(DomainAlreadyOwned)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    status: z.number(),
-    code: DomainAlreadyOwnedCode$outboundSchema,
-    message: z.string(),
-  }));

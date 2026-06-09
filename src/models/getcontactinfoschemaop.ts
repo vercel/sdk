@@ -5,19 +5,11 @@
 import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
-import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
-import {
-  BadRequest,
-  BadRequest$inboundSchema,
-  BadRequest$Outbound,
-  BadRequest$outboundSchema,
-} from "./badrequest.js";
+import { BadRequest, BadRequest$inboundSchema } from "./badrequest.js";
 import {
   HttpApiDecodeError,
   HttpApiDecodeError$inboundSchema,
-  HttpApiDecodeError$Outbound,
-  HttpApiDecodeError$outboundSchema,
 } from "./httpapidecodeerror.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
@@ -38,15 +30,6 @@ export type GetContactInfoSchemaDomainsRegistrarResponseBody =
  */
 export type GetContactInfoSchemaResponseBody = {};
 
-/** @internal */
-export const GetContactInfoSchemaRequest$inboundSchema: z.ZodType<
-  GetContactInfoSchemaRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  domain: types.string(),
-  teamId: types.optional(types.string()),
-});
 /** @internal */
 export type GetContactInfoSchemaRequest$Outbound = {
   domain: string;
@@ -72,15 +55,6 @@ export function getContactInfoSchemaRequestToJSON(
     ),
   );
 }
-export function getContactInfoSchemaRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetContactInfoSchemaRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetContactInfoSchemaRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetContactInfoSchemaRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const GetContactInfoSchemaDomainsRegistrarResponseBody$inboundSchema:
@@ -89,32 +63,7 @@ export const GetContactInfoSchemaDomainsRegistrarResponseBody$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = smartUnion([BadRequest$inboundSchema, HttpApiDecodeError$inboundSchema]);
-/** @internal */
-export type GetContactInfoSchemaDomainsRegistrarResponseBody$Outbound =
-  | BadRequest$Outbound
-  | HttpApiDecodeError$Outbound;
 
-/** @internal */
-export const GetContactInfoSchemaDomainsRegistrarResponseBody$outboundSchema:
-  z.ZodType<
-    GetContactInfoSchemaDomainsRegistrarResponseBody$Outbound,
-    z.ZodTypeDef,
-    unknown
-  > = smartUnion([
-    BadRequest$outboundSchema,
-    HttpApiDecodeError$outboundSchema,
-  ]);
-
-export function getContactInfoSchemaDomainsRegistrarResponseBodyToJSON(
-  getContactInfoSchemaDomainsRegistrarResponseBody:
-    GetContactInfoSchemaDomainsRegistrarResponseBody,
-): string {
-  return JSON.stringify(
-    GetContactInfoSchemaDomainsRegistrarResponseBody$outboundSchema.parse(
-      getContactInfoSchemaDomainsRegistrarResponseBody,
-    ),
-  );
-}
 export function getContactInfoSchemaDomainsRegistrarResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -137,25 +86,7 @@ export const GetContactInfoSchemaResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-/** @internal */
-export type GetContactInfoSchemaResponseBody$Outbound = {};
 
-/** @internal */
-export const GetContactInfoSchemaResponseBody$outboundSchema: z.ZodType<
-  GetContactInfoSchemaResponseBody$Outbound,
-  z.ZodTypeDef,
-  GetContactInfoSchemaResponseBody
-> = z.object({});
-
-export function getContactInfoSchemaResponseBodyToJSON(
-  getContactInfoSchemaResponseBody: GetContactInfoSchemaResponseBody,
-): string {
-  return JSON.stringify(
-    GetContactInfoSchemaResponseBody$outboundSchema.parse(
-      getContactInfoSchemaResponseBody,
-    ),
-  );
-}
 export function getContactInfoSchemaResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetContactInfoSchemaResponseBody, SDKValidationError> {

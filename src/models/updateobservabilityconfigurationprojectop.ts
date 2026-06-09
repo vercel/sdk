@@ -38,15 +38,6 @@ export type UpdateObservabilityConfigurationProjectResponseBody = {
 };
 
 /** @internal */
-export const UpdateObservabilityConfigurationProjectRequestBody$inboundSchema:
-  z.ZodType<
-    UpdateObservabilityConfigurationProjectRequestBody,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    disabled: types.boolean(),
-  });
-/** @internal */
 export type UpdateObservabilityConfigurationProjectRequestBody$Outbound = {
   disabled: boolean;
 };
@@ -71,42 +62,7 @@ export function updateObservabilityConfigurationProjectRequestBodyToJSON(
     ),
   );
 }
-export function updateObservabilityConfigurationProjectRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  UpdateObservabilityConfigurationProjectRequestBody,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      UpdateObservabilityConfigurationProjectRequestBody$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'UpdateObservabilityConfigurationProjectRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateObservabilityConfigurationProjectRequest$inboundSchema:
-  z.ZodType<
-    UpdateObservabilityConfigurationProjectRequest,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    projectIdOrName: types.string(),
-    teamId: types.optional(types.string()),
-    slug: types.optional(types.string()),
-    RequestBody: types.optional(
-      z.lazy(() =>
-        UpdateObservabilityConfigurationProjectRequestBody$inboundSchema
-      ),
-    ),
-  }).transform((v) => {
-    return remap$(v, {
-      "RequestBody": "requestBody",
-    });
-  });
 /** @internal */
 export type UpdateObservabilityConfigurationProjectRequest$Outbound = {
   projectIdOrName: string;
@@ -146,21 +102,6 @@ export function updateObservabilityConfigurationProjectRequestToJSON(
     ),
   );
 }
-export function updateObservabilityConfigurationProjectRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  UpdateObservabilityConfigurationProjectRequest,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      UpdateObservabilityConfigurationProjectRequest$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'UpdateObservabilityConfigurationProjectRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const UpdateObservabilityConfigurationProjectResponseBody$inboundSchema:
@@ -172,33 +113,7 @@ export const UpdateObservabilityConfigurationProjectResponseBody$inboundSchema:
     id: types.string(),
     disabledAt: types.optional(types.number()),
   });
-/** @internal */
-export type UpdateObservabilityConfigurationProjectResponseBody$Outbound = {
-  id: string;
-  disabledAt?: number | undefined;
-};
 
-/** @internal */
-export const UpdateObservabilityConfigurationProjectResponseBody$outboundSchema:
-  z.ZodType<
-    UpdateObservabilityConfigurationProjectResponseBody$Outbound,
-    z.ZodTypeDef,
-    UpdateObservabilityConfigurationProjectResponseBody
-  > = z.object({
-    id: z.string(),
-    disabledAt: z.number().optional(),
-  });
-
-export function updateObservabilityConfigurationProjectResponseBodyToJSON(
-  updateObservabilityConfigurationProjectResponseBody:
-    UpdateObservabilityConfigurationProjectResponseBody,
-): string {
-  return JSON.stringify(
-    UpdateObservabilityConfigurationProjectResponseBody$outboundSchema.parse(
-      updateObservabilityConfigurationProjectResponseBody,
-    ),
-  );
-}
 export function updateObservabilityConfigurationProjectResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<

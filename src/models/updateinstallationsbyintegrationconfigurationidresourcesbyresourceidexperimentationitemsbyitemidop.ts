@@ -4,11 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
-import { Result as SafeParseResult } from "../types/fp.js";
-import * as types from "../types/primitives.js";
-import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export const UpdateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdCategory =
   {
@@ -45,37 +41,13 @@ export type UpdateInstallationsByIntegrationConfigurationIdResourcesByResourceId
   };
 
 /** @internal */
-export const UpdateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdCategory$inboundSchema:
+export const UpdateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdCategory$outboundSchema:
   z.ZodNativeEnum<
     typeof UpdateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdCategory
   > = z.nativeEnum(
     UpdateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdCategory,
   );
-/** @internal */
-export const UpdateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdCategory$outboundSchema:
-  z.ZodNativeEnum<
-    typeof UpdateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdCategory
-  > =
-    UpdateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdCategory$inboundSchema;
 
-/** @internal */
-export const UpdateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdRequestBody$inboundSchema:
-  z.ZodType<
-    UpdateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdRequestBody,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    slug: types.string(),
-    origin: types.string(),
-    name: types.optional(types.string()),
-    category: types.optional(
-      UpdateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdCategory$inboundSchema,
-    ),
-    description: types.optional(types.string()),
-    isArchived: types.optional(types.boolean()),
-    createdAt: types.optional(types.number()),
-    updatedAt: types.optional(types.number()),
-  });
 /** @internal */
 export type UpdateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdRequestBody$Outbound =
   {
@@ -119,41 +91,7 @@ export function updateInstallationsByIntegrationConfigurationIdResourcesByResour
       ),
   );
 }
-export function updateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  UpdateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdRequestBody,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      UpdateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdRequestBody$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'UpdateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdRequest$inboundSchema:
-  z.ZodType<
-    UpdateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdRequest,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    integrationConfigurationId: types.string(),
-    resourceId: types.string(),
-    itemId: types.string(),
-    RequestBody: types.optional(
-      z.lazy(() =>
-        UpdateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdRequestBody$inboundSchema
-      ),
-    ),
-  }).transform((v) => {
-    return remap$(v, {
-      "RequestBody": "requestBody",
-    });
-  });
 /** @internal */
 export type UpdateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdRequest$Outbound =
   {
@@ -193,19 +131,5 @@ export function updateInstallationsByIntegrationConfigurationIdResourcesByResour
       .parse(
         updateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdRequest,
       ),
-  );
-}
-export function updateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  UpdateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdRequest,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      UpdateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdRequest$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'UpdateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdRequest' from JSON`,
   );
 }

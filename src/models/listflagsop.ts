@@ -7,12 +7,7 @@ import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
-import {
-  Flag,
-  Flag$inboundSchema,
-  Flag$Outbound,
-  Flag$outboundSchema,
-} from "./flag.js";
+import { Flag, Flag$inboundSchema } from "./flag.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
@@ -78,30 +73,10 @@ export type ListFlagsResponseBody = {
 };
 
 /** @internal */
-export const ListFlagsQueryParamState$inboundSchema: z.ZodNativeEnum<
-  typeof ListFlagsQueryParamState
-> = z.nativeEnum(ListFlagsQueryParamState);
-/** @internal */
 export const ListFlagsQueryParamState$outboundSchema: z.ZodNativeEnum<
   typeof ListFlagsQueryParamState
-> = ListFlagsQueryParamState$inboundSchema;
+> = z.nativeEnum(ListFlagsQueryParamState);
 
-/** @internal */
-export const ListFlagsRequest$inboundSchema: z.ZodType<
-  ListFlagsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  projectIdOrName: types.string(),
-  state: types.optional(ListFlagsQueryParamState$inboundSchema),
-  withMetadata: types.optional(types.boolean()),
-  limit: types.optional(types.number()),
-  cursor: types.optional(types.string()),
-  search: types.optional(types.string()),
-  tags: types.optional(z.array(types.string())),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
 /** @internal */
 export type ListFlagsRequest$Outbound = {
   projectIdOrName: string;
@@ -139,15 +114,6 @@ export function listFlagsRequestToJSON(
     ListFlagsRequest$outboundSchema.parse(listFlagsRequest),
   );
 }
-export function listFlagsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<ListFlagsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ListFlagsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ListFlagsRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const ListFlagsPagination$inboundSchema: z.ZodType<
@@ -157,27 +123,7 @@ export const ListFlagsPagination$inboundSchema: z.ZodType<
 > = z.object({
   next: types.nullable(types.string()),
 });
-/** @internal */
-export type ListFlagsPagination$Outbound = {
-  next: string | null;
-};
 
-/** @internal */
-export const ListFlagsPagination$outboundSchema: z.ZodType<
-  ListFlagsPagination$Outbound,
-  z.ZodTypeDef,
-  ListFlagsPagination
-> = z.object({
-  next: z.nullable(z.string()),
-});
-
-export function listFlagsPaginationToJSON(
-  listFlagsPagination: ListFlagsPagination,
-): string {
-  return JSON.stringify(
-    ListFlagsPagination$outboundSchema.parse(listFlagsPagination),
-  );
-}
 export function listFlagsPaginationFromJSON(
   jsonString: string,
 ): SafeParseResult<ListFlagsPagination, SDKValidationError> {
@@ -197,29 +143,7 @@ export const ListFlagsResponseBody$inboundSchema: z.ZodType<
   data: z.array(Flag$inboundSchema),
   pagination: z.lazy(() => ListFlagsPagination$inboundSchema),
 });
-/** @internal */
-export type ListFlagsResponseBody$Outbound = {
-  data: Array<Flag$Outbound>;
-  pagination: ListFlagsPagination$Outbound;
-};
 
-/** @internal */
-export const ListFlagsResponseBody$outboundSchema: z.ZodType<
-  ListFlagsResponseBody$Outbound,
-  z.ZodTypeDef,
-  ListFlagsResponseBody
-> = z.object({
-  data: z.array(Flag$outboundSchema),
-  pagination: z.lazy(() => ListFlagsPagination$outboundSchema),
-});
-
-export function listFlagsResponseBodyToJSON(
-  listFlagsResponseBody: ListFlagsResponseBody,
-): string {
-  return JSON.stringify(
-    ListFlagsResponseBody$outboundSchema.parse(listFlagsResponseBody),
-  );
-}
 export function listFlagsResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<ListFlagsResponseBody, SDKValidationError> {

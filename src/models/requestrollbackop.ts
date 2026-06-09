@@ -3,10 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
-import { Result as SafeParseResult } from "../types/fp.js";
-import * as types from "../types/primitives.js";
-import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type RequestRollbackRequest = {
   projectId: string;
@@ -28,18 +24,6 @@ export type RequestRollbackRequest = {
   slug?: string | undefined;
 };
 
-/** @internal */
-export const RequestRollbackRequest$inboundSchema: z.ZodType<
-  RequestRollbackRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  projectId: types.string(),
-  deploymentId: types.string(),
-  description: types.optional(types.string()),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
 /** @internal */
 export type RequestRollbackRequest$Outbound = {
   projectId: string;
@@ -67,14 +51,5 @@ export function requestRollbackRequestToJSON(
 ): string {
   return JSON.stringify(
     RequestRollbackRequest$outboundSchema.parse(requestRollbackRequest),
-  );
-}
-export function requestRollbackRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<RequestRollbackRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RequestRollbackRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RequestRollbackRequest' from JSON`,
   );
 }

@@ -10,26 +10,15 @@ import { smartUnion } from "../types/smartUnion.js";
 import {
   DomainNotRegistered,
   DomainNotRegistered$inboundSchema,
-  DomainNotRegistered$Outbound,
-  DomainNotRegistered$outboundSchema,
 } from "./domainnotregistered.js";
-import {
-  Forbidden,
-  Forbidden$inboundSchema,
-  Forbidden$Outbound,
-  Forbidden$outboundSchema,
-} from "./forbidden.js";
+import { Forbidden, Forbidden$inboundSchema } from "./forbidden.js";
 import {
   HttpApiDecodeError,
   HttpApiDecodeError$inboundSchema,
-  HttpApiDecodeError$Outbound,
-  HttpApiDecodeError$outboundSchema,
 } from "./httpapidecodeerror.js";
 import {
   NotAuthorizedForScope,
   NotAuthorizedForScope$inboundSchema,
-  NotAuthorizedForScope$Outbound,
-  NotAuthorizedForScope$outboundSchema,
 } from "./notauthorizedforscope.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
@@ -60,15 +49,6 @@ export type GetDomainAuthCodeResponseBody = {
 };
 
 /** @internal */
-export const GetDomainAuthCodeRequest$inboundSchema: z.ZodType<
-  GetDomainAuthCodeRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  domain: types.string(),
-  teamId: types.optional(types.string()),
-});
-/** @internal */
 export type GetDomainAuthCodeRequest$Outbound = {
   domain: string;
   teamId?: string | undefined;
@@ -91,15 +71,6 @@ export function getDomainAuthCodeRequestToJSON(
     GetDomainAuthCodeRequest$outboundSchema.parse(getDomainAuthCodeRequest),
   );
 }
-export function getDomainAuthCodeRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetDomainAuthCodeRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetDomainAuthCodeRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDomainAuthCodeRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const GetDomainAuthCodeDomainsRegistrarResponseResponseBody$inboundSchema:
@@ -113,34 +84,7 @@ export const GetDomainAuthCodeDomainsRegistrarResponseResponseBody$inboundSchema
     ),
     Forbidden$inboundSchema,
   ]);
-/** @internal */
-export type GetDomainAuthCodeDomainsRegistrarResponseResponseBody$Outbound =
-  | (NotAuthorizedForScope$Outbound & { code: "not_authorized_for_scope" })
-  | Forbidden$Outbound;
 
-/** @internal */
-export const GetDomainAuthCodeDomainsRegistrarResponseResponseBody$outboundSchema:
-  z.ZodType<
-    GetDomainAuthCodeDomainsRegistrarResponseResponseBody$Outbound,
-    z.ZodTypeDef,
-    unknown
-  > = z.union([
-    NotAuthorizedForScope$outboundSchema.and(
-      z.object({ code: z.literal("not_authorized_for_scope") }),
-    ),
-    Forbidden$outboundSchema,
-  ]);
-
-export function getDomainAuthCodeDomainsRegistrarResponseResponseBodyToJSON(
-  getDomainAuthCodeDomainsRegistrarResponseResponseBody:
-    GetDomainAuthCodeDomainsRegistrarResponseResponseBody,
-): string {
-  return JSON.stringify(
-    GetDomainAuthCodeDomainsRegistrarResponseResponseBody$outboundSchema.parse(
-      getDomainAuthCodeDomainsRegistrarResponseResponseBody,
-    ),
-  );
-}
 export function getDomainAuthCodeDomainsRegistrarResponseResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -167,32 +111,7 @@ export const GetDomainAuthCodeDomainsRegistrarResponseBody$inboundSchema:
     DomainNotRegistered$inboundSchema,
     HttpApiDecodeError$inboundSchema,
   ]);
-/** @internal */
-export type GetDomainAuthCodeDomainsRegistrarResponseBody$Outbound =
-  | DomainNotRegistered$Outbound
-  | HttpApiDecodeError$Outbound;
 
-/** @internal */
-export const GetDomainAuthCodeDomainsRegistrarResponseBody$outboundSchema:
-  z.ZodType<
-    GetDomainAuthCodeDomainsRegistrarResponseBody$Outbound,
-    z.ZodTypeDef,
-    unknown
-  > = smartUnion([
-    DomainNotRegistered$outboundSchema,
-    HttpApiDecodeError$outboundSchema,
-  ]);
-
-export function getDomainAuthCodeDomainsRegistrarResponseBodyToJSON(
-  getDomainAuthCodeDomainsRegistrarResponseBody:
-    GetDomainAuthCodeDomainsRegistrarResponseBody,
-): string {
-  return JSON.stringify(
-    GetDomainAuthCodeDomainsRegistrarResponseBody$outboundSchema.parse(
-      getDomainAuthCodeDomainsRegistrarResponseBody,
-    ),
-  );
-}
 export function getDomainAuthCodeDomainsRegistrarResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -217,29 +136,7 @@ export const GetDomainAuthCodeResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   authCode: types.string(),
 });
-/** @internal */
-export type GetDomainAuthCodeResponseBody$Outbound = {
-  authCode: string;
-};
 
-/** @internal */
-export const GetDomainAuthCodeResponseBody$outboundSchema: z.ZodType<
-  GetDomainAuthCodeResponseBody$Outbound,
-  z.ZodTypeDef,
-  GetDomainAuthCodeResponseBody
-> = z.object({
-  authCode: z.string(),
-});
-
-export function getDomainAuthCodeResponseBodyToJSON(
-  getDomainAuthCodeResponseBody: GetDomainAuthCodeResponseBody,
-): string {
-  return JSON.stringify(
-    GetDomainAuthCodeResponseBody$outboundSchema.parse(
-      getDomainAuthCodeResponseBody,
-    ),
-  );
-}
 export function getDomainAuthCodeResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetDomainAuthCodeResponseBody, SDKValidationError> {

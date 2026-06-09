@@ -689,18 +689,6 @@ export type RemoveProjectEnvResponseBody =
   | Array<RemoveProjectEnvResponseBody1>;
 
 /** @internal */
-export const RemoveProjectEnvRequest$inboundSchema: z.ZodType<
-  RemoveProjectEnvRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  idOrName: types.string(),
-  id: types.string(),
-  customEnvironmentId: types.optional(types.string()),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
-/** @internal */
 export type RemoveProjectEnvRequest$Outbound = {
   idOrName: string;
   id: string;
@@ -729,42 +717,21 @@ export function removeProjectEnvRequestToJSON(
     RemoveProjectEnvRequest$outboundSchema.parse(removeProjectEnvRequest),
   );
 }
-export function removeProjectEnvRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<RemoveProjectEnvRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RemoveProjectEnvRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RemoveProjectEnvRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const RemoveProjectEnvResponseBodyProjectsResponseType$inboundSchema:
   z.ZodNativeEnum<typeof RemoveProjectEnvResponseBodyProjectsResponseType> = z
     .nativeEnum(RemoveProjectEnvResponseBodyProjectsResponseType);
-/** @internal */
-export const RemoveProjectEnvResponseBodyProjectsResponseType$outboundSchema:
-  z.ZodNativeEnum<typeof RemoveProjectEnvResponseBodyProjectsResponseType> =
-    RemoveProjectEnvResponseBodyProjectsResponseType$inboundSchema;
 
 /** @internal */
 export const RemoveProjectEnvTargetProjectsResponse2$inboundSchema:
   z.ZodNativeEnum<typeof RemoveProjectEnvTargetProjectsResponse2> = z
     .nativeEnum(RemoveProjectEnvTargetProjectsResponse2);
-/** @internal */
-export const RemoveProjectEnvTargetProjectsResponse2$outboundSchema:
-  z.ZodNativeEnum<typeof RemoveProjectEnvTargetProjectsResponse2> =
-    RemoveProjectEnvTargetProjectsResponse2$inboundSchema;
 
 /** @internal */
 export const RemoveProjectEnvTargetProjectsResponse1$inboundSchema:
   z.ZodNativeEnum<typeof RemoveProjectEnvTargetProjectsResponse1> = z
     .nativeEnum(RemoveProjectEnvTargetProjectsResponse1);
-/** @internal */
-export const RemoveProjectEnvTargetProjectsResponse1$outboundSchema:
-  z.ZodNativeEnum<typeof RemoveProjectEnvTargetProjectsResponse1> =
-    RemoveProjectEnvTargetProjectsResponse1$inboundSchema;
 
 /** @internal */
 export const RemoveProjectEnvResponseBodyProjectsResponseTarget$inboundSchema:
@@ -776,32 +743,7 @@ export const RemoveProjectEnvResponseBodyProjectsResponseTarget$inboundSchema:
     z.array(RemoveProjectEnvTargetProjectsResponse1$inboundSchema),
     RemoveProjectEnvTargetProjectsResponse2$inboundSchema,
   ]);
-/** @internal */
-export type RemoveProjectEnvResponseBodyProjectsResponseTarget$Outbound =
-  | Array<string>
-  | string;
 
-/** @internal */
-export const RemoveProjectEnvResponseBodyProjectsResponseTarget$outboundSchema:
-  z.ZodType<
-    RemoveProjectEnvResponseBodyProjectsResponseTarget$Outbound,
-    z.ZodTypeDef,
-    RemoveProjectEnvResponseBodyProjectsResponseTarget
-  > = smartUnion([
-    z.array(RemoveProjectEnvTargetProjectsResponse1$outboundSchema),
-    RemoveProjectEnvTargetProjectsResponse2$outboundSchema,
-  ]);
-
-export function removeProjectEnvResponseBodyProjectsResponseTargetToJSON(
-  removeProjectEnvResponseBodyProjectsResponseTarget:
-    RemoveProjectEnvResponseBodyProjectsResponseTarget,
-): string {
-  return JSON.stringify(
-    RemoveProjectEnvResponseBodyProjectsResponseTarget$outboundSchema.parse(
-      removeProjectEnvResponseBodyProjectsResponseTarget,
-    ),
-  );
-}
 export function removeProjectEnvResponseBodyProjectsResponseTargetFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -828,33 +770,7 @@ export const RemoveProjectEnvContentHintProjectsResponse17$inboundSchema:
     type: types.literal("flags-connection-string"),
     projectId: types.string(),
   });
-/** @internal */
-export type RemoveProjectEnvContentHintProjectsResponse17$Outbound = {
-  type: "flags-connection-string";
-  projectId: string;
-};
 
-/** @internal */
-export const RemoveProjectEnvContentHintProjectsResponse17$outboundSchema:
-  z.ZodType<
-    RemoveProjectEnvContentHintProjectsResponse17$Outbound,
-    z.ZodTypeDef,
-    RemoveProjectEnvContentHintProjectsResponse17
-  > = z.object({
-    type: z.literal("flags-connection-string"),
-    projectId: z.string(),
-  });
-
-export function removeProjectEnvContentHintProjectsResponse17ToJSON(
-  removeProjectEnvContentHintProjectsResponse17:
-    RemoveProjectEnvContentHintProjectsResponse17,
-): string {
-  return JSON.stringify(
-    RemoveProjectEnvContentHintProjectsResponse17$outboundSchema.parse(
-      removeProjectEnvContentHintProjectsResponse17,
-    ),
-  );
-}
 export function removeProjectEnvContentHintProjectsResponse17FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -884,39 +800,7 @@ export const RemoveProjectEnvContentHintProjectsResponse16$inboundSchema:
     integrationProductId: types.string(),
     integrationConfigurationId: types.string(),
   });
-/** @internal */
-export type RemoveProjectEnvContentHintProjectsResponse16$Outbound = {
-  type: "integration-store-secret";
-  storeId: string;
-  integrationId: string;
-  integrationProductId: string;
-  integrationConfigurationId: string;
-};
 
-/** @internal */
-export const RemoveProjectEnvContentHintProjectsResponse16$outboundSchema:
-  z.ZodType<
-    RemoveProjectEnvContentHintProjectsResponse16$Outbound,
-    z.ZodTypeDef,
-    RemoveProjectEnvContentHintProjectsResponse16
-  > = z.object({
-    type: z.literal("integration-store-secret"),
-    storeId: z.string(),
-    integrationId: z.string(),
-    integrationProductId: z.string(),
-    integrationConfigurationId: z.string(),
-  });
-
-export function removeProjectEnvContentHintProjectsResponse16ToJSON(
-  removeProjectEnvContentHintProjectsResponse16:
-    RemoveProjectEnvContentHintProjectsResponse16,
-): string {
-  return JSON.stringify(
-    RemoveProjectEnvContentHintProjectsResponse16$outboundSchema.parse(
-      removeProjectEnvContentHintProjectsResponse16,
-    ),
-  );
-}
 export function removeProjectEnvContentHintProjectsResponse16FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -943,33 +827,7 @@ export const RemoveProjectEnvContentHintProjectsResponse15$inboundSchema:
     type: types.literal("postgres-url-no-ssl"),
     storeId: types.string(),
   });
-/** @internal */
-export type RemoveProjectEnvContentHintProjectsResponse15$Outbound = {
-  type: "postgres-url-no-ssl";
-  storeId: string;
-};
 
-/** @internal */
-export const RemoveProjectEnvContentHintProjectsResponse15$outboundSchema:
-  z.ZodType<
-    RemoveProjectEnvContentHintProjectsResponse15$Outbound,
-    z.ZodTypeDef,
-    RemoveProjectEnvContentHintProjectsResponse15
-  > = z.object({
-    type: z.literal("postgres-url-no-ssl"),
-    storeId: z.string(),
-  });
-
-export function removeProjectEnvContentHintProjectsResponse15ToJSON(
-  removeProjectEnvContentHintProjectsResponse15:
-    RemoveProjectEnvContentHintProjectsResponse15,
-): string {
-  return JSON.stringify(
-    RemoveProjectEnvContentHintProjectsResponse15$outboundSchema.parse(
-      removeProjectEnvContentHintProjectsResponse15,
-    ),
-  );
-}
 export function removeProjectEnvContentHintProjectsResponse15FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -996,33 +854,7 @@ export const RemoveProjectEnvContentHintProjectsResponse14$inboundSchema:
     type: types.literal("postgres-database"),
     storeId: types.string(),
   });
-/** @internal */
-export type RemoveProjectEnvContentHintProjectsResponse14$Outbound = {
-  type: "postgres-database";
-  storeId: string;
-};
 
-/** @internal */
-export const RemoveProjectEnvContentHintProjectsResponse14$outboundSchema:
-  z.ZodType<
-    RemoveProjectEnvContentHintProjectsResponse14$Outbound,
-    z.ZodTypeDef,
-    RemoveProjectEnvContentHintProjectsResponse14
-  > = z.object({
-    type: z.literal("postgres-database"),
-    storeId: z.string(),
-  });
-
-export function removeProjectEnvContentHintProjectsResponse14ToJSON(
-  removeProjectEnvContentHintProjectsResponse14:
-    RemoveProjectEnvContentHintProjectsResponse14,
-): string {
-  return JSON.stringify(
-    RemoveProjectEnvContentHintProjectsResponse14$outboundSchema.parse(
-      removeProjectEnvContentHintProjectsResponse14,
-    ),
-  );
-}
 export function removeProjectEnvContentHintProjectsResponse14FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -1049,33 +881,7 @@ export const RemoveProjectEnvContentHintProjectsResponse13$inboundSchema:
     type: types.literal("postgres-password"),
     storeId: types.string(),
   });
-/** @internal */
-export type RemoveProjectEnvContentHintProjectsResponse13$Outbound = {
-  type: "postgres-password";
-  storeId: string;
-};
 
-/** @internal */
-export const RemoveProjectEnvContentHintProjectsResponse13$outboundSchema:
-  z.ZodType<
-    RemoveProjectEnvContentHintProjectsResponse13$Outbound,
-    z.ZodTypeDef,
-    RemoveProjectEnvContentHintProjectsResponse13
-  > = z.object({
-    type: z.literal("postgres-password"),
-    storeId: z.string(),
-  });
-
-export function removeProjectEnvContentHintProjectsResponse13ToJSON(
-  removeProjectEnvContentHintProjectsResponse13:
-    RemoveProjectEnvContentHintProjectsResponse13,
-): string {
-  return JSON.stringify(
-    RemoveProjectEnvContentHintProjectsResponse13$outboundSchema.parse(
-      removeProjectEnvContentHintProjectsResponse13,
-    ),
-  );
-}
 export function removeProjectEnvContentHintProjectsResponse13FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -1102,33 +908,7 @@ export const RemoveProjectEnvContentHintProjectsResponse12$inboundSchema:
     type: types.literal("postgres-host"),
     storeId: types.string(),
   });
-/** @internal */
-export type RemoveProjectEnvContentHintProjectsResponse12$Outbound = {
-  type: "postgres-host";
-  storeId: string;
-};
 
-/** @internal */
-export const RemoveProjectEnvContentHintProjectsResponse12$outboundSchema:
-  z.ZodType<
-    RemoveProjectEnvContentHintProjectsResponse12$Outbound,
-    z.ZodTypeDef,
-    RemoveProjectEnvContentHintProjectsResponse12
-  > = z.object({
-    type: z.literal("postgres-host"),
-    storeId: z.string(),
-  });
-
-export function removeProjectEnvContentHintProjectsResponse12ToJSON(
-  removeProjectEnvContentHintProjectsResponse12:
-    RemoveProjectEnvContentHintProjectsResponse12,
-): string {
-  return JSON.stringify(
-    RemoveProjectEnvContentHintProjectsResponse12$outboundSchema.parse(
-      removeProjectEnvContentHintProjectsResponse12,
-    ),
-  );
-}
 export function removeProjectEnvContentHintProjectsResponse12FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -1155,33 +935,7 @@ export const RemoveProjectEnvContentHintProjectsResponse11$inboundSchema:
     type: types.literal("postgres-user"),
     storeId: types.string(),
   });
-/** @internal */
-export type RemoveProjectEnvContentHintProjectsResponse11$Outbound = {
-  type: "postgres-user";
-  storeId: string;
-};
 
-/** @internal */
-export const RemoveProjectEnvContentHintProjectsResponse11$outboundSchema:
-  z.ZodType<
-    RemoveProjectEnvContentHintProjectsResponse11$Outbound,
-    z.ZodTypeDef,
-    RemoveProjectEnvContentHintProjectsResponse11
-  > = z.object({
-    type: z.literal("postgres-user"),
-    storeId: z.string(),
-  });
-
-export function removeProjectEnvContentHintProjectsResponse11ToJSON(
-  removeProjectEnvContentHintProjectsResponse11:
-    RemoveProjectEnvContentHintProjectsResponse11,
-): string {
-  return JSON.stringify(
-    RemoveProjectEnvContentHintProjectsResponse11$outboundSchema.parse(
-      removeProjectEnvContentHintProjectsResponse11,
-    ),
-  );
-}
 export function removeProjectEnvContentHintProjectsResponse11FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -1208,33 +962,7 @@ export const RemoveProjectEnvContentHintProjectsResponse10$inboundSchema:
     type: types.literal("postgres-prisma-url"),
     storeId: types.string(),
   });
-/** @internal */
-export type RemoveProjectEnvContentHintProjectsResponse10$Outbound = {
-  type: "postgres-prisma-url";
-  storeId: string;
-};
 
-/** @internal */
-export const RemoveProjectEnvContentHintProjectsResponse10$outboundSchema:
-  z.ZodType<
-    RemoveProjectEnvContentHintProjectsResponse10$Outbound,
-    z.ZodTypeDef,
-    RemoveProjectEnvContentHintProjectsResponse10
-  > = z.object({
-    type: z.literal("postgres-prisma-url"),
-    storeId: z.string(),
-  });
-
-export function removeProjectEnvContentHintProjectsResponse10ToJSON(
-  removeProjectEnvContentHintProjectsResponse10:
-    RemoveProjectEnvContentHintProjectsResponse10,
-): string {
-  return JSON.stringify(
-    RemoveProjectEnvContentHintProjectsResponse10$outboundSchema.parse(
-      removeProjectEnvContentHintProjectsResponse10,
-    ),
-  );
-}
 export function removeProjectEnvContentHintProjectsResponse10FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -1261,33 +989,7 @@ export const RemoveProjectEnvContentHintProjectsResponse9$inboundSchema:
     type: types.literal("postgres-url-non-pooling"),
     storeId: types.string(),
   });
-/** @internal */
-export type RemoveProjectEnvContentHintProjectsResponse9$Outbound = {
-  type: "postgres-url-non-pooling";
-  storeId: string;
-};
 
-/** @internal */
-export const RemoveProjectEnvContentHintProjectsResponse9$outboundSchema:
-  z.ZodType<
-    RemoveProjectEnvContentHintProjectsResponse9$Outbound,
-    z.ZodTypeDef,
-    RemoveProjectEnvContentHintProjectsResponse9
-  > = z.object({
-    type: z.literal("postgres-url-non-pooling"),
-    storeId: z.string(),
-  });
-
-export function removeProjectEnvContentHintProjectsResponse9ToJSON(
-  removeProjectEnvContentHintProjectsResponse9:
-    RemoveProjectEnvContentHintProjectsResponse9,
-): string {
-  return JSON.stringify(
-    RemoveProjectEnvContentHintProjectsResponse9$outboundSchema.parse(
-      removeProjectEnvContentHintProjectsResponse9,
-    ),
-  );
-}
 export function removeProjectEnvContentHintProjectsResponse9FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -1314,33 +1016,7 @@ export const RemoveProjectEnvContentHintProjectsResponse8$inboundSchema:
     type: types.literal("postgres-url"),
     storeId: types.string(),
   });
-/** @internal */
-export type RemoveProjectEnvContentHintProjectsResponse8$Outbound = {
-  type: "postgres-url";
-  storeId: string;
-};
 
-/** @internal */
-export const RemoveProjectEnvContentHintProjectsResponse8$outboundSchema:
-  z.ZodType<
-    RemoveProjectEnvContentHintProjectsResponse8$Outbound,
-    z.ZodTypeDef,
-    RemoveProjectEnvContentHintProjectsResponse8
-  > = z.object({
-    type: z.literal("postgres-url"),
-    storeId: z.string(),
-  });
-
-export function removeProjectEnvContentHintProjectsResponse8ToJSON(
-  removeProjectEnvContentHintProjectsResponse8:
-    RemoveProjectEnvContentHintProjectsResponse8,
-): string {
-  return JSON.stringify(
-    RemoveProjectEnvContentHintProjectsResponse8$outboundSchema.parse(
-      removeProjectEnvContentHintProjectsResponse8,
-    ),
-  );
-}
 export function removeProjectEnvContentHintProjectsResponse8FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -1367,33 +1043,7 @@ export const RemoveProjectEnvContentHintProjectsResponse7$inboundSchema:
     type: types.literal("blob-webhook-public-key"),
     storeId: types.string(),
   });
-/** @internal */
-export type RemoveProjectEnvContentHintProjectsResponse7$Outbound = {
-  type: "blob-webhook-public-key";
-  storeId: string;
-};
 
-/** @internal */
-export const RemoveProjectEnvContentHintProjectsResponse7$outboundSchema:
-  z.ZodType<
-    RemoveProjectEnvContentHintProjectsResponse7$Outbound,
-    z.ZodTypeDef,
-    RemoveProjectEnvContentHintProjectsResponse7
-  > = z.object({
-    type: z.literal("blob-webhook-public-key"),
-    storeId: z.string(),
-  });
-
-export function removeProjectEnvContentHintProjectsResponse7ToJSON(
-  removeProjectEnvContentHintProjectsResponse7:
-    RemoveProjectEnvContentHintProjectsResponse7,
-): string {
-  return JSON.stringify(
-    RemoveProjectEnvContentHintProjectsResponse7$outboundSchema.parse(
-      removeProjectEnvContentHintProjectsResponse7,
-    ),
-  );
-}
 export function removeProjectEnvContentHintProjectsResponse7FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -1420,33 +1070,7 @@ export const RemoveProjectEnvContentHintProjectsResponse6$inboundSchema:
     type: types.literal("blob-store-id"),
     storeId: types.string(),
   });
-/** @internal */
-export type RemoveProjectEnvContentHintProjectsResponse6$Outbound = {
-  type: "blob-store-id";
-  storeId: string;
-};
 
-/** @internal */
-export const RemoveProjectEnvContentHintProjectsResponse6$outboundSchema:
-  z.ZodType<
-    RemoveProjectEnvContentHintProjectsResponse6$Outbound,
-    z.ZodTypeDef,
-    RemoveProjectEnvContentHintProjectsResponse6
-  > = z.object({
-    type: z.literal("blob-store-id"),
-    storeId: z.string(),
-  });
-
-export function removeProjectEnvContentHintProjectsResponse6ToJSON(
-  removeProjectEnvContentHintProjectsResponse6:
-    RemoveProjectEnvContentHintProjectsResponse6,
-): string {
-  return JSON.stringify(
-    RemoveProjectEnvContentHintProjectsResponse6$outboundSchema.parse(
-      removeProjectEnvContentHintProjectsResponse6,
-    ),
-  );
-}
 export function removeProjectEnvContentHintProjectsResponse6FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -1473,33 +1097,7 @@ export const RemoveProjectEnvContentHintProjectsResponse5$inboundSchema:
     type: types.literal("blob-read-write-token"),
     storeId: types.string(),
   });
-/** @internal */
-export type RemoveProjectEnvContentHintProjectsResponse5$Outbound = {
-  type: "blob-read-write-token";
-  storeId: string;
-};
 
-/** @internal */
-export const RemoveProjectEnvContentHintProjectsResponse5$outboundSchema:
-  z.ZodType<
-    RemoveProjectEnvContentHintProjectsResponse5$Outbound,
-    z.ZodTypeDef,
-    RemoveProjectEnvContentHintProjectsResponse5
-  > = z.object({
-    type: z.literal("blob-read-write-token"),
-    storeId: z.string(),
-  });
-
-export function removeProjectEnvContentHintProjectsResponse5ToJSON(
-  removeProjectEnvContentHintProjectsResponse5:
-    RemoveProjectEnvContentHintProjectsResponse5,
-): string {
-  return JSON.stringify(
-    RemoveProjectEnvContentHintProjectsResponse5$outboundSchema.parse(
-      removeProjectEnvContentHintProjectsResponse5,
-    ),
-  );
-}
 export function removeProjectEnvContentHintProjectsResponse5FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -1526,33 +1124,7 @@ export const RemoveProjectEnvContentHintProjectsResponse4$inboundSchema:
     type: types.literal("redis-rest-api-read-only-token"),
     storeId: types.string(),
   });
-/** @internal */
-export type RemoveProjectEnvContentHintProjectsResponse4$Outbound = {
-  type: "redis-rest-api-read-only-token";
-  storeId: string;
-};
 
-/** @internal */
-export const RemoveProjectEnvContentHintProjectsResponse4$outboundSchema:
-  z.ZodType<
-    RemoveProjectEnvContentHintProjectsResponse4$Outbound,
-    z.ZodTypeDef,
-    RemoveProjectEnvContentHintProjectsResponse4
-  > = z.object({
-    type: z.literal("redis-rest-api-read-only-token"),
-    storeId: z.string(),
-  });
-
-export function removeProjectEnvContentHintProjectsResponse4ToJSON(
-  removeProjectEnvContentHintProjectsResponse4:
-    RemoveProjectEnvContentHintProjectsResponse4,
-): string {
-  return JSON.stringify(
-    RemoveProjectEnvContentHintProjectsResponse4$outboundSchema.parse(
-      removeProjectEnvContentHintProjectsResponse4,
-    ),
-  );
-}
 export function removeProjectEnvContentHintProjectsResponse4FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -1579,33 +1151,7 @@ export const RemoveProjectEnvContentHintProjectsResponse3$inboundSchema:
     type: types.literal("redis-rest-api-token"),
     storeId: types.string(),
   });
-/** @internal */
-export type RemoveProjectEnvContentHintProjectsResponse3$Outbound = {
-  type: "redis-rest-api-token";
-  storeId: string;
-};
 
-/** @internal */
-export const RemoveProjectEnvContentHintProjectsResponse3$outboundSchema:
-  z.ZodType<
-    RemoveProjectEnvContentHintProjectsResponse3$Outbound,
-    z.ZodTypeDef,
-    RemoveProjectEnvContentHintProjectsResponse3
-  > = z.object({
-    type: z.literal("redis-rest-api-token"),
-    storeId: z.string(),
-  });
-
-export function removeProjectEnvContentHintProjectsResponse3ToJSON(
-  removeProjectEnvContentHintProjectsResponse3:
-    RemoveProjectEnvContentHintProjectsResponse3,
-): string {
-  return JSON.stringify(
-    RemoveProjectEnvContentHintProjectsResponse3$outboundSchema.parse(
-      removeProjectEnvContentHintProjectsResponse3,
-    ),
-  );
-}
 export function removeProjectEnvContentHintProjectsResponse3FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -1632,33 +1178,7 @@ export const RemoveProjectEnvContentHintProjectsResponse2$inboundSchema:
     type: types.literal("redis-rest-api-url"),
     storeId: types.string(),
   });
-/** @internal */
-export type RemoveProjectEnvContentHintProjectsResponse2$Outbound = {
-  type: "redis-rest-api-url";
-  storeId: string;
-};
 
-/** @internal */
-export const RemoveProjectEnvContentHintProjectsResponse2$outboundSchema:
-  z.ZodType<
-    RemoveProjectEnvContentHintProjectsResponse2$Outbound,
-    z.ZodTypeDef,
-    RemoveProjectEnvContentHintProjectsResponse2
-  > = z.object({
-    type: z.literal("redis-rest-api-url"),
-    storeId: z.string(),
-  });
-
-export function removeProjectEnvContentHintProjectsResponse2ToJSON(
-  removeProjectEnvContentHintProjectsResponse2:
-    RemoveProjectEnvContentHintProjectsResponse2,
-): string {
-  return JSON.stringify(
-    RemoveProjectEnvContentHintProjectsResponse2$outboundSchema.parse(
-      removeProjectEnvContentHintProjectsResponse2,
-    ),
-  );
-}
 export function removeProjectEnvContentHintProjectsResponse2FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -1685,33 +1205,7 @@ export const RemoveProjectEnvContentHintProjectsResponse1$inboundSchema:
     type: types.literal("redis-url"),
     storeId: types.string(),
   });
-/** @internal */
-export type RemoveProjectEnvContentHintProjectsResponse1$Outbound = {
-  type: "redis-url";
-  storeId: string;
-};
 
-/** @internal */
-export const RemoveProjectEnvContentHintProjectsResponse1$outboundSchema:
-  z.ZodType<
-    RemoveProjectEnvContentHintProjectsResponse1$Outbound,
-    z.ZodTypeDef,
-    RemoveProjectEnvContentHintProjectsResponse1
-  > = z.object({
-    type: z.literal("redis-url"),
-    storeId: z.string(),
-  });
-
-export function removeProjectEnvContentHintProjectsResponse1ToJSON(
-  removeProjectEnvContentHintProjectsResponse1:
-    RemoveProjectEnvContentHintProjectsResponse1,
-): string {
-  return JSON.stringify(
-    RemoveProjectEnvContentHintProjectsResponse1$outboundSchema.parse(
-      removeProjectEnvContentHintProjectsResponse1,
-    ),
-  );
-}
 export function removeProjectEnvContentHintProjectsResponse1FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -1753,61 +1247,7 @@ export const RemoveProjectEnvResponseBodyProjectsResponseContentHint$inboundSche
     z.lazy(() => RemoveProjectEnvContentHintProjectsResponse16$inboundSchema),
     z.lazy(() => RemoveProjectEnvContentHintProjectsResponse17$inboundSchema),
   ]);
-/** @internal */
-export type RemoveProjectEnvResponseBodyProjectsResponseContentHint$Outbound =
-  | RemoveProjectEnvContentHintProjectsResponse1$Outbound
-  | RemoveProjectEnvContentHintProjectsResponse2$Outbound
-  | RemoveProjectEnvContentHintProjectsResponse3$Outbound
-  | RemoveProjectEnvContentHintProjectsResponse4$Outbound
-  | RemoveProjectEnvContentHintProjectsResponse5$Outbound
-  | RemoveProjectEnvContentHintProjectsResponse6$Outbound
-  | RemoveProjectEnvContentHintProjectsResponse7$Outbound
-  | RemoveProjectEnvContentHintProjectsResponse8$Outbound
-  | RemoveProjectEnvContentHintProjectsResponse9$Outbound
-  | RemoveProjectEnvContentHintProjectsResponse10$Outbound
-  | RemoveProjectEnvContentHintProjectsResponse11$Outbound
-  | RemoveProjectEnvContentHintProjectsResponse12$Outbound
-  | RemoveProjectEnvContentHintProjectsResponse13$Outbound
-  | RemoveProjectEnvContentHintProjectsResponse14$Outbound
-  | RemoveProjectEnvContentHintProjectsResponse15$Outbound
-  | RemoveProjectEnvContentHintProjectsResponse16$Outbound
-  | RemoveProjectEnvContentHintProjectsResponse17$Outbound;
 
-/** @internal */
-export const RemoveProjectEnvResponseBodyProjectsResponseContentHint$outboundSchema:
-  z.ZodType<
-    RemoveProjectEnvResponseBodyProjectsResponseContentHint$Outbound,
-    z.ZodTypeDef,
-    RemoveProjectEnvResponseBodyProjectsResponseContentHint
-  > = z.union([
-    z.lazy(() => RemoveProjectEnvContentHintProjectsResponse1$outboundSchema),
-    z.lazy(() => RemoveProjectEnvContentHintProjectsResponse2$outboundSchema),
-    z.lazy(() => RemoveProjectEnvContentHintProjectsResponse3$outboundSchema),
-    z.lazy(() => RemoveProjectEnvContentHintProjectsResponse4$outboundSchema),
-    z.lazy(() => RemoveProjectEnvContentHintProjectsResponse5$outboundSchema),
-    z.lazy(() => RemoveProjectEnvContentHintProjectsResponse6$outboundSchema),
-    z.lazy(() => RemoveProjectEnvContentHintProjectsResponse7$outboundSchema),
-    z.lazy(() => RemoveProjectEnvContentHintProjectsResponse8$outboundSchema),
-    z.lazy(() => RemoveProjectEnvContentHintProjectsResponse9$outboundSchema),
-    z.lazy(() => RemoveProjectEnvContentHintProjectsResponse10$outboundSchema),
-    z.lazy(() => RemoveProjectEnvContentHintProjectsResponse11$outboundSchema),
-    z.lazy(() => RemoveProjectEnvContentHintProjectsResponse12$outboundSchema),
-    z.lazy(() => RemoveProjectEnvContentHintProjectsResponse13$outboundSchema),
-    z.lazy(() => RemoveProjectEnvContentHintProjectsResponse14$outboundSchema),
-    z.lazy(() => RemoveProjectEnvContentHintProjectsResponse15$outboundSchema),
-    z.lazy(() => RemoveProjectEnvContentHintProjectsResponse16$outboundSchema),
-    z.lazy(() => RemoveProjectEnvContentHintProjectsResponse17$outboundSchema),
-  ]);
-
-export function removeProjectEnvResponseBodyProjectsResponseContentHintToJSON(
-  removeProjectEnvResponseBodyProjectsResponseContentHint:
-    RemoveProjectEnvResponseBodyProjectsResponseContentHint,
-): string {
-  return JSON.stringify(
-    RemoveProjectEnvResponseBodyProjectsResponseContentHint$outboundSchema
-      .parse(removeProjectEnvResponseBodyProjectsResponseContentHint),
-  );
-}
 export function removeProjectEnvResponseBodyProjectsResponseContentHintFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -1830,12 +1270,6 @@ export const RemoveProjectEnvResponseBodyProjectsResponse200ApplicationJson3Type
   > = z.nativeEnum(
     RemoveProjectEnvResponseBodyProjectsResponse200ApplicationJson3Type,
   );
-/** @internal */
-export const RemoveProjectEnvResponseBodyProjectsResponse200ApplicationJson3Type$outboundSchema:
-  z.ZodNativeEnum<
-    typeof RemoveProjectEnvResponseBodyProjectsResponse200ApplicationJson3Type
-  > =
-    RemoveProjectEnvResponseBodyProjectsResponse200ApplicationJson3Type$inboundSchema;
 
 /** @internal */
 export const RemoveProjectEnvResponseBodyProjectsResponseInternalContentHint$inboundSchema:
@@ -1848,34 +1282,7 @@ export const RemoveProjectEnvResponseBodyProjectsResponseInternalContentHint$inb
       RemoveProjectEnvResponseBodyProjectsResponse200ApplicationJson3Type$inboundSchema,
     encryptedValue: types.string(),
   });
-/** @internal */
-export type RemoveProjectEnvResponseBodyProjectsResponseInternalContentHint$Outbound =
-  {
-    type: string;
-    encryptedValue: string;
-  };
 
-/** @internal */
-export const RemoveProjectEnvResponseBodyProjectsResponseInternalContentHint$outboundSchema:
-  z.ZodType<
-    RemoveProjectEnvResponseBodyProjectsResponseInternalContentHint$Outbound,
-    z.ZodTypeDef,
-    RemoveProjectEnvResponseBodyProjectsResponseInternalContentHint
-  > = z.object({
-    type:
-      RemoveProjectEnvResponseBodyProjectsResponse200ApplicationJson3Type$outboundSchema,
-    encryptedValue: z.string(),
-  });
-
-export function removeProjectEnvResponseBodyProjectsResponseInternalContentHintToJSON(
-  removeProjectEnvResponseBodyProjectsResponseInternalContentHint:
-    RemoveProjectEnvResponseBodyProjectsResponseInternalContentHint,
-): string {
-  return JSON.stringify(
-    RemoveProjectEnvResponseBodyProjectsResponseInternalContentHint$outboundSchema
-      .parse(removeProjectEnvResponseBodyProjectsResponseInternalContentHint),
-  );
-}
 export function removeProjectEnvResponseBodyProjectsResponseInternalContentHintFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -1947,134 +1354,7 @@ export const RemoveProjectEnvResponseBody3$inboundSchema: z.ZodType<
   comment: types.optional(types.string()),
   customEnvironmentIds: types.optional(z.array(types.string())),
 });
-/** @internal */
-export type RemoveProjectEnvResponseBody3$Outbound = {
-  type: string;
-  value: string;
-  edgeConfigId?: string | null | undefined;
-  edgeConfigTokenId?: string | null | undefined;
-  createdAt?: number | undefined;
-  updatedAt?: number | undefined;
-  id?: string | undefined;
-  key: string;
-  target?: Array<string> | string | undefined;
-  gitBranch?: string | undefined;
-  createdBy?: string | null | undefined;
-  updatedBy?: string | null | undefined;
-  sunsetSecretId?: string | undefined;
-  legacyValue?: string | undefined;
-  decrypted?: boolean | undefined;
-  configurationId?: string | null | undefined;
-  contentHint?:
-    | RemoveProjectEnvContentHintProjectsResponse1$Outbound
-    | RemoveProjectEnvContentHintProjectsResponse2$Outbound
-    | RemoveProjectEnvContentHintProjectsResponse3$Outbound
-    | RemoveProjectEnvContentHintProjectsResponse4$Outbound
-    | RemoveProjectEnvContentHintProjectsResponse5$Outbound
-    | RemoveProjectEnvContentHintProjectsResponse6$Outbound
-    | RemoveProjectEnvContentHintProjectsResponse7$Outbound
-    | RemoveProjectEnvContentHintProjectsResponse8$Outbound
-    | RemoveProjectEnvContentHintProjectsResponse9$Outbound
-    | RemoveProjectEnvContentHintProjectsResponse10$Outbound
-    | RemoveProjectEnvContentHintProjectsResponse11$Outbound
-    | RemoveProjectEnvContentHintProjectsResponse12$Outbound
-    | RemoveProjectEnvContentHintProjectsResponse13$Outbound
-    | RemoveProjectEnvContentHintProjectsResponse14$Outbound
-    | RemoveProjectEnvContentHintProjectsResponse15$Outbound
-    | RemoveProjectEnvContentHintProjectsResponse16$Outbound
-    | RemoveProjectEnvContentHintProjectsResponse17$Outbound
-    | null
-    | undefined;
-  internalContentHint?:
-    | RemoveProjectEnvResponseBodyProjectsResponseInternalContentHint$Outbound
-    | null
-    | undefined;
-  comment?: string | undefined;
-  customEnvironmentIds?: Array<string> | undefined;
-};
 
-/** @internal */
-export const RemoveProjectEnvResponseBody3$outboundSchema: z.ZodType<
-  RemoveProjectEnvResponseBody3$Outbound,
-  z.ZodTypeDef,
-  RemoveProjectEnvResponseBody3
-> = z.object({
-  type: RemoveProjectEnvResponseBodyProjectsResponseType$outboundSchema,
-  value: z.string(),
-  edgeConfigId: z.nullable(z.string()).optional(),
-  edgeConfigTokenId: z.nullable(z.string()).optional(),
-  createdAt: z.number().optional(),
-  updatedAt: z.number().optional(),
-  id: z.string().optional(),
-  key: z.string(),
-  target: smartUnion([
-    z.array(RemoveProjectEnvTargetProjectsResponse1$outboundSchema),
-    RemoveProjectEnvTargetProjectsResponse2$outboundSchema,
-  ]).optional(),
-  gitBranch: z.string().optional(),
-  createdBy: z.nullable(z.string()).optional(),
-  updatedBy: z.nullable(z.string()).optional(),
-  sunsetSecretId: z.string().optional(),
-  legacyValue: z.string().optional(),
-  decrypted: z.boolean().optional(),
-  configurationId: z.nullable(z.string()).optional(),
-  contentHint: z.nullable(
-    z.union([
-      z.lazy(() => RemoveProjectEnvContentHintProjectsResponse1$outboundSchema),
-      z.lazy(() =>
-        RemoveProjectEnvContentHintProjectsResponse2$outboundSchema
-      ),
-      z.lazy(() => RemoveProjectEnvContentHintProjectsResponse3$outboundSchema),
-      z.lazy(() => RemoveProjectEnvContentHintProjectsResponse4$outboundSchema),
-      z.lazy(() => RemoveProjectEnvContentHintProjectsResponse5$outboundSchema),
-      z.lazy(() => RemoveProjectEnvContentHintProjectsResponse6$outboundSchema),
-      z.lazy(() => RemoveProjectEnvContentHintProjectsResponse7$outboundSchema),
-      z.lazy(() => RemoveProjectEnvContentHintProjectsResponse8$outboundSchema),
-      z.lazy(() => RemoveProjectEnvContentHintProjectsResponse9$outboundSchema),
-      z.lazy(() =>
-        RemoveProjectEnvContentHintProjectsResponse10$outboundSchema
-      ),
-      z.lazy(() =>
-        RemoveProjectEnvContentHintProjectsResponse11$outboundSchema
-      ),
-      z.lazy(() =>
-        RemoveProjectEnvContentHintProjectsResponse12$outboundSchema
-      ),
-      z.lazy(() =>
-        RemoveProjectEnvContentHintProjectsResponse13$outboundSchema
-      ),
-      z.lazy(() =>
-        RemoveProjectEnvContentHintProjectsResponse14$outboundSchema
-      ),
-      z.lazy(() =>
-        RemoveProjectEnvContentHintProjectsResponse15$outboundSchema
-      ),
-      z.lazy(() =>
-        RemoveProjectEnvContentHintProjectsResponse16$outboundSchema
-      ),
-      z.lazy(() =>
-        RemoveProjectEnvContentHintProjectsResponse17$outboundSchema
-      ),
-    ]),
-  ).optional(),
-  internalContentHint: z.nullable(
-    z.lazy(() =>
-      RemoveProjectEnvResponseBodyProjectsResponseInternalContentHint$outboundSchema
-    ),
-  ).optional(),
-  comment: z.string().optional(),
-  customEnvironmentIds: z.array(z.string()).optional(),
-});
-
-export function removeProjectEnvResponseBody3ToJSON(
-  removeProjectEnvResponseBody3: RemoveProjectEnvResponseBody3,
-): string {
-  return JSON.stringify(
-    RemoveProjectEnvResponseBody3$outboundSchema.parse(
-      removeProjectEnvResponseBody3,
-    ),
-  );
-}
 export function removeProjectEnvResponseBody3FromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveProjectEnvResponseBody3, SDKValidationError> {
@@ -2089,28 +1369,16 @@ export function removeProjectEnvResponseBody3FromJSON(
 export const RemoveProjectEnvResponseBodyProjectsType$inboundSchema:
   z.ZodNativeEnum<typeof RemoveProjectEnvResponseBodyProjectsType> = z
     .nativeEnum(RemoveProjectEnvResponseBodyProjectsType);
-/** @internal */
-export const RemoveProjectEnvResponseBodyProjectsType$outboundSchema:
-  z.ZodNativeEnum<typeof RemoveProjectEnvResponseBodyProjectsType> =
-    RemoveProjectEnvResponseBodyProjectsType$inboundSchema;
 
 /** @internal */
 export const RemoveProjectEnvTargetProjects2$inboundSchema: z.ZodNativeEnum<
   typeof RemoveProjectEnvTargetProjects2
 > = z.nativeEnum(RemoveProjectEnvTargetProjects2);
-/** @internal */
-export const RemoveProjectEnvTargetProjects2$outboundSchema: z.ZodNativeEnum<
-  typeof RemoveProjectEnvTargetProjects2
-> = RemoveProjectEnvTargetProjects2$inboundSchema;
 
 /** @internal */
 export const RemoveProjectEnvTargetProjects1$inboundSchema: z.ZodNativeEnum<
   typeof RemoveProjectEnvTargetProjects1
 > = z.nativeEnum(RemoveProjectEnvTargetProjects1);
-/** @internal */
-export const RemoveProjectEnvTargetProjects1$outboundSchema: z.ZodNativeEnum<
-  typeof RemoveProjectEnvTargetProjects1
-> = RemoveProjectEnvTargetProjects1$inboundSchema;
 
 /** @internal */
 export const RemoveProjectEnvResponseBodyProjectsTarget$inboundSchema:
@@ -2119,32 +1387,7 @@ export const RemoveProjectEnvResponseBodyProjectsTarget$inboundSchema:
       z.array(RemoveProjectEnvTargetProjects1$inboundSchema),
       RemoveProjectEnvTargetProjects2$inboundSchema,
     ]);
-/** @internal */
-export type RemoveProjectEnvResponseBodyProjectsTarget$Outbound =
-  | Array<string>
-  | string;
 
-/** @internal */
-export const RemoveProjectEnvResponseBodyProjectsTarget$outboundSchema:
-  z.ZodType<
-    RemoveProjectEnvResponseBodyProjectsTarget$Outbound,
-    z.ZodTypeDef,
-    RemoveProjectEnvResponseBodyProjectsTarget
-  > = smartUnion([
-    z.array(RemoveProjectEnvTargetProjects1$outboundSchema),
-    RemoveProjectEnvTargetProjects2$outboundSchema,
-  ]);
-
-export function removeProjectEnvResponseBodyProjectsTargetToJSON(
-  removeProjectEnvResponseBodyProjectsTarget:
-    RemoveProjectEnvResponseBodyProjectsTarget,
-): string {
-  return JSON.stringify(
-    RemoveProjectEnvResponseBodyProjectsTarget$outboundSchema.parse(
-      removeProjectEnvResponseBodyProjectsTarget,
-    ),
-  );
-}
 export function removeProjectEnvResponseBodyProjectsTargetFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -2170,31 +1413,7 @@ export const RemoveProjectEnvContentHintProjects17$inboundSchema: z.ZodType<
   type: types.literal("flags-connection-string"),
   projectId: types.string(),
 });
-/** @internal */
-export type RemoveProjectEnvContentHintProjects17$Outbound = {
-  type: "flags-connection-string";
-  projectId: string;
-};
 
-/** @internal */
-export const RemoveProjectEnvContentHintProjects17$outboundSchema: z.ZodType<
-  RemoveProjectEnvContentHintProjects17$Outbound,
-  z.ZodTypeDef,
-  RemoveProjectEnvContentHintProjects17
-> = z.object({
-  type: z.literal("flags-connection-string"),
-  projectId: z.string(),
-});
-
-export function removeProjectEnvContentHintProjects17ToJSON(
-  removeProjectEnvContentHintProjects17: RemoveProjectEnvContentHintProjects17,
-): string {
-  return JSON.stringify(
-    RemoveProjectEnvContentHintProjects17$outboundSchema.parse(
-      removeProjectEnvContentHintProjects17,
-    ),
-  );
-}
 export function removeProjectEnvContentHintProjects17FromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveProjectEnvContentHintProjects17, SDKValidationError> {
@@ -2218,37 +1437,7 @@ export const RemoveProjectEnvContentHintProjects16$inboundSchema: z.ZodType<
   integrationProductId: types.string(),
   integrationConfigurationId: types.string(),
 });
-/** @internal */
-export type RemoveProjectEnvContentHintProjects16$Outbound = {
-  type: "integration-store-secret";
-  storeId: string;
-  integrationId: string;
-  integrationProductId: string;
-  integrationConfigurationId: string;
-};
 
-/** @internal */
-export const RemoveProjectEnvContentHintProjects16$outboundSchema: z.ZodType<
-  RemoveProjectEnvContentHintProjects16$Outbound,
-  z.ZodTypeDef,
-  RemoveProjectEnvContentHintProjects16
-> = z.object({
-  type: z.literal("integration-store-secret"),
-  storeId: z.string(),
-  integrationId: z.string(),
-  integrationProductId: z.string(),
-  integrationConfigurationId: z.string(),
-});
-
-export function removeProjectEnvContentHintProjects16ToJSON(
-  removeProjectEnvContentHintProjects16: RemoveProjectEnvContentHintProjects16,
-): string {
-  return JSON.stringify(
-    RemoveProjectEnvContentHintProjects16$outboundSchema.parse(
-      removeProjectEnvContentHintProjects16,
-    ),
-  );
-}
 export function removeProjectEnvContentHintProjects16FromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveProjectEnvContentHintProjects16, SDKValidationError> {
@@ -2269,31 +1458,7 @@ export const RemoveProjectEnvContentHintProjects15$inboundSchema: z.ZodType<
   type: types.literal("postgres-url-no-ssl"),
   storeId: types.string(),
 });
-/** @internal */
-export type RemoveProjectEnvContentHintProjects15$Outbound = {
-  type: "postgres-url-no-ssl";
-  storeId: string;
-};
 
-/** @internal */
-export const RemoveProjectEnvContentHintProjects15$outboundSchema: z.ZodType<
-  RemoveProjectEnvContentHintProjects15$Outbound,
-  z.ZodTypeDef,
-  RemoveProjectEnvContentHintProjects15
-> = z.object({
-  type: z.literal("postgres-url-no-ssl"),
-  storeId: z.string(),
-});
-
-export function removeProjectEnvContentHintProjects15ToJSON(
-  removeProjectEnvContentHintProjects15: RemoveProjectEnvContentHintProjects15,
-): string {
-  return JSON.stringify(
-    RemoveProjectEnvContentHintProjects15$outboundSchema.parse(
-      removeProjectEnvContentHintProjects15,
-    ),
-  );
-}
 export function removeProjectEnvContentHintProjects15FromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveProjectEnvContentHintProjects15, SDKValidationError> {
@@ -2314,31 +1479,7 @@ export const RemoveProjectEnvContentHintProjects14$inboundSchema: z.ZodType<
   type: types.literal("postgres-database"),
   storeId: types.string(),
 });
-/** @internal */
-export type RemoveProjectEnvContentHintProjects14$Outbound = {
-  type: "postgres-database";
-  storeId: string;
-};
 
-/** @internal */
-export const RemoveProjectEnvContentHintProjects14$outboundSchema: z.ZodType<
-  RemoveProjectEnvContentHintProjects14$Outbound,
-  z.ZodTypeDef,
-  RemoveProjectEnvContentHintProjects14
-> = z.object({
-  type: z.literal("postgres-database"),
-  storeId: z.string(),
-});
-
-export function removeProjectEnvContentHintProjects14ToJSON(
-  removeProjectEnvContentHintProjects14: RemoveProjectEnvContentHintProjects14,
-): string {
-  return JSON.stringify(
-    RemoveProjectEnvContentHintProjects14$outboundSchema.parse(
-      removeProjectEnvContentHintProjects14,
-    ),
-  );
-}
 export function removeProjectEnvContentHintProjects14FromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveProjectEnvContentHintProjects14, SDKValidationError> {
@@ -2359,31 +1500,7 @@ export const RemoveProjectEnvContentHintProjects13$inboundSchema: z.ZodType<
   type: types.literal("postgres-password"),
   storeId: types.string(),
 });
-/** @internal */
-export type RemoveProjectEnvContentHintProjects13$Outbound = {
-  type: "postgres-password";
-  storeId: string;
-};
 
-/** @internal */
-export const RemoveProjectEnvContentHintProjects13$outboundSchema: z.ZodType<
-  RemoveProjectEnvContentHintProjects13$Outbound,
-  z.ZodTypeDef,
-  RemoveProjectEnvContentHintProjects13
-> = z.object({
-  type: z.literal("postgres-password"),
-  storeId: z.string(),
-});
-
-export function removeProjectEnvContentHintProjects13ToJSON(
-  removeProjectEnvContentHintProjects13: RemoveProjectEnvContentHintProjects13,
-): string {
-  return JSON.stringify(
-    RemoveProjectEnvContentHintProjects13$outboundSchema.parse(
-      removeProjectEnvContentHintProjects13,
-    ),
-  );
-}
 export function removeProjectEnvContentHintProjects13FromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveProjectEnvContentHintProjects13, SDKValidationError> {
@@ -2404,31 +1521,7 @@ export const RemoveProjectEnvContentHintProjects12$inboundSchema: z.ZodType<
   type: types.literal("postgres-host"),
   storeId: types.string(),
 });
-/** @internal */
-export type RemoveProjectEnvContentHintProjects12$Outbound = {
-  type: "postgres-host";
-  storeId: string;
-};
 
-/** @internal */
-export const RemoveProjectEnvContentHintProjects12$outboundSchema: z.ZodType<
-  RemoveProjectEnvContentHintProjects12$Outbound,
-  z.ZodTypeDef,
-  RemoveProjectEnvContentHintProjects12
-> = z.object({
-  type: z.literal("postgres-host"),
-  storeId: z.string(),
-});
-
-export function removeProjectEnvContentHintProjects12ToJSON(
-  removeProjectEnvContentHintProjects12: RemoveProjectEnvContentHintProjects12,
-): string {
-  return JSON.stringify(
-    RemoveProjectEnvContentHintProjects12$outboundSchema.parse(
-      removeProjectEnvContentHintProjects12,
-    ),
-  );
-}
 export function removeProjectEnvContentHintProjects12FromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveProjectEnvContentHintProjects12, SDKValidationError> {
@@ -2449,31 +1542,7 @@ export const RemoveProjectEnvContentHintProjects11$inboundSchema: z.ZodType<
   type: types.literal("postgres-user"),
   storeId: types.string(),
 });
-/** @internal */
-export type RemoveProjectEnvContentHintProjects11$Outbound = {
-  type: "postgres-user";
-  storeId: string;
-};
 
-/** @internal */
-export const RemoveProjectEnvContentHintProjects11$outboundSchema: z.ZodType<
-  RemoveProjectEnvContentHintProjects11$Outbound,
-  z.ZodTypeDef,
-  RemoveProjectEnvContentHintProjects11
-> = z.object({
-  type: z.literal("postgres-user"),
-  storeId: z.string(),
-});
-
-export function removeProjectEnvContentHintProjects11ToJSON(
-  removeProjectEnvContentHintProjects11: RemoveProjectEnvContentHintProjects11,
-): string {
-  return JSON.stringify(
-    RemoveProjectEnvContentHintProjects11$outboundSchema.parse(
-      removeProjectEnvContentHintProjects11,
-    ),
-  );
-}
 export function removeProjectEnvContentHintProjects11FromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveProjectEnvContentHintProjects11, SDKValidationError> {
@@ -2494,31 +1563,7 @@ export const RemoveProjectEnvContentHintProjects10$inboundSchema: z.ZodType<
   type: types.literal("postgres-prisma-url"),
   storeId: types.string(),
 });
-/** @internal */
-export type RemoveProjectEnvContentHintProjects10$Outbound = {
-  type: "postgres-prisma-url";
-  storeId: string;
-};
 
-/** @internal */
-export const RemoveProjectEnvContentHintProjects10$outboundSchema: z.ZodType<
-  RemoveProjectEnvContentHintProjects10$Outbound,
-  z.ZodTypeDef,
-  RemoveProjectEnvContentHintProjects10
-> = z.object({
-  type: z.literal("postgres-prisma-url"),
-  storeId: z.string(),
-});
-
-export function removeProjectEnvContentHintProjects10ToJSON(
-  removeProjectEnvContentHintProjects10: RemoveProjectEnvContentHintProjects10,
-): string {
-  return JSON.stringify(
-    RemoveProjectEnvContentHintProjects10$outboundSchema.parse(
-      removeProjectEnvContentHintProjects10,
-    ),
-  );
-}
 export function removeProjectEnvContentHintProjects10FromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveProjectEnvContentHintProjects10, SDKValidationError> {
@@ -2539,31 +1584,7 @@ export const RemoveProjectEnvContentHintProjects9$inboundSchema: z.ZodType<
   type: types.literal("postgres-url-non-pooling"),
   storeId: types.string(),
 });
-/** @internal */
-export type RemoveProjectEnvContentHintProjects9$Outbound = {
-  type: "postgres-url-non-pooling";
-  storeId: string;
-};
 
-/** @internal */
-export const RemoveProjectEnvContentHintProjects9$outboundSchema: z.ZodType<
-  RemoveProjectEnvContentHintProjects9$Outbound,
-  z.ZodTypeDef,
-  RemoveProjectEnvContentHintProjects9
-> = z.object({
-  type: z.literal("postgres-url-non-pooling"),
-  storeId: z.string(),
-});
-
-export function removeProjectEnvContentHintProjects9ToJSON(
-  removeProjectEnvContentHintProjects9: RemoveProjectEnvContentHintProjects9,
-): string {
-  return JSON.stringify(
-    RemoveProjectEnvContentHintProjects9$outboundSchema.parse(
-      removeProjectEnvContentHintProjects9,
-    ),
-  );
-}
 export function removeProjectEnvContentHintProjects9FromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveProjectEnvContentHintProjects9, SDKValidationError> {
@@ -2584,31 +1605,7 @@ export const RemoveProjectEnvContentHintProjects8$inboundSchema: z.ZodType<
   type: types.literal("postgres-url"),
   storeId: types.string(),
 });
-/** @internal */
-export type RemoveProjectEnvContentHintProjects8$Outbound = {
-  type: "postgres-url";
-  storeId: string;
-};
 
-/** @internal */
-export const RemoveProjectEnvContentHintProjects8$outboundSchema: z.ZodType<
-  RemoveProjectEnvContentHintProjects8$Outbound,
-  z.ZodTypeDef,
-  RemoveProjectEnvContentHintProjects8
-> = z.object({
-  type: z.literal("postgres-url"),
-  storeId: z.string(),
-});
-
-export function removeProjectEnvContentHintProjects8ToJSON(
-  removeProjectEnvContentHintProjects8: RemoveProjectEnvContentHintProjects8,
-): string {
-  return JSON.stringify(
-    RemoveProjectEnvContentHintProjects8$outboundSchema.parse(
-      removeProjectEnvContentHintProjects8,
-    ),
-  );
-}
 export function removeProjectEnvContentHintProjects8FromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveProjectEnvContentHintProjects8, SDKValidationError> {
@@ -2629,31 +1626,7 @@ export const RemoveProjectEnvContentHintProjects7$inboundSchema: z.ZodType<
   type: types.literal("blob-webhook-public-key"),
   storeId: types.string(),
 });
-/** @internal */
-export type RemoveProjectEnvContentHintProjects7$Outbound = {
-  type: "blob-webhook-public-key";
-  storeId: string;
-};
 
-/** @internal */
-export const RemoveProjectEnvContentHintProjects7$outboundSchema: z.ZodType<
-  RemoveProjectEnvContentHintProjects7$Outbound,
-  z.ZodTypeDef,
-  RemoveProjectEnvContentHintProjects7
-> = z.object({
-  type: z.literal("blob-webhook-public-key"),
-  storeId: z.string(),
-});
-
-export function removeProjectEnvContentHintProjects7ToJSON(
-  removeProjectEnvContentHintProjects7: RemoveProjectEnvContentHintProjects7,
-): string {
-  return JSON.stringify(
-    RemoveProjectEnvContentHintProjects7$outboundSchema.parse(
-      removeProjectEnvContentHintProjects7,
-    ),
-  );
-}
 export function removeProjectEnvContentHintProjects7FromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveProjectEnvContentHintProjects7, SDKValidationError> {
@@ -2674,31 +1647,7 @@ export const RemoveProjectEnvContentHintProjects6$inboundSchema: z.ZodType<
   type: types.literal("blob-store-id"),
   storeId: types.string(),
 });
-/** @internal */
-export type RemoveProjectEnvContentHintProjects6$Outbound = {
-  type: "blob-store-id";
-  storeId: string;
-};
 
-/** @internal */
-export const RemoveProjectEnvContentHintProjects6$outboundSchema: z.ZodType<
-  RemoveProjectEnvContentHintProjects6$Outbound,
-  z.ZodTypeDef,
-  RemoveProjectEnvContentHintProjects6
-> = z.object({
-  type: z.literal("blob-store-id"),
-  storeId: z.string(),
-});
-
-export function removeProjectEnvContentHintProjects6ToJSON(
-  removeProjectEnvContentHintProjects6: RemoveProjectEnvContentHintProjects6,
-): string {
-  return JSON.stringify(
-    RemoveProjectEnvContentHintProjects6$outboundSchema.parse(
-      removeProjectEnvContentHintProjects6,
-    ),
-  );
-}
 export function removeProjectEnvContentHintProjects6FromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveProjectEnvContentHintProjects6, SDKValidationError> {
@@ -2719,31 +1668,7 @@ export const RemoveProjectEnvContentHintProjects5$inboundSchema: z.ZodType<
   type: types.literal("blob-read-write-token"),
   storeId: types.string(),
 });
-/** @internal */
-export type RemoveProjectEnvContentHintProjects5$Outbound = {
-  type: "blob-read-write-token";
-  storeId: string;
-};
 
-/** @internal */
-export const RemoveProjectEnvContentHintProjects5$outboundSchema: z.ZodType<
-  RemoveProjectEnvContentHintProjects5$Outbound,
-  z.ZodTypeDef,
-  RemoveProjectEnvContentHintProjects5
-> = z.object({
-  type: z.literal("blob-read-write-token"),
-  storeId: z.string(),
-});
-
-export function removeProjectEnvContentHintProjects5ToJSON(
-  removeProjectEnvContentHintProjects5: RemoveProjectEnvContentHintProjects5,
-): string {
-  return JSON.stringify(
-    RemoveProjectEnvContentHintProjects5$outboundSchema.parse(
-      removeProjectEnvContentHintProjects5,
-    ),
-  );
-}
 export function removeProjectEnvContentHintProjects5FromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveProjectEnvContentHintProjects5, SDKValidationError> {
@@ -2764,31 +1689,7 @@ export const RemoveProjectEnvContentHintProjects4$inboundSchema: z.ZodType<
   type: types.literal("redis-rest-api-read-only-token"),
   storeId: types.string(),
 });
-/** @internal */
-export type RemoveProjectEnvContentHintProjects4$Outbound = {
-  type: "redis-rest-api-read-only-token";
-  storeId: string;
-};
 
-/** @internal */
-export const RemoveProjectEnvContentHintProjects4$outboundSchema: z.ZodType<
-  RemoveProjectEnvContentHintProjects4$Outbound,
-  z.ZodTypeDef,
-  RemoveProjectEnvContentHintProjects4
-> = z.object({
-  type: z.literal("redis-rest-api-read-only-token"),
-  storeId: z.string(),
-});
-
-export function removeProjectEnvContentHintProjects4ToJSON(
-  removeProjectEnvContentHintProjects4: RemoveProjectEnvContentHintProjects4,
-): string {
-  return JSON.stringify(
-    RemoveProjectEnvContentHintProjects4$outboundSchema.parse(
-      removeProjectEnvContentHintProjects4,
-    ),
-  );
-}
 export function removeProjectEnvContentHintProjects4FromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveProjectEnvContentHintProjects4, SDKValidationError> {
@@ -2809,31 +1710,7 @@ export const RemoveProjectEnvContentHintProjects3$inboundSchema: z.ZodType<
   type: types.literal("redis-rest-api-token"),
   storeId: types.string(),
 });
-/** @internal */
-export type RemoveProjectEnvContentHintProjects3$Outbound = {
-  type: "redis-rest-api-token";
-  storeId: string;
-};
 
-/** @internal */
-export const RemoveProjectEnvContentHintProjects3$outboundSchema: z.ZodType<
-  RemoveProjectEnvContentHintProjects3$Outbound,
-  z.ZodTypeDef,
-  RemoveProjectEnvContentHintProjects3
-> = z.object({
-  type: z.literal("redis-rest-api-token"),
-  storeId: z.string(),
-});
-
-export function removeProjectEnvContentHintProjects3ToJSON(
-  removeProjectEnvContentHintProjects3: RemoveProjectEnvContentHintProjects3,
-): string {
-  return JSON.stringify(
-    RemoveProjectEnvContentHintProjects3$outboundSchema.parse(
-      removeProjectEnvContentHintProjects3,
-    ),
-  );
-}
 export function removeProjectEnvContentHintProjects3FromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveProjectEnvContentHintProjects3, SDKValidationError> {
@@ -2854,31 +1731,7 @@ export const RemoveProjectEnvContentHintProjects2$inboundSchema: z.ZodType<
   type: types.literal("redis-rest-api-url"),
   storeId: types.string(),
 });
-/** @internal */
-export type RemoveProjectEnvContentHintProjects2$Outbound = {
-  type: "redis-rest-api-url";
-  storeId: string;
-};
 
-/** @internal */
-export const RemoveProjectEnvContentHintProjects2$outboundSchema: z.ZodType<
-  RemoveProjectEnvContentHintProjects2$Outbound,
-  z.ZodTypeDef,
-  RemoveProjectEnvContentHintProjects2
-> = z.object({
-  type: z.literal("redis-rest-api-url"),
-  storeId: z.string(),
-});
-
-export function removeProjectEnvContentHintProjects2ToJSON(
-  removeProjectEnvContentHintProjects2: RemoveProjectEnvContentHintProjects2,
-): string {
-  return JSON.stringify(
-    RemoveProjectEnvContentHintProjects2$outboundSchema.parse(
-      removeProjectEnvContentHintProjects2,
-    ),
-  );
-}
 export function removeProjectEnvContentHintProjects2FromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveProjectEnvContentHintProjects2, SDKValidationError> {
@@ -2899,31 +1752,7 @@ export const RemoveProjectEnvContentHintProjects1$inboundSchema: z.ZodType<
   type: types.literal("redis-url"),
   storeId: types.string(),
 });
-/** @internal */
-export type RemoveProjectEnvContentHintProjects1$Outbound = {
-  type: "redis-url";
-  storeId: string;
-};
 
-/** @internal */
-export const RemoveProjectEnvContentHintProjects1$outboundSchema: z.ZodType<
-  RemoveProjectEnvContentHintProjects1$Outbound,
-  z.ZodTypeDef,
-  RemoveProjectEnvContentHintProjects1
-> = z.object({
-  type: z.literal("redis-url"),
-  storeId: z.string(),
-});
-
-export function removeProjectEnvContentHintProjects1ToJSON(
-  removeProjectEnvContentHintProjects1: RemoveProjectEnvContentHintProjects1,
-): string {
-  return JSON.stringify(
-    RemoveProjectEnvContentHintProjects1$outboundSchema.parse(
-      removeProjectEnvContentHintProjects1,
-    ),
-  );
-}
 export function removeProjectEnvContentHintProjects1FromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveProjectEnvContentHintProjects1, SDKValidationError> {
@@ -2960,62 +1789,7 @@ export const RemoveProjectEnvResponseBodyProjectsContentHint$inboundSchema:
     z.lazy(() => RemoveProjectEnvContentHintProjects16$inboundSchema),
     z.lazy(() => RemoveProjectEnvContentHintProjects17$inboundSchema),
   ]);
-/** @internal */
-export type RemoveProjectEnvResponseBodyProjectsContentHint$Outbound =
-  | RemoveProjectEnvContentHintProjects1$Outbound
-  | RemoveProjectEnvContentHintProjects2$Outbound
-  | RemoveProjectEnvContentHintProjects3$Outbound
-  | RemoveProjectEnvContentHintProjects4$Outbound
-  | RemoveProjectEnvContentHintProjects5$Outbound
-  | RemoveProjectEnvContentHintProjects6$Outbound
-  | RemoveProjectEnvContentHintProjects7$Outbound
-  | RemoveProjectEnvContentHintProjects8$Outbound
-  | RemoveProjectEnvContentHintProjects9$Outbound
-  | RemoveProjectEnvContentHintProjects10$Outbound
-  | RemoveProjectEnvContentHintProjects11$Outbound
-  | RemoveProjectEnvContentHintProjects12$Outbound
-  | RemoveProjectEnvContentHintProjects13$Outbound
-  | RemoveProjectEnvContentHintProjects14$Outbound
-  | RemoveProjectEnvContentHintProjects15$Outbound
-  | RemoveProjectEnvContentHintProjects16$Outbound
-  | RemoveProjectEnvContentHintProjects17$Outbound;
 
-/** @internal */
-export const RemoveProjectEnvResponseBodyProjectsContentHint$outboundSchema:
-  z.ZodType<
-    RemoveProjectEnvResponseBodyProjectsContentHint$Outbound,
-    z.ZodTypeDef,
-    RemoveProjectEnvResponseBodyProjectsContentHint
-  > = z.union([
-    z.lazy(() => RemoveProjectEnvContentHintProjects1$outboundSchema),
-    z.lazy(() => RemoveProjectEnvContentHintProjects2$outboundSchema),
-    z.lazy(() => RemoveProjectEnvContentHintProjects3$outboundSchema),
-    z.lazy(() => RemoveProjectEnvContentHintProjects4$outboundSchema),
-    z.lazy(() => RemoveProjectEnvContentHintProjects5$outboundSchema),
-    z.lazy(() => RemoveProjectEnvContentHintProjects6$outboundSchema),
-    z.lazy(() => RemoveProjectEnvContentHintProjects7$outboundSchema),
-    z.lazy(() => RemoveProjectEnvContentHintProjects8$outboundSchema),
-    z.lazy(() => RemoveProjectEnvContentHintProjects9$outboundSchema),
-    z.lazy(() => RemoveProjectEnvContentHintProjects10$outboundSchema),
-    z.lazy(() => RemoveProjectEnvContentHintProjects11$outboundSchema),
-    z.lazy(() => RemoveProjectEnvContentHintProjects12$outboundSchema),
-    z.lazy(() => RemoveProjectEnvContentHintProjects13$outboundSchema),
-    z.lazy(() => RemoveProjectEnvContentHintProjects14$outboundSchema),
-    z.lazy(() => RemoveProjectEnvContentHintProjects15$outboundSchema),
-    z.lazy(() => RemoveProjectEnvContentHintProjects16$outboundSchema),
-    z.lazy(() => RemoveProjectEnvContentHintProjects17$outboundSchema),
-  ]);
-
-export function removeProjectEnvResponseBodyProjectsContentHintToJSON(
-  removeProjectEnvResponseBodyProjectsContentHint:
-    RemoveProjectEnvResponseBodyProjectsContentHint,
-): string {
-  return JSON.stringify(
-    RemoveProjectEnvResponseBodyProjectsContentHint$outboundSchema.parse(
-      removeProjectEnvResponseBodyProjectsContentHint,
-    ),
-  );
-}
 export function removeProjectEnvResponseBodyProjectsContentHintFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -3036,10 +1810,6 @@ export function removeProjectEnvResponseBodyProjectsContentHintFromJSON(
 export const RemoveProjectEnvResponseBodyProjectsResponse200Type$inboundSchema:
   z.ZodNativeEnum<typeof RemoveProjectEnvResponseBodyProjectsResponse200Type> =
     z.nativeEnum(RemoveProjectEnvResponseBodyProjectsResponse200Type);
-/** @internal */
-export const RemoveProjectEnvResponseBodyProjectsResponse200Type$outboundSchema:
-  z.ZodNativeEnum<typeof RemoveProjectEnvResponseBodyProjectsResponse200Type> =
-    RemoveProjectEnvResponseBodyProjectsResponse200Type$inboundSchema;
 
 /** @internal */
 export const RemoveProjectEnvResponseBodyProjectsInternalContentHint$inboundSchema:
@@ -3051,32 +1821,7 @@ export const RemoveProjectEnvResponseBodyProjectsInternalContentHint$inboundSche
     type: RemoveProjectEnvResponseBodyProjectsResponse200Type$inboundSchema,
     encryptedValue: types.string(),
   });
-/** @internal */
-export type RemoveProjectEnvResponseBodyProjectsInternalContentHint$Outbound = {
-  type: string;
-  encryptedValue: string;
-};
 
-/** @internal */
-export const RemoveProjectEnvResponseBodyProjectsInternalContentHint$outboundSchema:
-  z.ZodType<
-    RemoveProjectEnvResponseBodyProjectsInternalContentHint$Outbound,
-    z.ZodTypeDef,
-    RemoveProjectEnvResponseBodyProjectsInternalContentHint
-  > = z.object({
-    type: RemoveProjectEnvResponseBodyProjectsResponse200Type$outboundSchema,
-    encryptedValue: z.string(),
-  });
-
-export function removeProjectEnvResponseBodyProjectsInternalContentHintToJSON(
-  removeProjectEnvResponseBodyProjectsInternalContentHint:
-    RemoveProjectEnvResponseBodyProjectsInternalContentHint,
-): string {
-  return JSON.stringify(
-    RemoveProjectEnvResponseBodyProjectsInternalContentHint$outboundSchema
-      .parse(removeProjectEnvResponseBodyProjectsInternalContentHint),
-  );
-}
 export function removeProjectEnvResponseBodyProjectsInternalContentHintFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -3149,118 +1894,7 @@ export const RemoveProjectEnvResponseBody2$inboundSchema: z.ZodType<
   comment: types.optional(types.string()),
   customEnvironmentIds: types.optional(z.array(types.string())),
 });
-/** @internal */
-export type RemoveProjectEnvResponseBody2$Outbound = {
-  system?: boolean | undefined;
-  type: string;
-  value: string;
-  edgeConfigId?: string | null | undefined;
-  edgeConfigTokenId?: string | null | undefined;
-  createdAt?: number | undefined;
-  updatedAt?: number | undefined;
-  id?: string | undefined;
-  key: string;
-  target?: Array<string> | string | undefined;
-  gitBranch?: string | undefined;
-  createdBy?: string | null | undefined;
-  updatedBy?: string | null | undefined;
-  sunsetSecretId?: string | undefined;
-  legacyValue?: string | undefined;
-  decrypted?: boolean | undefined;
-  configurationId?: string | null | undefined;
-  contentHint?:
-    | RemoveProjectEnvContentHintProjects1$Outbound
-    | RemoveProjectEnvContentHintProjects2$Outbound
-    | RemoveProjectEnvContentHintProjects3$Outbound
-    | RemoveProjectEnvContentHintProjects4$Outbound
-    | RemoveProjectEnvContentHintProjects5$Outbound
-    | RemoveProjectEnvContentHintProjects6$Outbound
-    | RemoveProjectEnvContentHintProjects7$Outbound
-    | RemoveProjectEnvContentHintProjects8$Outbound
-    | RemoveProjectEnvContentHintProjects9$Outbound
-    | RemoveProjectEnvContentHintProjects10$Outbound
-    | RemoveProjectEnvContentHintProjects11$Outbound
-    | RemoveProjectEnvContentHintProjects12$Outbound
-    | RemoveProjectEnvContentHintProjects13$Outbound
-    | RemoveProjectEnvContentHintProjects14$Outbound
-    | RemoveProjectEnvContentHintProjects15$Outbound
-    | RemoveProjectEnvContentHintProjects16$Outbound
-    | RemoveProjectEnvContentHintProjects17$Outbound
-    | null
-    | undefined;
-  internalContentHint?:
-    | RemoveProjectEnvResponseBodyProjectsInternalContentHint$Outbound
-    | null
-    | undefined;
-  comment?: string | undefined;
-  customEnvironmentIds?: Array<string> | undefined;
-};
 
-/** @internal */
-export const RemoveProjectEnvResponseBody2$outboundSchema: z.ZodType<
-  RemoveProjectEnvResponseBody2$Outbound,
-  z.ZodTypeDef,
-  RemoveProjectEnvResponseBody2
-> = z.object({
-  system: z.boolean().optional(),
-  type: RemoveProjectEnvResponseBodyProjectsType$outboundSchema,
-  value: z.string(),
-  edgeConfigId: z.nullable(z.string()).optional(),
-  edgeConfigTokenId: z.nullable(z.string()).optional(),
-  createdAt: z.number().optional(),
-  updatedAt: z.number().optional(),
-  id: z.string().optional(),
-  key: z.string(),
-  target: smartUnion([
-    z.array(RemoveProjectEnvTargetProjects1$outboundSchema),
-    RemoveProjectEnvTargetProjects2$outboundSchema,
-  ]).optional(),
-  gitBranch: z.string().optional(),
-  createdBy: z.nullable(z.string()).optional(),
-  updatedBy: z.nullable(z.string()).optional(),
-  sunsetSecretId: z.string().optional(),
-  legacyValue: z.string().optional(),
-  decrypted: z.boolean().optional(),
-  configurationId: z.nullable(z.string()).optional(),
-  contentHint: z.nullable(
-    z.union([
-      z.lazy(() => RemoveProjectEnvContentHintProjects1$outboundSchema),
-      z.lazy(() => RemoveProjectEnvContentHintProjects2$outboundSchema),
-      z.lazy(() => RemoveProjectEnvContentHintProjects3$outboundSchema),
-      z.lazy(() => RemoveProjectEnvContentHintProjects4$outboundSchema),
-      z.lazy(() => RemoveProjectEnvContentHintProjects5$outboundSchema),
-      z.lazy(() => RemoveProjectEnvContentHintProjects6$outboundSchema),
-      z.lazy(() => RemoveProjectEnvContentHintProjects7$outboundSchema),
-      z.lazy(() => RemoveProjectEnvContentHintProjects8$outboundSchema),
-      z.lazy(() => RemoveProjectEnvContentHintProjects9$outboundSchema),
-      z.lazy(() => RemoveProjectEnvContentHintProjects10$outboundSchema),
-      z.lazy(() => RemoveProjectEnvContentHintProjects11$outboundSchema),
-      z.lazy(() => RemoveProjectEnvContentHintProjects12$outboundSchema),
-      z.lazy(() => RemoveProjectEnvContentHintProjects13$outboundSchema),
-      z.lazy(() => RemoveProjectEnvContentHintProjects14$outboundSchema),
-      z.lazy(() => RemoveProjectEnvContentHintProjects15$outboundSchema),
-      z.lazy(() => RemoveProjectEnvContentHintProjects16$outboundSchema),
-      z.lazy(() => RemoveProjectEnvContentHintProjects17$outboundSchema),
-    ]),
-  ).optional(),
-  internalContentHint: z.nullable(
-    z.lazy(() =>
-      RemoveProjectEnvResponseBodyProjectsInternalContentHint$outboundSchema
-    ),
-  ).optional(),
-  comment: z.string().optional(),
-  customEnvironmentIds: z.array(z.string()).optional(),
-});
-
-export function removeProjectEnvResponseBody2ToJSON(
-  removeProjectEnvResponseBody2: RemoveProjectEnvResponseBody2,
-): string {
-  return JSON.stringify(
-    RemoveProjectEnvResponseBody2$outboundSchema.parse(
-      removeProjectEnvResponseBody2,
-    ),
-  );
-}
 export function removeProjectEnvResponseBody2FromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveProjectEnvResponseBody2, SDKValidationError> {
@@ -3275,28 +1909,16 @@ export function removeProjectEnvResponseBody2FromJSON(
 export const RemoveProjectEnvResponseBodyType$inboundSchema: z.ZodNativeEnum<
   typeof RemoveProjectEnvResponseBodyType
 > = z.nativeEnum(RemoveProjectEnvResponseBodyType);
-/** @internal */
-export const RemoveProjectEnvResponseBodyType$outboundSchema: z.ZodNativeEnum<
-  typeof RemoveProjectEnvResponseBodyType
-> = RemoveProjectEnvResponseBodyType$inboundSchema;
 
 /** @internal */
 export const RemoveProjectEnvTarget2$inboundSchema: z.ZodNativeEnum<
   typeof RemoveProjectEnvTarget2
 > = z.nativeEnum(RemoveProjectEnvTarget2);
-/** @internal */
-export const RemoveProjectEnvTarget2$outboundSchema: z.ZodNativeEnum<
-  typeof RemoveProjectEnvTarget2
-> = RemoveProjectEnvTarget2$inboundSchema;
 
 /** @internal */
 export const RemoveProjectEnvTarget1$inboundSchema: z.ZodNativeEnum<
   typeof RemoveProjectEnvTarget1
 > = z.nativeEnum(RemoveProjectEnvTarget1);
-/** @internal */
-export const RemoveProjectEnvTarget1$outboundSchema: z.ZodNativeEnum<
-  typeof RemoveProjectEnvTarget1
-> = RemoveProjectEnvTarget1$inboundSchema;
 
 /** @internal */
 export const RemoveProjectEnvResponseBodyTarget$inboundSchema: z.ZodType<
@@ -3307,30 +1929,7 @@ export const RemoveProjectEnvResponseBodyTarget$inboundSchema: z.ZodType<
   z.array(RemoveProjectEnvTarget1$inboundSchema),
   RemoveProjectEnvTarget2$inboundSchema,
 ]);
-/** @internal */
-export type RemoveProjectEnvResponseBodyTarget$Outbound =
-  | Array<string>
-  | string;
 
-/** @internal */
-export const RemoveProjectEnvResponseBodyTarget$outboundSchema: z.ZodType<
-  RemoveProjectEnvResponseBodyTarget$Outbound,
-  z.ZodTypeDef,
-  RemoveProjectEnvResponseBodyTarget
-> = smartUnion([
-  z.array(RemoveProjectEnvTarget1$outboundSchema),
-  RemoveProjectEnvTarget2$outboundSchema,
-]);
-
-export function removeProjectEnvResponseBodyTargetToJSON(
-  removeProjectEnvResponseBodyTarget: RemoveProjectEnvResponseBodyTarget,
-): string {
-  return JSON.stringify(
-    RemoveProjectEnvResponseBodyTarget$outboundSchema.parse(
-      removeProjectEnvResponseBodyTarget,
-    ),
-  );
-}
 export function removeProjectEnvResponseBodyTargetFromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveProjectEnvResponseBodyTarget, SDKValidationError> {
@@ -3351,31 +1950,7 @@ export const RemoveProjectEnvContentHint17$inboundSchema: z.ZodType<
   type: types.literal("flags-connection-string"),
   projectId: types.string(),
 });
-/** @internal */
-export type RemoveProjectEnvContentHint17$Outbound = {
-  type: "flags-connection-string";
-  projectId: string;
-};
 
-/** @internal */
-export const RemoveProjectEnvContentHint17$outboundSchema: z.ZodType<
-  RemoveProjectEnvContentHint17$Outbound,
-  z.ZodTypeDef,
-  RemoveProjectEnvContentHint17
-> = z.object({
-  type: z.literal("flags-connection-string"),
-  projectId: z.string(),
-});
-
-export function removeProjectEnvContentHint17ToJSON(
-  removeProjectEnvContentHint17: RemoveProjectEnvContentHint17,
-): string {
-  return JSON.stringify(
-    RemoveProjectEnvContentHint17$outboundSchema.parse(
-      removeProjectEnvContentHint17,
-    ),
-  );
-}
 export function removeProjectEnvContentHint17FromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveProjectEnvContentHint17, SDKValidationError> {
@@ -3398,37 +1973,7 @@ export const RemoveProjectEnvContentHint16$inboundSchema: z.ZodType<
   integrationProductId: types.string(),
   integrationConfigurationId: types.string(),
 });
-/** @internal */
-export type RemoveProjectEnvContentHint16$Outbound = {
-  type: "integration-store-secret";
-  storeId: string;
-  integrationId: string;
-  integrationProductId: string;
-  integrationConfigurationId: string;
-};
 
-/** @internal */
-export const RemoveProjectEnvContentHint16$outboundSchema: z.ZodType<
-  RemoveProjectEnvContentHint16$Outbound,
-  z.ZodTypeDef,
-  RemoveProjectEnvContentHint16
-> = z.object({
-  type: z.literal("integration-store-secret"),
-  storeId: z.string(),
-  integrationId: z.string(),
-  integrationProductId: z.string(),
-  integrationConfigurationId: z.string(),
-});
-
-export function removeProjectEnvContentHint16ToJSON(
-  removeProjectEnvContentHint16: RemoveProjectEnvContentHint16,
-): string {
-  return JSON.stringify(
-    RemoveProjectEnvContentHint16$outboundSchema.parse(
-      removeProjectEnvContentHint16,
-    ),
-  );
-}
 export function removeProjectEnvContentHint16FromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveProjectEnvContentHint16, SDKValidationError> {
@@ -3448,31 +1993,7 @@ export const RemoveProjectEnvContentHint15$inboundSchema: z.ZodType<
   type: types.literal("postgres-url-no-ssl"),
   storeId: types.string(),
 });
-/** @internal */
-export type RemoveProjectEnvContentHint15$Outbound = {
-  type: "postgres-url-no-ssl";
-  storeId: string;
-};
 
-/** @internal */
-export const RemoveProjectEnvContentHint15$outboundSchema: z.ZodType<
-  RemoveProjectEnvContentHint15$Outbound,
-  z.ZodTypeDef,
-  RemoveProjectEnvContentHint15
-> = z.object({
-  type: z.literal("postgres-url-no-ssl"),
-  storeId: z.string(),
-});
-
-export function removeProjectEnvContentHint15ToJSON(
-  removeProjectEnvContentHint15: RemoveProjectEnvContentHint15,
-): string {
-  return JSON.stringify(
-    RemoveProjectEnvContentHint15$outboundSchema.parse(
-      removeProjectEnvContentHint15,
-    ),
-  );
-}
 export function removeProjectEnvContentHint15FromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveProjectEnvContentHint15, SDKValidationError> {
@@ -3492,31 +2013,7 @@ export const RemoveProjectEnvContentHint14$inboundSchema: z.ZodType<
   type: types.literal("postgres-database"),
   storeId: types.string(),
 });
-/** @internal */
-export type RemoveProjectEnvContentHint14$Outbound = {
-  type: "postgres-database";
-  storeId: string;
-};
 
-/** @internal */
-export const RemoveProjectEnvContentHint14$outboundSchema: z.ZodType<
-  RemoveProjectEnvContentHint14$Outbound,
-  z.ZodTypeDef,
-  RemoveProjectEnvContentHint14
-> = z.object({
-  type: z.literal("postgres-database"),
-  storeId: z.string(),
-});
-
-export function removeProjectEnvContentHint14ToJSON(
-  removeProjectEnvContentHint14: RemoveProjectEnvContentHint14,
-): string {
-  return JSON.stringify(
-    RemoveProjectEnvContentHint14$outboundSchema.parse(
-      removeProjectEnvContentHint14,
-    ),
-  );
-}
 export function removeProjectEnvContentHint14FromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveProjectEnvContentHint14, SDKValidationError> {
@@ -3536,31 +2033,7 @@ export const RemoveProjectEnvContentHint13$inboundSchema: z.ZodType<
   type: types.literal("postgres-password"),
   storeId: types.string(),
 });
-/** @internal */
-export type RemoveProjectEnvContentHint13$Outbound = {
-  type: "postgres-password";
-  storeId: string;
-};
 
-/** @internal */
-export const RemoveProjectEnvContentHint13$outboundSchema: z.ZodType<
-  RemoveProjectEnvContentHint13$Outbound,
-  z.ZodTypeDef,
-  RemoveProjectEnvContentHint13
-> = z.object({
-  type: z.literal("postgres-password"),
-  storeId: z.string(),
-});
-
-export function removeProjectEnvContentHint13ToJSON(
-  removeProjectEnvContentHint13: RemoveProjectEnvContentHint13,
-): string {
-  return JSON.stringify(
-    RemoveProjectEnvContentHint13$outboundSchema.parse(
-      removeProjectEnvContentHint13,
-    ),
-  );
-}
 export function removeProjectEnvContentHint13FromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveProjectEnvContentHint13, SDKValidationError> {
@@ -3580,31 +2053,7 @@ export const RemoveProjectEnvContentHint12$inboundSchema: z.ZodType<
   type: types.literal("postgres-host"),
   storeId: types.string(),
 });
-/** @internal */
-export type RemoveProjectEnvContentHint12$Outbound = {
-  type: "postgres-host";
-  storeId: string;
-};
 
-/** @internal */
-export const RemoveProjectEnvContentHint12$outboundSchema: z.ZodType<
-  RemoveProjectEnvContentHint12$Outbound,
-  z.ZodTypeDef,
-  RemoveProjectEnvContentHint12
-> = z.object({
-  type: z.literal("postgres-host"),
-  storeId: z.string(),
-});
-
-export function removeProjectEnvContentHint12ToJSON(
-  removeProjectEnvContentHint12: RemoveProjectEnvContentHint12,
-): string {
-  return JSON.stringify(
-    RemoveProjectEnvContentHint12$outboundSchema.parse(
-      removeProjectEnvContentHint12,
-    ),
-  );
-}
 export function removeProjectEnvContentHint12FromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveProjectEnvContentHint12, SDKValidationError> {
@@ -3624,31 +2073,7 @@ export const RemoveProjectEnvContentHint11$inboundSchema: z.ZodType<
   type: types.literal("postgres-user"),
   storeId: types.string(),
 });
-/** @internal */
-export type RemoveProjectEnvContentHint11$Outbound = {
-  type: "postgres-user";
-  storeId: string;
-};
 
-/** @internal */
-export const RemoveProjectEnvContentHint11$outboundSchema: z.ZodType<
-  RemoveProjectEnvContentHint11$Outbound,
-  z.ZodTypeDef,
-  RemoveProjectEnvContentHint11
-> = z.object({
-  type: z.literal("postgres-user"),
-  storeId: z.string(),
-});
-
-export function removeProjectEnvContentHint11ToJSON(
-  removeProjectEnvContentHint11: RemoveProjectEnvContentHint11,
-): string {
-  return JSON.stringify(
-    RemoveProjectEnvContentHint11$outboundSchema.parse(
-      removeProjectEnvContentHint11,
-    ),
-  );
-}
 export function removeProjectEnvContentHint11FromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveProjectEnvContentHint11, SDKValidationError> {
@@ -3668,31 +2093,7 @@ export const RemoveProjectEnvContentHint10$inboundSchema: z.ZodType<
   type: types.literal("postgres-prisma-url"),
   storeId: types.string(),
 });
-/** @internal */
-export type RemoveProjectEnvContentHint10$Outbound = {
-  type: "postgres-prisma-url";
-  storeId: string;
-};
 
-/** @internal */
-export const RemoveProjectEnvContentHint10$outboundSchema: z.ZodType<
-  RemoveProjectEnvContentHint10$Outbound,
-  z.ZodTypeDef,
-  RemoveProjectEnvContentHint10
-> = z.object({
-  type: z.literal("postgres-prisma-url"),
-  storeId: z.string(),
-});
-
-export function removeProjectEnvContentHint10ToJSON(
-  removeProjectEnvContentHint10: RemoveProjectEnvContentHint10,
-): string {
-  return JSON.stringify(
-    RemoveProjectEnvContentHint10$outboundSchema.parse(
-      removeProjectEnvContentHint10,
-    ),
-  );
-}
 export function removeProjectEnvContentHint10FromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveProjectEnvContentHint10, SDKValidationError> {
@@ -3712,31 +2113,7 @@ export const RemoveProjectEnvContentHint9$inboundSchema: z.ZodType<
   type: types.literal("postgres-url-non-pooling"),
   storeId: types.string(),
 });
-/** @internal */
-export type RemoveProjectEnvContentHint9$Outbound = {
-  type: "postgres-url-non-pooling";
-  storeId: string;
-};
 
-/** @internal */
-export const RemoveProjectEnvContentHint9$outboundSchema: z.ZodType<
-  RemoveProjectEnvContentHint9$Outbound,
-  z.ZodTypeDef,
-  RemoveProjectEnvContentHint9
-> = z.object({
-  type: z.literal("postgres-url-non-pooling"),
-  storeId: z.string(),
-});
-
-export function removeProjectEnvContentHint9ToJSON(
-  removeProjectEnvContentHint9: RemoveProjectEnvContentHint9,
-): string {
-  return JSON.stringify(
-    RemoveProjectEnvContentHint9$outboundSchema.parse(
-      removeProjectEnvContentHint9,
-    ),
-  );
-}
 export function removeProjectEnvContentHint9FromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveProjectEnvContentHint9, SDKValidationError> {
@@ -3756,31 +2133,7 @@ export const RemoveProjectEnvContentHint8$inboundSchema: z.ZodType<
   type: types.literal("postgres-url"),
   storeId: types.string(),
 });
-/** @internal */
-export type RemoveProjectEnvContentHint8$Outbound = {
-  type: "postgres-url";
-  storeId: string;
-};
 
-/** @internal */
-export const RemoveProjectEnvContentHint8$outboundSchema: z.ZodType<
-  RemoveProjectEnvContentHint8$Outbound,
-  z.ZodTypeDef,
-  RemoveProjectEnvContentHint8
-> = z.object({
-  type: z.literal("postgres-url"),
-  storeId: z.string(),
-});
-
-export function removeProjectEnvContentHint8ToJSON(
-  removeProjectEnvContentHint8: RemoveProjectEnvContentHint8,
-): string {
-  return JSON.stringify(
-    RemoveProjectEnvContentHint8$outboundSchema.parse(
-      removeProjectEnvContentHint8,
-    ),
-  );
-}
 export function removeProjectEnvContentHint8FromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveProjectEnvContentHint8, SDKValidationError> {
@@ -3800,31 +2153,7 @@ export const RemoveProjectEnvContentHint7$inboundSchema: z.ZodType<
   type: types.literal("blob-webhook-public-key"),
   storeId: types.string(),
 });
-/** @internal */
-export type RemoveProjectEnvContentHint7$Outbound = {
-  type: "blob-webhook-public-key";
-  storeId: string;
-};
 
-/** @internal */
-export const RemoveProjectEnvContentHint7$outboundSchema: z.ZodType<
-  RemoveProjectEnvContentHint7$Outbound,
-  z.ZodTypeDef,
-  RemoveProjectEnvContentHint7
-> = z.object({
-  type: z.literal("blob-webhook-public-key"),
-  storeId: z.string(),
-});
-
-export function removeProjectEnvContentHint7ToJSON(
-  removeProjectEnvContentHint7: RemoveProjectEnvContentHint7,
-): string {
-  return JSON.stringify(
-    RemoveProjectEnvContentHint7$outboundSchema.parse(
-      removeProjectEnvContentHint7,
-    ),
-  );
-}
 export function removeProjectEnvContentHint7FromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveProjectEnvContentHint7, SDKValidationError> {
@@ -3844,31 +2173,7 @@ export const RemoveProjectEnvContentHint6$inboundSchema: z.ZodType<
   type: types.literal("blob-store-id"),
   storeId: types.string(),
 });
-/** @internal */
-export type RemoveProjectEnvContentHint6$Outbound = {
-  type: "blob-store-id";
-  storeId: string;
-};
 
-/** @internal */
-export const RemoveProjectEnvContentHint6$outboundSchema: z.ZodType<
-  RemoveProjectEnvContentHint6$Outbound,
-  z.ZodTypeDef,
-  RemoveProjectEnvContentHint6
-> = z.object({
-  type: z.literal("blob-store-id"),
-  storeId: z.string(),
-});
-
-export function removeProjectEnvContentHint6ToJSON(
-  removeProjectEnvContentHint6: RemoveProjectEnvContentHint6,
-): string {
-  return JSON.stringify(
-    RemoveProjectEnvContentHint6$outboundSchema.parse(
-      removeProjectEnvContentHint6,
-    ),
-  );
-}
 export function removeProjectEnvContentHint6FromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveProjectEnvContentHint6, SDKValidationError> {
@@ -3888,31 +2193,7 @@ export const RemoveProjectEnvContentHint5$inboundSchema: z.ZodType<
   type: types.literal("blob-read-write-token"),
   storeId: types.string(),
 });
-/** @internal */
-export type RemoveProjectEnvContentHint5$Outbound = {
-  type: "blob-read-write-token";
-  storeId: string;
-};
 
-/** @internal */
-export const RemoveProjectEnvContentHint5$outboundSchema: z.ZodType<
-  RemoveProjectEnvContentHint5$Outbound,
-  z.ZodTypeDef,
-  RemoveProjectEnvContentHint5
-> = z.object({
-  type: z.literal("blob-read-write-token"),
-  storeId: z.string(),
-});
-
-export function removeProjectEnvContentHint5ToJSON(
-  removeProjectEnvContentHint5: RemoveProjectEnvContentHint5,
-): string {
-  return JSON.stringify(
-    RemoveProjectEnvContentHint5$outboundSchema.parse(
-      removeProjectEnvContentHint5,
-    ),
-  );
-}
 export function removeProjectEnvContentHint5FromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveProjectEnvContentHint5, SDKValidationError> {
@@ -3932,31 +2213,7 @@ export const RemoveProjectEnvContentHint4$inboundSchema: z.ZodType<
   type: types.literal("redis-rest-api-read-only-token"),
   storeId: types.string(),
 });
-/** @internal */
-export type RemoveProjectEnvContentHint4$Outbound = {
-  type: "redis-rest-api-read-only-token";
-  storeId: string;
-};
 
-/** @internal */
-export const RemoveProjectEnvContentHint4$outboundSchema: z.ZodType<
-  RemoveProjectEnvContentHint4$Outbound,
-  z.ZodTypeDef,
-  RemoveProjectEnvContentHint4
-> = z.object({
-  type: z.literal("redis-rest-api-read-only-token"),
-  storeId: z.string(),
-});
-
-export function removeProjectEnvContentHint4ToJSON(
-  removeProjectEnvContentHint4: RemoveProjectEnvContentHint4,
-): string {
-  return JSON.stringify(
-    RemoveProjectEnvContentHint4$outboundSchema.parse(
-      removeProjectEnvContentHint4,
-    ),
-  );
-}
 export function removeProjectEnvContentHint4FromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveProjectEnvContentHint4, SDKValidationError> {
@@ -3976,31 +2233,7 @@ export const RemoveProjectEnvContentHint3$inboundSchema: z.ZodType<
   type: types.literal("redis-rest-api-token"),
   storeId: types.string(),
 });
-/** @internal */
-export type RemoveProjectEnvContentHint3$Outbound = {
-  type: "redis-rest-api-token";
-  storeId: string;
-};
 
-/** @internal */
-export const RemoveProjectEnvContentHint3$outboundSchema: z.ZodType<
-  RemoveProjectEnvContentHint3$Outbound,
-  z.ZodTypeDef,
-  RemoveProjectEnvContentHint3
-> = z.object({
-  type: z.literal("redis-rest-api-token"),
-  storeId: z.string(),
-});
-
-export function removeProjectEnvContentHint3ToJSON(
-  removeProjectEnvContentHint3: RemoveProjectEnvContentHint3,
-): string {
-  return JSON.stringify(
-    RemoveProjectEnvContentHint3$outboundSchema.parse(
-      removeProjectEnvContentHint3,
-    ),
-  );
-}
 export function removeProjectEnvContentHint3FromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveProjectEnvContentHint3, SDKValidationError> {
@@ -4020,31 +2253,7 @@ export const RemoveProjectEnvContentHint2$inboundSchema: z.ZodType<
   type: types.literal("redis-rest-api-url"),
   storeId: types.string(),
 });
-/** @internal */
-export type RemoveProjectEnvContentHint2$Outbound = {
-  type: "redis-rest-api-url";
-  storeId: string;
-};
 
-/** @internal */
-export const RemoveProjectEnvContentHint2$outboundSchema: z.ZodType<
-  RemoveProjectEnvContentHint2$Outbound,
-  z.ZodTypeDef,
-  RemoveProjectEnvContentHint2
-> = z.object({
-  type: z.literal("redis-rest-api-url"),
-  storeId: z.string(),
-});
-
-export function removeProjectEnvContentHint2ToJSON(
-  removeProjectEnvContentHint2: RemoveProjectEnvContentHint2,
-): string {
-  return JSON.stringify(
-    RemoveProjectEnvContentHint2$outboundSchema.parse(
-      removeProjectEnvContentHint2,
-    ),
-  );
-}
 export function removeProjectEnvContentHint2FromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveProjectEnvContentHint2, SDKValidationError> {
@@ -4064,31 +2273,7 @@ export const RemoveProjectEnvContentHint1$inboundSchema: z.ZodType<
   type: types.literal("redis-url"),
   storeId: types.string(),
 });
-/** @internal */
-export type RemoveProjectEnvContentHint1$Outbound = {
-  type: "redis-url";
-  storeId: string;
-};
 
-/** @internal */
-export const RemoveProjectEnvContentHint1$outboundSchema: z.ZodType<
-  RemoveProjectEnvContentHint1$Outbound,
-  z.ZodTypeDef,
-  RemoveProjectEnvContentHint1
-> = z.object({
-  type: z.literal("redis-url"),
-  storeId: z.string(),
-});
-
-export function removeProjectEnvContentHint1ToJSON(
-  removeProjectEnvContentHint1: RemoveProjectEnvContentHint1,
-): string {
-  return JSON.stringify(
-    RemoveProjectEnvContentHint1$outboundSchema.parse(
-      removeProjectEnvContentHint1,
-    ),
-  );
-}
 export function removeProjectEnvContentHint1FromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveProjectEnvContentHint1, SDKValidationError> {
@@ -4123,61 +2308,7 @@ export const RemoveProjectEnvResponseBodyContentHint$inboundSchema: z.ZodType<
   z.lazy(() => RemoveProjectEnvContentHint16$inboundSchema),
   z.lazy(() => RemoveProjectEnvContentHint17$inboundSchema),
 ]);
-/** @internal */
-export type RemoveProjectEnvResponseBodyContentHint$Outbound =
-  | RemoveProjectEnvContentHint1$Outbound
-  | RemoveProjectEnvContentHint2$Outbound
-  | RemoveProjectEnvContentHint3$Outbound
-  | RemoveProjectEnvContentHint4$Outbound
-  | RemoveProjectEnvContentHint5$Outbound
-  | RemoveProjectEnvContentHint6$Outbound
-  | RemoveProjectEnvContentHint7$Outbound
-  | RemoveProjectEnvContentHint8$Outbound
-  | RemoveProjectEnvContentHint9$Outbound
-  | RemoveProjectEnvContentHint10$Outbound
-  | RemoveProjectEnvContentHint11$Outbound
-  | RemoveProjectEnvContentHint12$Outbound
-  | RemoveProjectEnvContentHint13$Outbound
-  | RemoveProjectEnvContentHint14$Outbound
-  | RemoveProjectEnvContentHint15$Outbound
-  | RemoveProjectEnvContentHint16$Outbound
-  | RemoveProjectEnvContentHint17$Outbound;
 
-/** @internal */
-export const RemoveProjectEnvResponseBodyContentHint$outboundSchema: z.ZodType<
-  RemoveProjectEnvResponseBodyContentHint$Outbound,
-  z.ZodTypeDef,
-  RemoveProjectEnvResponseBodyContentHint
-> = z.union([
-  z.lazy(() => RemoveProjectEnvContentHint1$outboundSchema),
-  z.lazy(() => RemoveProjectEnvContentHint2$outboundSchema),
-  z.lazy(() => RemoveProjectEnvContentHint3$outboundSchema),
-  z.lazy(() => RemoveProjectEnvContentHint4$outboundSchema),
-  z.lazy(() => RemoveProjectEnvContentHint5$outboundSchema),
-  z.lazy(() => RemoveProjectEnvContentHint6$outboundSchema),
-  z.lazy(() => RemoveProjectEnvContentHint7$outboundSchema),
-  z.lazy(() => RemoveProjectEnvContentHint8$outboundSchema),
-  z.lazy(() => RemoveProjectEnvContentHint9$outboundSchema),
-  z.lazy(() => RemoveProjectEnvContentHint10$outboundSchema),
-  z.lazy(() => RemoveProjectEnvContentHint11$outboundSchema),
-  z.lazy(() => RemoveProjectEnvContentHint12$outboundSchema),
-  z.lazy(() => RemoveProjectEnvContentHint13$outboundSchema),
-  z.lazy(() => RemoveProjectEnvContentHint14$outboundSchema),
-  z.lazy(() => RemoveProjectEnvContentHint15$outboundSchema),
-  z.lazy(() => RemoveProjectEnvContentHint16$outboundSchema),
-  z.lazy(() => RemoveProjectEnvContentHint17$outboundSchema),
-]);
-
-export function removeProjectEnvResponseBodyContentHintToJSON(
-  removeProjectEnvResponseBodyContentHint:
-    RemoveProjectEnvResponseBodyContentHint,
-): string {
-  return JSON.stringify(
-    RemoveProjectEnvResponseBodyContentHint$outboundSchema.parse(
-      removeProjectEnvResponseBodyContentHint,
-    ),
-  );
-}
 export function removeProjectEnvResponseBodyContentHintFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -4201,12 +2332,6 @@ export const RemoveProjectEnvResponseBodyProjectsResponse200ApplicationJSONType$
   > = z.nativeEnum(
     RemoveProjectEnvResponseBodyProjectsResponse200ApplicationJSONType,
   );
-/** @internal */
-export const RemoveProjectEnvResponseBodyProjectsResponse200ApplicationJSONType$outboundSchema:
-  z.ZodNativeEnum<
-    typeof RemoveProjectEnvResponseBodyProjectsResponse200ApplicationJSONType
-  > =
-    RemoveProjectEnvResponseBodyProjectsResponse200ApplicationJSONType$inboundSchema;
 
 /** @internal */
 export const RemoveProjectEnvResponseBodyInternalContentHint$inboundSchema:
@@ -4219,34 +2344,7 @@ export const RemoveProjectEnvResponseBodyInternalContentHint$inboundSchema:
       RemoveProjectEnvResponseBodyProjectsResponse200ApplicationJSONType$inboundSchema,
     encryptedValue: types.string(),
   });
-/** @internal */
-export type RemoveProjectEnvResponseBodyInternalContentHint$Outbound = {
-  type: string;
-  encryptedValue: string;
-};
 
-/** @internal */
-export const RemoveProjectEnvResponseBodyInternalContentHint$outboundSchema:
-  z.ZodType<
-    RemoveProjectEnvResponseBodyInternalContentHint$Outbound,
-    z.ZodTypeDef,
-    RemoveProjectEnvResponseBodyInternalContentHint
-  > = z.object({
-    type:
-      RemoveProjectEnvResponseBodyProjectsResponse200ApplicationJSONType$outboundSchema,
-    encryptedValue: z.string(),
-  });
-
-export function removeProjectEnvResponseBodyInternalContentHintToJSON(
-  removeProjectEnvResponseBodyInternalContentHint:
-    RemoveProjectEnvResponseBodyInternalContentHint,
-): string {
-  return JSON.stringify(
-    RemoveProjectEnvResponseBodyInternalContentHint$outboundSchema.parse(
-      removeProjectEnvResponseBodyInternalContentHint,
-    ),
-  );
-}
 export function removeProjectEnvResponseBodyInternalContentHintFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -4317,116 +2415,7 @@ export const RemoveProjectEnvResponseBody1$inboundSchema: z.ZodType<
   comment: types.optional(types.string()),
   customEnvironmentIds: types.optional(z.array(types.string())),
 });
-/** @internal */
-export type RemoveProjectEnvResponseBody1$Outbound = {
-  type: string;
-  value: string;
-  edgeConfigId?: string | null | undefined;
-  edgeConfigTokenId?: string | null | undefined;
-  createdAt?: number | undefined;
-  updatedAt?: number | undefined;
-  id?: string | undefined;
-  key: string;
-  target?: Array<string> | string | undefined;
-  gitBranch?: string | undefined;
-  createdBy?: string | null | undefined;
-  updatedBy?: string | null | undefined;
-  sunsetSecretId?: string | undefined;
-  legacyValue?: string | undefined;
-  decrypted?: boolean | undefined;
-  configurationId?: string | null | undefined;
-  contentHint?:
-    | RemoveProjectEnvContentHint1$Outbound
-    | RemoveProjectEnvContentHint2$Outbound
-    | RemoveProjectEnvContentHint3$Outbound
-    | RemoveProjectEnvContentHint4$Outbound
-    | RemoveProjectEnvContentHint5$Outbound
-    | RemoveProjectEnvContentHint6$Outbound
-    | RemoveProjectEnvContentHint7$Outbound
-    | RemoveProjectEnvContentHint8$Outbound
-    | RemoveProjectEnvContentHint9$Outbound
-    | RemoveProjectEnvContentHint10$Outbound
-    | RemoveProjectEnvContentHint11$Outbound
-    | RemoveProjectEnvContentHint12$Outbound
-    | RemoveProjectEnvContentHint13$Outbound
-    | RemoveProjectEnvContentHint14$Outbound
-    | RemoveProjectEnvContentHint15$Outbound
-    | RemoveProjectEnvContentHint16$Outbound
-    | RemoveProjectEnvContentHint17$Outbound
-    | null
-    | undefined;
-  internalContentHint?:
-    | RemoveProjectEnvResponseBodyInternalContentHint$Outbound
-    | null
-    | undefined;
-  comment?: string | undefined;
-  customEnvironmentIds?: Array<string> | undefined;
-};
 
-/** @internal */
-export const RemoveProjectEnvResponseBody1$outboundSchema: z.ZodType<
-  RemoveProjectEnvResponseBody1$Outbound,
-  z.ZodTypeDef,
-  RemoveProjectEnvResponseBody1
-> = z.object({
-  type: RemoveProjectEnvResponseBodyType$outboundSchema,
-  value: z.string(),
-  edgeConfigId: z.nullable(z.string()).optional(),
-  edgeConfigTokenId: z.nullable(z.string()).optional(),
-  createdAt: z.number().optional(),
-  updatedAt: z.number().optional(),
-  id: z.string().optional(),
-  key: z.string(),
-  target: smartUnion([
-    z.array(RemoveProjectEnvTarget1$outboundSchema),
-    RemoveProjectEnvTarget2$outboundSchema,
-  ]).optional(),
-  gitBranch: z.string().optional(),
-  createdBy: z.nullable(z.string()).optional(),
-  updatedBy: z.nullable(z.string()).optional(),
-  sunsetSecretId: z.string().optional(),
-  legacyValue: z.string().optional(),
-  decrypted: z.boolean().optional(),
-  configurationId: z.nullable(z.string()).optional(),
-  contentHint: z.nullable(
-    z.union([
-      z.lazy(() => RemoveProjectEnvContentHint1$outboundSchema),
-      z.lazy(() => RemoveProjectEnvContentHint2$outboundSchema),
-      z.lazy(() => RemoveProjectEnvContentHint3$outboundSchema),
-      z.lazy(() => RemoveProjectEnvContentHint4$outboundSchema),
-      z.lazy(() => RemoveProjectEnvContentHint5$outboundSchema),
-      z.lazy(() => RemoveProjectEnvContentHint6$outboundSchema),
-      z.lazy(() => RemoveProjectEnvContentHint7$outboundSchema),
-      z.lazy(() => RemoveProjectEnvContentHint8$outboundSchema),
-      z.lazy(() => RemoveProjectEnvContentHint9$outboundSchema),
-      z.lazy(() => RemoveProjectEnvContentHint10$outboundSchema),
-      z.lazy(() => RemoveProjectEnvContentHint11$outboundSchema),
-      z.lazy(() => RemoveProjectEnvContentHint12$outboundSchema),
-      z.lazy(() => RemoveProjectEnvContentHint13$outboundSchema),
-      z.lazy(() => RemoveProjectEnvContentHint14$outboundSchema),
-      z.lazy(() => RemoveProjectEnvContentHint15$outboundSchema),
-      z.lazy(() => RemoveProjectEnvContentHint16$outboundSchema),
-      z.lazy(() => RemoveProjectEnvContentHint17$outboundSchema),
-    ]),
-  ).optional(),
-  internalContentHint: z.nullable(
-    z.lazy(() =>
-      RemoveProjectEnvResponseBodyInternalContentHint$outboundSchema
-    ),
-  ).optional(),
-  comment: z.string().optional(),
-  customEnvironmentIds: z.array(z.string()).optional(),
-});
-
-export function removeProjectEnvResponseBody1ToJSON(
-  removeProjectEnvResponseBody1: RemoveProjectEnvResponseBody1,
-): string {
-  return JSON.stringify(
-    RemoveProjectEnvResponseBody1$outboundSchema.parse(
-      removeProjectEnvResponseBody1,
-    ),
-  );
-}
 export function removeProjectEnvResponseBody1FromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveProjectEnvResponseBody1, SDKValidationError> {
@@ -4447,32 +2436,7 @@ export const RemoveProjectEnvResponseBody$inboundSchema: z.ZodType<
   z.lazy(() => RemoveProjectEnvResponseBody3$inboundSchema),
   z.array(z.lazy(() => RemoveProjectEnvResponseBody1$inboundSchema)),
 ]);
-/** @internal */
-export type RemoveProjectEnvResponseBody$Outbound =
-  | RemoveProjectEnvResponseBody2$Outbound
-  | RemoveProjectEnvResponseBody3$Outbound
-  | Array<RemoveProjectEnvResponseBody1$Outbound>;
 
-/** @internal */
-export const RemoveProjectEnvResponseBody$outboundSchema: z.ZodType<
-  RemoveProjectEnvResponseBody$Outbound,
-  z.ZodTypeDef,
-  RemoveProjectEnvResponseBody
-> = smartUnion([
-  z.lazy(() => RemoveProjectEnvResponseBody2$outboundSchema),
-  z.lazy(() => RemoveProjectEnvResponseBody3$outboundSchema),
-  z.array(z.lazy(() => RemoveProjectEnvResponseBody1$outboundSchema)),
-]);
-
-export function removeProjectEnvResponseBodyToJSON(
-  removeProjectEnvResponseBody: RemoveProjectEnvResponseBody,
-): string {
-  return JSON.stringify(
-    RemoveProjectEnvResponseBody$outboundSchema.parse(
-      removeProjectEnvResponseBody,
-    ),
-  );
-}
 export function removeProjectEnvResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveProjectEnvResponseBody, SDKValidationError> {

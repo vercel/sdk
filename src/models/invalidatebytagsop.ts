@@ -4,12 +4,8 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
-import { Result as SafeParseResult } from "../types/fp.js";
-import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
-import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type Tags = Array<string> | string;
 
@@ -38,9 +34,6 @@ export type InvalidateByTagsRequest = {
 };
 
 /** @internal */
-export const Tags$inboundSchema: z.ZodType<Tags, z.ZodTypeDef, unknown> =
-  smartUnion([z.array(types.string()), types.string()]);
-/** @internal */
 export type Tags$Outbound = Array<string> | string;
 
 /** @internal */
@@ -50,34 +43,12 @@ export const Tags$outboundSchema: z.ZodType<Tags$Outbound, z.ZodTypeDef, Tags> =
 export function tagsToJSON(tags: Tags): string {
   return JSON.stringify(Tags$outboundSchema.parse(tags));
 }
-export function tagsFromJSON(
-  jsonString: string,
-): SafeParseResult<Tags, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Tags$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Tags' from JSON`,
-  );
-}
 
-/** @internal */
-export const InvalidateByTagsTarget$inboundSchema: z.ZodNativeEnum<
-  typeof InvalidateByTagsTarget
-> = z.nativeEnum(InvalidateByTagsTarget);
 /** @internal */
 export const InvalidateByTagsTarget$outboundSchema: z.ZodNativeEnum<
   typeof InvalidateByTagsTarget
-> = InvalidateByTagsTarget$inboundSchema;
+> = z.nativeEnum(InvalidateByTagsTarget);
 
-/** @internal */
-export const InvalidateByTagsRequestBody$inboundSchema: z.ZodType<
-  InvalidateByTagsRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  tags: smartUnion([z.array(types.string()), types.string()]),
-  target: types.optional(InvalidateByTagsTarget$inboundSchema),
-});
 /** @internal */
 export type InvalidateByTagsRequestBody$Outbound = {
   tags: Array<string> | string;
@@ -103,33 +74,7 @@ export function invalidateByTagsRequestBodyToJSON(
     ),
   );
 }
-export function invalidateByTagsRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<InvalidateByTagsRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => InvalidateByTagsRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'InvalidateByTagsRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const InvalidateByTagsRequest$inboundSchema: z.ZodType<
-  InvalidateByTagsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  projectIdOrName: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-  RequestBody: types.optional(
-    z.lazy(() => InvalidateByTagsRequestBody$inboundSchema),
-  ),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 /** @internal */
 export type InvalidateByTagsRequest$Outbound = {
   projectIdOrName: string;
@@ -160,14 +105,5 @@ export function invalidateByTagsRequestToJSON(
 ): string {
   return JSON.stringify(
     InvalidateByTagsRequest$outboundSchema.parse(invalidateByTagsRequest),
-  );
-}
-export function invalidateByTagsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<InvalidateByTagsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => InvalidateByTagsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'InvalidateByTagsRequest' from JSON`,
   );
 }

@@ -49,10 +49,6 @@ export class DuplicateDomains extends VercelError {
 export const DuplicateDomainsCode$inboundSchema: z.ZodNativeEnum<
   typeof DuplicateDomainsCode
 > = z.nativeEnum(DuplicateDomainsCode);
-/** @internal */
-export const DuplicateDomainsCode$outboundSchema: z.ZodNativeEnum<
-  typeof DuplicateDomainsCode
-> = DuplicateDomainsCode$inboundSchema;
 
 /** @internal */
 export const DuplicateDomains$inboundSchema: z.ZodType<
@@ -74,23 +70,3 @@ export const DuplicateDomains$inboundSchema: z.ZodType<
       body: v.body$,
     });
   });
-
-/** @internal */
-export type DuplicateDomains$Outbound = {
-  status: number;
-  code: string;
-  message: string;
-};
-
-/** @internal */
-export const DuplicateDomains$outboundSchema: z.ZodType<
-  DuplicateDomains$Outbound,
-  z.ZodTypeDef,
-  DuplicateDomains
-> = z.instanceof(DuplicateDomains)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    status: z.number(),
-    code: DuplicateDomainsCode$outboundSchema,
-    message: z.string(),
-  }));

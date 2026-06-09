@@ -62,17 +62,6 @@ export type GetActiveAttackStatusResponseBody =
   | GetActiveAttackStatusResponseBody1;
 
 /** @internal */
-export const GetActiveAttackStatusRequest$inboundSchema: z.ZodType<
-  GetActiveAttackStatusRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  projectId: types.string(),
-  since: types.optional(types.number()),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
-/** @internal */
 export type GetActiveAttackStatusRequest$Outbound = {
   projectId: string;
   since?: number | undefined;
@@ -101,15 +90,6 @@ export function getActiveAttackStatusRequestToJSON(
     ),
   );
 }
-export function getActiveAttackStatusRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetActiveAttackStatusRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetActiveAttackStatusRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetActiveAttackStatusRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const AnomalyAlerts$inboundSchema: z.ZodType<
@@ -130,38 +110,7 @@ export const AnomalyAlerts$inboundSchema: z.ZodType<
     "stddev_requests": "stddevRequests",
   });
 });
-/** @internal */
-export type AnomalyAlerts$Outbound = {
-  at_minute: string;
-  zscore: number;
-  total_requests_minute: number;
-  avg_requests: number;
-  stddev_requests: number;
-};
 
-/** @internal */
-export const AnomalyAlerts$outboundSchema: z.ZodType<
-  AnomalyAlerts$Outbound,
-  z.ZodTypeDef,
-  AnomalyAlerts
-> = z.object({
-  atMinute: z.string(),
-  zscore: z.number(),
-  totalRequestsMinute: z.number(),
-  avgRequests: z.number(),
-  stddevRequests: z.number(),
-}).transform((v) => {
-  return remap$(v, {
-    atMinute: "at_minute",
-    totalRequestsMinute: "total_requests_minute",
-    avgRequests: "avg_requests",
-    stddevRequests: "stddev_requests",
-  });
-});
-
-export function anomalyAlertsToJSON(anomalyAlerts: AnomalyAlerts): string {
-  return JSON.stringify(AnomalyAlerts$outboundSchema.parse(anomalyAlerts));
-}
 export function anomalyAlertsFromJSON(
   jsonString: string,
 ): SafeParseResult<AnomalyAlerts, SDKValidationError> {
@@ -181,25 +130,7 @@ export const DdosAlerts$inboundSchema: z.ZodType<
   atMinute: types.string(),
   totalReqs: types.number(),
 });
-/** @internal */
-export type DdosAlerts$Outbound = {
-  atMinute: string;
-  totalReqs: number;
-};
 
-/** @internal */
-export const DdosAlerts$outboundSchema: z.ZodType<
-  DdosAlerts$Outbound,
-  z.ZodTypeDef,
-  DdosAlerts
-> = z.object({
-  atMinute: z.string(),
-  totalReqs: z.number(),
-});
-
-export function ddosAlertsToJSON(ddosAlerts: DdosAlerts): string {
-  return JSON.stringify(DdosAlerts$outboundSchema.parse(ddosAlerts));
-}
 export function ddosAlertsFromJSON(
   jsonString: string,
 ): SafeParseResult<DdosAlerts, SDKValidationError> {
@@ -221,28 +152,7 @@ export const AffectedHostMap$inboundSchema: z.ZodType<
   ),
   ddosAlerts: types.optional(z.record(z.lazy(() => DdosAlerts$inboundSchema))),
 });
-/** @internal */
-export type AffectedHostMap$Outbound = {
-  anomalyAlerts?: { [k: string]: AnomalyAlerts$Outbound } | undefined;
-  ddosAlerts?: { [k: string]: DdosAlerts$Outbound } | undefined;
-};
 
-/** @internal */
-export const AffectedHostMap$outboundSchema: z.ZodType<
-  AffectedHostMap$Outbound,
-  z.ZodTypeDef,
-  AffectedHostMap
-> = z.object({
-  anomalyAlerts: z.record(z.lazy(() => AnomalyAlerts$outboundSchema))
-    .optional(),
-  ddosAlerts: z.record(z.lazy(() => DdosAlerts$outboundSchema)).optional(),
-});
-
-export function affectedHostMapToJSON(
-  affectedHostMap: AffectedHostMap,
-): string {
-  return JSON.stringify(AffectedHostMap$outboundSchema.parse(affectedHostMap));
-}
 export function affectedHostMapFromJSON(
   jsonString: string,
 ): SafeParseResult<AffectedHostMap, SDKValidationError> {
@@ -267,35 +177,7 @@ export const Anomalies$inboundSchema: z.ZodType<
   state: types.optional(types.string()),
   affectedHostMap: z.record(z.lazy(() => AffectedHostMap$inboundSchema)),
 });
-/** @internal */
-export type Anomalies$Outbound = {
-  projectId: string;
-  ownerId: string;
-  startTime: number;
-  endTime: number | null;
-  atMinute: number;
-  state?: string | undefined;
-  affectedHostMap: { [k: string]: AffectedHostMap$Outbound };
-};
 
-/** @internal */
-export const Anomalies$outboundSchema: z.ZodType<
-  Anomalies$Outbound,
-  z.ZodTypeDef,
-  Anomalies
-> = z.object({
-  projectId: z.string(),
-  ownerId: z.string(),
-  startTime: z.number(),
-  endTime: z.nullable(z.number()),
-  atMinute: z.number(),
-  state: z.string().optional(),
-  affectedHostMap: z.record(z.lazy(() => AffectedHostMap$outboundSchema)),
-});
-
-export function anomaliesToJSON(anomalies: Anomalies): string {
-  return JSON.stringify(Anomalies$outboundSchema.parse(anomalies));
-}
 export function anomaliesFromJSON(
   jsonString: string,
 ): SafeParseResult<Anomalies, SDKValidationError> {
@@ -314,29 +196,7 @@ export const GetActiveAttackStatusResponseBody2$inboundSchema: z.ZodType<
 > = z.object({
   anomalies: z.array(z.lazy(() => Anomalies$inboundSchema)),
 });
-/** @internal */
-export type GetActiveAttackStatusResponseBody2$Outbound = {
-  anomalies: Array<Anomalies$Outbound>;
-};
 
-/** @internal */
-export const GetActiveAttackStatusResponseBody2$outboundSchema: z.ZodType<
-  GetActiveAttackStatusResponseBody2$Outbound,
-  z.ZodTypeDef,
-  GetActiveAttackStatusResponseBody2
-> = z.object({
-  anomalies: z.array(z.lazy(() => Anomalies$outboundSchema)),
-});
-
-export function getActiveAttackStatusResponseBody2ToJSON(
-  getActiveAttackStatusResponseBody2: GetActiveAttackStatusResponseBody2,
-): string {
-  return JSON.stringify(
-    GetActiveAttackStatusResponseBody2$outboundSchema.parse(
-      getActiveAttackStatusResponseBody2,
-    ),
-  );
-}
 export function getActiveAttackStatusResponseBody2FromJSON(
   jsonString: string,
 ): SafeParseResult<GetActiveAttackStatusResponseBody2, SDKValidationError> {
@@ -354,25 +214,7 @@ export const GetActiveAttackStatusResponseBody1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-/** @internal */
-export type GetActiveAttackStatusResponseBody1$Outbound = {};
 
-/** @internal */
-export const GetActiveAttackStatusResponseBody1$outboundSchema: z.ZodType<
-  GetActiveAttackStatusResponseBody1$Outbound,
-  z.ZodTypeDef,
-  GetActiveAttackStatusResponseBody1
-> = z.object({});
-
-export function getActiveAttackStatusResponseBody1ToJSON(
-  getActiveAttackStatusResponseBody1: GetActiveAttackStatusResponseBody1,
-): string {
-  return JSON.stringify(
-    GetActiveAttackStatusResponseBody1$outboundSchema.parse(
-      getActiveAttackStatusResponseBody1,
-    ),
-  );
-}
 export function getActiveAttackStatusResponseBody1FromJSON(
   jsonString: string,
 ): SafeParseResult<GetActiveAttackStatusResponseBody1, SDKValidationError> {
@@ -393,30 +235,7 @@ export const GetActiveAttackStatusResponseBody$inboundSchema: z.ZodType<
   z.lazy(() => GetActiveAttackStatusResponseBody2$inboundSchema),
   z.lazy(() => GetActiveAttackStatusResponseBody1$inboundSchema),
 ]);
-/** @internal */
-export type GetActiveAttackStatusResponseBody$Outbound =
-  | GetActiveAttackStatusResponseBody2$Outbound
-  | GetActiveAttackStatusResponseBody1$Outbound;
 
-/** @internal */
-export const GetActiveAttackStatusResponseBody$outboundSchema: z.ZodType<
-  GetActiveAttackStatusResponseBody$Outbound,
-  z.ZodTypeDef,
-  GetActiveAttackStatusResponseBody
-> = smartUnion([
-  z.lazy(() => GetActiveAttackStatusResponseBody2$outboundSchema),
-  z.lazy(() => GetActiveAttackStatusResponseBody1$outboundSchema),
-]);
-
-export function getActiveAttackStatusResponseBodyToJSON(
-  getActiveAttackStatusResponseBody: GetActiveAttackStatusResponseBody,
-): string {
-  return JSON.stringify(
-    GetActiveAttackStatusResponseBody$outboundSchema.parse(
-      getActiveAttackStatusResponseBody,
-    ),
-  );
-}
 export function getActiveAttackStatusResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetActiveAttackStatusResponseBody, SDKValidationError> {

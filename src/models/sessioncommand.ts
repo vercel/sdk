@@ -56,35 +56,7 @@ export const SessionCommand$inboundSchema: z.ZodType<
   exitCode: types.nullable(types.number()),
   startedAt: types.number(),
 });
-/** @internal */
-export type SessionCommand$Outbound = {
-  id: string;
-  name: string;
-  args: Array<string>;
-  cwd: string;
-  sessionId: string;
-  exitCode: number | null;
-  startedAt: number;
-};
 
-/** @internal */
-export const SessionCommand$outboundSchema: z.ZodType<
-  SessionCommand$Outbound,
-  z.ZodTypeDef,
-  SessionCommand
-> = z.object({
-  id: z.string(),
-  name: z.string(),
-  args: z.array(z.string()),
-  cwd: z.string(),
-  sessionId: z.string(),
-  exitCode: z.nullable(z.number()),
-  startedAt: z.number(),
-});
-
-export function sessionCommandToJSON(sessionCommand: SessionCommand): string {
-  return JSON.stringify(SessionCommand$outboundSchema.parse(sessionCommand));
-}
 export function sessionCommandFromJSON(
   jsonString: string,
 ): SafeParseResult<SessionCommand, SDKValidationError> {

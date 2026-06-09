@@ -62,15 +62,6 @@ export type GetEdgeConfigsResponseBody = {
 };
 
 /** @internal */
-export const GetEdgeConfigsRequest$inboundSchema: z.ZodType<
-  GetEdgeConfigsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
-/** @internal */
 export type GetEdgeConfigsRequest$Outbound = {
   teamId?: string | undefined;
   slug?: string | undefined;
@@ -93,15 +84,6 @@ export function getEdgeConfigsRequestToJSON(
     GetEdgeConfigsRequest$outboundSchema.parse(getEdgeConfigsRequest),
   );
 }
-export function getEdgeConfigsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetEdgeConfigsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetEdgeConfigsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetEdgeConfigsRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const Transfer$inboundSchema: z.ZodType<
@@ -113,27 +95,7 @@ export const Transfer$inboundSchema: z.ZodType<
   startedAt: types.number(),
   doneAt: types.nullable(types.number()),
 });
-/** @internal */
-export type Transfer$Outbound = {
-  fromAccountId: string;
-  startedAt: number;
-  doneAt: number | null;
-};
 
-/** @internal */
-export const Transfer$outboundSchema: z.ZodType<
-  Transfer$Outbound,
-  z.ZodTypeDef,
-  Transfer
-> = z.object({
-  fromAccountId: z.string(),
-  startedAt: z.number(),
-  doneAt: z.nullable(z.number()),
-});
-
-export function transferToJSON(transfer: Transfer): string {
-  return JSON.stringify(Transfer$outboundSchema.parse(transfer));
-}
 export function transferFromJSON(
   jsonString: string,
 ): SafeParseResult<Transfer, SDKValidationError> {
@@ -147,19 +109,7 @@ export function transferFromJSON(
 /** @internal */
 export const Schema$inboundSchema: z.ZodType<Schema, z.ZodTypeDef, unknown> = z
   .object({});
-/** @internal */
-export type Schema$Outbound = {};
 
-/** @internal */
-export const Schema$outboundSchema: z.ZodType<
-  Schema$Outbound,
-  z.ZodTypeDef,
-  Schema
-> = z.object({});
-
-export function schemaToJSON(schema: Schema): string {
-  return JSON.stringify(Schema$outboundSchema.parse(schema));
-}
 export function schemaFromJSON(
   jsonString: string,
 ): SafeParseResult<Schema, SDKValidationError> {
@@ -174,10 +124,6 @@ export function schemaFromJSON(
 export const GetEdgeConfigsType$inboundSchema: z.ZodNativeEnum<
   typeof GetEdgeConfigsType
 > = z.nativeEnum(GetEdgeConfigsType);
-/** @internal */
-export const GetEdgeConfigsType$outboundSchema: z.ZodNativeEnum<
-  typeof GetEdgeConfigsType
-> = GetEdgeConfigsType$inboundSchema;
 
 /** @internal */
 export const Purpose$inboundSchema: z.ZodType<Purpose, z.ZodTypeDef, unknown> =
@@ -185,25 +131,7 @@ export const Purpose$inboundSchema: z.ZodType<Purpose, z.ZodTypeDef, unknown> =
     type: GetEdgeConfigsType$inboundSchema,
     projectId: types.string(),
   });
-/** @internal */
-export type Purpose$Outbound = {
-  type: string;
-  projectId: string;
-};
 
-/** @internal */
-export const Purpose$outboundSchema: z.ZodType<
-  Purpose$Outbound,
-  z.ZodTypeDef,
-  Purpose
-> = z.object({
-  type: GetEdgeConfigsType$outboundSchema,
-  projectId: z.string(),
-});
-
-export function purposeToJSON(purpose: Purpose): string {
-  return JSON.stringify(Purpose$outboundSchema.parse(purpose));
-}
 export function purposeFromJSON(
   jsonString: string,
 ): SafeParseResult<Purpose, SDKValidationError> {
@@ -232,47 +160,7 @@ export const GetEdgeConfigsResponseBody$inboundSchema: z.ZodType<
   sizeInBytes: types.number(),
   itemCount: types.number(),
 });
-/** @internal */
-export type GetEdgeConfigsResponseBody$Outbound = {
-  id?: string | undefined;
-  createdAt?: number | undefined;
-  ownerId?: string | undefined;
-  slug?: string | undefined;
-  updatedAt?: number | undefined;
-  digest?: string | undefined;
-  transfer?: Transfer$Outbound | undefined;
-  schema?: Schema$Outbound | undefined;
-  purpose?: Purpose$Outbound | undefined;
-  sizeInBytes: number;
-  itemCount: number;
-};
 
-/** @internal */
-export const GetEdgeConfigsResponseBody$outboundSchema: z.ZodType<
-  GetEdgeConfigsResponseBody$Outbound,
-  z.ZodTypeDef,
-  GetEdgeConfigsResponseBody
-> = z.object({
-  id: z.string().optional(),
-  createdAt: z.number().optional(),
-  ownerId: z.string().optional(),
-  slug: z.string().optional(),
-  updatedAt: z.number().optional(),
-  digest: z.string().optional(),
-  transfer: z.lazy(() => Transfer$outboundSchema).optional(),
-  schema: z.lazy(() => Schema$outboundSchema).optional(),
-  purpose: z.lazy(() => Purpose$outboundSchema).optional(),
-  sizeInBytes: z.number(),
-  itemCount: z.number(),
-});
-
-export function getEdgeConfigsResponseBodyToJSON(
-  getEdgeConfigsResponseBody: GetEdgeConfigsResponseBody,
-): string {
-  return JSON.stringify(
-    GetEdgeConfigsResponseBody$outboundSchema.parse(getEdgeConfigsResponseBody),
-  );
-}
 export function getEdgeConfigsResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetEdgeConfigsResponseBody, SDKValidationError> {

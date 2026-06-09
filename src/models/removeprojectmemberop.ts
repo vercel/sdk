@@ -32,17 +32,6 @@ export type RemoveProjectMemberResponseBody = {
 };
 
 /** @internal */
-export const RemoveProjectMemberRequest$inboundSchema: z.ZodType<
-  RemoveProjectMemberRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  idOrName: types.string(),
-  uid: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
-/** @internal */
 export type RemoveProjectMemberRequest$Outbound = {
   idOrName: string;
   uid: string;
@@ -69,15 +58,6 @@ export function removeProjectMemberRequestToJSON(
     RemoveProjectMemberRequest$outboundSchema.parse(removeProjectMemberRequest),
   );
 }
-export function removeProjectMemberRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<RemoveProjectMemberRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RemoveProjectMemberRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RemoveProjectMemberRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const RemoveProjectMemberResponseBody$inboundSchema: z.ZodType<
@@ -87,29 +67,7 @@ export const RemoveProjectMemberResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   id: types.string(),
 });
-/** @internal */
-export type RemoveProjectMemberResponseBody$Outbound = {
-  id: string;
-};
 
-/** @internal */
-export const RemoveProjectMemberResponseBody$outboundSchema: z.ZodType<
-  RemoveProjectMemberResponseBody$Outbound,
-  z.ZodTypeDef,
-  RemoveProjectMemberResponseBody
-> = z.object({
-  id: z.string(),
-});
-
-export function removeProjectMemberResponseBodyToJSON(
-  removeProjectMemberResponseBody: RemoveProjectMemberResponseBody,
-): string {
-  return JSON.stringify(
-    RemoveProjectMemberResponseBody$outboundSchema.parse(
-      removeProjectMemberResponseBody,
-    ),
-  );
-}
 export function removeProjectMemberResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveProjectMemberResponseBody, SDKValidationError> {

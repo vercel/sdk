@@ -5,7 +5,6 @@
 import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
-import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type GetMicrofrontendsGroupsRequest = {
@@ -21,15 +20,6 @@ export type GetMicrofrontendsGroupsRequest = {
 
 export type GetMicrofrontendsGroupsResponseBody = {};
 
-/** @internal */
-export const GetMicrofrontendsGroupsRequest$inboundSchema: z.ZodType<
-  GetMicrofrontendsGroupsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
 /** @internal */
 export type GetMicrofrontendsGroupsRequest$Outbound = {
   teamId?: string | undefined;
@@ -55,15 +45,6 @@ export function getMicrofrontendsGroupsRequestToJSON(
     ),
   );
 }
-export function getMicrofrontendsGroupsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetMicrofrontendsGroupsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetMicrofrontendsGroupsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetMicrofrontendsGroupsRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const GetMicrofrontendsGroupsResponseBody$inboundSchema: z.ZodType<
@@ -71,25 +52,7 @@ export const GetMicrofrontendsGroupsResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-/** @internal */
-export type GetMicrofrontendsGroupsResponseBody$Outbound = {};
 
-/** @internal */
-export const GetMicrofrontendsGroupsResponseBody$outboundSchema: z.ZodType<
-  GetMicrofrontendsGroupsResponseBody$Outbound,
-  z.ZodTypeDef,
-  GetMicrofrontendsGroupsResponseBody
-> = z.object({});
-
-export function getMicrofrontendsGroupsResponseBodyToJSON(
-  getMicrofrontendsGroupsResponseBody: GetMicrofrontendsGroupsResponseBody,
-): string {
-  return JSON.stringify(
-    GetMicrofrontendsGroupsResponseBody$outboundSchema.parse(
-      getMicrofrontendsGroupsResponseBody,
-    ),
-  );
-}
 export function getMicrofrontendsGroupsResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetMicrofrontendsGroupsResponseBody, SDKValidationError> {

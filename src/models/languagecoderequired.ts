@@ -51,10 +51,6 @@ export class LanguageCodeRequired extends VercelError {
 export const LanguageCodeRequiredCode$inboundSchema: z.ZodNativeEnum<
   typeof LanguageCodeRequiredCode
 > = z.nativeEnum(LanguageCodeRequiredCode);
-/** @internal */
-export const LanguageCodeRequiredCode$outboundSchema: z.ZodNativeEnum<
-  typeof LanguageCodeRequiredCode
-> = LanguageCodeRequiredCode$inboundSchema;
 
 /** @internal */
 export const LanguageCodeRequired$inboundSchema: z.ZodType<
@@ -76,23 +72,3 @@ export const LanguageCodeRequired$inboundSchema: z.ZodType<
       body: v.body$,
     });
   });
-
-/** @internal */
-export type LanguageCodeRequired$Outbound = {
-  status: number;
-  code: string;
-  message: string;
-};
-
-/** @internal */
-export const LanguageCodeRequired$outboundSchema: z.ZodType<
-  LanguageCodeRequired$Outbound,
-  z.ZodTypeDef,
-  LanguageCodeRequired
-> = z.instanceof(LanguageCodeRequired)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    status: z.number(),
-    code: LanguageCodeRequiredCode$outboundSchema,
-    message: z.string(),
-  }));

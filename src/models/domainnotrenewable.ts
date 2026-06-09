@@ -49,10 +49,6 @@ export class DomainNotRenewable extends VercelError {
 export const DomainNotRenewableCode$inboundSchema: z.ZodNativeEnum<
   typeof DomainNotRenewableCode
 > = z.nativeEnum(DomainNotRenewableCode);
-/** @internal */
-export const DomainNotRenewableCode$outboundSchema: z.ZodNativeEnum<
-  typeof DomainNotRenewableCode
-> = DomainNotRenewableCode$inboundSchema;
 
 /** @internal */
 export const DomainNotRenewable$inboundSchema: z.ZodType<
@@ -74,23 +70,3 @@ export const DomainNotRenewable$inboundSchema: z.ZodType<
       body: v.body$,
     });
   });
-
-/** @internal */
-export type DomainNotRenewable$Outbound = {
-  status: number;
-  code: string;
-  message: string;
-};
-
-/** @internal */
-export const DomainNotRenewable$outboundSchema: z.ZodType<
-  DomainNotRenewable$Outbound,
-  z.ZodTypeDef,
-  DomainNotRenewable
-> = z.instanceof(DomainNotRenewable)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    status: z.number(),
-    code: DomainNotRenewableCode$outboundSchema,
-    message: z.string(),
-  }));

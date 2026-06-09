@@ -316,17 +316,10 @@ export type UpdateDeploymentCheckRunResponseBody =
   | UpdateDeploymentCheckRunResponseBody2;
 
 /** @internal */
-export const UpdateDeploymentCheckRunStatus$inboundSchema: z.ZodNativeEnum<
-  typeof UpdateDeploymentCheckRunStatus
-> = z.nativeEnum(UpdateDeploymentCheckRunStatus);
-/** @internal */
 export const UpdateDeploymentCheckRunStatus$outboundSchema: z.ZodNativeEnum<
   typeof UpdateDeploymentCheckRunStatus
-> = UpdateDeploymentCheckRunStatus$inboundSchema;
+> = z.nativeEnum(UpdateDeploymentCheckRunStatus);
 
-/** @internal */
-export const Output$inboundSchema: z.ZodType<Output, z.ZodTypeDef, unknown> = z
-  .object({});
 /** @internal */
 export type Output$Outbound = {};
 
@@ -340,37 +333,11 @@ export const Output$outboundSchema: z.ZodType<
 export function outputToJSON(output: Output): string {
   return JSON.stringify(Output$outboundSchema.parse(output));
 }
-export function outputFromJSON(
-  jsonString: string,
-): SafeParseResult<Output, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Output$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Output' from JSON`,
-  );
-}
 
 /** @internal */
-export const Conclusion$inboundSchema: z.ZodNativeEnum<typeof Conclusion> = z
+export const Conclusion$outboundSchema: z.ZodNativeEnum<typeof Conclusion> = z
   .nativeEnum(Conclusion);
-/** @internal */
-export const Conclusion$outboundSchema: z.ZodNativeEnum<typeof Conclusion> =
-  Conclusion$inboundSchema;
 
-/** @internal */
-export const UpdateDeploymentCheckRunRequestBody$inboundSchema: z.ZodType<
-  UpdateDeploymentCheckRunRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  externalId: types.optional(types.string()),
-  externalUrl: types.optional(types.string()),
-  status: types.optional(UpdateDeploymentCheckRunStatus$inboundSchema),
-  output: types.optional(z.lazy(() => Output$inboundSchema)),
-  completedAt: types.optional(types.number()),
-  conclusion: types.optional(Conclusion$inboundSchema),
-  conclusionText: types.optional(types.string()),
-});
 /** @internal */
 export type UpdateDeploymentCheckRunRequestBody$Outbound = {
   externalId?: string | undefined;
@@ -406,35 +373,7 @@ export function updateDeploymentCheckRunRequestBodyToJSON(
     ),
   );
 }
-export function updateDeploymentCheckRunRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateDeploymentCheckRunRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      UpdateDeploymentCheckRunRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateDeploymentCheckRunRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateDeploymentCheckRunRequest$inboundSchema: z.ZodType<
-  UpdateDeploymentCheckRunRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  deploymentId: types.string(),
-  checkRunId: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-  RequestBody: types.optional(
-    z.lazy(() => UpdateDeploymentCheckRunRequestBody$inboundSchema),
-  ),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 /** @internal */
 export type UpdateDeploymentCheckRunRequest$Outbound = {
   deploymentId: string;
@@ -471,62 +410,32 @@ export function updateDeploymentCheckRunRequestToJSON(
     ),
   );
 }
-export function updateDeploymentCheckRunRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateDeploymentCheckRunRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateDeploymentCheckRunRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateDeploymentCheckRunRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const UpdateDeploymentCheckRunResponseBodyChecksV2Requires$inboundSchema:
   z.ZodNativeEnum<typeof UpdateDeploymentCheckRunResponseBodyChecksV2Requires> =
     z.nativeEnum(UpdateDeploymentCheckRunResponseBodyChecksV2Requires);
-/** @internal */
-export const UpdateDeploymentCheckRunResponseBodyChecksV2Requires$outboundSchema:
-  z.ZodNativeEnum<typeof UpdateDeploymentCheckRunResponseBodyChecksV2Requires> =
-    UpdateDeploymentCheckRunResponseBodyChecksV2Requires$inboundSchema;
 
 /** @internal */
 export const UpdateDeploymentCheckRunResponseBodyChecksV2Blocks$inboundSchema:
   z.ZodNativeEnum<typeof UpdateDeploymentCheckRunResponseBodyChecksV2Blocks> = z
     .nativeEnum(UpdateDeploymentCheckRunResponseBodyChecksV2Blocks);
-/** @internal */
-export const UpdateDeploymentCheckRunResponseBodyChecksV2Blocks$outboundSchema:
-  z.ZodNativeEnum<typeof UpdateDeploymentCheckRunResponseBodyChecksV2Blocks> =
-    UpdateDeploymentCheckRunResponseBodyChecksV2Blocks$inboundSchema;
 
 /** @internal */
 export const UpdateDeploymentCheckRunResponseBodyChecksV2Status$inboundSchema:
   z.ZodNativeEnum<typeof UpdateDeploymentCheckRunResponseBodyChecksV2Status> = z
     .nativeEnum(UpdateDeploymentCheckRunResponseBodyChecksV2Status);
-/** @internal */
-export const UpdateDeploymentCheckRunResponseBodyChecksV2Status$outboundSchema:
-  z.ZodNativeEnum<typeof UpdateDeploymentCheckRunResponseBodyChecksV2Status> =
-    UpdateDeploymentCheckRunResponseBodyChecksV2Status$inboundSchema;
 
 /** @internal */
 export const UpdateDeploymentCheckRunResponseBodyChecksV2Conclusion$inboundSchema:
   z.ZodNativeEnum<
     typeof UpdateDeploymentCheckRunResponseBodyChecksV2Conclusion
   > = z.nativeEnum(UpdateDeploymentCheckRunResponseBodyChecksV2Conclusion);
-/** @internal */
-export const UpdateDeploymentCheckRunResponseBodyChecksV2Conclusion$outboundSchema:
-  z.ZodNativeEnum<
-    typeof UpdateDeploymentCheckRunResponseBodyChecksV2Conclusion
-  > = UpdateDeploymentCheckRunResponseBodyChecksV2Conclusion$inboundSchema;
 
 /** @internal */
 export const UpdateDeploymentCheckRunSourceChecksV2ResponseOrigin$inboundSchema:
   z.ZodNativeEnum<typeof UpdateDeploymentCheckRunSourceChecksV2ResponseOrigin> =
     z.nativeEnum(UpdateDeploymentCheckRunSourceChecksV2ResponseOrigin);
-/** @internal */
-export const UpdateDeploymentCheckRunSourceChecksV2ResponseOrigin$outboundSchema:
-  z.ZodNativeEnum<typeof UpdateDeploymentCheckRunSourceChecksV2ResponseOrigin> =
-    UpdateDeploymentCheckRunSourceChecksV2ResponseOrigin$inboundSchema;
 
 /** @internal */
 export const UpdateDeploymentCheckRunSourceChecksV22$inboundSchema: z.ZodType<
@@ -537,32 +446,7 @@ export const UpdateDeploymentCheckRunSourceChecksV22$inboundSchema: z.ZodType<
   subKind: types.literal("vercel-ci-sentinel"),
   origin: UpdateDeploymentCheckRunSourceChecksV2ResponseOrigin$inboundSchema,
 });
-/** @internal */
-export type UpdateDeploymentCheckRunSourceChecksV22$Outbound = {
-  subKind: "vercel-ci-sentinel";
-  origin: string;
-};
 
-/** @internal */
-export const UpdateDeploymentCheckRunSourceChecksV22$outboundSchema: z.ZodType<
-  UpdateDeploymentCheckRunSourceChecksV22$Outbound,
-  z.ZodTypeDef,
-  UpdateDeploymentCheckRunSourceChecksV22
-> = z.object({
-  subKind: z.literal("vercel-ci-sentinel"),
-  origin: UpdateDeploymentCheckRunSourceChecksV2ResponseOrigin$outboundSchema,
-});
-
-export function updateDeploymentCheckRunSourceChecksV22ToJSON(
-  updateDeploymentCheckRunSourceChecksV22:
-    UpdateDeploymentCheckRunSourceChecksV22,
-): string {
-  return JSON.stringify(
-    UpdateDeploymentCheckRunSourceChecksV22$outboundSchema.parse(
-      updateDeploymentCheckRunSourceChecksV22,
-    ),
-  );
-}
 export function updateDeploymentCheckRunSourceChecksV22FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -583,10 +467,6 @@ export function updateDeploymentCheckRunSourceChecksV22FromJSON(
 export const UpdateDeploymentCheckRunSourceChecksV2Origin$inboundSchema:
   z.ZodNativeEnum<typeof UpdateDeploymentCheckRunSourceChecksV2Origin> = z
     .nativeEnum(UpdateDeploymentCheckRunSourceChecksV2Origin);
-/** @internal */
-export const UpdateDeploymentCheckRunSourceChecksV2Origin$outboundSchema:
-  z.ZodNativeEnum<typeof UpdateDeploymentCheckRunSourceChecksV2Origin> =
-    UpdateDeploymentCheckRunSourceChecksV2Origin$inboundSchema;
 
 /** @internal */
 export const UpdateDeploymentCheckRunSourceChecksV21$inboundSchema: z.ZodType<
@@ -599,36 +479,7 @@ export const UpdateDeploymentCheckRunSourceChecksV21$inboundSchema: z.ZodType<
   invocationId: types.string(),
   jobDefinitionId: types.string(),
 });
-/** @internal */
-export type UpdateDeploymentCheckRunSourceChecksV21$Outbound = {
-  subKind: "vercel-ci";
-  origin: string;
-  invocationId: string;
-  jobDefinitionId: string;
-};
 
-/** @internal */
-export const UpdateDeploymentCheckRunSourceChecksV21$outboundSchema: z.ZodType<
-  UpdateDeploymentCheckRunSourceChecksV21$Outbound,
-  z.ZodTypeDef,
-  UpdateDeploymentCheckRunSourceChecksV21
-> = z.object({
-  subKind: z.literal("vercel-ci"),
-  origin: UpdateDeploymentCheckRunSourceChecksV2Origin$outboundSchema,
-  invocationId: z.string(),
-  jobDefinitionId: z.string(),
-});
-
-export function updateDeploymentCheckRunSourceChecksV21ToJSON(
-  updateDeploymentCheckRunSourceChecksV21:
-    UpdateDeploymentCheckRunSourceChecksV21,
-): string {
-  return JSON.stringify(
-    UpdateDeploymentCheckRunSourceChecksV21$outboundSchema.parse(
-      updateDeploymentCheckRunSourceChecksV21,
-    ),
-  );
-}
 export function updateDeploymentCheckRunSourceChecksV21FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -655,32 +506,7 @@ export const UpdateDeploymentCheckRunResponseBodyChecksV2Source$inboundSchema:
     z.lazy(() => UpdateDeploymentCheckRunSourceChecksV21$inboundSchema),
     z.lazy(() => UpdateDeploymentCheckRunSourceChecksV22$inboundSchema),
   ]);
-/** @internal */
-export type UpdateDeploymentCheckRunResponseBodyChecksV2Source$Outbound =
-  | UpdateDeploymentCheckRunSourceChecksV21$Outbound
-  | UpdateDeploymentCheckRunSourceChecksV22$Outbound;
 
-/** @internal */
-export const UpdateDeploymentCheckRunResponseBodyChecksV2Source$outboundSchema:
-  z.ZodType<
-    UpdateDeploymentCheckRunResponseBodyChecksV2Source$Outbound,
-    z.ZodTypeDef,
-    UpdateDeploymentCheckRunResponseBodyChecksV2Source
-  > = z.union([
-    z.lazy(() => UpdateDeploymentCheckRunSourceChecksV21$outboundSchema),
-    z.lazy(() => UpdateDeploymentCheckRunSourceChecksV22$outboundSchema),
-  ]);
-
-export function updateDeploymentCheckRunResponseBodyChecksV2SourceToJSON(
-  updateDeploymentCheckRunResponseBodyChecksV2Source:
-    UpdateDeploymentCheckRunResponseBodyChecksV2Source,
-): string {
-  return JSON.stringify(
-    UpdateDeploymentCheckRunResponseBodyChecksV2Source$outboundSchema.parse(
-      updateDeploymentCheckRunResponseBodyChecksV2Source,
-    ),
-  );
-}
 export function updateDeploymentCheckRunResponseBodyChecksV2SourceFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -732,74 +558,7 @@ export const UpdateDeploymentCheckRunResponseBody2$inboundSchema: z.ZodType<
     z.lazy(() => UpdateDeploymentCheckRunSourceChecksV22$inboundSchema),
   ]),
 });
-/** @internal */
-export type UpdateDeploymentCheckRunResponseBody2$Outbound = {
-  id: string;
-  name: string;
-  ownerId: string;
-  deploymentId: string;
-  projectId?: string | undefined;
-  requires?: string | undefined;
-  blocks?: string | undefined;
-  targets?: Array<string> | undefined;
-  status: string;
-  conclusion?: string | undefined;
-  conclusionText?: string | undefined;
-  externalId?: string | undefined;
-  externalUrl?: string | undefined;
-  output?: { [k: string]: any } | undefined;
-  timeout: number;
-  createdAt: number;
-  updatedAt: number;
-  completedAt?: number | undefined;
-  source:
-    | UpdateDeploymentCheckRunSourceChecksV21$Outbound
-    | UpdateDeploymentCheckRunSourceChecksV22$Outbound;
-};
 
-/** @internal */
-export const UpdateDeploymentCheckRunResponseBody2$outboundSchema: z.ZodType<
-  UpdateDeploymentCheckRunResponseBody2$Outbound,
-  z.ZodTypeDef,
-  UpdateDeploymentCheckRunResponseBody2
-> = z.object({
-  id: z.string(),
-  name: z.string(),
-  ownerId: z.string(),
-  deploymentId: z.string(),
-  projectId: z.string().optional(),
-  requires: UpdateDeploymentCheckRunResponseBodyChecksV2Requires$outboundSchema
-    .optional(),
-  blocks: UpdateDeploymentCheckRunResponseBodyChecksV2Blocks$outboundSchema
-    .optional(),
-  targets: z.array(z.string()).optional(),
-  status: UpdateDeploymentCheckRunResponseBodyChecksV2Status$outboundSchema,
-  conclusion:
-    UpdateDeploymentCheckRunResponseBodyChecksV2Conclusion$outboundSchema
-      .optional(),
-  conclusionText: z.string().optional(),
-  externalId: z.string().optional(),
-  externalUrl: z.string().optional(),
-  output: z.record(z.any()).optional(),
-  timeout: z.number(),
-  createdAt: z.number(),
-  updatedAt: z.number(),
-  completedAt: z.number().optional(),
-  source: z.union([
-    z.lazy(() => UpdateDeploymentCheckRunSourceChecksV21$outboundSchema),
-    z.lazy(() => UpdateDeploymentCheckRunSourceChecksV22$outboundSchema),
-  ]),
-});
-
-export function updateDeploymentCheckRunResponseBody2ToJSON(
-  updateDeploymentCheckRunResponseBody2: UpdateDeploymentCheckRunResponseBody2,
-): string {
-  return JSON.stringify(
-    UpdateDeploymentCheckRunResponseBody2$outboundSchema.parse(
-      updateDeploymentCheckRunResponseBody2,
-    ),
-  );
-}
 export function updateDeploymentCheckRunResponseBody2FromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateDeploymentCheckRunResponseBody2, SDKValidationError> {
@@ -815,57 +574,33 @@ export function updateDeploymentCheckRunResponseBody2FromJSON(
 export const UpdateDeploymentCheckRunResponseBodyRequires$inboundSchema:
   z.ZodNativeEnum<typeof UpdateDeploymentCheckRunResponseBodyRequires> = z
     .nativeEnum(UpdateDeploymentCheckRunResponseBodyRequires);
-/** @internal */
-export const UpdateDeploymentCheckRunResponseBodyRequires$outboundSchema:
-  z.ZodNativeEnum<typeof UpdateDeploymentCheckRunResponseBodyRequires> =
-    UpdateDeploymentCheckRunResponseBodyRequires$inboundSchema;
 
 /** @internal */
 export const UpdateDeploymentCheckRunResponseBodyBlocks$inboundSchema:
   z.ZodNativeEnum<typeof UpdateDeploymentCheckRunResponseBodyBlocks> = z
     .nativeEnum(UpdateDeploymentCheckRunResponseBodyBlocks);
-/** @internal */
-export const UpdateDeploymentCheckRunResponseBodyBlocks$outboundSchema:
-  z.ZodNativeEnum<typeof UpdateDeploymentCheckRunResponseBodyBlocks> =
-    UpdateDeploymentCheckRunResponseBodyBlocks$inboundSchema;
 
 /** @internal */
 export const UpdateDeploymentCheckRunResponseBodyStatus$inboundSchema:
   z.ZodNativeEnum<typeof UpdateDeploymentCheckRunResponseBodyStatus> = z
     .nativeEnum(UpdateDeploymentCheckRunResponseBodyStatus);
-/** @internal */
-export const UpdateDeploymentCheckRunResponseBodyStatus$outboundSchema:
-  z.ZodNativeEnum<typeof UpdateDeploymentCheckRunResponseBodyStatus> =
-    UpdateDeploymentCheckRunResponseBodyStatus$inboundSchema;
 
 /** @internal */
 export const UpdateDeploymentCheckRunResponseBodyConclusion$inboundSchema:
   z.ZodNativeEnum<typeof UpdateDeploymentCheckRunResponseBodyConclusion> = z
     .nativeEnum(UpdateDeploymentCheckRunResponseBodyConclusion);
-/** @internal */
-export const UpdateDeploymentCheckRunResponseBodyConclusion$outboundSchema:
-  z.ZodNativeEnum<typeof UpdateDeploymentCheckRunResponseBodyConclusion> =
-    UpdateDeploymentCheckRunResponseBodyConclusion$inboundSchema;
 
 /** @internal */
 export const UpdateDeploymentCheckRunSourceSubKind$inboundSchema:
   z.ZodNativeEnum<typeof UpdateDeploymentCheckRunSourceSubKind> = z.nativeEnum(
     UpdateDeploymentCheckRunSourceSubKind,
   );
-/** @internal */
-export const UpdateDeploymentCheckRunSourceSubKind$outboundSchema:
-  z.ZodNativeEnum<typeof UpdateDeploymentCheckRunSourceSubKind> =
-    UpdateDeploymentCheckRunSourceSubKind$inboundSchema;
 
 /** @internal */
 export const UpdateDeploymentCheckRunSourceOrigin$inboundSchema:
   z.ZodNativeEnum<typeof UpdateDeploymentCheckRunSourceOrigin> = z.nativeEnum(
     UpdateDeploymentCheckRunSourceOrigin,
   );
-/** @internal */
-export const UpdateDeploymentCheckRunSourceOrigin$outboundSchema:
-  z.ZodNativeEnum<typeof UpdateDeploymentCheckRunSourceOrigin> =
-    UpdateDeploymentCheckRunSourceOrigin$inboundSchema;
 
 /** @internal */
 export const UpdateDeploymentCheckRunSource4$inboundSchema: z.ZodType<
@@ -876,31 +611,7 @@ export const UpdateDeploymentCheckRunSource4$inboundSchema: z.ZodType<
   subKind: types.optional(UpdateDeploymentCheckRunSourceSubKind$inboundSchema),
   origin: types.optional(UpdateDeploymentCheckRunSourceOrigin$inboundSchema),
 });
-/** @internal */
-export type UpdateDeploymentCheckRunSource4$Outbound = {
-  subKind?: string | undefined;
-  origin?: string | undefined;
-};
 
-/** @internal */
-export const UpdateDeploymentCheckRunSource4$outboundSchema: z.ZodType<
-  UpdateDeploymentCheckRunSource4$Outbound,
-  z.ZodTypeDef,
-  UpdateDeploymentCheckRunSource4
-> = z.object({
-  subKind: UpdateDeploymentCheckRunSourceSubKind$outboundSchema.optional(),
-  origin: UpdateDeploymentCheckRunSourceOrigin$outboundSchema.optional(),
-});
-
-export function updateDeploymentCheckRunSource4ToJSON(
-  updateDeploymentCheckRunSource4: UpdateDeploymentCheckRunSource4,
-): string {
-  return JSON.stringify(
-    UpdateDeploymentCheckRunSource4$outboundSchema.parse(
-      updateDeploymentCheckRunSource4,
-    ),
-  );
-}
 export function updateDeploymentCheckRunSource4FromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateDeploymentCheckRunSource4, SDKValidationError> {
@@ -915,20 +626,12 @@ export function updateDeploymentCheckRunSource4FromJSON(
 export const UpdateDeploymentCheckRunSourceChecksV2ResponseKind$inboundSchema:
   z.ZodNativeEnum<typeof UpdateDeploymentCheckRunSourceChecksV2ResponseKind> = z
     .nativeEnum(UpdateDeploymentCheckRunSourceChecksV2ResponseKind);
-/** @internal */
-export const UpdateDeploymentCheckRunSourceChecksV2ResponseKind$outboundSchema:
-  z.ZodNativeEnum<typeof UpdateDeploymentCheckRunSourceChecksV2ResponseKind> =
-    UpdateDeploymentCheckRunSourceChecksV2ResponseKind$inboundSchema;
 
 /** @internal */
 export const UpdateDeploymentCheckRunSourceProvider$inboundSchema:
   z.ZodNativeEnum<typeof UpdateDeploymentCheckRunSourceProvider> = z.nativeEnum(
     UpdateDeploymentCheckRunSourceProvider,
   );
-/** @internal */
-export const UpdateDeploymentCheckRunSourceProvider$outboundSchema:
-  z.ZodNativeEnum<typeof UpdateDeploymentCheckRunSourceProvider> =
-    UpdateDeploymentCheckRunSourceProvider$inboundSchema;
 
 /** @internal */
 export const UpdateDeploymentCheckRunSource3$inboundSchema: z.ZodType<
@@ -940,33 +643,7 @@ export const UpdateDeploymentCheckRunSource3$inboundSchema: z.ZodType<
   provider: UpdateDeploymentCheckRunSourceProvider$inboundSchema,
   externalCheckName: types.string(),
 });
-/** @internal */
-export type UpdateDeploymentCheckRunSource3$Outbound = {
-  kind: string;
-  provider: string;
-  externalCheckName: string;
-};
 
-/** @internal */
-export const UpdateDeploymentCheckRunSource3$outboundSchema: z.ZodType<
-  UpdateDeploymentCheckRunSource3$Outbound,
-  z.ZodTypeDef,
-  UpdateDeploymentCheckRunSource3
-> = z.object({
-  kind: UpdateDeploymentCheckRunSourceChecksV2ResponseKind$outboundSchema,
-  provider: UpdateDeploymentCheckRunSourceProvider$outboundSchema,
-  externalCheckName: z.string(),
-});
-
-export function updateDeploymentCheckRunSource3ToJSON(
-  updateDeploymentCheckRunSource3: UpdateDeploymentCheckRunSource3,
-): string {
-  return JSON.stringify(
-    UpdateDeploymentCheckRunSource3$outboundSchema.parse(
-      updateDeploymentCheckRunSource3,
-    ),
-  );
-}
 export function updateDeploymentCheckRunSource3FromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateDeploymentCheckRunSource3, SDKValidationError> {
@@ -981,10 +658,6 @@ export function updateDeploymentCheckRunSource3FromJSON(
 export const UpdateDeploymentCheckRunSourceChecksV2Kind$inboundSchema:
   z.ZodNativeEnum<typeof UpdateDeploymentCheckRunSourceChecksV2Kind> = z
     .nativeEnum(UpdateDeploymentCheckRunSourceChecksV2Kind);
-/** @internal */
-export const UpdateDeploymentCheckRunSourceChecksV2Kind$outboundSchema:
-  z.ZodNativeEnum<typeof UpdateDeploymentCheckRunSourceChecksV2Kind> =
-    UpdateDeploymentCheckRunSourceChecksV2Kind$inboundSchema;
 
 /** @internal */
 export const UpdateDeploymentCheckRunSource2$inboundSchema: z.ZodType<
@@ -995,31 +668,7 @@ export const UpdateDeploymentCheckRunSource2$inboundSchema: z.ZodType<
   kind: UpdateDeploymentCheckRunSourceChecksV2Kind$inboundSchema,
   webhookId: types.optional(types.string()),
 });
-/** @internal */
-export type UpdateDeploymentCheckRunSource2$Outbound = {
-  kind: string;
-  webhookId?: string | undefined;
-};
 
-/** @internal */
-export const UpdateDeploymentCheckRunSource2$outboundSchema: z.ZodType<
-  UpdateDeploymentCheckRunSource2$Outbound,
-  z.ZodTypeDef,
-  UpdateDeploymentCheckRunSource2
-> = z.object({
-  kind: UpdateDeploymentCheckRunSourceChecksV2Kind$outboundSchema,
-  webhookId: z.string().optional(),
-});
-
-export function updateDeploymentCheckRunSource2ToJSON(
-  updateDeploymentCheckRunSource2: UpdateDeploymentCheckRunSource2,
-): string {
-  return JSON.stringify(
-    UpdateDeploymentCheckRunSource2$outboundSchema.parse(
-      updateDeploymentCheckRunSource2,
-    ),
-  );
-}
 export function updateDeploymentCheckRunSource2FromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateDeploymentCheckRunSource2, SDKValidationError> {
@@ -1034,10 +683,6 @@ export function updateDeploymentCheckRunSource2FromJSON(
 export const UpdateDeploymentCheckRunSourceKind$inboundSchema: z.ZodNativeEnum<
   typeof UpdateDeploymentCheckRunSourceKind
 > = z.nativeEnum(UpdateDeploymentCheckRunSourceKind);
-/** @internal */
-export const UpdateDeploymentCheckRunSourceKind$outboundSchema: z.ZodNativeEnum<
-  typeof UpdateDeploymentCheckRunSourceKind
-> = UpdateDeploymentCheckRunSourceKind$inboundSchema;
 
 /** @internal */
 export const UpdateDeploymentCheckRunSource1$inboundSchema: z.ZodType<
@@ -1051,37 +696,7 @@ export const UpdateDeploymentCheckRunSource1$inboundSchema: z.ZodType<
   resourceId: types.optional(types.string()),
   externalResourceId: types.optional(types.string()),
 });
-/** @internal */
-export type UpdateDeploymentCheckRunSource1$Outbound = {
-  kind: string;
-  integrationId: string;
-  integrationConfigurationId: string;
-  resourceId?: string | undefined;
-  externalResourceId?: string | undefined;
-};
 
-/** @internal */
-export const UpdateDeploymentCheckRunSource1$outboundSchema: z.ZodType<
-  UpdateDeploymentCheckRunSource1$Outbound,
-  z.ZodTypeDef,
-  UpdateDeploymentCheckRunSource1
-> = z.object({
-  kind: UpdateDeploymentCheckRunSourceKind$outboundSchema,
-  integrationId: z.string(),
-  integrationConfigurationId: z.string(),
-  resourceId: z.string().optional(),
-  externalResourceId: z.string().optional(),
-});
-
-export function updateDeploymentCheckRunSource1ToJSON(
-  updateDeploymentCheckRunSource1: UpdateDeploymentCheckRunSource1,
-): string {
-  return JSON.stringify(
-    UpdateDeploymentCheckRunSource1$outboundSchema.parse(
-      updateDeploymentCheckRunSource1,
-    ),
-  );
-}
 export function updateDeploymentCheckRunSource1FromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateDeploymentCheckRunSource1, SDKValidationError> {
@@ -1101,36 +716,7 @@ export const UpdateDeploymentCheckRunResponseBodySource$inboundSchema:
       z.lazy(() => UpdateDeploymentCheckRunSource2$inboundSchema),
       z.lazy(() => UpdateDeploymentCheckRunSource4$inboundSchema),
     ]);
-/** @internal */
-export type UpdateDeploymentCheckRunResponseBodySource$Outbound =
-  | UpdateDeploymentCheckRunSource1$Outbound
-  | UpdateDeploymentCheckRunSource3$Outbound
-  | UpdateDeploymentCheckRunSource2$Outbound
-  | UpdateDeploymentCheckRunSource4$Outbound;
 
-/** @internal */
-export const UpdateDeploymentCheckRunResponseBodySource$outboundSchema:
-  z.ZodType<
-    UpdateDeploymentCheckRunResponseBodySource$Outbound,
-    z.ZodTypeDef,
-    UpdateDeploymentCheckRunResponseBodySource
-  > = smartUnion([
-    z.lazy(() => UpdateDeploymentCheckRunSource1$outboundSchema),
-    z.lazy(() => UpdateDeploymentCheckRunSource3$outboundSchema),
-    z.lazy(() => UpdateDeploymentCheckRunSource2$outboundSchema),
-    z.lazy(() => UpdateDeploymentCheckRunSource4$outboundSchema),
-  ]);
-
-export function updateDeploymentCheckRunResponseBodySourceToJSON(
-  updateDeploymentCheckRunResponseBodySource:
-    UpdateDeploymentCheckRunResponseBodySource,
-): string {
-  return JSON.stringify(
-    UpdateDeploymentCheckRunResponseBodySource$outboundSchema.parse(
-      updateDeploymentCheckRunResponseBodySource,
-    ),
-  );
-}
 export function updateDeploymentCheckRunResponseBodySourceFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -1185,78 +771,7 @@ export const UpdateDeploymentCheckRunResponseBody1$inboundSchema: z.ZodType<
     z.lazy(() => UpdateDeploymentCheckRunSource4$inboundSchema),
   ]),
 });
-/** @internal */
-export type UpdateDeploymentCheckRunResponseBody1$Outbound = {
-  id: string;
-  name: string;
-  ownerId: string;
-  deploymentId: string;
-  projectId?: string | undefined;
-  requires?: string | undefined;
-  blocks?: string | undefined;
-  targets?: Array<string> | undefined;
-  status: string;
-  conclusion?: string | undefined;
-  conclusionText?: string | undefined;
-  externalId?: string | undefined;
-  externalUrl?: string | undefined;
-  output?: { [k: string]: any } | undefined;
-  timeout: number;
-  createdAt: number;
-  updatedAt: number;
-  completedAt?: number | undefined;
-  checkId: string;
-  source:
-    | UpdateDeploymentCheckRunSource1$Outbound
-    | UpdateDeploymentCheckRunSource3$Outbound
-    | UpdateDeploymentCheckRunSource2$Outbound
-    | UpdateDeploymentCheckRunSource4$Outbound;
-};
 
-/** @internal */
-export const UpdateDeploymentCheckRunResponseBody1$outboundSchema: z.ZodType<
-  UpdateDeploymentCheckRunResponseBody1$Outbound,
-  z.ZodTypeDef,
-  UpdateDeploymentCheckRunResponseBody1
-> = z.object({
-  id: z.string(),
-  name: z.string(),
-  ownerId: z.string(),
-  deploymentId: z.string(),
-  projectId: z.string().optional(),
-  requires: UpdateDeploymentCheckRunResponseBodyRequires$outboundSchema
-    .optional(),
-  blocks: UpdateDeploymentCheckRunResponseBodyBlocks$outboundSchema.optional(),
-  targets: z.array(z.string()).optional(),
-  status: UpdateDeploymentCheckRunResponseBodyStatus$outboundSchema,
-  conclusion: UpdateDeploymentCheckRunResponseBodyConclusion$outboundSchema
-    .optional(),
-  conclusionText: z.string().optional(),
-  externalId: z.string().optional(),
-  externalUrl: z.string().optional(),
-  output: z.record(z.any()).optional(),
-  timeout: z.number(),
-  createdAt: z.number(),
-  updatedAt: z.number(),
-  completedAt: z.number().optional(),
-  checkId: z.string(),
-  source: smartUnion([
-    z.lazy(() => UpdateDeploymentCheckRunSource1$outboundSchema),
-    z.lazy(() => UpdateDeploymentCheckRunSource3$outboundSchema),
-    z.lazy(() => UpdateDeploymentCheckRunSource2$outboundSchema),
-    z.lazy(() => UpdateDeploymentCheckRunSource4$outboundSchema),
-  ]),
-});
-
-export function updateDeploymentCheckRunResponseBody1ToJSON(
-  updateDeploymentCheckRunResponseBody1: UpdateDeploymentCheckRunResponseBody1,
-): string {
-  return JSON.stringify(
-    UpdateDeploymentCheckRunResponseBody1$outboundSchema.parse(
-      updateDeploymentCheckRunResponseBody1,
-    ),
-  );
-}
 export function updateDeploymentCheckRunResponseBody1FromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateDeploymentCheckRunResponseBody1, SDKValidationError> {
@@ -1277,30 +792,7 @@ export const UpdateDeploymentCheckRunResponseBody$inboundSchema: z.ZodType<
   z.lazy(() => UpdateDeploymentCheckRunResponseBody1$inboundSchema),
   z.lazy(() => UpdateDeploymentCheckRunResponseBody2$inboundSchema),
 ]);
-/** @internal */
-export type UpdateDeploymentCheckRunResponseBody$Outbound =
-  | UpdateDeploymentCheckRunResponseBody1$Outbound
-  | UpdateDeploymentCheckRunResponseBody2$Outbound;
 
-/** @internal */
-export const UpdateDeploymentCheckRunResponseBody$outboundSchema: z.ZodType<
-  UpdateDeploymentCheckRunResponseBody$Outbound,
-  z.ZodTypeDef,
-  UpdateDeploymentCheckRunResponseBody
-> = smartUnion([
-  z.lazy(() => UpdateDeploymentCheckRunResponseBody1$outboundSchema),
-  z.lazy(() => UpdateDeploymentCheckRunResponseBody2$outboundSchema),
-]);
-
-export function updateDeploymentCheckRunResponseBodyToJSON(
-  updateDeploymentCheckRunResponseBody: UpdateDeploymentCheckRunResponseBody,
-): string {
-  return JSON.stringify(
-    UpdateDeploymentCheckRunResponseBody$outboundSchema.parse(
-      updateDeploymentCheckRunResponseBody,
-    ),
-  );
-}
 export function updateDeploymentCheckRunResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateDeploymentCheckRunResponseBody, SDKValidationError> {

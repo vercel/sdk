@@ -43,17 +43,10 @@ export type MarketplaceFlag = {
 export const MarketplaceFlagState$inboundSchema: z.ZodNativeEnum<
   typeof MarketplaceFlagState
 > = z.nativeEnum(MarketplaceFlagState);
-/** @internal */
-export const MarketplaceFlagState$outboundSchema: z.ZodNativeEnum<
-  typeof MarketplaceFlagState
-> = MarketplaceFlagState$inboundSchema;
 
 /** @internal */
 export const Category$inboundSchema: z.ZodNativeEnum<typeof Category> = z
   .nativeEnum(Category);
-/** @internal */
-export const Category$outboundSchema: z.ZodNativeEnum<typeof Category> =
-  Category$inboundSchema;
 
 /** @internal */
 export const MarketplaceFlag$inboundSchema: z.ZodType<
@@ -77,53 +70,7 @@ export const MarketplaceFlag$inboundSchema: z.ZodType<
   createdAt: types.optional(types.number()),
   updatedAt: types.optional(types.number()),
 });
-/** @internal */
-export type MarketplaceFlag$Outbound = {
-  typeName: "marketplaceFlag";
-  id: string;
-  externalId: string;
-  slug: string;
-  origin: string;
-  ownerId: string;
-  projectId: string;
-  resourceId: string;
-  integrationConfigurationId: string;
-  state: string;
-  name?: string | undefined;
-  description?: string | undefined;
-  category?: string | undefined;
-  createdAt?: number | undefined;
-  updatedAt?: number | undefined;
-};
 
-/** @internal */
-export const MarketplaceFlag$outboundSchema: z.ZodType<
-  MarketplaceFlag$Outbound,
-  z.ZodTypeDef,
-  MarketplaceFlag
-> = z.object({
-  typeName: z.literal("marketplaceFlag"),
-  id: z.string(),
-  externalId: z.string(),
-  slug: z.string(),
-  origin: z.string(),
-  ownerId: z.string(),
-  projectId: z.string(),
-  resourceId: z.string(),
-  integrationConfigurationId: z.string(),
-  state: MarketplaceFlagState$outboundSchema,
-  name: z.string().optional(),
-  description: z.string().optional(),
-  category: Category$outboundSchema.optional(),
-  createdAt: z.number().optional(),
-  updatedAt: z.number().optional(),
-});
-
-export function marketplaceFlagToJSON(
-  marketplaceFlag: MarketplaceFlag,
-): string {
-  return JSON.stringify(MarketplaceFlag$outboundSchema.parse(marketplaceFlag));
-}
 export function marketplaceFlagFromJSON(
   jsonString: string,
 ): SafeParseResult<MarketplaceFlag, SDKValidationError> {

@@ -48,15 +48,6 @@ export type RequestDeleteResponseBody = {
 };
 
 /** @internal */
-export const RequestDeleteReasons$inboundSchema: z.ZodType<
-  RequestDeleteReasons,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  slug: types.string(),
-  description: types.string(),
-});
-/** @internal */
 export type RequestDeleteReasons$Outbound = {
   slug: string;
   description: string;
@@ -79,26 +70,7 @@ export function requestDeleteReasonsToJSON(
     RequestDeleteReasons$outboundSchema.parse(requestDeleteReasons),
   );
 }
-export function requestDeleteReasonsFromJSON(
-  jsonString: string,
-): SafeParseResult<RequestDeleteReasons, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RequestDeleteReasons$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RequestDeleteReasons' from JSON`,
-  );
-}
 
-/** @internal */
-export const RequestDeleteRequestBody$inboundSchema: z.ZodType<
-  RequestDeleteRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  reasons: types.optional(
-    z.array(z.lazy(() => RequestDeleteReasons$inboundSchema)),
-  ),
-});
 /** @internal */
 export type RequestDeleteRequestBody$Outbound = {
   reasons?: Array<RequestDeleteReasons$Outbound> | undefined;
@@ -121,15 +93,6 @@ export function requestDeleteRequestBodyToJSON(
     RequestDeleteRequestBody$outboundSchema.parse(requestDeleteRequestBody),
   );
 }
-export function requestDeleteRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<RequestDeleteRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RequestDeleteRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RequestDeleteRequestBody' from JSON`,
-  );
-}
 
 /** @internal */
 export const RequestDeleteResponseBody$inboundSchema: z.ZodType<
@@ -141,31 +104,7 @@ export const RequestDeleteResponseBody$inboundSchema: z.ZodType<
   email: types.string(),
   message: types.string(),
 });
-/** @internal */
-export type RequestDeleteResponseBody$Outbound = {
-  id: string;
-  email: string;
-  message: string;
-};
 
-/** @internal */
-export const RequestDeleteResponseBody$outboundSchema: z.ZodType<
-  RequestDeleteResponseBody$Outbound,
-  z.ZodTypeDef,
-  RequestDeleteResponseBody
-> = z.object({
-  id: z.string(),
-  email: z.string(),
-  message: z.string(),
-});
-
-export function requestDeleteResponseBodyToJSON(
-  requestDeleteResponseBody: RequestDeleteResponseBody,
-): string {
-  return JSON.stringify(
-    RequestDeleteResponseBody$outboundSchema.parse(requestDeleteResponseBody),
-  );
-}
 export function requestDeleteResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<RequestDeleteResponseBody, SDKValidationError> {

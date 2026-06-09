@@ -122,22 +122,10 @@ export type UpdateRecordResponseBody = {
 };
 
 /** @internal */
-export const UpdateRecordType$inboundSchema: z.ZodNativeEnum<
-  typeof UpdateRecordType
-> = z.nativeEnum(UpdateRecordType);
-/** @internal */
 export const UpdateRecordType$outboundSchema: z.ZodNativeEnum<
   typeof UpdateRecordType
-> = UpdateRecordType$inboundSchema;
+> = z.nativeEnum(UpdateRecordType);
 
-/** @internal */
-export const Srv$inboundSchema: z.ZodType<Srv, z.ZodTypeDef, unknown> = z
-  .object({
-    target: types.nullable(types.string()),
-    weight: types.nullable(types.number()),
-    port: types.nullable(types.number()),
-    priority: types.nullable(types.number()),
-  });
 /** @internal */
 export type Srv$Outbound = {
   target: string | null;
@@ -158,23 +146,7 @@ export const Srv$outboundSchema: z.ZodType<Srv$Outbound, z.ZodTypeDef, Srv> = z
 export function srvToJSON(srv: Srv): string {
   return JSON.stringify(Srv$outboundSchema.parse(srv));
 }
-export function srvFromJSON(
-  jsonString: string,
-): SafeParseResult<Srv, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Srv$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Srv' from JSON`,
-  );
-}
 
-/** @internal */
-export const Https$inboundSchema: z.ZodType<Https, z.ZodTypeDef, unknown> = z
-  .object({
-    priority: types.nullable(types.number()),
-    target: types.nullable(types.string()),
-    params: z.nullable(types.string()).optional(),
-  });
 /** @internal */
 export type Https$Outbound = {
   priority: number | null;
@@ -196,31 +168,7 @@ export const Https$outboundSchema: z.ZodType<
 export function httpsToJSON(https: Https): string {
   return JSON.stringify(Https$outboundSchema.parse(https));
 }
-export function httpsFromJSON(
-  jsonString: string,
-): SafeParseResult<Https, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Https$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Https' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateRecordRequestBody$inboundSchema: z.ZodType<
-  UpdateRecordRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  name: z.nullable(types.string()).optional(),
-  value: z.nullable(types.string()).optional(),
-  type: z.nullable(UpdateRecordType$inboundSchema).optional(),
-  ttl: z.nullable(types.number()).optional(),
-  mxPriority: z.nullable(types.number()).optional(),
-  srv: z.nullable(z.lazy(() => Srv$inboundSchema)).optional(),
-  https: z.nullable(z.lazy(() => Https$inboundSchema)).optional(),
-  comment: types.optional(types.string()),
-});
 /** @internal */
 export type UpdateRecordRequestBody$Outbound = {
   name?: string | null | undefined;
@@ -256,31 +204,7 @@ export function updateRecordRequestBodyToJSON(
     UpdateRecordRequestBody$outboundSchema.parse(updateRecordRequestBody),
   );
 }
-export function updateRecordRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateRecordRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateRecordRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateRecordRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateRecordRequest$inboundSchema: z.ZodType<
-  UpdateRecordRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  recordId: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-  RequestBody: z.lazy(() => UpdateRecordRequestBody$inboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 /** @internal */
 export type UpdateRecordRequest$Outbound = {
   recordId: string;
@@ -312,31 +236,15 @@ export function updateRecordRequestToJSON(
     UpdateRecordRequest$outboundSchema.parse(updateRecordRequest),
   );
 }
-export function updateRecordRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateRecordRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateRecordRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateRecordRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const UpdateRecordDnsType$inboundSchema: z.ZodNativeEnum<
   typeof UpdateRecordDnsType
 > = z.nativeEnum(UpdateRecordDnsType);
-/** @internal */
-export const UpdateRecordDnsType$outboundSchema: z.ZodNativeEnum<
-  typeof UpdateRecordDnsType
-> = UpdateRecordDnsType$inboundSchema;
 
 /** @internal */
 export const RecordType$inboundSchema: z.ZodNativeEnum<typeof RecordType> = z
   .nativeEnum(RecordType);
-/** @internal */
-export const RecordType$outboundSchema: z.ZodNativeEnum<typeof RecordType> =
-  RecordType$inboundSchema;
 
 /** @internal */
 export const UpdateRecordResponseBody$inboundSchema: z.ZodType<
@@ -355,45 +263,7 @@ export const UpdateRecordResponseBody$inboundSchema: z.ZodType<
   recordType: RecordType$inboundSchema,
   createdAt: z.nullable(types.number()).optional(),
 });
-/** @internal */
-export type UpdateRecordResponseBody$Outbound = {
-  id: string;
-  name: string;
-  type: string;
-  value: string;
-  creator: string;
-  domain: string;
-  ttl?: number | undefined;
-  comment?: string | undefined;
-  recordType: string;
-  createdAt?: number | null | undefined;
-};
 
-/** @internal */
-export const UpdateRecordResponseBody$outboundSchema: z.ZodType<
-  UpdateRecordResponseBody$Outbound,
-  z.ZodTypeDef,
-  UpdateRecordResponseBody
-> = z.object({
-  id: z.string(),
-  name: z.string(),
-  type: UpdateRecordDnsType$outboundSchema,
-  value: z.string(),
-  creator: z.string(),
-  domain: z.string(),
-  ttl: z.number().optional(),
-  comment: z.string().optional(),
-  recordType: RecordType$outboundSchema,
-  createdAt: z.nullable(z.number()).optional(),
-});
-
-export function updateRecordResponseBodyToJSON(
-  updateRecordResponseBody: UpdateRecordResponseBody,
-): string {
-  return JSON.stringify(
-    UpdateRecordResponseBody$outboundSchema.parse(updateRecordResponseBody),
-  );
-}
 export function updateRecordResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateRecordResponseBody, SDKValidationError> {

@@ -6,43 +6,27 @@ import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
-import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import {
   DomainAlreadyRenewing,
   DomainAlreadyRenewing$inboundSchema,
-  DomainAlreadyRenewing$Outbound,
-  DomainAlreadyRenewing$outboundSchema,
 } from "./domainalreadyrenewing.js";
 import {
   DomainNotRegistered,
   DomainNotRegistered$inboundSchema,
-  DomainNotRegistered$Outbound,
-  DomainNotRegistered$outboundSchema,
 } from "./domainnotregistered.js";
 import {
   DomainNotRenewable,
   DomainNotRenewable$inboundSchema,
-  DomainNotRenewable$Outbound,
-  DomainNotRenewable$outboundSchema,
 } from "./domainnotrenewable.js";
-import {
-  Forbidden,
-  Forbidden$inboundSchema,
-  Forbidden$Outbound,
-  Forbidden$outboundSchema,
-} from "./forbidden.js";
+import { Forbidden, Forbidden$inboundSchema } from "./forbidden.js";
 import {
   HttpApiDecodeError,
   HttpApiDecodeError$inboundSchema,
-  HttpApiDecodeError$Outbound,
-  HttpApiDecodeError$outboundSchema,
 } from "./httpapidecodeerror.js";
 import {
   NotAuthorizedForScope,
   NotAuthorizedForScope$inboundSchema,
-  NotAuthorizedForScope$Outbound,
-  NotAuthorizedForScope$outboundSchema,
 } from "./notauthorizedforscope.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
@@ -73,14 +57,6 @@ export type UpdateDomainAutoRenewResponseBody =
   | HttpApiDecodeError;
 
 /** @internal */
-export const UpdateDomainAutoRenewRequestBody$inboundSchema: z.ZodType<
-  UpdateDomainAutoRenewRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  autoRenew: types.boolean(),
-});
-/** @internal */
 export type UpdateDomainAutoRenewRequestBody$Outbound = {
   autoRenew: boolean;
 };
@@ -103,30 +79,7 @@ export function updateDomainAutoRenewRequestBodyToJSON(
     ),
   );
 }
-export function updateDomainAutoRenewRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateDomainAutoRenewRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateDomainAutoRenewRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateDomainAutoRenewRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateDomainAutoRenewRequest$inboundSchema: z.ZodType<
-  UpdateDomainAutoRenewRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  domain: types.string(),
-  teamId: types.optional(types.string()),
-  RequestBody: z.lazy(() => UpdateDomainAutoRenewRequestBody$inboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 /** @internal */
 export type UpdateDomainAutoRenewRequest$Outbound = {
   domain: string;
@@ -158,15 +111,6 @@ export function updateDomainAutoRenewRequestToJSON(
     ),
   );
 }
-export function updateDomainAutoRenewRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateDomainAutoRenewRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateDomainAutoRenewRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateDomainAutoRenewRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const UpdateDomainAutoRenewDomainsRegistrarResponseBody$inboundSchema:
@@ -180,34 +124,7 @@ export const UpdateDomainAutoRenewDomainsRegistrarResponseBody$inboundSchema:
     ),
     Forbidden$inboundSchema,
   ]);
-/** @internal */
-export type UpdateDomainAutoRenewDomainsRegistrarResponseBody$Outbound =
-  | (NotAuthorizedForScope$Outbound & { code: "not_authorized_for_scope" })
-  | Forbidden$Outbound;
 
-/** @internal */
-export const UpdateDomainAutoRenewDomainsRegistrarResponseBody$outboundSchema:
-  z.ZodType<
-    UpdateDomainAutoRenewDomainsRegistrarResponseBody$Outbound,
-    z.ZodTypeDef,
-    unknown
-  > = z.union([
-    NotAuthorizedForScope$outboundSchema.and(
-      z.object({ code: z.literal("not_authorized_for_scope") }),
-    ),
-    Forbidden$outboundSchema,
-  ]);
-
-export function updateDomainAutoRenewDomainsRegistrarResponseBodyToJSON(
-  updateDomainAutoRenewDomainsRegistrarResponseBody:
-    UpdateDomainAutoRenewDomainsRegistrarResponseBody,
-): string {
-  return JSON.stringify(
-    UpdateDomainAutoRenewDomainsRegistrarResponseBody$outboundSchema.parse(
-      updateDomainAutoRenewDomainsRegistrarResponseBody,
-    ),
-  );
-}
 export function updateDomainAutoRenewDomainsRegistrarResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -235,34 +152,7 @@ export const UpdateDomainAutoRenewResponseBody$inboundSchema: z.ZodType<
   DomainNotRegistered$inboundSchema,
   HttpApiDecodeError$inboundSchema,
 ]);
-/** @internal */
-export type UpdateDomainAutoRenewResponseBody$Outbound =
-  | DomainAlreadyRenewing$Outbound
-  | DomainNotRenewable$Outbound
-  | DomainNotRegistered$Outbound
-  | HttpApiDecodeError$Outbound;
 
-/** @internal */
-export const UpdateDomainAutoRenewResponseBody$outboundSchema: z.ZodType<
-  UpdateDomainAutoRenewResponseBody$Outbound,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([
-  DomainAlreadyRenewing$outboundSchema,
-  DomainNotRenewable$outboundSchema,
-  DomainNotRegistered$outboundSchema,
-  HttpApiDecodeError$outboundSchema,
-]);
-
-export function updateDomainAutoRenewResponseBodyToJSON(
-  updateDomainAutoRenewResponseBody: UpdateDomainAutoRenewResponseBody,
-): string {
-  return JSON.stringify(
-    UpdateDomainAutoRenewResponseBody$outboundSchema.parse(
-      updateDomainAutoRenewResponseBody,
-    ),
-  );
-}
 export function updateDomainAutoRenewResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateDomainAutoRenewResponseBody, SDKValidationError> {

@@ -4,10 +4,6 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
-import { Result as SafeParseResult } from "../types/fp.js";
-import * as types from "../types/primitives.js";
-import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type CreateNetworkRequestBody = {
   awsAvailabilityZoneIds?: Array<string> | undefined;
@@ -38,17 +34,6 @@ export type CreateNetworkRequest = {
 };
 
 /** @internal */
-export const CreateNetworkRequestBody$inboundSchema: z.ZodType<
-  CreateNetworkRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  awsAvailabilityZoneIds: types.optional(z.array(types.string())),
-  cidr: types.string(),
-  name: types.string(),
-  region: types.string(),
-});
-/** @internal */
 export type CreateNetworkRequestBody$Outbound = {
   awsAvailabilityZoneIds?: Array<string> | undefined;
   cidr: string;
@@ -75,32 +60,7 @@ export function createNetworkRequestBodyToJSON(
     CreateNetworkRequestBody$outboundSchema.parse(createNetworkRequestBody),
   );
 }
-export function createNetworkRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateNetworkRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateNetworkRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateNetworkRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const CreateNetworkRequest$inboundSchema: z.ZodType<
-  CreateNetworkRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-  RequestBody: types.optional(
-    z.lazy(() => CreateNetworkRequestBody$inboundSchema),
-  ),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 /** @internal */
 export type CreateNetworkRequest$Outbound = {
   teamId?: string | undefined;
@@ -128,14 +88,5 @@ export function createNetworkRequestToJSON(
 ): string {
   return JSON.stringify(
     CreateNetworkRequest$outboundSchema.parse(createNetworkRequest),
-  );
-}
-export function createNetworkRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateNetworkRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateNetworkRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateNetworkRequest' from JSON`,
   );
 }

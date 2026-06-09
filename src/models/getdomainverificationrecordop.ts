@@ -32,16 +32,6 @@ export type GetDomainVerificationRecordResponseBody = {
 };
 
 /** @internal */
-export const GetDomainVerificationRecordRequest$inboundSchema: z.ZodType<
-  GetDomainVerificationRecordRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  domain: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
-/** @internal */
 export type GetDomainVerificationRecordRequest$Outbound = {
   domain: string;
   teamId?: string | undefined;
@@ -68,16 +58,6 @@ export function getDomainVerificationRecordRequestToJSON(
     ),
   );
 }
-export function getDomainVerificationRecordRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetDomainVerificationRecordRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetDomainVerificationRecordRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDomainVerificationRecordRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const GetDomainVerificationRecordResponseBody$inboundSchema: z.ZodType<
@@ -88,32 +68,7 @@ export const GetDomainVerificationRecordResponseBody$inboundSchema: z.ZodType<
   txtRecord: types.string(),
   verificationDomain: types.string(),
 });
-/** @internal */
-export type GetDomainVerificationRecordResponseBody$Outbound = {
-  txtRecord: string;
-  verificationDomain: string;
-};
 
-/** @internal */
-export const GetDomainVerificationRecordResponseBody$outboundSchema: z.ZodType<
-  GetDomainVerificationRecordResponseBody$Outbound,
-  z.ZodTypeDef,
-  GetDomainVerificationRecordResponseBody
-> = z.object({
-  txtRecord: z.string(),
-  verificationDomain: z.string(),
-});
-
-export function getDomainVerificationRecordResponseBodyToJSON(
-  getDomainVerificationRecordResponseBody:
-    GetDomainVerificationRecordResponseBody,
-): string {
-  return JSON.stringify(
-    GetDomainVerificationRecordResponseBody$outboundSchema.parse(
-      getDomainVerificationRecordResponseBody,
-    ),
-  );
-}
 export function getDomainVerificationRecordResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<

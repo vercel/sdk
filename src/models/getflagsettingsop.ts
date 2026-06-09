@@ -79,16 +79,6 @@ export type GetFlagSettingsResponseBody = {
 };
 
 /** @internal */
-export const GetFlagSettingsRequest$inboundSchema: z.ZodType<
-  GetFlagSettingsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  projectIdOrName: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
-/** @internal */
 export type GetFlagSettingsRequest$Outbound = {
   projectIdOrName: string;
   teamId?: string | undefined;
@@ -113,24 +103,11 @@ export function getFlagSettingsRequestToJSON(
     GetFlagSettingsRequest$outboundSchema.parse(getFlagSettingsRequest),
   );
 }
-export function getFlagSettingsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetFlagSettingsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetFlagSettingsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetFlagSettingsRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const GetFlagSettingsTypeName$inboundSchema: z.ZodNativeEnum<
   typeof GetFlagSettingsTypeName
 > = z.nativeEnum(GetFlagSettingsTypeName);
-/** @internal */
-export const GetFlagSettingsTypeName$outboundSchema: z.ZodNativeEnum<
-  typeof GetFlagSettingsTypeName
-> = GetFlagSettingsTypeName$inboundSchema;
 
 /** @internal */
 export const Connections$inboundSchema: z.ZodType<
@@ -141,25 +118,7 @@ export const Connections$inboundSchema: z.ZodType<
   edgeConfigId: types.string(),
   edgeConfigItemKey: types.string(),
 });
-/** @internal */
-export type Connections$Outbound = {
-  edgeConfigId: string;
-  edgeConfigItemKey: string;
-};
 
-/** @internal */
-export const Connections$outboundSchema: z.ZodType<
-  Connections$Outbound,
-  z.ZodTypeDef,
-  Connections
-> = z.object({
-  edgeConfigId: z.string(),
-  edgeConfigItemKey: z.string(),
-});
-
-export function connectionsToJSON(connections: Connections): string {
-  return JSON.stringify(Connections$outboundSchema.parse(connections));
-}
 export function connectionsFromJSON(
   jsonString: string,
 ): SafeParseResult<Connections, SDKValidationError> {
@@ -179,29 +138,7 @@ export const GetFlagSettingsLabels$inboundSchema: z.ZodType<
   label: types.string(),
   value: types.string(),
 });
-/** @internal */
-export type GetFlagSettingsLabels$Outbound = {
-  label: string;
-  value: string;
-};
 
-/** @internal */
-export const GetFlagSettingsLabels$outboundSchema: z.ZodType<
-  GetFlagSettingsLabels$Outbound,
-  z.ZodTypeDef,
-  GetFlagSettingsLabels
-> = z.object({
-  label: z.string(),
-  value: z.string(),
-});
-
-export function getFlagSettingsLabelsToJSON(
-  getFlagSettingsLabels: GetFlagSettingsLabels,
-): string {
-  return JSON.stringify(
-    GetFlagSettingsLabels$outboundSchema.parse(getFlagSettingsLabels),
-  );
-}
 export function getFlagSettingsLabelsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetFlagSettingsLabels, SDKValidationError> {
@@ -224,32 +161,7 @@ export const GetFlagSettingsAttributes$inboundSchema: z.ZodType<
     z.array(z.lazy(() => GetFlagSettingsLabels$inboundSchema)),
   ),
 });
-/** @internal */
-export type GetFlagSettingsAttributes$Outbound = {
-  key: string;
-  type: string;
-  labels?: Array<GetFlagSettingsLabels$Outbound> | undefined;
-};
 
-/** @internal */
-export const GetFlagSettingsAttributes$outboundSchema: z.ZodType<
-  GetFlagSettingsAttributes$Outbound,
-  z.ZodTypeDef,
-  GetFlagSettingsAttributes
-> = z.object({
-  key: z.string(),
-  type: z.string(),
-  labels: z.array(z.lazy(() => GetFlagSettingsLabels$outboundSchema))
-    .optional(),
-});
-
-export function getFlagSettingsAttributesToJSON(
-  getFlagSettingsAttributes: GetFlagSettingsAttributes,
-): string {
-  return JSON.stringify(
-    GetFlagSettingsAttributes$outboundSchema.parse(getFlagSettingsAttributes),
-  );
-}
 export function getFlagSettingsAttributesFromJSON(
   jsonString: string,
 ): SafeParseResult<GetFlagSettingsAttributes, SDKValidationError> {
@@ -270,31 +182,7 @@ export const GetFlagSettingsEntities$inboundSchema: z.ZodType<
   label: types.string(),
   attributes: z.array(z.lazy(() => GetFlagSettingsAttributes$inboundSchema)),
 });
-/** @internal */
-export type GetFlagSettingsEntities$Outbound = {
-  kind: string;
-  label: string;
-  attributes: Array<GetFlagSettingsAttributes$Outbound>;
-};
 
-/** @internal */
-export const GetFlagSettingsEntities$outboundSchema: z.ZodType<
-  GetFlagSettingsEntities$Outbound,
-  z.ZodTypeDef,
-  GetFlagSettingsEntities
-> = z.object({
-  kind: z.string(),
-  label: z.string(),
-  attributes: z.array(z.lazy(() => GetFlagSettingsAttributes$outboundSchema)),
-});
-
-export function getFlagSettingsEntitiesToJSON(
-  getFlagSettingsEntities: GetFlagSettingsEntities,
-): string {
-  return JSON.stringify(
-    GetFlagSettingsEntities$outboundSchema.parse(getFlagSettingsEntities),
-  );
-}
 export function getFlagSettingsEntitiesFromJSON(
   jsonString: string,
 ): SafeParseResult<GetFlagSettingsEntities, SDKValidationError> {
@@ -318,37 +206,7 @@ export const GetFlagSettingsMetadata$inboundSchema: z.ZodType<
   packRevision: types.optional(types.number()),
   configUpdatedAt: types.optional(types.number()),
 });
-/** @internal */
-export type GetFlagSettingsMetadata$Outbound = {
-  activeFlagCount: number;
-  archivedFlagCount: number;
-  segmentCount: number;
-  packSizeInBytes: number;
-  packRevision?: number | undefined;
-  configUpdatedAt?: number | undefined;
-};
 
-/** @internal */
-export const GetFlagSettingsMetadata$outboundSchema: z.ZodType<
-  GetFlagSettingsMetadata$Outbound,
-  z.ZodTypeDef,
-  GetFlagSettingsMetadata
-> = z.object({
-  activeFlagCount: z.number(),
-  archivedFlagCount: z.number(),
-  segmentCount: z.number(),
-  packSizeInBytes: z.number(),
-  packRevision: z.number().optional(),
-  configUpdatedAt: z.number().optional(),
-});
-
-export function getFlagSettingsMetadataToJSON(
-  getFlagSettingsMetadata: GetFlagSettingsMetadata,
-): string {
-  return JSON.stringify(
-    GetFlagSettingsMetadata$outboundSchema.parse(getFlagSettingsMetadata),
-  );
-}
 export function getFlagSettingsMetadataFromJSON(
   jsonString: string,
 ): SafeParseResult<GetFlagSettingsMetadata, SDKValidationError> {
@@ -376,47 +234,7 @@ export const GetFlagSettingsResponseBody$inboundSchema: z.ZodType<
   updatedAt: types.optional(types.number()),
   metadata: z.lazy(() => GetFlagSettingsMetadata$inboundSchema),
 });
-/** @internal */
-export type GetFlagSettingsResponseBody$Outbound = {
-  typeName: string;
-  projectId: string;
-  ownerId?: string | undefined;
-  enabled: boolean;
-  environments: Array<string>;
-  connections?: Array<Connections$Outbound> | undefined;
-  entities: Array<GetFlagSettingsEntities$Outbound>;
-  createdAt?: number | undefined;
-  updatedAt?: number | undefined;
-  metadata: GetFlagSettingsMetadata$Outbound;
-};
 
-/** @internal */
-export const GetFlagSettingsResponseBody$outboundSchema: z.ZodType<
-  GetFlagSettingsResponseBody$Outbound,
-  z.ZodTypeDef,
-  GetFlagSettingsResponseBody
-> = z.object({
-  typeName: GetFlagSettingsTypeName$outboundSchema,
-  projectId: z.string(),
-  ownerId: z.string().optional(),
-  enabled: z.boolean(),
-  environments: z.array(z.string()),
-  connections: z.array(z.lazy(() => Connections$outboundSchema)).optional(),
-  entities: z.array(z.lazy(() => GetFlagSettingsEntities$outboundSchema)),
-  createdAt: z.number().optional(),
-  updatedAt: z.number().optional(),
-  metadata: z.lazy(() => GetFlagSettingsMetadata$outboundSchema),
-});
-
-export function getFlagSettingsResponseBodyToJSON(
-  getFlagSettingsResponseBody: GetFlagSettingsResponseBody,
-): string {
-  return JSON.stringify(
-    GetFlagSettingsResponseBody$outboundSchema.parse(
-      getFlagSettingsResponseBody,
-    ),
-  );
-}
 export function getFlagSettingsResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetFlagSettingsResponseBody, SDKValidationError> {

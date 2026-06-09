@@ -76,14 +76,6 @@ export type DeleteRoutesResponseBody = {
 };
 
 /** @internal */
-export const DeleteRoutesRequestBody$inboundSchema: z.ZodType<
-  DeleteRoutesRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  routeIds: z.array(types.string()),
-});
-/** @internal */
 export type DeleteRoutesRequestBody$Outbound = {
   routeIds: Array<string>;
 };
@@ -104,33 +96,7 @@ export function deleteRoutesRequestBodyToJSON(
     DeleteRoutesRequestBody$outboundSchema.parse(deleteRoutesRequestBody),
   );
 }
-export function deleteRoutesRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<DeleteRoutesRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => DeleteRoutesRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DeleteRoutesRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const DeleteRoutesRequest$inboundSchema: z.ZodType<
-  DeleteRoutesRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  projectId: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-  RequestBody: types.optional(
-    z.lazy(() => DeleteRoutesRequestBody$inboundSchema),
-  ),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 /** @internal */
 export type DeleteRoutesRequest$Outbound = {
   projectId: string;
@@ -162,15 +128,6 @@ export function deleteRoutesRequestToJSON(
     DeleteRoutesRequest$outboundSchema.parse(deleteRoutesRequest),
   );
 }
-export function deleteRoutesRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<DeleteRoutesRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => DeleteRoutesRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DeleteRoutesRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const DeleteRoutesVersion$inboundSchema: z.ZodType<
@@ -187,41 +144,7 @@ export const DeleteRoutesVersion$inboundSchema: z.ZodType<
   ruleCount: types.optional(types.number()),
   alias: types.optional(types.string()),
 });
-/** @internal */
-export type DeleteRoutesVersion$Outbound = {
-  id: string;
-  s3Key: string;
-  lastModified: number;
-  createdBy: string;
-  isStaging?: boolean | undefined;
-  isLive?: boolean | undefined;
-  ruleCount?: number | undefined;
-  alias?: string | undefined;
-};
 
-/** @internal */
-export const DeleteRoutesVersion$outboundSchema: z.ZodType<
-  DeleteRoutesVersion$Outbound,
-  z.ZodTypeDef,
-  DeleteRoutesVersion
-> = z.object({
-  id: z.string(),
-  s3Key: z.string(),
-  lastModified: z.number(),
-  createdBy: z.string(),
-  isStaging: z.boolean().optional(),
-  isLive: z.boolean().optional(),
-  ruleCount: z.number().optional(),
-  alias: z.string().optional(),
-});
-
-export function deleteRoutesVersionToJSON(
-  deleteRoutesVersion: DeleteRoutesVersion,
-): string {
-  return JSON.stringify(
-    DeleteRoutesVersion$outboundSchema.parse(deleteRoutesVersion),
-  );
-}
 export function deleteRoutesVersionFromJSON(
   jsonString: string,
 ): SafeParseResult<DeleteRoutesVersion, SDKValidationError> {
@@ -241,29 +164,7 @@ export const DeleteRoutesResponseBody$inboundSchema: z.ZodType<
   deletedCount: types.number(),
   version: z.lazy(() => DeleteRoutesVersion$inboundSchema),
 });
-/** @internal */
-export type DeleteRoutesResponseBody$Outbound = {
-  deletedCount: number;
-  version: DeleteRoutesVersion$Outbound;
-};
 
-/** @internal */
-export const DeleteRoutesResponseBody$outboundSchema: z.ZodType<
-  DeleteRoutesResponseBody$Outbound,
-  z.ZodTypeDef,
-  DeleteRoutesResponseBody
-> = z.object({
-  deletedCount: z.number(),
-  version: z.lazy(() => DeleteRoutesVersion$outboundSchema),
-});
-
-export function deleteRoutesResponseBodyToJSON(
-  deleteRoutesResponseBody: DeleteRoutesResponseBody,
-): string {
-  return JSON.stringify(
-    DeleteRoutesResponseBody$outboundSchema.parse(deleteRoutesResponseBody),
-  );
-}
 export function deleteRoutesResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<DeleteRoutesResponseBody, SDKValidationError> {

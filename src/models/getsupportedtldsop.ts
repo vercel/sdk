@@ -3,23 +3,11 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
-import { Result as SafeParseResult } from "../types/fp.js";
-import * as types from "../types/primitives.js";
-import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type GetSupportedTldsRequest = {
   teamId?: string | undefined;
 };
 
-/** @internal */
-export const GetSupportedTldsRequest$inboundSchema: z.ZodType<
-  GetSupportedTldsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  teamId: types.optional(types.string()),
-});
 /** @internal */
 export type GetSupportedTldsRequest$Outbound = {
   teamId?: string | undefined;
@@ -39,14 +27,5 @@ export function getSupportedTldsRequestToJSON(
 ): string {
   return JSON.stringify(
     GetSupportedTldsRequest$outboundSchema.parse(getSupportedTldsRequest),
-  );
-}
-export function getSupportedTldsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetSupportedTldsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetSupportedTldsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetSupportedTldsRequest' from JSON`,
   );
 }

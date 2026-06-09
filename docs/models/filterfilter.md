@@ -3,18 +3,18 @@
 
 ## Supported Types
 
-### `models.Filter1`
+### `models.UpdateDrainFilter1`
 
 ```typescript
-const value: models.Filter1 = {
+const value: models.UpdateDrainFilter1 = {
   type: "<value>",
 };
 ```
 
-### `models.CreateDrainFilter2`
+### `models.UpdateDrainFilterDrains2`
 
 ```typescript
-const value: models.CreateDrainFilter2 = {
+const value: models.UpdateDrainFilterDrains2 = {
   type: "<value>",
   text: "<value>",
 };

@@ -31,29 +31,7 @@ export const SandboxInjectionRule$inboundSchema: z.ZodType<
   domain: types.string(),
   headerNames: types.optional(z.array(types.string())),
 });
-/** @internal */
-export type SandboxInjectionRule$Outbound = {
-  domain: string;
-  headerNames?: Array<string> | undefined;
-};
 
-/** @internal */
-export const SandboxInjectionRule$outboundSchema: z.ZodType<
-  SandboxInjectionRule$Outbound,
-  z.ZodTypeDef,
-  SandboxInjectionRule
-> = z.object({
-  domain: z.string(),
-  headerNames: z.array(z.string()).optional(),
-});
-
-export function sandboxInjectionRuleToJSON(
-  sandboxInjectionRule: SandboxInjectionRule,
-): string {
-  return JSON.stringify(
-    SandboxInjectionRule$outboundSchema.parse(sandboxInjectionRule),
-  );
-}
 export function sandboxInjectionRuleFromJSON(
   jsonString: string,
 ): SafeParseResult<SandboxInjectionRule, SDKValidationError> {

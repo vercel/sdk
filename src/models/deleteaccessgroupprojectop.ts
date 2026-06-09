@@ -3,10 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
-import { Result as SafeParseResult } from "../types/fp.js";
-import * as types from "../types/primitives.js";
-import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type DeleteAccessGroupProjectRequest = {
   accessGroupIdOrName: string;
@@ -21,17 +17,6 @@ export type DeleteAccessGroupProjectRequest = {
   slug?: string | undefined;
 };
 
-/** @internal */
-export const DeleteAccessGroupProjectRequest$inboundSchema: z.ZodType<
-  DeleteAccessGroupProjectRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  accessGroupIdOrName: types.string(),
-  projectId: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
 /** @internal */
 export type DeleteAccessGroupProjectRequest$Outbound = {
   accessGroupIdOrName: string;
@@ -59,14 +44,5 @@ export function deleteAccessGroupProjectRequestToJSON(
     DeleteAccessGroupProjectRequest$outboundSchema.parse(
       deleteAccessGroupProjectRequest,
     ),
-  );
-}
-export function deleteAccessGroupProjectRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<DeleteAccessGroupProjectRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => DeleteAccessGroupProjectRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DeleteAccessGroupProjectRequest' from JSON`,
   );
 }

@@ -5,14 +5,8 @@
 import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
-import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
-import {
-  Snapshot,
-  Snapshot$inboundSchema,
-  Snapshot$Outbound,
-  Snapshot$outboundSchema,
-} from "./snapshot.js";
+import { Snapshot, Snapshot$inboundSchema } from "./snapshot.js";
 
 export type DeleteSessionSnapshotRequest = {
   /**
@@ -36,16 +30,6 @@ export type DeleteSessionSnapshotResponseBody = {
   snapshot: Snapshot;
 };
 
-/** @internal */
-export const DeleteSessionSnapshotRequest$inboundSchema: z.ZodType<
-  DeleteSessionSnapshotRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  snapshotId: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
 /** @internal */
 export type DeleteSessionSnapshotRequest$Outbound = {
   snapshotId: string;
@@ -73,15 +57,6 @@ export function deleteSessionSnapshotRequestToJSON(
     ),
   );
 }
-export function deleteSessionSnapshotRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<DeleteSessionSnapshotRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => DeleteSessionSnapshotRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DeleteSessionSnapshotRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const DeleteSessionSnapshotResponseBody$inboundSchema: z.ZodType<
@@ -91,29 +66,7 @@ export const DeleteSessionSnapshotResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   snapshot: Snapshot$inboundSchema,
 });
-/** @internal */
-export type DeleteSessionSnapshotResponseBody$Outbound = {
-  snapshot: Snapshot$Outbound;
-};
 
-/** @internal */
-export const DeleteSessionSnapshotResponseBody$outboundSchema: z.ZodType<
-  DeleteSessionSnapshotResponseBody$Outbound,
-  z.ZodTypeDef,
-  DeleteSessionSnapshotResponseBody
-> = z.object({
-  snapshot: Snapshot$outboundSchema,
-});
-
-export function deleteSessionSnapshotResponseBodyToJSON(
-  deleteSessionSnapshotResponseBody: DeleteSessionSnapshotResponseBody,
-): string {
-  return JSON.stringify(
-    DeleteSessionSnapshotResponseBody$outboundSchema.parse(
-      deleteSessionSnapshotResponseBody,
-    ),
-  );
-}
 export function deleteSessionSnapshotResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<DeleteSessionSnapshotResponseBody, SDKValidationError> {

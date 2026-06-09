@@ -1155,25 +1155,15 @@ export type ListEventType = {
 export const Name$inboundSchema: z.ZodNativeEnum<typeof Name> = z.nativeEnum(
   Name,
 );
-/** @internal */
-export const Name$outboundSchema: z.ZodNativeEnum<typeof Name> =
-  Name$inboundSchema;
 
 /** @internal */
 export const ListEventTypeCategories$inboundSchema: z.ZodNativeEnum<
   typeof ListEventTypeCategories
 > = z.nativeEnum(ListEventTypeCategories);
-/** @internal */
-export const ListEventTypeCategories$outboundSchema: z.ZodNativeEnum<
-  typeof ListEventTypeCategories
-> = ListEventTypeCategories$inboundSchema;
 
 /** @internal */
 export const ReplacedBy$inboundSchema: z.ZodNativeEnum<typeof ReplacedBy> = z
   .nativeEnum(ReplacedBy);
-/** @internal */
-export const ReplacedBy$outboundSchema: z.ZodNativeEnum<typeof ReplacedBy> =
-  ReplacedBy$inboundSchema;
 
 /** @internal */
 export const ListEventType$inboundSchema: z.ZodType<
@@ -1187,31 +1177,7 @@ export const ListEventType$inboundSchema: z.ZodType<
   deprecated: types.optional(types.boolean()),
   replacedBy: types.optional(z.array(ReplacedBy$inboundSchema)),
 });
-/** @internal */
-export type ListEventType$Outbound = {
-  name: string;
-  description: string;
-  categories: Array<string>;
-  deprecated?: boolean | undefined;
-  replacedBy?: Array<string> | undefined;
-};
 
-/** @internal */
-export const ListEventType$outboundSchema: z.ZodType<
-  ListEventType$Outbound,
-  z.ZodTypeDef,
-  ListEventType
-> = z.object({
-  name: Name$outboundSchema,
-  description: z.string(),
-  categories: z.array(ListEventTypeCategories$outboundSchema),
-  deprecated: z.boolean().optional(),
-  replacedBy: z.array(ReplacedBy$outboundSchema).optional(),
-});
-
-export function listEventTypeToJSON(listEventType: ListEventType): string {
-  return JSON.stringify(ListEventType$outboundSchema.parse(listEventType));
-}
 export function listEventTypeFromJSON(
   jsonString: string,
 ): SafeParseResult<ListEventType, SDKValidationError> {

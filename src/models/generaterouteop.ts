@@ -149,15 +149,6 @@ export type GenerateRouteResponseBody = {
 };
 
 /** @internal */
-export const PathCondition$inboundSchema: z.ZodType<
-  PathCondition,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  value: types.optional(types.string()),
-  syntax: types.optional(types.string()),
-});
-/** @internal */
 export type PathCondition$Outbound = {
   value?: string | undefined;
   syntax?: string | undefined;
@@ -176,28 +167,7 @@ export const PathCondition$outboundSchema: z.ZodType<
 export function pathConditionToJSON(pathCondition: PathCondition): string {
   return JSON.stringify(PathCondition$outboundSchema.parse(pathCondition));
 }
-export function pathConditionFromJSON(
-  jsonString: string,
-): SafeParseResult<PathCondition, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PathCondition$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PathCondition' from JSON`,
-  );
-}
 
-/** @internal */
-export const GenerateRouteConditions$inboundSchema: z.ZodType<
-  GenerateRouteConditions,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  field: types.optional(types.string()),
-  operator: types.optional(types.string()),
-  key: types.optional(types.string()),
-  value: types.optional(types.string()),
-  missing: types.optional(types.boolean()),
-});
 /** @internal */
 export type GenerateRouteConditions$Outbound = {
   field?: string | undefined;
@@ -227,26 +197,7 @@ export function generateRouteConditionsToJSON(
     GenerateRouteConditions$outboundSchema.parse(generateRouteConditions),
   );
 }
-export function generateRouteConditionsFromJSON(
-  jsonString: string,
-): SafeParseResult<GenerateRouteConditions, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GenerateRouteConditions$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GenerateRouteConditions' from JSON`,
-  );
-}
 
-/** @internal */
-export const GenerateRouteHeaders$inboundSchema: z.ZodType<
-  GenerateRouteHeaders,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  key: types.optional(types.string()),
-  value: types.optional(types.string()),
-  op: types.optional(types.string()),
-});
 /** @internal */
 export type GenerateRouteHeaders$Outbound = {
   key?: string | undefined;
@@ -272,27 +223,7 @@ export function generateRouteHeadersToJSON(
     GenerateRouteHeaders$outboundSchema.parse(generateRouteHeaders),
   );
 }
-export function generateRouteHeadersFromJSON(
-  jsonString: string,
-): SafeParseResult<GenerateRouteHeaders, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GenerateRouteHeaders$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GenerateRouteHeaders' from JSON`,
-  );
-}
 
-/** @internal */
-export const Actions$inboundSchema: z.ZodType<Actions, z.ZodTypeDef, unknown> =
-  z.object({
-    type: types.optional(types.string()),
-    subType: types.optional(types.string()),
-    dest: types.optional(types.string()),
-    status: types.optional(types.number()),
-    headers: types.optional(
-      z.array(z.lazy(() => GenerateRouteHeaders$inboundSchema)),
-    ),
-  });
 /** @internal */
 export type Actions$Outbound = {
   type?: string | undefined;
@@ -319,30 +250,7 @@ export const Actions$outboundSchema: z.ZodType<
 export function actionsToJSON(actions: Actions): string {
   return JSON.stringify(Actions$outboundSchema.parse(actions));
 }
-export function actionsFromJSON(
-  jsonString: string,
-): SafeParseResult<Actions, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Actions$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Actions' from JSON`,
-  );
-}
 
-/** @internal */
-export const CurrentRoute$inboundSchema: z.ZodType<
-  CurrentRoute,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  name: types.optional(types.string()),
-  description: types.optional(types.string()),
-  pathCondition: z.lazy(() => PathCondition$inboundSchema),
-  conditions: types.optional(
-    z.array(z.lazy(() => GenerateRouteConditions$inboundSchema)),
-  ),
-  actions: z.array(z.lazy(() => Actions$inboundSchema)),
-});
 /** @internal */
 export type CurrentRoute$Outbound = {
   name?: string | undefined;
@@ -369,25 +277,7 @@ export const CurrentRoute$outboundSchema: z.ZodType<
 export function currentRouteToJSON(currentRoute: CurrentRoute): string {
   return JSON.stringify(CurrentRoute$outboundSchema.parse(currentRoute));
 }
-export function currentRouteFromJSON(
-  jsonString: string,
-): SafeParseResult<CurrentRoute, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CurrentRoute$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CurrentRoute' from JSON`,
-  );
-}
 
-/** @internal */
-export const GenerateRouteRequestBody$inboundSchema: z.ZodType<
-  GenerateRouteRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  prompt: types.string(),
-  currentRoute: types.optional(z.lazy(() => CurrentRoute$inboundSchema)),
-});
 /** @internal */
 export type GenerateRouteRequestBody$Outbound = {
   prompt: string;
@@ -411,33 +301,7 @@ export function generateRouteRequestBodyToJSON(
     GenerateRouteRequestBody$outboundSchema.parse(generateRouteRequestBody),
   );
 }
-export function generateRouteRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<GenerateRouteRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GenerateRouteRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GenerateRouteRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const GenerateRouteRequest$inboundSchema: z.ZodType<
-  GenerateRouteRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  projectId: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-  RequestBody: types.optional(
-    z.lazy(() => GenerateRouteRequestBody$inboundSchema),
-  ),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 /** @internal */
 export type GenerateRouteRequest$Outbound = {
   projectId: string;
@@ -469,22 +333,10 @@ export function generateRouteRequestToJSON(
     GenerateRouteRequest$outboundSchema.parse(generateRouteRequest),
   );
 }
-export function generateRouteRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GenerateRouteRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GenerateRouteRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GenerateRouteRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const Syntax$inboundSchema: z.ZodNativeEnum<typeof Syntax> = z
   .nativeEnum(Syntax);
-/** @internal */
-export const Syntax$outboundSchema: z.ZodNativeEnum<typeof Syntax> =
-  Syntax$inboundSchema;
 
 /** @internal */
 export const GenerateRoutePathCondition$inboundSchema: z.ZodType<
@@ -495,29 +347,7 @@ export const GenerateRoutePathCondition$inboundSchema: z.ZodType<
   value: types.string(),
   syntax: Syntax$inboundSchema,
 });
-/** @internal */
-export type GenerateRoutePathCondition$Outbound = {
-  value: string;
-  syntax: string;
-};
 
-/** @internal */
-export const GenerateRoutePathCondition$outboundSchema: z.ZodType<
-  GenerateRoutePathCondition$Outbound,
-  z.ZodTypeDef,
-  GenerateRoutePathCondition
-> = z.object({
-  value: z.string(),
-  syntax: Syntax$outboundSchema,
-});
-
-export function generateRoutePathConditionToJSON(
-  generateRoutePathCondition: GenerateRoutePathCondition,
-): string {
-  return JSON.stringify(
-    GenerateRoutePathCondition$outboundSchema.parse(generateRoutePathCondition),
-  );
-}
 export function generateRoutePathConditionFromJSON(
   jsonString: string,
 ): SafeParseResult<GenerateRoutePathCondition, SDKValidationError> {
@@ -532,17 +362,10 @@ export function generateRoutePathConditionFromJSON(
 export const GenerateRouteField$inboundSchema: z.ZodNativeEnum<
   typeof GenerateRouteField
 > = z.nativeEnum(GenerateRouteField);
-/** @internal */
-export const GenerateRouteField$outboundSchema: z.ZodNativeEnum<
-  typeof GenerateRouteField
-> = GenerateRouteField$inboundSchema;
 
 /** @internal */
 export const Operator$inboundSchema: z.ZodNativeEnum<typeof Operator> = z
   .nativeEnum(Operator);
-/** @internal */
-export const Operator$outboundSchema: z.ZodNativeEnum<typeof Operator> =
-  Operator$inboundSchema;
 
 /** @internal */
 export const GenerateRouteProjectRoutesConditions$inboundSchema: z.ZodType<
@@ -556,37 +379,7 @@ export const GenerateRouteProjectRoutesConditions$inboundSchema: z.ZodType<
   value: types.optional(types.string()),
   missing: types.boolean(),
 });
-/** @internal */
-export type GenerateRouteProjectRoutesConditions$Outbound = {
-  field: string;
-  operator: string;
-  key?: string | undefined;
-  value?: string | undefined;
-  missing: boolean;
-};
 
-/** @internal */
-export const GenerateRouteProjectRoutesConditions$outboundSchema: z.ZodType<
-  GenerateRouteProjectRoutesConditions$Outbound,
-  z.ZodTypeDef,
-  GenerateRouteProjectRoutesConditions
-> = z.object({
-  field: GenerateRouteField$outboundSchema,
-  operator: Operator$outboundSchema,
-  key: z.string().optional(),
-  value: z.string().optional(),
-  missing: z.boolean(),
-});
-
-export function generateRouteProjectRoutesConditionsToJSON(
-  generateRouteProjectRoutesConditions: GenerateRouteProjectRoutesConditions,
-): string {
-  return JSON.stringify(
-    GenerateRouteProjectRoutesConditions$outboundSchema.parse(
-      generateRouteProjectRoutesConditions,
-    ),
-  );
-}
 export function generateRouteProjectRoutesConditionsFromJSON(
   jsonString: string,
 ): SafeParseResult<GenerateRouteProjectRoutesConditions, SDKValidationError> {
@@ -602,26 +395,15 @@ export function generateRouteProjectRoutesConditionsFromJSON(
 export const GenerateRouteType$inboundSchema: z.ZodNativeEnum<
   typeof GenerateRouteType
 > = z.nativeEnum(GenerateRouteType);
-/** @internal */
-export const GenerateRouteType$outboundSchema: z.ZodNativeEnum<
-  typeof GenerateRouteType
-> = GenerateRouteType$inboundSchema;
 
 /** @internal */
 export const SubType$inboundSchema: z.ZodNativeEnum<typeof SubType> = z
   .nativeEnum(SubType);
-/** @internal */
-export const SubType$outboundSchema: z.ZodNativeEnum<typeof SubType> =
-  SubType$inboundSchema;
 
 /** @internal */
 export const GenerateRouteOp$inboundSchema: z.ZodNativeEnum<
   typeof GenerateRouteOp
 > = z.nativeEnum(GenerateRouteOp);
-/** @internal */
-export const GenerateRouteOp$outboundSchema: z.ZodNativeEnum<
-  typeof GenerateRouteOp
-> = GenerateRouteOp$inboundSchema;
 
 /** @internal */
 export const GenerateRouteProjectRoutesHeaders$inboundSchema: z.ZodType<
@@ -633,33 +415,7 @@ export const GenerateRouteProjectRoutesHeaders$inboundSchema: z.ZodType<
   value: types.optional(types.string()),
   op: GenerateRouteOp$inboundSchema,
 });
-/** @internal */
-export type GenerateRouteProjectRoutesHeaders$Outbound = {
-  key: string;
-  value?: string | undefined;
-  op: string;
-};
 
-/** @internal */
-export const GenerateRouteProjectRoutesHeaders$outboundSchema: z.ZodType<
-  GenerateRouteProjectRoutesHeaders$Outbound,
-  z.ZodTypeDef,
-  GenerateRouteProjectRoutesHeaders
-> = z.object({
-  key: z.string(),
-  value: z.string().optional(),
-  op: GenerateRouteOp$outboundSchema,
-});
-
-export function generateRouteProjectRoutesHeadersToJSON(
-  generateRouteProjectRoutesHeaders: GenerateRouteProjectRoutesHeaders,
-): string {
-  return JSON.stringify(
-    GenerateRouteProjectRoutesHeaders$outboundSchema.parse(
-      generateRouteProjectRoutesHeaders,
-    ),
-  );
-}
 export function generateRouteProjectRoutesHeadersFromJSON(
   jsonString: string,
 ): SafeParseResult<GenerateRouteProjectRoutesHeaders, SDKValidationError> {
@@ -684,37 +440,7 @@ export const GenerateRouteActions$inboundSchema: z.ZodType<
     z.array(z.lazy(() => GenerateRouteProjectRoutesHeaders$inboundSchema)),
   ),
 });
-/** @internal */
-export type GenerateRouteActions$Outbound = {
-  type: string;
-  subType?: string | undefined;
-  dest?: string | undefined;
-  status?: number | undefined;
-  headers?: Array<GenerateRouteProjectRoutesHeaders$Outbound> | undefined;
-};
 
-/** @internal */
-export const GenerateRouteActions$outboundSchema: z.ZodType<
-  GenerateRouteActions$Outbound,
-  z.ZodTypeDef,
-  GenerateRouteActions
-> = z.object({
-  type: GenerateRouteType$outboundSchema,
-  subType: SubType$outboundSchema.optional(),
-  dest: z.string().optional(),
-  status: z.number().optional(),
-  headers: z.array(
-    z.lazy(() => GenerateRouteProjectRoutesHeaders$outboundSchema),
-  ).optional(),
-});
-
-export function generateRouteActionsToJSON(
-  generateRouteActions: GenerateRouteActions,
-): string {
-  return JSON.stringify(
-    GenerateRouteActions$outboundSchema.parse(generateRouteActions),
-  );
-}
 export function generateRouteActionsFromJSON(
   jsonString: string,
 ): SafeParseResult<GenerateRouteActions, SDKValidationError> {
@@ -739,37 +465,7 @@ export const GenerateRouteRoute$inboundSchema: z.ZodType<
   ),
   actions: z.array(z.lazy(() => GenerateRouteActions$inboundSchema)),
 });
-/** @internal */
-export type GenerateRouteRoute$Outbound = {
-  name: string;
-  description: string;
-  pathCondition: GenerateRoutePathCondition$Outbound;
-  conditions?: Array<GenerateRouteProjectRoutesConditions$Outbound> | undefined;
-  actions: Array<GenerateRouteActions$Outbound>;
-};
 
-/** @internal */
-export const GenerateRouteRoute$outboundSchema: z.ZodType<
-  GenerateRouteRoute$Outbound,
-  z.ZodTypeDef,
-  GenerateRouteRoute
-> = z.object({
-  name: z.string(),
-  description: z.string(),
-  pathCondition: z.lazy(() => GenerateRoutePathCondition$outboundSchema),
-  conditions: z.array(
-    z.lazy(() => GenerateRouteProjectRoutesConditions$outboundSchema),
-  ).optional(),
-  actions: z.array(z.lazy(() => GenerateRouteActions$outboundSchema)),
-});
-
-export function generateRouteRouteToJSON(
-  generateRouteRoute: GenerateRouteRoute,
-): string {
-  return JSON.stringify(
-    GenerateRouteRoute$outboundSchema.parse(generateRouteRoute),
-  );
-}
 export function generateRouteRouteFromJSON(
   jsonString: string,
 ): SafeParseResult<GenerateRouteRoute, SDKValidationError> {
@@ -789,29 +485,7 @@ export const GenerateRouteResponseBody$inboundSchema: z.ZodType<
   route: types.optional(z.lazy(() => GenerateRouteRoute$inboundSchema)),
   error: types.optional(types.string()),
 });
-/** @internal */
-export type GenerateRouteResponseBody$Outbound = {
-  route?: GenerateRouteRoute$Outbound | undefined;
-  error?: string | undefined;
-};
 
-/** @internal */
-export const GenerateRouteResponseBody$outboundSchema: z.ZodType<
-  GenerateRouteResponseBody$Outbound,
-  z.ZodTypeDef,
-  GenerateRouteResponseBody
-> = z.object({
-  route: z.lazy(() => GenerateRouteRoute$outboundSchema).optional(),
-  error: z.string().optional(),
-});
-
-export function generateRouteResponseBodyToJSON(
-  generateRouteResponseBody: GenerateRouteResponseBody,
-): string {
-  return JSON.stringify(
-    GenerateRouteResponseBody$outboundSchema.parse(generateRouteResponseBody),
-  );
-}
 export function generateRouteResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GenerateRouteResponseBody, SDKValidationError> {

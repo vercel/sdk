@@ -71,16 +71,6 @@ export type GetRollingReleaseConfigResponseBody = {
 };
 
 /** @internal */
-export const GetRollingReleaseConfigRequest$inboundSchema: z.ZodType<
-  GetRollingReleaseConfigRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  idOrName: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
-/** @internal */
 export type GetRollingReleaseConfigRequest$Outbound = {
   idOrName: string;
   teamId?: string | undefined;
@@ -107,15 +97,6 @@ export function getRollingReleaseConfigRequestToJSON(
     ),
   );
 }
-export function getRollingReleaseConfigRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetRollingReleaseConfigRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetRollingReleaseConfigRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetRollingReleaseConfigRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const GetRollingReleaseConfigStages$inboundSchema: z.ZodType<
@@ -128,35 +109,7 @@ export const GetRollingReleaseConfigStages$inboundSchema: z.ZodType<
   duration: types.optional(types.number()),
   linearShift: types.optional(types.boolean()),
 });
-/** @internal */
-export type GetRollingReleaseConfigStages$Outbound = {
-  targetPercentage: number;
-  requireApproval?: boolean | undefined;
-  duration?: number | undefined;
-  linearShift?: boolean | undefined;
-};
 
-/** @internal */
-export const GetRollingReleaseConfigStages$outboundSchema: z.ZodType<
-  GetRollingReleaseConfigStages$Outbound,
-  z.ZodTypeDef,
-  GetRollingReleaseConfigStages
-> = z.object({
-  targetPercentage: z.number(),
-  requireApproval: z.boolean().optional(),
-  duration: z.number().optional(),
-  linearShift: z.boolean().optional(),
-});
-
-export function getRollingReleaseConfigStagesToJSON(
-  getRollingReleaseConfigStages: GetRollingReleaseConfigStages,
-): string {
-  return JSON.stringify(
-    GetRollingReleaseConfigStages$outboundSchema.parse(
-      getRollingReleaseConfigStages,
-    ),
-  );
-}
 export function getRollingReleaseConfigStagesFromJSON(
   jsonString: string,
 ): SafeParseResult<GetRollingReleaseConfigStages, SDKValidationError> {
@@ -179,35 +132,7 @@ export const GetRollingReleaseConfigRollingRelease$inboundSchema: z.ZodType<
   ).optional(),
   canaryResponseHeader: types.optional(types.boolean()),
 });
-/** @internal */
-export type GetRollingReleaseConfigRollingRelease$Outbound = {
-  target: string;
-  stages?: Array<GetRollingReleaseConfigStages$Outbound> | null | undefined;
-  canaryResponseHeader?: boolean | undefined;
-};
 
-/** @internal */
-export const GetRollingReleaseConfigRollingRelease$outboundSchema: z.ZodType<
-  GetRollingReleaseConfigRollingRelease$Outbound,
-  z.ZodTypeDef,
-  GetRollingReleaseConfigRollingRelease
-> = z.object({
-  target: z.string(),
-  stages: z.nullable(
-    z.array(z.lazy(() => GetRollingReleaseConfigStages$outboundSchema)),
-  ).optional(),
-  canaryResponseHeader: z.boolean().optional(),
-});
-
-export function getRollingReleaseConfigRollingReleaseToJSON(
-  getRollingReleaseConfigRollingRelease: GetRollingReleaseConfigRollingRelease,
-): string {
-  return JSON.stringify(
-    GetRollingReleaseConfigRollingRelease$outboundSchema.parse(
-      getRollingReleaseConfigRollingRelease,
-    ),
-  );
-}
 export function getRollingReleaseConfigRollingReleaseFromJSON(
   jsonString: string,
 ): SafeParseResult<GetRollingReleaseConfigRollingRelease, SDKValidationError> {
@@ -229,31 +154,7 @@ export const GetRollingReleaseConfigResponseBody$inboundSchema: z.ZodType<
     z.lazy(() => GetRollingReleaseConfigRollingRelease$inboundSchema),
   ),
 });
-/** @internal */
-export type GetRollingReleaseConfigResponseBody$Outbound = {
-  rollingRelease: GetRollingReleaseConfigRollingRelease$Outbound | null;
-};
 
-/** @internal */
-export const GetRollingReleaseConfigResponseBody$outboundSchema: z.ZodType<
-  GetRollingReleaseConfigResponseBody$Outbound,
-  z.ZodTypeDef,
-  GetRollingReleaseConfigResponseBody
-> = z.object({
-  rollingRelease: z.nullable(
-    z.lazy(() => GetRollingReleaseConfigRollingRelease$outboundSchema),
-  ),
-});
-
-export function getRollingReleaseConfigResponseBodyToJSON(
-  getRollingReleaseConfigResponseBody: GetRollingReleaseConfigResponseBody,
-): string {
-  return JSON.stringify(
-    GetRollingReleaseConfigResponseBody$outboundSchema.parse(
-      getRollingReleaseConfigResponseBody,
-    ),
-  );
-}
 export function getRollingReleaseConfigResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetRollingReleaseConfigResponseBody, SDKValidationError> {

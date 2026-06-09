@@ -4,10 +4,6 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
-import { Result as SafeParseResult } from "../types/fp.js";
-import * as types from "../types/primitives.js";
-import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type DangerouslyDeleteBySrcImagesRequestBody = {
   revalidationDeadlineSeconds?: number | undefined;
@@ -27,15 +23,6 @@ export type DangerouslyDeleteBySrcImagesRequest = {
   requestBody?: DangerouslyDeleteBySrcImagesRequestBody | undefined;
 };
 
-/** @internal */
-export const DangerouslyDeleteBySrcImagesRequestBody$inboundSchema: z.ZodType<
-  DangerouslyDeleteBySrcImagesRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  revalidationDeadlineSeconds: types.optional(types.number()),
-  srcImages: z.array(types.string()),
-});
 /** @internal */
 export type DangerouslyDeleteBySrcImagesRequestBody$Outbound = {
   revalidationDeadlineSeconds?: number | undefined;
@@ -62,39 +49,7 @@ export function dangerouslyDeleteBySrcImagesRequestBodyToJSON(
     ),
   );
 }
-export function dangerouslyDeleteBySrcImagesRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  DangerouslyDeleteBySrcImagesRequestBody,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      DangerouslyDeleteBySrcImagesRequestBody$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'DangerouslyDeleteBySrcImagesRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const DangerouslyDeleteBySrcImagesRequest$inboundSchema: z.ZodType<
-  DangerouslyDeleteBySrcImagesRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  projectIdOrName: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-  RequestBody: types.optional(
-    z.lazy(() => DangerouslyDeleteBySrcImagesRequestBody$inboundSchema),
-  ),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 /** @internal */
 export type DangerouslyDeleteBySrcImagesRequest$Outbound = {
   projectIdOrName: string;
@@ -128,15 +83,5 @@ export function dangerouslyDeleteBySrcImagesRequestToJSON(
     DangerouslyDeleteBySrcImagesRequest$outboundSchema.parse(
       dangerouslyDeleteBySrcImagesRequest,
     ),
-  );
-}
-export function dangerouslyDeleteBySrcImagesRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<DangerouslyDeleteBySrcImagesRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      DangerouslyDeleteBySrcImagesRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DangerouslyDeleteBySrcImagesRequest' from JSON`,
   );
 }

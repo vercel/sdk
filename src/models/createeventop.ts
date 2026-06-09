@@ -4,10 +4,6 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
-import { Result as SafeParseResult } from "../types/fp.js";
-import * as types from "../types/primitives.js";
-import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type Event2 = {
   type: "resource.updated";
@@ -41,13 +37,6 @@ export type CreateEventRequest = {
 };
 
 /** @internal */
-export const Event2$inboundSchema: z.ZodType<Event2, z.ZodTypeDef, unknown> = z
-  .object({
-    type: types.literal("resource.updated"),
-    productId: types.optional(types.string()),
-    resourceId: types.string(),
-  });
-/** @internal */
 export type Event2$Outbound = {
   type: "resource.updated";
   productId?: string | undefined;
@@ -68,22 +57,7 @@ export const Event2$outboundSchema: z.ZodType<
 export function event2ToJSON(event2: Event2): string {
   return JSON.stringify(Event2$outboundSchema.parse(event2));
 }
-export function event2FromJSON(
-  jsonString: string,
-): SafeParseResult<Event2, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Event2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Event2' from JSON`,
-  );
-}
 
-/** @internal */
-export const Event1$inboundSchema: z.ZodType<Event1, z.ZodTypeDef, unknown> = z
-  .object({
-    type: types.literal("installation.updated"),
-    billingPlanId: types.optional(types.string()),
-  });
 /** @internal */
 export type Event1$Outbound = {
   type: "installation.updated";
@@ -103,25 +77,7 @@ export const Event1$outboundSchema: z.ZodType<
 export function event1ToJSON(event1: Event1): string {
   return JSON.stringify(Event1$outboundSchema.parse(event1));
 }
-export function event1FromJSON(
-  jsonString: string,
-): SafeParseResult<Event1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Event1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Event1' from JSON`,
-  );
-}
 
-/** @internal */
-export const CreateEventEvent$inboundSchema: z.ZodType<
-  CreateEventEvent,
-  z.ZodTypeDef,
-  unknown
-> = z.union([
-  z.lazy(() => Event1$inboundSchema),
-  z.lazy(() => Event2$inboundSchema),
-]);
 /** @internal */
 export type CreateEventEvent$Outbound = Event1$Outbound | Event2$Outbound;
 
@@ -142,27 +98,7 @@ export function createEventEventToJSON(
     CreateEventEvent$outboundSchema.parse(createEventEvent),
   );
 }
-export function createEventEventFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateEventEvent, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateEventEvent$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateEventEvent' from JSON`,
-  );
-}
 
-/** @internal */
-export const CreateEventRequestBody$inboundSchema: z.ZodType<
-  CreateEventRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  event: z.union([
-    z.lazy(() => Event1$inboundSchema),
-    z.lazy(() => Event2$inboundSchema),
-  ]),
-});
 /** @internal */
 export type CreateEventRequestBody$Outbound = {
   event: Event1$Outbound | Event2$Outbound;
@@ -187,29 +123,7 @@ export function createEventRequestBodyToJSON(
     CreateEventRequestBody$outboundSchema.parse(createEventRequestBody),
   );
 }
-export function createEventRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateEventRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateEventRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateEventRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const CreateEventRequest$inboundSchema: z.ZodType<
-  CreateEventRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  integrationConfigurationId: types.string(),
-  RequestBody: z.lazy(() => CreateEventRequestBody$inboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 /** @internal */
 export type CreateEventRequest$Outbound = {
   integrationConfigurationId: string;
@@ -235,14 +149,5 @@ export function createEventRequestToJSON(
 ): string {
   return JSON.stringify(
     CreateEventRequest$outboundSchema.parse(createEventRequest),
-  );
-}
-export function createEventRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateEventRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateEventRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateEventRequest' from JSON`,
   );
 }

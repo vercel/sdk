@@ -6,21 +6,10 @@ import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
-import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
-import {
-  Session,
-  Session$inboundSchema,
-  Session$Outbound,
-  Session$outboundSchema,
-} from "./session.js";
-import {
-  Snapshot,
-  Snapshot$inboundSchema,
-  Snapshot$Outbound,
-  Snapshot$outboundSchema,
-} from "./snapshot.js";
+import { Session, Session$inboundSchema } from "./session.js";
+import { Snapshot, Snapshot$inboundSchema } from "./snapshot.js";
 
 /**
  * The number of milliseconds after which the snapshot will expire and be deleted. Use 0 for no expiration.
@@ -62,12 +51,6 @@ export type CreateSessionSnapshotResponseBody = {
 };
 
 /** @internal */
-export const CreateSessionSnapshotExpiration$inboundSchema: z.ZodType<
-  CreateSessionSnapshotExpiration,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([z.any(), types.number()]);
-/** @internal */
 export type CreateSessionSnapshotExpiration$Outbound = any | number;
 
 /** @internal */
@@ -86,24 +69,7 @@ export function createSessionSnapshotExpirationToJSON(
     ),
   );
 }
-export function createSessionSnapshotExpirationFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateSessionSnapshotExpiration, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateSessionSnapshotExpiration$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateSessionSnapshotExpiration' from JSON`,
-  );
-}
 
-/** @internal */
-export const CreateSessionSnapshotRequestBody$inboundSchema: z.ZodType<
-  CreateSessionSnapshotRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  expiration: types.optional(smartUnion([z.any(), types.number()])),
-});
 /** @internal */
 export type CreateSessionSnapshotRequestBody$Outbound = {
   expiration?: any | number | undefined;
@@ -127,33 +93,7 @@ export function createSessionSnapshotRequestBodyToJSON(
     ),
   );
 }
-export function createSessionSnapshotRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateSessionSnapshotRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateSessionSnapshotRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateSessionSnapshotRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const CreateSessionSnapshotRequest$inboundSchema: z.ZodType<
-  CreateSessionSnapshotRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  sessionId: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-  RequestBody: types.optional(
-    z.lazy(() => CreateSessionSnapshotRequestBody$inboundSchema),
-  ),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 /** @internal */
 export type CreateSessionSnapshotRequest$Outbound = {
   sessionId: string;
@@ -188,15 +128,6 @@ export function createSessionSnapshotRequestToJSON(
     ),
   );
 }
-export function createSessionSnapshotRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateSessionSnapshotRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateSessionSnapshotRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateSessionSnapshotRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const CreateSessionSnapshotResponseBody$inboundSchema: z.ZodType<
@@ -207,31 +138,7 @@ export const CreateSessionSnapshotResponseBody$inboundSchema: z.ZodType<
   snapshot: Snapshot$inboundSchema,
   session: Session$inboundSchema,
 });
-/** @internal */
-export type CreateSessionSnapshotResponseBody$Outbound = {
-  snapshot: Snapshot$Outbound;
-  session: Session$Outbound;
-};
 
-/** @internal */
-export const CreateSessionSnapshotResponseBody$outboundSchema: z.ZodType<
-  CreateSessionSnapshotResponseBody$Outbound,
-  z.ZodTypeDef,
-  CreateSessionSnapshotResponseBody
-> = z.object({
-  snapshot: Snapshot$outboundSchema,
-  session: Session$outboundSchema,
-});
-
-export function createSessionSnapshotResponseBodyToJSON(
-  createSessionSnapshotResponseBody: CreateSessionSnapshotResponseBody,
-): string {
-  return JSON.stringify(
-    CreateSessionSnapshotResponseBody$outboundSchema.parse(
-      createSessionSnapshotResponseBody,
-    ),
-  );
-}
 export function createSessionSnapshotResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateSessionSnapshotResponseBody, SDKValidationError> {

@@ -49,10 +49,6 @@ export class DomainTooShort extends VercelError {
 export const DomainTooShortCode$inboundSchema: z.ZodNativeEnum<
   typeof DomainTooShortCode
 > = z.nativeEnum(DomainTooShortCode);
-/** @internal */
-export const DomainTooShortCode$outboundSchema: z.ZodNativeEnum<
-  typeof DomainTooShortCode
-> = DomainTooShortCode$inboundSchema;
 
 /** @internal */
 export const DomainTooShort$inboundSchema: z.ZodType<
@@ -74,23 +70,3 @@ export const DomainTooShort$inboundSchema: z.ZodType<
       body: v.body$,
     });
   });
-
-/** @internal */
-export type DomainTooShort$Outbound = {
-  status: number;
-  code: string;
-  message: string;
-};
-
-/** @internal */
-export const DomainTooShort$outboundSchema: z.ZodType<
-  DomainTooShort$Outbound,
-  z.ZodTypeDef,
-  DomainTooShort
-> = z.instanceof(DomainTooShort)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    status: z.number(),
-    code: DomainTooShortCode$outboundSchema,
-    message: z.string(),
-  }));

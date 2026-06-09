@@ -29,17 +29,6 @@ export type UnlinkSharedEnvVariableResponseBody = {
 };
 
 /** @internal */
-export const UnlinkSharedEnvVariableRequest$inboundSchema: z.ZodType<
-  UnlinkSharedEnvVariableRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: types.string(),
-  projectId: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
-/** @internal */
 export type UnlinkSharedEnvVariableRequest$Outbound = {
   id: string;
   projectId: string;
@@ -68,15 +57,6 @@ export function unlinkSharedEnvVariableRequestToJSON(
     ),
   );
 }
-export function unlinkSharedEnvVariableRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<UnlinkSharedEnvVariableRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UnlinkSharedEnvVariableRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UnlinkSharedEnvVariableRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const UnlinkSharedEnvVariableResponseBody$inboundSchema: z.ZodType<
@@ -86,29 +66,7 @@ export const UnlinkSharedEnvVariableResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   id: types.string(),
 });
-/** @internal */
-export type UnlinkSharedEnvVariableResponseBody$Outbound = {
-  id: string;
-};
 
-/** @internal */
-export const UnlinkSharedEnvVariableResponseBody$outboundSchema: z.ZodType<
-  UnlinkSharedEnvVariableResponseBody$Outbound,
-  z.ZodTypeDef,
-  UnlinkSharedEnvVariableResponseBody
-> = z.object({
-  id: z.string(),
-});
-
-export function unlinkSharedEnvVariableResponseBodyToJSON(
-  unlinkSharedEnvVariableResponseBody: UnlinkSharedEnvVariableResponseBody,
-): string {
-  return JSON.stringify(
-    UnlinkSharedEnvVariableResponseBody$outboundSchema.parse(
-      unlinkSharedEnvVariableResponseBody,
-    ),
-  );
-}
 export function unlinkSharedEnvVariableResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<UnlinkSharedEnvVariableResponseBody, SDKValidationError> {

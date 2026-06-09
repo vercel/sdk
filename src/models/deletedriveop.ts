@@ -5,13 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
-import * as types from "../types/primitives.js";
-import {
-  Drive,
-  Drive$inboundSchema,
-  Drive$Outbound,
-  Drive$outboundSchema,
-} from "./drive.js";
+import { Drive, Drive$inboundSchema } from "./drive.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type DeleteDriveRequest = {
@@ -41,17 +35,6 @@ export type DeleteDriveResponseBody = {
 };
 
 /** @internal */
-export const DeleteDriveRequest$inboundSchema: z.ZodType<
-  DeleteDriveRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  name: types.string(),
-  projectId: types.optional(types.string()),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
-/** @internal */
 export type DeleteDriveRequest$Outbound = {
   name: string;
   projectId?: string | undefined;
@@ -78,15 +61,6 @@ export function deleteDriveRequestToJSON(
     DeleteDriveRequest$outboundSchema.parse(deleteDriveRequest),
   );
 }
-export function deleteDriveRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<DeleteDriveRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => DeleteDriveRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DeleteDriveRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const DeleteDriveResponseBody$inboundSchema: z.ZodType<
@@ -96,27 +70,7 @@ export const DeleteDriveResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   drive: Drive$inboundSchema,
 });
-/** @internal */
-export type DeleteDriveResponseBody$Outbound = {
-  drive: Drive$Outbound;
-};
 
-/** @internal */
-export const DeleteDriveResponseBody$outboundSchema: z.ZodType<
-  DeleteDriveResponseBody$Outbound,
-  z.ZodTypeDef,
-  DeleteDriveResponseBody
-> = z.object({
-  drive: Drive$outboundSchema,
-});
-
-export function deleteDriveResponseBodyToJSON(
-  deleteDriveResponseBody: DeleteDriveResponseBody,
-): string {
-  return JSON.stringify(
-    DeleteDriveResponseBody$outboundSchema.parse(deleteDriveResponseBody),
-  );
-}
 export function deleteDriveResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<DeleteDriveResponseBody, SDKValidationError> {

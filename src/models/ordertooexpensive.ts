@@ -49,10 +49,6 @@ export class OrderTooExpensive extends VercelError {
 export const OrderTooExpensiveCode$inboundSchema: z.ZodNativeEnum<
   typeof OrderTooExpensiveCode
 > = z.nativeEnum(OrderTooExpensiveCode);
-/** @internal */
-export const OrderTooExpensiveCode$outboundSchema: z.ZodNativeEnum<
-  typeof OrderTooExpensiveCode
-> = OrderTooExpensiveCode$inboundSchema;
 
 /** @internal */
 export const OrderTooExpensive$inboundSchema: z.ZodType<
@@ -74,23 +70,3 @@ export const OrderTooExpensive$inboundSchema: z.ZodType<
       body: v.body$,
     });
   });
-
-/** @internal */
-export type OrderTooExpensive$Outbound = {
-  status: number;
-  code: string;
-  message: string;
-};
-
-/** @internal */
-export const OrderTooExpensive$outboundSchema: z.ZodType<
-  OrderTooExpensive$Outbound,
-  z.ZodTypeDef,
-  OrderTooExpensive
-> = z.instanceof(OrderTooExpensive)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    status: z.number(),
-    code: OrderTooExpensiveCode$outboundSchema,
-    message: z.string(),
-  }));

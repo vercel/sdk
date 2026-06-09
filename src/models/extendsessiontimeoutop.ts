@@ -6,14 +6,8 @@ import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
-import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
-import {
-  Session,
-  Session$inboundSchema,
-  Session$Outbound,
-  Session$outboundSchema,
-} from "./session.js";
+import { Session, Session$inboundSchema } from "./session.js";
 
 export type ExtendSessionTimeoutRequestBody = {
   /**
@@ -49,14 +43,6 @@ export type ExtendSessionTimeoutResponseBody = {
 };
 
 /** @internal */
-export const ExtendSessionTimeoutRequestBody$inboundSchema: z.ZodType<
-  ExtendSessionTimeoutRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  duration: types.number(),
-});
-/** @internal */
 export type ExtendSessionTimeoutRequestBody$Outbound = {
   duration: number;
 };
@@ -79,33 +65,7 @@ export function extendSessionTimeoutRequestBodyToJSON(
     ),
   );
 }
-export function extendSessionTimeoutRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<ExtendSessionTimeoutRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ExtendSessionTimeoutRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ExtendSessionTimeoutRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const ExtendSessionTimeoutRequest$inboundSchema: z.ZodType<
-  ExtendSessionTimeoutRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  sessionId: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-  RequestBody: types.optional(
-    z.lazy(() => ExtendSessionTimeoutRequestBody$inboundSchema),
-  ),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 /** @internal */
 export type ExtendSessionTimeoutRequest$Outbound = {
   sessionId: string;
@@ -140,15 +100,6 @@ export function extendSessionTimeoutRequestToJSON(
     ),
   );
 }
-export function extendSessionTimeoutRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<ExtendSessionTimeoutRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ExtendSessionTimeoutRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ExtendSessionTimeoutRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const ExtendSessionTimeoutResponseBody$inboundSchema: z.ZodType<
@@ -158,29 +109,7 @@ export const ExtendSessionTimeoutResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   session: Session$inboundSchema,
 });
-/** @internal */
-export type ExtendSessionTimeoutResponseBody$Outbound = {
-  session: Session$Outbound;
-};
 
-/** @internal */
-export const ExtendSessionTimeoutResponseBody$outboundSchema: z.ZodType<
-  ExtendSessionTimeoutResponseBody$Outbound,
-  z.ZodTypeDef,
-  ExtendSessionTimeoutResponseBody
-> = z.object({
-  session: Session$outboundSchema,
-});
-
-export function extendSessionTimeoutResponseBodyToJSON(
-  extendSessionTimeoutResponseBody: ExtendSessionTimeoutResponseBody,
-): string {
-  return JSON.stringify(
-    ExtendSessionTimeoutResponseBody$outboundSchema.parse(
-      extendSessionTimeoutResponseBody,
-    ),
-  );
-}
 export function extendSessionTimeoutResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<ExtendSessionTimeoutResponseBody, SDKValidationError> {

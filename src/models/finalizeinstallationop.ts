@@ -3,23 +3,11 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
-import { Result as SafeParseResult } from "../types/fp.js";
-import * as types from "../types/primitives.js";
-import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type FinalizeInstallationRequest = {
   integrationConfigurationId: string;
 };
 
-/** @internal */
-export const FinalizeInstallationRequest$inboundSchema: z.ZodType<
-  FinalizeInstallationRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  integrationConfigurationId: types.string(),
-});
 /** @internal */
 export type FinalizeInstallationRequest$Outbound = {
   integrationConfigurationId: string;
@@ -41,14 +29,5 @@ export function finalizeInstallationRequestToJSON(
     FinalizeInstallationRequest$outboundSchema.parse(
       finalizeInstallationRequest,
     ),
-  );
-}
-export function finalizeInstallationRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<FinalizeInstallationRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => FinalizeInstallationRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'FinalizeInstallationRequest' from JSON`,
   );
 }

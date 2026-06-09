@@ -8,12 +8,7 @@ import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
-import {
-  Pagination,
-  Pagination$inboundSchema,
-  Pagination$Outbound,
-  Pagination$outboundSchema,
-} from "./pagination.js";
+import { Pagination, Pagination$inboundSchema } from "./pagination.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type GetRecordsRequest = {
@@ -130,19 +125,6 @@ export type GetRecordsResponseBody =
   | string;
 
 /** @internal */
-export const GetRecordsRequest$inboundSchema: z.ZodType<
-  GetRecordsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  domain: types.string(),
-  limit: types.optional(types.string()),
-  since: types.optional(types.string()),
-  until: types.optional(types.string()),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
-/** @internal */
 export type GetRecordsRequest$Outbound = {
   domain: string;
   limit?: string | undefined;
@@ -173,24 +155,11 @@ export function getRecordsRequestToJSON(
     GetRecordsRequest$outboundSchema.parse(getRecordsRequest),
   );
 }
-export function getRecordsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetRecordsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetRecordsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetRecordsRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const GetRecordsResponseBodyDnsType$inboundSchema: z.ZodNativeEnum<
   typeof GetRecordsResponseBodyDnsType
 > = z.nativeEnum(GetRecordsResponseBodyDnsType);
-/** @internal */
-export const GetRecordsResponseBodyDnsType$outboundSchema: z.ZodNativeEnum<
-  typeof GetRecordsResponseBodyDnsType
-> = GetRecordsResponseBodyDnsType$inboundSchema;
 
 /** @internal */
 export const ResponseBodyRecords$inboundSchema: z.ZodType<
@@ -213,53 +182,7 @@ export const ResponseBodyRecords$inboundSchema: z.ZodType<
   ttl: types.optional(types.number()),
   comment: types.optional(types.string()),
 });
-/** @internal */
-export type ResponseBodyRecords$Outbound = {
-  id: string;
-  slug: string;
-  name: string;
-  type: string;
-  value: string;
-  mxPriority?: number | undefined;
-  priority?: number | undefined;
-  creator: string;
-  created: number | null;
-  updated: number | null;
-  createdAt: number | null;
-  updatedAt: number | null;
-  ttl?: number | undefined;
-  comment?: string | undefined;
-};
 
-/** @internal */
-export const ResponseBodyRecords$outboundSchema: z.ZodType<
-  ResponseBodyRecords$Outbound,
-  z.ZodTypeDef,
-  ResponseBodyRecords
-> = z.object({
-  id: z.string(),
-  slug: z.string(),
-  name: z.string(),
-  type: GetRecordsResponseBodyDnsType$outboundSchema,
-  value: z.string(),
-  mxPriority: z.number().optional(),
-  priority: z.number().optional(),
-  creator: z.string(),
-  created: z.nullable(z.number()),
-  updated: z.nullable(z.number()),
-  createdAt: z.nullable(z.number()),
-  updatedAt: z.nullable(z.number()),
-  ttl: z.number().optional(),
-  comment: z.string().optional(),
-});
-
-export function responseBodyRecordsToJSON(
-  responseBodyRecords: ResponseBodyRecords,
-): string {
-  return JSON.stringify(
-    ResponseBodyRecords$outboundSchema.parse(responseBodyRecords),
-  );
-}
 export function responseBodyRecordsFromJSON(
   jsonString: string,
 ): SafeParseResult<ResponseBodyRecords, SDKValidationError> {
@@ -279,29 +202,7 @@ export const GetRecordsResponseBody3$inboundSchema: z.ZodType<
   records: z.array(z.lazy(() => ResponseBodyRecords$inboundSchema)),
   pagination: Pagination$inboundSchema,
 });
-/** @internal */
-export type GetRecordsResponseBody3$Outbound = {
-  records: Array<ResponseBodyRecords$Outbound>;
-  pagination: Pagination$Outbound;
-};
 
-/** @internal */
-export const GetRecordsResponseBody3$outboundSchema: z.ZodType<
-  GetRecordsResponseBody3$Outbound,
-  z.ZodTypeDef,
-  GetRecordsResponseBody3
-> = z.object({
-  records: z.array(z.lazy(() => ResponseBodyRecords$outboundSchema)),
-  pagination: Pagination$outboundSchema,
-});
-
-export function getRecordsResponseBody3ToJSON(
-  getRecordsResponseBody3: GetRecordsResponseBody3,
-): string {
-  return JSON.stringify(
-    GetRecordsResponseBody3$outboundSchema.parse(getRecordsResponseBody3),
-  );
-}
 export function getRecordsResponseBody3FromJSON(
   jsonString: string,
 ): SafeParseResult<GetRecordsResponseBody3, SDKValidationError> {
@@ -316,10 +217,6 @@ export function getRecordsResponseBody3FromJSON(
 export const GetRecordsResponseBodyType$inboundSchema: z.ZodNativeEnum<
   typeof GetRecordsResponseBodyType
 > = z.nativeEnum(GetRecordsResponseBodyType);
-/** @internal */
-export const GetRecordsResponseBodyType$outboundSchema: z.ZodNativeEnum<
-  typeof GetRecordsResponseBodyType
-> = GetRecordsResponseBodyType$inboundSchema;
 
 /** @internal */
 export const Records$inboundSchema: z.ZodType<Records, z.ZodTypeDef, unknown> =
@@ -339,49 +236,7 @@ export const Records$inboundSchema: z.ZodType<Records, z.ZodTypeDef, unknown> =
     ttl: types.optional(types.number()),
     comment: types.optional(types.string()),
   });
-/** @internal */
-export type Records$Outbound = {
-  id: string;
-  slug: string;
-  name: string;
-  type: string;
-  value: string;
-  mxPriority?: number | undefined;
-  priority?: number | undefined;
-  creator: string;
-  created: number | null;
-  updated: number | null;
-  createdAt: number | null;
-  updatedAt: number | null;
-  ttl?: number | undefined;
-  comment?: string | undefined;
-};
 
-/** @internal */
-export const Records$outboundSchema: z.ZodType<
-  Records$Outbound,
-  z.ZodTypeDef,
-  Records
-> = z.object({
-  id: z.string(),
-  slug: z.string(),
-  name: z.string(),
-  type: GetRecordsResponseBodyType$outboundSchema,
-  value: z.string(),
-  mxPriority: z.number().optional(),
-  priority: z.number().optional(),
-  creator: z.string(),
-  created: z.nullable(z.number()),
-  updated: z.nullable(z.number()),
-  createdAt: z.nullable(z.number()),
-  updatedAt: z.nullable(z.number()),
-  ttl: z.number().optional(),
-  comment: z.string().optional(),
-});
-
-export function recordsToJSON(records: Records): string {
-  return JSON.stringify(Records$outboundSchema.parse(records));
-}
 export function recordsFromJSON(
   jsonString: string,
 ): SafeParseResult<Records, SDKValidationError> {
@@ -400,27 +255,7 @@ export const GetRecordsResponseBody2$inboundSchema: z.ZodType<
 > = z.object({
   records: z.array(z.lazy(() => Records$inboundSchema)),
 });
-/** @internal */
-export type GetRecordsResponseBody2$Outbound = {
-  records: Array<Records$Outbound>;
-};
 
-/** @internal */
-export const GetRecordsResponseBody2$outboundSchema: z.ZodType<
-  GetRecordsResponseBody2$Outbound,
-  z.ZodTypeDef,
-  GetRecordsResponseBody2
-> = z.object({
-  records: z.array(z.lazy(() => Records$outboundSchema)),
-});
-
-export function getRecordsResponseBody2ToJSON(
-  getRecordsResponseBody2: GetRecordsResponseBody2,
-): string {
-  return JSON.stringify(
-    GetRecordsResponseBody2$outboundSchema.parse(getRecordsResponseBody2),
-  );
-}
 export function getRecordsResponseBody2FromJSON(
   jsonString: string,
 ): SafeParseResult<GetRecordsResponseBody2, SDKValidationError> {
@@ -441,30 +276,7 @@ export const GetRecordsResponseBody$inboundSchema: z.ZodType<
   z.lazy(() => GetRecordsResponseBody2$inboundSchema),
   types.string(),
 ]);
-/** @internal */
-export type GetRecordsResponseBody$Outbound =
-  | GetRecordsResponseBody3$Outbound
-  | GetRecordsResponseBody2$Outbound
-  | string;
 
-/** @internal */
-export const GetRecordsResponseBody$outboundSchema: z.ZodType<
-  GetRecordsResponseBody$Outbound,
-  z.ZodTypeDef,
-  GetRecordsResponseBody
-> = smartUnion([
-  z.lazy(() => GetRecordsResponseBody3$outboundSchema),
-  z.lazy(() => GetRecordsResponseBody2$outboundSchema),
-  z.string(),
-]);
-
-export function getRecordsResponseBodyToJSON(
-  getRecordsResponseBody: GetRecordsResponseBody,
-): string {
-  return JSON.stringify(
-    GetRecordsResponseBody$outboundSchema.parse(getRecordsResponseBody),
-  );
-}
 export function getRecordsResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetRecordsResponseBody, SDKValidationError> {

@@ -3,25 +3,12 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
-import { Result as SafeParseResult } from "../types/fp.js";
-import * as types from "../types/primitives.js";
-import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type DeleteIntegrationResourceRequest = {
   integrationConfigurationId: string;
   resourceId: string;
 };
 
-/** @internal */
-export const DeleteIntegrationResourceRequest$inboundSchema: z.ZodType<
-  DeleteIntegrationResourceRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  integrationConfigurationId: types.string(),
-  resourceId: types.string(),
-});
 /** @internal */
 export type DeleteIntegrationResourceRequest$Outbound = {
   integrationConfigurationId: string;
@@ -45,14 +32,5 @@ export function deleteIntegrationResourceRequestToJSON(
     DeleteIntegrationResourceRequest$outboundSchema.parse(
       deleteIntegrationResourceRequest,
     ),
-  );
-}
-export function deleteIntegrationResourceRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<DeleteIntegrationResourceRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => DeleteIntegrationResourceRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DeleteIntegrationResourceRequest' from JSON`,
   );
 }

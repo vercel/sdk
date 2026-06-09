@@ -84,16 +84,6 @@ export type ReadAccessGroupResponseBody = {
 };
 
 /** @internal */
-export const ReadAccessGroupRequest$inboundSchema: z.ZodType<
-  ReadAccessGroupRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  idOrName: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
-/** @internal */
 export type ReadAccessGroupRequest$Outbound = {
   idOrName: string;
   teamId?: string | undefined;
@@ -118,33 +108,16 @@ export function readAccessGroupRequestToJSON(
     ReadAccessGroupRequest$outboundSchema.parse(readAccessGroupRequest),
   );
 }
-export function readAccessGroupRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<ReadAccessGroupRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ReadAccessGroupRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ReadAccessGroupRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const ReadAccessGroupTeamPermissions$inboundSchema: z.ZodNativeEnum<
   typeof ReadAccessGroupTeamPermissions
 > = z.nativeEnum(ReadAccessGroupTeamPermissions);
-/** @internal */
-export const ReadAccessGroupTeamPermissions$outboundSchema: z.ZodNativeEnum<
-  typeof ReadAccessGroupTeamPermissions
-> = ReadAccessGroupTeamPermissions$inboundSchema;
 
 /** @internal */
 export const ReadAccessGroupEntitlements$inboundSchema: z.ZodNativeEnum<
   typeof ReadAccessGroupEntitlements
 > = z.nativeEnum(ReadAccessGroupEntitlements);
-/** @internal */
-export const ReadAccessGroupEntitlements$outboundSchema: z.ZodNativeEnum<
-  typeof ReadAccessGroupEntitlements
-> = ReadAccessGroupEntitlements$inboundSchema;
 
 /** @internal */
 export const ReadAccessGroupResponseBody$inboundSchema: z.ZodType<
@@ -168,50 +141,7 @@ export const ReadAccessGroupResponseBody$inboundSchema: z.ZodType<
   projectsCount: types.number(),
   teamRoles: types.optional(z.array(types.string())),
 });
-/** @internal */
-export type ReadAccessGroupResponseBody$Outbound = {
-  teamPermissions?: Array<string> | undefined;
-  entitlements?: Array<string> | undefined;
-  isDsyncManaged: boolean;
-  name: string;
-  createdAt: string;
-  teamId: string;
-  updatedAt: string;
-  accessGroupId: string;
-  membersCount: number;
-  projectsCount: number;
-  teamRoles?: Array<string> | undefined;
-};
 
-/** @internal */
-export const ReadAccessGroupResponseBody$outboundSchema: z.ZodType<
-  ReadAccessGroupResponseBody$Outbound,
-  z.ZodTypeDef,
-  ReadAccessGroupResponseBody
-> = z.object({
-  teamPermissions: z.array(ReadAccessGroupTeamPermissions$outboundSchema)
-    .optional(),
-  entitlements: z.array(ReadAccessGroupEntitlements$outboundSchema).optional(),
-  isDsyncManaged: z.boolean(),
-  name: z.string(),
-  createdAt: z.string(),
-  teamId: z.string(),
-  updatedAt: z.string(),
-  accessGroupId: z.string(),
-  membersCount: z.number(),
-  projectsCount: z.number(),
-  teamRoles: z.array(z.string()).optional(),
-});
-
-export function readAccessGroupResponseBodyToJSON(
-  readAccessGroupResponseBody: ReadAccessGroupResponseBody,
-): string {
-  return JSON.stringify(
-    ReadAccessGroupResponseBody$outboundSchema.parse(
-      readAccessGroupResponseBody,
-    ),
-  );
-}
 export function readAccessGroupResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<ReadAccessGroupResponseBody, SDKValidationError> {

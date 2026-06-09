@@ -7,12 +7,7 @@ import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
-import {
-  Drive,
-  Drive$inboundSchema,
-  Drive$Outbound,
-  Drive$outboundSchema,
-} from "./drive.js";
+import { Drive, Drive$inboundSchema } from "./drive.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
@@ -90,38 +85,15 @@ export type ListDrivesResponseBody = {
 };
 
 /** @internal */
-export const ListDrivesQueryParamSortBy$inboundSchema: z.ZodNativeEnum<
-  typeof ListDrivesQueryParamSortBy
-> = z.nativeEnum(ListDrivesQueryParamSortBy);
-/** @internal */
 export const ListDrivesQueryParamSortBy$outboundSchema: z.ZodNativeEnum<
   typeof ListDrivesQueryParamSortBy
-> = ListDrivesQueryParamSortBy$inboundSchema;
+> = z.nativeEnum(ListDrivesQueryParamSortBy);
 
-/** @internal */
-export const ListDrivesQueryParamSortOrder$inboundSchema: z.ZodNativeEnum<
-  typeof ListDrivesQueryParamSortOrder
-> = z.nativeEnum(ListDrivesQueryParamSortOrder);
 /** @internal */
 export const ListDrivesQueryParamSortOrder$outboundSchema: z.ZodNativeEnum<
   typeof ListDrivesQueryParamSortOrder
-> = ListDrivesQueryParamSortOrder$inboundSchema;
+> = z.nativeEnum(ListDrivesQueryParamSortOrder);
 
-/** @internal */
-export const ListDrivesRequest$inboundSchema: z.ZodType<
-  ListDrivesRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  projectId: types.optional(types.string()),
-  limit: types.number().default(20),
-  cursor: types.optional(types.string()),
-  sortBy: ListDrivesQueryParamSortBy$inboundSchema.default("createdAt"),
-  namePrefix: types.optional(types.string()),
-  sortOrder: ListDrivesQueryParamSortOrder$inboundSchema.default("desc"),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
 /** @internal */
 export type ListDrivesRequest$Outbound = {
   projectId?: string | undefined;
@@ -157,15 +129,6 @@ export function listDrivesRequestToJSON(
     ListDrivesRequest$outboundSchema.parse(listDrivesRequest),
   );
 }
-export function listDrivesRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<ListDrivesRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ListDrivesRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ListDrivesRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const ListDrivesPagination$inboundSchema: z.ZodType<
@@ -176,29 +139,7 @@ export const ListDrivesPagination$inboundSchema: z.ZodType<
   count: types.number(),
   next: types.nullable(types.string()),
 });
-/** @internal */
-export type ListDrivesPagination$Outbound = {
-  count: number;
-  next: string | null;
-};
 
-/** @internal */
-export const ListDrivesPagination$outboundSchema: z.ZodType<
-  ListDrivesPagination$Outbound,
-  z.ZodTypeDef,
-  ListDrivesPagination
-> = z.object({
-  count: z.number(),
-  next: z.nullable(z.string()),
-});
-
-export function listDrivesPaginationToJSON(
-  listDrivesPagination: ListDrivesPagination,
-): string {
-  return JSON.stringify(
-    ListDrivesPagination$outboundSchema.parse(listDrivesPagination),
-  );
-}
 export function listDrivesPaginationFromJSON(
   jsonString: string,
 ): SafeParseResult<ListDrivesPagination, SDKValidationError> {
@@ -218,29 +159,7 @@ export const ListDrivesResponseBody$inboundSchema: z.ZodType<
   drives: z.array(Drive$inboundSchema),
   pagination: z.lazy(() => ListDrivesPagination$inboundSchema),
 });
-/** @internal */
-export type ListDrivesResponseBody$Outbound = {
-  drives: Array<Drive$Outbound>;
-  pagination: ListDrivesPagination$Outbound;
-};
 
-/** @internal */
-export const ListDrivesResponseBody$outboundSchema: z.ZodType<
-  ListDrivesResponseBody$Outbound,
-  z.ZodTypeDef,
-  ListDrivesResponseBody
-> = z.object({
-  drives: z.array(Drive$outboundSchema),
-  pagination: z.lazy(() => ListDrivesPagination$outboundSchema),
-});
-
-export function listDrivesResponseBodyToJSON(
-  listDrivesResponseBody: ListDrivesResponseBody,
-): string {
-  return JSON.stringify(
-    ListDrivesResponseBody$outboundSchema.parse(listDrivesResponseBody),
-  );
-}
 export function listDrivesResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<ListDrivesResponseBody, SDKValidationError> {

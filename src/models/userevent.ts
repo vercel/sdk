@@ -12,1221 +12,619 @@ import { smartUnion } from "../types/smartUnion.js";
 import {
   OneHundredAndFifty,
   OneHundredAndFifty$inboundSchema,
-  OneHundredAndFifty$Outbound,
-  OneHundredAndFifty$outboundSchema,
   OneHundredAndFiftyEight,
   OneHundredAndFiftyEight$inboundSchema,
-  OneHundredAndFiftyEight$Outbound,
-  OneHundredAndFiftyEight$outboundSchema,
   OneHundredAndFiftyFive,
   OneHundredAndFiftyFive$inboundSchema,
-  OneHundredAndFiftyFive$Outbound,
-  OneHundredAndFiftyFive$outboundSchema,
   OneHundredAndFiftyFour,
   OneHundredAndFiftyFour$inboundSchema,
-  OneHundredAndFiftyFour$Outbound,
-  OneHundredAndFiftyFour$outboundSchema,
   OneHundredAndFiftyNine,
   OneHundredAndFiftyNine$inboundSchema,
-  OneHundredAndFiftyNine$Outbound,
-  OneHundredAndFiftyNine$outboundSchema,
   OneHundredAndFiftyOne,
   OneHundredAndFiftyOne$inboundSchema,
-  OneHundredAndFiftyOne$Outbound,
-  OneHundredAndFiftyOne$outboundSchema,
   OneHundredAndFiftySeven,
   OneHundredAndFiftySeven$inboundSchema,
-  OneHundredAndFiftySeven$Outbound,
-  OneHundredAndFiftySeven$outboundSchema,
   OneHundredAndFiftySix,
   OneHundredAndFiftySix$inboundSchema,
-  OneHundredAndFiftySix$Outbound,
-  OneHundredAndFiftySix$outboundSchema,
   OneHundredAndFiftyThree,
   OneHundredAndFiftyThree$inboundSchema,
-  OneHundredAndFiftyThree$Outbound,
-  OneHundredAndFiftyThree$outboundSchema,
   OneHundredAndFiftyTwo,
   OneHundredAndFiftyTwo$inboundSchema,
-  OneHundredAndFiftyTwo$Outbound,
-  OneHundredAndFiftyTwo$outboundSchema,
   OneHundredAndForty,
   OneHundredAndForty$inboundSchema,
-  OneHundredAndForty$Outbound,
-  OneHundredAndForty$outboundSchema,
   OneHundredAndFortyEight,
   OneHundredAndFortyEight$inboundSchema,
-  OneHundredAndFortyEight$Outbound,
-  OneHundredAndFortyEight$outboundSchema,
   OneHundredAndFortyFive,
   OneHundredAndFortyFive$inboundSchema,
-  OneHundredAndFortyFive$Outbound,
-  OneHundredAndFortyFive$outboundSchema,
   OneHundredAndFortyFour,
   OneHundredAndFortyFour$inboundSchema,
-  OneHundredAndFortyFour$Outbound,
-  OneHundredAndFortyFour$outboundSchema,
   OneHundredAndFortyNine,
   OneHundredAndFortyNine$inboundSchema,
-  OneHundredAndFortyNine$Outbound,
-  OneHundredAndFortyNine$outboundSchema,
   OneHundredAndFortyOne,
   OneHundredAndFortyOne$inboundSchema,
-  OneHundredAndFortyOne$Outbound,
-  OneHundredAndFortyOne$outboundSchema,
   OneHundredAndFortySeven,
   OneHundredAndFortySeven$inboundSchema,
-  OneHundredAndFortySeven$Outbound,
-  OneHundredAndFortySeven$outboundSchema,
   OneHundredAndFortySix,
   OneHundredAndFortySix$inboundSchema,
-  OneHundredAndFortySix$Outbound,
-  OneHundredAndFortySix$outboundSchema,
   OneHundredAndFortyThree,
   OneHundredAndFortyThree$inboundSchema,
-  OneHundredAndFortyThree$Outbound,
-  OneHundredAndFortyThree$outboundSchema,
   OneHundredAndFortyTwo,
   OneHundredAndFortyTwo$inboundSchema,
-  OneHundredAndFortyTwo$Outbound,
-  OneHundredAndFortyTwo$outboundSchema,
   OneHundredAndSixty,
   OneHundredAndSixty$inboundSchema,
-  OneHundredAndSixty$Outbound,
-  OneHundredAndSixty$outboundSchema,
   OneHundredAndSixtyOne,
   OneHundredAndSixtyOne$inboundSchema,
-  OneHundredAndSixtyOne$Outbound,
-  OneHundredAndSixtyOne$outboundSchema,
   OneHundredAndSixtyTwo,
   OneHundredAndSixtyTwo$inboundSchema,
-  OneHundredAndSixtyTwo$Outbound,
-  OneHundredAndSixtyTwo$outboundSchema,
   OneHundredAndThirtyEight,
   OneHundredAndThirtyEight$inboundSchema,
-  OneHundredAndThirtyEight$Outbound,
-  OneHundredAndThirtyEight$outboundSchema,
   OneHundredAndThirtyFive,
   OneHundredAndThirtyFive$inboundSchema,
-  OneHundredAndThirtyFive$Outbound,
-  OneHundredAndThirtyFive$outboundSchema,
   OneHundredAndThirtyFour,
   OneHundredAndThirtyFour$inboundSchema,
-  OneHundredAndThirtyFour$Outbound,
-  OneHundredAndThirtyFour$outboundSchema,
   OneHundredAndThirtyNine,
   OneHundredAndThirtyNine$inboundSchema,
-  OneHundredAndThirtyNine$Outbound,
-  OneHundredAndThirtyNine$outboundSchema,
   OneHundredAndThirtyOne,
   OneHundredAndThirtyOne$inboundSchema,
-  OneHundredAndThirtyOne$Outbound,
-  OneHundredAndThirtyOne$outboundSchema,
   OneHundredAndThirtySeven,
   OneHundredAndThirtySeven$inboundSchema,
-  OneHundredAndThirtySeven$Outbound,
-  OneHundredAndThirtySeven$outboundSchema,
   OneHundredAndThirtySix,
   OneHundredAndThirtySix$inboundSchema,
-  OneHundredAndThirtySix$Outbound,
-  OneHundredAndThirtySix$outboundSchema,
   OneHundredAndThirtyThree,
   OneHundredAndThirtyThree$inboundSchema,
-  OneHundredAndThirtyThree$Outbound,
-  OneHundredAndThirtyThree$outboundSchema,
   OneHundredAndThirtyTwo,
   OneHundredAndThirtyTwo$inboundSchema,
-  OneHundredAndThirtyTwo$Outbound,
-  OneHundredAndThirtyTwo$outboundSchema,
 } from "./connectdatatransfer.js";
 import {
   Eighty,
   Eighty$inboundSchema,
-  Eighty$Outbound,
-  Eighty$outboundSchema,
   EightyEight,
   EightyEight$inboundSchema,
-  EightyEight$Outbound,
-  EightyEight$outboundSchema,
   EightyFive,
   EightyFive$inboundSchema,
-  EightyFive$Outbound,
-  EightyFive$outboundSchema,
   EightyFour,
   EightyFour$inboundSchema,
-  EightyFour$Outbound,
-  EightyFour$outboundSchema,
   EightyNine,
   EightyNine$inboundSchema,
-  EightyNine$Outbound,
-  EightyNine$outboundSchema,
   EightyOne,
   EightyOne$inboundSchema,
-  EightyOne$Outbound,
-  EightyOne$outboundSchema,
   EightySeven,
   EightySeven$inboundSchema,
-  EightySeven$Outbound,
-  EightySeven$outboundSchema,
   EightySix,
   EightySix$inboundSchema,
-  EightySix$Outbound,
-  EightySix$outboundSchema,
   EightyThree,
   EightyThree$inboundSchema,
-  EightyThree$Outbound,
-  EightyThree$outboundSchema,
   EightyTwo,
   EightyTwo$inboundSchema,
-  EightyTwo$Outbound,
-  EightyTwo$outboundSchema,
   Fifty,
   Fifty$inboundSchema,
-  Fifty$Outbound,
-  Fifty$outboundSchema,
   FiftyEight,
   FiftyEight$inboundSchema,
-  FiftyEight$Outbound,
-  FiftyEight$outboundSchema,
   FiftyFive,
   FiftyFive$inboundSchema,
-  FiftyFive$Outbound,
-  FiftyFive$outboundSchema,
   FiftyFour,
   FiftyFour$inboundSchema,
-  FiftyFour$Outbound,
-  FiftyFour$outboundSchema,
   FiftyNine,
   FiftyNine$inboundSchema,
-  FiftyNine$Outbound,
-  FiftyNine$outboundSchema,
   FiftyOne,
   FiftyOne$inboundSchema,
-  FiftyOne$Outbound,
-  FiftyOne$outboundSchema,
   FiftySeven,
   FiftySeven$inboundSchema,
-  FiftySeven$Outbound,
-  FiftySeven$outboundSchema,
   FiftySix,
   FiftySix$inboundSchema,
-  FiftySix$Outbound,
-  FiftySix$outboundSchema,
   FiftyThree,
   FiftyThree$inboundSchema,
-  FiftyThree$Outbound,
-  FiftyThree$outboundSchema,
   FiftyTwo,
   FiftyTwo$inboundSchema,
-  FiftyTwo$Outbound,
-  FiftyTwo$outboundSchema,
   FortyEight,
   FortyEight$inboundSchema,
-  FortyEight$Outbound,
-  FortyEight$outboundSchema,
   FortyNine,
   FortyNine$inboundSchema,
-  FortyNine$Outbound,
-  FortyNine$outboundSchema,
   FortySeven,
   FortySeven$inboundSchema,
-  FortySeven$Outbound,
-  FortySeven$outboundSchema,
   Ninety,
   Ninety$inboundSchema,
-  Ninety$Outbound,
-  Ninety$outboundSchema,
   NinetyOne,
   NinetyOne$inboundSchema,
-  NinetyOne$Outbound,
-  NinetyOne$outboundSchema,
   NinetyThree,
   NinetyThree$inboundSchema,
-  NinetyThree$Outbound,
-  NinetyThree$outboundSchema,
   NinetyTwo,
   NinetyTwo$inboundSchema,
-  NinetyTwo$Outbound,
-  NinetyTwo$outboundSchema,
   Seventy,
   Seventy$inboundSchema,
-  Seventy$Outbound,
-  Seventy$outboundSchema,
   SeventyEight,
   SeventyEight$inboundSchema,
-  SeventyEight$Outbound,
-  SeventyEight$outboundSchema,
   SeventyFive,
   SeventyFive$inboundSchema,
-  SeventyFive$Outbound,
-  SeventyFive$outboundSchema,
   SeventyFour,
   SeventyFour$inboundSchema,
-  SeventyFour$Outbound,
-  SeventyFour$outboundSchema,
   SeventyNine,
   SeventyNine$inboundSchema,
-  SeventyNine$Outbound,
-  SeventyNine$outboundSchema,
   SeventyOne,
   SeventyOne$inboundSchema,
-  SeventyOne$Outbound,
-  SeventyOne$outboundSchema,
   SeventySeven,
   SeventySeven$inboundSchema,
-  SeventySeven$Outbound,
-  SeventySeven$outboundSchema,
   SeventySix,
   SeventySix$inboundSchema,
-  SeventySix$Outbound,
-  SeventySix$outboundSchema,
   SeventyThree,
   SeventyThree$inboundSchema,
-  SeventyThree$Outbound,
-  SeventyThree$outboundSchema,
   SeventyTwo,
   SeventyTwo$inboundSchema,
-  SeventyTwo$Outbound,
-  SeventyTwo$outboundSchema,
   Sixty,
   Sixty$inboundSchema,
-  Sixty$Outbound,
-  Sixty$outboundSchema,
   SixtyEight,
   SixtyEight$inboundSchema,
-  SixtyEight$Outbound,
-  SixtyEight$outboundSchema,
   SixtyFive,
   SixtyFive$inboundSchema,
-  SixtyFive$Outbound,
-  SixtyFive$outboundSchema,
   SixtyFour,
   SixtyFour$inboundSchema,
-  SixtyFour$Outbound,
-  SixtyFour$outboundSchema,
   SixtyNine,
   SixtyNine$inboundSchema,
-  SixtyNine$Outbound,
-  SixtyNine$outboundSchema,
   SixtyOne,
   SixtyOne$inboundSchema,
-  SixtyOne$Outbound,
-  SixtyOne$outboundSchema,
   SixtySeven,
   SixtySeven$inboundSchema,
-  SixtySeven$Outbound,
-  SixtySeven$outboundSchema,
   SixtySix,
   SixtySix$inboundSchema,
-  SixtySix$Outbound,
-  SixtySix$outboundSchema,
   SixtyThree,
   SixtyThree$inboundSchema,
-  SixtyThree$Outbound,
-  SixtyThree$outboundSchema,
   SixtyTwo,
   SixtyTwo$inboundSchema,
-  SixtyTwo$Outbound,
-  SixtyTwo$outboundSchema,
 } from "./fortyseven.js";
 import {
   NinetyEight,
   NinetyEight$inboundSchema,
-  NinetyEight$Outbound,
-  NinetyEight$outboundSchema,
   NinetyFive,
   NinetyFive$inboundSchema,
-  NinetyFive$Outbound,
-  NinetyFive$outboundSchema,
   NinetyFour,
   NinetyFour$inboundSchema,
-  NinetyFour$Outbound,
-  NinetyFour$outboundSchema,
   NinetyNine,
   NinetyNine$inboundSchema,
-  NinetyNine$Outbound,
-  NinetyNine$outboundSchema,
   NinetySeven,
   NinetySeven$inboundSchema,
-  NinetySeven$Outbound,
-  NinetySeven$outboundSchema,
   NinetySix,
   NinetySix$inboundSchema,
-  NinetySix$Outbound,
-  NinetySix$outboundSchema,
   OneHundred,
   OneHundred$inboundSchema,
-  OneHundred$Outbound,
-  OneHundred$outboundSchema,
   OneHundredAndEight,
   OneHundredAndEight$inboundSchema,
-  OneHundredAndEight$Outbound,
-  OneHundredAndEight$outboundSchema,
   OneHundredAndEighteen,
   OneHundredAndEighteen$inboundSchema,
-  OneHundredAndEighteen$Outbound,
-  OneHundredAndEighteen$outboundSchema,
   OneHundredAndEleven,
   OneHundredAndEleven$inboundSchema,
-  OneHundredAndEleven$Outbound,
-  OneHundredAndEleven$outboundSchema,
   OneHundredAndFifteen,
   OneHundredAndFifteen$inboundSchema,
-  OneHundredAndFifteen$Outbound,
-  OneHundredAndFifteen$outboundSchema,
   OneHundredAndFive,
   OneHundredAndFive$inboundSchema,
-  OneHundredAndFive$Outbound,
-  OneHundredAndFive$outboundSchema,
   OneHundredAndFour,
   OneHundredAndFour$inboundSchema,
-  OneHundredAndFour$Outbound,
-  OneHundredAndFour$outboundSchema,
   OneHundredAndFourteen,
   OneHundredAndFourteen$inboundSchema,
-  OneHundredAndFourteen$Outbound,
-  OneHundredAndFourteen$outboundSchema,
   OneHundredAndNine,
   OneHundredAndNine$inboundSchema,
-  OneHundredAndNine$Outbound,
-  OneHundredAndNine$outboundSchema,
   OneHundredAndNineteen,
   OneHundredAndNineteen$inboundSchema,
-  OneHundredAndNineteen$Outbound,
-  OneHundredAndNineteen$outboundSchema,
   OneHundredAndOne,
   OneHundredAndOne$inboundSchema,
-  OneHundredAndOne$Outbound,
-  OneHundredAndOne$outboundSchema,
   OneHundredAndSeven,
   OneHundredAndSeven$inboundSchema,
-  OneHundredAndSeven$Outbound,
-  OneHundredAndSeven$outboundSchema,
   OneHundredAndSeventeen,
   OneHundredAndSeventeen$inboundSchema,
-  OneHundredAndSeventeen$Outbound,
-  OneHundredAndSeventeen$outboundSchema,
   OneHundredAndSix,
   OneHundredAndSix$inboundSchema,
-  OneHundredAndSix$Outbound,
-  OneHundredAndSix$outboundSchema,
   OneHundredAndSixteen,
   OneHundredAndSixteen$inboundSchema,
-  OneHundredAndSixteen$Outbound,
-  OneHundredAndSixteen$outboundSchema,
   OneHundredAndTen,
   OneHundredAndTen$inboundSchema,
-  OneHundredAndTen$Outbound,
-  OneHundredAndTen$outboundSchema,
   OneHundredAndThirteen,
   OneHundredAndThirteen$inboundSchema,
-  OneHundredAndThirteen$Outbound,
-  OneHundredAndThirteen$outboundSchema,
   OneHundredAndThirty,
   OneHundredAndThirty$inboundSchema,
-  OneHundredAndThirty$Outbound,
-  OneHundredAndThirty$outboundSchema,
   OneHundredAndThree,
   OneHundredAndThree$inboundSchema,
-  OneHundredAndThree$Outbound,
-  OneHundredAndThree$outboundSchema,
   OneHundredAndTwelve,
   OneHundredAndTwelve$inboundSchema,
-  OneHundredAndTwelve$Outbound,
-  OneHundredAndTwelve$outboundSchema,
   OneHundredAndTwenty,
   OneHundredAndTwenty$inboundSchema,
-  OneHundredAndTwenty$Outbound,
-  OneHundredAndTwenty$outboundSchema,
   OneHundredAndTwentyEight,
   OneHundredAndTwentyEight$inboundSchema,
-  OneHundredAndTwentyEight$Outbound,
-  OneHundredAndTwentyEight$outboundSchema,
   OneHundredAndTwentyFive,
   OneHundredAndTwentyFive$inboundSchema,
-  OneHundredAndTwentyFive$Outbound,
-  OneHundredAndTwentyFive$outboundSchema,
   OneHundredAndTwentyFour,
   OneHundredAndTwentyFour$inboundSchema,
-  OneHundredAndTwentyFour$Outbound,
-  OneHundredAndTwentyFour$outboundSchema,
   OneHundredAndTwentyNine,
   OneHundredAndTwentyNine$inboundSchema,
-  OneHundredAndTwentyNine$Outbound,
-  OneHundredAndTwentyNine$outboundSchema,
   OneHundredAndTwentyOne,
   OneHundredAndTwentyOne$inboundSchema,
-  OneHundredAndTwentyOne$Outbound,
-  OneHundredAndTwentyOne$outboundSchema,
   OneHundredAndTwentySeven,
   OneHundredAndTwentySeven$inboundSchema,
-  OneHundredAndTwentySeven$Outbound,
-  OneHundredAndTwentySeven$outboundSchema,
   OneHundredAndTwentySix,
   OneHundredAndTwentySix$inboundSchema,
-  OneHundredAndTwentySix$Outbound,
-  OneHundredAndTwentySix$outboundSchema,
   OneHundredAndTwentyThree,
   OneHundredAndTwentyThree$inboundSchema,
-  OneHundredAndTwentyThree$Outbound,
-  OneHundredAndTwentyThree$outboundSchema,
   OneHundredAndTwentyTwo,
   OneHundredAndTwentyTwo$inboundSchema,
-  OneHundredAndTwentyTwo$Outbound,
-  OneHundredAndTwentyTwo$outboundSchema,
   OneHundredAndTwo,
   OneHundredAndTwo$inboundSchema,
-  OneHundredAndTwo$Outbound,
-  OneHundredAndTwo$outboundSchema,
 } from "./ninetyfour.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 import {
   Categories,
   Categories$inboundSchema,
-  Categories$outboundSchema,
   Entities,
   Entities$inboundSchema,
-  Entities$Outbound,
-  Entities$outboundSchema,
   Principal,
   Principal$inboundSchema,
-  Principal$Outbound,
-  Principal$outboundSchema,
   ThreeHundred,
   ThreeHundred$inboundSchema,
-  ThreeHundred$Outbound,
-  ThreeHundred$outboundSchema,
   ThreeHundredAndEight,
   ThreeHundredAndEight$inboundSchema,
-  ThreeHundredAndEight$Outbound,
-  ThreeHundredAndEight$outboundSchema,
   ThreeHundredAndEighteen,
   ThreeHundredAndEighteen$inboundSchema,
-  ThreeHundredAndEighteen$Outbound,
-  ThreeHundredAndEighteen$outboundSchema,
   ThreeHundredAndEleven,
   ThreeHundredAndEleven$inboundSchema,
-  ThreeHundredAndEleven$Outbound,
-  ThreeHundredAndEleven$outboundSchema,
   ThreeHundredAndFifteen,
   ThreeHundredAndFifteen$inboundSchema,
-  ThreeHundredAndFifteen$Outbound,
-  ThreeHundredAndFifteen$outboundSchema,
   ThreeHundredAndFive,
   ThreeHundredAndFive$inboundSchema,
-  ThreeHundredAndFive$Outbound,
-  ThreeHundredAndFive$outboundSchema,
   ThreeHundredAndForty,
   ThreeHundredAndForty$inboundSchema,
-  ThreeHundredAndForty$Outbound,
-  ThreeHundredAndForty$outboundSchema,
   ThreeHundredAndFortyOne,
   ThreeHundredAndFortyOne$inboundSchema,
-  ThreeHundredAndFortyOne$Outbound,
-  ThreeHundredAndFortyOne$outboundSchema,
   ThreeHundredAndFortyTwo,
   ThreeHundredAndFortyTwo$inboundSchema,
-  ThreeHundredAndFortyTwo$Outbound,
-  ThreeHundredAndFortyTwo$outboundSchema,
   ThreeHundredAndFour,
   ThreeHundredAndFour$inboundSchema,
-  ThreeHundredAndFour$Outbound,
-  ThreeHundredAndFour$outboundSchema,
   ThreeHundredAndFourteen,
   ThreeHundredAndFourteen$inboundSchema,
-  ThreeHundredAndFourteen$Outbound,
-  ThreeHundredAndFourteen$outboundSchema,
   ThreeHundredAndNine,
   ThreeHundredAndNine$inboundSchema,
-  ThreeHundredAndNine$Outbound,
-  ThreeHundredAndNine$outboundSchema,
   ThreeHundredAndNineteen,
   ThreeHundredAndNineteen$inboundSchema,
-  ThreeHundredAndNineteen$Outbound,
-  ThreeHundredAndNineteen$outboundSchema,
   ThreeHundredAndOne,
   ThreeHundredAndOne$inboundSchema,
-  ThreeHundredAndOne$Outbound,
-  ThreeHundredAndOne$outboundSchema,
   ThreeHundredAndSeven,
   ThreeHundredAndSeven$inboundSchema,
-  ThreeHundredAndSeven$Outbound,
-  ThreeHundredAndSeven$outboundSchema,
   ThreeHundredAndSeventeen,
   ThreeHundredAndSeventeen$inboundSchema,
-  ThreeHundredAndSeventeen$Outbound,
-  ThreeHundredAndSeventeen$outboundSchema,
   ThreeHundredAndSix,
   ThreeHundredAndSix$inboundSchema,
-  ThreeHundredAndSix$Outbound,
-  ThreeHundredAndSix$outboundSchema,
   ThreeHundredAndSixteen,
   ThreeHundredAndSixteen$inboundSchema,
-  ThreeHundredAndSixteen$Outbound,
-  ThreeHundredAndSixteen$outboundSchema,
   ThreeHundredAndTen,
   ThreeHundredAndTen$inboundSchema,
-  ThreeHundredAndTen$Outbound,
-  ThreeHundredAndTen$outboundSchema,
   ThreeHundredAndThirteen,
   ThreeHundredAndThirteen$inboundSchema,
-  ThreeHundredAndThirteen$Outbound,
-  ThreeHundredAndThirteen$outboundSchema,
   ThreeHundredAndThirty,
   ThreeHundredAndThirty$inboundSchema,
-  ThreeHundredAndThirty$Outbound,
-  ThreeHundredAndThirty$outboundSchema,
   ThreeHundredAndThirtyEight,
   ThreeHundredAndThirtyEight$inboundSchema,
-  ThreeHundredAndThirtyEight$Outbound,
-  ThreeHundredAndThirtyEight$outboundSchema,
   ThreeHundredAndThirtyFive,
   ThreeHundredAndThirtyFive$inboundSchema,
-  ThreeHundredAndThirtyFive$Outbound,
-  ThreeHundredAndThirtyFive$outboundSchema,
   ThreeHundredAndThirtyFour,
   ThreeHundredAndThirtyFour$inboundSchema,
-  ThreeHundredAndThirtyFour$Outbound,
-  ThreeHundredAndThirtyFour$outboundSchema,
   ThreeHundredAndThirtyNine,
   ThreeHundredAndThirtyNine$inboundSchema,
-  ThreeHundredAndThirtyNine$Outbound,
-  ThreeHundredAndThirtyNine$outboundSchema,
   ThreeHundredAndThirtyOne,
   ThreeHundredAndThirtyOne$inboundSchema,
-  ThreeHundredAndThirtyOne$Outbound,
-  ThreeHundredAndThirtyOne$outboundSchema,
   ThreeHundredAndThirtySeven,
   ThreeHundredAndThirtySeven$inboundSchema,
-  ThreeHundredAndThirtySeven$Outbound,
-  ThreeHundredAndThirtySeven$outboundSchema,
   ThreeHundredAndThirtySix,
   ThreeHundredAndThirtySix$inboundSchema,
-  ThreeHundredAndThirtySix$Outbound,
-  ThreeHundredAndThirtySix$outboundSchema,
   ThreeHundredAndThirtyThree,
   ThreeHundredAndThirtyThree$inboundSchema,
-  ThreeHundredAndThirtyThree$Outbound,
-  ThreeHundredAndThirtyThree$outboundSchema,
   ThreeHundredAndThirtyTwo,
   ThreeHundredAndThirtyTwo$inboundSchema,
-  ThreeHundredAndThirtyTwo$Outbound,
-  ThreeHundredAndThirtyTwo$outboundSchema,
   ThreeHundredAndThree,
   ThreeHundredAndThree$inboundSchema,
-  ThreeHundredAndThree$Outbound,
-  ThreeHundredAndThree$outboundSchema,
   ThreeHundredAndTwelve,
   ThreeHundredAndTwelve$inboundSchema,
-  ThreeHundredAndTwelve$Outbound,
-  ThreeHundredAndTwelve$outboundSchema,
   ThreeHundredAndTwenty,
   ThreeHundredAndTwenty$inboundSchema,
-  ThreeHundredAndTwenty$Outbound,
-  ThreeHundredAndTwenty$outboundSchema,
   ThreeHundredAndTwentyEight,
   ThreeHundredAndTwentyEight$inboundSchema,
-  ThreeHundredAndTwentyEight$Outbound,
-  ThreeHundredAndTwentyEight$outboundSchema,
   ThreeHundredAndTwentyFive,
   ThreeHundredAndTwentyFive$inboundSchema,
-  ThreeHundredAndTwentyFive$Outbound,
-  ThreeHundredAndTwentyFive$outboundSchema,
   ThreeHundredAndTwentyFour,
   ThreeHundredAndTwentyFour$inboundSchema,
-  ThreeHundredAndTwentyFour$Outbound,
-  ThreeHundredAndTwentyFour$outboundSchema,
   ThreeHundredAndTwentyNine,
   ThreeHundredAndTwentyNine$inboundSchema,
-  ThreeHundredAndTwentyNine$Outbound,
-  ThreeHundredAndTwentyNine$outboundSchema,
   ThreeHundredAndTwentyOne,
   ThreeHundredAndTwentyOne$inboundSchema,
-  ThreeHundredAndTwentyOne$Outbound,
-  ThreeHundredAndTwentyOne$outboundSchema,
   ThreeHundredAndTwentySeven,
   ThreeHundredAndTwentySeven$inboundSchema,
-  ThreeHundredAndTwentySeven$Outbound,
-  ThreeHundredAndTwentySeven$outboundSchema,
   ThreeHundredAndTwentySix,
   ThreeHundredAndTwentySix$inboundSchema,
-  ThreeHundredAndTwentySix$Outbound,
-  ThreeHundredAndTwentySix$outboundSchema,
   ThreeHundredAndTwentyThree,
   ThreeHundredAndTwentyThree$inboundSchema,
-  ThreeHundredAndTwentyThree$Outbound,
-  ThreeHundredAndTwentyThree$outboundSchema,
   ThreeHundredAndTwentyTwo,
   ThreeHundredAndTwentyTwo$inboundSchema,
-  ThreeHundredAndTwentyTwo$Outbound,
-  ThreeHundredAndTwentyTwo$outboundSchema,
   ThreeHundredAndTwo,
   ThreeHundredAndTwo$inboundSchema,
-  ThreeHundredAndTwo$Outbound,
-  ThreeHundredAndTwo$outboundSchema,
   TwoHundredAndNinety,
   TwoHundredAndNinety$inboundSchema,
-  TwoHundredAndNinety$Outbound,
-  TwoHundredAndNinety$outboundSchema,
   TwoHundredAndNinetyEight,
   TwoHundredAndNinetyEight$inboundSchema,
-  TwoHundredAndNinetyEight$Outbound,
-  TwoHundredAndNinetyEight$outboundSchema,
   TwoHundredAndNinetyFive,
   TwoHundredAndNinetyFive$inboundSchema,
-  TwoHundredAndNinetyFive$Outbound,
-  TwoHundredAndNinetyFive$outboundSchema,
   TwoHundredAndNinetyFour,
   TwoHundredAndNinetyFour$inboundSchema,
-  TwoHundredAndNinetyFour$Outbound,
-  TwoHundredAndNinetyFour$outboundSchema,
   TwoHundredAndNinetyNine,
   TwoHundredAndNinetyNine$inboundSchema,
-  TwoHundredAndNinetyNine$Outbound,
-  TwoHundredAndNinetyNine$outboundSchema,
   TwoHundredAndNinetyOne,
   TwoHundredAndNinetyOne$inboundSchema,
-  TwoHundredAndNinetyOne$Outbound,
-  TwoHundredAndNinetyOne$outboundSchema,
   TwoHundredAndNinetySeven,
   TwoHundredAndNinetySeven$inboundSchema,
-  TwoHundredAndNinetySeven$Outbound,
-  TwoHundredAndNinetySeven$outboundSchema,
   TwoHundredAndNinetySix,
   TwoHundredAndNinetySix$inboundSchema,
-  TwoHundredAndNinetySix$Outbound,
-  TwoHundredAndNinetySix$outboundSchema,
   TwoHundredAndNinetyThree,
   TwoHundredAndNinetyThree$inboundSchema,
-  TwoHundredAndNinetyThree$Outbound,
-  TwoHundredAndNinetyThree$outboundSchema,
   TwoHundredAndNinetyTwo,
   TwoHundredAndNinetyTwo$inboundSchema,
-  TwoHundredAndNinetyTwo$Outbound,
-  TwoHundredAndNinetyTwo$outboundSchema,
   Type,
   Type$inboundSchema,
-  Type$outboundSchema,
   User,
   User$inboundSchema,
-  User$Outbound,
-  User$outboundSchema,
   Via,
   Via$inboundSchema,
-  Via$Outbound,
-  Via$outboundSchema,
 } from "./twohundredandninety.js";
 import {
   TwoHundredAndEighty,
   TwoHundredAndEighty$inboundSchema,
-  TwoHundredAndEighty$Outbound,
-  TwoHundredAndEighty$outboundSchema,
   TwoHundredAndEightyEight,
   TwoHundredAndEightyEight$inboundSchema,
-  TwoHundredAndEightyEight$Outbound,
-  TwoHundredAndEightyEight$outboundSchema,
   TwoHundredAndEightyFive,
   TwoHundredAndEightyFive$inboundSchema,
-  TwoHundredAndEightyFive$Outbound,
-  TwoHundredAndEightyFive$outboundSchema,
   TwoHundredAndEightyFour,
   TwoHundredAndEightyFour$inboundSchema,
-  TwoHundredAndEightyFour$Outbound,
-  TwoHundredAndEightyFour$outboundSchema,
   TwoHundredAndEightyNine,
   TwoHundredAndEightyNine$inboundSchema,
-  TwoHundredAndEightyNine$Outbound,
-  TwoHundredAndEightyNine$outboundSchema,
   TwoHundredAndEightyOne,
   TwoHundredAndEightyOne$inboundSchema,
-  TwoHundredAndEightyOne$Outbound,
-  TwoHundredAndEightyOne$outboundSchema,
   TwoHundredAndEightySeven,
   TwoHundredAndEightySeven$inboundSchema,
-  TwoHundredAndEightySeven$Outbound,
-  TwoHundredAndEightySeven$outboundSchema,
   TwoHundredAndEightySix,
   TwoHundredAndEightySix$inboundSchema,
-  TwoHundredAndEightySix$Outbound,
-  TwoHundredAndEightySix$outboundSchema,
   TwoHundredAndEightyThree,
   TwoHundredAndEightyThree$inboundSchema,
-  TwoHundredAndEightyThree$Outbound,
-  TwoHundredAndEightyThree$outboundSchema,
   TwoHundredAndEightyTwo,
   TwoHundredAndEightyTwo$inboundSchema,
-  TwoHundredAndEightyTwo$Outbound,
-  TwoHundredAndEightyTwo$outboundSchema,
   TwoHundredAndFifty,
   TwoHundredAndFifty$inboundSchema,
-  TwoHundredAndFifty$Outbound,
-  TwoHundredAndFifty$outboundSchema,
   TwoHundredAndFiftyEight,
   TwoHundredAndFiftyEight$inboundSchema,
-  TwoHundredAndFiftyEight$Outbound,
-  TwoHundredAndFiftyEight$outboundSchema,
   TwoHundredAndFiftyFive,
   TwoHundredAndFiftyFive$inboundSchema,
-  TwoHundredAndFiftyFive$Outbound,
-  TwoHundredAndFiftyFive$outboundSchema,
   TwoHundredAndFiftyFour,
   TwoHundredAndFiftyFour$inboundSchema,
-  TwoHundredAndFiftyFour$Outbound,
-  TwoHundredAndFiftyFour$outboundSchema,
   TwoHundredAndFiftyNine,
   TwoHundredAndFiftyNine$inboundSchema,
-  TwoHundredAndFiftyNine$Outbound,
-  TwoHundredAndFiftyNine$outboundSchema,
   TwoHundredAndFiftyOne,
   TwoHundredAndFiftyOne$inboundSchema,
-  TwoHundredAndFiftyOne$Outbound,
-  TwoHundredAndFiftyOne$outboundSchema,
   TwoHundredAndFiftySeven,
   TwoHundredAndFiftySeven$inboundSchema,
-  TwoHundredAndFiftySeven$Outbound,
-  TwoHundredAndFiftySeven$outboundSchema,
   TwoHundredAndFiftySix,
   TwoHundredAndFiftySix$inboundSchema,
-  TwoHundredAndFiftySix$Outbound,
-  TwoHundredAndFiftySix$outboundSchema,
   TwoHundredAndFiftyThree,
   TwoHundredAndFiftyThree$inboundSchema,
-  TwoHundredAndFiftyThree$Outbound,
-  TwoHundredAndFiftyThree$outboundSchema,
   TwoHundredAndFiftyTwo,
   TwoHundredAndFiftyTwo$inboundSchema,
-  TwoHundredAndFiftyTwo$Outbound,
-  TwoHundredAndFiftyTwo$outboundSchema,
   TwoHundredAndForty,
   TwoHundredAndForty$inboundSchema,
-  TwoHundredAndForty$Outbound,
-  TwoHundredAndForty$outboundSchema,
   TwoHundredAndFortyEight,
   TwoHundredAndFortyEight$inboundSchema,
-  TwoHundredAndFortyEight$Outbound,
-  TwoHundredAndFortyEight$outboundSchema,
   TwoHundredAndFortyFive,
   TwoHundredAndFortyFive$inboundSchema,
-  TwoHundredAndFortyFive$Outbound,
-  TwoHundredAndFortyFive$outboundSchema,
   TwoHundredAndFortyFour,
   TwoHundredAndFortyFour$inboundSchema,
-  TwoHundredAndFortyFour$Outbound,
-  TwoHundredAndFortyFour$outboundSchema,
   TwoHundredAndFortyNine,
   TwoHundredAndFortyNine$inboundSchema,
-  TwoHundredAndFortyNine$Outbound,
-  TwoHundredAndFortyNine$outboundSchema,
   TwoHundredAndFortyOne,
   TwoHundredAndFortyOne$inboundSchema,
-  TwoHundredAndFortyOne$Outbound,
-  TwoHundredAndFortyOne$outboundSchema,
   TwoHundredAndFortySeven,
   TwoHundredAndFortySeven$inboundSchema,
-  TwoHundredAndFortySeven$Outbound,
-  TwoHundredAndFortySeven$outboundSchema,
   TwoHundredAndFortySix,
   TwoHundredAndFortySix$inboundSchema,
-  TwoHundredAndFortySix$Outbound,
-  TwoHundredAndFortySix$outboundSchema,
   TwoHundredAndFortyThree,
   TwoHundredAndFortyThree$inboundSchema,
-  TwoHundredAndFortyThree$Outbound,
-  TwoHundredAndFortyThree$outboundSchema,
   TwoHundredAndFortyTwo,
   TwoHundredAndFortyTwo$inboundSchema,
-  TwoHundredAndFortyTwo$Outbound,
-  TwoHundredAndFortyTwo$outboundSchema,
   TwoHundredAndSeventy,
   TwoHundredAndSeventy$inboundSchema,
-  TwoHundredAndSeventy$Outbound,
-  TwoHundredAndSeventy$outboundSchema,
   TwoHundredAndSeventyEight,
   TwoHundredAndSeventyEight$inboundSchema,
-  TwoHundredAndSeventyEight$Outbound,
-  TwoHundredAndSeventyEight$outboundSchema,
   TwoHundredAndSeventyFive,
   TwoHundredAndSeventyFive$inboundSchema,
-  TwoHundredAndSeventyFive$Outbound,
-  TwoHundredAndSeventyFive$outboundSchema,
   TwoHundredAndSeventyFour,
   TwoHundredAndSeventyFour$inboundSchema,
-  TwoHundredAndSeventyFour$Outbound,
-  TwoHundredAndSeventyFour$outboundSchema,
   TwoHundredAndSeventyNine,
   TwoHundredAndSeventyNine$inboundSchema,
-  TwoHundredAndSeventyNine$Outbound,
-  TwoHundredAndSeventyNine$outboundSchema,
   TwoHundredAndSeventyOne,
   TwoHundredAndSeventyOne$inboundSchema,
-  TwoHundredAndSeventyOne$Outbound,
-  TwoHundredAndSeventyOne$outboundSchema,
   TwoHundredAndSeventySeven,
   TwoHundredAndSeventySeven$inboundSchema,
-  TwoHundredAndSeventySeven$Outbound,
-  TwoHundredAndSeventySeven$outboundSchema,
   TwoHundredAndSeventySix,
   TwoHundredAndSeventySix$inboundSchema,
-  TwoHundredAndSeventySix$Outbound,
-  TwoHundredAndSeventySix$outboundSchema,
   TwoHundredAndSeventyThree,
   TwoHundredAndSeventyThree$inboundSchema,
-  TwoHundredAndSeventyThree$Outbound,
-  TwoHundredAndSeventyThree$outboundSchema,
   TwoHundredAndSeventyTwo,
   TwoHundredAndSeventyTwo$inboundSchema,
-  TwoHundredAndSeventyTwo$Outbound,
-  TwoHundredAndSeventyTwo$outboundSchema,
   TwoHundredAndSixty,
   TwoHundredAndSixty$inboundSchema,
-  TwoHundredAndSixty$Outbound,
-  TwoHundredAndSixty$outboundSchema,
   TwoHundredAndSixtyEight,
   TwoHundredAndSixtyEight$inboundSchema,
-  TwoHundredAndSixtyEight$Outbound,
-  TwoHundredAndSixtyEight$outboundSchema,
   TwoHundredAndSixtyFive,
   TwoHundredAndSixtyFive$inboundSchema,
-  TwoHundredAndSixtyFive$Outbound,
-  TwoHundredAndSixtyFive$outboundSchema,
   TwoHundredAndSixtyFour,
   TwoHundredAndSixtyFour$inboundSchema,
-  TwoHundredAndSixtyFour$Outbound,
-  TwoHundredAndSixtyFour$outboundSchema,
   TwoHundredAndSixtyNine,
   TwoHundredAndSixtyNine$inboundSchema,
-  TwoHundredAndSixtyNine$Outbound,
-  TwoHundredAndSixtyNine$outboundSchema,
   TwoHundredAndSixtyOne,
   TwoHundredAndSixtyOne$inboundSchema,
-  TwoHundredAndSixtyOne$Outbound,
-  TwoHundredAndSixtyOne$outboundSchema,
   TwoHundredAndSixtySeven,
   TwoHundredAndSixtySeven$inboundSchema,
-  TwoHundredAndSixtySeven$Outbound,
-  TwoHundredAndSixtySeven$outboundSchema,
   TwoHundredAndSixtySix,
   TwoHundredAndSixtySix$inboundSchema,
-  TwoHundredAndSixtySix$Outbound,
-  TwoHundredAndSixtySix$outboundSchema,
   TwoHundredAndSixtyThree,
   TwoHundredAndSixtyThree$inboundSchema,
-  TwoHundredAndSixtyThree$Outbound,
-  TwoHundredAndSixtyThree$outboundSchema,
   TwoHundredAndSixtyTwo,
   TwoHundredAndSixtyTwo$inboundSchema,
-  TwoHundredAndSixtyTwo$Outbound,
-  TwoHundredAndSixtyTwo$outboundSchema,
   TwoHundredAndThirtyEight,
   TwoHundredAndThirtyEight$inboundSchema,
-  TwoHundredAndThirtyEight$Outbound,
-  TwoHundredAndThirtyEight$outboundSchema,
   TwoHundredAndThirtyFive,
   TwoHundredAndThirtyFive$inboundSchema,
-  TwoHundredAndThirtyFive$Outbound,
-  TwoHundredAndThirtyFive$outboundSchema,
   TwoHundredAndThirtyFour,
   TwoHundredAndThirtyFour$inboundSchema,
-  TwoHundredAndThirtyFour$Outbound,
-  TwoHundredAndThirtyFour$outboundSchema,
   TwoHundredAndThirtyNine,
   TwoHundredAndThirtyNine$inboundSchema,
-  TwoHundredAndThirtyNine$Outbound,
-  TwoHundredAndThirtyNine$outboundSchema,
   TwoHundredAndThirtyOne,
   TwoHundredAndThirtyOne$inboundSchema,
-  TwoHundredAndThirtyOne$Outbound,
-  TwoHundredAndThirtyOne$outboundSchema,
   TwoHundredAndThirtySeven,
   TwoHundredAndThirtySeven$inboundSchema,
-  TwoHundredAndThirtySeven$Outbound,
-  TwoHundredAndThirtySeven$outboundSchema,
   TwoHundredAndThirtySix,
   TwoHundredAndThirtySix$inboundSchema,
-  TwoHundredAndThirtySix$Outbound,
-  TwoHundredAndThirtySix$outboundSchema,
   TwoHundredAndThirtyThree,
   TwoHundredAndThirtyThree$inboundSchema,
-  TwoHundredAndThirtyThree$Outbound,
-  TwoHundredAndThirtyThree$outboundSchema,
   TwoHundredAndThirtyTwo,
   TwoHundredAndThirtyTwo$inboundSchema,
-  TwoHundredAndThirtyTwo$Outbound,
-  TwoHundredAndThirtyTwo$outboundSchema,
 } from "./twohundredandthirtyone.js";
 import {
   OneHundredAndEighty,
   OneHundredAndEighty$inboundSchema,
-  OneHundredAndEighty$Outbound,
-  OneHundredAndEighty$outboundSchema,
   OneHundredAndEightyEight,
   OneHundredAndEightyEight$inboundSchema,
-  OneHundredAndEightyEight$Outbound,
-  OneHundredAndEightyEight$outboundSchema,
   OneHundredAndEightyFive,
   OneHundredAndEightyFive$inboundSchema,
-  OneHundredAndEightyFive$Outbound,
-  OneHundredAndEightyFive$outboundSchema,
   OneHundredAndEightyFour,
   OneHundredAndEightyFour$inboundSchema,
-  OneHundredAndEightyFour$Outbound,
-  OneHundredAndEightyFour$outboundSchema,
   OneHundredAndEightyNine,
   OneHundredAndEightyNine$inboundSchema,
-  OneHundredAndEightyNine$Outbound,
-  OneHundredAndEightyNine$outboundSchema,
   OneHundredAndEightyOne,
   OneHundredAndEightyOne$inboundSchema,
-  OneHundredAndEightyOne$Outbound,
-  OneHundredAndEightyOne$outboundSchema,
   OneHundredAndEightySeven,
   OneHundredAndEightySeven$inboundSchema,
-  OneHundredAndEightySeven$Outbound,
-  OneHundredAndEightySeven$outboundSchema,
   OneHundredAndEightySix,
   OneHundredAndEightySix$inboundSchema,
-  OneHundredAndEightySix$Outbound,
-  OneHundredAndEightySix$outboundSchema,
   OneHundredAndEightyThree,
   OneHundredAndEightyThree$inboundSchema,
-  OneHundredAndEightyThree$Outbound,
-  OneHundredAndEightyThree$outboundSchema,
   OneHundredAndEightyTwo,
   OneHundredAndEightyTwo$inboundSchema,
-  OneHundredAndEightyTwo$Outbound,
-  OneHundredAndEightyTwo$outboundSchema,
   OneHundredAndNinety,
   OneHundredAndNinety$inboundSchema,
-  OneHundredAndNinety$Outbound,
-  OneHundredAndNinety$outboundSchema,
   OneHundredAndNinetyEight,
   OneHundredAndNinetyEight$inboundSchema,
-  OneHundredAndNinetyEight$Outbound,
-  OneHundredAndNinetyEight$outboundSchema,
   OneHundredAndNinetyFive,
   OneHundredAndNinetyFive$inboundSchema,
-  OneHundredAndNinetyFive$Outbound,
-  OneHundredAndNinetyFive$outboundSchema,
   OneHundredAndNinetyFour,
   OneHundredAndNinetyFour$inboundSchema,
-  OneHundredAndNinetyFour$Outbound,
-  OneHundredAndNinetyFour$outboundSchema,
   OneHundredAndNinetyNine,
   OneHundredAndNinetyNine$inboundSchema,
-  OneHundredAndNinetyNine$Outbound,
-  OneHundredAndNinetyNine$outboundSchema,
   OneHundredAndNinetyOne,
   OneHundredAndNinetyOne$inboundSchema,
-  OneHundredAndNinetyOne$Outbound,
-  OneHundredAndNinetyOne$outboundSchema,
   OneHundredAndNinetySeven,
   OneHundredAndNinetySeven$inboundSchema,
-  OneHundredAndNinetySeven$Outbound,
-  OneHundredAndNinetySeven$outboundSchema,
   OneHundredAndNinetySix,
   OneHundredAndNinetySix$inboundSchema,
-  OneHundredAndNinetySix$Outbound,
-  OneHundredAndNinetySix$outboundSchema,
   OneHundredAndNinetyThree,
   OneHundredAndNinetyThree$inboundSchema,
-  OneHundredAndNinetyThree$Outbound,
-  OneHundredAndNinetyThree$outboundSchema,
   OneHundredAndNinetyTwo,
   OneHundredAndNinetyTwo$inboundSchema,
-  OneHundredAndNinetyTwo$Outbound,
-  OneHundredAndNinetyTwo$outboundSchema,
   OneHundredAndSeventy,
   OneHundredAndSeventy$inboundSchema,
-  OneHundredAndSeventy$Outbound,
-  OneHundredAndSeventy$outboundSchema,
   OneHundredAndSeventyEight,
   OneHundredAndSeventyEight$inboundSchema,
-  OneHundredAndSeventyEight$Outbound,
-  OneHundredAndSeventyEight$outboundSchema,
   OneHundredAndSeventyFive,
   OneHundredAndSeventyFive$inboundSchema,
-  OneHundredAndSeventyFive$Outbound,
-  OneHundredAndSeventyFive$outboundSchema,
   OneHundredAndSeventyFour,
   OneHundredAndSeventyFour$inboundSchema,
-  OneHundredAndSeventyFour$Outbound,
-  OneHundredAndSeventyFour$outboundSchema,
   OneHundredAndSeventyNine,
   OneHundredAndSeventyNine$inboundSchema,
-  OneHundredAndSeventyNine$Outbound,
-  OneHundredAndSeventyNine$outboundSchema,
   OneHundredAndSeventyOne,
   OneHundredAndSeventyOne$inboundSchema,
-  OneHundredAndSeventyOne$Outbound,
-  OneHundredAndSeventyOne$outboundSchema,
   OneHundredAndSeventySeven,
   OneHundredAndSeventySeven$inboundSchema,
-  OneHundredAndSeventySeven$Outbound,
-  OneHundredAndSeventySeven$outboundSchema,
   OneHundredAndSeventySix,
   OneHundredAndSeventySix$inboundSchema,
-  OneHundredAndSeventySix$Outbound,
-  OneHundredAndSeventySix$outboundSchema,
   OneHundredAndSeventyThree,
   OneHundredAndSeventyThree$inboundSchema,
-  OneHundredAndSeventyThree$Outbound,
-  OneHundredAndSeventyThree$outboundSchema,
   OneHundredAndSeventyTwo,
   OneHundredAndSeventyTwo$inboundSchema,
-  OneHundredAndSeventyTwo$Outbound,
-  OneHundredAndSeventyTwo$outboundSchema,
   OneHundredAndSixtyEight,
   OneHundredAndSixtyEight$inboundSchema,
-  OneHundredAndSixtyEight$Outbound,
-  OneHundredAndSixtyEight$outboundSchema,
   OneHundredAndSixtyFive,
   OneHundredAndSixtyFive$inboundSchema,
-  OneHundredAndSixtyFive$Outbound,
-  OneHundredAndSixtyFive$outboundSchema,
   OneHundredAndSixtyFour,
   OneHundredAndSixtyFour$inboundSchema,
-  OneHundredAndSixtyFour$Outbound,
-  OneHundredAndSixtyFour$outboundSchema,
   OneHundredAndSixtyNine,
   OneHundredAndSixtyNine$inboundSchema,
-  OneHundredAndSixtyNine$Outbound,
-  OneHundredAndSixtyNine$outboundSchema,
   OneHundredAndSixtySeven,
   OneHundredAndSixtySeven$inboundSchema,
-  OneHundredAndSixtySeven$Outbound,
-  OneHundredAndSixtySeven$outboundSchema,
   OneHundredAndSixtySix,
   OneHundredAndSixtySix$inboundSchema,
-  OneHundredAndSixtySix$Outbound,
-  OneHundredAndSixtySix$outboundSchema,
   OneHundredAndSixtyThree,
   OneHundredAndSixtyThree$inboundSchema,
-  OneHundredAndSixtyThree$Outbound,
-  OneHundredAndSixtyThree$outboundSchema,
   TwoHundred,
   TwoHundred$inboundSchema,
-  TwoHundred$Outbound,
-  TwoHundred$outboundSchema,
   TwoHundredAndEight,
   TwoHundredAndEight$inboundSchema,
-  TwoHundredAndEight$Outbound,
-  TwoHundredAndEight$outboundSchema,
   TwoHundredAndEighteen,
   TwoHundredAndEighteen$inboundSchema,
-  TwoHundredAndEighteen$Outbound,
-  TwoHundredAndEighteen$outboundSchema,
   TwoHundredAndEleven,
   TwoHundredAndEleven$inboundSchema,
-  TwoHundredAndEleven$Outbound,
-  TwoHundredAndEleven$outboundSchema,
   TwoHundredAndFifteen,
   TwoHundredAndFifteen$inboundSchema,
-  TwoHundredAndFifteen$Outbound,
-  TwoHundredAndFifteen$outboundSchema,
   TwoHundredAndFive,
   TwoHundredAndFive$inboundSchema,
-  TwoHundredAndFive$Outbound,
-  TwoHundredAndFive$outboundSchema,
   TwoHundredAndFour,
   TwoHundredAndFour$inboundSchema,
-  TwoHundredAndFour$Outbound,
-  TwoHundredAndFour$outboundSchema,
   TwoHundredAndFourteen,
   TwoHundredAndFourteen$inboundSchema,
-  TwoHundredAndFourteen$Outbound,
-  TwoHundredAndFourteen$outboundSchema,
   TwoHundredAndNine,
   TwoHundredAndNine$inboundSchema,
-  TwoHundredAndNine$Outbound,
-  TwoHundredAndNine$outboundSchema,
   TwoHundredAndNineteen,
   TwoHundredAndNineteen$inboundSchema,
-  TwoHundredAndNineteen$Outbound,
-  TwoHundredAndNineteen$outboundSchema,
   TwoHundredAndOne,
   TwoHundredAndOne$inboundSchema,
-  TwoHundredAndOne$Outbound,
-  TwoHundredAndOne$outboundSchema,
   TwoHundredAndSeven,
   TwoHundredAndSeven$inboundSchema,
-  TwoHundredAndSeven$Outbound,
-  TwoHundredAndSeven$outboundSchema,
   TwoHundredAndSeventeen,
   TwoHundredAndSeventeen$inboundSchema,
-  TwoHundredAndSeventeen$Outbound,
-  TwoHundredAndSeventeen$outboundSchema,
   TwoHundredAndSix,
   TwoHundredAndSix$inboundSchema,
-  TwoHundredAndSix$Outbound,
-  TwoHundredAndSix$outboundSchema,
   TwoHundredAndSixteen,
   TwoHundredAndSixteen$inboundSchema,
-  TwoHundredAndSixteen$Outbound,
-  TwoHundredAndSixteen$outboundSchema,
   TwoHundredAndTen,
   TwoHundredAndTen$inboundSchema,
-  TwoHundredAndTen$Outbound,
-  TwoHundredAndTen$outboundSchema,
   TwoHundredAndThirteen,
   TwoHundredAndThirteen$inboundSchema,
-  TwoHundredAndThirteen$Outbound,
-  TwoHundredAndThirteen$outboundSchema,
   TwoHundredAndThirty,
   TwoHundredAndThirty$inboundSchema,
-  TwoHundredAndThirty$Outbound,
-  TwoHundredAndThirty$outboundSchema,
   TwoHundredAndThree,
   TwoHundredAndThree$inboundSchema,
-  TwoHundredAndThree$Outbound,
-  TwoHundredAndThree$outboundSchema,
   TwoHundredAndTwelve,
   TwoHundredAndTwelve$inboundSchema,
-  TwoHundredAndTwelve$Outbound,
-  TwoHundredAndTwelve$outboundSchema,
   TwoHundredAndTwenty,
   TwoHundredAndTwenty$inboundSchema,
-  TwoHundredAndTwenty$Outbound,
-  TwoHundredAndTwenty$outboundSchema,
   TwoHundredAndTwentyEight,
   TwoHundredAndTwentyEight$inboundSchema,
-  TwoHundredAndTwentyEight$Outbound,
-  TwoHundredAndTwentyEight$outboundSchema,
   TwoHundredAndTwentyFive,
   TwoHundredAndTwentyFive$inboundSchema,
-  TwoHundredAndTwentyFive$Outbound,
-  TwoHundredAndTwentyFive$outboundSchema,
   TwoHundredAndTwentyFour,
   TwoHundredAndTwentyFour$inboundSchema,
-  TwoHundredAndTwentyFour$Outbound,
-  TwoHundredAndTwentyFour$outboundSchema,
   TwoHundredAndTwentyNine,
   TwoHundredAndTwentyNine$inboundSchema,
-  TwoHundredAndTwentyNine$Outbound,
-  TwoHundredAndTwentyNine$outboundSchema,
   TwoHundredAndTwentyOne,
   TwoHundredAndTwentyOne$inboundSchema,
-  TwoHundredAndTwentyOne$Outbound,
-  TwoHundredAndTwentyOne$outboundSchema,
   TwoHundredAndTwentySeven,
   TwoHundredAndTwentySeven$inboundSchema,
-  TwoHundredAndTwentySeven$Outbound,
-  TwoHundredAndTwentySeven$outboundSchema,
   TwoHundredAndTwentySix,
   TwoHundredAndTwentySix$inboundSchema,
-  TwoHundredAndTwentySix$Outbound,
-  TwoHundredAndTwentySix$outboundSchema,
   TwoHundredAndTwentyThree,
   TwoHundredAndTwentyThree$inboundSchema,
-  TwoHundredAndTwentyThree$Outbound,
-  TwoHundredAndTwentyThree$outboundSchema,
   TwoHundredAndTwentyTwo,
   TwoHundredAndTwentyTwo$inboundSchema,
-  TwoHundredAndTwentyTwo$Outbound,
-  TwoHundredAndTwentyTwo$outboundSchema,
   TwoHundredAndTwo,
   TwoHundredAndTwo$inboundSchema,
-  TwoHundredAndTwo$Outbound,
-  TwoHundredAndTwo$outboundSchema,
 } from "./usereventpayloadprevious.js";
 
 /**
@@ -2141,6 +1539,20 @@ export type Eleven = {
   budget?: Budget | null | undefined;
 };
 
+/**
+ * Present on new events only. Equivalent to "stripe" when absent.
+ */
+export const UserEventPayload10Provider = {
+  Chatgpt: "chatgpt",
+  Stripe: "stripe",
+} as const;
+/**
+ * Present on new events only. Equivalent to "stripe" when absent.
+ */
+export type UserEventPayload10Provider = ClosedEnum<
+  typeof UserEventPayload10Provider
+>;
+
 export const FromPlan = {
   Hobby: "hobby",
   Pro: "pro",
@@ -2157,6 +1569,22 @@ export type ToPlan = ClosedEnum<typeof ToPlan>;
  * The payload of the event, if requested.
  */
 export type Ten = {
+  /**
+   * Present on new events only. Equivalent to "stripe" when absent.
+   */
+  provider?: UserEventPayload10Provider | undefined;
+  /**
+   * Present on new events only. Equivalent to `stripeAccount` when absent.
+   */
+  providerAccount?: string | undefined;
+  /**
+   * Present when `provider` is "stripe". Equivalent to `providerAccount`.
+   */
+  stripeAccount?: string | undefined;
+  /**
+   * Present when `provider` is "stripe".
+   */
+  stripeOrganisation?: string | undefined;
   teamId: string;
   resourceId: string;
   fromPlan: FromPlan;
@@ -2164,45 +1592,183 @@ export type Ten = {
 };
 
 /**
+ * Present on new events only. Equivalent to "stripe" when absent.
+ */
+export const UserEventPayload9Provider = {
+  Chatgpt: "chatgpt",
+  Stripe: "stripe",
+} as const;
+/**
+ * Present on new events only. Equivalent to "stripe" when absent.
+ */
+export type UserEventPayload9Provider = ClosedEnum<
+  typeof UserEventPayload9Provider
+>;
+
+/**
  * The payload of the event, if requested.
  */
 export type Nine = {
+  /**
+   * Present on new events only. Equivalent to "stripe" when absent.
+   */
+  provider?: UserEventPayload9Provider | undefined;
+  /**
+   * Present on new events only. Equivalent to `stripeAccount` when absent.
+   */
+  providerAccount?: string | undefined;
+  /**
+   * Present when `provider` is "stripe". Equivalent to `providerAccount`.
+   */
+  stripeAccount?: string | undefined;
   resourceId: string;
   projectName: string;
 };
 
 /**
+ * Present on new events only. Equivalent to "stripe" when absent.
+ */
+export const UserEventPayload8Provider = {
+  Chatgpt: "chatgpt",
+  Stripe: "stripe",
+} as const;
+/**
+ * Present on new events only. Equivalent to "stripe" when absent.
+ */
+export type UserEventPayload8Provider = ClosedEnum<
+  typeof UserEventPayload8Provider
+>;
+
+/**
  * The payload of the event, if requested.
  */
 export type Eight = {
+  /**
+   * Present on new events only. Equivalent to "stripe" when absent.
+   */
+  provider?: UserEventPayload8Provider | undefined;
+  /**
+   * Present on new events only. Equivalent to `stripeAccount` when absent.
+   */
+  providerAccount?: string | undefined;
+  /**
+   * Present when `provider` is "stripe". Equivalent to `providerAccount`.
+   */
+  stripeAccount?: string | undefined;
+  /**
+   * Present when `provider` is "stripe".
+   */
+  stripeOrganisation?: string | undefined;
   reason: string;
   blockCode: string;
 };
 
 /**
+ * Present on new events only. Equivalent to "stripe" when absent.
+ */
+export const UserEventPayloadProvider = {
+  Chatgpt: "chatgpt",
+  Stripe: "stripe",
+} as const;
+/**
+ * Present on new events only. Equivalent to "stripe" when absent.
+ */
+export type UserEventPayloadProvider = ClosedEnum<
+  typeof UserEventPayloadProvider
+>;
+
+/**
  * The payload of the event, if requested.
  */
 export type Seven = {
+  /**
+   * Present on new events only. Equivalent to "stripe" when absent.
+   */
+  provider?: UserEventPayloadProvider | undefined;
+  /**
+   * Present on new events only. Equivalent to `stripeAccount` when absent.
+   */
+  providerAccount?: string | undefined;
+  /**
+   * Present when `provider` is "stripe". Equivalent to `providerAccount`.
+   */
+  stripeAccount?: string | undefined;
+  /**
+   * Present when `provider` is "stripe".
+   */
+  stripeOrganisation?: string | undefined;
   teamId: string;
   teamSlug: string;
-  stripeAccount: string;
 };
+
+/**
+ * Present on new events only. Equivalent to "stripe" when absent.
+ */
+export const PayloadProvider = {
+  Chatgpt: "chatgpt",
+  Stripe: "stripe",
+} as const;
+/**
+ * Present on new events only. Equivalent to "stripe" when absent.
+ */
+export type PayloadProvider = ClosedEnum<typeof PayloadProvider>;
 
 /**
  * The payload of the event, if requested.
  */
 export type Six = {
+  /**
+   * Present on new events only. Equivalent to "stripe" when absent.
+   */
+  provider?: PayloadProvider | undefined;
+  /**
+   * Present on new events only. Equivalent to `stripeAccount` when absent.
+   */
+  providerAccount?: string | undefined;
+  /**
+   * Present when `provider` is "stripe". Equivalent to `providerAccount`.
+   */
+  stripeAccount?: string | undefined;
+  /**
+   * Present when `provider` is "stripe".
+   */
+  stripeOrganisation?: string | undefined;
   teamId: string;
-  stripeAccount: string;
 };
+
+/**
+ * Present on new events only. Equivalent to "stripe" when absent.
+ */
+export const Provider = {
+  Chatgpt: "chatgpt",
+  Stripe: "stripe",
+} as const;
+/**
+ * Present on new events only. Equivalent to "stripe" when absent.
+ */
+export type Provider = ClosedEnum<typeof Provider>;
 
 /**
  * The payload of the event, if requested.
  */
 export type Five = {
+  /**
+   * Present on new events only. Equivalent to "stripe" when absent.
+   */
+  provider?: Provider | undefined;
+  /**
+   * Present on new events only. Equivalent to `stripeAccount` when absent.
+   */
+  providerAccount?: string | undefined;
+  /**
+   * Present when `provider` is "stripe". Equivalent to `providerAccount`.
+   */
+  stripeAccount?: string | undefined;
+  /**
+   * Present when `provider` is "stripe".
+   */
+  stripeOrganisation?: string | undefined;
   teamId: string;
-  stripeAccount: string;
-  stripeOrganisation: string;
   accountRequestId: string;
 };
 
@@ -2287,7 +1853,6 @@ export type Payload =
   | TwoHundredAndTwentySix
   | ThreeHundredAndThirtyNine
   | Payload2
-  | Five
   | Ten
   | FortyFour
   | FortyFive
@@ -2327,7 +1892,6 @@ export type Payload =
   | ThreeHundredAndFifteen
   | ThreeHundredAndForty
   | ThreeHundredAndFortyOne
-  | Seven
   | TwentyFive
   | Thirty
   | FiftyTwo
@@ -2408,7 +1972,8 @@ export type Payload =
   | ThreeHundredAndThirtyEight
   | Payload3
   | Four
-  | Six
+  | Five
+  | Seven
   | Eight
   | Nine
   | Thirteen
@@ -2496,6 +2061,7 @@ export type Payload =
   | ThreeHundredAndThirtySix
   | ThreeHundredAndThirtySeven
   | ThreeHundredAndFortyTwo
+  | Six
   | Eleven
   | Twelve
   | Fourteen
@@ -2680,7 +2246,6 @@ export type UserEvent = {
     | TwoHundredAndTwentySix
     | ThreeHundredAndThirtyNine
     | Payload2
-    | Five
     | Ten
     | FortyFour
     | FortyFive
@@ -2720,7 +2285,6 @@ export type UserEvent = {
     | ThreeHundredAndFifteen
     | ThreeHundredAndForty
     | ThreeHundredAndFortyOne
-    | Seven
     | TwentyFive
     | Thirty
     | FiftyTwo
@@ -2801,7 +2365,8 @@ export type UserEvent = {
     | ThreeHundredAndThirtyEight
     | Payload3
     | Four
-    | Six
+    | Five
+    | Seven
     | Eight
     | Nine
     | Thirteen
@@ -2889,6 +2454,7 @@ export type UserEvent = {
     | ThreeHundredAndThirtySix
     | ThreeHundredAndThirtySeven
     | ThreeHundredAndFortyTwo
+    | Six
     | Eleven
     | Twelve
     | Fourteen
@@ -3013,27 +2579,7 @@ export const FortySix$inboundSchema: z.ZodType<
   brand: types.optional(types.string()),
   last4: types.optional(types.string()),
 });
-/** @internal */
-export type FortySix$Outbound = {
-  paymentMethodId: string;
-  brand?: string | undefined;
-  last4?: string | undefined;
-};
 
-/** @internal */
-export const FortySix$outboundSchema: z.ZodType<
-  FortySix$Outbound,
-  z.ZodTypeDef,
-  FortySix
-> = z.object({
-  paymentMethodId: z.string(),
-  brand: z.string().optional(),
-  last4: z.string().optional(),
-});
-
-export function fortySixToJSON(fortySix: FortySix): string {
-  return JSON.stringify(FortySix$outboundSchema.parse(fortySix));
-}
 export function fortySixFromJSON(
   jsonString: string,
 ): SafeParseResult<FortySix, SDKValidationError> {
@@ -3048,10 +2594,6 @@ export function fortySixFromJSON(
 export const SettlementMethod$inboundSchema: z.ZodNativeEnum<
   typeof SettlementMethod
 > = z.nativeEnum(SettlementMethod);
-/** @internal */
-export const SettlementMethod$outboundSchema: z.ZodNativeEnum<
-  typeof SettlementMethod
-> = SettlementMethod$inboundSchema;
 
 /** @internal */
 export const FortyFive$inboundSchema: z.ZodType<
@@ -3064,29 +2606,7 @@ export const FortyFive$inboundSchema: z.ZodType<
   settlementMethod: SettlementMethod$inboundSchema,
   amount: types.number(),
 });
-/** @internal */
-export type FortyFive$Outbound = {
-  invoiceId: string;
-  newInvoiceId: string;
-  settlementMethod: string;
-  amount: number;
-};
 
-/** @internal */
-export const FortyFive$outboundSchema: z.ZodType<
-  FortyFive$Outbound,
-  z.ZodTypeDef,
-  FortyFive
-> = z.object({
-  invoiceId: z.string(),
-  newInvoiceId: z.string(),
-  settlementMethod: SettlementMethod$outboundSchema,
-  amount: z.number(),
-});
-
-export function fortyFiveToJSON(fortyFive: FortyFive): string {
-  return JSON.stringify(FortyFive$outboundSchema.parse(fortyFive));
-}
 export function fortyFiveFromJSON(
   jsonString: string,
 ): SafeParseResult<FortyFive, SDKValidationError> {
@@ -3108,29 +2628,7 @@ export const FortyFour$inboundSchema: z.ZodType<
   refundReason: types.string(),
   lineItemCount: types.number(),
 });
-/** @internal */
-export type FortyFour$Outbound = {
-  invoiceId: string;
-  amount: number;
-  refundReason: string;
-  lineItemCount: number;
-};
 
-/** @internal */
-export const FortyFour$outboundSchema: z.ZodType<
-  FortyFour$Outbound,
-  z.ZodTypeDef,
-  FortyFour
-> = z.object({
-  invoiceId: z.string(),
-  amount: z.number(),
-  refundReason: z.string(),
-  lineItemCount: z.number(),
-});
-
-export function fortyFourToJSON(fortyFour: FortyFour): string {
-  return JSON.stringify(FortyFour$outboundSchema.parse(fortyFour));
-}
 export function fortyFourFromJSON(
   jsonString: string,
 ): SafeParseResult<FortyFour, SDKValidationError> {
@@ -3149,23 +2647,7 @@ export const FortyThree$inboundSchema: z.ZodType<
 > = z.object({
   avatar: types.optional(types.string()),
 });
-/** @internal */
-export type FortyThree$Outbound = {
-  avatar?: string | undefined;
-};
 
-/** @internal */
-export const FortyThree$outboundSchema: z.ZodType<
-  FortyThree$Outbound,
-  z.ZodTypeDef,
-  FortyThree
-> = z.object({
-  avatar: z.string().optional(),
-});
-
-export function fortyThreeToJSON(fortyThree: FortyThree): string {
-  return JSON.stringify(FortyThree$outboundSchema.parse(fortyThree));
-}
 export function fortyThreeFromJSON(
   jsonString: string,
 ): SafeParseResult<FortyThree, SDKValidationError> {
@@ -3186,27 +2668,7 @@ export const FortyTwo$inboundSchema: z.ZodType<
   projectName: types.string(),
   autoExposeSystemEnvs: types.boolean(),
 });
-/** @internal */
-export type FortyTwo$Outbound = {
-  projectId?: string | undefined;
-  projectName: string;
-  autoExposeSystemEnvs: boolean;
-};
 
-/** @internal */
-export const FortyTwo$outboundSchema: z.ZodType<
-  FortyTwo$Outbound,
-  z.ZodTypeDef,
-  FortyTwo
-> = z.object({
-  projectId: z.string().optional(),
-  projectName: z.string(),
-  autoExposeSystemEnvs: z.boolean(),
-});
-
-export function fortyTwoToJSON(fortyTwo: FortyTwo): string {
-  return JSON.stringify(FortyTwo$outboundSchema.parse(fortyTwo));
-}
 export function fortyTwoFromJSON(
   jsonString: string,
 ): SafeParseResult<FortyTwo, SDKValidationError> {
@@ -3229,31 +2691,7 @@ export const FortyOne$inboundSchema: z.ZodType<
   attackModeEnabled: types.boolean(),
   attackModeActiveUntil: z.nullable(types.number()).optional(),
 });
-/** @internal */
-export type FortyOne$Outbound = {
-  projectId: string;
-  prevAttackModeEnabled?: boolean | undefined;
-  prevAttackModeActiveUntil?: number | null | undefined;
-  attackModeEnabled: boolean;
-  attackModeActiveUntil?: number | null | undefined;
-};
 
-/** @internal */
-export const FortyOne$outboundSchema: z.ZodType<
-  FortyOne$Outbound,
-  z.ZodTypeDef,
-  FortyOne
-> = z.object({
-  projectId: z.string(),
-  prevAttackModeEnabled: z.boolean().optional(),
-  prevAttackModeActiveUntil: z.nullable(z.number()).optional(),
-  attackModeEnabled: z.boolean(),
-  attackModeActiveUntil: z.nullable(z.number()).optional(),
-});
-
-export function fortyOneToJSON(fortyOne: FortyOne): string {
-  return JSON.stringify(FortyOne$outboundSchema.parse(fortyOne));
-}
 export function fortyOneFromJSON(
   jsonString: string,
 ): SafeParseResult<FortyOne, SDKValidationError> {
@@ -3270,22 +2708,7 @@ export const App$inboundSchema: z.ZodType<App, z.ZodTypeDef, unknown> = z
     id: types.string(),
     name: types.string(),
   });
-/** @internal */
-export type App$Outbound = {
-  id: string;
-  name: string;
-};
 
-/** @internal */
-export const App$outboundSchema: z.ZodType<App$Outbound, z.ZodTypeDef, App> = z
-  .object({
-    id: z.string(),
-    name: z.string(),
-  });
-
-export function appToJSON(app: App): string {
-  return JSON.stringify(App$outboundSchema.parse(app));
-}
 export function appFromJSON(
   jsonString: string,
 ): SafeParseResult<App, SDKValidationError> {
@@ -3304,29 +2727,7 @@ export const Forty$inboundSchema: z.ZodType<Forty, z.ZodTypeDef, unknown> = z
     app: types.optional(z.lazy(() => App$inboundSchema)),
     issuedBefore: types.optional(types.number()),
   });
-/** @internal */
-export type Forty$Outbound = {
-  appName: string;
-  appId?: string | undefined;
-  app?: App$Outbound | undefined;
-  issuedBefore?: number | undefined;
-};
 
-/** @internal */
-export const Forty$outboundSchema: z.ZodType<
-  Forty$Outbound,
-  z.ZodTypeDef,
-  Forty
-> = z.object({
-  appName: z.string(),
-  appId: z.string().optional(),
-  app: z.lazy(() => App$outboundSchema).optional(),
-  issuedBefore: z.number().optional(),
-});
-
-export function fortyToJSON(forty: Forty): string {
-  return JSON.stringify(Forty$outboundSchema.parse(forty));
-}
 export function fortyFromJSON(
   jsonString: string,
 ): SafeParseResult<Forty, SDKValidationError> {
@@ -3347,27 +2748,7 @@ export const ThirtyNine$inboundSchema: z.ZodType<
   appId: types.optional(types.string()),
   secretLastFourChars: types.optional(types.string()),
 });
-/** @internal */
-export type ThirtyNine$Outbound = {
-  appName: string;
-  appId?: string | undefined;
-  secretLastFourChars?: string | undefined;
-};
 
-/** @internal */
-export const ThirtyNine$outboundSchema: z.ZodType<
-  ThirtyNine$Outbound,
-  z.ZodTypeDef,
-  ThirtyNine
-> = z.object({
-  appName: z.string(),
-  appId: z.string().optional(),
-  secretLastFourChars: z.string().optional(),
-});
-
-export function thirtyNineToJSON(thirtyNine: ThirtyNine): string {
-  return JSON.stringify(ThirtyNine$outboundSchema.parse(thirtyNine));
-}
 export function thirtyNineFromJSON(
   jsonString: string,
 ): SafeParseResult<ThirtyNine, SDKValidationError> {
@@ -3382,42 +2763,18 @@ export function thirtyNineFromJSON(
 export const UserEventPayload38Type$inboundSchema: z.ZodNativeEnum<
   typeof UserEventPayload38Type
 > = z.nativeEnum(UserEventPayload38Type);
-/** @internal */
-export const UserEventPayload38Type$outboundSchema: z.ZodNativeEnum<
-  typeof UserEventPayload38Type
-> = UserEventPayload38Type$inboundSchema;
 
 /** @internal */
 export const UserEventPayload38ResourcesType$inboundSchema: z.ZodNativeEnum<
   typeof UserEventPayload38ResourcesType
 > = z.nativeEnum(UserEventPayload38ResourcesType);
-/** @internal */
-export const UserEventPayload38ResourcesType$outboundSchema: z.ZodNativeEnum<
-  typeof UserEventPayload38ResourcesType
-> = UserEventPayload38ResourcesType$inboundSchema;
 
 /** @internal */
 export const Items$inboundSchema: z.ZodType<Items, z.ZodTypeDef, unknown> = z
   .object({
     type: UserEventPayload38ResourcesType$inboundSchema,
   });
-/** @internal */
-export type Items$Outbound = {
-  type: string;
-};
 
-/** @internal */
-export const Items$outboundSchema: z.ZodType<
-  Items$Outbound,
-  z.ZodTypeDef,
-  Items
-> = z.object({
-  type: UserEventPayload38ResourcesType$outboundSchema,
-});
-
-export function itemsToJSON(items: Items): string {
-  return JSON.stringify(Items$outboundSchema.parse(items));
-}
 export function itemsFromJSON(
   jsonString: string,
 ): SafeParseResult<Items, SDKValidationError> {
@@ -3438,31 +2795,7 @@ export const PayloadProjectIds$inboundSchema: z.ZodType<
   required: types.literal(true),
   items: z.lazy(() => Items$inboundSchema),
 });
-/** @internal */
-export type PayloadProjectIds$Outbound = {
-  type: string;
-  required: true;
-  items: Items$Outbound;
-};
 
-/** @internal */
-export const PayloadProjectIds$outboundSchema: z.ZodType<
-  PayloadProjectIds$Outbound,
-  z.ZodTypeDef,
-  PayloadProjectIds
-> = z.object({
-  type: UserEventPayload38Type$outboundSchema,
-  required: z.literal(true),
-  items: z.lazy(() => Items$outboundSchema),
-});
-
-export function payloadProjectIdsToJSON(
-  payloadProjectIds: PayloadProjectIds,
-): string {
-  return JSON.stringify(
-    PayloadProjectIds$outboundSchema.parse(payloadProjectIds),
-  );
-}
 export function payloadProjectIdsFromJSON(
   jsonString: string,
 ): SafeParseResult<PayloadProjectIds, SDKValidationError> {
@@ -3481,23 +2814,7 @@ export const Resources$inboundSchema: z.ZodType<
 > = z.object({
   projectIds: z.lazy(() => PayloadProjectIds$inboundSchema),
 });
-/** @internal */
-export type Resources$Outbound = {
-  projectIds: PayloadProjectIds$Outbound;
-};
 
-/** @internal */
-export const Resources$outboundSchema: z.ZodType<
-  Resources$Outbound,
-  z.ZodTypeDef,
-  Resources
-> = z.object({
-  projectIds: z.lazy(() => PayloadProjectIds$outboundSchema),
-});
-
-export function resourcesToJSON(resources: Resources): string {
-  return JSON.stringify(Resources$outboundSchema.parse(resources));
-}
 export function resourcesFromJSON(
   jsonString: string,
 ): SafeParseResult<Resources, SDKValidationError> {
@@ -3512,10 +2829,6 @@ export function resourcesFromJSON(
 export const PayloadPermissions$inboundSchema: z.ZodNativeEnum<
   typeof PayloadPermissions
 > = z.nativeEnum(PayloadPermissions);
-/** @internal */
-export const PayloadPermissions$outboundSchema: z.ZodNativeEnum<
-  typeof PayloadPermissions
-> = PayloadPermissions$inboundSchema;
 
 /** @internal */
 export const ThirtyEight$inboundSchema: z.ZodType<
@@ -3528,29 +2841,7 @@ export const ThirtyEight$inboundSchema: z.ZodType<
   resources: types.optional(z.lazy(() => Resources$inboundSchema)),
   permissions: types.optional(z.array(PayloadPermissions$inboundSchema)),
 });
-/** @internal */
-export type ThirtyEight$Outbound = {
-  appName: string;
-  appId?: string | undefined;
-  resources?: Resources$Outbound | undefined;
-  permissions?: Array<string> | undefined;
-};
 
-/** @internal */
-export const ThirtyEight$outboundSchema: z.ZodType<
-  ThirtyEight$Outbound,
-  z.ZodTypeDef,
-  ThirtyEight
-> = z.object({
-  appName: z.string(),
-  appId: z.string().optional(),
-  resources: z.lazy(() => Resources$outboundSchema).optional(),
-  permissions: z.array(PayloadPermissions$outboundSchema).optional(),
-});
-
-export function thirtyEightToJSON(thirtyEight: ThirtyEight): string {
-  return JSON.stringify(ThirtyEight$outboundSchema.parse(thirtyEight));
-}
 export function thirtyEightFromJSON(
   jsonString: string,
 ): SafeParseResult<ThirtyEight, SDKValidationError> {
@@ -3565,19 +2856,11 @@ export function thirtyEightFromJSON(
 export const UserEventPayload37Type$inboundSchema: z.ZodNativeEnum<
   typeof UserEventPayload37Type
 > = z.nativeEnum(UserEventPayload37Type);
-/** @internal */
-export const UserEventPayload37Type$outboundSchema: z.ZodNativeEnum<
-  typeof UserEventPayload37Type
-> = UserEventPayload37Type$inboundSchema;
 
 /** @internal */
 export const UserEventPayload37BeforeType$inboundSchema: z.ZodNativeEnum<
   typeof UserEventPayload37BeforeType
 > = z.nativeEnum(UserEventPayload37BeforeType);
-/** @internal */
-export const UserEventPayload37BeforeType$outboundSchema: z.ZodNativeEnum<
-  typeof UserEventPayload37BeforeType
-> = UserEventPayload37BeforeType$inboundSchema;
 
 /** @internal */
 export const UserEventPayloadItems$inboundSchema: z.ZodType<
@@ -3587,27 +2870,7 @@ export const UserEventPayloadItems$inboundSchema: z.ZodType<
 > = z.object({
   type: UserEventPayload37BeforeType$inboundSchema,
 });
-/** @internal */
-export type UserEventPayloadItems$Outbound = {
-  type: string;
-};
 
-/** @internal */
-export const UserEventPayloadItems$outboundSchema: z.ZodType<
-  UserEventPayloadItems$Outbound,
-  z.ZodTypeDef,
-  UserEventPayloadItems
-> = z.object({
-  type: UserEventPayload37BeforeType$outboundSchema,
-});
-
-export function userEventPayloadItemsToJSON(
-  userEventPayloadItems: UserEventPayloadItems,
-): string {
-  return JSON.stringify(
-    UserEventPayloadItems$outboundSchema.parse(userEventPayloadItems),
-  );
-}
 export function userEventPayloadItemsFromJSON(
   jsonString: string,
 ): SafeParseResult<UserEventPayloadItems, SDKValidationError> {
@@ -3628,31 +2891,7 @@ export const UserEventPayloadProjectIds$inboundSchema: z.ZodType<
   required: types.literal(true),
   items: z.lazy(() => UserEventPayloadItems$inboundSchema),
 });
-/** @internal */
-export type UserEventPayloadProjectIds$Outbound = {
-  type: string;
-  required: true;
-  items: UserEventPayloadItems$Outbound;
-};
 
-/** @internal */
-export const UserEventPayloadProjectIds$outboundSchema: z.ZodType<
-  UserEventPayloadProjectIds$Outbound,
-  z.ZodTypeDef,
-  UserEventPayloadProjectIds
-> = z.object({
-  type: UserEventPayload37Type$outboundSchema,
-  required: z.literal(true),
-  items: z.lazy(() => UserEventPayloadItems$outboundSchema),
-});
-
-export function userEventPayloadProjectIdsToJSON(
-  userEventPayloadProjectIds: UserEventPayloadProjectIds,
-): string {
-  return JSON.stringify(
-    UserEventPayloadProjectIds$outboundSchema.parse(userEventPayloadProjectIds),
-  );
-}
 export function userEventPayloadProjectIdsFromJSON(
   jsonString: string,
 ): SafeParseResult<UserEventPayloadProjectIds, SDKValidationError> {
@@ -3671,27 +2910,7 @@ export const UserEventPayloadResources$inboundSchema: z.ZodType<
 > = z.object({
   projectIds: z.lazy(() => UserEventPayloadProjectIds$inboundSchema),
 });
-/** @internal */
-export type UserEventPayloadResources$Outbound = {
-  projectIds: UserEventPayloadProjectIds$Outbound;
-};
 
-/** @internal */
-export const UserEventPayloadResources$outboundSchema: z.ZodType<
-  UserEventPayloadResources$Outbound,
-  z.ZodTypeDef,
-  UserEventPayloadResources
-> = z.object({
-  projectIds: z.lazy(() => UserEventPayloadProjectIds$outboundSchema),
-});
-
-export function userEventPayloadResourcesToJSON(
-  userEventPayloadResources: UserEventPayloadResources,
-): string {
-  return JSON.stringify(
-    UserEventPayloadResources$outboundSchema.parse(userEventPayloadResources),
-  );
-}
 export function userEventPayloadResourcesFromJSON(
   jsonString: string,
 ): SafeParseResult<UserEventPayloadResources, SDKValidationError> {
@@ -3706,10 +2925,6 @@ export function userEventPayloadResourcesFromJSON(
 export const UserEventPayload37Permissions$inboundSchema: z.ZodNativeEnum<
   typeof UserEventPayload37Permissions
 > = z.nativeEnum(UserEventPayload37Permissions);
-/** @internal */
-export const UserEventPayload37Permissions$outboundSchema: z.ZodNativeEnum<
-  typeof UserEventPayload37Permissions
-> = UserEventPayload37Permissions$inboundSchema;
 
 /** @internal */
 export const Before$inboundSchema: z.ZodType<Before, z.ZodTypeDef, unknown> = z
@@ -3721,25 +2936,7 @@ export const Before$inboundSchema: z.ZodType<Before, z.ZodTypeDef, unknown> = z
       z.array(UserEventPayload37Permissions$inboundSchema),
     ),
   });
-/** @internal */
-export type Before$Outbound = {
-  resources?: UserEventPayloadResources$Outbound | undefined;
-  permissions?: Array<string> | undefined;
-};
 
-/** @internal */
-export const Before$outboundSchema: z.ZodType<
-  Before$Outbound,
-  z.ZodTypeDef,
-  Before
-> = z.object({
-  resources: z.lazy(() => UserEventPayloadResources$outboundSchema).optional(),
-  permissions: z.array(UserEventPayload37Permissions$outboundSchema).optional(),
-});
-
-export function beforeToJSON(before: Before): string {
-  return JSON.stringify(Before$outboundSchema.parse(before));
-}
 export function beforeFromJSON(
   jsonString: string,
 ): SafeParseResult<Before, SDKValidationError> {
@@ -3754,20 +2951,12 @@ export function beforeFromJSON(
 export const UserEventPayload37AfterType$inboundSchema: z.ZodNativeEnum<
   typeof UserEventPayload37AfterType
 > = z.nativeEnum(UserEventPayload37AfterType);
-/** @internal */
-export const UserEventPayload37AfterType$outboundSchema: z.ZodNativeEnum<
-  typeof UserEventPayload37AfterType
-> = UserEventPayload37AfterType$inboundSchema;
 
 /** @internal */
 export const UserEventPayload37AfterResourcesType$inboundSchema:
   z.ZodNativeEnum<typeof UserEventPayload37AfterResourcesType> = z.nativeEnum(
     UserEventPayload37AfterResourcesType,
   );
-/** @internal */
-export const UserEventPayload37AfterResourcesType$outboundSchema:
-  z.ZodNativeEnum<typeof UserEventPayload37AfterResourcesType> =
-    UserEventPayload37AfterResourcesType$inboundSchema;
 
 /** @internal */
 export const PayloadItems$inboundSchema: z.ZodType<
@@ -3777,23 +2966,7 @@ export const PayloadItems$inboundSchema: z.ZodType<
 > = z.object({
   type: UserEventPayload37AfterResourcesType$inboundSchema,
 });
-/** @internal */
-export type PayloadItems$Outbound = {
-  type: string;
-};
 
-/** @internal */
-export const PayloadItems$outboundSchema: z.ZodType<
-  PayloadItems$Outbound,
-  z.ZodTypeDef,
-  PayloadItems
-> = z.object({
-  type: UserEventPayload37AfterResourcesType$outboundSchema,
-});
-
-export function payloadItemsToJSON(payloadItems: PayloadItems): string {
-  return JSON.stringify(PayloadItems$outboundSchema.parse(payloadItems));
-}
 export function payloadItemsFromJSON(
   jsonString: string,
 ): SafeParseResult<PayloadItems, SDKValidationError> {
@@ -3814,33 +2987,7 @@ export const UserEventPayload37ProjectIds$inboundSchema: z.ZodType<
   required: types.literal(true),
   items: z.lazy(() => PayloadItems$inboundSchema),
 });
-/** @internal */
-export type UserEventPayload37ProjectIds$Outbound = {
-  type: string;
-  required: true;
-  items: PayloadItems$Outbound;
-};
 
-/** @internal */
-export const UserEventPayload37ProjectIds$outboundSchema: z.ZodType<
-  UserEventPayload37ProjectIds$Outbound,
-  z.ZodTypeDef,
-  UserEventPayload37ProjectIds
-> = z.object({
-  type: UserEventPayload37AfterType$outboundSchema,
-  required: z.literal(true),
-  items: z.lazy(() => PayloadItems$outboundSchema),
-});
-
-export function userEventPayload37ProjectIdsToJSON(
-  userEventPayload37ProjectIds: UserEventPayload37ProjectIds,
-): string {
-  return JSON.stringify(
-    UserEventPayload37ProjectIds$outboundSchema.parse(
-      userEventPayload37ProjectIds,
-    ),
-  );
-}
 export function userEventPayload37ProjectIdsFromJSON(
   jsonString: string,
 ): SafeParseResult<UserEventPayload37ProjectIds, SDKValidationError> {
@@ -3859,27 +3006,7 @@ export const PayloadResources$inboundSchema: z.ZodType<
 > = z.object({
   projectIds: z.lazy(() => UserEventPayload37ProjectIds$inboundSchema),
 });
-/** @internal */
-export type PayloadResources$Outbound = {
-  projectIds: UserEventPayload37ProjectIds$Outbound;
-};
 
-/** @internal */
-export const PayloadResources$outboundSchema: z.ZodType<
-  PayloadResources$Outbound,
-  z.ZodTypeDef,
-  PayloadResources
-> = z.object({
-  projectIds: z.lazy(() => UserEventPayload37ProjectIds$outboundSchema),
-});
-
-export function payloadResourcesToJSON(
-  payloadResources: PayloadResources,
-): string {
-  return JSON.stringify(
-    PayloadResources$outboundSchema.parse(payloadResources),
-  );
-}
 export function payloadResourcesFromJSON(
   jsonString: string,
 ): SafeParseResult<PayloadResources, SDKValidationError> {
@@ -3894,10 +3021,6 @@ export function payloadResourcesFromJSON(
 export const UserEventPayloadPermissions$inboundSchema: z.ZodNativeEnum<
   typeof UserEventPayloadPermissions
 > = z.nativeEnum(UserEventPayloadPermissions);
-/** @internal */
-export const UserEventPayloadPermissions$outboundSchema: z.ZodNativeEnum<
-  typeof UserEventPayloadPermissions
-> = UserEventPayloadPermissions$inboundSchema;
 
 /** @internal */
 export const After$inboundSchema: z.ZodType<After, z.ZodTypeDef, unknown> = z
@@ -3907,25 +3030,7 @@ export const After$inboundSchema: z.ZodType<After, z.ZodTypeDef, unknown> = z
       z.array(UserEventPayloadPermissions$inboundSchema),
     ),
   });
-/** @internal */
-export type After$Outbound = {
-  resources?: PayloadResources$Outbound | undefined;
-  permissions?: Array<string> | undefined;
-};
 
-/** @internal */
-export const After$outboundSchema: z.ZodType<
-  After$Outbound,
-  z.ZodTypeDef,
-  After
-> = z.object({
-  resources: z.lazy(() => PayloadResources$outboundSchema).optional(),
-  permissions: z.array(UserEventPayloadPermissions$outboundSchema).optional(),
-});
-
-export function afterToJSON(after: After): string {
-  return JSON.stringify(After$outboundSchema.parse(after));
-}
 export function afterFromJSON(
   jsonString: string,
 ): SafeParseResult<After, SDKValidationError> {
@@ -3948,31 +3053,7 @@ export const ThirtySeven$inboundSchema: z.ZodType<
   before: types.optional(z.lazy(() => Before$inboundSchema)),
   after: types.optional(z.lazy(() => After$inboundSchema)),
 });
-/** @internal */
-export type ThirtySeven$Outbound = {
-  appName: string;
-  appId?: string | undefined;
-  installationId?: string | undefined;
-  before?: Before$Outbound | undefined;
-  after?: After$Outbound | undefined;
-};
 
-/** @internal */
-export const ThirtySeven$outboundSchema: z.ZodType<
-  ThirtySeven$Outbound,
-  z.ZodTypeDef,
-  ThirtySeven
-> = z.object({
-  appName: z.string(),
-  appId: z.string().optional(),
-  installationId: z.string().optional(),
-  before: z.lazy(() => Before$outboundSchema).optional(),
-  after: z.lazy(() => After$outboundSchema).optional(),
-});
-
-export function thirtySevenToJSON(thirtySeven: ThirtySeven): string {
-  return JSON.stringify(ThirtySeven$outboundSchema.parse(thirtySeven));
-}
 export function thirtySevenFromJSON(
   jsonString: string,
 ): SafeParseResult<ThirtySeven, SDKValidationError> {
@@ -3986,18 +3067,11 @@ export function thirtySevenFromJSON(
 /** @internal */
 export const NextScopes$inboundSchema: z.ZodNativeEnum<typeof NextScopes> = z
   .nativeEnum(NextScopes);
-/** @internal */
-export const NextScopes$outboundSchema: z.ZodNativeEnum<typeof NextScopes> =
-  NextScopes$inboundSchema;
 
 /** @internal */
 export const NextPermissions$inboundSchema: z.ZodNativeEnum<
   typeof NextPermissions
 > = z.nativeEnum(NextPermissions);
-/** @internal */
-export const NextPermissions$outboundSchema: z.ZodNativeEnum<
-  typeof NextPermissions
-> = NextPermissions$inboundSchema;
 
 /** @internal */
 export const ThirtySix$inboundSchema: z.ZodType<
@@ -4010,29 +3084,7 @@ export const ThirtySix$inboundSchema: z.ZodType<
   nextScopes: z.array(NextScopes$inboundSchema),
   nextPermissions: types.optional(z.array(NextPermissions$inboundSchema)),
 });
-/** @internal */
-export type ThirtySix$Outbound = {
-  appName: string;
-  appId?: string | undefined;
-  nextScopes: Array<string>;
-  nextPermissions?: Array<string> | undefined;
-};
 
-/** @internal */
-export const ThirtySix$outboundSchema: z.ZodType<
-  ThirtySix$Outbound,
-  z.ZodTypeDef,
-  ThirtySix
-> = z.object({
-  appName: z.string(),
-  appId: z.string().optional(),
-  nextScopes: z.array(NextScopes$outboundSchema),
-  nextPermissions: z.array(NextPermissions$outboundSchema).optional(),
-});
-
-export function thirtySixToJSON(thirtySix: ThirtySix): string {
-  return JSON.stringify(ThirtySix$outboundSchema.parse(thirtySix));
-}
 export function thirtySixFromJSON(
   jsonString: string,
 ): SafeParseResult<ThirtySix, SDKValidationError> {
@@ -4052,25 +3104,7 @@ export const ThirtyFive$inboundSchema: z.ZodType<
   appName: types.string(),
   appId: types.optional(types.string()),
 });
-/** @internal */
-export type ThirtyFive$Outbound = {
-  appName: string;
-  appId?: string | undefined;
-};
 
-/** @internal */
-export const ThirtyFive$outboundSchema: z.ZodType<
-  ThirtyFive$Outbound,
-  z.ZodTypeDef,
-  ThirtyFive
-> = z.object({
-  appName: z.string(),
-  appId: z.string().optional(),
-});
-
-export function thirtyFiveToJSON(thirtyFive: ThirtyFive): string {
-  return JSON.stringify(ThirtyFive$outboundSchema.parse(thirtyFive));
-}
 export function thirtyFiveFromJSON(
   jsonString: string,
 ): SafeParseResult<ThirtyFive, SDKValidationError> {
@@ -4085,17 +3119,10 @@ export function thirtyFiveFromJSON(
 export const PayloadScopes$inboundSchema: z.ZodNativeEnum<
   typeof PayloadScopes
 > = z.nativeEnum(PayloadScopes);
-/** @internal */
-export const PayloadScopes$outboundSchema: z.ZodNativeEnum<
-  typeof PayloadScopes
-> = PayloadScopes$inboundSchema;
 
 /** @internal */
 export const Permissions$inboundSchema: z.ZodNativeEnum<typeof Permissions> = z
   .nativeEnum(Permissions);
-/** @internal */
-export const Permissions$outboundSchema: z.ZodNativeEnum<typeof Permissions> =
-  Permissions$inboundSchema;
 
 /** @internal */
 export const ThirtyFour$inboundSchema: z.ZodType<
@@ -4108,29 +3135,7 @@ export const ThirtyFour$inboundSchema: z.ZodType<
   scopes: z.array(PayloadScopes$inboundSchema),
   permissions: types.optional(z.array(Permissions$inboundSchema)),
 });
-/** @internal */
-export type ThirtyFour$Outbound = {
-  appName: string;
-  appId?: string | undefined;
-  scopes: Array<string>;
-  permissions?: Array<string> | undefined;
-};
 
-/** @internal */
-export const ThirtyFour$outboundSchema: z.ZodType<
-  ThirtyFour$Outbound,
-  z.ZodTypeDef,
-  ThirtyFour
-> = z.object({
-  appName: z.string(),
-  appId: z.string().optional(),
-  scopes: z.array(PayloadScopes$outboundSchema),
-  permissions: z.array(Permissions$outboundSchema).optional(),
-});
-
-export function thirtyFourToJSON(thirtyFour: ThirtyFour): string {
-  return JSON.stringify(ThirtyFour$outboundSchema.parse(thirtyFour));
-}
 export function thirtyFourFromJSON(
   jsonString: string,
 ): SafeParseResult<ThirtyFour, SDKValidationError> {
@@ -4152,29 +3157,7 @@ export const ThirtyThree$inboundSchema: z.ZodType<
   userId: types.optional(types.string()),
   username: types.optional(types.string()),
 });
-/** @internal */
-export type ThirtyThree$Outbound = {
-  alias?: string | undefined;
-  aliasId?: string | undefined;
-  userId?: string | undefined;
-  username?: string | undefined;
-};
 
-/** @internal */
-export const ThirtyThree$outboundSchema: z.ZodType<
-  ThirtyThree$Outbound,
-  z.ZodTypeDef,
-  ThirtyThree
-> = z.object({
-  alias: z.string().optional(),
-  aliasId: z.string().optional(),
-  userId: z.string().optional(),
-  username: z.string().optional(),
-});
-
-export function thirtyThreeToJSON(thirtyThree: ThirtyThree): string {
-  return JSON.stringify(ThirtyThree$outboundSchema.parse(thirtyThree));
-}
 export function thirtyThreeFromJSON(
   jsonString: string,
 ): SafeParseResult<ThirtyThree, SDKValidationError> {
@@ -4195,27 +3178,7 @@ export const ThirtyTwo$inboundSchema: z.ZodType<
   userId: types.optional(types.string()),
   username: types.optional(types.string()),
 });
-/** @internal */
-export type ThirtyTwo$Outbound = {
-  alias?: string | undefined;
-  userId?: string | undefined;
-  username?: string | undefined;
-};
 
-/** @internal */
-export const ThirtyTwo$outboundSchema: z.ZodType<
-  ThirtyTwo$Outbound,
-  z.ZodTypeDef,
-  ThirtyTwo
-> = z.object({
-  alias: z.string().optional(),
-  userId: z.string().optional(),
-  username: z.string().optional(),
-});
-
-export function thirtyTwoToJSON(thirtyTwo: ThirtyTwo): string {
-  return JSON.stringify(ThirtyTwo$outboundSchema.parse(thirtyTwo));
-}
 export function thirtyTwoFromJSON(
   jsonString: string,
 ): SafeParseResult<ThirtyTwo, SDKValidationError> {
@@ -4235,25 +3198,7 @@ export const ThirtyOne$inboundSchema: z.ZodType<
   alias: types.string(),
   deploymentUrl: types.string(),
 });
-/** @internal */
-export type ThirtyOne$Outbound = {
-  alias: string;
-  deploymentUrl: string;
-};
 
-/** @internal */
-export const ThirtyOne$outboundSchema: z.ZodType<
-  ThirtyOne$Outbound,
-  z.ZodTypeDef,
-  ThirtyOne
-> = z.object({
-  alias: z.string(),
-  deploymentUrl: z.string(),
-});
-
-export function thirtyOneToJSON(thirtyOne: ThirtyOne): string {
-  return JSON.stringify(ThirtyOne$outboundSchema.parse(thirtyOne));
-}
 export function thirtyOneFromJSON(
   jsonString: string,
 ): SafeParseResult<ThirtyOne, SDKValidationError> {
@@ -4268,10 +3213,6 @@ export function thirtyOneFromJSON(
 export const UserEventPayload30Action$inboundSchema: z.ZodNativeEnum<
   typeof UserEventPayload30Action
 > = z.nativeEnum(UserEventPayload30Action);
-/** @internal */
-export const UserEventPayload30Action$outboundSchema: z.ZodNativeEnum<
-  typeof UserEventPayload30Action
-> = UserEventPayload30Action$inboundSchema;
 
 /** @internal */
 export const Thirty$inboundSchema: z.ZodType<Thirty, z.ZodTypeDef, unknown> = z
@@ -4281,29 +3222,7 @@ export const Thirty$inboundSchema: z.ZodType<Thirty, z.ZodTypeDef, unknown> = z
     alias: types.string(),
     action: UserEventPayload30Action$inboundSchema,
   });
-/** @internal */
-export type Thirty$Outbound = {
-  projectId?: string | undefined;
-  projectName: string;
-  alias: string;
-  action: string;
-};
 
-/** @internal */
-export const Thirty$outboundSchema: z.ZodType<
-  Thirty$Outbound,
-  z.ZodTypeDef,
-  Thirty
-> = z.object({
-  projectId: z.string().optional(),
-  projectName: z.string(),
-  alias: z.string(),
-  action: UserEventPayload30Action$outboundSchema,
-});
-
-export function thirtyToJSON(thirty: Thirty): string {
-  return JSON.stringify(Thirty$outboundSchema.parse(thirty));
-}
 export function thirtyFromJSON(
   jsonString: string,
 ): SafeParseResult<Thirty, SDKValidationError> {
@@ -4325,29 +3244,7 @@ export const TwentyNine$inboundSchema: z.ZodType<
   projectId: types.optional(types.string()),
   projectName: types.optional(types.string()),
 });
-/** @internal */
-export type TwentyNine$Outbound = {
-  aliasId?: string | undefined;
-  alias?: string | undefined;
-  projectId?: string | undefined;
-  projectName?: string | undefined;
-};
 
-/** @internal */
-export const TwentyNine$outboundSchema: z.ZodType<
-  TwentyNine$Outbound,
-  z.ZodTypeDef,
-  TwentyNine
-> = z.object({
-  aliasId: z.string().optional(),
-  alias: z.string().optional(),
-  projectId: z.string().optional(),
-  projectName: z.string().optional(),
-});
-
-export function twentyNineToJSON(twentyNine: TwentyNine): string {
-  return JSON.stringify(TwentyNine$outboundSchema.parse(twentyNine));
-}
 export function twentyNineFromJSON(
   jsonString: string,
 ): SafeParseResult<TwentyNine, SDKValidationError> {
@@ -4367,25 +3264,7 @@ export const TwentyEight$inboundSchema: z.ZodType<
   alias: types.optional(types.string()),
   email: types.optional(types.string()),
 });
-/** @internal */
-export type TwentyEight$Outbound = {
-  alias?: string | undefined;
-  email?: string | undefined;
-};
 
-/** @internal */
-export const TwentyEight$outboundSchema: z.ZodType<
-  TwentyEight$Outbound,
-  z.ZodTypeDef,
-  TwentyEight
-> = z.object({
-  alias: z.string().optional(),
-  email: z.string().optional(),
-});
-
-export function twentyEightToJSON(twentyEight: TwentyEight): string {
-  return JSON.stringify(TwentyEight$outboundSchema.parse(twentyEight));
-}
 export function twentyEightFromJSON(
   jsonString: string,
 ): SafeParseResult<TwentyEight, SDKValidationError> {
@@ -4404,23 +3283,7 @@ export const TwentySeven$inboundSchema: z.ZodType<
 > = z.object({
   alias: types.optional(types.string()),
 });
-/** @internal */
-export type TwentySeven$Outbound = {
-  alias?: string | undefined;
-};
 
-/** @internal */
-export const TwentySeven$outboundSchema: z.ZodType<
-  TwentySeven$Outbound,
-  z.ZodTypeDef,
-  TwentySeven
-> = z.object({
-  alias: z.string().optional(),
-});
-
-export function twentySevenToJSON(twentySeven: TwentySeven): string {
-  return JSON.stringify(TwentySeven$outboundSchema.parse(twentySeven));
-}
 export function twentySevenFromJSON(
   jsonString: string,
 ): SafeParseResult<TwentySeven, SDKValidationError> {
@@ -4441,27 +3304,7 @@ export const TwentySix$inboundSchema: z.ZodType<
   email: types.optional(types.string()),
   username: types.optional(types.string()),
 });
-/** @internal */
-export type TwentySix$Outbound = {
-  alias?: string | undefined;
-  email?: string | undefined;
-  username?: string | undefined;
-};
 
-/** @internal */
-export const TwentySix$outboundSchema: z.ZodType<
-  TwentySix$Outbound,
-  z.ZodTypeDef,
-  TwentySix
-> = z.object({
-  alias: z.string().optional(),
-  email: z.string().optional(),
-  username: z.string().optional(),
-});
-
-export function twentySixToJSON(twentySix: TwentySix): string {
-  return JSON.stringify(TwentySix$outboundSchema.parse(twentySix));
-}
 export function twentySixFromJSON(
   jsonString: string,
 ): SafeParseResult<TwentySix, SDKValidationError> {
@@ -4483,29 +3326,7 @@ export const TwentyFive$inboundSchema: z.ZodType<
   aliasId: types.string(),
   deploymentId: types.nullable(types.string()),
 });
-/** @internal */
-export type TwentyFive$Outbound = {
-  name?: string | undefined;
-  alias: string;
-  aliasId: string;
-  deploymentId: string | null;
-};
 
-/** @internal */
-export const TwentyFive$outboundSchema: z.ZodType<
-  TwentyFive$Outbound,
-  z.ZodTypeDef,
-  TwentyFive
-> = z.object({
-  name: z.string().optional(),
-  alias: z.string(),
-  aliasId: z.string(),
-  deploymentId: z.nullable(z.string()),
-});
-
-export function twentyFiveToJSON(twentyFive: TwentyFive): string {
-  return JSON.stringify(TwentyFive$outboundSchema.parse(twentyFive));
-}
 export function twentyFiveFromJSON(
   jsonString: string,
 ): SafeParseResult<TwentyFive, SDKValidationError> {
@@ -4521,23 +3342,7 @@ export const OldTeam$inboundSchema: z.ZodType<OldTeam, z.ZodTypeDef, unknown> =
   z.object({
     name: types.string(),
   });
-/** @internal */
-export type OldTeam$Outbound = {
-  name: string;
-};
 
-/** @internal */
-export const OldTeam$outboundSchema: z.ZodType<
-  OldTeam$Outbound,
-  z.ZodTypeDef,
-  OldTeam
-> = z.object({
-  name: z.string(),
-});
-
-export function oldTeamToJSON(oldTeam: OldTeam): string {
-  return JSON.stringify(OldTeam$outboundSchema.parse(oldTeam));
-}
 export function oldTeamFromJSON(
   jsonString: string,
 ): SafeParseResult<OldTeam, SDKValidationError> {
@@ -4553,23 +3358,7 @@ export const NewTeam$inboundSchema: z.ZodType<NewTeam, z.ZodTypeDef, unknown> =
   z.object({
     name: types.string(),
   });
-/** @internal */
-export type NewTeam$Outbound = {
-  name: string;
-};
 
-/** @internal */
-export const NewTeam$outboundSchema: z.ZodType<
-  NewTeam$Outbound,
-  z.ZodTypeDef,
-  NewTeam
-> = z.object({
-  name: z.string(),
-});
-
-export function newTeamToJSON(newTeam: NewTeam): string {
-  return JSON.stringify(NewTeam$outboundSchema.parse(newTeam));
-}
 export function newTeamFromJSON(
   jsonString: string,
 ): SafeParseResult<NewTeam, SDKValidationError> {
@@ -4591,29 +3380,7 @@ export const TwentyFour$inboundSchema: z.ZodType<
   oldTeam: types.optional(z.lazy(() => OldTeam$inboundSchema)),
   newTeam: types.optional(z.lazy(() => NewTeam$inboundSchema)),
 });
-/** @internal */
-export type TwentyFour$Outbound = {
-  name?: string | undefined;
-  alias: string;
-  oldTeam?: OldTeam$Outbound | undefined;
-  newTeam?: NewTeam$Outbound | undefined;
-};
 
-/** @internal */
-export const TwentyFour$outboundSchema: z.ZodType<
-  TwentyFour$Outbound,
-  z.ZodTypeDef,
-  TwentyFour
-> = z.object({
-  name: z.string().optional(),
-  alias: z.string(),
-  oldTeam: z.lazy(() => OldTeam$outboundSchema).optional(),
-  newTeam: z.lazy(() => NewTeam$outboundSchema).optional(),
-});
-
-export function twentyFourToJSON(twentyFour: TwentyFour): string {
-  return JSON.stringify(TwentyFour$outboundSchema.parse(twentyFour));
-}
 export function twentyFourFromJSON(
   jsonString: string,
 ): SafeParseResult<TwentyFour, SDKValidationError> {
@@ -4628,10 +3395,6 @@ export function twentyFourFromJSON(
 export const PayloadAllowListedReadyStateReasonInternal$inboundSchema:
   z.ZodNativeEnum<typeof PayloadAllowListedReadyStateReasonInternal> = z
     .nativeEnum(PayloadAllowListedReadyStateReasonInternal);
-/** @internal */
-export const PayloadAllowListedReadyStateReasonInternal$outboundSchema:
-  z.ZodNativeEnum<typeof PayloadAllowListedReadyStateReasonInternal> =
-    PayloadAllowListedReadyStateReasonInternal$inboundSchema;
 
 /** @internal */
 export const PayloadDeployment$inboundSchema: z.ZodType<
@@ -4648,38 +3411,7 @@ export const PayloadDeployment$inboundSchema: z.ZodType<
     PayloadAllowListedReadyStateReasonInternal$inboundSchema,
   ),
 });
-/** @internal */
-export type PayloadDeployment$Outbound = {
-  id: string;
-  name: string;
-  url: string;
-  meta: { [k: string]: string };
-  readyState?: string | undefined;
-  allowListedReadyStateReasonInternal?: string | undefined;
-};
 
-/** @internal */
-export const PayloadDeployment$outboundSchema: z.ZodType<
-  PayloadDeployment$Outbound,
-  z.ZodTypeDef,
-  PayloadDeployment
-> = z.object({
-  id: z.string(),
-  name: z.string(),
-  url: z.string(),
-  meta: z.record(z.string()),
-  readyState: z.string().optional(),
-  allowListedReadyStateReasonInternal:
-    PayloadAllowListedReadyStateReasonInternal$outboundSchema.optional(),
-});
-
-export function payloadDeploymentToJSON(
-  payloadDeployment: PayloadDeployment,
-): string {
-  return JSON.stringify(
-    PayloadDeployment$outboundSchema.parse(payloadDeployment),
-  );
-}
 export function payloadDeploymentFromJSON(
   jsonString: string,
 ): SafeParseResult<PayloadDeployment, SDKValidationError> {
@@ -4701,28 +3433,7 @@ export const TwentyThree$inboundSchema: z.ZodType<
   deployment: z.nullable(z.lazy(() => PayloadDeployment$inboundSchema))
     .optional(),
 });
-/** @internal */
-export type TwentyThree$Outbound = {
-  projectId: string;
-  aliasCount: number;
-  deployment?: PayloadDeployment$Outbound | null | undefined;
-};
 
-/** @internal */
-export const TwentyThree$outboundSchema: z.ZodType<
-  TwentyThree$Outbound,
-  z.ZodTypeDef,
-  TwentyThree
-> = z.object({
-  projectId: z.string(),
-  aliasCount: z.number(),
-  deployment: z.nullable(z.lazy(() => PayloadDeployment$outboundSchema))
-    .optional(),
-});
-
-export function twentyThreeToJSON(twentyThree: TwentyThree): string {
-  return JSON.stringify(TwentyThree$outboundSchema.parse(twentyThree));
-}
 export function twentyThreeFromJSON(
   jsonString: string,
 ): SafeParseResult<TwentyThree, SDKValidationError> {
@@ -4737,10 +3448,6 @@ export function twentyThreeFromJSON(
 export const AllowListedReadyStateReasonInternal$inboundSchema: z.ZodNativeEnum<
   typeof AllowListedReadyStateReasonInternal
 > = z.nativeEnum(AllowListedReadyStateReasonInternal);
-/** @internal */
-export const AllowListedReadyStateReasonInternal$outboundSchema:
-  z.ZodNativeEnum<typeof AllowListedReadyStateReasonInternal> =
-    AllowListedReadyStateReasonInternal$inboundSchema;
 
 /** @internal */
 export const Deployment$inboundSchema: z.ZodType<
@@ -4757,34 +3464,7 @@ export const Deployment$inboundSchema: z.ZodType<
     AllowListedReadyStateReasonInternal$inboundSchema,
   ),
 });
-/** @internal */
-export type Deployment$Outbound = {
-  id: string;
-  name: string;
-  url: string;
-  meta: { [k: string]: string };
-  readyState?: string | undefined;
-  allowListedReadyStateReasonInternal?: string | undefined;
-};
 
-/** @internal */
-export const Deployment$outboundSchema: z.ZodType<
-  Deployment$Outbound,
-  z.ZodTypeDef,
-  Deployment
-> = z.object({
-  id: z.string(),
-  name: z.string(),
-  url: z.string(),
-  meta: z.record(z.string()),
-  readyState: z.string().optional(),
-  allowListedReadyStateReasonInternal:
-    AllowListedReadyStateReasonInternal$outboundSchema.optional(),
-});
-
-export function deploymentToJSON(deployment: Deployment): string {
-  return JSON.stringify(Deployment$outboundSchema.parse(deployment));
-}
 export function deploymentFromJSON(
   jsonString: string,
 ): SafeParseResult<Deployment, SDKValidationError> {
@@ -4814,45 +3494,7 @@ export const TwentyTwo$inboundSchema: z.ZodType<
   system: types.optional(types.boolean()),
   aliasUpdatedAt: types.optional(types.number()),
 });
-/** @internal */
-export type TwentyTwo$Outbound = {
-  alias?: string | undefined;
-  deployment?: Deployment$Outbound | null | undefined;
-  ruleCount?: number | undefined;
-  deploymentUrl?: string | undefined;
-  aliasId?: string | undefined;
-  deploymentId?: string | null | undefined;
-  oldDeploymentId?: string | null | undefined;
-  redirect?: string | undefined;
-  redirectStatusCode?: number | null | undefined;
-  target?: string | null | undefined;
-  system?: boolean | undefined;
-  aliasUpdatedAt?: number | undefined;
-};
 
-/** @internal */
-export const TwentyTwo$outboundSchema: z.ZodType<
-  TwentyTwo$Outbound,
-  z.ZodTypeDef,
-  TwentyTwo
-> = z.object({
-  alias: z.string().optional(),
-  deployment: z.nullable(z.lazy(() => Deployment$outboundSchema)).optional(),
-  ruleCount: z.number().optional(),
-  deploymentUrl: z.string().optional(),
-  aliasId: z.string().optional(),
-  deploymentId: z.nullable(z.string()).optional(),
-  oldDeploymentId: z.nullable(z.string()).optional(),
-  redirect: z.string().optional(),
-  redirectStatusCode: z.nullable(z.number()).optional(),
-  target: z.nullable(z.string()).optional(),
-  system: z.boolean().optional(),
-  aliasUpdatedAt: z.number().optional(),
-});
-
-export function twentyTwoToJSON(twentyTwo: TwentyTwo): string {
-  return JSON.stringify(TwentyTwo$outboundSchema.parse(twentyTwo));
-}
 export function twentyTwoFromJSON(
   jsonString: string,
 ): SafeParseResult<TwentyTwo, SDKValidationError> {
@@ -4872,25 +3514,7 @@ export const TwentyOne$inboundSchema: z.ZodType<
   price: types.optional(types.number()),
   currency: types.optional(types.string()),
 });
-/** @internal */
-export type TwentyOne$Outbound = {
-  price?: number | undefined;
-  currency?: string | undefined;
-};
 
-/** @internal */
-export const TwentyOne$outboundSchema: z.ZodType<
-  TwentyOne$Outbound,
-  z.ZodTypeDef,
-  TwentyOne
-> = z.object({
-  price: z.number().optional(),
-  currency: z.string().optional(),
-});
-
-export function twentyOneToJSON(twentyOne: TwentyOne): string {
-  return JSON.stringify(TwentyOne$outboundSchema.parse(twentyOne));
-}
 export function twentyOneFromJSON(
   jsonString: string,
 ): SafeParseResult<TwentyOne, SDKValidationError> {
@@ -4910,31 +3534,7 @@ export const UserEventPayload20AccessGroup$inboundSchema: z.ZodType<
   id: types.string(),
   name: types.optional(types.string()),
 });
-/** @internal */
-export type UserEventPayload20AccessGroup$Outbound = {
-  id: string;
-  name?: string | undefined;
-};
 
-/** @internal */
-export const UserEventPayload20AccessGroup$outboundSchema: z.ZodType<
-  UserEventPayload20AccessGroup$Outbound,
-  z.ZodTypeDef,
-  UserEventPayload20AccessGroup
-> = z.object({
-  id: z.string(),
-  name: z.string().optional(),
-});
-
-export function userEventPayload20AccessGroupToJSON(
-  userEventPayload20AccessGroup: UserEventPayload20AccessGroup,
-): string {
-  return JSON.stringify(
-    UserEventPayload20AccessGroup$outboundSchema.parse(
-      userEventPayload20AccessGroup,
-    ),
-  );
-}
 export function userEventPayload20AccessGroupFromJSON(
   jsonString: string,
 ): SafeParseResult<UserEventPayload20AccessGroup, SDKValidationError> {
@@ -4954,25 +3554,7 @@ export const PayloadUser$inboundSchema: z.ZodType<
   id: types.string(),
   username: types.optional(types.string()),
 });
-/** @internal */
-export type PayloadUser$Outbound = {
-  id: string;
-  username?: string | undefined;
-};
 
-/** @internal */
-export const PayloadUser$outboundSchema: z.ZodType<
-  PayloadUser$Outbound,
-  z.ZodTypeDef,
-  PayloadUser
-> = z.object({
-  id: z.string(),
-  username: z.string().optional(),
-});
-
-export function payloadUserToJSON(payloadUser: PayloadUser): string {
-  return JSON.stringify(PayloadUser$outboundSchema.parse(payloadUser));
-}
 export function payloadUserFromJSON(
   jsonString: string,
 ): SafeParseResult<PayloadUser, SDKValidationError> {
@@ -4990,27 +3572,7 @@ export const Twenty$inboundSchema: z.ZodType<Twenty, z.ZodTypeDef, unknown> = z
     user: z.lazy(() => PayloadUser$inboundSchema),
     directoryType: types.optional(types.string()),
   });
-/** @internal */
-export type Twenty$Outbound = {
-  accessGroup: UserEventPayload20AccessGroup$Outbound;
-  user: PayloadUser$Outbound;
-  directoryType?: string | undefined;
-};
 
-/** @internal */
-export const Twenty$outboundSchema: z.ZodType<
-  Twenty$Outbound,
-  z.ZodTypeDef,
-  Twenty
-> = z.object({
-  accessGroup: z.lazy(() => UserEventPayload20AccessGroup$outboundSchema),
-  user: z.lazy(() => PayloadUser$outboundSchema),
-  directoryType: z.string().optional(),
-});
-
-export function twentyToJSON(twenty: Twenty): string {
-  return JSON.stringify(Twenty$outboundSchema.parse(twenty));
-}
 export function twentyFromJSON(
   jsonString: string,
 ): SafeParseResult<Twenty, SDKValidationError> {
@@ -5030,31 +3592,7 @@ export const UserEventPayload19AccessGroup$inboundSchema: z.ZodType<
   id: types.string(),
   name: types.string(),
 });
-/** @internal */
-export type UserEventPayload19AccessGroup$Outbound = {
-  id: string;
-  name: string;
-};
 
-/** @internal */
-export const UserEventPayload19AccessGroup$outboundSchema: z.ZodType<
-  UserEventPayload19AccessGroup$Outbound,
-  z.ZodTypeDef,
-  UserEventPayload19AccessGroup
-> = z.object({
-  id: z.string(),
-  name: z.string(),
-});
-
-export function userEventPayload19AccessGroupToJSON(
-  userEventPayload19AccessGroup: UserEventPayload19AccessGroup,
-): string {
-  return JSON.stringify(
-    UserEventPayload19AccessGroup$outboundSchema.parse(
-      userEventPayload19AccessGroup,
-    ),
-  );
-}
 export function userEventPayload19AccessGroupFromJSON(
   jsonString: string,
 ): SafeParseResult<UserEventPayload19AccessGroup, SDKValidationError> {
@@ -5081,39 +3619,7 @@ export const Nineteen$inboundSchema: z.ZodType<
   entitlementsAdded: types.optional(z.array(types.string())),
   entitlementsRemoved: types.optional(z.array(types.string())),
 });
-/** @internal */
-export type Nineteen$Outbound = {
-  accessGroup: UserEventPayload19AccessGroup$Outbound;
-  name?: string | undefined;
-  previousName?: string | undefined;
-  teamRoles?: Array<string> | undefined;
-  previousTeamRoles?: Array<string> | undefined;
-  teamPermissions?: Array<string> | undefined;
-  previousTeamPermissions?: Array<string> | undefined;
-  entitlementsAdded?: Array<string> | undefined;
-  entitlementsRemoved?: Array<string> | undefined;
-};
 
-/** @internal */
-export const Nineteen$outboundSchema: z.ZodType<
-  Nineteen$Outbound,
-  z.ZodTypeDef,
-  Nineteen
-> = z.object({
-  accessGroup: z.lazy(() => UserEventPayload19AccessGroup$outboundSchema),
-  name: z.string().optional(),
-  previousName: z.string().optional(),
-  teamRoles: z.array(z.string()).optional(),
-  previousTeamRoles: z.array(z.string()).optional(),
-  teamPermissions: z.array(z.string()).optional(),
-  previousTeamPermissions: z.array(z.string()).optional(),
-  entitlementsAdded: z.array(z.string()).optional(),
-  entitlementsRemoved: z.array(z.string()).optional(),
-});
-
-export function nineteenToJSON(nineteen: Nineteen): string {
-  return JSON.stringify(Nineteen$outboundSchema.parse(nineteen));
-}
 export function nineteenFromJSON(
   jsonString: string,
 ): SafeParseResult<Nineteen, SDKValidationError> {
@@ -5133,31 +3639,7 @@ export const UserEventPayloadAccessGroup$inboundSchema: z.ZodType<
   id: types.string(),
   name: types.string(),
 });
-/** @internal */
-export type UserEventPayloadAccessGroup$Outbound = {
-  id: string;
-  name: string;
-};
 
-/** @internal */
-export const UserEventPayloadAccessGroup$outboundSchema: z.ZodType<
-  UserEventPayloadAccessGroup$Outbound,
-  z.ZodTypeDef,
-  UserEventPayloadAccessGroup
-> = z.object({
-  id: z.string(),
-  name: z.string(),
-});
-
-export function userEventPayloadAccessGroupToJSON(
-  userEventPayloadAccessGroup: UserEventPayloadAccessGroup,
-): string {
-  return JSON.stringify(
-    UserEventPayloadAccessGroup$outboundSchema.parse(
-      userEventPayloadAccessGroup,
-    ),
-  );
-}
 export function userEventPayloadAccessGroupFromJSON(
   jsonString: string,
 ): SafeParseResult<UserEventPayloadAccessGroup, SDKValidationError> {
@@ -5174,25 +3656,7 @@ export const Project$inboundSchema: z.ZodType<Project, z.ZodTypeDef, unknown> =
     id: types.string(),
     name: types.optional(types.string()),
   });
-/** @internal */
-export type Project$Outbound = {
-  id: string;
-  name?: string | undefined;
-};
 
-/** @internal */
-export const Project$outboundSchema: z.ZodType<
-  Project$Outbound,
-  z.ZodTypeDef,
-  Project
-> = z.object({
-  id: z.string(),
-  name: z.string().optional(),
-});
-
-export function projectToJSON(project: Project): string {
-  return JSON.stringify(Project$outboundSchema.parse(project));
-}
 export function projectFromJSON(
   jsonString: string,
 ): SafeParseResult<Project, SDKValidationError> {
@@ -5206,16 +3670,10 @@ export function projectFromJSON(
 /** @internal */
 export const NextRole$inboundSchema: z.ZodNativeEnum<typeof NextRole> = z
   .nativeEnum(NextRole);
-/** @internal */
-export const NextRole$outboundSchema: z.ZodNativeEnum<typeof NextRole> =
-  NextRole$inboundSchema;
 
 /** @internal */
 export const PreviousRole$inboundSchema: z.ZodNativeEnum<typeof PreviousRole> =
   z.nativeEnum(PreviousRole);
-/** @internal */
-export const PreviousRole$outboundSchema: z.ZodNativeEnum<typeof PreviousRole> =
-  PreviousRole$inboundSchema;
 
 /** @internal */
 export const Eighteen$inboundSchema: z.ZodType<
@@ -5233,34 +3691,7 @@ export const Eighteen$inboundSchema: z.ZodType<
     "previous_role": "previousRole",
   });
 });
-/** @internal */
-export type Eighteen$Outbound = {
-  accessGroup: UserEventPayloadAccessGroup$Outbound;
-  project: Project$Outbound;
-  next_role?: string | null | undefined;
-  previous_role?: string | undefined;
-};
 
-/** @internal */
-export const Eighteen$outboundSchema: z.ZodType<
-  Eighteen$Outbound,
-  z.ZodTypeDef,
-  Eighteen
-> = z.object({
-  accessGroup: z.lazy(() => UserEventPayloadAccessGroup$outboundSchema),
-  project: z.lazy(() => Project$outboundSchema),
-  nextRole: z.nullable(NextRole$outboundSchema).optional(),
-  previousRole: PreviousRole$outboundSchema.optional(),
-}).transform((v) => {
-  return remap$(v, {
-    nextRole: "next_role",
-    previousRole: "previous_role",
-  });
-});
-
-export function eighteenToJSON(eighteen: Eighteen): string {
-  return JSON.stringify(Eighteen$outboundSchema.parse(eighteen));
-}
 export function eighteenFromJSON(
   jsonString: string,
 ): SafeParseResult<Eighteen, SDKValidationError> {
@@ -5280,29 +3711,7 @@ export const PayloadAccessGroup$inboundSchema: z.ZodType<
   id: types.string(),
   name: types.string(),
 });
-/** @internal */
-export type PayloadAccessGroup$Outbound = {
-  id: string;
-  name: string;
-};
 
-/** @internal */
-export const PayloadAccessGroup$outboundSchema: z.ZodType<
-  PayloadAccessGroup$Outbound,
-  z.ZodTypeDef,
-  PayloadAccessGroup
-> = z.object({
-  id: z.string(),
-  name: z.string(),
-});
-
-export function payloadAccessGroupToJSON(
-  payloadAccessGroup: PayloadAccessGroup,
-): string {
-  return JSON.stringify(
-    PayloadAccessGroup$outboundSchema.parse(payloadAccessGroup),
-  );
-}
 export function payloadAccessGroupFromJSON(
   jsonString: string,
 ): SafeParseResult<PayloadAccessGroup, SDKValidationError> {
@@ -5322,25 +3731,7 @@ export const Seventeen$inboundSchema: z.ZodType<
   author: types.string(),
   accessGroup: z.lazy(() => PayloadAccessGroup$inboundSchema),
 });
-/** @internal */
-export type Seventeen$Outbound = {
-  author: string;
-  accessGroup: PayloadAccessGroup$Outbound;
-};
 
-/** @internal */
-export const Seventeen$outboundSchema: z.ZodType<
-  Seventeen$Outbound,
-  z.ZodTypeDef,
-  Seventeen
-> = z.object({
-  author: z.string(),
-  accessGroup: z.lazy(() => PayloadAccessGroup$outboundSchema),
-});
-
-export function seventeenToJSON(seventeen: Seventeen): string {
-  return JSON.stringify(Seventeen$outboundSchema.parse(seventeen));
-}
 export function seventeenFromJSON(
   jsonString: string,
 ): SafeParseResult<Seventeen, SDKValidationError> {
@@ -5360,25 +3751,7 @@ export const AccessGroup$inboundSchema: z.ZodType<
   id: types.string(),
   name: types.string(),
 });
-/** @internal */
-export type AccessGroup$Outbound = {
-  id: string;
-  name: string;
-};
 
-/** @internal */
-export const AccessGroup$outboundSchema: z.ZodType<
-  AccessGroup$Outbound,
-  z.ZodTypeDef,
-  AccessGroup
-> = z.object({
-  id: z.string(),
-  name: z.string(),
-});
-
-export function accessGroupToJSON(accessGroup: AccessGroup): string {
-  return JSON.stringify(AccessGroup$outboundSchema.parse(accessGroup));
-}
 export function accessGroupFromJSON(
   jsonString: string,
 ): SafeParseResult<AccessGroup, SDKValidationError> {
@@ -5397,29 +3770,7 @@ export const Sixteen$inboundSchema: z.ZodType<Sixteen, z.ZodTypeDef, unknown> =
     teamPermissions: types.optional(z.array(types.string())),
     entitlements: types.optional(z.array(types.string())),
   });
-/** @internal */
-export type Sixteen$Outbound = {
-  accessGroup: AccessGroup$Outbound;
-  teamRoles?: Array<string> | undefined;
-  teamPermissions?: Array<string> | undefined;
-  entitlements?: Array<string> | undefined;
-};
 
-/** @internal */
-export const Sixteen$outboundSchema: z.ZodType<
-  Sixteen$Outbound,
-  z.ZodTypeDef,
-  Sixteen
-> = z.object({
-  accessGroup: z.lazy(() => AccessGroup$outboundSchema),
-  teamRoles: z.array(z.string()).optional(),
-  teamPermissions: z.array(z.string()).optional(),
-  entitlements: z.array(z.string()).optional(),
-});
-
-export function sixteenToJSON(sixteen: Sixteen): string {
-  return JSON.stringify(Sixteen$outboundSchema.parse(sixteen));
-}
 export function sixteenFromJSON(
   jsonString: string,
 ): SafeParseResult<Sixteen, SDKValidationError> {
@@ -5440,31 +3791,7 @@ export const VirtualModelConfig$inboundSchema: z.ZodType<
   displayName: types.optional(types.string()),
   modelSlug: types.string(),
 });
-/** @internal */
-export type VirtualModelConfig$Outbound = {
-  id: string;
-  displayName?: string | undefined;
-  modelSlug: string;
-};
 
-/** @internal */
-export const VirtualModelConfig$outboundSchema: z.ZodType<
-  VirtualModelConfig$Outbound,
-  z.ZodTypeDef,
-  VirtualModelConfig
-> = z.object({
-  id: z.string(),
-  displayName: z.string().optional(),
-  modelSlug: z.string(),
-});
-
-export function virtualModelConfigToJSON(
-  virtualModelConfig: VirtualModelConfig,
-): string {
-  return JSON.stringify(
-    VirtualModelConfig$outboundSchema.parse(virtualModelConfig),
-  );
-}
 export function virtualModelConfigFromJSON(
   jsonString: string,
 ): SafeParseResult<VirtualModelConfig, SDKValidationError> {
@@ -5480,23 +3807,7 @@ export const Fifteen$inboundSchema: z.ZodType<Fifteen, z.ZodTypeDef, unknown> =
   z.object({
     virtualModelConfig: z.lazy(() => VirtualModelConfig$inboundSchema),
   });
-/** @internal */
-export type Fifteen$Outbound = {
-  virtualModelConfig: VirtualModelConfig$Outbound;
-};
 
-/** @internal */
-export const Fifteen$outboundSchema: z.ZodType<
-  Fifteen$Outbound,
-  z.ZodTypeDef,
-  Fifteen
-> = z.object({
-  virtualModelConfig: z.lazy(() => VirtualModelConfig$outboundSchema),
-});
-
-export function fifteenToJSON(fifteen: Fifteen): string {
-  return JSON.stringify(Fifteen$outboundSchema.parse(fifteen));
-}
 export function fifteenFromJSON(
   jsonString: string,
 ): SafeParseResult<Fifteen, SDKValidationError> {
@@ -5517,27 +3828,7 @@ export const Credential$inboundSchema: z.ZodType<
   name: types.string(),
   providerSlug: types.string(),
 });
-/** @internal */
-export type Credential$Outbound = {
-  id: string;
-  name: string;
-  providerSlug: string;
-};
 
-/** @internal */
-export const Credential$outboundSchema: z.ZodType<
-  Credential$Outbound,
-  z.ZodTypeDef,
-  Credential
-> = z.object({
-  id: z.string(),
-  name: z.string(),
-  providerSlug: z.string(),
-});
-
-export function credentialToJSON(credential: Credential): string {
-  return JSON.stringify(Credential$outboundSchema.parse(credential));
-}
 export function credentialFromJSON(
   jsonString: string,
 ): SafeParseResult<Credential, SDKValidationError> {
@@ -5556,23 +3847,7 @@ export const Fourteen$inboundSchema: z.ZodType<
 > = z.object({
   credential: z.lazy(() => Credential$inboundSchema),
 });
-/** @internal */
-export type Fourteen$Outbound = {
-  credential: Credential$Outbound;
-};
 
-/** @internal */
-export const Fourteen$outboundSchema: z.ZodType<
-  Fourteen$Outbound,
-  z.ZodTypeDef,
-  Fourteen
-> = z.object({
-  credential: z.lazy(() => Credential$outboundSchema),
-});
-
-export function fourteenToJSON(fourteen: Fourteen): string {
-  return JSON.stringify(Fourteen$outboundSchema.parse(fourteen));
-}
 export function fourteenFromJSON(
   jsonString: string,
 ): SafeParseResult<Fourteen, SDKValidationError> {
@@ -5592,29 +3867,7 @@ export const UserEventPayloadApiKey$inboundSchema: z.ZodType<
   id: types.string(),
   name: types.string(),
 });
-/** @internal */
-export type UserEventPayloadApiKey$Outbound = {
-  id: string;
-  name: string;
-};
 
-/** @internal */
-export const UserEventPayloadApiKey$outboundSchema: z.ZodType<
-  UserEventPayloadApiKey$Outbound,
-  z.ZodTypeDef,
-  UserEventPayloadApiKey
-> = z.object({
-  id: z.string(),
-  name: z.string(),
-});
-
-export function userEventPayloadApiKeyToJSON(
-  userEventPayloadApiKey: UserEventPayloadApiKey,
-): string {
-  return JSON.stringify(
-    UserEventPayloadApiKey$outboundSchema.parse(userEventPayloadApiKey),
-  );
-}
 export function userEventPayloadApiKeyFromJSON(
   jsonString: string,
 ): SafeParseResult<UserEventPayloadApiKey, SDKValidationError> {
@@ -5629,10 +3882,6 @@ export function userEventPayloadApiKeyFromJSON(
 export const PayloadRefreshPeriod$inboundSchema: z.ZodNativeEnum<
   typeof PayloadRefreshPeriod
 > = z.nativeEnum(PayloadRefreshPeriod);
-/** @internal */
-export const PayloadRefreshPeriod$outboundSchema: z.ZodNativeEnum<
-  typeof PayloadRefreshPeriod
-> = PayloadRefreshPeriod$inboundSchema;
 
 /** @internal */
 export const PayloadBudget$inboundSchema: z.ZodType<
@@ -5643,25 +3892,7 @@ export const PayloadBudget$inboundSchema: z.ZodType<
   limitAmount: types.number(),
   refreshPeriod: PayloadRefreshPeriod$inboundSchema,
 });
-/** @internal */
-export type PayloadBudget$Outbound = {
-  limitAmount: number;
-  refreshPeriod: string;
-};
 
-/** @internal */
-export const PayloadBudget$outboundSchema: z.ZodType<
-  PayloadBudget$Outbound,
-  z.ZodTypeDef,
-  PayloadBudget
-> = z.object({
-  limitAmount: z.number(),
-  refreshPeriod: PayloadRefreshPeriod$outboundSchema,
-});
-
-export function payloadBudgetToJSON(payloadBudget: PayloadBudget): string {
-  return JSON.stringify(PayloadBudget$outboundSchema.parse(payloadBudget));
-}
 export function payloadBudgetFromJSON(
   jsonString: string,
 ): SafeParseResult<PayloadBudget, SDKValidationError> {
@@ -5675,9 +3906,6 @@ export function payloadBudgetFromJSON(
 /** @internal */
 export const Change$inboundSchema: z.ZodNativeEnum<typeof Change> = z
   .nativeEnum(Change);
-/** @internal */
-export const Change$outboundSchema: z.ZodNativeEnum<typeof Change> =
-  Change$inboundSchema;
 
 /** @internal */
 export const Thirteen$inboundSchema: z.ZodType<
@@ -5689,27 +3917,7 @@ export const Thirteen$inboundSchema: z.ZodType<
   budget: z.nullable(z.lazy(() => PayloadBudget$inboundSchema)).optional(),
   change: Change$inboundSchema,
 });
-/** @internal */
-export type Thirteen$Outbound = {
-  apiKey: UserEventPayloadApiKey$Outbound;
-  budget?: PayloadBudget$Outbound | null | undefined;
-  change: string;
-};
 
-/** @internal */
-export const Thirteen$outboundSchema: z.ZodType<
-  Thirteen$Outbound,
-  z.ZodTypeDef,
-  Thirteen
-> = z.object({
-  apiKey: z.lazy(() => UserEventPayloadApiKey$outboundSchema),
-  budget: z.nullable(z.lazy(() => PayloadBudget$outboundSchema)).optional(),
-  change: Change$outboundSchema,
-});
-
-export function thirteenToJSON(thirteen: Thirteen): string {
-  return JSON.stringify(Thirteen$outboundSchema.parse(thirteen));
-}
 export function thirteenFromJSON(
   jsonString: string,
 ): SafeParseResult<Thirteen, SDKValidationError> {
@@ -5729,25 +3937,7 @@ export const PayloadApiKey$inboundSchema: z.ZodType<
   id: types.string(),
   name: types.string(),
 });
-/** @internal */
-export type PayloadApiKey$Outbound = {
-  id: string;
-  name: string;
-};
 
-/** @internal */
-export const PayloadApiKey$outboundSchema: z.ZodType<
-  PayloadApiKey$Outbound,
-  z.ZodTypeDef,
-  PayloadApiKey
-> = z.object({
-  id: z.string(),
-  name: z.string(),
-});
-
-export function payloadApiKeyToJSON(payloadApiKey: PayloadApiKey): string {
-  return JSON.stringify(PayloadApiKey$outboundSchema.parse(payloadApiKey));
-}
 export function payloadApiKeyFromJSON(
   jsonString: string,
 ): SafeParseResult<PayloadApiKey, SDKValidationError> {
@@ -5763,23 +3953,7 @@ export const Twelve$inboundSchema: z.ZodType<Twelve, z.ZodTypeDef, unknown> = z
   .object({
     apiKey: z.lazy(() => PayloadApiKey$inboundSchema),
   });
-/** @internal */
-export type Twelve$Outbound = {
-  apiKey: PayloadApiKey$Outbound;
-};
 
-/** @internal */
-export const Twelve$outboundSchema: z.ZodType<
-  Twelve$Outbound,
-  z.ZodTypeDef,
-  Twelve
-> = z.object({
-  apiKey: z.lazy(() => PayloadApiKey$outboundSchema),
-});
-
-export function twelveToJSON(twelve: Twelve): string {
-  return JSON.stringify(Twelve$outboundSchema.parse(twelve));
-}
 export function twelveFromJSON(
   jsonString: string,
 ): SafeParseResult<Twelve, SDKValidationError> {
@@ -5796,25 +3970,7 @@ export const ApiKey$inboundSchema: z.ZodType<ApiKey, z.ZodTypeDef, unknown> = z
     id: types.string(),
     name: types.string(),
   });
-/** @internal */
-export type ApiKey$Outbound = {
-  id: string;
-  name: string;
-};
 
-/** @internal */
-export const ApiKey$outboundSchema: z.ZodType<
-  ApiKey$Outbound,
-  z.ZodTypeDef,
-  ApiKey
-> = z.object({
-  id: z.string(),
-  name: z.string(),
-});
-
-export function apiKeyToJSON(apiKey: ApiKey): string {
-  return JSON.stringify(ApiKey$outboundSchema.parse(apiKey));
-}
 export function apiKeyFromJSON(
   jsonString: string,
 ): SafeParseResult<ApiKey, SDKValidationError> {
@@ -5829,10 +3985,6 @@ export function apiKeyFromJSON(
 export const RefreshPeriod$inboundSchema: z.ZodNativeEnum<
   typeof RefreshPeriod
 > = z.nativeEnum(RefreshPeriod);
-/** @internal */
-export const RefreshPeriod$outboundSchema: z.ZodNativeEnum<
-  typeof RefreshPeriod
-> = RefreshPeriod$inboundSchema;
 
 /** @internal */
 export const Budget$inboundSchema: z.ZodType<Budget, z.ZodTypeDef, unknown> = z
@@ -5840,25 +3992,7 @@ export const Budget$inboundSchema: z.ZodType<Budget, z.ZodTypeDef, unknown> = z
     limitAmount: types.number(),
     refreshPeriod: RefreshPeriod$inboundSchema,
   });
-/** @internal */
-export type Budget$Outbound = {
-  limitAmount: number;
-  refreshPeriod: string;
-};
 
-/** @internal */
-export const Budget$outboundSchema: z.ZodType<
-  Budget$Outbound,
-  z.ZodTypeDef,
-  Budget
-> = z.object({
-  limitAmount: z.number(),
-  refreshPeriod: RefreshPeriod$outboundSchema,
-});
-
-export function budgetToJSON(budget: Budget): string {
-  return JSON.stringify(Budget$outboundSchema.parse(budget));
-}
 export function budgetFromJSON(
   jsonString: string,
 ): SafeParseResult<Budget, SDKValidationError> {
@@ -5875,25 +4009,7 @@ export const Eleven$inboundSchema: z.ZodType<Eleven, z.ZodTypeDef, unknown> = z
     apiKey: z.lazy(() => ApiKey$inboundSchema),
     budget: z.nullable(z.lazy(() => Budget$inboundSchema)).optional(),
   });
-/** @internal */
-export type Eleven$Outbound = {
-  apiKey: ApiKey$Outbound;
-  budget?: Budget$Outbound | null | undefined;
-};
 
-/** @internal */
-export const Eleven$outboundSchema: z.ZodType<
-  Eleven$Outbound,
-  z.ZodTypeDef,
-  Eleven
-> = z.object({
-  apiKey: z.lazy(() => ApiKey$outboundSchema),
-  budget: z.nullable(z.lazy(() => Budget$outboundSchema)).optional(),
-});
-
-export function elevenToJSON(eleven: Eleven): string {
-  return JSON.stringify(Eleven$outboundSchema.parse(eleven));
-}
 export function elevenFromJSON(
   jsonString: string,
 ): SafeParseResult<Eleven, SDKValidationError> {
@@ -5905,47 +4021,31 @@ export function elevenFromJSON(
 }
 
 /** @internal */
+export const UserEventPayload10Provider$inboundSchema: z.ZodNativeEnum<
+  typeof UserEventPayload10Provider
+> = z.nativeEnum(UserEventPayload10Provider);
+
+/** @internal */
 export const FromPlan$inboundSchema: z.ZodNativeEnum<typeof FromPlan> = z
   .nativeEnum(FromPlan);
-/** @internal */
-export const FromPlan$outboundSchema: z.ZodNativeEnum<typeof FromPlan> =
-  FromPlan$inboundSchema;
 
 /** @internal */
 export const ToPlan$inboundSchema: z.ZodNativeEnum<typeof ToPlan> = z
   .nativeEnum(ToPlan);
-/** @internal */
-export const ToPlan$outboundSchema: z.ZodNativeEnum<typeof ToPlan> =
-  ToPlan$inboundSchema;
 
 /** @internal */
 export const Ten$inboundSchema: z.ZodType<Ten, z.ZodTypeDef, unknown> = z
   .object({
+    provider: types.optional(UserEventPayload10Provider$inboundSchema),
+    providerAccount: types.optional(types.string()),
+    stripeAccount: types.optional(types.string()),
+    stripeOrganisation: types.optional(types.string()),
     teamId: types.string(),
     resourceId: types.string(),
     fromPlan: FromPlan$inboundSchema,
     toPlan: ToPlan$inboundSchema,
   });
-/** @internal */
-export type Ten$Outbound = {
-  teamId: string;
-  resourceId: string;
-  fromPlan: string;
-  toPlan: string;
-};
 
-/** @internal */
-export const Ten$outboundSchema: z.ZodType<Ten$Outbound, z.ZodTypeDef, Ten> = z
-  .object({
-    teamId: z.string(),
-    resourceId: z.string(),
-    fromPlan: FromPlan$outboundSchema,
-    toPlan: ToPlan$outboundSchema,
-  });
-
-export function tenToJSON(ten: Ten): string {
-  return JSON.stringify(Ten$outboundSchema.parse(ten));
-}
 export function tenFromJSON(
   jsonString: string,
 ): SafeParseResult<Ten, SDKValidationError> {
@@ -5957,27 +4057,20 @@ export function tenFromJSON(
 }
 
 /** @internal */
+export const UserEventPayload9Provider$inboundSchema: z.ZodNativeEnum<
+  typeof UserEventPayload9Provider
+> = z.nativeEnum(UserEventPayload9Provider);
+
+/** @internal */
 export const Nine$inboundSchema: z.ZodType<Nine, z.ZodTypeDef, unknown> = z
   .object({
+    provider: types.optional(UserEventPayload9Provider$inboundSchema),
+    providerAccount: types.optional(types.string()),
+    stripeAccount: types.optional(types.string()),
     resourceId: types.string(),
     projectName: types.string(),
   });
-/** @internal */
-export type Nine$Outbound = {
-  resourceId: string;
-  projectName: string;
-};
 
-/** @internal */
-export const Nine$outboundSchema: z.ZodType<Nine$Outbound, z.ZodTypeDef, Nine> =
-  z.object({
-    resourceId: z.string(),
-    projectName: z.string(),
-  });
-
-export function nineToJSON(nine: Nine): string {
-  return JSON.stringify(Nine$outboundSchema.parse(nine));
-}
 export function nineFromJSON(
   jsonString: string,
 ): SafeParseResult<Nine, SDKValidationError> {
@@ -5989,30 +4082,21 @@ export function nineFromJSON(
 }
 
 /** @internal */
+export const UserEventPayload8Provider$inboundSchema: z.ZodNativeEnum<
+  typeof UserEventPayload8Provider
+> = z.nativeEnum(UserEventPayload8Provider);
+
+/** @internal */
 export const Eight$inboundSchema: z.ZodType<Eight, z.ZodTypeDef, unknown> = z
   .object({
+    provider: types.optional(UserEventPayload8Provider$inboundSchema),
+    providerAccount: types.optional(types.string()),
+    stripeAccount: types.optional(types.string()),
+    stripeOrganisation: types.optional(types.string()),
     reason: types.string(),
     blockCode: types.string(),
   });
-/** @internal */
-export type Eight$Outbound = {
-  reason: string;
-  blockCode: string;
-};
 
-/** @internal */
-export const Eight$outboundSchema: z.ZodType<
-  Eight$Outbound,
-  z.ZodTypeDef,
-  Eight
-> = z.object({
-  reason: z.string(),
-  blockCode: z.string(),
-});
-
-export function eightToJSON(eight: Eight): string {
-  return JSON.stringify(Eight$outboundSchema.parse(eight));
-}
 export function eightFromJSON(
   jsonString: string,
 ): SafeParseResult<Eight, SDKValidationError> {
@@ -6024,33 +4108,21 @@ export function eightFromJSON(
 }
 
 /** @internal */
+export const UserEventPayloadProvider$inboundSchema: z.ZodNativeEnum<
+  typeof UserEventPayloadProvider
+> = z.nativeEnum(UserEventPayloadProvider);
+
+/** @internal */
 export const Seven$inboundSchema: z.ZodType<Seven, z.ZodTypeDef, unknown> = z
   .object({
+    provider: types.optional(UserEventPayloadProvider$inboundSchema),
+    providerAccount: types.optional(types.string()),
+    stripeAccount: types.optional(types.string()),
+    stripeOrganisation: types.optional(types.string()),
     teamId: types.string(),
     teamSlug: types.string(),
-    stripeAccount: types.string(),
   });
-/** @internal */
-export type Seven$Outbound = {
-  teamId: string;
-  teamSlug: string;
-  stripeAccount: string;
-};
 
-/** @internal */
-export const Seven$outboundSchema: z.ZodType<
-  Seven$Outbound,
-  z.ZodTypeDef,
-  Seven
-> = z.object({
-  teamId: z.string(),
-  teamSlug: z.string(),
-  stripeAccount: z.string(),
-});
-
-export function sevenToJSON(seven: Seven): string {
-  return JSON.stringify(Seven$outboundSchema.parse(seven));
-}
 export function sevenFromJSON(
   jsonString: string,
 ): SafeParseResult<Seven, SDKValidationError> {
@@ -6062,27 +4134,20 @@ export function sevenFromJSON(
 }
 
 /** @internal */
+export const PayloadProvider$inboundSchema: z.ZodNativeEnum<
+  typeof PayloadProvider
+> = z.nativeEnum(PayloadProvider);
+
+/** @internal */
 export const Six$inboundSchema: z.ZodType<Six, z.ZodTypeDef, unknown> = z
   .object({
+    provider: types.optional(PayloadProvider$inboundSchema),
+    providerAccount: types.optional(types.string()),
+    stripeAccount: types.optional(types.string()),
+    stripeOrganisation: types.optional(types.string()),
     teamId: types.string(),
-    stripeAccount: types.string(),
-  });
-/** @internal */
-export type Six$Outbound = {
-  teamId: string;
-  stripeAccount: string;
-};
-
-/** @internal */
-export const Six$outboundSchema: z.ZodType<Six$Outbound, z.ZodTypeDef, Six> = z
-  .object({
-    teamId: z.string(),
-    stripeAccount: z.string(),
   });
 
-export function sixToJSON(six: Six): string {
-  return JSON.stringify(Six$outboundSchema.parse(six));
-}
 export function sixFromJSON(
   jsonString: string,
 ): SafeParseResult<Six, SDKValidationError> {
@@ -6094,33 +4159,20 @@ export function sixFromJSON(
 }
 
 /** @internal */
+export const Provider$inboundSchema: z.ZodNativeEnum<typeof Provider> = z
+  .nativeEnum(Provider);
+
+/** @internal */
 export const Five$inboundSchema: z.ZodType<Five, z.ZodTypeDef, unknown> = z
   .object({
+    provider: types.optional(Provider$inboundSchema),
+    providerAccount: types.optional(types.string()),
+    stripeAccount: types.optional(types.string()),
+    stripeOrganisation: types.optional(types.string()),
     teamId: types.string(),
-    stripeAccount: types.string(),
-    stripeOrganisation: types.string(),
     accountRequestId: types.string(),
   });
-/** @internal */
-export type Five$Outbound = {
-  teamId: string;
-  stripeAccount: string;
-  stripeOrganisation: string;
-  accountRequestId: string;
-};
 
-/** @internal */
-export const Five$outboundSchema: z.ZodType<Five$Outbound, z.ZodTypeDef, Five> =
-  z.object({
-    teamId: z.string(),
-    stripeAccount: z.string(),
-    stripeOrganisation: z.string(),
-    accountRequestId: z.string(),
-  });
-
-export function fiveToJSON(five: Five): string {
-  return JSON.stringify(Five$outboundSchema.parse(five));
-}
 export function fiveFromJSON(
   jsonString: string,
 ): SafeParseResult<Five, SDKValidationError> {
@@ -6135,10 +4187,6 @@ export function fiveFromJSON(
 export const UserEventPayloadAction$inboundSchema: z.ZodNativeEnum<
   typeof UserEventPayloadAction
 > = z.nativeEnum(UserEventPayloadAction);
-/** @internal */
-export const UserEventPayloadAction$outboundSchema: z.ZodNativeEnum<
-  typeof UserEventPayloadAction
-> = UserEventPayloadAction$inboundSchema;
 
 /** @internal */
 export const Four$inboundSchema: z.ZodType<Four, z.ZodTypeDef, unknown> = z
@@ -6148,26 +4196,7 @@ export const Four$inboundSchema: z.ZodType<Four, z.ZodTypeDef, unknown> = z
     projectId: types.optional(types.string()),
     environment: z.array(types.string()),
   });
-/** @internal */
-export type Four$Outbound = {
-  action: string;
-  projectName?: string | undefined;
-  projectId?: string | undefined;
-  environment: Array<string>;
-};
 
-/** @internal */
-export const Four$outboundSchema: z.ZodType<Four$Outbound, z.ZodTypeDef, Four> =
-  z.object({
-    action: UserEventPayloadAction$outboundSchema,
-    projectName: z.string().optional(),
-    projectId: z.string().optional(),
-    environment: z.array(z.string()),
-  });
-
-export function fourToJSON(four: Four): string {
-  return JSON.stringify(Four$outboundSchema.parse(four));
-}
 export function fourFromJSON(
   jsonString: string,
 ): SafeParseResult<Four, SDKValidationError> {
@@ -6182,10 +4211,6 @@ export function fourFromJSON(
 export const PayloadAction$inboundSchema: z.ZodNativeEnum<
   typeof PayloadAction
 > = z.nativeEnum(PayloadAction);
-/** @internal */
-export const PayloadAction$outboundSchema: z.ZodNativeEnum<
-  typeof PayloadAction
-> = PayloadAction$inboundSchema;
 
 /** @internal */
 export const Payload3$inboundSchema: z.ZodType<
@@ -6199,31 +4224,7 @@ export const Payload3$inboundSchema: z.ZodType<
   projectId: types.optional(types.string()),
   environment: types.string(),
 });
-/** @internal */
-export type Payload3$Outbound = {
-  action: string;
-  label?: string | undefined;
-  projectName?: string | undefined;
-  projectId?: string | undefined;
-  environment: string;
-};
 
-/** @internal */
-export const Payload3$outboundSchema: z.ZodType<
-  Payload3$Outbound,
-  z.ZodTypeDef,
-  Payload3
-> = z.object({
-  action: PayloadAction$outboundSchema,
-  label: z.string().optional(),
-  projectName: z.string().optional(),
-  projectId: z.string().optional(),
-  environment: z.string(),
-});
-
-export function payload3ToJSON(payload3: Payload3): string {
-  return JSON.stringify(Payload3$outboundSchema.parse(payload3));
-}
 export function payload3FromJSON(
   jsonString: string,
 ): SafeParseResult<Payload3, SDKValidationError> {
@@ -6237,9 +4238,6 @@ export function payload3FromJSON(
 /** @internal */
 export const Action$inboundSchema: z.ZodNativeEnum<typeof Action> = z
   .nativeEnum(Action);
-/** @internal */
-export const Action$outboundSchema: z.ZodNativeEnum<typeof Action> =
-  Action$inboundSchema;
 
 /** @internal */
 export const Payload2$inboundSchema: z.ZodType<
@@ -6253,31 +4251,7 @@ export const Payload2$inboundSchema: z.ZodType<
   projectId: types.string(),
   projectName: types.optional(types.string()),
 });
-/** @internal */
-export type Payload2$Outbound = {
-  action: string;
-  id: string;
-  slug: string;
-  projectId: string;
-  projectName?: string | undefined;
-};
 
-/** @internal */
-export const Payload2$outboundSchema: z.ZodType<
-  Payload2$Outbound,
-  z.ZodTypeDef,
-  Payload2
-> = z.object({
-  action: Action$outboundSchema,
-  id: z.string(),
-  slug: z.string(),
-  projectId: z.string(),
-  projectName: z.string().optional(),
-});
-
-export function payload2ToJSON(payload2: Payload2): string {
-  return JSON.stringify(Payload2$outboundSchema.parse(payload2));
-}
 export function payload2FromJSON(
   jsonString: string,
 ): SafeParseResult<Payload2, SDKValidationError> {
@@ -6294,19 +4268,7 @@ export const Payload1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-/** @internal */
-export type Payload1$Outbound = {};
 
-/** @internal */
-export const Payload1$outboundSchema: z.ZodType<
-  Payload1$Outbound,
-  z.ZodTypeDef,
-  Payload1
-> = z.object({});
-
-export function payload1ToJSON(payload1: Payload1): string {
-  return JSON.stringify(Payload1$outboundSchema.parse(payload1));
-}
 export function payload1FromJSON(
   jsonString: string,
 ): SafeParseResult<Payload1, SDKValidationError> {
@@ -6342,7 +4304,6 @@ export const Payload$inboundSchema: z.ZodType<Payload, z.ZodTypeDef, unknown> =
     TwoHundredAndTwentySix$inboundSchema,
     ThreeHundredAndThirtyNine$inboundSchema,
     z.lazy(() => Payload2$inboundSchema),
-    z.lazy(() => Five$inboundSchema),
     z.lazy(() => Ten$inboundSchema),
     z.lazy(() => FortyFour$inboundSchema),
     z.lazy(() => FortyFive$inboundSchema),
@@ -6382,7 +4343,6 @@ export const Payload$inboundSchema: z.ZodType<Payload, z.ZodTypeDef, unknown> =
     ThreeHundredAndFifteen$inboundSchema,
     ThreeHundredAndForty$inboundSchema,
     ThreeHundredAndFortyOne$inboundSchema,
-    z.lazy(() => Seven$inboundSchema),
     z.lazy(() => TwentyFive$inboundSchema),
     z.lazy(() => Thirty$inboundSchema),
     FiftyTwo$inboundSchema,
@@ -6463,7 +4423,8 @@ export const Payload$inboundSchema: z.ZodType<Payload, z.ZodTypeDef, unknown> =
     ThreeHundredAndThirtyEight$inboundSchema,
     z.lazy(() => Payload3$inboundSchema),
     z.lazy(() => Four$inboundSchema),
-    z.lazy(() => Six$inboundSchema),
+    z.lazy(() => Five$inboundSchema),
+    z.lazy(() => Seven$inboundSchema),
     z.lazy(() => Eight$inboundSchema),
     z.lazy(() => Nine$inboundSchema),
     z.lazy(() => Thirteen$inboundSchema),
@@ -6551,6 +4512,7 @@ export const Payload$inboundSchema: z.ZodType<Payload, z.ZodTypeDef, unknown> =
     ThreeHundredAndThirtySix$inboundSchema,
     ThreeHundredAndThirtySeven$inboundSchema,
     ThreeHundredAndFortyTwo$inboundSchema,
+    z.lazy(() => Six$inboundSchema),
     z.lazy(() => Eleven$inboundSchema),
     z.lazy(() => Twelve$inboundSchema),
     z.lazy(() => Fourteen$inboundSchema),
@@ -6663,704 +4625,7 @@ export const Payload$inboundSchema: z.ZodType<Payload, z.ZodTypeDef, unknown> =
     ThreeHundredAndTwelve$inboundSchema,
     ThreeHundredAndSeventeen$inboundSchema,
   ]);
-/** @internal */
-export type Payload$Outbound =
-  | OneHundredAndThirtySeven$Outbound
-  | EightySeven$Outbound
-  | TwoHundredAndFourteen$Outbound
-  | OneHundredAndThirtyOne$Outbound
-  | OneHundredAndThirtyFive$Outbound
-  | OneHundredAndNinetyOne$Outbound
-  | TwoHundredAndFiftyOne$Outbound
-  | TwoHundredAndSixtyFour$Outbound
-  | TwoHundredAndSixtySix$Outbound
-  | EightyTwo$Outbound
-  | EightyFive$Outbound
-  | EightySix$Outbound
-  | EightyEight$Outbound
-  | NinetyFive$Outbound
-  | OneHundredAndTwentyFive$Outbound
-  | OneHundredAndThirty$Outbound
-  | OneHundredAndThirtySix$Outbound
-  | TwoHundredAndTwo$Outbound
-  | TwoHundredAndSixteen$Outbound
-  | TwoHundredAndTwentySix$Outbound
-  | ThreeHundredAndThirtyNine$Outbound
-  | Payload2$Outbound
-  | Five$Outbound
-  | Ten$Outbound
-  | FortyFour$Outbound
-  | FortyFive$Outbound
-  | SeventySix$Outbound
-  | SeventyEight$Outbound
-  | EightyFour$Outbound
-  | NinetyThree$Outbound
-  | OneHundredAndThirteen$Outbound
-  | OneHundredAndTwentyNine$Outbound
-  | OneHundredAndFiftyFour$Outbound
-  | OneHundredAndFiftyFive$Outbound
-  | OneHundredAndSixtyOne$Outbound
-  | OneHundredAndSeventyEight$Outbound
-  | OneHundredAndEightyOne$Outbound
-  | OneHundredAndEightyEight$Outbound
-  | OneHundredAndNinetyTwo$Outbound
-  | OneHundredAndNinetyFive$Outbound
-  | OneHundredAndNinetySix$Outbound
-  | OneHundredAndNinetySeven$Outbound
-  | OneHundredAndNinetyEight$Outbound
-  | TwoHundredAndThirteen$Outbound
-  | TwoHundredAndFifteen$Outbound
-  | TwoHundredAndNineteen$Outbound
-  | TwoHundredAndThirtyEight$Outbound
-  | TwoHundredAndThirtyNine$Outbound
-  | TwoHundredAndFortyFive$Outbound
-  | TwoHundredAndFortySix$Outbound
-  | TwoHundredAndFortySeven$Outbound
-  | TwoHundredAndFortyNine$Outbound
-  | TwoHundredAndSixtyTwo$Outbound
-  | TwoHundredAndSixtyFive$Outbound
-  | TwoHundredAndSeventyFour$Outbound
-  | TwoHundredAndSeventyFive$Outbound
-  | TwoHundredAndEightyTwo$Outbound
-  | TwoHundredAndEightySeven$Outbound
-  | ThreeHundredAndOne$Outbound
-  | ThreeHundredAndFifteen$Outbound
-  | ThreeHundredAndForty$Outbound
-  | ThreeHundredAndFortyOne$Outbound
-  | Seven$Outbound
-  | TwentyFive$Outbound
-  | Thirty$Outbound
-  | FiftyTwo$Outbound
-  | FiftyFive$Outbound
-  | SixtyTwo$Outbound
-  | SixtyThree$Outbound
-  | SixtyFour$Outbound
-  | SixtyFive$Outbound
-  | EightyThree$Outbound
-  | NinetySix$Outbound
-  | NinetyNine$Outbound
-  | OneHundred$Outbound
-  | OneHundredAndOne$Outbound
-  | OneHundredAndSix$Outbound
-  | OneHundredAndSeven$Outbound
-  | OneHundredAndNine$Outbound
-  | OneHundredAndTwelve$Outbound
-  | OneHundredAndFourteen$Outbound
-  | OneHundredAndTwentyTwo$Outbound
-  | OneHundredAndTwentyThree$Outbound
-  | OneHundredAndTwentyFour$Outbound
-  | OneHundredAndTwentySix$Outbound
-  | OneHundredAndTwentySeven$Outbound
-  | OneHundredAndThirtyTwo$Outbound
-  | OneHundredAndThirtyThree$Outbound
-  | OneHundredAndThirtyEight$Outbound
-  | OneHundredAndFortyTwo$Outbound
-  | OneHundredAndFortyFour$Outbound
-  | OneHundredAndFortySeven$Outbound
-  | OneHundredAndFortyNine$Outbound
-  | OneHundredAndFifty$Outbound
-  | OneHundredAndFiftyOne$Outbound
-  | OneHundredAndFiftyTwo$Outbound
-  | OneHundredAndFiftyThree$Outbound
-  | OneHundredAndFiftySix$Outbound
-  | OneHundredAndFiftySeven$Outbound
-  | OneHundredAndFiftyEight$Outbound
-  | OneHundredAndFiftyNine$Outbound
-  | OneHundredAndSixtyNine$Outbound
-  | OneHundredAndSeventyOne$Outbound
-  | OneHundredAndSeventyTwo$Outbound
-  | OneHundredAndSeventyFour$Outbound
-  | OneHundredAndSeventySix$Outbound
-  | OneHundredAndSeventySeven$Outbound
-  | OneHundredAndSeventyNine$Outbound
-  | OneHundredAndEighty$Outbound
-  | OneHundredAndEightySix$Outbound
-  | OneHundredAndEightyNine$Outbound
-  | OneHundredAndNinety$Outbound
-  | OneHundredAndNinetyNine$Outbound
-  | TwoHundred$Outbound
-  | TwoHundredAndOne$Outbound
-  | TwoHundredAndThree$Outbound
-  | TwoHundredAndFour$Outbound
-  | TwoHundredAndFive$Outbound
-  | TwoHundredAndSix$Outbound
-  | TwoHundredAndSeven$Outbound
-  | TwoHundredAndTen$Outbound
-  | TwoHundredAndEleven$Outbound
-  | TwoHundredAndTwelve$Outbound
-  | TwoHundredAndSeventeen$Outbound
-  | TwoHundredAndTwentyFour$Outbound
-  | TwoHundredAndTwentySeven$Outbound
-  | TwoHundredAndTwentyEight$Outbound
-  | TwoHundredAndForty$Outbound
-  | TwoHundredAndFortyOne$Outbound
-  | TwoHundredAndFortyTwo$Outbound
-  | TwoHundredAndFortyThree$Outbound
-  | TwoHundredAndFiftyFour$Outbound
-  | TwoHundredAndSixtySeven$Outbound
-  | TwoHundredAndSeventyEight$Outbound
-  | TwoHundredAndEightyFour$Outbound
-  | ThreeHundredAndFive$Outbound
-  | ThreeHundredAndTwentyNine$Outbound
-  | ThreeHundredAndThirty$Outbound
-  | ThreeHundredAndThirtyOne$Outbound
-  | ThreeHundredAndThirtyTwo$Outbound
-  | ThreeHundredAndThirtyEight$Outbound
-  | Payload3$Outbound
-  | Four$Outbound
-  | Six$Outbound
-  | Eight$Outbound
-  | Nine$Outbound
-  | Thirteen$Outbound
-  | Seventeen$Outbound
-  | Eighteen$Outbound
-  | Twenty$Outbound
-  | TwentyThree$Outbound
-  | ThirtyOne$Outbound
-  | ThirtyFour$Outbound
-  | ThirtySix$Outbound
-  | FortyOne$Outbound
-  | FortyTwo$Outbound
-  | FortyEight$Outbound
-  | FortyNine$Outbound
-  | Fifty$Outbound
-  | FiftyThree$Outbound
-  | FiftyEight$Outbound
-  | SixtySeven$Outbound
-  | SixtyEight$Outbound
-  | SixtyNine$Outbound
-  | Seventy$Outbound
-  | SeventyOne$Outbound
-  | SeventyFour$Outbound
-  | SeventySeven$Outbound
-  | Ninety$Outbound
-  | NinetyOne$Outbound
-  | NinetyFour$Outbound
-  | NinetyEight$Outbound
-  | OneHundredAndFour$Outbound
-  | OneHundredAndEight$Outbound
-  | OneHundredAndTen$Outbound
-  | OneHundredAndEleven$Outbound
-  | OneHundredAndFifteen$Outbound
-  | OneHundredAndSixteen$Outbound
-  | OneHundredAndNineteen$Outbound
-  | OneHundredAndThirtyFour$Outbound
-  | OneHundredAndFortyFive$Outbound
-  | OneHundredAndFortySix$Outbound
-  | OneHundredAndSixty$Outbound
-  | OneHundredAndSixtyTwo$Outbound
-  | OneHundredAndSixtySeven$Outbound
-  | OneHundredAndSixtyEight$Outbound
-  | OneHundredAndSeventy$Outbound
-  | OneHundredAndSeventyFive$Outbound
-  | OneHundredAndEightyFour$Outbound
-  | OneHundredAndEightySeven$Outbound
-  | OneHundredAndNinetyThree$Outbound
-  | OneHundredAndNinetyFour$Outbound
-  | TwoHundredAndTwenty$Outbound
-  | TwoHundredAndTwentyTwo$Outbound
-  | TwoHundredAndTwentyThree$Outbound
-  | TwoHundredAndTwentyFive$Outbound
-  | TwoHundredAndTwentyNine$Outbound
-  | TwoHundredAndThirty$Outbound
-  | TwoHundredAndThirtyTwo$Outbound
-  | TwoHundredAndThirtyFour$Outbound
-  | TwoHundredAndThirtyFive$Outbound
-  | TwoHundredAndThirtySix$Outbound
-  | TwoHundredAndThirtySeven$Outbound
-  | TwoHundredAndFortyFour$Outbound
-  | TwoHundredAndFortyEight$Outbound
-  | TwoHundredAndFifty$Outbound
-  | TwoHundredAndFiftyThree$Outbound
-  | TwoHundredAndFiftyFive$Outbound
-  | TwoHundredAndFiftySix$Outbound
-  | TwoHundredAndFiftyEight$Outbound
-  | TwoHundredAndFiftyNine$Outbound
-  | TwoHundredAndSixty$Outbound
-  | TwoHundredAndSeventyThree$Outbound
-  | TwoHundredAndSeventySix$Outbound
-  | TwoHundredAndEightyFive$Outbound
-  | TwoHundredAndEightyEight$Outbound
-  | TwoHundredAndNinety$Outbound
-  | TwoHundredAndNinetyFive$Outbound
-  | TwoHundredAndNinetySix$Outbound
-  | ThreeHundredAndThree$Outbound
-  | ThreeHundredAndEleven$Outbound
-  | ThreeHundredAndThirteen$Outbound
-  | ThreeHundredAndEighteen$Outbound
-  | ThreeHundredAndNineteen$Outbound
-  | ThreeHundredAndTwentyOne$Outbound
-  | ThreeHundredAndTwentyFour$Outbound
-  | ThreeHundredAndTwentyFive$Outbound
-  | ThreeHundredAndThirtyFour$Outbound
-  | ThreeHundredAndThirtySix$Outbound
-  | ThreeHundredAndThirtySeven$Outbound
-  | ThreeHundredAndFortyTwo$Outbound
-  | Eleven$Outbound
-  | Twelve$Outbound
-  | Fourteen$Outbound
-  | Fifteen$Outbound
-  | Sixteen$Outbound
-  | Nineteen$Outbound
-  | TwentyFour$Outbound
-  | ThirtyFive$Outbound
-  | ThirtySeven$Outbound
-  | ThirtyEight$Outbound
-  | ThirtyNine$Outbound
-  | Forty$Outbound
-  | FortySix$Outbound
-  | FortySeven$Outbound
-  | FiftyOne$Outbound
-  | FiftyFour$Outbound
-  | FiftySeven$Outbound
-  | FiftyNine$Outbound
-  | SixtyOne$Outbound
-  | SixtySix$Outbound
-  | SeventyThree$Outbound
-  | SeventyFive$Outbound
-  | SeventyNine$Outbound
-  | Eighty$Outbound
-  | EightyOne$Outbound
-  | EightyNine$Outbound
-  | NinetyTwo$Outbound
-  | NinetySeven$Outbound
-  | OneHundredAndTwo$Outbound
-  | OneHundredAndThree$Outbound
-  | OneHundredAndFive$Outbound
-  | OneHundredAndSeventeen$Outbound
-  | OneHundredAndTwentyEight$Outbound
-  | OneHundredAndThirtyNine$Outbound
-  | OneHundredAndForty$Outbound
-  | OneHundredAndFortyThree$Outbound
-  | OneHundredAndFortyEight$Outbound
-  | OneHundredAndSixtyThree$Outbound
-  | OneHundredAndSixtySix$Outbound
-  | OneHundredAndSeventyThree$Outbound
-  | OneHundredAndEightyFive$Outbound
-  | TwoHundredAndEight$Outbound
-  | TwoHundredAndNine$Outbound
-  | TwoHundredAndEighteen$Outbound
-  | TwoHundredAndTwentyOne$Outbound
-  | TwoHundredAndThirtyOne$Outbound
-  | TwoHundredAndThirtyThree$Outbound
-  | TwoHundredAndFiftyTwo$Outbound
-  | TwoHundredAndFiftySeven$Outbound
-  | TwoHundredAndSixtyOne$Outbound
-  | TwoHundredAndSixtyEight$Outbound
-  | TwoHundredAndSixtyNine$Outbound
-  | TwoHundredAndSeventy$Outbound
-  | TwoHundredAndSeventyTwo$Outbound
-  | TwoHundredAndSeventySeven$Outbound
-  | TwoHundredAndSeventyNine$Outbound
-  | TwoHundredAndEighty$Outbound
-  | TwoHundredAndEightyOne$Outbound
-  | TwoHundredAndEightySix$Outbound
-  | TwoHundredAndNinetyTwo$Outbound
-  | TwoHundredAndNinetyThree$Outbound
-  | TwoHundredAndNinetyEight$Outbound
-  | TwoHundredAndNinetyNine$Outbound
-  | ThreeHundred$Outbound
-  | ThreeHundredAndTwo$Outbound
-  | ThreeHundredAndFour$Outbound
-  | ThreeHundredAndEight$Outbound
-  | ThreeHundredAndTen$Outbound
-  | ThreeHundredAndFourteen$Outbound
-  | ThreeHundredAndSixteen$Outbound
-  | ThreeHundredAndTwenty$Outbound
-  | ThreeHundredAndTwentyTwo$Outbound
-  | ThreeHundredAndTwentyThree$Outbound
-  | ThreeHundredAndTwentySix$Outbound
-  | ThreeHundredAndTwentySeven$Outbound
-  | ThreeHundredAndTwentyEight$Outbound
-  | ThreeHundredAndThirtyThree$Outbound
-  | ThreeHundredAndThirtyFive$Outbound
-  | Payload1$Outbound
-  | TwentyOne$Outbound
-  | TwentyTwo$Outbound
-  | TwentySix$Outbound
-  | TwentySeven$Outbound
-  | TwentyEight$Outbound
-  | TwentyNine$Outbound
-  | ThirtyTwo$Outbound
-  | ThirtyThree$Outbound
-  | FortyThree$Outbound
-  | FiftySix$Outbound
-  | Sixty$Outbound
-  | SeventyTwo$Outbound
-  | OneHundredAndEighteen$Outbound
-  | OneHundredAndTwenty$Outbound
-  | OneHundredAndTwentyOne$Outbound
-  | OneHundredAndFortyOne$Outbound
-  | OneHundredAndSixtyFour$Outbound
-  | OneHundredAndSixtyFive$Outbound
-  | OneHundredAndEightyTwo$Outbound
-  | OneHundredAndEightyThree$Outbound
-  | TwoHundredAndSixtyThree$Outbound
-  | TwoHundredAndSeventyOne$Outbound
-  | TwoHundredAndEightyThree$Outbound
-  | TwoHundredAndEightyNine$Outbound
-  | TwoHundredAndNinetyOne$Outbound
-  | TwoHundredAndNinetyFour$Outbound
-  | TwoHundredAndNinetySeven$Outbound
-  | ThreeHundredAndSix$Outbound
-  | ThreeHundredAndSeven$Outbound
-  | ThreeHundredAndNine$Outbound
-  | ThreeHundredAndTwelve$Outbound
-  | ThreeHundredAndSeventeen$Outbound;
 
-/** @internal */
-export const Payload$outboundSchema: z.ZodType<
-  Payload$Outbound,
-  z.ZodTypeDef,
-  Payload
-> = smartUnion([
-  OneHundredAndThirtySeven$outboundSchema,
-  EightySeven$outboundSchema,
-  TwoHundredAndFourteen$outboundSchema,
-  OneHundredAndThirtyOne$outboundSchema,
-  OneHundredAndThirtyFive$outboundSchema,
-  OneHundredAndNinetyOne$outboundSchema,
-  TwoHundredAndFiftyOne$outboundSchema,
-  TwoHundredAndSixtyFour$outboundSchema,
-  TwoHundredAndSixtySix$outboundSchema,
-  EightyTwo$outboundSchema,
-  EightyFive$outboundSchema,
-  EightySix$outboundSchema,
-  EightyEight$outboundSchema,
-  NinetyFive$outboundSchema,
-  OneHundredAndTwentyFive$outboundSchema,
-  OneHundredAndThirty$outboundSchema,
-  OneHundredAndThirtySix$outboundSchema,
-  TwoHundredAndTwo$outboundSchema,
-  TwoHundredAndSixteen$outboundSchema,
-  TwoHundredAndTwentySix$outboundSchema,
-  ThreeHundredAndThirtyNine$outboundSchema,
-  z.lazy(() => Payload2$outboundSchema),
-  z.lazy(() => Five$outboundSchema),
-  z.lazy(() => Ten$outboundSchema),
-  z.lazy(() => FortyFour$outboundSchema),
-  z.lazy(() => FortyFive$outboundSchema),
-  SeventySix$outboundSchema,
-  SeventyEight$outboundSchema,
-  EightyFour$outboundSchema,
-  NinetyThree$outboundSchema,
-  OneHundredAndThirteen$outboundSchema,
-  OneHundredAndTwentyNine$outboundSchema,
-  OneHundredAndFiftyFour$outboundSchema,
-  OneHundredAndFiftyFive$outboundSchema,
-  OneHundredAndSixtyOne$outboundSchema,
-  OneHundredAndSeventyEight$outboundSchema,
-  OneHundredAndEightyOne$outboundSchema,
-  OneHundredAndEightyEight$outboundSchema,
-  OneHundredAndNinetyTwo$outboundSchema,
-  OneHundredAndNinetyFive$outboundSchema,
-  OneHundredAndNinetySix$outboundSchema,
-  OneHundredAndNinetySeven$outboundSchema,
-  OneHundredAndNinetyEight$outboundSchema,
-  TwoHundredAndThirteen$outboundSchema,
-  TwoHundredAndFifteen$outboundSchema,
-  TwoHundredAndNineteen$outboundSchema,
-  TwoHundredAndThirtyEight$outboundSchema,
-  TwoHundredAndThirtyNine$outboundSchema,
-  TwoHundredAndFortyFive$outboundSchema,
-  TwoHundredAndFortySix$outboundSchema,
-  TwoHundredAndFortySeven$outboundSchema,
-  TwoHundredAndFortyNine$outboundSchema,
-  TwoHundredAndSixtyTwo$outboundSchema,
-  TwoHundredAndSixtyFive$outboundSchema,
-  TwoHundredAndSeventyFour$outboundSchema,
-  TwoHundredAndSeventyFive$outboundSchema,
-  TwoHundredAndEightyTwo$outboundSchema,
-  TwoHundredAndEightySeven$outboundSchema,
-  ThreeHundredAndOne$outboundSchema,
-  ThreeHundredAndFifteen$outboundSchema,
-  ThreeHundredAndForty$outboundSchema,
-  ThreeHundredAndFortyOne$outboundSchema,
-  z.lazy(() => Seven$outboundSchema),
-  z.lazy(() => TwentyFive$outboundSchema),
-  z.lazy(() => Thirty$outboundSchema),
-  FiftyTwo$outboundSchema,
-  FiftyFive$outboundSchema,
-  SixtyTwo$outboundSchema,
-  SixtyThree$outboundSchema,
-  SixtyFour$outboundSchema,
-  SixtyFive$outboundSchema,
-  EightyThree$outboundSchema,
-  NinetySix$outboundSchema,
-  NinetyNine$outboundSchema,
-  OneHundred$outboundSchema,
-  OneHundredAndOne$outboundSchema,
-  OneHundredAndSix$outboundSchema,
-  OneHundredAndSeven$outboundSchema,
-  OneHundredAndNine$outboundSchema,
-  OneHundredAndTwelve$outboundSchema,
-  OneHundredAndFourteen$outboundSchema,
-  OneHundredAndTwentyTwo$outboundSchema,
-  OneHundredAndTwentyThree$outboundSchema,
-  OneHundredAndTwentyFour$outboundSchema,
-  OneHundredAndTwentySix$outboundSchema,
-  OneHundredAndTwentySeven$outboundSchema,
-  OneHundredAndThirtyTwo$outboundSchema,
-  OneHundredAndThirtyThree$outboundSchema,
-  OneHundredAndThirtyEight$outboundSchema,
-  OneHundredAndFortyTwo$outboundSchema,
-  OneHundredAndFortyFour$outboundSchema,
-  OneHundredAndFortySeven$outboundSchema,
-  OneHundredAndFortyNine$outboundSchema,
-  OneHundredAndFifty$outboundSchema,
-  OneHundredAndFiftyOne$outboundSchema,
-  OneHundredAndFiftyTwo$outboundSchema,
-  OneHundredAndFiftyThree$outboundSchema,
-  OneHundredAndFiftySix$outboundSchema,
-  OneHundredAndFiftySeven$outboundSchema,
-  OneHundredAndFiftyEight$outboundSchema,
-  OneHundredAndFiftyNine$outboundSchema,
-  OneHundredAndSixtyNine$outboundSchema,
-  OneHundredAndSeventyOne$outboundSchema,
-  OneHundredAndSeventyTwo$outboundSchema,
-  OneHundredAndSeventyFour$outboundSchema,
-  OneHundredAndSeventySix$outboundSchema,
-  OneHundredAndSeventySeven$outboundSchema,
-  OneHundredAndSeventyNine$outboundSchema,
-  OneHundredAndEighty$outboundSchema,
-  OneHundredAndEightySix$outboundSchema,
-  OneHundredAndEightyNine$outboundSchema,
-  OneHundredAndNinety$outboundSchema,
-  OneHundredAndNinetyNine$outboundSchema,
-  TwoHundred$outboundSchema,
-  TwoHundredAndOne$outboundSchema,
-  TwoHundredAndThree$outboundSchema,
-  TwoHundredAndFour$outboundSchema,
-  TwoHundredAndFive$outboundSchema,
-  TwoHundredAndSix$outboundSchema,
-  TwoHundredAndSeven$outboundSchema,
-  TwoHundredAndTen$outboundSchema,
-  TwoHundredAndEleven$outboundSchema,
-  TwoHundredAndTwelve$outboundSchema,
-  TwoHundredAndSeventeen$outboundSchema,
-  TwoHundredAndTwentyFour$outboundSchema,
-  TwoHundredAndTwentySeven$outboundSchema,
-  TwoHundredAndTwentyEight$outboundSchema,
-  TwoHundredAndForty$outboundSchema,
-  TwoHundredAndFortyOne$outboundSchema,
-  TwoHundredAndFortyTwo$outboundSchema,
-  TwoHundredAndFortyThree$outboundSchema,
-  TwoHundredAndFiftyFour$outboundSchema,
-  TwoHundredAndSixtySeven$outboundSchema,
-  TwoHundredAndSeventyEight$outboundSchema,
-  TwoHundredAndEightyFour$outboundSchema,
-  ThreeHundredAndFive$outboundSchema,
-  ThreeHundredAndTwentyNine$outboundSchema,
-  ThreeHundredAndThirty$outboundSchema,
-  ThreeHundredAndThirtyOne$outboundSchema,
-  ThreeHundredAndThirtyTwo$outboundSchema,
-  ThreeHundredAndThirtyEight$outboundSchema,
-  z.lazy(() => Payload3$outboundSchema),
-  z.lazy(() => Four$outboundSchema),
-  z.lazy(() => Six$outboundSchema),
-  z.lazy(() => Eight$outboundSchema),
-  z.lazy(() => Nine$outboundSchema),
-  z.lazy(() => Thirteen$outboundSchema),
-  z.lazy(() => Seventeen$outboundSchema),
-  z.lazy(() => Eighteen$outboundSchema),
-  z.lazy(() => Twenty$outboundSchema),
-  z.lazy(() => TwentyThree$outboundSchema),
-  z.lazy(() => ThirtyOne$outboundSchema),
-  z.lazy(() => ThirtyFour$outboundSchema),
-  z.lazy(() => ThirtySix$outboundSchema),
-  z.lazy(() => FortyOne$outboundSchema),
-  z.lazy(() => FortyTwo$outboundSchema),
-  FortyEight$outboundSchema,
-  FortyNine$outboundSchema,
-  Fifty$outboundSchema,
-  FiftyThree$outboundSchema,
-  FiftyEight$outboundSchema,
-  SixtySeven$outboundSchema,
-  SixtyEight$outboundSchema,
-  SixtyNine$outboundSchema,
-  Seventy$outboundSchema,
-  SeventyOne$outboundSchema,
-  SeventyFour$outboundSchema,
-  SeventySeven$outboundSchema,
-  Ninety$outboundSchema,
-  NinetyOne$outboundSchema,
-  NinetyFour$outboundSchema,
-  NinetyEight$outboundSchema,
-  OneHundredAndFour$outboundSchema,
-  OneHundredAndEight$outboundSchema,
-  OneHundredAndTen$outboundSchema,
-  OneHundredAndEleven$outboundSchema,
-  OneHundredAndFifteen$outboundSchema,
-  OneHundredAndSixteen$outboundSchema,
-  OneHundredAndNineteen$outboundSchema,
-  OneHundredAndThirtyFour$outboundSchema,
-  OneHundredAndFortyFive$outboundSchema,
-  OneHundredAndFortySix$outboundSchema,
-  OneHundredAndSixty$outboundSchema,
-  OneHundredAndSixtyTwo$outboundSchema,
-  OneHundredAndSixtySeven$outboundSchema,
-  OneHundredAndSixtyEight$outboundSchema,
-  OneHundredAndSeventy$outboundSchema,
-  OneHundredAndSeventyFive$outboundSchema,
-  OneHundredAndEightyFour$outboundSchema,
-  OneHundredAndEightySeven$outboundSchema,
-  OneHundredAndNinetyThree$outboundSchema,
-  OneHundredAndNinetyFour$outboundSchema,
-  TwoHundredAndTwenty$outboundSchema,
-  TwoHundredAndTwentyTwo$outboundSchema,
-  TwoHundredAndTwentyThree$outboundSchema,
-  TwoHundredAndTwentyFive$outboundSchema,
-  TwoHundredAndTwentyNine$outboundSchema,
-  TwoHundredAndThirty$outboundSchema,
-  TwoHundredAndThirtyTwo$outboundSchema,
-  TwoHundredAndThirtyFour$outboundSchema,
-  TwoHundredAndThirtyFive$outboundSchema,
-  TwoHundredAndThirtySix$outboundSchema,
-  TwoHundredAndThirtySeven$outboundSchema,
-  TwoHundredAndFortyFour$outboundSchema,
-  TwoHundredAndFortyEight$outboundSchema,
-  TwoHundredAndFifty$outboundSchema,
-  TwoHundredAndFiftyThree$outboundSchema,
-  TwoHundredAndFiftyFive$outboundSchema,
-  TwoHundredAndFiftySix$outboundSchema,
-  TwoHundredAndFiftyEight$outboundSchema,
-  TwoHundredAndFiftyNine$outboundSchema,
-  TwoHundredAndSixty$outboundSchema,
-  TwoHundredAndSeventyThree$outboundSchema,
-  TwoHundredAndSeventySix$outboundSchema,
-  TwoHundredAndEightyFive$outboundSchema,
-  TwoHundredAndEightyEight$outboundSchema,
-  TwoHundredAndNinety$outboundSchema,
-  TwoHundredAndNinetyFive$outboundSchema,
-  TwoHundredAndNinetySix$outboundSchema,
-  ThreeHundredAndThree$outboundSchema,
-  ThreeHundredAndEleven$outboundSchema,
-  ThreeHundredAndThirteen$outboundSchema,
-  ThreeHundredAndEighteen$outboundSchema,
-  ThreeHundredAndNineteen$outboundSchema,
-  ThreeHundredAndTwentyOne$outboundSchema,
-  ThreeHundredAndTwentyFour$outboundSchema,
-  ThreeHundredAndTwentyFive$outboundSchema,
-  ThreeHundredAndThirtyFour$outboundSchema,
-  ThreeHundredAndThirtySix$outboundSchema,
-  ThreeHundredAndThirtySeven$outboundSchema,
-  ThreeHundredAndFortyTwo$outboundSchema,
-  z.lazy(() => Eleven$outboundSchema),
-  z.lazy(() => Twelve$outboundSchema),
-  z.lazy(() => Fourteen$outboundSchema),
-  z.lazy(() => Fifteen$outboundSchema),
-  z.lazy(() => Sixteen$outboundSchema),
-  z.lazy(() => Nineteen$outboundSchema),
-  z.lazy(() => TwentyFour$outboundSchema),
-  z.lazy(() => ThirtyFive$outboundSchema),
-  z.lazy(() => ThirtySeven$outboundSchema),
-  z.lazy(() => ThirtyEight$outboundSchema),
-  z.lazy(() => ThirtyNine$outboundSchema),
-  z.lazy(() => Forty$outboundSchema),
-  z.lazy(() => FortySix$outboundSchema),
-  FortySeven$outboundSchema,
-  FiftyOne$outboundSchema,
-  FiftyFour$outboundSchema,
-  FiftySeven$outboundSchema,
-  FiftyNine$outboundSchema,
-  SixtyOne$outboundSchema,
-  SixtySix$outboundSchema,
-  SeventyThree$outboundSchema,
-  SeventyFive$outboundSchema,
-  SeventyNine$outboundSchema,
-  Eighty$outboundSchema,
-  EightyOne$outboundSchema,
-  EightyNine$outboundSchema,
-  NinetyTwo$outboundSchema,
-  NinetySeven$outboundSchema,
-  OneHundredAndTwo$outboundSchema,
-  OneHundredAndThree$outboundSchema,
-  OneHundredAndFive$outboundSchema,
-  OneHundredAndSeventeen$outboundSchema,
-  OneHundredAndTwentyEight$outboundSchema,
-  OneHundredAndThirtyNine$outboundSchema,
-  OneHundredAndForty$outboundSchema,
-  OneHundredAndFortyThree$outboundSchema,
-  OneHundredAndFortyEight$outboundSchema,
-  OneHundredAndSixtyThree$outboundSchema,
-  OneHundredAndSixtySix$outboundSchema,
-  OneHundredAndSeventyThree$outboundSchema,
-  OneHundredAndEightyFive$outboundSchema,
-  TwoHundredAndEight$outboundSchema,
-  TwoHundredAndNine$outboundSchema,
-  TwoHundredAndEighteen$outboundSchema,
-  TwoHundredAndTwentyOne$outboundSchema,
-  TwoHundredAndThirtyOne$outboundSchema,
-  TwoHundredAndThirtyThree$outboundSchema,
-  TwoHundredAndFiftyTwo$outboundSchema,
-  TwoHundredAndFiftySeven$outboundSchema,
-  TwoHundredAndSixtyOne$outboundSchema,
-  TwoHundredAndSixtyEight$outboundSchema,
-  TwoHundredAndSixtyNine$outboundSchema,
-  TwoHundredAndSeventy$outboundSchema,
-  TwoHundredAndSeventyTwo$outboundSchema,
-  TwoHundredAndSeventySeven$outboundSchema,
-  TwoHundredAndSeventyNine$outboundSchema,
-  TwoHundredAndEighty$outboundSchema,
-  TwoHundredAndEightyOne$outboundSchema,
-  TwoHundredAndEightySix$outboundSchema,
-  TwoHundredAndNinetyTwo$outboundSchema,
-  TwoHundredAndNinetyThree$outboundSchema,
-  TwoHundredAndNinetyEight$outboundSchema,
-  TwoHundredAndNinetyNine$outboundSchema,
-  ThreeHundred$outboundSchema,
-  ThreeHundredAndTwo$outboundSchema,
-  ThreeHundredAndFour$outboundSchema,
-  ThreeHundredAndEight$outboundSchema,
-  ThreeHundredAndTen$outboundSchema,
-  ThreeHundredAndFourteen$outboundSchema,
-  ThreeHundredAndSixteen$outboundSchema,
-  ThreeHundredAndTwenty$outboundSchema,
-  ThreeHundredAndTwentyTwo$outboundSchema,
-  ThreeHundredAndTwentyThree$outboundSchema,
-  ThreeHundredAndTwentySix$outboundSchema,
-  ThreeHundredAndTwentySeven$outboundSchema,
-  ThreeHundredAndTwentyEight$outboundSchema,
-  ThreeHundredAndThirtyThree$outboundSchema,
-  ThreeHundredAndThirtyFive$outboundSchema,
-  z.lazy(() => Payload1$outboundSchema),
-  z.lazy(() => TwentyOne$outboundSchema),
-  z.lazy(() => TwentyTwo$outboundSchema),
-  z.lazy(() => TwentySix$outboundSchema),
-  z.lazy(() => TwentySeven$outboundSchema),
-  z.lazy(() => TwentyEight$outboundSchema),
-  z.lazy(() => TwentyNine$outboundSchema),
-  z.lazy(() => ThirtyTwo$outboundSchema),
-  z.lazy(() => ThirtyThree$outboundSchema),
-  z.lazy(() => FortyThree$outboundSchema),
-  FiftySix$outboundSchema,
-  Sixty$outboundSchema,
-  SeventyTwo$outboundSchema,
-  OneHundredAndEighteen$outboundSchema,
-  OneHundredAndTwenty$outboundSchema,
-  OneHundredAndTwentyOne$outboundSchema,
-  OneHundredAndFortyOne$outboundSchema,
-  OneHundredAndSixtyFour$outboundSchema,
-  OneHundredAndSixtyFive$outboundSchema,
-  OneHundredAndEightyTwo$outboundSchema,
-  OneHundredAndEightyThree$outboundSchema,
-  TwoHundredAndSixtyThree$outboundSchema,
-  TwoHundredAndSeventyOne$outboundSchema,
-  TwoHundredAndEightyThree$outboundSchema,
-  TwoHundredAndEightyNine$outboundSchema,
-  TwoHundredAndNinetyOne$outboundSchema,
-  TwoHundredAndNinetyFour$outboundSchema,
-  TwoHundredAndNinetySeven$outboundSchema,
-  ThreeHundredAndSix$outboundSchema,
-  ThreeHundredAndSeven$outboundSchema,
-  ThreeHundredAndNine$outboundSchema,
-  ThreeHundredAndTwelve$outboundSchema,
-  ThreeHundredAndSeventeen$outboundSchema,
-]);
-
-export function payloadToJSON(payload: Payload): string {
-  return JSON.stringify(Payload$outboundSchema.parse(payload));
-}
 export function payloadFromJSON(
   jsonString: string,
 ): SafeParseResult<Payload, SDKValidationError> {
@@ -7413,7 +4678,6 @@ export const UserEvent$inboundSchema: z.ZodType<
       TwoHundredAndTwentySix$inboundSchema,
       ThreeHundredAndThirtyNine$inboundSchema,
       z.lazy(() => Payload2$inboundSchema),
-      z.lazy(() => Five$inboundSchema),
       z.lazy(() => Ten$inboundSchema),
       z.lazy(() => FortyFour$inboundSchema),
       z.lazy(() => FortyFive$inboundSchema),
@@ -7453,7 +4717,6 @@ export const UserEvent$inboundSchema: z.ZodType<
       ThreeHundredAndFifteen$inboundSchema,
       ThreeHundredAndForty$inboundSchema,
       ThreeHundredAndFortyOne$inboundSchema,
-      z.lazy(() => Seven$inboundSchema),
       z.lazy(() => TwentyFive$inboundSchema),
       z.lazy(() => Thirty$inboundSchema),
       FiftyTwo$inboundSchema,
@@ -7534,7 +4797,8 @@ export const UserEvent$inboundSchema: z.ZodType<
       ThreeHundredAndThirtyEight$inboundSchema,
       z.lazy(() => Payload3$inboundSchema),
       z.lazy(() => Four$inboundSchema),
-      z.lazy(() => Six$inboundSchema),
+      z.lazy(() => Five$inboundSchema),
+      z.lazy(() => Seven$inboundSchema),
       z.lazy(() => Eight$inboundSchema),
       z.lazy(() => Nine$inboundSchema),
       z.lazy(() => Thirteen$inboundSchema),
@@ -7622,6 +4886,7 @@ export const UserEvent$inboundSchema: z.ZodType<
       ThreeHundredAndThirtySix$inboundSchema,
       ThreeHundredAndThirtySeven$inboundSchema,
       ThreeHundredAndFortyTwo$inboundSchema,
+      z.lazy(() => Six$inboundSchema),
       z.lazy(() => Eleven$inboundSchema),
       z.lazy(() => Twelve$inboundSchema),
       z.lazy(() => Fourteen$inboundSchema),
@@ -7736,733 +5001,7 @@ export const UserEvent$inboundSchema: z.ZodType<
     ]),
   ),
 });
-/** @internal */
-export type UserEvent$Outbound = {
-  id: string;
-  text: string;
-  entities: Array<Entities$Outbound>;
-  type?: string | undefined;
-  categories?: Array<string> | undefined;
-  createdAt: number;
-  user?: User$Outbound | undefined;
-  principal?: Principal$Outbound | undefined;
-  via?: Array<Via$Outbound> | undefined;
-  userId?: string | undefined;
-  principalId: string;
-  viaIds?: Array<string> | undefined;
-  payload?:
-    | OneHundredAndThirtySeven$Outbound
-    | EightySeven$Outbound
-    | TwoHundredAndFourteen$Outbound
-    | OneHundredAndThirtyOne$Outbound
-    | OneHundredAndThirtyFive$Outbound
-    | OneHundredAndNinetyOne$Outbound
-    | TwoHundredAndFiftyOne$Outbound
-    | TwoHundredAndSixtyFour$Outbound
-    | TwoHundredAndSixtySix$Outbound
-    | EightyTwo$Outbound
-    | EightyFive$Outbound
-    | EightySix$Outbound
-    | EightyEight$Outbound
-    | NinetyFive$Outbound
-    | OneHundredAndTwentyFive$Outbound
-    | OneHundredAndThirty$Outbound
-    | OneHundredAndThirtySix$Outbound
-    | TwoHundredAndTwo$Outbound
-    | TwoHundredAndSixteen$Outbound
-    | TwoHundredAndTwentySix$Outbound
-    | ThreeHundredAndThirtyNine$Outbound
-    | Payload2$Outbound
-    | Five$Outbound
-    | Ten$Outbound
-    | FortyFour$Outbound
-    | FortyFive$Outbound
-    | SeventySix$Outbound
-    | SeventyEight$Outbound
-    | EightyFour$Outbound
-    | NinetyThree$Outbound
-    | OneHundredAndThirteen$Outbound
-    | OneHundredAndTwentyNine$Outbound
-    | OneHundredAndFiftyFour$Outbound
-    | OneHundredAndFiftyFive$Outbound
-    | OneHundredAndSixtyOne$Outbound
-    | OneHundredAndSeventyEight$Outbound
-    | OneHundredAndEightyOne$Outbound
-    | OneHundredAndEightyEight$Outbound
-    | OneHundredAndNinetyTwo$Outbound
-    | OneHundredAndNinetyFive$Outbound
-    | OneHundredAndNinetySix$Outbound
-    | OneHundredAndNinetySeven$Outbound
-    | OneHundredAndNinetyEight$Outbound
-    | TwoHundredAndThirteen$Outbound
-    | TwoHundredAndFifteen$Outbound
-    | TwoHundredAndNineteen$Outbound
-    | TwoHundredAndThirtyEight$Outbound
-    | TwoHundredAndThirtyNine$Outbound
-    | TwoHundredAndFortyFive$Outbound
-    | TwoHundredAndFortySix$Outbound
-    | TwoHundredAndFortySeven$Outbound
-    | TwoHundredAndFortyNine$Outbound
-    | TwoHundredAndSixtyTwo$Outbound
-    | TwoHundredAndSixtyFive$Outbound
-    | TwoHundredAndSeventyFour$Outbound
-    | TwoHundredAndSeventyFive$Outbound
-    | TwoHundredAndEightyTwo$Outbound
-    | TwoHundredAndEightySeven$Outbound
-    | ThreeHundredAndOne$Outbound
-    | ThreeHundredAndFifteen$Outbound
-    | ThreeHundredAndForty$Outbound
-    | ThreeHundredAndFortyOne$Outbound
-    | Seven$Outbound
-    | TwentyFive$Outbound
-    | Thirty$Outbound
-    | FiftyTwo$Outbound
-    | FiftyFive$Outbound
-    | SixtyTwo$Outbound
-    | SixtyThree$Outbound
-    | SixtyFour$Outbound
-    | SixtyFive$Outbound
-    | EightyThree$Outbound
-    | NinetySix$Outbound
-    | NinetyNine$Outbound
-    | OneHundred$Outbound
-    | OneHundredAndOne$Outbound
-    | OneHundredAndSix$Outbound
-    | OneHundredAndSeven$Outbound
-    | OneHundredAndNine$Outbound
-    | OneHundredAndTwelve$Outbound
-    | OneHundredAndFourteen$Outbound
-    | OneHundredAndTwentyTwo$Outbound
-    | OneHundredAndTwentyThree$Outbound
-    | OneHundredAndTwentyFour$Outbound
-    | OneHundredAndTwentySix$Outbound
-    | OneHundredAndTwentySeven$Outbound
-    | OneHundredAndThirtyTwo$Outbound
-    | OneHundredAndThirtyThree$Outbound
-    | OneHundredAndThirtyEight$Outbound
-    | OneHundredAndFortyTwo$Outbound
-    | OneHundredAndFortyFour$Outbound
-    | OneHundredAndFortySeven$Outbound
-    | OneHundredAndFortyNine$Outbound
-    | OneHundredAndFifty$Outbound
-    | OneHundredAndFiftyOne$Outbound
-    | OneHundredAndFiftyTwo$Outbound
-    | OneHundredAndFiftyThree$Outbound
-    | OneHundredAndFiftySix$Outbound
-    | OneHundredAndFiftySeven$Outbound
-    | OneHundredAndFiftyEight$Outbound
-    | OneHundredAndFiftyNine$Outbound
-    | OneHundredAndSixtyNine$Outbound
-    | OneHundredAndSeventyOne$Outbound
-    | OneHundredAndSeventyTwo$Outbound
-    | OneHundredAndSeventyFour$Outbound
-    | OneHundredAndSeventySix$Outbound
-    | OneHundredAndSeventySeven$Outbound
-    | OneHundredAndSeventyNine$Outbound
-    | OneHundredAndEighty$Outbound
-    | OneHundredAndEightySix$Outbound
-    | OneHundredAndEightyNine$Outbound
-    | OneHundredAndNinety$Outbound
-    | OneHundredAndNinetyNine$Outbound
-    | TwoHundred$Outbound
-    | TwoHundredAndOne$Outbound
-    | TwoHundredAndThree$Outbound
-    | TwoHundredAndFour$Outbound
-    | TwoHundredAndFive$Outbound
-    | TwoHundredAndSix$Outbound
-    | TwoHundredAndSeven$Outbound
-    | TwoHundredAndTen$Outbound
-    | TwoHundredAndEleven$Outbound
-    | TwoHundredAndTwelve$Outbound
-    | TwoHundredAndSeventeen$Outbound
-    | TwoHundredAndTwentyFour$Outbound
-    | TwoHundredAndTwentySeven$Outbound
-    | TwoHundredAndTwentyEight$Outbound
-    | TwoHundredAndForty$Outbound
-    | TwoHundredAndFortyOne$Outbound
-    | TwoHundredAndFortyTwo$Outbound
-    | TwoHundredAndFortyThree$Outbound
-    | TwoHundredAndFiftyFour$Outbound
-    | TwoHundredAndSixtySeven$Outbound
-    | TwoHundredAndSeventyEight$Outbound
-    | TwoHundredAndEightyFour$Outbound
-    | ThreeHundredAndFive$Outbound
-    | ThreeHundredAndTwentyNine$Outbound
-    | ThreeHundredAndThirty$Outbound
-    | ThreeHundredAndThirtyOne$Outbound
-    | ThreeHundredAndThirtyTwo$Outbound
-    | ThreeHundredAndThirtyEight$Outbound
-    | Payload3$Outbound
-    | Four$Outbound
-    | Six$Outbound
-    | Eight$Outbound
-    | Nine$Outbound
-    | Thirteen$Outbound
-    | Seventeen$Outbound
-    | Eighteen$Outbound
-    | Twenty$Outbound
-    | TwentyThree$Outbound
-    | ThirtyOne$Outbound
-    | ThirtyFour$Outbound
-    | ThirtySix$Outbound
-    | FortyOne$Outbound
-    | FortyTwo$Outbound
-    | FortyEight$Outbound
-    | FortyNine$Outbound
-    | Fifty$Outbound
-    | FiftyThree$Outbound
-    | FiftyEight$Outbound
-    | SixtySeven$Outbound
-    | SixtyEight$Outbound
-    | SixtyNine$Outbound
-    | Seventy$Outbound
-    | SeventyOne$Outbound
-    | SeventyFour$Outbound
-    | SeventySeven$Outbound
-    | Ninety$Outbound
-    | NinetyOne$Outbound
-    | NinetyFour$Outbound
-    | NinetyEight$Outbound
-    | OneHundredAndFour$Outbound
-    | OneHundredAndEight$Outbound
-    | OneHundredAndTen$Outbound
-    | OneHundredAndEleven$Outbound
-    | OneHundredAndFifteen$Outbound
-    | OneHundredAndSixteen$Outbound
-    | OneHundredAndNineteen$Outbound
-    | OneHundredAndThirtyFour$Outbound
-    | OneHundredAndFortyFive$Outbound
-    | OneHundredAndFortySix$Outbound
-    | OneHundredAndSixty$Outbound
-    | OneHundredAndSixtyTwo$Outbound
-    | OneHundredAndSixtySeven$Outbound
-    | OneHundredAndSixtyEight$Outbound
-    | OneHundredAndSeventy$Outbound
-    | OneHundredAndSeventyFive$Outbound
-    | OneHundredAndEightyFour$Outbound
-    | OneHundredAndEightySeven$Outbound
-    | OneHundredAndNinetyThree$Outbound
-    | OneHundredAndNinetyFour$Outbound
-    | TwoHundredAndTwenty$Outbound
-    | TwoHundredAndTwentyTwo$Outbound
-    | TwoHundredAndTwentyThree$Outbound
-    | TwoHundredAndTwentyFive$Outbound
-    | TwoHundredAndTwentyNine$Outbound
-    | TwoHundredAndThirty$Outbound
-    | TwoHundredAndThirtyTwo$Outbound
-    | TwoHundredAndThirtyFour$Outbound
-    | TwoHundredAndThirtyFive$Outbound
-    | TwoHundredAndThirtySix$Outbound
-    | TwoHundredAndThirtySeven$Outbound
-    | TwoHundredAndFortyFour$Outbound
-    | TwoHundredAndFortyEight$Outbound
-    | TwoHundredAndFifty$Outbound
-    | TwoHundredAndFiftyThree$Outbound
-    | TwoHundredAndFiftyFive$Outbound
-    | TwoHundredAndFiftySix$Outbound
-    | TwoHundredAndFiftyEight$Outbound
-    | TwoHundredAndFiftyNine$Outbound
-    | TwoHundredAndSixty$Outbound
-    | TwoHundredAndSeventyThree$Outbound
-    | TwoHundredAndSeventySix$Outbound
-    | TwoHundredAndEightyFive$Outbound
-    | TwoHundredAndEightyEight$Outbound
-    | TwoHundredAndNinety$Outbound
-    | TwoHundredAndNinetyFive$Outbound
-    | TwoHundredAndNinetySix$Outbound
-    | ThreeHundredAndThree$Outbound
-    | ThreeHundredAndEleven$Outbound
-    | ThreeHundredAndThirteen$Outbound
-    | ThreeHundredAndEighteen$Outbound
-    | ThreeHundredAndNineteen$Outbound
-    | ThreeHundredAndTwentyOne$Outbound
-    | ThreeHundredAndTwentyFour$Outbound
-    | ThreeHundredAndTwentyFive$Outbound
-    | ThreeHundredAndThirtyFour$Outbound
-    | ThreeHundredAndThirtySix$Outbound
-    | ThreeHundredAndThirtySeven$Outbound
-    | ThreeHundredAndFortyTwo$Outbound
-    | Eleven$Outbound
-    | Twelve$Outbound
-    | Fourteen$Outbound
-    | Fifteen$Outbound
-    | Sixteen$Outbound
-    | Nineteen$Outbound
-    | TwentyFour$Outbound
-    | ThirtyFive$Outbound
-    | ThirtySeven$Outbound
-    | ThirtyEight$Outbound
-    | ThirtyNine$Outbound
-    | Forty$Outbound
-    | FortySix$Outbound
-    | FortySeven$Outbound
-    | FiftyOne$Outbound
-    | FiftyFour$Outbound
-    | FiftySeven$Outbound
-    | FiftyNine$Outbound
-    | SixtyOne$Outbound
-    | SixtySix$Outbound
-    | SeventyThree$Outbound
-    | SeventyFive$Outbound
-    | SeventyNine$Outbound
-    | Eighty$Outbound
-    | EightyOne$Outbound
-    | EightyNine$Outbound
-    | NinetyTwo$Outbound
-    | NinetySeven$Outbound
-    | OneHundredAndTwo$Outbound
-    | OneHundredAndThree$Outbound
-    | OneHundredAndFive$Outbound
-    | OneHundredAndSeventeen$Outbound
-    | OneHundredAndTwentyEight$Outbound
-    | OneHundredAndThirtyNine$Outbound
-    | OneHundredAndForty$Outbound
-    | OneHundredAndFortyThree$Outbound
-    | OneHundredAndFortyEight$Outbound
-    | OneHundredAndSixtyThree$Outbound
-    | OneHundredAndSixtySix$Outbound
-    | OneHundredAndSeventyThree$Outbound
-    | OneHundredAndEightyFive$Outbound
-    | TwoHundredAndEight$Outbound
-    | TwoHundredAndNine$Outbound
-    | TwoHundredAndEighteen$Outbound
-    | TwoHundredAndTwentyOne$Outbound
-    | TwoHundredAndThirtyOne$Outbound
-    | TwoHundredAndThirtyThree$Outbound
-    | TwoHundredAndFiftyTwo$Outbound
-    | TwoHundredAndFiftySeven$Outbound
-    | TwoHundredAndSixtyOne$Outbound
-    | TwoHundredAndSixtyEight$Outbound
-    | TwoHundredAndSixtyNine$Outbound
-    | TwoHundredAndSeventy$Outbound
-    | TwoHundredAndSeventyTwo$Outbound
-    | TwoHundredAndSeventySeven$Outbound
-    | TwoHundredAndSeventyNine$Outbound
-    | TwoHundredAndEighty$Outbound
-    | TwoHundredAndEightyOne$Outbound
-    | TwoHundredAndEightySix$Outbound
-    | TwoHundredAndNinetyTwo$Outbound
-    | TwoHundredAndNinetyThree$Outbound
-    | TwoHundredAndNinetyEight$Outbound
-    | TwoHundredAndNinetyNine$Outbound
-    | ThreeHundred$Outbound
-    | ThreeHundredAndTwo$Outbound
-    | ThreeHundredAndFour$Outbound
-    | ThreeHundredAndEight$Outbound
-    | ThreeHundredAndTen$Outbound
-    | ThreeHundredAndFourteen$Outbound
-    | ThreeHundredAndSixteen$Outbound
-    | ThreeHundredAndTwenty$Outbound
-    | ThreeHundredAndTwentyTwo$Outbound
-    | ThreeHundredAndTwentyThree$Outbound
-    | ThreeHundredAndTwentySix$Outbound
-    | ThreeHundredAndTwentySeven$Outbound
-    | ThreeHundredAndTwentyEight$Outbound
-    | ThreeHundredAndThirtyThree$Outbound
-    | ThreeHundredAndThirtyFive$Outbound
-    | Payload1$Outbound
-    | TwentyOne$Outbound
-    | TwentyTwo$Outbound
-    | TwentySix$Outbound
-    | TwentySeven$Outbound
-    | TwentyEight$Outbound
-    | TwentyNine$Outbound
-    | ThirtyTwo$Outbound
-    | ThirtyThree$Outbound
-    | FortyThree$Outbound
-    | FiftySix$Outbound
-    | Sixty$Outbound
-    | SeventyTwo$Outbound
-    | OneHundredAndEighteen$Outbound
-    | OneHundredAndTwenty$Outbound
-    | OneHundredAndTwentyOne$Outbound
-    | OneHundredAndFortyOne$Outbound
-    | OneHundredAndSixtyFour$Outbound
-    | OneHundredAndSixtyFive$Outbound
-    | OneHundredAndEightyTwo$Outbound
-    | OneHundredAndEightyThree$Outbound
-    | TwoHundredAndSixtyThree$Outbound
-    | TwoHundredAndSeventyOne$Outbound
-    | TwoHundredAndEightyThree$Outbound
-    | TwoHundredAndEightyNine$Outbound
-    | TwoHundredAndNinetyOne$Outbound
-    | TwoHundredAndNinetyFour$Outbound
-    | TwoHundredAndNinetySeven$Outbound
-    | ThreeHundredAndSix$Outbound
-    | ThreeHundredAndSeven$Outbound
-    | ThreeHundredAndNine$Outbound
-    | ThreeHundredAndTwelve$Outbound
-    | ThreeHundredAndSeventeen$Outbound
-    | undefined;
-};
 
-/** @internal */
-export const UserEvent$outboundSchema: z.ZodType<
-  UserEvent$Outbound,
-  z.ZodTypeDef,
-  UserEvent
-> = z.object({
-  id: z.string(),
-  text: z.string(),
-  entities: z.array(Entities$outboundSchema),
-  type: Type$outboundSchema.optional(),
-  categories: z.array(Categories$outboundSchema).optional(),
-  createdAt: z.number(),
-  user: User$outboundSchema.optional(),
-  principal: Principal$outboundSchema.optional(),
-  via: z.array(Via$outboundSchema).optional(),
-  userId: z.string().optional(),
-  principalId: z.string(),
-  viaIds: z.array(z.string()).optional(),
-  payload: smartUnion([
-    OneHundredAndThirtySeven$outboundSchema,
-    EightySeven$outboundSchema,
-    TwoHundredAndFourteen$outboundSchema,
-    OneHundredAndThirtyOne$outboundSchema,
-    OneHundredAndThirtyFive$outboundSchema,
-    OneHundredAndNinetyOne$outboundSchema,
-    TwoHundredAndFiftyOne$outboundSchema,
-    TwoHundredAndSixtyFour$outboundSchema,
-    TwoHundredAndSixtySix$outboundSchema,
-    EightyTwo$outboundSchema,
-    EightyFive$outboundSchema,
-    EightySix$outboundSchema,
-    EightyEight$outboundSchema,
-    NinetyFive$outboundSchema,
-    OneHundredAndTwentyFive$outboundSchema,
-    OneHundredAndThirty$outboundSchema,
-    OneHundredAndThirtySix$outboundSchema,
-    TwoHundredAndTwo$outboundSchema,
-    TwoHundredAndSixteen$outboundSchema,
-    TwoHundredAndTwentySix$outboundSchema,
-    ThreeHundredAndThirtyNine$outboundSchema,
-    z.lazy(() => Payload2$outboundSchema),
-    z.lazy(() => Five$outboundSchema),
-    z.lazy(() => Ten$outboundSchema),
-    z.lazy(() => FortyFour$outboundSchema),
-    z.lazy(() => FortyFive$outboundSchema),
-    SeventySix$outboundSchema,
-    SeventyEight$outboundSchema,
-    EightyFour$outboundSchema,
-    NinetyThree$outboundSchema,
-    OneHundredAndThirteen$outboundSchema,
-    OneHundredAndTwentyNine$outboundSchema,
-    OneHundredAndFiftyFour$outboundSchema,
-    OneHundredAndFiftyFive$outboundSchema,
-    OneHundredAndSixtyOne$outboundSchema,
-    OneHundredAndSeventyEight$outboundSchema,
-    OneHundredAndEightyOne$outboundSchema,
-    OneHundredAndEightyEight$outboundSchema,
-    OneHundredAndNinetyTwo$outboundSchema,
-    OneHundredAndNinetyFive$outboundSchema,
-    OneHundredAndNinetySix$outboundSchema,
-    OneHundredAndNinetySeven$outboundSchema,
-    OneHundredAndNinetyEight$outboundSchema,
-    TwoHundredAndThirteen$outboundSchema,
-    TwoHundredAndFifteen$outboundSchema,
-    TwoHundredAndNineteen$outboundSchema,
-    TwoHundredAndThirtyEight$outboundSchema,
-    TwoHundredAndThirtyNine$outboundSchema,
-    TwoHundredAndFortyFive$outboundSchema,
-    TwoHundredAndFortySix$outboundSchema,
-    TwoHundredAndFortySeven$outboundSchema,
-    TwoHundredAndFortyNine$outboundSchema,
-    TwoHundredAndSixtyTwo$outboundSchema,
-    TwoHundredAndSixtyFive$outboundSchema,
-    TwoHundredAndSeventyFour$outboundSchema,
-    TwoHundredAndSeventyFive$outboundSchema,
-    TwoHundredAndEightyTwo$outboundSchema,
-    TwoHundredAndEightySeven$outboundSchema,
-    ThreeHundredAndOne$outboundSchema,
-    ThreeHundredAndFifteen$outboundSchema,
-    ThreeHundredAndForty$outboundSchema,
-    ThreeHundredAndFortyOne$outboundSchema,
-    z.lazy(() => Seven$outboundSchema),
-    z.lazy(() => TwentyFive$outboundSchema),
-    z.lazy(() => Thirty$outboundSchema),
-    FiftyTwo$outboundSchema,
-    FiftyFive$outboundSchema,
-    SixtyTwo$outboundSchema,
-    SixtyThree$outboundSchema,
-    SixtyFour$outboundSchema,
-    SixtyFive$outboundSchema,
-    EightyThree$outboundSchema,
-    NinetySix$outboundSchema,
-    NinetyNine$outboundSchema,
-    OneHundred$outboundSchema,
-    OneHundredAndOne$outboundSchema,
-    OneHundredAndSix$outboundSchema,
-    OneHundredAndSeven$outboundSchema,
-    OneHundredAndNine$outboundSchema,
-    OneHundredAndTwelve$outboundSchema,
-    OneHundredAndFourteen$outboundSchema,
-    OneHundredAndTwentyTwo$outboundSchema,
-    OneHundredAndTwentyThree$outboundSchema,
-    OneHundredAndTwentyFour$outboundSchema,
-    OneHundredAndTwentySix$outboundSchema,
-    OneHundredAndTwentySeven$outboundSchema,
-    OneHundredAndThirtyTwo$outboundSchema,
-    OneHundredAndThirtyThree$outboundSchema,
-    OneHundredAndThirtyEight$outboundSchema,
-    OneHundredAndFortyTwo$outboundSchema,
-    OneHundredAndFortyFour$outboundSchema,
-    OneHundredAndFortySeven$outboundSchema,
-    OneHundredAndFortyNine$outboundSchema,
-    OneHundredAndFifty$outboundSchema,
-    OneHundredAndFiftyOne$outboundSchema,
-    OneHundredAndFiftyTwo$outboundSchema,
-    OneHundredAndFiftyThree$outboundSchema,
-    OneHundredAndFiftySix$outboundSchema,
-    OneHundredAndFiftySeven$outboundSchema,
-    OneHundredAndFiftyEight$outboundSchema,
-    OneHundredAndFiftyNine$outboundSchema,
-    OneHundredAndSixtyNine$outboundSchema,
-    OneHundredAndSeventyOne$outboundSchema,
-    OneHundredAndSeventyTwo$outboundSchema,
-    OneHundredAndSeventyFour$outboundSchema,
-    OneHundredAndSeventySix$outboundSchema,
-    OneHundredAndSeventySeven$outboundSchema,
-    OneHundredAndSeventyNine$outboundSchema,
-    OneHundredAndEighty$outboundSchema,
-    OneHundredAndEightySix$outboundSchema,
-    OneHundredAndEightyNine$outboundSchema,
-    OneHundredAndNinety$outboundSchema,
-    OneHundredAndNinetyNine$outboundSchema,
-    TwoHundred$outboundSchema,
-    TwoHundredAndOne$outboundSchema,
-    TwoHundredAndThree$outboundSchema,
-    TwoHundredAndFour$outboundSchema,
-    TwoHundredAndFive$outboundSchema,
-    TwoHundredAndSix$outboundSchema,
-    TwoHundredAndSeven$outboundSchema,
-    TwoHundredAndTen$outboundSchema,
-    TwoHundredAndEleven$outboundSchema,
-    TwoHundredAndTwelve$outboundSchema,
-    TwoHundredAndSeventeen$outboundSchema,
-    TwoHundredAndTwentyFour$outboundSchema,
-    TwoHundredAndTwentySeven$outboundSchema,
-    TwoHundredAndTwentyEight$outboundSchema,
-    TwoHundredAndForty$outboundSchema,
-    TwoHundredAndFortyOne$outboundSchema,
-    TwoHundredAndFortyTwo$outboundSchema,
-    TwoHundredAndFortyThree$outboundSchema,
-    TwoHundredAndFiftyFour$outboundSchema,
-    TwoHundredAndSixtySeven$outboundSchema,
-    TwoHundredAndSeventyEight$outboundSchema,
-    TwoHundredAndEightyFour$outboundSchema,
-    ThreeHundredAndFive$outboundSchema,
-    ThreeHundredAndTwentyNine$outboundSchema,
-    ThreeHundredAndThirty$outboundSchema,
-    ThreeHundredAndThirtyOne$outboundSchema,
-    ThreeHundredAndThirtyTwo$outboundSchema,
-    ThreeHundredAndThirtyEight$outboundSchema,
-    z.lazy(() => Payload3$outboundSchema),
-    z.lazy(() => Four$outboundSchema),
-    z.lazy(() => Six$outboundSchema),
-    z.lazy(() => Eight$outboundSchema),
-    z.lazy(() => Nine$outboundSchema),
-    z.lazy(() => Thirteen$outboundSchema),
-    z.lazy(() => Seventeen$outboundSchema),
-    z.lazy(() => Eighteen$outboundSchema),
-    z.lazy(() => Twenty$outboundSchema),
-    z.lazy(() => TwentyThree$outboundSchema),
-    z.lazy(() => ThirtyOne$outboundSchema),
-    z.lazy(() => ThirtyFour$outboundSchema),
-    z.lazy(() => ThirtySix$outboundSchema),
-    z.lazy(() => FortyOne$outboundSchema),
-    z.lazy(() => FortyTwo$outboundSchema),
-    FortyEight$outboundSchema,
-    FortyNine$outboundSchema,
-    Fifty$outboundSchema,
-    FiftyThree$outboundSchema,
-    FiftyEight$outboundSchema,
-    SixtySeven$outboundSchema,
-    SixtyEight$outboundSchema,
-    SixtyNine$outboundSchema,
-    Seventy$outboundSchema,
-    SeventyOne$outboundSchema,
-    SeventyFour$outboundSchema,
-    SeventySeven$outboundSchema,
-    Ninety$outboundSchema,
-    NinetyOne$outboundSchema,
-    NinetyFour$outboundSchema,
-    NinetyEight$outboundSchema,
-    OneHundredAndFour$outboundSchema,
-    OneHundredAndEight$outboundSchema,
-    OneHundredAndTen$outboundSchema,
-    OneHundredAndEleven$outboundSchema,
-    OneHundredAndFifteen$outboundSchema,
-    OneHundredAndSixteen$outboundSchema,
-    OneHundredAndNineteen$outboundSchema,
-    OneHundredAndThirtyFour$outboundSchema,
-    OneHundredAndFortyFive$outboundSchema,
-    OneHundredAndFortySix$outboundSchema,
-    OneHundredAndSixty$outboundSchema,
-    OneHundredAndSixtyTwo$outboundSchema,
-    OneHundredAndSixtySeven$outboundSchema,
-    OneHundredAndSixtyEight$outboundSchema,
-    OneHundredAndSeventy$outboundSchema,
-    OneHundredAndSeventyFive$outboundSchema,
-    OneHundredAndEightyFour$outboundSchema,
-    OneHundredAndEightySeven$outboundSchema,
-    OneHundredAndNinetyThree$outboundSchema,
-    OneHundredAndNinetyFour$outboundSchema,
-    TwoHundredAndTwenty$outboundSchema,
-    TwoHundredAndTwentyTwo$outboundSchema,
-    TwoHundredAndTwentyThree$outboundSchema,
-    TwoHundredAndTwentyFive$outboundSchema,
-    TwoHundredAndTwentyNine$outboundSchema,
-    TwoHundredAndThirty$outboundSchema,
-    TwoHundredAndThirtyTwo$outboundSchema,
-    TwoHundredAndThirtyFour$outboundSchema,
-    TwoHundredAndThirtyFive$outboundSchema,
-    TwoHundredAndThirtySix$outboundSchema,
-    TwoHundredAndThirtySeven$outboundSchema,
-    TwoHundredAndFortyFour$outboundSchema,
-    TwoHundredAndFortyEight$outboundSchema,
-    TwoHundredAndFifty$outboundSchema,
-    TwoHundredAndFiftyThree$outboundSchema,
-    TwoHundredAndFiftyFive$outboundSchema,
-    TwoHundredAndFiftySix$outboundSchema,
-    TwoHundredAndFiftyEight$outboundSchema,
-    TwoHundredAndFiftyNine$outboundSchema,
-    TwoHundredAndSixty$outboundSchema,
-    TwoHundredAndSeventyThree$outboundSchema,
-    TwoHundredAndSeventySix$outboundSchema,
-    TwoHundredAndEightyFive$outboundSchema,
-    TwoHundredAndEightyEight$outboundSchema,
-    TwoHundredAndNinety$outboundSchema,
-    TwoHundredAndNinetyFive$outboundSchema,
-    TwoHundredAndNinetySix$outboundSchema,
-    ThreeHundredAndThree$outboundSchema,
-    ThreeHundredAndEleven$outboundSchema,
-    ThreeHundredAndThirteen$outboundSchema,
-    ThreeHundredAndEighteen$outboundSchema,
-    ThreeHundredAndNineteen$outboundSchema,
-    ThreeHundredAndTwentyOne$outboundSchema,
-    ThreeHundredAndTwentyFour$outboundSchema,
-    ThreeHundredAndTwentyFive$outboundSchema,
-    ThreeHundredAndThirtyFour$outboundSchema,
-    ThreeHundredAndThirtySix$outboundSchema,
-    ThreeHundredAndThirtySeven$outboundSchema,
-    ThreeHundredAndFortyTwo$outboundSchema,
-    z.lazy(() => Eleven$outboundSchema),
-    z.lazy(() => Twelve$outboundSchema),
-    z.lazy(() => Fourteen$outboundSchema),
-    z.lazy(() => Fifteen$outboundSchema),
-    z.lazy(() => Sixteen$outboundSchema),
-    z.lazy(() => Nineteen$outboundSchema),
-    z.lazy(() => TwentyFour$outboundSchema),
-    z.lazy(() => ThirtyFive$outboundSchema),
-    z.lazy(() => ThirtySeven$outboundSchema),
-    z.lazy(() => ThirtyEight$outboundSchema),
-    z.lazy(() => ThirtyNine$outboundSchema),
-    z.lazy(() => Forty$outboundSchema),
-    z.lazy(() => FortySix$outboundSchema),
-    FortySeven$outboundSchema,
-    FiftyOne$outboundSchema,
-    FiftyFour$outboundSchema,
-    FiftySeven$outboundSchema,
-    FiftyNine$outboundSchema,
-    SixtyOne$outboundSchema,
-    SixtySix$outboundSchema,
-    SeventyThree$outboundSchema,
-    SeventyFive$outboundSchema,
-    SeventyNine$outboundSchema,
-    Eighty$outboundSchema,
-    EightyOne$outboundSchema,
-    EightyNine$outboundSchema,
-    NinetyTwo$outboundSchema,
-    NinetySeven$outboundSchema,
-    OneHundredAndTwo$outboundSchema,
-    OneHundredAndThree$outboundSchema,
-    OneHundredAndFive$outboundSchema,
-    OneHundredAndSeventeen$outboundSchema,
-    OneHundredAndTwentyEight$outboundSchema,
-    OneHundredAndThirtyNine$outboundSchema,
-    OneHundredAndForty$outboundSchema,
-    OneHundredAndFortyThree$outboundSchema,
-    OneHundredAndFortyEight$outboundSchema,
-    OneHundredAndSixtyThree$outboundSchema,
-    OneHundredAndSixtySix$outboundSchema,
-    OneHundredAndSeventyThree$outboundSchema,
-    OneHundredAndEightyFive$outboundSchema,
-    TwoHundredAndEight$outboundSchema,
-    TwoHundredAndNine$outboundSchema,
-    TwoHundredAndEighteen$outboundSchema,
-    TwoHundredAndTwentyOne$outboundSchema,
-    TwoHundredAndThirtyOne$outboundSchema,
-    TwoHundredAndThirtyThree$outboundSchema,
-    TwoHundredAndFiftyTwo$outboundSchema,
-    TwoHundredAndFiftySeven$outboundSchema,
-    TwoHundredAndSixtyOne$outboundSchema,
-    TwoHundredAndSixtyEight$outboundSchema,
-    TwoHundredAndSixtyNine$outboundSchema,
-    TwoHundredAndSeventy$outboundSchema,
-    TwoHundredAndSeventyTwo$outboundSchema,
-    TwoHundredAndSeventySeven$outboundSchema,
-    TwoHundredAndSeventyNine$outboundSchema,
-    TwoHundredAndEighty$outboundSchema,
-    TwoHundredAndEightyOne$outboundSchema,
-    TwoHundredAndEightySix$outboundSchema,
-    TwoHundredAndNinetyTwo$outboundSchema,
-    TwoHundredAndNinetyThree$outboundSchema,
-    TwoHundredAndNinetyEight$outboundSchema,
-    TwoHundredAndNinetyNine$outboundSchema,
-    ThreeHundred$outboundSchema,
-    ThreeHundredAndTwo$outboundSchema,
-    ThreeHundredAndFour$outboundSchema,
-    ThreeHundredAndEight$outboundSchema,
-    ThreeHundredAndTen$outboundSchema,
-    ThreeHundredAndFourteen$outboundSchema,
-    ThreeHundredAndSixteen$outboundSchema,
-    ThreeHundredAndTwenty$outboundSchema,
-    ThreeHundredAndTwentyTwo$outboundSchema,
-    ThreeHundredAndTwentyThree$outboundSchema,
-    ThreeHundredAndTwentySix$outboundSchema,
-    ThreeHundredAndTwentySeven$outboundSchema,
-    ThreeHundredAndTwentyEight$outboundSchema,
-    ThreeHundredAndThirtyThree$outboundSchema,
-    ThreeHundredAndThirtyFive$outboundSchema,
-    z.lazy(() => Payload1$outboundSchema),
-    z.lazy(() => TwentyOne$outboundSchema),
-    z.lazy(() => TwentyTwo$outboundSchema),
-    z.lazy(() => TwentySix$outboundSchema),
-    z.lazy(() => TwentySeven$outboundSchema),
-    z.lazy(() => TwentyEight$outboundSchema),
-    z.lazy(() => TwentyNine$outboundSchema),
-    z.lazy(() => ThirtyTwo$outboundSchema),
-    z.lazy(() => ThirtyThree$outboundSchema),
-    z.lazy(() => FortyThree$outboundSchema),
-    FiftySix$outboundSchema,
-    Sixty$outboundSchema,
-    SeventyTwo$outboundSchema,
-    OneHundredAndEighteen$outboundSchema,
-    OneHundredAndTwenty$outboundSchema,
-    OneHundredAndTwentyOne$outboundSchema,
-    OneHundredAndFortyOne$outboundSchema,
-    OneHundredAndSixtyFour$outboundSchema,
-    OneHundredAndSixtyFive$outboundSchema,
-    OneHundredAndEightyTwo$outboundSchema,
-    OneHundredAndEightyThree$outboundSchema,
-    TwoHundredAndSixtyThree$outboundSchema,
-    TwoHundredAndSeventyOne$outboundSchema,
-    TwoHundredAndEightyThree$outboundSchema,
-    TwoHundredAndEightyNine$outboundSchema,
-    TwoHundredAndNinetyOne$outboundSchema,
-    TwoHundredAndNinetyFour$outboundSchema,
-    TwoHundredAndNinetySeven$outboundSchema,
-    ThreeHundredAndSix$outboundSchema,
-    ThreeHundredAndSeven$outboundSchema,
-    ThreeHundredAndNine$outboundSchema,
-    ThreeHundredAndTwelve$outboundSchema,
-    ThreeHundredAndSeventeen$outboundSchema,
-  ]).optional(),
-});
-
-export function userEventToJSON(userEvent: UserEvent): string {
-  return JSON.stringify(UserEvent$outboundSchema.parse(userEvent));
-}
 export function userEventFromJSON(
   jsonString: string,
 ): SafeParseResult<UserEvent, SDKValidationError> {

@@ -4,11 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
-import { Result as SafeParseResult } from "../types/fp.js";
-import * as types from "../types/primitives.js";
-import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export const RequestBodyAction = {
   Refund: "refund",
@@ -36,24 +32,10 @@ export type UpdateInvoiceRequest = {
 };
 
 /** @internal */
-export const RequestBodyAction$inboundSchema: z.ZodNativeEnum<
-  typeof RequestBodyAction
-> = z.nativeEnum(RequestBodyAction);
-/** @internal */
 export const RequestBodyAction$outboundSchema: z.ZodNativeEnum<
   typeof RequestBodyAction
-> = RequestBodyAction$inboundSchema;
+> = z.nativeEnum(RequestBodyAction);
 
-/** @internal */
-export const UpdateInvoiceRequestBody1$inboundSchema: z.ZodType<
-  UpdateInvoiceRequestBody1,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  action: RequestBodyAction$inboundSchema,
-  reason: types.string(),
-  total: types.string(),
-});
 /** @internal */
 export type UpdateInvoiceRequestBody1$Outbound = {
   action: string;
@@ -79,22 +61,7 @@ export function updateInvoiceRequestBody1ToJSON(
     UpdateInvoiceRequestBody1$outboundSchema.parse(updateInvoiceRequestBody1),
   );
 }
-export function updateInvoiceRequestBody1FromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateInvoiceRequestBody1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateInvoiceRequestBody1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateInvoiceRequestBody1' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateInvoiceRequestBody$inboundSchema: z.ZodType<
-  UpdateInvoiceRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.lazy(() => UpdateInvoiceRequestBody1$inboundSchema);
 /** @internal */
 export type UpdateInvoiceRequestBody$Outbound =
   UpdateInvoiceRequestBody1$Outbound;
@@ -113,30 +80,7 @@ export function updateInvoiceRequestBodyToJSON(
     UpdateInvoiceRequestBody$outboundSchema.parse(updateInvoiceRequestBody),
   );
 }
-export function updateInvoiceRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateInvoiceRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateInvoiceRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateInvoiceRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateInvoiceRequest$inboundSchema: z.ZodType<
-  UpdateInvoiceRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  integrationConfigurationId: types.string(),
-  invoiceId: types.string(),
-  RequestBody: z.lazy(() => UpdateInvoiceRequestBody1$inboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 /** @internal */
 export type UpdateInvoiceRequest$Outbound = {
   integrationConfigurationId: string;
@@ -164,14 +108,5 @@ export function updateInvoiceRequestToJSON(
 ): string {
   return JSON.stringify(
     UpdateInvoiceRequest$outboundSchema.parse(updateInvoiceRequest),
-  );
-}
-export function updateInvoiceRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateInvoiceRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateInvoiceRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateInvoiceRequest' from JSON`,
   );
 }

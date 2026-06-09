@@ -21,15 +21,6 @@ export type GetDomainAvailabilityResponseBody = {
 };
 
 /** @internal */
-export const GetDomainAvailabilityRequest$inboundSchema: z.ZodType<
-  GetDomainAvailabilityRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  domain: types.string(),
-  teamId: types.optional(types.string()),
-});
-/** @internal */
 export type GetDomainAvailabilityRequest$Outbound = {
   domain: string;
   teamId?: string | undefined;
@@ -54,15 +45,6 @@ export function getDomainAvailabilityRequestToJSON(
     ),
   );
 }
-export function getDomainAvailabilityRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetDomainAvailabilityRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetDomainAvailabilityRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDomainAvailabilityRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const GetDomainAvailabilityResponseBody$inboundSchema: z.ZodType<
@@ -72,29 +54,7 @@ export const GetDomainAvailabilityResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   available: types.boolean(),
 });
-/** @internal */
-export type GetDomainAvailabilityResponseBody$Outbound = {
-  available: boolean;
-};
 
-/** @internal */
-export const GetDomainAvailabilityResponseBody$outboundSchema: z.ZodType<
-  GetDomainAvailabilityResponseBody$Outbound,
-  z.ZodTypeDef,
-  GetDomainAvailabilityResponseBody
-> = z.object({
-  available: z.boolean(),
-});
-
-export function getDomainAvailabilityResponseBodyToJSON(
-  getDomainAvailabilityResponseBody: GetDomainAvailabilityResponseBody,
-): string {
-  return JSON.stringify(
-    GetDomainAvailabilityResponseBody$outboundSchema.parse(
-      getDomainAvailabilityResponseBody,
-    ),
-  );
-}
 export function getDomainAvailabilityResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetDomainAvailabilityResponseBody, SDKValidationError> {

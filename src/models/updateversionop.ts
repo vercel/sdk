@@ -74,24 +74,10 @@ export type UpdateVersionResponseBody = {
 };
 
 /** @internal */
-export const UpdateVersionAction$inboundSchema: z.ZodNativeEnum<
-  typeof UpdateVersionAction
-> = z.nativeEnum(UpdateVersionAction);
-/** @internal */
 export const UpdateVersionAction$outboundSchema: z.ZodNativeEnum<
   typeof UpdateVersionAction
-> = UpdateVersionAction$inboundSchema;
+> = z.nativeEnum(UpdateVersionAction);
 
-/** @internal */
-export const UpdateVersionRequestBody$inboundSchema: z.ZodType<
-  UpdateVersionRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: types.string(),
-  action: UpdateVersionAction$inboundSchema,
-  name: types.optional(types.string()),
-});
 /** @internal */
 export type UpdateVersionRequestBody$Outbound = {
   id: string;
@@ -117,33 +103,7 @@ export function updateVersionRequestBodyToJSON(
     UpdateVersionRequestBody$outboundSchema.parse(updateVersionRequestBody),
   );
 }
-export function updateVersionRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateVersionRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateVersionRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateVersionRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateVersionRequest$inboundSchema: z.ZodType<
-  UpdateVersionRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  projectId: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-  RequestBody: types.optional(
-    z.lazy(() => UpdateVersionRequestBody$inboundSchema),
-  ),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 /** @internal */
 export type UpdateVersionRequest$Outbound = {
   projectId: string;
@@ -175,15 +135,6 @@ export function updateVersionRequestToJSON(
     UpdateVersionRequest$outboundSchema.parse(updateVersionRequest),
   );
 }
-export function updateVersionRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateVersionRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateVersionRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateVersionRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const UpdateVersionVersion$inboundSchema: z.ZodType<
@@ -201,43 +152,7 @@ export const UpdateVersionVersion$inboundSchema: z.ZodType<
   redirectCount: types.optional(types.number()),
   alias: types.optional(types.string()),
 });
-/** @internal */
-export type UpdateVersionVersion$Outbound = {
-  id: string;
-  key: string;
-  lastModified: number;
-  createdBy: string;
-  name?: string | undefined;
-  isStaging?: boolean | undefined;
-  isLive?: boolean | undefined;
-  redirectCount?: number | undefined;
-  alias?: string | undefined;
-};
 
-/** @internal */
-export const UpdateVersionVersion$outboundSchema: z.ZodType<
-  UpdateVersionVersion$Outbound,
-  z.ZodTypeDef,
-  UpdateVersionVersion
-> = z.object({
-  id: z.string(),
-  key: z.string(),
-  lastModified: z.number(),
-  createdBy: z.string(),
-  name: z.string().optional(),
-  isStaging: z.boolean().optional(),
-  isLive: z.boolean().optional(),
-  redirectCount: z.number().optional(),
-  alias: z.string().optional(),
-});
-
-export function updateVersionVersionToJSON(
-  updateVersionVersion: UpdateVersionVersion,
-): string {
-  return JSON.stringify(
-    UpdateVersionVersion$outboundSchema.parse(updateVersionVersion),
-  );
-}
 export function updateVersionVersionFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateVersionVersion, SDKValidationError> {
@@ -256,27 +171,7 @@ export const UpdateVersionResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   version: z.lazy(() => UpdateVersionVersion$inboundSchema),
 });
-/** @internal */
-export type UpdateVersionResponseBody$Outbound = {
-  version: UpdateVersionVersion$Outbound;
-};
 
-/** @internal */
-export const UpdateVersionResponseBody$outboundSchema: z.ZodType<
-  UpdateVersionResponseBody$Outbound,
-  z.ZodTypeDef,
-  UpdateVersionResponseBody
-> = z.object({
-  version: z.lazy(() => UpdateVersionVersion$outboundSchema),
-});
-
-export function updateVersionResponseBodyToJSON(
-  updateVersionResponseBody: UpdateVersionResponseBody,
-): string {
-  return JSON.stringify(
-    UpdateVersionResponseBody$outboundSchema.parse(updateVersionResponseBody),
-  );
-}
 export function updateVersionResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateVersionResponseBody, SDKValidationError> {

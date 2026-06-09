@@ -119,15 +119,6 @@ export type GetTeamAccessRequestResponseBody = {
 };
 
 /** @internal */
-export const GetTeamAccessRequestRequest$inboundSchema: z.ZodType<
-  GetTeamAccessRequestRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  userId: types.string(),
-  teamId: types.string(),
-});
-/** @internal */
 export type GetTeamAccessRequestRequest$Outbound = {
   userId: string;
   teamId: string;
@@ -152,24 +143,11 @@ export function getTeamAccessRequestRequestToJSON(
     ),
   );
 }
-export function getTeamAccessRequestRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetTeamAccessRequestRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetTeamAccessRequestRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetTeamAccessRequestRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const GetTeamAccessRequestOrigin$inboundSchema: z.ZodNativeEnum<
   typeof GetTeamAccessRequestOrigin
 > = z.nativeEnum(GetTeamAccessRequestOrigin);
-/** @internal */
-export const GetTeamAccessRequestOrigin$outboundSchema: z.ZodNativeEnum<
-  typeof GetTeamAccessRequestOrigin
-> = GetTeamAccessRequestOrigin$inboundSchema;
 
 /** @internal */
 export const GetTeamAccessRequestGitUserId$inboundSchema: z.ZodType<
@@ -177,25 +155,7 @@ export const GetTeamAccessRequestGitUserId$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = smartUnion([types.string(), types.number()]);
-/** @internal */
-export type GetTeamAccessRequestGitUserId$Outbound = string | number;
 
-/** @internal */
-export const GetTeamAccessRequestGitUserId$outboundSchema: z.ZodType<
-  GetTeamAccessRequestGitUserId$Outbound,
-  z.ZodTypeDef,
-  GetTeamAccessRequestGitUserId
-> = smartUnion([z.string(), z.number()]);
-
-export function getTeamAccessRequestGitUserIdToJSON(
-  getTeamAccessRequestGitUserId: GetTeamAccessRequestGitUserId,
-): string {
-  return JSON.stringify(
-    GetTeamAccessRequestGitUserId$outboundSchema.parse(
-      getTeamAccessRequestGitUserId,
-    ),
-  );
-}
 export function getTeamAccessRequestGitUserIdFromJSON(
   jsonString: string,
 ): SafeParseResult<GetTeamAccessRequestGitUserId, SDKValidationError> {
@@ -224,49 +184,7 @@ export const GetTeamAccessRequestJoinedFrom$inboundSchema: z.ZodType<
   dsyncUserId: types.optional(types.string()),
   dsyncConnectedAt: types.optional(types.number()),
 });
-/** @internal */
-export type GetTeamAccessRequestJoinedFrom$Outbound = {
-  origin: string;
-  commitId?: string | undefined;
-  repoId?: string | undefined;
-  repoPath?: string | undefined;
-  gitUserId?: string | number | undefined;
-  gitUserLogin?: string | undefined;
-  ssoUserId?: string | undefined;
-  ssoConnectedAt?: number | undefined;
-  idpUserId?: string | undefined;
-  dsyncUserId?: string | undefined;
-  dsyncConnectedAt?: number | undefined;
-};
 
-/** @internal */
-export const GetTeamAccessRequestJoinedFrom$outboundSchema: z.ZodType<
-  GetTeamAccessRequestJoinedFrom$Outbound,
-  z.ZodTypeDef,
-  GetTeamAccessRequestJoinedFrom
-> = z.object({
-  origin: GetTeamAccessRequestOrigin$outboundSchema,
-  commitId: z.string().optional(),
-  repoId: z.string().optional(),
-  repoPath: z.string().optional(),
-  gitUserId: smartUnion([z.string(), z.number()]).optional(),
-  gitUserLogin: z.string().optional(),
-  ssoUserId: z.string().optional(),
-  ssoConnectedAt: z.number().optional(),
-  idpUserId: z.string().optional(),
-  dsyncUserId: z.string().optional(),
-  dsyncConnectedAt: z.number().optional(),
-});
-
-export function getTeamAccessRequestJoinedFromToJSON(
-  getTeamAccessRequestJoinedFrom: GetTeamAccessRequestJoinedFrom,
-): string {
-  return JSON.stringify(
-    GetTeamAccessRequestJoinedFrom$outboundSchema.parse(
-      getTeamAccessRequestJoinedFrom,
-    ),
-  );
-}
 export function getTeamAccessRequestJoinedFromFromJSON(
   jsonString: string,
 ): SafeParseResult<GetTeamAccessRequestJoinedFrom, SDKValidationError> {
@@ -285,27 +203,7 @@ export const GetTeamAccessRequestGithub$inboundSchema: z.ZodType<
 > = z.object({
   login: types.optional(types.string()),
 });
-/** @internal */
-export type GetTeamAccessRequestGithub$Outbound = {
-  login?: string | undefined;
-};
 
-/** @internal */
-export const GetTeamAccessRequestGithub$outboundSchema: z.ZodType<
-  GetTeamAccessRequestGithub$Outbound,
-  z.ZodTypeDef,
-  GetTeamAccessRequestGithub
-> = z.object({
-  login: z.string().optional(),
-});
-
-export function getTeamAccessRequestGithubToJSON(
-  getTeamAccessRequestGithub: GetTeamAccessRequestGithub,
-): string {
-  return JSON.stringify(
-    GetTeamAccessRequestGithub$outboundSchema.parse(getTeamAccessRequestGithub),
-  );
-}
 export function getTeamAccessRequestGithubFromJSON(
   jsonString: string,
 ): SafeParseResult<GetTeamAccessRequestGithub, SDKValidationError> {
@@ -324,27 +222,7 @@ export const GetTeamAccessRequestGitlab$inboundSchema: z.ZodType<
 > = z.object({
   login: types.optional(types.string()),
 });
-/** @internal */
-export type GetTeamAccessRequestGitlab$Outbound = {
-  login?: string | undefined;
-};
 
-/** @internal */
-export const GetTeamAccessRequestGitlab$outboundSchema: z.ZodType<
-  GetTeamAccessRequestGitlab$Outbound,
-  z.ZodTypeDef,
-  GetTeamAccessRequestGitlab
-> = z.object({
-  login: z.string().optional(),
-});
-
-export function getTeamAccessRequestGitlabToJSON(
-  getTeamAccessRequestGitlab: GetTeamAccessRequestGitlab,
-): string {
-  return JSON.stringify(
-    GetTeamAccessRequestGitlab$outboundSchema.parse(getTeamAccessRequestGitlab),
-  );
-}
 export function getTeamAccessRequestGitlabFromJSON(
   jsonString: string,
 ): SafeParseResult<GetTeamAccessRequestGitlab, SDKValidationError> {
@@ -363,29 +241,7 @@ export const GetTeamAccessRequestBitbucket$inboundSchema: z.ZodType<
 > = z.object({
   login: types.optional(types.string()),
 });
-/** @internal */
-export type GetTeamAccessRequestBitbucket$Outbound = {
-  login?: string | undefined;
-};
 
-/** @internal */
-export const GetTeamAccessRequestBitbucket$outboundSchema: z.ZodType<
-  GetTeamAccessRequestBitbucket$Outbound,
-  z.ZodTypeDef,
-  GetTeamAccessRequestBitbucket
-> = z.object({
-  login: z.string().optional(),
-});
-
-export function getTeamAccessRequestBitbucketToJSON(
-  getTeamAccessRequestBitbucket: GetTeamAccessRequestBitbucket,
-): string {
-  return JSON.stringify(
-    GetTeamAccessRequestBitbucket$outboundSchema.parse(
-      getTeamAccessRequestBitbucket,
-    ),
-  );
-}
 export function getTeamAccessRequestBitbucketFromJSON(
   jsonString: string,
 ): SafeParseResult<GetTeamAccessRequestBitbucket, SDKValidationError> {
@@ -417,45 +273,7 @@ export const GetTeamAccessRequestResponseBody$inboundSchema: z.ZodType<
     z.lazy(() => GetTeamAccessRequestBitbucket$inboundSchema),
   ),
 });
-/** @internal */
-export type GetTeamAccessRequestResponseBody$Outbound = {
-  teamSlug: string;
-  teamName: string;
-  confirmed: boolean;
-  joinedFrom: GetTeamAccessRequestJoinedFrom$Outbound;
-  accessRequestedAt: number;
-  github: GetTeamAccessRequestGithub$Outbound | null;
-  gitlab: GetTeamAccessRequestGitlab$Outbound | null;
-  bitbucket: GetTeamAccessRequestBitbucket$Outbound | null;
-};
 
-/** @internal */
-export const GetTeamAccessRequestResponseBody$outboundSchema: z.ZodType<
-  GetTeamAccessRequestResponseBody$Outbound,
-  z.ZodTypeDef,
-  GetTeamAccessRequestResponseBody
-> = z.object({
-  teamSlug: z.string(),
-  teamName: z.string(),
-  confirmed: z.boolean(),
-  joinedFrom: z.lazy(() => GetTeamAccessRequestJoinedFrom$outboundSchema),
-  accessRequestedAt: z.number(),
-  github: z.nullable(z.lazy(() => GetTeamAccessRequestGithub$outboundSchema)),
-  gitlab: z.nullable(z.lazy(() => GetTeamAccessRequestGitlab$outboundSchema)),
-  bitbucket: z.nullable(
-    z.lazy(() => GetTeamAccessRequestBitbucket$outboundSchema),
-  ),
-});
-
-export function getTeamAccessRequestResponseBodyToJSON(
-  getTeamAccessRequestResponseBody: GetTeamAccessRequestResponseBody,
-): string {
-  return JSON.stringify(
-    GetTeamAccessRequestResponseBody$outboundSchema.parse(
-      getTeamAccessRequestResponseBody,
-    ),
-  );
-}
 export function getTeamAccessRequestResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetTeamAccessRequestResponseBody, SDKValidationError> {

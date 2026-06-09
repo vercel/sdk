@@ -81,12 +81,6 @@ export type StageRedirectsResponseBody = {
 };
 
 /** @internal */
-export const StatusCode$inboundSchema: z.ZodType<
-  StatusCode,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([types.number(), types.string()]);
-/** @internal */
 export type StatusCode$Outbound = number | string;
 
 /** @internal */
@@ -99,30 +93,7 @@ export const StatusCode$outboundSchema: z.ZodType<
 export function statusCodeToJSON(statusCode: StatusCode): string {
   return JSON.stringify(StatusCode$outboundSchema.parse(statusCode));
 }
-export function statusCodeFromJSON(
-  jsonString: string,
-): SafeParseResult<StatusCode, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => StatusCode$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'StatusCode' from JSON`,
-  );
-}
 
-/** @internal */
-export const Redirects$inboundSchema: z.ZodType<
-  Redirects,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  source: types.string(),
-  destination: types.string(),
-  statusCode: types.optional(smartUnion([types.number(), types.string()])),
-  permanent: types.optional(types.boolean()),
-  caseSensitive: types.optional(types.boolean()),
-  query: types.optional(types.boolean()),
-  preserveQueryParams: types.optional(types.boolean()),
-});
 /** @internal */
 export type Redirects$Outbound = {
   source: string;
@@ -152,28 +123,7 @@ export const Redirects$outboundSchema: z.ZodType<
 export function redirectsToJSON(redirects: Redirects): string {
   return JSON.stringify(Redirects$outboundSchema.parse(redirects));
 }
-export function redirectsFromJSON(
-  jsonString: string,
-): SafeParseResult<Redirects, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Redirects$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Redirects' from JSON`,
-  );
-}
 
-/** @internal */
-export const StageRedirectsRequestBody$inboundSchema: z.ZodType<
-  StageRedirectsRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  projectId: types.string(),
-  teamId: types.string(),
-  overwrite: types.optional(types.boolean()),
-  name: types.optional(types.string()),
-  redirects: types.optional(z.array(z.lazy(() => Redirects$inboundSchema))),
-});
 /** @internal */
 export type StageRedirectsRequestBody$Outbound = {
   projectId: string;
@@ -203,32 +153,7 @@ export function stageRedirectsRequestBodyToJSON(
     StageRedirectsRequestBody$outboundSchema.parse(stageRedirectsRequestBody),
   );
 }
-export function stageRedirectsRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<StageRedirectsRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => StageRedirectsRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'StageRedirectsRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const StageRedirectsRequest$inboundSchema: z.ZodType<
-  StageRedirectsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-  RequestBody: types.optional(
-    z.lazy(() => StageRedirectsRequestBody$inboundSchema),
-  ),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 /** @internal */
 export type StageRedirectsRequest$Outbound = {
   teamId?: string | undefined;
@@ -259,15 +184,6 @@ export function stageRedirectsRequestToJSON(
     StageRedirectsRequest$outboundSchema.parse(stageRedirectsRequest),
   );
 }
-export function stageRedirectsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<StageRedirectsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => StageRedirectsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'StageRedirectsRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const StageRedirectsVersion$inboundSchema: z.ZodType<
@@ -285,43 +201,7 @@ export const StageRedirectsVersion$inboundSchema: z.ZodType<
   redirectCount: types.optional(types.number()),
   alias: types.optional(types.string()),
 });
-/** @internal */
-export type StageRedirectsVersion$Outbound = {
-  id: string;
-  key: string;
-  lastModified: number;
-  createdBy: string;
-  name?: string | undefined;
-  isStaging?: boolean | undefined;
-  isLive?: boolean | undefined;
-  redirectCount?: number | undefined;
-  alias?: string | undefined;
-};
 
-/** @internal */
-export const StageRedirectsVersion$outboundSchema: z.ZodType<
-  StageRedirectsVersion$Outbound,
-  z.ZodTypeDef,
-  StageRedirectsVersion
-> = z.object({
-  id: z.string(),
-  key: z.string(),
-  lastModified: z.number(),
-  createdBy: z.string(),
-  name: z.string().optional(),
-  isStaging: z.boolean().optional(),
-  isLive: z.boolean().optional(),
-  redirectCount: z.number().optional(),
-  alias: z.string().optional(),
-});
-
-export function stageRedirectsVersionToJSON(
-  stageRedirectsVersion: StageRedirectsVersion,
-): string {
-  return JSON.stringify(
-    StageRedirectsVersion$outboundSchema.parse(stageRedirectsVersion),
-  );
-}
 export function stageRedirectsVersionFromJSON(
   jsonString: string,
 ): SafeParseResult<StageRedirectsVersion, SDKValidationError> {
@@ -341,29 +221,7 @@ export const StageRedirectsResponseBody$inboundSchema: z.ZodType<
   alias: types.nullable(types.string()),
   version: z.lazy(() => StageRedirectsVersion$inboundSchema),
 });
-/** @internal */
-export type StageRedirectsResponseBody$Outbound = {
-  alias: string | null;
-  version: StageRedirectsVersion$Outbound;
-};
 
-/** @internal */
-export const StageRedirectsResponseBody$outboundSchema: z.ZodType<
-  StageRedirectsResponseBody$Outbound,
-  z.ZodTypeDef,
-  StageRedirectsResponseBody
-> = z.object({
-  alias: z.nullable(z.string()),
-  version: z.lazy(() => StageRedirectsVersion$outboundSchema),
-});
-
-export function stageRedirectsResponseBodyToJSON(
-  stageRedirectsResponseBody: StageRedirectsResponseBody,
-): string {
-  return JSON.stringify(
-    StageRedirectsResponseBody$outboundSchema.parse(stageRedirectsResponseBody),
-  );
-}
 export function stageRedirectsResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<StageRedirectsResponseBody, SDKValidationError> {

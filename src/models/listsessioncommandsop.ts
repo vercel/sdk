@@ -5,13 +5,10 @@
 import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
-import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 import {
   SessionCommand,
   SessionCommand$inboundSchema,
-  SessionCommand$Outbound,
-  SessionCommand$outboundSchema,
 } from "./sessioncommand.js";
 
 export type ListSessionCommandsRequest = {
@@ -37,16 +34,6 @@ export type ListSessionCommandsResponseBody = {
 };
 
 /** @internal */
-export const ListSessionCommandsRequest$inboundSchema: z.ZodType<
-  ListSessionCommandsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  sessionId: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
-/** @internal */
 export type ListSessionCommandsRequest$Outbound = {
   sessionId: string;
   teamId?: string | undefined;
@@ -71,15 +58,6 @@ export function listSessionCommandsRequestToJSON(
     ListSessionCommandsRequest$outboundSchema.parse(listSessionCommandsRequest),
   );
 }
-export function listSessionCommandsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<ListSessionCommandsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ListSessionCommandsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ListSessionCommandsRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const ListSessionCommandsResponseBody$inboundSchema: z.ZodType<
@@ -89,29 +67,7 @@ export const ListSessionCommandsResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   commands: z.array(SessionCommand$inboundSchema),
 });
-/** @internal */
-export type ListSessionCommandsResponseBody$Outbound = {
-  commands: Array<SessionCommand$Outbound>;
-};
 
-/** @internal */
-export const ListSessionCommandsResponseBody$outboundSchema: z.ZodType<
-  ListSessionCommandsResponseBody$Outbound,
-  z.ZodTypeDef,
-  ListSessionCommandsResponseBody
-> = z.object({
-  commands: z.array(SessionCommand$outboundSchema),
-});
-
-export function listSessionCommandsResponseBodyToJSON(
-  listSessionCommandsResponseBody: ListSessionCommandsResponseBody,
-): string {
-  return JSON.stringify(
-    ListSessionCommandsResponseBody$outboundSchema.parse(
-      listSessionCommandsResponseBody,
-    ),
-  );
-}
 export function listSessionCommandsResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<ListSessionCommandsResponseBody, SDKValidationError> {

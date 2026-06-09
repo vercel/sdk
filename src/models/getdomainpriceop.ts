@@ -7,30 +7,19 @@ import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
-import {
-  BadRequest,
-  BadRequest$inboundSchema,
-  BadRequest$Outbound,
-  BadRequest$outboundSchema,
-} from "./badrequest.js";
+import { BadRequest, BadRequest$inboundSchema } from "./badrequest.js";
 import {
   DomainTooShort,
   DomainTooShort$inboundSchema,
-  DomainTooShort$Outbound,
-  DomainTooShort$outboundSchema,
 } from "./domaintooshort.js";
 import {
   HttpApiDecodeError,
   HttpApiDecodeError$inboundSchema,
-  HttpApiDecodeError$Outbound,
-  HttpApiDecodeError$outboundSchema,
 } from "./httpapidecodeerror.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 import {
   TldNotSupported,
   TldNotSupported$inboundSchema,
-  TldNotSupported$Outbound,
-  TldNotSupported$outboundSchema,
 } from "./tldnotsupported.js";
 
 export type GetDomainPriceRequest = {
@@ -68,16 +57,6 @@ export type GetDomainPriceResponseBody = {
 };
 
 /** @internal */
-export const GetDomainPriceRequest$inboundSchema: z.ZodType<
-  GetDomainPriceRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  domain: types.string(),
-  years: types.optional(types.string()),
-  teamId: types.optional(types.string()),
-});
-/** @internal */
 export type GetDomainPriceRequest$Outbound = {
   domain: string;
   years?: string | undefined;
@@ -102,15 +81,6 @@ export function getDomainPriceRequestToJSON(
     GetDomainPriceRequest$outboundSchema.parse(getDomainPriceRequest),
   );
 }
-export function getDomainPriceRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetDomainPriceRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetDomainPriceRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDomainPriceRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const GetDomainPriceDomainsRegistrarResponseBody$inboundSchema:
@@ -121,36 +91,7 @@ export const GetDomainPriceDomainsRegistrarResponseBody$inboundSchema:
       TldNotSupported$inboundSchema,
       HttpApiDecodeError$inboundSchema,
     ]);
-/** @internal */
-export type GetDomainPriceDomainsRegistrarResponseBody$Outbound =
-  | BadRequest$Outbound
-  | DomainTooShort$Outbound
-  | TldNotSupported$Outbound
-  | HttpApiDecodeError$Outbound;
 
-/** @internal */
-export const GetDomainPriceDomainsRegistrarResponseBody$outboundSchema:
-  z.ZodType<
-    GetDomainPriceDomainsRegistrarResponseBody$Outbound,
-    z.ZodTypeDef,
-    unknown
-  > = smartUnion([
-    BadRequest$outboundSchema,
-    DomainTooShort$outboundSchema,
-    TldNotSupported$outboundSchema,
-    HttpApiDecodeError$outboundSchema,
-  ]);
-
-export function getDomainPriceDomainsRegistrarResponseBodyToJSON(
-  getDomainPriceDomainsRegistrarResponseBody:
-    GetDomainPriceDomainsRegistrarResponseBody,
-): string {
-  return JSON.stringify(
-    GetDomainPriceDomainsRegistrarResponseBody$outboundSchema.parse(
-      getDomainPriceDomainsRegistrarResponseBody,
-    ),
-  );
-}
 export function getDomainPriceDomainsRegistrarResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -173,25 +114,7 @@ export const GetDomainPricePurchasePrice$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = smartUnion([types.number(), types.string()]);
-/** @internal */
-export type GetDomainPricePurchasePrice$Outbound = number | string;
 
-/** @internal */
-export const GetDomainPricePurchasePrice$outboundSchema: z.ZodType<
-  GetDomainPricePurchasePrice$Outbound,
-  z.ZodTypeDef,
-  GetDomainPricePurchasePrice
-> = smartUnion([z.number(), z.string()]);
-
-export function getDomainPricePurchasePriceToJSON(
-  getDomainPricePurchasePrice: GetDomainPricePurchasePrice,
-): string {
-  return JSON.stringify(
-    GetDomainPricePurchasePrice$outboundSchema.parse(
-      getDomainPricePurchasePrice,
-    ),
-  );
-}
 export function getDomainPricePurchasePriceFromJSON(
   jsonString: string,
 ): SafeParseResult<GetDomainPricePurchasePrice, SDKValidationError> {
@@ -208,23 +131,7 @@ export const GetDomainPriceRenewalPrice$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = smartUnion([types.number(), types.string()]);
-/** @internal */
-export type GetDomainPriceRenewalPrice$Outbound = number | string;
 
-/** @internal */
-export const GetDomainPriceRenewalPrice$outboundSchema: z.ZodType<
-  GetDomainPriceRenewalPrice$Outbound,
-  z.ZodTypeDef,
-  GetDomainPriceRenewalPrice
-> = smartUnion([z.number(), z.string()]);
-
-export function getDomainPriceRenewalPriceToJSON(
-  getDomainPriceRenewalPrice: GetDomainPriceRenewalPrice,
-): string {
-  return JSON.stringify(
-    GetDomainPriceRenewalPrice$outboundSchema.parse(getDomainPriceRenewalPrice),
-  );
-}
 export function getDomainPriceRenewalPriceFromJSON(
   jsonString: string,
 ): SafeParseResult<GetDomainPriceRenewalPrice, SDKValidationError> {
@@ -241,25 +148,7 @@ export const GetDomainPriceTransferPrice$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = smartUnion([types.number(), types.string()]);
-/** @internal */
-export type GetDomainPriceTransferPrice$Outbound = number | string;
 
-/** @internal */
-export const GetDomainPriceTransferPrice$outboundSchema: z.ZodType<
-  GetDomainPriceTransferPrice$Outbound,
-  z.ZodTypeDef,
-  GetDomainPriceTransferPrice
-> = smartUnion([z.number(), z.string()]);
-
-export function getDomainPriceTransferPriceToJSON(
-  getDomainPriceTransferPrice: GetDomainPriceTransferPrice,
-): string {
-  return JSON.stringify(
-    GetDomainPriceTransferPrice$outboundSchema.parse(
-      getDomainPriceTransferPrice,
-    ),
-  );
-}
 export function getDomainPriceTransferPriceFromJSON(
   jsonString: string,
 ): SafeParseResult<GetDomainPriceTransferPrice, SDKValidationError> {
@@ -281,33 +170,7 @@ export const GetDomainPriceResponseBody$inboundSchema: z.ZodType<
   renewalPrice: smartUnion([types.number(), types.string()]),
   transferPrice: smartUnion([types.number(), types.string()]),
 });
-/** @internal */
-export type GetDomainPriceResponseBody$Outbound = {
-  years: number;
-  purchasePrice: number | string;
-  renewalPrice: number | string;
-  transferPrice: number | string;
-};
 
-/** @internal */
-export const GetDomainPriceResponseBody$outboundSchema: z.ZodType<
-  GetDomainPriceResponseBody$Outbound,
-  z.ZodTypeDef,
-  GetDomainPriceResponseBody
-> = z.object({
-  years: z.number(),
-  purchasePrice: smartUnion([z.number(), z.string()]),
-  renewalPrice: smartUnion([z.number(), z.string()]),
-  transferPrice: smartUnion([z.number(), z.string()]),
-});
-
-export function getDomainPriceResponseBodyToJSON(
-  getDomainPriceResponseBody: GetDomainPriceResponseBody,
-): string {
-  return JSON.stringify(
-    GetDomainPriceResponseBody$outboundSchema.parse(getDomainPriceResponseBody),
-  );
-}
 export function getDomainPriceResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetDomainPriceResponseBody, SDKValidationError> {

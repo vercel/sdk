@@ -227,49 +227,20 @@ export type CreateLogDrainResponseBody = {
 };
 
 /** @internal */
-export const CreateLogDrainDeliveryFormat$inboundSchema: z.ZodNativeEnum<
-  typeof CreateLogDrainDeliveryFormat
-> = z.nativeEnum(CreateLogDrainDeliveryFormat);
-/** @internal */
 export const CreateLogDrainDeliveryFormat$outboundSchema: z.ZodNativeEnum<
   typeof CreateLogDrainDeliveryFormat
-> = CreateLogDrainDeliveryFormat$inboundSchema;
+> = z.nativeEnum(CreateLogDrainDeliveryFormat);
 
-/** @internal */
-export const CreateLogDrainSources$inboundSchema: z.ZodNativeEnum<
-  typeof CreateLogDrainSources
-> = z.nativeEnum(CreateLogDrainSources);
 /** @internal */
 export const CreateLogDrainSources$outboundSchema: z.ZodNativeEnum<
   typeof CreateLogDrainSources
-> = CreateLogDrainSources$inboundSchema;
+> = z.nativeEnum(CreateLogDrainSources);
 
-/** @internal */
-export const CreateLogDrainEnvironments$inboundSchema: z.ZodNativeEnum<
-  typeof CreateLogDrainEnvironments
-> = z.nativeEnum(CreateLogDrainEnvironments);
 /** @internal */
 export const CreateLogDrainEnvironments$outboundSchema: z.ZodNativeEnum<
   typeof CreateLogDrainEnvironments
-> = CreateLogDrainEnvironments$inboundSchema;
+> = z.nativeEnum(CreateLogDrainEnvironments);
 
-/** @internal */
-export const CreateLogDrainRequestBody$inboundSchema: z.ZodType<
-  CreateLogDrainRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  name: types.string(),
-  projectIds: types.optional(z.array(types.string())),
-  secret: types.optional(types.string()),
-  deliveryFormat: types.optional(CreateLogDrainDeliveryFormat$inboundSchema),
-  url: types.string(),
-  sources: types.optional(z.array(CreateLogDrainSources$inboundSchema)),
-  headers: types.optional(z.record(types.string())),
-  environments: types.optional(
-    z.array(CreateLogDrainEnvironments$inboundSchema),
-  ),
-});
 /** @internal */
 export type CreateLogDrainRequestBody$Outbound = {
   name: string;
@@ -305,30 +276,7 @@ export function createLogDrainRequestBodyToJSON(
     CreateLogDrainRequestBody$outboundSchema.parse(createLogDrainRequestBody),
   );
 }
-export function createLogDrainRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateLogDrainRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateLogDrainRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateLogDrainRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const CreateLogDrainRequest$inboundSchema: z.ZodType<
-  CreateLogDrainRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-  RequestBody: z.lazy(() => CreateLogDrainRequestBody$inboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 /** @internal */
 export type CreateLogDrainRequest$Outbound = {
   teamId?: string | undefined;
@@ -358,52 +306,27 @@ export function createLogDrainRequestToJSON(
     CreateLogDrainRequest$outboundSchema.parse(createLogDrainRequest),
   );
 }
-export function createLogDrainRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateLogDrainRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateLogDrainRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateLogDrainRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const CreateLogDrainLogDrainsDeliveryFormat$inboundSchema:
   z.ZodNativeEnum<typeof CreateLogDrainLogDrainsDeliveryFormat> = z.nativeEnum(
     CreateLogDrainLogDrainsDeliveryFormat,
   );
-/** @internal */
-export const CreateLogDrainLogDrainsDeliveryFormat$outboundSchema:
-  z.ZodNativeEnum<typeof CreateLogDrainLogDrainsDeliveryFormat> =
-    CreateLogDrainLogDrainsDeliveryFormat$inboundSchema;
 
 /** @internal */
 export const CreateLogDrainLogDrainsSources$inboundSchema: z.ZodNativeEnum<
   typeof CreateLogDrainLogDrainsSources
 > = z.nativeEnum(CreateLogDrainLogDrainsSources);
-/** @internal */
-export const CreateLogDrainLogDrainsSources$outboundSchema: z.ZodNativeEnum<
-  typeof CreateLogDrainLogDrainsSources
-> = CreateLogDrainLogDrainsSources$inboundSchema;
 
 /** @internal */
 export const CreateLogDrainCreatedFrom$inboundSchema: z.ZodNativeEnum<
   typeof CreateLogDrainCreatedFrom
 > = z.nativeEnum(CreateLogDrainCreatedFrom);
-/** @internal */
-export const CreateLogDrainCreatedFrom$outboundSchema: z.ZodNativeEnum<
-  typeof CreateLogDrainCreatedFrom
-> = CreateLogDrainCreatedFrom$inboundSchema;
 
 /** @internal */
 export const CreateLogDrainLogDrainsEnvironments$inboundSchema: z.ZodNativeEnum<
   typeof CreateLogDrainLogDrainsEnvironments
 > = z.nativeEnum(CreateLogDrainLogDrainsEnvironments);
-/** @internal */
-export const CreateLogDrainLogDrainsEnvironments$outboundSchema:
-  z.ZodNativeEnum<typeof CreateLogDrainLogDrainsEnvironments> =
-    CreateLogDrainLogDrainsEnvironments$inboundSchema;
 
 /** @internal */
 export const CreateLogDrainSource2$inboundSchema: z.ZodType<
@@ -417,35 +340,7 @@ export const CreateLogDrainSource2$inboundSchema: z.ZodType<
   integrationId: types.string(),
   integrationConfigurationId: types.string(),
 });
-/** @internal */
-export type CreateLogDrainSource2$Outbound = {
-  kind: "integration";
-  resourceId?: string | undefined;
-  externalResourceId?: string | undefined;
-  integrationId: string;
-  integrationConfigurationId: string;
-};
 
-/** @internal */
-export const CreateLogDrainSource2$outboundSchema: z.ZodType<
-  CreateLogDrainSource2$Outbound,
-  z.ZodTypeDef,
-  CreateLogDrainSource2
-> = z.object({
-  kind: z.literal("integration"),
-  resourceId: z.string().optional(),
-  externalResourceId: z.string().optional(),
-  integrationId: z.string(),
-  integrationConfigurationId: z.string(),
-});
-
-export function createLogDrainSource2ToJSON(
-  createLogDrainSource2: CreateLogDrainSource2,
-): string {
-  return JSON.stringify(
-    CreateLogDrainSource2$outboundSchema.parse(createLogDrainSource2),
-  );
-}
 export function createLogDrainSource2FromJSON(
   jsonString: string,
 ): SafeParseResult<CreateLogDrainSource2, SDKValidationError> {
@@ -464,27 +359,7 @@ export const CreateLogDrainSource1$inboundSchema: z.ZodType<
 > = z.object({
   kind: types.literal("self-served"),
 });
-/** @internal */
-export type CreateLogDrainSource1$Outbound = {
-  kind: "self-served";
-};
 
-/** @internal */
-export const CreateLogDrainSource1$outboundSchema: z.ZodType<
-  CreateLogDrainSource1$Outbound,
-  z.ZodTypeDef,
-  CreateLogDrainSource1
-> = z.object({
-  kind: z.literal("self-served"),
-});
-
-export function createLogDrainSource1ToJSON(
-  createLogDrainSource1: CreateLogDrainSource1,
-): string {
-  return JSON.stringify(
-    CreateLogDrainSource1$outboundSchema.parse(createLogDrainSource1),
-  );
-}
 export function createLogDrainSource1FromJSON(
   jsonString: string,
 ): SafeParseResult<CreateLogDrainSource1, SDKValidationError> {
@@ -504,28 +379,7 @@ export const CreateLogDrainSource$inboundSchema: z.ZodType<
   z.lazy(() => CreateLogDrainSource1$inboundSchema),
   z.lazy(() => CreateLogDrainSource2$inboundSchema),
 ]);
-/** @internal */
-export type CreateLogDrainSource$Outbound =
-  | CreateLogDrainSource1$Outbound
-  | CreateLogDrainSource2$Outbound;
 
-/** @internal */
-export const CreateLogDrainSource$outboundSchema: z.ZodType<
-  CreateLogDrainSource$Outbound,
-  z.ZodTypeDef,
-  CreateLogDrainSource
-> = z.union([
-  z.lazy(() => CreateLogDrainSource1$outboundSchema),
-  z.lazy(() => CreateLogDrainSource2$outboundSchema),
-]);
-
-export function createLogDrainSourceToJSON(
-  createLogDrainSource: CreateLogDrainSource,
-): string {
-  return JSON.stringify(
-    CreateLogDrainSource$outboundSchema.parse(createLogDrainSource),
-  );
-}
 export function createLogDrainSourceFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateLogDrainSource, SDKValidationError> {
@@ -569,64 +423,7 @@ export const CreateLogDrainResponseBody$inboundSchema: z.ZodType<
     z.lazy(() => CreateLogDrainSource2$inboundSchema),
   ]),
 });
-/** @internal */
-export type CreateLogDrainResponseBody$Outbound = {
-  clientId?: string | undefined;
-  configurationId?: string | undefined;
-  createdAt: number;
-  id: string;
-  deliveryFormat?: string | undefined;
-  name: string;
-  ownerId: string;
-  projectId?: string | null | undefined;
-  projectIds?: Array<string> | undefined;
-  url: string;
-  sources?: Array<string> | undefined;
-  createdFrom?: string | undefined;
-  headers?: { [k: string]: string } | undefined;
-  environments?: Array<string> | undefined;
-  branch?: string | undefined;
-  samplingRate?: number | undefined;
-  source: CreateLogDrainSource1$Outbound | CreateLogDrainSource2$Outbound;
-};
 
-/** @internal */
-export const CreateLogDrainResponseBody$outboundSchema: z.ZodType<
-  CreateLogDrainResponseBody$Outbound,
-  z.ZodTypeDef,
-  CreateLogDrainResponseBody
-> = z.object({
-  clientId: z.string().optional(),
-  configurationId: z.string().optional(),
-  createdAt: z.number(),
-  id: z.string(),
-  deliveryFormat: CreateLogDrainLogDrainsDeliveryFormat$outboundSchema
-    .optional(),
-  name: z.string(),
-  ownerId: z.string(),
-  projectId: z.nullable(z.string()).optional(),
-  projectIds: z.array(z.string()).optional(),
-  url: z.string(),
-  sources: z.array(CreateLogDrainLogDrainsSources$outboundSchema).optional(),
-  createdFrom: CreateLogDrainCreatedFrom$outboundSchema.optional(),
-  headers: z.record(z.string()).optional(),
-  environments: z.array(CreateLogDrainLogDrainsEnvironments$outboundSchema)
-    .optional(),
-  branch: z.string().optional(),
-  samplingRate: z.number().optional(),
-  source: z.union([
-    z.lazy(() => CreateLogDrainSource1$outboundSchema),
-    z.lazy(() => CreateLogDrainSource2$outboundSchema),
-  ]),
-});
-
-export function createLogDrainResponseBodyToJSON(
-  createLogDrainResponseBody: CreateLogDrainResponseBody,
-): string {
-  return JSON.stringify(
-    CreateLogDrainResponseBody$outboundSchema.parse(createLogDrainResponseBody),
-  );
-}
 export function createLogDrainResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateLogDrainResponseBody, SDKValidationError> {

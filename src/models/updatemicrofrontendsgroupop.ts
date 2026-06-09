@@ -45,15 +45,6 @@ export type UpdateMicrofrontendsGroupResponseBody = {
 };
 
 /** @internal */
-export const UpdateMicrofrontendsGroupRequestBody$inboundSchema: z.ZodType<
-  UpdateMicrofrontendsGroupRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  name: types.optional(types.string()),
-  fallbackEnvironment: types.optional(types.string()),
-});
-/** @internal */
 export type UpdateMicrofrontendsGroupRequestBody$Outbound = {
   name?: string | undefined;
   fallbackEnvironment?: string | undefined;
@@ -78,34 +69,7 @@ export function updateMicrofrontendsGroupRequestBodyToJSON(
     ),
   );
 }
-export function updateMicrofrontendsGroupRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateMicrofrontendsGroupRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      UpdateMicrofrontendsGroupRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateMicrofrontendsGroupRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateMicrofrontendsGroupRequest$inboundSchema: z.ZodType<
-  UpdateMicrofrontendsGroupRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  groupId: types.string(),
-  teamId: types.string(),
-  slug: types.optional(types.string()),
-  RequestBody: types.optional(
-    z.lazy(() => UpdateMicrofrontendsGroupRequestBody$inboundSchema),
-  ),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 /** @internal */
 export type UpdateMicrofrontendsGroupRequest$Outbound = {
   groupId: string;
@@ -140,15 +104,6 @@ export function updateMicrofrontendsGroupRequestToJSON(
     ),
   );
 }
-export function updateMicrofrontendsGroupRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateMicrofrontendsGroupRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateMicrofrontendsGroupRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateMicrofrontendsGroupRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const UpdatedMicrofrontendsGroup$inboundSchema: z.ZodType<
@@ -161,33 +116,7 @@ export const UpdatedMicrofrontendsGroup$inboundSchema: z.ZodType<
   id: types.string(),
   fallbackEnvironment: types.optional(types.string()),
 });
-/** @internal */
-export type UpdatedMicrofrontendsGroup$Outbound = {
-  name?: string | undefined;
-  slug?: string | undefined;
-  id: string;
-  fallbackEnvironment?: string | undefined;
-};
 
-/** @internal */
-export const UpdatedMicrofrontendsGroup$outboundSchema: z.ZodType<
-  UpdatedMicrofrontendsGroup$Outbound,
-  z.ZodTypeDef,
-  UpdatedMicrofrontendsGroup
-> = z.object({
-  name: z.string().optional(),
-  slug: z.string().optional(),
-  id: z.string(),
-  fallbackEnvironment: z.string().optional(),
-});
-
-export function updatedMicrofrontendsGroupToJSON(
-  updatedMicrofrontendsGroup: UpdatedMicrofrontendsGroup,
-): string {
-  return JSON.stringify(
-    UpdatedMicrofrontendsGroup$outboundSchema.parse(updatedMicrofrontendsGroup),
-  );
-}
 export function updatedMicrofrontendsGroupFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdatedMicrofrontendsGroup, SDKValidationError> {
@@ -208,31 +137,7 @@ export const UpdateMicrofrontendsGroupResponseBody$inboundSchema: z.ZodType<
     UpdatedMicrofrontendsGroup$inboundSchema
   ),
 });
-/** @internal */
-export type UpdateMicrofrontendsGroupResponseBody$Outbound = {
-  updatedMicrofrontendsGroup: UpdatedMicrofrontendsGroup$Outbound;
-};
 
-/** @internal */
-export const UpdateMicrofrontendsGroupResponseBody$outboundSchema: z.ZodType<
-  UpdateMicrofrontendsGroupResponseBody$Outbound,
-  z.ZodTypeDef,
-  UpdateMicrofrontendsGroupResponseBody
-> = z.object({
-  updatedMicrofrontendsGroup: z.lazy(() =>
-    UpdatedMicrofrontendsGroup$outboundSchema
-  ),
-});
-
-export function updateMicrofrontendsGroupResponseBodyToJSON(
-  updateMicrofrontendsGroupResponseBody: UpdateMicrofrontendsGroupResponseBody,
-): string {
-  return JSON.stringify(
-    UpdateMicrofrontendsGroupResponseBody$outboundSchema.parse(
-      updateMicrofrontendsGroupResponseBody,
-    ),
-  );
-}
 export function updateMicrofrontendsGroupResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateMicrofrontendsGroupResponseBody, SDKValidationError> {

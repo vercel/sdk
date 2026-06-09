@@ -51,10 +51,6 @@ export class InvalidAdditionalContactInfo extends VercelError {
 export const InvalidAdditionalContactInfoCode$inboundSchema: z.ZodNativeEnum<
   typeof InvalidAdditionalContactInfoCode
 > = z.nativeEnum(InvalidAdditionalContactInfoCode);
-/** @internal */
-export const InvalidAdditionalContactInfoCode$outboundSchema: z.ZodNativeEnum<
-  typeof InvalidAdditionalContactInfoCode
-> = InvalidAdditionalContactInfoCode$inboundSchema;
 
 /** @internal */
 export const InvalidAdditionalContactInfo$inboundSchema: z.ZodType<
@@ -76,23 +72,3 @@ export const InvalidAdditionalContactInfo$inboundSchema: z.ZodType<
       body: v.body$,
     });
   });
-
-/** @internal */
-export type InvalidAdditionalContactInfo$Outbound = {
-  status: number;
-  code: string;
-  message: string;
-};
-
-/** @internal */
-export const InvalidAdditionalContactInfo$outboundSchema: z.ZodType<
-  InvalidAdditionalContactInfo$Outbound,
-  z.ZodTypeDef,
-  InvalidAdditionalContactInfo
-> = z.instanceof(InvalidAdditionalContactInfo)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    status: z.number(),
-    code: InvalidAdditionalContactInfoCode$outboundSchema,
-    message: z.string(),
-  }));

@@ -1254,19 +1254,11 @@ export type UserEventPayloadPrevious = {
 export const PasswordProtection2$inboundSchema: z.ZodNativeEnum<
   typeof PasswordProtection2
 > = z.nativeEnum(PasswordProtection2);
-/** @internal */
-export const PasswordProtection2$outboundSchema: z.ZodNativeEnum<
-  typeof PasswordProtection2
-> = PasswordProtection2$inboundSchema;
 
 /** @internal */
 export const PasswordProtectionDeploymentType$inboundSchema: z.ZodNativeEnum<
   typeof PasswordProtectionDeploymentType
 > = z.nativeEnum(PasswordProtectionDeploymentType);
-/** @internal */
-export const PasswordProtectionDeploymentType$outboundSchema: z.ZodNativeEnum<
-  typeof PasswordProtectionDeploymentType
-> = PasswordProtectionDeploymentType$inboundSchema;
 
 /** @internal */
 export const PasswordProtection1$inboundSchema: z.ZodType<
@@ -1276,27 +1268,7 @@ export const PasswordProtection1$inboundSchema: z.ZodType<
 > = z.object({
   deploymentType: PasswordProtectionDeploymentType$inboundSchema,
 });
-/** @internal */
-export type PasswordProtection1$Outbound = {
-  deploymentType: string;
-};
 
-/** @internal */
-export const PasswordProtection1$outboundSchema: z.ZodType<
-  PasswordProtection1$Outbound,
-  z.ZodTypeDef,
-  PasswordProtection1
-> = z.object({
-  deploymentType: PasswordProtectionDeploymentType$outboundSchema,
-});
-
-export function passwordProtection1ToJSON(
-  passwordProtection1: PasswordProtection1,
-): string {
-  return JSON.stringify(
-    PasswordProtection1$outboundSchema.parse(passwordProtection1),
-  );
-}
 export function passwordProtection1FromJSON(
   jsonString: string,
 ): SafeParseResult<PasswordProtection1, SDKValidationError> {
@@ -1316,28 +1288,7 @@ export const PayloadPasswordProtection$inboundSchema: z.ZodType<
   z.lazy(() => PasswordProtection1$inboundSchema),
   PasswordProtection2$inboundSchema,
 ]);
-/** @internal */
-export type PayloadPasswordProtection$Outbound =
-  | PasswordProtection1$Outbound
-  | string;
 
-/** @internal */
-export const PayloadPasswordProtection$outboundSchema: z.ZodType<
-  PayloadPasswordProtection$Outbound,
-  z.ZodTypeDef,
-  PayloadPasswordProtection
-> = smartUnion([
-  z.lazy(() => PasswordProtection1$outboundSchema),
-  PasswordProtection2$outboundSchema,
-]);
-
-export function payloadPasswordProtectionToJSON(
-  payloadPasswordProtection: PayloadPasswordProtection,
-): string {
-  return JSON.stringify(
-    PayloadPasswordProtection$outboundSchema.parse(payloadPasswordProtection),
-  );
-}
 export function payloadPasswordProtectionFromJSON(
   jsonString: string,
 ): SafeParseResult<PayloadPasswordProtection, SDKValidationError> {
@@ -1352,19 +1303,11 @@ export function payloadPasswordProtectionFromJSON(
 export const OldPasswordProtection2$inboundSchema: z.ZodNativeEnum<
   typeof OldPasswordProtection2
 > = z.nativeEnum(OldPasswordProtection2);
-/** @internal */
-export const OldPasswordProtection2$outboundSchema: z.ZodNativeEnum<
-  typeof OldPasswordProtection2
-> = OldPasswordProtection2$inboundSchema;
 
 /** @internal */
 export const OldPasswordProtectionDeploymentType$inboundSchema: z.ZodNativeEnum<
   typeof OldPasswordProtectionDeploymentType
 > = z.nativeEnum(OldPasswordProtectionDeploymentType);
-/** @internal */
-export const OldPasswordProtectionDeploymentType$outboundSchema:
-  z.ZodNativeEnum<typeof OldPasswordProtectionDeploymentType> =
-    OldPasswordProtectionDeploymentType$inboundSchema;
 
 /** @internal */
 export const OldPasswordProtection1$inboundSchema: z.ZodType<
@@ -1374,27 +1317,7 @@ export const OldPasswordProtection1$inboundSchema: z.ZodType<
 > = z.object({
   deploymentType: OldPasswordProtectionDeploymentType$inboundSchema,
 });
-/** @internal */
-export type OldPasswordProtection1$Outbound = {
-  deploymentType: string;
-};
 
-/** @internal */
-export const OldPasswordProtection1$outboundSchema: z.ZodType<
-  OldPasswordProtection1$Outbound,
-  z.ZodTypeDef,
-  OldPasswordProtection1
-> = z.object({
-  deploymentType: OldPasswordProtectionDeploymentType$outboundSchema,
-});
-
-export function oldPasswordProtection1ToJSON(
-  oldPasswordProtection1: OldPasswordProtection1,
-): string {
-  return JSON.stringify(
-    OldPasswordProtection1$outboundSchema.parse(oldPasswordProtection1),
-  );
-}
 export function oldPasswordProtection1FromJSON(
   jsonString: string,
 ): SafeParseResult<OldPasswordProtection1, SDKValidationError> {
@@ -1414,28 +1337,7 @@ export const OldPasswordProtection$inboundSchema: z.ZodType<
   z.lazy(() => OldPasswordProtection1$inboundSchema),
   OldPasswordProtection2$inboundSchema,
 ]);
-/** @internal */
-export type OldPasswordProtection$Outbound =
-  | OldPasswordProtection1$Outbound
-  | string;
 
-/** @internal */
-export const OldPasswordProtection$outboundSchema: z.ZodType<
-  OldPasswordProtection$Outbound,
-  z.ZodTypeDef,
-  OldPasswordProtection
-> = smartUnion([
-  z.lazy(() => OldPasswordProtection1$outboundSchema),
-  OldPasswordProtection2$outboundSchema,
-]);
-
-export function oldPasswordProtectionToJSON(
-  oldPasswordProtection: OldPasswordProtection,
-): string {
-  return JSON.stringify(
-    OldPasswordProtection$outboundSchema.parse(oldPasswordProtection),
-  );
-}
 export function oldPasswordProtectionFromJSON(
   jsonString: string,
 ): SafeParseResult<OldPasswordProtection, SDKValidationError> {
@@ -1467,43 +1369,7 @@ export const TwoHundredAndThirty$inboundSchema: z.ZodType<
     ]),
   ),
 });
-/** @internal */
-export type TwoHundredAndThirty$Outbound = {
-  projectId?: string | undefined;
-  projectName?: string | undefined;
-  passwordProtection: PasswordProtection1$Outbound | string | null;
-  oldPasswordProtection: OldPasswordProtection1$Outbound | string | null;
-};
 
-/** @internal */
-export const TwoHundredAndThirty$outboundSchema: z.ZodType<
-  TwoHundredAndThirty$Outbound,
-  z.ZodTypeDef,
-  TwoHundredAndThirty
-> = z.object({
-  projectId: z.string().optional(),
-  projectName: z.string().optional(),
-  passwordProtection: z.nullable(
-    smartUnion([
-      z.lazy(() => PasswordProtection1$outboundSchema),
-      PasswordProtection2$outboundSchema,
-    ]),
-  ),
-  oldPasswordProtection: z.nullable(
-    smartUnion([
-      z.lazy(() => OldPasswordProtection1$outboundSchema),
-      OldPasswordProtection2$outboundSchema,
-    ]),
-  ),
-});
-
-export function twoHundredAndThirtyToJSON(
-  twoHundredAndThirty: TwoHundredAndThirty,
-): string {
-  return JSON.stringify(
-    TwoHundredAndThirty$outboundSchema.parse(twoHundredAndThirty),
-  );
-}
 export function twoHundredAndThirtyFromJSON(
   jsonString: string,
 ): SafeParseResult<TwoHundredAndThirty, SDKValidationError> {
@@ -1519,23 +1385,7 @@ export const Paths$inboundSchema: z.ZodType<Paths, z.ZodTypeDef, unknown> = z
   .object({
     value: types.string(),
   });
-/** @internal */
-export type Paths$Outbound = {
-  value: string;
-};
 
-/** @internal */
-export const Paths$outboundSchema: z.ZodType<
-  Paths$Outbound,
-  z.ZodTypeDef,
-  Paths
-> = z.object({
-  value: z.string(),
-});
-
-export function pathsToJSON(paths: Paths): string {
-  return JSON.stringify(Paths$outboundSchema.parse(paths));
-}
 export function pathsFromJSON(
   jsonString: string,
 ): SafeParseResult<Paths, SDKValidationError> {
@@ -1554,27 +1404,7 @@ export const OptionsAllowlist$inboundSchema: z.ZodType<
 > = z.object({
   paths: z.array(z.lazy(() => Paths$inboundSchema)),
 });
-/** @internal */
-export type OptionsAllowlist$Outbound = {
-  paths: Array<Paths$Outbound>;
-};
 
-/** @internal */
-export const OptionsAllowlist$outboundSchema: z.ZodType<
-  OptionsAllowlist$Outbound,
-  z.ZodTypeDef,
-  OptionsAllowlist
-> = z.object({
-  paths: z.array(z.lazy(() => Paths$outboundSchema)),
-});
-
-export function optionsAllowlistToJSON(
-  optionsAllowlist: OptionsAllowlist,
-): string {
-  return JSON.stringify(
-    OptionsAllowlist$outboundSchema.parse(optionsAllowlist),
-  );
-}
 export function optionsAllowlistFromJSON(
   jsonString: string,
 ): SafeParseResult<OptionsAllowlist, SDKValidationError> {
@@ -1593,23 +1423,7 @@ export const PayloadPaths$inboundSchema: z.ZodType<
 > = z.object({
   value: types.string(),
 });
-/** @internal */
-export type PayloadPaths$Outbound = {
-  value: string;
-};
 
-/** @internal */
-export const PayloadPaths$outboundSchema: z.ZodType<
-  PayloadPaths$Outbound,
-  z.ZodTypeDef,
-  PayloadPaths
-> = z.object({
-  value: z.string(),
-});
-
-export function payloadPathsToJSON(payloadPaths: PayloadPaths): string {
-  return JSON.stringify(PayloadPaths$outboundSchema.parse(payloadPaths));
-}
 export function payloadPathsFromJSON(
   jsonString: string,
 ): SafeParseResult<PayloadPaths, SDKValidationError> {
@@ -1628,27 +1442,7 @@ export const OldOptionsAllowlist$inboundSchema: z.ZodType<
 > = z.object({
   paths: z.array(z.lazy(() => PayloadPaths$inboundSchema)),
 });
-/** @internal */
-export type OldOptionsAllowlist$Outbound = {
-  paths: Array<PayloadPaths$Outbound>;
-};
 
-/** @internal */
-export const OldOptionsAllowlist$outboundSchema: z.ZodType<
-  OldOptionsAllowlist$Outbound,
-  z.ZodTypeDef,
-  OldOptionsAllowlist
-> = z.object({
-  paths: z.array(z.lazy(() => PayloadPaths$outboundSchema)),
-});
-
-export function oldOptionsAllowlistToJSON(
-  oldOptionsAllowlist: OldOptionsAllowlist,
-): string {
-  return JSON.stringify(
-    OldOptionsAllowlist$outboundSchema.parse(oldOptionsAllowlist),
-  );
-}
 export function oldOptionsAllowlistFromJSON(
   jsonString: string,
 ): SafeParseResult<OldOptionsAllowlist, SDKValidationError> {
@@ -1673,36 +1467,7 @@ export const TwoHundredAndTwentyNine$inboundSchema: z.ZodType<
     z.lazy(() => OldOptionsAllowlist$inboundSchema),
   ).optional(),
 });
-/** @internal */
-export type TwoHundredAndTwentyNine$Outbound = {
-  projectId: string;
-  projectName: string;
-  optionsAllowlist?: OptionsAllowlist$Outbound | null | undefined;
-  oldOptionsAllowlist?: OldOptionsAllowlist$Outbound | null | undefined;
-};
 
-/** @internal */
-export const TwoHundredAndTwentyNine$outboundSchema: z.ZodType<
-  TwoHundredAndTwentyNine$Outbound,
-  z.ZodTypeDef,
-  TwoHundredAndTwentyNine
-> = z.object({
-  projectId: z.string(),
-  projectName: z.string(),
-  optionsAllowlist: z.nullable(z.lazy(() => OptionsAllowlist$outboundSchema))
-    .optional(),
-  oldOptionsAllowlist: z.nullable(
-    z.lazy(() => OldOptionsAllowlist$outboundSchema),
-  ).optional(),
-});
-
-export function twoHundredAndTwentyNineToJSON(
-  twoHundredAndTwentyNine: TwoHundredAndTwentyNine,
-): string {
-  return JSON.stringify(
-    TwoHundredAndTwentyNine$outboundSchema.parse(twoHundredAndTwentyNine),
-  );
-}
 export function twoHundredAndTwentyNineFromJSON(
   jsonString: string,
 ): SafeParseResult<TwoHundredAndTwentyNine, SDKValidationError> {
@@ -1723,31 +1488,7 @@ export const TwoHundredAndTwentyEight$inboundSchema: z.ZodType<
   projectId: types.string(),
   projectName: types.string(),
 });
-/** @internal */
-export type TwoHundredAndTwentyEight$Outbound = {
-  source: string;
-  projectId: string;
-  projectName: string;
-};
 
-/** @internal */
-export const TwoHundredAndTwentyEight$outboundSchema: z.ZodType<
-  TwoHundredAndTwentyEight$Outbound,
-  z.ZodTypeDef,
-  TwoHundredAndTwentyEight
-> = z.object({
-  source: z.string(),
-  projectId: z.string(),
-  projectName: z.string(),
-});
-
-export function twoHundredAndTwentyEightToJSON(
-  twoHundredAndTwentyEight: TwoHundredAndTwentyEight,
-): string {
-  return JSON.stringify(
-    TwoHundredAndTwentyEight$outboundSchema.parse(twoHundredAndTwentyEight),
-  );
-}
 export function twoHundredAndTwentyEightFromJSON(
   jsonString: string,
 ): SafeParseResult<TwoHundredAndTwentyEight, SDKValidationError> {
@@ -1771,37 +1512,7 @@ export const TwoHundredAndTwentySeven$inboundSchema: z.ZodType<
   destinationAccountName: types.string(),
   transferId: types.optional(types.string()),
 });
-/** @internal */
-export type TwoHundredAndTwentySeven$Outbound = {
-  previousProjectId?: string | undefined;
-  newProjectId?: string | undefined;
-  previousProjectName: string;
-  newProjectName: string;
-  destinationAccountName: string;
-  transferId?: string | undefined;
-};
 
-/** @internal */
-export const TwoHundredAndTwentySeven$outboundSchema: z.ZodType<
-  TwoHundredAndTwentySeven$Outbound,
-  z.ZodTypeDef,
-  TwoHundredAndTwentySeven
-> = z.object({
-  previousProjectId: z.string().optional(),
-  newProjectId: z.string().optional(),
-  previousProjectName: z.string(),
-  newProjectName: z.string(),
-  destinationAccountName: z.string(),
-  transferId: z.string().optional(),
-});
-
-export function twoHundredAndTwentySevenToJSON(
-  twoHundredAndTwentySeven: TwoHundredAndTwentySeven,
-): string {
-  return JSON.stringify(
-    TwoHundredAndTwentySeven$outboundSchema.parse(twoHundredAndTwentySeven),
-  );
-}
 export function twoHundredAndTwentySevenFromJSON(
   jsonString: string,
 ): SafeParseResult<TwoHundredAndTwentySeven, SDKValidationError> {
@@ -1825,37 +1536,7 @@ export const TwoHundredAndTwentySix$inboundSchema: z.ZodType<
   destinationAccountId: types.string(),
   transferId: types.optional(types.string()),
 });
-/** @internal */
-export type TwoHundredAndTwentySix$Outbound = {
-  projectId: string;
-  projectName: string;
-  originAccountName: string;
-  destinationAccountName: string;
-  destinationAccountId: string;
-  transferId?: string | undefined;
-};
 
-/** @internal */
-export const TwoHundredAndTwentySix$outboundSchema: z.ZodType<
-  TwoHundredAndTwentySix$Outbound,
-  z.ZodTypeDef,
-  TwoHundredAndTwentySix
-> = z.object({
-  projectId: z.string(),
-  projectName: z.string(),
-  originAccountName: z.string(),
-  destinationAccountName: z.string(),
-  destinationAccountId: z.string(),
-  transferId: z.string().optional(),
-});
-
-export function twoHundredAndTwentySixToJSON(
-  twoHundredAndTwentySix: TwoHundredAndTwentySix,
-): string {
-  return JSON.stringify(
-    TwoHundredAndTwentySix$outboundSchema.parse(twoHundredAndTwentySix),
-  );
-}
 export function twoHundredAndTwentySixFromJSON(
   jsonString: string,
 ): SafeParseResult<TwoHundredAndTwentySix, SDKValidationError> {
@@ -1877,33 +1558,7 @@ export const TwoHundredAndTwentyFive$inboundSchema: z.ZodType<
   destinationAccountName: types.nullable(types.string()),
   transferId: types.optional(types.string()),
 });
-/** @internal */
-export type TwoHundredAndTwentyFive$Outbound = {
-  previousProjectId?: string | undefined;
-  projectName: string;
-  destinationAccountName: string | null;
-  transferId?: string | undefined;
-};
 
-/** @internal */
-export const TwoHundredAndTwentyFive$outboundSchema: z.ZodType<
-  TwoHundredAndTwentyFive$Outbound,
-  z.ZodTypeDef,
-  TwoHundredAndTwentyFive
-> = z.object({
-  previousProjectId: z.string().optional(),
-  projectName: z.string(),
-  destinationAccountName: z.nullable(z.string()),
-  transferId: z.string().optional(),
-});
-
-export function twoHundredAndTwentyFiveToJSON(
-  twoHundredAndTwentyFive: TwoHundredAndTwentyFive,
-): string {
-  return JSON.stringify(
-    TwoHundredAndTwentyFive$outboundSchema.parse(twoHundredAndTwentyFive),
-  );
-}
 export function twoHundredAndTwentyFiveFromJSON(
   jsonString: string,
 ): SafeParseResult<TwoHundredAndTwentyFive, SDKValidationError> {
@@ -1927,37 +1582,7 @@ export const TwoHundredAndTwentyFour$inboundSchema: z.ZodType<
   originAccountName: types.string(),
   transferId: types.optional(types.string()),
 });
-/** @internal */
-export type TwoHundredAndTwentyFour$Outbound = {
-  previousProjectId?: string | undefined;
-  newProjectId?: string | undefined;
-  previousProjectName: string;
-  newProjectName: string;
-  originAccountName: string;
-  transferId?: string | undefined;
-};
 
-/** @internal */
-export const TwoHundredAndTwentyFour$outboundSchema: z.ZodType<
-  TwoHundredAndTwentyFour$Outbound,
-  z.ZodTypeDef,
-  TwoHundredAndTwentyFour
-> = z.object({
-  previousProjectId: z.string().optional(),
-  newProjectId: z.string().optional(),
-  previousProjectName: z.string(),
-  newProjectName: z.string(),
-  originAccountName: z.string(),
-  transferId: z.string().optional(),
-});
-
-export function twoHundredAndTwentyFourToJSON(
-  twoHundredAndTwentyFour: TwoHundredAndTwentyFour,
-): string {
-  return JSON.stringify(
-    TwoHundredAndTwentyFour$outboundSchema.parse(twoHundredAndTwentyFour),
-  );
-}
 export function twoHundredAndTwentyFourFromJSON(
   jsonString: string,
 ): SafeParseResult<TwoHundredAndTwentyFour, SDKValidationError> {
@@ -1977,29 +1602,7 @@ export const UserEventPayload223Project$inboundSchema: z.ZodType<
   id: types.string(),
   name: types.string(),
 });
-/** @internal */
-export type UserEventPayload223Project$Outbound = {
-  id: string;
-  name: string;
-};
 
-/** @internal */
-export const UserEventPayload223Project$outboundSchema: z.ZodType<
-  UserEventPayload223Project$Outbound,
-  z.ZodTypeDef,
-  UserEventPayload223Project
-> = z.object({
-  id: z.string(),
-  name: z.string(),
-});
-
-export function userEventPayload223ProjectToJSON(
-  userEventPayload223Project: UserEventPayload223Project,
-): string {
-  return JSON.stringify(
-    UserEventPayload223Project$outboundSchema.parse(userEventPayload223Project),
-  );
-}
 export function userEventPayload223ProjectFromJSON(
   jsonString: string,
 ): SafeParseResult<UserEventPayload223Project, SDKValidationError> {
@@ -2014,19 +1617,11 @@ export function userEventPayload223ProjectFromJSON(
 export const UserEventPayload223Role$inboundSchema: z.ZodNativeEnum<
   typeof UserEventPayload223Role
 > = z.nativeEnum(UserEventPayload223Role);
-/** @internal */
-export const UserEventPayload223Role$outboundSchema: z.ZodNativeEnum<
-  typeof UserEventPayload223Role
-> = UserEventPayload223Role$inboundSchema;
 
 /** @internal */
 export const PayloadPreviousRole$inboundSchema: z.ZodNativeEnum<
   typeof PayloadPreviousRole
 > = z.nativeEnum(PayloadPreviousRole);
-/** @internal */
-export const PayloadPreviousRole$outboundSchema: z.ZodNativeEnum<
-  typeof PayloadPreviousRole
-> = PayloadPreviousRole$inboundSchema;
 
 /** @internal */
 export const PayloadProjectMembership$inboundSchema: z.ZodType<
@@ -2040,35 +1635,7 @@ export const PayloadProjectMembership$inboundSchema: z.ZodType<
   username: types.optional(types.string()),
   previousRole: types.optional(PayloadPreviousRole$inboundSchema),
 });
-/** @internal */
-export type PayloadProjectMembership$Outbound = {
-  role?: string | undefined;
-  uid?: string | undefined;
-  createdAt?: number | undefined;
-  username?: string | undefined;
-  previousRole?: string | undefined;
-};
 
-/** @internal */
-export const PayloadProjectMembership$outboundSchema: z.ZodType<
-  PayloadProjectMembership$Outbound,
-  z.ZodTypeDef,
-  PayloadProjectMembership
-> = z.object({
-  role: UserEventPayload223Role$outboundSchema.optional(),
-  uid: z.string().optional(),
-  createdAt: z.number().optional(),
-  username: z.string().optional(),
-  previousRole: PayloadPreviousRole$outboundSchema.optional(),
-});
-
-export function payloadProjectMembershipToJSON(
-  payloadProjectMembership: PayloadProjectMembership,
-): string {
-  return JSON.stringify(
-    PayloadProjectMembership$outboundSchema.parse(payloadProjectMembership),
-  );
-}
 export function payloadProjectMembershipFromJSON(
   jsonString: string,
 ): SafeParseResult<PayloadProjectMembership, SDKValidationError> {
@@ -2088,29 +1655,7 @@ export const TwoHundredAndTwentyThree$inboundSchema: z.ZodType<
   project: z.lazy(() => UserEventPayload223Project$inboundSchema),
   projectMembership: z.lazy(() => PayloadProjectMembership$inboundSchema),
 });
-/** @internal */
-export type TwoHundredAndTwentyThree$Outbound = {
-  project: UserEventPayload223Project$Outbound;
-  projectMembership: PayloadProjectMembership$Outbound;
-};
 
-/** @internal */
-export const TwoHundredAndTwentyThree$outboundSchema: z.ZodType<
-  TwoHundredAndTwentyThree$Outbound,
-  z.ZodTypeDef,
-  TwoHundredAndTwentyThree
-> = z.object({
-  project: z.lazy(() => UserEventPayload223Project$outboundSchema),
-  projectMembership: z.lazy(() => PayloadProjectMembership$outboundSchema),
-});
-
-export function twoHundredAndTwentyThreeToJSON(
-  twoHundredAndTwentyThree: TwoHundredAndTwentyThree,
-): string {
-  return JSON.stringify(
-    TwoHundredAndTwentyThree$outboundSchema.parse(twoHundredAndTwentyThree),
-  );
-}
 export function twoHundredAndTwentyThreeFromJSON(
   jsonString: string,
 ): SafeParseResult<TwoHundredAndTwentyThree, SDKValidationError> {
@@ -2130,29 +1675,7 @@ export const UserEventPayload222Project$inboundSchema: z.ZodType<
   name: types.string(),
   id: types.optional(types.string()),
 });
-/** @internal */
-export type UserEventPayload222Project$Outbound = {
-  name: string;
-  id?: string | undefined;
-};
 
-/** @internal */
-export const UserEventPayload222Project$outboundSchema: z.ZodType<
-  UserEventPayload222Project$Outbound,
-  z.ZodTypeDef,
-  UserEventPayload222Project
-> = z.object({
-  name: z.string(),
-  id: z.string().optional(),
-});
-
-export function userEventPayload222ProjectToJSON(
-  userEventPayload222Project: UserEventPayload222Project,
-): string {
-  return JSON.stringify(
-    UserEventPayload222Project$outboundSchema.parse(userEventPayload222Project),
-  );
-}
 export function userEventPayload222ProjectFromJSON(
   jsonString: string,
 ): SafeParseResult<UserEventPayload222Project, SDKValidationError> {
@@ -2167,10 +1690,6 @@ export function userEventPayload222ProjectFromJSON(
 export const UserEventPayload222Role$inboundSchema: z.ZodNativeEnum<
   typeof UserEventPayload222Role
 > = z.nativeEnum(UserEventPayload222Role);
-/** @internal */
-export const UserEventPayload222Role$outboundSchema: z.ZodNativeEnum<
-  typeof UserEventPayload222Role
-> = UserEventPayload222Role$inboundSchema;
 
 /** @internal */
 export const RemovedMembership$inboundSchema: z.ZodType<
@@ -2183,33 +1702,7 @@ export const RemovedMembership$inboundSchema: z.ZodType<
   createdAt: types.number(),
   username: types.optional(types.string()),
 });
-/** @internal */
-export type RemovedMembership$Outbound = {
-  role: string;
-  uid: string;
-  createdAt: number;
-  username?: string | undefined;
-};
 
-/** @internal */
-export const RemovedMembership$outboundSchema: z.ZodType<
-  RemovedMembership$Outbound,
-  z.ZodTypeDef,
-  RemovedMembership
-> = z.object({
-  role: UserEventPayload222Role$outboundSchema,
-  uid: z.string(),
-  createdAt: z.number(),
-  username: z.string().optional(),
-});
-
-export function removedMembershipToJSON(
-  removedMembership: RemovedMembership,
-): string {
-  return JSON.stringify(
-    RemovedMembership$outboundSchema.parse(removedMembership),
-  );
-}
 export function removedMembershipFromJSON(
   jsonString: string,
 ): SafeParseResult<RemovedMembership, SDKValidationError> {
@@ -2229,29 +1722,7 @@ export const TwoHundredAndTwentyTwo$inboundSchema: z.ZodType<
   project: z.lazy(() => UserEventPayload222Project$inboundSchema),
   removedMembership: z.lazy(() => RemovedMembership$inboundSchema),
 });
-/** @internal */
-export type TwoHundredAndTwentyTwo$Outbound = {
-  project: UserEventPayload222Project$Outbound;
-  removedMembership: RemovedMembership$Outbound;
-};
 
-/** @internal */
-export const TwoHundredAndTwentyTwo$outboundSchema: z.ZodType<
-  TwoHundredAndTwentyTwo$Outbound,
-  z.ZodTypeDef,
-  TwoHundredAndTwentyTwo
-> = z.object({
-  project: z.lazy(() => UserEventPayload222Project$outboundSchema),
-  removedMembership: z.lazy(() => RemovedMembership$outboundSchema),
-});
-
-export function twoHundredAndTwentyTwoToJSON(
-  twoHundredAndTwentyTwo: TwoHundredAndTwentyTwo,
-): string {
-  return JSON.stringify(
-    TwoHundredAndTwentyTwo$outboundSchema.parse(twoHundredAndTwentyTwo),
-  );
-}
 export function twoHundredAndTwentyTwoFromJSON(
   jsonString: string,
 ): SafeParseResult<TwoHundredAndTwentyTwo, SDKValidationError> {
@@ -2266,10 +1737,6 @@ export function twoHundredAndTwentyTwoFromJSON(
 export const UserEventPayload221Role$inboundSchema: z.ZodNativeEnum<
   typeof UserEventPayload221Role
 > = z.nativeEnum(UserEventPayload221Role);
-/** @internal */
-export const UserEventPayload221Role$outboundSchema: z.ZodNativeEnum<
-  typeof UserEventPayload221Role
-> = UserEventPayload221Role$inboundSchema;
 
 /** @internal */
 export const UserEventPayload221Project$inboundSchema: z.ZodType<
@@ -2283,35 +1750,7 @@ export const UserEventPayload221Project$inboundSchema: z.ZodType<
   id: types.optional(types.string()),
   invitedUserId: types.optional(types.string()),
 });
-/** @internal */
-export type UserEventPayload221Project$Outbound = {
-  name: string;
-  role: string;
-  invitedUserName: string;
-  id?: string | undefined;
-  invitedUserId?: string | undefined;
-};
 
-/** @internal */
-export const UserEventPayload221Project$outboundSchema: z.ZodType<
-  UserEventPayload221Project$Outbound,
-  z.ZodTypeDef,
-  UserEventPayload221Project
-> = z.object({
-  name: z.string(),
-  role: UserEventPayload221Role$outboundSchema,
-  invitedUserName: z.string(),
-  id: z.string().optional(),
-  invitedUserId: z.string().optional(),
-});
-
-export function userEventPayload221ProjectToJSON(
-  userEventPayload221Project: UserEventPayload221Project,
-): string {
-  return JSON.stringify(
-    UserEventPayload221Project$outboundSchema.parse(userEventPayload221Project),
-  );
-}
 export function userEventPayload221ProjectFromJSON(
   jsonString: string,
 ): SafeParseResult<UserEventPayload221Project, SDKValidationError> {
@@ -2330,27 +1769,7 @@ export const TwoHundredAndTwentyOne$inboundSchema: z.ZodType<
 > = z.object({
   project: z.lazy(() => UserEventPayload221Project$inboundSchema),
 });
-/** @internal */
-export type TwoHundredAndTwentyOne$Outbound = {
-  project: UserEventPayload221Project$Outbound;
-};
 
-/** @internal */
-export const TwoHundredAndTwentyOne$outboundSchema: z.ZodType<
-  TwoHundredAndTwentyOne$Outbound,
-  z.ZodTypeDef,
-  TwoHundredAndTwentyOne
-> = z.object({
-  project: z.lazy(() => UserEventPayload221Project$outboundSchema),
-});
-
-export function twoHundredAndTwentyOneToJSON(
-  twoHundredAndTwentyOne: TwoHundredAndTwentyOne,
-): string {
-  return JSON.stringify(
-    TwoHundredAndTwentyOne$outboundSchema.parse(twoHundredAndTwentyOne),
-  );
-}
 export function twoHundredAndTwentyOneFromJSON(
   jsonString: string,
 ): SafeParseResult<TwoHundredAndTwentyOne, SDKValidationError> {
@@ -2370,29 +1789,7 @@ export const UserEventPayload220Project$inboundSchema: z.ZodType<
   name: types.string(),
   id: types.optional(types.string()),
 });
-/** @internal */
-export type UserEventPayload220Project$Outbound = {
-  name: string;
-  id?: string | undefined;
-};
 
-/** @internal */
-export const UserEventPayload220Project$outboundSchema: z.ZodType<
-  UserEventPayload220Project$Outbound,
-  z.ZodTypeDef,
-  UserEventPayload220Project
-> = z.object({
-  name: z.string(),
-  id: z.string().optional(),
-});
-
-export function userEventPayload220ProjectToJSON(
-  userEventPayload220Project: UserEventPayload220Project,
-): string {
-  return JSON.stringify(
-    UserEventPayload220Project$outboundSchema.parse(userEventPayload220Project),
-  );
-}
 export function userEventPayload220ProjectFromJSON(
   jsonString: string,
 ): SafeParseResult<UserEventPayload220Project, SDKValidationError> {
@@ -2407,10 +1804,6 @@ export function userEventPayload220ProjectFromJSON(
 export const UserEventPayloadRole$inboundSchema: z.ZodNativeEnum<
   typeof UserEventPayloadRole
 > = z.nativeEnum(UserEventPayloadRole);
-/** @internal */
-export const UserEventPayloadRole$outboundSchema: z.ZodNativeEnum<
-  typeof UserEventPayloadRole
-> = UserEventPayloadRole$inboundSchema;
 
 /** @internal */
 export const ProjectMembership$inboundSchema: z.ZodType<
@@ -2423,33 +1816,7 @@ export const ProjectMembership$inboundSchema: z.ZodType<
   createdAt: types.number(),
   username: types.optional(types.string()),
 });
-/** @internal */
-export type ProjectMembership$Outbound = {
-  role: string;
-  uid: string;
-  createdAt: number;
-  username?: string | undefined;
-};
 
-/** @internal */
-export const ProjectMembership$outboundSchema: z.ZodType<
-  ProjectMembership$Outbound,
-  z.ZodTypeDef,
-  ProjectMembership
-> = z.object({
-  role: UserEventPayloadRole$outboundSchema,
-  uid: z.string(),
-  createdAt: z.number(),
-  username: z.string().optional(),
-});
-
-export function projectMembershipToJSON(
-  projectMembership: ProjectMembership,
-): string {
-  return JSON.stringify(
-    ProjectMembership$outboundSchema.parse(projectMembership),
-  );
-}
 export function projectMembershipFromJSON(
   jsonString: string,
 ): SafeParseResult<ProjectMembership, SDKValidationError> {
@@ -2471,29 +1838,7 @@ export const TwoHundredAndTwenty$inboundSchema: z.ZodType<
     z.lazy(() => ProjectMembership$inboundSchema),
   ),
 });
-/** @internal */
-export type TwoHundredAndTwenty$Outbound = {
-  project: UserEventPayload220Project$Outbound;
-  projectMembership: ProjectMembership$Outbound | null;
-};
 
-/** @internal */
-export const TwoHundredAndTwenty$outboundSchema: z.ZodType<
-  TwoHundredAndTwenty$Outbound,
-  z.ZodTypeDef,
-  TwoHundredAndTwenty
-> = z.object({
-  project: z.lazy(() => UserEventPayload220Project$outboundSchema),
-  projectMembership: z.nullable(z.lazy(() => ProjectMembership$outboundSchema)),
-});
-
-export function twoHundredAndTwentyToJSON(
-  twoHundredAndTwenty: TwoHundredAndTwenty,
-): string {
-  return JSON.stringify(
-    TwoHundredAndTwenty$outboundSchema.parse(twoHundredAndTwenty),
-  );
-}
 export function twoHundredAndTwentyFromJSON(
   jsonString: string,
 ): SafeParseResult<TwoHundredAndTwenty, SDKValidationError> {
@@ -2517,37 +1862,7 @@ export const TwoHundredAndNineteen$inboundSchema: z.ZodType<
   configuredBy: z.nullable(types.string()).optional(),
   prevConfiguredBy: z.nullable(types.string()).optional(),
 });
-/** @internal */
-export type TwoHundredAndNineteen$Outbound = {
-  projectId: string;
-  projectName: string;
-  target: string;
-  domain: string;
-  configuredBy?: string | null | undefined;
-  prevConfiguredBy?: string | null | undefined;
-};
 
-/** @internal */
-export const TwoHundredAndNineteen$outboundSchema: z.ZodType<
-  TwoHundredAndNineteen$Outbound,
-  z.ZodTypeDef,
-  TwoHundredAndNineteen
-> = z.object({
-  projectId: z.string(),
-  projectName: z.string(),
-  target: z.string(),
-  domain: z.string(),
-  configuredBy: z.nullable(z.string()).optional(),
-  prevConfiguredBy: z.nullable(z.string()).optional(),
-});
-
-export function twoHundredAndNineteenToJSON(
-  twoHundredAndNineteen: TwoHundredAndNineteen,
-): string {
-  return JSON.stringify(
-    TwoHundredAndNineteen$outboundSchema.parse(twoHundredAndNineteen),
-  );
-}
 export function twoHundredAndNineteenFromJSON(
   jsonString: string,
 ): SafeParseResult<TwoHundredAndNineteen, SDKValidationError> {
@@ -2562,10 +1877,6 @@ export function twoHundredAndNineteenFromJSON(
 export const UserEventPayload218Role$inboundSchema: z.ZodNativeEnum<
   typeof UserEventPayload218Role
 > = z.nativeEnum(UserEventPayload218Role);
-/** @internal */
-export const UserEventPayload218Role$outboundSchema: z.ZodNativeEnum<
-  typeof UserEventPayload218Role
-> = UserEventPayload218Role$inboundSchema;
 
 /** @internal */
 export const PayloadProjects$inboundSchema: z.ZodType<
@@ -2577,29 +1888,7 @@ export const PayloadProjects$inboundSchema: z.ZodType<
   role: UserEventPayload218Role$inboundSchema,
   membershipCreatedAt: types.number(),
 });
-/** @internal */
-export type PayloadProjects$Outbound = {
-  projectId: string;
-  role: string;
-  membershipCreatedAt: number;
-};
 
-/** @internal */
-export const PayloadProjects$outboundSchema: z.ZodType<
-  PayloadProjects$Outbound,
-  z.ZodTypeDef,
-  PayloadProjects
-> = z.object({
-  projectId: z.string(),
-  role: UserEventPayload218Role$outboundSchema,
-  membershipCreatedAt: z.number(),
-});
-
-export function payloadProjectsToJSON(
-  payloadProjects: PayloadProjects,
-): string {
-  return JSON.stringify(PayloadProjects$outboundSchema.parse(payloadProjects));
-}
 export function payloadProjectsFromJSON(
   jsonString: string,
 ): SafeParseResult<PayloadProjects, SDKValidationError> {
@@ -2619,25 +1908,7 @@ export const TeamMembership$inboundSchema: z.ZodType<
   uid: types.string(),
   username: types.optional(types.string()),
 });
-/** @internal */
-export type TeamMembership$Outbound = {
-  uid: string;
-  username?: string | undefined;
-};
 
-/** @internal */
-export const TeamMembership$outboundSchema: z.ZodType<
-  TeamMembership$Outbound,
-  z.ZodTypeDef,
-  TeamMembership
-> = z.object({
-  uid: z.string(),
-  username: z.string().optional(),
-});
-
-export function teamMembershipToJSON(teamMembership: TeamMembership): string {
-  return JSON.stringify(TeamMembership$outboundSchema.parse(teamMembership));
-}
 export function teamMembershipFromJSON(
   jsonString: string,
 ): SafeParseResult<TeamMembership, SDKValidationError> {
@@ -2658,31 +1929,7 @@ export const TwoHundredAndEighteen$inboundSchema: z.ZodType<
   teamMembership: types.optional(z.lazy(() => TeamMembership$inboundSchema)),
   directoryType: types.optional(types.string()),
 });
-/** @internal */
-export type TwoHundredAndEighteen$Outbound = {
-  projects: Array<PayloadProjects$Outbound>;
-  teamMembership?: TeamMembership$Outbound | undefined;
-  directoryType?: string | undefined;
-};
 
-/** @internal */
-export const TwoHundredAndEighteen$outboundSchema: z.ZodType<
-  TwoHundredAndEighteen$Outbound,
-  z.ZodTypeDef,
-  TwoHundredAndEighteen
-> = z.object({
-  projects: z.array(z.lazy(() => PayloadProjects$outboundSchema)),
-  teamMembership: z.lazy(() => TeamMembership$outboundSchema).optional(),
-  directoryType: z.string().optional(),
-});
-
-export function twoHundredAndEighteenToJSON(
-  twoHundredAndEighteen: TwoHundredAndEighteen,
-): string {
-  return JSON.stringify(
-    TwoHundredAndEighteen$outboundSchema.parse(twoHundredAndEighteen),
-  );
-}
 export function twoHundredAndEighteenFromJSON(
   jsonString: string,
 ): SafeParseResult<TwoHundredAndEighteen, SDKValidationError> {
@@ -2705,35 +1952,7 @@ export const TwoHundredAndSeventeen$inboundSchema: z.ZodType<
   redirect: z.nullable(types.string()).optional(),
   redirectStatusCode: z.nullable(types.number()).optional(),
 });
-/** @internal */
-export type TwoHundredAndSeventeen$Outbound = {
-  projectId: string;
-  projectName: string;
-  domain: string;
-  redirect?: string | null | undefined;
-  redirectStatusCode?: number | null | undefined;
-};
 
-/** @internal */
-export const TwoHundredAndSeventeen$outboundSchema: z.ZodType<
-  TwoHundredAndSeventeen$Outbound,
-  z.ZodTypeDef,
-  TwoHundredAndSeventeen
-> = z.object({
-  projectId: z.string(),
-  projectName: z.string(),
-  domain: z.string(),
-  redirect: z.nullable(z.string()).optional(),
-  redirectStatusCode: z.nullable(z.number()).optional(),
-});
-
-export function twoHundredAndSeventeenToJSON(
-  twoHundredAndSeventeen: TwoHundredAndSeventeen,
-): string {
-  return JSON.stringify(
-    TwoHundredAndSeventeen$outboundSchema.parse(twoHundredAndSeventeen),
-  );
-}
 export function twoHundredAndSeventeenFromJSON(
   jsonString: string,
 ): SafeParseResult<TwoHundredAndSeventeen, SDKValidationError> {
@@ -2756,35 +1975,7 @@ export const TwoHundredAndSixteen$inboundSchema: z.ZodType<
   newProjectName: types.string(),
   domain: types.string(),
 });
-/** @internal */
-export type TwoHundredAndSixteen$Outbound = {
-  oldProjectId: string;
-  oldProjectName: string;
-  newProjectId: string;
-  newProjectName: string;
-  domain: string;
-};
 
-/** @internal */
-export const TwoHundredAndSixteen$outboundSchema: z.ZodType<
-  TwoHundredAndSixteen$Outbound,
-  z.ZodTypeDef,
-  TwoHundredAndSixteen
-> = z.object({
-  oldProjectId: z.string(),
-  oldProjectName: z.string(),
-  newProjectId: z.string(),
-  newProjectName: z.string(),
-  domain: z.string(),
-});
-
-export function twoHundredAndSixteenToJSON(
-  twoHundredAndSixteen: TwoHundredAndSixteen,
-): string {
-  return JSON.stringify(
-    TwoHundredAndSixteen$outboundSchema.parse(twoHundredAndSixteen),
-  );
-}
 export function twoHundredAndSixteenFromJSON(
   jsonString: string,
 ): SafeParseResult<TwoHundredAndSixteen, SDKValidationError> {
@@ -2808,37 +1999,7 @@ export const TwoHundredAndFifteen$inboundSchema: z.ZodType<
   redirect: z.nullable(types.string()).optional(),
   redirectStatusCode: z.nullable(types.number()).optional(),
 });
-/** @internal */
-export type TwoHundredAndFifteen$Outbound = {
-  projectId: string;
-  projectName: string;
-  domain: string;
-  target: string;
-  redirect?: string | null | undefined;
-  redirectStatusCode?: number | null | undefined;
-};
 
-/** @internal */
-export const TwoHundredAndFifteen$outboundSchema: z.ZodType<
-  TwoHundredAndFifteen$Outbound,
-  z.ZodTypeDef,
-  TwoHundredAndFifteen
-> = z.object({
-  projectId: z.string(),
-  projectName: z.string(),
-  domain: z.string(),
-  target: z.string(),
-  redirect: z.nullable(z.string()).optional(),
-  redirectStatusCode: z.nullable(z.number()).optional(),
-});
-
-export function twoHundredAndFifteenToJSON(
-  twoHundredAndFifteen: TwoHundredAndFifteen,
-): string {
-  return JSON.stringify(
-    TwoHundredAndFifteen$outboundSchema.parse(twoHundredAndFifteen),
-  );
-}
 export function twoHundredAndFifteenFromJSON(
   jsonString: string,
 ): SafeParseResult<TwoHundredAndFifteen, SDKValidationError> {
@@ -2864,41 +2025,7 @@ export const TwoHundredAndFourteen$inboundSchema: z.ZodType<
   gitBranch: types.nullable(types.string()),
   configuredBy: types.optional(types.string()),
 });
-/** @internal */
-export type TwoHundredAndFourteen$Outbound = {
-  projectId: string;
-  projectName: string;
-  domain: string;
-  target: string;
-  redirect: string | null;
-  redirectStatusCode: number | null;
-  gitBranch: string | null;
-  configuredBy?: string | undefined;
-};
 
-/** @internal */
-export const TwoHundredAndFourteen$outboundSchema: z.ZodType<
-  TwoHundredAndFourteen$Outbound,
-  z.ZodTypeDef,
-  TwoHundredAndFourteen
-> = z.object({
-  projectId: z.string(),
-  projectName: z.string(),
-  domain: z.string(),
-  target: z.string(),
-  redirect: z.nullable(z.string()),
-  redirectStatusCode: z.nullable(z.number()),
-  gitBranch: z.nullable(z.string()),
-  configuredBy: z.string().optional(),
-});
-
-export function twoHundredAndFourteenToJSON(
-  twoHundredAndFourteen: TwoHundredAndFourteen,
-): string {
-  return JSON.stringify(
-    TwoHundredAndFourteen$outboundSchema.parse(twoHundredAndFourteen),
-  );
-}
 export function twoHundredAndFourteenFromJSON(
   jsonString: string,
 ): SafeParseResult<TwoHundredAndFourteen, SDKValidationError> {
@@ -2917,29 +2044,7 @@ export const UserEventPayload213Previous$inboundSchema: z.ZodType<
 > = z.object({
   commandForIgnoringBuildStep: types.optional(types.string()),
 });
-/** @internal */
-export type UserEventPayload213Previous$Outbound = {
-  commandForIgnoringBuildStep?: string | undefined;
-};
 
-/** @internal */
-export const UserEventPayload213Previous$outboundSchema: z.ZodType<
-  UserEventPayload213Previous$Outbound,
-  z.ZodTypeDef,
-  UserEventPayload213Previous
-> = z.object({
-  commandForIgnoringBuildStep: z.string().optional(),
-});
-
-export function userEventPayload213PreviousToJSON(
-  userEventPayload213Previous: UserEventPayload213Previous,
-): string {
-  return JSON.stringify(
-    UserEventPayload213Previous$outboundSchema.parse(
-      userEventPayload213Previous,
-    ),
-  );
-}
 export function userEventPayload213PreviousFromJSON(
   jsonString: string,
 ): SafeParseResult<UserEventPayload213Previous, SDKValidationError> {
@@ -2958,27 +2063,7 @@ export const UserEventPayload213Next$inboundSchema: z.ZodType<
 > = z.object({
   commandForIgnoringBuildStep: types.optional(types.string()),
 });
-/** @internal */
-export type UserEventPayload213Next$Outbound = {
-  commandForIgnoringBuildStep?: string | undefined;
-};
 
-/** @internal */
-export const UserEventPayload213Next$outboundSchema: z.ZodType<
-  UserEventPayload213Next$Outbound,
-  z.ZodTypeDef,
-  UserEventPayload213Next
-> = z.object({
-  commandForIgnoringBuildStep: z.string().optional(),
-});
-
-export function userEventPayload213NextToJSON(
-  userEventPayload213Next: UserEventPayload213Next,
-): string {
-  return JSON.stringify(
-    UserEventPayload213Next$outboundSchema.parse(userEventPayload213Next),
-  );
-}
 export function userEventPayload213NextFromJSON(
   jsonString: string,
 ): SafeParseResult<UserEventPayload213Next, SDKValidationError> {
@@ -3000,33 +2085,7 @@ export const TwoHundredAndThirteen$inboundSchema: z.ZodType<
   previous: z.lazy(() => UserEventPayload213Previous$inboundSchema),
   next: z.lazy(() => UserEventPayload213Next$inboundSchema),
 });
-/** @internal */
-export type TwoHundredAndThirteen$Outbound = {
-  projectId: string;
-  projectName: string;
-  previous: UserEventPayload213Previous$Outbound;
-  next: UserEventPayload213Next$Outbound;
-};
 
-/** @internal */
-export const TwoHundredAndThirteen$outboundSchema: z.ZodType<
-  TwoHundredAndThirteen$Outbound,
-  z.ZodTypeDef,
-  TwoHundredAndThirteen
-> = z.object({
-  projectId: z.string(),
-  projectName: z.string(),
-  previous: z.lazy(() => UserEventPayload213Previous$outboundSchema),
-  next: z.lazy(() => UserEventPayload213Next$outboundSchema),
-});
-
-export function twoHundredAndThirteenToJSON(
-  twoHundredAndThirteen: TwoHundredAndThirteen,
-): string {
-  return JSON.stringify(
-    TwoHundredAndThirteen$outboundSchema.parse(twoHundredAndThirteen),
-  );
-}
 export function twoHundredAndThirteenFromJSON(
   jsonString: string,
 ): SafeParseResult<TwoHundredAndThirteen, SDKValidationError> {
@@ -3046,31 +2105,7 @@ export const ConsolidatedGitCommitStatus$inboundSchema: z.ZodType<
   enabled: types.boolean(),
   propagateFailures: types.boolean(),
 });
-/** @internal */
-export type ConsolidatedGitCommitStatus$Outbound = {
-  enabled: boolean;
-  propagateFailures: boolean;
-};
 
-/** @internal */
-export const ConsolidatedGitCommitStatus$outboundSchema: z.ZodType<
-  ConsolidatedGitCommitStatus$Outbound,
-  z.ZodTypeDef,
-  ConsolidatedGitCommitStatus
-> = z.object({
-  enabled: z.boolean(),
-  propagateFailures: z.boolean(),
-});
-
-export function consolidatedGitCommitStatusToJSON(
-  consolidatedGitCommitStatus: ConsolidatedGitCommitStatus,
-): string {
-  return JSON.stringify(
-    ConsolidatedGitCommitStatus$outboundSchema.parse(
-      consolidatedGitCommitStatus,
-    ),
-  );
-}
 export function consolidatedGitCommitStatusFromJSON(
   jsonString: string,
 ): SafeParseResult<ConsolidatedGitCommitStatus, SDKValidationError> {
@@ -3093,33 +2128,7 @@ export const TwoHundredAndTwelve$inboundSchema: z.ZodType<
     z.lazy(() => ConsolidatedGitCommitStatus$inboundSchema),
   ),
 });
-/** @internal */
-export type TwoHundredAndTwelve$Outbound = {
-  projectId: string;
-  projectName: string;
-  consolidatedGitCommitStatus: ConsolidatedGitCommitStatus$Outbound | null;
-};
 
-/** @internal */
-export const TwoHundredAndTwelve$outboundSchema: z.ZodType<
-  TwoHundredAndTwelve$Outbound,
-  z.ZodTypeDef,
-  TwoHundredAndTwelve
-> = z.object({
-  projectId: z.string(),
-  projectName: z.string(),
-  consolidatedGitCommitStatus: z.nullable(
-    z.lazy(() => ConsolidatedGitCommitStatus$outboundSchema),
-  ),
-});
-
-export function twoHundredAndTwelveToJSON(
-  twoHundredAndTwelve: TwoHundredAndTwelve,
-): string {
-  return JSON.stringify(
-    TwoHundredAndTwelve$outboundSchema.parse(twoHundredAndTwelve),
-  );
-}
 export function twoHundredAndTwelveFromJSON(
   jsonString: string,
 ): SafeParseResult<TwoHundredAndTwelve, SDKValidationError> {
@@ -3140,31 +2149,7 @@ export const TwoHundredAndEleven$inboundSchema: z.ZodType<
   projectName: types.string(),
   gitLFS: types.boolean(),
 });
-/** @internal */
-export type TwoHundredAndEleven$Outbound = {
-  projectId: string;
-  projectName: string;
-  gitLFS: boolean;
-};
 
-/** @internal */
-export const TwoHundredAndEleven$outboundSchema: z.ZodType<
-  TwoHundredAndEleven$Outbound,
-  z.ZodTypeDef,
-  TwoHundredAndEleven
-> = z.object({
-  projectId: z.string(),
-  projectName: z.string(),
-  gitLFS: z.boolean(),
-});
-
-export function twoHundredAndElevenToJSON(
-  twoHundredAndEleven: TwoHundredAndEleven,
-): string {
-  return JSON.stringify(
-    TwoHundredAndEleven$outboundSchema.parse(twoHundredAndEleven),
-  );
-}
 export function twoHundredAndElevenFromJSON(
   jsonString: string,
 ): SafeParseResult<TwoHundredAndEleven, SDKValidationError> {
@@ -3185,31 +2170,7 @@ export const TwoHundredAndTen$inboundSchema: z.ZodType<
   projectName: types.string(),
   gitCommitStatus: types.boolean(),
 });
-/** @internal */
-export type TwoHundredAndTen$Outbound = {
-  projectId: string;
-  projectName: string;
-  gitCommitStatus: boolean;
-};
 
-/** @internal */
-export const TwoHundredAndTen$outboundSchema: z.ZodType<
-  TwoHundredAndTen$Outbound,
-  z.ZodTypeDef,
-  TwoHundredAndTen
-> = z.object({
-  projectId: z.string(),
-  projectName: z.string(),
-  gitCommitStatus: z.boolean(),
-});
-
-export function twoHundredAndTenToJSON(
-  twoHundredAndTen: TwoHundredAndTen,
-): string {
-  return JSON.stringify(
-    TwoHundredAndTen$outboundSchema.parse(twoHundredAndTen),
-  );
-}
 export function twoHundredAndTenFromJSON(
   jsonString: string,
 ): SafeParseResult<TwoHundredAndTen, SDKValidationError> {
@@ -3228,27 +2189,7 @@ export const TwoHundredAndNine$inboundSchema: z.ZodType<
 > = z.object({
   disableRepositoryDispatchEvents: types.boolean(),
 });
-/** @internal */
-export type TwoHundredAndNine$Outbound = {
-  disableRepositoryDispatchEvents: boolean;
-};
 
-/** @internal */
-export const TwoHundredAndNine$outboundSchema: z.ZodType<
-  TwoHundredAndNine$Outbound,
-  z.ZodTypeDef,
-  TwoHundredAndNine
-> = z.object({
-  disableRepositoryDispatchEvents: z.boolean(),
-});
-
-export function twoHundredAndNineToJSON(
-  twoHundredAndNine: TwoHundredAndNine,
-): string {
-  return JSON.stringify(
-    TwoHundredAndNine$outboundSchema.parse(twoHundredAndNine),
-  );
-}
 export function twoHundredAndNineFromJSON(
   jsonString: string,
 ): SafeParseResult<TwoHundredAndNine, SDKValidationError> {
@@ -3267,27 +2208,7 @@ export const TwoHundredAndEight$inboundSchema: z.ZodType<
 > = z.object({
   requireVerifiedCommits: types.boolean(),
 });
-/** @internal */
-export type TwoHundredAndEight$Outbound = {
-  requireVerifiedCommits: boolean;
-};
 
-/** @internal */
-export const TwoHundredAndEight$outboundSchema: z.ZodType<
-  TwoHundredAndEight$Outbound,
-  z.ZodTypeDef,
-  TwoHundredAndEight
-> = z.object({
-  requireVerifiedCommits: z.boolean(),
-});
-
-export function twoHundredAndEightToJSON(
-  twoHundredAndEight: TwoHundredAndEight,
-): string {
-  return JSON.stringify(
-    TwoHundredAndEight$outboundSchema.parse(twoHundredAndEight),
-  );
-}
 export function twoHundredAndEightFromJSON(
   jsonString: string,
 ): SafeParseResult<TwoHundredAndEight, SDKValidationError> {
@@ -3308,31 +2229,7 @@ export const TwoHundredAndSeven$inboundSchema: z.ZodType<
   projectName: types.string(),
   requireVerifiedCommits: types.nullable(types.boolean()),
 });
-/** @internal */
-export type TwoHundredAndSeven$Outbound = {
-  projectId: string;
-  projectName: string;
-  requireVerifiedCommits: boolean | null;
-};
 
-/** @internal */
-export const TwoHundredAndSeven$outboundSchema: z.ZodType<
-  TwoHundredAndSeven$Outbound,
-  z.ZodTypeDef,
-  TwoHundredAndSeven
-> = z.object({
-  projectId: z.string(),
-  projectName: z.string(),
-  requireVerifiedCommits: z.nullable(z.boolean()),
-});
-
-export function twoHundredAndSevenToJSON(
-  twoHundredAndSeven: TwoHundredAndSeven,
-): string {
-  return JSON.stringify(
-    TwoHundredAndSeven$outboundSchema.parse(twoHundredAndSeven),
-  );
-}
 export function twoHundredAndSevenFromJSON(
   jsonString: string,
 ): SafeParseResult<TwoHundredAndSeven, SDKValidationError> {
@@ -3347,10 +2244,6 @@ export function twoHundredAndSevenFromJSON(
 export const CreateDeployments$inboundSchema: z.ZodNativeEnum<
   typeof CreateDeployments
 > = z.nativeEnum(CreateDeployments);
-/** @internal */
-export const CreateDeployments$outboundSchema: z.ZodNativeEnum<
-  typeof CreateDeployments
-> = CreateDeployments$inboundSchema;
 
 /** @internal */
 export const TwoHundredAndSix$inboundSchema: z.ZodType<
@@ -3362,31 +2255,7 @@ export const TwoHundredAndSix$inboundSchema: z.ZodType<
   projectName: types.string(),
   createDeployments: CreateDeployments$inboundSchema,
 });
-/** @internal */
-export type TwoHundredAndSix$Outbound = {
-  projectId: string;
-  projectName: string;
-  createDeployments: string;
-};
 
-/** @internal */
-export const TwoHundredAndSix$outboundSchema: z.ZodType<
-  TwoHundredAndSix$Outbound,
-  z.ZodTypeDef,
-  TwoHundredAndSix
-> = z.object({
-  projectId: z.string(),
-  projectName: z.string(),
-  createDeployments: CreateDeployments$outboundSchema,
-});
-
-export function twoHundredAndSixToJSON(
-  twoHundredAndSix: TwoHundredAndSix,
-): string {
-  return JSON.stringify(
-    TwoHundredAndSix$outboundSchema.parse(twoHundredAndSix),
-  );
-}
 export function twoHundredAndSixFromJSON(
   jsonString: string,
 ): SafeParseResult<TwoHundredAndSix, SDKValidationError> {
@@ -3407,31 +2276,7 @@ export const TwoHundredAndFive$inboundSchema: z.ZodType<
   projectName: types.string(),
   disableRepositoryDispatchEvents: types.boolean(),
 });
-/** @internal */
-export type TwoHundredAndFive$Outbound = {
-  projectId: string;
-  projectName: string;
-  disableRepositoryDispatchEvents: boolean;
-};
 
-/** @internal */
-export const TwoHundredAndFive$outboundSchema: z.ZodType<
-  TwoHundredAndFive$Outbound,
-  z.ZodTypeDef,
-  TwoHundredAndFive
-> = z.object({
-  projectId: z.string(),
-  projectName: z.string(),
-  disableRepositoryDispatchEvents: z.boolean(),
-});
-
-export function twoHundredAndFiveToJSON(
-  twoHundredAndFive: TwoHundredAndFive,
-): string {
-  return JSON.stringify(
-    TwoHundredAndFive$outboundSchema.parse(twoHundredAndFive),
-  );
-}
 export function twoHundredAndFiveFromJSON(
   jsonString: string,
 ): SafeParseResult<TwoHundredAndFive, SDKValidationError> {
@@ -3452,31 +2297,7 @@ export const TwoHundredAndFour$inboundSchema: z.ZodType<
   projectName: types.string(),
   onCommit: types.boolean(),
 });
-/** @internal */
-export type TwoHundredAndFour$Outbound = {
-  projectId: string;
-  projectName: string;
-  onCommit: boolean;
-};
 
-/** @internal */
-export const TwoHundredAndFour$outboundSchema: z.ZodType<
-  TwoHundredAndFour$Outbound,
-  z.ZodTypeDef,
-  TwoHundredAndFour
-> = z.object({
-  projectId: z.string(),
-  projectName: z.string(),
-  onCommit: z.boolean(),
-});
-
-export function twoHundredAndFourToJSON(
-  twoHundredAndFour: TwoHundredAndFour,
-): string {
-  return JSON.stringify(
-    TwoHundredAndFour$outboundSchema.parse(twoHundredAndFour),
-  );
-}
 export function twoHundredAndFourFromJSON(
   jsonString: string,
 ): SafeParseResult<TwoHundredAndFour, SDKValidationError> {
@@ -3497,31 +2318,7 @@ export const TwoHundredAndThree$inboundSchema: z.ZodType<
   projectName: types.string(),
   onPullRequest: types.boolean(),
 });
-/** @internal */
-export type TwoHundredAndThree$Outbound = {
-  projectId: string;
-  projectName: string;
-  onPullRequest: boolean;
-};
 
-/** @internal */
-export const TwoHundredAndThree$outboundSchema: z.ZodType<
-  TwoHundredAndThree$Outbound,
-  z.ZodTypeDef,
-  TwoHundredAndThree
-> = z.object({
-  projectId: z.string(),
-  projectName: z.string(),
-  onPullRequest: z.boolean(),
-});
-
-export function twoHundredAndThreeToJSON(
-  twoHundredAndThree: TwoHundredAndThree,
-): string {
-  return JSON.stringify(
-    TwoHundredAndThree$outboundSchema.parse(twoHundredAndThree),
-  );
-}
 export function twoHundredAndThreeFromJSON(
   jsonString: string,
 ): SafeParseResult<TwoHundredAndThree, SDKValidationError> {
@@ -3535,9 +2332,6 @@ export function twoHundredAndThreeFromJSON(
 /** @internal */
 export const GitProvider$inboundSchema: z.ZodNativeEnum<typeof GitProvider> = z
   .nativeEnum(GitProvider);
-/** @internal */
-export const GitProvider$outboundSchema: z.ZodNativeEnum<typeof GitProvider> =
-  GitProvider$inboundSchema;
 
 /** @internal */
 export const TwoHundredAndTwo$inboundSchema: z.ZodType<
@@ -3551,35 +2345,7 @@ export const TwoHundredAndTwo$inboundSchema: z.ZodType<
   gitRepoId: types.string(),
   gitRepositoryName: types.string(),
 });
-/** @internal */
-export type TwoHundredAndTwo$Outbound = {
-  projectId: string;
-  projectName: string;
-  gitProvider: string;
-  gitRepoId: string;
-  gitRepositoryName: string;
-};
 
-/** @internal */
-export const TwoHundredAndTwo$outboundSchema: z.ZodType<
-  TwoHundredAndTwo$Outbound,
-  z.ZodTypeDef,
-  TwoHundredAndTwo
-> = z.object({
-  projectId: z.string(),
-  projectName: z.string(),
-  gitProvider: GitProvider$outboundSchema,
-  gitRepoId: z.string(),
-  gitRepositoryName: z.string(),
-});
-
-export function twoHundredAndTwoToJSON(
-  twoHundredAndTwo: TwoHundredAndTwo,
-): string {
-  return JSON.stringify(
-    TwoHundredAndTwo$outboundSchema.parse(twoHundredAndTwo),
-  );
-}
 export function twoHundredAndTwoFromJSON(
   jsonString: string,
 ): SafeParseResult<TwoHundredAndTwo, SDKValidationError> {
@@ -3594,10 +2360,6 @@ export function twoHundredAndTwoFromJSON(
 export const UserEventPayloadGitProvider$inboundSchema: z.ZodNativeEnum<
   typeof UserEventPayloadGitProvider
 > = z.nativeEnum(UserEventPayloadGitProvider);
-/** @internal */
-export const UserEventPayloadGitProvider$outboundSchema: z.ZodNativeEnum<
-  typeof UserEventPayloadGitProvider
-> = UserEventPayloadGitProvider$inboundSchema;
 
 /** @internal */
 export const UserEventPayload201Previous$inboundSchema: z.ZodType<
@@ -3609,33 +2371,7 @@ export const UserEventPayload201Previous$inboundSchema: z.ZodType<
   gitRepoId: types.string(),
   gitRepositoryName: types.string(),
 });
-/** @internal */
-export type UserEventPayload201Previous$Outbound = {
-  gitProvider: string;
-  gitRepoId: string;
-  gitRepositoryName: string;
-};
 
-/** @internal */
-export const UserEventPayload201Previous$outboundSchema: z.ZodType<
-  UserEventPayload201Previous$Outbound,
-  z.ZodTypeDef,
-  UserEventPayload201Previous
-> = z.object({
-  gitProvider: UserEventPayloadGitProvider$outboundSchema,
-  gitRepoId: z.string(),
-  gitRepositoryName: z.string(),
-});
-
-export function userEventPayload201PreviousToJSON(
-  userEventPayload201Previous: UserEventPayload201Previous,
-): string {
-  return JSON.stringify(
-    UserEventPayload201Previous$outboundSchema.parse(
-      userEventPayload201Previous,
-    ),
-  );
-}
 export function userEventPayload201PreviousFromJSON(
   jsonString: string,
 ): SafeParseResult<UserEventPayload201Previous, SDKValidationError> {
@@ -3650,10 +2386,6 @@ export function userEventPayload201PreviousFromJSON(
 export const PayloadGitProvider$inboundSchema: z.ZodNativeEnum<
   typeof PayloadGitProvider
 > = z.nativeEnum(PayloadGitProvider);
-/** @internal */
-export const PayloadGitProvider$outboundSchema: z.ZodNativeEnum<
-  typeof PayloadGitProvider
-> = PayloadGitProvider$inboundSchema;
 
 /** @internal */
 export const UserEventPayload201Next$inboundSchema: z.ZodType<
@@ -3665,31 +2397,7 @@ export const UserEventPayload201Next$inboundSchema: z.ZodType<
   gitRepoId: types.string(),
   gitRepositoryName: types.string(),
 });
-/** @internal */
-export type UserEventPayload201Next$Outbound = {
-  gitProvider: string;
-  gitRepoId: string;
-  gitRepositoryName: string;
-};
 
-/** @internal */
-export const UserEventPayload201Next$outboundSchema: z.ZodType<
-  UserEventPayload201Next$Outbound,
-  z.ZodTypeDef,
-  UserEventPayload201Next
-> = z.object({
-  gitProvider: PayloadGitProvider$outboundSchema,
-  gitRepoId: z.string(),
-  gitRepositoryName: z.string(),
-});
-
-export function userEventPayload201NextToJSON(
-  userEventPayload201Next: UserEventPayload201Next,
-): string {
-  return JSON.stringify(
-    UserEventPayload201Next$outboundSchema.parse(userEventPayload201Next),
-  );
-}
 export function userEventPayload201NextFromJSON(
   jsonString: string,
 ): SafeParseResult<UserEventPayload201Next, SDKValidationError> {
@@ -3713,33 +2421,7 @@ export const TwoHundredAndOne$inboundSchema: z.ZodType<
   ),
   next: z.lazy(() => UserEventPayload201Next$inboundSchema),
 });
-/** @internal */
-export type TwoHundredAndOne$Outbound = {
-  projectId: string;
-  projectName: string;
-  previous?: UserEventPayload201Previous$Outbound | undefined;
-  next: UserEventPayload201Next$Outbound;
-};
 
-/** @internal */
-export const TwoHundredAndOne$outboundSchema: z.ZodType<
-  TwoHundredAndOne$Outbound,
-  z.ZodTypeDef,
-  TwoHundredAndOne
-> = z.object({
-  projectId: z.string(),
-  projectName: z.string(),
-  previous: z.lazy(() => UserEventPayload201Previous$outboundSchema).optional(),
-  next: z.lazy(() => UserEventPayload201Next$outboundSchema),
-});
-
-export function twoHundredAndOneToJSON(
-  twoHundredAndOne: TwoHundredAndOne,
-): string {
-  return JSON.stringify(
-    TwoHundredAndOne$outboundSchema.parse(twoHundredAndOne),
-  );
-}
 export function twoHundredAndOneFromJSON(
   jsonString: string,
 ): SafeParseResult<TwoHundredAndOne, SDKValidationError> {
@@ -3760,27 +2442,7 @@ export const TwoHundred$inboundSchema: z.ZodType<
   projectName: types.string(),
   newProjectName: types.string(),
 });
-/** @internal */
-export type TwoHundred$Outbound = {
-  projectId: string;
-  projectName: string;
-  newProjectName: string;
-};
 
-/** @internal */
-export const TwoHundred$outboundSchema: z.ZodType<
-  TwoHundred$Outbound,
-  z.ZodTypeDef,
-  TwoHundred
-> = z.object({
-  projectId: z.string(),
-  projectName: z.string(),
-  newProjectName: z.string(),
-});
-
-export function twoHundredToJSON(twoHundred: TwoHundred): string {
-  return JSON.stringify(TwoHundred$outboundSchema.parse(twoHundred));
-}
 export function twoHundredFromJSON(
   jsonString: string,
 ): SafeParseResult<TwoHundred, SDKValidationError> {
@@ -3801,31 +2463,7 @@ export const OneHundredAndNinetyNine$inboundSchema: z.ZodType<
   projectName: types.string(),
   previewDeploymentSuffix: types.nullable(types.string()),
 });
-/** @internal */
-export type OneHundredAndNinetyNine$Outbound = {
-  projectId: string;
-  projectName: string;
-  previewDeploymentSuffix: string | null;
-};
 
-/** @internal */
-export const OneHundredAndNinetyNine$outboundSchema: z.ZodType<
-  OneHundredAndNinetyNine$Outbound,
-  z.ZodTypeDef,
-  OneHundredAndNinetyNine
-> = z.object({
-  projectId: z.string(),
-  projectName: z.string(),
-  previewDeploymentSuffix: z.nullable(z.string()),
-});
-
-export function oneHundredAndNinetyNineToJSON(
-  oneHundredAndNinetyNine: OneHundredAndNinetyNine,
-): string {
-  return JSON.stringify(
-    OneHundredAndNinetyNine$outboundSchema.parse(oneHundredAndNinetyNine),
-  );
-}
 export function oneHundredAndNinetyNineFromJSON(
   jsonString: string,
 ): SafeParseResult<OneHundredAndNinetyNine, SDKValidationError> {
@@ -3844,29 +2482,7 @@ export const UserEventPayload198Previous$inboundSchema: z.ZodType<
 > = z.object({
   functionZeroConfigFailover: types.nullable(types.boolean()),
 });
-/** @internal */
-export type UserEventPayload198Previous$Outbound = {
-  functionZeroConfigFailover: boolean | null;
-};
 
-/** @internal */
-export const UserEventPayload198Previous$outboundSchema: z.ZodType<
-  UserEventPayload198Previous$Outbound,
-  z.ZodTypeDef,
-  UserEventPayload198Previous
-> = z.object({
-  functionZeroConfigFailover: z.nullable(z.boolean()),
-});
-
-export function userEventPayload198PreviousToJSON(
-  userEventPayload198Previous: UserEventPayload198Previous,
-): string {
-  return JSON.stringify(
-    UserEventPayload198Previous$outboundSchema.parse(
-      userEventPayload198Previous,
-    ),
-  );
-}
 export function userEventPayload198PreviousFromJSON(
   jsonString: string,
 ): SafeParseResult<UserEventPayload198Previous, SDKValidationError> {
@@ -3885,27 +2501,7 @@ export const UserEventPayload198Next$inboundSchema: z.ZodType<
 > = z.object({
   functionZeroConfigFailover: types.boolean(),
 });
-/** @internal */
-export type UserEventPayload198Next$Outbound = {
-  functionZeroConfigFailover: boolean;
-};
 
-/** @internal */
-export const UserEventPayload198Next$outboundSchema: z.ZodType<
-  UserEventPayload198Next$Outbound,
-  z.ZodTypeDef,
-  UserEventPayload198Next
-> = z.object({
-  functionZeroConfigFailover: z.boolean(),
-});
-
-export function userEventPayload198NextToJSON(
-  userEventPayload198Next: UserEventPayload198Next,
-): string {
-  return JSON.stringify(
-    UserEventPayload198Next$outboundSchema.parse(userEventPayload198Next),
-  );
-}
 export function userEventPayload198NextFromJSON(
   jsonString: string,
 ): SafeParseResult<UserEventPayload198Next, SDKValidationError> {
@@ -3927,33 +2523,7 @@ export const OneHundredAndNinetyEight$inboundSchema: z.ZodType<
   previous: z.lazy(() => UserEventPayload198Previous$inboundSchema),
   next: z.lazy(() => UserEventPayload198Next$inboundSchema),
 });
-/** @internal */
-export type OneHundredAndNinetyEight$Outbound = {
-  projectId: string;
-  projectName: string;
-  previous: UserEventPayload198Previous$Outbound;
-  next: UserEventPayload198Next$Outbound;
-};
 
-/** @internal */
-export const OneHundredAndNinetyEight$outboundSchema: z.ZodType<
-  OneHundredAndNinetyEight$Outbound,
-  z.ZodTypeDef,
-  OneHundredAndNinetyEight
-> = z.object({
-  projectId: z.string(),
-  projectName: z.string(),
-  previous: z.lazy(() => UserEventPayload198Previous$outboundSchema),
-  next: z.lazy(() => UserEventPayload198Next$outboundSchema),
-});
-
-export function oneHundredAndNinetyEightToJSON(
-  oneHundredAndNinetyEight: OneHundredAndNinetyEight,
-): string {
-  return JSON.stringify(
-    OneHundredAndNinetyEight$outboundSchema.parse(oneHundredAndNinetyEight),
-  );
-}
 export function oneHundredAndNinetyEightFromJSON(
   jsonString: string,
 ): SafeParseResult<OneHundredAndNinetyEight, SDKValidationError> {
@@ -3972,29 +2542,7 @@ export const UserEventPayload197Previous$inboundSchema: z.ZodType<
 > = z.object({
   functionDefaultRegions: types.nullable(z.array(types.string())),
 });
-/** @internal */
-export type UserEventPayload197Previous$Outbound = {
-  functionDefaultRegions: Array<string> | null;
-};
 
-/** @internal */
-export const UserEventPayload197Previous$outboundSchema: z.ZodType<
-  UserEventPayload197Previous$Outbound,
-  z.ZodTypeDef,
-  UserEventPayload197Previous
-> = z.object({
-  functionDefaultRegions: z.nullable(z.array(z.string())),
-});
-
-export function userEventPayload197PreviousToJSON(
-  userEventPayload197Previous: UserEventPayload197Previous,
-): string {
-  return JSON.stringify(
-    UserEventPayload197Previous$outboundSchema.parse(
-      userEventPayload197Previous,
-    ),
-  );
-}
 export function userEventPayload197PreviousFromJSON(
   jsonString: string,
 ): SafeParseResult<UserEventPayload197Previous, SDKValidationError> {
@@ -4013,27 +2561,7 @@ export const UserEventPayload197Next$inboundSchema: z.ZodType<
 > = z.object({
   functionDefaultRegions: z.array(types.string()),
 });
-/** @internal */
-export type UserEventPayload197Next$Outbound = {
-  functionDefaultRegions: Array<string>;
-};
 
-/** @internal */
-export const UserEventPayload197Next$outboundSchema: z.ZodType<
-  UserEventPayload197Next$Outbound,
-  z.ZodTypeDef,
-  UserEventPayload197Next
-> = z.object({
-  functionDefaultRegions: z.array(z.string()),
-});
-
-export function userEventPayload197NextToJSON(
-  userEventPayload197Next: UserEventPayload197Next,
-): string {
-  return JSON.stringify(
-    UserEventPayload197Next$outboundSchema.parse(userEventPayload197Next),
-  );
-}
 export function userEventPayload197NextFromJSON(
   jsonString: string,
 ): SafeParseResult<UserEventPayload197Next, SDKValidationError> {
@@ -4055,33 +2583,7 @@ export const OneHundredAndNinetySeven$inboundSchema: z.ZodType<
   previous: z.lazy(() => UserEventPayload197Previous$inboundSchema),
   next: z.lazy(() => UserEventPayload197Next$inboundSchema),
 });
-/** @internal */
-export type OneHundredAndNinetySeven$Outbound = {
-  projectId: string;
-  projectName: string;
-  previous: UserEventPayload197Previous$Outbound;
-  next: UserEventPayload197Next$Outbound;
-};
 
-/** @internal */
-export const OneHundredAndNinetySeven$outboundSchema: z.ZodType<
-  OneHundredAndNinetySeven$Outbound,
-  z.ZodTypeDef,
-  OneHundredAndNinetySeven
-> = z.object({
-  projectId: z.string(),
-  projectName: z.string(),
-  previous: z.lazy(() => UserEventPayload197Previous$outboundSchema),
-  next: z.lazy(() => UserEventPayload197Next$outboundSchema),
-});
-
-export function oneHundredAndNinetySevenToJSON(
-  oneHundredAndNinetySeven: OneHundredAndNinetySeven,
-): string {
-  return JSON.stringify(
-    OneHundredAndNinetySeven$outboundSchema.parse(oneHundredAndNinetySeven),
-  );
-}
 export function oneHundredAndNinetySevenFromJSON(
   jsonString: string,
 ): SafeParseResult<OneHundredAndNinetySeven, SDKValidationError> {
@@ -4100,29 +2602,7 @@ export const UserEventPayload196Previous$inboundSchema: z.ZodType<
 > = z.object({
   functionDefaultMemoryType: types.nullable(types.string()),
 });
-/** @internal */
-export type UserEventPayload196Previous$Outbound = {
-  functionDefaultMemoryType: string | null;
-};
 
-/** @internal */
-export const UserEventPayload196Previous$outboundSchema: z.ZodType<
-  UserEventPayload196Previous$Outbound,
-  z.ZodTypeDef,
-  UserEventPayload196Previous
-> = z.object({
-  functionDefaultMemoryType: z.nullable(z.string()),
-});
-
-export function userEventPayload196PreviousToJSON(
-  userEventPayload196Previous: UserEventPayload196Previous,
-): string {
-  return JSON.stringify(
-    UserEventPayload196Previous$outboundSchema.parse(
-      userEventPayload196Previous,
-    ),
-  );
-}
 export function userEventPayload196PreviousFromJSON(
   jsonString: string,
 ): SafeParseResult<UserEventPayload196Previous, SDKValidationError> {
@@ -4141,27 +2621,7 @@ export const UserEventPayload196Next$inboundSchema: z.ZodType<
 > = z.object({
   functionDefaultMemoryType: types.string(),
 });
-/** @internal */
-export type UserEventPayload196Next$Outbound = {
-  functionDefaultMemoryType: string;
-};
 
-/** @internal */
-export const UserEventPayload196Next$outboundSchema: z.ZodType<
-  UserEventPayload196Next$Outbound,
-  z.ZodTypeDef,
-  UserEventPayload196Next
-> = z.object({
-  functionDefaultMemoryType: z.string(),
-});
-
-export function userEventPayload196NextToJSON(
-  userEventPayload196Next: UserEventPayload196Next,
-): string {
-  return JSON.stringify(
-    UserEventPayload196Next$outboundSchema.parse(userEventPayload196Next),
-  );
-}
 export function userEventPayload196NextFromJSON(
   jsonString: string,
 ): SafeParseResult<UserEventPayload196Next, SDKValidationError> {
@@ -4183,33 +2643,7 @@ export const OneHundredAndNinetySix$inboundSchema: z.ZodType<
   previous: z.lazy(() => UserEventPayload196Previous$inboundSchema),
   next: z.lazy(() => UserEventPayload196Next$inboundSchema),
 });
-/** @internal */
-export type OneHundredAndNinetySix$Outbound = {
-  projectId: string;
-  projectName: string;
-  previous: UserEventPayload196Previous$Outbound;
-  next: UserEventPayload196Next$Outbound;
-};
 
-/** @internal */
-export const OneHundredAndNinetySix$outboundSchema: z.ZodType<
-  OneHundredAndNinetySix$Outbound,
-  z.ZodTypeDef,
-  OneHundredAndNinetySix
-> = z.object({
-  projectId: z.string(),
-  projectName: z.string(),
-  previous: z.lazy(() => UserEventPayload196Previous$outboundSchema),
-  next: z.lazy(() => UserEventPayload196Next$outboundSchema),
-});
-
-export function oneHundredAndNinetySixToJSON(
-  oneHundredAndNinetySix: OneHundredAndNinetySix,
-): string {
-  return JSON.stringify(
-    OneHundredAndNinetySix$outboundSchema.parse(oneHundredAndNinetySix),
-  );
-}
 export function oneHundredAndNinetySixFromJSON(
   jsonString: string,
 ): SafeParseResult<OneHundredAndNinetySix, SDKValidationError> {
@@ -4228,29 +2662,7 @@ export const UserEventPayload195Previous$inboundSchema: z.ZodType<
 > = z.object({
   functionDefaultTimeout: types.nullable(types.number()),
 });
-/** @internal */
-export type UserEventPayload195Previous$Outbound = {
-  functionDefaultTimeout: number | null;
-};
 
-/** @internal */
-export const UserEventPayload195Previous$outboundSchema: z.ZodType<
-  UserEventPayload195Previous$Outbound,
-  z.ZodTypeDef,
-  UserEventPayload195Previous
-> = z.object({
-  functionDefaultTimeout: z.nullable(z.number()),
-});
-
-export function userEventPayload195PreviousToJSON(
-  userEventPayload195Previous: UserEventPayload195Previous,
-): string {
-  return JSON.stringify(
-    UserEventPayload195Previous$outboundSchema.parse(
-      userEventPayload195Previous,
-    ),
-  );
-}
 export function userEventPayload195PreviousFromJSON(
   jsonString: string,
 ): SafeParseResult<UserEventPayload195Previous, SDKValidationError> {
@@ -4269,27 +2681,7 @@ export const UserEventPayload195Next$inboundSchema: z.ZodType<
 > = z.object({
   functionDefaultTimeout: types.number(),
 });
-/** @internal */
-export type UserEventPayload195Next$Outbound = {
-  functionDefaultTimeout: number;
-};
 
-/** @internal */
-export const UserEventPayload195Next$outboundSchema: z.ZodType<
-  UserEventPayload195Next$Outbound,
-  z.ZodTypeDef,
-  UserEventPayload195Next
-> = z.object({
-  functionDefaultTimeout: z.number(),
-});
-
-export function userEventPayload195NextToJSON(
-  userEventPayload195Next: UserEventPayload195Next,
-): string {
-  return JSON.stringify(
-    UserEventPayload195Next$outboundSchema.parse(userEventPayload195Next),
-  );
-}
 export function userEventPayload195NextFromJSON(
   jsonString: string,
 ): SafeParseResult<UserEventPayload195Next, SDKValidationError> {
@@ -4311,33 +2703,7 @@ export const OneHundredAndNinetyFive$inboundSchema: z.ZodType<
   previous: z.lazy(() => UserEventPayload195Previous$inboundSchema),
   next: z.lazy(() => UserEventPayload195Next$inboundSchema),
 });
-/** @internal */
-export type OneHundredAndNinetyFive$Outbound = {
-  projectId: string;
-  projectName: string;
-  previous: UserEventPayload195Previous$Outbound;
-  next: UserEventPayload195Next$Outbound;
-};
 
-/** @internal */
-export const OneHundredAndNinetyFive$outboundSchema: z.ZodType<
-  OneHundredAndNinetyFive$Outbound,
-  z.ZodTypeDef,
-  OneHundredAndNinetyFive
-> = z.object({
-  projectId: z.string(),
-  projectName: z.string(),
-  previous: z.lazy(() => UserEventPayload195Previous$outboundSchema),
-  next: z.lazy(() => UserEventPayload195Next$outboundSchema),
-});
-
-export function oneHundredAndNinetyFiveToJSON(
-  oneHundredAndNinetyFive: OneHundredAndNinetyFive,
-): string {
-  return JSON.stringify(
-    OneHundredAndNinetyFive$outboundSchema.parse(oneHundredAndNinetyFive),
-  );
-}
 export function oneHundredAndNinetyFiveFromJSON(
   jsonString: string,
 ): SafeParseResult<OneHundredAndNinetyFive, SDKValidationError> {
@@ -4358,31 +2724,7 @@ export const OneHundredAndNinetyFour$inboundSchema: z.ZodType<
   projectId: types.string(),
   enableFunctionsExtendedMaxDuration: types.boolean(),
 });
-/** @internal */
-export type OneHundredAndNinetyFour$Outbound = {
-  projectName?: string | undefined;
-  projectId: string;
-  enableFunctionsExtendedMaxDuration: boolean;
-};
 
-/** @internal */
-export const OneHundredAndNinetyFour$outboundSchema: z.ZodType<
-  OneHundredAndNinetyFour$Outbound,
-  z.ZodTypeDef,
-  OneHundredAndNinetyFour
-> = z.object({
-  projectName: z.string().optional(),
-  projectId: z.string(),
-  enableFunctionsExtendedMaxDuration: z.boolean(),
-});
-
-export function oneHundredAndNinetyFourToJSON(
-  oneHundredAndNinetyFour: OneHundredAndNinetyFour,
-): string {
-  return JSON.stringify(
-    OneHundredAndNinetyFour$outboundSchema.parse(oneHundredAndNinetyFour),
-  );
-}
 export function oneHundredAndNinetyFourFromJSON(
   jsonString: string,
 ): SafeParseResult<OneHundredAndNinetyFour, SDKValidationError> {
@@ -4403,31 +2745,7 @@ export const OneHundredAndNinetyThree$inboundSchema: z.ZodType<
   projectId: types.string(),
   enableFunctionsBeta: types.boolean(),
 });
-/** @internal */
-export type OneHundredAndNinetyThree$Outbound = {
-  projectName?: string | undefined;
-  projectId: string;
-  enableFunctionsBeta: boolean;
-};
 
-/** @internal */
-export const OneHundredAndNinetyThree$outboundSchema: z.ZodType<
-  OneHundredAndNinetyThree$Outbound,
-  z.ZodTypeDef,
-  OneHundredAndNinetyThree
-> = z.object({
-  projectName: z.string().optional(),
-  projectId: z.string(),
-  enableFunctionsBeta: z.boolean(),
-});
-
-export function oneHundredAndNinetyThreeToJSON(
-  oneHundredAndNinetyThree: OneHundredAndNinetyThree,
-): string {
-  return JSON.stringify(
-    OneHundredAndNinetyThree$outboundSchema.parse(oneHundredAndNinetyThree),
-  );
-}
 export function oneHundredAndNinetyThreeFromJSON(
   jsonString: string,
 ): SafeParseResult<OneHundredAndNinetyThree, SDKValidationError> {
@@ -4449,33 +2767,7 @@ export const OneHundredAndNinetyTwo$inboundSchema: z.ZodType<
   customEnvironmentId: types.string(),
   customEnvironmentSlug: types.string(),
 });
-/** @internal */
-export type OneHundredAndNinetyTwo$Outbound = {
-  projectId: string;
-  projectName: string;
-  customEnvironmentId: string;
-  customEnvironmentSlug: string;
-};
 
-/** @internal */
-export const OneHundredAndNinetyTwo$outboundSchema: z.ZodType<
-  OneHundredAndNinetyTwo$Outbound,
-  z.ZodTypeDef,
-  OneHundredAndNinetyTwo
-> = z.object({
-  projectId: z.string(),
-  projectName: z.string(),
-  customEnvironmentId: z.string(),
-  customEnvironmentSlug: z.string(),
-});
-
-export function oneHundredAndNinetyTwoToJSON(
-  oneHundredAndNinetyTwo: OneHundredAndNinetyTwo,
-): string {
-  return JSON.stringify(
-    OneHundredAndNinetyTwo$outboundSchema.parse(oneHundredAndNinetyTwo),
-  );
-}
 export function oneHundredAndNinetyTwoFromJSON(
   jsonString: string,
 ): SafeParseResult<OneHundredAndNinetyTwo, SDKValidationError> {
@@ -4490,10 +2782,6 @@ export function oneHundredAndNinetyTwoFromJSON(
 export const UserEventPayload191Type$inboundSchema: z.ZodNativeEnum<
   typeof UserEventPayload191Type
 > = z.nativeEnum(UserEventPayload191Type);
-/** @internal */
-export const UserEventPayload191Type$outboundSchema: z.ZodNativeEnum<
-  typeof UserEventPayload191Type
-> = UserEventPayload191Type$inboundSchema;
 
 /** @internal */
 export const BranchMatcher$inboundSchema: z.ZodType<
@@ -4504,25 +2792,7 @@ export const BranchMatcher$inboundSchema: z.ZodType<
   type: UserEventPayload191Type$inboundSchema,
   pattern: types.string(),
 });
-/** @internal */
-export type BranchMatcher$Outbound = {
-  type: string;
-  pattern: string;
-};
 
-/** @internal */
-export const BranchMatcher$outboundSchema: z.ZodType<
-  BranchMatcher$Outbound,
-  z.ZodTypeDef,
-  BranchMatcher
-> = z.object({
-  type: UserEventPayload191Type$outboundSchema,
-  pattern: z.string(),
-});
-
-export function branchMatcherToJSON(branchMatcher: BranchMatcher): string {
-  return JSON.stringify(BranchMatcher$outboundSchema.parse(branchMatcher));
-}
 export function branchMatcherFromJSON(
   jsonString: string,
 ): SafeParseResult<BranchMatcher, SDKValidationError> {
@@ -4541,29 +2811,7 @@ export const UserEventPayload191Previous$inboundSchema: z.ZodType<
 > = z.object({
   branchMatcher: types.optional(z.lazy(() => BranchMatcher$inboundSchema)),
 });
-/** @internal */
-export type UserEventPayload191Previous$Outbound = {
-  branchMatcher?: BranchMatcher$Outbound | undefined;
-};
 
-/** @internal */
-export const UserEventPayload191Previous$outboundSchema: z.ZodType<
-  UserEventPayload191Previous$Outbound,
-  z.ZodTypeDef,
-  UserEventPayload191Previous
-> = z.object({
-  branchMatcher: z.lazy(() => BranchMatcher$outboundSchema).optional(),
-});
-
-export function userEventPayload191PreviousToJSON(
-  userEventPayload191Previous: UserEventPayload191Previous,
-): string {
-  return JSON.stringify(
-    UserEventPayload191Previous$outboundSchema.parse(
-      userEventPayload191Previous,
-    ),
-  );
-}
 export function userEventPayload191PreviousFromJSON(
   jsonString: string,
 ): SafeParseResult<UserEventPayload191Previous, SDKValidationError> {
@@ -4578,10 +2826,6 @@ export function userEventPayload191PreviousFromJSON(
 export const UserEventPayload191NextType$inboundSchema: z.ZodNativeEnum<
   typeof UserEventPayload191NextType
 > = z.nativeEnum(UserEventPayload191NextType);
-/** @internal */
-export const UserEventPayload191NextType$outboundSchema: z.ZodNativeEnum<
-  typeof UserEventPayload191NextType
-> = UserEventPayload191NextType$inboundSchema;
 
 /** @internal */
 export const PayloadBranchMatcher$inboundSchema: z.ZodType<
@@ -4592,29 +2836,7 @@ export const PayloadBranchMatcher$inboundSchema: z.ZodType<
   type: UserEventPayload191NextType$inboundSchema,
   pattern: types.string(),
 });
-/** @internal */
-export type PayloadBranchMatcher$Outbound = {
-  type: string;
-  pattern: string;
-};
 
-/** @internal */
-export const PayloadBranchMatcher$outboundSchema: z.ZodType<
-  PayloadBranchMatcher$Outbound,
-  z.ZodTypeDef,
-  PayloadBranchMatcher
-> = z.object({
-  type: UserEventPayload191NextType$outboundSchema,
-  pattern: z.string(),
-});
-
-export function payloadBranchMatcherToJSON(
-  payloadBranchMatcher: PayloadBranchMatcher,
-): string {
-  return JSON.stringify(
-    PayloadBranchMatcher$outboundSchema.parse(payloadBranchMatcher),
-  );
-}
 export function payloadBranchMatcherFromJSON(
   jsonString: string,
 ): SafeParseResult<PayloadBranchMatcher, SDKValidationError> {
@@ -4635,27 +2857,7 @@ export const UserEventPayload191Next$inboundSchema: z.ZodType<
     z.lazy(() => PayloadBranchMatcher$inboundSchema),
   ),
 });
-/** @internal */
-export type UserEventPayload191Next$Outbound = {
-  branchMatcher?: PayloadBranchMatcher$Outbound | undefined;
-};
 
-/** @internal */
-export const UserEventPayload191Next$outboundSchema: z.ZodType<
-  UserEventPayload191Next$Outbound,
-  z.ZodTypeDef,
-  UserEventPayload191Next
-> = z.object({
-  branchMatcher: z.lazy(() => PayloadBranchMatcher$outboundSchema).optional(),
-});
-
-export function userEventPayload191NextToJSON(
-  userEventPayload191Next: UserEventPayload191Next,
-): string {
-  return JSON.stringify(
-    UserEventPayload191Next$outboundSchema.parse(userEventPayload191Next),
-  );
-}
 export function userEventPayload191NextFromJSON(
   jsonString: string,
 ): SafeParseResult<UserEventPayload191Next, SDKValidationError> {
@@ -4679,37 +2881,7 @@ export const OneHundredAndNinetyOne$inboundSchema: z.ZodType<
   previous: z.lazy(() => UserEventPayload191Previous$inboundSchema),
   next: z.lazy(() => UserEventPayload191Next$inboundSchema),
 });
-/** @internal */
-export type OneHundredAndNinetyOne$Outbound = {
-  projectId: string;
-  projectName: string;
-  customEnvironmentId: string;
-  customEnvironmentSlug: string;
-  previous: UserEventPayload191Previous$Outbound;
-  next: UserEventPayload191Next$Outbound;
-};
 
-/** @internal */
-export const OneHundredAndNinetyOne$outboundSchema: z.ZodType<
-  OneHundredAndNinetyOne$Outbound,
-  z.ZodTypeDef,
-  OneHundredAndNinetyOne
-> = z.object({
-  projectId: z.string(),
-  projectName: z.string(),
-  customEnvironmentId: z.string(),
-  customEnvironmentSlug: z.string(),
-  previous: z.lazy(() => UserEventPayload191Previous$outboundSchema),
-  next: z.lazy(() => UserEventPayload191Next$outboundSchema),
-});
-
-export function oneHundredAndNinetyOneToJSON(
-  oneHundredAndNinetyOne: OneHundredAndNinetyOne,
-): string {
-  return JSON.stringify(
-    OneHundredAndNinetyOne$outboundSchema.parse(oneHundredAndNinetyOne),
-  );
-}
 export function oneHundredAndNinetyOneFromJSON(
   jsonString: string,
 ): SafeParseResult<OneHundredAndNinetyOne, SDKValidationError> {
@@ -4730,31 +2902,7 @@ export const OneHundredAndNinety$inboundSchema: z.ZodType<
   projectName: types.string(),
   previewDeploymentsEnabled: types.boolean(),
 });
-/** @internal */
-export type OneHundredAndNinety$Outbound = {
-  projectId: string;
-  projectName: string;
-  previewDeploymentsEnabled: boolean;
-};
 
-/** @internal */
-export const OneHundredAndNinety$outboundSchema: z.ZodType<
-  OneHundredAndNinety$Outbound,
-  z.ZodTypeDef,
-  OneHundredAndNinety
-> = z.object({
-  projectId: z.string(),
-  projectName: z.string(),
-  previewDeploymentsEnabled: z.boolean(),
-});
-
-export function oneHundredAndNinetyToJSON(
-  oneHundredAndNinety: OneHundredAndNinety,
-): string {
-  return JSON.stringify(
-    OneHundredAndNinety$outboundSchema.parse(oneHundredAndNinety),
-  );
-}
 export function oneHundredAndNinetyFromJSON(
   jsonString: string,
 ): SafeParseResult<OneHundredAndNinety, SDKValidationError> {
@@ -4775,31 +2923,7 @@ export const OneHundredAndEightyNine$inboundSchema: z.ZodType<
   projectName: types.string(),
   autoAssignCustomDomains: types.boolean(),
 });
-/** @internal */
-export type OneHundredAndEightyNine$Outbound = {
-  projectId: string;
-  projectName: string;
-  autoAssignCustomDomains: boolean;
-};
 
-/** @internal */
-export const OneHundredAndEightyNine$outboundSchema: z.ZodType<
-  OneHundredAndEightyNine$Outbound,
-  z.ZodTypeDef,
-  OneHundredAndEightyNine
-> = z.object({
-  projectId: z.string(),
-  projectName: z.string(),
-  autoAssignCustomDomains: z.boolean(),
-});
-
-export function oneHundredAndEightyNineToJSON(
-  oneHundredAndEightyNine: OneHundredAndEightyNine,
-): string {
-  return JSON.stringify(
-    OneHundredAndEightyNine$outboundSchema.parse(oneHundredAndEightyNine),
-  );
-}
 export function oneHundredAndEightyNineFromJSON(
   jsonString: string,
 ): SafeParseResult<OneHundredAndEightyNine, SDKValidationError> {
@@ -4814,19 +2938,11 @@ export function oneHundredAndEightyNineFromJSON(
 export const BuildQueueConfiguration$inboundSchema: z.ZodNativeEnum<
   typeof BuildQueueConfiguration
 > = z.nativeEnum(BuildQueueConfiguration);
-/** @internal */
-export const BuildQueueConfiguration$outboundSchema: z.ZodNativeEnum<
-  typeof BuildQueueConfiguration
-> = BuildQueueConfiguration$inboundSchema;
 
 /** @internal */
 export const OldBuildQueueConfiguration$inboundSchema: z.ZodNativeEnum<
   typeof OldBuildQueueConfiguration
 > = z.nativeEnum(OldBuildQueueConfiguration);
-/** @internal */
-export const OldBuildQueueConfiguration$outboundSchema: z.ZodNativeEnum<
-  typeof OldBuildQueueConfiguration
-> = OldBuildQueueConfiguration$inboundSchema;
 
 /** @internal */
 export const OneHundredAndEightyEight$inboundSchema: z.ZodType<
@@ -4845,38 +2961,7 @@ export const OneHundredAndEightyEight$inboundSchema: z.ZodType<
     OldBuildQueueConfiguration$inboundSchema,
   ),
 });
-/** @internal */
-export type OneHundredAndEightyEight$Outbound = {
-  projectId: string;
-  projectName: string;
-  elasticConcurrencyEnabled: boolean;
-  oldElasticConcurrencyEnabled: boolean;
-  buildQueueConfiguration?: string | undefined;
-  oldBuildQueueConfiguration?: string | undefined;
-};
 
-/** @internal */
-export const OneHundredAndEightyEight$outboundSchema: z.ZodType<
-  OneHundredAndEightyEight$Outbound,
-  z.ZodTypeDef,
-  OneHundredAndEightyEight
-> = z.object({
-  projectId: z.string(),
-  projectName: z.string(),
-  elasticConcurrencyEnabled: z.boolean(),
-  oldElasticConcurrencyEnabled: z.boolean(),
-  buildQueueConfiguration: BuildQueueConfiguration$outboundSchema.optional(),
-  oldBuildQueueConfiguration: OldBuildQueueConfiguration$outboundSchema
-    .optional(),
-});
-
-export function oneHundredAndEightyEightToJSON(
-  oneHundredAndEightyEight: OneHundredAndEightyEight,
-): string {
-  return JSON.stringify(
-    OneHundredAndEightyEight$outboundSchema.parse(oneHundredAndEightyEight),
-  );
-}
 export function oneHundredAndEightyEightFromJSON(
   jsonString: string,
 ): SafeParseResult<OneHundredAndEightyEight, SDKValidationError> {
@@ -4896,29 +2981,7 @@ export const OneHundredAndEightySeven$inboundSchema: z.ZodType<
   name: types.string(),
   ownerId: types.string(),
 });
-/** @internal */
-export type OneHundredAndEightySeven$Outbound = {
-  name: string;
-  ownerId: string;
-};
 
-/** @internal */
-export const OneHundredAndEightySeven$outboundSchema: z.ZodType<
-  OneHundredAndEightySeven$Outbound,
-  z.ZodTypeDef,
-  OneHundredAndEightySeven
-> = z.object({
-  name: z.string(),
-  ownerId: z.string(),
-});
-
-export function oneHundredAndEightySevenToJSON(
-  oneHundredAndEightySeven: OneHundredAndEightySeven,
-): string {
-  return JSON.stringify(
-    OneHundredAndEightySeven$outboundSchema.parse(oneHundredAndEightySeven),
-  );
-}
 export function oneHundredAndEightySevenFromJSON(
   jsonString: string,
 ): SafeParseResult<OneHundredAndEightySeven, SDKValidationError> {
@@ -4933,10 +2996,6 @@ export function oneHundredAndEightySevenFromJSON(
 export const UserEventPayload186Action$inboundSchema: z.ZodNativeEnum<
   typeof UserEventPayload186Action
 > = z.nativeEnum(UserEventPayload186Action);
-/** @internal */
-export const UserEventPayload186Action$outboundSchema: z.ZodNativeEnum<
-  typeof UserEventPayload186Action
-> = UserEventPayload186Action$inboundSchema;
 
 /** @internal */
 export const OneHundredAndEightySix$inboundSchema: z.ZodType<
@@ -4948,31 +3007,7 @@ export const OneHundredAndEightySix$inboundSchema: z.ZodType<
   projectName: types.string(),
   action: UserEventPayload186Action$inboundSchema,
 });
-/** @internal */
-export type OneHundredAndEightySix$Outbound = {
-  projectId: string;
-  projectName: string;
-  action: string;
-};
 
-/** @internal */
-export const OneHundredAndEightySix$outboundSchema: z.ZodType<
-  OneHundredAndEightySix$Outbound,
-  z.ZodTypeDef,
-  OneHundredAndEightySix
-> = z.object({
-  projectId: z.string(),
-  projectName: z.string(),
-  action: UserEventPayload186Action$outboundSchema,
-});
-
-export function oneHundredAndEightySixToJSON(
-  oneHundredAndEightySix: OneHundredAndEightySix,
-): string {
-  return JSON.stringify(
-    OneHundredAndEightySix$outboundSchema.parse(oneHundredAndEightySix),
-  );
-}
 export function oneHundredAndEightySixFromJSON(
   jsonString: string,
 ): SafeParseResult<OneHundredAndEightySix, SDKValidationError> {
@@ -4992,29 +3027,7 @@ export const OneHundredAndEightyFive$inboundSchema: z.ZodType<
   projectName: types.optional(types.string()),
   projectId: types.string(),
 });
-/** @internal */
-export type OneHundredAndEightyFive$Outbound = {
-  projectName?: string | undefined;
-  projectId: string;
-};
 
-/** @internal */
-export const OneHundredAndEightyFive$outboundSchema: z.ZodType<
-  OneHundredAndEightyFive$Outbound,
-  z.ZodTypeDef,
-  OneHundredAndEightyFive
-> = z.object({
-  projectName: z.string().optional(),
-  projectId: z.string(),
-});
-
-export function oneHundredAndEightyFiveToJSON(
-  oneHundredAndEightyFive: OneHundredAndEightyFive,
-): string {
-  return JSON.stringify(
-    OneHundredAndEightyFive$outboundSchema.parse(oneHundredAndEightyFive),
-  );
-}
 export function oneHundredAndEightyFiveFromJSON(
   jsonString: string,
 ): SafeParseResult<OneHundredAndEightyFive, SDKValidationError> {
@@ -5034,29 +3047,7 @@ export const UserEventPayload184Team$inboundSchema: z.ZodType<
   id: types.string(),
   name: types.string(),
 });
-/** @internal */
-export type UserEventPayload184Team$Outbound = {
-  id: string;
-  name: string;
-};
 
-/** @internal */
-export const UserEventPayload184Team$outboundSchema: z.ZodType<
-  UserEventPayload184Team$Outbound,
-  z.ZodTypeDef,
-  UserEventPayload184Team
-> = z.object({
-  id: z.string(),
-  name: z.string(),
-});
-
-export function userEventPayload184TeamToJSON(
-  userEventPayload184Team: UserEventPayload184Team,
-): string {
-  return JSON.stringify(
-    UserEventPayload184Team$outboundSchema.parse(userEventPayload184Team),
-  );
-}
 export function userEventPayload184TeamFromJSON(
   jsonString: string,
 ): SafeParseResult<UserEventPayload184Team, SDKValidationError> {
@@ -5070,26 +3061,11 @@ export function userEventPayload184TeamFromJSON(
 /** @internal */
 export const EnvId2$inboundSchema: z.ZodNativeEnum<typeof EnvId2> = z
   .nativeEnum(EnvId2);
-/** @internal */
-export const EnvId2$outboundSchema: z.ZodNativeEnum<typeof EnvId2> =
-  EnvId2$inboundSchema;
 
 /** @internal */
 export const EnvId$inboundSchema: z.ZodType<EnvId, z.ZodTypeDef, unknown> =
   smartUnion([types.string(), EnvId2$inboundSchema]);
-/** @internal */
-export type EnvId$Outbound = string | string;
 
-/** @internal */
-export const EnvId$outboundSchema: z.ZodType<
-  EnvId$Outbound,
-  z.ZodTypeDef,
-  EnvId
-> = smartUnion([z.string(), EnvId2$outboundSchema]);
-
-export function envIdToJSON(envId: EnvId): string {
-  return JSON.stringify(EnvId$outboundSchema.parse(envId));
-}
 export function envIdFromJSON(
   jsonString: string,
 ): SafeParseResult<EnvId, SDKValidationError> {
@@ -5106,22 +3082,7 @@ export const Aws$inboundSchema: z.ZodType<Aws, z.ZodTypeDef, unknown> = z
     subnetIds: z.array(types.string()),
     securityGroupId: types.optional(types.string()),
   });
-/** @internal */
-export type Aws$Outbound = {
-  subnetIds: Array<string>;
-  securityGroupId?: string | undefined;
-};
 
-/** @internal */
-export const Aws$outboundSchema: z.ZodType<Aws$Outbound, z.ZodTypeDef, Aws> = z
-  .object({
-    subnetIds: z.array(z.string()),
-    securityGroupId: z.string().optional(),
-  });
-
-export function awsToJSON(aws: Aws): string {
-  return JSON.stringify(Aws$outboundSchema.parse(aws));
-}
 export function awsFromJSON(
   jsonString: string,
 ): SafeParseResult<Aws, SDKValidationError> {
@@ -5147,41 +3108,7 @@ export const OldConnectConfigurations$inboundSchema: z.ZodType<
   createdAt: types.number(),
   updatedAt: types.number(),
 });
-/** @internal */
-export type OldConnectConfigurations$Outbound = {
-  envId: string | string;
-  connectConfigurationId: string;
-  dc?: string | undefined;
-  passive: boolean;
-  buildsEnabled: boolean;
-  aws?: Aws$Outbound | undefined;
-  createdAt: number;
-  updatedAt: number;
-};
 
-/** @internal */
-export const OldConnectConfigurations$outboundSchema: z.ZodType<
-  OldConnectConfigurations$Outbound,
-  z.ZodTypeDef,
-  OldConnectConfigurations
-> = z.object({
-  envId: smartUnion([z.string(), EnvId2$outboundSchema]),
-  connectConfigurationId: z.string(),
-  dc: z.string().optional(),
-  passive: z.boolean(),
-  buildsEnabled: z.boolean(),
-  aws: z.lazy(() => Aws$outboundSchema).optional(),
-  createdAt: z.number(),
-  updatedAt: z.number(),
-});
-
-export function oldConnectConfigurationsToJSON(
-  oldConnectConfigurations: OldConnectConfigurations,
-): string {
-  return JSON.stringify(
-    OldConnectConfigurations$outboundSchema.parse(oldConnectConfigurations),
-  );
-}
 export function oldConnectConfigurationsFromJSON(
   jsonString: string,
 ): SafeParseResult<OldConnectConfigurations, SDKValidationError> {
@@ -5196,10 +3123,6 @@ export function oldConnectConfigurationsFromJSON(
 export const UserEventEnvId2$inboundSchema: z.ZodNativeEnum<
   typeof UserEventEnvId2
 > = z.nativeEnum(UserEventEnvId2);
-/** @internal */
-export const UserEventEnvId2$outboundSchema: z.ZodNativeEnum<
-  typeof UserEventEnvId2
-> = UserEventEnvId2$inboundSchema;
 
 /** @internal */
 export const PayloadEnvId$inboundSchema: z.ZodType<
@@ -5207,19 +3130,7 @@ export const PayloadEnvId$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = smartUnion([types.string(), UserEventEnvId2$inboundSchema]);
-/** @internal */
-export type PayloadEnvId$Outbound = string | string;
 
-/** @internal */
-export const PayloadEnvId$outboundSchema: z.ZodType<
-  PayloadEnvId$Outbound,
-  z.ZodTypeDef,
-  PayloadEnvId
-> = smartUnion([z.string(), UserEventEnvId2$outboundSchema]);
-
-export function payloadEnvIdToJSON(payloadEnvId: PayloadEnvId): string {
-  return JSON.stringify(PayloadEnvId$outboundSchema.parse(payloadEnvId));
-}
 export function payloadEnvIdFromJSON(
   jsonString: string,
 ): SafeParseResult<PayloadEnvId, SDKValidationError> {
@@ -5239,25 +3150,7 @@ export const PayloadAws$inboundSchema: z.ZodType<
   subnetIds: z.array(types.string()),
   securityGroupId: types.optional(types.string()),
 });
-/** @internal */
-export type PayloadAws$Outbound = {
-  subnetIds: Array<string>;
-  securityGroupId?: string | undefined;
-};
 
-/** @internal */
-export const PayloadAws$outboundSchema: z.ZodType<
-  PayloadAws$Outbound,
-  z.ZodTypeDef,
-  PayloadAws
-> = z.object({
-  subnetIds: z.array(z.string()),
-  securityGroupId: z.string().optional(),
-});
-
-export function payloadAwsToJSON(payloadAws: PayloadAws): string {
-  return JSON.stringify(PayloadAws$outboundSchema.parse(payloadAws));
-}
 export function payloadAwsFromJSON(
   jsonString: string,
 ): SafeParseResult<PayloadAws, SDKValidationError> {
@@ -5283,41 +3176,7 @@ export const NewConnectConfigurations$inboundSchema: z.ZodType<
   createdAt: types.number(),
   updatedAt: types.number(),
 });
-/** @internal */
-export type NewConnectConfigurations$Outbound = {
-  envId: string | string;
-  connectConfigurationId: string;
-  dc?: string | undefined;
-  passive: boolean;
-  buildsEnabled: boolean;
-  aws?: PayloadAws$Outbound | undefined;
-  createdAt: number;
-  updatedAt: number;
-};
 
-/** @internal */
-export const NewConnectConfigurations$outboundSchema: z.ZodType<
-  NewConnectConfigurations$Outbound,
-  z.ZodTypeDef,
-  NewConnectConfigurations
-> = z.object({
-  envId: smartUnion([z.string(), UserEventEnvId2$outboundSchema]),
-  connectConfigurationId: z.string(),
-  dc: z.string().optional(),
-  passive: z.boolean(),
-  buildsEnabled: z.boolean(),
-  aws: z.lazy(() => PayloadAws$outboundSchema).optional(),
-  createdAt: z.number(),
-  updatedAt: z.number(),
-});
-
-export function newConnectConfigurationsToJSON(
-  newConnectConfigurations: NewConnectConfigurations,
-): string {
-  return JSON.stringify(
-    NewConnectConfigurations$outboundSchema.parse(newConnectConfigurations),
-  );
-}
 export function newConnectConfigurationsFromJSON(
   jsonString: string,
 ): SafeParseResult<NewConnectConfigurations, SDKValidationError> {
@@ -5343,37 +3202,7 @@ export const UserEventPayload184Project$inboundSchema: z.ZodType<
     z.array(z.lazy(() => NewConnectConfigurations$inboundSchema)),
   ),
 });
-/** @internal */
-export type UserEventPayload184Project$Outbound = {
-  id: string;
-  name?: string | undefined;
-  oldConnectConfigurations: Array<OldConnectConfigurations$Outbound> | null;
-  newConnectConfigurations: Array<NewConnectConfigurations$Outbound> | null;
-};
 
-/** @internal */
-export const UserEventPayload184Project$outboundSchema: z.ZodType<
-  UserEventPayload184Project$Outbound,
-  z.ZodTypeDef,
-  UserEventPayload184Project
-> = z.object({
-  id: z.string(),
-  name: z.string().optional(),
-  oldConnectConfigurations: z.nullable(
-    z.array(z.lazy(() => OldConnectConfigurations$outboundSchema)),
-  ),
-  newConnectConfigurations: z.nullable(
-    z.array(z.lazy(() => NewConnectConfigurations$outboundSchema)),
-  ),
-});
-
-export function userEventPayload184ProjectToJSON(
-  userEventPayload184Project: UserEventPayload184Project,
-): string {
-  return JSON.stringify(
-    UserEventPayload184Project$outboundSchema.parse(userEventPayload184Project),
-  );
-}
 export function userEventPayload184ProjectFromJSON(
   jsonString: string,
 ): SafeParseResult<UserEventPayload184Project, SDKValidationError> {
@@ -5393,29 +3222,7 @@ export const OneHundredAndEightyFour$inboundSchema: z.ZodType<
   team: z.lazy(() => UserEventPayload184Team$inboundSchema),
   project: z.lazy(() => UserEventPayload184Project$inboundSchema),
 });
-/** @internal */
-export type OneHundredAndEightyFour$Outbound = {
-  team: UserEventPayload184Team$Outbound;
-  project: UserEventPayload184Project$Outbound;
-};
 
-/** @internal */
-export const OneHundredAndEightyFour$outboundSchema: z.ZodType<
-  OneHundredAndEightyFour$Outbound,
-  z.ZodTypeDef,
-  OneHundredAndEightyFour
-> = z.object({
-  team: z.lazy(() => UserEventPayload184Team$outboundSchema),
-  project: z.lazy(() => UserEventPayload184Project$outboundSchema),
-});
-
-export function oneHundredAndEightyFourToJSON(
-  oneHundredAndEightyFour: OneHundredAndEightyFour,
-): string {
-  return JSON.stringify(
-    OneHundredAndEightyFour$outboundSchema.parse(oneHundredAndEightyFour),
-  );
-}
 export function oneHundredAndEightyFourFromJSON(
   jsonString: string,
 ): SafeParseResult<OneHundredAndEightyFour, SDKValidationError> {
@@ -5437,33 +3244,7 @@ export const OneHundredAndEightyThree$inboundSchema: z.ZodType<
   target: types.optional(z.array(types.string())),
   updated: types.optional(types.boolean()),
 });
-/** @internal */
-export type OneHundredAndEightyThree$Outbound = {
-  projectId?: string | undefined;
-  projectName?: string | undefined;
-  target?: Array<string> | undefined;
-  updated?: boolean | undefined;
-};
 
-/** @internal */
-export const OneHundredAndEightyThree$outboundSchema: z.ZodType<
-  OneHundredAndEightyThree$Outbound,
-  z.ZodTypeDef,
-  OneHundredAndEightyThree
-> = z.object({
-  projectId: z.string().optional(),
-  projectName: z.string().optional(),
-  target: z.array(z.string()).optional(),
-  updated: z.boolean().optional(),
-});
-
-export function oneHundredAndEightyThreeToJSON(
-  oneHundredAndEightyThree: OneHundredAndEightyThree,
-): string {
-  return JSON.stringify(
-    OneHundredAndEightyThree$outboundSchema.parse(oneHundredAndEightyThree),
-  );
-}
 export function oneHundredAndEightyThreeFromJSON(
   jsonString: string,
 ): SafeParseResult<OneHundredAndEightyThree, SDKValidationError> {
@@ -5485,33 +3266,7 @@ export const OneHundredAndEightyTwo$inboundSchema: z.ZodType<
   certId: types.optional(types.string()),
   origin: types.optional(types.string()),
 });
-/** @internal */
-export type OneHundredAndEightyTwo$Outbound = {
-  projectId?: string | undefined;
-  projectName?: string | undefined;
-  certId?: string | undefined;
-  origin?: string | undefined;
-};
 
-/** @internal */
-export const OneHundredAndEightyTwo$outboundSchema: z.ZodType<
-  OneHundredAndEightyTwo$Outbound,
-  z.ZodTypeDef,
-  OneHundredAndEightyTwo
-> = z.object({
-  projectId: z.string().optional(),
-  projectName: z.string().optional(),
-  certId: z.string().optional(),
-  origin: z.string().optional(),
-});
-
-export function oneHundredAndEightyTwoToJSON(
-  oneHundredAndEightyTwo: OneHundredAndEightyTwo,
-): string {
-  return JSON.stringify(
-    OneHundredAndEightyTwo$outboundSchema.parse(oneHundredAndEightyTwo),
-  );
-}
 export function oneHundredAndEightyTwoFromJSON(
   jsonString: string,
 ): SafeParseResult<OneHundredAndEightyTwo, SDKValidationError> {
@@ -5536,39 +3291,7 @@ export const OneHundredAndEightyOne$inboundSchema: z.ZodType<
   nextBuildMachineSelection: types.string(),
   isSystemInitiated: types.optional(types.boolean()),
 });
-/** @internal */
-export type OneHundredAndEightyOne$Outbound = {
-  projectId?: string | undefined;
-  projectName: string;
-  previousBuildMachineType?: string | undefined;
-  nextBuildMachineType: string;
-  previousBuildMachineSelection: string;
-  nextBuildMachineSelection: string;
-  isSystemInitiated?: boolean | undefined;
-};
 
-/** @internal */
-export const OneHundredAndEightyOne$outboundSchema: z.ZodType<
-  OneHundredAndEightyOne$Outbound,
-  z.ZodTypeDef,
-  OneHundredAndEightyOne
-> = z.object({
-  projectId: z.string().optional(),
-  projectName: z.string(),
-  previousBuildMachineType: z.string().optional(),
-  nextBuildMachineType: z.string(),
-  previousBuildMachineSelection: z.string(),
-  nextBuildMachineSelection: z.string(),
-  isSystemInitiated: z.boolean().optional(),
-});
-
-export function oneHundredAndEightyOneToJSON(
-  oneHundredAndEightyOne: OneHundredAndEightyOne,
-): string {
-  return JSON.stringify(
-    OneHundredAndEightyOne$outboundSchema.parse(oneHundredAndEightyOne),
-  );
-}
 export function oneHundredAndEightyOneFromJSON(
   jsonString: string,
 ): SafeParseResult<OneHundredAndEightyOne, SDKValidationError> {
@@ -5589,31 +3312,7 @@ export const OneHundredAndEighty$inboundSchema: z.ZodType<
   projectName: types.string(),
   sourceFilesOutsideRootDirectory: types.boolean(),
 });
-/** @internal */
-export type OneHundredAndEighty$Outbound = {
-  projectId: string;
-  projectName: string;
-  sourceFilesOutsideRootDirectory: boolean;
-};
 
-/** @internal */
-export const OneHundredAndEighty$outboundSchema: z.ZodType<
-  OneHundredAndEighty$Outbound,
-  z.ZodTypeDef,
-  OneHundredAndEighty
-> = z.object({
-  projectId: z.string(),
-  projectName: z.string(),
-  sourceFilesOutsideRootDirectory: z.boolean(),
-});
-
-export function oneHundredAndEightyToJSON(
-  oneHundredAndEighty: OneHundredAndEighty,
-): string {
-  return JSON.stringify(
-    OneHundredAndEighty$outboundSchema.parse(oneHundredAndEighty),
-  );
-}
 export function oneHundredAndEightyFromJSON(
   jsonString: string,
 ): SafeParseResult<OneHundredAndEighty, SDKValidationError> {
@@ -5634,31 +3333,7 @@ export const OneHundredAndSeventyNine$inboundSchema: z.ZodType<
   projectName: types.string(),
   productionDeploymentsFastLane: types.boolean(),
 });
-/** @internal */
-export type OneHundredAndSeventyNine$Outbound = {
-  projectId: string;
-  projectName: string;
-  productionDeploymentsFastLane: boolean;
-};
 
-/** @internal */
-export const OneHundredAndSeventyNine$outboundSchema: z.ZodType<
-  OneHundredAndSeventyNine$Outbound,
-  z.ZodTypeDef,
-  OneHundredAndSeventyNine
-> = z.object({
-  projectId: z.string(),
-  projectName: z.string(),
-  productionDeploymentsFastLane: z.boolean(),
-});
-
-export function oneHundredAndSeventyNineToJSON(
-  oneHundredAndSeventyNine: OneHundredAndSeventyNine,
-): string {
-  return JSON.stringify(
-    OneHundredAndSeventyNine$outboundSchema.parse(oneHundredAndSeventyNine),
-  );
-}
 export function oneHundredAndSeventyNineFromJSON(
   jsonString: string,
 ): SafeParseResult<OneHundredAndSeventyNine, SDKValidationError> {
@@ -5675,25 +3350,7 @@ export const UserEventPayload178Previous$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-/** @internal */
-export type UserEventPayload178Previous$Outbound = {};
 
-/** @internal */
-export const UserEventPayload178Previous$outboundSchema: z.ZodType<
-  UserEventPayload178Previous$Outbound,
-  z.ZodTypeDef,
-  UserEventPayload178Previous
-> = z.object({});
-
-export function userEventPayload178PreviousToJSON(
-  userEventPayload178Previous: UserEventPayload178Previous,
-): string {
-  return JSON.stringify(
-    UserEventPayload178Previous$outboundSchema.parse(
-      userEventPayload178Previous,
-    ),
-  );
-}
 export function userEventPayload178PreviousFromJSON(
   jsonString: string,
 ): SafeParseResult<UserEventPayload178Previous, SDKValidationError> {
@@ -5710,23 +3367,7 @@ export const UserEventPayload178Next$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-/** @internal */
-export type UserEventPayload178Next$Outbound = {};
 
-/** @internal */
-export const UserEventPayload178Next$outboundSchema: z.ZodType<
-  UserEventPayload178Next$Outbound,
-  z.ZodTypeDef,
-  UserEventPayload178Next
-> = z.object({});
-
-export function userEventPayload178NextToJSON(
-  userEventPayload178Next: UserEventPayload178Next,
-): string {
-  return JSON.stringify(
-    UserEventPayload178Next$outboundSchema.parse(userEventPayload178Next),
-  );
-}
 export function userEventPayload178NextFromJSON(
   jsonString: string,
 ): SafeParseResult<UserEventPayload178Next, SDKValidationError> {
@@ -5748,33 +3389,7 @@ export const OneHundredAndSeventyEight$inboundSchema: z.ZodType<
   previous: z.lazy(() => UserEventPayload178Previous$inboundSchema),
   next: z.lazy(() => UserEventPayload178Next$inboundSchema),
 });
-/** @internal */
-export type OneHundredAndSeventyEight$Outbound = {
-  projectId: string;
-  projectName: string;
-  previous: UserEventPayload178Previous$Outbound;
-  next: UserEventPayload178Next$Outbound;
-};
 
-/** @internal */
-export const OneHundredAndSeventyEight$outboundSchema: z.ZodType<
-  OneHundredAndSeventyEight$Outbound,
-  z.ZodTypeDef,
-  OneHundredAndSeventyEight
-> = z.object({
-  projectId: z.string(),
-  projectName: z.string(),
-  previous: z.lazy(() => UserEventPayload178Previous$outboundSchema),
-  next: z.lazy(() => UserEventPayload178Next$outboundSchema),
-});
-
-export function oneHundredAndSeventyEightToJSON(
-  oneHundredAndSeventyEight: OneHundredAndSeventyEight,
-): string {
-  return JSON.stringify(
-    OneHundredAndSeventyEight$outboundSchema.parse(oneHundredAndSeventyEight),
-  );
-}
 export function oneHundredAndSeventyEightFromJSON(
   jsonString: string,
 ): SafeParseResult<OneHundredAndSeventyEight, SDKValidationError> {
@@ -5795,31 +3410,7 @@ export const OneHundredAndSeventySeven$inboundSchema: z.ZodType<
   projectName: types.string(),
   enableExternalRewriteCaching: types.boolean(),
 });
-/** @internal */
-export type OneHundredAndSeventySeven$Outbound = {
-  projectId: string;
-  projectName: string;
-  enableExternalRewriteCaching: boolean;
-};
 
-/** @internal */
-export const OneHundredAndSeventySeven$outboundSchema: z.ZodType<
-  OneHundredAndSeventySeven$Outbound,
-  z.ZodTypeDef,
-  OneHundredAndSeventySeven
-> = z.object({
-  projectId: z.string(),
-  projectName: z.string(),
-  enableExternalRewriteCaching: z.boolean(),
-});
-
-export function oneHundredAndSeventySevenToJSON(
-  oneHundredAndSeventySeven: OneHundredAndSeventySeven,
-): string {
-  return JSON.stringify(
-    OneHundredAndSeventySeven$outboundSchema.parse(oneHundredAndSeventySeven),
-  );
-}
 export function oneHundredAndSeventySevenFromJSON(
   jsonString: string,
 ): SafeParseResult<OneHundredAndSeventySeven, SDKValidationError> {
@@ -5840,31 +3431,7 @@ export const OneHundredAndSeventySix$inboundSchema: z.ZodType<
   projectName: types.string(),
   enableAffectedProjectsDeployments: types.boolean(),
 });
-/** @internal */
-export type OneHundredAndSeventySix$Outbound = {
-  projectId: string;
-  projectName: string;
-  enableAffectedProjectsDeployments: boolean;
-};
 
-/** @internal */
-export const OneHundredAndSeventySix$outboundSchema: z.ZodType<
-  OneHundredAndSeventySix$Outbound,
-  z.ZodTypeDef,
-  OneHundredAndSeventySix
-> = z.object({
-  projectId: z.string(),
-  projectName: z.string(),
-  enableAffectedProjectsDeployments: z.boolean(),
-});
-
-export function oneHundredAndSeventySixToJSON(
-  oneHundredAndSeventySix: OneHundredAndSeventySix,
-): string {
-  return JSON.stringify(
-    OneHundredAndSeventySix$outboundSchema.parse(oneHundredAndSeventySix),
-  );
-}
 export function oneHundredAndSeventySixFromJSON(
   jsonString: string,
 ): SafeParseResult<OneHundredAndSeventySix, SDKValidationError> {
@@ -5885,31 +3452,7 @@ export const OneHundredAndSeventyFive$inboundSchema: z.ZodType<
   projectName: types.string(),
   avatar: types.optional(types.string()),
 });
-/** @internal */
-export type OneHundredAndSeventyFive$Outbound = {
-  projectId: string;
-  projectName: string;
-  avatar?: string | undefined;
-};
 
-/** @internal */
-export const OneHundredAndSeventyFive$outboundSchema: z.ZodType<
-  OneHundredAndSeventyFive$Outbound,
-  z.ZodTypeDef,
-  OneHundredAndSeventyFive
-> = z.object({
-  projectId: z.string(),
-  projectName: z.string(),
-  avatar: z.string().optional(),
-});
-
-export function oneHundredAndSeventyFiveToJSON(
-  oneHundredAndSeventyFive: OneHundredAndSeventyFive,
-): string {
-  return JSON.stringify(
-    OneHundredAndSeventyFive$outboundSchema.parse(oneHundredAndSeventyFive),
-  );
-}
 export function oneHundredAndSeventyFiveFromJSON(
   jsonString: string,
 ): SafeParseResult<OneHundredAndSeventyFive, SDKValidationError> {
@@ -5924,10 +3467,6 @@ export function oneHundredAndSeventyFiveFromJSON(
 export const UserEventPayload174Action$inboundSchema: z.ZodNativeEnum<
   typeof UserEventPayload174Action
 > = z.nativeEnum(UserEventPayload174Action);
-/** @internal */
-export const UserEventPayload174Action$outboundSchema: z.ZodNativeEnum<
-  typeof UserEventPayload174Action
-> = UserEventPayload174Action$inboundSchema;
 
 /** @internal */
 export const OneHundredAndSeventyFour$inboundSchema: z.ZodType<
@@ -5941,35 +3480,7 @@ export const OneHundredAndSeventyFour$inboundSchema: z.ZodType<
   isEnvVar: types.optional(types.boolean()),
   note: types.optional(types.string()),
 });
-/** @internal */
-export type OneHundredAndSeventyFour$Outbound = {
-  projectId: string;
-  projectName: string;
-  action: string;
-  isEnvVar?: boolean | undefined;
-  note?: string | undefined;
-};
 
-/** @internal */
-export const OneHundredAndSeventyFour$outboundSchema: z.ZodType<
-  OneHundredAndSeventyFour$Outbound,
-  z.ZodTypeDef,
-  OneHundredAndSeventyFour
-> = z.object({
-  projectId: z.string(),
-  projectName: z.string(),
-  action: UserEventPayload174Action$outboundSchema,
-  isEnvVar: z.boolean().optional(),
-  note: z.string().optional(),
-});
-
-export function oneHundredAndSeventyFourToJSON(
-  oneHundredAndSeventyFour: OneHundredAndSeventyFour,
-): string {
-  return JSON.stringify(
-    OneHundredAndSeventyFour$outboundSchema.parse(oneHundredAndSeventyFour),
-  );
-}
 export function oneHundredAndSeventyFourFromJSON(
   jsonString: string,
 ): SafeParseResult<OneHundredAndSeventyFour, SDKValidationError> {
@@ -5991,33 +3502,7 @@ export const OneHundredAndSeventyThree$inboundSchema: z.ZodType<
   projectAnalytics: types.optional(z.record(z.any())),
   prevProjectAnalytics: z.nullable(z.record(z.any())).optional(),
 });
-/** @internal */
-export type OneHundredAndSeventyThree$Outbound = {
-  projectName?: string | undefined;
-  projectId: string;
-  projectAnalytics?: { [k: string]: any } | undefined;
-  prevProjectAnalytics?: { [k: string]: any } | null | undefined;
-};
 
-/** @internal */
-export const OneHundredAndSeventyThree$outboundSchema: z.ZodType<
-  OneHundredAndSeventyThree$Outbound,
-  z.ZodTypeDef,
-  OneHundredAndSeventyThree
-> = z.object({
-  projectName: z.string().optional(),
-  projectId: z.string(),
-  projectAnalytics: z.record(z.any()).optional(),
-  prevProjectAnalytics: z.nullable(z.record(z.any())).optional(),
-});
-
-export function oneHundredAndSeventyThreeToJSON(
-  oneHundredAndSeventyThree: OneHundredAndSeventyThree,
-): string {
-  return JSON.stringify(
-    OneHundredAndSeventyThree$outboundSchema.parse(oneHundredAndSeventyThree),
-  );
-}
 export function oneHundredAndSeventyThreeFromJSON(
   jsonString: string,
 ): SafeParseResult<OneHundredAndSeventyThree, SDKValidationError> {
@@ -6042,39 +3527,7 @@ export const ProjectAnalytics$inboundSchema: z.ZodType<
   sampleRatePercent: z.nullable(types.number()).optional(),
   spendLimitInDollars: z.nullable(types.number()).optional(),
 });
-/** @internal */
-export type ProjectAnalytics$Outbound = {
-  id: string;
-  canceledAt?: number | null | undefined;
-  disabledAt: number;
-  enabledAt: number;
-  paidAt?: number | undefined;
-  sampleRatePercent?: number | null | undefined;
-  spendLimitInDollars?: number | null | undefined;
-};
 
-/** @internal */
-export const ProjectAnalytics$outboundSchema: z.ZodType<
-  ProjectAnalytics$Outbound,
-  z.ZodTypeDef,
-  ProjectAnalytics
-> = z.object({
-  id: z.string(),
-  canceledAt: z.nullable(z.number()).optional(),
-  disabledAt: z.number(),
-  enabledAt: z.number(),
-  paidAt: z.number().optional(),
-  sampleRatePercent: z.nullable(z.number()).optional(),
-  spendLimitInDollars: z.nullable(z.number()).optional(),
-});
-
-export function projectAnalyticsToJSON(
-  projectAnalytics: ProjectAnalytics,
-): string {
-  return JSON.stringify(
-    ProjectAnalytics$outboundSchema.parse(projectAnalytics),
-  );
-}
 export function projectAnalyticsFromJSON(
   jsonString: string,
 ): SafeParseResult<ProjectAnalytics, SDKValidationError> {
@@ -6099,39 +3552,7 @@ export const PrevProjectAnalytics$inboundSchema: z.ZodType<
   sampleRatePercent: z.nullable(types.number()).optional(),
   spendLimitInDollars: z.nullable(types.number()).optional(),
 });
-/** @internal */
-export type PrevProjectAnalytics$Outbound = {
-  id: string;
-  canceledAt?: number | null | undefined;
-  disabledAt: number;
-  enabledAt: number;
-  paidAt?: number | undefined;
-  sampleRatePercent?: number | null | undefined;
-  spendLimitInDollars?: number | null | undefined;
-};
 
-/** @internal */
-export const PrevProjectAnalytics$outboundSchema: z.ZodType<
-  PrevProjectAnalytics$Outbound,
-  z.ZodTypeDef,
-  PrevProjectAnalytics
-> = z.object({
-  id: z.string(),
-  canceledAt: z.nullable(z.number()).optional(),
-  disabledAt: z.number(),
-  enabledAt: z.number(),
-  paidAt: z.number().optional(),
-  sampleRatePercent: z.nullable(z.number()).optional(),
-  spendLimitInDollars: z.nullable(z.number()).optional(),
-});
-
-export function prevProjectAnalyticsToJSON(
-  prevProjectAnalytics: PrevProjectAnalytics,
-): string {
-  return JSON.stringify(
-    PrevProjectAnalytics$outboundSchema.parse(prevProjectAnalytics),
-  );
-}
 export function prevProjectAnalyticsFromJSON(
   jsonString: string,
 ): SafeParseResult<PrevProjectAnalytics, SDKValidationError> {
@@ -6157,35 +3578,7 @@ export const OneHundredAndSeventyTwo$inboundSchema: z.ZodType<
     z.lazy(() => PrevProjectAnalytics$inboundSchema),
   ),
 });
-/** @internal */
-export type OneHundredAndSeventyTwo$Outbound = {
-  projectName?: string | undefined;
-  projectId: string;
-  projectAnalytics: ProjectAnalytics$Outbound | null;
-  prevProjectAnalytics: PrevProjectAnalytics$Outbound | null;
-};
 
-/** @internal */
-export const OneHundredAndSeventyTwo$outboundSchema: z.ZodType<
-  OneHundredAndSeventyTwo$Outbound,
-  z.ZodTypeDef,
-  OneHundredAndSeventyTwo
-> = z.object({
-  projectName: z.string().optional(),
-  projectId: z.string(),
-  projectAnalytics: z.nullable(z.lazy(() => ProjectAnalytics$outboundSchema)),
-  prevProjectAnalytics: z.nullable(
-    z.lazy(() => PrevProjectAnalytics$outboundSchema),
-  ),
-});
-
-export function oneHundredAndSeventyTwoToJSON(
-  oneHundredAndSeventyTwo: OneHundredAndSeventyTwo,
-): string {
-  return JSON.stringify(
-    OneHundredAndSeventyTwo$outboundSchema.parse(oneHundredAndSeventyTwo),
-  );
-}
 export function oneHundredAndSeventyTwoFromJSON(
   jsonString: string,
 ): SafeParseResult<OneHundredAndSeventyTwo, SDKValidationError> {
@@ -6206,31 +3599,7 @@ export const OneHundredAndSeventyOne$inboundSchema: z.ZodType<
   projectName: types.string(),
   directoryListing: types.boolean(),
 });
-/** @internal */
-export type OneHundredAndSeventyOne$Outbound = {
-  projectId: string;
-  projectName: string;
-  directoryListing: boolean;
-};
 
-/** @internal */
-export const OneHundredAndSeventyOne$outboundSchema: z.ZodType<
-  OneHundredAndSeventyOne$Outbound,
-  z.ZodTypeDef,
-  OneHundredAndSeventyOne
-> = z.object({
-  projectId: z.string(),
-  projectName: z.string(),
-  directoryListing: z.boolean(),
-});
-
-export function oneHundredAndSeventyOneToJSON(
-  oneHundredAndSeventyOne: OneHundredAndSeventyOne,
-): string {
-  return JSON.stringify(
-    OneHundredAndSeventyOne$outboundSchema.parse(oneHundredAndSeventyOne),
-  );
-}
 export function oneHundredAndSeventyOneFromJSON(
   jsonString: string,
 ): SafeParseResult<OneHundredAndSeventyOne, SDKValidationError> {
@@ -6251,31 +3620,7 @@ export const OneHundredAndSeventy$inboundSchema: z.ZodType<
   projectName: types.string(),
   branch: types.string(),
 });
-/** @internal */
-export type OneHundredAndSeventy$Outbound = {
-  projectId?: string | undefined;
-  projectName: string;
-  branch: string;
-};
 
-/** @internal */
-export const OneHundredAndSeventy$outboundSchema: z.ZodType<
-  OneHundredAndSeventy$Outbound,
-  z.ZodTypeDef,
-  OneHundredAndSeventy
-> = z.object({
-  projectId: z.string().optional(),
-  projectName: z.string(),
-  branch: z.string(),
-});
-
-export function oneHundredAndSeventyToJSON(
-  oneHundredAndSeventy: OneHundredAndSeventy,
-): string {
-  return JSON.stringify(
-    OneHundredAndSeventy$outboundSchema.parse(oneHundredAndSeventy),
-  );
-}
 export function oneHundredAndSeventyFromJSON(
   jsonString: string,
 ): SafeParseResult<OneHundredAndSeventy, SDKValidationError> {
@@ -6297,33 +3642,7 @@ export const PayloadPrivateLinkEndpoint$inboundSchema: z.ZodType<
   environmentIds: types.optional(z.array(types.string())),
   privateDnsNames: types.optional(z.array(types.string())),
 });
-/** @internal */
-export type PayloadPrivateLinkEndpoint$Outbound = {
-  id: string;
-  name: string;
-  environmentIds?: Array<string> | undefined;
-  privateDnsNames?: Array<string> | undefined;
-};
 
-/** @internal */
-export const PayloadPrivateLinkEndpoint$outboundSchema: z.ZodType<
-  PayloadPrivateLinkEndpoint$Outbound,
-  z.ZodTypeDef,
-  PayloadPrivateLinkEndpoint
-> = z.object({
-  id: z.string(),
-  name: z.string(),
-  environmentIds: z.array(z.string()).optional(),
-  privateDnsNames: z.array(z.string()).optional(),
-});
-
-export function payloadPrivateLinkEndpointToJSON(
-  payloadPrivateLinkEndpoint: PayloadPrivateLinkEndpoint,
-): string {
-  return JSON.stringify(
-    PayloadPrivateLinkEndpoint$outboundSchema.parse(payloadPrivateLinkEndpoint),
-  );
-}
 export function payloadPrivateLinkEndpointFromJSON(
   jsonString: string,
 ): SafeParseResult<PayloadPrivateLinkEndpoint, SDKValidationError> {
@@ -6344,31 +3663,7 @@ export const PreviousEndpoint$inboundSchema: z.ZodType<
   environmentIds: types.optional(z.array(types.string())),
   privateDnsNames: types.optional(z.array(types.string())),
 });
-/** @internal */
-export type PreviousEndpoint$Outbound = {
-  name: string;
-  environmentIds?: Array<string> | undefined;
-  privateDnsNames?: Array<string> | undefined;
-};
 
-/** @internal */
-export const PreviousEndpoint$outboundSchema: z.ZodType<
-  PreviousEndpoint$Outbound,
-  z.ZodTypeDef,
-  PreviousEndpoint
-> = z.object({
-  name: z.string(),
-  environmentIds: z.array(z.string()).optional(),
-  privateDnsNames: z.array(z.string()).optional(),
-});
-
-export function previousEndpointToJSON(
-  previousEndpoint: PreviousEndpoint,
-): string {
-  return JSON.stringify(
-    PreviousEndpoint$outboundSchema.parse(previousEndpoint),
-  );
-}
 export function previousEndpointFromJSON(
   jsonString: string,
 ): SafeParseResult<PreviousEndpoint, SDKValidationError> {
@@ -6389,31 +3684,7 @@ export const OneHundredAndSixtyNine$inboundSchema: z.ZodType<
   projectId: types.string(),
   previousEndpoint: z.lazy(() => PreviousEndpoint$inboundSchema),
 });
-/** @internal */
-export type OneHundredAndSixtyNine$Outbound = {
-  privateLinkEndpoint: PayloadPrivateLinkEndpoint$Outbound;
-  projectId: string;
-  previousEndpoint: PreviousEndpoint$Outbound;
-};
 
-/** @internal */
-export const OneHundredAndSixtyNine$outboundSchema: z.ZodType<
-  OneHundredAndSixtyNine$Outbound,
-  z.ZodTypeDef,
-  OneHundredAndSixtyNine
-> = z.object({
-  privateLinkEndpoint: z.lazy(() => PayloadPrivateLinkEndpoint$outboundSchema),
-  projectId: z.string(),
-  previousEndpoint: z.lazy(() => PreviousEndpoint$outboundSchema),
-});
-
-export function oneHundredAndSixtyNineToJSON(
-  oneHundredAndSixtyNine: OneHundredAndSixtyNine,
-): string {
-  return JSON.stringify(
-    OneHundredAndSixtyNine$outboundSchema.parse(oneHundredAndSixtyNine),
-  );
-}
 export function oneHundredAndSixtyNineFromJSON(
   jsonString: string,
 ): SafeParseResult<OneHundredAndSixtyNine, SDKValidationError> {
@@ -6437,37 +3708,7 @@ export const UserEventPayloadPrev$inboundSchema: z.ZodType<
   awsServiceName: types.string(),
   privateDnsNames: types.optional(z.array(types.string())),
 });
-/** @internal */
-export type UserEventPayloadPrev$Outbound = {
-  id: string;
-  name: string;
-  projectId: string;
-  vercelRegion: string;
-  awsServiceName: string;
-  privateDnsNames?: Array<string> | undefined;
-};
 
-/** @internal */
-export const UserEventPayloadPrev$outboundSchema: z.ZodType<
-  UserEventPayloadPrev$Outbound,
-  z.ZodTypeDef,
-  UserEventPayloadPrev
-> = z.object({
-  id: z.string(),
-  name: z.string(),
-  projectId: z.string(),
-  vercelRegion: z.string(),
-  awsServiceName: z.string(),
-  privateDnsNames: z.array(z.string()).optional(),
-});
-
-export function userEventPayloadPrevToJSON(
-  userEventPayloadPrev: UserEventPayloadPrev,
-): string {
-  return JSON.stringify(
-    UserEventPayloadPrev$outboundSchema.parse(userEventPayloadPrev),
-  );
-}
 export function userEventPayloadPrevFromJSON(
   jsonString: string,
 ): SafeParseResult<UserEventPayloadPrev, SDKValidationError> {
@@ -6488,33 +3729,7 @@ export const Current$inboundSchema: z.ZodType<Current, z.ZodTypeDef, unknown> =
     awsServiceName: types.string(),
     privateDnsNames: types.optional(z.array(types.string())),
   });
-/** @internal */
-export type Current$Outbound = {
-  id: string;
-  name: string;
-  projectId: string;
-  vercelRegion: string;
-  awsServiceName: string;
-  privateDnsNames?: Array<string> | undefined;
-};
 
-/** @internal */
-export const Current$outboundSchema: z.ZodType<
-  Current$Outbound,
-  z.ZodTypeDef,
-  Current
-> = z.object({
-  id: z.string(),
-  name: z.string(),
-  projectId: z.string(),
-  vercelRegion: z.string(),
-  awsServiceName: z.string(),
-  privateDnsNames: z.array(z.string()).optional(),
-});
-
-export function currentToJSON(current: Current): string {
-  return JSON.stringify(Current$outboundSchema.parse(current));
-}
 export function currentFromJSON(
   jsonString: string,
 ): SafeParseResult<Current, SDKValidationError> {
@@ -6534,29 +3749,7 @@ export const OneHundredAndSixtyEight$inboundSchema: z.ZodType<
   prev: z.lazy(() => UserEventPayloadPrev$inboundSchema),
   current: z.lazy(() => Current$inboundSchema),
 });
-/** @internal */
-export type OneHundredAndSixtyEight$Outbound = {
-  prev: UserEventPayloadPrev$Outbound;
-  current: Current$Outbound;
-};
 
-/** @internal */
-export const OneHundredAndSixtyEight$outboundSchema: z.ZodType<
-  OneHundredAndSixtyEight$Outbound,
-  z.ZodTypeDef,
-  OneHundredAndSixtyEight
-> = z.object({
-  prev: z.lazy(() => UserEventPayloadPrev$outboundSchema),
-  current: z.lazy(() => Current$outboundSchema),
-});
-
-export function oneHundredAndSixtyEightToJSON(
-  oneHundredAndSixtyEight: OneHundredAndSixtyEight,
-): string {
-  return JSON.stringify(
-    OneHundredAndSixtyEight$outboundSchema.parse(oneHundredAndSixtyEight),
-  );
-}
 export function oneHundredAndSixtyEightFromJSON(
   jsonString: string,
 ): SafeParseResult<OneHundredAndSixtyEight, SDKValidationError> {
@@ -6576,29 +3769,7 @@ export const PrivateLinkEndpoint$inboundSchema: z.ZodType<
   id: types.string(),
   name: types.string(),
 });
-/** @internal */
-export type PrivateLinkEndpoint$Outbound = {
-  id: string;
-  name: string;
-};
 
-/** @internal */
-export const PrivateLinkEndpoint$outboundSchema: z.ZodType<
-  PrivateLinkEndpoint$Outbound,
-  z.ZodTypeDef,
-  PrivateLinkEndpoint
-> = z.object({
-  id: z.string(),
-  name: z.string(),
-});
-
-export function privateLinkEndpointToJSON(
-  privateLinkEndpoint: PrivateLinkEndpoint,
-): string {
-  return JSON.stringify(
-    PrivateLinkEndpoint$outboundSchema.parse(privateLinkEndpoint),
-  );
-}
 export function privateLinkEndpointFromJSON(
   jsonString: string,
 ): SafeParseResult<PrivateLinkEndpoint, SDKValidationError> {
@@ -6618,29 +3789,7 @@ export const OneHundredAndSixtySeven$inboundSchema: z.ZodType<
   privateLinkEndpoint: z.lazy(() => PrivateLinkEndpoint$inboundSchema),
   projectId: types.string(),
 });
-/** @internal */
-export type OneHundredAndSixtySeven$Outbound = {
-  privateLinkEndpoint: PrivateLinkEndpoint$Outbound;
-  projectId: string;
-};
 
-/** @internal */
-export const OneHundredAndSixtySeven$outboundSchema: z.ZodType<
-  OneHundredAndSixtySeven$Outbound,
-  z.ZodTypeDef,
-  OneHundredAndSixtySeven
-> = z.object({
-  privateLinkEndpoint: z.lazy(() => PrivateLinkEndpoint$outboundSchema),
-  projectId: z.string(),
-});
-
-export function oneHundredAndSixtySevenToJSON(
-  oneHundredAndSixtySeven: OneHundredAndSixtySeven,
-): string {
-  return JSON.stringify(
-    OneHundredAndSixtySeven$outboundSchema.parse(oneHundredAndSixtySeven),
-  );
-}
 export function oneHundredAndSixtySevenFromJSON(
   jsonString: string,
 ): SafeParseResult<OneHundredAndSixtySeven, SDKValidationError> {
@@ -6664,33 +3813,7 @@ export const Endpoint$inboundSchema: z.ZodType<
   awsServiceName: types.string(),
   privateDnsNames: types.optional(z.array(types.string())),
 });
-/** @internal */
-export type Endpoint$Outbound = {
-  id: string;
-  name: string;
-  projectId: string;
-  vercelRegion: string;
-  awsServiceName: string;
-  privateDnsNames?: Array<string> | undefined;
-};
 
-/** @internal */
-export const Endpoint$outboundSchema: z.ZodType<
-  Endpoint$Outbound,
-  z.ZodTypeDef,
-  Endpoint
-> = z.object({
-  id: z.string(),
-  name: z.string(),
-  projectId: z.string(),
-  vercelRegion: z.string(),
-  awsServiceName: z.string(),
-  privateDnsNames: z.array(z.string()).optional(),
-});
-
-export function endpointToJSON(endpoint: Endpoint): string {
-  return JSON.stringify(Endpoint$outboundSchema.parse(endpoint));
-}
 export function endpointFromJSON(
   jsonString: string,
 ): SafeParseResult<Endpoint, SDKValidationError> {
@@ -6709,27 +3832,7 @@ export const OneHundredAndSixtySix$inboundSchema: z.ZodType<
 > = z.object({
   endpoint: z.lazy(() => Endpoint$inboundSchema),
 });
-/** @internal */
-export type OneHundredAndSixtySix$Outbound = {
-  endpoint: Endpoint$Outbound;
-};
 
-/** @internal */
-export const OneHundredAndSixtySix$outboundSchema: z.ZodType<
-  OneHundredAndSixtySix$Outbound,
-  z.ZodTypeDef,
-  OneHundredAndSixtySix
-> = z.object({
-  endpoint: z.lazy(() => Endpoint$outboundSchema),
-});
-
-export function oneHundredAndSixtySixToJSON(
-  oneHundredAndSixtySix: OneHundredAndSixtySix,
-): string {
-  return JSON.stringify(
-    OneHundredAndSixtySix$outboundSchema.parse(oneHundredAndSixtySix),
-  );
-}
 export function oneHundredAndSixtySixFromJSON(
   jsonString: string,
 ): SafeParseResult<OneHundredAndSixtySix, SDKValidationError> {
@@ -6749,29 +3852,7 @@ export const OneHundredAndSixtyFive$inboundSchema: z.ZodType<
   previewDeploymentSuffix: z.nullable(types.string()).optional(),
   previousPreviewDeploymentSuffix: z.nullable(types.string()).optional(),
 });
-/** @internal */
-export type OneHundredAndSixtyFive$Outbound = {
-  previewDeploymentSuffix?: string | null | undefined;
-  previousPreviewDeploymentSuffix?: string | null | undefined;
-};
 
-/** @internal */
-export const OneHundredAndSixtyFive$outboundSchema: z.ZodType<
-  OneHundredAndSixtyFive$Outbound,
-  z.ZodTypeDef,
-  OneHundredAndSixtyFive
-> = z.object({
-  previewDeploymentSuffix: z.nullable(z.string()).optional(),
-  previousPreviewDeploymentSuffix: z.nullable(z.string()).optional(),
-});
-
-export function oneHundredAndSixtyFiveToJSON(
-  oneHundredAndSixtyFive: OneHundredAndSixtyFive,
-): string {
-  return JSON.stringify(
-    OneHundredAndSixtyFive$outboundSchema.parse(oneHundredAndSixtyFive),
-  );
-}
 export function oneHundredAndSixtyFiveFromJSON(
   jsonString: string,
 ): SafeParseResult<OneHundredAndSixtyFive, SDKValidationError> {
@@ -6792,31 +3873,7 @@ export const OneHundredAndSixtyFour$inboundSchema: z.ZodType<
   currency: types.optional(types.string()),
   enabled: types.optional(types.boolean()),
 });
-/** @internal */
-export type OneHundredAndSixtyFour$Outbound = {
-  price?: number | undefined;
-  currency?: string | undefined;
-  enabled?: boolean | undefined;
-};
 
-/** @internal */
-export const OneHundredAndSixtyFour$outboundSchema: z.ZodType<
-  OneHundredAndSixtyFour$Outbound,
-  z.ZodTypeDef,
-  OneHundredAndSixtyFour
-> = z.object({
-  price: z.number().optional(),
-  currency: z.string().optional(),
-  enabled: z.boolean().optional(),
-});
-
-export function oneHundredAndSixtyFourToJSON(
-  oneHundredAndSixtyFour: OneHundredAndSixtyFour,
-): string {
-  return JSON.stringify(
-    OneHundredAndSixtyFour$outboundSchema.parse(oneHundredAndSixtyFour),
-  );
-}
 export function oneHundredAndSixtyFourFromJSON(
   jsonString: string,
 ): SafeParseResult<OneHundredAndSixtyFour, SDKValidationError> {
@@ -6831,19 +3888,11 @@ export function oneHundredAndSixtyFourFromJSON(
 export const UserEventPayload163Role$inboundSchema: z.ZodNativeEnum<
   typeof UserEventPayload163Role
 > = z.nativeEnum(UserEventPayload163Role);
-/** @internal */
-export const UserEventPayload163Role$outboundSchema: z.ZodNativeEnum<
-  typeof UserEventPayload163Role
-> = UserEventPayload163Role$inboundSchema;
 
 /** @internal */
 export const UserEventPayloadOrigin$inboundSchema: z.ZodNativeEnum<
   typeof UserEventPayloadOrigin
 > = z.nativeEnum(UserEventPayloadOrigin);
-/** @internal */
-export const UserEventPayloadOrigin$outboundSchema: z.ZodNativeEnum<
-  typeof UserEventPayloadOrigin
-> = UserEventPayloadOrigin$inboundSchema;
 
 /** @internal */
 export const PayloadGitUserId$inboundSchema: z.ZodType<
@@ -6851,23 +3900,7 @@ export const PayloadGitUserId$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = smartUnion([types.string(), types.number()]);
-/** @internal */
-export type PayloadGitUserId$Outbound = string | number;
 
-/** @internal */
-export const PayloadGitUserId$outboundSchema: z.ZodType<
-  PayloadGitUserId$Outbound,
-  z.ZodTypeDef,
-  PayloadGitUserId
-> = smartUnion([z.string(), z.number()]);
-
-export function payloadGitUserIdToJSON(
-  payloadGitUserId: PayloadGitUserId,
-): string {
-  return JSON.stringify(
-    PayloadGitUserId$outboundSchema.parse(payloadGitUserId),
-  );
-}
 export function payloadGitUserIdFromJSON(
   jsonString: string,
 ): SafeParseResult<PayloadGitUserId, SDKValidationError> {
@@ -6896,47 +3929,7 @@ export const PayloadJoinedFrom$inboundSchema: z.ZodType<
   dsyncUserId: types.optional(types.string()),
   dsyncConnectedAt: types.optional(types.number()),
 });
-/** @internal */
-export type PayloadJoinedFrom$Outbound = {
-  origin: string;
-  commitId?: string | undefined;
-  repoId?: string | undefined;
-  repoPath?: string | undefined;
-  gitUserId?: string | number | undefined;
-  gitUserLogin?: string | undefined;
-  ssoUserId?: string | undefined;
-  ssoConnectedAt?: number | undefined;
-  idpUserId?: string | undefined;
-  dsyncUserId?: string | undefined;
-  dsyncConnectedAt?: number | undefined;
-};
 
-/** @internal */
-export const PayloadJoinedFrom$outboundSchema: z.ZodType<
-  PayloadJoinedFrom$Outbound,
-  z.ZodTypeDef,
-  PayloadJoinedFrom
-> = z.object({
-  origin: UserEventPayloadOrigin$outboundSchema,
-  commitId: z.string().optional(),
-  repoId: z.string().optional(),
-  repoPath: z.string().optional(),
-  gitUserId: smartUnion([z.string(), z.number()]).optional(),
-  gitUserLogin: z.string().optional(),
-  ssoUserId: z.string().optional(),
-  ssoConnectedAt: z.number().optional(),
-  idpUserId: z.string().optional(),
-  dsyncUserId: z.string().optional(),
-  dsyncConnectedAt: z.number().optional(),
-});
-
-export function payloadJoinedFromToJSON(
-  payloadJoinedFrom: PayloadJoinedFrom,
-): string {
-  return JSON.stringify(
-    PayloadJoinedFrom$outboundSchema.parse(payloadJoinedFrom),
-  );
-}
 export function payloadJoinedFromFromJSON(
   jsonString: string,
 ): SafeParseResult<PayloadJoinedFrom, SDKValidationError> {
@@ -6958,29 +3951,7 @@ export const RemovedUsers$inboundSchema: z.ZodType<
   confirmedAt: types.optional(types.number()),
   joinedFrom: types.optional(z.lazy(() => PayloadJoinedFrom$inboundSchema)),
 });
-/** @internal */
-export type RemovedUsers$Outbound = {
-  role: string;
-  confirmed: boolean;
-  confirmedAt?: number | undefined;
-  joinedFrom?: PayloadJoinedFrom$Outbound | undefined;
-};
 
-/** @internal */
-export const RemovedUsers$outboundSchema: z.ZodType<
-  RemovedUsers$Outbound,
-  z.ZodTypeDef,
-  RemovedUsers
-> = z.object({
-  role: UserEventPayload163Role$outboundSchema,
-  confirmed: z.boolean(),
-  confirmedAt: z.number().optional(),
-  joinedFrom: z.lazy(() => PayloadJoinedFrom$outboundSchema).optional(),
-});
-
-export function removedUsersToJSON(removedUsers: RemovedUsers): string {
-  return JSON.stringify(RemovedUsers$outboundSchema.parse(removedUsers));
-}
 export function removedUsersFromJSON(
   jsonString: string,
 ): SafeParseResult<RemovedUsers, SDKValidationError> {
@@ -7012,49 +3983,7 @@ export const OneHundredAndSixtyThree$inboundSchema: z.ZodType<
   timestamp: types.optional(types.number()),
   removedMemberCount: types.optional(types.number()),
 });
-/** @internal */
-export type OneHundredAndSixtyThree$Outbound = {
-  plan: string;
-  removedUsers?: { [k: string]: RemovedUsers$Outbound } | undefined;
-  prevPlan?: string | undefined;
-  priorPlan?: string | undefined;
-  isDowngrade?: boolean | undefined;
-  userAgent?: string | undefined;
-  isReactivate?: boolean | undefined;
-  isTrialUpgrade?: boolean | undefined;
-  automated?: boolean | undefined;
-  reason?: string | undefined;
-  timestamp?: number | undefined;
-  removedMemberCount?: number | undefined;
-};
 
-/** @internal */
-export const OneHundredAndSixtyThree$outboundSchema: z.ZodType<
-  OneHundredAndSixtyThree$Outbound,
-  z.ZodTypeDef,
-  OneHundredAndSixtyThree
-> = z.object({
-  plan: z.string(),
-  removedUsers: z.record(z.lazy(() => RemovedUsers$outboundSchema)).optional(),
-  prevPlan: z.string().optional(),
-  priorPlan: z.string().optional(),
-  isDowngrade: z.boolean().optional(),
-  userAgent: z.string().optional(),
-  isReactivate: z.boolean().optional(),
-  isTrialUpgrade: z.boolean().optional(),
-  automated: z.boolean().optional(),
-  reason: z.string().optional(),
-  timestamp: z.number().optional(),
-  removedMemberCount: z.number().optional(),
-});
-
-export function oneHundredAndSixtyThreeToJSON(
-  oneHundredAndSixtyThree: OneHundredAndSixtyThree,
-): string {
-  return JSON.stringify(
-    OneHundredAndSixtyThree$outboundSchema.parse(oneHundredAndSixtyThree),
-  );
-}
 export function oneHundredAndSixtyThreeFromJSON(
   jsonString: string,
 ): SafeParseResult<OneHundredAndSixtyThree, SDKValidationError> {
@@ -7069,10 +3998,6 @@ export function oneHundredAndSixtyThreeFromJSON(
 export const UserEventPayloadDeploymentType$inboundSchema: z.ZodNativeEnum<
   typeof UserEventPayloadDeploymentType
 > = z.nativeEnum(UserEventPayloadDeploymentType);
-/** @internal */
-export const UserEventPayloadDeploymentType$outboundSchema: z.ZodNativeEnum<
-  typeof UserEventPayloadDeploymentType
-> = UserEventPayloadDeploymentType$inboundSchema;
 
 /** @internal */
 export const UserEventPayloadPassport$inboundSchema: z.ZodType<
@@ -7083,29 +4008,7 @@ export const UserEventPayloadPassport$inboundSchema: z.ZodType<
   connectorId: types.string(),
   deploymentType: UserEventPayloadDeploymentType$inboundSchema,
 });
-/** @internal */
-export type UserEventPayloadPassport$Outbound = {
-  connectorId: string;
-  deploymentType: string;
-};
 
-/** @internal */
-export const UserEventPayloadPassport$outboundSchema: z.ZodType<
-  UserEventPayloadPassport$Outbound,
-  z.ZodTypeDef,
-  UserEventPayloadPassport
-> = z.object({
-  connectorId: z.string(),
-  deploymentType: UserEventPayloadDeploymentType$outboundSchema,
-});
-
-export function userEventPayloadPassportToJSON(
-  userEventPayloadPassport: UserEventPayloadPassport,
-): string {
-  return JSON.stringify(
-    UserEventPayloadPassport$outboundSchema.parse(userEventPayloadPassport),
-  );
-}
 export function userEventPayloadPassportFromJSON(
   jsonString: string,
 ): SafeParseResult<UserEventPayloadPassport, SDKValidationError> {
@@ -7125,28 +4028,7 @@ export const UserEventPayloadPrevious$inboundSchema: z.ZodType<
   passport: z.nullable(z.lazy(() => UserEventPayloadPassport$inboundSchema))
     .optional(),
 });
-/** @internal */
-export type UserEventPayloadPrevious$Outbound = {
-  passport?: UserEventPayloadPassport$Outbound | null | undefined;
-};
 
-/** @internal */
-export const UserEventPayloadPrevious$outboundSchema: z.ZodType<
-  UserEventPayloadPrevious$Outbound,
-  z.ZodTypeDef,
-  UserEventPayloadPrevious
-> = z.object({
-  passport: z.nullable(z.lazy(() => UserEventPayloadPassport$outboundSchema))
-    .optional(),
-});
-
-export function userEventPayloadPreviousToJSON(
-  userEventPayloadPrevious: UserEventPayloadPrevious,
-): string {
-  return JSON.stringify(
-    UserEventPayloadPrevious$outboundSchema.parse(userEventPayloadPrevious),
-  );
-}
 export function userEventPayloadPreviousFromJSON(
   jsonString: string,
 ): SafeParseResult<UserEventPayloadPrevious, SDKValidationError> {

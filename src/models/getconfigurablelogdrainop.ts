@@ -37,6 +37,7 @@ export const GetConfigurableLogDrainFramework = {
   Eleventy: "eleventy",
   Elysia: "elysia",
   Ember: "ember",
+  Eve: "eve",
   Express: "express",
   Fastapi: "fastapi",
   Fasthtml: "fasthtml",
@@ -114,16 +115,6 @@ export type GetConfigurableLogDrainResponseBody = {
 };
 
 /** @internal */
-export const GetConfigurableLogDrainRequest$inboundSchema: z.ZodType<
-  GetConfigurableLogDrainRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
-/** @internal */
 export type GetConfigurableLogDrainRequest$Outbound = {
   id: string;
   teamId?: string | undefined;
@@ -150,24 +141,11 @@ export function getConfigurableLogDrainRequestToJSON(
     ),
   );
 }
-export function getConfigurableLogDrainRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetConfigurableLogDrainRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetConfigurableLogDrainRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetConfigurableLogDrainRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const GetConfigurableLogDrainFramework$inboundSchema: z.ZodNativeEnum<
   typeof GetConfigurableLogDrainFramework
 > = z.nativeEnum(GetConfigurableLogDrainFramework);
-/** @internal */
-export const GetConfigurableLogDrainFramework$outboundSchema: z.ZodNativeEnum<
-  typeof GetConfigurableLogDrainFramework
-> = GetConfigurableLogDrainFramework$inboundSchema;
 
 /** @internal */
 export const ProjectsMetadata$inboundSchema: z.ZodType<
@@ -181,34 +159,7 @@ export const ProjectsMetadata$inboundSchema: z.ZodType<
     .optional(),
   latestDeployment: types.optional(types.string()),
 });
-/** @internal */
-export type ProjectsMetadata$Outbound = {
-  id: string;
-  name: string;
-  framework?: string | null | undefined;
-  latestDeployment?: string | undefined;
-};
 
-/** @internal */
-export const ProjectsMetadata$outboundSchema: z.ZodType<
-  ProjectsMetadata$Outbound,
-  z.ZodTypeDef,
-  ProjectsMetadata
-> = z.object({
-  id: z.string(),
-  name: z.string(),
-  framework: z.nullable(GetConfigurableLogDrainFramework$outboundSchema)
-    .optional(),
-  latestDeployment: z.string().optional(),
-});
-
-export function projectsMetadataToJSON(
-  projectsMetadata: ProjectsMetadata,
-): string {
-  return JSON.stringify(
-    ProjectsMetadata$outboundSchema.parse(projectsMetadata),
-  );
-}
 export function projectsMetadataFromJSON(
   jsonString: string,
 ): SafeParseResult<ProjectsMetadata, SDKValidationError> {
@@ -235,43 +186,7 @@ export const GetConfigurableLogDrainResponseBody$inboundSchema: z.ZodType<
   integrationConfigurationUri: types.optional(types.string()),
   integrationWebsite: types.optional(types.string()),
 });
-/** @internal */
-export type GetConfigurableLogDrainResponseBody$Outbound = {
-  createdFrom: string;
-  clientId?: string | undefined;
-  configurationId?: string | undefined;
-  projectsMetadata?: Array<ProjectsMetadata$Outbound> | null | undefined;
-  integrationIcon?: string | undefined;
-  integrationConfigurationUri?: string | undefined;
-  integrationWebsite?: string | undefined;
-};
 
-/** @internal */
-export const GetConfigurableLogDrainResponseBody$outboundSchema: z.ZodType<
-  GetConfigurableLogDrainResponseBody$Outbound,
-  z.ZodTypeDef,
-  GetConfigurableLogDrainResponseBody
-> = z.object({
-  createdFrom: z.string(),
-  clientId: z.string().optional(),
-  configurationId: z.string().optional(),
-  projectsMetadata: z.nullable(
-    z.array(z.lazy(() => ProjectsMetadata$outboundSchema)),
-  ).optional(),
-  integrationIcon: z.string().optional(),
-  integrationConfigurationUri: z.string().optional(),
-  integrationWebsite: z.string().optional(),
-});
-
-export function getConfigurableLogDrainResponseBodyToJSON(
-  getConfigurableLogDrainResponseBody: GetConfigurableLogDrainResponseBody,
-): string {
-  return JSON.stringify(
-    GetConfigurableLogDrainResponseBody$outboundSchema.parse(
-      getConfigurableLogDrainResponseBody,
-    ),
-  );
-}
 export function getConfigurableLogDrainResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetConfigurableLogDrainResponseBody, SDKValidationError> {

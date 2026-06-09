@@ -99,27 +99,11 @@ export type MoveProjectDomainResponseBody = {
 };
 
 /** @internal */
-export const MoveProjectDomainRedirectStatusCode$inboundSchema: z.ZodNativeEnum<
-  typeof MoveProjectDomainRedirectStatusCode
-> = z.nativeEnum(MoveProjectDomainRedirectStatusCode);
-/** @internal */
 export const MoveProjectDomainRedirectStatusCode$outboundSchema:
-  z.ZodNativeEnum<typeof MoveProjectDomainRedirectStatusCode> =
-    MoveProjectDomainRedirectStatusCode$inboundSchema;
+  z.ZodNativeEnum<typeof MoveProjectDomainRedirectStatusCode> = z.nativeEnum(
+    MoveProjectDomainRedirectStatusCode,
+  );
 
-/** @internal */
-export const MoveProjectDomainRequestBody$inboundSchema: z.ZodType<
-  MoveProjectDomainRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  projectId: types.string(),
-  gitBranch: z.nullable(types.string()).optional(),
-  redirect: z.nullable(types.string()).optional(),
-  redirectStatusCode: z.nullable(
-    MoveProjectDomainRedirectStatusCode$inboundSchema,
-  ).optional(),
-});
 /** @internal */
 export type MoveProjectDomainRequestBody$Outbound = {
   projectId: string;
@@ -151,34 +135,7 @@ export function moveProjectDomainRequestBodyToJSON(
     ),
   );
 }
-export function moveProjectDomainRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<MoveProjectDomainRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => MoveProjectDomainRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'MoveProjectDomainRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const MoveProjectDomainRequest$inboundSchema: z.ZodType<
-  MoveProjectDomainRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  idOrName: types.string(),
-  domain: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-  RequestBody: types.optional(
-    z.lazy(() => MoveProjectDomainRequestBody$inboundSchema),
-  ),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 /** @internal */
 export type MoveProjectDomainRequest$Outbound = {
   idOrName: string;
@@ -213,15 +170,6 @@ export function moveProjectDomainRequestToJSON(
     MoveProjectDomainRequest$outboundSchema.parse(moveProjectDomainRequest),
   );
 }
-export function moveProjectDomainRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<MoveProjectDomainRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => MoveProjectDomainRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'MoveProjectDomainRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const MoveProjectDomainVerification$inboundSchema: z.ZodType<
@@ -234,35 +182,7 @@ export const MoveProjectDomainVerification$inboundSchema: z.ZodType<
   value: types.string(),
   reason: types.string(),
 });
-/** @internal */
-export type MoveProjectDomainVerification$Outbound = {
-  type: string;
-  domain: string;
-  value: string;
-  reason: string;
-};
 
-/** @internal */
-export const MoveProjectDomainVerification$outboundSchema: z.ZodType<
-  MoveProjectDomainVerification$Outbound,
-  z.ZodTypeDef,
-  MoveProjectDomainVerification
-> = z.object({
-  type: z.string(),
-  domain: z.string(),
-  value: z.string(),
-  reason: z.string(),
-});
-
-export function moveProjectDomainVerificationToJSON(
-  moveProjectDomainVerification: MoveProjectDomainVerification,
-): string {
-  return JSON.stringify(
-    MoveProjectDomainVerification$outboundSchema.parse(
-      moveProjectDomainVerification,
-    ),
-  );
-}
 export function moveProjectDomainVerificationFromJSON(
   jsonString: string,
 ): SafeParseResult<MoveProjectDomainVerification, SDKValidationError> {
@@ -293,51 +213,7 @@ export const MoveProjectDomainResponseBody$inboundSchema: z.ZodType<
     z.array(z.lazy(() => MoveProjectDomainVerification$inboundSchema)),
   ),
 });
-/** @internal */
-export type MoveProjectDomainResponseBody$Outbound = {
-  name: string;
-  apexName: string;
-  projectId: string;
-  redirect?: string | null | undefined;
-  redirectStatusCode?: number | null | undefined;
-  gitBranch?: string | null | undefined;
-  customEnvironmentId?: string | null | undefined;
-  updatedAt?: number | undefined;
-  createdAt?: number | undefined;
-  verified: boolean;
-  verification?: Array<MoveProjectDomainVerification$Outbound> | undefined;
-};
 
-/** @internal */
-export const MoveProjectDomainResponseBody$outboundSchema: z.ZodType<
-  MoveProjectDomainResponseBody$Outbound,
-  z.ZodTypeDef,
-  MoveProjectDomainResponseBody
-> = z.object({
-  name: z.string(),
-  apexName: z.string(),
-  projectId: z.string(),
-  redirect: z.nullable(z.string()).optional(),
-  redirectStatusCode: z.nullable(z.number()).optional(),
-  gitBranch: z.nullable(z.string()).optional(),
-  customEnvironmentId: z.nullable(z.string()).optional(),
-  updatedAt: z.number().optional(),
-  createdAt: z.number().optional(),
-  verified: z.boolean(),
-  verification: z.array(
-    z.lazy(() => MoveProjectDomainVerification$outboundSchema),
-  ).optional(),
-});
-
-export function moveProjectDomainResponseBodyToJSON(
-  moveProjectDomainResponseBody: MoveProjectDomainResponseBody,
-): string {
-  return JSON.stringify(
-    MoveProjectDomainResponseBody$outboundSchema.parse(
-      moveProjectDomainResponseBody,
-    ),
-  );
-}
 export function moveProjectDomainResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<MoveProjectDomainResponseBody, SDKValidationError> {

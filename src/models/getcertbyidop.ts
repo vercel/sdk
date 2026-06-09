@@ -32,16 +32,6 @@ export type GetCertByIdResponseBody = {
 };
 
 /** @internal */
-export const GetCertByIdRequest$inboundSchema: z.ZodType<
-  GetCertByIdRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
-/** @internal */
 export type GetCertByIdRequest$Outbound = {
   id: string;
   teamId?: string | undefined;
@@ -66,15 +56,6 @@ export function getCertByIdRequestToJSON(
     GetCertByIdRequest$outboundSchema.parse(getCertByIdRequest),
   );
 }
-export function getCertByIdRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetCertByIdRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetCertByIdRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetCertByIdRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const GetCertByIdResponseBody$inboundSchema: z.ZodType<
@@ -88,35 +69,7 @@ export const GetCertByIdResponseBody$inboundSchema: z.ZodType<
   autoRenew: types.boolean(),
   cns: z.array(types.string()),
 });
-/** @internal */
-export type GetCertByIdResponseBody$Outbound = {
-  id: string;
-  createdAt: number;
-  expiresAt: number;
-  autoRenew: boolean;
-  cns: Array<string>;
-};
 
-/** @internal */
-export const GetCertByIdResponseBody$outboundSchema: z.ZodType<
-  GetCertByIdResponseBody$Outbound,
-  z.ZodTypeDef,
-  GetCertByIdResponseBody
-> = z.object({
-  id: z.string(),
-  createdAt: z.number(),
-  expiresAt: z.number(),
-  autoRenew: z.boolean(),
-  cns: z.array(z.string()),
-});
-
-export function getCertByIdResponseBodyToJSON(
-  getCertByIdResponseBody: GetCertByIdResponseBody,
-): string {
-  return JSON.stringify(
-    GetCertByIdResponseBody$outboundSchema.parse(getCertByIdResponseBody),
-  );
-}
 export function getCertByIdResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetCertByIdResponseBody, SDKValidationError> {

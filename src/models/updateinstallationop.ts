@@ -4,15 +4,8 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import {
-  collectExtraKeys as collectExtraKeys$,
-  safeParse,
-} from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
-import { Result as SafeParseResult } from "../types/fp.js";
-import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
-import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export const UpdateInstallationStatus = {
   Ready: "ready",
@@ -91,29 +84,15 @@ export type UpdateInstallationRequest = {
 };
 
 /** @internal */
-export const UpdateInstallationStatus$inboundSchema: z.ZodNativeEnum<
-  typeof UpdateInstallationStatus
-> = z.nativeEnum(UpdateInstallationStatus);
-/** @internal */
 export const UpdateInstallationStatus$outboundSchema: z.ZodNativeEnum<
   typeof UpdateInstallationStatus
-> = UpdateInstallationStatus$inboundSchema;
+> = z.nativeEnum(UpdateInstallationStatus);
 
-/** @internal */
-export const UpdateInstallationType$inboundSchema: z.ZodNativeEnum<
-  typeof UpdateInstallationType
-> = z.nativeEnum(UpdateInstallationType);
 /** @internal */
 export const UpdateInstallationType$outboundSchema: z.ZodNativeEnum<
   typeof UpdateInstallationType
-> = UpdateInstallationType$inboundSchema;
+> = z.nativeEnum(UpdateInstallationType);
 
-/** @internal */
-export const Details$inboundSchema: z.ZodType<Details, z.ZodTypeDef, unknown> =
-  z.object({
-    label: types.string(),
-    value: types.optional(types.string()),
-  });
 /** @internal */
 export type Details$Outbound = {
   label: string;
@@ -133,25 +112,7 @@ export const Details$outboundSchema: z.ZodType<
 export function detailsToJSON(details: Details): string {
   return JSON.stringify(Details$outboundSchema.parse(details));
 }
-export function detailsFromJSON(
-  jsonString: string,
-): SafeParseResult<Details, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Details$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Details' from JSON`,
-  );
-}
 
-/** @internal */
-export const HighlightedDetails$inboundSchema: z.ZodType<
-  HighlightedDetails,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  label: types.string(),
-  value: types.optional(types.string()),
-});
 /** @internal */
 export type HighlightedDetails$Outbound = {
   label: string;
@@ -175,38 +136,7 @@ export function highlightedDetailsToJSON(
     HighlightedDetails$outboundSchema.parse(highlightedDetails),
   );
 }
-export function highlightedDetailsFromJSON(
-  jsonString: string,
-): SafeParseResult<HighlightedDetails, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => HighlightedDetails$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'HighlightedDetails' from JSON`,
-  );
-}
 
-/** @internal */
-export const BillingPlan$inboundSchema: z.ZodType<
-  BillingPlan,
-  z.ZodTypeDef,
-  unknown
-> = collectExtraKeys$(
-  z.object({
-    id: types.string(),
-    type: UpdateInstallationType$inboundSchema,
-    name: types.string(),
-    description: types.optional(types.string()),
-    paymentMethodRequired: types.optional(types.boolean()),
-    cost: types.optional(types.string()),
-    details: types.optional(z.array(z.lazy(() => Details$inboundSchema))),
-    highlightedDetails: types.optional(
-      z.array(z.lazy(() => HighlightedDetails$inboundSchema)),
-    ),
-    effectiveDate: types.optional(types.string()),
-  }).catchall(z.any()),
-  "additionalProperties",
-  true,
-);
 /** @internal */
 export type BillingPlan$Outbound = {
   id: string;
@@ -250,35 +180,12 @@ export const BillingPlan$outboundSchema: z.ZodType<
 export function billingPlanToJSON(billingPlan: BillingPlan): string {
   return JSON.stringify(BillingPlan$outboundSchema.parse(billingPlan));
 }
-export function billingPlanFromJSON(
-  jsonString: string,
-): SafeParseResult<BillingPlan, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => BillingPlan$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'BillingPlan' from JSON`,
-  );
-}
 
 /** @internal */
-export const Level$inboundSchema: z.ZodNativeEnum<typeof Level> = z.nativeEnum(
+export const Level$outboundSchema: z.ZodNativeEnum<typeof Level> = z.nativeEnum(
   Level,
 );
-/** @internal */
-export const Level$outboundSchema: z.ZodNativeEnum<typeof Level> =
-  Level$inboundSchema;
 
-/** @internal */
-export const Notification1$inboundSchema: z.ZodType<
-  Notification1,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  level: Level$inboundSchema,
-  title: types.string(),
-  message: types.optional(types.string()),
-  href: types.optional(types.string()),
-});
 /** @internal */
 export type Notification1$Outbound = {
   level: string;
@@ -302,22 +209,7 @@ export const Notification1$outboundSchema: z.ZodType<
 export function notification1ToJSON(notification1: Notification1): string {
   return JSON.stringify(Notification1$outboundSchema.parse(notification1));
 }
-export function notification1FromJSON(
-  jsonString: string,
-): SafeParseResult<Notification1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Notification1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Notification1' from JSON`,
-  );
-}
 
-/** @internal */
-export const Notification$inboundSchema: z.ZodType<
-  Notification,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([z.lazy(() => Notification1$inboundSchema), types.string()]);
 /** @internal */
 export type Notification$Outbound = Notification1$Outbound | string;
 
@@ -331,29 +223,7 @@ export const Notification$outboundSchema: z.ZodType<
 export function notificationToJSON(notification: Notification): string {
   return JSON.stringify(Notification$outboundSchema.parse(notification));
 }
-export function notificationFromJSON(
-  jsonString: string,
-): SafeParseResult<Notification, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Notification$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Notification' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateInstallationRequestBody$inboundSchema: z.ZodType<
-  UpdateInstallationRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  status: types.optional(UpdateInstallationStatus$inboundSchema),
-  externalId: types.optional(types.string()),
-  billingPlan: types.optional(z.lazy(() => BillingPlan$inboundSchema)),
-  notification: types.optional(
-    smartUnion([z.lazy(() => Notification1$inboundSchema), types.string()]),
-  ),
-});
 /** @internal */
 export type UpdateInstallationRequestBody$Outbound = {
   status?: string | undefined;
@@ -386,31 +256,7 @@ export function updateInstallationRequestBodyToJSON(
     ),
   );
 }
-export function updateInstallationRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateInstallationRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateInstallationRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateInstallationRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateInstallationRequest$inboundSchema: z.ZodType<
-  UpdateInstallationRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  integrationConfigurationId: types.string(),
-  RequestBody: types.optional(
-    z.lazy(() => UpdateInstallationRequestBody$inboundSchema),
-  ),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 /** @internal */
 export type UpdateInstallationRequest$Outbound = {
   integrationConfigurationId: string;
@@ -437,14 +283,5 @@ export function updateInstallationRequestToJSON(
 ): string {
   return JSON.stringify(
     UpdateInstallationRequest$outboundSchema.parse(updateInstallationRequest),
-  );
-}
-export function updateInstallationRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateInstallationRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateInstallationRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateInstallationRequest' from JSON`,
   );
 }

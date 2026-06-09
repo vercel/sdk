@@ -45,10 +45,6 @@ export class NotAuthorizedForScope extends VercelError {
 export const NotAuthorizedForScopeCode$inboundSchema: z.ZodNativeEnum<
   typeof NotAuthorizedForScopeCode
 > = z.nativeEnum(NotAuthorizedForScopeCode);
-/** @internal */
-export const NotAuthorizedForScopeCode$outboundSchema: z.ZodNativeEnum<
-  typeof NotAuthorizedForScopeCode
-> = NotAuthorizedForScopeCode$inboundSchema;
 
 /** @internal */
 export const NotAuthorizedForScope$inboundSchema: z.ZodType<
@@ -70,23 +66,3 @@ export const NotAuthorizedForScope$inboundSchema: z.ZodType<
       body: v.body$,
     });
   });
-
-/** @internal */
-export type NotAuthorizedForScope$Outbound = {
-  status: number;
-  code: string;
-  message: string;
-};
-
-/** @internal */
-export const NotAuthorizedForScope$outboundSchema: z.ZodType<
-  NotAuthorizedForScope$Outbound,
-  z.ZodTypeDef,
-  NotAuthorizedForScope
-> = z.instanceof(NotAuthorizedForScope)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    status: z.number(),
-    code: NotAuthorizedForScopeCode$outboundSchema,
-    message: z.string(),
-  }));

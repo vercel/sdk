@@ -54,17 +54,6 @@ export type DeleteDeploymentResponseBody = {
 };
 
 /** @internal */
-export const DeleteDeploymentRequest$inboundSchema: z.ZodType<
-  DeleteDeploymentRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: types.string(),
-  url: types.optional(types.string()),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
-/** @internal */
 export type DeleteDeploymentRequest$Outbound = {
   id: string;
   url?: string | undefined;
@@ -91,24 +80,11 @@ export function deleteDeploymentRequestToJSON(
     DeleteDeploymentRequest$outboundSchema.parse(deleteDeploymentRequest),
   );
 }
-export function deleteDeploymentRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<DeleteDeploymentRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => DeleteDeploymentRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DeleteDeploymentRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const DeleteDeploymentState$inboundSchema: z.ZodNativeEnum<
   typeof DeleteDeploymentState
 > = z.nativeEnum(DeleteDeploymentState);
-/** @internal */
-export const DeleteDeploymentState$outboundSchema: z.ZodNativeEnum<
-  typeof DeleteDeploymentState
-> = DeleteDeploymentState$inboundSchema;
 
 /** @internal */
 export const DeleteDeploymentResponseBody$inboundSchema: z.ZodType<
@@ -119,31 +95,7 @@ export const DeleteDeploymentResponseBody$inboundSchema: z.ZodType<
   uid: types.string(),
   state: DeleteDeploymentState$inboundSchema,
 });
-/** @internal */
-export type DeleteDeploymentResponseBody$Outbound = {
-  uid: string;
-  state: string;
-};
 
-/** @internal */
-export const DeleteDeploymentResponseBody$outboundSchema: z.ZodType<
-  DeleteDeploymentResponseBody$Outbound,
-  z.ZodTypeDef,
-  DeleteDeploymentResponseBody
-> = z.object({
-  uid: z.string(),
-  state: DeleteDeploymentState$outboundSchema,
-});
-
-export function deleteDeploymentResponseBodyToJSON(
-  deleteDeploymentResponseBody: DeleteDeploymentResponseBody,
-): string {
-  return JSON.stringify(
-    DeleteDeploymentResponseBody$outboundSchema.parse(
-      deleteDeploymentResponseBody,
-    ),
-  );
-}
 export function deleteDeploymentResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<DeleteDeploymentResponseBody, SDKValidationError> {

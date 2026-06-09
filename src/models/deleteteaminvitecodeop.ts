@@ -30,15 +30,6 @@ export type DeleteTeamInviteCodeResponseBody = {
 };
 
 /** @internal */
-export const DeleteTeamInviteCodeRequest$inboundSchema: z.ZodType<
-  DeleteTeamInviteCodeRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  inviteId: types.string(),
-  teamId: types.string(),
-});
-/** @internal */
 export type DeleteTeamInviteCodeRequest$Outbound = {
   inviteId: string;
   teamId: string;
@@ -63,15 +54,6 @@ export function deleteTeamInviteCodeRequestToJSON(
     ),
   );
 }
-export function deleteTeamInviteCodeRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<DeleteTeamInviteCodeRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => DeleteTeamInviteCodeRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DeleteTeamInviteCodeRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const DeleteTeamInviteCodeResponseBody$inboundSchema: z.ZodType<
@@ -81,29 +63,7 @@ export const DeleteTeamInviteCodeResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   id: types.string(),
 });
-/** @internal */
-export type DeleteTeamInviteCodeResponseBody$Outbound = {
-  id: string;
-};
 
-/** @internal */
-export const DeleteTeamInviteCodeResponseBody$outboundSchema: z.ZodType<
-  DeleteTeamInviteCodeResponseBody$Outbound,
-  z.ZodTypeDef,
-  DeleteTeamInviteCodeResponseBody
-> = z.object({
-  id: z.string(),
-});
-
-export function deleteTeamInviteCodeResponseBodyToJSON(
-  deleteTeamInviteCodeResponseBody: DeleteTeamInviteCodeResponseBody,
-): string {
-  return JSON.stringify(
-    DeleteTeamInviteCodeResponseBody$outboundSchema.parse(
-      deleteTeamInviteCodeResponseBody,
-    ),
-  );
-}
 export function deleteTeamInviteCodeResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<DeleteTeamInviteCodeResponseBody, SDKValidationError> {

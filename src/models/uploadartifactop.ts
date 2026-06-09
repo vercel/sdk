@@ -64,40 +64,6 @@ export type UploadArtifactResponseBody = {
 };
 
 /** @internal */
-export const UploadArtifactRequest$inboundSchema: z.ZodType<
-  UploadArtifactRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  "'content-Length'": types.optional(types.number()),
-  "'x-Artifact-Duration'": types.optional(types.number()),
-  "'x-Artifact-Client-Ci'": types.optional(types.string()),
-  "'x-Artifact-Client-Interactive'": types.optional(types.number()),
-  "'x-Artifact-Tag'": types.optional(types.string()),
-  "'x-Artifact-Sha'": types.optional(types.string()),
-  "'x-Artifact-Dirty-Hash'": types.optional(types.string()),
-  hash: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-  RequestBody: z.union([
-    z.instanceof(ReadableStream<Uint8Array>),
-    z.instanceof(Blob),
-    z.instanceof(ArrayBuffer),
-    z.instanceof(Uint8Array),
-  ]),
-}).transform((v) => {
-  return remap$(v, {
-    "'content-Length'": "contentLength",
-    "'x-Artifact-Duration'": "xArtifactDuration",
-    "'x-Artifact-Client-Ci'": "xArtifactClientCi",
-    "'x-Artifact-Client-Interactive'": "xArtifactClientInteractive",
-    "'x-Artifact-Tag'": "xArtifactTag",
-    "'x-Artifact-Sha'": "xArtifactSha",
-    "'x-Artifact-Dirty-Hash'": "xArtifactDirtyHash",
-    "RequestBody": "requestBody",
-  });
-});
-/** @internal */
 export type UploadArtifactRequest$Outbound = {
   "'content-Length'"?: number | undefined;
   "'x-Artifact-Duration'"?: number | undefined;
@@ -154,15 +120,6 @@ export function uploadArtifactRequestToJSON(
     UploadArtifactRequest$outboundSchema.parse(uploadArtifactRequest),
   );
 }
-export function uploadArtifactRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<UploadArtifactRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UploadArtifactRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UploadArtifactRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const UploadArtifactResponseBody$inboundSchema: z.ZodType<
@@ -172,27 +129,7 @@ export const UploadArtifactResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   urls: z.array(types.string()),
 });
-/** @internal */
-export type UploadArtifactResponseBody$Outbound = {
-  urls: Array<string>;
-};
 
-/** @internal */
-export const UploadArtifactResponseBody$outboundSchema: z.ZodType<
-  UploadArtifactResponseBody$Outbound,
-  z.ZodTypeDef,
-  UploadArtifactResponseBody
-> = z.object({
-  urls: z.array(z.string()),
-});
-
-export function uploadArtifactResponseBodyToJSON(
-  uploadArtifactResponseBody: UploadArtifactResponseBody,
-): string {
-  return JSON.stringify(
-    UploadArtifactResponseBody$outboundSchema.parse(uploadArtifactResponseBody),
-  );
-}
 export function uploadArtifactResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<UploadArtifactResponseBody, SDKValidationError> {

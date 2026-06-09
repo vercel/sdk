@@ -6,16 +6,14 @@
 import { Filter2 } from "@vercel/sdk/models/createdrainop.js";
 
 let value: Filter2 = {
-  version: "<value>",
-  filter: {
-    type: "<value>",
-  },
+  type: "<value>",
+  text: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                 | Type                  | Required              | Description           |
-| --------------------- | --------------------- | --------------------- | --------------------- |
-| `version`             | *string*              | :heavy_check_mark:    | N/A                   |
-| `filter`              | *models.FilterFilter* | :heavy_check_mark:    | N/A                   |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `type`             | *string*           | :heavy_check_mark: | N/A                |
+| `text`             | *string*           | :heavy_check_mark: | N/A                |

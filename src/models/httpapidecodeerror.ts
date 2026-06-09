@@ -4,12 +4,7 @@
 
 import * as z from "zod/v3";
 import * as types from "../types/primitives.js";
-import {
-  Issue,
-  Issue$inboundSchema,
-  Issue$Outbound,
-  Issue$outboundSchema,
-} from "./issue.js";
+import { Issue, Issue$inboundSchema } from "./issue.js";
 import { VercelError } from "./vercelerror.js";
 
 /**
@@ -61,21 +56,3 @@ export const HttpApiDecodeError$inboundSchema: z.ZodType<
       body: v.body$,
     });
   });
-
-/** @internal */
-export type HttpApiDecodeError$Outbound = {
-  issues: Array<Issue$Outbound>;
-  message: string;
-};
-
-/** @internal */
-export const HttpApiDecodeError$outboundSchema: z.ZodType<
-  HttpApiDecodeError$Outbound,
-  z.ZodTypeDef,
-  HttpApiDecodeError
-> = z.instanceof(HttpApiDecodeError)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    issues: z.array(Issue$outboundSchema),
-    message: z.string(),
-  }));

@@ -168,15 +168,9 @@ export type GetRedirectsResponseBody =
   | { [k: string]: any };
 
 /** @internal */
-export const QueryParam2$inboundSchema: z.ZodNativeEnum<typeof QueryParam2> = z
+export const QueryParam2$outboundSchema: z.ZodNativeEnum<typeof QueryParam2> = z
   .nativeEnum(QueryParam2);
-/** @internal */
-export const QueryParam2$outboundSchema: z.ZodNativeEnum<typeof QueryParam2> =
-  QueryParam2$inboundSchema;
 
-/** @internal */
-export const Diff$inboundSchema: z.ZodType<Diff, z.ZodTypeDef, unknown> =
-  smartUnion([types.boolean(), QueryParam2$inboundSchema]);
 /** @internal */
 export type Diff$Outbound = boolean | string;
 
@@ -187,55 +181,15 @@ export const Diff$outboundSchema: z.ZodType<Diff$Outbound, z.ZodTypeDef, Diff> =
 export function diffToJSON(diff: Diff): string {
   return JSON.stringify(Diff$outboundSchema.parse(diff));
 }
-export function diffFromJSON(
-  jsonString: string,
-): SafeParseResult<Diff, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Diff$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Diff' from JSON`,
-  );
-}
 
 /** @internal */
-export const SortBy$inboundSchema: z.ZodNativeEnum<typeof SortBy> = z
+export const SortBy$outboundSchema: z.ZodNativeEnum<typeof SortBy> = z
   .nativeEnum(SortBy);
-/** @internal */
-export const SortBy$outboundSchema: z.ZodNativeEnum<typeof SortBy> =
-  SortBy$inboundSchema;
 
 /** @internal */
-export const SortOrder$inboundSchema: z.ZodNativeEnum<typeof SortOrder> = z
+export const SortOrder$outboundSchema: z.ZodNativeEnum<typeof SortOrder> = z
   .nativeEnum(SortOrder);
-/** @internal */
-export const SortOrder$outboundSchema: z.ZodNativeEnum<typeof SortOrder> =
-  SortOrder$inboundSchema;
 
-/** @internal */
-export const GetRedirectsRequest$inboundSchema: z.ZodType<
-  GetRedirectsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  projectId: types.string(),
-  versionId: types.optional(types.string()),
-  q: types.optional(types.string()),
-  diff: types.optional(
-    smartUnion([types.boolean(), QueryParam2$inboundSchema]),
-  ),
-  page: types.optional(types.number()),
-  per_page: types.optional(types.number()),
-  sort_by: types.optional(SortBy$inboundSchema),
-  sort_order: types.optional(SortOrder$inboundSchema),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-}).transform((v) => {
-  return remap$(v, {
-    "per_page": "perPage",
-    "sort_by": "sortBy",
-    "sort_order": "sortOrder",
-  });
-});
 /** @internal */
 export type GetRedirectsRequest$Outbound = {
   projectId: string;
@@ -281,15 +235,6 @@ export function getRedirectsRequestToJSON(
     GetRedirectsRequest$outboundSchema.parse(getRedirectsRequest),
   );
 }
-export function getRedirectsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetRedirectsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetRedirectsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetRedirectsRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const GetRedirectsResponseBodyRedirects$inboundSchema: z.ZodType<
@@ -306,43 +251,7 @@ export const GetRedirectsResponseBodyRedirects$inboundSchema: z.ZodType<
   destination: types.string(),
   source: types.string(),
 });
-/** @internal */
-export type GetRedirectsResponseBodyRedirects$Outbound = {
-  statusCode?: number | undefined;
-  permanent?: boolean | undefined;
-  sensitive?: boolean | undefined;
-  caseSensitive?: boolean | undefined;
-  query?: boolean | undefined;
-  preserveQueryParams?: boolean | undefined;
-  destination: string;
-  source: string;
-};
 
-/** @internal */
-export const GetRedirectsResponseBodyRedirects$outboundSchema: z.ZodType<
-  GetRedirectsResponseBodyRedirects$Outbound,
-  z.ZodTypeDef,
-  GetRedirectsResponseBodyRedirects
-> = z.object({
-  statusCode: z.number().optional(),
-  permanent: z.boolean().optional(),
-  sensitive: z.boolean().optional(),
-  caseSensitive: z.boolean().optional(),
-  query: z.boolean().optional(),
-  preserveQueryParams: z.boolean().optional(),
-  destination: z.string(),
-  source: z.string(),
-});
-
-export function getRedirectsResponseBodyRedirectsToJSON(
-  getRedirectsResponseBodyRedirects: GetRedirectsResponseBodyRedirects,
-): string {
-  return JSON.stringify(
-    GetRedirectsResponseBodyRedirects$outboundSchema.parse(
-      getRedirectsResponseBodyRedirects,
-    ),
-  );
-}
 export function getRedirectsResponseBodyRedirectsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetRedirectsResponseBodyRedirects, SDKValidationError> {
@@ -369,45 +278,7 @@ export const GetRedirectsResponseBodyVersion$inboundSchema: z.ZodType<
   redirectCount: types.optional(types.number()),
   alias: types.optional(types.string()),
 });
-/** @internal */
-export type GetRedirectsResponseBodyVersion$Outbound = {
-  id: string;
-  key: string;
-  lastModified: number;
-  createdBy: string;
-  name?: string | undefined;
-  isStaging?: boolean | undefined;
-  isLive?: boolean | undefined;
-  redirectCount?: number | undefined;
-  alias?: string | undefined;
-};
 
-/** @internal */
-export const GetRedirectsResponseBodyVersion$outboundSchema: z.ZodType<
-  GetRedirectsResponseBodyVersion$Outbound,
-  z.ZodTypeDef,
-  GetRedirectsResponseBodyVersion
-> = z.object({
-  id: z.string(),
-  key: z.string(),
-  lastModified: z.number(),
-  createdBy: z.string(),
-  name: z.string().optional(),
-  isStaging: z.boolean().optional(),
-  isLive: z.boolean().optional(),
-  redirectCount: z.number().optional(),
-  alias: z.string().optional(),
-});
-
-export function getRedirectsResponseBodyVersionToJSON(
-  getRedirectsResponseBodyVersion: GetRedirectsResponseBodyVersion,
-): string {
-  return JSON.stringify(
-    GetRedirectsResponseBodyVersion$outboundSchema.parse(
-      getRedirectsResponseBodyVersion,
-    ),
-  );
-}
 export function getRedirectsResponseBodyVersionFromJSON(
   jsonString: string,
 ): SafeParseResult<GetRedirectsResponseBodyVersion, SDKValidationError> {
@@ -433,39 +304,7 @@ export const GetRedirectsResponseBodyBulkRedirectsPagination$inboundSchema:
       "per_page": "perPage",
     });
   });
-/** @internal */
-export type GetRedirectsResponseBodyBulkRedirectsPagination$Outbound = {
-  page: number;
-  per_page: number;
-  numPages: number;
-};
 
-/** @internal */
-export const GetRedirectsResponseBodyBulkRedirectsPagination$outboundSchema:
-  z.ZodType<
-    GetRedirectsResponseBodyBulkRedirectsPagination$Outbound,
-    z.ZodTypeDef,
-    GetRedirectsResponseBodyBulkRedirectsPagination
-  > = z.object({
-    page: z.number(),
-    perPage: z.number(),
-    numPages: z.number(),
-  }).transform((v) => {
-    return remap$(v, {
-      perPage: "per_page",
-    });
-  });
-
-export function getRedirectsResponseBodyBulkRedirectsPaginationToJSON(
-  getRedirectsResponseBodyBulkRedirectsPagination:
-    GetRedirectsResponseBodyBulkRedirectsPagination,
-): string {
-  return JSON.stringify(
-    GetRedirectsResponseBodyBulkRedirectsPagination$outboundSchema.parse(
-      getRedirectsResponseBodyBulkRedirectsPagination,
-    ),
-  );
-}
 export function getRedirectsResponseBodyBulkRedirectsPaginationFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -498,32 +337,7 @@ export const ResponseBody3$inboundSchema: z.ZodType<
     GetRedirectsResponseBodyBulkRedirectsPagination$inboundSchema
   ),
 });
-/** @internal */
-export type ResponseBody3$Outbound = {
-  redirects: Array<GetRedirectsResponseBodyRedirects$Outbound>;
-  version?: GetRedirectsResponseBodyVersion$Outbound | undefined;
-  pagination: GetRedirectsResponseBodyBulkRedirectsPagination$Outbound;
-};
 
-/** @internal */
-export const ResponseBody3$outboundSchema: z.ZodType<
-  ResponseBody3$Outbound,
-  z.ZodTypeDef,
-  ResponseBody3
-> = z.object({
-  redirects: z.array(
-    z.lazy(() => GetRedirectsResponseBodyRedirects$outboundSchema),
-  ),
-  version: z.lazy(() => GetRedirectsResponseBodyVersion$outboundSchema)
-    .optional(),
-  pagination: z.lazy(() =>
-    GetRedirectsResponseBodyBulkRedirectsPagination$outboundSchema
-  ),
-});
-
-export function responseBody3ToJSON(responseBody3: ResponseBody3): string {
-  return JSON.stringify(ResponseBody3$outboundSchema.parse(responseBody3));
-}
 export function responseBody3FromJSON(
   jsonString: string,
 ): SafeParseResult<ResponseBody3, SDKValidationError> {
@@ -550,43 +364,7 @@ export const ResponseBodyVersion$inboundSchema: z.ZodType<
   redirectCount: types.optional(types.number()),
   alias: types.optional(types.string()),
 });
-/** @internal */
-export type ResponseBodyVersion$Outbound = {
-  id: string;
-  key: string;
-  lastModified: number;
-  createdBy: string;
-  name?: string | undefined;
-  isStaging?: boolean | undefined;
-  isLive?: boolean | undefined;
-  redirectCount?: number | undefined;
-  alias?: string | undefined;
-};
 
-/** @internal */
-export const ResponseBodyVersion$outboundSchema: z.ZodType<
-  ResponseBodyVersion$Outbound,
-  z.ZodTypeDef,
-  ResponseBodyVersion
-> = z.object({
-  id: z.string(),
-  key: z.string(),
-  lastModified: z.number(),
-  createdBy: z.string(),
-  name: z.string().optional(),
-  isStaging: z.boolean().optional(),
-  isLive: z.boolean().optional(),
-  redirectCount: z.number().optional(),
-  alias: z.string().optional(),
-});
-
-export function responseBodyVersionToJSON(
-  responseBodyVersion: ResponseBodyVersion,
-): string {
-  return JSON.stringify(
-    ResponseBodyVersion$outboundSchema.parse(responseBodyVersion),
-  );
-}
 export function responseBodyVersionFromJSON(
   jsonString: string,
 ): SafeParseResult<ResponseBodyVersion, SDKValidationError> {
@@ -612,41 +390,7 @@ export const ResponseBodyRedirects$inboundSchema: z.ZodType<
   destination: types.string(),
   source: types.string(),
 });
-/** @internal */
-export type ResponseBodyRedirects$Outbound = {
-  statusCode?: number | undefined;
-  permanent?: boolean | undefined;
-  sensitive?: boolean | undefined;
-  caseSensitive?: boolean | undefined;
-  query?: boolean | undefined;
-  preserveQueryParams?: boolean | undefined;
-  destination: string;
-  source: string;
-};
 
-/** @internal */
-export const ResponseBodyRedirects$outboundSchema: z.ZodType<
-  ResponseBodyRedirects$Outbound,
-  z.ZodTypeDef,
-  ResponseBodyRedirects
-> = z.object({
-  statusCode: z.number().optional(),
-  permanent: z.boolean().optional(),
-  sensitive: z.boolean().optional(),
-  caseSensitive: z.boolean().optional(),
-  query: z.boolean().optional(),
-  preserveQueryParams: z.boolean().optional(),
-  destination: z.string(),
-  source: z.string(),
-});
-
-export function responseBodyRedirectsToJSON(
-  responseBodyRedirects: ResponseBodyRedirects,
-): string {
-  return JSON.stringify(
-    ResponseBodyRedirects$outboundSchema.parse(responseBodyRedirects),
-  );
-}
 export function responseBodyRedirectsFromJSON(
   jsonString: string,
 ): SafeParseResult<ResponseBodyRedirects, SDKValidationError> {
@@ -671,37 +415,7 @@ export const GetRedirectsResponseBodyPagination$inboundSchema: z.ZodType<
     "per_page": "perPage",
   });
 });
-/** @internal */
-export type GetRedirectsResponseBodyPagination$Outbound = {
-  page: number;
-  per_page: number;
-  numPages: number;
-};
 
-/** @internal */
-export const GetRedirectsResponseBodyPagination$outboundSchema: z.ZodType<
-  GetRedirectsResponseBodyPagination$Outbound,
-  z.ZodTypeDef,
-  GetRedirectsResponseBodyPagination
-> = z.object({
-  page: z.number(),
-  perPage: z.number(),
-  numPages: z.number(),
-}).transform((v) => {
-  return remap$(v, {
-    perPage: "per_page",
-  });
-});
-
-export function getRedirectsResponseBodyPaginationToJSON(
-  getRedirectsResponseBodyPagination: GetRedirectsResponseBodyPagination,
-): string {
-  return JSON.stringify(
-    GetRedirectsResponseBodyPagination$outboundSchema.parse(
-      getRedirectsResponseBodyPagination,
-    ),
-  );
-}
 export function getRedirectsResponseBodyPaginationFromJSON(
   jsonString: string,
 ): SafeParseResult<GetRedirectsResponseBodyPagination, SDKValidationError> {
@@ -723,31 +437,7 @@ export const GetRedirectsResponseBody2$inboundSchema: z.ZodType<
   redirects: z.array(z.lazy(() => ResponseBodyRedirects$inboundSchema)),
   pagination: z.lazy(() => GetRedirectsResponseBodyPagination$inboundSchema),
 });
-/** @internal */
-export type GetRedirectsResponseBody2$Outbound = {
-  version: ResponseBodyVersion$Outbound;
-  redirects: Array<ResponseBodyRedirects$Outbound>;
-  pagination: GetRedirectsResponseBodyPagination$Outbound;
-};
 
-/** @internal */
-export const GetRedirectsResponseBody2$outboundSchema: z.ZodType<
-  GetRedirectsResponseBody2$Outbound,
-  z.ZodTypeDef,
-  GetRedirectsResponseBody2
-> = z.object({
-  version: z.lazy(() => ResponseBodyVersion$outboundSchema),
-  redirects: z.array(z.lazy(() => ResponseBodyRedirects$outboundSchema)),
-  pagination: z.lazy(() => GetRedirectsResponseBodyPagination$outboundSchema),
-});
-
-export function getRedirectsResponseBody2ToJSON(
-  getRedirectsResponseBody2: GetRedirectsResponseBody2,
-): string {
-  return JSON.stringify(
-    GetRedirectsResponseBody2$outboundSchema.parse(getRedirectsResponseBody2),
-  );
-}
 export function getRedirectsResponseBody2FromJSON(
   jsonString: string,
 ): SafeParseResult<GetRedirectsResponseBody2, SDKValidationError> {
@@ -768,30 +458,7 @@ export const GetRedirectsResponseBody$inboundSchema: z.ZodType<
   z.lazy(() => ResponseBody3$inboundSchema),
   z.record(z.any()),
 ]);
-/** @internal */
-export type GetRedirectsResponseBody$Outbound =
-  | GetRedirectsResponseBody2$Outbound
-  | ResponseBody3$Outbound
-  | { [k: string]: any };
 
-/** @internal */
-export const GetRedirectsResponseBody$outboundSchema: z.ZodType<
-  GetRedirectsResponseBody$Outbound,
-  z.ZodTypeDef,
-  GetRedirectsResponseBody
-> = smartUnion([
-  z.lazy(() => GetRedirectsResponseBody2$outboundSchema),
-  z.lazy(() => ResponseBody3$outboundSchema),
-  z.record(z.any()),
-]);
-
-export function getRedirectsResponseBodyToJSON(
-  getRedirectsResponseBody: GetRedirectsResponseBody,
-): string {
-  return JSON.stringify(
-    GetRedirectsResponseBody$outboundSchema.parse(getRedirectsResponseBody),
-  );
-}
 export function getRedirectsResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetRedirectsResponseBody, SDKValidationError> {

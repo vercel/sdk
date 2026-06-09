@@ -5,7 +5,6 @@
 import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
-import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type DeleteRollingReleaseConfigRequest = {
@@ -27,16 +26,6 @@ export type DeleteRollingReleaseConfigResponseBody = {
   rollingRelease?: any | null | undefined;
 };
 
-/** @internal */
-export const DeleteRollingReleaseConfigRequest$inboundSchema: z.ZodType<
-  DeleteRollingReleaseConfigRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  idOrName: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
 /** @internal */
 export type DeleteRollingReleaseConfigRequest$Outbound = {
   idOrName: string;
@@ -64,15 +53,6 @@ export function deleteRollingReleaseConfigRequestToJSON(
     ),
   );
 }
-export function deleteRollingReleaseConfigRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<DeleteRollingReleaseConfigRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => DeleteRollingReleaseConfigRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DeleteRollingReleaseConfigRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const DeleteRollingReleaseConfigResponseBody$inboundSchema: z.ZodType<
@@ -82,30 +62,7 @@ export const DeleteRollingReleaseConfigResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   rollingRelease: z.nullable(z.any()).optional(),
 });
-/** @internal */
-export type DeleteRollingReleaseConfigResponseBody$Outbound = {
-  rollingRelease?: any | null | undefined;
-};
 
-/** @internal */
-export const DeleteRollingReleaseConfigResponseBody$outboundSchema: z.ZodType<
-  DeleteRollingReleaseConfigResponseBody$Outbound,
-  z.ZodTypeDef,
-  DeleteRollingReleaseConfigResponseBody
-> = z.object({
-  rollingRelease: z.nullable(z.any()).optional(),
-});
-
-export function deleteRollingReleaseConfigResponseBodyToJSON(
-  deleteRollingReleaseConfigResponseBody:
-    DeleteRollingReleaseConfigResponseBody,
-): string {
-  return JSON.stringify(
-    DeleteRollingReleaseConfigResponseBody$outboundSchema.parse(
-      deleteRollingReleaseConfigResponseBody,
-    ),
-  );
-}
 export function deleteRollingReleaseConfigResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<DeleteRollingReleaseConfigResponseBody, SDKValidationError> {

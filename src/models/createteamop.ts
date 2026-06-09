@@ -73,14 +73,6 @@ export type CreateTeamResponseBody = {
 };
 
 /** @internal */
-export const Utm$inboundSchema: z.ZodType<Utm, z.ZodTypeDef, unknown> = z
-  .object({
-    utmSource: types.optional(types.string()),
-    utmMedium: types.optional(types.string()),
-    utmCampaign: types.optional(types.string()),
-    utmTerm: types.optional(types.string()),
-  });
-/** @internal */
 export type Utm$Outbound = {
   utmSource?: string | undefined;
   utmMedium?: string | undefined;
@@ -100,27 +92,7 @@ export const Utm$outboundSchema: z.ZodType<Utm$Outbound, z.ZodTypeDef, Utm> = z
 export function utmToJSON(utm: Utm): string {
   return JSON.stringify(Utm$outboundSchema.parse(utm));
 }
-export function utmFromJSON(
-  jsonString: string,
-): SafeParseResult<Utm, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Utm$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Utm' from JSON`,
-  );
-}
 
-/** @internal */
-export const Attribution$inboundSchema: z.ZodType<
-  Attribution,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  sessionReferrer: types.optional(types.string()),
-  landingPage: types.optional(types.string()),
-  pageBeforeConversionPage: types.optional(types.string()),
-  utm: types.optional(z.lazy(() => Utm$inboundSchema)),
-});
 /** @internal */
 export type Attribution$Outbound = {
   sessionReferrer?: string | undefined;
@@ -144,26 +116,7 @@ export const Attribution$outboundSchema: z.ZodType<
 export function attributionToJSON(attribution: Attribution): string {
   return JSON.stringify(Attribution$outboundSchema.parse(attribution));
 }
-export function attributionFromJSON(
-  jsonString: string,
-): SafeParseResult<Attribution, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Attribution$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Attribution' from JSON`,
-  );
-}
 
-/** @internal */
-export const CreateTeamRequestBody$inboundSchema: z.ZodType<
-  CreateTeamRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  slug: types.string(),
-  name: types.optional(types.string()),
-  attribution: types.optional(z.lazy(() => Attribution$inboundSchema)),
-});
 /** @internal */
 export type CreateTeamRequestBody$Outbound = {
   slug: string;
@@ -189,15 +142,6 @@ export function createTeamRequestBodyToJSON(
     CreateTeamRequestBody$outboundSchema.parse(createTeamRequestBody),
   );
 }
-export function createTeamRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateTeamRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateTeamRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateTeamRequestBody' from JSON`,
-  );
-}
 
 /** @internal */
 export const CreateTeamResponseBody$inboundSchema: z.ZodType<
@@ -208,29 +152,7 @@ export const CreateTeamResponseBody$inboundSchema: z.ZodType<
   id: types.string(),
   slug: types.string(),
 });
-/** @internal */
-export type CreateTeamResponseBody$Outbound = {
-  id: string;
-  slug: string;
-};
 
-/** @internal */
-export const CreateTeamResponseBody$outboundSchema: z.ZodType<
-  CreateTeamResponseBody$Outbound,
-  z.ZodTypeDef,
-  CreateTeamResponseBody
-> = z.object({
-  id: z.string(),
-  slug: z.string(),
-});
-
-export function createTeamResponseBodyToJSON(
-  createTeamResponseBody: CreateTeamResponseBody,
-): string {
-  return JSON.stringify(
-    CreateTeamResponseBody$outboundSchema.parse(createTeamResponseBody),
-  );
-}
 export function createTeamResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateTeamResponseBody, SDKValidationError> {

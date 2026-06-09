@@ -3,10 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
-import { Result as SafeParseResult } from "../types/fp.js";
-import * as types from "../types/primitives.js";
-import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type GetFlagRequest = {
   /**
@@ -36,19 +32,6 @@ export type GetFlagRequest = {
 };
 
 /** @internal */
-export const GetFlagRequest$inboundSchema: z.ZodType<
-  GetFlagRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  projectIdOrName: types.string(),
-  flagIdOrSlug: types.string(),
-  ifMatch: types.optional(types.string()),
-  withMetadata: types.optional(types.boolean()),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
-/** @internal */
 export type GetFlagRequest$Outbound = {
   projectIdOrName: string;
   flagIdOrSlug: string;
@@ -74,13 +57,4 @@ export const GetFlagRequest$outboundSchema: z.ZodType<
 
 export function getFlagRequestToJSON(getFlagRequest: GetFlagRequest): string {
   return JSON.stringify(GetFlagRequest$outboundSchema.parse(getFlagRequest));
-}
-export function getFlagRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetFlagRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetFlagRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetFlagRequest' from JSON`,
-  );
 }

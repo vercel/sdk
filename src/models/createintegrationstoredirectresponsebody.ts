@@ -10,43 +10,26 @@ import * as types from "../types/primitives.js";
 import {
   CreateIntegrationStoreDirectNotification,
   CreateIntegrationStoreDirectNotification$inboundSchema,
-  CreateIntegrationStoreDirectNotification$Outbound,
-  CreateIntegrationStoreDirectNotification$outboundSchema,
   CreateIntegrationStoreDirectProtocolSettings,
   CreateIntegrationStoreDirectProtocolSettings$inboundSchema,
-  CreateIntegrationStoreDirectProtocolSettings$Outbound,
-  CreateIntegrationStoreDirectProtocolSettings$outboundSchema,
   Product,
   Product$inboundSchema,
-  Product$Outbound,
-  Product$outboundSchema,
 } from "./createintegrationstoredirectnotification.js";
 import {
   Capabilities,
   Capabilities$inboundSchema,
-  Capabilities$Outbound,
-  Capabilities$outboundSchema,
   CreateIntegrationStoreDirectIntegrationsMetadata,
   CreateIntegrationStoreDirectIntegrationsMetadata$inboundSchema,
-  CreateIntegrationStoreDirectIntegrationsMetadata$Outbound,
-  CreateIntegrationStoreDirectIntegrationsMetadata$outboundSchema,
   CreateIntegrationStoreDirectOwnership,
   CreateIntegrationStoreDirectOwnership$inboundSchema,
-  CreateIntegrationStoreDirectOwnership$outboundSchema,
   CreateIntegrationStoreDirectProjectsMetadata,
   CreateIntegrationStoreDirectProjectsMetadata$inboundSchema,
-  CreateIntegrationStoreDirectProjectsMetadata$Outbound,
-  CreateIntegrationStoreDirectProjectsMetadata$outboundSchema,
   CreateIntegrationStoreDirectStatus,
   CreateIntegrationStoreDirectStatus$inboundSchema,
-  CreateIntegrationStoreDirectStatus$outboundSchema,
   ExternalResourceStatus,
   ExternalResourceStatus$inboundSchema,
-  ExternalResourceStatus$outboundSchema,
   ProjectFilter,
   ProjectFilter$inboundSchema,
-  ProjectFilter$Outbound,
-  ProjectFilter$outboundSchema,
 } from "./createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproductmetadataschema7type.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
@@ -183,33 +166,7 @@ export const CreateIntegrationStoreDirectSecrets$inboundSchema: z.ZodType<
   length: types.number(),
   frameworkPublishable: types.optional(types.boolean()),
 });
-/** @internal */
-export type CreateIntegrationStoreDirectSecrets$Outbound = {
-  name: string;
-  length: number;
-  frameworkPublishable?: boolean | undefined;
-};
 
-/** @internal */
-export const CreateIntegrationStoreDirectSecrets$outboundSchema: z.ZodType<
-  CreateIntegrationStoreDirectSecrets$Outbound,
-  z.ZodTypeDef,
-  CreateIntegrationStoreDirectSecrets
-> = z.object({
-  name: z.string(),
-  length: z.number(),
-  frameworkPublishable: z.boolean().optional(),
-});
-
-export function createIntegrationStoreDirectSecretsToJSON(
-  createIntegrationStoreDirectSecrets: CreateIntegrationStoreDirectSecrets,
-): string {
-  return JSON.stringify(
-    CreateIntegrationStoreDirectSecrets$outboundSchema.parse(
-      createIntegrationStoreDirectSecrets,
-    ),
-  );
-}
 export function createIntegrationStoreDirectSecretsFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateIntegrationStoreDirectSecrets, SDKValidationError> {
@@ -225,19 +182,11 @@ export function createIntegrationStoreDirectSecretsFromJSON(
 export const CreateIntegrationStoreDirectType$inboundSchema: z.ZodNativeEnum<
   typeof CreateIntegrationStoreDirectType
 > = z.nativeEnum(CreateIntegrationStoreDirectType);
-/** @internal */
-export const CreateIntegrationStoreDirectType$outboundSchema: z.ZodNativeEnum<
-  typeof CreateIntegrationStoreDirectType
-> = CreateIntegrationStoreDirectType$inboundSchema;
 
 /** @internal */
 export const CreateIntegrationStoreDirectScope$inboundSchema: z.ZodNativeEnum<
   typeof CreateIntegrationStoreDirectScope
 > = z.nativeEnum(CreateIntegrationStoreDirectScope);
-/** @internal */
-export const CreateIntegrationStoreDirectScope$outboundSchema: z.ZodNativeEnum<
-  typeof CreateIntegrationStoreDirectScope
-> = CreateIntegrationStoreDirectScope$inboundSchema;
 
 /** @internal */
 export const CreateIntegrationStoreDirectDetails$inboundSchema: z.ZodType<
@@ -248,31 +197,7 @@ export const CreateIntegrationStoreDirectDetails$inboundSchema: z.ZodType<
   label: types.string(),
   value: types.optional(types.string()),
 });
-/** @internal */
-export type CreateIntegrationStoreDirectDetails$Outbound = {
-  label: string;
-  value?: string | undefined;
-};
 
-/** @internal */
-export const CreateIntegrationStoreDirectDetails$outboundSchema: z.ZodType<
-  CreateIntegrationStoreDirectDetails$Outbound,
-  z.ZodTypeDef,
-  CreateIntegrationStoreDirectDetails
-> = z.object({
-  label: z.string(),
-  value: z.string().optional(),
-});
-
-export function createIntegrationStoreDirectDetailsToJSON(
-  createIntegrationStoreDirectDetails: CreateIntegrationStoreDirectDetails,
-): string {
-  return JSON.stringify(
-    CreateIntegrationStoreDirectDetails$outboundSchema.parse(
-      createIntegrationStoreDirectDetails,
-    ),
-  );
-}
 export function createIntegrationStoreDirectDetailsFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateIntegrationStoreDirectDetails, SDKValidationError> {
@@ -294,33 +219,7 @@ export const CreateIntegrationStoreDirectHighlightedDetails$inboundSchema:
     label: types.string(),
     value: types.optional(types.string()),
   });
-/** @internal */
-export type CreateIntegrationStoreDirectHighlightedDetails$Outbound = {
-  label: string;
-  value?: string | undefined;
-};
 
-/** @internal */
-export const CreateIntegrationStoreDirectHighlightedDetails$outboundSchema:
-  z.ZodType<
-    CreateIntegrationStoreDirectHighlightedDetails$Outbound,
-    z.ZodTypeDef,
-    CreateIntegrationStoreDirectHighlightedDetails
-  > = z.object({
-    label: z.string(),
-    value: z.string().optional(),
-  });
-
-export function createIntegrationStoreDirectHighlightedDetailsToJSON(
-  createIntegrationStoreDirectHighlightedDetails:
-    CreateIntegrationStoreDirectHighlightedDetails,
-): string {
-  return JSON.stringify(
-    CreateIntegrationStoreDirectHighlightedDetails$outboundSchema.parse(
-      createIntegrationStoreDirectHighlightedDetails,
-    ),
-  );
-}
 export function createIntegrationStoreDirectHighlightedDetailsFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -346,31 +245,7 @@ export const CreateIntegrationStoreDirectQuote$inboundSchema: z.ZodType<
   line: types.string(),
   amount: types.string(),
 });
-/** @internal */
-export type CreateIntegrationStoreDirectQuote$Outbound = {
-  line: string;
-  amount: string;
-};
 
-/** @internal */
-export const CreateIntegrationStoreDirectQuote$outboundSchema: z.ZodType<
-  CreateIntegrationStoreDirectQuote$Outbound,
-  z.ZodTypeDef,
-  CreateIntegrationStoreDirectQuote
-> = z.object({
-  line: z.string(),
-  amount: z.string(),
-});
-
-export function createIntegrationStoreDirectQuoteToJSON(
-  createIntegrationStoreDirectQuote: CreateIntegrationStoreDirectQuote,
-): string {
-  return JSON.stringify(
-    CreateIntegrationStoreDirectQuote$outboundSchema.parse(
-      createIntegrationStoreDirectQuote,
-    ),
-  );
-}
 export function createIntegrationStoreDirectQuoteFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateIntegrationStoreDirectQuote, SDKValidationError> {
@@ -413,69 +288,7 @@ export const CreateIntegrationStoreDirectBillingPlan$inboundSchema: z.ZodType<
   effectiveDate: types.optional(types.string()),
   disabled: types.optional(types.boolean()),
 });
-/** @internal */
-export type CreateIntegrationStoreDirectBillingPlan$Outbound = {
-  type: string;
-  description: string;
-  id: string;
-  name: string;
-  scope: string;
-  paymentMethodRequired: boolean;
-  preauthorizationAmount?: number | undefined;
-  initialCharge?: string | undefined;
-  minimumAmount?: string | undefined;
-  maximumAmount?: string | undefined;
-  maximumAmountAutoPurchasePerPeriod?: string | undefined;
-  cost?: string | undefined;
-  details?: Array<CreateIntegrationStoreDirectDetails$Outbound> | undefined;
-  highlightedDetails?:
-    | Array<CreateIntegrationStoreDirectHighlightedDetails$Outbound>
-    | undefined;
-  quote?: Array<CreateIntegrationStoreDirectQuote$Outbound> | undefined;
-  effectiveDate?: string | undefined;
-  disabled?: boolean | undefined;
-};
 
-/** @internal */
-export const CreateIntegrationStoreDirectBillingPlan$outboundSchema: z.ZodType<
-  CreateIntegrationStoreDirectBillingPlan$Outbound,
-  z.ZodTypeDef,
-  CreateIntegrationStoreDirectBillingPlan
-> = z.object({
-  type: CreateIntegrationStoreDirectType$outboundSchema,
-  description: z.string(),
-  id: z.string(),
-  name: z.string(),
-  scope: CreateIntegrationStoreDirectScope$outboundSchema,
-  paymentMethodRequired: z.boolean(),
-  preauthorizationAmount: z.number().optional(),
-  initialCharge: z.string().optional(),
-  minimumAmount: z.string().optional(),
-  maximumAmount: z.string().optional(),
-  maximumAmountAutoPurchasePerPeriod: z.string().optional(),
-  cost: z.string().optional(),
-  details: z.array(
-    z.lazy(() => CreateIntegrationStoreDirectDetails$outboundSchema),
-  ).optional(),
-  highlightedDetails: z.array(
-    z.lazy(() => CreateIntegrationStoreDirectHighlightedDetails$outboundSchema),
-  ).optional(),
-  quote: z.array(z.lazy(() => CreateIntegrationStoreDirectQuote$outboundSchema))
-    .optional(),
-  effectiveDate: z.string().optional(),
-  disabled: z.boolean().optional(),
-});
-
-export function createIntegrationStoreDirectBillingPlanToJSON(
-  createIntegrationStoreDirectBillingPlan:
-    CreateIntegrationStoreDirectBillingPlan,
-): string {
-  return JSON.stringify(
-    CreateIntegrationStoreDirectBillingPlan$outboundSchema.parse(
-      createIntegrationStoreDirectBillingPlan,
-    ),
-  );
-}
 export function createIntegrationStoreDirectBillingPlanFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -496,10 +309,6 @@ export function createIntegrationStoreDirectBillingPlanFromJSON(
 export const CreateIntegrationStoreDirectTargets$inboundSchema: z.ZodNativeEnum<
   typeof CreateIntegrationStoreDirectTargets
 > = z.nativeEnum(CreateIntegrationStoreDirectTargets);
-/** @internal */
-export const CreateIntegrationStoreDirectTargets$outboundSchema:
-  z.ZodNativeEnum<typeof CreateIntegrationStoreDirectTargets> =
-    CreateIntegrationStoreDirectTargets$inboundSchema;
 
 /** @internal */
 export const CreateIntegrationStoreDirectStore$inboundSchema: z.ZodType<
@@ -547,89 +356,7 @@ export const CreateIntegrationStoreDirectStore$inboundSchema: z.ZodType<
     z.array(CreateIntegrationStoreDirectTargets$inboundSchema),
   ),
 });
-/** @internal */
-export type CreateIntegrationStoreDirectStore$Outbound = {
-  projectsMetadata: Array<
-    CreateIntegrationStoreDirectProjectsMetadata$Outbound
-  >;
-  projectFilter?: ProjectFilter$Outbound | undefined;
-  totalConnectedProjects?: number | undefined;
-  usageQuotaExceeded: boolean;
-  status: string | null;
-  ownership?: string | undefined;
-  capabilities?: Capabilities$Outbound | undefined;
-  metadata?: {
-    [k: string]: CreateIntegrationStoreDirectIntegrationsMetadata$Outbound;
-  } | undefined;
-  externalResourceId: string;
-  externalResourceStatus?: string | null | undefined;
-  directPartnerConsoleUrl?: string | undefined;
-  product: Product$Outbound;
-  protocolSettings?:
-    | CreateIntegrationStoreDirectProtocolSettings$Outbound
-    | undefined;
-  notification?: CreateIntegrationStoreDirectNotification$Outbound | undefined;
-  secrets: Array<CreateIntegrationStoreDirectSecrets$Outbound>;
-  billingPlan?: CreateIntegrationStoreDirectBillingPlan$Outbound | undefined;
-  secretRotationRequestedAt?: number | undefined;
-  secretRotationRequestedReason?: string | undefined;
-  secretRotationRequestedBy?: string | undefined;
-  secretRotationCompletedAt?: number | undefined;
-  parentId?: string | undefined;
-  targets?: Array<string> | undefined;
-};
 
-/** @internal */
-export const CreateIntegrationStoreDirectStore$outboundSchema: z.ZodType<
-  CreateIntegrationStoreDirectStore$Outbound,
-  z.ZodTypeDef,
-  CreateIntegrationStoreDirectStore
-> = z.object({
-  projectsMetadata: z.array(
-    CreateIntegrationStoreDirectProjectsMetadata$outboundSchema,
-  ),
-  projectFilter: ProjectFilter$outboundSchema.optional(),
-  totalConnectedProjects: z.number().optional(),
-  usageQuotaExceeded: z.boolean(),
-  status: z.nullable(CreateIntegrationStoreDirectStatus$outboundSchema),
-  ownership: CreateIntegrationStoreDirectOwnership$outboundSchema.optional(),
-  capabilities: Capabilities$outboundSchema.optional(),
-  metadata: z.record(
-    CreateIntegrationStoreDirectIntegrationsMetadata$outboundSchema,
-  ).optional(),
-  externalResourceId: z.string(),
-  externalResourceStatus: z.nullable(ExternalResourceStatus$outboundSchema)
-    .optional(),
-  directPartnerConsoleUrl: z.string().optional(),
-  product: Product$outboundSchema,
-  protocolSettings: CreateIntegrationStoreDirectProtocolSettings$outboundSchema
-    .optional(),
-  notification: CreateIntegrationStoreDirectNotification$outboundSchema
-    .optional(),
-  secrets: z.array(
-    z.lazy(() => CreateIntegrationStoreDirectSecrets$outboundSchema),
-  ),
-  billingPlan: z.lazy(() =>
-    CreateIntegrationStoreDirectBillingPlan$outboundSchema
-  ).optional(),
-  secretRotationRequestedAt: z.number().optional(),
-  secretRotationRequestedReason: z.string().optional(),
-  secretRotationRequestedBy: z.string().optional(),
-  secretRotationCompletedAt: z.number().optional(),
-  parentId: z.string().optional(),
-  targets: z.array(CreateIntegrationStoreDirectTargets$outboundSchema)
-    .optional(),
-});
-
-export function createIntegrationStoreDirectStoreToJSON(
-  createIntegrationStoreDirectStore: CreateIntegrationStoreDirectStore,
-): string {
-  return JSON.stringify(
-    CreateIntegrationStoreDirectStore$outboundSchema.parse(
-      createIntegrationStoreDirectStore,
-    ),
-  );
-}
 export function createIntegrationStoreDirectStoreFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateIntegrationStoreDirectStore, SDKValidationError> {
@@ -650,32 +377,7 @@ export const CreateIntegrationStoreDirectResponseBody$inboundSchema: z.ZodType<
     z.lazy(() => CreateIntegrationStoreDirectStore$inboundSchema),
   ),
 });
-/** @internal */
-export type CreateIntegrationStoreDirectResponseBody$Outbound = {
-  store: CreateIntegrationStoreDirectStore$Outbound | null;
-};
 
-/** @internal */
-export const CreateIntegrationStoreDirectResponseBody$outboundSchema: z.ZodType<
-  CreateIntegrationStoreDirectResponseBody$Outbound,
-  z.ZodTypeDef,
-  CreateIntegrationStoreDirectResponseBody
-> = z.object({
-  store: z.nullable(
-    z.lazy(() => CreateIntegrationStoreDirectStore$outboundSchema),
-  ),
-});
-
-export function createIntegrationStoreDirectResponseBodyToJSON(
-  createIntegrationStoreDirectResponseBody:
-    CreateIntegrationStoreDirectResponseBody,
-): string {
-  return JSON.stringify(
-    CreateIntegrationStoreDirectResponseBody$outboundSchema.parse(
-      createIntegrationStoreDirectResponseBody,
-    ),
-  );
-}
 export function createIntegrationStoreDirectResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<

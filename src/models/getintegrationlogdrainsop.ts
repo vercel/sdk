@@ -162,15 +162,6 @@ export type GetIntegrationLogDrainsResponseBody = {
 };
 
 /** @internal */
-export const GetIntegrationLogDrainsRequest$inboundSchema: z.ZodType<
-  GetIntegrationLogDrainsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
-/** @internal */
 export type GetIntegrationLogDrainsRequest$Outbound = {
   teamId?: string | undefined;
   slug?: string | undefined;
@@ -195,50 +186,26 @@ export function getIntegrationLogDrainsRequestToJSON(
     ),
   );
 }
-export function getIntegrationLogDrainsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetIntegrationLogDrainsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetIntegrationLogDrainsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetIntegrationLogDrainsRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const GetIntegrationLogDrainsDeliveryFormat$inboundSchema:
   z.ZodNativeEnum<typeof GetIntegrationLogDrainsDeliveryFormat> = z.nativeEnum(
     GetIntegrationLogDrainsDeliveryFormat,
   );
-/** @internal */
-export const GetIntegrationLogDrainsDeliveryFormat$outboundSchema:
-  z.ZodNativeEnum<typeof GetIntegrationLogDrainsDeliveryFormat> =
-    GetIntegrationLogDrainsDeliveryFormat$inboundSchema;
 
 /** @internal */
 export const GetIntegrationLogDrainsSources$inboundSchema: z.ZodNativeEnum<
   typeof GetIntegrationLogDrainsSources
 > = z.nativeEnum(GetIntegrationLogDrainsSources);
-/** @internal */
-export const GetIntegrationLogDrainsSources$outboundSchema: z.ZodNativeEnum<
-  typeof GetIntegrationLogDrainsSources
-> = GetIntegrationLogDrainsSources$inboundSchema;
 
 /** @internal */
 export const CreatedFrom$inboundSchema: z.ZodNativeEnum<typeof CreatedFrom> = z
   .nativeEnum(CreatedFrom);
-/** @internal */
-export const CreatedFrom$outboundSchema: z.ZodNativeEnum<typeof CreatedFrom> =
-  CreatedFrom$inboundSchema;
 
 /** @internal */
 export const GetIntegrationLogDrainsEnvironments$inboundSchema: z.ZodNativeEnum<
   typeof GetIntegrationLogDrainsEnvironments
 > = z.nativeEnum(GetIntegrationLogDrainsEnvironments);
-/** @internal */
-export const GetIntegrationLogDrainsEnvironments$outboundSchema:
-  z.ZodNativeEnum<typeof GetIntegrationLogDrainsEnvironments> =
-    GetIntegrationLogDrainsEnvironments$inboundSchema;
 
 /** @internal */
 export const GetIntegrationLogDrainsSource2$inboundSchema: z.ZodType<
@@ -252,37 +219,7 @@ export const GetIntegrationLogDrainsSource2$inboundSchema: z.ZodType<
   integrationId: types.string(),
   integrationConfigurationId: types.string(),
 });
-/** @internal */
-export type GetIntegrationLogDrainsSource2$Outbound = {
-  kind: "integration";
-  resourceId?: string | undefined;
-  externalResourceId?: string | undefined;
-  integrationId: string;
-  integrationConfigurationId: string;
-};
 
-/** @internal */
-export const GetIntegrationLogDrainsSource2$outboundSchema: z.ZodType<
-  GetIntegrationLogDrainsSource2$Outbound,
-  z.ZodTypeDef,
-  GetIntegrationLogDrainsSource2
-> = z.object({
-  kind: z.literal("integration"),
-  resourceId: z.string().optional(),
-  externalResourceId: z.string().optional(),
-  integrationId: z.string(),
-  integrationConfigurationId: z.string(),
-});
-
-export function getIntegrationLogDrainsSource2ToJSON(
-  getIntegrationLogDrainsSource2: GetIntegrationLogDrainsSource2,
-): string {
-  return JSON.stringify(
-    GetIntegrationLogDrainsSource2$outboundSchema.parse(
-      getIntegrationLogDrainsSource2,
-    ),
-  );
-}
 export function getIntegrationLogDrainsSource2FromJSON(
   jsonString: string,
 ): SafeParseResult<GetIntegrationLogDrainsSource2, SDKValidationError> {
@@ -301,29 +238,7 @@ export const GetIntegrationLogDrainsSource1$inboundSchema: z.ZodType<
 > = z.object({
   kind: types.literal("self-served"),
 });
-/** @internal */
-export type GetIntegrationLogDrainsSource1$Outbound = {
-  kind: "self-served";
-};
 
-/** @internal */
-export const GetIntegrationLogDrainsSource1$outboundSchema: z.ZodType<
-  GetIntegrationLogDrainsSource1$Outbound,
-  z.ZodTypeDef,
-  GetIntegrationLogDrainsSource1
-> = z.object({
-  kind: z.literal("self-served"),
-});
-
-export function getIntegrationLogDrainsSource1ToJSON(
-  getIntegrationLogDrainsSource1: GetIntegrationLogDrainsSource1,
-): string {
-  return JSON.stringify(
-    GetIntegrationLogDrainsSource1$outboundSchema.parse(
-      getIntegrationLogDrainsSource1,
-    ),
-  );
-}
 export function getIntegrationLogDrainsSource1FromJSON(
   jsonString: string,
 ): SafeParseResult<GetIntegrationLogDrainsSource1, SDKValidationError> {
@@ -343,30 +258,7 @@ export const GetIntegrationLogDrainsSource$inboundSchema: z.ZodType<
   z.lazy(() => GetIntegrationLogDrainsSource1$inboundSchema),
   z.lazy(() => GetIntegrationLogDrainsSource2$inboundSchema),
 ]);
-/** @internal */
-export type GetIntegrationLogDrainsSource$Outbound =
-  | GetIntegrationLogDrainsSource1$Outbound
-  | GetIntegrationLogDrainsSource2$Outbound;
 
-/** @internal */
-export const GetIntegrationLogDrainsSource$outboundSchema: z.ZodType<
-  GetIntegrationLogDrainsSource$Outbound,
-  z.ZodTypeDef,
-  GetIntegrationLogDrainsSource
-> = z.union([
-  z.lazy(() => GetIntegrationLogDrainsSource1$outboundSchema),
-  z.lazy(() => GetIntegrationLogDrainsSource2$outboundSchema),
-]);
-
-export function getIntegrationLogDrainsSourceToJSON(
-  getIntegrationLogDrainsSource: GetIntegrationLogDrainsSource,
-): string {
-  return JSON.stringify(
-    GetIntegrationLogDrainsSource$outboundSchema.parse(
-      getIntegrationLogDrainsSource,
-    ),
-  );
-}
 export function getIntegrationLogDrainsSourceFromJSON(
   jsonString: string,
 ): SafeParseResult<GetIntegrationLogDrainsSource, SDKValidationError> {
@@ -410,68 +302,7 @@ export const GetIntegrationLogDrainsResponseBody$inboundSchema: z.ZodType<
     z.lazy(() => GetIntegrationLogDrainsSource2$inboundSchema),
   ]),
 });
-/** @internal */
-export type GetIntegrationLogDrainsResponseBody$Outbound = {
-  clientId?: string | undefined;
-  configurationId?: string | undefined;
-  createdAt: number;
-  id: string;
-  deliveryFormat?: string | undefined;
-  name: string;
-  ownerId: string;
-  projectId?: string | null | undefined;
-  projectIds?: Array<string> | undefined;
-  url: string;
-  sources?: Array<string> | undefined;
-  createdFrom?: string | undefined;
-  headers?: { [k: string]: string } | undefined;
-  environments?: Array<string> | undefined;
-  branch?: string | undefined;
-  samplingRate?: number | undefined;
-  source:
-    | GetIntegrationLogDrainsSource1$Outbound
-    | GetIntegrationLogDrainsSource2$Outbound;
-};
 
-/** @internal */
-export const GetIntegrationLogDrainsResponseBody$outboundSchema: z.ZodType<
-  GetIntegrationLogDrainsResponseBody$Outbound,
-  z.ZodTypeDef,
-  GetIntegrationLogDrainsResponseBody
-> = z.object({
-  clientId: z.string().optional(),
-  configurationId: z.string().optional(),
-  createdAt: z.number(),
-  id: z.string(),
-  deliveryFormat: GetIntegrationLogDrainsDeliveryFormat$outboundSchema
-    .optional(),
-  name: z.string(),
-  ownerId: z.string(),
-  projectId: z.nullable(z.string()).optional(),
-  projectIds: z.array(z.string()).optional(),
-  url: z.string(),
-  sources: z.array(GetIntegrationLogDrainsSources$outboundSchema).optional(),
-  createdFrom: CreatedFrom$outboundSchema.optional(),
-  headers: z.record(z.string()).optional(),
-  environments: z.array(GetIntegrationLogDrainsEnvironments$outboundSchema)
-    .optional(),
-  branch: z.string().optional(),
-  samplingRate: z.number().optional(),
-  source: z.union([
-    z.lazy(() => GetIntegrationLogDrainsSource1$outboundSchema),
-    z.lazy(() => GetIntegrationLogDrainsSource2$outboundSchema),
-  ]),
-});
-
-export function getIntegrationLogDrainsResponseBodyToJSON(
-  getIntegrationLogDrainsResponseBody: GetIntegrationLogDrainsResponseBody,
-): string {
-  return JSON.stringify(
-    GetIntegrationLogDrainsResponseBody$outboundSchema.parse(
-      getIntegrationLogDrainsResponseBody,
-    ),
-  );
-}
 export function getIntegrationLogDrainsResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetIntegrationLogDrainsResponseBody, SDKValidationError> {

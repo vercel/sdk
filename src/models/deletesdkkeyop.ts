@@ -3,10 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
-import { Result as SafeParseResult } from "../types/fp.js";
-import * as types from "../types/primitives.js";
-import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type DeleteSDKKeyRequest = {
   /**
@@ -27,17 +23,6 @@ export type DeleteSDKKeyRequest = {
   slug?: string | undefined;
 };
 
-/** @internal */
-export const DeleteSDKKeyRequest$inboundSchema: z.ZodType<
-  DeleteSDKKeyRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  projectIdOrName: types.string(),
-  hashKey: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
 /** @internal */
 export type DeleteSDKKeyRequest$Outbound = {
   projectIdOrName: string;
@@ -63,14 +48,5 @@ export function deleteSDKKeyRequestToJSON(
 ): string {
   return JSON.stringify(
     DeleteSDKKeyRequest$outboundSchema.parse(deleteSDKKeyRequest),
-  );
-}
-export function deleteSDKKeyRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<DeleteSDKKeyRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => DeleteSDKKeyRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DeleteSDKKeyRequest' from JSON`,
   );
 }

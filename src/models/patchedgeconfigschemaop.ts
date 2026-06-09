@@ -6,7 +6,6 @@ import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
-import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type PatchEdgeConfigSchemaRequestBody = {
@@ -33,14 +32,6 @@ export type PatchEdgeConfigSchemaRequest = {
 export type PatchEdgeConfigSchemaResponseBody = {};
 
 /** @internal */
-export const PatchEdgeConfigSchemaRequestBody$inboundSchema: z.ZodType<
-  PatchEdgeConfigSchemaRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  definition: types.optional(z.any()),
-});
-/** @internal */
 export type PatchEdgeConfigSchemaRequestBody$Outbound = {
   definition?: any | undefined;
 };
@@ -63,32 +54,7 @@ export function patchEdgeConfigSchemaRequestBodyToJSON(
     ),
   );
 }
-export function patchEdgeConfigSchemaRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<PatchEdgeConfigSchemaRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PatchEdgeConfigSchemaRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PatchEdgeConfigSchemaRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const PatchEdgeConfigSchemaRequest$inboundSchema: z.ZodType<
-  PatchEdgeConfigSchemaRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  edgeConfigId: types.string(),
-  dryRun: types.optional(types.string()),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-  RequestBody: z.lazy(() => PatchEdgeConfigSchemaRequestBody$inboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 /** @internal */
 export type PatchEdgeConfigSchemaRequest$Outbound = {
   edgeConfigId: string;
@@ -124,15 +90,6 @@ export function patchEdgeConfigSchemaRequestToJSON(
     ),
   );
 }
-export function patchEdgeConfigSchemaRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<PatchEdgeConfigSchemaRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PatchEdgeConfigSchemaRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PatchEdgeConfigSchemaRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const PatchEdgeConfigSchemaResponseBody$inboundSchema: z.ZodType<
@@ -140,25 +97,7 @@ export const PatchEdgeConfigSchemaResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-/** @internal */
-export type PatchEdgeConfigSchemaResponseBody$Outbound = {};
 
-/** @internal */
-export const PatchEdgeConfigSchemaResponseBody$outboundSchema: z.ZodType<
-  PatchEdgeConfigSchemaResponseBody$Outbound,
-  z.ZodTypeDef,
-  PatchEdgeConfigSchemaResponseBody
-> = z.object({});
-
-export function patchEdgeConfigSchemaResponseBodyToJSON(
-  patchEdgeConfigSchemaResponseBody: PatchEdgeConfigSchemaResponseBody,
-): string {
-  return JSON.stringify(
-    PatchEdgeConfigSchemaResponseBody$outboundSchema.parse(
-      patchEdgeConfigSchemaResponseBody,
-    ),
-  );
-}
 export function patchEdgeConfigSchemaResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<PatchEdgeConfigSchemaResponseBody, SDKValidationError> {

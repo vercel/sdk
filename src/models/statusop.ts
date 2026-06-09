@@ -42,15 +42,6 @@ export type ResponseBody1 = {
 export type StatusResponseBody = ResponseBody1 | ResponseBody2;
 
 /** @internal */
-export const StatusRequest$inboundSchema: z.ZodType<
-  StatusRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
-/** @internal */
 export type StatusRequest$Outbound = {
   teamId?: string | undefined;
   slug?: string | undefined;
@@ -69,24 +60,11 @@ export const StatusRequest$outboundSchema: z.ZodType<
 export function statusRequestToJSON(statusRequest: StatusRequest): string {
   return JSON.stringify(StatusRequest$outboundSchema.parse(statusRequest));
 }
-export function statusRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<StatusRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => StatusRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'StatusRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const StatusResponseBodyStatus$inboundSchema: z.ZodNativeEnum<
   typeof StatusResponseBodyStatus
 > = z.nativeEnum(StatusResponseBodyStatus);
-/** @internal */
-export const StatusResponseBodyStatus$outboundSchema: z.ZodNativeEnum<
-  typeof StatusResponseBodyStatus
-> = StatusResponseBodyStatus$inboundSchema;
 
 /** @internal */
 export const ResponseBody2$inboundSchema: z.ZodType<
@@ -96,23 +74,7 @@ export const ResponseBody2$inboundSchema: z.ZodType<
 > = z.object({
   status: StatusResponseBodyStatus$inboundSchema,
 });
-/** @internal */
-export type ResponseBody2$Outbound = {
-  status: string;
-};
 
-/** @internal */
-export const ResponseBody2$outboundSchema: z.ZodType<
-  ResponseBody2$Outbound,
-  z.ZodTypeDef,
-  ResponseBody2
-> = z.object({
-  status: StatusResponseBodyStatus$outboundSchema,
-});
-
-export function responseBody2ToJSON(responseBody2: ResponseBody2): string {
-  return JSON.stringify(ResponseBody2$outboundSchema.parse(responseBody2));
-}
 export function responseBody2FromJSON(
   jsonString: string,
 ): SafeParseResult<ResponseBody2, SDKValidationError> {
@@ -131,23 +93,7 @@ export const ResponseBody1$inboundSchema: z.ZodType<
 > = z.object({
   status: types.string(),
 });
-/** @internal */
-export type ResponseBody1$Outbound = {
-  status: string;
-};
 
-/** @internal */
-export const ResponseBody1$outboundSchema: z.ZodType<
-  ResponseBody1$Outbound,
-  z.ZodTypeDef,
-  ResponseBody1
-> = z.object({
-  status: z.string(),
-});
-
-export function responseBody1ToJSON(responseBody1: ResponseBody1): string {
-  return JSON.stringify(ResponseBody1$outboundSchema.parse(responseBody1));
-}
 export function responseBody1FromJSON(
   jsonString: string,
 ): SafeParseResult<ResponseBody1, SDKValidationError> {
@@ -167,28 +113,7 @@ export const StatusResponseBody$inboundSchema: z.ZodType<
   z.lazy(() => ResponseBody1$inboundSchema),
   z.lazy(() => ResponseBody2$inboundSchema),
 ]);
-/** @internal */
-export type StatusResponseBody$Outbound =
-  | ResponseBody1$Outbound
-  | ResponseBody2$Outbound;
 
-/** @internal */
-export const StatusResponseBody$outboundSchema: z.ZodType<
-  StatusResponseBody$Outbound,
-  z.ZodTypeDef,
-  StatusResponseBody
-> = smartUnion([
-  z.lazy(() => ResponseBody1$outboundSchema),
-  z.lazy(() => ResponseBody2$outboundSchema),
-]);
-
-export function statusResponseBodyToJSON(
-  statusResponseBody: StatusResponseBody,
-): string {
-  return JSON.stringify(
-    StatusResponseBody$outboundSchema.parse(statusResponseBody),
-  );
-}
 export function statusResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<StatusResponseBody, SDKValidationError> {

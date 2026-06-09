@@ -4,11 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
-import { Result as SafeParseResult } from "../types/fp.js";
-import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
-import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type DeleteEdgeConfigTokensRequestBody2 = {
   tokens?: Array<string> | undefined;
@@ -40,15 +36,6 @@ export type DeleteEdgeConfigTokensRequest = {
 };
 
 /** @internal */
-export const DeleteEdgeConfigTokensRequestBody2$inboundSchema: z.ZodType<
-  DeleteEdgeConfigTokensRequestBody2,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  tokens: types.optional(z.array(types.string())),
-  ids: z.array(types.string()),
-});
-/** @internal */
 export type DeleteEdgeConfigTokensRequestBody2$Outbound = {
   tokens?: Array<string> | undefined;
   ids: Array<string>;
@@ -73,26 +60,7 @@ export function deleteEdgeConfigTokensRequestBody2ToJSON(
     ),
   );
 }
-export function deleteEdgeConfigTokensRequestBody2FromJSON(
-  jsonString: string,
-): SafeParseResult<DeleteEdgeConfigTokensRequestBody2, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      DeleteEdgeConfigTokensRequestBody2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DeleteEdgeConfigTokensRequestBody2' from JSON`,
-  );
-}
 
-/** @internal */
-export const DeleteEdgeConfigTokensRequestBody1$inboundSchema: z.ZodType<
-  DeleteEdgeConfigTokensRequestBody1,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  tokens: z.array(types.string()),
-  ids: types.optional(z.array(types.string())),
-});
 /** @internal */
 export type DeleteEdgeConfigTokensRequestBody1$Outbound = {
   tokens: Array<string>;
@@ -118,26 +86,7 @@ export function deleteEdgeConfigTokensRequestBody1ToJSON(
     ),
   );
 }
-export function deleteEdgeConfigTokensRequestBody1FromJSON(
-  jsonString: string,
-): SafeParseResult<DeleteEdgeConfigTokensRequestBody1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      DeleteEdgeConfigTokensRequestBody1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DeleteEdgeConfigTokensRequestBody1' from JSON`,
-  );
-}
 
-/** @internal */
-export const DeleteEdgeConfigTokensRequestBody$inboundSchema: z.ZodType<
-  DeleteEdgeConfigTokensRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([
-  z.lazy(() => DeleteEdgeConfigTokensRequestBody1$inboundSchema),
-  z.lazy(() => DeleteEdgeConfigTokensRequestBody2$inboundSchema),
-]);
 /** @internal */
 export type DeleteEdgeConfigTokensRequestBody$Outbound =
   | DeleteEdgeConfigTokensRequestBody1$Outbound
@@ -162,34 +111,7 @@ export function deleteEdgeConfigTokensRequestBodyToJSON(
     ),
   );
 }
-export function deleteEdgeConfigTokensRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<DeleteEdgeConfigTokensRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => DeleteEdgeConfigTokensRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DeleteEdgeConfigTokensRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const DeleteEdgeConfigTokensRequest$inboundSchema: z.ZodType<
-  DeleteEdgeConfigTokensRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  edgeConfigId: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-  RequestBody: smartUnion([
-    z.lazy(() => DeleteEdgeConfigTokensRequestBody1$inboundSchema),
-    z.lazy(() => DeleteEdgeConfigTokensRequestBody2$inboundSchema),
-  ]),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 /** @internal */
 export type DeleteEdgeConfigTokensRequest$Outbound = {
   edgeConfigId: string;
@@ -226,14 +148,5 @@ export function deleteEdgeConfigTokensRequestToJSON(
     DeleteEdgeConfigTokensRequest$outboundSchema.parse(
       deleteEdgeConfigTokensRequest,
     ),
-  );
-}
-export function deleteEdgeConfigTokensRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<DeleteEdgeConfigTokensRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => DeleteEdgeConfigTokensRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DeleteEdgeConfigTokensRequest' from JSON`,
   );
 }

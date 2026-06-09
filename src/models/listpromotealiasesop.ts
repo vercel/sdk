@@ -7,12 +7,7 @@ import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
-import {
-  Pagination,
-  Pagination$inboundSchema,
-  Pagination$Outbound,
-  Pagination$outboundSchema,
-} from "./pagination.js";
+import { Pagination, Pagination$inboundSchema } from "./pagination.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type ListPromoteAliasesRequest = {
@@ -64,20 +59,6 @@ export type ListPromoteAliasesResponseBody =
   | ListPromoteAliasesResponseBody1;
 
 /** @internal */
-export const ListPromoteAliasesRequest$inboundSchema: z.ZodType<
-  ListPromoteAliasesRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  projectId: types.string(),
-  limit: types.optional(types.number()),
-  since: types.optional(types.number()),
-  until: types.optional(types.number()),
-  failedOnly: types.optional(types.boolean()),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
-/** @internal */
 export type ListPromoteAliasesRequest$Outbound = {
   projectId: string;
   limit?: number | undefined;
@@ -110,15 +91,6 @@ export function listPromoteAliasesRequestToJSON(
     ListPromoteAliasesRequest$outboundSchema.parse(listPromoteAliasesRequest),
   );
 }
-export function listPromoteAliasesRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<ListPromoteAliasesRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ListPromoteAliasesRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ListPromoteAliasesRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const ResponseBodyAliases$inboundSchema: z.ZodType<
@@ -130,31 +102,7 @@ export const ResponseBodyAliases$inboundSchema: z.ZodType<
   alias: types.string(),
   id: types.string(),
 });
-/** @internal */
-export type ResponseBodyAliases$Outbound = {
-  status: string;
-  alias: string;
-  id: string;
-};
 
-/** @internal */
-export const ResponseBodyAliases$outboundSchema: z.ZodType<
-  ResponseBodyAliases$Outbound,
-  z.ZodTypeDef,
-  ResponseBodyAliases
-> = z.object({
-  status: z.string(),
-  alias: z.string(),
-  id: z.string(),
-});
-
-export function responseBodyAliasesToJSON(
-  responseBodyAliases: ResponseBodyAliases,
-): string {
-  return JSON.stringify(
-    ResponseBodyAliases$outboundSchema.parse(responseBodyAliases),
-  );
-}
 export function responseBodyAliasesFromJSON(
   jsonString: string,
 ): SafeParseResult<ResponseBodyAliases, SDKValidationError> {
@@ -174,31 +122,7 @@ export const ListPromoteAliasesResponseBody2$inboundSchema: z.ZodType<
   aliases: z.array(z.lazy(() => ResponseBodyAliases$inboundSchema)),
   pagination: Pagination$inboundSchema,
 });
-/** @internal */
-export type ListPromoteAliasesResponseBody2$Outbound = {
-  aliases: Array<ResponseBodyAliases$Outbound>;
-  pagination: Pagination$Outbound;
-};
 
-/** @internal */
-export const ListPromoteAliasesResponseBody2$outboundSchema: z.ZodType<
-  ListPromoteAliasesResponseBody2$Outbound,
-  z.ZodTypeDef,
-  ListPromoteAliasesResponseBody2
-> = z.object({
-  aliases: z.array(z.lazy(() => ResponseBodyAliases$outboundSchema)),
-  pagination: Pagination$outboundSchema,
-});
-
-export function listPromoteAliasesResponseBody2ToJSON(
-  listPromoteAliasesResponseBody2: ListPromoteAliasesResponseBody2,
-): string {
-  return JSON.stringify(
-    ListPromoteAliasesResponseBody2$outboundSchema.parse(
-      listPromoteAliasesResponseBody2,
-    ),
-  );
-}
 export function listPromoteAliasesResponseBody2FromJSON(
   jsonString: string,
 ): SafeParseResult<ListPromoteAliasesResponseBody2, SDKValidationError> {
@@ -215,25 +139,7 @@ export const ListPromoteAliasesResponseBody1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-/** @internal */
-export type ListPromoteAliasesResponseBody1$Outbound = {};
 
-/** @internal */
-export const ListPromoteAliasesResponseBody1$outboundSchema: z.ZodType<
-  ListPromoteAliasesResponseBody1$Outbound,
-  z.ZodTypeDef,
-  ListPromoteAliasesResponseBody1
-> = z.object({});
-
-export function listPromoteAliasesResponseBody1ToJSON(
-  listPromoteAliasesResponseBody1: ListPromoteAliasesResponseBody1,
-): string {
-  return JSON.stringify(
-    ListPromoteAliasesResponseBody1$outboundSchema.parse(
-      listPromoteAliasesResponseBody1,
-    ),
-  );
-}
 export function listPromoteAliasesResponseBody1FromJSON(
   jsonString: string,
 ): SafeParseResult<ListPromoteAliasesResponseBody1, SDKValidationError> {
@@ -253,30 +159,7 @@ export const ListPromoteAliasesResponseBody$inboundSchema: z.ZodType<
   z.lazy(() => ListPromoteAliasesResponseBody2$inboundSchema),
   z.lazy(() => ListPromoteAliasesResponseBody1$inboundSchema),
 ]);
-/** @internal */
-export type ListPromoteAliasesResponseBody$Outbound =
-  | ListPromoteAliasesResponseBody2$Outbound
-  | ListPromoteAliasesResponseBody1$Outbound;
 
-/** @internal */
-export const ListPromoteAliasesResponseBody$outboundSchema: z.ZodType<
-  ListPromoteAliasesResponseBody$Outbound,
-  z.ZodTypeDef,
-  ListPromoteAliasesResponseBody
-> = smartUnion([
-  z.lazy(() => ListPromoteAliasesResponseBody2$outboundSchema),
-  z.lazy(() => ListPromoteAliasesResponseBody1$outboundSchema),
-]);
-
-export function listPromoteAliasesResponseBodyToJSON(
-  listPromoteAliasesResponseBody: ListPromoteAliasesResponseBody,
-): string {
-  return JSON.stringify(
-    ListPromoteAliasesResponseBody$outboundSchema.parse(
-      listPromoteAliasesResponseBody,
-    ),
-  );
-}
 export function listPromoteAliasesResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<ListPromoteAliasesResponseBody, SDKValidationError> {

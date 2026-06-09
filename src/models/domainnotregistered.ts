@@ -51,10 +51,6 @@ export class DomainNotRegistered extends VercelError {
 export const DomainNotRegisteredCode$inboundSchema: z.ZodNativeEnum<
   typeof DomainNotRegisteredCode
 > = z.nativeEnum(DomainNotRegisteredCode);
-/** @internal */
-export const DomainNotRegisteredCode$outboundSchema: z.ZodNativeEnum<
-  typeof DomainNotRegisteredCode
-> = DomainNotRegisteredCode$inboundSchema;
 
 /** @internal */
 export const DomainNotRegistered$inboundSchema: z.ZodType<
@@ -76,23 +72,3 @@ export const DomainNotRegistered$inboundSchema: z.ZodType<
       body: v.body$,
     });
   });
-
-/** @internal */
-export type DomainNotRegistered$Outbound = {
-  status: number;
-  code: string;
-  message: string;
-};
-
-/** @internal */
-export const DomainNotRegistered$outboundSchema: z.ZodType<
-  DomainNotRegistered$Outbound,
-  z.ZodTypeDef,
-  DomainNotRegistered
-> = z.instanceof(DomainNotRegistered)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    status: z.number(),
-    code: DomainNotRegisteredCode$outboundSchema,
-    message: z.string(),
-  }));

@@ -41,33 +41,7 @@ export const SandboxPublicRoute$inboundSchema: z.ZodType<
   subdomain: types.string(),
   system: types.optional(types.literal(true)),
 });
-/** @internal */
-export type SandboxPublicRoute$Outbound = {
-  url: string;
-  port: number;
-  subdomain: string;
-  system?: true | undefined;
-};
 
-/** @internal */
-export const SandboxPublicRoute$outboundSchema: z.ZodType<
-  SandboxPublicRoute$Outbound,
-  z.ZodTypeDef,
-  SandboxPublicRoute
-> = z.object({
-  url: z.string(),
-  port: z.number(),
-  subdomain: z.string(),
-  system: z.literal(true).optional(),
-});
-
-export function sandboxPublicRouteToJSON(
-  sandboxPublicRoute: SandboxPublicRoute,
-): string {
-  return JSON.stringify(
-    SandboxPublicRoute$outboundSchema.parse(sandboxPublicRoute),
-  );
-}
 export function sandboxPublicRouteFromJSON(
   jsonString: string,
 ): SafeParseResult<SandboxPublicRoute, SDKValidationError> {

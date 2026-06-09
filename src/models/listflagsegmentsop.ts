@@ -5,14 +5,8 @@
 import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
-import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
-import {
-  Segment,
-  Segment$inboundSchema,
-  Segment$Outbound,
-  Segment$outboundSchema,
-} from "./segment.js";
+import { Segment, Segment$inboundSchema } from "./segment.js";
 
 export type ListFlagSegmentsRequest = {
   /**
@@ -37,17 +31,6 @@ export type ListFlagSegmentsResponseBody = {
   data: Array<Segment>;
 };
 
-/** @internal */
-export const ListFlagSegmentsRequest$inboundSchema: z.ZodType<
-  ListFlagSegmentsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  projectIdOrName: types.string(),
-  withMetadata: types.boolean().default(false),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
 /** @internal */
 export type ListFlagSegmentsRequest$Outbound = {
   projectIdOrName: string;
@@ -75,15 +58,6 @@ export function listFlagSegmentsRequestToJSON(
     ListFlagSegmentsRequest$outboundSchema.parse(listFlagSegmentsRequest),
   );
 }
-export function listFlagSegmentsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<ListFlagSegmentsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ListFlagSegmentsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ListFlagSegmentsRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const ListFlagSegmentsResponseBody$inboundSchema: z.ZodType<
@@ -93,29 +67,7 @@ export const ListFlagSegmentsResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   data: z.array(Segment$inboundSchema),
 });
-/** @internal */
-export type ListFlagSegmentsResponseBody$Outbound = {
-  data: Array<Segment$Outbound>;
-};
 
-/** @internal */
-export const ListFlagSegmentsResponseBody$outboundSchema: z.ZodType<
-  ListFlagSegmentsResponseBody$Outbound,
-  z.ZodTypeDef,
-  ListFlagSegmentsResponseBody
-> = z.object({
-  data: z.array(Segment$outboundSchema),
-});
-
-export function listFlagSegmentsResponseBodyToJSON(
-  listFlagSegmentsResponseBody: ListFlagSegmentsResponseBody,
-): string {
-  return JSON.stringify(
-    ListFlagSegmentsResponseBody$outboundSchema.parse(
-      listFlagSegmentsResponseBody,
-    ),
-  );
-}
 export function listFlagSegmentsResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<ListFlagSegmentsResponseBody, SDKValidationError> {

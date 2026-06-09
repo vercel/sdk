@@ -92,32 +92,15 @@ export type UpdateTeamMemberResponseBody = {
 };
 
 /** @internal */
-export const UpdateTeamMemberTeamPermissions$inboundSchema: z.ZodNativeEnum<
-  typeof UpdateTeamMemberTeamPermissions
-> = z.nativeEnum(UpdateTeamMemberTeamPermissions);
-/** @internal */
 export const UpdateTeamMemberTeamPermissions$outboundSchema: z.ZodNativeEnum<
   typeof UpdateTeamMemberTeamPermissions
-> = UpdateTeamMemberTeamPermissions$inboundSchema;
+> = z.nativeEnum(UpdateTeamMemberTeamPermissions);
 
-/** @internal */
-export const UpdateTeamMemberRole$inboundSchema: z.ZodNativeEnum<
-  typeof UpdateTeamMemberRole
-> = z.nativeEnum(UpdateTeamMemberRole);
 /** @internal */
 export const UpdateTeamMemberRole$outboundSchema: z.ZodNativeEnum<
   typeof UpdateTeamMemberRole
-> = UpdateTeamMemberRole$inboundSchema;
+> = z.nativeEnum(UpdateTeamMemberRole);
 
-/** @internal */
-export const UpdateTeamMemberProjects$inboundSchema: z.ZodType<
-  UpdateTeamMemberProjects,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  projectId: types.string(),
-  role: types.nullable(UpdateTeamMemberRole$inboundSchema),
-});
 /** @internal */
 export type UpdateTeamMemberProjects$Outbound = {
   projectId: string;
@@ -141,24 +124,7 @@ export function updateTeamMemberProjectsToJSON(
     UpdateTeamMemberProjects$outboundSchema.parse(updateTeamMemberProjects),
   );
 }
-export function updateTeamMemberProjectsFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateTeamMemberProjects, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateTeamMemberProjects$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateTeamMemberProjects' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateTeamMemberJoinedFrom$inboundSchema: z.ZodType<
-  UpdateTeamMemberJoinedFrom,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  ssoUserId: z.nullable(z.any()).optional(),
-});
 /** @internal */
 export type UpdateTeamMemberJoinedFrom$Outbound = {
   ssoUserId?: any | null | undefined;
@@ -180,34 +146,7 @@ export function updateTeamMemberJoinedFromToJSON(
     UpdateTeamMemberJoinedFrom$outboundSchema.parse(updateTeamMemberJoinedFrom),
   );
 }
-export function updateTeamMemberJoinedFromFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateTeamMemberJoinedFrom, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateTeamMemberJoinedFrom$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateTeamMemberJoinedFrom' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateTeamMemberRequestBody$inboundSchema: z.ZodType<
-  UpdateTeamMemberRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  confirmed: types.optional(types.literal(true)),
-  role: types.string().default("MEMBER"),
-  teamPermissions: types.optional(
-    z.array(UpdateTeamMemberTeamPermissions$inboundSchema),
-  ),
-  projects: types.optional(
-    z.array(z.lazy(() => UpdateTeamMemberProjects$inboundSchema)),
-  ),
-  joinedFrom: types.optional(
-    z.lazy(() => UpdateTeamMemberJoinedFrom$inboundSchema),
-  ),
-});
 /** @internal */
 export type UpdateTeamMemberRequestBody$Outbound = {
   confirmed?: true | undefined;
@@ -242,30 +181,7 @@ export function updateTeamMemberRequestBodyToJSON(
     ),
   );
 }
-export function updateTeamMemberRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateTeamMemberRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateTeamMemberRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateTeamMemberRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateTeamMemberRequest$inboundSchema: z.ZodType<
-  UpdateTeamMemberRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  uid: types.string(),
-  teamId: types.string(),
-  RequestBody: z.lazy(() => UpdateTeamMemberRequestBody$inboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 /** @internal */
 export type UpdateTeamMemberRequest$Outbound = {
   uid: string;
@@ -295,15 +211,6 @@ export function updateTeamMemberRequestToJSON(
     UpdateTeamMemberRequest$outboundSchema.parse(updateTeamMemberRequest),
   );
 }
-export function updateTeamMemberRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateTeamMemberRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateTeamMemberRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateTeamMemberRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const UpdateTeamMemberResponseBody$inboundSchema: z.ZodType<
@@ -313,29 +220,7 @@ export const UpdateTeamMemberResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   id: types.string(),
 });
-/** @internal */
-export type UpdateTeamMemberResponseBody$Outbound = {
-  id: string;
-};
 
-/** @internal */
-export const UpdateTeamMemberResponseBody$outboundSchema: z.ZodType<
-  UpdateTeamMemberResponseBody$Outbound,
-  z.ZodTypeDef,
-  UpdateTeamMemberResponseBody
-> = z.object({
-  id: z.string(),
-});
-
-export function updateTeamMemberResponseBodyToJSON(
-  updateTeamMemberResponseBody: UpdateTeamMemberResponseBody,
-): string {
-  return JSON.stringify(
-    UpdateTeamMemberResponseBody$outboundSchema.parse(
-      updateTeamMemberResponseBody,
-    ),
-  );
-}
 export function updateTeamMemberResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateTeamMemberResponseBody, SDKValidationError> {

@@ -89,28 +89,10 @@ export type GetBillingPlansResponseBody = {
 };
 
 /** @internal */
-export const QueryParamSource$inboundSchema: z.ZodNativeEnum<
-  typeof QueryParamSource
-> = z.nativeEnum(QueryParamSource);
-/** @internal */
 export const QueryParamSource$outboundSchema: z.ZodNativeEnum<
   typeof QueryParamSource
-> = QueryParamSource$inboundSchema;
+> = z.nativeEnum(QueryParamSource);
 
-/** @internal */
-export const GetBillingPlansRequest$inboundSchema: z.ZodType<
-  GetBillingPlansRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  integrationIdOrSlug: types.string(),
-  integrationConfigurationId: types.optional(types.string()),
-  productIdOrSlug: types.string(),
-  metadata: types.optional(types.string()),
-  source: types.optional(QueryParamSource$inboundSchema),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
 /** @internal */
 export type GetBillingPlansRequest$Outbound = {
   integrationIdOrSlug: string;
@@ -144,33 +126,16 @@ export function getBillingPlansRequestToJSON(
     GetBillingPlansRequest$outboundSchema.parse(getBillingPlansRequest),
   );
 }
-export function getBillingPlansRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetBillingPlansRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetBillingPlansRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetBillingPlansRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const GetBillingPlansType$inboundSchema: z.ZodNativeEnum<
   typeof GetBillingPlansType
 > = z.nativeEnum(GetBillingPlansType);
-/** @internal */
-export const GetBillingPlansType$outboundSchema: z.ZodNativeEnum<
-  typeof GetBillingPlansType
-> = GetBillingPlansType$inboundSchema;
 
 /** @internal */
 export const GetBillingPlansScope$inboundSchema: z.ZodNativeEnum<
   typeof GetBillingPlansScope
 > = z.nativeEnum(GetBillingPlansScope);
-/** @internal */
-export const GetBillingPlansScope$outboundSchema: z.ZodNativeEnum<
-  typeof GetBillingPlansScope
-> = GetBillingPlansScope$inboundSchema;
 
 /** @internal */
 export const GetBillingPlansDetails$inboundSchema: z.ZodType<
@@ -181,29 +146,7 @@ export const GetBillingPlansDetails$inboundSchema: z.ZodType<
   label: types.string(),
   value: types.optional(types.string()),
 });
-/** @internal */
-export type GetBillingPlansDetails$Outbound = {
-  label: string;
-  value?: string | undefined;
-};
 
-/** @internal */
-export const GetBillingPlansDetails$outboundSchema: z.ZodType<
-  GetBillingPlansDetails$Outbound,
-  z.ZodTypeDef,
-  GetBillingPlansDetails
-> = z.object({
-  label: z.string(),
-  value: z.string().optional(),
-});
-
-export function getBillingPlansDetailsToJSON(
-  getBillingPlansDetails: GetBillingPlansDetails,
-): string {
-  return JSON.stringify(
-    GetBillingPlansDetails$outboundSchema.parse(getBillingPlansDetails),
-  );
-}
 export function getBillingPlansDetailsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetBillingPlansDetails, SDKValidationError> {
@@ -223,31 +166,7 @@ export const GetBillingPlansHighlightedDetails$inboundSchema: z.ZodType<
   label: types.string(),
   value: types.optional(types.string()),
 });
-/** @internal */
-export type GetBillingPlansHighlightedDetails$Outbound = {
-  label: string;
-  value?: string | undefined;
-};
 
-/** @internal */
-export const GetBillingPlansHighlightedDetails$outboundSchema: z.ZodType<
-  GetBillingPlansHighlightedDetails$Outbound,
-  z.ZodTypeDef,
-  GetBillingPlansHighlightedDetails
-> = z.object({
-  label: z.string(),
-  value: z.string().optional(),
-});
-
-export function getBillingPlansHighlightedDetailsToJSON(
-  getBillingPlansHighlightedDetails: GetBillingPlansHighlightedDetails,
-): string {
-  return JSON.stringify(
-    GetBillingPlansHighlightedDetails$outboundSchema.parse(
-      getBillingPlansHighlightedDetails,
-    ),
-  );
-}
 export function getBillingPlansHighlightedDetailsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetBillingPlansHighlightedDetails, SDKValidationError> {
@@ -264,25 +183,7 @@ export const Quote$inboundSchema: z.ZodType<Quote, z.ZodTypeDef, unknown> = z
     line: types.string(),
     amount: types.string(),
   });
-/** @internal */
-export type Quote$Outbound = {
-  line: string;
-  amount: string;
-};
 
-/** @internal */
-export const Quote$outboundSchema: z.ZodType<
-  Quote$Outbound,
-  z.ZodTypeDef,
-  Quote
-> = z.object({
-  line: z.string(),
-  amount: z.string(),
-});
-
-export function quoteToJSON(quote: Quote): string {
-  return JSON.stringify(Quote$outboundSchema.parse(quote));
-}
 export function quoteFromJSON(
   jsonString: string,
 ): SafeParseResult<Quote, SDKValidationError> {
@@ -318,60 +219,7 @@ export const Plans$inboundSchema: z.ZodType<Plans, z.ZodTypeDef, unknown> = z
     effectiveDate: types.optional(types.string()),
     disabled: types.optional(types.boolean()),
   });
-/** @internal */
-export type Plans$Outbound = {
-  type: string;
-  id: string;
-  name: string;
-  scope: string;
-  description: string;
-  paymentMethodRequired: boolean;
-  preauthorizationAmount?: number | undefined;
-  initialCharge?: string | undefined;
-  minimumAmount?: string | undefined;
-  maximumAmount?: string | undefined;
-  maximumAmountAutoPurchasePerPeriod?: string | undefined;
-  cost?: string | undefined;
-  details?: Array<GetBillingPlansDetails$Outbound> | undefined;
-  highlightedDetails?:
-    | Array<GetBillingPlansHighlightedDetails$Outbound>
-    | undefined;
-  quote?: Array<Quote$Outbound> | undefined;
-  effectiveDate?: string | undefined;
-  disabled?: boolean | undefined;
-};
 
-/** @internal */
-export const Plans$outboundSchema: z.ZodType<
-  Plans$Outbound,
-  z.ZodTypeDef,
-  Plans
-> = z.object({
-  type: GetBillingPlansType$outboundSchema,
-  id: z.string(),
-  name: z.string(),
-  scope: GetBillingPlansScope$outboundSchema,
-  description: z.string(),
-  paymentMethodRequired: z.boolean(),
-  preauthorizationAmount: z.number().optional(),
-  initialCharge: z.string().optional(),
-  minimumAmount: z.string().optional(),
-  maximumAmount: z.string().optional(),
-  maximumAmountAutoPurchasePerPeriod: z.string().optional(),
-  cost: z.string().optional(),
-  details: z.array(z.lazy(() => GetBillingPlansDetails$outboundSchema))
-    .optional(),
-  highlightedDetails: z.array(
-    z.lazy(() => GetBillingPlansHighlightedDetails$outboundSchema),
-  ).optional(),
-  quote: z.array(z.lazy(() => Quote$outboundSchema)).optional(),
-  effectiveDate: z.string().optional(),
-  disabled: z.boolean().optional(),
-});
-
-export function plansToJSON(plans: Plans): string {
-  return JSON.stringify(Plans$outboundSchema.parse(plans));
-}
 export function plansFromJSON(
   jsonString: string,
 ): SafeParseResult<Plans, SDKValidationError> {
@@ -390,29 +238,7 @@ export const GetBillingPlansResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   plans: z.array(z.lazy(() => Plans$inboundSchema)),
 });
-/** @internal */
-export type GetBillingPlansResponseBody$Outbound = {
-  plans: Array<Plans$Outbound>;
-};
 
-/** @internal */
-export const GetBillingPlansResponseBody$outboundSchema: z.ZodType<
-  GetBillingPlansResponseBody$Outbound,
-  z.ZodTypeDef,
-  GetBillingPlansResponseBody
-> = z.object({
-  plans: z.array(z.lazy(() => Plans$outboundSchema)),
-});
-
-export function getBillingPlansResponseBodyToJSON(
-  getBillingPlansResponseBody: GetBillingPlansResponseBody,
-): string {
-  return JSON.stringify(
-    GetBillingPlansResponseBody$outboundSchema.parse(
-      getBillingPlansResponseBody,
-    ),
-  );
-}
 export function getBillingPlansResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetBillingPlansResponseBody, SDKValidationError> {

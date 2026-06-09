@@ -51,10 +51,6 @@ export class AdditionalContactInfoRequired extends VercelError {
 export const AdditionalContactInfoRequiredCode$inboundSchema: z.ZodNativeEnum<
   typeof AdditionalContactInfoRequiredCode
 > = z.nativeEnum(AdditionalContactInfoRequiredCode);
-/** @internal */
-export const AdditionalContactInfoRequiredCode$outboundSchema: z.ZodNativeEnum<
-  typeof AdditionalContactInfoRequiredCode
-> = AdditionalContactInfoRequiredCode$inboundSchema;
 
 /** @internal */
 export const AdditionalContactInfoRequired$inboundSchema: z.ZodType<
@@ -76,23 +72,3 @@ export const AdditionalContactInfoRequired$inboundSchema: z.ZodType<
       body: v.body$,
     });
   });
-
-/** @internal */
-export type AdditionalContactInfoRequired$Outbound = {
-  status: number;
-  code: string;
-  message: string;
-};
-
-/** @internal */
-export const AdditionalContactInfoRequired$outboundSchema: z.ZodType<
-  AdditionalContactInfoRequired$Outbound,
-  z.ZodTypeDef,
-  AdditionalContactInfoRequired
-> = z.instanceof(AdditionalContactInfoRequired)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    status: z.number(),
-    code: AdditionalContactInfoRequiredCode$outboundSchema,
-    message: z.string(),
-  }));

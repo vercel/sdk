@@ -3,10 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
-import { Result as SafeParseResult } from "../types/fp.js";
-import * as types from "../types/primitives.js";
-import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type DeleteFlagRequest = {
   /**
@@ -36,19 +32,6 @@ export type DeleteFlagRequest = {
 };
 
 /** @internal */
-export const DeleteFlagRequest$inboundSchema: z.ZodType<
-  DeleteFlagRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  projectIdOrName: types.string(),
-  flagIdOrSlug: types.string(),
-  ifMatch: types.optional(types.string()),
-  withMetadata: types.optional(types.boolean()),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
-/** @internal */
 export type DeleteFlagRequest$Outbound = {
   projectIdOrName: string;
   flagIdOrSlug: string;
@@ -77,14 +60,5 @@ export function deleteFlagRequestToJSON(
 ): string {
   return JSON.stringify(
     DeleteFlagRequest$outboundSchema.parse(deleteFlagRequest),
-  );
-}
-export function deleteFlagRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<DeleteFlagRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => DeleteFlagRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DeleteFlagRequest' from JSON`,
   );
 }

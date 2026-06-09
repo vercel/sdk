@@ -3,10 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
-import { Result as SafeParseResult } from "../types/fp.js";
-import * as types from "../types/primitives.js";
-import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type GetDeploymentFileContentsRequest = {
   /**
@@ -31,18 +27,6 @@ export type GetDeploymentFileContentsRequest = {
   slug?: string | undefined;
 };
 
-/** @internal */
-export const GetDeploymentFileContentsRequest$inboundSchema: z.ZodType<
-  GetDeploymentFileContentsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: types.string(),
-  fileId: types.string(),
-  path: types.optional(types.string()),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
 /** @internal */
 export type GetDeploymentFileContentsRequest$Outbound = {
   id: string;
@@ -72,14 +56,5 @@ export function getDeploymentFileContentsRequestToJSON(
     GetDeploymentFileContentsRequest$outboundSchema.parse(
       getDeploymentFileContentsRequest,
     ),
-  );
-}
-export function getDeploymentFileContentsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetDeploymentFileContentsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetDeploymentFileContentsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDeploymentFileContentsRequest' from JSON`,
   );
 }

@@ -3,10 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
-import { Result as SafeParseResult } from "../types/fp.js";
-import * as types from "../types/primitives.js";
-import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type ListEventTypesRequest = {
   /**
@@ -19,15 +15,6 @@ export type ListEventTypesRequest = {
   slug?: string | undefined;
 };
 
-/** @internal */
-export const ListEventTypesRequest$inboundSchema: z.ZodType<
-  ListEventTypesRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
 /** @internal */
 export type ListEventTypesRequest$Outbound = {
   teamId?: string | undefined;
@@ -49,14 +36,5 @@ export function listEventTypesRequestToJSON(
 ): string {
   return JSON.stringify(
     ListEventTypesRequest$outboundSchema.parse(listEventTypesRequest),
-  );
-}
-export function listEventTypesRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<ListEventTypesRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ListEventTypesRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ListEventTypesRequest' from JSON`,
   );
 }

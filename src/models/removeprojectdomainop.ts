@@ -6,7 +6,6 @@ import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
-import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type RemoveProjectDomainRequestBody = {
@@ -42,14 +41,6 @@ export type RemoveProjectDomainRequest = {
 export type RemoveProjectDomainResponseBody = {};
 
 /** @internal */
-export const RemoveProjectDomainRequestBody$inboundSchema: z.ZodType<
-  RemoveProjectDomainRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  removeRedirects: types.optional(types.boolean()),
-});
-/** @internal */
 export type RemoveProjectDomainRequestBody$Outbound = {
   removeRedirects?: boolean | undefined;
 };
@@ -72,34 +63,7 @@ export function removeProjectDomainRequestBodyToJSON(
     ),
   );
 }
-export function removeProjectDomainRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<RemoveProjectDomainRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RemoveProjectDomainRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RemoveProjectDomainRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const RemoveProjectDomainRequest$inboundSchema: z.ZodType<
-  RemoveProjectDomainRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  idOrName: types.string(),
-  domain: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-  RequestBody: types.optional(
-    z.lazy(() => RemoveProjectDomainRequestBody$inboundSchema),
-  ),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 /** @internal */
 export type RemoveProjectDomainRequest$Outbound = {
   idOrName: string;
@@ -134,15 +98,6 @@ export function removeProjectDomainRequestToJSON(
     RemoveProjectDomainRequest$outboundSchema.parse(removeProjectDomainRequest),
   );
 }
-export function removeProjectDomainRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<RemoveProjectDomainRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RemoveProjectDomainRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RemoveProjectDomainRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const RemoveProjectDomainResponseBody$inboundSchema: z.ZodType<
@@ -150,25 +105,7 @@ export const RemoveProjectDomainResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-/** @internal */
-export type RemoveProjectDomainResponseBody$Outbound = {};
 
-/** @internal */
-export const RemoveProjectDomainResponseBody$outboundSchema: z.ZodType<
-  RemoveProjectDomainResponseBody$Outbound,
-  z.ZodTypeDef,
-  RemoveProjectDomainResponseBody
-> = z.object({});
-
-export function removeProjectDomainResponseBodyToJSON(
-  removeProjectDomainResponseBody: RemoveProjectDomainResponseBody,
-): string {
-  return JSON.stringify(
-    RemoveProjectDomainResponseBody$outboundSchema.parse(
-      removeProjectDomainResponseBody,
-    ),
-  );
-}
 export function removeProjectDomainResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveProjectDomainResponseBody, SDKValidationError> {

@@ -7,7 +7,6 @@ import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
-import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
@@ -87,51 +86,21 @@ export type CreateConfigurableLogDrainRequest = {
 export type CreateConfigurableLogDrainResponseBody = {};
 
 /** @internal */
-export const DeliveryFormat$inboundSchema: z.ZodNativeEnum<
-  typeof DeliveryFormat
-> = z.nativeEnum(DeliveryFormat);
-/** @internal */
 export const DeliveryFormat$outboundSchema: z.ZodNativeEnum<
   typeof DeliveryFormat
-> = DeliveryFormat$inboundSchema;
+> = z.nativeEnum(DeliveryFormat);
 
-/** @internal */
-export const CreateConfigurableLogDrainSources$inboundSchema: z.ZodNativeEnum<
-  typeof CreateConfigurableLogDrainSources
-> = z.nativeEnum(CreateConfigurableLogDrainSources);
 /** @internal */
 export const CreateConfigurableLogDrainSources$outboundSchema: z.ZodNativeEnum<
   typeof CreateConfigurableLogDrainSources
-> = CreateConfigurableLogDrainSources$inboundSchema;
+> = z.nativeEnum(CreateConfigurableLogDrainSources);
 
 /** @internal */
-export const CreateConfigurableLogDrainEnvironments$inboundSchema:
+export const CreateConfigurableLogDrainEnvironments$outboundSchema:
   z.ZodNativeEnum<typeof CreateConfigurableLogDrainEnvironments> = z.nativeEnum(
     CreateConfigurableLogDrainEnvironments,
   );
-/** @internal */
-export const CreateConfigurableLogDrainEnvironments$outboundSchema:
-  z.ZodNativeEnum<typeof CreateConfigurableLogDrainEnvironments> =
-    CreateConfigurableLogDrainEnvironments$inboundSchema;
 
-/** @internal */
-export const CreateConfigurableLogDrainRequestBody$inboundSchema: z.ZodType<
-  CreateConfigurableLogDrainRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  deliveryFormat: DeliveryFormat$inboundSchema,
-  url: types.string(),
-  headers: types.optional(z.record(types.string())),
-  projectIds: types.optional(z.array(types.string())),
-  sources: z.array(CreateConfigurableLogDrainSources$inboundSchema),
-  environments: types.optional(
-    z.array(CreateConfigurableLogDrainEnvironments$inboundSchema),
-  ),
-  secret: types.optional(types.string()),
-  samplingRate: types.optional(types.number()),
-  name: types.optional(types.string()),
-});
 /** @internal */
 export type CreateConfigurableLogDrainRequestBody$Outbound = {
   deliveryFormat: string;
@@ -172,33 +141,7 @@ export function createConfigurableLogDrainRequestBodyToJSON(
     ),
   );
 }
-export function createConfigurableLogDrainRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateConfigurableLogDrainRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      CreateConfigurableLogDrainRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateConfigurableLogDrainRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const CreateConfigurableLogDrainRequest$inboundSchema: z.ZodType<
-  CreateConfigurableLogDrainRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-  RequestBody: z.lazy(() =>
-    CreateConfigurableLogDrainRequestBody$inboundSchema
-  ),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 /** @internal */
 export type CreateConfigurableLogDrainRequest$Outbound = {
   teamId?: string | undefined;
@@ -232,15 +175,6 @@ export function createConfigurableLogDrainRequestToJSON(
     ),
   );
 }
-export function createConfigurableLogDrainRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateConfigurableLogDrainRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateConfigurableLogDrainRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateConfigurableLogDrainRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const CreateConfigurableLogDrainResponseBody$inboundSchema: z.ZodType<
@@ -248,26 +182,7 @@ export const CreateConfigurableLogDrainResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-/** @internal */
-export type CreateConfigurableLogDrainResponseBody$Outbound = {};
 
-/** @internal */
-export const CreateConfigurableLogDrainResponseBody$outboundSchema: z.ZodType<
-  CreateConfigurableLogDrainResponseBody$Outbound,
-  z.ZodTypeDef,
-  CreateConfigurableLogDrainResponseBody
-> = z.object({});
-
-export function createConfigurableLogDrainResponseBodyToJSON(
-  createConfigurableLogDrainResponseBody:
-    CreateConfigurableLogDrainResponseBody,
-): string {
-  return JSON.stringify(
-    CreateConfigurableLogDrainResponseBody$outboundSchema.parse(
-      createConfigurableLogDrainResponseBody,
-    ),
-  );
-}
 export function createConfigurableLogDrainResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateConfigurableLogDrainResponseBody, SDKValidationError> {

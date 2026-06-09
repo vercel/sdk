@@ -152,9 +152,6 @@ export type StageRoutesResponseBody = {
 };
 
 /** @internal */
-export const Headers$inboundSchema: z.ZodType<Headers, z.ZodTypeDef, unknown> =
-  z.object({});
-/** @internal */
 export type Headers$Outbound = {};
 
 /** @internal */
@@ -167,32 +164,12 @@ export const Headers$outboundSchema: z.ZodType<
 export function headersToJSON(headers: Headers): string {
   return JSON.stringify(Headers$outboundSchema.parse(headers));
 }
-export function headersFromJSON(
-  jsonString: string,
-): SafeParseResult<Headers, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Headers$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Headers' from JSON`,
-  );
-}
 
-/** @internal */
-export const StageRoutesType$inboundSchema: z.ZodNativeEnum<
-  typeof StageRoutesType
-> = z.nativeEnum(StageRoutesType);
 /** @internal */
 export const StageRoutesType$outboundSchema: z.ZodNativeEnum<
   typeof StageRoutesType
-> = StageRoutesType$inboundSchema;
+> = z.nativeEnum(StageRoutesType);
 
-/** @internal */
-export const Has$inboundSchema: z.ZodType<Has, z.ZodTypeDef, unknown> = z
-  .object({
-    type: types.optional(StageRoutesType$inboundSchema),
-    key: types.optional(types.string()),
-    value: types.optional(types.string()),
-  });
 /** @internal */
 export type Has$Outbound = {
   type?: string | undefined;
@@ -211,32 +188,12 @@ export const Has$outboundSchema: z.ZodType<Has$Outbound, z.ZodTypeDef, Has> = z
 export function hasToJSON(has: Has): string {
   return JSON.stringify(Has$outboundSchema.parse(has));
 }
-export function hasFromJSON(
-  jsonString: string,
-): SafeParseResult<Has, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Has$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Has' from JSON`,
-  );
-}
 
-/** @internal */
-export const StageRoutesProjectRoutesType$inboundSchema: z.ZodNativeEnum<
-  typeof StageRoutesProjectRoutesType
-> = z.nativeEnum(StageRoutesProjectRoutesType);
 /** @internal */
 export const StageRoutesProjectRoutesType$outboundSchema: z.ZodNativeEnum<
   typeof StageRoutesProjectRoutesType
-> = StageRoutesProjectRoutesType$inboundSchema;
+> = z.nativeEnum(StageRoutesProjectRoutesType);
 
-/** @internal */
-export const Missing$inboundSchema: z.ZodType<Missing, z.ZodTypeDef, unknown> =
-  z.object({
-    type: types.optional(StageRoutesProjectRoutesType$inboundSchema),
-    key: types.optional(types.string()),
-    value: types.optional(types.string()),
-  });
 /** @internal */
 export type Missing$Outbound = {
   type?: string | undefined;
@@ -258,36 +215,16 @@ export const Missing$outboundSchema: z.ZodType<
 export function missingToJSON(missing: Missing): string {
   return JSON.stringify(Missing$outboundSchema.parse(missing));
 }
-export function missingFromJSON(
-  jsonString: string,
-): SafeParseResult<Missing, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Missing$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Missing' from JSON`,
-  );
-}
 
-/** @internal */
-export const StageRoutesProjectRoutesRequestType$inboundSchema: z.ZodNativeEnum<
-  typeof StageRoutesProjectRoutesRequestType
-> = z.nativeEnum(StageRoutesProjectRoutesRequestType);
 /** @internal */
 export const StageRoutesProjectRoutesRequestType$outboundSchema:
-  z.ZodNativeEnum<typeof StageRoutesProjectRoutesRequestType> =
-    StageRoutesProjectRoutesRequestType$inboundSchema;
+  z.ZodNativeEnum<typeof StageRoutesProjectRoutesRequestType> = z.nativeEnum(
+    StageRoutesProjectRoutesRequestType,
+  );
 
 /** @internal */
-export const Op$inboundSchema: z.ZodNativeEnum<typeof Op> = z.nativeEnum(Op);
-/** @internal */
-export const Op$outboundSchema: z.ZodNativeEnum<typeof Op> = Op$inboundSchema;
+export const Op$outboundSchema: z.ZodNativeEnum<typeof Op> = z.nativeEnum(Op);
 
-/** @internal */
-export const StageRoutesTarget$inboundSchema: z.ZodType<
-  StageRoutesTarget,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
 /** @internal */
 export type StageRoutesTarget$Outbound = {};
 
@@ -305,28 +242,7 @@ export function stageRoutesTargetToJSON(
     StageRoutesTarget$outboundSchema.parse(stageRoutesTarget),
   );
 }
-export function stageRoutesTargetFromJSON(
-  jsonString: string,
-): SafeParseResult<StageRoutesTarget, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => StageRoutesTarget$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'StageRoutesTarget' from JSON`,
-  );
-}
 
-/** @internal */
-export const StageRoutesTransforms$inboundSchema: z.ZodType<
-  StageRoutesTransforms,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  type: types.optional(StageRoutesProjectRoutesRequestType$inboundSchema),
-  op: types.optional(Op$inboundSchema),
-  target: types.optional(z.lazy(() => StageRoutesTarget$inboundSchema)),
-  args: types.optional(z.any()),
-  env: types.optional(z.array(types.string())),
-});
 /** @internal */
 export type StageRoutesTransforms$Outbound = {
   type?: string | undefined;
@@ -356,31 +272,7 @@ export function stageRoutesTransformsToJSON(
     StageRoutesTransforms$outboundSchema.parse(stageRoutesTransforms),
   );
 }
-export function stageRoutesTransformsFromJSON(
-  jsonString: string,
-): SafeParseResult<StageRoutesTransforms, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => StageRoutesTransforms$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'StageRoutesTransforms' from JSON`,
-  );
-}
 
-/** @internal */
-export const Route$inboundSchema: z.ZodType<Route, z.ZodTypeDef, unknown> = z
-  .object({
-    src: types.string(),
-    dest: types.optional(types.string()),
-    headers: types.optional(z.lazy(() => Headers$inboundSchema)),
-    caseSensitive: types.optional(types.boolean()),
-    status: types.optional(types.number()),
-    has: types.optional(z.array(z.lazy(() => Has$inboundSchema))),
-    missing: types.optional(z.array(z.lazy(() => Missing$inboundSchema))),
-    transforms: types.optional(
-      z.array(z.lazy(() => StageRoutesTransforms$inboundSchema)),
-    ),
-    respectOriginCacheControl: types.optional(types.boolean()),
-  });
 /** @internal */
 export type Route$Outbound = {
   src: string;
@@ -415,25 +307,7 @@ export const Route$outboundSchema: z.ZodType<
 export function routeToJSON(route: Route): string {
   return JSON.stringify(Route$outboundSchema.parse(route));
 }
-export function routeFromJSON(
-  jsonString: string,
-): SafeParseResult<Route, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Route$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Route' from JSON`,
-  );
-}
 
-/** @internal */
-export const Routes$inboundSchema: z.ZodType<Routes, z.ZodTypeDef, unknown> = z
-  .object({
-    id: types.string(),
-    name: types.string(),
-    description: types.optional(types.string()),
-    enabled: types.optional(types.boolean()),
-    route: z.lazy(() => Route$inboundSchema),
-  });
 /** @internal */
 export type Routes$Outbound = {
   id: string;
@@ -459,25 +333,7 @@ export const Routes$outboundSchema: z.ZodType<
 export function routesToJSON(routes: Routes): string {
   return JSON.stringify(Routes$outboundSchema.parse(routes));
 }
-export function routesFromJSON(
-  jsonString: string,
-): SafeParseResult<Routes, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Routes$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Routes' from JSON`,
-  );
-}
 
-/** @internal */
-export const StageRoutesRequestBody$inboundSchema: z.ZodType<
-  StageRoutesRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  overwrite: types.optional(types.boolean()),
-  routes: types.optional(z.array(z.lazy(() => Routes$inboundSchema))),
-});
 /** @internal */
 export type StageRoutesRequestBody$Outbound = {
   overwrite?: boolean | undefined;
@@ -501,33 +357,7 @@ export function stageRoutesRequestBodyToJSON(
     StageRoutesRequestBody$outboundSchema.parse(stageRoutesRequestBody),
   );
 }
-export function stageRoutesRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<StageRoutesRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => StageRoutesRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'StageRoutesRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const StageRoutesRequest$inboundSchema: z.ZodType<
-  StageRoutesRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  projectId: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-  RequestBody: types.optional(
-    z.lazy(() => StageRoutesRequestBody$inboundSchema),
-  ),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 /** @internal */
 export type StageRoutesRequest$Outbound = {
   projectId: string;
@@ -559,15 +389,6 @@ export function stageRoutesRequestToJSON(
     StageRoutesRequest$outboundSchema.parse(stageRoutesRequest),
   );
 }
-export function stageRoutesRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<StageRoutesRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => StageRoutesRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'StageRoutesRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const StageRoutesVersion$inboundSchema: z.ZodType<
@@ -584,41 +405,7 @@ export const StageRoutesVersion$inboundSchema: z.ZodType<
   ruleCount: types.optional(types.number()),
   alias: types.optional(types.string()),
 });
-/** @internal */
-export type StageRoutesVersion$Outbound = {
-  id: string;
-  s3Key: string;
-  lastModified: number;
-  createdBy: string;
-  isStaging?: boolean | undefined;
-  isLive?: boolean | undefined;
-  ruleCount?: number | undefined;
-  alias?: string | undefined;
-};
 
-/** @internal */
-export const StageRoutesVersion$outboundSchema: z.ZodType<
-  StageRoutesVersion$Outbound,
-  z.ZodTypeDef,
-  StageRoutesVersion
-> = z.object({
-  id: z.string(),
-  s3Key: z.string(),
-  lastModified: z.number(),
-  createdBy: z.string(),
-  isStaging: z.boolean().optional(),
-  isLive: z.boolean().optional(),
-  ruleCount: z.number().optional(),
-  alias: z.string().optional(),
-});
-
-export function stageRoutesVersionToJSON(
-  stageRoutesVersion: StageRoutesVersion,
-): string {
-  return JSON.stringify(
-    StageRoutesVersion$outboundSchema.parse(stageRoutesVersion),
-  );
-}
 export function stageRoutesVersionFromJSON(
   jsonString: string,
 ): SafeParseResult<StageRoutesVersion, SDKValidationError> {
@@ -637,27 +424,7 @@ export const StageRoutesResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   version: z.lazy(() => StageRoutesVersion$inboundSchema),
 });
-/** @internal */
-export type StageRoutesResponseBody$Outbound = {
-  version: StageRoutesVersion$Outbound;
-};
 
-/** @internal */
-export const StageRoutesResponseBody$outboundSchema: z.ZodType<
-  StageRoutesResponseBody$Outbound,
-  z.ZodTypeDef,
-  StageRoutesResponseBody
-> = z.object({
-  version: z.lazy(() => StageRoutesVersion$outboundSchema),
-});
-
-export function stageRoutesResponseBodyToJSON(
-  stageRoutesResponseBody: StageRoutesResponseBody,
-): string {
-  return JSON.stringify(
-    StageRoutesResponseBody$outboundSchema.parse(stageRoutesResponseBody),
-  );
-}
 export function stageRoutesResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<StageRoutesResponseBody, SDKValidationError> {

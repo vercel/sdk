@@ -6,7 +6,6 @@ import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
-import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type WriteSessionFilesRequest = {
@@ -33,21 +32,6 @@ export type WriteSessionFilesRequest = {
  */
 export type WriteSessionFilesResponseBody = {};
 
-/** @internal */
-export const WriteSessionFilesRequest$inboundSchema: z.ZodType<
-  WriteSessionFilesRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  "'x-Cwd'": types.optional(types.string()),
-  sessionId: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-}).transform((v) => {
-  return remap$(v, {
-    "'x-Cwd'": "xCwd",
-  });
-});
 /** @internal */
 export type WriteSessionFilesRequest$Outbound = {
   "'x-Cwd'"?: string | undefined;
@@ -79,15 +63,6 @@ export function writeSessionFilesRequestToJSON(
     WriteSessionFilesRequest$outboundSchema.parse(writeSessionFilesRequest),
   );
 }
-export function writeSessionFilesRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<WriteSessionFilesRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => WriteSessionFilesRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'WriteSessionFilesRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const WriteSessionFilesResponseBody$inboundSchema: z.ZodType<
@@ -95,25 +70,7 @@ export const WriteSessionFilesResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-/** @internal */
-export type WriteSessionFilesResponseBody$Outbound = {};
 
-/** @internal */
-export const WriteSessionFilesResponseBody$outboundSchema: z.ZodType<
-  WriteSessionFilesResponseBody$Outbound,
-  z.ZodTypeDef,
-  WriteSessionFilesResponseBody
-> = z.object({});
-
-export function writeSessionFilesResponseBodyToJSON(
-  writeSessionFilesResponseBody: WriteSessionFilesResponseBody,
-): string {
-  return JSON.stringify(
-    WriteSessionFilesResponseBody$outboundSchema.parse(
-      writeSessionFilesResponseBody,
-    ),
-  );
-}
 export function writeSessionFilesResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<WriteSessionFilesResponseBody, SDKValidationError> {

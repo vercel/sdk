@@ -49,10 +49,6 @@ export class DomainNotFound extends VercelError {
 export const DomainNotFoundCode$inboundSchema: z.ZodNativeEnum<
   typeof DomainNotFoundCode
 > = z.nativeEnum(DomainNotFoundCode);
-/** @internal */
-export const DomainNotFoundCode$outboundSchema: z.ZodNativeEnum<
-  typeof DomainNotFoundCode
-> = DomainNotFoundCode$inboundSchema;
 
 /** @internal */
 export const DomainNotFound$inboundSchema: z.ZodType<
@@ -74,23 +70,3 @@ export const DomainNotFound$inboundSchema: z.ZodType<
       body: v.body$,
     });
   });
-
-/** @internal */
-export type DomainNotFound$Outbound = {
-  status: number;
-  code: string;
-  message: string;
-};
-
-/** @internal */
-export const DomainNotFound$outboundSchema: z.ZodType<
-  DomainNotFound$Outbound,
-  z.ZodTypeDef,
-  DomainNotFound
-> = z.instanceof(DomainNotFound)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    status: z.number(),
-    code: DomainNotFoundCode$outboundSchema,
-    message: z.string(),
-  }));

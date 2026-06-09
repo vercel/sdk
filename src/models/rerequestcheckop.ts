@@ -5,7 +5,6 @@
 import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
-import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type RerequestCheckRequest = {
@@ -33,18 +32,6 @@ export type RerequestCheckRequest = {
 
 export type RerequestCheckResponseBody = {};
 
-/** @internal */
-export const RerequestCheckRequest$inboundSchema: z.ZodType<
-  RerequestCheckRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  deploymentId: types.string(),
-  checkId: types.string(),
-  autoUpdate: types.optional(types.boolean()),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
 /** @internal */
 export type RerequestCheckRequest$Outbound = {
   deploymentId: string;
@@ -74,15 +61,6 @@ export function rerequestCheckRequestToJSON(
     RerequestCheckRequest$outboundSchema.parse(rerequestCheckRequest),
   );
 }
-export function rerequestCheckRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<RerequestCheckRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RerequestCheckRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RerequestCheckRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const RerequestCheckResponseBody$inboundSchema: z.ZodType<
@@ -90,23 +68,7 @@ export const RerequestCheckResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-/** @internal */
-export type RerequestCheckResponseBody$Outbound = {};
 
-/** @internal */
-export const RerequestCheckResponseBody$outboundSchema: z.ZodType<
-  RerequestCheckResponseBody$Outbound,
-  z.ZodTypeDef,
-  RerequestCheckResponseBody
-> = z.object({});
-
-export function rerequestCheckResponseBodyToJSON(
-  rerequestCheckResponseBody: RerequestCheckResponseBody,
-): string {
-  return JSON.stringify(
-    RerequestCheckResponseBody$outboundSchema.parse(rerequestCheckResponseBody),
-  );
-}
 export function rerequestCheckResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<RerequestCheckResponseBody, SDKValidationError> {

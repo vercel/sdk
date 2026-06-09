@@ -36,14 +36,6 @@ export type GetAccountInfoResponseBody = {
 };
 
 /** @internal */
-export const GetAccountInfoRequest$inboundSchema: z.ZodType<
-  GetAccountInfoRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  integrationConfigurationId: types.string(),
-});
-/** @internal */
 export type GetAccountInfoRequest$Outbound = {
   integrationConfigurationId: string;
 };
@@ -64,15 +56,6 @@ export function getAccountInfoRequestToJSON(
     GetAccountInfoRequest$outboundSchema.parse(getAccountInfoRequest),
   );
 }
-export function getAccountInfoRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetAccountInfoRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetAccountInfoRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetAccountInfoRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const Contact$inboundSchema: z.ZodType<Contact, z.ZodTypeDef, unknown> =
@@ -80,25 +63,7 @@ export const Contact$inboundSchema: z.ZodType<Contact, z.ZodTypeDef, unknown> =
     email: types.string(),
     name: types.optional(types.string()),
   });
-/** @internal */
-export type Contact$Outbound = {
-  email: string;
-  name?: string | undefined;
-};
 
-/** @internal */
-export const Contact$outboundSchema: z.ZodType<
-  Contact$Outbound,
-  z.ZodTypeDef,
-  Contact
-> = z.object({
-  email: z.string(),
-  name: z.string().optional(),
-});
-
-export function contactToJSON(contact: Contact): string {
-  return JSON.stringify(Contact$outboundSchema.parse(contact));
-}
 export function contactFromJSON(
   jsonString: string,
 ): SafeParseResult<Contact, SDKValidationError> {
@@ -119,31 +84,7 @@ export const GetAccountInfoResponseBody$inboundSchema: z.ZodType<
   url: types.string(),
   contact: types.nullable(z.lazy(() => Contact$inboundSchema)),
 });
-/** @internal */
-export type GetAccountInfoResponseBody$Outbound = {
-  name?: string | undefined;
-  url: string;
-  contact: Contact$Outbound | null;
-};
 
-/** @internal */
-export const GetAccountInfoResponseBody$outboundSchema: z.ZodType<
-  GetAccountInfoResponseBody$Outbound,
-  z.ZodTypeDef,
-  GetAccountInfoResponseBody
-> = z.object({
-  name: z.string().optional(),
-  url: z.string(),
-  contact: z.nullable(z.lazy(() => Contact$outboundSchema)),
-});
-
-export function getAccountInfoResponseBodyToJSON(
-  getAccountInfoResponseBody: GetAccountInfoResponseBody,
-): string {
-  return JSON.stringify(
-    GetAccountInfoResponseBody$outboundSchema.parse(getAccountInfoResponseBody),
-  );
-}
 export function getAccountInfoResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetAccountInfoResponseBody, SDKValidationError> {

@@ -53,35 +53,7 @@ export const Drive$inboundSchema: z.ZodType<Drive, z.ZodTypeDef, unknown> = z
     createdAt: types.number(),
     updatedAt: types.number(),
   });
-/** @internal */
-export type Drive$Outbound = {
-  name: string;
-  projectId: string;
-  maxSizeBytes: number;
-  currentSessionId?: string | undefined;
-  currentSandboxName?: string | undefined;
-  createdAt: number;
-  updatedAt: number;
-};
 
-/** @internal */
-export const Drive$outboundSchema: z.ZodType<
-  Drive$Outbound,
-  z.ZodTypeDef,
-  Drive
-> = z.object({
-  name: z.string(),
-  projectId: z.string(),
-  maxSizeBytes: z.number(),
-  currentSessionId: z.string().optional(),
-  currentSandboxName: z.string().optional(),
-  createdAt: z.number(),
-  updatedAt: z.number(),
-});
-
-export function driveToJSON(drive: Drive): string {
-  return JSON.stringify(Drive$outboundSchema.parse(drive));
-}
 export function driveFromJSON(
   jsonString: string,
 ): SafeParseResult<Drive, SDKValidationError> {

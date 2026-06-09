@@ -177,10 +177,6 @@ export type NamedSandbox = {
 export const NamedSandboxStatus$inboundSchema: z.ZodNativeEnum<
   typeof NamedSandboxStatus
 > = z.nativeEnum(NamedSandboxStatus);
-/** @internal */
-export const NamedSandboxStatus$outboundSchema: z.ZodNativeEnum<
-  typeof NamedSandboxStatus
-> = NamedSandboxStatus$inboundSchema;
 
 /** @internal */
 export const KeepLastSnapshots$inboundSchema: z.ZodType<
@@ -192,31 +188,7 @@ export const KeepLastSnapshots$inboundSchema: z.ZodType<
   expiration: types.optional(types.number()),
   deleteEvicted: types.boolean(),
 });
-/** @internal */
-export type KeepLastSnapshots$Outbound = {
-  count: number;
-  expiration?: number | undefined;
-  deleteEvicted: boolean;
-};
 
-/** @internal */
-export const KeepLastSnapshots$outboundSchema: z.ZodType<
-  KeepLastSnapshots$Outbound,
-  z.ZodTypeDef,
-  KeepLastSnapshots
-> = z.object({
-  count: z.number(),
-  expiration: z.number().optional(),
-  deleteEvicted: z.boolean(),
-});
-
-export function keepLastSnapshotsToJSON(
-  keepLastSnapshots: KeepLastSnapshots,
-): string {
-  return JSON.stringify(
-    KeepLastSnapshots$outboundSchema.parse(keepLastSnapshots),
-  );
-}
 export function keepLastSnapshotsFromJSON(
   jsonString: string,
 ): SafeParseResult<KeepLastSnapshots, SDKValidationError> {
@@ -231,10 +203,6 @@ export function keepLastSnapshotsFromJSON(
 export const NamedSandboxNetworkPolicyMode$inboundSchema: z.ZodNativeEnum<
   typeof NamedSandboxNetworkPolicyMode
 > = z.nativeEnum(NamedSandboxNetworkPolicyMode);
-/** @internal */
-export const NamedSandboxNetworkPolicyMode$outboundSchema: z.ZodNativeEnum<
-  typeof NamedSandboxNetworkPolicyMode
-> = NamedSandboxNetworkPolicyMode$inboundSchema;
 
 /** @internal */
 export const NetworkPolicy$inboundSchema: z.ZodType<
@@ -247,29 +215,7 @@ export const NetworkPolicy$inboundSchema: z.ZodType<
   allowedCIDRs: types.optional(z.array(types.string())),
   deniedCIDRs: types.optional(z.array(types.string())),
 });
-/** @internal */
-export type NetworkPolicy$Outbound = {
-  mode: string;
-  allowedDomains?: Array<string> | undefined;
-  allowedCIDRs?: Array<string> | undefined;
-  deniedCIDRs?: Array<string> | undefined;
-};
 
-/** @internal */
-export const NetworkPolicy$outboundSchema: z.ZodType<
-  NetworkPolicy$Outbound,
-  z.ZodTypeDef,
-  NetworkPolicy
-> = z.object({
-  mode: NamedSandboxNetworkPolicyMode$outboundSchema,
-  allowedDomains: z.array(z.string()).optional(),
-  allowedCIDRs: z.array(z.string()).optional(),
-  deniedCIDRs: z.array(z.string()).optional(),
-});
-
-export function networkPolicyToJSON(networkPolicy: NetworkPolicy): string {
-  return JSON.stringify(NetworkPolicy$outboundSchema.parse(networkPolicy));
-}
 export function networkPolicyFromJSON(
   jsonString: string,
 ): SafeParseResult<NetworkPolicy, SDKValidationError> {
@@ -284,10 +230,6 @@ export function networkPolicyFromJSON(
 export const NamedSandboxMode$inboundSchema: z.ZodNativeEnum<
   typeof NamedSandboxMode
 > = z.nativeEnum(NamedSandboxMode);
-/** @internal */
-export const NamedSandboxMode$outboundSchema: z.ZodNativeEnum<
-  typeof NamedSandboxMode
-> = NamedSandboxMode$inboundSchema;
 
 /** @internal */
 export const Mounts$inboundSchema: z.ZodType<Mounts, z.ZodTypeDef, unknown> = z
@@ -295,25 +237,7 @@ export const Mounts$inboundSchema: z.ZodType<Mounts, z.ZodTypeDef, unknown> = z
     drive: types.string(),
     mode: types.optional(NamedSandboxMode$inboundSchema),
   });
-/** @internal */
-export type Mounts$Outbound = {
-  drive: string;
-  mode?: string | undefined;
-};
 
-/** @internal */
-export const Mounts$outboundSchema: z.ZodType<
-  Mounts$Outbound,
-  z.ZodTypeDef,
-  Mounts
-> = z.object({
-  drive: z.string(),
-  mode: NamedSandboxMode$outboundSchema.optional(),
-});
-
-export function mountsToJSON(mounts: Mounts): string {
-  return JSON.stringify(Mounts$outboundSchema.parse(mounts));
-}
 export function mountsFromJSON(
   jsonString: string,
 ): SafeParseResult<Mounts, SDKValidationError> {
@@ -356,67 +280,7 @@ export const NamedSandbox$inboundSchema: z.ZodType<
   createdAt: types.number(),
   updatedAt: types.number(),
 });
-/** @internal */
-export type NamedSandbox$Outbound = {
-  name: string;
-  currentSnapshotId?: string | undefined;
-  currentSessionId: string;
-  status: string;
-  statusUpdatedAt: number;
-  persistent: boolean;
-  region?: string | undefined;
-  vcpus?: number | undefined;
-  memory?: number | undefined;
-  runtime?: string | undefined;
-  timeout?: number | undefined;
-  snapshotExpiration?: number | undefined;
-  keepLastSnapshots?: KeepLastSnapshots$Outbound | undefined;
-  networkPolicy?: NetworkPolicy$Outbound | undefined;
-  totalEgressBytes?: number | undefined;
-  totalIngressBytes?: number | undefined;
-  totalActiveCpuDurationMs?: number | undefined;
-  totalDurationMs?: number | undefined;
-  cwd?: string | undefined;
-  tags?: { [k: string]: string } | undefined;
-  mounts?: { [k: string]: Mounts$Outbound } | undefined;
-  createdAt: number;
-  updatedAt: number;
-};
 
-/** @internal */
-export const NamedSandbox$outboundSchema: z.ZodType<
-  NamedSandbox$Outbound,
-  z.ZodTypeDef,
-  NamedSandbox
-> = z.object({
-  name: z.string(),
-  currentSnapshotId: z.string().optional(),
-  currentSessionId: z.string(),
-  status: NamedSandboxStatus$outboundSchema,
-  statusUpdatedAt: z.number(),
-  persistent: z.boolean(),
-  region: z.string().optional(),
-  vcpus: z.number().optional(),
-  memory: z.number().optional(),
-  runtime: z.string().optional(),
-  timeout: z.number().optional(),
-  snapshotExpiration: z.number().optional(),
-  keepLastSnapshots: z.lazy(() => KeepLastSnapshots$outboundSchema).optional(),
-  networkPolicy: z.lazy(() => NetworkPolicy$outboundSchema).optional(),
-  totalEgressBytes: z.number().optional(),
-  totalIngressBytes: z.number().optional(),
-  totalActiveCpuDurationMs: z.number().optional(),
-  totalDurationMs: z.number().optional(),
-  cwd: z.string().optional(),
-  tags: z.record(z.string()).optional(),
-  mounts: z.record(z.lazy(() => Mounts$outboundSchema)).optional(),
-  createdAt: z.number(),
-  updatedAt: z.number(),
-});
-
-export function namedSandboxToJSON(namedSandbox: NamedSandbox): string {
-  return JSON.stringify(NamedSandbox$outboundSchema.parse(namedSandbox));
-}
 export function namedSandboxFromJSON(
   jsonString: string,
 ): SafeParseResult<NamedSandbox, SDKValidationError> {

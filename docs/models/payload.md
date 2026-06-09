@@ -43,8 +43,6 @@ const value: models.Four = {
 ```typescript
 const value: models.Five = {
   teamId: "<id>",
-  stripeAccount: "<value>",
-  stripeOrganisation: "<value>",
   accountRequestId: "<id>",
 };
 ```
@@ -54,7 +52,6 @@ const value: models.Five = {
 ```typescript
 const value: models.Six = {
   teamId: "<id>",
-  stripeAccount: "<value>",
 };
 ```
 
@@ -64,7 +61,6 @@ const value: models.Six = {
 const value: models.Seven = {
   teamId: "<id>",
   teamSlug: "<value>",
-  stripeAccount: "<value>",
 };
 ```
 

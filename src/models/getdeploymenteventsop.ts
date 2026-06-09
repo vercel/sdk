@@ -354,18 +354,9 @@ export type GetDeploymentEventsResponse =
   | GetDeploymentEventsResponseBodyDeployments1;
 
 /** @internal */
-export const Direction$inboundSchema: z.ZodNativeEnum<typeof Direction> = z
+export const Direction$outboundSchema: z.ZodNativeEnum<typeof Direction> = z
   .nativeEnum(Direction);
-/** @internal */
-export const Direction$outboundSchema: z.ZodNativeEnum<typeof Direction> =
-  Direction$inboundSchema;
 
-/** @internal */
-export const QueryParamStatusCode$inboundSchema: z.ZodType<
-  QueryParamStatusCode,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([types.number(), types.string()]);
 /** @internal */
 export type QueryParamStatusCode$Outbound = number | string;
 
@@ -383,35 +374,7 @@ export function queryParamStatusCodeToJSON(
     QueryParamStatusCode$outboundSchema.parse(queryParamStatusCode),
   );
 }
-export function queryParamStatusCodeFromJSON(
-  jsonString: string,
-): SafeParseResult<QueryParamStatusCode, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => QueryParamStatusCode$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'QueryParamStatusCode' from JSON`,
-  );
-}
 
-/** @internal */
-export const GetDeploymentEventsRequest$inboundSchema: z.ZodType<
-  GetDeploymentEventsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  idOrUrl: types.string(),
-  direction: Direction$inboundSchema.default("forward"),
-  follow: types.optional(types.number()),
-  limit: types.optional(types.number()),
-  name: types.optional(types.string()),
-  since: types.optional(types.number()),
-  until: types.optional(types.number()),
-  statusCode: types.optional(smartUnion([types.number(), types.string()])),
-  delimiter: types.optional(types.number()),
-  builds: types.optional(types.number()),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
 /** @internal */
 export type GetDeploymentEventsRequest$Outbound = {
   idOrUrl: string;
@@ -455,15 +418,6 @@ export function getDeploymentEventsRequestToJSON(
     GetDeploymentEventsRequest$outboundSchema.parse(getDeploymentEventsRequest),
   );
 }
-export function getDeploymentEventsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetDeploymentEventsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetDeploymentEventsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDeploymentEventsRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const ResponseBodyInfo$inboundSchema: z.ZodType<
@@ -478,37 +432,7 @@ export const ResponseBodyInfo$inboundSchema: z.ZodType<
   step: types.optional(types.string()),
   readyState: types.optional(types.string()),
 });
-/** @internal */
-export type ResponseBodyInfo$Outbound = {
-  type: string;
-  name: string;
-  entrypoint?: string | undefined;
-  path?: string | undefined;
-  step?: string | undefined;
-  readyState?: string | undefined;
-};
 
-/** @internal */
-export const ResponseBodyInfo$outboundSchema: z.ZodType<
-  ResponseBodyInfo$Outbound,
-  z.ZodTypeDef,
-  ResponseBodyInfo
-> = z.object({
-  type: z.string(),
-  name: z.string(),
-  entrypoint: z.string().optional(),
-  path: z.string().optional(),
-  step: z.string().optional(),
-  readyState: z.string().optional(),
-});
-
-export function responseBodyInfoToJSON(
-  responseBodyInfo: ResponseBodyInfo,
-): string {
-  return JSON.stringify(
-    ResponseBodyInfo$outboundSchema.parse(responseBodyInfo),
-  );
-}
 export function responseBodyInfoFromJSON(
   jsonString: string,
 ): SafeParseResult<ResponseBodyInfo, SDKValidationError> {
@@ -524,20 +448,11 @@ export const GetDeploymentEventsResponseBodyDeploymentsResponseType$inboundSchem
   z.ZodNativeEnum<
     typeof GetDeploymentEventsResponseBodyDeploymentsResponseType
   > = z.nativeEnum(GetDeploymentEventsResponseBodyDeploymentsResponseType);
-/** @internal */
-export const GetDeploymentEventsResponseBodyDeploymentsResponseType$outboundSchema:
-  z.ZodNativeEnum<
-    typeof GetDeploymentEventsResponseBodyDeploymentsResponseType
-  > = GetDeploymentEventsResponseBodyDeploymentsResponseType$inboundSchema;
 
 /** @internal */
 export const ResponseBodyLevel$inboundSchema: z.ZodNativeEnum<
   typeof ResponseBodyLevel
 > = z.nativeEnum(ResponseBodyLevel);
-/** @internal */
-export const ResponseBodyLevel$outboundSchema: z.ZodNativeEnum<
-  typeof ResponseBodyLevel
-> = ResponseBodyLevel$inboundSchema;
 
 /** @internal */
 export const GetDeploymentEventsResponseBodyDeployments2$inboundSchema:
@@ -556,47 +471,7 @@ export const GetDeploymentEventsResponseBodyDeployments2$inboundSchema:
     type: GetDeploymentEventsResponseBodyDeploymentsResponseType$inboundSchema,
     level: types.optional(ResponseBodyLevel$inboundSchema),
   });
-/** @internal */
-export type GetDeploymentEventsResponseBodyDeployments2$Outbound = {
-  created: number;
-  date: number;
-  deploymentId: string;
-  id: string;
-  info: ResponseBodyInfo$Outbound;
-  serial: string;
-  text?: string | undefined;
-  type: string;
-  level?: string | undefined;
-};
 
-/** @internal */
-export const GetDeploymentEventsResponseBodyDeployments2$outboundSchema:
-  z.ZodType<
-    GetDeploymentEventsResponseBodyDeployments2$Outbound,
-    z.ZodTypeDef,
-    GetDeploymentEventsResponseBodyDeployments2
-  > = z.object({
-    created: z.number(),
-    date: z.number(),
-    deploymentId: z.string(),
-    id: z.string(),
-    info: z.lazy(() => ResponseBodyInfo$outboundSchema),
-    serial: z.string(),
-    text: z.string().optional(),
-    type: GetDeploymentEventsResponseBodyDeploymentsResponseType$outboundSchema,
-    level: ResponseBodyLevel$outboundSchema.optional(),
-  });
-
-export function getDeploymentEventsResponseBodyDeployments2ToJSON(
-  getDeploymentEventsResponseBodyDeployments2:
-    GetDeploymentEventsResponseBodyDeployments2,
-): string {
-  return JSON.stringify(
-    GetDeploymentEventsResponseBodyDeployments2$outboundSchema.parse(
-      getDeploymentEventsResponseBodyDeployments2,
-    ),
-  );
-}
 export function getDeploymentEventsResponseBodyDeployments2FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -617,10 +492,6 @@ export function getDeploymentEventsResponseBodyDeployments2FromJSON(
 export const GetDeploymentEventsResponseBodyDeploymentsType$inboundSchema:
   z.ZodNativeEnum<typeof GetDeploymentEventsResponseBodyDeploymentsType> = z
     .nativeEnum(GetDeploymentEventsResponseBodyDeploymentsType);
-/** @internal */
-export const GetDeploymentEventsResponseBodyDeploymentsType$outboundSchema:
-  z.ZodNativeEnum<typeof GetDeploymentEventsResponseBodyDeploymentsType> =
-    GetDeploymentEventsResponseBodyDeploymentsType$inboundSchema;
 
 /** @internal */
 export const GetDeploymentEventsResponseBodyInfo$inboundSchema: z.ZodType<
@@ -635,39 +506,7 @@ export const GetDeploymentEventsResponseBodyInfo$inboundSchema: z.ZodType<
   step: types.optional(types.string()),
   readyState: types.optional(types.string()),
 });
-/** @internal */
-export type GetDeploymentEventsResponseBodyInfo$Outbound = {
-  type: string;
-  name: string;
-  entrypoint?: string | undefined;
-  path?: string | undefined;
-  step?: string | undefined;
-  readyState?: string | undefined;
-};
 
-/** @internal */
-export const GetDeploymentEventsResponseBodyInfo$outboundSchema: z.ZodType<
-  GetDeploymentEventsResponseBodyInfo$Outbound,
-  z.ZodTypeDef,
-  GetDeploymentEventsResponseBodyInfo
-> = z.object({
-  type: z.string(),
-  name: z.string(),
-  entrypoint: z.string().optional(),
-  path: z.string().optional(),
-  step: z.string().optional(),
-  readyState: z.string().optional(),
-});
-
-export function getDeploymentEventsResponseBodyInfoToJSON(
-  getDeploymentEventsResponseBodyInfo: GetDeploymentEventsResponseBodyInfo,
-): string {
-  return JSON.stringify(
-    GetDeploymentEventsResponseBodyInfo$outboundSchema.parse(
-      getDeploymentEventsResponseBodyInfo,
-    ),
-  );
-}
 export function getDeploymentEventsResponseBodyInfoFromJSON(
   jsonString: string,
 ): SafeParseResult<GetDeploymentEventsResponseBodyInfo, SDKValidationError> {
@@ -683,19 +522,11 @@ export function getDeploymentEventsResponseBodyInfoFromJSON(
 export const ResponseBodyVercelCache$inboundSchema: z.ZodNativeEnum<
   typeof ResponseBodyVercelCache
 > = z.nativeEnum(ResponseBodyVercelCache);
-/** @internal */
-export const ResponseBodyVercelCache$outboundSchema: z.ZodNativeEnum<
-  typeof ResponseBodyVercelCache
-> = ResponseBodyVercelCache$inboundSchema;
 
 /** @internal */
 export const ResponseBodyWafAction$inboundSchema: z.ZodNativeEnum<
   typeof ResponseBodyWafAction
 > = z.nativeEnum(ResponseBodyWafAction);
-/** @internal */
-export const ResponseBodyWafAction$outboundSchema: z.ZodNativeEnum<
-  typeof ResponseBodyWafAction
-> = ResponseBodyWafAction$inboundSchema;
 
 /** @internal */
 export const ResponseBodyProxy$inboundSchema: z.ZodType<
@@ -723,63 +554,7 @@ export const ResponseBodyProxy$inboundSchema: z.ZodType<
   wafAction: types.optional(ResponseBodyWafAction$inboundSchema),
   wafRuleId: types.optional(types.string()),
 });
-/** @internal */
-export type ResponseBodyProxy$Outbound = {
-  timestamp: number;
-  method: string;
-  host: string;
-  path: string;
-  statusCode?: number | undefined;
-  userAgent: Array<string>;
-  referer: string;
-  clientIp?: string | undefined;
-  region: string;
-  scheme?: string | undefined;
-  responseByteSize?: number | undefined;
-  cacheId?: string | undefined;
-  pathType?: string | undefined;
-  pathTypeVariant?: string | undefined;
-  vercelId?: string | undefined;
-  vercelCache?: string | undefined;
-  lambdaRegion?: string | undefined;
-  wafAction?: string | undefined;
-  wafRuleId?: string | undefined;
-};
 
-/** @internal */
-export const ResponseBodyProxy$outboundSchema: z.ZodType<
-  ResponseBodyProxy$Outbound,
-  z.ZodTypeDef,
-  ResponseBodyProxy
-> = z.object({
-  timestamp: z.number(),
-  method: z.string(),
-  host: z.string(),
-  path: z.string(),
-  statusCode: z.number().optional(),
-  userAgent: z.array(z.string()),
-  referer: z.string(),
-  clientIp: z.string().optional(),
-  region: z.string(),
-  scheme: z.string().optional(),
-  responseByteSize: z.number().optional(),
-  cacheId: z.string().optional(),
-  pathType: z.string().optional(),
-  pathTypeVariant: z.string().optional(),
-  vercelId: z.string().optional(),
-  vercelCache: ResponseBodyVercelCache$outboundSchema.optional(),
-  lambdaRegion: z.string().optional(),
-  wafAction: ResponseBodyWafAction$outboundSchema.optional(),
-  wafRuleId: z.string().optional(),
-});
-
-export function responseBodyProxyToJSON(
-  responseBodyProxy: ResponseBodyProxy,
-): string {
-  return JSON.stringify(
-    ResponseBodyProxy$outboundSchema.parse(responseBodyProxy),
-  );
-}
 export function responseBodyProxyFromJSON(
   jsonString: string,
 ): SafeParseResult<ResponseBodyProxy, SDKValidationError> {
@@ -809,46 +584,7 @@ export const ResponseBodyPayload$inboundSchema: z.ZodType<
   requestId: types.optional(types.string()),
   proxy: types.optional(z.lazy(() => ResponseBodyProxy$inboundSchema)),
 });
-/** @internal */
-export type ResponseBodyPayload$Outbound = {
-  deploymentId: string;
-  info?: GetDeploymentEventsResponseBodyInfo$Outbound | undefined;
-  text?: string | undefined;
-  id: string;
-  date: number;
-  serial: string;
-  created?: number | undefined;
-  statusCode?: number | undefined;
-  requestId?: string | undefined;
-  proxy?: ResponseBodyProxy$Outbound | undefined;
-};
 
-/** @internal */
-export const ResponseBodyPayload$outboundSchema: z.ZodType<
-  ResponseBodyPayload$Outbound,
-  z.ZodTypeDef,
-  ResponseBodyPayload
-> = z.object({
-  deploymentId: z.string(),
-  info: z.lazy(() => GetDeploymentEventsResponseBodyInfo$outboundSchema)
-    .optional(),
-  text: z.string().optional(),
-  id: z.string(),
-  date: z.number(),
-  serial: z.string(),
-  created: z.number().optional(),
-  statusCode: z.number().optional(),
-  requestId: z.string().optional(),
-  proxy: z.lazy(() => ResponseBodyProxy$outboundSchema).optional(),
-});
-
-export function responseBodyPayloadToJSON(
-  responseBodyPayload: ResponseBodyPayload,
-): string {
-  return JSON.stringify(
-    ResponseBodyPayload$outboundSchema.parse(responseBodyPayload),
-  );
-}
 export function responseBodyPayloadFromJSON(
   jsonString: string,
 ): SafeParseResult<ResponseBodyPayload, SDKValidationError> {
@@ -870,35 +606,7 @@ export const GetDeploymentEventsResponseBodyDeployments1$inboundSchema:
     created: types.number(),
     payload: z.lazy(() => ResponseBodyPayload$inboundSchema),
   });
-/** @internal */
-export type GetDeploymentEventsResponseBodyDeployments1$Outbound = {
-  type: string;
-  created: number;
-  payload: ResponseBodyPayload$Outbound;
-};
 
-/** @internal */
-export const GetDeploymentEventsResponseBodyDeployments1$outboundSchema:
-  z.ZodType<
-    GetDeploymentEventsResponseBodyDeployments1$Outbound,
-    z.ZodTypeDef,
-    GetDeploymentEventsResponseBodyDeployments1
-  > = z.object({
-    type: GetDeploymentEventsResponseBodyDeploymentsType$outboundSchema,
-    created: z.number(),
-    payload: z.lazy(() => ResponseBodyPayload$outboundSchema),
-  });
-
-export function getDeploymentEventsResponseBodyDeployments1ToJSON(
-  getDeploymentEventsResponseBodyDeployments1:
-    GetDeploymentEventsResponseBodyDeployments1,
-): string {
-  return JSON.stringify(
-    GetDeploymentEventsResponseBodyDeployments1$outboundSchema.parse(
-      getDeploymentEventsResponseBodyDeployments1,
-    ),
-  );
-}
 export function getDeploymentEventsResponseBodyDeployments1FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -924,30 +632,7 @@ export const GetDeploymentEventsResponseBody$inboundSchema: z.ZodType<
   z.lazy(() => GetDeploymentEventsResponseBodyDeployments2$inboundSchema),
   z.lazy(() => GetDeploymentEventsResponseBodyDeployments1$inboundSchema),
 ]);
-/** @internal */
-export type GetDeploymentEventsResponseBody$Outbound =
-  | GetDeploymentEventsResponseBodyDeployments2$Outbound
-  | GetDeploymentEventsResponseBodyDeployments1$Outbound;
 
-/** @internal */
-export const GetDeploymentEventsResponseBody$outboundSchema: z.ZodType<
-  GetDeploymentEventsResponseBody$Outbound,
-  z.ZodTypeDef,
-  GetDeploymentEventsResponseBody
-> = smartUnion([
-  z.lazy(() => GetDeploymentEventsResponseBodyDeployments2$outboundSchema),
-  z.lazy(() => GetDeploymentEventsResponseBodyDeployments1$outboundSchema),
-]);
-
-export function getDeploymentEventsResponseBodyToJSON(
-  getDeploymentEventsResponseBody: GetDeploymentEventsResponseBody,
-): string {
-  return JSON.stringify(
-    GetDeploymentEventsResponseBody$outboundSchema.parse(
-      getDeploymentEventsResponseBody,
-    ),
-  );
-}
 export function getDeploymentEventsResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetDeploymentEventsResponseBody, SDKValidationError> {
@@ -968,30 +653,7 @@ export const Info$inboundSchema: z.ZodType<Info, z.ZodTypeDef, unknown> = z
     step: types.optional(types.string()),
     readyState: types.optional(types.string()),
   });
-/** @internal */
-export type Info$Outbound = {
-  type: string;
-  name: string;
-  entrypoint?: string | undefined;
-  path?: string | undefined;
-  step?: string | undefined;
-  readyState?: string | undefined;
-};
 
-/** @internal */
-export const Info$outboundSchema: z.ZodType<Info$Outbound, z.ZodTypeDef, Info> =
-  z.object({
-    type: z.string(),
-    name: z.string(),
-    entrypoint: z.string().optional(),
-    path: z.string().optional(),
-    step: z.string().optional(),
-    readyState: z.string().optional(),
-  });
-
-export function infoToJSON(info: Info): string {
-  return JSON.stringify(Info$outboundSchema.parse(info));
-}
 export function infoFromJSON(
   jsonString: string,
 ): SafeParseResult<Info, SDKValidationError> {
@@ -1006,20 +668,12 @@ export function infoFromJSON(
 export const GetDeploymentEventsResponseBodyType$inboundSchema: z.ZodNativeEnum<
   typeof GetDeploymentEventsResponseBodyType
 > = z.nativeEnum(GetDeploymentEventsResponseBodyType);
-/** @internal */
-export const GetDeploymentEventsResponseBodyType$outboundSchema:
-  z.ZodNativeEnum<typeof GetDeploymentEventsResponseBodyType> =
-    GetDeploymentEventsResponseBodyType$inboundSchema;
 
 /** @internal */
 export const GetDeploymentEventsResponseBodyLevel$inboundSchema:
   z.ZodNativeEnum<typeof GetDeploymentEventsResponseBodyLevel> = z.nativeEnum(
     GetDeploymentEventsResponseBodyLevel,
   );
-/** @internal */
-export const GetDeploymentEventsResponseBodyLevel$outboundSchema:
-  z.ZodNativeEnum<typeof GetDeploymentEventsResponseBodyLevel> =
-    GetDeploymentEventsResponseBodyLevel$inboundSchema;
 
 /** @internal */
 export const GetDeploymentEventsResponseBody2$inboundSchema: z.ZodType<
@@ -1037,45 +691,7 @@ export const GetDeploymentEventsResponseBody2$inboundSchema: z.ZodType<
   type: GetDeploymentEventsResponseBodyType$inboundSchema,
   level: types.optional(GetDeploymentEventsResponseBodyLevel$inboundSchema),
 });
-/** @internal */
-export type GetDeploymentEventsResponseBody2$Outbound = {
-  created: number;
-  date: number;
-  deploymentId: string;
-  id: string;
-  info: Info$Outbound;
-  serial: string;
-  text?: string | undefined;
-  type: string;
-  level?: string | undefined;
-};
 
-/** @internal */
-export const GetDeploymentEventsResponseBody2$outboundSchema: z.ZodType<
-  GetDeploymentEventsResponseBody2$Outbound,
-  z.ZodTypeDef,
-  GetDeploymentEventsResponseBody2
-> = z.object({
-  created: z.number(),
-  date: z.number(),
-  deploymentId: z.string(),
-  id: z.string(),
-  info: z.lazy(() => Info$outboundSchema),
-  serial: z.string(),
-  text: z.string().optional(),
-  type: GetDeploymentEventsResponseBodyType$outboundSchema,
-  level: GetDeploymentEventsResponseBodyLevel$outboundSchema.optional(),
-});
-
-export function getDeploymentEventsResponseBody2ToJSON(
-  getDeploymentEventsResponseBody2: GetDeploymentEventsResponseBody2,
-): string {
-  return JSON.stringify(
-    GetDeploymentEventsResponseBody2$outboundSchema.parse(
-      getDeploymentEventsResponseBody2,
-    ),
-  );
-}
 export function getDeploymentEventsResponseBody2FromJSON(
   jsonString: string,
 ): SafeParseResult<GetDeploymentEventsResponseBody2, SDKValidationError> {
@@ -1090,10 +706,6 @@ export function getDeploymentEventsResponseBody2FromJSON(
 export const ResponseBodyType$inboundSchema: z.ZodNativeEnum<
   typeof ResponseBodyType
 > = z.nativeEnum(ResponseBodyType);
-/** @internal */
-export const ResponseBodyType$outboundSchema: z.ZodNativeEnum<
-  typeof ResponseBodyType
-> = ResponseBodyType$inboundSchema;
 
 /** @internal */
 export const GetDeploymentEventsResponseBodyDeploymentsInfo$inboundSchema:
@@ -1109,41 +721,7 @@ export const GetDeploymentEventsResponseBodyDeploymentsInfo$inboundSchema:
     step: types.optional(types.string()),
     readyState: types.optional(types.string()),
   });
-/** @internal */
-export type GetDeploymentEventsResponseBodyDeploymentsInfo$Outbound = {
-  type: string;
-  name: string;
-  entrypoint?: string | undefined;
-  path?: string | undefined;
-  step?: string | undefined;
-  readyState?: string | undefined;
-};
 
-/** @internal */
-export const GetDeploymentEventsResponseBodyDeploymentsInfo$outboundSchema:
-  z.ZodType<
-    GetDeploymentEventsResponseBodyDeploymentsInfo$Outbound,
-    z.ZodTypeDef,
-    GetDeploymentEventsResponseBodyDeploymentsInfo
-  > = z.object({
-    type: z.string(),
-    name: z.string(),
-    entrypoint: z.string().optional(),
-    path: z.string().optional(),
-    step: z.string().optional(),
-    readyState: z.string().optional(),
-  });
-
-export function getDeploymentEventsResponseBodyDeploymentsInfoToJSON(
-  getDeploymentEventsResponseBodyDeploymentsInfo:
-    GetDeploymentEventsResponseBodyDeploymentsInfo,
-): string {
-  return JSON.stringify(
-    GetDeploymentEventsResponseBodyDeploymentsInfo$outboundSchema.parse(
-      getDeploymentEventsResponseBodyDeploymentsInfo,
-    ),
-  );
-}
 export function getDeploymentEventsResponseBodyDeploymentsInfoFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -1163,16 +741,10 @@ export function getDeploymentEventsResponseBodyDeploymentsInfoFromJSON(
 /** @internal */
 export const VercelCache$inboundSchema: z.ZodNativeEnum<typeof VercelCache> = z
   .nativeEnum(VercelCache);
-/** @internal */
-export const VercelCache$outboundSchema: z.ZodNativeEnum<typeof VercelCache> =
-  VercelCache$inboundSchema;
 
 /** @internal */
 export const WafAction$inboundSchema: z.ZodNativeEnum<typeof WafAction> = z
   .nativeEnum(WafAction);
-/** @internal */
-export const WafAction$outboundSchema: z.ZodNativeEnum<typeof WafAction> =
-  WafAction$inboundSchema;
 
 /** @internal */
 export const Proxy$inboundSchema: z.ZodType<Proxy, z.ZodTypeDef, unknown> = z
@@ -1197,59 +769,7 @@ export const Proxy$inboundSchema: z.ZodType<Proxy, z.ZodTypeDef, unknown> = z
     wafAction: types.optional(WafAction$inboundSchema),
     wafRuleId: types.optional(types.string()),
   });
-/** @internal */
-export type Proxy$Outbound = {
-  timestamp: number;
-  method: string;
-  host: string;
-  path: string;
-  statusCode?: number | undefined;
-  userAgent: Array<string>;
-  referer: string;
-  clientIp?: string | undefined;
-  region: string;
-  scheme?: string | undefined;
-  responseByteSize?: number | undefined;
-  cacheId?: string | undefined;
-  pathType?: string | undefined;
-  pathTypeVariant?: string | undefined;
-  vercelId?: string | undefined;
-  vercelCache?: string | undefined;
-  lambdaRegion?: string | undefined;
-  wafAction?: string | undefined;
-  wafRuleId?: string | undefined;
-};
 
-/** @internal */
-export const Proxy$outboundSchema: z.ZodType<
-  Proxy$Outbound,
-  z.ZodTypeDef,
-  Proxy
-> = z.object({
-  timestamp: z.number(),
-  method: z.string(),
-  host: z.string(),
-  path: z.string(),
-  statusCode: z.number().optional(),
-  userAgent: z.array(z.string()),
-  referer: z.string(),
-  clientIp: z.string().optional(),
-  region: z.string(),
-  scheme: z.string().optional(),
-  responseByteSize: z.number().optional(),
-  cacheId: z.string().optional(),
-  pathType: z.string().optional(),
-  pathTypeVariant: z.string().optional(),
-  vercelId: z.string().optional(),
-  vercelCache: VercelCache$outboundSchema.optional(),
-  lambdaRegion: z.string().optional(),
-  wafAction: WafAction$outboundSchema.optional(),
-  wafRuleId: z.string().optional(),
-});
-
-export function proxyToJSON(proxy: Proxy): string {
-  return JSON.stringify(Proxy$outboundSchema.parse(proxy));
-}
 export function proxyFromJSON(
   jsonString: string,
 ): SafeParseResult<Proxy, SDKValidationError> {
@@ -1279,50 +799,7 @@ export const GetDeploymentEventsResponseBodyPayload$inboundSchema: z.ZodType<
   requestId: types.optional(types.string()),
   proxy: types.optional(z.lazy(() => Proxy$inboundSchema)),
 });
-/** @internal */
-export type GetDeploymentEventsResponseBodyPayload$Outbound = {
-  deploymentId: string;
-  info?: GetDeploymentEventsResponseBodyDeploymentsInfo$Outbound | undefined;
-  text?: string | undefined;
-  id: string;
-  date: number;
-  serial: string;
-  created?: number | undefined;
-  statusCode?: number | undefined;
-  requestId?: string | undefined;
-  proxy?: Proxy$Outbound | undefined;
-};
 
-/** @internal */
-export const GetDeploymentEventsResponseBodyPayload$outboundSchema: z.ZodType<
-  GetDeploymentEventsResponseBodyPayload$Outbound,
-  z.ZodTypeDef,
-  GetDeploymentEventsResponseBodyPayload
-> = z.object({
-  deploymentId: z.string(),
-  info: z.lazy(() =>
-    GetDeploymentEventsResponseBodyDeploymentsInfo$outboundSchema
-  ).optional(),
-  text: z.string().optional(),
-  id: z.string(),
-  date: z.number(),
-  serial: z.string(),
-  created: z.number().optional(),
-  statusCode: z.number().optional(),
-  requestId: z.string().optional(),
-  proxy: z.lazy(() => Proxy$outboundSchema).optional(),
-});
-
-export function getDeploymentEventsResponseBodyPayloadToJSON(
-  getDeploymentEventsResponseBodyPayload:
-    GetDeploymentEventsResponseBodyPayload,
-): string {
-  return JSON.stringify(
-    GetDeploymentEventsResponseBodyPayload$outboundSchema.parse(
-      getDeploymentEventsResponseBodyPayload,
-    ),
-  );
-}
 export function getDeploymentEventsResponseBodyPayloadFromJSON(
   jsonString: string,
 ): SafeParseResult<GetDeploymentEventsResponseBodyPayload, SDKValidationError> {
@@ -1344,33 +821,7 @@ export const GetDeploymentEventsResponseBody1$inboundSchema: z.ZodType<
   created: types.number(),
   payload: z.lazy(() => GetDeploymentEventsResponseBodyPayload$inboundSchema),
 });
-/** @internal */
-export type GetDeploymentEventsResponseBody1$Outbound = {
-  type: string;
-  created: number;
-  payload: GetDeploymentEventsResponseBodyPayload$Outbound;
-};
 
-/** @internal */
-export const GetDeploymentEventsResponseBody1$outboundSchema: z.ZodType<
-  GetDeploymentEventsResponseBody1$Outbound,
-  z.ZodTypeDef,
-  GetDeploymentEventsResponseBody1
-> = z.object({
-  type: ResponseBodyType$outboundSchema,
-  created: z.number(),
-  payload: z.lazy(() => GetDeploymentEventsResponseBodyPayload$outboundSchema),
-});
-
-export function getDeploymentEventsResponseBody1ToJSON(
-  getDeploymentEventsResponseBody1: GetDeploymentEventsResponseBody1,
-): string {
-  return JSON.stringify(
-    GetDeploymentEventsResponseBody1$outboundSchema.parse(
-      getDeploymentEventsResponseBody1,
-    ),
-  );
-}
 export function getDeploymentEventsResponseBody1FromJSON(
   jsonString: string,
 ): SafeParseResult<GetDeploymentEventsResponseBody1, SDKValidationError> {
@@ -1388,32 +839,7 @@ export const GetDeploymentEventsDeploymentsResponseBody$inboundSchema:
       z.lazy(() => GetDeploymentEventsResponseBody2$inboundSchema),
       z.lazy(() => GetDeploymentEventsResponseBody1$inboundSchema),
     ]);
-/** @internal */
-export type GetDeploymentEventsDeploymentsResponseBody$Outbound =
-  | GetDeploymentEventsResponseBody2$Outbound
-  | GetDeploymentEventsResponseBody1$Outbound;
 
-/** @internal */
-export const GetDeploymentEventsDeploymentsResponseBody$outboundSchema:
-  z.ZodType<
-    GetDeploymentEventsDeploymentsResponseBody$Outbound,
-    z.ZodTypeDef,
-    GetDeploymentEventsDeploymentsResponseBody
-  > = smartUnion([
-    z.lazy(() => GetDeploymentEventsResponseBody2$outboundSchema),
-    z.lazy(() => GetDeploymentEventsResponseBody1$outboundSchema),
-  ]);
-
-export function getDeploymentEventsDeploymentsResponseBodyToJSON(
-  getDeploymentEventsDeploymentsResponseBody:
-    GetDeploymentEventsDeploymentsResponseBody,
-): string {
-  return JSON.stringify(
-    GetDeploymentEventsDeploymentsResponseBody$outboundSchema.parse(
-      getDeploymentEventsDeploymentsResponseBody,
-    ),
-  );
-}
 export function getDeploymentEventsDeploymentsResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -1449,45 +875,7 @@ export const GetDeploymentEventsResponse$inboundSchema: z.ZodType<
     ),
   ]),
 ]);
-/** @internal */
-export type GetDeploymentEventsResponse$Outbound =
-  | Array<
-    | GetDeploymentEventsResponseBody2$Outbound
-    | GetDeploymentEventsResponseBody1$Outbound
-    | null
-  >
-  | GetDeploymentEventsResponseBodyDeployments2$Outbound
-  | GetDeploymentEventsResponseBodyDeployments1$Outbound;
 
-/** @internal */
-export const GetDeploymentEventsResponse$outboundSchema: z.ZodType<
-  GetDeploymentEventsResponse$Outbound,
-  z.ZodTypeDef,
-  GetDeploymentEventsResponse
-> = smartUnion([
-  z.array(z.nullable(smartUnion([
-    z.lazy(() => GetDeploymentEventsResponseBody2$outboundSchema),
-    z.lazy(() =>
-      GetDeploymentEventsResponseBody1$outboundSchema
-    ),
-  ]))),
-  smartUnion([
-    z.lazy(() => GetDeploymentEventsResponseBodyDeployments2$outboundSchema),
-    z.lazy(() =>
-      GetDeploymentEventsResponseBodyDeployments1$outboundSchema
-    ),
-  ]),
-]);
-
-export function getDeploymentEventsResponseToJSON(
-  getDeploymentEventsResponse: GetDeploymentEventsResponse,
-): string {
-  return JSON.stringify(
-    GetDeploymentEventsResponse$outboundSchema.parse(
-      getDeploymentEventsResponse,
-    ),
-  );
-}
 export function getDeploymentEventsResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<GetDeploymentEventsResponse, SDKValidationError> {

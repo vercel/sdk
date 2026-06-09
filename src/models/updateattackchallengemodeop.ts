@@ -45,15 +45,6 @@ export type UpdateAttackChallengeModeResponseBody = {
 };
 
 /** @internal */
-export const UpdateAttackChallengeModeRequestBody2$inboundSchema: z.ZodType<
-  UpdateAttackChallengeModeRequestBody2,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  projectId: types.string(),
-  attackModeEnabled: types.boolean(),
-});
-/** @internal */
 export type UpdateAttackChallengeModeRequestBody2$Outbound = {
   projectId: string;
   attackModeEnabled: boolean;
@@ -78,27 +69,7 @@ export function updateAttackChallengeModeRequestBody2ToJSON(
     ),
   );
 }
-export function updateAttackChallengeModeRequestBody2FromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateAttackChallengeModeRequestBody2, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      UpdateAttackChallengeModeRequestBody2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateAttackChallengeModeRequestBody2' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateAttackChallengeModeRequestBody1$inboundSchema: z.ZodType<
-  UpdateAttackChallengeModeRequestBody1,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  projectId: types.string(),
-  attackModeEnabled: types.boolean(),
-  attackModeActiveUntil: types.number(),
-});
 /** @internal */
 export type UpdateAttackChallengeModeRequestBody1$Outbound = {
   projectId: string;
@@ -126,26 +97,7 @@ export function updateAttackChallengeModeRequestBody1ToJSON(
     ),
   );
 }
-export function updateAttackChallengeModeRequestBody1FromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateAttackChallengeModeRequestBody1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      UpdateAttackChallengeModeRequestBody1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateAttackChallengeModeRequestBody1' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateAttackChallengeModeRequestBody$inboundSchema: z.ZodType<
-  UpdateAttackChallengeModeRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([
-  z.lazy(() => UpdateAttackChallengeModeRequestBody1$inboundSchema),
-  z.lazy(() => UpdateAttackChallengeModeRequestBody2$inboundSchema),
-]);
 /** @internal */
 export type UpdateAttackChallengeModeRequestBody$Outbound =
   | UpdateAttackChallengeModeRequestBody1$Outbound
@@ -170,34 +122,7 @@ export function updateAttackChallengeModeRequestBodyToJSON(
     ),
   );
 }
-export function updateAttackChallengeModeRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateAttackChallengeModeRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      UpdateAttackChallengeModeRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateAttackChallengeModeRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateAttackChallengeModeRequest$inboundSchema: z.ZodType<
-  UpdateAttackChallengeModeRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-  RequestBody: smartUnion([
-    z.lazy(() => UpdateAttackChallengeModeRequestBody1$inboundSchema),
-    z.lazy(() => UpdateAttackChallengeModeRequestBody2$inboundSchema),
-  ]),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 /** @internal */
 export type UpdateAttackChallengeModeRequest$Outbound = {
   teamId?: string | undefined;
@@ -234,15 +159,6 @@ export function updateAttackChallengeModeRequestToJSON(
     ),
   );
 }
-export function updateAttackChallengeModeRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateAttackChallengeModeRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateAttackChallengeModeRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateAttackChallengeModeRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const UpdateAttackChallengeModeResponseBody$inboundSchema: z.ZodType<
@@ -253,31 +169,7 @@ export const UpdateAttackChallengeModeResponseBody$inboundSchema: z.ZodType<
   attackModeEnabled: types.boolean(),
   attackModeUpdatedAt: types.number(),
 });
-/** @internal */
-export type UpdateAttackChallengeModeResponseBody$Outbound = {
-  attackModeEnabled: boolean;
-  attackModeUpdatedAt: number;
-};
 
-/** @internal */
-export const UpdateAttackChallengeModeResponseBody$outboundSchema: z.ZodType<
-  UpdateAttackChallengeModeResponseBody$Outbound,
-  z.ZodTypeDef,
-  UpdateAttackChallengeModeResponseBody
-> = z.object({
-  attackModeEnabled: z.boolean(),
-  attackModeUpdatedAt: z.number(),
-});
-
-export function updateAttackChallengeModeResponseBodyToJSON(
-  updateAttackChallengeModeResponseBody: UpdateAttackChallengeModeResponseBody,
-): string {
-  return JSON.stringify(
-    UpdateAttackChallengeModeResponseBody$outboundSchema.parse(
-      updateAttackChallengeModeResponseBody,
-    ),
-  );
-}
 export function updateAttackChallengeModeResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateAttackChallengeModeResponseBody, SDKValidationError> {

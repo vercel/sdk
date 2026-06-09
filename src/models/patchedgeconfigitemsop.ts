@@ -98,20 +98,10 @@ export type PatchEdgeConfigItemsResponseBody = {
 };
 
 /** @internal */
-export const PatchEdgeConfigItems1Operation$inboundSchema: z.ZodNativeEnum<
-  typeof PatchEdgeConfigItems1Operation
-> = z.nativeEnum(PatchEdgeConfigItems1Operation);
-/** @internal */
 export const PatchEdgeConfigItems1Operation$outboundSchema: z.ZodNativeEnum<
   typeof PatchEdgeConfigItems1Operation
-> = PatchEdgeConfigItems1Operation$inboundSchema;
+> = z.nativeEnum(PatchEdgeConfigItems1Operation);
 
-/** @internal */
-export const PatchEdgeConfigItems1Description$inboundSchema: z.ZodType<
-  PatchEdgeConfigItems1Description,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([types.string(), z.any()]);
 /** @internal */
 export type PatchEdgeConfigItems1Description$Outbound = string | any;
 
@@ -131,27 +121,7 @@ export function patchEdgeConfigItems1DescriptionToJSON(
     ),
   );
 }
-export function patchEdgeConfigItems1DescriptionFromJSON(
-  jsonString: string,
-): SafeParseResult<PatchEdgeConfigItems1Description, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PatchEdgeConfigItems1Description$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PatchEdgeConfigItems1Description' from JSON`,
-  );
-}
 
-/** @internal */
-export const PatchEdgeConfigItems13$inboundSchema: z.ZodType<
-  PatchEdgeConfigItems13,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  operation: PatchEdgeConfigItems1Operation$inboundSchema,
-  key: types.string(),
-  value: z.nullable(z.any()).optional(),
-  description: z.nullable(smartUnion([types.string(), z.any()])).optional(),
-});
 /** @internal */
 export type PatchEdgeConfigItems13$Outbound = {
   operation: string;
@@ -179,29 +149,11 @@ export function patchEdgeConfigItems13ToJSON(
     PatchEdgeConfigItems13$outboundSchema.parse(patchEdgeConfigItems13),
   );
 }
-export function patchEdgeConfigItems13FromJSON(
-  jsonString: string,
-): SafeParseResult<PatchEdgeConfigItems13, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PatchEdgeConfigItems13$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PatchEdgeConfigItems13' from JSON`,
-  );
-}
 
-/** @internal */
-export const OneOperation$inboundSchema: z.ZodNativeEnum<typeof OneOperation> =
-  z.nativeEnum(OneOperation);
 /** @internal */
 export const OneOperation$outboundSchema: z.ZodNativeEnum<typeof OneOperation> =
-  OneOperation$inboundSchema;
+  z.nativeEnum(OneOperation);
 
-/** @internal */
-export const OneDescription$inboundSchema: z.ZodType<
-  OneDescription,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([types.string(), z.any()]);
 /** @internal */
 export type OneDescription$Outbound = string | any;
 
@@ -215,27 +167,7 @@ export const OneDescription$outboundSchema: z.ZodType<
 export function oneDescriptionToJSON(oneDescription: OneDescription): string {
   return JSON.stringify(OneDescription$outboundSchema.parse(oneDescription));
 }
-export function oneDescriptionFromJSON(
-  jsonString: string,
-): SafeParseResult<OneDescription, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => OneDescription$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'OneDescription' from JSON`,
-  );
-}
 
-/** @internal */
-export const PatchEdgeConfigItems12$inboundSchema: z.ZodType<
-  PatchEdgeConfigItems12,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  operation: OneOperation$inboundSchema,
-  key: types.string(),
-  value: z.nullable(z.any()).optional(),
-  description: z.nullable(smartUnion([types.string(), z.any()])).optional(),
-});
 /** @internal */
 export type PatchEdgeConfigItems12$Outbound = {
   operation: string;
@@ -263,29 +195,11 @@ export function patchEdgeConfigItems12ToJSON(
     PatchEdgeConfigItems12$outboundSchema.parse(patchEdgeConfigItems12),
   );
 }
-export function patchEdgeConfigItems12FromJSON(
-  jsonString: string,
-): SafeParseResult<PatchEdgeConfigItems12, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PatchEdgeConfigItems12$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PatchEdgeConfigItems12' from JSON`,
-  );
-}
 
 /** @internal */
-export const Operation$inboundSchema: z.ZodNativeEnum<typeof Operation> = z
+export const Operation$outboundSchema: z.ZodNativeEnum<typeof Operation> = z
   .nativeEnum(Operation);
-/** @internal */
-export const Operation$outboundSchema: z.ZodNativeEnum<typeof Operation> =
-  Operation$inboundSchema;
 
-/** @internal */
-export const Description$inboundSchema: z.ZodType<
-  Description,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([types.string(), z.any()]);
 /** @internal */
 export type Description$Outbound = string | any;
 
@@ -299,27 +213,7 @@ export const Description$outboundSchema: z.ZodType<
 export function descriptionToJSON(description: Description): string {
   return JSON.stringify(Description$outboundSchema.parse(description));
 }
-export function descriptionFromJSON(
-  jsonString: string,
-): SafeParseResult<Description, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Description$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Description' from JSON`,
-  );
-}
 
-/** @internal */
-export const PatchEdgeConfigItems11$inboundSchema: z.ZodType<
-  PatchEdgeConfigItems11,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  operation: Operation$inboundSchema,
-  key: types.string(),
-  value: z.nullable(z.any()).optional(),
-  description: z.nullable(smartUnion([types.string(), z.any()])).optional(),
-});
 /** @internal */
 export type PatchEdgeConfigItems11$Outbound = {
   operation: string;
@@ -347,26 +241,7 @@ export function patchEdgeConfigItems11ToJSON(
     PatchEdgeConfigItems11$outboundSchema.parse(patchEdgeConfigItems11),
   );
 }
-export function patchEdgeConfigItems11FromJSON(
-  jsonString: string,
-): SafeParseResult<PatchEdgeConfigItems11, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PatchEdgeConfigItems11$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PatchEdgeConfigItems11' from JSON`,
-  );
-}
 
-/** @internal */
-export const PatchEdgeConfigItemsItems1$inboundSchema: z.ZodType<
-  PatchEdgeConfigItemsItems1,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([
-  z.lazy(() => PatchEdgeConfigItems11$inboundSchema),
-  z.lazy(() => PatchEdgeConfigItems12$inboundSchema),
-  z.lazy(() => PatchEdgeConfigItems13$inboundSchema),
-]);
 /** @internal */
 export type PatchEdgeConfigItemsItems1$Outbound =
   | PatchEdgeConfigItems11$Outbound
@@ -391,26 +266,7 @@ export function patchEdgeConfigItemsItems1ToJSON(
     PatchEdgeConfigItemsItems1$outboundSchema.parse(patchEdgeConfigItemsItems1),
   );
 }
-export function patchEdgeConfigItemsItems1FromJSON(
-  jsonString: string,
-): SafeParseResult<PatchEdgeConfigItemsItems1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PatchEdgeConfigItemsItems1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PatchEdgeConfigItemsItems1' from JSON`,
-  );
-}
 
-/** @internal */
-export const PatchEdgeConfigItemsItems$inboundSchema: z.ZodType<
-  PatchEdgeConfigItemsItems,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([
-  z.lazy(() => PatchEdgeConfigItems11$inboundSchema),
-  z.lazy(() => PatchEdgeConfigItems12$inboundSchema),
-  z.lazy(() => PatchEdgeConfigItems13$inboundSchema),
-]);
 /** @internal */
 export type PatchEdgeConfigItemsItems$Outbound =
   | PatchEdgeConfigItems11$Outbound
@@ -435,30 +291,7 @@ export function patchEdgeConfigItemsItemsToJSON(
     PatchEdgeConfigItemsItems$outboundSchema.parse(patchEdgeConfigItemsItems),
   );
 }
-export function patchEdgeConfigItemsItemsFromJSON(
-  jsonString: string,
-): SafeParseResult<PatchEdgeConfigItemsItems, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PatchEdgeConfigItemsItems$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PatchEdgeConfigItemsItems' from JSON`,
-  );
-}
 
-/** @internal */
-export const PatchEdgeConfigItemsRequestBody$inboundSchema: z.ZodType<
-  PatchEdgeConfigItemsRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  items: z.array(
-    smartUnion([
-      z.lazy(() => PatchEdgeConfigItems11$inboundSchema),
-      z.lazy(() => PatchEdgeConfigItems12$inboundSchema),
-      z.lazy(() => PatchEdgeConfigItems13$inboundSchema),
-    ]),
-  ),
-});
 /** @internal */
 export type PatchEdgeConfigItemsRequestBody$Outbound = {
   items: Array<
@@ -492,33 +325,7 @@ export function patchEdgeConfigItemsRequestBodyToJSON(
     ),
   );
 }
-export function patchEdgeConfigItemsRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<PatchEdgeConfigItemsRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PatchEdgeConfigItemsRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PatchEdgeConfigItemsRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const PatchEdgeConfigItemsRequest$inboundSchema: z.ZodType<
-  PatchEdgeConfigItemsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  edgeConfigId: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-  RequestBody: types.optional(
-    z.lazy(() => PatchEdgeConfigItemsRequestBody$inboundSchema),
-  ),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 /** @internal */
 export type PatchEdgeConfigItemsRequest$Outbound = {
   edgeConfigId: string;
@@ -553,15 +360,6 @@ export function patchEdgeConfigItemsRequestToJSON(
     ),
   );
 }
-export function patchEdgeConfigItemsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<PatchEdgeConfigItemsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PatchEdgeConfigItemsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PatchEdgeConfigItemsRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const PatchEdgeConfigItemsResponseBody$inboundSchema: z.ZodType<
@@ -571,29 +369,7 @@ export const PatchEdgeConfigItemsResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   status: types.string(),
 });
-/** @internal */
-export type PatchEdgeConfigItemsResponseBody$Outbound = {
-  status: string;
-};
 
-/** @internal */
-export const PatchEdgeConfigItemsResponseBody$outboundSchema: z.ZodType<
-  PatchEdgeConfigItemsResponseBody$Outbound,
-  z.ZodTypeDef,
-  PatchEdgeConfigItemsResponseBody
-> = z.object({
-  status: z.string(),
-});
-
-export function patchEdgeConfigItemsResponseBodyToJSON(
-  patchEdgeConfigItemsResponseBody: PatchEdgeConfigItemsResponseBody,
-): string {
-  return JSON.stringify(
-    PatchEdgeConfigItemsResponseBody$outboundSchema.parse(
-      patchEdgeConfigItemsResponseBody,
-    ),
-  );
-}
 export function patchEdgeConfigItemsResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<PatchEdgeConfigItemsResponseBody, SDKValidationError> {

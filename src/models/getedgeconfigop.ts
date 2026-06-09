@@ -78,16 +78,6 @@ export type GetEdgeConfigResponseBody = {
 };
 
 /** @internal */
-export const GetEdgeConfigRequest$inboundSchema: z.ZodType<
-  GetEdgeConfigRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  edgeConfigId: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
-/** @internal */
 export type GetEdgeConfigRequest$Outbound = {
   edgeConfigId: string;
   teamId?: string | undefined;
@@ -112,15 +102,6 @@ export function getEdgeConfigRequestToJSON(
     GetEdgeConfigRequest$outboundSchema.parse(getEdgeConfigRequest),
   );
 }
-export function getEdgeConfigRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetEdgeConfigRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetEdgeConfigRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetEdgeConfigRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const GetEdgeConfigPurpose2$inboundSchema: z.ZodType<
@@ -131,29 +112,7 @@ export const GetEdgeConfigPurpose2$inboundSchema: z.ZodType<
   type: types.literal("experimentation"),
   resourceId: types.string(),
 });
-/** @internal */
-export type GetEdgeConfigPurpose2$Outbound = {
-  type: "experimentation";
-  resourceId: string;
-};
 
-/** @internal */
-export const GetEdgeConfigPurpose2$outboundSchema: z.ZodType<
-  GetEdgeConfigPurpose2$Outbound,
-  z.ZodTypeDef,
-  GetEdgeConfigPurpose2
-> = z.object({
-  type: z.literal("experimentation"),
-  resourceId: z.string(),
-});
-
-export function getEdgeConfigPurpose2ToJSON(
-  getEdgeConfigPurpose2: GetEdgeConfigPurpose2,
-): string {
-  return JSON.stringify(
-    GetEdgeConfigPurpose2$outboundSchema.parse(getEdgeConfigPurpose2),
-  );
-}
 export function getEdgeConfigPurpose2FromJSON(
   jsonString: string,
 ): SafeParseResult<GetEdgeConfigPurpose2, SDKValidationError> {
@@ -173,29 +132,7 @@ export const GetEdgeConfigPurpose1$inboundSchema: z.ZodType<
   type: types.literal("flags"),
   projectId: types.string(),
 });
-/** @internal */
-export type GetEdgeConfigPurpose1$Outbound = {
-  type: "flags";
-  projectId: string;
-};
 
-/** @internal */
-export const GetEdgeConfigPurpose1$outboundSchema: z.ZodType<
-  GetEdgeConfigPurpose1$Outbound,
-  z.ZodTypeDef,
-  GetEdgeConfigPurpose1
-> = z.object({
-  type: z.literal("flags"),
-  projectId: z.string(),
-});
-
-export function getEdgeConfigPurpose1ToJSON(
-  getEdgeConfigPurpose1: GetEdgeConfigPurpose1,
-): string {
-  return JSON.stringify(
-    GetEdgeConfigPurpose1$outboundSchema.parse(getEdgeConfigPurpose1),
-  );
-}
 export function getEdgeConfigPurpose1FromJSON(
   jsonString: string,
 ): SafeParseResult<GetEdgeConfigPurpose1, SDKValidationError> {
@@ -215,28 +152,7 @@ export const GetEdgeConfigPurpose$inboundSchema: z.ZodType<
   z.lazy(() => GetEdgeConfigPurpose1$inboundSchema),
   z.lazy(() => GetEdgeConfigPurpose2$inboundSchema),
 ]);
-/** @internal */
-export type GetEdgeConfigPurpose$Outbound =
-  | GetEdgeConfigPurpose1$Outbound
-  | GetEdgeConfigPurpose2$Outbound;
 
-/** @internal */
-export const GetEdgeConfigPurpose$outboundSchema: z.ZodType<
-  GetEdgeConfigPurpose$Outbound,
-  z.ZodTypeDef,
-  GetEdgeConfigPurpose
-> = z.union([
-  z.lazy(() => GetEdgeConfigPurpose1$outboundSchema),
-  z.lazy(() => GetEdgeConfigPurpose2$outboundSchema),
-]);
-
-export function getEdgeConfigPurposeToJSON(
-  getEdgeConfigPurpose: GetEdgeConfigPurpose,
-): string {
-  return JSON.stringify(
-    GetEdgeConfigPurpose$outboundSchema.parse(getEdgeConfigPurpose),
-  );
-}
 export function getEdgeConfigPurposeFromJSON(
   jsonString: string,
 ): SafeParseResult<GetEdgeConfigPurpose, SDKValidationError> {
@@ -257,31 +173,7 @@ export const GetEdgeConfigTransfer$inboundSchema: z.ZodType<
   startedAt: types.number(),
   doneAt: types.nullable(types.number()),
 });
-/** @internal */
-export type GetEdgeConfigTransfer$Outbound = {
-  fromAccountId: string;
-  startedAt: number;
-  doneAt: number | null;
-};
 
-/** @internal */
-export const GetEdgeConfigTransfer$outboundSchema: z.ZodType<
-  GetEdgeConfigTransfer$Outbound,
-  z.ZodTypeDef,
-  GetEdgeConfigTransfer
-> = z.object({
-  fromAccountId: z.string(),
-  startedAt: z.number(),
-  doneAt: z.nullable(z.number()),
-});
-
-export function getEdgeConfigTransferToJSON(
-  getEdgeConfigTransfer: GetEdgeConfigTransfer,
-): string {
-  return JSON.stringify(
-    GetEdgeConfigTransfer$outboundSchema.parse(getEdgeConfigTransfer),
-  );
-}
 export function getEdgeConfigTransferFromJSON(
   jsonString: string,
 ): SafeParseResult<GetEdgeConfigTransfer, SDKValidationError> {
@@ -298,23 +190,7 @@ export const GetEdgeConfigSchema$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-/** @internal */
-export type GetEdgeConfigSchema$Outbound = {};
 
-/** @internal */
-export const GetEdgeConfigSchema$outboundSchema: z.ZodType<
-  GetEdgeConfigSchema$Outbound,
-  z.ZodTypeDef,
-  GetEdgeConfigSchema
-> = z.object({});
-
-export function getEdgeConfigSchemaToJSON(
-  getEdgeConfigSchema: GetEdgeConfigSchema,
-): string {
-  return JSON.stringify(
-    GetEdgeConfigSchema$outboundSchema.parse(getEdgeConfigSchema),
-  );
-}
 export function getEdgeConfigSchemaFromJSON(
   jsonString: string,
 ): SafeParseResult<GetEdgeConfigSchema, SDKValidationError> {
@@ -351,59 +227,7 @@ export const GetEdgeConfigResponseBody$inboundSchema: z.ZodType<
   sizeInBytes: types.number(),
   itemCount: types.number(),
 });
-/** @internal */
-export type GetEdgeConfigResponseBody$Outbound = {
-  id: string;
-  createdAt: number;
-  createdBy?: string | undefined;
-  ownerId: string;
-  slug: string;
-  updatedAt: number;
-  digest: string;
-  purpose?:
-    | GetEdgeConfigPurpose1$Outbound
-    | GetEdgeConfigPurpose2$Outbound
-    | undefined;
-  deletedAt?: number | null | undefined;
-  transfer?: GetEdgeConfigTransfer$Outbound | undefined;
-  schema?: GetEdgeConfigSchema$Outbound | undefined;
-  syncedToDynamoAt?: number | undefined;
-  sizeInBytes: number;
-  itemCount: number;
-};
 
-/** @internal */
-export const GetEdgeConfigResponseBody$outboundSchema: z.ZodType<
-  GetEdgeConfigResponseBody$Outbound,
-  z.ZodTypeDef,
-  GetEdgeConfigResponseBody
-> = z.object({
-  id: z.string(),
-  createdAt: z.number(),
-  createdBy: z.string().optional(),
-  ownerId: z.string(),
-  slug: z.string(),
-  updatedAt: z.number(),
-  digest: z.string(),
-  purpose: z.union([
-    z.lazy(() => GetEdgeConfigPurpose1$outboundSchema),
-    z.lazy(() => GetEdgeConfigPurpose2$outboundSchema),
-  ]).optional(),
-  deletedAt: z.nullable(z.number()).optional(),
-  transfer: z.lazy(() => GetEdgeConfigTransfer$outboundSchema).optional(),
-  schema: z.lazy(() => GetEdgeConfigSchema$outboundSchema).optional(),
-  syncedToDynamoAt: z.number().optional(),
-  sizeInBytes: z.number(),
-  itemCount: z.number(),
-});
-
-export function getEdgeConfigResponseBodyToJSON(
-  getEdgeConfigResponseBody: GetEdgeConfigResponseBody,
-): string {
-  return JSON.stringify(
-    GetEdgeConfigResponseBody$outboundSchema.parse(getEdgeConfigResponseBody),
-  );
-}
 export function getEdgeConfigResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetEdgeConfigResponseBody, SDKValidationError> {

@@ -13,157 +13,82 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
 import {
   UploadProjectAvatarAnalytics,
   UploadProjectAvatarAnalytics$inboundSchema,
-  UploadProjectAvatarAnalytics$Outbound,
-  UploadProjectAvatarAnalytics$outboundSchema,
   UploadProjectAvatarBotFilter,
   UploadProjectAvatarBotFilter$inboundSchema,
-  UploadProjectAvatarBotFilter$Outbound,
-  UploadProjectAvatarBotFilter$outboundSchema,
   UploadProjectAvatarConnectConfigurations,
   UploadProjectAvatarConnectConfigurations$inboundSchema,
-  UploadProjectAvatarConnectConfigurations$Outbound,
-  UploadProjectAvatarConnectConfigurations$outboundSchema,
   UploadProjectAvatarCrons,
   UploadProjectAvatarCrons$inboundSchema,
-  UploadProjectAvatarCrons$Outbound,
-  UploadProjectAvatarCrons$outboundSchema,
   UploadProjectAvatarCustomEnvironments,
   UploadProjectAvatarCustomEnvironments$inboundSchema,
-  UploadProjectAvatarCustomEnvironments$Outbound,
-  UploadProjectAvatarCustomEnvironments$outboundSchema,
   UploadProjectAvatarDataCache,
   UploadProjectAvatarDataCache$inboundSchema,
-  UploadProjectAvatarDataCache$Outbound,
-  UploadProjectAvatarDataCache$outboundSchema,
   UploadProjectAvatarDefaultResourceConfig,
   UploadProjectAvatarDefaultResourceConfig$inboundSchema,
-  UploadProjectAvatarDefaultResourceConfig$Outbound,
-  UploadProjectAvatarDefaultResourceConfig$outboundSchema,
   UploadProjectAvatarDeploymentExpiration,
   UploadProjectAvatarDeploymentExpiration$inboundSchema,
-  UploadProjectAvatarDeploymentExpiration$Outbound,
-  UploadProjectAvatarDeploymentExpiration$outboundSchema,
   UploadProjectAvatarEnv,
   UploadProjectAvatarEnv$inboundSchema,
-  UploadProjectAvatarEnv$Outbound,
-  UploadProjectAvatarEnv$outboundSchema,
   UploadProjectAvatarExpiration,
   UploadProjectAvatarExpiration$inboundSchema,
-  UploadProjectAvatarExpiration$Outbound,
-  UploadProjectAvatarExpiration$outboundSchema,
   UploadProjectAvatarFramework,
   UploadProjectAvatarFramework$inboundSchema,
-  UploadProjectAvatarFramework$outboundSchema,
   UploadProjectAvatarGitComments,
   UploadProjectAvatarGitComments$inboundSchema,
-  UploadProjectAvatarGitComments$Outbound,
-  UploadProjectAvatarGitComments$outboundSchema,
   UploadProjectAvatarGitProviderOptions,
   UploadProjectAvatarGitProviderOptions$inboundSchema,
-  UploadProjectAvatarGitProviderOptions$Outbound,
-  UploadProjectAvatarGitProviderOptions$outboundSchema,
   UploadProjectAvatarIpBuckets,
   UploadProjectAvatarIpBuckets$inboundSchema,
-  UploadProjectAvatarIpBuckets$Outbound,
-  UploadProjectAvatarIpBuckets$outboundSchema,
   UploadProjectAvatarJobs,
   UploadProjectAvatarJobs$inboundSchema,
-  UploadProjectAvatarJobs$Outbound,
-  UploadProjectAvatarJobs$outboundSchema,
   UploadProjectAvatarLastAliasRequest,
   UploadProjectAvatarLastAliasRequest$inboundSchema,
-  UploadProjectAvatarLastAliasRequest$Outbound,
-  UploadProjectAvatarLastAliasRequest$outboundSchema,
   UploadProjectAvatarLastRollbackTarget,
   UploadProjectAvatarLastRollbackTarget$inboundSchema,
-  UploadProjectAvatarLastRollbackTarget$Outbound,
-  UploadProjectAvatarLastRollbackTarget$outboundSchema,
   UploadProjectAvatarLatestDeployments,
   UploadProjectAvatarLatestDeployments$inboundSchema,
-  UploadProjectAvatarLatestDeployments$Outbound,
-  UploadProjectAvatarLatestDeployments$outboundSchema,
   UploadProjectAvatarLink,
   UploadProjectAvatarLink$inboundSchema,
-  UploadProjectAvatarLink$Outbound,
-  UploadProjectAvatarLink$outboundSchema,
   UploadProjectAvatarMicrofrontends,
   UploadProjectAvatarMicrofrontends$inboundSchema,
-  UploadProjectAvatarMicrofrontends$Outbound,
-  UploadProjectAvatarMicrofrontends$outboundSchema,
   UploadProjectAvatarNodeVersion,
   UploadProjectAvatarNodeVersion$inboundSchema,
-  UploadProjectAvatarNodeVersion$outboundSchema,
   UploadProjectAvatarOptionsAllowlist,
   UploadProjectAvatarOptionsAllowlist$inboundSchema,
-  UploadProjectAvatarOptionsAllowlist$Outbound,
-  UploadProjectAvatarOptionsAllowlist$outboundSchema,
   UploadProjectAvatarPassport,
   UploadProjectAvatarPassport$inboundSchema,
-  UploadProjectAvatarPassport$Outbound,
-  UploadProjectAvatarPassport$outboundSchema,
   UploadProjectAvatarPasswordProtection,
   UploadProjectAvatarPasswordProtection$inboundSchema,
-  UploadProjectAvatarPasswordProtection$Outbound,
-  UploadProjectAvatarPasswordProtection$outboundSchema,
   UploadProjectAvatarPermissions,
   UploadProjectAvatarPermissions$inboundSchema,
-  UploadProjectAvatarPermissions$Outbound,
-  UploadProjectAvatarPermissions$outboundSchema,
   UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodySecurityAction,
   UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodySecurityAction$inboundSchema,
-  UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodySecurityAction$outboundSchema,
   UploadProjectAvatarProtectionBypass,
   UploadProjectAvatarProtectionBypass$inboundSchema,
-  UploadProjectAvatarProtectionBypass$Outbound,
-  UploadProjectAvatarProtectionBypass$outboundSchema,
   UploadProjectAvatarResourceConfig,
   UploadProjectAvatarResourceConfig$inboundSchema,
-  UploadProjectAvatarResourceConfig$Outbound,
-  UploadProjectAvatarResourceConfig$outboundSchema,
   UploadProjectAvatarRollbackDescription,
   UploadProjectAvatarRollbackDescription$inboundSchema,
-  UploadProjectAvatarRollbackDescription$Outbound,
-  UploadProjectAvatarRollbackDescription$outboundSchema,
   UploadProjectAvatarRollingRelease,
   UploadProjectAvatarRollingRelease$inboundSchema,
-  UploadProjectAvatarRollingRelease$Outbound,
-  UploadProjectAvatarRollingRelease$outboundSchema,
   UploadProjectAvatarServices,
   UploadProjectAvatarServices$inboundSchema,
-  UploadProjectAvatarServices$Outbound,
-  UploadProjectAvatarServices$outboundSchema,
   UploadProjectAvatarSpeedInsights,
   UploadProjectAvatarSpeedInsights$inboundSchema,
-  UploadProjectAvatarSpeedInsights$Outbound,
-  UploadProjectAvatarSpeedInsights$outboundSchema,
   UploadProjectAvatarSsoProtection,
   UploadProjectAvatarSsoProtection$inboundSchema,
-  UploadProjectAvatarSsoProtection$Outbound,
-  UploadProjectAvatarSsoProtection$outboundSchema,
   UploadProjectAvatarStaticIps,
   UploadProjectAvatarStaticIps$inboundSchema,
-  UploadProjectAvatarStaticIps$Outbound,
-  UploadProjectAvatarStaticIps$outboundSchema,
   UploadProjectAvatarTargets,
   UploadProjectAvatarTargets$inboundSchema,
-  UploadProjectAvatarTargets$Outbound,
-  UploadProjectAvatarTargets$outboundSchema,
   UploadProjectAvatarTrustedIps,
   UploadProjectAvatarTrustedIps$inboundSchema,
-  UploadProjectAvatarTrustedIps$Outbound,
-  UploadProjectAvatarTrustedIps$outboundSchema,
   UploadProjectAvatarTrustedSources,
   UploadProjectAvatarTrustedSources$inboundSchema,
-  UploadProjectAvatarTrustedSources$Outbound,
-  UploadProjectAvatarTrustedSources$outboundSchema,
   UploadProjectAvatarVercelRuleset,
   UploadProjectAvatarVercelRuleset$inboundSchema,
-  UploadProjectAvatarVercelRuleset$Outbound,
-  UploadProjectAvatarVercelRuleset$outboundSchema,
   UploadProjectAvatarWebAnalytics,
   UploadProjectAvatarWebAnalytics$inboundSchema,
-  UploadProjectAvatarWebAnalytics$Outbound,
-  UploadProjectAvatarWebAnalytics$outboundSchema,
 } from "./uploadprojectavatarprojectsresponse200applicationjsonresponsebodysecurityaction.js";
 
 export type UploadProjectAvatarAiBots = {
@@ -906,31 +831,7 @@ export const UploadProjectAvatarAiBots$inboundSchema: z.ZodType<
     UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodySecurityAction$inboundSchema,
   ),
 });
-/** @internal */
-export type UploadProjectAvatarAiBots$Outbound = {
-  active: boolean;
-  action?: string | undefined;
-};
 
-/** @internal */
-export const UploadProjectAvatarAiBots$outboundSchema: z.ZodType<
-  UploadProjectAvatarAiBots$Outbound,
-  z.ZodTypeDef,
-  UploadProjectAvatarAiBots
-> = z.object({
-  active: z.boolean(),
-  action:
-    UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodySecurityAction$outboundSchema
-      .optional(),
-});
-
-export function uploadProjectAvatarAiBotsToJSON(
-  uploadProjectAvatarAiBots: UploadProjectAvatarAiBots,
-): string {
-  return JSON.stringify(
-    UploadProjectAvatarAiBots$outboundSchema.parse(uploadProjectAvatarAiBots),
-  );
-}
 export function uploadProjectAvatarAiBotsFromJSON(
   jsonString: string,
 ): SafeParseResult<UploadProjectAvatarAiBots, SDKValidationError> {
@@ -945,10 +846,6 @@ export function uploadProjectAvatarAiBotsFromJSON(
 export const UploadProjectAvatarProjectsResponse200Action$inboundSchema:
   z.ZodNativeEnum<typeof UploadProjectAvatarProjectsResponse200Action> = z
     .nativeEnum(UploadProjectAvatarProjectsResponse200Action);
-/** @internal */
-export const UploadProjectAvatarProjectsResponse200Action$outboundSchema:
-  z.ZodNativeEnum<typeof UploadProjectAvatarProjectsResponse200Action> =
-    UploadProjectAvatarProjectsResponse200Action$inboundSchema;
 
 /** @internal */
 export const UploadProjectAvatarOwasp$inboundSchema: z.ZodType<
@@ -961,30 +858,7 @@ export const UploadProjectAvatarOwasp$inboundSchema: z.ZodType<
     UploadProjectAvatarProjectsResponse200Action$inboundSchema,
   ),
 });
-/** @internal */
-export type UploadProjectAvatarOwasp$Outbound = {
-  active: boolean;
-  action?: string | undefined;
-};
 
-/** @internal */
-export const UploadProjectAvatarOwasp$outboundSchema: z.ZodType<
-  UploadProjectAvatarOwasp$Outbound,
-  z.ZodTypeDef,
-  UploadProjectAvatarOwasp
-> = z.object({
-  active: z.boolean(),
-  action: UploadProjectAvatarProjectsResponse200Action$outboundSchema
-    .optional(),
-});
-
-export function uploadProjectAvatarOwaspToJSON(
-  uploadProjectAvatarOwasp: UploadProjectAvatarOwasp,
-): string {
-  return JSON.stringify(
-    UploadProjectAvatarOwasp$outboundSchema.parse(uploadProjectAvatarOwasp),
-  );
-}
 export function uploadProjectAvatarOwaspFromJSON(
   jsonString: string,
 ): SafeParseResult<UploadProjectAvatarOwasp, SDKValidationError> {
@@ -1012,41 +886,7 @@ export const UploadProjectAvatarManagedRules$inboundSchema: z.ZodType<
     "ai_bots": "aiBots",
   });
 });
-/** @internal */
-export type UploadProjectAvatarManagedRules$Outbound = {
-  vercel_ruleset: UploadProjectAvatarVercelRuleset$Outbound;
-  bot_filter: UploadProjectAvatarBotFilter$Outbound;
-  ai_bots: UploadProjectAvatarAiBots$Outbound;
-  owasp: UploadProjectAvatarOwasp$Outbound;
-};
 
-/** @internal */
-export const UploadProjectAvatarManagedRules$outboundSchema: z.ZodType<
-  UploadProjectAvatarManagedRules$Outbound,
-  z.ZodTypeDef,
-  UploadProjectAvatarManagedRules
-> = z.object({
-  vercelRuleset: UploadProjectAvatarVercelRuleset$outboundSchema,
-  botFilter: UploadProjectAvatarBotFilter$outboundSchema,
-  aiBots: z.lazy(() => UploadProjectAvatarAiBots$outboundSchema),
-  owasp: z.lazy(() => UploadProjectAvatarOwasp$outboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    vercelRuleset: "vercel_ruleset",
-    botFilter: "bot_filter",
-    aiBots: "ai_bots",
-  });
-});
-
-export function uploadProjectAvatarManagedRulesToJSON(
-  uploadProjectAvatarManagedRules: UploadProjectAvatarManagedRules,
-): string {
-  return JSON.stringify(
-    UploadProjectAvatarManagedRules$outboundSchema.parse(
-      uploadProjectAvatarManagedRules,
-    ),
-  );
-}
 export function uploadProjectAvatarManagedRulesFromJSON(
   jsonString: string,
 ): SafeParseResult<UploadProjectAvatarManagedRules, SDKValidationError> {
@@ -1061,10 +901,6 @@ export function uploadProjectAvatarManagedRulesFromJSON(
 export const UploadProjectAvatarLogHeaders2$inboundSchema: z.ZodNativeEnum<
   typeof UploadProjectAvatarLogHeaders2
 > = z.nativeEnum(UploadProjectAvatarLogHeaders2);
-/** @internal */
-export const UploadProjectAvatarLogHeaders2$outboundSchema: z.ZodNativeEnum<
-  typeof UploadProjectAvatarLogHeaders2
-> = UploadProjectAvatarLogHeaders2$inboundSchema;
 
 /** @internal */
 export const UploadProjectAvatarLogHeaders$inboundSchema: z.ZodType<
@@ -1075,28 +911,7 @@ export const UploadProjectAvatarLogHeaders$inboundSchema: z.ZodType<
   z.array(types.string()),
   UploadProjectAvatarLogHeaders2$inboundSchema,
 ]);
-/** @internal */
-export type UploadProjectAvatarLogHeaders$Outbound = Array<string> | string;
 
-/** @internal */
-export const UploadProjectAvatarLogHeaders$outboundSchema: z.ZodType<
-  UploadProjectAvatarLogHeaders$Outbound,
-  z.ZodTypeDef,
-  UploadProjectAvatarLogHeaders
-> = smartUnion([
-  z.array(z.string()),
-  UploadProjectAvatarLogHeaders2$outboundSchema,
-]);
-
-export function uploadProjectAvatarLogHeadersToJSON(
-  uploadProjectAvatarLogHeaders: UploadProjectAvatarLogHeaders,
-): string {
-  return JSON.stringify(
-    UploadProjectAvatarLogHeaders$outboundSchema.parse(
-      uploadProjectAvatarLogHeaders,
-    ),
-  );
-}
 export function uploadProjectAvatarLogHeadersFromJSON(
   jsonString: string,
 ): SafeParseResult<UploadProjectAvatarLogHeaders, SDKValidationError> {
@@ -1116,32 +931,7 @@ export const UploadProjectAvatarSecurityPlusMetadata$inboundSchema: z.ZodType<
   updatedAt: types.number(),
   firstEnabledAt: types.optional(types.number()),
 });
-/** @internal */
-export type UploadProjectAvatarSecurityPlusMetadata$Outbound = {
-  updatedAt: number;
-  firstEnabledAt?: number | undefined;
-};
 
-/** @internal */
-export const UploadProjectAvatarSecurityPlusMetadata$outboundSchema: z.ZodType<
-  UploadProjectAvatarSecurityPlusMetadata$Outbound,
-  z.ZodTypeDef,
-  UploadProjectAvatarSecurityPlusMetadata
-> = z.object({
-  updatedAt: z.number(),
-  firstEnabledAt: z.number().optional(),
-});
-
-export function uploadProjectAvatarSecurityPlusMetadataToJSON(
-  uploadProjectAvatarSecurityPlusMetadata:
-    UploadProjectAvatarSecurityPlusMetadata,
-): string {
-  return JSON.stringify(
-    UploadProjectAvatarSecurityPlusMetadata$outboundSchema.parse(
-      uploadProjectAvatarSecurityPlusMetadata,
-    ),
-  );
-}
 export function uploadProjectAvatarSecurityPlusMetadataFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -1194,72 +984,7 @@ export const UploadProjectAvatarSecurity$inboundSchema: z.ZodType<
     "log_headers": "logHeaders",
   });
 });
-/** @internal */
-export type UploadProjectAvatarSecurity$Outbound = {
-  attackModeEnabled?: boolean | undefined;
-  attackModeUpdatedAt?: number | undefined;
-  firewallEnabled?: boolean | undefined;
-  firewallUpdatedAt?: number | undefined;
-  attackModeActiveUntil?: number | null | undefined;
-  firewallConfigVersion?: number | undefined;
-  firewallSeawallEnabled?: boolean | undefined;
-  ja3Enabled?: boolean | undefined;
-  ja4Enabled?: boolean | undefined;
-  firewallBypassIps?: Array<string> | undefined;
-  managedRules?: UploadProjectAvatarManagedRules$Outbound | null | undefined;
-  botIdEnabled?: boolean | undefined;
-  log_headers?: Array<string> | string | undefined;
-  securityPlus?: boolean | undefined;
-  securityPlusMetadata?:
-    | UploadProjectAvatarSecurityPlusMetadata$Outbound
-    | undefined;
-  pageIntegrityEnabled?: boolean | undefined;
-};
 
-/** @internal */
-export const UploadProjectAvatarSecurity$outboundSchema: z.ZodType<
-  UploadProjectAvatarSecurity$Outbound,
-  z.ZodTypeDef,
-  UploadProjectAvatarSecurity
-> = z.object({
-  attackModeEnabled: z.boolean().optional(),
-  attackModeUpdatedAt: z.number().optional(),
-  firewallEnabled: z.boolean().optional(),
-  firewallUpdatedAt: z.number().optional(),
-  attackModeActiveUntil: z.nullable(z.number()).optional(),
-  firewallConfigVersion: z.number().optional(),
-  firewallSeawallEnabled: z.boolean().optional(),
-  ja3Enabled: z.boolean().optional(),
-  ja4Enabled: z.boolean().optional(),
-  firewallBypassIps: z.array(z.string()).optional(),
-  managedRules: z.nullable(
-    z.lazy(() => UploadProjectAvatarManagedRules$outboundSchema),
-  ).optional(),
-  botIdEnabled: z.boolean().optional(),
-  logHeaders: smartUnion([
-    z.array(z.string()),
-    UploadProjectAvatarLogHeaders2$outboundSchema,
-  ]).optional(),
-  securityPlus: z.boolean().optional(),
-  securityPlusMetadata: z.lazy(() =>
-    UploadProjectAvatarSecurityPlusMetadata$outboundSchema
-  ).optional(),
-  pageIntegrityEnabled: z.boolean().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    logHeaders: "log_headers",
-  });
-});
-
-export function uploadProjectAvatarSecurityToJSON(
-  uploadProjectAvatarSecurity: UploadProjectAvatarSecurity,
-): string {
-  return JSON.stringify(
-    UploadProjectAvatarSecurity$outboundSchema.parse(
-      uploadProjectAvatarSecurity,
-    ),
-  );
-}
 export function uploadProjectAvatarSecurityFromJSON(
   jsonString: string,
 ): SafeParseResult<UploadProjectAvatarSecurity, SDKValidationError> {
@@ -1274,10 +999,6 @@ export function uploadProjectAvatarSecurityFromJSON(
 export const UploadProjectAvatarIssuerMode$inboundSchema: z.ZodNativeEnum<
   typeof UploadProjectAvatarIssuerMode
 > = z.nativeEnum(UploadProjectAvatarIssuerMode);
-/** @internal */
-export const UploadProjectAvatarIssuerMode$outboundSchema: z.ZodNativeEnum<
-  typeof UploadProjectAvatarIssuerMode
-> = UploadProjectAvatarIssuerMode$inboundSchema;
 
 /** @internal */
 export const UploadProjectAvatarOidcTokenConfig$inboundSchema: z.ZodType<
@@ -1288,31 +1009,7 @@ export const UploadProjectAvatarOidcTokenConfig$inboundSchema: z.ZodType<
   enabled: types.optional(types.boolean()),
   issuerMode: types.optional(UploadProjectAvatarIssuerMode$inboundSchema),
 });
-/** @internal */
-export type UploadProjectAvatarOidcTokenConfig$Outbound = {
-  enabled?: boolean | undefined;
-  issuerMode?: string | undefined;
-};
 
-/** @internal */
-export const UploadProjectAvatarOidcTokenConfig$outboundSchema: z.ZodType<
-  UploadProjectAvatarOidcTokenConfig$Outbound,
-  z.ZodTypeDef,
-  UploadProjectAvatarOidcTokenConfig
-> = z.object({
-  enabled: z.boolean().optional(),
-  issuerMode: UploadProjectAvatarIssuerMode$outboundSchema.optional(),
-});
-
-export function uploadProjectAvatarOidcTokenConfigToJSON(
-  uploadProjectAvatarOidcTokenConfig: UploadProjectAvatarOidcTokenConfig,
-): string {
-  return JSON.stringify(
-    UploadProjectAvatarOidcTokenConfig$outboundSchema.parse(
-      uploadProjectAvatarOidcTokenConfig,
-    ),
-  );
-}
 export function uploadProjectAvatarOidcTokenConfigFromJSON(
   jsonString: string,
 ): SafeParseResult<UploadProjectAvatarOidcTokenConfig, SDKValidationError> {
@@ -1334,33 +1031,7 @@ export const UploadProjectAvatarSources2$inboundSchema: z.ZodType<
   namespace: types.string(),
   project: types.optional(types.string()),
 });
-/** @internal */
-export type UploadProjectAvatarSources2$Outbound = {
-  provider: "gitlab";
-  namespace: string;
-  project?: string | undefined;
-};
 
-/** @internal */
-export const UploadProjectAvatarSources2$outboundSchema: z.ZodType<
-  UploadProjectAvatarSources2$Outbound,
-  z.ZodTypeDef,
-  UploadProjectAvatarSources2
-> = z.object({
-  provider: z.literal("gitlab"),
-  namespace: z.string(),
-  project: z.string().optional(),
-});
-
-export function uploadProjectAvatarSources2ToJSON(
-  uploadProjectAvatarSources2: UploadProjectAvatarSources2,
-): string {
-  return JSON.stringify(
-    UploadProjectAvatarSources2$outboundSchema.parse(
-      uploadProjectAvatarSources2,
-    ),
-  );
-}
 export function uploadProjectAvatarSources2FromJSON(
   jsonString: string,
 ): SafeParseResult<UploadProjectAvatarSources2, SDKValidationError> {
@@ -1375,10 +1046,6 @@ export function uploadProjectAvatarSources2FromJSON(
 export const UploadProjectAvatarSourcesProvider$inboundSchema: z.ZodNativeEnum<
   typeof UploadProjectAvatarSourcesProvider
 > = z.nativeEnum(UploadProjectAvatarSourcesProvider);
-/** @internal */
-export const UploadProjectAvatarSourcesProvider$outboundSchema: z.ZodNativeEnum<
-  typeof UploadProjectAvatarSourcesProvider
-> = UploadProjectAvatarSourcesProvider$inboundSchema;
 
 /** @internal */
 export const UploadProjectAvatarSources1$inboundSchema: z.ZodType<
@@ -1390,33 +1057,7 @@ export const UploadProjectAvatarSources1$inboundSchema: z.ZodType<
   org: types.string(),
   repo: types.optional(types.string()),
 });
-/** @internal */
-export type UploadProjectAvatarSources1$Outbound = {
-  provider: string;
-  org: string;
-  repo?: string | undefined;
-};
 
-/** @internal */
-export const UploadProjectAvatarSources1$outboundSchema: z.ZodType<
-  UploadProjectAvatarSources1$Outbound,
-  z.ZodTypeDef,
-  UploadProjectAvatarSources1
-> = z.object({
-  provider: UploadProjectAvatarSourcesProvider$outboundSchema,
-  org: z.string(),
-  repo: z.string().optional(),
-});
-
-export function uploadProjectAvatarSources1ToJSON(
-  uploadProjectAvatarSources1: UploadProjectAvatarSources1,
-): string {
-  return JSON.stringify(
-    UploadProjectAvatarSources1$outboundSchema.parse(
-      uploadProjectAvatarSources1,
-    ),
-  );
-}
 export function uploadProjectAvatarSources1FromJSON(
   jsonString: string,
 ): SafeParseResult<UploadProjectAvatarSources1, SDKValidationError> {
@@ -1441,34 +1082,7 @@ export const UploadProjectAvatarSources$inboundSchema: z.ZodType<
   ),
   z.lazy(() => UploadProjectAvatarSources2$inboundSchema),
 ]);
-/** @internal */
-export type UploadProjectAvatarSources$Outbound =
-  | (UploadProjectAvatarSources1$Outbound & { provider: "bitbucket" })
-  | (UploadProjectAvatarSources1$Outbound & { provider: "github" })
-  | UploadProjectAvatarSources2$Outbound;
 
-/** @internal */
-export const UploadProjectAvatarSources$outboundSchema: z.ZodType<
-  UploadProjectAvatarSources$Outbound,
-  z.ZodTypeDef,
-  UploadProjectAvatarSources
-> = z.union([
-  z.lazy(() => UploadProjectAvatarSources1$outboundSchema).and(
-    z.object({ provider: z.literal("bitbucket") }),
-  ),
-  z.lazy(() => UploadProjectAvatarSources1$outboundSchema).and(
-    z.object({ provider: z.literal("github") }),
-  ),
-  z.lazy(() => UploadProjectAvatarSources2$outboundSchema),
-]);
-
-export function uploadProjectAvatarSourcesToJSON(
-  uploadProjectAvatarSources: UploadProjectAvatarSources,
-): string {
-  return JSON.stringify(
-    UploadProjectAvatarSources$outboundSchema.parse(uploadProjectAvatarSources),
-  );
-}
 export function uploadProjectAvatarSourcesFromJSON(
   jsonString: string,
 ): SafeParseResult<UploadProjectAvatarSources, SDKValidationError> {
@@ -1488,31 +1102,7 @@ export const UploadProjectAvatarEnvironments2$inboundSchema: z.ZodType<
   type: types.literal("custom"),
   environmentId: types.string(),
 });
-/** @internal */
-export type UploadProjectAvatarEnvironments2$Outbound = {
-  type: "custom";
-  environmentId: string;
-};
 
-/** @internal */
-export const UploadProjectAvatarEnvironments2$outboundSchema: z.ZodType<
-  UploadProjectAvatarEnvironments2$Outbound,
-  z.ZodTypeDef,
-  UploadProjectAvatarEnvironments2
-> = z.object({
-  type: z.literal("custom"),
-  environmentId: z.string(),
-});
-
-export function uploadProjectAvatarEnvironments2ToJSON(
-  uploadProjectAvatarEnvironments2: UploadProjectAvatarEnvironments2,
-): string {
-  return JSON.stringify(
-    UploadProjectAvatarEnvironments2$outboundSchema.parse(
-      uploadProjectAvatarEnvironments2,
-    ),
-  );
-}
 export function uploadProjectAvatarEnvironments2FromJSON(
   jsonString: string,
 ): SafeParseResult<UploadProjectAvatarEnvironments2, SDKValidationError> {
@@ -1528,10 +1118,6 @@ export const UploadProjectAvatarEnvironmentsTarget$inboundSchema:
   z.ZodNativeEnum<typeof UploadProjectAvatarEnvironmentsTarget> = z.nativeEnum(
     UploadProjectAvatarEnvironmentsTarget,
   );
-/** @internal */
-export const UploadProjectAvatarEnvironmentsTarget$outboundSchema:
-  z.ZodNativeEnum<typeof UploadProjectAvatarEnvironmentsTarget> =
-    UploadProjectAvatarEnvironmentsTarget$inboundSchema;
 
 /** @internal */
 export const UploadProjectAvatarEnvironments1$inboundSchema: z.ZodType<
@@ -1542,31 +1128,7 @@ export const UploadProjectAvatarEnvironments1$inboundSchema: z.ZodType<
   type: types.literal("system"),
   target: UploadProjectAvatarEnvironmentsTarget$inboundSchema,
 });
-/** @internal */
-export type UploadProjectAvatarEnvironments1$Outbound = {
-  type: "system";
-  target: string;
-};
 
-/** @internal */
-export const UploadProjectAvatarEnvironments1$outboundSchema: z.ZodType<
-  UploadProjectAvatarEnvironments1$Outbound,
-  z.ZodTypeDef,
-  UploadProjectAvatarEnvironments1
-> = z.object({
-  type: z.literal("system"),
-  target: UploadProjectAvatarEnvironmentsTarget$outboundSchema,
-});
-
-export function uploadProjectAvatarEnvironments1ToJSON(
-  uploadProjectAvatarEnvironments1: UploadProjectAvatarEnvironments1,
-): string {
-  return JSON.stringify(
-    UploadProjectAvatarEnvironments1$outboundSchema.parse(
-      uploadProjectAvatarEnvironments1,
-    ),
-  );
-}
 export function uploadProjectAvatarEnvironments1FromJSON(
   jsonString: string,
 ): SafeParseResult<UploadProjectAvatarEnvironments1, SDKValidationError> {
@@ -1586,30 +1148,7 @@ export const UploadProjectAvatarEnvironments$inboundSchema: z.ZodType<
   z.lazy(() => UploadProjectAvatarEnvironments1$inboundSchema),
   z.lazy(() => UploadProjectAvatarEnvironments2$inboundSchema),
 ]);
-/** @internal */
-export type UploadProjectAvatarEnvironments$Outbound =
-  | UploadProjectAvatarEnvironments1$Outbound
-  | UploadProjectAvatarEnvironments2$Outbound;
 
-/** @internal */
-export const UploadProjectAvatarEnvironments$outboundSchema: z.ZodType<
-  UploadProjectAvatarEnvironments$Outbound,
-  z.ZodTypeDef,
-  UploadProjectAvatarEnvironments
-> = z.union([
-  z.lazy(() => UploadProjectAvatarEnvironments1$outboundSchema),
-  z.lazy(() => UploadProjectAvatarEnvironments2$outboundSchema),
-]);
-
-export function uploadProjectAvatarEnvironmentsToJSON(
-  uploadProjectAvatarEnvironments: UploadProjectAvatarEnvironments,
-): string {
-  return JSON.stringify(
-    UploadProjectAvatarEnvironments$outboundSchema.parse(
-      uploadProjectAvatarEnvironments,
-    ),
-  );
-}
 export function uploadProjectAvatarEnvironmentsFromJSON(
   jsonString: string,
 ): SafeParseResult<UploadProjectAvatarEnvironments, SDKValidationError> {
@@ -1645,55 +1184,7 @@ export const UploadProjectAvatarGitSources$inboundSchema: z.ZodType<
     ]),
   ),
 });
-/** @internal */
-export type UploadProjectAvatarGitSources$Outbound = {
-  sources: Array<
-    | (UploadProjectAvatarSources1$Outbound & { provider: "bitbucket" })
-    | (UploadProjectAvatarSources1$Outbound & { provider: "github" })
-    | UploadProjectAvatarSources2$Outbound
-  >;
-  enabled: boolean;
-  environments: Array<
-    | UploadProjectAvatarEnvironments1$Outbound
-    | UploadProjectAvatarEnvironments2$Outbound
-  >;
-};
 
-/** @internal */
-export const UploadProjectAvatarGitSources$outboundSchema: z.ZodType<
-  UploadProjectAvatarGitSources$Outbound,
-  z.ZodTypeDef,
-  UploadProjectAvatarGitSources
-> = z.object({
-  sources: z.array(
-    z.union([
-      z.lazy(() => UploadProjectAvatarSources1$outboundSchema).and(
-        z.object({ provider: z.literal("bitbucket") }),
-      ),
-      z.lazy(() => UploadProjectAvatarSources1$outboundSchema).and(
-        z.object({ provider: z.literal("github") }),
-      ),
-      z.lazy(() => UploadProjectAvatarSources2$outboundSchema),
-    ]),
-  ),
-  enabled: z.boolean(),
-  environments: z.array(
-    z.union([
-      z.lazy(() => UploadProjectAvatarEnvironments1$outboundSchema),
-      z.lazy(() => UploadProjectAvatarEnvironments2$outboundSchema),
-    ]),
-  ),
-});
-
-export function uploadProjectAvatarGitSourcesToJSON(
-  uploadProjectAvatarGitSources: UploadProjectAvatarGitSources,
-): string {
-  return JSON.stringify(
-    UploadProjectAvatarGitSources$outboundSchema.parse(
-      uploadProjectAvatarGitSources,
-    ),
-  );
-}
 export function uploadProjectAvatarGitSourcesFromJSON(
   jsonString: string,
 ): SafeParseResult<UploadProjectAvatarGitSources, SDKValidationError> {
@@ -1708,10 +1199,6 @@ export function uploadProjectAvatarGitSourcesFromJSON(
 export const UploadProjectAvatarProjectsSources$inboundSchema: z.ZodNativeEnum<
   typeof UploadProjectAvatarProjectsSources
 > = z.nativeEnum(UploadProjectAvatarProjectsSources);
-/** @internal */
-export const UploadProjectAvatarProjectsSources$outboundSchema: z.ZodNativeEnum<
-  typeof UploadProjectAvatarProjectsSources
-> = UploadProjectAvatarProjectsSources$inboundSchema;
 
 /** @internal */
 export const UploadProjectAvatarEnvironmentsProjects2$inboundSchema: z.ZodType<
@@ -1722,32 +1209,7 @@ export const UploadProjectAvatarEnvironmentsProjects2$inboundSchema: z.ZodType<
   type: types.literal("custom"),
   environmentId: types.string(),
 });
-/** @internal */
-export type UploadProjectAvatarEnvironmentsProjects2$Outbound = {
-  type: "custom";
-  environmentId: string;
-};
 
-/** @internal */
-export const UploadProjectAvatarEnvironmentsProjects2$outboundSchema: z.ZodType<
-  UploadProjectAvatarEnvironmentsProjects2$Outbound,
-  z.ZodTypeDef,
-  UploadProjectAvatarEnvironmentsProjects2
-> = z.object({
-  type: z.literal("custom"),
-  environmentId: z.string(),
-});
-
-export function uploadProjectAvatarEnvironmentsProjects2ToJSON(
-  uploadProjectAvatarEnvironmentsProjects2:
-    UploadProjectAvatarEnvironmentsProjects2,
-): string {
-  return JSON.stringify(
-    UploadProjectAvatarEnvironmentsProjects2$outboundSchema.parse(
-      uploadProjectAvatarEnvironmentsProjects2,
-    ),
-  );
-}
 export function uploadProjectAvatarEnvironmentsProjects2FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -1768,10 +1230,6 @@ export function uploadProjectAvatarEnvironmentsProjects2FromJSON(
 export const UploadProjectAvatarEnvironmentsProjectsTarget$inboundSchema:
   z.ZodNativeEnum<typeof UploadProjectAvatarEnvironmentsProjectsTarget> = z
     .nativeEnum(UploadProjectAvatarEnvironmentsProjectsTarget);
-/** @internal */
-export const UploadProjectAvatarEnvironmentsProjectsTarget$outboundSchema:
-  z.ZodNativeEnum<typeof UploadProjectAvatarEnvironmentsProjectsTarget> =
-    UploadProjectAvatarEnvironmentsProjectsTarget$inboundSchema;
 
 /** @internal */
 export const UploadProjectAvatarEnvironmentsProjects1$inboundSchema: z.ZodType<
@@ -1782,32 +1240,7 @@ export const UploadProjectAvatarEnvironmentsProjects1$inboundSchema: z.ZodType<
   type: types.literal("system"),
   target: UploadProjectAvatarEnvironmentsProjectsTarget$inboundSchema,
 });
-/** @internal */
-export type UploadProjectAvatarEnvironmentsProjects1$Outbound = {
-  type: "system";
-  target: string;
-};
 
-/** @internal */
-export const UploadProjectAvatarEnvironmentsProjects1$outboundSchema: z.ZodType<
-  UploadProjectAvatarEnvironmentsProjects1$Outbound,
-  z.ZodTypeDef,
-  UploadProjectAvatarEnvironmentsProjects1
-> = z.object({
-  type: z.literal("system"),
-  target: UploadProjectAvatarEnvironmentsProjectsTarget$outboundSchema,
-});
-
-export function uploadProjectAvatarEnvironmentsProjects1ToJSON(
-  uploadProjectAvatarEnvironmentsProjects1:
-    UploadProjectAvatarEnvironmentsProjects1,
-): string {
-  return JSON.stringify(
-    UploadProjectAvatarEnvironmentsProjects1$outboundSchema.parse(
-      uploadProjectAvatarEnvironmentsProjects1,
-    ),
-  );
-}
 export function uploadProjectAvatarEnvironmentsProjects1FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -1833,31 +1266,7 @@ export const UploadProjectAvatarProjectsEnvironments$inboundSchema: z.ZodType<
   z.lazy(() => UploadProjectAvatarEnvironmentsProjects1$inboundSchema),
   z.lazy(() => UploadProjectAvatarEnvironmentsProjects2$inboundSchema),
 ]);
-/** @internal */
-export type UploadProjectAvatarProjectsEnvironments$Outbound =
-  | UploadProjectAvatarEnvironmentsProjects1$Outbound
-  | UploadProjectAvatarEnvironmentsProjects2$Outbound;
 
-/** @internal */
-export const UploadProjectAvatarProjectsEnvironments$outboundSchema: z.ZodType<
-  UploadProjectAvatarProjectsEnvironments$Outbound,
-  z.ZodTypeDef,
-  UploadProjectAvatarProjectsEnvironments
-> = z.union([
-  z.lazy(() => UploadProjectAvatarEnvironmentsProjects1$outboundSchema),
-  z.lazy(() => UploadProjectAvatarEnvironmentsProjects2$outboundSchema),
-]);
-
-export function uploadProjectAvatarProjectsEnvironmentsToJSON(
-  uploadProjectAvatarProjectsEnvironments:
-    UploadProjectAvatarProjectsEnvironments,
-): string {
-  return JSON.stringify(
-    UploadProjectAvatarProjectsEnvironments$outboundSchema.parse(
-      uploadProjectAvatarProjectsEnvironments,
-    ),
-  );
-}
 export function uploadProjectAvatarProjectsEnvironmentsFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -1889,41 +1298,7 @@ export const UploadProjectAvatarDeploymentSources$inboundSchema: z.ZodType<
     ]),
   ),
 });
-/** @internal */
-export type UploadProjectAvatarDeploymentSources$Outbound = {
-  sources: Array<string>;
-  enabled: boolean;
-  environments: Array<
-    | UploadProjectAvatarEnvironmentsProjects1$Outbound
-    | UploadProjectAvatarEnvironmentsProjects2$Outbound
-  >;
-};
 
-/** @internal */
-export const UploadProjectAvatarDeploymentSources$outboundSchema: z.ZodType<
-  UploadProjectAvatarDeploymentSources$Outbound,
-  z.ZodTypeDef,
-  UploadProjectAvatarDeploymentSources
-> = z.object({
-  sources: z.array(UploadProjectAvatarProjectsSources$outboundSchema),
-  enabled: z.boolean(),
-  environments: z.array(
-    z.union([
-      z.lazy(() => UploadProjectAvatarEnvironmentsProjects1$outboundSchema),
-      z.lazy(() => UploadProjectAvatarEnvironmentsProjects2$outboundSchema),
-    ]),
-  ),
-});
-
-export function uploadProjectAvatarDeploymentSourcesToJSON(
-  uploadProjectAvatarDeploymentSources: UploadProjectAvatarDeploymentSources,
-): string {
-  return JSON.stringify(
-    UploadProjectAvatarDeploymentSources$outboundSchema.parse(
-      uploadProjectAvatarDeploymentSources,
-    ),
-  );
-}
 export function uploadProjectAvatarDeploymentSourcesFromJSON(
   jsonString: string,
 ): SafeParseResult<UploadProjectAvatarDeploymentSources, SDKValidationError> {
@@ -1948,38 +1323,7 @@ export const UploadProjectAvatarDeploymentPolicy$inboundSchema: z.ZodType<
     z.array(z.lazy(() => UploadProjectAvatarDeploymentSources$inboundSchema)),
   ).optional(),
 });
-/** @internal */
-export type UploadProjectAvatarDeploymentPolicy$Outbound = {
-  gitSources?: Array<UploadProjectAvatarGitSources$Outbound> | null | undefined;
-  deploymentSources?:
-    | Array<UploadProjectAvatarDeploymentSources$Outbound>
-    | null
-    | undefined;
-};
 
-/** @internal */
-export const UploadProjectAvatarDeploymentPolicy$outboundSchema: z.ZodType<
-  UploadProjectAvatarDeploymentPolicy$Outbound,
-  z.ZodTypeDef,
-  UploadProjectAvatarDeploymentPolicy
-> = z.object({
-  gitSources: z.nullable(
-    z.array(z.lazy(() => UploadProjectAvatarGitSources$outboundSchema)),
-  ).optional(),
-  deploymentSources: z.nullable(
-    z.array(z.lazy(() => UploadProjectAvatarDeploymentSources$outboundSchema)),
-  ).optional(),
-});
-
-export function uploadProjectAvatarDeploymentPolicyToJSON(
-  uploadProjectAvatarDeploymentPolicy: UploadProjectAvatarDeploymentPolicy,
-): string {
-  return JSON.stringify(
-    UploadProjectAvatarDeploymentPolicy$outboundSchema.parse(
-      uploadProjectAvatarDeploymentPolicy,
-    ),
-  );
-}
 export function uploadProjectAvatarDeploymentPolicyFromJSON(
   jsonString: string,
 ): SafeParseResult<UploadProjectAvatarDeploymentPolicy, SDKValidationError> {
@@ -1995,19 +1339,11 @@ export function uploadProjectAvatarDeploymentPolicyFromJSON(
 export const UploadProjectAvatarFlatRateTier$inboundSchema: z.ZodNativeEnum<
   typeof UploadProjectAvatarFlatRateTier
 > = z.nativeEnum(UploadProjectAvatarFlatRateTier);
-/** @internal */
-export const UploadProjectAvatarFlatRateTier$outboundSchema: z.ZodNativeEnum<
-  typeof UploadProjectAvatarFlatRateTier
-> = UploadProjectAvatarFlatRateTier$inboundSchema;
 
 /** @internal */
 export const UploadProjectAvatarKind$inboundSchema: z.ZodNativeEnum<
   typeof UploadProjectAvatarKind
 > = z.nativeEnum(UploadProjectAvatarKind);
-/** @internal */
-export const UploadProjectAvatarKind$outboundSchema: z.ZodNativeEnum<
-  typeof UploadProjectAvatarKind
-> = UploadProjectAvatarKind$inboundSchema;
 
 /** @internal */
 export const UploadProjectAvatarUsageStatus$inboundSchema: z.ZodType<
@@ -2020,35 +1356,7 @@ export const UploadProjectAvatarUsageStatus$inboundSchema: z.ZodType<
   bypassThrottleUntil: types.optional(types.number()),
   throttled: types.optional(types.boolean()),
 });
-/** @internal */
-export type UploadProjectAvatarUsageStatus$Outbound = {
-  kind: string;
-  exceededAllowanceUntil?: number | undefined;
-  bypassThrottleUntil?: number | undefined;
-  throttled?: boolean | undefined;
-};
 
-/** @internal */
-export const UploadProjectAvatarUsageStatus$outboundSchema: z.ZodType<
-  UploadProjectAvatarUsageStatus$Outbound,
-  z.ZodTypeDef,
-  UploadProjectAvatarUsageStatus
-> = z.object({
-  kind: UploadProjectAvatarKind$outboundSchema,
-  exceededAllowanceUntil: z.number().optional(),
-  bypassThrottleUntil: z.number().optional(),
-  throttled: z.boolean().optional(),
-});
-
-export function uploadProjectAvatarUsageStatusToJSON(
-  uploadProjectAvatarUsageStatus: UploadProjectAvatarUsageStatus,
-): string {
-  return JSON.stringify(
-    UploadProjectAvatarUsageStatus$outboundSchema.parse(
-      uploadProjectAvatarUsageStatus,
-    ),
-  );
-}
 export function uploadProjectAvatarUsageStatusFromJSON(
   jsonString: string,
 ): SafeParseResult<UploadProjectAvatarUsageStatus, SDKValidationError> {
@@ -2067,29 +1375,7 @@ export const UploadProjectAvatarFeatures$inboundSchema: z.ZodType<
 > = z.object({
   webAnalytics: types.optional(types.boolean()),
 });
-/** @internal */
-export type UploadProjectAvatarFeatures$Outbound = {
-  webAnalytics?: boolean | undefined;
-};
 
-/** @internal */
-export const UploadProjectAvatarFeatures$outboundSchema: z.ZodType<
-  UploadProjectAvatarFeatures$Outbound,
-  z.ZodTypeDef,
-  UploadProjectAvatarFeatures
-> = z.object({
-  webAnalytics: z.boolean().optional(),
-});
-
-export function uploadProjectAvatarFeaturesToJSON(
-  uploadProjectAvatarFeatures: UploadProjectAvatarFeatures,
-): string {
-  return JSON.stringify(
-    UploadProjectAvatarFeatures$outboundSchema.parse(
-      uploadProjectAvatarFeatures,
-    ),
-  );
-}
 export function uploadProjectAvatarFeaturesFromJSON(
   jsonString: string,
 ): SafeParseResult<UploadProjectAvatarFeatures, SDKValidationError> {
@@ -2112,35 +1398,7 @@ export const UploadProjectAvatarHistory$inboundSchema: z.ZodType<
   byId: types.string(),
   at: types.number(),
 });
-/** @internal */
-export type UploadProjectAvatarHistory$Outbound = {
-  scanner: string;
-  reason: string;
-  by: string;
-  byId: string;
-  at: number;
-};
 
-/** @internal */
-export const UploadProjectAvatarHistory$outboundSchema: z.ZodType<
-  UploadProjectAvatarHistory$Outbound,
-  z.ZodTypeDef,
-  UploadProjectAvatarHistory
-> = z.object({
-  scanner: z.string(),
-  reason: z.string(),
-  by: z.string(),
-  byId: z.string(),
-  at: z.number(),
-});
-
-export function uploadProjectAvatarHistoryToJSON(
-  uploadProjectAvatarHistory: UploadProjectAvatarHistory,
-): string {
-  return JSON.stringify(
-    UploadProjectAvatarHistory$outboundSchema.parse(uploadProjectAvatarHistory),
-  );
-}
 export function uploadProjectAvatarHistoryFromJSON(
   jsonString: string,
 ): SafeParseResult<UploadProjectAvatarHistory, SDKValidationError> {
@@ -2155,10 +1413,6 @@ export function uploadProjectAvatarHistoryFromJSON(
 export const UploadProjectAvatarProjectsResponseAction$inboundSchema:
   z.ZodNativeEnum<typeof UploadProjectAvatarProjectsResponseAction> = z
     .nativeEnum(UploadProjectAvatarProjectsResponseAction);
-/** @internal */
-export const UploadProjectAvatarProjectsResponseAction$outboundSchema:
-  z.ZodNativeEnum<typeof UploadProjectAvatarProjectsResponseAction> =
-    UploadProjectAvatarProjectsResponseAction$inboundSchema;
 
 /** @internal */
 export const UploadProjectAvatarBlock$inboundSchema: z.ZodType<
@@ -2176,43 +1430,7 @@ export const UploadProjectAvatarBlock$inboundSchema: z.ZodType<
   ineligibleForAppeal: types.optional(types.boolean()),
   isCascading: types.optional(types.boolean()),
 });
-/** @internal */
-export type UploadProjectAvatarBlock$Outbound = {
-  action: string;
-  reason: string;
-  statusCode: number;
-  createdAt: number;
-  caseId?: string | undefined;
-  actor?: string | undefined;
-  comment?: string | undefined;
-  ineligibleForAppeal?: boolean | undefined;
-  isCascading?: boolean | undefined;
-};
 
-/** @internal */
-export const UploadProjectAvatarBlock$outboundSchema: z.ZodType<
-  UploadProjectAvatarBlock$Outbound,
-  z.ZodTypeDef,
-  UploadProjectAvatarBlock
-> = z.object({
-  action: UploadProjectAvatarProjectsResponseAction$outboundSchema,
-  reason: z.string(),
-  statusCode: z.number(),
-  createdAt: z.number(),
-  caseId: z.string().optional(),
-  actor: z.string().optional(),
-  comment: z.string().optional(),
-  ineligibleForAppeal: z.boolean().optional(),
-  isCascading: z.boolean().optional(),
-});
-
-export function uploadProjectAvatarBlockToJSON(
-  uploadProjectAvatarBlock: UploadProjectAvatarBlock,
-): string {
-  return JSON.stringify(
-    UploadProjectAvatarBlock$outboundSchema.parse(uploadProjectAvatarBlock),
-  );
-}
 export function uploadProjectAvatarBlockFromJSON(
   jsonString: string,
 ): SafeParseResult<UploadProjectAvatarBlock, SDKValidationError> {
@@ -2232,31 +1450,7 @@ export const UploadProjectAvatarHasProjectsResponse200Value$inboundSchema:
   > = z.object({
     eq: types.string(),
   });
-/** @internal */
-export type UploadProjectAvatarHasProjectsResponse200Value$Outbound = {
-  eq: string;
-};
 
-/** @internal */
-export const UploadProjectAvatarHasProjectsResponse200Value$outboundSchema:
-  z.ZodType<
-    UploadProjectAvatarHasProjectsResponse200Value$Outbound,
-    z.ZodTypeDef,
-    UploadProjectAvatarHasProjectsResponse200Value
-  > = z.object({
-    eq: z.string(),
-  });
-
-export function uploadProjectAvatarHasProjectsResponse200ValueToJSON(
-  uploadProjectAvatarHasProjectsResponse200Value:
-    UploadProjectAvatarHasProjectsResponse200Value,
-): string {
-  return JSON.stringify(
-    UploadProjectAvatarHasProjectsResponse200Value$outboundSchema.parse(
-      uploadProjectAvatarHasProjectsResponse200Value,
-    ),
-  );
-}
 export function uploadProjectAvatarHasProjectsResponse200ValueFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -2284,33 +1478,7 @@ export const UploadProjectAvatarHasProjects2$inboundSchema: z.ZodType<
     UploadProjectAvatarHasProjectsResponse200Value$inboundSchema
   ),
 });
-/** @internal */
-export type UploadProjectAvatarHasProjects2$Outbound = {
-  type: "host";
-  value: UploadProjectAvatarHasProjectsResponse200Value$Outbound;
-};
 
-/** @internal */
-export const UploadProjectAvatarHasProjects2$outboundSchema: z.ZodType<
-  UploadProjectAvatarHasProjects2$Outbound,
-  z.ZodTypeDef,
-  UploadProjectAvatarHasProjects2
-> = z.object({
-  type: z.literal("host"),
-  value: z.lazy(() =>
-    UploadProjectAvatarHasProjectsResponse200Value$outboundSchema
-  ),
-});
-
-export function uploadProjectAvatarHasProjects2ToJSON(
-  uploadProjectAvatarHasProjects2: UploadProjectAvatarHasProjects2,
-): string {
-  return JSON.stringify(
-    UploadProjectAvatarHasProjects2$outboundSchema.parse(
-      uploadProjectAvatarHasProjects2,
-    ),
-  );
-}
 export function uploadProjectAvatarHasProjects2FromJSON(
   jsonString: string,
 ): SafeParseResult<UploadProjectAvatarHasProjects2, SDKValidationError> {
@@ -2325,10 +1493,6 @@ export function uploadProjectAvatarHasProjects2FromJSON(
 export const UploadProjectAvatarHasProjectsKey$inboundSchema: z.ZodNativeEnum<
   typeof UploadProjectAvatarHasProjectsKey
 > = z.nativeEnum(UploadProjectAvatarHasProjectsKey);
-/** @internal */
-export const UploadProjectAvatarHasProjectsKey$outboundSchema: z.ZodNativeEnum<
-  typeof UploadProjectAvatarHasProjectsKey
-> = UploadProjectAvatarHasProjectsKey$inboundSchema;
 
 /** @internal */
 export const UploadProjectAvatarHasProjectsResponseValue$inboundSchema:
@@ -2339,31 +1503,7 @@ export const UploadProjectAvatarHasProjectsResponseValue$inboundSchema:
   > = z.object({
     eq: types.string(),
   });
-/** @internal */
-export type UploadProjectAvatarHasProjectsResponseValue$Outbound = {
-  eq: string;
-};
 
-/** @internal */
-export const UploadProjectAvatarHasProjectsResponseValue$outboundSchema:
-  z.ZodType<
-    UploadProjectAvatarHasProjectsResponseValue$Outbound,
-    z.ZodTypeDef,
-    UploadProjectAvatarHasProjectsResponseValue
-  > = z.object({
-    eq: z.string(),
-  });
-
-export function uploadProjectAvatarHasProjectsResponseValueToJSON(
-  uploadProjectAvatarHasProjectsResponseValue:
-    UploadProjectAvatarHasProjectsResponseValue,
-): string {
-  return JSON.stringify(
-    UploadProjectAvatarHasProjectsResponseValue$outboundSchema.parse(
-      uploadProjectAvatarHasProjectsResponseValue,
-    ),
-  );
-}
 export function uploadProjectAvatarHasProjectsResponseValueFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -2392,35 +1532,7 @@ export const UploadProjectAvatarHasProjects1$inboundSchema: z.ZodType<
     UploadProjectAvatarHasProjectsResponseValue$inboundSchema
   ),
 });
-/** @internal */
-export type UploadProjectAvatarHasProjects1$Outbound = {
-  type: "header";
-  key: string;
-  value: UploadProjectAvatarHasProjectsResponseValue$Outbound;
-};
 
-/** @internal */
-export const UploadProjectAvatarHasProjects1$outboundSchema: z.ZodType<
-  UploadProjectAvatarHasProjects1$Outbound,
-  z.ZodTypeDef,
-  UploadProjectAvatarHasProjects1
-> = z.object({
-  type: z.literal("header"),
-  key: UploadProjectAvatarHasProjectsKey$outboundSchema,
-  value: z.lazy(() =>
-    UploadProjectAvatarHasProjectsResponseValue$outboundSchema
-  ),
-});
-
-export function uploadProjectAvatarHasProjects1ToJSON(
-  uploadProjectAvatarHasProjects1: UploadProjectAvatarHasProjects1,
-): string {
-  return JSON.stringify(
-    UploadProjectAvatarHasProjects1$outboundSchema.parse(
-      uploadProjectAvatarHasProjects1,
-    ),
-  );
-}
 export function uploadProjectAvatarHasProjects1FromJSON(
   jsonString: string,
 ): SafeParseResult<UploadProjectAvatarHasProjects1, SDKValidationError> {
@@ -2440,30 +1552,7 @@ export const UploadProjectAvatarRouteProjectsHas$inboundSchema: z.ZodType<
   z.lazy(() => UploadProjectAvatarHasProjects1$inboundSchema),
   z.lazy(() => UploadProjectAvatarHasProjects2$inboundSchema),
 ]);
-/** @internal */
-export type UploadProjectAvatarRouteProjectsHas$Outbound =
-  | UploadProjectAvatarHasProjects1$Outbound
-  | UploadProjectAvatarHasProjects2$Outbound;
 
-/** @internal */
-export const UploadProjectAvatarRouteProjectsHas$outboundSchema: z.ZodType<
-  UploadProjectAvatarRouteProjectsHas$Outbound,
-  z.ZodTypeDef,
-  UploadProjectAvatarRouteProjectsHas
-> = z.union([
-  z.lazy(() => UploadProjectAvatarHasProjects1$outboundSchema),
-  z.lazy(() => UploadProjectAvatarHasProjects2$outboundSchema),
-]);
-
-export function uploadProjectAvatarRouteProjectsHasToJSON(
-  uploadProjectAvatarRouteProjectsHas: UploadProjectAvatarRouteProjectsHas,
-): string {
-  return JSON.stringify(
-    UploadProjectAvatarRouteProjectsHas$outboundSchema.parse(
-      uploadProjectAvatarRouteProjectsHas,
-    ),
-  );
-}
 export function uploadProjectAvatarRouteProjectsHasFromJSON(
   jsonString: string,
 ): SafeParseResult<UploadProjectAvatarRouteProjectsHas, SDKValidationError> {
@@ -2480,10 +1569,6 @@ export const UploadProjectAvatarRouteProjectsAction$inboundSchema:
   z.ZodNativeEnum<typeof UploadProjectAvatarRouteProjectsAction> = z.nativeEnum(
     UploadProjectAvatarRouteProjectsAction,
   );
-/** @internal */
-export const UploadProjectAvatarRouteProjectsAction$outboundSchema:
-  z.ZodNativeEnum<typeof UploadProjectAvatarRouteProjectsAction> =
-    UploadProjectAvatarRouteProjectsAction$inboundSchema;
 
 /** @internal */
 export const UploadProjectAvatarRouteProjectsMitigate$inboundSchema: z.ZodType<
@@ -2493,30 +1578,7 @@ export const UploadProjectAvatarRouteProjectsMitigate$inboundSchema: z.ZodType<
 > = z.object({
   action: UploadProjectAvatarRouteProjectsAction$inboundSchema,
 });
-/** @internal */
-export type UploadProjectAvatarRouteProjectsMitigate$Outbound = {
-  action: string;
-};
 
-/** @internal */
-export const UploadProjectAvatarRouteProjectsMitigate$outboundSchema: z.ZodType<
-  UploadProjectAvatarRouteProjectsMitigate$Outbound,
-  z.ZodTypeDef,
-  UploadProjectAvatarRouteProjectsMitigate
-> = z.object({
-  action: UploadProjectAvatarRouteProjectsAction$outboundSchema,
-});
-
-export function uploadProjectAvatarRouteProjectsMitigateToJSON(
-  uploadProjectAvatarRouteProjectsMitigate:
-    UploadProjectAvatarRouteProjectsMitigate,
-): string {
-  return JSON.stringify(
-    UploadProjectAvatarRouteProjectsMitigate$outboundSchema.parse(
-      uploadProjectAvatarRouteProjectsMitigate,
-    ),
-  );
-}
 export function uploadProjectAvatarRouteProjectsMitigateFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -2550,43 +1612,7 @@ export const UploadProjectAvatarRouteProjects2$inboundSchema: z.ZodType<
   ),
   src: types.optional(types.string()),
 });
-/** @internal */
-export type UploadProjectAvatarRouteProjects2$Outbound = {
-  has: Array<
-    | UploadProjectAvatarHasProjects1$Outbound
-    | UploadProjectAvatarHasProjects2$Outbound
-  >;
-  mitigate: UploadProjectAvatarRouteProjectsMitigate$Outbound;
-  src?: string | undefined;
-};
 
-/** @internal */
-export const UploadProjectAvatarRouteProjects2$outboundSchema: z.ZodType<
-  UploadProjectAvatarRouteProjects2$Outbound,
-  z.ZodTypeDef,
-  UploadProjectAvatarRouteProjects2
-> = z.object({
-  has: z.array(
-    z.union([
-      z.lazy(() => UploadProjectAvatarHasProjects1$outboundSchema),
-      z.lazy(() => UploadProjectAvatarHasProjects2$outboundSchema),
-    ]),
-  ),
-  mitigate: z.lazy(() =>
-    UploadProjectAvatarRouteProjectsMitigate$outboundSchema
-  ),
-  src: z.string().optional(),
-});
-
-export function uploadProjectAvatarRouteProjects2ToJSON(
-  uploadProjectAvatarRouteProjects2: UploadProjectAvatarRouteProjects2,
-): string {
-  return JSON.stringify(
-    UploadProjectAvatarRouteProjects2$outboundSchema.parse(
-      uploadProjectAvatarRouteProjects2,
-    ),
-  );
-}
 export function uploadProjectAvatarRouteProjects2FromJSON(
   jsonString: string,
 ): SafeParseResult<UploadProjectAvatarRouteProjects2, SDKValidationError> {
@@ -2606,31 +1632,7 @@ export const UploadProjectAvatarRouteProjects1$inboundSchema: z.ZodType<
   src: types.string(),
   status: types.number(),
 });
-/** @internal */
-export type UploadProjectAvatarRouteProjects1$Outbound = {
-  src: string;
-  status: number;
-};
 
-/** @internal */
-export const UploadProjectAvatarRouteProjects1$outboundSchema: z.ZodType<
-  UploadProjectAvatarRouteProjects1$Outbound,
-  z.ZodTypeDef,
-  UploadProjectAvatarRouteProjects1
-> = z.object({
-  src: z.string(),
-  status: z.number(),
-});
-
-export function uploadProjectAvatarRouteProjects1ToJSON(
-  uploadProjectAvatarRouteProjects1: UploadProjectAvatarRouteProjects1,
-): string {
-  return JSON.stringify(
-    UploadProjectAvatarRouteProjects1$outboundSchema.parse(
-      uploadProjectAvatarRouteProjects1,
-    ),
-  );
-}
 export function uploadProjectAvatarRouteProjects1FromJSON(
   jsonString: string,
 ): SafeParseResult<UploadProjectAvatarRouteProjects1, SDKValidationError> {
@@ -2651,32 +1653,7 @@ export const UploadProjectAvatarBlockHistoryProjectsRoute$inboundSchema:
     z.lazy(() => UploadProjectAvatarRouteProjects1$inboundSchema),
     z.lazy(() => UploadProjectAvatarRouteProjects2$inboundSchema),
   ]);
-/** @internal */
-export type UploadProjectAvatarBlockHistoryProjectsRoute$Outbound =
-  | UploadProjectAvatarRouteProjects1$Outbound
-  | UploadProjectAvatarRouteProjects2$Outbound;
 
-/** @internal */
-export const UploadProjectAvatarBlockHistoryProjectsRoute$outboundSchema:
-  z.ZodType<
-    UploadProjectAvatarBlockHistoryProjectsRoute$Outbound,
-    z.ZodTypeDef,
-    UploadProjectAvatarBlockHistoryProjectsRoute
-  > = smartUnion([
-    z.lazy(() => UploadProjectAvatarRouteProjects1$outboundSchema),
-    z.lazy(() => UploadProjectAvatarRouteProjects2$outboundSchema),
-  ]);
-
-export function uploadProjectAvatarBlockHistoryProjectsRouteToJSON(
-  uploadProjectAvatarBlockHistoryProjectsRoute:
-    UploadProjectAvatarBlockHistoryProjectsRoute,
-): string {
-  return JSON.stringify(
-    UploadProjectAvatarBlockHistoryProjectsRoute$outboundSchema.parse(
-      uploadProjectAvatarBlockHistoryProjectsRoute,
-    ),
-  );
-}
 export function uploadProjectAvatarBlockHistoryProjectsRouteFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -2712,50 +1689,7 @@ export const UploadProjectAvatarBlockHistory4$inboundSchema: z.ZodType<
   ineligibleForAppeal: types.optional(types.boolean()),
   isCascading: types.optional(types.boolean()),
 });
-/** @internal */
-export type UploadProjectAvatarBlockHistory4$Outbound = {
-  action: "route-unblocked";
-  route:
-    | UploadProjectAvatarRouteProjects1$Outbound
-    | UploadProjectAvatarRouteProjects2$Outbound;
-  statusCode?: number | undefined;
-  createdAt: number;
-  caseId?: string | undefined;
-  actor?: string | undefined;
-  comment?: string | undefined;
-  ineligibleForAppeal?: boolean | undefined;
-  isCascading?: boolean | undefined;
-};
 
-/** @internal */
-export const UploadProjectAvatarBlockHistory4$outboundSchema: z.ZodType<
-  UploadProjectAvatarBlockHistory4$Outbound,
-  z.ZodTypeDef,
-  UploadProjectAvatarBlockHistory4
-> = z.object({
-  action: z.literal("route-unblocked"),
-  route: smartUnion([
-    z.lazy(() => UploadProjectAvatarRouteProjects1$outboundSchema),
-    z.lazy(() => UploadProjectAvatarRouteProjects2$outboundSchema),
-  ]),
-  statusCode: z.number().optional(),
-  createdAt: z.number(),
-  caseId: z.string().optional(),
-  actor: z.string().optional(),
-  comment: z.string().optional(),
-  ineligibleForAppeal: z.boolean().optional(),
-  isCascading: z.boolean().optional(),
-});
-
-export function uploadProjectAvatarBlockHistory4ToJSON(
-  uploadProjectAvatarBlockHistory4: UploadProjectAvatarBlockHistory4,
-): string {
-  return JSON.stringify(
-    UploadProjectAvatarBlockHistory4$outboundSchema.parse(
-      uploadProjectAvatarBlockHistory4,
-    ),
-  );
-}
 export function uploadProjectAvatarBlockHistory4FromJSON(
   jsonString: string,
 ): SafeParseResult<UploadProjectAvatarBlockHistory4, SDKValidationError> {
@@ -2775,33 +1709,7 @@ export const UploadProjectAvatarHasProjectsResponse200ApplicationJSONResponseBod
   > = z.object({
     eq: types.string(),
   });
-/** @internal */
-export type UploadProjectAvatarHasProjectsResponse200ApplicationJSONResponseBodyValue$Outbound =
-  {
-    eq: string;
-  };
 
-/** @internal */
-export const UploadProjectAvatarHasProjectsResponse200ApplicationJSONResponseBodyValue$outboundSchema:
-  z.ZodType<
-    UploadProjectAvatarHasProjectsResponse200ApplicationJSONResponseBodyValue$Outbound,
-    z.ZodTypeDef,
-    UploadProjectAvatarHasProjectsResponse200ApplicationJSONResponseBodyValue
-  > = z.object({
-    eq: z.string(),
-  });
-
-export function uploadProjectAvatarHasProjectsResponse200ApplicationJSONResponseBodyValueToJSON(
-  uploadProjectAvatarHasProjectsResponse200ApplicationJSONResponseBodyValue:
-    UploadProjectAvatarHasProjectsResponse200ApplicationJSONResponseBodyValue,
-): string {
-  return JSON.stringify(
-    UploadProjectAvatarHasProjectsResponse200ApplicationJSONResponseBodyValue$outboundSchema
-      .parse(
-        uploadProjectAvatarHasProjectsResponse200ApplicationJSONResponseBodyValue,
-      ),
-  );
-}
 export function uploadProjectAvatarHasProjectsResponse200ApplicationJSONResponseBodyValueFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -2828,35 +1736,7 @@ export const UploadProjectAvatarHasProjectsResponse2$inboundSchema: z.ZodType<
     UploadProjectAvatarHasProjectsResponse200ApplicationJSONResponseBodyValue$inboundSchema
   ),
 });
-/** @internal */
-export type UploadProjectAvatarHasProjectsResponse2$Outbound = {
-  type: "host";
-  value:
-    UploadProjectAvatarHasProjectsResponse200ApplicationJSONResponseBodyValue$Outbound;
-};
 
-/** @internal */
-export const UploadProjectAvatarHasProjectsResponse2$outboundSchema: z.ZodType<
-  UploadProjectAvatarHasProjectsResponse2$Outbound,
-  z.ZodTypeDef,
-  UploadProjectAvatarHasProjectsResponse2
-> = z.object({
-  type: z.literal("host"),
-  value: z.lazy(() =>
-    UploadProjectAvatarHasProjectsResponse200ApplicationJSONResponseBodyValue$outboundSchema
-  ),
-});
-
-export function uploadProjectAvatarHasProjectsResponse2ToJSON(
-  uploadProjectAvatarHasProjectsResponse2:
-    UploadProjectAvatarHasProjectsResponse2,
-): string {
-  return JSON.stringify(
-    UploadProjectAvatarHasProjectsResponse2$outboundSchema.parse(
-      uploadProjectAvatarHasProjectsResponse2,
-    ),
-  );
-}
 export function uploadProjectAvatarHasProjectsResponse2FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -2877,10 +1757,6 @@ export function uploadProjectAvatarHasProjectsResponse2FromJSON(
 export const UploadProjectAvatarHasProjectsResponseKey$inboundSchema:
   z.ZodNativeEnum<typeof UploadProjectAvatarHasProjectsResponseKey> = z
     .nativeEnum(UploadProjectAvatarHasProjectsResponseKey);
-/** @internal */
-export const UploadProjectAvatarHasProjectsResponseKey$outboundSchema:
-  z.ZodNativeEnum<typeof UploadProjectAvatarHasProjectsResponseKey> =
-    UploadProjectAvatarHasProjectsResponseKey$inboundSchema;
 
 /** @internal */
 export const UploadProjectAvatarHasProjectsResponse200ApplicationJSONValue$inboundSchema:
@@ -2891,31 +1767,7 @@ export const UploadProjectAvatarHasProjectsResponse200ApplicationJSONValue$inbou
   > = z.object({
     eq: types.string(),
   });
-/** @internal */
-export type UploadProjectAvatarHasProjectsResponse200ApplicationJSONValue$Outbound =
-  {
-    eq: string;
-  };
 
-/** @internal */
-export const UploadProjectAvatarHasProjectsResponse200ApplicationJSONValue$outboundSchema:
-  z.ZodType<
-    UploadProjectAvatarHasProjectsResponse200ApplicationJSONValue$Outbound,
-    z.ZodTypeDef,
-    UploadProjectAvatarHasProjectsResponse200ApplicationJSONValue
-  > = z.object({
-    eq: z.string(),
-  });
-
-export function uploadProjectAvatarHasProjectsResponse200ApplicationJSONValueToJSON(
-  uploadProjectAvatarHasProjectsResponse200ApplicationJSONValue:
-    UploadProjectAvatarHasProjectsResponse200ApplicationJSONValue,
-): string {
-  return JSON.stringify(
-    UploadProjectAvatarHasProjectsResponse200ApplicationJSONValue$outboundSchema
-      .parse(uploadProjectAvatarHasProjectsResponse200ApplicationJSONValue),
-  );
-}
 export function uploadProjectAvatarHasProjectsResponse200ApplicationJSONValueFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -2943,36 +1795,7 @@ export const UploadProjectAvatarHasProjectsResponse1$inboundSchema: z.ZodType<
     UploadProjectAvatarHasProjectsResponse200ApplicationJSONValue$inboundSchema
   ),
 });
-/** @internal */
-export type UploadProjectAvatarHasProjectsResponse1$Outbound = {
-  type: "header";
-  key: string;
-  value: UploadProjectAvatarHasProjectsResponse200ApplicationJSONValue$Outbound;
-};
 
-/** @internal */
-export const UploadProjectAvatarHasProjectsResponse1$outboundSchema: z.ZodType<
-  UploadProjectAvatarHasProjectsResponse1$Outbound,
-  z.ZodTypeDef,
-  UploadProjectAvatarHasProjectsResponse1
-> = z.object({
-  type: z.literal("header"),
-  key: UploadProjectAvatarHasProjectsResponseKey$outboundSchema,
-  value: z.lazy(() =>
-    UploadProjectAvatarHasProjectsResponse200ApplicationJSONValue$outboundSchema
-  ),
-});
-
-export function uploadProjectAvatarHasProjectsResponse1ToJSON(
-  uploadProjectAvatarHasProjectsResponse1:
-    UploadProjectAvatarHasProjectsResponse1,
-): string {
-  return JSON.stringify(
-    UploadProjectAvatarHasProjectsResponse1$outboundSchema.parse(
-      uploadProjectAvatarHasProjectsResponse1,
-    ),
-  );
-}
 export function uploadProjectAvatarHasProjectsResponse1FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -2998,30 +1821,7 @@ export const UploadProjectAvatarRouteHas$inboundSchema: z.ZodType<
   z.lazy(() => UploadProjectAvatarHasProjectsResponse1$inboundSchema),
   z.lazy(() => UploadProjectAvatarHasProjectsResponse2$inboundSchema),
 ]);
-/** @internal */
-export type UploadProjectAvatarRouteHas$Outbound =
-  | UploadProjectAvatarHasProjectsResponse1$Outbound
-  | UploadProjectAvatarHasProjectsResponse2$Outbound;
 
-/** @internal */
-export const UploadProjectAvatarRouteHas$outboundSchema: z.ZodType<
-  UploadProjectAvatarRouteHas$Outbound,
-  z.ZodTypeDef,
-  UploadProjectAvatarRouteHas
-> = z.union([
-  z.lazy(() => UploadProjectAvatarHasProjectsResponse1$outboundSchema),
-  z.lazy(() => UploadProjectAvatarHasProjectsResponse2$outboundSchema),
-]);
-
-export function uploadProjectAvatarRouteHasToJSON(
-  uploadProjectAvatarRouteHas: UploadProjectAvatarRouteHas,
-): string {
-  return JSON.stringify(
-    UploadProjectAvatarRouteHas$outboundSchema.parse(
-      uploadProjectAvatarRouteHas,
-    ),
-  );
-}
 export function uploadProjectAvatarRouteHasFromJSON(
   jsonString: string,
 ): SafeParseResult<UploadProjectAvatarRouteHas, SDKValidationError> {
@@ -3036,10 +1836,6 @@ export function uploadProjectAvatarRouteHasFromJSON(
 export const UploadProjectAvatarRouteAction$inboundSchema: z.ZodNativeEnum<
   typeof UploadProjectAvatarRouteAction
 > = z.nativeEnum(UploadProjectAvatarRouteAction);
-/** @internal */
-export const UploadProjectAvatarRouteAction$outboundSchema: z.ZodNativeEnum<
-  typeof UploadProjectAvatarRouteAction
-> = UploadProjectAvatarRouteAction$inboundSchema;
 
 /** @internal */
 export const UploadProjectAvatarRouteMitigate$inboundSchema: z.ZodType<
@@ -3049,29 +1845,7 @@ export const UploadProjectAvatarRouteMitigate$inboundSchema: z.ZodType<
 > = z.object({
   action: UploadProjectAvatarRouteAction$inboundSchema,
 });
-/** @internal */
-export type UploadProjectAvatarRouteMitigate$Outbound = {
-  action: string;
-};
 
-/** @internal */
-export const UploadProjectAvatarRouteMitigate$outboundSchema: z.ZodType<
-  UploadProjectAvatarRouteMitigate$Outbound,
-  z.ZodTypeDef,
-  UploadProjectAvatarRouteMitigate
-> = z.object({
-  action: UploadProjectAvatarRouteAction$outboundSchema,
-});
-
-export function uploadProjectAvatarRouteMitigateToJSON(
-  uploadProjectAvatarRouteMitigate: UploadProjectAvatarRouteMitigate,
-): string {
-  return JSON.stringify(
-    UploadProjectAvatarRouteMitigate$outboundSchema.parse(
-      uploadProjectAvatarRouteMitigate,
-    ),
-  );
-}
 export function uploadProjectAvatarRouteMitigateFromJSON(
   jsonString: string,
 ): SafeParseResult<UploadProjectAvatarRouteMitigate, SDKValidationError> {
@@ -3097,39 +1871,7 @@ export const UploadProjectAvatarRoute2$inboundSchema: z.ZodType<
   mitigate: z.lazy(() => UploadProjectAvatarRouteMitigate$inboundSchema),
   src: types.optional(types.string()),
 });
-/** @internal */
-export type UploadProjectAvatarRoute2$Outbound = {
-  has: Array<
-    | UploadProjectAvatarHasProjectsResponse1$Outbound
-    | UploadProjectAvatarHasProjectsResponse2$Outbound
-  >;
-  mitigate: UploadProjectAvatarRouteMitigate$Outbound;
-  src?: string | undefined;
-};
 
-/** @internal */
-export const UploadProjectAvatarRoute2$outboundSchema: z.ZodType<
-  UploadProjectAvatarRoute2$Outbound,
-  z.ZodTypeDef,
-  UploadProjectAvatarRoute2
-> = z.object({
-  has: z.array(
-    z.union([
-      z.lazy(() => UploadProjectAvatarHasProjectsResponse1$outboundSchema),
-      z.lazy(() => UploadProjectAvatarHasProjectsResponse2$outboundSchema),
-    ]),
-  ),
-  mitigate: z.lazy(() => UploadProjectAvatarRouteMitigate$outboundSchema),
-  src: z.string().optional(),
-});
-
-export function uploadProjectAvatarRoute2ToJSON(
-  uploadProjectAvatarRoute2: UploadProjectAvatarRoute2,
-): string {
-  return JSON.stringify(
-    UploadProjectAvatarRoute2$outboundSchema.parse(uploadProjectAvatarRoute2),
-  );
-}
 export function uploadProjectAvatarRoute2FromJSON(
   jsonString: string,
 ): SafeParseResult<UploadProjectAvatarRoute2, SDKValidationError> {
@@ -3149,29 +1891,7 @@ export const UploadProjectAvatarRoute1$inboundSchema: z.ZodType<
   src: types.string(),
   status: types.number(),
 });
-/** @internal */
-export type UploadProjectAvatarRoute1$Outbound = {
-  src: string;
-  status: number;
-};
 
-/** @internal */
-export const UploadProjectAvatarRoute1$outboundSchema: z.ZodType<
-  UploadProjectAvatarRoute1$Outbound,
-  z.ZodTypeDef,
-  UploadProjectAvatarRoute1
-> = z.object({
-  src: z.string(),
-  status: z.number(),
-});
-
-export function uploadProjectAvatarRoute1ToJSON(
-  uploadProjectAvatarRoute1: UploadProjectAvatarRoute1,
-): string {
-  return JSON.stringify(
-    UploadProjectAvatarRoute1$outboundSchema.parse(uploadProjectAvatarRoute1),
-  );
-}
 export function uploadProjectAvatarRoute1FromJSON(
   jsonString: string,
 ): SafeParseResult<UploadProjectAvatarRoute1, SDKValidationError> {
@@ -3191,30 +1911,7 @@ export const UploadProjectAvatarBlockHistoryRoute$inboundSchema: z.ZodType<
   z.lazy(() => UploadProjectAvatarRoute1$inboundSchema),
   z.lazy(() => UploadProjectAvatarRoute2$inboundSchema),
 ]);
-/** @internal */
-export type UploadProjectAvatarBlockHistoryRoute$Outbound =
-  | UploadProjectAvatarRoute1$Outbound
-  | UploadProjectAvatarRoute2$Outbound;
 
-/** @internal */
-export const UploadProjectAvatarBlockHistoryRoute$outboundSchema: z.ZodType<
-  UploadProjectAvatarBlockHistoryRoute$Outbound,
-  z.ZodTypeDef,
-  UploadProjectAvatarBlockHistoryRoute
-> = smartUnion([
-  z.lazy(() => UploadProjectAvatarRoute1$outboundSchema),
-  z.lazy(() => UploadProjectAvatarRoute2$outboundSchema),
-]);
-
-export function uploadProjectAvatarBlockHistoryRouteToJSON(
-  uploadProjectAvatarBlockHistoryRoute: UploadProjectAvatarBlockHistoryRoute,
-): string {
-  return JSON.stringify(
-    UploadProjectAvatarBlockHistoryRoute$outboundSchema.parse(
-      uploadProjectAvatarBlockHistoryRoute,
-    ),
-  );
-}
 export function uploadProjectAvatarBlockHistoryRouteFromJSON(
   jsonString: string,
 ): SafeParseResult<UploadProjectAvatarBlockHistoryRoute, SDKValidationError> {
@@ -3245,50 +1942,7 @@ export const UploadProjectAvatarBlockHistory3$inboundSchema: z.ZodType<
   ineligibleForAppeal: types.optional(types.boolean()),
   isCascading: types.optional(types.boolean()),
 });
-/** @internal */
-export type UploadProjectAvatarBlockHistory3$Outbound = {
-  action: "route-blocked";
-  route:
-    | UploadProjectAvatarRoute1$Outbound
-    | UploadProjectAvatarRoute2$Outbound;
-  reason: string;
-  createdAt: number;
-  caseId?: string | undefined;
-  actor?: string | undefined;
-  comment?: string | undefined;
-  ineligibleForAppeal?: boolean | undefined;
-  isCascading?: boolean | undefined;
-};
 
-/** @internal */
-export const UploadProjectAvatarBlockHistory3$outboundSchema: z.ZodType<
-  UploadProjectAvatarBlockHistory3$Outbound,
-  z.ZodTypeDef,
-  UploadProjectAvatarBlockHistory3
-> = z.object({
-  action: z.literal("route-blocked"),
-  route: smartUnion([
-    z.lazy(() => UploadProjectAvatarRoute1$outboundSchema),
-    z.lazy(() => UploadProjectAvatarRoute2$outboundSchema),
-  ]),
-  reason: z.string(),
-  createdAt: z.number(),
-  caseId: z.string().optional(),
-  actor: z.string().optional(),
-  comment: z.string().optional(),
-  ineligibleForAppeal: z.boolean().optional(),
-  isCascading: z.boolean().optional(),
-});
-
-export function uploadProjectAvatarBlockHistory3ToJSON(
-  uploadProjectAvatarBlockHistory3: UploadProjectAvatarBlockHistory3,
-): string {
-  return JSON.stringify(
-    UploadProjectAvatarBlockHistory3$outboundSchema.parse(
-      uploadProjectAvatarBlockHistory3,
-    ),
-  );
-}
 export function uploadProjectAvatarBlockHistory3FromJSON(
   jsonString: string,
 ): SafeParseResult<UploadProjectAvatarBlockHistory3, SDKValidationError> {
@@ -3313,41 +1967,7 @@ export const UploadProjectAvatarBlockHistory2$inboundSchema: z.ZodType<
   ineligibleForAppeal: types.optional(types.boolean()),
   isCascading: types.optional(types.boolean()),
 });
-/** @internal */
-export type UploadProjectAvatarBlockHistory2$Outbound = {
-  action: "unblocked";
-  createdAt: number;
-  caseId?: string | undefined;
-  actor?: string | undefined;
-  comment?: string | undefined;
-  ineligibleForAppeal?: boolean | undefined;
-  isCascading?: boolean | undefined;
-};
 
-/** @internal */
-export const UploadProjectAvatarBlockHistory2$outboundSchema: z.ZodType<
-  UploadProjectAvatarBlockHistory2$Outbound,
-  z.ZodTypeDef,
-  UploadProjectAvatarBlockHistory2
-> = z.object({
-  action: z.literal("unblocked"),
-  createdAt: z.number(),
-  caseId: z.string().optional(),
-  actor: z.string().optional(),
-  comment: z.string().optional(),
-  ineligibleForAppeal: z.boolean().optional(),
-  isCascading: z.boolean().optional(),
-});
-
-export function uploadProjectAvatarBlockHistory2ToJSON(
-  uploadProjectAvatarBlockHistory2: UploadProjectAvatarBlockHistory2,
-): string {
-  return JSON.stringify(
-    UploadProjectAvatarBlockHistory2$outboundSchema.parse(
-      uploadProjectAvatarBlockHistory2,
-    ),
-  );
-}
 export function uploadProjectAvatarBlockHistory2FromJSON(
   jsonString: string,
 ): SafeParseResult<UploadProjectAvatarBlockHistory2, SDKValidationError> {
@@ -3374,45 +1994,7 @@ export const UploadProjectAvatarBlockHistory1$inboundSchema: z.ZodType<
   ineligibleForAppeal: types.optional(types.boolean()),
   isCascading: types.optional(types.boolean()),
 });
-/** @internal */
-export type UploadProjectAvatarBlockHistory1$Outbound = {
-  action: "blocked";
-  reason: string;
-  statusCode: number;
-  createdAt: number;
-  caseId?: string | undefined;
-  actor?: string | undefined;
-  comment?: string | undefined;
-  ineligibleForAppeal?: boolean | undefined;
-  isCascading?: boolean | undefined;
-};
 
-/** @internal */
-export const UploadProjectAvatarBlockHistory1$outboundSchema: z.ZodType<
-  UploadProjectAvatarBlockHistory1$Outbound,
-  z.ZodTypeDef,
-  UploadProjectAvatarBlockHistory1
-> = z.object({
-  action: z.literal("blocked"),
-  reason: z.string(),
-  statusCode: z.number(),
-  createdAt: z.number(),
-  caseId: z.string().optional(),
-  actor: z.string().optional(),
-  comment: z.string().optional(),
-  ineligibleForAppeal: z.boolean().optional(),
-  isCascading: z.boolean().optional(),
-});
-
-export function uploadProjectAvatarBlockHistory1ToJSON(
-  uploadProjectAvatarBlockHistory1: UploadProjectAvatarBlockHistory1,
-): string {
-  return JSON.stringify(
-    UploadProjectAvatarBlockHistory1$outboundSchema.parse(
-      uploadProjectAvatarBlockHistory1,
-    ),
-  );
-}
 export function uploadProjectAvatarBlockHistory1FromJSON(
   jsonString: string,
 ): SafeParseResult<UploadProjectAvatarBlockHistory1, SDKValidationError> {
@@ -3434,34 +2016,7 @@ export const UploadProjectAvatarBlockHistory$inboundSchema: z.ZodType<
   z.lazy(() => UploadProjectAvatarBlockHistory3$inboundSchema),
   z.lazy(() => UploadProjectAvatarBlockHistory4$inboundSchema),
 ]);
-/** @internal */
-export type UploadProjectAvatarBlockHistory$Outbound =
-  | UploadProjectAvatarBlockHistory1$Outbound
-  | UploadProjectAvatarBlockHistory2$Outbound
-  | UploadProjectAvatarBlockHistory3$Outbound
-  | UploadProjectAvatarBlockHistory4$Outbound;
 
-/** @internal */
-export const UploadProjectAvatarBlockHistory$outboundSchema: z.ZodType<
-  UploadProjectAvatarBlockHistory$Outbound,
-  z.ZodTypeDef,
-  UploadProjectAvatarBlockHistory
-> = z.union([
-  z.lazy(() => UploadProjectAvatarBlockHistory1$outboundSchema),
-  z.lazy(() => UploadProjectAvatarBlockHistory2$outboundSchema),
-  z.lazy(() => UploadProjectAvatarBlockHistory3$outboundSchema),
-  z.lazy(() => UploadProjectAvatarBlockHistory4$outboundSchema),
-]);
-
-export function uploadProjectAvatarBlockHistoryToJSON(
-  uploadProjectAvatarBlockHistory: UploadProjectAvatarBlockHistory,
-): string {
-  return JSON.stringify(
-    UploadProjectAvatarBlockHistory$outboundSchema.parse(
-      uploadProjectAvatarBlockHistory,
-    ),
-  );
-}
 export function uploadProjectAvatarBlockHistoryFromJSON(
   jsonString: string,
 ): SafeParseResult<UploadProjectAvatarBlockHistory, SDKValidationError> {
@@ -3476,10 +2031,6 @@ export function uploadProjectAvatarBlockHistoryFromJSON(
 export const UploadProjectAvatarProjectsAction$inboundSchema: z.ZodNativeEnum<
   typeof UploadProjectAvatarProjectsAction
 > = z.nativeEnum(UploadProjectAvatarProjectsAction);
-/** @internal */
-export const UploadProjectAvatarProjectsAction$outboundSchema: z.ZodNativeEnum<
-  typeof UploadProjectAvatarProjectsAction
-> = UploadProjectAvatarProjectsAction$inboundSchema;
 
 /** @internal */
 export const UploadProjectAvatarInterstitialHistory$inboundSchema: z.ZodType<
@@ -3494,40 +2045,7 @@ export const UploadProjectAvatarInterstitialHistory$inboundSchema: z.ZodType<
   actor: types.optional(types.string()),
   comment: types.optional(types.string()),
 });
-/** @internal */
-export type UploadProjectAvatarInterstitialHistory$Outbound = {
-  action: string;
-  createdAt: number;
-  caseId?: string | undefined;
-  reason?: string | undefined;
-  actor?: string | undefined;
-  comment?: string | undefined;
-};
 
-/** @internal */
-export const UploadProjectAvatarInterstitialHistory$outboundSchema: z.ZodType<
-  UploadProjectAvatarInterstitialHistory$Outbound,
-  z.ZodTypeDef,
-  UploadProjectAvatarInterstitialHistory
-> = z.object({
-  action: UploadProjectAvatarProjectsAction$outboundSchema,
-  createdAt: z.number(),
-  caseId: z.string().optional(),
-  reason: z.string().optional(),
-  actor: z.string().optional(),
-  comment: z.string().optional(),
-});
-
-export function uploadProjectAvatarInterstitialHistoryToJSON(
-  uploadProjectAvatarInterstitialHistory:
-    UploadProjectAvatarInterstitialHistory,
-): string {
-  return JSON.stringify(
-    UploadProjectAvatarInterstitialHistory$outboundSchema.parse(
-      uploadProjectAvatarInterstitialHistory,
-    ),
-  );
-}
 export function uploadProjectAvatarInterstitialHistoryFromJSON(
   jsonString: string,
 ): SafeParseResult<UploadProjectAvatarInterstitialHistory, SDKValidationError> {
@@ -3564,57 +2082,7 @@ export const UploadProjectAvatarAbuse$inboundSchema: z.ZodType<
     z.array(z.lazy(() => UploadProjectAvatarInterstitialHistory$inboundSchema)),
   ),
 });
-/** @internal */
-export type UploadProjectAvatarAbuse$Outbound = {
-  scanner?: string | undefined;
-  history: Array<UploadProjectAvatarHistory$Outbound>;
-  updatedAt: number;
-  block?: UploadProjectAvatarBlock$Outbound | undefined;
-  blockHistory?:
-    | Array<
-      | UploadProjectAvatarBlockHistory1$Outbound
-      | UploadProjectAvatarBlockHistory2$Outbound
-      | UploadProjectAvatarBlockHistory3$Outbound
-      | UploadProjectAvatarBlockHistory4$Outbound
-    >
-    | undefined;
-  interstitial?: boolean | undefined;
-  interstitialHistory?:
-    | Array<UploadProjectAvatarInterstitialHistory$Outbound>
-    | undefined;
-};
 
-/** @internal */
-export const UploadProjectAvatarAbuse$outboundSchema: z.ZodType<
-  UploadProjectAvatarAbuse$Outbound,
-  z.ZodTypeDef,
-  UploadProjectAvatarAbuse
-> = z.object({
-  scanner: z.string().optional(),
-  history: z.array(z.lazy(() => UploadProjectAvatarHistory$outboundSchema)),
-  updatedAt: z.number(),
-  block: z.lazy(() => UploadProjectAvatarBlock$outboundSchema).optional(),
-  blockHistory: z.array(
-    z.union([
-      z.lazy(() => UploadProjectAvatarBlockHistory1$outboundSchema),
-      z.lazy(() => UploadProjectAvatarBlockHistory2$outboundSchema),
-      z.lazy(() => UploadProjectAvatarBlockHistory3$outboundSchema),
-      z.lazy(() => UploadProjectAvatarBlockHistory4$outboundSchema),
-    ]),
-  ).optional(),
-  interstitial: z.boolean().optional(),
-  interstitialHistory: z.array(
-    z.lazy(() => UploadProjectAvatarInterstitialHistory$outboundSchema),
-  ).optional(),
-});
-
-export function uploadProjectAvatarAbuseToJSON(
-  uploadProjectAvatarAbuse: UploadProjectAvatarAbuse,
-): string {
-  return JSON.stringify(
-    UploadProjectAvatarAbuse$outboundSchema.parse(uploadProjectAvatarAbuse),
-  );
-}
 export function uploadProjectAvatarAbuseFromJSON(
   jsonString: string,
 ): SafeParseResult<UploadProjectAvatarAbuse, SDKValidationError> {
@@ -3633,29 +2101,7 @@ export const UploadProjectAvatarHasProjectsValue$inboundSchema: z.ZodType<
 > = z.object({
   eq: types.string(),
 });
-/** @internal */
-export type UploadProjectAvatarHasProjectsValue$Outbound = {
-  eq: string;
-};
 
-/** @internal */
-export const UploadProjectAvatarHasProjectsValue$outboundSchema: z.ZodType<
-  UploadProjectAvatarHasProjectsValue$Outbound,
-  z.ZodTypeDef,
-  UploadProjectAvatarHasProjectsValue
-> = z.object({
-  eq: z.string(),
-});
-
-export function uploadProjectAvatarHasProjectsValueToJSON(
-  uploadProjectAvatarHasProjectsValue: UploadProjectAvatarHasProjectsValue,
-): string {
-  return JSON.stringify(
-    UploadProjectAvatarHasProjectsValue$outboundSchema.parse(
-      uploadProjectAvatarHasProjectsValue,
-    ),
-  );
-}
 export function uploadProjectAvatarHasProjectsValueFromJSON(
   jsonString: string,
 ): SafeParseResult<UploadProjectAvatarHasProjectsValue, SDKValidationError> {
@@ -3676,29 +2122,7 @@ export const UploadProjectAvatarHas2$inboundSchema: z.ZodType<
   type: types.literal("host"),
   value: z.lazy(() => UploadProjectAvatarHasProjectsValue$inboundSchema),
 });
-/** @internal */
-export type UploadProjectAvatarHas2$Outbound = {
-  type: "host";
-  value: UploadProjectAvatarHasProjectsValue$Outbound;
-};
 
-/** @internal */
-export const UploadProjectAvatarHas2$outboundSchema: z.ZodType<
-  UploadProjectAvatarHas2$Outbound,
-  z.ZodTypeDef,
-  UploadProjectAvatarHas2
-> = z.object({
-  type: z.literal("host"),
-  value: z.lazy(() => UploadProjectAvatarHasProjectsValue$outboundSchema),
-});
-
-export function uploadProjectAvatarHas2ToJSON(
-  uploadProjectAvatarHas2: UploadProjectAvatarHas2,
-): string {
-  return JSON.stringify(
-    UploadProjectAvatarHas2$outboundSchema.parse(uploadProjectAvatarHas2),
-  );
-}
 export function uploadProjectAvatarHas2FromJSON(
   jsonString: string,
 ): SafeParseResult<UploadProjectAvatarHas2, SDKValidationError> {
@@ -3713,10 +2137,6 @@ export function uploadProjectAvatarHas2FromJSON(
 export const UploadProjectAvatarHasKey$inboundSchema: z.ZodNativeEnum<
   typeof UploadProjectAvatarHasKey
 > = z.nativeEnum(UploadProjectAvatarHasKey);
-/** @internal */
-export const UploadProjectAvatarHasKey$outboundSchema: z.ZodNativeEnum<
-  typeof UploadProjectAvatarHasKey
-> = UploadProjectAvatarHasKey$inboundSchema;
 
 /** @internal */
 export const UploadProjectAvatarHasValue$inboundSchema: z.ZodType<
@@ -3726,29 +2146,7 @@ export const UploadProjectAvatarHasValue$inboundSchema: z.ZodType<
 > = z.object({
   eq: types.string(),
 });
-/** @internal */
-export type UploadProjectAvatarHasValue$Outbound = {
-  eq: string;
-};
 
-/** @internal */
-export const UploadProjectAvatarHasValue$outboundSchema: z.ZodType<
-  UploadProjectAvatarHasValue$Outbound,
-  z.ZodTypeDef,
-  UploadProjectAvatarHasValue
-> = z.object({
-  eq: z.string(),
-});
-
-export function uploadProjectAvatarHasValueToJSON(
-  uploadProjectAvatarHasValue: UploadProjectAvatarHasValue,
-): string {
-  return JSON.stringify(
-    UploadProjectAvatarHasValue$outboundSchema.parse(
-      uploadProjectAvatarHasValue,
-    ),
-  );
-}
 export function uploadProjectAvatarHasValueFromJSON(
   jsonString: string,
 ): SafeParseResult<UploadProjectAvatarHasValue, SDKValidationError> {
@@ -3769,31 +2167,7 @@ export const UploadProjectAvatarHas1$inboundSchema: z.ZodType<
   key: UploadProjectAvatarHasKey$inboundSchema,
   value: z.lazy(() => UploadProjectAvatarHasValue$inboundSchema),
 });
-/** @internal */
-export type UploadProjectAvatarHas1$Outbound = {
-  type: "header";
-  key: string;
-  value: UploadProjectAvatarHasValue$Outbound;
-};
 
-/** @internal */
-export const UploadProjectAvatarHas1$outboundSchema: z.ZodType<
-  UploadProjectAvatarHas1$Outbound,
-  z.ZodTypeDef,
-  UploadProjectAvatarHas1
-> = z.object({
-  type: z.literal("header"),
-  key: UploadProjectAvatarHasKey$outboundSchema,
-  value: z.lazy(() => UploadProjectAvatarHasValue$outboundSchema),
-});
-
-export function uploadProjectAvatarHas1ToJSON(
-  uploadProjectAvatarHas1: UploadProjectAvatarHas1,
-): string {
-  return JSON.stringify(
-    UploadProjectAvatarHas1$outboundSchema.parse(uploadProjectAvatarHas1),
-  );
-}
 export function uploadProjectAvatarHas1FromJSON(
   jsonString: string,
 ): SafeParseResult<UploadProjectAvatarHas1, SDKValidationError> {
@@ -3813,30 +2187,7 @@ export const UploadProjectAvatarInternalRoutesHas$inboundSchema: z.ZodType<
   z.lazy(() => UploadProjectAvatarHas1$inboundSchema),
   z.lazy(() => UploadProjectAvatarHas2$inboundSchema),
 ]);
-/** @internal */
-export type UploadProjectAvatarInternalRoutesHas$Outbound =
-  | UploadProjectAvatarHas1$Outbound
-  | UploadProjectAvatarHas2$Outbound;
 
-/** @internal */
-export const UploadProjectAvatarInternalRoutesHas$outboundSchema: z.ZodType<
-  UploadProjectAvatarInternalRoutesHas$Outbound,
-  z.ZodTypeDef,
-  UploadProjectAvatarInternalRoutesHas
-> = z.union([
-  z.lazy(() => UploadProjectAvatarHas1$outboundSchema),
-  z.lazy(() => UploadProjectAvatarHas2$outboundSchema),
-]);
-
-export function uploadProjectAvatarInternalRoutesHasToJSON(
-  uploadProjectAvatarInternalRoutesHas: UploadProjectAvatarInternalRoutesHas,
-): string {
-  return JSON.stringify(
-    UploadProjectAvatarInternalRoutesHas$outboundSchema.parse(
-      uploadProjectAvatarInternalRoutesHas,
-    ),
-  );
-}
 export function uploadProjectAvatarInternalRoutesHasFromJSON(
   jsonString: string,
 ): SafeParseResult<UploadProjectAvatarInternalRoutesHas, SDKValidationError> {
@@ -3852,10 +2203,6 @@ export function uploadProjectAvatarInternalRoutesHasFromJSON(
 export const UploadProjectAvatarInternalRoutesAction$inboundSchema:
   z.ZodNativeEnum<typeof UploadProjectAvatarInternalRoutesAction> = z
     .nativeEnum(UploadProjectAvatarInternalRoutesAction);
-/** @internal */
-export const UploadProjectAvatarInternalRoutesAction$outboundSchema:
-  z.ZodNativeEnum<typeof UploadProjectAvatarInternalRoutesAction> =
-    UploadProjectAvatarInternalRoutesAction$inboundSchema;
 
 /** @internal */
 export const UploadProjectAvatarInternalRoutesMitigate$inboundSchema: z.ZodType<
@@ -3865,31 +2212,7 @@ export const UploadProjectAvatarInternalRoutesMitigate$inboundSchema: z.ZodType<
 > = z.object({
   action: UploadProjectAvatarInternalRoutesAction$inboundSchema,
 });
-/** @internal */
-export type UploadProjectAvatarInternalRoutesMitigate$Outbound = {
-  action: string;
-};
 
-/** @internal */
-export const UploadProjectAvatarInternalRoutesMitigate$outboundSchema:
-  z.ZodType<
-    UploadProjectAvatarInternalRoutesMitigate$Outbound,
-    z.ZodTypeDef,
-    UploadProjectAvatarInternalRoutesMitigate
-  > = z.object({
-    action: UploadProjectAvatarInternalRoutesAction$outboundSchema,
-  });
-
-export function uploadProjectAvatarInternalRoutesMitigateToJSON(
-  uploadProjectAvatarInternalRoutesMitigate:
-    UploadProjectAvatarInternalRoutesMitigate,
-): string {
-  return JSON.stringify(
-    UploadProjectAvatarInternalRoutesMitigate$outboundSchema.parse(
-      uploadProjectAvatarInternalRoutesMitigate,
-    ),
-  );
-}
 export function uploadProjectAvatarInternalRoutesMitigateFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -3923,42 +2246,7 @@ export const UploadProjectAvatarInternalRoutes2$inboundSchema: z.ZodType<
   ),
   src: types.optional(types.string()),
 });
-/** @internal */
-export type UploadProjectAvatarInternalRoutes2$Outbound = {
-  has: Array<
-    UploadProjectAvatarHas1$Outbound | UploadProjectAvatarHas2$Outbound
-  >;
-  mitigate: UploadProjectAvatarInternalRoutesMitigate$Outbound;
-  src?: string | undefined;
-};
 
-/** @internal */
-export const UploadProjectAvatarInternalRoutes2$outboundSchema: z.ZodType<
-  UploadProjectAvatarInternalRoutes2$Outbound,
-  z.ZodTypeDef,
-  UploadProjectAvatarInternalRoutes2
-> = z.object({
-  has: z.array(
-    z.union([
-      z.lazy(() => UploadProjectAvatarHas1$outboundSchema),
-      z.lazy(() => UploadProjectAvatarHas2$outboundSchema),
-    ]),
-  ),
-  mitigate: z.lazy(() =>
-    UploadProjectAvatarInternalRoutesMitigate$outboundSchema
-  ),
-  src: z.string().optional(),
-});
-
-export function uploadProjectAvatarInternalRoutes2ToJSON(
-  uploadProjectAvatarInternalRoutes2: UploadProjectAvatarInternalRoutes2,
-): string {
-  return JSON.stringify(
-    UploadProjectAvatarInternalRoutes2$outboundSchema.parse(
-      uploadProjectAvatarInternalRoutes2,
-    ),
-  );
-}
 export function uploadProjectAvatarInternalRoutes2FromJSON(
   jsonString: string,
 ): SafeParseResult<UploadProjectAvatarInternalRoutes2, SDKValidationError> {
@@ -3979,31 +2267,7 @@ export const UploadProjectAvatarInternalRoutes1$inboundSchema: z.ZodType<
   src: types.string(),
   status: types.number(),
 });
-/** @internal */
-export type UploadProjectAvatarInternalRoutes1$Outbound = {
-  src: string;
-  status: number;
-};
 
-/** @internal */
-export const UploadProjectAvatarInternalRoutes1$outboundSchema: z.ZodType<
-  UploadProjectAvatarInternalRoutes1$Outbound,
-  z.ZodTypeDef,
-  UploadProjectAvatarInternalRoutes1
-> = z.object({
-  src: z.string(),
-  status: z.number(),
-});
-
-export function uploadProjectAvatarInternalRoutes1ToJSON(
-  uploadProjectAvatarInternalRoutes1: UploadProjectAvatarInternalRoutes1,
-): string {
-  return JSON.stringify(
-    UploadProjectAvatarInternalRoutes1$outboundSchema.parse(
-      uploadProjectAvatarInternalRoutes1,
-    ),
-  );
-}
 export function uploadProjectAvatarInternalRoutes1FromJSON(
   jsonString: string,
 ): SafeParseResult<UploadProjectAvatarInternalRoutes1, SDKValidationError> {
@@ -4024,30 +2288,7 @@ export const UploadProjectAvatarInternalRoutes$inboundSchema: z.ZodType<
   z.lazy(() => UploadProjectAvatarInternalRoutes1$inboundSchema),
   z.lazy(() => UploadProjectAvatarInternalRoutes2$inboundSchema),
 ]);
-/** @internal */
-export type UploadProjectAvatarInternalRoutes$Outbound =
-  | UploadProjectAvatarInternalRoutes1$Outbound
-  | UploadProjectAvatarInternalRoutes2$Outbound;
 
-/** @internal */
-export const UploadProjectAvatarInternalRoutes$outboundSchema: z.ZodType<
-  UploadProjectAvatarInternalRoutes$Outbound,
-  z.ZodTypeDef,
-  UploadProjectAvatarInternalRoutes
-> = smartUnion([
-  z.lazy(() => UploadProjectAvatarInternalRoutes1$outboundSchema),
-  z.lazy(() => UploadProjectAvatarInternalRoutes2$outboundSchema),
-]);
-
-export function uploadProjectAvatarInternalRoutesToJSON(
-  uploadProjectAvatarInternalRoutes: UploadProjectAvatarInternalRoutes,
-): string {
-  return JSON.stringify(
-    UploadProjectAvatarInternalRoutes$outboundSchema.parse(
-      uploadProjectAvatarInternalRoutes,
-    ),
-  );
-}
 export function uploadProjectAvatarInternalRoutesFromJSON(
   jsonString: string,
 ): SafeParseResult<UploadProjectAvatarInternalRoutes, SDKValidationError> {
@@ -4062,10 +2303,6 @@ export function uploadProjectAvatarInternalRoutesFromJSON(
 export const UploadProjectAvatarAction$inboundSchema: z.ZodNativeEnum<
   typeof UploadProjectAvatarAction
 > = z.nativeEnum(UploadProjectAvatarAction);
-/** @internal */
-export const UploadProjectAvatarAction$outboundSchema: z.ZodNativeEnum<
-  typeof UploadProjectAvatarAction
-> = UploadProjectAvatarAction$inboundSchema;
 
 /** @internal */
 export const UploadProjectAvatarValuePreviousValue$inboundSchema: z.ZodType<
@@ -4073,28 +2310,7 @@ export const UploadProjectAvatarValuePreviousValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = smartUnion([types.string(), types.number(), types.boolean()]);
-/** @internal */
-export type UploadProjectAvatarValuePreviousValue$Outbound =
-  | string
-  | number
-  | boolean;
 
-/** @internal */
-export const UploadProjectAvatarValuePreviousValue$outboundSchema: z.ZodType<
-  UploadProjectAvatarValuePreviousValue$Outbound,
-  z.ZodTypeDef,
-  UploadProjectAvatarValuePreviousValue
-> = smartUnion([z.string(), z.number(), z.boolean()]);
-
-export function uploadProjectAvatarValuePreviousValueToJSON(
-  uploadProjectAvatarValuePreviousValue: UploadProjectAvatarValuePreviousValue,
-): string {
-  return JSON.stringify(
-    UploadProjectAvatarValuePreviousValue$outboundSchema.parse(
-      uploadProjectAvatarValuePreviousValue,
-    ),
-  );
-}
 export function uploadProjectAvatarValuePreviousValueFromJSON(
   jsonString: string,
 ): SafeParseResult<UploadProjectAvatarValuePreviousValue, SDKValidationError> {
@@ -4112,28 +2328,7 @@ export const UploadProjectAvatarValueCurrentValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = smartUnion([types.string(), types.number(), types.boolean()]);
-/** @internal */
-export type UploadProjectAvatarValueCurrentValue$Outbound =
-  | string
-  | number
-  | boolean;
 
-/** @internal */
-export const UploadProjectAvatarValueCurrentValue$outboundSchema: z.ZodType<
-  UploadProjectAvatarValueCurrentValue$Outbound,
-  z.ZodTypeDef,
-  UploadProjectAvatarValueCurrentValue
-> = smartUnion([z.string(), z.number(), z.boolean()]);
-
-export function uploadProjectAvatarValueCurrentValueToJSON(
-  uploadProjectAvatarValueCurrentValue: UploadProjectAvatarValueCurrentValue,
-): string {
-  return JSON.stringify(
-    UploadProjectAvatarValueCurrentValue$outboundSchema.parse(
-      uploadProjectAvatarValueCurrentValue,
-    ),
-  );
-}
 export function uploadProjectAvatarValueCurrentValueFromJSON(
   jsonString: string,
 ): SafeParseResult<UploadProjectAvatarValueCurrentValue, SDKValidationError> {
@@ -4154,29 +2349,7 @@ export const UploadProjectAvatarValue3$inboundSchema: z.ZodType<
   previousValue: smartUnion([types.string(), types.number(), types.boolean()]),
   currentValue: smartUnion([types.string(), types.number(), types.boolean()]),
 });
-/** @internal */
-export type UploadProjectAvatarValue3$Outbound = {
-  previousValue: string | number | boolean;
-  currentValue: string | number | boolean;
-};
 
-/** @internal */
-export const UploadProjectAvatarValue3$outboundSchema: z.ZodType<
-  UploadProjectAvatarValue3$Outbound,
-  z.ZodTypeDef,
-  UploadProjectAvatarValue3
-> = z.object({
-  previousValue: smartUnion([z.string(), z.number(), z.boolean()]),
-  currentValue: smartUnion([z.string(), z.number(), z.boolean()]),
-});
-
-export function uploadProjectAvatarValue3ToJSON(
-  uploadProjectAvatarValue3: UploadProjectAvatarValue3,
-): string {
-  return JSON.stringify(
-    UploadProjectAvatarValue3$outboundSchema.parse(uploadProjectAvatarValue3),
-  );
-}
 export function uploadProjectAvatarValue3FromJSON(
   jsonString: string,
 ): SafeParseResult<UploadProjectAvatarValue3, SDKValidationError> {
@@ -4198,32 +2371,7 @@ export const UploadProjectAvatarValue$inboundSchema: z.ZodType<
   types.number(),
   types.boolean(),
 ]);
-/** @internal */
-export type UploadProjectAvatarValue$Outbound =
-  | UploadProjectAvatarValue3$Outbound
-  | string
-  | number
-  | boolean;
 
-/** @internal */
-export const UploadProjectAvatarValue$outboundSchema: z.ZodType<
-  UploadProjectAvatarValue$Outbound,
-  z.ZodTypeDef,
-  UploadProjectAvatarValue
-> = smartUnion([
-  z.lazy(() => UploadProjectAvatarValue3$outboundSchema),
-  z.string(),
-  z.number(),
-  z.boolean(),
-]);
-
-export function uploadProjectAvatarValueToJSON(
-  uploadProjectAvatarValue: UploadProjectAvatarValue,
-): string {
-  return JSON.stringify(
-    UploadProjectAvatarValue$outboundSchema.parse(uploadProjectAvatarValue),
-  );
-}
 export function uploadProjectAvatarValueFromJSON(
   jsonString: string,
 ): SafeParseResult<UploadProjectAvatarValue, SDKValidationError> {
@@ -4252,42 +2400,7 @@ export const UploadProjectAvatarDismissedToasts$inboundSchema: z.ZodType<
     ]),
   ),
 });
-/** @internal */
-export type UploadProjectAvatarDismissedToasts$Outbound = {
-  key: string;
-  dismissedAt: number;
-  action: string;
-  value: UploadProjectAvatarValue3$Outbound | string | number | boolean | null;
-};
 
-/** @internal */
-export const UploadProjectAvatarDismissedToasts$outboundSchema: z.ZodType<
-  UploadProjectAvatarDismissedToasts$Outbound,
-  z.ZodTypeDef,
-  UploadProjectAvatarDismissedToasts
-> = z.object({
-  key: z.string(),
-  dismissedAt: z.number(),
-  action: UploadProjectAvatarAction$outboundSchema,
-  value: z.nullable(
-    smartUnion([
-      z.lazy(() => UploadProjectAvatarValue3$outboundSchema),
-      z.string(),
-      z.number(),
-      z.boolean(),
-    ]),
-  ),
-});
-
-export function uploadProjectAvatarDismissedToastsToJSON(
-  uploadProjectAvatarDismissedToasts: UploadProjectAvatarDismissedToasts,
-): string {
-  return JSON.stringify(
-    UploadProjectAvatarDismissedToasts$outboundSchema.parse(
-      uploadProjectAvatarDismissedToasts,
-    ),
-  );
-}
 export function uploadProjectAvatarDismissedToastsFromJSON(
   jsonString: string,
 ): SafeParseResult<UploadProjectAvatarDismissedToasts, SDKValidationError> {
@@ -4303,10 +2416,6 @@ export function uploadProjectAvatarDismissedToastsFromJSON(
 export const UploadProjectAvatarProjectsEnv$inboundSchema: z.ZodNativeEnum<
   typeof UploadProjectAvatarProjectsEnv
 > = z.nativeEnum(UploadProjectAvatarProjectsEnv);
-/** @internal */
-export const UploadProjectAvatarProjectsEnv$outboundSchema: z.ZodNativeEnum<
-  typeof UploadProjectAvatarProjectsEnv
-> = UploadProjectAvatarProjectsEnv$inboundSchema;
 
 /** @internal */
 export const UploadProjectAvatarSamplingRules$inboundSchema: z.ZodType<
@@ -4318,33 +2427,7 @@ export const UploadProjectAvatarSamplingRules$inboundSchema: z.ZodType<
   env: types.optional(UploadProjectAvatarProjectsEnv$inboundSchema),
   requestPath: types.optional(types.string()),
 });
-/** @internal */
-export type UploadProjectAvatarSamplingRules$Outbound = {
-  rate: number;
-  env?: string | undefined;
-  requestPath?: string | undefined;
-};
 
-/** @internal */
-export const UploadProjectAvatarSamplingRules$outboundSchema: z.ZodType<
-  UploadProjectAvatarSamplingRules$Outbound,
-  z.ZodTypeDef,
-  UploadProjectAvatarSamplingRules
-> = z.object({
-  rate: z.number(),
-  env: UploadProjectAvatarProjectsEnv$outboundSchema.optional(),
-  requestPath: z.string().optional(),
-});
-
-export function uploadProjectAvatarSamplingRulesToJSON(
-  uploadProjectAvatarSamplingRules: UploadProjectAvatarSamplingRules,
-): string {
-  return JSON.stringify(
-    UploadProjectAvatarSamplingRules$outboundSchema.parse(
-      uploadProjectAvatarSamplingRules,
-    ),
-  );
-}
 export function uploadProjectAvatarSamplingRulesFromJSON(
   jsonString: string,
 ): SafeParseResult<UploadProjectAvatarSamplingRules, SDKValidationError> {
@@ -4367,33 +2450,7 @@ export const UploadProjectAvatarTracing$inboundSchema: z.ZodType<
     z.array(z.lazy(() => UploadProjectAvatarSamplingRules$inboundSchema)),
   ),
 });
-/** @internal */
-export type UploadProjectAvatarTracing$Outbound = {
-  domains?: string | undefined;
-  ignorePaths?: Array<string> | undefined;
-  samplingRules?: Array<UploadProjectAvatarSamplingRules$Outbound> | undefined;
-};
 
-/** @internal */
-export const UploadProjectAvatarTracing$outboundSchema: z.ZodType<
-  UploadProjectAvatarTracing$Outbound,
-  z.ZodTypeDef,
-  UploadProjectAvatarTracing
-> = z.object({
-  domains: z.string().optional(),
-  ignorePaths: z.array(z.string()).optional(),
-  samplingRules: z.array(
-    z.lazy(() => UploadProjectAvatarSamplingRules$outboundSchema),
-  ).optional(),
-});
-
-export function uploadProjectAvatarTracingToJSON(
-  uploadProjectAvatarTracing: UploadProjectAvatarTracing,
-): string {
-  return JSON.stringify(
-    UploadProjectAvatarTracing$outboundSchema.parse(uploadProjectAvatarTracing),
-  );
-}
 export function uploadProjectAvatarTracingFromJSON(
   jsonString: string,
 ): SafeParseResult<UploadProjectAvatarTracing, SDKValidationError> {
@@ -4556,293 +2613,7 @@ export const UploadProjectAvatarResponseBody$inboundSchema: z.ZodType<
   ),
   avatar: types.optional(types.string()),
 });
-/** @internal */
-export type UploadProjectAvatarResponseBody$Outbound = {
-  accountId: string;
-  analytics?: UploadProjectAvatarAnalytics$Outbound | undefined;
-  appliedCve55182Migration?: boolean | undefined;
-  speedInsights?: UploadProjectAvatarSpeedInsights$Outbound | undefined;
-  autoExposeSystemEnvs?: boolean | undefined;
-  autoAssignCustomDomains?: boolean | undefined;
-  autoAssignCustomDomainsUpdatedBy?: string | undefined;
-  buildCommand?: string | null | undefined;
-  commandForIgnoringBuildStep?: string | null | undefined;
-  connectConfigurations?:
-    | Array<UploadProjectAvatarConnectConfigurations$Outbound>
-    | null
-    | undefined;
-  connectConfigurationId?: string | null | undefined;
-  connectBuildsEnabled?: boolean | undefined;
-  passiveConnectConfigurationId?: string | null | undefined;
-  createdAt?: number | undefined;
-  customerSupportCodeVisibility?: boolean | undefined;
-  crons?: UploadProjectAvatarCrons$Outbound | undefined;
-  dataCache?: UploadProjectAvatarDataCache$Outbound | undefined;
-  deploymentExpiration: UploadProjectAvatarDeploymentExpiration$Outbound;
-  expiration?: UploadProjectAvatarExpiration$Outbound | undefined;
-  devCommand?: string | null | undefined;
-  directoryListing: boolean;
-  installCommand?: string | null | undefined;
-  env?: Array<UploadProjectAvatarEnv$Outbound> | undefined;
-  customEnvironments?:
-    | Array<UploadProjectAvatarCustomEnvironments$Outbound>
-    | undefined;
-  framework?: string | null | undefined;
-  services?: Array<UploadProjectAvatarServices$Outbound> | undefined;
-  gitForkProtection?: boolean | undefined;
-  gitLFS?: boolean | undefined;
-  id: string;
-  ipBuckets?: Array<UploadProjectAvatarIpBuckets$Outbound> | undefined;
-  jobs?: UploadProjectAvatarJobs$Outbound | undefined;
-  latestDeployments?:
-    | Array<UploadProjectAvatarLatestDeployments$Outbound>
-    | undefined;
-  link?: UploadProjectAvatarLink$Outbound | undefined;
-  microfrontends?: UploadProjectAvatarMicrofrontends$Outbound | undefined;
-  name: string;
-  nodeVersion: string;
-  optionsAllowlist?:
-    | UploadProjectAvatarOptionsAllowlist$Outbound
-    | null
-    | undefined;
-  outputDirectory?: string | null | undefined;
-  passwordProtection?:
-    | UploadProjectAvatarPasswordProtection$Outbound
-    | null
-    | undefined;
-  passport?: UploadProjectAvatarPassport$Outbound | null | undefined;
-  productionDeploymentsFastLane?: boolean | undefined;
-  publicSource?: boolean | null | undefined;
-  resourceConfig: UploadProjectAvatarResourceConfig$Outbound;
-  rollbackDescription?:
-    | UploadProjectAvatarRollbackDescription$Outbound
-    | undefined;
-  rollingRelease?:
-    | UploadProjectAvatarRollingRelease$Outbound
-    | null
-    | undefined;
-  defaultResourceConfig: UploadProjectAvatarDefaultResourceConfig$Outbound;
-  rootDirectory?: string | null | undefined;
-  serverlessFunctionZeroConfigFailover?: boolean | undefined;
-  skewProtectionBoundaryAt?: number | undefined;
-  skewProtectionMaxAge?: number | undefined;
-  skewProtectionAllowedDomains?: Array<string> | undefined;
-  skipGitConnectDuringLink?: boolean | undefined;
-  staticIps?: UploadProjectAvatarStaticIps$Outbound | undefined;
-  sourceFilesOutsideRootDirectory?: boolean | undefined;
-  enableAffectedProjectsDeployments?: boolean | undefined;
-  enableExternalRewriteCaching?: boolean | undefined;
-  ssoProtection?: UploadProjectAvatarSsoProtection$Outbound | null | undefined;
-  targets?:
-    | { [k: string]: UploadProjectAvatarTargets$Outbound | null }
-    | undefined;
-  transferCompletedAt?: number | undefined;
-  transferStartedAt?: number | undefined;
-  transferToAccountId?: string | undefined;
-  transferredFromAccountId?: string | undefined;
-  updatedAt?: number | undefined;
-  live?: boolean | undefined;
-  enablePreviewFeedback?: boolean | null | undefined;
-  enableProductionFeedback?: boolean | null | undefined;
-  permissions?: UploadProjectAvatarPermissions$Outbound | undefined;
-  lastRollbackTarget?:
-    | UploadProjectAvatarLastRollbackTarget$Outbound
-    | null
-    | undefined;
-  lastAliasRequest?:
-    | UploadProjectAvatarLastAliasRequest$Outbound
-    | null
-    | undefined;
-  protectionBypass?: {
-    [k: string]: UploadProjectAvatarProtectionBypass$Outbound;
-  } | undefined;
-  hasActiveBranches?: boolean | undefined;
-  trustedIps?: UploadProjectAvatarTrustedIps$Outbound | null | undefined;
-  trustedSources?:
-    | UploadProjectAvatarTrustedSources$Outbound
-    | null
-    | undefined;
-  gitComments?: UploadProjectAvatarGitComments$Outbound | undefined;
-  gitProviderOptions?:
-    | UploadProjectAvatarGitProviderOptions$Outbound
-    | undefined;
-  paused?: boolean | undefined;
-  concurrencyBucketName?: string | undefined;
-  webAnalytics?: UploadProjectAvatarWebAnalytics$Outbound | undefined;
-  security?: UploadProjectAvatarSecurity$Outbound | undefined;
-  oidcTokenConfig?: UploadProjectAvatarOidcTokenConfig$Outbound | undefined;
-  deploymentPolicy?:
-    | UploadProjectAvatarDeploymentPolicy$Outbound
-    | null
-    | undefined;
-  tier?: string | undefined;
-  flatRateTier?: string | undefined;
-  usageStatus?: UploadProjectAvatarUsageStatus$Outbound | undefined;
-  features?: UploadProjectAvatarFeatures$Outbound | undefined;
-  v0?: boolean | undefined;
-  v0Created?: boolean | undefined;
-  abuse?: UploadProjectAvatarAbuse$Outbound | undefined;
-  internalRoutes?:
-    | Array<
-      | UploadProjectAvatarInternalRoutes1$Outbound
-      | UploadProjectAvatarInternalRoutes2$Outbound
-    >
-    | undefined;
-  hasDeployments?: boolean | undefined;
-  dismissedToasts?:
-    | Array<UploadProjectAvatarDismissedToasts$Outbound>
-    | undefined;
-  protectedSourcemaps?: boolean | undefined;
-  tracing?: UploadProjectAvatarTracing$Outbound | undefined;
-  avatar?: string | undefined;
-};
 
-/** @internal */
-export const UploadProjectAvatarResponseBody$outboundSchema: z.ZodType<
-  UploadProjectAvatarResponseBody$Outbound,
-  z.ZodTypeDef,
-  UploadProjectAvatarResponseBody
-> = z.object({
-  accountId: z.string(),
-  analytics: UploadProjectAvatarAnalytics$outboundSchema.optional(),
-  appliedCve55182Migration: z.boolean().optional(),
-  speedInsights: UploadProjectAvatarSpeedInsights$outboundSchema.optional(),
-  autoExposeSystemEnvs: z.boolean().optional(),
-  autoAssignCustomDomains: z.boolean().optional(),
-  autoAssignCustomDomainsUpdatedBy: z.string().optional(),
-  buildCommand: z.nullable(z.string()).optional(),
-  commandForIgnoringBuildStep: z.nullable(z.string()).optional(),
-  connectConfigurations: z.nullable(
-    z.array(UploadProjectAvatarConnectConfigurations$outboundSchema),
-  ).optional(),
-  connectConfigurationId: z.nullable(z.string()).optional(),
-  connectBuildsEnabled: z.boolean().optional(),
-  passiveConnectConfigurationId: z.nullable(z.string()).optional(),
-  createdAt: z.number().optional(),
-  customerSupportCodeVisibility: z.boolean().optional(),
-  crons: UploadProjectAvatarCrons$outboundSchema.optional(),
-  dataCache: UploadProjectAvatarDataCache$outboundSchema.optional(),
-  deploymentExpiration: UploadProjectAvatarDeploymentExpiration$outboundSchema,
-  expiration: UploadProjectAvatarExpiration$outboundSchema.optional(),
-  devCommand: z.nullable(z.string()).optional(),
-  directoryListing: z.boolean(),
-  installCommand: z.nullable(z.string()).optional(),
-  env: z.array(UploadProjectAvatarEnv$outboundSchema).optional(),
-  customEnvironments: z.array(
-    UploadProjectAvatarCustomEnvironments$outboundSchema,
-  ).optional(),
-  framework: z.nullable(UploadProjectAvatarFramework$outboundSchema).optional(),
-  services: z.array(UploadProjectAvatarServices$outboundSchema).optional(),
-  gitForkProtection: z.boolean().optional(),
-  gitLFS: z.boolean().optional(),
-  id: z.string(),
-  ipBuckets: z.array(UploadProjectAvatarIpBuckets$outboundSchema).optional(),
-  jobs: UploadProjectAvatarJobs$outboundSchema.optional(),
-  latestDeployments: z.array(
-    UploadProjectAvatarLatestDeployments$outboundSchema,
-  ).optional(),
-  link: UploadProjectAvatarLink$outboundSchema.optional(),
-  microfrontends: UploadProjectAvatarMicrofrontends$outboundSchema.optional(),
-  name: z.string(),
-  nodeVersion: UploadProjectAvatarNodeVersion$outboundSchema,
-  optionsAllowlist: z.nullable(
-    UploadProjectAvatarOptionsAllowlist$outboundSchema,
-  ).optional(),
-  outputDirectory: z.nullable(z.string()).optional(),
-  passwordProtection: z.nullable(
-    UploadProjectAvatarPasswordProtection$outboundSchema,
-  ).optional(),
-  passport: z.nullable(UploadProjectAvatarPassport$outboundSchema).optional(),
-  productionDeploymentsFastLane: z.boolean().optional(),
-  publicSource: z.nullable(z.boolean()).optional(),
-  resourceConfig: UploadProjectAvatarResourceConfig$outboundSchema,
-  rollbackDescription: UploadProjectAvatarRollbackDescription$outboundSchema
-    .optional(),
-  rollingRelease: z.nullable(UploadProjectAvatarRollingRelease$outboundSchema)
-    .optional(),
-  defaultResourceConfig:
-    UploadProjectAvatarDefaultResourceConfig$outboundSchema,
-  rootDirectory: z.nullable(z.string()).optional(),
-  serverlessFunctionZeroConfigFailover: z.boolean().optional(),
-  skewProtectionBoundaryAt: z.number().optional(),
-  skewProtectionMaxAge: z.number().optional(),
-  skewProtectionAllowedDomains: z.array(z.string()).optional(),
-  skipGitConnectDuringLink: z.boolean().optional(),
-  staticIps: UploadProjectAvatarStaticIps$outboundSchema.optional(),
-  sourceFilesOutsideRootDirectory: z.boolean().optional(),
-  enableAffectedProjectsDeployments: z.boolean().optional(),
-  enableExternalRewriteCaching: z.boolean().optional(),
-  ssoProtection: z.nullable(UploadProjectAvatarSsoProtection$outboundSchema)
-    .optional(),
-  targets: z.record(z.nullable(UploadProjectAvatarTargets$outboundSchema))
-    .optional(),
-  transferCompletedAt: z.number().optional(),
-  transferStartedAt: z.number().optional(),
-  transferToAccountId: z.string().optional(),
-  transferredFromAccountId: z.string().optional(),
-  updatedAt: z.number().optional(),
-  live: z.boolean().optional(),
-  enablePreviewFeedback: z.nullable(z.boolean()).optional(),
-  enableProductionFeedback: z.nullable(z.boolean()).optional(),
-  permissions: UploadProjectAvatarPermissions$outboundSchema.optional(),
-  lastRollbackTarget: z.nullable(
-    UploadProjectAvatarLastRollbackTarget$outboundSchema,
-  ).optional(),
-  lastAliasRequest: z.nullable(
-    UploadProjectAvatarLastAliasRequest$outboundSchema,
-  ).optional(),
-  protectionBypass: z.record(UploadProjectAvatarProtectionBypass$outboundSchema)
-    .optional(),
-  hasActiveBranches: z.boolean().optional(),
-  trustedIps: z.nullable(UploadProjectAvatarTrustedIps$outboundSchema)
-    .optional(),
-  trustedSources: z.nullable(UploadProjectAvatarTrustedSources$outboundSchema)
-    .optional(),
-  gitComments: UploadProjectAvatarGitComments$outboundSchema.optional(),
-  gitProviderOptions: UploadProjectAvatarGitProviderOptions$outboundSchema
-    .optional(),
-  paused: z.boolean().optional(),
-  concurrencyBucketName: z.string().optional(),
-  webAnalytics: UploadProjectAvatarWebAnalytics$outboundSchema.optional(),
-  security: z.lazy(() => UploadProjectAvatarSecurity$outboundSchema).optional(),
-  oidcTokenConfig: z.lazy(() =>
-    UploadProjectAvatarOidcTokenConfig$outboundSchema
-  ).optional(),
-  deploymentPolicy: z.nullable(
-    z.lazy(() => UploadProjectAvatarDeploymentPolicy$outboundSchema),
-  ).optional(),
-  tier: z.string().optional(),
-  flatRateTier: UploadProjectAvatarFlatRateTier$outboundSchema.optional(),
-  usageStatus: z.lazy(() => UploadProjectAvatarUsageStatus$outboundSchema)
-    .optional(),
-  features: z.lazy(() => UploadProjectAvatarFeatures$outboundSchema).optional(),
-  v0: z.boolean().optional(),
-  v0Created: z.boolean().optional(),
-  abuse: z.lazy(() => UploadProjectAvatarAbuse$outboundSchema).optional(),
-  internalRoutes: z.array(
-    smartUnion([
-      z.lazy(() => UploadProjectAvatarInternalRoutes1$outboundSchema),
-      z.lazy(() => UploadProjectAvatarInternalRoutes2$outboundSchema),
-    ]),
-  ).optional(),
-  hasDeployments: z.boolean().optional(),
-  dismissedToasts: z.array(
-    z.lazy(() => UploadProjectAvatarDismissedToasts$outboundSchema),
-  ).optional(),
-  protectedSourcemaps: z.boolean().optional(),
-  tracing: z.lazy(() => UploadProjectAvatarTracing$outboundSchema).optional(),
-  avatar: z.string().optional(),
-});
-
-export function uploadProjectAvatarResponseBodyToJSON(
-  uploadProjectAvatarResponseBody: UploadProjectAvatarResponseBody,
-): string {
-  return JSON.stringify(
-    UploadProjectAvatarResponseBody$outboundSchema.parse(
-      uploadProjectAvatarResponseBody,
-    ),
-  );
-}
 export function uploadProjectAvatarResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<UploadProjectAvatarResponseBody, SDKValidationError> {

@@ -12,69 +12,44 @@ import { smartUnion } from "../types/smartUnion.js";
 import {
   AdditionalContactInfoRequired,
   AdditionalContactInfoRequired$inboundSchema,
-  AdditionalContactInfoRequired$Outbound,
-  AdditionalContactInfoRequired$outboundSchema,
 } from "./additionalcontactinforequired.js";
 import {
   DomainNotAvailable,
   DomainNotAvailable$inboundSchema,
-  DomainNotAvailable$Outbound,
-  DomainNotAvailable$outboundSchema,
 } from "./domainnotavailable.js";
 import {
   DomainTooShort,
   DomainTooShort$inboundSchema,
-  DomainTooShort$Outbound,
-  DomainTooShort$outboundSchema,
 } from "./domaintooshort.js";
 import {
   ExpectedPriceMismatch,
   ExpectedPriceMismatch$inboundSchema,
-  ExpectedPriceMismatch$Outbound,
-  ExpectedPriceMismatch$outboundSchema,
 } from "./expectedpricemismatch.js";
-import {
-  Forbidden,
-  Forbidden$inboundSchema,
-  Forbidden$Outbound,
-  Forbidden$outboundSchema,
-} from "./forbidden.js";
+import { Forbidden, Forbidden$inboundSchema } from "./forbidden.js";
 import {
   HttpApiDecodeError,
   HttpApiDecodeError$inboundSchema,
-  HttpApiDecodeError$Outbound,
-  HttpApiDecodeError$outboundSchema,
 } from "./httpapidecodeerror.js";
 import {
   InvalidAdditionalContactInfo,
   InvalidAdditionalContactInfo$inboundSchema,
-  InvalidAdditionalContactInfo$Outbound,
-  InvalidAdditionalContactInfo$outboundSchema,
 } from "./invalidadditionalcontactinfo.js";
 import {
   LanguageCodeRequired,
   LanguageCodeRequired$inboundSchema,
-  LanguageCodeRequired$Outbound,
-  LanguageCodeRequired$outboundSchema,
 } from "./languagecoderequired.js";
 import {
   NotAuthorizedForScope,
   NotAuthorizedForScope$inboundSchema,
-  NotAuthorizedForScope$Outbound,
-  NotAuthorizedForScope$outboundSchema,
 } from "./notauthorizedforscope.js";
 import {
   OrderTooExpensive,
   OrderTooExpensive$inboundSchema,
-  OrderTooExpensive$Outbound,
-  OrderTooExpensive$outboundSchema,
 } from "./ordertooexpensive.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 import {
   TldNotSupported,
   TldNotSupported$inboundSchema,
-  TldNotSupported$Outbound,
-  TldNotSupported$outboundSchema,
 } from "./tldnotsupported.js";
 
 export type Additional = {};
@@ -207,12 +182,6 @@ export type BuySingleDomainResponseBody = {
 };
 
 /** @internal */
-export const Additional$inboundSchema: z.ZodType<
-  Additional,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-/** @internal */
 export type Additional$Outbound = {};
 
 /** @internal */
@@ -225,36 +194,7 @@ export const Additional$outboundSchema: z.ZodType<
 export function additionalToJSON(additional: Additional): string {
   return JSON.stringify(Additional$outboundSchema.parse(additional));
 }
-export function additionalFromJSON(
-  jsonString: string,
-): SafeParseResult<Additional, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Additional$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Additional' from JSON`,
-  );
-}
 
-/** @internal */
-export const ContactInformation$inboundSchema: z.ZodType<
-  ContactInformation,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  firstName: types.string(),
-  lastName: types.string(),
-  email: types.string(),
-  phone: types.string(),
-  address1: types.string(),
-  address2: types.optional(types.string()),
-  city: types.string(),
-  state: types.string(),
-  zip: types.string(),
-  country: types.string(),
-  companyName: types.optional(types.string()),
-  fax: types.optional(types.string()),
-  additional: types.optional(z.lazy(() => Additional$inboundSchema)),
-});
 /** @internal */
 export type ContactInformation$Outbound = {
   firstName: string;
@@ -300,28 +240,7 @@ export function contactInformationToJSON(
     ContactInformation$outboundSchema.parse(contactInformation),
   );
 }
-export function contactInformationFromJSON(
-  jsonString: string,
-): SafeParseResult<ContactInformation, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ContactInformation$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ContactInformation' from JSON`,
-  );
-}
 
-/** @internal */
-export const BuySingleDomainRequestBody$inboundSchema: z.ZodType<
-  BuySingleDomainRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  autoRenew: types.boolean(),
-  years: types.number(),
-  expectedPrice: types.number(),
-  contactInformation: z.lazy(() => ContactInformation$inboundSchema),
-  languageCode: types.optional(types.string()),
-});
 /** @internal */
 export type BuySingleDomainRequestBody$Outbound = {
   autoRenew: boolean;
@@ -351,30 +270,7 @@ export function buySingleDomainRequestBodyToJSON(
     BuySingleDomainRequestBody$outboundSchema.parse(buySingleDomainRequestBody),
   );
 }
-export function buySingleDomainRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<BuySingleDomainRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => BuySingleDomainRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'BuySingleDomainRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const BuySingleDomainRequest$inboundSchema: z.ZodType<
-  BuySingleDomainRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  domain: types.string(),
-  teamId: types.optional(types.string()),
-  RequestBody: z.lazy(() => BuySingleDomainRequestBody$inboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 /** @internal */
 export type BuySingleDomainRequest$Outbound = {
   domain: string;
@@ -404,15 +300,6 @@ export function buySingleDomainRequestToJSON(
     BuySingleDomainRequest$outboundSchema.parse(buySingleDomainRequest),
   );
 }
-export function buySingleDomainRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<BuySingleDomainRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => BuySingleDomainRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'BuySingleDomainRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const BuySingleDomainDomainsRegistrarResponseResponseBody$inboundSchema:
@@ -426,34 +313,7 @@ export const BuySingleDomainDomainsRegistrarResponseResponseBody$inboundSchema:
     ),
     Forbidden$inboundSchema,
   ]);
-/** @internal */
-export type BuySingleDomainDomainsRegistrarResponseResponseBody$Outbound =
-  | (NotAuthorizedForScope$Outbound & { code: "not_authorized_for_scope" })
-  | Forbidden$Outbound;
 
-/** @internal */
-export const BuySingleDomainDomainsRegistrarResponseResponseBody$outboundSchema:
-  z.ZodType<
-    BuySingleDomainDomainsRegistrarResponseResponseBody$Outbound,
-    z.ZodTypeDef,
-    unknown
-  > = z.union([
-    NotAuthorizedForScope$outboundSchema.and(
-      z.object({ code: z.literal("not_authorized_for_scope") }),
-    ),
-    Forbidden$outboundSchema,
-  ]);
-
-export function buySingleDomainDomainsRegistrarResponseResponseBodyToJSON(
-  buySingleDomainDomainsRegistrarResponseResponseBody:
-    BuySingleDomainDomainsRegistrarResponseResponseBody,
-): string {
-  return JSON.stringify(
-    BuySingleDomainDomainsRegistrarResponseResponseBody$outboundSchema.parse(
-      buySingleDomainDomainsRegistrarResponseResponseBody,
-    ),
-  );
-}
 export function buySingleDomainDomainsRegistrarResponseResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -487,46 +347,7 @@ export const BuySingleDomainDomainsRegistrarResponseBody$inboundSchema:
     TldNotSupported$inboundSchema,
     HttpApiDecodeError$inboundSchema,
   ]);
-/** @internal */
-export type BuySingleDomainDomainsRegistrarResponseBody$Outbound =
-  | DomainTooShort$Outbound
-  | OrderTooExpensive$Outbound
-  | InvalidAdditionalContactInfo$Outbound
-  | AdditionalContactInfoRequired$Outbound
-  | ExpectedPriceMismatch$Outbound
-  | DomainNotAvailable$Outbound
-  | LanguageCodeRequired$Outbound
-  | TldNotSupported$Outbound
-  | HttpApiDecodeError$Outbound;
 
-/** @internal */
-export const BuySingleDomainDomainsRegistrarResponseBody$outboundSchema:
-  z.ZodType<
-    BuySingleDomainDomainsRegistrarResponseBody$Outbound,
-    z.ZodTypeDef,
-    unknown
-  > = smartUnion([
-    DomainTooShort$outboundSchema,
-    OrderTooExpensive$outboundSchema,
-    InvalidAdditionalContactInfo$outboundSchema,
-    AdditionalContactInfoRequired$outboundSchema,
-    ExpectedPriceMismatch$outboundSchema,
-    DomainNotAvailable$outboundSchema,
-    LanguageCodeRequired$outboundSchema,
-    TldNotSupported$outboundSchema,
-    HttpApiDecodeError$outboundSchema,
-  ]);
-
-export function buySingleDomainDomainsRegistrarResponseBodyToJSON(
-  buySingleDomainDomainsRegistrarResponseBody:
-    BuySingleDomainDomainsRegistrarResponseBody,
-): string {
-  return JSON.stringify(
-    BuySingleDomainDomainsRegistrarResponseBody$outboundSchema.parse(
-      buySingleDomainDomainsRegistrarResponseBody,
-    ),
-  );
-}
 export function buySingleDomainDomainsRegistrarResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -547,10 +368,6 @@ export function buySingleDomainDomainsRegistrarResponseBodyFromJSON(
 export const BuySingleDomainMethod$inboundSchema: z.ZodNativeEnum<
   typeof BuySingleDomainMethod
 > = z.nativeEnum(BuySingleDomainMethod);
-/** @internal */
-export const BuySingleDomainMethod$outboundSchema: z.ZodNativeEnum<
-  typeof BuySingleDomainMethod
-> = BuySingleDomainMethod$inboundSchema;
 
 /** @internal */
 export const Links$inboundSchema: z.ZodType<Links, z.ZodTypeDef, unknown> = z
@@ -558,25 +375,7 @@ export const Links$inboundSchema: z.ZodType<Links, z.ZodTypeDef, unknown> = z
     href: types.string(),
     method: BuySingleDomainMethod$inboundSchema,
   });
-/** @internal */
-export type Links$Outbound = {
-  href: string;
-  method: string;
-};
 
-/** @internal */
-export const Links$outboundSchema: z.ZodType<
-  Links$Outbound,
-  z.ZodTypeDef,
-  Links
-> = z.object({
-  href: z.string(),
-  method: BuySingleDomainMethod$outboundSchema,
-});
-
-export function linksToJSON(links: Links): string {
-  return JSON.stringify(Links$outboundSchema.parse(links));
-}
 export function linksFromJSON(
   jsonString: string,
 ): SafeParseResult<Links, SDKValidationError> {
@@ -600,35 +399,7 @@ export const BuySingleDomainResponseBody$inboundSchema: z.ZodType<
     "_links": "links",
   });
 });
-/** @internal */
-export type BuySingleDomainResponseBody$Outbound = {
-  orderId: string;
-  _links: { [k: string]: Links$Outbound };
-};
 
-/** @internal */
-export const BuySingleDomainResponseBody$outboundSchema: z.ZodType<
-  BuySingleDomainResponseBody$Outbound,
-  z.ZodTypeDef,
-  BuySingleDomainResponseBody
-> = z.object({
-  orderId: z.string(),
-  links: z.record(z.lazy(() => Links$outboundSchema)),
-}).transform((v) => {
-  return remap$(v, {
-    links: "_links",
-  });
-});
-
-export function buySingleDomainResponseBodyToJSON(
-  buySingleDomainResponseBody: BuySingleDomainResponseBody,
-): string {
-  return JSON.stringify(
-    BuySingleDomainResponseBody$outboundSchema.parse(
-      buySingleDomainResponseBody,
-    ),
-  );
-}
 export function buySingleDomainResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<BuySingleDomainResponseBody, SDKValidationError> {

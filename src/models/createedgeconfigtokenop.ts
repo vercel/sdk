@@ -32,14 +32,6 @@ export type CreateEdgeConfigTokenResponseBody = {
 };
 
 /** @internal */
-export const CreateEdgeConfigTokenRequestBody$inboundSchema: z.ZodType<
-  CreateEdgeConfigTokenRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  label: types.string(),
-});
-/** @internal */
 export type CreateEdgeConfigTokenRequestBody$Outbound = {
   label: string;
 };
@@ -62,31 +54,7 @@ export function createEdgeConfigTokenRequestBodyToJSON(
     ),
   );
 }
-export function createEdgeConfigTokenRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateEdgeConfigTokenRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateEdgeConfigTokenRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateEdgeConfigTokenRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const CreateEdgeConfigTokenRequest$inboundSchema: z.ZodType<
-  CreateEdgeConfigTokenRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  edgeConfigId: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-  RequestBody: z.lazy(() => CreateEdgeConfigTokenRequestBody$inboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 /** @internal */
 export type CreateEdgeConfigTokenRequest$Outbound = {
   edgeConfigId: string;
@@ -120,15 +88,6 @@ export function createEdgeConfigTokenRequestToJSON(
     ),
   );
 }
-export function createEdgeConfigTokenRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateEdgeConfigTokenRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateEdgeConfigTokenRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateEdgeConfigTokenRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const CreateEdgeConfigTokenResponseBody$inboundSchema: z.ZodType<
@@ -139,31 +98,7 @@ export const CreateEdgeConfigTokenResponseBody$inboundSchema: z.ZodType<
   token: types.string(),
   id: types.string(),
 });
-/** @internal */
-export type CreateEdgeConfigTokenResponseBody$Outbound = {
-  token: string;
-  id: string;
-};
 
-/** @internal */
-export const CreateEdgeConfigTokenResponseBody$outboundSchema: z.ZodType<
-  CreateEdgeConfigTokenResponseBody$Outbound,
-  z.ZodTypeDef,
-  CreateEdgeConfigTokenResponseBody
-> = z.object({
-  token: z.string(),
-  id: z.string(),
-});
-
-export function createEdgeConfigTokenResponseBodyToJSON(
-  createEdgeConfigTokenResponseBody: CreateEdgeConfigTokenResponseBody,
-): string {
-  return JSON.stringify(
-    CreateEdgeConfigTokenResponseBody$outboundSchema.parse(
-      createEdgeConfigTokenResponseBody,
-    ),
-  );
-}
 export function createEdgeConfigTokenResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateEdgeConfigTokenResponseBody, SDKValidationError> {

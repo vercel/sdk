@@ -6,7 +6,6 @@ import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
-import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type CreateSessionDirectoryRequestBody = {
@@ -46,16 +45,6 @@ export type CreateSessionDirectoryRequest = {
 export type CreateSessionDirectoryResponseBody = {};
 
 /** @internal */
-export const CreateSessionDirectoryRequestBody$inboundSchema: z.ZodType<
-  CreateSessionDirectoryRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  cwd: types.optional(types.string()),
-  path: types.string(),
-  recursive: types.boolean().default(true),
-});
-/** @internal */
 export type CreateSessionDirectoryRequestBody$Outbound = {
   cwd?: string | undefined;
   path: string;
@@ -82,33 +71,7 @@ export function createSessionDirectoryRequestBodyToJSON(
     ),
   );
 }
-export function createSessionDirectoryRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateSessionDirectoryRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateSessionDirectoryRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateSessionDirectoryRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const CreateSessionDirectoryRequest$inboundSchema: z.ZodType<
-  CreateSessionDirectoryRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  sessionId: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-  RequestBody: types.optional(
-    z.lazy(() => CreateSessionDirectoryRequestBody$inboundSchema),
-  ),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 /** @internal */
 export type CreateSessionDirectoryRequest$Outbound = {
   sessionId: string;
@@ -143,15 +106,6 @@ export function createSessionDirectoryRequestToJSON(
     ),
   );
 }
-export function createSessionDirectoryRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateSessionDirectoryRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateSessionDirectoryRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateSessionDirectoryRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const CreateSessionDirectoryResponseBody$inboundSchema: z.ZodType<
@@ -159,25 +113,7 @@ export const CreateSessionDirectoryResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-/** @internal */
-export type CreateSessionDirectoryResponseBody$Outbound = {};
 
-/** @internal */
-export const CreateSessionDirectoryResponseBody$outboundSchema: z.ZodType<
-  CreateSessionDirectoryResponseBody$Outbound,
-  z.ZodTypeDef,
-  CreateSessionDirectoryResponseBody
-> = z.object({});
-
-export function createSessionDirectoryResponseBodyToJSON(
-  createSessionDirectoryResponseBody: CreateSessionDirectoryResponseBody,
-): string {
-  return JSON.stringify(
-    CreateSessionDirectoryResponseBody$outboundSchema.parse(
-      createSessionDirectoryResponseBody,
-    ),
-  );
-}
 export function createSessionDirectoryResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateSessionDirectoryResponseBody, SDKValidationError> {

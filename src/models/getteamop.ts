@@ -3,10 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
-import { Result as SafeParseResult } from "../types/fp.js";
-import * as types from "../types/primitives.js";
-import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type GetTeamRequest = {
   slug?: string | undefined;
@@ -16,15 +12,6 @@ export type GetTeamRequest = {
   teamId: string;
 };
 
-/** @internal */
-export const GetTeamRequest$inboundSchema: z.ZodType<
-  GetTeamRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  slug: types.optional(types.string()),
-  teamId: types.string(),
-});
 /** @internal */
 export type GetTeamRequest$Outbound = {
   slug?: string | undefined;
@@ -43,13 +30,4 @@ export const GetTeamRequest$outboundSchema: z.ZodType<
 
 export function getTeamRequestToJSON(getTeamRequest: GetTeamRequest): string {
   return JSON.stringify(GetTeamRequest$outboundSchema.parse(getTeamRequest));
-}
-export function getTeamRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetTeamRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetTeamRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetTeamRequest' from JSON`,
-  );
 }

@@ -367,16 +367,6 @@ export type CreateSharedEnvVariableResponseBody = {
 };
 
 /** @internal */
-export const CreateSharedEnvVariableRequestBodyEvs$inboundSchema: z.ZodType<
-  CreateSharedEnvVariableRequestBodyEvs,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  key: types.string(),
-  value: types.string(),
-  comment: types.optional(types.string()),
-});
-/** @internal */
 export type CreateSharedEnvVariableRequestBodyEvs$Outbound = {
   key: string;
   value: string;
@@ -403,54 +393,18 @@ export function createSharedEnvVariableRequestBodyEvsToJSON(
     ),
   );
 }
-export function createSharedEnvVariableRequestBodyEvsFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateSharedEnvVariableRequestBodyEvs, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      CreateSharedEnvVariableRequestBodyEvs$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateSharedEnvVariableRequestBodyEvs' from JSON`,
-  );
-}
 
-/** @internal */
-export const CreateSharedEnvVariableRequestBodyEnvironmentRequestType$inboundSchema:
-  z.ZodNativeEnum<
-    typeof CreateSharedEnvVariableRequestBodyEnvironmentRequestType
-  > = z.nativeEnum(CreateSharedEnvVariableRequestBodyEnvironmentRequestType);
 /** @internal */
 export const CreateSharedEnvVariableRequestBodyEnvironmentRequestType$outboundSchema:
   z.ZodNativeEnum<
     typeof CreateSharedEnvVariableRequestBodyEnvironmentRequestType
-  > = CreateSharedEnvVariableRequestBodyEnvironmentRequestType$inboundSchema;
+  > = z.nativeEnum(CreateSharedEnvVariableRequestBodyEnvironmentRequestType);
 
-/** @internal */
-export const CreateSharedEnvVariableRequestBodyEnvironmentTarget$inboundSchema:
-  z.ZodNativeEnum<typeof CreateSharedEnvVariableRequestBodyEnvironmentTarget> =
-    z.nativeEnum(CreateSharedEnvVariableRequestBodyEnvironmentTarget);
 /** @internal */
 export const CreateSharedEnvVariableRequestBodyEnvironmentTarget$outboundSchema:
   z.ZodNativeEnum<typeof CreateSharedEnvVariableRequestBodyEnvironmentTarget> =
-    CreateSharedEnvVariableRequestBodyEnvironmentTarget$inboundSchema;
+    z.nativeEnum(CreateSharedEnvVariableRequestBodyEnvironmentTarget);
 
-/** @internal */
-export const CreateSharedEnvVariableRequestBody3$inboundSchema: z.ZodType<
-  CreateSharedEnvVariableRequestBody3,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  evs: z.array(
-    z.lazy(() => CreateSharedEnvVariableRequestBodyEvs$inboundSchema),
-  ),
-  type: types.optional(
-    CreateSharedEnvVariableRequestBodyEnvironmentRequestType$inboundSchema,
-  ),
-  target: types.optional(
-    z.array(CreateSharedEnvVariableRequestBodyEnvironmentTarget$inboundSchema),
-  ),
-  projectId: types.optional(z.array(types.string())),
-});
 /** @internal */
 export type CreateSharedEnvVariableRequestBody3$Outbound = {
   evs: Array<CreateSharedEnvVariableRequestBodyEvs$Outbound>;
@@ -485,27 +439,7 @@ export function createSharedEnvVariableRequestBody3ToJSON(
     ),
   );
 }
-export function createSharedEnvVariableRequestBody3FromJSON(
-  jsonString: string,
-): SafeParseResult<CreateSharedEnvVariableRequestBody3, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      CreateSharedEnvVariableRequestBody3$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateSharedEnvVariableRequestBody3' from JSON`,
-  );
-}
 
-/** @internal */
-export const RequestBodyEvs$inboundSchema: z.ZodType<
-  RequestBodyEvs,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  key: types.string(),
-  value: types.string(),
-  comment: types.optional(types.string()),
-});
 /** @internal */
 export type RequestBodyEvs$Outbound = {
   key: string;
@@ -527,49 +461,17 @@ export const RequestBodyEvs$outboundSchema: z.ZodType<
 export function requestBodyEvsToJSON(requestBodyEvs: RequestBodyEvs): string {
   return JSON.stringify(RequestBodyEvs$outboundSchema.parse(requestBodyEvs));
 }
-export function requestBodyEvsFromJSON(
-  jsonString: string,
-): SafeParseResult<RequestBodyEvs, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RequestBodyEvs$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RequestBodyEvs' from JSON`,
-  );
-}
 
-/** @internal */
-export const CreateSharedEnvVariableRequestBodyEnvironmentType$inboundSchema:
-  z.ZodNativeEnum<typeof CreateSharedEnvVariableRequestBodyEnvironmentType> = z
-    .nativeEnum(CreateSharedEnvVariableRequestBodyEnvironmentType);
 /** @internal */
 export const CreateSharedEnvVariableRequestBodyEnvironmentType$outboundSchema:
-  z.ZodNativeEnum<typeof CreateSharedEnvVariableRequestBodyEnvironmentType> =
-    CreateSharedEnvVariableRequestBodyEnvironmentType$inboundSchema;
+  z.ZodNativeEnum<typeof CreateSharedEnvVariableRequestBodyEnvironmentType> = z
+    .nativeEnum(CreateSharedEnvVariableRequestBodyEnvironmentType);
 
-/** @internal */
-export const CreateSharedEnvVariableRequestBodyTarget$inboundSchema:
-  z.ZodNativeEnum<typeof CreateSharedEnvVariableRequestBodyTarget> = z
-    .nativeEnum(CreateSharedEnvVariableRequestBodyTarget);
 /** @internal */
 export const CreateSharedEnvVariableRequestBodyTarget$outboundSchema:
-  z.ZodNativeEnum<typeof CreateSharedEnvVariableRequestBodyTarget> =
-    CreateSharedEnvVariableRequestBodyTarget$inboundSchema;
+  z.ZodNativeEnum<typeof CreateSharedEnvVariableRequestBodyTarget> = z
+    .nativeEnum(CreateSharedEnvVariableRequestBodyTarget);
 
-/** @internal */
-export const CreateSharedEnvVariableRequestBody2$inboundSchema: z.ZodType<
-  CreateSharedEnvVariableRequestBody2,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  evs: z.array(z.lazy(() => RequestBodyEvs$inboundSchema)),
-  type: types.optional(
-    CreateSharedEnvVariableRequestBodyEnvironmentType$inboundSchema,
-  ),
-  target: types.optional(
-    z.array(CreateSharedEnvVariableRequestBodyTarget$inboundSchema),
-  ),
-  projectId: types.optional(z.array(types.string())),
-});
 /** @internal */
 export type CreateSharedEnvVariableRequestBody2$Outbound = {
   evs: Array<RequestBodyEvs$Outbound>;
@@ -601,24 +503,7 @@ export function createSharedEnvVariableRequestBody2ToJSON(
     ),
   );
 }
-export function createSharedEnvVariableRequestBody2FromJSON(
-  jsonString: string,
-): SafeParseResult<CreateSharedEnvVariableRequestBody2, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      CreateSharedEnvVariableRequestBody2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateSharedEnvVariableRequestBody2' from JSON`,
-  );
-}
 
-/** @internal */
-export const Evs$inboundSchema: z.ZodType<Evs, z.ZodTypeDef, unknown> = z
-  .object({
-    key: types.string(),
-    value: types.string(),
-    comment: types.optional(types.string()),
-  });
 /** @internal */
 export type Evs$Outbound = {
   key: string;
@@ -637,46 +522,18 @@ export const Evs$outboundSchema: z.ZodType<Evs$Outbound, z.ZodTypeDef, Evs> = z
 export function evsToJSON(evs: Evs): string {
   return JSON.stringify(Evs$outboundSchema.parse(evs));
 }
-export function evsFromJSON(
-  jsonString: string,
-): SafeParseResult<Evs, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Evs$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Evs' from JSON`,
-  );
-}
 
 /** @internal */
-export const CreateSharedEnvVariableRequestBodyType$inboundSchema:
+export const CreateSharedEnvVariableRequestBodyType$outboundSchema:
   z.ZodNativeEnum<typeof CreateSharedEnvVariableRequestBodyType> = z.nativeEnum(
     CreateSharedEnvVariableRequestBodyType,
   );
-/** @internal */
-export const CreateSharedEnvVariableRequestBodyType$outboundSchema:
-  z.ZodNativeEnum<typeof CreateSharedEnvVariableRequestBodyType> =
-    CreateSharedEnvVariableRequestBodyType$inboundSchema;
 
-/** @internal */
-export const RequestBodyTarget$inboundSchema: z.ZodNativeEnum<
-  typeof RequestBodyTarget
-> = z.nativeEnum(RequestBodyTarget);
 /** @internal */
 export const RequestBodyTarget$outboundSchema: z.ZodNativeEnum<
   typeof RequestBodyTarget
-> = RequestBodyTarget$inboundSchema;
+> = z.nativeEnum(RequestBodyTarget);
 
-/** @internal */
-export const CreateSharedEnvVariableRequestBody1$inboundSchema: z.ZodType<
-  CreateSharedEnvVariableRequestBody1,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  evs: z.array(z.lazy(() => Evs$inboundSchema)),
-  type: types.optional(CreateSharedEnvVariableRequestBodyType$inboundSchema),
-  target: z.array(RequestBodyTarget$inboundSchema),
-  projectId: types.optional(z.array(types.string())),
-});
 /** @internal */
 export type CreateSharedEnvVariableRequestBody1$Outbound = {
   evs: Array<Evs$Outbound>;
@@ -706,27 +563,7 @@ export function createSharedEnvVariableRequestBody1ToJSON(
     ),
   );
 }
-export function createSharedEnvVariableRequestBody1FromJSON(
-  jsonString: string,
-): SafeParseResult<CreateSharedEnvVariableRequestBody1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      CreateSharedEnvVariableRequestBody1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateSharedEnvVariableRequestBody1' from JSON`,
-  );
-}
 
-/** @internal */
-export const CreateSharedEnvVariableRequestBody$inboundSchema: z.ZodType<
-  CreateSharedEnvVariableRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([
-  z.lazy(() => CreateSharedEnvVariableRequestBody1$inboundSchema),
-  z.lazy(() => CreateSharedEnvVariableRequestBody2$inboundSchema),
-  z.lazy(() => CreateSharedEnvVariableRequestBody3$inboundSchema),
-]);
 /** @internal */
 export type CreateSharedEnvVariableRequestBody$Outbound =
   | CreateSharedEnvVariableRequestBody1$Outbound
@@ -753,37 +590,7 @@ export function createSharedEnvVariableRequestBodyToJSON(
     ),
   );
 }
-export function createSharedEnvVariableRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateSharedEnvVariableRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      CreateSharedEnvVariableRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateSharedEnvVariableRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const CreateSharedEnvVariableRequest$inboundSchema: z.ZodType<
-  CreateSharedEnvVariableRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-  RequestBody: types.optional(
-    smartUnion([
-      z.lazy(() => CreateSharedEnvVariableRequestBody1$inboundSchema),
-      z.lazy(() => CreateSharedEnvVariableRequestBody2$inboundSchema),
-      z.lazy(() => CreateSharedEnvVariableRequestBody3$inboundSchema),
-    ]),
-  ),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 /** @internal */
 export type CreateSharedEnvVariableRequest$Outbound = {
   teamId?: string | undefined;
@@ -823,33 +630,16 @@ export function createSharedEnvVariableRequestToJSON(
     ),
   );
 }
-export function createSharedEnvVariableRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateSharedEnvVariableRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateSharedEnvVariableRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateSharedEnvVariableRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const CreateSharedEnvVariableType$inboundSchema: z.ZodNativeEnum<
   typeof CreateSharedEnvVariableType
 > = z.nativeEnum(CreateSharedEnvVariableType);
-/** @internal */
-export const CreateSharedEnvVariableType$outboundSchema: z.ZodNativeEnum<
-  typeof CreateSharedEnvVariableType
-> = CreateSharedEnvVariableType$inboundSchema;
 
 /** @internal */
 export const CreateSharedEnvVariableTarget$inboundSchema: z.ZodNativeEnum<
   typeof CreateSharedEnvVariableTarget
 > = z.nativeEnum(CreateSharedEnvVariableTarget);
-/** @internal */
-export const CreateSharedEnvVariableTarget$outboundSchema: z.ZodNativeEnum<
-  typeof CreateSharedEnvVariableTarget
-> = CreateSharedEnvVariableTarget$inboundSchema;
 
 /** @internal */
 export const Created$inboundSchema: z.ZodType<Created, z.ZodTypeDef, unknown> =
@@ -876,59 +666,7 @@ export const Created$inboundSchema: z.ZodType<Created, z.ZodTypeDef, unknown> =
     comment: types.optional(types.string()),
     lastEditedByDisplayName: types.optional(types.string()),
   });
-/** @internal */
-export type Created$Outbound = {
-  created?: string | undefined;
-  key?: string | undefined;
-  ownerId?: string | null | undefined;
-  id?: string | undefined;
-  createdBy?: string | null | undefined;
-  deletedBy?: string | null | undefined;
-  updatedBy?: string | null | undefined;
-  createdAt?: number | undefined;
-  deletedAt?: number | undefined;
-  updatedAt?: number | undefined;
-  value?: string | undefined;
-  projectId?: Array<string> | undefined;
-  type?: string | undefined;
-  target?: Array<string> | undefined;
-  applyToAllCustomEnvironments?: boolean | undefined;
-  customEnvironmentIds?: Array<string> | undefined;
-  decrypted?: boolean | undefined;
-  comment?: string | undefined;
-  lastEditedByDisplayName?: string | undefined;
-};
 
-/** @internal */
-export const Created$outboundSchema: z.ZodType<
-  Created$Outbound,
-  z.ZodTypeDef,
-  Created
-> = z.object({
-  created: z.date().transform(v => v.toISOString()).optional(),
-  key: z.string().optional(),
-  ownerId: z.nullable(z.string()).optional(),
-  id: z.string().optional(),
-  createdBy: z.nullable(z.string()).optional(),
-  deletedBy: z.nullable(z.string()).optional(),
-  updatedBy: z.nullable(z.string()).optional(),
-  createdAt: z.number().optional(),
-  deletedAt: z.number().optional(),
-  updatedAt: z.number().optional(),
-  value: z.string().optional(),
-  projectId: z.array(z.string()).optional(),
-  type: CreateSharedEnvVariableType$outboundSchema.optional(),
-  target: z.array(CreateSharedEnvVariableTarget$outboundSchema).optional(),
-  applyToAllCustomEnvironments: z.boolean().optional(),
-  customEnvironmentIds: z.array(z.string()).optional(),
-  decrypted: z.boolean().optional(),
-  comment: z.string().optional(),
-  lastEditedByDisplayName: z.string().optional(),
-});
-
-export function createdToJSON(created: Created): string {
-  return JSON.stringify(Created$outboundSchema.parse(created));
-}
 export function createdFromJSON(
   jsonString: string,
 ): SafeParseResult<Created, SDKValidationError> {
@@ -942,9 +680,6 @@ export function createdFromJSON(
 /** @internal */
 export const Value2$inboundSchema: z.ZodNativeEnum<typeof Value2> = z
   .nativeEnum(Value2);
-/** @internal */
-export const Value2$outboundSchema: z.ZodNativeEnum<typeof Value2> =
-  Value2$inboundSchema;
 
 /** @internal */
 export const CreateSharedEnvVariableValue$inboundSchema: z.ZodType<
@@ -952,25 +687,7 @@ export const CreateSharedEnvVariableValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = smartUnion([types.string(), z.array(Value2$inboundSchema)]);
-/** @internal */
-export type CreateSharedEnvVariableValue$Outbound = string | Array<string>;
 
-/** @internal */
-export const CreateSharedEnvVariableValue$outboundSchema: z.ZodType<
-  CreateSharedEnvVariableValue$Outbound,
-  z.ZodTypeDef,
-  CreateSharedEnvVariableValue
-> = smartUnion([z.string(), z.array(Value2$outboundSchema)]);
-
-export function createSharedEnvVariableValueToJSON(
-  createSharedEnvVariableValue: CreateSharedEnvVariableValue,
-): string {
-  return JSON.stringify(
-    CreateSharedEnvVariableValue$outboundSchema.parse(
-      createSharedEnvVariableValue,
-    ),
-  );
-}
 export function createSharedEnvVariableValueFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateSharedEnvVariableValue, SDKValidationError> {
@@ -985,19 +702,11 @@ export function createSharedEnvVariableValueFromJSON(
 export const CreateSharedEnvVariableTarget2$inboundSchema: z.ZodNativeEnum<
   typeof CreateSharedEnvVariableTarget2
 > = z.nativeEnum(CreateSharedEnvVariableTarget2);
-/** @internal */
-export const CreateSharedEnvVariableTarget2$outboundSchema: z.ZodNativeEnum<
-  typeof CreateSharedEnvVariableTarget2
-> = CreateSharedEnvVariableTarget2$inboundSchema;
 
 /** @internal */
 export const CreateSharedEnvVariableTarget1$inboundSchema: z.ZodNativeEnum<
   typeof CreateSharedEnvVariableTarget1
 > = z.nativeEnum(CreateSharedEnvVariableTarget1);
-/** @internal */
-export const CreateSharedEnvVariableTarget1$outboundSchema: z.ZodNativeEnum<
-  typeof CreateSharedEnvVariableTarget1
-> = CreateSharedEnvVariableTarget1$inboundSchema;
 
 /** @internal */
 export const CreateSharedEnvVariableEnvironmentTarget$inboundSchema: z.ZodType<
@@ -1008,31 +717,7 @@ export const CreateSharedEnvVariableEnvironmentTarget$inboundSchema: z.ZodType<
   z.array(CreateSharedEnvVariableTarget1$inboundSchema),
   CreateSharedEnvVariableTarget2$inboundSchema,
 ]);
-/** @internal */
-export type CreateSharedEnvVariableEnvironmentTarget$Outbound =
-  | Array<string>
-  | string;
 
-/** @internal */
-export const CreateSharedEnvVariableEnvironmentTarget$outboundSchema: z.ZodType<
-  CreateSharedEnvVariableEnvironmentTarget$Outbound,
-  z.ZodTypeDef,
-  CreateSharedEnvVariableEnvironmentTarget
-> = smartUnion([
-  z.array(CreateSharedEnvVariableTarget1$outboundSchema),
-  CreateSharedEnvVariableTarget2$outboundSchema,
-]);
-
-export function createSharedEnvVariableEnvironmentTargetToJSON(
-  createSharedEnvVariableEnvironmentTarget:
-    CreateSharedEnvVariableEnvironmentTarget,
-): string {
-  return JSON.stringify(
-    CreateSharedEnvVariableEnvironmentTarget$outboundSchema.parse(
-      createSharedEnvVariableEnvironmentTarget,
-    ),
-  );
-}
 export function createSharedEnvVariableEnvironmentTargetFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -1074,52 +759,7 @@ export const CreateSharedEnvVariableError$inboundSchema: z.ZodType<
   ),
   project: types.optional(types.string()),
 });
-/** @internal */
-export type CreateSharedEnvVariableError$Outbound = {
-  code: string;
-  message: string;
-  key?: string | undefined;
-  envVarId?: string | undefined;
-  envVarKey?: string | undefined;
-  action?: string | undefined;
-  link?: string | undefined;
-  value?: string | Array<string> | undefined;
-  gitBranch?: string | undefined;
-  target?: Array<string> | string | undefined;
-  project?: string | undefined;
-};
 
-/** @internal */
-export const CreateSharedEnvVariableError$outboundSchema: z.ZodType<
-  CreateSharedEnvVariableError$Outbound,
-  z.ZodTypeDef,
-  CreateSharedEnvVariableError
-> = z.object({
-  code: z.string(),
-  message: z.string(),
-  key: z.string().optional(),
-  envVarId: z.string().optional(),
-  envVarKey: z.string().optional(),
-  action: z.string().optional(),
-  link: z.string().optional(),
-  value: smartUnion([z.string(), z.array(Value2$outboundSchema)]).optional(),
-  gitBranch: z.string().optional(),
-  target: smartUnion([
-    z.array(CreateSharedEnvVariableTarget1$outboundSchema),
-    CreateSharedEnvVariableTarget2$outboundSchema,
-  ]).optional(),
-  project: z.string().optional(),
-});
-
-export function createSharedEnvVariableErrorToJSON(
-  createSharedEnvVariableError: CreateSharedEnvVariableError,
-): string {
-  return JSON.stringify(
-    CreateSharedEnvVariableError$outboundSchema.parse(
-      createSharedEnvVariableError,
-    ),
-  );
-}
 export function createSharedEnvVariableErrorFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateSharedEnvVariableError, SDKValidationError> {
@@ -1135,23 +775,7 @@ export const Failed$inboundSchema: z.ZodType<Failed, z.ZodTypeDef, unknown> = z
   .object({
     error: z.lazy(() => CreateSharedEnvVariableError$inboundSchema),
   });
-/** @internal */
-export type Failed$Outbound = {
-  error: CreateSharedEnvVariableError$Outbound;
-};
 
-/** @internal */
-export const Failed$outboundSchema: z.ZodType<
-  Failed$Outbound,
-  z.ZodTypeDef,
-  Failed
-> = z.object({
-  error: z.lazy(() => CreateSharedEnvVariableError$outboundSchema),
-});
-
-export function failedToJSON(failed: Failed): string {
-  return JSON.stringify(Failed$outboundSchema.parse(failed));
-}
 export function failedFromJSON(
   jsonString: string,
 ): SafeParseResult<Failed, SDKValidationError> {
@@ -1171,31 +795,7 @@ export const CreateSharedEnvVariableResponseBody$inboundSchema: z.ZodType<
   created: z.array(z.lazy(() => Created$inboundSchema)),
   failed: z.array(z.lazy(() => Failed$inboundSchema)),
 });
-/** @internal */
-export type CreateSharedEnvVariableResponseBody$Outbound = {
-  created: Array<Created$Outbound>;
-  failed: Array<Failed$Outbound>;
-};
 
-/** @internal */
-export const CreateSharedEnvVariableResponseBody$outboundSchema: z.ZodType<
-  CreateSharedEnvVariableResponseBody$Outbound,
-  z.ZodTypeDef,
-  CreateSharedEnvVariableResponseBody
-> = z.object({
-  created: z.array(z.lazy(() => Created$outboundSchema)),
-  failed: z.array(z.lazy(() => Failed$outboundSchema)),
-});
-
-export function createSharedEnvVariableResponseBodyToJSON(
-  createSharedEnvVariableResponseBody: CreateSharedEnvVariableResponseBody,
-): string {
-  return JSON.stringify(
-    CreateSharedEnvVariableResponseBody$outboundSchema.parse(
-      createSharedEnvVariableResponseBody,
-    ),
-  );
-}
 export function createSharedEnvVariableResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateSharedEnvVariableResponseBody, SDKValidationError> {

@@ -53,23 +53,3 @@ export const Forbidden$inboundSchema: z.ZodType<
       body: v.body$,
     });
   });
-
-/** @internal */
-export type Forbidden$Outbound = {
-  status: number;
-  code: "forbidden";
-  message: string;
-};
-
-/** @internal */
-export const Forbidden$outboundSchema: z.ZodType<
-  Forbidden$Outbound,
-  z.ZodTypeDef,
-  Forbidden
-> = z.instanceof(Forbidden)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    status: z.number(),
-    code: z.literal("forbidden"),
-    message: z.string(),
-  }));

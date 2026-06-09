@@ -5,7 +5,6 @@
 import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
-import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type GetEdgeConfigSchemaRequest = {
@@ -25,16 +24,6 @@ export type GetEdgeConfigSchemaRequest = {
  */
 export type GetEdgeConfigSchemaResponseBody = {};
 
-/** @internal */
-export const GetEdgeConfigSchemaRequest$inboundSchema: z.ZodType<
-  GetEdgeConfigSchemaRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  edgeConfigId: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
 /** @internal */
 export type GetEdgeConfigSchemaRequest$Outbound = {
   edgeConfigId: string;
@@ -60,15 +49,6 @@ export function getEdgeConfigSchemaRequestToJSON(
     GetEdgeConfigSchemaRequest$outboundSchema.parse(getEdgeConfigSchemaRequest),
   );
 }
-export function getEdgeConfigSchemaRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetEdgeConfigSchemaRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetEdgeConfigSchemaRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetEdgeConfigSchemaRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const GetEdgeConfigSchemaResponseBody$inboundSchema: z.ZodType<
@@ -76,25 +56,7 @@ export const GetEdgeConfigSchemaResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-/** @internal */
-export type GetEdgeConfigSchemaResponseBody$Outbound = {};
 
-/** @internal */
-export const GetEdgeConfigSchemaResponseBody$outboundSchema: z.ZodType<
-  GetEdgeConfigSchemaResponseBody$Outbound,
-  z.ZodTypeDef,
-  GetEdgeConfigSchemaResponseBody
-> = z.object({});
-
-export function getEdgeConfigSchemaResponseBodyToJSON(
-  getEdgeConfigSchemaResponseBody: GetEdgeConfigSchemaResponseBody,
-): string {
-  return JSON.stringify(
-    GetEdgeConfigSchemaResponseBody$outboundSchema.parse(
-      getEdgeConfigSchemaResponseBody,
-    ),
-  );
-}
 export function getEdgeConfigSchemaResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetEdgeConfigSchemaResponseBody, SDKValidationError> {

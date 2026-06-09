@@ -3,10 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
-import { Result as SafeParseResult } from "../types/fp.js";
-import * as types from "../types/primitives.js";
-import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type ArtifactExistsRequest = {
   /**
@@ -23,16 +19,6 @@ export type ArtifactExistsRequest = {
   slug?: string | undefined;
 };
 
-/** @internal */
-export const ArtifactExistsRequest$inboundSchema: z.ZodType<
-  ArtifactExistsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  hash: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
 /** @internal */
 export type ArtifactExistsRequest$Outbound = {
   hash: string;
@@ -56,14 +42,5 @@ export function artifactExistsRequestToJSON(
 ): string {
   return JSON.stringify(
     ArtifactExistsRequest$outboundSchema.parse(artifactExistsRequest),
-  );
-}
-export function artifactExistsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<ArtifactExistsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ArtifactExistsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ArtifactExistsRequest' from JSON`,
   );
 }

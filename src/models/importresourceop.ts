@@ -4,10 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import {
-  collectExtraKeys as collectExtraKeys$,
-  safeParse,
-} from "../lib/schemas.js";
+import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -125,39 +122,19 @@ export type ImportResourceResponseBody = {
 };
 
 /** @internal */
-export const Ownership$inboundSchema: z.ZodNativeEnum<typeof Ownership> = z
+export const Ownership$outboundSchema: z.ZodNativeEnum<typeof Ownership> = z
   .nativeEnum(Ownership);
-/** @internal */
-export const Ownership$outboundSchema: z.ZodNativeEnum<typeof Ownership> =
-  Ownership$inboundSchema;
 
-/** @internal */
-export const ImportResourceStatus$inboundSchema: z.ZodNativeEnum<
-  typeof ImportResourceStatus
-> = z.nativeEnum(ImportResourceStatus);
 /** @internal */
 export const ImportResourceStatus$outboundSchema: z.ZodNativeEnum<
   typeof ImportResourceStatus
-> = ImportResourceStatus$inboundSchema;
+> = z.nativeEnum(ImportResourceStatus);
 
-/** @internal */
-export const ImportResourceType$inboundSchema: z.ZodNativeEnum<
-  typeof ImportResourceType
-> = z.nativeEnum(ImportResourceType);
 /** @internal */
 export const ImportResourceType$outboundSchema: z.ZodNativeEnum<
   typeof ImportResourceType
-> = ImportResourceType$inboundSchema;
+> = z.nativeEnum(ImportResourceType);
 
-/** @internal */
-export const ImportResourceDetails$inboundSchema: z.ZodType<
-  ImportResourceDetails,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  label: types.string(),
-  value: types.optional(types.string()),
-});
 /** @internal */
 export type ImportResourceDetails$Outbound = {
   label: string;
@@ -181,25 +158,7 @@ export function importResourceDetailsToJSON(
     ImportResourceDetails$outboundSchema.parse(importResourceDetails),
   );
 }
-export function importResourceDetailsFromJSON(
-  jsonString: string,
-): SafeParseResult<ImportResourceDetails, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ImportResourceDetails$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ImportResourceDetails' from JSON`,
-  );
-}
 
-/** @internal */
-export const ImportResourceHighlightedDetails$inboundSchema: z.ZodType<
-  ImportResourceHighlightedDetails,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  label: types.string(),
-  value: types.optional(types.string()),
-});
 /** @internal */
 export type ImportResourceHighlightedDetails$Outbound = {
   label: string;
@@ -225,40 +184,7 @@ export function importResourceHighlightedDetailsToJSON(
     ),
   );
 }
-export function importResourceHighlightedDetailsFromJSON(
-  jsonString: string,
-): SafeParseResult<ImportResourceHighlightedDetails, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ImportResourceHighlightedDetails$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ImportResourceHighlightedDetails' from JSON`,
-  );
-}
 
-/** @internal */
-export const ImportResourceBillingPlan$inboundSchema: z.ZodType<
-  ImportResourceBillingPlan,
-  z.ZodTypeDef,
-  unknown
-> = collectExtraKeys$(
-  z.object({
-    id: types.string(),
-    type: ImportResourceType$inboundSchema,
-    name: types.string(),
-    description: types.optional(types.string()),
-    paymentMethodRequired: types.optional(types.boolean()),
-    cost: types.optional(types.string()),
-    details: types.optional(
-      z.array(z.lazy(() => ImportResourceDetails$inboundSchema)),
-    ),
-    highlightedDetails: types.optional(
-      z.array(z.lazy(() => ImportResourceHighlightedDetails$inboundSchema)),
-    ),
-    effectiveDate: types.optional(types.string()),
-  }).catchall(z.any()),
-  "additionalProperties",
-  true,
-);
 /** @internal */
 export type ImportResourceBillingPlan$Outbound = {
   id: string;
@@ -310,36 +236,12 @@ export function importResourceBillingPlanToJSON(
     ImportResourceBillingPlan$outboundSchema.parse(importResourceBillingPlan),
   );
 }
-export function importResourceBillingPlanFromJSON(
-  jsonString: string,
-): SafeParseResult<ImportResourceBillingPlan, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ImportResourceBillingPlan$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ImportResourceBillingPlan' from JSON`,
-  );
-}
 
-/** @internal */
-export const ImportResourceLevel$inboundSchema: z.ZodNativeEnum<
-  typeof ImportResourceLevel
-> = z.nativeEnum(ImportResourceLevel);
 /** @internal */
 export const ImportResourceLevel$outboundSchema: z.ZodNativeEnum<
   typeof ImportResourceLevel
-> = ImportResourceLevel$inboundSchema;
+> = z.nativeEnum(ImportResourceLevel);
 
-/** @internal */
-export const ImportResourceNotification$inboundSchema: z.ZodType<
-  ImportResourceNotification,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  level: ImportResourceLevel$inboundSchema,
-  title: types.string(),
-  message: types.optional(types.string()),
-  href: types.optional(types.string()),
-});
 /** @internal */
 export type ImportResourceNotification$Outbound = {
   level: string;
@@ -367,26 +269,7 @@ export function importResourceNotificationToJSON(
     ImportResourceNotification$outboundSchema.parse(importResourceNotification),
   );
 }
-export function importResourceNotificationFromJSON(
-  jsonString: string,
-): SafeParseResult<ImportResourceNotification, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ImportResourceNotification$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ImportResourceNotification' from JSON`,
-  );
-}
 
-/** @internal */
-export const EnvironmentOverrides$inboundSchema: z.ZodType<
-  EnvironmentOverrides,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  development: types.optional(types.string()),
-  preview: types.optional(types.string()),
-  production: types.optional(types.string()),
-});
 /** @internal */
 export type EnvironmentOverrides$Outbound = {
   development?: string | undefined;
@@ -412,29 +295,7 @@ export function environmentOverridesToJSON(
     EnvironmentOverrides$outboundSchema.parse(environmentOverrides),
   );
 }
-export function environmentOverridesFromJSON(
-  jsonString: string,
-): SafeParseResult<EnvironmentOverrides, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => EnvironmentOverrides$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'EnvironmentOverrides' from JSON`,
-  );
-}
 
-/** @internal */
-export const ImportResourceSecrets$inboundSchema: z.ZodType<
-  ImportResourceSecrets,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  name: types.string(),
-  value: types.string(),
-  prefix: types.optional(types.string()),
-  environmentOverrides: types.optional(
-    z.lazy(() => EnvironmentOverrides$inboundSchema),
-  ),
-});
 /** @internal */
 export type ImportResourceSecrets$Outbound = {
   name: string;
@@ -463,38 +324,7 @@ export function importResourceSecretsToJSON(
     ImportResourceSecrets$outboundSchema.parse(importResourceSecrets),
   );
 }
-export function importResourceSecretsFromJSON(
-  jsonString: string,
-): SafeParseResult<ImportResourceSecrets, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ImportResourceSecrets$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ImportResourceSecrets' from JSON`,
-  );
-}
 
-/** @internal */
-export const ImportResourceRequestBody$inboundSchema: z.ZodType<
-  ImportResourceRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  ownership: types.optional(Ownership$inboundSchema),
-  productId: types.string(),
-  name: types.string(),
-  status: ImportResourceStatus$inboundSchema,
-  metadata: types.optional(z.record(z.any())),
-  billingPlan: types.optional(
-    z.lazy(() => ImportResourceBillingPlan$inboundSchema),
-  ),
-  notification: types.optional(
-    z.lazy(() => ImportResourceNotification$inboundSchema),
-  ),
-  extras: types.optional(z.record(z.any())),
-  secrets: types.optional(
-    z.array(z.lazy(() => ImportResourceSecrets$inboundSchema)),
-  ),
-});
 /** @internal */
 export type ImportResourceRequestBody$Outbound = {
   ownership?: string | undefined;
@@ -535,32 +365,7 @@ export function importResourceRequestBodyToJSON(
     ImportResourceRequestBody$outboundSchema.parse(importResourceRequestBody),
   );
 }
-export function importResourceRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<ImportResourceRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ImportResourceRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ImportResourceRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const ImportResourceRequest$inboundSchema: z.ZodType<
-  ImportResourceRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  integrationConfigurationId: types.string(),
-  resourceId: types.string(),
-  RequestBody: types.optional(
-    z.lazy(() => ImportResourceRequestBody$inboundSchema),
-  ),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 /** @internal */
 export type ImportResourceRequest$Outbound = {
   integrationConfigurationId: string;
@@ -591,15 +396,6 @@ export function importResourceRequestToJSON(
     ImportResourceRequest$outboundSchema.parse(importResourceRequest),
   );
 }
-export function importResourceRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<ImportResourceRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ImportResourceRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ImportResourceRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const ImportResourceResponseBody$inboundSchema: z.ZodType<
@@ -609,27 +405,7 @@ export const ImportResourceResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   name: types.string(),
 });
-/** @internal */
-export type ImportResourceResponseBody$Outbound = {
-  name: string;
-};
 
-/** @internal */
-export const ImportResourceResponseBody$outboundSchema: z.ZodType<
-  ImportResourceResponseBody$Outbound,
-  z.ZodTypeDef,
-  ImportResourceResponseBody
-> = z.object({
-  name: z.string(),
-});
-
-export function importResourceResponseBodyToJSON(
-  importResourceResponseBody: ImportResourceResponseBody,
-): string {
-  return JSON.stringify(
-    ImportResourceResponseBody$outboundSchema.parse(importResourceResponseBody),
-  );
-}
 export function importResourceResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<ImportResourceResponseBody, SDKValidationError> {

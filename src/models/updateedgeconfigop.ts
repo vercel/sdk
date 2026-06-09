@@ -84,14 +84,6 @@ export type UpdateEdgeConfigResponseBody = {
 };
 
 /** @internal */
-export const UpdateEdgeConfigRequestBody$inboundSchema: z.ZodType<
-  UpdateEdgeConfigRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  slug: types.string(),
-});
-/** @internal */
 export type UpdateEdgeConfigRequestBody$Outbound = {
   slug: string;
 };
@@ -114,31 +106,7 @@ export function updateEdgeConfigRequestBodyToJSON(
     ),
   );
 }
-export function updateEdgeConfigRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateEdgeConfigRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateEdgeConfigRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateEdgeConfigRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateEdgeConfigRequest$inboundSchema: z.ZodType<
-  UpdateEdgeConfigRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  edgeConfigId: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-  RequestBody: z.lazy(() => UpdateEdgeConfigRequestBody$inboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 /** @internal */
 export type UpdateEdgeConfigRequest$Outbound = {
   edgeConfigId: string;
@@ -170,15 +138,6 @@ export function updateEdgeConfigRequestToJSON(
     UpdateEdgeConfigRequest$outboundSchema.parse(updateEdgeConfigRequest),
   );
 }
-export function updateEdgeConfigRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateEdgeConfigRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateEdgeConfigRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateEdgeConfigRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const UpdateEdgeConfigPurpose2$inboundSchema: z.ZodType<
@@ -189,29 +148,7 @@ export const UpdateEdgeConfigPurpose2$inboundSchema: z.ZodType<
   type: types.literal("experimentation"),
   resourceId: types.string(),
 });
-/** @internal */
-export type UpdateEdgeConfigPurpose2$Outbound = {
-  type: "experimentation";
-  resourceId: string;
-};
 
-/** @internal */
-export const UpdateEdgeConfigPurpose2$outboundSchema: z.ZodType<
-  UpdateEdgeConfigPurpose2$Outbound,
-  z.ZodTypeDef,
-  UpdateEdgeConfigPurpose2
-> = z.object({
-  type: z.literal("experimentation"),
-  resourceId: z.string(),
-});
-
-export function updateEdgeConfigPurpose2ToJSON(
-  updateEdgeConfigPurpose2: UpdateEdgeConfigPurpose2,
-): string {
-  return JSON.stringify(
-    UpdateEdgeConfigPurpose2$outboundSchema.parse(updateEdgeConfigPurpose2),
-  );
-}
 export function updateEdgeConfigPurpose2FromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateEdgeConfigPurpose2, SDKValidationError> {
@@ -231,29 +168,7 @@ export const UpdateEdgeConfigPurpose1$inboundSchema: z.ZodType<
   type: types.literal("flags"),
   projectId: types.string(),
 });
-/** @internal */
-export type UpdateEdgeConfigPurpose1$Outbound = {
-  type: "flags";
-  projectId: string;
-};
 
-/** @internal */
-export const UpdateEdgeConfigPurpose1$outboundSchema: z.ZodType<
-  UpdateEdgeConfigPurpose1$Outbound,
-  z.ZodTypeDef,
-  UpdateEdgeConfigPurpose1
-> = z.object({
-  type: z.literal("flags"),
-  projectId: z.string(),
-});
-
-export function updateEdgeConfigPurpose1ToJSON(
-  updateEdgeConfigPurpose1: UpdateEdgeConfigPurpose1,
-): string {
-  return JSON.stringify(
-    UpdateEdgeConfigPurpose1$outboundSchema.parse(updateEdgeConfigPurpose1),
-  );
-}
 export function updateEdgeConfigPurpose1FromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateEdgeConfigPurpose1, SDKValidationError> {
@@ -273,28 +188,7 @@ export const UpdateEdgeConfigPurpose$inboundSchema: z.ZodType<
   z.lazy(() => UpdateEdgeConfigPurpose1$inboundSchema),
   z.lazy(() => UpdateEdgeConfigPurpose2$inboundSchema),
 ]);
-/** @internal */
-export type UpdateEdgeConfigPurpose$Outbound =
-  | UpdateEdgeConfigPurpose1$Outbound
-  | UpdateEdgeConfigPurpose2$Outbound;
 
-/** @internal */
-export const UpdateEdgeConfigPurpose$outboundSchema: z.ZodType<
-  UpdateEdgeConfigPurpose$Outbound,
-  z.ZodTypeDef,
-  UpdateEdgeConfigPurpose
-> = z.union([
-  z.lazy(() => UpdateEdgeConfigPurpose1$outboundSchema),
-  z.lazy(() => UpdateEdgeConfigPurpose2$outboundSchema),
-]);
-
-export function updateEdgeConfigPurposeToJSON(
-  updateEdgeConfigPurpose: UpdateEdgeConfigPurpose,
-): string {
-  return JSON.stringify(
-    UpdateEdgeConfigPurpose$outboundSchema.parse(updateEdgeConfigPurpose),
-  );
-}
 export function updateEdgeConfigPurposeFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateEdgeConfigPurpose, SDKValidationError> {
@@ -315,31 +209,7 @@ export const UpdateEdgeConfigTransfer$inboundSchema: z.ZodType<
   startedAt: types.number(),
   doneAt: types.nullable(types.number()),
 });
-/** @internal */
-export type UpdateEdgeConfigTransfer$Outbound = {
-  fromAccountId: string;
-  startedAt: number;
-  doneAt: number | null;
-};
 
-/** @internal */
-export const UpdateEdgeConfigTransfer$outboundSchema: z.ZodType<
-  UpdateEdgeConfigTransfer$Outbound,
-  z.ZodTypeDef,
-  UpdateEdgeConfigTransfer
-> = z.object({
-  fromAccountId: z.string(),
-  startedAt: z.number(),
-  doneAt: z.nullable(z.number()),
-});
-
-export function updateEdgeConfigTransferToJSON(
-  updateEdgeConfigTransfer: UpdateEdgeConfigTransfer,
-): string {
-  return JSON.stringify(
-    UpdateEdgeConfigTransfer$outboundSchema.parse(updateEdgeConfigTransfer),
-  );
-}
 export function updateEdgeConfigTransferFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateEdgeConfigTransfer, SDKValidationError> {
@@ -356,23 +226,7 @@ export const UpdateEdgeConfigSchema$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-/** @internal */
-export type UpdateEdgeConfigSchema$Outbound = {};
 
-/** @internal */
-export const UpdateEdgeConfigSchema$outboundSchema: z.ZodType<
-  UpdateEdgeConfigSchema$Outbound,
-  z.ZodTypeDef,
-  UpdateEdgeConfigSchema
-> = z.object({});
-
-export function updateEdgeConfigSchemaToJSON(
-  updateEdgeConfigSchema: UpdateEdgeConfigSchema,
-): string {
-  return JSON.stringify(
-    UpdateEdgeConfigSchema$outboundSchema.parse(updateEdgeConfigSchema),
-  );
-}
 export function updateEdgeConfigSchemaFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateEdgeConfigSchema, SDKValidationError> {
@@ -411,61 +265,7 @@ export const UpdateEdgeConfigResponseBody$inboundSchema: z.ZodType<
   sizeInBytes: types.number(),
   itemCount: types.number(),
 });
-/** @internal */
-export type UpdateEdgeConfigResponseBody$Outbound = {
-  id: string;
-  createdAt: number;
-  createdBy?: string | undefined;
-  ownerId: string;
-  slug: string;
-  updatedAt: number;
-  digest: string;
-  purpose?:
-    | UpdateEdgeConfigPurpose1$Outbound
-    | UpdateEdgeConfigPurpose2$Outbound
-    | undefined;
-  deletedAt?: number | null | undefined;
-  transfer?: UpdateEdgeConfigTransfer$Outbound | undefined;
-  schema?: UpdateEdgeConfigSchema$Outbound | undefined;
-  syncedToDynamoAt?: number | undefined;
-  sizeInBytes: number;
-  itemCount: number;
-};
 
-/** @internal */
-export const UpdateEdgeConfigResponseBody$outboundSchema: z.ZodType<
-  UpdateEdgeConfigResponseBody$Outbound,
-  z.ZodTypeDef,
-  UpdateEdgeConfigResponseBody
-> = z.object({
-  id: z.string(),
-  createdAt: z.number(),
-  createdBy: z.string().optional(),
-  ownerId: z.string(),
-  slug: z.string(),
-  updatedAt: z.number(),
-  digest: z.string(),
-  purpose: z.union([
-    z.lazy(() => UpdateEdgeConfigPurpose1$outboundSchema),
-    z.lazy(() => UpdateEdgeConfigPurpose2$outboundSchema),
-  ]).optional(),
-  deletedAt: z.nullable(z.number()).optional(),
-  transfer: z.lazy(() => UpdateEdgeConfigTransfer$outboundSchema).optional(),
-  schema: z.lazy(() => UpdateEdgeConfigSchema$outboundSchema).optional(),
-  syncedToDynamoAt: z.number().optional(),
-  sizeInBytes: z.number(),
-  itemCount: z.number(),
-});
-
-export function updateEdgeConfigResponseBodyToJSON(
-  updateEdgeConfigResponseBody: UpdateEdgeConfigResponseBody,
-): string {
-  return JSON.stringify(
-    UpdateEdgeConfigResponseBody$outboundSchema.parse(
-      updateEdgeConfigResponseBody,
-    ),
-  );
-}
 export function updateEdgeConfigResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateEdgeConfigResponseBody, SDKValidationError> {

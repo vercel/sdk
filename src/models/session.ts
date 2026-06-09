@@ -10,8 +10,6 @@ import * as types from "../types/primitives.js";
 import {
   SandboxNetworkPolicy,
   SandboxNetworkPolicy$inboundSchema,
-  SandboxNetworkPolicy$Outbound,
-  SandboxNetworkPolicy$outboundSchema,
 } from "./sandboxnetworkpolicy.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
@@ -142,10 +140,6 @@ export type Session = {
 export const SessionStatus$inboundSchema: z.ZodNativeEnum<
   typeof SessionStatus
 > = z.nativeEnum(SessionStatus);
-/** @internal */
-export const SessionStatus$outboundSchema: z.ZodNativeEnum<
-  typeof SessionStatus
-> = SessionStatus$inboundSchema;
 
 /** @internal */
 export const NetworkTransfer$inboundSchema: z.ZodType<
@@ -156,27 +150,7 @@ export const NetworkTransfer$inboundSchema: z.ZodType<
   ingress: types.number(),
   egress: types.number(),
 });
-/** @internal */
-export type NetworkTransfer$Outbound = {
-  ingress: number;
-  egress: number;
-};
 
-/** @internal */
-export const NetworkTransfer$outboundSchema: z.ZodType<
-  NetworkTransfer$Outbound,
-  z.ZodTypeDef,
-  NetworkTransfer
-> = z.object({
-  ingress: z.number(),
-  egress: z.number(),
-});
-
-export function networkTransferToJSON(
-  networkTransfer: NetworkTransfer,
-): string {
-  return JSON.stringify(NetworkTransfer$outboundSchema.parse(networkTransfer));
-}
 export function networkTransferFromJSON(
   jsonString: string,
 ): SafeParseResult<NetworkTransfer, SDKValidationError> {
@@ -216,67 +190,7 @@ export const Session$inboundSchema: z.ZodType<Session, z.ZodTypeDef, unknown> =
       z.lazy(() => NetworkTransfer$inboundSchema),
     ),
   });
-/** @internal */
-export type Session$Outbound = {
-  sourceSandboxName: string;
-  projectId: string;
-  id: string;
-  memory: number;
-  vcpus: number;
-  region: string;
-  runtime: string;
-  timeout: number;
-  status: string;
-  requestedAt: number;
-  startedAt?: number | undefined;
-  cwd: string;
-  requestedStopAt?: number | undefined;
-  stoppedAt?: number | undefined;
-  abortedAt?: number | undefined;
-  duration?: number | undefined;
-  sourceSnapshotId?: string | undefined;
-  snapshottedAt?: number | undefined;
-  createdAt: number;
-  updatedAt: number;
-  networkPolicy?: SandboxNetworkPolicy$Outbound | undefined;
-  activeCpuDurationMs?: number | undefined;
-  networkTransfer?: NetworkTransfer$Outbound | undefined;
-};
 
-/** @internal */
-export const Session$outboundSchema: z.ZodType<
-  Session$Outbound,
-  z.ZodTypeDef,
-  Session
-> = z.object({
-  sourceSandboxName: z.string(),
-  projectId: z.string(),
-  id: z.string(),
-  memory: z.number(),
-  vcpus: z.number(),
-  region: z.string(),
-  runtime: z.string(),
-  timeout: z.number(),
-  status: SessionStatus$outboundSchema,
-  requestedAt: z.number(),
-  startedAt: z.number().optional(),
-  cwd: z.string(),
-  requestedStopAt: z.number().optional(),
-  stoppedAt: z.number().optional(),
-  abortedAt: z.number().optional(),
-  duration: z.number().optional(),
-  sourceSnapshotId: z.string().optional(),
-  snapshottedAt: z.number().optional(),
-  createdAt: z.number(),
-  updatedAt: z.number(),
-  networkPolicy: SandboxNetworkPolicy$outboundSchema.optional(),
-  activeCpuDurationMs: z.number().optional(),
-  networkTransfer: z.lazy(() => NetworkTransfer$outboundSchema).optional(),
-});
-
-export function sessionToJSON(session: Session): string {
-  return JSON.stringify(Session$outboundSchema.parse(session));
-}
 export function sessionFromJSON(
   jsonString: string,
 ): SafeParseResult<Session, SDKValidationError> {

@@ -11,186 +11,98 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
 import {
   UpdateProjectAnalytics,
   UpdateProjectAnalytics$inboundSchema,
-  UpdateProjectAnalytics$Outbound,
-  UpdateProjectAnalytics$outboundSchema,
   UpdateProjectConnectConfigurations,
   UpdateProjectConnectConfigurations$inboundSchema,
-  UpdateProjectConnectConfigurations$Outbound,
-  UpdateProjectConnectConfigurations$outboundSchema,
   UpdateProjectCrons,
   UpdateProjectCrons$inboundSchema,
-  UpdateProjectCrons$Outbound,
-  UpdateProjectCrons$outboundSchema,
   UpdateProjectCustomEnvironments,
   UpdateProjectCustomEnvironments$inboundSchema,
-  UpdateProjectCustomEnvironments$Outbound,
-  UpdateProjectCustomEnvironments$outboundSchema,
   UpdateProjectDataCache,
   UpdateProjectDataCache$inboundSchema,
-  UpdateProjectDataCache$Outbound,
-  UpdateProjectDataCache$outboundSchema,
   UpdateProjectDeploymentExpiration,
   UpdateProjectDeploymentExpiration$inboundSchema,
-  UpdateProjectDeploymentExpiration$Outbound,
-  UpdateProjectDeploymentExpiration$outboundSchema,
   UpdateProjectExpiration,
   UpdateProjectExpiration$inboundSchema,
-  UpdateProjectExpiration$Outbound,
-  UpdateProjectExpiration$outboundSchema,
   UpdateProjectIpBuckets,
   UpdateProjectIpBuckets$inboundSchema,
-  UpdateProjectIpBuckets$Outbound,
-  UpdateProjectIpBuckets$outboundSchema,
   UpdateProjectJobs,
   UpdateProjectJobs$inboundSchema,
-  UpdateProjectJobs$Outbound,
-  UpdateProjectJobs$outboundSchema,
   UpdateProjectLatestDeployments,
   UpdateProjectLatestDeployments$inboundSchema,
-  UpdateProjectLatestDeployments$Outbound,
-  UpdateProjectLatestDeployments$outboundSchema,
   UpdateProjectLink,
   UpdateProjectLink$inboundSchema,
-  UpdateProjectLink$Outbound,
-  UpdateProjectLink$outboundSchema,
   UpdateProjectMicrofrontends,
   UpdateProjectMicrofrontends$inboundSchema,
-  UpdateProjectMicrofrontends$Outbound,
-  UpdateProjectMicrofrontends$outboundSchema,
   UpdateProjectProjectsEnv,
   UpdateProjectProjectsEnv$inboundSchema,
-  UpdateProjectProjectsEnv$Outbound,
-  UpdateProjectProjectsEnv$outboundSchema,
   UpdateProjectProjectsFramework,
   UpdateProjectProjectsFramework$inboundSchema,
-  UpdateProjectProjectsFramework$outboundSchema,
   UpdateProjectProjectsNodeVersion,
   UpdateProjectProjectsNodeVersion$inboundSchema,
-  UpdateProjectProjectsNodeVersion$outboundSchema,
   UpdateProjectProjectsOptionsAllowlist,
   UpdateProjectProjectsOptionsAllowlist$inboundSchema,
-  UpdateProjectProjectsOptionsAllowlist$Outbound,
-  UpdateProjectProjectsOptionsAllowlist$outboundSchema,
   UpdateProjectServices,
   UpdateProjectServices$inboundSchema,
-  UpdateProjectServices$Outbound,
-  UpdateProjectServices$outboundSchema,
   UpdateProjectSpeedInsights,
   UpdateProjectSpeedInsights$inboundSchema,
-  UpdateProjectSpeedInsights$Outbound,
-  UpdateProjectSpeedInsights$outboundSchema,
 } from "./updateprojectprojectsoptionsallowlist.js";
 import {
   UpdateProjectAbuse,
   UpdateProjectAbuse$inboundSchema,
-  UpdateProjectAbuse$Outbound,
-  UpdateProjectAbuse$outboundSchema,
   UpdateProjectDefaultResourceConfig,
   UpdateProjectDefaultResourceConfig$inboundSchema,
-  UpdateProjectDefaultResourceConfig$Outbound,
-  UpdateProjectDefaultResourceConfig$outboundSchema,
   UpdateProjectFeatures,
   UpdateProjectFeatures$inboundSchema,
-  UpdateProjectFeatures$Outbound,
-  UpdateProjectFeatures$outboundSchema,
   UpdateProjectFlatRateTier,
   UpdateProjectFlatRateTier$inboundSchema,
-  UpdateProjectFlatRateTier$outboundSchema,
   UpdateProjectGitComments,
   UpdateProjectGitComments$inboundSchema,
-  UpdateProjectGitComments$Outbound,
-  UpdateProjectGitComments$outboundSchema,
   UpdateProjectGitProviderOptions,
   UpdateProjectGitProviderOptions$inboundSchema,
-  UpdateProjectGitProviderOptions$Outbound,
-  UpdateProjectGitProviderOptions$outboundSchema,
   UpdateProjectInternalRoutes,
   UpdateProjectInternalRoutes$inboundSchema,
-  UpdateProjectInternalRoutes$Outbound,
-  UpdateProjectInternalRoutes$outboundSchema,
   UpdateProjectLastAliasRequest,
   UpdateProjectLastAliasRequest$inboundSchema,
-  UpdateProjectLastAliasRequest$Outbound,
-  UpdateProjectLastAliasRequest$outboundSchema,
   UpdateProjectLastRollbackTarget,
   UpdateProjectLastRollbackTarget$inboundSchema,
-  UpdateProjectLastRollbackTarget$Outbound,
-  UpdateProjectLastRollbackTarget$outboundSchema,
   UpdateProjectPermissions,
   UpdateProjectPermissions$inboundSchema,
-  UpdateProjectPermissions$Outbound,
-  UpdateProjectPermissions$outboundSchema,
   UpdateProjectProjectsAction,
   UpdateProjectProjectsAction$inboundSchema,
-  UpdateProjectProjectsAction$outboundSchema,
   UpdateProjectProjectsDeploymentPolicy,
   UpdateProjectProjectsDeploymentPolicy$inboundSchema,
-  UpdateProjectProjectsDeploymentPolicy$Outbound,
-  UpdateProjectProjectsDeploymentPolicy$outboundSchema,
   UpdateProjectProjectsOidcTokenConfig,
   UpdateProjectProjectsOidcTokenConfig$inboundSchema,
-  UpdateProjectProjectsOidcTokenConfig$Outbound,
-  UpdateProjectProjectsOidcTokenConfig$outboundSchema,
   UpdateProjectProjectsPassport,
   UpdateProjectProjectsPassport$inboundSchema,
-  UpdateProjectProjectsPassport$Outbound,
-  UpdateProjectProjectsPassport$outboundSchema,
   UpdateProjectProjectsPasswordProtection,
   UpdateProjectProjectsPasswordProtection$inboundSchema,
-  UpdateProjectProjectsPasswordProtection$Outbound,
-  UpdateProjectProjectsPasswordProtection$outboundSchema,
   UpdateProjectProjectsResourceConfig,
   UpdateProjectProjectsResourceConfig$inboundSchema,
-  UpdateProjectProjectsResourceConfig$Outbound,
-  UpdateProjectProjectsResourceConfig$outboundSchema,
   UpdateProjectProjectsSsoProtection,
   UpdateProjectProjectsSsoProtection$inboundSchema,
-  UpdateProjectProjectsSsoProtection$Outbound,
-  UpdateProjectProjectsSsoProtection$outboundSchema,
   UpdateProjectProjectsStaticIps,
   UpdateProjectProjectsStaticIps$inboundSchema,
-  UpdateProjectProjectsStaticIps$Outbound,
-  UpdateProjectProjectsStaticIps$outboundSchema,
   UpdateProjectProjectsTrustedIps,
   UpdateProjectProjectsTrustedIps$inboundSchema,
-  UpdateProjectProjectsTrustedIps$Outbound,
-  UpdateProjectProjectsTrustedIps$outboundSchema,
   UpdateProjectProtectionBypass,
   UpdateProjectProtectionBypass$inboundSchema,
-  UpdateProjectProtectionBypass$Outbound,
-  UpdateProjectProtectionBypass$outboundSchema,
   UpdateProjectRollbackDescription,
   UpdateProjectRollbackDescription$inboundSchema,
-  UpdateProjectRollbackDescription$Outbound,
-  UpdateProjectRollbackDescription$outboundSchema,
   UpdateProjectRollingRelease,
   UpdateProjectRollingRelease$inboundSchema,
-  UpdateProjectRollingRelease$Outbound,
-  UpdateProjectRollingRelease$outboundSchema,
   UpdateProjectSecurity,
   UpdateProjectSecurity$inboundSchema,
-  UpdateProjectSecurity$Outbound,
-  UpdateProjectSecurity$outboundSchema,
   UpdateProjectTargets,
   UpdateProjectTargets$inboundSchema,
-  UpdateProjectTargets$Outbound,
-  UpdateProjectTargets$outboundSchema,
   UpdateProjectTrustedSources,
   UpdateProjectTrustedSources$inboundSchema,
-  UpdateProjectTrustedSources$Outbound,
-  UpdateProjectTrustedSources$outboundSchema,
   UpdateProjectUsageStatus,
   UpdateProjectUsageStatus$inboundSchema,
-  UpdateProjectUsageStatus$Outbound,
-  UpdateProjectUsageStatus$outboundSchema,
   UpdateProjectValue,
   UpdateProjectValue$inboundSchema,
-  UpdateProjectValue$Outbound,
-  UpdateProjectValue$outboundSchema,
   UpdateProjectWebAnalytics,
   UpdateProjectWebAnalytics$inboundSchema,
-  UpdateProjectWebAnalytics$Outbound,
-  UpdateProjectWebAnalytics$outboundSchema,
 } from "./updateprojectvalue.js";
 
 export type UpdateProjectProjectsDismissedToasts = {
@@ -349,35 +261,7 @@ export const UpdateProjectProjectsDismissedToasts$inboundSchema: z.ZodType<
   action: UpdateProjectProjectsAction$inboundSchema,
   value: types.nullable(UpdateProjectValue$inboundSchema),
 });
-/** @internal */
-export type UpdateProjectProjectsDismissedToasts$Outbound = {
-  key: string;
-  dismissedAt: number;
-  action: string;
-  value: UpdateProjectValue$Outbound | null;
-};
 
-/** @internal */
-export const UpdateProjectProjectsDismissedToasts$outboundSchema: z.ZodType<
-  UpdateProjectProjectsDismissedToasts$Outbound,
-  z.ZodTypeDef,
-  UpdateProjectProjectsDismissedToasts
-> = z.object({
-  key: z.string(),
-  dismissedAt: z.number(),
-  action: UpdateProjectProjectsAction$outboundSchema,
-  value: z.nullable(UpdateProjectValue$outboundSchema),
-});
-
-export function updateProjectProjectsDismissedToastsToJSON(
-  updateProjectProjectsDismissedToasts: UpdateProjectProjectsDismissedToasts,
-): string {
-  return JSON.stringify(
-    UpdateProjectProjectsDismissedToasts$outboundSchema.parse(
-      updateProjectProjectsDismissedToasts,
-    ),
-  );
-}
 export function updateProjectProjectsDismissedToastsFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateProjectProjectsDismissedToasts, SDKValidationError> {
@@ -393,10 +277,6 @@ export function updateProjectProjectsDismissedToastsFromJSON(
 export const UpdateProjectProjectsResponseEnv$inboundSchema: z.ZodNativeEnum<
   typeof UpdateProjectProjectsResponseEnv
 > = z.nativeEnum(UpdateProjectProjectsResponseEnv);
-/** @internal */
-export const UpdateProjectProjectsResponseEnv$outboundSchema: z.ZodNativeEnum<
-  typeof UpdateProjectProjectsResponseEnv
-> = UpdateProjectProjectsResponseEnv$inboundSchema;
 
 /** @internal */
 export const UpdateProjectSamplingRules$inboundSchema: z.ZodType<
@@ -408,31 +288,7 @@ export const UpdateProjectSamplingRules$inboundSchema: z.ZodType<
   env: types.optional(UpdateProjectProjectsResponseEnv$inboundSchema),
   requestPath: types.optional(types.string()),
 });
-/** @internal */
-export type UpdateProjectSamplingRules$Outbound = {
-  rate: number;
-  env?: string | undefined;
-  requestPath?: string | undefined;
-};
 
-/** @internal */
-export const UpdateProjectSamplingRules$outboundSchema: z.ZodType<
-  UpdateProjectSamplingRules$Outbound,
-  z.ZodTypeDef,
-  UpdateProjectSamplingRules
-> = z.object({
-  rate: z.number(),
-  env: UpdateProjectProjectsResponseEnv$outboundSchema.optional(),
-  requestPath: z.string().optional(),
-});
-
-export function updateProjectSamplingRulesToJSON(
-  updateProjectSamplingRules: UpdateProjectSamplingRules,
-): string {
-  return JSON.stringify(
-    UpdateProjectSamplingRules$outboundSchema.parse(updateProjectSamplingRules),
-  );
-}
 export function updateProjectSamplingRulesFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateProjectSamplingRules, SDKValidationError> {
@@ -455,33 +311,7 @@ export const UpdateProjectTracing$inboundSchema: z.ZodType<
     z.array(z.lazy(() => UpdateProjectSamplingRules$inboundSchema)),
   ),
 });
-/** @internal */
-export type UpdateProjectTracing$Outbound = {
-  domains?: string | undefined;
-  ignorePaths?: Array<string> | undefined;
-  samplingRules?: Array<UpdateProjectSamplingRules$Outbound> | undefined;
-};
 
-/** @internal */
-export const UpdateProjectTracing$outboundSchema: z.ZodType<
-  UpdateProjectTracing$Outbound,
-  z.ZodTypeDef,
-  UpdateProjectTracing
-> = z.object({
-  domains: z.string().optional(),
-  ignorePaths: z.array(z.string()).optional(),
-  samplingRules: z.array(
-    z.lazy(() => UpdateProjectSamplingRules$outboundSchema),
-  ).optional(),
-});
-
-export function updateProjectTracingToJSON(
-  updateProjectTracing: UpdateProjectTracing,
-): string {
-  return JSON.stringify(
-    UpdateProjectTracing$outboundSchema.parse(updateProjectTracing),
-  );
-}
 export function updateProjectTracingFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateProjectTracing, SDKValidationError> {
@@ -626,262 +456,7 @@ export const UpdateProjectResponseBody$inboundSchema: z.ZodType<
   tracing: types.optional(z.lazy(() => UpdateProjectTracing$inboundSchema)),
   avatar: types.optional(types.string()),
 });
-/** @internal */
-export type UpdateProjectResponseBody$Outbound = {
-  accountId: string;
-  analytics?: UpdateProjectAnalytics$Outbound | undefined;
-  appliedCve55182Migration?: boolean | undefined;
-  speedInsights?: UpdateProjectSpeedInsights$Outbound | undefined;
-  autoExposeSystemEnvs?: boolean | undefined;
-  autoAssignCustomDomains?: boolean | undefined;
-  autoAssignCustomDomainsUpdatedBy?: string | undefined;
-  buildCommand?: string | null | undefined;
-  commandForIgnoringBuildStep?: string | null | undefined;
-  connectConfigurations?:
-    | Array<UpdateProjectConnectConfigurations$Outbound>
-    | null
-    | undefined;
-  connectConfigurationId?: string | null | undefined;
-  connectBuildsEnabled?: boolean | undefined;
-  passiveConnectConfigurationId?: string | null | undefined;
-  createdAt?: number | undefined;
-  customerSupportCodeVisibility?: boolean | undefined;
-  crons?: UpdateProjectCrons$Outbound | undefined;
-  dataCache?: UpdateProjectDataCache$Outbound | undefined;
-  deploymentExpiration: UpdateProjectDeploymentExpiration$Outbound;
-  expiration?: UpdateProjectExpiration$Outbound | undefined;
-  devCommand?: string | null | undefined;
-  directoryListing: boolean;
-  installCommand?: string | null | undefined;
-  env?: Array<UpdateProjectProjectsEnv$Outbound> | undefined;
-  customEnvironments?:
-    | Array<UpdateProjectCustomEnvironments$Outbound>
-    | undefined;
-  framework?: string | null | undefined;
-  services?: Array<UpdateProjectServices$Outbound> | undefined;
-  gitForkProtection?: boolean | undefined;
-  gitLFS?: boolean | undefined;
-  id: string;
-  ipBuckets?: Array<UpdateProjectIpBuckets$Outbound> | undefined;
-  jobs?: UpdateProjectJobs$Outbound | undefined;
-  latestDeployments?:
-    | Array<UpdateProjectLatestDeployments$Outbound>
-    | undefined;
-  link?: UpdateProjectLink$Outbound | undefined;
-  microfrontends?: UpdateProjectMicrofrontends$Outbound | undefined;
-  name: string;
-  nodeVersion: string;
-  optionsAllowlist?:
-    | UpdateProjectProjectsOptionsAllowlist$Outbound
-    | null
-    | undefined;
-  outputDirectory?: string | null | undefined;
-  passwordProtection?:
-    | UpdateProjectProjectsPasswordProtection$Outbound
-    | null
-    | undefined;
-  passport?: UpdateProjectProjectsPassport$Outbound | null | undefined;
-  productionDeploymentsFastLane?: boolean | undefined;
-  publicSource?: boolean | null | undefined;
-  resourceConfig: UpdateProjectProjectsResourceConfig$Outbound;
-  rollbackDescription?: UpdateProjectRollbackDescription$Outbound | undefined;
-  rollingRelease?: UpdateProjectRollingRelease$Outbound | null | undefined;
-  defaultResourceConfig: UpdateProjectDefaultResourceConfig$Outbound;
-  rootDirectory?: string | null | undefined;
-  serverlessFunctionZeroConfigFailover?: boolean | undefined;
-  skewProtectionBoundaryAt?: number | undefined;
-  skewProtectionMaxAge?: number | undefined;
-  skewProtectionAllowedDomains?: Array<string> | undefined;
-  skipGitConnectDuringLink?: boolean | undefined;
-  staticIps?: UpdateProjectProjectsStaticIps$Outbound | undefined;
-  sourceFilesOutsideRootDirectory?: boolean | undefined;
-  enableAffectedProjectsDeployments?: boolean | undefined;
-  enableExternalRewriteCaching?: boolean | undefined;
-  ssoProtection?:
-    | UpdateProjectProjectsSsoProtection$Outbound
-    | null
-    | undefined;
-  targets?: { [k: string]: UpdateProjectTargets$Outbound | null } | undefined;
-  transferCompletedAt?: number | undefined;
-  transferStartedAt?: number | undefined;
-  transferToAccountId?: string | undefined;
-  transferredFromAccountId?: string | undefined;
-  updatedAt?: number | undefined;
-  live?: boolean | undefined;
-  enablePreviewFeedback?: boolean | null | undefined;
-  enableProductionFeedback?: boolean | null | undefined;
-  permissions?: UpdateProjectPermissions$Outbound | undefined;
-  lastRollbackTarget?:
-    | UpdateProjectLastRollbackTarget$Outbound
-    | null
-    | undefined;
-  lastAliasRequest?: UpdateProjectLastAliasRequest$Outbound | null | undefined;
-  protectionBypass?:
-    | { [k: string]: UpdateProjectProtectionBypass$Outbound }
-    | undefined;
-  hasActiveBranches?: boolean | undefined;
-  trustedIps?: UpdateProjectProjectsTrustedIps$Outbound | null | undefined;
-  trustedSources?: UpdateProjectTrustedSources$Outbound | null | undefined;
-  gitComments?: UpdateProjectGitComments$Outbound | undefined;
-  gitProviderOptions?: UpdateProjectGitProviderOptions$Outbound | undefined;
-  paused?: boolean | undefined;
-  concurrencyBucketName?: string | undefined;
-  webAnalytics?: UpdateProjectWebAnalytics$Outbound | undefined;
-  security?: UpdateProjectSecurity$Outbound | undefined;
-  oidcTokenConfig?: UpdateProjectProjectsOidcTokenConfig$Outbound | undefined;
-  deploymentPolicy?:
-    | UpdateProjectProjectsDeploymentPolicy$Outbound
-    | null
-    | undefined;
-  tier?: string | undefined;
-  flatRateTier?: string | undefined;
-  usageStatus?: UpdateProjectUsageStatus$Outbound | undefined;
-  features?: UpdateProjectFeatures$Outbound | undefined;
-  v0?: boolean | undefined;
-  v0Created?: boolean | undefined;
-  abuse?: UpdateProjectAbuse$Outbound | undefined;
-  internalRoutes?: Array<UpdateProjectInternalRoutes$Outbound> | undefined;
-  hasDeployments?: boolean | undefined;
-  dismissedToasts?:
-    | Array<UpdateProjectProjectsDismissedToasts$Outbound>
-    | undefined;
-  protectedSourcemaps?: boolean | undefined;
-  tracing?: UpdateProjectTracing$Outbound | undefined;
-  avatar?: string | undefined;
-};
 
-/** @internal */
-export const UpdateProjectResponseBody$outboundSchema: z.ZodType<
-  UpdateProjectResponseBody$Outbound,
-  z.ZodTypeDef,
-  UpdateProjectResponseBody
-> = z.object({
-  accountId: z.string(),
-  analytics: UpdateProjectAnalytics$outboundSchema.optional(),
-  appliedCve55182Migration: z.boolean().optional(),
-  speedInsights: UpdateProjectSpeedInsights$outboundSchema.optional(),
-  autoExposeSystemEnvs: z.boolean().optional(),
-  autoAssignCustomDomains: z.boolean().optional(),
-  autoAssignCustomDomainsUpdatedBy: z.string().optional(),
-  buildCommand: z.nullable(z.string()).optional(),
-  commandForIgnoringBuildStep: z.nullable(z.string()).optional(),
-  connectConfigurations: z.nullable(
-    z.array(UpdateProjectConnectConfigurations$outboundSchema),
-  ).optional(),
-  connectConfigurationId: z.nullable(z.string()).optional(),
-  connectBuildsEnabled: z.boolean().optional(),
-  passiveConnectConfigurationId: z.nullable(z.string()).optional(),
-  createdAt: z.number().optional(),
-  customerSupportCodeVisibility: z.boolean().optional(),
-  crons: UpdateProjectCrons$outboundSchema.optional(),
-  dataCache: UpdateProjectDataCache$outboundSchema.optional(),
-  deploymentExpiration: UpdateProjectDeploymentExpiration$outboundSchema,
-  expiration: UpdateProjectExpiration$outboundSchema.optional(),
-  devCommand: z.nullable(z.string()).optional(),
-  directoryListing: z.boolean(),
-  installCommand: z.nullable(z.string()).optional(),
-  env: z.array(UpdateProjectProjectsEnv$outboundSchema).optional(),
-  customEnvironments: z.array(UpdateProjectCustomEnvironments$outboundSchema)
-    .optional(),
-  framework: z.nullable(UpdateProjectProjectsFramework$outboundSchema)
-    .optional(),
-  services: z.array(UpdateProjectServices$outboundSchema).optional(),
-  gitForkProtection: z.boolean().optional(),
-  gitLFS: z.boolean().optional(),
-  id: z.string(),
-  ipBuckets: z.array(UpdateProjectIpBuckets$outboundSchema).optional(),
-  jobs: UpdateProjectJobs$outboundSchema.optional(),
-  latestDeployments: z.array(UpdateProjectLatestDeployments$outboundSchema)
-    .optional(),
-  link: UpdateProjectLink$outboundSchema.optional(),
-  microfrontends: UpdateProjectMicrofrontends$outboundSchema.optional(),
-  name: z.string(),
-  nodeVersion: UpdateProjectProjectsNodeVersion$outboundSchema,
-  optionsAllowlist: z.nullable(
-    UpdateProjectProjectsOptionsAllowlist$outboundSchema,
-  ).optional(),
-  outputDirectory: z.nullable(z.string()).optional(),
-  passwordProtection: z.nullable(
-    UpdateProjectProjectsPasswordProtection$outboundSchema,
-  ).optional(),
-  passport: z.nullable(UpdateProjectProjectsPassport$outboundSchema).optional(),
-  productionDeploymentsFastLane: z.boolean().optional(),
-  publicSource: z.nullable(z.boolean()).optional(),
-  resourceConfig: UpdateProjectProjectsResourceConfig$outboundSchema,
-  rollbackDescription: UpdateProjectRollbackDescription$outboundSchema
-    .optional(),
-  rollingRelease: z.nullable(UpdateProjectRollingRelease$outboundSchema)
-    .optional(),
-  defaultResourceConfig: UpdateProjectDefaultResourceConfig$outboundSchema,
-  rootDirectory: z.nullable(z.string()).optional(),
-  serverlessFunctionZeroConfigFailover: z.boolean().optional(),
-  skewProtectionBoundaryAt: z.number().optional(),
-  skewProtectionMaxAge: z.number().optional(),
-  skewProtectionAllowedDomains: z.array(z.string()).optional(),
-  skipGitConnectDuringLink: z.boolean().optional(),
-  staticIps: UpdateProjectProjectsStaticIps$outboundSchema.optional(),
-  sourceFilesOutsideRootDirectory: z.boolean().optional(),
-  enableAffectedProjectsDeployments: z.boolean().optional(),
-  enableExternalRewriteCaching: z.boolean().optional(),
-  ssoProtection: z.nullable(UpdateProjectProjectsSsoProtection$outboundSchema)
-    .optional(),
-  targets: z.record(z.nullable(UpdateProjectTargets$outboundSchema)).optional(),
-  transferCompletedAt: z.number().optional(),
-  transferStartedAt: z.number().optional(),
-  transferToAccountId: z.string().optional(),
-  transferredFromAccountId: z.string().optional(),
-  updatedAt: z.number().optional(),
-  live: z.boolean().optional(),
-  enablePreviewFeedback: z.nullable(z.boolean()).optional(),
-  enableProductionFeedback: z.nullable(z.boolean()).optional(),
-  permissions: UpdateProjectPermissions$outboundSchema.optional(),
-  lastRollbackTarget: z.nullable(UpdateProjectLastRollbackTarget$outboundSchema)
-    .optional(),
-  lastAliasRequest: z.nullable(UpdateProjectLastAliasRequest$outboundSchema)
-    .optional(),
-  protectionBypass: z.record(UpdateProjectProtectionBypass$outboundSchema)
-    .optional(),
-  hasActiveBranches: z.boolean().optional(),
-  trustedIps: z.nullable(UpdateProjectProjectsTrustedIps$outboundSchema)
-    .optional(),
-  trustedSources: z.nullable(UpdateProjectTrustedSources$outboundSchema)
-    .optional(),
-  gitComments: UpdateProjectGitComments$outboundSchema.optional(),
-  gitProviderOptions: UpdateProjectGitProviderOptions$outboundSchema.optional(),
-  paused: z.boolean().optional(),
-  concurrencyBucketName: z.string().optional(),
-  webAnalytics: UpdateProjectWebAnalytics$outboundSchema.optional(),
-  security: UpdateProjectSecurity$outboundSchema.optional(),
-  oidcTokenConfig: UpdateProjectProjectsOidcTokenConfig$outboundSchema
-    .optional(),
-  deploymentPolicy: z.nullable(
-    UpdateProjectProjectsDeploymentPolicy$outboundSchema,
-  ).optional(),
-  tier: z.string().optional(),
-  flatRateTier: UpdateProjectFlatRateTier$outboundSchema.optional(),
-  usageStatus: UpdateProjectUsageStatus$outboundSchema.optional(),
-  features: UpdateProjectFeatures$outboundSchema.optional(),
-  v0: z.boolean().optional(),
-  v0Created: z.boolean().optional(),
-  abuse: UpdateProjectAbuse$outboundSchema.optional(),
-  internalRoutes: z.array(UpdateProjectInternalRoutes$outboundSchema)
-    .optional(),
-  hasDeployments: z.boolean().optional(),
-  dismissedToasts: z.array(
-    z.lazy(() => UpdateProjectProjectsDismissedToasts$outboundSchema),
-  ).optional(),
-  protectedSourcemaps: z.boolean().optional(),
-  tracing: z.lazy(() => UpdateProjectTracing$outboundSchema).optional(),
-  avatar: z.string().optional(),
-});
-
-export function updateProjectResponseBodyToJSON(
-  updateProjectResponseBody: UpdateProjectResponseBody,
-): string {
-  return JSON.stringify(
-    UpdateProjectResponseBody$outboundSchema.parse(updateProjectResponseBody),
-  );
-}
 export function updateProjectResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateProjectResponseBody, SDKValidationError> {

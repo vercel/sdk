@@ -119,23 +119,7 @@ export const HostedZones$inboundSchema: z.ZodType<
 > = z.object({
   count: types.number(),
 });
-/** @internal */
-export type HostedZones$Outbound = {
-  count: number;
-};
 
-/** @internal */
-export const HostedZones$outboundSchema: z.ZodType<
-  HostedZones$Outbound,
-  z.ZodTypeDef,
-  HostedZones
-> = z.object({
-  count: z.number(),
-});
-
-export function hostedZonesToJSON(hostedZones: HostedZones): string {
-  return JSON.stringify(HostedZones$outboundSchema.parse(hostedZones));
-}
 export function hostedZonesFromJSON(
   jsonString: string,
 ): SafeParseResult<HostedZones, SDKValidationError> {
@@ -154,27 +138,7 @@ export const PeeringConnections$inboundSchema: z.ZodType<
 > = z.object({
   count: types.number(),
 });
-/** @internal */
-export type PeeringConnections$Outbound = {
-  count: number;
-};
 
-/** @internal */
-export const PeeringConnections$outboundSchema: z.ZodType<
-  PeeringConnections$Outbound,
-  z.ZodTypeDef,
-  PeeringConnections
-> = z.object({
-  count: z.number(),
-});
-
-export function peeringConnectionsToJSON(
-  peeringConnections: PeeringConnections,
-): string {
-  return JSON.stringify(
-    PeeringConnections$outboundSchema.parse(peeringConnections),
-  );
-}
 export function peeringConnectionsFromJSON(
   jsonString: string,
 ): SafeParseResult<PeeringConnections, SDKValidationError> {
@@ -194,25 +158,7 @@ export const Projects$inboundSchema: z.ZodType<
   count: types.number(),
   ids: z.array(types.string()),
 });
-/** @internal */
-export type Projects$Outbound = {
-  count: number;
-  ids: Array<string>;
-};
 
-/** @internal */
-export const Projects$outboundSchema: z.ZodType<
-  Projects$Outbound,
-  z.ZodTypeDef,
-  Projects
-> = z.object({
-  count: z.number(),
-  ids: z.array(z.string()),
-});
-
-export function projectsToJSON(projects: Projects): string {
-  return JSON.stringify(Projects$outboundSchema.parse(projects));
-}
 export function projectsFromJSON(
   jsonString: string,
 ): SafeParseResult<Projects, SDKValidationError> {
@@ -226,9 +172,6 @@ export function projectsFromJSON(
 /** @internal */
 export const Status$inboundSchema: z.ZodNativeEnum<typeof Status> = z
   .nativeEnum(Status);
-/** @internal */
-export const Status$outboundSchema: z.ZodNativeEnum<typeof Status> =
-  Status$inboundSchema;
 
 /** @internal */
 export const Network$inboundSchema: z.ZodType<Network, z.ZodTypeDef, unknown> =
@@ -251,52 +194,7 @@ export const Network$inboundSchema: z.ZodType<Network, z.ZodTypeDef, unknown> =
     teamId: types.string(),
     vpcId: types.optional(types.string()),
   });
-/** @internal */
-export type Network$Outbound = {
-  awsAccountId: string;
-  awsAvailabilityZoneIds?: Array<string> | undefined;
-  awsRegion: string;
-  cidr: string;
-  createdAt: number;
-  egressIpAddresses?: Array<string> | undefined;
-  hostedZones?: HostedZones$Outbound | undefined;
-  id: string;
-  name: string;
-  peeringConnections?: PeeringConnections$Outbound | undefined;
-  projects?: Projects$Outbound | undefined;
-  region?: string | undefined;
-  status: string;
-  teamId: string;
-  vpcId?: string | undefined;
-};
 
-/** @internal */
-export const Network$outboundSchema: z.ZodType<
-  Network$Outbound,
-  z.ZodTypeDef,
-  Network
-> = z.object({
-  awsAccountId: z.string(),
-  awsAvailabilityZoneIds: z.array(z.string()).optional(),
-  awsRegion: z.string(),
-  cidr: z.string(),
-  createdAt: z.number(),
-  egressIpAddresses: z.array(z.string()).optional(),
-  hostedZones: z.lazy(() => HostedZones$outboundSchema).optional(),
-  id: z.string(),
-  name: z.string(),
-  peeringConnections: z.lazy(() => PeeringConnections$outboundSchema)
-    .optional(),
-  projects: z.lazy(() => Projects$outboundSchema).optional(),
-  region: z.string().optional(),
-  status: Status$outboundSchema,
-  teamId: z.string(),
-  vpcId: z.string().optional(),
-});
-
-export function networkToJSON(network: Network): string {
-  return JSON.stringify(Network$outboundSchema.parse(network));
-}
 export function networkFromJSON(
   jsonString: string,
 ): SafeParseResult<Network, SDKValidationError> {

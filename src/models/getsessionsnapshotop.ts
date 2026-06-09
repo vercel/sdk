@@ -5,14 +5,8 @@
 import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
-import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
-import {
-  Snapshot,
-  Snapshot$inboundSchema,
-  Snapshot$Outbound,
-  Snapshot$outboundSchema,
-} from "./snapshot.js";
+import { Snapshot, Snapshot$inboundSchema } from "./snapshot.js";
 
 export type GetSessionSnapshotRequest = {
   /**
@@ -36,16 +30,6 @@ export type GetSessionSnapshotResponseBody = {
   snapshot: Snapshot;
 };
 
-/** @internal */
-export const GetSessionSnapshotRequest$inboundSchema: z.ZodType<
-  GetSessionSnapshotRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  snapshotId: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
 /** @internal */
 export type GetSessionSnapshotRequest$Outbound = {
   snapshotId: string;
@@ -71,15 +55,6 @@ export function getSessionSnapshotRequestToJSON(
     GetSessionSnapshotRequest$outboundSchema.parse(getSessionSnapshotRequest),
   );
 }
-export function getSessionSnapshotRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetSessionSnapshotRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetSessionSnapshotRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetSessionSnapshotRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const GetSessionSnapshotResponseBody$inboundSchema: z.ZodType<
@@ -89,29 +64,7 @@ export const GetSessionSnapshotResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   snapshot: Snapshot$inboundSchema,
 });
-/** @internal */
-export type GetSessionSnapshotResponseBody$Outbound = {
-  snapshot: Snapshot$Outbound;
-};
 
-/** @internal */
-export const GetSessionSnapshotResponseBody$outboundSchema: z.ZodType<
-  GetSessionSnapshotResponseBody$Outbound,
-  z.ZodTypeDef,
-  GetSessionSnapshotResponseBody
-> = z.object({
-  snapshot: Snapshot$outboundSchema,
-});
-
-export function getSessionSnapshotResponseBodyToJSON(
-  getSessionSnapshotResponseBody: GetSessionSnapshotResponseBody,
-): string {
-  return JSON.stringify(
-    GetSessionSnapshotResponseBody$outboundSchema.parse(
-      getSessionSnapshotResponseBody,
-    ),
-  );
-}
 export function getSessionSnapshotResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetSessionSnapshotResponseBody, SDKValidationError> {

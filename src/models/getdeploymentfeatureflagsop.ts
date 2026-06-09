@@ -42,16 +42,6 @@ export type GetDeploymentFeatureFlagsResponseBody = {
 };
 
 /** @internal */
-export const GetDeploymentFeatureFlagsRequest$inboundSchema: z.ZodType<
-  GetDeploymentFeatureFlagsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  deploymentId: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
-/** @internal */
 export type GetDeploymentFeatureFlagsRequest$Outbound = {
   deploymentId: string;
   teamId?: string | undefined;
@@ -78,15 +68,6 @@ export function getDeploymentFeatureFlagsRequestToJSON(
     ),
   );
 }
-export function getDeploymentFeatureFlagsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetDeploymentFeatureFlagsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetDeploymentFeatureFlagsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDeploymentFeatureFlagsRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const GetDeploymentFeatureFlagsFlags$inboundSchema: z.ZodType<
@@ -94,25 +75,7 @@ export const GetDeploymentFeatureFlagsFlags$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-/** @internal */
-export type GetDeploymentFeatureFlagsFlags$Outbound = {};
 
-/** @internal */
-export const GetDeploymentFeatureFlagsFlags$outboundSchema: z.ZodType<
-  GetDeploymentFeatureFlagsFlags$Outbound,
-  z.ZodTypeDef,
-  GetDeploymentFeatureFlagsFlags
-> = z.object({});
-
-export function getDeploymentFeatureFlagsFlagsToJSON(
-  getDeploymentFeatureFlagsFlags: GetDeploymentFeatureFlagsFlags,
-): string {
-  return JSON.stringify(
-    GetDeploymentFeatureFlagsFlags$outboundSchema.parse(
-      getDeploymentFeatureFlagsFlags,
-    ),
-  );
-}
 export function getDeploymentFeatureFlagsFlagsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetDeploymentFeatureFlagsFlags, SDKValidationError> {
@@ -135,37 +98,7 @@ export const GetDeploymentFeatureFlagsStatus$inboundSchema: z.ZodType<
   flagCount: types.number(),
   createdAt: types.number(),
 });
-/** @internal */
-export type GetDeploymentFeatureFlagsStatus$Outbound = {
-  deploymentId: string;
-  projectId: string;
-  responseStatus: number;
-  flagCount: number;
-  createdAt: number;
-};
 
-/** @internal */
-export const GetDeploymentFeatureFlagsStatus$outboundSchema: z.ZodType<
-  GetDeploymentFeatureFlagsStatus$Outbound,
-  z.ZodTypeDef,
-  GetDeploymentFeatureFlagsStatus
-> = z.object({
-  deploymentId: z.string(),
-  projectId: z.string(),
-  responseStatus: z.number(),
-  flagCount: z.number(),
-  createdAt: z.number(),
-});
-
-export function getDeploymentFeatureFlagsStatusToJSON(
-  getDeploymentFeatureFlagsStatus: GetDeploymentFeatureFlagsStatus,
-): string {
-  return JSON.stringify(
-    GetDeploymentFeatureFlagsStatus$outboundSchema.parse(
-      getDeploymentFeatureFlagsStatus,
-    ),
-  );
-}
 export function getDeploymentFeatureFlagsStatusFromJSON(
   jsonString: string,
 ): SafeParseResult<GetDeploymentFeatureFlagsStatus, SDKValidationError> {
@@ -187,33 +120,7 @@ export const GetDeploymentFeatureFlagsResponseBody$inboundSchema: z.ZodType<
     z.lazy(() => GetDeploymentFeatureFlagsStatus$inboundSchema),
   ),
 });
-/** @internal */
-export type GetDeploymentFeatureFlagsResponseBody$Outbound = {
-  flags: Array<GetDeploymentFeatureFlagsFlags$Outbound>;
-  status: GetDeploymentFeatureFlagsStatus$Outbound | null;
-};
 
-/** @internal */
-export const GetDeploymentFeatureFlagsResponseBody$outboundSchema: z.ZodType<
-  GetDeploymentFeatureFlagsResponseBody$Outbound,
-  z.ZodTypeDef,
-  GetDeploymentFeatureFlagsResponseBody
-> = z.object({
-  flags: z.array(z.lazy(() => GetDeploymentFeatureFlagsFlags$outboundSchema)),
-  status: z.nullable(
-    z.lazy(() => GetDeploymentFeatureFlagsStatus$outboundSchema),
-  ),
-});
-
-export function getDeploymentFeatureFlagsResponseBodyToJSON(
-  getDeploymentFeatureFlagsResponseBody: GetDeploymentFeatureFlagsResponseBody,
-): string {
-  return JSON.stringify(
-    GetDeploymentFeatureFlagsResponseBody$outboundSchema.parse(
-      getDeploymentFeatureFlagsResponseBody,
-    ),
-  );
-}
 export function getDeploymentFeatureFlagsResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetDeploymentFeatureFlagsResponseBody, SDKValidationError> {

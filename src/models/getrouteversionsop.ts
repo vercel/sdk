@@ -63,16 +63,6 @@ export type GetRouteVersionsResponseBody = {
 };
 
 /** @internal */
-export const GetRouteVersionsRequest$inboundSchema: z.ZodType<
-  GetRouteVersionsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  projectId: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
-/** @internal */
 export type GetRouteVersionsRequest$Outbound = {
   projectId: string;
   teamId?: string | undefined;
@@ -97,15 +87,6 @@ export function getRouteVersionsRequestToJSON(
     GetRouteVersionsRequest$outboundSchema.parse(getRouteVersionsRequest),
   );
 }
-export function getRouteVersionsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetRouteVersionsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetRouteVersionsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetRouteVersionsRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const GetRouteVersionsVersions$inboundSchema: z.ZodType<
@@ -122,41 +103,7 @@ export const GetRouteVersionsVersions$inboundSchema: z.ZodType<
   ruleCount: types.optional(types.number()),
   alias: types.optional(types.string()),
 });
-/** @internal */
-export type GetRouteVersionsVersions$Outbound = {
-  id: string;
-  s3Key: string;
-  lastModified: number;
-  createdBy: string;
-  isStaging?: boolean | undefined;
-  isLive?: boolean | undefined;
-  ruleCount?: number | undefined;
-  alias?: string | undefined;
-};
 
-/** @internal */
-export const GetRouteVersionsVersions$outboundSchema: z.ZodType<
-  GetRouteVersionsVersions$Outbound,
-  z.ZodTypeDef,
-  GetRouteVersionsVersions
-> = z.object({
-  id: z.string(),
-  s3Key: z.string(),
-  lastModified: z.number(),
-  createdBy: z.string(),
-  isStaging: z.boolean().optional(),
-  isLive: z.boolean().optional(),
-  ruleCount: z.number().optional(),
-  alias: z.string().optional(),
-});
-
-export function getRouteVersionsVersionsToJSON(
-  getRouteVersionsVersions: GetRouteVersionsVersions,
-): string {
-  return JSON.stringify(
-    GetRouteVersionsVersions$outboundSchema.parse(getRouteVersionsVersions),
-  );
-}
 export function getRouteVersionsVersionsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetRouteVersionsVersions, SDKValidationError> {
@@ -175,29 +122,7 @@ export const GetRouteVersionsResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   versions: z.array(z.lazy(() => GetRouteVersionsVersions$inboundSchema)),
 });
-/** @internal */
-export type GetRouteVersionsResponseBody$Outbound = {
-  versions: Array<GetRouteVersionsVersions$Outbound>;
-};
 
-/** @internal */
-export const GetRouteVersionsResponseBody$outboundSchema: z.ZodType<
-  GetRouteVersionsResponseBody$Outbound,
-  z.ZodTypeDef,
-  GetRouteVersionsResponseBody
-> = z.object({
-  versions: z.array(z.lazy(() => GetRouteVersionsVersions$outboundSchema)),
-});
-
-export function getRouteVersionsResponseBodyToJSON(
-  getRouteVersionsResponseBody: GetRouteVersionsResponseBody,
-): string {
-  return JSON.stringify(
-    GetRouteVersionsResponseBody$outboundSchema.parse(
-      getRouteVersionsResponseBody,
-    ),
-  );
-}
 export function getRouteVersionsResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetRouteVersionsResponseBody, SDKValidationError> {

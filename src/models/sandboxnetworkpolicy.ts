@@ -10,8 +10,6 @@ import * as types from "../types/primitives.js";
 import {
   SandboxInjectionRule,
   SandboxInjectionRule$inboundSchema,
-  SandboxInjectionRule$Outbound,
-  SandboxInjectionRule$outboundSchema,
 } from "./sandboxinjectionrule.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
@@ -58,9 +56,6 @@ export type SandboxNetworkPolicy = {
 export const Mode$inboundSchema: z.ZodNativeEnum<typeof Mode> = z.nativeEnum(
   Mode,
 );
-/** @internal */
-export const Mode$outboundSchema: z.ZodNativeEnum<typeof Mode> =
-  Mode$inboundSchema;
 
 /** @internal */
 export const SandboxNetworkPolicy$inboundSchema: z.ZodType<
@@ -74,35 +69,7 @@ export const SandboxNetworkPolicy$inboundSchema: z.ZodType<
   deniedCIDRs: types.optional(z.array(types.string())),
   injectionRules: types.optional(z.array(SandboxInjectionRule$inboundSchema)),
 });
-/** @internal */
-export type SandboxNetworkPolicy$Outbound = {
-  mode: string;
-  allowedDomains?: Array<string> | undefined;
-  allowedCIDRs?: Array<string> | undefined;
-  deniedCIDRs?: Array<string> | undefined;
-  injectionRules?: Array<SandboxInjectionRule$Outbound> | undefined;
-};
 
-/** @internal */
-export const SandboxNetworkPolicy$outboundSchema: z.ZodType<
-  SandboxNetworkPolicy$Outbound,
-  z.ZodTypeDef,
-  SandboxNetworkPolicy
-> = z.object({
-  mode: Mode$outboundSchema,
-  allowedDomains: z.array(z.string()).optional(),
-  allowedCIDRs: z.array(z.string()).optional(),
-  deniedCIDRs: z.array(z.string()).optional(),
-  injectionRules: z.array(SandboxInjectionRule$outboundSchema).optional(),
-});
-
-export function sandboxNetworkPolicyToJSON(
-  sandboxNetworkPolicy: SandboxNetworkPolicy,
-): string {
-  return JSON.stringify(
-    SandboxNetworkPolicy$outboundSchema.parse(sandboxNetworkPolicy),
-  );
-}
 export function sandboxNetworkPolicyFromJSON(
   jsonString: string,
 ): SafeParseResult<SandboxNetworkPolicy, SDKValidationError> {

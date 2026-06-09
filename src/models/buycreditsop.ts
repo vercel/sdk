@@ -1406,28 +1406,14 @@ export type BuyCreditsResponseBody =
   | BuyCreditsResponseBody3;
 
 /** @internal */
-export const BuyCreditsType$inboundSchema: z.ZodNativeEnum<
-  typeof BuyCreditsType
-> = z.nativeEnum(BuyCreditsType);
-/** @internal */
 export const BuyCreditsType$outboundSchema: z.ZodNativeEnum<
   typeof BuyCreditsType
-> = BuyCreditsType$inboundSchema;
+> = z.nativeEnum(BuyCreditsType);
 
 /** @internal */
-export const CreditType$inboundSchema: z.ZodNativeEnum<typeof CreditType> = z
+export const CreditType$outboundSchema: z.ZodNativeEnum<typeof CreditType> = z
   .nativeEnum(CreditType);
-/** @internal */
-export const CreditType$outboundSchema: z.ZodNativeEnum<typeof CreditType> =
-  CreditType$inboundSchema;
 
-/** @internal */
-export const Item$inboundSchema: z.ZodType<Item, z.ZodTypeDef, unknown> = z
-  .object({
-    type: BuyCreditsType$inboundSchema,
-    creditType: CreditType$inboundSchema,
-    amount: types.number(),
-  });
 /** @internal */
 export type Item$Outbound = {
   type: string;
@@ -1446,24 +1432,7 @@ export const Item$outboundSchema: z.ZodType<Item$Outbound, z.ZodTypeDef, Item> =
 export function itemToJSON(item: Item): string {
   return JSON.stringify(Item$outboundSchema.parse(item));
 }
-export function itemFromJSON(
-  jsonString: string,
-): SafeParseResult<Item, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Item$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Item' from JSON`,
-  );
-}
 
-/** @internal */
-export const BuyCreditsRequestBody$inboundSchema: z.ZodType<
-  BuyCreditsRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  item: z.lazy(() => Item$inboundSchema),
-});
 /** @internal */
 export type BuyCreditsRequestBody$Outbound = {
   item: Item$Outbound;
@@ -1485,31 +1454,7 @@ export function buyCreditsRequestBodyToJSON(
     BuyCreditsRequestBody$outboundSchema.parse(buyCreditsRequestBody),
   );
 }
-export function buyCreditsRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<BuyCreditsRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => BuyCreditsRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'BuyCreditsRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const BuyCreditsRequest$inboundSchema: z.ZodType<
-  BuyCreditsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  source: types.optional(types.string()),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-  RequestBody: z.lazy(() => BuyCreditsRequestBody$inboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 /** @internal */
 export type BuyCreditsRequest$Outbound = {
   source?: string | undefined;
@@ -1541,15 +1486,6 @@ export function buyCreditsRequestToJSON(
     BuyCreditsRequest$outboundSchema.parse(buyCreditsRequest),
   );
 }
-export function buyCreditsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<BuyCreditsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => BuyCreditsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'BuyCreditsRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntentOptions$inboundSchema:
@@ -1562,37 +1498,7 @@ export const BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBod
     productAlias: types.string(),
     removedResourceIds: z.array(types.string()),
   });
-/** @internal */
-export type BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntentOptions$Outbound =
-  {
-    addedResourceIds: Array<string>;
-    productAlias: string;
-    removedResourceIds: Array<string>;
-  };
 
-/** @internal */
-export const BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntentOptions$outboundSchema:
-  z.ZodType<
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntentOptions$Outbound,
-    z.ZodTypeDef,
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntentOptions
-  > = z.object({
-    addedResourceIds: z.array(z.string()),
-    productAlias: z.string(),
-    removedResourceIds: z.array(z.string()),
-  });
-
-export function buyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntentOptionsToJSON(
-  buyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntentOptions:
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntentOptions,
-): string {
-  return JSON.stringify(
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntentOptions$outboundSchema
-      .parse(
-        buyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntentOptions,
-      ),
-  );
-}
 export function buyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntentOptionsFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -1619,41 +1525,7 @@ export const BuyCreditsChangedResourcesBillingResponse4$inboundSchema:
       removedResourceIds: z.array(types.string()),
       type: types.literal("adjust_plan_item_quantity"),
     });
-/** @internal */
-export type BuyCreditsChangedResourcesBillingResponse4$Outbound = {
-  addedResourceIds: Array<string>;
-  productAlias: string;
-  productId: string;
-  quantity: number;
-  removedResourceIds: Array<string>;
-  type: "adjust_plan_item_quantity";
-};
 
-/** @internal */
-export const BuyCreditsChangedResourcesBillingResponse4$outboundSchema:
-  z.ZodType<
-    BuyCreditsChangedResourcesBillingResponse4$Outbound,
-    z.ZodTypeDef,
-    BuyCreditsChangedResourcesBillingResponse4
-  > = z.object({
-    addedResourceIds: z.array(z.string()),
-    productAlias: z.string(),
-    productId: z.string(),
-    quantity: z.number(),
-    removedResourceIds: z.array(z.string()),
-    type: z.literal("adjust_plan_item_quantity"),
-  });
-
-export function buyCreditsChangedResourcesBillingResponse4ToJSON(
-  buyCreditsChangedResourcesBillingResponse4:
-    BuyCreditsChangedResourcesBillingResponse4,
-): string {
-  return JSON.stringify(
-    BuyCreditsChangedResourcesBillingResponse4$outboundSchema.parse(
-      buyCreditsChangedResourcesBillingResponse4,
-    ),
-  );
-}
 export function buyCreditsChangedResourcesBillingResponse4FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -1680,39 +1552,7 @@ export const BuyCreditsChangedResourcesBillingResponse3$inboundSchema:
       resourceIds: z.array(types.string()),
       type: types.literal("decrease_plan_item_quantity"),
     });
-/** @internal */
-export type BuyCreditsChangedResourcesBillingResponse3$Outbound = {
-  productAlias: string;
-  productId: string;
-  quantity: number;
-  resourceIds: Array<string>;
-  type: "decrease_plan_item_quantity";
-};
 
-/** @internal */
-export const BuyCreditsChangedResourcesBillingResponse3$outboundSchema:
-  z.ZodType<
-    BuyCreditsChangedResourcesBillingResponse3$Outbound,
-    z.ZodTypeDef,
-    BuyCreditsChangedResourcesBillingResponse3
-  > = z.object({
-    productAlias: z.string(),
-    productId: z.string(),
-    quantity: z.number(),
-    resourceIds: z.array(z.string()),
-    type: z.literal("decrease_plan_item_quantity"),
-  });
-
-export function buyCreditsChangedResourcesBillingResponse3ToJSON(
-  buyCreditsChangedResourcesBillingResponse3:
-    BuyCreditsChangedResourcesBillingResponse3,
-): string {
-  return JSON.stringify(
-    BuyCreditsChangedResourcesBillingResponse3$outboundSchema.parse(
-      buyCreditsChangedResourcesBillingResponse3,
-    ),
-  );
-}
 export function buyCreditsChangedResourcesBillingResponse3FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -1739,39 +1579,7 @@ export const BuyCreditsChangedResourcesBillingResponse2$inboundSchema:
       resourceIds: z.array(types.string()),
       type: types.literal("increase_plan_item_quantity"),
     });
-/** @internal */
-export type BuyCreditsChangedResourcesBillingResponse2$Outbound = {
-  productAlias: string;
-  productId: string;
-  quantity: number;
-  resourceIds: Array<string>;
-  type: "increase_plan_item_quantity";
-};
 
-/** @internal */
-export const BuyCreditsChangedResourcesBillingResponse2$outboundSchema:
-  z.ZodType<
-    BuyCreditsChangedResourcesBillingResponse2$Outbound,
-    z.ZodTypeDef,
-    BuyCreditsChangedResourcesBillingResponse2
-  > = z.object({
-    productAlias: z.string(),
-    productId: z.string(),
-    quantity: z.number(),
-    resourceIds: z.array(z.string()),
-    type: z.literal("increase_plan_item_quantity"),
-  });
-
-export function buyCreditsChangedResourcesBillingResponse2ToJSON(
-  buyCreditsChangedResourcesBillingResponse2:
-    BuyCreditsChangedResourcesBillingResponse2,
-): string {
-  return JSON.stringify(
-    BuyCreditsChangedResourcesBillingResponse2$outboundSchema.parse(
-      buyCreditsChangedResourcesBillingResponse2,
-    ),
-  );
-}
 export function buyCreditsChangedResourcesBillingResponse2FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -1798,39 +1606,7 @@ export const BuyCreditsChangedResourcesBillingResponse1$inboundSchema:
       type: types.literal("set_plan_item_quantity"),
       resourceIds: types.optional(z.array(types.string())),
     });
-/** @internal */
-export type BuyCreditsChangedResourcesBillingResponse1$Outbound = {
-  productAlias: string;
-  productId: string;
-  quantity: number;
-  type: "set_plan_item_quantity";
-  resourceIds?: Array<string> | undefined;
-};
 
-/** @internal */
-export const BuyCreditsChangedResourcesBillingResponse1$outboundSchema:
-  z.ZodType<
-    BuyCreditsChangedResourcesBillingResponse1$Outbound,
-    z.ZodTypeDef,
-    BuyCreditsChangedResourcesBillingResponse1
-  > = z.object({
-    productAlias: z.string(),
-    productId: z.string(),
-    quantity: z.number(),
-    type: z.literal("set_plan_item_quantity"),
-    resourceIds: z.array(z.string()).optional(),
-  });
-
-export function buyCreditsChangedResourcesBillingResponse1ToJSON(
-  buyCreditsChangedResourcesBillingResponse1:
-    BuyCreditsChangedResourcesBillingResponse1,
-): string {
-  return JSON.stringify(
-    BuyCreditsChangedResourcesBillingResponse1$outboundSchema.parse(
-      buyCreditsChangedResourcesBillingResponse1,
-    ),
-  );
-}
 export function buyCreditsChangedResourcesBillingResponse1FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -1859,36 +1635,7 @@ export const BuyCreditsConfigurationBillingChangedResources$inboundSchema:
     z.lazy(() => BuyCreditsChangedResourcesBillingResponse3$inboundSchema),
     z.lazy(() => BuyCreditsChangedResourcesBillingResponse4$inboundSchema),
   ]);
-/** @internal */
-export type BuyCreditsConfigurationBillingChangedResources$Outbound =
-  | BuyCreditsChangedResourcesBillingResponse1$Outbound
-  | BuyCreditsChangedResourcesBillingResponse2$Outbound
-  | BuyCreditsChangedResourcesBillingResponse3$Outbound
-  | BuyCreditsChangedResourcesBillingResponse4$Outbound;
 
-/** @internal */
-export const BuyCreditsConfigurationBillingChangedResources$outboundSchema:
-  z.ZodType<
-    BuyCreditsConfigurationBillingChangedResources$Outbound,
-    z.ZodTypeDef,
-    BuyCreditsConfigurationBillingChangedResources
-  > = z.union([
-    z.lazy(() => BuyCreditsChangedResourcesBillingResponse1$outboundSchema),
-    z.lazy(() => BuyCreditsChangedResourcesBillingResponse2$outboundSchema),
-    z.lazy(() => BuyCreditsChangedResourcesBillingResponse3$outboundSchema),
-    z.lazy(() => BuyCreditsChangedResourcesBillingResponse4$outboundSchema),
-  ]);
-
-export function buyCreditsConfigurationBillingChangedResourcesToJSON(
-  buyCreditsConfigurationBillingChangedResources:
-    BuyCreditsConfigurationBillingChangedResources,
-): string {
-  return JSON.stringify(
-    BuyCreditsConfigurationBillingChangedResources$outboundSchema.parse(
-      buyCreditsConfigurationBillingChangedResources,
-    ),
-  );
-}
 export function buyCreditsConfigurationBillingChangedResourcesFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -1927,57 +1674,7 @@ export const BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBod
     metadata: types.optional(z.record(types.string())),
     pendingSubscriptionChangeId: types.optional(types.string()),
   });
-/** @internal */
-export type BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBodyOutput$Outbound =
-  {
-    orbPriceId: string;
-    productId: string;
-    changedResources?:
-      | Array<
-        | BuyCreditsChangedResourcesBillingResponse1$Outbound
-        | BuyCreditsChangedResourcesBillingResponse2$Outbound
-        | BuyCreditsChangedResourcesBillingResponse3$Outbound
-        | BuyCreditsChangedResourcesBillingResponse4$Outbound
-      >
-      | undefined;
-    metadata?: { [k: string]: string } | undefined;
-    pendingSubscriptionChangeId?: string | undefined;
-  };
 
-/** @internal */
-export const BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBodyOutput$outboundSchema:
-  z.ZodType<
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBodyOutput$Outbound,
-    z.ZodTypeDef,
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBodyOutput
-  > = z.object({
-    orbPriceId: z.string(),
-    productId: z.string(),
-    changedResources: z.array(
-      z.union([
-        z.lazy(() => BuyCreditsChangedResourcesBillingResponse1$outboundSchema),
-        z.lazy(() =>
-          BuyCreditsChangedResourcesBillingResponse2$outboundSchema
-        ),
-        z.lazy(() => BuyCreditsChangedResourcesBillingResponse3$outboundSchema),
-        z.lazy(() => BuyCreditsChangedResourcesBillingResponse4$outboundSchema),
-      ]),
-    ).optional(),
-    metadata: z.record(z.string()).optional(),
-    pendingSubscriptionChangeId: z.string().optional(),
-  });
-
-export function buyCreditsConfigurationBillingResponse200ApplicationJSONResponseBodyOutputToJSON(
-  buyCreditsConfigurationBillingResponse200ApplicationJSONResponseBodyOutput:
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBodyOutput,
-): string {
-  return JSON.stringify(
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBodyOutput$outboundSchema
-      .parse(
-        buyCreditsConfigurationBillingResponse200ApplicationJSONResponseBodyOutput,
-      ),
-  );
-}
 export function buyCreditsConfigurationBillingResponse200ApplicationJSONResponseBodyOutputFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -2007,33 +1704,7 @@ export const Configuration4$inboundSchema: z.ZodType<
   ),
   type: types.literal("adjust_plan_item_quantity"),
 });
-/** @internal */
-export type Configuration4$Outbound = {
-  options:
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntentOptions$Outbound;
-  output:
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBodyOutput$Outbound;
-  type: "adjust_plan_item_quantity";
-};
 
-/** @internal */
-export const Configuration4$outboundSchema: z.ZodType<
-  Configuration4$Outbound,
-  z.ZodTypeDef,
-  Configuration4
-> = z.object({
-  options: z.lazy(() =>
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntentOptions$outboundSchema
-  ),
-  output: z.lazy(() =>
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBodyOutput$outboundSchema
-  ),
-  type: z.literal("adjust_plan_item_quantity"),
-});
-
-export function configuration4ToJSON(configuration4: Configuration4): string {
-  return JSON.stringify(Configuration4$outboundSchema.parse(configuration4));
-}
 export function configuration4FromJSON(
   jsonString: string,
 ): SafeParseResult<Configuration4, SDKValidationError> {
@@ -2054,35 +1725,7 @@ export const BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBod
     productAlias: types.string(),
     resourceIds: z.array(types.string()),
   });
-/** @internal */
-export type BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3Options$Outbound =
-  {
-    productAlias: string;
-    resourceIds: Array<string>;
-  };
 
-/** @internal */
-export const BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3Options$outboundSchema:
-  z.ZodType<
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3Options$Outbound,
-    z.ZodTypeDef,
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3Options
-  > = z.object({
-    productAlias: z.string(),
-    resourceIds: z.array(z.string()),
-  });
-
-export function buyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OptionsToJSON(
-  buyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3Options:
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3Options,
-): string {
-  return JSON.stringify(
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3Options$outboundSchema
-      .parse(
-        buyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3Options,
-      ),
-  );
-}
 export function buyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OptionsFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -2111,39 +1754,7 @@ export const BuyCreditsChangedResourcesBilling4$inboundSchema: z.ZodType<
   removedResourceIds: z.array(types.string()),
   type: types.literal("adjust_plan_item_quantity"),
 });
-/** @internal */
-export type BuyCreditsChangedResourcesBilling4$Outbound = {
-  addedResourceIds: Array<string>;
-  productAlias: string;
-  productId: string;
-  quantity: number;
-  removedResourceIds: Array<string>;
-  type: "adjust_plan_item_quantity";
-};
 
-/** @internal */
-export const BuyCreditsChangedResourcesBilling4$outboundSchema: z.ZodType<
-  BuyCreditsChangedResourcesBilling4$Outbound,
-  z.ZodTypeDef,
-  BuyCreditsChangedResourcesBilling4
-> = z.object({
-  addedResourceIds: z.array(z.string()),
-  productAlias: z.string(),
-  productId: z.string(),
-  quantity: z.number(),
-  removedResourceIds: z.array(z.string()),
-  type: z.literal("adjust_plan_item_quantity"),
-});
-
-export function buyCreditsChangedResourcesBilling4ToJSON(
-  buyCreditsChangedResourcesBilling4: BuyCreditsChangedResourcesBilling4,
-): string {
-  return JSON.stringify(
-    BuyCreditsChangedResourcesBilling4$outboundSchema.parse(
-      buyCreditsChangedResourcesBilling4,
-    ),
-  );
-}
 export function buyCreditsChangedResourcesBilling4FromJSON(
   jsonString: string,
 ): SafeParseResult<BuyCreditsChangedResourcesBilling4, SDKValidationError> {
@@ -2167,37 +1778,7 @@ export const BuyCreditsChangedResourcesBilling3$inboundSchema: z.ZodType<
   resourceIds: z.array(types.string()),
   type: types.literal("decrease_plan_item_quantity"),
 });
-/** @internal */
-export type BuyCreditsChangedResourcesBilling3$Outbound = {
-  productAlias: string;
-  productId: string;
-  quantity: number;
-  resourceIds: Array<string>;
-  type: "decrease_plan_item_quantity";
-};
 
-/** @internal */
-export const BuyCreditsChangedResourcesBilling3$outboundSchema: z.ZodType<
-  BuyCreditsChangedResourcesBilling3$Outbound,
-  z.ZodTypeDef,
-  BuyCreditsChangedResourcesBilling3
-> = z.object({
-  productAlias: z.string(),
-  productId: z.string(),
-  quantity: z.number(),
-  resourceIds: z.array(z.string()),
-  type: z.literal("decrease_plan_item_quantity"),
-});
-
-export function buyCreditsChangedResourcesBilling3ToJSON(
-  buyCreditsChangedResourcesBilling3: BuyCreditsChangedResourcesBilling3,
-): string {
-  return JSON.stringify(
-    BuyCreditsChangedResourcesBilling3$outboundSchema.parse(
-      buyCreditsChangedResourcesBilling3,
-    ),
-  );
-}
 export function buyCreditsChangedResourcesBilling3FromJSON(
   jsonString: string,
 ): SafeParseResult<BuyCreditsChangedResourcesBilling3, SDKValidationError> {
@@ -2221,37 +1802,7 @@ export const BuyCreditsChangedResourcesBilling2$inboundSchema: z.ZodType<
   resourceIds: z.array(types.string()),
   type: types.literal("increase_plan_item_quantity"),
 });
-/** @internal */
-export type BuyCreditsChangedResourcesBilling2$Outbound = {
-  productAlias: string;
-  productId: string;
-  quantity: number;
-  resourceIds: Array<string>;
-  type: "increase_plan_item_quantity";
-};
 
-/** @internal */
-export const BuyCreditsChangedResourcesBilling2$outboundSchema: z.ZodType<
-  BuyCreditsChangedResourcesBilling2$Outbound,
-  z.ZodTypeDef,
-  BuyCreditsChangedResourcesBilling2
-> = z.object({
-  productAlias: z.string(),
-  productId: z.string(),
-  quantity: z.number(),
-  resourceIds: z.array(z.string()),
-  type: z.literal("increase_plan_item_quantity"),
-});
-
-export function buyCreditsChangedResourcesBilling2ToJSON(
-  buyCreditsChangedResourcesBilling2: BuyCreditsChangedResourcesBilling2,
-): string {
-  return JSON.stringify(
-    BuyCreditsChangedResourcesBilling2$outboundSchema.parse(
-      buyCreditsChangedResourcesBilling2,
-    ),
-  );
-}
 export function buyCreditsChangedResourcesBilling2FromJSON(
   jsonString: string,
 ): SafeParseResult<BuyCreditsChangedResourcesBilling2, SDKValidationError> {
@@ -2275,37 +1826,7 @@ export const BuyCreditsChangedResourcesBilling1$inboundSchema: z.ZodType<
   type: types.literal("set_plan_item_quantity"),
   resourceIds: types.optional(z.array(types.string())),
 });
-/** @internal */
-export type BuyCreditsChangedResourcesBilling1$Outbound = {
-  productAlias: string;
-  productId: string;
-  quantity: number;
-  type: "set_plan_item_quantity";
-  resourceIds?: Array<string> | undefined;
-};
 
-/** @internal */
-export const BuyCreditsChangedResourcesBilling1$outboundSchema: z.ZodType<
-  BuyCreditsChangedResourcesBilling1$Outbound,
-  z.ZodTypeDef,
-  BuyCreditsChangedResourcesBilling1
-> = z.object({
-  productAlias: z.string(),
-  productId: z.string(),
-  quantity: z.number(),
-  type: z.literal("set_plan_item_quantity"),
-  resourceIds: z.array(z.string()).optional(),
-});
-
-export function buyCreditsChangedResourcesBilling1ToJSON(
-  buyCreditsChangedResourcesBilling1: BuyCreditsChangedResourcesBilling1,
-): string {
-  return JSON.stringify(
-    BuyCreditsChangedResourcesBilling1$outboundSchema.parse(
-      buyCreditsChangedResourcesBilling1,
-    ),
-  );
-}
 export function buyCreditsChangedResourcesBilling1FromJSON(
   jsonString: string,
 ): SafeParseResult<BuyCreditsChangedResourcesBilling1, SDKValidationError> {
@@ -2328,35 +1849,7 @@ export const BuyCreditsConfigurationChangedResources$inboundSchema: z.ZodType<
   z.lazy(() => BuyCreditsChangedResourcesBilling3$inboundSchema),
   z.lazy(() => BuyCreditsChangedResourcesBilling4$inboundSchema),
 ]);
-/** @internal */
-export type BuyCreditsConfigurationChangedResources$Outbound =
-  | BuyCreditsChangedResourcesBilling1$Outbound
-  | BuyCreditsChangedResourcesBilling2$Outbound
-  | BuyCreditsChangedResourcesBilling3$Outbound
-  | BuyCreditsChangedResourcesBilling4$Outbound;
 
-/** @internal */
-export const BuyCreditsConfigurationChangedResources$outboundSchema: z.ZodType<
-  BuyCreditsConfigurationChangedResources$Outbound,
-  z.ZodTypeDef,
-  BuyCreditsConfigurationChangedResources
-> = z.union([
-  z.lazy(() => BuyCreditsChangedResourcesBilling1$outboundSchema),
-  z.lazy(() => BuyCreditsChangedResourcesBilling2$outboundSchema),
-  z.lazy(() => BuyCreditsChangedResourcesBilling3$outboundSchema),
-  z.lazy(() => BuyCreditsChangedResourcesBilling4$outboundSchema),
-]);
-
-export function buyCreditsConfigurationChangedResourcesToJSON(
-  buyCreditsConfigurationChangedResources:
-    BuyCreditsConfigurationChangedResources,
-): string {
-  return JSON.stringify(
-    BuyCreditsConfigurationChangedResources$outboundSchema.parse(
-      buyCreditsConfigurationChangedResources,
-    ),
-  );
-}
 export function buyCreditsConfigurationChangedResourcesFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -2395,53 +1888,7 @@ export const BuyCreditsConfigurationBillingResponse200ApplicationJSONOutput$inbo
     metadata: types.optional(z.record(types.string())),
     pendingSubscriptionChangeId: types.optional(types.string()),
   });
-/** @internal */
-export type BuyCreditsConfigurationBillingResponse200ApplicationJSONOutput$Outbound =
-  {
-    orbPriceId: string;
-    productId: string;
-    changedResources?:
-      | Array<
-        | BuyCreditsChangedResourcesBilling1$Outbound
-        | BuyCreditsChangedResourcesBilling2$Outbound
-        | BuyCreditsChangedResourcesBilling3$Outbound
-        | BuyCreditsChangedResourcesBilling4$Outbound
-      >
-      | undefined;
-    metadata?: { [k: string]: string } | undefined;
-    pendingSubscriptionChangeId?: string | undefined;
-  };
 
-/** @internal */
-export const BuyCreditsConfigurationBillingResponse200ApplicationJSONOutput$outboundSchema:
-  z.ZodType<
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONOutput$Outbound,
-    z.ZodTypeDef,
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONOutput
-  > = z.object({
-    orbPriceId: z.string(),
-    productId: z.string(),
-    changedResources: z.array(
-      z.union([
-        z.lazy(() => BuyCreditsChangedResourcesBilling1$outboundSchema),
-        z.lazy(() => BuyCreditsChangedResourcesBilling2$outboundSchema),
-        z.lazy(() => BuyCreditsChangedResourcesBilling3$outboundSchema),
-        z.lazy(() => BuyCreditsChangedResourcesBilling4$outboundSchema),
-      ]),
-    ).optional(),
-    metadata: z.record(z.string()).optional(),
-    pendingSubscriptionChangeId: z.string().optional(),
-  });
-
-export function buyCreditsConfigurationBillingResponse200ApplicationJSONOutputToJSON(
-  buyCreditsConfigurationBillingResponse200ApplicationJSONOutput:
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONOutput,
-): string {
-  return JSON.stringify(
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONOutput$outboundSchema
-      .parse(buyCreditsConfigurationBillingResponse200ApplicationJSONOutput),
-  );
-}
 export function buyCreditsConfigurationBillingResponse200ApplicationJSONOutputFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -2471,33 +1918,7 @@ export const Configuration3$inboundSchema: z.ZodType<
   ),
   type: types.literal("decrease_plan_item_quantity"),
 });
-/** @internal */
-export type Configuration3$Outbound = {
-  options:
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3Options$Outbound;
-  output:
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONOutput$Outbound;
-  type: "decrease_plan_item_quantity";
-};
 
-/** @internal */
-export const Configuration3$outboundSchema: z.ZodType<
-  Configuration3$Outbound,
-  z.ZodTypeDef,
-  Configuration3
-> = z.object({
-  options: z.lazy(() =>
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3Options$outboundSchema
-  ),
-  output: z.lazy(() =>
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONOutput$outboundSchema
-  ),
-  type: z.literal("decrease_plan_item_quantity"),
-});
-
-export function configuration3ToJSON(configuration3: Configuration3): string {
-  return JSON.stringify(Configuration3$outboundSchema.parse(configuration3));
-}
 export function configuration3FromJSON(
   jsonString: string,
 ): SafeParseResult<Configuration3, SDKValidationError> {
@@ -2518,35 +1939,7 @@ export const BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBod
     productAlias: types.string(),
     resourceIds: z.array(types.string()),
   });
-/** @internal */
-export type BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBodyOptions$Outbound =
-  {
-    productAlias: string;
-    resourceIds: Array<string>;
-  };
 
-/** @internal */
-export const BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBodyOptions$outboundSchema:
-  z.ZodType<
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBodyOptions$Outbound,
-    z.ZodTypeDef,
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBodyOptions
-  > = z.object({
-    productAlias: z.string(),
-    resourceIds: z.array(z.string()),
-  });
-
-export function buyCreditsConfigurationBillingResponse200ApplicationJSONResponseBodyOptionsToJSON(
-  buyCreditsConfigurationBillingResponse200ApplicationJSONResponseBodyOptions:
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBodyOptions,
-): string {
-  return JSON.stringify(
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBodyOptions$outboundSchema
-      .parse(
-        buyCreditsConfigurationBillingResponse200ApplicationJSONResponseBodyOptions,
-      ),
-  );
-}
 export function buyCreditsConfigurationBillingResponse200ApplicationJSONResponseBodyOptionsFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -2575,39 +1968,7 @@ export const BuyCreditsChangedResources4$inboundSchema: z.ZodType<
   removedResourceIds: z.array(types.string()),
   type: types.literal("adjust_plan_item_quantity"),
 });
-/** @internal */
-export type BuyCreditsChangedResources4$Outbound = {
-  addedResourceIds: Array<string>;
-  productAlias: string;
-  productId: string;
-  quantity: number;
-  removedResourceIds: Array<string>;
-  type: "adjust_plan_item_quantity";
-};
 
-/** @internal */
-export const BuyCreditsChangedResources4$outboundSchema: z.ZodType<
-  BuyCreditsChangedResources4$Outbound,
-  z.ZodTypeDef,
-  BuyCreditsChangedResources4
-> = z.object({
-  addedResourceIds: z.array(z.string()),
-  productAlias: z.string(),
-  productId: z.string(),
-  quantity: z.number(),
-  removedResourceIds: z.array(z.string()),
-  type: z.literal("adjust_plan_item_quantity"),
-});
-
-export function buyCreditsChangedResources4ToJSON(
-  buyCreditsChangedResources4: BuyCreditsChangedResources4,
-): string {
-  return JSON.stringify(
-    BuyCreditsChangedResources4$outboundSchema.parse(
-      buyCreditsChangedResources4,
-    ),
-  );
-}
 export function buyCreditsChangedResources4FromJSON(
   jsonString: string,
 ): SafeParseResult<BuyCreditsChangedResources4, SDKValidationError> {
@@ -2630,37 +1991,7 @@ export const BuyCreditsChangedResources3$inboundSchema: z.ZodType<
   resourceIds: z.array(types.string()),
   type: types.literal("decrease_plan_item_quantity"),
 });
-/** @internal */
-export type BuyCreditsChangedResources3$Outbound = {
-  productAlias: string;
-  productId: string;
-  quantity: number;
-  resourceIds: Array<string>;
-  type: "decrease_plan_item_quantity";
-};
 
-/** @internal */
-export const BuyCreditsChangedResources3$outboundSchema: z.ZodType<
-  BuyCreditsChangedResources3$Outbound,
-  z.ZodTypeDef,
-  BuyCreditsChangedResources3
-> = z.object({
-  productAlias: z.string(),
-  productId: z.string(),
-  quantity: z.number(),
-  resourceIds: z.array(z.string()),
-  type: z.literal("decrease_plan_item_quantity"),
-});
-
-export function buyCreditsChangedResources3ToJSON(
-  buyCreditsChangedResources3: BuyCreditsChangedResources3,
-): string {
-  return JSON.stringify(
-    BuyCreditsChangedResources3$outboundSchema.parse(
-      buyCreditsChangedResources3,
-    ),
-  );
-}
 export function buyCreditsChangedResources3FromJSON(
   jsonString: string,
 ): SafeParseResult<BuyCreditsChangedResources3, SDKValidationError> {
@@ -2683,37 +2014,7 @@ export const BuyCreditsChangedResources2$inboundSchema: z.ZodType<
   resourceIds: z.array(types.string()),
   type: types.literal("increase_plan_item_quantity"),
 });
-/** @internal */
-export type BuyCreditsChangedResources2$Outbound = {
-  productAlias: string;
-  productId: string;
-  quantity: number;
-  resourceIds: Array<string>;
-  type: "increase_plan_item_quantity";
-};
 
-/** @internal */
-export const BuyCreditsChangedResources2$outboundSchema: z.ZodType<
-  BuyCreditsChangedResources2$Outbound,
-  z.ZodTypeDef,
-  BuyCreditsChangedResources2
-> = z.object({
-  productAlias: z.string(),
-  productId: z.string(),
-  quantity: z.number(),
-  resourceIds: z.array(z.string()),
-  type: z.literal("increase_plan_item_quantity"),
-});
-
-export function buyCreditsChangedResources2ToJSON(
-  buyCreditsChangedResources2: BuyCreditsChangedResources2,
-): string {
-  return JSON.stringify(
-    BuyCreditsChangedResources2$outboundSchema.parse(
-      buyCreditsChangedResources2,
-    ),
-  );
-}
 export function buyCreditsChangedResources2FromJSON(
   jsonString: string,
 ): SafeParseResult<BuyCreditsChangedResources2, SDKValidationError> {
@@ -2736,37 +2037,7 @@ export const BuyCreditsChangedResources1$inboundSchema: z.ZodType<
   type: types.literal("set_plan_item_quantity"),
   resourceIds: types.optional(z.array(types.string())),
 });
-/** @internal */
-export type BuyCreditsChangedResources1$Outbound = {
-  productAlias: string;
-  productId: string;
-  quantity: number;
-  type: "set_plan_item_quantity";
-  resourceIds?: Array<string> | undefined;
-};
 
-/** @internal */
-export const BuyCreditsChangedResources1$outboundSchema: z.ZodType<
-  BuyCreditsChangedResources1$Outbound,
-  z.ZodTypeDef,
-  BuyCreditsChangedResources1
-> = z.object({
-  productAlias: z.string(),
-  productId: z.string(),
-  quantity: z.number(),
-  type: z.literal("set_plan_item_quantity"),
-  resourceIds: z.array(z.string()).optional(),
-});
-
-export function buyCreditsChangedResources1ToJSON(
-  buyCreditsChangedResources1: BuyCreditsChangedResources1,
-): string {
-  return JSON.stringify(
-    BuyCreditsChangedResources1$outboundSchema.parse(
-      buyCreditsChangedResources1,
-    ),
-  );
-}
 export function buyCreditsChangedResources1FromJSON(
   jsonString: string,
 ): SafeParseResult<BuyCreditsChangedResources1, SDKValidationError> {
@@ -2788,34 +2059,7 @@ export const ConfigurationChangedResources$inboundSchema: z.ZodType<
   z.lazy(() => BuyCreditsChangedResources3$inboundSchema),
   z.lazy(() => BuyCreditsChangedResources4$inboundSchema),
 ]);
-/** @internal */
-export type ConfigurationChangedResources$Outbound =
-  | BuyCreditsChangedResources1$Outbound
-  | BuyCreditsChangedResources2$Outbound
-  | BuyCreditsChangedResources3$Outbound
-  | BuyCreditsChangedResources4$Outbound;
 
-/** @internal */
-export const ConfigurationChangedResources$outboundSchema: z.ZodType<
-  ConfigurationChangedResources$Outbound,
-  z.ZodTypeDef,
-  ConfigurationChangedResources
-> = z.union([
-  z.lazy(() => BuyCreditsChangedResources1$outboundSchema),
-  z.lazy(() => BuyCreditsChangedResources2$outboundSchema),
-  z.lazy(() => BuyCreditsChangedResources3$outboundSchema),
-  z.lazy(() => BuyCreditsChangedResources4$outboundSchema),
-]);
-
-export function configurationChangedResourcesToJSON(
-  configurationChangedResources: ConfigurationChangedResources,
-): string {
-  return JSON.stringify(
-    ConfigurationChangedResources$outboundSchema.parse(
-      configurationChangedResources,
-    ),
-  );
-}
 export function configurationChangedResourcesFromJSON(
   jsonString: string,
 ): SafeParseResult<ConfigurationChangedResources, SDKValidationError> {
@@ -2848,53 +2092,7 @@ export const BuyCreditsConfigurationBillingResponse200Output$inboundSchema:
     metadata: types.optional(z.record(types.string())),
     pendingSubscriptionChangeId: types.optional(types.string()),
   });
-/** @internal */
-export type BuyCreditsConfigurationBillingResponse200Output$Outbound = {
-  orbPriceId: string;
-  productId: string;
-  changedResources?:
-    | Array<
-      | BuyCreditsChangedResources1$Outbound
-      | BuyCreditsChangedResources2$Outbound
-      | BuyCreditsChangedResources3$Outbound
-      | BuyCreditsChangedResources4$Outbound
-    >
-    | undefined;
-  metadata?: { [k: string]: string } | undefined;
-  pendingSubscriptionChangeId?: string | undefined;
-};
 
-/** @internal */
-export const BuyCreditsConfigurationBillingResponse200Output$outboundSchema:
-  z.ZodType<
-    BuyCreditsConfigurationBillingResponse200Output$Outbound,
-    z.ZodTypeDef,
-    BuyCreditsConfigurationBillingResponse200Output
-  > = z.object({
-    orbPriceId: z.string(),
-    productId: z.string(),
-    changedResources: z.array(
-      z.union([
-        z.lazy(() => BuyCreditsChangedResources1$outboundSchema),
-        z.lazy(() => BuyCreditsChangedResources2$outboundSchema),
-        z.lazy(() => BuyCreditsChangedResources3$outboundSchema),
-        z.lazy(() => BuyCreditsChangedResources4$outboundSchema),
-      ]),
-    ).optional(),
-    metadata: z.record(z.string()).optional(),
-    pendingSubscriptionChangeId: z.string().optional(),
-  });
-
-export function buyCreditsConfigurationBillingResponse200OutputToJSON(
-  buyCreditsConfigurationBillingResponse200Output:
-    BuyCreditsConfigurationBillingResponse200Output,
-): string {
-  return JSON.stringify(
-    BuyCreditsConfigurationBillingResponse200Output$outboundSchema.parse(
-      buyCreditsConfigurationBillingResponse200Output,
-    ),
-  );
-}
 export function buyCreditsConfigurationBillingResponse200OutputFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -2925,36 +2123,7 @@ export const BuyCreditsConfiguration2$inboundSchema: z.ZodType<
   ),
   type: types.literal("increase_plan_item_quantity"),
 });
-/** @internal */
-export type BuyCreditsConfiguration2$Outbound = {
-  options:
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBodyOptions$Outbound;
-  output: BuyCreditsConfigurationBillingResponse200Output$Outbound;
-  type: "increase_plan_item_quantity";
-};
 
-/** @internal */
-export const BuyCreditsConfiguration2$outboundSchema: z.ZodType<
-  BuyCreditsConfiguration2$Outbound,
-  z.ZodTypeDef,
-  BuyCreditsConfiguration2
-> = z.object({
-  options: z.lazy(() =>
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBodyOptions$outboundSchema
-  ),
-  output: z.lazy(() =>
-    BuyCreditsConfigurationBillingResponse200Output$outboundSchema
-  ),
-  type: z.literal("increase_plan_item_quantity"),
-});
-
-export function buyCreditsConfiguration2ToJSON(
-  buyCreditsConfiguration2: BuyCreditsConfiguration2,
-): string {
-  return JSON.stringify(
-    BuyCreditsConfiguration2$outboundSchema.parse(buyCreditsConfiguration2),
-  );
-}
 export function buyCreditsConfiguration2FromJSON(
   jsonString: string,
 ): SafeParseResult<BuyCreditsConfiguration2, SDKValidationError> {
@@ -2976,35 +2145,7 @@ export const BuyCreditsConfigurationBillingResponse200ApplicationJSONOptions$inb
     quantity: types.number(),
     resourceIds: types.optional(z.array(types.string())),
   });
-/** @internal */
-export type BuyCreditsConfigurationBillingResponse200ApplicationJSONOptions$Outbound =
-  {
-    productAlias: string;
-    quantity: number;
-    resourceIds?: Array<string> | undefined;
-  };
 
-/** @internal */
-export const BuyCreditsConfigurationBillingResponse200ApplicationJSONOptions$outboundSchema:
-  z.ZodType<
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONOptions$Outbound,
-    z.ZodTypeDef,
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONOptions
-  > = z.object({
-    productAlias: z.string(),
-    quantity: z.number(),
-    resourceIds: z.array(z.string()).optional(),
-  });
-
-export function buyCreditsConfigurationBillingResponse200ApplicationJSONOptionsToJSON(
-  buyCreditsConfigurationBillingResponse200ApplicationJSONOptions:
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONOptions,
-): string {
-  return JSON.stringify(
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONOptions$outboundSchema
-      .parse(buyCreditsConfigurationBillingResponse200ApplicationJSONOptions),
-  );
-}
 export function buyCreditsConfigurationBillingResponse200ApplicationJSONOptionsFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -3033,37 +2174,7 @@ export const ChangedResources4$inboundSchema: z.ZodType<
   removedResourceIds: z.array(types.string()),
   type: types.literal("adjust_plan_item_quantity"),
 });
-/** @internal */
-export type ChangedResources4$Outbound = {
-  addedResourceIds: Array<string>;
-  productAlias: string;
-  productId: string;
-  quantity: number;
-  removedResourceIds: Array<string>;
-  type: "adjust_plan_item_quantity";
-};
 
-/** @internal */
-export const ChangedResources4$outboundSchema: z.ZodType<
-  ChangedResources4$Outbound,
-  z.ZodTypeDef,
-  ChangedResources4
-> = z.object({
-  addedResourceIds: z.array(z.string()),
-  productAlias: z.string(),
-  productId: z.string(),
-  quantity: z.number(),
-  removedResourceIds: z.array(z.string()),
-  type: z.literal("adjust_plan_item_quantity"),
-});
-
-export function changedResources4ToJSON(
-  changedResources4: ChangedResources4,
-): string {
-  return JSON.stringify(
-    ChangedResources4$outboundSchema.parse(changedResources4),
-  );
-}
 export function changedResources4FromJSON(
   jsonString: string,
 ): SafeParseResult<ChangedResources4, SDKValidationError> {
@@ -3086,35 +2197,7 @@ export const ChangedResources3$inboundSchema: z.ZodType<
   resourceIds: z.array(types.string()),
   type: types.literal("decrease_plan_item_quantity"),
 });
-/** @internal */
-export type ChangedResources3$Outbound = {
-  productAlias: string;
-  productId: string;
-  quantity: number;
-  resourceIds: Array<string>;
-  type: "decrease_plan_item_quantity";
-};
 
-/** @internal */
-export const ChangedResources3$outboundSchema: z.ZodType<
-  ChangedResources3$Outbound,
-  z.ZodTypeDef,
-  ChangedResources3
-> = z.object({
-  productAlias: z.string(),
-  productId: z.string(),
-  quantity: z.number(),
-  resourceIds: z.array(z.string()),
-  type: z.literal("decrease_plan_item_quantity"),
-});
-
-export function changedResources3ToJSON(
-  changedResources3: ChangedResources3,
-): string {
-  return JSON.stringify(
-    ChangedResources3$outboundSchema.parse(changedResources3),
-  );
-}
 export function changedResources3FromJSON(
   jsonString: string,
 ): SafeParseResult<ChangedResources3, SDKValidationError> {
@@ -3137,35 +2220,7 @@ export const ChangedResources2$inboundSchema: z.ZodType<
   resourceIds: z.array(types.string()),
   type: types.literal("increase_plan_item_quantity"),
 });
-/** @internal */
-export type ChangedResources2$Outbound = {
-  productAlias: string;
-  productId: string;
-  quantity: number;
-  resourceIds: Array<string>;
-  type: "increase_plan_item_quantity";
-};
 
-/** @internal */
-export const ChangedResources2$outboundSchema: z.ZodType<
-  ChangedResources2$Outbound,
-  z.ZodTypeDef,
-  ChangedResources2
-> = z.object({
-  productAlias: z.string(),
-  productId: z.string(),
-  quantity: z.number(),
-  resourceIds: z.array(z.string()),
-  type: z.literal("increase_plan_item_quantity"),
-});
-
-export function changedResources2ToJSON(
-  changedResources2: ChangedResources2,
-): string {
-  return JSON.stringify(
-    ChangedResources2$outboundSchema.parse(changedResources2),
-  );
-}
 export function changedResources2FromJSON(
   jsonString: string,
 ): SafeParseResult<ChangedResources2, SDKValidationError> {
@@ -3188,35 +2243,7 @@ export const ChangedResources1$inboundSchema: z.ZodType<
   type: types.literal("set_plan_item_quantity"),
   resourceIds: types.optional(z.array(types.string())),
 });
-/** @internal */
-export type ChangedResources1$Outbound = {
-  productAlias: string;
-  productId: string;
-  quantity: number;
-  type: "set_plan_item_quantity";
-  resourceIds?: Array<string> | undefined;
-};
 
-/** @internal */
-export const ChangedResources1$outboundSchema: z.ZodType<
-  ChangedResources1$Outbound,
-  z.ZodTypeDef,
-  ChangedResources1
-> = z.object({
-  productAlias: z.string(),
-  productId: z.string(),
-  quantity: z.number(),
-  type: z.literal("set_plan_item_quantity"),
-  resourceIds: z.array(z.string()).optional(),
-});
-
-export function changedResources1ToJSON(
-  changedResources1: ChangedResources1,
-): string {
-  return JSON.stringify(
-    ChangedResources1$outboundSchema.parse(changedResources1),
-  );
-}
 export function changedResources1FromJSON(
   jsonString: string,
 ): SafeParseResult<ChangedResources1, SDKValidationError> {
@@ -3238,32 +2265,7 @@ export const ChangedResources$inboundSchema: z.ZodType<
   z.lazy(() => ChangedResources3$inboundSchema),
   z.lazy(() => ChangedResources4$inboundSchema),
 ]);
-/** @internal */
-export type ChangedResources$Outbound =
-  | ChangedResources1$Outbound
-  | ChangedResources2$Outbound
-  | ChangedResources3$Outbound
-  | ChangedResources4$Outbound;
 
-/** @internal */
-export const ChangedResources$outboundSchema: z.ZodType<
-  ChangedResources$Outbound,
-  z.ZodTypeDef,
-  ChangedResources
-> = z.union([
-  z.lazy(() => ChangedResources1$outboundSchema),
-  z.lazy(() => ChangedResources2$outboundSchema),
-  z.lazy(() => ChangedResources3$outboundSchema),
-  z.lazy(() => ChangedResources4$outboundSchema),
-]);
-
-export function changedResourcesToJSON(
-  changedResources: ChangedResources,
-): string {
-  return JSON.stringify(
-    ChangedResources$outboundSchema.parse(changedResources),
-  );
-}
 export function changedResourcesFromJSON(
   jsonString: string,
 ): SafeParseResult<ChangedResources, SDKValidationError> {
@@ -3296,53 +2298,7 @@ export const BuyCreditsConfigurationBillingResponseOutput$inboundSchema:
     metadata: types.optional(z.record(types.string())),
     pendingSubscriptionChangeId: types.optional(types.string()),
   });
-/** @internal */
-export type BuyCreditsConfigurationBillingResponseOutput$Outbound = {
-  orbPriceId: string;
-  productId: string;
-  changedResources?:
-    | Array<
-      | ChangedResources1$Outbound
-      | ChangedResources2$Outbound
-      | ChangedResources3$Outbound
-      | ChangedResources4$Outbound
-    >
-    | undefined;
-  metadata?: { [k: string]: string } | undefined;
-  pendingSubscriptionChangeId?: string | undefined;
-};
 
-/** @internal */
-export const BuyCreditsConfigurationBillingResponseOutput$outboundSchema:
-  z.ZodType<
-    BuyCreditsConfigurationBillingResponseOutput$Outbound,
-    z.ZodTypeDef,
-    BuyCreditsConfigurationBillingResponseOutput
-  > = z.object({
-    orbPriceId: z.string(),
-    productId: z.string(),
-    changedResources: z.array(
-      z.union([
-        z.lazy(() => ChangedResources1$outboundSchema),
-        z.lazy(() => ChangedResources2$outboundSchema),
-        z.lazy(() => ChangedResources3$outboundSchema),
-        z.lazy(() => ChangedResources4$outboundSchema),
-      ]),
-    ).optional(),
-    metadata: z.record(z.string()).optional(),
-    pendingSubscriptionChangeId: z.string().optional(),
-  });
-
-export function buyCreditsConfigurationBillingResponseOutputToJSON(
-  buyCreditsConfigurationBillingResponseOutput:
-    BuyCreditsConfigurationBillingResponseOutput,
-): string {
-  return JSON.stringify(
-    BuyCreditsConfigurationBillingResponseOutput$outboundSchema.parse(
-      buyCreditsConfigurationBillingResponseOutput,
-    ),
-  );
-}
 export function buyCreditsConfigurationBillingResponseOutputFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -3373,36 +2329,7 @@ export const BuyCreditsConfiguration1$inboundSchema: z.ZodType<
   ),
   type: types.literal("set_plan_item_quantity"),
 });
-/** @internal */
-export type BuyCreditsConfiguration1$Outbound = {
-  options:
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONOptions$Outbound;
-  output: BuyCreditsConfigurationBillingResponseOutput$Outbound;
-  type: "set_plan_item_quantity";
-};
 
-/** @internal */
-export const BuyCreditsConfiguration1$outboundSchema: z.ZodType<
-  BuyCreditsConfiguration1$Outbound,
-  z.ZodTypeDef,
-  BuyCreditsConfiguration1
-> = z.object({
-  options: z.lazy(() =>
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONOptions$outboundSchema
-  ),
-  output: z.lazy(() =>
-    BuyCreditsConfigurationBillingResponseOutput$outboundSchema
-  ),
-  type: z.literal("set_plan_item_quantity"),
-});
-
-export function buyCreditsConfiguration1ToJSON(
-  buyCreditsConfiguration1: BuyCreditsConfiguration1,
-): string {
-  return JSON.stringify(
-    BuyCreditsConfiguration1$outboundSchema.parse(buyCreditsConfiguration1),
-  );
-}
 export function buyCreditsConfiguration1FromJSON(
   jsonString: string,
 ): SafeParseResult<BuyCreditsConfiguration1, SDKValidationError> {
@@ -3424,32 +2351,7 @@ export const ResponseBodyConfiguration$inboundSchema: z.ZodType<
   z.lazy(() => Configuration3$inboundSchema),
   z.lazy(() => Configuration4$inboundSchema),
 ]);
-/** @internal */
-export type ResponseBodyConfiguration$Outbound =
-  | BuyCreditsConfiguration1$Outbound
-  | BuyCreditsConfiguration2$Outbound
-  | Configuration3$Outbound
-  | Configuration4$Outbound;
 
-/** @internal */
-export const ResponseBodyConfiguration$outboundSchema: z.ZodType<
-  ResponseBodyConfiguration$Outbound,
-  z.ZodTypeDef,
-  ResponseBodyConfiguration
-> = z.union([
-  z.lazy(() => BuyCreditsConfiguration1$outboundSchema),
-  z.lazy(() => BuyCreditsConfiguration2$outboundSchema),
-  z.lazy(() => Configuration3$outboundSchema),
-  z.lazy(() => Configuration4$outboundSchema),
-]);
-
-export function responseBodyConfigurationToJSON(
-  responseBodyConfiguration: ResponseBodyConfiguration,
-): string {
-  return JSON.stringify(
-    ResponseBodyConfiguration$outboundSchema.parse(responseBodyConfiguration),
-  );
-}
 export function responseBodyConfigurationFromJSON(
   jsonString: string,
 ): SafeParseResult<ResponseBodyConfiguration, SDKValidationError> {
@@ -3464,10 +2366,6 @@ export function responseBodyConfigurationFromJSON(
 export const BuyCreditsResponseBodyStatus$inboundSchema: z.ZodNativeEnum<
   typeof BuyCreditsResponseBodyStatus
 > = z.nativeEnum(BuyCreditsResponseBodyStatus);
-/** @internal */
-export const BuyCreditsResponseBodyStatus$outboundSchema: z.ZodNativeEnum<
-  typeof BuyCreditsResponseBodyStatus
-> = BuyCreditsResponseBodyStatus$inboundSchema;
 
 /** @internal */
 export const OrbSubscriptionIntent$inboundSchema: z.ZodType<
@@ -3489,50 +2387,7 @@ export const OrbSubscriptionIntent$inboundSchema: z.ZodType<
   updatedAt: types.string(),
   purchaseIntentId: types.optional(types.string()),
 });
-/** @internal */
-export type OrbSubscriptionIntent$Outbound = {
-  id: string;
-  configuration:
-    | BuyCreditsConfiguration1$Outbound
-    | BuyCreditsConfiguration2$Outbound
-    | Configuration3$Outbound
-    | Configuration4$Outbound;
-  createdAt: string;
-  orbSubscriptionId: string;
-  ownerId: string;
-  status: string;
-  updatedAt: string;
-  purchaseIntentId?: string | undefined;
-};
 
-/** @internal */
-export const OrbSubscriptionIntent$outboundSchema: z.ZodType<
-  OrbSubscriptionIntent$Outbound,
-  z.ZodTypeDef,
-  OrbSubscriptionIntent
-> = z.object({
-  id: z.string(),
-  configuration: z.union([
-    z.lazy(() => BuyCreditsConfiguration1$outboundSchema),
-    z.lazy(() => BuyCreditsConfiguration2$outboundSchema),
-    z.lazy(() => Configuration3$outboundSchema),
-    z.lazy(() => Configuration4$outboundSchema),
-  ]),
-  createdAt: z.string(),
-  orbSubscriptionId: z.string(),
-  ownerId: z.string(),
-  status: BuyCreditsResponseBodyStatus$outboundSchema,
-  updatedAt: z.string(),
-  purchaseIntentId: z.string().optional(),
-});
-
-export function orbSubscriptionIntentToJSON(
-  orbSubscriptionIntent: OrbSubscriptionIntent,
-): string {
-  return JSON.stringify(
-    OrbSubscriptionIntent$outboundSchema.parse(orbSubscriptionIntent),
-  );
-}
 export function orbSubscriptionIntentFromJSON(
   jsonString: string,
 ): SafeParseResult<OrbSubscriptionIntent, SDKValidationError> {
@@ -3551,27 +2406,7 @@ export const BuyCreditsResponseBody3$inboundSchema: z.ZodType<
 > = z.object({
   orbSubscriptionIntent: z.lazy(() => OrbSubscriptionIntent$inboundSchema),
 });
-/** @internal */
-export type BuyCreditsResponseBody3$Outbound = {
-  orbSubscriptionIntent: OrbSubscriptionIntent$Outbound;
-};
 
-/** @internal */
-export const BuyCreditsResponseBody3$outboundSchema: z.ZodType<
-  BuyCreditsResponseBody3$Outbound,
-  z.ZodTypeDef,
-  BuyCreditsResponseBody3
-> = z.object({
-  orbSubscriptionIntent: z.lazy(() => OrbSubscriptionIntent$outboundSchema),
-});
-
-export function buyCreditsResponseBody3ToJSON(
-  buyCreditsResponseBody3: BuyCreditsResponseBody3,
-): string {
-  return JSON.stringify(
-    BuyCreditsResponseBody3$outboundSchema.parse(buyCreditsResponseBody3),
-  );
-}
 export function buyCreditsResponseBody3FromJSON(
   jsonString: string,
 ): SafeParseResult<BuyCreditsResponseBody3, SDKValidationError> {
@@ -3598,43 +2433,7 @@ export const ConfigurationLineItems$inboundSchema: z.ZodType<
   productAlias: types.optional(types.string()),
   refund: types.optional(types.string()),
 });
-/** @internal */
-export type ConfigurationLineItems$Outbound = {
-  id: string;
-  description: string;
-  name: string;
-  productId: string;
-  quantity: string;
-  unitAmount: string;
-  metadata?: { [k: string]: string } | undefined;
-  productAlias?: string | undefined;
-  refund?: string | undefined;
-};
 
-/** @internal */
-export const ConfigurationLineItems$outboundSchema: z.ZodType<
-  ConfigurationLineItems$Outbound,
-  z.ZodTypeDef,
-  ConfigurationLineItems
-> = z.object({
-  id: z.string(),
-  description: z.string(),
-  name: z.string(),
-  productId: z.string(),
-  quantity: z.string(),
-  unitAmount: z.string(),
-  metadata: z.record(z.string()).optional(),
-  productAlias: z.string().optional(),
-  refund: z.string().optional(),
-});
-
-export function configurationLineItemsToJSON(
-  configurationLineItems: ConfigurationLineItems,
-): string {
-  return JSON.stringify(
-    ConfigurationLineItems$outboundSchema.parse(configurationLineItems),
-  );
-}
 export function configurationLineItemsFromJSON(
   jsonString: string,
 ): SafeParseResult<ConfigurationLineItems, SDKValidationError> {
@@ -3662,44 +2461,7 @@ export const BuyCreditsConfigurationBillingResponse200Options$inboundSchema:
       z.array(z.lazy(() => ConfigurationLineItems$inboundSchema)),
     ),
   });
-/** @internal */
-export type BuyCreditsConfigurationBillingResponse200Options$Outbound = {
-  orbCustomerId: string;
-  orbExternalCustomerId: string;
-  orbExternalPlanId: string;
-  orbPendingSubscriptionChangeId: string;
-  orbPlanId: string;
-  orbSubscriptionId: string;
-  lineItems?: Array<ConfigurationLineItems$Outbound> | undefined;
-};
 
-/** @internal */
-export const BuyCreditsConfigurationBillingResponse200Options$outboundSchema:
-  z.ZodType<
-    BuyCreditsConfigurationBillingResponse200Options$Outbound,
-    z.ZodTypeDef,
-    BuyCreditsConfigurationBillingResponse200Options
-  > = z.object({
-    orbCustomerId: z.string(),
-    orbExternalCustomerId: z.string(),
-    orbExternalPlanId: z.string(),
-    orbPendingSubscriptionChangeId: z.string(),
-    orbPlanId: z.string(),
-    orbSubscriptionId: z.string(),
-    lineItems: z.array(z.lazy(() => ConfigurationLineItems$outboundSchema))
-      .optional(),
-  });
-
-export function buyCreditsConfigurationBillingResponse200OptionsToJSON(
-  buyCreditsConfigurationBillingResponse200Options:
-    BuyCreditsConfigurationBillingResponse200Options,
-): string {
-  return JSON.stringify(
-    BuyCreditsConfigurationBillingResponse200Options$outboundSchema.parse(
-      buyCreditsConfigurationBillingResponse200Options,
-    ),
-  );
-}
 export function buyCreditsConfigurationBillingResponse200OptionsFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -3724,29 +2486,7 @@ export const BuyCreditsConfigurationBillingOutput$inboundSchema: z.ZodType<
 > = z.object({
   pendingSubscriptionChangeId: types.string(),
 });
-/** @internal */
-export type BuyCreditsConfigurationBillingOutput$Outbound = {
-  pendingSubscriptionChangeId: string;
-};
 
-/** @internal */
-export const BuyCreditsConfigurationBillingOutput$outboundSchema: z.ZodType<
-  BuyCreditsConfigurationBillingOutput$Outbound,
-  z.ZodTypeDef,
-  BuyCreditsConfigurationBillingOutput
-> = z.object({
-  pendingSubscriptionChangeId: z.string(),
-});
-
-export function buyCreditsConfigurationBillingOutputToJSON(
-  buyCreditsConfigurationBillingOutput: BuyCreditsConfigurationBillingOutput,
-): string {
-  return JSON.stringify(
-    BuyCreditsConfigurationBillingOutput$outboundSchema.parse(
-      buyCreditsConfigurationBillingOutput,
-    ),
-  );
-}
 export function buyCreditsConfigurationBillingOutputFromJSON(
   jsonString: string,
 ): SafeParseResult<BuyCreditsConfigurationBillingOutput, SDKValidationError> {
@@ -3770,29 +2510,7 @@ export const Configuration6$inboundSchema: z.ZodType<
   output: z.lazy(() => BuyCreditsConfigurationBillingOutput$inboundSchema),
   type: types.literal("orb_subscription_intent"),
 });
-/** @internal */
-export type Configuration6$Outbound = {
-  options: BuyCreditsConfigurationBillingResponse200Options$Outbound;
-  output: BuyCreditsConfigurationBillingOutput$Outbound;
-  type: "orb_subscription_intent";
-};
 
-/** @internal */
-export const Configuration6$outboundSchema: z.ZodType<
-  Configuration6$Outbound,
-  z.ZodTypeDef,
-  Configuration6
-> = z.object({
-  options: z.lazy(() =>
-    BuyCreditsConfigurationBillingResponse200Options$outboundSchema
-  ),
-  output: z.lazy(() => BuyCreditsConfigurationBillingOutput$outboundSchema),
-  type: z.literal("orb_subscription_intent"),
-});
-
-export function configuration6ToJSON(configuration6: Configuration6): string {
-  return JSON.stringify(Configuration6$outboundSchema.parse(configuration6));
-}
 export function configuration6FromJSON(
   jsonString: string,
 ): SafeParseResult<Configuration6, SDKValidationError> {
@@ -3809,19 +2527,7 @@ export const AddPrices2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-/** @internal */
-export type AddPrices2$Outbound = {};
 
-/** @internal */
-export const AddPrices2$outboundSchema: z.ZodType<
-  AddPrices2$Outbound,
-  z.ZodTypeDef,
-  AddPrices2
-> = z.object({});
-
-export function addPrices2ToJSON(addPrices2: AddPrices2): string {
-  return JSON.stringify(AddPrices2$outboundSchema.parse(addPrices2));
-}
 export function addPrices2FromJSON(
   jsonString: string,
 ): SafeParseResult<AddPrices2, SDKValidationError> {
@@ -3840,23 +2546,7 @@ export const AddPrices1$inboundSchema: z.ZodType<
 > = z.object({
   priceId: types.string(),
 });
-/** @internal */
-export type AddPrices1$Outbound = {
-  priceId: string;
-};
 
-/** @internal */
-export const AddPrices1$outboundSchema: z.ZodType<
-  AddPrices1$Outbound,
-  z.ZodTypeDef,
-  AddPrices1
-> = z.object({
-  priceId: z.string(),
-});
-
-export function addPrices1ToJSON(addPrices1: AddPrices1): string {
-  return JSON.stringify(AddPrices1$outboundSchema.parse(addPrices1));
-}
 export function addPrices1FromJSON(
   jsonString: string,
 ): SafeParseResult<AddPrices1, SDKValidationError> {
@@ -3876,22 +2566,7 @@ export const AddPrices$inboundSchema: z.ZodType<
   z.lazy(() => AddPrices1$inboundSchema),
   z.lazy(() => AddPrices2$inboundSchema),
 ]);
-/** @internal */
-export type AddPrices$Outbound = AddPrices1$Outbound | AddPrices2$Outbound;
 
-/** @internal */
-export const AddPrices$outboundSchema: z.ZodType<
-  AddPrices$Outbound,
-  z.ZodTypeDef,
-  AddPrices
-> = smartUnion([
-  z.lazy(() => AddPrices1$outboundSchema),
-  z.lazy(() => AddPrices2$outboundSchema),
-]);
-
-export function addPricesToJSON(addPrices: AddPrices): string {
-  return JSON.stringify(AddPrices$outboundSchema.parse(addPrices));
-}
 export function addPricesFromJSON(
   jsonString: string,
 ): SafeParseResult<AddPrices, SDKValidationError> {
@@ -3910,23 +2585,7 @@ export const RemovePrices$inboundSchema: z.ZodType<
 > = z.object({
   priceId: types.string(),
 });
-/** @internal */
-export type RemovePrices$Outbound = {
-  priceId: string;
-};
 
-/** @internal */
-export const RemovePrices$outboundSchema: z.ZodType<
-  RemovePrices$Outbound,
-  z.ZodTypeDef,
-  RemovePrices
-> = z.object({
-  priceId: z.string(),
-});
-
-export function removePricesToJSON(removePrices: RemovePrices): string {
-  return JSON.stringify(RemovePrices$outboundSchema.parse(removePrices));
-}
 export function removePricesFromJSON(
   jsonString: string,
 ): SafeParseResult<RemovePrices, SDKValidationError> {
@@ -3946,29 +2605,7 @@ export const ConfigurationReplacePrices$inboundSchema: z.ZodType<
   fixedPriceQuantity: types.number(),
   replacesPriceId: types.string(),
 });
-/** @internal */
-export type ConfigurationReplacePrices$Outbound = {
-  fixedPriceQuantity: number;
-  replacesPriceId: string;
-};
 
-/** @internal */
-export const ConfigurationReplacePrices$outboundSchema: z.ZodType<
-  ConfigurationReplacePrices$Outbound,
-  z.ZodTypeDef,
-  ConfigurationReplacePrices
-> = z.object({
-  fixedPriceQuantity: z.number(),
-  replacesPriceId: z.string(),
-});
-
-export function configurationReplacePricesToJSON(
-  configurationReplacePrices: ConfigurationReplacePrices,
-): string {
-  return JSON.stringify(
-    ConfigurationReplacePrices$outboundSchema.parse(configurationReplacePrices),
-  );
-}
 export function configurationReplacePricesFromJSON(
   jsonString: string,
 ): SafeParseResult<ConfigurationReplacePrices, SDKValidationError> {
@@ -4007,54 +2644,7 @@ export const BuyCreditsConfigurationBillingResponseOptions$inboundSchema:
     ),
     startDate: types.optional(types.string()),
   });
-/** @internal */
-export type BuyCreditsConfigurationBillingResponseOptions$Outbound = {
-  externalPlanId: string;
-  addPrices?: Array<AddPrices1$Outbound | AddPrices2$Outbound> | undefined;
-  alignBillingWithSubscriptionStartDate?: boolean | undefined;
-  couponRedemptionCode?: string | undefined;
-  initialPhaseOrder?: number | undefined;
-  metadata?: { [k: string]: string | null } | undefined;
-  removePrices?: Array<RemovePrices$Outbound> | undefined;
-  replacePrices?: Array<ConfigurationReplacePrices$Outbound> | undefined;
-  startDate?: string | undefined;
-};
 
-/** @internal */
-export const BuyCreditsConfigurationBillingResponseOptions$outboundSchema:
-  z.ZodType<
-    BuyCreditsConfigurationBillingResponseOptions$Outbound,
-    z.ZodTypeDef,
-    BuyCreditsConfigurationBillingResponseOptions
-  > = z.object({
-    externalPlanId: z.string(),
-    addPrices: z.array(
-      smartUnion([
-        z.lazy(() => AddPrices1$outboundSchema),
-        z.lazy(() => AddPrices2$outboundSchema),
-      ]),
-    ).optional(),
-    alignBillingWithSubscriptionStartDate: z.boolean().optional(),
-    couponRedemptionCode: z.string().optional(),
-    initialPhaseOrder: z.number().optional(),
-    metadata: z.record(z.nullable(z.string())).optional(),
-    removePrices: z.array(z.lazy(() => RemovePrices$outboundSchema)).optional(),
-    replacePrices: z.array(
-      z.lazy(() => ConfigurationReplacePrices$outboundSchema),
-    ).optional(),
-    startDate: z.string().optional(),
-  });
-
-export function buyCreditsConfigurationBillingResponseOptionsToJSON(
-  buyCreditsConfigurationBillingResponseOptions:
-    BuyCreditsConfigurationBillingResponseOptions,
-): string {
-  return JSON.stringify(
-    BuyCreditsConfigurationBillingResponseOptions$outboundSchema.parse(
-      buyCreditsConfigurationBillingResponseOptions,
-    ),
-  );
-}
 export function buyCreditsConfigurationBillingResponseOptionsFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -4079,29 +2669,7 @@ export const BuyCreditsConfigurationOutput$inboundSchema: z.ZodType<
 > = z.object({
   pendingSubscriptionChangeId: types.string(),
 });
-/** @internal */
-export type BuyCreditsConfigurationOutput$Outbound = {
-  pendingSubscriptionChangeId: string;
-};
 
-/** @internal */
-export const BuyCreditsConfigurationOutput$outboundSchema: z.ZodType<
-  BuyCreditsConfigurationOutput$Outbound,
-  z.ZodTypeDef,
-  BuyCreditsConfigurationOutput
-> = z.object({
-  pendingSubscriptionChangeId: z.string(),
-});
-
-export function buyCreditsConfigurationOutputToJSON(
-  buyCreditsConfigurationOutput: BuyCreditsConfigurationOutput,
-): string {
-  return JSON.stringify(
-    BuyCreditsConfigurationOutput$outboundSchema.parse(
-      buyCreditsConfigurationOutput,
-    ),
-  );
-}
 export function buyCreditsConfigurationOutputFromJSON(
   jsonString: string,
 ): SafeParseResult<BuyCreditsConfigurationOutput, SDKValidationError> {
@@ -4124,29 +2692,7 @@ export const Configuration5$inboundSchema: z.ZodType<
   output: z.lazy(() => BuyCreditsConfigurationOutput$inboundSchema),
   type: types.literal("orb_subscription"),
 });
-/** @internal */
-export type Configuration5$Outbound = {
-  options: BuyCreditsConfigurationBillingResponseOptions$Outbound;
-  output: BuyCreditsConfigurationOutput$Outbound;
-  type: "orb_subscription";
-};
 
-/** @internal */
-export const Configuration5$outboundSchema: z.ZodType<
-  Configuration5$Outbound,
-  z.ZodTypeDef,
-  Configuration5
-> = z.object({
-  options: z.lazy(() =>
-    BuyCreditsConfigurationBillingResponseOptions$outboundSchema
-  ),
-  output: z.lazy(() => BuyCreditsConfigurationOutput$outboundSchema),
-  type: z.literal("orb_subscription"),
-});
-
-export function configuration5ToJSON(configuration5: Configuration5): string {
-  return JSON.stringify(Configuration5$outboundSchema.parse(configuration5));
-}
 export function configuration5FromJSON(
   jsonString: string,
 ): SafeParseResult<Configuration5, SDKValidationError> {
@@ -4163,25 +2709,7 @@ export const BuyCreditsConfigurationBillingOptions$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-/** @internal */
-export type BuyCreditsConfigurationBillingOptions$Outbound = {};
 
-/** @internal */
-export const BuyCreditsConfigurationBillingOptions$outboundSchema: z.ZodType<
-  BuyCreditsConfigurationBillingOptions$Outbound,
-  z.ZodTypeDef,
-  BuyCreditsConfigurationBillingOptions
-> = z.object({});
-
-export function buyCreditsConfigurationBillingOptionsToJSON(
-  buyCreditsConfigurationBillingOptions: BuyCreditsConfigurationBillingOptions,
-): string {
-  return JSON.stringify(
-    BuyCreditsConfigurationBillingOptions$outboundSchema.parse(
-      buyCreditsConfigurationBillingOptions,
-    ),
-  );
-}
 export function buyCreditsConfigurationBillingOptionsFromJSON(
   jsonString: string,
 ): SafeParseResult<BuyCreditsConfigurationBillingOptions, SDKValidationError> {
@@ -4201,27 +2729,7 @@ export const ConfigurationOutput$inboundSchema: z.ZodType<
 > = z.object({
   pendingSubscriptionChangeId: types.string(),
 });
-/** @internal */
-export type ConfigurationOutput$Outbound = {
-  pendingSubscriptionChangeId: string;
-};
 
-/** @internal */
-export const ConfigurationOutput$outboundSchema: z.ZodType<
-  ConfigurationOutput$Outbound,
-  z.ZodTypeDef,
-  ConfigurationOutput
-> = z.object({
-  pendingSubscriptionChangeId: z.string(),
-});
-
-export function configurationOutputToJSON(
-  configurationOutput: ConfigurationOutput,
-): string {
-  return JSON.stringify(
-    ConfigurationOutput$outboundSchema.parse(configurationOutput),
-  );
-}
 export function configurationOutputFromJSON(
   jsonString: string,
 ): SafeParseResult<ConfigurationOutput, SDKValidationError> {
@@ -4242,31 +2750,7 @@ export const BuyCreditsConfiguration4$inboundSchema: z.ZodType<
   output: z.lazy(() => ConfigurationOutput$inboundSchema),
   type: types.literal("orb_price_interval"),
 });
-/** @internal */
-export type BuyCreditsConfiguration4$Outbound = {
-  options: BuyCreditsConfigurationBillingOptions$Outbound;
-  output: ConfigurationOutput$Outbound;
-  type: "orb_price_interval";
-};
 
-/** @internal */
-export const BuyCreditsConfiguration4$outboundSchema: z.ZodType<
-  BuyCreditsConfiguration4$Outbound,
-  z.ZodTypeDef,
-  BuyCreditsConfiguration4
-> = z.object({
-  options: z.lazy(() => BuyCreditsConfigurationBillingOptions$outboundSchema),
-  output: z.lazy(() => ConfigurationOutput$outboundSchema),
-  type: z.literal("orb_price_interval"),
-});
-
-export function buyCreditsConfiguration4ToJSON(
-  buyCreditsConfiguration4: BuyCreditsConfiguration4,
-): string {
-  return JSON.stringify(
-    BuyCreditsConfiguration4$outboundSchema.parse(buyCreditsConfiguration4),
-  );
-}
 export function buyCreditsConfiguration4FromJSON(
   jsonString: string,
 ): SafeParseResult<BuyCreditsConfiguration4, SDKValidationError> {
@@ -4281,10 +2765,6 @@ export function buyCreditsConfiguration4FromJSON(
 export const EffectiveDate2$inboundSchema: z.ZodNativeEnum<
   typeof EffectiveDate2
 > = z.nativeEnum(EffectiveDate2);
-/** @internal */
-export const EffectiveDate2$outboundSchema: z.ZodNativeEnum<
-  typeof EffectiveDate2
-> = EffectiveDate2$inboundSchema;
 
 /** @internal */
 export const EffectiveDate1$inboundSchema: z.ZodType<
@@ -4292,19 +2772,7 @@ export const EffectiveDate1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-/** @internal */
-export type EffectiveDate1$Outbound = {};
 
-/** @internal */
-export const EffectiveDate1$outboundSchema: z.ZodType<
-  EffectiveDate1$Outbound,
-  z.ZodTypeDef,
-  EffectiveDate1
-> = z.object({});
-
-export function effectiveDate1ToJSON(effectiveDate1: EffectiveDate1): string {
-  return JSON.stringify(EffectiveDate1$outboundSchema.parse(effectiveDate1));
-}
 export function effectiveDate1FromJSON(
   jsonString: string,
 ): SafeParseResult<EffectiveDate1, SDKValidationError> {
@@ -4324,22 +2792,7 @@ export const EffectiveDate$inboundSchema: z.ZodType<
   z.lazy(() => EffectiveDate1$inboundSchema),
   EffectiveDate2$inboundSchema,
 ]);
-/** @internal */
-export type EffectiveDate$Outbound = EffectiveDate1$Outbound | string;
 
-/** @internal */
-export const EffectiveDate$outboundSchema: z.ZodType<
-  EffectiveDate$Outbound,
-  z.ZodTypeDef,
-  EffectiveDate
-> = smartUnion([
-  z.lazy(() => EffectiveDate1$outboundSchema),
-  EffectiveDate2$outboundSchema,
-]);
-
-export function effectiveDateToJSON(effectiveDate: EffectiveDate): string {
-  return JSON.stringify(EffectiveDate$outboundSchema.parse(effectiveDate));
-}
 export function effectiveDateFromJSON(
   jsonString: string,
 ): SafeParseResult<EffectiveDate, SDKValidationError> {
@@ -4359,25 +2812,7 @@ export const ReplacePrices$inboundSchema: z.ZodType<
   fixedPriceQuantity: types.number(),
   replacesPriceId: types.string(),
 });
-/** @internal */
-export type ReplacePrices$Outbound = {
-  fixedPriceQuantity: number;
-  replacesPriceId: string;
-};
 
-/** @internal */
-export const ReplacePrices$outboundSchema: z.ZodType<
-  ReplacePrices$Outbound,
-  z.ZodTypeDef,
-  ReplacePrices
-> = z.object({
-  fixedPriceQuantity: z.number(),
-  replacesPriceId: z.string(),
-});
-
-export function replacePricesToJSON(replacePrices: ReplacePrices): string {
-  return JSON.stringify(ReplacePrices$outboundSchema.parse(replacePrices));
-}
 export function replacePricesFromJSON(
   jsonString: string,
 ): SafeParseResult<ReplacePrices, SDKValidationError> {
@@ -4406,42 +2841,7 @@ export const BuyCreditsConfigurationOptions$inboundSchema: z.ZodType<
     z.array(z.lazy(() => ReplacePrices$inboundSchema)),
   ),
 });
-/** @internal */
-export type BuyCreditsConfigurationOptions$Outbound = {
-  effectiveDate: EffectiveDate1$Outbound | string;
-  orbSubscriptionId: string;
-  alignBillingWithPlanChangeDate?: boolean | undefined;
-  couponRedemptionCode?: string | undefined;
-  externalPlanId?: string | undefined;
-  replacePrices?: Array<ReplacePrices$Outbound> | undefined;
-};
 
-/** @internal */
-export const BuyCreditsConfigurationOptions$outboundSchema: z.ZodType<
-  BuyCreditsConfigurationOptions$Outbound,
-  z.ZodTypeDef,
-  BuyCreditsConfigurationOptions
-> = z.object({
-  effectiveDate: smartUnion([
-    z.lazy(() => EffectiveDate1$outboundSchema),
-    EffectiveDate2$outboundSchema,
-  ]),
-  orbSubscriptionId: z.string(),
-  alignBillingWithPlanChangeDate: z.boolean().optional(),
-  couponRedemptionCode: z.string().optional(),
-  externalPlanId: z.string().optional(),
-  replacePrices: z.array(z.lazy(() => ReplacePrices$outboundSchema)).optional(),
-});
-
-export function buyCreditsConfigurationOptionsToJSON(
-  buyCreditsConfigurationOptions: BuyCreditsConfigurationOptions,
-): string {
-  return JSON.stringify(
-    BuyCreditsConfigurationOptions$outboundSchema.parse(
-      buyCreditsConfigurationOptions,
-    ),
-  );
-}
 export function buyCreditsConfigurationOptionsFromJSON(
   jsonString: string,
 ): SafeParseResult<BuyCreditsConfigurationOptions, SDKValidationError> {
@@ -4461,33 +2861,7 @@ export const BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBod
   > = z.object({
     pendingSubscriptionChangeId: types.string(),
   });
-/** @internal */
-export type BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody2Output$Outbound =
-  {
-    pendingSubscriptionChangeId: string;
-  };
 
-/** @internal */
-export const BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody2Output$outboundSchema:
-  z.ZodType<
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody2Output$Outbound,
-    z.ZodTypeDef,
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody2Output
-  > = z.object({
-    pendingSubscriptionChangeId: z.string(),
-  });
-
-export function buyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody2OutputToJSON(
-  buyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody2Output:
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody2Output,
-): string {
-  return JSON.stringify(
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody2Output$outboundSchema
-      .parse(
-        buyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody2Output,
-      ),
-  );
-}
 export function buyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody2OutputFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -4515,34 +2889,7 @@ export const BuyCreditsConfiguration3$inboundSchema: z.ZodType<
   ),
   type: types.literal("orb_plan_change"),
 });
-/** @internal */
-export type BuyCreditsConfiguration3$Outbound = {
-  options: BuyCreditsConfigurationOptions$Outbound;
-  output:
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody2Output$Outbound;
-  type: "orb_plan_change";
-};
 
-/** @internal */
-export const BuyCreditsConfiguration3$outboundSchema: z.ZodType<
-  BuyCreditsConfiguration3$Outbound,
-  z.ZodTypeDef,
-  BuyCreditsConfiguration3
-> = z.object({
-  options: z.lazy(() => BuyCreditsConfigurationOptions$outboundSchema),
-  output: z.lazy(() =>
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody2Output$outboundSchema
-  ),
-  type: z.literal("orb_plan_change"),
-});
-
-export function buyCreditsConfiguration3ToJSON(
-  buyCreditsConfiguration3: BuyCreditsConfiguration3,
-): string {
-  return JSON.stringify(
-    BuyCreditsConfiguration3$outboundSchema.parse(buyCreditsConfiguration3),
-  );
-}
 export function buyCreditsConfiguration3FromJSON(
   jsonString: string,
 ): SafeParseResult<BuyCreditsConfiguration3, SDKValidationError> {
@@ -4560,12 +2907,6 @@ export const BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBod
   > = z.nativeEnum(
     BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody2Type,
   );
-/** @internal */
-export const BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody2Type$outboundSchema:
-  z.ZodNativeEnum<
-    typeof BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody2Type
-  > =
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody2Type$inboundSchema;
 
 /** @internal */
 export const ConfigurationItems$inboundSchema: z.ZodType<
@@ -4579,34 +2920,7 @@ export const ConfigurationItems$inboundSchema: z.ZodType<
     BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody2Type$inboundSchema,
   years: types.number(),
 });
-/** @internal */
-export type ConfigurationItems$Outbound = {
-  name: string;
-  subtotal: string;
-  type: string;
-  years: number;
-};
 
-/** @internal */
-export const ConfigurationItems$outboundSchema: z.ZodType<
-  ConfigurationItems$Outbound,
-  z.ZodTypeDef,
-  ConfigurationItems
-> = z.object({
-  name: z.string(),
-  subtotal: z.string(),
-  type:
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody2Type$outboundSchema,
-  years: z.number(),
-});
-
-export function configurationItemsToJSON(
-  configurationItems: ConfigurationItems,
-): string {
-  return JSON.stringify(
-    ConfigurationItems$outboundSchema.parse(configurationItems),
-  );
-}
 export function configurationItemsFromJSON(
   jsonString: string,
 ): SafeParseResult<ConfigurationItems, SDKValidationError> {
@@ -4626,29 +2940,7 @@ export const ConfigurationOptions$inboundSchema: z.ZodType<
   items: z.array(z.lazy(() => ConfigurationItems$inboundSchema)),
   orderId: types.string(),
 });
-/** @internal */
-export type ConfigurationOptions$Outbound = {
-  items: Array<ConfigurationItems$Outbound>;
-  orderId: string;
-};
 
-/** @internal */
-export const ConfigurationOptions$outboundSchema: z.ZodType<
-  ConfigurationOptions$Outbound,
-  z.ZodTypeDef,
-  ConfigurationOptions
-> = z.object({
-  items: z.array(z.lazy(() => ConfigurationItems$outboundSchema)),
-  orderId: z.string(),
-});
-
-export function configurationOptionsToJSON(
-  configurationOptions: ConfigurationOptions,
-): string {
-  return JSON.stringify(
-    ConfigurationOptions$outboundSchema.parse(configurationOptions),
-  );
-}
 export function configurationOptionsFromJSON(
   jsonString: string,
 ): SafeParseResult<ConfigurationOptions, SDKValidationError> {
@@ -4669,27 +2961,7 @@ export const Configuration2$inboundSchema: z.ZodType<
   output: z.nullable(z.any()).optional(),
   type: types.literal("domain_name"),
 });
-/** @internal */
-export type Configuration2$Outbound = {
-  options: ConfigurationOptions$Outbound;
-  output?: any | null | undefined;
-  type: "domain_name";
-};
 
-/** @internal */
-export const Configuration2$outboundSchema: z.ZodType<
-  Configuration2$Outbound,
-  z.ZodTypeDef,
-  Configuration2
-> = z.object({
-  options: z.lazy(() => ConfigurationOptions$outboundSchema),
-  output: z.nullable(z.any()).optional(),
-  type: z.literal("domain_name"),
-});
-
-export function configuration2ToJSON(configuration2: Configuration2): string {
-  return JSON.stringify(Configuration2$outboundSchema.parse(configuration2));
-}
 export function configuration2FromJSON(
   jsonString: string,
 ): SafeParseResult<Configuration2, SDKValidationError> {
@@ -4704,10 +2976,6 @@ export function configuration2FromJSON(
 export const ConfigurationCurrency$inboundSchema: z.ZodNativeEnum<
   typeof ConfigurationCurrency
 > = z.nativeEnum(ConfigurationCurrency);
-/** @internal */
-export const ConfigurationCurrency$outboundSchema: z.ZodNativeEnum<
-  typeof ConfigurationCurrency
-> = ConfigurationCurrency$inboundSchema;
 
 /** @internal */
 export const BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody2Options$inboundSchema:
@@ -4720,37 +2988,7 @@ export const BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBod
     currency: ConfigurationCurrency$inboundSchema,
     expirationDate: types.optional(types.string()),
   });
-/** @internal */
-export type BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody2Options$Outbound =
-  {
-    amount: string;
-    currency: string;
-    expirationDate?: string | undefined;
-  };
 
-/** @internal */
-export const BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody2Options$outboundSchema:
-  z.ZodType<
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody2Options$Outbound,
-    z.ZodTypeDef,
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody2Options
-  > = z.object({
-    amount: z.string(),
-    currency: ConfigurationCurrency$outboundSchema,
-    expirationDate: z.string().optional(),
-  });
-
-export function buyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody2OptionsToJSON(
-  buyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody2Options:
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody2Options,
-): string {
-  return JSON.stringify(
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody2Options$outboundSchema
-      .parse(
-        buyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody2Options,
-      ),
-  );
-}
 export function buyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody2OptionsFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -4778,30 +3016,7 @@ export const Configuration1$inboundSchema: z.ZodType<
   output: z.nullable(z.any()).optional(),
   type: types.literal("credit_topup"),
 });
-/** @internal */
-export type Configuration1$Outbound = {
-  options:
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody2Options$Outbound;
-  output?: any | null | undefined;
-  type: "credit_topup";
-};
 
-/** @internal */
-export const Configuration1$outboundSchema: z.ZodType<
-  Configuration1$Outbound,
-  z.ZodTypeDef,
-  Configuration1
-> = z.object({
-  options: z.lazy(() =>
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody2Options$outboundSchema
-  ),
-  output: z.nullable(z.any()).optional(),
-  type: z.literal("credit_topup"),
-});
-
-export function configuration1ToJSON(configuration1: Configuration1): string {
-  return JSON.stringify(Configuration1$outboundSchema.parse(configuration1));
-}
 export function configuration1FromJSON(
   jsonString: string,
 ): SafeParseResult<Configuration1, SDKValidationError> {
@@ -4825,38 +3040,7 @@ export const BuyCreditsResponseBodyConfiguration$inboundSchema: z.ZodType<
   z.lazy(() => Configuration5$inboundSchema),
   z.lazy(() => Configuration6$inboundSchema),
 ]);
-/** @internal */
-export type BuyCreditsResponseBodyConfiguration$Outbound =
-  | Configuration1$Outbound
-  | Configuration2$Outbound
-  | BuyCreditsConfiguration3$Outbound
-  | BuyCreditsConfiguration4$Outbound
-  | Configuration5$Outbound
-  | Configuration6$Outbound;
 
-/** @internal */
-export const BuyCreditsResponseBodyConfiguration$outboundSchema: z.ZodType<
-  BuyCreditsResponseBodyConfiguration$Outbound,
-  z.ZodTypeDef,
-  BuyCreditsResponseBodyConfiguration
-> = z.union([
-  z.lazy(() => Configuration1$outboundSchema),
-  z.lazy(() => Configuration2$outboundSchema),
-  z.lazy(() => BuyCreditsConfiguration3$outboundSchema),
-  z.lazy(() => BuyCreditsConfiguration4$outboundSchema),
-  z.lazy(() => Configuration5$outboundSchema),
-  z.lazy(() => Configuration6$outboundSchema),
-]);
-
-export function buyCreditsResponseBodyConfigurationToJSON(
-  buyCreditsResponseBodyConfiguration: BuyCreditsResponseBodyConfiguration,
-): string {
-  return JSON.stringify(
-    BuyCreditsResponseBodyConfiguration$outboundSchema.parse(
-      buyCreditsResponseBodyConfiguration,
-    ),
-  );
-}
 export function buyCreditsResponseBodyConfigurationFromJSON(
   jsonString: string,
 ): SafeParseResult<BuyCreditsResponseBodyConfiguration, SDKValidationError> {
@@ -4871,18 +3055,11 @@ export function buyCreditsResponseBodyConfigurationFromJSON(
 /** @internal */
 export const Currency$inboundSchema: z.ZodNativeEnum<typeof Currency> = z
   .nativeEnum(Currency);
-/** @internal */
-export const Currency$outboundSchema: z.ZodNativeEnum<typeof Currency> =
-  Currency$inboundSchema;
 
 /** @internal */
 export const BuyCreditsResponseBodyType$inboundSchema: z.ZodNativeEnum<
   typeof BuyCreditsResponseBodyType
 > = z.nativeEnum(BuyCreditsResponseBodyType);
-/** @internal */
-export const BuyCreditsResponseBodyType$outboundSchema: z.ZodNativeEnum<
-  typeof BuyCreditsResponseBodyType
-> = BuyCreditsResponseBodyType$inboundSchema;
 
 /** @internal */
 export const ResponseBodyProvider$inboundSchema: z.ZodType<
@@ -4895,33 +3072,7 @@ export const ResponseBodyProvider$inboundSchema: z.ZodType<
   currencyConversionRate: types.optional(types.string()),
   stripeSharedPaymentTokenUsed: types.optional(types.boolean()),
 });
-/** @internal */
-export type ResponseBodyProvider$Outbound = {
-  resourceId: string;
-  type: string;
-  currencyConversionRate?: string | undefined;
-  stripeSharedPaymentTokenUsed?: boolean | undefined;
-};
 
-/** @internal */
-export const ResponseBodyProvider$outboundSchema: z.ZodType<
-  ResponseBodyProvider$Outbound,
-  z.ZodTypeDef,
-  ResponseBodyProvider
-> = z.object({
-  resourceId: z.string(),
-  type: BuyCreditsResponseBodyType$outboundSchema,
-  currencyConversionRate: z.string().optional(),
-  stripeSharedPaymentTokenUsed: z.boolean().optional(),
-});
-
-export function responseBodyProviderToJSON(
-  responseBodyProvider: ResponseBodyProvider,
-): string {
-  return JSON.stringify(
-    ResponseBodyProvider$outboundSchema.parse(responseBodyProvider),
-  );
-}
 export function responseBodyProviderFromJSON(
   jsonString: string,
 ): SafeParseResult<ResponseBodyProvider, SDKValidationError> {
@@ -4936,10 +3087,6 @@ export function responseBodyProviderFromJSON(
 export const BuyCreditsResponseBodyBillingStatus$inboundSchema: z.ZodNativeEnum<
   typeof BuyCreditsResponseBodyBillingStatus
 > = z.nativeEnum(BuyCreditsResponseBodyBillingStatus);
-/** @internal */
-export const BuyCreditsResponseBodyBillingStatus$outboundSchema:
-  z.ZodNativeEnum<typeof BuyCreditsResponseBodyBillingStatus> =
-    BuyCreditsResponseBodyBillingStatus$inboundSchema;
 
 /** @internal */
 export const Dispute$inboundSchema: z.ZodType<Dispute, z.ZodTypeDef, unknown> =
@@ -4953,37 +3100,7 @@ export const Dispute$inboundSchema: z.ZodType<Dispute, z.ZodTypeDef, unknown> =
     status: types.string(),
     updatedAt: types.string(),
   });
-/** @internal */
-export type Dispute$Outbound = {
-  id: string;
-  amount: string;
-  createdAt: string;
-  currency: string;
-  providerId: string;
-  reason: string | null;
-  status: string;
-  updatedAt: string;
-};
 
-/** @internal */
-export const Dispute$outboundSchema: z.ZodType<
-  Dispute$Outbound,
-  z.ZodTypeDef,
-  Dispute
-> = z.object({
-  id: z.string(),
-  amount: z.string(),
-  createdAt: z.string(),
-  currency: z.string(),
-  providerId: z.string(),
-  reason: z.nullable(z.string()),
-  status: z.string(),
-  updatedAt: z.string(),
-});
-
-export function disputeToJSON(dispute: Dispute): string {
-  return JSON.stringify(Dispute$outboundSchema.parse(dispute));
-}
 export function disputeFromJSON(
   jsonString: string,
 ): SafeParseResult<Dispute, SDKValidationError> {
@@ -5010,39 +3127,7 @@ export const LineItems$inboundSchema: z.ZodType<
   productAlias: types.optional(types.string()),
   refund: types.optional(types.string()),
 });
-/** @internal */
-export type LineItems$Outbound = {
-  id: string;
-  description: string;
-  name: string;
-  productId: string;
-  quantity: string;
-  unitAmount: string;
-  metadata?: { [k: string]: string } | undefined;
-  productAlias?: string | undefined;
-  refund?: string | undefined;
-};
 
-/** @internal */
-export const LineItems$outboundSchema: z.ZodType<
-  LineItems$Outbound,
-  z.ZodTypeDef,
-  LineItems
-> = z.object({
-  id: z.string(),
-  description: z.string(),
-  name: z.string(),
-  productId: z.string(),
-  quantity: z.string(),
-  unitAmount: z.string(),
-  metadata: z.record(z.string()).optional(),
-  productAlias: z.string().optional(),
-  refund: z.string().optional(),
-});
-
-export function lineItemsToJSON(lineItems: LineItems): string {
-  return JSON.stringify(LineItems$outboundSchema.parse(lineItems));
-}
 export function lineItemsFromJSON(
   jsonString: string,
 ): SafeParseResult<LineItems, SDKValidationError> {
@@ -5083,66 +3168,7 @@ export const PurchaseIntent$inboundSchema: z.ZodType<
   refund: types.optional(types.string()),
   returnUrl: types.optional(types.string()),
 });
-/** @internal */
-export type PurchaseIntent$Outbound = {
-  id: string;
-  configuration:
-    | Configuration1$Outbound
-    | Configuration2$Outbound
-    | BuyCreditsConfiguration3$Outbound
-    | BuyCreditsConfiguration4$Outbound
-    | Configuration5$Outbound
-    | Configuration6$Outbound;
-  createdAt: string;
-  currency: string;
-  ownerId: string;
-  provider: ResponseBodyProvider$Outbound;
-  status: string;
-  subtotal: string;
-  tax: string;
-  total: string;
-  updatedAt: string;
-  dispute?: Dispute$Outbound | undefined;
-  lineItems?: Array<LineItems$Outbound> | undefined;
-  metadata?: { [k: string]: string } | undefined;
-  refund?: string | undefined;
-  returnUrl?: string | undefined;
-};
 
-/** @internal */
-export const PurchaseIntent$outboundSchema: z.ZodType<
-  PurchaseIntent$Outbound,
-  z.ZodTypeDef,
-  PurchaseIntent
-> = z.object({
-  id: z.string(),
-  configuration: z.union([
-    z.lazy(() => Configuration1$outboundSchema),
-    z.lazy(() => Configuration2$outboundSchema),
-    z.lazy(() => BuyCreditsConfiguration3$outboundSchema),
-    z.lazy(() => BuyCreditsConfiguration4$outboundSchema),
-    z.lazy(() => Configuration5$outboundSchema),
-    z.lazy(() => Configuration6$outboundSchema),
-  ]),
-  createdAt: z.string(),
-  currency: Currency$outboundSchema,
-  ownerId: z.string(),
-  provider: z.lazy(() => ResponseBodyProvider$outboundSchema),
-  status: BuyCreditsResponseBodyBillingStatus$outboundSchema,
-  subtotal: z.string(),
-  tax: z.string(),
-  total: z.string(),
-  updatedAt: z.string(),
-  dispute: z.lazy(() => Dispute$outboundSchema).optional(),
-  lineItems: z.array(z.lazy(() => LineItems$outboundSchema)).optional(),
-  metadata: z.record(z.string()).optional(),
-  refund: z.string().optional(),
-  returnUrl: z.string().optional(),
-});
-
-export function purchaseIntentToJSON(purchaseIntent: PurchaseIntent): string {
-  return JSON.stringify(PurchaseIntent$outboundSchema.parse(purchaseIntent));
-}
 export function purchaseIntentFromJSON(
   jsonString: string,
 ): SafeParseResult<PurchaseIntent, SDKValidationError> {
@@ -5161,27 +3187,7 @@ export const BuyCreditsResponseBody2$inboundSchema: z.ZodType<
 > = z.object({
   purchaseIntent: z.lazy(() => PurchaseIntent$inboundSchema),
 });
-/** @internal */
-export type BuyCreditsResponseBody2$Outbound = {
-  purchaseIntent: PurchaseIntent$Outbound;
-};
 
-/** @internal */
-export const BuyCreditsResponseBody2$outboundSchema: z.ZodType<
-  BuyCreditsResponseBody2$Outbound,
-  z.ZodTypeDef,
-  BuyCreditsResponseBody2
-> = z.object({
-  purchaseIntent: z.lazy(() => PurchaseIntent$outboundSchema),
-});
-
-export function buyCreditsResponseBody2ToJSON(
-  buyCreditsResponseBody2: BuyCreditsResponseBody2,
-): string {
-  return JSON.stringify(
-    BuyCreditsResponseBody2$outboundSchema.parse(buyCreditsResponseBody2),
-  );
-}
 export function buyCreditsResponseBody2FromJSON(
   jsonString: string,
 ): SafeParseResult<BuyCreditsResponseBody2, SDKValidationError> {
@@ -5201,29 +3207,7 @@ export const BuyCreditsResponseBody1$inboundSchema: z.ZodType<
   checkoutSessionId: types.string(),
   checkoutSessionUrl: types.string(),
 });
-/** @internal */
-export type BuyCreditsResponseBody1$Outbound = {
-  checkoutSessionId: string;
-  checkoutSessionUrl: string;
-};
 
-/** @internal */
-export const BuyCreditsResponseBody1$outboundSchema: z.ZodType<
-  BuyCreditsResponseBody1$Outbound,
-  z.ZodTypeDef,
-  BuyCreditsResponseBody1
-> = z.object({
-  checkoutSessionId: z.string(),
-  checkoutSessionUrl: z.string(),
-});
-
-export function buyCreditsResponseBody1ToJSON(
-  buyCreditsResponseBody1: BuyCreditsResponseBody1,
-): string {
-  return JSON.stringify(
-    BuyCreditsResponseBody1$outboundSchema.parse(buyCreditsResponseBody1),
-  );
-}
 export function buyCreditsResponseBody1FromJSON(
   jsonString: string,
 ): SafeParseResult<BuyCreditsResponseBody1, SDKValidationError> {
@@ -5244,30 +3228,7 @@ export const BuyCreditsResponseBody$inboundSchema: z.ZodType<
   z.lazy(() => BuyCreditsResponseBody2$inboundSchema),
   z.lazy(() => BuyCreditsResponseBody3$inboundSchema),
 ]);
-/** @internal */
-export type BuyCreditsResponseBody$Outbound =
-  | BuyCreditsResponseBody1$Outbound
-  | BuyCreditsResponseBody2$Outbound
-  | BuyCreditsResponseBody3$Outbound;
 
-/** @internal */
-export const BuyCreditsResponseBody$outboundSchema: z.ZodType<
-  BuyCreditsResponseBody$Outbound,
-  z.ZodTypeDef,
-  BuyCreditsResponseBody
-> = smartUnion([
-  z.lazy(() => BuyCreditsResponseBody1$outboundSchema),
-  z.lazy(() => BuyCreditsResponseBody2$outboundSchema),
-  z.lazy(() => BuyCreditsResponseBody3$outboundSchema),
-]);
-
-export function buyCreditsResponseBodyToJSON(
-  buyCreditsResponseBody: BuyCreditsResponseBody,
-): string {
-  return JSON.stringify(
-    BuyCreditsResponseBody$outboundSchema.parse(buyCreditsResponseBody),
-  );
-}
 export function buyCreditsResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<BuyCreditsResponseBody, SDKValidationError> {

@@ -1,20 +1,11 @@
 # DrainsFilterV2
 
-
-## Supported Types
-
-### `models.GetDrainsFilterV21`
+## Example Usage
 
 ```typescript
-const value: models.GetDrainsFilterV21 = {
-  version: "v1",
-};
-```
+import { DrainsFilterV2 } from "@vercel/sdk/models/getdrainsop.js";
 
-### `models.GetDrainsFilterV22`
-
-```typescript
-const value: models.GetDrainsFilterV22 = {
+let value: DrainsFilterV2 = {
   version: "v2",
   filter: {
     type: "basic",
@@ -22,3 +13,9 @@ const value: models.GetDrainsFilterV22 = {
 };
 ```
 
+## Fields
+
+| Field                                              | Type                                               | Required                                           | Description                                        |
+| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
+| `version`                                          | [models.DrainsVersion](../models/drainsversion.md) | :heavy_check_mark:                                 | N/A                                                |
+| `filter`                                           | *models.DrainsFilter*                              | :heavy_check_mark:                                 | N/A                                                |

@@ -143,25 +143,10 @@ export type AddProjectMemberResponseBody = {
 };
 
 /** @internal */
-export const AddProjectMemberRequestBodyProjectMembersRole$inboundSchema:
+export const AddProjectMemberRequestBodyProjectMembersRole$outboundSchema:
   z.ZodNativeEnum<typeof AddProjectMemberRequestBodyProjectMembersRole> = z
     .nativeEnum(AddProjectMemberRequestBodyProjectMembersRole);
-/** @internal */
-export const AddProjectMemberRequestBodyProjectMembersRole$outboundSchema:
-  z.ZodNativeEnum<typeof AddProjectMemberRequestBodyProjectMembersRole> =
-    AddProjectMemberRequestBodyProjectMembersRole$inboundSchema;
 
-/** @internal */
-export const AddProjectMemberRequestBody3$inboundSchema: z.ZodType<
-  AddProjectMemberRequestBody3,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  uid: types.optional(types.string()),
-  username: types.optional(types.string()),
-  email: types.string(),
-  role: AddProjectMemberRequestBodyProjectMembersRole$inboundSchema,
-});
 /** @internal */
 export type AddProjectMemberRequestBody3$Outbound = {
   uid?: string | undefined;
@@ -191,36 +176,12 @@ export function addProjectMemberRequestBody3ToJSON(
     ),
   );
 }
-export function addProjectMemberRequestBody3FromJSON(
-  jsonString: string,
-): SafeParseResult<AddProjectMemberRequestBody3, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AddProjectMemberRequestBody3$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AddProjectMemberRequestBody3' from JSON`,
-  );
-}
 
-/** @internal */
-export const AddProjectMemberRequestBodyRole$inboundSchema: z.ZodNativeEnum<
-  typeof AddProjectMemberRequestBodyRole
-> = z.nativeEnum(AddProjectMemberRequestBodyRole);
 /** @internal */
 export const AddProjectMemberRequestBodyRole$outboundSchema: z.ZodNativeEnum<
   typeof AddProjectMemberRequestBodyRole
-> = AddProjectMemberRequestBodyRole$inboundSchema;
+> = z.nativeEnum(AddProjectMemberRequestBodyRole);
 
-/** @internal */
-export const AddProjectMemberRequestBody2$inboundSchema: z.ZodType<
-  AddProjectMemberRequestBody2,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  uid: types.optional(types.string()),
-  username: types.string(),
-  email: types.optional(types.string()),
-  role: AddProjectMemberRequestBodyRole$inboundSchema,
-});
 /** @internal */
 export type AddProjectMemberRequestBody2$Outbound = {
   uid?: string | undefined;
@@ -250,36 +211,12 @@ export function addProjectMemberRequestBody2ToJSON(
     ),
   );
 }
-export function addProjectMemberRequestBody2FromJSON(
-  jsonString: string,
-): SafeParseResult<AddProjectMemberRequestBody2, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AddProjectMemberRequestBody2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AddProjectMemberRequestBody2' from JSON`,
-  );
-}
 
-/** @internal */
-export const RequestBodyRole$inboundSchema: z.ZodNativeEnum<
-  typeof RequestBodyRole
-> = z.nativeEnum(RequestBodyRole);
 /** @internal */
 export const RequestBodyRole$outboundSchema: z.ZodNativeEnum<
   typeof RequestBodyRole
-> = RequestBodyRole$inboundSchema;
+> = z.nativeEnum(RequestBodyRole);
 
-/** @internal */
-export const AddProjectMemberRequestBody1$inboundSchema: z.ZodType<
-  AddProjectMemberRequestBody1,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  uid: types.string(),
-  username: types.optional(types.string()),
-  email: types.optional(types.string()),
-  role: RequestBodyRole$inboundSchema,
-});
 /** @internal */
 export type AddProjectMemberRequestBody1$Outbound = {
   uid: string;
@@ -309,26 +246,7 @@ export function addProjectMemberRequestBody1ToJSON(
     ),
   );
 }
-export function addProjectMemberRequestBody1FromJSON(
-  jsonString: string,
-): SafeParseResult<AddProjectMemberRequestBody1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AddProjectMemberRequestBody1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AddProjectMemberRequestBody1' from JSON`,
-  );
-}
 
-/** @internal */
-export const AddProjectMemberRequestBody$inboundSchema: z.ZodType<
-  AddProjectMemberRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([
-  z.lazy(() => AddProjectMemberRequestBody1$inboundSchema),
-  z.lazy(() => AddProjectMemberRequestBody2$inboundSchema),
-  z.lazy(() => AddProjectMemberRequestBody3$inboundSchema),
-]);
 /** @internal */
 export type AddProjectMemberRequestBody$Outbound =
   | AddProjectMemberRequestBody1$Outbound
@@ -355,35 +273,7 @@ export function addProjectMemberRequestBodyToJSON(
     ),
   );
 }
-export function addProjectMemberRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<AddProjectMemberRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AddProjectMemberRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AddProjectMemberRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const AddProjectMemberRequest$inboundSchema: z.ZodType<
-  AddProjectMemberRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  idOrName: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-  RequestBody: smartUnion([
-    z.lazy(() => AddProjectMemberRequestBody1$inboundSchema),
-    z.lazy(() => AddProjectMemberRequestBody2$inboundSchema),
-    z.lazy(() => AddProjectMemberRequestBody3$inboundSchema),
-  ]),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 /** @internal */
 export type AddProjectMemberRequest$Outbound = {
   idOrName: string;
@@ -422,15 +312,6 @@ export function addProjectMemberRequestToJSON(
     AddProjectMemberRequest$outboundSchema.parse(addProjectMemberRequest),
   );
 }
-export function addProjectMemberRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<AddProjectMemberRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AddProjectMemberRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AddProjectMemberRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const AddProjectMemberResponseBody$inboundSchema: z.ZodType<
@@ -440,29 +321,7 @@ export const AddProjectMemberResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   id: types.string(),
 });
-/** @internal */
-export type AddProjectMemberResponseBody$Outbound = {
-  id: string;
-};
 
-/** @internal */
-export const AddProjectMemberResponseBody$outboundSchema: z.ZodType<
-  AddProjectMemberResponseBody$Outbound,
-  z.ZodTypeDef,
-  AddProjectMemberResponseBody
-> = z.object({
-  id: z.string(),
-});
-
-export function addProjectMemberResponseBodyToJSON(
-  addProjectMemberResponseBody: AddProjectMemberResponseBody,
-): string {
-  return JSON.stringify(
-    AddProjectMemberResponseBody$outboundSchema.parse(
-      addProjectMemberResponseBody,
-    ),
-  );
-}
 export function addProjectMemberResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<AddProjectMemberResponseBody, SDKValidationError> {

@@ -8,12 +8,7 @@ import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
-import {
-  Pagination,
-  Pagination$inboundSchema,
-  Pagination$Outbound,
-  Pagination$outboundSchema,
-} from "./pagination.js";
+import { Pagination, Pagination$inboundSchema } from "./pagination.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type ListSharedEnvVariableRequest = {
@@ -171,29 +166,6 @@ export type ListSharedEnvVariableResponseBody = {
 };
 
 /** @internal */
-export const ListSharedEnvVariableRequest$inboundSchema: z.ZodType<
-  ListSharedEnvVariableRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  search: types.optional(types.string()),
-  projectId: types.optional(types.string()),
-  ids: types.optional(types.string()),
-  exclude_idsQueryParameter: types.optional(types.string()),
-  "'exclude-ids'QueryParameter1": types.optional(types.string()),
-  exclude_projectIdQueryParameter: types.optional(types.string()),
-  "'exclude-projectId'QueryParameter1": types.optional(types.string()),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-}).transform((v) => {
-  return remap$(v, {
-    "exclude_idsQueryParameter": "excludeIdsQueryParameter",
-    "'exclude-ids'QueryParameter1": "excludeIdsQueryParameter1",
-    "exclude_projectIdQueryParameter": "excludeProjectIdQueryParameter",
-    "'exclude-projectId'QueryParameter1": "excludeProjectIdQueryParameter1",
-  });
-});
-/** @internal */
 export type ListSharedEnvVariableRequest$Outbound = {
   search?: string | undefined;
   projectId?: string | undefined;
@@ -239,33 +211,16 @@ export function listSharedEnvVariableRequestToJSON(
     ),
   );
 }
-export function listSharedEnvVariableRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<ListSharedEnvVariableRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ListSharedEnvVariableRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ListSharedEnvVariableRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const ListSharedEnvVariableType$inboundSchema: z.ZodNativeEnum<
   typeof ListSharedEnvVariableType
 > = z.nativeEnum(ListSharedEnvVariableType);
-/** @internal */
-export const ListSharedEnvVariableType$outboundSchema: z.ZodNativeEnum<
-  typeof ListSharedEnvVariableType
-> = ListSharedEnvVariableType$inboundSchema;
 
 /** @internal */
 export const ListSharedEnvVariableTarget$inboundSchema: z.ZodNativeEnum<
   typeof ListSharedEnvVariableTarget
 > = z.nativeEnum(ListSharedEnvVariableTarget);
-/** @internal */
-export const ListSharedEnvVariableTarget$outboundSchema: z.ZodNativeEnum<
-  typeof ListSharedEnvVariableTarget
-> = ListSharedEnvVariableTarget$inboundSchema;
 
 /** @internal */
 export const ListSharedEnvVariableData$inboundSchema: z.ZodType<
@@ -293,63 +248,7 @@ export const ListSharedEnvVariableData$inboundSchema: z.ZodType<
   comment: types.optional(types.string()),
   lastEditedByDisplayName: types.optional(types.string()),
 });
-/** @internal */
-export type ListSharedEnvVariableData$Outbound = {
-  created?: string | undefined;
-  key?: string | undefined;
-  ownerId?: string | null | undefined;
-  id?: string | undefined;
-  createdBy?: string | null | undefined;
-  deletedBy?: string | null | undefined;
-  updatedBy?: string | null | undefined;
-  createdAt?: number | undefined;
-  deletedAt?: number | undefined;
-  updatedAt?: number | undefined;
-  value?: string | undefined;
-  projectId?: Array<string> | undefined;
-  type?: string | undefined;
-  target?: Array<string> | undefined;
-  applyToAllCustomEnvironments?: boolean | undefined;
-  customEnvironmentIds?: Array<string> | undefined;
-  decrypted?: boolean | undefined;
-  comment?: string | undefined;
-  lastEditedByDisplayName?: string | undefined;
-};
 
-/** @internal */
-export const ListSharedEnvVariableData$outboundSchema: z.ZodType<
-  ListSharedEnvVariableData$Outbound,
-  z.ZodTypeDef,
-  ListSharedEnvVariableData
-> = z.object({
-  created: z.date().transform(v => v.toISOString()).optional(),
-  key: z.string().optional(),
-  ownerId: z.nullable(z.string()).optional(),
-  id: z.string().optional(),
-  createdBy: z.nullable(z.string()).optional(),
-  deletedBy: z.nullable(z.string()).optional(),
-  updatedBy: z.nullable(z.string()).optional(),
-  createdAt: z.number().optional(),
-  deletedAt: z.number().optional(),
-  updatedAt: z.number().optional(),
-  value: z.string().optional(),
-  projectId: z.array(z.string()).optional(),
-  type: ListSharedEnvVariableType$outboundSchema.optional(),
-  target: z.array(ListSharedEnvVariableTarget$outboundSchema).optional(),
-  applyToAllCustomEnvironments: z.boolean().optional(),
-  customEnvironmentIds: z.array(z.string()).optional(),
-  decrypted: z.boolean().optional(),
-  comment: z.string().optional(),
-  lastEditedByDisplayName: z.string().optional(),
-});
-
-export function listSharedEnvVariableDataToJSON(
-  listSharedEnvVariableData: ListSharedEnvVariableData,
-): string {
-  return JSON.stringify(
-    ListSharedEnvVariableData$outboundSchema.parse(listSharedEnvVariableData),
-  );
-}
 export function listSharedEnvVariableDataFromJSON(
   jsonString: string,
 ): SafeParseResult<ListSharedEnvVariableData, SDKValidationError> {
@@ -369,31 +268,7 @@ export const ListSharedEnvVariableResponseBody$inboundSchema: z.ZodType<
   data: z.array(z.lazy(() => ListSharedEnvVariableData$inboundSchema)),
   pagination: Pagination$inboundSchema,
 });
-/** @internal */
-export type ListSharedEnvVariableResponseBody$Outbound = {
-  data: Array<ListSharedEnvVariableData$Outbound>;
-  pagination: Pagination$Outbound;
-};
 
-/** @internal */
-export const ListSharedEnvVariableResponseBody$outboundSchema: z.ZodType<
-  ListSharedEnvVariableResponseBody$Outbound,
-  z.ZodTypeDef,
-  ListSharedEnvVariableResponseBody
-> = z.object({
-  data: z.array(z.lazy(() => ListSharedEnvVariableData$outboundSchema)),
-  pagination: Pagination$outboundSchema,
-});
-
-export function listSharedEnvVariableResponseBodyToJSON(
-  listSharedEnvVariableResponseBody: ListSharedEnvVariableResponseBody,
-): string {
-  return JSON.stringify(
-    ListSharedEnvVariableResponseBody$outboundSchema.parse(
-      listSharedEnvVariableResponseBody,
-    ),
-  );
-}
 export function listSharedEnvVariableResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<ListSharedEnvVariableResponseBody, SDKValidationError> {

@@ -3,10 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
-import { Result as SafeParseResult } from "../types/fp.js";
-import * as types from "../types/primitives.js";
-import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type GetEdgeConfigTokenRequest = {
   edgeConfigId: string;
@@ -21,17 +17,6 @@ export type GetEdgeConfigTokenRequest = {
   slug?: string | undefined;
 };
 
-/** @internal */
-export const GetEdgeConfigTokenRequest$inboundSchema: z.ZodType<
-  GetEdgeConfigTokenRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  edgeConfigId: types.string(),
-  token: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
 /** @internal */
 export type GetEdgeConfigTokenRequest$Outbound = {
   edgeConfigId: string;
@@ -57,14 +42,5 @@ export function getEdgeConfigTokenRequestToJSON(
 ): string {
   return JSON.stringify(
     GetEdgeConfigTokenRequest$outboundSchema.parse(getEdgeConfigTokenRequest),
-  );
-}
-export function getEdgeConfigTokenRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetEdgeConfigTokenRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetEdgeConfigTokenRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetEdgeConfigTokenRequest' from JSON`,
   );
 }

@@ -322,30 +322,10 @@ export type GetTeamMembersResponseBody = {
 };
 
 /** @internal */
-export const QueryParamRole$inboundSchema: z.ZodNativeEnum<
-  typeof QueryParamRole
-> = z.nativeEnum(QueryParamRole);
-/** @internal */
 export const QueryParamRole$outboundSchema: z.ZodNativeEnum<
   typeof QueryParamRole
-> = QueryParamRole$inboundSchema;
+> = z.nativeEnum(QueryParamRole);
 
-/** @internal */
-export const GetTeamMembersRequest$inboundSchema: z.ZodType<
-  GetTeamMembersRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  limit: types.optional(types.number()),
-  since: types.optional(types.number()),
-  until: types.optional(types.number()),
-  search: types.optional(types.string()),
-  role: types.optional(QueryParamRole$inboundSchema),
-  excludeProject: types.optional(types.string()),
-  eligibleMembersForProjectId: types.optional(types.string()),
-  teamId: types.string(),
-  slug: types.optional(types.string()),
-});
 /** @internal */
 export type GetTeamMembersRequest$Outbound = {
   limit?: number | undefined;
@@ -383,15 +363,6 @@ export function getTeamMembersRequestToJSON(
     GetTeamMembersRequest$outboundSchema.parse(getTeamMembersRequest),
   );
 }
-export function getTeamMembersRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetTeamMembersRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetTeamMembersRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetTeamMembersRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const GetTeamMembersGithub$inboundSchema: z.ZodType<
@@ -401,27 +372,7 @@ export const GetTeamMembersGithub$inboundSchema: z.ZodType<
 > = z.object({
   login: types.optional(types.string()),
 });
-/** @internal */
-export type GetTeamMembersGithub$Outbound = {
-  login?: string | undefined;
-};
 
-/** @internal */
-export const GetTeamMembersGithub$outboundSchema: z.ZodType<
-  GetTeamMembersGithub$Outbound,
-  z.ZodTypeDef,
-  GetTeamMembersGithub
-> = z.object({
-  login: z.string().optional(),
-});
-
-export function getTeamMembersGithubToJSON(
-  getTeamMembersGithub: GetTeamMembersGithub,
-): string {
-  return JSON.stringify(
-    GetTeamMembersGithub$outboundSchema.parse(getTeamMembersGithub),
-  );
-}
 export function getTeamMembersGithubFromJSON(
   jsonString: string,
 ): SafeParseResult<GetTeamMembersGithub, SDKValidationError> {
@@ -440,27 +391,7 @@ export const GetTeamMembersGitlab$inboundSchema: z.ZodType<
 > = z.object({
   login: types.optional(types.string()),
 });
-/** @internal */
-export type GetTeamMembersGitlab$Outbound = {
-  login?: string | undefined;
-};
 
-/** @internal */
-export const GetTeamMembersGitlab$outboundSchema: z.ZodType<
-  GetTeamMembersGitlab$Outbound,
-  z.ZodTypeDef,
-  GetTeamMembersGitlab
-> = z.object({
-  login: z.string().optional(),
-});
-
-export function getTeamMembersGitlabToJSON(
-  getTeamMembersGitlab: GetTeamMembersGitlab,
-): string {
-  return JSON.stringify(
-    GetTeamMembersGitlab$outboundSchema.parse(getTeamMembersGitlab),
-  );
-}
 export function getTeamMembersGitlabFromJSON(
   jsonString: string,
 ): SafeParseResult<GetTeamMembersGitlab, SDKValidationError> {
@@ -479,27 +410,7 @@ export const GetTeamMembersBitbucket$inboundSchema: z.ZodType<
 > = z.object({
   login: types.optional(types.string()),
 });
-/** @internal */
-export type GetTeamMembersBitbucket$Outbound = {
-  login?: string | undefined;
-};
 
-/** @internal */
-export const GetTeamMembersBitbucket$outboundSchema: z.ZodType<
-  GetTeamMembersBitbucket$Outbound,
-  z.ZodTypeDef,
-  GetTeamMembersBitbucket
-> = z.object({
-  login: z.string().optional(),
-});
-
-export function getTeamMembersBitbucketToJSON(
-  getTeamMembersBitbucket: GetTeamMembersBitbucket,
-): string {
-  return JSON.stringify(
-    GetTeamMembersBitbucket$outboundSchema.parse(getTeamMembersBitbucket),
-  );
-}
 export function getTeamMembersBitbucketFromJSON(
   jsonString: string,
 ): SafeParseResult<GetTeamMembersBitbucket, SDKValidationError> {
@@ -514,19 +425,11 @@ export function getTeamMembersBitbucketFromJSON(
 export const GetTeamMembersRole$inboundSchema: z.ZodNativeEnum<
   typeof GetTeamMembersRole
 > = z.nativeEnum(GetTeamMembersRole);
-/** @internal */
-export const GetTeamMembersRole$outboundSchema: z.ZodNativeEnum<
-  typeof GetTeamMembersRole
-> = GetTeamMembersRole$inboundSchema;
 
 /** @internal */
 export const GetTeamMembersOrigin$inboundSchema: z.ZodNativeEnum<
   typeof GetTeamMembersOrigin
 > = z.nativeEnum(GetTeamMembersOrigin);
-/** @internal */
-export const GetTeamMembersOrigin$outboundSchema: z.ZodNativeEnum<
-  typeof GetTeamMembersOrigin
-> = GetTeamMembersOrigin$inboundSchema;
 
 /** @internal */
 export const GetTeamMembersGitUserId$inboundSchema: z.ZodType<
@@ -534,23 +437,7 @@ export const GetTeamMembersGitUserId$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = smartUnion([types.string(), types.number()]);
-/** @internal */
-export type GetTeamMembersGitUserId$Outbound = string | number;
 
-/** @internal */
-export const GetTeamMembersGitUserId$outboundSchema: z.ZodType<
-  GetTeamMembersGitUserId$Outbound,
-  z.ZodTypeDef,
-  GetTeamMembersGitUserId
-> = smartUnion([z.string(), z.number()]);
-
-export function getTeamMembersGitUserIdToJSON(
-  getTeamMembersGitUserId: GetTeamMembersGitUserId,
-): string {
-  return JSON.stringify(
-    GetTeamMembersGitUserId$outboundSchema.parse(getTeamMembersGitUserId),
-  );
-}
 export function getTeamMembersGitUserIdFromJSON(
   jsonString: string,
 ): SafeParseResult<GetTeamMembersGitUserId, SDKValidationError> {
@@ -579,47 +466,7 @@ export const GetTeamMembersJoinedFrom$inboundSchema: z.ZodType<
   dsyncUserId: types.optional(types.string()),
   dsyncConnectedAt: types.optional(types.number()),
 });
-/** @internal */
-export type GetTeamMembersJoinedFrom$Outbound = {
-  origin: string;
-  commitId?: string | undefined;
-  repoId?: string | undefined;
-  repoPath?: string | undefined;
-  gitUserId?: string | number | undefined;
-  gitUserLogin?: string | undefined;
-  ssoUserId?: string | undefined;
-  ssoConnectedAt?: number | undefined;
-  idpUserId?: string | undefined;
-  dsyncUserId?: string | undefined;
-  dsyncConnectedAt?: number | undefined;
-};
 
-/** @internal */
-export const GetTeamMembersJoinedFrom$outboundSchema: z.ZodType<
-  GetTeamMembersJoinedFrom$Outbound,
-  z.ZodTypeDef,
-  GetTeamMembersJoinedFrom
-> = z.object({
-  origin: GetTeamMembersOrigin$outboundSchema,
-  commitId: z.string().optional(),
-  repoId: z.string().optional(),
-  repoPath: z.string().optional(),
-  gitUserId: smartUnion([z.string(), z.number()]).optional(),
-  gitUserLogin: z.string().optional(),
-  ssoUserId: z.string().optional(),
-  ssoConnectedAt: z.number().optional(),
-  idpUserId: z.string().optional(),
-  dsyncUserId: z.string().optional(),
-  dsyncConnectedAt: z.number().optional(),
-});
-
-export function getTeamMembersJoinedFromToJSON(
-  getTeamMembersJoinedFrom: GetTeamMembersJoinedFrom,
-): string {
-  return JSON.stringify(
-    GetTeamMembersJoinedFrom$outboundSchema.parse(getTeamMembersJoinedFrom),
-  );
-}
 export function getTeamMembersJoinedFromFromJSON(
   jsonString: string,
 ): SafeParseResult<GetTeamMembersJoinedFrom, SDKValidationError> {
@@ -634,10 +481,6 @@ export function getTeamMembersJoinedFromFromJSON(
 export const GetTeamMembersTeamsResponseRole$inboundSchema: z.ZodNativeEnum<
   typeof GetTeamMembersTeamsResponseRole
 > = z.nativeEnum(GetTeamMembersTeamsResponseRole);
-/** @internal */
-export const GetTeamMembersTeamsResponseRole$outboundSchema: z.ZodNativeEnum<
-  typeof GetTeamMembersTeamsResponseRole
-> = GetTeamMembersTeamsResponseRole$inboundSchema;
 
 /** @internal */
 export const GetTeamMembersProjects$inboundSchema: z.ZodType<
@@ -649,31 +492,7 @@ export const GetTeamMembersProjects$inboundSchema: z.ZodType<
   id: types.string(),
   role: types.optional(GetTeamMembersTeamsResponseRole$inboundSchema),
 });
-/** @internal */
-export type GetTeamMembersProjects$Outbound = {
-  name: string;
-  id: string;
-  role?: string | undefined;
-};
 
-/** @internal */
-export const GetTeamMembersProjects$outboundSchema: z.ZodType<
-  GetTeamMembersProjects$Outbound,
-  z.ZodTypeDef,
-  GetTeamMembersProjects
-> = z.object({
-  name: z.string(),
-  id: z.string(),
-  role: GetTeamMembersTeamsResponseRole$outboundSchema.optional(),
-});
-
-export function getTeamMembersProjectsToJSON(
-  getTeamMembersProjects: GetTeamMembersProjects,
-): string {
-  return JSON.stringify(
-    GetTeamMembersProjects$outboundSchema.parse(getTeamMembersProjects),
-  );
-}
 export function getTeamMembersProjectsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetTeamMembersProjects, SDKValidationError> {
@@ -712,56 +531,7 @@ export const GetTeamMembersMembers$inboundSchema: z.ZodType<
   ),
   isEnterpriseManaged: types.optional(types.boolean()),
 });
-/** @internal */
-export type GetTeamMembersMembers$Outbound = {
-  avatar?: string | undefined;
-  confirmed: boolean;
-  email: string;
-  github?: GetTeamMembersGithub$Outbound | undefined;
-  gitlab?: GetTeamMembersGitlab$Outbound | undefined;
-  bitbucket?: GetTeamMembersBitbucket$Outbound | undefined;
-  role: string;
-  uid: string;
-  username: string;
-  name?: string | undefined;
-  createdAt: number;
-  accessRequestedAt?: number | undefined;
-  joinedFrom?: GetTeamMembersJoinedFrom$Outbound | undefined;
-  projects?: Array<GetTeamMembersProjects$Outbound> | undefined;
-  isEnterpriseManaged?: boolean | undefined;
-};
 
-/** @internal */
-export const GetTeamMembersMembers$outboundSchema: z.ZodType<
-  GetTeamMembersMembers$Outbound,
-  z.ZodTypeDef,
-  GetTeamMembersMembers
-> = z.object({
-  avatar: z.string().optional(),
-  confirmed: z.boolean(),
-  email: z.string(),
-  github: z.lazy(() => GetTeamMembersGithub$outboundSchema).optional(),
-  gitlab: z.lazy(() => GetTeamMembersGitlab$outboundSchema).optional(),
-  bitbucket: z.lazy(() => GetTeamMembersBitbucket$outboundSchema).optional(),
-  role: GetTeamMembersRole$outboundSchema,
-  uid: z.string(),
-  username: z.string(),
-  name: z.string().optional(),
-  createdAt: z.number(),
-  accessRequestedAt: z.number().optional(),
-  joinedFrom: z.lazy(() => GetTeamMembersJoinedFrom$outboundSchema).optional(),
-  projects: z.array(z.lazy(() => GetTeamMembersProjects$outboundSchema))
-    .optional(),
-  isEnterpriseManaged: z.boolean().optional(),
-});
-
-export function getTeamMembersMembersToJSON(
-  getTeamMembersMembers: GetTeamMembersMembers,
-): string {
-  return JSON.stringify(
-    GetTeamMembersMembers$outboundSchema.parse(getTeamMembersMembers),
-  );
-}
 export function getTeamMembersMembersFromJSON(
   jsonString: string,
 ): SafeParseResult<GetTeamMembersMembers, SDKValidationError> {
@@ -776,37 +546,21 @@ export function getTeamMembersMembersFromJSON(
 export const GetTeamMembersTeamsRole$inboundSchema: z.ZodNativeEnum<
   typeof GetTeamMembersTeamsRole
 > = z.nativeEnum(GetTeamMembersTeamsRole);
-/** @internal */
-export const GetTeamMembersTeamsRole$outboundSchema: z.ZodNativeEnum<
-  typeof GetTeamMembersTeamsRole
-> = GetTeamMembersTeamsRole$inboundSchema;
 
 /** @internal */
 export const GetTeamMembersTeamRoles$inboundSchema: z.ZodNativeEnum<
   typeof GetTeamMembersTeamRoles
 > = z.nativeEnum(GetTeamMembersTeamRoles);
-/** @internal */
-export const GetTeamMembersTeamRoles$outboundSchema: z.ZodNativeEnum<
-  typeof GetTeamMembersTeamRoles
-> = GetTeamMembersTeamRoles$inboundSchema;
 
 /** @internal */
 export const GetTeamMembersTeamPermissions$inboundSchema: z.ZodNativeEnum<
   typeof GetTeamMembersTeamPermissions
 > = z.nativeEnum(GetTeamMembersTeamPermissions);
-/** @internal */
-export const GetTeamMembersTeamPermissions$outboundSchema: z.ZodNativeEnum<
-  typeof GetTeamMembersTeamPermissions
-> = GetTeamMembersTeamPermissions$inboundSchema;
 
 /** @internal */
 export const GetTeamMembersTeamsProjects$inboundSchema: z.ZodNativeEnum<
   typeof GetTeamMembersTeamsProjects
 > = z.nativeEnum(GetTeamMembersTeamsProjects);
-/** @internal */
-export const GetTeamMembersTeamsProjects$outboundSchema: z.ZodNativeEnum<
-  typeof GetTeamMembersTeamsProjects
-> = GetTeamMembersTeamsProjects$inboundSchema;
 
 /** @internal */
 export const EmailInviteCodes$inboundSchema: z.ZodType<
@@ -828,48 +582,7 @@ export const EmailInviteCodes$inboundSchema: z.ZodType<
   projects: types.optional(z.record(GetTeamMembersTeamsProjects$inboundSchema)),
   entitlements: types.optional(z.array(types.string())),
 });
-/** @internal */
-export type EmailInviteCodes$Outbound = {
-  accessGroups?: Array<string> | undefined;
-  id: string;
-  email?: string | undefined;
-  role?: string | undefined;
-  teamRoles?: Array<string> | undefined;
-  teamPermissions?: Array<string> | undefined;
-  isDSyncUser: boolean;
-  createdAt?: number | undefined;
-  expired?: true | undefined;
-  projects?: { [k: string]: string } | undefined;
-  entitlements?: Array<string> | undefined;
-};
 
-/** @internal */
-export const EmailInviteCodes$outboundSchema: z.ZodType<
-  EmailInviteCodes$Outbound,
-  z.ZodTypeDef,
-  EmailInviteCodes
-> = z.object({
-  accessGroups: z.array(z.string()).optional(),
-  id: z.string(),
-  email: z.string().optional(),
-  role: GetTeamMembersTeamsRole$outboundSchema.optional(),
-  teamRoles: z.array(GetTeamMembersTeamRoles$outboundSchema).optional(),
-  teamPermissions: z.array(GetTeamMembersTeamPermissions$outboundSchema)
-    .optional(),
-  isDSyncUser: z.boolean(),
-  createdAt: z.number().optional(),
-  expired: z.literal(true).optional(),
-  projects: z.record(GetTeamMembersTeamsProjects$outboundSchema).optional(),
-  entitlements: z.array(z.string()).optional(),
-});
-
-export function emailInviteCodesToJSON(
-  emailInviteCodes: EmailInviteCodes,
-): string {
-  return JSON.stringify(
-    EmailInviteCodes$outboundSchema.parse(emailInviteCodes),
-  );
-}
 export function emailInviteCodesFromJSON(
   jsonString: string,
 ): SafeParseResult<EmailInviteCodes, SDKValidationError> {
@@ -891,33 +604,7 @@ export const GetTeamMembersPagination$inboundSchema: z.ZodType<
   next: types.nullable(types.number()),
   prev: types.nullable(types.number()),
 });
-/** @internal */
-export type GetTeamMembersPagination$Outbound = {
-  hasNext: boolean;
-  count: number;
-  next: number | null;
-  prev: number | null;
-};
 
-/** @internal */
-export const GetTeamMembersPagination$outboundSchema: z.ZodType<
-  GetTeamMembersPagination$Outbound,
-  z.ZodTypeDef,
-  GetTeamMembersPagination
-> = z.object({
-  hasNext: z.boolean(),
-  count: z.number(),
-  next: z.nullable(z.number()),
-  prev: z.nullable(z.number()),
-});
-
-export function getTeamMembersPaginationToJSON(
-  getTeamMembersPagination: GetTeamMembersPagination,
-): string {
-  return JSON.stringify(
-    GetTeamMembersPagination$outboundSchema.parse(getTeamMembersPagination),
-  );
-}
 export function getTeamMembersPaginationFromJSON(
   jsonString: string,
 ): SafeParseResult<GetTeamMembersPagination, SDKValidationError> {
@@ -940,32 +627,7 @@ export const GetTeamMembersResponseBody$inboundSchema: z.ZodType<
   ),
   pagination: z.lazy(() => GetTeamMembersPagination$inboundSchema),
 });
-/** @internal */
-export type GetTeamMembersResponseBody$Outbound = {
-  members: Array<GetTeamMembersMembers$Outbound>;
-  emailInviteCodes?: Array<EmailInviteCodes$Outbound> | undefined;
-  pagination: GetTeamMembersPagination$Outbound;
-};
 
-/** @internal */
-export const GetTeamMembersResponseBody$outboundSchema: z.ZodType<
-  GetTeamMembersResponseBody$Outbound,
-  z.ZodTypeDef,
-  GetTeamMembersResponseBody
-> = z.object({
-  members: z.array(z.lazy(() => GetTeamMembersMembers$outboundSchema)),
-  emailInviteCodes: z.array(z.lazy(() => EmailInviteCodes$outboundSchema))
-    .optional(),
-  pagination: z.lazy(() => GetTeamMembersPagination$outboundSchema),
-});
-
-export function getTeamMembersResponseBodyToJSON(
-  getTeamMembersResponseBody: GetTeamMembersResponseBody,
-): string {
-  return JSON.stringify(
-    GetTeamMembersResponseBody$outboundSchema.parse(getTeamMembersResponseBody),
-  );
-}
 export function getTeamMembersResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetTeamMembersResponseBody, SDKValidationError> {

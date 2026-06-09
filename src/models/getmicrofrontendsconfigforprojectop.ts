@@ -179,16 +179,6 @@ export type GetMicrofrontendsConfigForProjectResponseBody = {
 };
 
 /** @internal */
-export const GetMicrofrontendsConfigForProjectRequest$inboundSchema: z.ZodType<
-  GetMicrofrontendsConfigForProjectRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  projectIdOrName: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
-/** @internal */
 export type GetMicrofrontendsConfigForProjectRequest$Outbound = {
   projectIdOrName: string;
   teamId?: string | undefined;
@@ -216,30 +206,11 @@ export function getMicrofrontendsConfigForProjectRequestToJSON(
     ),
   );
 }
-export function getMicrofrontendsConfigForProjectRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  GetMicrofrontendsConfigForProjectRequest,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetMicrofrontendsConfigForProjectRequest$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'GetMicrofrontendsConfigForProjectRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const GetMicrofrontendsConfigForProjectVersion$inboundSchema:
   z.ZodNativeEnum<typeof GetMicrofrontendsConfigForProjectVersion> = z
     .nativeEnum(GetMicrofrontendsConfigForProjectVersion);
-/** @internal */
-export const GetMicrofrontendsConfigForProjectVersion$outboundSchema:
-  z.ZodNativeEnum<typeof GetMicrofrontendsConfigForProjectVersion> =
-    GetMicrofrontendsConfigForProjectVersion$inboundSchema;
 
 /** @internal */
 export const GetMicrofrontendsConfigForProjectApplicationsMicrofrontendsLocal$inboundSchema:
@@ -248,28 +219,7 @@ export const GetMicrofrontendsConfigForProjectApplicationsMicrofrontendsLocal$in
     z.ZodTypeDef,
     unknown
   > = smartUnion([types.string(), types.number()]);
-/** @internal */
-export type GetMicrofrontendsConfigForProjectApplicationsMicrofrontendsLocal$Outbound =
-  | string
-  | number;
 
-/** @internal */
-export const GetMicrofrontendsConfigForProjectApplicationsMicrofrontendsLocal$outboundSchema:
-  z.ZodType<
-    GetMicrofrontendsConfigForProjectApplicationsMicrofrontendsLocal$Outbound,
-    z.ZodTypeDef,
-    GetMicrofrontendsConfigForProjectApplicationsMicrofrontendsLocal
-  > = smartUnion([z.string(), z.number()]);
-
-export function getMicrofrontendsConfigForProjectApplicationsMicrofrontendsLocalToJSON(
-  getMicrofrontendsConfigForProjectApplicationsMicrofrontendsLocal:
-    GetMicrofrontendsConfigForProjectApplicationsMicrofrontendsLocal,
-): string {
-  return JSON.stringify(
-    GetMicrofrontendsConfigForProjectApplicationsMicrofrontendsLocal$outboundSchema
-      .parse(getMicrofrontendsConfigForProjectApplicationsMicrofrontendsLocal),
-  );
-}
 export function getMicrofrontendsConfigForProjectApplicationsMicrofrontendsLocalFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -296,37 +246,7 @@ export const GetMicrofrontendsConfigForProjectApplicationsMicrofrontendsDevelopm
     local: types.optional(smartUnion([types.string(), types.number()])),
     task: types.optional(types.string()),
   });
-/** @internal */
-export type GetMicrofrontendsConfigForProjectApplicationsMicrofrontendsDevelopment$Outbound =
-  {
-    fallback?: string | undefined;
-    local?: string | number | undefined;
-    task?: string | undefined;
-  };
 
-/** @internal */
-export const GetMicrofrontendsConfigForProjectApplicationsMicrofrontendsDevelopment$outboundSchema:
-  z.ZodType<
-    GetMicrofrontendsConfigForProjectApplicationsMicrofrontendsDevelopment$Outbound,
-    z.ZodTypeDef,
-    GetMicrofrontendsConfigForProjectApplicationsMicrofrontendsDevelopment
-  > = z.object({
-    fallback: z.string().optional(),
-    local: smartUnion([z.string(), z.number()]).optional(),
-    task: z.string().optional(),
-  });
-
-export function getMicrofrontendsConfigForProjectApplicationsMicrofrontendsDevelopmentToJSON(
-  getMicrofrontendsConfigForProjectApplicationsMicrofrontendsDevelopment:
-    GetMicrofrontendsConfigForProjectApplicationsMicrofrontendsDevelopment,
-): string {
-  return JSON.stringify(
-    GetMicrofrontendsConfigForProjectApplicationsMicrofrontendsDevelopment$outboundSchema
-      .parse(
-        getMicrofrontendsConfigForProjectApplicationsMicrofrontendsDevelopment,
-      ),
-  );
-}
 export function getMicrofrontendsConfigForProjectApplicationsMicrofrontendsDevelopmentFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -352,31 +272,7 @@ export const ApplicationsRouting$inboundSchema: z.ZodType<
   flag: types.optional(types.string()),
   paths: z.array(types.string()),
 });
-/** @internal */
-export type ApplicationsRouting$Outbound = {
-  group?: string | undefined;
-  flag?: string | undefined;
-  paths: Array<string>;
-};
 
-/** @internal */
-export const ApplicationsRouting$outboundSchema: z.ZodType<
-  ApplicationsRouting$Outbound,
-  z.ZodTypeDef,
-  ApplicationsRouting
-> = z.object({
-  group: z.string().optional(),
-  flag: z.string().optional(),
-  paths: z.array(z.string()),
-});
-
-export function applicationsRoutingToJSON(
-  applicationsRouting: ApplicationsRouting,
-): string {
-  return JSON.stringify(
-    ApplicationsRouting$outboundSchema.parse(applicationsRouting),
-  );
-}
 export function applicationsRoutingFromJSON(
   jsonString: string,
 ): SafeParseResult<ApplicationsRouting, SDKValidationError> {
@@ -404,43 +300,7 @@ export const GetMicrofrontendsConfigForProjectApplications2$inboundSchema:
     packageName: types.optional(types.string()),
     projectId: types.string(),
   });
-/** @internal */
-export type GetMicrofrontendsConfigForProjectApplications2$Outbound = {
-  development?:
-    | GetMicrofrontendsConfigForProjectApplicationsMicrofrontendsDevelopment$Outbound
-    | undefined;
-  routing: Array<ApplicationsRouting$Outbound>;
-  assetPrefix?: string | undefined;
-  packageName?: string | undefined;
-  projectId: string;
-};
 
-/** @internal */
-export const GetMicrofrontendsConfigForProjectApplications2$outboundSchema:
-  z.ZodType<
-    GetMicrofrontendsConfigForProjectApplications2$Outbound,
-    z.ZodTypeDef,
-    GetMicrofrontendsConfigForProjectApplications2
-  > = z.object({
-    development: z.lazy(() =>
-      GetMicrofrontendsConfigForProjectApplicationsMicrofrontendsDevelopment$outboundSchema
-    ).optional(),
-    routing: z.array(z.lazy(() => ApplicationsRouting$outboundSchema)),
-    assetPrefix: z.string().optional(),
-    packageName: z.string().optional(),
-    projectId: z.string(),
-  });
-
-export function getMicrofrontendsConfigForProjectApplications2ToJSON(
-  getMicrofrontendsConfigForProjectApplications2:
-    GetMicrofrontendsConfigForProjectApplications2,
-): string {
-  return JSON.stringify(
-    GetMicrofrontendsConfigForProjectApplications2$outboundSchema.parse(
-      getMicrofrontendsConfigForProjectApplications2,
-    ),
-  );
-}
 export function getMicrofrontendsConfigForProjectApplications2FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -464,29 +324,7 @@ export const GetMicrofrontendsConfigForProjectApplicationsLocal$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = smartUnion([types.string(), types.number()]);
-/** @internal */
-export type GetMicrofrontendsConfigForProjectApplicationsLocal$Outbound =
-  | string
-  | number;
 
-/** @internal */
-export const GetMicrofrontendsConfigForProjectApplicationsLocal$outboundSchema:
-  z.ZodType<
-    GetMicrofrontendsConfigForProjectApplicationsLocal$Outbound,
-    z.ZodTypeDef,
-    GetMicrofrontendsConfigForProjectApplicationsLocal
-  > = smartUnion([z.string(), z.number()]);
-
-export function getMicrofrontendsConfigForProjectApplicationsLocalToJSON(
-  getMicrofrontendsConfigForProjectApplicationsLocal:
-    GetMicrofrontendsConfigForProjectApplicationsLocal,
-): string {
-  return JSON.stringify(
-    GetMicrofrontendsConfigForProjectApplicationsLocal$outboundSchema.parse(
-      getMicrofrontendsConfigForProjectApplicationsLocal,
-    ),
-  );
-}
 export function getMicrofrontendsConfigForProjectApplicationsLocalFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -514,35 +352,7 @@ export const GetMicrofrontendsConfigForProjectApplicationsDevelopment$inboundSch
     local: types.optional(smartUnion([types.string(), types.number()])),
     task: types.optional(types.string()),
   });
-/** @internal */
-export type GetMicrofrontendsConfigForProjectApplicationsDevelopment$Outbound =
-  {
-    fallback: string;
-    local?: string | number | undefined;
-    task?: string | undefined;
-  };
 
-/** @internal */
-export const GetMicrofrontendsConfigForProjectApplicationsDevelopment$outboundSchema:
-  z.ZodType<
-    GetMicrofrontendsConfigForProjectApplicationsDevelopment$Outbound,
-    z.ZodTypeDef,
-    GetMicrofrontendsConfigForProjectApplicationsDevelopment
-  > = z.object({
-    fallback: z.string(),
-    local: smartUnion([z.string(), z.number()]).optional(),
-    task: z.string().optional(),
-  });
-
-export function getMicrofrontendsConfigForProjectApplicationsDevelopmentToJSON(
-  getMicrofrontendsConfigForProjectApplicationsDevelopment:
-    GetMicrofrontendsConfigForProjectApplicationsDevelopment,
-): string {
-  return JSON.stringify(
-    GetMicrofrontendsConfigForProjectApplicationsDevelopment$outboundSchema
-      .parse(getMicrofrontendsConfigForProjectApplicationsDevelopment),
-  );
-}
 export function getMicrofrontendsConfigForProjectApplicationsDevelopmentFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -571,38 +381,7 @@ export const GetMicrofrontendsConfigForProjectApplications1$inboundSchema:
     packageName: types.optional(types.string()),
     projectId: types.string(),
   });
-/** @internal */
-export type GetMicrofrontendsConfigForProjectApplications1$Outbound = {
-  development:
-    GetMicrofrontendsConfigForProjectApplicationsDevelopment$Outbound;
-  packageName?: string | undefined;
-  projectId: string;
-};
 
-/** @internal */
-export const GetMicrofrontendsConfigForProjectApplications1$outboundSchema:
-  z.ZodType<
-    GetMicrofrontendsConfigForProjectApplications1$Outbound,
-    z.ZodTypeDef,
-    GetMicrofrontendsConfigForProjectApplications1
-  > = z.object({
-    development: z.lazy(() =>
-      GetMicrofrontendsConfigForProjectApplicationsDevelopment$outboundSchema
-    ),
-    packageName: z.string().optional(),
-    projectId: z.string(),
-  });
-
-export function getMicrofrontendsConfigForProjectApplications1ToJSON(
-  getMicrofrontendsConfigForProjectApplications1:
-    GetMicrofrontendsConfigForProjectApplications1,
-): string {
-  return JSON.stringify(
-    GetMicrofrontendsConfigForProjectApplications1$outboundSchema.parse(
-      getMicrofrontendsConfigForProjectApplications1,
-    ),
-  );
-}
 export function getMicrofrontendsConfigForProjectApplications1FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -629,32 +408,7 @@ export const GetMicrofrontendsConfigForProjectApplications$inboundSchema:
     z.lazy(() => GetMicrofrontendsConfigForProjectApplications1$inboundSchema),
     z.lazy(() => GetMicrofrontendsConfigForProjectApplications2$inboundSchema),
   ]);
-/** @internal */
-export type GetMicrofrontendsConfigForProjectApplications$Outbound =
-  | GetMicrofrontendsConfigForProjectApplications1$Outbound
-  | GetMicrofrontendsConfigForProjectApplications2$Outbound;
 
-/** @internal */
-export const GetMicrofrontendsConfigForProjectApplications$outboundSchema:
-  z.ZodType<
-    GetMicrofrontendsConfigForProjectApplications$Outbound,
-    z.ZodTypeDef,
-    GetMicrofrontendsConfigForProjectApplications
-  > = smartUnion([
-    z.lazy(() => GetMicrofrontendsConfigForProjectApplications1$outboundSchema),
-    z.lazy(() => GetMicrofrontendsConfigForProjectApplications2$outboundSchema),
-  ]);
-
-export function getMicrofrontendsConfigForProjectApplicationsToJSON(
-  getMicrofrontendsConfigForProjectApplications:
-    GetMicrofrontendsConfigForProjectApplications,
-): string {
-  return JSON.stringify(
-    GetMicrofrontendsConfigForProjectApplications$outboundSchema.parse(
-      getMicrofrontendsConfigForProjectApplications,
-    ),
-  );
-}
 export function getMicrofrontendsConfigForProjectApplicationsFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -680,32 +434,7 @@ export const GetMicrofrontendsConfigForProjectOptions$inboundSchema: z.ZodType<
   disableOverrides: types.optional(types.boolean()),
   localProxyPort: types.optional(types.number()),
 });
-/** @internal */
-export type GetMicrofrontendsConfigForProjectOptions$Outbound = {
-  disableOverrides?: boolean | undefined;
-  localProxyPort?: number | undefined;
-};
 
-/** @internal */
-export const GetMicrofrontendsConfigForProjectOptions$outboundSchema: z.ZodType<
-  GetMicrofrontendsConfigForProjectOptions$Outbound,
-  z.ZodTypeDef,
-  GetMicrofrontendsConfigForProjectOptions
-> = z.object({
-  disableOverrides: z.boolean().optional(),
-  localProxyPort: z.number().optional(),
-});
-
-export function getMicrofrontendsConfigForProjectOptionsToJSON(
-  getMicrofrontendsConfigForProjectOptions:
-    GetMicrofrontendsConfigForProjectOptions,
-): string {
-  return JSON.stringify(
-    GetMicrofrontendsConfigForProjectOptions$outboundSchema.parse(
-      getMicrofrontendsConfigForProjectOptions,
-    ),
-  );
-}
 export function getMicrofrontendsConfigForProjectOptionsFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -750,54 +479,7 @@ export const GetMicrofrontendsConfigForProjectConfig$inboundSchema: z.ZodType<
     "$schema": "dollarSchema",
   });
 });
-/** @internal */
-export type GetMicrofrontendsConfigForProjectConfig$Outbound = {
-  $schema?: string | undefined;
-  version?: string | undefined;
-  applications: {
-    [k: string]:
-      | GetMicrofrontendsConfigForProjectApplications1$Outbound
-      | GetMicrofrontendsConfigForProjectApplications2$Outbound;
-  };
-  options?: GetMicrofrontendsConfigForProjectOptions$Outbound | undefined;
-};
 
-/** @internal */
-export const GetMicrofrontendsConfigForProjectConfig$outboundSchema: z.ZodType<
-  GetMicrofrontendsConfigForProjectConfig$Outbound,
-  z.ZodTypeDef,
-  GetMicrofrontendsConfigForProjectConfig
-> = z.object({
-  dollarSchema: z.string().optional(),
-  version: GetMicrofrontendsConfigForProjectVersion$outboundSchema.optional(),
-  applications: z.record(
-    smartUnion([
-      z.lazy(() =>
-        GetMicrofrontendsConfigForProjectApplications1$outboundSchema
-      ),
-      z.lazy(() =>
-        GetMicrofrontendsConfigForProjectApplications2$outboundSchema
-      ),
-    ]),
-  ),
-  options: z.lazy(() => GetMicrofrontendsConfigForProjectOptions$outboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    dollarSchema: "$schema",
-  });
-});
-
-export function getMicrofrontendsConfigForProjectConfigToJSON(
-  getMicrofrontendsConfigForProjectConfig:
-    GetMicrofrontendsConfigForProjectConfig,
-): string {
-  return JSON.stringify(
-    GetMicrofrontendsConfigForProjectConfig$outboundSchema.parse(
-      getMicrofrontendsConfigForProjectConfig,
-    ),
-  );
-}
 export function getMicrofrontendsConfigForProjectConfigFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -825,33 +507,7 @@ export const GetMicrofrontendsConfigForProjectResponseBody$inboundSchema:
       z.lazy(() => GetMicrofrontendsConfigForProjectConfig$inboundSchema),
     ),
   });
-/** @internal */
-export type GetMicrofrontendsConfigForProjectResponseBody$Outbound = {
-  config: GetMicrofrontendsConfigForProjectConfig$Outbound | null;
-};
 
-/** @internal */
-export const GetMicrofrontendsConfigForProjectResponseBody$outboundSchema:
-  z.ZodType<
-    GetMicrofrontendsConfigForProjectResponseBody$Outbound,
-    z.ZodTypeDef,
-    GetMicrofrontendsConfigForProjectResponseBody
-  > = z.object({
-    config: z.nullable(
-      z.lazy(() => GetMicrofrontendsConfigForProjectConfig$outboundSchema),
-    ),
-  });
-
-export function getMicrofrontendsConfigForProjectResponseBodyToJSON(
-  getMicrofrontendsConfigForProjectResponseBody:
-    GetMicrofrontendsConfigForProjectResponseBody,
-): string {
-  return JSON.stringify(
-    GetMicrofrontendsConfigForProjectResponseBody$outboundSchema.parse(
-      getMicrofrontendsConfigForProjectResponseBody,
-    ),
-  );
-}
 export function getMicrofrontendsConfigForProjectResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<

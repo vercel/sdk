@@ -10,15 +10,11 @@ import { smartUnion } from "../types/smartUnion.js";
 import {
   HttpApiDecodeError,
   HttpApiDecodeError$inboundSchema,
-  HttpApiDecodeError$Outbound,
-  HttpApiDecodeError$outboundSchema,
 } from "./httpapidecodeerror.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 import {
   TldNotSupported,
   TldNotSupported$inboundSchema,
-  TldNotSupported$Outbound,
-  TldNotSupported$outboundSchema,
 } from "./tldnotsupported.js";
 
 export type GetTldRequest = {
@@ -44,15 +40,6 @@ export type GetTldResponseBody = {
 };
 
 /** @internal */
-export const GetTldRequest$inboundSchema: z.ZodType<
-  GetTldRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  tld: types.string(),
-  teamId: types.optional(types.string()),
-});
-/** @internal */
 export type GetTldRequest$Outbound = {
   tld: string;
   teamId?: string | undefined;
@@ -71,15 +58,6 @@ export const GetTldRequest$outboundSchema: z.ZodType<
 export function getTldRequestToJSON(getTldRequest: GetTldRequest): string {
   return JSON.stringify(GetTldRequest$outboundSchema.parse(getTldRequest));
 }
-export function getTldRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetTldRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetTldRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetTldRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const GetTldDomainsRegistrarResponseBody$inboundSchema: z.ZodType<
@@ -90,30 +68,7 @@ export const GetTldDomainsRegistrarResponseBody$inboundSchema: z.ZodType<
   TldNotSupported$inboundSchema,
   HttpApiDecodeError$inboundSchema,
 ]);
-/** @internal */
-export type GetTldDomainsRegistrarResponseBody$Outbound =
-  | TldNotSupported$Outbound
-  | HttpApiDecodeError$Outbound;
 
-/** @internal */
-export const GetTldDomainsRegistrarResponseBody$outboundSchema: z.ZodType<
-  GetTldDomainsRegistrarResponseBody$Outbound,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([
-  TldNotSupported$outboundSchema,
-  HttpApiDecodeError$outboundSchema,
-]);
-
-export function getTldDomainsRegistrarResponseBodyToJSON(
-  getTldDomainsRegistrarResponseBody: GetTldDomainsRegistrarResponseBody,
-): string {
-  return JSON.stringify(
-    GetTldDomainsRegistrarResponseBody$outboundSchema.parse(
-      getTldDomainsRegistrarResponseBody,
-    ),
-  );
-}
 export function getTldDomainsRegistrarResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetTldDomainsRegistrarResponseBody, SDKValidationError> {
@@ -133,27 +88,7 @@ export const GetTldResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   supportedLanguageCodes: z.record(types.string()),
 });
-/** @internal */
-export type GetTldResponseBody$Outbound = {
-  supportedLanguageCodes: { [k: string]: string };
-};
 
-/** @internal */
-export const GetTldResponseBody$outboundSchema: z.ZodType<
-  GetTldResponseBody$Outbound,
-  z.ZodTypeDef,
-  GetTldResponseBody
-> = z.object({
-  supportedLanguageCodes: z.record(z.string()),
-});
-
-export function getTldResponseBodyToJSON(
-  getTldResponseBody: GetTldResponseBody,
-): string {
-  return JSON.stringify(
-    GetTldResponseBody$outboundSchema.parse(getTldResponseBody),
-  );
-}
 export function getTldResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetTldResponseBody, SDKValidationError> {

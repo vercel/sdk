@@ -43,10 +43,6 @@ export class BadRequest extends VercelError {
 export const BadRequestCode$inboundSchema: z.ZodNativeEnum<
   typeof BadRequestCode
 > = z.nativeEnum(BadRequestCode);
-/** @internal */
-export const BadRequestCode$outboundSchema: z.ZodNativeEnum<
-  typeof BadRequestCode
-> = BadRequestCode$inboundSchema;
 
 /** @internal */
 export const BadRequest$inboundSchema: z.ZodType<
@@ -68,23 +64,3 @@ export const BadRequest$inboundSchema: z.ZodType<
       body: v.body$,
     });
   });
-
-/** @internal */
-export type BadRequest$Outbound = {
-  status: number;
-  code: string;
-  message: string;
-};
-
-/** @internal */
-export const BadRequest$outboundSchema: z.ZodType<
-  BadRequest$Outbound,
-  z.ZodTypeDef,
-  BadRequest
-> = z.instanceof(BadRequest)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    status: z.number(),
-    code: BadRequestCode$outboundSchema,
-    message: z.string(),
-  }));

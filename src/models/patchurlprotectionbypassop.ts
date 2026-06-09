@@ -4,12 +4,8 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
-import { Result as SafeParseResult } from "../types/fp.js";
-import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
-import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export const PatchUrlProtectionBypassRequestBodyScope = {
   AliasProtectionOverride: "alias-protection-override",
@@ -154,32 +150,15 @@ export type PatchUrlProtectionBypassRequest = {
 };
 
 /** @internal */
-export const PatchUrlProtectionBypassRequestBodyScope$inboundSchema:
+export const PatchUrlProtectionBypassRequestBodyScope$outboundSchema:
   z.ZodNativeEnum<typeof PatchUrlProtectionBypassRequestBodyScope> = z
     .nativeEnum(PatchUrlProtectionBypassRequestBodyScope);
-/** @internal */
-export const PatchUrlProtectionBypassRequestBodyScope$outboundSchema:
-  z.ZodNativeEnum<typeof PatchUrlProtectionBypassRequestBodyScope> =
-    PatchUrlProtectionBypassRequestBodyScope$inboundSchema;
 
-/** @internal */
-export const PatchUrlProtectionBypassRequestBodyAction$inboundSchema:
-  z.ZodNativeEnum<typeof PatchUrlProtectionBypassRequestBodyAction> = z
-    .nativeEnum(PatchUrlProtectionBypassRequestBodyAction);
 /** @internal */
 export const PatchUrlProtectionBypassRequestBodyAction$outboundSchema:
-  z.ZodNativeEnum<typeof PatchUrlProtectionBypassRequestBodyAction> =
-    PatchUrlProtectionBypassRequestBodyAction$inboundSchema;
+  z.ZodNativeEnum<typeof PatchUrlProtectionBypassRequestBodyAction> = z
+    .nativeEnum(PatchUrlProtectionBypassRequestBodyAction);
 
-/** @internal */
-export const Override$inboundSchema: z.ZodType<
-  Override,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  scope: PatchUrlProtectionBypassRequestBodyScope$inboundSchema,
-  action: PatchUrlProtectionBypassRequestBodyAction$inboundSchema,
-});
 /** @internal */
 export type Override$Outbound = {
   scope: string;
@@ -199,24 +178,7 @@ export const Override$outboundSchema: z.ZodType<
 export function overrideToJSON(override: Override): string {
   return JSON.stringify(Override$outboundSchema.parse(override));
 }
-export function overrideFromJSON(
-  jsonString: string,
-): SafeParseResult<Override, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Override$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Override' from JSON`,
-  );
-}
 
-/** @internal */
-export const PatchUrlProtectionBypassRequestBody3$inboundSchema: z.ZodType<
-  PatchUrlProtectionBypassRequestBody3,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  override: z.lazy(() => Override$inboundSchema),
-});
 /** @internal */
 export type PatchUrlProtectionBypassRequestBody3$Outbound = {
   override: Override$Outbound;
@@ -240,33 +202,13 @@ export function patchUrlProtectionBypassRequestBody3ToJSON(
     ),
   );
 }
-export function patchUrlProtectionBypassRequestBody3FromJSON(
-  jsonString: string,
-): SafeParseResult<PatchUrlProtectionBypassRequestBody3, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      PatchUrlProtectionBypassRequestBody3$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PatchUrlProtectionBypassRequestBody3' from JSON`,
-  );
-}
 
-/** @internal */
-export const PatchUrlProtectionBypassScopeAccess$inboundSchema: z.ZodNativeEnum<
-  typeof PatchUrlProtectionBypassScopeAccess
-> = z.nativeEnum(PatchUrlProtectionBypassScopeAccess);
 /** @internal */
 export const PatchUrlProtectionBypassScopeAccess$outboundSchema:
-  z.ZodNativeEnum<typeof PatchUrlProtectionBypassScopeAccess> =
-    PatchUrlProtectionBypassScopeAccess$inboundSchema;
+  z.ZodNativeEnum<typeof PatchUrlProtectionBypassScopeAccess> = z.nativeEnum(
+    PatchUrlProtectionBypassScopeAccess,
+  );
 
-/** @internal */
-export const Scope2$inboundSchema: z.ZodType<Scope2, z.ZodTypeDef, unknown> = z
-  .object({
-    userId: types.optional(types.string()),
-    email: types.string(),
-    access: PatchUrlProtectionBypassScopeAccess$inboundSchema,
-  });
 /** @internal */
 export type Scope2$Outbound = {
   userId?: string | undefined;
@@ -288,30 +230,11 @@ export const Scope2$outboundSchema: z.ZodType<
 export function scope2ToJSON(scope2: Scope2): string {
   return JSON.stringify(Scope2$outboundSchema.parse(scope2));
 }
-export function scope2FromJSON(
-  jsonString: string,
-): SafeParseResult<Scope2, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Scope2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Scope2' from JSON`,
-  );
-}
 
 /** @internal */
-export const ScopeAccess$inboundSchema: z.ZodNativeEnum<typeof ScopeAccess> = z
+export const ScopeAccess$outboundSchema: z.ZodNativeEnum<typeof ScopeAccess> = z
   .nativeEnum(ScopeAccess);
-/** @internal */
-export const ScopeAccess$outboundSchema: z.ZodNativeEnum<typeof ScopeAccess> =
-  ScopeAccess$inboundSchema;
 
-/** @internal */
-export const Scope1$inboundSchema: z.ZodType<Scope1, z.ZodTypeDef, unknown> = z
-  .object({
-    userId: types.string(),
-    email: types.optional(types.string()),
-    access: ScopeAccess$inboundSchema,
-  });
 /** @internal */
 export type Scope1$Outbound = {
   userId: string;
@@ -333,25 +256,7 @@ export const Scope1$outboundSchema: z.ZodType<
 export function scope1ToJSON(scope1: Scope1): string {
   return JSON.stringify(Scope1$outboundSchema.parse(scope1));
 }
-export function scope1FromJSON(
-  jsonString: string,
-): SafeParseResult<Scope1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Scope1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Scope1' from JSON`,
-  );
-}
 
-/** @internal */
-export const RequestBodyScope$inboundSchema: z.ZodType<
-  RequestBodyScope,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([
-  z.lazy(() => Scope1$inboundSchema),
-  z.lazy(() => Scope2$inboundSchema),
-]);
 /** @internal */
 export type RequestBodyScope$Outbound = Scope1$Outbound | Scope2$Outbound;
 
@@ -372,27 +277,7 @@ export function requestBodyScopeToJSON(
     RequestBodyScope$outboundSchema.parse(requestBodyScope),
   );
 }
-export function requestBodyScopeFromJSON(
-  jsonString: string,
-): SafeParseResult<RequestBodyScope, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RequestBodyScope$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RequestBodyScope' from JSON`,
-  );
-}
 
-/** @internal */
-export const PatchUrlProtectionBypassRequestBody2$inboundSchema: z.ZodType<
-  PatchUrlProtectionBypassRequestBody2,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  scope: smartUnion([
-    z.lazy(() => Scope1$inboundSchema),
-    z.lazy(() => Scope2$inboundSchema),
-  ]),
-});
 /** @internal */
 export type PatchUrlProtectionBypassRequestBody2$Outbound = {
   scope: Scope1$Outbound | Scope2$Outbound;
@@ -419,26 +304,7 @@ export function patchUrlProtectionBypassRequestBody2ToJSON(
     ),
   );
 }
-export function patchUrlProtectionBypassRequestBody2FromJSON(
-  jsonString: string,
-): SafeParseResult<PatchUrlProtectionBypassRequestBody2, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      PatchUrlProtectionBypassRequestBody2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PatchUrlProtectionBypassRequestBody2' from JSON`,
-  );
-}
 
-/** @internal */
-export const RequestBodyRevoke$inboundSchema: z.ZodType<
-  RequestBodyRevoke,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  secret: types.string(),
-  regenerate: types.boolean(),
-});
 /** @internal */
 export type RequestBodyRevoke$Outbound = {
   secret: string;
@@ -462,25 +328,7 @@ export function requestBodyRevokeToJSON(
     RequestBodyRevoke$outboundSchema.parse(requestBodyRevoke),
   );
 }
-export function requestBodyRevokeFromJSON(
-  jsonString: string,
-): SafeParseResult<RequestBodyRevoke, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RequestBodyRevoke$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RequestBodyRevoke' from JSON`,
-  );
-}
 
-/** @internal */
-export const PatchUrlProtectionBypassRequestBody1$inboundSchema: z.ZodType<
-  PatchUrlProtectionBypassRequestBody1,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  ttl: types.optional(types.number()),
-  revoke: types.optional(z.lazy(() => RequestBodyRevoke$inboundSchema)),
-});
 /** @internal */
 export type PatchUrlProtectionBypassRequestBody1$Outbound = {
   ttl?: number | undefined;
@@ -506,27 +354,7 @@ export function patchUrlProtectionBypassRequestBody1ToJSON(
     ),
   );
 }
-export function patchUrlProtectionBypassRequestBody1FromJSON(
-  jsonString: string,
-): SafeParseResult<PatchUrlProtectionBypassRequestBody1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      PatchUrlProtectionBypassRequestBody1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PatchUrlProtectionBypassRequestBody1' from JSON`,
-  );
-}
 
-/** @internal */
-export const PatchUrlProtectionBypassRequestBody$inboundSchema: z.ZodType<
-  PatchUrlProtectionBypassRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([
-  z.lazy(() => PatchUrlProtectionBypassRequestBody2$inboundSchema),
-  z.lazy(() => PatchUrlProtectionBypassRequestBody3$inboundSchema),
-  z.lazy(() => PatchUrlProtectionBypassRequestBody1$inboundSchema),
-]);
 /** @internal */
 export type PatchUrlProtectionBypassRequestBody$Outbound =
   | PatchUrlProtectionBypassRequestBody2$Outbound
@@ -553,38 +381,7 @@ export function patchUrlProtectionBypassRequestBodyToJSON(
     ),
   );
 }
-export function patchUrlProtectionBypassRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<PatchUrlProtectionBypassRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      PatchUrlProtectionBypassRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PatchUrlProtectionBypassRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const PatchUrlProtectionBypassRequest$inboundSchema: z.ZodType<
-  PatchUrlProtectionBypassRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-  RequestBody: types.optional(
-    smartUnion([
-      z.lazy(() => PatchUrlProtectionBypassRequestBody2$inboundSchema),
-      z.lazy(() => PatchUrlProtectionBypassRequestBody3$inboundSchema),
-      z.lazy(() => PatchUrlProtectionBypassRequestBody1$inboundSchema),
-    ]),
-  ),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 /** @internal */
 export type PatchUrlProtectionBypassRequest$Outbound = {
   id: string;
@@ -624,14 +421,5 @@ export function patchUrlProtectionBypassRequestToJSON(
     PatchUrlProtectionBypassRequest$outboundSchema.parse(
       patchUrlProtectionBypassRequest,
     ),
-  );
-}
-export function patchUrlProtectionBypassRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<PatchUrlProtectionBypassRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PatchUrlProtectionBypassRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PatchUrlProtectionBypassRequest' from JSON`,
   );
 }

@@ -81,24 +81,6 @@ export type ExchangeSsoTokenResponseBody =
   | ExchangeSsoTokenResponseBody1;
 
 /** @internal */
-export const ExchangeSsoTokenRequestBody2$inboundSchema: z.ZodType<
-  ExchangeSsoTokenRequestBody2,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  refresh_token: types.string(),
-  client_id: types.string(),
-  client_secret: types.string(),
-  grant_type: types.literal("refresh_token"),
-}).transform((v) => {
-  return remap$(v, {
-    "refresh_token": "refreshToken",
-    "client_id": "clientId",
-    "client_secret": "clientSecret",
-    "grant_type": "grantType",
-  });
-});
-/** @internal */
 export type ExchangeSsoTokenRequestBody2$Outbound = {
   refresh_token: string;
   client_id: string;
@@ -134,36 +116,7 @@ export function exchangeSsoTokenRequestBody2ToJSON(
     ),
   );
 }
-export function exchangeSsoTokenRequestBody2FromJSON(
-  jsonString: string,
-): SafeParseResult<ExchangeSsoTokenRequestBody2, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ExchangeSsoTokenRequestBody2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ExchangeSsoTokenRequestBody2' from JSON`,
-  );
-}
 
-/** @internal */
-export const ExchangeSsoTokenRequestBody1$inboundSchema: z.ZodType<
-  ExchangeSsoTokenRequestBody1,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  code: types.string(),
-  state: types.optional(types.string()),
-  client_id: types.string(),
-  client_secret: types.string(),
-  redirect_uri: types.optional(types.string()),
-  grant_type: types.literal("authorization_code"),
-}).transform((v) => {
-  return remap$(v, {
-    "client_id": "clientId",
-    "client_secret": "clientSecret",
-    "redirect_uri": "redirectUri",
-    "grant_type": "grantType",
-  });
-});
 /** @internal */
 export type ExchangeSsoTokenRequestBody1$Outbound = {
   code: string;
@@ -204,25 +157,7 @@ export function exchangeSsoTokenRequestBody1ToJSON(
     ),
   );
 }
-export function exchangeSsoTokenRequestBody1FromJSON(
-  jsonString: string,
-): SafeParseResult<ExchangeSsoTokenRequestBody1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ExchangeSsoTokenRequestBody1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ExchangeSsoTokenRequestBody1' from JSON`,
-  );
-}
 
-/** @internal */
-export const ExchangeSsoTokenRequestBody$inboundSchema: z.ZodType<
-  ExchangeSsoTokenRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.union([
-  z.lazy(() => ExchangeSsoTokenRequestBody1$inboundSchema),
-  z.lazy(() => ExchangeSsoTokenRequestBody2$inboundSchema),
-]);
 /** @internal */
 export type ExchangeSsoTokenRequestBody$Outbound =
   | ExchangeSsoTokenRequestBody1$Outbound
@@ -247,15 +182,6 @@ export function exchangeSsoTokenRequestBodyToJSON(
     ),
   );
 }
-export function exchangeSsoTokenRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<ExchangeSsoTokenRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ExchangeSsoTokenRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ExchangeSsoTokenRequestBody' from JSON`,
-  );
-}
 
 /** @internal */
 export const ExchangeSsoTokenResponseBody2$inboundSchema: z.ZodType<
@@ -277,45 +203,7 @@ export const ExchangeSsoTokenResponseBody2$inboundSchema: z.ZodType<
     "expires_in": "expiresIn",
   });
 });
-/** @internal */
-export type ExchangeSsoTokenResponseBody2$Outbound = {
-  id_token: string;
-  token_type: string;
-  access_token: string;
-  refresh_token: string;
-  expires_in: number;
-};
 
-/** @internal */
-export const ExchangeSsoTokenResponseBody2$outboundSchema: z.ZodType<
-  ExchangeSsoTokenResponseBody2$Outbound,
-  z.ZodTypeDef,
-  ExchangeSsoTokenResponseBody2
-> = z.object({
-  idToken: z.string(),
-  tokenType: z.string(),
-  accessToken: z.string(),
-  refreshToken: z.string(),
-  expiresIn: z.number(),
-}).transform((v) => {
-  return remap$(v, {
-    idToken: "id_token",
-    tokenType: "token_type",
-    accessToken: "access_token",
-    refreshToken: "refresh_token",
-    expiresIn: "expires_in",
-  });
-});
-
-export function exchangeSsoTokenResponseBody2ToJSON(
-  exchangeSsoTokenResponseBody2: ExchangeSsoTokenResponseBody2,
-): string {
-  return JSON.stringify(
-    ExchangeSsoTokenResponseBody2$outboundSchema.parse(
-      exchangeSsoTokenResponseBody2,
-    ),
-  );
-}
 export function exchangeSsoTokenResponseBody2FromJSON(
   jsonString: string,
 ): SafeParseResult<ExchangeSsoTokenResponseBody2, SDKValidationError> {
@@ -346,45 +234,7 @@ export const ExchangeSsoTokenResponseBody1$inboundSchema: z.ZodType<
     "refresh_token": "refreshToken",
   });
 });
-/** @internal */
-export type ExchangeSsoTokenResponseBody1$Outbound = {
-  id_token: string;
-  token_type: string | null;
-  expires_in?: number | undefined;
-  access_token: string | null;
-  refresh_token?: string | undefined;
-};
 
-/** @internal */
-export const ExchangeSsoTokenResponseBody1$outboundSchema: z.ZodType<
-  ExchangeSsoTokenResponseBody1$Outbound,
-  z.ZodTypeDef,
-  ExchangeSsoTokenResponseBody1
-> = z.object({
-  idToken: z.string(),
-  tokenType: z.nullable(z.string()),
-  expiresIn: z.number().optional(),
-  accessToken: z.nullable(z.string()),
-  refreshToken: z.string().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    idToken: "id_token",
-    tokenType: "token_type",
-    expiresIn: "expires_in",
-    accessToken: "access_token",
-    refreshToken: "refresh_token",
-  });
-});
-
-export function exchangeSsoTokenResponseBody1ToJSON(
-  exchangeSsoTokenResponseBody1: ExchangeSsoTokenResponseBody1,
-): string {
-  return JSON.stringify(
-    ExchangeSsoTokenResponseBody1$outboundSchema.parse(
-      exchangeSsoTokenResponseBody1,
-    ),
-  );
-}
 export function exchangeSsoTokenResponseBody1FromJSON(
   jsonString: string,
 ): SafeParseResult<ExchangeSsoTokenResponseBody1, SDKValidationError> {
@@ -404,30 +254,7 @@ export const ExchangeSsoTokenResponseBody$inboundSchema: z.ZodType<
   z.lazy(() => ExchangeSsoTokenResponseBody2$inboundSchema),
   z.lazy(() => ExchangeSsoTokenResponseBody1$inboundSchema),
 ]);
-/** @internal */
-export type ExchangeSsoTokenResponseBody$Outbound =
-  | ExchangeSsoTokenResponseBody2$Outbound
-  | ExchangeSsoTokenResponseBody1$Outbound;
 
-/** @internal */
-export const ExchangeSsoTokenResponseBody$outboundSchema: z.ZodType<
-  ExchangeSsoTokenResponseBody$Outbound,
-  z.ZodTypeDef,
-  ExchangeSsoTokenResponseBody
-> = smartUnion([
-  z.lazy(() => ExchangeSsoTokenResponseBody2$outboundSchema),
-  z.lazy(() => ExchangeSsoTokenResponseBody1$outboundSchema),
-]);
-
-export function exchangeSsoTokenResponseBodyToJSON(
-  exchangeSsoTokenResponseBody: ExchangeSsoTokenResponseBody,
-): string {
-  return JSON.stringify(
-    ExchangeSsoTokenResponseBody$outboundSchema.parse(
-      exchangeSsoTokenResponseBody,
-    ),
-  );
-}
 export function exchangeSsoTokenResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<ExchangeSsoTokenResponseBody, SDKValidationError> {

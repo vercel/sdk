@@ -100,25 +100,15 @@ export type InvitedTeamMember = {
 export const Role$inboundSchema: z.ZodNativeEnum<typeof Role> = z.nativeEnum(
   Role,
 );
-/** @internal */
-export const Role$outboundSchema: z.ZodNativeEnum<typeof Role> =
-  Role$inboundSchema;
 
 /** @internal */
 export const TeamRoles$inboundSchema: z.ZodNativeEnum<typeof TeamRoles> = z
   .nativeEnum(TeamRoles);
-/** @internal */
-export const TeamRoles$outboundSchema: z.ZodNativeEnum<typeof TeamRoles> =
-  TeamRoles$inboundSchema;
 
 /** @internal */
 export const TeamPermissions$inboundSchema: z.ZodNativeEnum<
   typeof TeamPermissions
 > = z.nativeEnum(TeamPermissions);
-/** @internal */
-export const TeamPermissions$outboundSchema: z.ZodNativeEnum<
-  typeof TeamPermissions
-> = TeamPermissions$inboundSchema;
 
 /** @internal */
 export const InvitedTeamMember$inboundSchema: z.ZodType<
@@ -133,37 +123,7 @@ export const InvitedTeamMember$inboundSchema: z.ZodType<
   teamRoles: types.optional(z.array(TeamRoles$inboundSchema)),
   teamPermissions: types.optional(z.array(TeamPermissions$inboundSchema)),
 });
-/** @internal */
-export type InvitedTeamMember$Outbound = {
-  uid: string;
-  username: string;
-  email: string;
-  role: string;
-  teamRoles?: Array<string> | undefined;
-  teamPermissions?: Array<string> | undefined;
-};
 
-/** @internal */
-export const InvitedTeamMember$outboundSchema: z.ZodType<
-  InvitedTeamMember$Outbound,
-  z.ZodTypeDef,
-  InvitedTeamMember
-> = z.object({
-  uid: z.string(),
-  username: z.string(),
-  email: z.string(),
-  role: Role$outboundSchema,
-  teamRoles: z.array(TeamRoles$outboundSchema).optional(),
-  teamPermissions: z.array(TeamPermissions$outboundSchema).optional(),
-});
-
-export function invitedTeamMemberToJSON(
-  invitedTeamMember: InvitedTeamMember,
-): string {
-  return JSON.stringify(
-    InvitedTeamMember$outboundSchema.parse(invitedTeamMember),
-  );
-}
 export function invitedTeamMemberFromJSON(
   jsonString: string,
 ): SafeParseResult<InvitedTeamMember, SDKValidationError> {

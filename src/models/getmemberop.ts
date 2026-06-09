@@ -37,15 +37,6 @@ export type GetMemberResponseBody = {
 };
 
 /** @internal */
-export const GetMemberRequest$inboundSchema: z.ZodType<
-  GetMemberRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  integrationConfigurationId: types.string(),
-  memberId: types.string(),
-});
-/** @internal */
 export type GetMemberRequest$Outbound = {
   integrationConfigurationId: string;
   memberId: string;
@@ -68,24 +59,11 @@ export function getMemberRequestToJSON(
     GetMemberRequest$outboundSchema.parse(getMemberRequest),
   );
 }
-export function getMemberRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetMemberRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetMemberRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetMemberRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const GetMemberRole$inboundSchema: z.ZodNativeEnum<
   typeof GetMemberRole
 > = z.nativeEnum(GetMemberRole);
-/** @internal */
-export const GetMemberRole$outboundSchema: z.ZodNativeEnum<
-  typeof GetMemberRole
-> = GetMemberRole$inboundSchema;
 
 /** @internal */
 export const GetMemberResponseBody$inboundSchema: z.ZodType<
@@ -98,33 +76,7 @@ export const GetMemberResponseBody$inboundSchema: z.ZodType<
   globalUserId: types.optional(types.string()),
   userEmail: types.optional(types.string()),
 });
-/** @internal */
-export type GetMemberResponseBody$Outbound = {
-  id: string;
-  role: string;
-  globalUserId?: string | undefined;
-  userEmail?: string | undefined;
-};
 
-/** @internal */
-export const GetMemberResponseBody$outboundSchema: z.ZodType<
-  GetMemberResponseBody$Outbound,
-  z.ZodTypeDef,
-  GetMemberResponseBody
-> = z.object({
-  id: z.string(),
-  role: GetMemberRole$outboundSchema,
-  globalUserId: z.string().optional(),
-  userEmail: z.string().optional(),
-});
-
-export function getMemberResponseBodyToJSON(
-  getMemberResponseBody: GetMemberResponseBody,
-): string {
-  return JSON.stringify(
-    GetMemberResponseBody$outboundSchema.parse(getMemberResponseBody),
-  );
-}
 export function getMemberResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetMemberResponseBody, SDKValidationError> {

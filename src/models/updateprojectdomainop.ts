@@ -93,24 +93,10 @@ export type UpdateProjectDomainResponseBody = {
 };
 
 /** @internal */
-export const RedirectStatusCode$inboundSchema: z.ZodNativeEnum<
-  typeof RedirectStatusCode
-> = z.nativeEnum(RedirectStatusCode);
-/** @internal */
 export const RedirectStatusCode$outboundSchema: z.ZodNativeEnum<
   typeof RedirectStatusCode
-> = RedirectStatusCode$inboundSchema;
+> = z.nativeEnum(RedirectStatusCode);
 
-/** @internal */
-export const UpdateProjectDomainRequestBody$inboundSchema: z.ZodType<
-  UpdateProjectDomainRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  gitBranch: z.nullable(types.string()).optional(),
-  redirect: z.nullable(types.string()).optional(),
-  redirectStatusCode: z.nullable(RedirectStatusCode$inboundSchema).optional(),
-});
 /** @internal */
 export type UpdateProjectDomainRequestBody$Outbound = {
   gitBranch?: string | null | undefined;
@@ -138,32 +124,7 @@ export function updateProjectDomainRequestBodyToJSON(
     ),
   );
 }
-export function updateProjectDomainRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateProjectDomainRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateProjectDomainRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateProjectDomainRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateProjectDomainRequest$inboundSchema: z.ZodType<
-  UpdateProjectDomainRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  idOrName: types.string(),
-  domain: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-  RequestBody: z.lazy(() => UpdateProjectDomainRequestBody$inboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 /** @internal */
 export type UpdateProjectDomainRequest$Outbound = {
   idOrName: string;
@@ -197,15 +158,6 @@ export function updateProjectDomainRequestToJSON(
     UpdateProjectDomainRequest$outboundSchema.parse(updateProjectDomainRequest),
   );
 }
-export function updateProjectDomainRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateProjectDomainRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateProjectDomainRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateProjectDomainRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const UpdateProjectDomainVerification$inboundSchema: z.ZodType<
@@ -218,35 +170,7 @@ export const UpdateProjectDomainVerification$inboundSchema: z.ZodType<
   value: types.string(),
   reason: types.string(),
 });
-/** @internal */
-export type UpdateProjectDomainVerification$Outbound = {
-  type: string;
-  domain: string;
-  value: string;
-  reason: string;
-};
 
-/** @internal */
-export const UpdateProjectDomainVerification$outboundSchema: z.ZodType<
-  UpdateProjectDomainVerification$Outbound,
-  z.ZodTypeDef,
-  UpdateProjectDomainVerification
-> = z.object({
-  type: z.string(),
-  domain: z.string(),
-  value: z.string(),
-  reason: z.string(),
-});
-
-export function updateProjectDomainVerificationToJSON(
-  updateProjectDomainVerification: UpdateProjectDomainVerification,
-): string {
-  return JSON.stringify(
-    UpdateProjectDomainVerification$outboundSchema.parse(
-      updateProjectDomainVerification,
-    ),
-  );
-}
 export function updateProjectDomainVerificationFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateProjectDomainVerification, SDKValidationError> {
@@ -277,51 +201,7 @@ export const UpdateProjectDomainResponseBody$inboundSchema: z.ZodType<
     z.array(z.lazy(() => UpdateProjectDomainVerification$inboundSchema)),
   ),
 });
-/** @internal */
-export type UpdateProjectDomainResponseBody$Outbound = {
-  name: string;
-  apexName: string;
-  projectId: string;
-  redirect?: string | null | undefined;
-  redirectStatusCode?: number | null | undefined;
-  gitBranch?: string | null | undefined;
-  customEnvironmentId?: string | null | undefined;
-  updatedAt?: number | undefined;
-  createdAt?: number | undefined;
-  verified: boolean;
-  verification?: Array<UpdateProjectDomainVerification$Outbound> | undefined;
-};
 
-/** @internal */
-export const UpdateProjectDomainResponseBody$outboundSchema: z.ZodType<
-  UpdateProjectDomainResponseBody$Outbound,
-  z.ZodTypeDef,
-  UpdateProjectDomainResponseBody
-> = z.object({
-  name: z.string(),
-  apexName: z.string(),
-  projectId: z.string(),
-  redirect: z.nullable(z.string()).optional(),
-  redirectStatusCode: z.nullable(z.number()).optional(),
-  gitBranch: z.nullable(z.string()).optional(),
-  customEnvironmentId: z.nullable(z.string()).optional(),
-  updatedAt: z.number().optional(),
-  createdAt: z.number().optional(),
-  verified: z.boolean(),
-  verification: z.array(
-    z.lazy(() => UpdateProjectDomainVerification$outboundSchema),
-  ).optional(),
-});
-
-export function updateProjectDomainResponseBodyToJSON(
-  updateProjectDomainResponseBody: UpdateProjectDomainResponseBody,
-): string {
-  return JSON.stringify(
-    UpdateProjectDomainResponseBody$outboundSchema.parse(
-      updateProjectDomainResponseBody,
-    ),
-  );
-}
 export function updateProjectDomainResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateProjectDomainResponseBody, SDKValidationError> {

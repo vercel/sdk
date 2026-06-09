@@ -26,17 +26,6 @@ export type DeleteProjectCheckResponseBody = {
 };
 
 /** @internal */
-export const DeleteProjectCheckRequest$inboundSchema: z.ZodType<
-  DeleteProjectCheckRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  projectIdOrName: types.string(),
-  checkId: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
-/** @internal */
 export type DeleteProjectCheckRequest$Outbound = {
   projectIdOrName: string;
   checkId: string;
@@ -63,15 +52,6 @@ export function deleteProjectCheckRequestToJSON(
     DeleteProjectCheckRequest$outboundSchema.parse(deleteProjectCheckRequest),
   );
 }
-export function deleteProjectCheckRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<DeleteProjectCheckRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => DeleteProjectCheckRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DeleteProjectCheckRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const DeleteProjectCheckResponseBody$inboundSchema: z.ZodType<
@@ -81,29 +61,7 @@ export const DeleteProjectCheckResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   success: types.literal(true),
 });
-/** @internal */
-export type DeleteProjectCheckResponseBody$Outbound = {
-  success: true;
-};
 
-/** @internal */
-export const DeleteProjectCheckResponseBody$outboundSchema: z.ZodType<
-  DeleteProjectCheckResponseBody$Outbound,
-  z.ZodTypeDef,
-  DeleteProjectCheckResponseBody
-> = z.object({
-  success: z.literal(true),
-});
-
-export function deleteProjectCheckResponseBodyToJSON(
-  deleteProjectCheckResponseBody: DeleteProjectCheckResponseBody,
-): string {
-  return JSON.stringify(
-    DeleteProjectCheckResponseBody$outboundSchema.parse(
-      deleteProjectCheckResponseBody,
-    ),
-  );
-}
 export function deleteProjectCheckResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<DeleteProjectCheckResponseBody, SDKValidationError> {

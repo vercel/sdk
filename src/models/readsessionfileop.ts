@@ -4,10 +4,6 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
-import { Result as SafeParseResult } from "../types/fp.js";
-import * as types from "../types/primitives.js";
-import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type ReadSessionFileRequestBody = {
   /**
@@ -37,15 +33,6 @@ export type ReadSessionFileRequest = {
 };
 
 /** @internal */
-export const ReadSessionFileRequestBody$inboundSchema: z.ZodType<
-  ReadSessionFileRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  cwd: types.optional(types.string()),
-  path: types.string(),
-});
-/** @internal */
 export type ReadSessionFileRequestBody$Outbound = {
   cwd?: string | undefined;
   path: string;
@@ -68,33 +55,7 @@ export function readSessionFileRequestBodyToJSON(
     ReadSessionFileRequestBody$outboundSchema.parse(readSessionFileRequestBody),
   );
 }
-export function readSessionFileRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<ReadSessionFileRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ReadSessionFileRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ReadSessionFileRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const ReadSessionFileRequest$inboundSchema: z.ZodType<
-  ReadSessionFileRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  sessionId: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-  RequestBody: types.optional(
-    z.lazy(() => ReadSessionFileRequestBody$inboundSchema),
-  ),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 /** @internal */
 export type ReadSessionFileRequest$Outbound = {
   sessionId: string;
@@ -125,14 +86,5 @@ export function readSessionFileRequestToJSON(
 ): string {
   return JSON.stringify(
     ReadSessionFileRequest$outboundSchema.parse(readSessionFileRequest),
-  );
-}
-export function readSessionFileRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<ReadSessionFileRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ReadSessionFileRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ReadSessionFileRequest' from JSON`,
   );
 }

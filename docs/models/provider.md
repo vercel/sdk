@@ -1,15 +1,17 @@
 # Provider
 
+Present on new events only. Equivalent to "stripe" when absent.
+
 ## Example Usage
 
 ```typescript
-import { Provider } from "@vercel/sdk/models/twohundredandninety.js";
+import { Provider } from "@vercel/sdk/models/userevent.js";
 
-let value: Provider = "bitbucket";
+let value: Provider = "chatgpt";
 ```
 
 ## Values
 
 ```typescript
-"apple" | "bitbucket" | "chatgpt" | "github" | "github-custom-host" | "github-limited" | "gitlab" | "google"
+"chatgpt" | "stripe"
 ```

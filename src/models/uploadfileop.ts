@@ -63,35 +63,6 @@ export type UploadFileResponseBody =
   | UploadFileResponseBody2;
 
 /** @internal */
-export const UploadFileRequest$inboundSchema: z.ZodType<
-  UploadFileRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  "'content-Length'": types.optional(types.number()),
-  "'x-Vercel-Digest'": types.optional(types.string()),
-  "'x-Now-Digest'": types.optional(types.string()),
-  "'x-Now-Size'": types.optional(types.number()),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-  RequestBody: types.optional(
-    z.union([
-      z.instanceof(ReadableStream<Uint8Array>),
-      z.instanceof(Blob),
-      z.instanceof(ArrayBuffer),
-      z.instanceof(Uint8Array),
-    ]),
-  ),
-}).transform((v) => {
-  return remap$(v, {
-    "'content-Length'": "contentLength",
-    "'x-Vercel-Digest'": "xVercelDigest",
-    "'x-Now-Digest'": "xNowDigest",
-    "'x-Now-Size'": "xNowSize",
-    "RequestBody": "requestBody",
-  });
-});
-/** @internal */
 export type UploadFileRequest$Outbound = {
   "'content-Length'"?: number | undefined;
   "'x-Vercel-Digest'"?: string | undefined;
@@ -142,15 +113,6 @@ export function uploadFileRequestToJSON(
     UploadFileRequest$outboundSchema.parse(uploadFileRequest),
   );
 }
-export function uploadFileRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<UploadFileRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UploadFileRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UploadFileRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const UploadFileResponseBody2$inboundSchema: z.ZodType<
@@ -158,23 +120,7 @@ export const UploadFileResponseBody2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-/** @internal */
-export type UploadFileResponseBody2$Outbound = {};
 
-/** @internal */
-export const UploadFileResponseBody2$outboundSchema: z.ZodType<
-  UploadFileResponseBody2$Outbound,
-  z.ZodTypeDef,
-  UploadFileResponseBody2
-> = z.object({});
-
-export function uploadFileResponseBody2ToJSON(
-  uploadFileResponseBody2: UploadFileResponseBody2,
-): string {
-  return JSON.stringify(
-    UploadFileResponseBody2$outboundSchema.parse(uploadFileResponseBody2),
-  );
-}
 export function uploadFileResponseBody2FromJSON(
   jsonString: string,
 ): SafeParseResult<UploadFileResponseBody2, SDKValidationError> {
@@ -193,27 +139,7 @@ export const UploadFileResponseBody1$inboundSchema: z.ZodType<
 > = z.object({
   urls: z.array(types.string()),
 });
-/** @internal */
-export type UploadFileResponseBody1$Outbound = {
-  urls: Array<string>;
-};
 
-/** @internal */
-export const UploadFileResponseBody1$outboundSchema: z.ZodType<
-  UploadFileResponseBody1$Outbound,
-  z.ZodTypeDef,
-  UploadFileResponseBody1
-> = z.object({
-  urls: z.array(z.string()),
-});
-
-export function uploadFileResponseBody1ToJSON(
-  uploadFileResponseBody1: UploadFileResponseBody1,
-): string {
-  return JSON.stringify(
-    UploadFileResponseBody1$outboundSchema.parse(uploadFileResponseBody1),
-  );
-}
 export function uploadFileResponseBody1FromJSON(
   jsonString: string,
 ): SafeParseResult<UploadFileResponseBody1, SDKValidationError> {
@@ -233,28 +159,7 @@ export const UploadFileResponseBody$inboundSchema: z.ZodType<
   z.lazy(() => UploadFileResponseBody1$inboundSchema),
   z.lazy(() => UploadFileResponseBody2$inboundSchema),
 ]);
-/** @internal */
-export type UploadFileResponseBody$Outbound =
-  | UploadFileResponseBody1$Outbound
-  | UploadFileResponseBody2$Outbound;
 
-/** @internal */
-export const UploadFileResponseBody$outboundSchema: z.ZodType<
-  UploadFileResponseBody$Outbound,
-  z.ZodTypeDef,
-  UploadFileResponseBody
-> = smartUnion([
-  z.lazy(() => UploadFileResponseBody1$outboundSchema),
-  z.lazy(() => UploadFileResponseBody2$outboundSchema),
-]);
-
-export function uploadFileResponseBodyToJSON(
-  uploadFileResponseBody: UploadFileResponseBody,
-): string {
-  return JSON.stringify(
-    UploadFileResponseBody$outboundSchema.parse(uploadFileResponseBody),
-  );
-}
 export function uploadFileResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<UploadFileResponseBody, SDKValidationError> {

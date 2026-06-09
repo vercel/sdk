@@ -28,34 +28,7 @@ export const EdgeConfigItemValue$inboundSchema: z.ZodType<
   z.array(types.nullable(z.lazy(() => EdgeConfigItemValue$inboundSchema))),
   types.boolean(),
 ]);
-/** @internal */
-export type EdgeConfigItemValue$Outbound =
-  | string
-  | number
-  | { [k: string]: EdgeConfigItemValue$Outbound | null }
-  | Array<EdgeConfigItemValue$Outbound | null>
-  | boolean;
 
-/** @internal */
-export const EdgeConfigItemValue$outboundSchema: z.ZodType<
-  EdgeConfigItemValue$Outbound,
-  z.ZodTypeDef,
-  EdgeConfigItemValue
-> = smartUnion([
-  z.string(),
-  z.number(),
-  z.record(z.nullable(z.lazy(() => EdgeConfigItemValue$outboundSchema))),
-  z.array(z.nullable(z.lazy(() => EdgeConfigItemValue$outboundSchema))),
-  z.boolean(),
-]);
-
-export function edgeConfigItemValueToJSON(
-  edgeConfigItemValue: EdgeConfigItemValue,
-): string {
-  return JSON.stringify(
-    EdgeConfigItemValue$outboundSchema.parse(edgeConfigItemValue),
-  );
-}
 export function edgeConfigItemValueFromJSON(
   jsonString: string,
 ): SafeParseResult<EdgeConfigItemValue, SDKValidationError> {

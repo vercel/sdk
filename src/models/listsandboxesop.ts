@@ -8,12 +8,7 @@ import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
-import {
-  NamedSandbox,
-  NamedSandbox$inboundSchema,
-  NamedSandbox$Outbound,
-  NamedSandbox$outboundSchema,
-} from "./namedsandbox.js";
+import { NamedSandbox, NamedSandbox$inboundSchema } from "./namedsandbox.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
@@ -97,29 +92,15 @@ export type ListSandboxesResponseBody = {
 };
 
 /** @internal */
-export const QueryParamSortBy$inboundSchema: z.ZodNativeEnum<
-  typeof QueryParamSortBy
-> = z.nativeEnum(QueryParamSortBy);
-/** @internal */
 export const QueryParamSortBy$outboundSchema: z.ZodNativeEnum<
   typeof QueryParamSortBy
-> = QueryParamSortBy$inboundSchema;
+> = z.nativeEnum(QueryParamSortBy);
 
-/** @internal */
-export const QueryParamSortOrder$inboundSchema: z.ZodNativeEnum<
-  typeof QueryParamSortOrder
-> = z.nativeEnum(QueryParamSortOrder);
 /** @internal */
 export const QueryParamSortOrder$outboundSchema: z.ZodNativeEnum<
   typeof QueryParamSortOrder
-> = QueryParamSortOrder$inboundSchema;
+> = z.nativeEnum(QueryParamSortOrder);
 
-/** @internal */
-export const QueryParamTags$inboundSchema: z.ZodType<
-  QueryParamTags,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([types.string(), z.array(types.string())]);
 /** @internal */
 export type QueryParamTags$Outbound = string | Array<string>;
 
@@ -133,32 +114,7 @@ export const QueryParamTags$outboundSchema: z.ZodType<
 export function queryParamTagsToJSON(queryParamTags: QueryParamTags): string {
   return JSON.stringify(QueryParamTags$outboundSchema.parse(queryParamTags));
 }
-export function queryParamTagsFromJSON(
-  jsonString: string,
-): SafeParseResult<QueryParamTags, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => QueryParamTags$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'QueryParamTags' from JSON`,
-  );
-}
 
-/** @internal */
-export const ListSandboxesRequest$inboundSchema: z.ZodType<
-  ListSandboxesRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  project: types.optional(types.string()),
-  limit: types.number().default(20),
-  sortBy: QueryParamSortBy$inboundSchema.default("createdAt"),
-  namePrefix: types.optional(types.string()),
-  cursor: types.optional(types.string()),
-  sortOrder: QueryParamSortOrder$inboundSchema.default("desc"),
-  tags: types.optional(smartUnion([types.string(), z.array(types.string())])),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
 /** @internal */
 export type ListSandboxesRequest$Outbound = {
   project?: string | undefined;
@@ -196,15 +152,6 @@ export function listSandboxesRequestToJSON(
     ListSandboxesRequest$outboundSchema.parse(listSandboxesRequest),
   );
 }
-export function listSandboxesRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<ListSandboxesRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ListSandboxesRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ListSandboxesRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const ListSandboxesPagination$inboundSchema: z.ZodType<
@@ -215,29 +162,7 @@ export const ListSandboxesPagination$inboundSchema: z.ZodType<
   count: types.number(),
   next: types.nullable(types.string()),
 });
-/** @internal */
-export type ListSandboxesPagination$Outbound = {
-  count: number;
-  next: string | null;
-};
 
-/** @internal */
-export const ListSandboxesPagination$outboundSchema: z.ZodType<
-  ListSandboxesPagination$Outbound,
-  z.ZodTypeDef,
-  ListSandboxesPagination
-> = z.object({
-  count: z.number(),
-  next: z.nullable(z.string()),
-});
-
-export function listSandboxesPaginationToJSON(
-  listSandboxesPagination: ListSandboxesPagination,
-): string {
-  return JSON.stringify(
-    ListSandboxesPagination$outboundSchema.parse(listSandboxesPagination),
-  );
-}
 export function listSandboxesPaginationFromJSON(
   jsonString: string,
 ): SafeParseResult<ListSandboxesPagination, SDKValidationError> {
@@ -257,29 +182,7 @@ export const ListSandboxesResponseBody$inboundSchema: z.ZodType<
   sandboxes: z.array(NamedSandbox$inboundSchema),
   pagination: z.lazy(() => ListSandboxesPagination$inboundSchema),
 });
-/** @internal */
-export type ListSandboxesResponseBody$Outbound = {
-  sandboxes: Array<NamedSandbox$Outbound>;
-  pagination: ListSandboxesPagination$Outbound;
-};
 
-/** @internal */
-export const ListSandboxesResponseBody$outboundSchema: z.ZodType<
-  ListSandboxesResponseBody$Outbound,
-  z.ZodTypeDef,
-  ListSandboxesResponseBody
-> = z.object({
-  sandboxes: z.array(NamedSandbox$outboundSchema),
-  pagination: z.lazy(() => ListSandboxesPagination$outboundSchema),
-});
-
-export function listSandboxesResponseBodyToJSON(
-  listSandboxesResponseBody: ListSandboxesResponseBody,
-): string {
-  return JSON.stringify(
-    ListSandboxesResponseBody$outboundSchema.parse(listSandboxesResponseBody),
-  );
-}
 export function listSandboxesResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<ListSandboxesResponseBody, SDKValidationError> {

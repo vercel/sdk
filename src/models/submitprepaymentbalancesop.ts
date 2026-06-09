@@ -4,10 +4,6 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
-import { Result as SafeParseResult } from "../types/fp.js";
-import * as types from "../types/primitives.js";
-import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
  * A credit balance for a particular token type
@@ -45,17 +41,6 @@ export type SubmitPrepaymentBalancesRequest = {
 };
 
 /** @internal */
-export const Balances$inboundSchema: z.ZodType<
-  Balances,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  resourceId: types.optional(types.string()),
-  credit: types.optional(types.string()),
-  nameLabel: types.optional(types.string()),
-  currencyValueInCents: types.number(),
-});
-/** @internal */
 export type Balances$Outbound = {
   resourceId?: string | undefined;
   credit?: string | undefined;
@@ -78,25 +63,7 @@ export const Balances$outboundSchema: z.ZodType<
 export function balancesToJSON(balances: Balances): string {
   return JSON.stringify(Balances$outboundSchema.parse(balances));
 }
-export function balancesFromJSON(
-  jsonString: string,
-): SafeParseResult<Balances, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Balances$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Balances' from JSON`,
-  );
-}
 
-/** @internal */
-export const SubmitPrepaymentBalancesRequestBody$inboundSchema: z.ZodType<
-  SubmitPrepaymentBalancesRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  timestamp: types.date(),
-  balances: z.array(z.lazy(() => Balances$inboundSchema)),
-});
 /** @internal */
 export type SubmitPrepaymentBalancesRequestBody$Outbound = {
   timestamp: string;
@@ -122,32 +89,7 @@ export function submitPrepaymentBalancesRequestBodyToJSON(
     ),
   );
 }
-export function submitPrepaymentBalancesRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<SubmitPrepaymentBalancesRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      SubmitPrepaymentBalancesRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'SubmitPrepaymentBalancesRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const SubmitPrepaymentBalancesRequest$inboundSchema: z.ZodType<
-  SubmitPrepaymentBalancesRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  integrationConfigurationId: types.string(),
-  RequestBody: types.optional(
-    z.lazy(() => SubmitPrepaymentBalancesRequestBody$inboundSchema),
-  ),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 /** @internal */
 export type SubmitPrepaymentBalancesRequest$Outbound = {
   integrationConfigurationId: string;
@@ -176,14 +118,5 @@ export function submitPrepaymentBalancesRequestToJSON(
     SubmitPrepaymentBalancesRequest$outboundSchema.parse(
       submitPrepaymentBalancesRequest,
     ),
-  );
-}
-export function submitPrepaymentBalancesRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<SubmitPrepaymentBalancesRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => SubmitPrepaymentBalancesRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'SubmitPrepaymentBalancesRequest' from JSON`,
   );
 }

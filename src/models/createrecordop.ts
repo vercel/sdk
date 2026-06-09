@@ -513,24 +513,10 @@ export type CreateRecordResponseBody =
   | CreateRecordResponseBody2;
 
 /** @internal */
-export const CreateRecordRequestBodyDnsRequest10Type$inboundSchema:
+export const CreateRecordRequestBodyDnsRequest10Type$outboundSchema:
   z.ZodNativeEnum<typeof CreateRecordRequestBodyDnsRequest10Type> = z
     .nativeEnum(CreateRecordRequestBodyDnsRequest10Type);
-/** @internal */
-export const CreateRecordRequestBodyDnsRequest10Type$outboundSchema:
-  z.ZodNativeEnum<typeof CreateRecordRequestBodyDnsRequest10Type> =
-    CreateRecordRequestBodyDnsRequest10Type$inboundSchema;
 
-/** @internal */
-export const RequestBodyHttps$inboundSchema: z.ZodType<
-  RequestBodyHttps,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  priority: types.nullable(types.number()),
-  target: types.string(),
-  params: types.optional(types.string()),
-});
 /** @internal */
 export type RequestBodyHttps$Outbound = {
   priority: number | null;
@@ -556,27 +542,7 @@ export function requestBodyHttpsToJSON(
     RequestBodyHttps$outboundSchema.parse(requestBodyHttps),
   );
 }
-export function requestBodyHttpsFromJSON(
-  jsonString: string,
-): SafeParseResult<RequestBodyHttps, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RequestBodyHttps$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RequestBodyHttps' from JSON`,
-  );
-}
 
-/** @internal */
-export const RequestBody10$inboundSchema: z.ZodType<
-  RequestBody10,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  type: CreateRecordRequestBodyDnsRequest10Type$inboundSchema,
-  ttl: types.optional(types.number()),
-  https: z.lazy(() => RequestBodyHttps$inboundSchema),
-  comment: types.optional(types.string()),
-});
 /** @internal */
 export type RequestBody10$Outbound = {
   type: string;
@@ -600,38 +566,13 @@ export const RequestBody10$outboundSchema: z.ZodType<
 export function requestBody10ToJSON(requestBody10: RequestBody10): string {
   return JSON.stringify(RequestBody10$outboundSchema.parse(requestBody10));
 }
-export function requestBody10FromJSON(
-  jsonString: string,
-): SafeParseResult<RequestBody10, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RequestBody10$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RequestBody10' from JSON`,
-  );
-}
 
 /** @internal */
-export const CreateRecordRequestBodyDnsRequest9Type$inboundSchema:
+export const CreateRecordRequestBodyDnsRequest9Type$outboundSchema:
   z.ZodNativeEnum<typeof CreateRecordRequestBodyDnsRequest9Type> = z.nativeEnum(
     CreateRecordRequestBodyDnsRequest9Type,
   );
-/** @internal */
-export const CreateRecordRequestBodyDnsRequest9Type$outboundSchema:
-  z.ZodNativeEnum<typeof CreateRecordRequestBodyDnsRequest9Type> =
-    CreateRecordRequestBodyDnsRequest9Type$inboundSchema;
 
-/** @internal */
-export const RequestBody9$inboundSchema: z.ZodType<
-  RequestBody9,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  name: types.string(),
-  type: CreateRecordRequestBodyDnsRequest9Type$inboundSchema,
-  ttl: types.optional(types.number()),
-  value: types.optional(types.string()),
-  comment: types.optional(types.string()),
-});
 /** @internal */
 export type RequestBody9$Outbound = {
   name: string;
@@ -657,37 +598,13 @@ export const RequestBody9$outboundSchema: z.ZodType<
 export function requestBody9ToJSON(requestBody9: RequestBody9): string {
   return JSON.stringify(RequestBody9$outboundSchema.parse(requestBody9));
 }
-export function requestBody9FromJSON(
-  jsonString: string,
-): SafeParseResult<RequestBody9, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RequestBody9$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RequestBody9' from JSON`,
-  );
-}
 
 /** @internal */
-export const CreateRecordRequestBodyDnsRequest8Type$inboundSchema:
+export const CreateRecordRequestBodyDnsRequest8Type$outboundSchema:
   z.ZodNativeEnum<typeof CreateRecordRequestBodyDnsRequest8Type> = z.nativeEnum(
     CreateRecordRequestBodyDnsRequest8Type,
   );
-/** @internal */
-export const CreateRecordRequestBodyDnsRequest8Type$outboundSchema:
-  z.ZodNativeEnum<typeof CreateRecordRequestBodyDnsRequest8Type> =
-    CreateRecordRequestBodyDnsRequest8Type$inboundSchema;
 
-/** @internal */
-export const RequestBody8$inboundSchema: z.ZodType<
-  RequestBody8,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  type: CreateRecordRequestBodyDnsRequest8Type$inboundSchema,
-  ttl: types.optional(types.number()),
-  value: types.string(),
-  comment: types.optional(types.string()),
-});
 /** @internal */
 export type RequestBody8$Outbound = {
   type: string;
@@ -711,37 +628,13 @@ export const RequestBody8$outboundSchema: z.ZodType<
 export function requestBody8ToJSON(requestBody8: RequestBody8): string {
   return JSON.stringify(RequestBody8$outboundSchema.parse(requestBody8));
 }
-export function requestBody8FromJSON(
-  jsonString: string,
-): SafeParseResult<RequestBody8, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RequestBody8$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RequestBody8' from JSON`,
-  );
-}
 
 /** @internal */
-export const CreateRecordRequestBodyDnsRequest7Type$inboundSchema:
+export const CreateRecordRequestBodyDnsRequest7Type$outboundSchema:
   z.ZodNativeEnum<typeof CreateRecordRequestBodyDnsRequest7Type> = z.nativeEnum(
     CreateRecordRequestBodyDnsRequest7Type,
   );
-/** @internal */
-export const CreateRecordRequestBodyDnsRequest7Type$outboundSchema:
-  z.ZodNativeEnum<typeof CreateRecordRequestBodyDnsRequest7Type> =
-    CreateRecordRequestBodyDnsRequest7Type$inboundSchema;
 
-/** @internal */
-export const RequestBodySrv$inboundSchema: z.ZodType<
-  RequestBodySrv,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  priority: types.nullable(types.number()),
-  weight: types.nullable(types.number()),
-  port: types.nullable(types.number()),
-  target: types.string(),
-});
 /** @internal */
 export type RequestBodySrv$Outbound = {
   priority: number | null;
@@ -765,27 +658,7 @@ export const RequestBodySrv$outboundSchema: z.ZodType<
 export function requestBodySrvToJSON(requestBodySrv: RequestBodySrv): string {
   return JSON.stringify(RequestBodySrv$outboundSchema.parse(requestBodySrv));
 }
-export function requestBodySrvFromJSON(
-  jsonString: string,
-): SafeParseResult<RequestBodySrv, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RequestBodySrv$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RequestBodySrv' from JSON`,
-  );
-}
 
-/** @internal */
-export const RequestBody7$inboundSchema: z.ZodType<
-  RequestBody7,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  type: CreateRecordRequestBodyDnsRequest7Type$inboundSchema,
-  ttl: types.optional(types.number()),
-  srv: z.lazy(() => RequestBodySrv$inboundSchema),
-  comment: types.optional(types.string()),
-});
 /** @internal */
 export type RequestBody7$Outbound = {
   type: string;
@@ -809,39 +682,13 @@ export const RequestBody7$outboundSchema: z.ZodType<
 export function requestBody7ToJSON(requestBody7: RequestBody7): string {
   return JSON.stringify(RequestBody7$outboundSchema.parse(requestBody7));
 }
-export function requestBody7FromJSON(
-  jsonString: string,
-): SafeParseResult<RequestBody7, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RequestBody7$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RequestBody7' from JSON`,
-  );
-}
 
 /** @internal */
-export const CreateRecordRequestBodyDnsRequest6Type$inboundSchema:
+export const CreateRecordRequestBodyDnsRequest6Type$outboundSchema:
   z.ZodNativeEnum<typeof CreateRecordRequestBodyDnsRequest6Type> = z.nativeEnum(
     CreateRecordRequestBodyDnsRequest6Type,
   );
-/** @internal */
-export const CreateRecordRequestBodyDnsRequest6Type$outboundSchema:
-  z.ZodNativeEnum<typeof CreateRecordRequestBodyDnsRequest6Type> =
-    CreateRecordRequestBodyDnsRequest6Type$inboundSchema;
 
-/** @internal */
-export const RequestBody6$inboundSchema: z.ZodType<
-  RequestBody6,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  name: types.string(),
-  type: CreateRecordRequestBodyDnsRequest6Type$inboundSchema,
-  ttl: types.optional(types.number()),
-  value: types.string(),
-  mxPriority: types.number(),
-  comment: types.optional(types.string()),
-});
 /** @internal */
 export type RequestBody6$Outbound = {
   name: string;
@@ -869,38 +716,13 @@ export const RequestBody6$outboundSchema: z.ZodType<
 export function requestBody6ToJSON(requestBody6: RequestBody6): string {
   return JSON.stringify(RequestBody6$outboundSchema.parse(requestBody6));
 }
-export function requestBody6FromJSON(
-  jsonString: string,
-): SafeParseResult<RequestBody6, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RequestBody6$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RequestBody6' from JSON`,
-  );
-}
 
 /** @internal */
-export const CreateRecordRequestBodyDnsRequest5Type$inboundSchema:
+export const CreateRecordRequestBodyDnsRequest5Type$outboundSchema:
   z.ZodNativeEnum<typeof CreateRecordRequestBodyDnsRequest5Type> = z.nativeEnum(
     CreateRecordRequestBodyDnsRequest5Type,
   );
-/** @internal */
-export const CreateRecordRequestBodyDnsRequest5Type$outboundSchema:
-  z.ZodNativeEnum<typeof CreateRecordRequestBodyDnsRequest5Type> =
-    CreateRecordRequestBodyDnsRequest5Type$inboundSchema;
 
-/** @internal */
-export const RequestBody5$inboundSchema: z.ZodType<
-  RequestBody5,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  name: types.string(),
-  type: CreateRecordRequestBodyDnsRequest5Type$inboundSchema,
-  ttl: types.optional(types.number()),
-  value: types.optional(types.string()),
-  comment: types.optional(types.string()),
-});
 /** @internal */
 export type RequestBody5$Outbound = {
   name: string;
@@ -926,38 +748,13 @@ export const RequestBody5$outboundSchema: z.ZodType<
 export function requestBody5ToJSON(requestBody5: RequestBody5): string {
   return JSON.stringify(RequestBody5$outboundSchema.parse(requestBody5));
 }
-export function requestBody5FromJSON(
-  jsonString: string,
-): SafeParseResult<RequestBody5, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RequestBody5$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RequestBody5' from JSON`,
-  );
-}
 
 /** @internal */
-export const CreateRecordRequestBodyDnsRequestType$inboundSchema:
+export const CreateRecordRequestBodyDnsRequestType$outboundSchema:
   z.ZodNativeEnum<typeof CreateRecordRequestBodyDnsRequestType> = z.nativeEnum(
     CreateRecordRequestBodyDnsRequestType,
   );
-/** @internal */
-export const CreateRecordRequestBodyDnsRequestType$outboundSchema:
-  z.ZodNativeEnum<typeof CreateRecordRequestBodyDnsRequestType> =
-    CreateRecordRequestBodyDnsRequestType$inboundSchema;
 
-/** @internal */
-export const RequestBody4$inboundSchema: z.ZodType<
-  RequestBody4,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  name: types.string(),
-  type: CreateRecordRequestBodyDnsRequestType$inboundSchema,
-  ttl: types.optional(types.number()),
-  value: types.string(),
-  comment: types.optional(types.string()),
-});
 /** @internal */
 export type RequestBody4$Outbound = {
   name: string;
@@ -983,37 +780,12 @@ export const RequestBody4$outboundSchema: z.ZodType<
 export function requestBody4ToJSON(requestBody4: RequestBody4): string {
   return JSON.stringify(RequestBody4$outboundSchema.parse(requestBody4));
 }
-export function requestBody4FromJSON(
-  jsonString: string,
-): SafeParseResult<RequestBody4, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RequestBody4$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RequestBody4' from JSON`,
-  );
-}
 
-/** @internal */
-export const CreateRecordRequestBodyDnsType$inboundSchema: z.ZodNativeEnum<
-  typeof CreateRecordRequestBodyDnsType
-> = z.nativeEnum(CreateRecordRequestBodyDnsType);
 /** @internal */
 export const CreateRecordRequestBodyDnsType$outboundSchema: z.ZodNativeEnum<
   typeof CreateRecordRequestBodyDnsType
-> = CreateRecordRequestBodyDnsType$inboundSchema;
+> = z.nativeEnum(CreateRecordRequestBodyDnsType);
 
-/** @internal */
-export const RequestBody3$inboundSchema: z.ZodType<
-  RequestBody3,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  name: types.string(),
-  type: CreateRecordRequestBodyDnsType$inboundSchema,
-  ttl: types.optional(types.number()),
-  value: types.string(),
-  comment: types.optional(types.string()),
-});
 /** @internal */
 export type RequestBody3$Outbound = {
   name: string;
@@ -1039,37 +811,12 @@ export const RequestBody3$outboundSchema: z.ZodType<
 export function requestBody3ToJSON(requestBody3: RequestBody3): string {
   return JSON.stringify(RequestBody3$outboundSchema.parse(requestBody3));
 }
-export function requestBody3FromJSON(
-  jsonString: string,
-): SafeParseResult<RequestBody3, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RequestBody3$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RequestBody3' from JSON`,
-  );
-}
 
-/** @internal */
-export const CreateRecordRequestBodyType$inboundSchema: z.ZodNativeEnum<
-  typeof CreateRecordRequestBodyType
-> = z.nativeEnum(CreateRecordRequestBodyType);
 /** @internal */
 export const CreateRecordRequestBodyType$outboundSchema: z.ZodNativeEnum<
   typeof CreateRecordRequestBodyType
-> = CreateRecordRequestBodyType$inboundSchema;
+> = z.nativeEnum(CreateRecordRequestBodyType);
 
-/** @internal */
-export const RequestBody2$inboundSchema: z.ZodType<
-  RequestBody2,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  name: types.string(),
-  type: CreateRecordRequestBodyType$inboundSchema,
-  ttl: types.optional(types.number()),
-  value: types.string(),
-  comment: types.optional(types.string()),
-});
 /** @internal */
 export type RequestBody2$Outbound = {
   name: string;
@@ -1095,37 +842,12 @@ export const RequestBody2$outboundSchema: z.ZodType<
 export function requestBody2ToJSON(requestBody2: RequestBody2): string {
   return JSON.stringify(RequestBody2$outboundSchema.parse(requestBody2));
 }
-export function requestBody2FromJSON(
-  jsonString: string,
-): SafeParseResult<RequestBody2, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RequestBody2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RequestBody2' from JSON`,
-  );
-}
 
-/** @internal */
-export const RequestBodyType$inboundSchema: z.ZodNativeEnum<
-  typeof RequestBodyType
-> = z.nativeEnum(RequestBodyType);
 /** @internal */
 export const RequestBodyType$outboundSchema: z.ZodNativeEnum<
   typeof RequestBodyType
-> = RequestBodyType$inboundSchema;
+> = z.nativeEnum(RequestBodyType);
 
-/** @internal */
-export const RequestBody1$inboundSchema: z.ZodType<
-  RequestBody1,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  name: types.string(),
-  type: RequestBodyType$inboundSchema,
-  ttl: types.optional(types.number()),
-  value: types.string(),
-  comment: types.optional(types.string()),
-});
 /** @internal */
 export type RequestBody1$Outbound = {
   name: string;
@@ -1151,33 +873,7 @@ export const RequestBody1$outboundSchema: z.ZodType<
 export function requestBody1ToJSON(requestBody1: RequestBody1): string {
   return JSON.stringify(RequestBody1$outboundSchema.parse(requestBody1));
 }
-export function requestBody1FromJSON(
-  jsonString: string,
-): SafeParseResult<RequestBody1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RequestBody1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RequestBody1' from JSON`,
-  );
-}
 
-/** @internal */
-export const CreateRecordRequestBody$inboundSchema: z.ZodType<
-  CreateRecordRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([
-  z.lazy(() => RequestBody6$inboundSchema),
-  z.lazy(() => RequestBody1$inboundSchema),
-  z.lazy(() => RequestBody2$inboundSchema),
-  z.lazy(() => RequestBody3$inboundSchema),
-  z.lazy(() => RequestBody4$inboundSchema),
-  z.lazy(() => RequestBody5$inboundSchema),
-  z.lazy(() => RequestBody7$inboundSchema),
-  z.lazy(() => RequestBody8$inboundSchema),
-  z.lazy(() => RequestBody9$inboundSchema),
-  z.lazy(() => RequestBody10$inboundSchema),
-]);
 /** @internal */
 export type CreateRecordRequestBody$Outbound =
   | RequestBody6$Outbound
@@ -1216,42 +912,7 @@ export function createRecordRequestBodyToJSON(
     CreateRecordRequestBody$outboundSchema.parse(createRecordRequestBody),
   );
 }
-export function createRecordRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateRecordRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateRecordRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateRecordRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const CreateRecordRequest$inboundSchema: z.ZodType<
-  CreateRecordRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  domain: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-  RequestBody: smartUnion([
-    z.lazy(() => RequestBody6$inboundSchema),
-    z.lazy(() => RequestBody1$inboundSchema),
-    z.lazy(() => RequestBody2$inboundSchema),
-    z.lazy(() => RequestBody3$inboundSchema),
-    z.lazy(() => RequestBody4$inboundSchema),
-    z.lazy(() => RequestBody5$inboundSchema),
-    z.lazy(() => RequestBody7$inboundSchema),
-    z.lazy(() => RequestBody8$inboundSchema),
-    z.lazy(() => RequestBody9$inboundSchema),
-    z.lazy(() => RequestBody10$inboundSchema),
-  ]),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 /** @internal */
 export type CreateRecordRequest$Outbound = {
   domain: string;
@@ -1304,15 +965,6 @@ export function createRecordRequestToJSON(
     CreateRecordRequest$outboundSchema.parse(createRecordRequest),
   );
 }
-export function createRecordRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateRecordRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateRecordRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateRecordRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const CreateRecordResponseBody2$inboundSchema: z.ZodType<
@@ -1322,27 +974,7 @@ export const CreateRecordResponseBody2$inboundSchema: z.ZodType<
 > = z.object({
   uid: types.string(),
 });
-/** @internal */
-export type CreateRecordResponseBody2$Outbound = {
-  uid: string;
-};
 
-/** @internal */
-export const CreateRecordResponseBody2$outboundSchema: z.ZodType<
-  CreateRecordResponseBody2$Outbound,
-  z.ZodTypeDef,
-  CreateRecordResponseBody2
-> = z.object({
-  uid: z.string(),
-});
-
-export function createRecordResponseBody2ToJSON(
-  createRecordResponseBody2: CreateRecordResponseBody2,
-): string {
-  return JSON.stringify(
-    CreateRecordResponseBody2$outboundSchema.parse(createRecordResponseBody2),
-  );
-}
 export function createRecordResponseBody2FromJSON(
   jsonString: string,
 ): SafeParseResult<CreateRecordResponseBody2, SDKValidationError> {
@@ -1362,29 +994,7 @@ export const CreateRecordResponseBody1$inboundSchema: z.ZodType<
   uid: types.string(),
   updated: types.number(),
 });
-/** @internal */
-export type CreateRecordResponseBody1$Outbound = {
-  uid: string;
-  updated: number;
-};
 
-/** @internal */
-export const CreateRecordResponseBody1$outboundSchema: z.ZodType<
-  CreateRecordResponseBody1$Outbound,
-  z.ZodTypeDef,
-  CreateRecordResponseBody1
-> = z.object({
-  uid: z.string(),
-  updated: z.number(),
-});
-
-export function createRecordResponseBody1ToJSON(
-  createRecordResponseBody1: CreateRecordResponseBody1,
-): string {
-  return JSON.stringify(
-    CreateRecordResponseBody1$outboundSchema.parse(createRecordResponseBody1),
-  );
-}
 export function createRecordResponseBody1FromJSON(
   jsonString: string,
 ): SafeParseResult<CreateRecordResponseBody1, SDKValidationError> {
@@ -1404,28 +1014,7 @@ export const CreateRecordResponseBody$inboundSchema: z.ZodType<
   z.lazy(() => CreateRecordResponseBody1$inboundSchema),
   z.lazy(() => CreateRecordResponseBody2$inboundSchema),
 ]);
-/** @internal */
-export type CreateRecordResponseBody$Outbound =
-  | CreateRecordResponseBody1$Outbound
-  | CreateRecordResponseBody2$Outbound;
 
-/** @internal */
-export const CreateRecordResponseBody$outboundSchema: z.ZodType<
-  CreateRecordResponseBody$Outbound,
-  z.ZodTypeDef,
-  CreateRecordResponseBody
-> = smartUnion([
-  z.lazy(() => CreateRecordResponseBody1$outboundSchema),
-  z.lazy(() => CreateRecordResponseBody2$outboundSchema),
-]);
-
-export function createRecordResponseBodyToJSON(
-  createRecordResponseBody: CreateRecordResponseBody,
-): string {
-  return JSON.stringify(
-    CreateRecordResponseBody$outboundSchema.parse(createRecordResponseBody),
-  );
-}
 export function createRecordResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateRecordResponseBody, SDKValidationError> {

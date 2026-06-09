@@ -67,18 +67,6 @@ export type ListAccessGroupProjectsResponseBody = {
 };
 
 /** @internal */
-export const ListAccessGroupProjectsRequest$inboundSchema: z.ZodType<
-  ListAccessGroupProjectsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  idOrName: types.string(),
-  limit: types.optional(types.number()),
-  next: types.optional(types.string()),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
-/** @internal */
 export type ListAccessGroupProjectsRequest$Outbound = {
   idOrName: string;
   limit?: number | undefined;
@@ -109,24 +97,11 @@ export function listAccessGroupProjectsRequestToJSON(
     ),
   );
 }
-export function listAccessGroupProjectsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<ListAccessGroupProjectsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ListAccessGroupProjectsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ListAccessGroupProjectsRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const ListAccessGroupProjectsRole$inboundSchema: z.ZodNativeEnum<
   typeof ListAccessGroupProjectsRole
 > = z.nativeEnum(ListAccessGroupProjectsRole);
-/** @internal */
-export const ListAccessGroupProjectsRole$outboundSchema: z.ZodNativeEnum<
-  typeof ListAccessGroupProjectsRole
-> = ListAccessGroupProjectsRole$inboundSchema;
 
 /** @internal */
 export const ListAccessGroupProjectsProject$inboundSchema: z.ZodType<
@@ -138,33 +113,7 @@ export const ListAccessGroupProjectsProject$inboundSchema: z.ZodType<
   framework: z.nullable(types.string()).optional(),
   latestDeploymentId: types.optional(types.string()),
 });
-/** @internal */
-export type ListAccessGroupProjectsProject$Outbound = {
-  name?: string | undefined;
-  framework?: string | null | undefined;
-  latestDeploymentId?: string | undefined;
-};
 
-/** @internal */
-export const ListAccessGroupProjectsProject$outboundSchema: z.ZodType<
-  ListAccessGroupProjectsProject$Outbound,
-  z.ZodTypeDef,
-  ListAccessGroupProjectsProject
-> = z.object({
-  name: z.string().optional(),
-  framework: z.nullable(z.string()).optional(),
-  latestDeploymentId: z.string().optional(),
-});
-
-export function listAccessGroupProjectsProjectToJSON(
-  listAccessGroupProjectsProject: ListAccessGroupProjectsProject,
-): string {
-  return JSON.stringify(
-    ListAccessGroupProjectsProject$outboundSchema.parse(
-      listAccessGroupProjectsProject,
-    ),
-  );
-}
 export function listAccessGroupProjectsProjectFromJSON(
   jsonString: string,
 ): SafeParseResult<ListAccessGroupProjectsProject, SDKValidationError> {
@@ -187,37 +136,7 @@ export const ListAccessGroupProjectsProjects$inboundSchema: z.ZodType<
   updatedAt: types.string(),
   project: z.lazy(() => ListAccessGroupProjectsProject$inboundSchema),
 });
-/** @internal */
-export type ListAccessGroupProjectsProjects$Outbound = {
-  projectId: string;
-  role: string;
-  createdAt: string;
-  updatedAt: string;
-  project: ListAccessGroupProjectsProject$Outbound;
-};
 
-/** @internal */
-export const ListAccessGroupProjectsProjects$outboundSchema: z.ZodType<
-  ListAccessGroupProjectsProjects$Outbound,
-  z.ZodTypeDef,
-  ListAccessGroupProjectsProjects
-> = z.object({
-  projectId: z.string(),
-  role: ListAccessGroupProjectsRole$outboundSchema,
-  createdAt: z.string(),
-  updatedAt: z.string(),
-  project: z.lazy(() => ListAccessGroupProjectsProject$outboundSchema),
-});
-
-export function listAccessGroupProjectsProjectsToJSON(
-  listAccessGroupProjectsProjects: ListAccessGroupProjectsProjects,
-): string {
-  return JSON.stringify(
-    ListAccessGroupProjectsProjects$outboundSchema.parse(
-      listAccessGroupProjectsProjects,
-    ),
-  );
-}
 export function listAccessGroupProjectsProjectsFromJSON(
   jsonString: string,
 ): SafeParseResult<ListAccessGroupProjectsProjects, SDKValidationError> {
@@ -237,31 +156,7 @@ export const ListAccessGroupProjectsPagination$inboundSchema: z.ZodType<
   count: types.number(),
   next: types.nullable(types.string()),
 });
-/** @internal */
-export type ListAccessGroupProjectsPagination$Outbound = {
-  count: number;
-  next: string | null;
-};
 
-/** @internal */
-export const ListAccessGroupProjectsPagination$outboundSchema: z.ZodType<
-  ListAccessGroupProjectsPagination$Outbound,
-  z.ZodTypeDef,
-  ListAccessGroupProjectsPagination
-> = z.object({
-  count: z.number(),
-  next: z.nullable(z.string()),
-});
-
-export function listAccessGroupProjectsPaginationToJSON(
-  listAccessGroupProjectsPagination: ListAccessGroupProjectsPagination,
-): string {
-  return JSON.stringify(
-    ListAccessGroupProjectsPagination$outboundSchema.parse(
-      listAccessGroupProjectsPagination,
-    ),
-  );
-}
 export function listAccessGroupProjectsPaginationFromJSON(
   jsonString: string,
 ): SafeParseResult<ListAccessGroupProjectsPagination, SDKValidationError> {
@@ -283,33 +178,7 @@ export const ListAccessGroupProjectsResponseBody$inboundSchema: z.ZodType<
   ),
   pagination: z.lazy(() => ListAccessGroupProjectsPagination$inboundSchema),
 });
-/** @internal */
-export type ListAccessGroupProjectsResponseBody$Outbound = {
-  projects: Array<ListAccessGroupProjectsProjects$Outbound>;
-  pagination: ListAccessGroupProjectsPagination$Outbound;
-};
 
-/** @internal */
-export const ListAccessGroupProjectsResponseBody$outboundSchema: z.ZodType<
-  ListAccessGroupProjectsResponseBody$Outbound,
-  z.ZodTypeDef,
-  ListAccessGroupProjectsResponseBody
-> = z.object({
-  projects: z.array(
-    z.lazy(() => ListAccessGroupProjectsProjects$outboundSchema),
-  ),
-  pagination: z.lazy(() => ListAccessGroupProjectsPagination$outboundSchema),
-});
-
-export function listAccessGroupProjectsResponseBodyToJSON(
-  listAccessGroupProjectsResponseBody: ListAccessGroupProjectsResponseBody,
-): string {
-  return JSON.stringify(
-    ListAccessGroupProjectsResponseBody$outboundSchema.parse(
-      listAccessGroupProjectsResponseBody,
-    ),
-  );
-}
 export function listAccessGroupProjectsResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<ListAccessGroupProjectsResponseBody, SDKValidationError> {

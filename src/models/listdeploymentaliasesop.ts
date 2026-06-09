@@ -121,16 +121,6 @@ export type ListDeploymentAliasesResponseBody = {
 };
 
 /** @internal */
-export const ListDeploymentAliasesRequest$inboundSchema: z.ZodType<
-  ListDeploymentAliasesRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
-/** @internal */
 export type ListDeploymentAliasesRequest$Outbound = {
   id: string;
   teamId?: string | undefined;
@@ -157,15 +147,6 @@ export function listDeploymentAliasesRequestToJSON(
     ),
   );
 }
-export function listDeploymentAliasesRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<ListDeploymentAliasesRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ListDeploymentAliasesRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ListDeploymentAliasesRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const ListDeploymentAliasesProtectionBypass4$inboundSchema: z.ZodType<
@@ -178,36 +159,7 @@ export const ListDeploymentAliasesProtectionBypass4$inboundSchema: z.ZodType<
   lastUpdatedBy: types.string(),
   scope: types.literal("email_invite"),
 });
-/** @internal */
-export type ListDeploymentAliasesProtectionBypass4$Outbound = {
-  createdAt: number;
-  lastUpdatedAt: number;
-  lastUpdatedBy: string;
-  scope: "email_invite";
-};
 
-/** @internal */
-export const ListDeploymentAliasesProtectionBypass4$outboundSchema: z.ZodType<
-  ListDeploymentAliasesProtectionBypass4$Outbound,
-  z.ZodTypeDef,
-  ListDeploymentAliasesProtectionBypass4
-> = z.object({
-  createdAt: z.number(),
-  lastUpdatedAt: z.number(),
-  lastUpdatedBy: z.string(),
-  scope: z.literal("email_invite"),
-});
-
-export function listDeploymentAliasesProtectionBypass4ToJSON(
-  listDeploymentAliasesProtectionBypass4:
-    ListDeploymentAliasesProtectionBypass4,
-): string {
-  return JSON.stringify(
-    ListDeploymentAliasesProtectionBypass4$outboundSchema.parse(
-      listDeploymentAliasesProtectionBypass4,
-    ),
-  );
-}
 export function listDeploymentAliasesProtectionBypass4FromJSON(
   jsonString: string,
 ): SafeParseResult<ListDeploymentAliasesProtectionBypass4, SDKValidationError> {
@@ -229,34 +181,7 @@ export const ListDeploymentAliasesProtectionBypass3$inboundSchema: z.ZodType<
   createdBy: types.string(),
   scope: types.literal("alias-protection-override"),
 });
-/** @internal */
-export type ListDeploymentAliasesProtectionBypass3$Outbound = {
-  createdAt: number;
-  createdBy: string;
-  scope: "alias-protection-override";
-};
 
-/** @internal */
-export const ListDeploymentAliasesProtectionBypass3$outboundSchema: z.ZodType<
-  ListDeploymentAliasesProtectionBypass3$Outbound,
-  z.ZodTypeDef,
-  ListDeploymentAliasesProtectionBypass3
-> = z.object({
-  createdAt: z.number(),
-  createdBy: z.string(),
-  scope: z.literal("alias-protection-override"),
-});
-
-export function listDeploymentAliasesProtectionBypass3ToJSON(
-  listDeploymentAliasesProtectionBypass3:
-    ListDeploymentAliasesProtectionBypass3,
-): string {
-  return JSON.stringify(
-    ListDeploymentAliasesProtectionBypass3$outboundSchema.parse(
-      listDeploymentAliasesProtectionBypass3,
-    ),
-  );
-}
 export function listDeploymentAliasesProtectionBypass3FromJSON(
   jsonString: string,
 ): SafeParseResult<ListDeploymentAliasesProtectionBypass3, SDKValidationError> {
@@ -272,10 +197,6 @@ export function listDeploymentAliasesProtectionBypass3FromJSON(
 export const ListDeploymentAliasesProtectionBypassAccess$inboundSchema:
   z.ZodNativeEnum<typeof ListDeploymentAliasesProtectionBypassAccess> = z
     .nativeEnum(ListDeploymentAliasesProtectionBypassAccess);
-/** @internal */
-export const ListDeploymentAliasesProtectionBypassAccess$outboundSchema:
-  z.ZodNativeEnum<typeof ListDeploymentAliasesProtectionBypassAccess> =
-    ListDeploymentAliasesProtectionBypassAccess$inboundSchema;
 
 /** @internal */
 export const ListDeploymentAliasesProtectionBypass2$inboundSchema: z.ZodType<
@@ -289,38 +210,7 @@ export const ListDeploymentAliasesProtectionBypass2$inboundSchema: z.ZodType<
   access: ListDeploymentAliasesProtectionBypassAccess$inboundSchema,
   scope: types.literal("user"),
 });
-/** @internal */
-export type ListDeploymentAliasesProtectionBypass2$Outbound = {
-  createdAt: number;
-  lastUpdatedAt: number;
-  lastUpdatedBy: string;
-  access: string;
-  scope: "user";
-};
 
-/** @internal */
-export const ListDeploymentAliasesProtectionBypass2$outboundSchema: z.ZodType<
-  ListDeploymentAliasesProtectionBypass2$Outbound,
-  z.ZodTypeDef,
-  ListDeploymentAliasesProtectionBypass2
-> = z.object({
-  createdAt: z.number(),
-  lastUpdatedAt: z.number(),
-  lastUpdatedBy: z.string(),
-  access: ListDeploymentAliasesProtectionBypassAccess$outboundSchema,
-  scope: z.literal("user"),
-});
-
-export function listDeploymentAliasesProtectionBypass2ToJSON(
-  listDeploymentAliasesProtectionBypass2:
-    ListDeploymentAliasesProtectionBypass2,
-): string {
-  return JSON.stringify(
-    ListDeploymentAliasesProtectionBypass2$outboundSchema.parse(
-      listDeploymentAliasesProtectionBypass2,
-    ),
-  );
-}
 export function listDeploymentAliasesProtectionBypass2FromJSON(
   jsonString: string,
 ): SafeParseResult<ListDeploymentAliasesProtectionBypass2, SDKValidationError> {
@@ -343,36 +233,7 @@ export const ListDeploymentAliasesProtectionBypass1$inboundSchema: z.ZodType<
   scope: types.literal("shareable-link"),
   expires: types.optional(types.number()),
 });
-/** @internal */
-export type ListDeploymentAliasesProtectionBypass1$Outbound = {
-  createdAt: number;
-  createdBy: string;
-  scope: "shareable-link";
-  expires?: number | undefined;
-};
 
-/** @internal */
-export const ListDeploymentAliasesProtectionBypass1$outboundSchema: z.ZodType<
-  ListDeploymentAliasesProtectionBypass1$Outbound,
-  z.ZodTypeDef,
-  ListDeploymentAliasesProtectionBypass1
-> = z.object({
-  createdAt: z.number(),
-  createdBy: z.string(),
-  scope: z.literal("shareable-link"),
-  expires: z.number().optional(),
-});
-
-export function listDeploymentAliasesProtectionBypass1ToJSON(
-  listDeploymentAliasesProtectionBypass1:
-    ListDeploymentAliasesProtectionBypass1,
-): string {
-  return JSON.stringify(
-    ListDeploymentAliasesProtectionBypass1$outboundSchema.parse(
-      listDeploymentAliasesProtectionBypass1,
-    ),
-  );
-}
 export function listDeploymentAliasesProtectionBypass1FromJSON(
   jsonString: string,
 ): SafeParseResult<ListDeploymentAliasesProtectionBypass1, SDKValidationError> {
@@ -395,34 +256,7 @@ export const ListDeploymentAliasesProtectionBypass$inboundSchema: z.ZodType<
   z.lazy(() => ListDeploymentAliasesProtectionBypass3$inboundSchema),
   z.lazy(() => ListDeploymentAliasesProtectionBypass4$inboundSchema),
 ]);
-/** @internal */
-export type ListDeploymentAliasesProtectionBypass$Outbound =
-  | ListDeploymentAliasesProtectionBypass1$Outbound
-  | ListDeploymentAliasesProtectionBypass2$Outbound
-  | ListDeploymentAliasesProtectionBypass3$Outbound
-  | ListDeploymentAliasesProtectionBypass4$Outbound;
 
-/** @internal */
-export const ListDeploymentAliasesProtectionBypass$outboundSchema: z.ZodType<
-  ListDeploymentAliasesProtectionBypass$Outbound,
-  z.ZodTypeDef,
-  ListDeploymentAliasesProtectionBypass
-> = z.union([
-  z.lazy(() => ListDeploymentAliasesProtectionBypass1$outboundSchema),
-  z.lazy(() => ListDeploymentAliasesProtectionBypass2$outboundSchema),
-  z.lazy(() => ListDeploymentAliasesProtectionBypass3$outboundSchema),
-  z.lazy(() => ListDeploymentAliasesProtectionBypass4$outboundSchema),
-]);
-
-export function listDeploymentAliasesProtectionBypassToJSON(
-  listDeploymentAliasesProtectionBypass: ListDeploymentAliasesProtectionBypass,
-): string {
-  return JSON.stringify(
-    ListDeploymentAliasesProtectionBypass$outboundSchema.parse(
-      listDeploymentAliasesProtectionBypass,
-    ),
-  );
-}
 export function listDeploymentAliasesProtectionBypassFromJSON(
   jsonString: string,
 ): SafeParseResult<ListDeploymentAliasesProtectionBypass, SDKValidationError> {
@@ -452,44 +286,7 @@ export const Aliases$inboundSchema: z.ZodType<Aliases, z.ZodTypeDef, unknown> =
       ])),
     ),
   });
-/** @internal */
-export type Aliases$Outbound = {
-  uid: string;
-  alias: string;
-  created: string;
-  redirect?: string | null | undefined;
-  protectionBypass?: {
-    [k: string]:
-      | ListDeploymentAliasesProtectionBypass1$Outbound
-      | ListDeploymentAliasesProtectionBypass2$Outbound
-      | ListDeploymentAliasesProtectionBypass3$Outbound
-      | ListDeploymentAliasesProtectionBypass4$Outbound;
-  } | undefined;
-};
 
-/** @internal */
-export const Aliases$outboundSchema: z.ZodType<
-  Aliases$Outbound,
-  z.ZodTypeDef,
-  Aliases
-> = z.object({
-  uid: z.string(),
-  alias: z.string(),
-  created: z.date().transform(v => v.toISOString()),
-  redirect: z.nullable(z.string()).optional(),
-  protectionBypass: z.record(
-    z.union([
-      z.lazy(() => ListDeploymentAliasesProtectionBypass1$outboundSchema),
-      z.lazy(() => ListDeploymentAliasesProtectionBypass2$outboundSchema),
-      z.lazy(() => ListDeploymentAliasesProtectionBypass3$outboundSchema),
-      z.lazy(() => ListDeploymentAliasesProtectionBypass4$outboundSchema),
-    ]),
-  ).optional(),
-});
-
-export function aliasesToJSON(aliases: Aliases): string {
-  return JSON.stringify(Aliases$outboundSchema.parse(aliases));
-}
 export function aliasesFromJSON(
   jsonString: string,
 ): SafeParseResult<Aliases, SDKValidationError> {
@@ -508,29 +305,7 @@ export const ListDeploymentAliasesResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   aliases: z.array(z.lazy(() => Aliases$inboundSchema)),
 });
-/** @internal */
-export type ListDeploymentAliasesResponseBody$Outbound = {
-  aliases: Array<Aliases$Outbound>;
-};
 
-/** @internal */
-export const ListDeploymentAliasesResponseBody$outboundSchema: z.ZodType<
-  ListDeploymentAliasesResponseBody$Outbound,
-  z.ZodTypeDef,
-  ListDeploymentAliasesResponseBody
-> = z.object({
-  aliases: z.array(z.lazy(() => Aliases$outboundSchema)),
-});
-
-export function listDeploymentAliasesResponseBodyToJSON(
-  listDeploymentAliasesResponseBody: ListDeploymentAliasesResponseBody,
-): string {
-  return JSON.stringify(
-    ListDeploymentAliasesResponseBody$outboundSchema.parse(
-      listDeploymentAliasesResponseBody,
-    ),
-  );
-}
 export function listDeploymentAliasesResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<ListDeploymentAliasesResponseBody, SDKValidationError> {

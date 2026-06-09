@@ -7,7 +7,6 @@ import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
-import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
@@ -668,16 +667,6 @@ export type UpdateFirewallConfigRequest = {
 export type UpdateFirewallConfigResponseBody = {};
 
 /** @internal */
-export const RequestBody14$inboundSchema: z.ZodType<
-  RequestBody14,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  action: types.string(),
-  id: types.optional(types.string()),
-  value: types.optional(z.any()),
-});
-/** @internal */
 export type RequestBody14$Outbound = {
   action: string;
   id?: string | undefined;
@@ -698,26 +687,7 @@ export const RequestBody14$outboundSchema: z.ZodType<
 export function requestBody14ToJSON(requestBody14: RequestBody14): string {
   return JSON.stringify(RequestBody14$outboundSchema.parse(requestBody14));
 }
-export function requestBody14FromJSON(
-  jsonString: string,
-): SafeParseResult<RequestBody14, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RequestBody14$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RequestBody14' from JSON`,
-  );
-}
 
-/** @internal */
-export const RequestBody13$inboundSchema: z.ZodType<
-  RequestBody13,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  action: types.string(),
-  id: types.optional(types.string()),
-  value: types.boolean(),
-});
 /** @internal */
 export type RequestBody13$Outbound = {
   action: string;
@@ -739,48 +709,18 @@ export const RequestBody13$outboundSchema: z.ZodType<
 export function requestBody13ToJSON(requestBody13: RequestBody13): string {
   return JSON.stringify(RequestBody13$outboundSchema.parse(requestBody13));
 }
-export function requestBody13FromJSON(
-  jsonString: string,
-): SafeParseResult<RequestBody13, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RequestBody13$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RequestBody13' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateFirewallConfigRequestBodyId$inboundSchema: z.ZodNativeEnum<
-  typeof UpdateFirewallConfigRequestBodyId
-> = z.nativeEnum(UpdateFirewallConfigRequestBodyId);
 /** @internal */
 export const UpdateFirewallConfigRequestBodyId$outboundSchema: z.ZodNativeEnum<
   typeof UpdateFirewallConfigRequestBodyId
-> = UpdateFirewallConfigRequestBodyId$inboundSchema;
+> = z.nativeEnum(UpdateFirewallConfigRequestBodyId);
 
-/** @internal */
-export const UpdateFirewallConfigRequestBodySecurityRequest12Action$inboundSchema:
-  z.ZodNativeEnum<
-    typeof UpdateFirewallConfigRequestBodySecurityRequest12Action
-  > = z.nativeEnum(UpdateFirewallConfigRequestBodySecurityRequest12Action);
 /** @internal */
 export const UpdateFirewallConfigRequestBodySecurityRequest12Action$outboundSchema:
   z.ZodNativeEnum<
     typeof UpdateFirewallConfigRequestBodySecurityRequest12Action
-  > = UpdateFirewallConfigRequestBodySecurityRequest12Action$inboundSchema;
+  > = z.nativeEnum(UpdateFirewallConfigRequestBodySecurityRequest12Action);
 
-/** @internal */
-export const UpdateFirewallConfigRequestBodySecurityRequest12Value$inboundSchema:
-  z.ZodType<
-    UpdateFirewallConfigRequestBodySecurityRequest12Value,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    active: types.boolean(),
-    action: types.optional(
-      UpdateFirewallConfigRequestBodySecurityRequest12Action$inboundSchema,
-    ),
-  });
 /** @internal */
 export type UpdateFirewallConfigRequestBodySecurityRequest12Value$Outbound = {
   active: boolean;
@@ -810,36 +750,7 @@ export function updateFirewallConfigRequestBodySecurityRequest12ValueToJSON(
     ),
   );
 }
-export function updateFirewallConfigRequestBodySecurityRequest12ValueFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  UpdateFirewallConfigRequestBodySecurityRequest12Value,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      UpdateFirewallConfigRequestBodySecurityRequest12Value$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'UpdateFirewallConfigRequestBodySecurityRequest12Value' from JSON`,
-  );
-}
 
-/** @internal */
-export const RequestBody12$inboundSchema: z.ZodType<
-  RequestBody12,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  action: types.string(),
-  id: UpdateFirewallConfigRequestBodyId$inboundSchema,
-  value: z.record(
-    z.lazy(() =>
-      UpdateFirewallConfigRequestBodySecurityRequest12Value$inboundSchema
-    ),
-  ),
-});
 /** @internal */
 export type RequestBody12$Outbound = {
   action: string;
@@ -867,59 +778,24 @@ export const RequestBody12$outboundSchema: z.ZodType<
 export function requestBody12ToJSON(requestBody12: RequestBody12): string {
   return JSON.stringify(RequestBody12$outboundSchema.parse(requestBody12));
 }
-export function requestBody12FromJSON(
-  jsonString: string,
-): SafeParseResult<RequestBody12, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RequestBody12$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RequestBody12' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateFirewallConfigRequestBodySecurityRequest11Action$inboundSchema:
-  z.ZodNativeEnum<
-    typeof UpdateFirewallConfigRequestBodySecurityRequest11Action
-  > = z.nativeEnum(UpdateFirewallConfigRequestBodySecurityRequest11Action);
 /** @internal */
 export const UpdateFirewallConfigRequestBodySecurityRequest11Action$outboundSchema:
   z.ZodNativeEnum<
     typeof UpdateFirewallConfigRequestBodySecurityRequest11Action
-  > = UpdateFirewallConfigRequestBodySecurityRequest11Action$inboundSchema;
+  > = z.nativeEnum(UpdateFirewallConfigRequestBodySecurityRequest11Action);
 
-/** @internal */
-export const RequestBodyId$inboundSchema: z.ZodNativeEnum<
-  typeof RequestBodyId
-> = z.nativeEnum(RequestBodyId);
 /** @internal */
 export const RequestBodyId$outboundSchema: z.ZodNativeEnum<
   typeof RequestBodyId
-> = RequestBodyId$inboundSchema;
+> = z.nativeEnum(RequestBodyId);
 
-/** @internal */
-export const UpdateFirewallConfigRequestBodySecurityRequest11ValueAction$inboundSchema:
-  z.ZodNativeEnum<
-    typeof UpdateFirewallConfigRequestBodySecurityRequest11ValueAction
-  > = z.nativeEnum(UpdateFirewallConfigRequestBodySecurityRequest11ValueAction);
 /** @internal */
 export const UpdateFirewallConfigRequestBodySecurityRequest11ValueAction$outboundSchema:
   z.ZodNativeEnum<
     typeof UpdateFirewallConfigRequestBodySecurityRequest11ValueAction
-  > = UpdateFirewallConfigRequestBodySecurityRequest11ValueAction$inboundSchema;
+  > = z.nativeEnum(UpdateFirewallConfigRequestBodySecurityRequest11ValueAction);
 
-/** @internal */
-export const UpdateFirewallConfigRequestBodySecurityRequest11Value$inboundSchema:
-  z.ZodType<
-    UpdateFirewallConfigRequestBodySecurityRequest11Value,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    action: types.optional(
-      UpdateFirewallConfigRequestBodySecurityRequest11ValueAction$inboundSchema,
-    ),
-    active: types.boolean(),
-  });
 /** @internal */
 export type UpdateFirewallConfigRequestBodySecurityRequest11Value$Outbound = {
   action?: string | undefined;
@@ -949,34 +825,7 @@ export function updateFirewallConfigRequestBodySecurityRequest11ValueToJSON(
     ),
   );
 }
-export function updateFirewallConfigRequestBodySecurityRequest11ValueFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  UpdateFirewallConfigRequestBodySecurityRequest11Value,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      UpdateFirewallConfigRequestBodySecurityRequest11Value$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'UpdateFirewallConfigRequestBodySecurityRequest11Value' from JSON`,
-  );
-}
 
-/** @internal */
-export const RequestBody11$inboundSchema: z.ZodType<
-  RequestBody11,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  action: UpdateFirewallConfigRequestBodySecurityRequest11Action$inboundSchema,
-  id: RequestBodyId$inboundSchema,
-  value: z.lazy(() =>
-    UpdateFirewallConfigRequestBodySecurityRequest11Value$inboundSchema
-  ),
-});
 /** @internal */
 export type RequestBody11$Outbound = {
   action: string;
@@ -1000,37 +849,13 @@ export const RequestBody11$outboundSchema: z.ZodType<
 export function requestBody11ToJSON(requestBody11: RequestBody11): string {
   return JSON.stringify(RequestBody11$outboundSchema.parse(requestBody11));
 }
-export function requestBody11FromJSON(
-  jsonString: string,
-): SafeParseResult<RequestBody11, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RequestBody11$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RequestBody11' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateFirewallConfigRequestBodySecurityRequest10Action$inboundSchema:
-  z.ZodNativeEnum<
-    typeof UpdateFirewallConfigRequestBodySecurityRequest10Action
-  > = z.nativeEnum(UpdateFirewallConfigRequestBodySecurityRequest10Action);
 /** @internal */
 export const UpdateFirewallConfigRequestBodySecurityRequest10Action$outboundSchema:
   z.ZodNativeEnum<
     typeof UpdateFirewallConfigRequestBodySecurityRequest10Action
-  > = UpdateFirewallConfigRequestBodySecurityRequest10Action$inboundSchema;
+  > = z.nativeEnum(UpdateFirewallConfigRequestBodySecurityRequest10Action);
 
-/** @internal */
-export const UpdateFirewallConfigRequestBody10$inboundSchema: z.ZodType<
-  UpdateFirewallConfigRequestBody10,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  action: UpdateFirewallConfigRequestBodySecurityRequest10Action$inboundSchema,
-  id: types.string(),
-  value: z.nullable(z.any()).optional(),
-});
 /** @internal */
 export type UpdateFirewallConfigRequestBody10$Outbound = {
   action: string;
@@ -1058,51 +883,19 @@ export function updateFirewallConfigRequestBody10ToJSON(
     ),
   );
 }
-export function updateFirewallConfigRequestBody10FromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateFirewallConfigRequestBody10, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateFirewallConfigRequestBody10$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateFirewallConfigRequestBody10' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateFirewallConfigRequestBodySecurityRequest9Action$inboundSchema:
-  z.ZodNativeEnum<
-    typeof UpdateFirewallConfigRequestBodySecurityRequest9Action
-  > = z.nativeEnum(UpdateFirewallConfigRequestBodySecurityRequest9Action);
 /** @internal */
 export const UpdateFirewallConfigRequestBodySecurityRequest9Action$outboundSchema:
   z.ZodNativeEnum<
     typeof UpdateFirewallConfigRequestBodySecurityRequest9Action
-  > = UpdateFirewallConfigRequestBodySecurityRequest9Action$inboundSchema;
+  > = z.nativeEnum(UpdateFirewallConfigRequestBodySecurityRequest9Action);
 
-/** @internal */
-export const UpdateFirewallConfigRequestBodySecurityRequest9ValueAction$inboundSchema:
-  z.ZodNativeEnum<
-    typeof UpdateFirewallConfigRequestBodySecurityRequest9ValueAction
-  > = z.nativeEnum(UpdateFirewallConfigRequestBodySecurityRequest9ValueAction);
 /** @internal */
 export const UpdateFirewallConfigRequestBodySecurityRequest9ValueAction$outboundSchema:
   z.ZodNativeEnum<
     typeof UpdateFirewallConfigRequestBodySecurityRequest9ValueAction
-  > = UpdateFirewallConfigRequestBodySecurityRequest9ValueAction$inboundSchema;
+  > = z.nativeEnum(UpdateFirewallConfigRequestBodySecurityRequest9ValueAction);
 
-/** @internal */
-export const UpdateFirewallConfigRequestBodySecurityRequest9Value$inboundSchema:
-  z.ZodType<
-    UpdateFirewallConfigRequestBodySecurityRequest9Value,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    hostname: types.string(),
-    ip: types.string(),
-    notes: types.optional(types.string()),
-    action:
-      UpdateFirewallConfigRequestBodySecurityRequest9ValueAction$inboundSchema,
-  });
 /** @internal */
 export type UpdateFirewallConfigRequestBodySecurityRequest9Value$Outbound = {
   hostname: string;
@@ -1135,34 +928,7 @@ export function updateFirewallConfigRequestBodySecurityRequest9ValueToJSON(
     ),
   );
 }
-export function updateFirewallConfigRequestBodySecurityRequest9ValueFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  UpdateFirewallConfigRequestBodySecurityRequest9Value,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      UpdateFirewallConfigRequestBodySecurityRequest9Value$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'UpdateFirewallConfigRequestBodySecurityRequest9Value' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateFirewallConfigRequestBody9$inboundSchema: z.ZodType<
-  UpdateFirewallConfigRequestBody9,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  action: UpdateFirewallConfigRequestBodySecurityRequest9Action$inboundSchema,
-  id: types.string(),
-  value: z.lazy(() =>
-    UpdateFirewallConfigRequestBodySecurityRequest9Value$inboundSchema
-  ),
-});
 /** @internal */
 export type UpdateFirewallConfigRequestBody9$Outbound = {
   action: string;
@@ -1192,51 +958,19 @@ export function updateFirewallConfigRequestBody9ToJSON(
     ),
   );
 }
-export function updateFirewallConfigRequestBody9FromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateFirewallConfigRequestBody9, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateFirewallConfigRequestBody9$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateFirewallConfigRequestBody9' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateFirewallConfigRequestBodySecurityRequest8Action$inboundSchema:
-  z.ZodNativeEnum<
-    typeof UpdateFirewallConfigRequestBodySecurityRequest8Action
-  > = z.nativeEnum(UpdateFirewallConfigRequestBodySecurityRequest8Action);
 /** @internal */
 export const UpdateFirewallConfigRequestBodySecurityRequest8Action$outboundSchema:
   z.ZodNativeEnum<
     typeof UpdateFirewallConfigRequestBodySecurityRequest8Action
-  > = UpdateFirewallConfigRequestBodySecurityRequest8Action$inboundSchema;
+  > = z.nativeEnum(UpdateFirewallConfigRequestBodySecurityRequest8Action);
 
-/** @internal */
-export const UpdateFirewallConfigRequestBodySecurityRequest8ValueAction$inboundSchema:
-  z.ZodNativeEnum<
-    typeof UpdateFirewallConfigRequestBodySecurityRequest8ValueAction
-  > = z.nativeEnum(UpdateFirewallConfigRequestBodySecurityRequest8ValueAction);
 /** @internal */
 export const UpdateFirewallConfigRequestBodySecurityRequest8ValueAction$outboundSchema:
   z.ZodNativeEnum<
     typeof UpdateFirewallConfigRequestBodySecurityRequest8ValueAction
-  > = UpdateFirewallConfigRequestBodySecurityRequest8ValueAction$inboundSchema;
+  > = z.nativeEnum(UpdateFirewallConfigRequestBodySecurityRequest8ValueAction);
 
-/** @internal */
-export const UpdateFirewallConfigRequestBodySecurityRequestValue$inboundSchema:
-  z.ZodType<
-    UpdateFirewallConfigRequestBodySecurityRequestValue,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    hostname: types.string(),
-    ip: types.string(),
-    notes: types.optional(types.string()),
-    action:
-      UpdateFirewallConfigRequestBodySecurityRequest8ValueAction$inboundSchema,
-  });
 /** @internal */
 export type UpdateFirewallConfigRequestBodySecurityRequestValue$Outbound = {
   hostname: string;
@@ -1269,34 +1003,7 @@ export function updateFirewallConfigRequestBodySecurityRequestValueToJSON(
     ),
   );
 }
-export function updateFirewallConfigRequestBodySecurityRequestValueFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  UpdateFirewallConfigRequestBodySecurityRequestValue,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      UpdateFirewallConfigRequestBodySecurityRequestValue$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'UpdateFirewallConfigRequestBodySecurityRequestValue' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateFirewallConfigRequestBody8$inboundSchema: z.ZodType<
-  UpdateFirewallConfigRequestBody8,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  action: UpdateFirewallConfigRequestBodySecurityRequest8Action$inboundSchema,
-  id: z.nullable(z.any()).optional(),
-  value: z.lazy(() =>
-    UpdateFirewallConfigRequestBodySecurityRequestValue$inboundSchema
-  ),
-});
 /** @internal */
 export type UpdateFirewallConfigRequestBody8$Outbound = {
   action: string;
@@ -1326,37 +1033,13 @@ export function updateFirewallConfigRequestBody8ToJSON(
     ),
   );
 }
-export function updateFirewallConfigRequestBody8FromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateFirewallConfigRequestBody8, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateFirewallConfigRequestBody8$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateFirewallConfigRequestBody8' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateFirewallConfigRequestBodySecurityRequest7Action$inboundSchema:
-  z.ZodNativeEnum<
-    typeof UpdateFirewallConfigRequestBodySecurityRequest7Action
-  > = z.nativeEnum(UpdateFirewallConfigRequestBodySecurityRequest7Action);
 /** @internal */
 export const UpdateFirewallConfigRequestBodySecurityRequest7Action$outboundSchema:
   z.ZodNativeEnum<
     typeof UpdateFirewallConfigRequestBodySecurityRequest7Action
-  > = UpdateFirewallConfigRequestBodySecurityRequest7Action$inboundSchema;
+  > = z.nativeEnum(UpdateFirewallConfigRequestBodySecurityRequest7Action);
 
-/** @internal */
-export const UpdateFirewallConfigRequestBody7$inboundSchema: z.ZodType<
-  UpdateFirewallConfigRequestBody7,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  action: UpdateFirewallConfigRequestBodySecurityRequest7Action$inboundSchema,
-  id: z.nullable(z.any()).optional(),
-  value: z.nullable(z.any()).optional(),
-});
 /** @internal */
 export type UpdateFirewallConfigRequestBody7$Outbound = {
   action: string;
@@ -1384,54 +1067,22 @@ export function updateFirewallConfigRequestBody7ToJSON(
     ),
   );
 }
-export function updateFirewallConfigRequestBody7FromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateFirewallConfigRequestBody7, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateFirewallConfigRequestBody7$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateFirewallConfigRequestBody7' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateFirewallConfigRequestBodySecurityRequest6Action$inboundSchema:
-  z.ZodNativeEnum<
-    typeof UpdateFirewallConfigRequestBodySecurityRequest6Action
-  > = z.nativeEnum(UpdateFirewallConfigRequestBodySecurityRequest6Action);
 /** @internal */
 export const UpdateFirewallConfigRequestBodySecurityRequest6Action$outboundSchema:
   z.ZodNativeEnum<
     typeof UpdateFirewallConfigRequestBodySecurityRequest6Action
-  > = UpdateFirewallConfigRequestBodySecurityRequest6Action$inboundSchema;
+  > = z.nativeEnum(UpdateFirewallConfigRequestBodySecurityRequest6Action);
 
 /** @internal */
-export const Id$inboundSchema: z.ZodNativeEnum<typeof Id> = z.nativeEnum(Id);
-/** @internal */
-export const Id$outboundSchema: z.ZodNativeEnum<typeof Id> = Id$inboundSchema;
+export const Id$outboundSchema: z.ZodNativeEnum<typeof Id> = z.nativeEnum(Id);
 
-/** @internal */
-export const UpdateFirewallConfigRequestBodySecurityRequest6ValueAction$inboundSchema:
-  z.ZodNativeEnum<
-    typeof UpdateFirewallConfigRequestBodySecurityRequest6ValueAction
-  > = z.nativeEnum(UpdateFirewallConfigRequestBodySecurityRequest6ValueAction);
 /** @internal */
 export const UpdateFirewallConfigRequestBodySecurityRequest6ValueAction$outboundSchema:
   z.ZodNativeEnum<
     typeof UpdateFirewallConfigRequestBodySecurityRequest6ValueAction
-  > = UpdateFirewallConfigRequestBodySecurityRequest6ValueAction$inboundSchema;
+  > = z.nativeEnum(UpdateFirewallConfigRequestBodySecurityRequest6ValueAction);
 
-/** @internal */
-export const UpdateFirewallConfigRequestBodySecurityValue$inboundSchema:
-  z.ZodType<
-    UpdateFirewallConfigRequestBodySecurityValue,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    active: types.boolean(),
-    action:
-      UpdateFirewallConfigRequestBodySecurityRequest6ValueAction$inboundSchema,
-  });
 /** @internal */
 export type UpdateFirewallConfigRequestBodySecurityValue$Outbound = {
   active: boolean;
@@ -1460,34 +1111,7 @@ export function updateFirewallConfigRequestBodySecurityValueToJSON(
     ),
   );
 }
-export function updateFirewallConfigRequestBodySecurityValueFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  UpdateFirewallConfigRequestBodySecurityValue,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      UpdateFirewallConfigRequestBodySecurityValue$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'UpdateFirewallConfigRequestBodySecurityValue' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateFirewallConfigRequestBody6$inboundSchema: z.ZodType<
-  UpdateFirewallConfigRequestBody6,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  action: UpdateFirewallConfigRequestBodySecurityRequest6Action$inboundSchema,
-  id: Id$inboundSchema,
-  value: z.lazy(() =>
-    UpdateFirewallConfigRequestBodySecurityValue$inboundSchema
-  ),
-});
 /** @internal */
 export type UpdateFirewallConfigRequestBody6$Outbound = {
   action: string;
@@ -1517,37 +1141,13 @@ export function updateFirewallConfigRequestBody6ToJSON(
     ),
   );
 }
-export function updateFirewallConfigRequestBody6FromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateFirewallConfigRequestBody6, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateFirewallConfigRequestBody6$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateFirewallConfigRequestBody6' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateFirewallConfigRequestBodySecurityRequest5Action$inboundSchema:
-  z.ZodNativeEnum<
-    typeof UpdateFirewallConfigRequestBodySecurityRequest5Action
-  > = z.nativeEnum(UpdateFirewallConfigRequestBodySecurityRequest5Action);
 /** @internal */
 export const UpdateFirewallConfigRequestBodySecurityRequest5Action$outboundSchema:
   z.ZodNativeEnum<
     typeof UpdateFirewallConfigRequestBodySecurityRequest5Action
-  > = UpdateFirewallConfigRequestBodySecurityRequest5Action$inboundSchema;
+  > = z.nativeEnum(UpdateFirewallConfigRequestBodySecurityRequest5Action);
 
-/** @internal */
-export const UpdateFirewallConfigRequestBody5$inboundSchema: z.ZodType<
-  UpdateFirewallConfigRequestBody5,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  action: UpdateFirewallConfigRequestBodySecurityRequest5Action$inboundSchema,
-  id: types.string(),
-  value: types.number(),
-});
 /** @internal */
 export type UpdateFirewallConfigRequestBody5$Outbound = {
   action: string;
@@ -1575,37 +1175,13 @@ export function updateFirewallConfigRequestBody5ToJSON(
     ),
   );
 }
-export function updateFirewallConfigRequestBody5FromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateFirewallConfigRequestBody5, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateFirewallConfigRequestBody5$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateFirewallConfigRequestBody5' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateFirewallConfigRequestBodySecurityRequest4Action$inboundSchema:
-  z.ZodNativeEnum<
-    typeof UpdateFirewallConfigRequestBodySecurityRequest4Action
-  > = z.nativeEnum(UpdateFirewallConfigRequestBodySecurityRequest4Action);
 /** @internal */
 export const UpdateFirewallConfigRequestBodySecurityRequest4Action$outboundSchema:
   z.ZodNativeEnum<
     typeof UpdateFirewallConfigRequestBodySecurityRequest4Action
-  > = UpdateFirewallConfigRequestBodySecurityRequest4Action$inboundSchema;
+  > = z.nativeEnum(UpdateFirewallConfigRequestBodySecurityRequest4Action);
 
-/** @internal */
-export const UpdateFirewallConfigRequestBody4$inboundSchema: z.ZodType<
-  UpdateFirewallConfigRequestBody4,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  action: UpdateFirewallConfigRequestBodySecurityRequest4Action$inboundSchema,
-  id: types.string(),
-  value: z.nullable(z.any()).optional(),
-});
 /** @internal */
 export type UpdateFirewallConfigRequestBody4$Outbound = {
   action: string;
@@ -1633,50 +1209,22 @@ export function updateFirewallConfigRequestBody4ToJSON(
     ),
   );
 }
-export function updateFirewallConfigRequestBody4FromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateFirewallConfigRequestBody4, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateFirewallConfigRequestBody4$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateFirewallConfigRequestBody4' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateFirewallConfigRequestBodySecurityRequestAction$inboundSchema:
-  z.ZodNativeEnum<typeof UpdateFirewallConfigRequestBodySecurityRequestAction> =
-    z.nativeEnum(UpdateFirewallConfigRequestBodySecurityRequestAction);
 /** @internal */
 export const UpdateFirewallConfigRequestBodySecurityRequestAction$outboundSchema:
   z.ZodNativeEnum<typeof UpdateFirewallConfigRequestBodySecurityRequestAction> =
-    UpdateFirewallConfigRequestBodySecurityRequestAction$inboundSchema;
+    z.nativeEnum(UpdateFirewallConfigRequestBodySecurityRequestAction);
 
-/** @internal */
-export const UpdateFirewallConfigRequestBodySecurityType$inboundSchema:
-  z.ZodNativeEnum<typeof UpdateFirewallConfigRequestBodySecurityType> = z
-    .nativeEnum(UpdateFirewallConfigRequestBodySecurityType);
 /** @internal */
 export const UpdateFirewallConfigRequestBodySecurityType$outboundSchema:
-  z.ZodNativeEnum<typeof UpdateFirewallConfigRequestBodySecurityType> =
-    UpdateFirewallConfigRequestBodySecurityType$inboundSchema;
+  z.ZodNativeEnum<typeof UpdateFirewallConfigRequestBodySecurityType> = z
+    .nativeEnum(UpdateFirewallConfigRequestBodySecurityType);
 
-/** @internal */
-export const UpdateFirewallConfigRequestBodyOp$inboundSchema: z.ZodNativeEnum<
-  typeof UpdateFirewallConfigRequestBodyOp
-> = z.nativeEnum(UpdateFirewallConfigRequestBodyOp);
 /** @internal */
 export const UpdateFirewallConfigRequestBodyOp$outboundSchema: z.ZodNativeEnum<
   typeof UpdateFirewallConfigRequestBodyOp
-> = UpdateFirewallConfigRequestBodyOp$inboundSchema;
+> = z.nativeEnum(UpdateFirewallConfigRequestBodyOp);
 
-/** @internal */
-export const UpdateFirewallConfigRequestBodySecurityRequest3Value$inboundSchema:
-  z.ZodType<
-    UpdateFirewallConfigRequestBodySecurityRequest3Value,
-    z.ZodTypeDef,
-    unknown
-  > = smartUnion([types.string(), z.array(types.string()), types.number()]);
 /** @internal */
 export type UpdateFirewallConfigRequestBodySecurityRequest3Value$Outbound =
   | string
@@ -1701,36 +1249,7 @@ export function updateFirewallConfigRequestBodySecurityRequest3ValueToJSON(
     ),
   );
 }
-export function updateFirewallConfigRequestBodySecurityRequest3ValueFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  UpdateFirewallConfigRequestBodySecurityRequest3Value,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      UpdateFirewallConfigRequestBodySecurityRequest3Value$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'UpdateFirewallConfigRequestBodySecurityRequest3Value' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateFirewallConfigRequestBodyConditions$inboundSchema: z.ZodType<
-  UpdateFirewallConfigRequestBodyConditions,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  type: UpdateFirewallConfigRequestBodySecurityType$inboundSchema,
-  op: UpdateFirewallConfigRequestBodyOp$inboundSchema,
-  neg: types.optional(types.boolean()),
-  key: types.optional(types.string()),
-  value: types.optional(
-    smartUnion([types.string(), z.array(types.string()), types.number()]),
-  ),
-});
 /** @internal */
 export type UpdateFirewallConfigRequestBodyConditions$Outbound = {
   type: string;
@@ -1764,33 +1283,7 @@ export function updateFirewallConfigRequestBodyConditionsToJSON(
     ),
   );
 }
-export function updateFirewallConfigRequestBodyConditionsFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  UpdateFirewallConfigRequestBodyConditions,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      UpdateFirewallConfigRequestBodyConditions$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'UpdateFirewallConfigRequestBodyConditions' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateFirewallConfigRequestBodyConditionGroup$inboundSchema:
-  z.ZodType<
-    UpdateFirewallConfigRequestBodyConditionGroup,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    conditions: z.array(
-      z.lazy(() => UpdateFirewallConfigRequestBodyConditions$inboundSchema),
-    ),
-  });
 /** @internal */
 export type UpdateFirewallConfigRequestBodyConditionGroup$Outbound = {
   conditions: Array<UpdateFirewallConfigRequestBodyConditions$Outbound>;
@@ -1818,58 +1311,24 @@ export function updateFirewallConfigRequestBodyConditionGroupToJSON(
     ),
   );
 }
-export function updateFirewallConfigRequestBodyConditionGroupFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  UpdateFirewallConfigRequestBodyConditionGroup,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      UpdateFirewallConfigRequestBodyConditionGroup$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'UpdateFirewallConfigRequestBodyConditionGroup' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateFirewallConfigRequestBodySecurityRequest3ValueAction$inboundSchema:
-  z.ZodNativeEnum<
-    typeof UpdateFirewallConfigRequestBodySecurityRequest3ValueAction
-  > = z.nativeEnum(UpdateFirewallConfigRequestBodySecurityRequest3ValueAction);
 /** @internal */
 export const UpdateFirewallConfigRequestBodySecurityRequest3ValueAction$outboundSchema:
   z.ZodNativeEnum<
     typeof UpdateFirewallConfigRequestBodySecurityRequest3ValueAction
-  > = UpdateFirewallConfigRequestBodySecurityRequest3ValueAction$inboundSchema;
+  > = z.nativeEnum(UpdateFirewallConfigRequestBodySecurityRequest3ValueAction);
 
-/** @internal */
-export const UpdateFirewallConfigRateLimitAlgo$inboundSchema: z.ZodNativeEnum<
-  typeof UpdateFirewallConfigRateLimitAlgo
-> = z.nativeEnum(UpdateFirewallConfigRateLimitAlgo);
 /** @internal */
 export const UpdateFirewallConfigRateLimitAlgo$outboundSchema: z.ZodNativeEnum<
   typeof UpdateFirewallConfigRateLimitAlgo
-> = UpdateFirewallConfigRateLimitAlgo$inboundSchema;
+> = z.nativeEnum(UpdateFirewallConfigRateLimitAlgo);
 
-/** @internal */
-export const UpdateFirewallConfigActionSecurity1$inboundSchema: z.ZodNativeEnum<
-  typeof UpdateFirewallConfigActionSecurity1
-> = z.nativeEnum(UpdateFirewallConfigActionSecurity1);
 /** @internal */
 export const UpdateFirewallConfigActionSecurity1$outboundSchema:
-  z.ZodNativeEnum<typeof UpdateFirewallConfigActionSecurity1> =
-    UpdateFirewallConfigActionSecurity1$inboundSchema;
+  z.ZodNativeEnum<typeof UpdateFirewallConfigActionSecurity1> = z.nativeEnum(
+    UpdateFirewallConfigActionSecurity1,
+  );
 
-/** @internal */
-export const UpdateFirewallConfigRateLimitSecurityAction$inboundSchema:
-  z.ZodType<
-    UpdateFirewallConfigRateLimitSecurityAction,
-    z.ZodTypeDef,
-    unknown
-  > = smartUnion([UpdateFirewallConfigActionSecurity1$inboundSchema, z.any()]);
 /** @internal */
 export type UpdateFirewallConfigRateLimitSecurityAction$Outbound = string | any;
 
@@ -1891,36 +1350,7 @@ export function updateFirewallConfigRateLimitSecurityActionToJSON(
     ),
   );
 }
-export function updateFirewallConfigRateLimitSecurityActionFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  UpdateFirewallConfigRateLimitSecurityAction,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      UpdateFirewallConfigRateLimitSecurityAction$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'UpdateFirewallConfigRateLimitSecurityAction' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateFirewallConfigRateLimitSecurity1$inboundSchema: z.ZodType<
-  UpdateFirewallConfigRateLimitSecurity1,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  algo: UpdateFirewallConfigRateLimitAlgo$inboundSchema,
-  window: types.number(),
-  limit: types.number(),
-  keys: z.array(types.string()),
-  action: z.nullable(
-    smartUnion([UpdateFirewallConfigActionSecurity1$inboundSchema, z.any()]),
-  ).optional(),
-});
 /** @internal */
 export type UpdateFirewallConfigRateLimitSecurity1$Outbound = {
   algo: string;
@@ -1955,26 +1385,7 @@ export function updateFirewallConfigRateLimitSecurity1ToJSON(
     ),
   );
 }
-export function updateFirewallConfigRateLimitSecurity1FromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateFirewallConfigRateLimitSecurity1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      UpdateFirewallConfigRateLimitSecurity1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateFirewallConfigRateLimitSecurity1' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateFirewallConfigRequestBodyRateLimit$inboundSchema: z.ZodType<
-  UpdateFirewallConfigRequestBodyRateLimit,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([
-  z.lazy(() => UpdateFirewallConfigRateLimitSecurity1$inboundSchema),
-  z.any(),
-]);
 /** @internal */
 export type UpdateFirewallConfigRequestBodyRateLimit$Outbound =
   | UpdateFirewallConfigRateLimitSecurity1$Outbound
@@ -2000,31 +1411,7 @@ export function updateFirewallConfigRequestBodyRateLimitToJSON(
     ),
   );
 }
-export function updateFirewallConfigRequestBodyRateLimitFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  UpdateFirewallConfigRequestBodyRateLimit,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      UpdateFirewallConfigRequestBodyRateLimit$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'UpdateFirewallConfigRequestBodyRateLimit' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateFirewallConfigRedirectSecurity1$inboundSchema: z.ZodType<
-  UpdateFirewallConfigRedirectSecurity1,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  location: types.string(),
-  permanent: types.boolean(),
-});
 /** @internal */
 export type UpdateFirewallConfigRedirectSecurity1$Outbound = {
   location: string;
@@ -2050,26 +1437,7 @@ export function updateFirewallConfigRedirectSecurity1ToJSON(
     ),
   );
 }
-export function updateFirewallConfigRedirectSecurity1FromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateFirewallConfigRedirectSecurity1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      UpdateFirewallConfigRedirectSecurity1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateFirewallConfigRedirectSecurity1' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateFirewallConfigRequestBodyRedirect$inboundSchema: z.ZodType<
-  UpdateFirewallConfigRequestBodyRedirect,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([
-  z.lazy(() => UpdateFirewallConfigRedirectSecurity1$inboundSchema),
-  z.any(),
-]);
 /** @internal */
 export type UpdateFirewallConfigRequestBodyRedirect$Outbound =
   | UpdateFirewallConfigRedirectSecurity1$Outbound
@@ -2095,28 +1463,7 @@ export function updateFirewallConfigRequestBodyRedirectToJSON(
     ),
   );
 }
-export function updateFirewallConfigRequestBodyRedirectFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  UpdateFirewallConfigRequestBodyRedirect,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      UpdateFirewallConfigRequestBodyRedirect$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'UpdateFirewallConfigRequestBodyRedirect' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateFirewallConfigRequestBodyLogHeaders$inboundSchema: z.ZodType<
-  UpdateFirewallConfigRequestBodyLogHeaders,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([types.string(), z.array(types.string())]);
 /** @internal */
 export type UpdateFirewallConfigRequestBodyLogHeaders$Outbound =
   | string
@@ -2140,48 +1487,7 @@ export function updateFirewallConfigRequestBodyLogHeadersToJSON(
     ),
   );
 }
-export function updateFirewallConfigRequestBodyLogHeadersFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  UpdateFirewallConfigRequestBodyLogHeaders,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      UpdateFirewallConfigRequestBodyLogHeaders$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'UpdateFirewallConfigRequestBodyLogHeaders' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateFirewallConfigRequestBodyMitigate$inboundSchema: z.ZodType<
-  UpdateFirewallConfigRequestBodyMitigate,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  action:
-    UpdateFirewallConfigRequestBodySecurityRequest3ValueAction$inboundSchema,
-  rateLimit: z.nullable(
-    smartUnion([
-      z.lazy(() => UpdateFirewallConfigRateLimitSecurity1$inboundSchema),
-      z.any(),
-    ]),
-  ).optional(),
-  redirect: z.nullable(
-    smartUnion([
-      z.lazy(() => UpdateFirewallConfigRedirectSecurity1$inboundSchema),
-      z.any(),
-    ]),
-  ).optional(),
-  actionDuration: z.nullable(types.string()).optional(),
-  bypassSystem: z.nullable(types.boolean()).optional(),
-  logHeaders: types.optional(
-    smartUnion([types.string(), z.array(types.string())]),
-  ),
-});
 /** @internal */
 export type UpdateFirewallConfigRequestBodyMitigate$Outbound = {
   action: string;
@@ -2235,33 +1541,7 @@ export function updateFirewallConfigRequestBodyMitigateToJSON(
     ),
   );
 }
-export function updateFirewallConfigRequestBodyMitigateFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  UpdateFirewallConfigRequestBodyMitigate,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      UpdateFirewallConfigRequestBodyMitigate$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'UpdateFirewallConfigRequestBodyMitigate' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateFirewallConfigRequestBodySecurityRequest3Action$inboundSchema:
-  z.ZodType<
-    UpdateFirewallConfigRequestBodySecurityRequest3Action,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    mitigate: types.optional(
-      z.lazy(() => UpdateFirewallConfigRequestBodyMitigate$inboundSchema),
-    ),
-  });
 /** @internal */
 export type UpdateFirewallConfigRequestBodySecurityRequest3Action$Outbound = {
   mitigate?: UpdateFirewallConfigRequestBodyMitigate$Outbound | undefined;
@@ -2289,29 +1569,7 @@ export function updateFirewallConfigRequestBodySecurityRequest3ActionToJSON(
     ),
   );
 }
-export function updateFirewallConfigRequestBodySecurityRequest3ActionFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  UpdateFirewallConfigRequestBodySecurityRequest3Action,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      UpdateFirewallConfigRequestBodySecurityRequest3Action$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'UpdateFirewallConfigRequestBodySecurityRequest3Action' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateFirewallConfigRequestBodyValidationErrors$inboundSchema:
-  z.ZodType<
-    UpdateFirewallConfigRequestBodyValidationErrors,
-    z.ZodTypeDef,
-    unknown
-  > = smartUnion([z.array(types.string()), types.string()]);
 /** @internal */
 export type UpdateFirewallConfigRequestBodyValidationErrors$Outbound =
   | Array<string>
@@ -2335,42 +1593,7 @@ export function updateFirewallConfigRequestBodyValidationErrorsToJSON(
     ),
   );
 }
-export function updateFirewallConfigRequestBodyValidationErrorsFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  UpdateFirewallConfigRequestBodyValidationErrors,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      UpdateFirewallConfigRequestBodyValidationErrors$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'UpdateFirewallConfigRequestBodyValidationErrors' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateFirewallConfigRequestBodyValue$inboundSchema: z.ZodType<
-  UpdateFirewallConfigRequestBodyValue,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  name: types.string(),
-  description: types.optional(types.string()),
-  active: types.boolean(),
-  conditionGroup: z.array(
-    z.lazy(() => UpdateFirewallConfigRequestBodyConditionGroup$inboundSchema),
-  ),
-  action: z.lazy(() =>
-    UpdateFirewallConfigRequestBodySecurityRequest3Action$inboundSchema
-  ),
-  valid: types.optional(types.boolean()),
-  validationErrors: types.optional(
-    smartUnion([z.array(types.string()), types.string()]),
-  ),
-});
 /** @internal */
 export type UpdateFirewallConfigRequestBodyValue$Outbound = {
   name: string;
@@ -2410,27 +1633,7 @@ export function updateFirewallConfigRequestBodyValueToJSON(
     ),
   );
 }
-export function updateFirewallConfigRequestBodyValueFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateFirewallConfigRequestBodyValue, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      UpdateFirewallConfigRequestBodyValue$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateFirewallConfigRequestBodyValue' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateFirewallConfigRequestBody3$inboundSchema: z.ZodType<
-  UpdateFirewallConfigRequestBody3,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  action: UpdateFirewallConfigRequestBodySecurityRequestAction$inboundSchema,
-  id: types.string(),
-  value: z.lazy(() => UpdateFirewallConfigRequestBodyValue$inboundSchema),
-});
 /** @internal */
 export type UpdateFirewallConfigRequestBody3$Outbound = {
   action: string;
@@ -2458,50 +1661,23 @@ export function updateFirewallConfigRequestBody3ToJSON(
     ),
   );
 }
-export function updateFirewallConfigRequestBody3FromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateFirewallConfigRequestBody3, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateFirewallConfigRequestBody3$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateFirewallConfigRequestBody3' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateFirewallConfigRequestBodySecurityAction$inboundSchema:
-  z.ZodNativeEnum<typeof UpdateFirewallConfigRequestBodySecurityAction> = z
-    .nativeEnum(UpdateFirewallConfigRequestBodySecurityAction);
 /** @internal */
 export const UpdateFirewallConfigRequestBodySecurityAction$outboundSchema:
-  z.ZodNativeEnum<typeof UpdateFirewallConfigRequestBodySecurityAction> =
-    UpdateFirewallConfigRequestBodySecurityAction$inboundSchema;
+  z.ZodNativeEnum<typeof UpdateFirewallConfigRequestBodySecurityAction> = z
+    .nativeEnum(UpdateFirewallConfigRequestBodySecurityAction);
 
-/** @internal */
-export const UpdateFirewallConfigRequestBodyType$inboundSchema: z.ZodNativeEnum<
-  typeof UpdateFirewallConfigRequestBodyType
-> = z.nativeEnum(UpdateFirewallConfigRequestBodyType);
 /** @internal */
 export const UpdateFirewallConfigRequestBodyType$outboundSchema:
-  z.ZodNativeEnum<typeof UpdateFirewallConfigRequestBodyType> =
-    UpdateFirewallConfigRequestBodyType$inboundSchema;
+  z.ZodNativeEnum<typeof UpdateFirewallConfigRequestBodyType> = z.nativeEnum(
+    UpdateFirewallConfigRequestBodyType,
+  );
 
-/** @internal */
-export const RequestBodyOp$inboundSchema: z.ZodNativeEnum<
-  typeof RequestBodyOp
-> = z.nativeEnum(RequestBodyOp);
 /** @internal */
 export const RequestBodyOp$outboundSchema: z.ZodNativeEnum<
   typeof RequestBodyOp
-> = RequestBodyOp$inboundSchema;
+> = z.nativeEnum(RequestBodyOp);
 
-/** @internal */
-export const UpdateFirewallConfigRequestBodySecurityRequest2Value$inboundSchema:
-  z.ZodType<
-    UpdateFirewallConfigRequestBodySecurityRequest2Value,
-    z.ZodTypeDef,
-    unknown
-  > = smartUnion([types.string(), z.array(types.string()), types.number()]);
 /** @internal */
 export type UpdateFirewallConfigRequestBodySecurityRequest2Value$Outbound =
   | string
@@ -2526,36 +1702,7 @@ export function updateFirewallConfigRequestBodySecurityRequest2ValueToJSON(
     ),
   );
 }
-export function updateFirewallConfigRequestBodySecurityRequest2ValueFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  UpdateFirewallConfigRequestBodySecurityRequest2Value,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      UpdateFirewallConfigRequestBodySecurityRequest2Value$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'UpdateFirewallConfigRequestBodySecurityRequest2Value' from JSON`,
-  );
-}
 
-/** @internal */
-export const RequestBodyConditions$inboundSchema: z.ZodType<
-  RequestBodyConditions,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  type: UpdateFirewallConfigRequestBodyType$inboundSchema,
-  op: RequestBodyOp$inboundSchema,
-  neg: types.optional(types.boolean()),
-  key: types.optional(types.string()),
-  value: types.optional(
-    smartUnion([types.string(), z.array(types.string()), types.number()]),
-  ),
-});
 /** @internal */
 export type RequestBodyConditions$Outbound = {
   type: string;
@@ -2585,24 +1732,7 @@ export function requestBodyConditionsToJSON(
     RequestBodyConditions$outboundSchema.parse(requestBodyConditions),
   );
 }
-export function requestBodyConditionsFromJSON(
-  jsonString: string,
-): SafeParseResult<RequestBodyConditions, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RequestBodyConditions$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RequestBodyConditions' from JSON`,
-  );
-}
 
-/** @internal */
-export const RequestBodyConditionGroup$inboundSchema: z.ZodType<
-  RequestBodyConditionGroup,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  conditions: z.array(z.lazy(() => RequestBodyConditions$inboundSchema)),
-});
 /** @internal */
 export type RequestBodyConditionGroup$Outbound = {
   conditions: Array<RequestBodyConditions$Outbound>;
@@ -2624,51 +1754,23 @@ export function requestBodyConditionGroupToJSON(
     RequestBodyConditionGroup$outboundSchema.parse(requestBodyConditionGroup),
   );
 }
-export function requestBodyConditionGroupFromJSON(
-  jsonString: string,
-): SafeParseResult<RequestBodyConditionGroup, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RequestBodyConditionGroup$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RequestBodyConditionGroup' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateFirewallConfigRequestBodySecurityRequest2ValueAction$inboundSchema:
-  z.ZodNativeEnum<
-    typeof UpdateFirewallConfigRequestBodySecurityRequest2ValueAction
-  > = z.nativeEnum(UpdateFirewallConfigRequestBodySecurityRequest2ValueAction);
 /** @internal */
 export const UpdateFirewallConfigRequestBodySecurityRequest2ValueAction$outboundSchema:
   z.ZodNativeEnum<
     typeof UpdateFirewallConfigRequestBodySecurityRequest2ValueAction
-  > = UpdateFirewallConfigRequestBodySecurityRequest2ValueAction$inboundSchema;
+  > = z.nativeEnum(UpdateFirewallConfigRequestBodySecurityRequest2ValueAction);
 
-/** @internal */
-export const RateLimitAlgo$inboundSchema: z.ZodNativeEnum<
-  typeof RateLimitAlgo
-> = z.nativeEnum(RateLimitAlgo);
 /** @internal */
 export const RateLimitAlgo$outboundSchema: z.ZodNativeEnum<
   typeof RateLimitAlgo
-> = RateLimitAlgo$inboundSchema;
+> = z.nativeEnum(RateLimitAlgo);
 
-/** @internal */
-export const UpdateFirewallConfigAction1$inboundSchema: z.ZodNativeEnum<
-  typeof UpdateFirewallConfigAction1
-> = z.nativeEnum(UpdateFirewallConfigAction1);
 /** @internal */
 export const UpdateFirewallConfigAction1$outboundSchema: z.ZodNativeEnum<
   typeof UpdateFirewallConfigAction1
-> = UpdateFirewallConfigAction1$inboundSchema;
+> = z.nativeEnum(UpdateFirewallConfigAction1);
 
-/** @internal */
-export const UpdateFirewallConfigRateLimitAction$inboundSchema: z.ZodType<
-  UpdateFirewallConfigRateLimitAction,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([UpdateFirewallConfigAction1$inboundSchema, z.any()]);
 /** @internal */
 export type UpdateFirewallConfigRateLimitAction$Outbound = string | any;
 
@@ -2688,31 +1790,7 @@ export function updateFirewallConfigRateLimitActionToJSON(
     ),
   );
 }
-export function updateFirewallConfigRateLimitActionFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateFirewallConfigRateLimitAction, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      UpdateFirewallConfigRateLimitAction$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateFirewallConfigRateLimitAction' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateFirewallConfigRateLimit1$inboundSchema: z.ZodType<
-  UpdateFirewallConfigRateLimit1,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  algo: RateLimitAlgo$inboundSchema,
-  window: types.number(),
-  limit: types.number(),
-  keys: z.array(types.string()),
-  action: z.nullable(
-    smartUnion([UpdateFirewallConfigAction1$inboundSchema, z.any()]),
-  ).optional(),
-});
 /** @internal */
 export type UpdateFirewallConfigRateLimit1$Outbound = {
   algo: string;
@@ -2746,25 +1824,7 @@ export function updateFirewallConfigRateLimit1ToJSON(
     ),
   );
 }
-export function updateFirewallConfigRateLimit1FromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateFirewallConfigRateLimit1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateFirewallConfigRateLimit1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateFirewallConfigRateLimit1' from JSON`,
-  );
-}
 
-/** @internal */
-export const RequestBodyRateLimit$inboundSchema: z.ZodType<
-  RequestBodyRateLimit,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([
-  z.lazy(() => UpdateFirewallConfigRateLimit1$inboundSchema),
-  z.any(),
-]);
 /** @internal */
 export type RequestBodyRateLimit$Outbound =
   | UpdateFirewallConfigRateLimit1$Outbound
@@ -2787,25 +1847,7 @@ export function requestBodyRateLimitToJSON(
     RequestBodyRateLimit$outboundSchema.parse(requestBodyRateLimit),
   );
 }
-export function requestBodyRateLimitFromJSON(
-  jsonString: string,
-): SafeParseResult<RequestBodyRateLimit, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RequestBodyRateLimit$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RequestBodyRateLimit' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateFirewallConfigRedirect1$inboundSchema: z.ZodType<
-  UpdateFirewallConfigRedirect1,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  location: types.string(),
-  permanent: types.boolean(),
-});
 /** @internal */
 export type UpdateFirewallConfigRedirect1$Outbound = {
   location: string;
@@ -2831,25 +1873,7 @@ export function updateFirewallConfigRedirect1ToJSON(
     ),
   );
 }
-export function updateFirewallConfigRedirect1FromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateFirewallConfigRedirect1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateFirewallConfigRedirect1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateFirewallConfigRedirect1' from JSON`,
-  );
-}
 
-/** @internal */
-export const RequestBodyRedirect$inboundSchema: z.ZodType<
-  RequestBodyRedirect,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([
-  z.lazy(() => UpdateFirewallConfigRedirect1$inboundSchema),
-  z.any(),
-]);
 /** @internal */
 export type RequestBodyRedirect$Outbound =
   | UpdateFirewallConfigRedirect1$Outbound
@@ -2872,22 +1896,7 @@ export function requestBodyRedirectToJSON(
     RequestBodyRedirect$outboundSchema.parse(requestBodyRedirect),
   );
 }
-export function requestBodyRedirectFromJSON(
-  jsonString: string,
-): SafeParseResult<RequestBodyRedirect, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RequestBodyRedirect$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RequestBodyRedirect' from JSON`,
-  );
-}
 
-/** @internal */
-export const RequestBodyLogHeaders$inboundSchema: z.ZodType<
-  RequestBodyLogHeaders,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([types.string(), z.array(types.string())]);
 /** @internal */
 export type RequestBodyLogHeaders$Outbound = string | Array<string>;
 
@@ -2905,42 +1914,7 @@ export function requestBodyLogHeadersToJSON(
     RequestBodyLogHeaders$outboundSchema.parse(requestBodyLogHeaders),
   );
 }
-export function requestBodyLogHeadersFromJSON(
-  jsonString: string,
-): SafeParseResult<RequestBodyLogHeaders, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RequestBodyLogHeaders$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RequestBodyLogHeaders' from JSON`,
-  );
-}
 
-/** @internal */
-export const RequestBodyMitigate$inboundSchema: z.ZodType<
-  RequestBodyMitigate,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  action:
-    UpdateFirewallConfigRequestBodySecurityRequest2ValueAction$inboundSchema,
-  rateLimit: z.nullable(
-    smartUnion([
-      z.lazy(() => UpdateFirewallConfigRateLimit1$inboundSchema),
-      z.any(),
-    ]),
-  ).optional(),
-  redirect: z.nullable(
-    smartUnion([
-      z.lazy(() => UpdateFirewallConfigRedirect1$inboundSchema),
-      z.any(),
-    ]),
-  ).optional(),
-  actionDuration: z.nullable(types.string()).optional(),
-  bypassSystem: z.nullable(types.boolean()).optional(),
-  logHeaders: types.optional(
-    smartUnion([types.string(), z.array(types.string())]),
-  ),
-});
 /** @internal */
 export type RequestBodyMitigate$Outbound = {
   action: string;
@@ -2983,25 +1957,7 @@ export function requestBodyMitigateToJSON(
     RequestBodyMitigate$outboundSchema.parse(requestBodyMitigate),
   );
 }
-export function requestBodyMitigateFromJSON(
-  jsonString: string,
-): SafeParseResult<RequestBodyMitigate, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RequestBodyMitigate$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RequestBodyMitigate' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateFirewallConfigRequestBodySecurityRequest2Action$inboundSchema:
-  z.ZodType<
-    UpdateFirewallConfigRequestBodySecurityRequest2Action,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    mitigate: types.optional(z.lazy(() => RequestBodyMitigate$inboundSchema)),
-  });
 /** @internal */
 export type UpdateFirewallConfigRequestBodySecurityRequest2Action$Outbound = {
   mitigate?: RequestBodyMitigate$Outbound | undefined;
@@ -3027,28 +1983,7 @@ export function updateFirewallConfigRequestBodySecurityRequest2ActionToJSON(
     ),
   );
 }
-export function updateFirewallConfigRequestBodySecurityRequest2ActionFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  UpdateFirewallConfigRequestBodySecurityRequest2Action,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      UpdateFirewallConfigRequestBodySecurityRequest2Action$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'UpdateFirewallConfigRequestBodySecurityRequest2Action' from JSON`,
-  );
-}
 
-/** @internal */
-export const RequestBodyValidationErrors$inboundSchema: z.ZodType<
-  RequestBodyValidationErrors,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([z.array(types.string()), types.string()]);
 /** @internal */
 export type RequestBodyValidationErrors$Outbound = Array<string> | string;
 
@@ -3068,36 +2003,7 @@ export function requestBodyValidationErrorsToJSON(
     ),
   );
 }
-export function requestBodyValidationErrorsFromJSON(
-  jsonString: string,
-): SafeParseResult<RequestBodyValidationErrors, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RequestBodyValidationErrors$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RequestBodyValidationErrors' from JSON`,
-  );
-}
 
-/** @internal */
-export const RequestBodyValue$inboundSchema: z.ZodType<
-  RequestBodyValue,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  name: types.string(),
-  description: types.optional(types.string()),
-  active: types.boolean(),
-  conditionGroup: z.array(
-    z.lazy(() => RequestBodyConditionGroup$inboundSchema),
-  ),
-  action: z.lazy(() =>
-    UpdateFirewallConfigRequestBodySecurityRequest2Action$inboundSchema
-  ),
-  valid: types.optional(types.boolean()),
-  validationErrors: types.optional(
-    smartUnion([z.array(types.string()), types.string()]),
-  ),
-});
 /** @internal */
 export type RequestBodyValue$Outbound = {
   name: string;
@@ -3135,26 +2041,7 @@ export function requestBodyValueToJSON(
     RequestBodyValue$outboundSchema.parse(requestBodyValue),
   );
 }
-export function requestBodyValueFromJSON(
-  jsonString: string,
-): SafeParseResult<RequestBodyValue, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RequestBodyValue$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RequestBodyValue' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateFirewallConfigRequestBody2$inboundSchema: z.ZodType<
-  UpdateFirewallConfigRequestBody2,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  action: UpdateFirewallConfigRequestBodySecurityAction$inboundSchema,
-  id: z.nullable(z.any()).optional(),
-  value: z.lazy(() => RequestBodyValue$inboundSchema),
-});
 /** @internal */
 export type UpdateFirewallConfigRequestBody2$Outbound = {
   action: string;
@@ -3182,36 +2069,13 @@ export function updateFirewallConfigRequestBody2ToJSON(
     ),
   );
 }
-export function updateFirewallConfigRequestBody2FromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateFirewallConfigRequestBody2, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateFirewallConfigRequestBody2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateFirewallConfigRequestBody2' from JSON`,
-  );
-}
 
 /** @internal */
-export const UpdateFirewallConfigRequestBodyAction$inboundSchema:
+export const UpdateFirewallConfigRequestBodyAction$outboundSchema:
   z.ZodNativeEnum<typeof UpdateFirewallConfigRequestBodyAction> = z.nativeEnum(
     UpdateFirewallConfigRequestBodyAction,
   );
-/** @internal */
-export const UpdateFirewallConfigRequestBodyAction$outboundSchema:
-  z.ZodNativeEnum<typeof UpdateFirewallConfigRequestBodyAction> =
-    UpdateFirewallConfigRequestBodyAction$inboundSchema;
 
-/** @internal */
-export const UpdateFirewallConfigRequestBody1$inboundSchema: z.ZodType<
-  UpdateFirewallConfigRequestBody1,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  action: UpdateFirewallConfigRequestBodyAction$inboundSchema,
-  id: z.nullable(z.any()).optional(),
-  value: types.boolean(),
-});
 /** @internal */
 export type UpdateFirewallConfigRequestBody1$Outbound = {
   action: string;
@@ -3239,37 +2103,7 @@ export function updateFirewallConfigRequestBody1ToJSON(
     ),
   );
 }
-export function updateFirewallConfigRequestBody1FromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateFirewallConfigRequestBody1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateFirewallConfigRequestBody1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateFirewallConfigRequestBody1' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateFirewallConfigRequestBody$inboundSchema: z.ZodType<
-  UpdateFirewallConfigRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([
-  z.lazy(() => UpdateFirewallConfigRequestBody3$inboundSchema),
-  z.lazy(() => UpdateFirewallConfigRequestBody5$inboundSchema),
-  z.lazy(() => UpdateFirewallConfigRequestBody6$inboundSchema),
-  z.lazy(() => UpdateFirewallConfigRequestBody9$inboundSchema),
-  z.lazy(() => RequestBody11$inboundSchema),
-  z.lazy(() => RequestBody12$inboundSchema),
-  z.lazy(() => UpdateFirewallConfigRequestBody1$inboundSchema),
-  z.lazy(() => UpdateFirewallConfigRequestBody2$inboundSchema),
-  z.lazy(() => UpdateFirewallConfigRequestBody4$inboundSchema),
-  z.lazy(() => UpdateFirewallConfigRequestBody8$inboundSchema),
-  z.lazy(() => UpdateFirewallConfigRequestBody10$inboundSchema),
-  z.lazy(() => RequestBody13$inboundSchema),
-  z.lazy(() => RequestBody14$inboundSchema),
-  z.lazy(() => UpdateFirewallConfigRequestBody7$inboundSchema),
-]);
 /** @internal */
 export type UpdateFirewallConfigRequestBody$Outbound =
   | UpdateFirewallConfigRequestBody3$Outbound
@@ -3318,46 +2152,7 @@ export function updateFirewallConfigRequestBodyToJSON(
     ),
   );
 }
-export function updateFirewallConfigRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateFirewallConfigRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateFirewallConfigRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateFirewallConfigRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateFirewallConfigRequest$inboundSchema: z.ZodType<
-  UpdateFirewallConfigRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  projectId: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-  RequestBody: smartUnion([
-    z.lazy(() => UpdateFirewallConfigRequestBody3$inboundSchema),
-    z.lazy(() => UpdateFirewallConfigRequestBody5$inboundSchema),
-    z.lazy(() => UpdateFirewallConfigRequestBody6$inboundSchema),
-    z.lazy(() => UpdateFirewallConfigRequestBody9$inboundSchema),
-    z.lazy(() => RequestBody11$inboundSchema),
-    z.lazy(() => RequestBody12$inboundSchema),
-    z.lazy(() => UpdateFirewallConfigRequestBody1$inboundSchema),
-    z.lazy(() => UpdateFirewallConfigRequestBody2$inboundSchema),
-    z.lazy(() => UpdateFirewallConfigRequestBody4$inboundSchema),
-    z.lazy(() => UpdateFirewallConfigRequestBody8$inboundSchema),
-    z.lazy(() => UpdateFirewallConfigRequestBody10$inboundSchema),
-    z.lazy(() => RequestBody13$inboundSchema),
-    z.lazy(() => RequestBody14$inboundSchema),
-    z.lazy(() => UpdateFirewallConfigRequestBody7$inboundSchema),
-  ]),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 /** @internal */
 export type UpdateFirewallConfigRequest$Outbound = {
   projectId: string;
@@ -3420,15 +2215,6 @@ export function updateFirewallConfigRequestToJSON(
     ),
   );
 }
-export function updateFirewallConfigRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateFirewallConfigRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateFirewallConfigRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateFirewallConfigRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const UpdateFirewallConfigResponseBody$inboundSchema: z.ZodType<
@@ -3436,25 +2222,7 @@ export const UpdateFirewallConfigResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-/** @internal */
-export type UpdateFirewallConfigResponseBody$Outbound = {};
 
-/** @internal */
-export const UpdateFirewallConfigResponseBody$outboundSchema: z.ZodType<
-  UpdateFirewallConfigResponseBody$Outbound,
-  z.ZodTypeDef,
-  UpdateFirewallConfigResponseBody
-> = z.object({});
-
-export function updateFirewallConfigResponseBodyToJSON(
-  updateFirewallConfigResponseBody: UpdateFirewallConfigResponseBody,
-): string {
-  return JSON.stringify(
-    UpdateFirewallConfigResponseBody$outboundSchema.parse(
-      updateFirewallConfigResponseBody,
-    ),
-  );
-}
 export function updateFirewallConfigResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateFirewallConfigResponseBody, SDKValidationError> {

@@ -4,10 +4,6 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
-import { Result as SafeParseResult } from "../types/fp.js";
-import * as types from "../types/primitives.js";
-import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type UpdateProjectsByProjectIdRollbackByDeploymentIdUpdateDescriptionRequestBody =
   {
@@ -26,15 +22,6 @@ export type UpdateProjectsByProjectIdRollbackByDeploymentIdUpdateDescriptionRequ
       | undefined;
   };
 
-/** @internal */
-export const UpdateProjectsByProjectIdRollbackByDeploymentIdUpdateDescriptionRequestBody$inboundSchema:
-  z.ZodType<
-    UpdateProjectsByProjectIdRollbackByDeploymentIdUpdateDescriptionRequestBody,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    description: types.optional(types.string()),
-  });
 /** @internal */
 export type UpdateProjectsByProjectIdRollbackByDeploymentIdUpdateDescriptionRequestBody$Outbound =
   {
@@ -62,40 +49,7 @@ export function updateProjectsByProjectIdRollbackByDeploymentIdUpdateDescription
       ),
   );
 }
-export function updateProjectsByProjectIdRollbackByDeploymentIdUpdateDescriptionRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  UpdateProjectsByProjectIdRollbackByDeploymentIdUpdateDescriptionRequestBody,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      UpdateProjectsByProjectIdRollbackByDeploymentIdUpdateDescriptionRequestBody$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'UpdateProjectsByProjectIdRollbackByDeploymentIdUpdateDescriptionRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateProjectsByProjectIdRollbackByDeploymentIdUpdateDescriptionRequest$inboundSchema:
-  z.ZodType<
-    UpdateProjectsByProjectIdRollbackByDeploymentIdUpdateDescriptionRequest,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    projectId: types.string(),
-    deploymentId: types.string(),
-    RequestBody: types.optional(
-      z.lazy(() =>
-        UpdateProjectsByProjectIdRollbackByDeploymentIdUpdateDescriptionRequestBody$inboundSchema
-      ),
-    ),
-  }).transform((v) => {
-    return remap$(v, {
-      "RequestBody": "requestBody",
-    });
-  });
 /** @internal */
 export type UpdateProjectsByProjectIdRollbackByDeploymentIdUpdateDescriptionRequest$Outbound =
   {
@@ -133,19 +87,5 @@ export function updateProjectsByProjectIdRollbackByDeploymentIdUpdateDescription
       .parse(
         updateProjectsByProjectIdRollbackByDeploymentIdUpdateDescriptionRequest,
       ),
-  );
-}
-export function updateProjectsByProjectIdRollbackByDeploymentIdUpdateDescriptionRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  UpdateProjectsByProjectIdRollbackByDeploymentIdUpdateDescriptionRequest,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      UpdateProjectsByProjectIdRollbackByDeploymentIdUpdateDescriptionRequest$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'UpdateProjectsByProjectIdRollbackByDeploymentIdUpdateDescriptionRequest' from JSON`,
   );
 }

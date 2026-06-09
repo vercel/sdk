@@ -15,7 +15,7 @@ let value: UpdateDrainFilter2 = {
 
 ## Fields
 
-| Field                            | Type                             | Required                         | Description                      |
-| -------------------------------- | -------------------------------- | -------------------------------- | -------------------------------- |
-| `version`                        | *string*                         | :heavy_check_mark:               | N/A                              |
-| `filter`                         | *models.UpdateDrainFilterFilter* | :heavy_check_mark:               | N/A                              |
+| Field                 | Type                  | Required              | Description           |
+| --------------------- | --------------------- | --------------------- | --------------------- |
+| `version`             | *string*              | :heavy_check_mark:    | N/A                   |
+| `filter`              | *models.FilterFilter* | :heavy_check_mark:    | N/A                   |

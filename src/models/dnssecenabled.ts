@@ -49,10 +49,6 @@ export class DNSSECEnabled extends VercelError {
 export const DNSSECEnabledCode$inboundSchema: z.ZodNativeEnum<
   typeof DNSSECEnabledCode
 > = z.nativeEnum(DNSSECEnabledCode);
-/** @internal */
-export const DNSSECEnabledCode$outboundSchema: z.ZodNativeEnum<
-  typeof DNSSECEnabledCode
-> = DNSSECEnabledCode$inboundSchema;
 
 /** @internal */
 export const DNSSECEnabled$inboundSchema: z.ZodType<
@@ -74,23 +70,3 @@ export const DNSSECEnabled$inboundSchema: z.ZodType<
       body: v.body$,
     });
   });
-
-/** @internal */
-export type DNSSECEnabled$Outbound = {
-  status: number;
-  code: string;
-  message: string;
-};
-
-/** @internal */
-export const DNSSECEnabled$outboundSchema: z.ZodType<
-  DNSSECEnabled$Outbound,
-  z.ZodTypeDef,
-  DNSSECEnabled
-> = z.instanceof(DNSSECEnabled)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    status: z.number(),
-    code: DNSSECEnabledCode$outboundSchema,
-    message: z.string(),
-  }));

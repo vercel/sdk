@@ -3,10 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
-import { Result as SafeParseResult } from "../types/fp.js";
-import * as types from "../types/primitives.js";
-import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type DeleteProjectRequest = {
   /**
@@ -23,16 +19,6 @@ export type DeleteProjectRequest = {
   slug?: string | undefined;
 };
 
-/** @internal */
-export const DeleteProjectRequest$inboundSchema: z.ZodType<
-  DeleteProjectRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  idOrName: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
 /** @internal */
 export type DeleteProjectRequest$Outbound = {
   idOrName: string;
@@ -56,14 +42,5 @@ export function deleteProjectRequestToJSON(
 ): string {
   return JSON.stringify(
     DeleteProjectRequest$outboundSchema.parse(deleteProjectRequest),
-  );
-}
-export function deleteProjectRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<DeleteProjectRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => DeleteProjectRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DeleteProjectRequest' from JSON`,
   );
 }

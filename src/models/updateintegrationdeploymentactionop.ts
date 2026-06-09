@@ -4,11 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
-import { Result as SafeParseResult } from "../types/fp.js";
-import * as types from "../types/primitives.js";
-import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export const UpdateIntegrationDeploymentActionStatus = {
   Running: "running",
@@ -47,20 +43,10 @@ export type UpdateIntegrationDeploymentActionRequest = {
 };
 
 /** @internal */
-export const UpdateIntegrationDeploymentActionStatus$inboundSchema:
+export const UpdateIntegrationDeploymentActionStatus$outboundSchema:
   z.ZodNativeEnum<typeof UpdateIntegrationDeploymentActionStatus> = z
     .nativeEnum(UpdateIntegrationDeploymentActionStatus);
-/** @internal */
-export const UpdateIntegrationDeploymentActionStatus$outboundSchema:
-  z.ZodNativeEnum<typeof UpdateIntegrationDeploymentActionStatus> =
-    UpdateIntegrationDeploymentActionStatus$inboundSchema;
 
-/** @internal */
-export const Secrets$inboundSchema: z.ZodType<Secrets, z.ZodTypeDef, unknown> =
-  z.object({
-    name: types.string(),
-    value: types.string(),
-  });
 /** @internal */
 export type Secrets$Outbound = {
   name: string;
@@ -80,25 +66,7 @@ export const Secrets$outboundSchema: z.ZodType<
 export function secretsToJSON(secrets: Secrets): string {
   return JSON.stringify(Secrets$outboundSchema.parse(secrets));
 }
-export function secretsFromJSON(
-  jsonString: string,
-): SafeParseResult<Secrets, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Secrets$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Secrets' from JSON`,
-  );
-}
 
-/** @internal */
-export const Outcomes1$inboundSchema: z.ZodType<
-  Outcomes1,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  kind: types.string(),
-  secrets: z.array(z.lazy(() => Secrets$inboundSchema)),
-});
 /** @internal */
 export type Outcomes1$Outbound = {
   kind: string;
@@ -118,22 +86,7 @@ export const Outcomes1$outboundSchema: z.ZodType<
 export function outcomes1ToJSON(outcomes1: Outcomes1): string {
   return JSON.stringify(Outcomes1$outboundSchema.parse(outcomes1));
 }
-export function outcomes1FromJSON(
-  jsonString: string,
-): SafeParseResult<Outcomes1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Outcomes1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Outcomes1' from JSON`,
-  );
-}
 
-/** @internal */
-export const Outcomes$inboundSchema: z.ZodType<
-  Outcomes,
-  z.ZodTypeDef,
-  unknown
-> = z.lazy(() => Outcomes1$inboundSchema);
 /** @internal */
 export type Outcomes$Outbound = Outcomes1$Outbound;
 
@@ -147,30 +100,7 @@ export const Outcomes$outboundSchema: z.ZodType<
 export function outcomesToJSON(outcomes: Outcomes): string {
   return JSON.stringify(Outcomes$outboundSchema.parse(outcomes));
 }
-export function outcomesFromJSON(
-  jsonString: string,
-): SafeParseResult<Outcomes, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Outcomes$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Outcomes' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateIntegrationDeploymentActionRequestBody$inboundSchema:
-  z.ZodType<
-    UpdateIntegrationDeploymentActionRequestBody,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    status: types.optional(
-      UpdateIntegrationDeploymentActionStatus$inboundSchema,
-    ),
-    statusText: types.optional(types.string()),
-    statusUrl: types.optional(types.string()),
-    outcomes: types.optional(z.array(z.lazy(() => Outcomes1$inboundSchema))),
-  });
 /** @internal */
 export type UpdateIntegrationDeploymentActionRequestBody$Outbound = {
   status?: string | undefined;
@@ -202,40 +132,7 @@ export function updateIntegrationDeploymentActionRequestBodyToJSON(
     ),
   );
 }
-export function updateIntegrationDeploymentActionRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  UpdateIntegrationDeploymentActionRequestBody,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      UpdateIntegrationDeploymentActionRequestBody$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'UpdateIntegrationDeploymentActionRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const UpdateIntegrationDeploymentActionRequest$inboundSchema: z.ZodType<
-  UpdateIntegrationDeploymentActionRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  deploymentId: types.string(),
-  integrationConfigurationId: types.string(),
-  resourceId: types.string(),
-  action: types.string(),
-  RequestBody: types.optional(
-    z.lazy(() => UpdateIntegrationDeploymentActionRequestBody$inboundSchema),
-  ),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 /** @internal */
 export type UpdateIntegrationDeploymentActionRequest$Outbound = {
   deploymentId: string;
@@ -274,20 +171,5 @@ export function updateIntegrationDeploymentActionRequestToJSON(
     UpdateIntegrationDeploymentActionRequest$outboundSchema.parse(
       updateIntegrationDeploymentActionRequest,
     ),
-  );
-}
-export function updateIntegrationDeploymentActionRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  UpdateIntegrationDeploymentActionRequest,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      UpdateIntegrationDeploymentActionRequest$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'UpdateIntegrationDeploymentActionRequest' from JSON`,
   );
 }

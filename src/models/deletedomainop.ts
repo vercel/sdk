@@ -31,16 +31,6 @@ export type DeleteDomainResponseBody = {
 };
 
 /** @internal */
-export const DeleteDomainRequest$inboundSchema: z.ZodType<
-  DeleteDomainRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  domain: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
-/** @internal */
 export type DeleteDomainRequest$Outbound = {
   domain: string;
   teamId?: string | undefined;
@@ -65,15 +55,6 @@ export function deleteDomainRequestToJSON(
     DeleteDomainRequest$outboundSchema.parse(deleteDomainRequest),
   );
 }
-export function deleteDomainRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<DeleteDomainRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => DeleteDomainRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DeleteDomainRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const DeleteDomainResponseBody$inboundSchema: z.ZodType<
@@ -83,27 +64,7 @@ export const DeleteDomainResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   uid: types.string(),
 });
-/** @internal */
-export type DeleteDomainResponseBody$Outbound = {
-  uid: string;
-};
 
-/** @internal */
-export const DeleteDomainResponseBody$outboundSchema: z.ZodType<
-  DeleteDomainResponseBody$Outbound,
-  z.ZodTypeDef,
-  DeleteDomainResponseBody
-> = z.object({
-  uid: z.string(),
-});
-
-export function deleteDomainResponseBodyToJSON(
-  deleteDomainResponseBody: DeleteDomainResponseBody,
-): string {
-  return JSON.stringify(
-    DeleteDomainResponseBody$outboundSchema.parse(deleteDomainResponseBody),
-  );
-}
 export function deleteDomainResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<DeleteDomainResponseBody, SDKValidationError> {

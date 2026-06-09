@@ -4,11 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
-import { Result as SafeParseResult } from "../types/fp.js";
-import * as types from "../types/primitives.js";
-import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export const CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsCategory =
   {
@@ -52,38 +48,13 @@ export type CreateInstallationsByIntegrationConfigurationIdResourcesByResourceId
   };
 
 /** @internal */
-export const CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsCategory$inboundSchema:
+export const CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsCategory$outboundSchema:
   z.ZodNativeEnum<
     typeof CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsCategory
   > = z.nativeEnum(
     CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsCategory,
   );
-/** @internal */
-export const CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsCategory$outboundSchema:
-  z.ZodNativeEnum<
-    typeof CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsCategory
-  > =
-    CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsCategory$inboundSchema;
 
-/** @internal */
-export const CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsItems$inboundSchema:
-  z.ZodType<
-    CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsItems,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    id: types.string(),
-    slug: types.string(),
-    origin: types.string(),
-    category: types.optional(
-      CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsCategory$inboundSchema,
-    ),
-    name: types.optional(types.string()),
-    description: types.optional(types.string()),
-    isArchived: types.optional(types.boolean()),
-    createdAt: types.optional(types.number()),
-    updatedAt: types.optional(types.number()),
-  });
 /** @internal */
 export type CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsItems$Outbound =
   {
@@ -129,34 +100,7 @@ export function createInstallationsByIntegrationConfigurationIdResourcesByResour
       ),
   );
 }
-export function createInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsItemsFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsItems,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsItems$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsItems' from JSON`,
-  );
-}
 
-/** @internal */
-export const CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsRequestBody$inboundSchema:
-  z.ZodType<
-    CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsRequestBody,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    items: z.array(
-      z.lazy(() =>
-        CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsItems$inboundSchema
-      ),
-    ),
-  });
 /** @internal */
 export type CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsRequestBody$Outbound =
   {
@@ -190,40 +134,7 @@ export function createInstallationsByIntegrationConfigurationIdResourcesByResour
       ),
   );
 }
-export function createInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsRequestBody,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsRequestBody$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsRequestBody' from JSON`,
-  );
-}
 
-/** @internal */
-export const CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsRequest$inboundSchema:
-  z.ZodType<
-    CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsRequest,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    integrationConfigurationId: types.string(),
-    resourceId: types.string(),
-    RequestBody: types.optional(
-      z.lazy(() =>
-        CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsRequestBody$inboundSchema
-      ),
-    ),
-  }).transform((v) => {
-    return remap$(v, {
-      "RequestBody": "requestBody",
-    });
-  });
 /** @internal */
 export type CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsRequest$Outbound =
   {
@@ -261,19 +172,5 @@ export function createInstallationsByIntegrationConfigurationIdResourcesByResour
       .parse(
         createInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsRequest,
       ),
-  );
-}
-export function createInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsRequest,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsRequest$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsRequest' from JSON`,
   );
 }

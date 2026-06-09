@@ -28,9 +28,6 @@ export type PropertyKey = PropertyKey3 | string | number;
 
 /** @internal */
 export const Tag$inboundSchema: z.ZodNativeEnum<typeof Tag> = z.nativeEnum(Tag);
-/** @internal */
-export const Tag$outboundSchema: z.ZodNativeEnum<typeof Tag> =
-  Tag$inboundSchema;
 
 /** @internal */
 export const PropertyKey3$inboundSchema: z.ZodType<
@@ -45,29 +42,7 @@ export const PropertyKey3$inboundSchema: z.ZodType<
     "_tag": "tag",
   });
 });
-/** @internal */
-export type PropertyKey3$Outbound = {
-  _tag: string;
-  key: string;
-};
 
-/** @internal */
-export const PropertyKey3$outboundSchema: z.ZodType<
-  PropertyKey3$Outbound,
-  z.ZodTypeDef,
-  PropertyKey3
-> = z.object({
-  tag: Tag$outboundSchema,
-  key: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    tag: "_tag",
-  });
-});
-
-export function propertyKey3ToJSON(propertyKey3: PropertyKey3): string {
-  return JSON.stringify(PropertyKey3$outboundSchema.parse(propertyKey3));
-}
 export function propertyKey3FromJSON(
   jsonString: string,
 ): SafeParseResult<PropertyKey3, SDKValidationError> {
@@ -88,23 +63,7 @@ export const PropertyKey$inboundSchema: z.ZodType<
   types.string(),
   types.number(),
 ]);
-/** @internal */
-export type PropertyKey$Outbound = PropertyKey3$Outbound | string | number;
 
-/** @internal */
-export const PropertyKey$outboundSchema: z.ZodType<
-  PropertyKey$Outbound,
-  z.ZodTypeDef,
-  PropertyKey
-> = smartUnion([
-  z.lazy(() => PropertyKey3$outboundSchema),
-  z.string(),
-  z.number(),
-]);
-
-export function propertyKeyToJSON(propertyKey: PropertyKey): string {
-  return JSON.stringify(PropertyKey$outboundSchema.parse(propertyKey));
-}
 export function propertyKeyFromJSON(
   jsonString: string,
 ): SafeParseResult<PropertyKey, SDKValidationError> {

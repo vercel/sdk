@@ -58,9 +58,6 @@ export type FileTree = {
 /** @internal */
 export const FileTreeType$inboundSchema: z.ZodNativeEnum<typeof FileTreeType> =
   z.nativeEnum(FileTreeType);
-/** @internal */
-export const FileTreeType$outboundSchema: z.ZodNativeEnum<typeof FileTreeType> =
-  FileTreeType$inboundSchema;
 
 /** @internal */
 export const FileTree$inboundSchema: z.ZodType<
@@ -75,33 +72,7 @@ export const FileTree$inboundSchema: z.ZodType<
   contentType: types.optional(types.string()),
   mode: types.number(),
 });
-/** @internal */
-export type FileTree$Outbound = {
-  name: string;
-  type: string;
-  uid?: string | undefined;
-  children?: Array<FileTree$Outbound> | undefined;
-  contentType?: string | undefined;
-  mode: number;
-};
 
-/** @internal */
-export const FileTree$outboundSchema: z.ZodType<
-  FileTree$Outbound,
-  z.ZodTypeDef,
-  FileTree
-> = z.object({
-  name: z.string(),
-  type: FileTreeType$outboundSchema,
-  uid: z.string().optional(),
-  children: z.array(z.lazy(() => FileTree$outboundSchema)).optional(),
-  contentType: z.string().optional(),
-  mode: z.number(),
-});
-
-export function fileTreeToJSON(fileTree: FileTree): string {
-  return JSON.stringify(FileTree$outboundSchema.parse(fileTree));
-}
 export function fileTreeFromJSON(
   jsonString: string,
 ): SafeParseResult<FileTree, SDKValidationError> {

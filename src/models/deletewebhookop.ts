@@ -3,10 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
-import { Result as SafeParseResult } from "../types/fp.js";
-import * as types from "../types/primitives.js";
-import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type DeleteWebhookRequest = {
   id: string;
@@ -20,16 +16,6 @@ export type DeleteWebhookRequest = {
   slug?: string | undefined;
 };
 
-/** @internal */
-export const DeleteWebhookRequest$inboundSchema: z.ZodType<
-  DeleteWebhookRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
 /** @internal */
 export type DeleteWebhookRequest$Outbound = {
   id: string;
@@ -53,14 +39,5 @@ export function deleteWebhookRequestToJSON(
 ): string {
   return JSON.stringify(
     DeleteWebhookRequest$outboundSchema.parse(deleteWebhookRequest),
-  );
-}
-export function deleteWebhookRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<DeleteWebhookRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => DeleteWebhookRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DeleteWebhookRequest' from JSON`,
   );
 }

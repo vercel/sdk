@@ -3,10 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
-import { Result as SafeParseResult } from "../types/fp.js";
-import * as types from "../types/primitives.js";
-import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type DeleteEdgeConfigRequest = {
   edgeConfigId: string;
@@ -20,16 +16,6 @@ export type DeleteEdgeConfigRequest = {
   slug?: string | undefined;
 };
 
-/** @internal */
-export const DeleteEdgeConfigRequest$inboundSchema: z.ZodType<
-  DeleteEdgeConfigRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  edgeConfigId: types.string(),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
 /** @internal */
 export type DeleteEdgeConfigRequest$Outbound = {
   edgeConfigId: string;
@@ -53,14 +39,5 @@ export function deleteEdgeConfigRequestToJSON(
 ): string {
   return JSON.stringify(
     DeleteEdgeConfigRequest$outboundSchema.parse(deleteEdgeConfigRequest),
-  );
-}
-export function deleteEdgeConfigRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<DeleteEdgeConfigRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => DeleteEdgeConfigRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DeleteEdgeConfigRequest' from JSON`,
   );
 }

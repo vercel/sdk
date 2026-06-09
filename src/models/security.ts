@@ -3,23 +3,11 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
-import { Result as SafeParseResult } from "../types/fp.js";
-import * as types from "../types/primitives.js";
-import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type Security = {
   bearerToken?: string | undefined;
 };
 
-/** @internal */
-export const Security$inboundSchema: z.ZodType<
-  Security,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  bearerToken: types.optional(types.string()),
-});
 /** @internal */
 export type Security$Outbound = {
   bearerToken?: string | undefined;
@@ -36,13 +24,4 @@ export const Security$outboundSchema: z.ZodType<
 
 export function securityToJSON(security: Security): string {
   return JSON.stringify(Security$outboundSchema.parse(security));
-}
-export function securityFromJSON(
-  jsonString: string,
-): SafeParseResult<Security, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Security$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Security' from JSON`,
-  );
 }

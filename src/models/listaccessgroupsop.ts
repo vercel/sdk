@@ -101,21 +101,6 @@ export type ListAccessGroupsResponseBody =
   | ListAccessGroupsResponseBody1;
 
 /** @internal */
-export const ListAccessGroupsRequest$inboundSchema: z.ZodType<
-  ListAccessGroupsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  projectId: types.optional(types.string()),
-  search: types.optional(types.string()),
-  membersLimit: types.optional(types.number()),
-  projectsLimit: types.optional(types.number()),
-  limit: types.optional(types.number()),
-  next: types.optional(types.string()),
-  teamId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
-/** @internal */
 export type ListAccessGroupsRequest$Outbound = {
   projectId?: string | undefined;
   search?: string | undefined;
@@ -150,15 +135,6 @@ export function listAccessGroupsRequestToJSON(
     ListAccessGroupsRequest$outboundSchema.parse(listAccessGroupsRequest),
   );
 }
-export function listAccessGroupsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<ListAccessGroupsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ListAccessGroupsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ListAccessGroupsRequest' from JSON`,
-  );
-}
 
 /** @internal */
 export const AccessGroups$inboundSchema: z.ZodType<
@@ -180,47 +156,7 @@ export const AccessGroups$inboundSchema: z.ZodType<
   projectsCount: types.number(),
   teamRoles: types.optional(z.array(types.string())),
 });
-/** @internal */
-export type AccessGroups$Outbound = {
-  members?: Array<string> | undefined;
-  projects?: Array<string> | undefined;
-  entitlements?: Array<string> | undefined;
-  teamPermissions?: Array<string> | undefined;
-  isDsyncManaged: boolean;
-  name: string;
-  createdAt: string;
-  teamId: string;
-  updatedAt: string;
-  accessGroupId: string;
-  membersCount: number;
-  projectsCount: number;
-  teamRoles?: Array<string> | undefined;
-};
 
-/** @internal */
-export const AccessGroups$outboundSchema: z.ZodType<
-  AccessGroups$Outbound,
-  z.ZodTypeDef,
-  AccessGroups
-> = z.object({
-  members: z.array(z.string()).optional(),
-  projects: z.array(z.string()).optional(),
-  entitlements: z.array(z.string()).optional(),
-  teamPermissions: z.array(z.string()).optional(),
-  isDsyncManaged: z.boolean(),
-  name: z.string(),
-  createdAt: z.string(),
-  teamId: z.string(),
-  updatedAt: z.string(),
-  accessGroupId: z.string(),
-  membersCount: z.number(),
-  projectsCount: z.number(),
-  teamRoles: z.array(z.string()).optional(),
-});
-
-export function accessGroupsToJSON(accessGroups: AccessGroups): string {
-  return JSON.stringify(AccessGroups$outboundSchema.parse(accessGroups));
-}
 export function accessGroupsFromJSON(
   jsonString: string,
 ): SafeParseResult<AccessGroups, SDKValidationError> {
@@ -240,29 +176,7 @@ export const ResponseBodyPagination$inboundSchema: z.ZodType<
   count: types.number(),
   next: types.nullable(types.string()),
 });
-/** @internal */
-export type ResponseBodyPagination$Outbound = {
-  count: number;
-  next: string | null;
-};
 
-/** @internal */
-export const ResponseBodyPagination$outboundSchema: z.ZodType<
-  ResponseBodyPagination$Outbound,
-  z.ZodTypeDef,
-  ResponseBodyPagination
-> = z.object({
-  count: z.number(),
-  next: z.nullable(z.string()),
-});
-
-export function responseBodyPaginationToJSON(
-  responseBodyPagination: ResponseBodyPagination,
-): string {
-  return JSON.stringify(
-    ResponseBodyPagination$outboundSchema.parse(responseBodyPagination),
-  );
-}
 export function responseBodyPaginationFromJSON(
   jsonString: string,
 ): SafeParseResult<ResponseBodyPagination, SDKValidationError> {
@@ -282,31 +196,7 @@ export const ListAccessGroupsResponseBody2$inboundSchema: z.ZodType<
   accessGroups: z.array(z.lazy(() => AccessGroups$inboundSchema)),
   pagination: z.lazy(() => ResponseBodyPagination$inboundSchema),
 });
-/** @internal */
-export type ListAccessGroupsResponseBody2$Outbound = {
-  accessGroups: Array<AccessGroups$Outbound>;
-  pagination: ResponseBodyPagination$Outbound;
-};
 
-/** @internal */
-export const ListAccessGroupsResponseBody2$outboundSchema: z.ZodType<
-  ListAccessGroupsResponseBody2$Outbound,
-  z.ZodTypeDef,
-  ListAccessGroupsResponseBody2
-> = z.object({
-  accessGroups: z.array(z.lazy(() => AccessGroups$outboundSchema)),
-  pagination: z.lazy(() => ResponseBodyPagination$outboundSchema),
-});
-
-export function listAccessGroupsResponseBody2ToJSON(
-  listAccessGroupsResponseBody2: ListAccessGroupsResponseBody2,
-): string {
-  return JSON.stringify(
-    ListAccessGroupsResponseBody2$outboundSchema.parse(
-      listAccessGroupsResponseBody2,
-    ),
-  );
-}
 export function listAccessGroupsResponseBody2FromJSON(
   jsonString: string,
 ): SafeParseResult<ListAccessGroupsResponseBody2, SDKValidationError> {
@@ -323,25 +213,7 @@ export const ListAccessGroupsResponseBody1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-/** @internal */
-export type ListAccessGroupsResponseBody1$Outbound = {};
 
-/** @internal */
-export const ListAccessGroupsResponseBody1$outboundSchema: z.ZodType<
-  ListAccessGroupsResponseBody1$Outbound,
-  z.ZodTypeDef,
-  ListAccessGroupsResponseBody1
-> = z.object({});
-
-export function listAccessGroupsResponseBody1ToJSON(
-  listAccessGroupsResponseBody1: ListAccessGroupsResponseBody1,
-): string {
-  return JSON.stringify(
-    ListAccessGroupsResponseBody1$outboundSchema.parse(
-      listAccessGroupsResponseBody1,
-    ),
-  );
-}
 export function listAccessGroupsResponseBody1FromJSON(
   jsonString: string,
 ): SafeParseResult<ListAccessGroupsResponseBody1, SDKValidationError> {
@@ -361,30 +233,7 @@ export const ListAccessGroupsResponseBody$inboundSchema: z.ZodType<
   z.lazy(() => ListAccessGroupsResponseBody2$inboundSchema),
   z.lazy(() => ListAccessGroupsResponseBody1$inboundSchema),
 ]);
-/** @internal */
-export type ListAccessGroupsResponseBody$Outbound =
-  | ListAccessGroupsResponseBody2$Outbound
-  | ListAccessGroupsResponseBody1$Outbound;
 
-/** @internal */
-export const ListAccessGroupsResponseBody$outboundSchema: z.ZodType<
-  ListAccessGroupsResponseBody$Outbound,
-  z.ZodTypeDef,
-  ListAccessGroupsResponseBody
-> = smartUnion([
-  z.lazy(() => ListAccessGroupsResponseBody2$outboundSchema),
-  z.lazy(() => ListAccessGroupsResponseBody1$outboundSchema),
-]);
-
-export function listAccessGroupsResponseBodyToJSON(
-  listAccessGroupsResponseBody: ListAccessGroupsResponseBody,
-): string {
-  return JSON.stringify(
-    ListAccessGroupsResponseBody$outboundSchema.parse(
-      listAccessGroupsResponseBody,
-    ),
-  );
-}
 export function listAccessGroupsResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<ListAccessGroupsResponseBody, SDKValidationError> {

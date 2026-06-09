@@ -45,10 +45,6 @@ export class InternalServerError extends VercelError {
 export const InternalServerErrorCode$inboundSchema: z.ZodNativeEnum<
   typeof InternalServerErrorCode
 > = z.nativeEnum(InternalServerErrorCode);
-/** @internal */
-export const InternalServerErrorCode$outboundSchema: z.ZodNativeEnum<
-  typeof InternalServerErrorCode
-> = InternalServerErrorCode$inboundSchema;
 
 /** @internal */
 export const InternalServerError$inboundSchema: z.ZodType<
@@ -70,23 +66,3 @@ export const InternalServerError$inboundSchema: z.ZodType<
       body: v.body$,
     });
   });
-
-/** @internal */
-export type InternalServerError$Outbound = {
-  status: number;
-  code: string;
-  message: string;
-};
-
-/** @internal */
-export const InternalServerError$outboundSchema: z.ZodType<
-  InternalServerError$Outbound,
-  z.ZodTypeDef,
-  InternalServerError
-> = z.instanceof(InternalServerError)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    status: z.number(),
-    code: InternalServerErrorCode$outboundSchema,
-    message: z.string(),
-  }));

@@ -38,7 +38,8 @@ typescript:
     dependencies: {}
     devDependencies: {}
     peerDependencies: {}
-  additionalPackageJSON: {}
+  additionalPackageJSON:
+    license: Apache-2.0
   additionalScripts: {}
   alwaysIncludeInboundAndOutbound: false
   author: Speakeasy

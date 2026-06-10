@@ -2,6 +2,7 @@
   "name": "@vercel/sdk",
   "version": "1.27.0",
   "author": "Speakeasy",
+  "license": "Apache-2.0",
   "type": "module",
   "main": "./esm/index.js",
   "exports": {

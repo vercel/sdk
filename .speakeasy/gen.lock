@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 79567c4a-05f9-4d65-864d-dfe107aa4e9d
 management:
-  docChecksum: 9c9eccbb88674cc60cf43531a2d4f8d3
+  docChecksum: f572f7e90a9cef760adcfc4413a0afff
   docVersion: 0.0.1
-  speakeasyVersion: 1.773.1
-  generationVersion: 2.897.1
-  releaseVersion: 1.27.0
-  configChecksum: db58e7defccde67e8ae94f350968ce3c
+  speakeasyVersion: 1.774.0
+  generationVersion: 2.899.0
+  releaseVersion: 1.27.1
+  configChecksum: bd586898818d02882d9ee88a3065ca47
   repoURL: https://github.com/vercel/sdk.git
   installationURL: https://github.com/vercel/sdk
   published: true
 persistentEdits:
-  generation_id: c1c08be8-34d6-4ed5-9ea9-6b6ddad37c94
-  pristine_commit_hash: 3194353b04b8ad198e37fb01a3c4aefb81c1a32d
-  pristine_tree_hash: ddec7332507823210cf5554a2e98e3cdd2f1575a
+  generation_id: 48a27ea1-5eaa-48bd-a815-e0b411a45497
+  pristine_commit_hash: cdc3f4f9f3948e9b23fafbe7d1f8386e14dae1a9
+  pristine_tree_hash: 3a13f06faa42a26d930970e388a51981146badee
 features:
   typescript:
     acceptHeaders: 2.81.2
@@ -19403,8 +19403,8 @@ trackedFiles:
     pristine_git_object: 39bf3178a90bebdf4faf681a8250383a6751ea0e
   docs/models/nextpermissions.md:
     id: 143c531ef620
-    last_write_checksum: sha1:c5a908a4da87dce955e5a9010f1593dfa04cd14d
-    pristine_git_object: b3eb41e92baa89ba8154ede0073e2801333450ca
+    last_write_checksum: sha1:162737d64db561e805fc88aa8ef1ad032c0cbad1
+    pristine_git_object: 98211f999159e2b9e60ca81fbdf490f8ac61c2d6
   docs/models/nextrole.md:
     id: 2b7bdbb091d1
     last_write_checksum: sha1:376244d4e926ad0f60f98e14d6da944332e57d5d
@@ -20843,8 +20843,8 @@ trackedFiles:
     pristine_git_object: e712ae66dd37c4629d1eb59a87bdfe29e3524e1e
   docs/models/payloadpermissions.md:
     id: ce632e6b31dc
-    last_write_checksum: sha1:0decf35729d059728e411278901c85c731351178
-    pristine_git_object: 36525aa41e3d912d7d4ab5b0d76b10c6fd756a63
+    last_write_checksum: sha1:73b4088fcb0fc006de529cf344ffed50e7cc8e0d
+    pristine_git_object: d67dd23e9d468ca8318be8250e0efc2335401908
   docs/models/payloadplan.md:
     id: ba32b4d1ba5b
     last_write_checksum: sha1:9bfac076af635f9a2abac7341fbcfec57ece1f58
@@ -21035,8 +21035,8 @@ trackedFiles:
     pristine_git_object: aa821cc43cf528c5adc68b248b65a7982336c913
   docs/models/permissions.md:
     id: 9f5fb12f1ed7
-    last_write_checksum: sha1:31b801c65327f9449755bd43550e9e43beb902a1
-    pristine_git_object: 6335410768696397022a832874330af7d5d33876
+    last_write_checksum: sha1:ee9fe17e44e2712fa1ae7645997df3bbf0c5d73d
+    pristine_git_object: 3aa4c0f11465137f24669a701527bb94adf4cb73
   docs/models/php.md:
     id: e01dd48a8b07
     last_write_checksum: sha1:df3a906daabc3ee5eee846461d431140f85b27d0
@@ -32071,8 +32071,8 @@ trackedFiles:
     pristine_git_object: bb70c6af54e311daf3ee7e3b90420d2050bfa8d8
   docs/models/usereventpayload37permissions.md:
     id: ff5daf943849
-    last_write_checksum: sha1:174805e4103afc39cf9670c979a0fa41d85d5a76
-    pristine_git_object: 149dce4afaa2bd21bb9f443cfa878bb9b4a97849
+    last_write_checksum: sha1:1921ab2c28fb3293ed81dfff15cb19f7586cf7a4
+    pristine_git_object: 91cd9cfd9686fd78950aa494a85e02ec1f1606ba
   docs/models/usereventpayload37projectids.md:
     id: 5c39e2944a69
     last_write_checksum: sha1:151d6d7b48dbb5088437bdc191d87e0a0fb76655
@@ -32271,8 +32271,8 @@ trackedFiles:
     pristine_git_object: 0bcc67ecb5be9e8fdce3afe41abd10d27eaabc7f
   docs/models/usereventpayloadpermissions.md:
     id: 0951dcb728c8
-    last_write_checksum: sha1:661c60409f8a1f2299a4c7e78b69a51f0b173edd
-    pristine_git_object: 6b9d5d6c5529d386938eae786a84dbbe77e0a09f
+    last_write_checksum: sha1:8834ebb627fee04a0b038fe12b922bd45f4dfac4
+    pristine_git_object: a913b7319621278d10306e777172c2473752f716
   docs/models/usereventpayloadplan.md:
     id: 495069b52754
     last_write_checksum: sha1:fbc9691867209233aab54d92e5f0bb6f682cb0f1
@@ -32715,12 +32715,12 @@ trackedFiles:
     pristine_git_object: 48e9f904e717ce5cc0d962979eae98e8eff6bb0e
   jsr.json:
     id: 7f6ab7767282
-    last_write_checksum: sha1:3435d0ceaccc8931d5066c0b625f90de68f7c619
-    pristine_git_object: dbe0479af0deafdb98287ac158aed46f4c4dbefb
+    last_write_checksum: sha1:8316f57deed8cfe12dd4b190d9af28fd232b3b91
+    pristine_git_object: d28c0d9c7913f05e43e72139d53a3f4affd2e834
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:a9e021bfa4d39c954e7771428c3dee212fe5d64f
-    pristine_git_object: 318eaa9816bced59b11a922ca309af587515e15a
+    last_write_checksum: sha1:3ea74c14d292848a41f42a836c03d492a43a653f
+    pristine_git_object: 1358133150a1c3ab672bc9cfc123a0fafb6736da
   src/core.ts:
     id: f431fdbcd144
     last_write_checksum: sha1:dc8229fbd0c675b1f78e40b358b0f836f90ca221
@@ -33975,8 +33975,8 @@ trackedFiles:
     pristine_git_object: 0aebd8b0a4867e35cb3348fc52921c3c0b4725b7
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:efb74a6829e7e273cc655e359bf1ad5e978021a3
-    pristine_git_object: 7adbb6b9fa219dc40e491932c3be4bbda6773b81
+    last_write_checksum: sha1:06536818771258d627eb5a0ed1fad5e5fb7399ed
+    pristine_git_object: 58c2627638b83e70548b97c4ac04deeca2731ecd
   src/lib/dlv.ts:
     id: b1988214835a
     last_write_checksum: sha1:1dd3e3fbb4550c4bf31f5ef997faff355d6f3250
@@ -35571,8 +35571,8 @@ trackedFiles:
     pristine_git_object: c9da4d7514dc6fd84708cbf5cb5c369b751f3c9d
   src/models/userevent.ts:
     id: b4ca51647dbd
-    last_write_checksum: sha1:a15c78dba3a52dade5e7e9aa553df0f883287397
-    pristine_git_object: a6abf833bd24e532342d17da7a2bfabf7c94f179
+    last_write_checksum: sha1:f683db85acd2239cb611ac4f837a7c77c794c1e4
+    pristine_git_object: 5f31d8dfa17dc4c257b9f7d0c4e9275e663c6ebb
   src/models/usereventpayloadprevious.ts:
     id: 927ae81b029f
     last_write_checksum: sha1:1c1c0584dbe35a6d50ab796970a109d9582fa387
@@ -41465,7 +41465,9 @@ generatedTests:
   listDrives: "2026-06-08T17:06:46-06:00"
   getOrCreateDrive: "2026-06-08T17:06:46-06:00"
   deleteDrive: "2026-06-08T17:06:46-06:00"
-releaseNotes: "## Typescript SDK Changes:\n* `vercel.drains.getDrain()`:  `response` **Changed** (Breaking ⚠️)\n* `vercel.deployments.getDeployment()`:  `response.union(1).projectSettings.framework.enum(eve)` **Added** (Breaking ⚠️)\n* `vercel.deployments.createDeployment()`: \n  *  `request.requestBody.projectSettings.framework.enum(eve)` **Added**\n  *  `response.projectSettings.framework.enum(eve)` **Added** (Breaking ⚠️)\n* `vercel.deployments.cancelDeployment()`:  `response.projectSettings.framework.enum(eve)` **Added** (Breaking ⚠️)\n* `vercel.deployments.getDeployments()`:  `response.deployments[].projectSettings.framework.enum(eve)` **Added** (Breaking ⚠️)\n* `vercel.integrations.createIntegrationStoreDirect()`:  `response.store.projectsMetadata[].framework.enum(eve)` **Added** (Breaking ⚠️)\n* `vercel.logDrains.getConfigurableLogDrain()`:  `response.projectsMetadata[].framework.enum(eve)` **Added** (Breaking ⚠️)\n* `vercel.logDrains.getAllLogDrains()`:  `response` **Changed** (Breaking ⚠️)\n* `vercel.drains.getDrains()`:  `response.drains` **Changed** (Breaking ⚠️)\n* `vercel.drains.createDrain()`: \n  *  `request.requestBody.filter` **Changed** (Breaking ⚠️)\n  *  `response` **Changed** (Breaking ⚠️)\n* `vercel.user.listUserEvents()`:  `response.events[]` **Changed** (Breaking ⚠️)\n* `vercel.drains.updateDrain()`: \n  *  `request.requestBody.filter` **Changed** (Breaking ⚠️)\n  *  `response` **Changed** (Breaking ⚠️)\n* `vercel.webhooks.getWebhooks()`:  `response.union(Array<1>)[].projectsMetadata[].framework.enum(eve)` **Added** (Breaking ⚠️)\n* `vercel.microfrontends.getMicrofrontendsInGroup()`:  `response.projects[]` **Changed** (Breaking ⚠️)\n* `vercel.projects.getProjects()`:  `response` **Changed** (Breaking ⚠️)\n* `vercel.projects.createProject()`: \n  *  `request.requestBody.framework.enum(eve)` **Added**\n  *  `response` **Changed** (Breaking ⚠️)\n* `vercel.projects.updateProject()`: \n  *  `request.requestBody.framework.enum(eve)` **Added**\n  *  `response` **Changed** (Breaking ⚠️)\n* `vercel.projects.uploadProjectAvatar()`:  `response` **Changed** (Breaking ⚠️)\n* `vercel.projects.updateMicrofrontends()`:  `response` **Changed** (Breaking ⚠️)\n* `vercel.connect.createConnector()`: \n  *  `request.data.union(type:oauth)` **Changed**\n  *  `response.appTokens.requiresReinstallation` **Added**\n"
+releaseNotes: |
+  ## Typescript SDK Changes:
+  * `vercel.user.listUserEvents()`:  `response.events[].payload` **Changed** (Breaking ⚠️)
 generatedFiles:
   - .devcontainer/README.md
   - .devcontainer/devcontainer.json

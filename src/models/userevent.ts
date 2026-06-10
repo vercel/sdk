@@ -768,6 +768,7 @@ export type Resources = {
 
 export const PayloadPermissions = {
   ReadWriteAiGatewayApiKey: "read-write:ai-gateway-api-key",
+  ReadWriteAlerts: "read-write:alerts",
   ReadWriteBilling: "read-write:billing",
   ReadWriteBlob: "read-write:blob",
   ReadWriteDeployment: "read-write:deployment",
@@ -790,6 +791,7 @@ export const PayloadPermissions = {
   ReadWriteRemoteCache: "read-write:remote-cache",
   ReadWriteSandbox: "read-write:sandbox",
   ReadAccessGroup: "read:access-group",
+  ReadAlerts: "read:alerts",
   ReadBilling: "read:billing",
   ReadDeployment: "read:deployment",
   ReadDomain: "read:domain",
@@ -850,6 +852,7 @@ export type UserEventPayloadResources = {
 
 export const UserEventPayload37Permissions = {
   ReadWriteAiGatewayApiKey: "read-write:ai-gateway-api-key",
+  ReadWriteAlerts: "read-write:alerts",
   ReadWriteBilling: "read-write:billing",
   ReadWriteBlob: "read-write:blob",
   ReadWriteDeployment: "read-write:deployment",
@@ -872,6 +875,7 @@ export const UserEventPayload37Permissions = {
   ReadWriteRemoteCache: "read-write:remote-cache",
   ReadWriteSandbox: "read-write:sandbox",
   ReadAccessGroup: "read:access-group",
+  ReadAlerts: "read:alerts",
   ReadBilling: "read:billing",
   ReadDeployment: "read:deployment",
   ReadDomain: "read:domain",
@@ -931,6 +935,7 @@ export type PayloadResources = {
 
 export const UserEventPayloadPermissions = {
   ReadWriteAiGatewayApiKey: "read-write:ai-gateway-api-key",
+  ReadWriteAlerts: "read-write:alerts",
   ReadWriteBilling: "read-write:billing",
   ReadWriteBlob: "read-write:blob",
   ReadWriteDeployment: "read-write:deployment",
@@ -953,6 +958,7 @@ export const UserEventPayloadPermissions = {
   ReadWriteRemoteCache: "read-write:remote-cache",
   ReadWriteSandbox: "read-write:sandbox",
   ReadAccessGroup: "read:access-group",
+  ReadAlerts: "read:alerts",
   ReadBilling: "read:billing",
   ReadDeployment: "read:deployment",
   ReadDomain: "read:domain",
@@ -998,6 +1004,7 @@ export type NextScopes = ClosedEnum<typeof NextScopes>;
 export const NextPermissions = {
   Wildcard: "*",
   ReadWriteAiGatewayApiKey: "read-write:ai-gateway-api-key",
+  ReadWriteAlerts: "read-write:alerts",
   ReadWriteBilling: "read-write:billing",
   ReadWriteBlob: "read-write:blob",
   ReadWriteDeployment: "read-write:deployment",
@@ -1020,6 +1027,7 @@ export const NextPermissions = {
   ReadWriteRemoteCache: "read-write:remote-cache",
   ReadWriteSandbox: "read-write:sandbox",
   ReadAccessGroup: "read:access-group",
+  ReadAlerts: "read:alerts",
   ReadBilling: "read:billing",
   ReadDeployment: "read:deployment",
   ReadDomain: "read:domain",
@@ -1066,6 +1074,7 @@ export type PayloadScopes = ClosedEnum<typeof PayloadScopes>;
 export const Permissions = {
   Wildcard: "*",
   ReadWriteAiGatewayApiKey: "read-write:ai-gateway-api-key",
+  ReadWriteAlerts: "read-write:alerts",
   ReadWriteBilling: "read-write:billing",
   ReadWriteBlob: "read-write:blob",
   ReadWriteDeployment: "read-write:deployment",
@@ -1088,6 +1097,7 @@ export const Permissions = {
   ReadWriteRemoteCache: "read-write:remote-cache",
   ReadWriteSandbox: "read-write:sandbox",
   ReadAccessGroup: "read:access-group",
+  ReadAlerts: "read:alerts",
   ReadBilling: "read:billing",
   ReadDeployment: "read:deployment",
   ReadDomain: "read:domain",

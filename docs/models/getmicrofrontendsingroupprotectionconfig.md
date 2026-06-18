@@ -1,0 +1,15 @@
+# GetMicrofrontendsInGroupProtectionConfig
+
+## Example Usage
+
+```typescript
+import { GetMicrofrontendsInGroupProtectionConfig } from "@vercel/sdk/models/getmicrofrontendsingrouptomicrofrontends2.js";
+
+let value: GetMicrofrontendsInGroupProtectionConfig = {};
+```
+
+## Fields
+
+| Field                                                                                          | Type                                                                                           | Required                                                                                       | Description                                                                                    |
+| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `sandboxUrls`                                                                                  | [models.GetMicrofrontendsInGroupSandboxUrls](../models/getmicrofrontendsingroupsandboxurls.md) | :heavy_minus_sign:                                                                             | N/A                                                                                            |

@@ -36,7 +36,7 @@ export type HighlightedDetails = {
   value?: string | undefined;
 };
 
-export type BillingPlan = {
+export type UpdateInstallationBillingPlan = {
   id: string;
   type: UpdateInstallationType;
   name: string;
@@ -71,7 +71,7 @@ export type Notification = Notification1 | string;
 export type UpdateInstallationRequestBody = {
   status?: UpdateInstallationStatus | undefined;
   externalId?: string | undefined;
-  billingPlan?: BillingPlan | undefined;
+  billingPlan?: UpdateInstallationBillingPlan | undefined;
   /**
    * A notification to display to your customer. Send `null` to clear the current notification.
    */
@@ -138,7 +138,7 @@ export function highlightedDetailsToJSON(
 }
 
 /** @internal */
-export type BillingPlan$Outbound = {
+export type UpdateInstallationBillingPlan$Outbound = {
   id: string;
   type: string;
   name: string;
@@ -152,10 +152,10 @@ export type BillingPlan$Outbound = {
 };
 
 /** @internal */
-export const BillingPlan$outboundSchema: z.ZodType<
-  BillingPlan$Outbound,
+export const UpdateInstallationBillingPlan$outboundSchema: z.ZodType<
+  UpdateInstallationBillingPlan$Outbound,
   z.ZodTypeDef,
-  BillingPlan
+  UpdateInstallationBillingPlan
 > = z.object({
   id: z.string(),
   type: UpdateInstallationType$outboundSchema,
@@ -177,8 +177,14 @@ export const BillingPlan$outboundSchema: z.ZodType<
   };
 });
 
-export function billingPlanToJSON(billingPlan: BillingPlan): string {
-  return JSON.stringify(BillingPlan$outboundSchema.parse(billingPlan));
+export function updateInstallationBillingPlanToJSON(
+  updateInstallationBillingPlan: UpdateInstallationBillingPlan,
+): string {
+  return JSON.stringify(
+    UpdateInstallationBillingPlan$outboundSchema.parse(
+      updateInstallationBillingPlan,
+    ),
+  );
 }
 
 /** @internal */
@@ -228,7 +234,7 @@ export function notificationToJSON(notification: Notification): string {
 export type UpdateInstallationRequestBody$Outbound = {
   status?: string | undefined;
   externalId?: string | undefined;
-  billingPlan?: BillingPlan$Outbound | undefined;
+  billingPlan?: UpdateInstallationBillingPlan$Outbound | undefined;
   notification?: Notification1$Outbound | string | undefined;
 };
 
@@ -240,7 +246,8 @@ export const UpdateInstallationRequestBody$outboundSchema: z.ZodType<
 > = z.object({
   status: UpdateInstallationStatus$outboundSchema.optional(),
   externalId: z.string().optional(),
-  billingPlan: z.lazy(() => BillingPlan$outboundSchema).optional(),
+  billingPlan: z.lazy(() => UpdateInstallationBillingPlan$outboundSchema)
+    .optional(),
   notification: smartUnion([
     z.lazy(() => Notification1$outboundSchema),
     z.string(),

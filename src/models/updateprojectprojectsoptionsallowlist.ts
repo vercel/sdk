@@ -81,6 +81,7 @@ export const UpdateProjectFramework = {
   Rust: "rust",
   Axum: "axum",
   ActixWeb: "actix-web",
+  Bun: "bun",
   Node: "node",
   Go: "go",
   Services: "services",
@@ -131,6 +132,7 @@ export const UpdateProjectFunctionDefaultMemoryType = {
   StandardLegacy: "standard_legacy",
   Standard: "standard",
   Performance: "performance",
+  PerformanceXl: "performance_xl",
 } as const;
 export type UpdateProjectFunctionDefaultMemoryType = ClosedEnum<
   typeof UpdateProjectFunctionDefaultMemoryType
@@ -168,7 +170,6 @@ export type UpdateProjectResourceConfig = {
   buildMachineElasticLastUpdated?: number | undefined;
   isNSNBDisabled?: boolean | undefined;
   enableFunctionsBeta?: boolean | undefined;
-  enableFunctionsExtendedMaxDuration?: boolean | undefined;
 };
 
 /**
@@ -595,6 +596,7 @@ export const DeploymentSourcesSources = {
   RestApi: "rest-api",
   DeployHook: "deploy-hook",
   Integration: "integration",
+  V0: "v0",
 } as const;
 export type DeploymentSourcesSources = ClosedEnum<
   typeof DeploymentSourcesSources
@@ -749,13 +751,15 @@ export type UpdateProjectRequestBody = {
    */
   previewDeploymentSuffix?: string | null | undefined;
   /**
-   * Specifies whether the source code and logs of the deployments for this project should be public or not
-   */
-  publicSource?: boolean | null | undefined;
-  /**
    * Specifies resource override configuration for the project
    */
   resourceConfig?: UpdateProjectResourceConfig | undefined;
+  /**
+   * Deprecated. Accepted for backwards compatibility but ignored.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  publicSource?: boolean | null | undefined;
   /**
    * The name of a directory or relative path to the source code of your project. When `null` is used it will default to the project root
    */
@@ -1343,6 +1347,7 @@ export const UpdateProjectProjectsFramework = {
   Axum: "axum",
   Blitzjs: "blitzjs",
   Brunch: "brunch",
+  Bun: "bun",
   CreateReactApp: "create-react-app",
   Django: "django",
   Docusaurus: "docusaurus",
@@ -1438,6 +1443,7 @@ export const UpdateProjectProjectsResponseFramework = {
   Axum: "axum",
   Blitzjs: "blitzjs",
   Brunch: "brunch",
+  Bun: "bun",
   CreateReactApp: "create-react-app",
   Django: "django",
   Docusaurus: "docusaurus",
@@ -1909,7 +1915,6 @@ export type UpdateProjectResourceConfig$Outbound = {
   buildMachineElasticLastUpdated?: number | undefined;
   isNSNBDisabled?: boolean | undefined;
   enableFunctionsBeta?: boolean | undefined;
-  enableFunctionsExtendedMaxDuration?: boolean | undefined;
 };
 
 /** @internal */
@@ -1932,7 +1937,6 @@ export const UpdateProjectResourceConfig$outboundSchema: z.ZodType<
   buildMachineElasticLastUpdated: z.number().optional(),
   isNSNBDisabled: z.boolean().optional(),
   enableFunctionsBeta: z.boolean().optional(),
-  enableFunctionsExtendedMaxDuration: z.boolean().optional(),
 });
 
 export function updateProjectResourceConfigToJSON(
@@ -3108,8 +3112,8 @@ export type UpdateProjectRequestBody$Outbound = {
   outputDirectory?: string | null | undefined;
   previewDeploymentsDisabled?: boolean | null | undefined;
   previewDeploymentSuffix?: string | null | undefined;
-  publicSource?: boolean | null | undefined;
   resourceConfig?: UpdateProjectResourceConfig$Outbound | undefined;
+  publicSource?: boolean | null | undefined;
   rootDirectory?: string | null | undefined;
   serverlessFunctionRegion?: string | null | undefined;
   serverlessFunctionZeroConfigFailover?: boolean | undefined;
@@ -3166,9 +3170,9 @@ export const UpdateProjectRequestBody$outboundSchema: z.ZodType<
   outputDirectory: z.nullable(z.string()).optional(),
   previewDeploymentsDisabled: z.nullable(z.boolean()).optional(),
   previewDeploymentSuffix: z.nullable(z.string()).optional(),
-  publicSource: z.nullable(z.boolean()).optional(),
   resourceConfig: z.lazy(() => UpdateProjectResourceConfig$outboundSchema)
     .optional(),
+  publicSource: z.nullable(z.boolean()).optional(),
   rootDirectory: z.nullable(z.string()).optional(),
   serverlessFunctionRegion: z.nullable(z.string()).optional(),
   serverlessFunctionZeroConfigFailover: z.boolean().optional(),

@@ -5,27 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { SeventySeven } from "@vercel/sdk/models/fortyseven.js";
+import { SeventySeven } from "@vercel/sdk/models/usereventpayload54action.js";
 
 let value: SeventySeven = {
-  project: {
-    name: "<value>",
-  },
-  job: {
-    deployHook: {
-      createdAt: 3393.49,
-      id: "<id>",
-      name: "<value>",
-      ref: "<value>",
-    },
-    state: "Arkansas",
-  },
+  bitbucketLogin: "<value>",
+  bitbucketAccountId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `project`                                                                  | [models.UserEventPayload77Project](../models/usereventpayload77project.md) | :heavy_check_mark:                                                         | N/A                                                                        |
-| `job`                                                                      | [models.Job](../models/job.md)                                             | :heavy_check_mark:                                                         | N/A                                                                        |
+| Field                | Type                 | Required             | Description          |
+| -------------------- | -------------------- | -------------------- | -------------------- |
+| `bitbucketLogin`     | *string*             | :heavy_check_mark:   | N/A                  |
+| `bitbucketAccountId` | *string*             | :heavy_check_mark:   | N/A                  |

@@ -13,8 +13,13 @@ let value: GetDrainResponseBody1 = {
   ownerId: "<id>",
   schemas: {},
   delivery: {
-    type: "internal",
-    target: "vercel-otel-traces-db",
+    type: "s3",
+    endpoint: "<value>",
+    encoding: "json",
+    compression: "none",
+    fileStructure: "hive",
+    roleArn: "<value>",
+    region: "<value>",
   },
   source: {
     kind: "self-served",

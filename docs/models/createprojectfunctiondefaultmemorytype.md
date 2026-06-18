@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { CreateProjectFunctionDefaultMemoryType } from "@vercel/sdk/models/createprojectprojectsto.js";
+import { CreateProjectFunctionDefaultMemoryType } from "@vercel/sdk/models/createprojecttoprojectsresponsepreset.js";
 
-let value: CreateProjectFunctionDefaultMemoryType = "performance";
+let value: CreateProjectFunctionDefaultMemoryType = "performance_xl";
 ```
 
 ## Values
 
 ```typescript
-"performance" | "standard" | "standard_legacy"
+"performance" | "performance_xl" | "standard" | "standard_legacy"
 ```

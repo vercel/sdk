@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UpdateMicrofrontendsDefaultResourceConfig } from "@vercel/sdk/models/updatemicrofrontendsbotfilter.js";
+import { UpdateMicrofrontendsDefaultResourceConfig } from "@vercel/sdk/models/updatemicrofrontendsvercelruleset.js";
 
 let value: UpdateMicrofrontendsDefaultResourceConfig = {
   functionDefaultRegions: [
@@ -28,4 +28,3 @@ let value: UpdateMicrofrontendsDefaultResourceConfig = {
 | `isNSNBDisabled`                                                                                                                   | *boolean*                                                                                                                          | :heavy_minus_sign:                                                                                                                 | N/A                                                                                                                                |
 | `buildQueue`                                                                                                                       | [models.UpdateMicrofrontendsProjectsBuildQueue](../models/updatemicrofrontendsprojectsbuildqueue.md)                               | :heavy_minus_sign:                                                                                                                 | N/A                                                                                                                                |
 | `enableFunctionsBeta`                                                                                                              | *boolean*                                                                                                                          | :heavy_minus_sign:                                                                                                                 | N/A                                                                                                                                |
-| `enableFunctionsExtendedMaxDuration`                                                                                               | *boolean*                                                                                                                          | :heavy_minus_sign:                                                                                                                 | N/A                                                                                                                                |

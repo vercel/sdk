@@ -30,6 +30,15 @@ const value: models.TypeGithub = {
 };
 ```
 
+### `models.TypeLinear`
+
+```typescript
+const value: models.TypeLinear = {
+  clientId: "<id>",
+  clientSecret: "<value>",
+};
+```
+
 ### `models.TypeSalesforce`
 
 ```typescript
@@ -57,6 +66,14 @@ const value: models.TypeSlack = {
 const value: models.TypeSnowflake = {
   clientName: "<value>",
   accountIdentifier: "<value>",
+};
+```
+
+### `models.TypeSnowflakeWif`
+
+```typescript
+const value: models.TypeSnowflakeWif = {
+  clientName: "<value>",
 };
 ```
 

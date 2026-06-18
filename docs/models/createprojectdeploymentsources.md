@@ -9,7 +9,7 @@ import { CreateProjectDeploymentSources } from "@vercel/sdk/models/createproject
 
 let value: CreateProjectDeploymentSources = {
   sources: [
-    "rest-api",
+    "v0",
   ],
   enabled: true,
   environments: [],

@@ -33,3 +33,17 @@ const value: models.TestDrainDelivery2 = {
 };
 ```
 
+### `models.TestDrainDelivery3`
+
+```typescript
+const value: models.TestDrainDelivery3 = {
+  type: "<value>",
+  endpoint: "<value>",
+  encoding: "ndjson",
+  compression: "none",
+  fileStructure: "hive",
+  roleArn: "<value>",
+  region: "<value>",
+};
+```
+

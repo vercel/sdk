@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsResponseBodyEnvironment } from "@vercel/sdk/models/getprojectsresponsebodyfunctiondefaultmemorytype.js";
+import { GetProjectsResponseBodyEnvironment } from "@vercel/sdk/models/getprojectsresponsebodyprojectsnodeversion.js";
 
 let value: GetProjectsResponseBodyEnvironment = "production";
 ```

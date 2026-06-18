@@ -337,6 +337,7 @@ export const PatchTeamDeploymentSourcesSources = {
   RestApi: "rest-api",
   DeployHook: "deploy-hook",
   Integration: "integration",
+  V0: "v0",
 } as const;
 export type PatchTeamDeploymentSourcesSources = ClosedEnum<
   typeof PatchTeamDeploymentSourcesSources

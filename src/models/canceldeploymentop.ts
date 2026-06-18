@@ -62,6 +62,7 @@ export const CancelDeploymentFramework = {
   Axum: "axum",
   Blitzjs: "blitzjs",
   Brunch: "brunch",
+  Bun: "bun",
   CreateReactApp: "create-react-app",
   Django: "django",
   Docusaurus: "docusaurus",
@@ -1379,6 +1380,24 @@ export type RoutesLocale = {
   cookie?: string | undefined;
 };
 
+export const CancelDeploymentDestinationType = {
+  Service: "service",
+} as const;
+export type CancelDeploymentDestinationType = ClosedEnum<
+  typeof CancelDeploymentDestinationType
+>;
+
+export type CancelDeploymentDestination2 = {
+  type: CancelDeploymentDestinationType;
+  service: string;
+  /**
+   * Routing-only path used to select a route inside the target service.
+   */
+  path?: string | undefined;
+};
+
+export type RoutesDestination = CancelDeploymentDestination2 | string;
+
 export type CancelDeploymentRoutes1 = {
   src: string;
   dest?: string | undefined;
@@ -1411,10 +1430,10 @@ export type CancelDeploymentRoutes1 = {
   env?: Array<string> | undefined;
   locale?: RoutesLocale | undefined;
   /**
-   * Aliases for `src`, `dest`, and `status`. These provide consistency with the `rewrites`, `redirects`, and `headers` fields which use `source`, `destination`, and `statusCode`. During normalization, these are converted to their canonical forms (`src`, `dest`, `status`) and stripped from the route object.
+   * Aliases for `src`, `dest`, and `status`. These provide consistency with the `rewrites`, `redirects`, and `headers` fields which use `source`, `destination`, and `statusCode`. During normalization, the string forms are converted to their canonical forms (`src`, `dest`, `status`) and stripped from the route object. `destination` may also be a service-targeted object, in which case routing is delegated into the named service's internal route table and the object is preserved as-is (not folded into `dest`).
    */
   source?: string | undefined;
-  destination?: string | undefined;
+  destination?: CancelDeploymentDestination2 | string | undefined;
   statusCode?: number | undefined;
   /**
    * A middleware key within the `output` key under the build result. Overrides a `middleware` definition.
@@ -1615,6 +1634,7 @@ export type CancelDeploymentFunctionType = ClosedEnum<
 
 export const CancelDeploymentFunctionMemoryType = {
   Performance: "performance",
+  PerformanceXl: "performance_xl",
   Standard: "standard",
   StandardLegacy: "standard_legacy",
 } as const;
@@ -4417,6 +4437,52 @@ export function routesLocaleFromJSON(
 }
 
 /** @internal */
+export const CancelDeploymentDestinationType$inboundSchema: z.ZodNativeEnum<
+  typeof CancelDeploymentDestinationType
+> = z.nativeEnum(CancelDeploymentDestinationType);
+
+/** @internal */
+export const CancelDeploymentDestination2$inboundSchema: z.ZodType<
+  CancelDeploymentDestination2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: CancelDeploymentDestinationType$inboundSchema,
+  service: types.string(),
+  path: types.optional(types.string()),
+});
+
+export function cancelDeploymentDestination2FromJSON(
+  jsonString: string,
+): SafeParseResult<CancelDeploymentDestination2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CancelDeploymentDestination2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CancelDeploymentDestination2' from JSON`,
+  );
+}
+
+/** @internal */
+export const RoutesDestination$inboundSchema: z.ZodType<
+  RoutesDestination,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  z.lazy(() => CancelDeploymentDestination2$inboundSchema),
+  types.string(),
+]);
+
+export function routesDestinationFromJSON(
+  jsonString: string,
+): SafeParseResult<RoutesDestination, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RoutesDestination$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RoutesDestination' from JSON`,
+  );
+}
+
+/** @internal */
 export const CancelDeploymentRoutes1$inboundSchema: z.ZodType<
   CancelDeploymentRoutes1,
   z.ZodTypeDef,
@@ -4467,7 +4533,12 @@ export const CancelDeploymentRoutes1$inboundSchema: z.ZodType<
   env: types.optional(z.array(types.string())),
   locale: types.optional(z.lazy(() => RoutesLocale$inboundSchema)),
   source: types.optional(types.string()),
-  destination: types.optional(types.string()),
+  destination: types.optional(
+    smartUnion([
+      z.lazy(() => CancelDeploymentDestination2$inboundSchema),
+      types.string(),
+    ]),
+  ),
   statusCode: types.optional(types.number()),
   middlewarePath: types.optional(types.string()),
   middlewareRawSrc: types.optional(z.array(types.string())),

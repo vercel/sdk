@@ -30,7 +30,7 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Points all production domains for a project to the given deploy
+ * Point production traffic to a previous production deployment by ID
  *
  * @remarks
  * Allows users to rollback to a deployment.

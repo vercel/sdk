@@ -30,7 +30,7 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Points all production domains for a project to the given deploy
+ * Point production traffic to a given deployment
  *
  * @remarks
  * Allows users to promote a deployment to production. Note: This does NOT rebuild the deployment. If you need that, then call create-deployments endpoint.

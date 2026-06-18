@@ -531,6 +531,7 @@ export const UploadProjectAvatarFramework = {
   Axum: "axum",
   Blitzjs: "blitzjs",
   Brunch: "brunch",
+  Bun: "bun",
   CreateReactApp: "create-react-app",
   Django: "django",
   Docusaurus: "docusaurus",
@@ -626,6 +627,7 @@ export const UploadProjectAvatarProjectsFramework = {
   Axum: "axum",
   Blitzjs: "blitzjs",
   Brunch: "brunch",
+  Bun: "bun",
   CreateReactApp: "create-react-app",
   Django: "django",
   Docusaurus: "docusaurus",
@@ -1048,8 +1050,17 @@ export type UploadProjectAvatarPassport = {
   connectorId: string;
 };
 
+export type UploadProjectAvatarSandboxUrls = {
+  inheritDeploymentProtection?: boolean | undefined;
+};
+
+export type UploadProjectAvatarProtectionConfig = {
+  sandboxUrls?: UploadProjectAvatarSandboxUrls | undefined;
+};
+
 export const UploadProjectAvatarFunctionDefaultMemoryType = {
   Performance: "performance",
+  PerformanceXl: "performance_xl",
   Standard: "standard",
   StandardLegacy: "standard_legacy",
 } as const;
@@ -1101,7 +1112,6 @@ export type UploadProjectAvatarResourceConfig = {
   isNSNBDisabled?: boolean | undefined;
   buildQueue?: UploadProjectAvatarBuildQueue | undefined;
   enableFunctionsBeta?: boolean | undefined;
-  enableFunctionsExtendedMaxDuration?: boolean | undefined;
 };
 
 /**
@@ -1168,6 +1178,7 @@ export type UploadProjectAvatarRollingRelease = {
 
 export const UploadProjectAvatarProjectsFunctionDefaultMemoryType = {
   Performance: "performance",
+  PerformanceXl: "performance_xl",
   Standard: "standard",
   StandardLegacy: "standard_legacy",
 } as const;
@@ -1221,7 +1232,6 @@ export type UploadProjectAvatarDefaultResourceConfig = {
   isNSNBDisabled?: boolean | undefined;
   buildQueue?: UploadProjectAvatarProjectsBuildQueue | undefined;
   enableFunctionsBeta?: boolean | undefined;
-  enableFunctionsExtendedMaxDuration?: boolean | undefined;
 };
 
 export type UploadProjectAvatarStaticIps = {
@@ -1324,6 +1334,7 @@ export type UploadProjectAvatarPermissions = {
   webAuthn?: Array<ACLAction> | undefined;
   accessGroup?: Array<ACLAction> | undefined;
   agent?: Array<ACLAction> | undefined;
+  aiGatewayRules?: Array<ACLAction> | undefined;
   aiGatewayUsage?: Array<ACLAction> | undefined;
   alerts?: Array<ACLAction> | undefined;
   alertRules?: Array<ACLAction> | undefined;
@@ -1899,23 +1910,6 @@ export type UploadProjectAvatarWebAnalytics = {
   hasData?: true | undefined;
 };
 
-export const UploadProjectAvatarProjectsResponse200ApplicationJSONAction = {
-  Challenge: "challenge",
-  Deny: "deny",
-  Log: "log",
-} as const;
-export type UploadProjectAvatarProjectsResponse200ApplicationJSONAction =
-  ClosedEnum<
-    typeof UploadProjectAvatarProjectsResponse200ApplicationJSONAction
-  >;
-
-export type UploadProjectAvatarVercelRuleset = {
-  active: boolean;
-  action?:
-    | UploadProjectAvatarProjectsResponse200ApplicationJSONAction
-    | undefined;
-};
-
 export const UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodyAction =
   {
     Challenge: "challenge",
@@ -1927,7 +1921,7 @@ export type UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodyAct
     typeof UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodyAction
   >;
 
-export type UploadProjectAvatarBotFilter = {
+export type UploadProjectAvatarVercelRuleset = {
   active: boolean;
   action?:
     | UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodyAction
@@ -3719,6 +3713,47 @@ export function uploadProjectAvatarPassportFromJSON(
 }
 
 /** @internal */
+export const UploadProjectAvatarSandboxUrls$inboundSchema: z.ZodType<
+  UploadProjectAvatarSandboxUrls,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  inheritDeploymentProtection: types.optional(types.boolean()),
+});
+
+export function uploadProjectAvatarSandboxUrlsFromJSON(
+  jsonString: string,
+): SafeParseResult<UploadProjectAvatarSandboxUrls, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UploadProjectAvatarSandboxUrls$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UploadProjectAvatarSandboxUrls' from JSON`,
+  );
+}
+
+/** @internal */
+export const UploadProjectAvatarProtectionConfig$inboundSchema: z.ZodType<
+  UploadProjectAvatarProtectionConfig,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  sandboxUrls: types.optional(
+    z.lazy(() => UploadProjectAvatarSandboxUrls$inboundSchema),
+  ),
+});
+
+export function uploadProjectAvatarProtectionConfigFromJSON(
+  jsonString: string,
+): SafeParseResult<UploadProjectAvatarProtectionConfig, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UploadProjectAvatarProtectionConfig$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UploadProjectAvatarProtectionConfig' from JSON`,
+  );
+}
+
+/** @internal */
 export const UploadProjectAvatarFunctionDefaultMemoryType$inboundSchema:
   z.ZodNativeEnum<typeof UploadProjectAvatarFunctionDefaultMemoryType> = z
     .nativeEnum(UploadProjectAvatarFunctionDefaultMemoryType);
@@ -3783,7 +3818,6 @@ export const UploadProjectAvatarResourceConfig$inboundSchema: z.ZodType<
     z.lazy(() => UploadProjectAvatarBuildQueue$inboundSchema),
   ),
   enableFunctionsBeta: types.optional(types.boolean()),
-  enableFunctionsExtendedMaxDuration: types.optional(types.boolean()),
 });
 
 export function uploadProjectAvatarResourceConfigFromJSON(
@@ -3932,7 +3966,6 @@ export const UploadProjectAvatarDefaultResourceConfig$inboundSchema: z.ZodType<
     z.lazy(() => UploadProjectAvatarProjectsBuildQueue$inboundSchema),
   ),
   enableFunctionsBeta: types.optional(types.boolean()),
-  enableFunctionsExtendedMaxDuration: types.optional(types.boolean()),
 });
 
 export function uploadProjectAvatarDefaultResourceConfigFromJSON(
@@ -4142,6 +4175,7 @@ export const UploadProjectAvatarPermissions$inboundSchema: z.ZodType<
   webAuthn: types.optional(z.array(ACLAction$inboundSchema)),
   accessGroup: types.optional(z.array(ACLAction$inboundSchema)),
   agent: types.optional(z.array(ACLAction$inboundSchema)),
+  aiGatewayRules: types.optional(z.array(ACLAction$inboundSchema)),
   aiGatewayUsage: types.optional(z.array(ACLAction$inboundSchema)),
   alerts: types.optional(z.array(ACLAction$inboundSchema)),
   alertRules: types.optional(z.array(ACLAction$inboundSchema)),
@@ -5084,10 +5118,12 @@ export function uploadProjectAvatarWebAnalyticsFromJSON(
 }
 
 /** @internal */
-export const UploadProjectAvatarProjectsResponse200ApplicationJSONAction$inboundSchema:
+export const UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodyAction$inboundSchema:
   z.ZodNativeEnum<
-    typeof UploadProjectAvatarProjectsResponse200ApplicationJSONAction
-  > = z.nativeEnum(UploadProjectAvatarProjectsResponse200ApplicationJSONAction);
+    typeof UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodyAction
+  > = z.nativeEnum(
+    UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodyAction,
+  );
 
 /** @internal */
 export const UploadProjectAvatarVercelRuleset$inboundSchema: z.ZodType<
@@ -5097,7 +5133,7 @@ export const UploadProjectAvatarVercelRuleset$inboundSchema: z.ZodType<
 > = z.object({
   active: types.boolean(),
   action: types.optional(
-    UploadProjectAvatarProjectsResponse200ApplicationJSONAction$inboundSchema,
+    UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodyAction$inboundSchema,
   ),
 });
 
@@ -5108,36 +5144,6 @@ export function uploadProjectAvatarVercelRulesetFromJSON(
     jsonString,
     (x) => UploadProjectAvatarVercelRuleset$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'UploadProjectAvatarVercelRuleset' from JSON`,
-  );
-}
-
-/** @internal */
-export const UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodyAction$inboundSchema:
-  z.ZodNativeEnum<
-    typeof UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodyAction
-  > = z.nativeEnum(
-    UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodyAction,
-  );
-
-/** @internal */
-export const UploadProjectAvatarBotFilter$inboundSchema: z.ZodType<
-  UploadProjectAvatarBotFilter,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  active: types.boolean(),
-  action: types.optional(
-    UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodyAction$inboundSchema,
-  ),
-});
-
-export function uploadProjectAvatarBotFilterFromJSON(
-  jsonString: string,
-): SafeParseResult<UploadProjectAvatarBotFilter, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UploadProjectAvatarBotFilter$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UploadProjectAvatarBotFilter' from JSON`,
   );
 }
 

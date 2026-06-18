@@ -11,15 +11,16 @@ import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
+export type TypeSnowflakeWif = {
+  clientName: string;
+  accountIdentifier?: string | undefined;
+  extras?: { [k: string]: any } | undefined;
+};
+
 export type TypeSnowflake = {
   clientName: string;
   accountIdentifier: string;
-  serviceUsername?: string | undefined;
-  serviceRole?: string | undefined;
   defaultSessionRole?: string | undefined;
-  privateKeyPem?: string | undefined;
-  publicKeyPem?: string | undefined;
-  publicKeyFingerprint?: string | undefined;
   extras?: { [k: string]: any } | undefined;
 };
 
@@ -46,6 +47,43 @@ export type TypeSalesforce = {
   consumerKey: string;
   consumerSecret: string;
   loginHost: string;
+};
+
+export type OwnerOrganization = {
+  id: string;
+  slug: string;
+  name: string;
+  logoUrl?: string | null | undefined;
+};
+
+export type Application = {
+  id: string;
+  clientId: string;
+  name: string;
+  description?: string | null | undefined;
+  developer?: string | null | undefined;
+  developerUrl?: string | null | undefined;
+  imageUrl?: string | null | undefined;
+  redirectUris?: Array<string> | undefined;
+  distribution?: string | null | undefined;
+  webhookResourceTypes?: Array<string> | undefined;
+  webhookUrl?: string | null | undefined;
+  webhookEnabled?: boolean | undefined;
+  createdAt?: string | undefined;
+  updatedAt?: string | undefined;
+};
+
+export type TypeLinear = {
+  appId?: string | undefined;
+  appName?: string | undefined;
+  clientId: string;
+  clientSecret: string;
+  webhookSecret?: string | undefined;
+  appScopes?: Array<string> | undefined;
+  userScopes?: Array<string> | undefined;
+  ownerOrganization?: OwnerOrganization | undefined;
+  application?: Application | undefined;
+  extras?: { [k: string]: any } | undefined;
 };
 
 export const DataType = {
@@ -202,14 +240,16 @@ export type CreateConnectorData =
   | TypeGithub
   | TypeSlack
   | TypeSalesforce
+  | TypeLinear
   | TypeSnowflake
   | TypeOauth
   | TypeApiKey
+  | TypeSnowflakeWif
   | { [k: string]: any };
 
 export type CreateConnectorRequestBody = {
   /**
-   * Known types: api-key, github, oauth, salesforce, slack, snowflake.
+   * Known types: api-key, github, linear, oauth, salesforce, slack, snowflake.
    */
   type: string;
   /**
@@ -250,9 +290,11 @@ export type CreateConnectorRequestBody = {
     | TypeGithub
     | TypeSlack
     | TypeSalesforce
+    | TypeLinear
     | TypeSnowflake
     | TypeOauth
     | TypeApiKey
+    | TypeSnowflakeWif
     | { [k: string]: any };
 };
 
@@ -312,10 +354,12 @@ export const CreateConnectorType = {
   ApiKey: "api-key",
   Custom: "custom",
   Github: "github",
+  Linear: "linear",
   Oauth: "oauth",
   Salesforce: "salesforce",
   Slack: "slack",
   Snowflake: "snowflake",
+  SnowflakeWif: "snowflake-wif",
 } as const;
 export type CreateConnectorType = ClosedEnum<typeof CreateConnectorType>;
 
@@ -478,15 +522,36 @@ export type CreateConnectorResponseBody = {
 };
 
 /** @internal */
+export type TypeSnowflakeWif$Outbound = {
+  clientName: string;
+  accountIdentifier?: string | undefined;
+  extras?: { [k: string]: any } | undefined;
+};
+
+/** @internal */
+export const TypeSnowflakeWif$outboundSchema: z.ZodType<
+  TypeSnowflakeWif$Outbound,
+  z.ZodTypeDef,
+  TypeSnowflakeWif
+> = z.object({
+  clientName: z.string(),
+  accountIdentifier: z.string().optional(),
+  extras: z.record(z.any()).optional(),
+});
+
+export function typeSnowflakeWifToJSON(
+  typeSnowflakeWif: TypeSnowflakeWif,
+): string {
+  return JSON.stringify(
+    TypeSnowflakeWif$outboundSchema.parse(typeSnowflakeWif),
+  );
+}
+
+/** @internal */
 export type TypeSnowflake$Outbound = {
   clientName: string;
   accountIdentifier: string;
-  serviceUsername?: string | undefined;
-  serviceRole?: string | undefined;
   defaultSessionRole?: string | undefined;
-  privateKeyPem?: string | undefined;
-  publicKeyPem?: string | undefined;
-  publicKeyFingerprint?: string | undefined;
   extras?: { [k: string]: any } | undefined;
 };
 
@@ -498,12 +563,7 @@ export const TypeSnowflake$outboundSchema: z.ZodType<
 > = z.object({
   clientName: z.string(),
   accountIdentifier: z.string(),
-  serviceUsername: z.string().optional(),
-  serviceRole: z.string().optional(),
   defaultSessionRole: z.string().optional(),
-  privateKeyPem: z.string().optional(),
-  publicKeyPem: z.string().optional(),
-  publicKeyFingerprint: z.string().optional(),
   extras: z.record(z.any()).optional(),
 });
 
@@ -589,6 +649,114 @@ export const TypeSalesforce$outboundSchema: z.ZodType<
 
 export function typeSalesforceToJSON(typeSalesforce: TypeSalesforce): string {
   return JSON.stringify(TypeSalesforce$outboundSchema.parse(typeSalesforce));
+}
+
+/** @internal */
+export type OwnerOrganization$Outbound = {
+  id: string;
+  slug: string;
+  name: string;
+  logoUrl?: string | null | undefined;
+};
+
+/** @internal */
+export const OwnerOrganization$outboundSchema: z.ZodType<
+  OwnerOrganization$Outbound,
+  z.ZodTypeDef,
+  OwnerOrganization
+> = z.object({
+  id: z.string(),
+  slug: z.string(),
+  name: z.string(),
+  logoUrl: z.nullable(z.string()).optional(),
+});
+
+export function ownerOrganizationToJSON(
+  ownerOrganization: OwnerOrganization,
+): string {
+  return JSON.stringify(
+    OwnerOrganization$outboundSchema.parse(ownerOrganization),
+  );
+}
+
+/** @internal */
+export type Application$Outbound = {
+  id: string;
+  clientId: string;
+  name: string;
+  description?: string | null | undefined;
+  developer?: string | null | undefined;
+  developerUrl?: string | null | undefined;
+  imageUrl?: string | null | undefined;
+  redirectUris?: Array<string> | undefined;
+  distribution?: string | null | undefined;
+  webhookResourceTypes?: Array<string> | undefined;
+  webhookUrl?: string | null | undefined;
+  webhookEnabled?: boolean | undefined;
+  createdAt?: string | undefined;
+  updatedAt?: string | undefined;
+};
+
+/** @internal */
+export const Application$outboundSchema: z.ZodType<
+  Application$Outbound,
+  z.ZodTypeDef,
+  Application
+> = z.object({
+  id: z.string(),
+  clientId: z.string(),
+  name: z.string(),
+  description: z.nullable(z.string()).optional(),
+  developer: z.nullable(z.string()).optional(),
+  developerUrl: z.nullable(z.string()).optional(),
+  imageUrl: z.nullable(z.string()).optional(),
+  redirectUris: z.array(z.string()).optional(),
+  distribution: z.nullable(z.string()).optional(),
+  webhookResourceTypes: z.array(z.string()).optional(),
+  webhookUrl: z.nullable(z.string()).optional(),
+  webhookEnabled: z.boolean().optional(),
+  createdAt: z.string().optional(),
+  updatedAt: z.string().optional(),
+});
+
+export function applicationToJSON(application: Application): string {
+  return JSON.stringify(Application$outboundSchema.parse(application));
+}
+
+/** @internal */
+export type TypeLinear$Outbound = {
+  appId?: string | undefined;
+  appName?: string | undefined;
+  clientId: string;
+  clientSecret: string;
+  webhookSecret?: string | undefined;
+  appScopes?: Array<string> | undefined;
+  userScopes?: Array<string> | undefined;
+  ownerOrganization?: OwnerOrganization$Outbound | undefined;
+  application?: Application$Outbound | undefined;
+  extras?: { [k: string]: any } | undefined;
+};
+
+/** @internal */
+export const TypeLinear$outboundSchema: z.ZodType<
+  TypeLinear$Outbound,
+  z.ZodTypeDef,
+  TypeLinear
+> = z.object({
+  appId: z.string().optional(),
+  appName: z.string().optional(),
+  clientId: z.string(),
+  clientSecret: z.string(),
+  webhookSecret: z.string().optional(),
+  appScopes: z.array(z.string()).optional(),
+  userScopes: z.array(z.string()).optional(),
+  ownerOrganization: z.lazy(() => OwnerOrganization$outboundSchema).optional(),
+  application: z.lazy(() => Application$outboundSchema).optional(),
+  extras: z.record(z.any()).optional(),
+});
+
+export function typeLinearToJSON(typeLinear: TypeLinear): string {
+  return JSON.stringify(TypeLinear$outboundSchema.parse(typeLinear));
 }
 
 /** @internal */
@@ -1036,9 +1204,11 @@ export type CreateConnectorData$Outbound =
   | TypeGithub$Outbound
   | TypeSlack$Outbound
   | TypeSalesforce$Outbound
+  | TypeLinear$Outbound
   | TypeSnowflake$Outbound
   | TypeOauth$Outbound
   | TypeApiKey$Outbound
+  | TypeSnowflakeWif$Outbound
   | { [k: string]: any };
 
 /** @internal */
@@ -1050,9 +1220,11 @@ export const CreateConnectorData$outboundSchema: z.ZodType<
   z.lazy(() => TypeGithub$outboundSchema),
   z.lazy(() => TypeSlack$outboundSchema),
   z.lazy(() => TypeSalesforce$outboundSchema),
+  z.lazy(() => TypeLinear$outboundSchema),
   z.lazy(() => TypeSnowflake$outboundSchema),
   z.lazy(() => TypeOauth$outboundSchema),
   z.lazy(() => TypeApiKey$outboundSchema),
+  z.lazy(() => TypeSnowflakeWif$outboundSchema),
   z.record(z.any()),
 ]);
 
@@ -1081,9 +1253,11 @@ export type CreateConnectorRequestBody$Outbound = {
     | TypeGithub$Outbound
     | TypeSlack$Outbound
     | TypeSalesforce$Outbound
+    | TypeLinear$Outbound
     | TypeSnowflake$Outbound
     | TypeOauth$Outbound
     | TypeApiKey$Outbound
+    | TypeSnowflakeWif$Outbound
     | { [k: string]: any };
 };
 
@@ -1108,9 +1282,11 @@ export const CreateConnectorRequestBody$outboundSchema: z.ZodType<
     z.lazy(() => TypeGithub$outboundSchema),
     z.lazy(() => TypeSlack$outboundSchema),
     z.lazy(() => TypeSalesforce$outboundSchema),
+    z.lazy(() => TypeLinear$outboundSchema),
     z.lazy(() => TypeSnowflake$outboundSchema),
     z.lazy(() => TypeOauth$outboundSchema),
     z.lazy(() => TypeApiKey$outboundSchema),
+    z.lazy(() => TypeSnowflakeWif$outboundSchema),
     z.record(z.any()),
   ]),
 });

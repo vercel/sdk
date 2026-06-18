@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { UpdateMicrofrontendsFunctionDefaultMemoryType } from "@vercel/sdk/models/updatemicrofrontendsbotfilter.js";
+import { UpdateMicrofrontendsFunctionDefaultMemoryType } from "@vercel/sdk/models/updatemicrofrontendsvercelruleset.js";
 
-let value: UpdateMicrofrontendsFunctionDefaultMemoryType = "standard";
+let value: UpdateMicrofrontendsFunctionDefaultMemoryType = "performance_xl";
 ```
 
 ## Values
 
 ```typescript
-"performance" | "standard" | "standard_legacy"
+"performance" | "performance_xl" | "standard" | "standard_legacy"
 ```

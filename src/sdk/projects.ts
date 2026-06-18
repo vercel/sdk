@@ -47,8 +47,8 @@ import {
   CreateProjectEnvRequest,
   CreateProjectEnvResponseBody,
 } from "../models/createprojectenvop.js";
-import { CreateProjectRequest } from "../models/createprojectprojectsto.js";
 import { CreateProjectResponseBody } from "../models/createprojectresponsebody.js";
+import { CreateProjectRequest } from "../models/createprojecttoprojectsresponsepreset.js";
 import {
   CreateProjectTransferRequestRequest,
   CreateProjectTransferRequestResponseBody,
@@ -75,7 +75,7 @@ import {
   GetProjectEnvResponseBody,
 } from "../models/getprojectenvop.js";
 import { GetProjectsResponseBody } from "../models/getprojectsresponsebody.js";
-import { GetProjectsRequest } from "../models/getprojectsresponsebodyprojectsresponse200applicationjson3projectssecuritymanagedrulesvercelrulesetaction.js";
+import { GetProjectsRequest } from "../models/getprojectsresponsebodyprojectsgitprovideroptions.js";
 import {
   ListPromoteAliasesRequest,
   ListPromoteAliasesResponseBody,
@@ -96,8 +96,8 @@ import {
 import { RequestPromoteRequest } from "../models/requestpromoteop.js";
 import { RequestRollbackRequest } from "../models/requestrollbackop.js";
 import { UnpauseProjectRequest } from "../models/unpauseprojectop.js";
-import { UpdateMicrofrontendsRequest } from "../models/updatemicrofrontendsbotfilter.js";
 import { UpdateMicrofrontendsResponseBody } from "../models/updatemicrofrontendsresponsebody.js";
+import { UpdateMicrofrontendsRequest } from "../models/updatemicrofrontendsvercelruleset.js";
 import {
   UpdateProjectDomainRequest,
   UpdateProjectDomainResponseBody,
@@ -190,7 +190,7 @@ export class Projects extends ClientSDK {
    * Upload a project avatar
    *
    * @remarks
-   * Upload an image as the avatar of the project identified by `idOrName`. The request body is the raw bytes of a JPG, PNG, or SVG image; the `Content-Type` header must declare which. SVG payloads are sanitized and optimized server-side before storage. The final SHA-1 of the stored bytes becomes the project's `avatar` value.
+   * Upload an image as the avatar of the project identified by `idOrName`. The request body is the raw bytes of a JPG, PNG, or SVG image; the `Content-Type` header must declare which. SVG payloads are sanitized and optimized server-side before storage. The final SHA-1 of the stored bytes becomes the project's `avatar` value. The actual upload pipeline (validation, sanitization, S3 write, conditional `updateProject`, and event emission) lives in the shared `@api/project-avatar-upload` helper so it can be reused by background workers.
    */
   async uploadProjectAvatar(
     request: UploadProjectAvatarRequest,
@@ -476,7 +476,7 @@ export class Projects extends ClientSDK {
   }
 
   /**
-   * Points all production domains for a project to the given deploy
+   * Point production traffic to a previous production deployment by ID
    *
    * @remarks
    * Allows users to rollback to a deployment.
@@ -530,7 +530,7 @@ export class Projects extends ClientSDK {
   }
 
   /**
-   * Points all production domains for a project to the given deploy
+   * Point production traffic to a given deployment
    *
    * @remarks
    * Allows users to promote a deployment to production. Note: This does NOT rebuild the deployment. If you need that, then call create-deployments endpoint.

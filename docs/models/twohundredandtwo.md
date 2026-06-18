@@ -5,23 +5,21 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndTwo } from "@vercel/sdk/models/usereventpayloadprevious.js";
+import { TwoHundredAndTwo } from "@vercel/sdk/models/usereventpayloaddeploymenttype.js";
 
 let value: TwoHundredAndTwo = {
   projectId: "<id>",
   projectName: "<value>",
-  gitProvider: "github-custom-host",
-  gitRepoId: "<id>",
-  gitRepositoryName: "<value>",
+  customEnvironmentId: "<id>",
+  customEnvironmentSlug: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                          | Type                                           | Required                                       | Description                                    |
-| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| `projectId`                                    | *string*                                       | :heavy_check_mark:                             | N/A                                            |
-| `projectName`                                  | *string*                                       | :heavy_check_mark:                             | N/A                                            |
-| `gitProvider`                                  | [models.GitProvider](../models/gitprovider.md) | :heavy_check_mark:                             | N/A                                            |
-| `gitRepoId`                                    | *string*                                       | :heavy_check_mark:                             | N/A                                            |
-| `gitRepositoryName`                            | *string*                                       | :heavy_check_mark:                             | N/A                                            |
+| Field                   | Type                    | Required                | Description             |
+| ----------------------- | ----------------------- | ----------------------- | ----------------------- |
+| `projectId`             | *string*                | :heavy_check_mark:      | N/A                     |
+| `projectName`           | *string*                | :heavy_check_mark:      | N/A                     |
+| `customEnvironmentId`   | *string*                | :heavy_check_mark:      | N/A                     |
+| `customEnvironmentSlug` | *string*                | :heavy_check_mark:      | N/A                     |

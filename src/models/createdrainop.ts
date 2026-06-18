@@ -69,6 +69,50 @@ export type Schemas = {
   version: string;
 };
 
+export const CreateDrainDeliveryDrainsEncoding = {
+  Json: "json",
+  Ndjson: "ndjson",
+} as const;
+export type CreateDrainDeliveryDrainsEncoding = ClosedEnum<
+  typeof CreateDrainDeliveryDrainsEncoding
+>;
+
+export const DeliveryCompression = {
+  None: "none",
+} as const;
+export type DeliveryCompression = ClosedEnum<typeof DeliveryCompression>;
+
+export const FileStructure = {
+  Hive: "hive",
+} as const;
+export type FileStructure = ClosedEnum<typeof FileStructure>;
+
+export const ServerSideEncryption = {
+  Aes256: "AES256",
+  AwsKms: "aws:kms",
+  AwsKmsDsse: "aws:kms:dsse",
+} as const;
+export type ServerSideEncryption = ClosedEnum<typeof ServerSideEncryption>;
+
+export const ObjectAcl = {
+  Private: "private",
+  BucketOwnerRead: "bucket-owner-read",
+  BucketOwnerFullControl: "bucket-owner-full-control",
+} as const;
+export type ObjectAcl = ClosedEnum<typeof ObjectAcl>;
+
+export type Delivery3 = {
+  type: string;
+  endpoint: string;
+  encoding: CreateDrainDeliveryDrainsEncoding;
+  compression: DeliveryCompression;
+  fileStructure: FileStructure;
+  roleArn: string;
+  region: string;
+  serverSideEncryption?: ServerSideEncryption | undefined;
+  objectAcl?: ObjectAcl | undefined;
+};
+
 export type Endpoint1 = {
   traces: string;
 };
@@ -112,7 +156,7 @@ export type Delivery1 = {
   secret?: string | undefined;
 };
 
-export type Delivery = Delivery1 | Delivery2;
+export type Delivery = Delivery3 | Delivery1 | Delivery2;
 
 /**
  * Environment to apply sampling to
@@ -174,7 +218,7 @@ export type CreateDrainRequestBody = {
   projectIds?: Array<string> | undefined;
   filter?: Filter | undefined;
   schemas: { [k: string]: Schemas };
-  delivery?: Delivery1 | Delivery2 | undefined;
+  delivery?: Delivery3 | Delivery1 | Delivery2 | undefined;
   sampling?: Array<Sampling> | undefined;
   transforms?: Array<Transforms> | undefined;
   source?: CreateDrain11 | One2 | One3 | Source2 | undefined;
@@ -239,12 +283,71 @@ export type CreateDrainDeliveryTarget = ClosedEnum<
   typeof CreateDrainDeliveryTarget
 >;
 
-export type CreateDrainDelivery4 = {
+export type CreateDrainDelivery5 = {
   type: "internal";
   target: CreateDrainDeliveryTarget;
 };
 
-export type CreateDrainDelivery3 = {
+export const CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody24Encoding =
+  {
+    Json: "json",
+    Ndjson: "ndjson",
+  } as const;
+export type CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody24Encoding =
+  ClosedEnum<
+    typeof CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody24Encoding
+  >;
+
+export const CreateDrainDeliveryDrainsResponse200Compression = {
+  None: "none",
+} as const;
+export type CreateDrainDeliveryDrainsResponse200Compression = ClosedEnum<
+  typeof CreateDrainDeliveryDrainsResponse200Compression
+>;
+
+export const CreateDrainDeliveryFileStructure = {
+  Hive: "hive",
+} as const;
+export type CreateDrainDeliveryFileStructure = ClosedEnum<
+  typeof CreateDrainDeliveryFileStructure
+>;
+
+export const CreateDrainDeliveryServerSideEncryption = {
+  Aes256: "AES256",
+  AwsKms: "aws:kms",
+  AwsKmsDsse: "aws:kms:dsse",
+} as const;
+export type CreateDrainDeliveryServerSideEncryption = ClosedEnum<
+  typeof CreateDrainDeliveryServerSideEncryption
+>;
+
+export const CreateDrainDeliveryObjectAcl = {
+  AuthenticatedRead: "authenticated-read",
+  AwsExecRead: "aws-exec-read",
+  BucketOwnerFullControl: "bucket-owner-full-control",
+  BucketOwnerRead: "bucket-owner-read",
+  Private: "private",
+  PublicRead: "public-read",
+  PublicReadWrite: "public-read-write",
+} as const;
+export type CreateDrainDeliveryObjectAcl = ClosedEnum<
+  typeof CreateDrainDeliveryObjectAcl
+>;
+
+export type CreateDrainDelivery4 = {
+  type: "s3";
+  endpoint: string;
+  encoding:
+    CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody24Encoding;
+  compression: CreateDrainDeliveryDrainsResponse200Compression;
+  fileStructure: CreateDrainDeliveryFileStructure;
+  roleArn: string;
+  region: string;
+  serverSideEncryption?: CreateDrainDeliveryServerSideEncryption | undefined;
+  objectAcl?: CreateDrainDeliveryObjectAcl | undefined;
+};
+
+export type CreateDrainDeliveryDrains3 = {
   type: "clickhouse";
   endpoint: string;
   table: string;
@@ -254,13 +357,14 @@ export type CreateDrainDeliveryDrainsResponseEndpoint = {
   traces: string;
 };
 
-export const CreateDrainDeliveryDrainsResponse200ApplicationJSONEncoding = {
-  Json: "json",
-  Proto: "proto",
-} as const;
-export type CreateDrainDeliveryDrainsResponse200ApplicationJSONEncoding =
+export const CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody2Encoding =
+  {
+    Json: "json",
+    Proto: "proto",
+  } as const;
+export type CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody2Encoding =
   ClosedEnum<
-    typeof CreateDrainDeliveryDrainsResponse200ApplicationJSONEncoding
+    typeof CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody2Encoding
   >;
 
 export const CreateDrainSecretDrainsResponseKind = {
@@ -281,25 +385,28 @@ export type CreateDrainDeliveryDrainsSecret =
 export type CreateDrainDeliveryDrains2 = {
   type: "otlphttp";
   endpoint: CreateDrainDeliveryDrainsResponseEndpoint;
-  encoding: CreateDrainDeliveryDrainsResponse200ApplicationJSONEncoding;
+  encoding:
+    CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody2Encoding;
   headers: { [k: string]: string };
   secret?: CreateDrainSecretDrainsResponse2 | string | undefined;
 };
 
-export const CreateDrainDeliveryDrainsResponse200Encoding = {
-  Json: "json",
-  Ndjson: "ndjson",
-} as const;
-export type CreateDrainDeliveryDrainsResponse200Encoding = ClosedEnum<
-  typeof CreateDrainDeliveryDrainsResponse200Encoding
->;
+export const CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBodyEncoding =
+  {
+    Json: "json",
+    Ndjson: "ndjson",
+  } as const;
+export type CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBodyEncoding =
+  ClosedEnum<
+    typeof CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBodyEncoding
+  >;
 
-export const CreateDrainDeliveryCompression = {
+export const CreateDrainDeliveryDrainsResponseCompression = {
   Gzip: "gzip",
   None: "none",
 } as const;
-export type CreateDrainDeliveryCompression = ClosedEnum<
-  typeof CreateDrainDeliveryCompression
+export type CreateDrainDeliveryDrainsResponseCompression = ClosedEnum<
+  typeof CreateDrainDeliveryDrainsResponseCompression
 >;
 
 export const CreateDrainSecretDrainsKind = {
@@ -318,8 +425,9 @@ export type CreateDrainDeliverySecret = CreateDrainSecretDrains2 | string;
 export type CreateDrainDeliveryDrains1 = {
   type: "http";
   endpoint: string;
-  encoding: CreateDrainDeliveryDrainsResponse200Encoding;
-  compression?: CreateDrainDeliveryCompression | undefined;
+  encoding:
+    CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBodyEncoding;
+  compression?: CreateDrainDeliveryDrainsResponseCompression | undefined;
   headers: { [k: string]: string };
   secret?: CreateDrainSecretDrains2 | string | undefined;
 };
@@ -327,8 +435,9 @@ export type CreateDrainDeliveryDrains1 = {
 export type CreateDrainResponseBodyDelivery =
   | CreateDrainDeliveryDrains1
   | CreateDrainDeliveryDrains2
-  | CreateDrainDelivery3
-  | CreateDrainDelivery4;
+  | CreateDrainDeliveryDrains3
+  | CreateDrainDelivery4
+  | CreateDrainDelivery5;
 
 export const CreateDrainResponseBodyDrainsType = {
   HeadSampling: "head_sampling",
@@ -472,8 +581,9 @@ export type CreateDrainResponseBody2 = {
   delivery:
     | CreateDrainDeliveryDrains1
     | CreateDrainDeliveryDrains2
-    | CreateDrainDelivery3
-    | CreateDrainDelivery4;
+    | CreateDrainDeliveryDrains3
+    | CreateDrainDelivery4
+    | CreateDrainDelivery5;
   sampling?: Array<CreateDrainResponseBodySampling> | undefined;
   source: CreateDrainSourceDrains1 | CreateDrainSourceDrains2;
   filterV2?: ResponseBodyFilterV2 | undefined;
@@ -526,12 +636,71 @@ export const DeliveryTarget = {
 } as const;
 export type DeliveryTarget = ClosedEnum<typeof DeliveryTarget>;
 
-export type Delivery4 = {
+export type Delivery5 = {
   type: "internal";
   target: DeliveryTarget;
 };
 
-export type Delivery3 = {
+export const CreateDrainDeliveryDrainsResponse200ApplicationJSONEncoding = {
+  Json: "json",
+  Ndjson: "ndjson",
+} as const;
+export type CreateDrainDeliveryDrainsResponse200ApplicationJSONEncoding =
+  ClosedEnum<
+    typeof CreateDrainDeliveryDrainsResponse200ApplicationJSONEncoding
+  >;
+
+export const CreateDrainDeliveryDrainsCompression = {
+  None: "none",
+} as const;
+export type CreateDrainDeliveryDrainsCompression = ClosedEnum<
+  typeof CreateDrainDeliveryDrainsCompression
+>;
+
+export const CreateDrainDeliveryDrainsFileStructure = {
+  Hive: "hive",
+} as const;
+export type CreateDrainDeliveryDrainsFileStructure = ClosedEnum<
+  typeof CreateDrainDeliveryDrainsFileStructure
+>;
+
+export const CreateDrainDeliveryDrainsServerSideEncryption = {
+  Aes256: "AES256",
+  AwsKms: "aws:kms",
+  AwsKmsDsse: "aws:kms:dsse",
+} as const;
+export type CreateDrainDeliveryDrainsServerSideEncryption = ClosedEnum<
+  typeof CreateDrainDeliveryDrainsServerSideEncryption
+>;
+
+export const CreateDrainDeliveryDrainsObjectAcl = {
+  AuthenticatedRead: "authenticated-read",
+  AwsExecRead: "aws-exec-read",
+  BucketOwnerFullControl: "bucket-owner-full-control",
+  BucketOwnerRead: "bucket-owner-read",
+  Private: "private",
+  PublicRead: "public-read",
+  PublicReadWrite: "public-read-write",
+} as const;
+export type CreateDrainDeliveryDrainsObjectAcl = ClosedEnum<
+  typeof CreateDrainDeliveryDrainsObjectAcl
+>;
+
+export type Delivery4 = {
+  type: "s3";
+  endpoint: string;
+  encoding: CreateDrainDeliveryDrainsResponse200ApplicationJSONEncoding;
+  compression: CreateDrainDeliveryDrainsCompression;
+  fileStructure: CreateDrainDeliveryDrainsFileStructure;
+  roleArn: string;
+  region: string;
+  serverSideEncryption?:
+    | CreateDrainDeliveryDrainsServerSideEncryption
+    | undefined;
+  objectAcl?: CreateDrainDeliveryDrainsObjectAcl | undefined;
+};
+
+export type CreateDrainDelivery3 = {
   type: "clickhouse";
   endpoint: string;
   table: string;
@@ -541,12 +710,12 @@ export type CreateDrainDeliveryDrainsEndpoint = {
   traces: string;
 };
 
-export const CreateDrainDeliveryDrainsResponseEncoding = {
+export const CreateDrainDeliveryDrainsResponse200Encoding = {
   Json: "json",
   Proto: "proto",
 } as const;
-export type CreateDrainDeliveryDrainsResponseEncoding = ClosedEnum<
-  typeof CreateDrainDeliveryDrainsResponseEncoding
+export type CreateDrainDeliveryDrainsResponse200Encoding = ClosedEnum<
+  typeof CreateDrainDeliveryDrainsResponse200Encoding
 >;
 
 export const CreateDrainSecretKind = {
@@ -563,25 +732,25 @@ export type DeliverySecret = CreateDrainSecret2 | string;
 export type CreateDrainDelivery2 = {
   type: "otlphttp";
   endpoint: CreateDrainDeliveryDrainsEndpoint;
-  encoding: CreateDrainDeliveryDrainsResponseEncoding;
+  encoding: CreateDrainDeliveryDrainsResponse200Encoding;
   headers: { [k: string]: string };
   secret?: CreateDrainSecret2 | string | undefined;
 };
 
-export const CreateDrainDeliveryDrainsEncoding = {
+export const CreateDrainDeliveryDrainsResponseEncoding = {
   Json: "json",
   Ndjson: "ndjson",
 } as const;
-export type CreateDrainDeliveryDrainsEncoding = ClosedEnum<
-  typeof CreateDrainDeliveryDrainsEncoding
+export type CreateDrainDeliveryDrainsResponseEncoding = ClosedEnum<
+  typeof CreateDrainDeliveryDrainsResponseEncoding
 >;
 
-export const CreateDrainDeliveryDrainsCompression = {
+export const CreateDrainDeliveryCompression = {
   Gzip: "gzip",
   None: "none",
 } as const;
-export type CreateDrainDeliveryDrainsCompression = ClosedEnum<
-  typeof CreateDrainDeliveryDrainsCompression
+export type CreateDrainDeliveryCompression = ClosedEnum<
+  typeof CreateDrainDeliveryCompression
 >;
 
 export const SecretKind = {
@@ -598,8 +767,8 @@ export type Secret = Secret2 | string;
 export type CreateDrainDelivery1 = {
   type: "http";
   endpoint: string;
-  encoding: CreateDrainDeliveryDrainsEncoding;
-  compression?: CreateDrainDeliveryDrainsCompression | undefined;
+  encoding: CreateDrainDeliveryDrainsResponseEncoding;
+  compression?: CreateDrainDeliveryCompression | undefined;
   headers: { [k: string]: string };
   secret?: Secret2 | string | undefined;
 };
@@ -607,8 +776,9 @@ export type CreateDrainDelivery1 = {
 export type ResponseBodyDelivery =
   | CreateDrainDelivery1
   | CreateDrainDelivery2
-  | Delivery3
-  | Delivery4;
+  | CreateDrainDelivery3
+  | Delivery4
+  | Delivery5;
 
 export const CreateDrainResponseBodyType = {
   HeadSampling: "head_sampling",
@@ -722,7 +892,12 @@ export type CreateDrainResponseBody1 = {
   disabledBy?: string | undefined;
   disabledReason?: DisabledReason | undefined;
   schemas: ResponseBodySchemas;
-  delivery: CreateDrainDelivery1 | CreateDrainDelivery2 | Delivery3 | Delivery4;
+  delivery:
+    | CreateDrainDelivery1
+    | CreateDrainDelivery2
+    | CreateDrainDelivery3
+    | Delivery4
+    | Delivery5;
   sampling?: Array<ResponseBodySampling> | undefined;
   source: CreateDrainSource1 | CreateDrainSource2;
   filterV2?: FilterV2 | undefined;
@@ -916,6 +1091,64 @@ export function schemasToJSON(schemas: Schemas): string {
 }
 
 /** @internal */
+export const CreateDrainDeliveryDrainsEncoding$outboundSchema: z.ZodNativeEnum<
+  typeof CreateDrainDeliveryDrainsEncoding
+> = z.nativeEnum(CreateDrainDeliveryDrainsEncoding);
+
+/** @internal */
+export const DeliveryCompression$outboundSchema: z.ZodNativeEnum<
+  typeof DeliveryCompression
+> = z.nativeEnum(DeliveryCompression);
+
+/** @internal */
+export const FileStructure$outboundSchema: z.ZodNativeEnum<
+  typeof FileStructure
+> = z.nativeEnum(FileStructure);
+
+/** @internal */
+export const ServerSideEncryption$outboundSchema: z.ZodNativeEnum<
+  typeof ServerSideEncryption
+> = z.nativeEnum(ServerSideEncryption);
+
+/** @internal */
+export const ObjectAcl$outboundSchema: z.ZodNativeEnum<typeof ObjectAcl> = z
+  .nativeEnum(ObjectAcl);
+
+/** @internal */
+export type Delivery3$Outbound = {
+  type: string;
+  endpoint: string;
+  encoding: string;
+  compression: string;
+  fileStructure: string;
+  roleArn: string;
+  region: string;
+  serverSideEncryption?: string | undefined;
+  objectAcl?: string | undefined;
+};
+
+/** @internal */
+export const Delivery3$outboundSchema: z.ZodType<
+  Delivery3$Outbound,
+  z.ZodTypeDef,
+  Delivery3
+> = z.object({
+  type: z.string(),
+  endpoint: z.string(),
+  encoding: CreateDrainDeliveryDrainsEncoding$outboundSchema,
+  compression: DeliveryCompression$outboundSchema,
+  fileStructure: FileStructure$outboundSchema,
+  roleArn: z.string(),
+  region: z.string(),
+  serverSideEncryption: ServerSideEncryption$outboundSchema.optional(),
+  objectAcl: ObjectAcl$outboundSchema.optional(),
+});
+
+export function delivery3ToJSON(delivery3: Delivery3): string {
+  return JSON.stringify(Delivery3$outboundSchema.parse(delivery3));
+}
+
+/** @internal */
 export type Endpoint1$Outbound = {
   traces: string;
 };
@@ -1022,7 +1255,10 @@ export function delivery1ToJSON(delivery1: Delivery1): string {
 }
 
 /** @internal */
-export type Delivery$Outbound = Delivery1$Outbound | Delivery2$Outbound;
+export type Delivery$Outbound =
+  | Delivery3$Outbound
+  | Delivery1$Outbound
+  | Delivery2$Outbound;
 
 /** @internal */
 export const Delivery$outboundSchema: z.ZodType<
@@ -1030,6 +1266,7 @@ export const Delivery$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Delivery
 > = smartUnion([
+  z.lazy(() => Delivery3$outboundSchema),
   z.lazy(() => Delivery1$outboundSchema),
   z.lazy(() => Delivery2$outboundSchema),
 ]);
@@ -1212,7 +1449,11 @@ export type CreateDrainRequestBody$Outbound = {
   projectIds?: Array<string> | undefined;
   filter?: Filter$Outbound | undefined;
   schemas: { [k: string]: Schemas$Outbound };
-  delivery?: Delivery1$Outbound | Delivery2$Outbound | undefined;
+  delivery?:
+    | Delivery3$Outbound
+    | Delivery1$Outbound
+    | Delivery2$Outbound
+    | undefined;
   sampling?: Array<Sampling$Outbound> | undefined;
   transforms?: Array<Transforms$Outbound> | undefined;
   source?:
@@ -1235,6 +1476,7 @@ export const CreateDrainRequestBody$outboundSchema: z.ZodType<
   filter: z.lazy(() => Filter$outboundSchema).optional(),
   schemas: z.record(z.lazy(() => Schemas$outboundSchema)),
   delivery: smartUnion([
+    z.lazy(() => Delivery3$outboundSchema),
     z.lazy(() => Delivery1$outboundSchema),
     z.lazy(() => Delivery2$outboundSchema),
   ]).optional(),
@@ -1445,13 +1687,71 @@ export const CreateDrainDeliveryTarget$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(CreateDrainDeliveryTarget);
 
 /** @internal */
-export const CreateDrainDelivery4$inboundSchema: z.ZodType<
-  CreateDrainDelivery4,
+export const CreateDrainDelivery5$inboundSchema: z.ZodType<
+  CreateDrainDelivery5,
   z.ZodTypeDef,
   unknown
 > = z.object({
   type: types.literal("internal"),
   target: CreateDrainDeliveryTarget$inboundSchema,
+});
+
+export function createDrainDelivery5FromJSON(
+  jsonString: string,
+): SafeParseResult<CreateDrainDelivery5, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateDrainDelivery5$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateDrainDelivery5' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody24Encoding$inboundSchema:
+  z.ZodNativeEnum<
+    typeof CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody24Encoding
+  > = z.nativeEnum(
+    CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody24Encoding,
+  );
+
+/** @internal */
+export const CreateDrainDeliveryDrainsResponse200Compression$inboundSchema:
+  z.ZodNativeEnum<typeof CreateDrainDeliveryDrainsResponse200Compression> = z
+    .nativeEnum(CreateDrainDeliveryDrainsResponse200Compression);
+
+/** @internal */
+export const CreateDrainDeliveryFileStructure$inboundSchema: z.ZodNativeEnum<
+  typeof CreateDrainDeliveryFileStructure
+> = z.nativeEnum(CreateDrainDeliveryFileStructure);
+
+/** @internal */
+export const CreateDrainDeliveryServerSideEncryption$inboundSchema:
+  z.ZodNativeEnum<typeof CreateDrainDeliveryServerSideEncryption> = z
+    .nativeEnum(CreateDrainDeliveryServerSideEncryption);
+
+/** @internal */
+export const CreateDrainDeliveryObjectAcl$inboundSchema: z.ZodNativeEnum<
+  typeof CreateDrainDeliveryObjectAcl
+> = z.nativeEnum(CreateDrainDeliveryObjectAcl);
+
+/** @internal */
+export const CreateDrainDelivery4$inboundSchema: z.ZodType<
+  CreateDrainDelivery4,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: types.literal("s3"),
+  endpoint: types.string(),
+  encoding:
+    CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody24Encoding$inboundSchema,
+  compression: CreateDrainDeliveryDrainsResponse200Compression$inboundSchema,
+  fileStructure: CreateDrainDeliveryFileStructure$inboundSchema,
+  roleArn: types.string(),
+  region: types.string(),
+  serverSideEncryption: types.optional(
+    CreateDrainDeliveryServerSideEncryption$inboundSchema,
+  ),
+  objectAcl: types.optional(CreateDrainDeliveryObjectAcl$inboundSchema),
 });
 
 export function createDrainDelivery4FromJSON(
@@ -1465,8 +1765,8 @@ export function createDrainDelivery4FromJSON(
 }
 
 /** @internal */
-export const CreateDrainDelivery3$inboundSchema: z.ZodType<
-  CreateDrainDelivery3,
+export const CreateDrainDeliveryDrains3$inboundSchema: z.ZodType<
+  CreateDrainDeliveryDrains3,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -1475,13 +1775,13 @@ export const CreateDrainDelivery3$inboundSchema: z.ZodType<
   table: types.string(),
 });
 
-export function createDrainDelivery3FromJSON(
+export function createDrainDeliveryDrains3FromJSON(
   jsonString: string,
-): SafeParseResult<CreateDrainDelivery3, SDKValidationError> {
+): SafeParseResult<CreateDrainDeliveryDrains3, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CreateDrainDelivery3$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateDrainDelivery3' from JSON`,
+    (x) => CreateDrainDeliveryDrains3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateDrainDeliveryDrains3' from JSON`,
   );
 }
 
@@ -1511,10 +1811,12 @@ export function createDrainDeliveryDrainsResponseEndpointFromJSON(
 }
 
 /** @internal */
-export const CreateDrainDeliveryDrainsResponse200ApplicationJSONEncoding$inboundSchema:
+export const CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody2Encoding$inboundSchema:
   z.ZodNativeEnum<
-    typeof CreateDrainDeliveryDrainsResponse200ApplicationJSONEncoding
-  > = z.nativeEnum(CreateDrainDeliveryDrainsResponse200ApplicationJSONEncoding);
+    typeof CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody2Encoding
+  > = z.nativeEnum(
+    CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody2Encoding,
+  );
 
 /** @internal */
 export const CreateDrainSecretDrainsResponseKind$inboundSchema: z.ZodNativeEnum<
@@ -1571,7 +1873,7 @@ export const CreateDrainDeliveryDrains2$inboundSchema: z.ZodType<
     CreateDrainDeliveryDrainsResponseEndpoint$inboundSchema
   ),
   encoding:
-    CreateDrainDeliveryDrainsResponse200ApplicationJSONEncoding$inboundSchema,
+    CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody2Encoding$inboundSchema,
   headers: z.record(types.string()),
   secret: types.optional(
     smartUnion([
@@ -1592,14 +1894,17 @@ export function createDrainDeliveryDrains2FromJSON(
 }
 
 /** @internal */
-export const CreateDrainDeliveryDrainsResponse200Encoding$inboundSchema:
-  z.ZodNativeEnum<typeof CreateDrainDeliveryDrainsResponse200Encoding> = z
-    .nativeEnum(CreateDrainDeliveryDrainsResponse200Encoding);
+export const CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBodyEncoding$inboundSchema:
+  z.ZodNativeEnum<
+    typeof CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBodyEncoding
+  > = z.nativeEnum(
+    CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBodyEncoding,
+  );
 
 /** @internal */
-export const CreateDrainDeliveryCompression$inboundSchema: z.ZodNativeEnum<
-  typeof CreateDrainDeliveryCompression
-> = z.nativeEnum(CreateDrainDeliveryCompression);
+export const CreateDrainDeliveryDrainsResponseCompression$inboundSchema:
+  z.ZodNativeEnum<typeof CreateDrainDeliveryDrainsResponseCompression> = z
+    .nativeEnum(CreateDrainDeliveryDrainsResponseCompression);
 
 /** @internal */
 export const CreateDrainSecretDrainsKind$inboundSchema: z.ZodNativeEnum<
@@ -1653,8 +1958,11 @@ export const CreateDrainDeliveryDrains1$inboundSchema: z.ZodType<
 > = z.object({
   type: types.literal("http"),
   endpoint: types.string(),
-  encoding: CreateDrainDeliveryDrainsResponse200Encoding$inboundSchema,
-  compression: types.optional(CreateDrainDeliveryCompression$inboundSchema),
+  encoding:
+    CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBodyEncoding$inboundSchema,
+  compression: types.optional(
+    CreateDrainDeliveryDrainsResponseCompression$inboundSchema,
+  ),
   headers: z.record(types.string()),
   secret: types.optional(
     smartUnion([
@@ -1682,8 +1990,9 @@ export const CreateDrainResponseBodyDelivery$inboundSchema: z.ZodType<
 > = z.union([
   z.lazy(() => CreateDrainDeliveryDrains1$inboundSchema),
   z.lazy(() => CreateDrainDeliveryDrains2$inboundSchema),
-  z.lazy(() => CreateDrainDelivery3$inboundSchema),
+  z.lazy(() => CreateDrainDeliveryDrains3$inboundSchema),
   z.lazy(() => CreateDrainDelivery4$inboundSchema),
+  z.lazy(() => CreateDrainDelivery5$inboundSchema),
 ]);
 
 export function createDrainResponseBodyDeliveryFromJSON(
@@ -2061,8 +2370,9 @@ export const CreateDrainResponseBody2$inboundSchema: z.ZodType<
   delivery: z.union([
     z.lazy(() => CreateDrainDeliveryDrains1$inboundSchema),
     z.lazy(() => CreateDrainDeliveryDrains2$inboundSchema),
-    z.lazy(() => CreateDrainDelivery3$inboundSchema),
+    z.lazy(() => CreateDrainDeliveryDrains3$inboundSchema),
     z.lazy(() => CreateDrainDelivery4$inboundSchema),
+    z.lazy(() => CreateDrainDelivery5$inboundSchema),
   ]),
   sampling: types.optional(
     z.array(z.lazy(() => CreateDrainResponseBodySampling$inboundSchema)),
@@ -2243,13 +2553,71 @@ export const DeliveryTarget$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(DeliveryTarget);
 
 /** @internal */
-export const Delivery4$inboundSchema: z.ZodType<
-  Delivery4,
+export const Delivery5$inboundSchema: z.ZodType<
+  Delivery5,
   z.ZodTypeDef,
   unknown
 > = z.object({
   type: types.literal("internal"),
   target: DeliveryTarget$inboundSchema,
+});
+
+export function delivery5FromJSON(
+  jsonString: string,
+): SafeParseResult<Delivery5, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Delivery5$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Delivery5' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateDrainDeliveryDrainsResponse200ApplicationJSONEncoding$inboundSchema:
+  z.ZodNativeEnum<
+    typeof CreateDrainDeliveryDrainsResponse200ApplicationJSONEncoding
+  > = z.nativeEnum(CreateDrainDeliveryDrainsResponse200ApplicationJSONEncoding);
+
+/** @internal */
+export const CreateDrainDeliveryDrainsCompression$inboundSchema:
+  z.ZodNativeEnum<typeof CreateDrainDeliveryDrainsCompression> = z.nativeEnum(
+    CreateDrainDeliveryDrainsCompression,
+  );
+
+/** @internal */
+export const CreateDrainDeliveryDrainsFileStructure$inboundSchema:
+  z.ZodNativeEnum<typeof CreateDrainDeliveryDrainsFileStructure> = z.nativeEnum(
+    CreateDrainDeliveryDrainsFileStructure,
+  );
+
+/** @internal */
+export const CreateDrainDeliveryDrainsServerSideEncryption$inboundSchema:
+  z.ZodNativeEnum<typeof CreateDrainDeliveryDrainsServerSideEncryption> = z
+    .nativeEnum(CreateDrainDeliveryDrainsServerSideEncryption);
+
+/** @internal */
+export const CreateDrainDeliveryDrainsObjectAcl$inboundSchema: z.ZodNativeEnum<
+  typeof CreateDrainDeliveryDrainsObjectAcl
+> = z.nativeEnum(CreateDrainDeliveryDrainsObjectAcl);
+
+/** @internal */
+export const Delivery4$inboundSchema: z.ZodType<
+  Delivery4,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: types.literal("s3"),
+  endpoint: types.string(),
+  encoding:
+    CreateDrainDeliveryDrainsResponse200ApplicationJSONEncoding$inboundSchema,
+  compression: CreateDrainDeliveryDrainsCompression$inboundSchema,
+  fileStructure: CreateDrainDeliveryDrainsFileStructure$inboundSchema,
+  roleArn: types.string(),
+  region: types.string(),
+  serverSideEncryption: types.optional(
+    CreateDrainDeliveryDrainsServerSideEncryption$inboundSchema,
+  ),
+  objectAcl: types.optional(CreateDrainDeliveryDrainsObjectAcl$inboundSchema),
 });
 
 export function delivery4FromJSON(
@@ -2263,8 +2631,8 @@ export function delivery4FromJSON(
 }
 
 /** @internal */
-export const Delivery3$inboundSchema: z.ZodType<
-  Delivery3,
+export const CreateDrainDelivery3$inboundSchema: z.ZodType<
+  CreateDrainDelivery3,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -2273,13 +2641,13 @@ export const Delivery3$inboundSchema: z.ZodType<
   table: types.string(),
 });
 
-export function delivery3FromJSON(
+export function createDrainDelivery3FromJSON(
   jsonString: string,
-): SafeParseResult<Delivery3, SDKValidationError> {
+): SafeParseResult<CreateDrainDelivery3, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Delivery3$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Delivery3' from JSON`,
+    (x) => CreateDrainDelivery3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateDrainDelivery3' from JSON`,
   );
 }
 
@@ -2303,9 +2671,9 @@ export function createDrainDeliveryDrainsEndpointFromJSON(
 }
 
 /** @internal */
-export const CreateDrainDeliveryDrainsResponseEncoding$inboundSchema:
-  z.ZodNativeEnum<typeof CreateDrainDeliveryDrainsResponseEncoding> = z
-    .nativeEnum(CreateDrainDeliveryDrainsResponseEncoding);
+export const CreateDrainDeliveryDrainsResponse200Encoding$inboundSchema:
+  z.ZodNativeEnum<typeof CreateDrainDeliveryDrainsResponse200Encoding> = z
+    .nativeEnum(CreateDrainDeliveryDrainsResponse200Encoding);
 
 /** @internal */
 export const CreateDrainSecretKind$inboundSchema: z.ZodNativeEnum<
@@ -2359,7 +2727,7 @@ export const CreateDrainDelivery2$inboundSchema: z.ZodType<
 > = z.object({
   type: types.literal("otlphttp"),
   endpoint: z.lazy(() => CreateDrainDeliveryDrainsEndpoint$inboundSchema),
-  encoding: CreateDrainDeliveryDrainsResponseEncoding$inboundSchema,
+  encoding: CreateDrainDeliveryDrainsResponse200Encoding$inboundSchema,
   headers: z.record(types.string()),
   secret: types.optional(
     smartUnion([
@@ -2380,15 +2748,14 @@ export function createDrainDelivery2FromJSON(
 }
 
 /** @internal */
-export const CreateDrainDeliveryDrainsEncoding$inboundSchema: z.ZodNativeEnum<
-  typeof CreateDrainDeliveryDrainsEncoding
-> = z.nativeEnum(CreateDrainDeliveryDrainsEncoding);
+export const CreateDrainDeliveryDrainsResponseEncoding$inboundSchema:
+  z.ZodNativeEnum<typeof CreateDrainDeliveryDrainsResponseEncoding> = z
+    .nativeEnum(CreateDrainDeliveryDrainsResponseEncoding);
 
 /** @internal */
-export const CreateDrainDeliveryDrainsCompression$inboundSchema:
-  z.ZodNativeEnum<typeof CreateDrainDeliveryDrainsCompression> = z.nativeEnum(
-    CreateDrainDeliveryDrainsCompression,
-  );
+export const CreateDrainDeliveryCompression$inboundSchema: z.ZodNativeEnum<
+  typeof CreateDrainDeliveryCompression
+> = z.nativeEnum(CreateDrainDeliveryCompression);
 
 /** @internal */
 export const SecretKind$inboundSchema: z.ZodNativeEnum<typeof SecretKind> = z
@@ -2432,10 +2799,8 @@ export const CreateDrainDelivery1$inboundSchema: z.ZodType<
 > = z.object({
   type: types.literal("http"),
   endpoint: types.string(),
-  encoding: CreateDrainDeliveryDrainsEncoding$inboundSchema,
-  compression: types.optional(
-    CreateDrainDeliveryDrainsCompression$inboundSchema,
-  ),
+  encoding: CreateDrainDeliveryDrainsResponseEncoding$inboundSchema,
+  compression: types.optional(CreateDrainDeliveryCompression$inboundSchema),
   headers: z.record(types.string()),
   secret: types.optional(
     smartUnion([z.lazy(() => Secret2$inboundSchema), types.string()]),
@@ -2460,8 +2825,9 @@ export const ResponseBodyDelivery$inboundSchema: z.ZodType<
 > = z.union([
   z.lazy(() => CreateDrainDelivery1$inboundSchema),
   z.lazy(() => CreateDrainDelivery2$inboundSchema),
-  z.lazy(() => Delivery3$inboundSchema),
+  z.lazy(() => CreateDrainDelivery3$inboundSchema),
   z.lazy(() => Delivery4$inboundSchema),
+  z.lazy(() => Delivery5$inboundSchema),
 ]);
 
 export function responseBodyDeliveryFromJSON(
@@ -2758,8 +3124,9 @@ export const CreateDrainResponseBody1$inboundSchema: z.ZodType<
   delivery: z.union([
     z.lazy(() => CreateDrainDelivery1$inboundSchema),
     z.lazy(() => CreateDrainDelivery2$inboundSchema),
-    z.lazy(() => Delivery3$inboundSchema),
+    z.lazy(() => CreateDrainDelivery3$inboundSchema),
     z.lazy(() => Delivery4$inboundSchema),
+    z.lazy(() => Delivery5$inboundSchema),
   ]),
   sampling: types.optional(
     z.array(z.lazy(() => ResponseBodySampling$inboundSchema)),

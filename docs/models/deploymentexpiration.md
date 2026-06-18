@@ -5,7 +5,7 @@ Retention policies for deployments. These are enforced at the project level, but
 ## Example Usage
 
 ```typescript
-import { DeploymentExpiration } from "@vercel/sdk/models/createprojectprojectsto.js";
+import { DeploymentExpiration } from "@vercel/sdk/models/createprojecttoprojectsresponsepreset.js";
 
 let value: DeploymentExpiration = {};
 ```

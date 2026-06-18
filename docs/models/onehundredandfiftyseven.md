@@ -5,19 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndFiftySeven } from "@vercel/sdk/models/connectdatatransfer.js";
+import { OneHundredAndFiftySeven } from "@vercel/sdk/models/analyticsusage.js";
 
 let value: OneHundredAndFiftySeven = {
-  projectId: "<id>",
-  type: "header",
-  headerName: "<value>",
+  organizationId: "<id>",
+  teamId: "<id>",
+  billingPlan: "platform",
 };
 ```
 
 ## Fields
 
-| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
-| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `projectId`                                                            | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
-| `type`                                                                 | [models.UserEventPayload157Type](../models/usereventpayload157type.md) | :heavy_check_mark:                                                     | N/A                                                                    |
-| `headerName`                                                           | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
+| Field                                          | Type                                           | Required                                       | Description                                    |
+| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
+| `organizationId`                               | *string*                                       | :heavy_check_mark:                             | N/A                                            |
+| `teamId`                                       | *string*                                       | :heavy_check_mark:                             | N/A                                            |
+| `billingPlan`                                  | [models.BillingPlan](../models/billingplan.md) | :heavy_check_mark:                             | N/A                                            |

@@ -5,10 +5,11 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndNinetyNine } from "@vercel/sdk/models/twohundredandninety.js";
+import { TwoHundredAndNinetyNine } from "@vercel/sdk/models/reasoncode.js";
 
 let value: TwoHundredAndNinetyNine = {
-  previousRole: "<value>",
+  environment: "production",
+  enabled: "default",
 };
 ```
 
@@ -16,11 +17,5 @@ let value: TwoHundredAndNinetyNine = {
 
 | Field                                                        | Type                                                         | Required                                                     | Description                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `directoryType`                                              | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          |
-| `ssoType`                                                    | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          |
-| `updatedUser`                                                | [models.PayloadUpdatedUser](../models/payloadupdateduser.md) | :heavy_minus_sign:                                           | N/A                                                          |
-| `role`                                                       | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          |
-| `previousRole`                                               | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
-| `updatedUid`                                                 | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          |
-| `origin`                                                     | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          |
-| `teamSlug`                                                   | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          |
+| `environment`                                                | [models.PayloadEnvironment](../models/payloadenvironment.md) | :heavy_check_mark:                                           | N/A                                                          |
+| `enabled`                                                    | [models.Enabled](../models/enabled.md)                       | :heavy_check_mark:                                           | N/A                                                          |

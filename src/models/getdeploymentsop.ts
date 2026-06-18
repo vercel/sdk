@@ -316,6 +316,7 @@ export const GetDeploymentsFramework = {
   Axum: "axum",
   Blitzjs: "blitzjs",
   Brunch: "brunch",
+  Bun: "bun",
   CreateReactApp: "create-react-app",
   Django: "django",
   Docusaurus: "docusaurus",
@@ -443,7 +444,6 @@ export type GetDeploymentsProjectSettings = {
   buildCommand?: string | null | undefined;
   nodeVersion?: GetDeploymentsNodeVersion | undefined;
   outputDirectory?: string | null | undefined;
-  publicSource?: boolean | null | undefined;
   rootDirectory?: string | null | undefined;
   sourceFilesOutsideRootDirectory?: boolean | undefined;
   commandForIgnoringBuildStep?: string | null | undefined;
@@ -1162,7 +1162,6 @@ export const GetDeploymentsProjectSettings$inboundSchema: z.ZodType<
   buildCommand: z.nullable(types.string()).optional(),
   nodeVersion: types.optional(GetDeploymentsNodeVersion$inboundSchema),
   outputDirectory: z.nullable(types.string()).optional(),
-  publicSource: z.nullable(types.boolean()).optional(),
   rootDirectory: z.nullable(types.string()).optional(),
   sourceFilesOutsideRootDirectory: types.optional(types.boolean()),
   commandForIgnoringBuildStep: z.nullable(types.string()).optional(),

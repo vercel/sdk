@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsResponseBodyProjectsResponse200ApplicationJson1Type } from "@vercel/sdk/models/getprojectsresponsebody.js";
+import { GetProjectsResponseBodyProjectsResponse200ApplicationJson1Type } from "@vercel/sdk/models/getprojectsinternalrouteshas.js";
 
 let value: GetProjectsResponseBodyProjectsResponse200ApplicationJson1Type =
   "cookie";
@@ -12,5 +12,5 @@ let value: GetProjectsResponseBodyProjectsResponse200ApplicationJson1Type =
 ## Values
 
 ```typescript
-"cookie" | "environment" | "header" | "host" | "initial_request_path" | "ip_address" | "method" | "path" | "protocol" | "query" | "region" | "scheme"
+"cookie" | "environment" | "header" | "host" | "initial_request_path" | "ip_address" | "method" | "path" | "protocol" | "query" | "region" | "scheme" | "trusted_source"
 ```

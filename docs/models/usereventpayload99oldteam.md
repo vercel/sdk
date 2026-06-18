@@ -1,0 +1,17 @@
+# UserEventPayload99OldTeam
+
+## Example Usage
+
+```typescript
+import { UserEventPayload99OldTeam } from "@vercel/sdk/models/usereventpayload54action.js";
+
+let value: UserEventPayload99OldTeam = {
+  name: "<value>",
+};
+```
+
+## Fields
+
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `name`             | *string*           | :heavy_check_mark: | N/A                |

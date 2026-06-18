@@ -13,8 +13,6 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
 import {
   UpdateMicrofrontendsAnalytics,
   UpdateMicrofrontendsAnalytics$inboundSchema,
-  UpdateMicrofrontendsBotFilter,
-  UpdateMicrofrontendsBotFilter$inboundSchema,
   UpdateMicrofrontendsConnectConfigurations,
   UpdateMicrofrontendsConnectConfigurations$inboundSchema,
   UpdateMicrofrontendsCrons,
@@ -63,6 +61,8 @@ import {
   UpdateMicrofrontendsPermissions$inboundSchema,
   UpdateMicrofrontendsProtectionBypass,
   UpdateMicrofrontendsProtectionBypass$inboundSchema,
+  UpdateMicrofrontendsProtectionConfig,
+  UpdateMicrofrontendsProtectionConfig$inboundSchema,
   UpdateMicrofrontendsResourceConfig,
   UpdateMicrofrontendsResourceConfig$inboundSchema,
   UpdateMicrofrontendsRollbackDescription,
@@ -87,7 +87,7 @@ import {
   UpdateMicrofrontendsVercelRuleset$inboundSchema,
   UpdateMicrofrontendsWebAnalytics,
   UpdateMicrofrontendsWebAnalytics$inboundSchema,
-} from "./updatemicrofrontendsbotfilter.js";
+} from "./updatemicrofrontendsvercelruleset.js";
 
 export const UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodySecurityAction =
   {
@@ -100,10 +100,28 @@ export type UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodySe
     typeof UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodySecurityAction
   >;
 
-export type UpdateMicrofrontendsAiBots = {
+export type UpdateMicrofrontendsTrafficSources = {
   active: boolean;
   action?:
     | UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodySecurityAction
+    | undefined;
+};
+
+export const UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesAction =
+  {
+    Challenge: "challenge",
+    Deny: "deny",
+    Log: "log",
+  } as const;
+export type UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesAction =
+  ClosedEnum<
+    typeof UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesAction
+  >;
+
+export type UpdateMicrofrontendsBotFilter = {
+  active: boolean;
+  action?:
+    | UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesAction
     | undefined;
 };
 
@@ -116,13 +134,31 @@ export type UpdateMicrofrontendsProjectsResponse200Action = ClosedEnum<
   typeof UpdateMicrofrontendsProjectsResponse200Action
 >;
 
-export type UpdateMicrofrontendsOwasp = {
+export type UpdateMicrofrontendsAiBots = {
   active: boolean;
   action?: UpdateMicrofrontendsProjectsResponse200Action | undefined;
 };
 
+export const UpdateMicrofrontendsProjectsResponse200ApplicationJSONAction = {
+  Challenge: "challenge",
+  Deny: "deny",
+  Log: "log",
+} as const;
+export type UpdateMicrofrontendsProjectsResponse200ApplicationJSONAction =
+  ClosedEnum<
+    typeof UpdateMicrofrontendsProjectsResponse200ApplicationJSONAction
+  >;
+
+export type UpdateMicrofrontendsOwasp = {
+  active: boolean;
+  action?:
+    | UpdateMicrofrontendsProjectsResponse200ApplicationJSONAction
+    | undefined;
+};
+
 export type UpdateMicrofrontendsManagedRules = {
   vercelRuleset: UpdateMicrofrontendsVercelRuleset;
+  trafficSources: UpdateMicrofrontendsTrafficSources;
   botFilter: UpdateMicrofrontendsBotFilter;
   aiBots: UpdateMicrofrontendsAiBots;
   owasp: UpdateMicrofrontendsOwasp;
@@ -263,7 +299,7 @@ export type UpdateMicrofrontendsGitSources = {
 };
 
 /**
- * Customer-configurable deployment sources. Every deploy classifies to exactly one. JSON schema in `packages/deployment-policy/schemas/body.ts` enumerates exactly these values. - `'git'` — git provider webhook. - `'cli'` — Vercel CLI (legacy classic-token CLI and SIWV CLI both). - `'rest-api'` — direct user/team-token REST upload. Does NOT cover deploy hooks, Marketplace integrations, or first-party app tokens. - `'deploy-hook'` — project deploy-hook URL. The URL is the credential. - `'integration'` — third-party Marketplace actor: Marketplace integration token, user-delegated OAuth from a Marketplace app, or an unrecognized third-party Vercel App. First-party Vercel Apps are never `'integration'`. First-party Vercel apps (v0, Toolbar, etc.) classify as `'first-party'` — see `ClassifiedSource` in `./checks`. They're not in this union because they aren't customer-configurable; they bypass `checkDeploymentSources` entirely.
+ * Customer-configurable deployment sources. Every deploy classifies to exactly one. JSON schema in `packages/deployment-policy/schemas/body.ts` enumerates exactly these values. - `'git'` — git provider webhook. - `'cli'` — Vercel CLI (legacy classic-token CLI and SIWV CLI both). - `'rest-api'` — direct user/team-token REST upload. Does NOT cover deploy hooks, Marketplace integrations, or first-party app tokens. - `'deploy-hook'` — project deploy-hook URL. The URL is the credential. - `'integration'` — third-party Marketplace actor: Marketplace integration token, user-delegated OAuth from a Marketplace app, or an unrecognized third-party Vercel App. First-party Vercel Apps are never `'integration'`. - `'v0'` — the v0 product surface (entitlement-gated). v0 deploys through the CLI under the hood, but classifies as its own source so a team can allow or deny v0 independently of `'cli'`. First-party Vercel apps (Toolbar, etc.) classify as `'first-party'` — see `ClassifiedSource` in `./checks`. They're not in this union because they aren't customer-configurable; they bypass `checkDeploymentSources` entirely. v0 is intentionally NOT among them: like the CLI, it's a real product surface and is policy-controllable.
  */
 export const UpdateMicrofrontendsProjectsSources = {
   Cli: "cli",
@@ -271,9 +307,10 @@ export const UpdateMicrofrontendsProjectsSources = {
   Git: "git",
   Integration: "integration",
   RestApi: "rest-api",
+  V0: "v0",
 } as const;
 /**
- * Customer-configurable deployment sources. Every deploy classifies to exactly one. JSON schema in `packages/deployment-policy/schemas/body.ts` enumerates exactly these values. - `'git'` — git provider webhook. - `'cli'` — Vercel CLI (legacy classic-token CLI and SIWV CLI both). - `'rest-api'` — direct user/team-token REST upload. Does NOT cover deploy hooks, Marketplace integrations, or first-party app tokens. - `'deploy-hook'` — project deploy-hook URL. The URL is the credential. - `'integration'` — third-party Marketplace actor: Marketplace integration token, user-delegated OAuth from a Marketplace app, or an unrecognized third-party Vercel App. First-party Vercel Apps are never `'integration'`. First-party Vercel apps (v0, Toolbar, etc.) classify as `'first-party'` — see `ClassifiedSource` in `./checks`. They're not in this union because they aren't customer-configurable; they bypass `checkDeploymentSources` entirely.
+ * Customer-configurable deployment sources. Every deploy classifies to exactly one. JSON schema in `packages/deployment-policy/schemas/body.ts` enumerates exactly these values. - `'git'` — git provider webhook. - `'cli'` — Vercel CLI (legacy classic-token CLI and SIWV CLI both). - `'rest-api'` — direct user/team-token REST upload. Does NOT cover deploy hooks, Marketplace integrations, or first-party app tokens. - `'deploy-hook'` — project deploy-hook URL. The URL is the credential. - `'integration'` — third-party Marketplace actor: Marketplace integration token, user-delegated OAuth from a Marketplace app, or an unrecognized third-party Vercel App. First-party Vercel Apps are never `'integration'`. - `'v0'` — the v0 product surface (entitlement-gated). v0 deploys through the CLI under the hood, but classifies as its own source so a team can allow or deny v0 independently of `'cli'`. First-party Vercel apps (Toolbar, etc.) classify as `'first-party'` — see `ClassifiedSource` in `./checks`. They're not in this union because they aren't customer-configurable; they bypass `checkDeploymentSources` entirely. v0 is intentionally NOT among them: like the CLI, it's a real product surface and is policy-controllable.
  */
 export type UpdateMicrofrontendsProjectsSources = ClosedEnum<
   typeof UpdateMicrofrontendsProjectsSources
@@ -767,8 +804,8 @@ export type UpdateMicrofrontendsResponseBody = {
     | null
     | undefined;
   passport?: UpdateMicrofrontendsPassport | null | undefined;
+  protectionConfig?: UpdateMicrofrontendsProtectionConfig | undefined;
   productionDeploymentsFastLane?: boolean | undefined;
-  publicSource?: boolean | null | undefined;
   resourceConfig: UpdateMicrofrontendsResourceConfig;
   /**
    * Description of why a project was rolled back, and by whom. Note that lastAliasRequest contains the from/to details of the rollback.
@@ -838,7 +875,7 @@ export type UpdateMicrofrontendsResponseBody = {
   dismissedToasts?: Array<UpdateMicrofrontendsDismissedToasts> | undefined;
   protectedSourcemaps?: boolean | undefined;
   tracing?: UpdateMicrofrontendsTracing | undefined;
-  avatar?: string | undefined;
+  avatar?: string | null | undefined;
 };
 
 /** @internal */
@@ -850,6 +887,64 @@ export const UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodyS
   );
 
 /** @internal */
+export const UpdateMicrofrontendsTrafficSources$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsTrafficSources,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  active: types.boolean(),
+  action: types.optional(
+    UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodySecurityAction$inboundSchema,
+  ),
+});
+
+export function updateMicrofrontendsTrafficSourcesFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsTrafficSources, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateMicrofrontendsTrafficSources$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsTrafficSources' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesAction$inboundSchema:
+  z.ZodNativeEnum<
+    typeof UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesAction
+  > = z.nativeEnum(
+    UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesAction,
+  );
+
+/** @internal */
+export const UpdateMicrofrontendsBotFilter$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsBotFilter,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  active: types.boolean(),
+  action: types.optional(
+    UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesAction$inboundSchema,
+  ),
+});
+
+export function updateMicrofrontendsBotFilterFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsBotFilter, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateMicrofrontendsBotFilter$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsBotFilter' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsProjectsResponse200Action$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateMicrofrontendsProjectsResponse200Action> = z
+    .nativeEnum(UpdateMicrofrontendsProjectsResponse200Action);
+
+/** @internal */
 export const UpdateMicrofrontendsAiBots$inboundSchema: z.ZodType<
   UpdateMicrofrontendsAiBots,
   z.ZodTypeDef,
@@ -857,7 +952,7 @@ export const UpdateMicrofrontendsAiBots$inboundSchema: z.ZodType<
 > = z.object({
   active: types.boolean(),
   action: types.optional(
-    UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodySecurityAction$inboundSchema,
+    UpdateMicrofrontendsProjectsResponse200Action$inboundSchema,
   ),
 });
 
@@ -872,9 +967,12 @@ export function updateMicrofrontendsAiBotsFromJSON(
 }
 
 /** @internal */
-export const UpdateMicrofrontendsProjectsResponse200Action$inboundSchema:
-  z.ZodNativeEnum<typeof UpdateMicrofrontendsProjectsResponse200Action> = z
-    .nativeEnum(UpdateMicrofrontendsProjectsResponse200Action);
+export const UpdateMicrofrontendsProjectsResponse200ApplicationJSONAction$inboundSchema:
+  z.ZodNativeEnum<
+    typeof UpdateMicrofrontendsProjectsResponse200ApplicationJSONAction
+  > = z.nativeEnum(
+    UpdateMicrofrontendsProjectsResponse200ApplicationJSONAction,
+  );
 
 /** @internal */
 export const UpdateMicrofrontendsOwasp$inboundSchema: z.ZodType<
@@ -884,7 +982,7 @@ export const UpdateMicrofrontendsOwasp$inboundSchema: z.ZodType<
 > = z.object({
   active: types.boolean(),
   action: types.optional(
-    UpdateMicrofrontendsProjectsResponse200Action$inboundSchema,
+    UpdateMicrofrontendsProjectsResponse200ApplicationJSONAction$inboundSchema,
   ),
 });
 
@@ -905,12 +1003,16 @@ export const UpdateMicrofrontendsManagedRules$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   vercel_ruleset: UpdateMicrofrontendsVercelRuleset$inboundSchema,
-  bot_filter: UpdateMicrofrontendsBotFilter$inboundSchema,
+  traffic_sources: z.lazy(() =>
+    UpdateMicrofrontendsTrafficSources$inboundSchema
+  ),
+  bot_filter: z.lazy(() => UpdateMicrofrontendsBotFilter$inboundSchema),
   ai_bots: z.lazy(() => UpdateMicrofrontendsAiBots$inboundSchema),
   owasp: z.lazy(() => UpdateMicrofrontendsOwasp$inboundSchema),
 }).transform((v) => {
   return remap$(v, {
     "vercel_ruleset": "vercelRuleset",
+    "traffic_sources": "trafficSources",
     "bot_filter": "botFilter",
     "ai_bots": "aiBots",
   });
@@ -2559,8 +2661,10 @@ export const UpdateMicrofrontendsResponseBody$inboundSchema: z.ZodType<
     UpdateMicrofrontendsPasswordProtection$inboundSchema,
   ).optional(),
   passport: z.nullable(UpdateMicrofrontendsPassport$inboundSchema).optional(),
+  protectionConfig: types.optional(
+    UpdateMicrofrontendsProtectionConfig$inboundSchema,
+  ),
   productionDeploymentsFastLane: types.optional(types.boolean()),
-  publicSource: z.nullable(types.boolean()).optional(),
   resourceConfig: UpdateMicrofrontendsResourceConfig$inboundSchema,
   rollbackDescription: types.optional(
     UpdateMicrofrontendsRollbackDescription$inboundSchema,
@@ -2650,7 +2754,7 @@ export const UpdateMicrofrontendsResponseBody$inboundSchema: z.ZodType<
   tracing: types.optional(
     z.lazy(() => UpdateMicrofrontendsTracing$inboundSchema),
   ),
-  avatar: types.optional(types.string()),
+  avatar: z.nullable(types.string()).optional(),
 });
 
 export function updateMicrofrontendsResponseBodyFromJSON(

@@ -58,6 +58,8 @@ import {
   GetMicrofrontendsInGroupPermissions$inboundSchema,
   GetMicrofrontendsInGroupProtectionBypass,
   GetMicrofrontendsInGroupProtectionBypass$inboundSchema,
+  GetMicrofrontendsInGroupProtectionConfig,
+  GetMicrofrontendsInGroupProtectionConfig$inboundSchema,
   GetMicrofrontendsInGroupResourceConfig,
   GetMicrofrontendsInGroupResourceConfig$inboundSchema,
   GetMicrofrontendsInGroupRollbackDescription,
@@ -74,14 +76,31 @@ import {
   GetMicrofrontendsInGroupStaticIps$inboundSchema,
   GetMicrofrontendsInGroupTargets,
   GetMicrofrontendsInGroupTargets$inboundSchema,
-  GetMicrofrontendsInGroupToMicrofrontends1,
-  GetMicrofrontendsInGroupToMicrofrontends1$inboundSchema,
   GetMicrofrontendsInGroupToMicrofrontends2,
   GetMicrofrontendsInGroupToMicrofrontends2$inboundSchema,
   GetMicrofrontendsInGroupTrustedIps,
   GetMicrofrontendsInGroupTrustedIps$inboundSchema,
-} from "./getmicrofrontendsingrouptomicrofrontends1.js";
+} from "./getmicrofrontendsingrouptomicrofrontends2.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export const GetMicrofrontendsInGroupToMicrofrontendsResponse200Preset = {
+  AllCustom: "all-custom",
+} as const;
+export type GetMicrofrontendsInGroupToMicrofrontendsResponse200Preset =
+  ClosedEnum<typeof GetMicrofrontendsInGroupToMicrofrontendsResponse200Preset>;
+
+/**
+ * The target envs on the current project that may be accessed.
+ */
+export type GetMicrofrontendsInGroupToMicrofrontends1 = {
+  /**
+   * System environment slugs (`production`, `preview`) and/or custom environment slugs defined on the referenced project.
+   */
+  slugs: Array<string>;
+  preset?:
+    | GetMicrofrontendsInGroupToMicrofrontendsResponse200Preset
+    | undefined;
+};
 
 export type GetMicrofrontendsInGroupMicrofrontendsTo =
   | GetMicrofrontendsInGroupToMicrofrontends1
@@ -232,24 +251,6 @@ export type GetMicrofrontendsInGroupWebAnalytics = {
   hasData?: true | undefined;
 };
 
-export const GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONAction =
-  {
-    Challenge: "challenge",
-    Deny: "deny",
-    Log: "log",
-  } as const;
-export type GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONAction =
-  ClosedEnum<
-    typeof GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONAction
-  >;
-
-export type GetMicrofrontendsInGroupVercelRuleset = {
-  active: boolean;
-  action?:
-    | GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONAction
-    | undefined;
-};
-
 export const GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyAction =
   {
     Challenge: "challenge",
@@ -261,7 +262,7 @@ export type GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResp
     typeof GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyAction
   >;
 
-export type GetMicrofrontendsInGroupBotFilter = {
+export type GetMicrofrontendsInGroupVercelRuleset = {
   active: boolean;
   action?:
     | GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyAction
@@ -279,10 +280,28 @@ export type GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResp
     typeof GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyProjectsAction
   >;
 
-export type GetMicrofrontendsInGroupAiBots = {
+export type GetMicrofrontendsInGroupTrafficSources = {
   active: boolean;
   action?:
     | GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyProjectsAction
+    | undefined;
+};
+
+export const GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyProjectsSecurityAction =
+  {
+    Challenge: "challenge",
+    Deny: "deny",
+    Log: "log",
+  } as const;
+export type GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyProjectsSecurityAction =
+  ClosedEnum<
+    typeof GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyProjectsSecurityAction
+  >;
+
+export type GetMicrofrontendsInGroupBotFilter = {
+  active: boolean;
+  action?:
+    | GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyProjectsSecurityAction
     | undefined;
 };
 
@@ -294,13 +313,32 @@ export const GetMicrofrontendsInGroupMicrofrontendsResponse200Action = {
 export type GetMicrofrontendsInGroupMicrofrontendsResponse200Action =
   ClosedEnum<typeof GetMicrofrontendsInGroupMicrofrontendsResponse200Action>;
 
-export type GetMicrofrontendsInGroupOwasp = {
+export type GetMicrofrontendsInGroupAiBots = {
   active: boolean;
   action?: GetMicrofrontendsInGroupMicrofrontendsResponse200Action | undefined;
 };
 
+export const GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONAction =
+  {
+    Challenge: "challenge",
+    Deny: "deny",
+    Log: "log",
+  } as const;
+export type GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONAction =
+  ClosedEnum<
+    typeof GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONAction
+  >;
+
+export type GetMicrofrontendsInGroupOwasp = {
+  active: boolean;
+  action?:
+    | GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONAction
+    | undefined;
+};
+
 export type GetMicrofrontendsInGroupManagedRules = {
   vercelRuleset: GetMicrofrontendsInGroupVercelRuleset;
+  trafficSources: GetMicrofrontendsInGroupTrafficSources;
   botFilter: GetMicrofrontendsInGroupBotFilter;
   aiBots: GetMicrofrontendsInGroupAiBots;
   owasp: GetMicrofrontendsInGroupOwasp;
@@ -443,7 +481,7 @@ export type GetMicrofrontendsInGroupGitSources = {
 };
 
 /**
- * Customer-configurable deployment sources. Every deploy classifies to exactly one. JSON schema in `packages/deployment-policy/schemas/body.ts` enumerates exactly these values. - `'git'` — git provider webhook. - `'cli'` — Vercel CLI (legacy classic-token CLI and SIWV CLI both). - `'rest-api'` — direct user/team-token REST upload. Does NOT cover deploy hooks, Marketplace integrations, or first-party app tokens. - `'deploy-hook'` — project deploy-hook URL. The URL is the credential. - `'integration'` — third-party Marketplace actor: Marketplace integration token, user-delegated OAuth from a Marketplace app, or an unrecognized third-party Vercel App. First-party Vercel Apps are never `'integration'`. First-party Vercel apps (v0, Toolbar, etc.) classify as `'first-party'` — see `ClassifiedSource` in `./checks`. They're not in this union because they aren't customer-configurable; they bypass `checkDeploymentSources` entirely.
+ * Customer-configurable deployment sources. Every deploy classifies to exactly one. JSON schema in `packages/deployment-policy/schemas/body.ts` enumerates exactly these values. - `'git'` — git provider webhook. - `'cli'` — Vercel CLI (legacy classic-token CLI and SIWV CLI both). - `'rest-api'` — direct user/team-token REST upload. Does NOT cover deploy hooks, Marketplace integrations, or first-party app tokens. - `'deploy-hook'` — project deploy-hook URL. The URL is the credential. - `'integration'` — third-party Marketplace actor: Marketplace integration token, user-delegated OAuth from a Marketplace app, or an unrecognized third-party Vercel App. First-party Vercel Apps are never `'integration'`. - `'v0'` — the v0 product surface (entitlement-gated). v0 deploys through the CLI under the hood, but classifies as its own source so a team can allow or deny v0 independently of `'cli'`. First-party Vercel apps (Toolbar, etc.) classify as `'first-party'` — see `ClassifiedSource` in `./checks`. They're not in this union because they aren't customer-configurable; they bypass `checkDeploymentSources` entirely. v0 is intentionally NOT among them: like the CLI, it's a real product surface and is policy-controllable.
  */
 export const GetMicrofrontendsInGroupMicrofrontendsSources = {
   Cli: "cli",
@@ -451,9 +489,10 @@ export const GetMicrofrontendsInGroupMicrofrontendsSources = {
   Git: "git",
   Integration: "integration",
   RestApi: "rest-api",
+  V0: "v0",
 } as const;
 /**
- * Customer-configurable deployment sources. Every deploy classifies to exactly one. JSON schema in `packages/deployment-policy/schemas/body.ts` enumerates exactly these values. - `'git'` — git provider webhook. - `'cli'` — Vercel CLI (legacy classic-token CLI and SIWV CLI both). - `'rest-api'` — direct user/team-token REST upload. Does NOT cover deploy hooks, Marketplace integrations, or first-party app tokens. - `'deploy-hook'` — project deploy-hook URL. The URL is the credential. - `'integration'` — third-party Marketplace actor: Marketplace integration token, user-delegated OAuth from a Marketplace app, or an unrecognized third-party Vercel App. First-party Vercel Apps are never `'integration'`. First-party Vercel apps (v0, Toolbar, etc.) classify as `'first-party'` — see `ClassifiedSource` in `./checks`. They're not in this union because they aren't customer-configurable; they bypass `checkDeploymentSources` entirely.
+ * Customer-configurable deployment sources. Every deploy classifies to exactly one. JSON schema in `packages/deployment-policy/schemas/body.ts` enumerates exactly these values. - `'git'` — git provider webhook. - `'cli'` — Vercel CLI (legacy classic-token CLI and SIWV CLI both). - `'rest-api'` — direct user/team-token REST upload. Does NOT cover deploy hooks, Marketplace integrations, or first-party app tokens. - `'deploy-hook'` — project deploy-hook URL. The URL is the credential. - `'integration'` — third-party Marketplace actor: Marketplace integration token, user-delegated OAuth from a Marketplace app, or an unrecognized third-party Vercel App. First-party Vercel Apps are never `'integration'`. - `'v0'` — the v0 product surface (entitlement-gated). v0 deploys through the CLI under the hood, but classifies as its own source so a team can allow or deny v0 independently of `'cli'`. First-party Vercel apps (Toolbar, etc.) classify as `'first-party'` — see `ClassifiedSource` in `./checks`. They're not in this union because they aren't customer-configurable; they bypass `checkDeploymentSources` entirely. v0 is intentionally NOT among them: like the CLI, it's a real product surface and is policy-controllable.
  */
 export type GetMicrofrontendsInGroupMicrofrontendsSources = ClosedEnum<
   typeof GetMicrofrontendsInGroupMicrofrontendsSources
@@ -961,8 +1000,8 @@ export type GetMicrofrontendsInGroupProjects = {
     | null
     | undefined;
   passport?: GetMicrofrontendsInGroupPassport | null | undefined;
+  protectionConfig?: GetMicrofrontendsInGroupProtectionConfig | undefined;
   productionDeploymentsFastLane?: boolean | undefined;
-  publicSource?: boolean | null | undefined;
   resourceConfig: GetMicrofrontendsInGroupResourceConfig;
   /**
    * Description of why a project was rolled back, and by whom. Note that lastAliasRequest contains the from/to details of the rollback.
@@ -1039,7 +1078,7 @@ export type GetMicrofrontendsInGroupProjects = {
   dismissedToasts?: Array<GetMicrofrontendsInGroupDismissedToasts> | undefined;
   protectedSourcemaps?: boolean | undefined;
   tracing?: GetMicrofrontendsInGroupTracing | undefined;
-  avatar?: string | undefined;
+  avatar?: string | null | undefined;
 };
 
 export type GetMicrofrontendsInGroupResponseBody = {
@@ -1047,12 +1086,46 @@ export type GetMicrofrontendsInGroupResponseBody = {
 };
 
 /** @internal */
+export const GetMicrofrontendsInGroupToMicrofrontendsResponse200Preset$inboundSchema:
+  z.ZodNativeEnum<
+    typeof GetMicrofrontendsInGroupToMicrofrontendsResponse200Preset
+  > = z.nativeEnum(GetMicrofrontendsInGroupToMicrofrontendsResponse200Preset);
+
+/** @internal */
+export const GetMicrofrontendsInGroupToMicrofrontends1$inboundSchema: z.ZodType<
+  GetMicrofrontendsInGroupToMicrofrontends1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  slugs: z.array(types.string()),
+  preset: types.optional(
+    GetMicrofrontendsInGroupToMicrofrontendsResponse200Preset$inboundSchema,
+  ),
+});
+
+export function getMicrofrontendsInGroupToMicrofrontends1FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetMicrofrontendsInGroupToMicrofrontends1,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetMicrofrontendsInGroupToMicrofrontends1$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetMicrofrontendsInGroupToMicrofrontends1' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetMicrofrontendsInGroupMicrofrontendsTo$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupMicrofrontendsTo,
   z.ZodTypeDef,
   unknown
 > = smartUnion([
-  GetMicrofrontendsInGroupToMicrofrontends1$inboundSchema,
+  z.lazy(() => GetMicrofrontendsInGroupToMicrofrontends1$inboundSchema),
   GetMicrofrontendsInGroupToMicrofrontends2$inboundSchema,
 ]);
 
@@ -1080,7 +1153,7 @@ export const GetMicrofrontendsInGroupCustomAllow$inboundSchema: z.ZodType<
 > = z.object({
   from: GetMicrofrontendsInGroupFrom$inboundSchema,
   to: smartUnion([
-    GetMicrofrontendsInGroupToMicrofrontends1$inboundSchema,
+    z.lazy(() => GetMicrofrontendsInGroupToMicrofrontends1$inboundSchema),
     GetMicrofrontendsInGroupToMicrofrontends2$inboundSchema,
   ]),
 });
@@ -1359,11 +1432,11 @@ export function getMicrofrontendsInGroupWebAnalyticsFromJSON(
 }
 
 /** @internal */
-export const GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONAction$inboundSchema:
+export const GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyAction$inboundSchema:
   z.ZodNativeEnum<
-    typeof GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONAction
+    typeof GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyAction
   > = z.nativeEnum(
-    GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONAction,
+    GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyAction,
   );
 
 /** @internal */
@@ -1374,7 +1447,7 @@ export const GetMicrofrontendsInGroupVercelRuleset$inboundSchema: z.ZodType<
 > = z.object({
   active: types.boolean(),
   action: types.optional(
-    GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONAction$inboundSchema,
+    GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyAction$inboundSchema,
   ),
 });
 
@@ -1390,11 +1463,42 @@ export function getMicrofrontendsInGroupVercelRulesetFromJSON(
 }
 
 /** @internal */
-export const GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyAction$inboundSchema:
+export const GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyProjectsAction$inboundSchema:
   z.ZodNativeEnum<
-    typeof GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyAction
+    typeof GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyProjectsAction
   > = z.nativeEnum(
-    GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyAction,
+    GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyProjectsAction,
+  );
+
+/** @internal */
+export const GetMicrofrontendsInGroupTrafficSources$inboundSchema: z.ZodType<
+  GetMicrofrontendsInGroupTrafficSources,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  active: types.boolean(),
+  action: types.optional(
+    GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyProjectsAction$inboundSchema,
+  ),
+});
+
+export function getMicrofrontendsInGroupTrafficSourcesFromJSON(
+  jsonString: string,
+): SafeParseResult<GetMicrofrontendsInGroupTrafficSources, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetMicrofrontendsInGroupTrafficSources$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetMicrofrontendsInGroupTrafficSources' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyProjectsSecurityAction$inboundSchema:
+  z.ZodNativeEnum<
+    typeof GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyProjectsSecurityAction
+  > = z.nativeEnum(
+    GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyProjectsSecurityAction,
   );
 
 /** @internal */
@@ -1405,7 +1509,7 @@ export const GetMicrofrontendsInGroupBotFilter$inboundSchema: z.ZodType<
 > = z.object({
   active: types.boolean(),
   action: types.optional(
-    GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyAction$inboundSchema,
+    GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyProjectsSecurityAction$inboundSchema,
   ),
 });
 
@@ -1420,12 +1524,10 @@ export function getMicrofrontendsInGroupBotFilterFromJSON(
 }
 
 /** @internal */
-export const GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyProjectsAction$inboundSchema:
+export const GetMicrofrontendsInGroupMicrofrontendsResponse200Action$inboundSchema:
   z.ZodNativeEnum<
-    typeof GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyProjectsAction
-  > = z.nativeEnum(
-    GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyProjectsAction,
-  );
+    typeof GetMicrofrontendsInGroupMicrofrontendsResponse200Action
+  > = z.nativeEnum(GetMicrofrontendsInGroupMicrofrontendsResponse200Action);
 
 /** @internal */
 export const GetMicrofrontendsInGroupAiBots$inboundSchema: z.ZodType<
@@ -1435,7 +1537,7 @@ export const GetMicrofrontendsInGroupAiBots$inboundSchema: z.ZodType<
 > = z.object({
   active: types.boolean(),
   action: types.optional(
-    GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyProjectsAction$inboundSchema,
+    GetMicrofrontendsInGroupMicrofrontendsResponse200Action$inboundSchema,
   ),
 });
 
@@ -1450,10 +1552,12 @@ export function getMicrofrontendsInGroupAiBotsFromJSON(
 }
 
 /** @internal */
-export const GetMicrofrontendsInGroupMicrofrontendsResponse200Action$inboundSchema:
+export const GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONAction$inboundSchema:
   z.ZodNativeEnum<
-    typeof GetMicrofrontendsInGroupMicrofrontendsResponse200Action
-  > = z.nativeEnum(GetMicrofrontendsInGroupMicrofrontendsResponse200Action);
+    typeof GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONAction
+  > = z.nativeEnum(
+    GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONAction,
+  );
 
 /** @internal */
 export const GetMicrofrontendsInGroupOwasp$inboundSchema: z.ZodType<
@@ -1463,7 +1567,7 @@ export const GetMicrofrontendsInGroupOwasp$inboundSchema: z.ZodType<
 > = z.object({
   active: types.boolean(),
   action: types.optional(
-    GetMicrofrontendsInGroupMicrofrontendsResponse200Action$inboundSchema,
+    GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONAction$inboundSchema,
   ),
 });
 
@@ -1486,12 +1590,16 @@ export const GetMicrofrontendsInGroupManagedRules$inboundSchema: z.ZodType<
   vercel_ruleset: z.lazy(() =>
     GetMicrofrontendsInGroupVercelRuleset$inboundSchema
   ),
+  traffic_sources: z.lazy(() =>
+    GetMicrofrontendsInGroupTrafficSources$inboundSchema
+  ),
   bot_filter: z.lazy(() => GetMicrofrontendsInGroupBotFilter$inboundSchema),
   ai_bots: z.lazy(() => GetMicrofrontendsInGroupAiBots$inboundSchema),
   owasp: z.lazy(() => GetMicrofrontendsInGroupOwasp$inboundSchema),
 }).transform((v) => {
   return remap$(v, {
     "vercel_ruleset": "vercelRuleset",
+    "traffic_sources": "trafficSources",
     "bot_filter": "botFilter",
     "ai_bots": "aiBots",
   });
@@ -3272,8 +3380,10 @@ export const GetMicrofrontendsInGroupProjects$inboundSchema: z.ZodType<
   ).optional(),
   passport: z.nullable(GetMicrofrontendsInGroupPassport$inboundSchema)
     .optional(),
+  protectionConfig: types.optional(
+    GetMicrofrontendsInGroupProtectionConfig$inboundSchema,
+  ),
   productionDeploymentsFastLane: types.optional(types.boolean()),
-  publicSource: z.nullable(types.boolean()).optional(),
   resourceConfig: GetMicrofrontendsInGroupResourceConfig$inboundSchema,
   rollbackDescription: types.optional(
     GetMicrofrontendsInGroupRollbackDescription$inboundSchema,
@@ -3377,7 +3487,7 @@ export const GetMicrofrontendsInGroupProjects$inboundSchema: z.ZodType<
   tracing: types.optional(
     z.lazy(() => GetMicrofrontendsInGroupTracing$inboundSchema),
   ),
-  avatar: types.optional(types.string()),
+  avatar: z.nullable(types.string()).optional(),
 });
 
 export function getMicrofrontendsInGroupProjectsFromJSON(

@@ -5,12 +5,12 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndNinetyNine } from "@vercel/sdk/models/usereventpayloadprevious.js";
+import { OneHundredAndNinetyNine } from "@vercel/sdk/models/usereventpayloaddeploymenttype.js";
 
 let value: OneHundredAndNinetyNine = {
   projectId: "<id>",
   projectName: "<value>",
-  previewDeploymentSuffix: null,
+  autoAssignCustomDomains: true,
 };
 ```
 
@@ -20,4 +20,4 @@ let value: OneHundredAndNinetyNine = {
 | ------------------------- | ------------------------- | ------------------------- | ------------------------- |
 | `projectId`               | *string*                  | :heavy_check_mark:        | N/A                       |
 | `projectName`             | *string*                  | :heavy_check_mark:        | N/A                       |
-| `previewDeploymentSuffix` | *string*                  | :heavy_check_mark:        | N/A                       |
+| `autoAssignCustomDomains` | *boolean*                 | :heavy_check_mark:        | N/A                       |

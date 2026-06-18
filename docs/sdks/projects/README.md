@@ -25,10 +25,10 @@
 * [createProjectTransferRequest](#createprojecttransferrequest) - Create project transfer request
 * [acceptProjectTransferRequest](#acceptprojecttransferrequest) - Accept project transfer request
 * [updateProjectProtectionBypass](#updateprojectprotectionbypass) - Update Protection Bypass for Automation
-* [requestRollback](#requestrollback) - Points all production domains for a project to the given deploy
+* [requestRollback](#requestrollback) - Point production traffic to a previous production deployment by ID
 * [updateProjectsByProjectIdRollbackByDeploymentIdUpdateDescription](#updateprojectsbyprojectidrollbackbydeploymentidupdatedescription) - Updates the description for a rollback
 * [updateMicrofrontends](#updatemicrofrontends) - Update the microfrontends settings
-* [requestPromote](#requestpromote) - Points all production domains for a project to the given deploy
+* [requestPromote](#requestpromote) - Point production traffic to a given deployment
 * [listPromoteAliases](#listpromotealiases) - Gets a list of aliases with status for the current promote
 * [pauseProject](#pauseproject) - Pause a project
 * [unpauseProject](#unpauseproject) - Unpause a project
@@ -363,7 +363,7 @@ run();
 
 ## uploadProjectAvatar
 
-Upload an image as the avatar of the project identified by `idOrName`. The request body is the raw bytes of a JPG, PNG, or SVG image; the `Content-Type` header must declare which. SVG payloads are sanitized and optimized server-side before storage. The final SHA-1 of the stored bytes becomes the project's `avatar` value.
+Upload an image as the avatar of the project identified by `idOrName`. The request body is the raw bytes of a JPG, PNG, or SVG image; the `Content-Type` header must declare which. SVG payloads are sanitized and optimized server-side before storage. The final SHA-1 of the stored bytes becomes the project's `avatar` value. The actual upload pipeline (validation, sanitization, S3 write, conditional `updateProject`, and event emission) lives in the shared `@api/project-avatar-upload` helper so it can be reused by background workers.
 
 ### Example Usage
 

@@ -12,7 +12,7 @@ let value: CreateConnectorResponseBody = {
   updatedAt: 5613.8,
   public: true,
   uid: "<id>",
-  type: "snowflake",
+  type: "snowflake-wif",
   service: "<value>",
   name: "<value>",
   data: {

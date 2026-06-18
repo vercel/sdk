@@ -5,17 +5,16 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndThirtyThree } from "@vercel/sdk/models/connectdatatransfer.js";
+import { OneHundredAndThirtyThree } from "@vercel/sdk/models/onehundredandeight.js";
 
 let value: OneHundredAndThirtyThree = {
-  integration: {
-    id: "<id>",
-    slug: "<value>",
-    name: "<value>",
-    configurationId: "<id>",
+  projectId: "<id>",
+  rulesetName: "<value>",
+  ruleGroups: {
+    "key": {
+      active: false,
+    },
   },
-  originTeamId: "<id>",
-  originTeamName: "<value>",
 };
 ```
 
@@ -23,6 +22,6 @@ let value: OneHundredAndThirtyThree = {
 
 | Field                                                        | Type                                                         | Required                                                     | Description                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `integration`                                                | [models.PayloadIntegration](../models/payloadintegration.md) | :heavy_check_mark:                                           | N/A                                                          |
-| `originTeamId`                                               | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
-| `originTeamName`                                             | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
+| `projectId`                                                  | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
+| `rulesetName`                                                | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
+| `ruleGroups`                                                 | Record<string, [models.RuleGroups](../models/rulegroups.md)> | :heavy_check_mark:                                           | N/A                                                          |

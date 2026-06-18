@@ -165,7 +165,7 @@ async function $do(
   >(
     M.json(200, GetTeamsResponseBody$inboundSchema),
     M.fail([400, 401, 403, "4XX"]),
-    M.fail("5XX"),
+    M.fail([500, "5XX"]),
   )(response, req);
   if (!result.ok) {
     return [result, { status: "complete", request: req, response }];

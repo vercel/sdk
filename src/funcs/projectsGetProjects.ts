@@ -18,7 +18,7 @@ import {
 import {
   GetProjectsRequest,
   GetProjectsRequest$outboundSchema,
-} from "../models/getprojectsresponsebodyprojectsresponse200applicationjson3projectssecuritymanagedrulesvercelrulesetaction.js";
+} from "../models/getprojectsresponsebodyprojectsgitprovideroptions.js";
 import {
   ConnectionError,
   InvalidRequestError,

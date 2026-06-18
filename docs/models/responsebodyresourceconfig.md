@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyResourceConfig } from "@vercel/sdk/models/getprojectsresponsebody.js";
+import { ResponseBodyResourceConfig } from "@vercel/sdk/models/getprojectsinternalrouteshas.js";
 
 let value: ResponseBodyResourceConfig = {
   functionDefaultRegions: [],
@@ -26,4 +26,3 @@ let value: ResponseBodyResourceConfig = {
 | `isNSNBDisabled`                                                                                   | *boolean*                                                                                          | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
 | `buildQueue`                                                                                       | [models.ResponseBodyBuildQueue](../models/responsebodybuildqueue.md)                               | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
 | `enableFunctionsBeta`                                                                              | *boolean*                                                                                          | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
-| `enableFunctionsExtendedMaxDuration`                                                               | *boolean*                                                                                          | :heavy_minus_sign:                                                                                 | N/A                                                                                                |

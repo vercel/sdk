@@ -46,6 +46,20 @@ const value: models.GetDrainDeliveryDrains3 = {
 
 ```typescript
 const value: models.GetDrainDeliveryDrains4 = {
+  type: "s3",
+  endpoint: "<value>",
+  encoding: "json",
+  compression: "none",
+  fileStructure: "hive",
+  roleArn: "<value>",
+  region: "<value>",
+};
+```
+
+### `models.GetDrainDeliveryDrains5`
+
+```typescript
+const value: models.GetDrainDeliveryDrains5 = {
   type: "internal",
   target: "vercel-otel-traces-db",
 };

@@ -8,15 +8,16 @@ The payload of the event, if requested.
 import { FortyTwo } from "@vercel/sdk/models/userevent.js";
 
 let value: FortyTwo = {
-  projectName: "<value>",
-  autoExposeSystemEnvs: true,
+  appName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                  | Type                   | Required               | Description            |
-| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
-| `projectId`            | *string*               | :heavy_minus_sign:     | N/A                    |
-| `projectName`          | *string*               | :heavy_check_mark:     | N/A                    |
-| `autoExposeSystemEnvs` | *boolean*              | :heavy_check_mark:     | N/A                    |
+| Field                                | Type                                 | Required                             | Description                          |
+| ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
+| `appName`                            | *string*                             | :heavy_check_mark:                   | N/A                                  |
+| `appId`                              | *string*                             | :heavy_minus_sign:                   | N/A                                  |
+| `installationId`                     | *string*                             | :heavy_minus_sign:                   | N/A                                  |
+| `before`                             | [models.Before](../models/before.md) | :heavy_minus_sign:                   | N/A                                  |
+| `after`                              | [models.After](../models/after.md)   | :heavy_minus_sign:                   | N/A                                  |

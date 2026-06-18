@@ -300,6 +300,7 @@ export const GetFirewallConfigRulesType = {
   Scheme: "scheme",
   ServerAction: "server_action",
   TargetPath: "target_path",
+  TrustedSource: "trusted_source",
   UserAgent: "user_agent",
 } as const;
 export type GetFirewallConfigRulesType = ClosedEnum<
@@ -446,6 +447,7 @@ export const RulesType = {
   Scheme: "scheme",
   ServerAction: "server_action",
   TargetPath: "target_path",
+  TrustedSource: "trusted_source",
   UserAgent: "user_agent",
 } as const;
 export type RulesType = ClosedEnum<typeof RulesType>;
@@ -666,11 +668,33 @@ export type VercelRuleset = {
   username?: string | undefined;
 };
 
+export const GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesTrafficSourcesAction =
+  {
+    Challenge: "challenge",
+    Deny: "deny",
+    Log: "log",
+  } as const;
+export type GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesTrafficSourcesAction =
+  ClosedEnum<
+    typeof GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesTrafficSourcesAction
+  >;
+
+export type TrafficSources = {
+  active: boolean;
+  action?:
+    | GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesTrafficSourcesAction
+    | undefined;
+  updatedAt?: string | undefined;
+  userId?: string | undefined;
+  username?: string | undefined;
+};
+
 export type GetFirewallConfigManagedRules = {
   botProtection?: BotProtection | undefined;
   aiBots?: AiBots | undefined;
   owasp?: Owasp | undefined;
   vercelRuleset?: VercelRuleset | undefined;
+  trafficSources?: TrafficSources | undefined;
 };
 
 export const LogHeaders2 = {
@@ -1720,6 +1744,39 @@ export function vercelRulesetFromJSON(
 }
 
 /** @internal */
+export const GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesTrafficSourcesAction$inboundSchema:
+  z.ZodNativeEnum<
+    typeof GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesTrafficSourcesAction
+  > = z.nativeEnum(
+    GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesTrafficSourcesAction,
+  );
+
+/** @internal */
+export const TrafficSources$inboundSchema: z.ZodType<
+  TrafficSources,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  active: types.boolean(),
+  action: types.optional(
+    GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesTrafficSourcesAction$inboundSchema,
+  ),
+  updatedAt: types.optional(types.string()),
+  userId: types.optional(types.string()),
+  username: types.optional(types.string()),
+});
+
+export function trafficSourcesFromJSON(
+  jsonString: string,
+): SafeParseResult<TrafficSources, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TrafficSources$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TrafficSources' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetFirewallConfigManagedRules$inboundSchema: z.ZodType<
   GetFirewallConfigManagedRules,
   z.ZodTypeDef,
@@ -1729,11 +1786,13 @@ export const GetFirewallConfigManagedRules$inboundSchema: z.ZodType<
   ai_bots: types.optional(z.lazy(() => AiBots$inboundSchema)),
   owasp: types.optional(z.lazy(() => Owasp$inboundSchema)),
   vercel_ruleset: types.optional(z.lazy(() => VercelRuleset$inboundSchema)),
+  traffic_sources: types.optional(z.lazy(() => TrafficSources$inboundSchema)),
 }).transform((v) => {
   return remap$(v, {
     "bot_protection": "botProtection",
     "ai_bots": "aiBots",
     "vercel_ruleset": "vercelRuleset",
+    "traffic_sources": "trafficSources",
   });
 });
 

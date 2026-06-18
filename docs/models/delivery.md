@@ -33,3 +33,17 @@ const value: models.Delivery2 = {
 };
 ```
 
+### `models.Delivery3`
+
+```typescript
+const value: models.Delivery3 = {
+  type: "<value>",
+  endpoint: "<value>",
+  encoding: "json",
+  compression: "none",
+  fileStructure: "hive",
+  roleArn: "<value>",
+  region: "<value>",
+};
+```
+

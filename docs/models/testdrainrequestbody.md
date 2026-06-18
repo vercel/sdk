@@ -9,11 +9,12 @@ let value: TestDrainRequestBody = {
   schemas: {},
   delivery: {
     type: "<value>",
-    endpoint: {
-      traces: "<value>",
-    },
-    encoding: "proto",
-    headers: {},
+    endpoint: "<value>",
+    encoding: "json",
+    compression: "none",
+    fileStructure: "hive",
+    roleArn: "<value>",
+    region: "<value>",
   },
 };
 ```

@@ -1,0 +1,18 @@
+# GetMicrofrontendsInGroupTrafficSources
+
+## Example Usage
+
+```typescript
+import { GetMicrofrontendsInGroupTrafficSources } from "@vercel/sdk/models/getmicrofrontendsingroupresponsebody.js";
+
+let value: GetMicrofrontendsInGroupTrafficSources = {
+  active: true,
+};
+```
+
+## Fields
+
+| Field                                                                                                                                                                                                        | Type                                                                                                                                                                                                         | Required                                                                                                                                                                                                     | Description                                                                                                                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `active`                                                                                                                                                                                                     | *boolean*                                                                                                                                                                                                    | :heavy_check_mark:                                                                                                                                                                                           | N/A                                                                                                                                                                                                          |
+| `action`                                                                                                                                                                                                     | [models.GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyProjectsAction](../models/getmicrofrontendsingroupmicrofrontendsresponse200applicationjsonresponsebodyprojectsaction.md) | :heavy_minus_sign:                                                                                                                                                                                           | N/A                                                                                                                                                                                                          |

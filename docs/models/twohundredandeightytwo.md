@@ -5,21 +5,27 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndEightyTwo } from "@vercel/sdk/models/twohundredandthirtyone.js";
+import { TwoHundredAndEightyTwo } from "@vercel/sdk/models/reasoncode.js";
 
 let value: TwoHundredAndEightyTwo = {
-  trialCreditsIssuedAt: 6756.02,
-  expiresAt: "1740825507924",
-  amount: "298.57",
-  currency: "Convertible Marks",
+  budget: {
+    type: "fixed",
+    fixedBudget: 6756.02,
+    previousSpend: [],
+    notifiedAt: [
+      651.29,
+    ],
+    createdAt: 7359.3,
+    isActive: false,
+    teamId: "<id>",
+    id: "<id>",
+  },
 };
 ```
 
 ## Fields
 
-| Field                  | Type                   | Required               | Description            |
-| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
-| `trialCreditsIssuedAt` | *number*               | :heavy_check_mark:     | N/A                    |
-| `expiresAt`            | *string*               | :heavy_check_mark:     | N/A                    |
-| `amount`               | *string*               | :heavy_check_mark:     | N/A                    |
-| `currency`             | *string*               | :heavy_check_mark:     | N/A                    |
+| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `budget`                                                                   | [models.UserEventPayload282Budget](../models/usereventpayload282budget.md) | :heavy_check_mark:                                                         | Represents a budget for tracking and notifying teams on their spending.    |
+| `webhookUrl`                                                               | *string*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |

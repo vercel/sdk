@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CreateProjectProjectsResourceConfig } from "@vercel/sdk/models/createprojectprojectsto.js";
+import { CreateProjectProjectsResourceConfig } from "@vercel/sdk/models/createprojecttoprojectsresponsepreset.js";
 
 let value: CreateProjectProjectsResourceConfig = {
   functionDefaultRegions: [],
@@ -26,4 +26,3 @@ let value: CreateProjectProjectsResourceConfig = {
 | `isNSNBDisabled`                                                                                     | *boolean*                                                                                            | :heavy_minus_sign:                                                                                   | N/A                                                                                                  |
 | `buildQueue`                                                                                         | [models.CreateProjectProjectsBuildQueue](../models/createprojectprojectsbuildqueue.md)               | :heavy_minus_sign:                                                                                   | N/A                                                                                                  |
 | `enableFunctionsBeta`                                                                                | *boolean*                                                                                            | :heavy_minus_sign:                                                                                   | N/A                                                                                                  |
-| `enableFunctionsExtendedMaxDuration`                                                                 | *boolean*                                                                                            | :heavy_minus_sign:                                                                                   | N/A                                                                                                  |

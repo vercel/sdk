@@ -27,12 +27,10 @@ let value: ListUserEventsResponseBody = {
       userId: "zTuNVUXEAvvnNN3IaqinkyMw",
       principalId: "<id>",
       payload: {
-        project: {
-          id: "<id>",
-          name: "<value>",
+        action: "cancel_plan",
+        data: {
+          planSlug: "v0_business",
         },
-        bulkRedirectsLimit: 1688.33,
-        prevBulkRedirectsLimit: 666.15,
       },
     },
   ],

@@ -529,6 +529,24 @@ export type GetDeploymentRoutesLocale = {
   cookie?: string | undefined;
 };
 
+export const GetDeploymentDestinationType = {
+  Service: "service",
+} as const;
+export type GetDeploymentDestinationType = ClosedEnum<
+  typeof GetDeploymentDestinationType
+>;
+
+export type GetDeploymentDestination2 = {
+  type: GetDeploymentDestinationType;
+  service: string;
+  /**
+   * Routing-only path used to select a route inside the target service.
+   */
+  path?: string | undefined;
+};
+
+export type GetDeploymentRoutesDestination = GetDeploymentDestination2 | string;
+
 export type GetDeploymentRoutes1 = {
   src: string;
   dest?: string | undefined;
@@ -561,10 +579,10 @@ export type GetDeploymentRoutes1 = {
   env?: Array<string> | undefined;
   locale?: GetDeploymentRoutesLocale | undefined;
   /**
-   * Aliases for `src`, `dest`, and `status`. These provide consistency with the `rewrites`, `redirects`, and `headers` fields which use `source`, `destination`, and `statusCode`. During normalization, these are converted to their canonical forms (`src`, `dest`, `status`) and stripped from the route object.
+   * Aliases for `src`, `dest`, and `status`. These provide consistency with the `rewrites`, `redirects`, and `headers` fields which use `source`, `destination`, and `statusCode`. During normalization, the string forms are converted to their canonical forms (`src`, `dest`, `status`) and stripped from the route object. `destination` may also be a service-targeted object, in which case routing is delegated into the named service's internal route table and the object is preserved as-is (not folded into `dest`).
    */
   source?: string | undefined;
-  destination?: string | undefined;
+  destination?: GetDeploymentDestination2 | string | undefined;
   statusCode?: number | undefined;
   /**
    * A middleware key within the `output` key under the build result. Overrides a `middleware` definition.
@@ -767,6 +785,7 @@ export type ResponseBodyFunctionType = ClosedEnum<
 
 export const ResponseBodyFunctionMemoryType = {
   Performance: "performance",
+  PerformanceXl: "performance_xl",
   Standard: "standard",
   StandardLegacy: "standard_legacy",
 } as const;
@@ -2231,6 +2250,52 @@ export function getDeploymentRoutesLocaleFromJSON(
 }
 
 /** @internal */
+export const GetDeploymentDestinationType$inboundSchema: z.ZodNativeEnum<
+  typeof GetDeploymentDestinationType
+> = z.nativeEnum(GetDeploymentDestinationType);
+
+/** @internal */
+export const GetDeploymentDestination2$inboundSchema: z.ZodType<
+  GetDeploymentDestination2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: GetDeploymentDestinationType$inboundSchema,
+  service: types.string(),
+  path: types.optional(types.string()),
+});
+
+export function getDeploymentDestination2FromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentDestination2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDeploymentDestination2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentDestination2' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentRoutesDestination$inboundSchema: z.ZodType<
+  GetDeploymentRoutesDestination,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  z.lazy(() => GetDeploymentDestination2$inboundSchema),
+  types.string(),
+]);
+
+export function getDeploymentRoutesDestinationFromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentRoutesDestination, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDeploymentRoutesDestination$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentRoutesDestination' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetDeploymentRoutes1$inboundSchema: z.ZodType<
   GetDeploymentRoutes1,
   z.ZodTypeDef,
@@ -2283,7 +2348,12 @@ export const GetDeploymentRoutes1$inboundSchema: z.ZodType<
   env: types.optional(z.array(types.string())),
   locale: types.optional(z.lazy(() => GetDeploymentRoutesLocale$inboundSchema)),
   source: types.optional(types.string()),
-  destination: types.optional(types.string()),
+  destination: types.optional(
+    smartUnion([
+      z.lazy(() => GetDeploymentDestination2$inboundSchema),
+      types.string(),
+    ]),
+  ),
   statusCode: types.optional(types.number()),
   middlewarePath: types.optional(types.string()),
   middlewareRawSrc: types.optional(z.array(types.string())),

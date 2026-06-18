@@ -5,24 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndEightyOne } from "@vercel/sdk/models/usereventpayloadprevious.js";
+import { OneHundredAndEightyOne } from "@vercel/sdk/models/usereventpayloaddeploymenttype.js";
 
 let value: OneHundredAndEightyOne = {
+  projectId: "<id>",
   projectName: "<value>",
-  nextBuildMachineType: "<value>",
-  previousBuildMachineSelection: "<value>",
-  nextBuildMachineSelection: "<value>",
+  directoryListing: false,
 };
 ```
 
 ## Fields
 
-| Field                           | Type                            | Required                        | Description                     |
-| ------------------------------- | ------------------------------- | ------------------------------- | ------------------------------- |
-| `projectId`                     | *string*                        | :heavy_minus_sign:              | N/A                             |
-| `projectName`                   | *string*                        | :heavy_check_mark:              | N/A                             |
-| `previousBuildMachineType`      | *string*                        | :heavy_minus_sign:              | N/A                             |
-| `nextBuildMachineType`          | *string*                        | :heavy_check_mark:              | N/A                             |
-| `previousBuildMachineSelection` | *string*                        | :heavy_check_mark:              | N/A                             |
-| `nextBuildMachineSelection`     | *string*                        | :heavy_check_mark:              | N/A                             |
-| `isSystemInitiated`             | *boolean*                       | :heavy_minus_sign:              | N/A                             |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
+| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
+| `directoryListing` | *boolean*          | :heavy_check_mark: | N/A                |

@@ -32,7 +32,7 @@ generation:
     generateNewTests: false
     skipResponseBodyAssertions: true
 typescript:
-  version: 1.27.1
+  version: 1.28.0
   acceptHeaderEnum: true
   additionalDependencies:
     dependencies: {}
@@ -42,6 +42,7 @@ typescript:
     license: Apache-2.0
   additionalScripts: {}
   alwaysIncludeInboundAndOutbound: false
+  apiPromiseHelpers: false
   author: Speakeasy
   baseErrorName: VercelError
   clientServerStatusCodesAsErrors: true
@@ -84,6 +85,7 @@ typescript:
   preApplyUnionDiscriminators: true
   preserveModelFieldNames: false
   privateIdentifierPrefix: '#'
+  requestExtras: false
   responseFormat: flat
   sseFlatResponse: false
   templateVersion: v2

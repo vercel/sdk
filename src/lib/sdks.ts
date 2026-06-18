@@ -129,27 +129,55 @@ export class ClientSDK {
     if (path) {
       baseURL.pathname = baseURL.pathname.replace(/\/+$/, "") + "/";
       reqURL = new URL(path, baseURL);
+      if (!reqURL.search && baseURL.search) {
+        reqURL.search = baseURL.search;
+      }
     } else {
       reqURL = baseURL;
     }
     reqURL.hash = "";
 
-    let finalQuery = query || "";
-
-    const secQuery: string[] = [];
-    for (const [k, v] of Object.entries(security?.queryParams || {})) {
-      const q = encodeForm(k, v, { charEncoding: "percent" });
-      if (typeof q !== "undefined") {
-        secQuery.push(q);
+    // Appends already-encoded query pairs to a query string, replacing any
+    // existing pairs with the same key so later sources take precedence.
+    const mergeQuery = (current: string, additions: string): string => {
+      if (!additions) {
+        return current;
       }
-    }
-    if (secQuery.length) {
-      finalQuery += `&${secQuery.join("&")}`;
-    }
+      const additionKeys = new Set(
+        additions
+          .split("&")
+          .filter((pair) => pair !== "")
+          .map((pair) => pair.split("=")[0] ?? ""),
+      );
+      const kept = current.split("&").filter((pair) => {
+        return pair !== "" && !additionKeys.has(pair.split("=")[0] ?? "");
+      });
+      return [...kept, additions].join("&");
+    };
+
+    const encodeQueryRecord = (record: Record<string, unknown>): string => {
+      return Object.entries(record)
+        .map(([k, v]) => {
+          if (v == null) {
+            return undefined;
+          }
+          const value = v;
+          return encodeForm(k, value, {
+            explode: Array.isArray(value),
+            charEncoding: "percent",
+          });
+        })
+        .filter((pair): pair is string => typeof pair !== "undefined")
+        .join("&");
+    };
+
+    const finalQuery = [
+      query || "",
+      encodeQueryRecord(security?.queryParams || {}),
+    ].reduce(mergeQuery, reqURL.search.slice(1));
 
     if (finalQuery) {
-      const q = finalQuery.startsWith("&") ? finalQuery.slice(1) : finalQuery;
-      reqURL.search = `?${q}`;
+      reqURL.search = `?${finalQuery}`;
     }
 
     const headers = new Headers(opHeaders);

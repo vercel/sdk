@@ -5,11 +5,10 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndFour } from "@vercel/sdk/models/ninetyfour.js";
+import { OneHundredAndFour } from "@vercel/sdk/models/usereventpayload54action.js";
 
 let value: OneHundredAndFour = {
-  drainUrl: "https://gigantic-help.org",
-  drainName: "<value>",
+  domain: "weird-solvency.biz",
 };
 ```
 
@@ -17,6 +16,4 @@ let value: OneHundredAndFour = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `drainUrl`         | *string*           | :heavy_check_mark: | N/A                |
-| `drainName`        | *string*           | :heavy_check_mark: | N/A                |
-| `integrationName`  | *string*           | :heavy_minus_sign: | N/A                |
+| `domain`           | *string*           | :heavy_check_mark: | N/A                |

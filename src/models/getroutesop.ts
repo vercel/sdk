@@ -267,6 +267,26 @@ export type GetRoutesResponseBodyProjectRoutesLocale = {
   cookie?: string | undefined;
 };
 
+export const GetRoutesDestinationProjectRoutesResponseType = {
+  Service: "service",
+} as const;
+export type GetRoutesDestinationProjectRoutesResponseType = ClosedEnum<
+  typeof GetRoutesDestinationProjectRoutesResponseType
+>;
+
+export type GetRoutesDestinationProjectRoutesResponse2 = {
+  type: GetRoutesDestinationProjectRoutesResponseType;
+  service: string;
+  /**
+   * Routing-only path used to select a route inside the target service.
+   */
+  path?: string | undefined;
+};
+
+export type GetRoutesResponseBodyProjectRoutesDestination =
+  | GetRoutesDestinationProjectRoutesResponse2
+  | string;
+
 /**
  * The route definition from @vercel/routing-utils.
  */
@@ -302,10 +322,10 @@ export type GetRoutesResponseBodyRoute = {
   env?: Array<string> | undefined;
   locale?: GetRoutesResponseBodyProjectRoutesLocale | undefined;
   /**
-   * Aliases for `src`, `dest`, and `status`. These provide consistency with the `rewrites`, `redirects`, and `headers` fields which use `source`, `destination`, and `statusCode`. During normalization, these are converted to their canonical forms (`src`, `dest`, `status`) and stripped from the route object.
+   * Aliases for `src`, `dest`, and `status`. These provide consistency with the `rewrites`, `redirects`, and `headers` fields which use `source`, `destination`, and `statusCode`. During normalization, the string forms are converted to their canonical forms (`src`, `dest`, `status`) and stripped from the route object. `destination` may also be a service-targeted object, in which case routing is delegated into the named service's internal route table and the object is preserved as-is (not folded into `dest`).
    */
   source?: string | undefined;
-  destination?: string | undefined;
+  destination?: GetRoutesDestinationProjectRoutesResponse2 | string | undefined;
   statusCode?: number | undefined;
   /**
    * A middleware key within the `output` key under the build result. Overrides a `middleware` definition.
@@ -668,6 +688,26 @@ export type GetRoutesResponseBodyLocale = {
   cookie?: string | undefined;
 };
 
+export const GetRoutesDestinationProjectRoutesType = {
+  Service: "service",
+} as const;
+export type GetRoutesDestinationProjectRoutesType = ClosedEnum<
+  typeof GetRoutesDestinationProjectRoutesType
+>;
+
+export type GetRoutesDestinationProjectRoutes2 = {
+  type: GetRoutesDestinationProjectRoutesType;
+  service: string;
+  /**
+   * Routing-only path used to select a route inside the target service.
+   */
+  path?: string | undefined;
+};
+
+export type GetRoutesResponseBodyDestination =
+  | GetRoutesDestinationProjectRoutes2
+  | string;
+
 /**
  * The route definition from @vercel/routing-utils.
  */
@@ -703,10 +743,10 @@ export type ResponseBodyRoute = {
   env?: Array<string> | undefined;
   locale?: GetRoutesResponseBodyLocale | undefined;
   /**
-   * Aliases for `src`, `dest`, and `status`. These provide consistency with the `rewrites`, `redirects`, and `headers` fields which use `source`, `destination`, and `statusCode`. During normalization, these are converted to their canonical forms (`src`, `dest`, `status`) and stripped from the route object.
+   * Aliases for `src`, `dest`, and `status`. These provide consistency with the `rewrites`, `redirects`, and `headers` fields which use `source`, `destination`, and `statusCode`. During normalization, the string forms are converted to their canonical forms (`src`, `dest`, `status`) and stripped from the route object. `destination` may also be a service-targeted object, in which case routing is delegated into the named service's internal route table and the object is preserved as-is (not folded into `dest`).
    */
   source?: string | undefined;
-  destination?: string | undefined;
+  destination?: GetRoutesDestinationProjectRoutes2 | string | undefined;
   statusCode?: number | undefined;
   /**
    * A middleware key within the `output` key under the build result. Overrides a `middleware` definition.
@@ -1036,6 +1076,24 @@ export type ResponseBodyLocale = {
   cookie?: string | undefined;
 };
 
+export const GetRoutesDestinationType = {
+  Service: "service",
+} as const;
+export type GetRoutesDestinationType = ClosedEnum<
+  typeof GetRoutesDestinationType
+>;
+
+export type GetRoutesDestination2 = {
+  type: GetRoutesDestinationType;
+  service: string;
+  /**
+   * Routing-only path used to select a route inside the target service.
+   */
+  path?: string | undefined;
+};
+
+export type ResponseBodyDestination = GetRoutesDestination2 | string;
+
 /**
  * The route definition from @vercel/routing-utils.
  */
@@ -1071,10 +1129,10 @@ export type GetRoutesResponseBodyProjectRoutesRoute = {
   env?: Array<string> | undefined;
   locale?: ResponseBodyLocale | undefined;
   /**
-   * Aliases for `src`, `dest`, and `status`. These provide consistency with the `rewrites`, `redirects`, and `headers` fields which use `source`, `destination`, and `statusCode`. During normalization, these are converted to their canonical forms (`src`, `dest`, `status`) and stripped from the route object.
+   * Aliases for `src`, `dest`, and `status`. These provide consistency with the `rewrites`, `redirects`, and `headers` fields which use `source`, `destination`, and `statusCode`. During normalization, the string forms are converted to their canonical forms (`src`, `dest`, `status`) and stripped from the route object. `destination` may also be a service-targeted object, in which case routing is delegated into the named service's internal route table and the object is preserved as-is (not folded into `dest`).
    */
   source?: string | undefined;
-  destination?: string | undefined;
+  destination?: GetRoutesDestination2 | string | undefined;
   statusCode?: number | undefined;
   /**
    * A middleware key within the `output` key under the build result. Overrides a `middleware` definition.
@@ -2029,6 +2087,63 @@ export function getRoutesResponseBodyProjectRoutesLocaleFromJSON(
 }
 
 /** @internal */
+export const GetRoutesDestinationProjectRoutesResponseType$inboundSchema:
+  z.ZodNativeEnum<typeof GetRoutesDestinationProjectRoutesResponseType> = z
+    .nativeEnum(GetRoutesDestinationProjectRoutesResponseType);
+
+/** @internal */
+export const GetRoutesDestinationProjectRoutesResponse2$inboundSchema:
+  z.ZodType<GetRoutesDestinationProjectRoutesResponse2, z.ZodTypeDef, unknown> =
+    z.object({
+      type: GetRoutesDestinationProjectRoutesResponseType$inboundSchema,
+      service: types.string(),
+      path: types.optional(types.string()),
+    });
+
+export function getRoutesDestinationProjectRoutesResponse2FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetRoutesDestinationProjectRoutesResponse2,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetRoutesDestinationProjectRoutesResponse2$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetRoutesDestinationProjectRoutesResponse2' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetRoutesResponseBodyProjectRoutesDestination$inboundSchema:
+  z.ZodType<
+    GetRoutesResponseBodyProjectRoutesDestination,
+    z.ZodTypeDef,
+    unknown
+  > = smartUnion([
+    z.lazy(() => GetRoutesDestinationProjectRoutesResponse2$inboundSchema),
+    types.string(),
+  ]);
+
+export function getRoutesResponseBodyProjectRoutesDestinationFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetRoutesResponseBodyProjectRoutesDestination,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetRoutesResponseBodyProjectRoutesDestination$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetRoutesResponseBodyProjectRoutesDestination' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetRoutesResponseBodyRoute$inboundSchema: z.ZodType<
   GetRoutesResponseBodyRoute,
   z.ZodTypeDef,
@@ -2085,7 +2200,12 @@ export const GetRoutesResponseBodyRoute$inboundSchema: z.ZodType<
     z.lazy(() => GetRoutesResponseBodyProjectRoutesLocale$inboundSchema),
   ),
   source: types.optional(types.string()),
-  destination: types.optional(types.string()),
+  destination: types.optional(
+    smartUnion([
+      z.lazy(() => GetRoutesDestinationProjectRoutesResponse2$inboundSchema),
+      types.string(),
+    ]),
+  ),
   statusCode: types.optional(types.number()),
   middlewarePath: types.optional(types.string()),
   middlewareRawSrc: types.optional(z.array(types.string())),
@@ -2927,6 +3047,54 @@ export function getRoutesResponseBodyLocaleFromJSON(
 }
 
 /** @internal */
+export const GetRoutesDestinationProjectRoutesType$inboundSchema:
+  z.ZodNativeEnum<typeof GetRoutesDestinationProjectRoutesType> = z.nativeEnum(
+    GetRoutesDestinationProjectRoutesType,
+  );
+
+/** @internal */
+export const GetRoutesDestinationProjectRoutes2$inboundSchema: z.ZodType<
+  GetRoutesDestinationProjectRoutes2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: GetRoutesDestinationProjectRoutesType$inboundSchema,
+  service: types.string(),
+  path: types.optional(types.string()),
+});
+
+export function getRoutesDestinationProjectRoutes2FromJSON(
+  jsonString: string,
+): SafeParseResult<GetRoutesDestinationProjectRoutes2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetRoutesDestinationProjectRoutes2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetRoutesDestinationProjectRoutes2' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetRoutesResponseBodyDestination$inboundSchema: z.ZodType<
+  GetRoutesResponseBodyDestination,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  z.lazy(() => GetRoutesDestinationProjectRoutes2$inboundSchema),
+  types.string(),
+]);
+
+export function getRoutesResponseBodyDestinationFromJSON(
+  jsonString: string,
+): SafeParseResult<GetRoutesResponseBodyDestination, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetRoutesResponseBodyDestination$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetRoutesResponseBodyDestination' from JSON`,
+  );
+}
+
+/** @internal */
 export const ResponseBodyRoute$inboundSchema: z.ZodType<
   ResponseBodyRoute,
   z.ZodTypeDef,
@@ -2981,7 +3149,12 @@ export const ResponseBodyRoute$inboundSchema: z.ZodType<
     z.lazy(() => GetRoutesResponseBodyLocale$inboundSchema),
   ),
   source: types.optional(types.string()),
-  destination: types.optional(types.string()),
+  destination: types.optional(
+    smartUnion([
+      z.lazy(() => GetRoutesDestinationProjectRoutes2$inboundSchema),
+      types.string(),
+    ]),
+  ),
   statusCode: types.optional(types.number()),
   middlewarePath: types.optional(types.string()),
   middlewareRawSrc: types.optional(z.array(types.string())),
@@ -3715,6 +3888,52 @@ export function responseBodyLocaleFromJSON(
 }
 
 /** @internal */
+export const GetRoutesDestinationType$inboundSchema: z.ZodNativeEnum<
+  typeof GetRoutesDestinationType
+> = z.nativeEnum(GetRoutesDestinationType);
+
+/** @internal */
+export const GetRoutesDestination2$inboundSchema: z.ZodType<
+  GetRoutesDestination2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: GetRoutesDestinationType$inboundSchema,
+  service: types.string(),
+  path: types.optional(types.string()),
+});
+
+export function getRoutesDestination2FromJSON(
+  jsonString: string,
+): SafeParseResult<GetRoutesDestination2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetRoutesDestination2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetRoutesDestination2' from JSON`,
+  );
+}
+
+/** @internal */
+export const ResponseBodyDestination$inboundSchema: z.ZodType<
+  ResponseBodyDestination,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  z.lazy(() => GetRoutesDestination2$inboundSchema),
+  types.string(),
+]);
+
+export function responseBodyDestinationFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodyDestination, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodyDestination$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyDestination' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetRoutesResponseBodyProjectRoutesRoute$inboundSchema: z.ZodType<
   GetRoutesResponseBodyProjectRoutesRoute,
   z.ZodTypeDef,
@@ -3765,7 +3984,12 @@ export const GetRoutesResponseBodyProjectRoutesRoute$inboundSchema: z.ZodType<
   env: types.optional(z.array(types.string())),
   locale: types.optional(z.lazy(() => ResponseBodyLocale$inboundSchema)),
   source: types.optional(types.string()),
-  destination: types.optional(types.string()),
+  destination: types.optional(
+    smartUnion([
+      z.lazy(() => GetRoutesDestination2$inboundSchema),
+      types.string(),
+    ]),
+  ),
   statusCode: types.optional(types.number()),
   middlewarePath: types.optional(types.string()),
   middlewareRawSrc: types.optional(z.array(types.string())),

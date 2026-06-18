@@ -13,8 +13,6 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
 import {
   UploadProjectAvatarAnalytics,
   UploadProjectAvatarAnalytics$inboundSchema,
-  UploadProjectAvatarBotFilter,
-  UploadProjectAvatarBotFilter$inboundSchema,
   UploadProjectAvatarConnectConfigurations,
   UploadProjectAvatarConnectConfigurations$inboundSchema,
   UploadProjectAvatarCrons,
@@ -65,6 +63,8 @@ import {
   UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodySecurityAction$inboundSchema,
   UploadProjectAvatarProtectionBypass,
   UploadProjectAvatarProtectionBypass$inboundSchema,
+  UploadProjectAvatarProtectionConfig,
+  UploadProjectAvatarProtectionConfig$inboundSchema,
   UploadProjectAvatarResourceConfig,
   UploadProjectAvatarResourceConfig$inboundSchema,
   UploadProjectAvatarRollbackDescription,
@@ -91,10 +91,28 @@ import {
   UploadProjectAvatarWebAnalytics$inboundSchema,
 } from "./uploadprojectavatarprojectsresponse200applicationjsonresponsebodysecurityaction.js";
 
-export type UploadProjectAvatarAiBots = {
+export type UploadProjectAvatarTrafficSources = {
   active: boolean;
   action?:
     | UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodySecurityAction
+    | undefined;
+};
+
+export const UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesAction =
+  {
+    Challenge: "challenge",
+    Deny: "deny",
+    Log: "log",
+  } as const;
+export type UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesAction =
+  ClosedEnum<
+    typeof UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesAction
+  >;
+
+export type UploadProjectAvatarBotFilter = {
+  active: boolean;
+  action?:
+    | UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesAction
     | undefined;
 };
 
@@ -107,13 +125,31 @@ export type UploadProjectAvatarProjectsResponse200Action = ClosedEnum<
   typeof UploadProjectAvatarProjectsResponse200Action
 >;
 
-export type UploadProjectAvatarOwasp = {
+export type UploadProjectAvatarAiBots = {
   active: boolean;
   action?: UploadProjectAvatarProjectsResponse200Action | undefined;
 };
 
+export const UploadProjectAvatarProjectsResponse200ApplicationJSONAction = {
+  Challenge: "challenge",
+  Deny: "deny",
+  Log: "log",
+} as const;
+export type UploadProjectAvatarProjectsResponse200ApplicationJSONAction =
+  ClosedEnum<
+    typeof UploadProjectAvatarProjectsResponse200ApplicationJSONAction
+  >;
+
+export type UploadProjectAvatarOwasp = {
+  active: boolean;
+  action?:
+    | UploadProjectAvatarProjectsResponse200ApplicationJSONAction
+    | undefined;
+};
+
 export type UploadProjectAvatarManagedRules = {
   vercelRuleset: UploadProjectAvatarVercelRuleset;
+  trafficSources: UploadProjectAvatarTrafficSources;
   botFilter: UploadProjectAvatarBotFilter;
   aiBots: UploadProjectAvatarAiBots;
   owasp: UploadProjectAvatarOwasp;
@@ -254,7 +290,7 @@ export type UploadProjectAvatarGitSources = {
 };
 
 /**
- * Customer-configurable deployment sources. Every deploy classifies to exactly one. JSON schema in `packages/deployment-policy/schemas/body.ts` enumerates exactly these values. - `'git'` — git provider webhook. - `'cli'` — Vercel CLI (legacy classic-token CLI and SIWV CLI both). - `'rest-api'` — direct user/team-token REST upload. Does NOT cover deploy hooks, Marketplace integrations, or first-party app tokens. - `'deploy-hook'` — project deploy-hook URL. The URL is the credential. - `'integration'` — third-party Marketplace actor: Marketplace integration token, user-delegated OAuth from a Marketplace app, or an unrecognized third-party Vercel App. First-party Vercel Apps are never `'integration'`. First-party Vercel apps (v0, Toolbar, etc.) classify as `'first-party'` — see `ClassifiedSource` in `./checks`. They're not in this union because they aren't customer-configurable; they bypass `checkDeploymentSources` entirely.
+ * Customer-configurable deployment sources. Every deploy classifies to exactly one. JSON schema in `packages/deployment-policy/schemas/body.ts` enumerates exactly these values. - `'git'` — git provider webhook. - `'cli'` — Vercel CLI (legacy classic-token CLI and SIWV CLI both). - `'rest-api'` — direct user/team-token REST upload. Does NOT cover deploy hooks, Marketplace integrations, or first-party app tokens. - `'deploy-hook'` — project deploy-hook URL. The URL is the credential. - `'integration'` — third-party Marketplace actor: Marketplace integration token, user-delegated OAuth from a Marketplace app, or an unrecognized third-party Vercel App. First-party Vercel Apps are never `'integration'`. - `'v0'` — the v0 product surface (entitlement-gated). v0 deploys through the CLI under the hood, but classifies as its own source so a team can allow or deny v0 independently of `'cli'`. First-party Vercel apps (Toolbar, etc.) classify as `'first-party'` — see `ClassifiedSource` in `./checks`. They're not in this union because they aren't customer-configurable; they bypass `checkDeploymentSources` entirely. v0 is intentionally NOT among them: like the CLI, it's a real product surface and is policy-controllable.
  */
 export const UploadProjectAvatarProjectsSources = {
   Cli: "cli",
@@ -262,9 +298,10 @@ export const UploadProjectAvatarProjectsSources = {
   Git: "git",
   Integration: "integration",
   RestApi: "rest-api",
+  V0: "v0",
 } as const;
 /**
- * Customer-configurable deployment sources. Every deploy classifies to exactly one. JSON schema in `packages/deployment-policy/schemas/body.ts` enumerates exactly these values. - `'git'` — git provider webhook. - `'cli'` — Vercel CLI (legacy classic-token CLI and SIWV CLI both). - `'rest-api'` — direct user/team-token REST upload. Does NOT cover deploy hooks, Marketplace integrations, or first-party app tokens. - `'deploy-hook'` — project deploy-hook URL. The URL is the credential. - `'integration'` — third-party Marketplace actor: Marketplace integration token, user-delegated OAuth from a Marketplace app, or an unrecognized third-party Vercel App. First-party Vercel Apps are never `'integration'`. First-party Vercel apps (v0, Toolbar, etc.) classify as `'first-party'` — see `ClassifiedSource` in `./checks`. They're not in this union because they aren't customer-configurable; they bypass `checkDeploymentSources` entirely.
+ * Customer-configurable deployment sources. Every deploy classifies to exactly one. JSON schema in `packages/deployment-policy/schemas/body.ts` enumerates exactly these values. - `'git'` — git provider webhook. - `'cli'` — Vercel CLI (legacy classic-token CLI and SIWV CLI both). - `'rest-api'` — direct user/team-token REST upload. Does NOT cover deploy hooks, Marketplace integrations, or first-party app tokens. - `'deploy-hook'` — project deploy-hook URL. The URL is the credential. - `'integration'` — third-party Marketplace actor: Marketplace integration token, user-delegated OAuth from a Marketplace app, or an unrecognized third-party Vercel App. First-party Vercel Apps are never `'integration'`. - `'v0'` — the v0 product surface (entitlement-gated). v0 deploys through the CLI under the hood, but classifies as its own source so a team can allow or deny v0 independently of `'cli'`. First-party Vercel apps (Toolbar, etc.) classify as `'first-party'` — see `ClassifiedSource` in `./checks`. They're not in this union because they aren't customer-configurable; they bypass `checkDeploymentSources` entirely. v0 is intentionally NOT among them: like the CLI, it's a real product surface and is policy-controllable.
  */
 export type UploadProjectAvatarProjectsSources = ClosedEnum<
   typeof UploadProjectAvatarProjectsSources
@@ -749,8 +786,8 @@ export type UploadProjectAvatarResponseBody = {
   outputDirectory?: string | null | undefined;
   passwordProtection?: UploadProjectAvatarPasswordProtection | null | undefined;
   passport?: UploadProjectAvatarPassport | null | undefined;
+  protectionConfig?: UploadProjectAvatarProtectionConfig | undefined;
   productionDeploymentsFastLane?: boolean | undefined;
-  publicSource?: boolean | null | undefined;
   resourceConfig: UploadProjectAvatarResourceConfig;
   /**
    * Description of why a project was rolled back, and by whom. Note that lastAliasRequest contains the from/to details of the rollback.
@@ -817,8 +854,65 @@ export type UploadProjectAvatarResponseBody = {
   dismissedToasts?: Array<UploadProjectAvatarDismissedToasts> | undefined;
   protectedSourcemaps?: boolean | undefined;
   tracing?: UploadProjectAvatarTracing | undefined;
-  avatar?: string | undefined;
+  avatar?: string | null | undefined;
 };
+
+/** @internal */
+export const UploadProjectAvatarTrafficSources$inboundSchema: z.ZodType<
+  UploadProjectAvatarTrafficSources,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  active: types.boolean(),
+  action: types.optional(
+    UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodySecurityAction$inboundSchema,
+  ),
+});
+
+export function uploadProjectAvatarTrafficSourcesFromJSON(
+  jsonString: string,
+): SafeParseResult<UploadProjectAvatarTrafficSources, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UploadProjectAvatarTrafficSources$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UploadProjectAvatarTrafficSources' from JSON`,
+  );
+}
+
+/** @internal */
+export const UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesAction$inboundSchema:
+  z.ZodNativeEnum<
+    typeof UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesAction
+  > = z.nativeEnum(
+    UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesAction,
+  );
+
+/** @internal */
+export const UploadProjectAvatarBotFilter$inboundSchema: z.ZodType<
+  UploadProjectAvatarBotFilter,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  active: types.boolean(),
+  action: types.optional(
+    UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesAction$inboundSchema,
+  ),
+});
+
+export function uploadProjectAvatarBotFilterFromJSON(
+  jsonString: string,
+): SafeParseResult<UploadProjectAvatarBotFilter, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UploadProjectAvatarBotFilter$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UploadProjectAvatarBotFilter' from JSON`,
+  );
+}
+
+/** @internal */
+export const UploadProjectAvatarProjectsResponse200Action$inboundSchema:
+  z.ZodNativeEnum<typeof UploadProjectAvatarProjectsResponse200Action> = z
+    .nativeEnum(UploadProjectAvatarProjectsResponse200Action);
 
 /** @internal */
 export const UploadProjectAvatarAiBots$inboundSchema: z.ZodType<
@@ -828,7 +922,7 @@ export const UploadProjectAvatarAiBots$inboundSchema: z.ZodType<
 > = z.object({
   active: types.boolean(),
   action: types.optional(
-    UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodySecurityAction$inboundSchema,
+    UploadProjectAvatarProjectsResponse200Action$inboundSchema,
   ),
 });
 
@@ -843,9 +937,10 @@ export function uploadProjectAvatarAiBotsFromJSON(
 }
 
 /** @internal */
-export const UploadProjectAvatarProjectsResponse200Action$inboundSchema:
-  z.ZodNativeEnum<typeof UploadProjectAvatarProjectsResponse200Action> = z
-    .nativeEnum(UploadProjectAvatarProjectsResponse200Action);
+export const UploadProjectAvatarProjectsResponse200ApplicationJSONAction$inboundSchema:
+  z.ZodNativeEnum<
+    typeof UploadProjectAvatarProjectsResponse200ApplicationJSONAction
+  > = z.nativeEnum(UploadProjectAvatarProjectsResponse200ApplicationJSONAction);
 
 /** @internal */
 export const UploadProjectAvatarOwasp$inboundSchema: z.ZodType<
@@ -855,7 +950,7 @@ export const UploadProjectAvatarOwasp$inboundSchema: z.ZodType<
 > = z.object({
   active: types.boolean(),
   action: types.optional(
-    UploadProjectAvatarProjectsResponse200Action$inboundSchema,
+    UploadProjectAvatarProjectsResponse200ApplicationJSONAction$inboundSchema,
   ),
 });
 
@@ -876,12 +971,16 @@ export const UploadProjectAvatarManagedRules$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   vercel_ruleset: UploadProjectAvatarVercelRuleset$inboundSchema,
-  bot_filter: UploadProjectAvatarBotFilter$inboundSchema,
+  traffic_sources: z.lazy(() =>
+    UploadProjectAvatarTrafficSources$inboundSchema
+  ),
+  bot_filter: z.lazy(() => UploadProjectAvatarBotFilter$inboundSchema),
   ai_bots: z.lazy(() => UploadProjectAvatarAiBots$inboundSchema),
   owasp: z.lazy(() => UploadProjectAvatarOwasp$inboundSchema),
 }).transform((v) => {
   return remap$(v, {
     "vercel_ruleset": "vercelRuleset",
+    "traffic_sources": "trafficSources",
     "bot_filter": "botFilter",
     "ai_bots": "aiBots",
   });
@@ -2521,8 +2620,10 @@ export const UploadProjectAvatarResponseBody$inboundSchema: z.ZodType<
     UploadProjectAvatarPasswordProtection$inboundSchema,
   ).optional(),
   passport: z.nullable(UploadProjectAvatarPassport$inboundSchema).optional(),
+  protectionConfig: types.optional(
+    UploadProjectAvatarProtectionConfig$inboundSchema,
+  ),
   productionDeploymentsFastLane: types.optional(types.boolean()),
-  publicSource: z.nullable(types.boolean()).optional(),
   resourceConfig: UploadProjectAvatarResourceConfig$inboundSchema,
   rollbackDescription: types.optional(
     UploadProjectAvatarRollbackDescription$inboundSchema,
@@ -2611,7 +2712,7 @@ export const UploadProjectAvatarResponseBody$inboundSchema: z.ZodType<
   tracing: types.optional(
     z.lazy(() => UploadProjectAvatarTracing$inboundSchema),
   ),
-  avatar: types.optional(types.string()),
+  avatar: z.nullable(types.string()).optional(),
 });
 
 export function uploadProjectAvatarResponseBodyFromJSON(

@@ -7,6 +7,7 @@ import { domainsCreateOrTransferDomain } from "../funcs/domainsCreateOrTransferD
 import { domainsDeleteDomain } from "../funcs/domainsDeleteDomain.js";
 import { domainsGetDomain } from "../funcs/domainsGetDomain.js";
 import { domainsGetDomainConfig } from "../funcs/domainsGetDomainConfig.js";
+import { domainsGetDomainProjectDomains } from "../funcs/domainsGetDomainProjectDomains.js";
 import { domainsGetDomains } from "../funcs/domainsGetDomains.js";
 import { domainsGetDomainVerificationRecord } from "../funcs/domainsGetDomainVerificationRecord.js";
 import { domainsPatchDomain } from "../funcs/domainsPatchDomain.js";
@@ -31,6 +32,10 @@ import {
   GetDomainRequest,
   GetDomainResponseBody,
 } from "../models/getdomainop.js";
+import {
+  GetDomainProjectDomainsRequest,
+  GetDomainProjectDomainsResponseBody,
+} from "../models/getdomainprojectdomainsop.js";
 import {
   GetDomainsRequest,
   GetDomainsResponseBody,
@@ -91,6 +96,23 @@ export class Domains extends ClientSDK {
     options?: RequestOptions,
   ): Promise<ClaimDomainOwnershipResponseBody> {
     return unwrapAsync(domainsClaimDomainOwnership(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * List Project Domains by Apex Domain
+   *
+   * @remarks
+   * List all project domains associated with an apex domain owned by the authenticated account.
+   */
+  async getDomainProjectDomains(
+    request: GetDomainProjectDomainsRequest,
+    options?: RequestOptions,
+  ): Promise<GetDomainProjectDomainsResponseBody> {
+    return unwrapAsync(domainsGetDomainProjectDomains(
       this,
       request,
       options,

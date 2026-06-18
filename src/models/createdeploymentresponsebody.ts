@@ -159,6 +159,22 @@ export type Locale = {
   cookie?: string | undefined;
 };
 
+export const DestinationType = {
+  Service: "service",
+} as const;
+export type DestinationType = ClosedEnum<typeof DestinationType>;
+
+export type Destination2 = {
+  type: DestinationType;
+  service: string;
+  /**
+   * Routing-only path used to select a route inside the target service.
+   */
+  path?: string | undefined;
+};
+
+export type Destination = Destination2 | string;
+
 export type Routes1 = {
   src: string;
   dest?: string | undefined;
@@ -184,10 +200,10 @@ export type Routes1 = {
   env?: Array<string> | undefined;
   locale?: Locale | undefined;
   /**
-   * Aliases for `src`, `dest`, and `status`. These provide consistency with the `rewrites`, `redirects`, and `headers` fields which use `source`, `destination`, and `statusCode`. During normalization, these are converted to their canonical forms (`src`, `dest`, `status`) and stripped from the route object.
+   * Aliases for `src`, `dest`, and `status`. These provide consistency with the `rewrites`, `redirects`, and `headers` fields which use `source`, `destination`, and `statusCode`. During normalization, the string forms are converted to their canonical forms (`src`, `dest`, `status`) and stripped from the route object. `destination` may also be a service-targeted object, in which case routing is delegated into the named service's internal route table and the object is preserved as-is (not folded into `dest`).
    */
   source?: string | undefined;
-  destination?: string | undefined;
+  destination?: Destination2 | string | undefined;
   statusCode?: number | undefined;
   /**
    * A middleware key within the `output` key under the build result. Overrides a `middleware` definition.
@@ -371,6 +387,7 @@ export type FunctionType = ClosedEnum<typeof FunctionType>;
 
 export const FunctionMemoryType = {
   Performance: "performance",
+  PerformanceXl: "performance_xl",
   Standard: "standard",
   StandardLegacy: "standard_legacy",
 } as const;
@@ -1046,6 +1063,49 @@ export function localeFromJSON(
 }
 
 /** @internal */
+export const DestinationType$inboundSchema: z.ZodNativeEnum<
+  typeof DestinationType
+> = z.nativeEnum(DestinationType);
+
+/** @internal */
+export const Destination2$inboundSchema: z.ZodType<
+  Destination2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: DestinationType$inboundSchema,
+  service: types.string(),
+  path: types.optional(types.string()),
+});
+
+export function destination2FromJSON(
+  jsonString: string,
+): SafeParseResult<Destination2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Destination2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Destination2' from JSON`,
+  );
+}
+
+/** @internal */
+export const Destination$inboundSchema: z.ZodType<
+  Destination,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([z.lazy(() => Destination2$inboundSchema), types.string()]);
+
+export function destinationFromJSON(
+  jsonString: string,
+): SafeParseResult<Destination, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Destination$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Destination' from JSON`,
+  );
+}
+
+/** @internal */
 export const Routes1$inboundSchema: z.ZodType<Routes1, z.ZodTypeDef, unknown> =
   z.object({
     src: types.string(),
@@ -1076,7 +1136,9 @@ export const Routes1$inboundSchema: z.ZodType<Routes1, z.ZodTypeDef, unknown> =
     env: types.optional(z.array(types.string())),
     locale: types.optional(z.lazy(() => Locale$inboundSchema)),
     source: types.optional(types.string()),
-    destination: types.optional(types.string()),
+    destination: types.optional(
+      smartUnion([z.lazy(() => Destination2$inboundSchema), types.string()]),
+    ),
     statusCode: types.optional(types.number()),
     middlewarePath: types.optional(types.string()),
     middlewareRawSrc: types.optional(z.array(types.string())),

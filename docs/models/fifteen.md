@@ -8,15 +8,12 @@ The payload of the event, if requested.
 import { Fifteen } from "@vercel/sdk/models/userevent.js";
 
 let value: Fifteen = {
-  virtualModelConfig: {
-    id: "<id>",
-    modelSlug: "<value>",
-  },
+  enabled: true,
 };
 ```
 
 ## Fields
 
-| Field                                                        | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `virtualModelConfig`                                         | [models.VirtualModelConfig](../models/virtualmodelconfig.md) | :heavy_check_mark:                                           | N/A                                                          |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `enabled`          | *boolean*          | :heavy_check_mark: | N/A                |

@@ -1,17 +1,15 @@
 # UserEventPayload168Type
 
-The type of matching to perform
-
 ## Example Usage
 
 ```typescript
-import { UserEventPayload168Type } from "@vercel/sdk/models/two1.js";
+import { UserEventPayload168Type } from "@vercel/sdk/models/analyticsusage.js";
 
-let value: UserEventPayload168Type = "startsWith";
+let value: UserEventPayload168Type = "connectSrc";
 ```
 
 ## Values
 
 ```typescript
-"endsWith" | "startsWith" | "equals"
+"connectSrc"
 ```

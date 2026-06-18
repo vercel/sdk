@@ -8,17 +8,15 @@ The payload of the event, if requested.
 import { Seventeen } from "@vercel/sdk/models/userevent.js";
 
 let value: Seventeen = {
-  author: "<value>",
-  accessGroup: {
+  rule: {
     id: "<id>",
-    name: "<value>",
+    type: "<value>",
   },
 };
 ```
 
 ## Fields
 
-| Field                                                        | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `author`                                                     | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
-| `accessGroup`                                                | [models.PayloadAccessGroup](../models/payloadaccessgroup.md) | :heavy_check_mark:                                           | N/A                                                          |
+| Field                            | Type                             | Required                         | Description                      |
+| -------------------------------- | -------------------------------- | -------------------------------- | -------------------------------- |
+| `rule`                           | [models.Rule](../models/rule.md) | :heavy_check_mark:               | N/A                              |

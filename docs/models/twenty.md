@@ -8,19 +8,15 @@ The payload of the event, if requested.
 import { Twenty } from "@vercel/sdk/models/userevent.js";
 
 let value: Twenty = {
-  accessGroup: {
+  virtualModelConfig: {
     id: "<id>",
-  },
-  user: {
-    id: "<id>",
+    modelSlug: "<value>",
   },
 };
 ```
 
 ## Fields
 
-| Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `accessGroup`                                                                      | [models.UserEventPayload20AccessGroup](../models/usereventpayload20accessgroup.md) | :heavy_check_mark:                                                                 | N/A                                                                                |
-| `user`                                                                             | [models.PayloadUser](../models/payloaduser.md)                                     | :heavy_check_mark:                                                                 | N/A                                                                                |
-| `directoryType`                                                                    | *string*                                                                           | :heavy_minus_sign:                                                                 | N/A                                                                                |
+| Field                                                        | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `virtualModelConfig`                                         | [models.VirtualModelConfig](../models/virtualmodelconfig.md) | :heavy_check_mark:                                           | N/A                                                          |

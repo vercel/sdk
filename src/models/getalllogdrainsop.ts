@@ -72,9 +72,69 @@ export type GetAllLogDrainsDeliveryTarget = ClosedEnum<
   typeof GetAllLogDrainsDeliveryTarget
 >;
 
-export type GetAllLogDrainsDelivery4 = {
+export type GetAllLogDrainsDelivery5 = {
   type: "internal";
   target: GetAllLogDrainsDeliveryTarget;
+};
+
+export const GetAllLogDrainsDeliveryLogDrainsResponse200ApplicationJSONEncoding =
+  {
+    Json: "json",
+    Ndjson: "ndjson",
+  } as const;
+export type GetAllLogDrainsDeliveryLogDrainsResponse200ApplicationJSONEncoding =
+  ClosedEnum<
+    typeof GetAllLogDrainsDeliveryLogDrainsResponse200ApplicationJSONEncoding
+  >;
+
+export const GetAllLogDrainsDeliveryLogDrainsCompression = {
+  None: "none",
+} as const;
+export type GetAllLogDrainsDeliveryLogDrainsCompression = ClosedEnum<
+  typeof GetAllLogDrainsDeliveryLogDrainsCompression
+>;
+
+export const GetAllLogDrainsDeliveryLogDrainsFileStructure = {
+  Hive: "hive",
+} as const;
+export type GetAllLogDrainsDeliveryLogDrainsFileStructure = ClosedEnum<
+  typeof GetAllLogDrainsDeliveryLogDrainsFileStructure
+>;
+
+export const GetAllLogDrainsDeliveryLogDrainsServerSideEncryption = {
+  Aes256: "AES256",
+  AwsKms: "aws:kms",
+  AwsKmsDsse: "aws:kms:dsse",
+} as const;
+export type GetAllLogDrainsDeliveryLogDrainsServerSideEncryption = ClosedEnum<
+  typeof GetAllLogDrainsDeliveryLogDrainsServerSideEncryption
+>;
+
+export const GetAllLogDrainsDeliveryLogDrainsObjectAcl = {
+  AuthenticatedRead: "authenticated-read",
+  AwsExecRead: "aws-exec-read",
+  BucketOwnerFullControl: "bucket-owner-full-control",
+  BucketOwnerRead: "bucket-owner-read",
+  Private: "private",
+  PublicRead: "public-read",
+  PublicReadWrite: "public-read-write",
+} as const;
+export type GetAllLogDrainsDeliveryLogDrainsObjectAcl = ClosedEnum<
+  typeof GetAllLogDrainsDeliveryLogDrainsObjectAcl
+>;
+
+export type GetAllLogDrainsDelivery4 = {
+  type: "s3";
+  endpoint: string;
+  encoding: GetAllLogDrainsDeliveryLogDrainsResponse200ApplicationJSONEncoding;
+  compression: GetAllLogDrainsDeliveryLogDrainsCompression;
+  fileStructure: GetAllLogDrainsDeliveryLogDrainsFileStructure;
+  roleArn: string;
+  region: string;
+  serverSideEncryption?:
+    | GetAllLogDrainsDeliveryLogDrainsServerSideEncryption
+    | undefined;
+  objectAcl?: GetAllLogDrainsDeliveryLogDrainsObjectAcl | undefined;
 };
 
 export type GetAllLogDrainsDelivery3 = {
@@ -87,12 +147,12 @@ export type GetAllLogDrainsDeliveryLogDrainsEndpoint = {
   traces: string;
 };
 
-export const GetAllLogDrainsDeliveryLogDrainsResponseEncoding = {
+export const GetAllLogDrainsDeliveryLogDrainsResponse200Encoding = {
   Json: "json",
   Proto: "proto",
 } as const;
-export type GetAllLogDrainsDeliveryLogDrainsResponseEncoding = ClosedEnum<
-  typeof GetAllLogDrainsDeliveryLogDrainsResponseEncoding
+export type GetAllLogDrainsDeliveryLogDrainsResponse200Encoding = ClosedEnum<
+  typeof GetAllLogDrainsDeliveryLogDrainsResponse200Encoding
 >;
 
 export const GetAllLogDrainsSecretLogDrainsResponseKind = {
@@ -113,25 +173,25 @@ export type GetAllLogDrainsDeliveryLogDrainsSecret =
 export type GetAllLogDrainsDelivery2 = {
   type: "otlphttp";
   endpoint: GetAllLogDrainsDeliveryLogDrainsEndpoint;
-  encoding: GetAllLogDrainsDeliveryLogDrainsResponseEncoding;
+  encoding: GetAllLogDrainsDeliveryLogDrainsResponse200Encoding;
   headers: { [k: string]: string };
   secret?: GetAllLogDrainsSecretLogDrainsResponse2 | string | undefined;
 };
 
-export const GetAllLogDrainsDeliveryLogDrainsEncoding = {
+export const GetAllLogDrainsDeliveryLogDrainsResponseEncoding = {
   Json: "json",
   Ndjson: "ndjson",
 } as const;
-export type GetAllLogDrainsDeliveryLogDrainsEncoding = ClosedEnum<
-  typeof GetAllLogDrainsDeliveryLogDrainsEncoding
+export type GetAllLogDrainsDeliveryLogDrainsResponseEncoding = ClosedEnum<
+  typeof GetAllLogDrainsDeliveryLogDrainsResponseEncoding
 >;
 
-export const GetAllLogDrainsDeliveryLogDrainsCompression = {
+export const GetAllLogDrainsDeliveryCompression = {
   Gzip: "gzip",
   None: "none",
 } as const;
-export type GetAllLogDrainsDeliveryLogDrainsCompression = ClosedEnum<
-  typeof GetAllLogDrainsDeliveryLogDrainsCompression
+export type GetAllLogDrainsDeliveryCompression = ClosedEnum<
+  typeof GetAllLogDrainsDeliveryCompression
 >;
 
 export const GetAllLogDrainsSecretLogDrainsKind = {
@@ -152,8 +212,8 @@ export type GetAllLogDrainsDeliverySecret =
 export type GetAllLogDrainsDelivery1 = {
   type: "http";
   endpoint: string;
-  encoding: GetAllLogDrainsDeliveryLogDrainsEncoding;
-  compression?: GetAllLogDrainsDeliveryLogDrainsCompression | undefined;
+  encoding: GetAllLogDrainsDeliveryLogDrainsResponseEncoding;
+  compression?: GetAllLogDrainsDeliveryCompression | undefined;
   headers: { [k: string]: string };
   secret?: GetAllLogDrainsSecretLogDrains2 | string | undefined;
 };
@@ -162,7 +222,8 @@ export type GetAllLogDrainsDrainsLogDrainsDelivery =
   | GetAllLogDrainsDelivery1
   | GetAllLogDrainsDelivery2
   | GetAllLogDrainsDelivery3
-  | GetAllLogDrainsDelivery4;
+  | GetAllLogDrainsDelivery4
+  | GetAllLogDrainsDelivery5;
 
 export const GetAllLogDrainsDrainsType = {
   HeadSampling: "head_sampling",
@@ -313,7 +374,8 @@ export type GetAllLogDrainsDrains2 = {
     | GetAllLogDrainsDelivery1
     | GetAllLogDrainsDelivery2
     | GetAllLogDrainsDelivery3
-    | GetAllLogDrainsDelivery4;
+    | GetAllLogDrainsDelivery4
+    | GetAllLogDrainsDelivery5;
   sampling?: Array<GetAllLogDrainsDrainsLogDrainsSampling> | undefined;
   source: GetAllLogDrainsSourceLogDrains1 | GetAllLogDrainsSourceLogDrains2;
   filterV2?: GetAllLogDrainsDrainsLogDrainsFilterV2 | undefined;
@@ -373,9 +435,67 @@ export type GetAllLogDrainsDeliveryLogDrainsTarget = ClosedEnum<
   typeof GetAllLogDrainsDeliveryLogDrainsTarget
 >;
 
-export type GetAllLogDrainsDeliveryLogDrains4 = {
+export type GetAllLogDrainsDeliveryLogDrains5 = {
   type: "internal";
   target: GetAllLogDrainsDeliveryLogDrainsTarget;
+};
+
+export const GetAllLogDrainsDeliveryLogDrainsEncoding = {
+  Json: "json",
+  Ndjson: "ndjson",
+} as const;
+export type GetAllLogDrainsDeliveryLogDrainsEncoding = ClosedEnum<
+  typeof GetAllLogDrainsDeliveryLogDrainsEncoding
+>;
+
+export const GetAllLogDrainsDeliveryLogDrainsResponse200Compression = {
+  None: "none",
+} as const;
+export type GetAllLogDrainsDeliveryLogDrainsResponse200Compression = ClosedEnum<
+  typeof GetAllLogDrainsDeliveryLogDrainsResponse200Compression
+>;
+
+export const GetAllLogDrainsDeliveryFileStructure = {
+  Hive: "hive",
+} as const;
+export type GetAllLogDrainsDeliveryFileStructure = ClosedEnum<
+  typeof GetAllLogDrainsDeliveryFileStructure
+>;
+
+export const GetAllLogDrainsDeliveryServerSideEncryption = {
+  Aes256: "AES256",
+  AwsKms: "aws:kms",
+  AwsKmsDsse: "aws:kms:dsse",
+} as const;
+export type GetAllLogDrainsDeliveryServerSideEncryption = ClosedEnum<
+  typeof GetAllLogDrainsDeliveryServerSideEncryption
+>;
+
+export const GetAllLogDrainsDeliveryObjectAcl = {
+  AuthenticatedRead: "authenticated-read",
+  AwsExecRead: "aws-exec-read",
+  BucketOwnerFullControl: "bucket-owner-full-control",
+  BucketOwnerRead: "bucket-owner-read",
+  Private: "private",
+  PublicRead: "public-read",
+  PublicReadWrite: "public-read-write",
+} as const;
+export type GetAllLogDrainsDeliveryObjectAcl = ClosedEnum<
+  typeof GetAllLogDrainsDeliveryObjectAcl
+>;
+
+export type GetAllLogDrainsDeliveryLogDrains4 = {
+  type: "s3";
+  endpoint: string;
+  encoding: GetAllLogDrainsDeliveryLogDrainsEncoding;
+  compression: GetAllLogDrainsDeliveryLogDrainsResponse200Compression;
+  fileStructure: GetAllLogDrainsDeliveryFileStructure;
+  roleArn: string;
+  region: string;
+  serverSideEncryption?:
+    | GetAllLogDrainsDeliveryServerSideEncryption
+    | undefined;
+  objectAcl?: GetAllLogDrainsDeliveryObjectAcl | undefined;
 };
 
 export type GetAllLogDrainsDeliveryLogDrains3 = {
@@ -419,20 +539,22 @@ export type GetAllLogDrainsDeliveryLogDrains2 = {
   secret?: GetAllLogDrainsSecret2 | string | undefined;
 };
 
-export const GetAllLogDrainsDeliveryLogDrainsResponse200Encoding = {
-  Json: "json",
-  Ndjson: "ndjson",
-} as const;
-export type GetAllLogDrainsDeliveryLogDrainsResponse200Encoding = ClosedEnum<
-  typeof GetAllLogDrainsDeliveryLogDrainsResponse200Encoding
->;
+export const GetAllLogDrainsDeliveryLogDrainsResponse200ApplicationJSONResponseBodyEncoding =
+  {
+    Json: "json",
+    Ndjson: "ndjson",
+  } as const;
+export type GetAllLogDrainsDeliveryLogDrainsResponse200ApplicationJSONResponseBodyEncoding =
+  ClosedEnum<
+    typeof GetAllLogDrainsDeliveryLogDrainsResponse200ApplicationJSONResponseBodyEncoding
+  >;
 
-export const GetAllLogDrainsDeliveryCompression = {
+export const GetAllLogDrainsDeliveryLogDrainsResponseCompression = {
   Gzip: "gzip",
   None: "none",
 } as const;
-export type GetAllLogDrainsDeliveryCompression = ClosedEnum<
-  typeof GetAllLogDrainsDeliveryCompression
+export type GetAllLogDrainsDeliveryLogDrainsResponseCompression = ClosedEnum<
+  typeof GetAllLogDrainsDeliveryLogDrainsResponseCompression
 >;
 
 export const GetAllLogDrainsSecretLogDrainsResponse200Kind = {
@@ -453,8 +575,9 @@ export type GetAllLogDrainsDeliveryLogDrainsResponseSecret =
 export type GetAllLogDrainsDeliveryLogDrains1 = {
   type: "http";
   endpoint: string;
-  encoding: GetAllLogDrainsDeliveryLogDrainsResponse200Encoding;
-  compression?: GetAllLogDrainsDeliveryCompression | undefined;
+  encoding:
+    GetAllLogDrainsDeliveryLogDrainsResponse200ApplicationJSONResponseBodyEncoding;
+  compression?: GetAllLogDrainsDeliveryLogDrainsResponseCompression | undefined;
   headers: { [k: string]: string };
   secret?: GetAllLogDrainsSecretLogDrainsResponse2002 | string | undefined;
 };
@@ -463,7 +586,8 @@ export type GetAllLogDrainsDrainsDelivery =
   | GetAllLogDrainsDeliveryLogDrains1
   | GetAllLogDrainsDeliveryLogDrains2
   | GetAllLogDrainsDeliveryLogDrains3
-  | GetAllLogDrainsDeliveryLogDrains4;
+  | GetAllLogDrainsDeliveryLogDrains4
+  | GetAllLogDrainsDeliveryLogDrains5;
 
 export const GetAllLogDrainsDrainsLogDrainsType = {
   HeadSampling: "head_sampling",
@@ -583,7 +707,8 @@ export type GetAllLogDrainsDrains1 = {
     | GetAllLogDrainsDeliveryLogDrains1
     | GetAllLogDrainsDeliveryLogDrains2
     | GetAllLogDrainsDeliveryLogDrains3
-    | GetAllLogDrainsDeliveryLogDrains4;
+    | GetAllLogDrainsDeliveryLogDrains4
+    | GetAllLogDrainsDeliveryLogDrains5;
   sampling?: Array<GetAllLogDrainsDrainsSampling> | undefined;
   source: GetAllLogDrainsSource1 | GetAllLogDrainsSource2;
   filterV2?: GetAllLogDrainsDrainsFilterV2 | undefined;
@@ -605,6 +730,7 @@ export const GetAllLogDrainsResponseBodyFramework = {
   Axum: "axum",
   Blitzjs: "blitzjs",
   Brunch: "brunch",
+  Bun: "bun",
   CreateReactApp: "create-react-app",
   Django: "django",
   Docusaurus: "docusaurus",
@@ -900,13 +1026,73 @@ export const GetAllLogDrainsDeliveryTarget$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(GetAllLogDrainsDeliveryTarget);
 
 /** @internal */
-export const GetAllLogDrainsDelivery4$inboundSchema: z.ZodType<
-  GetAllLogDrainsDelivery4,
+export const GetAllLogDrainsDelivery5$inboundSchema: z.ZodType<
+  GetAllLogDrainsDelivery5,
   z.ZodTypeDef,
   unknown
 > = z.object({
   type: types.literal("internal"),
   target: GetAllLogDrainsDeliveryTarget$inboundSchema,
+});
+
+export function getAllLogDrainsDelivery5FromJSON(
+  jsonString: string,
+): SafeParseResult<GetAllLogDrainsDelivery5, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetAllLogDrainsDelivery5$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAllLogDrainsDelivery5' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetAllLogDrainsDeliveryLogDrainsResponse200ApplicationJSONEncoding$inboundSchema:
+  z.ZodNativeEnum<
+    typeof GetAllLogDrainsDeliveryLogDrainsResponse200ApplicationJSONEncoding
+  > = z.nativeEnum(
+    GetAllLogDrainsDeliveryLogDrainsResponse200ApplicationJSONEncoding,
+  );
+
+/** @internal */
+export const GetAllLogDrainsDeliveryLogDrainsCompression$inboundSchema:
+  z.ZodNativeEnum<typeof GetAllLogDrainsDeliveryLogDrainsCompression> = z
+    .nativeEnum(GetAllLogDrainsDeliveryLogDrainsCompression);
+
+/** @internal */
+export const GetAllLogDrainsDeliveryLogDrainsFileStructure$inboundSchema:
+  z.ZodNativeEnum<typeof GetAllLogDrainsDeliveryLogDrainsFileStructure> = z
+    .nativeEnum(GetAllLogDrainsDeliveryLogDrainsFileStructure);
+
+/** @internal */
+export const GetAllLogDrainsDeliveryLogDrainsServerSideEncryption$inboundSchema:
+  z.ZodNativeEnum<typeof GetAllLogDrainsDeliveryLogDrainsServerSideEncryption> =
+    z.nativeEnum(GetAllLogDrainsDeliveryLogDrainsServerSideEncryption);
+
+/** @internal */
+export const GetAllLogDrainsDeliveryLogDrainsObjectAcl$inboundSchema:
+  z.ZodNativeEnum<typeof GetAllLogDrainsDeliveryLogDrainsObjectAcl> = z
+    .nativeEnum(GetAllLogDrainsDeliveryLogDrainsObjectAcl);
+
+/** @internal */
+export const GetAllLogDrainsDelivery4$inboundSchema: z.ZodType<
+  GetAllLogDrainsDelivery4,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: types.literal("s3"),
+  endpoint: types.string(),
+  encoding:
+    GetAllLogDrainsDeliveryLogDrainsResponse200ApplicationJSONEncoding$inboundSchema,
+  compression: GetAllLogDrainsDeliveryLogDrainsCompression$inboundSchema,
+  fileStructure: GetAllLogDrainsDeliveryLogDrainsFileStructure$inboundSchema,
+  roleArn: types.string(),
+  region: types.string(),
+  serverSideEncryption: types.optional(
+    GetAllLogDrainsDeliveryLogDrainsServerSideEncryption$inboundSchema,
+  ),
+  objectAcl: types.optional(
+    GetAllLogDrainsDeliveryLogDrainsObjectAcl$inboundSchema,
+  ),
 });
 
 export function getAllLogDrainsDelivery4FromJSON(
@@ -966,9 +1152,9 @@ export function getAllLogDrainsDeliveryLogDrainsEndpointFromJSON(
 }
 
 /** @internal */
-export const GetAllLogDrainsDeliveryLogDrainsResponseEncoding$inboundSchema:
-  z.ZodNativeEnum<typeof GetAllLogDrainsDeliveryLogDrainsResponseEncoding> = z
-    .nativeEnum(GetAllLogDrainsDeliveryLogDrainsResponseEncoding);
+export const GetAllLogDrainsDeliveryLogDrainsResponse200Encoding$inboundSchema:
+  z.ZodNativeEnum<typeof GetAllLogDrainsDeliveryLogDrainsResponse200Encoding> =
+    z.nativeEnum(GetAllLogDrainsDeliveryLogDrainsResponse200Encoding);
 
 /** @internal */
 export const GetAllLogDrainsSecretLogDrainsResponseKind$inboundSchema:
@@ -1031,7 +1217,7 @@ export const GetAllLogDrainsDelivery2$inboundSchema: z.ZodType<
   endpoint: z.lazy(() =>
     GetAllLogDrainsDeliveryLogDrainsEndpoint$inboundSchema
   ),
-  encoding: GetAllLogDrainsDeliveryLogDrainsResponseEncoding$inboundSchema,
+  encoding: GetAllLogDrainsDeliveryLogDrainsResponse200Encoding$inboundSchema,
   headers: z.record(types.string()),
   secret: types.optional(
     smartUnion([
@@ -1052,14 +1238,14 @@ export function getAllLogDrainsDelivery2FromJSON(
 }
 
 /** @internal */
-export const GetAllLogDrainsDeliveryLogDrainsEncoding$inboundSchema:
-  z.ZodNativeEnum<typeof GetAllLogDrainsDeliveryLogDrainsEncoding> = z
-    .nativeEnum(GetAllLogDrainsDeliveryLogDrainsEncoding);
+export const GetAllLogDrainsDeliveryLogDrainsResponseEncoding$inboundSchema:
+  z.ZodNativeEnum<typeof GetAllLogDrainsDeliveryLogDrainsResponseEncoding> = z
+    .nativeEnum(GetAllLogDrainsDeliveryLogDrainsResponseEncoding);
 
 /** @internal */
-export const GetAllLogDrainsDeliveryLogDrainsCompression$inboundSchema:
-  z.ZodNativeEnum<typeof GetAllLogDrainsDeliveryLogDrainsCompression> = z
-    .nativeEnum(GetAllLogDrainsDeliveryLogDrainsCompression);
+export const GetAllLogDrainsDeliveryCompression$inboundSchema: z.ZodNativeEnum<
+  typeof GetAllLogDrainsDeliveryCompression
+> = z.nativeEnum(GetAllLogDrainsDeliveryCompression);
 
 /** @internal */
 export const GetAllLogDrainsSecretLogDrainsKind$inboundSchema: z.ZodNativeEnum<
@@ -1113,10 +1299,8 @@ export const GetAllLogDrainsDelivery1$inboundSchema: z.ZodType<
 > = z.object({
   type: types.literal("http"),
   endpoint: types.string(),
-  encoding: GetAllLogDrainsDeliveryLogDrainsEncoding$inboundSchema,
-  compression: types.optional(
-    GetAllLogDrainsDeliveryLogDrainsCompression$inboundSchema,
-  ),
+  encoding: GetAllLogDrainsDeliveryLogDrainsResponseEncoding$inboundSchema,
+  compression: types.optional(GetAllLogDrainsDeliveryCompression$inboundSchema),
   headers: z.record(types.string()),
   secret: types.optional(
     smartUnion([
@@ -1146,6 +1330,7 @@ export const GetAllLogDrainsDrainsLogDrainsDelivery$inboundSchema: z.ZodType<
   z.lazy(() => GetAllLogDrainsDelivery2$inboundSchema),
   z.lazy(() => GetAllLogDrainsDelivery3$inboundSchema),
   z.lazy(() => GetAllLogDrainsDelivery4$inboundSchema),
+  z.lazy(() => GetAllLogDrainsDelivery5$inboundSchema),
 ]);
 
 export function getAllLogDrainsDrainsLogDrainsDeliveryFromJSON(
@@ -1532,6 +1717,7 @@ export const GetAllLogDrainsDrains2$inboundSchema: z.ZodType<
     z.lazy(() => GetAllLogDrainsDelivery2$inboundSchema),
     z.lazy(() => GetAllLogDrainsDelivery3$inboundSchema),
     z.lazy(() => GetAllLogDrainsDelivery4$inboundSchema),
+    z.lazy(() => GetAllLogDrainsDelivery5$inboundSchema),
   ]),
   sampling: types.optional(
     z.array(z.lazy(() => GetAllLogDrainsDrainsLogDrainsSampling$inboundSchema)),
@@ -1729,13 +1915,70 @@ export const GetAllLogDrainsDeliveryLogDrainsTarget$inboundSchema:
   );
 
 /** @internal */
-export const GetAllLogDrainsDeliveryLogDrains4$inboundSchema: z.ZodType<
-  GetAllLogDrainsDeliveryLogDrains4,
+export const GetAllLogDrainsDeliveryLogDrains5$inboundSchema: z.ZodType<
+  GetAllLogDrainsDeliveryLogDrains5,
   z.ZodTypeDef,
   unknown
 > = z.object({
   type: types.literal("internal"),
   target: GetAllLogDrainsDeliveryLogDrainsTarget$inboundSchema,
+});
+
+export function getAllLogDrainsDeliveryLogDrains5FromJSON(
+  jsonString: string,
+): SafeParseResult<GetAllLogDrainsDeliveryLogDrains5, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetAllLogDrainsDeliveryLogDrains5$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAllLogDrainsDeliveryLogDrains5' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetAllLogDrainsDeliveryLogDrainsEncoding$inboundSchema:
+  z.ZodNativeEnum<typeof GetAllLogDrainsDeliveryLogDrainsEncoding> = z
+    .nativeEnum(GetAllLogDrainsDeliveryLogDrainsEncoding);
+
+/** @internal */
+export const GetAllLogDrainsDeliveryLogDrainsResponse200Compression$inboundSchema:
+  z.ZodNativeEnum<
+    typeof GetAllLogDrainsDeliveryLogDrainsResponse200Compression
+  > = z.nativeEnum(GetAllLogDrainsDeliveryLogDrainsResponse200Compression);
+
+/** @internal */
+export const GetAllLogDrainsDeliveryFileStructure$inboundSchema:
+  z.ZodNativeEnum<typeof GetAllLogDrainsDeliveryFileStructure> = z.nativeEnum(
+    GetAllLogDrainsDeliveryFileStructure,
+  );
+
+/** @internal */
+export const GetAllLogDrainsDeliveryServerSideEncryption$inboundSchema:
+  z.ZodNativeEnum<typeof GetAllLogDrainsDeliveryServerSideEncryption> = z
+    .nativeEnum(GetAllLogDrainsDeliveryServerSideEncryption);
+
+/** @internal */
+export const GetAllLogDrainsDeliveryObjectAcl$inboundSchema: z.ZodNativeEnum<
+  typeof GetAllLogDrainsDeliveryObjectAcl
+> = z.nativeEnum(GetAllLogDrainsDeliveryObjectAcl);
+
+/** @internal */
+export const GetAllLogDrainsDeliveryLogDrains4$inboundSchema: z.ZodType<
+  GetAllLogDrainsDeliveryLogDrains4,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: types.literal("s3"),
+  endpoint: types.string(),
+  encoding: GetAllLogDrainsDeliveryLogDrainsEncoding$inboundSchema,
+  compression:
+    GetAllLogDrainsDeliveryLogDrainsResponse200Compression$inboundSchema,
+  fileStructure: GetAllLogDrainsDeliveryFileStructure$inboundSchema,
+  roleArn: types.string(),
+  region: types.string(),
+  serverSideEncryption: types.optional(
+    GetAllLogDrainsDeliveryServerSideEncryption$inboundSchema,
+  ),
+  objectAcl: types.optional(GetAllLogDrainsDeliveryObjectAcl$inboundSchema),
 });
 
 export function getAllLogDrainsDeliveryLogDrains4FromJSON(
@@ -1873,14 +2116,17 @@ export function getAllLogDrainsDeliveryLogDrains2FromJSON(
 }
 
 /** @internal */
-export const GetAllLogDrainsDeliveryLogDrainsResponse200Encoding$inboundSchema:
-  z.ZodNativeEnum<typeof GetAllLogDrainsDeliveryLogDrainsResponse200Encoding> =
-    z.nativeEnum(GetAllLogDrainsDeliveryLogDrainsResponse200Encoding);
+export const GetAllLogDrainsDeliveryLogDrainsResponse200ApplicationJSONResponseBodyEncoding$inboundSchema:
+  z.ZodNativeEnum<
+    typeof GetAllLogDrainsDeliveryLogDrainsResponse200ApplicationJSONResponseBodyEncoding
+  > = z.nativeEnum(
+    GetAllLogDrainsDeliveryLogDrainsResponse200ApplicationJSONResponseBodyEncoding,
+  );
 
 /** @internal */
-export const GetAllLogDrainsDeliveryCompression$inboundSchema: z.ZodNativeEnum<
-  typeof GetAllLogDrainsDeliveryCompression
-> = z.nativeEnum(GetAllLogDrainsDeliveryCompression);
+export const GetAllLogDrainsDeliveryLogDrainsResponseCompression$inboundSchema:
+  z.ZodNativeEnum<typeof GetAllLogDrainsDeliveryLogDrainsResponseCompression> =
+    z.nativeEnum(GetAllLogDrainsDeliveryLogDrainsResponseCompression);
 
 /** @internal */
 export const GetAllLogDrainsSecretLogDrainsResponse200Kind$inboundSchema:
@@ -1945,8 +2191,11 @@ export const GetAllLogDrainsDeliveryLogDrains1$inboundSchema: z.ZodType<
 > = z.object({
   type: types.literal("http"),
   endpoint: types.string(),
-  encoding: GetAllLogDrainsDeliveryLogDrainsResponse200Encoding$inboundSchema,
-  compression: types.optional(GetAllLogDrainsDeliveryCompression$inboundSchema),
+  encoding:
+    GetAllLogDrainsDeliveryLogDrainsResponse200ApplicationJSONResponseBodyEncoding$inboundSchema,
+  compression: types.optional(
+    GetAllLogDrainsDeliveryLogDrainsResponseCompression$inboundSchema,
+  ),
   headers: z.record(types.string()),
   secret: types.optional(
     smartUnion([
@@ -1976,6 +2225,7 @@ export const GetAllLogDrainsDrainsDelivery$inboundSchema: z.ZodType<
   z.lazy(() => GetAllLogDrainsDeliveryLogDrains2$inboundSchema),
   z.lazy(() => GetAllLogDrainsDeliveryLogDrains3$inboundSchema),
   z.lazy(() => GetAllLogDrainsDeliveryLogDrains4$inboundSchema),
+  z.lazy(() => GetAllLogDrainsDeliveryLogDrains5$inboundSchema),
 ]);
 
 export function getAllLogDrainsDrainsDeliveryFromJSON(
@@ -2281,6 +2531,7 @@ export const GetAllLogDrainsDrains1$inboundSchema: z.ZodType<
     z.lazy(() => GetAllLogDrainsDeliveryLogDrains2$inboundSchema),
     z.lazy(() => GetAllLogDrainsDeliveryLogDrains3$inboundSchema),
     z.lazy(() => GetAllLogDrainsDeliveryLogDrains4$inboundSchema),
+    z.lazy(() => GetAllLogDrainsDeliveryLogDrains5$inboundSchema),
   ]),
   sampling: types.optional(
     z.array(z.lazy(() => GetAllLogDrainsDrainsSampling$inboundSchema)),

@@ -706,6 +706,7 @@ export const PutFirewallConfigRulesType = {
   Scheme: "scheme",
   ServerAction: "server_action",
   TargetPath: "target_path",
+  TrustedSource: "trusted_source",
   UserAgent: "user_agent",
 } as const;
 export type PutFirewallConfigRulesType = ClosedEnum<
@@ -857,6 +858,7 @@ export const PutFirewallConfigRulesSecurityType = {
   Scheme: "scheme",
   ServerAction: "server_action",
   TargetPath: "target_path",
+  TrustedSource: "trusted_source",
   UserAgent: "user_agent",
 } as const;
 export type PutFirewallConfigRulesSecurityType = ClosedEnum<
@@ -1093,11 +1095,33 @@ export type PutFirewallConfigVercelRuleset = {
   username?: string | undefined;
 };
 
+export const PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesTrafficSourcesAction =
+  {
+    Challenge: "challenge",
+    Deny: "deny",
+    Log: "log",
+  } as const;
+export type PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesTrafficSourcesAction =
+  ClosedEnum<
+    typeof PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesTrafficSourcesAction
+  >;
+
+export type PutFirewallConfigTrafficSources = {
+  active: boolean;
+  action?:
+    | PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesTrafficSourcesAction
+    | undefined;
+  updatedAt?: string | undefined;
+  userId?: string | undefined;
+  username?: string | undefined;
+};
+
 export type PutFirewallConfigManagedRules = {
   botProtection?: PutFirewallConfigBotProtection | undefined;
   aiBots?: PutFirewallConfigAiBots | undefined;
   owasp?: PutFirewallConfigOwasp | undefined;
   vercelRuleset?: PutFirewallConfigVercelRuleset | undefined;
+  trafficSources?: PutFirewallConfigTrafficSources | undefined;
 };
 
 export const PutFirewallConfigLogHeaders2 = {
@@ -2930,6 +2954,39 @@ export function putFirewallConfigVercelRulesetFromJSON(
 }
 
 /** @internal */
+export const PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesTrafficSourcesAction$inboundSchema:
+  z.ZodNativeEnum<
+    typeof PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesTrafficSourcesAction
+  > = z.nativeEnum(
+    PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesTrafficSourcesAction,
+  );
+
+/** @internal */
+export const PutFirewallConfigTrafficSources$inboundSchema: z.ZodType<
+  PutFirewallConfigTrafficSources,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  active: types.boolean(),
+  action: types.optional(
+    PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesTrafficSourcesAction$inboundSchema,
+  ),
+  updatedAt: types.optional(types.string()),
+  userId: types.optional(types.string()),
+  username: types.optional(types.string()),
+});
+
+export function putFirewallConfigTrafficSourcesFromJSON(
+  jsonString: string,
+): SafeParseResult<PutFirewallConfigTrafficSources, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PutFirewallConfigTrafficSources$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PutFirewallConfigTrafficSources' from JSON`,
+  );
+}
+
+/** @internal */
 export const PutFirewallConfigManagedRules$inboundSchema: z.ZodType<
   PutFirewallConfigManagedRules,
   z.ZodTypeDef,
@@ -2943,11 +3000,15 @@ export const PutFirewallConfigManagedRules$inboundSchema: z.ZodType<
   vercel_ruleset: types.optional(
     z.lazy(() => PutFirewallConfigVercelRuleset$inboundSchema),
   ),
+  traffic_sources: types.optional(
+    z.lazy(() => PutFirewallConfigTrafficSources$inboundSchema),
+  ),
 }).transform((v) => {
   return remap$(v, {
     "bot_protection": "botProtection",
     "ai_bots": "aiBots",
     "vercel_ruleset": "vercelRuleset",
+    "traffic_sources": "trafficSources",
   });
 });
 

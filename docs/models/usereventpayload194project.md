@@ -3,16 +3,29 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPayload194Project } from "@vercel/sdk/models/usereventpayload172next.js";
+import { UserEventPayload194Project } from "@vercel/sdk/models/usereventpayloaddeploymenttype.js";
 
 let value: UserEventPayload194Project = {
-  name: "<value>",
+  id: "<id>",
+  oldConnectConfigurations: [
+    {
+      envId: "<id>",
+      connectConfigurationId: "<id>",
+      passive: false,
+      buildsEnabled: true,
+      createdAt: 9005.75,
+      updatedAt: 8968.35,
+    },
+  ],
+  newConnectConfigurations: [],
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `name`             | *string*           | :heavy_check_mark: | N/A                |
-| `id`               | *string*           | :heavy_minus_sign: | N/A                |
+| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `id`                                                                       | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
+| `name`                                                                     | *string*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |
+| `oldConnectConfigurations`                                                 | [models.OldConnectConfigurations](../models/oldconnectconfigurations.md)[] | :heavy_check_mark:                                                         | N/A                                                                        |
+| `newConnectConfigurations`                                                 | [models.NewConnectConfigurations](../models/newconnectconfigurations.md)[] | :heavy_check_mark:                                                         | N/A                                                                        |

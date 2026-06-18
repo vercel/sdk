@@ -34,13 +34,13 @@ export type TeamLimitedSyncState = ClosedEnum<typeof TeamLimitedSyncState>;
  */
 export type TeamLimitedConnection = {
   /**
-   * The Identity Provider "type", for example Okta.
-   */
-  type: string;
-  /**
    * Current status of the connection.
    */
   status: string;
+  /**
+   * The Identity Provider "type", for example Okta.
+   */
+  type: string;
   /**
    * Current state of the connection.
    */
@@ -284,8 +284,8 @@ export const TeamLimitedConnection$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.string(),
   status: types.string(),
+  type: types.string(),
   state: types.string(),
   connectedAt: types.number(),
   lastReceivedWebhookEvent: types.optional(types.number()),

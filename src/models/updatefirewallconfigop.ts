@@ -32,6 +32,7 @@ export const UpdateFirewallConfigRequestBodyId = {
   AiBots: "ai_bots",
   BotFilter: "bot_filter",
   BotProtection: "bot_protection",
+  TrafficSources: "traffic_sources",
   VercelRuleset: "vercel_ruleset",
   Owasp: "owasp",
 } as const;
@@ -73,6 +74,7 @@ export const RequestBodyId = {
   AiBots: "ai_bots",
   BotFilter: "bot_filter",
   BotProtection: "bot_protection",
+  TrafficSources: "traffic_sources",
   VercelRuleset: "vercel_ruleset",
   Owasp: "owasp",
 } as const;

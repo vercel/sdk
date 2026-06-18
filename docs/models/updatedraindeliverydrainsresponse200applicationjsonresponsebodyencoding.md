@@ -7,11 +7,11 @@ import { UpdateDrainDeliveryDrainsResponse200ApplicationJSONResponseBodyEncoding
 
 let value:
   UpdateDrainDeliveryDrainsResponse200ApplicationJSONResponseBodyEncoding =
-    "proto";
+    "ndjson";
 ```
 
 ## Values
 
 ```typescript
-"json" | "proto"
+"json" | "ndjson"
 ```

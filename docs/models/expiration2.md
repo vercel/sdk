@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Expiration2 } from "@vercel/sdk/models/createprojectprojectsto.js";
+import { Expiration2 } from "@vercel/sdk/models/createprojecttoprojectsresponsepreset.js";
 
 let value: Expiration2 = {
   lockedAt: 2318.29,

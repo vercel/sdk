@@ -5,21 +5,30 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndSixtyTwo } from "@vercel/sdk/models/twohundredandthirtyone.js";
+import { TwoHundredAndSixtyTwo } from "@vercel/sdk/models/reasoncode.js";
 
 let value: TwoHundredAndSixtyTwo = {
-  scalingRules: {},
-  min: 6451.32,
-  max: 2070.26,
-  url: "https://pleasant-fat.name/",
+  projectId: "<id>",
+  projectName: "<value>",
+  addedProjects: [],
+  removedProjects: [
+    {
+      id: "<id>",
+      name: "<value>",
+    },
+  ],
+  addedProviders: [],
+  removedProviders: [],
 };
 ```
 
 ## Fields
 
-| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `scalingRules`                                                   | Record<string, [models.ScalingRules](../models/scalingrules.md)> | :heavy_check_mark:                                               | N/A                                                              |
-| `min`                                                            | *number*                                                         | :heavy_check_mark:                                               | N/A                                                              |
-| `max`                                                            | *number*                                                         | :heavy_check_mark:                                               | N/A                                                              |
-| `url`                                                            | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
+| Field                                                    | Type                                                     | Required                                                 | Description                                              |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `projectId`                                              | *string*                                                 | :heavy_check_mark:                                       | N/A                                                      |
+| `projectName`                                            | *string*                                                 | :heavy_check_mark:                                       | N/A                                                      |
+| `addedProjects`                                          | [models.AddedProjects](../models/addedprojects.md)[]     | :heavy_check_mark:                                       | N/A                                                      |
+| `removedProjects`                                        | [models.RemovedProjects](../models/removedprojects.md)[] | :heavy_check_mark:                                       | N/A                                                      |
+| `addedProviders`                                         | *string*[]                                               | :heavy_check_mark:                                       | N/A                                                      |
+| `removedProviders`                                       | *string*[]                                               | :heavy_check_mark:                                       | N/A                                                      |

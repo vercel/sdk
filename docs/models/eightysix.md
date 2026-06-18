@@ -5,24 +5,32 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { EightySix } from "@vercel/sdk/models/fortyseven.js";
+import { EightySix } from "@vercel/sdk/models/usereventpayload54action.js";
 
 let value: EightySix = {
-  id: "<id>",
-  value: "<value>",
-  name: "<value>",
-  domain: "only-pearl.info",
-  type: "<value>",
+  job: {
+    headInfo: {
+      org: "<value>",
+      ref: "<value>",
+      repo: "<value>",
+      repoId: 1102.65,
+      sha: "<value>",
+    },
+    installationId: 6510.39,
+    isPrivate: true,
+    org: "<value>",
+    prId: 139.61,
+    projectId: "<id>",
+    repo: "<value>",
+    repoId: 6357.51,
+    type: "now-comment",
+    provider: "github-custom-host",
+  },
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `id`               | *string*           | :heavy_check_mark: | N/A                |
-| `value`            | *string*           | :heavy_check_mark: | N/A                |
-| `name`             | *string*           | :heavy_check_mark: | N/A                |
-| `domain`           | *string*           | :heavy_check_mark: | N/A                |
-| `type`             | *string*           | :heavy_check_mark: | N/A                |
-| `mxPriority`       | *number*           | :heavy_minus_sign: | N/A                |
+| Field               | Type                | Required            | Description         |
+| ------------------- | ------------------- | ------------------- | ------------------- |
+| `job`               | *models.PayloadJob* | :heavy_check_mark:  | N/A                 |

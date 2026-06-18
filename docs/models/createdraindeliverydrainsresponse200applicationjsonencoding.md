@@ -11,5 +11,5 @@ let value: CreateDrainDeliveryDrainsResponse200ApplicationJSONEncoding = "json";
 ## Values
 
 ```typescript
-"json" | "proto"
+"json" | "ndjson"
 ```

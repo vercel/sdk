@@ -5,11 +5,11 @@
 ```typescript
 import { Result } from "@vercel/sdk/models/submitinvoiceop.js";
 
-let value: Result = "notpaid";
+let value: Result = "overdue";
 ```
 
 ## Values
 
 ```typescript
-"paid" | "notpaid"
+"paid" | "notpaid" | "overdue"
 ```

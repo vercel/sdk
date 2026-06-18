@@ -15,6 +15,58 @@ export type TestDrainSchemas = {
   version: string;
 };
 
+export const TestDrainDeliveryDrainsRequestEncoding = {
+  Json: "json",
+  Ndjson: "ndjson",
+} as const;
+export type TestDrainDeliveryDrainsRequestEncoding = ClosedEnum<
+  typeof TestDrainDeliveryDrainsRequestEncoding
+>;
+
+export const TestDrainDeliveryDrainsCompression = {
+  None: "none",
+} as const;
+export type TestDrainDeliveryDrainsCompression = ClosedEnum<
+  typeof TestDrainDeliveryDrainsCompression
+>;
+
+export const TestDrainDeliveryFileStructure = {
+  Hive: "hive",
+} as const;
+export type TestDrainDeliveryFileStructure = ClosedEnum<
+  typeof TestDrainDeliveryFileStructure
+>;
+
+export const TestDrainDeliveryServerSideEncryption = {
+  Aes256: "AES256",
+  AwsKms: "aws:kms",
+  AwsKmsDsse: "aws:kms:dsse",
+} as const;
+export type TestDrainDeliveryServerSideEncryption = ClosedEnum<
+  typeof TestDrainDeliveryServerSideEncryption
+>;
+
+export const TestDrainDeliveryObjectAcl = {
+  Private: "private",
+  BucketOwnerRead: "bucket-owner-read",
+  BucketOwnerFullControl: "bucket-owner-full-control",
+} as const;
+export type TestDrainDeliveryObjectAcl = ClosedEnum<
+  typeof TestDrainDeliveryObjectAcl
+>;
+
+export type TestDrainDelivery3 = {
+  type: string;
+  endpoint: string;
+  encoding: TestDrainDeliveryDrainsRequestEncoding;
+  compression: TestDrainDeliveryDrainsCompression;
+  fileStructure: TestDrainDeliveryFileStructure;
+  roleArn: string;
+  region: string;
+  serverSideEncryption?: TestDrainDeliveryServerSideEncryption | undefined;
+  objectAcl?: TestDrainDeliveryObjectAcl | undefined;
+};
+
 export type TestDrainEndpoint1 = {
   traces: string;
 };
@@ -62,11 +114,14 @@ export type TestDrainDelivery1 = {
   secret?: string | undefined;
 };
 
-export type TestDrainDelivery = TestDrainDelivery1 | TestDrainDelivery2;
+export type TestDrainDelivery =
+  | TestDrainDelivery3
+  | TestDrainDelivery1
+  | TestDrainDelivery2;
 
 export type TestDrainRequestBody = {
   schemas: { [k: string]: TestDrainSchemas };
-  delivery: TestDrainDelivery1 | TestDrainDelivery2;
+  delivery: TestDrainDelivery3 | TestDrainDelivery1 | TestDrainDelivery2;
 };
 
 export type TestDrainRequest = {
@@ -112,6 +167,72 @@ export function testDrainSchemasToJSON(
 ): string {
   return JSON.stringify(
     TestDrainSchemas$outboundSchema.parse(testDrainSchemas),
+  );
+}
+
+/** @internal */
+export const TestDrainDeliveryDrainsRequestEncoding$outboundSchema:
+  z.ZodNativeEnum<typeof TestDrainDeliveryDrainsRequestEncoding> = z.nativeEnum(
+    TestDrainDeliveryDrainsRequestEncoding,
+  );
+
+/** @internal */
+export const TestDrainDeliveryDrainsCompression$outboundSchema: z.ZodNativeEnum<
+  typeof TestDrainDeliveryDrainsCompression
+> = z.nativeEnum(TestDrainDeliveryDrainsCompression);
+
+/** @internal */
+export const TestDrainDeliveryFileStructure$outboundSchema: z.ZodNativeEnum<
+  typeof TestDrainDeliveryFileStructure
+> = z.nativeEnum(TestDrainDeliveryFileStructure);
+
+/** @internal */
+export const TestDrainDeliveryServerSideEncryption$outboundSchema:
+  z.ZodNativeEnum<typeof TestDrainDeliveryServerSideEncryption> = z.nativeEnum(
+    TestDrainDeliveryServerSideEncryption,
+  );
+
+/** @internal */
+export const TestDrainDeliveryObjectAcl$outboundSchema: z.ZodNativeEnum<
+  typeof TestDrainDeliveryObjectAcl
+> = z.nativeEnum(TestDrainDeliveryObjectAcl);
+
+/** @internal */
+export type TestDrainDelivery3$Outbound = {
+  type: string;
+  endpoint: string;
+  encoding: string;
+  compression: string;
+  fileStructure: string;
+  roleArn: string;
+  region: string;
+  serverSideEncryption?: string | undefined;
+  objectAcl?: string | undefined;
+};
+
+/** @internal */
+export const TestDrainDelivery3$outboundSchema: z.ZodType<
+  TestDrainDelivery3$Outbound,
+  z.ZodTypeDef,
+  TestDrainDelivery3
+> = z.object({
+  type: z.string(),
+  endpoint: z.string(),
+  encoding: TestDrainDeliveryDrainsRequestEncoding$outboundSchema,
+  compression: TestDrainDeliveryDrainsCompression$outboundSchema,
+  fileStructure: TestDrainDeliveryFileStructure$outboundSchema,
+  roleArn: z.string(),
+  region: z.string(),
+  serverSideEncryption: TestDrainDeliveryServerSideEncryption$outboundSchema
+    .optional(),
+  objectAcl: TestDrainDeliveryObjectAcl$outboundSchema.optional(),
+});
+
+export function testDrainDelivery3ToJSON(
+  testDrainDelivery3: TestDrainDelivery3,
+): string {
+  return JSON.stringify(
+    TestDrainDelivery3$outboundSchema.parse(testDrainDelivery3),
   );
 }
 
@@ -234,6 +355,7 @@ export function testDrainDelivery1ToJSON(
 
 /** @internal */
 export type TestDrainDelivery$Outbound =
+  | TestDrainDelivery3$Outbound
   | TestDrainDelivery1$Outbound
   | TestDrainDelivery2$Outbound;
 
@@ -243,6 +365,7 @@ export const TestDrainDelivery$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   TestDrainDelivery
 > = smartUnion([
+  z.lazy(() => TestDrainDelivery3$outboundSchema),
   z.lazy(() => TestDrainDelivery1$outboundSchema),
   z.lazy(() => TestDrainDelivery2$outboundSchema),
 ]);
@@ -258,7 +381,10 @@ export function testDrainDeliveryToJSON(
 /** @internal */
 export type TestDrainRequestBody$Outbound = {
   schemas: { [k: string]: TestDrainSchemas$Outbound };
-  delivery: TestDrainDelivery1$Outbound | TestDrainDelivery2$Outbound;
+  delivery:
+    | TestDrainDelivery3$Outbound
+    | TestDrainDelivery1$Outbound
+    | TestDrainDelivery2$Outbound;
 };
 
 /** @internal */
@@ -269,6 +395,7 @@ export const TestDrainRequestBody$outboundSchema: z.ZodType<
 > = z.object({
   schemas: z.record(z.lazy(() => TestDrainSchemas$outboundSchema)),
   delivery: smartUnion([
+    z.lazy(() => TestDrainDelivery3$outboundSchema),
     z.lazy(() => TestDrainDelivery1$outboundSchema),
     z.lazy(() => TestDrainDelivery2$outboundSchema),
   ]),

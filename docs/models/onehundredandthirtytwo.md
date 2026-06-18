@@ -5,24 +5,24 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndThirtyTwo } from "@vercel/sdk/models/connectdatatransfer.js";
+import { OneHundredAndThirtyTwo } from "@vercel/sdk/models/onehundredandeight.js";
 
 let value: OneHundredAndThirtyTwo = {
-  integration: {
-    id: "<id>",
-    slug: "<value>",
-    name: "<value>",
-    configurationId: "<id>",
-  },
-  destinationTeamId: "<id>",
-  destinationTeamName: "<value>",
+  projectId: "<id>",
+  restore: true,
+  configVersion: 8305.72,
+  configChangeCount: 5307.3,
+  configChanges: [],
 };
 ```
 
 ## Fields
 
-| Field                                          | Type                                           | Required                                       | Description                                    |
-| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| `integration`                                  | [models.Integration](../models/integration.md) | :heavy_check_mark:                             | N/A                                            |
-| `destinationTeamId`                            | *string*                                       | :heavy_check_mark:                             | N/A                                            |
-| `destinationTeamName`                          | *string*                                       | :heavy_check_mark:                             | N/A                                            |
+| Field                                                | Type                                                 | Required                                             | Description                                          |
+| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
+| `projectId`                                          | *string*                                             | :heavy_check_mark:                                   | N/A                                                  |
+| `projectName`                                        | *string*                                             | :heavy_minus_sign:                                   | N/A                                                  |
+| `restore`                                            | *boolean*                                            | :heavy_check_mark:                                   | N/A                                                  |
+| `configVersion`                                      | *number*                                             | :heavy_check_mark:                                   | N/A                                                  |
+| `configChangeCount`                                  | *number*                                             | :heavy_check_mark:                                   | N/A                                                  |
+| `configChanges`                                      | [models.ConfigChanges](../models/configchanges.md)[] | :heavy_check_mark:                                   | N/A                                                  |

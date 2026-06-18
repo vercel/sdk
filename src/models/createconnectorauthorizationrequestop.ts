@@ -98,12 +98,40 @@ export type CreateConnectorAuthorizationRequestRequest = {
   requestBody?: CreateConnectorAuthorizationRequestRequestBody | undefined;
 };
 
+export type CreateConnectorAuthorizationRequestConnector = {
+  /**
+   * Client id (e.g. `scl_…`).
+   */
+  id: string;
+  /**
+   * Client uid (e.g. `salesforce/my-org`).
+   */
+  uid: string;
+  /**
+   * Client type (e.g. `oauth`, `salesforce`).
+   */
+  type: string;
+  /**
+   * Resolved service id when known (e.g. `salesforce`), following the `stored.service ?? typeDef.service ?? stored.type` convention.
+   */
+  service?: string | undefined;
+  /**
+   * Curated display name of the resolved service (e.g. "Salesforce"), present when the service is a known service. Suited for end-user surfaces like "Sign in with {serviceName}".
+   */
+  serviceName?: string | undefined;
+  /**
+   * The connector's own name: the operator-given client name, falling back to the client type's name for legacy rows without one.
+   */
+  name: string;
+};
+
 export type CreateConnectorAuthorizationRequestResponseBody = {
   url: string;
   request: string;
   verifier: string;
   deviceCode?: string | undefined;
   expiresAt: number;
+  connector: CreateConnectorAuthorizationRequestConnector;
 };
 
 /** @internal */
@@ -424,6 +452,37 @@ export function createConnectorAuthorizationRequestRequestToJSON(
 }
 
 /** @internal */
+export const CreateConnectorAuthorizationRequestConnector$inboundSchema:
+  z.ZodType<
+    CreateConnectorAuthorizationRequestConnector,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    id: types.string(),
+    uid: types.string(),
+    type: types.string(),
+    service: types.optional(types.string()),
+    serviceName: types.optional(types.string()),
+    name: types.string(),
+  });
+
+export function createConnectorAuthorizationRequestConnectorFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateConnectorAuthorizationRequestConnector,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateConnectorAuthorizationRequestConnector$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CreateConnectorAuthorizationRequestConnector' from JSON`,
+  );
+}
+
+/** @internal */
 export const CreateConnectorAuthorizationRequestResponseBody$inboundSchema:
   z.ZodType<
     CreateConnectorAuthorizationRequestResponseBody,
@@ -435,6 +494,9 @@ export const CreateConnectorAuthorizationRequestResponseBody$inboundSchema:
     verifier: types.string(),
     deviceCode: types.optional(types.string()),
     expiresAt: types.number(),
+    connector: z.lazy(() =>
+      CreateConnectorAuthorizationRequestConnector$inboundSchema
+    ),
   });
 
 export function createConnectorAuthorizationRequestResponseBodyFromJSON(

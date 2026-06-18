@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { DefaultResourceConfig } from "@vercel/sdk/models/createprojectprojectsto.js";
+import { DefaultResourceConfig } from "@vercel/sdk/models/createprojecttoprojectsresponsepreset.js";
 
 let value: DefaultResourceConfig = {
   functionDefaultRegions: [
@@ -30,4 +30,3 @@ let value: DefaultResourceConfig = {
 | `isNSNBDisabled`                                                                                                     | *boolean*                                                                                                            | :heavy_minus_sign:                                                                                                   | N/A                                                                                                                  |
 | `buildQueue`                                                                                                         | [models.CreateProjectProjectsResponseBuildQueue](../models/createprojectprojectsresponsebuildqueue.md)               | :heavy_minus_sign:                                                                                                   | N/A                                                                                                                  |
 | `enableFunctionsBeta`                                                                                                | *boolean*                                                                                                            | :heavy_minus_sign:                                                                                                   | N/A                                                                                                                  |
-| `enableFunctionsExtendedMaxDuration`                                                                                 | *boolean*                                                                                                            | :heavy_minus_sign:                                                                                                   | N/A                                                                                                                  |

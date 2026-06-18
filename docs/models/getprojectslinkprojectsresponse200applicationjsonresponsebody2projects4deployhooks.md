@@ -5,7 +5,7 @@
 ```typescript
 import {
   GetProjectsLinkProjectsResponse200ApplicationJSONResponseBody2Projects4DeployHooks,
-} from "@vercel/sdk/models/getprojectsresponsebodyfunctiondefaultmemorytype.js";
+} from "@vercel/sdk/models/getprojectsresponsebodyprojectsnodeversion.js";
 
 let value:
   GetProjectsLinkProjectsResponse200ApplicationJSONResponseBody2Projects4DeployHooks =

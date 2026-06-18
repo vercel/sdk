@@ -5,11 +5,11 @@
 ```typescript
 import { CreateDrainDeliveryDrainsResponse200Encoding } from "@vercel/sdk/models/createdrainop.js";
 
-let value: CreateDrainDeliveryDrainsResponse200Encoding = "ndjson";
+let value: CreateDrainDeliveryDrainsResponse200Encoding = "proto";
 ```
 
 ## Values
 
 ```typescript
-"json" | "ndjson"
+"json" | "proto"
 ```

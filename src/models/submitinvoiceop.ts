@@ -77,6 +77,7 @@ export type SubmitInvoiceDiscounts = {
 export const Result = {
   Paid: "paid",
   Notpaid: "notpaid",
+  Overdue: "overdue",
 } as const;
 export type Result = ClosedEnum<typeof Result>;
 

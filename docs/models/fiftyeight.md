@@ -5,17 +5,20 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FiftyEight } from "@vercel/sdk/models/fortyseven.js";
+import { FiftyEight } from "@vercel/sdk/models/usereventpayload54action.js";
 
 let value: FiftyEight = {
-  src: "<value>",
-  dst: "<value>",
+  project: {
+    id: "<id>",
+    name: "<value>",
+  },
+  versionId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `src`              | *string*           | :heavy_check_mark: | N/A                |
-| `dst`              | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `project`                                                              | [models.UserEventPayloadProject](../models/usereventpayloadproject.md) | :heavy_check_mark:                                                     | N/A                                                                    |
+| `versionId`                                                            | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |

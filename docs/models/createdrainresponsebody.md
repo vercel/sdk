@@ -36,9 +36,13 @@ const value: models.CreateDrainResponseBody2 = {
   ownerId: "<id>",
   schemas: {},
   delivery: {
-    type: "clickhouse",
+    type: "s3",
     endpoint: "<value>",
-    table: "<value>",
+    encoding: "ndjson",
+    compression: "none",
+    fileStructure: "hive",
+    roleArn: "<value>",
+    region: "<value>",
   },
   source: {
     kind: "integration",

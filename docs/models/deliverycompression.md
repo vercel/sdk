@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { DeliveryCompression } from "@vercel/sdk/models/updatedrainop.js";
+import { DeliveryCompression } from "@vercel/sdk/models/createdrainop.js";
 
-let value: DeliveryCompression = "gzip";
+let value: DeliveryCompression = "none";
 ```
 
 ## Values
 
 ```typescript
-"gzip" | "none"
+"none"
 ```

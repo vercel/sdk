@@ -35,10 +35,10 @@ const value: models.UpdateDrainDeliveryDrains2 = {
 };
 ```
 
-### `models.UpdateDrainDelivery3`
+### `models.UpdateDrainDeliveryDrains3`
 
 ```typescript
-const value: models.UpdateDrainDelivery3 = {
+const value: models.UpdateDrainDeliveryDrains3 = {
   type: "clickhouse",
   endpoint: "<value>",
   table: "<value>",
@@ -49,6 +49,20 @@ const value: models.UpdateDrainDelivery3 = {
 
 ```typescript
 const value: models.UpdateDrainDelivery4 = {
+  type: "s3",
+  endpoint: "<value>",
+  encoding: "json",
+  compression: "none",
+  fileStructure: "hive",
+  roleArn: "<value>",
+  region: "<value>",
+};
+```
+
+### `models.UpdateDrainDelivery5`
+
+```typescript
+const value: models.UpdateDrainDelivery5 = {
   type: "internal",
   target: "vercel-otel-traces-db",
 };

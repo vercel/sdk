@@ -11,5 +11,5 @@ let value: SettlementMethod = "refunded-paid";
 ## Values
 
 ```typescript
-"credited-paid" | "refunded-paid"
+"credited-paid" | "credited-payment-pending" | "refunded-paid" | "refunded-payment-pending"
 ```

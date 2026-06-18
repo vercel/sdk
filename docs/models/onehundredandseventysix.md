@@ -5,19 +5,21 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndSeventySix } from "@vercel/sdk/models/usereventpayloadprevious.js";
+import { OneHundredAndSeventySix } from "@vercel/sdk/models/usereventpayloaddeploymenttype.js";
 
 let value: OneHundredAndSeventySix = {
-  projectId: "<id>",
-  projectName: "<value>",
-  enableAffectedProjectsDeployments: true,
+  endpoint: {
+    id: "<id>",
+    name: "<value>",
+    projectId: "<id>",
+    vercelRegion: "<value>",
+    awsServiceName: "<value>",
+  },
 };
 ```
 
 ## Fields
 
-| Field                               | Type                                | Required                            | Description                         |
-| ----------------------------------- | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| `projectId`                         | *string*                            | :heavy_check_mark:                  | N/A                                 |
-| `projectName`                       | *string*                            | :heavy_check_mark:                  | N/A                                 |
-| `enableAffectedProjectsDeployments` | *boolean*                           | :heavy_check_mark:                  | N/A                                 |
+| Field                                    | Type                                     | Required                                 | Description                              |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| `endpoint`                               | [models.Endpoint](../models/endpoint.md) | :heavy_check_mark:                       | N/A                                      |

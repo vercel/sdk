@@ -335,6 +335,24 @@ export type EditRouteLocale = {
   cookie?: string | undefined;
 };
 
+export const EditRouteDestinationType = {
+  Service: "service",
+} as const;
+export type EditRouteDestinationType = ClosedEnum<
+  typeof EditRouteDestinationType
+>;
+
+export type EditRouteDestination2 = {
+  type: EditRouteDestinationType;
+  service: string;
+  /**
+   * Routing-only path used to select a route inside the target service.
+   */
+  path?: string | undefined;
+};
+
+export type EditRouteDestination = EditRouteDestination2 | string;
+
 /**
  * The route definition from @vercel/routing-utils.
  */
@@ -370,10 +388,10 @@ export type EditRouteProjectRoutesResponse200Route = {
   env?: Array<string> | undefined;
   locale?: EditRouteLocale | undefined;
   /**
-   * Aliases for `src`, `dest`, and `status`. These provide consistency with the `rewrites`, `redirects`, and `headers` fields which use `source`, `destination`, and `statusCode`. During normalization, these are converted to their canonical forms (`src`, `dest`, `status`) and stripped from the route object.
+   * Aliases for `src`, `dest`, and `status`. These provide consistency with the `rewrites`, `redirects`, and `headers` fields which use `source`, `destination`, and `statusCode`. During normalization, the string forms are converted to their canonical forms (`src`, `dest`, `status`) and stripped from the route object. `destination` may also be a service-targeted object, in which case routing is delegated into the named service's internal route table and the object is preserved as-is (not folded into `dest`).
    */
   source?: string | undefined;
-  destination?: string | undefined;
+  destination?: EditRouteDestination2 | string | undefined;
   statusCode?: number | undefined;
   /**
    * A middleware key within the `output` key under the build result. Overrides a `middleware` definition.
@@ -1373,6 +1391,52 @@ export function editRouteLocaleFromJSON(
 }
 
 /** @internal */
+export const EditRouteDestinationType$inboundSchema: z.ZodNativeEnum<
+  typeof EditRouteDestinationType
+> = z.nativeEnum(EditRouteDestinationType);
+
+/** @internal */
+export const EditRouteDestination2$inboundSchema: z.ZodType<
+  EditRouteDestination2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: EditRouteDestinationType$inboundSchema,
+  service: types.string(),
+  path: types.optional(types.string()),
+});
+
+export function editRouteDestination2FromJSON(
+  jsonString: string,
+): SafeParseResult<EditRouteDestination2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EditRouteDestination2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EditRouteDestination2' from JSON`,
+  );
+}
+
+/** @internal */
+export const EditRouteDestination$inboundSchema: z.ZodType<
+  EditRouteDestination,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  z.lazy(() => EditRouteDestination2$inboundSchema),
+  types.string(),
+]);
+
+export function editRouteDestinationFromJSON(
+  jsonString: string,
+): SafeParseResult<EditRouteDestination, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EditRouteDestination$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EditRouteDestination' from JSON`,
+  );
+}
+
+/** @internal */
 export const EditRouteProjectRoutesResponse200Route$inboundSchema: z.ZodType<
   EditRouteProjectRoutesResponse200Route,
   z.ZodTypeDef,
@@ -1423,7 +1487,12 @@ export const EditRouteProjectRoutesResponse200Route$inboundSchema: z.ZodType<
   env: types.optional(z.array(types.string())),
   locale: types.optional(z.lazy(() => EditRouteLocale$inboundSchema)),
   source: types.optional(types.string()),
-  destination: types.optional(types.string()),
+  destination: types.optional(
+    smartUnion([
+      z.lazy(() => EditRouteDestination2$inboundSchema),
+      types.string(),
+    ]),
+  ),
   statusCode: types.optional(types.number()),
   middlewarePath: types.optional(types.string()),
   middlewareRawSrc: types.optional(z.array(types.string())),

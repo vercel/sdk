@@ -5,7 +5,7 @@ Specifies resource override configuration for the project
 ## Example Usage
 
 ```typescript
-import { CreateProjectResourceConfig } from "@vercel/sdk/models/createprojectprojectsto.js";
+import { CreateProjectResourceConfig } from "@vercel/sdk/models/createprojecttoprojectsresponsepreset.js";
 
 let value: CreateProjectResourceConfig = {};
 ```
@@ -26,4 +26,3 @@ let value: CreateProjectResourceConfig = {};
 | `isNSNBDisabled`                                                           | *boolean*                                                                  | :heavy_minus_sign:                                                         | N/A                                                                        |
 | `buildQueue`                                                               | [models.CreateProjectBuildQueue](../models/createprojectbuildqueue.md)     | :heavy_minus_sign:                                                         | N/A                                                                        |
 | `enableFunctionsBeta`                                                      | *boolean*                                                                  | :heavy_minus_sign:                                                         | N/A                                                                        |
-| `enableFunctionsExtendedMaxDuration`                                       | *boolean*                                                                  | :heavy_minus_sign:                                                         | N/A                                                                        |

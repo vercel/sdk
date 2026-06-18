@@ -5,29 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndSixtyEight } from "@vercel/sdk/models/twohundredandthirtyone.js";
+import { TwoHundredAndSixtyEight } from "@vercel/sdk/models/reasoncode.js";
 
 let value: TwoHundredAndSixtyEight = {
-  budget: {
-    budgetItem: {
-      type: "fixed",
-      fixedBudget: 5322.24,
-      previousSpend: [],
-      notifiedAt: [
-        7813.67,
-        6171.37,
-      ],
-      createdAt: 7480.89,
-      isActive: true,
-      teamId: "<id>",
-      id: "<id>",
-    },
-  },
+  email: "Clyde_Considine@hotmail.com",
+  verified: false,
 };
 ```
 
 ## Fields
 
-| Field                                                                | Type                                                                 | Required                                                             | Description                                                          |
-| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| `budget`                                                             | [models.UserEventPayloadBudget](../models/usereventpayloadbudget.md) | :heavy_check_mark:                                                   | N/A                                                                  |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `email`            | *string*           | :heavy_check_mark: | N/A                |
+| `verified`         | *boolean*          | :heavy_check_mark: | N/A                |

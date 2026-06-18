@@ -11,5 +11,5 @@ let value: FunctionMemoryType = "standard";
 ## Values
 
 ```typescript
-"performance" | "standard" | "standard_legacy"
+"performance" | "performance_xl" | "standard" | "standard_legacy"
 ```

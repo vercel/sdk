@@ -5,11 +5,11 @@
 ```typescript
 import { CreateConnectorType } from "@vercel/sdk/models/createconnectorop.js";
 
-let value: CreateConnectorType = "github";
+let value: CreateConnectorType = "linear";
 ```
 
 ## Values
 
 ```typescript
-"api-key" | "custom" | "github" | "oauth" | "salesforce" | "slack" | "snowflake"
+"api-key" | "custom" | "github" | "linear" | "oauth" | "salesforce" | "slack" | "snowflake" | "snowflake-wif"
 ```

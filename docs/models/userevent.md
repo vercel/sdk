@@ -18,13 +18,7 @@ let value: UserEvent = {
   createdAt: 1632859321020,
   userId: "zTuNVUXEAvvnNN3IaqinkyMw",
   principalId: "<id>",
-  payload: {
-    entitlement: "<value>",
-    user: {
-      id: "<id>",
-      username: "Wiley46",
-    },
-  },
+  payload: {},
 };
 ```
 

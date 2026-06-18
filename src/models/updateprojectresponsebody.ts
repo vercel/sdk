@@ -7,45 +7,8 @@ import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
+import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
-import {
-  UpdateProjectAnalytics,
-  UpdateProjectAnalytics$inboundSchema,
-  UpdateProjectConnectConfigurations,
-  UpdateProjectConnectConfigurations$inboundSchema,
-  UpdateProjectCrons,
-  UpdateProjectCrons$inboundSchema,
-  UpdateProjectCustomEnvironments,
-  UpdateProjectCustomEnvironments$inboundSchema,
-  UpdateProjectDataCache,
-  UpdateProjectDataCache$inboundSchema,
-  UpdateProjectDeploymentExpiration,
-  UpdateProjectDeploymentExpiration$inboundSchema,
-  UpdateProjectExpiration,
-  UpdateProjectExpiration$inboundSchema,
-  UpdateProjectIpBuckets,
-  UpdateProjectIpBuckets$inboundSchema,
-  UpdateProjectJobs,
-  UpdateProjectJobs$inboundSchema,
-  UpdateProjectLatestDeployments,
-  UpdateProjectLatestDeployments$inboundSchema,
-  UpdateProjectLink,
-  UpdateProjectLink$inboundSchema,
-  UpdateProjectMicrofrontends,
-  UpdateProjectMicrofrontends$inboundSchema,
-  UpdateProjectProjectsEnv,
-  UpdateProjectProjectsEnv$inboundSchema,
-  UpdateProjectProjectsFramework,
-  UpdateProjectProjectsFramework$inboundSchema,
-  UpdateProjectProjectsNodeVersion,
-  UpdateProjectProjectsNodeVersion$inboundSchema,
-  UpdateProjectProjectsOptionsAllowlist,
-  UpdateProjectProjectsOptionsAllowlist$inboundSchema,
-  UpdateProjectServices,
-  UpdateProjectServices$inboundSchema,
-  UpdateProjectSpeedInsights,
-  UpdateProjectSpeedInsights$inboundSchema,
-} from "./updateprojectprojectsoptionsallowlist.js";
 import {
   UpdateProjectAbuse,
   UpdateProjectAbuse$inboundSchema,
@@ -87,6 +50,8 @@ import {
   UpdateProjectProjectsTrustedIps$inboundSchema,
   UpdateProjectProtectionBypass,
   UpdateProjectProtectionBypass$inboundSchema,
+  UpdateProjectProtectionConfig,
+  UpdateProjectProtectionConfig$inboundSchema,
   UpdateProjectRollbackDescription,
   UpdateProjectRollbackDescription$inboundSchema,
   UpdateProjectRollingRelease,
@@ -99,17 +64,68 @@ import {
   UpdateProjectTrustedSources$inboundSchema,
   UpdateProjectUsageStatus,
   UpdateProjectUsageStatus$inboundSchema,
-  UpdateProjectValue,
-  UpdateProjectValue$inboundSchema,
   UpdateProjectWebAnalytics,
   UpdateProjectWebAnalytics$inboundSchema,
-} from "./updateprojectvalue.js";
+} from "./updateprojectprojectsaction.js";
+import {
+  UpdateProjectAnalytics,
+  UpdateProjectAnalytics$inboundSchema,
+  UpdateProjectConnectConfigurations,
+  UpdateProjectConnectConfigurations$inboundSchema,
+  UpdateProjectCrons,
+  UpdateProjectCrons$inboundSchema,
+  UpdateProjectCustomEnvironments,
+  UpdateProjectCustomEnvironments$inboundSchema,
+  UpdateProjectDataCache,
+  UpdateProjectDataCache$inboundSchema,
+  UpdateProjectDeploymentExpiration,
+  UpdateProjectDeploymentExpiration$inboundSchema,
+  UpdateProjectExpiration,
+  UpdateProjectExpiration$inboundSchema,
+  UpdateProjectIpBuckets,
+  UpdateProjectIpBuckets$inboundSchema,
+  UpdateProjectJobs,
+  UpdateProjectJobs$inboundSchema,
+  UpdateProjectLatestDeployments,
+  UpdateProjectLatestDeployments$inboundSchema,
+  UpdateProjectLink,
+  UpdateProjectLink$inboundSchema,
+  UpdateProjectMicrofrontends,
+  UpdateProjectMicrofrontends$inboundSchema,
+  UpdateProjectProjectsEnv,
+  UpdateProjectProjectsEnv$inboundSchema,
+  UpdateProjectProjectsFramework,
+  UpdateProjectProjectsFramework$inboundSchema,
+  UpdateProjectProjectsNodeVersion,
+  UpdateProjectProjectsNodeVersion$inboundSchema,
+  UpdateProjectProjectsOptionsAllowlist,
+  UpdateProjectProjectsOptionsAllowlist$inboundSchema,
+  UpdateProjectServices,
+  UpdateProjectServices$inboundSchema,
+  UpdateProjectSpeedInsights,
+  UpdateProjectSpeedInsights$inboundSchema,
+} from "./updateprojectprojectsoptionsallowlist.js";
+
+export type UpdateProjectValuePreviousValue = string | number | boolean;
+
+export type UpdateProjectValueCurrentValue = string | number | boolean;
+
+export type UpdateProjectValue3 = {
+  previousValue: string | number | boolean;
+  currentValue: string | number | boolean;
+};
+
+export type UpdateProjectValue =
+  | UpdateProjectValue3
+  | string
+  | number
+  | boolean;
 
 export type UpdateProjectProjectsDismissedToasts = {
   key: string;
   dismissedAt: number;
   action: UpdateProjectProjectsAction;
-  value: UpdateProjectValue | null;
+  value: UpdateProjectValue3 | string | number | boolean | null;
 };
 
 export const UpdateProjectProjectsResponseEnv = {
@@ -185,8 +201,8 @@ export type UpdateProjectResponseBody = {
     | null
     | undefined;
   passport?: UpdateProjectProjectsPassport | null | undefined;
+  protectionConfig?: UpdateProjectProtectionConfig | undefined;
   productionDeploymentsFastLane?: boolean | undefined;
-  publicSource?: boolean | null | undefined;
   resourceConfig: UpdateProjectProjectsResourceConfig;
   /**
    * Description of why a project was rolled back, and by whom. Note that lastAliasRequest contains the from/to details of the rollback.
@@ -247,8 +263,84 @@ export type UpdateProjectResponseBody = {
   dismissedToasts?: Array<UpdateProjectProjectsDismissedToasts> | undefined;
   protectedSourcemaps?: boolean | undefined;
   tracing?: UpdateProjectTracing | undefined;
-  avatar?: string | undefined;
+  avatar?: string | null | undefined;
 };
+
+/** @internal */
+export const UpdateProjectValuePreviousValue$inboundSchema: z.ZodType<
+  UpdateProjectValuePreviousValue,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([types.string(), types.number(), types.boolean()]);
+
+export function updateProjectValuePreviousValueFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectValuePreviousValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectValuePreviousValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectValuePreviousValue' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateProjectValueCurrentValue$inboundSchema: z.ZodType<
+  UpdateProjectValueCurrentValue,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([types.string(), types.number(), types.boolean()]);
+
+export function updateProjectValueCurrentValueFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectValueCurrentValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectValueCurrentValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectValueCurrentValue' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateProjectValue3$inboundSchema: z.ZodType<
+  UpdateProjectValue3,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  previousValue: smartUnion([types.string(), types.number(), types.boolean()]),
+  currentValue: smartUnion([types.string(), types.number(), types.boolean()]),
+});
+
+export function updateProjectValue3FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectValue3, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectValue3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectValue3' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateProjectValue$inboundSchema: z.ZodType<
+  UpdateProjectValue,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  z.lazy(() => UpdateProjectValue3$inboundSchema),
+  types.string(),
+  types.number(),
+  types.boolean(),
+]);
+
+export function updateProjectValueFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectValue' from JSON`,
+  );
+}
 
 /** @internal */
 export const UpdateProjectProjectsDismissedToasts$inboundSchema: z.ZodType<
@@ -259,7 +351,14 @@ export const UpdateProjectProjectsDismissedToasts$inboundSchema: z.ZodType<
   key: types.string(),
   dismissedAt: types.number(),
   action: UpdateProjectProjectsAction$inboundSchema,
-  value: types.nullable(UpdateProjectValue$inboundSchema),
+  value: types.nullable(
+    smartUnion([
+      z.lazy(() => UpdateProjectValue3$inboundSchema),
+      types.string(),
+      types.number(),
+      types.boolean(),
+    ]),
+  ),
 });
 
 export function updateProjectProjectsDismissedToastsFromJSON(
@@ -379,8 +478,8 @@ export const UpdateProjectResponseBody$inboundSchema: z.ZodType<
     UpdateProjectProjectsPasswordProtection$inboundSchema,
   ).optional(),
   passport: z.nullable(UpdateProjectProjectsPassport$inboundSchema).optional(),
+  protectionConfig: types.optional(UpdateProjectProtectionConfig$inboundSchema),
   productionDeploymentsFastLane: types.optional(types.boolean()),
-  publicSource: z.nullable(types.boolean()).optional(),
   resourceConfig: UpdateProjectProjectsResourceConfig$inboundSchema,
   rollbackDescription: types.optional(
     UpdateProjectRollbackDescription$inboundSchema,
@@ -454,7 +553,7 @@ export const UpdateProjectResponseBody$inboundSchema: z.ZodType<
   ),
   protectedSourcemaps: types.optional(types.boolean()),
   tracing: types.optional(z.lazy(() => UpdateProjectTracing$inboundSchema)),
-  avatar: types.optional(types.string()),
+  avatar: z.nullable(types.string()).optional(),
 });
 
 export function updateProjectResponseBodyFromJSON(

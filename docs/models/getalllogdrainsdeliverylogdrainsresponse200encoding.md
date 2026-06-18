@@ -11,5 +11,5 @@ let value: GetAllLogDrainsDeliveryLogDrainsResponse200Encoding = "json";
 ## Values
 
 ```typescript
-"json" | "ndjson"
+"json" | "proto"
 ```

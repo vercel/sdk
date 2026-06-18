@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyErl } from "@vercel/sdk/models/getprojectscontenthint4.js";
+import { ResponseBodyErl } from "@vercel/sdk/models/getprojectscontenthint10.js";
 
 let value: ResponseBodyErl = {
   algo: "token_bucket",

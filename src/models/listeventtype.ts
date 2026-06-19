@@ -169,6 +169,7 @@ export const Name = {
   EdgeCacheInvalidateByTags: "edge-cache-invalidate-by-tags",
   EdgeCachePurgeAll: "edge-cache-purge-all",
   EdgeCacheRollbackPurge: "edge-cache-rollback-purge",
+  EdgeConfigBackupRestored: "edge-config-backup-restored",
   EdgeConfigCreated: "edge-config-created",
   EdgeConfigDeleted: "edge-config-deleted",
   EdgeConfigItemsUpdated: "edge-config-items-updated",
@@ -540,6 +541,11 @@ export const Name = {
   V0ChatAiUsage: "v0-chat-ai-usage",
   V0ChatCreated: "v0-chat-created",
   V0ChatMessageSent: "v0-chat-message-sent",
+  VercelAgentElevatedPermissionsApproved:
+    "vercel-agent-elevated-permissions-approved",
+  VercelAgentElevatedPermissionsRequested:
+    "vercel-agent-elevated-permissions-requested",
+  VercelAgentSessionCreated: "vercel-agent-session-created",
   VercelAgentTeamTrialCreditsApplied: "vercel-agent-team-trial-credits-applied",
   VercelAppInstallationRequestDismissed:
     "vercel-app-installation-request-dismissed",
@@ -759,6 +765,7 @@ export const ReplacedBy = {
   EdgeCacheInvalidateByTags: "edge-cache-invalidate-by-tags",
   EdgeCachePurgeAll: "edge-cache-purge-all",
   EdgeCacheRollbackPurge: "edge-cache-rollback-purge",
+  EdgeConfigBackupRestored: "edge-config-backup-restored",
   EdgeConfigCreated: "edge-config-created",
   EdgeConfigDeleted: "edge-config-deleted",
   EdgeConfigItemsUpdated: "edge-config-items-updated",
@@ -1130,6 +1137,11 @@ export const ReplacedBy = {
   V0ChatAiUsage: "v0-chat-ai-usage",
   V0ChatCreated: "v0-chat-created",
   V0ChatMessageSent: "v0-chat-message-sent",
+  VercelAgentElevatedPermissionsApproved:
+    "vercel-agent-elevated-permissions-approved",
+  VercelAgentElevatedPermissionsRequested:
+    "vercel-agent-elevated-permissions-requested",
+  VercelAgentSessionCreated: "vercel-agent-session-created",
   VercelAgentTeamTrialCreditsApplied: "vercel-agent-team-trial-credits-applied",
   VercelAppInstallationRequestDismissed:
     "vercel-app-installation-request-dismissed",

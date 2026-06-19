@@ -3,13 +3,19 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPayload211Previous } from "@vercel/sdk/models/onehundredandninetytwo.js";
+import { UserEventPayload211Previous } from "@vercel/sdk/models/removedusers.js";
 
-let value: UserEventPayload211Previous = {};
+let value: UserEventPayload211Previous = {
+  gitProvider: "github",
+  gitRepoId: "<id>",
+  gitRepositoryName: "<value>",
+};
 ```
 
 ## Fields
 
-| Field                                        | Type                                         | Required                                     | Description                                  |
-| -------------------------------------------- | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
-| `issuerMode`                                 | [models.IssuerMode](../models/issuermode.md) | :heavy_minus_sign:                           | N/A                                          |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `gitProvider`                                                                  | [models.UserEventPayloadGitProvider](../models/usereventpayloadgitprovider.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| `gitRepoId`                                                                    | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `gitRepositoryName`                                                            | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |

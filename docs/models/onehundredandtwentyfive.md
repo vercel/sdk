@@ -5,23 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndTwentyFive } from "@vercel/sdk/models/onehundredandeight.js";
+import { OneHundredAndTwentyFive } from "@vercel/sdk/models/onehundredandeleven.js";
 
-let value: OneHundredAndTwentyFive = {};
+let value: OneHundredAndTwentyFive = {
+  team: {
+    id: "<id>",
+  },
+};
 ```
 
 ## Fields
 
-| Field                    | Type                     | Required                 | Description              |
-| ------------------------ | ------------------------ | ------------------------ | ------------------------ |
-| `key`                    | *string*                 | :heavy_minus_sign:       | N/A                      |
-| `projectId`              | *string*                 | :heavy_minus_sign:       | N/A                      |
-| `projectName`            | *string*                 | :heavy_minus_sign:       | N/A                      |
-| `target`                 | *models.Target*          | :heavy_minus_sign:       | N/A                      |
-| `customEnvironmentSlugs` | *string*[]               | :heavy_minus_sign:       | N/A                      |
-| `id`                     | *string*                 | :heavy_minus_sign:       | N/A                      |
-| `gitBranch`              | *string*                 | :heavy_minus_sign:       | N/A                      |
-| `edgeConfigId`           | *string*                 | :heavy_minus_sign:       | N/A                      |
-| `edgeConfigTokenId`      | *string*                 | :heavy_minus_sign:       | N/A                      |
-| `source`                 | *string*                 | :heavy_minus_sign:       | N/A                      |
-| `ipAddress`              | *string*                 | :heavy_minus_sign:       | N/A                      |
+| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `team`                                                                 | [models.UserEventPayload125Team](../models/usereventpayload125team.md) | :heavy_check_mark:                                                     | N/A                                                                    |
+| `previousRule`                                                         | [models.PayloadPreviousRule](../models/payloadpreviousrule.md)         | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `nextRule`                                                             | [models.NextRule](../models/nextrule.md)                               | :heavy_minus_sign:                                                     | N/A                                                                    |

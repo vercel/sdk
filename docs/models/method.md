@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Method } from "@vercel/sdk/models/threehundredandone.js";
+import { Method } from "@vercel/sdk/models/threehundredandfour.js";
 
 let value: Method = "client_secret_jwt";
 ```

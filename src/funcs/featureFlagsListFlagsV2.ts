@@ -104,9 +104,11 @@ async function $do(
   );
 
   const query = encodeFormQuery({
+    "createdBy": payload.createdBy,
     "cursor": payload.cursor,
     "includeMarketplaceFlags": payload.includeMarketplaceFlags,
     "limit": payload.limit,
+    "maintainerIds": payload.maintainerIds,
     "search": payload.search,
     "slug": payload.slug,
     "state": payload.state,

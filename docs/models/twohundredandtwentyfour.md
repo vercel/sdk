@@ -5,13 +5,16 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndTwentyFour } from "@vercel/sdk/models/usereventpayloaddeploymenttype.js";
+import { TwoHundredAndTwentyFour } from "@vercel/sdk/models/removedusers.js";
 
 let value: TwoHundredAndTwentyFour = {
   projectId: "<id>",
   projectName: "<value>",
   domain: "vague-expansion.com",
   target: "<value>",
+  redirect: "<value>",
+  redirectStatusCode: 9894.34,
+  gitBranch: "<value>",
 };
 ```
 
@@ -23,5 +26,7 @@ let value: TwoHundredAndTwentyFour = {
 | `projectName`        | *string*             | :heavy_check_mark:   | N/A                  |
 | `domain`             | *string*             | :heavy_check_mark:   | N/A                  |
 | `target`             | *string*             | :heavy_check_mark:   | N/A                  |
-| `redirect`           | *string*             | :heavy_minus_sign:   | N/A                  |
-| `redirectStatusCode` | *number*             | :heavy_minus_sign:   | N/A                  |
+| `redirect`           | *string*             | :heavy_check_mark:   | N/A                  |
+| `redirectStatusCode` | *number*             | :heavy_check_mark:   | N/A                  |
+| `gitBranch`          | *string*             | :heavy_check_mark:   | N/A                  |
+| `configuredBy`       | *string*             | :heavy_minus_sign:   | N/A                  |

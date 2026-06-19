@@ -10,7 +10,7 @@ import { FiftyThree } from "@vercel/sdk/models/userevent.js";
 let value: FiftyThree = {
   action: "cancel_plan",
   data: {
-    planSlug: "v0_business",
+    planSlug: "v0_teams",
   },
 };
 ```

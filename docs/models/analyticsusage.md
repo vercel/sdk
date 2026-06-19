@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { AnalyticsUsage } from "@vercel/sdk/models/analyticsusage.js";
+import { AnalyticsUsage } from "@vercel/sdk/models/onehundredandeleven.js";
 
 let value: AnalyticsUsage = {
   currentThreshold: 922.98,

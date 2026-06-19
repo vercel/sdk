@@ -102,10 +102,12 @@ async function $do(
   const path = pathToFunc("/v2/teams/{teamId}/feature-flags/flags")(pathParams);
 
   const query = encodeFormQuery({
+    "createdBy": payload.createdBy,
     "cursor": payload.cursor,
     "includeMarketplaceFlags": payload.includeMarketplaceFlags,
     "kind": payload.kind,
     "limit": payload.limit,
+    "maintainerIds": payload.maintainerIds,
     "search": payload.search,
     "slug": payload.slug,
     "state": payload.state,

@@ -52,6 +52,14 @@ export type ListFlagsV2Request = {
    */
   tags?: Array<string> | undefined;
   /**
+   * Filter flags by the id of the entity that created them (a user or team id).
+   */
+  createdBy?: string | undefined;
+  /**
+   * Filter flags by maintainer user id. Repeat the parameter for multiple maintainers (any may match).
+   */
+  maintainerIds?: Array<string> | undefined;
+  /**
    * Whether to include Marketplace experimentation items in the paginated response. Defaults to false.
    */
   includeMarketplaceFlags?: boolean | undefined;
@@ -89,6 +97,8 @@ export type ListFlagsV2Request$Outbound = {
   cursor?: string | undefined;
   search?: string | undefined;
   tags?: Array<string> | undefined;
+  createdBy?: string | undefined;
+  maintainerIds?: Array<string> | undefined;
   includeMarketplaceFlags?: boolean | undefined;
   teamId?: string | undefined;
   slug?: string | undefined;
@@ -106,6 +116,8 @@ export const ListFlagsV2Request$outboundSchema: z.ZodType<
   cursor: z.string().optional(),
   search: z.string().optional(),
   tags: z.array(z.string()).optional(),
+  createdBy: z.string().optional(),
+  maintainerIds: z.array(z.string()).optional(),
   includeMarketplaceFlags: z.boolean().optional(),
   teamId: z.string().optional(),
   slug: z.string().optional(),

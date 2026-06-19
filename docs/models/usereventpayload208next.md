@@ -3,15 +3,15 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPayload208Next } from "@vercel/sdk/models/usereventpayload172next.js";
+import { UserEventPayload208Next } from "@vercel/sdk/models/removedusers.js";
 
 let value: UserEventPayload208Next = {
-  issuerMode: "team",
+  functionZeroConfigFailover: true,
 };
 ```
 
 ## Fields
 
-| Field                                                      | Type                                                       | Required                                                   | Description                                                |
-| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
-| `issuerMode`                                               | [models.PayloadIssuerMode](../models/payloadissuermode.md) | :heavy_check_mark:                                         | N/A                                                        |
+| Field                        | Type                         | Required                     | Description                  |
+| ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- |
+| `functionZeroConfigFailover` | *boolean*                    | :heavy_check_mark:           | N/A                          |

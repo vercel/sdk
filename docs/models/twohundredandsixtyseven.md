@@ -5,11 +5,11 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndSixtySeven } from "@vercel/sdk/models/reasoncode.js";
+import { TwoHundredAndSixtySeven } from "@vercel/sdk/models/consent.js";
 
 let value: TwoHundredAndSixtySeven = {
-  instances: 8665.69,
-  url: "https://immense-gymnast.info/",
+  alias: "<value>",
+  sandboxName: "<value>",
 };
 ```
 
@@ -17,5 +17,7 @@ let value: TwoHundredAndSixtySeven = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `instances`        | *number*           | :heavy_check_mark: | N/A                |
-| `url`              | *string*           | :heavy_check_mark: | N/A                |
+| `alias`            | *string*           | :heavy_check_mark: | N/A                |
+| `sandboxName`      | *string*           | :heavy_check_mark: | N/A                |
+| `sandboxId`        | *string*           | :heavy_minus_sign: | N/A                |
+| `projectId`        | *string*           | :heavy_minus_sign: | N/A                |

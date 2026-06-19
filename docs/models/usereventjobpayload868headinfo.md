@@ -5,7 +5,7 @@ Vercel
 ## Example Usage
 
 ```typescript
-import { UserEventJobPayload868HeadInfo } from "@vercel/sdk/models/usereventpayload54action.js";
+import { UserEventJobPayload868HeadInfo } from "@vercel/sdk/models/fiftysix.js";
 
 let value: UserEventJobPayload868HeadInfo = {
   org: "<value>",

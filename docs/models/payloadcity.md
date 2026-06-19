@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PayloadCity } from "@vercel/sdk/models/reasoncode.js";
+import { PayloadCity } from "@vercel/sdk/models/consent.js";
 
 let value: PayloadCity = {
   names: {
@@ -16,4 +16,4 @@ let value: PayloadCity = {
 
 | Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
 | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| `names`                                                                  | [models.UserEventPayload275Names](../models/usereventpayload275names.md) | :heavy_check_mark:                                                       | N/A                                                                      |
+| `names`                                                                  | [models.UserEventPayload276Names](../models/usereventpayload276names.md) | :heavy_check_mark:                                                       | N/A                                                                      |

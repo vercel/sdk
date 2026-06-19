@@ -8,6 +8,7 @@ import { domainsRegistrarGetBulkAvailability } from "../funcs/domainsRegistrarGe
 import { domainsRegistrarGetContactInfoSchema } from "../funcs/domainsRegistrarGetContactInfoSchema.js";
 import { domainsRegistrarGetDomainAuthCode } from "../funcs/domainsRegistrarGetDomainAuthCode.js";
 import { domainsRegistrarGetDomainAvailability } from "../funcs/domainsRegistrarGetDomainAvailability.js";
+import { domainsRegistrarGetDomainContactVerification } from "../funcs/domainsRegistrarGetDomainContactVerification.js";
 import { domainsRegistrarGetDomainPrice } from "../funcs/domainsRegistrarGetDomainPrice.js";
 import { domainsRegistrarGetDomainTransferIn } from "../funcs/domainsRegistrarGetDomainTransferIn.js";
 import { domainsRegistrarGetOrder } from "../funcs/domainsRegistrarGetOrder.js";
@@ -43,6 +44,10 @@ import {
   GetDomainAvailabilityRequest,
   GetDomainAvailabilityResponseBody,
 } from "../models/getdomainavailabilityop.js";
+import {
+  GetDomainContactVerificationRequest,
+  GetDomainContactVerificationResponseBody,
+} from "../models/getdomaincontactverificationop.js";
 import {
   GetDomainPriceRequest,
   GetDomainPriceResponseBody,
@@ -303,6 +308,23 @@ export class DomainsRegistrar extends ClientSDK {
     options?: RequestOptions,
   ): Promise<void> {
     return unwrapAsync(domainsRegistrarUpdateDomainNameservers(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Get contact verification status for a domain
+   *
+   * @remarks
+   * Get the registrant contact verification status for a domain. Use this after purchasing a domain to determine whether the contact has been verified. Note that a bought_too_recently error will be returned if the domain was bought less than 30 minutes before the request.
+   */
+  async getDomainContactVerification(
+    request: GetDomainContactVerificationRequest,
+    options?: RequestOptions,
+  ): Promise<GetDomainContactVerificationResponseBody> {
+    return unwrapAsync(domainsRegistrarGetDomainContactVerification(
       this,
       request,
       options,

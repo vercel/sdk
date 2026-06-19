@@ -5,16 +5,16 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndFive } from "@vercel/sdk/models/usereventpayloaddeploymenttype.js";
+import { TwoHundredAndFive } from "@vercel/sdk/models/removedusers.js";
 
 let value: TwoHundredAndFive = {
   projectId: "<id>",
   projectName: "<value>",
   previous: {
-    functionDefaultMemoryType: "<value>",
+    functionDefaultTimeout: 2692.99,
   },
   next: {
-    functionDefaultMemoryType: "<value>",
+    functionDefaultTimeout: 6948.54,
   },
 };
 ```

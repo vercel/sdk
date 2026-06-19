@@ -18,6 +18,7 @@ import { edgeConfigGetEdgeConfigToken } from "../funcs/edgeConfigGetEdgeConfigTo
 import { edgeConfigGetEdgeConfigTokens } from "../funcs/edgeConfigGetEdgeConfigTokens.js";
 import { edgeConfigPatchEdgeConfigItems } from "../funcs/edgeConfigPatchEdgeConfigItems.js";
 import { edgeConfigPatchEdgeConfigSchema } from "../funcs/edgeConfigPatchEdgeConfigSchema.js";
+import { edgeConfigRestoreEdgeConfigBackup } from "../funcs/edgeConfigRestoreEdgeConfigBackup.js";
 import { edgeConfigUpdateEdgeConfig } from "../funcs/edgeConfigUpdateEdgeConfig.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import {
@@ -65,6 +66,10 @@ import {
   PatchEdgeConfigSchemaRequest,
   PatchEdgeConfigSchemaResponseBody,
 } from "../models/patchedgeconfigschemaop.js";
+import {
+  RestoreEdgeConfigBackupRequest,
+  RestoreEdgeConfigBackupResponseBody,
+} from "../models/restoreedgeconfigbackupop.js";
 import {
   UpdateEdgeConfigRequest,
   UpdateEdgeConfigResponseBody,
@@ -338,6 +343,23 @@ export class EdgeConfig extends ClientSDK {
     options?: RequestOptions,
   ): Promise<GetEdgeConfigBackupResponseBody> {
     return unwrapAsync(edgeConfigGetEdgeConfigBackup(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Restore Edge Config backup
+   *
+   * @remarks
+   * Restores an Edge Config backup.
+   */
+  async restoreEdgeConfigBackup(
+    request: RestoreEdgeConfigBackupRequest,
+    options?: RequestOptions,
+  ): Promise<RestoreEdgeConfigBackupResponseBody> {
+    return unwrapAsync(edgeConfigRestoreEdgeConfigBackup(
       this,
       request,
       options,

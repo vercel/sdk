@@ -5,24 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndNinety } from "@vercel/sdk/models/reasoncode.js";
+import { TwoHundredAndNinety } from "@vercel/sdk/models/consent.js";
 
 let value: TwoHundredAndNinety = {
-  id: "<id>",
-  type: "edge-config",
-  locked: true,
+  store: {
+    name: "<value>",
+    id: "<id>",
+  },
 };
 ```
 
 ## Fields
 
-| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
-| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `id`                                                                   | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
-| `name`                                                                 | *string*                                                               | :heavy_minus_sign:                                                     | N/A                                                                    |
-| `computeUnitsMax`                                                      | *number*                                                               | :heavy_minus_sign:                                                     | N/A                                                                    |
-| `computeUnitsMin`                                                      | *number*                                                               | :heavy_minus_sign:                                                     | N/A                                                                    |
-| `suspendTimeoutSeconds`                                                | *number*                                                               | :heavy_minus_sign:                                                     | N/A                                                                    |
-| `type`                                                                 | [models.UserEventPayload290Type](../models/usereventpayload290type.md) | :heavy_check_mark:                                                     | N/A                                                                    |
-| `access`                                                               | [models.PayloadAccess](../models/payloadaccess.md)                     | :heavy_minus_sign:                                                     | N/A                                                                    |
-| `locked`                                                               | *boolean*                                                              | :heavy_check_mark:                                                     | N/A                                                                    |
+| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `store`                                                                  | [models.UserEventPayload290Store](../models/usereventpayload290store.md) | :heavy_check_mark:                                                       | N/A                                                                      |
+| `ownerId`                                                                | *string*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |

@@ -5,20 +5,22 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndSix } from "@vercel/sdk/models/threehundredandone.js";
+import { ThreeHundredAndSix } from "@vercel/sdk/models/threehundredandfour.js";
 
 let value: ThreeHundredAndSix = {
-  entitlement: "<value>",
-  user: {
-    id: "<id>",
-    username: "Ines_Schowalter27",
-  },
+  teamName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `entitlement`                                                    | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
-| `user`                                                           | [models.UserEventPayloadUser](../models/usereventpayloaduser.md) | :heavy_check_mark:                                               | N/A                                                              |
+| Field               | Type                | Required            | Description         |
+| ------------------- | ------------------- | ------------------- | ------------------- |
+| `teamName`          | *string*            | :heavy_check_mark:  | N/A                 |
+| `username`          | *string*            | :heavy_minus_sign:  | N/A                 |
+| `gitUsername`       | *string*            | :heavy_minus_sign:  | N/A                 |
+| `githubUsername`    | *string*            | :heavy_minus_sign:  | N/A                 |
+| `gitlabUsername`    | *string*            | :heavy_minus_sign:  | N/A                 |
+| `bitbucketUsername` | *string*            | :heavy_minus_sign:  | N/A                 |
+| `updatedUid`        | *string*            | :heavy_minus_sign:  | N/A                 |
+| `teamId`            | *string*            | :heavy_minus_sign:  | N/A                 |

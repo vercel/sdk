@@ -5,22 +5,22 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndTwelve } from "@vercel/sdk/models/threehundredandone.js";
+import { ThreeHundredAndTwelve } from "@vercel/sdk/models/threehundredandfour.js";
 
 let value: ThreeHundredAndTwelve = {
-  publicId: "<id>",
-  role: "<value>",
-  maxUses: 3731.75,
-  expiresAt: "1758652084636",
+  requestedTeamName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `publicId`         | *string*           | :heavy_check_mark: | N/A                |
-| `role`             | *string*           | :heavy_check_mark: | N/A                |
-| `maxUses`          | *number*           | :heavy_check_mark: | N/A                |
-| `expiresAt`        | *string*           | :heavy_check_mark: | N/A                |
-| `name`             | *string*           | :heavy_minus_sign: | N/A                |
+| Field                                | Type                                 | Required                             | Description                          |
+| ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
+| `requestedTeamName`                  | *string*                             | :heavy_check_mark:                   | N/A                                  |
+| `requestedTeamSlug`                  | *string*                             | :heavy_minus_sign:                   | N/A                                  |
+| `requestedUserName`                  | *string*                             | :heavy_minus_sign:                   | N/A                                  |
+| `gitUsername`                        | *string*                             | :heavy_minus_sign:                   | N/A                                  |
+| `githubUsername`                     | *string*                             | :heavy_minus_sign:                   | N/A                                  |
+| `gitlabUsername`                     | *string*                             | :heavy_minus_sign:                   | N/A                                  |
+| `bitbucketUsername`                  | *string*                             | :heavy_minus_sign:                   | N/A                                  |
+| `source`                             | [models.Source](../models/source.md) | :heavy_minus_sign:                   | N/A                                  |

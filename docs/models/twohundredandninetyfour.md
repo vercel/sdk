@@ -5,14 +5,21 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndNinetyFour } from "@vercel/sdk/models/reasoncode.js";
+import { TwoHundredAndNinetyFour } from "@vercel/sdk/models/consent.js";
 
-let value: TwoHundredAndNinetyFour = {};
+let value: TwoHundredAndNinetyFour = {
+  trialCreditsIssuedAt: 3455.89,
+  expiresAt: "1758764787407",
+  amount: "732.09",
+  currency: "Lari",
+};
 ```
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `previous`                                                                     | [models.UserEventPayload294Previous](../models/usereventpayload294previous.md) | :heavy_minus_sign:                                                             | N/A                                                                            |
-| `next`                                                                         | [models.UserEventPayload294Next](../models/usereventpayload294next.md)         | :heavy_minus_sign:                                                             | N/A                                                                            |
+| Field                  | Type                   | Required               | Description            |
+| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
+| `trialCreditsIssuedAt` | *number*               | :heavy_check_mark:     | N/A                    |
+| `expiresAt`            | *string*               | :heavy_check_mark:     | N/A                    |
+| `amount`               | *string*               | :heavy_check_mark:     | N/A                    |
+| `currency`             | *string*               | :heavy_check_mark:     | N/A                    |

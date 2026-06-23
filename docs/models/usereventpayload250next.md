@@ -5,13 +5,10 @@
 ```typescript
 import { UserEventPayload250Next } from "@vercel/sdk/models/consent.js";
 
-let value: UserEventPayload250Next = {
-  issuerMode: "team",
-};
+let value: UserEventPayload250Next = {};
 ```
 
 ## Fields
 
-| Field                                                      | Type                                                       | Required                                                   | Description                                                |
-| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
-| `issuerMode`                                               | [models.PayloadIssuerMode](../models/payloadissuermode.md) | :heavy_check_mark:                                         | N/A                                                        |
+| Field       | Type        | Required    | Description |
+| ----------- | ----------- | ----------- | ----------- |

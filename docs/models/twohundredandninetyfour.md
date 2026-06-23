@@ -8,18 +8,17 @@ The payload of the event, if requested.
 import { TwoHundredAndNinetyFour } from "@vercel/sdk/models/consent.js";
 
 let value: TwoHundredAndNinetyFour = {
-  trialCreditsIssuedAt: 3455.89,
-  expiresAt: "1758764787407",
-  amount: "732.09",
-  currency: "Lari",
+  next: {
+    enabled: true,
+    scope: "public",
+    includeDrafts: false,
+  },
 };
 ```
 
 ## Fields
 
-| Field                  | Type                   | Required               | Description            |
-| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
-| `trialCreditsIssuedAt` | *number*               | :heavy_check_mark:     | N/A                    |
-| `expiresAt`            | *string*               | :heavy_check_mark:     | N/A                    |
-| `amount`               | *string*               | :heavy_check_mark:     | N/A                    |
-| `currency`             | *string*               | :heavy_check_mark:     | N/A                    |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `previous`                                                                     | [models.UserEventPayload294Previous](../models/usereventpayload294previous.md) | :heavy_minus_sign:                                                             | Automatic code review settings                                                 |
+| `next`                                                                         | [models.UserEventPayload294Next](../models/usereventpayload294next.md)         | :heavy_check_mark:                                                             | Automatic code review settings                                                 |

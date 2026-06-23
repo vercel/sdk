@@ -1,0 +1,20 @@
+# CreateDeploymentHasDeploymentsResponse2
+
+## Example Usage
+
+```typescript
+import { CreateDeploymentHasDeploymentsResponse2 } from "@vercel/sdk/models/includefiles.js";
+
+let value: CreateDeploymentHasDeploymentsResponse2 = {
+  type: "cookie",
+  key: "<key>",
+};
+```
+
+## Fields
+
+| Field                                                                                                                                                                                    | Type                                                                                                                                                                                     | Required                                                                                                                                                                                 | Description                                                                                                                                                                              |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `type`                                                                                                                                                                                   | [models.CreateDeploymentHasDeploymentsResponse200ApplicationJSONResponseBodyServicesType](../models/createdeploymenthasdeploymentsresponse200applicationjsonresponsebodyservicestype.md) | :heavy_check_mark:                                                                                                                                                                       | N/A                                                                                                                                                                                      |
+| `key`                                                                                                                                                                                    | *string*                                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                                       | N/A                                                                                                                                                                                      |
+| `value`                                                                                                                                                                                  | *models.CreateDeploymentHasDeploymentsResponse200ApplicationJSONResponseBodyValue*                                                                                                       | :heavy_minus_sign:                                                                                                                                                                       | N/A                                                                                                                                                                                      |

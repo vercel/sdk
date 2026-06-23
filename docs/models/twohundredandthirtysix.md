@@ -8,11 +8,8 @@ The payload of the event, if requested.
 import { TwoHundredAndThirtySix } from "@vercel/sdk/models/removedusers.js";
 
 let value: TwoHundredAndThirtySix = {
-  projectId: "<id>",
   projectName: "<value>",
-  originAccountName: "<value>",
   destinationAccountName: "<value>",
-  destinationAccountId: "<id>",
 };
 ```
 
@@ -20,9 +17,7 @@ let value: TwoHundredAndThirtySix = {
 
 | Field                    | Type                     | Required                 | Description              |
 | ------------------------ | ------------------------ | ------------------------ | ------------------------ |
-| `projectId`              | *string*                 | :heavy_check_mark:       | N/A                      |
+| `previousProjectId`      | *string*                 | :heavy_minus_sign:       | N/A                      |
 | `projectName`            | *string*                 | :heavy_check_mark:       | N/A                      |
-| `originAccountName`      | *string*                 | :heavy_check_mark:       | N/A                      |
 | `destinationAccountName` | *string*                 | :heavy_check_mark:       | N/A                      |
-| `destinationAccountId`   | *string*                 | :heavy_check_mark:       | N/A                      |
 | `transferId`             | *string*                 | :heavy_minus_sign:       | N/A                      |

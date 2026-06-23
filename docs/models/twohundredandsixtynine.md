@@ -8,8 +8,8 @@ The payload of the event, if requested.
 import { TwoHundredAndSixtyNine } from "@vercel/sdk/models/consent.js";
 
 let value: TwoHundredAndSixtyNine = {
-  email: "Waylon.Kemmer@yahoo.com",
-  verified: false,
+  instances: 6406.53,
+  url: "https://impolite-hose.com",
 };
 ```
 
@@ -17,5 +17,5 @@ let value: TwoHundredAndSixtyNine = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `email`            | *string*           | :heavy_check_mark: | N/A                |
-| `verified`         | *boolean*          | :heavy_check_mark: | N/A                |
+| `instances`        | *number*           | :heavy_check_mark: | N/A                |
+| `url`              | *string*           | :heavy_check_mark: | N/A                |

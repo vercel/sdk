@@ -5,7 +5,7 @@ The NSNB decision code for the seat block. TODO: We should consolidate block typ
 ## Example Usage
 
 ```typescript
-import { CancelDeploymentBlockCode } from "@vercel/sdk/models/canceldeploymentop.js";
+import { CancelDeploymentBlockCode } from "@vercel/sdk/models/canceldeploymentresponsebody.js";
 
 let value: CancelDeploymentBlockCode = "TEAM_ACCESS_REQUIRED";
 ```

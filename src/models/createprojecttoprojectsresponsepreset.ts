@@ -1045,7 +1045,7 @@ export type CreateProjectProjectsResponseFramework = ClosedEnum<
   typeof CreateProjectProjectsResponseFramework
 >;
 
-export type Services = {
+export type CreateProjectServices = {
   /**
    * Service name from the deployment (Service.name).
    */
@@ -3327,8 +3327,8 @@ export const CreateProjectProjectsResponseFramework$inboundSchema:
   );
 
 /** @internal */
-export const Services$inboundSchema: z.ZodType<
-  Services,
+export const CreateProjectServices$inboundSchema: z.ZodType<
+  CreateProjectServices,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -3340,13 +3340,13 @@ export const Services$inboundSchema: z.ZodType<
   runtime: types.optional(types.string()),
 });
 
-export function servicesFromJSON(
+export function createProjectServicesFromJSON(
   jsonString: string,
-): SafeParseResult<Services, SDKValidationError> {
+): SafeParseResult<CreateProjectServices, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Services$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Services' from JSON`,
+    (x) => CreateProjectServices$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProjectServices' from JSON`,
   );
 }
 

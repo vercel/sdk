@@ -1,20 +1,32 @@
 # Services
 
-## Example Usage
+
+## Supported Types
+
+### `models.Services1`
 
 ```typescript
-import { Services } from "@vercel/sdk/models/createprojecttoprojectsresponsepreset.js";
-
-let value: Services = {
-  serviceName: "<value>",
+const value: models.Services1 = {
+  schema: "experimentalServices",
+  name: "<value>",
+  type: "cron",
+  workspace: "<value>",
+  builder: {
+    use: "<value>",
+  },
 };
 ```
 
-## Fields
+### `models.Services2`
 
-| Field                                                                                                          | Type                                                                                                           | Required                                                                                                       | Description                                                                                                    |
-| -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| `serviceName`                                                                                                  | *string*                                                                                                       | :heavy_check_mark:                                                                                             | Service name from the deployment (Service.name).                                                               |
-| `serviceType`                                                                                                  | [models.CreateProjectServiceType](../models/createprojectservicetype.md)                                       | :heavy_minus_sign:                                                                                             | Service kind (Service.type). Omitted for schemas that do not define one.                                       |
-| `framework`                                                                                                    | [models.CreateProjectProjectsResponseFramework](../models/createprojectprojectsresponseframework.md)           | :heavy_minus_sign:                                                                                             | Framework slug, when the service has one (omitted otherwise).                                                  |
-| `runtime`                                                                                                      | *string*                                                                                                       | :heavy_minus_sign:                                                                                             | Generic runtime, e.g. 'node' \| 'python' \| 'go' \| 'ruby' \| 'rust' (Service.runtime). Omitted for static builds. |
+```typescript
+const value: models.Services2 = {
+  schema: "experimentalServicesV2",
+  name: "<value>",
+  root: "<value>",
+  builder: {
+    use: "<value>",
+  },
+};
+```
+

@@ -931,10 +931,28 @@ export type GetMicrofrontendsInGroupMicrofrontendsEnv = ClosedEnum<
   typeof GetMicrofrontendsInGroupMicrofrontendsEnv
 >;
 
+/**
+ * Which tracing destination this rule applies to. `internal` is the hidden Vercel production-tracing drain (internal delivery); `external` is any customer-configured drain. Derived from the owning drain's delivery type when project tracing is computed; absent on configs persisted before this field existed.
+ */
+export const GetMicrofrontendsInGroupDestination = {
+  External: "external",
+  Internal: "internal",
+} as const;
+/**
+ * Which tracing destination this rule applies to. `internal` is the hidden Vercel production-tracing drain (internal delivery); `external` is any customer-configured drain. Derived from the owning drain's delivery type when project tracing is computed; absent on configs persisted before this field existed.
+ */
+export type GetMicrofrontendsInGroupDestination = ClosedEnum<
+  typeof GetMicrofrontendsInGroupDestination
+>;
+
 export type GetMicrofrontendsInGroupSamplingRules = {
   rate: number;
   env?: GetMicrofrontendsInGroupMicrofrontendsEnv | undefined;
   requestPath?: string | undefined;
+  /**
+   * Which tracing destination this rule applies to. `internal` is the hidden Vercel production-tracing drain (internal delivery); `external` is any customer-configured drain. Derived from the owning drain's delivery type when project tracing is computed; absent on configs persisted before this field existed.
+   */
+  destination?: GetMicrofrontendsInGroupDestination | undefined;
 };
 
 export type GetMicrofrontendsInGroupTracing = {
@@ -3269,6 +3287,11 @@ export const GetMicrofrontendsInGroupMicrofrontendsEnv$inboundSchema:
     .nativeEnum(GetMicrofrontendsInGroupMicrofrontendsEnv);
 
 /** @internal */
+export const GetMicrofrontendsInGroupDestination$inboundSchema: z.ZodNativeEnum<
+  typeof GetMicrofrontendsInGroupDestination
+> = z.nativeEnum(GetMicrofrontendsInGroupDestination);
+
+/** @internal */
 export const GetMicrofrontendsInGroupSamplingRules$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupSamplingRules,
   z.ZodTypeDef,
@@ -3277,6 +3300,9 @@ export const GetMicrofrontendsInGroupSamplingRules$inboundSchema: z.ZodType<
   rate: types.number(),
   env: types.optional(GetMicrofrontendsInGroupMicrofrontendsEnv$inboundSchema),
   requestPath: types.optional(types.string()),
+  destination: types.optional(
+    GetMicrofrontendsInGroupDestination$inboundSchema,
+  ),
 });
 
 export function getMicrofrontendsInGroupSamplingRulesFromJSON(

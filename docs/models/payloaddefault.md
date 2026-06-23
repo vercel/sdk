@@ -5,7 +5,7 @@ Default build machine type for new deployments. This must be used in combination
 ## Example Usage
 
 ```typescript
-import { PayloadDefault } from "@vercel/sdk/models/usereventpayload138type.js";
+import { PayloadDefault } from "@vercel/sdk/models/teams.js";
 
 let value: PayloadDefault = "standard";
 ```

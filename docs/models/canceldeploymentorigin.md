@@ -5,7 +5,7 @@ Reference back to the entity on the platform that initiated the deployment.
 ## Example Usage
 
 ```typescript
-import { CancelDeploymentOrigin } from "@vercel/sdk/models/canceldeploymentop.js";
+import { CancelDeploymentOrigin } from "@vercel/sdk/models/canceldeploymentservicesdeploymentsbuilder.js";
 
 let value: CancelDeploymentOrigin = {
   type: "id",

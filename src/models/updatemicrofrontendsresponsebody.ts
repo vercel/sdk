@@ -740,10 +740,28 @@ export type UpdateMicrofrontendsProjectsEnv = ClosedEnum<
   typeof UpdateMicrofrontendsProjectsEnv
 >;
 
+/**
+ * Which tracing destination this rule applies to. `internal` is the hidden Vercel production-tracing drain (internal delivery); `external` is any customer-configured drain. Derived from the owning drain's delivery type when project tracing is computed; absent on configs persisted before this field existed.
+ */
+export const UpdateMicrofrontendsDestination = {
+  External: "external",
+  Internal: "internal",
+} as const;
+/**
+ * Which tracing destination this rule applies to. `internal` is the hidden Vercel production-tracing drain (internal delivery); `external` is any customer-configured drain. Derived from the owning drain's delivery type when project tracing is computed; absent on configs persisted before this field existed.
+ */
+export type UpdateMicrofrontendsDestination = ClosedEnum<
+  typeof UpdateMicrofrontendsDestination
+>;
+
 export type UpdateMicrofrontendsSamplingRules = {
   rate: number;
   env?: UpdateMicrofrontendsProjectsEnv | undefined;
   requestPath?: string | undefined;
+  /**
+   * Which tracing destination this rule applies to. `internal` is the hidden Vercel production-tracing drain (internal delivery); `external` is any customer-configured drain. Derived from the owning drain's delivery type when project tracing is computed; absent on configs persisted before this field existed.
+   */
+  destination?: UpdateMicrofrontendsDestination | undefined;
 };
 
 export type UpdateMicrofrontendsTracing = {
@@ -2556,6 +2574,11 @@ export const UpdateMicrofrontendsProjectsEnv$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(UpdateMicrofrontendsProjectsEnv);
 
 /** @internal */
+export const UpdateMicrofrontendsDestination$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateMicrofrontendsDestination
+> = z.nativeEnum(UpdateMicrofrontendsDestination);
+
+/** @internal */
 export const UpdateMicrofrontendsSamplingRules$inboundSchema: z.ZodType<
   UpdateMicrofrontendsSamplingRules,
   z.ZodTypeDef,
@@ -2564,6 +2587,7 @@ export const UpdateMicrofrontendsSamplingRules$inboundSchema: z.ZodType<
   rate: types.number(),
   env: types.optional(UpdateMicrofrontendsProjectsEnv$inboundSchema),
   requestPath: types.optional(types.string()),
+  destination: types.optional(UpdateMicrofrontendsDestination$inboundSchema),
 });
 
 export function updateMicrofrontendsSamplingRulesFromJSON(

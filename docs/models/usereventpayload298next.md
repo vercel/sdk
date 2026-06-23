@@ -1,19 +1,15 @@
 # UserEventPayload298Next
 
-
-## Supported Types
-
-### `models.Next1`
+## Example Usage
 
 ```typescript
-const value: models.Next1 = {
-  accessGroupId: "<id>",
-};
+import { UserEventPayload298Next } from "@vercel/sdk/models/consent.js";
+
+let value: UserEventPayload298Next = "standard";
 ```
 
-### `models.Next2`
+## Values
 
 ```typescript
-const value: models.Next2 = "VIEWER_FOR_PLUS";
+"elastic" | "enhanced" | "standard" | "turbo"
 ```
-

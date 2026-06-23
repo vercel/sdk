@@ -1,20 +1,32 @@
 # ResponseBodyServices
 
-## Example Usage
+
+## Supported Types
+
+### `models.GetDeploymentServices1`
 
 ```typescript
-import { ResponseBodyServices } from "@vercel/sdk/models/getprojectsresponsebodyprojectsgitprovideroptions.js";
-
-let value: ResponseBodyServices = {
-  serviceName: "<value>",
+const value: models.GetDeploymentServices1 = {
+  schema: "experimentalServices",
+  name: "<value>",
+  type: "worker",
+  workspace: "<value>",
+  builder: {
+    use: "<value>",
+  },
 };
 ```
 
-## Fields
+### `models.GetDeploymentServices2`
 
-| Field                                                                                                                    | Type                                                                                                                     | Required                                                                                                                 | Description                                                                                                              |
-| ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
-| `serviceName`                                                                                                            | *string*                                                                                                                 | :heavy_check_mark:                                                                                                       | Service name from the deployment (Service.name).                                                                         |
-| `serviceType`                                                                                                            | [models.ResponseBodyServiceType](../models/responsebodyservicetype.md)                                                   | :heavy_minus_sign:                                                                                                       | Service kind (Service.type). Omitted for schemas that do not define one.                                                 |
-| `framework`                                                                                                              | [models.GetProjectsResponseBodyProjectsResponseFramework](../models/getprojectsresponsebodyprojectsresponseframework.md) | :heavy_minus_sign:                                                                                                       | Framework slug, when the service has one (omitted otherwise).                                                            |
-| `runtime`                                                                                                                | *string*                                                                                                                 | :heavy_minus_sign:                                                                                                       | Generic runtime, e.g. 'node' \| 'python' \| 'go' \| 'ruby' \| 'rust' (Service.runtime). Omitted for static builds.       |
+```typescript
+const value: models.GetDeploymentServices2 = {
+  schema: "experimentalServicesV2",
+  name: "<value>",
+  root: "<value>",
+  builder: {
+    use: "<value>",
+  },
+};
+```
+

@@ -1,0 +1,43 @@
+# Services2
+
+Services detected during build from vercel.json experimentalServices or auto-detected from project structure. Used to inject service URLs as environment variables at runtime.
+
+## Example Usage
+
+```typescript
+import { Services2 } from "@vercel/sdk/models/includefiles.js";
+
+let value: Services2 = {
+  schema: "experimentalServicesV2",
+  name: "<value>",
+  root: "<value>",
+  builder: {
+    use: "<value>",
+  },
+};
+```
+
+## Fields
+
+| Field                                                                                    | Type                                                                                     | Required                                                                                 | Description                                                                              |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `schema`                                                                                 | *"experimentalServicesV2"*                                                               | :heavy_check_mark:                                                                       | N/A                                                                                      |
+| `name`                                                                                   | *string*                                                                                 | :heavy_check_mark:                                                                       | N/A                                                                                      |
+| `root`                                                                                   | *string*                                                                                 | :heavy_check_mark:                                                                       | Path to the service root, relative to the project root.                                  |
+| `framework`                                                                              | *string*                                                                                 | :heavy_minus_sign:                                                                       | N/A                                                                                      |
+| `runtime`                                                                                | *string*                                                                                 | :heavy_minus_sign:                                                                       | N/A                                                                                      |
+| `entrypoint`                                                                             | *string*                                                                                 | :heavy_minus_sign:                                                                       | Resolved entrypoint, relative to the service root.                                       |
+| `builder`                                                                                | [models.ServicesBuilder](../models/servicesbuilder.md)                                   | :heavy_check_mark:                                                                       | Builder selected by the resolver.                                                        |
+| `installCommand`                                                                         | *string*                                                                                 | :heavy_minus_sign:                                                                       | N/A                                                                                      |
+| `buildCommand`                                                                           | *string*                                                                                 | :heavy_minus_sign:                                                                       | N/A                                                                                      |
+| `devCommand`                                                                             | *string*                                                                                 | :heavy_minus_sign:                                                                       | N/A                                                                                      |
+| `ignoreCommand`                                                                          | *string*                                                                                 | :heavy_minus_sign:                                                                       | N/A                                                                                      |
+| `outputDirectory`                                                                        | *string*                                                                                 | :heavy_minus_sign:                                                                       | N/A                                                                                      |
+| `bindings`                                                                               | [models.Bindings](../models/bindings.md)[]                                               | :heavy_minus_sign:                                                                       | Caller-side bindings to other services.                                                  |
+| `functions`                                                                              | Record<string, [models.ServicesFunctions](../models/servicesfunctions.md)>               | :heavy_minus_sign:                                                                       | Function configuration scoped to this service.                                           |
+| `headers`                                                                                | [models.CreateDeploymentServicesHeaders](../models/createdeploymentservicesheaders.md)[] | :heavy_minus_sign:                                                                       | N/A                                                                                      |
+| `redirects`                                                                              | [models.ServicesRedirects](../models/servicesredirects.md)[]                             | :heavy_minus_sign:                                                                       | N/A                                                                                      |
+| `rewrites`                                                                               | [models.Rewrites](../models/rewrites.md)[]                                               | :heavy_minus_sign:                                                                       | N/A                                                                                      |
+| `routes`                                                                                 | *models.ServicesRoutes*[]                                                                | :heavy_minus_sign:                                                                       | N/A                                                                                      |
+| `cleanUrls`                                                                              | *boolean*                                                                                | :heavy_minus_sign:                                                                       | N/A                                                                                      |
+| `trailingSlash`                                                                          | *boolean*                                                                                | :heavy_minus_sign:                                                                       | N/A                                                                                      |

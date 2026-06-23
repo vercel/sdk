@@ -275,7 +275,7 @@ export type CreateConnectorRequestBody = {
    */
   events?: Array<string> | undefined;
   /**
-   * Branding icon. Either a SHA-1 hash already uploaded to the Vercel avatar service or an https:// URL that will be downloaded and rehosted.
+   * Branding icon SHA-1 hash already uploaded to the Vercel avatar service.
    */
   icon?: string | undefined;
   /**

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CancelDeploymentFunctionMemoryType } from "@vercel/sdk/models/canceldeploymentop.js";
+import { CancelDeploymentFunctionMemoryType } from "@vercel/sdk/models/canceldeploymentresponsebody.js";
 
 let value: CancelDeploymentFunctionMemoryType = "standard_legacy";
 ```

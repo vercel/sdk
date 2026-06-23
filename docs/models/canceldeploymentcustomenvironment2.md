@@ -5,7 +5,7 @@ If the deployment was created using a Custom Environment, then this property con
 ## Example Usage
 
 ```typescript
-import { CancelDeploymentCustomEnvironment2 } from "@vercel/sdk/models/canceldeploymentop.js";
+import { CancelDeploymentCustomEnvironment2 } from "@vercel/sdk/models/canceldeploymentservicesdeploymentsbuilder.js";
 
 let value: CancelDeploymentCustomEnvironment2 = {
   id: "<id>",

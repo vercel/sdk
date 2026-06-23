@@ -5,7 +5,7 @@ Flags defined in the Build Output API, used by this deployment. Primarily used b
 ## Example Usage
 
 ```typescript
-import { CancelDeploymentFlags2 } from "@vercel/sdk/models/canceldeploymentop.js";
+import { CancelDeploymentFlags2 } from "@vercel/sdk/models/flagsdefinitions.js";
 
 let value: CancelDeploymentFlags2 = {};
 ```

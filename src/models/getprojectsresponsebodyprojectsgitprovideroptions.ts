@@ -803,7 +803,7 @@ export type GetProjectsResponseBodyProjectsResponseFramework = ClosedEnum<
   typeof GetProjectsResponseBodyProjectsResponseFramework
 >;
 
-export type ResponseBodyServices = {
+export type GetProjectsResponseBodyServices = {
   /**
    * Service name from the deployment (Service.name).
    */
@@ -3203,8 +3203,8 @@ export const GetProjectsResponseBodyProjectsResponseFramework$inboundSchema:
     .nativeEnum(GetProjectsResponseBodyProjectsResponseFramework);
 
 /** @internal */
-export const ResponseBodyServices$inboundSchema: z.ZodType<
-  ResponseBodyServices,
+export const GetProjectsResponseBodyServices$inboundSchema: z.ZodType<
+  GetProjectsResponseBodyServices,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -3216,13 +3216,13 @@ export const ResponseBodyServices$inboundSchema: z.ZodType<
   runtime: types.optional(types.string()),
 });
 
-export function responseBodyServicesFromJSON(
+export function getProjectsResponseBodyServicesFromJSON(
   jsonString: string,
-): SafeParseResult<ResponseBodyServices, SDKValidationError> {
+): SafeParseResult<GetProjectsResponseBodyServices, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ResponseBodyServices$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ResponseBodyServices' from JSON`,
+    (x) => GetProjectsResponseBodyServices$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectsResponseBodyServices' from JSON`,
   );
 }
 

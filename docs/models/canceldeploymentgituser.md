@@ -5,7 +5,7 @@ Git provider user associated with the commit author email (only set if resolved)
 ## Example Usage
 
 ```typescript
-import { CancelDeploymentGitUser } from "@vercel/sdk/models/canceldeploymentop.js";
+import { CancelDeploymentGitUser } from "@vercel/sdk/models/canceldeploymentresponsebody.js";
 
 let value: CancelDeploymentGitUser = {
   id: "<id>",

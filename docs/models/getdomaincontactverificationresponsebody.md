@@ -1,25 +1,25 @@
 # GetDomainContactVerificationResponseBody
 
-Success
+The registrant contact has been verified.
 
 
 ## Supported Types
 
-### `models.GetDomainContactVerificationResponseBody1`
+### `models.ContactVerified`
 
 ```typescript
-const value: models.GetDomainContactVerificationResponseBody1 = {
+const value: models.ContactVerified = {
   verified: true,
 };
 ```
 
-### `models.GetDomainContactVerificationResponseBody2`
+### `models.ContactPendingVerification`
 
 ```typescript
-const value: models.GetDomainContactVerificationResponseBody2 = {
+const value: models.ContactPendingVerification = {
   verified: false,
   verifyBy: "<value>",
-  email: "Xzavier_Lemke57@yahoo.com",
+  email: "Linnie_Hessel36@yahoo.com",
 };
 ```
 

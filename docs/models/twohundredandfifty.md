@@ -11,9 +11,7 @@ let value: TwoHundredAndFifty = {
   projectId: "<id>",
   projectName: "<value>",
   previous: {},
-  next: {
-    issuerMode: "team",
-  },
+  next: {},
 };
 ```
 

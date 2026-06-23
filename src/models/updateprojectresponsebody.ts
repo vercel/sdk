@@ -30,12 +30,12 @@ import {
   UpdateProjectLastRollbackTarget$inboundSchema,
   UpdateProjectPermissions,
   UpdateProjectPermissions$inboundSchema,
-  UpdateProjectProjectsAction,
-  UpdateProjectProjectsAction$inboundSchema,
   UpdateProjectProjectsDeploymentPolicy,
   UpdateProjectProjectsDeploymentPolicy$inboundSchema,
   UpdateProjectProjectsOidcTokenConfig,
   UpdateProjectProjectsOidcTokenConfig$inboundSchema,
+  UpdateProjectProjectsOptionsAllowlist,
+  UpdateProjectProjectsOptionsAllowlist$inboundSchema,
   UpdateProjectProjectsPassport,
   UpdateProjectProjectsPassport$inboundSchema,
   UpdateProjectProjectsPasswordProtection,
@@ -66,7 +66,7 @@ import {
   UpdateProjectUsageStatus$inboundSchema,
   UpdateProjectWebAnalytics,
   UpdateProjectWebAnalytics$inboundSchema,
-} from "./updateprojectprojectsaction.js";
+} from "./updateprojectinternalroutes.js";
 import {
   UpdateProjectAnalytics,
   UpdateProjectAnalytics$inboundSchema,
@@ -98,13 +98,20 @@ import {
   UpdateProjectProjectsFramework$inboundSchema,
   UpdateProjectProjectsNodeVersion,
   UpdateProjectProjectsNodeVersion$inboundSchema,
-  UpdateProjectProjectsOptionsAllowlist,
-  UpdateProjectProjectsOptionsAllowlist$inboundSchema,
   UpdateProjectServices,
   UpdateProjectServices$inboundSchema,
   UpdateProjectSpeedInsights,
   UpdateProjectSpeedInsights$inboundSchema,
-} from "./updateprojectprojectsoptionsallowlist.js";
+} from "./updateprojectprojectspaths.js";
+
+export const UpdateProjectProjectsAction = {
+  Accept: "accept",
+  Cancel: "cancel",
+  Delete: "delete",
+} as const;
+export type UpdateProjectProjectsAction = ClosedEnum<
+  typeof UpdateProjectProjectsAction
+>;
 
 export type UpdateProjectValuePreviousValue = string | number | boolean;
 
@@ -136,10 +143,28 @@ export type UpdateProjectProjectsResponseEnv = ClosedEnum<
   typeof UpdateProjectProjectsResponseEnv
 >;
 
+/**
+ * Which tracing destination this rule applies to. `internal` is the hidden Vercel production-tracing drain (internal delivery); `external` is any customer-configured drain. Derived from the owning drain's delivery type when project tracing is computed; absent on configs persisted before this field existed.
+ */
+export const UpdateProjectDestination = {
+  External: "external",
+  Internal: "internal",
+} as const;
+/**
+ * Which tracing destination this rule applies to. `internal` is the hidden Vercel production-tracing drain (internal delivery); `external` is any customer-configured drain. Derived from the owning drain's delivery type when project tracing is computed; absent on configs persisted before this field existed.
+ */
+export type UpdateProjectDestination = ClosedEnum<
+  typeof UpdateProjectDestination
+>;
+
 export type UpdateProjectSamplingRules = {
   rate: number;
   env?: UpdateProjectProjectsResponseEnv | undefined;
   requestPath?: string | undefined;
+  /**
+   * Which tracing destination this rule applies to. `internal` is the hidden Vercel production-tracing drain (internal delivery); `external` is any customer-configured drain. Derived from the owning drain's delivery type when project tracing is computed; absent on configs persisted before this field existed.
+   */
+  destination?: UpdateProjectDestination | undefined;
 };
 
 export type UpdateProjectTracing = {
@@ -267,6 +292,11 @@ export type UpdateProjectResponseBody = {
 };
 
 /** @internal */
+export const UpdateProjectProjectsAction$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateProjectProjectsAction
+> = z.nativeEnum(UpdateProjectProjectsAction);
+
+/** @internal */
 export const UpdateProjectValuePreviousValue$inboundSchema: z.ZodType<
   UpdateProjectValuePreviousValue,
   z.ZodTypeDef,
@@ -378,6 +408,11 @@ export const UpdateProjectProjectsResponseEnv$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(UpdateProjectProjectsResponseEnv);
 
 /** @internal */
+export const UpdateProjectDestination$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateProjectDestination
+> = z.nativeEnum(UpdateProjectDestination);
+
+/** @internal */
 export const UpdateProjectSamplingRules$inboundSchema: z.ZodType<
   UpdateProjectSamplingRules,
   z.ZodTypeDef,
@@ -386,6 +421,7 @@ export const UpdateProjectSamplingRules$inboundSchema: z.ZodType<
   rate: types.number(),
   env: types.optional(UpdateProjectProjectsResponseEnv$inboundSchema),
   requestPath: types.optional(types.string()),
+  destination: types.optional(UpdateProjectDestination$inboundSchema),
 });
 
 export function updateProjectSamplingRulesFromJSON(

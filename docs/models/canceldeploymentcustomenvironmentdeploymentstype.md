@@ -5,7 +5,7 @@ The type of matching to perform
 ## Example Usage
 
 ```typescript
-import { CancelDeploymentCustomEnvironmentDeploymentsType } from "@vercel/sdk/models/canceldeploymentop.js";
+import { CancelDeploymentCustomEnvironmentDeploymentsType } from "@vercel/sdk/models/canceldeploymentservicesdeploymentsbuilder.js";
 
 let value: CancelDeploymentCustomEnvironmentDeploymentsType = "endsWith";
 ```

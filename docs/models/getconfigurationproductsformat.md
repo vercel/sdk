@@ -11,5 +11,5 @@ let value: GetConfigurationProductsFormat = "json";
 ## Values
 
 ```typescript
-"json" | "proto"
+"json" | "ndjson"
 ```

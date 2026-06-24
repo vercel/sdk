@@ -10,8 +10,11 @@ import { TwoHundredAndThirtyOne } from "@vercel/sdk/models/removedusers.js";
 let value: TwoHundredAndThirtyOne = {
   project: {
     name: "<value>",
-    role: "PROJECT_GUEST",
-    invitedUserName: "<value>",
+  },
+  projectMembership: {
+    role: "PROJECT_DEVELOPER",
+    uid: "<id>",
+    createdAt: 1945.3,
   },
 };
 ```
@@ -21,3 +24,4 @@ let value: TwoHundredAndThirtyOne = {
 | Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
 | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
 | `project`                                                                    | [models.UserEventPayload231Project](../models/usereventpayload231project.md) | :heavy_check_mark:                                                           | N/A                                                                          |
+| `projectMembership`                                                          | [models.ProjectMembership](../models/projectmembership.md)                   | :heavy_check_mark:                                                           | N/A                                                                          |

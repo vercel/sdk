@@ -5,7 +5,7 @@ NSNB Blocked metadata
 ## Example Usage
 
 ```typescript
-import { CancelDeploymentSeatBlock } from "@vercel/sdk/models/canceldeploymentop.js";
+import { CancelDeploymentSeatBlock } from "@vercel/sdk/models/canceldeploymentresponsebody.js";
 
 let value: CancelDeploymentSeatBlock = {
   blockCode: "COMMIT_AUTHOR_REQUIRED",

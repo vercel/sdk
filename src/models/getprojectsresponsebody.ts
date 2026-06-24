@@ -19,10 +19,12 @@ import {
   ResponseBodyDeploymentExpiration$inboundSchema,
   ResponseBodyIpBuckets,
   ResponseBodyIpBuckets$inboundSchema,
-} from "./getprojectscontenthint10.js";
+} from "./getprojectscontenthint11.js";
 import {
-  GetProjectsInternalRoutesHas,
-  GetProjectsInternalRoutesHas$inboundSchema,
+  GetProjectsHas1,
+  GetProjectsHas1$inboundSchema,
+  GetProjectsHas2,
+  GetProjectsHas2$inboundSchema,
   GetProjectsResponseBodyNodeVersion,
   GetProjectsResponseBodyNodeVersion$inboundSchema,
   ResponseBodyAbuse,
@@ -61,12 +63,14 @@ import {
   ResponseBodyTrustedSources$inboundSchema,
   ResponseBodyWebAnalytics,
   ResponseBodyWebAnalytics$inboundSchema,
-} from "./getprojectsinternalrouteshas.js";
+} from "./getprojectshas1.js";
 import {
   GetProjectsResponseBody3,
   GetProjectsResponseBody3$inboundSchema,
-} from "./getprojectsresponsebodyprojectsnodeversion.js";
+} from "./getprojectsresponsebodylink.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export type GetProjectsInternalRoutesHas = GetProjectsHas1 | GetProjectsHas2;
 
 export const GetProjectsInternalRoutesAction = {
   BlockLegalCwc: "block_legal_cwc",
@@ -80,7 +84,7 @@ export type GetProjectsInternalRoutesMitigate = {
 };
 
 export type GetProjectsInternalRoutes2 = {
-  has: Array<GetProjectsInternalRoutesHas>;
+  has: Array<GetProjectsHas1 | GetProjectsHas2>;
   mitigate: GetProjectsInternalRoutesMitigate;
   src?: string | undefined;
 };
@@ -165,6 +169,23 @@ export type GetProjectsResponseBody =
   | Array<GetProjectsResponseBody1>;
 
 /** @internal */
+export const GetProjectsInternalRoutesHas$inboundSchema: z.ZodType<
+  GetProjectsInternalRoutesHas,
+  z.ZodTypeDef,
+  unknown
+> = z.union([GetProjectsHas1$inboundSchema, GetProjectsHas2$inboundSchema]);
+
+export function getProjectsInternalRoutesHasFromJSON(
+  jsonString: string,
+): SafeParseResult<GetProjectsInternalRoutesHas, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetProjectsInternalRoutesHas$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectsInternalRoutesHas' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetProjectsInternalRoutesAction$inboundSchema: z.ZodNativeEnum<
   typeof GetProjectsInternalRoutesAction
 > = z.nativeEnum(GetProjectsInternalRoutesAction);
@@ -194,7 +215,9 @@ export const GetProjectsInternalRoutes2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  has: z.array(GetProjectsInternalRoutesHas$inboundSchema),
+  has: z.array(
+    z.union([GetProjectsHas1$inboundSchema, GetProjectsHas2$inboundSchema]),
+  ),
   mitigate: z.lazy(() => GetProjectsInternalRoutesMitigate$inboundSchema),
   src: types.optional(types.string()),
 });

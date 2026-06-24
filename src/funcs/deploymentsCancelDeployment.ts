@@ -12,11 +12,13 @@ import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
 import {
-  CancelDeploymentRequest,
-  CancelDeploymentRequest$outboundSchema,
   CancelDeploymentResponseBody,
   CancelDeploymentResponseBody$inboundSchema,
-} from "../models/canceldeploymentop.js";
+} from "../models/canceldeploymentresponsebody.js";
+import {
+  CancelDeploymentRequest,
+  CancelDeploymentRequest$outboundSchema,
+} from "../models/canceldeploymentservicesdeploymentsbuilder.js";
 import {
   ConnectionError,
   InvalidRequestError,

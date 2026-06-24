@@ -11,10 +11,7 @@ let value: TwoHundredAndFiftyNine = {
   projectId: "<id>",
   projectName: "<value>",
   next: {
-    skewProtectionAllowedDomains: [
-      "<value 1>",
-      "<value 2>",
-    ],
+    skewProtectionMaxAge: 5966.87,
   },
   previous: {},
 };

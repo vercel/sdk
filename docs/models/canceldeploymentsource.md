@@ -5,7 +5,7 @@ Where was the deployment created from. Best-effort guess for metrics only — no
 ## Example Usage
 
 ```typescript
-import { CancelDeploymentSource } from "@vercel/sdk/models/canceldeploymentop.js";
+import { CancelDeploymentSource } from "@vercel/sdk/models/canceldeploymentservicesdeploymentsbuilder.js";
 
 let value: CancelDeploymentSource = "cli";
 ```

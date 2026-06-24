@@ -5,7 +5,7 @@ Present when deployment was created with manual provisioning enabled, either exp
 ## Example Usage
 
 ```typescript
-import { CancelDeploymentManualProvisioning } from "@vercel/sdk/models/canceldeploymentop.js";
+import { CancelDeploymentManualProvisioning } from "@vercel/sdk/models/canceldeploymentservicesdeploymentsbuilder.js";
 
 let value: CancelDeploymentManualProvisioning = {
   state: "COMPLETE",

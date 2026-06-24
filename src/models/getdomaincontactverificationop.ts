@@ -5,12 +5,19 @@
 import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
-import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import {
   BoughtTooRecently,
   BoughtTooRecently$inboundSchema,
 } from "./boughttoorecently.js";
+import {
+  ContactPendingVerification,
+  ContactPendingVerification$inboundSchema,
+} from "./contactpendingverification.js";
+import {
+  ContactVerified,
+  ContactVerified$inboundSchema,
+} from "./contactverified.js";
 import {
   DomainNotRegistered,
   DomainNotRegistered$inboundSchema,
@@ -46,25 +53,12 @@ export type GetDomainContactVerificationDomainsRegistrarResponseBody =
   | DomainNotRegistered
   | HttpApiDecodeError;
 
-export type GetDomainContactVerificationResponseBody2 = {
-  verified: false;
-  /**
-   * a string to be decoded into a Date
-   */
-  verifyBy: string;
-  email: string;
-};
-
-export type GetDomainContactVerificationResponseBody1 = {
-  verified: true;
-};
-
 /**
- * Success
+ * The registrant contact has been verified.
  */
 export type GetDomainContactVerificationResponseBody =
-  | GetDomainContactVerificationResponseBody2
-  | GetDomainContactVerificationResponseBody1;
+  | ContactPendingVerification
+  | ContactVerified;
 
 /** @internal */
 export type GetDomainContactVerificationRequest$Outbound = {
@@ -148,65 +142,13 @@ export function getDomainContactVerificationDomainsRegistrarResponseBodyFromJSON
 }
 
 /** @internal */
-export const GetDomainContactVerificationResponseBody2$inboundSchema: z.ZodType<
-  GetDomainContactVerificationResponseBody2,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  verified: types.literal(false),
-  verifyBy: types.string(),
-  email: types.string(),
-});
-
-export function getDomainContactVerificationResponseBody2FromJSON(
-  jsonString: string,
-): SafeParseResult<
-  GetDomainContactVerificationResponseBody2,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetDomainContactVerificationResponseBody2$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'GetDomainContactVerificationResponseBody2' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetDomainContactVerificationResponseBody1$inboundSchema: z.ZodType<
-  GetDomainContactVerificationResponseBody1,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  verified: types.literal(true),
-});
-
-export function getDomainContactVerificationResponseBody1FromJSON(
-  jsonString: string,
-): SafeParseResult<
-  GetDomainContactVerificationResponseBody1,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetDomainContactVerificationResponseBody1$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'GetDomainContactVerificationResponseBody1' from JSON`,
-  );
-}
-
-/** @internal */
 export const GetDomainContactVerificationResponseBody$inboundSchema: z.ZodType<
   GetDomainContactVerificationResponseBody,
   z.ZodTypeDef,
   unknown
 > = smartUnion([
-  z.lazy(() => GetDomainContactVerificationResponseBody2$inboundSchema),
-  z.lazy(() => GetDomainContactVerificationResponseBody1$inboundSchema),
+  ContactPendingVerification$inboundSchema,
+  ContactVerified$inboundSchema,
 ]);
 
 export function getDomainContactVerificationResponseBodyFromJSON(

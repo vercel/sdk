@@ -5,7 +5,7 @@ Internal representation of a custom environment with all required properties
 ## Example Usage
 
 ```typescript
-import { UpdateProjectCustomEnvironments } from "@vercel/sdk/models/updateprojectprojectsoptionsallowlist.js";
+import { UpdateProjectCustomEnvironments } from "@vercel/sdk/models/updateprojectprojectspaths.js";
 
 let value: UpdateProjectCustomEnvironments = {
   id: "<id>",

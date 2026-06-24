@@ -1,19 +1,15 @@
 # UserEventPayload298Previous
 
-
-## Supported Types
-
-### `models.Previous1`
+## Example Usage
 
 ```typescript
-const value: models.Previous1 = {
-  accessGroupId: "<id>",
-};
+import { UserEventPayload298Previous } from "@vercel/sdk/models/consent.js";
+
+let value: UserEventPayload298Previous = "enhanced";
 ```
 
-### `models.Previous2`
+## Values
 
 ```typescript
-const value: models.Previous2 = "OWNER";
+"elastic" | "enhanced" | "standard" | "turbo"
 ```
-

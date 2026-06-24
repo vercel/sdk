@@ -175,6 +175,7 @@ async function $do(
     | SDKValidationError
   >(
     M.nil(204, z.void()),
+    M.nil(304, z.void()),
     M.fail([400, 401, 402, 403, 404, 409, 412, "4XX"]),
     M.fail("5XX"),
   )(response, req);

@@ -727,10 +727,28 @@ export type UploadProjectAvatarProjectsEnv = ClosedEnum<
   typeof UploadProjectAvatarProjectsEnv
 >;
 
+/**
+ * Which tracing destination this rule applies to. `internal` is the hidden Vercel production-tracing drain (internal delivery); `external` is any customer-configured drain. Derived from the owning drain's delivery type when project tracing is computed; absent on configs persisted before this field existed.
+ */
+export const UploadProjectAvatarDestination = {
+  External: "external",
+  Internal: "internal",
+} as const;
+/**
+ * Which tracing destination this rule applies to. `internal` is the hidden Vercel production-tracing drain (internal delivery); `external` is any customer-configured drain. Derived from the owning drain's delivery type when project tracing is computed; absent on configs persisted before this field existed.
+ */
+export type UploadProjectAvatarDestination = ClosedEnum<
+  typeof UploadProjectAvatarDestination
+>;
+
 export type UploadProjectAvatarSamplingRules = {
   rate: number;
   env?: UploadProjectAvatarProjectsEnv | undefined;
   requestPath?: string | undefined;
+  /**
+   * Which tracing destination this rule applies to. `internal` is the hidden Vercel production-tracing drain (internal delivery); `external` is any customer-configured drain. Derived from the owning drain's delivery type when project tracing is computed; absent on configs persisted before this field existed.
+   */
+  destination?: UploadProjectAvatarDestination | undefined;
 };
 
 export type UploadProjectAvatarTracing = {
@@ -2517,6 +2535,11 @@ export const UploadProjectAvatarProjectsEnv$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(UploadProjectAvatarProjectsEnv);
 
 /** @internal */
+export const UploadProjectAvatarDestination$inboundSchema: z.ZodNativeEnum<
+  typeof UploadProjectAvatarDestination
+> = z.nativeEnum(UploadProjectAvatarDestination);
+
+/** @internal */
 export const UploadProjectAvatarSamplingRules$inboundSchema: z.ZodType<
   UploadProjectAvatarSamplingRules,
   z.ZodTypeDef,
@@ -2525,6 +2548,7 @@ export const UploadProjectAvatarSamplingRules$inboundSchema: z.ZodType<
   rate: types.number(),
   env: types.optional(UploadProjectAvatarProjectsEnv$inboundSchema),
   requestPath: types.optional(types.string()),
+  destination: types.optional(UploadProjectAvatarDestination$inboundSchema),
 });
 
 export function uploadProjectAvatarSamplingRulesFromJSON(

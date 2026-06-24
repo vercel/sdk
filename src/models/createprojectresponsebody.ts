@@ -46,6 +46,8 @@ import {
   CreateProjectProjectsSsoProtection$inboundSchema,
   CreateProjectRollbackDescription,
   CreateProjectRollbackDescription$inboundSchema,
+  CreateProjectServices,
+  CreateProjectServices$inboundSchema,
   CreateProjectStaticIps,
   CreateProjectStaticIps$inboundSchema,
   CreateProjectTargets,
@@ -78,8 +80,6 @@ import {
   ProtectionConfig$inboundSchema,
   RollingRelease,
   RollingRelease$inboundSchema,
-  Services,
-  Services$inboundSchema,
   SpeedInsights,
   SpeedInsights$inboundSchema,
 } from "./createprojecttoprojectsresponsepreset.js";
@@ -858,10 +858,28 @@ export type CreateProjectProjectsEnv = ClosedEnum<
   typeof CreateProjectProjectsEnv
 >;
 
+/**
+ * Which tracing destination this rule applies to. `internal` is the hidden Vercel production-tracing drain (internal delivery); `external` is any customer-configured drain. Derived from the owning drain's delivery type when project tracing is computed; absent on configs persisted before this field existed.
+ */
+export const CreateProjectDestination = {
+  External: "external",
+  Internal: "internal",
+} as const;
+/**
+ * Which tracing destination this rule applies to. `internal` is the hidden Vercel production-tracing drain (internal delivery); `external` is any customer-configured drain. Derived from the owning drain's delivery type when project tracing is computed; absent on configs persisted before this field existed.
+ */
+export type CreateProjectDestination = ClosedEnum<
+  typeof CreateProjectDestination
+>;
+
 export type CreateProjectSamplingRules = {
   rate: number;
   env?: CreateProjectProjectsEnv | undefined;
   requestPath?: string | undefined;
+  /**
+   * Which tracing destination this rule applies to. `internal` is the hidden Vercel production-tracing drain (internal delivery); `external` is any customer-configured drain. Derived from the owning drain's delivery type when project tracing is computed; absent on configs persisted before this field existed.
+   */
+  destination?: CreateProjectDestination | undefined;
 };
 
 export type CreateProjectTracing = {
@@ -905,7 +923,7 @@ export type CreateProjectResponseBody = {
   env?: Array<CreateProjectEnv> | undefined;
   customEnvironments?: Array<CustomEnvironments> | undefined;
   framework?: CreateProjectProjectsFramework | null | undefined;
-  services?: Array<Services> | undefined;
+  services?: Array<CreateProjectServices> | undefined;
   gitForkProtection?: boolean | undefined;
   gitLFS?: boolean | undefined;
   id: string;
@@ -2889,6 +2907,11 @@ export const CreateProjectProjectsEnv$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(CreateProjectProjectsEnv);
 
 /** @internal */
+export const CreateProjectDestination$inboundSchema: z.ZodNativeEnum<
+  typeof CreateProjectDestination
+> = z.nativeEnum(CreateProjectDestination);
+
+/** @internal */
 export const CreateProjectSamplingRules$inboundSchema: z.ZodType<
   CreateProjectSamplingRules,
   z.ZodTypeDef,
@@ -2897,6 +2920,7 @@ export const CreateProjectSamplingRules$inboundSchema: z.ZodType<
   rate: types.number(),
   env: types.optional(CreateProjectProjectsEnv$inboundSchema),
   requestPath: types.optional(types.string()),
+  destination: types.optional(CreateProjectDestination$inboundSchema),
 });
 
 export function createProjectSamplingRulesFromJSON(
@@ -2966,7 +2990,7 @@ export const CreateProjectResponseBody$inboundSchema: z.ZodType<
   customEnvironments: types.optional(z.array(CustomEnvironments$inboundSchema)),
   framework: z.nullable(CreateProjectProjectsFramework$inboundSchema)
     .optional(),
-  services: types.optional(z.array(Services$inboundSchema)),
+  services: types.optional(z.array(CreateProjectServices$inboundSchema)),
   gitForkProtection: types.optional(types.boolean()),
   gitLFS: types.optional(types.boolean()),
   id: types.string(),

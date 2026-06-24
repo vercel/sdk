@@ -5,7 +5,7 @@ Passport configuration for the project.
 ## Example Usage
 
 ```typescript
-import { UpdateProjectPassport } from "@vercel/sdk/models/updateprojectprojectsoptionsallowlist.js";
+import { UpdateProjectPassport } from "@vercel/sdk/models/updateprojectprojectspaths.js";
 
 let value: UpdateProjectPassport = {
   connectorId: "<id>",

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ResourceLimits } from "@vercel/sdk/models/usereventpayload138type.js";
+import { ResourceLimits } from "@vercel/sdk/models/teams.js";
 
 let value: ResourceLimits = {
   max: 4120.69,

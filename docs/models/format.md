@@ -1,15 +1,17 @@
 # Format
 
+Generated value shape, must be `"url"`.
+
 ## Example Usage
 
 ```typescript
-import { Format } from "@vercel/sdk/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyuidisabled.js";
+import { Format } from "@vercel/sdk/models/includefiles.js";
 
-let value: Format = "json";
+let value: Format = "url";
 ```
 
 ## Values
 
 ```typescript
-"json" | "ndjson"
+"url"
 ```

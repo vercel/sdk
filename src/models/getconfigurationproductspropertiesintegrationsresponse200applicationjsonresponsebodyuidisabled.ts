@@ -151,18 +151,20 @@ export type GetConfigurationProductsIntegrationsResponse200ApplicationJSONRespon
     typeof GetConfigurationProductsIntegrationsResponse200ApplicationJSONResponseBodyProductsProtocolsLogDrainStatus
   >;
 
-export const Format = {
+export const GetConfigurationProductsFormat = {
   Json: "json",
   Ndjson: "ndjson",
 } as const;
-export type Format = ClosedEnum<typeof Format>;
+export type GetConfigurationProductsFormat = ClosedEnum<
+  typeof GetConfigurationProductsFormat
+>;
 
 export type LogDrain = {
   status:
     GetConfigurationProductsIntegrationsResponse200ApplicationJSONResponseBodyProductsProtocolsLogDrainStatus;
   endpoint: string;
   headers?: { [k: string]: string } | undefined;
-  format: Format;
+  format: GetConfigurationProductsFormat;
 };
 
 export const GetConfigurationProductsIntegrationsResponse200ApplicationJSONResponseBodyProductsProtocolsTraceDrainStatus =
@@ -175,12 +177,12 @@ export type GetConfigurationProductsIntegrationsResponse200ApplicationJSONRespon
     typeof GetConfigurationProductsIntegrationsResponse200ApplicationJSONResponseBodyProductsProtocolsTraceDrainStatus
   >;
 
-export const GetConfigurationProductsFormat = {
+export const GetConfigurationProductsIntegrationsFormat = {
   Json: "json",
   Proto: "proto",
 } as const;
-export type GetConfigurationProductsFormat = ClosedEnum<
-  typeof GetConfigurationProductsFormat
+export type GetConfigurationProductsIntegrationsFormat = ClosedEnum<
+  typeof GetConfigurationProductsIntegrationsFormat
 >;
 
 export type TraceDrain = {
@@ -188,7 +190,7 @@ export type TraceDrain = {
     GetConfigurationProductsIntegrationsResponse200ApplicationJSONResponseBodyProductsProtocolsTraceDrainStatus;
   endpoint: string;
   headers?: { [k: string]: string } | undefined;
-  format: GetConfigurationProductsFormat;
+  format: GetConfigurationProductsIntegrationsFormat;
 };
 
 export const GetConfigurationProductsIntegrationsResponse200ApplicationJSONResponseBodyProductsProtocolsMessagingStatus =
@@ -1492,8 +1494,9 @@ export const GetConfigurationProductsIntegrationsResponse200ApplicationJSONRespo
   );
 
 /** @internal */
-export const Format$inboundSchema: z.ZodNativeEnum<typeof Format> = z
-  .nativeEnum(Format);
+export const GetConfigurationProductsFormat$inboundSchema: z.ZodNativeEnum<
+  typeof GetConfigurationProductsFormat
+> = z.nativeEnum(GetConfigurationProductsFormat);
 
 /** @internal */
 export const LogDrain$inboundSchema: z.ZodType<
@@ -1505,7 +1508,7 @@ export const LogDrain$inboundSchema: z.ZodType<
     GetConfigurationProductsIntegrationsResponse200ApplicationJSONResponseBodyProductsProtocolsLogDrainStatus$inboundSchema,
   endpoint: types.string(),
   headers: types.optional(z.record(types.string())),
-  format: Format$inboundSchema,
+  format: GetConfigurationProductsFormat$inboundSchema,
 });
 
 export function logDrainFromJSON(
@@ -1527,9 +1530,9 @@ export const GetConfigurationProductsIntegrationsResponse200ApplicationJSONRespo
   );
 
 /** @internal */
-export const GetConfigurationProductsFormat$inboundSchema: z.ZodNativeEnum<
-  typeof GetConfigurationProductsFormat
-> = z.nativeEnum(GetConfigurationProductsFormat);
+export const GetConfigurationProductsIntegrationsFormat$inboundSchema:
+  z.ZodNativeEnum<typeof GetConfigurationProductsIntegrationsFormat> = z
+    .nativeEnum(GetConfigurationProductsIntegrationsFormat);
 
 /** @internal */
 export const TraceDrain$inboundSchema: z.ZodType<
@@ -1541,7 +1544,7 @@ export const TraceDrain$inboundSchema: z.ZodType<
     GetConfigurationProductsIntegrationsResponse200ApplicationJSONResponseBodyProductsProtocolsTraceDrainStatus$inboundSchema,
   endpoint: types.string(),
   headers: types.optional(z.record(types.string())),
-  format: GetConfigurationProductsFormat$inboundSchema,
+  format: GetConfigurationProductsIntegrationsFormat$inboundSchema,
 });
 
 export function traceDrainFromJSON(

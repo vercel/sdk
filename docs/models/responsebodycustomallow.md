@@ -5,7 +5,7 @@ Optional overrides for the default same-env-by-slug matching. Provide explicit r
 ## Example Usage
 
 ```typescript
-import { ResponseBodyCustomAllow } from "@vercel/sdk/models/getprojectsinternalrouteshas.js";
+import { ResponseBodyCustomAllow } from "@vercel/sdk/models/getprojectshas1.js";
 
 let value: ResponseBodyCustomAllow = {
   from: {

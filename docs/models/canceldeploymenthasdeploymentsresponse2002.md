@@ -1,0 +1,20 @@
+# CancelDeploymentHasDeploymentsResponse2002
+
+## Example Usage
+
+```typescript
+import { CancelDeploymentHasDeploymentsResponse2002 } from "@vercel/sdk/models/flagsdefinitions.js";
+
+let value: CancelDeploymentHasDeploymentsResponse2002 = {
+  type: "cookie",
+  key: "<key>",
+};
+```
+
+## Fields
+
+| Field                                                                                                                                                                                      | Type                                                                                                                                                                                       | Required                                                                                                                                                                                   | Description                                                                                                                                                                                |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `type`                                                                                                                                                                                     | [models.CancelDeploymentHasDeploymentsResponse200ApplicationJSONResponseBodyServices2Type](../models/canceldeploymenthasdeploymentsresponse200applicationjsonresponsebodyservices2type.md) | :heavy_check_mark:                                                                                                                                                                         | N/A                                                                                                                                                                                        |
+| `key`                                                                                                                                                                                      | *string*                                                                                                                                                                                   | :heavy_check_mark:                                                                                                                                                                         | N/A                                                                                                                                                                                        |
+| `value`                                                                                                                                                                                    | *models.CancelDeploymentHasDeploymentsResponse200ApplicationJSONResponseBodyServices2Value*                                                                                                | :heavy_minus_sign:                                                                                                                                                                         | N/A                                                                                                                                                                                        |

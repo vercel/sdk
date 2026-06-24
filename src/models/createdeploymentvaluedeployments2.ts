@@ -274,6 +274,7 @@ export type GitSource =
  * The framework that is being used for this project. When `null` is used no framework is selected
  */
 export const Framework = {
+  Services: "services",
   Blitzjs: "blitzjs",
   Nextjs: "nextjs",
   Gatsby: "gatsby",
@@ -343,7 +344,6 @@ export const Framework = {
   Bun: "bun",
   Node: "node",
   Go: "go",
-  Services: "services",
   Mastra: "mastra",
 } as const;
 /**

@@ -232,18 +232,18 @@ export type GetAllLogDrainsDrainsType = ClosedEnum<
   typeof GetAllLogDrainsDrainsType
 >;
 
-export const GetAllLogDrainsDrainsLogDrainsEnv = {
+export const GetAllLogDrainsDrainsEnv = {
   Preview: "preview",
   Production: "production",
 } as const;
-export type GetAllLogDrainsDrainsLogDrainsEnv = ClosedEnum<
-  typeof GetAllLogDrainsDrainsLogDrainsEnv
+export type GetAllLogDrainsDrainsEnv = ClosedEnum<
+  typeof GetAllLogDrainsDrainsEnv
 >;
 
 export type GetAllLogDrainsDrainsLogDrainsSampling = {
   type: GetAllLogDrainsDrainsType;
   rate: number;
-  env?: GetAllLogDrainsDrainsLogDrainsEnv | undefined;
+  env?: GetAllLogDrainsDrainsEnv | undefined;
   requestPath?: string | undefined;
 };
 
@@ -596,18 +596,18 @@ export type GetAllLogDrainsDrainsLogDrainsType = ClosedEnum<
   typeof GetAllLogDrainsDrainsLogDrainsType
 >;
 
-export const GetAllLogDrainsDrainsEnv = {
+export const GetAllLogDrainsDrainsLogDrainsEnv = {
   Preview: "preview",
   Production: "production",
 } as const;
-export type GetAllLogDrainsDrainsEnv = ClosedEnum<
-  typeof GetAllLogDrainsDrainsEnv
+export type GetAllLogDrainsDrainsLogDrainsEnv = ClosedEnum<
+  typeof GetAllLogDrainsDrainsLogDrainsEnv
 >;
 
 export type GetAllLogDrainsDrainsSampling = {
   type: GetAllLogDrainsDrainsLogDrainsType;
   rate: number;
-  env?: GetAllLogDrainsDrainsEnv | undefined;
+  env?: GetAllLogDrainsDrainsLogDrainsEnv | undefined;
   requestPath?: string | undefined;
 };
 
@@ -1350,9 +1350,9 @@ export const GetAllLogDrainsDrainsType$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(GetAllLogDrainsDrainsType);
 
 /** @internal */
-export const GetAllLogDrainsDrainsLogDrainsEnv$inboundSchema: z.ZodNativeEnum<
-  typeof GetAllLogDrainsDrainsLogDrainsEnv
-> = z.nativeEnum(GetAllLogDrainsDrainsLogDrainsEnv);
+export const GetAllLogDrainsDrainsEnv$inboundSchema: z.ZodNativeEnum<
+  typeof GetAllLogDrainsDrainsEnv
+> = z.nativeEnum(GetAllLogDrainsDrainsEnv);
 
 /** @internal */
 export const GetAllLogDrainsDrainsLogDrainsSampling$inboundSchema: z.ZodType<
@@ -1362,7 +1362,7 @@ export const GetAllLogDrainsDrainsLogDrainsSampling$inboundSchema: z.ZodType<
 > = z.object({
   type: GetAllLogDrainsDrainsType$inboundSchema,
   rate: types.number(),
-  env: types.optional(GetAllLogDrainsDrainsLogDrainsEnv$inboundSchema),
+  env: types.optional(GetAllLogDrainsDrainsEnv$inboundSchema),
   requestPath: types.optional(types.string()),
 });
 
@@ -2244,9 +2244,9 @@ export const GetAllLogDrainsDrainsLogDrainsType$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(GetAllLogDrainsDrainsLogDrainsType);
 
 /** @internal */
-export const GetAllLogDrainsDrainsEnv$inboundSchema: z.ZodNativeEnum<
-  typeof GetAllLogDrainsDrainsEnv
-> = z.nativeEnum(GetAllLogDrainsDrainsEnv);
+export const GetAllLogDrainsDrainsLogDrainsEnv$inboundSchema: z.ZodNativeEnum<
+  typeof GetAllLogDrainsDrainsLogDrainsEnv
+> = z.nativeEnum(GetAllLogDrainsDrainsLogDrainsEnv);
 
 /** @internal */
 export const GetAllLogDrainsDrainsSampling$inboundSchema: z.ZodType<
@@ -2256,7 +2256,7 @@ export const GetAllLogDrainsDrainsSampling$inboundSchema: z.ZodType<
 > = z.object({
   type: GetAllLogDrainsDrainsLogDrainsType$inboundSchema,
   rate: types.number(),
-  env: types.optional(GetAllLogDrainsDrainsEnv$inboundSchema),
+  env: types.optional(GetAllLogDrainsDrainsLogDrainsEnv$inboundSchema),
   requestPath: types.optional(types.string()),
 });
 

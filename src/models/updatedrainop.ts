@@ -1219,7 +1219,7 @@ export type UpdateDrainDelivery3$Outbound = {
   fileStructure: string;
   roleArn: string;
   region: string;
-  serverSideEncryption?: string | undefined;
+  serverSideEncryption: string;
   objectAcl?: string | undefined;
 };
 
@@ -1236,7 +1236,9 @@ export const UpdateDrainDelivery3$outboundSchema: z.ZodType<
   fileStructure: DeliveryFileStructure$outboundSchema,
   roleArn: z.string(),
   region: z.string(),
-  serverSideEncryption: DeliveryServerSideEncryption$outboundSchema.optional(),
+  serverSideEncryption: DeliveryServerSideEncryption$outboundSchema.default(
+    "AES256",
+  ),
   objectAcl: DeliveryObjectAcl$outboundSchema.optional(),
 });
 

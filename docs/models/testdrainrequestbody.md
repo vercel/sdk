@@ -15,6 +15,7 @@ let value: TestDrainRequestBody = {
     fileStructure: "hive",
     roleArn: "<value>",
     region: "<value>",
+    serverSideEncryption: "AES256",
   },
 };
 ```

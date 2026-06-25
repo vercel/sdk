@@ -5,29 +5,25 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndEightyTwo } from "@vercel/sdk/models/consent.js";
+import { TwoHundredAndEightyTwo } from "@vercel/sdk/models/rollbackdescription.js";
 
 let value: TwoHundredAndEightyTwo = {
-  budget: {
-    budgetItem: {
-      type: "fixed",
-      fixedBudget: 5322.24,
-      previousSpend: [],
-      notifiedAt: [
-        7813.67,
-        6171.37,
-      ],
-      createdAt: 7480.89,
-      isActive: true,
-      teamId: "<id>",
-      id: "<id>",
-    },
+  sampleRatePercent: 1628.58,
+  spendLimitInDollars: 651.29,
+  previous: {
+    sampleRatePercent: 6913.37,
+    spendLimitInDollars: 938.52,
   },
 };
 ```
 
 ## Fields
 
-| Field                                                                | Type                                                                 | Required                                                             | Description                                                          |
-| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| `budget`                                                             | [models.UserEventPayloadBudget](../models/usereventpayloadbudget.md) | :heavy_check_mark:                                                   | N/A                                                                  |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `projectId`                                                                    | *string*                                                                       | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `projectName`                                                                  | *string*                                                                       | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `analyticsId`                                                                  | *string*                                                                       | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `sampleRatePercent`                                                            | *number*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `spendLimitInDollars`                                                          | *number*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `previous`                                                                     | [models.UserEventPayload282Previous](../models/usereventpayload282previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |

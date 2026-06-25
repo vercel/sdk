@@ -6,6 +6,7 @@
 
 * [createConnector](#createconnector) - Create a connector
 * [getConnectorToken](#getconnectortoken) - Get a Connect token
+* [importConnectorTokens](#importconnectortokens) - Import Connect tokens
 * [createConnectorAuthorizationRequest](#createconnectorauthorizationrequest) - Create a Connect authorization request
 
 ## createConnector
@@ -143,6 +144,79 @@ run();
 ### Response
 
 **Promise\<[models.GetConnectorTokenResponseBody](../../models/getconnectortokenresponsebody.md)\>**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| models.SDKError | 4XX, 5XX        | \*/\*           |
+
+## importConnectorTokens
+
+Import access and refresh tokens for a connector identified by the path parameter.
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="importConnectorTokens" method="post" path="/v1/connect/token/{connector}/import" -->
+```typescript
+import { Vercel } from "@vercel/sdk";
+
+const vercel = new Vercel({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await vercel.connect.importConnectorTokens({
+    connector: "<value>",
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { VercelCore } from "@vercel/sdk/core.js";
+import { connectImportConnectorTokens } from "@vercel/sdk/funcs/connectImportConnectorTokens.js";
+
+// Use `VercelCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const vercel = new VercelCore({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await connectImportConnectorTokens(vercel, {
+    connector: "<value>",
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("connectImportConnectorTokens failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [models.ImportConnectorTokensRequest](../../models/importconnectortokensrequest.md)                                                                                            | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[models.ImportConnectorTokensResponseBody](../../models/importconnectortokensresponsebody.md)\>**
 
 ### Errors
 

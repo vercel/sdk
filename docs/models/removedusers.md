@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { RemovedUsers } from "@vercel/sdk/models/removedusers.js";
+import { RemovedUsers } from "@vercel/sdk/models/usereventpayloadgituserid.js";
 
 let value: RemovedUsers = {
   role: "BILLING",
@@ -15,7 +15,7 @@ let value: RemovedUsers = {
 
 | Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
 | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `role`                                                                 | [models.UserEventPayload175Role](../models/usereventpayload175role.md) | :heavy_check_mark:                                                     | N/A                                                                    |
+| `role`                                                                 | [models.UserEventPayload176Role](../models/usereventpayload176role.md) | :heavy_check_mark:                                                     | N/A                                                                    |
 | `confirmed`                                                            | *boolean*                                                              | :heavy_check_mark:                                                     | N/A                                                                    |
 | `confirmedAt`                                                          | *number*                                                               | :heavy_minus_sign:                                                     | N/A                                                                    |
 | `joinedFrom`                                                           | [models.PayloadJoinedFrom](../models/payloadjoinedfrom.md)             | :heavy_minus_sign:                                                     | N/A                                                                    |

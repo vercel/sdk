@@ -104,6 +104,7 @@ export const Name = {
   ConnectGithubLimited: "connect-github-limited",
   ConnectGitlab: "connect-gitlab",
   ConnectGitlabApp: "connect-gitlab-app",
+  ConnectImportTokens: "connect-import-tokens",
   ConnectRevokeAllTokens: "connect-revoke-all-tokens",
   ConnectUpdateConnector: "connect-update-connector",
   ConnectUpdateTriggerDestinations: "connect-update-trigger-destinations",
@@ -219,6 +220,7 @@ export const Name = {
   FlagsSDKKeyRead: "flags-sdk-key-read",
   FlagsSegment: "flags-segment",
   FlagsSettings: "flags-settings",
+  FlagsTransferred: "flags-transferred",
   GitAccountIntegrationLinkAdded: "git_account_integration_link_added",
   InstantRollbackCreated: "instant-rollback-created",
   IntegrationConfigurationOwnerChanged:
@@ -490,6 +492,7 @@ export const Name = {
   TeamDomainVerificationDeleted: "team-domain-verification-deleted",
   TeamDomainVerificationVerified: "team-domain-verification-verified",
   TeamEmailDomainUpdate: "team-email-domain-update",
+  TeamEmuAccountSplit: "team-emu-account-split",
   TeamEmuUpdated: "team-emu-updated",
   TeamEndedTrial: "team-ended-trial",
   TeamGitRepositoryDispatchEventsToggled:
@@ -514,6 +517,7 @@ export const Name = {
   TeamMemberLeave: "team-member-leave",
   TeamMemberRequestAccess: "team-member-request-access",
   TeamMemberRoleUpdate: "team-member-role-update",
+  TeamMemberSsoAuthorizationAttempt: "team-member-sso-authorization-attempt",
   TeamMfaEnforcementUpdated: "team-mfa-enforcement-updated",
   TeamNameUpdate: "team-name-update",
   TeamPaidInvoice: "team-paid-invoice",
@@ -701,6 +705,7 @@ export const ReplacedBy = {
   ConnectGithubLimited: "connect-github-limited",
   ConnectGitlab: "connect-gitlab",
   ConnectGitlabApp: "connect-gitlab-app",
+  ConnectImportTokens: "connect-import-tokens",
   ConnectRevokeAllTokens: "connect-revoke-all-tokens",
   ConnectUpdateConnector: "connect-update-connector",
   ConnectUpdateTriggerDestinations: "connect-update-trigger-destinations",
@@ -816,6 +821,7 @@ export const ReplacedBy = {
   FlagsSDKKeyRead: "flags-sdk-key-read",
   FlagsSegment: "flags-segment",
   FlagsSettings: "flags-settings",
+  FlagsTransferred: "flags-transferred",
   GitAccountIntegrationLinkAdded: "git_account_integration_link_added",
   InstantRollbackCreated: "instant-rollback-created",
   IntegrationConfigurationOwnerChanged:
@@ -1087,6 +1093,7 @@ export const ReplacedBy = {
   TeamDomainVerificationDeleted: "team-domain-verification-deleted",
   TeamDomainVerificationVerified: "team-domain-verification-verified",
   TeamEmailDomainUpdate: "team-email-domain-update",
+  TeamEmuAccountSplit: "team-emu-account-split",
   TeamEmuUpdated: "team-emu-updated",
   TeamEndedTrial: "team-ended-trial",
   TeamGitRepositoryDispatchEventsToggled:
@@ -1111,6 +1118,7 @@ export const ReplacedBy = {
   TeamMemberLeave: "team-member-leave",
   TeamMemberRequestAccess: "team-member-request-access",
   TeamMemberRoleUpdate: "team-member-role-update",
+  TeamMemberSsoAuthorizationAttempt: "team-member-sso-authorization-attempt",
   TeamMfaEnforcementUpdated: "team-mfa-enforcement-updated",
   TeamNameUpdate: "team-name-update",
   TeamPaidInvoice: "team-paid-invoice",

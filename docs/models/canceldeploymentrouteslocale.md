@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CancelDeploymentRoutesLocale } from "@vercel/sdk/models/flagsdefinitions.js";
+import { CancelDeploymentRoutesLocale } from "@vercel/sdk/models/canceldeploymentgitrepodeploymentsresponseownertype.js";
 
 let value: CancelDeploymentRoutesLocale = {};
 ```

@@ -5,6 +5,7 @@
 import { connectCreateConnector } from "../funcs/connectCreateConnector.js";
 import { connectCreateConnectorAuthorizationRequest } from "../funcs/connectCreateConnectorAuthorizationRequest.js";
 import { connectGetConnectorToken } from "../funcs/connectGetConnectorToken.js";
+import { connectImportConnectorTokens } from "../funcs/connectImportConnectorTokens.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import {
   CreateConnectorAuthorizationRequestRequest,
@@ -18,6 +19,10 @@ import {
   GetConnectorTokenRequest,
   GetConnectorTokenResponseBody,
 } from "../models/getconnectortokenop.js";
+import {
+  ImportConnectorTokensRequest,
+  ImportConnectorTokensResponseBody,
+} from "../models/importconnectortokensop.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class Connect extends ClientSDK {
@@ -49,6 +54,23 @@ export class Connect extends ClientSDK {
     options?: RequestOptions,
   ): Promise<GetConnectorTokenResponseBody> {
     return unwrapAsync(connectGetConnectorToken(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Import Connect tokens
+   *
+   * @remarks
+   * Import access and refresh tokens for a connector identified by the path parameter.
+   */
+  async importConnectorTokens(
+    request: ImportConnectorTokensRequest,
+    options?: RequestOptions,
+  ): Promise<ImportConnectorTokensResponseBody> {
+    return unwrapAsync(connectImportConnectorTokens(
       this,
       request,
       options,

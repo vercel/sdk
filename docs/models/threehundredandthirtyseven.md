@@ -5,23 +5,20 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndThirtySeven } from "@vercel/sdk/models/threehundredandfive.js";
+import { ThreeHundredAndThirtySeven } from "@vercel/sdk/models/threehundredandeight.js";
 
 let value: ThreeHundredAndThirtySeven = {
-  previous: {
-    enabled: false,
-    totpVerified: false,
-  },
-  next: {
-    enabled: true,
-    totpVerified: true,
-  },
+  totp: false,
+  recoveryCodes: 5259.03,
 };
 ```
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `previous`                                                                     | [models.UserEventPayload337Previous](../models/usereventpayload337previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
-| `next`                                                                         | [models.UserEventPayload337Next](../models/usereventpayload337next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
+| Field                                      | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `totp`                                     | *boolean*                                  | :heavy_check_mark:                         | N/A                                        |
+| `recoveryCodes`                            | *number*                                   | :heavy_check_mark:                         | N/A                                        |
+| `actorId`                                  | *string*                                   | :heavy_minus_sign:                         | N/A                                        |
+| `actorType`                                | [models.ActorType](../models/actortype.md) | :heavy_minus_sign:                         | N/A                                        |
+| `reason`                                   | *string*                                   | :heavy_minus_sign:                         | N/A                                        |

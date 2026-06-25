@@ -1,25 +1,51 @@
 # EditRouteProjectRoutesTransforms
 
-## Example Usage
+
+## Supported Types
+
+### `models.EditRouteTransforms1`
 
 ```typescript
-import { EditRouteProjectRoutesTransforms } from "@vercel/sdk/models/editrouteop.js";
-
-let value: EditRouteProjectRoutesTransforms = {
-  type: "request.headers",
-  op: "set",
+const value: models.EditRouteTransforms1 = {
+  type: "response.headers",
+  op: "delete",
   target: {
     key: {},
   },
 };
 ```
 
-## Fields
+### `models.EditRouteTransforms1`
 
-| Field                                                                                        | Type                                                                                         | Required                                                                                     | Description                                                                                  |
-| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
-| `type`                                                                                       | [models.EditRouteProjectRoutesResponseType](../models/editrouteprojectroutesresponsetype.md) | :heavy_check_mark:                                                                           | N/A                                                                                          |
-| `op`                                                                                         | [models.EditRouteProjectRoutesOp](../models/editrouteprojectroutesop.md)                     | :heavy_check_mark:                                                                           | N/A                                                                                          |
-| `target`                                                                                     | [models.EditRouteProjectRoutesTarget](../models/editrouteprojectroutestarget.md)             | :heavy_check_mark:                                                                           | N/A                                                                                          |
-| `args`                                                                                       | *models.EditRouteArgs*                                                                       | :heavy_minus_sign:                                                                           | N/A                                                                                          |
-| `env`                                                                                        | *string*[]                                                                                   | :heavy_minus_sign:                                                                           | N/A                                                                                          |
+```typescript
+const value: models.EditRouteTransforms1 = {
+  type: "response.headers",
+  op: "delete",
+  target: {
+    key: {},
+  },
+};
+```
+
+### `models.EditRouteTransforms1`
+
+```typescript
+const value: models.EditRouteTransforms1 = {
+  type: "response.headers",
+  op: "delete",
+  target: {
+    key: {},
+  },
+};
+```
+
+### `models.EditRouteTransforms2`
+
+```typescript
+const value: models.EditRouteTransforms2 = {
+  type: "request.path",
+  op: "set",
+  args: "<value>",
+};
+```
+

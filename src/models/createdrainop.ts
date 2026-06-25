@@ -1123,7 +1123,7 @@ export type Delivery3$Outbound = {
   fileStructure: string;
   roleArn: string;
   region: string;
-  serverSideEncryption?: string | undefined;
+  serverSideEncryption: string;
   objectAcl?: string | undefined;
 };
 
@@ -1140,7 +1140,7 @@ export const Delivery3$outboundSchema: z.ZodType<
   fileStructure: FileStructure$outboundSchema,
   roleArn: z.string(),
   region: z.string(),
-  serverSideEncryption: ServerSideEncryption$outboundSchema.optional(),
+  serverSideEncryption: ServerSideEncryption$outboundSchema.default("AES256"),
   objectAcl: ObjectAcl$outboundSchema.optional(),
 });
 

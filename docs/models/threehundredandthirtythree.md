@@ -5,17 +5,21 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndThirtyThree } from "@vercel/sdk/models/threehundredandfive.js";
+import { ThreeHundredAndThirtyThree } from "@vercel/sdk/models/threehundredandeight.js";
 
 let value: ThreeHundredAndThirtyThree = {
-  provider: "bitbucket",
-  login: "Darius.Parisian",
+  exportId: "<id>",
+  from: 1837.32,
+  to: 2325.68,
+  format: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `provider`                                                                     | [models.UserEventPayload333Provider](../models/usereventpayload333provider.md) | :heavy_check_mark:                                                             | N/A                                                                            |
-| `login`                                                                        | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `exportId`         | *string*           | :heavy_check_mark: | N/A                |
+| `from`             | *number*           | :heavy_check_mark: | N/A                |
+| `to`               | *number*           | :heavy_check_mark: | N/A                |
+| `format`           | *string*           | :heavy_check_mark: | N/A                |

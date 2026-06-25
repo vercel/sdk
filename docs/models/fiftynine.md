@@ -5,7 +5,7 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FiftyNine } from "@vercel/sdk/models/fiftyseven.js";
+import { FiftyNine } from "@vercel/sdk/models/usereventpayloadproject.js";
 
 let value: FiftyNine = {
   custom: false,

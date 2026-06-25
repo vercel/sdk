@@ -5,19 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndEleven } from "@vercel/sdk/models/removedusers.js";
+import { TwoHundredAndEleven } from "@vercel/sdk/models/payloadgituserid.js";
 
 let value: TwoHundredAndEleven = {
   projectId: "<id>",
   projectName: "<value>",
-  newProjectName: "<value>",
+  previewDeploymentSuffix: "<value>",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
-| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
-| `newProjectName`   | *string*           | :heavy_check_mark: | N/A                |
+| Field                     | Type                      | Required                  | Description               |
+| ------------------------- | ------------------------- | ------------------------- | ------------------------- |
+| `projectId`               | *string*                  | :heavy_check_mark:        | N/A                       |
+| `projectName`             | *string*                  | :heavy_check_mark:        | N/A                       |
+| `previewDeploymentSuffix` | *string*                  | :heavy_check_mark:        | N/A                       |

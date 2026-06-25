@@ -1,25 +1,51 @@
 # CancelDeploymentRoutesTransforms
 
-## Example Usage
+
+## Supported Types
+
+### `models.CancelDeploymentTransformsDeployments1`
 
 ```typescript
-import { CancelDeploymentRoutesTransforms } from "@vercel/sdk/models/flagsdefinitions.js";
-
-let value: CancelDeploymentRoutesTransforms = {
+const value: models.CancelDeploymentTransformsDeployments1 = {
   type: "request.headers",
   op: "append",
   target: {
-    key: "<key>",
+    key: {},
   },
 };
 ```
 
-## Fields
+### `models.CancelDeploymentTransformsDeployments1`
 
-| Field                                                                                                  | Type                                                                                                   | Required                                                                                               | Description                                                                                            |
-| ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
-| `type`                                                                                                 | [models.CancelDeploymentRoutesDeploymentsType](../models/canceldeploymentroutesdeploymentstype.md)     | :heavy_check_mark:                                                                                     | N/A                                                                                                    |
-| `op`                                                                                                   | [models.CancelDeploymentRoutesOp](../models/canceldeploymentroutesop.md)                               | :heavy_check_mark:                                                                                     | N/A                                                                                                    |
-| `target`                                                                                               | [models.CancelDeploymentRoutesDeploymentsTarget](../models/canceldeploymentroutesdeploymentstarget.md) | :heavy_check_mark:                                                                                     | N/A                                                                                                    |
-| `args`                                                                                                 | *models.CancelDeploymentRoutesArgs*                                                                    | :heavy_minus_sign:                                                                                     | N/A                                                                                                    |
-| `env`                                                                                                  | *string*[]                                                                                             | :heavy_minus_sign:                                                                                     | N/A                                                                                                    |
+```typescript
+const value: models.CancelDeploymentTransformsDeployments1 = {
+  type: "request.headers",
+  op: "append",
+  target: {
+    key: {},
+  },
+};
+```
+
+### `models.CancelDeploymentTransformsDeployments1`
+
+```typescript
+const value: models.CancelDeploymentTransformsDeployments1 = {
+  type: "request.headers",
+  op: "append",
+  target: {
+    key: {},
+  },
+};
+```
+
+### `models.CancelDeploymentTransformsDeployments2`
+
+```typescript
+const value: models.CancelDeploymentTransformsDeployments2 = {
+  type: "request.path",
+  op: "set",
+  args: "<value>",
+};
+```
+

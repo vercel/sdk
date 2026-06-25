@@ -5,20 +5,15 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndTwentyEight } from "@vercel/sdk/models/threehundredandfive.js";
+import { ThreeHundredAndTwentyEight } from "@vercel/sdk/models/threehundredandeight.js";
 
 let value: ThreeHundredAndTwentyEight = {
-  domain: "knotty-gallery.info",
-  ips: [
-    "<value 1>",
-    "<value 2>",
-  ],
+  enabled: "off",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `domain`           | *string*           | :heavy_check_mark: | N/A                |
-| `ips`              | *string*[]         | :heavy_check_mark: | N/A                |
+| Field                                                | Type                                                 | Required                                             | Description                                          |
+| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
+| `enabled`                                            | [models.PayloadEnabled](../models/payloadenabled.md) | :heavy_check_mark:                                   | N/A                                                  |

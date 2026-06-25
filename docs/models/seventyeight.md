@@ -5,7 +5,7 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { SeventyEight } from "@vercel/sdk/models/fiftyseven.js";
+import { SeventyEight } from "@vercel/sdk/models/usereventpayloadproject.js";
 
 let value: SeventyEight = {};
 ```
@@ -22,4 +22,7 @@ let value: SeventyEight = {};
 | `subjectType`                                  | [models.SubjectType](../models/subjecttype.md) | :heavy_minus_sign:                             | N/A                                            |
 | `fields`                                       | *string*[]                                     | :heavy_minus_sign:                             | N/A                                            |
 | `triggerDestinationCount`                      | *number*                                       | :heavy_minus_sign:                             | N/A                                            |
+| `tokenCount`                                   | *number*                                       | :heavy_minus_sign:                             | N/A                                            |
+| `acceptedTokenCount`                           | *number*                                       | :heavy_minus_sign:                             | N/A                                            |
+| `importedTokenCount`                           | *number*                                       | :heavy_minus_sign:                             | N/A                                            |
 | `tokensDeleted`                                | *number*                                       | :heavy_minus_sign:                             | N/A                                            |

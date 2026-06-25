@@ -1,25 +1,51 @@
 # CreateDeploymentRoutesTransforms
 
-## Example Usage
+
+## Supported Types
+
+### `models.Transforms1`
 
 ```typescript
-import { CreateDeploymentRoutesTransforms } from "@vercel/sdk/models/includefiles.js";
-
-let value: CreateDeploymentRoutesTransforms = {
-  type: "request.query",
-  op: "append",
+const value: models.Transforms1 = {
+  type: "response.headers",
+  op: "set",
   target: {
     key: {},
   },
 };
 ```
 
-## Fields
+### `models.Transforms1`
 
-| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
-| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| `type`                                                                   | [models.RoutesType](../models/routestype.md)                             | :heavy_check_mark:                                                       | N/A                                                                      |
-| `op`                                                                     | [models.CreateDeploymentRoutesOp](../models/createdeploymentroutesop.md) | :heavy_check_mark:                                                       | N/A                                                                      |
-| `target`                                                                 | [models.RoutesTarget](../models/routestarget.md)                         | :heavy_check_mark:                                                       | N/A                                                                      |
-| `args`                                                                   | *models.Args*                                                            | :heavy_minus_sign:                                                       | N/A                                                                      |
-| `env`                                                                    | *string*[]                                                               | :heavy_minus_sign:                                                       | N/A                                                                      |
+```typescript
+const value: models.Transforms1 = {
+  type: "response.headers",
+  op: "set",
+  target: {
+    key: {},
+  },
+};
+```
+
+### `models.Transforms1`
+
+```typescript
+const value: models.Transforms1 = {
+  type: "response.headers",
+  op: "set",
+  target: {
+    key: {},
+  },
+};
+```
+
+### `models.Transforms2`
+
+```typescript
+const value: models.Transforms2 = {
+  type: "request.path",
+  op: "set",
+  args: "<value>",
+};
+```
+

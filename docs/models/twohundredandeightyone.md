@@ -5,25 +5,25 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndEightyOne } from "@vercel/sdk/models/consent.js";
+import { TwoHundredAndEightyOne } from "@vercel/sdk/models/rollbackdescription.js";
 
 let value: TwoHundredAndEightyOne = {
-  sampleRatePercent: 5726.32,
-  spendLimitInDollars: 3333.89,
-  previous: {
-    sampleRatePercent: 9497.84,
-    spendLimitInDollars: 5583.41,
-  },
+  email: "Kiara94@yahoo.com",
+  gitlabLogin: "<value>",
+  gitlabEmail: "<value>",
+  gitlabName: "<value>",
+  zeitAccount: "<value>",
+  zeitAccountType: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `projectId`                                                                    | *string*                                                                       | :heavy_minus_sign:                                                             | N/A                                                                            |
-| `projectName`                                                                  | *string*                                                                       | :heavy_minus_sign:                                                             | N/A                                                                            |
-| `analyticsId`                                                                  | *string*                                                                       | :heavy_minus_sign:                                                             | N/A                                                                            |
-| `sampleRatePercent`                                                            | *number*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
-| `spendLimitInDollars`                                                          | *number*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
-| `previous`                                                                     | [models.UserEventPayload281Previous](../models/usereventpayload281previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `email`            | *string*           | :heavy_check_mark: | N/A                |
+| `gitlabLogin`      | *string*           | :heavy_check_mark: | N/A                |
+| `gitlabEmail`      | *string*           | :heavy_check_mark: | N/A                |
+| `gitlabName`       | *string*           | :heavy_check_mark: | N/A                |
+| `zeitAccount`      | *string*           | :heavy_check_mark: | N/A                |
+| `zeitAccountType`  | *string*           | :heavy_check_mark: | N/A                |

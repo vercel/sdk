@@ -5,18 +5,21 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndFive } from "@vercel/sdk/models/removedusers.js";
+import { TwoHundredAndFive } from "@vercel/sdk/models/payloadgituserid.js";
 
 let value: TwoHundredAndFive = {
   projectId: "<id>",
-  enableFunctionsBeta: true,
+  projectName: "<value>",
+  customEnvironmentId: "<id>",
+  customEnvironmentSlug: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                 | Type                  | Required              | Description           |
-| --------------------- | --------------------- | --------------------- | --------------------- |
-| `projectName`         | *string*              | :heavy_minus_sign:    | N/A                   |
-| `projectId`           | *string*              | :heavy_check_mark:    | N/A                   |
-| `enableFunctionsBeta` | *boolean*             | :heavy_check_mark:    | N/A                   |
+| Field                   | Type                    | Required                | Description             |
+| ----------------------- | ----------------------- | ----------------------- | ----------------------- |
+| `projectId`             | *string*                | :heavy_check_mark:      | N/A                     |
+| `projectName`           | *string*                | :heavy_check_mark:      | N/A                     |
+| `customEnvironmentId`   | *string*                | :heavy_check_mark:      | N/A                     |
+| `customEnvironmentSlug` | *string*                | :heavy_check_mark:      | N/A                     |

@@ -1,25 +1,51 @@
 # GetDeploymentRoutesTransforms
 
-## Example Usage
+
+## Supported Types
+
+### `models.GetDeploymentTransforms1`
 
 ```typescript
-import { GetDeploymentRoutesTransforms } from "@vercel/sdk/models/getdeploymentvaluedeploymentsresponse200applicationjsonresponsebody1services2routes1eq.js";
-
-let value: GetDeploymentRoutesTransforms = {
-  type: "response.headers",
-  op: "set",
+const value: models.GetDeploymentTransforms1 = {
+  type: "request.headers",
+  op: "append",
   target: {
     key: {},
   },
 };
 ```
 
-## Fields
+### `models.GetDeploymentTransforms1`
 
-| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `type`                                                                     | [models.GetDeploymentRoutesType](../models/getdeploymentroutestype.md)     | :heavy_check_mark:                                                         | N/A                                                                        |
-| `op`                                                                       | [models.GetDeploymentRoutesOp](../models/getdeploymentroutesop.md)         | :heavy_check_mark:                                                         | N/A                                                                        |
-| `target`                                                                   | [models.GetDeploymentRoutesTarget](../models/getdeploymentroutestarget.md) | :heavy_check_mark:                                                         | N/A                                                                        |
-| `args`                                                                     | *models.GetDeploymentRoutesArgs*                                           | :heavy_minus_sign:                                                         | N/A                                                                        |
-| `env`                                                                      | *string*[]                                                                 | :heavy_minus_sign:                                                         | N/A                                                                        |
+```typescript
+const value: models.GetDeploymentTransforms1 = {
+  type: "request.headers",
+  op: "append",
+  target: {
+    key: {},
+  },
+};
+```
+
+### `models.GetDeploymentTransforms1`
+
+```typescript
+const value: models.GetDeploymentTransforms1 = {
+  type: "request.headers",
+  op: "append",
+  target: {
+    key: {},
+  },
+};
+```
+
+### `models.GetDeploymentTransforms2`
+
+```typescript
+const value: models.GetDeploymentTransforms2 = {
+  type: "request.path",
+  op: "set",
+  args: "<value>",
+};
+```
+

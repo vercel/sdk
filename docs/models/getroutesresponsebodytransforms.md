@@ -1,25 +1,51 @@
 # GetRoutesResponseBodyTransforms
 
-## Example Usage
+
+## Supported Types
+
+### `models.GetRoutesTransformsProjectRoutes1`
 
 ```typescript
-import { GetRoutesResponseBodyTransforms } from "@vercel/sdk/models/getroutesop.js";
-
-let value: GetRoutesResponseBodyTransforms = {
-  type: "request.headers",
-  op: "append",
+const value: models.GetRoutesTransformsProjectRoutes1 = {
+  type: "response.headers",
+  op: "set",
   target: {
-    key: "<key>",
+    key: {},
   },
 };
 ```
 
-## Fields
+### `models.GetRoutesTransformsProjectRoutes1`
 
-| Field                                                                                                    | Type                                                                                                     | Required                                                                                                 | Description                                                                                              |
-| -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
-| `type`                                                                                                   | [models.GetRoutesResponseBodyProjectRoutesType](../models/getroutesresponsebodyprojectroutestype.md)     | :heavy_check_mark:                                                                                       | N/A                                                                                                      |
-| `op`                                                                                                     | [models.GetRoutesResponseBodyOp](../models/getroutesresponsebodyop.md)                                   | :heavy_check_mark:                                                                                       | N/A                                                                                                      |
-| `target`                                                                                                 | [models.GetRoutesResponseBodyProjectRoutesTarget](../models/getroutesresponsebodyprojectroutestarget.md) | :heavy_check_mark:                                                                                       | N/A                                                                                                      |
-| `args`                                                                                                   | *models.GetRoutesResponseBodyArgs*                                                                       | :heavy_minus_sign:                                                                                       | N/A                                                                                                      |
-| `env`                                                                                                    | *string*[]                                                                                               | :heavy_minus_sign:                                                                                       | N/A                                                                                                      |
+```typescript
+const value: models.GetRoutesTransformsProjectRoutes1 = {
+  type: "response.headers",
+  op: "set",
+  target: {
+    key: {},
+  },
+};
+```
+
+### `models.GetRoutesTransformsProjectRoutes1`
+
+```typescript
+const value: models.GetRoutesTransformsProjectRoutes1 = {
+  type: "response.headers",
+  op: "set",
+  target: {
+    key: {},
+  },
+};
+```
+
+### `models.GetRoutesTransformsProjectRoutes2`
+
+```typescript
+const value: models.GetRoutesTransformsProjectRoutes2 = {
+  type: "request.path",
+  op: "set",
+  args: "<value>",
+};
+```
+

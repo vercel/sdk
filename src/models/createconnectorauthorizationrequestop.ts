@@ -40,7 +40,7 @@ export type CreateConnectorAuthorizationRequestSubjectConnectType = ClosedEnum<
   typeof CreateConnectorAuthorizationRequestSubjectConnectType
 >;
 
-export type SubjectTypeUser = {
+export type CreateConnectorAuthorizationRequestSubjectTypeUser = {
   type: CreateConnectorAuthorizationRequestSubjectConnectType;
   id?: string | undefined;
   issuer?: string | undefined;
@@ -54,14 +54,14 @@ export type CreateConnectorAuthorizationRequestSubjectType = ClosedEnum<
   typeof CreateConnectorAuthorizationRequestSubjectType
 >;
 
-export type SubjectTypeApp = {
+export type CreateConnectorAuthorizationRequestSubjectTypeApp = {
   type: CreateConnectorAuthorizationRequestSubjectType;
   additionalProperties?: { [k: string]: any } | undefined;
 };
 
 export type CreateConnectorAuthorizationRequestSubject =
-  | SubjectTypeApp
-  | SubjectTypeUser
+  | CreateConnectorAuthorizationRequestSubjectTypeApp
+  | CreateConnectorAuthorizationRequestSubjectTypeUser
   | SubjectTypeJwtBearer
   | SubjectTypeOther;
 
@@ -72,8 +72,8 @@ export type CreateConnectorAuthorizationRequestAuthorizationDetails = {
 
 export type CreateConnectorAuthorizationRequestRequestBody = {
   subject?:
-    | SubjectTypeApp
-    | SubjectTypeUser
+    | CreateConnectorAuthorizationRequestSubjectTypeApp
+    | CreateConnectorAuthorizationRequestSubjectTypeUser
     | SubjectTypeJwtBearer
     | SubjectTypeOther
     | undefined;
@@ -220,7 +220,7 @@ export const CreateConnectorAuthorizationRequestSubjectConnectType$outboundSchem
   > = z.nativeEnum(CreateConnectorAuthorizationRequestSubjectConnectType);
 
 /** @internal */
-export type SubjectTypeUser$Outbound = {
+export type CreateConnectorAuthorizationRequestSubjectTypeUser$Outbound = {
   type: string;
   id?: string | undefined;
   issuer?: string | undefined;
@@ -228,28 +228,34 @@ export type SubjectTypeUser$Outbound = {
 };
 
 /** @internal */
-export const SubjectTypeUser$outboundSchema: z.ZodType<
-  SubjectTypeUser$Outbound,
-  z.ZodTypeDef,
-  SubjectTypeUser
-> = z.object({
-  type: CreateConnectorAuthorizationRequestSubjectConnectType$outboundSchema,
-  id: z.string().optional(),
-  issuer: z.string().optional(),
-  additionalProperties: z.record(z.any()).optional(),
-}).transform((v) => {
-  return {
-    ...v.additionalProperties,
-    ...remap$(v, {
-      additionalProperties: null,
-    }),
-  };
-});
+export const CreateConnectorAuthorizationRequestSubjectTypeUser$outboundSchema:
+  z.ZodType<
+    CreateConnectorAuthorizationRequestSubjectTypeUser$Outbound,
+    z.ZodTypeDef,
+    CreateConnectorAuthorizationRequestSubjectTypeUser
+  > = z.object({
+    type: CreateConnectorAuthorizationRequestSubjectConnectType$outboundSchema,
+    id: z.string().optional(),
+    issuer: z.string().optional(),
+    additionalProperties: z.record(z.any()).optional(),
+  }).transform((v) => {
+    return {
+      ...v.additionalProperties,
+      ...remap$(v, {
+        additionalProperties: null,
+      }),
+    };
+  });
 
-export function subjectTypeUserToJSON(
-  subjectTypeUser: SubjectTypeUser,
+export function createConnectorAuthorizationRequestSubjectTypeUserToJSON(
+  createConnectorAuthorizationRequestSubjectTypeUser:
+    CreateConnectorAuthorizationRequestSubjectTypeUser,
 ): string {
-  return JSON.stringify(SubjectTypeUser$outboundSchema.parse(subjectTypeUser));
+  return JSON.stringify(
+    CreateConnectorAuthorizationRequestSubjectTypeUser$outboundSchema.parse(
+      createConnectorAuthorizationRequestSubjectTypeUser,
+    ),
+  );
 }
 
 /** @internal */
@@ -258,36 +264,44 @@ export const CreateConnectorAuthorizationRequestSubjectType$outboundSchema:
     .nativeEnum(CreateConnectorAuthorizationRequestSubjectType);
 
 /** @internal */
-export type SubjectTypeApp$Outbound = {
+export type CreateConnectorAuthorizationRequestSubjectTypeApp$Outbound = {
   type: string;
   [additionalProperties: string]: unknown;
 };
 
 /** @internal */
-export const SubjectTypeApp$outboundSchema: z.ZodType<
-  SubjectTypeApp$Outbound,
-  z.ZodTypeDef,
-  SubjectTypeApp
-> = z.object({
-  type: CreateConnectorAuthorizationRequestSubjectType$outboundSchema,
-  additionalProperties: z.record(z.any()).optional(),
-}).transform((v) => {
-  return {
-    ...v.additionalProperties,
-    ...remap$(v, {
-      additionalProperties: null,
-    }),
-  };
-});
+export const CreateConnectorAuthorizationRequestSubjectTypeApp$outboundSchema:
+  z.ZodType<
+    CreateConnectorAuthorizationRequestSubjectTypeApp$Outbound,
+    z.ZodTypeDef,
+    CreateConnectorAuthorizationRequestSubjectTypeApp
+  > = z.object({
+    type: CreateConnectorAuthorizationRequestSubjectType$outboundSchema,
+    additionalProperties: z.record(z.any()).optional(),
+  }).transform((v) => {
+    return {
+      ...v.additionalProperties,
+      ...remap$(v, {
+        additionalProperties: null,
+      }),
+    };
+  });
 
-export function subjectTypeAppToJSON(subjectTypeApp: SubjectTypeApp): string {
-  return JSON.stringify(SubjectTypeApp$outboundSchema.parse(subjectTypeApp));
+export function createConnectorAuthorizationRequestSubjectTypeAppToJSON(
+  createConnectorAuthorizationRequestSubjectTypeApp:
+    CreateConnectorAuthorizationRequestSubjectTypeApp,
+): string {
+  return JSON.stringify(
+    CreateConnectorAuthorizationRequestSubjectTypeApp$outboundSchema.parse(
+      createConnectorAuthorizationRequestSubjectTypeApp,
+    ),
+  );
 }
 
 /** @internal */
 export type CreateConnectorAuthorizationRequestSubject$Outbound =
-  | SubjectTypeApp$Outbound
-  | SubjectTypeUser$Outbound
+  | CreateConnectorAuthorizationRequestSubjectTypeApp$Outbound
+  | CreateConnectorAuthorizationRequestSubjectTypeUser$Outbound
   | SubjectTypeJwtBearer$Outbound
   | SubjectTypeOther$Outbound;
 
@@ -298,8 +312,12 @@ export const CreateConnectorAuthorizationRequestSubject$outboundSchema:
     z.ZodTypeDef,
     CreateConnectorAuthorizationRequestSubject
   > = smartUnion([
-    z.lazy(() => SubjectTypeApp$outboundSchema),
-    z.lazy(() => SubjectTypeUser$outboundSchema),
+    z.lazy(() =>
+      CreateConnectorAuthorizationRequestSubjectTypeApp$outboundSchema
+    ),
+    z.lazy(() =>
+      CreateConnectorAuthorizationRequestSubjectTypeUser$outboundSchema
+    ),
     z.lazy(() => SubjectTypeJwtBearer$outboundSchema),
     z.lazy(() => SubjectTypeOther$outboundSchema),
   ]);
@@ -352,8 +370,8 @@ export function createConnectorAuthorizationRequestAuthorizationDetailsToJSON(
 /** @internal */
 export type CreateConnectorAuthorizationRequestRequestBody$Outbound = {
   subject?:
-    | SubjectTypeApp$Outbound
-    | SubjectTypeUser$Outbound
+    | CreateConnectorAuthorizationRequestSubjectTypeApp$Outbound
+    | CreateConnectorAuthorizationRequestSubjectTypeUser$Outbound
     | SubjectTypeJwtBearer$Outbound
     | SubjectTypeOther$Outbound
     | undefined;
@@ -381,8 +399,12 @@ export const CreateConnectorAuthorizationRequestRequestBody$outboundSchema:
     CreateConnectorAuthorizationRequestRequestBody
   > = z.object({
     subject: smartUnion([
-      z.lazy(() => SubjectTypeApp$outboundSchema),
-      z.lazy(() => SubjectTypeUser$outboundSchema),
+      z.lazy(() =>
+        CreateConnectorAuthorizationRequestSubjectTypeApp$outboundSchema
+      ),
+      z.lazy(() =>
+        CreateConnectorAuthorizationRequestSubjectTypeUser$outboundSchema
+      ),
       z.lazy(() => SubjectTypeJwtBearer$outboundSchema),
       z.lazy(() => SubjectTypeOther$outboundSchema),
     ]).optional(),

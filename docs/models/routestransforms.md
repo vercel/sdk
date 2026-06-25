@@ -1,12 +1,13 @@
 # RoutesTransforms
 
-## Example Usage
+
+## Supported Types
+
+### `models.CancelDeploymentTransforms1`
 
 ```typescript
-import { RoutesTransforms } from "@vercel/sdk/models/canceldeploymentservicesdeploymentsbuilder.js";
-
-let value: RoutesTransforms = {
-  type: "response.headers",
+const value: models.CancelDeploymentTransforms1 = {
+  type: "request.headers",
   op: "append",
   target: {
     key: "<key>",
@@ -14,12 +15,37 @@ let value: RoutesTransforms = {
 };
 ```
 
-## Fields
+### `models.CancelDeploymentTransforms1`
 
-| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
-| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `type`                                                                           | [models.CancelDeploymentRoutesType](../models/canceldeploymentroutestype.md)     | :heavy_check_mark:                                                               | N/A                                                                              |
-| `op`                                                                             | [models.RoutesOp](../models/routesop.md)                                         | :heavy_check_mark:                                                               | N/A                                                                              |
-| `target`                                                                         | [models.CancelDeploymentRoutesTarget](../models/canceldeploymentroutestarget.md) | :heavy_check_mark:                                                               | N/A                                                                              |
-| `args`                                                                           | *models.RoutesArgs*                                                              | :heavy_minus_sign:                                                               | N/A                                                                              |
-| `env`                                                                            | *string*[]                                                                       | :heavy_minus_sign:                                                               | N/A                                                                              |
+```typescript
+const value: models.CancelDeploymentTransforms1 = {
+  type: "request.headers",
+  op: "append",
+  target: {
+    key: "<key>",
+  },
+};
+```
+
+### `models.CancelDeploymentTransforms1`
+
+```typescript
+const value: models.CancelDeploymentTransforms1 = {
+  type: "request.headers",
+  op: "append",
+  target: {
+    key: "<key>",
+  },
+};
+```
+
+### `models.CancelDeploymentTransforms2`
+
+```typescript
+const value: models.CancelDeploymentTransforms2 = {
+  type: "request.path",
+  op: "set",
+  args: "<value>",
+};
+```
+

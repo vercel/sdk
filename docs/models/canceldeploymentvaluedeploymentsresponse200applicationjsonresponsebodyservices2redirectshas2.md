@@ -5,7 +5,7 @@
 ```typescript
 import {
   CancelDeploymentValueDeploymentsResponse200ApplicationJSONResponseBodyServices2RedirectsHas2,
-} from "@vercel/sdk/models/flagsdefinitions.js";
+} from "@vercel/sdk/models/canceldeploymentgitrepodeploymentsresponseownertype.js";
 
 let value:
   CancelDeploymentValueDeploymentsResponse200ApplicationJSONResponseBodyServices2RedirectsHas2 =

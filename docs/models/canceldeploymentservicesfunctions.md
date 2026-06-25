@@ -5,7 +5,7 @@ Function configuration scoped to this service.
 ## Example Usage
 
 ```typescript
-import { CancelDeploymentServicesFunctions } from "@vercel/sdk/models/flagsdefinitions.js";
+import { CancelDeploymentServicesFunctions } from "@vercel/sdk/models/canceldeploymentgitrepodeploymentsresponseownertype.js";
 
 let value: CancelDeploymentServicesFunctions = {};
 ```

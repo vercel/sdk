@@ -206,7 +206,7 @@ export type TestDrainDelivery3$Outbound = {
   fileStructure: string;
   roleArn: string;
   region: string;
-  serverSideEncryption?: string | undefined;
+  serverSideEncryption: string;
   objectAcl?: string | undefined;
 };
 
@@ -224,7 +224,7 @@ export const TestDrainDelivery3$outboundSchema: z.ZodType<
   roleArn: z.string(),
   region: z.string(),
   serverSideEncryption: TestDrainDeliveryServerSideEncryption$outboundSchema
-    .optional(),
+    .default("AES256"),
   objectAcl: TestDrainDeliveryObjectAcl$outboundSchema.optional(),
 });
 

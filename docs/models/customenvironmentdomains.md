@@ -5,7 +5,7 @@ List of domains associated with this environment
 ## Example Usage
 
 ```typescript
-import { CustomEnvironmentDomains } from "@vercel/sdk/models/canceldeploymentservicesdeploymentsbuilder.js";
+import { CustomEnvironmentDomains } from "@vercel/sdk/models/canceldeploymentservicesdeploymentsfunctions.js";
 
 let value: CustomEnvironmentDomains = {
   name: "<value>",

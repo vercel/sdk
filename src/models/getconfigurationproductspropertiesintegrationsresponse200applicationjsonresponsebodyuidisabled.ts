@@ -797,11 +797,11 @@ export type GetConfigurationProductsPropertiesIntegrationsItems = {
   type:
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9Type;
   description?: string | undefined;
-  minLength?: number | undefined;
-  maxLength?: number | undefined;
-  pattern?: string | undefined;
   default?: string | undefined;
   enum?: Array<string> | undefined;
+  maxLength?: number | undefined;
+  minLength?: number | undefined;
+  pattern?: string | undefined;
 };
 
 export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiControl =
@@ -1015,8 +1015,10 @@ export type Properties9 = {
     | string
   >;
   description?: string | undefined;
+  default?: Array<string> | undefined;
   maxItems?: number | undefined;
   minItems?: number | undefined;
+  example?: Array<string> | undefined;
   uiLabel?: string | undefined;
   uiReadOnly?:
     | GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema1
@@ -1042,8 +1044,6 @@ export type Properties9 = {
     | undefined;
   uiPaidOnly?: boolean | undefined;
   uiPlaceholder?: string | undefined;
-  default?: Array<string> | undefined;
-  example?: Array<string> | undefined;
 };
 
 export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsType =
@@ -3148,11 +3148,11 @@ export const GetConfigurationProductsPropertiesIntegrationsItems$inboundSchema:
     type:
       GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9Type$inboundSchema,
     description: types.optional(types.string()),
-    minLength: types.optional(types.number()),
-    maxLength: types.optional(types.number()),
-    pattern: types.optional(types.string()),
     default: types.optional(types.string()),
     enum: types.optional(z.array(types.string())),
+    maxLength: types.optional(types.number()),
+    minLength: types.optional(types.number()),
+    pattern: types.optional(types.string()),
   });
 
 export function getConfigurationProductsPropertiesIntegrationsItemsFromJSON(
@@ -3820,8 +3820,10 @@ export const Properties9$inboundSchema: z.ZodType<
     ]),
   ),
   description: types.optional(types.string()),
+  default: types.optional(z.array(types.string())),
   maxItems: types.optional(types.number()),
   minItems: types.optional(types.number()),
+  example: types.optional(z.array(types.string())),
   "ui:label": types.optional(types.string()),
   "ui:read-only": types.optional(
     smartUnion([
@@ -3865,8 +3867,6 @@ export const Properties9$inboundSchema: z.ZodType<
   ),
   "ui:paid-only": types.optional(types.boolean()),
   "ui:placeholder": types.optional(types.string()),
-  default: types.optional(z.array(types.string())),
-  example: types.optional(z.array(types.string())),
 }).transform((v) => {
   return remap$(v, {
     "ui:control": "uiControl",

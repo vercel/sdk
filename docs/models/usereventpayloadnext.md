@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPayloadNext } from "@vercel/sdk/models/teams.js";
+import { UserEventPayloadNext } from "@vercel/sdk/models/usereventpayloadgituserid.js";
 
 let value: UserEventPayloadNext = {};
 ```
@@ -12,4 +12,4 @@ let value: UserEventPayloadNext = {};
 
 | Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
 | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `passport`                                                                     | [models.UserEventPayload174Passport](../models/usereventpayload174passport.md) | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `passport`                                                                     | [models.UserEventPayload175Passport](../models/usereventpayload175passport.md) | :heavy_minus_sign:                                                             | N/A                                                                            |

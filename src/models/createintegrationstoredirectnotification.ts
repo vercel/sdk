@@ -34,12 +34,12 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
 export type CreateIntegrationStoreDirectPropertiesIntegrationsItems = {
   type:
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema7Type;
-  description?: string | undefined;
-  minLength?: number | undefined;
-  maxLength?: number | undefined;
-  pattern?: string | undefined;
-  default?: string | undefined;
   enum?: Array<string> | undefined;
+  maxLength?: number | undefined;
+  minLength?: number | undefined;
+  pattern?: string | undefined;
+  description?: string | undefined;
+  default?: string | undefined;
 };
 
 export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreUiControl =
@@ -186,6 +186,7 @@ export type CreateIntegrationStoreDirectProperties7 = {
   maxItems?: number | undefined;
   minItems?: number | undefined;
   description?: string | undefined;
+  default?: Array<string> | undefined;
   uiLabel?: string | undefined;
   uiReadOnly?:
     | CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStore1
@@ -211,7 +212,6 @@ export type CreateIntegrationStoreDirectProperties7 = {
     | undefined;
   uiPaidOnly?: boolean | undefined;
   uiPlaceholder?: string | undefined;
-  default?: Array<string> | undefined;
   example?: Array<string> | undefined;
 };
 
@@ -598,11 +598,11 @@ export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200Applica
 export type CreateIntegrationStoreDirectPropertiesItems = {
   type:
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema4Type;
-  description?: string | undefined;
-  minimum?: number | undefined;
-  exclusiveMinimum?: number | undefined;
   maximum?: number | undefined;
   exclusiveMaximum?: number | undefined;
+  minimum?: number | undefined;
+  exclusiveMinimum?: number | undefined;
+  description?: string | undefined;
   default?: number | undefined;
 };
 
@@ -692,6 +692,7 @@ export type CreateIntegrationStoreDirectProperties4 = {
   maxItems?: number | undefined;
   minItems?: number | undefined;
   description?: string | undefined;
+  default?: Array<number> | undefined;
   uiLabel?: string | undefined;
   uiReadOnly?:
     | CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse2001
@@ -716,7 +717,6 @@ export type CreateIntegrationStoreDirectProperties4 = {
     | CreateIntegrationStoreDirectPropertiesIntegrationsResponse200UiFormattedValue
     | undefined;
   uiPaidOnly?: boolean | undefined;
-  default?: Array<number> | undefined;
 };
 
 export const CreateIntegrationStoreDirectPropertiesIntegrationsResponseType = {
@@ -1316,9 +1316,9 @@ export type Product = {
    */
   resourceTitle?: string | undefined;
   /**
-   * URL to a skill/guide for how AI agents should use this product. Providers can specify this to help agents understand how to interact with their integration.
+   * URLs to skills/guides for how AI agents should use this product. Providers can specify these to help agents understand how to interact with their integration.
    */
-  agentSkillUrl?: string | undefined;
+  agentSkills?: Array<string> | undefined;
   repl?: Repl | undefined;
   guides?: Array<Guides> | undefined;
   integration: CreateIntegrationStoreDirectIntegration;
@@ -1363,12 +1363,12 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsItems$inboundSche
   > = z.object({
     type:
       CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema7Type$inboundSchema,
-    description: types.optional(types.string()),
-    minLength: types.optional(types.number()),
-    maxLength: types.optional(types.number()),
-    pattern: types.optional(types.string()),
-    default: types.optional(types.string()),
     enum: types.optional(z.array(types.string())),
+    maxLength: types.optional(types.number()),
+    minLength: types.optional(types.number()),
+    pattern: types.optional(types.string()),
+    description: types.optional(types.string()),
+    default: types.optional(types.string()),
   });
 
 export function createIntegrationStoreDirectPropertiesIntegrationsItemsFromJSON(
@@ -1844,6 +1844,7 @@ export const CreateIntegrationStoreDirectProperties7$inboundSchema: z.ZodType<
   maxItems: types.optional(types.number()),
   minItems: types.optional(types.number()),
   description: types.optional(types.string()),
+  default: types.optional(z.array(types.string())),
   "ui:label": types.optional(types.string()),
   "ui:read-only": types.optional(
     smartUnion([
@@ -1887,7 +1888,6 @@ export const CreateIntegrationStoreDirectProperties7$inboundSchema: z.ZodType<
   ),
   "ui:paid-only": types.optional(types.boolean()),
   "ui:placeholder": types.optional(types.string()),
-  default: types.optional(z.array(types.string())),
   example: types.optional(z.array(types.string())),
 }).transform((v) => {
   return remap$(v, {
@@ -3005,11 +3005,11 @@ export const CreateIntegrationStoreDirectPropertiesItems$inboundSchema:
   > = z.object({
     type:
       CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema4Type$inboundSchema,
-    description: types.optional(types.string()),
-    minimum: types.optional(types.number()),
-    exclusiveMinimum: types.optional(types.number()),
     maximum: types.optional(types.number()),
     exclusiveMaximum: types.optional(types.number()),
+    minimum: types.optional(types.number()),
+    exclusiveMinimum: types.optional(types.number()),
+    description: types.optional(types.string()),
     default: types.optional(types.number()),
   });
 
@@ -3318,6 +3318,7 @@ export const CreateIntegrationStoreDirectProperties4$inboundSchema: z.ZodType<
   maxItems: types.optional(types.number()),
   minItems: types.optional(types.number()),
   description: types.optional(types.string()),
+  default: types.optional(z.array(types.number())),
   "ui:label": types.optional(types.string()),
   "ui:read-only": types.optional(
     smartUnion([
@@ -3360,7 +3361,6 @@ export const CreateIntegrationStoreDirectProperties4$inboundSchema: z.ZodType<
     ),
   ),
   "ui:paid-only": types.optional(types.boolean()),
-  default: types.optional(z.array(types.number())),
 }).transform((v) => {
   return remap$(v, {
     "ui:control": "uiControl",
@@ -4816,7 +4816,7 @@ export const Product$inboundSchema: z.ZodType<Product, z.ZodTypeDef, unknown> =
     showSSOLinkOnProjectConnection: types.optional(types.boolean()),
     disableResourceRenaming: types.optional(types.boolean()),
     resourceTitle: types.optional(types.string()),
-    agentSkillUrl: types.optional(types.string()),
+    agentSkills: types.optional(z.array(types.string())),
     repl: types.optional(z.lazy(() => Repl$inboundSchema)),
     guides: types.optional(z.array(z.lazy(() => Guides$inboundSchema))),
     integration: z.lazy(() =>

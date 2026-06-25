@@ -1,11 +1,12 @@
 # ResponseBodyTransforms
 
-## Example Usage
+
+## Supported Types
+
+### `models.GetRoutesTransforms1`
 
 ```typescript
-import { ResponseBodyTransforms } from "@vercel/sdk/models/getroutesop.js";
-
-let value: ResponseBodyTransforms = {
+const value: models.GetRoutesTransforms1 = {
   type: "request.headers",
   op: "delete",
   target: {
@@ -14,12 +15,37 @@ let value: ResponseBodyTransforms = {
 };
 ```
 
-## Fields
+### `models.GetRoutesTransforms1`
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `type`                                                                         | [models.GetRoutesResponseBodyType](../models/getroutesresponsebodytype.md)     | :heavy_check_mark:                                                             | N/A                                                                            |
-| `op`                                                                           | [models.ResponseBodyOp](../models/responsebodyop.md)                           | :heavy_check_mark:                                                             | N/A                                                                            |
-| `target`                                                                       | [models.GetRoutesResponseBodyTarget](../models/getroutesresponsebodytarget.md) | :heavy_check_mark:                                                             | N/A                                                                            |
-| `args`                                                                         | *models.ResponseBodyArgs*                                                      | :heavy_minus_sign:                                                             | N/A                                                                            |
-| `env`                                                                          | *string*[]                                                                     | :heavy_minus_sign:                                                             | N/A                                                                            |
+```typescript
+const value: models.GetRoutesTransforms1 = {
+  type: "request.headers",
+  op: "delete",
+  target: {
+    key: {},
+  },
+};
+```
+
+### `models.GetRoutesTransforms1`
+
+```typescript
+const value: models.GetRoutesTransforms1 = {
+  type: "request.headers",
+  op: "delete",
+  target: {
+    key: {},
+  },
+};
+```
+
+### `models.GetRoutesTransforms2`
+
+```typescript
+const value: models.GetRoutesTransforms2 = {
+  type: "request.path",
+  op: "set",
+  args: "<value>",
+};
+```
+

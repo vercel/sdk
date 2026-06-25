@@ -5,7 +5,7 @@ Services detected during build from vercel.json experimentalServices or auto-det
 ## Example Usage
 
 ```typescript
-import { Services2 } from "@vercel/sdk/models/includefiles.js";
+import { Services2 } from "@vercel/sdk/models/createdeploymentresponsebody.js";
 
 let value: Services2 = {
   schema: "experimentalServicesV2",
@@ -27,6 +27,7 @@ let value: Services2 = {
 | `framework`                                                                              | *string*                                                                                 | :heavy_minus_sign:                                                                       | N/A                                                                                      |
 | `runtime`                                                                                | *string*                                                                                 | :heavy_minus_sign:                                                                       | N/A                                                                                      |
 | `entrypoint`                                                                             | *string*                                                                                 | :heavy_minus_sign:                                                                       | Resolved entrypoint, relative to the service root.                                       |
+| `command`                                                                                | *string*[]                                                                               | :heavy_minus_sign:                                                                       | Command override for `runtime: "container"` services.                                    |
 | `builder`                                                                                | [models.ServicesBuilder](../models/servicesbuilder.md)                                   | :heavy_check_mark:                                                                       | Builder selected by the resolver.                                                        |
 | `installCommand`                                                                         | *string*                                                                                 | :heavy_minus_sign:                                                                       | N/A                                                                                      |
 | `buildCommand`                                                                           | *string*                                                                                 | :heavy_minus_sign:                                                                       | N/A                                                                                      |

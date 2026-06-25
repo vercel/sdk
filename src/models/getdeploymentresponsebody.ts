@@ -11,8 +11,10 @@ import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import { FlagJSONValue, FlagJSONValue$inboundSchema } from "./flagjsonvalue.js";
 import {
-  GetDeploymentHasDeploymentsResponse200ApplicationJSONResponseBody1Services2Type,
-  GetDeploymentHasDeploymentsResponse200ApplicationJSONResponseBody1Services2Type$inboundSchema,
+  GetDeploymentMissingDeploymentsResponse1,
+  GetDeploymentMissingDeploymentsResponse1$inboundSchema,
+  GetDeploymentMissingDeploymentsResponse2,
+  GetDeploymentMissingDeploymentsResponse2$inboundSchema,
   GetDeploymentResponseBodyOidcTokenClaims,
   GetDeploymentResponseBodyOidcTokenClaims$inboundSchema,
   GetDeploymentResponseBodyReadySubstate,
@@ -21,22 +23,22 @@ import {
   GetDeploymentResponseBodySource$inboundSchema,
   GetDeploymentResponseBodyTarget,
   GetDeploymentResponseBodyTarget$inboundSchema,
-  GetDeploymentRoutesDeployments2,
-  GetDeploymentRoutesDeployments2$inboundSchema,
   GetDeploymentServicesBindings,
   GetDeploymentServicesBindings$inboundSchema,
   GetDeploymentServicesDeploymentsBuilder,
   GetDeploymentServicesDeploymentsBuilder$inboundSchema,
+  GetDeploymentServicesDeploymentsHas,
+  GetDeploymentServicesDeploymentsHas$inboundSchema,
+  GetDeploymentServicesDestination,
+  GetDeploymentServicesDestination$inboundSchema,
   GetDeploymentServicesFunctions,
   GetDeploymentServicesFunctions$inboundSchema,
   GetDeploymentServicesHeaders,
   GetDeploymentServicesHeaders$inboundSchema,
   GetDeploymentServicesRedirects,
   GetDeploymentServicesRedirects$inboundSchema,
-  GetDeploymentServicesRewrites,
-  GetDeploymentServicesRewrites$inboundSchema,
-  GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1Services2Routes1Eq,
-  GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1Services2Routes1Eq$inboundSchema,
+  GetDeploymentServicesTransforms,
+  GetDeploymentServicesTransforms$inboundSchema,
   ResponseBodyCrons,
   ResponseBodyCrons$inboundSchema,
   ResponseBodyFunctions,
@@ -47,7 +49,7 @@ import {
   ResponseBodyPlatform$inboundSchema,
   ResponseBodyRoutes,
   ResponseBodyRoutes$inboundSchema,
-} from "./getdeploymentvaluedeploymentsresponse200applicationjsonresponsebody1services2routes1eq.js";
+} from "./getdeploymentmissingdeploymentsresponse1.js";
 import {
   GetDeploymentResponseBody2,
   GetDeploymentResponseBody2$inboundSchema,
@@ -98,11 +100,67 @@ import {
 } from "./responsebodyproject.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
+export type GetDeploymentServicesDeploymentsMissing =
+  | GetDeploymentMissingDeploymentsResponse1
+  | (GetDeploymentMissingDeploymentsResponse2 & { type: "cookie" })
+  | (GetDeploymentMissingDeploymentsResponse2 & { type: "header" })
+  | (GetDeploymentMissingDeploymentsResponse2 & { type: "query" });
+
+export type GetDeploymentServicesRewrites = {
+  source: string;
+  destination: GetDeploymentServicesDestination;
+  transforms?: Array<GetDeploymentServicesTransforms> | undefined;
+  has?: Array<GetDeploymentServicesDeploymentsHas> | undefined;
+  missing?:
+    | Array<
+      | GetDeploymentMissingDeploymentsResponse1
+      | (GetDeploymentMissingDeploymentsResponse2 & { type: "cookie" })
+      | (GetDeploymentMissingDeploymentsResponse2 & { type: "header" })
+      | (GetDeploymentMissingDeploymentsResponse2 & { type: "query" })
+    >
+    | undefined;
+  statusCode?: number | undefined;
+  env?: Array<string> | undefined;
+  respectOriginCacheControl?: boolean | undefined;
+};
+
+export const GetDeploymentRoutesDeploymentsHandle = {
+  Error: "error",
+  Filesystem: "filesystem",
+  Hit: "hit",
+  Miss: "miss",
+  Resource: "resource",
+  Rewrite: "rewrite",
+} as const;
+export type GetDeploymentRoutesDeploymentsHandle = ClosedEnum<
+  typeof GetDeploymentRoutesDeploymentsHandle
+>;
+
+export type GetDeploymentRoutesDeployments2 = {
+  handle: GetDeploymentRoutesDeploymentsHandle;
+  src?: string | undefined;
+  dest?: string | undefined;
+  status?: number | undefined;
+};
+
+export const GetDeploymentHasDeploymentsResponse200ApplicationJSONResponseBody1Services2Type =
+  {
+    Cookie: "cookie",
+    Header: "header",
+    Query: "query",
+  } as const;
+export type GetDeploymentHasDeploymentsResponse200ApplicationJSONResponseBody1Services2Type =
+  ClosedEnum<
+    typeof GetDeploymentHasDeploymentsResponse200ApplicationJSONResponseBody1Services2Type
+  >;
+
+export type GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1Services2Routes1Eq =
+  | string
+  | number;
+
 export type GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1Services2Routes12 =
   {
-    eq?:
-      | GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1Services2Routes1Eq
-      | undefined;
+    eq?: string | number | undefined;
     neq?: string | undefined;
     inc?: Array<string> | undefined;
     ninc?: Array<string> | undefined;
@@ -269,22 +327,36 @@ export type GetDeploymentRoutesDeploymentsMitigate = {
   action: GetDeploymentRoutesDeploymentsAction;
 };
 
-export const GetDeploymentRoutesDeploymentsType = {
+export const GetDeploymentTransformsDeploymentsResponse200Op = {
+  Set: "set",
+} as const;
+export type GetDeploymentTransformsDeploymentsResponse200Op = ClosedEnum<
+  typeof GetDeploymentTransformsDeploymentsResponse200Op
+>;
+
+export type GetDeploymentTransformsDeployments2 = {
+  type: "request.path";
+  op: GetDeploymentTransformsDeploymentsResponse200Op;
+  args: string;
+  env?: Array<string> | undefined;
+};
+
+export const GetDeploymentTransformsDeploymentsResponse200Type = {
   RequestHeaders: "request.headers",
   RequestQuery: "request.query",
   ResponseHeaders: "response.headers",
 } as const;
-export type GetDeploymentRoutesDeploymentsType = ClosedEnum<
-  typeof GetDeploymentRoutesDeploymentsType
+export type GetDeploymentTransformsDeploymentsResponse200Type = ClosedEnum<
+  typeof GetDeploymentTransformsDeploymentsResponse200Type
 >;
 
-export const GetDeploymentRoutesDeploymentsOp = {
+export const GetDeploymentTransformsDeploymentsResponseOp = {
   Append: "append",
   Delete: "delete",
   Set: "set",
 } as const;
-export type GetDeploymentRoutesDeploymentsOp = ClosedEnum<
-  typeof GetDeploymentRoutesDeploymentsOp
+export type GetDeploymentTransformsDeploymentsResponseOp = ClosedEnum<
+  typeof GetDeploymentTransformsDeploymentsResponseOp
 >;
 
 export type GetDeploymentKeyDeploymentsEq = string | number;
@@ -302,23 +374,29 @@ export type GetDeploymentKeyDeployments2 = {
   lte?: number | undefined;
 };
 
-export type GetDeploymentRoutesDeploymentsKey =
+export type GetDeploymentTransformsDeploymentsKey =
   | string
   | GetDeploymentKeyDeployments2;
 
-export type GetDeploymentRoutesDeploymentsTarget = {
+export type GetDeploymentTransformsDeploymentsTarget = {
   key: string | GetDeploymentKeyDeployments2;
 };
 
-export type GetDeploymentRoutesDeploymentsArgs = string | Array<string>;
+export type GetDeploymentTransformsDeploymentsArgs = string | Array<string>;
 
-export type GetDeploymentRoutesDeploymentsTransforms = {
-  type: GetDeploymentRoutesDeploymentsType;
-  op: GetDeploymentRoutesDeploymentsOp;
-  target: GetDeploymentRoutesDeploymentsTarget;
+export type GetDeploymentTransformsDeployments1 = {
+  type: GetDeploymentTransformsDeploymentsResponse200Type;
+  op: GetDeploymentTransformsDeploymentsResponseOp;
+  target: GetDeploymentTransformsDeploymentsTarget;
   args?: string | Array<string> | undefined;
   env?: Array<string> | undefined;
 };
+
+export type GetDeploymentRoutesDeploymentsTransforms =
+  | (GetDeploymentTransformsDeployments1 & { type: "request.headers" })
+  | (GetDeploymentTransformsDeployments1 & { type: "request.query" })
+  | (GetDeploymentTransformsDeployments1 & { type: "response.headers" })
+  | GetDeploymentTransformsDeployments2;
 
 export type GetDeploymentRoutesDeploymentsLocale = {
   redirect?: { [k: string]: string } | undefined;
@@ -385,7 +463,14 @@ export type GetDeploymentRoutesDeployments1 = {
     >
     | undefined;
   mitigate?: GetDeploymentRoutesDeploymentsMitigate | undefined;
-  transforms?: Array<GetDeploymentRoutesDeploymentsTransforms> | undefined;
+  transforms?:
+    | Array<
+      | (GetDeploymentTransformsDeployments1 & { type: "request.headers" })
+      | (GetDeploymentTransformsDeployments1 & { type: "request.query" })
+      | (GetDeploymentTransformsDeployments1 & { type: "response.headers" })
+      | GetDeploymentTransformsDeployments2
+    >
+    | undefined;
   env?: Array<string> | undefined;
   locale?: GetDeploymentRoutesDeploymentsLocale | undefined;
   /**
@@ -432,6 +517,10 @@ export type GetDeploymentServices2 = {
    * Resolved entrypoint, relative to the service root.
    */
   entrypoint?: string | undefined;
+  /**
+   * Command override for `runtime: "container"` services.
+   */
+  command?: Array<string> | undefined;
   /**
    * Builder selected by the resolver.
    */
@@ -1355,15 +1444,151 @@ export type GetDeploymentResponseBody =
   | GetDeploymentResponseBody2;
 
 /** @internal */
+export const GetDeploymentServicesDeploymentsMissing$inboundSchema: z.ZodType<
+  GetDeploymentServicesDeploymentsMissing,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  GetDeploymentMissingDeploymentsResponse1$inboundSchema,
+  GetDeploymentMissingDeploymentsResponse2$inboundSchema.and(
+    z.object({ type: z.literal("cookie") }),
+  ),
+  GetDeploymentMissingDeploymentsResponse2$inboundSchema.and(
+    z.object({ type: z.literal("header") }),
+  ),
+  GetDeploymentMissingDeploymentsResponse2$inboundSchema.and(
+    z.object({ type: z.literal("query") }),
+  ),
+]);
+
+export function getDeploymentServicesDeploymentsMissingFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetDeploymentServicesDeploymentsMissing,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetDeploymentServicesDeploymentsMissing$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetDeploymentServicesDeploymentsMissing' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentServicesRewrites$inboundSchema: z.ZodType<
+  GetDeploymentServicesRewrites,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  source: types.string(),
+  destination: GetDeploymentServicesDestination$inboundSchema,
+  transforms: types.optional(
+    z.array(GetDeploymentServicesTransforms$inboundSchema),
+  ),
+  has: types.optional(
+    z.array(GetDeploymentServicesDeploymentsHas$inboundSchema),
+  ),
+  missing: types.optional(
+    z.array(
+      z.union([
+        GetDeploymentMissingDeploymentsResponse1$inboundSchema,
+        GetDeploymentMissingDeploymentsResponse2$inboundSchema.and(
+          z.object({ type: z.literal("cookie") }),
+        ),
+        GetDeploymentMissingDeploymentsResponse2$inboundSchema.and(
+          z.object({ type: z.literal("header") }),
+        ),
+        GetDeploymentMissingDeploymentsResponse2$inboundSchema.and(
+          z.object({ type: z.literal("query") }),
+        ),
+      ]),
+    ),
+  ),
+  statusCode: types.optional(types.number()),
+  env: types.optional(z.array(types.string())),
+  respectOriginCacheControl: types.optional(types.boolean()),
+});
+
+export function getDeploymentServicesRewritesFromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentServicesRewrites, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDeploymentServicesRewrites$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentServicesRewrites' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentRoutesDeploymentsHandle$inboundSchema:
+  z.ZodNativeEnum<typeof GetDeploymentRoutesDeploymentsHandle> = z.nativeEnum(
+    GetDeploymentRoutesDeploymentsHandle,
+  );
+
+/** @internal */
+export const GetDeploymentRoutesDeployments2$inboundSchema: z.ZodType<
+  GetDeploymentRoutesDeployments2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  handle: GetDeploymentRoutesDeploymentsHandle$inboundSchema,
+  src: types.optional(types.string()),
+  dest: types.optional(types.string()),
+  status: types.optional(types.number()),
+});
+
+export function getDeploymentRoutesDeployments2FromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentRoutesDeployments2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDeploymentRoutesDeployments2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentRoutesDeployments2' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentHasDeploymentsResponse200ApplicationJSONResponseBody1Services2Type$inboundSchema:
+  z.ZodNativeEnum<
+    typeof GetDeploymentHasDeploymentsResponse200ApplicationJSONResponseBody1Services2Type
+  > = z.nativeEnum(
+    GetDeploymentHasDeploymentsResponse200ApplicationJSONResponseBody1Services2Type,
+  );
+
+/** @internal */
+export const GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1Services2Routes1Eq$inboundSchema:
+  z.ZodType<
+    GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1Services2Routes1Eq,
+    z.ZodTypeDef,
+    unknown
+  > = smartUnion([types.string(), types.number()]);
+
+export function getDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1Services2Routes1EqFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1Services2Routes1Eq,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1Services2Routes1Eq$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1Services2Routes1Eq' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1Services2Routes12$inboundSchema:
   z.ZodType<
     GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1Services2Routes12,
     z.ZodTypeDef,
     unknown
   > = z.object({
-    eq: types.optional(
-      GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1Services2Routes1Eq$inboundSchema,
-    ),
+    eq: types.optional(smartUnion([types.string(), types.number()])),
     neq: types.optional(types.string()),
     inc: types.optional(z.array(types.string())),
     ninc: types.optional(z.array(types.string())),
@@ -1905,14 +2130,42 @@ export function getDeploymentRoutesDeploymentsMitigateFromJSON(
 }
 
 /** @internal */
-export const GetDeploymentRoutesDeploymentsType$inboundSchema: z.ZodNativeEnum<
-  typeof GetDeploymentRoutesDeploymentsType
-> = z.nativeEnum(GetDeploymentRoutesDeploymentsType);
+export const GetDeploymentTransformsDeploymentsResponse200Op$inboundSchema:
+  z.ZodNativeEnum<typeof GetDeploymentTransformsDeploymentsResponse200Op> = z
+    .nativeEnum(GetDeploymentTransformsDeploymentsResponse200Op);
 
 /** @internal */
-export const GetDeploymentRoutesDeploymentsOp$inboundSchema: z.ZodNativeEnum<
-  typeof GetDeploymentRoutesDeploymentsOp
-> = z.nativeEnum(GetDeploymentRoutesDeploymentsOp);
+export const GetDeploymentTransformsDeployments2$inboundSchema: z.ZodType<
+  GetDeploymentTransformsDeployments2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: types.literal("request.path"),
+  op: GetDeploymentTransformsDeploymentsResponse200Op$inboundSchema,
+  args: types.string(),
+  env: types.optional(z.array(types.string())),
+});
+
+export function getDeploymentTransformsDeployments2FromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentTransformsDeployments2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetDeploymentTransformsDeployments2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentTransformsDeployments2' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentTransformsDeploymentsResponse200Type$inboundSchema:
+  z.ZodNativeEnum<typeof GetDeploymentTransformsDeploymentsResponse200Type> = z
+    .nativeEnum(GetDeploymentTransformsDeploymentsResponse200Type);
+
+/** @internal */
+export const GetDeploymentTransformsDeploymentsResponseOp$inboundSchema:
+  z.ZodNativeEnum<typeof GetDeploymentTransformsDeploymentsResponseOp> = z
+    .nativeEnum(GetDeploymentTransformsDeploymentsResponseOp);
 
 /** @internal */
 export const GetDeploymentKeyDeploymentsEq$inboundSchema: z.ZodType<
@@ -1960,8 +2213,8 @@ export function getDeploymentKeyDeployments2FromJSON(
 }
 
 /** @internal */
-export const GetDeploymentRoutesDeploymentsKey$inboundSchema: z.ZodType<
-  GetDeploymentRoutesDeploymentsKey,
+export const GetDeploymentTransformsDeploymentsKey$inboundSchema: z.ZodType<
+  GetDeploymentTransformsDeploymentsKey,
   z.ZodTypeDef,
   unknown
 > = smartUnion([
@@ -1969,19 +2222,20 @@ export const GetDeploymentRoutesDeploymentsKey$inboundSchema: z.ZodType<
   z.lazy(() => GetDeploymentKeyDeployments2$inboundSchema),
 ]);
 
-export function getDeploymentRoutesDeploymentsKeyFromJSON(
+export function getDeploymentTransformsDeploymentsKeyFromJSON(
   jsonString: string,
-): SafeParseResult<GetDeploymentRoutesDeploymentsKey, SDKValidationError> {
+): SafeParseResult<GetDeploymentTransformsDeploymentsKey, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetDeploymentRoutesDeploymentsKey$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDeploymentRoutesDeploymentsKey' from JSON`,
+    (x) =>
+      GetDeploymentTransformsDeploymentsKey$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentTransformsDeploymentsKey' from JSON`,
   );
 }
 
 /** @internal */
-export const GetDeploymentRoutesDeploymentsTarget$inboundSchema: z.ZodType<
-  GetDeploymentRoutesDeploymentsTarget,
+export const GetDeploymentTransformsDeploymentsTarget$inboundSchema: z.ZodType<
+  GetDeploymentTransformsDeploymentsTarget,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -1991,32 +2245,61 @@ export const GetDeploymentRoutesDeploymentsTarget$inboundSchema: z.ZodType<
   ]),
 });
 
-export function getDeploymentRoutesDeploymentsTargetFromJSON(
+export function getDeploymentTransformsDeploymentsTargetFromJSON(
   jsonString: string,
-): SafeParseResult<GetDeploymentRoutesDeploymentsTarget, SDKValidationError> {
+): SafeParseResult<
+  GetDeploymentTransformsDeploymentsTarget,
+  SDKValidationError
+> {
   return safeParse(
     jsonString,
     (x) =>
-      GetDeploymentRoutesDeploymentsTarget$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDeploymentRoutesDeploymentsTarget' from JSON`,
+      GetDeploymentTransformsDeploymentsTarget$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetDeploymentTransformsDeploymentsTarget' from JSON`,
   );
 }
 
 /** @internal */
-export const GetDeploymentRoutesDeploymentsArgs$inboundSchema: z.ZodType<
-  GetDeploymentRoutesDeploymentsArgs,
+export const GetDeploymentTransformsDeploymentsArgs$inboundSchema: z.ZodType<
+  GetDeploymentTransformsDeploymentsArgs,
   z.ZodTypeDef,
   unknown
 > = smartUnion([types.string(), z.array(types.string())]);
 
-export function getDeploymentRoutesDeploymentsArgsFromJSON(
+export function getDeploymentTransformsDeploymentsArgsFromJSON(
   jsonString: string,
-): SafeParseResult<GetDeploymentRoutesDeploymentsArgs, SDKValidationError> {
+): SafeParseResult<GetDeploymentTransformsDeploymentsArgs, SDKValidationError> {
   return safeParse(
     jsonString,
     (x) =>
-      GetDeploymentRoutesDeploymentsArgs$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDeploymentRoutesDeploymentsArgs' from JSON`,
+      GetDeploymentTransformsDeploymentsArgs$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentTransformsDeploymentsArgs' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentTransformsDeployments1$inboundSchema: z.ZodType<
+  GetDeploymentTransformsDeployments1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: GetDeploymentTransformsDeploymentsResponse200Type$inboundSchema,
+  op: GetDeploymentTransformsDeploymentsResponseOp$inboundSchema,
+  target: z.lazy(() => GetDeploymentTransformsDeploymentsTarget$inboundSchema),
+  args: types.optional(smartUnion([types.string(), z.array(types.string())])),
+  env: types.optional(z.array(types.string())),
+});
+
+export function getDeploymentTransformsDeployments1FromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentTransformsDeployments1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetDeploymentTransformsDeployments1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentTransformsDeployments1' from JSON`,
   );
 }
 
@@ -2025,13 +2308,18 @@ export const GetDeploymentRoutesDeploymentsTransforms$inboundSchema: z.ZodType<
   GetDeploymentRoutesDeploymentsTransforms,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  type: GetDeploymentRoutesDeploymentsType$inboundSchema,
-  op: GetDeploymentRoutesDeploymentsOp$inboundSchema,
-  target: z.lazy(() => GetDeploymentRoutesDeploymentsTarget$inboundSchema),
-  args: types.optional(smartUnion([types.string(), z.array(types.string())])),
-  env: types.optional(z.array(types.string())),
-});
+> = z.union([
+  z.lazy(() => GetDeploymentTransformsDeployments1$inboundSchema).and(
+    z.object({ type: z.literal("request.headers") }),
+  ),
+  z.lazy(() => GetDeploymentTransformsDeployments1$inboundSchema).and(
+    z.object({ type: z.literal("request.query") }),
+  ),
+  z.lazy(() => GetDeploymentTransformsDeployments1$inboundSchema).and(
+    z.object({ type: z.literal("response.headers") }),
+  ),
+  z.lazy(() => GetDeploymentTransformsDeployments2$inboundSchema),
+]);
 
 export function getDeploymentRoutesDeploymentsTransformsFromJSON(
   jsonString: string,
@@ -2181,9 +2469,18 @@ export const GetDeploymentRoutesDeployments1$inboundSchema: z.ZodType<
     z.lazy(() => GetDeploymentRoutesDeploymentsMitigate$inboundSchema),
   ),
   transforms: types.optional(
-    z.array(
-      z.lazy(() => GetDeploymentRoutesDeploymentsTransforms$inboundSchema),
-    ),
+    z.array(z.union([
+      z.lazy(() => GetDeploymentTransformsDeployments1$inboundSchema).and(
+        z.object({ type: z.literal("request.headers") }),
+      ),
+      z.lazy(() => GetDeploymentTransformsDeployments1$inboundSchema).and(
+        z.object({ type: z.literal("request.query") }),
+      ),
+      z.lazy(() => GetDeploymentTransformsDeployments1$inboundSchema).and(
+        z.object({ type: z.literal("response.headers") }),
+      ),
+      z.lazy(() => GetDeploymentTransformsDeployments2$inboundSchema),
+    ])),
   ),
   env: types.optional(z.array(types.string())),
   locale: types.optional(
@@ -2220,7 +2517,7 @@ export const GetDeploymentServicesRoutes$inboundSchema: z.ZodType<
   unknown
 > = smartUnion([
   z.lazy(() => GetDeploymentRoutesDeployments1$inboundSchema),
-  GetDeploymentRoutesDeployments2$inboundSchema,
+  z.lazy(() => GetDeploymentRoutesDeployments2$inboundSchema),
 ]);
 
 export function getDeploymentServicesRoutesFromJSON(
@@ -2245,6 +2542,7 @@ export const GetDeploymentServices2$inboundSchema: z.ZodType<
   framework: types.optional(types.string()),
   runtime: types.optional(types.string()),
   entrypoint: types.optional(types.string()),
+  command: types.optional(z.array(types.string())),
   builder: GetDeploymentServicesDeploymentsBuilder$inboundSchema,
   installCommand: types.optional(types.string()),
   buildCommand: types.optional(types.string()),
@@ -2262,12 +2560,14 @@ export const GetDeploymentServices2$inboundSchema: z.ZodType<
     z.array(GetDeploymentServicesRedirects$inboundSchema),
   ),
   rewrites: types.optional(
-    z.array(GetDeploymentServicesRewrites$inboundSchema),
+    z.array(z.lazy(() => GetDeploymentServicesRewrites$inboundSchema)),
   ),
   routes: types.optional(
     z.array(smartUnion([
       z.lazy(() => GetDeploymentRoutesDeployments1$inboundSchema),
-      GetDeploymentRoutesDeployments2$inboundSchema,
+      z.lazy(() =>
+        GetDeploymentRoutesDeployments2$inboundSchema
+      ),
     ])),
   ),
   cleanUrls: types.optional(types.boolean()),

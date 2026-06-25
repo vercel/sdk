@@ -1,25 +1,51 @@
 # CreateDeploymentRoutesDeploymentsTransforms
 
-## Example Usage
+
+## Supported Types
+
+### `models.CreateDeploymentTransforms1`
 
 ```typescript
-import { CreateDeploymentRoutesDeploymentsTransforms } from "@vercel/sdk/models/includefiles.js";
-
-let value: CreateDeploymentRoutesDeploymentsTransforms = {
-  type: "response.headers",
-  op: "append",
+const value: models.CreateDeploymentTransforms1 = {
+  type: "request.query",
+  op: "set",
   target: {
     key: "<key>",
   },
 };
 ```
 
-## Fields
+### `models.CreateDeploymentTransforms1`
 
-| Field                                                                                          | Type                                                                                           | Required                                                                                       | Description                                                                                    |
-| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| `type`                                                                                         | [models.CreateDeploymentRoutesType](../models/createdeploymentroutestype.md)                   | :heavy_check_mark:                                                                             | N/A                                                                                            |
-| `op`                                                                                           | [models.CreateDeploymentRoutesDeploymentsOp](../models/createdeploymentroutesdeploymentsop.md) | :heavy_check_mark:                                                                             | N/A                                                                                            |
-| `target`                                                                                       | [models.CreateDeploymentRoutesTarget](../models/createdeploymentroutestarget.md)               | :heavy_check_mark:                                                                             | N/A                                                                                            |
-| `args`                                                                                         | *models.CreateDeploymentRoutesArgs*                                                            | :heavy_minus_sign:                                                                             | N/A                                                                                            |
-| `env`                                                                                          | *string*[]                                                                                     | :heavy_minus_sign:                                                                             | N/A                                                                                            |
+```typescript
+const value: models.CreateDeploymentTransforms1 = {
+  type: "request.query",
+  op: "set",
+  target: {
+    key: "<key>",
+  },
+};
+```
+
+### `models.CreateDeploymentTransforms1`
+
+```typescript
+const value: models.CreateDeploymentTransforms1 = {
+  type: "request.query",
+  op: "set",
+  target: {
+    key: "<key>",
+  },
+};
+```
+
+### `models.CreateDeploymentTransforms2`
+
+```typescript
+const value: models.CreateDeploymentTransforms2 = {
+  type: "request.path",
+  op: "set",
+  args: "<value>",
+};
+```
+

@@ -211,23 +211,41 @@ export type GetRoutesResponseBodyProjectRoutesMitigate = {
   action: GetRoutesResponseBodyProjectRoutesAction;
 };
 
-export const GetRoutesResponseBodyProjectRoutesResponseType = {
+export const GetRoutesTransformsProjectRoutesResponse200ApplicationJSONResponseBodyOp =
+  {
+    Set: "set",
+  } as const;
+export type GetRoutesTransformsProjectRoutesResponse200ApplicationJSONResponseBodyOp =
+  ClosedEnum<
+    typeof GetRoutesTransformsProjectRoutesResponse200ApplicationJSONResponseBodyOp
+  >;
+
+export type GetRoutesTransformsProjectRoutesResponse2 = {
+  type: "request.path";
+  op: GetRoutesTransformsProjectRoutesResponse200ApplicationJSONResponseBodyOp;
+  args: string;
+  env?: Array<string> | undefined;
+};
+
+export const GetRoutesTransformsProjectRoutesResponse200ApplicationJSONType = {
   RequestHeaders: "request.headers",
   RequestQuery: "request.query",
   ResponseHeaders: "response.headers",
 } as const;
-export type GetRoutesResponseBodyProjectRoutesResponseType = ClosedEnum<
-  typeof GetRoutesResponseBodyProjectRoutesResponseType
->;
+export type GetRoutesTransformsProjectRoutesResponse200ApplicationJSONType =
+  ClosedEnum<
+    typeof GetRoutesTransformsProjectRoutesResponse200ApplicationJSONType
+  >;
 
-export const GetRoutesResponseBodyProjectRoutesOp = {
+export const GetRoutesTransformsProjectRoutesResponse200ApplicationJSONOp = {
   Append: "append",
   Delete: "delete",
   Set: "set",
 } as const;
-export type GetRoutesResponseBodyProjectRoutesOp = ClosedEnum<
-  typeof GetRoutesResponseBodyProjectRoutesOp
->;
+export type GetRoutesTransformsProjectRoutesResponse200ApplicationJSONOp =
+  ClosedEnum<
+    typeof GetRoutesTransformsProjectRoutesResponse200ApplicationJSONOp
+  >;
 
 export type GetRoutesKeyProjectRoutesResponseEq = string | number;
 
@@ -244,23 +262,31 @@ export type GetRoutesKeyProjectRoutesResponse2 = {
   lte?: number | undefined;
 };
 
-export type GetRoutesResponseBodyProjectRoutesKey =
+export type GetRoutesTransformsProjectRoutesResponseKey =
   | string
   | GetRoutesKeyProjectRoutesResponse2;
 
-export type GetRoutesResponseBodyProjectRoutesResponseTarget = {
+export type GetRoutesTransformsProjectRoutesResponseTarget = {
   key: string | GetRoutesKeyProjectRoutesResponse2;
 };
 
-export type GetRoutesResponseBodyProjectRoutesArgs = string | Array<string>;
+export type GetRoutesTransformsProjectRoutesResponseArgs =
+  | string
+  | Array<string>;
 
-export type GetRoutesResponseBodyProjectRoutesTransforms = {
-  type: GetRoutesResponseBodyProjectRoutesResponseType;
-  op: GetRoutesResponseBodyProjectRoutesOp;
-  target: GetRoutesResponseBodyProjectRoutesResponseTarget;
+export type GetRoutesTransformsProjectRoutesResponse1 = {
+  type: GetRoutesTransformsProjectRoutesResponse200ApplicationJSONType;
+  op: GetRoutesTransformsProjectRoutesResponse200ApplicationJSONOp;
+  target: GetRoutesTransformsProjectRoutesResponseTarget;
   args?: string | Array<string> | undefined;
   env?: Array<string> | undefined;
 };
+
+export type GetRoutesResponseBodyProjectRoutesTransforms =
+  | (GetRoutesTransformsProjectRoutesResponse1 & { type: "request.headers" })
+  | (GetRoutesTransformsProjectRoutesResponse1 & { type: "request.query" })
+  | (GetRoutesTransformsProjectRoutesResponse1 & { type: "response.headers" })
+  | GetRoutesTransformsProjectRoutesResponse2;
 
 export type GetRoutesResponseBodyProjectRoutesLocale = {
   redirect?: { [k: string]: string } | undefined;
@@ -318,7 +344,18 @@ export type GetRoutesResponseBodyRoute = {
     >
     | undefined;
   mitigate?: GetRoutesResponseBodyProjectRoutesMitigate | undefined;
-  transforms?: Array<GetRoutesResponseBodyProjectRoutesTransforms> | undefined;
+  transforms?:
+    | Array<
+      | (GetRoutesTransformsProjectRoutesResponse1 & {
+        type: "request.headers";
+      })
+      | (GetRoutesTransformsProjectRoutesResponse1 & { type: "request.query" })
+      | (GetRoutesTransformsProjectRoutesResponse1 & {
+        type: "response.headers";
+      })
+      | GetRoutesTransformsProjectRoutesResponse2
+    >
+    | undefined;
   env?: Array<string> | undefined;
   locale?: GetRoutesResponseBodyProjectRoutesLocale | undefined;
   /**
@@ -634,22 +671,36 @@ export type GetRoutesResponseBodyMitigate = {
   action: GetRoutesResponseBodyAction;
 };
 
-export const GetRoutesResponseBodyProjectRoutesType = {
+export const GetRoutesTransformsProjectRoutesResponse200Op = {
+  Set: "set",
+} as const;
+export type GetRoutesTransformsProjectRoutesResponse200Op = ClosedEnum<
+  typeof GetRoutesTransformsProjectRoutesResponse200Op
+>;
+
+export type GetRoutesTransformsProjectRoutes2 = {
+  type: "request.path";
+  op: GetRoutesTransformsProjectRoutesResponse200Op;
+  args: string;
+  env?: Array<string> | undefined;
+};
+
+export const GetRoutesTransformsProjectRoutesResponseType = {
   RequestHeaders: "request.headers",
   RequestQuery: "request.query",
   ResponseHeaders: "response.headers",
 } as const;
-export type GetRoutesResponseBodyProjectRoutesType = ClosedEnum<
-  typeof GetRoutesResponseBodyProjectRoutesType
+export type GetRoutesTransformsProjectRoutesResponseType = ClosedEnum<
+  typeof GetRoutesTransformsProjectRoutesResponseType
 >;
 
-export const GetRoutesResponseBodyOp = {
+export const GetRoutesTransformsProjectRoutesResponseOp = {
   Append: "append",
   Delete: "delete",
   Set: "set",
 } as const;
-export type GetRoutesResponseBodyOp = ClosedEnum<
-  typeof GetRoutesResponseBodyOp
+export type GetRoutesTransformsProjectRoutesResponseOp = ClosedEnum<
+  typeof GetRoutesTransformsProjectRoutesResponseOp
 >;
 
 export type GetRoutesKeyProjectRoutesEq = string | number;
@@ -667,21 +718,29 @@ export type GetRoutesKeyProjectRoutes2 = {
   lte?: number | undefined;
 };
 
-export type GetRoutesResponseBodyKey = string | GetRoutesKeyProjectRoutes2;
+export type GetRoutesTransformsProjectRoutesKey =
+  | string
+  | GetRoutesKeyProjectRoutes2;
 
-export type GetRoutesResponseBodyProjectRoutesTarget = {
+export type GetRoutesTransformsProjectRoutesTarget = {
   key: string | GetRoutesKeyProjectRoutes2;
 };
 
-export type GetRoutesResponseBodyArgs = string | Array<string>;
+export type GetRoutesTransformsProjectRoutesArgs = string | Array<string>;
 
-export type GetRoutesResponseBodyTransforms = {
-  type: GetRoutesResponseBodyProjectRoutesType;
-  op: GetRoutesResponseBodyOp;
-  target: GetRoutesResponseBodyProjectRoutesTarget;
+export type GetRoutesTransformsProjectRoutes1 = {
+  type: GetRoutesTransformsProjectRoutesResponseType;
+  op: GetRoutesTransformsProjectRoutesResponseOp;
+  target: GetRoutesTransformsProjectRoutesTarget;
   args?: string | Array<string> | undefined;
   env?: Array<string> | undefined;
 };
+
+export type GetRoutesResponseBodyTransforms =
+  | (GetRoutesTransformsProjectRoutes1 & { type: "request.headers" })
+  | (GetRoutesTransformsProjectRoutes1 & { type: "request.query" })
+  | (GetRoutesTransformsProjectRoutes1 & { type: "response.headers" })
+  | GetRoutesTransformsProjectRoutes2;
 
 export type GetRoutesResponseBodyLocale = {
   redirect?: { [k: string]: string } | undefined;
@@ -739,7 +798,14 @@ export type ResponseBodyRoute = {
     >
     | undefined;
   mitigate?: GetRoutesResponseBodyMitigate | undefined;
-  transforms?: Array<GetRoutesResponseBodyTransforms> | undefined;
+  transforms?:
+    | Array<
+      | (GetRoutesTransformsProjectRoutes1 & { type: "request.headers" })
+      | (GetRoutesTransformsProjectRoutes1 & { type: "request.query" })
+      | (GetRoutesTransformsProjectRoutes1 & { type: "response.headers" })
+      | GetRoutesTransformsProjectRoutes2
+    >
+    | undefined;
   env?: Array<string> | undefined;
   locale?: GetRoutesResponseBodyLocale | undefined;
   /**
@@ -1024,21 +1090,35 @@ export type ResponseBodyMitigate = {
   action: GetRoutesResponseBodyProjectRoutesResponseAction;
 };
 
-export const GetRoutesResponseBodyType = {
+export const GetRoutesTransformsProjectRoutesOp = {
+  Set: "set",
+} as const;
+export type GetRoutesTransformsProjectRoutesOp = ClosedEnum<
+  typeof GetRoutesTransformsProjectRoutesOp
+>;
+
+export type GetRoutesTransforms2 = {
+  type: "request.path";
+  op: GetRoutesTransformsProjectRoutesOp;
+  args: string;
+  env?: Array<string> | undefined;
+};
+
+export const GetRoutesTransformsType = {
   RequestHeaders: "request.headers",
   RequestQuery: "request.query",
   ResponseHeaders: "response.headers",
 } as const;
-export type GetRoutesResponseBodyType = ClosedEnum<
-  typeof GetRoutesResponseBodyType
+export type GetRoutesTransformsType = ClosedEnum<
+  typeof GetRoutesTransformsType
 >;
 
-export const ResponseBodyOp = {
+export const GetRoutesTransformsOp = {
   Append: "append",
   Delete: "delete",
   Set: "set",
 } as const;
-export type ResponseBodyOp = ClosedEnum<typeof ResponseBodyOp>;
+export type GetRoutesTransformsOp = ClosedEnum<typeof GetRoutesTransformsOp>;
 
 export type GetRoutesKeyEq = string | number;
 
@@ -1055,21 +1135,27 @@ export type GetRoutesKey2 = {
   lte?: number | undefined;
 };
 
-export type ResponseBodyKey = string | GetRoutesKey2;
+export type GetRoutesTransformsKey = string | GetRoutesKey2;
 
-export type GetRoutesResponseBodyTarget = {
+export type GetRoutesTransformsTarget = {
   key: string | GetRoutesKey2;
 };
 
-export type ResponseBodyArgs = string | Array<string>;
+export type GetRoutesTransformsArgs = string | Array<string>;
 
-export type ResponseBodyTransforms = {
-  type: GetRoutesResponseBodyType;
-  op: ResponseBodyOp;
-  target: GetRoutesResponseBodyTarget;
+export type GetRoutesTransforms1 = {
+  type: GetRoutesTransformsType;
+  op: GetRoutesTransformsOp;
+  target: GetRoutesTransformsTarget;
   args?: string | Array<string> | undefined;
   env?: Array<string> | undefined;
 };
+
+export type ResponseBodyTransforms =
+  | (GetRoutesTransforms1 & { type: "request.headers" })
+  | (GetRoutesTransforms1 & { type: "request.query" })
+  | (GetRoutesTransforms1 & { type: "response.headers" })
+  | GetRoutesTransforms2;
 
 export type ResponseBodyLocale = {
   redirect?: { [k: string]: string } | undefined;
@@ -1125,7 +1211,14 @@ export type GetRoutesResponseBodyProjectRoutesRoute = {
     >
     | undefined;
   mitigate?: ResponseBodyMitigate | undefined;
-  transforms?: Array<ResponseBodyTransforms> | undefined;
+  transforms?:
+    | Array<
+      | (GetRoutesTransforms1 & { type: "request.headers" })
+      | (GetRoutesTransforms1 & { type: "request.query" })
+      | (GetRoutesTransforms1 & { type: "response.headers" })
+      | GetRoutesTransforms2
+    >
+    | undefined;
   env?: Array<string> | undefined;
   locale?: ResponseBodyLocale | undefined;
   /**
@@ -1903,14 +1996,56 @@ export function getRoutesResponseBodyProjectRoutesMitigateFromJSON(
 }
 
 /** @internal */
-export const GetRoutesResponseBodyProjectRoutesResponseType$inboundSchema:
-  z.ZodNativeEnum<typeof GetRoutesResponseBodyProjectRoutesResponseType> = z
-    .nativeEnum(GetRoutesResponseBodyProjectRoutesResponseType);
+export const GetRoutesTransformsProjectRoutesResponse200ApplicationJSONResponseBodyOp$inboundSchema:
+  z.ZodNativeEnum<
+    typeof GetRoutesTransformsProjectRoutesResponse200ApplicationJSONResponseBodyOp
+  > = z.nativeEnum(
+    GetRoutesTransformsProjectRoutesResponse200ApplicationJSONResponseBodyOp,
+  );
 
 /** @internal */
-export const GetRoutesResponseBodyProjectRoutesOp$inboundSchema:
-  z.ZodNativeEnum<typeof GetRoutesResponseBodyProjectRoutesOp> = z.nativeEnum(
-    GetRoutesResponseBodyProjectRoutesOp,
+export const GetRoutesTransformsProjectRoutesResponse2$inboundSchema: z.ZodType<
+  GetRoutesTransformsProjectRoutesResponse2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: types.literal("request.path"),
+  op:
+    GetRoutesTransformsProjectRoutesResponse200ApplicationJSONResponseBodyOp$inboundSchema,
+  args: types.string(),
+  env: types.optional(z.array(types.string())),
+});
+
+export function getRoutesTransformsProjectRoutesResponse2FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetRoutesTransformsProjectRoutesResponse2,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetRoutesTransformsProjectRoutesResponse2$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetRoutesTransformsProjectRoutesResponse2' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetRoutesTransformsProjectRoutesResponse200ApplicationJSONType$inboundSchema:
+  z.ZodNativeEnum<
+    typeof GetRoutesTransformsProjectRoutesResponse200ApplicationJSONType
+  > = z.nativeEnum(
+    GetRoutesTransformsProjectRoutesResponse200ApplicationJSONType,
+  );
+
+/** @internal */
+export const GetRoutesTransformsProjectRoutesResponse200ApplicationJSONOp$inboundSchema:
+  z.ZodNativeEnum<
+    typeof GetRoutesTransformsProjectRoutesResponse200ApplicationJSONOp
+  > = z.nativeEnum(
+    GetRoutesTransformsProjectRoutesResponse200ApplicationJSONOp,
   );
 
 /** @internal */
@@ -1961,30 +2096,36 @@ export function getRoutesKeyProjectRoutesResponse2FromJSON(
 }
 
 /** @internal */
-export const GetRoutesResponseBodyProjectRoutesKey$inboundSchema: z.ZodType<
-  GetRoutesResponseBodyProjectRoutesKey,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([
-  types.string(),
-  z.lazy(() => GetRoutesKeyProjectRoutesResponse2$inboundSchema),
-]);
+export const GetRoutesTransformsProjectRoutesResponseKey$inboundSchema:
+  z.ZodType<
+    GetRoutesTransformsProjectRoutesResponseKey,
+    z.ZodTypeDef,
+    unknown
+  > = smartUnion([
+    types.string(),
+    z.lazy(() => GetRoutesKeyProjectRoutesResponse2$inboundSchema),
+  ]);
 
-export function getRoutesResponseBodyProjectRoutesKeyFromJSON(
+export function getRoutesTransformsProjectRoutesResponseKeyFromJSON(
   jsonString: string,
-): SafeParseResult<GetRoutesResponseBodyProjectRoutesKey, SDKValidationError> {
+): SafeParseResult<
+  GetRoutesTransformsProjectRoutesResponseKey,
+  SDKValidationError
+> {
   return safeParse(
     jsonString,
     (x) =>
-      GetRoutesResponseBodyProjectRoutesKey$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetRoutesResponseBodyProjectRoutesKey' from JSON`,
+      GetRoutesTransformsProjectRoutesResponseKey$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetRoutesTransformsProjectRoutesResponseKey' from JSON`,
   );
 }
 
 /** @internal */
-export const GetRoutesResponseBodyProjectRoutesResponseTarget$inboundSchema:
+export const GetRoutesTransformsProjectRoutesResponseTarget$inboundSchema:
   z.ZodType<
-    GetRoutesResponseBodyProjectRoutesResponseTarget,
+    GetRoutesTransformsProjectRoutesResponseTarget,
     z.ZodTypeDef,
     unknown
   > = z.object({
@@ -1994,37 +2135,76 @@ export const GetRoutesResponseBodyProjectRoutesResponseTarget$inboundSchema:
     ]),
   });
 
-export function getRoutesResponseBodyProjectRoutesResponseTargetFromJSON(
+export function getRoutesTransformsProjectRoutesResponseTargetFromJSON(
   jsonString: string,
 ): SafeParseResult<
-  GetRoutesResponseBodyProjectRoutesResponseTarget,
+  GetRoutesTransformsProjectRoutesResponseTarget,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      GetRoutesResponseBodyProjectRoutesResponseTarget$inboundSchema.parse(
+      GetRoutesTransformsProjectRoutesResponseTarget$inboundSchema.parse(
         JSON.parse(x),
       ),
-    `Failed to parse 'GetRoutesResponseBodyProjectRoutesResponseTarget' from JSON`,
+    `Failed to parse 'GetRoutesTransformsProjectRoutesResponseTarget' from JSON`,
   );
 }
 
 /** @internal */
-export const GetRoutesResponseBodyProjectRoutesArgs$inboundSchema: z.ZodType<
-  GetRoutesResponseBodyProjectRoutesArgs,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([types.string(), z.array(types.string())]);
+export const GetRoutesTransformsProjectRoutesResponseArgs$inboundSchema:
+  z.ZodType<
+    GetRoutesTransformsProjectRoutesResponseArgs,
+    z.ZodTypeDef,
+    unknown
+  > = smartUnion([types.string(), z.array(types.string())]);
 
-export function getRoutesResponseBodyProjectRoutesArgsFromJSON(
+export function getRoutesTransformsProjectRoutesResponseArgsFromJSON(
   jsonString: string,
-): SafeParseResult<GetRoutesResponseBodyProjectRoutesArgs, SDKValidationError> {
+): SafeParseResult<
+  GetRoutesTransformsProjectRoutesResponseArgs,
+  SDKValidationError
+> {
   return safeParse(
     jsonString,
     (x) =>
-      GetRoutesResponseBodyProjectRoutesArgs$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetRoutesResponseBodyProjectRoutesArgs' from JSON`,
+      GetRoutesTransformsProjectRoutesResponseArgs$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetRoutesTransformsProjectRoutesResponseArgs' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetRoutesTransformsProjectRoutesResponse1$inboundSchema: z.ZodType<
+  GetRoutesTransformsProjectRoutesResponse1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type:
+    GetRoutesTransformsProjectRoutesResponse200ApplicationJSONType$inboundSchema,
+  op:
+    GetRoutesTransformsProjectRoutesResponse200ApplicationJSONOp$inboundSchema,
+  target: z.lazy(() =>
+    GetRoutesTransformsProjectRoutesResponseTarget$inboundSchema
+  ),
+  args: types.optional(smartUnion([types.string(), z.array(types.string())])),
+  env: types.optional(z.array(types.string())),
+});
+
+export function getRoutesTransformsProjectRoutesResponse1FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetRoutesTransformsProjectRoutesResponse1,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetRoutesTransformsProjectRoutesResponse1$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetRoutesTransformsProjectRoutesResponse1' from JSON`,
   );
 }
 
@@ -2034,15 +2214,18 @@ export const GetRoutesResponseBodyProjectRoutesTransforms$inboundSchema:
     GetRoutesResponseBodyProjectRoutesTransforms,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    type: GetRoutesResponseBodyProjectRoutesResponseType$inboundSchema,
-    op: GetRoutesResponseBodyProjectRoutesOp$inboundSchema,
-    target: z.lazy(() =>
-      GetRoutesResponseBodyProjectRoutesResponseTarget$inboundSchema
+  > = z.union([
+    z.lazy(() => GetRoutesTransformsProjectRoutesResponse1$inboundSchema).and(
+      z.object({ type: z.literal("request.headers") }),
     ),
-    args: types.optional(smartUnion([types.string(), z.array(types.string())])),
-    env: types.optional(z.array(types.string())),
-  });
+    z.lazy(() => GetRoutesTransformsProjectRoutesResponse1$inboundSchema).and(
+      z.object({ type: z.literal("request.query") }),
+    ),
+    z.lazy(() => GetRoutesTransformsProjectRoutesResponse1$inboundSchema).and(
+      z.object({ type: z.literal("response.headers") }),
+    ),
+    z.lazy(() => GetRoutesTransformsProjectRoutesResponse2$inboundSchema),
+  ]);
 
 export function getRoutesResponseBodyProjectRoutesTransformsFromJSON(
   jsonString: string,
@@ -2191,9 +2374,18 @@ export const GetRoutesResponseBodyRoute$inboundSchema: z.ZodType<
     z.lazy(() => GetRoutesResponseBodyProjectRoutesMitigate$inboundSchema),
   ),
   transforms: types.optional(
-    z.array(z.lazy(() =>
-      GetRoutesResponseBodyProjectRoutesTransforms$inboundSchema
-    )),
+    z.array(z.union([
+      z.lazy(() => GetRoutesTransformsProjectRoutesResponse1$inboundSchema).and(
+        z.object({ type: z.literal("request.headers") }),
+      ),
+      z.lazy(() => GetRoutesTransformsProjectRoutesResponse1$inboundSchema).and(
+        z.object({ type: z.literal("request.query") }),
+      ),
+      z.lazy(() => GetRoutesTransformsProjectRoutesResponse1$inboundSchema).and(
+        z.object({ type: z.literal("response.headers") }),
+      ),
+      z.lazy(() => GetRoutesTransformsProjectRoutesResponse2$inboundSchema),
+    ])),
   ),
   env: types.optional(z.array(types.string())),
   locale: types.optional(
@@ -2883,15 +3075,41 @@ export function getRoutesResponseBodyMitigateFromJSON(
 }
 
 /** @internal */
-export const GetRoutesResponseBodyProjectRoutesType$inboundSchema:
-  z.ZodNativeEnum<typeof GetRoutesResponseBodyProjectRoutesType> = z.nativeEnum(
-    GetRoutesResponseBodyProjectRoutesType,
-  );
+export const GetRoutesTransformsProjectRoutesResponse200Op$inboundSchema:
+  z.ZodNativeEnum<typeof GetRoutesTransformsProjectRoutesResponse200Op> = z
+    .nativeEnum(GetRoutesTransformsProjectRoutesResponse200Op);
 
 /** @internal */
-export const GetRoutesResponseBodyOp$inboundSchema: z.ZodNativeEnum<
-  typeof GetRoutesResponseBodyOp
-> = z.nativeEnum(GetRoutesResponseBodyOp);
+export const GetRoutesTransformsProjectRoutes2$inboundSchema: z.ZodType<
+  GetRoutesTransformsProjectRoutes2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: types.literal("request.path"),
+  op: GetRoutesTransformsProjectRoutesResponse200Op$inboundSchema,
+  args: types.string(),
+  env: types.optional(z.array(types.string())),
+});
+
+export function getRoutesTransformsProjectRoutes2FromJSON(
+  jsonString: string,
+): SafeParseResult<GetRoutesTransformsProjectRoutes2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetRoutesTransformsProjectRoutes2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetRoutesTransformsProjectRoutes2' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetRoutesTransformsProjectRoutesResponseType$inboundSchema:
+  z.ZodNativeEnum<typeof GetRoutesTransformsProjectRoutesResponseType> = z
+    .nativeEnum(GetRoutesTransformsProjectRoutesResponseType);
+
+/** @internal */
+export const GetRoutesTransformsProjectRoutesResponseOp$inboundSchema:
+  z.ZodNativeEnum<typeof GetRoutesTransformsProjectRoutesResponseOp> = z
+    .nativeEnum(GetRoutesTransformsProjectRoutesResponseOp);
 
 /** @internal */
 export const GetRoutesKeyProjectRoutesEq$inboundSchema: z.ZodType<
@@ -2939,8 +3157,8 @@ export function getRoutesKeyProjectRoutes2FromJSON(
 }
 
 /** @internal */
-export const GetRoutesResponseBodyKey$inboundSchema: z.ZodType<
-  GetRoutesResponseBodyKey,
+export const GetRoutesTransformsProjectRoutesKey$inboundSchema: z.ZodType<
+  GetRoutesTransformsProjectRoutesKey,
   z.ZodTypeDef,
   unknown
 > = smartUnion([
@@ -2948,19 +3166,20 @@ export const GetRoutesResponseBodyKey$inboundSchema: z.ZodType<
   z.lazy(() => GetRoutesKeyProjectRoutes2$inboundSchema),
 ]);
 
-export function getRoutesResponseBodyKeyFromJSON(
+export function getRoutesTransformsProjectRoutesKeyFromJSON(
   jsonString: string,
-): SafeParseResult<GetRoutesResponseBodyKey, SDKValidationError> {
+): SafeParseResult<GetRoutesTransformsProjectRoutesKey, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetRoutesResponseBodyKey$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetRoutesResponseBodyKey' from JSON`,
+    (x) =>
+      GetRoutesTransformsProjectRoutesKey$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetRoutesTransformsProjectRoutesKey' from JSON`,
   );
 }
 
 /** @internal */
-export const GetRoutesResponseBodyProjectRoutesTarget$inboundSchema: z.ZodType<
-  GetRoutesResponseBodyProjectRoutesTarget,
+export const GetRoutesTransformsProjectRoutesTarget$inboundSchema: z.ZodType<
+  GetRoutesTransformsProjectRoutesTarget,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -2970,36 +3189,55 @@ export const GetRoutesResponseBodyProjectRoutesTarget$inboundSchema: z.ZodType<
   ]),
 });
 
-export function getRoutesResponseBodyProjectRoutesTargetFromJSON(
+export function getRoutesTransformsProjectRoutesTargetFromJSON(
   jsonString: string,
-): SafeParseResult<
-  GetRoutesResponseBodyProjectRoutesTarget,
-  SDKValidationError
-> {
+): SafeParseResult<GetRoutesTransformsProjectRoutesTarget, SDKValidationError> {
   return safeParse(
     jsonString,
     (x) =>
-      GetRoutesResponseBodyProjectRoutesTarget$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'GetRoutesResponseBodyProjectRoutesTarget' from JSON`,
+      GetRoutesTransformsProjectRoutesTarget$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetRoutesTransformsProjectRoutesTarget' from JSON`,
   );
 }
 
 /** @internal */
-export const GetRoutesResponseBodyArgs$inboundSchema: z.ZodType<
-  GetRoutesResponseBodyArgs,
+export const GetRoutesTransformsProjectRoutesArgs$inboundSchema: z.ZodType<
+  GetRoutesTransformsProjectRoutesArgs,
   z.ZodTypeDef,
   unknown
 > = smartUnion([types.string(), z.array(types.string())]);
 
-export function getRoutesResponseBodyArgsFromJSON(
+export function getRoutesTransformsProjectRoutesArgsFromJSON(
   jsonString: string,
-): SafeParseResult<GetRoutesResponseBodyArgs, SDKValidationError> {
+): SafeParseResult<GetRoutesTransformsProjectRoutesArgs, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetRoutesResponseBodyArgs$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetRoutesResponseBodyArgs' from JSON`,
+    (x) =>
+      GetRoutesTransformsProjectRoutesArgs$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetRoutesTransformsProjectRoutesArgs' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetRoutesTransformsProjectRoutes1$inboundSchema: z.ZodType<
+  GetRoutesTransformsProjectRoutes1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: GetRoutesTransformsProjectRoutesResponseType$inboundSchema,
+  op: GetRoutesTransformsProjectRoutesResponseOp$inboundSchema,
+  target: z.lazy(() => GetRoutesTransformsProjectRoutesTarget$inboundSchema),
+  args: types.optional(smartUnion([types.string(), z.array(types.string())])),
+  env: types.optional(z.array(types.string())),
+});
+
+export function getRoutesTransformsProjectRoutes1FromJSON(
+  jsonString: string,
+): SafeParseResult<GetRoutesTransformsProjectRoutes1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetRoutesTransformsProjectRoutes1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetRoutesTransformsProjectRoutes1' from JSON`,
   );
 }
 
@@ -3008,13 +3246,18 @@ export const GetRoutesResponseBodyTransforms$inboundSchema: z.ZodType<
   GetRoutesResponseBodyTransforms,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  type: GetRoutesResponseBodyProjectRoutesType$inboundSchema,
-  op: GetRoutesResponseBodyOp$inboundSchema,
-  target: z.lazy(() => GetRoutesResponseBodyProjectRoutesTarget$inboundSchema),
-  args: types.optional(smartUnion([types.string(), z.array(types.string())])),
-  env: types.optional(z.array(types.string())),
-});
+> = z.union([
+  z.lazy(() => GetRoutesTransformsProjectRoutes1$inboundSchema).and(
+    z.object({ type: z.literal("request.headers") }),
+  ),
+  z.lazy(() => GetRoutesTransformsProjectRoutes1$inboundSchema).and(
+    z.object({ type: z.literal("request.query") }),
+  ),
+  z.lazy(() => GetRoutesTransformsProjectRoutes1$inboundSchema).and(
+    z.object({ type: z.literal("response.headers") }),
+  ),
+  z.lazy(() => GetRoutesTransformsProjectRoutes2$inboundSchema),
+]);
 
 export function getRoutesResponseBodyTransformsFromJSON(
   jsonString: string,
@@ -3142,7 +3385,18 @@ export const ResponseBodyRoute$inboundSchema: z.ZodType<
     z.lazy(() => GetRoutesResponseBodyMitigate$inboundSchema),
   ),
   transforms: types.optional(
-    z.array(z.lazy(() => GetRoutesResponseBodyTransforms$inboundSchema)),
+    z.array(z.union([
+      z.lazy(() => GetRoutesTransformsProjectRoutes1$inboundSchema).and(
+        z.object({ type: z.literal("request.headers") }),
+      ),
+      z.lazy(() => GetRoutesTransformsProjectRoutes1$inboundSchema).and(
+        z.object({ type: z.literal("request.query") }),
+      ),
+      z.lazy(() => GetRoutesTransformsProjectRoutes1$inboundSchema).and(
+        z.object({ type: z.literal("response.headers") }),
+      ),
+      z.lazy(() => GetRoutesTransformsProjectRoutes2$inboundSchema),
+    ])),
   ),
   env: types.optional(z.array(types.string())),
   locale: types.optional(
@@ -3737,14 +3991,41 @@ export function responseBodyMitigateFromJSON(
 }
 
 /** @internal */
-export const GetRoutesResponseBodyType$inboundSchema: z.ZodNativeEnum<
-  typeof GetRoutesResponseBodyType
-> = z.nativeEnum(GetRoutesResponseBodyType);
+export const GetRoutesTransformsProjectRoutesOp$inboundSchema: z.ZodNativeEnum<
+  typeof GetRoutesTransformsProjectRoutesOp
+> = z.nativeEnum(GetRoutesTransformsProjectRoutesOp);
 
 /** @internal */
-export const ResponseBodyOp$inboundSchema: z.ZodNativeEnum<
-  typeof ResponseBodyOp
-> = z.nativeEnum(ResponseBodyOp);
+export const GetRoutesTransforms2$inboundSchema: z.ZodType<
+  GetRoutesTransforms2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: types.literal("request.path"),
+  op: GetRoutesTransformsProjectRoutesOp$inboundSchema,
+  args: types.string(),
+  env: types.optional(z.array(types.string())),
+});
+
+export function getRoutesTransforms2FromJSON(
+  jsonString: string,
+): SafeParseResult<GetRoutesTransforms2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetRoutesTransforms2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetRoutesTransforms2' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetRoutesTransformsType$inboundSchema: z.ZodNativeEnum<
+  typeof GetRoutesTransformsType
+> = z.nativeEnum(GetRoutesTransformsType);
+
+/** @internal */
+export const GetRoutesTransformsOp$inboundSchema: z.ZodNativeEnum<
+  typeof GetRoutesTransformsOp
+> = z.nativeEnum(GetRoutesTransformsOp);
 
 /** @internal */
 export const GetRoutesKeyEq$inboundSchema: z.ZodType<
@@ -3792,55 +4073,78 @@ export function getRoutesKey2FromJSON(
 }
 
 /** @internal */
-export const ResponseBodyKey$inboundSchema: z.ZodType<
-  ResponseBodyKey,
+export const GetRoutesTransformsKey$inboundSchema: z.ZodType<
+  GetRoutesTransformsKey,
   z.ZodTypeDef,
   unknown
 > = smartUnion([types.string(), z.lazy(() => GetRoutesKey2$inboundSchema)]);
 
-export function responseBodyKeyFromJSON(
+export function getRoutesTransformsKeyFromJSON(
   jsonString: string,
-): SafeParseResult<ResponseBodyKey, SDKValidationError> {
+): SafeParseResult<GetRoutesTransformsKey, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ResponseBodyKey$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ResponseBodyKey' from JSON`,
+    (x) => GetRoutesTransformsKey$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetRoutesTransformsKey' from JSON`,
   );
 }
 
 /** @internal */
-export const GetRoutesResponseBodyTarget$inboundSchema: z.ZodType<
-  GetRoutesResponseBodyTarget,
+export const GetRoutesTransformsTarget$inboundSchema: z.ZodType<
+  GetRoutesTransformsTarget,
   z.ZodTypeDef,
   unknown
 > = z.object({
   key: smartUnion([types.string(), z.lazy(() => GetRoutesKey2$inboundSchema)]),
 });
 
-export function getRoutesResponseBodyTargetFromJSON(
+export function getRoutesTransformsTargetFromJSON(
   jsonString: string,
-): SafeParseResult<GetRoutesResponseBodyTarget, SDKValidationError> {
+): SafeParseResult<GetRoutesTransformsTarget, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetRoutesResponseBodyTarget$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetRoutesResponseBodyTarget' from JSON`,
+    (x) => GetRoutesTransformsTarget$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetRoutesTransformsTarget' from JSON`,
   );
 }
 
 /** @internal */
-export const ResponseBodyArgs$inboundSchema: z.ZodType<
-  ResponseBodyArgs,
+export const GetRoutesTransformsArgs$inboundSchema: z.ZodType<
+  GetRoutesTransformsArgs,
   z.ZodTypeDef,
   unknown
 > = smartUnion([types.string(), z.array(types.string())]);
 
-export function responseBodyArgsFromJSON(
+export function getRoutesTransformsArgsFromJSON(
   jsonString: string,
-): SafeParseResult<ResponseBodyArgs, SDKValidationError> {
+): SafeParseResult<GetRoutesTransformsArgs, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ResponseBodyArgs$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ResponseBodyArgs' from JSON`,
+    (x) => GetRoutesTransformsArgs$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetRoutesTransformsArgs' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetRoutesTransforms1$inboundSchema: z.ZodType<
+  GetRoutesTransforms1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: GetRoutesTransformsType$inboundSchema,
+  op: GetRoutesTransformsOp$inboundSchema,
+  target: z.lazy(() => GetRoutesTransformsTarget$inboundSchema),
+  args: types.optional(smartUnion([types.string(), z.array(types.string())])),
+  env: types.optional(z.array(types.string())),
+});
+
+export function getRoutesTransforms1FromJSON(
+  jsonString: string,
+): SafeParseResult<GetRoutesTransforms1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetRoutesTransforms1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetRoutesTransforms1' from JSON`,
   );
 }
 
@@ -3849,13 +4153,18 @@ export const ResponseBodyTransforms$inboundSchema: z.ZodType<
   ResponseBodyTransforms,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  type: GetRoutesResponseBodyType$inboundSchema,
-  op: ResponseBodyOp$inboundSchema,
-  target: z.lazy(() => GetRoutesResponseBodyTarget$inboundSchema),
-  args: types.optional(smartUnion([types.string(), z.array(types.string())])),
-  env: types.optional(z.array(types.string())),
-});
+> = z.union([
+  z.lazy(() => GetRoutesTransforms1$inboundSchema).and(
+    z.object({ type: z.literal("request.headers") }),
+  ),
+  z.lazy(() => GetRoutesTransforms1$inboundSchema).and(
+    z.object({ type: z.literal("request.query") }),
+  ),
+  z.lazy(() => GetRoutesTransforms1$inboundSchema).and(
+    z.object({ type: z.literal("response.headers") }),
+  ),
+  z.lazy(() => GetRoutesTransforms2$inboundSchema),
+]);
 
 export function responseBodyTransformsFromJSON(
   jsonString: string,
@@ -3979,7 +4288,18 @@ export const GetRoutesResponseBodyProjectRoutesRoute$inboundSchema: z.ZodType<
   ),
   mitigate: types.optional(z.lazy(() => ResponseBodyMitigate$inboundSchema)),
   transforms: types.optional(
-    z.array(z.lazy(() => ResponseBodyTransforms$inboundSchema)),
+    z.array(z.union([
+      z.lazy(() => GetRoutesTransforms1$inboundSchema).and(
+        z.object({ type: z.literal("request.headers") }),
+      ),
+      z.lazy(() => GetRoutesTransforms1$inboundSchema).and(
+        z.object({ type: z.literal("request.query") }),
+      ),
+      z.lazy(() => GetRoutesTransforms1$inboundSchema).and(
+        z.object({ type: z.literal("response.headers") }),
+      ),
+      z.lazy(() => GetRoutesTransforms2$inboundSchema),
+    ])),
   ),
   env: types.optional(z.array(types.string())),
   locale: types.optional(z.lazy(() => ResponseBodyLocale$inboundSchema)),

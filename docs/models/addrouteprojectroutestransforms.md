@@ -1,25 +1,51 @@
 # AddRouteProjectRoutesTransforms
 
-## Example Usage
+
+## Supported Types
+
+### `models.AddRouteTransforms1`
 
 ```typescript
-import { AddRouteProjectRoutesTransforms } from "@vercel/sdk/models/addrouteop.js";
-
-let value: AddRouteProjectRoutesTransforms = {
-  type: "request.headers",
+const value: models.AddRouteTransforms1 = {
+  type: "request.query",
   op: "set",
   target: {
-    key: "<key>",
+    key: {},
   },
 };
 ```
 
-## Fields
+### `models.AddRouteTransforms1`
 
-| Field                                                                                      | Type                                                                                       | Required                                                                                   | Description                                                                                |
-| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| `type`                                                                                     | [models.AddRouteProjectRoutesResponseType](../models/addrouteprojectroutesresponsetype.md) | :heavy_check_mark:                                                                         | N/A                                                                                        |
-| `op`                                                                                       | [models.AddRouteProjectRoutesOp](../models/addrouteprojectroutesop.md)                     | :heavy_check_mark:                                                                         | N/A                                                                                        |
-| `target`                                                                                   | [models.AddRouteProjectRoutesTarget](../models/addrouteprojectroutestarget.md)             | :heavy_check_mark:                                                                         | N/A                                                                                        |
-| `args`                                                                                     | *models.AddRouteArgs*                                                                      | :heavy_minus_sign:                                                                         | N/A                                                                                        |
-| `env`                                                                                      | *string*[]                                                                                 | :heavy_minus_sign:                                                                         | N/A                                                                                        |
+```typescript
+const value: models.AddRouteTransforms1 = {
+  type: "request.query",
+  op: "set",
+  target: {
+    key: {},
+  },
+};
+```
+
+### `models.AddRouteTransforms1`
+
+```typescript
+const value: models.AddRouteTransforms1 = {
+  type: "request.query",
+  op: "set",
+  target: {
+    key: {},
+  },
+};
+```
+
+### `models.AddRouteTransforms2`
+
+```typescript
+const value: models.AddRouteTransforms2 = {
+  type: "request.path",
+  op: "set",
+  args: "<value>",
+};
+```
+

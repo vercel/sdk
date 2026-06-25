@@ -3,18 +3,19 @@
 ## Example Usage
 
 ```typescript
-import { SubjectTypeUser } from "@vercel/sdk/models/createconnectorauthorizationrequestop.js";
+import { SubjectTypeUser } from "@vercel/sdk/models/importconnectortokensop.js";
 
 let value: SubjectTypeUser = {
   type: "user",
+  id: "<id>",
 };
 ```
 
 ## Fields
 
-| Field                                                                                                                              | Type                                                                                                                               | Required                                                                                                                           | Description                                                                                                                        |
-| ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| `type`                                                                                                                             | [models.CreateConnectorAuthorizationRequestSubjectConnectType](../models/createconnectorauthorizationrequestsubjectconnecttype.md) | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |
-| `id`                                                                                                                               | *string*                                                                                                                           | :heavy_minus_sign:                                                                                                                 | N/A                                                                                                                                |
-| `issuer`                                                                                                                           | *string*                                                                                                                           | :heavy_minus_sign:                                                                                                                 | N/A                                                                                                                                |
-| `additionalProperties`                                                                                                             | Record<string, *any*>                                                                                                              | :heavy_minus_sign:                                                                                                                 | N/A                                                                                                                                |
+| Field                  | Type                   | Required               | Description            |
+| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
+| `type`                 | *"user"*               | :heavy_check_mark:     | N/A                    |
+| `id`                   | *string*               | :heavy_check_mark:     | N/A                    |
+| `issuer`               | *string*               | :heavy_minus_sign:     | N/A                    |
+| `additionalProperties` | Record<string, *any*>  | :heavy_minus_sign:     | N/A                    |

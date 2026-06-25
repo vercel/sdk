@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { SubjectTypeApp } from "@vercel/sdk/models/createconnectorauthorizationrequestop.js";
+import { SubjectTypeApp } from "@vercel/sdk/models/importconnectortokensop.js";
 
 let value: SubjectTypeApp = {
   type: "app",
@@ -12,7 +12,7 @@ let value: SubjectTypeApp = {
 
 ## Fields
 
-| Field                                                                                                                | Type                                                                                                                 | Required                                                                                                             | Description                                                                                                          |
-| -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| `type`                                                                                                               | [models.CreateConnectorAuthorizationRequestSubjectType](../models/createconnectorauthorizationrequestsubjecttype.md) | :heavy_check_mark:                                                                                                   | N/A                                                                                                                  |
-| `additionalProperties`                                                                                               | Record<string, *any*>                                                                                                | :heavy_minus_sign:                                                                                                   | N/A                                                                                                                  |
+| Field                  | Type                   | Required               | Description            |
+| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
+| `type`                 | *"app"*                | :heavy_check_mark:     | N/A                    |
+| `additionalProperties` | Record<string, *any*>  | :heavy_minus_sign:     | N/A                    |

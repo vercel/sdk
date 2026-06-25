@@ -281,23 +281,35 @@ export type EditRouteMitigate = {
   action: EditRouteAction;
 };
 
-export const EditRouteProjectRoutesResponseType = {
+export const EditRouteTransformsProjectRoutesOp = {
+  Set: "set",
+} as const;
+export type EditRouteTransformsProjectRoutesOp = ClosedEnum<
+  typeof EditRouteTransformsProjectRoutesOp
+>;
+
+export type EditRouteTransforms2 = {
+  type: "request.path";
+  op: EditRouteTransformsProjectRoutesOp;
+  args: string;
+  env?: Array<string> | undefined;
+};
+
+export const EditRouteTransformsType = {
   RequestHeaders: "request.headers",
   RequestQuery: "request.query",
   ResponseHeaders: "response.headers",
 } as const;
-export type EditRouteProjectRoutesResponseType = ClosedEnum<
-  typeof EditRouteProjectRoutesResponseType
+export type EditRouteTransformsType = ClosedEnum<
+  typeof EditRouteTransformsType
 >;
 
-export const EditRouteProjectRoutesOp = {
+export const EditRouteTransformsOp = {
   Append: "append",
   Delete: "delete",
   Set: "set",
 } as const;
-export type EditRouteProjectRoutesOp = ClosedEnum<
-  typeof EditRouteProjectRoutesOp
->;
+export type EditRouteTransformsOp = ClosedEnum<typeof EditRouteTransformsOp>;
 
 export type EditRouteKeyEq = string | number;
 
@@ -314,21 +326,27 @@ export type EditRouteKey2 = {
   lte?: number | undefined;
 };
 
-export type EditRouteKey = string | EditRouteKey2;
+export type EditRouteTransformsKey = string | EditRouteKey2;
 
-export type EditRouteProjectRoutesTarget = {
+export type EditRouteTransformsTarget = {
   key: string | EditRouteKey2;
 };
 
-export type EditRouteArgs = string | Array<string>;
+export type EditRouteTransformsArgs = string | Array<string>;
 
-export type EditRouteProjectRoutesTransforms = {
-  type: EditRouteProjectRoutesResponseType;
-  op: EditRouteProjectRoutesOp;
-  target: EditRouteProjectRoutesTarget;
+export type EditRouteTransforms1 = {
+  type: EditRouteTransformsType;
+  op: EditRouteTransformsOp;
+  target: EditRouteTransformsTarget;
   args?: string | Array<string> | undefined;
   env?: Array<string> | undefined;
 };
+
+export type EditRouteProjectRoutesTransforms =
+  | (EditRouteTransforms1 & { type: "request.headers" })
+  | (EditRouteTransforms1 & { type: "request.query" })
+  | (EditRouteTransforms1 & { type: "response.headers" })
+  | EditRouteTransforms2;
 
 export type EditRouteLocale = {
   redirect?: { [k: string]: string } | undefined;
@@ -384,7 +402,14 @@ export type EditRouteProjectRoutesResponse200Route = {
     >
     | undefined;
   mitigate?: EditRouteMitigate | undefined;
-  transforms?: Array<EditRouteProjectRoutesTransforms> | undefined;
+  transforms?:
+    | Array<
+      | (EditRouteTransforms1 & { type: "request.headers" })
+      | (EditRouteTransforms1 & { type: "request.query" })
+      | (EditRouteTransforms1 & { type: "response.headers" })
+      | EditRouteTransforms2
+    >
+    | undefined;
   env?: Array<string> | undefined;
   locale?: EditRouteLocale | undefined;
   /**
@@ -1240,14 +1265,41 @@ export function editRouteMitigateFromJSON(
 }
 
 /** @internal */
-export const EditRouteProjectRoutesResponseType$inboundSchema: z.ZodNativeEnum<
-  typeof EditRouteProjectRoutesResponseType
-> = z.nativeEnum(EditRouteProjectRoutesResponseType);
+export const EditRouteTransformsProjectRoutesOp$inboundSchema: z.ZodNativeEnum<
+  typeof EditRouteTransformsProjectRoutesOp
+> = z.nativeEnum(EditRouteTransformsProjectRoutesOp);
 
 /** @internal */
-export const EditRouteProjectRoutesOp$inboundSchema: z.ZodNativeEnum<
-  typeof EditRouteProjectRoutesOp
-> = z.nativeEnum(EditRouteProjectRoutesOp);
+export const EditRouteTransforms2$inboundSchema: z.ZodType<
+  EditRouteTransforms2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: types.literal("request.path"),
+  op: EditRouteTransformsProjectRoutesOp$inboundSchema,
+  args: types.string(),
+  env: types.optional(z.array(types.string())),
+});
+
+export function editRouteTransforms2FromJSON(
+  jsonString: string,
+): SafeParseResult<EditRouteTransforms2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EditRouteTransforms2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EditRouteTransforms2' from JSON`,
+  );
+}
+
+/** @internal */
+export const EditRouteTransformsType$inboundSchema: z.ZodNativeEnum<
+  typeof EditRouteTransformsType
+> = z.nativeEnum(EditRouteTransformsType);
+
+/** @internal */
+export const EditRouteTransformsOp$inboundSchema: z.ZodNativeEnum<
+  typeof EditRouteTransformsOp
+> = z.nativeEnum(EditRouteTransformsOp);
 
 /** @internal */
 export const EditRouteKeyEq$inboundSchema: z.ZodType<
@@ -1295,55 +1347,78 @@ export function editRouteKey2FromJSON(
 }
 
 /** @internal */
-export const EditRouteKey$inboundSchema: z.ZodType<
-  EditRouteKey,
+export const EditRouteTransformsKey$inboundSchema: z.ZodType<
+  EditRouteTransformsKey,
   z.ZodTypeDef,
   unknown
 > = smartUnion([types.string(), z.lazy(() => EditRouteKey2$inboundSchema)]);
 
-export function editRouteKeyFromJSON(
+export function editRouteTransformsKeyFromJSON(
   jsonString: string,
-): SafeParseResult<EditRouteKey, SDKValidationError> {
+): SafeParseResult<EditRouteTransformsKey, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => EditRouteKey$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'EditRouteKey' from JSON`,
+    (x) => EditRouteTransformsKey$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EditRouteTransformsKey' from JSON`,
   );
 }
 
 /** @internal */
-export const EditRouteProjectRoutesTarget$inboundSchema: z.ZodType<
-  EditRouteProjectRoutesTarget,
+export const EditRouteTransformsTarget$inboundSchema: z.ZodType<
+  EditRouteTransformsTarget,
   z.ZodTypeDef,
   unknown
 > = z.object({
   key: smartUnion([types.string(), z.lazy(() => EditRouteKey2$inboundSchema)]),
 });
 
-export function editRouteProjectRoutesTargetFromJSON(
+export function editRouteTransformsTargetFromJSON(
   jsonString: string,
-): SafeParseResult<EditRouteProjectRoutesTarget, SDKValidationError> {
+): SafeParseResult<EditRouteTransformsTarget, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => EditRouteProjectRoutesTarget$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'EditRouteProjectRoutesTarget' from JSON`,
+    (x) => EditRouteTransformsTarget$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EditRouteTransformsTarget' from JSON`,
   );
 }
 
 /** @internal */
-export const EditRouteArgs$inboundSchema: z.ZodType<
-  EditRouteArgs,
+export const EditRouteTransformsArgs$inboundSchema: z.ZodType<
+  EditRouteTransformsArgs,
   z.ZodTypeDef,
   unknown
 > = smartUnion([types.string(), z.array(types.string())]);
 
-export function editRouteArgsFromJSON(
+export function editRouteTransformsArgsFromJSON(
   jsonString: string,
-): SafeParseResult<EditRouteArgs, SDKValidationError> {
+): SafeParseResult<EditRouteTransformsArgs, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => EditRouteArgs$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'EditRouteArgs' from JSON`,
+    (x) => EditRouteTransformsArgs$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EditRouteTransformsArgs' from JSON`,
+  );
+}
+
+/** @internal */
+export const EditRouteTransforms1$inboundSchema: z.ZodType<
+  EditRouteTransforms1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: EditRouteTransformsType$inboundSchema,
+  op: EditRouteTransformsOp$inboundSchema,
+  target: z.lazy(() => EditRouteTransformsTarget$inboundSchema),
+  args: types.optional(smartUnion([types.string(), z.array(types.string())])),
+  env: types.optional(z.array(types.string())),
+});
+
+export function editRouteTransforms1FromJSON(
+  jsonString: string,
+): SafeParseResult<EditRouteTransforms1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EditRouteTransforms1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EditRouteTransforms1' from JSON`,
   );
 }
 
@@ -1352,13 +1427,18 @@ export const EditRouteProjectRoutesTransforms$inboundSchema: z.ZodType<
   EditRouteProjectRoutesTransforms,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  type: EditRouteProjectRoutesResponseType$inboundSchema,
-  op: EditRouteProjectRoutesOp$inboundSchema,
-  target: z.lazy(() => EditRouteProjectRoutesTarget$inboundSchema),
-  args: types.optional(smartUnion([types.string(), z.array(types.string())])),
-  env: types.optional(z.array(types.string())),
-});
+> = z.union([
+  z.lazy(() => EditRouteTransforms1$inboundSchema).and(
+    z.object({ type: z.literal("request.headers") }),
+  ),
+  z.lazy(() => EditRouteTransforms1$inboundSchema).and(
+    z.object({ type: z.literal("request.query") }),
+  ),
+  z.lazy(() => EditRouteTransforms1$inboundSchema).and(
+    z.object({ type: z.literal("response.headers") }),
+  ),
+  z.lazy(() => EditRouteTransforms2$inboundSchema),
+]);
 
 export function editRouteProjectRoutesTransformsFromJSON(
   jsonString: string,
@@ -1482,7 +1562,18 @@ export const EditRouteProjectRoutesResponse200Route$inboundSchema: z.ZodType<
   ),
   mitigate: types.optional(z.lazy(() => EditRouteMitigate$inboundSchema)),
   transforms: types.optional(
-    z.array(z.lazy(() => EditRouteProjectRoutesTransforms$inboundSchema)),
+    z.array(z.union([
+      z.lazy(() => EditRouteTransforms1$inboundSchema).and(
+        z.object({ type: z.literal("request.headers") }),
+      ),
+      z.lazy(() => EditRouteTransforms1$inboundSchema).and(
+        z.object({ type: z.literal("request.query") }),
+      ),
+      z.lazy(() => EditRouteTransforms1$inboundSchema).and(
+        z.object({ type: z.literal("response.headers") }),
+      ),
+      z.lazy(() => EditRouteTransforms2$inboundSchema),
+    ])),
   ),
   env: types.optional(z.array(types.string())),
   locale: types.optional(z.lazy(() => EditRouteLocale$inboundSchema)),

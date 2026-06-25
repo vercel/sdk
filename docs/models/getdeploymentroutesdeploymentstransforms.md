@@ -1,25 +1,51 @@
 # GetDeploymentRoutesDeploymentsTransforms
 
-## Example Usage
+
+## Supported Types
+
+### `models.GetDeploymentTransformsDeployments1`
 
 ```typescript
-import { GetDeploymentRoutesDeploymentsTransforms } from "@vercel/sdk/models/getdeploymentresponsebody.js";
-
-let value: GetDeploymentRoutesDeploymentsTransforms = {
+const value: models.GetDeploymentTransformsDeployments1 = {
   type: "request.headers",
-  op: "set",
+  op: "append",
   target: {
-    key: {},
+    key: "<key>",
   },
 };
 ```
 
-## Fields
+### `models.GetDeploymentTransformsDeployments1`
 
-| Field                                                                                            | Type                                                                                             | Required                                                                                         | Description                                                                                      |
-| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
-| `type`                                                                                           | [models.GetDeploymentRoutesDeploymentsType](../models/getdeploymentroutesdeploymentstype.md)     | :heavy_check_mark:                                                                               | N/A                                                                                              |
-| `op`                                                                                             | [models.GetDeploymentRoutesDeploymentsOp](../models/getdeploymentroutesdeploymentsop.md)         | :heavy_check_mark:                                                                               | N/A                                                                                              |
-| `target`                                                                                         | [models.GetDeploymentRoutesDeploymentsTarget](../models/getdeploymentroutesdeploymentstarget.md) | :heavy_check_mark:                                                                               | N/A                                                                                              |
-| `args`                                                                                           | *models.GetDeploymentRoutesDeploymentsArgs*                                                      | :heavy_minus_sign:                                                                               | N/A                                                                                              |
-| `env`                                                                                            | *string*[]                                                                                       | :heavy_minus_sign:                                                                               | N/A                                                                                              |
+```typescript
+const value: models.GetDeploymentTransformsDeployments1 = {
+  type: "request.headers",
+  op: "append",
+  target: {
+    key: "<key>",
+  },
+};
+```
+
+### `models.GetDeploymentTransformsDeployments1`
+
+```typescript
+const value: models.GetDeploymentTransformsDeployments1 = {
+  type: "request.headers",
+  op: "append",
+  target: {
+    key: "<key>",
+  },
+};
+```
+
+### `models.GetDeploymentTransformsDeployments2`
+
+```typescript
+const value: models.GetDeploymentTransformsDeployments2 = {
+  type: "request.path",
+  op: "set",
+  args: "<value>",
+};
+```
+

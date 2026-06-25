@@ -3,15 +3,12 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPayload251Next } from "@vercel/sdk/models/consent.js";
+import { UserEventPayload251Next } from "@vercel/sdk/models/rollbackdescription.js";
 
-let value: UserEventPayload251Next = {
-  issuerMode: "global",
-};
+let value: UserEventPayload251Next = {};
 ```
 
 ## Fields
 
-| Field                                                      | Type                                                       | Required                                                   | Description                                                |
-| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
-| `issuerMode`                                               | [models.PayloadIssuerMode](../models/payloadissuermode.md) | :heavy_check_mark:                                         | N/A                                                        |
+| Field       | Type        | Required    | Description |
+| ----------- | ----------- | ----------- | ----------- |

@@ -1329,12 +1329,10 @@ export type UpdateProjectHasProjectsResponse2 = {
   value: UpdateProjectHasProjectsResponse200ApplicationJSONResponseBodyValue;
 };
 
-export const UpdateProjectHasProjectsResponseKey = {
+export const UpdateProjectHasKey = {
   XVercelIpCountry: "x-vercel-ip-country",
 } as const;
-export type UpdateProjectHasProjectsResponseKey = ClosedEnum<
-  typeof UpdateProjectHasProjectsResponseKey
->;
+export type UpdateProjectHasKey = ClosedEnum<typeof UpdateProjectHasKey>;
 
 export type UpdateProjectHasProjectsResponse200ApplicationJSONValue = {
   eq: string;
@@ -1342,7 +1340,7 @@ export type UpdateProjectHasProjectsResponse200ApplicationJSONValue = {
 
 export type UpdateProjectHasProjectsResponse1 = {
   type: "header";
-  key: UpdateProjectHasProjectsResponseKey;
+  key: UpdateProjectHasKey;
   value: UpdateProjectHasProjectsResponse200ApplicationJSONValue;
 };
 
@@ -1463,10 +1461,10 @@ export type UpdateProjectHas2 = {
   value: UpdateProjectHasProjectsValue;
 };
 
-export const UpdateProjectHasKey = {
+export const HasKey = {
   XVercelIpCountry: "x-vercel-ip-country",
 } as const;
-export type UpdateProjectHasKey = ClosedEnum<typeof UpdateProjectHasKey>;
+export type HasKey = ClosedEnum<typeof HasKey>;
 
 export type UpdateProjectHasValue = {
   eq: string;
@@ -1474,7 +1472,7 @@ export type UpdateProjectHasValue = {
 
 export type UpdateProjectHas1 = {
   type: "header";
-  key: UpdateProjectHasKey;
+  key: HasKey;
   value: UpdateProjectHasValue;
 };
 
@@ -3971,9 +3969,9 @@ export function updateProjectHasProjectsResponse2FromJSON(
 }
 
 /** @internal */
-export const UpdateProjectHasProjectsResponseKey$inboundSchema: z.ZodNativeEnum<
-  typeof UpdateProjectHasProjectsResponseKey
-> = z.nativeEnum(UpdateProjectHasProjectsResponseKey);
+export const UpdateProjectHasKey$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateProjectHasKey
+> = z.nativeEnum(UpdateProjectHasKey);
 
 /** @internal */
 export const UpdateProjectHasProjectsResponse200ApplicationJSONValue$inboundSchema:
@@ -4007,7 +4005,7 @@ export const UpdateProjectHasProjectsResponse1$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   type: types.literal("header"),
-  key: UpdateProjectHasProjectsResponseKey$inboundSchema,
+  key: UpdateProjectHasKey$inboundSchema,
   value: z.lazy(() =>
     UpdateProjectHasProjectsResponse200ApplicationJSONValue$inboundSchema
   ),
@@ -4342,9 +4340,8 @@ export function updateProjectHas2FromJSON(
 }
 
 /** @internal */
-export const UpdateProjectHasKey$inboundSchema: z.ZodNativeEnum<
-  typeof UpdateProjectHasKey
-> = z.nativeEnum(UpdateProjectHasKey);
+export const HasKey$inboundSchema: z.ZodNativeEnum<typeof HasKey> = z
+  .nativeEnum(HasKey);
 
 /** @internal */
 export const UpdateProjectHasValue$inboundSchema: z.ZodType<
@@ -4372,7 +4369,7 @@ export const UpdateProjectHas1$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   type: types.literal("header"),
-  key: UpdateProjectHasKey$inboundSchema,
+  key: HasKey$inboundSchema,
   value: z.lazy(() => UpdateProjectHasValue$inboundSchema),
 });
 

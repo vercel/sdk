@@ -3,18 +3,18 @@
 
 ## Supported Types
 
-### `models.SubjectTypeApp`
+### `models.CreateConnectorAuthorizationRequestSubjectTypeApp`
 
 ```typescript
-const value: models.SubjectTypeApp = {
+const value: models.CreateConnectorAuthorizationRequestSubjectTypeApp = {
   type: "app",
 };
 ```
 
-### `models.SubjectTypeUser`
+### `models.CreateConnectorAuthorizationRequestSubjectTypeUser`
 
 ```typescript
-const value: models.SubjectTypeUser = {
+const value: models.CreateConnectorAuthorizationRequestSubjectTypeUser = {
   type: "user",
 };
 ```

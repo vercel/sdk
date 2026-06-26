@@ -9,7 +9,6 @@ import { UpdateProjectPassport } from "@vercel/sdk/models/updateprojectprojectsp
 
 let value: UpdateProjectPassport = {
   connectorId: "<id>",
-  deploymentType: "preview",
 };
 ```
 
@@ -18,4 +17,4 @@ let value: UpdateProjectPassport = {
 | Field                                                                                          | Type                                                                                           | Required                                                                                       | Description                                                                                    |
 | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
 | `connectorId`                                                                                  | *string*                                                                                       | :heavy_check_mark:                                                                             | N/A                                                                                            |
-| `deploymentType`                                                                               | [models.UpdateProjectProjectsDeploymentType](../models/updateprojectprojectsdeploymenttype.md) | :heavy_check_mark:                                                                             | N/A                                                                                            |
+| `deploymentType`                                                                               | [models.UpdateProjectProjectsDeploymentType](../models/updateprojectprojectsdeploymenttype.md) | :heavy_minus_sign:                                                                             | N/A                                                                                            |

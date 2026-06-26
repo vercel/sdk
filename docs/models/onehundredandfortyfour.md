@@ -13,7 +13,7 @@ let value: OneHundredAndFortyFour = {
   integrationSlug: "<value>",
   integrationName: "<value>",
   ownerId: "<id>",
-  billingPlanId: "<id>",
+  confirmedScopes: [],
 };
 ```
 
@@ -26,5 +26,5 @@ let value: OneHundredAndFortyFour = {
 | `integrationSlug`  | *string*           | :heavy_check_mark: | N/A                |
 | `integrationName`  | *string*           | :heavy_check_mark: | N/A                |
 | `ownerId`          | *string*           | :heavy_check_mark: | N/A                |
-| `billingPlanId`    | *string*           | :heavy_check_mark: | N/A                |
-| `billingPlanName`  | *string*           | :heavy_minus_sign: | N/A                |
+| `projectIds`       | *string*[]         | :heavy_minus_sign: | N/A                |
+| `confirmedScopes`  | *string*[]         | :heavy_check_mark: | N/A                |

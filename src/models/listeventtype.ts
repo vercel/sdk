@@ -35,6 +35,12 @@ export const Name = {
   AiGatewayByokCredentialCreated: "ai-gateway-byok-credential-created",
   AiGatewayByokCredentialDeleted: "ai-gateway-byok-credential-deleted",
   AiGatewayByokCredentialUpdated: "ai-gateway-byok-credential-updated",
+  AiGatewayPrivateModelCreated: "ai-gateway-private-model-created",
+  AiGatewayPrivateModelDeleted: "ai-gateway-private-model-deleted",
+  AiGatewayPrivateModelUpdated: "ai-gateway-private-model-updated",
+  AiGatewayPrivateProviderCreated: "ai-gateway-private-provider-created",
+  AiGatewayPrivateProviderDeleted: "ai-gateway-private-provider-deleted",
+  AiGatewayPrivateProviderUpdated: "ai-gateway-private-provider-updated",
   AiGatewayProviderAllowlistProvidersUpdated:
     "ai-gateway-provider-allowlist-providers-updated",
   AiGatewayProviderAllowlistToggled: "ai-gateway-provider-allowlist-toggled",
@@ -184,6 +190,7 @@ export const Name = {
   Email: "email",
   EmailNotificationRuleRemoved: "email-notification-rule-removed",
   EmailNotificationRuleUpdated: "email-notification-rule-updated",
+  EmuMemberRemovedUnverifiedDomain: "emu-member-removed-unverified-domain",
   EnforceSensitiveEnvironmentVariables:
     "enforce-sensitive-environment-variables",
   EnvVariableAdd: "env-variable-add",
@@ -636,6 +643,12 @@ export const ReplacedBy = {
   AiGatewayByokCredentialCreated: "ai-gateway-byok-credential-created",
   AiGatewayByokCredentialDeleted: "ai-gateway-byok-credential-deleted",
   AiGatewayByokCredentialUpdated: "ai-gateway-byok-credential-updated",
+  AiGatewayPrivateModelCreated: "ai-gateway-private-model-created",
+  AiGatewayPrivateModelDeleted: "ai-gateway-private-model-deleted",
+  AiGatewayPrivateModelUpdated: "ai-gateway-private-model-updated",
+  AiGatewayPrivateProviderCreated: "ai-gateway-private-provider-created",
+  AiGatewayPrivateProviderDeleted: "ai-gateway-private-provider-deleted",
+  AiGatewayPrivateProviderUpdated: "ai-gateway-private-provider-updated",
   AiGatewayProviderAllowlistProvidersUpdated:
     "ai-gateway-provider-allowlist-providers-updated",
   AiGatewayProviderAllowlistToggled: "ai-gateway-provider-allowlist-toggled",
@@ -785,6 +798,7 @@ export const ReplacedBy = {
   Email: "email",
   EmailNotificationRuleRemoved: "email-notification-rule-removed",
   EmailNotificationRuleUpdated: "email-notification-rule-updated",
+  EmuMemberRemovedUnverifiedDomain: "emu-member-removed-unverified-domain",
   EnforceSensitiveEnvironmentVariables:
     "enforce-sensitive-environment-variables",
   EnvVariableAdd: "env-variable-add",

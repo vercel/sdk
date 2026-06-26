@@ -15,6 +15,7 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
  * The framework that is being used for this project. When `null` is used no framework is selected
  */
 export const UpdateProjectFramework = {
+  Container: "container",
   Blitzjs: "blitzjs",
   Nextjs: "nextjs",
   Gatsby: "gatsby",
@@ -318,7 +319,7 @@ export type UpdateProjectProjectsDeploymentType = ClosedEnum<
  */
 export type UpdateProjectPassport = {
   connectorId: string;
-  deploymentType: UpdateProjectProjectsDeploymentType;
+  deploymentType?: UpdateProjectProjectsDeploymentType | undefined;
 };
 
 /**
@@ -1364,6 +1365,7 @@ export const UpdateProjectProjectsFramework = {
   Blitzjs: "blitzjs",
   Brunch: "brunch",
   Bun: "bun",
+  Container: "container",
   CreateReactApp: "create-react-app",
   Django: "django",
   Docusaurus: "docusaurus",
@@ -1460,6 +1462,7 @@ export const UpdateProjectProjectsResponseFramework = {
   Blitzjs: "blitzjs",
   Brunch: "brunch",
   Bun: "bun",
+  Container: "container",
   CreateReactApp: "create-react-app",
   Django: "django",
   Docusaurus: "docusaurus",
@@ -2119,7 +2122,9 @@ export const UpdateProjectPassport$outboundSchema: z.ZodType<
   UpdateProjectPassport
 > = z.object({
   connectorId: z.string(),
-  deploymentType: UpdateProjectProjectsDeploymentType$outboundSchema,
+  deploymentType: UpdateProjectProjectsDeploymentType$outboundSchema.default(
+    "all",
+  ),
 });
 
 export function updateProjectPassportToJSON(

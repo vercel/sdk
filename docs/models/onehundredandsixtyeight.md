@@ -9,18 +9,27 @@ import { OneHundredAndSixtyEight } from "@vercel/sdk/models/usereventpayloadgitu
 
 let value: OneHundredAndSixtyEight = {
   projectId: "<id>",
-  url: "https://unhappy-sonata.org/",
-  previousStatus: "<value>",
-  justification: "<value>",
+  previous: {
+    enabled: false,
+    mode: "<value>",
+    enforcePercentage: 8318.76,
+    newResourceBlockingPolicy: "block",
+    allowUnsafeScriptSrcKeywords: false,
+  },
+  next: {
+    enabled: true,
+    mode: "<value>",
+    enforcePercentage: 5374.31,
+    newResourceBlockingPolicy: "block",
+    allowUnsafeScriptSrcKeywords: false,
+  },
 };
 ```
 
 ## Fields
 
-| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `projectId`                                                      | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
-| `url`                                                            | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
-| `previousStatus`                                                 | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
-| `justification`                                                  | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
-| `kind`                                                           | [models.UserEventPayloadKind](../models/usereventpayloadkind.md) | :heavy_minus_sign:                                               | N/A                                                              |
+| Field                                    | Type                                     | Required                                 | Description                              |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| `projectId`                              | *string*                                 | :heavy_check_mark:                       | N/A                                      |
+| `previous`                               | [models.Previous](../models/previous.md) | :heavy_check_mark:                       | N/A                                      |
+| `next`                                   | [models.Next](../models/next.md)         | :heavy_check_mark:                       | N/A                                      |

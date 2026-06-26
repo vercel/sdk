@@ -8,18 +8,14 @@ The payload of the event, if requested.
 import { TwoHundredAndSeventySeven } from "@vercel/sdk/models/rollbackdescription.js";
 
 let value: TwoHundredAndSeventySeven = {
-  scalingRules: {},
-  min: 9191.02,
-  max: 8810.21,
-  url: "https://unimportant-poetry.org",
+  uid: "<id>",
+  name: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `scalingRules`                                                   | Record<string, [models.ScalingRules](../models/scalingrules.md)> | :heavy_check_mark:                                               | N/A                                                              |
-| `min`                                                            | *number*                                                         | :heavy_check_mark:                                               | N/A                                                              |
-| `max`                                                            | *number*                                                         | :heavy_check_mark:                                               | N/A                                                              |
-| `url`                                                            | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
+| Field                | Type                 | Required             | Description          |
+| -------------------- | -------------------- | -------------------- | -------------------- |
+| `uid`                | *string*             | :heavy_check_mark:   | N/A                  |
+| `name`               | *models.PayloadName* | :heavy_check_mark:   | N/A                  |

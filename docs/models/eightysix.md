@@ -5,32 +5,27 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { EightySix } from "@vercel/sdk/models/usereventpayloadproject.js";
+import { EightySix } from "@vercel/sdk/models/sixtythree.js";
 
 let value: EightySix = {
+  project: {
+    name: "<value>",
+  },
   job: {
-    headInfo: {
-      org: "<value>",
+    deployHook: {
+      createdAt: 3393.49,
+      id: "<id>",
+      name: "<value>",
       ref: "<value>",
-      repo: "<value>",
-      repoId: 1102.65,
-      sha: "<value>",
     },
-    installationId: 6510.39,
-    isPrivate: true,
-    org: "<value>",
-    prId: 139.61,
-    projectId: "<id>",
-    repo: "<value>",
-    repoId: 6357.51,
-    type: "now-comment",
-    provider: "github-custom-host",
+    state: "New Hampshire",
   },
 };
 ```
 
 ## Fields
 
-| Field               | Type                | Required            | Description         |
-| ------------------- | ------------------- | ------------------- | ------------------- |
-| `job`               | *models.PayloadJob* | :heavy_check_mark:  | N/A                 |
+| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `project`                                                                  | [models.UserEventPayload86Project](../models/usereventpayload86project.md) | :heavy_check_mark:                                                         | N/A                                                                        |
+| `job`                                                                      | [models.Job](../models/job.md)                                             | :heavy_check_mark:                                                         | N/A                                                                        |

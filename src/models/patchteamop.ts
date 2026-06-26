@@ -146,7 +146,7 @@ export type PatchTeamTeamsRequestDeploymentType = ClosedEnum<
  */
 export type PatchTeamDefaultPassport = {
   connectorId: string;
-  deploymentType: PatchTeamTeamsRequestDeploymentType;
+  deploymentType?: PatchTeamTeamsRequestDeploymentType | undefined;
 };
 
 /**
@@ -769,7 +769,9 @@ export const PatchTeamDefaultPassport$outboundSchema: z.ZodType<
   PatchTeamDefaultPassport
 > = z.object({
   connectorId: z.string(),
-  deploymentType: PatchTeamTeamsRequestDeploymentType$outboundSchema,
+  deploymentType: PatchTeamTeamsRequestDeploymentType$outboundSchema.default(
+    "all",
+  ),
 });
 
 export function patchTeamDefaultPassportToJSON(

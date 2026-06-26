@@ -353,15 +353,24 @@ export type EditRouteLocale = {
   cookie?: string | undefined;
 };
 
+/**
+ * Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required.
+ */
 export const EditRouteDestinationType = {
   Service: "service",
 } as const;
+/**
+ * Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required.
+ */
 export type EditRouteDestinationType = ClosedEnum<
   typeof EditRouteDestinationType
 >;
 
 export type EditRouteDestination2 = {
-  type: EditRouteDestinationType;
+  /**
+   * Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required.
+   */
+  type?: EditRouteDestinationType | undefined;
   service: string;
   /**
    * Routing-only path used to select a route inside the target service.
@@ -1481,7 +1490,7 @@ export const EditRouteDestination2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: EditRouteDestinationType$inboundSchema,
+  type: types.optional(EditRouteDestinationType$inboundSchema),
   service: types.string(),
   path: types.optional(types.string()),
 });

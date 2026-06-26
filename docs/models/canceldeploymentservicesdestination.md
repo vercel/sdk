@@ -13,7 +13,6 @@ const value: string = "<value>";
 
 ```typescript
 const value: models.CancelDeploymentDestinationDeployments2 = {
-  type: "service",
   service: "<value>",
 };
 ```

@@ -1331,6 +1331,7 @@ export const GetProjectsResponseBodyFramework = {
   Blitzjs: "blitzjs",
   Brunch: "brunch",
   Bun: "bun",
+  Container: "container",
   CreateReactApp: "create-react-app",
   Django: "django",
   Docusaurus: "docusaurus",

@@ -8,15 +8,12 @@ The payload of the event, if requested.
 import { Eighteen } from "@vercel/sdk/models/userevent.js";
 
 let value: Eighteen = {
-  rule: {
-    id: "<id>",
-    type: "<value>",
-  },
+  enabled: false,
 };
 ```
 
 ## Fields
 
-| Field                                          | Type                                           | Required                                       | Description                                    |
-| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| `rule`                                         | [models.PayloadRule](../models/payloadrule.md) | :heavy_check_mark:                             | N/A                                            |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `enabled`          | *boolean*          | :heavy_check_mark: | N/A                |

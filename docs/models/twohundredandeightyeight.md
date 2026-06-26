@@ -8,17 +8,24 @@ The payload of the event, if requested.
 import { TwoHundredAndEightyEight } from "@vercel/sdk/models/rollbackdescription.js";
 
 let value: TwoHundredAndEightyEight = {
-  transferRequestCode: "<value>",
-  store: {
+  budget: {
+    type: "fixed",
+    fixedBudget: 2982.59,
+    previousSpend: [],
+    notifiedAt: [
+      5735.29,
+      1444.34,
+    ],
+    createdAt: 2475.8,
+    isActive: false,
+    teamId: "<id>",
     id: "<id>",
-    type: "edge-config",
   },
 };
 ```
 
 ## Fields
 
-| Field                              | Type                               | Required                           | Description                        |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| `transferRequestCode`              | *string*                           | :heavy_check_mark:                 | N/A                                |
-| `store`                            | [models.Store](../models/store.md) | :heavy_check_mark:                 | N/A                                |
+| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `budget`                                                                   | [models.UserEventPayload288Budget](../models/usereventpayload288budget.md) | :heavy_check_mark:                                                         | Represents a budget for tracking and notifying teams on their spending.    |

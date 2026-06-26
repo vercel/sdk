@@ -586,15 +586,24 @@ export type CancelDeploymentServicesRedirects = {
   env?: Array<string> | undefined;
 };
 
+/**
+ * Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required.
+ */
 export const CancelDeploymentDestinationDeploymentsType = {
   Service: "service",
 } as const;
+/**
+ * Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required.
+ */
 export type CancelDeploymentDestinationDeploymentsType = ClosedEnum<
   typeof CancelDeploymentDestinationDeploymentsType
 >;
 
 export type CancelDeploymentDestinationDeployments2 = {
-  type: CancelDeploymentDestinationDeploymentsType;
+  /**
+   * Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required.
+   */
+  type?: CancelDeploymentDestinationDeploymentsType | undefined;
   service: string;
   /**
    * Routing-only path used to select a route inside the target service.
@@ -1091,15 +1100,24 @@ export type CancelDeploymentRoutesLocale = {
   cookie?: string | undefined;
 };
 
+/**
+ * Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required.
+ */
 export const CancelDeploymentDestinationDeploymentsResponseType = {
   Service: "service",
 } as const;
+/**
+ * Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required.
+ */
 export type CancelDeploymentDestinationDeploymentsResponseType = ClosedEnum<
   typeof CancelDeploymentDestinationDeploymentsResponseType
 >;
 
 export type CancelDeploymentDestinationDeploymentsResponse2 = {
-  type: CancelDeploymentDestinationDeploymentsResponseType;
+  /**
+   * Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required.
+   */
+  type?: CancelDeploymentDestinationDeploymentsResponseType | undefined;
   service: string;
   /**
    * Routing-only path used to select a route inside the target service.
@@ -3027,7 +3045,9 @@ export const CancelDeploymentDestinationDeployments2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: CancelDeploymentDestinationDeploymentsType$inboundSchema,
+  type: types.optional(
+    CancelDeploymentDestinationDeploymentsType$inboundSchema,
+  ),
   service: types.string(),
   path: types.optional(types.string()),
 });
@@ -4552,7 +4572,9 @@ export const CancelDeploymentDestinationDeploymentsResponse2$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.object({
-    type: CancelDeploymentDestinationDeploymentsResponseType$inboundSchema,
+    type: types.optional(
+      CancelDeploymentDestinationDeploymentsResponseType$inboundSchema,
+    ),
     service: types.string(),
     path: types.optional(types.string()),
   });

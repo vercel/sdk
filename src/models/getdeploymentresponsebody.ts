@@ -403,15 +403,24 @@ export type GetDeploymentRoutesDeploymentsLocale = {
   cookie?: string | undefined;
 };
 
+/**
+ * Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required.
+ */
 export const GetDeploymentDestinationDeploymentsResponseType = {
   Service: "service",
 } as const;
+/**
+ * Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required.
+ */
 export type GetDeploymentDestinationDeploymentsResponseType = ClosedEnum<
   typeof GetDeploymentDestinationDeploymentsResponseType
 >;
 
 export type GetDeploymentDestinationDeploymentsResponse2 = {
-  type: GetDeploymentDestinationDeploymentsResponseType;
+  /**
+   * Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required.
+   */
+  type?: GetDeploymentDestinationDeploymentsResponseType | undefined;
   service: string;
   /**
    * Routing-only path used to select a route inside the target service.
@@ -2370,7 +2379,9 @@ export const GetDeploymentDestinationDeploymentsResponse2$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.object({
-    type: GetDeploymentDestinationDeploymentsResponseType$inboundSchema,
+    type: types.optional(
+      GetDeploymentDestinationDeploymentsResponseType$inboundSchema,
+    ),
     service: types.string(),
     path: types.optional(types.string()),
   });

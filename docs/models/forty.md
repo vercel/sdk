@@ -7,14 +7,13 @@ The payload of the event, if requested.
 ```typescript
 import { Forty } from "@vercel/sdk/models/userevent.js";
 
-let value: Forty = {
-  appName: "<value>",
-};
+let value: Forty = {};
 ```
 
 ## Fields
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `appName`          | *string*           | :heavy_check_mark: | N/A                |
-| `appId`            | *string*           | :heavy_minus_sign: | N/A                |
+| `alias`            | *string*           | :heavy_minus_sign: | N/A                |
+| `userId`           | *string*           | :heavy_minus_sign: | N/A                |
+| `username`         | *string*           | :heavy_minus_sign: | N/A                |

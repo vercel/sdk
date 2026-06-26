@@ -5,7 +5,7 @@ Method used for the state change - 'totp': User set up TOTP authenticator - 'pas
 ## Example Usage
 
 ```typescript
-import { PayloadMethod } from "@vercel/sdk/models/onehundredandfifteen.js";
+import { PayloadMethod } from "@vercel/sdk/models/onehundredandtwenty.js";
 
 let value: PayloadMethod = "user_disabled";
 ```

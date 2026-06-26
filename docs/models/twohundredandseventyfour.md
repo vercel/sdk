@@ -8,8 +8,8 @@ The payload of the event, if requested.
 import { TwoHundredAndSeventyFour } from "@vercel/sdk/models/rollbackdescription.js";
 
 let value: TwoHundredAndSeventyFour = {
-  oldName: "<value>",
-  newName: "<value>",
+  instances: 944.15,
+  url: "https://messy-mainstream.net",
 };
 ```
 
@@ -17,6 +17,5 @@ let value: TwoHundredAndSeventyFour = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `oldName`          | *string*           | :heavy_check_mark: | N/A                |
-| `newName`          | *string*           | :heavy_check_mark: | N/A                |
-| `uid`              | *string*           | :heavy_minus_sign: | N/A                |
+| `instances`        | *number*           | :heavy_check_mark: | N/A                |
+| `url`              | *string*           | :heavy_check_mark: | N/A                |

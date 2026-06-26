@@ -8,16 +8,20 @@ The payload of the event, if requested.
 import { OneHundredAndFortySeven } from "@vercel/sdk/models/usereventpayloadgituserid.js";
 
 let value: OneHundredAndFortySeven = {
-  integrationId: "<id>",
-  integrationSlug: "<value>",
-  integrationName: "<value>",
+  configurations: [
+    {
+      integrationId: "<id>",
+      configurationId: "<id>",
+      integrationSlug: "<value>",
+    },
+  ],
+  ownerId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `integrationId`    | *string*           | :heavy_check_mark: | N/A                |
-| `integrationSlug`  | *string*           | :heavy_check_mark: | N/A                |
-| `integrationName`  | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                  | Type                                                   | Required                                               | Description                                            |
+| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
+| `configurations`                                       | [models.Configurations](../models/configurations.md)[] | :heavy_check_mark:                                     | N/A                                                    |
+| `ownerId`                                              | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |

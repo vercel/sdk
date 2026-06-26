@@ -1,0 +1,23 @@
+# UserEventJobPayload898DeployHook
+
+## Example Usage
+
+```typescript
+import { UserEventJobPayload898DeployHook } from "@vercel/sdk/models/sixtythree.js";
+
+let value: UserEventJobPayload898DeployHook = {
+  createdAt: 752.36,
+  id: "<id>",
+  name: "<value>",
+  ref: "<value>",
+};
+```
+
+## Fields
+
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `createdAt`        | *number*           | :heavy_check_mark: | N/A                |
+| `id`               | *string*           | :heavy_check_mark: | N/A                |
+| `name`             | *string*           | :heavy_check_mark: | N/A                |
+| `ref`              | *string*           | :heavy_check_mark: | N/A                |

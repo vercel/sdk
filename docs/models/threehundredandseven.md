@@ -8,8 +8,7 @@ The payload of the event, if requested.
 import { ThreeHundredAndSeven } from "@vercel/sdk/models/rollbackdescription.js";
 
 let value: ThreeHundredAndSeven = {
-  deletedCount: 4080.81,
-  inviteIds: [],
+  enabled: true,
 };
 ```
 
@@ -17,5 +16,5 @@ let value: ThreeHundredAndSeven = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `deletedCount`     | *number*           | :heavy_check_mark: | N/A                |
-| `inviteIds`        | *string*[]         | :heavy_check_mark: | N/A                |
+| `enabled`          | *boolean*          | :heavy_check_mark: | N/A                |
+| `domain`           | *string*           | :heavy_minus_sign: | N/A                |

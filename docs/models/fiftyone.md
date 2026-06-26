@@ -7,15 +7,11 @@ The payload of the event, if requested.
 ```typescript
 import { FiftyOne } from "@vercel/sdk/models/userevent.js";
 
-let value: FiftyOne = {
-  paymentMethodId: "<id>",
-};
+let value: FiftyOne = {};
 ```
 
 ## Fields
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `paymentMethodId`  | *string*           | :heavy_check_mark: | N/A                |
-| `brand`            | *string*           | :heavy_minus_sign: | N/A                |
-| `last4`            | *string*           | :heavy_minus_sign: | N/A                |
+| `avatar`           | *string*           | :heavy_minus_sign: | N/A                |

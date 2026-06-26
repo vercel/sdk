@@ -3,29 +3,17 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPayload159Project } from "@vercel/sdk/models/two1.js";
+import { UserEventPayload159Project } from "@vercel/sdk/models/usereventpayloadgituserid.js";
 
 let value: UserEventPayload159Project = {
   id: "<id>",
-  oldConnectConfigurations: null,
-  newConnectConfigurations: [
-    {
-      envId: "<id>",
-      connectConfigurationId: "<id>",
-      passive: true,
-      buildsEnabled: false,
-      createdAt: 5463.76,
-      updatedAt: 2696.76,
-    },
-  ],
+  name: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `id`                                                                       | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
-| `name`                                                                     | *string*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |
-| `oldConnectConfigurations`                                                 | [models.OldConnectConfigurations](../models/oldconnectconfigurations.md)[] | :heavy_check_mark:                                                         | N/A                                                                        |
-| `newConnectConfigurations`                                                 | [models.NewConnectConfigurations](../models/newconnectconfigurations.md)[] | :heavy_check_mark:                                                         | N/A                                                                        |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `id`               | *string*           | :heavy_check_mark: | N/A                |
+| `name`             | *string*           | :heavy_check_mark: | N/A                |

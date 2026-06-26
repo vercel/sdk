@@ -8,16 +8,17 @@ The payload of the event, if requested.
 import { TwoHundredAndNinetyTwo } from "@vercel/sdk/models/rollbackdescription.js";
 
 let value: TwoHundredAndNinetyTwo = {
+  transferRequestCode: "<value>",
   store: {
-    name: "<value>",
     id: "<id>",
+    type: "edge-config",
   },
 };
 ```
 
 ## Fields
 
-| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
-| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| `store`                                                                  | [models.UserEventPayload292Store](../models/usereventpayload292store.md) | :heavy_check_mark:                                                       | N/A                                                                      |
-| `ownerId`                                                                | *string*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
+| Field                              | Type                               | Required                           | Description                        |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| `transferRequestCode`              | *string*                           | :heavy_check_mark:                 | N/A                                |
+| `store`                            | [models.Store](../models/store.md) | :heavy_check_mark:                 | N/A                                |

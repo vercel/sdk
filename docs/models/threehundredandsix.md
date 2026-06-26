@@ -7,11 +7,15 @@ The payload of the event, if requested.
 ```typescript
 import { ThreeHundredAndSix } from "@vercel/sdk/models/rollbackdescription.js";
 
-let value: ThreeHundredAndSix = {};
+let value: ThreeHundredAndSix = {
+  personalAccountId: "<id>",
+  managedAccountId: "<id>",
+};
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `emailDomain`      | *string*           | :heavy_minus_sign: | N/A                |
+| Field               | Type                | Required            | Description         |
+| ------------------- | ------------------- | ------------------- | ------------------- |
+| `personalAccountId` | *string*            | :heavy_check_mark:  | N/A                 |
+| `managedAccountId`  | *string*            | :heavy_check_mark:  | N/A                 |

@@ -8,9 +8,7 @@ The payload of the event, if requested.
 import { OneHundredAndFiftyThree } from "@vercel/sdk/models/usereventpayloadgituserid.js";
 
 let value: OneHundredAndFiftyThree = {
-  id: "<id>",
-  slug: "<value>",
-  name: "<value>",
+  logDrainUrl: "https://worthless-executor.com/",
 };
 ```
 
@@ -18,6 +16,5 @@ let value: OneHundredAndFiftyThree = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `id`               | *string*           | :heavy_check_mark: | N/A                |
-| `slug`             | *string*           | :heavy_check_mark: | N/A                |
-| `name`             | *string*           | :heavy_check_mark: | N/A                |
+| `logDrainUrl`      | *string*           | :heavy_check_mark: | N/A                |
+| `integrationName`  | *string*           | :heavy_minus_sign: | N/A                |

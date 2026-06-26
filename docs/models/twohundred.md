@@ -7,15 +7,14 @@ The payload of the event, if requested.
 ```typescript
 import { TwoHundred } from "@vercel/sdk/models/payloadgituserid.js";
 
-let value: TwoHundred = {
-  name: "<value>",
-  ownerId: "<id>",
-};
+let value: TwoHundred = {};
 ```
 
 ## Fields
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `name`             | *string*           | :heavy_check_mark: | N/A                |
-| `ownerId`          | *string*           | :heavy_check_mark: | N/A                |
+| `projectId`        | *string*           | :heavy_minus_sign: | N/A                |
+| `projectName`      | *string*           | :heavy_minus_sign: | N/A                |
+| `target`           | *string*[]         | :heavy_minus_sign: | N/A                |
+| `updated`          | *boolean*          | :heavy_minus_sign: | N/A                |

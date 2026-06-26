@@ -62,6 +62,7 @@ export const CancelDeploymentFramework = {
   Blitzjs: "blitzjs",
   Brunch: "brunch",
   Bun: "bun",
+  Container: "container",
   CreateReactApp: "create-react-app",
   Django: "django",
   Docusaurus: "docusaurus",
@@ -1401,15 +1402,24 @@ export type RoutesLocale = {
   cookie?: string | undefined;
 };
 
+/**
+ * Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required.
+ */
 export const CancelDeploymentDestinationType = {
   Service: "service",
 } as const;
+/**
+ * Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required.
+ */
 export type CancelDeploymentDestinationType = ClosedEnum<
   typeof CancelDeploymentDestinationType
 >;
 
 export type CancelDeploymentDestination2 = {
-  type: CancelDeploymentDestinationType;
+  /**
+   * Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required.
+   */
+  type?: CancelDeploymentDestinationType | undefined;
   service: string;
   /**
    * Routing-only path used to select a route inside the target service.
@@ -3980,7 +3990,7 @@ export const CancelDeploymentDestination2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: CancelDeploymentDestinationType$inboundSchema,
+  type: types.optional(CancelDeploymentDestinationType$inboundSchema),
   service: types.string(),
   path: types.optional(types.string()),
 });

@@ -5,21 +5,24 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndSeventeen } from "@vercel/sdk/models/onehundredandfifteen.js";
+import { OneHundredAndSeventeen } from "@vercel/sdk/models/sixtythree.js";
 
 let value: OneHundredAndSeventeen = {
-  edgeConfigId: "<id>",
-  edgeConfigSlug: "<value>",
-  edgeConfigDigest: "<value>",
-  edgeConfigBackupVersionId: "<id>",
+  projectId: "<id>",
+  projectName: "<value>",
+  tags: [
+    "<value 1>",
+    "<value 2>",
+    "<value 3>",
+  ],
 };
 ```
 
 ## Fields
 
-| Field                       | Type                        | Required                    | Description                 |
-| --------------------------- | --------------------------- | --------------------------- | --------------------------- |
-| `edgeConfigId`              | *string*                    | :heavy_check_mark:          | N/A                         |
-| `edgeConfigSlug`            | *string*                    | :heavy_check_mark:          | N/A                         |
-| `edgeConfigDigest`          | *string*                    | :heavy_check_mark:          | N/A                         |
-| `edgeConfigBackupVersionId` | *string*                    | :heavy_check_mark:          | N/A                         |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
+| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
+| `tags`             | *string*[]         | :heavy_check_mark: | N/A                |
+| `target`           | *string*           | :heavy_minus_sign: | N/A                |

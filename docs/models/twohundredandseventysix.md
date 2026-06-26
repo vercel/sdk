@@ -8,7 +8,7 @@ The payload of the event, if requested.
 import { TwoHundredAndSeventySix } from "@vercel/sdk/models/rollbackdescription.js";
 
 let value: TwoHundredAndSeventySix = {
-  bio: "<value>",
+  email: "Margret_Willms7@gmail.com",
 };
 ```
 
@@ -16,4 +16,4 @@ let value: TwoHundredAndSeventySix = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `bio`              | *string*           | :heavy_check_mark: | N/A                |
+| `email`            | *string*           | :heavy_check_mark: | N/A                |

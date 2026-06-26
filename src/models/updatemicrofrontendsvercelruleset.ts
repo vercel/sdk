@@ -554,6 +554,7 @@ export const UpdateMicrofrontendsFramework = {
   Blitzjs: "blitzjs",
   Brunch: "brunch",
   Bun: "bun",
+  Container: "container",
   CreateReactApp: "create-react-app",
   Django: "django",
   Docusaurus: "docusaurus",
@@ -650,6 +651,7 @@ export const UpdateMicrofrontendsProjectsFramework = {
   Blitzjs: "blitzjs",
   Brunch: "brunch",
   Bun: "bun",
+  Container: "container",
   CreateReactApp: "create-react-app",
   Django: "django",
   Docusaurus: "docusaurus",
@@ -1356,6 +1358,7 @@ export type UpdateMicrofrontendsPermissions = {
   webAuthn?: Array<ACLAction> | undefined;
   accessGroup?: Array<ACLAction> | undefined;
   agent?: Array<ACLAction> | undefined;
+  aiGatewayPrivateModels?: Array<ACLAction> | undefined;
   aiGatewayRules?: Array<ACLAction> | undefined;
   aiGatewayUsage?: Array<ACLAction> | undefined;
   alerts?: Array<ACLAction> | undefined;
@@ -4236,6 +4239,7 @@ export const UpdateMicrofrontendsPermissions$inboundSchema: z.ZodType<
   webAuthn: types.optional(z.array(ACLAction$inboundSchema)),
   accessGroup: types.optional(z.array(ACLAction$inboundSchema)),
   agent: types.optional(z.array(ACLAction$inboundSchema)),
+  aiGatewayPrivateModels: types.optional(z.array(ACLAction$inboundSchema)),
   aiGatewayRules: types.optional(z.array(ACLAction$inboundSchema)),
   aiGatewayUsage: types.optional(z.array(ACLAction$inboundSchema)),
   alerts: types.optional(z.array(ACLAction$inboundSchema)),

@@ -10,6 +10,7 @@ import { OneHundredAndEightyEight } from "@vercel/sdk/models/payloadgituserid.js
 let value: OneHundredAndEightyEight = {
   projectId: "<id>",
   projectName: "<value>",
+  directoryListing: false,
 };
 ```
 
@@ -19,4 +20,4 @@ let value: OneHundredAndEightyEight = {
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `projectId`        | *string*           | :heavy_check_mark: | N/A                |
 | `projectName`      | *string*           | :heavy_check_mark: | N/A                |
-| `avatar`           | *string*           | :heavy_minus_sign: | N/A                |
+| `directoryListing` | *boolean*          | :heavy_check_mark: | N/A                |

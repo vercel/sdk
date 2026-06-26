@@ -115,13 +115,22 @@ export type Locale = {
   cookie?: string | undefined;
 };
 
+/**
+ * Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required.
+ */
 export const DestinationType = {
   Service: "service",
 } as const;
+/**
+ * Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required.
+ */
 export type DestinationType = ClosedEnum<typeof DestinationType>;
 
 export type Destination2 = {
-  type: DestinationType;
+  /**
+   * Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required.
+   */
+  type?: DestinationType | undefined;
   service: string;
   /**
    * Routing-only path used to select a route inside the target service.
@@ -851,15 +860,24 @@ export type ServicesRedirects = {
   env?: Array<string> | undefined;
 };
 
+/**
+ * Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required.
+ */
 export const CreateDeploymentDestinationType = {
   Service: "service",
 } as const;
+/**
+ * Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required.
+ */
 export type CreateDeploymentDestinationType = ClosedEnum<
   typeof CreateDeploymentDestinationType
 >;
 
 export type CreateDeploymentDestination2 = {
-  type: CreateDeploymentDestinationType;
+  /**
+   * Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required.
+   */
+  type?: CreateDeploymentDestinationType | undefined;
   service: string;
   /**
    * Routing-only path used to select a route inside the target service.
@@ -1632,7 +1650,7 @@ export const Destination2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: DestinationType$inboundSchema,
+  type: types.optional(DestinationType$inboundSchema),
   service: types.string(),
   path: types.optional(types.string()),
 });
@@ -3413,7 +3431,7 @@ export const CreateDeploymentDestination2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: CreateDeploymentDestinationType$inboundSchema,
+  type: types.optional(CreateDeploymentDestinationType$inboundSchema),
   service: types.string(),
   path: types.optional(types.string()),
 });

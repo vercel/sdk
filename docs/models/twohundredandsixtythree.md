@@ -11,19 +11,9 @@ let value: TwoHundredAndSixtyThree = {
   projectId: "<id>",
   projectName: "<value>",
   next: {
-    project: {
-      staticIps: {
-        enabled: false,
-      },
-    },
+    skewProtectionBoundaryAt: 8969.75,
   },
-  previous: {
-    project: {
-      staticIps: {
-        enabled: false,
-      },
-    },
-  },
+  previous: {},
 };
 ```
 

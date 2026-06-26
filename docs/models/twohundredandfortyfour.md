@@ -8,8 +8,9 @@ The payload of the event, if requested.
 import { TwoHundredAndFortyFour } from "@vercel/sdk/models/payloadgituserid.js";
 
 let value: TwoHundredAndFortyFour = {
+  source: "<value>",
   projectId: "<id>",
-  expiresAt: 4331.4,
+  projectName: "<value>",
 };
 ```
 
@@ -17,5 +18,6 @@ let value: TwoHundredAndFortyFour = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
+| `source`           | *string*           | :heavy_check_mark: | N/A                |
 | `projectId`        | *string*           | :heavy_check_mark: | N/A                |
-| `expiresAt`        | *number*           | :heavy_check_mark: | N/A                |
+| `projectName`      | *string*           | :heavy_check_mark: | N/A                |

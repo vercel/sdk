@@ -7,22 +7,24 @@ The payload of the event, if requested.
 ```typescript
 import { TwentySeven } from "@vercel/sdk/models/userevent.js";
 
-let value: TwentySeven = {};
+let value: TwentySeven = {
+  accessGroup: {
+    id: "<id>",
+    name: "<value>",
+  },
+};
 ```
 
 ## Fields
 
-| Field                                        | Type                                         | Required                                     | Description                                  |
-| -------------------------------------------- | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
-| `alias`                                      | *string*                                     | :heavy_minus_sign:                           | N/A                                          |
-| `deployment`                                 | [models.Deployment](../models/deployment.md) | :heavy_minus_sign:                           | N/A                                          |
-| `ruleCount`                                  | *number*                                     | :heavy_minus_sign:                           | N/A                                          |
-| `deploymentUrl`                              | *string*                                     | :heavy_minus_sign:                           | N/A                                          |
-| `aliasId`                                    | *string*                                     | :heavy_minus_sign:                           | N/A                                          |
-| `deploymentId`                               | *string*                                     | :heavy_minus_sign:                           | N/A                                          |
-| `oldDeploymentId`                            | *string*                                     | :heavy_minus_sign:                           | N/A                                          |
-| `redirect`                                   | *string*                                     | :heavy_minus_sign:                           | N/A                                          |
-| `redirectStatusCode`                         | *number*                                     | :heavy_minus_sign:                           | N/A                                          |
-| `target`                                     | *string*                                     | :heavy_minus_sign:                           | N/A                                          |
-| `system`                                     | *boolean*                                    | :heavy_minus_sign:                           | N/A                                          |
-| `aliasUpdatedAt`                             | *number*                                     | :heavy_minus_sign:                           | N/A                                          |
+| Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `accessGroup`                                                                      | [models.UserEventPayload27AccessGroup](../models/usereventpayload27accessgroup.md) | :heavy_check_mark:                                                                 | N/A                                                                                |
+| `name`                                                                             | *string*                                                                           | :heavy_minus_sign:                                                                 | N/A                                                                                |
+| `previousName`                                                                     | *string*                                                                           | :heavy_minus_sign:                                                                 | N/A                                                                                |
+| `teamRoles`                                                                        | *string*[]                                                                         | :heavy_minus_sign:                                                                 | N/A                                                                                |
+| `previousTeamRoles`                                                                | *string*[]                                                                         | :heavy_minus_sign:                                                                 | N/A                                                                                |
+| `teamPermissions`                                                                  | *string*[]                                                                         | :heavy_minus_sign:                                                                 | N/A                                                                                |
+| `previousTeamPermissions`                                                          | *string*[]                                                                         | :heavy_minus_sign:                                                                 | N/A                                                                                |
+| `entitlementsAdded`                                                                | *string*[]                                                                         | :heavy_minus_sign:                                                                 | N/A                                                                                |
+| `entitlementsRemoved`                                                              | *string*[]                                                                         | :heavy_minus_sign:                                                                 | N/A                                                                                |

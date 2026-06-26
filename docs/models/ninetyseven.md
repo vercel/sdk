@@ -5,18 +5,30 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { NinetySeven } from "@vercel/sdk/models/usereventpayloadproject.js";
+import { NinetySeven } from "@vercel/sdk/models/sixtythree.js";
 
 let value: NinetySeven = {
+  action: "delete",
+  initiator: "system",
+  id: "<id>",
+  domain: "unfortunate-density.biz",
   name: "<value>",
-  price: 4466.53,
+  type: "<value>",
+  value: "<value>",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `name`             | *string*           | :heavy_check_mark: | N/A                |
-| `price`            | *number*           | :heavy_check_mark: | N/A                |
-| `currency`         | *string*           | :heavy_minus_sign: | N/A                |
+| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `action`                                                                 | [models.UserEventPayload97Action](../models/usereventpayload97action.md) | :heavy_check_mark:                                                       | N/A                                                                      |
+| `initiator`                                                              | [models.Initiator](../models/initiator.md)                               | :heavy_check_mark:                                                       | N/A                                                                      |
+| `id`                                                                     | *string*                                                                 | :heavy_check_mark:                                                       | N/A                                                                      |
+| `domain`                                                                 | *string*                                                                 | :heavy_check_mark:                                                       | N/A                                                                      |
+| `name`                                                                   | *string*                                                                 | :heavy_check_mark:                                                       | N/A                                                                      |
+| `type`                                                                   | *string*                                                                 | :heavy_check_mark:                                                       | N/A                                                                      |
+| `value`                                                                  | *string*                                                                 | :heavy_check_mark:                                                       | N/A                                                                      |
+| `mxPriority`                                                             | *number*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `previousValue`                                                          | *string*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `source`                                                                 | *string*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |

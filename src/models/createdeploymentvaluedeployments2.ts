@@ -275,6 +275,7 @@ export type GitSource =
  */
 export const Framework = {
   Services: "services",
+  Container: "container",
   Blitzjs: "blitzjs",
   Nextjs: "nextjs",
   Gatsby: "gatsby",
@@ -535,6 +536,7 @@ export const CreateDeploymentFramework = {
   Blitzjs: "blitzjs",
   Brunch: "brunch",
   Bun: "bun",
+  Container: "container",
   CreateReactApp: "create-react-app",
   Django: "django",
   Docusaurus: "docusaurus",

@@ -502,15 +502,24 @@ export type GetDeploymentRoutesLocale = {
   cookie?: string | undefined;
 };
 
+/**
+ * Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required.
+ */
 export const GetDeploymentDestinationType = {
   Service: "service",
 } as const;
+/**
+ * Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required.
+ */
 export type GetDeploymentDestinationType = ClosedEnum<
   typeof GetDeploymentDestinationType
 >;
 
 export type GetDeploymentDestination2 = {
-  type: GetDeploymentDestinationType;
+  /**
+   * Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required.
+   */
+  type?: GetDeploymentDestinationType | undefined;
   service: string;
   /**
    * Routing-only path used to select a route inside the target service.
@@ -1266,15 +1275,24 @@ export type GetDeploymentServicesRedirects = {
   env?: Array<string> | undefined;
 };
 
+/**
+ * Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required.
+ */
 export const GetDeploymentDestinationDeploymentsType = {
   Service: "service",
 } as const;
+/**
+ * Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required.
+ */
 export type GetDeploymentDestinationDeploymentsType = ClosedEnum<
   typeof GetDeploymentDestinationDeploymentsType
 >;
 
 export type GetDeploymentDestinationDeployments2 = {
-  type: GetDeploymentDestinationDeploymentsType;
+  /**
+   * Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required.
+   */
+  type?: GetDeploymentDestinationDeploymentsType | undefined;
   service: string;
   /**
    * Routing-only path used to select a route inside the target service.
@@ -2521,7 +2539,7 @@ export const GetDeploymentDestination2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: GetDeploymentDestinationType$inboundSchema,
+  type: types.optional(GetDeploymentDestinationType$inboundSchema),
   service: types.string(),
   path: types.optional(types.string()),
 });
@@ -4411,7 +4429,7 @@ export const GetDeploymentDestinationDeployments2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: GetDeploymentDestinationDeploymentsType$inboundSchema,
+  type: types.optional(GetDeploymentDestinationDeploymentsType$inboundSchema),
   service: types.string(),
   path: types.optional(types.string()),
 });

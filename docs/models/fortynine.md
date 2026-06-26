@@ -8,18 +8,17 @@ The payload of the event, if requested.
 import { FortyNine } from "@vercel/sdk/models/userevent.js";
 
 let value: FortyNine = {
-  invoiceId: "<id>",
-  amount: 8401.55,
-  refundReason: "<value>",
-  lineItemCount: 4675.32,
+  projectId: "<id>",
+  attackModeEnabled: false,
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `invoiceId`        | *string*           | :heavy_check_mark: | N/A                |
-| `amount`           | *number*           | :heavy_check_mark: | N/A                |
-| `refundReason`     | *string*           | :heavy_check_mark: | N/A                |
-| `lineItemCount`    | *number*           | :heavy_check_mark: | N/A                |
+| Field                       | Type                        | Required                    | Description                 |
+| --------------------------- | --------------------------- | --------------------------- | --------------------------- |
+| `projectId`                 | *string*                    | :heavy_check_mark:          | N/A                         |
+| `prevAttackModeEnabled`     | *boolean*                   | :heavy_minus_sign:          | N/A                         |
+| `prevAttackModeActiveUntil` | *number*                    | :heavy_minus_sign:          | N/A                         |
+| `attackModeEnabled`         | *boolean*                   | :heavy_check_mark:          | N/A                         |
+| `attackModeActiveUntil`     | *number*                    | :heavy_minus_sign:          | N/A                         |

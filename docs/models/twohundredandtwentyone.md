@@ -8,6 +8,8 @@ The payload of the event, if requested.
 import { TwoHundredAndTwentyOne } from "@vercel/sdk/models/payloadgituserid.js";
 
 let value: TwoHundredAndTwentyOne = {
+  projectId: "<id>",
+  projectName: "<value>",
   disableRepositoryDispatchEvents: false,
 };
 ```
@@ -16,4 +18,6 @@ let value: TwoHundredAndTwentyOne = {
 
 | Field                             | Type                              | Required                          | Description                       |
 | --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- |
+| `projectId`                       | *string*                          | :heavy_check_mark:                | N/A                               |
+| `projectName`                     | *string*                          | :heavy_check_mark:                | N/A                               |
 | `disableRepositoryDispatchEvents` | *boolean*                         | :heavy_check_mark:                | N/A                               |

@@ -293,15 +293,24 @@ export type GetRoutesResponseBodyProjectRoutesLocale = {
   cookie?: string | undefined;
 };
 
+/**
+ * Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required.
+ */
 export const GetRoutesDestinationProjectRoutesResponseType = {
   Service: "service",
 } as const;
+/**
+ * Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required.
+ */
 export type GetRoutesDestinationProjectRoutesResponseType = ClosedEnum<
   typeof GetRoutesDestinationProjectRoutesResponseType
 >;
 
 export type GetRoutesDestinationProjectRoutesResponse2 = {
-  type: GetRoutesDestinationProjectRoutesResponseType;
+  /**
+   * Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required.
+   */
+  type?: GetRoutesDestinationProjectRoutesResponseType | undefined;
   service: string;
   /**
    * Routing-only path used to select a route inside the target service.
@@ -747,15 +756,24 @@ export type GetRoutesResponseBodyLocale = {
   cookie?: string | undefined;
 };
 
+/**
+ * Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required.
+ */
 export const GetRoutesDestinationProjectRoutesType = {
   Service: "service",
 } as const;
+/**
+ * Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required.
+ */
 export type GetRoutesDestinationProjectRoutesType = ClosedEnum<
   typeof GetRoutesDestinationProjectRoutesType
 >;
 
 export type GetRoutesDestinationProjectRoutes2 = {
-  type: GetRoutesDestinationProjectRoutesType;
+  /**
+   * Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required.
+   */
+  type?: GetRoutesDestinationProjectRoutesType | undefined;
   service: string;
   /**
    * Routing-only path used to select a route inside the target service.
@@ -1162,15 +1180,24 @@ export type ResponseBodyLocale = {
   cookie?: string | undefined;
 };
 
+/**
+ * Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required.
+ */
 export const GetRoutesDestinationType = {
   Service: "service",
 } as const;
+/**
+ * Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required.
+ */
 export type GetRoutesDestinationType = ClosedEnum<
   typeof GetRoutesDestinationType
 >;
 
 export type GetRoutesDestination2 = {
-  type: GetRoutesDestinationType;
+  /**
+   * Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required.
+   */
+  type?: GetRoutesDestinationType | undefined;
   service: string;
   /**
    * Routing-only path used to select a route inside the target service.
@@ -2278,7 +2305,9 @@ export const GetRoutesDestinationProjectRoutesResponseType$inboundSchema:
 export const GetRoutesDestinationProjectRoutesResponse2$inboundSchema:
   z.ZodType<GetRoutesDestinationProjectRoutesResponse2, z.ZodTypeDef, unknown> =
     z.object({
-      type: GetRoutesDestinationProjectRoutesResponseType$inboundSchema,
+      type: types.optional(
+        GetRoutesDestinationProjectRoutesResponseType$inboundSchema,
+      ),
       service: types.string(),
       path: types.optional(types.string()),
     });
@@ -3301,7 +3330,7 @@ export const GetRoutesDestinationProjectRoutes2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: GetRoutesDestinationProjectRoutesType$inboundSchema,
+  type: types.optional(GetRoutesDestinationProjectRoutesType$inboundSchema),
   service: types.string(),
   path: types.optional(types.string()),
 });
@@ -4207,7 +4236,7 @@ export const GetRoutesDestination2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: GetRoutesDestinationType$inboundSchema,
+  type: types.optional(GetRoutesDestinationType$inboundSchema),
   service: types.string(),
   path: types.optional(types.string()),
 });

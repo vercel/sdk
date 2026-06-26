@@ -5,25 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndTwo } from "@vercel/sdk/models/usereventpayloadproject.js";
+import { OneHundredAndTwo } from "@vercel/sdk/models/sixtythree.js";
 
 let value: OneHundredAndTwo = {
-  previousServiceType: "<value>",
-  serviceType: "<value>",
-  id: "<id>",
   name: "<value>",
-  nameservers: [
-    "<value 1>",
-  ],
 };
 ```
 
 ## Fields
 
-| Field                 | Type                  | Required              | Description           |
-| --------------------- | --------------------- | --------------------- | --------------------- |
-| `previousServiceType` | *string*              | :heavy_check_mark:    | N/A                   |
-| `serviceType`         | *string*              | :heavy_check_mark:    | N/A                   |
-| `id`                  | *string*              | :heavy_check_mark:    | N/A                   |
-| `name`                | *string*              | :heavy_check_mark:    | N/A                   |
-| `nameservers`         | *string*[]            | :heavy_check_mark:    | N/A                   |
+| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `name`                                                                       | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
+| `oldTeam`                                                                    | [models.UserEventPayload102OldTeam](../models/usereventpayload102oldteam.md) | :heavy_minus_sign:                                                           | N/A                                                                          |
+| `newTeam`                                                                    | [models.UserEventPayload102NewTeam](../models/usereventpayload102newteam.md) | :heavy_minus_sign:                                                           | N/A                                                                          |

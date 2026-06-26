@@ -5,14 +5,14 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { NinetyOne } from "@vercel/sdk/models/usereventpayloadproject.js";
+import { NinetyOne } from "@vercel/sdk/models/sixtythree.js";
 
 let value: NinetyOne = {
-  deploymentId: "<id>",
-  deploymentUrl: "https://warlike-saloon.biz",
-  deploymentName: "<value>",
-  projectId: "<id>",
+  sha: "<value>",
+  gitUserPlatform: "<value>",
   projectName: "<value>",
+  gitCommitterName: "<value>",
+  source: "<value>",
 };
 ```
 
@@ -20,8 +20,9 @@ let value: NinetyOne = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `deploymentId`     | *string*           | :heavy_check_mark: | N/A                |
-| `deploymentUrl`    | *string*           | :heavy_check_mark: | N/A                |
-| `deploymentName`   | *string*           | :heavy_check_mark: | N/A                |
-| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
+| `sha`              | *string*           | :heavy_check_mark: | N/A                |
+| `gitUserPlatform`  | *string*           | :heavy_check_mark: | N/A                |
+| `projectId`        | *string*           | :heavy_minus_sign: | N/A                |
 | `projectName`      | *string*           | :heavy_check_mark: | N/A                |
+| `gitCommitterName` | *string*           | :heavy_check_mark: | N/A                |
+| `source`           | *string*           | :heavy_check_mark: | N/A                |

@@ -102,15 +102,24 @@ import {
 import { FlagJSONValue, FlagJSONValue$inboundSchema } from "./flagjsonvalue.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
+/**
+ * Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required.
+ */
 export const CreateDeploymentDestinationDeploymentsType = {
   Service: "service",
 } as const;
+/**
+ * Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required.
+ */
 export type CreateDeploymentDestinationDeploymentsType = ClosedEnum<
   typeof CreateDeploymentDestinationDeploymentsType
 >;
 
 export type CreateDeploymentDestinationDeployments2 = {
-  type: CreateDeploymentDestinationDeploymentsType;
+  /**
+   * Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required.
+   */
+  type?: CreateDeploymentDestinationDeploymentsType | undefined;
   service: string;
   /**
    * Routing-only path used to select a route inside the target service.
@@ -1065,7 +1074,9 @@ export const CreateDeploymentDestinationDeployments2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: CreateDeploymentDestinationDeploymentsType$inboundSchema,
+  type: types.optional(
+    CreateDeploymentDestinationDeploymentsType$inboundSchema,
+  ),
   service: types.string(),
   path: types.optional(types.string()),
 });

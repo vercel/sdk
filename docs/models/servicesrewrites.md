@@ -8,7 +8,6 @@ import { ServicesRewrites } from "@vercel/sdk/models/canceldeploymentgitrepodepl
 let value: ServicesRewrites = {
   source: "<value>",
   destination: {
-    type: "service",
     service: "<value>",
   },
 };

@@ -8,15 +8,14 @@ The payload of the event, if requested.
 import { Seventeen } from "@vercel/sdk/models/userevent.js";
 
 let value: Seventeen = {
-  rule: {
-    id: "<id>",
-    type: "<value>",
+  privateProvider: {
+    slug: "<value>",
   },
 };
 ```
 
 ## Fields
 
-| Field                            | Type                             | Required                         | Description                      |
-| -------------------------------- | -------------------------------- | -------------------------------- | -------------------------------- |
-| `rule`                           | [models.Rule](../models/rule.md) | :heavy_check_mark:               | N/A                              |
+| Field                                                  | Type                                                   | Required                                               | Description                                            |
+| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
+| `privateProvider`                                      | [models.PrivateProvider](../models/privateprovider.md) | :heavy_check_mark:                                     | N/A                                                    |

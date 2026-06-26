@@ -10,7 +10,7 @@ import { TwoHundredAndSixteen } from "@vercel/sdk/models/payloadgituserid.js";
 let value: TwoHundredAndSixteen = {
   projectId: "<id>",
   projectName: "<value>",
-  onCommit: false,
+  newProjectName: "<value>",
 };
 ```
 
@@ -20,4 +20,4 @@ let value: TwoHundredAndSixteen = {
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `projectId`        | *string*           | :heavy_check_mark: | N/A                |
 | `projectName`      | *string*           | :heavy_check_mark: | N/A                |
-| `onCommit`         | *boolean*          | :heavy_check_mark: | N/A                |
+| `newProjectName`   | *string*           | :heavy_check_mark: | N/A                |

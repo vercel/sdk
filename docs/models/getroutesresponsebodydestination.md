@@ -13,7 +13,6 @@ const value: string = "<value>";
 
 ```typescript
 const value: models.GetRoutesDestinationProjectRoutes2 = {
-  type: "service",
   service: "<value>",
 };
 ```

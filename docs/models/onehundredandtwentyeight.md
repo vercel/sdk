@@ -5,19 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndTwentyEight } from "@vercel/sdk/models/onehundredandtwenty.js";
+import { OneHundredAndTwentyEight } from "@vercel/sdk/models/onehundredandtwentyfour.js";
 
 let value: OneHundredAndTwentyEight = {
-  team: {
-    id: "<id>",
-  },
+  email: "Ariel.Hoeger54@yahoo.com",
+  name: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
-| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `team`                                                                 | [models.UserEventPayload128Team](../models/usereventpayload128team.md) | :heavy_check_mark:                                                     | N/A                                                                    |
-| `previousRule`                                                         | [models.PayloadPreviousRule](../models/payloadpreviousrule.md)         | :heavy_minus_sign:                                                     | N/A                                                                    |
-| `nextRule`                                                             | [models.NextRule](../models/nextrule.md)                               | :heavy_minus_sign:                                                     | N/A                                                                    |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `email`            | *string*           | :heavy_check_mark: | N/A                |
+| `name`             | *string*           | :heavy_check_mark: | N/A                |

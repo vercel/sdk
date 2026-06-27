@@ -179,6 +179,9 @@ export const TeamTeamRoles = {
 export type TeamTeamRoles = ClosedEnum<typeof TeamTeamRoles>;
 
 export const TeamTeamPermissions = {
+  AiGatewayApiKeyOwnedBySelf: "AiGatewayApiKeyOwnedBySelf",
+  AiGatewayCredits: "AiGatewayCredits",
+  AiGatewaySettings: "AiGatewaySettings",
   CreateProject: "CreateProject",
   EnvVariableManager: "EnvVariableManager",
   EnvironmentManager: "EnvironmentManager",
@@ -642,6 +645,9 @@ export type TeamMembershipTeamRoles = ClosedEnum<
 >;
 
 export const TeamMembershipTeamPermissions = {
+  AiGatewayApiKeyOwnedBySelf: "AiGatewayApiKeyOwnedBySelf",
+  AiGatewayCredits: "AiGatewayCredits",
+  AiGatewaySettings: "AiGatewaySettings",
   CreateProject: "CreateProject",
   EnvVariableManager: "EnvVariableManager",
   EnvironmentManager: "EnvironmentManager",

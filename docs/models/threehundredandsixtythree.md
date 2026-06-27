@@ -5,31 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndSixtyThree } from "@vercel/sdk/models/threehundredandtwelve.js";
+import { ThreeHundredAndSixtyThree } from "@vercel/sdk/models/threehundredandsixteen.js";
 
 let value: ThreeHundredAndSixtyThree = {
-  tokenId: "<id>",
-  tokenType: "<value>",
-  tokenName: "<value>",
-  actorTokenId: "<id>",
+  model: "El Camino",
+  useCase: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                                | Type                                                                                 | Required                                                                             | Description                                                                          |
-| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| `tokenId`                                                                            | *string*                                                                             | :heavy_check_mark:                                                                   | N/A                                                                                  |
-| `tokenType`                                                                          | *string*                                                                             | :heavy_check_mark:                                                                   | N/A                                                                                  |
-| `tokenName`                                                                          | *string*                                                                             | :heavy_check_mark:                                                                   | N/A                                                                                  |
-| `actorTokenId`                                                                       | *string*                                                                             | :heavy_check_mark:                                                                   | The token's public ID.                                                               |
-| `origin`                                                                             | [models.PayloadOrigin](../models/payloadorigin.md)                                   | :heavy_minus_sign:                                                                   | N/A                                                                                  |
-| `teamId`                                                                             | *string*                                                                             | :heavy_minus_sign:                                                                   | N/A                                                                                  |
-| `expired`                                                                            | *boolean*                                                                            | :heavy_minus_sign:                                                                   | N/A                                                                                  |
-| `leaked`                                                                             | *boolean*                                                                            | :heavy_minus_sign:                                                                   | N/A                                                                                  |
-| `revoked`                                                                            | *boolean*                                                                            | :heavy_minus_sign:                                                                   | N/A                                                                                  |
-| `ip`                                                                                 | *string*                                                                             | :heavy_minus_sign:                                                                   | N/A                                                                                  |
-| `geolocation`                                                                        | [models.UserEventPayload363Geolocation](../models/usereventpayload363geolocation.md) | :heavy_minus_sign:                                                                   | N/A                                                                                  |
-| `userAgent`                                                                          | *string*                                                                             | :heavy_minus_sign:                                                                   | N/A                                                                                  |
-| `reqId`                                                                              | *string*                                                                             | :heavy_minus_sign:                                                                   | N/A                                                                                  |
-| `reqUrl`                                                                             | *string*                                                                             | :heavy_minus_sign:                                                                   | N/A                                                                                  |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `model`            | *string*           | :heavy_check_mark: | N/A                |
+| `useCase`          | *string*           | :heavy_check_mark: | N/A                |

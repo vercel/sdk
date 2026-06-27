@@ -5,11 +5,11 @@
 ```typescript
 import { GetTeamMembersTeamPermissions } from "@vercel/sdk/models/getteammembersop.js";
 
-let value: GetTeamMembersTeamPermissions = "IntegrationManager";
+let value: GetTeamMembersTeamPermissions = "EnvironmentManager";
 ```
 
 ## Values
 
 ```typescript
-"CreateProject" | "EnvVariableManager" | "EnvironmentManager" | "FullProductionDeployment" | "IntegrationManager" | "OrgAdmin" | "OrgViewer" | "UsageViewer" | "V0Builder" | "V0Chatter" | "V0Viewer"
+"AiGatewayApiKeyOwnedBySelf" | "AiGatewayCredits" | "AiGatewaySettings" | "CreateProject" | "EnvVariableManager" | "EnvironmentManager" | "FullProductionDeployment" | "IntegrationManager" | "OrgAdmin" | "OrgViewer" | "UsageViewer" | "V0Builder" | "V0Chatter" | "V0Viewer"
 ```

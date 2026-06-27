@@ -5,19 +5,24 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndNinetySix } from "@vercel/sdk/models/rollbackdescription.js";
+import { TwoHundredAndNinetySix } from "@vercel/sdk/models/twohundredandfiftysix.js";
 
 let value: TwoHundredAndNinetySix = {
+  transferRequestCode: "<value>",
   store: {
-    name: "<value>",
     id: "<id>",
+    type: "integration",
   },
+  originTeamId: "<id>",
+  originTeamName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
-| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| `store`                                                                  | [models.UserEventPayload296Store](../models/usereventpayload296store.md) | :heavy_check_mark:                                                       | N/A                                                                      |
-| `ownerId`                                                                | *string*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
+| Field                                                              | Type                                                               | Required                                                           | Description                                                        |
+| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
+| `transferRequestCode`                                              | *string*                                                           | :heavy_check_mark:                                                 | N/A                                                                |
+| `store`                                                            | [models.UserEventPayloadStore](../models/usereventpayloadstore.md) | :heavy_check_mark:                                                 | N/A                                                                |
+| `originTeamId`                                                     | *string*                                                           | :heavy_check_mark:                                                 | N/A                                                                |
+| `originTeamName`                                                   | *string*                                                           | :heavy_check_mark:                                                 | N/A                                                                |

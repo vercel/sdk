@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { PayloadTeamPermissions } from "@vercel/sdk/models/usereventpayloadgituserid.js";
+import { PayloadTeamPermissions } from "@vercel/sdk/models/onehundredandtwentyfour.js";
 
-let value: PayloadTeamPermissions = "V0Chatter";
+let value: PayloadTeamPermissions = "V0Builder";
 ```
 
 ## Values
 
 ```typescript
-"CreateProject" | "EnvVariableManager" | "EnvironmentManager" | "FullProductionDeployment" | "IntegrationManager" | "OrgAdmin" | "OrgViewer" | "UsageViewer" | "V0Builder" | "V0Chatter" | "V0Viewer"
+"AiGatewayApiKeyOwnedBySelf" | "AiGatewayCredits" | "AiGatewaySettings" | "CreateProject" | "EnvVariableManager" | "EnvironmentManager" | "FullProductionDeployment" | "IntegrationManager" | "OrgAdmin" | "OrgViewer" | "UsageViewer" | "V0Builder" | "V0Chatter" | "V0Viewer"
 ```

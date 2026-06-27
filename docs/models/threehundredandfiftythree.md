@@ -5,26 +5,21 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndFiftyThree } from "@vercel/sdk/models/threehundredandtwelve.js";
+import { ThreeHundredAndFiftyThree } from "@vercel/sdk/models/threehundredandsixteen.js";
 
 let value: ThreeHundredAndFiftyThree = {
-  team: {
-    id: "<id>",
-    name: "<value>",
-  },
-  configuration: {
-    id: "<id>",
-  },
-  peering: {
-    id: "<id>",
-  },
+  projectId: "<id>",
+  projectName: "<value>",
+  repositoryName: "<value>",
+  reference: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                                    | Type                                                                                     | Required                                                                                 | Description                                                                              |
-| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| `team`                                                                                   | [models.UserEventPayload353Team](../models/usereventpayload353team.md)                   | :heavy_check_mark:                                                                       | N/A                                                                                      |
-| `configuration`                                                                          | [models.UserEventPayload353Configuration](../models/usereventpayload353configuration.md) | :heavy_check_mark:                                                                       | N/A                                                                                      |
-| `peering`                                                                                | [models.PayloadPeering](../models/payloadpeering.md)                                     | :heavy_check_mark:                                                                       | N/A                                                                                      |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
+| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
+| `repositoryName`   | *string*           | :heavy_check_mark: | N/A                |
+| `reference`        | *string*           | :heavy_check_mark: | N/A                |

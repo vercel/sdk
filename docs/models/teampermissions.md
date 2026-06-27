@@ -13,5 +13,5 @@ let value: TeamPermissions = "CreateProject";
 ## Values
 
 ```typescript
-"CreateProject" | "EnvVariableManager" | "EnvironmentManager" | "FullProductionDeployment" | "IntegrationManager" | "OrgAdmin" | "OrgViewer" | "UsageViewer" | "V0Builder" | "V0Chatter" | "V0Viewer"
+"AiGatewayApiKeyOwnedBySelf" | "AiGatewayCredits" | "AiGatewaySettings" | "CreateProject" | "EnvVariableManager" | "EnvironmentManager" | "FullProductionDeployment" | "IntegrationManager" | "OrgAdmin" | "OrgViewer" | "UsageViewer" | "V0Builder" | "V0Chatter" | "V0Viewer"
 ```

@@ -3,17 +3,12 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPayload307Next } from "@vercel/sdk/models/payloadenvironment.js";
+import { UserEventPayload307Next } from "@vercel/sdk/models/twohundredandfiftysix.js";
 
-let value: UserEventPayload307Next = {
-  enabled: false,
-  totpVerified: true,
-};
+let value: UserEventPayload307Next = {};
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `enabled`          | *boolean*          | :heavy_check_mark: | N/A                |
-| `totpVerified`     | *boolean*          | :heavy_check_mark: | N/A                |
+| Field       | Type        | Required    | Description |
+| ----------- | ----------- | ----------- | ----------- |

@@ -5,23 +5,23 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndThirtySix } from "@vercel/sdk/models/payloadgituserid.js";
+import { TwoHundredAndThirtySix } from "@vercel/sdk/models/onehundredandeightythree.js";
 
 let value: TwoHundredAndThirtySix = {
-  project: {
-    name: "<value>",
-  },
-  projectMembership: {
-    role: "ADMIN",
-    uid: "<id>",
-    createdAt: 6832.99,
-  },
+  projects: [
+    {
+      projectId: "<id>",
+      role: "ADMIN",
+      membershipCreatedAt: 6832.99,
+    },
+  ],
 };
 ```
 
 ## Fields
 
-| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `project`                                                                    | [models.UserEventPayload236Project](../models/usereventpayload236project.md) | :heavy_check_mark:                                                           | N/A                                                                          |
-| `projectMembership`                                                          | [models.ProjectMembership](../models/projectmembership.md)                   | :heavy_check_mark:                                                           | N/A                                                                          |
+| Field                                                    | Type                                                     | Required                                                 | Description                                              |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `projects`                                               | [models.PayloadProjects](../models/payloadprojects.md)[] | :heavy_check_mark:                                       | N/A                                                      |
+| `teamMembership`                                         | [models.TeamMembership](../models/teammembership.md)     | :heavy_minus_sign:                                       | N/A                                                      |
+| `directoryType`                                          | *string*                                                 | :heavy_minus_sign:                                       | N/A                                                      |

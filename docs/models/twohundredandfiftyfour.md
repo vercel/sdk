@@ -5,7 +5,7 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndFiftyFour } from "@vercel/sdk/models/rollbackdescription.js";
+import { TwoHundredAndFiftyFour } from "@vercel/sdk/models/onehundredandeightythree.js";
 
 let value: TwoHundredAndFiftyFour = {
   projectId: "<id>",
@@ -20,4 +20,3 @@ let value: TwoHundredAndFiftyFour = {
 | `projectId`          | *string*             | :heavy_check_mark:   | N/A                  |
 | `projectName`        | *string*             | :heavy_check_mark:   | N/A                  |
 | `targetDeploymentId` | *string*             | :heavy_minus_sign:   | N/A                  |
-| `action`             | *string*             | :heavy_minus_sign:   | N/A                  |

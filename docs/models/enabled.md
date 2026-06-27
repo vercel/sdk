@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Enabled } from "@vercel/sdk/models/rollbackdescription.js";
+import { Enabled } from "@vercel/sdk/models/twohundredandfiftysix.js";
 
 let value: Enabled = "default-force";
 ```

@@ -5,28 +5,18 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndEightyNine } from "@vercel/sdk/models/payloadgituserid.js";
+import { OneHundredAndEightyNine } from "@vercel/sdk/models/onehundredandeightythree.js";
 
 let value: OneHundredAndEightyNine = {
-  projectId: "<id>",
-  projectAnalytics: {
-    id: "<id>",
-    disabledAt: 4536.01,
-    enabledAt: 2298.46,
-  },
-  prevProjectAnalytics: {
-    id: "<id>",
-    disabledAt: 3950.77,
-    enabledAt: 7544.64,
-  },
+  projectName: "<value>",
+  branch: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `projectName`                                                    | *string*                                                         | :heavy_minus_sign:                                               | N/A                                                              |
-| `projectId`                                                      | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
-| `projectAnalytics`                                               | [models.ProjectAnalytics](../models/projectanalytics.md)         | :heavy_check_mark:                                               | N/A                                                              |
-| `prevProjectAnalytics`                                           | [models.PrevProjectAnalytics](../models/prevprojectanalytics.md) | :heavy_check_mark:                                               | N/A                                                              |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `projectId`        | *string*           | :heavy_minus_sign: | N/A                |
+| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
+| `branch`           | *string*           | :heavy_check_mark: | N/A                |

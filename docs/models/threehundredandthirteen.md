@@ -5,22 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndThirteen } from "@vercel/sdk/models/threehundredandtwelve.js";
+import { ThreeHundredAndThirteen } from "@vercel/sdk/models/twohundredandfiftysix.js";
 
 let value: ThreeHundredAndThirteen = {
-  teamName: "<value>",
+  deletedCount: 3390.54,
+  inviteIds: [],
 };
 ```
 
 ## Fields
 
-| Field               | Type                | Required            | Description         |
-| ------------------- | ------------------- | ------------------- | ------------------- |
-| `teamName`          | *string*            | :heavy_check_mark:  | N/A                 |
-| `username`          | *string*            | :heavy_minus_sign:  | N/A                 |
-| `gitUsername`       | *string*            | :heavy_minus_sign:  | N/A                 |
-| `githubUsername`    | *string*            | :heavy_minus_sign:  | N/A                 |
-| `gitlabUsername`    | *string*            | :heavy_minus_sign:  | N/A                 |
-| `bitbucketUsername` | *string*            | :heavy_minus_sign:  | N/A                 |
-| `updatedUid`        | *string*            | :heavy_minus_sign:  | N/A                 |
-| `teamId`            | *string*            | :heavy_minus_sign:  | N/A                 |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `deletedCount`     | *number*           | :heavy_check_mark: | N/A                |
+| `inviteIds`        | *string*[]         | :heavy_check_mark: | N/A                |

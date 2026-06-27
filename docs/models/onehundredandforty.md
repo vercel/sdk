@@ -5,19 +5,23 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndForty } from "@vercel/sdk/models/onehundredandtwenty.js";
+import { OneHundredAndForty } from "@vercel/sdk/models/onehundredandtwentyfour.js";
 
 let value: OneHundredAndForty = {
   projectId: "<id>",
-  previousOwnerId: "<id>",
-  newOwnerId: "<id>",
+  rulesetName: "<value>",
+  ruleGroups: {
+    "key": {
+      active: false,
+    },
+  },
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
-| `previousOwnerId`  | *string*           | :heavy_check_mark: | N/A                |
-| `newOwnerId`       | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                        | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `projectId`                                                  | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
+| `rulesetName`                                                | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
+| `ruleGroups`                                                 | Record<string, [models.RuleGroups](../models/rulegroups.md)> | :heavy_check_mark:                                           | N/A                                                          |

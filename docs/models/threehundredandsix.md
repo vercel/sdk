@@ -5,17 +5,24 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndSix } from "@vercel/sdk/models/rollbackdescription.js";
+import { ThreeHundredAndSix } from "@vercel/sdk/models/twohundredandfiftysix.js";
 
 let value: ThreeHundredAndSix = {
-  personalAccountId: "<id>",
-  managedAccountId: "<id>",
+  slug: "<value>",
+  teamId: "<id>",
+  by: "<value>",
 };
 ```
 
 ## Fields
 
-| Field               | Type                | Required            | Description         |
-| ------------------- | ------------------- | ------------------- | ------------------- |
-| `personalAccountId` | *string*            | :heavy_check_mark:  | N/A                 |
-| `managedAccountId`  | *string*            | :heavy_check_mark:  | N/A                 |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `slug`                                                                         | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `teamId`                                                                       | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `by`                                                                           | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `byUid`                                                                        | *string*                                                                       | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `reasons`                                                                      | [models.Reasons](../models/reasons.md)[]                                       | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `removedUsers`                                                                 | Record<string, [models.PayloadRemovedUsers](../models/payloadremovedusers.md)> | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `removedMemberCount`                                                           | *number*                                                                       | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `timestamp`                                                                    | *number*                                                                       | :heavy_minus_sign:                                                             | N/A                                                                            |

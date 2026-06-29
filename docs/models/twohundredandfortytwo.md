@@ -5,24 +5,22 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndFortyTwo } from "@vercel/sdk/models/payloadgituserid.js";
+import { TwoHundredAndFortyTwo } from "@vercel/sdk/models/onehundredandeightythree.js";
 
 let value: TwoHundredAndFortyTwo = {
-  projectId: "<id>",
-  projectName: "<value>",
+  previousProjectName: "<value>",
+  newProjectName: "<value>",
   originAccountName: "<value>",
-  destinationAccountName: "<value>",
-  destinationAccountId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field                    | Type                     | Required                 | Description              |
-| ------------------------ | ------------------------ | ------------------------ | ------------------------ |
-| `projectId`              | *string*                 | :heavy_check_mark:       | N/A                      |
-| `projectName`            | *string*                 | :heavy_check_mark:       | N/A                      |
-| `originAccountName`      | *string*                 | :heavy_check_mark:       | N/A                      |
-| `destinationAccountName` | *string*                 | :heavy_check_mark:       | N/A                      |
-| `destinationAccountId`   | *string*                 | :heavy_check_mark:       | N/A                      |
-| `transferId`             | *string*                 | :heavy_minus_sign:       | N/A                      |
+| Field                 | Type                  | Required              | Description           |
+| --------------------- | --------------------- | --------------------- | --------------------- |
+| `previousProjectId`   | *string*              | :heavy_minus_sign:    | N/A                   |
+| `newProjectId`        | *string*              | :heavy_minus_sign:    | N/A                   |
+| `previousProjectName` | *string*              | :heavy_check_mark:    | N/A                   |
+| `newProjectName`      | *string*              | :heavy_check_mark:    | N/A                   |
+| `originAccountName`   | *string*              | :heavy_check_mark:    | N/A                   |
+| `transferId`          | *string*              | :heavy_minus_sign:    | N/A                   |

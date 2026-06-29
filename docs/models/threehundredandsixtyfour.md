@@ -5,22 +5,18 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndSixtyFour } from "@vercel/sdk/models/threehundredandtwelve.js";
+import { ThreeHundredAndSixtyFour } from "@vercel/sdk/models/threehundredandsixteen.js";
 
 let value: ThreeHundredAndSixtyFour = {
-  deletedCount: 5282.4,
-  actorTokenId: "<id>",
+  chatId: "<id>",
+  messageId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field                                                                                | Type                                                                                 | Required                                                                             | Description                                                                          |
-| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| `deletedCount`                                                                       | *number*                                                                             | :heavy_check_mark:                                                                   | N/A                                                                                  |
-| `actorTokenId`                                                                       | *string*                                                                             | :heavy_check_mark:                                                                   | The token's public ID.                                                               |
-| `ip`                                                                                 | *string*                                                                             | :heavy_minus_sign:                                                                   | N/A                                                                                  |
-| `geolocation`                                                                        | [models.UserEventPayload364Geolocation](../models/usereventpayload364geolocation.md) | :heavy_minus_sign:                                                                   | N/A                                                                                  |
-| `userAgent`                                                                          | *string*                                                                             | :heavy_minus_sign:                                                                   | N/A                                                                                  |
-| `reqId`                                                                              | *string*                                                                             | :heavy_minus_sign:                                                                   | N/A                                                                                  |
-| `reqUrl`                                                                             | *string*                                                                             | :heavy_minus_sign:                                                                   | N/A                                                                                  |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `chatId`           | *string*           | :heavy_check_mark: | N/A                |
+| `chatTitle`        | *string*           | :heavy_minus_sign: | N/A                |
+| `messageId`        | *string*           | :heavy_check_mark: | N/A                |

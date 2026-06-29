@@ -1,24 +1,15 @@
 # UserEventPayload266Previous
 
-Automatic code review settings
-
 ## Example Usage
 
 ```typescript
-import { UserEventPayload266Previous } from "@vercel/sdk/models/usereventpayload224next.js";
+import { UserEventPayload266Previous } from "@vercel/sdk/models/twohundredandfiftysix.js";
 
-let value: UserEventPayload266Previous = {
-  enabled: false,
-  scope: "public",
-  includeDrafts: true,
-};
+let value: UserEventPayload266Previous = {};
 ```
 
 ## Fields
 
-| Field                                                                                                                | Type                                                                                                                 | Required                                                                                                             | Description                                                                                                          |
-| -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| `enabled`                                                                                                            | *boolean*                                                                                                            | :heavy_check_mark:                                                                                                   | Whether automatic code reviews are enabled                                                                           |
-| `scope`                                                                                                              | [models.UserEventPayloadScope](../models/usereventpayloadscope.md)                                                   | :heavy_check_mark:                                                                                                   | Which repository visibilities get automatic reviews                                                                  |
-| `includeDrafts`                                                                                                      | *boolean*                                                                                                            | :heavy_check_mark:                                                                                                   | Whether to include draft pull requests in automatic reviews                                                          |
-| `selectedRepos`                                                                                                      | *string*[]                                                                                                           | :heavy_minus_sign:                                                                                                   | GitHub repos to scope automatic reviews to. Format: "owner/repo" (lowercase). Only used when scope='selected_repos'. |
+| Field                  | Type                   | Required               | Description            |
+| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
+| `skewProtectionMaxAge` | *number*               | :heavy_minus_sign:     | N/A                    |

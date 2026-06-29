@@ -320,8 +320,12 @@ export type UpdateProjectPermissions = {
   webAuthn?: Array<ACLAction> | undefined;
   accessGroup?: Array<ACLAction> | undefined;
   agent?: Array<ACLAction> | undefined;
+  aiGatewayApiKey?: Array<ACLAction> | undefined;
+  aiGatewayApiKeyOwnedBySelf?: Array<ACLAction> | undefined;
+  aiGatewayCredits?: Array<ACLAction> | undefined;
   aiGatewayPrivateModels?: Array<ACLAction> | undefined;
   aiGatewayRules?: Array<ACLAction> | undefined;
+  aiGatewaySettings?: Array<ACLAction> | undefined;
   aiGatewayUsage?: Array<ACLAction> | undefined;
   alerts?: Array<ACLAction> | undefined;
   alertRules?: Array<ACLAction> | undefined;
@@ -350,6 +354,7 @@ export type UpdateProjectPermissions = {
   cacheArtifact?: Array<ACLAction> | undefined;
   cacheArtifactUsageEvent?: Array<ACLAction> | undefined;
   codeChecks?: Array<ACLAction> | undefined;
+  codeOwners?: Array<ACLAction> | undefined;
   ciInvocations?: Array<ACLAction> | undefined;
   ciLogs?: Array<ACLAction> | undefined;
   concurrentBuilds?: Array<ACLAction> | undefined;
@@ -2033,8 +2038,12 @@ export const UpdateProjectPermissions$inboundSchema: z.ZodType<
   webAuthn: types.optional(z.array(ACLAction$inboundSchema)),
   accessGroup: types.optional(z.array(ACLAction$inboundSchema)),
   agent: types.optional(z.array(ACLAction$inboundSchema)),
+  aiGatewayApiKey: types.optional(z.array(ACLAction$inboundSchema)),
+  aiGatewayApiKeyOwnedBySelf: types.optional(z.array(ACLAction$inboundSchema)),
+  aiGatewayCredits: types.optional(z.array(ACLAction$inboundSchema)),
   aiGatewayPrivateModels: types.optional(z.array(ACLAction$inboundSchema)),
   aiGatewayRules: types.optional(z.array(ACLAction$inboundSchema)),
+  aiGatewaySettings: types.optional(z.array(ACLAction$inboundSchema)),
   aiGatewayUsage: types.optional(z.array(ACLAction$inboundSchema)),
   alerts: types.optional(z.array(ACLAction$inboundSchema)),
   alertRules: types.optional(z.array(ACLAction$inboundSchema)),
@@ -2067,6 +2076,7 @@ export const UpdateProjectPermissions$inboundSchema: z.ZodType<
   cacheArtifact: types.optional(z.array(ACLAction$inboundSchema)),
   cacheArtifactUsageEvent: types.optional(z.array(ACLAction$inboundSchema)),
   codeChecks: types.optional(z.array(ACLAction$inboundSchema)),
+  codeOwners: types.optional(z.array(ACLAction$inboundSchema)),
   ciInvocations: types.optional(z.array(ACLAction$inboundSchema)),
   ciLogs: types.optional(z.array(ACLAction$inboundSchema)),
   concurrentBuilds: types.optional(z.array(ACLAction$inboundSchema)),

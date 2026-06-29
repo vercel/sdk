@@ -5,10 +5,12 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndFortyOne } from "@vercel/sdk/models/onehundredandtwenty.js";
+import { OneHundredAndFortyOne } from "@vercel/sdk/models/onehundredandtwentyfour.js";
 
 let value: OneHundredAndFortyOne = {
-  action: "disable",
+  projectId: "<id>",
+  rulesetName: "<value>",
+  active: true,
 };
 ```
 
@@ -16,4 +18,7 @@ let value: OneHundredAndFortyOne = {
 
 | Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
 | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `action`                                                                   | [models.UserEventPayload141Action](../models/usereventpayload141action.md) | :heavy_check_mark:                                                         | N/A                                                                        |
+| `projectId`                                                                | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
+| `rulesetName`                                                              | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
+| `active`                                                                   | *boolean*                                                                  | :heavy_check_mark:                                                         | N/A                                                                        |
+| `action`                                                                   | [models.UserEventPayload141Action](../models/usereventpayload141action.md) | :heavy_minus_sign:                                                         | N/A                                                                        |

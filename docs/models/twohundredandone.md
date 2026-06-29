@@ -5,24 +5,16 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndOne } from "@vercel/sdk/models/payloadgituserid.js";
+import { TwoHundredAndOne } from "@vercel/sdk/models/onehundredandeightythree.js";
 
-let value: TwoHundredAndOne = {
-  team: {
-    id: "<id>",
-    name: "<value>",
-  },
-  project: {
-    id: "<id>",
-    oldConnectConfigurations: null,
-    newConnectConfigurations: [],
-  },
-};
+let value: TwoHundredAndOne = {};
 ```
 
 ## Fields
 
-| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `team`                                                                       | [models.UserEventPayload201Team](../models/usereventpayload201team.md)       | :heavy_check_mark:                                                           | N/A                                                                          |
-| `project`                                                                    | [models.UserEventPayload201Project](../models/usereventpayload201project.md) | :heavy_check_mark:                                                           | N/A                                                                          |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `projectId`        | *string*           | :heavy_minus_sign: | N/A                |
+| `projectName`      | *string*           | :heavy_minus_sign: | N/A                |
+| `certId`           | *string*           | :heavy_minus_sign: | N/A                |
+| `origin`           | *string*           | :heavy_minus_sign: | N/A                |

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ConnectDataTransfer } from "@vercel/sdk/models/onehundredandtwenty.js";
+import { ConnectDataTransfer } from "@vercel/sdk/models/onehundredandtwentyfour.js";
 
 let value: ConnectDataTransfer = {
   currentThreshold: 8697.88,

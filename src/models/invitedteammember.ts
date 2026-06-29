@@ -49,6 +49,9 @@ export type TeamRoles = ClosedEnum<typeof TeamRoles>;
  * The team permissions of the user
  */
 export const TeamPermissions = {
+  AiGatewayApiKeyOwnedBySelf: "AiGatewayApiKeyOwnedBySelf",
+  AiGatewayCredits: "AiGatewayCredits",
+  AiGatewaySettings: "AiGatewaySettings",
   CreateProject: "CreateProject",
   EnvVariableManager: "EnvVariableManager",
   EnvironmentManager: "EnvironmentManager",

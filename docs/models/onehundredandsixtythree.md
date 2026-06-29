@@ -5,19 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndSixtyThree } from "@vercel/sdk/models/usereventpayloadgituserid.js";
+import { OneHundredAndSixtyThree } from "@vercel/sdk/models/payloadteamroles.js";
 
 let value: OneHundredAndSixtyThree = {
-  organizationId: "<id>",
-  teamId: "<id>",
-  billingPlan: "enterprise",
+  alertId: "<id>",
+  alertName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                          | Type                                           | Required                                       | Description                                    |
-| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| `organizationId`                               | *string*                                       | :heavy_check_mark:                             | N/A                                            |
-| `teamId`                                       | *string*                                       | :heavy_check_mark:                             | N/A                                            |
-| `billingPlan`                                  | [models.BillingPlan](../models/billingplan.md) | :heavy_check_mark:                             | N/A                                            |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `alertId`          | *string*           | :heavy_check_mark: | N/A                |
+| `alertName`        | *string*           | :heavy_check_mark: | N/A                |

@@ -5,17 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndSeventySeven } from "@vercel/sdk/models/rollbackdescription.js";
+import { TwoHundredAndSeventySeven } from "@vercel/sdk/models/twohundredandfiftysix.js";
 
 let value: TwoHundredAndSeventySeven = {
-  uid: "<id>",
-  name: "<value>",
+  email: "Tess68@gmail.com",
+  verified: true,
 };
 ```
 
 ## Fields
 
-| Field                | Type                 | Required             | Description          |
-| -------------------- | -------------------- | -------------------- | -------------------- |
-| `uid`                | *string*             | :heavy_check_mark:   | N/A                  |
-| `name`               | *models.PayloadName* | :heavy_check_mark:   | N/A                  |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `email`            | *string*           | :heavy_check_mark: | N/A                |
+| `verified`         | *boolean*          | :heavy_check_mark: | N/A                |

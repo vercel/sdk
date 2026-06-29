@@ -5,7 +5,7 @@ The acive pricing plan the team is billed with
 ## Example Usage
 
 ```typescript
-import { PricingPlan } from "@vercel/sdk/models/rollbackdescription.js";
+import { PricingPlan } from "@vercel/sdk/models/twohundredandfiftysix.js";
 
 let value: PricingPlan = "legacy";
 ```

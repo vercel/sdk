@@ -5,20 +5,24 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndNinetyNine } from "@vercel/sdk/models/rollbackdescription.js";
+import { TwoHundredAndNinetyNine } from "@vercel/sdk/models/twohundredandfiftysix.js";
 
 let value: TwoHundredAndNinetyNine = {
-  next: {
-    enabled: false,
-    scope: "all",
-    includeDrafts: false,
-  },
+  id: "<id>",
+  type: "redis",
+  locked: true,
 };
 ```
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `previous`                                                                     | [models.UserEventPayload299Previous](../models/usereventpayload299previous.md) | :heavy_minus_sign:                                                             | Automatic code review settings                                                 |
-| `next`                                                                         | [models.UserEventPayload299Next](../models/usereventpayload299next.md)         | :heavy_check_mark:                                                             | Automatic code review settings                                                 |
+| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `id`                                                                   | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
+| `name`                                                                 | *string*                                                               | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `computeUnitsMax`                                                      | *number*                                                               | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `computeUnitsMin`                                                      | *number*                                                               | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `suspendTimeoutSeconds`                                                | *number*                                                               | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `type`                                                                 | [models.UserEventPayload299Type](../models/usereventpayload299type.md) | :heavy_check_mark:                                                     | N/A                                                                    |
+| `access`                                                               | [models.PayloadAccess](../models/payloadaccess.md)                     | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `locked`                                                               | *boolean*                                                              | :heavy_check_mark:                                                     | N/A                                                                    |

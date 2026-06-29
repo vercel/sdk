@@ -19,7 +19,11 @@ let value: UserEvent = {
   userId: "zTuNVUXEAvvnNN3IaqinkyMw",
   principalId: "<id>",
   payload: {
-    teamName: "<value>",
+    entitlement: "<value>",
+    user: {
+      id: "<id>",
+      username: "Dee.Hamill",
+    },
   },
 };
 ```

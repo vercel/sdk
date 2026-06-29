@@ -5,12 +5,10 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndFiftyFive } from "@vercel/sdk/models/usereventpayloadgituserid.js";
+import { OneHundredAndFiftyFive } from "@vercel/sdk/models/payloadteamroles.js";
 
 let value: OneHundredAndFiftyFive = {
-  projectId: "<id>",
-  toDeploymentId: "<id>",
-  projectName: "<value>",
+  logDrainUrl: "https://impish-vestment.info/",
 };
 ```
 
@@ -18,6 +16,5 @@ let value: OneHundredAndFiftyFive = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
-| `toDeploymentId`   | *string*           | :heavy_check_mark: | N/A                |
-| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
+| `logDrainUrl`      | *string*           | :heavy_check_mark: | N/A                |
+| `integrationName`  | *string*           | :heavy_minus_sign: | N/A                |

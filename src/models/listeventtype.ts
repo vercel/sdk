@@ -164,6 +164,7 @@ export const Name = {
   DomainTransferInCanceled: "domain-transfer-in-canceled",
   DomainTransferInCompleted: "domain-transfer-in-completed",
   DomainZoneChange: "domain-zone-change",
+  DomainZoneChangeInternal: "domain-zone-change-internal",
   DrainCreated: "drain-created",
   DrainDeleted: "drain-deleted",
   DrainDisabled: "drain-disabled",
@@ -553,6 +554,9 @@ export const Name = {
   V0ChatAiUsage: "v0-chat-ai-usage",
   V0ChatCreated: "v0-chat-created",
   V0ChatMessageSent: "v0-chat-message-sent",
+  VcrImageDeleted: "vcr-image-deleted",
+  VcrImagePushed: "vcr-image-pushed",
+  VcrRepositoryCreated: "vcr-repository-created",
   VercelAgentElevatedPermissionsApproved:
     "vercel-agent-elevated-permissions-approved",
   VercelAgentElevatedPermissionsRequested:
@@ -772,6 +776,7 @@ export const ReplacedBy = {
   DomainTransferInCanceled: "domain-transfer-in-canceled",
   DomainTransferInCompleted: "domain-transfer-in-completed",
   DomainZoneChange: "domain-zone-change",
+  DomainZoneChangeInternal: "domain-zone-change-internal",
   DrainCreated: "drain-created",
   DrainDeleted: "drain-deleted",
   DrainDisabled: "drain-disabled",
@@ -1161,6 +1166,9 @@ export const ReplacedBy = {
   V0ChatAiUsage: "v0-chat-ai-usage",
   V0ChatCreated: "v0-chat-created",
   V0ChatMessageSent: "v0-chat-message-sent",
+  VcrImageDeleted: "vcr-image-deleted",
+  VcrImagePushed: "vcr-image-pushed",
+  VcrRepositoryCreated: "vcr-repository-created",
   VercelAgentElevatedPermissionsApproved:
     "vercel-agent-elevated-permissions-approved",
   VercelAgentElevatedPermissionsRequested:

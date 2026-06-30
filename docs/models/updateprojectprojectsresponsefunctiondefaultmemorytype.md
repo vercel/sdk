@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UpdateProjectProjectsResponseFunctionDefaultMemoryType } from "@vercel/sdk/models/updateprojectinternalroutes.js";
+import { UpdateProjectProjectsResponseFunctionDefaultMemoryType } from "@vercel/sdk/models/updateprojecthasprojectskey.js";
 
 let value: UpdateProjectProjectsResponseFunctionDefaultMemoryType =
   "performance";

@@ -5,7 +5,7 @@ A list of verification challenges, one of which must be completed to verify the 
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupVerification } from "@vercel/sdk/models/getmicrofrontendsingrouptomicrofrontends2.js";
+import { GetMicrofrontendsInGroupVerification } from "@vercel/sdk/models/getmicrofrontendsingroupmicrofrontendsresponse200applicationjsontype.js";
 
 let value: GetMicrofrontendsInGroupVerification = {
   type: "<value>",

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupMfeConfigPresent } from "@vercel/sdk/models/getmicrofrontendsingrouptomicrofrontends2.js";
+import { GetMicrofrontendsInGroupMfeConfigPresent } from "@vercel/sdk/models/getmicrofrontendsingroupmicrofrontendsresponse200applicationjsontype.js";
 
 let value: GetMicrofrontendsInGroupMfeConfigPresent = {
   targets: [],

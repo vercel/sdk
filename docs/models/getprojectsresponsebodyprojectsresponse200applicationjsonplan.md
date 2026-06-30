@@ -1,0 +1,16 @@
+# GetProjectsResponseBodyProjectsResponse200ApplicationJSONPlan
+
+## Example Usage
+
+```typescript
+import { GetProjectsResponseBodyProjectsResponse200ApplicationJSONPlan } from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponse200applicationjson2action.js";
+
+let value: GetProjectsResponseBodyProjectsResponse200ApplicationJSONPlan =
+  "hobby";
+```
+
+## Values
+
+```typescript
+"enterprise" | "hobby" | "pro"
+```

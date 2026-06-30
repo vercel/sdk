@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UploadProjectAvatarContentHint2 } from "@vercel/sdk/models/uploadprojectavatarprojectsresponse200applicationjsonresponsebodysecurityaction.js";
+import { UploadProjectAvatarContentHint2 } from "@vercel/sdk/models/uploadprojectavatarprojectsresponse200applicationjsontype.js";
 
 let value: UploadProjectAvatarContentHint2 = {
   type: "redis-rest-api-url",

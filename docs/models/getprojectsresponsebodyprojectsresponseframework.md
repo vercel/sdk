@@ -5,7 +5,7 @@ Framework slug, when the service has one (omitted otherwise).
 ## Example Usage
 
 ```typescript
-import { GetProjectsResponseBodyProjectsResponseFramework } from "@vercel/sdk/models/getprojectsresponsebodyprojectsgitprovideroptions.js";
+import { GetProjectsResponseBodyProjectsResponseFramework } from "@vercel/sdk/models/getprojectsresponsebodyprojectstargets.js";
 
 let value: GetProjectsResponseBodyProjectsResponseFramework = "astro";
 ```

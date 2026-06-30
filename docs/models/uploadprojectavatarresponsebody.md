@@ -7,10 +7,36 @@ import { UploadProjectAvatarResponseBody } from "@vercel/sdk/models/uploadprojec
 
 let value: UploadProjectAvatarResponseBody = {
   accountId: "<id>",
+  alias: [
+    {
+      deployment: {
+        id: "<id>",
+        createdAt: 1199.75,
+        createdIn: "<value>",
+        creator: {
+          email: "Leatha7@gmail.com",
+          uid: "<id>",
+          username: "Rebeka.Moen",
+        },
+        deploymentHostname: "<value>",
+        name: "<value>",
+        plan: "enterprise",
+        previewCommentsEnabled: false,
+        private: false,
+        readyState: "QUEUED",
+        type: "LAMBDAS",
+        url: "https://menacing-orchid.biz/",
+        userId: "<id>",
+      },
+      domain: "self-assured-executor.info",
+      environment: "production",
+      target: "PREVIEW",
+    },
+  ],
   crons: {
-    enabledAt: 8430.1,
-    disabledAt: 7192.05,
-    updatedAt: 3065.3,
+    enabledAt: 7103.1,
+    disabledAt: 7482.97,
+    updatedAt: 8468.46,
     deploymentId: "<id>",
     definitions: [
       {
@@ -23,10 +49,35 @@ let value: UploadProjectAvatarResponseBody = {
   deploymentExpiration: {},
   directoryListing: true,
   id: "<id>",
+  latestDeployments: [
+    {
+      id: "<id>",
+      createdAt: 3796.11,
+      createdIn: "<value>",
+      creator: {
+        email: "Ena.Rempel@yahoo.com",
+        uid: "<id>",
+        username: "Winona_Daniel",
+      },
+      deploymentHostname: "<value>",
+      name: "<value>",
+      plan: "enterprise",
+      previewCommentsEnabled: false,
+      private: true,
+      readyState: "BLOCKED",
+      type: "LAMBDAS",
+      url: "https://qualified-venom.biz/",
+      userId: "<id>",
+    },
+  ],
   name: "<value>",
-  nodeVersion: "22.x",
+  nodeVersion: "18.x",
   resourceConfig: {
-    functionDefaultRegions: [],
+    functionDefaultRegions: [
+      "<value 1>",
+      "<value 2>",
+      "<value 3>",
+    ],
   },
   rollingRelease: {
     target: "production",
@@ -43,8 +94,28 @@ let value: UploadProjectAvatarResponseBody = {
   defaultResourceConfig: {
     functionDefaultRegions: [
       "<value 1>",
-      "<value 2>",
     ],
+  },
+  targets: {
+    "key": {
+      id: "<id>",
+      createdAt: 2853.79,
+      createdIn: "<value>",
+      creator: {
+        email: "Stan69@hotmail.com",
+        uid: "<id>",
+        username: "Dorris.Wiegand",
+      },
+      deploymentHostname: "<value>",
+      name: "<value>",
+      plan: "hobby",
+      previewCommentsEnabled: false,
+      private: true,
+      readyState: "QUEUED",
+      type: "LAMBDAS",
+      url: "https://handsome-tentacle.net/",
+      userId: "<id>",
+    },
   },
 };
 ```
@@ -54,6 +125,7 @@ let value: UploadProjectAvatarResponseBody = {
 | Field                                                                                                                                                                                                                                                                                                                                                 | Type                                                                                                                                                                                                                                                                                                                                                  | Required                                                                                                                                                                                                                                                                                                                                              | Description                                                                                                                                                                                                                                                                                                                                           |
 | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `accountId`                                                                                                                                                                                                                                                                                                                                           | *string*                                                                                                                                                                                                                                                                                                                                              | :heavy_check_mark:                                                                                                                                                                                                                                                                                                                                    | N/A                                                                                                                                                                                                                                                                                                                                                   |
+| `alias`                                                                                                                                                                                                                                                                                                                                               | [models.UploadProjectAvatarAlias](../models/uploadprojectavataralias.md)[]                                                                                                                                                                                                                                                                            | :heavy_check_mark:                                                                                                                                                                                                                                                                                                                                    | N/A                                                                                                                                                                                                                                                                                                                                                   |
 | `analytics`                                                                                                                                                                                                                                                                                                                                           | [models.UploadProjectAvatarAnalytics](../models/uploadprojectavataranalytics.md)                                                                                                                                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                                                                                                                                                                                                    | N/A                                                                                                                                                                                                                                                                                                                                                   |
 | `appliedCve55182Migration`                                                                                                                                                                                                                                                                                                                            | *boolean*                                                                                                                                                                                                                                                                                                                                             | :heavy_minus_sign:                                                                                                                                                                                                                                                                                                                                    | N/A                                                                                                                                                                                                                                                                                                                                                   |
 | `speedInsights`                                                                                                                                                                                                                                                                                                                                       | [models.UploadProjectAvatarSpeedInsights](../models/uploadprojectavatarspeedinsights.md)                                                                                                                                                                                                                                                              | :heavy_minus_sign:                                                                                                                                                                                                                                                                                                                                    | N/A                                                                                                                                                                                                                                                                                                                                                   |

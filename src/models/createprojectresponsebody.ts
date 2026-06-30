@@ -9,21 +9,26 @@ import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
+import { ACLAction, ACLAction$inboundSchema } from "./aclaction.js";
 import {
+  Alias,
+  Alias$inboundSchema,
   Analytics,
   Analytics$inboundSchema,
+  CreateProjectApril2026SecurityIncidentMigrationAppliedFrom,
+  CreateProjectApril2026SecurityIncidentMigrationAppliedFrom$inboundSchema,
   CreateProjectConnectConfigurations,
   CreateProjectConnectConfigurations$inboundSchema,
   CreateProjectCrons,
   CreateProjectCrons$inboundSchema,
+  CreateProjectCve55182MigrationAppliedFrom,
+  CreateProjectCve55182MigrationAppliedFrom$inboundSchema,
   CreateProjectDataCache,
   CreateProjectDataCache$inboundSchema,
   CreateProjectEnv,
   CreateProjectEnv$inboundSchema,
   CreateProjectExpiration,
   CreateProjectExpiration$inboundSchema,
-  CreateProjectFrom,
-  CreateProjectFrom$inboundSchema,
   CreateProjectIpBuckets,
   CreateProjectIpBuckets$inboundSchema,
   CreateProjectMicrofrontends,
@@ -36,28 +41,18 @@ import {
   CreateProjectPassport$inboundSchema,
   CreateProjectPasswordProtection,
   CreateProjectPasswordProtection$inboundSchema,
-  CreateProjectPermissions,
-  CreateProjectPermissions$inboundSchema,
   CreateProjectProjectsFramework,
   CreateProjectProjectsFramework$inboundSchema,
   CreateProjectProjectsResourceConfig,
   CreateProjectProjectsResourceConfig$inboundSchema,
-  CreateProjectProjectsSsoProtection,
-  CreateProjectProjectsSsoProtection$inboundSchema,
+  CreateProjectProjectsResponseDeploymentType,
+  CreateProjectProjectsResponseDeploymentType$inboundSchema,
   CreateProjectRollbackDescription,
   CreateProjectRollbackDescription$inboundSchema,
   CreateProjectServices,
   CreateProjectServices$inboundSchema,
   CreateProjectStaticIps,
   CreateProjectStaticIps$inboundSchema,
-  CreateProjectTargets,
-  CreateProjectTargets$inboundSchema,
-  CreateProjectToProjects2,
-  CreateProjectToProjects2$inboundSchema,
-  CreateProjectToProjectsResponsePreset,
-  CreateProjectToProjectsResponsePreset$inboundSchema,
-  CreateProjectTrustedIps,
-  CreateProjectTrustedIps$inboundSchema,
   CustomEnvironments,
   CustomEnvironments$inboundSchema,
   DefaultResourceConfig,
@@ -66,24 +61,625 @@ import {
   DeploymentExpiration$inboundSchema,
   Jobs,
   Jobs$inboundSchema,
-  LastAliasRequest,
-  LastAliasRequest$inboundSchema,
-  LastRollbackTarget,
-  LastRollbackTarget$inboundSchema,
   LatestDeployments,
   LatestDeployments$inboundSchema,
   Link,
   Link$inboundSchema,
-  ProtectionBypass,
-  ProtectionBypass$inboundSchema,
   ProtectionConfig,
   ProtectionConfig$inboundSchema,
   RollingRelease,
   RollingRelease$inboundSchema,
   SpeedInsights,
   SpeedInsights$inboundSchema,
-} from "./createprojecttoprojectsresponsepreset.js";
+} from "./createprojectapril2026securityincidentmigrationappliedfrom.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export type CreateProjectProjectsSsoProtection = {
+  deploymentType: CreateProjectProjectsResponseDeploymentType;
+  cve55182MigrationAppliedFrom?:
+    | CreateProjectCve55182MigrationAppliedFrom
+    | null
+    | undefined;
+  april2026SecurityIncidentMigrationAppliedFrom?:
+    | CreateProjectApril2026SecurityIncidentMigrationAppliedFrom
+    | null
+    | undefined;
+};
+
+export type CreateProjectAliasAssigned = number | boolean;
+
+export type CreateProjectProjectsAliasError = {
+  code: string;
+  message: string;
+};
+
+/**
+ * The type of matching to perform
+ */
+export const CreateProjectProjectsResponse200ApplicationJSONResponseBodyTargetsType =
+  {
+    EndsWith: "endsWith",
+    Equals: "equals",
+    StartsWith: "startsWith",
+  } as const;
+/**
+ * The type of matching to perform
+ */
+export type CreateProjectProjectsResponse200ApplicationJSONResponseBodyTargetsType =
+  ClosedEnum<
+    typeof CreateProjectProjectsResponse200ApplicationJSONResponseBodyTargetsType
+  >;
+
+export type CreateProjectProjectsResponseBranchMatcher = {
+  /**
+   * The type of matching to perform
+   */
+  type: CreateProjectProjectsResponse200ApplicationJSONResponseBodyTargetsType;
+  /**
+   * The pattern to match against branch names
+   */
+  pattern: string;
+};
+
+export type CreateProjectProjectsBuilds = {
+  use: string;
+  src?: string | undefined;
+  dest?: string | undefined;
+};
+
+export const CreateProjectProjectsChecksConclusion = {
+  Canceled: "canceled",
+  Failed: "failed",
+  Skipped: "skipped",
+  Succeeded: "succeeded",
+} as const;
+export type CreateProjectProjectsChecksConclusion = ClosedEnum<
+  typeof CreateProjectProjectsChecksConclusion
+>;
+
+export const CreateProjectProjectsChecksState = {
+  Completed: "completed",
+  Registered: "registered",
+  Running: "running",
+} as const;
+export type CreateProjectProjectsChecksState = ClosedEnum<
+  typeof CreateProjectProjectsChecksState
+>;
+
+export type CreateProjectProjectsCreator = {
+  email: string;
+  githubLogin?: string | undefined;
+  gitlabLogin?: string | undefined;
+  uid: string;
+  username: string;
+};
+
+export type CreateProjectProjectsOidcTokenClaims = {
+  iss: string;
+  sub: string;
+  scope: string;
+  aud: string;
+  owner: string;
+  ownerId: string;
+  project: string;
+  projectId: string;
+  environment: string;
+  customEnvironmentId?: string | undefined;
+  plan?: string | undefined;
+};
+
+export const CreateProjectProjectsPlan = {
+  Enterprise: "enterprise",
+  Hobby: "hobby",
+  Pro: "pro",
+} as const;
+export type CreateProjectProjectsPlan = ClosedEnum<
+  typeof CreateProjectProjectsPlan
+>;
+
+export const CreateProjectProjectsReadyState = {
+  Blocked: "BLOCKED",
+  Building: "BUILDING",
+  Canceled: "CANCELED",
+  Error: "ERROR",
+  Initializing: "INITIALIZING",
+  Queued: "QUEUED",
+  Ready: "READY",
+} as const;
+export type CreateProjectProjectsReadyState = ClosedEnum<
+  typeof CreateProjectProjectsReadyState
+>;
+
+export const CreateProjectProjectsReadySubstate = {
+  Promoted: "PROMOTED",
+  Rolling: "ROLLING",
+  Staged: "STAGED",
+} as const;
+export type CreateProjectProjectsReadySubstate = ClosedEnum<
+  typeof CreateProjectProjectsReadySubstate
+>;
+
+export const CreateProjectProjectsResponse200ApplicationJSONResponseBodyType = {
+  Lambdas: "LAMBDAS",
+} as const;
+export type CreateProjectProjectsResponse200ApplicationJSONResponseBodyType =
+  ClosedEnum<
+    typeof CreateProjectProjectsResponse200ApplicationJSONResponseBodyType
+  >;
+
+export type CreateProjectTargets = {
+  id: string;
+  alias?: Array<string> | undefined;
+  aliasAssigned?: number | boolean | null | undefined;
+  aliasError?: CreateProjectProjectsAliasError | null | undefined;
+  aliasFinal?: string | null | undefined;
+  automaticAliases?: Array<string> | undefined;
+  branchMatcher?: CreateProjectProjectsResponseBranchMatcher | undefined;
+  buildingAt?: number | undefined;
+  builds?: Array<CreateProjectProjectsBuilds> | undefined;
+  checksConclusion?: CreateProjectProjectsChecksConclusion | undefined;
+  checksState?: CreateProjectProjectsChecksState | undefined;
+  connectBuildsEnabled?: boolean | undefined;
+  connectConfigurationId?: string | undefined;
+  createdAt: number;
+  createdIn: string;
+  creator: CreateProjectProjectsCreator | null;
+  deletedAt?: number | undefined;
+  deploymentHostname: string;
+  forced?: boolean | undefined;
+  name: string;
+  meta?: { [k: string]: string } | undefined;
+  monorepoManager?: string | null | undefined;
+  oidcTokenClaims?: CreateProjectProjectsOidcTokenClaims | undefined;
+  plan: CreateProjectProjectsPlan;
+  /**
+   * Whether or not preview comments are enabled for the deployment
+   */
+  previewCommentsEnabled?: boolean | undefined;
+  private: boolean;
+  readyAt?: number | undefined;
+  readyState: CreateProjectProjectsReadyState;
+  readySubstate?: CreateProjectProjectsReadySubstate | undefined;
+  requestedAt?: number | undefined;
+  target?: string | null | undefined;
+  teamId?: string | null | undefined;
+  type: CreateProjectProjectsResponse200ApplicationJSONResponseBodyType;
+  url: string;
+  userId: string;
+  withCache?: boolean | undefined;
+};
+
+export type CreateProjectPermissions = {
+  oauth2Connection?: Array<ACLAction> | undefined;
+  user?: Array<ACLAction> | undefined;
+  userConnection?: Array<ACLAction> | undefined;
+  userMfaConfiguration?: Array<ACLAction> | undefined;
+  userPreference?: Array<ACLAction> | undefined;
+  userSudo?: Array<ACLAction> | undefined;
+  webAuthn?: Array<ACLAction> | undefined;
+  accessGroup?: Array<ACLAction> | undefined;
+  agent?: Array<ACLAction> | undefined;
+  aiGatewayApiKey?: Array<ACLAction> | undefined;
+  aiGatewayApiKeyOwnedBySelf?: Array<ACLAction> | undefined;
+  aiGatewayCredits?: Array<ACLAction> | undefined;
+  aiGatewayPrivateModels?: Array<ACLAction> | undefined;
+  aiGatewayRules?: Array<ACLAction> | undefined;
+  aiGatewaySettings?: Array<ACLAction> | undefined;
+  aiGatewayUsage?: Array<ACLAction> | undefined;
+  alerts?: Array<ACLAction> | undefined;
+  alertRules?: Array<ACLAction> | undefined;
+  aliasGlobal?: Array<ACLAction> | undefined;
+  analyticsSampling?: Array<ACLAction> | undefined;
+  analyticsUsage?: Array<ACLAction> | undefined;
+  apiKey?: Array<ACLAction> | undefined;
+  apiKeyAiGateway?: Array<ACLAction> | undefined;
+  apiKeyOwnedBySelf?: Array<ACLAction> | undefined;
+  oauth2Application?: Array<ACLAction> | undefined;
+  vercelAppInstallation?: Array<ACLAction> | undefined;
+  vercelAppInstallationRequest?: Array<ACLAction> | undefined;
+  auditLog?: Array<ACLAction> | undefined;
+  billingAddress?: Array<ACLAction> | undefined;
+  billingInformation?: Array<ACLAction> | undefined;
+  billingInvoice?: Array<ACLAction> | undefined;
+  billingInvoiceEmailRecipient?: Array<ACLAction> | undefined;
+  billingInvoiceLanguage?: Array<ACLAction> | undefined;
+  billingPlan?: Array<ACLAction> | undefined;
+  billingPurchaseOrder?: Array<ACLAction> | undefined;
+  billingRefund?: Array<ACLAction> | undefined;
+  billingTaxId?: Array<ACLAction> | undefined;
+  blob?: Array<ACLAction> | undefined;
+  blobStoreTokenSet?: Array<ACLAction> | undefined;
+  budget?: Array<ACLAction> | undefined;
+  cacheArtifact?: Array<ACLAction> | undefined;
+  cacheArtifactUsageEvent?: Array<ACLAction> | undefined;
+  codeChecks?: Array<ACLAction> | undefined;
+  codeOwners?: Array<ACLAction> | undefined;
+  ciInvocations?: Array<ACLAction> | undefined;
+  ciLogs?: Array<ACLAction> | undefined;
+  concurrentBuilds?: Array<ACLAction> | undefined;
+  connect?: Array<ACLAction> | undefined;
+  connectConfiguration?: Array<ACLAction> | undefined;
+  connexClient?: Array<ACLAction> | undefined;
+  connexClientProject?: Array<ACLAction> | undefined;
+  connexToken?: Array<ACLAction> | undefined;
+  buildMachineDefault?: Array<ACLAction> | undefined;
+  dataCacheBillingSettings?: Array<ACLAction> | undefined;
+  defaultDeploymentProtection?: Array<ACLAction> | undefined;
+  deploymentPolicy?: Array<ACLAction> | undefined;
+  domain?: Array<ACLAction> | undefined;
+  domainAcceptDelegation?: Array<ACLAction> | undefined;
+  domainAuthCodes?: Array<ACLAction> | undefined;
+  domainCertificate?: Array<ACLAction> | undefined;
+  domainCheckConfig?: Array<ACLAction> | undefined;
+  domainMove?: Array<ACLAction> | undefined;
+  domainPurchase?: Array<ACLAction> | undefined;
+  domainRecord?: Array<ACLAction> | undefined;
+  domainTransferIn?: Array<ACLAction> | undefined;
+  drain?: Array<ACLAction> | undefined;
+  edgeConfig?: Array<ACLAction> | undefined;
+  edgeConfigItem?: Array<ACLAction> | undefined;
+  edgeConfigSchema?: Array<ACLAction> | undefined;
+  edgeConfigToken?: Array<ACLAction> | undefined;
+  endpointVerification?: Array<ACLAction> | undefined;
+  event?: Array<ACLAction> | undefined;
+  fileUpload?: Array<ACLAction> | undefined;
+  flagsExplorerSubscription?: Array<ACLAction> | undefined;
+  gitRepository?: Array<ACLAction> | undefined;
+  imageOptimizationNewPrice?: Array<ACLAction> | undefined;
+  integration?: Array<ACLAction> | undefined;
+  integrationAccount?: Array<ACLAction> | undefined;
+  integrationConfiguration?: Array<ACLAction> | undefined;
+  integrationConfigurationProjects?: Array<ACLAction> | undefined;
+  integrationConfigurationRole?: Array<ACLAction> | undefined;
+  integrationConfigurationTransfer?: Array<ACLAction> | undefined;
+  integrationDeploymentAction?: Array<ACLAction> | undefined;
+  integrationEvent?: Array<ACLAction> | undefined;
+  integrationLog?: Array<ACLAction> | undefined;
+  integrationResource?: Array<ACLAction> | undefined;
+  integrationResourceData?: Array<ACLAction> | undefined;
+  integrationResourceReplCommand?: Array<ACLAction> | undefined;
+  integrationResourceSecrets?: Array<ACLAction> | undefined;
+  integrationSSOSession?: Array<ACLAction> | undefined;
+  integrationStrict?: Array<ACLAction> | undefined;
+  integrationStoreTokenSet?: Array<ACLAction> | undefined;
+  integrationVercelConfigurationOverride?: Array<ACLAction> | undefined;
+  integrationPullRequest?: Array<ACLAction> | undefined;
+  ipBlocking?: Array<ACLAction> | undefined;
+  jobGlobal?: Array<ACLAction> | undefined;
+  kmsIssuer?: Array<ACLAction> | undefined;
+  kmsProjectGrant?: Array<ACLAction> | undefined;
+  logDrain?: Array<ACLAction> | undefined;
+  marketplaceBillingData?: Array<ACLAction> | undefined;
+  marketplaceExperimentationEdgeConfigData?: Array<ACLAction> | undefined;
+  marketplaceExperimentationItem?: Array<ACLAction> | undefined;
+  marketplaceInstallationMember?: Array<ACLAction> | undefined;
+  marketplaceInvoice?: Array<ACLAction> | undefined;
+  marketplaceSettings?: Array<ACLAction> | undefined;
+  monitoring?: Array<ACLAction> | undefined;
+  monitoringAlert?: Array<ACLAction> | undefined;
+  monitoringChart?: Array<ACLAction> | undefined;
+  monitoringQuery?: Array<ACLAction> | undefined;
+  monitoringSettings?: Array<ACLAction> | undefined;
+  notificationCustomerBudget?: Array<ACLAction> | undefined;
+  notificationDeploymentFailed?: Array<ACLAction> | undefined;
+  notificationDomainConfiguration?: Array<ACLAction> | undefined;
+  notificationDomainExpire?: Array<ACLAction> | undefined;
+  notificationDomainMoved?: Array<ACLAction> | undefined;
+  notificationDomainPurchase?: Array<ACLAction> | undefined;
+  notificationDomainRenewal?: Array<ACLAction> | undefined;
+  notificationDomainTransfer?: Array<ACLAction> | undefined;
+  notificationDomainUnverified?: Array<ACLAction> | undefined;
+  notificationMonitoringAlert?: Array<ACLAction> | undefined;
+  notificationPaymentFailed?: Array<ACLAction> | undefined;
+  notificationPreferences?: Array<ACLAction> | undefined;
+  notificationStatementOfReasons?: Array<ACLAction> | undefined;
+  notificationUsageAlert?: Array<ACLAction> | undefined;
+  oidcFederationPolicy?: Array<ACLAction> | undefined;
+  observabilityConfiguration?: Array<ACLAction> | undefined;
+  observabilityFunnel?: Array<ACLAction> | undefined;
+  observabilityNotebook?: Array<ACLAction> | undefined;
+  openTelemetryEndpoint?: Array<ACLAction> | undefined;
+  ownEvent?: Array<ACLAction> | undefined;
+  organization?: Array<ACLAction> | undefined;
+  organizationDomain?: Array<ACLAction> | undefined;
+  organizationTeam?: Array<ACLAction> | undefined;
+  passwordProtectionInvoiceItem?: Array<ACLAction> | undefined;
+  paymentMethod?: Array<ACLAction> | undefined;
+  permissions?: Array<ACLAction> | undefined;
+  postgres?: Array<ACLAction> | undefined;
+  postgresStoreTokenSet?: Array<ACLAction> | undefined;
+  previewDeploymentSuffix?: Array<ACLAction> | undefined;
+  privateCloudAccount?: Array<ACLAction> | undefined;
+  projectTransferIn?: Array<ACLAction> | undefined;
+  proTrialOnboarding?: Array<ACLAction> | undefined;
+  rateLimit?: Array<ACLAction> | undefined;
+  redis?: Array<ACLAction> | undefined;
+  redisStoreTokenSet?: Array<ACLAction> | undefined;
+  remoteCaching?: Array<ACLAction> | undefined;
+  repository?: Array<ACLAction> | undefined;
+  samlConfig?: Array<ACLAction> | undefined;
+  secret?: Array<ACLAction> | undefined;
+  securityConfig?: Array<ACLAction> | undefined;
+  sensitiveEnvironmentVariablePolicy?: Array<ACLAction> | undefined;
+  sharedEnvVars?: Array<ACLAction> | undefined;
+  sharedEnvVarsProduction?: Array<ACLAction> | undefined;
+  space?: Array<ACLAction> | undefined;
+  spaceRun?: Array<ACLAction> | undefined;
+  storeIsLocked?: Array<ACLAction> | undefined;
+  storeTokenSetSensitive?: Array<ACLAction> | undefined;
+  storeTransfer?: Array<ACLAction> | undefined;
+  supportCase?: Array<ACLAction> | undefined;
+  supportCaseComment?: Array<ACLAction> | undefined;
+  team?: Array<ACLAction> | undefined;
+  teamAccessRequest?: Array<ACLAction> | undefined;
+  teamFellowMembership?: Array<ACLAction> | undefined;
+  teamGitExclusivity?: Array<ACLAction> | undefined;
+  teamInvite?: Array<ACLAction> | undefined;
+  teamInviteCode?: Array<ACLAction> | undefined;
+  teamInviteLink?: Array<ACLAction> | undefined;
+  teamJoin?: Array<ACLAction> | undefined;
+  teamMemberMfaStatus?: Array<ACLAction> | undefined;
+  teamMicrofrontends?: Array<ACLAction> | undefined;
+  teamOwnMembership?: Array<ACLAction> | undefined;
+  teamOwnMembershipDisconnectSAML?: Array<ACLAction> | undefined;
+  teamSudo?: Array<ACLAction> | undefined;
+  teamTokenInvalidation?: Array<ACLAction> | undefined;
+  token?: Array<ACLAction> | undefined;
+  toolbarComment?: Array<ACLAction> | undefined;
+  usage?: Array<ACLAction> | undefined;
+  usageCycle?: Array<ACLAction> | undefined;
+  vcrRepository?: Array<ACLAction> | undefined;
+  vercelRun?: Array<ACLAction> | undefined;
+  vpcPeeringConnection?: Array<ACLAction> | undefined;
+  webAnalyticsPlan?: Array<ACLAction> | undefined;
+  webhook?: Array<ACLAction> | undefined;
+  webhookEvent?: Array<ACLAction> | undefined;
+  aliasProject?: Array<ACLAction> | undefined;
+  aliasProtectionBypass?: Array<ACLAction> | undefined;
+  bulkRedirects?: Array<ACLAction> | undefined;
+  buildMachine?: Array<ACLAction> | undefined;
+  connectConfigurationLink?: Array<ACLAction> | undefined;
+  dataCacheNamespace?: Array<ACLAction> | undefined;
+  deployment?: Array<ACLAction> | undefined;
+  deploymentBuildLogs?: Array<ACLAction> | undefined;
+  deploymentCheck?: Array<ACLAction> | undefined;
+  deploymentCheckPreview?: Array<ACLAction> | undefined;
+  deploymentCheckReRunFromProductionBranch?: Array<ACLAction> | undefined;
+  deploymentProductionGit?: Array<ACLAction> | undefined;
+  deploymentV0?: Array<ACLAction> | undefined;
+  deploymentPreview?: Array<ACLAction> | undefined;
+  deploymentPrivate?: Array<ACLAction> | undefined;
+  deploymentPromote?: Array<ACLAction> | undefined;
+  deploymentRollback?: Array<ACLAction> | undefined;
+  edgeCacheNamespace?: Array<ACLAction> | undefined;
+  environments?: Array<ACLAction> | undefined;
+  job?: Array<ACLAction> | undefined;
+  logs?: Array<ACLAction> | undefined;
+  logsPreset?: Array<ACLAction> | undefined;
+  observabilityData?: Array<ACLAction> | undefined;
+  onDemandBuild?: Array<ACLAction> | undefined;
+  onDemandConcurrency?: Array<ACLAction> | undefined;
+  optionsAllowlist?: Array<ACLAction> | undefined;
+  passwordProtection?: Array<ACLAction> | undefined;
+  privateLinkEndpoint?: Array<ACLAction> | undefined;
+  productionAliasProtectionBypass?: Array<ACLAction> | undefined;
+  project?: Array<ACLAction> | undefined;
+  projectAccessGroup?: Array<ACLAction> | undefined;
+  projectAnalyticsSampling?: Array<ACLAction> | undefined;
+  projectAnalyticsUsage?: Array<ACLAction> | undefined;
+  projectCheck?: Array<ACLAction> | undefined;
+  projectCheckRun?: Array<ACLAction> | undefined;
+  projectDeploymentExpiration?: Array<ACLAction> | undefined;
+  projectDeploymentHook?: Array<ACLAction> | undefined;
+  projectDeploymentProtectionStrict?: Array<ACLAction> | undefined;
+  projectDomain?: Array<ACLAction> | undefined;
+  projectDomainCheckConfig?: Array<ACLAction> | undefined;
+  projectDomainMove?: Array<ACLAction> | undefined;
+  projectEvent?: Array<ACLAction> | undefined;
+  projectEnvVars?: Array<ACLAction> | undefined;
+  projectEnvVarsProduction?: Array<ACLAction> | undefined;
+  projectEnvVarsUnownedByIntegration?: Array<ACLAction> | undefined;
+  projectFlags?: Array<ACLAction> | undefined;
+  projectFlagsProduction?: Array<ACLAction> | undefined;
+  projectFlagsSDKKey?: Array<ACLAction> | undefined;
+  projectFromV0?: Array<ACLAction> | undefined;
+  projectId?: Array<ACLAction> | undefined;
+  projectIntegrationConfiguration?: Array<ACLAction> | undefined;
+  projectLink?: Array<ACLAction> | undefined;
+  projectMember?: Array<ACLAction> | undefined;
+  projectMonitoring?: Array<ACLAction> | undefined;
+  projectOIDCToken?: Array<ACLAction> | undefined;
+  projectPermissions?: Array<ACLAction> | undefined;
+  projectProductionBranch?: Array<ACLAction> | undefined;
+  projectProtectionBypass?: Array<ACLAction> | undefined;
+  projectRollingRelease?: Array<ACLAction> | undefined;
+  projectRoutes?: Array<ACLAction> | undefined;
+  projectSupportCase?: Array<ACLAction> | undefined;
+  projectSupportCaseComment?: Array<ACLAction> | undefined;
+  projectTier?: Array<ACLAction> | undefined;
+  projectTransfer?: Array<ACLAction> | undefined;
+  projectTransferOut?: Array<ACLAction> | undefined;
+  projectUsage?: Array<ACLAction> | undefined;
+  pageIntegrity?: Array<ACLAction> | undefined;
+  seawallConfig?: Array<ACLAction> | undefined;
+  securityPlusConfiguration?: Array<ACLAction> | undefined;
+  shareableLinkStrict?: Array<ACLAction> | undefined;
+  sharedEnvVarConnection?: Array<ACLAction> | undefined;
+  skewProtection?: Array<ACLAction> | undefined;
+  analytics?: Array<ACLAction> | undefined;
+  trustedIps?: Array<ACLAction> | undefined;
+  trustedSources?: Array<ACLAction> | undefined;
+  v0Chat?: Array<ACLAction> | undefined;
+  webAnalytics?: Array<ACLAction> | undefined;
+};
+
+export type LastRollbackTarget = {};
+
+export const JobStatus = {
+  Failed: "failed",
+  InProgress: "in-progress",
+  Pending: "pending",
+  Skipped: "skipped",
+  Succeeded: "succeeded",
+} as const;
+export type JobStatus = ClosedEnum<typeof JobStatus>;
+
+export const CreateProjectProjectsResponse200ApplicationJSONResponseBodyLastAliasRequestType =
+  {
+    Promote: "promote",
+    Rollback: "rollback",
+  } as const;
+export type CreateProjectProjectsResponse200ApplicationJSONResponseBodyLastAliasRequestType =
+  ClosedEnum<
+    typeof CreateProjectProjectsResponse200ApplicationJSONResponseBodyLastAliasRequestType
+  >;
+
+export type LastAliasRequest = {
+  fromDeploymentId: string | null;
+  toDeploymentId: string;
+  /**
+   * If rolling back from a rolling release, fromDeploymentId captures the "base" of that rolling release, and fromRollingReleaseId captures the "target" of that rolling release.
+   */
+  fromRollingReleaseId?: string | undefined;
+  jobStatus: JobStatus;
+  requestedAt: number;
+  type:
+    CreateProjectProjectsResponse200ApplicationJSONResponseBodyLastAliasRequestType;
+};
+
+export type ProtectionBypass2 = {
+  createdAt: number;
+  createdBy: string;
+  scope: "automation-bypass";
+  /**
+   * When there was only one bypass, it was automatically set as an env var on deployments. With multiple bypasses, there is always one bypass that is selected as the default, and gets set as an env var on deployments. As this is a new field, undefined means that the bypass is the env var. If there are any automation bypasses, exactly one must be the env var.
+   */
+  isEnvVar?: boolean | undefined;
+  /**
+   * Optional note about the bypass to be displayed in the UI
+   */
+  note?: string | undefined;
+};
+
+export type ProtectionBypass1 = {
+  createdAt: number;
+  createdBy: string;
+  scope: "integration-automation-bypass";
+  integrationId: string;
+  configurationId: string;
+};
+
+export type ProtectionBypass = ProtectionBypass1 | ProtectionBypass2;
+
+export const CreateProjectTrustedIpsDeploymentType = {
+  All: "all",
+  AllExceptCustomDomains: "all_except_custom_domains",
+  Preview: "preview",
+  ProdDeploymentUrlsAndAllPreviews: "prod_deployment_urls_and_all_previews",
+  Production: "production",
+} as const;
+export type CreateProjectTrustedIpsDeploymentType = ClosedEnum<
+  typeof CreateProjectTrustedIpsDeploymentType
+>;
+
+export type TrustedIps2 = {
+  deploymentType: CreateProjectTrustedIpsDeploymentType;
+};
+
+export const TrustedIpsDeploymentType = {
+  All: "all",
+  AllExceptCustomDomains: "all_except_custom_domains",
+  Preview: "preview",
+  ProdDeploymentUrlsAndAllPreviews: "prod_deployment_urls_and_all_previews",
+  Production: "production",
+} as const;
+export type TrustedIpsDeploymentType = ClosedEnum<
+  typeof TrustedIpsDeploymentType
+>;
+
+export type CreateProjectTrustedIpsAddresses = {
+  value: string;
+  note?: string | undefined;
+};
+
+export const CreateProjectTrustedIpsProtectionMode = {
+  Additional: "additional",
+  Exclusive: "exclusive",
+} as const;
+export type CreateProjectTrustedIpsProtectionMode = ClosedEnum<
+  typeof CreateProjectTrustedIpsProtectionMode
+>;
+
+export type TrustedIps1 = {
+  deploymentType: TrustedIpsDeploymentType;
+  addresses: Array<CreateProjectTrustedIpsAddresses>;
+  protectionMode: CreateProjectTrustedIpsProtectionMode;
+};
+
+export type CreateProjectTrustedIps = TrustedIps1 | TrustedIps2;
+
+export const CreateProjectFromPreset = {
+  AllCustom: "all-custom",
+} as const;
+export type CreateProjectFromPreset = ClosedEnum<
+  typeof CreateProjectFromPreset
+>;
+
+/**
+ * The source envs on the trusted project that are allowed to access `to`.
+ */
+export type CreateProjectFrom2 = {
+  /**
+   * System environment slugs (`production`, `preview`) and/or custom environment slugs defined on the referenced project.
+   */
+  slugs?: Array<string> | undefined;
+  preset: CreateProjectFromPreset;
+};
+
+export const CreateProjectFromProjectsPreset = {
+  AllCustom: "all-custom",
+} as const;
+export type CreateProjectFromProjectsPreset = ClosedEnum<
+  typeof CreateProjectFromProjectsPreset
+>;
+
+/**
+ * The source envs on the trusted project that are allowed to access `to`.
+ */
+export type CreateProjectFrom1 = {
+  /**
+   * System environment slugs (`production`, `preview`) and/or custom environment slugs defined on the referenced project.
+   */
+  slugs: Array<string>;
+  preset?: CreateProjectFromProjectsPreset | undefined;
+};
+
+export type CreateProjectFrom = CreateProjectFrom1 | CreateProjectFrom2;
+
+export const CreateProjectToProjectsResponse200Preset = {
+  AllCustom: "all-custom",
+} as const;
+export type CreateProjectToProjectsResponse200Preset = ClosedEnum<
+  typeof CreateProjectToProjectsResponse200Preset
+>;
+
+/**
+ * The target envs on the current project that may be accessed.
+ */
+export type CreateProjectToProjects2 = {
+  /**
+   * System environment slugs (`production`, `preview`) and/or custom environment slugs defined on the referenced project.
+   */
+  slugs?: Array<string> | undefined;
+  preset: CreateProjectToProjectsResponse200Preset;
+};
+
+export const CreateProjectToProjectsResponsePreset = {
+  AllCustom: "all-custom",
+} as const;
+export type CreateProjectToProjectsResponsePreset = ClosedEnum<
+  typeof CreateProjectToProjectsResponsePreset
+>;
 
 /**
  * The target envs on the current project that may be accessed.
@@ -104,7 +700,7 @@ export type CreateProjectProjectsTo =
  * Optional overrides for the default same-env-by-slug matching. Provide explicit rules to allow cross-env access or presets.
  */
 export type CreateProjectCustomAllow = {
-  from: CreateProjectFrom;
+  from: CreateProjectFrom1 | CreateProjectFrom2;
   to: CreateProjectToProjects1 | CreateProjectToProjects2;
 };
 
@@ -834,9 +1430,9 @@ export const CreateProjectAction = {
 } as const;
 export type CreateProjectAction = ClosedEnum<typeof CreateProjectAction>;
 
-export type ValuePreviousValue = string | number | boolean;
+export type CreateProjectValuePreviousValue = string | number | boolean;
 
-export type ValueCurrentValue = string | number | boolean;
+export type CreateProjectValueCurrentValue = string | number | boolean;
 
 export type Value3 = {
   previousValue: string | number | boolean;
@@ -895,6 +1491,7 @@ export type CreateProjectTracing = {
  */
 export type CreateProjectResponseBody = {
   accountId: string;
+  alias: Array<Alias>;
   analytics?: Analytics | undefined;
   appliedCve55182Migration?: boolean | undefined;
   speedInsights?: SpeedInsights | undefined;
@@ -975,9 +1572,11 @@ export type CreateProjectResponseBody = {
   permissions?: CreateProjectPermissions | undefined;
   lastRollbackTarget?: LastRollbackTarget | null | undefined;
   lastAliasRequest?: LastAliasRequest | null | undefined;
-  protectionBypass?: { [k: string]: ProtectionBypass } | undefined;
+  protectionBypass?:
+    | { [k: string]: ProtectionBypass1 | ProtectionBypass2 }
+    | undefined;
   hasActiveBranches?: boolean | undefined;
-  trustedIps?: CreateProjectTrustedIps | null | undefined;
+  trustedIps?: TrustedIps1 | TrustedIps2 | null | undefined;
   trustedSources?: CreateProjectTrustedSources | null | undefined;
   gitComments?: CreateProjectGitComments | undefined;
   gitProviderOptions?: GitProviderOptions | undefined;
@@ -1006,6 +1605,936 @@ export type CreateProjectResponseBody = {
 };
 
 /** @internal */
+export const CreateProjectProjectsSsoProtection$inboundSchema: z.ZodType<
+  CreateProjectProjectsSsoProtection,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  deploymentType: CreateProjectProjectsResponseDeploymentType$inboundSchema,
+  cve55182MigrationAppliedFrom: z.nullable(
+    CreateProjectCve55182MigrationAppliedFrom$inboundSchema,
+  ).optional(),
+  april2026SecurityIncidentMigrationAppliedFrom: z.nullable(
+    CreateProjectApril2026SecurityIncidentMigrationAppliedFrom$inboundSchema,
+  ).optional(),
+});
+
+export function createProjectProjectsSsoProtectionFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateProjectProjectsSsoProtection, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateProjectProjectsSsoProtection$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProjectProjectsSsoProtection' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateProjectAliasAssigned$inboundSchema: z.ZodType<
+  CreateProjectAliasAssigned,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([types.number(), types.boolean()]);
+
+export function createProjectAliasAssignedFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateProjectAliasAssigned, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateProjectAliasAssigned$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProjectAliasAssigned' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateProjectProjectsAliasError$inboundSchema: z.ZodType<
+  CreateProjectProjectsAliasError,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  code: types.string(),
+  message: types.string(),
+});
+
+export function createProjectProjectsAliasErrorFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateProjectProjectsAliasError, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateProjectProjectsAliasError$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProjectProjectsAliasError' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateProjectProjectsResponse200ApplicationJSONResponseBodyTargetsType$inboundSchema:
+  z.ZodNativeEnum<
+    typeof CreateProjectProjectsResponse200ApplicationJSONResponseBodyTargetsType
+  > = z.nativeEnum(
+    CreateProjectProjectsResponse200ApplicationJSONResponseBodyTargetsType,
+  );
+
+/** @internal */
+export const CreateProjectProjectsResponseBranchMatcher$inboundSchema:
+  z.ZodType<CreateProjectProjectsResponseBranchMatcher, z.ZodTypeDef, unknown> =
+    z.object({
+      type:
+        CreateProjectProjectsResponse200ApplicationJSONResponseBodyTargetsType$inboundSchema,
+      pattern: types.string(),
+    });
+
+export function createProjectProjectsResponseBranchMatcherFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateProjectProjectsResponseBranchMatcher,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateProjectProjectsResponseBranchMatcher$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CreateProjectProjectsResponseBranchMatcher' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateProjectProjectsBuilds$inboundSchema: z.ZodType<
+  CreateProjectProjectsBuilds,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  use: types.string(),
+  src: types.optional(types.string()),
+  dest: types.optional(types.string()),
+});
+
+export function createProjectProjectsBuildsFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateProjectProjectsBuilds, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateProjectProjectsBuilds$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProjectProjectsBuilds' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateProjectProjectsChecksConclusion$inboundSchema:
+  z.ZodNativeEnum<typeof CreateProjectProjectsChecksConclusion> = z.nativeEnum(
+    CreateProjectProjectsChecksConclusion,
+  );
+
+/** @internal */
+export const CreateProjectProjectsChecksState$inboundSchema: z.ZodNativeEnum<
+  typeof CreateProjectProjectsChecksState
+> = z.nativeEnum(CreateProjectProjectsChecksState);
+
+/** @internal */
+export const CreateProjectProjectsCreator$inboundSchema: z.ZodType<
+  CreateProjectProjectsCreator,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  email: types.string(),
+  githubLogin: types.optional(types.string()),
+  gitlabLogin: types.optional(types.string()),
+  uid: types.string(),
+  username: types.string(),
+});
+
+export function createProjectProjectsCreatorFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateProjectProjectsCreator, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateProjectProjectsCreator$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProjectProjectsCreator' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateProjectProjectsOidcTokenClaims$inboundSchema: z.ZodType<
+  CreateProjectProjectsOidcTokenClaims,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  iss: types.string(),
+  sub: types.string(),
+  scope: types.string(),
+  aud: types.string(),
+  owner: types.string(),
+  owner_id: types.string(),
+  project: types.string(),
+  project_id: types.string(),
+  environment: types.string(),
+  custom_environment_id: types.optional(types.string()),
+  plan: types.optional(types.string()),
+}).transform((v) => {
+  return remap$(v, {
+    "owner_id": "ownerId",
+    "project_id": "projectId",
+    "custom_environment_id": "customEnvironmentId",
+  });
+});
+
+export function createProjectProjectsOidcTokenClaimsFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateProjectProjectsOidcTokenClaims, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateProjectProjectsOidcTokenClaims$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProjectProjectsOidcTokenClaims' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateProjectProjectsPlan$inboundSchema: z.ZodNativeEnum<
+  typeof CreateProjectProjectsPlan
+> = z.nativeEnum(CreateProjectProjectsPlan);
+
+/** @internal */
+export const CreateProjectProjectsReadyState$inboundSchema: z.ZodNativeEnum<
+  typeof CreateProjectProjectsReadyState
+> = z.nativeEnum(CreateProjectProjectsReadyState);
+
+/** @internal */
+export const CreateProjectProjectsReadySubstate$inboundSchema: z.ZodNativeEnum<
+  typeof CreateProjectProjectsReadySubstate
+> = z.nativeEnum(CreateProjectProjectsReadySubstate);
+
+/** @internal */
+export const CreateProjectProjectsResponse200ApplicationJSONResponseBodyType$inboundSchema:
+  z.ZodNativeEnum<
+    typeof CreateProjectProjectsResponse200ApplicationJSONResponseBodyType
+  > = z.nativeEnum(
+    CreateProjectProjectsResponse200ApplicationJSONResponseBodyType,
+  );
+
+/** @internal */
+export const CreateProjectTargets$inboundSchema: z.ZodType<
+  CreateProjectTargets,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  id: types.string(),
+  alias: types.optional(z.array(types.string())),
+  aliasAssigned: z.nullable(smartUnion([types.number(), types.boolean()]))
+    .optional(),
+  aliasError: z.nullable(
+    z.lazy(() => CreateProjectProjectsAliasError$inboundSchema),
+  ).optional(),
+  aliasFinal: z.nullable(types.string()).optional(),
+  automaticAliases: types.optional(z.array(types.string())),
+  branchMatcher: types.optional(
+    z.lazy(() => CreateProjectProjectsResponseBranchMatcher$inboundSchema),
+  ),
+  buildingAt: types.optional(types.number()),
+  builds: types.optional(
+    z.array(z.lazy(() => CreateProjectProjectsBuilds$inboundSchema)),
+  ),
+  checksConclusion: types.optional(
+    CreateProjectProjectsChecksConclusion$inboundSchema,
+  ),
+  checksState: types.optional(CreateProjectProjectsChecksState$inboundSchema),
+  connectBuildsEnabled: types.optional(types.boolean()),
+  connectConfigurationId: types.optional(types.string()),
+  createdAt: types.number(),
+  createdIn: types.string(),
+  creator: types.nullable(
+    z.lazy(() => CreateProjectProjectsCreator$inboundSchema),
+  ),
+  deletedAt: types.optional(types.number()),
+  deploymentHostname: types.string(),
+  forced: types.optional(types.boolean()),
+  name: types.string(),
+  meta: types.optional(z.record(types.string())),
+  monorepoManager: z.nullable(types.string()).optional(),
+  oidcTokenClaims: types.optional(
+    z.lazy(() => CreateProjectProjectsOidcTokenClaims$inboundSchema),
+  ),
+  plan: CreateProjectProjectsPlan$inboundSchema,
+  previewCommentsEnabled: types.optional(types.boolean()),
+  private: types.boolean(),
+  readyAt: types.optional(types.number()),
+  readyState: CreateProjectProjectsReadyState$inboundSchema,
+  readySubstate: types.optional(
+    CreateProjectProjectsReadySubstate$inboundSchema,
+  ),
+  requestedAt: types.optional(types.number()),
+  target: z.nullable(types.string()).optional(),
+  teamId: z.nullable(types.string()).optional(),
+  type:
+    CreateProjectProjectsResponse200ApplicationJSONResponseBodyType$inboundSchema,
+  url: types.string(),
+  userId: types.string(),
+  withCache: types.optional(types.boolean()),
+});
+
+export function createProjectTargetsFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateProjectTargets, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateProjectTargets$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProjectTargets' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateProjectPermissions$inboundSchema: z.ZodType<
+  CreateProjectPermissions,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  oauth2Connection: types.optional(z.array(ACLAction$inboundSchema)),
+  user: types.optional(z.array(ACLAction$inboundSchema)),
+  userConnection: types.optional(z.array(ACLAction$inboundSchema)),
+  userMfaConfiguration: types.optional(z.array(ACLAction$inboundSchema)),
+  userPreference: types.optional(z.array(ACLAction$inboundSchema)),
+  userSudo: types.optional(z.array(ACLAction$inboundSchema)),
+  webAuthn: types.optional(z.array(ACLAction$inboundSchema)),
+  accessGroup: types.optional(z.array(ACLAction$inboundSchema)),
+  agent: types.optional(z.array(ACLAction$inboundSchema)),
+  aiGatewayApiKey: types.optional(z.array(ACLAction$inboundSchema)),
+  aiGatewayApiKeyOwnedBySelf: types.optional(z.array(ACLAction$inboundSchema)),
+  aiGatewayCredits: types.optional(z.array(ACLAction$inboundSchema)),
+  aiGatewayPrivateModels: types.optional(z.array(ACLAction$inboundSchema)),
+  aiGatewayRules: types.optional(z.array(ACLAction$inboundSchema)),
+  aiGatewaySettings: types.optional(z.array(ACLAction$inboundSchema)),
+  aiGatewayUsage: types.optional(z.array(ACLAction$inboundSchema)),
+  alerts: types.optional(z.array(ACLAction$inboundSchema)),
+  alertRules: types.optional(z.array(ACLAction$inboundSchema)),
+  aliasGlobal: types.optional(z.array(ACLAction$inboundSchema)),
+  analyticsSampling: types.optional(z.array(ACLAction$inboundSchema)),
+  analyticsUsage: types.optional(z.array(ACLAction$inboundSchema)),
+  apiKey: types.optional(z.array(ACLAction$inboundSchema)),
+  apiKeyAiGateway: types.optional(z.array(ACLAction$inboundSchema)),
+  apiKeyOwnedBySelf: types.optional(z.array(ACLAction$inboundSchema)),
+  oauth2Application: types.optional(z.array(ACLAction$inboundSchema)),
+  vercelAppInstallation: types.optional(z.array(ACLAction$inboundSchema)),
+  vercelAppInstallationRequest: types.optional(
+    z.array(ACLAction$inboundSchema),
+  ),
+  auditLog: types.optional(z.array(ACLAction$inboundSchema)),
+  billingAddress: types.optional(z.array(ACLAction$inboundSchema)),
+  billingInformation: types.optional(z.array(ACLAction$inboundSchema)),
+  billingInvoice: types.optional(z.array(ACLAction$inboundSchema)),
+  billingInvoiceEmailRecipient: types.optional(
+    z.array(ACLAction$inboundSchema),
+  ),
+  billingInvoiceLanguage: types.optional(z.array(ACLAction$inboundSchema)),
+  billingPlan: types.optional(z.array(ACLAction$inboundSchema)),
+  billingPurchaseOrder: types.optional(z.array(ACLAction$inboundSchema)),
+  billingRefund: types.optional(z.array(ACLAction$inboundSchema)),
+  billingTaxId: types.optional(z.array(ACLAction$inboundSchema)),
+  blob: types.optional(z.array(ACLAction$inboundSchema)),
+  blobStoreTokenSet: types.optional(z.array(ACLAction$inboundSchema)),
+  budget: types.optional(z.array(ACLAction$inboundSchema)),
+  cacheArtifact: types.optional(z.array(ACLAction$inboundSchema)),
+  cacheArtifactUsageEvent: types.optional(z.array(ACLAction$inboundSchema)),
+  codeChecks: types.optional(z.array(ACLAction$inboundSchema)),
+  codeOwners: types.optional(z.array(ACLAction$inboundSchema)),
+  ciInvocations: types.optional(z.array(ACLAction$inboundSchema)),
+  ciLogs: types.optional(z.array(ACLAction$inboundSchema)),
+  concurrentBuilds: types.optional(z.array(ACLAction$inboundSchema)),
+  connect: types.optional(z.array(ACLAction$inboundSchema)),
+  connectConfiguration: types.optional(z.array(ACLAction$inboundSchema)),
+  connexClient: types.optional(z.array(ACLAction$inboundSchema)),
+  connexClientProject: types.optional(z.array(ACLAction$inboundSchema)),
+  connexToken: types.optional(z.array(ACLAction$inboundSchema)),
+  buildMachineDefault: types.optional(z.array(ACLAction$inboundSchema)),
+  dataCacheBillingSettings: types.optional(z.array(ACLAction$inboundSchema)),
+  defaultDeploymentProtection: types.optional(z.array(ACLAction$inboundSchema)),
+  deploymentPolicy: types.optional(z.array(ACLAction$inboundSchema)),
+  domain: types.optional(z.array(ACLAction$inboundSchema)),
+  domainAcceptDelegation: types.optional(z.array(ACLAction$inboundSchema)),
+  domainAuthCodes: types.optional(z.array(ACLAction$inboundSchema)),
+  domainCertificate: types.optional(z.array(ACLAction$inboundSchema)),
+  domainCheckConfig: types.optional(z.array(ACLAction$inboundSchema)),
+  domainMove: types.optional(z.array(ACLAction$inboundSchema)),
+  domainPurchase: types.optional(z.array(ACLAction$inboundSchema)),
+  domainRecord: types.optional(z.array(ACLAction$inboundSchema)),
+  domainTransferIn: types.optional(z.array(ACLAction$inboundSchema)),
+  drain: types.optional(z.array(ACLAction$inboundSchema)),
+  edgeConfig: types.optional(z.array(ACLAction$inboundSchema)),
+  edgeConfigItem: types.optional(z.array(ACLAction$inboundSchema)),
+  edgeConfigSchema: types.optional(z.array(ACLAction$inboundSchema)),
+  edgeConfigToken: types.optional(z.array(ACLAction$inboundSchema)),
+  endpointVerification: types.optional(z.array(ACLAction$inboundSchema)),
+  event: types.optional(z.array(ACLAction$inboundSchema)),
+  fileUpload: types.optional(z.array(ACLAction$inboundSchema)),
+  flagsExplorerSubscription: types.optional(z.array(ACLAction$inboundSchema)),
+  gitRepository: types.optional(z.array(ACLAction$inboundSchema)),
+  imageOptimizationNewPrice: types.optional(z.array(ACLAction$inboundSchema)),
+  integration: types.optional(z.array(ACLAction$inboundSchema)),
+  integrationAccount: types.optional(z.array(ACLAction$inboundSchema)),
+  integrationConfiguration: types.optional(z.array(ACLAction$inboundSchema)),
+  integrationConfigurationProjects: types.optional(
+    z.array(ACLAction$inboundSchema),
+  ),
+  integrationConfigurationRole: types.optional(
+    z.array(ACLAction$inboundSchema),
+  ),
+  integrationConfigurationTransfer: types.optional(
+    z.array(ACLAction$inboundSchema),
+  ),
+  integrationDeploymentAction: types.optional(z.array(ACLAction$inboundSchema)),
+  integrationEvent: types.optional(z.array(ACLAction$inboundSchema)),
+  integrationLog: types.optional(z.array(ACLAction$inboundSchema)),
+  integrationResource: types.optional(z.array(ACLAction$inboundSchema)),
+  integrationResourceData: types.optional(z.array(ACLAction$inboundSchema)),
+  integrationResourceReplCommand: types.optional(
+    z.array(ACLAction$inboundSchema),
+  ),
+  integrationResourceSecrets: types.optional(z.array(ACLAction$inboundSchema)),
+  integrationSSOSession: types.optional(z.array(ACLAction$inboundSchema)),
+  integrationStrict: types.optional(z.array(ACLAction$inboundSchema)),
+  integrationStoreTokenSet: types.optional(z.array(ACLAction$inboundSchema)),
+  integrationVercelConfigurationOverride: types.optional(
+    z.array(ACLAction$inboundSchema),
+  ),
+  integrationPullRequest: types.optional(z.array(ACLAction$inboundSchema)),
+  ipBlocking: types.optional(z.array(ACLAction$inboundSchema)),
+  jobGlobal: types.optional(z.array(ACLAction$inboundSchema)),
+  kmsIssuer: types.optional(z.array(ACLAction$inboundSchema)),
+  kmsProjectGrant: types.optional(z.array(ACLAction$inboundSchema)),
+  logDrain: types.optional(z.array(ACLAction$inboundSchema)),
+  marketplaceBillingData: types.optional(z.array(ACLAction$inboundSchema)),
+  marketplaceExperimentationEdgeConfigData: types.optional(
+    z.array(ACLAction$inboundSchema),
+  ),
+  marketplaceExperimentationItem: types.optional(
+    z.array(ACLAction$inboundSchema),
+  ),
+  marketplaceInstallationMember: types.optional(
+    z.array(ACLAction$inboundSchema),
+  ),
+  marketplaceInvoice: types.optional(z.array(ACLAction$inboundSchema)),
+  marketplaceSettings: types.optional(z.array(ACLAction$inboundSchema)),
+  Monitoring: types.optional(z.array(ACLAction$inboundSchema)),
+  monitoringAlert: types.optional(z.array(ACLAction$inboundSchema)),
+  monitoringChart: types.optional(z.array(ACLAction$inboundSchema)),
+  monitoringQuery: types.optional(z.array(ACLAction$inboundSchema)),
+  monitoringSettings: types.optional(z.array(ACLAction$inboundSchema)),
+  notificationCustomerBudget: types.optional(z.array(ACLAction$inboundSchema)),
+  notificationDeploymentFailed: types.optional(
+    z.array(ACLAction$inboundSchema),
+  ),
+  notificationDomainConfiguration: types.optional(
+    z.array(ACLAction$inboundSchema),
+  ),
+  notificationDomainExpire: types.optional(z.array(ACLAction$inboundSchema)),
+  notificationDomainMoved: types.optional(z.array(ACLAction$inboundSchema)),
+  notificationDomainPurchase: types.optional(z.array(ACLAction$inboundSchema)),
+  notificationDomainRenewal: types.optional(z.array(ACLAction$inboundSchema)),
+  notificationDomainTransfer: types.optional(z.array(ACLAction$inboundSchema)),
+  notificationDomainUnverified: types.optional(
+    z.array(ACLAction$inboundSchema),
+  ),
+  NotificationMonitoringAlert: types.optional(z.array(ACLAction$inboundSchema)),
+  notificationPaymentFailed: types.optional(z.array(ACLAction$inboundSchema)),
+  notificationPreferences: types.optional(z.array(ACLAction$inboundSchema)),
+  notificationStatementOfReasons: types.optional(
+    z.array(ACLAction$inboundSchema),
+  ),
+  notificationUsageAlert: types.optional(z.array(ACLAction$inboundSchema)),
+  oidcFederationPolicy: types.optional(z.array(ACLAction$inboundSchema)),
+  observabilityConfiguration: types.optional(z.array(ACLAction$inboundSchema)),
+  observabilityFunnel: types.optional(z.array(ACLAction$inboundSchema)),
+  observabilityNotebook: types.optional(z.array(ACLAction$inboundSchema)),
+  openTelemetryEndpoint: types.optional(z.array(ACLAction$inboundSchema)),
+  ownEvent: types.optional(z.array(ACLAction$inboundSchema)),
+  organization: types.optional(z.array(ACLAction$inboundSchema)),
+  organizationDomain: types.optional(z.array(ACLAction$inboundSchema)),
+  organizationTeam: types.optional(z.array(ACLAction$inboundSchema)),
+  passwordProtectionInvoiceItem: types.optional(
+    z.array(ACLAction$inboundSchema),
+  ),
+  paymentMethod: types.optional(z.array(ACLAction$inboundSchema)),
+  permissions: types.optional(z.array(ACLAction$inboundSchema)),
+  postgres: types.optional(z.array(ACLAction$inboundSchema)),
+  postgresStoreTokenSet: types.optional(z.array(ACLAction$inboundSchema)),
+  previewDeploymentSuffix: types.optional(z.array(ACLAction$inboundSchema)),
+  privateCloudAccount: types.optional(z.array(ACLAction$inboundSchema)),
+  projectTransferIn: types.optional(z.array(ACLAction$inboundSchema)),
+  proTrialOnboarding: types.optional(z.array(ACLAction$inboundSchema)),
+  rateLimit: types.optional(z.array(ACLAction$inboundSchema)),
+  redis: types.optional(z.array(ACLAction$inboundSchema)),
+  redisStoreTokenSet: types.optional(z.array(ACLAction$inboundSchema)),
+  remoteCaching: types.optional(z.array(ACLAction$inboundSchema)),
+  repository: types.optional(z.array(ACLAction$inboundSchema)),
+  samlConfig: types.optional(z.array(ACLAction$inboundSchema)),
+  secret: types.optional(z.array(ACLAction$inboundSchema)),
+  securityConfig: types.optional(z.array(ACLAction$inboundSchema)),
+  sensitiveEnvironmentVariablePolicy: types.optional(
+    z.array(ACLAction$inboundSchema),
+  ),
+  sharedEnvVars: types.optional(z.array(ACLAction$inboundSchema)),
+  sharedEnvVarsProduction: types.optional(z.array(ACLAction$inboundSchema)),
+  space: types.optional(z.array(ACLAction$inboundSchema)),
+  spaceRun: types.optional(z.array(ACLAction$inboundSchema)),
+  storeIsLocked: types.optional(z.array(ACLAction$inboundSchema)),
+  storeTokenSetSensitive: types.optional(z.array(ACLAction$inboundSchema)),
+  storeTransfer: types.optional(z.array(ACLAction$inboundSchema)),
+  supportCase: types.optional(z.array(ACLAction$inboundSchema)),
+  supportCaseComment: types.optional(z.array(ACLAction$inboundSchema)),
+  team: types.optional(z.array(ACLAction$inboundSchema)),
+  teamAccessRequest: types.optional(z.array(ACLAction$inboundSchema)),
+  teamFellowMembership: types.optional(z.array(ACLAction$inboundSchema)),
+  teamGitExclusivity: types.optional(z.array(ACLAction$inboundSchema)),
+  teamInvite: types.optional(z.array(ACLAction$inboundSchema)),
+  teamInviteCode: types.optional(z.array(ACLAction$inboundSchema)),
+  teamInviteLink: types.optional(z.array(ACLAction$inboundSchema)),
+  teamJoin: types.optional(z.array(ACLAction$inboundSchema)),
+  teamMemberMfaStatus: types.optional(z.array(ACLAction$inboundSchema)),
+  teamMicrofrontends: types.optional(z.array(ACLAction$inboundSchema)),
+  teamOwnMembership: types.optional(z.array(ACLAction$inboundSchema)),
+  teamOwnMembershipDisconnectSAML: types.optional(
+    z.array(ACLAction$inboundSchema),
+  ),
+  teamSudo: types.optional(z.array(ACLAction$inboundSchema)),
+  teamTokenInvalidation: types.optional(z.array(ACLAction$inboundSchema)),
+  token: types.optional(z.array(ACLAction$inboundSchema)),
+  toolbarComment: types.optional(z.array(ACLAction$inboundSchema)),
+  usage: types.optional(z.array(ACLAction$inboundSchema)),
+  usageCycle: types.optional(z.array(ACLAction$inboundSchema)),
+  vcrRepository: types.optional(z.array(ACLAction$inboundSchema)),
+  vercelRun: types.optional(z.array(ACLAction$inboundSchema)),
+  vpcPeeringConnection: types.optional(z.array(ACLAction$inboundSchema)),
+  webAnalyticsPlan: types.optional(z.array(ACLAction$inboundSchema)),
+  webhook: types.optional(z.array(ACLAction$inboundSchema)),
+  "webhook-event": types.optional(z.array(ACLAction$inboundSchema)),
+  aliasProject: types.optional(z.array(ACLAction$inboundSchema)),
+  aliasProtectionBypass: types.optional(z.array(ACLAction$inboundSchema)),
+  bulkRedirects: types.optional(z.array(ACLAction$inboundSchema)),
+  buildMachine: types.optional(z.array(ACLAction$inboundSchema)),
+  connectConfigurationLink: types.optional(z.array(ACLAction$inboundSchema)),
+  dataCacheNamespace: types.optional(z.array(ACLAction$inboundSchema)),
+  deployment: types.optional(z.array(ACLAction$inboundSchema)),
+  deploymentBuildLogs: types.optional(z.array(ACLAction$inboundSchema)),
+  deploymentCheck: types.optional(z.array(ACLAction$inboundSchema)),
+  deploymentCheckPreview: types.optional(z.array(ACLAction$inboundSchema)),
+  deploymentCheckReRunFromProductionBranch: types.optional(
+    z.array(ACLAction$inboundSchema),
+  ),
+  deploymentProductionGit: types.optional(z.array(ACLAction$inboundSchema)),
+  deploymentV0: types.optional(z.array(ACLAction$inboundSchema)),
+  deploymentPreview: types.optional(z.array(ACLAction$inboundSchema)),
+  deploymentPrivate: types.optional(z.array(ACLAction$inboundSchema)),
+  deploymentPromote: types.optional(z.array(ACLAction$inboundSchema)),
+  deploymentRollback: types.optional(z.array(ACLAction$inboundSchema)),
+  edgeCacheNamespace: types.optional(z.array(ACLAction$inboundSchema)),
+  environments: types.optional(z.array(ACLAction$inboundSchema)),
+  job: types.optional(z.array(ACLAction$inboundSchema)),
+  logs: types.optional(z.array(ACLAction$inboundSchema)),
+  logsPreset: types.optional(z.array(ACLAction$inboundSchema)),
+  observabilityData: types.optional(z.array(ACLAction$inboundSchema)),
+  onDemandBuild: types.optional(z.array(ACLAction$inboundSchema)),
+  onDemandConcurrency: types.optional(z.array(ACLAction$inboundSchema)),
+  optionsAllowlist: types.optional(z.array(ACLAction$inboundSchema)),
+  passwordProtection: types.optional(z.array(ACLAction$inboundSchema)),
+  privateLinkEndpoint: types.optional(z.array(ACLAction$inboundSchema)),
+  productionAliasProtectionBypass: types.optional(
+    z.array(ACLAction$inboundSchema),
+  ),
+  project: types.optional(z.array(ACLAction$inboundSchema)),
+  projectAccessGroup: types.optional(z.array(ACLAction$inboundSchema)),
+  projectAnalyticsSampling: types.optional(z.array(ACLAction$inboundSchema)),
+  projectAnalyticsUsage: types.optional(z.array(ACLAction$inboundSchema)),
+  projectCheck: types.optional(z.array(ACLAction$inboundSchema)),
+  projectCheckRun: types.optional(z.array(ACLAction$inboundSchema)),
+  projectDeploymentExpiration: types.optional(z.array(ACLAction$inboundSchema)),
+  projectDeploymentHook: types.optional(z.array(ACLAction$inboundSchema)),
+  projectDeploymentProtectionStrict: types.optional(
+    z.array(ACLAction$inboundSchema),
+  ),
+  projectDomain: types.optional(z.array(ACLAction$inboundSchema)),
+  projectDomainCheckConfig: types.optional(z.array(ACLAction$inboundSchema)),
+  projectDomainMove: types.optional(z.array(ACLAction$inboundSchema)),
+  projectEvent: types.optional(z.array(ACLAction$inboundSchema)),
+  projectEnvVars: types.optional(z.array(ACLAction$inboundSchema)),
+  projectEnvVarsProduction: types.optional(z.array(ACLAction$inboundSchema)),
+  projectEnvVarsUnownedByIntegration: types.optional(
+    z.array(ACLAction$inboundSchema),
+  ),
+  projectFlags: types.optional(z.array(ACLAction$inboundSchema)),
+  projectFlagsProduction: types.optional(z.array(ACLAction$inboundSchema)),
+  projectFlagsSdkKey: types.optional(z.array(ACLAction$inboundSchema)),
+  projectFromV0: types.optional(z.array(ACLAction$inboundSchema)),
+  projectId: types.optional(z.array(ACLAction$inboundSchema)),
+  projectIntegrationConfiguration: types.optional(
+    z.array(ACLAction$inboundSchema),
+  ),
+  projectLink: types.optional(z.array(ACLAction$inboundSchema)),
+  projectMember: types.optional(z.array(ACLAction$inboundSchema)),
+  projectMonitoring: types.optional(z.array(ACLAction$inboundSchema)),
+  projectOIDCToken: types.optional(z.array(ACLAction$inboundSchema)),
+  projectPermissions: types.optional(z.array(ACLAction$inboundSchema)),
+  projectProductionBranch: types.optional(z.array(ACLAction$inboundSchema)),
+  projectProtectionBypass: types.optional(z.array(ACLAction$inboundSchema)),
+  projectRollingRelease: types.optional(z.array(ACLAction$inboundSchema)),
+  projectRoutes: types.optional(z.array(ACLAction$inboundSchema)),
+  projectSupportCase: types.optional(z.array(ACLAction$inboundSchema)),
+  projectSupportCaseComment: types.optional(z.array(ACLAction$inboundSchema)),
+  projectTier: types.optional(z.array(ACLAction$inboundSchema)),
+  projectTransfer: types.optional(z.array(ACLAction$inboundSchema)),
+  projectTransferOut: types.optional(z.array(ACLAction$inboundSchema)),
+  projectUsage: types.optional(z.array(ACLAction$inboundSchema)),
+  pageIntegrity: types.optional(z.array(ACLAction$inboundSchema)),
+  seawallConfig: types.optional(z.array(ACLAction$inboundSchema)),
+  securityPlusConfiguration: types.optional(z.array(ACLAction$inboundSchema)),
+  shareableLinkStrict: types.optional(z.array(ACLAction$inboundSchema)),
+  sharedEnvVarConnection: types.optional(z.array(ACLAction$inboundSchema)),
+  skewProtection: types.optional(z.array(ACLAction$inboundSchema)),
+  analytics: types.optional(z.array(ACLAction$inboundSchema)),
+  trustedIps: types.optional(z.array(ACLAction$inboundSchema)),
+  trustedSources: types.optional(z.array(ACLAction$inboundSchema)),
+  v0Chat: types.optional(z.array(ACLAction$inboundSchema)),
+  webAnalytics: types.optional(z.array(ACLAction$inboundSchema)),
+}).transform((v) => {
+  return remap$(v, {
+    "Monitoring": "monitoring",
+    "NotificationMonitoringAlert": "notificationMonitoringAlert",
+    "webhook-event": "webhookEvent",
+    "projectFlagsSdkKey": "projectFlagsSDKKey",
+  });
+});
+
+export function createProjectPermissionsFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateProjectPermissions, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateProjectPermissions$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProjectPermissions' from JSON`,
+  );
+}
+
+/** @internal */
+export const LastRollbackTarget$inboundSchema: z.ZodType<
+  LastRollbackTarget,
+  z.ZodTypeDef,
+  unknown
+> = z.object({});
+
+export function lastRollbackTargetFromJSON(
+  jsonString: string,
+): SafeParseResult<LastRollbackTarget, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LastRollbackTarget$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LastRollbackTarget' from JSON`,
+  );
+}
+
+/** @internal */
+export const JobStatus$inboundSchema: z.ZodNativeEnum<typeof JobStatus> = z
+  .nativeEnum(JobStatus);
+
+/** @internal */
+export const CreateProjectProjectsResponse200ApplicationJSONResponseBodyLastAliasRequestType$inboundSchema:
+  z.ZodNativeEnum<
+    typeof CreateProjectProjectsResponse200ApplicationJSONResponseBodyLastAliasRequestType
+  > = z.nativeEnum(
+    CreateProjectProjectsResponse200ApplicationJSONResponseBodyLastAliasRequestType,
+  );
+
+/** @internal */
+export const LastAliasRequest$inboundSchema: z.ZodType<
+  LastAliasRequest,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  fromDeploymentId: types.nullable(types.string()),
+  toDeploymentId: types.string(),
+  fromRollingReleaseId: types.optional(types.string()),
+  jobStatus: JobStatus$inboundSchema,
+  requestedAt: types.number(),
+  type:
+    CreateProjectProjectsResponse200ApplicationJSONResponseBodyLastAliasRequestType$inboundSchema,
+});
+
+export function lastAliasRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<LastAliasRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LastAliasRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LastAliasRequest' from JSON`,
+  );
+}
+
+/** @internal */
+export const ProtectionBypass2$inboundSchema: z.ZodType<
+  ProtectionBypass2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  createdAt: types.number(),
+  createdBy: types.string(),
+  scope: types.literal("automation-bypass"),
+  isEnvVar: types.optional(types.boolean()),
+  note: types.optional(types.string()),
+});
+
+export function protectionBypass2FromJSON(
+  jsonString: string,
+): SafeParseResult<ProtectionBypass2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ProtectionBypass2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ProtectionBypass2' from JSON`,
+  );
+}
+
+/** @internal */
+export const ProtectionBypass1$inboundSchema: z.ZodType<
+  ProtectionBypass1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  createdAt: types.number(),
+  createdBy: types.string(),
+  scope: types.literal("integration-automation-bypass"),
+  integrationId: types.string(),
+  configurationId: types.string(),
+});
+
+export function protectionBypass1FromJSON(
+  jsonString: string,
+): SafeParseResult<ProtectionBypass1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ProtectionBypass1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ProtectionBypass1' from JSON`,
+  );
+}
+
+/** @internal */
+export const ProtectionBypass$inboundSchema: z.ZodType<
+  ProtectionBypass,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() => ProtectionBypass1$inboundSchema),
+  z.lazy(() => ProtectionBypass2$inboundSchema),
+]);
+
+export function protectionBypassFromJSON(
+  jsonString: string,
+): SafeParseResult<ProtectionBypass, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ProtectionBypass$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ProtectionBypass' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateProjectTrustedIpsDeploymentType$inboundSchema:
+  z.ZodNativeEnum<typeof CreateProjectTrustedIpsDeploymentType> = z.nativeEnum(
+    CreateProjectTrustedIpsDeploymentType,
+  );
+
+/** @internal */
+export const TrustedIps2$inboundSchema: z.ZodType<
+  TrustedIps2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  deploymentType: CreateProjectTrustedIpsDeploymentType$inboundSchema,
+});
+
+export function trustedIps2FromJSON(
+  jsonString: string,
+): SafeParseResult<TrustedIps2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TrustedIps2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TrustedIps2' from JSON`,
+  );
+}
+
+/** @internal */
+export const TrustedIpsDeploymentType$inboundSchema: z.ZodNativeEnum<
+  typeof TrustedIpsDeploymentType
+> = z.nativeEnum(TrustedIpsDeploymentType);
+
+/** @internal */
+export const CreateProjectTrustedIpsAddresses$inboundSchema: z.ZodType<
+  CreateProjectTrustedIpsAddresses,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  value: types.string(),
+  note: types.optional(types.string()),
+});
+
+export function createProjectTrustedIpsAddressesFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateProjectTrustedIpsAddresses, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateProjectTrustedIpsAddresses$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProjectTrustedIpsAddresses' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateProjectTrustedIpsProtectionMode$inboundSchema:
+  z.ZodNativeEnum<typeof CreateProjectTrustedIpsProtectionMode> = z.nativeEnum(
+    CreateProjectTrustedIpsProtectionMode,
+  );
+
+/** @internal */
+export const TrustedIps1$inboundSchema: z.ZodType<
+  TrustedIps1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  deploymentType: TrustedIpsDeploymentType$inboundSchema,
+  addresses: z.array(
+    z.lazy(() => CreateProjectTrustedIpsAddresses$inboundSchema),
+  ),
+  protectionMode: CreateProjectTrustedIpsProtectionMode$inboundSchema,
+});
+
+export function trustedIps1FromJSON(
+  jsonString: string,
+): SafeParseResult<TrustedIps1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TrustedIps1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TrustedIps1' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateProjectTrustedIps$inboundSchema: z.ZodType<
+  CreateProjectTrustedIps,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  z.lazy(() => TrustedIps1$inboundSchema),
+  z.lazy(() => TrustedIps2$inboundSchema),
+]);
+
+export function createProjectTrustedIpsFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateProjectTrustedIps, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateProjectTrustedIps$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProjectTrustedIps' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateProjectFromPreset$inboundSchema: z.ZodNativeEnum<
+  typeof CreateProjectFromPreset
+> = z.nativeEnum(CreateProjectFromPreset);
+
+/** @internal */
+export const CreateProjectFrom2$inboundSchema: z.ZodType<
+  CreateProjectFrom2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  slugs: types.optional(z.array(types.string())),
+  preset: CreateProjectFromPreset$inboundSchema,
+});
+
+export function createProjectFrom2FromJSON(
+  jsonString: string,
+): SafeParseResult<CreateProjectFrom2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateProjectFrom2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProjectFrom2' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateProjectFromProjectsPreset$inboundSchema: z.ZodNativeEnum<
+  typeof CreateProjectFromProjectsPreset
+> = z.nativeEnum(CreateProjectFromProjectsPreset);
+
+/** @internal */
+export const CreateProjectFrom1$inboundSchema: z.ZodType<
+  CreateProjectFrom1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  slugs: z.array(types.string()),
+  preset: types.optional(CreateProjectFromProjectsPreset$inboundSchema),
+});
+
+export function createProjectFrom1FromJSON(
+  jsonString: string,
+): SafeParseResult<CreateProjectFrom1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateProjectFrom1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProjectFrom1' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateProjectFrom$inboundSchema: z.ZodType<
+  CreateProjectFrom,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  z.lazy(() => CreateProjectFrom1$inboundSchema),
+  z.lazy(() => CreateProjectFrom2$inboundSchema),
+]);
+
+export function createProjectFromFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateProjectFrom, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateProjectFrom$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProjectFrom' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateProjectToProjectsResponse200Preset$inboundSchema:
+  z.ZodNativeEnum<typeof CreateProjectToProjectsResponse200Preset> = z
+    .nativeEnum(CreateProjectToProjectsResponse200Preset);
+
+/** @internal */
+export const CreateProjectToProjects2$inboundSchema: z.ZodType<
+  CreateProjectToProjects2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  slugs: types.optional(z.array(types.string())),
+  preset: CreateProjectToProjectsResponse200Preset$inboundSchema,
+});
+
+export function createProjectToProjects2FromJSON(
+  jsonString: string,
+): SafeParseResult<CreateProjectToProjects2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateProjectToProjects2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProjectToProjects2' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateProjectToProjectsResponsePreset$inboundSchema:
+  z.ZodNativeEnum<typeof CreateProjectToProjectsResponsePreset> = z.nativeEnum(
+    CreateProjectToProjectsResponsePreset,
+  );
+
+/** @internal */
 export const CreateProjectToProjects1$inboundSchema: z.ZodType<
   CreateProjectToProjects1,
   z.ZodTypeDef,
@@ -1032,7 +2561,7 @@ export const CreateProjectProjectsTo$inboundSchema: z.ZodType<
   unknown
 > = smartUnion([
   z.lazy(() => CreateProjectToProjects1$inboundSchema),
-  CreateProjectToProjects2$inboundSchema,
+  z.lazy(() => CreateProjectToProjects2$inboundSchema),
 ]);
 
 export function createProjectProjectsToFromJSON(
@@ -1051,10 +2580,13 @@ export const CreateProjectCustomAllow$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  from: CreateProjectFrom$inboundSchema,
+  from: smartUnion([
+    z.lazy(() => CreateProjectFrom1$inboundSchema),
+    z.lazy(() => CreateProjectFrom2$inboundSchema),
+  ]),
   to: smartUnion([
     z.lazy(() => CreateProjectToProjects1$inboundSchema),
-    CreateProjectToProjects2$inboundSchema,
+    z.lazy(() => CreateProjectToProjects2$inboundSchema),
   ]),
 });
 
@@ -2799,36 +4331,36 @@ export const CreateProjectAction$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(CreateProjectAction);
 
 /** @internal */
-export const ValuePreviousValue$inboundSchema: z.ZodType<
-  ValuePreviousValue,
+export const CreateProjectValuePreviousValue$inboundSchema: z.ZodType<
+  CreateProjectValuePreviousValue,
   z.ZodTypeDef,
   unknown
 > = smartUnion([types.string(), types.number(), types.boolean()]);
 
-export function valuePreviousValueFromJSON(
+export function createProjectValuePreviousValueFromJSON(
   jsonString: string,
-): SafeParseResult<ValuePreviousValue, SDKValidationError> {
+): SafeParseResult<CreateProjectValuePreviousValue, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ValuePreviousValue$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ValuePreviousValue' from JSON`,
+    (x) => CreateProjectValuePreviousValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProjectValuePreviousValue' from JSON`,
   );
 }
 
 /** @internal */
-export const ValueCurrentValue$inboundSchema: z.ZodType<
-  ValueCurrentValue,
+export const CreateProjectValueCurrentValue$inboundSchema: z.ZodType<
+  CreateProjectValueCurrentValue,
   z.ZodTypeDef,
   unknown
 > = smartUnion([types.string(), types.number(), types.boolean()]);
 
-export function valueCurrentValueFromJSON(
+export function createProjectValueCurrentValueFromJSON(
   jsonString: string,
-): SafeParseResult<ValueCurrentValue, SDKValidationError> {
+): SafeParseResult<CreateProjectValueCurrentValue, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ValueCurrentValue$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ValueCurrentValue' from JSON`,
+    (x) => CreateProjectValueCurrentValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProjectValueCurrentValue' from JSON`,
   );
 }
 
@@ -2966,6 +4498,7 @@ export const CreateProjectResponseBody$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   accountId: types.string(),
+  alias: z.array(Alias$inboundSchema),
   analytics: types.optional(Analytics$inboundSchema),
   appliedCve55182Migration: types.optional(types.boolean()),
   speedInsights: types.optional(SpeedInsights$inboundSchema),
@@ -3028,10 +4561,11 @@ export const CreateProjectResponseBody$inboundSchema: z.ZodType<
   sourceFilesOutsideRootDirectory: types.optional(types.boolean()),
   enableAffectedProjectsDeployments: types.optional(types.boolean()),
   enableExternalRewriteCaching: types.optional(types.boolean()),
-  ssoProtection: z.nullable(CreateProjectProjectsSsoProtection$inboundSchema)
-    .optional(),
+  ssoProtection: z.nullable(
+    z.lazy(() => CreateProjectProjectsSsoProtection$inboundSchema),
+  ).optional(),
   targets: types.optional(
-    z.record(types.nullable(CreateProjectTargets$inboundSchema)),
+    z.record(types.nullable(z.lazy(() => CreateProjectTargets$inboundSchema))),
   ),
   transferCompletedAt: types.optional(types.number()),
   transferStartedAt: types.optional(types.number()),
@@ -3041,12 +4575,28 @@ export const CreateProjectResponseBody$inboundSchema: z.ZodType<
   live: types.optional(types.boolean()),
   enablePreviewFeedback: z.nullable(types.boolean()).optional(),
   enableProductionFeedback: z.nullable(types.boolean()).optional(),
-  permissions: types.optional(CreateProjectPermissions$inboundSchema),
-  lastRollbackTarget: z.nullable(LastRollbackTarget$inboundSchema).optional(),
-  lastAliasRequest: z.nullable(LastAliasRequest$inboundSchema).optional(),
-  protectionBypass: types.optional(z.record(ProtectionBypass$inboundSchema)),
+  permissions: types.optional(
+    z.lazy(() => CreateProjectPermissions$inboundSchema),
+  ),
+  lastRollbackTarget: z.nullable(z.lazy(() => LastRollbackTarget$inboundSchema))
+    .optional(),
+  lastAliasRequest: z.nullable(z.lazy(() => LastAliasRequest$inboundSchema))
+    .optional(),
+  protectionBypass: types.optional(
+    z.record(z.union([
+      z.lazy(() => ProtectionBypass1$inboundSchema),
+      z.lazy(() =>
+        ProtectionBypass2$inboundSchema
+      ),
+    ])),
+  ),
   hasActiveBranches: types.optional(types.boolean()),
-  trustedIps: z.nullable(CreateProjectTrustedIps$inboundSchema).optional(),
+  trustedIps: z.nullable(
+    smartUnion([
+      z.lazy(() => TrustedIps1$inboundSchema),
+      z.lazy(() => TrustedIps2$inboundSchema),
+    ]),
+  ).optional(),
   trustedSources: z.nullable(
     z.lazy(() => CreateProjectTrustedSources$inboundSchema),
   ).optional(),

@@ -5,7 +5,7 @@ Build machine configuration recorded on a team or user `resourceConfig`. This is
 ## Example Usage
 
 ```typescript
-import { PayloadBuildMachine } from "@vercel/sdk/models/payloadteamroles.js";
+import { PayloadBuildMachine } from "@vercel/sdk/models/usereventpayload146role.js";
 
 let value: PayloadBuildMachine = {};
 ```

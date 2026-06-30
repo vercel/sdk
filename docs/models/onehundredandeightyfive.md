@@ -5,21 +5,14 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndEightyFive } from "@vercel/sdk/models/onehundredandeightythree.js";
+import { OneHundredAndEightyFive } from "@vercel/sdk/models/onehundredandeightyfive.js";
 
-let value: OneHundredAndEightyFive = {
-  endpoint: {
-    id: "<id>",
-    name: "<value>",
-    projectId: "<id>",
-    vercelRegion: "<value>",
-    awsServiceName: "<value>",
-  },
-};
+let value: OneHundredAndEightyFive = {};
 ```
 
 ## Fields
 
-| Field                                    | Type                                     | Required                                 | Description                              |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| `endpoint`                               | [models.Endpoint](../models/endpoint.md) | :heavy_check_mark:                       | N/A                                      |
+| Field                             | Type                              | Required                          | Description                       |
+| --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- |
+| `previewDeploymentSuffix`         | *string*                          | :heavy_minus_sign:                | N/A                               |
+| `previousPreviewDeploymentSuffix` | *string*                          | :heavy_minus_sign:                | N/A                               |

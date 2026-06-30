@@ -5,24 +5,24 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndSixtyOne } from "@vercel/sdk/models/payloadteamroles.js";
+import { OneHundredAndSixtyOne } from "@vercel/sdk/models/usereventpayload146role.js";
 
 let value: OneHundredAndSixtyOne = {
-  project: {
-    id: "<id>",
+  id: "<id>",
+  prev: {
     name: "<value>",
-  },
-  group: {
-    id: "<id>",
     slug: "<value>",
-    name: "<value>",
+    fallbackEnvironment: "<value>",
   },
 };
 ```
 
 ## Fields
 
-| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `project`                                                                    | [models.UserEventPayload161Project](../models/usereventpayload161project.md) | :heavy_check_mark:                                                           | N/A                                                                          |
-| `group`                                                                      | [models.Group](../models/group.md)                                           | :heavy_check_mark:                                                           | N/A                                                                          |
+| Field                            | Type                             | Required                         | Description                      |
+| -------------------------------- | -------------------------------- | -------------------------------- | -------------------------------- |
+| `id`                             | *string*                         | :heavy_check_mark:               | N/A                              |
+| `slug`                           | *string*                         | :heavy_minus_sign:               | N/A                              |
+| `name`                           | *string*                         | :heavy_minus_sign:               | N/A                              |
+| `fallbackEnvironment`            | *string*                         | :heavy_minus_sign:               | N/A                              |
+| `prev`                           | [models.Prev](../models/prev.md) | :heavy_check_mark:               | N/A                              |

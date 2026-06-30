@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UpdateProjectHas1 } from "@vercel/sdk/models/updateprojectinternalroutes.js";
+import { UpdateProjectHas1 } from "@vercel/sdk/models/updateprojectresponsebody.js";
 
 let value: UpdateProjectHas1 = {
   type: "header",
@@ -19,5 +19,5 @@ let value: UpdateProjectHas1 = {
 | Field                                                              | Type                                                               | Required                                                           | Description                                                        |
 | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
 | `type`                                                             | *"header"*                                                         | :heavy_check_mark:                                                 | N/A                                                                |
-| `key`                                                              | [models.HasKey](../models/haskey.md)                               | :heavy_check_mark:                                                 | N/A                                                                |
+| `key`                                                              | [models.UpdateProjectHasKey](../models/updateprojecthaskey.md)     | :heavy_check_mark:                                                 | N/A                                                                |
 | `value`                                                            | [models.UpdateProjectHasValue](../models/updateprojecthasvalue.md) | :heavy_check_mark:                                                 | N/A                                                                |

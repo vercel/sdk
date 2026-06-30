@@ -13,7 +13,7 @@ let value: Value3 = {
 
 ## Fields
 
-| Field                       | Type                        | Required                    | Description                 |
-| --------------------------- | --------------------------- | --------------------------- | --------------------------- |
-| `previousValue`             | *models.ValuePreviousValue* | :heavy_check_mark:          | N/A                         |
-| `currentValue`              | *models.ValueCurrentValue*  | :heavy_check_mark:          | N/A                         |
+| Field                                    | Type                                     | Required                                 | Description                              |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| `previousValue`                          | *models.CreateProjectValuePreviousValue* | :heavy_check_mark:                       | N/A                                      |
+| `currentValue`                           | *models.CreateProjectValueCurrentValue*  | :heavy_check_mark:                       | N/A                                      |

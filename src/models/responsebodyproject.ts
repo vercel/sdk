@@ -17,7 +17,7 @@ export type GetDeploymentRequest = {
    */
   idOrUrl: string;
   /**
-   * Whether to add in gitRepo information.
+   * When `true`, the response includes the `gitSource` object with the commit SHA, branch name, and connected repository metadata. Defaults to `false`.
    */
   withGitRepoInfo?: string | undefined;
   /**
@@ -771,7 +771,7 @@ export type ResponseBodyOidcTokenClaims = {
 };
 
 /**
- * The deployment including only public information
+ * Returns a reduced view of the deployment with public information only. Private fields are omitted when the requester is not the deployment owner.
  */
 export type GetDeploymentResponseBody2 = {
   /**

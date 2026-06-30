@@ -205,6 +205,8 @@ export type CountPageviewsData = {
   cachedInputTokensCurrency: string;
   cacheCreationInputTokensCurrency: string;
   cacheCreation1hInputTokensCurrency: string;
+  surchargeCostCurrency: string;
+  gatewayCostCurrency: string;
   keyId: string;
   keyName: string;
   isByok: string;
@@ -498,6 +500,8 @@ export const CountPageviewsData$inboundSchema: z.ZodType<
     cachedInputTokensCurrency: types.string(),
     cacheCreationInputTokensCurrency: types.string(),
     cacheCreation1hInputTokensCurrency: types.string(),
+    surchargeCostCurrency: types.string(),
+    gatewayCostCurrency: types.string(),
     keyId: types.string(),
     keyName: types.string(),
     isByok: types.string(),

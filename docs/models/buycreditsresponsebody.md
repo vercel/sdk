@@ -62,6 +62,7 @@ const value: models.BuyCreditsResponseBody3 = {
         ],
       },
       output: {
+        effectiveBehavior: "immediate",
         orbPriceId: "<id>",
         productId: "<id>",
       },

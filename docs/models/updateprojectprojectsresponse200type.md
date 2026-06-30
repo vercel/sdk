@@ -1,17 +1,15 @@
 # UpdateProjectProjectsResponse200Type
 
-The type of matching to perform
-
 ## Example Usage
 
 ```typescript
-import { UpdateProjectProjectsResponse200Type } from "@vercel/sdk/models/updateprojectprojectspaths.js";
+import { UpdateProjectProjectsResponse200Type } from "@vercel/sdk/models/updateprojecthasprojectskey.js";
 
-let value: UpdateProjectProjectsResponse200Type = "startsWith";
+let value: UpdateProjectProjectsResponse200Type = "LAMBDAS";
 ```
 
 ## Values
 
 ```typescript
-"endsWith" | "equals" | "startsWith"
+"LAMBDAS"
 ```

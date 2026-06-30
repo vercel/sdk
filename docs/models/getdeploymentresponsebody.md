@@ -1,7 +1,7 @@
 # GetDeploymentResponseBody
 
-The deployment including only public information
-The deployment including both public and private information
+Returns a reduced view of the deployment with public information only. Private fields are omitted when the requester is not the deployment owner.
+Returns the deployment object for the authenticated owner, including private fields such as environment variables, build log URLs, and internal metadata.
 
 
 ## Supported Types

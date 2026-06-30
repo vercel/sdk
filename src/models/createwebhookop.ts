@@ -10,7 +10,7 @@ import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
-export const Events = {
+export const CreateWebhookEvents = {
   BudgetReached: "budget.reached",
   DomainCreated: "domain.created",
   DomainDnsRecordsChanged: "domain.dns.records.changed",
@@ -129,11 +129,11 @@ export const Events = {
   CommentReactionRemoved: "comment.reaction-removed",
   CommentMentioned: "comment.mentioned",
 } as const;
-export type Events = ClosedEnum<typeof Events>;
+export type CreateWebhookEvents = ClosedEnum<typeof CreateWebhookEvents>;
 
 export type CreateWebhookRequestBody = {
   url: string;
-  events: Array<Events>;
+  events: Array<CreateWebhookEvents>;
   projectIds?: Array<string> | undefined;
 };
 
@@ -152,7 +152,7 @@ export type CreateWebhookRequest = {
 /**
  * The webhooks events
  */
-export const CreateWebhookEvents = {
+export const CreateWebhookWebhooksEvents = {
   AiGatewayAutoReloadLimitReached: "ai-gateway.auto-reload.limit-reached",
   AiGatewayBalanceDepleted: "ai-gateway.balance-depleted",
   AlertsTriggered: "alerts.triggered",
@@ -274,7 +274,9 @@ export const CreateWebhookEvents = {
 /**
  * The webhooks events
  */
-export type CreateWebhookEvents = ClosedEnum<typeof CreateWebhookEvents>;
+export type CreateWebhookWebhooksEvents = ClosedEnum<
+  typeof CreateWebhookWebhooksEvents
+>;
 
 export type CreateWebhookResponseBody = {
   /**
@@ -284,7 +286,7 @@ export type CreateWebhookResponseBody = {
   /**
    * The webhooks events
    */
-  events: Array<CreateWebhookEvents>;
+  events: Array<CreateWebhookWebhooksEvents>;
   /**
    * The webhook id
    */
@@ -312,8 +314,9 @@ export type CreateWebhookResponseBody = {
 };
 
 /** @internal */
-export const Events$outboundSchema: z.ZodNativeEnum<typeof Events> = z
-  .nativeEnum(Events);
+export const CreateWebhookEvents$outboundSchema: z.ZodNativeEnum<
+  typeof CreateWebhookEvents
+> = z.nativeEnum(CreateWebhookEvents);
 
 /** @internal */
 export type CreateWebhookRequestBody$Outbound = {
@@ -329,7 +332,7 @@ export const CreateWebhookRequestBody$outboundSchema: z.ZodType<
   CreateWebhookRequestBody
 > = z.object({
   url: z.string(),
-  events: z.array(Events$outboundSchema),
+  events: z.array(CreateWebhookEvents$outboundSchema),
   projectIds: z.array(z.string()).optional(),
 });
 
@@ -372,9 +375,9 @@ export function createWebhookRequestToJSON(
 }
 
 /** @internal */
-export const CreateWebhookEvents$inboundSchema: z.ZodNativeEnum<
-  typeof CreateWebhookEvents
-> = z.nativeEnum(CreateWebhookEvents);
+export const CreateWebhookWebhooksEvents$inboundSchema: z.ZodNativeEnum<
+  typeof CreateWebhookWebhooksEvents
+> = z.nativeEnum(CreateWebhookWebhooksEvents);
 
 /** @internal */
 export const CreateWebhookResponseBody$inboundSchema: z.ZodType<
@@ -383,7 +386,7 @@ export const CreateWebhookResponseBody$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   secret: types.string(),
-  events: z.array(CreateWebhookEvents$inboundSchema),
+  events: z.array(CreateWebhookWebhooksEvents$inboundSchema),
   id: types.string(),
   url: types.string(),
   ownerId: types.string(),

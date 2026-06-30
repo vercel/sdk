@@ -270,7 +270,7 @@ run();
 
 ## createDeployment
 
-Create a new deployment with all the required and intended data. If the deployment is not a git deployment, all files must be provided with the request, either referenced or inlined. Additionally, a deployment id can be specified to redeploy a previous deployment.
+Creates a new deployment for the authenticated team or user. For non-git deployments, upload files first via the file upload API, then reference them here by SHA — or inline small files directly in the request body. To redeploy an existing deployment, provide its `deploymentId`; all settings are inherited unless explicitly overridden. The deployment begins building immediately and transitions through `QUEUED` → `INITIALIZING` → `BUILDING` before reaching `READY` or `ERROR`.
 
 ### Example Usage
 
@@ -284,9 +284,12 @@ const vercel = new Vercel({
 
 async function run() {
   const result = await vercel.deployments.createDeployment({
+    forceNew: "1",
+    skipAutoDetectionConfirmation: "1",
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     slug: "my-team-url-slug",
     requestBody: {
+      customEnvironmentSlugOrId: "staging",
       deploymentId: "dpl_2qn7PZrx89yxY34vEZPD31Y9XVj6",
       files: [
         {
@@ -348,9 +351,12 @@ const vercel = new VercelCore({
 
 async function run() {
   const res = await deploymentsCreateDeployment(vercel, {
+    forceNew: "1",
+    skipAutoDetectionConfirmation: "1",
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     slug: "my-team-url-slug",
     requestBody: {
+      customEnvironmentSlugOrId: "staging",
       deploymentId: "dpl_2qn7PZrx89yxY34vEZPD31Y9XVj6",
       files: [
         {
@@ -421,7 +427,7 @@ run();
 
 ## cancelDeployment
 
-This endpoint allows you to cancel a deployment which is currently building, by supplying its `id` in the URL.
+Cancels a deployment that is currently in progress, stopping the build before it completes. Use this to recover quickly from accidental deploys, wrong-branch pushes, or builds with known errors — without waiting for them to finish. Returns 400 if the deployment is no longer cancelable (already `READY`, `ERROR`, or `CANCELED`). Returns the updated deployment object with `readyState: 'CANCELED'` on success.
 
 ### Example Usage
 

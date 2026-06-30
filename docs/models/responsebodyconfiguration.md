@@ -12,6 +12,7 @@ const value: models.BuyCreditsConfiguration1 = {
     quantity: 333.08,
   },
   output: {
+    effectiveBehavior: "end_of_term",
     orbPriceId: "<id>",
     productId: "<id>",
   },
@@ -30,6 +31,7 @@ const value: models.BuyCreditsConfiguration2 = {
     ],
   },
   output: {
+    effectiveBehavior: "immediate",
     orbPriceId: "<id>",
     productId: "<id>",
   },
@@ -49,6 +51,7 @@ const value: models.Configuration3 = {
     ],
   },
   output: {
+    effectiveBehavior: "end_of_term",
     orbPriceId: "<id>",
     productId: "<id>",
   },
@@ -73,6 +76,7 @@ const value: models.Configuration4 = {
     ],
   },
   output: {
+    effectiveBehavior: "end_of_term",
     orbPriceId: "<id>",
     productId: "<id>",
   },

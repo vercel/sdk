@@ -3,25 +3,73 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsResponseBodyProjects } from "@vercel/sdk/models/getprojectsresponsebodylink.js";
+import { GetProjectsResponseBodyProjects } from "@vercel/sdk/models/getprojectsresponsebodyenvironment.js";
 
 let value: GetProjectsResponseBodyProjects = {
   accountId: "<id>",
+  alias: [
+    {
+      deployment: {
+        id: "<id>",
+        createdAt: 7546.47,
+        createdIn: "<value>",
+        creator: {
+          email: "Michaela_Dickens41@yahoo.com",
+          uid: "<id>",
+          username: "Sally.Beier",
+        },
+        deploymentHostname: "<value>",
+        name: "<value>",
+        plan: "enterprise",
+        previewCommentsEnabled: false,
+        private: true,
+        readyState: "READY",
+        type: "LAMBDAS",
+        url: "https://impossible-dandelion.name",
+        userId: "<id>",
+      },
+      domain: "husky-ownership.org",
+      environment: "preview",
+      target: "PRODUCTION",
+    },
+  ],
   crons: {
-    enabledAt: 8563.1,
-    disabledAt: 3810.36,
-    updatedAt: 6364.7,
-    deploymentId: "<id>",
+    enabledAt: 8858.87,
+    disabledAt: 1432.7,
+    updatedAt: 4029.67,
+    deploymentId: null,
     definitions: [],
   },
   deploymentExpiration: {},
   directoryListing: false,
   id: "<id>",
+  latestDeployments: [
+    {
+      id: "<id>",
+      createdAt: 6432.1,
+      createdIn: "<value>",
+      creator: {
+        email: "Annetta_Swift23@gmail.com",
+        uid: "<id>",
+        username: "Earnestine_OReilly",
+      },
+      deploymentHostname: "<value>",
+      name: "<value>",
+      plan: "pro",
+      previewCommentsEnabled: false,
+      private: false,
+      readyState: "ERROR",
+      type: "LAMBDAS",
+      url: "https://normal-statue.info",
+      userId: "<id>",
+    },
+  ],
   name: "<value>",
-  nodeVersion: "24.x",
+  nodeVersion: "16.x",
   resourceConfig: {
     functionDefaultRegions: [
       "<value 1>",
+      "<value 2>",
     ],
   },
   rollingRelease: {
@@ -39,6 +87,27 @@ let value: GetProjectsResponseBodyProjects = {
   defaultResourceConfig: {
     functionDefaultRegions: [],
   },
+  targets: {
+    "key": {
+      id: "<id>",
+      createdAt: 2108.09,
+      createdIn: "<value>",
+      creator: {
+        email: "Fritz.Streich@hotmail.com",
+        uid: "<id>",
+        username: "Ashly82",
+      },
+      deploymentHostname: "<value>",
+      name: "<value>",
+      plan: "pro",
+      previewCommentsEnabled: false,
+      private: true,
+      readyState: "QUEUED",
+      type: "LAMBDAS",
+      url: "https://frank-gloom.name/",
+      userId: "<id>",
+    },
+  },
 };
 ```
 
@@ -47,6 +116,7 @@ let value: GetProjectsResponseBodyProjects = {
 | Field                                                                                                                                                                                                                                                                                                                                                 | Type                                                                                                                                                                                                                                                                                                                                                  | Required                                                                                                                                                                                                                                                                                                                                              | Description                                                                                                                                                                                                                                                                                                                                           |
 | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `accountId`                                                                                                                                                                                                                                                                                                                                           | *string*                                                                                                                                                                                                                                                                                                                                              | :heavy_check_mark:                                                                                                                                                                                                                                                                                                                                    | N/A                                                                                                                                                                                                                                                                                                                                                   |
+| `alias`                                                                                                                                                                                                                                                                                                                                               | [models.GetProjectsResponseBodyProjectsAlias](../models/getprojectsresponsebodyprojectsalias.md)[]                                                                                                                                                                                                                                                    | :heavy_check_mark:                                                                                                                                                                                                                                                                                                                                    | N/A                                                                                                                                                                                                                                                                                                                                                   |
 | `analytics`                                                                                                                                                                                                                                                                                                                                           | [models.GetProjectsResponseBodyProjectsAnalytics](../models/getprojectsresponsebodyprojectsanalytics.md)                                                                                                                                                                                                                                              | :heavy_minus_sign:                                                                                                                                                                                                                                                                                                                                    | N/A                                                                                                                                                                                                                                                                                                                                                   |
 | `appliedCve55182Migration`                                                                                                                                                                                                                                                                                                                            | *boolean*                                                                                                                                                                                                                                                                                                                                             | :heavy_minus_sign:                                                                                                                                                                                                                                                                                                                                    | N/A                                                                                                                                                                                                                                                                                                                                                   |
 | `speedInsights`                                                                                                                                                                                                                                                                                                                                       | [models.GetProjectsResponseBodyProjectsSpeedInsights](../models/getprojectsresponsebodyprojectsspeedinsights.md)                                                                                                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                                                                                                                                                                                                    | N/A                                                                                                                                                                                                                                                                                                                                                   |

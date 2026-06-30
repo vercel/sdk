@@ -1,20 +1,15 @@
 # UpdateProjectTarget
 
-
-## Supported Types
-
-### `string[]`
+## Example Usage
 
 ```typescript
-const value: string[] = [
-  "<value 1>",
-  "<value 2>",
-];
+import { UpdateProjectTarget } from "@vercel/sdk/models/updateprojectbuilds.js";
+
+let value: UpdateProjectTarget = "PRODUCTION";
 ```
 
-### `models.UpdateProjectTarget2`
+## Values
 
 ```typescript
-const value: models.UpdateProjectTarget2 = "production";
+"PREVIEW" | "PRODUCTION" | "STAGING"
 ```
-

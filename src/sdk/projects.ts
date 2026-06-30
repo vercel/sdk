@@ -11,6 +11,7 @@ import { projectsCreateProjectTransferRequest } from "../funcs/projectsCreatePro
 import { projectsDeleteProject } from "../funcs/projectsDeleteProject.js";
 import { projectsEditProjectEnv } from "../funcs/projectsEditProjectEnv.js";
 import { projectsFilterProjectEnvs } from "../funcs/projectsFilterProjectEnvs.js";
+import { projectsGetProject } from "../funcs/projectsGetProject.js";
 import { projectsGetProjectDomain } from "../funcs/projectsGetProjectDomain.js";
 import { projectsGetProjectDomains } from "../funcs/projectsGetProjectDomains.js";
 import { projectsGetProjectEnv } from "../funcs/projectsGetProjectEnv.js";
@@ -43,12 +44,12 @@ import {
   BatchRemoveProjectEnvRequest,
   BatchRemoveProjectEnvResponseBody,
 } from "../models/batchremoveprojectenvop.js";
+import { CreateProjectRequest } from "../models/createprojectapril2026securityincidentmigrationappliedfrom.js";
 import {
   CreateProjectEnvRequest,
   CreateProjectEnvResponseBody,
 } from "../models/createprojectenvop.js";
 import { CreateProjectResponseBody } from "../models/createprojectresponsebody.js";
-import { CreateProjectRequest } from "../models/createprojecttoprojectsresponsepreset.js";
 import {
   CreateProjectTransferRequestRequest,
   CreateProjectTransferRequestResponseBody,
@@ -74,8 +75,10 @@ import {
   GetProjectEnvRequest,
   GetProjectEnvResponseBody,
 } from "../models/getprojectenvop.js";
+import { GetProjectRequest } from "../models/getprojectlastrollbacktarget.js";
+import { GetProjectResponseBody } from "../models/getprojectresponsebody.js";
 import { GetProjectsResponseBody } from "../models/getprojectsresponsebody.js";
-import { GetProjectsRequest } from "../models/getprojectsresponsebodyprojectsgitprovideroptions.js";
+import { GetProjectsRequest } from "../models/getprojectsresponsebodyprojectstargets.js";
 import {
   ListPromoteAliasesRequest,
   ListPromoteAliasesResponseBody,
@@ -96,20 +99,20 @@ import {
 import { RequestPromoteRequest } from "../models/requestpromoteop.js";
 import { RequestRollbackRequest } from "../models/requestrollbackop.js";
 import { UnpauseProjectRequest } from "../models/unpauseprojectop.js";
+import { UpdateMicrofrontendsRequest } from "../models/updatemicrofrontendsjobstatus.js";
 import { UpdateMicrofrontendsResponseBody } from "../models/updatemicrofrontendsresponsebody.js";
-import { UpdateMicrofrontendsRequest } from "../models/updatemicrofrontendsvercelruleset.js";
+import { UpdateProjectRequest } from "../models/updateprojectbuilds.js";
 import {
   UpdateProjectDomainRequest,
   UpdateProjectDomainResponseBody,
 } from "../models/updateprojectdomainop.js";
-import { UpdateProjectRequest } from "../models/updateprojectprojectspaths.js";
 import {
   UpdateProjectProtectionBypassRequest,
   UpdateProjectProtectionBypassResponseBody,
 } from "../models/updateprojectprotectionbypassop.js";
 import { UpdateProjectResponseBody } from "../models/updateprojectresponsebody.js";
 import { UpdateProjectsByProjectIdRollbackByDeploymentIdUpdateDescriptionRequest } from "../models/updateprojectsbyprojectidrollbackbydeploymentidupdatedescriptionop.js";
-import { UploadProjectAvatarRequest } from "../models/uploadprojectavatarprojectsresponse200applicationjsonresponsebodysecurityaction.js";
+import { UploadProjectAvatarRequest } from "../models/uploadprojectavatarprojectsresponse200applicationjsontype.js";
 import { UploadProjectAvatarResponseBody } from "../models/uploadprojectavatarresponsebody.js";
 import {
   VerifyProjectDomainRequest,
@@ -146,6 +149,23 @@ export class Projects extends ClientSDK {
     options?: RequestOptions,
   ): Promise<CreateProjectResponseBody> {
     return unwrapAsync(projectsCreateProject(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Find a project by id or name
+   *
+   * @remarks
+   * Get the information for a specific project by passing either the project `id` or `name` in the URL.
+   */
+  async getProject(
+    request: GetProjectRequest,
+    options?: RequestOptions,
+  ): Promise<GetProjectResponseBody> {
+    return unwrapAsync(projectsGetProject(
       this,
       request,
       options,

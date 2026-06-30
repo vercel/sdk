@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UploadProjectAvatarEnv } from "@vercel/sdk/models/uploadprojectavatarprojectsresponse200applicationjsonresponsebodysecurityaction.js";
+import { UploadProjectAvatarEnv } from "@vercel/sdk/models/uploadprojectavatarprojectsresponse200applicationjsontype.js";
 
 let value: UploadProjectAvatarEnv = {
   type: "system",
@@ -16,7 +16,7 @@ let value: UploadProjectAvatarEnv = {
 
 | Field                                                                                                | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
 | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| `target`                                                                                             | *models.UploadProjectAvatarTarget*                                                                   | :heavy_minus_sign:                                                                                   | N/A                                                                                                  |
+| `target`                                                                                             | *models.UploadProjectAvatarProjectsTarget*                                                           | :heavy_minus_sign:                                                                                   | N/A                                                                                                  |
 | `type`                                                                                               | [models.UploadProjectAvatarType](../models/uploadprojectavatartype.md)                               | :heavy_check_mark:                                                                                   | N/A                                                                                                  |
 | `sunsetSecretId`                                                                                     | *string*                                                                                             | :heavy_minus_sign:                                                                                   | This is used to identify variables that have been migrated from type secret to sensitive.            |
 | `legacyValue`                                                                                        | *string*                                                                                             | :heavy_minus_sign:                                                                                   | Legacy now-encryption ciphertext, present after migration swaps value/vsmValue                       |

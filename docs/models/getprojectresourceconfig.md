@@ -1,0 +1,28 @@
+# GetProjectResourceConfig
+
+## Example Usage
+
+```typescript
+import { GetProjectResourceConfig } from "@vercel/sdk/models/getprojectlastrollbacktarget.js";
+
+let value: GetProjectResourceConfig = {
+  functionDefaultRegions: [],
+};
+```
+
+## Fields
+
+| Field                                                                                          | Type                                                                                           | Required                                                                                       | Description                                                                                    |
+| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `elasticConcurrencyEnabled`                                                                    | *boolean*                                                                                      | :heavy_minus_sign:                                                                             | N/A                                                                                            |
+| `fluid`                                                                                        | *boolean*                                                                                      | :heavy_minus_sign:                                                                             | N/A                                                                                            |
+| `functionDefaultRegions`                                                                       | *string*[]                                                                                     | :heavy_check_mark:                                                                             | N/A                                                                                            |
+| `functionDefaultTimeout`                                                                       | *number*                                                                                       | :heavy_minus_sign:                                                                             | N/A                                                                                            |
+| `functionDefaultMemoryType`                                                                    | [models.GetProjectFunctionDefaultMemoryType](../models/getprojectfunctiondefaultmemorytype.md) | :heavy_minus_sign:                                                                             | N/A                                                                                            |
+| `functionZeroConfigFailover`                                                                   | *boolean*                                                                                      | :heavy_minus_sign:                                                                             | N/A                                                                                            |
+| `buildMachineType`                                                                             | [models.GetProjectBuildMachineType](../models/getprojectbuildmachinetype.md)                   | :heavy_minus_sign:                                                                             | N/A                                                                                            |
+| `buildMachineSelection`                                                                        | [models.GetProjectBuildMachineSelection](../models/getprojectbuildmachineselection.md)         | :heavy_minus_sign:                                                                             | N/A                                                                                            |
+| `buildMachineElasticLastUpdated`                                                               | *number*                                                                                       | :heavy_minus_sign:                                                                             | N/A                                                                                            |
+| `isNSNBDisabled`                                                                               | *boolean*                                                                                      | :heavy_minus_sign:                                                                             | N/A                                                                                            |
+| `buildQueue`                                                                                   | [models.GetProjectBuildQueue](../models/getprojectbuildqueue.md)                               | :heavy_minus_sign:                                                                             | N/A                                                                                            |
+| `enableFunctionsBeta`                                                                          | *boolean*                                                                                      | :heavy_minus_sign:                                                                             | N/A                                                                                            |

@@ -23,7 +23,7 @@ import { SDKValidationError } from "../models/sdkvalidationerror.js";
 import {
   UpdateProjectRequest,
   UpdateProjectRequest$outboundSchema,
-} from "../models/updateprojectprojectspaths.js";
+} from "../models/updateprojectbuilds.js";
 import {
   UpdateProjectResponseBody,
   UpdateProjectResponseBody$inboundSchema,

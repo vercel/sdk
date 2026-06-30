@@ -751,6 +751,10 @@ export type GetDeploymentServicesDeploymentsConfig = {
   framework?: string | null | undefined;
   nodeVersion?: string | undefined;
   middleware?: boolean | undefined;
+  /**
+   * Owning service name; scopes per-function config such as the v2beta consumer.
+   */
+  serviceName?: string | undefined;
 };
 
 /**
@@ -2978,6 +2982,7 @@ export const GetDeploymentServicesDeploymentsConfig$inboundSchema: z.ZodType<
   framework: z.nullable(types.string()).optional(),
   nodeVersion: types.optional(types.string()),
   middleware: types.optional(types.boolean()),
+  serviceName: types.optional(types.string()),
 });
 
 export function getDeploymentServicesDeploymentsConfigFromJSON(

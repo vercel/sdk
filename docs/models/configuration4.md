@@ -21,6 +21,7 @@ let value: Configuration4 = {
     ],
   },
   output: {
+    effectiveBehavior: "end_of_term",
     orbPriceId: "<id>",
     productId: "<id>",
   },

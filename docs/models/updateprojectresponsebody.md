@@ -9,28 +9,42 @@ import { UpdateProjectResponseBody } from "@vercel/sdk/models/updateprojectrespo
 
 let value: UpdateProjectResponseBody = {
   accountId: "<id>",
+  alias: [],
   crons: {
-    enabledAt: 4055.72,
-    disabledAt: null,
-    updatedAt: 6888.94,
+    enabledAt: 920.36,
+    disabledAt: 5516.01,
+    updatedAt: 7584.57,
     deploymentId: "<id>",
-    definitions: [
-      {
-        host: "vercel.com",
-        path: "/api/crons/sync-something?hello=world",
-        schedule: "0 0 * * *",
-      },
-    ],
+    definitions: [],
   },
   deploymentExpiration: {},
-  directoryListing: false,
+  directoryListing: true,
   id: "<id>",
+  latestDeployments: [
+    {
+      id: "<id>",
+      createdAt: 9061.97,
+      createdIn: "<value>",
+      creator: {
+        email: "Margret_Volkman@gmail.com",
+        uid: "<id>",
+        username: "Skye_Bartell",
+      },
+      deploymentHostname: "<value>",
+      name: "<value>",
+      plan: "enterprise",
+      previewCommentsEnabled: false,
+      private: true,
+      readyState: "QUEUED",
+      type: "LAMBDAS",
+      url: "https://lustrous-publication.net",
+      userId: "<id>",
+    },
+  ],
   name: "<value>",
-  nodeVersion: "16.x",
+  nodeVersion: "22.x",
   resourceConfig: {
-    functionDefaultRegions: [
-      "<value 1>",
-    ],
+    functionDefaultRegions: [],
   },
   rollingRelease: {
     target: "production",
@@ -45,9 +59,28 @@ let value: UpdateProjectResponseBody = {
     canaryResponseHeader: false,
   },
   defaultResourceConfig: {
-    functionDefaultRegions: [
-      "<value 1>",
-    ],
+    functionDefaultRegions: [],
+  },
+  targets: {
+    "key": {
+      id: "<id>",
+      createdAt: 6222.29,
+      createdIn: "<value>",
+      creator: {
+        email: "Josiah94@hotmail.com",
+        uid: "<id>",
+        username: "Junior.Strosin66",
+      },
+      deploymentHostname: "<value>",
+      name: "<value>",
+      plan: "enterprise",
+      previewCommentsEnabled: false,
+      private: true,
+      readyState: "BUILDING",
+      type: "LAMBDAS",
+      url: "https://far-flung-accompanist.info",
+      userId: "<id>",
+    },
   },
 };
 ```
@@ -57,6 +90,7 @@ let value: UpdateProjectResponseBody = {
 | Field                                                                                                                                                                                                                                                                                                                                                 | Type                                                                                                                                                                                                                                                                                                                                                  | Required                                                                                                                                                                                                                                                                                                                                              | Description                                                                                                                                                                                                                                                                                                                                           |
 | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `accountId`                                                                                                                                                                                                                                                                                                                                           | *string*                                                                                                                                                                                                                                                                                                                                              | :heavy_check_mark:                                                                                                                                                                                                                                                                                                                                    | N/A                                                                                                                                                                                                                                                                                                                                                   |
+| `alias`                                                                                                                                                                                                                                                                                                                                               | [models.UpdateProjectAlias](../models/updateprojectalias.md)[]                                                                                                                                                                                                                                                                                        | :heavy_check_mark:                                                                                                                                                                                                                                                                                                                                    | N/A                                                                                                                                                                                                                                                                                                                                                   |
 | `analytics`                                                                                                                                                                                                                                                                                                                                           | [models.UpdateProjectAnalytics](../models/updateprojectanalytics.md)                                                                                                                                                                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                                                                                                                                                                                                    | N/A                                                                                                                                                                                                                                                                                                                                                   |
 | `appliedCve55182Migration`                                                                                                                                                                                                                                                                                                                            | *boolean*                                                                                                                                                                                                                                                                                                                                             | :heavy_minus_sign:                                                                                                                                                                                                                                                                                                                                    | N/A                                                                                                                                                                                                                                                                                                                                                   |
 | `speedInsights`                                                                                                                                                                                                                                                                                                                                       | [models.UpdateProjectSpeedInsights](../models/updateprojectspeedinsights.md)                                                                                                                                                                                                                                                                          | :heavy_minus_sign:                                                                                                                                                                                                                                                                                                                                    | N/A                                                                                                                                                                                                                                                                                                                                                   |

@@ -90,59 +90,23 @@ export type BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody
   };
 
 /**
- * Resources that were changed as part of this intent. Tracks all logical changes including the primary change and any side effects.
+ * When the subscription change should take effect.
  */
-export type BuyCreditsChangedResourcesBillingResponse4 = {
-  /**
-   * Resource IDs that were added.
-   */
-  addedResourceIds: Array<string>;
-  /**
-   * The alias of the product that was changed.
-   */
-  productAlias: string;
-  /**
-   * The ID of the product that was changed.
-   */
-  productId: string;
-  /**
-   * The resulting quantity after this change.
-   */
-  quantity: number;
-  /**
-   * Resource IDs that were removed.
-   */
-  removedResourceIds: Array<string>;
-  type: "adjust_plan_item_quantity";
-};
+export const BuyCreditsConfigurationBillingEffectiveBehavior = {
+  EndOfTerm: "end_of_term",
+  Immediate: "immediate",
+} as const;
+/**
+ * When the subscription change should take effect.
+ */
+export type BuyCreditsConfigurationBillingEffectiveBehavior = ClosedEnum<
+  typeof BuyCreditsConfigurationBillingEffectiveBehavior
+>;
 
 /**
  * Resources that were changed as part of this intent. Tracks all logical changes including the primary change and any side effects.
  */
-export type BuyCreditsChangedResourcesBillingResponse3 = {
-  /**
-   * The alias of the product that was changed.
-   */
-  productAlias: string;
-  /**
-   * The ID of the product that was changed.
-   */
-  productId: string;
-  /**
-   * The resulting quantity after this change.
-   */
-  quantity: number;
-  /**
-   * Resource IDs that were removed.
-   */
-  resourceIds: Array<string>;
-  type: "decrease_plan_item_quantity";
-};
-
-/**
- * Resources that were changed as part of this intent. Tracks all logical changes including the primary change and any side effects.
- */
-export type BuyCreditsChangedResourcesBillingResponse2 = {
+export type BuyCreditsConfigurationBillingChangedResources = {
   /**
    * The alias of the product that was changed.
    */
@@ -158,44 +122,30 @@ export type BuyCreditsChangedResourcesBillingResponse2 = {
   /**
    * Resource IDs that were added.
    */
-  resourceIds: Array<string>;
-  type: "increase_plan_item_quantity";
-};
-
-/**
- * Resources that were changed as part of this intent. Tracks all logical changes including the primary change and any side effects.
- */
-export type BuyCreditsChangedResourcesBillingResponse1 = {
+  addedResourceIds?: Array<string> | undefined;
   /**
-   * The alias of the product that was changed.
+   * When this resource change should take effect for downstream consumers.
    */
-  productAlias: string;
+  effectiveAt?: string | undefined;
   /**
-   * The ID of the product that was changed.
+   * Resource IDs that were removed.
    */
-  productId: string;
+  removedResourceIds?: Array<string> | undefined;
   /**
-   * The resulting quantity after this change.
-   */
-  quantity: number;
-  type: "set_plan_item_quantity";
-  /**
-   * The full set of resource IDs after the set operation.
+   * The full set of resource IDs after the change.
    */
   resourceIds?: Array<string> | undefined;
 };
-
-export type BuyCreditsConfigurationBillingChangedResources =
-  | BuyCreditsChangedResourcesBillingResponse1
-  | BuyCreditsChangedResourcesBillingResponse2
-  | BuyCreditsChangedResourcesBillingResponse3
-  | BuyCreditsChangedResourcesBillingResponse4;
 
 /**
  * Output returned after configuring an OrbSubscriptionIntent.
  */
 export type BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBodyOutput =
   {
+    /**
+     * When the subscription change should take effect.
+     */
+    effectiveBehavior: BuyCreditsConfigurationBillingEffectiveBehavior;
     /**
      * The Orb price ID for the subscription item being modified.
      */
@@ -208,12 +158,7 @@ export type BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody
      * Resources that were changed as part of this intent. Tracks all logical changes including the primary change and any side effects.
      */
     changedResources?:
-      | Array<
-        | BuyCreditsChangedResourcesBillingResponse1
-        | BuyCreditsChangedResourcesBillingResponse2
-        | BuyCreditsChangedResourcesBillingResponse3
-        | BuyCreditsChangedResourcesBillingResponse4
-      >
+      | Array<BuyCreditsConfigurationBillingChangedResources>
       | undefined;
     /**
      * Optional metadata associated with the intent to update the Orb subscription with.
@@ -258,59 +203,23 @@ export type BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody
   };
 
 /**
- * Resources that were changed as part of this intent. Tracks all logical changes including the primary change and any side effects.
+ * When the subscription change should take effect.
  */
-export type BuyCreditsChangedResourcesBilling4 = {
-  /**
-   * Resource IDs that were added.
-   */
-  addedResourceIds: Array<string>;
-  /**
-   * The alias of the product that was changed.
-   */
-  productAlias: string;
-  /**
-   * The ID of the product that was changed.
-   */
-  productId: string;
-  /**
-   * The resulting quantity after this change.
-   */
-  quantity: number;
-  /**
-   * Resource IDs that were removed.
-   */
-  removedResourceIds: Array<string>;
-  type: "adjust_plan_item_quantity";
-};
+export const BuyCreditsConfigurationEffectiveBehavior = {
+  EndOfTerm: "end_of_term",
+  Immediate: "immediate",
+} as const;
+/**
+ * When the subscription change should take effect.
+ */
+export type BuyCreditsConfigurationEffectiveBehavior = ClosedEnum<
+  typeof BuyCreditsConfigurationEffectiveBehavior
+>;
 
 /**
  * Resources that were changed as part of this intent. Tracks all logical changes including the primary change and any side effects.
  */
-export type BuyCreditsChangedResourcesBilling3 = {
-  /**
-   * The alias of the product that was changed.
-   */
-  productAlias: string;
-  /**
-   * The ID of the product that was changed.
-   */
-  productId: string;
-  /**
-   * The resulting quantity after this change.
-   */
-  quantity: number;
-  /**
-   * Resource IDs that were removed.
-   */
-  resourceIds: Array<string>;
-  type: "decrease_plan_item_quantity";
-};
-
-/**
- * Resources that were changed as part of this intent. Tracks all logical changes including the primary change and any side effects.
- */
-export type BuyCreditsChangedResourcesBilling2 = {
+export type BuyCreditsConfigurationChangedResources = {
   /**
    * The alias of the product that was changed.
    */
@@ -326,43 +235,29 @@ export type BuyCreditsChangedResourcesBilling2 = {
   /**
    * Resource IDs that were added.
    */
-  resourceIds: Array<string>;
-  type: "increase_plan_item_quantity";
-};
-
-/**
- * Resources that were changed as part of this intent. Tracks all logical changes including the primary change and any side effects.
- */
-export type BuyCreditsChangedResourcesBilling1 = {
+  addedResourceIds?: Array<string> | undefined;
   /**
-   * The alias of the product that was changed.
+   * When this resource change should take effect for downstream consumers.
    */
-  productAlias: string;
+  effectiveAt?: string | undefined;
   /**
-   * The ID of the product that was changed.
+   * Resource IDs that were removed.
    */
-  productId: string;
+  removedResourceIds?: Array<string> | undefined;
   /**
-   * The resulting quantity after this change.
-   */
-  quantity: number;
-  type: "set_plan_item_quantity";
-  /**
-   * The full set of resource IDs after the set operation.
+   * The full set of resource IDs after the change.
    */
   resourceIds?: Array<string> | undefined;
 };
-
-export type BuyCreditsConfigurationChangedResources =
-  | BuyCreditsChangedResourcesBilling1
-  | BuyCreditsChangedResourcesBilling2
-  | BuyCreditsChangedResourcesBilling3
-  | BuyCreditsChangedResourcesBilling4;
 
 /**
  * Output returned after configuring an OrbSubscriptionIntent.
  */
 export type BuyCreditsConfigurationBillingResponse200ApplicationJSONOutput = {
+  /**
+   * When the subscription change should take effect.
+   */
+  effectiveBehavior: BuyCreditsConfigurationEffectiveBehavior;
   /**
    * The Orb price ID for the subscription item being modified.
    */
@@ -374,14 +269,7 @@ export type BuyCreditsConfigurationBillingResponse200ApplicationJSONOutput = {
   /**
    * Resources that were changed as part of this intent. Tracks all logical changes including the primary change and any side effects.
    */
-  changedResources?:
-    | Array<
-      | BuyCreditsChangedResourcesBilling1
-      | BuyCreditsChangedResourcesBilling2
-      | BuyCreditsChangedResourcesBilling3
-      | BuyCreditsChangedResourcesBilling4
-    >
-    | undefined;
+  changedResources?: Array<BuyCreditsConfigurationChangedResources> | undefined;
   /**
    * Optional metadata associated with the intent to update the Orb subscription with.
    */
@@ -424,59 +312,23 @@ export type BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody
   };
 
 /**
- * Resources that were changed as part of this intent. Tracks all logical changes including the primary change and any side effects.
+ * When the subscription change should take effect.
  */
-export type BuyCreditsChangedResources4 = {
-  /**
-   * Resource IDs that were added.
-   */
-  addedResourceIds: Array<string>;
-  /**
-   * The alias of the product that was changed.
-   */
-  productAlias: string;
-  /**
-   * The ID of the product that was changed.
-   */
-  productId: string;
-  /**
-   * The resulting quantity after this change.
-   */
-  quantity: number;
-  /**
-   * Resource IDs that were removed.
-   */
-  removedResourceIds: Array<string>;
-  type: "adjust_plan_item_quantity";
-};
+export const ConfigurationEffectiveBehavior = {
+  EndOfTerm: "end_of_term",
+  Immediate: "immediate",
+} as const;
+/**
+ * When the subscription change should take effect.
+ */
+export type ConfigurationEffectiveBehavior = ClosedEnum<
+  typeof ConfigurationEffectiveBehavior
+>;
 
 /**
  * Resources that were changed as part of this intent. Tracks all logical changes including the primary change and any side effects.
  */
-export type BuyCreditsChangedResources3 = {
-  /**
-   * The alias of the product that was changed.
-   */
-  productAlias: string;
-  /**
-   * The ID of the product that was changed.
-   */
-  productId: string;
-  /**
-   * The resulting quantity after this change.
-   */
-  quantity: number;
-  /**
-   * Resource IDs that were removed.
-   */
-  resourceIds: Array<string>;
-  type: "decrease_plan_item_quantity";
-};
-
-/**
- * Resources that were changed as part of this intent. Tracks all logical changes including the primary change and any side effects.
- */
-export type BuyCreditsChangedResources2 = {
+export type ConfigurationChangedResources = {
   /**
    * The alias of the product that was changed.
    */
@@ -492,43 +344,29 @@ export type BuyCreditsChangedResources2 = {
   /**
    * Resource IDs that were added.
    */
-  resourceIds: Array<string>;
-  type: "increase_plan_item_quantity";
-};
-
-/**
- * Resources that were changed as part of this intent. Tracks all logical changes including the primary change and any side effects.
- */
-export type BuyCreditsChangedResources1 = {
+  addedResourceIds?: Array<string> | undefined;
   /**
-   * The alias of the product that was changed.
+   * When this resource change should take effect for downstream consumers.
    */
-  productAlias: string;
+  effectiveAt?: string | undefined;
   /**
-   * The ID of the product that was changed.
+   * Resource IDs that were removed.
    */
-  productId: string;
+  removedResourceIds?: Array<string> | undefined;
   /**
-   * The resulting quantity after this change.
-   */
-  quantity: number;
-  type: "set_plan_item_quantity";
-  /**
-   * The full set of resource IDs after the set operation.
+   * The full set of resource IDs after the change.
    */
   resourceIds?: Array<string> | undefined;
 };
-
-export type ConfigurationChangedResources =
-  | BuyCreditsChangedResources1
-  | BuyCreditsChangedResources2
-  | BuyCreditsChangedResources3
-  | BuyCreditsChangedResources4;
 
 /**
  * Output returned after configuring an OrbSubscriptionIntent.
  */
 export type BuyCreditsConfigurationBillingResponse200Output = {
+  /**
+   * When the subscription change should take effect.
+   */
+  effectiveBehavior: ConfigurationEffectiveBehavior;
   /**
    * The Orb price ID for the subscription item being modified.
    */
@@ -540,14 +378,7 @@ export type BuyCreditsConfigurationBillingResponse200Output = {
   /**
    * Resources that were changed as part of this intent. Tracks all logical changes including the primary change and any side effects.
    */
-  changedResources?:
-    | Array<
-      | BuyCreditsChangedResources1
-      | BuyCreditsChangedResources2
-      | BuyCreditsChangedResources3
-      | BuyCreditsChangedResources4
-    >
-    | undefined;
+  changedResources?: Array<ConfigurationChangedResources> | undefined;
   /**
    * Optional metadata associated with the intent to update the Orb subscription with.
    */
@@ -593,59 +424,21 @@ export type BuyCreditsConfigurationBillingResponse200ApplicationJSONOptions = {
 };
 
 /**
- * Resources that were changed as part of this intent. Tracks all logical changes including the primary change and any side effects.
+ * When the subscription change should take effect.
  */
-export type ChangedResources4 = {
-  /**
-   * Resource IDs that were added.
-   */
-  addedResourceIds: Array<string>;
-  /**
-   * The alias of the product that was changed.
-   */
-  productAlias: string;
-  /**
-   * The ID of the product that was changed.
-   */
-  productId: string;
-  /**
-   * The resulting quantity after this change.
-   */
-  quantity: number;
-  /**
-   * Resource IDs that were removed.
-   */
-  removedResourceIds: Array<string>;
-  type: "adjust_plan_item_quantity";
-};
+export const EffectiveBehavior = {
+  EndOfTerm: "end_of_term",
+  Immediate: "immediate",
+} as const;
+/**
+ * When the subscription change should take effect.
+ */
+export type EffectiveBehavior = ClosedEnum<typeof EffectiveBehavior>;
 
 /**
  * Resources that were changed as part of this intent. Tracks all logical changes including the primary change and any side effects.
  */
-export type ChangedResources3 = {
-  /**
-   * The alias of the product that was changed.
-   */
-  productAlias: string;
-  /**
-   * The ID of the product that was changed.
-   */
-  productId: string;
-  /**
-   * The resulting quantity after this change.
-   */
-  quantity: number;
-  /**
-   * Resource IDs that were removed.
-   */
-  resourceIds: Array<string>;
-  type: "decrease_plan_item_quantity";
-};
-
-/**
- * Resources that were changed as part of this intent. Tracks all logical changes including the primary change and any side effects.
- */
-export type ChangedResources2 = {
+export type ChangedResources = {
   /**
    * The alias of the product that was changed.
    */
@@ -661,43 +454,29 @@ export type ChangedResources2 = {
   /**
    * Resource IDs that were added.
    */
-  resourceIds: Array<string>;
-  type: "increase_plan_item_quantity";
-};
-
-/**
- * Resources that were changed as part of this intent. Tracks all logical changes including the primary change and any side effects.
- */
-export type ChangedResources1 = {
+  addedResourceIds?: Array<string> | undefined;
   /**
-   * The alias of the product that was changed.
+   * When this resource change should take effect for downstream consumers.
    */
-  productAlias: string;
+  effectiveAt?: string | undefined;
   /**
-   * The ID of the product that was changed.
+   * Resource IDs that were removed.
    */
-  productId: string;
+  removedResourceIds?: Array<string> | undefined;
   /**
-   * The resulting quantity after this change.
-   */
-  quantity: number;
-  type: "set_plan_item_quantity";
-  /**
-   * The full set of resource IDs after the set operation.
+   * The full set of resource IDs after the change.
    */
   resourceIds?: Array<string> | undefined;
 };
-
-export type ChangedResources =
-  | ChangedResources1
-  | ChangedResources2
-  | ChangedResources3
-  | ChangedResources4;
 
 /**
  * Output returned after configuring an OrbSubscriptionIntent.
  */
 export type BuyCreditsConfigurationBillingResponseOutput = {
+  /**
+   * When the subscription change should take effect.
+   */
+  effectiveBehavior: EffectiveBehavior;
   /**
    * The Orb price ID for the subscription item being modified.
    */
@@ -709,14 +488,7 @@ export type BuyCreditsConfigurationBillingResponseOutput = {
   /**
    * Resources that were changed as part of this intent. Tracks all logical changes including the primary change and any side effects.
    */
-  changedResources?:
-    | Array<
-      | ChangedResources1
-      | ChangedResources2
-      | ChangedResources3
-      | ChangedResources4
-    >
-    | undefined;
+  changedResources?: Array<ChangedResources> | undefined;
   /**
    * Optional metadata associated with the intent to update the Orb subscription with.
    */
@@ -1515,113 +1287,9 @@ export function buyCreditsConfigurationBillingResponse200ApplicationJSONResponse
 }
 
 /** @internal */
-export const BuyCreditsChangedResourcesBillingResponse4$inboundSchema:
-  z.ZodType<BuyCreditsChangedResourcesBillingResponse4, z.ZodTypeDef, unknown> =
-    z.object({
-      addedResourceIds: z.array(types.string()),
-      productAlias: types.string(),
-      productId: types.string(),
-      quantity: types.number(),
-      removedResourceIds: z.array(types.string()),
-      type: types.literal("adjust_plan_item_quantity"),
-    });
-
-export function buyCreditsChangedResourcesBillingResponse4FromJSON(
-  jsonString: string,
-): SafeParseResult<
-  BuyCreditsChangedResourcesBillingResponse4,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      BuyCreditsChangedResourcesBillingResponse4$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'BuyCreditsChangedResourcesBillingResponse4' from JSON`,
-  );
-}
-
-/** @internal */
-export const BuyCreditsChangedResourcesBillingResponse3$inboundSchema:
-  z.ZodType<BuyCreditsChangedResourcesBillingResponse3, z.ZodTypeDef, unknown> =
-    z.object({
-      productAlias: types.string(),
-      productId: types.string(),
-      quantity: types.number(),
-      resourceIds: z.array(types.string()),
-      type: types.literal("decrease_plan_item_quantity"),
-    });
-
-export function buyCreditsChangedResourcesBillingResponse3FromJSON(
-  jsonString: string,
-): SafeParseResult<
-  BuyCreditsChangedResourcesBillingResponse3,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      BuyCreditsChangedResourcesBillingResponse3$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'BuyCreditsChangedResourcesBillingResponse3' from JSON`,
-  );
-}
-
-/** @internal */
-export const BuyCreditsChangedResourcesBillingResponse2$inboundSchema:
-  z.ZodType<BuyCreditsChangedResourcesBillingResponse2, z.ZodTypeDef, unknown> =
-    z.object({
-      productAlias: types.string(),
-      productId: types.string(),
-      quantity: types.number(),
-      resourceIds: z.array(types.string()),
-      type: types.literal("increase_plan_item_quantity"),
-    });
-
-export function buyCreditsChangedResourcesBillingResponse2FromJSON(
-  jsonString: string,
-): SafeParseResult<
-  BuyCreditsChangedResourcesBillingResponse2,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      BuyCreditsChangedResourcesBillingResponse2$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'BuyCreditsChangedResourcesBillingResponse2' from JSON`,
-  );
-}
-
-/** @internal */
-export const BuyCreditsChangedResourcesBillingResponse1$inboundSchema:
-  z.ZodType<BuyCreditsChangedResourcesBillingResponse1, z.ZodTypeDef, unknown> =
-    z.object({
-      productAlias: types.string(),
-      productId: types.string(),
-      quantity: types.number(),
-      type: types.literal("set_plan_item_quantity"),
-      resourceIds: types.optional(z.array(types.string())),
-    });
-
-export function buyCreditsChangedResourcesBillingResponse1FromJSON(
-  jsonString: string,
-): SafeParseResult<
-  BuyCreditsChangedResourcesBillingResponse1,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      BuyCreditsChangedResourcesBillingResponse1$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'BuyCreditsChangedResourcesBillingResponse1' from JSON`,
-  );
-}
+export const BuyCreditsConfigurationBillingEffectiveBehavior$inboundSchema:
+  z.ZodNativeEnum<typeof BuyCreditsConfigurationBillingEffectiveBehavior> = z
+    .nativeEnum(BuyCreditsConfigurationBillingEffectiveBehavior);
 
 /** @internal */
 export const BuyCreditsConfigurationBillingChangedResources$inboundSchema:
@@ -1629,12 +1297,15 @@ export const BuyCreditsConfigurationBillingChangedResources$inboundSchema:
     BuyCreditsConfigurationBillingChangedResources,
     z.ZodTypeDef,
     unknown
-  > = z.union([
-    z.lazy(() => BuyCreditsChangedResourcesBillingResponse1$inboundSchema),
-    z.lazy(() => BuyCreditsChangedResourcesBillingResponse2$inboundSchema),
-    z.lazy(() => BuyCreditsChangedResourcesBillingResponse3$inboundSchema),
-    z.lazy(() => BuyCreditsChangedResourcesBillingResponse4$inboundSchema),
-  ]);
+  > = z.object({
+    productAlias: types.string(),
+    productId: types.string(),
+    quantity: types.number(),
+    addedResourceIds: types.optional(z.array(types.string())),
+    effectiveAt: types.optional(types.string()),
+    removedResourceIds: types.optional(z.array(types.string())),
+    resourceIds: types.optional(z.array(types.string())),
+  });
 
 export function buyCreditsConfigurationBillingChangedResourcesFromJSON(
   jsonString: string,
@@ -1659,17 +1330,14 @@ export const BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBod
     z.ZodTypeDef,
     unknown
   > = z.object({
+    effectiveBehavior:
+      BuyCreditsConfigurationBillingEffectiveBehavior$inboundSchema,
     orbPriceId: types.string(),
     productId: types.string(),
     changedResources: types.optional(
-      z.array(z.union([
-        z.lazy(() => BuyCreditsChangedResourcesBillingResponse1$inboundSchema),
-        z.lazy(() =>
-          BuyCreditsChangedResourcesBillingResponse2$inboundSchema
-        ),
-        z.lazy(() => BuyCreditsChangedResourcesBillingResponse3$inboundSchema),
-        z.lazy(() => BuyCreditsChangedResourcesBillingResponse4$inboundSchema),
-      ])),
+      z.array(z.lazy(() =>
+        BuyCreditsConfigurationBillingChangedResources$inboundSchema
+      )),
     ),
     metadata: types.optional(z.record(types.string())),
     pendingSubscriptionChangeId: types.optional(types.string()),
@@ -1742,113 +1410,24 @@ export function buyCreditsConfigurationBillingResponse200ApplicationJSONResponse
 }
 
 /** @internal */
-export const BuyCreditsChangedResourcesBilling4$inboundSchema: z.ZodType<
-  BuyCreditsChangedResourcesBilling4,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  addedResourceIds: z.array(types.string()),
-  productAlias: types.string(),
-  productId: types.string(),
-  quantity: types.number(),
-  removedResourceIds: z.array(types.string()),
-  type: types.literal("adjust_plan_item_quantity"),
-});
-
-export function buyCreditsChangedResourcesBilling4FromJSON(
-  jsonString: string,
-): SafeParseResult<BuyCreditsChangedResourcesBilling4, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      BuyCreditsChangedResourcesBilling4$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'BuyCreditsChangedResourcesBilling4' from JSON`,
-  );
-}
-
-/** @internal */
-export const BuyCreditsChangedResourcesBilling3$inboundSchema: z.ZodType<
-  BuyCreditsChangedResourcesBilling3,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  productAlias: types.string(),
-  productId: types.string(),
-  quantity: types.number(),
-  resourceIds: z.array(types.string()),
-  type: types.literal("decrease_plan_item_quantity"),
-});
-
-export function buyCreditsChangedResourcesBilling3FromJSON(
-  jsonString: string,
-): SafeParseResult<BuyCreditsChangedResourcesBilling3, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      BuyCreditsChangedResourcesBilling3$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'BuyCreditsChangedResourcesBilling3' from JSON`,
-  );
-}
-
-/** @internal */
-export const BuyCreditsChangedResourcesBilling2$inboundSchema: z.ZodType<
-  BuyCreditsChangedResourcesBilling2,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  productAlias: types.string(),
-  productId: types.string(),
-  quantity: types.number(),
-  resourceIds: z.array(types.string()),
-  type: types.literal("increase_plan_item_quantity"),
-});
-
-export function buyCreditsChangedResourcesBilling2FromJSON(
-  jsonString: string,
-): SafeParseResult<BuyCreditsChangedResourcesBilling2, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      BuyCreditsChangedResourcesBilling2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'BuyCreditsChangedResourcesBilling2' from JSON`,
-  );
-}
-
-/** @internal */
-export const BuyCreditsChangedResourcesBilling1$inboundSchema: z.ZodType<
-  BuyCreditsChangedResourcesBilling1,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  productAlias: types.string(),
-  productId: types.string(),
-  quantity: types.number(),
-  type: types.literal("set_plan_item_quantity"),
-  resourceIds: types.optional(z.array(types.string())),
-});
-
-export function buyCreditsChangedResourcesBilling1FromJSON(
-  jsonString: string,
-): SafeParseResult<BuyCreditsChangedResourcesBilling1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      BuyCreditsChangedResourcesBilling1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'BuyCreditsChangedResourcesBilling1' from JSON`,
-  );
-}
+export const BuyCreditsConfigurationEffectiveBehavior$inboundSchema:
+  z.ZodNativeEnum<typeof BuyCreditsConfigurationEffectiveBehavior> = z
+    .nativeEnum(BuyCreditsConfigurationEffectiveBehavior);
 
 /** @internal */
 export const BuyCreditsConfigurationChangedResources$inboundSchema: z.ZodType<
   BuyCreditsConfigurationChangedResources,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => BuyCreditsChangedResourcesBilling1$inboundSchema),
-  z.lazy(() => BuyCreditsChangedResourcesBilling2$inboundSchema),
-  z.lazy(() => BuyCreditsChangedResourcesBilling3$inboundSchema),
-  z.lazy(() => BuyCreditsChangedResourcesBilling4$inboundSchema),
-]);
+> = z.object({
+  productAlias: types.string(),
+  productId: types.string(),
+  quantity: types.number(),
+  addedResourceIds: types.optional(z.array(types.string())),
+  effectiveAt: types.optional(types.string()),
+  removedResourceIds: types.optional(z.array(types.string())),
+  resourceIds: types.optional(z.array(types.string())),
+});
 
 export function buyCreditsConfigurationChangedResourcesFromJSON(
   jsonString: string,
@@ -1873,17 +1452,13 @@ export const BuyCreditsConfigurationBillingResponse200ApplicationJSONOutput$inbo
     z.ZodTypeDef,
     unknown
   > = z.object({
+    effectiveBehavior: BuyCreditsConfigurationEffectiveBehavior$inboundSchema,
     orbPriceId: types.string(),
     productId: types.string(),
     changedResources: types.optional(
-      z.array(z.union([
-        z.lazy(() => BuyCreditsChangedResourcesBilling1$inboundSchema),
-        z.lazy(() =>
-          BuyCreditsChangedResourcesBilling2$inboundSchema
-        ),
-        z.lazy(() => BuyCreditsChangedResourcesBilling3$inboundSchema),
-        z.lazy(() => BuyCreditsChangedResourcesBilling4$inboundSchema),
-      ])),
+      z.array(
+        z.lazy(() => BuyCreditsConfigurationChangedResources$inboundSchema),
+      ),
     ),
     metadata: types.optional(z.record(types.string())),
     pendingSubscriptionChangeId: types.optional(types.string()),
@@ -1956,109 +1531,24 @@ export function buyCreditsConfigurationBillingResponse200ApplicationJSONResponse
 }
 
 /** @internal */
-export const BuyCreditsChangedResources4$inboundSchema: z.ZodType<
-  BuyCreditsChangedResources4,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  addedResourceIds: z.array(types.string()),
-  productAlias: types.string(),
-  productId: types.string(),
-  quantity: types.number(),
-  removedResourceIds: z.array(types.string()),
-  type: types.literal("adjust_plan_item_quantity"),
-});
-
-export function buyCreditsChangedResources4FromJSON(
-  jsonString: string,
-): SafeParseResult<BuyCreditsChangedResources4, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => BuyCreditsChangedResources4$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'BuyCreditsChangedResources4' from JSON`,
-  );
-}
-
-/** @internal */
-export const BuyCreditsChangedResources3$inboundSchema: z.ZodType<
-  BuyCreditsChangedResources3,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  productAlias: types.string(),
-  productId: types.string(),
-  quantity: types.number(),
-  resourceIds: z.array(types.string()),
-  type: types.literal("decrease_plan_item_quantity"),
-});
-
-export function buyCreditsChangedResources3FromJSON(
-  jsonString: string,
-): SafeParseResult<BuyCreditsChangedResources3, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => BuyCreditsChangedResources3$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'BuyCreditsChangedResources3' from JSON`,
-  );
-}
-
-/** @internal */
-export const BuyCreditsChangedResources2$inboundSchema: z.ZodType<
-  BuyCreditsChangedResources2,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  productAlias: types.string(),
-  productId: types.string(),
-  quantity: types.number(),
-  resourceIds: z.array(types.string()),
-  type: types.literal("increase_plan_item_quantity"),
-});
-
-export function buyCreditsChangedResources2FromJSON(
-  jsonString: string,
-): SafeParseResult<BuyCreditsChangedResources2, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => BuyCreditsChangedResources2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'BuyCreditsChangedResources2' from JSON`,
-  );
-}
-
-/** @internal */
-export const BuyCreditsChangedResources1$inboundSchema: z.ZodType<
-  BuyCreditsChangedResources1,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  productAlias: types.string(),
-  productId: types.string(),
-  quantity: types.number(),
-  type: types.literal("set_plan_item_quantity"),
-  resourceIds: types.optional(z.array(types.string())),
-});
-
-export function buyCreditsChangedResources1FromJSON(
-  jsonString: string,
-): SafeParseResult<BuyCreditsChangedResources1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => BuyCreditsChangedResources1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'BuyCreditsChangedResources1' from JSON`,
-  );
-}
+export const ConfigurationEffectiveBehavior$inboundSchema: z.ZodNativeEnum<
+  typeof ConfigurationEffectiveBehavior
+> = z.nativeEnum(ConfigurationEffectiveBehavior);
 
 /** @internal */
 export const ConfigurationChangedResources$inboundSchema: z.ZodType<
   ConfigurationChangedResources,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => BuyCreditsChangedResources1$inboundSchema),
-  z.lazy(() => BuyCreditsChangedResources2$inboundSchema),
-  z.lazy(() => BuyCreditsChangedResources3$inboundSchema),
-  z.lazy(() => BuyCreditsChangedResources4$inboundSchema),
-]);
+> = z.object({
+  productAlias: types.string(),
+  productId: types.string(),
+  quantity: types.number(),
+  addedResourceIds: types.optional(z.array(types.string())),
+  effectiveAt: types.optional(types.string()),
+  removedResourceIds: types.optional(z.array(types.string())),
+  resourceIds: types.optional(z.array(types.string())),
+});
 
 export function configurationChangedResourcesFromJSON(
   jsonString: string,
@@ -2077,17 +1567,11 @@ export const BuyCreditsConfigurationBillingResponse200Output$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.object({
+    effectiveBehavior: ConfigurationEffectiveBehavior$inboundSchema,
     orbPriceId: types.string(),
     productId: types.string(),
     changedResources: types.optional(
-      z.array(z.union([
-        z.lazy(() => BuyCreditsChangedResources1$inboundSchema),
-        z.lazy(() =>
-          BuyCreditsChangedResources2$inboundSchema
-        ),
-        z.lazy(() => BuyCreditsChangedResources3$inboundSchema),
-        z.lazy(() => BuyCreditsChangedResources4$inboundSchema),
-      ])),
+      z.array(z.lazy(() => ConfigurationChangedResources$inboundSchema)),
     ),
     metadata: types.optional(z.record(types.string())),
     pendingSubscriptionChangeId: types.optional(types.string()),
@@ -2162,109 +1646,24 @@ export function buyCreditsConfigurationBillingResponse200ApplicationJSONOptionsF
 }
 
 /** @internal */
-export const ChangedResources4$inboundSchema: z.ZodType<
-  ChangedResources4,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  addedResourceIds: z.array(types.string()),
-  productAlias: types.string(),
-  productId: types.string(),
-  quantity: types.number(),
-  removedResourceIds: z.array(types.string()),
-  type: types.literal("adjust_plan_item_quantity"),
-});
-
-export function changedResources4FromJSON(
-  jsonString: string,
-): SafeParseResult<ChangedResources4, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ChangedResources4$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ChangedResources4' from JSON`,
-  );
-}
-
-/** @internal */
-export const ChangedResources3$inboundSchema: z.ZodType<
-  ChangedResources3,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  productAlias: types.string(),
-  productId: types.string(),
-  quantity: types.number(),
-  resourceIds: z.array(types.string()),
-  type: types.literal("decrease_plan_item_quantity"),
-});
-
-export function changedResources3FromJSON(
-  jsonString: string,
-): SafeParseResult<ChangedResources3, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ChangedResources3$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ChangedResources3' from JSON`,
-  );
-}
-
-/** @internal */
-export const ChangedResources2$inboundSchema: z.ZodType<
-  ChangedResources2,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  productAlias: types.string(),
-  productId: types.string(),
-  quantity: types.number(),
-  resourceIds: z.array(types.string()),
-  type: types.literal("increase_plan_item_quantity"),
-});
-
-export function changedResources2FromJSON(
-  jsonString: string,
-): SafeParseResult<ChangedResources2, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ChangedResources2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ChangedResources2' from JSON`,
-  );
-}
-
-/** @internal */
-export const ChangedResources1$inboundSchema: z.ZodType<
-  ChangedResources1,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  productAlias: types.string(),
-  productId: types.string(),
-  quantity: types.number(),
-  type: types.literal("set_plan_item_quantity"),
-  resourceIds: types.optional(z.array(types.string())),
-});
-
-export function changedResources1FromJSON(
-  jsonString: string,
-): SafeParseResult<ChangedResources1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ChangedResources1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ChangedResources1' from JSON`,
-  );
-}
+export const EffectiveBehavior$inboundSchema: z.ZodNativeEnum<
+  typeof EffectiveBehavior
+> = z.nativeEnum(EffectiveBehavior);
 
 /** @internal */
 export const ChangedResources$inboundSchema: z.ZodType<
   ChangedResources,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => ChangedResources1$inboundSchema),
-  z.lazy(() => ChangedResources2$inboundSchema),
-  z.lazy(() => ChangedResources3$inboundSchema),
-  z.lazy(() => ChangedResources4$inboundSchema),
-]);
+> = z.object({
+  productAlias: types.string(),
+  productId: types.string(),
+  quantity: types.number(),
+  addedResourceIds: types.optional(z.array(types.string())),
+  effectiveAt: types.optional(types.string()),
+  removedResourceIds: types.optional(z.array(types.string())),
+  resourceIds: types.optional(z.array(types.string())),
+});
 
 export function changedResourcesFromJSON(
   jsonString: string,
@@ -2283,17 +1682,11 @@ export const BuyCreditsConfigurationBillingResponseOutput$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.object({
+    effectiveBehavior: EffectiveBehavior$inboundSchema,
     orbPriceId: types.string(),
     productId: types.string(),
     changedResources: types.optional(
-      z.array(z.union([
-        z.lazy(() => ChangedResources1$inboundSchema),
-        z.lazy(() =>
-          ChangedResources2$inboundSchema
-        ),
-        z.lazy(() => ChangedResources3$inboundSchema),
-        z.lazy(() => ChangedResources4$inboundSchema),
-      ])),
+      z.array(z.lazy(() => ChangedResources$inboundSchema)),
     ),
     metadata: types.optional(z.record(types.string())),
     pendingSubscriptionChangeId: types.optional(types.string()),

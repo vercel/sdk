@@ -5,15 +5,12 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndSixtyTwo } from "@vercel/sdk/models/payloadteamroles.js";
+import { OneHundredAndSixtyTwo } from "@vercel/sdk/models/usereventpayload146role.js";
 
 let value: OneHundredAndSixtyTwo = {
   project: {
     id: "<id>",
     name: "<value>",
-  },
-  prev: {
-    project: {},
   },
   group: {
     id: "<id>",
@@ -28,5 +25,4 @@ let value: OneHundredAndSixtyTwo = {
 | Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
 | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
 | `project`                                                                    | [models.UserEventPayload162Project](../models/usereventpayload162project.md) | :heavy_check_mark:                                                           | N/A                                                                          |
-| `prev`                                                                       | [models.PayloadPrev](../models/payloadprev.md)                               | :heavy_check_mark:                                                           | N/A                                                                          |
-| `group`                                                                      | [models.PayloadGroup](../models/payloadgroup.md)                             | :heavy_check_mark:                                                           | N/A                                                                          |
+| `group`                                                                      | [models.Group](../models/group.md)                                           | :heavy_check_mark:                                                           | N/A                                                                          |

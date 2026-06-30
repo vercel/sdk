@@ -1145,7 +1145,7 @@ export type Active = {
   /**
    * Custom Ruleset
    */
-  crs: PutFirewallConfigCrs;
+  crs?: PutFirewallConfigCrs | undefined;
   rules: Array<PutFirewallConfigRules1 | PutFirewallConfigRules2>;
   ips: Array<PutFirewallConfigIps>;
   changes: Array<PutFirewallConfigChanges>;
@@ -3057,7 +3057,7 @@ export const Active$inboundSchema: z.ZodType<Active, z.ZodTypeDef, unknown> = z
     version: types.number(),
     updatedAt: types.string(),
     firewallEnabled: types.boolean(),
-    crs: z.lazy(() => PutFirewallConfigCrs$inboundSchema),
+    crs: types.optional(z.lazy(() => PutFirewallConfigCrs$inboundSchema)),
     rules: z.array(
       smartUnion([
         z.lazy(() => PutFirewallConfigRules1$inboundSchema),

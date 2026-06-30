@@ -15,6 +15,7 @@ let value: BuyCreditsConfiguration2 = {
     ],
   },
   output: {
+    effectiveBehavior: "immediate",
     orbPriceId: "<id>",
     productId: "<id>",
   },

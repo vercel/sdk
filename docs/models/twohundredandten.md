@@ -5,25 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndTen } from "@vercel/sdk/models/onehundredandeightythree.js";
+import { TwoHundredAndTen } from "@vercel/sdk/models/onehundredandeightyfive.js";
 
 let value: TwoHundredAndTen = {
   projectId: "<id>",
   projectName: "<value>",
-  customEnvironmentId: "<id>",
-  customEnvironmentSlug: "<value>",
-  previous: {},
-  next: {},
+  previewDeploymentsEnabled: false,
 };
 ```
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `projectId`                                                                    | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
-| `projectName`                                                                  | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
-| `customEnvironmentId`                                                          | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
-| `customEnvironmentSlug`                                                        | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
-| `previous`                                                                     | [models.UserEventPayload210Previous](../models/usereventpayload210previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
-| `next`                                                                         | [models.UserEventPayload210Next](../models/usereventpayload210next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
+| Field                       | Type                        | Required                    | Description                 |
+| --------------------------- | --------------------------- | --------------------------- | --------------------------- |
+| `projectId`                 | *string*                    | :heavy_check_mark:          | N/A                         |
+| `projectName`               | *string*                    | :heavy_check_mark:          | N/A                         |
+| `previewDeploymentsEnabled` | *boolean*                   | :heavy_check_mark:          | N/A                         |

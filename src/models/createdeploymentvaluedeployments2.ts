@@ -12,26 +12,26 @@ import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
- * Forces a new deployment even if there is a previous similar deployment
+ * Forces a new deployment even if there is a previous similar deployment. Set to `1` to bypass deployment deduplication and always trigger a fresh build.
  */
 export const ForceNew = {
   Zero: "0",
   One: "1",
 } as const;
 /**
- * Forces a new deployment even if there is a previous similar deployment
+ * Forces a new deployment even if there is a previous similar deployment. Set to `1` to bypass deployment deduplication and always trigger a fresh build.
  */
 export type ForceNew = ClosedEnum<typeof ForceNew>;
 
 /**
- * Allows to skip framework detection so the API would not fail to ask for confirmation
+ * Set to `1` to skip framework auto-detection and proceed without confirmation. By default, if Vercel detects a framework that differs from the project setting, the API returns a `400` asking you to confirm. Use this to suppress that check in automated pipelines.
  */
 export const SkipAutoDetectionConfirmation = {
   Zero: "0",
   One: "1",
 } as const;
 /**
- * Allows to skip framework detection so the API would not fail to ask for confirmation
+ * Set to `1` to skip framework auto-detection and proceed without confirmation. By default, if Vercel detects a framework that differs from the project setting, the API returns a `400` asking you to confirm. Use this to suppress that check in automated pipelines.
  */
 export type SkipAutoDetectionConfirmation = ClosedEnum<
   typeof SkipAutoDetectionConfirmation
@@ -422,15 +422,15 @@ export type ProjectSettings = {
 
 export type CreateDeploymentRequestBody = {
   /**
-   * Deploy to a custom environment, which will override the default environment
+   * The slug or ID of a custom environment to deploy to, overriding the default target environment. When omitted, the deployment targets the environment inferred from the branch (production or preview).
    */
   customEnvironmentSlugOrId?: string | undefined;
   /**
-   * An deployment id for an existing deployment to redeploy
+   * The ID of an existing deployment to redeploy. All project settings and environment variables are inherited from the original unless explicitly overridden in this request. The redeployment gets a new ID, URL, and build.
    */
   deploymentId?: string | undefined;
   /**
-   * A list of objects with the files to be deployed
+   * The files to include in the deployment. Each entry is either an inlined file (with `data` and `encoding`) or a reference to a previously uploaded file (with `sha` and `size`). Required for non-git deployments. Cannot be used together with `gitSource`.
    */
   files?: Array<InlinedFile | UploadedFile> | undefined;
   /**
@@ -482,11 +482,11 @@ export type CreateDeploymentRequestBody = {
 
 export type CreateDeploymentRequest = {
   /**
-   * Forces a new deployment even if there is a previous similar deployment
+   * Forces a new deployment even if there is a previous similar deployment. Set to `1` to bypass deployment deduplication and always trigger a fresh build.
    */
   forceNew?: ForceNew | undefined;
   /**
-   * Allows to skip framework detection so the API would not fail to ask for confirmation
+   * Set to `1` to skip framework auto-detection and proceed without confirmation. By default, if Vercel detects a framework that differs from the project setting, the API returns a `400` asking you to confirm. Use this to suppress that check in automated pipelines.
    */
   skipAutoDetectionConfirmation?: SkipAutoDetectionConfirmation | undefined;
   /**

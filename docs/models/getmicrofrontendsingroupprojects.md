@@ -7,10 +7,11 @@ import { GetMicrofrontendsInGroupProjects } from "@vercel/sdk/models/getmicrofro
 
 let value: GetMicrofrontendsInGroupProjects = {
   accountId: "<id>",
+  alias: [],
   crons: {
-    enabledAt: 2508.2,
-    disabledAt: 1126.47,
-    updatedAt: 5885.73,
+    enabledAt: 6579.37,
+    disabledAt: 5885.73,
+    updatedAt: 8689.44,
     deploymentId: "<id>",
     definitions: [
       {
@@ -21,12 +22,12 @@ let value: GetMicrofrontendsInGroupProjects = {
     ],
   },
   deploymentExpiration: {},
-  directoryListing: false,
+  directoryListing: true,
   id: "<id>",
   latestDeployments: [
     {
       id: "<id>",
-      createdAt: 768.45,
+      createdAt: 4124.63,
       createdIn: "<value>",
       creator: {
         email: "Salvador_OConner@yahoo.com",
@@ -35,45 +36,51 @@ let value: GetMicrofrontendsInGroupProjects = {
       },
       deploymentHostname: "<value>",
       name: "<value>",
-      plan: "hobby",
+      plan: "enterprise",
       previewCommentsEnabled: false,
-      private: true,
-      readyState: "ERROR",
+      private: false,
+      readyState: "INITIALIZING",
       type: "LAMBDAS",
-      url: "https://merry-scrap.org",
+      url: "https://squeaky-wombat.name",
       userId: "<id>",
     },
   ],
   name: "<value>",
   nodeVersion: "18.x",
   resourceConfig: {
+    functionDefaultRegions: [],
+  },
+  rollingRelease: {
+    target: "production",
+    stages: [
+      {
+        targetPercentage: 25,
+        requireApproval: false,
+        duration: 600,
+        linearShift: false,
+      },
+    ],
+    canaryResponseHeader: false,
+  },
+  defaultResourceConfig: {
     functionDefaultRegions: [
       "<value 1>",
-      "<value 2>",
     ],
-  },
-  rollingRelease: null,
-  defaultResourceConfig: {
-    functionDefaultRegions: [],
   },
   targets: {
     "key": {
       id: "<id>",
-      createdAt: 2384.3,
+      createdAt: 8305.25,
       createdIn: "<value>",
-      creator: {
-        email: "Alexander_Emmerich13@hotmail.com",
-        uid: "<id>",
-        username: "Modesta_Ortiz",
-      },
+      creator: null,
       deploymentHostname: "<value>",
       name: "<value>",
-      plan: "pro",
+      plan: "enterprise",
       previewCommentsEnabled: false,
       private: true,
-      readyState: "CANCELED",
+      readyState: "BLOCKED",
       type: "LAMBDAS",
-      url: "https://colorless-festival.biz/",
+      url: "https://extroverted-mythology.net/",
       userId: "<id>",
     },
   },
@@ -85,6 +92,7 @@ let value: GetMicrofrontendsInGroupProjects = {
 | Field                                                                                                                                                                                                                                                                                                                                                 | Type                                                                                                                                                                                                                                                                                                                                                  | Required                                                                                                                                                                                                                                                                                                                                              | Description                                                                                                                                                                                                                                                                                                                                           |
 | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `accountId`                                                                                                                                                                                                                                                                                                                                           | *string*                                                                                                                                                                                                                                                                                                                                              | :heavy_check_mark:                                                                                                                                                                                                                                                                                                                                    | N/A                                                                                                                                                                                                                                                                                                                                                   |
+| `alias`                                                                                                                                                                                                                                                                                                                                               | [models.GetMicrofrontendsInGroupAlias](../models/getmicrofrontendsingroupalias.md)[]                                                                                                                                                                                                                                                                  | :heavy_check_mark:                                                                                                                                                                                                                                                                                                                                    | N/A                                                                                                                                                                                                                                                                                                                                                   |
 | `analytics`                                                                                                                                                                                                                                                                                                                                           | [models.GetMicrofrontendsInGroupAnalytics](../models/getmicrofrontendsingroupanalytics.md)                                                                                                                                                                                                                                                            | :heavy_minus_sign:                                                                                                                                                                                                                                                                                                                                    | N/A                                                                                                                                                                                                                                                                                                                                                   |
 | `appliedCve55182Migration`                                                                                                                                                                                                                                                                                                                            | *boolean*                                                                                                                                                                                                                                                                                                                                             | :heavy_minus_sign:                                                                                                                                                                                                                                                                                                                                    | N/A                                                                                                                                                                                                                                                                                                                                                   |
 | `speedInsights`                                                                                                                                                                                                                                                                                                                                       | [models.GetMicrofrontendsInGroupSpeedInsights](../models/getmicrofrontendsingroupspeedinsights.md)                                                                                                                                                                                                                                                    | :heavy_minus_sign:                                                                                                                                                                                                                                                                                                                                    | N/A                                                                                                                                                                                                                                                                                                                                                   |

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyVercelRuleset } from "@vercel/sdk/models/getprojectshas1.js";
+import { ResponseBodyVercelRuleset } from "@vercel/sdk/models/getprojectsresponsebody.js";
 
 let value: ResponseBodyVercelRuleset = {
   active: true,

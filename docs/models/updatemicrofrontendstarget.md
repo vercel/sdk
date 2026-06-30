@@ -1,17 +1,15 @@
 # UpdateMicrofrontendsTarget
 
-
-## Supported Types
-
-### `models.UpdateMicrofrontendsTarget1[]`
+## Example Usage
 
 ```typescript
-const value: models.UpdateMicrofrontendsTarget1[] = [];
+import { UpdateMicrofrontendsTarget } from "@vercel/sdk/models/updatemicrofrontendsjobstatus.js";
+
+let value: UpdateMicrofrontendsTarget = "PREVIEW";
 ```
 
-### `models.UpdateMicrofrontendsTarget2`
+## Values
 
 ```typescript
-const value: models.UpdateMicrofrontendsTarget2 = "development";
+"PREVIEW" | "PRODUCTION" | "STAGING"
 ```
-

@@ -5,21 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndEighty } from "@vercel/sdk/models/payloadteamroles.js";
+import { OneHundredAndEighty } from "@vercel/sdk/models/usereventpayload146role.js";
 
 let value: OneHundredAndEighty = {
-  projectId: "<id>",
-  projectName: "<value>",
-  previous: {},
-  next: {},
+  oldName: "<value>",
+  newName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                  | Type                                                   | Required                                               | Description                                            |
-| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
-| `projectId`                                            | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |
-| `projectName`                                          | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |
-| `previous`                                             | [models.PayloadPrevious](../models/payloadprevious.md) | :heavy_check_mark:                                     | N/A                                                    |
-| `next`                                                 | [models.PayloadNext](../models/payloadnext.md)         | :heavy_check_mark:                                     | N/A                                                    |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `oldName`          | *string*           | :heavy_check_mark: | N/A                |
+| `newName`          | *string*           | :heavy_check_mark: | N/A                |

@@ -1,59 +1,27 @@
 # ConfigurationChangedResources
 
+Resources that were changed as part of this intent. Tracks all logical changes including the primary change and any side effects.
 
-## Supported Types
-
-### `models.BuyCreditsChangedResources1`
+## Example Usage
 
 ```typescript
-const value: models.BuyCreditsChangedResources1 = {
+import { ConfigurationChangedResources } from "@vercel/sdk/models/buycreditsop.js";
+
+let value: ConfigurationChangedResources = {
   productAlias: "<value>",
   productId: "<id>",
-  quantity: 7329.2,
-  type: "set_plan_item_quantity",
+  quantity: 3581.92,
 };
 ```
 
-### `models.BuyCreditsChangedResources2`
+## Fields
 
-```typescript
-const value: models.BuyCreditsChangedResources2 = {
-  productAlias: "<value>",
-  productId: "<id>",
-  quantity: 1904.94,
-  resourceIds: [
-    "<value 1>",
-    "<value 2>",
-  ],
-  type: "increase_plan_item_quantity",
-};
-```
-
-### `models.BuyCreditsChangedResources3`
-
-```typescript
-const value: models.BuyCreditsChangedResources3 = {
-  productAlias: "<value>",
-  productId: "<id>",
-  quantity: 3166.54,
-  resourceIds: [
-    "<value 1>",
-    "<value 2>",
-  ],
-  type: "decrease_plan_item_quantity",
-};
-```
-
-### `models.BuyCreditsChangedResources4`
-
-```typescript
-const value: models.BuyCreditsChangedResources4 = {
-  addedResourceIds: [],
-  productAlias: "<value>",
-  productId: "<id>",
-  quantity: 283.94,
-  removedResourceIds: [],
-  type: "adjust_plan_item_quantity",
-};
-```
-
+| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `productAlias`                                                         | *string*                                                               | :heavy_check_mark:                                                     | The alias of the product that was changed.                             |
+| `productId`                                                            | *string*                                                               | :heavy_check_mark:                                                     | The ID of the product that was changed.                                |
+| `quantity`                                                             | *number*                                                               | :heavy_check_mark:                                                     | The resulting quantity after this change.                              |
+| `addedResourceIds`                                                     | *string*[]                                                             | :heavy_minus_sign:                                                     | Resource IDs that were added.                                          |
+| `effectiveAt`                                                          | *string*                                                               | :heavy_minus_sign:                                                     | When this resource change should take effect for downstream consumers. |
+| `removedResourceIds`                                                   | *string*[]                                                             | :heavy_minus_sign:                                                     | Resource IDs that were removed.                                        |
+| `resourceIds`                                                          | *string*[]                                                             | :heavy_minus_sign:                                                     | The full set of resource IDs after the change.                         |

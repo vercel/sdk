@@ -728,6 +728,10 @@ export type GetDeploymentServicesConfig = {
   framework?: string | null | undefined;
   nodeVersion?: string | undefined;
   middleware?: boolean | undefined;
+  /**
+   * Owning service name; scopes per-function config such as the v2beta consumer.
+   */
+  serviceName?: string | undefined;
 };
 
 export type GetDeploymentServicesBuilder = {
@@ -1233,7 +1237,7 @@ export type ResponseBodyAttribution = {
 };
 
 /**
- * The deployment including both public and private information
+ * Returns the deployment object for the authenticated owner, including private fields such as environment variables, build log URLs, and internal metadata.
  */
 export type GetDeploymentResponseBody1 = {
   aliasAssignedAt?: ResponseBodyAliasAssignedAt | null | undefined;
@@ -1443,10 +1447,10 @@ export type GetDeploymentResponseBody1 = {
 };
 
 /**
- * The deployment including only public information
+ * Returns a reduced view of the deployment with public information only. Private fields are omitted when the requester is not the deployment owner.
  *
  * @remarks
- * The deployment including both public and private information
+ * Returns the deployment object for the authenticated owner, including private fields such as environment variables, build log URLs, and internal metadata.
  */
 export type GetDeploymentResponseBody =
   | GetDeploymentResponseBody1
@@ -2895,6 +2899,7 @@ export const GetDeploymentServicesConfig$inboundSchema: z.ZodType<
   framework: z.nullable(types.string()).optional(),
   nodeVersion: types.optional(types.string()),
   middleware: types.optional(types.boolean()),
+  serviceName: types.optional(types.string()),
 });
 
 export function getDeploymentServicesConfigFromJSON(

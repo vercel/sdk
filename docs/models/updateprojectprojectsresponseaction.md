@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UpdateProjectProjectsResponseAction } from "@vercel/sdk/models/updateprojectinternalroutes.js";
+import { UpdateProjectProjectsResponseAction } from "@vercel/sdk/models/updateprojectresponsebody.js";
 
 let value: UpdateProjectProjectsResponseAction =
   "remove-deployment-interstitial";

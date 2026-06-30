@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsBlockHistoryProjectsResponse1 } from "@vercel/sdk/models/getprojectsresponsebodylink.js";
+import { GetProjectsBlockHistoryProjectsResponse1 } from "@vercel/sdk/models/getprojectsresponsebodyenvironment.js";
 
 let value: GetProjectsBlockHistoryProjectsResponse1 = {
   action: "blocked",

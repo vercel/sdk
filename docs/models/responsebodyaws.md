@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyAws } from "@vercel/sdk/models/getprojectsresponsebodyprojectsgitprovideroptions.js";
+import { ResponseBodyAws } from "@vercel/sdk/models/getprojectsresponsebodyprojectstargets.js";
 
 let value: ResponseBodyAws = {
   subnetIds: [],

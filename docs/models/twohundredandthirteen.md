@@ -5,25 +5,18 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndThirteen } from "@vercel/sdk/models/onehundredandeightythree.js";
+import { TwoHundredAndThirteen } from "@vercel/sdk/models/onehundredandeightyfive.js";
 
 let value: TwoHundredAndThirteen = {
   projectId: "<id>",
-  projectName: "<value>",
-  previous: {
-    functionDefaultTimeout: 497.61,
-  },
-  next: {
-    functionDefaultTimeout: 5413.27,
-  },
+  enableFunctionsBeta: true,
 };
 ```
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `projectId`                                                                    | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
-| `projectName`                                                                  | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
-| `previous`                                                                     | [models.UserEventPayload213Previous](../models/usereventpayload213previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
-| `next`                                                                         | [models.UserEventPayload213Next](../models/usereventpayload213next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
+| Field                 | Type                  | Required              | Description           |
+| --------------------- | --------------------- | --------------------- | --------------------- |
+| `projectName`         | *string*              | :heavy_minus_sign:    | N/A                   |
+| `projectId`           | *string*              | :heavy_check_mark:    | N/A                   |
+| `enableFunctionsBeta` | *boolean*             | :heavy_check_mark:    | N/A                   |

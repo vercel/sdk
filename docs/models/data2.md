@@ -125,6 +125,8 @@ let value: Data2 = {
   cachedInputTokensCurrency: "<value>",
   cacheCreationInputTokensCurrency: "<value>",
   cacheCreation1hInputTokensCurrency: "<value>",
+  surchargeCostCurrency: "<value>",
+  gatewayCostCurrency: "<value>",
   keyId: "<id>",
   keyName: "<value>",
   isByok: "<value>",
@@ -316,6 +318,8 @@ let value: Data2 = {
 | `cachedInputTokensCurrency`            | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `cacheCreationInputTokensCurrency`     | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `cacheCreation1hInputTokensCurrency`   | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| `surchargeCostCurrency`                | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| `gatewayCostCurrency`                  | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `keyId`                                | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `keyName`                              | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `isByok`                               | *string*                               | :heavy_check_mark:                     | N/A                                    |

@@ -9,20 +9,52 @@ import { CreateProjectResponseBody } from "@vercel/sdk/models/createprojectrespo
 
 let value: CreateProjectResponseBody = {
   accountId: "<id>",
+  alias: [],
   crons: {
-    enabledAt: 412.28,
-    disabledAt: 3678.9,
-    updatedAt: 5714.95,
+    enabledAt: 9363.32,
+    disabledAt: 5714.95,
+    updatedAt: 9299.04,
     deploymentId: "<id>",
-    definitions: [],
+    definitions: [
+      {
+        host: "vercel.com",
+        path: "/api/crons/sync-something?hello=world",
+        schedule: "0 0 * * *",
+      },
+    ],
   },
   deploymentExpiration: {},
-  directoryListing: false,
+  directoryListing: true,
   id: "<id>",
+  latestDeployments: [
+    {
+      id: "<id>",
+      createdAt: 257.94,
+      createdIn: "<value>",
+      creator: {
+        email: "Arvilla.Ziemann80@hotmail.com",
+        uid: "<id>",
+        username: "Maida.Purdy-Green24",
+      },
+      deploymentHostname: "<value>",
+      name: "<value>",
+      plan: "hobby",
+      previewCommentsEnabled: false,
+      private: false,
+      readyState: "INITIALIZING",
+      type: "LAMBDAS",
+      url: "https://clumsy-tackle.info",
+      userId: "<id>",
+    },
+  ],
   name: "<value>",
-  nodeVersion: "12.x",
+  nodeVersion: "10.x",
   resourceConfig: {
-    functionDefaultRegions: [],
+    functionDefaultRegions: [
+      "<value 1>",
+      "<value 2>",
+      "<value 3>",
+    ],
   },
   rollingRelease: {
     target: "production",
@@ -39,7 +71,30 @@ let value: CreateProjectResponseBody = {
   defaultResourceConfig: {
     functionDefaultRegions: [
       "<value 1>",
+      "<value 2>",
+      "<value 3>",
     ],
+  },
+  targets: {
+    "key": {
+      id: "<id>",
+      createdAt: 3745.13,
+      createdIn: "<value>",
+      creator: {
+        email: "Stephen_Stamm@gmail.com",
+        uid: "<id>",
+        username: "Shad_Flatley74",
+      },
+      deploymentHostname: "<value>",
+      name: "<value>",
+      plan: "hobby",
+      previewCommentsEnabled: false,
+      private: true,
+      readyState: "CANCELED",
+      type: "LAMBDAS",
+      url: "https://sinful-hubris.org",
+      userId: "<id>",
+    },
   },
 };
 ```
@@ -49,6 +104,7 @@ let value: CreateProjectResponseBody = {
 | Field                                                                                                                                                                                                                                                                                                                                                 | Type                                                                                                                                                                                                                                                                                                                                                  | Required                                                                                                                                                                                                                                                                                                                                              | Description                                                                                                                                                                                                                                                                                                                                           |
 | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `accountId`                                                                                                                                                                                                                                                                                                                                           | *string*                                                                                                                                                                                                                                                                                                                                              | :heavy_check_mark:                                                                                                                                                                                                                                                                                                                                    | N/A                                                                                                                                                                                                                                                                                                                                                   |
+| `alias`                                                                                                                                                                                                                                                                                                                                               | [models.Alias](../models/alias.md)[]                                                                                                                                                                                                                                                                                                                  | :heavy_check_mark:                                                                                                                                                                                                                                                                                                                                    | N/A                                                                                                                                                                                                                                                                                                                                                   |
 | `analytics`                                                                                                                                                                                                                                                                                                                                           | [models.Analytics](../models/analytics.md)                                                                                                                                                                                                                                                                                                            | :heavy_minus_sign:                                                                                                                                                                                                                                                                                                                                    | N/A                                                                                                                                                                                                                                                                                                                                                   |
 | `appliedCve55182Migration`                                                                                                                                                                                                                                                                                                                            | *boolean*                                                                                                                                                                                                                                                                                                                                             | :heavy_minus_sign:                                                                                                                                                                                                                                                                                                                                    | N/A                                                                                                                                                                                                                                                                                                                                                   |
 | `speedInsights`                                                                                                                                                                                                                                                                                                                                       | [models.SpeedInsights](../models/speedinsights.md)                                                                                                                                                                                                                                                                                                    | :heavy_minus_sign:                                                                                                                                                                                                                                                                                                                                    | N/A                                                                                                                                                                                                                                                                                                                                                   |

@@ -13,52 +13,6 @@ let value: PutFirewallConfigResponseBody = {
     version: 3941.34,
     updatedAt: "1735667598775",
     firewallEnabled: false,
-    crs: {
-      sd: {
-        active: false,
-        action: "log",
-      },
-      ma: {
-        active: true,
-        action: "deny",
-      },
-      lfi: {
-        active: false,
-        action: "log",
-      },
-      rfi: {
-        active: true,
-        action: "log",
-      },
-      rce: {
-        active: false,
-        action: "log",
-      },
-      php: {
-        active: false,
-        action: "deny",
-      },
-      gen: {
-        active: false,
-        action: "log",
-      },
-      xss: {
-        active: false,
-        action: "deny",
-      },
-      sqli: {
-        active: true,
-        action: "log",
-      },
-      sf: {
-        active: true,
-        action: "log",
-      },
-      java: {
-        active: true,
-        action: "log",
-      },
-    },
     rules: [
       {
         id: "<id>",

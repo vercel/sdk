@@ -5,7 +5,7 @@ Customer-configurable deployment sources. Every deploy classifies to exactly one
 ## Example Usage
 
 ```typescript
-import { GetProjectsResponseBodySources } from "@vercel/sdk/models/getprojectsresponsebodylink.js";
+import { GetProjectsResponseBodySources } from "@vercel/sdk/models/getprojectsresponsebodyenvironment.js";
 
 let value: GetProjectsResponseBodySources = "rest-api";
 ```

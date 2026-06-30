@@ -12,52 +12,6 @@ let value: Active = {
   version: 7103.38,
   updatedAt: "1735606047583",
   firewallEnabled: false,
-  crs: {
-    sd: {
-      active: false,
-      action: "log",
-    },
-    ma: {
-      active: true,
-      action: "deny",
-    },
-    lfi: {
-      active: false,
-      action: "log",
-    },
-    rfi: {
-      active: true,
-      action: "log",
-    },
-    rce: {
-      active: false,
-      action: "log",
-    },
-    php: {
-      active: false,
-      action: "deny",
-    },
-    gen: {
-      active: false,
-      action: "log",
-    },
-    xss: {
-      active: false,
-      action: "deny",
-    },
-    sqli: {
-      active: true,
-      action: "log",
-    },
-    sf: {
-      active: true,
-      action: "log",
-    },
-    java: {
-      active: true,
-      action: "log",
-    },
-  },
   rules: [
     {
       id: "<id>",
@@ -90,7 +44,7 @@ let value: Active = {
 | `version`                                                                          | *number*                                                                           | :heavy_check_mark:                                                                 | N/A                                                                                |
 | `updatedAt`                                                                        | *string*                                                                           | :heavy_check_mark:                                                                 | N/A                                                                                |
 | `firewallEnabled`                                                                  | *boolean*                                                                          | :heavy_check_mark:                                                                 | N/A                                                                                |
-| `crs`                                                                              | [models.PutFirewallConfigCrs](../models/putfirewallconfigcrs.md)                   | :heavy_check_mark:                                                                 | Custom Ruleset                                                                     |
+| `crs`                                                                              | [models.PutFirewallConfigCrs](../models/putfirewallconfigcrs.md)                   | :heavy_minus_sign:                                                                 | Custom Ruleset                                                                     |
 | `rules`                                                                            | *models.PutFirewallConfigSecurityRules*[]                                          | :heavy_check_mark:                                                                 | N/A                                                                                |
 | `ips`                                                                              | [models.PutFirewallConfigIps](../models/putfirewallconfigips.md)[]                 | :heavy_check_mark:                                                                 | N/A                                                                                |
 | `changes`                                                                          | [models.PutFirewallConfigChanges](../models/putfirewallconfigchanges.md)[]         | :heavy_check_mark:                                                                 | N/A                                                                                |

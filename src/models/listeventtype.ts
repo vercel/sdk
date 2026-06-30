@@ -503,6 +503,8 @@ export const Name = {
   TeamEmuAccountSplit: "team-emu-account-split",
   TeamEmuUpdated: "team-emu-updated",
   TeamEndedTrial: "team-ended-trial",
+  TeamFirewallConfigModified: "team-firewall-config-modified",
+  TeamFirewallConfigPromoted: "team-firewall-config-promoted",
   TeamGitRepositoryDispatchEventsToggled:
     "team-git-repository-dispatch-events-toggled",
   TeamGitRequireVerifiedCommitsToggled:
@@ -557,6 +559,7 @@ export const Name = {
   VcrImageDeleted: "vcr-image-deleted",
   VcrImagePushed: "vcr-image-pushed",
   VcrRepositoryCreated: "vcr-repository-created",
+  VcrRepositoryDeleted: "vcr-repository-deleted",
   VercelAgentElevatedPermissionsApproved:
     "vercel-agent-elevated-permissions-approved",
   VercelAgentElevatedPermissionsRequested:
@@ -1115,6 +1118,8 @@ export const ReplacedBy = {
   TeamEmuAccountSplit: "team-emu-account-split",
   TeamEmuUpdated: "team-emu-updated",
   TeamEndedTrial: "team-ended-trial",
+  TeamFirewallConfigModified: "team-firewall-config-modified",
+  TeamFirewallConfigPromoted: "team-firewall-config-promoted",
   TeamGitRepositoryDispatchEventsToggled:
     "team-git-repository-dispatch-events-toggled",
   TeamGitRequireVerifiedCommitsToggled:
@@ -1169,6 +1174,7 @@ export const ReplacedBy = {
   VcrImageDeleted: "vcr-image-deleted",
   VcrImagePushed: "vcr-image-pushed",
   VcrRepositoryCreated: "vcr-repository-created",
+  VcrRepositoryDeleted: "vcr-repository-deleted",
   VercelAgentElevatedPermissionsApproved:
     "vercel-agent-elevated-permissions-approved",
   VercelAgentElevatedPermissionsRequested:

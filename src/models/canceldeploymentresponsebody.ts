@@ -492,7 +492,7 @@ export type CancelDeploymentAttribution = {
 };
 
 /**
- * The private deployment representation of a Deployment.
+ * Returns the updated deployment object with `readyState` set to `CANCELED`. The build has been stopped and this action is irreversible.
  */
 export type CancelDeploymentResponseBody = {
   aliasAssignedAt?: CancelDeploymentAliasAssignedAt | null | undefined;

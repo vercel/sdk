@@ -1,17 +1,15 @@
 # UpdateMicrofrontendsProjectsResponse200Type
 
-The type of matching to perform
-
 ## Example Usage
 
 ```typescript
-import { UpdateMicrofrontendsProjectsResponse200Type } from "@vercel/sdk/models/updatemicrofrontendsvercelruleset.js";
+import { UpdateMicrofrontendsProjectsResponse200Type } from "@vercel/sdk/models/updatemicrofrontendsjobstatus.js";
 
-let value: UpdateMicrofrontendsProjectsResponse200Type = "equals";
+let value: UpdateMicrofrontendsProjectsResponse200Type = "LAMBDAS";
 ```
 
 ## Values
 
 ```typescript
-"endsWith" | "equals" | "startsWith"
+"LAMBDAS"
 ```

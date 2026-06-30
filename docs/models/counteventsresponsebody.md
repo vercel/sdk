@@ -131,6 +131,8 @@ let value: CountEventsResponseBody = {
     cachedInputTokensCurrency: "<value>",
     cacheCreationInputTokensCurrency: "<value>",
     cacheCreation1hInputTokensCurrency: "<value>",
+    surchargeCostCurrency: "<value>",
+    gatewayCostCurrency: "<value>",
     keyId: "<id>",
     keyName: "<value>",
     isByok: "<value>",

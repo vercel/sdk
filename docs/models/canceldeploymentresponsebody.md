@@ -1,6 +1,6 @@
 # CancelDeploymentResponseBody
 
-The private deployment representation of a Deployment.
+Returns the updated deployment object with `readyState` set to `CANCELED`. The build has been stopped and this action is irreversible.
 
 ## Example Usage
 

@@ -1,17 +1,15 @@
 # CreateProjectProjectsTarget
 
-
-## Supported Types
-
-### `models.CreateProjectTarget1[]`
+## Example Usage
 
 ```typescript
-const value: models.CreateProjectTarget1[] = [];
+import { CreateProjectProjectsTarget } from "@vercel/sdk/models/createprojectapril2026securityincidentmigrationappliedfrom.js";
+
+let value: CreateProjectProjectsTarget = "PRODUCTION";
 ```
 
-### `models.CreateProjectTarget2`
+## Values
 
 ```typescript
-const value: models.CreateProjectTarget2 = "development";
+"PREVIEW" | "PRODUCTION" | "STAGING"
 ```
-

@@ -7,10 +7,36 @@ import { UpdateMicrofrontendsResponseBody } from "@vercel/sdk/models/updatemicro
 
 let value: UpdateMicrofrontendsResponseBody = {
   accountId: "<id>",
+  alias: [
+    {
+      deployment: {
+        id: "<id>",
+        createdAt: 334.53,
+        createdIn: "<value>",
+        creator: {
+          email: "Heber_Friesen-Bechtelar55@hotmail.com",
+          uid: "<id>",
+          username: "Ronny.Raynor-Murphy",
+        },
+        deploymentHostname: "<value>",
+        name: "<value>",
+        plan: "pro",
+        previewCommentsEnabled: false,
+        private: false,
+        readyState: "CANCELED",
+        type: "LAMBDAS",
+        url: "https://another-recovery.com/",
+        userId: "<id>",
+      },
+      domain: "doting-archaeology.info",
+      environment: "production",
+      target: "PRODUCTION",
+    },
+  ],
   crons: {
-    enabledAt: 9313.71,
-    disabledAt: 2031.98,
-    updatedAt: 465.97,
+    enabledAt: 6575.57,
+    disabledAt: 5710,
+    updatedAt: 4307.49,
     deploymentId: "<id>",
     definitions: [
       {
@@ -23,11 +49,34 @@ let value: UpdateMicrofrontendsResponseBody = {
   deploymentExpiration: {},
   directoryListing: true,
   id: "<id>",
+  latestDeployments: [
+    {
+      id: "<id>",
+      createdAt: 7822.01,
+      createdIn: "<value>",
+      creator: {
+        email: "Jose20@hotmail.com",
+        uid: "<id>",
+        username: "Rosetta.Ebert57",
+      },
+      deploymentHostname: "<value>",
+      name: "<value>",
+      plan: "hobby",
+      previewCommentsEnabled: false,
+      private: false,
+      readyState: "BLOCKED",
+      type: "LAMBDAS",
+      url: "https://nautical-dwell.com",
+      userId: "<id>",
+    },
+  ],
   name: "<value>",
-  nodeVersion: "20.x",
+  nodeVersion: "8.10.x",
   resourceConfig: {
     functionDefaultRegions: [
       "<value 1>",
+      "<value 2>",
+      "<value 3>",
     ],
   },
   rollingRelease: {
@@ -45,9 +94,28 @@ let value: UpdateMicrofrontendsResponseBody = {
   defaultResourceConfig: {
     functionDefaultRegions: [
       "<value 1>",
-      "<value 2>",
-      "<value 3>",
     ],
+  },
+  targets: {
+    "key": {
+      id: "<id>",
+      createdAt: 1873.93,
+      createdIn: "<value>",
+      creator: {
+        email: "Xander.Bruen@yahoo.com",
+        uid: "<id>",
+        username: "Jameson56",
+      },
+      deploymentHostname: "<value>",
+      name: "<value>",
+      plan: "hobby",
+      previewCommentsEnabled: false,
+      private: false,
+      readyState: "ERROR",
+      type: "LAMBDAS",
+      url: "https://linear-thyme.com",
+      userId: "<id>",
+    },
   },
 };
 ```
@@ -57,6 +125,7 @@ let value: UpdateMicrofrontendsResponseBody = {
 | Field                                                                                                                                                                                                                                                                                                                                                 | Type                                                                                                                                                                                                                                                                                                                                                  | Required                                                                                                                                                                                                                                                                                                                                              | Description                                                                                                                                                                                                                                                                                                                                           |
 | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `accountId`                                                                                                                                                                                                                                                                                                                                           | *string*                                                                                                                                                                                                                                                                                                                                              | :heavy_check_mark:                                                                                                                                                                                                                                                                                                                                    | N/A                                                                                                                                                                                                                                                                                                                                                   |
+| `alias`                                                                                                                                                                                                                                                                                                                                               | [models.UpdateMicrofrontendsAlias](../models/updatemicrofrontendsalias.md)[]                                                                                                                                                                                                                                                                          | :heavy_check_mark:                                                                                                                                                                                                                                                                                                                                    | N/A                                                                                                                                                                                                                                                                                                                                                   |
 | `analytics`                                                                                                                                                                                                                                                                                                                                           | [models.UpdateMicrofrontendsAnalytics](../models/updatemicrofrontendsanalytics.md)                                                                                                                                                                                                                                                                    | :heavy_minus_sign:                                                                                                                                                                                                                                                                                                                                    | N/A                                                                                                                                                                                                                                                                                                                                                   |
 | `appliedCve55182Migration`                                                                                                                                                                                                                                                                                                                            | *boolean*                                                                                                                                                                                                                                                                                                                                             | :heavy_minus_sign:                                                                                                                                                                                                                                                                                                                                    | N/A                                                                                                                                                                                                                                                                                                                                                   |
 | `speedInsights`                                                                                                                                                                                                                                                                                                                                       | [models.UpdateMicrofrontendsSpeedInsights](../models/updatemicrofrontendsspeedinsights.md)                                                                                                                                                                                                                                                            | :heavy_minus_sign:                                                                                                                                                                                                                                                                                                                                    | N/A                                                                                                                                                                                                                                                                                                                                                   |

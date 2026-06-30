@@ -11,6 +11,8 @@ import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 import {
+  UpdateMicrofrontendsAlias,
+  UpdateMicrofrontendsAlias$inboundSchema,
   UpdateMicrofrontendsAnalytics,
   UpdateMicrofrontendsAnalytics$inboundSchema,
   UpdateMicrofrontendsConnectConfigurations,
@@ -31,16 +33,12 @@ import {
   UpdateMicrofrontendsExpiration$inboundSchema,
   UpdateMicrofrontendsFramework,
   UpdateMicrofrontendsFramework$inboundSchema,
-  UpdateMicrofrontendsGitComments,
-  UpdateMicrofrontendsGitComments$inboundSchema,
-  UpdateMicrofrontendsGitProviderOptions,
-  UpdateMicrofrontendsGitProviderOptions$inboundSchema,
   UpdateMicrofrontendsIpBuckets,
   UpdateMicrofrontendsIpBuckets$inboundSchema,
   UpdateMicrofrontendsJobs,
   UpdateMicrofrontendsJobs$inboundSchema,
-  UpdateMicrofrontendsLastAliasRequest,
-  UpdateMicrofrontendsLastAliasRequest$inboundSchema,
+  UpdateMicrofrontendsJobStatus,
+  UpdateMicrofrontendsJobStatus$inboundSchema,
   UpdateMicrofrontendsLastRollbackTarget,
   UpdateMicrofrontendsLastRollbackTarget$inboundSchema,
   UpdateMicrofrontendsLatestDeployments,
@@ -59,8 +57,6 @@ import {
   UpdateMicrofrontendsPasswordProtection$inboundSchema,
   UpdateMicrofrontendsPermissions,
   UpdateMicrofrontendsPermissions$inboundSchema,
-  UpdateMicrofrontendsProtectionBypass,
-  UpdateMicrofrontendsProtectionBypass$inboundSchema,
   UpdateMicrofrontendsProtectionConfig,
   UpdateMicrofrontendsProtectionConfig$inboundSchema,
   UpdateMicrofrontendsResourceConfig,
@@ -79,15 +75,340 @@ import {
   UpdateMicrofrontendsStaticIps$inboundSchema,
   UpdateMicrofrontendsTargets,
   UpdateMicrofrontendsTargets$inboundSchema,
-  UpdateMicrofrontendsTrustedIps,
-  UpdateMicrofrontendsTrustedIps$inboundSchema,
-  UpdateMicrofrontendsTrustedSources,
-  UpdateMicrofrontendsTrustedSources$inboundSchema,
-  UpdateMicrofrontendsVercelRuleset,
-  UpdateMicrofrontendsVercelRuleset$inboundSchema,
-  UpdateMicrofrontendsWebAnalytics,
-  UpdateMicrofrontendsWebAnalytics$inboundSchema,
-} from "./updatemicrofrontendsvercelruleset.js";
+} from "./updatemicrofrontendsjobstatus.js";
+
+export const UpdateMicrofrontendsProjectsResponse200ApplicationJSONType = {
+  Promote: "promote",
+  Rollback: "rollback",
+} as const;
+export type UpdateMicrofrontendsProjectsResponse200ApplicationJSONType =
+  ClosedEnum<typeof UpdateMicrofrontendsProjectsResponse200ApplicationJSONType>;
+
+export type UpdateMicrofrontendsLastAliasRequest = {
+  fromDeploymentId: string | null;
+  toDeploymentId: string;
+  /**
+   * If rolling back from a rolling release, fromDeploymentId captures the "base" of that rolling release, and fromRollingReleaseId captures the "target" of that rolling release.
+   */
+  fromRollingReleaseId?: string | undefined;
+  jobStatus: UpdateMicrofrontendsJobStatus;
+  requestedAt: number;
+  type: UpdateMicrofrontendsProjectsResponse200ApplicationJSONType;
+};
+
+export type UpdateMicrofrontendsProtectionBypass2 = {
+  createdAt: number;
+  createdBy: string;
+  scope: "automation-bypass";
+  /**
+   * When there was only one bypass, it was automatically set as an env var on deployments. With multiple bypasses, there is always one bypass that is selected as the default, and gets set as an env var on deployments. As this is a new field, undefined means that the bypass is the env var. If there are any automation bypasses, exactly one must be the env var.
+   */
+  isEnvVar?: boolean | undefined;
+  /**
+   * Optional note about the bypass to be displayed in the UI
+   */
+  note?: string | undefined;
+};
+
+export type UpdateMicrofrontendsProtectionBypass1 = {
+  createdAt: number;
+  createdBy: string;
+  scope: "integration-automation-bypass";
+  integrationId: string;
+  configurationId: string;
+};
+
+export type UpdateMicrofrontendsProtectionBypass =
+  | UpdateMicrofrontendsProtectionBypass1
+  | UpdateMicrofrontendsProtectionBypass2;
+
+export const UpdateMicrofrontendsTrustedIpsProjectsDeploymentType = {
+  All: "all",
+  AllExceptCustomDomains: "all_except_custom_domains",
+  Preview: "preview",
+  ProdDeploymentUrlsAndAllPreviews: "prod_deployment_urls_and_all_previews",
+  Production: "production",
+} as const;
+export type UpdateMicrofrontendsTrustedIpsProjectsDeploymentType = ClosedEnum<
+  typeof UpdateMicrofrontendsTrustedIpsProjectsDeploymentType
+>;
+
+export type UpdateMicrofrontendsTrustedIps2 = {
+  deploymentType: UpdateMicrofrontendsTrustedIpsProjectsDeploymentType;
+};
+
+export const UpdateMicrofrontendsTrustedIpsDeploymentType = {
+  All: "all",
+  AllExceptCustomDomains: "all_except_custom_domains",
+  Preview: "preview",
+  ProdDeploymentUrlsAndAllPreviews: "prod_deployment_urls_and_all_previews",
+  Production: "production",
+} as const;
+export type UpdateMicrofrontendsTrustedIpsDeploymentType = ClosedEnum<
+  typeof UpdateMicrofrontendsTrustedIpsDeploymentType
+>;
+
+export type UpdateMicrofrontendsTrustedIpsAddresses = {
+  value: string;
+  note?: string | undefined;
+};
+
+export const UpdateMicrofrontendsTrustedIpsProtectionMode = {
+  Additional: "additional",
+  Exclusive: "exclusive",
+} as const;
+export type UpdateMicrofrontendsTrustedIpsProtectionMode = ClosedEnum<
+  typeof UpdateMicrofrontendsTrustedIpsProtectionMode
+>;
+
+export type UpdateMicrofrontendsTrustedIps1 = {
+  deploymentType: UpdateMicrofrontendsTrustedIpsDeploymentType;
+  addresses: Array<UpdateMicrofrontendsTrustedIpsAddresses>;
+  protectionMode: UpdateMicrofrontendsTrustedIpsProtectionMode;
+};
+
+export type UpdateMicrofrontendsTrustedIps =
+  | UpdateMicrofrontendsTrustedIps1
+  | UpdateMicrofrontendsTrustedIps2;
+
+export const UpdateMicrofrontendsFromProjectsPreset = {
+  AllCustom: "all-custom",
+} as const;
+export type UpdateMicrofrontendsFromProjectsPreset = ClosedEnum<
+  typeof UpdateMicrofrontendsFromProjectsPreset
+>;
+
+/**
+ * The source envs on the trusted project that are allowed to access `to`.
+ */
+export type UpdateMicrofrontendsFrom2 = {
+  /**
+   * System environment slugs (`production`, `preview`) and/or custom environment slugs defined on the referenced project.
+   */
+  slugs?: Array<string> | undefined;
+  preset: UpdateMicrofrontendsFromProjectsPreset;
+};
+
+export const UpdateMicrofrontendsFromPreset = {
+  AllCustom: "all-custom",
+} as const;
+export type UpdateMicrofrontendsFromPreset = ClosedEnum<
+  typeof UpdateMicrofrontendsFromPreset
+>;
+
+/**
+ * The source envs on the trusted project that are allowed to access `to`.
+ */
+export type UpdateMicrofrontendsFrom1 = {
+  /**
+   * System environment slugs (`production`, `preview`) and/or custom environment slugs defined on the referenced project.
+   */
+  slugs: Array<string>;
+  preset?: UpdateMicrofrontendsFromPreset | undefined;
+};
+
+export type UpdateMicrofrontendsFrom =
+  | UpdateMicrofrontendsFrom1
+  | UpdateMicrofrontendsFrom2;
+
+export const UpdateMicrofrontendsToProjectsResponse200Preset = {
+  AllCustom: "all-custom",
+} as const;
+export type UpdateMicrofrontendsToProjectsResponse200Preset = ClosedEnum<
+  typeof UpdateMicrofrontendsToProjectsResponse200Preset
+>;
+
+/**
+ * The target envs on the current project that may be accessed.
+ */
+export type UpdateMicrofrontendsToProjects2 = {
+  /**
+   * System environment slugs (`production`, `preview`) and/or custom environment slugs defined on the referenced project.
+   */
+  slugs?: Array<string> | undefined;
+  preset: UpdateMicrofrontendsToProjectsResponse200Preset;
+};
+
+export const UpdateMicrofrontendsToProjectsResponsePreset = {
+  AllCustom: "all-custom",
+} as const;
+export type UpdateMicrofrontendsToProjectsResponsePreset = ClosedEnum<
+  typeof UpdateMicrofrontendsToProjectsResponsePreset
+>;
+
+/**
+ * The target envs on the current project that may be accessed.
+ */
+export type UpdateMicrofrontendsToProjects1 = {
+  /**
+   * System environment slugs (`production`, `preview`) and/or custom environment slugs defined on the referenced project.
+   */
+  slugs: Array<string>;
+  preset?: UpdateMicrofrontendsToProjectsResponsePreset | undefined;
+};
+
+export type UpdateMicrofrontendsProjectsTo =
+  | UpdateMicrofrontendsToProjects1
+  | UpdateMicrofrontendsToProjects2;
+
+/**
+ * Optional overrides for the default same-env-by-slug matching. Provide explicit rules to allow cross-env access or presets.
+ */
+export type UpdateMicrofrontendsCustomAllow = {
+  from: UpdateMicrofrontendsFrom1 | UpdateMicrofrontendsFrom2;
+  to: UpdateMicrofrontendsToProjects1 | UpdateMicrofrontendsToProjects2;
+};
+
+export type UpdateMicrofrontendsProjects = {
+  label?: string | undefined;
+  /**
+   * Optional overrides for the default same-env-by-slug matching. Provide explicit rules to allow cross-env access or presets.
+   */
+  customAllow?: Array<UpdateMicrofrontendsCustomAllow> | undefined;
+};
+
+export const UpdateMicrofrontendsToProjectsPreset = {
+  AllCustom: "all-custom",
+} as const;
+export type UpdateMicrofrontendsToProjectsPreset = ClosedEnum<
+  typeof UpdateMicrofrontendsToProjectsPreset
+>;
+
+/**
+ * The target envs on the current project that may be accessed.
+ */
+export type UpdateMicrofrontendsTo2 = {
+  /**
+   * System environment slugs (`production`, `preview`) and/or custom environment slugs defined on the referenced project.
+   */
+  slugs?: Array<string> | undefined;
+  preset: UpdateMicrofrontendsToProjectsPreset;
+};
+
+export const UpdateMicrofrontendsToPreset = {
+  AllCustom: "all-custom",
+} as const;
+export type UpdateMicrofrontendsToPreset = ClosedEnum<
+  typeof UpdateMicrofrontendsToPreset
+>;
+
+/**
+ * The target envs on the current project that may be accessed.
+ */
+export type UpdateMicrofrontendsTo1 = {
+  /**
+   * System environment slugs (`production`, `preview`) and/or custom environment slugs defined on the referenced project.
+   */
+  slugs: Array<string>;
+  preset?: UpdateMicrofrontendsToPreset | undefined;
+};
+
+export type UpdateMicrofrontendsTo =
+  | UpdateMicrofrontendsTo1
+  | UpdateMicrofrontendsTo2;
+
+export type UpdateMicrofrontendsOidcProviders = {
+  to: UpdateMicrofrontendsTo1 | UpdateMicrofrontendsTo2;
+  label?: string | undefined;
+  claims: { [k: string]: Array<string> };
+};
+
+export type UpdateMicrofrontendsTrustedSources = {
+  projects?: { [k: string]: UpdateMicrofrontendsProjects } | undefined;
+  oidcProviders?:
+    | { [k: string]: Array<UpdateMicrofrontendsOidcProviders> }
+    | undefined;
+};
+
+export type UpdateMicrofrontendsGitComments = {
+  /**
+   * Whether the Vercel bot should comment on PRs
+   */
+  onPullRequest: boolean;
+  /**
+   * Whether the Vercel bot should comment on commits
+   */
+  onCommit: boolean;
+};
+
+/**
+ * Whether the Vercel bot should automatically create GitHub deployments https://docs.github.com/en/rest/deployments/deployments#about-deployments NOTE: repository-dispatch events should be used instead
+ */
+export const UpdateMicrofrontendsCreateDeployments = {
+  Disabled: "disabled",
+  Enabled: "enabled",
+} as const;
+/**
+ * Whether the Vercel bot should automatically create GitHub deployments https://docs.github.com/en/rest/deployments/deployments#about-deployments NOTE: repository-dispatch events should be used instead
+ */
+export type UpdateMicrofrontendsCreateDeployments = ClosedEnum<
+  typeof UpdateMicrofrontendsCreateDeployments
+>;
+
+/**
+ * Configuration for consolidated git commit status reporting. When enabled, Vercel will post a single consolidated commit status instead of individual statuses for each deployment.
+ */
+export type UpdateMicrofrontendsConsolidatedGitCommitStatus = {
+  /**
+   * Whether consolidated commit status is enabled.
+   */
+  enabled: boolean;
+  /**
+   * Whether to propagate individual deployment failures to the consolidated status.
+   */
+  propagateFailures: boolean;
+};
+
+export type UpdateMicrofrontendsGitProviderOptions = {
+  /**
+   * Whether the Vercel bot should automatically create GitHub deployments https://docs.github.com/en/rest/deployments/deployments#about-deployments NOTE: repository-dispatch events should be used instead
+   */
+  createDeployments: UpdateMicrofrontendsCreateDeployments;
+  /**
+   * Whether the Vercel bot should not automatically create GitHub repository-dispatch events on deployment events. https://vercel.com/docs/git/vercel-for-github#repository-dispatch-events - `true`: disable repository-dispatch events for this project (explicit override of the team setting). - `false`: enable repository-dispatch events for this project (explicit override of the team setting). - absent: inherit from `team.disableRepositoryDispatchEvents`.
+   */
+  disableRepositoryDispatchEvents?: boolean | undefined;
+  /**
+   * Whether the project requires commits to be signed & verified before deployments will be created. - `true`: require verified commits for this project (explicit override of the team setting). - `false`: do not require verified commits (explicit override of the team setting). - absent: inherit from `team.requireVerifiedCommits`.
+   */
+  requireVerifiedCommits?: boolean | undefined;
+  /**
+   * Whether Vercel should post commit statuses for this project. When omitted, commit statuses remain enabled.
+   */
+  gitCommitStatus?: boolean | undefined;
+  /**
+   * Configuration for consolidated git commit status reporting. When enabled, Vercel will post a single consolidated commit status instead of individual statuses for each deployment.
+   */
+  consolidatedGitCommitStatus?:
+    | UpdateMicrofrontendsConsolidatedGitCommitStatus
+    | undefined;
+};
+
+export type UpdateMicrofrontendsWebAnalytics = {
+  id: string;
+  disabledAt?: number | undefined;
+  canceledAt?: number | undefined;
+  enabledAt?: number | undefined;
+  hasData?: true | undefined;
+};
+
+export const UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodyAction =
+  {
+    Challenge: "challenge",
+    Deny: "deny",
+    Log: "log",
+  } as const;
+export type UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodyAction =
+  ClosedEnum<
+    typeof UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodyAction
+  >;
+
+export type UpdateMicrofrontendsVercelRuleset = {
+  active: boolean;
+  action?:
+    | UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodyAction
+    | undefined;
+};
 
 export const UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodySecurityAction =
   {
@@ -772,6 +1093,7 @@ export type UpdateMicrofrontendsTracing = {
 
 export type UpdateMicrofrontendsResponseBody = {
   accountId: string;
+  alias: Array<UpdateMicrofrontendsAlias>;
   analytics?: UpdateMicrofrontendsAnalytics | undefined;
   appliedCve55182Migration?: boolean | undefined;
   speedInsights?: UpdateMicrofrontendsSpeedInsights | undefined;
@@ -860,11 +1182,17 @@ export type UpdateMicrofrontendsResponseBody = {
     | null
     | undefined;
   lastAliasRequest?: UpdateMicrofrontendsLastAliasRequest | null | undefined;
-  protectionBypass?:
-    | { [k: string]: UpdateMicrofrontendsProtectionBypass }
-    | undefined;
+  protectionBypass?: {
+    [k: string]:
+      | UpdateMicrofrontendsProtectionBypass1
+      | UpdateMicrofrontendsProtectionBypass2;
+  } | undefined;
   hasActiveBranches?: boolean | undefined;
-  trustedIps?: UpdateMicrofrontendsTrustedIps | null | undefined;
+  trustedIps?:
+    | UpdateMicrofrontendsTrustedIps1
+    | UpdateMicrofrontendsTrustedIps2
+    | null
+    | undefined;
   trustedSources?: UpdateMicrofrontendsTrustedSources | null | undefined;
   gitComments?: UpdateMicrofrontendsGitComments | undefined;
   gitProviderOptions?: UpdateMicrofrontendsGitProviderOptions | undefined;
@@ -895,6 +1223,656 @@ export type UpdateMicrofrontendsResponseBody = {
   tracing?: UpdateMicrofrontendsTracing | undefined;
   avatar?: string | null | undefined;
 };
+
+/** @internal */
+export const UpdateMicrofrontendsProjectsResponse200ApplicationJSONType$inboundSchema:
+  z.ZodNativeEnum<
+    typeof UpdateMicrofrontendsProjectsResponse200ApplicationJSONType
+  > = z.nativeEnum(UpdateMicrofrontendsProjectsResponse200ApplicationJSONType);
+
+/** @internal */
+export const UpdateMicrofrontendsLastAliasRequest$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsLastAliasRequest,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  fromDeploymentId: types.nullable(types.string()),
+  toDeploymentId: types.string(),
+  fromRollingReleaseId: types.optional(types.string()),
+  jobStatus: UpdateMicrofrontendsJobStatus$inboundSchema,
+  requestedAt: types.number(),
+  type:
+    UpdateMicrofrontendsProjectsResponse200ApplicationJSONType$inboundSchema,
+});
+
+export function updateMicrofrontendsLastAliasRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsLastAliasRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateMicrofrontendsLastAliasRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsLastAliasRequest' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsProtectionBypass2$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsProtectionBypass2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  createdAt: types.number(),
+  createdBy: types.string(),
+  scope: types.literal("automation-bypass"),
+  isEnvVar: types.optional(types.boolean()),
+  note: types.optional(types.string()),
+});
+
+export function updateMicrofrontendsProtectionBypass2FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsProtectionBypass2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateMicrofrontendsProtectionBypass2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsProtectionBypass2' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsProtectionBypass1$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsProtectionBypass1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  createdAt: types.number(),
+  createdBy: types.string(),
+  scope: types.literal("integration-automation-bypass"),
+  integrationId: types.string(),
+  configurationId: types.string(),
+});
+
+export function updateMicrofrontendsProtectionBypass1FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsProtectionBypass1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateMicrofrontendsProtectionBypass1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsProtectionBypass1' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsProtectionBypass$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsProtectionBypass,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() => UpdateMicrofrontendsProtectionBypass1$inboundSchema),
+  z.lazy(() => UpdateMicrofrontendsProtectionBypass2$inboundSchema),
+]);
+
+export function updateMicrofrontendsProtectionBypassFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsProtectionBypass, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateMicrofrontendsProtectionBypass$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsProtectionBypass' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsTrustedIpsProjectsDeploymentType$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateMicrofrontendsTrustedIpsProjectsDeploymentType> =
+    z.nativeEnum(UpdateMicrofrontendsTrustedIpsProjectsDeploymentType);
+
+/** @internal */
+export const UpdateMicrofrontendsTrustedIps2$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsTrustedIps2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  deploymentType:
+    UpdateMicrofrontendsTrustedIpsProjectsDeploymentType$inboundSchema,
+});
+
+export function updateMicrofrontendsTrustedIps2FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsTrustedIps2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateMicrofrontendsTrustedIps2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsTrustedIps2' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsTrustedIpsDeploymentType$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateMicrofrontendsTrustedIpsDeploymentType> = z
+    .nativeEnum(UpdateMicrofrontendsTrustedIpsDeploymentType);
+
+/** @internal */
+export const UpdateMicrofrontendsTrustedIpsAddresses$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsTrustedIpsAddresses,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  value: types.string(),
+  note: types.optional(types.string()),
+});
+
+export function updateMicrofrontendsTrustedIpsAddressesFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UpdateMicrofrontendsTrustedIpsAddresses,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateMicrofrontendsTrustedIpsAddresses$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UpdateMicrofrontendsTrustedIpsAddresses' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsTrustedIpsProtectionMode$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateMicrofrontendsTrustedIpsProtectionMode> = z
+    .nativeEnum(UpdateMicrofrontendsTrustedIpsProtectionMode);
+
+/** @internal */
+export const UpdateMicrofrontendsTrustedIps1$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsTrustedIps1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  deploymentType: UpdateMicrofrontendsTrustedIpsDeploymentType$inboundSchema,
+  addresses: z.array(
+    z.lazy(() => UpdateMicrofrontendsTrustedIpsAddresses$inboundSchema),
+  ),
+  protectionMode: UpdateMicrofrontendsTrustedIpsProtectionMode$inboundSchema,
+});
+
+export function updateMicrofrontendsTrustedIps1FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsTrustedIps1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateMicrofrontendsTrustedIps1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsTrustedIps1' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsTrustedIps$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsTrustedIps,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  z.lazy(() => UpdateMicrofrontendsTrustedIps1$inboundSchema),
+  z.lazy(() => UpdateMicrofrontendsTrustedIps2$inboundSchema),
+]);
+
+export function updateMicrofrontendsTrustedIpsFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsTrustedIps, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateMicrofrontendsTrustedIps$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsTrustedIps' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsFromProjectsPreset$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateMicrofrontendsFromProjectsPreset> = z.nativeEnum(
+    UpdateMicrofrontendsFromProjectsPreset,
+  );
+
+/** @internal */
+export const UpdateMicrofrontendsFrom2$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsFrom2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  slugs: types.optional(z.array(types.string())),
+  preset: UpdateMicrofrontendsFromProjectsPreset$inboundSchema,
+});
+
+export function updateMicrofrontendsFrom2FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsFrom2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateMicrofrontendsFrom2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsFrom2' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsFromPreset$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateMicrofrontendsFromPreset
+> = z.nativeEnum(UpdateMicrofrontendsFromPreset);
+
+/** @internal */
+export const UpdateMicrofrontendsFrom1$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsFrom1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  slugs: z.array(types.string()),
+  preset: types.optional(UpdateMicrofrontendsFromPreset$inboundSchema),
+});
+
+export function updateMicrofrontendsFrom1FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsFrom1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateMicrofrontendsFrom1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsFrom1' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsFrom$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsFrom,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  z.lazy(() => UpdateMicrofrontendsFrom1$inboundSchema),
+  z.lazy(() => UpdateMicrofrontendsFrom2$inboundSchema),
+]);
+
+export function updateMicrofrontendsFromFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsFrom, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateMicrofrontendsFrom$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsFrom' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsToProjectsResponse200Preset$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateMicrofrontendsToProjectsResponse200Preset> = z
+    .nativeEnum(UpdateMicrofrontendsToProjectsResponse200Preset);
+
+/** @internal */
+export const UpdateMicrofrontendsToProjects2$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsToProjects2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  slugs: types.optional(z.array(types.string())),
+  preset: UpdateMicrofrontendsToProjectsResponse200Preset$inboundSchema,
+});
+
+export function updateMicrofrontendsToProjects2FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsToProjects2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateMicrofrontendsToProjects2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsToProjects2' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsToProjectsResponsePreset$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateMicrofrontendsToProjectsResponsePreset> = z
+    .nativeEnum(UpdateMicrofrontendsToProjectsResponsePreset);
+
+/** @internal */
+export const UpdateMicrofrontendsToProjects1$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsToProjects1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  slugs: z.array(types.string()),
+  preset: types.optional(
+    UpdateMicrofrontendsToProjectsResponsePreset$inboundSchema,
+  ),
+});
+
+export function updateMicrofrontendsToProjects1FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsToProjects1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateMicrofrontendsToProjects1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsToProjects1' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsProjectsTo$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsProjectsTo,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  z.lazy(() => UpdateMicrofrontendsToProjects1$inboundSchema),
+  z.lazy(() => UpdateMicrofrontendsToProjects2$inboundSchema),
+]);
+
+export function updateMicrofrontendsProjectsToFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsProjectsTo, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateMicrofrontendsProjectsTo$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsProjectsTo' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsCustomAllow$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsCustomAllow,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  from: smartUnion([
+    z.lazy(() => UpdateMicrofrontendsFrom1$inboundSchema),
+    z.lazy(() => UpdateMicrofrontendsFrom2$inboundSchema),
+  ]),
+  to: smartUnion([
+    z.lazy(() => UpdateMicrofrontendsToProjects1$inboundSchema),
+    z.lazy(() => UpdateMicrofrontendsToProjects2$inboundSchema),
+  ]),
+});
+
+export function updateMicrofrontendsCustomAllowFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsCustomAllow, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateMicrofrontendsCustomAllow$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsCustomAllow' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsProjects$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsProjects,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  label: types.optional(types.string()),
+  customAllow: types.optional(
+    z.array(z.lazy(() => UpdateMicrofrontendsCustomAllow$inboundSchema)),
+  ),
+});
+
+export function updateMicrofrontendsProjectsFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsProjects, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateMicrofrontendsProjects$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsProjects' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsToProjectsPreset$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateMicrofrontendsToProjectsPreset> = z.nativeEnum(
+    UpdateMicrofrontendsToProjectsPreset,
+  );
+
+/** @internal */
+export const UpdateMicrofrontendsTo2$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsTo2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  slugs: types.optional(z.array(types.string())),
+  preset: UpdateMicrofrontendsToProjectsPreset$inboundSchema,
+});
+
+export function updateMicrofrontendsTo2FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsTo2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateMicrofrontendsTo2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsTo2' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsToPreset$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateMicrofrontendsToPreset
+> = z.nativeEnum(UpdateMicrofrontendsToPreset);
+
+/** @internal */
+export const UpdateMicrofrontendsTo1$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsTo1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  slugs: z.array(types.string()),
+  preset: types.optional(UpdateMicrofrontendsToPreset$inboundSchema),
+});
+
+export function updateMicrofrontendsTo1FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsTo1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateMicrofrontendsTo1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsTo1' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsTo$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsTo,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  z.lazy(() => UpdateMicrofrontendsTo1$inboundSchema),
+  z.lazy(() => UpdateMicrofrontendsTo2$inboundSchema),
+]);
+
+export function updateMicrofrontendsToFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsTo, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateMicrofrontendsTo$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsTo' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsOidcProviders$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsOidcProviders,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  to: smartUnion([
+    z.lazy(() => UpdateMicrofrontendsTo1$inboundSchema),
+    z.lazy(() => UpdateMicrofrontendsTo2$inboundSchema),
+  ]),
+  label: types.optional(types.string()),
+  claims: z.record(z.array(types.string())),
+});
+
+export function updateMicrofrontendsOidcProvidersFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsOidcProviders, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateMicrofrontendsOidcProviders$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsOidcProviders' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsTrustedSources$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsTrustedSources,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  projects: types.optional(
+    z.record(z.lazy(() => UpdateMicrofrontendsProjects$inboundSchema)),
+  ),
+  oidcProviders: types.optional(
+    z.record(z.array(z.lazy(() =>
+      UpdateMicrofrontendsOidcProviders$inboundSchema
+    ))),
+  ),
+});
+
+export function updateMicrofrontendsTrustedSourcesFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsTrustedSources, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateMicrofrontendsTrustedSources$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsTrustedSources' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsGitComments$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsGitComments,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  onPullRequest: types.boolean(),
+  onCommit: types.boolean(),
+});
+
+export function updateMicrofrontendsGitCommentsFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsGitComments, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateMicrofrontendsGitComments$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsGitComments' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsCreateDeployments$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateMicrofrontendsCreateDeployments> = z.nativeEnum(
+    UpdateMicrofrontendsCreateDeployments,
+  );
+
+/** @internal */
+export const UpdateMicrofrontendsConsolidatedGitCommitStatus$inboundSchema:
+  z.ZodType<
+    UpdateMicrofrontendsConsolidatedGitCommitStatus,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    enabled: types.boolean(),
+    propagateFailures: types.boolean(),
+  });
+
+export function updateMicrofrontendsConsolidatedGitCommitStatusFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UpdateMicrofrontendsConsolidatedGitCommitStatus,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateMicrofrontendsConsolidatedGitCommitStatus$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UpdateMicrofrontendsConsolidatedGitCommitStatus' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsGitProviderOptions$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsGitProviderOptions,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  createDeployments: UpdateMicrofrontendsCreateDeployments$inboundSchema,
+  disableRepositoryDispatchEvents: types.optional(types.boolean()),
+  requireVerifiedCommits: types.optional(types.boolean()),
+  gitCommitStatus: types.optional(types.boolean()),
+  consolidatedGitCommitStatus: types.optional(
+    z.lazy(() => UpdateMicrofrontendsConsolidatedGitCommitStatus$inboundSchema),
+  ),
+});
+
+export function updateMicrofrontendsGitProviderOptionsFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsGitProviderOptions, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateMicrofrontendsGitProviderOptions$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsGitProviderOptions' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsWebAnalytics$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsWebAnalytics,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  id: types.string(),
+  disabledAt: types.optional(types.number()),
+  canceledAt: types.optional(types.number()),
+  enabledAt: types.optional(types.number()),
+  hasData: types.optional(types.literal(true)),
+});
+
+export function updateMicrofrontendsWebAnalyticsFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsWebAnalytics, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateMicrofrontendsWebAnalytics$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsWebAnalytics' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodyAction$inboundSchema:
+  z.ZodNativeEnum<
+    typeof UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodyAction
+  > = z.nativeEnum(
+    UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodyAction,
+  );
+
+/** @internal */
+export const UpdateMicrofrontendsVercelRuleset$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsVercelRuleset,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  active: types.boolean(),
+  action: types.optional(
+    UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodyAction$inboundSchema,
+  ),
+});
+
+export function updateMicrofrontendsVercelRulesetFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsVercelRuleset, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateMicrofrontendsVercelRuleset$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsVercelRuleset' from JSON`,
+  );
+}
 
 /** @internal */
 export const UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodySecurityAction$inboundSchema:
@@ -1020,7 +1998,7 @@ export const UpdateMicrofrontendsManagedRules$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  vercel_ruleset: UpdateMicrofrontendsVercelRuleset$inboundSchema,
+  vercel_ruleset: z.lazy(() => UpdateMicrofrontendsVercelRuleset$inboundSchema),
   traffic_sources: z.lazy(() =>
     UpdateMicrofrontendsTrafficSources$inboundSchema
   ),
@@ -2630,6 +3608,7 @@ export const UpdateMicrofrontendsResponseBody$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   accountId: types.string(),
+  alias: z.array(UpdateMicrofrontendsAlias$inboundSchema),
   analytics: types.optional(UpdateMicrofrontendsAnalytics$inboundSchema),
   appliedCve55182Migration: types.optional(types.boolean()),
   speedInsights: types.optional(
@@ -2725,23 +3704,37 @@ export const UpdateMicrofrontendsResponseBody$inboundSchema: z.ZodType<
     UpdateMicrofrontendsLastRollbackTarget$inboundSchema,
   ).optional(),
   lastAliasRequest: z.nullable(
-    UpdateMicrofrontendsLastAliasRequest$inboundSchema,
+    z.lazy(() => UpdateMicrofrontendsLastAliasRequest$inboundSchema),
   ).optional(),
   protectionBypass: types.optional(
-    z.record(UpdateMicrofrontendsProtectionBypass$inboundSchema),
+    z.record(z.union([
+      z.lazy(() => UpdateMicrofrontendsProtectionBypass1$inboundSchema),
+      z.lazy(() =>
+        UpdateMicrofrontendsProtectionBypass2$inboundSchema
+      ),
+    ])),
   ),
   hasActiveBranches: types.optional(types.boolean()),
-  trustedIps: z.nullable(UpdateMicrofrontendsTrustedIps$inboundSchema)
-    .optional(),
-  trustedSources: z.nullable(UpdateMicrofrontendsTrustedSources$inboundSchema)
-    .optional(),
-  gitComments: types.optional(UpdateMicrofrontendsGitComments$inboundSchema),
+  trustedIps: z.nullable(
+    smartUnion([
+      z.lazy(() => UpdateMicrofrontendsTrustedIps1$inboundSchema),
+      z.lazy(() => UpdateMicrofrontendsTrustedIps2$inboundSchema),
+    ]),
+  ).optional(),
+  trustedSources: z.nullable(
+    z.lazy(() => UpdateMicrofrontendsTrustedSources$inboundSchema),
+  ).optional(),
+  gitComments: types.optional(
+    z.lazy(() => UpdateMicrofrontendsGitComments$inboundSchema),
+  ),
   gitProviderOptions: types.optional(
-    UpdateMicrofrontendsGitProviderOptions$inboundSchema,
+    z.lazy(() => UpdateMicrofrontendsGitProviderOptions$inboundSchema),
   ),
   paused: types.optional(types.boolean()),
   concurrencyBucketName: types.optional(types.string()),
-  webAnalytics: types.optional(UpdateMicrofrontendsWebAnalytics$inboundSchema),
+  webAnalytics: types.optional(
+    z.lazy(() => UpdateMicrofrontendsWebAnalytics$inboundSchema),
+  ),
   security: types.optional(
     z.lazy(() => UpdateMicrofrontendsSecurity$inboundSchema),
   ),

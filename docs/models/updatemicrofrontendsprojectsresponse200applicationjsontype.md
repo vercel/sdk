@@ -3,14 +3,14 @@
 ## Example Usage
 
 ```typescript
-import { UpdateMicrofrontendsProjectsResponse200ApplicationJSONType } from "@vercel/sdk/models/updatemicrofrontendsvercelruleset.js";
+import { UpdateMicrofrontendsProjectsResponse200ApplicationJSONType } from "@vercel/sdk/models/updatemicrofrontendsresponsebody.js";
 
 let value: UpdateMicrofrontendsProjectsResponse200ApplicationJSONType =
-  "flags-secret";
+  "promote";
 ```
 
 ## Values
 
 ```typescript
-"flags-secret"
+"promote" | "rollback"
 ```

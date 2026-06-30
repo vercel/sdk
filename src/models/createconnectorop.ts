@@ -516,6 +516,10 @@ export type CreateConnectorResponseBody = {
    */
   triggerDestinations?: Array<TriggerDestinations> | undefined;
   /**
+   * Whether this connector is linked to the project supplied through `prioritizedProjectId`. Only present on prioritized list responses.
+   */
+  isConnectedToPrioritizedProject?: boolean | undefined;
+  /**
    * Optional expansions populated by `?include=...` on the list endpoint.
    */
   includes?: Includes | undefined;
@@ -1667,6 +1671,7 @@ export const CreateConnectorResponseBody$inboundSchema: z.ZodType<
   triggerDestinations: types.optional(
     z.array(z.lazy(() => TriggerDestinations$inboundSchema)),
   ),
+  isConnectedToPrioritizedProject: types.optional(types.boolean()),
   includes: types.optional(z.lazy(() => Includes$inboundSchema)),
 });
 

@@ -21,6 +21,7 @@ let value: OrbSubscriptionIntent = {
       ],
     },
     output: {
+      effectiveBehavior: "end_of_term",
       orbPriceId: "<id>",
       productId: "<id>",
     },

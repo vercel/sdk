@@ -5,7 +5,7 @@ Composable deployment-time policy. Each rule type holds a list of rules, one per
 ## Example Usage
 
 ```typescript
-import { DeploymentPolicy1 } from "@vercel/sdk/models/updateprojectprojectspaths.js";
+import { DeploymentPolicy1 } from "@vercel/sdk/models/updateprojectbuilds.js";
 
 let value: DeploymentPolicy1 = {};
 ```

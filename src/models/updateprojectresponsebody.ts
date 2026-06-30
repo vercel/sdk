@@ -10,8 +10,38 @@ import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 import {
-  UpdateProjectAbuse,
-  UpdateProjectAbuse$inboundSchema,
+  UpdateProjectAlias,
+  UpdateProjectAlias$inboundSchema,
+  UpdateProjectAnalytics,
+  UpdateProjectAnalytics$inboundSchema,
+  UpdateProjectConnectConfigurations,
+  UpdateProjectConnectConfigurations$inboundSchema,
+  UpdateProjectCrons,
+  UpdateProjectCrons$inboundSchema,
+  UpdateProjectCustomEnvironments,
+  UpdateProjectCustomEnvironments$inboundSchema,
+  UpdateProjectDataCache,
+  UpdateProjectDataCache$inboundSchema,
+  UpdateProjectDeploymentExpiration,
+  UpdateProjectDeploymentExpiration$inboundSchema,
+  UpdateProjectExpiration,
+  UpdateProjectExpiration$inboundSchema,
+  UpdateProjectIpBuckets,
+  UpdateProjectIpBuckets$inboundSchema,
+  UpdateProjectJobs,
+  UpdateProjectJobs$inboundSchema,
+  UpdateProjectProjectsEnv,
+  UpdateProjectProjectsEnv$inboundSchema,
+  UpdateProjectProjectsFramework,
+  UpdateProjectProjectsFramework$inboundSchema,
+  UpdateProjectServices,
+  UpdateProjectServices$inboundSchema,
+  UpdateProjectSpeedInsights,
+  UpdateProjectSpeedInsights$inboundSchema,
+} from "./updateprojectbuilds.js";
+import {
+  UpdateProjectBlock,
+  UpdateProjectBlock$inboundSchema,
   UpdateProjectDefaultResourceConfig,
   UpdateProjectDefaultResourceConfig$inboundSchema,
   UpdateProjectFeatures,
@@ -22,16 +52,28 @@ import {
   UpdateProjectGitComments$inboundSchema,
   UpdateProjectGitProviderOptions,
   UpdateProjectGitProviderOptions$inboundSchema,
-  UpdateProjectInternalRoutes,
-  UpdateProjectInternalRoutes$inboundSchema,
+  UpdateProjectHasProjects2,
+  UpdateProjectHasProjects2$inboundSchema,
+  UpdateProjectHasProjectsKey,
+  UpdateProjectHasProjectsKey$inboundSchema,
+  UpdateProjectHistory,
+  UpdateProjectHistory$inboundSchema,
   UpdateProjectLastAliasRequest,
   UpdateProjectLastAliasRequest$inboundSchema,
   UpdateProjectLastRollbackTarget,
   UpdateProjectLastRollbackTarget$inboundSchema,
+  UpdateProjectLatestDeployments,
+  UpdateProjectLatestDeployments$inboundSchema,
+  UpdateProjectLink,
+  UpdateProjectLink$inboundSchema,
+  UpdateProjectMicrofrontends,
+  UpdateProjectMicrofrontends$inboundSchema,
   UpdateProjectPermissions,
   UpdateProjectPermissions$inboundSchema,
   UpdateProjectProjectsDeploymentPolicy,
   UpdateProjectProjectsDeploymentPolicy$inboundSchema,
+  UpdateProjectProjectsNodeVersion,
+  UpdateProjectProjectsNodeVersion$inboundSchema,
   UpdateProjectProjectsOidcTokenConfig,
   UpdateProjectProjectsOidcTokenConfig$inboundSchema,
   UpdateProjectProjectsOptionsAllowlist,
@@ -66,43 +108,248 @@ import {
   UpdateProjectUsageStatus$inboundSchema,
   UpdateProjectWebAnalytics,
   UpdateProjectWebAnalytics$inboundSchema,
-} from "./updateprojectinternalroutes.js";
-import {
-  UpdateProjectAnalytics,
-  UpdateProjectAnalytics$inboundSchema,
-  UpdateProjectConnectConfigurations,
-  UpdateProjectConnectConfigurations$inboundSchema,
-  UpdateProjectCrons,
-  UpdateProjectCrons$inboundSchema,
-  UpdateProjectCustomEnvironments,
-  UpdateProjectCustomEnvironments$inboundSchema,
-  UpdateProjectDataCache,
-  UpdateProjectDataCache$inboundSchema,
-  UpdateProjectDeploymentExpiration,
-  UpdateProjectDeploymentExpiration$inboundSchema,
-  UpdateProjectExpiration,
-  UpdateProjectExpiration$inboundSchema,
-  UpdateProjectIpBuckets,
-  UpdateProjectIpBuckets$inboundSchema,
-  UpdateProjectJobs,
-  UpdateProjectJobs$inboundSchema,
-  UpdateProjectLatestDeployments,
-  UpdateProjectLatestDeployments$inboundSchema,
-  UpdateProjectLink,
-  UpdateProjectLink$inboundSchema,
-  UpdateProjectMicrofrontends,
-  UpdateProjectMicrofrontends$inboundSchema,
-  UpdateProjectProjectsEnv,
-  UpdateProjectProjectsEnv$inboundSchema,
-  UpdateProjectProjectsFramework,
-  UpdateProjectProjectsFramework$inboundSchema,
-  UpdateProjectProjectsNodeVersion,
-  UpdateProjectProjectsNodeVersion$inboundSchema,
-  UpdateProjectServices,
-  UpdateProjectServices$inboundSchema,
-  UpdateProjectSpeedInsights,
-  UpdateProjectSpeedInsights$inboundSchema,
-} from "./updateprojectprojectspaths.js";
+} from "./updateprojecthasprojectskey.js";
+
+export type UpdateProjectHasProjectsResponseValue = {
+  eq: string;
+};
+
+export type UpdateProjectHasProjects1 = {
+  type: "header";
+  key: UpdateProjectHasProjectsKey;
+  value: UpdateProjectHasProjectsResponseValue;
+};
+
+export type UpdateProjectRouteProjectsHas =
+  | UpdateProjectHasProjects1
+  | UpdateProjectHasProjects2;
+
+export const UpdateProjectRouteProjectsAction = {
+  BlockLegalCwc: "block_legal_cwc",
+} as const;
+export type UpdateProjectRouteProjectsAction = ClosedEnum<
+  typeof UpdateProjectRouteProjectsAction
+>;
+
+export type UpdateProjectRouteProjectsMitigate = {
+  action: UpdateProjectRouteProjectsAction;
+};
+
+export type UpdateProjectRouteProjects2 = {
+  has: Array<UpdateProjectHasProjects1 | UpdateProjectHasProjects2>;
+  mitigate: UpdateProjectRouteProjectsMitigate;
+  src?: string | undefined;
+};
+
+export type UpdateProjectRouteProjects1 = {
+  src: string;
+  status: number;
+};
+
+export type UpdateProjectBlockHistoryProjectsRoute =
+  | UpdateProjectRouteProjects1
+  | UpdateProjectRouteProjects2;
+
+export type UpdateProjectBlockHistory4 = {
+  action: "route-unblocked";
+  route: UpdateProjectRouteProjects1 | UpdateProjectRouteProjects2;
+  statusCode?: number | undefined;
+  createdAt: number;
+  caseId?: string | undefined;
+  actor?: string | undefined;
+  comment?: string | undefined;
+  ineligibleForAppeal?: boolean | undefined;
+  isCascading?: boolean | undefined;
+};
+
+export type UpdateProjectHasProjectsResponse200ApplicationJSONResponseBodyValue =
+  {
+    eq: string;
+  };
+
+export type UpdateProjectHasProjectsResponse2 = {
+  type: "host";
+  value: UpdateProjectHasProjectsResponse200ApplicationJSONResponseBodyValue;
+};
+
+export const UpdateProjectHasProjectsResponseKey = {
+  XVercelIpCountry: "x-vercel-ip-country",
+} as const;
+export type UpdateProjectHasProjectsResponseKey = ClosedEnum<
+  typeof UpdateProjectHasProjectsResponseKey
+>;
+
+export type UpdateProjectHasProjectsResponse200ApplicationJSONValue = {
+  eq: string;
+};
+
+export type UpdateProjectHasProjectsResponse1 = {
+  type: "header";
+  key: UpdateProjectHasProjectsResponseKey;
+  value: UpdateProjectHasProjectsResponse200ApplicationJSONValue;
+};
+
+export type UpdateProjectRouteHas =
+  | UpdateProjectHasProjectsResponse1
+  | UpdateProjectHasProjectsResponse2;
+
+export const UpdateProjectRouteAction = {
+  BlockLegalCwc: "block_legal_cwc",
+} as const;
+export type UpdateProjectRouteAction = ClosedEnum<
+  typeof UpdateProjectRouteAction
+>;
+
+export type UpdateProjectRouteMitigate = {
+  action: UpdateProjectRouteAction;
+};
+
+export type UpdateProjectRoute2 = {
+  has: Array<
+    UpdateProjectHasProjectsResponse1 | UpdateProjectHasProjectsResponse2
+  >;
+  mitigate: UpdateProjectRouteMitigate;
+  src?: string | undefined;
+};
+
+export type UpdateProjectRoute1 = {
+  src: string;
+  status: number;
+};
+
+export type UpdateProjectBlockHistoryRoute =
+  | UpdateProjectRoute1
+  | UpdateProjectRoute2;
+
+export type UpdateProjectBlockHistory3 = {
+  action: "route-blocked";
+  route: UpdateProjectRoute1 | UpdateProjectRoute2;
+  reason: string;
+  createdAt: number;
+  caseId?: string | undefined;
+  actor?: string | undefined;
+  comment?: string | undefined;
+  ineligibleForAppeal?: boolean | undefined;
+  isCascading?: boolean | undefined;
+};
+
+export type UpdateProjectBlockHistory2 = {
+  action: "unblocked";
+  createdAt: number;
+  caseId?: string | undefined;
+  actor?: string | undefined;
+  comment?: string | undefined;
+  ineligibleForAppeal?: boolean | undefined;
+  isCascading?: boolean | undefined;
+};
+
+export type UpdateProjectBlockHistory1 = {
+  action: "blocked";
+  reason: string;
+  statusCode: number;
+  createdAt: number;
+  caseId?: string | undefined;
+  actor?: string | undefined;
+  comment?: string | undefined;
+  ineligibleForAppeal?: boolean | undefined;
+  isCascading?: boolean | undefined;
+};
+
+export type UpdateProjectBlockHistory =
+  | UpdateProjectBlockHistory1
+  | UpdateProjectBlockHistory2
+  | UpdateProjectBlockHistory3
+  | UpdateProjectBlockHistory4;
+
+export const UpdateProjectProjectsResponseAction = {
+  AddDeploymentInterstitial: "add-deployment-interstitial",
+  AddProjectInterstitial: "add-project-interstitial",
+  RemoveDeploymentInterstitial: "remove-deployment-interstitial",
+  RemoveProjectInterstitial: "remove-project-interstitial",
+} as const;
+export type UpdateProjectProjectsResponseAction = ClosedEnum<
+  typeof UpdateProjectProjectsResponseAction
+>;
+
+export type UpdateProjectInterstitialHistory = {
+  action: UpdateProjectProjectsResponseAction;
+  createdAt: number;
+  caseId?: string | undefined;
+  reason?: string | undefined;
+  actor?: string | undefined;
+  comment?: string | undefined;
+};
+
+export type UpdateProjectAbuse = {
+  scanner?: string | undefined;
+  history: Array<UpdateProjectHistory>;
+  updatedAt: number;
+  block?: UpdateProjectBlock | undefined;
+  blockHistory?:
+    | Array<
+      | UpdateProjectBlockHistory1
+      | UpdateProjectBlockHistory2
+      | UpdateProjectBlockHistory3
+      | UpdateProjectBlockHistory4
+    >
+    | undefined;
+  interstitial?: boolean | undefined;
+  interstitialHistory?: Array<UpdateProjectInterstitialHistory> | undefined;
+};
+
+export type UpdateProjectHasProjectsValue = {
+  eq: string;
+};
+
+export type UpdateProjectHas2 = {
+  type: "host";
+  value: UpdateProjectHasProjectsValue;
+};
+
+export const UpdateProjectHasKey = {
+  XVercelIpCountry: "x-vercel-ip-country",
+} as const;
+export type UpdateProjectHasKey = ClosedEnum<typeof UpdateProjectHasKey>;
+
+export type UpdateProjectHasValue = {
+  eq: string;
+};
+
+export type UpdateProjectHas1 = {
+  type: "header";
+  key: UpdateProjectHasKey;
+  value: UpdateProjectHasValue;
+};
+
+export type UpdateProjectInternalRoutesHas =
+  | UpdateProjectHas1
+  | UpdateProjectHas2;
+
+export const UpdateProjectInternalRoutesAction = {
+  BlockLegalCwc: "block_legal_cwc",
+} as const;
+export type UpdateProjectInternalRoutesAction = ClosedEnum<
+  typeof UpdateProjectInternalRoutesAction
+>;
+
+export type UpdateProjectInternalRoutesMitigate = {
+  action: UpdateProjectInternalRoutesAction;
+};
+
+export type UpdateProjectInternalRoutes2 = {
+  has: Array<UpdateProjectHas1 | UpdateProjectHas2>;
+  mitigate: UpdateProjectInternalRoutesMitigate;
+  src?: string | undefined;
+};
+
+export type UpdateProjectInternalRoutes1 = {
+  src: string;
+  status: number;
+};
+
+export type UpdateProjectInternalRoutes =
+  | UpdateProjectInternalRoutes1
+  | UpdateProjectInternalRoutes2;
 
 export const UpdateProjectProjectsAction = {
   Accept: "accept",
@@ -178,6 +425,7 @@ export type UpdateProjectTracing = {
  */
 export type UpdateProjectResponseBody = {
   accountId: string;
+  alias: Array<UpdateProjectAlias>;
   analytics?: UpdateProjectAnalytics | undefined;
   appliedCve55182Migration?: boolean | undefined;
   speedInsights?: UpdateProjectSpeedInsights | undefined;
@@ -283,13 +531,772 @@ export type UpdateProjectResponseBody = {
   v0?: boolean | undefined;
   v0Created?: boolean | undefined;
   abuse?: UpdateProjectAbuse | undefined;
-  internalRoutes?: Array<UpdateProjectInternalRoutes> | undefined;
+  internalRoutes?:
+    | Array<UpdateProjectInternalRoutes1 | UpdateProjectInternalRoutes2>
+    | undefined;
   hasDeployments?: boolean | undefined;
   dismissedToasts?: Array<UpdateProjectProjectsDismissedToasts> | undefined;
   protectedSourcemaps?: boolean | undefined;
   tracing?: UpdateProjectTracing | undefined;
   avatar?: string | null | undefined;
 };
+
+/** @internal */
+export const UpdateProjectHasProjectsResponseValue$inboundSchema: z.ZodType<
+  UpdateProjectHasProjectsResponseValue,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  eq: types.string(),
+});
+
+export function updateProjectHasProjectsResponseValueFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectHasProjectsResponseValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateProjectHasProjectsResponseValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectHasProjectsResponseValue' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateProjectHasProjects1$inboundSchema: z.ZodType<
+  UpdateProjectHasProjects1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: types.literal("header"),
+  key: UpdateProjectHasProjectsKey$inboundSchema,
+  value: z.lazy(() => UpdateProjectHasProjectsResponseValue$inboundSchema),
+});
+
+export function updateProjectHasProjects1FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectHasProjects1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectHasProjects1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectHasProjects1' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateProjectRouteProjectsHas$inboundSchema: z.ZodType<
+  UpdateProjectRouteProjectsHas,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() => UpdateProjectHasProjects1$inboundSchema),
+  UpdateProjectHasProjects2$inboundSchema,
+]);
+
+export function updateProjectRouteProjectsHasFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectRouteProjectsHas, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectRouteProjectsHas$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectRouteProjectsHas' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateProjectRouteProjectsAction$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateProjectRouteProjectsAction
+> = z.nativeEnum(UpdateProjectRouteProjectsAction);
+
+/** @internal */
+export const UpdateProjectRouteProjectsMitigate$inboundSchema: z.ZodType<
+  UpdateProjectRouteProjectsMitigate,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  action: UpdateProjectRouteProjectsAction$inboundSchema,
+});
+
+export function updateProjectRouteProjectsMitigateFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectRouteProjectsMitigate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateProjectRouteProjectsMitigate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectRouteProjectsMitigate' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateProjectRouteProjects2$inboundSchema: z.ZodType<
+  UpdateProjectRouteProjects2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  has: z.array(
+    z.union([
+      z.lazy(() => UpdateProjectHasProjects1$inboundSchema),
+      UpdateProjectHasProjects2$inboundSchema,
+    ]),
+  ),
+  mitigate: z.lazy(() => UpdateProjectRouteProjectsMitigate$inboundSchema),
+  src: types.optional(types.string()),
+});
+
+export function updateProjectRouteProjects2FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectRouteProjects2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectRouteProjects2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectRouteProjects2' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateProjectRouteProjects1$inboundSchema: z.ZodType<
+  UpdateProjectRouteProjects1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  src: types.string(),
+  status: types.number(),
+});
+
+export function updateProjectRouteProjects1FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectRouteProjects1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectRouteProjects1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectRouteProjects1' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateProjectBlockHistoryProjectsRoute$inboundSchema: z.ZodType<
+  UpdateProjectBlockHistoryProjectsRoute,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  z.lazy(() => UpdateProjectRouteProjects1$inboundSchema),
+  z.lazy(() => UpdateProjectRouteProjects2$inboundSchema),
+]);
+
+export function updateProjectBlockHistoryProjectsRouteFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectBlockHistoryProjectsRoute, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateProjectBlockHistoryProjectsRoute$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectBlockHistoryProjectsRoute' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateProjectBlockHistory4$inboundSchema: z.ZodType<
+  UpdateProjectBlockHistory4,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  action: types.literal("route-unblocked"),
+  route: smartUnion([
+    z.lazy(() => UpdateProjectRouteProjects1$inboundSchema),
+    z.lazy(() => UpdateProjectRouteProjects2$inboundSchema),
+  ]),
+  statusCode: types.optional(types.number()),
+  createdAt: types.number(),
+  caseId: types.optional(types.string()),
+  actor: types.optional(types.string()),
+  comment: types.optional(types.string()),
+  ineligibleForAppeal: types.optional(types.boolean()),
+  isCascading: types.optional(types.boolean()),
+});
+
+export function updateProjectBlockHistory4FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectBlockHistory4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectBlockHistory4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectBlockHistory4' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateProjectHasProjectsResponse200ApplicationJSONResponseBodyValue$inboundSchema:
+  z.ZodType<
+    UpdateProjectHasProjectsResponse200ApplicationJSONResponseBodyValue,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    eq: types.string(),
+  });
+
+export function updateProjectHasProjectsResponse200ApplicationJSONResponseBodyValueFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UpdateProjectHasProjectsResponse200ApplicationJSONResponseBodyValue,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateProjectHasProjectsResponse200ApplicationJSONResponseBodyValue$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectHasProjectsResponse200ApplicationJSONResponseBodyValue' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateProjectHasProjectsResponse2$inboundSchema: z.ZodType<
+  UpdateProjectHasProjectsResponse2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: types.literal("host"),
+  value: z.lazy(() =>
+    UpdateProjectHasProjectsResponse200ApplicationJSONResponseBodyValue$inboundSchema
+  ),
+});
+
+export function updateProjectHasProjectsResponse2FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectHasProjectsResponse2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectHasProjectsResponse2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectHasProjectsResponse2' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateProjectHasProjectsResponseKey$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateProjectHasProjectsResponseKey
+> = z.nativeEnum(UpdateProjectHasProjectsResponseKey);
+
+/** @internal */
+export const UpdateProjectHasProjectsResponse200ApplicationJSONValue$inboundSchema:
+  z.ZodType<
+    UpdateProjectHasProjectsResponse200ApplicationJSONValue,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    eq: types.string(),
+  });
+
+export function updateProjectHasProjectsResponse200ApplicationJSONValueFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UpdateProjectHasProjectsResponse200ApplicationJSONValue,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateProjectHasProjectsResponse200ApplicationJSONValue$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectHasProjectsResponse200ApplicationJSONValue' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateProjectHasProjectsResponse1$inboundSchema: z.ZodType<
+  UpdateProjectHasProjectsResponse1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: types.literal("header"),
+  key: UpdateProjectHasProjectsResponseKey$inboundSchema,
+  value: z.lazy(() =>
+    UpdateProjectHasProjectsResponse200ApplicationJSONValue$inboundSchema
+  ),
+});
+
+export function updateProjectHasProjectsResponse1FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectHasProjectsResponse1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectHasProjectsResponse1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectHasProjectsResponse1' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateProjectRouteHas$inboundSchema: z.ZodType<
+  UpdateProjectRouteHas,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() => UpdateProjectHasProjectsResponse1$inboundSchema),
+  z.lazy(() => UpdateProjectHasProjectsResponse2$inboundSchema),
+]);
+
+export function updateProjectRouteHasFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectRouteHas, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectRouteHas$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectRouteHas' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateProjectRouteAction$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateProjectRouteAction
+> = z.nativeEnum(UpdateProjectRouteAction);
+
+/** @internal */
+export const UpdateProjectRouteMitigate$inboundSchema: z.ZodType<
+  UpdateProjectRouteMitigate,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  action: UpdateProjectRouteAction$inboundSchema,
+});
+
+export function updateProjectRouteMitigateFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectRouteMitigate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectRouteMitigate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectRouteMitigate' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateProjectRoute2$inboundSchema: z.ZodType<
+  UpdateProjectRoute2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  has: z.array(
+    z.union([
+      z.lazy(() => UpdateProjectHasProjectsResponse1$inboundSchema),
+      z.lazy(() => UpdateProjectHasProjectsResponse2$inboundSchema),
+    ]),
+  ),
+  mitigate: z.lazy(() => UpdateProjectRouteMitigate$inboundSchema),
+  src: types.optional(types.string()),
+});
+
+export function updateProjectRoute2FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectRoute2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectRoute2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectRoute2' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateProjectRoute1$inboundSchema: z.ZodType<
+  UpdateProjectRoute1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  src: types.string(),
+  status: types.number(),
+});
+
+export function updateProjectRoute1FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectRoute1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectRoute1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectRoute1' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateProjectBlockHistoryRoute$inboundSchema: z.ZodType<
+  UpdateProjectBlockHistoryRoute,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  z.lazy(() => UpdateProjectRoute1$inboundSchema),
+  z.lazy(() => UpdateProjectRoute2$inboundSchema),
+]);
+
+export function updateProjectBlockHistoryRouteFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectBlockHistoryRoute, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectBlockHistoryRoute$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectBlockHistoryRoute' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateProjectBlockHistory3$inboundSchema: z.ZodType<
+  UpdateProjectBlockHistory3,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  action: types.literal("route-blocked"),
+  route: smartUnion([
+    z.lazy(() => UpdateProjectRoute1$inboundSchema),
+    z.lazy(() => UpdateProjectRoute2$inboundSchema),
+  ]),
+  reason: types.string(),
+  createdAt: types.number(),
+  caseId: types.optional(types.string()),
+  actor: types.optional(types.string()),
+  comment: types.optional(types.string()),
+  ineligibleForAppeal: types.optional(types.boolean()),
+  isCascading: types.optional(types.boolean()),
+});
+
+export function updateProjectBlockHistory3FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectBlockHistory3, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectBlockHistory3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectBlockHistory3' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateProjectBlockHistory2$inboundSchema: z.ZodType<
+  UpdateProjectBlockHistory2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  action: types.literal("unblocked"),
+  createdAt: types.number(),
+  caseId: types.optional(types.string()),
+  actor: types.optional(types.string()),
+  comment: types.optional(types.string()),
+  ineligibleForAppeal: types.optional(types.boolean()),
+  isCascading: types.optional(types.boolean()),
+});
+
+export function updateProjectBlockHistory2FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectBlockHistory2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectBlockHistory2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectBlockHistory2' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateProjectBlockHistory1$inboundSchema: z.ZodType<
+  UpdateProjectBlockHistory1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  action: types.literal("blocked"),
+  reason: types.string(),
+  statusCode: types.number(),
+  createdAt: types.number(),
+  caseId: types.optional(types.string()),
+  actor: types.optional(types.string()),
+  comment: types.optional(types.string()),
+  ineligibleForAppeal: types.optional(types.boolean()),
+  isCascading: types.optional(types.boolean()),
+});
+
+export function updateProjectBlockHistory1FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectBlockHistory1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectBlockHistory1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectBlockHistory1' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateProjectBlockHistory$inboundSchema: z.ZodType<
+  UpdateProjectBlockHistory,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() => UpdateProjectBlockHistory1$inboundSchema),
+  z.lazy(() => UpdateProjectBlockHistory2$inboundSchema),
+  z.lazy(() => UpdateProjectBlockHistory3$inboundSchema),
+  z.lazy(() => UpdateProjectBlockHistory4$inboundSchema),
+]);
+
+export function updateProjectBlockHistoryFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectBlockHistory, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectBlockHistory$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectBlockHistory' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateProjectProjectsResponseAction$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateProjectProjectsResponseAction
+> = z.nativeEnum(UpdateProjectProjectsResponseAction);
+
+/** @internal */
+export const UpdateProjectInterstitialHistory$inboundSchema: z.ZodType<
+  UpdateProjectInterstitialHistory,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  action: UpdateProjectProjectsResponseAction$inboundSchema,
+  createdAt: types.number(),
+  caseId: types.optional(types.string()),
+  reason: types.optional(types.string()),
+  actor: types.optional(types.string()),
+  comment: types.optional(types.string()),
+});
+
+export function updateProjectInterstitialHistoryFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectInterstitialHistory, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectInterstitialHistory$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectInterstitialHistory' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateProjectAbuse$inboundSchema: z.ZodType<
+  UpdateProjectAbuse,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  scanner: types.optional(types.string()),
+  history: z.array(UpdateProjectHistory$inboundSchema),
+  updatedAt: types.number(),
+  block: types.optional(UpdateProjectBlock$inboundSchema),
+  blockHistory: types.optional(
+    z.array(z.union([
+      z.lazy(() => UpdateProjectBlockHistory1$inboundSchema),
+      z.lazy(() =>
+        UpdateProjectBlockHistory2$inboundSchema
+      ),
+      z.lazy(() => UpdateProjectBlockHistory3$inboundSchema),
+      z.lazy(() => UpdateProjectBlockHistory4$inboundSchema),
+    ])),
+  ),
+  interstitial: types.optional(types.boolean()),
+  interstitialHistory: types.optional(
+    z.array(z.lazy(() => UpdateProjectInterstitialHistory$inboundSchema)),
+  ),
+});
+
+export function updateProjectAbuseFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectAbuse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectAbuse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectAbuse' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateProjectHasProjectsValue$inboundSchema: z.ZodType<
+  UpdateProjectHasProjectsValue,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  eq: types.string(),
+});
+
+export function updateProjectHasProjectsValueFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectHasProjectsValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectHasProjectsValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectHasProjectsValue' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateProjectHas2$inboundSchema: z.ZodType<
+  UpdateProjectHas2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: types.literal("host"),
+  value: z.lazy(() => UpdateProjectHasProjectsValue$inboundSchema),
+});
+
+export function updateProjectHas2FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectHas2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectHas2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectHas2' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateProjectHasKey$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateProjectHasKey
+> = z.nativeEnum(UpdateProjectHasKey);
+
+/** @internal */
+export const UpdateProjectHasValue$inboundSchema: z.ZodType<
+  UpdateProjectHasValue,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  eq: types.string(),
+});
+
+export function updateProjectHasValueFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectHasValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectHasValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectHasValue' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateProjectHas1$inboundSchema: z.ZodType<
+  UpdateProjectHas1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: types.literal("header"),
+  key: UpdateProjectHasKey$inboundSchema,
+  value: z.lazy(() => UpdateProjectHasValue$inboundSchema),
+});
+
+export function updateProjectHas1FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectHas1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectHas1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectHas1' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateProjectInternalRoutesHas$inboundSchema: z.ZodType<
+  UpdateProjectInternalRoutesHas,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() => UpdateProjectHas1$inboundSchema),
+  z.lazy(() => UpdateProjectHas2$inboundSchema),
+]);
+
+export function updateProjectInternalRoutesHasFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectInternalRoutesHas, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectInternalRoutesHas$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectInternalRoutesHas' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateProjectInternalRoutesAction$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateProjectInternalRoutesAction
+> = z.nativeEnum(UpdateProjectInternalRoutesAction);
+
+/** @internal */
+export const UpdateProjectInternalRoutesMitigate$inboundSchema: z.ZodType<
+  UpdateProjectInternalRoutesMitigate,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  action: UpdateProjectInternalRoutesAction$inboundSchema,
+});
+
+export function updateProjectInternalRoutesMitigateFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectInternalRoutesMitigate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateProjectInternalRoutesMitigate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectInternalRoutesMitigate' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateProjectInternalRoutes2$inboundSchema: z.ZodType<
+  UpdateProjectInternalRoutes2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  has: z.array(
+    z.union([
+      z.lazy(() => UpdateProjectHas1$inboundSchema),
+      z.lazy(() => UpdateProjectHas2$inboundSchema),
+    ]),
+  ),
+  mitigate: z.lazy(() => UpdateProjectInternalRoutesMitigate$inboundSchema),
+  src: types.optional(types.string()),
+});
+
+export function updateProjectInternalRoutes2FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectInternalRoutes2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectInternalRoutes2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectInternalRoutes2' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateProjectInternalRoutes1$inboundSchema: z.ZodType<
+  UpdateProjectInternalRoutes1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  src: types.string(),
+  status: types.number(),
+});
+
+export function updateProjectInternalRoutes1FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectInternalRoutes1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectInternalRoutes1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectInternalRoutes1' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateProjectInternalRoutes$inboundSchema: z.ZodType<
+  UpdateProjectInternalRoutes,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  z.lazy(() => UpdateProjectInternalRoutes1$inboundSchema),
+  z.lazy(() => UpdateProjectInternalRoutes2$inboundSchema),
+]);
+
+export function updateProjectInternalRoutesFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectInternalRoutes, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectInternalRoutes$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectInternalRoutes' from JSON`,
+  );
+}
 
 /** @internal */
 export const UpdateProjectProjectsAction$inboundSchema: z.ZodNativeEnum<
@@ -464,6 +1471,7 @@ export const UpdateProjectResponseBody$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   accountId: types.string(),
+  alias: z.array(UpdateProjectAlias$inboundSchema),
   analytics: types.optional(UpdateProjectAnalytics$inboundSchema),
   appliedCve55182Migration: types.optional(types.boolean()),
   speedInsights: types.optional(UpdateProjectSpeedInsights$inboundSchema),
@@ -579,9 +1587,14 @@ export const UpdateProjectResponseBody$inboundSchema: z.ZodType<
   features: types.optional(UpdateProjectFeatures$inboundSchema),
   v0: types.optional(types.boolean()),
   v0Created: types.optional(types.boolean()),
-  abuse: types.optional(UpdateProjectAbuse$inboundSchema),
+  abuse: types.optional(z.lazy(() => UpdateProjectAbuse$inboundSchema)),
   internalRoutes: types.optional(
-    z.array(UpdateProjectInternalRoutes$inboundSchema),
+    z.array(smartUnion([
+      z.lazy(() => UpdateProjectInternalRoutes1$inboundSchema),
+      z.lazy(() =>
+        UpdateProjectInternalRoutes2$inboundSchema
+      ),
+    ])),
   ),
   hasDeployments: types.optional(types.boolean()),
   dismissedToasts: types.optional(

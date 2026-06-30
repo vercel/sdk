@@ -18,7 +18,7 @@ import {
 import {
   GetProjectsRequest,
   GetProjectsRequest$outboundSchema,
-} from "../models/getprojectsresponsebodyprojectsgitprovideroptions.js";
+} from "../models/getprojectsresponsebodyprojectstargets.js";
 import {
   ConnectionError,
   InvalidRequestError,

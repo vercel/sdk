@@ -1,67 +1,27 @@
 # ChangedResources
 
+Resources that were changed as part of this intent. Tracks all logical changes including the primary change and any side effects.
 
-## Supported Types
-
-### `models.ChangedResources1`
+## Example Usage
 
 ```typescript
-const value: models.ChangedResources1 = {
+import { ChangedResources } from "@vercel/sdk/models/buycreditsop.js";
+
+let value: ChangedResources = {
   productAlias: "<value>",
   productId: "<id>",
-  quantity: 4158.03,
-  type: "set_plan_item_quantity",
+  quantity: 9344.97,
 };
 ```
 
-### `models.ChangedResources2`
+## Fields
 
-```typescript
-const value: models.ChangedResources2 = {
-  productAlias: "<value>",
-  productId: "<id>",
-  quantity: 3944.27,
-  resourceIds: [
-    "<value 1>",
-    "<value 2>",
-    "<value 3>",
-  ],
-  type: "increase_plan_item_quantity",
-};
-```
-
-### `models.ChangedResources3`
-
-```typescript
-const value: models.ChangedResources3 = {
-  productAlias: "<value>",
-  productId: "<id>",
-  quantity: 6262.84,
-  resourceIds: [
-    "<value 1>",
-    "<value 2>",
-    "<value 3>",
-  ],
-  type: "decrease_plan_item_quantity",
-};
-```
-
-### `models.ChangedResources4`
-
-```typescript
-const value: models.ChangedResources4 = {
-  addedResourceIds: [
-    "<value 1>",
-    "<value 2>",
-    "<value 3>",
-  ],
-  productAlias: "<value>",
-  productId: "<id>",
-  quantity: 646.59,
-  removedResourceIds: [
-    "<value 1>",
-  ],
-  type: "adjust_plan_item_quantity",
-};
-```
-
+| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `productAlias`                                                         | *string*                                                               | :heavy_check_mark:                                                     | The alias of the product that was changed.                             |
+| `productId`                                                            | *string*                                                               | :heavy_check_mark:                                                     | The ID of the product that was changed.                                |
+| `quantity`                                                             | *number*                                                               | :heavy_check_mark:                                                     | The resulting quantity after this change.                              |
+| `addedResourceIds`                                                     | *string*[]                                                             | :heavy_minus_sign:                                                     | Resource IDs that were added.                                          |
+| `effectiveAt`                                                          | *string*                                                               | :heavy_minus_sign:                                                     | When this resource change should take effect for downstream consumers. |
+| `removedResourceIds`                                                   | *string*[]                                                             | :heavy_minus_sign:                                                     | Resource IDs that were removed.                                        |
+| `resourceIds`                                                          | *string*[]                                                             | :heavy_minus_sign:                                                     | The full set of resource IDs after the change.                         |

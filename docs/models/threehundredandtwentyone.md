@@ -5,22 +5,22 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndTwentyOne } from "@vercel/sdk/models/threehundredandsixteen.js";
+import { ThreeHundredAndTwentyOne } from "@vercel/sdk/models/threehundredandeighteen.js";
 
-let value: ThreeHundredAndTwentyOne = {
-  requestedTeamName: "<value>",
-};
+let value: ThreeHundredAndTwentyOne = {};
 ```
 
 ## Fields
 
-| Field                                | Type                                 | Required                             | Description                          |
-| ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
-| `requestedTeamName`                  | *string*                             | :heavy_check_mark:                   | N/A                                  |
-| `requestedTeamSlug`                  | *string*                             | :heavy_minus_sign:                   | N/A                                  |
-| `requestedUserName`                  | *string*                             | :heavy_minus_sign:                   | N/A                                  |
-| `gitUsername`                        | *string*                             | :heavy_minus_sign:                   | N/A                                  |
-| `githubUsername`                     | *string*                             | :heavy_minus_sign:                   | N/A                                  |
-| `gitlabUsername`                     | *string*                             | :heavy_minus_sign:                   | N/A                                  |
-| `bitbucketUsername`                  | *string*                             | :heavy_minus_sign:                   | N/A                                  |
-| `source`                             | [models.Source](../models/source.md) | :heavy_minus_sign:                   | N/A                                  |
+| Field                                          | Type                                           | Required                                       | Description                                    |
+| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
+| `role`                                         | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
+| `uid`                                          | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
+| `updatedUid`                                   | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
+| `updatedUser`                                  | [models.UpdatedUser](../models/updateduser.md) | :heavy_minus_sign:                             | N/A                                            |
+| `origin`                                       | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
+| `teamSlug`                                     | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
+| `teamRoles`                                    | *string*[]                                     | :heavy_minus_sign:                             | N/A                                            |
+| `teamPermissions`                              | *string*[]                                     | :heavy_minus_sign:                             | N/A                                            |
+| `entitlements`                                 | *string*[]                                     | :heavy_minus_sign:                             | N/A                                            |
+| `invitedBy`                                    | [models.InvitedBy](../models/invitedby.md)     | :heavy_minus_sign:                             | N/A                                            |

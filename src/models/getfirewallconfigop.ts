@@ -717,7 +717,7 @@ export type GetFirewallConfigResponseBody = {
   /**
    * Custom Ruleset
    */
-  crs: GetFirewallConfigCrs;
+  crs?: GetFirewallConfigCrs | undefined;
   rules: Array<Rules1 | Rules2>;
   ips: Array<GetFirewallConfigIps>;
   changes: Array<Changes>;
@@ -1839,7 +1839,7 @@ export const GetFirewallConfigResponseBody$inboundSchema: z.ZodType<
   version: types.number(),
   updatedAt: types.string(),
   firewallEnabled: types.boolean(),
-  crs: z.lazy(() => GetFirewallConfigCrs$inboundSchema),
+  crs: types.optional(z.lazy(() => GetFirewallConfigCrs$inboundSchema)),
   rules: z.array(
     smartUnion([
       z.lazy(() => Rules1$inboundSchema),

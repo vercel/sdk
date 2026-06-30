@@ -10,6 +10,7 @@
 * [updateRollingReleaseConfig](#updaterollingreleaseconfig) - Update the rolling release settings for the project
 * [getRollingRelease](#getrollingrelease) - Get the active rolling release information for a project
 * [approveRollingReleaseStage](#approverollingreleasestage) - Update the active rolling release to the next stage for a project
+* [startRollingRelease](#startrollingrelease) - Start a rolling release for the project
 * [completeRollingRelease](#completerollingrelease) - Complete the rolling release for the project
 
 ## getRollingReleaseBillingStatus
@@ -467,6 +468,83 @@ run();
 ### Response
 
 **Promise\<[models.ApproveRollingReleaseStageResponseBody](../../models/approverollingreleasestageresponsebody.md)\>**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| models.SDKError | 4XX, 5XX        | \*/\*           |
+
+## startRollingRelease
+
+Start a rolling release for a deployment. If a rolling release is already active for the same canary deployment, returns the current state without side effects.
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="startRollingRelease" method="post" path="/v1/projects/{idOrName}/rolling-release/start" -->
+```typescript
+import { Vercel } from "@vercel/sdk";
+
+const vercel = new Vercel({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await vercel.rollingRelease.startRollingRelease({
+    idOrName: "<value>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { VercelCore } from "@vercel/sdk/core.js";
+import { rollingReleaseStartRollingRelease } from "@vercel/sdk/funcs/rollingReleaseStartRollingRelease.js";
+
+// Use `VercelCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const vercel = new VercelCore({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await rollingReleaseStartRollingRelease(vercel, {
+    idOrName: "<value>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("rollingReleaseStartRollingRelease failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [models.StartRollingReleaseRequest](../../models/startrollingreleaserequest.md)                                                                                                | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[models.StartRollingReleaseResponseBody](../../models/startrollingreleaseresponsebody.md)\>**
 
 ### Errors
 

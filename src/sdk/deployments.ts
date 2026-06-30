@@ -104,7 +104,7 @@ export class Deployments extends ClientSDK {
    * Create a new deployment
    *
    * @remarks
-   * Create a new deployment with all the required and intended data. If the deployment is not a git deployment, all files must be provided with the request, either referenced or inlined. Additionally, a deployment id can be specified to redeploy a previous deployment.
+   * Creates a new deployment for the authenticated team or user. For non-git deployments, upload files first via the file upload API, then reference them here by SHA — or inline small files directly in the request body. To redeploy an existing deployment, provide its `deploymentId`; all settings are inherited unless explicitly overridden. The deployment begins building immediately and transitions through `QUEUED` → `INITIALIZING` → `BUILDING` before reaching `READY` or `ERROR`.
    */
   async createDeployment(
     request: CreateDeploymentRequest,
@@ -121,7 +121,7 @@ export class Deployments extends ClientSDK {
    * Cancel a deployment
    *
    * @remarks
-   * This endpoint allows you to cancel a deployment which is currently building, by supplying its `id` in the URL.
+   * Cancels a deployment that is currently in progress, stopping the build before it completes. Use this to recover quickly from accidental deploys, wrong-branch pushes, or builds with known errors — without waiting for them to finish. Returns 400 if the deployment is no longer cancelable (already `READY`, `ERROR`, or `CANCELED`). Returns the updated deployment object with `readyState: 'CANCELED'` on success.
    */
   async cancelDeployment(
     request: CancelDeploymentRequest,

@@ -1,18 +1,16 @@
 # GetProjectsResponseBodyProjectsResponse200ApplicationJSONType
 
-The type of environment (production, preview, or development)
-
 ## Example Usage
 
 ```typescript
-import { GetProjectsResponseBodyProjectsResponse200ApplicationJSONType } from "@vercel/sdk/models/getprojectsresponsebodyprojectsgitprovideroptions.js";
+import { GetProjectsResponseBodyProjectsResponse200ApplicationJSONType } from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponsetype.js";
 
 let value: GetProjectsResponseBodyProjectsResponse200ApplicationJSONType =
-  "development";
+  "LAMBDAS";
 ```
 
 ## Values
 
 ```typescript
-"development" | "preview" | "production"
+"LAMBDAS"
 ```

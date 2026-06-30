@@ -3,44 +3,45 @@
 ## Example Usage
 
 ```typescript
-import { Alias } from "@vercel/sdk/models/getprojectscontenthint11.js";
+import { Alias } from "@vercel/sdk/models/createprojectapril2026securityincidentmigrationappliedfrom.js";
 
 let value: Alias = {
   deployment: {
+    id: "<id>",
     createdAt: 6834.37,
     createdIn: "<value>",
     creator: {
-      email: "Abigale.Renner@hotmail.com",
+      email: "Robin_Rempel@gmail.com",
       uid: "<id>",
-      username: "Ellis.Stoltenberg",
+      username: "Kellie_Boyer3",
     },
     deploymentHostname: "<value>",
     name: "<value>",
-    id: "<id>",
-    plan: "<value>",
+    plan: "pro",
+    previewCommentsEnabled: false,
     private: true,
-    readyState: "<value>",
-    type: "<value>",
-    url: "https://unaware-trick.org/",
+    readyState: "BLOCKED",
+    type: "LAMBDAS",
+    url: "https://insecure-cantaloupe.name",
     userId: "<id>",
   },
-  domain: "ordinary-tray.org",
-  environment: "production",
-  target: "STAGING",
+  domain: "frugal-ribbon.org",
+  environment: "preview",
+  target: "PREVIEW",
 };
 ```
 
 ## Fields
 
-| Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `configuredBy`                                                                     | [models.ResponseBodyConfiguredBy](../models/responsebodyconfiguredby.md)           | :heavy_minus_sign:                                                                 | N/A                                                                                |
-| `configuredChangedAt`                                                              | *number*                                                                           | :heavy_minus_sign:                                                                 | N/A                                                                                |
-| `createdAt`                                                                        | *number*                                                                           | :heavy_minus_sign:                                                                 | N/A                                                                                |
-| `deployment`                                                                       | [models.ResponseBodyDeployment](../models/responsebodydeployment.md)               | :heavy_check_mark:                                                                 | N/A                                                                                |
-| `domain`                                                                           | *string*                                                                           | :heavy_check_mark:                                                                 | N/A                                                                                |
-| `environment`                                                                      | [models.ResponseBodyEnvironment](../models/responsebodyenvironment.md)             | :heavy_check_mark:                                                                 | N/A                                                                                |
-| `gitBranch`                                                                        | *string*                                                                           | :heavy_minus_sign:                                                                 | N/A                                                                                |
-| `redirect`                                                                         | *string*                                                                           | :heavy_minus_sign:                                                                 | N/A                                                                                |
-| `redirectStatusCode`                                                               | *number*                                                                           | :heavy_minus_sign:                                                                 | N/A                                                                                |
-| `target`                                                                           | [models.GetProjectsResponseBodyTarget](../models/getprojectsresponsebodytarget.md) | :heavy_check_mark:                                                                 | N/A                                                                                |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `configuredBy`                                                                 | [models.CreateProjectConfiguredBy](../models/createprojectconfiguredby.md)     | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `configuredChangedAt`                                                          | *number*                                                                       | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `createdAt`                                                                    | *number*                                                                       | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `deployment`                                                                   | [models.CreateProjectDeployment](../models/createprojectdeployment.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
+| `domain`                                                                       | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `environment`                                                                  | [models.CreateProjectEnvironment](../models/createprojectenvironment.md)       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `gitBranch`                                                                    | *string*                                                                       | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `redirect`                                                                     | *string*                                                                       | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `redirectStatusCode`                                                           | *number*                                                                       | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `target`                                                                       | [models.CreateProjectProjectsTarget](../models/createprojectprojectstarget.md) | :heavy_check_mark:                                                             | N/A                                                                            |

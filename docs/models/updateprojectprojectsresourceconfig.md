@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UpdateProjectProjectsResourceConfig } from "@vercel/sdk/models/updateprojectinternalroutes.js";
+import { UpdateProjectProjectsResourceConfig } from "@vercel/sdk/models/updateprojecthasprojectskey.js";
 
 let value: UpdateProjectProjectsResourceConfig = {
   functionDefaultRegions: [],

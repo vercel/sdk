@@ -1,60 +1,27 @@
 # BuyCreditsConfigurationChangedResources
 
+Resources that were changed as part of this intent. Tracks all logical changes including the primary change and any side effects.
 
-## Supported Types
-
-### `models.BuyCreditsChangedResourcesBilling1`
+## Example Usage
 
 ```typescript
-const value: models.BuyCreditsChangedResourcesBilling1 = {
+import { BuyCreditsConfigurationChangedResources } from "@vercel/sdk/models/buycreditsop.js";
+
+let value: BuyCreditsConfigurationChangedResources = {
   productAlias: "<value>",
   productId: "<id>",
-  quantity: 6122.8,
-  type: "set_plan_item_quantity",
+  quantity: 5592.11,
 };
 ```
 
-### `models.BuyCreditsChangedResourcesBilling2`
+## Fields
 
-```typescript
-const value: models.BuyCreditsChangedResourcesBilling2 = {
-  productAlias: "<value>",
-  productId: "<id>",
-  quantity: 117.21,
-  resourceIds: [
-    "<value 1>",
-    "<value 2>",
-    "<value 3>",
-  ],
-  type: "increase_plan_item_quantity",
-};
-```
-
-### `models.BuyCreditsChangedResourcesBilling3`
-
-```typescript
-const value: models.BuyCreditsChangedResourcesBilling3 = {
-  productAlias: "<value>",
-  productId: "<id>",
-  quantity: 2301.25,
-  resourceIds: [],
-  type: "decrease_plan_item_quantity",
-};
-```
-
-### `models.BuyCreditsChangedResourcesBilling4`
-
-```typescript
-const value: models.BuyCreditsChangedResourcesBilling4 = {
-  addedResourceIds: [],
-  productAlias: "<value>",
-  productId: "<id>",
-  quantity: 1604.48,
-  removedResourceIds: [
-    "<value 1>",
-    "<value 2>",
-  ],
-  type: "adjust_plan_item_quantity",
-};
-```
-
+| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `productAlias`                                                         | *string*                                                               | :heavy_check_mark:                                                     | The alias of the product that was changed.                             |
+| `productId`                                                            | *string*                                                               | :heavy_check_mark:                                                     | The ID of the product that was changed.                                |
+| `quantity`                                                             | *number*                                                               | :heavy_check_mark:                                                     | The resulting quantity after this change.                              |
+| `addedResourceIds`                                                     | *string*[]                                                             | :heavy_minus_sign:                                                     | Resource IDs that were added.                                          |
+| `effectiveAt`                                                          | *string*                                                               | :heavy_minus_sign:                                                     | When this resource change should take effect for downstream consumers. |
+| `removedResourceIds`                                                   | *string*[]                                                             | :heavy_minus_sign:                                                     | Resource IDs that were removed.                                        |
+| `resourceIds`                                                          | *string*[]                                                             | :heavy_minus_sign:                                                     | The full set of resource IDs after the change.                         |

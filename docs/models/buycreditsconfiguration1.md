@@ -13,6 +13,7 @@ let value: BuyCreditsConfiguration1 = {
     quantity: 333.08,
   },
   output: {
+    effectiveBehavior: "end_of_term",
     orbPriceId: "<id>",
     productId: "<id>",
   },

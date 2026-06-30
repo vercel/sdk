@@ -10,6 +10,8 @@ import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import {
+  GetMicrofrontendsInGroupAlias,
+  GetMicrofrontendsInGroupAlias$inboundSchema,
   GetMicrofrontendsInGroupAnalytics,
   GetMicrofrontendsInGroupAnalytics$inboundSchema,
   GetMicrofrontendsInGroupConnectConfigurations,
@@ -30,14 +32,12 @@ import {
   GetMicrofrontendsInGroupExpiration$inboundSchema,
   GetMicrofrontendsInGroupFramework,
   GetMicrofrontendsInGroupFramework$inboundSchema,
-  GetMicrofrontendsInGroupFrom,
-  GetMicrofrontendsInGroupFrom$inboundSchema,
   GetMicrofrontendsInGroupIpBuckets,
   GetMicrofrontendsInGroupIpBuckets$inboundSchema,
   GetMicrofrontendsInGroupJobs,
   GetMicrofrontendsInGroupJobs$inboundSchema,
-  GetMicrofrontendsInGroupLastAliasRequest,
-  GetMicrofrontendsInGroupLastAliasRequest$inboundSchema,
+  GetMicrofrontendsInGroupJobStatus,
+  GetMicrofrontendsInGroupJobStatus$inboundSchema,
   GetMicrofrontendsInGroupLastRollbackTarget,
   GetMicrofrontendsInGroupLastRollbackTarget$inboundSchema,
   GetMicrofrontendsInGroupLatestDeployments,
@@ -46,6 +46,8 @@ import {
   GetMicrofrontendsInGroupLink$inboundSchema,
   GetMicrofrontendsInGroupMicrofrontends,
   GetMicrofrontendsInGroupMicrofrontends$inboundSchema,
+  GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONType,
+  GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONType$inboundSchema,
   GetMicrofrontendsInGroupNodeVersion,
   GetMicrofrontendsInGroupNodeVersion$inboundSchema,
   GetMicrofrontendsInGroupOptionsAllowlist,
@@ -56,8 +58,6 @@ import {
   GetMicrofrontendsInGroupPasswordProtection$inboundSchema,
   GetMicrofrontendsInGroupPermissions,
   GetMicrofrontendsInGroupPermissions$inboundSchema,
-  GetMicrofrontendsInGroupProtectionBypass,
-  GetMicrofrontendsInGroupProtectionBypass$inboundSchema,
   GetMicrofrontendsInGroupProtectionConfig,
   GetMicrofrontendsInGroupProtectionConfig$inboundSchema,
   GetMicrofrontendsInGroupResourceConfig,
@@ -76,12 +76,155 @@ import {
   GetMicrofrontendsInGroupStaticIps$inboundSchema,
   GetMicrofrontendsInGroupTargets,
   GetMicrofrontendsInGroupTargets$inboundSchema,
-  GetMicrofrontendsInGroupToMicrofrontends2,
-  GetMicrofrontendsInGroupToMicrofrontends2$inboundSchema,
-  GetMicrofrontendsInGroupTrustedIps,
-  GetMicrofrontendsInGroupTrustedIps$inboundSchema,
-} from "./getmicrofrontendsingrouptomicrofrontends2.js";
+} from "./getmicrofrontendsingroupmicrofrontendsresponse200applicationjsontype.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export type GetMicrofrontendsInGroupLastAliasRequest = {
+  fromDeploymentId: string | null;
+  toDeploymentId: string;
+  /**
+   * If rolling back from a rolling release, fromDeploymentId captures the "base" of that rolling release, and fromRollingReleaseId captures the "target" of that rolling release.
+   */
+  fromRollingReleaseId?: string | undefined;
+  jobStatus: GetMicrofrontendsInGroupJobStatus;
+  requestedAt: number;
+  type: GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONType;
+};
+
+export type GetMicrofrontendsInGroupProtectionBypass2 = {
+  createdAt: number;
+  createdBy: string;
+  scope: "automation-bypass";
+  /**
+   * When there was only one bypass, it was automatically set as an env var on deployments. With multiple bypasses, there is always one bypass that is selected as the default, and gets set as an env var on deployments. As this is a new field, undefined means that the bypass is the env var. If there are any automation bypasses, exactly one must be the env var.
+   */
+  isEnvVar?: boolean | undefined;
+  /**
+   * Optional note about the bypass to be displayed in the UI
+   */
+  note?: string | undefined;
+};
+
+export type GetMicrofrontendsInGroupProtectionBypass1 = {
+  createdAt: number;
+  createdBy: string;
+  scope: "integration-automation-bypass";
+  integrationId: string;
+  configurationId: string;
+};
+
+export type GetMicrofrontendsInGroupProtectionBypass =
+  | GetMicrofrontendsInGroupProtectionBypass1
+  | GetMicrofrontendsInGroupProtectionBypass2;
+
+export const GetMicrofrontendsInGroupTrustedIpsDeploymentType = {
+  All: "all",
+  AllExceptCustomDomains: "all_except_custom_domains",
+  Preview: "preview",
+  ProdDeploymentUrlsAndAllPreviews: "prod_deployment_urls_and_all_previews",
+  Production: "production",
+} as const;
+export type GetMicrofrontendsInGroupTrustedIpsDeploymentType = ClosedEnum<
+  typeof GetMicrofrontendsInGroupTrustedIpsDeploymentType
+>;
+
+export type GetMicrofrontendsInGroupTrustedIps2 = {
+  deploymentType: GetMicrofrontendsInGroupTrustedIpsDeploymentType;
+};
+
+export const GetMicrofrontendsInGroupTrustedIpsMicrofrontendsDeploymentType = {
+  All: "all",
+  AllExceptCustomDomains: "all_except_custom_domains",
+  Preview: "preview",
+  ProdDeploymentUrlsAndAllPreviews: "prod_deployment_urls_and_all_previews",
+  Production: "production",
+} as const;
+export type GetMicrofrontendsInGroupTrustedIpsMicrofrontendsDeploymentType =
+  ClosedEnum<
+    typeof GetMicrofrontendsInGroupTrustedIpsMicrofrontendsDeploymentType
+  >;
+
+export type GetMicrofrontendsInGroupTrustedIpsAddresses = {
+  value: string;
+  note?: string | undefined;
+};
+
+export const GetMicrofrontendsInGroupTrustedIpsProtectionMode = {
+  Additional: "additional",
+  Exclusive: "exclusive",
+} as const;
+export type GetMicrofrontendsInGroupTrustedIpsProtectionMode = ClosedEnum<
+  typeof GetMicrofrontendsInGroupTrustedIpsProtectionMode
+>;
+
+export type GetMicrofrontendsInGroupTrustedIps1 = {
+  deploymentType:
+    GetMicrofrontendsInGroupTrustedIpsMicrofrontendsDeploymentType;
+  addresses: Array<GetMicrofrontendsInGroupTrustedIpsAddresses>;
+  protectionMode: GetMicrofrontendsInGroupTrustedIpsProtectionMode;
+};
+
+export type GetMicrofrontendsInGroupTrustedIps =
+  | GetMicrofrontendsInGroupTrustedIps1
+  | GetMicrofrontendsInGroupTrustedIps2;
+
+export const GetMicrofrontendsInGroupFromMicrofrontendsPreset = {
+  AllCustom: "all-custom",
+} as const;
+export type GetMicrofrontendsInGroupFromMicrofrontendsPreset = ClosedEnum<
+  typeof GetMicrofrontendsInGroupFromMicrofrontendsPreset
+>;
+
+/**
+ * The source envs on the trusted project that are allowed to access `to`.
+ */
+export type GetMicrofrontendsInGroupFrom2 = {
+  /**
+   * System environment slugs (`production`, `preview`) and/or custom environment slugs defined on the referenced project.
+   */
+  slugs?: Array<string> | undefined;
+  preset: GetMicrofrontendsInGroupFromMicrofrontendsPreset;
+};
+
+export const GetMicrofrontendsInGroupFromPreset = {
+  AllCustom: "all-custom",
+} as const;
+export type GetMicrofrontendsInGroupFromPreset = ClosedEnum<
+  typeof GetMicrofrontendsInGroupFromPreset
+>;
+
+/**
+ * The source envs on the trusted project that are allowed to access `to`.
+ */
+export type GetMicrofrontendsInGroupFrom1 = {
+  /**
+   * System environment slugs (`production`, `preview`) and/or custom environment slugs defined on the referenced project.
+   */
+  slugs: Array<string>;
+  preset?: GetMicrofrontendsInGroupFromPreset | undefined;
+};
+
+export type GetMicrofrontendsInGroupFrom =
+  | GetMicrofrontendsInGroupFrom1
+  | GetMicrofrontendsInGroupFrom2;
+
+export const GetMicrofrontendsInGroupToMicrofrontendsResponsePreset = {
+  AllCustom: "all-custom",
+} as const;
+export type GetMicrofrontendsInGroupToMicrofrontendsResponsePreset = ClosedEnum<
+  typeof GetMicrofrontendsInGroupToMicrofrontendsResponsePreset
+>;
+
+/**
+ * The target envs on the current project that may be accessed.
+ */
+export type GetMicrofrontendsInGroupToMicrofrontends2 = {
+  /**
+   * System environment slugs (`production`, `preview`) and/or custom environment slugs defined on the referenced project.
+   */
+  slugs?: Array<string> | undefined;
+  preset: GetMicrofrontendsInGroupToMicrofrontendsResponsePreset;
+};
 
 export const GetMicrofrontendsInGroupToMicrofrontendsResponse200Preset = {
   AllCustom: "all-custom",
@@ -110,7 +253,7 @@ export type GetMicrofrontendsInGroupMicrofrontendsTo =
  * Optional overrides for the default same-env-by-slug matching. Provide explicit rules to allow cross-env access or presets.
  */
 export type GetMicrofrontendsInGroupCustomAllow = {
-  from: GetMicrofrontendsInGroupFrom;
+  from: GetMicrofrontendsInGroupFrom1 | GetMicrofrontendsInGroupFrom2;
   to:
     | GetMicrofrontendsInGroupToMicrofrontends1
     | GetMicrofrontendsInGroupToMicrofrontends2;
@@ -963,6 +1106,7 @@ export type GetMicrofrontendsInGroupTracing = {
 
 export type GetMicrofrontendsInGroupProjects = {
   accountId: string;
+  alias: Array<GetMicrofrontendsInGroupAlias>;
   analytics?: GetMicrofrontendsInGroupAnalytics | undefined;
   appliedCve55182Migration?: boolean | undefined;
   speedInsights?: GetMicrofrontendsInGroupSpeedInsights | undefined;
@@ -1059,11 +1203,17 @@ export type GetMicrofrontendsInGroupProjects = {
     | GetMicrofrontendsInGroupLastAliasRequest
     | null
     | undefined;
-  protectionBypass?:
-    | { [k: string]: GetMicrofrontendsInGroupProtectionBypass }
-    | undefined;
+  protectionBypass?: {
+    [k: string]:
+      | GetMicrofrontendsInGroupProtectionBypass1
+      | GetMicrofrontendsInGroupProtectionBypass2;
+  } | undefined;
   hasActiveBranches?: boolean | undefined;
-  trustedIps?: GetMicrofrontendsInGroupTrustedIps | null | undefined;
+  trustedIps?:
+    | GetMicrofrontendsInGroupTrustedIps1
+    | GetMicrofrontendsInGroupTrustedIps2
+    | null
+    | undefined;
   trustedSources?: GetMicrofrontendsInGroupTrustedSources | null | undefined;
   gitComments?: GetMicrofrontendsInGroupGitComments | undefined;
   gitProviderOptions?: GetMicrofrontendsInGroupGitProviderOptions | undefined;
@@ -1102,6 +1252,336 @@ export type GetMicrofrontendsInGroupProjects = {
 export type GetMicrofrontendsInGroupResponseBody = {
   projects: Array<GetMicrofrontendsInGroupProjects>;
 };
+
+/** @internal */
+export const GetMicrofrontendsInGroupLastAliasRequest$inboundSchema: z.ZodType<
+  GetMicrofrontendsInGroupLastAliasRequest,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  fromDeploymentId: types.nullable(types.string()),
+  toDeploymentId: types.string(),
+  fromRollingReleaseId: types.optional(types.string()),
+  jobStatus: GetMicrofrontendsInGroupJobStatus$inboundSchema,
+  requestedAt: types.number(),
+  type:
+    GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONType$inboundSchema,
+});
+
+export function getMicrofrontendsInGroupLastAliasRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetMicrofrontendsInGroupLastAliasRequest,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetMicrofrontendsInGroupLastAliasRequest$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetMicrofrontendsInGroupLastAliasRequest' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetMicrofrontendsInGroupProtectionBypass2$inboundSchema: z.ZodType<
+  GetMicrofrontendsInGroupProtectionBypass2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  createdAt: types.number(),
+  createdBy: types.string(),
+  scope: types.literal("automation-bypass"),
+  isEnvVar: types.optional(types.boolean()),
+  note: types.optional(types.string()),
+});
+
+export function getMicrofrontendsInGroupProtectionBypass2FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetMicrofrontendsInGroupProtectionBypass2,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetMicrofrontendsInGroupProtectionBypass2$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetMicrofrontendsInGroupProtectionBypass2' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetMicrofrontendsInGroupProtectionBypass1$inboundSchema: z.ZodType<
+  GetMicrofrontendsInGroupProtectionBypass1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  createdAt: types.number(),
+  createdBy: types.string(),
+  scope: types.literal("integration-automation-bypass"),
+  integrationId: types.string(),
+  configurationId: types.string(),
+});
+
+export function getMicrofrontendsInGroupProtectionBypass1FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetMicrofrontendsInGroupProtectionBypass1,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetMicrofrontendsInGroupProtectionBypass1$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetMicrofrontendsInGroupProtectionBypass1' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetMicrofrontendsInGroupProtectionBypass$inboundSchema: z.ZodType<
+  GetMicrofrontendsInGroupProtectionBypass,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() => GetMicrofrontendsInGroupProtectionBypass1$inboundSchema),
+  z.lazy(() => GetMicrofrontendsInGroupProtectionBypass2$inboundSchema),
+]);
+
+export function getMicrofrontendsInGroupProtectionBypassFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetMicrofrontendsInGroupProtectionBypass,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetMicrofrontendsInGroupProtectionBypass$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetMicrofrontendsInGroupProtectionBypass' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetMicrofrontendsInGroupTrustedIpsDeploymentType$inboundSchema:
+  z.ZodNativeEnum<typeof GetMicrofrontendsInGroupTrustedIpsDeploymentType> = z
+    .nativeEnum(GetMicrofrontendsInGroupTrustedIpsDeploymentType);
+
+/** @internal */
+export const GetMicrofrontendsInGroupTrustedIps2$inboundSchema: z.ZodType<
+  GetMicrofrontendsInGroupTrustedIps2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  deploymentType:
+    GetMicrofrontendsInGroupTrustedIpsDeploymentType$inboundSchema,
+});
+
+export function getMicrofrontendsInGroupTrustedIps2FromJSON(
+  jsonString: string,
+): SafeParseResult<GetMicrofrontendsInGroupTrustedIps2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetMicrofrontendsInGroupTrustedIps2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetMicrofrontendsInGroupTrustedIps2' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetMicrofrontendsInGroupTrustedIpsMicrofrontendsDeploymentType$inboundSchema:
+  z.ZodNativeEnum<
+    typeof GetMicrofrontendsInGroupTrustedIpsMicrofrontendsDeploymentType
+  > = z.nativeEnum(
+    GetMicrofrontendsInGroupTrustedIpsMicrofrontendsDeploymentType,
+  );
+
+/** @internal */
+export const GetMicrofrontendsInGroupTrustedIpsAddresses$inboundSchema:
+  z.ZodType<
+    GetMicrofrontendsInGroupTrustedIpsAddresses,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    value: types.string(),
+    note: types.optional(types.string()),
+  });
+
+export function getMicrofrontendsInGroupTrustedIpsAddressesFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetMicrofrontendsInGroupTrustedIpsAddresses,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetMicrofrontendsInGroupTrustedIpsAddresses$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetMicrofrontendsInGroupTrustedIpsAddresses' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetMicrofrontendsInGroupTrustedIpsProtectionMode$inboundSchema:
+  z.ZodNativeEnum<typeof GetMicrofrontendsInGroupTrustedIpsProtectionMode> = z
+    .nativeEnum(GetMicrofrontendsInGroupTrustedIpsProtectionMode);
+
+/** @internal */
+export const GetMicrofrontendsInGroupTrustedIps1$inboundSchema: z.ZodType<
+  GetMicrofrontendsInGroupTrustedIps1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  deploymentType:
+    GetMicrofrontendsInGroupTrustedIpsMicrofrontendsDeploymentType$inboundSchema,
+  addresses: z.array(
+    z.lazy(() => GetMicrofrontendsInGroupTrustedIpsAddresses$inboundSchema),
+  ),
+  protectionMode:
+    GetMicrofrontendsInGroupTrustedIpsProtectionMode$inboundSchema,
+});
+
+export function getMicrofrontendsInGroupTrustedIps1FromJSON(
+  jsonString: string,
+): SafeParseResult<GetMicrofrontendsInGroupTrustedIps1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetMicrofrontendsInGroupTrustedIps1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetMicrofrontendsInGroupTrustedIps1' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetMicrofrontendsInGroupTrustedIps$inboundSchema: z.ZodType<
+  GetMicrofrontendsInGroupTrustedIps,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  z.lazy(() => GetMicrofrontendsInGroupTrustedIps1$inboundSchema),
+  z.lazy(() => GetMicrofrontendsInGroupTrustedIps2$inboundSchema),
+]);
+
+export function getMicrofrontendsInGroupTrustedIpsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetMicrofrontendsInGroupTrustedIps, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetMicrofrontendsInGroupTrustedIps$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetMicrofrontendsInGroupTrustedIps' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetMicrofrontendsInGroupFromMicrofrontendsPreset$inboundSchema:
+  z.ZodNativeEnum<typeof GetMicrofrontendsInGroupFromMicrofrontendsPreset> = z
+    .nativeEnum(GetMicrofrontendsInGroupFromMicrofrontendsPreset);
+
+/** @internal */
+export const GetMicrofrontendsInGroupFrom2$inboundSchema: z.ZodType<
+  GetMicrofrontendsInGroupFrom2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  slugs: types.optional(z.array(types.string())),
+  preset: GetMicrofrontendsInGroupFromMicrofrontendsPreset$inboundSchema,
+});
+
+export function getMicrofrontendsInGroupFrom2FromJSON(
+  jsonString: string,
+): SafeParseResult<GetMicrofrontendsInGroupFrom2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetMicrofrontendsInGroupFrom2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetMicrofrontendsInGroupFrom2' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetMicrofrontendsInGroupFromPreset$inboundSchema: z.ZodNativeEnum<
+  typeof GetMicrofrontendsInGroupFromPreset
+> = z.nativeEnum(GetMicrofrontendsInGroupFromPreset);
+
+/** @internal */
+export const GetMicrofrontendsInGroupFrom1$inboundSchema: z.ZodType<
+  GetMicrofrontendsInGroupFrom1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  slugs: z.array(types.string()),
+  preset: types.optional(GetMicrofrontendsInGroupFromPreset$inboundSchema),
+});
+
+export function getMicrofrontendsInGroupFrom1FromJSON(
+  jsonString: string,
+): SafeParseResult<GetMicrofrontendsInGroupFrom1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetMicrofrontendsInGroupFrom1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetMicrofrontendsInGroupFrom1' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetMicrofrontendsInGroupFrom$inboundSchema: z.ZodType<
+  GetMicrofrontendsInGroupFrom,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  z.lazy(() => GetMicrofrontendsInGroupFrom1$inboundSchema),
+  z.lazy(() => GetMicrofrontendsInGroupFrom2$inboundSchema),
+]);
+
+export function getMicrofrontendsInGroupFromFromJSON(
+  jsonString: string,
+): SafeParseResult<GetMicrofrontendsInGroupFrom, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetMicrofrontendsInGroupFrom$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetMicrofrontendsInGroupFrom' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetMicrofrontendsInGroupToMicrofrontendsResponsePreset$inboundSchema:
+  z.ZodNativeEnum<
+    typeof GetMicrofrontendsInGroupToMicrofrontendsResponsePreset
+  > = z.nativeEnum(GetMicrofrontendsInGroupToMicrofrontendsResponsePreset);
+
+/** @internal */
+export const GetMicrofrontendsInGroupToMicrofrontends2$inboundSchema: z.ZodType<
+  GetMicrofrontendsInGroupToMicrofrontends2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  slugs: types.optional(z.array(types.string())),
+  preset: GetMicrofrontendsInGroupToMicrofrontendsResponsePreset$inboundSchema,
+});
+
+export function getMicrofrontendsInGroupToMicrofrontends2FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetMicrofrontendsInGroupToMicrofrontends2,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetMicrofrontendsInGroupToMicrofrontends2$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetMicrofrontendsInGroupToMicrofrontends2' from JSON`,
+  );
+}
 
 /** @internal */
 export const GetMicrofrontendsInGroupToMicrofrontendsResponse200Preset$inboundSchema:
@@ -1144,7 +1624,7 @@ export const GetMicrofrontendsInGroupMicrofrontendsTo$inboundSchema: z.ZodType<
   unknown
 > = smartUnion([
   z.lazy(() => GetMicrofrontendsInGroupToMicrofrontends1$inboundSchema),
-  GetMicrofrontendsInGroupToMicrofrontends2$inboundSchema,
+  z.lazy(() => GetMicrofrontendsInGroupToMicrofrontends2$inboundSchema),
 ]);
 
 export function getMicrofrontendsInGroupMicrofrontendsToFromJSON(
@@ -1169,10 +1649,13 @@ export const GetMicrofrontendsInGroupCustomAllow$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  from: GetMicrofrontendsInGroupFrom$inboundSchema,
+  from: smartUnion([
+    z.lazy(() => GetMicrofrontendsInGroupFrom1$inboundSchema),
+    z.lazy(() => GetMicrofrontendsInGroupFrom2$inboundSchema),
+  ]),
   to: smartUnion([
     z.lazy(() => GetMicrofrontendsInGroupToMicrofrontends1$inboundSchema),
-    GetMicrofrontendsInGroupToMicrofrontends2$inboundSchema,
+    z.lazy(() => GetMicrofrontendsInGroupToMicrofrontends2$inboundSchema),
   ]),
 });
 
@@ -3346,6 +3829,7 @@ export const GetMicrofrontendsInGroupProjects$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   accountId: types.string(),
+  alias: z.array(GetMicrofrontendsInGroupAlias$inboundSchema),
   analytics: types.optional(GetMicrofrontendsInGroupAnalytics$inboundSchema),
   appliedCve55182Migration: types.optional(types.boolean()),
   speedInsights: types.optional(
@@ -3449,14 +3933,23 @@ export const GetMicrofrontendsInGroupProjects$inboundSchema: z.ZodType<
     GetMicrofrontendsInGroupLastRollbackTarget$inboundSchema,
   ).optional(),
   lastAliasRequest: z.nullable(
-    GetMicrofrontendsInGroupLastAliasRequest$inboundSchema,
+    z.lazy(() => GetMicrofrontendsInGroupLastAliasRequest$inboundSchema),
   ).optional(),
   protectionBypass: types.optional(
-    z.record(GetMicrofrontendsInGroupProtectionBypass$inboundSchema),
+    z.record(z.union([
+      z.lazy(() => GetMicrofrontendsInGroupProtectionBypass1$inboundSchema),
+      z.lazy(() =>
+        GetMicrofrontendsInGroupProtectionBypass2$inboundSchema
+      ),
+    ])),
   ),
   hasActiveBranches: types.optional(types.boolean()),
-  trustedIps: z.nullable(GetMicrofrontendsInGroupTrustedIps$inboundSchema)
-    .optional(),
+  trustedIps: z.nullable(
+    smartUnion([
+      z.lazy(() => GetMicrofrontendsInGroupTrustedIps1$inboundSchema),
+      z.lazy(() => GetMicrofrontendsInGroupTrustedIps2$inboundSchema),
+    ]),
+  ).optional(),
   trustedSources: z.nullable(
     z.lazy(() => GetMicrofrontendsInGroupTrustedSources$inboundSchema),
   ).optional(),

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { TrustedIps1 } from "@vercel/sdk/models/createprojecttoprojectsresponsepreset.js";
+import { TrustedIps1 } from "@vercel/sdk/models/createprojectresponsebody.js";
 
 let value: TrustedIps1 = {
   deploymentType: "prod_deployment_urls_and_all_previews",
@@ -18,8 +18,8 @@ let value: TrustedIps1 = {
 
 ## Fields
 
-| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
-| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| `deploymentType`                                                         | [models.TrustedIpsDeploymentType](../models/trustedipsdeploymenttype.md) | :heavy_check_mark:                                                       | N/A                                                                      |
-| `addresses`                                                              | [models.TrustedIpsAddresses](../models/trustedipsaddresses.md)[]         | :heavy_check_mark:                                                       | N/A                                                                      |
-| `protectionMode`                                                         | [models.TrustedIpsProtectionMode](../models/trustedipsprotectionmode.md) | :heavy_check_mark:                                                       | N/A                                                                      |
+| Field                                                                                              | Type                                                                                               | Required                                                                                           | Description                                                                                        |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `deploymentType`                                                                                   | [models.TrustedIpsDeploymentType](../models/trustedipsdeploymenttype.md)                           | :heavy_check_mark:                                                                                 | N/A                                                                                                |
+| `addresses`                                                                                        | [models.CreateProjectTrustedIpsAddresses](../models/createprojecttrustedipsaddresses.md)[]         | :heavy_check_mark:                                                                                 | N/A                                                                                                |
+| `protectionMode`                                                                                   | [models.CreateProjectTrustedIpsProtectionMode](../models/createprojecttrustedipsprotectionmode.md) | :heavy_check_mark:                                                                                 | N/A                                                                                                |

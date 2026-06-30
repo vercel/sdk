@@ -14,9 +14,9 @@ let value: GetRollingReleaseResponseBody = {
     currentDeployment: {
       name: "my-shop@main",
       createdAt: 1716206500000,
+      readyState: "READY",
       id: "dpl_abc123",
       target: "production",
-      readyState: "READY",
       readyStateAt: 1716206800000,
       source: "git",
       url: "my-shop.vercel.app",
@@ -24,9 +24,9 @@ let value: GetRollingReleaseResponseBody = {
     canaryDeployment: {
       name: "my-shop@9c7e2f4",
       createdAt: 1716210100000,
+      readyState: "READY",
       id: "dpl_def456",
       target: "production",
-      readyState: "READY",
       readyStateAt: 1716210400000,
       source: "git",
       url: "9c7e2f4-my-shop.vercel.app",

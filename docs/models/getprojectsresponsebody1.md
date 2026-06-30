@@ -10,24 +10,25 @@ let value: GetProjectsResponseBody1 = {
   alias: [
     {
       deployment: {
-        createdAt: 6834.37,
+        id: "<id>",
+        createdAt: 4315.2,
         createdIn: "<value>",
         creator: {
-          email: "Abigale.Renner@hotmail.com",
+          email: "Mikel_Bechtelar@yahoo.com",
           uid: "<id>",
-          username: "Ellis.Stoltenberg",
+          username: "Annalise_DuBuque",
         },
         deploymentHostname: "<value>",
         name: "<value>",
-        id: "<id>",
-        plan: "<value>",
+        plan: "pro",
+        previewCommentsEnabled: false,
         private: true,
-        readyState: "<value>",
-        type: "<value>",
-        url: "https://unaware-trick.org/",
+        readyState: "BUILDING",
+        type: "LAMBDAS",
+        url: "https://outstanding-festival.biz",
         userId: "<id>",
       },
-      domain: "ordinary-tray.org",
+      domain: "supportive-tomb.name",
       environment: "production",
       target: "STAGING",
     },
@@ -35,8 +36,29 @@ let value: GetProjectsResponseBody1 = {
   directoryListing: false,
   deploymentExpiration: {},
   id: "<id>",
+  latestDeployments: [
+    {
+      id: "<id>",
+      createdAt: 9565.98,
+      createdIn: "<value>",
+      creator: {
+        email: "Camryn.Nader@hotmail.com",
+        uid: "<id>",
+        username: "Jessy_Grant",
+      },
+      deploymentHostname: "<value>",
+      name: "<value>",
+      plan: "pro",
+      previewCommentsEnabled: false,
+      private: false,
+      readyState: "BLOCKED",
+      type: "LAMBDAS",
+      url: "https://tattered-dandelion.com/",
+      userId: "<id>",
+    },
+  ],
   name: "<value>",
-  nodeVersion: "24.x",
+  nodeVersion: "20.x",
   resourceConfig: {
     functionDefaultRegions: [
       "<value 1>",
@@ -57,6 +79,23 @@ let value: GetProjectsResponseBody1 = {
     canaryResponseHeader: false,
   },
   serverlessFunctionRegion: "<value>",
+  targets: {
+    "key": {
+      id: "<id>",
+      createdAt: 2031.24,
+      createdIn: "<value>",
+      creator: null,
+      deploymentHostname: "<value>",
+      name: "<value>",
+      plan: "enterprise",
+      previewCommentsEnabled: false,
+      private: false,
+      readyState: "INITIALIZING",
+      type: "LAMBDAS",
+      url: "https://understated-retention.name",
+      userId: "<id>",
+    },
+  },
 };
 ```
 
@@ -65,7 +104,7 @@ let value: GetProjectsResponseBody1 = {
 | Field                                                                                                                                                                                          | Type                                                                                                                                                                                           | Required                                                                                                                                                                                       | Description                                                                                                                                                                                    |
 | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `accountId`                                                                                                                                                                                    | *string*                                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                                             | N/A                                                                                                                                                                                            |
-| `alias`                                                                                                                                                                                        | [models.Alias](../models/alias.md)[]                                                                                                                                                           | :heavy_check_mark:                                                                                                                                                                             | N/A                                                                                                                                                                                            |
+| `alias`                                                                                                                                                                                        | [models.ResponseBodyAlias](../models/responsebodyalias.md)[]                                                                                                                                   | :heavy_check_mark:                                                                                                                                                                             | N/A                                                                                                                                                                                            |
 | `analytics`                                                                                                                                                                                    | [models.ResponseBodyAnalytics](../models/responsebodyanalytics.md)                                                                                                                             | :heavy_minus_sign:                                                                                                                                                                             | N/A                                                                                                                                                                                            |
 | `appliedCve55182Migration`                                                                                                                                                                     | *boolean*                                                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                                             | N/A                                                                                                                                                                                            |
 | `autoExposeSystemEnvs`                                                                                                                                                                         | *boolean*                                                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                                             | N/A                                                                                                                                                                                            |

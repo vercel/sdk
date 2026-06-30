@@ -5,7 +5,7 @@ Tracing destination this rule applies to. Derived server-side when project traci
 ## Example Usage
 
 ```typescript
-import { Destination } from "@vercel/sdk/models/updateprojectprojectspaths.js";
+import { Destination } from "@vercel/sdk/models/updateprojectbuilds.js";
 
 let value: Destination = "internal";
 ```

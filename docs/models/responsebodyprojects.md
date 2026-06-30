@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyProjects } from "@vercel/sdk/models/getprojectscontenthint11.js";
+import { ResponseBodyProjects } from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponsetype.js";
 
 let value: ResponseBodyProjects = {
   accountId: "<id>",
@@ -11,8 +11,29 @@ let value: ResponseBodyProjects = {
   directoryListing: false,
   deploymentExpiration: {},
   id: "<id>",
+  latestDeployments: [
+    {
+      id: "<id>",
+      createdAt: 3100.36,
+      createdIn: "<value>",
+      creator: {
+        email: "Amara9@yahoo.com",
+        uid: "<id>",
+        username: "Hal.Wisoky",
+      },
+      deploymentHostname: "<value>",
+      name: "<value>",
+      plan: "pro",
+      previewCommentsEnabled: false,
+      private: false,
+      readyState: "INITIALIZING",
+      type: "LAMBDAS",
+      url: "https://free-synergy.com/",
+      userId: "<id>",
+    },
+  ],
   name: "<value>",
-  nodeVersion: "14.x",
+  nodeVersion: "24.x",
   resourceConfig: {
     functionDefaultRegions: [
       "<value 1>",
@@ -32,6 +53,27 @@ let value: ResponseBodyProjects = {
     canaryResponseHeader: false,
   },
   serverlessFunctionRegion: "<value>",
+  targets: {
+    "key": {
+      id: "<id>",
+      createdAt: 5771.7,
+      createdIn: "<value>",
+      creator: {
+        email: "Macey78@yahoo.com",
+        uid: "<id>",
+        username: "Luisa.Pacocha",
+      },
+      deploymentHostname: "<value>",
+      name: "<value>",
+      plan: "hobby",
+      previewCommentsEnabled: false,
+      private: false,
+      readyState: "QUEUED",
+      type: "LAMBDAS",
+      url: "https://minor-expense.name/",
+      userId: "<id>",
+    },
+  },
 };
 ```
 
@@ -40,7 +82,7 @@ let value: ResponseBodyProjects = {
 | Field                                                                                                                                                                                          | Type                                                                                                                                                                                           | Required                                                                                                                                                                                       | Description                                                                                                                                                                                    |
 | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `accountId`                                                                                                                                                                                    | *string*                                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                                             | N/A                                                                                                                                                                                            |
-| `alias`                                                                                                                                                                                        | [models.ResponseBodyAlias](../models/responsebodyalias.md)[]                                                                                                                                   | :heavy_check_mark:                                                                                                                                                                             | N/A                                                                                                                                                                                            |
+| `alias`                                                                                                                                                                                        | [models.GetProjectsResponseBodyAlias](../models/getprojectsresponsebodyalias.md)[]                                                                                                             | :heavy_check_mark:                                                                                                                                                                             | N/A                                                                                                                                                                                            |
 | `analytics`                                                                                                                                                                                    | [models.GetProjectsResponseBodyAnalytics](../models/getprojectsresponsebodyanalytics.md)                                                                                                       | :heavy_minus_sign:                                                                                                                                                                             | N/A                                                                                                                                                                                            |
 | `appliedCve55182Migration`                                                                                                                                                                     | *boolean*                                                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                                             | N/A                                                                                                                                                                                            |
 | `autoExposeSystemEnvs`                                                                                                                                                                         | *boolean*                                                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                                             | N/A                                                                                                                                                                                            |

@@ -68,20 +68,6 @@ export const Substate = {
 export type Substate = ClosedEnum<typeof Substate>;
 
 /**
- * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
- */
-export const GetRollingReleaseTarget = {
-  Production: "production",
-  Staging: "staging",
-} as const;
-/**
- * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
- */
-export type GetRollingReleaseTarget = ClosedEnum<
-  typeof GetRollingReleaseTarget
->;
-
-/**
  * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
  */
 export const GetRollingReleaseReadyState = {
@@ -98,6 +84,20 @@ export const GetRollingReleaseReadyState = {
  */
 export type GetRollingReleaseReadyState = ClosedEnum<
   typeof GetRollingReleaseReadyState
+>;
+
+/**
+ * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
+ */
+export const GetRollingReleaseTarget = {
+  Production: "production",
+  Staging: "staging",
+} as const;
+/**
+ * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
+ */
+export type GetRollingReleaseTarget = ClosedEnum<
+  typeof GetRollingReleaseTarget
 >;
 
 /**
@@ -134,6 +134,10 @@ export type CurrentDeployment = {
    */
   createdAt: number;
   /**
+   * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
+   */
+  readyState: GetRollingReleaseReadyState;
+  /**
    * A string holding the unique ID of the deployment
    */
   id: string;
@@ -141,10 +145,6 @@ export type CurrentDeployment = {
    * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
    */
   target?: GetRollingReleaseTarget | null | undefined;
-  /**
-   * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
-   */
-  readyState: GetRollingReleaseReadyState;
   readyStateAt?: number | undefined;
   /**
    * Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it.
@@ -155,20 +155,6 @@ export type CurrentDeployment = {
    */
   url: string;
 };
-
-/**
- * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
- */
-export const GetRollingReleaseRollingReleaseTarget = {
-  Production: "production",
-  Staging: "staging",
-} as const;
-/**
- * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
- */
-export type GetRollingReleaseRollingReleaseTarget = ClosedEnum<
-  typeof GetRollingReleaseRollingReleaseTarget
->;
 
 /**
  * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
@@ -187,6 +173,20 @@ export const GetRollingReleaseRollingReleaseReadyState = {
  */
 export type GetRollingReleaseRollingReleaseReadyState = ClosedEnum<
   typeof GetRollingReleaseRollingReleaseReadyState
+>;
+
+/**
+ * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
+ */
+export const GetRollingReleaseRollingReleaseTarget = {
+  Production: "production",
+  Staging: "staging",
+} as const;
+/**
+ * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
+ */
+export type GetRollingReleaseRollingReleaseTarget = ClosedEnum<
+  typeof GetRollingReleaseRollingReleaseTarget
 >;
 
 /**
@@ -223,6 +223,10 @@ export type CanaryDeployment = {
    */
   createdAt: number;
   /**
+   * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
+   */
+  readyState: GetRollingReleaseRollingReleaseReadyState;
+  /**
    * A string holding the unique ID of the deployment
    */
   id: string;
@@ -230,10 +234,6 @@ export type CanaryDeployment = {
    * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
    */
   target?: GetRollingReleaseRollingReleaseTarget | null | undefined;
-  /**
-   * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
-   */
-  readyState: GetRollingReleaseRollingReleaseReadyState;
   readyStateAt?: number | undefined;
   /**
    * Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it.
@@ -454,14 +454,14 @@ export const Substate$inboundSchema: z.ZodNativeEnum<typeof Substate> = z
   .nativeEnum(Substate);
 
 /** @internal */
-export const GetRollingReleaseTarget$inboundSchema: z.ZodNativeEnum<
-  typeof GetRollingReleaseTarget
-> = z.nativeEnum(GetRollingReleaseTarget);
-
-/** @internal */
 export const GetRollingReleaseReadyState$inboundSchema: z.ZodNativeEnum<
   typeof GetRollingReleaseReadyState
 > = z.nativeEnum(GetRollingReleaseReadyState);
+
+/** @internal */
+export const GetRollingReleaseTarget$inboundSchema: z.ZodNativeEnum<
+  typeof GetRollingReleaseTarget
+> = z.nativeEnum(GetRollingReleaseTarget);
 
 /** @internal */
 export const GetRollingReleaseSource$inboundSchema: z.ZodNativeEnum<
@@ -476,9 +476,9 @@ export const CurrentDeployment$inboundSchema: z.ZodType<
 > = z.object({
   name: types.string(),
   createdAt: types.number(),
+  readyState: GetRollingReleaseReadyState$inboundSchema,
   id: types.string(),
   target: z.nullable(GetRollingReleaseTarget$inboundSchema).optional(),
-  readyState: GetRollingReleaseReadyState$inboundSchema,
   readyStateAt: types.optional(types.number()),
   source: types.optional(GetRollingReleaseSource$inboundSchema),
   url: types.string(),
@@ -495,15 +495,15 @@ export function currentDeploymentFromJSON(
 }
 
 /** @internal */
+export const GetRollingReleaseRollingReleaseReadyState$inboundSchema:
+  z.ZodNativeEnum<typeof GetRollingReleaseRollingReleaseReadyState> = z
+    .nativeEnum(GetRollingReleaseRollingReleaseReadyState);
+
+/** @internal */
 export const GetRollingReleaseRollingReleaseTarget$inboundSchema:
   z.ZodNativeEnum<typeof GetRollingReleaseRollingReleaseTarget> = z.nativeEnum(
     GetRollingReleaseRollingReleaseTarget,
   );
-
-/** @internal */
-export const GetRollingReleaseRollingReleaseReadyState$inboundSchema:
-  z.ZodNativeEnum<typeof GetRollingReleaseRollingReleaseReadyState> = z
-    .nativeEnum(GetRollingReleaseRollingReleaseReadyState);
 
 /** @internal */
 export const GetRollingReleaseRollingReleaseSource$inboundSchema:
@@ -519,10 +519,10 @@ export const CanaryDeployment$inboundSchema: z.ZodType<
 > = z.object({
   name: types.string(),
   createdAt: types.number(),
+  readyState: GetRollingReleaseRollingReleaseReadyState$inboundSchema,
   id: types.string(),
   target: z.nullable(GetRollingReleaseRollingReleaseTarget$inboundSchema)
     .optional(),
-  readyState: GetRollingReleaseRollingReleaseReadyState$inboundSchema,
   readyStateAt: types.optional(types.number()),
   source: types.optional(GetRollingReleaseRollingReleaseSource$inboundSchema),
   url: types.string(),

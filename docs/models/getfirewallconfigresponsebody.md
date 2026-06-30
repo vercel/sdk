@@ -14,52 +14,6 @@ let value: GetFirewallConfigResponseBody = {
   version: 5092.12,
   updatedAt: "1735667145927",
   firewallEnabled: true,
-  crs: {
-    sd: {
-      active: true,
-      action: "log",
-    },
-    ma: {
-      active: true,
-      action: "deny",
-    },
-    lfi: {
-      active: false,
-      action: "deny",
-    },
-    rfi: {
-      active: false,
-      action: "log",
-    },
-    rce: {
-      active: false,
-      action: "deny",
-    },
-    php: {
-      active: true,
-      action: "deny",
-    },
-    gen: {
-      active: false,
-      action: "log",
-    },
-    xss: {
-      active: false,
-      action: "deny",
-    },
-    sqli: {
-      active: false,
-      action: "log",
-    },
-    sf: {
-      active: true,
-      action: "log",
-    },
-    java: {
-      active: false,
-      action: "log",
-    },
-  },
   rules: [],
   ips: [],
   changes: [],
@@ -76,7 +30,7 @@ let value: GetFirewallConfigResponseBody = {
 | `version`                                                                          | *number*                                                                           | :heavy_check_mark:                                                                 | N/A                                                                                |
 | `updatedAt`                                                                        | *string*                                                                           | :heavy_check_mark:                                                                 | N/A                                                                                |
 | `firewallEnabled`                                                                  | *boolean*                                                                          | :heavy_check_mark:                                                                 | N/A                                                                                |
-| `crs`                                                                              | [models.GetFirewallConfigCrs](../models/getfirewallconfigcrs.md)                   | :heavy_check_mark:                                                                 | Custom Ruleset                                                                     |
+| `crs`                                                                              | [models.GetFirewallConfigCrs](../models/getfirewallconfigcrs.md)                   | :heavy_minus_sign:                                                                 | Custom Ruleset                                                                     |
 | `rules`                                                                            | *models.GetFirewallConfigRules*[]                                                  | :heavy_check_mark:                                                                 | N/A                                                                                |
 | `ips`                                                                              | [models.GetFirewallConfigIps](../models/getfirewallconfigips.md)[]                 | :heavy_check_mark:                                                                 | N/A                                                                                |
 | `changes`                                                                          | [models.Changes](../models/changes.md)[]                                           | :heavy_check_mark:                                                                 | N/A                                                                                |

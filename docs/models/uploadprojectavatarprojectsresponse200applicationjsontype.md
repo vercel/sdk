@@ -3,14 +3,14 @@
 ## Example Usage
 
 ```typescript
-import { UploadProjectAvatarProjectsResponse200ApplicationJSONType } from "@vercel/sdk/models/uploadprojectavatarprojectsresponse200applicationjsonresponsebodysecurityaction.js";
+import { UploadProjectAvatarProjectsResponse200ApplicationJSONType } from "@vercel/sdk/models/uploadprojectavatarprojectsresponse200applicationjsontype.js";
 
 let value: UploadProjectAvatarProjectsResponse200ApplicationJSONType =
-  "flags-secret";
+  "rollback";
 ```
 
 ## Values
 
 ```typescript
-"flags-secret"
+"promote" | "rollback"
 ```

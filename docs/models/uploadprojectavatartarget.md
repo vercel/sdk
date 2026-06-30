@@ -1,17 +1,15 @@
 # UploadProjectAvatarTarget
 
-
-## Supported Types
-
-### `models.UploadProjectAvatarTarget1[]`
+## Example Usage
 
 ```typescript
-const value: models.UploadProjectAvatarTarget1[] = [];
+import { UploadProjectAvatarTarget } from "@vercel/sdk/models/uploadprojectavatarprojectsresponse200applicationjsontype.js";
+
+let value: UploadProjectAvatarTarget = "PRODUCTION";
 ```
 
-### `models.UploadProjectAvatarTarget2`
+## Values
 
 ```typescript
-const value: models.UploadProjectAvatarTarget2 = "preview";
+"PREVIEW" | "PRODUCTION" | "STAGING"
 ```
-

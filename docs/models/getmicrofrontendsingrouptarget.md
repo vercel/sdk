@@ -1,19 +1,15 @@
 # GetMicrofrontendsInGroupTarget
 
-
-## Supported Types
-
-### `models.GetMicrofrontendsInGroupTarget1[]`
+## Example Usage
 
 ```typescript
-const value: models.GetMicrofrontendsInGroupTarget1[] = [
-  "development",
-];
+import { GetMicrofrontendsInGroupTarget } from "@vercel/sdk/models/getmicrofrontendsingroupmicrofrontendsresponse200applicationjsontype.js";
+
+let value: GetMicrofrontendsInGroupTarget = "PRODUCTION";
 ```
 
-### `models.GetMicrofrontendsInGroupTarget2`
+## Values
 
 ```typescript
-const value: models.GetMicrofrontendsInGroupTarget2 = "preview";
+"PREVIEW" | "PRODUCTION" | "STAGING"
 ```
-

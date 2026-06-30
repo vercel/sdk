@@ -1,0 +1,21 @@
+# WorkflowEvents
+
+## Example Usage
+
+```typescript
+import { WorkflowEvents } from "@vercel/sdk/models/usereventpayload125toaccounttype.js";
+
+let value: WorkflowEvents = {
+  updatedAt: 6814.49,
+  blockReason: "hard_blocked",
+};
+```
+
+## Fields
+
+| Field                                                                                                                                                      | Type                                                                                                                                                       | Required                                                                                                                                                   | Description                                                                                                                                                |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `updatedAt`                                                                                                                                                | *number*                                                                                                                                                   | :heavy_check_mark:                                                                                                                                         | N/A                                                                                                                                                        |
+| `blockedFrom`                                                                                                                                              | *number*                                                                                                                                                   | :heavy_minus_sign:                                                                                                                                         | N/A                                                                                                                                                        |
+| `blockedUntil`                                                                                                                                             | *number*                                                                                                                                                   | :heavy_minus_sign:                                                                                                                                         | N/A                                                                                                                                                        |
+| `blockReason`                                                                                                                                              | [models.UserEventPayload146NewOwnerFeatureBlocksWorkflowEventsBlockReason](../models/usereventpayload146newownerfeatureblocksworkfloweventsblockreason.md) | :heavy_check_mark:                                                                                                                                         | N/A                                                                                                                                                        |

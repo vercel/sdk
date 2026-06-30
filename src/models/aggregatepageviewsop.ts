@@ -269,6 +269,8 @@ export type Data2 = {
   cachedInputTokensCurrency: string;
   cacheCreationInputTokensCurrency: string;
   cacheCreation1hInputTokensCurrency: string;
+  surchargeCostCurrency: string;
+  gatewayCostCurrency: string;
   keyId: string;
   keyName: string;
   isByok: string;
@@ -457,6 +459,8 @@ export type Data1 = {
   cachedInputTokensCurrency?: string | undefined;
   cacheCreationInputTokensCurrency?: string | undefined;
   cacheCreation1hInputTokensCurrency?: string | undefined;
+  surchargeCostCurrency?: string | undefined;
+  gatewayCostCurrency?: string | undefined;
   keyId?: string | undefined;
   keyName?: string | undefined;
   isByok?: string | undefined;
@@ -775,6 +779,8 @@ export const Data2$inboundSchema: z.ZodType<Data2, z.ZodTypeDef, unknown> =
       cachedInputTokensCurrency: types.string(),
       cacheCreationInputTokensCurrency: types.string(),
       cacheCreation1hInputTokensCurrency: types.string(),
+      surchargeCostCurrency: types.string(),
+      gatewayCostCurrency: types.string(),
       keyId: types.string(),
       keyName: types.string(),
       isByok: types.string(),
@@ -977,6 +983,8 @@ export const Data1$inboundSchema: z.ZodType<Data1, z.ZodTypeDef, unknown> = z
     cachedInputTokensCurrency: types.optional(types.string()),
     cacheCreationInputTokensCurrency: types.optional(types.string()),
     cacheCreation1hInputTokensCurrency: types.optional(types.string()),
+    surchargeCostCurrency: types.optional(types.string()),
+    gatewayCostCurrency: types.optional(types.string()),
     keyId: types.optional(types.string()),
     keyName: types.optional(types.string()),
     isByok: types.optional(types.string()),

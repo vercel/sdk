@@ -1,6 +1,6 @@
 # GetDeploymentResponseBody1
 
-The deployment including both public and private information
+Returns the deployment object for the authenticated owner, including private fields such as environment variables, build log URLs, and internal metadata.
 
 ## Example Usage
 

@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsResponseBodyProjectsType } from "@vercel/sdk/models/getprojectshas1.js";
+import { GetProjectsResponseBodyProjectsType } from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponsetype.js";
 
-let value: GetProjectsResponseBodyProjectsType = "flags-secret";
+let value: GetProjectsResponseBodyProjectsType = "LAMBDAS";
 ```
 
 ## Values
 
 ```typescript
-"flags-secret"
+"LAMBDAS"
 ```

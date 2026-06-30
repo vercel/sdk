@@ -1,6 +1,6 @@
 # CreateDeploymentResponseBody
 
-The successfully created deployment
+Returns the newly created deployment object. Poll `readyState` to track build progress. See https://vercel.com/docs/deployments/deployment-states for possible states.
 
 ## Example Usage
 

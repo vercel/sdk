@@ -5,24 +5,29 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndEightyEight } from "@vercel/sdk/models/onehundredandeightythree.js";
+import { OneHundredAndEightyEight } from "@vercel/sdk/models/onehundredandeightyfive.js";
 
 let value: OneHundredAndEightyEight = {
-  privateLinkEndpoint: {
+  prev: {
     id: "<id>",
     name: "<value>",
+    projectId: "<id>",
+    vercelRegion: "<value>",
+    awsServiceName: "<value>",
   },
-  projectId: "<id>",
-  previousEndpoint: {
+  current: {
+    id: "<id>",
     name: "<value>",
+    projectId: "<id>",
+    vercelRegion: "<value>",
+    awsServiceName: "<value>",
   },
 };
 ```
 
 ## Fields
 
-| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `privateLinkEndpoint`                                                        | [models.PayloadPrivateLinkEndpoint](../models/payloadprivatelinkendpoint.md) | :heavy_check_mark:                                                           | N/A                                                                          |
-| `projectId`                                                                  | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
-| `previousEndpoint`                                                           | [models.PreviousEndpoint](../models/previousendpoint.md)                     | :heavy_check_mark:                                                           | N/A                                                                          |
+| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `prev`                                                           | [models.UserEventPayloadPrev](../models/usereventpayloadprev.md) | :heavy_check_mark:                                               | N/A                                                              |
+| `current`                                                        | [models.Current](../models/current.md)                           | :heavy_check_mark:                                               | N/A                                                              |

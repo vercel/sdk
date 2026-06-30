@@ -1,17 +1,16 @@
 # GetProjectsResponseBodyProjectsResponse200ApplicationJSONTarget
 
-
-## Supported Types
-
-### `models.GetProjectsTargetProjectsResponse1[]`
+## Example Usage
 
 ```typescript
-const value: models.GetProjectsTargetProjectsResponse1[] = [];
+import { GetProjectsResponseBodyProjectsResponse200ApplicationJSONTarget } from "@vercel/sdk/models/getprojectsresponsebodyprojectstargets.js";
+
+let value: GetProjectsResponseBodyProjectsResponse200ApplicationJSONTarget =
+  "PREVIEW";
 ```
 
-### `models.GetProjectsTargetProjectsResponse2`
+## Values
 
 ```typescript
-const value: models.GetProjectsTargetProjectsResponse2 = "development";
+"PREVIEW" | "PRODUCTION" | "STAGING"
 ```
-

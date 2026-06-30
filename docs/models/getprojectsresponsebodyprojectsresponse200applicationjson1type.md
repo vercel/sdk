@@ -1,16 +1,18 @@
 # GetProjectsResponseBodyProjectsResponse200ApplicationJson1Type
 
+The type of matching to perform
+
 ## Example Usage
 
 ```typescript
-import { GetProjectsResponseBodyProjectsResponse200ApplicationJson1Type } from "@vercel/sdk/models/getprojectshas1.js";
+import { GetProjectsResponseBodyProjectsResponse200ApplicationJson1Type } from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponsetype.js";
 
 let value: GetProjectsResponseBodyProjectsResponse200ApplicationJson1Type =
-  "cookie";
+  "endsWith";
 ```
 
 ## Values
 
 ```typescript
-"cookie" | "environment" | "header" | "host" | "initial_request_path" | "ip_address" | "method" | "path" | "protocol" | "query" | "region" | "scheme" | "trusted_source"
+"endsWith" | "equals" | "startsWith"
 ```

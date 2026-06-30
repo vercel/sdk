@@ -381,6 +381,10 @@ export type ServicesConfig = {
   framework?: string | null | undefined;
   nodeVersion?: string | undefined;
   middleware?: boolean | undefined;
+  /**
+   * Owning service name; scopes per-function config such as the v2beta consumer.
+   */
+  serviceName?: string | undefined;
 };
 
 export type Builder = {
@@ -860,7 +864,7 @@ export type CreateDeploymentAttribution = {
 };
 
 /**
- * The successfully created deployment
+ * Returns the newly created deployment object. Poll `readyState` to track build progress. See https://vercel.com/docs/deployments/deployment-states for possible states.
  */
 export type CreateDeploymentResponseBody = {
   aliasAssignedAt?: AliasAssignedAt | null | undefined;
@@ -1520,6 +1524,7 @@ export const ServicesConfig$inboundSchema: z.ZodType<
   framework: z.nullable(types.string()).optional(),
   nodeVersion: types.optional(types.string()),
   middleware: types.optional(types.boolean()),
+  serviceName: types.optional(types.string()),
 });
 
 export function servicesConfigFromJSON(

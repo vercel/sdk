@@ -137,6 +137,8 @@ const value: models.AggregateEventsData2[] = [
     cachedInputTokensCurrency: "<value>",
     cacheCreationInputTokensCurrency: "<value>",
     cacheCreation1hInputTokensCurrency: "<value>",
+    surchargeCostCurrency: "<value>",
+    gatewayCostCurrency: "<value>",
     keyId: "<id>",
     keyName: "<value>",
     isByok: "<value>",

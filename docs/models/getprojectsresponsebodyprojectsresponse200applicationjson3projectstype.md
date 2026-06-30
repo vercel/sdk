@@ -1,19 +1,19 @@
 # GetProjectsResponseBodyProjectsResponse200ApplicationJson3ProjectsType
 
-The type of matching to perform
+The type of environment (production, preview, or development)
 
 ## Example Usage
 
 ```typescript
-import { GetProjectsResponseBodyProjectsResponse200ApplicationJson3ProjectsType } from "@vercel/sdk/models/getprojectsresponsebodyprojectsgitprovideroptions.js";
+import { GetProjectsResponseBodyProjectsResponse200ApplicationJson3ProjectsType } from "@vercel/sdk/models/getprojectsresponsebodyprojectstargets.js";
 
 let value:
   GetProjectsResponseBodyProjectsResponse200ApplicationJson3ProjectsType =
-    "startsWith";
+    "production";
 ```
 
 ## Values
 
 ```typescript
-"endsWith" | "equals" | "startsWith"
+"development" | "preview" | "production"
 ```

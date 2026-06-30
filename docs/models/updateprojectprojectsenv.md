@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UpdateProjectProjectsEnv } from "@vercel/sdk/models/updateprojectprojectspaths.js";
+import { UpdateProjectProjectsEnv } from "@vercel/sdk/models/updateprojectbuilds.js";
 
 let value: UpdateProjectProjectsEnv = {
   type: "secret",
@@ -16,7 +16,7 @@ let value: UpdateProjectProjectsEnv = {
 
 | Field                                                                                     | Type                                                                                      | Required                                                                                  | Description                                                                               |
 | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| `target`                                                                                  | *models.UpdateProjectTarget*                                                              | :heavy_minus_sign:                                                                        | N/A                                                                                       |
+| `target`                                                                                  | *models.UpdateProjectProjectsTarget*                                                      | :heavy_minus_sign:                                                                        | N/A                                                                                       |
 | `type`                                                                                    | [models.UpdateProjectType](../models/updateprojecttype.md)                                | :heavy_check_mark:                                                                        | N/A                                                                                       |
 | `sunsetSecretId`                                                                          | *string*                                                                                  | :heavy_minus_sign:                                                                        | This is used to identify variables that have been migrated from type secret to sensitive. |
 | `legacyValue`                                                                             | *string*                                                                                  | :heavy_minus_sign:                                                                        | Legacy now-encryption ciphertext, present after migration swaps value/vsmValue            |

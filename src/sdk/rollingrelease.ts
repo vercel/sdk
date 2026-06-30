@@ -8,6 +8,7 @@ import { rollingReleaseDeleteRollingReleaseConfig } from "../funcs/rollingReleas
 import { rollingReleaseGetRollingRelease } from "../funcs/rollingReleaseGetRollingRelease.js";
 import { rollingReleaseGetRollingReleaseBillingStatus } from "../funcs/rollingReleaseGetRollingReleaseBillingStatus.js";
 import { rollingReleaseGetRollingReleaseConfig } from "../funcs/rollingReleaseGetRollingReleaseConfig.js";
+import { rollingReleaseStartRollingRelease } from "../funcs/rollingReleaseStartRollingRelease.js";
 import { rollingReleaseUpdateRollingReleaseConfig } from "../funcs/rollingReleaseUpdateRollingReleaseConfig.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import {
@@ -34,6 +35,10 @@ import {
   GetRollingReleaseRequest,
   GetRollingReleaseResponseBody,
 } from "../models/getrollingreleaseop.js";
+import {
+  StartRollingReleaseRequest,
+  StartRollingReleaseResponseBody,
+} from "../models/startrollingreleaseop.js";
 import {
   UpdateRollingReleaseConfigRequest,
   UpdateRollingReleaseConfigResponseBody,
@@ -137,6 +142,23 @@ export class RollingRelease extends ClientSDK {
     options?: RequestOptions,
   ): Promise<ApproveRollingReleaseStageResponseBody> {
     return unwrapAsync(rollingReleaseApproveRollingReleaseStage(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Start a rolling release for the project
+   *
+   * @remarks
+   * Start a rolling release for a deployment. If a rolling release is already active for the same canary deployment, returns the current state without side effects.
+   */
+  async startRollingRelease(
+    request: StartRollingReleaseRequest,
+    options?: RequestOptions,
+  ): Promise<StartRollingReleaseResponseBody> {
+    return unwrapAsync(rollingReleaseStartRollingRelease(
       this,
       request,
       options,

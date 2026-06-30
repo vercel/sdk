@@ -1,0 +1,19 @@
+# GetProjectContentHint6
+
+## Example Usage
+
+```typescript
+import { GetProjectContentHint6 } from "@vercel/sdk/models/getprojectlastrollbacktarget.js";
+
+let value: GetProjectContentHint6 = {
+  type: "blob-store-id",
+  storeId: "<id>",
+};
+```
+
+## Fields
+
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `type`             | *"blob-store-id"*  | :heavy_check_mark: | N/A                |
+| `storeId`          | *string*           | :heavy_check_mark: | N/A                |

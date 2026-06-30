@@ -11,6 +11,8 @@ import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 import {
+  UploadProjectAvatarAlias,
+  UploadProjectAvatarAlias$inboundSchema,
   UploadProjectAvatarAnalytics,
   UploadProjectAvatarAnalytics$inboundSchema,
   UploadProjectAvatarConnectConfigurations,
@@ -31,16 +33,12 @@ import {
   UploadProjectAvatarExpiration$inboundSchema,
   UploadProjectAvatarFramework,
   UploadProjectAvatarFramework$inboundSchema,
-  UploadProjectAvatarGitComments,
-  UploadProjectAvatarGitComments$inboundSchema,
-  UploadProjectAvatarGitProviderOptions,
-  UploadProjectAvatarGitProviderOptions$inboundSchema,
   UploadProjectAvatarIpBuckets,
   UploadProjectAvatarIpBuckets$inboundSchema,
   UploadProjectAvatarJobs,
   UploadProjectAvatarJobs$inboundSchema,
-  UploadProjectAvatarLastAliasRequest,
-  UploadProjectAvatarLastAliasRequest$inboundSchema,
+  UploadProjectAvatarJobStatus,
+  UploadProjectAvatarJobStatus$inboundSchema,
   UploadProjectAvatarLastRollbackTarget,
   UploadProjectAvatarLastRollbackTarget$inboundSchema,
   UploadProjectAvatarLatestDeployments,
@@ -59,10 +57,8 @@ import {
   UploadProjectAvatarPasswordProtection$inboundSchema,
   UploadProjectAvatarPermissions,
   UploadProjectAvatarPermissions$inboundSchema,
-  UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodySecurityAction,
-  UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodySecurityAction$inboundSchema,
-  UploadProjectAvatarProtectionBypass,
-  UploadProjectAvatarProtectionBypass$inboundSchema,
+  UploadProjectAvatarProjectsResponse200ApplicationJSONType,
+  UploadProjectAvatarProjectsResponse200ApplicationJSONType$inboundSchema,
   UploadProjectAvatarProtectionConfig,
   UploadProjectAvatarProtectionConfig$inboundSchema,
   UploadProjectAvatarResourceConfig,
@@ -81,15 +77,344 @@ import {
   UploadProjectAvatarStaticIps$inboundSchema,
   UploadProjectAvatarTargets,
   UploadProjectAvatarTargets$inboundSchema,
-  UploadProjectAvatarTrustedIps,
-  UploadProjectAvatarTrustedIps$inboundSchema,
-  UploadProjectAvatarTrustedSources,
-  UploadProjectAvatarTrustedSources$inboundSchema,
-  UploadProjectAvatarVercelRuleset,
-  UploadProjectAvatarVercelRuleset$inboundSchema,
-  UploadProjectAvatarWebAnalytics,
-  UploadProjectAvatarWebAnalytics$inboundSchema,
-} from "./uploadprojectavatarprojectsresponse200applicationjsonresponsebodysecurityaction.js";
+} from "./uploadprojectavatarprojectsresponse200applicationjsontype.js";
+
+export type UploadProjectAvatarLastAliasRequest = {
+  fromDeploymentId: string | null;
+  toDeploymentId: string;
+  /**
+   * If rolling back from a rolling release, fromDeploymentId captures the "base" of that rolling release, and fromRollingReleaseId captures the "target" of that rolling release.
+   */
+  fromRollingReleaseId?: string | undefined;
+  jobStatus: UploadProjectAvatarJobStatus;
+  requestedAt: number;
+  type: UploadProjectAvatarProjectsResponse200ApplicationJSONType;
+};
+
+export type UploadProjectAvatarProtectionBypass2 = {
+  createdAt: number;
+  createdBy: string;
+  scope: "automation-bypass";
+  /**
+   * When there was only one bypass, it was automatically set as an env var on deployments. With multiple bypasses, there is always one bypass that is selected as the default, and gets set as an env var on deployments. As this is a new field, undefined means that the bypass is the env var. If there are any automation bypasses, exactly one must be the env var.
+   */
+  isEnvVar?: boolean | undefined;
+  /**
+   * Optional note about the bypass to be displayed in the UI
+   */
+  note?: string | undefined;
+};
+
+export type UploadProjectAvatarProtectionBypass1 = {
+  createdAt: number;
+  createdBy: string;
+  scope: "integration-automation-bypass";
+  integrationId: string;
+  configurationId: string;
+};
+
+export type UploadProjectAvatarProtectionBypass =
+  | UploadProjectAvatarProtectionBypass1
+  | UploadProjectAvatarProtectionBypass2;
+
+export const UploadProjectAvatarTrustedIpsProjectsDeploymentType = {
+  All: "all",
+  AllExceptCustomDomains: "all_except_custom_domains",
+  Preview: "preview",
+  ProdDeploymentUrlsAndAllPreviews: "prod_deployment_urls_and_all_previews",
+  Production: "production",
+} as const;
+export type UploadProjectAvatarTrustedIpsProjectsDeploymentType = ClosedEnum<
+  typeof UploadProjectAvatarTrustedIpsProjectsDeploymentType
+>;
+
+export type UploadProjectAvatarTrustedIps2 = {
+  deploymentType: UploadProjectAvatarTrustedIpsProjectsDeploymentType;
+};
+
+export const UploadProjectAvatarTrustedIpsDeploymentType = {
+  All: "all",
+  AllExceptCustomDomains: "all_except_custom_domains",
+  Preview: "preview",
+  ProdDeploymentUrlsAndAllPreviews: "prod_deployment_urls_and_all_previews",
+  Production: "production",
+} as const;
+export type UploadProjectAvatarTrustedIpsDeploymentType = ClosedEnum<
+  typeof UploadProjectAvatarTrustedIpsDeploymentType
+>;
+
+export type UploadProjectAvatarTrustedIpsAddresses = {
+  value: string;
+  note?: string | undefined;
+};
+
+export const UploadProjectAvatarTrustedIpsProtectionMode = {
+  Additional: "additional",
+  Exclusive: "exclusive",
+} as const;
+export type UploadProjectAvatarTrustedIpsProtectionMode = ClosedEnum<
+  typeof UploadProjectAvatarTrustedIpsProtectionMode
+>;
+
+export type UploadProjectAvatarTrustedIps1 = {
+  deploymentType: UploadProjectAvatarTrustedIpsDeploymentType;
+  addresses: Array<UploadProjectAvatarTrustedIpsAddresses>;
+  protectionMode: UploadProjectAvatarTrustedIpsProtectionMode;
+};
+
+export type UploadProjectAvatarTrustedIps =
+  | UploadProjectAvatarTrustedIps1
+  | UploadProjectAvatarTrustedIps2;
+
+export const UploadProjectAvatarFromProjectsPreset = {
+  AllCustom: "all-custom",
+} as const;
+export type UploadProjectAvatarFromProjectsPreset = ClosedEnum<
+  typeof UploadProjectAvatarFromProjectsPreset
+>;
+
+/**
+ * The source envs on the trusted project that are allowed to access `to`.
+ */
+export type UploadProjectAvatarFrom2 = {
+  /**
+   * System environment slugs (`production`, `preview`) and/or custom environment slugs defined on the referenced project.
+   */
+  slugs?: Array<string> | undefined;
+  preset: UploadProjectAvatarFromProjectsPreset;
+};
+
+export const UploadProjectAvatarFromPreset = {
+  AllCustom: "all-custom",
+} as const;
+export type UploadProjectAvatarFromPreset = ClosedEnum<
+  typeof UploadProjectAvatarFromPreset
+>;
+
+/**
+ * The source envs on the trusted project that are allowed to access `to`.
+ */
+export type UploadProjectAvatarFrom1 = {
+  /**
+   * System environment slugs (`production`, `preview`) and/or custom environment slugs defined on the referenced project.
+   */
+  slugs: Array<string>;
+  preset?: UploadProjectAvatarFromPreset | undefined;
+};
+
+export type UploadProjectAvatarFrom =
+  | UploadProjectAvatarFrom1
+  | UploadProjectAvatarFrom2;
+
+export const UploadProjectAvatarToProjectsResponse200Preset = {
+  AllCustom: "all-custom",
+} as const;
+export type UploadProjectAvatarToProjectsResponse200Preset = ClosedEnum<
+  typeof UploadProjectAvatarToProjectsResponse200Preset
+>;
+
+/**
+ * The target envs on the current project that may be accessed.
+ */
+export type UploadProjectAvatarToProjects2 = {
+  /**
+   * System environment slugs (`production`, `preview`) and/or custom environment slugs defined on the referenced project.
+   */
+  slugs?: Array<string> | undefined;
+  preset: UploadProjectAvatarToProjectsResponse200Preset;
+};
+
+export const UploadProjectAvatarToProjectsResponsePreset = {
+  AllCustom: "all-custom",
+} as const;
+export type UploadProjectAvatarToProjectsResponsePreset = ClosedEnum<
+  typeof UploadProjectAvatarToProjectsResponsePreset
+>;
+
+/**
+ * The target envs on the current project that may be accessed.
+ */
+export type UploadProjectAvatarToProjects1 = {
+  /**
+   * System environment slugs (`production`, `preview`) and/or custom environment slugs defined on the referenced project.
+   */
+  slugs: Array<string>;
+  preset?: UploadProjectAvatarToProjectsResponsePreset | undefined;
+};
+
+export type UploadProjectAvatarProjectsTo =
+  | UploadProjectAvatarToProjects1
+  | UploadProjectAvatarToProjects2;
+
+/**
+ * Optional overrides for the default same-env-by-slug matching. Provide explicit rules to allow cross-env access or presets.
+ */
+export type UploadProjectAvatarCustomAllow = {
+  from: UploadProjectAvatarFrom1 | UploadProjectAvatarFrom2;
+  to: UploadProjectAvatarToProjects1 | UploadProjectAvatarToProjects2;
+};
+
+export type UploadProjectAvatarProjects = {
+  label?: string | undefined;
+  /**
+   * Optional overrides for the default same-env-by-slug matching. Provide explicit rules to allow cross-env access or presets.
+   */
+  customAllow?: Array<UploadProjectAvatarCustomAllow> | undefined;
+};
+
+export const UploadProjectAvatarToProjectsPreset = {
+  AllCustom: "all-custom",
+} as const;
+export type UploadProjectAvatarToProjectsPreset = ClosedEnum<
+  typeof UploadProjectAvatarToProjectsPreset
+>;
+
+/**
+ * The target envs on the current project that may be accessed.
+ */
+export type UploadProjectAvatarTo2 = {
+  /**
+   * System environment slugs (`production`, `preview`) and/or custom environment slugs defined on the referenced project.
+   */
+  slugs?: Array<string> | undefined;
+  preset: UploadProjectAvatarToProjectsPreset;
+};
+
+export const UploadProjectAvatarToPreset = {
+  AllCustom: "all-custom",
+} as const;
+export type UploadProjectAvatarToPreset = ClosedEnum<
+  typeof UploadProjectAvatarToPreset
+>;
+
+/**
+ * The target envs on the current project that may be accessed.
+ */
+export type UploadProjectAvatarTo1 = {
+  /**
+   * System environment slugs (`production`, `preview`) and/or custom environment slugs defined on the referenced project.
+   */
+  slugs: Array<string>;
+  preset?: UploadProjectAvatarToPreset | undefined;
+};
+
+export type UploadProjectAvatarTo =
+  | UploadProjectAvatarTo1
+  | UploadProjectAvatarTo2;
+
+export type UploadProjectAvatarOidcProviders = {
+  to: UploadProjectAvatarTo1 | UploadProjectAvatarTo2;
+  label?: string | undefined;
+  claims: { [k: string]: Array<string> };
+};
+
+export type UploadProjectAvatarTrustedSources = {
+  projects?: { [k: string]: UploadProjectAvatarProjects } | undefined;
+  oidcProviders?:
+    | { [k: string]: Array<UploadProjectAvatarOidcProviders> }
+    | undefined;
+};
+
+export type UploadProjectAvatarGitComments = {
+  /**
+   * Whether the Vercel bot should comment on PRs
+   */
+  onPullRequest: boolean;
+  /**
+   * Whether the Vercel bot should comment on commits
+   */
+  onCommit: boolean;
+};
+
+/**
+ * Whether the Vercel bot should automatically create GitHub deployments https://docs.github.com/en/rest/deployments/deployments#about-deployments NOTE: repository-dispatch events should be used instead
+ */
+export const UploadProjectAvatarCreateDeployments = {
+  Disabled: "disabled",
+  Enabled: "enabled",
+} as const;
+/**
+ * Whether the Vercel bot should automatically create GitHub deployments https://docs.github.com/en/rest/deployments/deployments#about-deployments NOTE: repository-dispatch events should be used instead
+ */
+export type UploadProjectAvatarCreateDeployments = ClosedEnum<
+  typeof UploadProjectAvatarCreateDeployments
+>;
+
+/**
+ * Configuration for consolidated git commit status reporting. When enabled, Vercel will post a single consolidated commit status instead of individual statuses for each deployment.
+ */
+export type UploadProjectAvatarConsolidatedGitCommitStatus = {
+  /**
+   * Whether consolidated commit status is enabled.
+   */
+  enabled: boolean;
+  /**
+   * Whether to propagate individual deployment failures to the consolidated status.
+   */
+  propagateFailures: boolean;
+};
+
+export type UploadProjectAvatarGitProviderOptions = {
+  /**
+   * Whether the Vercel bot should automatically create GitHub deployments https://docs.github.com/en/rest/deployments/deployments#about-deployments NOTE: repository-dispatch events should be used instead
+   */
+  createDeployments: UploadProjectAvatarCreateDeployments;
+  /**
+   * Whether the Vercel bot should not automatically create GitHub repository-dispatch events on deployment events. https://vercel.com/docs/git/vercel-for-github#repository-dispatch-events - `true`: disable repository-dispatch events for this project (explicit override of the team setting). - `false`: enable repository-dispatch events for this project (explicit override of the team setting). - absent: inherit from `team.disableRepositoryDispatchEvents`.
+   */
+  disableRepositoryDispatchEvents?: boolean | undefined;
+  /**
+   * Whether the project requires commits to be signed & verified before deployments will be created. - `true`: require verified commits for this project (explicit override of the team setting). - `false`: do not require verified commits (explicit override of the team setting). - absent: inherit from `team.requireVerifiedCommits`.
+   */
+  requireVerifiedCommits?: boolean | undefined;
+  /**
+   * Whether Vercel should post commit statuses for this project. When omitted, commit statuses remain enabled.
+   */
+  gitCommitStatus?: boolean | undefined;
+  /**
+   * Configuration for consolidated git commit status reporting. When enabled, Vercel will post a single consolidated commit status instead of individual statuses for each deployment.
+   */
+  consolidatedGitCommitStatus?:
+    | UploadProjectAvatarConsolidatedGitCommitStatus
+    | undefined;
+};
+
+export type UploadProjectAvatarWebAnalytics = {
+  id: string;
+  disabledAt?: number | undefined;
+  canceledAt?: number | undefined;
+  enabledAt?: number | undefined;
+  hasData?: true | undefined;
+};
+
+export const UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodyAction =
+  {
+    Challenge: "challenge",
+    Deny: "deny",
+    Log: "log",
+  } as const;
+export type UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodyAction =
+  ClosedEnum<
+    typeof UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodyAction
+  >;
+
+export type UploadProjectAvatarVercelRuleset = {
+  active: boolean;
+  action?:
+    | UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodyAction
+    | undefined;
+};
+
+export const UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodySecurityAction =
+  {
+    Challenge: "challenge",
+    Deny: "deny",
+    Log: "log",
+  } as const;
+export type UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodySecurityAction =
+  ClosedEnum<
+    typeof UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodySecurityAction
+  >;
 
 export type UploadProjectAvatarTrafficSources = {
   active: boolean;
@@ -759,6 +1084,7 @@ export type UploadProjectAvatarTracing = {
 
 export type UploadProjectAvatarResponseBody = {
   accountId: string;
+  alias: Array<UploadProjectAvatarAlias>;
   analytics?: UploadProjectAvatarAnalytics | undefined;
   appliedCve55182Migration?: boolean | undefined;
   speedInsights?: UploadProjectAvatarSpeedInsights | undefined;
@@ -839,11 +1165,17 @@ export type UploadProjectAvatarResponseBody = {
   permissions?: UploadProjectAvatarPermissions | undefined;
   lastRollbackTarget?: UploadProjectAvatarLastRollbackTarget | null | undefined;
   lastAliasRequest?: UploadProjectAvatarLastAliasRequest | null | undefined;
-  protectionBypass?:
-    | { [k: string]: UploadProjectAvatarProtectionBypass }
-    | undefined;
+  protectionBypass?: {
+    [k: string]:
+      | UploadProjectAvatarProtectionBypass1
+      | UploadProjectAvatarProtectionBypass2;
+  } | undefined;
   hasActiveBranches?: boolean | undefined;
-  trustedIps?: UploadProjectAvatarTrustedIps | null | undefined;
+  trustedIps?:
+    | UploadProjectAvatarTrustedIps1
+    | UploadProjectAvatarTrustedIps2
+    | null
+    | undefined;
   trustedSources?: UploadProjectAvatarTrustedSources | null | undefined;
   gitComments?: UploadProjectAvatarGitComments | undefined;
   gitProviderOptions?: UploadProjectAvatarGitProviderOptions | undefined;
@@ -874,6 +1206,650 @@ export type UploadProjectAvatarResponseBody = {
   tracing?: UploadProjectAvatarTracing | undefined;
   avatar?: string | null | undefined;
 };
+
+/** @internal */
+export const UploadProjectAvatarLastAliasRequest$inboundSchema: z.ZodType<
+  UploadProjectAvatarLastAliasRequest,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  fromDeploymentId: types.nullable(types.string()),
+  toDeploymentId: types.string(),
+  fromRollingReleaseId: types.optional(types.string()),
+  jobStatus: UploadProjectAvatarJobStatus$inboundSchema,
+  requestedAt: types.number(),
+  type: UploadProjectAvatarProjectsResponse200ApplicationJSONType$inboundSchema,
+});
+
+export function uploadProjectAvatarLastAliasRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<UploadProjectAvatarLastAliasRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UploadProjectAvatarLastAliasRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UploadProjectAvatarLastAliasRequest' from JSON`,
+  );
+}
+
+/** @internal */
+export const UploadProjectAvatarProtectionBypass2$inboundSchema: z.ZodType<
+  UploadProjectAvatarProtectionBypass2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  createdAt: types.number(),
+  createdBy: types.string(),
+  scope: types.literal("automation-bypass"),
+  isEnvVar: types.optional(types.boolean()),
+  note: types.optional(types.string()),
+});
+
+export function uploadProjectAvatarProtectionBypass2FromJSON(
+  jsonString: string,
+): SafeParseResult<UploadProjectAvatarProtectionBypass2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UploadProjectAvatarProtectionBypass2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UploadProjectAvatarProtectionBypass2' from JSON`,
+  );
+}
+
+/** @internal */
+export const UploadProjectAvatarProtectionBypass1$inboundSchema: z.ZodType<
+  UploadProjectAvatarProtectionBypass1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  createdAt: types.number(),
+  createdBy: types.string(),
+  scope: types.literal("integration-automation-bypass"),
+  integrationId: types.string(),
+  configurationId: types.string(),
+});
+
+export function uploadProjectAvatarProtectionBypass1FromJSON(
+  jsonString: string,
+): SafeParseResult<UploadProjectAvatarProtectionBypass1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UploadProjectAvatarProtectionBypass1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UploadProjectAvatarProtectionBypass1' from JSON`,
+  );
+}
+
+/** @internal */
+export const UploadProjectAvatarProtectionBypass$inboundSchema: z.ZodType<
+  UploadProjectAvatarProtectionBypass,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() => UploadProjectAvatarProtectionBypass1$inboundSchema),
+  z.lazy(() => UploadProjectAvatarProtectionBypass2$inboundSchema),
+]);
+
+export function uploadProjectAvatarProtectionBypassFromJSON(
+  jsonString: string,
+): SafeParseResult<UploadProjectAvatarProtectionBypass, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UploadProjectAvatarProtectionBypass$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UploadProjectAvatarProtectionBypass' from JSON`,
+  );
+}
+
+/** @internal */
+export const UploadProjectAvatarTrustedIpsProjectsDeploymentType$inboundSchema:
+  z.ZodNativeEnum<typeof UploadProjectAvatarTrustedIpsProjectsDeploymentType> =
+    z.nativeEnum(UploadProjectAvatarTrustedIpsProjectsDeploymentType);
+
+/** @internal */
+export const UploadProjectAvatarTrustedIps2$inboundSchema: z.ZodType<
+  UploadProjectAvatarTrustedIps2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  deploymentType:
+    UploadProjectAvatarTrustedIpsProjectsDeploymentType$inboundSchema,
+});
+
+export function uploadProjectAvatarTrustedIps2FromJSON(
+  jsonString: string,
+): SafeParseResult<UploadProjectAvatarTrustedIps2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UploadProjectAvatarTrustedIps2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UploadProjectAvatarTrustedIps2' from JSON`,
+  );
+}
+
+/** @internal */
+export const UploadProjectAvatarTrustedIpsDeploymentType$inboundSchema:
+  z.ZodNativeEnum<typeof UploadProjectAvatarTrustedIpsDeploymentType> = z
+    .nativeEnum(UploadProjectAvatarTrustedIpsDeploymentType);
+
+/** @internal */
+export const UploadProjectAvatarTrustedIpsAddresses$inboundSchema: z.ZodType<
+  UploadProjectAvatarTrustedIpsAddresses,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  value: types.string(),
+  note: types.optional(types.string()),
+});
+
+export function uploadProjectAvatarTrustedIpsAddressesFromJSON(
+  jsonString: string,
+): SafeParseResult<UploadProjectAvatarTrustedIpsAddresses, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UploadProjectAvatarTrustedIpsAddresses$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UploadProjectAvatarTrustedIpsAddresses' from JSON`,
+  );
+}
+
+/** @internal */
+export const UploadProjectAvatarTrustedIpsProtectionMode$inboundSchema:
+  z.ZodNativeEnum<typeof UploadProjectAvatarTrustedIpsProtectionMode> = z
+    .nativeEnum(UploadProjectAvatarTrustedIpsProtectionMode);
+
+/** @internal */
+export const UploadProjectAvatarTrustedIps1$inboundSchema: z.ZodType<
+  UploadProjectAvatarTrustedIps1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  deploymentType: UploadProjectAvatarTrustedIpsDeploymentType$inboundSchema,
+  addresses: z.array(
+    z.lazy(() => UploadProjectAvatarTrustedIpsAddresses$inboundSchema),
+  ),
+  protectionMode: UploadProjectAvatarTrustedIpsProtectionMode$inboundSchema,
+});
+
+export function uploadProjectAvatarTrustedIps1FromJSON(
+  jsonString: string,
+): SafeParseResult<UploadProjectAvatarTrustedIps1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UploadProjectAvatarTrustedIps1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UploadProjectAvatarTrustedIps1' from JSON`,
+  );
+}
+
+/** @internal */
+export const UploadProjectAvatarTrustedIps$inboundSchema: z.ZodType<
+  UploadProjectAvatarTrustedIps,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  z.lazy(() => UploadProjectAvatarTrustedIps1$inboundSchema),
+  z.lazy(() => UploadProjectAvatarTrustedIps2$inboundSchema),
+]);
+
+export function uploadProjectAvatarTrustedIpsFromJSON(
+  jsonString: string,
+): SafeParseResult<UploadProjectAvatarTrustedIps, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UploadProjectAvatarTrustedIps$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UploadProjectAvatarTrustedIps' from JSON`,
+  );
+}
+
+/** @internal */
+export const UploadProjectAvatarFromProjectsPreset$inboundSchema:
+  z.ZodNativeEnum<typeof UploadProjectAvatarFromProjectsPreset> = z.nativeEnum(
+    UploadProjectAvatarFromProjectsPreset,
+  );
+
+/** @internal */
+export const UploadProjectAvatarFrom2$inboundSchema: z.ZodType<
+  UploadProjectAvatarFrom2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  slugs: types.optional(z.array(types.string())),
+  preset: UploadProjectAvatarFromProjectsPreset$inboundSchema,
+});
+
+export function uploadProjectAvatarFrom2FromJSON(
+  jsonString: string,
+): SafeParseResult<UploadProjectAvatarFrom2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UploadProjectAvatarFrom2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UploadProjectAvatarFrom2' from JSON`,
+  );
+}
+
+/** @internal */
+export const UploadProjectAvatarFromPreset$inboundSchema: z.ZodNativeEnum<
+  typeof UploadProjectAvatarFromPreset
+> = z.nativeEnum(UploadProjectAvatarFromPreset);
+
+/** @internal */
+export const UploadProjectAvatarFrom1$inboundSchema: z.ZodType<
+  UploadProjectAvatarFrom1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  slugs: z.array(types.string()),
+  preset: types.optional(UploadProjectAvatarFromPreset$inboundSchema),
+});
+
+export function uploadProjectAvatarFrom1FromJSON(
+  jsonString: string,
+): SafeParseResult<UploadProjectAvatarFrom1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UploadProjectAvatarFrom1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UploadProjectAvatarFrom1' from JSON`,
+  );
+}
+
+/** @internal */
+export const UploadProjectAvatarFrom$inboundSchema: z.ZodType<
+  UploadProjectAvatarFrom,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  z.lazy(() => UploadProjectAvatarFrom1$inboundSchema),
+  z.lazy(() => UploadProjectAvatarFrom2$inboundSchema),
+]);
+
+export function uploadProjectAvatarFromFromJSON(
+  jsonString: string,
+): SafeParseResult<UploadProjectAvatarFrom, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UploadProjectAvatarFrom$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UploadProjectAvatarFrom' from JSON`,
+  );
+}
+
+/** @internal */
+export const UploadProjectAvatarToProjectsResponse200Preset$inboundSchema:
+  z.ZodNativeEnum<typeof UploadProjectAvatarToProjectsResponse200Preset> = z
+    .nativeEnum(UploadProjectAvatarToProjectsResponse200Preset);
+
+/** @internal */
+export const UploadProjectAvatarToProjects2$inboundSchema: z.ZodType<
+  UploadProjectAvatarToProjects2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  slugs: types.optional(z.array(types.string())),
+  preset: UploadProjectAvatarToProjectsResponse200Preset$inboundSchema,
+});
+
+export function uploadProjectAvatarToProjects2FromJSON(
+  jsonString: string,
+): SafeParseResult<UploadProjectAvatarToProjects2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UploadProjectAvatarToProjects2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UploadProjectAvatarToProjects2' from JSON`,
+  );
+}
+
+/** @internal */
+export const UploadProjectAvatarToProjectsResponsePreset$inboundSchema:
+  z.ZodNativeEnum<typeof UploadProjectAvatarToProjectsResponsePreset> = z
+    .nativeEnum(UploadProjectAvatarToProjectsResponsePreset);
+
+/** @internal */
+export const UploadProjectAvatarToProjects1$inboundSchema: z.ZodType<
+  UploadProjectAvatarToProjects1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  slugs: z.array(types.string()),
+  preset: types.optional(
+    UploadProjectAvatarToProjectsResponsePreset$inboundSchema,
+  ),
+});
+
+export function uploadProjectAvatarToProjects1FromJSON(
+  jsonString: string,
+): SafeParseResult<UploadProjectAvatarToProjects1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UploadProjectAvatarToProjects1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UploadProjectAvatarToProjects1' from JSON`,
+  );
+}
+
+/** @internal */
+export const UploadProjectAvatarProjectsTo$inboundSchema: z.ZodType<
+  UploadProjectAvatarProjectsTo,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  z.lazy(() => UploadProjectAvatarToProjects1$inboundSchema),
+  z.lazy(() => UploadProjectAvatarToProjects2$inboundSchema),
+]);
+
+export function uploadProjectAvatarProjectsToFromJSON(
+  jsonString: string,
+): SafeParseResult<UploadProjectAvatarProjectsTo, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UploadProjectAvatarProjectsTo$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UploadProjectAvatarProjectsTo' from JSON`,
+  );
+}
+
+/** @internal */
+export const UploadProjectAvatarCustomAllow$inboundSchema: z.ZodType<
+  UploadProjectAvatarCustomAllow,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  from: smartUnion([
+    z.lazy(() => UploadProjectAvatarFrom1$inboundSchema),
+    z.lazy(() => UploadProjectAvatarFrom2$inboundSchema),
+  ]),
+  to: smartUnion([
+    z.lazy(() => UploadProjectAvatarToProjects1$inboundSchema),
+    z.lazy(() => UploadProjectAvatarToProjects2$inboundSchema),
+  ]),
+});
+
+export function uploadProjectAvatarCustomAllowFromJSON(
+  jsonString: string,
+): SafeParseResult<UploadProjectAvatarCustomAllow, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UploadProjectAvatarCustomAllow$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UploadProjectAvatarCustomAllow' from JSON`,
+  );
+}
+
+/** @internal */
+export const UploadProjectAvatarProjects$inboundSchema: z.ZodType<
+  UploadProjectAvatarProjects,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  label: types.optional(types.string()),
+  customAllow: types.optional(
+    z.array(z.lazy(() => UploadProjectAvatarCustomAllow$inboundSchema)),
+  ),
+});
+
+export function uploadProjectAvatarProjectsFromJSON(
+  jsonString: string,
+): SafeParseResult<UploadProjectAvatarProjects, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UploadProjectAvatarProjects$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UploadProjectAvatarProjects' from JSON`,
+  );
+}
+
+/** @internal */
+export const UploadProjectAvatarToProjectsPreset$inboundSchema: z.ZodNativeEnum<
+  typeof UploadProjectAvatarToProjectsPreset
+> = z.nativeEnum(UploadProjectAvatarToProjectsPreset);
+
+/** @internal */
+export const UploadProjectAvatarTo2$inboundSchema: z.ZodType<
+  UploadProjectAvatarTo2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  slugs: types.optional(z.array(types.string())),
+  preset: UploadProjectAvatarToProjectsPreset$inboundSchema,
+});
+
+export function uploadProjectAvatarTo2FromJSON(
+  jsonString: string,
+): SafeParseResult<UploadProjectAvatarTo2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UploadProjectAvatarTo2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UploadProjectAvatarTo2' from JSON`,
+  );
+}
+
+/** @internal */
+export const UploadProjectAvatarToPreset$inboundSchema: z.ZodNativeEnum<
+  typeof UploadProjectAvatarToPreset
+> = z.nativeEnum(UploadProjectAvatarToPreset);
+
+/** @internal */
+export const UploadProjectAvatarTo1$inboundSchema: z.ZodType<
+  UploadProjectAvatarTo1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  slugs: z.array(types.string()),
+  preset: types.optional(UploadProjectAvatarToPreset$inboundSchema),
+});
+
+export function uploadProjectAvatarTo1FromJSON(
+  jsonString: string,
+): SafeParseResult<UploadProjectAvatarTo1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UploadProjectAvatarTo1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UploadProjectAvatarTo1' from JSON`,
+  );
+}
+
+/** @internal */
+export const UploadProjectAvatarTo$inboundSchema: z.ZodType<
+  UploadProjectAvatarTo,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  z.lazy(() => UploadProjectAvatarTo1$inboundSchema),
+  z.lazy(() => UploadProjectAvatarTo2$inboundSchema),
+]);
+
+export function uploadProjectAvatarToFromJSON(
+  jsonString: string,
+): SafeParseResult<UploadProjectAvatarTo, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UploadProjectAvatarTo$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UploadProjectAvatarTo' from JSON`,
+  );
+}
+
+/** @internal */
+export const UploadProjectAvatarOidcProviders$inboundSchema: z.ZodType<
+  UploadProjectAvatarOidcProviders,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  to: smartUnion([
+    z.lazy(() => UploadProjectAvatarTo1$inboundSchema),
+    z.lazy(() => UploadProjectAvatarTo2$inboundSchema),
+  ]),
+  label: types.optional(types.string()),
+  claims: z.record(z.array(types.string())),
+});
+
+export function uploadProjectAvatarOidcProvidersFromJSON(
+  jsonString: string,
+): SafeParseResult<UploadProjectAvatarOidcProviders, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UploadProjectAvatarOidcProviders$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UploadProjectAvatarOidcProviders' from JSON`,
+  );
+}
+
+/** @internal */
+export const UploadProjectAvatarTrustedSources$inboundSchema: z.ZodType<
+  UploadProjectAvatarTrustedSources,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  projects: types.optional(
+    z.record(z.lazy(() => UploadProjectAvatarProjects$inboundSchema)),
+  ),
+  oidcProviders: types.optional(
+    z.record(z.array(z.lazy(() =>
+      UploadProjectAvatarOidcProviders$inboundSchema
+    ))),
+  ),
+});
+
+export function uploadProjectAvatarTrustedSourcesFromJSON(
+  jsonString: string,
+): SafeParseResult<UploadProjectAvatarTrustedSources, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UploadProjectAvatarTrustedSources$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UploadProjectAvatarTrustedSources' from JSON`,
+  );
+}
+
+/** @internal */
+export const UploadProjectAvatarGitComments$inboundSchema: z.ZodType<
+  UploadProjectAvatarGitComments,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  onPullRequest: types.boolean(),
+  onCommit: types.boolean(),
+});
+
+export function uploadProjectAvatarGitCommentsFromJSON(
+  jsonString: string,
+): SafeParseResult<UploadProjectAvatarGitComments, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UploadProjectAvatarGitComments$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UploadProjectAvatarGitComments' from JSON`,
+  );
+}
+
+/** @internal */
+export const UploadProjectAvatarCreateDeployments$inboundSchema:
+  z.ZodNativeEnum<typeof UploadProjectAvatarCreateDeployments> = z.nativeEnum(
+    UploadProjectAvatarCreateDeployments,
+  );
+
+/** @internal */
+export const UploadProjectAvatarConsolidatedGitCommitStatus$inboundSchema:
+  z.ZodType<
+    UploadProjectAvatarConsolidatedGitCommitStatus,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    enabled: types.boolean(),
+    propagateFailures: types.boolean(),
+  });
+
+export function uploadProjectAvatarConsolidatedGitCommitStatusFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UploadProjectAvatarConsolidatedGitCommitStatus,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UploadProjectAvatarConsolidatedGitCommitStatus$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UploadProjectAvatarConsolidatedGitCommitStatus' from JSON`,
+  );
+}
+
+/** @internal */
+export const UploadProjectAvatarGitProviderOptions$inboundSchema: z.ZodType<
+  UploadProjectAvatarGitProviderOptions,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  createDeployments: UploadProjectAvatarCreateDeployments$inboundSchema,
+  disableRepositoryDispatchEvents: types.optional(types.boolean()),
+  requireVerifiedCommits: types.optional(types.boolean()),
+  gitCommitStatus: types.optional(types.boolean()),
+  consolidatedGitCommitStatus: types.optional(
+    z.lazy(() => UploadProjectAvatarConsolidatedGitCommitStatus$inboundSchema),
+  ),
+});
+
+export function uploadProjectAvatarGitProviderOptionsFromJSON(
+  jsonString: string,
+): SafeParseResult<UploadProjectAvatarGitProviderOptions, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UploadProjectAvatarGitProviderOptions$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UploadProjectAvatarGitProviderOptions' from JSON`,
+  );
+}
+
+/** @internal */
+export const UploadProjectAvatarWebAnalytics$inboundSchema: z.ZodType<
+  UploadProjectAvatarWebAnalytics,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  id: types.string(),
+  disabledAt: types.optional(types.number()),
+  canceledAt: types.optional(types.number()),
+  enabledAt: types.optional(types.number()),
+  hasData: types.optional(types.literal(true)),
+});
+
+export function uploadProjectAvatarWebAnalyticsFromJSON(
+  jsonString: string,
+): SafeParseResult<UploadProjectAvatarWebAnalytics, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UploadProjectAvatarWebAnalytics$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UploadProjectAvatarWebAnalytics' from JSON`,
+  );
+}
+
+/** @internal */
+export const UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodyAction$inboundSchema:
+  z.ZodNativeEnum<
+    typeof UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodyAction
+  > = z.nativeEnum(
+    UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodyAction,
+  );
+
+/** @internal */
+export const UploadProjectAvatarVercelRuleset$inboundSchema: z.ZodType<
+  UploadProjectAvatarVercelRuleset,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  active: types.boolean(),
+  action: types.optional(
+    UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodyAction$inboundSchema,
+  ),
+});
+
+export function uploadProjectAvatarVercelRulesetFromJSON(
+  jsonString: string,
+): SafeParseResult<UploadProjectAvatarVercelRuleset, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UploadProjectAvatarVercelRuleset$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UploadProjectAvatarVercelRuleset' from JSON`,
+  );
+}
+
+/** @internal */
+export const UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodySecurityAction$inboundSchema:
+  z.ZodNativeEnum<
+    typeof UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodySecurityAction
+  > = z.nativeEnum(
+    UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodySecurityAction,
+  );
 
 /** @internal */
 export const UploadProjectAvatarTrafficSources$inboundSchema: z.ZodType<
@@ -988,7 +1964,7 @@ export const UploadProjectAvatarManagedRules$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  vercel_ruleset: UploadProjectAvatarVercelRuleset$inboundSchema,
+  vercel_ruleset: z.lazy(() => UploadProjectAvatarVercelRuleset$inboundSchema),
   traffic_sources: z.lazy(() =>
     UploadProjectAvatarTrafficSources$inboundSchema
   ),
@@ -2591,6 +3567,7 @@ export const UploadProjectAvatarResponseBody$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   accountId: types.string(),
+  alias: z.array(UploadProjectAvatarAlias$inboundSchema),
   analytics: types.optional(UploadProjectAvatarAnalytics$inboundSchema),
   appliedCve55182Migration: types.optional(types.boolean()),
   speedInsights: types.optional(UploadProjectAvatarSpeedInsights$inboundSchema),
@@ -2683,23 +3660,37 @@ export const UploadProjectAvatarResponseBody$inboundSchema: z.ZodType<
     UploadProjectAvatarLastRollbackTarget$inboundSchema,
   ).optional(),
   lastAliasRequest: z.nullable(
-    UploadProjectAvatarLastAliasRequest$inboundSchema,
+    z.lazy(() => UploadProjectAvatarLastAliasRequest$inboundSchema),
   ).optional(),
   protectionBypass: types.optional(
-    z.record(UploadProjectAvatarProtectionBypass$inboundSchema),
+    z.record(z.union([
+      z.lazy(() => UploadProjectAvatarProtectionBypass1$inboundSchema),
+      z.lazy(() =>
+        UploadProjectAvatarProtectionBypass2$inboundSchema
+      ),
+    ])),
   ),
   hasActiveBranches: types.optional(types.boolean()),
-  trustedIps: z.nullable(UploadProjectAvatarTrustedIps$inboundSchema)
-    .optional(),
-  trustedSources: z.nullable(UploadProjectAvatarTrustedSources$inboundSchema)
-    .optional(),
-  gitComments: types.optional(UploadProjectAvatarGitComments$inboundSchema),
+  trustedIps: z.nullable(
+    smartUnion([
+      z.lazy(() => UploadProjectAvatarTrustedIps1$inboundSchema),
+      z.lazy(() => UploadProjectAvatarTrustedIps2$inboundSchema),
+    ]),
+  ).optional(),
+  trustedSources: z.nullable(
+    z.lazy(() => UploadProjectAvatarTrustedSources$inboundSchema),
+  ).optional(),
+  gitComments: types.optional(
+    z.lazy(() => UploadProjectAvatarGitComments$inboundSchema),
+  ),
   gitProviderOptions: types.optional(
-    UploadProjectAvatarGitProviderOptions$inboundSchema,
+    z.lazy(() => UploadProjectAvatarGitProviderOptions$inboundSchema),
   ),
   paused: types.optional(types.boolean()),
   concurrencyBucketName: types.optional(types.string()),
-  webAnalytics: types.optional(UploadProjectAvatarWebAnalytics$inboundSchema),
+  webAnalytics: types.optional(
+    z.lazy(() => UploadProjectAvatarWebAnalytics$inboundSchema),
+  ),
   security: types.optional(
     z.lazy(() => UploadProjectAvatarSecurity$inboundSchema),
   ),

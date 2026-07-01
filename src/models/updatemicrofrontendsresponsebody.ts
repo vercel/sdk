@@ -37,10 +37,6 @@ import {
   UpdateMicrofrontendsIpBuckets$inboundSchema,
   UpdateMicrofrontendsJobs,
   UpdateMicrofrontendsJobs$inboundSchema,
-  UpdateMicrofrontendsJobStatus,
-  UpdateMicrofrontendsJobStatus$inboundSchema,
-  UpdateMicrofrontendsLastRollbackTarget,
-  UpdateMicrofrontendsLastRollbackTarget$inboundSchema,
   UpdateMicrofrontendsLatestDeployments,
   UpdateMicrofrontendsLatestDeployments$inboundSchema,
   UpdateMicrofrontendsLink,
@@ -75,7 +71,20 @@ import {
   UpdateMicrofrontendsStaticIps$inboundSchema,
   UpdateMicrofrontendsTargets,
   UpdateMicrofrontendsTargets$inboundSchema,
-} from "./updatemicrofrontendsjobstatus.js";
+} from "./updatemicrofrontendspermissions.js";
+
+export type UpdateMicrofrontendsLastRollbackTarget = {};
+
+export const UpdateMicrofrontendsJobStatus = {
+  Failed: "failed",
+  InProgress: "in-progress",
+  Pending: "pending",
+  Skipped: "skipped",
+  Succeeded: "succeeded",
+} as const;
+export type UpdateMicrofrontendsJobStatus = ClosedEnum<
+  typeof UpdateMicrofrontendsJobStatus
+>;
 
 export const UpdateMicrofrontendsProjectsResponse200ApplicationJSONType = {
   Promote: "promote",
@@ -1223,6 +1232,29 @@ export type UpdateMicrofrontendsResponseBody = {
   tracing?: UpdateMicrofrontendsTracing | undefined;
   avatar?: string | null | undefined;
 };
+
+/** @internal */
+export const UpdateMicrofrontendsLastRollbackTarget$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsLastRollbackTarget,
+  z.ZodTypeDef,
+  unknown
+> = z.object({});
+
+export function updateMicrofrontendsLastRollbackTargetFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsLastRollbackTarget, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateMicrofrontendsLastRollbackTarget$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsLastRollbackTarget' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsJobStatus$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateMicrofrontendsJobStatus
+> = z.nativeEnum(UpdateMicrofrontendsJobStatus);
 
 /** @internal */
 export const UpdateMicrofrontendsProjectsResponse200ApplicationJSONType$inboundSchema:
@@ -3701,7 +3733,7 @@ export const UpdateMicrofrontendsResponseBody$inboundSchema: z.ZodType<
   enableProductionFeedback: z.nullable(types.boolean()).optional(),
   permissions: types.optional(UpdateMicrofrontendsPermissions$inboundSchema),
   lastRollbackTarget: z.nullable(
-    UpdateMicrofrontendsLastRollbackTarget$inboundSchema,
+    z.lazy(() => UpdateMicrofrontendsLastRollbackTarget$inboundSchema),
   ).optional(),
   lastAliasRequest: z.nullable(
     z.lazy(() => UpdateMicrofrontendsLastAliasRequest$inboundSchema),

@@ -5,7 +5,7 @@ Specifies resource override configuration for the project
 ## Example Usage
 
 ```typescript
-import { CreateProjectResourceConfig } from "@vercel/sdk/models/createprojectapril2026securityincidentmigrationappliedfrom.js";
+import { CreateProjectResourceConfig } from "@vercel/sdk/models/createprojectstaticips.js";
 
 let value: CreateProjectResourceConfig = {};
 ```
@@ -23,6 +23,7 @@ let value: CreateProjectResourceConfig = {};
 | `elasticConcurrencyEnabled`                                                | *boolean*                                                                  | :heavy_minus_sign:                                                         | N/A                                                                        |
 | `buildMachineSelection`                                                    | [models.BuildMachineSelection](../models/buildmachineselection.md)         | :heavy_minus_sign:                                                         | N/A                                                                        |
 | `buildMachineElasticLastUpdated`                                           | *number*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |
+| `buildMachineElasticReason`                                                | [models.BuildMachineElasticReason](../models/buildmachineelasticreason.md) | :heavy_minus_sign:                                                         | N/A                                                                        |
 | `isNSNBDisabled`                                                           | *boolean*                                                                  | :heavy_minus_sign:                                                         | N/A                                                                        |
 | `buildQueue`                                                               | [models.CreateProjectBuildQueue](../models/createprojectbuildqueue.md)     | :heavy_minus_sign:                                                         | N/A                                                                        |
 | `enableFunctionsBeta`                                                      | *boolean*                                                                  | :heavy_minus_sign:                                                         | N/A                                                                        |

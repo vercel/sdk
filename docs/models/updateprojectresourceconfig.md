@@ -5,7 +5,7 @@ Specifies resource override configuration for the project
 ## Example Usage
 
 ```typescript
-import { UpdateProjectResourceConfig } from "@vercel/sdk/models/updateprojectbuilds.js";
+import { UpdateProjectResourceConfig } from "@vercel/sdk/models/updateprojectprojectsbranchmatcher.js";
 
 let value: UpdateProjectResourceConfig = {};
 ```
@@ -24,5 +24,6 @@ let value: UpdateProjectResourceConfig = {};
 | `elasticConcurrencyEnabled`                                                                          | *boolean*                                                                                            | :heavy_minus_sign:                                                                                   | N/A                                                                                                  |
 | `buildMachineSelection`                                                                              | [models.UpdateProjectBuildMachineSelection](../models/updateprojectbuildmachineselection.md)         | :heavy_minus_sign:                                                                                   | N/A                                                                                                  |
 | `buildMachineElasticLastUpdated`                                                                     | *number*                                                                                             | :heavy_minus_sign:                                                                                   | N/A                                                                                                  |
+| `buildMachineElasticReason`                                                                          | [models.UpdateProjectBuildMachineElasticReason](../models/updateprojectbuildmachineelasticreason.md) | :heavy_minus_sign:                                                                                   | N/A                                                                                                  |
 | `isNSNBDisabled`                                                                                     | *boolean*                                                                                            | :heavy_minus_sign:                                                                                   | N/A                                                                                                  |
 | `enableFunctionsBeta`                                                                                | *boolean*                                                                                            | :heavy_minus_sign:                                                                                   | N/A                                                                                                  |

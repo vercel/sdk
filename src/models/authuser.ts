@@ -346,6 +346,8 @@ export type FeatureBlocks = {
 };
 
 export type ManagedTeams = {
+  teamId: string;
+  slug: string;
   name: string;
   avatar: string | null;
 };
@@ -869,6 +871,8 @@ export const ManagedTeams$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  teamId: types.string(),
+  slug: types.string(),
   name: types.string(),
   avatar: types.nullable(types.string()),
 });

@@ -18,7 +18,7 @@ import {
 import {
   GetProjectsRequest,
   GetProjectsRequest$outboundSchema,
-} from "../models/getprojectsresponsebodyprojectstargets.js";
+} from "../models/getprojectsresponsebodyprojectsresponse200applicationjson3projectsreadysubstate.js";
 import {
   ConnectionError,
   InvalidRequestError,

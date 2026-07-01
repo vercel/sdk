@@ -37,8 +37,6 @@ import {
   UploadProjectAvatarIpBuckets$inboundSchema,
   UploadProjectAvatarJobs,
   UploadProjectAvatarJobs$inboundSchema,
-  UploadProjectAvatarJobStatus,
-  UploadProjectAvatarJobStatus$inboundSchema,
   UploadProjectAvatarLastRollbackTarget,
   UploadProjectAvatarLastRollbackTarget$inboundSchema,
   UploadProjectAvatarLatestDeployments,
@@ -57,8 +55,6 @@ import {
   UploadProjectAvatarPasswordProtection$inboundSchema,
   UploadProjectAvatarPermissions,
   UploadProjectAvatarPermissions$inboundSchema,
-  UploadProjectAvatarProjectsResponse200ApplicationJSONType,
-  UploadProjectAvatarProjectsResponse200ApplicationJSONType$inboundSchema,
   UploadProjectAvatarProtectionConfig,
   UploadProjectAvatarProtectionConfig$inboundSchema,
   UploadProjectAvatarResourceConfig,
@@ -77,7 +73,25 @@ import {
   UploadProjectAvatarStaticIps$inboundSchema,
   UploadProjectAvatarTargets,
   UploadProjectAvatarTargets$inboundSchema,
-} from "./uploadprojectavatarprojectsresponse200applicationjsontype.js";
+} from "./uploadprojectavatarlastrollbacktarget.js";
+
+export const UploadProjectAvatarJobStatus = {
+  Failed: "failed",
+  InProgress: "in-progress",
+  Pending: "pending",
+  Skipped: "skipped",
+  Succeeded: "succeeded",
+} as const;
+export type UploadProjectAvatarJobStatus = ClosedEnum<
+  typeof UploadProjectAvatarJobStatus
+>;
+
+export const UploadProjectAvatarProjectsResponse200ApplicationJSONType = {
+  Promote: "promote",
+  Rollback: "rollback",
+} as const;
+export type UploadProjectAvatarProjectsResponse200ApplicationJSONType =
+  ClosedEnum<typeof UploadProjectAvatarProjectsResponse200ApplicationJSONType>;
 
 export type UploadProjectAvatarLastAliasRequest = {
   fromDeploymentId: string | null;
@@ -1206,6 +1220,17 @@ export type UploadProjectAvatarResponseBody = {
   tracing?: UploadProjectAvatarTracing | undefined;
   avatar?: string | null | undefined;
 };
+
+/** @internal */
+export const UploadProjectAvatarJobStatus$inboundSchema: z.ZodNativeEnum<
+  typeof UploadProjectAvatarJobStatus
+> = z.nativeEnum(UploadProjectAvatarJobStatus);
+
+/** @internal */
+export const UploadProjectAvatarProjectsResponse200ApplicationJSONType$inboundSchema:
+  z.ZodNativeEnum<
+    typeof UploadProjectAvatarProjectsResponse200ApplicationJSONType
+  > = z.nativeEnum(UploadProjectAvatarProjectsResponse200ApplicationJSONType);
 
 /** @internal */
 export const UploadProjectAvatarLastAliasRequest$inboundSchema: z.ZodType<

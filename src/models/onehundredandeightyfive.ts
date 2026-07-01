@@ -1014,6 +1014,10 @@ export type TwoHundredAndOne = {
   previousBuildMachineSelection: string;
   nextBuildMachineSelection: string;
   isSystemInitiated?: boolean | undefined;
+  /**
+   * For system-initiated (elastic) changes, why the build machine was upgraded/downgraded. Stored as the raw reason code (see `ElasticChangeReason` in `@api/build-machines-types`) and rendered as a human-readable clause in the activity/audit log.
+   */
+  reason?: string | undefined;
 };
 
 /**
@@ -3458,6 +3462,7 @@ export const TwoHundredAndOne$inboundSchema: z.ZodType<
   previousBuildMachineSelection: types.string(),
   nextBuildMachineSelection: types.string(),
   isSystemInitiated: types.optional(types.boolean()),
+  reason: types.optional(types.string()),
 });
 
 export function twoHundredAndOneFromJSON(

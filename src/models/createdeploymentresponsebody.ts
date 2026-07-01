@@ -697,7 +697,7 @@ export type CreateDeploymentResourceConfig = {
 /**
  * Since February 2025 the configuration must include snapshot data at the time of deployment creation to capture properties for the /deployments/:id/config endpoint utilized for displaying Deployment Configuration on the frontend This is optional because older deployments may not have this data captured
  */
-export type Config = {
+export type CreateDeploymentConfig = {
   version?: number | undefined;
   functionType: FunctionType;
   functionMemoryType: FunctionMemoryType;
@@ -1055,7 +1055,7 @@ export type CreateDeploymentResponseBody = {
   /**
    * Since February 2025 the configuration must include snapshot data at the time of deployment creation to capture properties for the /deployments/:id/config endpoint utilized for displaying Deployment Configuration on the frontend This is optional because older deployments may not have this data captured
    */
-  config?: Config | undefined;
+  config?: CreateDeploymentConfig | undefined;
   checks?: CreateDeploymentChecks | undefined;
   /**
    * NSNB Blocked metadata
@@ -2102,27 +2102,30 @@ export function createDeploymentResourceConfigFromJSON(
 }
 
 /** @internal */
-export const Config$inboundSchema: z.ZodType<Config, z.ZodTypeDef, unknown> = z
-  .object({
-    version: types.optional(types.number()),
-    functionType: FunctionType$inboundSchema,
-    functionMemoryType: FunctionMemoryType$inboundSchema,
-    functionTimeout: types.nullable(types.number()),
-    secureComputePrimaryRegion: types.nullable(types.string()),
-    secureComputeFallbackRegion: types.nullable(types.string()),
-    isUsingActiveCPU: types.optional(types.boolean()),
-    resourceConfig: types.optional(
-      z.lazy(() => CreateDeploymentResourceConfig$inboundSchema),
-    ),
-  });
+export const CreateDeploymentConfig$inboundSchema: z.ZodType<
+  CreateDeploymentConfig,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  version: types.optional(types.number()),
+  functionType: FunctionType$inboundSchema,
+  functionMemoryType: FunctionMemoryType$inboundSchema,
+  functionTimeout: types.nullable(types.number()),
+  secureComputePrimaryRegion: types.nullable(types.string()),
+  secureComputeFallbackRegion: types.nullable(types.string()),
+  isUsingActiveCPU: types.optional(types.boolean()),
+  resourceConfig: types.optional(
+    z.lazy(() => CreateDeploymentResourceConfig$inboundSchema),
+  ),
+});
 
-export function configFromJSON(
+export function createDeploymentConfigFromJSON(
   jsonString: string,
-): SafeParseResult<Config, SDKValidationError> {
+): SafeParseResult<CreateDeploymentConfig, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Config$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Config' from JSON`,
+    (x) => CreateDeploymentConfig$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateDeploymentConfig' from JSON`,
   );
 }
 
@@ -2439,7 +2442,7 @@ export const CreateDeploymentResponseBody$inboundSchema: z.ZodType<
       z.lazy(() => CreateDeploymentMicrofrontends1$inboundSchema),
     ]),
   ),
-  config: types.optional(z.lazy(() => Config$inboundSchema)),
+  config: types.optional(z.lazy(() => CreateDeploymentConfig$inboundSchema)),
   checks: types.optional(z.lazy(() => CreateDeploymentChecks$inboundSchema)),
   seatBlock: types.optional(z.lazy(() => SeatBlock$inboundSchema)),
   attribution: types.optional(

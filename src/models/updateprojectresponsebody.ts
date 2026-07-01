@@ -10,36 +10,6 @@ import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 import {
-  UpdateProjectAlias,
-  UpdateProjectAlias$inboundSchema,
-  UpdateProjectAnalytics,
-  UpdateProjectAnalytics$inboundSchema,
-  UpdateProjectConnectConfigurations,
-  UpdateProjectConnectConfigurations$inboundSchema,
-  UpdateProjectCrons,
-  UpdateProjectCrons$inboundSchema,
-  UpdateProjectCustomEnvironments,
-  UpdateProjectCustomEnvironments$inboundSchema,
-  UpdateProjectDataCache,
-  UpdateProjectDataCache$inboundSchema,
-  UpdateProjectDeploymentExpiration,
-  UpdateProjectDeploymentExpiration$inboundSchema,
-  UpdateProjectExpiration,
-  UpdateProjectExpiration$inboundSchema,
-  UpdateProjectIpBuckets,
-  UpdateProjectIpBuckets$inboundSchema,
-  UpdateProjectJobs,
-  UpdateProjectJobs$inboundSchema,
-  UpdateProjectProjectsEnv,
-  UpdateProjectProjectsEnv$inboundSchema,
-  UpdateProjectProjectsFramework,
-  UpdateProjectProjectsFramework$inboundSchema,
-  UpdateProjectServices,
-  UpdateProjectServices$inboundSchema,
-  UpdateProjectSpeedInsights,
-  UpdateProjectSpeedInsights$inboundSchema,
-} from "./updateprojectbuilds.js";
-import {
   UpdateProjectBlock,
   UpdateProjectBlock$inboundSchema,
   UpdateProjectDefaultResourceConfig,
@@ -52,10 +22,6 @@ import {
   UpdateProjectGitComments$inboundSchema,
   UpdateProjectGitProviderOptions,
   UpdateProjectGitProviderOptions$inboundSchema,
-  UpdateProjectHasProjects2,
-  UpdateProjectHasProjects2$inboundSchema,
-  UpdateProjectHasProjectsKey,
-  UpdateProjectHasProjectsKey$inboundSchema,
   UpdateProjectHistory,
   UpdateProjectHistory$inboundSchema,
   UpdateProjectLastAliasRequest,
@@ -108,7 +74,53 @@ import {
   UpdateProjectUsageStatus$inboundSchema,
   UpdateProjectWebAnalytics,
   UpdateProjectWebAnalytics$inboundSchema,
-} from "./updateprojecthasprojectskey.js";
+} from "./updateprojectblock.js";
+import {
+  UpdateProjectAlias,
+  UpdateProjectAlias$inboundSchema,
+  UpdateProjectAnalytics,
+  UpdateProjectAnalytics$inboundSchema,
+  UpdateProjectConnectConfigurations,
+  UpdateProjectConnectConfigurations$inboundSchema,
+  UpdateProjectCrons,
+  UpdateProjectCrons$inboundSchema,
+  UpdateProjectCustomEnvironments,
+  UpdateProjectCustomEnvironments$inboundSchema,
+  UpdateProjectDataCache,
+  UpdateProjectDataCache$inboundSchema,
+  UpdateProjectDeploymentExpiration,
+  UpdateProjectDeploymentExpiration$inboundSchema,
+  UpdateProjectExpiration,
+  UpdateProjectExpiration$inboundSchema,
+  UpdateProjectIpBuckets,
+  UpdateProjectIpBuckets$inboundSchema,
+  UpdateProjectJobs,
+  UpdateProjectJobs$inboundSchema,
+  UpdateProjectProjectsEnv,
+  UpdateProjectProjectsEnv$inboundSchema,
+  UpdateProjectProjectsFramework,
+  UpdateProjectProjectsFramework$inboundSchema,
+  UpdateProjectServices,
+  UpdateProjectServices$inboundSchema,
+  UpdateProjectSpeedInsights,
+  UpdateProjectSpeedInsights$inboundSchema,
+} from "./updateprojectprojectsbranchmatcher.js";
+
+export type UpdateProjectHasProjectsResponse200Value = {
+  eq: string;
+};
+
+export type UpdateProjectHasProjects2 = {
+  type: "host";
+  value: UpdateProjectHasProjectsResponse200Value;
+};
+
+export const UpdateProjectHasProjectsKey = {
+  XVercelIpCountry: "x-vercel-ip-country",
+} as const;
+export type UpdateProjectHasProjectsKey = ClosedEnum<
+  typeof UpdateProjectHasProjectsKey
+>;
 
 export type UpdateProjectHasProjectsResponseValue = {
   eq: string;
@@ -542,6 +554,56 @@ export type UpdateProjectResponseBody = {
 };
 
 /** @internal */
+export const UpdateProjectHasProjectsResponse200Value$inboundSchema: z.ZodType<
+  UpdateProjectHasProjectsResponse200Value,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  eq: types.string(),
+});
+
+export function updateProjectHasProjectsResponse200ValueFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UpdateProjectHasProjectsResponse200Value,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateProjectHasProjectsResponse200Value$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UpdateProjectHasProjectsResponse200Value' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateProjectHasProjects2$inboundSchema: z.ZodType<
+  UpdateProjectHasProjects2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: types.literal("host"),
+  value: z.lazy(() => UpdateProjectHasProjectsResponse200Value$inboundSchema),
+});
+
+export function updateProjectHasProjects2FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectHasProjects2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectHasProjects2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectHasProjects2' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateProjectHasProjectsKey$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateProjectHasProjectsKey
+> = z.nativeEnum(UpdateProjectHasProjectsKey);
+
+/** @internal */
 export const UpdateProjectHasProjectsResponseValue$inboundSchema: z.ZodType<
   UpdateProjectHasProjectsResponseValue,
   z.ZodTypeDef,
@@ -589,7 +651,7 @@ export const UpdateProjectRouteProjectsHas$inboundSchema: z.ZodType<
   unknown
 > = z.union([
   z.lazy(() => UpdateProjectHasProjects1$inboundSchema),
-  UpdateProjectHasProjects2$inboundSchema,
+  z.lazy(() => UpdateProjectHasProjects2$inboundSchema),
 ]);
 
 export function updateProjectRouteProjectsHasFromJSON(
@@ -636,7 +698,7 @@ export const UpdateProjectRouteProjects2$inboundSchema: z.ZodType<
   has: z.array(
     z.union([
       z.lazy(() => UpdateProjectHasProjects1$inboundSchema),
-      UpdateProjectHasProjects2$inboundSchema,
+      z.lazy(() => UpdateProjectHasProjects2$inboundSchema),
     ]),
   ),
   mitigate: z.lazy(() => UpdateProjectRouteProjectsMitigate$inboundSchema),

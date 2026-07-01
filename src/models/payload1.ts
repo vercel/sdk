@@ -1091,21 +1091,6 @@ export type Twenty = {
   rule: Rule;
 };
 
-/**
- * The payload of the event, if requested.
- */
-export type Nineteen = {
-  added: Array<string>;
-  removed: Array<string>;
-};
-
-/**
- * The payload of the event, if requested.
- */
-export type Eighteen = {
-  enabled: boolean;
-};
-
 export type PrivateProvider = {
   slug: string;
 };
@@ -1113,7 +1098,7 @@ export type PrivateProvider = {
 /**
  * The payload of the event, if requested.
  */
-export type Seventeen = {
+export type Nineteen = {
   privateProvider: PrivateProvider;
 };
 
@@ -1124,7 +1109,7 @@ export type PayloadPrivateModel = {
 /**
  * The payload of the event, if requested.
  */
-export type Sixteen = {
+export type Eighteen = {
   privateModel: PayloadPrivateModel;
 };
 
@@ -1136,8 +1121,23 @@ export type PrivateModel = {
 /**
  * The payload of the event, if requested.
  */
-export type Fifteen = {
+export type Seventeen = {
   privateModel: PrivateModel;
+};
+
+/**
+ * The payload of the event, if requested.
+ */
+export type Sixteen = {
+  added: Array<string>;
+  removed: Array<string>;
+};
+
+/**
+ * The payload of the event, if requested.
+ */
+export type Fifteen = {
+  enabled: boolean;
 };
 
 export type Credential = {
@@ -3359,45 +3359,6 @@ export function twentyFromJSON(
 }
 
 /** @internal */
-export const Nineteen$inboundSchema: z.ZodType<
-  Nineteen,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  added: z.array(types.string()),
-  removed: z.array(types.string()),
-});
-
-export function nineteenFromJSON(
-  jsonString: string,
-): SafeParseResult<Nineteen, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Nineteen$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Nineteen' from JSON`,
-  );
-}
-
-/** @internal */
-export const Eighteen$inboundSchema: z.ZodType<
-  Eighteen,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  enabled: types.boolean(),
-});
-
-export function eighteenFromJSON(
-  jsonString: string,
-): SafeParseResult<Eighteen, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Eighteen$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Eighteen' from JSON`,
-  );
-}
-
-/** @internal */
 export const PrivateProvider$inboundSchema: z.ZodType<
   PrivateProvider,
   z.ZodTypeDef,
@@ -3417,21 +3378,21 @@ export function privateProviderFromJSON(
 }
 
 /** @internal */
-export const Seventeen$inboundSchema: z.ZodType<
-  Seventeen,
+export const Nineteen$inboundSchema: z.ZodType<
+  Nineteen,
   z.ZodTypeDef,
   unknown
 > = z.object({
   privateProvider: z.lazy(() => PrivateProvider$inboundSchema),
 });
 
-export function seventeenFromJSON(
+export function nineteenFromJSON(
   jsonString: string,
-): SafeParseResult<Seventeen, SDKValidationError> {
+): SafeParseResult<Nineteen, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Seventeen$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Seventeen' from JSON`,
+    (x) => Nineteen$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Nineteen' from JSON`,
   );
 }
 
@@ -3455,18 +3416,21 @@ export function payloadPrivateModelFromJSON(
 }
 
 /** @internal */
-export const Sixteen$inboundSchema: z.ZodType<Sixteen, z.ZodTypeDef, unknown> =
-  z.object({
-    privateModel: z.lazy(() => PayloadPrivateModel$inboundSchema),
-  });
+export const Eighteen$inboundSchema: z.ZodType<
+  Eighteen,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  privateModel: z.lazy(() => PayloadPrivateModel$inboundSchema),
+});
 
-export function sixteenFromJSON(
+export function eighteenFromJSON(
   jsonString: string,
-): SafeParseResult<Sixteen, SDKValidationError> {
+): SafeParseResult<Eighteen, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Sixteen$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Sixteen' from JSON`,
+    (x) => Eighteen$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Eighteen' from JSON`,
   );
 }
 
@@ -3491,9 +3455,45 @@ export function privateModelFromJSON(
 }
 
 /** @internal */
+export const Seventeen$inboundSchema: z.ZodType<
+  Seventeen,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  privateModel: z.lazy(() => PrivateModel$inboundSchema),
+});
+
+export function seventeenFromJSON(
+  jsonString: string,
+): SafeParseResult<Seventeen, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Seventeen$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Seventeen' from JSON`,
+  );
+}
+
+/** @internal */
+export const Sixteen$inboundSchema: z.ZodType<Sixteen, z.ZodTypeDef, unknown> =
+  z.object({
+    added: z.array(types.string()),
+    removed: z.array(types.string()),
+  });
+
+export function sixteenFromJSON(
+  jsonString: string,
+): SafeParseResult<Sixteen, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Sixteen$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Sixteen' from JSON`,
+  );
+}
+
+/** @internal */
 export const Fifteen$inboundSchema: z.ZodType<Fifteen, z.ZodTypeDef, unknown> =
   z.object({
-    privateModel: z.lazy(() => PrivateModel$inboundSchema),
+    enabled: types.boolean(),
   });
 
 export function fifteenFromJSON(

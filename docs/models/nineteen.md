@@ -8,21 +8,14 @@ The payload of the event, if requested.
 import { Nineteen } from "@vercel/sdk/models/payload1.js";
 
 let value: Nineteen = {
-  added: [
-    "<value 1>",
-    "<value 2>",
-    "<value 3>",
-  ],
-  removed: [
-    "<value 1>",
-    "<value 2>",
-  ],
+  privateProvider: {
+    slug: "<value>",
+  },
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `added`            | *string*[]         | :heavy_check_mark: | N/A                |
-| `removed`          | *string*[]         | :heavy_check_mark: | N/A                |
+| Field                                                  | Type                                                   | Required                                               | Description                                            |
+| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
+| `privateProvider`                                      | [models.PrivateProvider](../models/privateprovider.md) | :heavy_check_mark:                                     | N/A                                                    |

@@ -10,6 +10,8 @@ import { AccountUpdateContext } from "@vercel/sdk/models/authuser.js";
 let value: AccountUpdateContext = {
   managedTeams: [
     {
+      teamId: "<id>",
+      slug: "<value>",
       name: "<value>",
       avatar: "https://picsum.photos/seed/LVlcN5/730/649",
     },

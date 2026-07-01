@@ -15,14 +15,10 @@ import {
   Alias$inboundSchema,
   Analytics,
   Analytics$inboundSchema,
-  CreateProjectApril2026SecurityIncidentMigrationAppliedFrom,
-  CreateProjectApril2026SecurityIncidentMigrationAppliedFrom$inboundSchema,
   CreateProjectConnectConfigurations,
   CreateProjectConnectConfigurations$inboundSchema,
   CreateProjectCrons,
   CreateProjectCrons$inboundSchema,
-  CreateProjectCve55182MigrationAppliedFrom,
-  CreateProjectCve55182MigrationAppliedFrom$inboundSchema,
   CreateProjectDataCache,
   CreateProjectDataCache$inboundSchema,
   CreateProjectEnv,
@@ -45,8 +41,6 @@ import {
   CreateProjectProjectsFramework$inboundSchema,
   CreateProjectProjectsResourceConfig,
   CreateProjectProjectsResourceConfig$inboundSchema,
-  CreateProjectProjectsResponseDeploymentType,
-  CreateProjectProjectsResponseDeploymentType$inboundSchema,
   CreateProjectRollbackDescription,
   CreateProjectRollbackDescription$inboundSchema,
   CreateProjectServices,
@@ -71,8 +65,37 @@ import {
   RollingRelease$inboundSchema,
   SpeedInsights,
   SpeedInsights$inboundSchema,
-} from "./createprojectapril2026securityincidentmigrationappliedfrom.js";
+} from "./createprojectstaticips.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export const CreateProjectProjectsResponseDeploymentType = {
+  All: "all",
+  AllExceptCustomDomains: "all_except_custom_domains",
+  Preview: "preview",
+  ProdDeploymentUrlsAndAllPreviews: "prod_deployment_urls_and_all_previews",
+} as const;
+export type CreateProjectProjectsResponseDeploymentType = ClosedEnum<
+  typeof CreateProjectProjectsResponseDeploymentType
+>;
+
+export const CreateProjectCve55182MigrationAppliedFrom = {
+  All: "all",
+  AllExceptCustomDomains: "all_except_custom_domains",
+  Preview: "preview",
+  ProdDeploymentUrlsAndAllPreviews: "prod_deployment_urls_and_all_previews",
+} as const;
+export type CreateProjectCve55182MigrationAppliedFrom = ClosedEnum<
+  typeof CreateProjectCve55182MigrationAppliedFrom
+>;
+
+export const CreateProjectApril2026SecurityIncidentMigrationAppliedFrom = {
+  All: "all",
+  AllExceptCustomDomains: "all_except_custom_domains",
+  Preview: "preview",
+  ProdDeploymentUrlsAndAllPreviews: "prod_deployment_urls_and_all_previews",
+} as const;
+export type CreateProjectApril2026SecurityIncidentMigrationAppliedFrom =
+  ClosedEnum<typeof CreateProjectApril2026SecurityIncidentMigrationAppliedFrom>;
 
 export type CreateProjectProjectsSsoProtection = {
   deploymentType: CreateProjectProjectsResponseDeploymentType;
@@ -1603,6 +1626,22 @@ export type CreateProjectResponseBody = {
   tracing?: CreateProjectTracing | undefined;
   avatar?: string | null | undefined;
 };
+
+/** @internal */
+export const CreateProjectProjectsResponseDeploymentType$inboundSchema:
+  z.ZodNativeEnum<typeof CreateProjectProjectsResponseDeploymentType> = z
+    .nativeEnum(CreateProjectProjectsResponseDeploymentType);
+
+/** @internal */
+export const CreateProjectCve55182MigrationAppliedFrom$inboundSchema:
+  z.ZodNativeEnum<typeof CreateProjectCve55182MigrationAppliedFrom> = z
+    .nativeEnum(CreateProjectCve55182MigrationAppliedFrom);
+
+/** @internal */
+export const CreateProjectApril2026SecurityIncidentMigrationAppliedFrom$inboundSchema:
+  z.ZodNativeEnum<
+    typeof CreateProjectApril2026SecurityIncidentMigrationAppliedFrom
+  > = z.nativeEnum(CreateProjectApril2026SecurityIncidentMigrationAppliedFrom);
 
 /** @internal */
 export const CreateProjectProjectsSsoProtection$inboundSchema: z.ZodType<

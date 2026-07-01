@@ -7,7 +7,7 @@ The type of matching to perform
 ```typescript
 import {
   UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodyAliasDeploymentType,
-} from "@vercel/sdk/models/uploadprojectavatarprojectsresponse200applicationjsontype.js";
+} from "@vercel/sdk/models/uploadprojectavatarlastrollbacktarget.js";
 
 let value:
   UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodyAliasDeploymentType =

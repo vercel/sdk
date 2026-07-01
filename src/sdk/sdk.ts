@@ -38,6 +38,7 @@ import { Security } from "./security.js";
 import { StaticIps } from "./staticips.js";
 import { Teams } from "./teams.js";
 import { User } from "./user.js";
+import { Vcr } from "./vcr.js";
 import { WebAnalytics } from "./webanalytics.js";
 import { Webhooks } from "./webhooks.js";
 
@@ -205,6 +206,11 @@ export class Vercel extends ClientSDK {
   private _teams?: Teams;
   get teams(): Teams {
     return (this._teams ??= new Teams(this._options));
+  }
+
+  private _vcr?: Vcr;
+  get vcr(): Vcr {
+    return (this._vcr ??= new Vcr(this._options));
   }
 
   private _webAnalytics?: WebAnalytics;

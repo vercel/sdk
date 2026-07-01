@@ -8,15 +8,12 @@ The payload of the event, if requested.
 import { Fifteen } from "@vercel/sdk/models/payload1.js";
 
 let value: Fifteen = {
-  privateModel: {
-    slug: "<value>",
-    providerSlug: "<value>",
-  },
+  enabled: true,
 };
 ```
 
 ## Fields
 
-| Field                                            | Type                                             | Required                                         | Description                                      |
-| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
-| `privateModel`                                   | [models.PrivateModel](../models/privatemodel.md) | :heavy_check_mark:                               | N/A                                              |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `enabled`          | *boolean*          | :heavy_check_mark: | N/A                |

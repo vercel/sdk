@@ -10,10 +10,6 @@ import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import {
-  GetProjectsResponseBody3,
-  GetProjectsResponseBody3$inboundSchema,
-} from "./getprojectsresponsebodyenvironment.js";
-import {
   GetProjectsResponseBody2,
   GetProjectsResponseBody2$inboundSchema,
   GetProjectsResponseBodyAliasAssigned,
@@ -34,14 +30,6 @@ import {
   GetProjectsResponseBodyProjectsCreator$inboundSchema,
   GetProjectsResponseBodyProjectsOidcTokenClaims,
   GetProjectsResponseBodyProjectsOidcTokenClaims$inboundSchema,
-  GetProjectsResponseBodyProjectsPlan,
-  GetProjectsResponseBodyProjectsPlan$inboundSchema,
-  GetProjectsResponseBodyProjectsReadyState,
-  GetProjectsResponseBodyProjectsReadyState$inboundSchema,
-  GetProjectsResponseBodyProjectsReadySubstate,
-  GetProjectsResponseBodyProjectsReadySubstate$inboundSchema,
-  GetProjectsResponseBodyProjectsResponseType,
-  GetProjectsResponseBodyProjectsResponseType$inboundSchema,
   ResponseBodyAlias,
   ResponseBodyAlias$inboundSchema,
   ResponseBodyAnalytics,
@@ -70,8 +58,50 @@ import {
   ResponseBodySpeedInsights$inboundSchema,
   ResponseBodySsoProtection,
   ResponseBodySsoProtection$inboundSchema,
-} from "./getprojectsresponsebodyprojectsresponsetype.js";
+} from "./getprojectsresponsebodyprojectsoidctokenclaims.js";
+import {
+  GetProjectsResponseBody3,
+  GetProjectsResponseBody3$inboundSchema,
+} from "./getprojectsresponsebodyprojectsresponse200applicationjson2projectsaliastype.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export const GetProjectsResponseBodyProjectsPlan = {
+  Enterprise: "enterprise",
+  Hobby: "hobby",
+  Pro: "pro",
+} as const;
+export type GetProjectsResponseBodyProjectsPlan = ClosedEnum<
+  typeof GetProjectsResponseBodyProjectsPlan
+>;
+
+export const GetProjectsResponseBodyProjectsReadyState = {
+  Blocked: "BLOCKED",
+  Building: "BUILDING",
+  Canceled: "CANCELED",
+  Error: "ERROR",
+  Initializing: "INITIALIZING",
+  Queued: "QUEUED",
+  Ready: "READY",
+} as const;
+export type GetProjectsResponseBodyProjectsReadyState = ClosedEnum<
+  typeof GetProjectsResponseBodyProjectsReadyState
+>;
+
+export const GetProjectsResponseBodyProjectsReadySubstate = {
+  Promoted: "PROMOTED",
+  Rolling: "ROLLING",
+  Staged: "STAGED",
+} as const;
+export type GetProjectsResponseBodyProjectsReadySubstate = ClosedEnum<
+  typeof GetProjectsResponseBodyProjectsReadySubstate
+>;
+
+export const GetProjectsResponseBodyProjectsResponseType = {
+  Lambdas: "LAMBDAS",
+} as const;
+export type GetProjectsResponseBodyProjectsResponseType = ClosedEnum<
+  typeof GetProjectsResponseBodyProjectsResponseType
+>;
 
 export type ResponseBodyTargets = {
   id: string;
@@ -1012,6 +1042,26 @@ export type GetProjectsResponseBody =
   | GetProjectsResponseBody2
   | GetProjectsResponseBody3
   | Array<GetProjectsResponseBody1>;
+
+/** @internal */
+export const GetProjectsResponseBodyProjectsPlan$inboundSchema: z.ZodNativeEnum<
+  typeof GetProjectsResponseBodyProjectsPlan
+> = z.nativeEnum(GetProjectsResponseBodyProjectsPlan);
+
+/** @internal */
+export const GetProjectsResponseBodyProjectsReadyState$inboundSchema:
+  z.ZodNativeEnum<typeof GetProjectsResponseBodyProjectsReadyState> = z
+    .nativeEnum(GetProjectsResponseBodyProjectsReadyState);
+
+/** @internal */
+export const GetProjectsResponseBodyProjectsReadySubstate$inboundSchema:
+  z.ZodNativeEnum<typeof GetProjectsResponseBodyProjectsReadySubstate> = z
+    .nativeEnum(GetProjectsResponseBodyProjectsReadySubstate);
+
+/** @internal */
+export const GetProjectsResponseBodyProjectsResponseType$inboundSchema:
+  z.ZodNativeEnum<typeof GetProjectsResponseBodyProjectsResponseType> = z
+    .nativeEnum(GetProjectsResponseBodyProjectsResponseType);
 
 /** @internal */
 export const ResponseBodyTargets$inboundSchema: z.ZodType<

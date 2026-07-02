@@ -5,7 +5,7 @@ Description of why a project was rolled back, and by whom. Note that lastAliasRe
 ## Example Usage
 
 ```typescript
-import { UpdateMicrofrontendsRollbackDescription } from "@vercel/sdk/models/updatemicrofrontendsjobstatus.js";
+import { UpdateMicrofrontendsRollbackDescription } from "@vercel/sdk/models/updatemicrofrontendspermissions.js";
 
 let value: UpdateMicrofrontendsRollbackDescription = {
   userId: "<id>",

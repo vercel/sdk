@@ -36,8 +36,6 @@ import {
   GetMicrofrontendsInGroupIpBuckets$inboundSchema,
   GetMicrofrontendsInGroupJobs,
   GetMicrofrontendsInGroupJobs$inboundSchema,
-  GetMicrofrontendsInGroupJobStatus,
-  GetMicrofrontendsInGroupJobStatus$inboundSchema,
   GetMicrofrontendsInGroupLastRollbackTarget,
   GetMicrofrontendsInGroupLastRollbackTarget$inboundSchema,
   GetMicrofrontendsInGroupLatestDeployments,
@@ -46,8 +44,6 @@ import {
   GetMicrofrontendsInGroupLink$inboundSchema,
   GetMicrofrontendsInGroupMicrofrontends,
   GetMicrofrontendsInGroupMicrofrontends$inboundSchema,
-  GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONType,
-  GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONType$inboundSchema,
   GetMicrofrontendsInGroupNodeVersion,
   GetMicrofrontendsInGroupNodeVersion$inboundSchema,
   GetMicrofrontendsInGroupOptionsAllowlist,
@@ -76,8 +72,29 @@ import {
   GetMicrofrontendsInGroupStaticIps$inboundSchema,
   GetMicrofrontendsInGroupTargets,
   GetMicrofrontendsInGroupTargets$inboundSchema,
-} from "./getmicrofrontendsingroupmicrofrontendsresponse200applicationjsontype.js";
+} from "./getmicrofrontendsingrouplastrollbacktarget.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export const GetMicrofrontendsInGroupJobStatus = {
+  Failed: "failed",
+  InProgress: "in-progress",
+  Pending: "pending",
+  Skipped: "skipped",
+  Succeeded: "succeeded",
+} as const;
+export type GetMicrofrontendsInGroupJobStatus = ClosedEnum<
+  typeof GetMicrofrontendsInGroupJobStatus
+>;
+
+export const GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONType =
+  {
+    Promote: "promote",
+    Rollback: "rollback",
+  } as const;
+export type GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONType =
+  ClosedEnum<
+    typeof GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONType
+  >;
 
 export type GetMicrofrontendsInGroupLastAliasRequest = {
   fromDeploymentId: string | null;
@@ -1252,6 +1269,19 @@ export type GetMicrofrontendsInGroupProjects = {
 export type GetMicrofrontendsInGroupResponseBody = {
   projects: Array<GetMicrofrontendsInGroupProjects>;
 };
+
+/** @internal */
+export const GetMicrofrontendsInGroupJobStatus$inboundSchema: z.ZodNativeEnum<
+  typeof GetMicrofrontendsInGroupJobStatus
+> = z.nativeEnum(GetMicrofrontendsInGroupJobStatus);
+
+/** @internal */
+export const GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONType$inboundSchema:
+  z.ZodNativeEnum<
+    typeof GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONType
+  > = z.nativeEnum(
+    GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONType,
+  );
 
 /** @internal */
 export const GetMicrofrontendsInGroupLastAliasRequest$inboundSchema: z.ZodType<

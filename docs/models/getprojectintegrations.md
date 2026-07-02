@@ -5,7 +5,7 @@ Integration installation enabled on the project.
 ## Example Usage
 
 ```typescript
-import { GetProjectIntegrations } from "@vercel/sdk/models/getprojectlastrollbacktarget.js";
+import { GetProjectIntegrations } from "@vercel/sdk/models/getprojecttargets.js";
 
 let value: GetProjectIntegrations = {
   installationId: "icfg_3bwCLgxL8qt5kjRLcv2Dit7F",

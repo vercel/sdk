@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CreateProjectProjectsResourceConfig } from "@vercel/sdk/models/createprojectapril2026securityincidentmigrationappliedfrom.js";
+import { CreateProjectProjectsResourceConfig } from "@vercel/sdk/models/createprojectstaticips.js";
 
 let value: CreateProjectProjectsResourceConfig = {
   functionDefaultRegions: [],
@@ -23,6 +23,7 @@ let value: CreateProjectProjectsResourceConfig = {
 | `buildMachineType`                                                                                   | [models.CreateProjectBuildMachineType](../models/createprojectbuildmachinetype.md)                   | :heavy_minus_sign:                                                                                   | N/A                                                                                                  |
 | `buildMachineSelection`                                                                              | [models.CreateProjectBuildMachineSelection](../models/createprojectbuildmachineselection.md)         | :heavy_minus_sign:                                                                                   | N/A                                                                                                  |
 | `buildMachineElasticLastUpdated`                                                                     | *number*                                                                                             | :heavy_minus_sign:                                                                                   | N/A                                                                                                  |
+| `buildMachineElasticReason`                                                                          | [models.CreateProjectBuildMachineElasticReason](../models/createprojectbuildmachineelasticreason.md) | :heavy_minus_sign:                                                                                   | N/A                                                                                                  |
 | `isNSNBDisabled`                                                                                     | *boolean*                                                                                            | :heavy_minus_sign:                                                                                   | N/A                                                                                                  |
 | `buildQueue`                                                                                         | [models.CreateProjectProjectsBuildQueue](../models/createprojectprojectsbuildqueue.md)               | :heavy_minus_sign:                                                                                   | N/A                                                                                                  |
 | `enableFunctionsBeta`                                                                                | *boolean*                                                                                            | :heavy_minus_sign:                                                                                   | N/A                                                                                                  |

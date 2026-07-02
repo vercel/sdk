@@ -14,7 +14,7 @@ import { pathToFunc } from "../lib/url.js";
 import {
   GetMicrofrontendsInGroupRequest,
   GetMicrofrontendsInGroupRequest$outboundSchema,
-} from "../models/getmicrofrontendsingroupmicrofrontendsresponse200applicationjsontype.js";
+} from "../models/getmicrofrontendsingrouplastrollbacktarget.js";
 import {
   GetMicrofrontendsInGroupResponseBody,
   GetMicrofrontendsInGroupResponseBody$inboundSchema,

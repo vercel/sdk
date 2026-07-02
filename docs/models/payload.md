@@ -143,10 +143,7 @@ const value: models.Fourteen = {
 
 ```typescript
 const value: models.Fifteen = {
-  privateModel: {
-    slug: "<value>",
-    providerSlug: "<value>",
-  },
+  enabled: true,
 };
 ```
 
@@ -154,9 +151,11 @@ const value: models.Fifteen = {
 
 ```typescript
 const value: models.Sixteen = {
-  privateModel: {
-    slug: "<value>",
-  },
+  added: [
+    "<value 1>",
+    "<value 2>",
+  ],
+  removed: [],
 };
 ```
 
@@ -164,8 +163,9 @@ const value: models.Sixteen = {
 
 ```typescript
 const value: models.Seventeen = {
-  privateProvider: {
+  privateModel: {
     slug: "<value>",
+    providerSlug: "<value>",
   },
 };
 ```
@@ -174,7 +174,9 @@ const value: models.Seventeen = {
 
 ```typescript
 const value: models.Eighteen = {
-  enabled: false,
+  privateModel: {
+    slug: "<value>",
+  },
 };
 ```
 
@@ -182,15 +184,9 @@ const value: models.Eighteen = {
 
 ```typescript
 const value: models.Nineteen = {
-  added: [
-    "<value 1>",
-    "<value 2>",
-    "<value 3>",
-  ],
-  removed: [
-    "<value 1>",
-    "<value 2>",
-  ],
+  privateProvider: {
+    slug: "<value>",
+  },
 };
 ```
 

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyResourceConfig } from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponsetype.js";
+import { ResponseBodyResourceConfig } from "@vercel/sdk/models/getprojectsresponsebodyprojectsoidctokenclaims.js";
 
 let value: ResponseBodyResourceConfig = {
   functionDefaultRegions: [],
@@ -23,6 +23,7 @@ let value: ResponseBodyResourceConfig = {
 | `buildMachineType`                                                                                 | [models.ResponseBodyBuildMachineType](../models/responsebodybuildmachinetype.md)                   | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
 | `buildMachineSelection`                                                                            | [models.ResponseBodyBuildMachineSelection](../models/responsebodybuildmachineselection.md)         | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
 | `buildMachineElasticLastUpdated`                                                                   | *number*                                                                                           | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
+| `buildMachineElasticReason`                                                                        | [models.ResponseBodyBuildMachineElasticReason](../models/responsebodybuildmachineelasticreason.md) | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
 | `isNSNBDisabled`                                                                                   | *boolean*                                                                                          | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
 | `buildQueue`                                                                                       | [models.ResponseBodyBuildQueue](../models/responsebodybuildqueue.md)                               | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
 | `enableFunctionsBeta`                                                                              | *boolean*                                                                                          | :heavy_minus_sign:                                                                                 | N/A                                                                                                |

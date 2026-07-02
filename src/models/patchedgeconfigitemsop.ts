@@ -47,18 +47,20 @@ export type PatchEdgeConfigItems12 = {
   description?: string | any | null | undefined;
 };
 
-export const Operation = {
+export const PatchEdgeConfigItems1EdgeConfigOperation = {
   Create: "create",
   Update: "update",
   Upsert: "upsert",
   Delete: "delete",
 } as const;
-export type Operation = ClosedEnum<typeof Operation>;
+export type PatchEdgeConfigItems1EdgeConfigOperation = ClosedEnum<
+  typeof PatchEdgeConfigItems1EdgeConfigOperation
+>;
 
 export type Description = string | any;
 
 export type PatchEdgeConfigItems11 = {
-  operation: Operation;
+  operation: PatchEdgeConfigItems1EdgeConfigOperation;
   key: string;
   value?: any | null | undefined;
   description?: string | any | null | undefined;
@@ -197,8 +199,9 @@ export function patchEdgeConfigItems12ToJSON(
 }
 
 /** @internal */
-export const Operation$outboundSchema: z.ZodNativeEnum<typeof Operation> = z
-  .nativeEnum(Operation);
+export const PatchEdgeConfigItems1EdgeConfigOperation$outboundSchema:
+  z.ZodNativeEnum<typeof PatchEdgeConfigItems1EdgeConfigOperation> = z
+    .nativeEnum(PatchEdgeConfigItems1EdgeConfigOperation);
 
 /** @internal */
 export type Description$Outbound = string | any;
@@ -228,7 +231,7 @@ export const PatchEdgeConfigItems11$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   PatchEdgeConfigItems11
 > = z.object({
-  operation: Operation$outboundSchema,
+  operation: PatchEdgeConfigItems1EdgeConfigOperation$outboundSchema,
   key: z.string(),
   value: z.nullable(z.any()).optional(),
   description: z.nullable(smartUnion([z.string(), z.any()])).optional(),

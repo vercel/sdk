@@ -333,6 +333,7 @@ export const UpdateFirewallConfigRequestBodyOp = {
   Gte: "gte",
   Lt: "lt",
   Lte: "lte",
+  List: "list",
 } as const;
 export type UpdateFirewallConfigRequestBodyOp = ClosedEnum<
   typeof UpdateFirewallConfigRequestBodyOp
@@ -503,6 +504,7 @@ export const RequestBodyOp = {
   Gte: "gte",
   Lt: "lt",
   Lte: "lte",
+  List: "list",
 } as const;
 export type RequestBodyOp = ClosedEnum<typeof RequestBodyOp>;
 

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPayload146NewOwnerFeatureBlocksMicrofrontendsRequestBlockReason } from "@vercel/sdk/models/usereventpayload125toaccounttype.js";
+import { UserEventPayload146NewOwnerFeatureBlocksMicrofrontendsRequestBlockReason } from "@vercel/sdk/models/usereventpayload125type.js";
 
 let value:
   UserEventPayload146NewOwnerFeatureBlocksMicrofrontendsRequestBlockReason =

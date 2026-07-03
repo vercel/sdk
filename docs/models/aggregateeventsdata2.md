@@ -101,6 +101,8 @@ let value: AggregateEventsData2 = {
   blobOperationLevel: "<value>",
   visitorId: "<id>",
   eventName: "<value>",
+  attributionTarget: "<value>",
+  attributionEventName: "<value>",
   metricName: "<value>",
   attributes: "<value>",
   flagKey: "<value>",
@@ -185,6 +187,8 @@ let value: AggregateEventsData2 = {
   generationId: "<id>",
   sessionId: "<id>",
   providerAttemptError: "<value>",
+  providerAttemptSafetyIdentifier: "<value>",
+  providerAttemptDevSafetyIdentifier: "<value>",
   providerAttemptRegion: "<value>",
   providerAttemptModelIndex: "<value>",
   toolCallType: "<value>",
@@ -294,6 +298,8 @@ let value: AggregateEventsData2 = {
 | `blobOperationLevel`                   | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `visitorId`                            | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `eventName`                            | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| `attributionTarget`                    | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| `attributionEventName`                 | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `metricName`                           | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `attributes`                           | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `flagKey`                              | *string*                               | :heavy_check_mark:                     | N/A                                    |
@@ -378,6 +384,8 @@ let value: AggregateEventsData2 = {
 | `generationId`                         | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `sessionId`                            | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `providerAttemptError`                 | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| `providerAttemptSafetyIdentifier`      | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| `providerAttemptDevSafetyIdentifier`   | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `providerAttemptRegion`                | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `providerAttemptModelIndex`            | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `toolCallType`                         | *string*                               | :heavy_check_mark:                     | N/A                                    |

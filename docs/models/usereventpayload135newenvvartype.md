@@ -5,7 +5,7 @@ The type of this cosmos doc instance, if blank, assume secret.
 ## Example Usage
 
 ```typescript
-import { UserEventPayload135NewEnvVarType } from "@vercel/sdk/models/usereventpayload125toaccounttype.js";
+import { UserEventPayload135NewEnvVarType } from "@vercel/sdk/models/usereventpayload125type.js";
 
 let value: UserEventPayload135NewEnvVarType = "encrypted";
 ```

@@ -8,8 +8,30 @@ import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
-import { Configuration, Configuration$inboundSchema } from "./configuration.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+import {
+  PayloadConfiguration,
+  PayloadConfiguration$inboundSchema,
+  UserEventPayload70Project,
+  UserEventPayload70Project$inboundSchema,
+  UserEventPayload70Team,
+  UserEventPayload70Team$inboundSchema,
+} from "./usereventpayload70project.js";
+
+/**
+ * The payload of the event, if requested.
+ */
+export type Seventy = {
+  team: UserEventPayload70Team;
+  configuration: PayloadConfiguration;
+  project: UserEventPayload70Project;
+  buildsEnabled?: boolean | undefined;
+};
+
+export type Configuration = {
+  id: string;
+  name: string;
+};
 
 /**
  * The payload of the event, if requested.
@@ -387,6 +409,7 @@ export const PayloadPermissions = {
   ReadProjectEnvVarsNonProduction: "read:project-env-vars-non-production",
   ReadProjectEnvVarsProduction: "read:project-env-vars-production",
   ReadProjectFlags: "read:project-flags",
+  ReadRemoteCache: "read:remote-cache",
   ReadSandbox: "read:sandbox",
   ReadTeam: "read:team",
   UseAiGateway: "use:ai-gateway",
@@ -476,6 +499,7 @@ export const UserEventPayload45Permissions = {
   ReadProjectEnvVarsNonProduction: "read:project-env-vars-non-production",
   ReadProjectEnvVarsProduction: "read:project-env-vars-production",
   ReadProjectFlags: "read:project-flags",
+  ReadRemoteCache: "read:remote-cache",
   ReadSandbox: "read:sandbox",
   ReadTeam: "read:team",
   UseAiGateway: "use:ai-gateway",
@@ -564,6 +588,7 @@ export const UserEventPayloadPermissions = {
   ReadProjectEnvVarsNonProduction: "read:project-env-vars-non-production",
   ReadProjectEnvVarsProduction: "read:project-env-vars-production",
   ReadProjectFlags: "read:project-flags",
+  ReadRemoteCache: "read:remote-cache",
   ReadSandbox: "read:sandbox",
   ReadTeam: "read:team",
   UseAiGateway: "use:ai-gateway",
@@ -638,6 +663,7 @@ export const NextPermissions = {
   ReadProjectEnvVarsNonProduction: "read:project-env-vars-non-production",
   ReadProjectEnvVarsProduction: "read:project-env-vars-production",
   ReadProjectFlags: "read:project-flags",
+  ReadRemoteCache: "read:remote-cache",
   ReadSandbox: "read:sandbox",
   ReadTeam: "read:team",
   ReadUser: "read:user",
@@ -713,6 +739,7 @@ export const Permissions = {
   ReadProjectEnvVarsNonProduction: "read:project-env-vars-non-production",
   ReadProjectEnvVarsProduction: "read:project-env-vars-production",
   ReadProjectFlags: "read:project-flags",
+  ReadRemoteCache: "read:remote-cache",
   ReadSandbox: "read:sandbox",
   ReadTeam: "read:team",
   ReadUser: "read:user",
@@ -1519,21 +1546,44 @@ export const Action = {
 } as const;
 export type Action = ClosedEnum<typeof Action>;
 
-/**
- * The payload of the event, if requested.
- */
-export type Payload2 = {
-  action: Action;
-  id: string;
-  slug: string;
-  projectId: string;
-  projectName?: string | undefined;
-};
+/** @internal */
+export const Seventy$inboundSchema: z.ZodType<Seventy, z.ZodTypeDef, unknown> =
+  z.object({
+    team: UserEventPayload70Team$inboundSchema,
+    configuration: PayloadConfiguration$inboundSchema,
+    project: UserEventPayload70Project$inboundSchema,
+    buildsEnabled: types.optional(types.boolean()),
+  });
 
-/**
- * The payload of the event, if requested.
- */
-export type Payload1 = {};
+export function seventyFromJSON(
+  jsonString: string,
+): SafeParseResult<Seventy, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Seventy$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Seventy' from JSON`,
+  );
+}
+
+/** @internal */
+export const Configuration$inboundSchema: z.ZodType<
+  Configuration,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  id: types.string(),
+  name: types.string(),
+});
+
+export function configurationFromJSON(
+  jsonString: string,
+): SafeParseResult<Configuration, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Configuration$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Configuration' from JSON`,
+  );
+}
 
 /** @internal */
 export const SixtyNine$inboundSchema: z.ZodType<
@@ -1541,7 +1591,7 @@ export const SixtyNine$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  configuration: Configuration$inboundSchema,
+  configuration: z.lazy(() => Configuration$inboundSchema),
 });
 
 export function sixtyNineFromJSON(
@@ -3926,43 +3976,3 @@ export function payload3FromJSON(
 /** @internal */
 export const Action$inboundSchema: z.ZodNativeEnum<typeof Action> = z
   .nativeEnum(Action);
-
-/** @internal */
-export const Payload2$inboundSchema: z.ZodType<
-  Payload2,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  action: Action$inboundSchema,
-  id: types.string(),
-  slug: types.string(),
-  projectId: types.string(),
-  projectName: types.optional(types.string()),
-});
-
-export function payload2FromJSON(
-  jsonString: string,
-): SafeParseResult<Payload2, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Payload2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Payload2' from JSON`,
-  );
-}
-
-/** @internal */
-export const Payload1$inboundSchema: z.ZodType<
-  Payload1,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-
-export function payload1FromJSON(
-  jsonString: string,
-): SafeParseResult<Payload1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Payload1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Payload1' from JSON`,
-  );
-}

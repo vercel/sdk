@@ -9,7 +9,7 @@ import { SoftBlock } from "@vercel/sdk/models/authuser.js";
 
 let value: SoftBlock = {
   blockedAt: 8954.99,
-  reason: "EXPOSURE_CAP_EXCEEDED",
+  reason: "ENTERPRISE_UNPAID_INVOICE",
 };
 ```
 

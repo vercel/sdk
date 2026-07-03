@@ -23,3 +23,4 @@ let value: GetProjectsValue2 = {};
 | `gte`              | *number*           | :heavy_minus_sign: | N/A                |
 | `lt`               | *number*           | :heavy_minus_sign: | N/A                |
 | `lte`              | *number*           | :heavy_minus_sign: | N/A                |
+| `list`             | *string*           | :heavy_minus_sign: | N/A                |

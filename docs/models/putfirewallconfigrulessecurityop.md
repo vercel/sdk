@@ -11,5 +11,5 @@ let value: PutFirewallConfigRulesSecurityOp = "ex";
 ## Values
 
 ```typescript
-"eq" | "ex" | "gt" | "gte" | "inc" | "lt" | "lte" | "neq" | "nex" | "ninc" | "pre" | "re" | "sub" | "suf"
+"eq" | "ex" | "gt" | "gte" | "inc" | "list" | "lt" | "lte" | "neq" | "nex" | "ninc" | "pre" | "re" | "sub" | "suf"
 ```

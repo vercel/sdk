@@ -9,7 +9,7 @@ let value: ConditionGroup = {
   conditions: [
     {
       type: "method",
-      op: "gte",
+      op: "lt",
     },
   ],
 };

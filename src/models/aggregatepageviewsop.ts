@@ -245,6 +245,8 @@ export type Data2 = {
   blobOperationLevel: string;
   visitorId: string;
   eventName: string;
+  attributionTarget: string;
+  attributionEventName: string;
   metricName: string;
   attributes: string;
   flagKey: string;
@@ -329,6 +331,8 @@ export type Data2 = {
   generationId: string;
   sessionId: string;
   providerAttemptError: string;
+  providerAttemptSafetyIdentifier: string;
+  providerAttemptDevSafetyIdentifier: string;
   providerAttemptRegion: string;
   providerAttemptModelIndex: string;
   toolCallType: string;
@@ -435,6 +439,8 @@ export type Data1 = {
   blobOperationLevel?: string | undefined;
   visitorId?: string | undefined;
   eventName?: string | undefined;
+  attributionTarget?: string | undefined;
+  attributionEventName?: string | undefined;
   metricName?: string | undefined;
   attributes?: string | undefined;
   flagKey?: string | undefined;
@@ -519,6 +525,8 @@ export type Data1 = {
   generationId?: string | undefined;
   sessionId?: string | undefined;
   providerAttemptError?: string | undefined;
+  providerAttemptSafetyIdentifier?: string | undefined;
+  providerAttemptDevSafetyIdentifier?: string | undefined;
   providerAttemptRegion?: string | undefined;
   providerAttemptModelIndex?: string | undefined;
   toolCallType?: string | undefined;
@@ -755,6 +763,8 @@ export const Data2$inboundSchema: z.ZodType<Data2, z.ZodTypeDef, unknown> =
       blobOperationLevel: types.string(),
       visitorId: types.string(),
       eventName: types.string(),
+      attributionTarget: types.string(),
+      attributionEventName: types.string(),
       metricName: types.string(),
       attributes: types.string(),
       flagKey: types.string(),
@@ -839,6 +849,8 @@ export const Data2$inboundSchema: z.ZodType<Data2, z.ZodTypeDef, unknown> =
       generationId: types.string(),
       sessionId: types.string(),
       providerAttemptError: types.string(),
+      providerAttemptSafetyIdentifier: types.string(),
+      providerAttemptDevSafetyIdentifier: types.string(),
       providerAttemptRegion: types.string(),
       providerAttemptModelIndex: types.string(),
       toolCallType: types.string(),
@@ -959,6 +971,8 @@ export const Data1$inboundSchema: z.ZodType<Data1, z.ZodTypeDef, unknown> = z
     blobOperationLevel: types.optional(types.string()),
     visitorId: types.optional(types.string()),
     eventName: types.optional(types.string()),
+    attributionTarget: types.optional(types.string()),
+    attributionEventName: types.optional(types.string()),
     metricName: types.optional(types.string()),
     attributes: types.optional(types.string()),
     flagKey: types.optional(types.string()),
@@ -1043,6 +1057,8 @@ export const Data1$inboundSchema: z.ZodType<Data1, z.ZodTypeDef, unknown> = z
     generationId: types.optional(types.string()),
     sessionId: types.optional(types.string()),
     providerAttemptError: types.optional(types.string()),
+    providerAttemptSafetyIdentifier: types.optional(types.string()),
+    providerAttemptDevSafetyIdentifier: types.optional(types.string()),
     providerAttemptRegion: types.optional(types.string()),
     providerAttemptModelIndex: types.optional(types.string()),
     toolCallType: types.optional(types.string()),

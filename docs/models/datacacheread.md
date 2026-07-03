@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { DataCacheRead } from "@vercel/sdk/models/usereventpayload125toaccounttype.js";
+import { DataCacheRead } from "@vercel/sdk/models/usereventpayload125type.js";
 
 let value: DataCacheRead = {
   currentThreshold: 2452.67,

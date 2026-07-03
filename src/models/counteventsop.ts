@@ -181,6 +181,8 @@ export type CountEventsData = {
   blobOperationLevel: string;
   visitorId: string;
   eventName: string;
+  attributionTarget: string;
+  attributionEventName: string;
   metricName: string;
   attributes: string;
   flagKey: string;
@@ -265,6 +267,8 @@ export type CountEventsData = {
   generationId: string;
   sessionId: string;
   providerAttemptError: string;
+  providerAttemptSafetyIdentifier: string;
+  providerAttemptDevSafetyIdentifier: string;
   providerAttemptRegion: string;
   providerAttemptModelIndex: string;
   toolCallType: string;
@@ -472,6 +476,8 @@ export const CountEventsData$inboundSchema: z.ZodType<
     blobOperationLevel: types.string(),
     visitorId: types.string(),
     eventName: types.string(),
+    attributionTarget: types.string(),
+    attributionEventName: types.string(),
     metricName: types.string(),
     attributes: types.string(),
     flagKey: types.string(),
@@ -556,6 +562,8 @@ export const CountEventsData$inboundSchema: z.ZodType<
     generationId: types.string(),
     sessionId: types.string(),
     providerAttemptError: types.string(),
+    providerAttemptSafetyIdentifier: types.string(),
+    providerAttemptDevSafetyIdentifier: types.string(),
     providerAttemptRegion: types.string(),
     providerAttemptModelIndex: types.string(),
     toolCallType: types.string(),

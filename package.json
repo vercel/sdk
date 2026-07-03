@@ -1,6 +1,6 @@
 {
   "name": "@vercel/sdk",
-  "version": "1.28.7",
+  "version": "1.28.8",
   "author": "Speakeasy",
   "license": "Apache-2.0",
   "type": "module",

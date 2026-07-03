@@ -251,6 +251,8 @@ export type AggregateEventsData2 = {
   blobOperationLevel: string;
   visitorId: string;
   eventName: string;
+  attributionTarget: string;
+  attributionEventName: string;
   metricName: string;
   attributes: string;
   flagKey: string;
@@ -335,6 +337,8 @@ export type AggregateEventsData2 = {
   generationId: string;
   sessionId: string;
   providerAttemptError: string;
+  providerAttemptSafetyIdentifier: string;
+  providerAttemptDevSafetyIdentifier: string;
   providerAttemptRegion: string;
   providerAttemptModelIndex: string;
   toolCallType: string;
@@ -441,6 +445,8 @@ export type AggregateEventsData1 = {
   blobOperationLevel?: string | undefined;
   visitorId?: string | undefined;
   eventName?: string | undefined;
+  attributionTarget?: string | undefined;
+  attributionEventName?: string | undefined;
   metricName?: string | undefined;
   attributes?: string | undefined;
   flagKey?: string | undefined;
@@ -525,6 +531,8 @@ export type AggregateEventsData1 = {
   generationId?: string | undefined;
   sessionId?: string | undefined;
   providerAttemptError?: string | undefined;
+  providerAttemptSafetyIdentifier?: string | undefined;
+  providerAttemptDevSafetyIdentifier?: string | undefined;
   providerAttemptRegion?: string | undefined;
   providerAttemptModelIndex?: string | undefined;
   toolCallType?: string | undefined;
@@ -783,6 +791,8 @@ export const AggregateEventsData2$inboundSchema: z.ZodType<
     blobOperationLevel: types.string(),
     visitorId: types.string(),
     eventName: types.string(),
+    attributionTarget: types.string(),
+    attributionEventName: types.string(),
     metricName: types.string(),
     attributes: types.string(),
     flagKey: types.string(),
@@ -867,6 +877,8 @@ export const AggregateEventsData2$inboundSchema: z.ZodType<
     generationId: types.string(),
     sessionId: types.string(),
     providerAttemptError: types.string(),
+    providerAttemptSafetyIdentifier: types.string(),
+    providerAttemptDevSafetyIdentifier: types.string(),
     providerAttemptRegion: types.string(),
     providerAttemptModelIndex: types.string(),
     toolCallType: types.string(),
@@ -990,6 +1002,8 @@ export const AggregateEventsData1$inboundSchema: z.ZodType<
   blobOperationLevel: types.optional(types.string()),
   visitorId: types.optional(types.string()),
   eventName: types.optional(types.string()),
+  attributionTarget: types.optional(types.string()),
+  attributionEventName: types.optional(types.string()),
   metricName: types.optional(types.string()),
   attributes: types.optional(types.string()),
   flagKey: types.optional(types.string()),
@@ -1074,6 +1088,8 @@ export const AggregateEventsData1$inboundSchema: z.ZodType<
   generationId: types.optional(types.string()),
   sessionId: types.optional(types.string()),
   providerAttemptError: types.optional(types.string()),
+  providerAttemptSafetyIdentifier: types.optional(types.string()),
+  providerAttemptDevSafetyIdentifier: types.optional(types.string()),
   providerAttemptRegion: types.optional(types.string()),
   providerAttemptModelIndex: types.optional(types.string()),
   toolCallType: types.optional(types.string()),

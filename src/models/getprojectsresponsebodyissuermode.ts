@@ -1467,6 +1467,7 @@ export type GetProjectsSrc2 = {
   gte?: number | undefined;
   lt?: number | undefined;
   lte?: number | undefined;
+  list?: string | undefined;
 };
 
 export type ResponseBodySrc = string | GetProjectsSrc2;
@@ -1504,6 +1505,7 @@ export type GetProjectsValueProjectsResponse2 = {
   gte?: number | undefined;
   lt?: number | undefined;
   lte?: number | undefined;
+  list?: string | undefined;
 };
 
 export type GetProjectsResponseBodyProjectsResponse200Value =
@@ -1550,6 +1552,7 @@ export type GetProjectsValueProjectsResponse2002 = {
   gte?: number | undefined;
   lt?: number | undefined;
   lte?: number | undefined;
+  list?: string | undefined;
 };
 
 export type GetProjectsResponseBodyProjectsResponseValue =
@@ -4292,6 +4295,7 @@ export const GetProjectsSrc2$inboundSchema: z.ZodType<
   gte: types.optional(types.number()),
   lt: types.optional(types.number()),
   lte: types.optional(types.number()),
+  list: types.optional(types.string()),
 });
 
 export function getProjectsSrc2FromJSON(
@@ -4346,6 +4350,7 @@ export const GetProjectsValueProjectsResponse2$inboundSchema: z.ZodType<
   gte: types.optional(types.number()),
   lt: types.optional(types.number()),
   lte: types.optional(types.number()),
+  list: types.optional(types.string()),
 });
 
 export function getProjectsValueProjectsResponse2FromJSON(
@@ -4438,6 +4443,7 @@ export const GetProjectsValueProjectsResponse2002$inboundSchema: z.ZodType<
   gte: types.optional(types.number()),
   lt: types.optional(types.number()),
   lte: types.optional(types.number()),
+  list: types.optional(types.string()),
 });
 
 export function getProjectsValueProjectsResponse2002FromJSON(

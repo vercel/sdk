@@ -883,6 +883,22 @@ export type ConnexTokenRequests = {
     UserEventPayload146NewOwnerFeatureBlocksConnexTokenRequestsBlockReason;
 };
 
+export const UserEventPayload146NewOwnerFeatureBlocksVcrBlockReason = {
+  AdminOverride: "admin_override",
+  HardBlocked: "hard_blocked",
+  LimitsExceeded: "limits_exceeded",
+} as const;
+export type UserEventPayload146NewOwnerFeatureBlocksVcrBlockReason = ClosedEnum<
+  typeof UserEventPayload146NewOwnerFeatureBlocksVcrBlockReason
+>;
+
+export type Vcr = {
+  updatedAt: number;
+  blockedFrom?: number | undefined;
+  blockedUntil?: number | undefined;
+  blockReason: UserEventPayload146NewOwnerFeatureBlocksVcrBlockReason;
+};
+
 /**
  * Information about which features are blocked for a user. Blocks can be either soft (the user can still access the feature, but with a warning, e.g. prompting an upgrade) or hard (the user cannot access the feature at all).
  */
@@ -917,6 +933,7 @@ export type PayloadFeatureBlocks = {
   workflowStorageWrite?: WorkflowStorageWrite | undefined;
   workflowEvents?: WorkflowEvents | undefined;
   connexTokenRequests?: ConnexTokenRequests | undefined;
+  vcr?: Vcr | undefined;
 };
 
 export const Version = {
@@ -1834,21 +1851,6 @@ export const UserEventPayload125Type = {
 } as const;
 export type UserEventPayload125Type = ClosedEnum<
   typeof UserEventPayload125Type
->;
-
-export type FromAccount = {
-  id: string;
-  type: UserEventPayload125Type;
-  slug?: string | undefined;
-  username?: string | undefined;
-};
-
-export const UserEventPayload125ToAccountType = {
-  Team: "team",
-  User: "user",
-} as const;
-export type UserEventPayload125ToAccountType = ClosedEnum<
-  typeof UserEventPayload125ToAccountType
 >;
 
 /** @internal */
@@ -3451,6 +3453,32 @@ export function connexTokenRequestsFromJSON(
 }
 
 /** @internal */
+export const UserEventPayload146NewOwnerFeatureBlocksVcrBlockReason$inboundSchema:
+  z.ZodNativeEnum<
+    typeof UserEventPayload146NewOwnerFeatureBlocksVcrBlockReason
+  > = z.nativeEnum(UserEventPayload146NewOwnerFeatureBlocksVcrBlockReason);
+
+/** @internal */
+export const Vcr$inboundSchema: z.ZodType<Vcr, z.ZodTypeDef, unknown> = z
+  .object({
+    updatedAt: types.number(),
+    blockedFrom: types.optional(types.number()),
+    blockedUntil: types.optional(types.number()),
+    blockReason:
+      UserEventPayload146NewOwnerFeatureBlocksVcrBlockReason$inboundSchema,
+  });
+
+export function vcrFromJSON(
+  jsonString: string,
+): SafeParseResult<Vcr, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Vcr$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Vcr' from JSON`,
+  );
+}
+
+/** @internal */
 export const PayloadFeatureBlocks$inboundSchema: z.ZodType<
   PayloadFeatureBlocks,
   z.ZodTypeDef,
@@ -3511,6 +3539,7 @@ export const PayloadFeatureBlocks$inboundSchema: z.ZodType<
   connexTokenRequests: types.optional(
     z.lazy(() => ConnexTokenRequests$inboundSchema),
   ),
+  vcr: types.optional(z.lazy(() => Vcr$inboundSchema)),
 });
 
 export function payloadFeatureBlocksFromJSON(
@@ -4671,30 +4700,3 @@ export function edgeConfigFromJSON(
 export const UserEventPayload125Type$inboundSchema: z.ZodNativeEnum<
   typeof UserEventPayload125Type
 > = z.nativeEnum(UserEventPayload125Type);
-
-/** @internal */
-export const FromAccount$inboundSchema: z.ZodType<
-  FromAccount,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: types.string(),
-  type: UserEventPayload125Type$inboundSchema,
-  slug: types.optional(types.string()),
-  username: types.optional(types.string()),
-});
-
-export function fromAccountFromJSON(
-  jsonString: string,
-): SafeParseResult<FromAccount, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => FromAccount$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'FromAccount' from JSON`,
-  );
-}
-
-/** @internal */
-export const UserEventPayload125ToAccountType$inboundSchema: z.ZodNativeEnum<
-  typeof UserEventPayload125ToAccountType
-> = z.nativeEnum(UserEventPayload125ToAccountType);

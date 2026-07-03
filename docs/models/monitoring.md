@@ -5,7 +5,7 @@ A soft block indicates a temporary pause in data collection (ex limit exceeded f
 ## Example Usage
 
 ```typescript
-import { Monitoring } from "@vercel/sdk/models/usereventpayload125toaccounttype.js";
+import { Monitoring } from "@vercel/sdk/models/usereventpayload125type.js";
 
 let value: Monitoring = {
   updatedAt: 4865.72,

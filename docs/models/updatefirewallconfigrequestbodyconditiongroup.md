@@ -9,7 +9,7 @@ let value: UpdateFirewallConfigRequestBodyConditionGroup = {
   conditions: [
     {
       type: "environment",
-      op: "pre",
+      op: "suf",
     },
   ],
 };

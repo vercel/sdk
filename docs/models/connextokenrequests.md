@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ConnexTokenRequests } from "@vercel/sdk/models/usereventpayload125toaccounttype.js";
+import { ConnexTokenRequests } from "@vercel/sdk/models/usereventpayload125type.js";
 
 let value: ConnexTokenRequests = {
   updatedAt: 1895.71,

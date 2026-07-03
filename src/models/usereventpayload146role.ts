@@ -1298,6 +1298,7 @@ export type PayloadSiftRoute = {
 
 export const UserEventPayloadReason = {
   BlockedForPlatformAbuse: "BLOCKED_FOR_PLATFORM_ABUSE",
+  DomainOwnerDeletionRequest: "DOMAIN_OWNER_DELETION_REQUEST",
   EnterpriseTrialEnded: "ENTERPRISE_TRIAL_ENDED",
   EnterpriseUnpaidInvoice: "ENTERPRISE_UNPAID_INVOICE",
   ExposureCapExceeded: "EXPOSURE_CAP_EXCEEDED",

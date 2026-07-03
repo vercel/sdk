@@ -5,7 +5,7 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndFortyFour } from "@vercel/sdk/models/usereventpayload125toaccounttype.js";
+import { OneHundredAndFortyFour } from "@vercel/sdk/models/usereventpayload125type.js";
 
 let value: OneHundredAndFortyFour = {
   action: "disable",

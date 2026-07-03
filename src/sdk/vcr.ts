@@ -7,6 +7,7 @@ import { vcrDeleteRepository } from "../funcs/vcrDeleteRepository.js";
 import { vcrDeleteRepositoryImage } from "../funcs/vcrDeleteRepositoryImage.js";
 import { vcrGetRepository } from "../funcs/vcrGetRepository.js";
 import { vcrGetRepositoryImage } from "../funcs/vcrGetRepositoryImage.js";
+import { vcrGetRepositoryTag } from "../funcs/vcrGetRepositoryTag.js";
 import { vcrListRepositories } from "../funcs/vcrListRepositories.js";
 import { vcrListRepositoryImages } from "../funcs/vcrListRepositoryImages.js";
 import { vcrListRepositoryTags } from "../funcs/vcrListRepositoryTags.js";
@@ -25,6 +26,10 @@ import {
   GetRepositoryRequest,
   GetRepositoryResponseBody,
 } from "../models/getrepositoryop.js";
+import {
+  GetRepositoryTagRequest,
+  GetRepositoryTagResponseBody,
+} from "../models/getrepositorytagop.js";
 import { ListRepositoriesRequest } from "../models/listrepositoriesop.js";
 import { ListRepositoryImagesRequest } from "../models/listrepositoryimagesop.js";
 import {
@@ -132,6 +137,23 @@ export class Vcr extends ClientSDK {
     options?: RequestOptions,
   ): Promise<ListRepositoryTagsResponseBody> {
     return unwrapAsync(vcrListRepositoryTags(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Get a repository tag
+   *
+   * @remarks
+   * Fetch a single tag from a repository, including the backing image's metadata and VHS-readiness status.
+   */
+  async getRepositoryTag(
+    request: GetRepositoryTagRequest,
+    options?: RequestOptions,
+  ): Promise<GetRepositoryTagResponseBody> {
+    return unwrapAsync(vcrGetRepositoryTag(
       this,
       request,
       options,

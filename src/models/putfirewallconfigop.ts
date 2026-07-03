@@ -287,6 +287,7 @@ export const PutFirewallConfigOp = {
   Gte: "gte",
   Lt: "lt",
   Lte: "lte",
+  List: "list",
 } as const;
 export type PutFirewallConfigOp = ClosedEnum<typeof PutFirewallConfigOp>;
 
@@ -719,6 +720,7 @@ export const PutFirewallConfigRulesOp = {
   Gt: "gt",
   Gte: "gte",
   Inc: "inc",
+  List: "list",
   Lt: "lt",
   Lte: "lte",
   Neq: "neq",
@@ -871,6 +873,7 @@ export const PutFirewallConfigRulesSecurityOp = {
   Gt: "gt",
   Gte: "gte",
   Inc: "inc",
+  List: "list",
   Lt: "lt",
   Lte: "lte",
   Neq: "neq",

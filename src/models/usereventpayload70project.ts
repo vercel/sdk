@@ -11,11 +11,24 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
 import {
   EdgeConfig,
   EdgeConfig$inboundSchema,
-  FromAccount,
-  FromAccount$inboundSchema,
-  UserEventPayload125ToAccountType,
-  UserEventPayload125ToAccountType$inboundSchema,
-} from "./usereventpayload125toaccounttype.js";
+  UserEventPayload125Type,
+  UserEventPayload125Type$inboundSchema,
+} from "./usereventpayload125type.js";
+
+export type FromAccount = {
+  id: string;
+  type: UserEventPayload125Type;
+  slug?: string | undefined;
+  username?: string | undefined;
+};
+
+export const UserEventPayload125ToAccountType = {
+  Team: "team",
+  User: "user",
+} as const;
+export type UserEventPayload125ToAccountType = ClosedEnum<
+  typeof UserEventPayload125ToAccountType
+>;
 
 export type ToAccount = {
   id: string;
@@ -1765,20 +1778,32 @@ export type UserEventPayload70Project = {
   name?: string | undefined;
 };
 
-/**
- * The payload of the event, if requested.
- */
-export type Seventy = {
-  team: UserEventPayload70Team;
-  configuration: PayloadConfiguration;
-  project: UserEventPayload70Project;
-  buildsEnabled?: boolean | undefined;
-};
+/** @internal */
+export const FromAccount$inboundSchema: z.ZodType<
+  FromAccount,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  id: types.string(),
+  type: UserEventPayload125Type$inboundSchema,
+  slug: types.optional(types.string()),
+  username: types.optional(types.string()),
+});
 
-export type Configuration = {
-  id: string;
-  name: string;
-};
+export function fromAccountFromJSON(
+  jsonString: string,
+): SafeParseResult<FromAccount, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => FromAccount$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'FromAccount' from JSON`,
+  );
+}
+
+/** @internal */
+export const UserEventPayload125ToAccountType$inboundSchema: z.ZodNativeEnum<
+  typeof UserEventPayload125ToAccountType
+> = z.nativeEnum(UserEventPayload125ToAccountType);
 
 /** @internal */
 export const ToAccount$inboundSchema: z.ZodType<
@@ -1809,7 +1834,7 @@ export const OneHundredAndTwentyFive$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   edgeConfig: EdgeConfig$inboundSchema,
-  fromAccount: FromAccount$inboundSchema,
+  fromAccount: z.lazy(() => FromAccount$inboundSchema),
   toAccount: z.lazy(() => ToAccount$inboundSchema),
 });
 
@@ -4662,44 +4687,5 @@ export function userEventPayload70ProjectFromJSON(
     jsonString,
     (x) => UserEventPayload70Project$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'UserEventPayload70Project' from JSON`,
-  );
-}
-
-/** @internal */
-export const Seventy$inboundSchema: z.ZodType<Seventy, z.ZodTypeDef, unknown> =
-  z.object({
-    team: z.lazy(() => UserEventPayload70Team$inboundSchema),
-    configuration: z.lazy(() => PayloadConfiguration$inboundSchema),
-    project: z.lazy(() => UserEventPayload70Project$inboundSchema),
-    buildsEnabled: types.optional(types.boolean()),
-  });
-
-export function seventyFromJSON(
-  jsonString: string,
-): SafeParseResult<Seventy, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Seventy$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Seventy' from JSON`,
-  );
-}
-
-/** @internal */
-export const Configuration$inboundSchema: z.ZodType<
-  Configuration,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: types.string(),
-  name: types.string(),
-});
-
-export function configurationFromJSON(
-  jsonString: string,
-): SafeParseResult<Configuration, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Configuration$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Configuration' from JSON`,
   );
 }

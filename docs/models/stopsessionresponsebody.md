@@ -106,6 +106,7 @@ const value: models.StopSessionResponseBody2 = {
     },
     createdAt: 1750344501629,
     updatedAt: 1750344501629,
+    expiresAt: 1750344801629,
   },
   session: {
     sourceSandboxName: "my-sandbox",

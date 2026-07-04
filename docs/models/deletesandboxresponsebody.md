@@ -34,6 +34,7 @@ let value: DeleteSandboxResponseBody = {
     },
     createdAt: 1750344501629,
     updatedAt: 1750344501629,
+    expiresAt: 1750344801629,
   },
 };
 ```

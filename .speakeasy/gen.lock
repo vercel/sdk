@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 79567c4a-05f9-4d65-864d-dfe107aa4e9d
 management:
-  docChecksum: ab61e3275c679637cb72117fe780bc98
+  docChecksum: ae0eb2e88bc39325a4b904267523e531
   docVersion: 0.0.1
-  speakeasyVersion: 1.788.0
-  generationVersion: 2.915.0
-  releaseVersion: 1.28.8
-  configChecksum: fc04cd275b0459910493ef54c4dab808
+  speakeasyVersion: 1.788.1
+  generationVersion: 2.915.1
+  releaseVersion: 1.28.9
+  configChecksum: 9259d13d35e36fddc753e391493b87c1
   repoURL: https://github.com/vercel/sdk.git
   installationURL: https://github.com/vercel/sdk
   published: true
 persistentEdits:
-  generation_id: 7d565bd2-8dfb-4cc6-8b84-aa985515f835
-  pristine_commit_hash: 4c49f728a146225f7dee2db063c08f29dc2ac44a
-  pristine_tree_hash: c804c13c8b12d7cec26e19f3a13be6a4fe1509de
+  generation_id: e02fccaa-cf62-45d3-87e7-6ac9714d7c91
+  pristine_commit_hash: 3ebb08332b8802fea8f6284fa94107b40322b39c
+  pristine_tree_hash: 7ce385a8d6f9da759d369821321fd4cc8a08e05f
 features:
   typescript:
     acceptHeaders: 2.81.2
@@ -8435,8 +8435,8 @@ trackedFiles:
     pristine_git_object: 395d220b163a9c47904ed5b7e215f36f936d4edb
   docs/models/deletesandboxresponsebody.md:
     id: 084eebda461d
-    last_write_checksum: sha1:8257d3d1b73d7136f69bb14afc8ff1b8a4260931
-    pristine_git_object: 055c62a877d22c92b24e91cc3c82d3dbdc5a11bb
+    last_write_checksum: sha1:90c934d33c3b9a94f4f8ac48506e6ae24f898b52
+    pristine_git_object: c2cc2be02bfe7b5a92d874b76f5a05f02507973b
   docs/models/deletesdkkeyrequest.md:
     id: dad68829547e
     last_write_checksum: sha1:94f3bc14f4cf6fc4afd8231ed8c34475f910ef3d
@@ -16475,8 +16475,8 @@ trackedFiles:
     pristine_git_object: 41b521c172595a45d8735e6659fda63bdf16f3af
   docs/models/getnamedsandboxresponsebody.md:
     id: dc552f8260cc
-    last_write_checksum: sha1:0e58884b2e35d9c0f3c02b9441d81cc68ba51132
-    pristine_git_object: 42553b6959e7df0d1333dc82c919ed9c5f7c12d8
+    last_write_checksum: sha1:a047f25fb37aac8a41053d9d1f3aabcce46aa7db
+    pristine_git_object: 674c75e179b35cbd14cfdfdab18be3cd2750c5ec
   docs/models/getobservabilityconfigurationprojectsrequest.md:
     id: 5d22f1192aab
     last_write_checksum: sha1:5d19a73d884d413b89bc1e12019a5a357fc79ceb
@@ -23567,8 +23567,8 @@ trackedFiles:
     pristine_git_object: 5a8a7ca6f51858bdba7329f163e17a6c27e72e89
   docs/models/namedsandbox.md:
     id: 4f85fdcd8c46
-    last_write_checksum: sha1:b7f8d98153f90656e664a62285eb1f7aaea75d6e
-    pristine_git_object: 9b42cc2f33c7084eeca8aafe893c6207ba8a9bbc
+    last_write_checksum: sha1:464fccb9a79adabb27fb62b9c92f164bbf940f03
+    pristine_git_object: b8097259f2ede616cfc81a52cdba438d2249afb2
   docs/models/namedsandboxmode.md:
     id: c4f1d90eaaa6
     last_write_checksum: sha1:88da7aa730f0c3b97ef93d9b69793d1be0932bfe
@@ -29303,16 +29303,16 @@ trackedFiles:
     pristine_git_object: 51d3c72567a48b239fe6f7a1d4618027b5427fbd
   docs/models/stopsessionresponsebody.md:
     id: 5a0d4fd598c5
-    last_write_checksum: sha1:ba470bfc881d0226dd1ae10a5e63b92fa18e306e
-    pristine_git_object: 7c7c1b4ca1251932266bb388427d1e8806eeac2e
+    last_write_checksum: sha1:0d657f1a9e6f00b8f7a163c1695b562612efb0ed
+    pristine_git_object: d7ebb8dd2a868f168c6b8a67b1ed322a0e9a55f2
   docs/models/stopsessionresponsebody1.md:
     id: 6b51dd0abb9a
     last_write_checksum: sha1:90d4ff2059b244ff484fd631e39754419a601bbf
     pristine_git_object: ad18e95b17ff3ac7934020a45c3e744d96cfcf56
   docs/models/stopsessionresponsebody2.md:
     id: 30b33452be5d
-    last_write_checksum: sha1:2ccbed90dfcfbdf94b375150ec360351c336669d
-    pristine_git_object: a8c19f444dde3c783e740c9f4525cfa101cb06d0
+    last_write_checksum: sha1:4fda0616b862e7fd7bc4ff2b5eca2eeec32f21ae
+    pristine_git_object: b87d0bd9bd7ca72e1fd0ec49e548983a3f09ec32
   docs/models/storage.md:
     id: 8627e82f163e
     last_write_checksum: sha1:8710cfd20e851c8fdfc3ce3436994e6f72cd85ad
@@ -38195,12 +38195,12 @@ trackedFiles:
     pristine_git_object: 48e9f904e717ce5cc0d962979eae98e8eff6bb0e
   jsr.json:
     id: 7f6ab7767282
-    last_write_checksum: sha1:e9beab1500725f936f644882c2659f334a59326f
-    pristine_git_object: acde20af0e90e1b5ccb0a5dfe7de0e8475f45c58
+    last_write_checksum: sha1:f9cd97e5efd223acc453173a30517f7aba1afc7c
+    pristine_git_object: a626feb0d9a6a8da2786640c3f1b5b29ade931f9
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:9f070fdba3d6336310bff88313d0f691809a27cb
-    pristine_git_object: e9e3f6546377123c451d2a87f27bd53dc4211fe7
+    last_write_checksum: sha1:530ca27e34c8d34308670bb5501b4851dccb2ec6
+    pristine_git_object: e5ee97c18fbfc5baadd18de7b339c50f4ae19279
   src/core.ts:
     id: f431fdbcd144
     last_write_checksum: sha1:dc8229fbd0c675b1f78e40b358b0f836f90ca221
@@ -39531,8 +39531,8 @@ trackedFiles:
     pristine_git_object: 0aebd8b0a4867e35cb3348fc52921c3c0b4725b7
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:cc0cb1897b38404acc1c0597c6c4a4b88f4227dd
-    pristine_git_object: 118358d9be6fa82d1e55ac19f8f6852115856353
+    last_write_checksum: sha1:51ed058e52753fe6f6cc28307a39eb35454499ce
+    pristine_git_object: 933c6e58fab48544ad494c8eaef450b729fb67af
   src/lib/encodings.ts:
     id: 3bd8ead98afd
     last_write_checksum: sha1:50d9b187dcfc3cca8d3bbd9fe074f865d715d2b0
@@ -40759,8 +40759,8 @@ trackedFiles:
     pristine_git_object: 96f97972011e7ee508dbc0498cb3a3781ca6a04e
   src/models/namedsandbox.ts:
     id: f341636e35b0
-    last_write_checksum: sha1:11af3fbd01875f43e5c4b3e9c914f1c8b46b7899
-    pristine_git_object: 489102c524acaf60cd8f7ee00179607d463617e6
+    last_write_checksum: sha1:be060782936156347079f86185d1ee11838d51b0
+    pristine_git_object: 9dff2ed49cbcf21aca93bd7e7cabb9934becc25e
   src/models/network.ts:
     id: 4fd2826b5f73
     last_write_checksum: sha1:2c66a48a8f29f7815c21720e5b1356aacd7aa369
@@ -46438,7 +46438,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: {"sandbox": {"name": "my-sandbox", "currentSessionId": "<id>", "status": "running", "statusUpdatedAt": 1750344501629, "persistent": true, "region": "iad1", "vcpus": 2, "memory": 1024, "runtime": "node22", "timeout": 300000, "snapshotExpiration": 604800000, "keepLastSnapshots": {"count": 5, "expiration": 604800000, "deleteEvicted": true}, "totalEgressBytes": 4096, "totalIngressBytes": 2048, "totalActiveCpuDurationMs": 5000, "totalDurationMs": 60000, "cwd": "/vercel/sandbox", "tags": {"team": "hive", "user": "bob"}, "createdAt": 1750344501629, "updatedAt": 1750344501629}, "session": {"sourceSandboxName": "my-sandbox", "projectId": "prj_123a6c5209bc3778245d011443644c8d27dc2c50", "id": "sbx_123a6c5209bc3778245d011443644c8d27dc2c50", "memory": 2048, "vcpus": 2, "region": "iad1", "runtime": "node22", "timeout": 3600000, "status": "running", "requestedAt": 1750344501629, "startedAt": 1750344501629, "cwd": "/vercel/sandbox", "requestedStopAt": 1750344501629, "stoppedAt": 1750344501629, "abortedAt": 1750344501629, "duration": 3600000, "sourceSnapshotId": "snap_123a6c5209bc3778245d011443644c8d27dc2c50", "snapshottedAt": 1750344501629, "createdAt": 1750344501629, "updatedAt": 1750344501629, "networkPolicy": {"mode": "custom", "allowedDomains": ["api.vercel.com", "*.example.com"], "allowedCIDRs": ["10.0.0.0/8"], "deniedCIDRs": ["10.0.0.0/8"], "injectionRules": [{"domain": "api.vercel.com", "headerNames": ["Authorization", "X-API-Key"]}]}, "activeCpuDurationMs": 42, "networkTransfer": {"ingress": 3537.81, "egress": 3912.91}}, "routes": [{"url": "https://any-wasabi.com", "port": 4252.43, "subdomain": "<value>", "system": true}], "resumed": true}
+          application/json: {"sandbox": {"name": "my-sandbox", "currentSessionId": "<id>", "status": "running", "statusUpdatedAt": 1750344501629, "persistent": true, "region": "iad1", "vcpus": 2, "memory": 1024, "runtime": "node22", "timeout": 300000, "snapshotExpiration": 604800000, "keepLastSnapshots": {"count": 5, "expiration": 604800000, "deleteEvicted": true}, "totalEgressBytes": 4096, "totalIngressBytes": 2048, "totalActiveCpuDurationMs": 5000, "totalDurationMs": 60000, "cwd": "/vercel/sandbox", "tags": {"team": "hive", "user": "bob"}, "createdAt": 1750344501629, "updatedAt": 1750344501629, "expiresAt": 1750344801629}, "session": {"sourceSandboxName": "my-sandbox", "projectId": "prj_123a6c5209bc3778245d011443644c8d27dc2c50", "id": "sbx_123a6c5209bc3778245d011443644c8d27dc2c50", "memory": 2048, "vcpus": 2, "region": "iad1", "runtime": "node22", "timeout": 3600000, "status": "running", "requestedAt": 1750344501629, "startedAt": 1750344501629, "cwd": "/vercel/sandbox", "requestedStopAt": 1750344501629, "stoppedAt": 1750344501629, "abortedAt": 1750344501629, "duration": 3600000, "sourceSnapshotId": "snap_123a6c5209bc3778245d011443644c8d27dc2c50", "snapshottedAt": 1750344501629, "createdAt": 1750344501629, "updatedAt": 1750344501629, "networkPolicy": {"mode": "custom", "allowedDomains": ["api.vercel.com", "*.example.com"], "allowedCIDRs": ["10.0.0.0/8"], "deniedCIDRs": ["10.0.0.0/8"], "injectionRules": [{"domain": "api.vercel.com", "headerNames": ["Authorization", "X-API-Key"]}]}, "activeCpuDurationMs": 42, "networkTransfer": {"ingress": 3537.81, "egress": 3912.91}}, "routes": [{"url": "https://any-wasabi.com", "port": 4252.43, "subdomain": "<value>", "system": true}], "resumed": true}
   updateSandbox:
     speakeasy-default-update-sandbox:
       parameters:
@@ -46462,7 +46462,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: {"sandbox": {"name": "my-sandbox", "currentSessionId": "<id>", "status": "running", "statusUpdatedAt": 1750344501629, "persistent": true, "region": "iad1", "vcpus": 2, "memory": 1024, "runtime": "node22", "timeout": 300000, "snapshotExpiration": 604800000, "keepLastSnapshots": {"count": 5, "expiration": 604800000, "deleteEvicted": true}, "totalEgressBytes": 4096, "totalIngressBytes": 2048, "totalActiveCpuDurationMs": 5000, "totalDurationMs": 60000, "cwd": "/vercel/sandbox", "tags": {"team": "hive", "user": "bob"}, "createdAt": 1750344501629, "updatedAt": 1750344501629}}
+          application/json: {"sandbox": {"name": "my-sandbox", "currentSessionId": "<id>", "status": "running", "statusUpdatedAt": 1750344501629, "persistent": true, "region": "iad1", "vcpus": 2, "memory": 1024, "runtime": "node22", "timeout": 300000, "snapshotExpiration": 604800000, "keepLastSnapshots": {"count": 5, "expiration": 604800000, "deleteEvicted": true}, "totalEgressBytes": 4096, "totalIngressBytes": 2048, "totalActiveCpuDurationMs": 5000, "totalDurationMs": 60000, "cwd": "/vercel/sandbox", "tags": {"team": "hive", "user": "bob"}, "createdAt": 1750344501629, "updatedAt": 1750344501629, "expiresAt": 1750344801629}}
   listSessionCommands:
     speakeasy-default-list-session-commands:
       parameters:
@@ -47411,7 +47411,12 @@ generatedTests:
   listDrives: "2026-06-08T17:06:46-06:00"
   getOrCreateDrive: "2026-06-08T17:06:46-06:00"
   deleteDrive: "2026-06-08T17:06:46-06:00"
-releaseNotes: "## Typescript SDK Changes:\n* `vercel.user.listUserEvents()`:  `response.events[].payload` **Changed** (Breaking ⚠️)\n* `vercel.user.getAuthUser()`:  `response.user.union(AuthUser).softBlock.reason.enum(domainOwnerDeletionRequest)` **Added** (Breaking ⚠️)\n* `vercel.security.putFirewallConfig()`: \n  *  `request.requestBody.rules[].conditionGroup[].conditions[].op.enum(list)` **Added**\n  *  `response.active.rules[]` **Changed** (Breaking ⚠️)\n* `vercel.security.getFirewallConfig()`:  `response.rules[]` **Changed** (Breaking ⚠️)\n* `vercel.vcr.getRepositoryTag()`: **Added**\n* `vercel.projects.getProjects()`:  `response` **Changed**\n* `vercel.security.updateFirewallConfig()`: \n  *  `request.requestBody` **Changed**\n* `vercel.webAnalytics.aggregatePageviews()`:  `response.data` **Changed**\n* `vercel.webAnalytics.aggregateEvents()`:  `response.data` **Changed**\n* `vercel.webAnalytics.countPageviews()`:  `response.data` **Changed**\n* `vercel.webAnalytics.countEvents()`:  `response.data` **Changed**\n"
+releaseNotes: |
+  ## Typescript SDK Changes:
+  * `vercel.sandboxes.listSandboxes()`:  `response.sandboxes[].expiresAt` **Added**
+  * `vercel.sandboxes.getNamedSandbox()`:  `response.sandbox.expiresAt` **Added**
+  * `vercel.sandboxes.deleteSandbox()`:  `response.sandbox.expiresAt` **Added**
+  * `vercel.sandboxes.stopSession()`:  `response.union(2).sandbox.expiresAt` **Added**
 generatedFiles:
   - .devcontainer/README.md
   - .devcontainer/devcontainer.json

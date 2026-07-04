@@ -171,6 +171,10 @@ export type NamedSandbox = {
    * The time when the named sandbox was last updated, in milliseconds since the epoch.
    */
   updatedAt: number;
+  /**
+   * The time at which the currently running sandbox will time out, in milliseconds since the epoch. Only present while a session is running.
+   */
+  expiresAt?: number | undefined;
 };
 
 /** @internal */
@@ -279,6 +283,7 @@ export const NamedSandbox$inboundSchema: z.ZodType<
   mounts: types.optional(z.record(z.lazy(() => Mounts$inboundSchema))),
   createdAt: types.number(),
   updatedAt: types.number(),
+  expiresAt: types.optional(types.number()),
 });
 
 export function namedSandboxFromJSON(

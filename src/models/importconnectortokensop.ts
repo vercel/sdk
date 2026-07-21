@@ -8,6 +8,7 @@ import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
+import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type SubjectTypeUser = {
@@ -31,7 +32,7 @@ export const ImportConnectorTokensEnvironment = {
 } as const;
 export type ImportConnectorTokensEnvironment = ClosedEnum<
   typeof ImportConnectorTokensEnvironment
->;
+> | string;
 
 export type ImportConnectorTokensAuthorizationDetails = {
   type?: string | undefined;
@@ -111,7 +112,7 @@ export const ImportConnectorTokensConnectEnvironment = {
 } as const;
 export type ImportConnectorTokensConnectEnvironment = ClosedEnum<
   typeof ImportConnectorTokensConnectEnvironment
->;
+> | string;
 
 export type ImportConnectorTokensTokens = {
   name?: string | undefined;
@@ -225,9 +226,11 @@ export function importConnectorTokensSubjectToJSON(
 }
 
 /** @internal */
-export const ImportConnectorTokensEnvironment$outboundSchema: z.ZodNativeEnum<
-  typeof ImportConnectorTokensEnvironment
-> = z.nativeEnum(ImportConnectorTokensEnvironment);
+export const ImportConnectorTokensEnvironment$outboundSchema: z.ZodType<
+  ImportConnectorTokensEnvironment,
+  z.ZodTypeDef,
+  ImportConnectorTokensEnvironment
+> = smartUnion([z.string(), z.nativeEnum(ImportConnectorTokensEnvironment)]);
 
 /** @internal */
 export type ImportConnectorTokensAuthorizationDetails$Outbound = {
@@ -542,9 +545,14 @@ export function importConnectorTokensConnectSubjectFromJSON(
 }
 
 /** @internal */
-export const ImportConnectorTokensConnectEnvironment$inboundSchema:
-  z.ZodNativeEnum<typeof ImportConnectorTokensConnectEnvironment> = z
-    .nativeEnum(ImportConnectorTokensConnectEnvironment);
+export const ImportConnectorTokensConnectEnvironment$inboundSchema: z.ZodType<
+  ImportConnectorTokensConnectEnvironment,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  types.string(),
+  z.nativeEnum(ImportConnectorTokensConnectEnvironment),
+]);
 
 /** @internal */
 export const ImportConnectorTokensTokens$inboundSchema: z.ZodType<

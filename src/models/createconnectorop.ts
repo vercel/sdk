@@ -303,7 +303,9 @@ export const CreatedByEnvironment = {
   Preview: "preview",
   Production: "production",
 } as const;
-export type CreatedByEnvironment = ClosedEnum<typeof CreatedByEnvironment>;
+export type CreatedByEnvironment =
+  | string
+  | ClosedEnum<typeof CreatedByEnvironment>;
 
 /**
  * Principal that originally created the connector — either a Vercel user (interactive dashboard / CLI flow) or a Vercel deployment (OIDC-authenticated project, used by runtime auto-provisioning). See {@link ConnexPrincipal}. Optional: pre-existing rows from before this shape was introduced may carry no attribution at all.
@@ -329,7 +331,9 @@ export const UpdatedByEnvironment = {
   Preview: "preview",
   Production: "production",
 } as const;
-export type UpdatedByEnvironment = ClosedEnum<typeof UpdatedByEnvironment>;
+export type UpdatedByEnvironment =
+  | string
+  | ClosedEnum<typeof UpdatedByEnvironment>;
 
 /**
  * Principal that most recently mutated the connector. Same shape as {@link createdBy} but tracks the most recent updater, not the original creator. At create time the two fields point at the same principal; they diverge on the first subsequent update.
@@ -410,9 +414,15 @@ export type TriggerDestinations = {
   path?: string | undefined;
 };
 
+export type CreateConnectorCustomEnvironments = {
+  id: string;
+  slug: string;
+};
+
 export type CreateConnectorProject = {
   id: string;
   name: string;
+  customEnvironments?: Array<CreateConnectorCustomEnvironments> | undefined;
 };
 
 export const CreateConnectorEnvironments = {
@@ -422,7 +432,7 @@ export const CreateConnectorEnvironments = {
 } as const;
 export type CreateConnectorEnvironments = ClosedEnum<
   typeof CreateConnectorEnvironments
->;
+> | string;
 
 export type CreateConnectorItems = {
   clientId: string;
@@ -1304,9 +1314,11 @@ export function createConnectorRequestBodyToJSON(
 }
 
 /** @internal */
-export const CreatedByEnvironment$inboundSchema: z.ZodNativeEnum<
-  typeof CreatedByEnvironment
-> = z.nativeEnum(CreatedByEnvironment);
+export const CreatedByEnvironment$inboundSchema: z.ZodType<
+  CreatedByEnvironment,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([types.string(), z.nativeEnum(CreatedByEnvironment)]);
 
 /** @internal */
 export const CreatedBy2$inboundSchema: z.ZodType<
@@ -1370,9 +1382,11 @@ export function createdByFromJSON(
 }
 
 /** @internal */
-export const UpdatedByEnvironment$inboundSchema: z.ZodNativeEnum<
-  typeof UpdatedByEnvironment
-> = z.nativeEnum(UpdatedByEnvironment);
+export const UpdatedByEnvironment$inboundSchema: z.ZodType<
+  UpdatedByEnvironment,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([types.string(), z.nativeEnum(UpdatedByEnvironment)]);
 
 /** @internal */
 export const UpdatedBy2$inboundSchema: z.ZodType<
@@ -1530,6 +1544,27 @@ export function triggerDestinationsFromJSON(
 }
 
 /** @internal */
+export const CreateConnectorCustomEnvironments$inboundSchema: z.ZodType<
+  CreateConnectorCustomEnvironments,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  id: types.string(),
+  slug: types.string(),
+});
+
+export function createConnectorCustomEnvironmentsFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateConnectorCustomEnvironments, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateConnectorCustomEnvironments$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateConnectorCustomEnvironments' from JSON`,
+  );
+}
+
+/** @internal */
 export const CreateConnectorProject$inboundSchema: z.ZodType<
   CreateConnectorProject,
   z.ZodTypeDef,
@@ -1537,6 +1572,9 @@ export const CreateConnectorProject$inboundSchema: z.ZodType<
 > = z.object({
   id: types.string(),
   name: types.string(),
+  customEnvironments: types.optional(
+    z.array(z.lazy(() => CreateConnectorCustomEnvironments$inboundSchema)),
+  ),
 });
 
 export function createConnectorProjectFromJSON(
@@ -1550,9 +1588,11 @@ export function createConnectorProjectFromJSON(
 }
 
 /** @internal */
-export const CreateConnectorEnvironments$inboundSchema: z.ZodNativeEnum<
-  typeof CreateConnectorEnvironments
-> = z.nativeEnum(CreateConnectorEnvironments);
+export const CreateConnectorEnvironments$inboundSchema: z.ZodType<
+  CreateConnectorEnvironments,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([types.string(), z.nativeEnum(CreateConnectorEnvironments)]);
 
 /** @internal */
 export const CreateConnectorItems$inboundSchema: z.ZodType<

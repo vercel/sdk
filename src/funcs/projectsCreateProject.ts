@@ -12,13 +12,13 @@ import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
 import {
+  CreateProjectRequest,
+  CreateProjectRequest$outboundSchema,
+} from "../models/createprojectbuildmachineselection.js";
+import {
   CreateProjectResponseBody,
   CreateProjectResponseBody$inboundSchema,
 } from "../models/createprojectresponsebody.js";
-import {
-  CreateProjectRequest,
-  CreateProjectRequest$outboundSchema,
-} from "../models/createprojectstaticips.js";
 import {
   ConnectionError,
   InvalidRequestError,
@@ -166,7 +166,7 @@ async function $do(
     | SDKValidationError
   >(
     M.json(200, CreateProjectResponseBody$inboundSchema),
-    M.fail([400, 401, 402, 403, 404, 409, 428, 429, "4XX"]),
+    M.fail([400, 401, 402, 403, 404, 409, 410, 428, 429, "4XX"]),
     M.fail([500, "5XX"]),
   )(response, req);
   if (!result.ok) {

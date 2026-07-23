@@ -346,6 +346,12 @@ export type FeatureBlocks = {
   webAnalytics?: WebAnalytics | undefined;
 };
 
+export type Organization = {
+  id: string;
+  name: string;
+  slug: string;
+};
+
 export type ManagedTeams = {
   teamId: string;
   slug: string;
@@ -357,6 +363,7 @@ export type ManagedTeams = {
  * Context for the Update Account screen. Present only when `isAccountUpdateRequired` is true. `managedTeams` is empty for orphan mode (user matches an EMU domain but is not on the team).
  */
 export type AccountUpdateContext = {
+  organization?: Organization | undefined;
   managedTeams: Array<ManagedTeams>;
 };
 
@@ -454,6 +461,10 @@ export type AuthUser = {
    * Indicates whether the user is managed by an enterprise.
    */
   isEnterpriseManaged?: boolean | undefined;
+  /**
+   * Whether the Enterprise Managed User joined the current team through the Update Account flow and should see its welcome experience.
+   */
+  shouldShowEnterpriseManagedWelcome?: boolean | undefined;
 };
 
 /** @internal */
@@ -867,6 +878,27 @@ export function featureBlocksFromJSON(
 }
 
 /** @internal */
+export const Organization$inboundSchema: z.ZodType<
+  Organization,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  id: types.string(),
+  name: types.string(),
+  slug: types.string(),
+});
+
+export function organizationFromJSON(
+  jsonString: string,
+): SafeParseResult<Organization, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Organization$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Organization' from JSON`,
+  );
+}
+
+/** @internal */
 export const ManagedTeams$inboundSchema: z.ZodType<
   ManagedTeams,
   z.ZodTypeDef,
@@ -894,6 +926,7 @@ export const AccountUpdateContext$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  organization: types.optional(z.lazy(() => Organization$inboundSchema)),
   managedTeams: z.array(z.lazy(() => ManagedTeams$inboundSchema)),
 });
 
@@ -955,6 +988,7 @@ export const AuthUser$inboundSchema: z.ZodType<
   avatar: types.nullable(types.string()),
   defaultTeamId: types.nullable(types.string()),
   isEnterpriseManaged: types.optional(types.boolean()),
+  shouldShowEnterpriseManagedWelcome: types.optional(types.boolean()),
 });
 
 export function authUserFromJSON(

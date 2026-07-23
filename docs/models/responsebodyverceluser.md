@@ -5,7 +5,7 @@ Vercel user linked to the git provider account (only set if resolved)
 ## Example Usage
 
 ```typescript
-import { ResponseBodyVercelUser } from "@vercel/sdk/models/getdeploymentresponsebody.js";
+import { ResponseBodyVercelUser } from "@vercel/sdk/models/createdeploymentresponsebody.js";
 
 let value: ResponseBodyVercelUser = {
   id: "<id>",

@@ -1,24 +1,37 @@
 # ResponseBody
 
-
-## Supported Types
-
-### `models.ArtifactQueryResponseBody1`
+## Example Usage
 
 ```typescript
-const value: models.ArtifactQueryResponseBody1 = {
-  size: 9376,
-  taskDurationMs: 4731.02,
+import { ResponseBody } from "@vercel/sdk/models/getobservabilityschemabymetricidop.js";
+
+let value: ResponseBody = {
+  id: "<id>",
+  description:
+    "pfft bliss gallery failing finger gallery minor savour operating",
+  dimensions: [
+    {
+      name: "<value>",
+      label: "<value>",
+    },
+  ],
+  unit: "katal",
+  aggregations: [
+    "<value 1>",
+    "<value 2>",
+    "<value 3>",
+  ],
+  defaultAggregation: "<value>",
 };
 ```
 
-### `models.ArtifactQueryResponseBody2`
+## Fields
 
-```typescript
-const value: models.ArtifactQueryResponseBody2 = {
-  error: {
-    message: "<value>",
-  },
-};
-```
-
+| Field                                          | Type                                           | Required                                       | Description                                    |
+| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
+| `id`                                           | *string*                                       | :heavy_check_mark:                             | N/A                                            |
+| `description`                                  | *string*                                       | :heavy_check_mark:                             | N/A                                            |
+| `dimensions`                                   | [models.Dimensions](../models/dimensions.md)[] | :heavy_check_mark:                             | N/A                                            |
+| `unit`                                         | *string*                                       | :heavy_check_mark:                             | N/A                                            |
+| `aggregations`                                 | *string*[]                                     | :heavy_check_mark:                             | N/A                                            |
+| `defaultAggregation`                           | *string*                                       | :heavy_check_mark:                             | N/A                                            |

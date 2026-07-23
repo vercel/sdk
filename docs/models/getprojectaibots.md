@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectAiBots } from "@vercel/sdk/models/getprojectresponsebody.js";
+import { GetProjectAiBots } from "@vercel/sdk/models/getprojectdestination.js";
 
 let value: GetProjectAiBots = {
   active: true,
@@ -12,7 +12,7 @@ let value: GetProjectAiBots = {
 
 ## Fields
 
-| Field                                                                                          | Type                                                                                           | Required                                                                                       | Description                                                                                    |
-| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| `active`                                                                                       | *boolean*                                                                                      | :heavy_check_mark:                                                                             | N/A                                                                                            |
-| `action`                                                                                       | [models.GetProjectProjectsResponse200Action](../models/getprojectprojectsresponse200action.md) | :heavy_minus_sign:                                                                             | N/A                                                                                            |
+| Field                                                                                                                        | Type                                                                                                                         | Required                                                                                                                     | Description                                                                                                                  |
+| ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| `active`                                                                                                                     | *boolean*                                                                                                                    | :heavy_check_mark:                                                                                                           | N/A                                                                                                                          |
+| `action`                                                                                                                     | [models.GetProjectProjectsResponse200ApplicationJSONAction](../models/getprojectprojectsresponse200applicationjsonaction.md) | :heavy_minus_sign:                                                                                                           | N/A                                                                                                                          |

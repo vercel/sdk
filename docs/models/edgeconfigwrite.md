@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { EdgeConfigWrite } from "@vercel/sdk/models/usereventpayload125type.js";
+import { EdgeConfigWrite } from "@vercel/sdk/models/usereventpayload140newenvvartype.js";
 
 let value: EdgeConfigWrite = {
   currentThreshold: 8361.71,

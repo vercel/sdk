@@ -1,19 +1,20 @@
 # ResourceLimits
 
-## Example Usage
+
+## Supported Types
+
+### `models.ResourceLimits1`
 
 ```typescript
-import { ResourceLimits } from "@vercel/sdk/models/usereventpayload146role.js";
-
-let value: ResourceLimits = {
-  max: 4120.69,
-  duration: 2206.93,
+const value: models.ResourceLimits1 = {
+  max: 3751.02,
+  duration: 359.38,
 };
 ```
 
-## Fields
+### `models.ResourceLimits2`
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `max`              | *number*           | :heavy_check_mark: | N/A                |
-| `duration`         | *number*           | :heavy_check_mark: | N/A                |
+```typescript
+const value: models.ResourceLimits2 = {};
+```
+

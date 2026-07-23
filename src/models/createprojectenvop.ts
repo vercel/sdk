@@ -283,6 +283,20 @@ export type CreateProjectEnvCreatedType = ClosedEnum<
   typeof CreateProjectEnvCreatedType
 >;
 
+/**
+ * User-facing config/secret model. When set, authoritative for new code paths when the env-var-config-secret-ui flag is enabled. Legacy rows omit this field; legacy rows omit it and callers fall back to existing `type` behavior.
+ */
+export const CreateProjectEnvCreatedVisibility = {
+  Config: "config",
+  Secret: "secret",
+} as const;
+/**
+ * User-facing config/secret model. When set, authoritative for new code paths when the env-var-config-secret-ui flag is enabled. Legacy rows omit this field; legacy rows omit it and callers fall back to existing `type` behavior.
+ */
+export type CreateProjectEnvCreatedVisibility = ClosedEnum<
+  typeof CreateProjectEnvCreatedVisibility
+>;
+
 export type CreateProjectEnvContentHintProjects17 = {
   type: "flags-connection-string";
   projectId: string;
@@ -430,6 +444,10 @@ export type Created2 = {
   createdBy?: string | null | undefined;
   updatedBy?: string | null | undefined;
   gitBranch?: string | undefined;
+  /**
+   * User-facing config/secret model. When set, authoritative for new code paths when the env-var-config-secret-ui flag is enabled. Legacy rows omit this field; legacy rows omit it and callers fall back to existing `type` behavior.
+   */
+  visibility?: CreateProjectEnvCreatedVisibility | undefined;
   edgeConfigId?: string | null | undefined;
   edgeConfigTokenId?: string | null | undefined;
   contentHint?:
@@ -494,6 +512,18 @@ export const CreatedType = {
   System: "system",
 } as const;
 export type CreatedType = ClosedEnum<typeof CreatedType>;
+
+/**
+ * User-facing config/secret model. When set, authoritative for new code paths when the env-var-config-secret-ui flag is enabled. Legacy rows omit this field; legacy rows omit it and callers fall back to existing `type` behavior.
+ */
+export const CreatedVisibility = {
+  Config: "config",
+  Secret: "secret",
+} as const;
+/**
+ * User-facing config/secret model. When set, authoritative for new code paths when the env-var-config-secret-ui flag is enabled. Legacy rows omit this field; legacy rows omit it and callers fall back to existing `type` behavior.
+ */
+export type CreatedVisibility = ClosedEnum<typeof CreatedVisibility>;
 
 export type CreateProjectEnvContentHint17 = {
   type: "flags-connection-string";
@@ -642,6 +672,10 @@ export type Created1 = {
   createdBy?: string | null | undefined;
   updatedBy?: string | null | undefined;
   gitBranch?: string | undefined;
+  /**
+   * User-facing config/secret model. When set, authoritative for new code paths when the env-var-config-secret-ui flag is enabled. Legacy rows omit this field; legacy rows omit it and callers fall back to existing `type` behavior.
+   */
+  visibility?: CreatedVisibility | undefined;
   edgeConfigId?: string | null | undefined;
   edgeConfigTokenId?: string | null | undefined;
   contentHint?:
@@ -1068,6 +1102,11 @@ export function createProjectEnvCreatedTargetFromJSON(
 export const CreateProjectEnvCreatedType$inboundSchema: z.ZodNativeEnum<
   typeof CreateProjectEnvCreatedType
 > = z.nativeEnum(CreateProjectEnvCreatedType);
+
+/** @internal */
+export const CreateProjectEnvCreatedVisibility$inboundSchema: z.ZodNativeEnum<
+  typeof CreateProjectEnvCreatedVisibility
+> = z.nativeEnum(CreateProjectEnvCreatedVisibility);
 
 /** @internal */
 export const CreateProjectEnvContentHintProjects17$inboundSchema: z.ZodType<
@@ -1520,6 +1559,7 @@ export const Created2$inboundSchema: z.ZodType<
   createdBy: z.nullable(types.string()).optional(),
   updatedBy: z.nullable(types.string()).optional(),
   gitBranch: types.optional(types.string()),
+  visibility: types.optional(CreateProjectEnvCreatedVisibility$inboundSchema),
   edgeConfigId: z.nullable(types.string()).optional(),
   edgeConfigTokenId: z.nullable(types.string()).optional(),
   contentHint: z.nullable(
@@ -1594,6 +1634,11 @@ export function createdTargetFromJSON(
 /** @internal */
 export const CreatedType$inboundSchema: z.ZodNativeEnum<typeof CreatedType> = z
   .nativeEnum(CreatedType);
+
+/** @internal */
+export const CreatedVisibility$inboundSchema: z.ZodNativeEnum<
+  typeof CreatedVisibility
+> = z.nativeEnum(CreatedVisibility);
 
 /** @internal */
 export const CreateProjectEnvContentHint17$inboundSchema: z.ZodType<
@@ -2024,6 +2069,7 @@ export const Created1$inboundSchema: z.ZodType<
   createdBy: z.nullable(types.string()).optional(),
   updatedBy: z.nullable(types.string()).optional(),
   gitBranch: types.optional(types.string()),
+  visibility: types.optional(CreatedVisibility$inboundSchema),
   edgeConfigId: z.nullable(types.string()).optional(),
   edgeConfigTokenId: z.nullable(types.string()).optional(),
   contentHint: z.nullable(

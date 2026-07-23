@@ -3,67 +3,67 @@
 
 ## Supported Types
 
-### `models.GetDeploymentGitRepo1`
+### `models.CreateDeploymentGitRepo1`
 
 ```typescript
-const value: models.GetDeploymentGitRepo1 = {
+const value: models.CreateDeploymentGitRepo1 = {
   namespace: "<value>",
-  projectId: 4314.42,
+  projectId: 5470.46,
   type: "gitlab",
-  url: "https://crushing-willow.org/",
-  path: "/usr/share",
+  url: "https://pushy-expansion.name",
+  path: "/net",
   defaultBranch: "<value>",
   name: "<value>",
   private: false,
-  ownerType: "user",
+  ownerType: "team",
 };
 ```
 
-### `models.GetDeploymentGitRepo2`
+### `models.CreateDeploymentGitRepo2`
 
 ```typescript
-const value: models.GetDeploymentGitRepo2 = {
+const value: models.CreateDeploymentGitRepo2 = {
   org: "<value>",
   repo: "<value>",
-  repoId: 5109.9,
+  repoId: 3821.64,
   type: "github",
-  repoOwnerId: 8818.8,
-  path: "/etc/defaults",
+  repoOwnerId: 3124.68,
+  path: "/Network",
   defaultBranch: "<value>",
   name: "<value>",
-  private: true,
-  ownerType: "user",
+  private: false,
+  ownerType: "team",
 };
 ```
 
-### `models.GetDeploymentGitRepo3`
+### `models.CreateDeploymentGitRepo3`
 
 ```typescript
-const value: models.GetDeploymentGitRepo3 = {
+const value: models.CreateDeploymentGitRepo3 = {
   owner: "<value>",
   repoUuid: "<id>",
   slug: "<value>",
   type: "bitbucket",
   workspaceUuid: "<id>",
-  path: "/usr/include",
+  path: "/rescue",
   defaultBranch: "<value>",
   name: "<value>",
   private: true,
-  ownerType: "team",
+  ownerType: "user",
 };
 ```
 
-### `models.GetDeploymentGitRepo4`
+### `models.CreateDeploymentGitRepo4`
 
 ```typescript
-const value: models.GetDeploymentGitRepo4 = {
+const value: models.CreateDeploymentGitRepo4 = {
   org: "<value>",
   repo: "<value>",
   type: "vercel",
-  path: "/etc/namedb",
+  path: "/opt/lib",
   defaultBranch: "<value>",
   name: "<value>",
-  private: false,
+  private: true,
   ownerType: "user",
 };
 ```

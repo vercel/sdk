@@ -5,7 +5,7 @@ Framework slug, when the service has one (omitted otherwise).
 ## Example Usage
 
 ```typescript
-import { UpdateProjectProjectsResponseFramework } from "@vercel/sdk/models/updateprojectprojectsbranchmatcher.js";
+import { UpdateProjectProjectsResponseFramework } from "@vercel/sdk/models/updateprojectprojectsissuermode.js";
 
 let value: UpdateProjectProjectsResponseFramework = "vue";
 ```
@@ -13,5 +13,5 @@ let value: UpdateProjectProjectsResponseFramework = "vue";
 ## Values
 
 ```typescript
-"actix-web" | "angular" | "ash" | "astro" | "axum" | "blitzjs" | "brunch" | "bun" | "container" | "create-react-app" | "django" | "docusaurus" | "docusaurus-2" | "dojo" | "eleventy" | "elysia" | "ember" | "eve" | "express" | "fastapi" | "fasthtml" | "fastify" | "flask" | "gatsby" | "go" | "gridsome" | "h3" | "hexo" | "hono" | "hugo" | "hydrogen" | "ionic-angular" | "ionic-react" | "jekyll" | "koa" | "mastra" | "middleman" | "nestjs" | "nextjs" | "nitro" | "node" | "nuxtjs" | "parcel" | "polymer" | "preact" | "python" | "react-router" | "redwoodjs" | "remix" | "ruby" | "rust" | "saber" | "sanity" | "sanity-v2" | "sapper" | "scully" | "services" | "solidstart" | "solidstart-1" | "stencil" | "storybook" | "svelte" | "sveltekit" | "sveltekit-1" | "tanstack-start" | "umijs" | "vite" | "vitepress" | "vue" | "vuepress" | "xmcp" | "zola"
+"actix-web" | "angular" | "ash" | "astro" | "axum" | "blitzjs" | "brunch" | "bun" | "container" | "create-react-app" | "django" | "docusaurus" | "docusaurus-2" | "dojo" | "eleventy" | "elysia" | "ember" | "eve" | "express" | "fastapi" | "fasthtml" | "fastify" | "flask" | "gatsby" | "go" | "gridsome" | "h3" | "hexo" | "hono" | "hugo" | "hydrogen" | "ionic-angular" | "ionic-react" | "jekyll" | "koa" | "mastra" | "middleman" | "nestjs" | "nextjs" | "nitro" | "node" | "nuxtjs" | "parcel" | "polymer" | "preact" | "python" | "react-router" | "redwoodjs" | "remix" | "ruby" | "rust" | "saber" | "sanity" | "sanity-v2" | "sapper" | "scully" | "services" | "solidstart" | "solidstart-1" | "stencil" | "storybook" | "svelte" | "sveltekit" | "sveltekit-1" | "tanstack-start" | "tanstack-start-lovable" | "umijs" | "vite" | "vitepress" | "vue" | "vuepress" | "xmcp" | "zola"
 ```

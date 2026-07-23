@@ -5,16 +5,23 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndFiftySix } from "@vercel/sdk/models/usereventpayload146role.js";
+import { OneHundredAndFiftySix } from "@vercel/sdk/models/preventautoblocking.js";
 
 let value: OneHundredAndFiftySix = {
-  logDrainUrl: "https://mealy-other.name",
+  configurations: [
+    {
+      integrationId: "<id>",
+      configurationId: "<id>",
+      integrationSlug: "<value>",
+    },
+  ],
+  ownerId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `logDrainUrl`      | *string*           | :heavy_check_mark: | N/A                |
-| `integrationName`  | *string*           | :heavy_minus_sign: | N/A                |
+| Field                                                  | Type                                                   | Required                                               | Description                                            |
+| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
+| `configurations`                                       | [models.Configurations](../models/configurations.md)[] | :heavy_check_mark:                                     | N/A                                                    |
+| `ownerId`                                              | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |

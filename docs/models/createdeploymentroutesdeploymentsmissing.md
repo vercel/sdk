@@ -3,39 +3,43 @@
 
 ## Supported Types
 
-### `models.CreateDeploymentMissingDeploymentsResponse2001`
+### `models.CreateDeploymentMissingDeploymentsResponse200ApplicationJson1`
 
 ```typescript
-const value: models.CreateDeploymentMissingDeploymentsResponse2001 = {
-  type: "host",
-  value: {},
-};
+const value:
+  models.CreateDeploymentMissingDeploymentsResponse200ApplicationJson1 = {
+    type: "host",
+    value: {},
+  };
 ```
 
-### `models.CreateDeploymentMissingDeploymentsResponse2002`
+### `models.CreateDeploymentMissingDeploymentsResponse200ApplicationJson2`
 
 ```typescript
-const value: models.CreateDeploymentMissingDeploymentsResponse2002 = {
-  type: "header",
-  key: "<key>",
-};
+const value:
+  models.CreateDeploymentMissingDeploymentsResponse200ApplicationJson2 = {
+    type: "cookie",
+    key: "<key>",
+  };
 ```
 
-### `models.CreateDeploymentMissingDeploymentsResponse2002`
+### `models.CreateDeploymentMissingDeploymentsResponse200ApplicationJson2`
 
 ```typescript
-const value: models.CreateDeploymentMissingDeploymentsResponse2002 = {
-  type: "header",
-  key: "<key>",
-};
+const value:
+  models.CreateDeploymentMissingDeploymentsResponse200ApplicationJson2 = {
+    type: "cookie",
+    key: "<key>",
+  };
 ```
 
-### `models.CreateDeploymentMissingDeploymentsResponse2002`
+### `models.CreateDeploymentMissingDeploymentsResponse200ApplicationJson2`
 
 ```typescript
-const value: models.CreateDeploymentMissingDeploymentsResponse2002 = {
-  type: "header",
-  key: "<key>",
-};
+const value:
+  models.CreateDeploymentMissingDeploymentsResponse200ApplicationJson2 = {
+    type: "cookie",
+    key: "<key>",
+  };
 ```
 

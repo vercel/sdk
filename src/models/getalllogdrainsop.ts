@@ -788,6 +788,7 @@ export const GetAllLogDrainsResponseBodyFramework = {
   Sveltekit: "sveltekit",
   Sveltekit1: "sveltekit-1",
   TanstackStart: "tanstack-start",
+  TanstackStartLovable: "tanstack-start-lovable",
   Umijs: "umijs",
   Vite: "vite",
   Vitepress: "vitepress",

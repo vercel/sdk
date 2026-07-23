@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectProjectsOidcTokenClaims } from "@vercel/sdk/models/getprojecttargets.js";
+import { GetProjectProjectsOidcTokenClaims } from "@vercel/sdk/models/getprojectdestination.js";
 
 let value: GetProjectProjectsOidcTokenClaims = {
   iss: "<value>",
@@ -32,4 +32,5 @@ let value: GetProjectProjectsOidcTokenClaims = {
 | `projectId`           | *string*              | :heavy_check_mark:    | N/A                   |
 | `environment`         | *string*              | :heavy_check_mark:    | N/A                   |
 | `customEnvironmentId` | *string*              | :heavy_minus_sign:    | N/A                   |
+| `mfeGroupIds`         | *string*[]            | :heavy_minus_sign:    | N/A                   |
 | `plan`                | *string*              | :heavy_minus_sign:    | N/A                   |

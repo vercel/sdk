@@ -23,6 +23,7 @@ export type ReadAccessGroupRequest = {
 
 export const ReadAccessGroupTeamPermissions = {
   AiGatewayApiKeyOwnedBySelf: "AiGatewayApiKeyOwnedBySelf",
+  AiGatewayBudgetManager: "AiGatewayBudgetManager",
   AiGatewayCredits: "AiGatewayCredits",
   AiGatewaySettings: "AiGatewaySettings",
   CreateProject: "CreateProject",

@@ -5,24 +5,20 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndFortyEight } from "@vercel/sdk/models/usereventpayload146role.js";
+import { OneHundredAndFortyEight } from "@vercel/sdk/models/usereventpayload140newenvvartype.js";
 
 let value: OneHundredAndFortyEight = {
-  integration: {
-    id: "<id>",
-    slug: "<value>",
-    name: "<value>",
-    configurationId: "<id>",
-  },
-  destinationTeamId: "<id>",
-  destinationTeamName: "<value>",
+  projectId: "<id>",
+  rulesetName: "<value>",
+  active: true,
 };
 ```
 
 ## Fields
 
-| Field                                          | Type                                           | Required                                       | Description                                    |
-| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| `integration`                                  | [models.Integration](../models/integration.md) | :heavy_check_mark:                             | N/A                                            |
-| `destinationTeamId`                            | *string*                                       | :heavy_check_mark:                             | N/A                                            |
-| `destinationTeamName`                          | *string*                                       | :heavy_check_mark:                             | N/A                                            |
+| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `projectId`                                                                | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
+| `rulesetName`                                                              | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
+| `active`                                                                   | *boolean*                                                                  | :heavy_check_mark:                                                         | N/A                                                                        |
+| `action`                                                                   | [models.UserEventPayload148Action](../models/usereventpayload148action.md) | :heavy_minus_sign:                                                         | N/A                                                                        |

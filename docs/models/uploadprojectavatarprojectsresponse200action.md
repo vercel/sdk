@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UploadProjectAvatarProjectsResponse200Action } from "@vercel/sdk/models/uploadprojectavatarresponsebody.js";
+import { UploadProjectAvatarProjectsResponse200Action } from "@vercel/sdk/models/uploadprojectavatartracing.js";
 
 let value: UploadProjectAvatarProjectsResponse200Action = "log";
 ```
@@ -11,5 +11,5 @@ let value: UploadProjectAvatarProjectsResponse200Action = "log";
 ## Values
 
 ```typescript
-"challenge" | "deny" | "log"
+"allow" | "bypass" | "challenge" | "deny" | "log" | "rate_limit" | "redirect"
 ```

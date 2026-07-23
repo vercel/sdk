@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CreateProjectContentHint10 } from "@vercel/sdk/models/createprojectstaticips.js";
+import { CreateProjectContentHint10 } from "@vercel/sdk/models/createprojectbuildmachineselection.js";
 
 let value: CreateProjectContentHint10 = {
   type: "postgres-prisma-url",

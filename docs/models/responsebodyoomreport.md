@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyOomReport } from "@vercel/sdk/models/responsebodyproject.js";
+import { ResponseBodyOomReport } from "@vercel/sdk/models/getdeploymentresponsebodymanualprovisioning.js";
 
 let value: ResponseBodyOomReport = "out-of-memory";
 ```

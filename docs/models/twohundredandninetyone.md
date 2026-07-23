@@ -5,28 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndNinetyOne } from "@vercel/sdk/models/twohundredandfiftyeight.js";
+import { TwoHundredAndNinetyOne } from "@vercel/sdk/models/twohundredandeighty.js";
 
 let value: TwoHundredAndNinetyOne = {
-  budget: {
-    type: "fixed",
-    fixedBudget: 8974.99,
-    previousSpend: [
-      1193.57,
-    ],
-    notifiedAt: [
-      4740.08,
-    ],
-    createdAt: 7590.21,
-    isActive: true,
-    teamId: "<id>",
-    id: "<id>",
-  },
+  alias: "<value>",
+  sandboxName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `budget`                                                                   | [models.UserEventPayload291Budget](../models/usereventpayload291budget.md) | :heavy_check_mark:                                                         | Represents a budget for tracking and notifying teams on their spending.    |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `alias`            | *string*           | :heavy_check_mark: | N/A                |
+| `sandboxName`      | *string*           | :heavy_check_mark: | N/A                |
+| `sandboxId`        | *string*           | :heavy_minus_sign: | N/A                |
+| `projectId`        | *string*           | :heavy_minus_sign: | N/A                |

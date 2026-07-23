@@ -172,7 +172,7 @@ async function $do(
     | SDKValidationError
   >(
     M.json(200, GenerateRouteResponseBody$inboundSchema),
-    M.fail([400, 401, 403, 408, "4XX"]),
+    M.fail([400, 401, 403, 408, 410, "4XX"]),
     M.fail([500, "5XX"]),
   )(response, req);
   if (!result.ok) {

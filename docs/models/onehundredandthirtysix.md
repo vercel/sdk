@@ -5,20 +5,15 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndThirtySix } from "@vercel/sdk/models/usereventpayload125type.js";
+import { OneHundredAndThirtySix } from "@vercel/sdk/models/usereventpayload90project.js";
 
-let value: OneHundredAndThirtySix = {
-  projectId: "<id>",
-  scope: "<value>",
-  source: "<value>",
-};
+let value: OneHundredAndThirtySix = {};
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
-| `scope`            | *string*           | :heavy_check_mark: | N/A                |
-| `source`           | *string*           | :heavy_check_mark: | N/A                |
-| `expiresAt`        | *number*           | :heavy_minus_sign: | N/A                |
+| Field                                          | Type                                           | Required                                       | Description                                    |
+| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
+| `deletedUser`                                  | [models.DeletedUser](../models/deleteduser.md) | :heavy_minus_sign:                             | N/A                                            |
+| `deletedUid`                                   | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
+| `emailDomain`                                  | *string*                                       | :heavy_minus_sign:                             | N/A                                            |

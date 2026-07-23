@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CancelDeploymentMissingDeploymentsResponse1 } from "@vercel/sdk/models/canceldeploymentgitrepodeploymentsresponseownertype.js";
+import { CancelDeploymentMissingDeploymentsResponse1 } from "@vercel/sdk/models/canceldeploymentgitrepoownertype.js";
 
 let value: CancelDeploymentMissingDeploymentsResponse1 = {
   type: "host",
@@ -13,7 +13,7 @@ let value: CancelDeploymentMissingDeploymentsResponse1 = {
 
 ## Fields
 
-| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `type`                                                                     | *"host"*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
-| `value`                                                                    | *models.CancelDeploymentMissingDeploymentsResponse200ApplicationJSONValue* | :heavy_check_mark:                                                         | N/A                                                                        |
+| Field                                                                                  | Type                                                                                   | Required                                                                               | Description                                                                            |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `type`                                                                                 | *"host"*                                                                               | :heavy_check_mark:                                                                     | N/A                                                                                    |
+| `value`                                                                                | *models.CancelDeploymentMissingDeploymentsResponse200ApplicationJSONResponseBodyValue* | :heavy_check_mark:                                                                     | N/A                                                                                    |

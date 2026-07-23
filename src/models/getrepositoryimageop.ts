@@ -14,7 +14,10 @@ import {
 export type GetRepositoryImageRequest = {
   projectId: string;
   idOrName: string;
-  imageId: string;
+  /**
+   * The internal image id (`image_...`) or the image manifest digest (`sha256:...`).
+   */
+  imageIdOrDigest: string;
   /**
    * The Team identifier to perform the request on behalf of.
    */
@@ -36,7 +39,7 @@ export type GetRepositoryImageResponseBody = {
 export type GetRepositoryImageRequest$Outbound = {
   projectId: string;
   idOrName: string;
-  imageId: string;
+  imageIdOrDigest: string;
   teamId?: string | undefined;
   slug?: string | undefined;
 };
@@ -49,7 +52,7 @@ export const GetRepositoryImageRequest$outboundSchema: z.ZodType<
 > = z.object({
   projectId: z.string(),
   idOrName: z.string(),
-  imageId: z.string(),
+  imageIdOrDigest: z.string(),
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });

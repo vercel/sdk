@@ -8,6 +8,7 @@ import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
+import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type SubjectTypeUser = {
@@ -23,15 +24,6 @@ export type SubjectTypeApp = {
 };
 
 export type ImportConnectorTokensSubject = SubjectTypeApp | SubjectTypeUser;
-
-export const ImportConnectorTokensEnvironment = {
-  Development: "development",
-  Preview: "preview",
-  Production: "production",
-} as const;
-export type ImportConnectorTokensEnvironment = ClosedEnum<
-  typeof ImportConnectorTokensEnvironment
->;
 
 export type ImportConnectorTokensAuthorizationDetails = {
   type?: string | undefined;
@@ -54,7 +46,10 @@ export type Tokens = {
   refreshToken?: string | undefined;
   refreshTokenExpiresAt?: number | undefined;
   subject: SubjectTypeApp | SubjectTypeUser;
-  environment: ImportConnectorTokensEnvironment;
+  /**
+   * A built-in environment name or the stable env_* ID of a custom environment.
+   */
+  environment: string;
   installationId?: string | undefined;
   audience?: Array<string> | undefined;
   scopes?: Array<string> | undefined;
@@ -104,17 +99,18 @@ export type Subject1 = {
 
 export type ImportConnectorTokensConnectSubject = Subject1 | Subject2;
 
-export const ImportConnectorTokensConnectEnvironment = {
+export const Environment2 = {
   Development: "development",
   Preview: "preview",
   Production: "production",
 } as const;
-export type ImportConnectorTokensConnectEnvironment = ClosedEnum<
-  typeof ImportConnectorTokensConnectEnvironment
->;
+export type Environment2 = ClosedEnum<typeof Environment2>;
+
+export type ImportConnectorTokensEnvironment = string | Environment2;
 
 export type ImportConnectorTokensTokens = {
   name?: string | undefined;
+  data?: { [k: string]: any } | undefined;
   installationId?: string | undefined;
   audience?: Array<string> | undefined;
   scopes?: Array<string> | undefined;
@@ -125,11 +121,14 @@ export type ImportConnectorTokensTokens = {
   expiresAt: number;
   refreshTokenExpiresAt?: number | undefined;
   externalSubject?: string | undefined;
+  /**
+   * Claims extracted from the provider's tokens per the connector's `ForwardedClaims` allow-list. Currently sourced from the OIDC id_token only.
+   */
+  claims?: { [k: string]: any } | undefined;
   installation?: ImportConnectorTokensInstallation | undefined;
   tenant?: ImportConnectorTokensTenant | undefined;
-  data?: { [k: string]: any } | undefined;
   subject: Subject1 | Subject2;
-  environment: ImportConnectorTokensConnectEnvironment;
+  environment: string | Environment2;
   succeeded: boolean;
 };
 
@@ -223,11 +222,6 @@ export function importConnectorTokensSubjectToJSON(
     ),
   );
 }
-
-/** @internal */
-export const ImportConnectorTokensEnvironment$outboundSchema: z.ZodNativeEnum<
-  typeof ImportConnectorTokensEnvironment
-> = z.nativeEnum(ImportConnectorTokensEnvironment);
 
 /** @internal */
 export type ImportConnectorTokensAuthorizationDetails$Outbound = {
@@ -340,7 +334,7 @@ export const Tokens$outboundSchema: z.ZodType<
     z.lazy(() => SubjectTypeApp$outboundSchema),
     z.lazy(() => SubjectTypeUser$outboundSchema),
   ]),
-  environment: ImportConnectorTokensEnvironment$outboundSchema,
+  environment: z.string(),
   installationId: z.string().optional(),
   audience: z.array(z.string()).optional(),
   scopes: z.array(z.string()).optional(),
@@ -542,9 +536,25 @@ export function importConnectorTokensConnectSubjectFromJSON(
 }
 
 /** @internal */
-export const ImportConnectorTokensConnectEnvironment$inboundSchema:
-  z.ZodNativeEnum<typeof ImportConnectorTokensConnectEnvironment> = z
-    .nativeEnum(ImportConnectorTokensConnectEnvironment);
+export const Environment2$inboundSchema: z.ZodNativeEnum<typeof Environment2> =
+  z.nativeEnum(Environment2);
+
+/** @internal */
+export const ImportConnectorTokensEnvironment$inboundSchema: z.ZodType<
+  ImportConnectorTokensEnvironment,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([types.string(), Environment2$inboundSchema]);
+
+export function importConnectorTokensEnvironmentFromJSON(
+  jsonString: string,
+): SafeParseResult<ImportConnectorTokensEnvironment, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ImportConnectorTokensEnvironment$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ImportConnectorTokensEnvironment' from JSON`,
+  );
+}
 
 /** @internal */
 export const ImportConnectorTokensTokens$inboundSchema: z.ZodType<
@@ -553,6 +563,7 @@ export const ImportConnectorTokensTokens$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   name: types.optional(types.string()),
+  data: types.optional(z.record(z.any())),
   installationId: types.optional(types.string()),
   audience: types.optional(z.array(types.string())),
   scopes: types.optional(z.array(types.string())),
@@ -565,18 +576,18 @@ export const ImportConnectorTokensTokens$inboundSchema: z.ZodType<
   expiresAt: types.number(),
   refreshTokenExpiresAt: types.optional(types.number()),
   externalSubject: types.optional(types.string()),
+  claims: types.optional(z.record(z.any())),
   installation: types.optional(
     z.lazy(() => ImportConnectorTokensInstallation$inboundSchema),
   ),
   tenant: types.optional(
     z.lazy(() => ImportConnectorTokensTenant$inboundSchema),
   ),
-  data: types.optional(z.record(z.any())),
   subject: z.union([
     z.lazy(() => Subject1$inboundSchema),
     z.lazy(() => Subject2$inboundSchema),
   ]),
-  environment: ImportConnectorTokensConnectEnvironment$inboundSchema,
+  environment: smartUnion([types.string(), Environment2$inboundSchema]),
   succeeded: types.boolean(),
 });
 

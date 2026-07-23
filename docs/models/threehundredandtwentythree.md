@@ -5,22 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndTwentyThree } from "@vercel/sdk/models/threehundredandeighteen.js";
+import { ThreeHundredAndTwentyThree } from "@vercel/sdk/models/twohundredandeighty.js";
 
 let value: ThreeHundredAndTwentyThree = {
-  previousRole: "<value>",
+  previous: {},
+  next: {},
 };
 ```
 
 ## Fields
 
-| Field                                                        | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `directoryType`                                              | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          |
-| `ssoType`                                                    | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          |
-| `updatedUser`                                                | [models.PayloadUpdatedUser](../models/payloadupdateduser.md) | :heavy_minus_sign:                                           | N/A                                                          |
-| `role`                                                       | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          |
-| `previousRole`                                               | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
-| `updatedUid`                                                 | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          |
-| `origin`                                                     | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          |
-| `teamSlug`                                                   | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `previous`                                                                     | [models.UserEventPayload323Previous](../models/usereventpayload323previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| `next`                                                                         | [models.UserEventPayload323Next](../models/usereventpayload323next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |

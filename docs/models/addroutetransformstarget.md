@@ -12,6 +12,6 @@ let value: AddRouteTransformsTarget = {
 
 ## Fields
 
-| Field                          | Type                           | Required                       | Description                    |
-| ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
-| `key`                          | *models.AddRouteTransformsKey* | :heavy_check_mark:             | N/A                            |
+| Field                  | Type                   | Required               | Description            |
+| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
+| `key`                  | *models.TransformsKey* | :heavy_check_mark:     | N/A                    |

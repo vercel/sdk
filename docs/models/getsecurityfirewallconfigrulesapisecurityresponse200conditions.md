@@ -1,0 +1,22 @@
+# GetSecurityFirewallConfigRulesApiSecurityResponse200Conditions
+
+## Example Usage
+
+```typescript
+import { GetSecurityFirewallConfigRulesApiSecurityResponse200Conditions } from "@vercel/sdk/models/getsecurityfirewallconfigresponsebody.js";
+
+let value: GetSecurityFirewallConfigRulesApiSecurityResponse200Conditions = {
+  type: "geo_country_region",
+  op: "lte",
+};
+```
+
+## Fields
+
+| Field                                                                                                                                    | Type                                                                                                                                     | Required                                                                                                                                 | Description                                                                                                                              |
+| ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| `type`                                                                                                                                   | [models.GetSecurityFirewallConfigRulesApiSecurityResponse200Type](../models/getsecurityfirewallconfigrulesapisecurityresponse200type.md) | :heavy_check_mark:                                                                                                                       | N/A                                                                                                                                      |
+| `op`                                                                                                                                     | [models.GetSecurityFirewallConfigRulesApiSecurityResponse200Op](../models/getsecurityfirewallconfigrulesapisecurityresponse200op.md)     | :heavy_check_mark:                                                                                                                       | N/A                                                                                                                                      |
+| `neg`                                                                                                                                    | *boolean*                                                                                                                                | :heavy_minus_sign:                                                                                                                       | N/A                                                                                                                                      |
+| `key`                                                                                                                                    | *string*                                                                                                                                 | :heavy_minus_sign:                                                                                                                       | N/A                                                                                                                                      |
+| `value`                                                                                                                                  | *models.GetSecurityFirewallConfigRulesApiSecurityResponse200Value*                                                                       | :heavy_minus_sign:                                                                                                                       | N/A                                                                                                                                      |

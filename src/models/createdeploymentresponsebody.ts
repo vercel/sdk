@@ -10,12 +10,8 @@ import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import {
-  Bindings,
-  Bindings$inboundSchema,
-  CreateDeploymentRoutes,
-  CreateDeploymentRoutes$inboundSchema,
-  CreateDeploymentRoutes2,
-  CreateDeploymentRoutes2$inboundSchema,
+  CreateDeploymentRoutesDeployments2,
+  CreateDeploymentRoutesDeployments2$inboundSchema,
   CreateDeploymentRoutesDeploymentsHas,
   CreateDeploymentRoutesDeploymentsHas$inboundSchema,
   CreateDeploymentRoutesDeploymentsMissing,
@@ -26,100 +22,104 @@ import {
   CreateDeploymentRoutesDeploymentsTransforms$inboundSchema,
   CreateDeploymentRoutesLocale,
   CreateDeploymentRoutesLocale$inboundSchema,
+  CreateDeploymentServicesDeploymentsBuilder,
+  CreateDeploymentServicesDeploymentsBuilder$inboundSchema,
+  CreateDeploymentServicesFunctions,
+  CreateDeploymentServicesFunctions$inboundSchema,
   CreateDeploymentServicesHeaders,
   CreateDeploymentServicesHeaders$inboundSchema,
-  Rewrites,
-  Rewrites$inboundSchema,
-  ServicesBuilder,
-  ServicesBuilder$inboundSchema,
-  ServicesFunctions,
-  ServicesFunctions$inboundSchema,
-  ServicesRedirects,
-  ServicesRedirects$inboundSchema,
+  CreateDeploymentServicesRedirects,
+  CreateDeploymentServicesRedirects$inboundSchema,
+  ResponseBodyRoutes,
+  ResponseBodyRoutes$inboundSchema,
+  ServicesBindings,
+  ServicesBindings$inboundSchema,
+  ServicesRewrites,
+  ServicesRewrites$inboundSchema,
 } from "./createdeploymentrouteslocale.js";
 import {
-  AliasAssignedAt,
-  AliasAssignedAt$inboundSchema,
-  AliasError,
-  AliasError$inboundSchema,
-  AliasWarning,
-  AliasWarning$inboundSchema,
-  Build,
-  Build$inboundSchema,
-  Builds,
-  Builds$inboundSchema,
-  ChecksConclusion,
-  ChecksConclusion$inboundSchema,
-  ChecksState,
-  ChecksState$inboundSchema,
-  CreateDeploymentCreator,
-  CreateDeploymentCreator$inboundSchema,
-  CreateDeploymentGitSource,
-  CreateDeploymentGitSource$inboundSchema,
-  CreateDeploymentNodeVersion,
-  CreateDeploymentNodeVersion$inboundSchema,
-  CreateDeploymentPlan,
-  CreateDeploymentPlan$inboundSchema,
-  CreateDeploymentProject,
-  CreateDeploymentProject$inboundSchema,
-  CreateDeploymentProjectSettings,
-  CreateDeploymentProjectSettings$inboundSchema,
-  CreateDeploymentSource,
-  CreateDeploymentSource$inboundSchema,
-  CreateDeploymentStatus,
-  CreateDeploymentStatus$inboundSchema,
-  CreateDeploymentTarget,
-  CreateDeploymentTarget$inboundSchema,
-  CreateDeploymentTeam,
-  CreateDeploymentTeam$inboundSchema,
-  CreateDeploymentType,
-  CreateDeploymentType$inboundSchema,
-  Crons,
-  Crons$inboundSchema,
-  CustomEnvironment,
-  CustomEnvironment$inboundSchema,
-  Functions,
-  Functions$inboundSchema,
-  Images,
-  Images$inboundSchema,
-  Integrations,
-  Integrations$inboundSchema,
-  Lambdas,
-  Lambdas$inboundSchema,
-  ManualProvisioning,
-  ManualProvisioning$inboundSchema,
-  OidcTokenClaims,
-  OidcTokenClaims$inboundSchema,
-  OomReport,
-  OomReport$inboundSchema,
-  Platform,
-  Platform$inboundSchema,
-  ReadyState,
-  ReadyState$inboundSchema,
-  ReadySubstate,
-  ReadySubstate$inboundSchema,
-} from "./createdeploymentvaluedeployments2.js";
+  CreateDeploymentResponseBodyCreator,
+  CreateDeploymentResponseBodyCreator$inboundSchema,
+  CreateDeploymentResponseBodyCustomEnvironment,
+  CreateDeploymentResponseBodyCustomEnvironment$inboundSchema,
+  CreateDeploymentResponseBodyDeploymentsAliasError,
+  CreateDeploymentResponseBodyDeploymentsAliasError$inboundSchema,
+  CreateDeploymentResponseBodyDeploymentsAliasWarning,
+  CreateDeploymentResponseBodyDeploymentsAliasWarning$inboundSchema,
+  CreateDeploymentResponseBodyDeploymentsChecksConclusion,
+  CreateDeploymentResponseBodyDeploymentsChecksConclusion$inboundSchema,
+  CreateDeploymentResponseBodyDeploymentsChecksState,
+  CreateDeploymentResponseBodyDeploymentsChecksState$inboundSchema,
+  CreateDeploymentResponseBodyDeploymentsReadyState,
+  CreateDeploymentResponseBodyDeploymentsReadyState$inboundSchema,
+  CreateDeploymentResponseBodyDeploymentsReadySubstate,
+  CreateDeploymentResponseBodyDeploymentsReadySubstate$inboundSchema,
+  CreateDeploymentResponseBodyDeploymentsTarget,
+  CreateDeploymentResponseBodyDeploymentsTarget$inboundSchema,
+  CreateDeploymentResponseBodyGitSource,
+  CreateDeploymentResponseBodyGitSource$inboundSchema,
+  CreateDeploymentResponseBodyLambdas,
+  CreateDeploymentResponseBodyLambdas$inboundSchema,
+  CreateDeploymentResponseBodyManualProvisioning,
+  CreateDeploymentResponseBodyManualProvisioning$inboundSchema,
+  CreateDeploymentResponseBodyNodeVersion,
+  CreateDeploymentResponseBodyNodeVersion$inboundSchema,
+  CreateDeploymentResponseBodyOidcTokenClaims,
+  CreateDeploymentResponseBodyOidcTokenClaims$inboundSchema,
+  CreateDeploymentResponseBodyOomReport,
+  CreateDeploymentResponseBodyOomReport$inboundSchema,
+  CreateDeploymentResponseBodyProject,
+  CreateDeploymentResponseBodyProject$inboundSchema,
+  CreateDeploymentResponseBodyProjectSettings,
+  CreateDeploymentResponseBodyProjectSettings$inboundSchema,
+  CreateDeploymentResponseBodySource,
+  CreateDeploymentResponseBodySource$inboundSchema,
+  CreateDeploymentResponseBodyStatus,
+  CreateDeploymentResponseBodyStatus$inboundSchema,
+  CreateDeploymentResponseBodyTeam,
+  CreateDeploymentResponseBodyTeam$inboundSchema,
+  CreateDeploymentResponseBodyType,
+  CreateDeploymentResponseBodyType$inboundSchema,
+  ResponseBodyAliasAssignedAt,
+  ResponseBodyAliasAssignedAt$inboundSchema,
+  ResponseBodyBuild,
+  ResponseBodyBuild$inboundSchema,
+  ResponseBodyBuilds,
+  ResponseBodyBuilds$inboundSchema,
+  ResponseBodyCrons,
+  ResponseBodyCrons$inboundSchema,
+  ResponseBodyFunctions,
+  ResponseBodyFunctions$inboundSchema,
+  ResponseBodyImages,
+  ResponseBodyImages$inboundSchema,
+  ResponseBodyIntegrations,
+  ResponseBodyIntegrations$inboundSchema,
+  ResponseBodyPlan,
+  ResponseBodyPlan$inboundSchema,
+  ResponseBodyPlatform,
+  ResponseBodyPlatform$inboundSchema,
+} from "./createdeploymentvaluedeploymentsresponse2.js";
 import { FlagJSONValue, FlagJSONValue$inboundSchema } from "./flagjsonvalue.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
  * Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required.
  */
-export const CreateDeploymentDestinationDeploymentsType = {
+export const CreateDeploymentDestinationDeploymentsResponseType = {
   Service: "service",
 } as const;
 /**
  * Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required.
  */
-export type CreateDeploymentDestinationDeploymentsType = ClosedEnum<
-  typeof CreateDeploymentDestinationDeploymentsType
+export type CreateDeploymentDestinationDeploymentsResponseType = ClosedEnum<
+  typeof CreateDeploymentDestinationDeploymentsResponseType
 >;
 
-export type CreateDeploymentDestinationDeployments2 = {
+export type CreateDeploymentDestinationDeploymentsResponse2 = {
   /**
    * Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required.
    */
-  type?: CreateDeploymentDestinationDeploymentsType | undefined;
+  type?: CreateDeploymentDestinationDeploymentsResponseType | undefined;
   service: string;
   /**
    * Routing-only path used to select a route inside the target service.
@@ -128,10 +128,10 @@ export type CreateDeploymentDestinationDeployments2 = {
 };
 
 export type CreateDeploymentRoutesDeploymentsDestination =
-  | CreateDeploymentDestinationDeployments2
+  | CreateDeploymentDestinationDeploymentsResponse2
   | string;
 
-export type CreateDeploymentRoutes1 = {
+export type CreateDeploymentRoutesDeployments1 = {
   src: string;
   dest?: string | undefined;
   headers?: { [k: string]: string } | undefined;
@@ -152,7 +152,10 @@ export type CreateDeploymentRoutes1 = {
    * Aliases for `src`, `dest`, and `status`. These provide consistency with the `rewrites`, `redirects`, and `headers` fields which use `source`, `destination`, and `statusCode`. During normalization, the string forms are converted to their canonical forms (`src`, `dest`, `status`) and stripped from the route object. `destination` may also be a service-targeted object, in which case routing is delegated into the named service's internal route table and the object is preserved as-is (not folded into `dest`).
    */
   source?: string | undefined;
-  destination?: CreateDeploymentDestinationDeployments2 | string | undefined;
+  destination?:
+    | CreateDeploymentDestinationDeploymentsResponse2
+    | string
+    | undefined;
   statusCode?: number | undefined;
   /**
    * A middleware key within the `output` key under the build result. Overrides a `middleware` definition.
@@ -169,12 +172,14 @@ export type CreateDeploymentRoutes1 = {
   respectOriginCacheControl?: boolean | undefined;
 };
 
-export type ServicesRoutes = CreateDeploymentRoutes1 | CreateDeploymentRoutes2;
+export type CreateDeploymentServicesRoutes =
+  | CreateDeploymentRoutesDeployments1
+  | CreateDeploymentRoutesDeployments2;
 
 /**
  * Services detected during build from vercel.json experimentalServices or auto-detected from project structure. Used to inject service URLs as environment variables at runtime.
  */
-export type Services2 = {
+export type CreateDeploymentServices2 = {
   schema: "experimentalServicesV2";
   name: string;
   /**
@@ -194,7 +199,7 @@ export type Services2 = {
   /**
    * Builder selected by the resolver.
    */
-  builder: ServicesBuilder;
+  builder: CreateDeploymentServicesDeploymentsBuilder;
   installCommand?: string | undefined;
   buildCommand?: string | undefined;
   devCommand?: string | undefined;
@@ -203,61 +208,66 @@ export type Services2 = {
   /**
    * Caller-side bindings to other services.
    */
-  bindings?: Array<Bindings> | undefined;
+  bindings?: Array<ServicesBindings> | undefined;
   /**
    * Function configuration scoped to this service.
    */
-  functions?: { [k: string]: ServicesFunctions } | undefined;
+  functions?: { [k: string]: CreateDeploymentServicesFunctions } | undefined;
   headers?: Array<CreateDeploymentServicesHeaders> | undefined;
-  redirects?: Array<ServicesRedirects> | undefined;
-  rewrites?: Array<Rewrites> | undefined;
-  routes?: Array<CreateDeploymentRoutes1 | CreateDeploymentRoutes2> | undefined;
+  redirects?: Array<CreateDeploymentServicesRedirects> | undefined;
+  rewrites?: Array<ServicesRewrites> | undefined;
+  routes?:
+    | Array<
+      CreateDeploymentRoutesDeployments1 | CreateDeploymentRoutesDeployments2
+    >
+    | undefined;
   cleanUrls?: boolean | undefined;
   trailingSlash?: boolean | undefined;
 };
 
-export const ServicesType = {
+export const CreateDeploymentServicesType = {
   Cron: "cron",
   Job: "job",
   Web: "web",
   Worker: "worker",
 } as const;
-export type ServicesType = ClosedEnum<typeof ServicesType>;
+export type CreateDeploymentServicesType = ClosedEnum<
+  typeof CreateDeploymentServicesType
+>;
 
-export const Trigger = {
+export const ServicesTrigger = {
   Queue: "queue",
   Schedule: "schedule",
   Workflow: "workflow",
 } as const;
-export type Trigger = ClosedEnum<typeof Trigger>;
+export type ServicesTrigger = ClosedEnum<typeof ServicesTrigger>;
 
-export type IncludeFiles = string | Array<string>;
+export type CreateDeploymentServicesIncludeFiles = string | Array<string>;
 
-export type ExcludeFiles = string | Array<string>;
+export type CreateDeploymentServicesExcludeFiles = string | Array<string>;
 
-export const CreateDeploymentServicesArchitecture = {
+export const CreateDeploymentServicesDeploymentsResponseArchitecture = {
   Arm64: "arm64",
   X8664: "x86_64",
 } as const;
-export type CreateDeploymentServicesArchitecture = ClosedEnum<
-  typeof CreateDeploymentServicesArchitecture
->;
+export type CreateDeploymentServicesDeploymentsResponseArchitecture =
+  ClosedEnum<typeof CreateDeploymentServicesDeploymentsResponseArchitecture>;
 
-export const CreateDeploymentMaxDurationDeploymentsResponse2 = {
+export const CreateDeploymentMaxDurationDeploymentsResponse2002 = {
   Max: "max",
 } as const;
-export type CreateDeploymentMaxDurationDeploymentsResponse2 = ClosedEnum<
-  typeof CreateDeploymentMaxDurationDeploymentsResponse2
+export type CreateDeploymentMaxDurationDeploymentsResponse2002 = ClosedEnum<
+  typeof CreateDeploymentMaxDurationDeploymentsResponse2002
 >;
 
-export type CreateDeploymentServicesMaxDuration =
+export type CreateDeploymentServicesDeploymentsResponseMaxDuration =
   | number
-  | CreateDeploymentMaxDurationDeploymentsResponse2;
+  | CreateDeploymentMaxDurationDeploymentsResponse2002;
 
 /**
  * Queue trigger input event for v2beta (from vercel.json config). Consumer name is implicitly derived from the function path. Only one trigger per function is allowed.
  */
-export type CreateDeploymentExperimentalTriggersDeploymentsResponse2 = {
+export type CreateDeploymentExperimentalTriggersDeploymentsResponse2002 = {
   /**
    * Event type - must be "queue/v2beta" (REQUIRED)
    */
@@ -287,7 +297,7 @@ export type CreateDeploymentExperimentalTriggersDeploymentsResponse2 = {
 /**
  * Queue trigger input event for v1beta (from vercel.json config). Requires explicit consumer name.
  */
-export type CreateDeploymentExperimentalTriggersDeploymentsResponse1 = {
+export type CreateDeploymentExperimentalTriggersDeploymentsResponse2001 = {
   /**
    * Event type - must be "queue/v1beta" (REQUIRED)
    */
@@ -318,16 +328,18 @@ export type CreateDeploymentExperimentalTriggersDeploymentsResponse1 = {
   maxConcurrency?: number | undefined;
 };
 
-export type CreateDeploymentServicesExperimentalTriggers =
-  | CreateDeploymentExperimentalTriggersDeploymentsResponse1
-  | CreateDeploymentExperimentalTriggersDeploymentsResponse2;
+export type CreateDeploymentServicesDeploymentsResponseExperimentalTriggers =
+  | CreateDeploymentExperimentalTriggersDeploymentsResponse2001
+  | CreateDeploymentExperimentalTriggersDeploymentsResponse2002;
 
-export type CreateDeploymentServicesFunctions = {
-  architecture?: CreateDeploymentServicesArchitecture | undefined;
+export type CreateDeploymentServicesDeploymentsResponseFunctions = {
+  architecture?:
+    | CreateDeploymentServicesDeploymentsResponseArchitecture
+    | undefined;
   memory?: number | undefined;
   maxDuration?:
     | number
-    | CreateDeploymentMaxDurationDeploymentsResponse2
+    | CreateDeploymentMaxDurationDeploymentsResponse2002
     | undefined;
   regions?: Array<string> | undefined;
   functionFailoverRegions?: Array<string> | undefined;
@@ -336,14 +348,14 @@ export type CreateDeploymentServicesFunctions = {
   excludeFiles?: string | undefined;
   experimentalTriggers?:
     | Array<
-      | CreateDeploymentExperimentalTriggersDeploymentsResponse1
-      | CreateDeploymentExperimentalTriggersDeploymentsResponse2
+      | CreateDeploymentExperimentalTriggersDeploymentsResponse2001
+      | CreateDeploymentExperimentalTriggersDeploymentsResponse2002
     >
     | undefined;
   supportsCancellation?: boolean | undefined;
 };
 
-export type ServicesProjectSettings = {
+export type CreateDeploymentServicesProjectSettings = {
   framework?: string | null | undefined;
   devCommand?: string | null | undefined;
   installCommand?: string | null | undefined;
@@ -360,7 +372,7 @@ export type ServicesProjectSettings = {
   commandForIgnoringBuildStep?: string | null | undefined;
 };
 
-export type ServicesConfig = {
+export type CreateDeploymentServicesConfig = {
   bunVersion?: string | undefined;
   maxLambdaSize?: string | undefined;
   includeFiles?: string | Array<string> | undefined;
@@ -372,8 +384,10 @@ export type ServicesConfig = {
   debug?: boolean | undefined;
   zeroConfig?: boolean | undefined;
   import?: { [k: string]: string } | undefined;
-  functions?: { [k: string]: CreateDeploymentServicesFunctions } | undefined;
-  projectSettings?: ServicesProjectSettings | undefined;
+  functions?: {
+    [k: string]: CreateDeploymentServicesDeploymentsResponseFunctions;
+  } | undefined;
+  projectSettings?: CreateDeploymentServicesProjectSettings | undefined;
   outputDirectory?: string | undefined;
   installCommand?: string | undefined;
   buildCommand?: string | undefined;
@@ -387,67 +401,111 @@ export type ServicesConfig = {
   serviceName?: string | undefined;
 };
 
-export type Builder = {
+export type CreateDeploymentServicesBuilder = {
   use: string;
   src?: string | undefined;
-  config?: ServicesConfig | undefined;
+  config?: CreateDeploymentServicesConfig | undefined;
 };
 
-export const RoutePrefixSource = {
+export const ServicesRoutePrefixSource = {
   Configured: "configured",
   Generated: "generated",
 } as const;
-export type RoutePrefixSource = ClosedEnum<typeof RoutePrefixSource>;
+export type ServicesRoutePrefixSource = ClosedEnum<
+  typeof ServicesRoutePrefixSource
+>;
 
-export type Schedule = string | Array<string>;
+export type ServicesSchedule = string | Array<string>;
 
-export type Topics2 = {
+export type CreateDeploymentTopics2 = {
   topic: string;
   retryAfterSeconds?: number | undefined;
   initialDelaySeconds?: number | undefined;
 };
 
-export type Topics = Array<string> | Array<Topics2>;
+export type ServicesTopics = Array<string> | Array<CreateDeploymentTopics2>;
 
-export const CreateDeploymentServicesType = {
+export const CreateDeploymentServicesDeploymentsType = {
   ServiceRef: "service-ref",
 } as const;
-export type CreateDeploymentServicesType = ClosedEnum<
-  typeof CreateDeploymentServicesType
+export type CreateDeploymentServicesDeploymentsType = ClosedEnum<
+  typeof CreateDeploymentServicesDeploymentsType
 >;
 
 export type CreateDeploymentServicesEnv = {
-  type: CreateDeploymentServicesType;
+  type: CreateDeploymentServicesDeploymentsType;
   service: string;
 };
 
 /**
  * Services detected during build from vercel.json experimentalServices or auto-detected from project structure. Used to inject service URLs as environment variables at runtime.
  */
-export type Services1 = {
+export type CreateDeploymentServices1 = {
   schema: "experimentalServices";
   name: string;
-  type: ServicesType;
-  trigger?: Trigger | undefined;
+  type: CreateDeploymentServicesType;
+  trigger?: ServicesTrigger | undefined;
   group?: string | undefined;
   workspace: string;
   entrypoint?: string | undefined;
   framework?: string | undefined;
-  builder: Builder;
+  builder: CreateDeploymentServicesBuilder;
   runtime?: string | undefined;
   buildCommand?: string | undefined;
   installCommand?: string | undefined;
   preDeployCommand?: string | undefined;
   routePrefix?: string | undefined;
-  routePrefixSource?: RoutePrefixSource | undefined;
+  routePrefixSource?: ServicesRoutePrefixSource | undefined;
   subdomain?: string | undefined;
   schedule?: string | Array<string> | undefined;
   handlerFunction?: string | undefined;
-  topics?: Array<string> | Array<Topics2> | undefined;
+  topics?: Array<string> | Array<CreateDeploymentTopics2> | undefined;
   env?: { [k: string]: CreateDeploymentServicesEnv } | undefined;
 };
 
-export type Services = Services1 | Services2;
+export type ResponseBodyServices =
+  | CreateDeploymentServices1
+  | CreateDeploymentServices2;
+
+export const CreateDeploymentGitRepoDeploymentsResponse200OwnerType = {
+  Team: "team",
+  User: "user",
+} as const;
+export type CreateDeploymentGitRepoDeploymentsResponse200OwnerType = ClosedEnum<
+  typeof CreateDeploymentGitRepoDeploymentsResponse200OwnerType
+>;
+
+export type CreateDeploymentGitRepo4 = {
+  org: string;
+  repo: string;
+  type: "vercel";
+  path: string;
+  defaultBranch: string;
+  name: string;
+  private: boolean;
+  ownerType: CreateDeploymentGitRepoDeploymentsResponse200OwnerType;
+};
+
+export const CreateDeploymentGitRepoDeploymentsResponseOwnerType = {
+  Team: "team",
+  User: "user",
+} as const;
+export type CreateDeploymentGitRepoDeploymentsResponseOwnerType = ClosedEnum<
+  typeof CreateDeploymentGitRepoDeploymentsResponseOwnerType
+>;
+
+export type CreateDeploymentGitRepo3 = {
+  owner: string;
+  repoUuid: string;
+  slug: string;
+  type: "bitbucket";
+  workspaceUuid: string;
+  path: string;
+  defaultBranch: string;
+  name: string;
+  private: boolean;
+  ownerType: CreateDeploymentGitRepoDeploymentsResponseOwnerType;
+};
 
 export const CreateDeploymentGitRepoDeploymentsOwnerType = {
   Team: "team",
@@ -457,10 +515,12 @@ export type CreateDeploymentGitRepoDeploymentsOwnerType = ClosedEnum<
   typeof CreateDeploymentGitRepoDeploymentsOwnerType
 >;
 
-export type GitRepo4 = {
+export type CreateDeploymentGitRepo2 = {
   org: string;
   repo: string;
-  type: "vercel";
+  repoId: number;
+  type: "github";
+  repoOwnerId: number;
   path: string;
   defaultBranch: string;
   name: string;
@@ -476,45 +536,7 @@ export type CreateDeploymentGitRepoOwnerType = ClosedEnum<
   typeof CreateDeploymentGitRepoOwnerType
 >;
 
-export type GitRepo3 = {
-  owner: string;
-  repoUuid: string;
-  slug: string;
-  type: "bitbucket";
-  workspaceUuid: string;
-  path: string;
-  defaultBranch: string;
-  name: string;
-  private: boolean;
-  ownerType: CreateDeploymentGitRepoOwnerType;
-};
-
-export const GitRepoOwnerType = {
-  Team: "team",
-  User: "user",
-} as const;
-export type GitRepoOwnerType = ClosedEnum<typeof GitRepoOwnerType>;
-
-export type GitRepo2 = {
-  org: string;
-  repo: string;
-  repoId: number;
-  type: "github";
-  repoOwnerId: number;
-  path: string;
-  defaultBranch: string;
-  name: string;
-  private: boolean;
-  ownerType: GitRepoOwnerType;
-};
-
-export const OwnerType = {
-  Team: "team",
-  User: "user",
-} as const;
-export type OwnerType = ClosedEnum<typeof OwnerType>;
-
-export type GitRepo1 = {
+export type CreateDeploymentGitRepo1 = {
   namespace: string;
   projectId: number;
   type: "gitlab";
@@ -523,15 +545,19 @@ export type GitRepo1 = {
   defaultBranch: string;
   name: string;
   private: boolean;
-  ownerType: OwnerType;
+  ownerType: CreateDeploymentGitRepoOwnerType;
 };
 
-export type GitRepo = GitRepo1 | GitRepo2 | GitRepo3 | GitRepo4;
+export type ResponseBodyGitRepo =
+  | CreateDeploymentGitRepo1
+  | CreateDeploymentGitRepo2
+  | CreateDeploymentGitRepo3
+  | CreateDeploymentGitRepo4;
 
 /**
  * Flags defined in the Build Output API, used by this deployment. Primarily used by the Toolbar to know about the used flags.
  */
-export type Flags2 = {};
+export type CreateDeploymentFlags2 = {};
 
 export type CreateDeploymentFlagsOptions = {
   value: FlagJSONValue | null;
@@ -547,16 +573,18 @@ export type CreateDeploymentFlagsDefinitions = {
 /**
  * Flags defined in the Build Output API, used by this deployment. Primarily used by the Toolbar to know about the used flags.
  */
-export type Flags1 = {
+export type CreateDeploymentFlags1 = {
   definitions: { [k: string]: CreateDeploymentFlagsDefinitions };
 };
 
-export type Flags = Flags1 | Array<Flags2>;
+export type ResponseBodyFlags =
+  | CreateDeploymentFlags1
+  | Array<CreateDeploymentFlags2>;
 
 /**
  * The result of the microfrontends config upload during deployment creation / build. Only set for default app deployments. The config upload is attempted during deployment create, and then again during the build. If the config is not in the root directory, or the deployment is prebuilt, the config cannot be uploaded during deployment create. The upload during deployment build finds the config even if it's not in the root directory, as it has access to all files. Uploading the config during create is ideal, as then all child deployments are guaranteed to have access to the default app deployment config even if the default app has not yet started building. If the config is not uploaded, the child app will show as building until the config has been uploaded during the default app build. - `success` - The config was uploaded successfully, either when the deployment was created or during the build. - `waiting_on_build` - The config could not be uploaded during deployment create, will be attempted again during the build. - `no_config` - No config was found. Only set once the build has not found the config in any of the deployment's files. - `undefined` - Legacy deployments, or there was an error uploading the config during deployment create.
  */
-export const MfeConfigUploadState = {
+export const MicrofrontendsMfeConfigUploadState = {
   NoConfig: "no_config",
   Success: "success",
   WaitingOnBuild: "waiting_on_build",
@@ -564,14 +592,16 @@ export const MfeConfigUploadState = {
 /**
  * The result of the microfrontends config upload during deployment creation / build. Only set for default app deployments. The config upload is attempted during deployment create, and then again during the build. If the config is not in the root directory, or the deployment is prebuilt, the config cannot be uploaded during deployment create. The upload during deployment build finds the config even if it's not in the root directory, as it has access to all files. Uploading the config during create is ideal, as then all child deployments are guaranteed to have access to the default app deployment config even if the default app has not yet started building. If the config is not uploaded, the child app will show as building until the config has been uploaded during the default app build. - `success` - The config was uploaded successfully, either when the deployment was created or during the build. - `waiting_on_build` - The config could not be uploaded during deployment create, will be attempted again during the build. - `no_config` - No config was found. Only set once the build has not found the config in any of the deployment's files. - `undefined` - Legacy deployments, or there was an error uploading the config during deployment create.
  */
-export type MfeConfigUploadState = ClosedEnum<typeof MfeConfigUploadState>;
+export type MicrofrontendsMfeConfigUploadState = ClosedEnum<
+  typeof MicrofrontendsMfeConfigUploadState
+>;
 
 export type CreateDeploymentMicrofrontends2 = {
   isDefaultApp: true;
   /**
    * The result of the microfrontends config upload during deployment creation / build. Only set for default app deployments. The config upload is attempted during deployment create, and then again during the build. If the config is not in the root directory, or the deployment is prebuilt, the config cannot be uploaded during deployment create. The upload during deployment build finds the config even if it's not in the root directory, as it has access to all files. Uploading the config during create is ideal, as then all child deployments are guaranteed to have access to the default app deployment config even if the default app has not yet started building. If the config is not uploaded, the child app will show as building until the config has been uploaded during the default app build. - `success` - The config was uploaded successfully, either when the deployment was created or during the build. - `waiting_on_build` - The config could not be uploaded during deployment create, will be attempted again during the build. - `no_config` - No config was found. Only set once the build has not found the config in any of the deployment's files. - `undefined` - Legacy deployments, or there was an error uploading the config during deployment create.
    */
-  mfeConfigUploadState?: MfeConfigUploadState | undefined;
+  mfeConfigUploadState?: MicrofrontendsMfeConfigUploadState | undefined;
   /**
    * The project name of the default app of this deployment's microfrontends group.
    */
@@ -602,52 +632,56 @@ export type CreateDeploymentMicrofrontends1 = {
   groupIds: Array<string>;
 };
 
-export type CreateDeploymentMicrofrontends =
+export type ResponseBodyMicrofrontends =
   | CreateDeploymentMicrofrontends2
   | CreateDeploymentMicrofrontends1;
 
-export const FunctionType = {
+export const ResponseBodyFunctionType = {
   Fluid: "fluid",
   Standard: "standard",
 } as const;
-export type FunctionType = ClosedEnum<typeof FunctionType>;
+export type ResponseBodyFunctionType = ClosedEnum<
+  typeof ResponseBodyFunctionType
+>;
 
-export const FunctionMemoryType = {
+export const ResponseBodyFunctionMemoryType = {
   Performance: "performance",
   PerformanceXl: "performance_xl",
   Standard: "standard",
   StandardLegacy: "standard_legacy",
 } as const;
-export type FunctionMemoryType = ClosedEnum<typeof FunctionMemoryType>;
+export type ResponseBodyFunctionMemoryType = ClosedEnum<
+  typeof ResponseBodyFunctionMemoryType
+>;
 
 /**
  * Build resource configuration snapshot for this deployment.
  */
-export const CreateDeploymentConfiguration = {
+export const CreateDeploymentResponseBodyConfiguration = {
   SkipNamespaceQueue: "SKIP_NAMESPACE_QUEUE",
   WaitForNamespaceQueue: "WAIT_FOR_NAMESPACE_QUEUE",
 } as const;
 /**
  * Build resource configuration snapshot for this deployment.
  */
-export type CreateDeploymentConfiguration = ClosedEnum<
-  typeof CreateDeploymentConfiguration
+export type CreateDeploymentResponseBodyConfiguration = ClosedEnum<
+  typeof CreateDeploymentResponseBodyConfiguration
 >;
 
 /**
  * Build resource configuration snapshot for this deployment.
  */
-export type CreateDeploymentBuildQueue = {
+export type CreateDeploymentResponseBodyBuildQueue = {
   /**
    * Build resource configuration snapshot for this deployment.
    */
-  configuration?: CreateDeploymentConfiguration | undefined;
+  configuration?: CreateDeploymentResponseBodyConfiguration | undefined;
 };
 
 /**
  * When elastic concurrency is used for this deployment, a value is set. The value tells the reason where the setting was coming from. - TEAM_SETTING: Inherited from team settings - PROJECT_SETTING: Inherited from project settings - SKIP_QUEUE: Manually triggered by user to skip the queues
  */
-export const ElasticConcurrency = {
+export const ResponseBodyElasticConcurrency = {
   ProjectSetting: "PROJECT_SETTING",
   SkipQueue: "SKIP_QUEUE",
   TeamSetting: "TEAM_SETTING",
@@ -655,12 +689,15 @@ export const ElasticConcurrency = {
 /**
  * When elastic concurrency is used for this deployment, a value is set. The value tells the reason where the setting was coming from. - TEAM_SETTING: Inherited from team settings - PROJECT_SETTING: Inherited from project settings - SKIP_QUEUE: Manually triggered by user to skip the queues
  */
-export type ElasticConcurrency = ClosedEnum<typeof ElasticConcurrency>;
+export type ResponseBodyElasticConcurrency = ClosedEnum<
+  typeof ResponseBodyElasticConcurrency
+>;
 
 /**
  * Machine type that was used for the build.
  */
-export const CreateDeploymentPurchaseType = {
+export const ResponseBodyPurchaseType = {
+  Basic: "basic",
   Enhanced: "enhanced",
   Standard: "standard",
   Turbo: "turbo",
@@ -668,39 +705,39 @@ export const CreateDeploymentPurchaseType = {
 /**
  * Machine type that was used for the build.
  */
-export type CreateDeploymentPurchaseType = ClosedEnum<
-  typeof CreateDeploymentPurchaseType
+export type ResponseBodyPurchaseType = ClosedEnum<
+  typeof ResponseBodyPurchaseType
 >;
 
-export type CreateDeploymentBuildMachine = {
+export type ResponseBodyBuildMachine = {
   /**
    * Machine type that was used for the build.
    */
-  purchaseType?: CreateDeploymentPurchaseType | null | undefined;
+  purchaseType?: ResponseBodyPurchaseType | null | undefined;
 };
 
 /**
  * Build resource configuration snapshot for this deployment.
  */
-export type CreateDeploymentResourceConfig = {
+export type CreateDeploymentResponseBodyResourceConfig = {
   /**
    * Build resource configuration snapshot for this deployment.
    */
-  buildQueue?: CreateDeploymentBuildQueue | undefined;
+  buildQueue?: CreateDeploymentResponseBodyBuildQueue | undefined;
   /**
    * When elastic concurrency is used for this deployment, a value is set. The value tells the reason where the setting was coming from. - TEAM_SETTING: Inherited from team settings - PROJECT_SETTING: Inherited from project settings - SKIP_QUEUE: Manually triggered by user to skip the queues
    */
-  elasticConcurrency?: ElasticConcurrency | undefined;
-  buildMachine?: CreateDeploymentBuildMachine | undefined;
+  elasticConcurrency?: ResponseBodyElasticConcurrency | undefined;
+  buildMachine?: ResponseBodyBuildMachine | undefined;
 };
 
 /**
  * Since February 2025 the configuration must include snapshot data at the time of deployment creation to capture properties for the /deployments/:id/config endpoint utilized for displaying Deployment Configuration on the frontend This is optional because older deployments may not have this data captured
  */
-export type CreateDeploymentConfig = {
+export type ResponseBodyConfig = {
   version?: number | undefined;
-  functionType: FunctionType;
-  functionMemoryType: FunctionMemoryType;
+  functionType: ResponseBodyFunctionType;
+  functionMemoryType: ResponseBodyFunctionMemoryType;
   functionTimeout: number | null;
   secureComputePrimaryRegion: string | null;
   secureComputeFallbackRegion: string | null;
@@ -708,52 +745,52 @@ export type CreateDeploymentConfig = {
   /**
    * Build resource configuration snapshot for this deployment.
    */
-  resourceConfig?: CreateDeploymentResourceConfig | undefined;
+  resourceConfig?: CreateDeploymentResponseBodyResourceConfig | undefined;
 };
 
-export const CreateDeploymentDeploymentsState = {
+export const CreateDeploymentResponseBodyDeploymentsState = {
   Failed: "failed",
   Pending: "pending",
   Succeeded: "succeeded",
 } as const;
-export type CreateDeploymentDeploymentsState = ClosedEnum<
-  typeof CreateDeploymentDeploymentsState
+export type CreateDeploymentResponseBodyDeploymentsState = ClosedEnum<
+  typeof CreateDeploymentResponseBodyDeploymentsState
 >;
 
 /**
  * Condensed check data. Retrieve individual check and check run data using api-checks v2 routes.
  */
-export type DeploymentAlias = {
-  state: CreateDeploymentDeploymentsState;
+export type ResponseBodyDeploymentAlias = {
+  state: CreateDeploymentResponseBodyDeploymentsState;
   startedAt: number;
   completedAt?: number | undefined;
 };
 
-export type CreateDeploymentChecks = {
+export type CreateDeploymentResponseBodyChecks = {
   /**
    * Condensed check data. Retrieve individual check and check run data using api-checks v2 routes.
    */
-  deploymentAlias: DeploymentAlias;
+  deploymentAlias: ResponseBodyDeploymentAlias;
 };
 
 /**
  * The NSNB decision code for the seat block. TODO: We should consolidate block types.
  */
-export const BlockCode = {
+export const ResponseBodyBlockCode = {
   CommitAuthorRequired: "COMMIT_AUTHOR_REQUIRED",
   TeamAccessRequired: "TEAM_ACCESS_REQUIRED",
 } as const;
 /**
  * The NSNB decision code for the seat block. TODO: We should consolidate block types.
  */
-export type BlockCode = ClosedEnum<typeof BlockCode>;
+export type ResponseBodyBlockCode = ClosedEnum<typeof ResponseBodyBlockCode>;
 
-export type CreateDeploymentGitUserId = string | number;
+export type ResponseBodyGitUserId = string | number;
 
 /**
  * The git provider type associated with gitUserId.
  */
-export const CreateDeploymentGitProvider = {
+export const ResponseBodyGitProvider = {
   Bitbucket: "bitbucket",
   Github: "github",
   Gitlab: "gitlab",
@@ -761,18 +798,18 @@ export const CreateDeploymentGitProvider = {
 /**
  * The git provider type associated with gitUserId.
  */
-export type CreateDeploymentGitProvider = ClosedEnum<
-  typeof CreateDeploymentGitProvider
+export type ResponseBodyGitProvider = ClosedEnum<
+  typeof ResponseBodyGitProvider
 >;
 
 /**
  * NSNB Blocked metadata
  */
-export type SeatBlock = {
+export type ResponseBodySeatBlock = {
   /**
    * The NSNB decision code for the seat block. TODO: We should consolidate block types.
    */
-  blockCode: BlockCode;
+  blockCode: ResponseBodyBlockCode;
   /**
    * The blocked vercel user ID.
    */
@@ -785,13 +822,13 @@ export type SeatBlock = {
   /**
    * The git provider type associated with gitUserId.
    */
-  gitProvider?: CreateDeploymentGitProvider | undefined;
+  gitProvider?: ResponseBodyGitProvider | undefined;
 };
 
 /**
  * Commit metadata from the git commit author
  */
-export type CommitMeta = {
+export type ResponseBodyCommitMeta = {
   /**
    * Email from git commit author
    */
@@ -806,12 +843,12 @@ export type CommitMeta = {
   isVerified?: boolean | undefined;
 };
 
-export type CreateDeploymentId = string | number;
+export type CreateDeploymentResponseBodyId = string | number;
 
 /**
  * Git provider user associated with the commit author email (only set if resolved)
  */
-export type GitUser = {
+export type ResponseBodyGitUser = {
   id: string | number;
   /**
    * Git provider username/login
@@ -830,7 +867,7 @@ export type GitUser = {
 /**
  * Vercel user linked to the git provider account (only set if resolved)
  */
-export type VercelUser = {
+export type ResponseBodyVercelUser = {
   /**
    * Vercel user ID
    */
@@ -848,37 +885,37 @@ export type VercelUser = {
 /**
  * Attribution metadata for the deployment, linking commit author to git and Vercel users. Only populated when the `enable-deployment-attribution` flag is enabled.
  */
-export type CreateDeploymentAttribution = {
+export type ResponseBodyAttribution = {
   /**
    * Commit metadata from the git commit author
    */
-  commitMeta?: CommitMeta | undefined;
+  commitMeta?: ResponseBodyCommitMeta | undefined;
   /**
    * Git provider user associated with the commit author email (only set if resolved)
    */
-  gitUser?: GitUser | undefined;
+  gitUser?: ResponseBodyGitUser | undefined;
   /**
    * Vercel user linked to the git provider account (only set if resolved)
    */
-  vercelUser?: VercelUser | undefined;
+  vercelUser?: ResponseBodyVercelUser | undefined;
 };
 
 /**
  * Returns the newly created deployment object. Poll `readyState` to track build progress. See https://vercel.com/docs/deployments/deployment-states for possible states.
  */
-export type CreateDeploymentResponseBody = {
-  aliasAssignedAt?: AliasAssignedAt | null | undefined;
+export type CreateDeploymentResponseBody2 = {
+  aliasAssignedAt?: ResponseBodyAliasAssignedAt | null | undefined;
   alwaysRefuseToBuild?: boolean | undefined;
-  build: Build;
+  build: ResponseBodyBuild;
   buildArtifactUrls?: Array<string> | undefined;
-  builds?: Array<Builds> | undefined;
+  builds?: Array<ResponseBodyBuilds> | undefined;
   env: Array<string>;
   inspectorUrl: string | null;
   isInConcurrentBuildsQueue: boolean;
   isInSystemBuildsQueue: boolean;
-  projectSettings: CreateDeploymentProjectSettings;
-  integrations?: Integrations | undefined;
-  images?: Images | undefined;
+  projectSettings: CreateDeploymentResponseBodyProjectSettings;
+  integrations?: ResponseBodyIntegrations | undefined;
+  images?: ResponseBodyImages | undefined;
   /**
    * A list of all the aliases (default aliases, staging aliases and production aliases) that were assigned upon deployment creation
    */
@@ -897,20 +934,20 @@ export type CreateDeploymentResponseBody = {
   /**
    * Information about the deployment creator
    */
-  creator: CreateDeploymentCreator;
+  creator: CreateDeploymentResponseBodyCreator;
   initReadyAt?: number | undefined;
   isFirstBranchDeployment?: boolean | undefined;
-  lambdas?: Array<Lambdas> | undefined;
+  lambdas?: Array<CreateDeploymentResponseBodyLambdas> | undefined;
   /**
    * A boolean representing if the deployment is public or not. By default this is `false`
    */
   public: boolean;
   ready?: number | undefined;
-  status: CreateDeploymentStatus;
+  status: CreateDeploymentResponseBodyStatus;
   /**
    * The team that owns the deployment if any
    */
-  team?: CreateDeploymentTeam | undefined;
+  team?: CreateDeploymentResponseBodyTeam | undefined;
   /**
    * An array of domains that were provided by the user when creating the Deployment.
    */
@@ -920,14 +957,25 @@ export type CreateDeploymentResponseBody = {
    */
   previewCommentsEnabled?: boolean | undefined;
   ttyBuildLogs?: boolean | undefined;
-  customEnvironment?: CustomEnvironment | undefined;
-  oomReport?: OomReport | undefined;
+  customEnvironment?: CreateDeploymentResponseBodyCustomEnvironment | undefined;
+  oomReport?: CreateDeploymentResponseBodyOomReport | undefined;
   readyStateReason?: string | undefined;
-  aliasWarning?: AliasWarning | null | undefined;
   /**
    * A string holding the unique ID of the deployment
    */
   id: string;
+  /**
+   * The name of the project associated with the deployment at the time that the deployment was created
+   */
+  name: string;
+  /**
+   * A string with the unique URL of the deployment
+   */
+  url: string;
+  /**
+   * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
+   */
+  target?: CreateDeploymentResponseBodyDeploymentsTarget | null | undefined;
   /**
    * A number containing the date when the deployment was created in milliseconds
    */
@@ -935,26 +983,41 @@ export type CreateDeploymentResponseBody = {
   /**
    * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
    */
-  readyState: ReadyState;
+  readyState: CreateDeploymentResponseBodyDeploymentsReadyState;
   /**
-   * The name of the project associated with the deployment at the time that the deployment was created
+   * Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic
    */
-  name: string;
-  type: CreateDeploymentType;
-  errorMessage?: string | null | undefined;
+  readySubstate?:
+    | CreateDeploymentResponseBodyDeploymentsReadySubstate
+    | undefined;
+  prebuilt?: boolean | undefined;
   /**
    * An object that will contain a `code` and a `message` when the aliasing fails, otherwise the value will be `null`
    */
-  aliasError?: AliasError | null | undefined;
+  aliasError?:
+    | CreateDeploymentResponseBodyDeploymentsAliasError
+    | null
+    | undefined;
+  aliasWarning?:
+    | CreateDeploymentResponseBodyDeploymentsAliasWarning
+    | null
+    | undefined;
   aliasFinal?: string | null | undefined;
+  checksState?: CreateDeploymentResponseBodyDeploymentsChecksState | undefined;
+  checksConclusion?:
+    | CreateDeploymentResponseBodyDeploymentsChecksConclusion
+    | undefined;
+  errorCode?: string | undefined;
+  errorLink?: string | undefined;
+  errorMessage?: string | null | undefined;
+  errorStep?: string | undefined;
+  type: CreateDeploymentResponseBodyType;
   /**
    * applies to custom domains only, defaults to `true`
    */
   autoAssignCustomDomains?: boolean | undefined;
   automaticAliases?: Array<string> | undefined;
   buildErrorAt?: number | undefined;
-  checksState?: ChecksState | undefined;
-  checksConclusion?: ChecksConclusion | undefined;
   /**
    * A number containing the date when the deployment was deleted at milliseconds
    */
@@ -964,33 +1027,27 @@ export type CreateDeploymentResponseBody = {
    */
   defaultRoute?: string | undefined;
   canceledAt?: number | undefined;
-  errorCode?: string | undefined;
-  errorLink?: string | undefined;
-  errorStep?: string | undefined;
   /**
    * Since November 2023 this field defines a set of regions that we will deploy the lambda to passively Lambdas will be deployed to these regions but only invoked if all of the primary `regions` are marked as out of service
    */
   passiveRegions?: Array<string> | undefined;
-  gitSource?: CreateDeploymentGitSource | undefined;
+  gitSource?: CreateDeploymentResponseBodyGitSource | undefined;
   /**
    * Present when deployment was created with manual provisioning enabled, either explicitly or via the experimental BYOC git flow. The deployment stays in INITIALIZING until /continue is called.
    */
-  manualProvisioning?: ManualProvisioning | undefined;
+  manualProvisioning?:
+    | CreateDeploymentResponseBodyManualProvisioning
+    | undefined;
   meta: { [k: string]: string };
   originCacheRegion?: string | undefined;
   /**
    * If set it overrides the `projectSettings.nodeVersion` for this deployment.
    */
-  nodeVersion?: CreateDeploymentNodeVersion | undefined;
+  nodeVersion?: CreateDeploymentResponseBodyNodeVersion | undefined;
   /**
    * The public project information associated with the deployment.
    */
-  project?: CreateDeploymentProject | undefined;
-  prebuilt?: boolean | undefined;
-  /**
-   * Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic
-   */
-  readySubstate?: ReadySubstate | undefined;
+  project?: CreateDeploymentResponseBodyProject | undefined;
   /**
    * The regions the deployment exists in
    */
@@ -1002,19 +1059,11 @@ export type CreateDeploymentResponseBody = {
   /**
    * Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it.
    */
-  source?: CreateDeploymentSource | undefined;
-  /**
-   * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
-   */
-  target?: CreateDeploymentTarget | null | undefined;
+  source?: CreateDeploymentResponseBodySource | undefined;
   /**
    * A number containing the date when the deployment was undeleted at milliseconds
    */
   undeletedAt?: number | undefined;
-  /**
-   * A string with the unique URL of the deployment
-   */
-  url: string;
   /**
    * Since January 2025 User-configured deployment ID for skew protection with pre-built deployments. This is set when users configure a custom deploymentId in their next.config.js file. This allows Next.js to use skew protection even when deployments are pre-built outside of Vercel's build system.
    */
@@ -1023,31 +1072,39 @@ export type CreateDeploymentResponseBody = {
    * The platform version that was used to create the deployment.
    */
   version: number;
-  oidcTokenClaims?: OidcTokenClaims | undefined;
+  oidcTokenClaims?: CreateDeploymentResponseBodyOidcTokenClaims | undefined;
   projectId: string;
-  plan: CreateDeploymentPlan;
+  plan: ResponseBodyPlan;
   /**
    * Metadata about the source platform that triggered the deployment. Allows us to map a deployment back to a platform (e.g. the chat that created it)
    */
-  platform?: Platform | undefined;
+  platform?: ResponseBodyPlatform | undefined;
   connectBuildsEnabled?: boolean | undefined;
   connectConfigurationId?: string | undefined;
   createdIn: string;
-  crons?: Array<Crons> | undefined;
-  functions?: { [k: string]: Functions } | null | undefined;
+  crons?: Array<ResponseBodyCrons> | undefined;
+  functions?: { [k: string]: ResponseBodyFunctions } | null | undefined;
   monorepoManager?: string | null | undefined;
   ownerId: string;
   /**
    * Since November 2023 this field defines a Secure Compute network that will only be used to deploy passive lambdas to (as in passiveRegions)
    */
   passiveConnectConfigurationId?: string | undefined;
-  routes: Array<CreateDeploymentRoutes> | null;
+  routes: Array<ResponseBodyRoutes> | null;
   /**
    * Services detected during build from vercel.json experimentalServices or auto-detected from project structure. Used to inject service URLs as environment variables at runtime.
    */
-  services?: Array<Services1 | Services2> | undefined;
-  gitRepo?: GitRepo1 | GitRepo2 | GitRepo3 | GitRepo4 | null | undefined;
-  flags?: Flags1 | Array<Flags2> | undefined;
+  services?:
+    | Array<CreateDeploymentServices1 | CreateDeploymentServices2>
+    | undefined;
+  gitRepo?:
+    | CreateDeploymentGitRepo1
+    | CreateDeploymentGitRepo2
+    | CreateDeploymentGitRepo3
+    | CreateDeploymentGitRepo4
+    | null
+    | undefined;
+  flags?: CreateDeploymentFlags1 | Array<CreateDeploymentFlags2> | undefined;
   microfrontends?:
     | CreateDeploymentMicrofrontends2
     | CreateDeploymentMicrofrontends1
@@ -1055,49 +1112,201 @@ export type CreateDeploymentResponseBody = {
   /**
    * Since February 2025 the configuration must include snapshot data at the time of deployment creation to capture properties for the /deployments/:id/config endpoint utilized for displaying Deployment Configuration on the frontend This is optional because older deployments may not have this data captured
    */
-  config?: CreateDeploymentConfig | undefined;
-  checks?: CreateDeploymentChecks | undefined;
+  config?: ResponseBodyConfig | undefined;
+  checks?: CreateDeploymentResponseBodyChecks | undefined;
   /**
    * NSNB Blocked metadata
    */
-  seatBlock?: SeatBlock | undefined;
+  seatBlock?: ResponseBodySeatBlock | undefined;
   /**
    * Attribution metadata for the deployment, linking commit author to git and Vercel users. Only populated when the `enable-deployment-attribution` flag is enabled.
    */
-  attribution?: CreateDeploymentAttribution | undefined;
+  attribution?: ResponseBodyAttribution | undefined;
 };
 
-/** @internal */
-export const CreateDeploymentDestinationDeploymentsType$inboundSchema:
-  z.ZodNativeEnum<typeof CreateDeploymentDestinationDeploymentsType> = z
-    .nativeEnum(CreateDeploymentDestinationDeploymentsType);
+export type ResponseBodyAnonymous = {
+  /**
+   * When the anonymous project and its token expire, in milliseconds.
+   */
+  expiresAt: number;
+};
+
+/**
+ * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
+ */
+export const CreateDeploymentResponseBodyTarget = {
+  Production: "production",
+  Staging: "staging",
+} as const;
+/**
+ * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
+ */
+export type CreateDeploymentResponseBodyTarget = ClosedEnum<
+  typeof CreateDeploymentResponseBodyTarget
+>;
+
+/**
+ * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
+ */
+export const CreateDeploymentResponseBodyReadyState = {
+  Blocked: "BLOCKED",
+  Building: "BUILDING",
+  Canceled: "CANCELED",
+  Error: "ERROR",
+  Initializing: "INITIALIZING",
+  Queued: "QUEUED",
+  Ready: "READY",
+} as const;
+/**
+ * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
+ */
+export type CreateDeploymentResponseBodyReadyState = ClosedEnum<
+  typeof CreateDeploymentResponseBodyReadyState
+>;
+
+/**
+ * Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic
+ */
+export const CreateDeploymentResponseBodyReadySubstate = {
+  Promoted: "PROMOTED",
+  Rolling: "ROLLING",
+  Staged: "STAGED",
+} as const;
+/**
+ * Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic
+ */
+export type CreateDeploymentResponseBodyReadySubstate = ClosedEnum<
+  typeof CreateDeploymentResponseBodyReadySubstate
+>;
+
+/**
+ * An object that will contain a `code` and a `message` when the aliasing fails, otherwise the value will be `null`
+ */
+export type CreateDeploymentResponseBodyAliasError = {
+  code: string;
+  message: string;
+};
+
+export type CreateDeploymentResponseBodyAliasWarning = {
+  code: string;
+  message: string;
+  link?: string | undefined;
+  action?: string | undefined;
+};
+
+export const CreateDeploymentResponseBodyChecksState = {
+  Completed: "completed",
+  Registered: "registered",
+  Running: "running",
+} as const;
+export type CreateDeploymentResponseBodyChecksState = ClosedEnum<
+  typeof CreateDeploymentResponseBodyChecksState
+>;
+
+export const CreateDeploymentResponseBodyChecksConclusion = {
+  Canceled: "canceled",
+  Failed: "failed",
+  Skipped: "skipped",
+  Succeeded: "succeeded",
+} as const;
+export type CreateDeploymentResponseBodyChecksConclusion = ClosedEnum<
+  typeof CreateDeploymentResponseBodyChecksConclusion
+>;
+
+/**
+ * Returns the reduced deployment view for anonymous (`vcn_`) callers, with an `anonymous.expiresAt` marking when the project and its token expire. Pool-team details are withheld.
+ */
+export type CreateDeploymentResponseBody1 = {
+  alias?: Array<string> | undefined;
+  aliasAssigned: boolean;
+  readyStateReason?: string | undefined;
+  anonymous: ResponseBodyAnonymous;
+  /**
+   * A string holding the unique ID of the deployment
+   */
+  id: string;
+  /**
+   * The name of the project associated with the deployment at the time that the deployment was created
+   */
+  name: string;
+  /**
+   * A string with the unique URL of the deployment
+   */
+  url: string;
+  projectId: string;
+  /**
+   * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
+   */
+  target?: CreateDeploymentResponseBodyTarget | null | undefined;
+  /**
+   * A number containing the date when the deployment was created in milliseconds
+   */
+  createdAt: number;
+  /**
+   * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
+   */
+  readyState: CreateDeploymentResponseBodyReadyState;
+  /**
+   * Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic
+   */
+  readySubstate?: CreateDeploymentResponseBodyReadySubstate | undefined;
+  prebuilt?: boolean | undefined;
+  /**
+   * An object that will contain a `code` and a `message` when the aliasing fails, otherwise the value will be `null`
+   */
+  aliasError?: CreateDeploymentResponseBodyAliasError | null | undefined;
+  aliasWarning?: CreateDeploymentResponseBodyAliasWarning | null | undefined;
+  aliasFinal?: string | null | undefined;
+  checksState?: CreateDeploymentResponseBodyChecksState | undefined;
+  checksConclusion?: CreateDeploymentResponseBodyChecksConclusion | undefined;
+  errorCode?: string | undefined;
+  errorLink?: string | undefined;
+  errorMessage?: string | null | undefined;
+  errorStep?: string | undefined;
+};
+
+/**
+ * Returns the newly created deployment object. Poll `readyState` to track build progress. See https://vercel.com/docs/deployments/deployment-states for possible states.
+ *
+ * @remarks
+ * Returns the reduced deployment view for anonymous (`vcn_`) callers, with an `anonymous.expiresAt` marking when the project and its token expire. Pool-team details are withheld.
+ */
+export type CreateDeploymentResponseBody =
+  | CreateDeploymentResponseBody2
+  | CreateDeploymentResponseBody1;
 
 /** @internal */
-export const CreateDeploymentDestinationDeployments2$inboundSchema: z.ZodType<
-  CreateDeploymentDestinationDeployments2,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  type: types.optional(
-    CreateDeploymentDestinationDeploymentsType$inboundSchema,
-  ),
-  service: types.string(),
-  path: types.optional(types.string()),
-});
+export const CreateDeploymentDestinationDeploymentsResponseType$inboundSchema:
+  z.ZodNativeEnum<typeof CreateDeploymentDestinationDeploymentsResponseType> = z
+    .nativeEnum(CreateDeploymentDestinationDeploymentsResponseType);
 
-export function createDeploymentDestinationDeployments2FromJSON(
+/** @internal */
+export const CreateDeploymentDestinationDeploymentsResponse2$inboundSchema:
+  z.ZodType<
+    CreateDeploymentDestinationDeploymentsResponse2,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    type: types.optional(
+      CreateDeploymentDestinationDeploymentsResponseType$inboundSchema,
+    ),
+    service: types.string(),
+    path: types.optional(types.string()),
+  });
+
+export function createDeploymentDestinationDeploymentsResponse2FromJSON(
   jsonString: string,
 ): SafeParseResult<
-  CreateDeploymentDestinationDeployments2,
+  CreateDeploymentDestinationDeploymentsResponse2,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      CreateDeploymentDestinationDeployments2$inboundSchema.parse(
+      CreateDeploymentDestinationDeploymentsResponse2$inboundSchema.parse(
         JSON.parse(x),
       ),
-    `Failed to parse 'CreateDeploymentDestinationDeployments2' from JSON`,
+    `Failed to parse 'CreateDeploymentDestinationDeploymentsResponse2' from JSON`,
   );
 }
 
@@ -1108,7 +1317,7 @@ export const CreateDeploymentRoutesDeploymentsDestination$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = smartUnion([
-    z.lazy(() => CreateDeploymentDestinationDeployments2$inboundSchema),
+    z.lazy(() => CreateDeploymentDestinationDeploymentsResponse2$inboundSchema),
     types.string(),
   ]);
 
@@ -1129,8 +1338,8 @@ export function createDeploymentRoutesDeploymentsDestinationFromJSON(
 }
 
 /** @internal */
-export const CreateDeploymentRoutes1$inboundSchema: z.ZodType<
-  CreateDeploymentRoutes1,
+export const CreateDeploymentRoutesDeployments1$inboundSchema: z.ZodType<
+  CreateDeploymentRoutesDeployments1,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -1161,7 +1370,9 @@ export const CreateDeploymentRoutes1$inboundSchema: z.ZodType<
   source: types.optional(types.string()),
   destination: types.optional(
     smartUnion([
-      z.lazy(() => CreateDeploymentDestinationDeployments2$inboundSchema),
+      z.lazy(() =>
+        CreateDeploymentDestinationDeploymentsResponse2$inboundSchema
+      ),
       types.string(),
     ]),
   ),
@@ -1172,39 +1383,40 @@ export const CreateDeploymentRoutes1$inboundSchema: z.ZodType<
   respectOriginCacheControl: types.optional(types.boolean()),
 });
 
-export function createDeploymentRoutes1FromJSON(
+export function createDeploymentRoutesDeployments1FromJSON(
   jsonString: string,
-): SafeParseResult<CreateDeploymentRoutes1, SDKValidationError> {
+): SafeParseResult<CreateDeploymentRoutesDeployments1, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CreateDeploymentRoutes1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateDeploymentRoutes1' from JSON`,
+    (x) =>
+      CreateDeploymentRoutesDeployments1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateDeploymentRoutesDeployments1' from JSON`,
   );
 }
 
 /** @internal */
-export const ServicesRoutes$inboundSchema: z.ZodType<
-  ServicesRoutes,
+export const CreateDeploymentServicesRoutes$inboundSchema: z.ZodType<
+  CreateDeploymentServicesRoutes,
   z.ZodTypeDef,
   unknown
 > = smartUnion([
-  z.lazy(() => CreateDeploymentRoutes1$inboundSchema),
-  CreateDeploymentRoutes2$inboundSchema,
+  z.lazy(() => CreateDeploymentRoutesDeployments1$inboundSchema),
+  CreateDeploymentRoutesDeployments2$inboundSchema,
 ]);
 
-export function servicesRoutesFromJSON(
+export function createDeploymentServicesRoutesFromJSON(
   jsonString: string,
-): SafeParseResult<ServicesRoutes, SDKValidationError> {
+): SafeParseResult<CreateDeploymentServicesRoutes, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ServicesRoutes$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ServicesRoutes' from JSON`,
+    (x) => CreateDeploymentServicesRoutes$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateDeploymentServicesRoutes' from JSON`,
   );
 }
 
 /** @internal */
-export const Services2$inboundSchema: z.ZodType<
-  Services2,
+export const CreateDeploymentServices2$inboundSchema: z.ZodType<
+  CreateDeploymentServices2,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -1215,117 +1427,130 @@ export const Services2$inboundSchema: z.ZodType<
   runtime: types.optional(types.string()),
   entrypoint: types.optional(types.string()),
   command: types.optional(z.array(types.string())),
-  builder: ServicesBuilder$inboundSchema,
+  builder: CreateDeploymentServicesDeploymentsBuilder$inboundSchema,
   installCommand: types.optional(types.string()),
   buildCommand: types.optional(types.string()),
   devCommand: types.optional(types.string()),
   ignoreCommand: types.optional(types.string()),
   outputDirectory: types.optional(types.string()),
-  bindings: types.optional(z.array(Bindings$inboundSchema)),
-  functions: types.optional(z.record(ServicesFunctions$inboundSchema)),
+  bindings: types.optional(z.array(ServicesBindings$inboundSchema)),
+  functions: types.optional(
+    z.record(CreateDeploymentServicesFunctions$inboundSchema),
+  ),
   headers: types.optional(
     z.array(CreateDeploymentServicesHeaders$inboundSchema),
   ),
-  redirects: types.optional(z.array(ServicesRedirects$inboundSchema)),
-  rewrites: types.optional(z.array(Rewrites$inboundSchema)),
+  redirects: types.optional(
+    z.array(CreateDeploymentServicesRedirects$inboundSchema),
+  ),
+  rewrites: types.optional(z.array(ServicesRewrites$inboundSchema)),
   routes: types.optional(
     z.array(smartUnion([
-      z.lazy(() => CreateDeploymentRoutes1$inboundSchema),
-      CreateDeploymentRoutes2$inboundSchema,
+      z.lazy(() => CreateDeploymentRoutesDeployments1$inboundSchema),
+      CreateDeploymentRoutesDeployments2$inboundSchema,
     ])),
   ),
   cleanUrls: types.optional(types.boolean()),
   trailingSlash: types.optional(types.boolean()),
 });
 
-export function services2FromJSON(
+export function createDeploymentServices2FromJSON(
   jsonString: string,
-): SafeParseResult<Services2, SDKValidationError> {
+): SafeParseResult<CreateDeploymentServices2, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Services2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Services2' from JSON`,
+    (x) => CreateDeploymentServices2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateDeploymentServices2' from JSON`,
   );
 }
 
 /** @internal */
-export const ServicesType$inboundSchema: z.ZodNativeEnum<typeof ServicesType> =
-  z.nativeEnum(ServicesType);
+export const CreateDeploymentServicesType$inboundSchema: z.ZodNativeEnum<
+  typeof CreateDeploymentServicesType
+> = z.nativeEnum(CreateDeploymentServicesType);
 
 /** @internal */
-export const Trigger$inboundSchema: z.ZodNativeEnum<typeof Trigger> = z
-  .nativeEnum(Trigger);
+export const ServicesTrigger$inboundSchema: z.ZodNativeEnum<
+  typeof ServicesTrigger
+> = z.nativeEnum(ServicesTrigger);
 
 /** @internal */
-export const IncludeFiles$inboundSchema: z.ZodType<
-  IncludeFiles,
+export const CreateDeploymentServicesIncludeFiles$inboundSchema: z.ZodType<
+  CreateDeploymentServicesIncludeFiles,
   z.ZodTypeDef,
   unknown
 > = smartUnion([types.string(), z.array(types.string())]);
 
-export function includeFilesFromJSON(
+export function createDeploymentServicesIncludeFilesFromJSON(
   jsonString: string,
-): SafeParseResult<IncludeFiles, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => IncludeFiles$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'IncludeFiles' from JSON`,
-  );
-}
-
-/** @internal */
-export const ExcludeFiles$inboundSchema: z.ZodType<
-  ExcludeFiles,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([types.string(), z.array(types.string())]);
-
-export function excludeFilesFromJSON(
-  jsonString: string,
-): SafeParseResult<ExcludeFiles, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ExcludeFiles$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ExcludeFiles' from JSON`,
-  );
-}
-
-/** @internal */
-export const CreateDeploymentServicesArchitecture$inboundSchema:
-  z.ZodNativeEnum<typeof CreateDeploymentServicesArchitecture> = z.nativeEnum(
-    CreateDeploymentServicesArchitecture,
-  );
-
-/** @internal */
-export const CreateDeploymentMaxDurationDeploymentsResponse2$inboundSchema:
-  z.ZodNativeEnum<typeof CreateDeploymentMaxDurationDeploymentsResponse2> = z
-    .nativeEnum(CreateDeploymentMaxDurationDeploymentsResponse2);
-
-/** @internal */
-export const CreateDeploymentServicesMaxDuration$inboundSchema: z.ZodType<
-  CreateDeploymentServicesMaxDuration,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([
-  types.number(),
-  CreateDeploymentMaxDurationDeploymentsResponse2$inboundSchema,
-]);
-
-export function createDeploymentServicesMaxDurationFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateDeploymentServicesMaxDuration, SDKValidationError> {
+): SafeParseResult<CreateDeploymentServicesIncludeFiles, SDKValidationError> {
   return safeParse(
     jsonString,
     (x) =>
-      CreateDeploymentServicesMaxDuration$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateDeploymentServicesMaxDuration' from JSON`,
+      CreateDeploymentServicesIncludeFiles$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateDeploymentServicesIncludeFiles' from JSON`,
   );
 }
 
 /** @internal */
-export const CreateDeploymentExperimentalTriggersDeploymentsResponse2$inboundSchema:
+export const CreateDeploymentServicesExcludeFiles$inboundSchema: z.ZodType<
+  CreateDeploymentServicesExcludeFiles,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([types.string(), z.array(types.string())]);
+
+export function createDeploymentServicesExcludeFilesFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateDeploymentServicesExcludeFiles, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateDeploymentServicesExcludeFiles$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateDeploymentServicesExcludeFiles' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateDeploymentServicesDeploymentsResponseArchitecture$inboundSchema:
+  z.ZodNativeEnum<
+    typeof CreateDeploymentServicesDeploymentsResponseArchitecture
+  > = z.nativeEnum(CreateDeploymentServicesDeploymentsResponseArchitecture);
+
+/** @internal */
+export const CreateDeploymentMaxDurationDeploymentsResponse2002$inboundSchema:
+  z.ZodNativeEnum<typeof CreateDeploymentMaxDurationDeploymentsResponse2002> = z
+    .nativeEnum(CreateDeploymentMaxDurationDeploymentsResponse2002);
+
+/** @internal */
+export const CreateDeploymentServicesDeploymentsResponseMaxDuration$inboundSchema:
   z.ZodType<
-    CreateDeploymentExperimentalTriggersDeploymentsResponse2,
+    CreateDeploymentServicesDeploymentsResponseMaxDuration,
+    z.ZodTypeDef,
+    unknown
+  > = smartUnion([
+    types.number(),
+    CreateDeploymentMaxDurationDeploymentsResponse2002$inboundSchema,
+  ]);
+
+export function createDeploymentServicesDeploymentsResponseMaxDurationFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateDeploymentServicesDeploymentsResponseMaxDuration,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateDeploymentServicesDeploymentsResponseMaxDuration$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'CreateDeploymentServicesDeploymentsResponseMaxDuration' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateDeploymentExperimentalTriggersDeploymentsResponse2002$inboundSchema:
+  z.ZodType<
+    CreateDeploymentExperimentalTriggersDeploymentsResponse2002,
     z.ZodTypeDef,
     unknown
   > = z.object({
@@ -1337,25 +1562,25 @@ export const CreateDeploymentExperimentalTriggersDeploymentsResponse2$inboundSch
     maxConcurrency: types.optional(types.number()),
   });
 
-export function createDeploymentExperimentalTriggersDeploymentsResponse2FromJSON(
+export function createDeploymentExperimentalTriggersDeploymentsResponse2002FromJSON(
   jsonString: string,
 ): SafeParseResult<
-  CreateDeploymentExperimentalTriggersDeploymentsResponse2,
+  CreateDeploymentExperimentalTriggersDeploymentsResponse2002,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      CreateDeploymentExperimentalTriggersDeploymentsResponse2$inboundSchema
+      CreateDeploymentExperimentalTriggersDeploymentsResponse2002$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'CreateDeploymentExperimentalTriggersDeploymentsResponse2' from JSON`,
+    `Failed to parse 'CreateDeploymentExperimentalTriggersDeploymentsResponse2002' from JSON`,
   );
 }
 
 /** @internal */
-export const CreateDeploymentExperimentalTriggersDeploymentsResponse1$inboundSchema:
+export const CreateDeploymentExperimentalTriggersDeploymentsResponse2001$inboundSchema:
   z.ZodType<
-    CreateDeploymentExperimentalTriggersDeploymentsResponse1,
+    CreateDeploymentExperimentalTriggersDeploymentsResponse2001,
     z.ZodTypeDef,
     unknown
   > = z.object({
@@ -1368,99 +1593,105 @@ export const CreateDeploymentExperimentalTriggersDeploymentsResponse1$inboundSch
     maxConcurrency: types.optional(types.number()),
   });
 
-export function createDeploymentExperimentalTriggersDeploymentsResponse1FromJSON(
+export function createDeploymentExperimentalTriggersDeploymentsResponse2001FromJSON(
   jsonString: string,
 ): SafeParseResult<
-  CreateDeploymentExperimentalTriggersDeploymentsResponse1,
+  CreateDeploymentExperimentalTriggersDeploymentsResponse2001,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      CreateDeploymentExperimentalTriggersDeploymentsResponse1$inboundSchema
+      CreateDeploymentExperimentalTriggersDeploymentsResponse2001$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'CreateDeploymentExperimentalTriggersDeploymentsResponse1' from JSON`,
+    `Failed to parse 'CreateDeploymentExperimentalTriggersDeploymentsResponse2001' from JSON`,
   );
 }
 
 /** @internal */
-export const CreateDeploymentServicesExperimentalTriggers$inboundSchema:
+export const CreateDeploymentServicesDeploymentsResponseExperimentalTriggers$inboundSchema:
   z.ZodType<
-    CreateDeploymentServicesExperimentalTriggers,
+    CreateDeploymentServicesDeploymentsResponseExperimentalTriggers,
     z.ZodTypeDef,
     unknown
   > = z.union([
     z.lazy(() =>
-      CreateDeploymentExperimentalTriggersDeploymentsResponse1$inboundSchema
+      CreateDeploymentExperimentalTriggersDeploymentsResponse2001$inboundSchema
     ),
     z.lazy(() =>
-      CreateDeploymentExperimentalTriggersDeploymentsResponse2$inboundSchema
+      CreateDeploymentExperimentalTriggersDeploymentsResponse2002$inboundSchema
     ),
   ]);
 
-export function createDeploymentServicesExperimentalTriggersFromJSON(
+export function createDeploymentServicesDeploymentsResponseExperimentalTriggersFromJSON(
   jsonString: string,
 ): SafeParseResult<
-  CreateDeploymentServicesExperimentalTriggers,
+  CreateDeploymentServicesDeploymentsResponseExperimentalTriggers,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      CreateDeploymentServicesExperimentalTriggers$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'CreateDeploymentServicesExperimentalTriggers' from JSON`,
+      CreateDeploymentServicesDeploymentsResponseExperimentalTriggers$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'CreateDeploymentServicesDeploymentsResponseExperimentalTriggers' from JSON`,
   );
 }
 
 /** @internal */
-export const CreateDeploymentServicesFunctions$inboundSchema: z.ZodType<
-  CreateDeploymentServicesFunctions,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  architecture: types.optional(
-    CreateDeploymentServicesArchitecture$inboundSchema,
-  ),
-  memory: types.optional(types.number()),
-  maxDuration: types.optional(
-    smartUnion([
-      types.number(),
-      CreateDeploymentMaxDurationDeploymentsResponse2$inboundSchema,
-    ]),
-  ),
-  regions: types.optional(z.array(types.string())),
-  functionFailoverRegions: types.optional(z.array(types.string())),
-  runtime: types.optional(types.string()),
-  includeFiles: types.optional(types.string()),
-  excludeFiles: types.optional(types.string()),
-  experimentalTriggers: types.optional(
-    z.array(z.union([
-      z.lazy(() =>
-        CreateDeploymentExperimentalTriggersDeploymentsResponse1$inboundSchema
-      ),
-      z.lazy(() =>
-        CreateDeploymentExperimentalTriggersDeploymentsResponse2$inboundSchema
-      ),
-    ])),
-  ),
-  supportsCancellation: types.optional(types.boolean()),
-});
+export const CreateDeploymentServicesDeploymentsResponseFunctions$inboundSchema:
+  z.ZodType<
+    CreateDeploymentServicesDeploymentsResponseFunctions,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    architecture: types.optional(
+      CreateDeploymentServicesDeploymentsResponseArchitecture$inboundSchema,
+    ),
+    memory: types.optional(types.number()),
+    maxDuration: types.optional(
+      smartUnion([
+        types.number(),
+        CreateDeploymentMaxDurationDeploymentsResponse2002$inboundSchema,
+      ]),
+    ),
+    regions: types.optional(z.array(types.string())),
+    functionFailoverRegions: types.optional(z.array(types.string())),
+    runtime: types.optional(types.string()),
+    includeFiles: types.optional(types.string()),
+    excludeFiles: types.optional(types.string()),
+    experimentalTriggers: types.optional(
+      z.array(z.union([
+        z.lazy(() =>
+          CreateDeploymentExperimentalTriggersDeploymentsResponse2001$inboundSchema
+        ),
+        z.lazy(() =>
+          CreateDeploymentExperimentalTriggersDeploymentsResponse2002$inboundSchema
+        ),
+      ])),
+    ),
+    supportsCancellation: types.optional(types.boolean()),
+  });
 
-export function createDeploymentServicesFunctionsFromJSON(
+export function createDeploymentServicesDeploymentsResponseFunctionsFromJSON(
   jsonString: string,
-): SafeParseResult<CreateDeploymentServicesFunctions, SDKValidationError> {
+): SafeParseResult<
+  CreateDeploymentServicesDeploymentsResponseFunctions,
+  SDKValidationError
+> {
   return safeParse(
     jsonString,
-    (x) => CreateDeploymentServicesFunctions$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateDeploymentServicesFunctions' from JSON`,
+    (x) =>
+      CreateDeploymentServicesDeploymentsResponseFunctions$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CreateDeploymentServicesDeploymentsResponseFunctions' from JSON`,
   );
 }
 
 /** @internal */
-export const ServicesProjectSettings$inboundSchema: z.ZodType<
-  ServicesProjectSettings,
+export const CreateDeploymentServicesProjectSettings$inboundSchema: z.ZodType<
+  CreateDeploymentServicesProjectSettings,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -1480,19 +1711,25 @@ export const ServicesProjectSettings$inboundSchema: z.ZodType<
   commandForIgnoringBuildStep: z.nullable(types.string()).optional(),
 });
 
-export function servicesProjectSettingsFromJSON(
+export function createDeploymentServicesProjectSettingsFromJSON(
   jsonString: string,
-): SafeParseResult<ServicesProjectSettings, SDKValidationError> {
+): SafeParseResult<
+  CreateDeploymentServicesProjectSettings,
+  SDKValidationError
+> {
   return safeParse(
     jsonString,
-    (x) => ServicesProjectSettings$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ServicesProjectSettings' from JSON`,
+    (x) =>
+      CreateDeploymentServicesProjectSettings$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CreateDeploymentServicesProjectSettings' from JSON`,
   );
 }
 
 /** @internal */
-export const ServicesConfig$inboundSchema: z.ZodType<
-  ServicesConfig,
+export const CreateDeploymentServicesConfig$inboundSchema: z.ZodType<
+  CreateDeploymentServicesConfig,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -1512,10 +1749,12 @@ export const ServicesConfig$inboundSchema: z.ZodType<
   zeroConfig: types.optional(types.boolean()),
   import: types.optional(z.record(types.string())),
   functions: types.optional(
-    z.record(z.lazy(() => CreateDeploymentServicesFunctions$inboundSchema)),
+    z.record(z.lazy(() =>
+      CreateDeploymentServicesDeploymentsResponseFunctions$inboundSchema
+    )),
   ),
   projectSettings: types.optional(
-    z.lazy(() => ServicesProjectSettings$inboundSchema),
+    z.lazy(() => CreateDeploymentServicesProjectSettings$inboundSchema),
   ),
   outputDirectory: types.optional(types.string()),
   installCommand: types.optional(types.string()),
@@ -1527,95 +1766,106 @@ export const ServicesConfig$inboundSchema: z.ZodType<
   serviceName: types.optional(types.string()),
 });
 
-export function servicesConfigFromJSON(
+export function createDeploymentServicesConfigFromJSON(
   jsonString: string,
-): SafeParseResult<ServicesConfig, SDKValidationError> {
+): SafeParseResult<CreateDeploymentServicesConfig, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ServicesConfig$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ServicesConfig' from JSON`,
+    (x) => CreateDeploymentServicesConfig$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateDeploymentServicesConfig' from JSON`,
   );
 }
 
 /** @internal */
-export const Builder$inboundSchema: z.ZodType<Builder, z.ZodTypeDef, unknown> =
-  z.object({
-    use: types.string(),
-    src: types.optional(types.string()),
-    config: types.optional(z.lazy(() => ServicesConfig$inboundSchema)),
-  });
+export const CreateDeploymentServicesBuilder$inboundSchema: z.ZodType<
+  CreateDeploymentServicesBuilder,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  use: types.string(),
+  src: types.optional(types.string()),
+  config: types.optional(
+    z.lazy(() => CreateDeploymentServicesConfig$inboundSchema),
+  ),
+});
 
-export function builderFromJSON(
+export function createDeploymentServicesBuilderFromJSON(
   jsonString: string,
-): SafeParseResult<Builder, SDKValidationError> {
+): SafeParseResult<CreateDeploymentServicesBuilder, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Builder$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Builder' from JSON`,
+    (x) => CreateDeploymentServicesBuilder$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateDeploymentServicesBuilder' from JSON`,
   );
 }
 
 /** @internal */
-export const RoutePrefixSource$inboundSchema: z.ZodNativeEnum<
-  typeof RoutePrefixSource
-> = z.nativeEnum(RoutePrefixSource);
+export const ServicesRoutePrefixSource$inboundSchema: z.ZodNativeEnum<
+  typeof ServicesRoutePrefixSource
+> = z.nativeEnum(ServicesRoutePrefixSource);
 
 /** @internal */
-export const Schedule$inboundSchema: z.ZodType<
-  Schedule,
+export const ServicesSchedule$inboundSchema: z.ZodType<
+  ServicesSchedule,
   z.ZodTypeDef,
   unknown
 > = smartUnion([types.string(), z.array(types.string())]);
 
-export function scheduleFromJSON(
+export function servicesScheduleFromJSON(
   jsonString: string,
-): SafeParseResult<Schedule, SDKValidationError> {
+): SafeParseResult<ServicesSchedule, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Schedule$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Schedule' from JSON`,
+    (x) => ServicesSchedule$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ServicesSchedule' from JSON`,
   );
 }
 
 /** @internal */
-export const Topics2$inboundSchema: z.ZodType<Topics2, z.ZodTypeDef, unknown> =
-  z.object({
-    topic: types.string(),
-    retryAfterSeconds: types.optional(types.number()),
-    initialDelaySeconds: types.optional(types.number()),
-  });
+export const CreateDeploymentTopics2$inboundSchema: z.ZodType<
+  CreateDeploymentTopics2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  topic: types.string(),
+  retryAfterSeconds: types.optional(types.number()),
+  initialDelaySeconds: types.optional(types.number()),
+});
 
-export function topics2FromJSON(
+export function createDeploymentTopics2FromJSON(
   jsonString: string,
-): SafeParseResult<Topics2, SDKValidationError> {
+): SafeParseResult<CreateDeploymentTopics2, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Topics2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Topics2' from JSON`,
+    (x) => CreateDeploymentTopics2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateDeploymentTopics2' from JSON`,
   );
 }
 
 /** @internal */
-export const Topics$inboundSchema: z.ZodType<Topics, z.ZodTypeDef, unknown> =
-  smartUnion([
-    z.array(types.string()),
-    z.array(z.lazy(() => Topics2$inboundSchema)),
-  ]);
+export const ServicesTopics$inboundSchema: z.ZodType<
+  ServicesTopics,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  z.array(types.string()),
+  z.array(z.lazy(() => CreateDeploymentTopics2$inboundSchema)),
+]);
 
-export function topicsFromJSON(
+export function servicesTopicsFromJSON(
   jsonString: string,
-): SafeParseResult<Topics, SDKValidationError> {
+): SafeParseResult<ServicesTopics, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Topics$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Topics' from JSON`,
+    (x) => ServicesTopics$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ServicesTopics' from JSON`,
   );
 }
 
 /** @internal */
-export const CreateDeploymentServicesType$inboundSchema: z.ZodNativeEnum<
-  typeof CreateDeploymentServicesType
-> = z.nativeEnum(CreateDeploymentServicesType);
+export const CreateDeploymentServicesDeploymentsType$inboundSchema:
+  z.ZodNativeEnum<typeof CreateDeploymentServicesDeploymentsType> = z
+    .nativeEnum(CreateDeploymentServicesDeploymentsType);
 
 /** @internal */
 export const CreateDeploymentServicesEnv$inboundSchema: z.ZodType<
@@ -1623,7 +1873,7 @@ export const CreateDeploymentServicesEnv$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: CreateDeploymentServicesType$inboundSchema,
+  type: CreateDeploymentServicesDeploymentsType$inboundSchema,
   service: types.string(),
 });
 
@@ -1638,26 +1888,26 @@ export function createDeploymentServicesEnvFromJSON(
 }
 
 /** @internal */
-export const Services1$inboundSchema: z.ZodType<
-  Services1,
+export const CreateDeploymentServices1$inboundSchema: z.ZodType<
+  CreateDeploymentServices1,
   z.ZodTypeDef,
   unknown
 > = z.object({
   schema: types.literal("experimentalServices"),
   name: types.string(),
-  type: ServicesType$inboundSchema,
-  trigger: types.optional(Trigger$inboundSchema),
+  type: CreateDeploymentServicesType$inboundSchema,
+  trigger: types.optional(ServicesTrigger$inboundSchema),
   group: types.optional(types.string()),
   workspace: types.string(),
   entrypoint: types.optional(types.string()),
   framework: types.optional(types.string()),
-  builder: z.lazy(() => Builder$inboundSchema),
+  builder: z.lazy(() => CreateDeploymentServicesBuilder$inboundSchema),
   runtime: types.optional(types.string()),
   buildCommand: types.optional(types.string()),
   installCommand: types.optional(types.string()),
   preDeployCommand: types.optional(types.string()),
   routePrefix: types.optional(types.string()),
-  routePrefixSource: types.optional(RoutePrefixSource$inboundSchema),
+  routePrefixSource: types.optional(ServicesRoutePrefixSource$inboundSchema),
   subdomain: types.optional(types.string()),
   schedule: types.optional(
     smartUnion([types.string(), z.array(types.string())]),
@@ -1666,7 +1916,7 @@ export const Services1$inboundSchema: z.ZodType<
   topics: types.optional(
     smartUnion([
       z.array(types.string()),
-      z.array(z.lazy(() => Topics2$inboundSchema)),
+      z.array(z.lazy(() => CreateDeploymentTopics2$inboundSchema)),
     ]),
   ),
   env: types.optional(
@@ -1674,44 +1924,45 @@ export const Services1$inboundSchema: z.ZodType<
   ),
 });
 
-export function services1FromJSON(
+export function createDeploymentServices1FromJSON(
   jsonString: string,
-): SafeParseResult<Services1, SDKValidationError> {
+): SafeParseResult<CreateDeploymentServices1, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Services1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Services1' from JSON`,
+    (x) => CreateDeploymentServices1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateDeploymentServices1' from JSON`,
   );
 }
 
 /** @internal */
-export const Services$inboundSchema: z.ZodType<
-  Services,
+export const ResponseBodyServices$inboundSchema: z.ZodType<
+  ResponseBodyServices,
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => Services1$inboundSchema),
-  z.lazy(() => Services2$inboundSchema),
+  z.lazy(() => CreateDeploymentServices1$inboundSchema),
+  z.lazy(() => CreateDeploymentServices2$inboundSchema),
 ]);
 
-export function servicesFromJSON(
+export function responseBodyServicesFromJSON(
   jsonString: string,
-): SafeParseResult<Services, SDKValidationError> {
+): SafeParseResult<ResponseBodyServices, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Services$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Services' from JSON`,
+    (x) => ResponseBodyServices$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyServices' from JSON`,
   );
 }
 
 /** @internal */
-export const CreateDeploymentGitRepoDeploymentsOwnerType$inboundSchema:
-  z.ZodNativeEnum<typeof CreateDeploymentGitRepoDeploymentsOwnerType> = z
-    .nativeEnum(CreateDeploymentGitRepoDeploymentsOwnerType);
+export const CreateDeploymentGitRepoDeploymentsResponse200OwnerType$inboundSchema:
+  z.ZodNativeEnum<
+    typeof CreateDeploymentGitRepoDeploymentsResponse200OwnerType
+  > = z.nativeEnum(CreateDeploymentGitRepoDeploymentsResponse200OwnerType);
 
 /** @internal */
-export const GitRepo4$inboundSchema: z.ZodType<
-  GitRepo4,
+export const CreateDeploymentGitRepo4$inboundSchema: z.ZodType<
+  CreateDeploymentGitRepo4,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -1722,27 +1973,28 @@ export const GitRepo4$inboundSchema: z.ZodType<
   defaultBranch: types.string(),
   name: types.string(),
   private: types.boolean(),
-  ownerType: CreateDeploymentGitRepoDeploymentsOwnerType$inboundSchema,
+  ownerType:
+    CreateDeploymentGitRepoDeploymentsResponse200OwnerType$inboundSchema,
 });
 
-export function gitRepo4FromJSON(
+export function createDeploymentGitRepo4FromJSON(
   jsonString: string,
-): SafeParseResult<GitRepo4, SDKValidationError> {
+): SafeParseResult<CreateDeploymentGitRepo4, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GitRepo4$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GitRepo4' from JSON`,
+    (x) => CreateDeploymentGitRepo4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateDeploymentGitRepo4' from JSON`,
   );
 }
 
 /** @internal */
-export const CreateDeploymentGitRepoOwnerType$inboundSchema: z.ZodNativeEnum<
-  typeof CreateDeploymentGitRepoOwnerType
-> = z.nativeEnum(CreateDeploymentGitRepoOwnerType);
+export const CreateDeploymentGitRepoDeploymentsResponseOwnerType$inboundSchema:
+  z.ZodNativeEnum<typeof CreateDeploymentGitRepoDeploymentsResponseOwnerType> =
+    z.nativeEnum(CreateDeploymentGitRepoDeploymentsResponseOwnerType);
 
 /** @internal */
-export const GitRepo3$inboundSchema: z.ZodType<
-  GitRepo3,
+export const CreateDeploymentGitRepo3$inboundSchema: z.ZodType<
+  CreateDeploymentGitRepo3,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -1755,27 +2007,27 @@ export const GitRepo3$inboundSchema: z.ZodType<
   defaultBranch: types.string(),
   name: types.string(),
   private: types.boolean(),
-  ownerType: CreateDeploymentGitRepoOwnerType$inboundSchema,
+  ownerType: CreateDeploymentGitRepoDeploymentsResponseOwnerType$inboundSchema,
 });
 
-export function gitRepo3FromJSON(
+export function createDeploymentGitRepo3FromJSON(
   jsonString: string,
-): SafeParseResult<GitRepo3, SDKValidationError> {
+): SafeParseResult<CreateDeploymentGitRepo3, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GitRepo3$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GitRepo3' from JSON`,
+    (x) => CreateDeploymentGitRepo3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateDeploymentGitRepo3' from JSON`,
   );
 }
 
 /** @internal */
-export const GitRepoOwnerType$inboundSchema: z.ZodNativeEnum<
-  typeof GitRepoOwnerType
-> = z.nativeEnum(GitRepoOwnerType);
+export const CreateDeploymentGitRepoDeploymentsOwnerType$inboundSchema:
+  z.ZodNativeEnum<typeof CreateDeploymentGitRepoDeploymentsOwnerType> = z
+    .nativeEnum(CreateDeploymentGitRepoDeploymentsOwnerType);
 
 /** @internal */
-export const GitRepo2$inboundSchema: z.ZodType<
-  GitRepo2,
+export const CreateDeploymentGitRepo2$inboundSchema: z.ZodType<
+  CreateDeploymentGitRepo2,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -1788,26 +2040,27 @@ export const GitRepo2$inboundSchema: z.ZodType<
   defaultBranch: types.string(),
   name: types.string(),
   private: types.boolean(),
-  ownerType: GitRepoOwnerType$inboundSchema,
+  ownerType: CreateDeploymentGitRepoDeploymentsOwnerType$inboundSchema,
 });
 
-export function gitRepo2FromJSON(
+export function createDeploymentGitRepo2FromJSON(
   jsonString: string,
-): SafeParseResult<GitRepo2, SDKValidationError> {
+): SafeParseResult<CreateDeploymentGitRepo2, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GitRepo2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GitRepo2' from JSON`,
+    (x) => CreateDeploymentGitRepo2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateDeploymentGitRepo2' from JSON`,
   );
 }
 
 /** @internal */
-export const OwnerType$inboundSchema: z.ZodNativeEnum<typeof OwnerType> = z
-  .nativeEnum(OwnerType);
+export const CreateDeploymentGitRepoOwnerType$inboundSchema: z.ZodNativeEnum<
+  typeof CreateDeploymentGitRepoOwnerType
+> = z.nativeEnum(CreateDeploymentGitRepoOwnerType);
 
 /** @internal */
-export const GitRepo1$inboundSchema: z.ZodType<
-  GitRepo1,
+export const CreateDeploymentGitRepo1$inboundSchema: z.ZodType<
+  CreateDeploymentGitRepo1,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -1819,49 +2072,55 @@ export const GitRepo1$inboundSchema: z.ZodType<
   defaultBranch: types.string(),
   name: types.string(),
   private: types.boolean(),
-  ownerType: OwnerType$inboundSchema,
+  ownerType: CreateDeploymentGitRepoOwnerType$inboundSchema,
 });
 
-export function gitRepo1FromJSON(
+export function createDeploymentGitRepo1FromJSON(
   jsonString: string,
-): SafeParseResult<GitRepo1, SDKValidationError> {
+): SafeParseResult<CreateDeploymentGitRepo1, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GitRepo1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GitRepo1' from JSON`,
+    (x) => CreateDeploymentGitRepo1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateDeploymentGitRepo1' from JSON`,
   );
 }
 
 /** @internal */
-export const GitRepo$inboundSchema: z.ZodType<GitRepo, z.ZodTypeDef, unknown> =
-  z.union([
-    z.lazy(() => GitRepo1$inboundSchema),
-    z.lazy(() => GitRepo2$inboundSchema),
-    z.lazy(() => GitRepo3$inboundSchema),
-    z.lazy(() => GitRepo4$inboundSchema),
-  ]);
+export const ResponseBodyGitRepo$inboundSchema: z.ZodType<
+  ResponseBodyGitRepo,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() => CreateDeploymentGitRepo1$inboundSchema),
+  z.lazy(() => CreateDeploymentGitRepo2$inboundSchema),
+  z.lazy(() => CreateDeploymentGitRepo3$inboundSchema),
+  z.lazy(() => CreateDeploymentGitRepo4$inboundSchema),
+]);
 
-export function gitRepoFromJSON(
+export function responseBodyGitRepoFromJSON(
   jsonString: string,
-): SafeParseResult<GitRepo, SDKValidationError> {
+): SafeParseResult<ResponseBodyGitRepo, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GitRepo$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GitRepo' from JSON`,
+    (x) => ResponseBodyGitRepo$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyGitRepo' from JSON`,
   );
 }
 
 /** @internal */
-export const Flags2$inboundSchema: z.ZodType<Flags2, z.ZodTypeDef, unknown> = z
-  .object({});
+export const CreateDeploymentFlags2$inboundSchema: z.ZodType<
+  CreateDeploymentFlags2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({});
 
-export function flags2FromJSON(
+export function createDeploymentFlags2FromJSON(
   jsonString: string,
-): SafeParseResult<Flags2, SDKValidationError> {
+): SafeParseResult<CreateDeploymentFlags2, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Flags2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Flags2' from JSON`,
+    (x) => CreateDeploymentFlags2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateDeploymentFlags2' from JSON`,
   );
 }
 
@@ -1909,44 +2168,50 @@ export function createDeploymentFlagsDefinitionsFromJSON(
 }
 
 /** @internal */
-export const Flags1$inboundSchema: z.ZodType<Flags1, z.ZodTypeDef, unknown> = z
-  .object({
-    definitions: z.record(
-      z.lazy(() => CreateDeploymentFlagsDefinitions$inboundSchema),
-    ),
-  });
+export const CreateDeploymentFlags1$inboundSchema: z.ZodType<
+  CreateDeploymentFlags1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  definitions: z.record(
+    z.lazy(() => CreateDeploymentFlagsDefinitions$inboundSchema),
+  ),
+});
 
-export function flags1FromJSON(
+export function createDeploymentFlags1FromJSON(
   jsonString: string,
-): SafeParseResult<Flags1, SDKValidationError> {
+): SafeParseResult<CreateDeploymentFlags1, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Flags1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Flags1' from JSON`,
+    (x) => CreateDeploymentFlags1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateDeploymentFlags1' from JSON`,
   );
 }
 
 /** @internal */
-export const Flags$inboundSchema: z.ZodType<Flags, z.ZodTypeDef, unknown> =
-  smartUnion([
-    z.lazy(() => Flags1$inboundSchema),
-    z.array(z.lazy(() => Flags2$inboundSchema)),
-  ]);
+export const ResponseBodyFlags$inboundSchema: z.ZodType<
+  ResponseBodyFlags,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  z.lazy(() => CreateDeploymentFlags1$inboundSchema),
+  z.array(z.lazy(() => CreateDeploymentFlags2$inboundSchema)),
+]);
 
-export function flagsFromJSON(
+export function responseBodyFlagsFromJSON(
   jsonString: string,
-): SafeParseResult<Flags, SDKValidationError> {
+): SafeParseResult<ResponseBodyFlags, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Flags$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Flags' from JSON`,
+    (x) => ResponseBodyFlags$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyFlags' from JSON`,
   );
 }
 
 /** @internal */
-export const MfeConfigUploadState$inboundSchema: z.ZodNativeEnum<
-  typeof MfeConfigUploadState
-> = z.nativeEnum(MfeConfigUploadState);
+export const MicrofrontendsMfeConfigUploadState$inboundSchema: z.ZodNativeEnum<
+  typeof MicrofrontendsMfeConfigUploadState
+> = z.nativeEnum(MicrofrontendsMfeConfigUploadState);
 
 /** @internal */
 export const CreateDeploymentMicrofrontends2$inboundSchema: z.ZodType<
@@ -1955,7 +2220,9 @@ export const CreateDeploymentMicrofrontends2$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   isDefaultApp: types.literal(true),
-  mfeConfigUploadState: types.optional(MfeConfigUploadState$inboundSchema),
+  mfeConfigUploadState: types.optional(
+    MicrofrontendsMfeConfigUploadState$inboundSchema,
+  ),
   defaultAppProjectName: types.string(),
   defaultRoute: types.optional(types.string()),
   groupIds: z.array(types.string()),
@@ -1994,8 +2261,8 @@ export function createDeploymentMicrofrontends1FromJSON(
 }
 
 /** @internal */
-export const CreateDeploymentMicrofrontends$inboundSchema: z.ZodType<
-  CreateDeploymentMicrofrontends,
+export const ResponseBodyMicrofrontends$inboundSchema: z.ZodType<
+  ResponseBodyMicrofrontends,
   z.ZodTypeDef,
   unknown
 > = smartUnion([
@@ -2003,233 +2270,244 @@ export const CreateDeploymentMicrofrontends$inboundSchema: z.ZodType<
   z.lazy(() => CreateDeploymentMicrofrontends1$inboundSchema),
 ]);
 
-export function createDeploymentMicrofrontendsFromJSON(
+export function responseBodyMicrofrontendsFromJSON(
   jsonString: string,
-): SafeParseResult<CreateDeploymentMicrofrontends, SDKValidationError> {
+): SafeParseResult<ResponseBodyMicrofrontends, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CreateDeploymentMicrofrontends$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateDeploymentMicrofrontends' from JSON`,
+    (x) => ResponseBodyMicrofrontends$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyMicrofrontends' from JSON`,
   );
 }
 
 /** @internal */
-export const FunctionType$inboundSchema: z.ZodNativeEnum<typeof FunctionType> =
-  z.nativeEnum(FunctionType);
+export const ResponseBodyFunctionType$inboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyFunctionType
+> = z.nativeEnum(ResponseBodyFunctionType);
 
 /** @internal */
-export const FunctionMemoryType$inboundSchema: z.ZodNativeEnum<
-  typeof FunctionMemoryType
-> = z.nativeEnum(FunctionMemoryType);
+export const ResponseBodyFunctionMemoryType$inboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyFunctionMemoryType
+> = z.nativeEnum(ResponseBodyFunctionMemoryType);
 
 /** @internal */
-export const CreateDeploymentConfiguration$inboundSchema: z.ZodNativeEnum<
-  typeof CreateDeploymentConfiguration
-> = z.nativeEnum(CreateDeploymentConfiguration);
+export const CreateDeploymentResponseBodyConfiguration$inboundSchema:
+  z.ZodNativeEnum<typeof CreateDeploymentResponseBodyConfiguration> = z
+    .nativeEnum(CreateDeploymentResponseBodyConfiguration);
 
 /** @internal */
-export const CreateDeploymentBuildQueue$inboundSchema: z.ZodType<
-  CreateDeploymentBuildQueue,
+export const CreateDeploymentResponseBodyBuildQueue$inboundSchema: z.ZodType<
+  CreateDeploymentResponseBodyBuildQueue,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  configuration: types.optional(CreateDeploymentConfiguration$inboundSchema),
-});
-
-export function createDeploymentBuildQueueFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateDeploymentBuildQueue, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateDeploymentBuildQueue$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateDeploymentBuildQueue' from JSON`,
-  );
-}
-
-/** @internal */
-export const ElasticConcurrency$inboundSchema: z.ZodNativeEnum<
-  typeof ElasticConcurrency
-> = z.nativeEnum(ElasticConcurrency);
-
-/** @internal */
-export const CreateDeploymentPurchaseType$inboundSchema: z.ZodNativeEnum<
-  typeof CreateDeploymentPurchaseType
-> = z.nativeEnum(CreateDeploymentPurchaseType);
-
-/** @internal */
-export const CreateDeploymentBuildMachine$inboundSchema: z.ZodType<
-  CreateDeploymentBuildMachine,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  purchaseType: z.nullable(CreateDeploymentPurchaseType$inboundSchema)
-    .optional(),
-});
-
-export function createDeploymentBuildMachineFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateDeploymentBuildMachine, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateDeploymentBuildMachine$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateDeploymentBuildMachine' from JSON`,
-  );
-}
-
-/** @internal */
-export const CreateDeploymentResourceConfig$inboundSchema: z.ZodType<
-  CreateDeploymentResourceConfig,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  buildQueue: types.optional(
-    z.lazy(() => CreateDeploymentBuildQueue$inboundSchema),
-  ),
-  elasticConcurrency: types.optional(ElasticConcurrency$inboundSchema),
-  buildMachine: types.optional(
-    z.lazy(() => CreateDeploymentBuildMachine$inboundSchema),
+  configuration: types.optional(
+    CreateDeploymentResponseBodyConfiguration$inboundSchema,
   ),
 });
 
-export function createDeploymentResourceConfigFromJSON(
+export function createDeploymentResponseBodyBuildQueueFromJSON(
   jsonString: string,
-): SafeParseResult<CreateDeploymentResourceConfig, SDKValidationError> {
+): SafeParseResult<CreateDeploymentResponseBodyBuildQueue, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CreateDeploymentResourceConfig$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateDeploymentResourceConfig' from JSON`,
+    (x) =>
+      CreateDeploymentResponseBodyBuildQueue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateDeploymentResponseBodyBuildQueue' from JSON`,
   );
 }
 
 /** @internal */
-export const CreateDeploymentConfig$inboundSchema: z.ZodType<
-  CreateDeploymentConfig,
+export const ResponseBodyElasticConcurrency$inboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyElasticConcurrency
+> = z.nativeEnum(ResponseBodyElasticConcurrency);
+
+/** @internal */
+export const ResponseBodyPurchaseType$inboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyPurchaseType
+> = z.nativeEnum(ResponseBodyPurchaseType);
+
+/** @internal */
+export const ResponseBodyBuildMachine$inboundSchema: z.ZodType<
+  ResponseBodyBuildMachine,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  purchaseType: z.nullable(ResponseBodyPurchaseType$inboundSchema).optional(),
+});
+
+export function responseBodyBuildMachineFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodyBuildMachine, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodyBuildMachine$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyBuildMachine' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateDeploymentResponseBodyResourceConfig$inboundSchema:
+  z.ZodType<CreateDeploymentResponseBodyResourceConfig, z.ZodTypeDef, unknown> =
+    z.object({
+      buildQueue: types.optional(
+        z.lazy(() => CreateDeploymentResponseBodyBuildQueue$inboundSchema),
+      ),
+      elasticConcurrency: types.optional(
+        ResponseBodyElasticConcurrency$inboundSchema,
+      ),
+      buildMachine: types.optional(
+        z.lazy(() => ResponseBodyBuildMachine$inboundSchema),
+      ),
+    });
+
+export function createDeploymentResponseBodyResourceConfigFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateDeploymentResponseBodyResourceConfig,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateDeploymentResponseBodyResourceConfig$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CreateDeploymentResponseBodyResourceConfig' from JSON`,
+  );
+}
+
+/** @internal */
+export const ResponseBodyConfig$inboundSchema: z.ZodType<
+  ResponseBodyConfig,
   z.ZodTypeDef,
   unknown
 > = z.object({
   version: types.optional(types.number()),
-  functionType: FunctionType$inboundSchema,
-  functionMemoryType: FunctionMemoryType$inboundSchema,
+  functionType: ResponseBodyFunctionType$inboundSchema,
+  functionMemoryType: ResponseBodyFunctionMemoryType$inboundSchema,
   functionTimeout: types.nullable(types.number()),
   secureComputePrimaryRegion: types.nullable(types.string()),
   secureComputeFallbackRegion: types.nullable(types.string()),
   isUsingActiveCPU: types.optional(types.boolean()),
   resourceConfig: types.optional(
-    z.lazy(() => CreateDeploymentResourceConfig$inboundSchema),
+    z.lazy(() => CreateDeploymentResponseBodyResourceConfig$inboundSchema),
   ),
 });
 
-export function createDeploymentConfigFromJSON(
+export function responseBodyConfigFromJSON(
   jsonString: string,
-): SafeParseResult<CreateDeploymentConfig, SDKValidationError> {
+): SafeParseResult<ResponseBodyConfig, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CreateDeploymentConfig$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateDeploymentConfig' from JSON`,
+    (x) => ResponseBodyConfig$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyConfig' from JSON`,
   );
 }
 
 /** @internal */
-export const CreateDeploymentDeploymentsState$inboundSchema: z.ZodNativeEnum<
-  typeof CreateDeploymentDeploymentsState
-> = z.nativeEnum(CreateDeploymentDeploymentsState);
+export const CreateDeploymentResponseBodyDeploymentsState$inboundSchema:
+  z.ZodNativeEnum<typeof CreateDeploymentResponseBodyDeploymentsState> = z
+    .nativeEnum(CreateDeploymentResponseBodyDeploymentsState);
 
 /** @internal */
-export const DeploymentAlias$inboundSchema: z.ZodType<
-  DeploymentAlias,
+export const ResponseBodyDeploymentAlias$inboundSchema: z.ZodType<
+  ResponseBodyDeploymentAlias,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  state: CreateDeploymentDeploymentsState$inboundSchema,
+  state: CreateDeploymentResponseBodyDeploymentsState$inboundSchema,
   startedAt: types.number(),
   completedAt: types.optional(types.number()),
 });
 
-export function deploymentAliasFromJSON(
+export function responseBodyDeploymentAliasFromJSON(
   jsonString: string,
-): SafeParseResult<DeploymentAlias, SDKValidationError> {
+): SafeParseResult<ResponseBodyDeploymentAlias, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => DeploymentAlias$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DeploymentAlias' from JSON`,
+    (x) => ResponseBodyDeploymentAlias$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyDeploymentAlias' from JSON`,
   );
 }
 
 /** @internal */
-export const CreateDeploymentChecks$inboundSchema: z.ZodType<
-  CreateDeploymentChecks,
+export const CreateDeploymentResponseBodyChecks$inboundSchema: z.ZodType<
+  CreateDeploymentResponseBodyChecks,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "deployment-alias": z.lazy(() => DeploymentAlias$inboundSchema),
+  "deployment-alias": z.lazy(() => ResponseBodyDeploymentAlias$inboundSchema),
 }).transform((v) => {
   return remap$(v, {
     "deployment-alias": "deploymentAlias",
   });
 });
 
-export function createDeploymentChecksFromJSON(
+export function createDeploymentResponseBodyChecksFromJSON(
   jsonString: string,
-): SafeParseResult<CreateDeploymentChecks, SDKValidationError> {
+): SafeParseResult<CreateDeploymentResponseBodyChecks, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CreateDeploymentChecks$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateDeploymentChecks' from JSON`,
+    (x) =>
+      CreateDeploymentResponseBodyChecks$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateDeploymentResponseBodyChecks' from JSON`,
   );
 }
 
 /** @internal */
-export const BlockCode$inboundSchema: z.ZodNativeEnum<typeof BlockCode> = z
-  .nativeEnum(BlockCode);
+export const ResponseBodyBlockCode$inboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyBlockCode
+> = z.nativeEnum(ResponseBodyBlockCode);
 
 /** @internal */
-export const CreateDeploymentGitUserId$inboundSchema: z.ZodType<
-  CreateDeploymentGitUserId,
+export const ResponseBodyGitUserId$inboundSchema: z.ZodType<
+  ResponseBodyGitUserId,
   z.ZodTypeDef,
   unknown
 > = smartUnion([types.string(), types.number()]);
 
-export function createDeploymentGitUserIdFromJSON(
+export function responseBodyGitUserIdFromJSON(
   jsonString: string,
-): SafeParseResult<CreateDeploymentGitUserId, SDKValidationError> {
+): SafeParseResult<ResponseBodyGitUserId, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CreateDeploymentGitUserId$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateDeploymentGitUserId' from JSON`,
+    (x) => ResponseBodyGitUserId$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyGitUserId' from JSON`,
   );
 }
 
 /** @internal */
-export const CreateDeploymentGitProvider$inboundSchema: z.ZodNativeEnum<
-  typeof CreateDeploymentGitProvider
-> = z.nativeEnum(CreateDeploymentGitProvider);
+export const ResponseBodyGitProvider$inboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyGitProvider
+> = z.nativeEnum(ResponseBodyGitProvider);
 
 /** @internal */
-export const SeatBlock$inboundSchema: z.ZodType<
-  SeatBlock,
+export const ResponseBodySeatBlock$inboundSchema: z.ZodType<
+  ResponseBodySeatBlock,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  blockCode: BlockCode$inboundSchema,
+  blockCode: ResponseBodyBlockCode$inboundSchema,
   userId: types.optional(types.string()),
   isVerified: types.optional(types.boolean()),
   gitUserId: types.optional(smartUnion([types.string(), types.number()])),
-  gitProvider: types.optional(CreateDeploymentGitProvider$inboundSchema),
+  gitProvider: types.optional(ResponseBodyGitProvider$inboundSchema),
 });
 
-export function seatBlockFromJSON(
+export function responseBodySeatBlockFromJSON(
   jsonString: string,
-): SafeParseResult<SeatBlock, SDKValidationError> {
+): SafeParseResult<ResponseBodySeatBlock, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => SeatBlock$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'SeatBlock' from JSON`,
+    (x) => ResponseBodySeatBlock$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodySeatBlock' from JSON`,
   );
 }
 
 /** @internal */
-export const CommitMeta$inboundSchema: z.ZodType<
-  CommitMeta,
+export const ResponseBodyCommitMeta$inboundSchema: z.ZodType<
+  ResponseBodyCommitMeta,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -2238,55 +2516,58 @@ export const CommitMeta$inboundSchema: z.ZodType<
   isVerified: types.optional(types.boolean()),
 });
 
-export function commitMetaFromJSON(
+export function responseBodyCommitMetaFromJSON(
   jsonString: string,
-): SafeParseResult<CommitMeta, SDKValidationError> {
+): SafeParseResult<ResponseBodyCommitMeta, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CommitMeta$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CommitMeta' from JSON`,
+    (x) => ResponseBodyCommitMeta$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyCommitMeta' from JSON`,
   );
 }
 
 /** @internal */
-export const CreateDeploymentId$inboundSchema: z.ZodType<
-  CreateDeploymentId,
+export const CreateDeploymentResponseBodyId$inboundSchema: z.ZodType<
+  CreateDeploymentResponseBodyId,
   z.ZodTypeDef,
   unknown
 > = smartUnion([types.string(), types.number()]);
 
-export function createDeploymentIdFromJSON(
+export function createDeploymentResponseBodyIdFromJSON(
   jsonString: string,
-): SafeParseResult<CreateDeploymentId, SDKValidationError> {
+): SafeParseResult<CreateDeploymentResponseBodyId, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CreateDeploymentId$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateDeploymentId' from JSON`,
+    (x) => CreateDeploymentResponseBodyId$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateDeploymentResponseBodyId' from JSON`,
   );
 }
 
 /** @internal */
-export const GitUser$inboundSchema: z.ZodType<GitUser, z.ZodTypeDef, unknown> =
-  z.object({
-    id: smartUnion([types.string(), types.number()]),
-    login: types.string(),
-    type: types.optional(types.string()),
-    provider: types.optional(types.string()),
-  });
+export const ResponseBodyGitUser$inboundSchema: z.ZodType<
+  ResponseBodyGitUser,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  id: smartUnion([types.string(), types.number()]),
+  login: types.string(),
+  type: types.optional(types.string()),
+  provider: types.optional(types.string()),
+});
 
-export function gitUserFromJSON(
+export function responseBodyGitUserFromJSON(
   jsonString: string,
-): SafeParseResult<GitUser, SDKValidationError> {
+): SafeParseResult<ResponseBodyGitUser, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GitUser$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GitUser' from JSON`,
+    (x) => ResponseBodyGitUser$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyGitUser' from JSON`,
   );
 }
 
 /** @internal */
-export const VercelUser$inboundSchema: z.ZodType<
-  VercelUser,
+export const ResponseBodyVercelUser$inboundSchema: z.ZodType<
+  ResponseBodyVercelUser,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -2295,145 +2576,177 @@ export const VercelUser$inboundSchema: z.ZodType<
   teamRoles: types.optional(z.array(types.string())),
 });
 
-export function vercelUserFromJSON(
+export function responseBodyVercelUserFromJSON(
   jsonString: string,
-): SafeParseResult<VercelUser, SDKValidationError> {
+): SafeParseResult<ResponseBodyVercelUser, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => VercelUser$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'VercelUser' from JSON`,
+    (x) => ResponseBodyVercelUser$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyVercelUser' from JSON`,
   );
 }
 
 /** @internal */
-export const CreateDeploymentAttribution$inboundSchema: z.ZodType<
-  CreateDeploymentAttribution,
+export const ResponseBodyAttribution$inboundSchema: z.ZodType<
+  ResponseBodyAttribution,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  commitMeta: types.optional(z.lazy(() => CommitMeta$inboundSchema)),
-  gitUser: types.optional(z.lazy(() => GitUser$inboundSchema)),
-  vercelUser: types.optional(z.lazy(() => VercelUser$inboundSchema)),
+  commitMeta: types.optional(
+    z.lazy(() => ResponseBodyCommitMeta$inboundSchema),
+  ),
+  gitUser: types.optional(z.lazy(() => ResponseBodyGitUser$inboundSchema)),
+  vercelUser: types.optional(
+    z.lazy(() => ResponseBodyVercelUser$inboundSchema),
+  ),
 });
 
-export function createDeploymentAttributionFromJSON(
+export function responseBodyAttributionFromJSON(
   jsonString: string,
-): SafeParseResult<CreateDeploymentAttribution, SDKValidationError> {
+): SafeParseResult<ResponseBodyAttribution, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CreateDeploymentAttribution$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateDeploymentAttribution' from JSON`,
+    (x) => ResponseBodyAttribution$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyAttribution' from JSON`,
   );
 }
 
 /** @internal */
-export const CreateDeploymentResponseBody$inboundSchema: z.ZodType<
-  CreateDeploymentResponseBody,
+export const CreateDeploymentResponseBody2$inboundSchema: z.ZodType<
+  CreateDeploymentResponseBody2,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  aliasAssignedAt: z.nullable(AliasAssignedAt$inboundSchema).optional(),
+  aliasAssignedAt: z.nullable(ResponseBodyAliasAssignedAt$inboundSchema)
+    .optional(),
   alwaysRefuseToBuild: types.optional(types.boolean()),
-  build: Build$inboundSchema,
+  build: ResponseBodyBuild$inboundSchema,
   buildArtifactUrls: types.optional(z.array(types.string())),
-  builds: types.optional(z.array(Builds$inboundSchema)),
+  builds: types.optional(z.array(ResponseBodyBuilds$inboundSchema)),
   env: z.array(types.string()),
   inspectorUrl: types.nullable(types.string()),
   isInConcurrentBuildsQueue: types.boolean(),
   isInSystemBuildsQueue: types.boolean(),
-  projectSettings: CreateDeploymentProjectSettings$inboundSchema,
-  integrations: types.optional(Integrations$inboundSchema),
-  images: types.optional(Images$inboundSchema),
+  projectSettings: CreateDeploymentResponseBodyProjectSettings$inboundSchema,
+  integrations: types.optional(ResponseBodyIntegrations$inboundSchema),
+  images: types.optional(ResponseBodyImages$inboundSchema),
   alias: types.optional(z.array(types.string())),
   aliasAssigned: types.boolean(),
   bootedAt: types.number(),
   buildingAt: types.number(),
   buildContainerFinishedAt: types.optional(types.number()),
   buildSkipped: types.boolean(),
-  creator: CreateDeploymentCreator$inboundSchema,
+  creator: CreateDeploymentResponseBodyCreator$inboundSchema,
   initReadyAt: types.optional(types.number()),
   isFirstBranchDeployment: types.optional(types.boolean()),
-  lambdas: types.optional(z.array(Lambdas$inboundSchema)),
+  lambdas: types.optional(
+    z.array(CreateDeploymentResponseBodyLambdas$inboundSchema),
+  ),
   public: types.boolean(),
   ready: types.optional(types.number()),
-  status: CreateDeploymentStatus$inboundSchema,
-  team: types.optional(CreateDeploymentTeam$inboundSchema),
+  status: CreateDeploymentResponseBodyStatus$inboundSchema,
+  team: types.optional(CreateDeploymentResponseBodyTeam$inboundSchema),
   userAliases: types.optional(z.array(types.string())),
   previewCommentsEnabled: types.optional(types.boolean()),
   ttyBuildLogs: types.optional(types.boolean()),
-  customEnvironment: types.optional(CustomEnvironment$inboundSchema),
-  oomReport: types.optional(OomReport$inboundSchema),
+  customEnvironment: types.optional(
+    CreateDeploymentResponseBodyCustomEnvironment$inboundSchema,
+  ),
+  oomReport: types.optional(
+    CreateDeploymentResponseBodyOomReport$inboundSchema,
+  ),
   readyStateReason: types.optional(types.string()),
-  aliasWarning: z.nullable(AliasWarning$inboundSchema).optional(),
   id: types.string(),
-  createdAt: types.number(),
-  readyState: ReadyState$inboundSchema,
   name: types.string(),
-  type: CreateDeploymentType$inboundSchema,
-  errorMessage: z.nullable(types.string()).optional(),
-  aliasError: z.nullable(AliasError$inboundSchema).optional(),
+  url: types.string(),
+  target: z.nullable(
+    CreateDeploymentResponseBodyDeploymentsTarget$inboundSchema,
+  ).optional(),
+  createdAt: types.number(),
+  readyState: CreateDeploymentResponseBodyDeploymentsReadyState$inboundSchema,
+  readySubstate: types.optional(
+    CreateDeploymentResponseBodyDeploymentsReadySubstate$inboundSchema,
+  ),
+  prebuilt: types.optional(types.boolean()),
+  aliasError: z.nullable(
+    CreateDeploymentResponseBodyDeploymentsAliasError$inboundSchema,
+  ).optional(),
+  aliasWarning: z.nullable(
+    CreateDeploymentResponseBodyDeploymentsAliasWarning$inboundSchema,
+  ).optional(),
   aliasFinal: z.nullable(types.string()).optional(),
+  checksState: types.optional(
+    CreateDeploymentResponseBodyDeploymentsChecksState$inboundSchema,
+  ),
+  checksConclusion: types.optional(
+    CreateDeploymentResponseBodyDeploymentsChecksConclusion$inboundSchema,
+  ),
+  errorCode: types.optional(types.string()),
+  errorLink: types.optional(types.string()),
+  errorMessage: z.nullable(types.string()).optional(),
+  errorStep: types.optional(types.string()),
+  type: CreateDeploymentResponseBodyType$inboundSchema,
   autoAssignCustomDomains: types.optional(types.boolean()),
   automaticAliases: types.optional(z.array(types.string())),
   buildErrorAt: types.optional(types.number()),
-  checksState: types.optional(ChecksState$inboundSchema),
-  checksConclusion: types.optional(ChecksConclusion$inboundSchema),
   deletedAt: z.nullable(types.number()).optional(),
   defaultRoute: types.optional(types.string()),
   canceledAt: types.optional(types.number()),
-  errorCode: types.optional(types.string()),
-  errorLink: types.optional(types.string()),
-  errorStep: types.optional(types.string()),
   passiveRegions: types.optional(z.array(types.string())),
-  gitSource: types.optional(CreateDeploymentGitSource$inboundSchema),
-  manualProvisioning: types.optional(ManualProvisioning$inboundSchema),
+  gitSource: types.optional(
+    CreateDeploymentResponseBodyGitSource$inboundSchema,
+  ),
+  manualProvisioning: types.optional(
+    CreateDeploymentResponseBodyManualProvisioning$inboundSchema,
+  ),
   meta: z.record(types.string()),
   originCacheRegion: types.optional(types.string()),
-  nodeVersion: types.optional(CreateDeploymentNodeVersion$inboundSchema),
-  project: types.optional(CreateDeploymentProject$inboundSchema),
-  prebuilt: types.optional(types.boolean()),
-  readySubstate: types.optional(ReadySubstate$inboundSchema),
+  nodeVersion: types.optional(
+    CreateDeploymentResponseBodyNodeVersion$inboundSchema,
+  ),
+  project: types.optional(CreateDeploymentResponseBodyProject$inboundSchema),
   regions: z.array(types.string()),
   softDeletedByRetention: types.optional(types.boolean()),
-  source: types.optional(CreateDeploymentSource$inboundSchema),
-  target: z.nullable(CreateDeploymentTarget$inboundSchema).optional(),
+  source: types.optional(CreateDeploymentResponseBodySource$inboundSchema),
   undeletedAt: types.optional(types.number()),
-  url: types.string(),
   userConfiguredDeploymentId: types.optional(types.string()),
   version: types.number(),
-  oidcTokenClaims: types.optional(OidcTokenClaims$inboundSchema),
+  oidcTokenClaims: types.optional(
+    CreateDeploymentResponseBodyOidcTokenClaims$inboundSchema,
+  ),
   projectId: types.string(),
-  plan: CreateDeploymentPlan$inboundSchema,
-  platform: types.optional(Platform$inboundSchema),
+  plan: ResponseBodyPlan$inboundSchema,
+  platform: types.optional(ResponseBodyPlatform$inboundSchema),
   connectBuildsEnabled: types.optional(types.boolean()),
   connectConfigurationId: types.optional(types.string()),
   createdIn: types.string(),
-  crons: types.optional(z.array(Crons$inboundSchema)),
-  functions: z.nullable(z.record(Functions$inboundSchema)).optional(),
+  crons: types.optional(z.array(ResponseBodyCrons$inboundSchema)),
+  functions: z.nullable(z.record(ResponseBodyFunctions$inboundSchema))
+    .optional(),
   monorepoManager: z.nullable(types.string()).optional(),
   ownerId: types.string(),
   passiveConnectConfigurationId: types.optional(types.string()),
-  routes: types.nullable(z.array(CreateDeploymentRoutes$inboundSchema)),
+  routes: types.nullable(z.array(ResponseBodyRoutes$inboundSchema)),
   services: types.optional(
     z.array(z.union([
-      z.lazy(() => Services1$inboundSchema),
+      z.lazy(() => CreateDeploymentServices1$inboundSchema),
       z.lazy(() =>
-        Services2$inboundSchema
+        CreateDeploymentServices2$inboundSchema
       ),
     ])),
   ),
   gitRepo: z.nullable(
     z.union([
-      z.lazy(() => GitRepo1$inboundSchema),
-      z.lazy(() => GitRepo2$inboundSchema),
-      z.lazy(() => GitRepo3$inboundSchema),
-      z.lazy(() => GitRepo4$inboundSchema),
+      z.lazy(() => CreateDeploymentGitRepo1$inboundSchema),
+      z.lazy(() => CreateDeploymentGitRepo2$inboundSchema),
+      z.lazy(() => CreateDeploymentGitRepo3$inboundSchema),
+      z.lazy(() => CreateDeploymentGitRepo4$inboundSchema),
     ]),
   ).optional(),
   flags: types.optional(
     smartUnion([
-      z.lazy(() => Flags1$inboundSchema),
-      z.array(z.lazy(() => Flags2$inboundSchema)),
+      z.lazy(() => CreateDeploymentFlags1$inboundSchema),
+      z.array(z.lazy(() => CreateDeploymentFlags2$inboundSchema)),
     ]),
   ),
   microfrontends: types.optional(
@@ -2442,13 +2755,180 @@ export const CreateDeploymentResponseBody$inboundSchema: z.ZodType<
       z.lazy(() => CreateDeploymentMicrofrontends1$inboundSchema),
     ]),
   ),
-  config: types.optional(z.lazy(() => CreateDeploymentConfig$inboundSchema)),
-  checks: types.optional(z.lazy(() => CreateDeploymentChecks$inboundSchema)),
-  seatBlock: types.optional(z.lazy(() => SeatBlock$inboundSchema)),
+  config: types.optional(z.lazy(() => ResponseBodyConfig$inboundSchema)),
+  checks: types.optional(
+    z.lazy(() => CreateDeploymentResponseBodyChecks$inboundSchema),
+  ),
+  seatBlock: types.optional(z.lazy(() => ResponseBodySeatBlock$inboundSchema)),
   attribution: types.optional(
-    z.lazy(() => CreateDeploymentAttribution$inboundSchema),
+    z.lazy(() => ResponseBodyAttribution$inboundSchema),
   ),
 });
+
+export function createDeploymentResponseBody2FromJSON(
+  jsonString: string,
+): SafeParseResult<CreateDeploymentResponseBody2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateDeploymentResponseBody2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateDeploymentResponseBody2' from JSON`,
+  );
+}
+
+/** @internal */
+export const ResponseBodyAnonymous$inboundSchema: z.ZodType<
+  ResponseBodyAnonymous,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  expiresAt: types.number(),
+});
+
+export function responseBodyAnonymousFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodyAnonymous, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodyAnonymous$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyAnonymous' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateDeploymentResponseBodyTarget$inboundSchema: z.ZodNativeEnum<
+  typeof CreateDeploymentResponseBodyTarget
+> = z.nativeEnum(CreateDeploymentResponseBodyTarget);
+
+/** @internal */
+export const CreateDeploymentResponseBodyReadyState$inboundSchema:
+  z.ZodNativeEnum<typeof CreateDeploymentResponseBodyReadyState> = z.nativeEnum(
+    CreateDeploymentResponseBodyReadyState,
+  );
+
+/** @internal */
+export const CreateDeploymentResponseBodyReadySubstate$inboundSchema:
+  z.ZodNativeEnum<typeof CreateDeploymentResponseBodyReadySubstate> = z
+    .nativeEnum(CreateDeploymentResponseBodyReadySubstate);
+
+/** @internal */
+export const CreateDeploymentResponseBodyAliasError$inboundSchema: z.ZodType<
+  CreateDeploymentResponseBodyAliasError,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  code: types.string(),
+  message: types.string(),
+});
+
+export function createDeploymentResponseBodyAliasErrorFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateDeploymentResponseBodyAliasError, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateDeploymentResponseBodyAliasError$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateDeploymentResponseBodyAliasError' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateDeploymentResponseBodyAliasWarning$inboundSchema: z.ZodType<
+  CreateDeploymentResponseBodyAliasWarning,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  code: types.string(),
+  message: types.string(),
+  link: types.optional(types.string()),
+  action: types.optional(types.string()),
+});
+
+export function createDeploymentResponseBodyAliasWarningFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateDeploymentResponseBodyAliasWarning,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateDeploymentResponseBodyAliasWarning$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CreateDeploymentResponseBodyAliasWarning' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateDeploymentResponseBodyChecksState$inboundSchema:
+  z.ZodNativeEnum<typeof CreateDeploymentResponseBodyChecksState> = z
+    .nativeEnum(CreateDeploymentResponseBodyChecksState);
+
+/** @internal */
+export const CreateDeploymentResponseBodyChecksConclusion$inboundSchema:
+  z.ZodNativeEnum<typeof CreateDeploymentResponseBodyChecksConclusion> = z
+    .nativeEnum(CreateDeploymentResponseBodyChecksConclusion);
+
+/** @internal */
+export const CreateDeploymentResponseBody1$inboundSchema: z.ZodType<
+  CreateDeploymentResponseBody1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  alias: types.optional(z.array(types.string())),
+  aliasAssigned: types.boolean(),
+  readyStateReason: types.optional(types.string()),
+  anonymous: z.lazy(() => ResponseBodyAnonymous$inboundSchema),
+  id: types.string(),
+  name: types.string(),
+  url: types.string(),
+  projectId: types.string(),
+  target: z.nullable(CreateDeploymentResponseBodyTarget$inboundSchema)
+    .optional(),
+  createdAt: types.number(),
+  readyState: CreateDeploymentResponseBodyReadyState$inboundSchema,
+  readySubstate: types.optional(
+    CreateDeploymentResponseBodyReadySubstate$inboundSchema,
+  ),
+  prebuilt: types.optional(types.boolean()),
+  aliasError: z.nullable(
+    z.lazy(() => CreateDeploymentResponseBodyAliasError$inboundSchema),
+  ).optional(),
+  aliasWarning: z.nullable(
+    z.lazy(() => CreateDeploymentResponseBodyAliasWarning$inboundSchema),
+  ).optional(),
+  aliasFinal: z.nullable(types.string()).optional(),
+  checksState: types.optional(
+    CreateDeploymentResponseBodyChecksState$inboundSchema,
+  ),
+  checksConclusion: types.optional(
+    CreateDeploymentResponseBodyChecksConclusion$inboundSchema,
+  ),
+  errorCode: types.optional(types.string()),
+  errorLink: types.optional(types.string()),
+  errorMessage: z.nullable(types.string()).optional(),
+  errorStep: types.optional(types.string()),
+});
+
+export function createDeploymentResponseBody1FromJSON(
+  jsonString: string,
+): SafeParseResult<CreateDeploymentResponseBody1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateDeploymentResponseBody1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateDeploymentResponseBody1' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateDeploymentResponseBody$inboundSchema: z.ZodType<
+  CreateDeploymentResponseBody,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  z.lazy(() => CreateDeploymentResponseBody2$inboundSchema),
+  z.lazy(() => CreateDeploymentResponseBody1$inboundSchema),
+]);
 
 export function createDeploymentResponseBodyFromJSON(
   jsonString: string,

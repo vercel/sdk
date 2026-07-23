@@ -19,7 +19,7 @@ import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import { CancelDeploymentResponseBody } from "../models/canceldeploymentresponsebody.js";
 import { CancelDeploymentRequest } from "../models/canceldeploymentservicesdeploymentsfunctions.js";
 import { CreateDeploymentResponseBody } from "../models/createdeploymentresponsebody.js";
-import { CreateDeploymentRequest } from "../models/createdeploymentvaluedeployments2.js";
+import { CreateDeploymentRequest } from "../models/createdeploymentvaluedeploymentsresponse2.js";
 import {
   DeleteDeploymentRequest,
   DeleteDeploymentResponseBody,
@@ -31,12 +31,12 @@ import {
 } from "../models/getdeploymenteventsop.js";
 import { GetDeploymentFileContentsRequest } from "../models/getdeploymentfilecontentsop.js";
 import { GetDeploymentResponseBody } from "../models/getdeploymentresponsebody.js";
+import { GetDeploymentRequest } from "../models/getdeploymentresponsebodymanualprovisioning.js";
 import {
   GetDeploymentsRequest,
   GetDeploymentsResponseBody,
 } from "../models/getdeploymentsop.js";
 import { ListDeploymentFilesRequest } from "../models/listdeploymentfilesop.js";
-import { GetDeploymentRequest } from "../models/responsebodyproject.js";
 import { UpdateIntegrationDeploymentActionRequest } from "../models/updateintegrationdeploymentactionop.js";
 import {
   UploadFileRequest,

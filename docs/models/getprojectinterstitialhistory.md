@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectInterstitialHistory } from "@vercel/sdk/models/getprojectresponsebody.js";
+import { GetProjectInterstitialHistory } from "@vercel/sdk/models/getprojectdestination.js";
 
 let value: GetProjectInterstitialHistory = {
   action: "remove-project-interstitial",
@@ -13,11 +13,11 @@ let value: GetProjectInterstitialHistory = {
 
 ## Fields
 
-| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
-| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| `action`                                                                 | [models.GetProjectProjectsAction](../models/getprojectprojectsaction.md) | :heavy_check_mark:                                                       | N/A                                                                      |
-| `createdAt`                                                              | *number*                                                                 | :heavy_check_mark:                                                       | N/A                                                                      |
-| `caseId`                                                                 | *string*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
-| `reason`                                                                 | *string*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
-| `actor`                                                                  | *string*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
-| `comment`                                                                | *string*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
+| Field                                                                                    | Type                                                                                     | Required                                                                                 | Description                                                                              |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `action`                                                                                 | [models.GetProjectProjectsResponseAction](../models/getprojectprojectsresponseaction.md) | :heavy_check_mark:                                                                       | N/A                                                                                      |
+| `createdAt`                                                                              | *number*                                                                                 | :heavy_check_mark:                                                                       | N/A                                                                                      |
+| `caseId`                                                                                 | *string*                                                                                 | :heavy_minus_sign:                                                                       | N/A                                                                                      |
+| `reason`                                                                                 | *string*                                                                                 | :heavy_minus_sign:                                                                       | N/A                                                                                      |
+| `actor`                                                                                  | *string*                                                                                 | :heavy_minus_sign:                                                                       | N/A                                                                                      |
+| `comment`                                                                                | *string*                                                                                 | :heavy_minus_sign:                                                                       | N/A                                                                                      |

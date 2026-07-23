@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ObservabilityPlus } from "@vercel/sdk/models/usereventpayload125type.js";
+import { ObservabilityPlus } from "@vercel/sdk/models/usereventpayload140newenvvartype.js";
 
 let value: ObservabilityPlus = {
   updatedAt: 6532.64,

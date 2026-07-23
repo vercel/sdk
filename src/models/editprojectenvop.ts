@@ -112,6 +112,18 @@ export type EditProjectEnvProjectsTarget =
   | Array<EditProjectEnvTarget1>
   | EditProjectEnvTarget2;
 
+/**
+ * User-facing config/secret model. When set, authoritative for new code paths when the env-var-config-secret-ui flag is enabled. Legacy rows omit this field; legacy rows omit it and callers fall back to existing `type` behavior.
+ */
+export const Visibility = {
+  Config: "config",
+  Secret: "secret",
+} as const;
+/**
+ * User-facing config/secret model. When set, authoritative for new code paths when the env-var-config-secret-ui flag is enabled. Legacy rows omit this field; legacy rows omit it and callers fall back to existing `type` behavior.
+ */
+export type Visibility = ClosedEnum<typeof Visibility>;
+
 export type ContentHint17 = {
   type: "flags-connection-string";
   projectId: string;
@@ -237,9 +249,6 @@ export type InternalContentHint = {
   encryptedValue: string;
 };
 
-/**
- * The environment variable was successfully edited
- */
 export type EditProjectEnvResponseBody = {
   type: EditProjectEnvProjectsType;
   value: string;
@@ -263,6 +272,10 @@ export type EditProjectEnvResponseBody = {
   legacyValue?: string | undefined;
   decrypted?: boolean | undefined;
   configurationId?: string | null | undefined;
+  /**
+   * User-facing config/secret model. When set, authoritative for new code paths when the env-var-config-secret-ui flag is enabled. Legacy rows omit this field; legacy rows omit it and callers fall back to existing `type` behavior.
+   */
+  visibility?: Visibility | undefined;
   contentHint?:
     | ContentHint1
     | ContentHint2
@@ -403,6 +416,10 @@ export function editProjectEnvProjectsTargetFromJSON(
     `Failed to parse 'EditProjectEnvProjectsTarget' from JSON`,
   );
 }
+
+/** @internal */
+export const Visibility$inboundSchema: z.ZodNativeEnum<typeof Visibility> = z
+  .nativeEnum(Visibility);
 
 /** @internal */
 export const ContentHint17$inboundSchema: z.ZodType<
@@ -834,6 +851,7 @@ export const EditProjectEnvResponseBody$inboundSchema: z.ZodType<
   legacyValue: types.optional(types.string()),
   decrypted: types.optional(types.boolean()),
   configurationId: z.nullable(types.string()).optional(),
+  visibility: types.optional(Visibility$inboundSchema),
   contentHint: z.nullable(
     z.union([
       z.lazy(() => ContentHint1$inboundSchema),

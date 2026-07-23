@@ -171,7 +171,7 @@ async function $do(
     | SDKValidationError
   >(
     M.json(200, InvitedTeamMember$inboundSchema),
-    M.fail([400, 401, 403, "4XX"]),
+    M.fail([400, 401, 403, 410, "4XX"]),
     M.fail([503, "5XX"]),
   )(response, req);
   if (!result.ok) {

@@ -1,0 +1,19 @@
+# GetSecurityFirewallConfigApiSecurityResponseJava
+
+## Example Usage
+
+```typescript
+import { GetSecurityFirewallConfigApiSecurityResponseJava } from "@vercel/sdk/models/getsecurityfirewallconfigapisecurityaction.js";
+
+let value: GetSecurityFirewallConfigApiSecurityResponseJava = {
+  active: false,
+  action: "deny",
+};
+```
+
+## Fields
+
+| Field                                                                                                                                                                                                              | Type                                                                                                                                                                                                               | Required                                                                                                                                                                                                           | Description                                                                                                                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `active`                                                                                                                                                                                                           | *boolean*                                                                                                                                                                                                          | :heavy_check_mark:                                                                                                                                                                                                 | N/A                                                                                                                                                                                                                |
+| `action`                                                                                                                                                                                                           | [models.GetSecurityFirewallConfigApiSecurityResponse200ApplicationJSONResponseBodyActiveCrsJavaAction](../models/getsecurityfirewallconfigapisecurityresponse200applicationjsonresponsebodyactivecrsjavaaction.md) | :heavy_check_mark:                                                                                                                                                                                                 | N/A                                                                                                                                                                                                                |

@@ -16,16 +16,16 @@ import {
   GetDeploymentResponseBody$inboundSchema,
 } from "../models/getdeploymentresponsebody.js";
 import {
+  GetDeploymentRequest,
+  GetDeploymentRequest$outboundSchema,
+} from "../models/getdeploymentresponsebodymanualprovisioning.js";
+import {
   ConnectionError,
   InvalidRequestError,
   RequestAbortedError,
   RequestTimeoutError,
   UnexpectedClientError,
 } from "../models/httpclienterrors.js";
-import {
-  GetDeploymentRequest,
-  GetDeploymentRequest$outboundSchema,
-} from "../models/responsebodyproject.js";
 import { ResponseValidationError } from "../models/responsevalidationerror.js";
 import { SDKValidationError } from "../models/sdkvalidationerror.js";
 import { VercelError } from "../models/vercelerror.js";
@@ -172,7 +172,7 @@ async function $do(
     | SDKValidationError
   >(
     M.json(200, GetDeploymentResponseBody$inboundSchema),
-    M.fail([400, 403, 404, 429, "4XX"]),
+    M.fail([400, 403, 404, 410, 429, "4XX"]),
     M.fail("5XX"),
   )(response, req);
   if (!result.ok) {

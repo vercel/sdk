@@ -5,29 +5,28 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndSeventyFour } from "@vercel/sdk/models/usereventpayload146role.js";
+import { OneHundredAndSeventyFour } from "@vercel/sdk/models/preventautoblocking.js";
 
 let value: OneHundredAndSeventyFour = {
-  projectId: "<id>",
-  projectName: "<value>",
-  deletedCount: 495.16,
-  scriptCount: 3263.76,
-  connectSrcCount: 1535.29,
-  connectSrcOriginCount: 9361.81,
-  headerCount: 3603.99,
+  project: {
+    id: "<id>",
+    name: "<value>",
+  },
+  prev: {
+    project: {},
+  },
+  group: {
+    id: "<id>",
+    slug: "<value>",
+    name: "<value>",
+  },
 };
 ```
 
 ## Fields
 
-| Field                                  | Type                                   | Required                               | Description                            |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| `projectId`                            | *string*                               | :heavy_check_mark:                     | N/A                                    |
-| `projectName`                          | *string*                               | :heavy_check_mark:                     | N/A                                    |
-| `deletedCount`                         | *number*                               | :heavy_check_mark:                     | N/A                                    |
-| `scriptCount`                          | *number*                               | :heavy_check_mark:                     | N/A                                    |
-| `connectSrcCount`                      | *number*                               | :heavy_check_mark:                     | N/A                                    |
-| `connectSrcOriginCount`                | *number*                               | :heavy_check_mark:                     | N/A                                    |
-| `headerCount`                          | *number*                               | :heavy_check_mark:                     | N/A                                    |
-| `connectSrcUserNormalizationRuleCount` | *number*                               | :heavy_minus_sign:                     | N/A                                    |
-| `connectSrcNormalizationRulesCleared`  | *boolean*                              | :heavy_minus_sign:                     | N/A                                    |
+| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `project`                                                                    | [models.UserEventPayload174Project](../models/usereventpayload174project.md) | :heavy_check_mark:                                                           | N/A                                                                          |
+| `prev`                                                                       | [models.PayloadPrev](../models/payloadprev.md)                               | :heavy_check_mark:                                                           | N/A                                                                          |
+| `group`                                                                      | [models.PayloadGroup](../models/payloadgroup.md)                             | :heavy_check_mark:                                                           | N/A                                                                          |

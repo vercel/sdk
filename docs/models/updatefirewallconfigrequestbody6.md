@@ -1,6 +1,6 @@
 # UpdateFirewallConfigRequestBody6
 
-Enable a managed rule
+Enable Firewall
 
 ## Example Usage
 
@@ -9,11 +9,7 @@ import { UpdateFirewallConfigRequestBody6 } from "@vercel/sdk/models/updatefirew
 
 let value: UpdateFirewallConfigRequestBody6 = {
   action: "crs.update",
-  id: "sd",
-  value: {
-    active: true,
-    action: "deny",
-  },
+  value: true,
 };
 ```
 
@@ -22,5 +18,5 @@ let value: UpdateFirewallConfigRequestBody6 = {
 | Field                                                                                                                              | Type                                                                                                                               | Required                                                                                                                           | Description                                                                                                                        |
 | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
 | `action`                                                                                                                           | [models.UpdateFirewallConfigRequestBodySecurityRequest6Action](../models/updatefirewallconfigrequestbodysecurityrequest6action.md) | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |
-| `id`                                                                                                                               | [models.Id](../models/id.md)                                                                                                       | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |
-| `value`                                                                                                                            | [models.UpdateFirewallConfigRequestBodySecurityValue](../models/updatefirewallconfigrequestbodysecurityvalue.md)                   | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |
+| `id`                                                                                                                               | *string*                                                                                                                           | :heavy_minus_sign:                                                                                                                 | N/A                                                                                                                                |
+| `value`                                                                                                                            | *boolean*                                                                                                                          | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |

@@ -5,12 +5,11 @@
 ```typescript
 import { UpdateFirewallConfigRequestBodySecurityRequest8ValueAction } from "@vercel/sdk/models/updatefirewallconfigop.js";
 
-let value: UpdateFirewallConfigRequestBodySecurityRequest8ValueAction =
-  "bypass";
+let value: UpdateFirewallConfigRequestBodySecurityRequest8ValueAction = {};
 ```
 
-## Values
+## Fields
 
-```typescript
-"deny" | "challenge" | "log" | "bypass"
-```
+| Field                                                                                                                                | Type                                                                                                                                 | Required                                                                                                                             | Description                                                                                                                          |
+| ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ |
+| `mitigate`                                                                                                                           | [models.UpdateFirewallConfigRequestBodySecurityRequestMitigate](../models/updatefirewallconfigrequestbodysecurityrequestmitigate.md) | :heavy_minus_sign:                                                                                                                   | N/A                                                                                                                                  |

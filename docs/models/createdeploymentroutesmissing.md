@@ -3,38 +3,38 @@
 
 ## Supported Types
 
-### `models.Missing1`
+### `models.CreateDeploymentMissing1`
 
 ```typescript
-const value: models.Missing1 = {
+const value: models.CreateDeploymentMissing1 = {
   type: "host",
-  value: {},
+  value: "<value>",
 };
 ```
 
-### `models.Missing2`
+### `models.CreateDeploymentMissing2`
 
 ```typescript
-const value: models.Missing2 = {
-  type: "cookie",
+const value: models.CreateDeploymentMissing2 = {
+  type: "header",
   key: "<key>",
 };
 ```
 
-### `models.Missing2`
+### `models.CreateDeploymentMissing2`
 
 ```typescript
-const value: models.Missing2 = {
-  type: "cookie",
+const value: models.CreateDeploymentMissing2 = {
+  type: "header",
   key: "<key>",
 };
 ```
 
-### `models.Missing2`
+### `models.CreateDeploymentMissing2`
 
 ```typescript
-const value: models.Missing2 = {
-  type: "cookie",
+const value: models.CreateDeploymentMissing2 = {
+  type: "header",
   key: "<key>",
 };
 ```

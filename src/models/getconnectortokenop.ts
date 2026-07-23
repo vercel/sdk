@@ -88,12 +88,25 @@ export type Connector = {
 
 export type GetConnectorTokenResponseBody = {
   token: string;
+  tokenId: string;
   expiresAt: number;
   connector: Connector;
   name?: string | undefined;
   installationId?: string | undefined;
   tenantId?: string | undefined;
   externalSubject?: string | undefined;
+  /**
+   * Stable id correlating all tokens (including refreshes) back to the original authorization.
+   */
+  authorizationId?: string | undefined;
+  /**
+   * Stable id that groups all tokens with the same parameters across refreshes.
+   */
+  tokenGroupId?: string | undefined;
+  /**
+   * Claims extracted from the provider's tokens per the connector's `ForwardedClaims` allow-list. Currently sourced from the OIDC id_token only.
+   */
+  claims?: { [k: string]: any } | undefined;
   /**
    * Driver-specific metadata (e.g., botUserId for Slack).
    */
@@ -395,12 +408,16 @@ export const GetConnectorTokenResponseBody$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   token: types.string(),
+  tokenId: types.string(),
   expiresAt: types.number(),
   connector: z.lazy(() => Connector$inboundSchema),
   name: types.optional(types.string()),
   installationId: types.optional(types.string()),
   tenantId: types.optional(types.string()),
   externalSubject: types.optional(types.string()),
+  authorizationId: types.optional(types.string()),
+  tokenGroupId: types.optional(types.string()),
+  claims: types.optional(z.record(z.any())),
   metadata: types.optional(z.record(z.any())),
 });
 

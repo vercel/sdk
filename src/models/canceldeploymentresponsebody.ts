@@ -10,64 +10,36 @@ import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import {
-  CancelDeploymentGitRepo4,
-  CancelDeploymentGitRepo4$inboundSchema,
-  CancelDeploymentGitRepoDeploymentsResponseOwnerType,
-  CancelDeploymentGitRepoDeploymentsResponseOwnerType$inboundSchema,
-  CancelDeploymentServices,
-  CancelDeploymentServices$inboundSchema,
-} from "./canceldeploymentgitrepodeploymentsresponseownertype.js";
+  CancelDeploymentGitRepoOwnerType,
+  CancelDeploymentGitRepoOwnerType$inboundSchema,
+  GitRepo4,
+  GitRepo4$inboundSchema,
+  Services,
+  Services$inboundSchema,
+} from "./canceldeploymentgitrepoownertype.js";
 import {
-  CancelDeploymentAliasAssignedAt,
-  CancelDeploymentAliasAssignedAt$inboundSchema,
-  CancelDeploymentAliasError,
-  CancelDeploymentAliasError$inboundSchema,
-  CancelDeploymentAliasWarning,
-  CancelDeploymentAliasWarning$inboundSchema,
-  CancelDeploymentBuild,
-  CancelDeploymentBuild$inboundSchema,
-  CancelDeploymentBuilds,
-  CancelDeploymentBuilds$inboundSchema,
-  CancelDeploymentChecksConclusion,
-  CancelDeploymentChecksConclusion$inboundSchema,
-  CancelDeploymentChecksState,
-  CancelDeploymentChecksState$inboundSchema,
+  AliasAssignedAt,
+  AliasAssignedAt$inboundSchema,
+  AliasError,
+  AliasError$inboundSchema,
+  AliasWarning,
+  AliasWarning$inboundSchema,
+  Build,
+  Build$inboundSchema,
+  Builds,
+  Builds$inboundSchema,
   CancelDeploymentCreator,
   CancelDeploymentCreator$inboundSchema,
-  CancelDeploymentCrons,
-  CancelDeploymentCrons$inboundSchema,
-  CancelDeploymentCustomEnvironment,
-  CancelDeploymentCustomEnvironment$inboundSchema,
-  CancelDeploymentFunctions,
-  CancelDeploymentFunctions$inboundSchema,
   CancelDeploymentGitSource,
   CancelDeploymentGitSource$inboundSchema,
-  CancelDeploymentImages,
-  CancelDeploymentImages$inboundSchema,
-  CancelDeploymentIntegrations,
-  CancelDeploymentIntegrations$inboundSchema,
-  CancelDeploymentLambdas,
-  CancelDeploymentLambdas$inboundSchema,
-  CancelDeploymentManualProvisioning,
-  CancelDeploymentManualProvisioning$inboundSchema,
   CancelDeploymentNodeVersion,
   CancelDeploymentNodeVersion$inboundSchema,
-  CancelDeploymentOidcTokenClaims,
-  CancelDeploymentOidcTokenClaims$inboundSchema,
-  CancelDeploymentOomReport,
-  CancelDeploymentOomReport$inboundSchema,
   CancelDeploymentPlan,
   CancelDeploymentPlan$inboundSchema,
-  CancelDeploymentPlatform,
-  CancelDeploymentPlatform$inboundSchema,
   CancelDeploymentProject,
   CancelDeploymentProject$inboundSchema,
   CancelDeploymentProjectSettings,
   CancelDeploymentProjectSettings$inboundSchema,
-  CancelDeploymentReadyState,
-  CancelDeploymentReadyState$inboundSchema,
-  CancelDeploymentReadySubstate,
-  CancelDeploymentReadySubstate$inboundSchema,
   CancelDeploymentRoutes,
   CancelDeploymentRoutes$inboundSchema,
   CancelDeploymentSource,
@@ -80,11 +52,39 @@ import {
   CancelDeploymentTeam$inboundSchema,
   CancelDeploymentType,
   CancelDeploymentType$inboundSchema,
+  ChecksConclusion,
+  ChecksConclusion$inboundSchema,
+  ChecksState,
+  ChecksState$inboundSchema,
+  Crons,
+  Crons$inboundSchema,
+  CustomEnvironment,
+  CustomEnvironment$inboundSchema,
+  Functions,
+  Functions$inboundSchema,
+  Images,
+  Images$inboundSchema,
+  Integrations,
+  Integrations$inboundSchema,
+  Lambdas,
+  Lambdas$inboundSchema,
+  ManualProvisioning,
+  ManualProvisioning$inboundSchema,
+  OidcTokenClaims,
+  OidcTokenClaims$inboundSchema,
+  OomReport,
+  OomReport$inboundSchema,
+  Platform,
+  Platform$inboundSchema,
+  ReadyState,
+  ReadyState$inboundSchema,
+  ReadySubstate,
+  ReadySubstate$inboundSchema,
 } from "./canceldeploymentservicesdeploymentsfunctions.js";
 import { FlagJSONValue, FlagJSONValue$inboundSchema } from "./flagjsonvalue.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
-export type CancelDeploymentGitRepo3 = {
+export type GitRepo3 = {
   owner: string;
   repoUuid: string;
   slug: string;
@@ -94,18 +94,16 @@ export type CancelDeploymentGitRepo3 = {
   defaultBranch: string;
   name: string;
   private: boolean;
-  ownerType: CancelDeploymentGitRepoDeploymentsResponseOwnerType;
+  ownerType: CancelDeploymentGitRepoOwnerType;
 };
 
-export const CancelDeploymentGitRepoDeploymentsOwnerType = {
+export const GitRepoOwnerType = {
   Team: "team",
   User: "user",
 } as const;
-export type CancelDeploymentGitRepoDeploymentsOwnerType = ClosedEnum<
-  typeof CancelDeploymentGitRepoDeploymentsOwnerType
->;
+export type GitRepoOwnerType = ClosedEnum<typeof GitRepoOwnerType>;
 
-export type CancelDeploymentGitRepo2 = {
+export type GitRepo2 = {
   org: string;
   repo: string;
   repoId: number;
@@ -115,18 +113,16 @@ export type CancelDeploymentGitRepo2 = {
   defaultBranch: string;
   name: string;
   private: boolean;
-  ownerType: CancelDeploymentGitRepoDeploymentsOwnerType;
+  ownerType: GitRepoOwnerType;
 };
 
-export const CancelDeploymentGitRepoOwnerType = {
+export const OwnerType = {
   Team: "team",
   User: "user",
 } as const;
-export type CancelDeploymentGitRepoOwnerType = ClosedEnum<
-  typeof CancelDeploymentGitRepoOwnerType
->;
+export type OwnerType = ClosedEnum<typeof OwnerType>;
 
-export type CancelDeploymentGitRepo1 = {
+export type GitRepo1 = {
   namespace: string;
   projectId: number;
   type: "gitlab";
@@ -135,19 +131,15 @@ export type CancelDeploymentGitRepo1 = {
   defaultBranch: string;
   name: string;
   private: boolean;
-  ownerType: CancelDeploymentGitRepoOwnerType;
+  ownerType: OwnerType;
 };
 
-export type CancelDeploymentGitRepo =
-  | CancelDeploymentGitRepo1
-  | CancelDeploymentGitRepo2
-  | CancelDeploymentGitRepo3
-  | CancelDeploymentGitRepo4;
+export type GitRepo = GitRepo1 | GitRepo2 | GitRepo3 | GitRepo4;
 
 /**
  * Flags defined in the Build Output API, used by this deployment. Primarily used by the Toolbar to know about the used flags.
  */
-export type CancelDeploymentFlags2 = {};
+export type Flags2 = {};
 
 export type FlagsOptions = {
   value: FlagJSONValue | null;
@@ -163,18 +155,16 @@ export type FlagsDefinitions = {
 /**
  * Flags defined in the Build Output API, used by this deployment. Primarily used by the Toolbar to know about the used flags.
  */
-export type CancelDeploymentFlags1 = {
+export type Flags1 = {
   definitions: { [k: string]: FlagsDefinitions };
 };
 
-export type CancelDeploymentFlags =
-  | CancelDeploymentFlags1
-  | Array<CancelDeploymentFlags2>;
+export type Flags = Flags1 | Array<Flags2>;
 
 /**
  * The result of the microfrontends config upload during deployment creation / build. Only set for default app deployments. The config upload is attempted during deployment create, and then again during the build. If the config is not in the root directory, or the deployment is prebuilt, the config cannot be uploaded during deployment create. The upload during deployment build finds the config even if it's not in the root directory, as it has access to all files. Uploading the config during create is ideal, as then all child deployments are guaranteed to have access to the default app deployment config even if the default app has not yet started building. If the config is not uploaded, the child app will show as building until the config has been uploaded during the default app build. - `success` - The config was uploaded successfully, either when the deployment was created or during the build. - `waiting_on_build` - The config could not be uploaded during deployment create, will be attempted again during the build. - `no_config` - No config was found. Only set once the build has not found the config in any of the deployment's files. - `undefined` - Legacy deployments, or there was an error uploading the config during deployment create.
  */
-export const MicrofrontendsMfeConfigUploadState = {
+export const MfeConfigUploadState = {
   NoConfig: "no_config",
   Success: "success",
   WaitingOnBuild: "waiting_on_build",
@@ -182,16 +172,14 @@ export const MicrofrontendsMfeConfigUploadState = {
 /**
  * The result of the microfrontends config upload during deployment creation / build. Only set for default app deployments. The config upload is attempted during deployment create, and then again during the build. If the config is not in the root directory, or the deployment is prebuilt, the config cannot be uploaded during deployment create. The upload during deployment build finds the config even if it's not in the root directory, as it has access to all files. Uploading the config during create is ideal, as then all child deployments are guaranteed to have access to the default app deployment config even if the default app has not yet started building. If the config is not uploaded, the child app will show as building until the config has been uploaded during the default app build. - `success` - The config was uploaded successfully, either when the deployment was created or during the build. - `waiting_on_build` - The config could not be uploaded during deployment create, will be attempted again during the build. - `no_config` - No config was found. Only set once the build has not found the config in any of the deployment's files. - `undefined` - Legacy deployments, or there was an error uploading the config during deployment create.
  */
-export type MicrofrontendsMfeConfigUploadState = ClosedEnum<
-  typeof MicrofrontendsMfeConfigUploadState
->;
+export type MfeConfigUploadState = ClosedEnum<typeof MfeConfigUploadState>;
 
 export type CancelDeploymentMicrofrontends2 = {
   isDefaultApp: true;
   /**
    * The result of the microfrontends config upload during deployment creation / build. Only set for default app deployments. The config upload is attempted during deployment create, and then again during the build. If the config is not in the root directory, or the deployment is prebuilt, the config cannot be uploaded during deployment create. The upload during deployment build finds the config even if it's not in the root directory, as it has access to all files. Uploading the config during create is ideal, as then all child deployments are guaranteed to have access to the default app deployment config even if the default app has not yet started building. If the config is not uploaded, the child app will show as building until the config has been uploaded during the default app build. - `success` - The config was uploaded successfully, either when the deployment was created or during the build. - `waiting_on_build` - The config could not be uploaded during deployment create, will be attempted again during the build. - `no_config` - No config was found. Only set once the build has not found the config in any of the deployment's files. - `undefined` - Legacy deployments, or there was an error uploading the config during deployment create.
    */
-  mfeConfigUploadState?: MicrofrontendsMfeConfigUploadState | undefined;
+  mfeConfigUploadState?: MfeConfigUploadState | undefined;
   /**
    * The project name of the default app of this deployment's microfrontends group.
    */
@@ -226,23 +214,19 @@ export type CancelDeploymentMicrofrontends =
   | CancelDeploymentMicrofrontends2
   | CancelDeploymentMicrofrontends1;
 
-export const CancelDeploymentFunctionType = {
+export const FunctionType = {
   Fluid: "fluid",
   Standard: "standard",
 } as const;
-export type CancelDeploymentFunctionType = ClosedEnum<
-  typeof CancelDeploymentFunctionType
->;
+export type FunctionType = ClosedEnum<typeof FunctionType>;
 
-export const CancelDeploymentFunctionMemoryType = {
+export const FunctionMemoryType = {
   Performance: "performance",
   PerformanceXl: "performance_xl",
   Standard: "standard",
   StandardLegacy: "standard_legacy",
 } as const;
-export type CancelDeploymentFunctionMemoryType = ClosedEnum<
-  typeof CancelDeploymentFunctionMemoryType
->;
+export type FunctionMemoryType = ClosedEnum<typeof FunctionMemoryType>;
 
 /**
  * Build resource configuration snapshot for this deployment.
@@ -271,7 +255,7 @@ export type CancelDeploymentBuildQueue = {
 /**
  * When elastic concurrency is used for this deployment, a value is set. The value tells the reason where the setting was coming from. - TEAM_SETTING: Inherited from team settings - PROJECT_SETTING: Inherited from project settings - SKIP_QUEUE: Manually triggered by user to skip the queues
  */
-export const CancelDeploymentElasticConcurrency = {
+export const ElasticConcurrency = {
   ProjectSetting: "PROJECT_SETTING",
   SkipQueue: "SKIP_QUEUE",
   TeamSetting: "TEAM_SETTING",
@@ -279,14 +263,13 @@ export const CancelDeploymentElasticConcurrency = {
 /**
  * When elastic concurrency is used for this deployment, a value is set. The value tells the reason where the setting was coming from. - TEAM_SETTING: Inherited from team settings - PROJECT_SETTING: Inherited from project settings - SKIP_QUEUE: Manually triggered by user to skip the queues
  */
-export type CancelDeploymentElasticConcurrency = ClosedEnum<
-  typeof CancelDeploymentElasticConcurrency
->;
+export type ElasticConcurrency = ClosedEnum<typeof ElasticConcurrency>;
 
 /**
  * Machine type that was used for the build.
  */
 export const CancelDeploymentPurchaseType = {
+  Basic: "basic",
   Enhanced: "enhanced",
   Standard: "standard",
   Turbo: "turbo",
@@ -316,7 +299,7 @@ export type CancelDeploymentResourceConfig = {
   /**
    * When elastic concurrency is used for this deployment, a value is set. The value tells the reason where the setting was coming from. - TEAM_SETTING: Inherited from team settings - PROJECT_SETTING: Inherited from project settings - SKIP_QUEUE: Manually triggered by user to skip the queues
    */
-  elasticConcurrency?: CancelDeploymentElasticConcurrency | undefined;
+  elasticConcurrency?: ElasticConcurrency | undefined;
   buildMachine?: CancelDeploymentBuildMachine | undefined;
 };
 
@@ -325,8 +308,8 @@ export type CancelDeploymentResourceConfig = {
  */
 export type CancelDeploymentConfig = {
   version?: number | undefined;
-  functionType: CancelDeploymentFunctionType;
-  functionMemoryType: CancelDeploymentFunctionMemoryType;
+  functionType: FunctionType;
+  functionMemoryType: FunctionMemoryType;
   functionTimeout: number | null;
   secureComputePrimaryRegion: string | null;
   secureComputeFallbackRegion: string | null;
@@ -349,7 +332,7 @@ export type CancelDeploymentDeploymentsState = ClosedEnum<
 /**
  * Condensed check data. Retrieve individual check and check run data using api-checks v2 routes.
  */
-export type CancelDeploymentDeploymentAlias = {
+export type DeploymentAlias = {
   state: CancelDeploymentDeploymentsState;
   startedAt: number;
   completedAt?: number | undefined;
@@ -359,22 +342,20 @@ export type CancelDeploymentChecks = {
   /**
    * Condensed check data. Retrieve individual check and check run data using api-checks v2 routes.
    */
-  deploymentAlias: CancelDeploymentDeploymentAlias;
+  deploymentAlias: DeploymentAlias;
 };
 
 /**
  * The NSNB decision code for the seat block. TODO: We should consolidate block types.
  */
-export const CancelDeploymentBlockCode = {
+export const BlockCode = {
   CommitAuthorRequired: "COMMIT_AUTHOR_REQUIRED",
   TeamAccessRequired: "TEAM_ACCESS_REQUIRED",
 } as const;
 /**
  * The NSNB decision code for the seat block. TODO: We should consolidate block types.
  */
-export type CancelDeploymentBlockCode = ClosedEnum<
-  typeof CancelDeploymentBlockCode
->;
+export type BlockCode = ClosedEnum<typeof BlockCode>;
 
 export type CancelDeploymentGitUserId = string | number;
 
@@ -396,11 +377,11 @@ export type CancelDeploymentGitProvider = ClosedEnum<
 /**
  * NSNB Blocked metadata
  */
-export type CancelDeploymentSeatBlock = {
+export type SeatBlock = {
   /**
    * The NSNB decision code for the seat block. TODO: We should consolidate block types.
    */
-  blockCode: CancelDeploymentBlockCode;
+  blockCode: BlockCode;
   /**
    * The blocked vercel user ID.
    */
@@ -419,7 +400,7 @@ export type CancelDeploymentSeatBlock = {
 /**
  * Commit metadata from the git commit author
  */
-export type CancelDeploymentCommitMeta = {
+export type CommitMeta = {
   /**
    * Email from git commit author
    */
@@ -439,7 +420,7 @@ export type CancelDeploymentId = string | number;
 /**
  * Git provider user associated with the commit author email (only set if resolved)
  */
-export type CancelDeploymentGitUser = {
+export type GitUser = {
   id: string | number;
   /**
    * Git provider username/login
@@ -458,7 +439,7 @@ export type CancelDeploymentGitUser = {
 /**
  * Vercel user linked to the git provider account (only set if resolved)
  */
-export type CancelDeploymentVercelUser = {
+export type VercelUser = {
   /**
    * Vercel user ID
    */
@@ -480,33 +461,33 @@ export type CancelDeploymentAttribution = {
   /**
    * Commit metadata from the git commit author
    */
-  commitMeta?: CancelDeploymentCommitMeta | undefined;
+  commitMeta?: CommitMeta | undefined;
   /**
    * Git provider user associated with the commit author email (only set if resolved)
    */
-  gitUser?: CancelDeploymentGitUser | undefined;
+  gitUser?: GitUser | undefined;
   /**
    * Vercel user linked to the git provider account (only set if resolved)
    */
-  vercelUser?: CancelDeploymentVercelUser | undefined;
+  vercelUser?: VercelUser | undefined;
 };
 
 /**
  * Returns the updated deployment object with `readyState` set to `CANCELED`. The build has been stopped and this action is irreversible.
  */
 export type CancelDeploymentResponseBody = {
-  aliasAssignedAt?: CancelDeploymentAliasAssignedAt | null | undefined;
+  aliasAssignedAt?: AliasAssignedAt | null | undefined;
   alwaysRefuseToBuild?: boolean | undefined;
-  build: CancelDeploymentBuild;
+  build: Build;
   buildArtifactUrls?: Array<string> | undefined;
-  builds?: Array<CancelDeploymentBuilds> | undefined;
+  builds?: Array<Builds> | undefined;
   env: Array<string>;
   inspectorUrl: string | null;
   isInConcurrentBuildsQueue: boolean;
   isInSystemBuildsQueue: boolean;
   projectSettings: CancelDeploymentProjectSettings;
-  integrations?: CancelDeploymentIntegrations | undefined;
-  images?: CancelDeploymentImages | undefined;
+  integrations?: Integrations | undefined;
+  images?: Images | undefined;
   /**
    * A list of all the aliases (default aliases, staging aliases and production aliases) that were assigned upon deployment creation
    */
@@ -528,7 +509,7 @@ export type CancelDeploymentResponseBody = {
   creator: CancelDeploymentCreator;
   initReadyAt?: number | undefined;
   isFirstBranchDeployment?: boolean | undefined;
-  lambdas?: Array<CancelDeploymentLambdas> | undefined;
+  lambdas?: Array<Lambdas> | undefined;
   /**
    * A boolean representing if the deployment is public or not. By default this is `false`
    */
@@ -548,14 +529,25 @@ export type CancelDeploymentResponseBody = {
    */
   previewCommentsEnabled?: boolean | undefined;
   ttyBuildLogs?: boolean | undefined;
-  customEnvironment?: CancelDeploymentCustomEnvironment | undefined;
-  oomReport?: CancelDeploymentOomReport | undefined;
+  customEnvironment?: CustomEnvironment | undefined;
+  oomReport?: OomReport | undefined;
   readyStateReason?: string | undefined;
-  aliasWarning?: CancelDeploymentAliasWarning | null | undefined;
   /**
    * A string holding the unique ID of the deployment
    */
   id: string;
+  /**
+   * The name of the project associated with the deployment at the time that the deployment was created
+   */
+  name: string;
+  /**
+   * A string with the unique URL of the deployment
+   */
+  url: string;
+  /**
+   * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
+   */
+  target?: CancelDeploymentTarget | null | undefined;
   /**
    * A number containing the date when the deployment was created in milliseconds
    */
@@ -563,26 +555,31 @@ export type CancelDeploymentResponseBody = {
   /**
    * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
    */
-  readyState: CancelDeploymentReadyState;
+  readyState: ReadyState;
   /**
-   * The name of the project associated with the deployment at the time that the deployment was created
+   * Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic
    */
-  name: string;
-  type: CancelDeploymentType;
-  errorMessage?: string | null | undefined;
+  readySubstate?: ReadySubstate | undefined;
+  prebuilt?: boolean | undefined;
   /**
    * An object that will contain a `code` and a `message` when the aliasing fails, otherwise the value will be `null`
    */
-  aliasError?: CancelDeploymentAliasError | null | undefined;
+  aliasError?: AliasError | null | undefined;
+  aliasWarning?: AliasWarning | null | undefined;
   aliasFinal?: string | null | undefined;
+  checksState?: ChecksState | undefined;
+  checksConclusion?: ChecksConclusion | undefined;
+  errorCode?: string | undefined;
+  errorLink?: string | undefined;
+  errorMessage?: string | null | undefined;
+  errorStep?: string | undefined;
+  type: CancelDeploymentType;
   /**
    * applies to custom domains only, defaults to `true`
    */
   autoAssignCustomDomains?: boolean | undefined;
   automaticAliases?: Array<string> | undefined;
   buildErrorAt?: number | undefined;
-  checksState?: CancelDeploymentChecksState | undefined;
-  checksConclusion?: CancelDeploymentChecksConclusion | undefined;
   /**
    * A number containing the date when the deployment was deleted at milliseconds
    */
@@ -592,9 +589,6 @@ export type CancelDeploymentResponseBody = {
    */
   defaultRoute?: string | undefined;
   canceledAt?: number | undefined;
-  errorCode?: string | undefined;
-  errorLink?: string | undefined;
-  errorStep?: string | undefined;
   /**
    * Since November 2023 this field defines a set of regions that we will deploy the lambda to passively Lambdas will be deployed to these regions but only invoked if all of the primary `regions` are marked as out of service
    */
@@ -603,7 +597,7 @@ export type CancelDeploymentResponseBody = {
   /**
    * Present when deployment was created with manual provisioning enabled, either explicitly or via the experimental BYOC git flow. The deployment stays in INITIALIZING until /continue is called.
    */
-  manualProvisioning?: CancelDeploymentManualProvisioning | undefined;
+  manualProvisioning?: ManualProvisioning | undefined;
   meta: { [k: string]: string };
   originCacheRegion?: string | undefined;
   /**
@@ -614,11 +608,6 @@ export type CancelDeploymentResponseBody = {
    * The public project information associated with the deployment.
    */
   project?: CancelDeploymentProject | undefined;
-  prebuilt?: boolean | undefined;
-  /**
-   * Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic
-   */
-  readySubstate?: CancelDeploymentReadySubstate | undefined;
   /**
    * The regions the deployment exists in
    */
@@ -632,17 +621,9 @@ export type CancelDeploymentResponseBody = {
    */
   source?: CancelDeploymentSource | undefined;
   /**
-   * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
-   */
-  target?: CancelDeploymentTarget | null | undefined;
-  /**
    * A number containing the date when the deployment was undeleted at milliseconds
    */
   undeletedAt?: number | undefined;
-  /**
-   * A string with the unique URL of the deployment
-   */
-  url: string;
   /**
    * Since January 2025 User-configured deployment ID for skew protection with pre-built deployments. This is set when users configure a custom deploymentId in their next.config.js file. This allows Next.js to use skew protection even when deployments are pre-built outside of Vercel's build system.
    */
@@ -651,18 +632,18 @@ export type CancelDeploymentResponseBody = {
    * The platform version that was used to create the deployment.
    */
   version: number;
-  oidcTokenClaims?: CancelDeploymentOidcTokenClaims | undefined;
+  oidcTokenClaims?: OidcTokenClaims | undefined;
   projectId: string;
   plan: CancelDeploymentPlan;
   /**
    * Metadata about the source platform that triggered the deployment. Allows us to map a deployment back to a platform (e.g. the chat that created it)
    */
-  platform?: CancelDeploymentPlatform | undefined;
+  platform?: Platform | undefined;
   connectBuildsEnabled?: boolean | undefined;
   connectConfigurationId?: string | undefined;
   createdIn: string;
-  crons?: Array<CancelDeploymentCrons> | undefined;
-  functions?: { [k: string]: CancelDeploymentFunctions } | null | undefined;
+  crons?: Array<Crons> | undefined;
+  functions?: { [k: string]: Functions } | null | undefined;
   monorepoManager?: string | null | undefined;
   ownerId: string;
   /**
@@ -673,15 +654,9 @@ export type CancelDeploymentResponseBody = {
   /**
    * Services detected during build from vercel.json experimentalServices or auto-detected from project structure. Used to inject service URLs as environment variables at runtime.
    */
-  services?: Array<CancelDeploymentServices> | undefined;
-  gitRepo?:
-    | CancelDeploymentGitRepo1
-    | CancelDeploymentGitRepo2
-    | CancelDeploymentGitRepo3
-    | CancelDeploymentGitRepo4
-    | null
-    | undefined;
-  flags?: CancelDeploymentFlags1 | Array<CancelDeploymentFlags2> | undefined;
+  services?: Array<Services> | undefined;
+  gitRepo?: GitRepo1 | GitRepo2 | GitRepo3 | GitRepo4 | null | undefined;
+  flags?: Flags1 | Array<Flags2> | undefined;
   microfrontends?:
     | CancelDeploymentMicrofrontends2
     | CancelDeploymentMicrofrontends1
@@ -694,7 +669,7 @@ export type CancelDeploymentResponseBody = {
   /**
    * NSNB Blocked metadata
    */
-  seatBlock?: CancelDeploymentSeatBlock | undefined;
+  seatBlock?: SeatBlock | undefined;
   /**
    * Attribution metadata for the deployment, linking commit author to git and Vercel users. Only populated when the `enable-deployment-attribution` flag is enabled.
    */
@@ -702,8 +677,8 @@ export type CancelDeploymentResponseBody = {
 };
 
 /** @internal */
-export const CancelDeploymentGitRepo3$inboundSchema: z.ZodType<
-  CancelDeploymentGitRepo3,
+export const GitRepo3$inboundSchema: z.ZodType<
+  GitRepo3,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -716,27 +691,27 @@ export const CancelDeploymentGitRepo3$inboundSchema: z.ZodType<
   defaultBranch: types.string(),
   name: types.string(),
   private: types.boolean(),
-  ownerType: CancelDeploymentGitRepoDeploymentsResponseOwnerType$inboundSchema,
+  ownerType: CancelDeploymentGitRepoOwnerType$inboundSchema,
 });
 
-export function cancelDeploymentGitRepo3FromJSON(
+export function gitRepo3FromJSON(
   jsonString: string,
-): SafeParseResult<CancelDeploymentGitRepo3, SDKValidationError> {
+): SafeParseResult<GitRepo3, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CancelDeploymentGitRepo3$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CancelDeploymentGitRepo3' from JSON`,
+    (x) => GitRepo3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GitRepo3' from JSON`,
   );
 }
 
 /** @internal */
-export const CancelDeploymentGitRepoDeploymentsOwnerType$inboundSchema:
-  z.ZodNativeEnum<typeof CancelDeploymentGitRepoDeploymentsOwnerType> = z
-    .nativeEnum(CancelDeploymentGitRepoDeploymentsOwnerType);
+export const GitRepoOwnerType$inboundSchema: z.ZodNativeEnum<
+  typeof GitRepoOwnerType
+> = z.nativeEnum(GitRepoOwnerType);
 
 /** @internal */
-export const CancelDeploymentGitRepo2$inboundSchema: z.ZodType<
-  CancelDeploymentGitRepo2,
+export const GitRepo2$inboundSchema: z.ZodType<
+  GitRepo2,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -749,27 +724,26 @@ export const CancelDeploymentGitRepo2$inboundSchema: z.ZodType<
   defaultBranch: types.string(),
   name: types.string(),
   private: types.boolean(),
-  ownerType: CancelDeploymentGitRepoDeploymentsOwnerType$inboundSchema,
+  ownerType: GitRepoOwnerType$inboundSchema,
 });
 
-export function cancelDeploymentGitRepo2FromJSON(
+export function gitRepo2FromJSON(
   jsonString: string,
-): SafeParseResult<CancelDeploymentGitRepo2, SDKValidationError> {
+): SafeParseResult<GitRepo2, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CancelDeploymentGitRepo2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CancelDeploymentGitRepo2' from JSON`,
+    (x) => GitRepo2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GitRepo2' from JSON`,
   );
 }
 
 /** @internal */
-export const CancelDeploymentGitRepoOwnerType$inboundSchema: z.ZodNativeEnum<
-  typeof CancelDeploymentGitRepoOwnerType
-> = z.nativeEnum(CancelDeploymentGitRepoOwnerType);
+export const OwnerType$inboundSchema: z.ZodNativeEnum<typeof OwnerType> = z
+  .nativeEnum(OwnerType);
 
 /** @internal */
-export const CancelDeploymentGitRepo1$inboundSchema: z.ZodType<
-  CancelDeploymentGitRepo1,
+export const GitRepo1$inboundSchema: z.ZodType<
+  GitRepo1,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -781,55 +755,49 @@ export const CancelDeploymentGitRepo1$inboundSchema: z.ZodType<
   defaultBranch: types.string(),
   name: types.string(),
   private: types.boolean(),
-  ownerType: CancelDeploymentGitRepoOwnerType$inboundSchema,
+  ownerType: OwnerType$inboundSchema,
 });
 
-export function cancelDeploymentGitRepo1FromJSON(
+export function gitRepo1FromJSON(
   jsonString: string,
-): SafeParseResult<CancelDeploymentGitRepo1, SDKValidationError> {
+): SafeParseResult<GitRepo1, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CancelDeploymentGitRepo1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CancelDeploymentGitRepo1' from JSON`,
+    (x) => GitRepo1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GitRepo1' from JSON`,
   );
 }
 
 /** @internal */
-export const CancelDeploymentGitRepo$inboundSchema: z.ZodType<
-  CancelDeploymentGitRepo,
-  z.ZodTypeDef,
-  unknown
-> = z.union([
-  z.lazy(() => CancelDeploymentGitRepo1$inboundSchema),
-  z.lazy(() => CancelDeploymentGitRepo2$inboundSchema),
-  z.lazy(() => CancelDeploymentGitRepo3$inboundSchema),
-  CancelDeploymentGitRepo4$inboundSchema,
-]);
+export const GitRepo$inboundSchema: z.ZodType<GitRepo, z.ZodTypeDef, unknown> =
+  z.union([
+    z.lazy(() => GitRepo1$inboundSchema),
+    z.lazy(() => GitRepo2$inboundSchema),
+    z.lazy(() => GitRepo3$inboundSchema),
+    GitRepo4$inboundSchema,
+  ]);
 
-export function cancelDeploymentGitRepoFromJSON(
+export function gitRepoFromJSON(
   jsonString: string,
-): SafeParseResult<CancelDeploymentGitRepo, SDKValidationError> {
+): SafeParseResult<GitRepo, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CancelDeploymentGitRepo$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CancelDeploymentGitRepo' from JSON`,
+    (x) => GitRepo$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GitRepo' from JSON`,
   );
 }
 
 /** @internal */
-export const CancelDeploymentFlags2$inboundSchema: z.ZodType<
-  CancelDeploymentFlags2,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
+export const Flags2$inboundSchema: z.ZodType<Flags2, z.ZodTypeDef, unknown> = z
+  .object({});
 
-export function cancelDeploymentFlags2FromJSON(
+export function flags2FromJSON(
   jsonString: string,
-): SafeParseResult<CancelDeploymentFlags2, SDKValidationError> {
+): SafeParseResult<Flags2, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CancelDeploymentFlags2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CancelDeploymentFlags2' from JSON`,
+    (x) => Flags2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Flags2' from JSON`,
   );
 }
 
@@ -875,48 +843,42 @@ export function flagsDefinitionsFromJSON(
 }
 
 /** @internal */
-export const CancelDeploymentFlags1$inboundSchema: z.ZodType<
-  CancelDeploymentFlags1,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  definitions: z.record(z.lazy(() => FlagsDefinitions$inboundSchema)),
-});
+export const Flags1$inboundSchema: z.ZodType<Flags1, z.ZodTypeDef, unknown> = z
+  .object({
+    definitions: z.record(z.lazy(() => FlagsDefinitions$inboundSchema)),
+  });
 
-export function cancelDeploymentFlags1FromJSON(
+export function flags1FromJSON(
   jsonString: string,
-): SafeParseResult<CancelDeploymentFlags1, SDKValidationError> {
+): SafeParseResult<Flags1, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CancelDeploymentFlags1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CancelDeploymentFlags1' from JSON`,
+    (x) => Flags1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Flags1' from JSON`,
   );
 }
 
 /** @internal */
-export const CancelDeploymentFlags$inboundSchema: z.ZodType<
-  CancelDeploymentFlags,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([
-  z.lazy(() => CancelDeploymentFlags1$inboundSchema),
-  z.array(z.lazy(() => CancelDeploymentFlags2$inboundSchema)),
-]);
+export const Flags$inboundSchema: z.ZodType<Flags, z.ZodTypeDef, unknown> =
+  smartUnion([
+    z.lazy(() => Flags1$inboundSchema),
+    z.array(z.lazy(() => Flags2$inboundSchema)),
+  ]);
 
-export function cancelDeploymentFlagsFromJSON(
+export function flagsFromJSON(
   jsonString: string,
-): SafeParseResult<CancelDeploymentFlags, SDKValidationError> {
+): SafeParseResult<Flags, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CancelDeploymentFlags$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CancelDeploymentFlags' from JSON`,
+    (x) => Flags$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Flags' from JSON`,
   );
 }
 
 /** @internal */
-export const MicrofrontendsMfeConfigUploadState$inboundSchema: z.ZodNativeEnum<
-  typeof MicrofrontendsMfeConfigUploadState
-> = z.nativeEnum(MicrofrontendsMfeConfigUploadState);
+export const MfeConfigUploadState$inboundSchema: z.ZodNativeEnum<
+  typeof MfeConfigUploadState
+> = z.nativeEnum(MfeConfigUploadState);
 
 /** @internal */
 export const CancelDeploymentMicrofrontends2$inboundSchema: z.ZodType<
@@ -925,9 +887,7 @@ export const CancelDeploymentMicrofrontends2$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   isDefaultApp: types.literal(true),
-  mfeConfigUploadState: types.optional(
-    MicrofrontendsMfeConfigUploadState$inboundSchema,
-  ),
+  mfeConfigUploadState: types.optional(MfeConfigUploadState$inboundSchema),
   defaultAppProjectName: types.string(),
   defaultRoute: types.optional(types.string()),
   groupIds: z.array(types.string()),
@@ -986,14 +946,13 @@ export function cancelDeploymentMicrofrontendsFromJSON(
 }
 
 /** @internal */
-export const CancelDeploymentFunctionType$inboundSchema: z.ZodNativeEnum<
-  typeof CancelDeploymentFunctionType
-> = z.nativeEnum(CancelDeploymentFunctionType);
+export const FunctionType$inboundSchema: z.ZodNativeEnum<typeof FunctionType> =
+  z.nativeEnum(FunctionType);
 
 /** @internal */
-export const CancelDeploymentFunctionMemoryType$inboundSchema: z.ZodNativeEnum<
-  typeof CancelDeploymentFunctionMemoryType
-> = z.nativeEnum(CancelDeploymentFunctionMemoryType);
+export const FunctionMemoryType$inboundSchema: z.ZodNativeEnum<
+  typeof FunctionMemoryType
+> = z.nativeEnum(FunctionMemoryType);
 
 /** @internal */
 export const CancelDeploymentConfiguration$inboundSchema: z.ZodNativeEnum<
@@ -1020,9 +979,9 @@ export function cancelDeploymentBuildQueueFromJSON(
 }
 
 /** @internal */
-export const CancelDeploymentElasticConcurrency$inboundSchema: z.ZodNativeEnum<
-  typeof CancelDeploymentElasticConcurrency
-> = z.nativeEnum(CancelDeploymentElasticConcurrency);
+export const ElasticConcurrency$inboundSchema: z.ZodNativeEnum<
+  typeof ElasticConcurrency
+> = z.nativeEnum(ElasticConcurrency);
 
 /** @internal */
 export const CancelDeploymentPurchaseType$inboundSchema: z.ZodNativeEnum<
@@ -1058,9 +1017,7 @@ export const CancelDeploymentResourceConfig$inboundSchema: z.ZodType<
   buildQueue: types.optional(
     z.lazy(() => CancelDeploymentBuildQueue$inboundSchema),
   ),
-  elasticConcurrency: types.optional(
-    CancelDeploymentElasticConcurrency$inboundSchema,
-  ),
+  elasticConcurrency: types.optional(ElasticConcurrency$inboundSchema),
   buildMachine: types.optional(
     z.lazy(() => CancelDeploymentBuildMachine$inboundSchema),
   ),
@@ -1083,8 +1040,8 @@ export const CancelDeploymentConfig$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   version: types.optional(types.number()),
-  functionType: CancelDeploymentFunctionType$inboundSchema,
-  functionMemoryType: CancelDeploymentFunctionMemoryType$inboundSchema,
+  functionType: FunctionType$inboundSchema,
+  functionMemoryType: FunctionMemoryType$inboundSchema,
   functionTimeout: types.nullable(types.number()),
   secureComputePrimaryRegion: types.nullable(types.string()),
   secureComputeFallbackRegion: types.nullable(types.string()),
@@ -1110,8 +1067,8 @@ export const CancelDeploymentDeploymentsState$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(CancelDeploymentDeploymentsState);
 
 /** @internal */
-export const CancelDeploymentDeploymentAlias$inboundSchema: z.ZodType<
-  CancelDeploymentDeploymentAlias,
+export const DeploymentAlias$inboundSchema: z.ZodType<
+  DeploymentAlias,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -1120,13 +1077,13 @@ export const CancelDeploymentDeploymentAlias$inboundSchema: z.ZodType<
   completedAt: types.optional(types.number()),
 });
 
-export function cancelDeploymentDeploymentAliasFromJSON(
+export function deploymentAliasFromJSON(
   jsonString: string,
-): SafeParseResult<CancelDeploymentDeploymentAlias, SDKValidationError> {
+): SafeParseResult<DeploymentAlias, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CancelDeploymentDeploymentAlias$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CancelDeploymentDeploymentAlias' from JSON`,
+    (x) => DeploymentAlias$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeploymentAlias' from JSON`,
   );
 }
 
@@ -1136,9 +1093,7 @@ export const CancelDeploymentChecks$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "deployment-alias": z.lazy(() =>
-    CancelDeploymentDeploymentAlias$inboundSchema
-  ),
+  "deployment-alias": z.lazy(() => DeploymentAlias$inboundSchema),
 }).transform((v) => {
   return remap$(v, {
     "deployment-alias": "deploymentAlias",
@@ -1156,9 +1111,8 @@ export function cancelDeploymentChecksFromJSON(
 }
 
 /** @internal */
-export const CancelDeploymentBlockCode$inboundSchema: z.ZodNativeEnum<
-  typeof CancelDeploymentBlockCode
-> = z.nativeEnum(CancelDeploymentBlockCode);
+export const BlockCode$inboundSchema: z.ZodNativeEnum<typeof BlockCode> = z
+  .nativeEnum(BlockCode);
 
 /** @internal */
 export const CancelDeploymentGitUserId$inboundSchema: z.ZodType<
@@ -1183,31 +1137,31 @@ export const CancelDeploymentGitProvider$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(CancelDeploymentGitProvider);
 
 /** @internal */
-export const CancelDeploymentSeatBlock$inboundSchema: z.ZodType<
-  CancelDeploymentSeatBlock,
+export const SeatBlock$inboundSchema: z.ZodType<
+  SeatBlock,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  blockCode: CancelDeploymentBlockCode$inboundSchema,
+  blockCode: BlockCode$inboundSchema,
   userId: types.optional(types.string()),
   isVerified: types.optional(types.boolean()),
   gitUserId: types.optional(smartUnion([types.string(), types.number()])),
   gitProvider: types.optional(CancelDeploymentGitProvider$inboundSchema),
 });
 
-export function cancelDeploymentSeatBlockFromJSON(
+export function seatBlockFromJSON(
   jsonString: string,
-): SafeParseResult<CancelDeploymentSeatBlock, SDKValidationError> {
+): SafeParseResult<SeatBlock, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CancelDeploymentSeatBlock$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CancelDeploymentSeatBlock' from JSON`,
+    (x) => SeatBlock$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SeatBlock' from JSON`,
   );
 }
 
 /** @internal */
-export const CancelDeploymentCommitMeta$inboundSchema: z.ZodType<
-  CancelDeploymentCommitMeta,
+export const CommitMeta$inboundSchema: z.ZodType<
+  CommitMeta,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -1216,13 +1170,13 @@ export const CancelDeploymentCommitMeta$inboundSchema: z.ZodType<
   isVerified: types.optional(types.boolean()),
 });
 
-export function cancelDeploymentCommitMetaFromJSON(
+export function commitMetaFromJSON(
   jsonString: string,
-): SafeParseResult<CancelDeploymentCommitMeta, SDKValidationError> {
+): SafeParseResult<CommitMeta, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CancelDeploymentCommitMeta$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CancelDeploymentCommitMeta' from JSON`,
+    (x) => CommitMeta$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CommitMeta' from JSON`,
   );
 }
 
@@ -1244,30 +1198,27 @@ export function cancelDeploymentIdFromJSON(
 }
 
 /** @internal */
-export const CancelDeploymentGitUser$inboundSchema: z.ZodType<
-  CancelDeploymentGitUser,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: smartUnion([types.string(), types.number()]),
-  login: types.string(),
-  type: types.optional(types.string()),
-  provider: types.optional(types.string()),
-});
+export const GitUser$inboundSchema: z.ZodType<GitUser, z.ZodTypeDef, unknown> =
+  z.object({
+    id: smartUnion([types.string(), types.number()]),
+    login: types.string(),
+    type: types.optional(types.string()),
+    provider: types.optional(types.string()),
+  });
 
-export function cancelDeploymentGitUserFromJSON(
+export function gitUserFromJSON(
   jsonString: string,
-): SafeParseResult<CancelDeploymentGitUser, SDKValidationError> {
+): SafeParseResult<GitUser, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CancelDeploymentGitUser$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CancelDeploymentGitUser' from JSON`,
+    (x) => GitUser$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GitUser' from JSON`,
   );
 }
 
 /** @internal */
-export const CancelDeploymentVercelUser$inboundSchema: z.ZodType<
-  CancelDeploymentVercelUser,
+export const VercelUser$inboundSchema: z.ZodType<
+  VercelUser,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -1276,13 +1227,13 @@ export const CancelDeploymentVercelUser$inboundSchema: z.ZodType<
   teamRoles: types.optional(z.array(types.string())),
 });
 
-export function cancelDeploymentVercelUserFromJSON(
+export function vercelUserFromJSON(
   jsonString: string,
-): SafeParseResult<CancelDeploymentVercelUser, SDKValidationError> {
+): SafeParseResult<VercelUser, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CancelDeploymentVercelUser$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CancelDeploymentVercelUser' from JSON`,
+    (x) => VercelUser$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'VercelUser' from JSON`,
   );
 }
 
@@ -1292,13 +1243,9 @@ export const CancelDeploymentAttribution$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  commitMeta: types.optional(
-    z.lazy(() => CancelDeploymentCommitMeta$inboundSchema),
-  ),
-  gitUser: types.optional(z.lazy(() => CancelDeploymentGitUser$inboundSchema)),
-  vercelUser: types.optional(
-    z.lazy(() => CancelDeploymentVercelUser$inboundSchema),
-  ),
+  commitMeta: types.optional(z.lazy(() => CommitMeta$inboundSchema)),
+  gitUser: types.optional(z.lazy(() => GitUser$inboundSchema)),
+  vercelUser: types.optional(z.lazy(() => VercelUser$inboundSchema)),
 });
 
 export function cancelDeploymentAttributionFromJSON(
@@ -1317,19 +1264,18 @@ export const CancelDeploymentResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  aliasAssignedAt: z.nullable(CancelDeploymentAliasAssignedAt$inboundSchema)
-    .optional(),
+  aliasAssignedAt: z.nullable(AliasAssignedAt$inboundSchema).optional(),
   alwaysRefuseToBuild: types.optional(types.boolean()),
-  build: CancelDeploymentBuild$inboundSchema,
+  build: Build$inboundSchema,
   buildArtifactUrls: types.optional(z.array(types.string())),
-  builds: types.optional(z.array(CancelDeploymentBuilds$inboundSchema)),
+  builds: types.optional(z.array(Builds$inboundSchema)),
   env: z.array(types.string()),
   inspectorUrl: types.nullable(types.string()),
   isInConcurrentBuildsQueue: types.boolean(),
   isInSystemBuildsQueue: types.boolean(),
   projectSettings: CancelDeploymentProjectSettings$inboundSchema,
-  integrations: types.optional(CancelDeploymentIntegrations$inboundSchema),
-  images: types.optional(CancelDeploymentImages$inboundSchema),
+  integrations: types.optional(Integrations$inboundSchema),
+  images: types.optional(Images$inboundSchema),
   alias: types.optional(z.array(types.string())),
   aliasAssigned: types.boolean(),
   bootedAt: types.number(),
@@ -1339,7 +1285,7 @@ export const CancelDeploymentResponseBody$inboundSchema: z.ZodType<
   creator: CancelDeploymentCreator$inboundSchema,
   initReadyAt: types.optional(types.number()),
   isFirstBranchDeployment: types.optional(types.boolean()),
-  lambdas: types.optional(z.array(CancelDeploymentLambdas$inboundSchema)),
+  lambdas: types.optional(z.array(Lambdas$inboundSchema)),
   public: types.boolean(),
   ready: types.optional(types.number()),
   status: CancelDeploymentStatus$inboundSchema,
@@ -1347,82 +1293,72 @@ export const CancelDeploymentResponseBody$inboundSchema: z.ZodType<
   userAliases: types.optional(z.array(types.string())),
   previewCommentsEnabled: types.optional(types.boolean()),
   ttyBuildLogs: types.optional(types.boolean()),
-  customEnvironment: types.optional(
-    CancelDeploymentCustomEnvironment$inboundSchema,
-  ),
-  oomReport: types.optional(CancelDeploymentOomReport$inboundSchema),
+  customEnvironment: types.optional(CustomEnvironment$inboundSchema),
+  oomReport: types.optional(OomReport$inboundSchema),
   readyStateReason: types.optional(types.string()),
-  aliasWarning: z.nullable(CancelDeploymentAliasWarning$inboundSchema)
-    .optional(),
   id: types.string(),
-  createdAt: types.number(),
-  readyState: CancelDeploymentReadyState$inboundSchema,
   name: types.string(),
-  type: CancelDeploymentType$inboundSchema,
-  errorMessage: z.nullable(types.string()).optional(),
-  aliasError: z.nullable(CancelDeploymentAliasError$inboundSchema).optional(),
+  url: types.string(),
+  target: z.nullable(CancelDeploymentTarget$inboundSchema).optional(),
+  createdAt: types.number(),
+  readyState: ReadyState$inboundSchema,
+  readySubstate: types.optional(ReadySubstate$inboundSchema),
+  prebuilt: types.optional(types.boolean()),
+  aliasError: z.nullable(AliasError$inboundSchema).optional(),
+  aliasWarning: z.nullable(AliasWarning$inboundSchema).optional(),
   aliasFinal: z.nullable(types.string()).optional(),
+  checksState: types.optional(ChecksState$inboundSchema),
+  checksConclusion: types.optional(ChecksConclusion$inboundSchema),
+  errorCode: types.optional(types.string()),
+  errorLink: types.optional(types.string()),
+  errorMessage: z.nullable(types.string()).optional(),
+  errorStep: types.optional(types.string()),
+  type: CancelDeploymentType$inboundSchema,
   autoAssignCustomDomains: types.optional(types.boolean()),
   automaticAliases: types.optional(z.array(types.string())),
   buildErrorAt: types.optional(types.number()),
-  checksState: types.optional(CancelDeploymentChecksState$inboundSchema),
-  checksConclusion: types.optional(
-    CancelDeploymentChecksConclusion$inboundSchema,
-  ),
   deletedAt: z.nullable(types.number()).optional(),
   defaultRoute: types.optional(types.string()),
   canceledAt: types.optional(types.number()),
-  errorCode: types.optional(types.string()),
-  errorLink: types.optional(types.string()),
-  errorStep: types.optional(types.string()),
   passiveRegions: types.optional(z.array(types.string())),
   gitSource: types.optional(CancelDeploymentGitSource$inboundSchema),
-  manualProvisioning: types.optional(
-    CancelDeploymentManualProvisioning$inboundSchema,
-  ),
+  manualProvisioning: types.optional(ManualProvisioning$inboundSchema),
   meta: z.record(types.string()),
   originCacheRegion: types.optional(types.string()),
   nodeVersion: types.optional(CancelDeploymentNodeVersion$inboundSchema),
   project: types.optional(CancelDeploymentProject$inboundSchema),
-  prebuilt: types.optional(types.boolean()),
-  readySubstate: types.optional(CancelDeploymentReadySubstate$inboundSchema),
   regions: z.array(types.string()),
   softDeletedByRetention: types.optional(types.boolean()),
   source: types.optional(CancelDeploymentSource$inboundSchema),
-  target: z.nullable(CancelDeploymentTarget$inboundSchema).optional(),
   undeletedAt: types.optional(types.number()),
-  url: types.string(),
   userConfiguredDeploymentId: types.optional(types.string()),
   version: types.number(),
-  oidcTokenClaims: types.optional(
-    CancelDeploymentOidcTokenClaims$inboundSchema,
-  ),
+  oidcTokenClaims: types.optional(OidcTokenClaims$inboundSchema),
   projectId: types.string(),
   plan: CancelDeploymentPlan$inboundSchema,
-  platform: types.optional(CancelDeploymentPlatform$inboundSchema),
+  platform: types.optional(Platform$inboundSchema),
   connectBuildsEnabled: types.optional(types.boolean()),
   connectConfigurationId: types.optional(types.string()),
   createdIn: types.string(),
-  crons: types.optional(z.array(CancelDeploymentCrons$inboundSchema)),
-  functions: z.nullable(z.record(CancelDeploymentFunctions$inboundSchema))
-    .optional(),
+  crons: types.optional(z.array(Crons$inboundSchema)),
+  functions: z.nullable(z.record(Functions$inboundSchema)).optional(),
   monorepoManager: z.nullable(types.string()).optional(),
   ownerId: types.string(),
   passiveConnectConfigurationId: types.optional(types.string()),
   routes: types.nullable(z.array(CancelDeploymentRoutes$inboundSchema)),
-  services: types.optional(z.array(CancelDeploymentServices$inboundSchema)),
+  services: types.optional(z.array(Services$inboundSchema)),
   gitRepo: z.nullable(
     z.union([
-      z.lazy(() => CancelDeploymentGitRepo1$inboundSchema),
-      z.lazy(() => CancelDeploymentGitRepo2$inboundSchema),
-      z.lazy(() => CancelDeploymentGitRepo3$inboundSchema),
-      CancelDeploymentGitRepo4$inboundSchema,
+      z.lazy(() => GitRepo1$inboundSchema),
+      z.lazy(() => GitRepo2$inboundSchema),
+      z.lazy(() => GitRepo3$inboundSchema),
+      GitRepo4$inboundSchema,
     ]),
   ).optional(),
   flags: types.optional(
     smartUnion([
-      z.lazy(() => CancelDeploymentFlags1$inboundSchema),
-      z.array(z.lazy(() => CancelDeploymentFlags2$inboundSchema)),
+      z.lazy(() => Flags1$inboundSchema),
+      z.array(z.lazy(() => Flags2$inboundSchema)),
     ]),
   ),
   microfrontends: types.optional(
@@ -1433,9 +1369,7 @@ export const CancelDeploymentResponseBody$inboundSchema: z.ZodType<
   ),
   config: types.optional(z.lazy(() => CancelDeploymentConfig$inboundSchema)),
   checks: types.optional(z.lazy(() => CancelDeploymentChecks$inboundSchema)),
-  seatBlock: types.optional(
-    z.lazy(() => CancelDeploymentSeatBlock$inboundSchema),
-  ),
+  seatBlock: types.optional(z.lazy(() => SeatBlock$inboundSchema)),
   attribution: types.optional(
     z.lazy(() => CancelDeploymentAttribution$inboundSchema),
   ),

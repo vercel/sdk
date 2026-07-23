@@ -1,15 +1,17 @@
 # ImportConnectorTokensEnvironment
 
-## Example Usage
+
+## Supported Types
+
+### `string`
 
 ```typescript
-import { ImportConnectorTokensEnvironment } from "@vercel/sdk/models/importconnectortokensop.js";
-
-let value: ImportConnectorTokensEnvironment = "preview";
+const value: string = "<value>";
 ```
 
-## Values
+### `models.Environment2`
 
 ```typescript
-"development" | "preview" | "production"
+const value: models.Environment2 = "development";
 ```
+

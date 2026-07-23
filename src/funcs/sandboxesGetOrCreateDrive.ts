@@ -171,7 +171,7 @@ async function $do(
   >(
     M.json(200, GetOrCreateDriveResponse$inboundSchema),
     M.json(201, GetOrCreateDriveResponse$inboundSchema),
-    M.fail([400, 401, 402, 403, 404, 409, 429, "4XX"]),
+    M.fail([400, 401, 402, 403, 404, 409, 410, 429, "4XX"]),
     M.fail("5XX"),
   )(response, req);
   if (!result.ok) {

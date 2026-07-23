@@ -1,17 +1,17 @@
 # CancelDeploymentCustomEnvironmentType
 
-The type of environment (production, preview, or development)
+The type of matching to perform
 
 ## Example Usage
 
 ```typescript
 import { CancelDeploymentCustomEnvironmentType } from "@vercel/sdk/models/canceldeploymentservicesdeploymentsfunctions.js";
 
-let value: CancelDeploymentCustomEnvironmentType = "development";
+let value: CancelDeploymentCustomEnvironmentType = "endsWith";
 ```
 
 ## Values
 
 ```typescript
-"development" | "preview" | "production"
+"endsWith" | "equals" | "startsWith"
 ```

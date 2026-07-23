@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CreateDeploymentHas1 } from "@vercel/sdk/models/createdeploymentrouteslocale.js";
+import { CreateDeploymentHas1 } from "@vercel/sdk/models/createdeploymentvaluedeploymentsresponse2.js";
 
 let value: CreateDeploymentHas1 = {
   type: "host",
@@ -13,7 +13,7 @@ let value: CreateDeploymentHas1 = {
 
 ## Fields
 
-| Field                                                                                      | Type                                                                                       | Required                                                                                   | Description                                                                                |
-| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| `type`                                                                                     | *"host"*                                                                                   | :heavy_check_mark:                                                                         | N/A                                                                                        |
-| `value`                                                                                    | *models.CreateDeploymentHasDeploymentsResponse200ApplicationJSONResponseBodyServicesValue* | :heavy_check_mark:                                                                         | N/A                                                                                        |
+| Field                             | Type                              | Required                          | Description                       |
+| --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- |
+| `type`                            | *"host"*                          | :heavy_check_mark:                | N/A                               |
+| `value`                           | *models.CreateDeploymentHasValue* | :heavy_check_mark:                | N/A                               |

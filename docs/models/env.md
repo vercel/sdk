@@ -1,17 +1,15 @@
 # Env
 
-Environment to apply sampling to
-
 ## Example Usage
 
 ```typescript
-import { Env } from "@vercel/sdk/models/createdrainop.js";
+import { Env } from "@vercel/sdk/models/threehundredandthirtyseven.js";
 
-let value: Env = "production";
+let value: Env = "preview";
 ```
 
 ## Values
 
 ```typescript
-"production" | "preview"
+"preview" | "production"
 ```

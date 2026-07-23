@@ -23,4 +23,5 @@ let value: AccountUpdateContext = {
 
 | Field                                              | Type                                               | Required                                           | Description                                        |
 | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
+| `organization`                                     | [models.Organization](../models/organization.md)   | :heavy_minus_sign:                                 | N/A                                                |
 | `managedTeams`                                     | [models.ManagedTeams](../models/managedteams.md)[] | :heavy_check_mark:                                 | N/A                                                |

@@ -14,7 +14,7 @@ import { pathToFunc } from "../lib/url.js";
 import {
   GetMicrofrontendsInGroupRequest,
   GetMicrofrontendsInGroupRequest$outboundSchema,
-} from "../models/getmicrofrontendsingrouplastrollbacktarget.js";
+} from "../models/getmicrofrontendsingroupaliasassigned.js";
 import {
   GetMicrofrontendsInGroupResponseBody,
   GetMicrofrontendsInGroupResponseBody$inboundSchema,
@@ -173,7 +173,7 @@ async function $do(
     | SDKValidationError
   >(
     M.json(200, GetMicrofrontendsInGroupResponseBody$inboundSchema),
-    M.fail([400, 401, 403, "4XX"]),
+    M.fail([400, 401, 403, 410, "4XX"]),
     M.fail("5XX"),
   )(response, req);
   if (!result.ok) {

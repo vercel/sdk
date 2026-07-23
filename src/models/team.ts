@@ -180,6 +180,7 @@ export type TeamTeamRoles = ClosedEnum<typeof TeamTeamRoles>;
 
 export const TeamTeamPermissions = {
   AiGatewayApiKeyOwnedBySelf: "AiGatewayApiKeyOwnedBySelf",
+  AiGatewayBudgetManager: "AiGatewayBudgetManager",
   AiGatewayCredits: "AiGatewayCredits",
   AiGatewaySettings: "AiGatewaySettings",
   CreateProject: "CreateProject",
@@ -487,6 +488,14 @@ export type StrictShareableLinks = {
   updatedAt: number;
 };
 
+/**
+ * When enabled, adding, changing, or removing project password protection requires Owner role.
+ */
+export type StrictPasswordProtectionSettings = {
+  enabled: boolean;
+  updatedAt: number;
+};
+
 export const Preference = {
   AutoApproval: "auto-approval",
   Block: "block",
@@ -646,6 +655,7 @@ export type TeamMembershipTeamRoles = ClosedEnum<
 
 export const TeamMembershipTeamPermissions = {
   AiGatewayApiKeyOwnedBySelf: "AiGatewayApiKeyOwnedBySelf",
+  AiGatewayBudgetManager: "AiGatewayBudgetManager",
   AiGatewayCredits: "AiGatewayCredits",
   AiGatewaySettings: "AiGatewaySettings",
   CreateProject: "CreateProject",
@@ -833,6 +843,12 @@ export type Team = {
    * When enabled, creating shareable links requires Owner role.
    */
   strictShareableLinks?: StrictShareableLinks | undefined;
+  /**
+   * When enabled, adding, changing, or removing project password protection requires Owner role.
+   */
+  strictPasswordProtectionSettings?:
+    | StrictPasswordProtectionSettings
+    | undefined;
   /**
    * NSNB configuration for the team.
    */
@@ -1437,6 +1453,26 @@ export function strictShareableLinksFromJSON(
 }
 
 /** @internal */
+export const StrictPasswordProtectionSettings$inboundSchema: z.ZodType<
+  StrictPasswordProtectionSettings,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  enabled: types.boolean(),
+  updatedAt: types.number(),
+});
+
+export function strictPasswordProtectionSettingsFromJSON(
+  jsonString: string,
+): SafeParseResult<StrictPasswordProtectionSettings, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => StrictPasswordProtectionSettings$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'StrictPasswordProtectionSettings' from JSON`,
+  );
+}
+
+/** @internal */
 export const Preference$inboundSchema: z.ZodNativeEnum<typeof Preference> = z
   .nativeEnum(Preference);
 
@@ -1914,6 +1950,9 @@ export const Team$inboundSchema: z.ZodType<Team, z.ZodTypeDef, unknown> =
       ),
       strictShareableLinks: types.optional(
         z.lazy(() => StrictShareableLinks$inboundSchema),
+      ),
+      strictPasswordProtectionSettings: types.optional(
+        z.lazy(() => StrictPasswordProtectionSettings$inboundSchema),
       ),
       nsnbConfig: types.optional(z.lazy(() => NsnbConfig$inboundSchema)),
       deploymentPolicy: types.optional(

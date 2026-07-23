@@ -79,6 +79,20 @@ export type GetDeploymentsRequest = {
   slug?: string | undefined;
 };
 
+export const GetDeploymentsReadyState = {
+  Blocked: "BLOCKED",
+  Building: "BUILDING",
+  Canceled: "CANCELED",
+  Deleted: "DELETED",
+  Error: "ERROR",
+  Initializing: "INITIALIZING",
+  Queued: "QUEUED",
+  Ready: "READY",
+} as const;
+export type GetDeploymentsReadyState = ClosedEnum<
+  typeof GetDeploymentsReadyState
+>;
+
 /**
  * The source of the deployment.
  */
@@ -115,26 +129,6 @@ export const GetDeploymentsState = {
  * In which state is the deployment.
  */
 export type GetDeploymentsState = ClosedEnum<typeof GetDeploymentsState>;
-
-/**
- * In which state is the deployment.
- */
-export const GetDeploymentsReadyState = {
-  Blocked: "BLOCKED",
-  Building: "BUILDING",
-  Canceled: "CANCELED",
-  Deleted: "DELETED",
-  Error: "ERROR",
-  Initializing: "INITIALIZING",
-  Queued: "QUEUED",
-  Ready: "READY",
-} as const;
-/**
- * In which state is the deployment.
- */
-export type GetDeploymentsReadyState = ClosedEnum<
-  typeof GetDeploymentsReadyState
->;
 
 /**
  * The type of the deployment.
@@ -374,6 +368,7 @@ export const GetDeploymentsFramework = {
   Sveltekit: "sveltekit",
   Sveltekit1: "sveltekit-1",
   TanstackStart: "tanstack-start",
+  TanstackStartLovable: "tanstack-start-lovable",
   Umijs: "umijs",
   Vite: "vite",
   Vitepress: "vitepress",
@@ -670,6 +665,8 @@ export type GetDeploymentsAttribution = {
 };
 
 export type Deployments = {
+  createdAt: number;
+  readyState: GetDeploymentsReadyState;
   /**
    * The unique identifier of the deployment.
    */
@@ -715,10 +712,6 @@ export type Deployments = {
    */
   state?: GetDeploymentsState | undefined;
   /**
-   * In which state is the deployment.
-   */
-  readyState?: GetDeploymentsReadyState | undefined;
-  /**
    * The type of the deployment.
    */
   type: GetDeploymentsType;
@@ -739,10 +732,6 @@ export type Deployments = {
    */
   aliasError?: GetDeploymentsAliasError | null | undefined;
   aliasAssigned?: number | boolean | null | undefined;
-  /**
-   * Timestamp of when the deployment got created.
-   */
-  createdAt?: number | undefined;
   /**
    * Timestamp of when the deployment started building at.
    */
@@ -892,6 +881,11 @@ export function getDeploymentsRequestToJSON(
 }
 
 /** @internal */
+export const GetDeploymentsReadyState$inboundSchema: z.ZodNativeEnum<
+  typeof GetDeploymentsReadyState
+> = z.nativeEnum(GetDeploymentsReadyState);
+
+/** @internal */
 export const GetDeploymentsSource$inboundSchema: z.ZodNativeEnum<
   typeof GetDeploymentsSource
 > = z.nativeEnum(GetDeploymentsSource);
@@ -900,11 +894,6 @@ export const GetDeploymentsSource$inboundSchema: z.ZodNativeEnum<
 export const GetDeploymentsState$inboundSchema: z.ZodNativeEnum<
   typeof GetDeploymentsState
 > = z.nativeEnum(GetDeploymentsState);
-
-/** @internal */
-export const GetDeploymentsReadyState$inboundSchema: z.ZodNativeEnum<
-  typeof GetDeploymentsReadyState
-> = z.nativeEnum(GetDeploymentsReadyState);
 
 /** @internal */
 export const GetDeploymentsType$inboundSchema: z.ZodNativeEnum<
@@ -1457,6 +1446,8 @@ export const Deployments$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  createdAt: types.number(),
+  readyState: GetDeploymentsReadyState$inboundSchema,
   uid: types.string(),
   name: types.string(),
   projectId: types.string(),
@@ -1468,7 +1459,6 @@ export const Deployments$inboundSchema: z.ZodType<
   softDeletedByRetention: types.optional(types.boolean()),
   source: types.optional(GetDeploymentsSource$inboundSchema),
   state: types.optional(GetDeploymentsState$inboundSchema),
-  readyState: types.optional(GetDeploymentsReadyState$inboundSchema),
   type: GetDeploymentsType$inboundSchema,
   creator: z.lazy(() => GetDeploymentsCreator$inboundSchema),
   meta: types.optional(z.record(types.string())),
@@ -1477,7 +1467,6 @@ export const Deployments$inboundSchema: z.ZodType<
     .optional(),
   aliasAssigned: z.nullable(smartUnion([types.number(), types.boolean()]))
     .optional(),
-  createdAt: types.optional(types.number()),
   buildingAt: types.optional(types.number()),
   ready: types.optional(types.number()),
   readySubstate: types.optional(GetDeploymentsReadySubstate$inboundSchema),

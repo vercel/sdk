@@ -42,6 +42,9 @@ let value: PatchTeamRequest = {
     strictShareableLinks: {
       enabled: true,
     },
+    strictPasswordProtectionSettings: {
+      enabled: true,
+    },
     resourceConfig: {
       buildMachine: {
         default: "standard",

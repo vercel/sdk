@@ -22,14 +22,14 @@ import {
   CreateIntegrationStoreDirectIntegrationsMetadata$inboundSchema,
   CreateIntegrationStoreDirectOwnership,
   CreateIntegrationStoreDirectOwnership$inboundSchema,
+  CreateIntegrationStoreDirectProjectFilter,
+  CreateIntegrationStoreDirectProjectFilter$inboundSchema,
   CreateIntegrationStoreDirectProjectsMetadata,
   CreateIntegrationStoreDirectProjectsMetadata$inboundSchema,
   CreateIntegrationStoreDirectStatus,
   CreateIntegrationStoreDirectStatus$inboundSchema,
   ExternalResourceStatus,
   ExternalResourceStatus$inboundSchema,
-  ProjectFilter,
-  ProjectFilter$inboundSchema,
 } from "./createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproductmetadataschema7type.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
@@ -71,9 +71,9 @@ export type CreateIntegrationStoreDirectQuote = {
 };
 
 export type CreateIntegrationStoreDirectBillingPlan = {
+  id: string;
   type: CreateIntegrationStoreDirectType;
   description: string;
-  id: string;
   name: string;
   scope: CreateIntegrationStoreDirectScope;
   paymentMethodRequired: boolean;
@@ -109,7 +109,7 @@ export type CreateIntegrationStoreDirectTargets = ClosedEnum<
 
 export type CreateIntegrationStoreDirectStore = {
   projectsMetadata: Array<CreateIntegrationStoreDirectProjectsMetadata>;
-  projectFilter?: ProjectFilter | undefined;
+  projectFilter?: CreateIntegrationStoreDirectProjectFilter | undefined;
   totalConnectedProjects?: number | undefined;
   usageQuotaExceeded: boolean;
   status: CreateIntegrationStoreDirectStatus | null;
@@ -262,9 +262,9 @@ export const CreateIntegrationStoreDirectBillingPlan$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  id: types.string(),
   type: CreateIntegrationStoreDirectType$inboundSchema,
   description: types.string(),
-  id: types.string(),
   name: types.string(),
   scope: CreateIntegrationStoreDirectScope$inboundSchema,
   paymentMethodRequired: types.boolean(),
@@ -319,7 +319,9 @@ export const CreateIntegrationStoreDirectStore$inboundSchema: z.ZodType<
   projectsMetadata: z.array(
     CreateIntegrationStoreDirectProjectsMetadata$inboundSchema,
   ),
-  projectFilter: types.optional(ProjectFilter$inboundSchema),
+  projectFilter: types.optional(
+    CreateIntegrationStoreDirectProjectFilter$inboundSchema,
+  ),
   totalConnectedProjects: types.optional(types.number()),
   usageQuotaExceeded: types.boolean(),
   status: types.nullable(CreateIntegrationStoreDirectStatus$inboundSchema),

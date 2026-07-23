@@ -5,7 +5,7 @@ Present when deployment was created with manual provisioning enabled, either exp
 ## Example Usage
 
 ```typescript
-import { ManualProvisioning } from "@vercel/sdk/models/createdeploymentvaluedeployments2.js";
+import { ManualProvisioning } from "@vercel/sdk/models/canceldeploymentservicesdeploymentsfunctions.js";
 
 let value: ManualProvisioning = {
   state: "TIMEOUT",
@@ -16,5 +16,5 @@ let value: ManualProvisioning = {
 
 | Field                                                              | Type                                                               | Required                                                           | Description                                                        |
 | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
-| `state`                                                            | [models.CreateDeploymentState](../models/createdeploymentstate.md) | :heavy_check_mark:                                                 | Current provisioning state                                         |
+| `state`                                                            | [models.CancelDeploymentState](../models/canceldeploymentstate.md) | :heavy_check_mark:                                                 | Current provisioning state                                         |
 | `completedAt`                                                      | *number*                                                           | :heavy_minus_sign:                                                 | Timestamp when manual provisioning completed                       |

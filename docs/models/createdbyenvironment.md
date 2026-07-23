@@ -1,15 +1,17 @@
 # CreatedByEnvironment
 
-## Example Usage
+
+## Supported Types
+
+### `string`
 
 ```typescript
-import { CreatedByEnvironment } from "@vercel/sdk/models/createconnectorop.js";
-
-let value: CreatedByEnvironment = "preview";
+const value: string = "<value>";
 ```
 
-## Values
+### `models.CreateConnectorEnvironmentConnect2`
 
 ```typescript
-"development" | "preview" | "production"
+const value: models.CreateConnectorEnvironmentConnect2 = "preview";
 ```
+

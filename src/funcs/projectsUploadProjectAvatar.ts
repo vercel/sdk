@@ -23,7 +23,7 @@ import { SDKValidationError } from "../models/sdkvalidationerror.js";
 import {
   UploadProjectAvatarRequest,
   UploadProjectAvatarRequest$outboundSchema,
-} from "../models/uploadprojectavatarlastrollbacktarget.js";
+} from "../models/uploadprojectavatarprojectsaliasassigned.js";
 import {
   UploadProjectAvatarResponseBody,
   UploadProjectAvatarResponseBody$inboundSchema,
@@ -174,7 +174,7 @@ async function $do(
     | SDKValidationError
   >(
     M.json(200, UploadProjectAvatarResponseBody$inboundSchema),
-    M.fail([400, 401, 403, 413, 415, "4XX"]),
+    M.fail([400, 401, 403, 410, 413, 415, "4XX"]),
     M.fail("5XX"),
   )(response, req);
   if (!result.ok) {

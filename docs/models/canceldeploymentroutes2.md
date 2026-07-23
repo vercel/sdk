@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CancelDeploymentRoutes2 } from "@vercel/sdk/models/canceldeploymentservicesdeploymentsfunctions.js";
+import { CancelDeploymentRoutes2 } from "@vercel/sdk/models/canceldeploymentgitrepoownertype.js";
 
 let value: CancelDeploymentRoutes2 = {
   handle: "rewrite",
@@ -12,9 +12,9 @@ let value: CancelDeploymentRoutes2 = {
 
 ## Fields
 
-| Field                                            | Type                                             | Required                                         | Description                                      |
-| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
-| `handle`                                         | [models.RoutesHandle](../models/routeshandle.md) | :heavy_check_mark:                               | N/A                                              |
-| `src`                                            | *string*                                         | :heavy_minus_sign:                               | N/A                                              |
-| `dest`                                           | *string*                                         | :heavy_minus_sign:                               | N/A                                              |
-| `status`                                         | *number*                                         | :heavy_minus_sign:                               | N/A                                              |
+| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `handle`                                                                         | [models.CancelDeploymentRoutesHandle](../models/canceldeploymentrouteshandle.md) | :heavy_check_mark:                                                               | N/A                                                                              |
+| `src`                                                                            | *string*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              |
+| `dest`                                                                           | *string*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              |
+| `status`                                                                         | *number*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              |

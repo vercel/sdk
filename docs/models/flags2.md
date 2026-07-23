@@ -5,7 +5,7 @@ Flags defined in the Build Output API, used by this deployment. Primarily used b
 ## Example Usage
 
 ```typescript
-import { Flags2 } from "@vercel/sdk/models/createdeploymentresponsebody.js";
+import { Flags2 } from "@vercel/sdk/models/canceldeploymentresponsebody.js";
 
 let value: Flags2 = {};
 ```

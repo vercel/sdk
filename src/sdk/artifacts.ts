@@ -4,6 +4,7 @@
 
 import { artifactsArtifactExists } from "../funcs/artifactsArtifactExists.js";
 import { artifactsArtifactQuery } from "../funcs/artifactsArtifactQuery.js";
+import { artifactsDeleteAllArtifacts } from "../funcs/artifactsDeleteAllArtifacts.js";
 import { artifactsDownloadArtifact } from "../funcs/artifactsDownloadArtifact.js";
 import { artifactsRecordEvents } from "../funcs/artifactsRecordEvents.js";
 import { artifactsStatus } from "../funcs/artifactsStatus.js";
@@ -12,8 +13,12 @@ import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import { ArtifactExistsRequest } from "../models/artifactexistsop.js";
 import {
   ArtifactQueryRequest,
-  ResponseBody,
+  ArtifactQueryResponseBody,
 } from "../models/artifactqueryop.js";
+import {
+  DeleteAllArtifactsRequest,
+  DeleteAllArtifactsResponseBody,
+} from "../models/deleteallartifactsop.js";
 import { DownloadArtifactRequest } from "../models/downloadartifactop.js";
 import { RecordEventsRequest } from "../models/recordeventsop.js";
 import { StatusRequest, StatusResponseBody } from "../models/statusop.js";
@@ -118,8 +123,25 @@ export class Artifacts extends ClientSDK {
   async artifactQuery(
     request: ArtifactQueryRequest,
     options?: RequestOptions,
-  ): Promise<{ [k: string]: ResponseBody | null }> {
+  ): Promise<{ [k: string]: ArtifactQueryResponseBody | null }> {
     return unwrapAsync(artifactsArtifactQuery(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Delete all cache artifacts
+   *
+   * @remarks
+   * Deletes all cache artifacts stored for the authenticated team or user, clearing the Remote Cache. Subsequent builds will re-populate the cache.
+   */
+  async deleteAllArtifacts(
+    request: DeleteAllArtifactsRequest,
+    options?: RequestOptions,
+  ): Promise<DeleteAllArtifactsResponseBody> {
+    return unwrapAsync(artifactsDeleteAllArtifacts(
       this,
       request,
       options,

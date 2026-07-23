@@ -3,10 +3,10 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsResponseBodyHas } from "@vercel/sdk/models/getprojectsresponsebody.js";
+import { GetProjectsResponseBodyHas } from "@vercel/sdk/models/getprojectsblockhistoryprojectsroute.js";
 
 let value: GetProjectsResponseBodyHas = {
-  type: "host",
+  type: "headers",
 };
 ```
 

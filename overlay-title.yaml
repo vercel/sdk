@@ -2,7 +2,7 @@ overlay: 1.0.0
 x-speakeasy-jsonpath: rfc9535
 info:
   title: Update spec title to "Vercel SDK"
-  version: 0.0.2
+  version: 0.0.3
 actions:
   # Update info
   - target: $.info
@@ -25,3 +25,98 @@ actions:
   - target: $.paths['/v1/projects/{projectIdOrName}/feature-flags/segments/{segmentIdOrSlug}'].patch.responses['200'].content['application/json'].schema
     update:
       $ref: '#/components/schemas/Segment'
+  # Restore path and account selectors omitted from four legacy operations in
+  # the published OpenAPI document. Speakeasy requires every templated path
+  # parameter to be declared before it can generate any SDK target.
+  - target: $.paths['/domains/{domain}/records'].put.parameters
+    update:
+      - name: domain
+        in: path
+        required: true
+        schema:
+          type: string
+          example: example.com
+      - name: teamId
+        in: query
+        description: The Team identifier to perform the request on behalf of.
+        schema:
+          type: string
+          example: team_1a2b3c4d5e6f7g8h9i0j1k2l
+      - name: slug
+        in: query
+        description: The Team slug to perform the request on behalf of.
+        schema:
+          type: string
+          example: my-team-url-slug
+  - target: $.paths['/domains/records/{recordId}'].get.parameters
+    update:
+      - name: recordId
+        in: path
+        required: true
+        description: The id of the DNS record
+        schema:
+          type: string
+          description: The id of the DNS record
+          example: rec_2qn7pzrx89yxy34vezpd31y9
+      - name: teamId
+        in: query
+        description: The Team identifier to perform the request on behalf of.
+        schema:
+          type: string
+          example: team_1a2b3c4d5e6f7g8h9i0j1k2l
+      - name: slug
+        in: query
+        description: The Team slug to perform the request on behalf of.
+        schema:
+          type: string
+          example: my-team-url-slug
+  - target: $.paths['/v1/security/firewall/config/{configVersion}'].delete.parameters
+    update:
+      - name: projectId
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: teamId
+        in: query
+        description: The Team identifier to perform the request on behalf of.
+        schema:
+          type: string
+          example: team_1a2b3c4d5e6f7g8h9i0j1k2l
+      - name: slug
+        in: query
+        description: The Team slug to perform the request on behalf of.
+        schema:
+          type: string
+          example: my-team-url-slug
+      - name: configVersion
+        in: path
+        required: true
+        description: The deployed configVersion for the firewall configuration
+        schema:
+          type: string
+  - target: $.paths['/v1/security/firewall/config/{configVersion}/activate'].post.parameters
+    update:
+      - name: projectId
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: teamId
+        in: query
+        description: The Team identifier to perform the request on behalf of.
+        schema:
+          type: string
+          example: team_1a2b3c4d5e6f7g8h9i0j1k2l
+      - name: slug
+        in: query
+        description: The Team slug to perform the request on behalf of.
+        schema:
+          type: string
+          example: my-team-url-slug
+      - name: configVersion
+        in: path
+        required: true
+        description: The deployed configVersion for the firewall configuration
+        schema:
+          type: string

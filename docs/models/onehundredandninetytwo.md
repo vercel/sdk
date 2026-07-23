@@ -5,28 +5,22 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndNinetyTwo } from "@vercel/sdk/models/onehundredandeightyfive.js";
+import { OneHundredAndNinetyTwo } from "@vercel/sdk/models/preventautoblocking.js";
 
 let value: OneHundredAndNinetyTwo = {
   projectId: "<id>",
-  projectAnalytics: {
-    id: "<id>",
-    disabledAt: 9155.64,
-    enabledAt: 4908.44,
-  },
-  prevProjectAnalytics: {
-    id: "<id>",
-    disabledAt: 9765.45,
-    enabledAt: 5607.48,
-  },
+  previousStatus: "<value>",
+  justification: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `projectName`                                                    | *string*                                                         | :heavy_minus_sign:                                               | N/A                                                              |
-| `projectId`                                                      | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
-| `projectAnalytics`                                               | [models.ProjectAnalytics](../models/projectanalytics.md)         | :heavy_check_mark:                                               | N/A                                                              |
-| `prevProjectAnalytics`                                           | [models.PrevProjectAnalytics](../models/prevprojectanalytics.md) | :heavy_check_mark:                                               | N/A                                                              |
+| Field                                          | Type                                           | Required                                       | Description                                    |
+| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
+| `projectId`                                    | *string*                                       | :heavy_check_mark:                             | N/A                                            |
+| `url`                                          | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
+| `headerName`                                   | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
+| `previousStatus`                               | *string*                                       | :heavy_check_mark:                             | N/A                                            |
+| `justification`                                | *string*                                       | :heavy_check_mark:                             | N/A                                            |
+| `kind`                                         | [models.PayloadKind](../models/payloadkind.md) | :heavy_minus_sign:                             | N/A                                            |

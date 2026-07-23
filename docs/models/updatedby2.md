@@ -10,14 +10,14 @@ import { UpdatedBy2 } from "@vercel/sdk/models/createconnectorop.js";
 let value: UpdatedBy2 = {
   type: "project",
   id: "<id>",
-  environment: "development",
+  updatedByEnvironmentTarget: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `type`                                                           | *"project"*                                                      | :heavy_check_mark:                                               | N/A                                                              |
-| `id`                                                             | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
-| `environment`                                                    | [models.UpdatedByEnvironment](../models/updatedbyenvironment.md) | :heavy_check_mark:                                               | N/A                                                              |
+| Field                               | Type                                | Required                            | Description                         |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| `type`                              | *"project"*                         | :heavy_check_mark:                  | N/A                                 |
+| `id`                                | *string*                            | :heavy_check_mark:                  | N/A                                 |
+| `updatedByEnvironmentTarget`        | *models.UpdatedByEnvironmentTarget* | :heavy_check_mark:                  | N/A                                 |

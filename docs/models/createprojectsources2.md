@@ -5,7 +5,7 @@ Allowlist entry for GitLab, which uses nested groups rather than a flat org/repo
 ## Example Usage
 
 ```typescript
-import { CreateProjectSources2 } from "@vercel/sdk/models/createprojectresponsebody.js";
+import { CreateProjectSources2 } from "@vercel/sdk/models/createprojecthasprojectsvalue.js";
 
 let value: CreateProjectSources2 = {
   provider: "gitlab",

@@ -3,29 +3,29 @@
 
 ## Supported Types
 
-### `models.CancelDeploymentRoutes1`
+### `models.Routes1`
 
 ```typescript
-const value: models.CancelDeploymentRoutes1 = {
+const value: models.Routes1 = {
   src: "<value>",
 };
 ```
 
-### `models.CancelDeploymentRoutes2`
+### `models.Routes2`
 
 ```typescript
-const value: models.CancelDeploymentRoutes2 = {
+const value: models.Routes2 = {
   handle: "rewrite",
 };
 ```
 
-### `models.CancelDeploymentRoutes3`
+### `models.Routes3`
 
 ```typescript
-const value: models.CancelDeploymentRoutes3 = {
+const value: models.Routes3 = {
   src: "<value>",
-  continue: true,
-  middleware: 2594.46,
+  continue: false,
+  middleware: 1714.6,
 };
 ```
 

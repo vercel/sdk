@@ -28,6 +28,16 @@ const value: models.Two = {
 
 ```typescript
 const value: models.Three = {
+  type: "external",
+  id: "<id>",
+  name: "<value>",
+};
+```
+
+### `models.Four`
+
+```typescript
+const value: models.Four = {
   type: "system",
 };
 ```

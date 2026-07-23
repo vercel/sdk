@@ -260,6 +260,7 @@ export type GetTeamMembersTeamRoles = ClosedEnum<
 
 export const GetTeamMembersTeamPermissions = {
   AiGatewayApiKeyOwnedBySelf: "AiGatewayApiKeyOwnedBySelf",
+  AiGatewayBudgetManager: "AiGatewayBudgetManager",
   AiGatewayCredits: "AiGatewayCredits",
   AiGatewaySettings: "AiGatewaySettings",
   CreateProject: "CreateProject",

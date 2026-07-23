@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CancelDeploymentMissingDeployments1 } from "@vercel/sdk/models/canceldeploymentgitrepodeploymentsresponseownertype.js";
+import { CancelDeploymentMissingDeployments1 } from "@vercel/sdk/models/canceldeploymentgitrepoownertype.js";
 
 let value: CancelDeploymentMissingDeployments1 = {
   type: "host",
@@ -13,7 +13,7 @@ let value: CancelDeploymentMissingDeployments1 = {
 
 ## Fields
 
-| Field                                                    | Type                                                     | Required                                                 | Description                                              |
-| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
-| `type`                                                   | *"host"*                                                 | :heavy_check_mark:                                       | N/A                                                      |
-| `value`                                                  | *models.CancelDeploymentMissingDeploymentsResponseValue* | :heavy_check_mark:                                       | N/A                                                      |
+| Field                                                       | Type                                                        | Required                                                    | Description                                                 |
+| ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
+| `type`                                                      | *"host"*                                                    | :heavy_check_mark:                                          | N/A                                                         |
+| `value`                                                     | *models.CancelDeploymentMissingDeploymentsResponse200Value* | :heavy_check_mark:                                          | N/A                                                         |

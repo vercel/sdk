@@ -13,6 +13,8 @@ let value: GetDeploymentsResponseBody = {
   },
   deployments: [
     {
+      createdAt: 6246.82,
+      readyState: "CANCELED",
       uid: "dpl_2euZBFqxYdDMDG1jTrHFnNZ2eUVa",
       name: "docs",
       projectId: "<id>",
@@ -24,7 +26,6 @@ let value: GetDeploymentsResponseBody = {
       softDeletedByRetention: true,
       source: "cli",
       state: "READY",
-      readyState: "READY",
       type: "LAMBDAS",
       creator: {
         uid: "eLrCnEgbKhsHyfbiNR7E8496",
@@ -34,7 +35,6 @@ let value: GetDeploymentsResponseBody = {
         gitlabLogin: "johndoe",
       },
       target: "production",
-      createdAt: 1609492210000,
       buildingAt: 1609492210000,
       ready: 1609492210000,
       inspectorUrl:

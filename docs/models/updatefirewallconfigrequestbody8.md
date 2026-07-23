@@ -1,6 +1,6 @@
 # UpdateFirewallConfigRequestBody8
 
-Add an IP Blocking rule
+Update a custom rule
 
 ## Example Usage
 
@@ -9,10 +9,16 @@ import { UpdateFirewallConfigRequestBody8 } from "@vercel/sdk/models/updatefirew
 
 let value: UpdateFirewallConfigRequestBody8 = {
   action: "ip.insert",
+  id: "<id>",
   value: {
-    hostname: "pink-plugin.net",
-    ip: "187.206.27.119",
-    action: "bypass",
+    name: "<value>",
+    active: false,
+    conditionGroup: [
+      {
+        conditions: [],
+      },
+    ],
+    action: {},
   },
 };
 ```
@@ -22,5 +28,5 @@ let value: UpdateFirewallConfigRequestBody8 = {
 | Field                                                                                                                              | Type                                                                                                                               | Required                                                                                                                           | Description                                                                                                                        |
 | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
 | `action`                                                                                                                           | [models.UpdateFirewallConfigRequestBodySecurityRequest8Action](../models/updatefirewallconfigrequestbodysecurityrequest8action.md) | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |
-| `id`                                                                                                                               | *any*                                                                                                                              | :heavy_minus_sign:                                                                                                                 | N/A                                                                                                                                |
-| `value`                                                                                                                            | [models.UpdateFirewallConfigRequestBodySecurityRequestValue](../models/updatefirewallconfigrequestbodysecurityrequestvalue.md)     | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |
+| `id`                                                                                                                               | *any*                                                                                                                              | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |
+| `value`                                                                                                                            | [models.UpdateFirewallConfigRequestBodySecurityRequest8Value](../models/updatefirewallconfigrequestbodysecurityrequest8value.md)   | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |

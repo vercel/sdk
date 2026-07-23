@@ -140,7 +140,7 @@ async function $do(
   >(
     M.json(200, types$.optional(GetAuthUserResponseBody$inboundSchema)),
     M.nil(302, types$.optional(GetAuthUserResponseBody$inboundSchema)),
-    M.fail([400, 401, 403, 409, "4XX"]),
+    M.fail([400, 401, 403, 409, 410, "4XX"]),
     M.fail("5XX"),
   )(response, req);
   if (!result.ok) {

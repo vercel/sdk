@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Erl } from "@vercel/sdk/models/getprojectsresponsebody.js";
+import { Erl } from "@vercel/sdk/models/getprojectsblockhistoryprojectsroute.js";
 
 let value: Erl = {
   algo: "token_bucket",
@@ -18,9 +18,9 @@ let value: Erl = {
 
 ## Fields
 
-| Field                                                    | Type                                                     | Required                                                 | Description                                              |
-| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
-| `algo`                                                   | [models.ResponseBodyAlgo](../models/responsebodyalgo.md) | :heavy_check_mark:                                       | N/A                                                      |
-| `window`                                                 | *number*                                                 | :heavy_check_mark:                                       | N/A                                                      |
-| `limit`                                                  | *number*                                                 | :heavy_check_mark:                                       | N/A                                                      |
-| `keys`                                                   | *string*[]                                               | :heavy_check_mark:                                       | N/A                                                      |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `algo`                                                                         | [models.GetProjectsResponseBodyAlgo](../models/getprojectsresponsebodyalgo.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| `window`                                                                       | *number*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `limit`                                                                        | *number*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `keys`                                                                         | *string*[]                                                                     | :heavy_check_mark:                                                             | N/A                                                                            |

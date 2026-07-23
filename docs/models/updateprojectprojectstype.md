@@ -1,17 +1,15 @@
 # UpdateProjectProjectsType
 
-The type of environment (production, preview, or development)
-
 ## Example Usage
 
 ```typescript
-import { UpdateProjectProjectsType } from "@vercel/sdk/models/updateprojectprojectsbranchmatcher.js";
+import { UpdateProjectProjectsType } from "@vercel/sdk/models/updateprojectbranchmatcher.js";
 
-let value: UpdateProjectProjectsType = "preview";
+let value: UpdateProjectProjectsType = "sensitive";
 ```
 
 ## Values
 
 ```typescript
-"development" | "preview" | "production"
+"encrypted" | "plain" | "secret" | "sensitive" | "system"
 ```

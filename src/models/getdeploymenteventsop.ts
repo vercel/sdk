@@ -72,6 +72,179 @@ export type GetDeploymentEventsRequest = {
   slug?: string | undefined;
 };
 
+export const GetDeploymentEvents3DeploymentsResponse200ApplicationStreamPlusJsonType =
+  {
+    AliasAssigned: "alias-assigned",
+  } as const;
+export type GetDeploymentEvents3DeploymentsResponse200ApplicationStreamPlusJsonType =
+  ClosedEnum<
+    typeof GetDeploymentEvents3DeploymentsResponse200ApplicationStreamPlusJsonType
+  >;
+
+export type ThreeAliasError = {
+  code: string;
+  message: string;
+};
+
+export type ThreeAliasWarning = {
+  code: string;
+  message: string;
+  link?: string | undefined;
+  action?: string | undefined;
+};
+
+export type GetDeploymentEvents33 = {
+  type: GetDeploymentEvents3DeploymentsResponse200ApplicationStreamPlusJsonType;
+  deploymentId: string;
+  date: number;
+  alias: Array<string>;
+  aliasError: ThreeAliasError | null;
+  aliasWarning: ThreeAliasWarning | null;
+};
+
+export type GetDeploymentEvents3Info = {
+  type: string;
+  name: string;
+  entrypoint?: string | undefined;
+  path?: string | undefined;
+  step?: string | undefined;
+  readyState?: string | undefined;
+};
+
+export const GetDeploymentEvents3DeploymentsResponse200Type = {
+  Command: "command",
+  Delimiter: "delimiter",
+  DeploymentState: "deployment-state",
+  EdgeFunctionInvocation: "edge-function-invocation",
+  Exit: "exit",
+  Fatal: "fatal",
+  Metric: "metric",
+  Middleware: "middleware",
+  MiddlewareInvocation: "middleware-invocation",
+  Report: "report",
+  Stderr: "stderr",
+  Stdout: "stdout",
+} as const;
+export type GetDeploymentEvents3DeploymentsResponse200Type = ClosedEnum<
+  typeof GetDeploymentEvents3DeploymentsResponse200Type
+>;
+
+export const GetDeploymentEvents3Level = {
+  Error: "error",
+  Warning: "warning",
+} as const;
+export type GetDeploymentEvents3Level = ClosedEnum<
+  typeof GetDeploymentEvents3Level
+>;
+
+export type GetDeploymentEvents32 = {
+  created: number;
+  date: number;
+  deploymentId: string;
+  id: string;
+  info: GetDeploymentEvents3Info;
+  serial: string;
+  text?: string | undefined;
+  type: GetDeploymentEvents3DeploymentsResponse200Type;
+  level?: GetDeploymentEvents3Level | undefined;
+};
+
+export const GetDeploymentEvents3DeploymentsResponseType = {
+  Command: "command",
+  Delimiter: "delimiter",
+  DeploymentState: "deployment-state",
+  EdgeFunctionInvocation: "edge-function-invocation",
+  Exit: "exit",
+  Fatal: "fatal",
+  Metric: "metric",
+  Middleware: "middleware",
+  MiddlewareInvocation: "middleware-invocation",
+  Report: "report",
+  Stderr: "stderr",
+  Stdout: "stdout",
+} as const;
+export type GetDeploymentEvents3DeploymentsResponseType = ClosedEnum<
+  typeof GetDeploymentEvents3DeploymentsResponseType
+>;
+
+export type GetDeploymentEvents3DeploymentsInfo = {
+  type: string;
+  name: string;
+  entrypoint?: string | undefined;
+  path?: string | undefined;
+  step?: string | undefined;
+  readyState?: string | undefined;
+};
+
+export const GetDeploymentEvents3VercelCache = {
+  Bypass: "BYPASS",
+  Hit: "HIT",
+  Miss: "MISS",
+  Prerender: "PRERENDER",
+  Revalidated: "REVALIDATED",
+  Stale: "STALE",
+} as const;
+export type GetDeploymentEvents3VercelCache = ClosedEnum<
+  typeof GetDeploymentEvents3VercelCache
+>;
+
+export const GetDeploymentEvents3WafAction = {
+  Bypass: "bypass",
+  Challenge: "challenge",
+  Deny: "deny",
+  Log: "log",
+  RateLimit: "rate_limit",
+} as const;
+export type GetDeploymentEvents3WafAction = ClosedEnum<
+  typeof GetDeploymentEvents3WafAction
+>;
+
+export type GetDeploymentEvents3Proxy = {
+  timestamp: number;
+  method: string;
+  host: string;
+  path?: string | undefined;
+  statusCode?: number | undefined;
+  userAgent?: Array<string> | undefined;
+  referer?: string | undefined;
+  clientIp?: string | undefined;
+  region?: string | undefined;
+  scheme?: string | undefined;
+  responseByteSize?: number | undefined;
+  cacheId?: string | undefined;
+  pathType?: string | undefined;
+  pathTypeVariant?: string | undefined;
+  vercelId?: string | undefined;
+  vercelCache?: GetDeploymentEvents3VercelCache | undefined;
+  lambdaRegion?: string | undefined;
+  wafAction?: GetDeploymentEvents3WafAction | undefined;
+  wafRuleId?: string | undefined;
+};
+
+export type GetDeploymentEvents3Payload = {
+  deploymentId: string;
+  info?: GetDeploymentEvents3DeploymentsInfo | undefined;
+  text?: string | undefined;
+  id: string;
+  date: number;
+  serial: string;
+  created?: number | undefined;
+  statusCode?: number | undefined;
+  requestId?: string | undefined;
+  proxy?: GetDeploymentEvents3Proxy | undefined;
+};
+
+export type GetDeploymentEvents31 = {
+  type: GetDeploymentEvents3DeploymentsResponseType;
+  created: number;
+  payload: GetDeploymentEvents3Payload;
+};
+
+export type GetDeploymentEventsResponseBodyDeployments3 =
+  | GetDeploymentEvents32
+  | GetDeploymentEvents33
+  | GetDeploymentEvents31;
+
 export type ResponseBodyInfo = {
   type: string;
   name: string;
@@ -169,12 +342,12 @@ export type ResponseBodyProxy = {
   timestamp: number;
   method: string;
   host: string;
-  path: string;
+  path?: string | undefined;
   statusCode?: number | undefined;
-  userAgent: Array<string>;
-  referer: string;
+  userAgent?: Array<string> | undefined;
+  referer?: string | undefined;
   clientIp?: string | undefined;
-  region: string;
+  region?: string | undefined;
   scheme?: string | undefined;
   responseByteSize?: number | undefined;
   cacheId?: string | undefined;
@@ -208,7 +381,170 @@ export type GetDeploymentEventsResponseBodyDeployments1 = {
 
 export type GetDeploymentEventsResponseBody =
   | GetDeploymentEventsResponseBodyDeployments2
-  | GetDeploymentEventsResponseBodyDeployments1;
+  | GetDeploymentEventsResponseBodyDeployments1
+  | GetDeploymentEvents32
+  | GetDeploymentEvents33
+  | GetDeploymentEvents31;
+
+export const GetDeploymentEvents3DeploymentsType = {
+  AliasAssigned: "alias-assigned",
+} as const;
+export type GetDeploymentEvents3DeploymentsType = ClosedEnum<
+  typeof GetDeploymentEvents3DeploymentsType
+>;
+
+export type GetDeploymentEvents3AliasError = {
+  code: string;
+  message: string;
+};
+
+export type GetDeploymentEvents3AliasWarning = {
+  code: string;
+  message: string;
+  link?: string | undefined;
+  action?: string | undefined;
+};
+
+export type Three3 = {
+  type: GetDeploymentEvents3DeploymentsType;
+  deploymentId: string;
+  date: number;
+  alias: Array<string>;
+  aliasError: GetDeploymentEvents3AliasError | null;
+  aliasWarning: GetDeploymentEvents3AliasWarning | null;
+};
+
+export type ThreeInfo = {
+  type: string;
+  name: string;
+  entrypoint?: string | undefined;
+  path?: string | undefined;
+  step?: string | undefined;
+  readyState?: string | undefined;
+};
+
+export const GetDeploymentEvents3Type = {
+  Command: "command",
+  Delimiter: "delimiter",
+  DeploymentState: "deployment-state",
+  EdgeFunctionInvocation: "edge-function-invocation",
+  Exit: "exit",
+  Fatal: "fatal",
+  Metric: "metric",
+  Middleware: "middleware",
+  MiddlewareInvocation: "middleware-invocation",
+  Report: "report",
+  Stderr: "stderr",
+  Stdout: "stdout",
+} as const;
+export type GetDeploymentEvents3Type = ClosedEnum<
+  typeof GetDeploymentEvents3Type
+>;
+
+export const ThreeLevel = {
+  Error: "error",
+  Warning: "warning",
+} as const;
+export type ThreeLevel = ClosedEnum<typeof ThreeLevel>;
+
+export type Three2 = {
+  created: number;
+  date: number;
+  deploymentId: string;
+  id: string;
+  info: ThreeInfo;
+  serial: string;
+  text?: string | undefined;
+  type: GetDeploymentEvents3Type;
+  level?: ThreeLevel | undefined;
+};
+
+export const ThreeType = {
+  Command: "command",
+  Delimiter: "delimiter",
+  DeploymentState: "deployment-state",
+  EdgeFunctionInvocation: "edge-function-invocation",
+  Exit: "exit",
+  Fatal: "fatal",
+  Metric: "metric",
+  Middleware: "middleware",
+  MiddlewareInvocation: "middleware-invocation",
+  Report: "report",
+  Stderr: "stderr",
+  Stdout: "stdout",
+} as const;
+export type ThreeType = ClosedEnum<typeof ThreeType>;
+
+export type GetDeploymentEvents3DeploymentsResponseInfo = {
+  type: string;
+  name: string;
+  entrypoint?: string | undefined;
+  path?: string | undefined;
+  step?: string | undefined;
+  readyState?: string | undefined;
+};
+
+export const ThreeVercelCache = {
+  Bypass: "BYPASS",
+  Hit: "HIT",
+  Miss: "MISS",
+  Prerender: "PRERENDER",
+  Revalidated: "REVALIDATED",
+  Stale: "STALE",
+} as const;
+export type ThreeVercelCache = ClosedEnum<typeof ThreeVercelCache>;
+
+export const ThreeWafAction = {
+  Bypass: "bypass",
+  Challenge: "challenge",
+  Deny: "deny",
+  Log: "log",
+  RateLimit: "rate_limit",
+} as const;
+export type ThreeWafAction = ClosedEnum<typeof ThreeWafAction>;
+
+export type ThreeProxy = {
+  timestamp: number;
+  method: string;
+  host: string;
+  path?: string | undefined;
+  statusCode?: number | undefined;
+  userAgent?: Array<string> | undefined;
+  referer?: string | undefined;
+  clientIp?: string | undefined;
+  region?: string | undefined;
+  scheme?: string | undefined;
+  responseByteSize?: number | undefined;
+  cacheId?: string | undefined;
+  pathType?: string | undefined;
+  pathTypeVariant?: string | undefined;
+  vercelId?: string | undefined;
+  vercelCache?: ThreeVercelCache | undefined;
+  lambdaRegion?: string | undefined;
+  wafAction?: ThreeWafAction | undefined;
+  wafRuleId?: string | undefined;
+};
+
+export type ThreePayload = {
+  deploymentId: string;
+  info?: GetDeploymentEvents3DeploymentsResponseInfo | undefined;
+  text?: string | undefined;
+  id: string;
+  date: number;
+  serial: string;
+  created?: number | undefined;
+  statusCode?: number | undefined;
+  requestId?: string | undefined;
+  proxy?: ThreeProxy | undefined;
+};
+
+export type Three1 = {
+  type: ThreeType;
+  created: number;
+  payload: ThreePayload;
+};
+
+export type GetDeploymentEventsResponseBody3 = Three2 | Three3 | Three1;
 
 export type Info = {
   type: string;
@@ -305,12 +641,12 @@ export type Proxy = {
   timestamp: number;
   method: string;
   host: string;
-  path: string;
+  path?: string | undefined;
   statusCode?: number | undefined;
-  userAgent: Array<string>;
-  referer: string;
+  userAgent?: Array<string> | undefined;
+  referer?: string | undefined;
   clientIp?: string | undefined;
-  region: string;
+  region?: string | undefined;
   scheme?: string | undefined;
   responseByteSize?: number | undefined;
   cacheId?: string | undefined;
@@ -344,14 +680,25 @@ export type GetDeploymentEventsResponseBody1 = {
 
 export type GetDeploymentEventsDeploymentsResponseBody =
   | GetDeploymentEventsResponseBody2
-  | GetDeploymentEventsResponseBody1;
+  | GetDeploymentEventsResponseBody1
+  | Three2
+  | Three3
+  | Three1;
 
 export type GetDeploymentEventsResponse =
   | Array<
-    GetDeploymentEventsResponseBody2 | GetDeploymentEventsResponseBody1 | null
+    | GetDeploymentEventsResponseBody2
+    | GetDeploymentEventsResponseBody1
+    | Three2
+    | Three3
+    | Three1
+    | null
   >
   | GetDeploymentEventsResponseBodyDeployments2
-  | GetDeploymentEventsResponseBodyDeployments1;
+  | GetDeploymentEventsResponseBodyDeployments1
+  | GetDeploymentEvents32
+  | GetDeploymentEvents33
+  | GetDeploymentEvents31;
 
 /** @internal */
 export const Direction$outboundSchema: z.ZodNativeEnum<typeof Direction> = z
@@ -416,6 +763,298 @@ export function getDeploymentEventsRequestToJSON(
 ): string {
   return JSON.stringify(
     GetDeploymentEventsRequest$outboundSchema.parse(getDeploymentEventsRequest),
+  );
+}
+
+/** @internal */
+export const GetDeploymentEvents3DeploymentsResponse200ApplicationStreamPlusJsonType$inboundSchema:
+  z.ZodNativeEnum<
+    typeof GetDeploymentEvents3DeploymentsResponse200ApplicationStreamPlusJsonType
+  > = z.nativeEnum(
+    GetDeploymentEvents3DeploymentsResponse200ApplicationStreamPlusJsonType,
+  );
+
+/** @internal */
+export const ThreeAliasError$inboundSchema: z.ZodType<
+  ThreeAliasError,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  code: types.string(),
+  message: types.string(),
+});
+
+export function threeAliasErrorFromJSON(
+  jsonString: string,
+): SafeParseResult<ThreeAliasError, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ThreeAliasError$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ThreeAliasError' from JSON`,
+  );
+}
+
+/** @internal */
+export const ThreeAliasWarning$inboundSchema: z.ZodType<
+  ThreeAliasWarning,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  code: types.string(),
+  message: types.string(),
+  link: types.optional(types.string()),
+  action: types.optional(types.string()),
+});
+
+export function threeAliasWarningFromJSON(
+  jsonString: string,
+): SafeParseResult<ThreeAliasWarning, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ThreeAliasWarning$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ThreeAliasWarning' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentEvents33$inboundSchema: z.ZodType<
+  GetDeploymentEvents33,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type:
+    GetDeploymentEvents3DeploymentsResponse200ApplicationStreamPlusJsonType$inboundSchema,
+  deploymentId: types.string(),
+  date: types.number(),
+  alias: z.array(types.string()),
+  aliasError: types.nullable(z.lazy(() => ThreeAliasError$inboundSchema)),
+  aliasWarning: types.nullable(z.lazy(() => ThreeAliasWarning$inboundSchema)),
+});
+
+export function getDeploymentEvents33FromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentEvents33, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDeploymentEvents33$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentEvents33' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentEvents3Info$inboundSchema: z.ZodType<
+  GetDeploymentEvents3Info,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: types.string(),
+  name: types.string(),
+  entrypoint: types.optional(types.string()),
+  path: types.optional(types.string()),
+  step: types.optional(types.string()),
+  readyState: types.optional(types.string()),
+});
+
+export function getDeploymentEvents3InfoFromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentEvents3Info, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDeploymentEvents3Info$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentEvents3Info' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentEvents3DeploymentsResponse200Type$inboundSchema:
+  z.ZodNativeEnum<typeof GetDeploymentEvents3DeploymentsResponse200Type> = z
+    .nativeEnum(GetDeploymentEvents3DeploymentsResponse200Type);
+
+/** @internal */
+export const GetDeploymentEvents3Level$inboundSchema: z.ZodNativeEnum<
+  typeof GetDeploymentEvents3Level
+> = z.nativeEnum(GetDeploymentEvents3Level);
+
+/** @internal */
+export const GetDeploymentEvents32$inboundSchema: z.ZodType<
+  GetDeploymentEvents32,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  created: types.number(),
+  date: types.number(),
+  deploymentId: types.string(),
+  id: types.string(),
+  info: z.lazy(() => GetDeploymentEvents3Info$inboundSchema),
+  serial: types.string(),
+  text: types.optional(types.string()),
+  type: GetDeploymentEvents3DeploymentsResponse200Type$inboundSchema,
+  level: types.optional(GetDeploymentEvents3Level$inboundSchema),
+});
+
+export function getDeploymentEvents32FromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentEvents32, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDeploymentEvents32$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentEvents32' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentEvents3DeploymentsResponseType$inboundSchema:
+  z.ZodNativeEnum<typeof GetDeploymentEvents3DeploymentsResponseType> = z
+    .nativeEnum(GetDeploymentEvents3DeploymentsResponseType);
+
+/** @internal */
+export const GetDeploymentEvents3DeploymentsInfo$inboundSchema: z.ZodType<
+  GetDeploymentEvents3DeploymentsInfo,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: types.string(),
+  name: types.string(),
+  entrypoint: types.optional(types.string()),
+  path: types.optional(types.string()),
+  step: types.optional(types.string()),
+  readyState: types.optional(types.string()),
+});
+
+export function getDeploymentEvents3DeploymentsInfoFromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentEvents3DeploymentsInfo, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetDeploymentEvents3DeploymentsInfo$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentEvents3DeploymentsInfo' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentEvents3VercelCache$inboundSchema: z.ZodNativeEnum<
+  typeof GetDeploymentEvents3VercelCache
+> = z.nativeEnum(GetDeploymentEvents3VercelCache);
+
+/** @internal */
+export const GetDeploymentEvents3WafAction$inboundSchema: z.ZodNativeEnum<
+  typeof GetDeploymentEvents3WafAction
+> = z.nativeEnum(GetDeploymentEvents3WafAction);
+
+/** @internal */
+export const GetDeploymentEvents3Proxy$inboundSchema: z.ZodType<
+  GetDeploymentEvents3Proxy,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  timestamp: types.number(),
+  method: types.string(),
+  host: types.string(),
+  path: types.optional(types.string()),
+  statusCode: types.optional(types.number()),
+  userAgent: types.optional(z.array(types.string())),
+  referer: types.optional(types.string()),
+  clientIp: types.optional(types.string()),
+  region: types.optional(types.string()),
+  scheme: types.optional(types.string()),
+  responseByteSize: types.optional(types.number()),
+  cacheId: types.optional(types.string()),
+  pathType: types.optional(types.string()),
+  pathTypeVariant: types.optional(types.string()),
+  vercelId: types.optional(types.string()),
+  vercelCache: types.optional(GetDeploymentEvents3VercelCache$inboundSchema),
+  lambdaRegion: types.optional(types.string()),
+  wafAction: types.optional(GetDeploymentEvents3WafAction$inboundSchema),
+  wafRuleId: types.optional(types.string()),
+});
+
+export function getDeploymentEvents3ProxyFromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentEvents3Proxy, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDeploymentEvents3Proxy$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentEvents3Proxy' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentEvents3Payload$inboundSchema: z.ZodType<
+  GetDeploymentEvents3Payload,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  deploymentId: types.string(),
+  info: types.optional(
+    z.lazy(() => GetDeploymentEvents3DeploymentsInfo$inboundSchema),
+  ),
+  text: types.optional(types.string()),
+  id: types.string(),
+  date: types.number(),
+  serial: types.string(),
+  created: types.optional(types.number()),
+  statusCode: types.optional(types.number()),
+  requestId: types.optional(types.string()),
+  proxy: types.optional(z.lazy(() => GetDeploymentEvents3Proxy$inboundSchema)),
+});
+
+export function getDeploymentEvents3PayloadFromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentEvents3Payload, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDeploymentEvents3Payload$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentEvents3Payload' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentEvents31$inboundSchema: z.ZodType<
+  GetDeploymentEvents31,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: GetDeploymentEvents3DeploymentsResponseType$inboundSchema,
+  created: types.number(),
+  payload: z.lazy(() => GetDeploymentEvents3Payload$inboundSchema),
+});
+
+export function getDeploymentEvents31FromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentEvents31, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDeploymentEvents31$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentEvents31' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentEventsResponseBodyDeployments3$inboundSchema:
+  z.ZodType<
+    GetDeploymentEventsResponseBodyDeployments3,
+    z.ZodTypeDef,
+    unknown
+  > = smartUnion([
+    z.lazy(() => GetDeploymentEvents32$inboundSchema),
+    z.lazy(() => GetDeploymentEvents33$inboundSchema),
+    z.lazy(() => GetDeploymentEvents31$inboundSchema),
+  ]);
+
+export function getDeploymentEventsResponseBodyDeployments3FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetDeploymentEventsResponseBodyDeployments3,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetDeploymentEventsResponseBodyDeployments3$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetDeploymentEventsResponseBodyDeployments3' from JSON`,
   );
 }
 
@@ -537,12 +1176,12 @@ export const ResponseBodyProxy$inboundSchema: z.ZodType<
   timestamp: types.number(),
   method: types.string(),
   host: types.string(),
-  path: types.string(),
+  path: types.optional(types.string()),
   statusCode: types.optional(types.number()),
-  userAgent: z.array(types.string()),
-  referer: types.string(),
+  userAgent: types.optional(z.array(types.string())),
+  referer: types.optional(types.string()),
   clientIp: types.optional(types.string()),
-  region: types.string(),
+  region: types.optional(types.string()),
   scheme: types.optional(types.string()),
   responseByteSize: types.optional(types.number()),
   cacheId: types.optional(types.string()),
@@ -631,6 +1270,11 @@ export const GetDeploymentEventsResponseBody$inboundSchema: z.ZodType<
 > = smartUnion([
   z.lazy(() => GetDeploymentEventsResponseBodyDeployments2$inboundSchema),
   z.lazy(() => GetDeploymentEventsResponseBodyDeployments1$inboundSchema),
+  smartUnion([
+    z.lazy(() => GetDeploymentEvents32$inboundSchema),
+    z.lazy(() => GetDeploymentEvents33$inboundSchema),
+    z.lazy(() => GetDeploymentEvents31$inboundSchema),
+  ]),
 ]);
 
 export function getDeploymentEventsResponseBodyFromJSON(
@@ -640,6 +1284,286 @@ export function getDeploymentEventsResponseBodyFromJSON(
     jsonString,
     (x) => GetDeploymentEventsResponseBody$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'GetDeploymentEventsResponseBody' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentEvents3DeploymentsType$inboundSchema: z.ZodNativeEnum<
+  typeof GetDeploymentEvents3DeploymentsType
+> = z.nativeEnum(GetDeploymentEvents3DeploymentsType);
+
+/** @internal */
+export const GetDeploymentEvents3AliasError$inboundSchema: z.ZodType<
+  GetDeploymentEvents3AliasError,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  code: types.string(),
+  message: types.string(),
+});
+
+export function getDeploymentEvents3AliasErrorFromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentEvents3AliasError, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDeploymentEvents3AliasError$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentEvents3AliasError' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentEvents3AliasWarning$inboundSchema: z.ZodType<
+  GetDeploymentEvents3AliasWarning,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  code: types.string(),
+  message: types.string(),
+  link: types.optional(types.string()),
+  action: types.optional(types.string()),
+});
+
+export function getDeploymentEvents3AliasWarningFromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentEvents3AliasWarning, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDeploymentEvents3AliasWarning$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentEvents3AliasWarning' from JSON`,
+  );
+}
+
+/** @internal */
+export const Three3$inboundSchema: z.ZodType<Three3, z.ZodTypeDef, unknown> = z
+  .object({
+    type: GetDeploymentEvents3DeploymentsType$inboundSchema,
+    deploymentId: types.string(),
+    date: types.number(),
+    alias: z.array(types.string()),
+    aliasError: types.nullable(
+      z.lazy(() => GetDeploymentEvents3AliasError$inboundSchema),
+    ),
+    aliasWarning: types.nullable(
+      z.lazy(() => GetDeploymentEvents3AliasWarning$inboundSchema),
+    ),
+  });
+
+export function three3FromJSON(
+  jsonString: string,
+): SafeParseResult<Three3, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Three3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Three3' from JSON`,
+  );
+}
+
+/** @internal */
+export const ThreeInfo$inboundSchema: z.ZodType<
+  ThreeInfo,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: types.string(),
+  name: types.string(),
+  entrypoint: types.optional(types.string()),
+  path: types.optional(types.string()),
+  step: types.optional(types.string()),
+  readyState: types.optional(types.string()),
+});
+
+export function threeInfoFromJSON(
+  jsonString: string,
+): SafeParseResult<ThreeInfo, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ThreeInfo$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ThreeInfo' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentEvents3Type$inboundSchema: z.ZodNativeEnum<
+  typeof GetDeploymentEvents3Type
+> = z.nativeEnum(GetDeploymentEvents3Type);
+
+/** @internal */
+export const ThreeLevel$inboundSchema: z.ZodNativeEnum<typeof ThreeLevel> = z
+  .nativeEnum(ThreeLevel);
+
+/** @internal */
+export const Three2$inboundSchema: z.ZodType<Three2, z.ZodTypeDef, unknown> = z
+  .object({
+    created: types.number(),
+    date: types.number(),
+    deploymentId: types.string(),
+    id: types.string(),
+    info: z.lazy(() => ThreeInfo$inboundSchema),
+    serial: types.string(),
+    text: types.optional(types.string()),
+    type: GetDeploymentEvents3Type$inboundSchema,
+    level: types.optional(ThreeLevel$inboundSchema),
+  });
+
+export function three2FromJSON(
+  jsonString: string,
+): SafeParseResult<Three2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Three2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Three2' from JSON`,
+  );
+}
+
+/** @internal */
+export const ThreeType$inboundSchema: z.ZodNativeEnum<typeof ThreeType> = z
+  .nativeEnum(ThreeType);
+
+/** @internal */
+export const GetDeploymentEvents3DeploymentsResponseInfo$inboundSchema:
+  z.ZodType<
+    GetDeploymentEvents3DeploymentsResponseInfo,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    type: types.string(),
+    name: types.string(),
+    entrypoint: types.optional(types.string()),
+    path: types.optional(types.string()),
+    step: types.optional(types.string()),
+    readyState: types.optional(types.string()),
+  });
+
+export function getDeploymentEvents3DeploymentsResponseInfoFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetDeploymentEvents3DeploymentsResponseInfo,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetDeploymentEvents3DeploymentsResponseInfo$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetDeploymentEvents3DeploymentsResponseInfo' from JSON`,
+  );
+}
+
+/** @internal */
+export const ThreeVercelCache$inboundSchema: z.ZodNativeEnum<
+  typeof ThreeVercelCache
+> = z.nativeEnum(ThreeVercelCache);
+
+/** @internal */
+export const ThreeWafAction$inboundSchema: z.ZodNativeEnum<
+  typeof ThreeWafAction
+> = z.nativeEnum(ThreeWafAction);
+
+/** @internal */
+export const ThreeProxy$inboundSchema: z.ZodType<
+  ThreeProxy,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  timestamp: types.number(),
+  method: types.string(),
+  host: types.string(),
+  path: types.optional(types.string()),
+  statusCode: types.optional(types.number()),
+  userAgent: types.optional(z.array(types.string())),
+  referer: types.optional(types.string()),
+  clientIp: types.optional(types.string()),
+  region: types.optional(types.string()),
+  scheme: types.optional(types.string()),
+  responseByteSize: types.optional(types.number()),
+  cacheId: types.optional(types.string()),
+  pathType: types.optional(types.string()),
+  pathTypeVariant: types.optional(types.string()),
+  vercelId: types.optional(types.string()),
+  vercelCache: types.optional(ThreeVercelCache$inboundSchema),
+  lambdaRegion: types.optional(types.string()),
+  wafAction: types.optional(ThreeWafAction$inboundSchema),
+  wafRuleId: types.optional(types.string()),
+});
+
+export function threeProxyFromJSON(
+  jsonString: string,
+): SafeParseResult<ThreeProxy, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ThreeProxy$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ThreeProxy' from JSON`,
+  );
+}
+
+/** @internal */
+export const ThreePayload$inboundSchema: z.ZodType<
+  ThreePayload,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  deploymentId: types.string(),
+  info: types.optional(
+    z.lazy(() => GetDeploymentEvents3DeploymentsResponseInfo$inboundSchema),
+  ),
+  text: types.optional(types.string()),
+  id: types.string(),
+  date: types.number(),
+  serial: types.string(),
+  created: types.optional(types.number()),
+  statusCode: types.optional(types.number()),
+  requestId: types.optional(types.string()),
+  proxy: types.optional(z.lazy(() => ThreeProxy$inboundSchema)),
+});
+
+export function threePayloadFromJSON(
+  jsonString: string,
+): SafeParseResult<ThreePayload, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ThreePayload$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ThreePayload' from JSON`,
+  );
+}
+
+/** @internal */
+export const Three1$inboundSchema: z.ZodType<Three1, z.ZodTypeDef, unknown> = z
+  .object({
+    type: ThreeType$inboundSchema,
+    created: types.number(),
+    payload: z.lazy(() => ThreePayload$inboundSchema),
+  });
+
+export function three1FromJSON(
+  jsonString: string,
+): SafeParseResult<Three1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Three1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Three1' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentEventsResponseBody3$inboundSchema: z.ZodType<
+  GetDeploymentEventsResponseBody3,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  z.lazy(() => Three2$inboundSchema),
+  z.lazy(() => Three3$inboundSchema),
+  z.lazy(() => Three1$inboundSchema),
+]);
+
+export function getDeploymentEventsResponseBody3FromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentEventsResponseBody3, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDeploymentEventsResponseBody3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentEventsResponseBody3' from JSON`,
   );
 }
 
@@ -752,12 +1676,12 @@ export const Proxy$inboundSchema: z.ZodType<Proxy, z.ZodTypeDef, unknown> = z
     timestamp: types.number(),
     method: types.string(),
     host: types.string(),
-    path: types.string(),
+    path: types.optional(types.string()),
     statusCode: types.optional(types.number()),
-    userAgent: z.array(types.string()),
-    referer: types.string(),
+    userAgent: types.optional(z.array(types.string())),
+    referer: types.optional(types.string()),
     clientIp: types.optional(types.string()),
-    region: types.string(),
+    region: types.optional(types.string()),
     scheme: types.optional(types.string()),
     responseByteSize: types.optional(types.number()),
     cacheId: types.optional(types.string()),
@@ -838,6 +1762,11 @@ export const GetDeploymentEventsDeploymentsResponseBody$inboundSchema:
     smartUnion([
       z.lazy(() => GetDeploymentEventsResponseBody2$inboundSchema),
       z.lazy(() => GetDeploymentEventsResponseBody1$inboundSchema),
+      smartUnion([
+        z.lazy(() => Three2$inboundSchema),
+        z.lazy(() => Three3$inboundSchema),
+        z.lazy(() => Three1$inboundSchema),
+      ]),
     ]);
 
 export function getDeploymentEventsDeploymentsResponseBodyFromJSON(
@@ -867,12 +1796,22 @@ export const GetDeploymentEventsResponse$inboundSchema: z.ZodType<
     z.lazy(() =>
       GetDeploymentEventsResponseBody1$inboundSchema
     ),
+    smartUnion([
+      z.lazy(() => Three2$inboundSchema),
+      z.lazy(() => Three3$inboundSchema),
+      z.lazy(() => Three1$inboundSchema),
+    ]),
   ]))),
   smartUnion([
     z.lazy(() => GetDeploymentEventsResponseBodyDeployments2$inboundSchema),
     z.lazy(() =>
       GetDeploymentEventsResponseBodyDeployments1$inboundSchema
     ),
+    smartUnion([
+      z.lazy(() => GetDeploymentEvents32$inboundSchema),
+      z.lazy(() => GetDeploymentEvents33$inboundSchema),
+      z.lazy(() => GetDeploymentEvents31$inboundSchema),
+    ]),
   ]),
 ]);
 

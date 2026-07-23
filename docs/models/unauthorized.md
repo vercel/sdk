@@ -15,3 +15,4 @@ import { Unauthorized } from "@vercel/sdk/models/unauthorized.js";
 | `status`                         | *number*                         | :heavy_check_mark:               | N/A                              |
 | `code`                           | [models.Code](../models/code.md) | :heavy_check_mark:               | N/A                              |
 | `message`                        | *string*                         | :heavy_check_mark:               | N/A                              |
+| `reason`                         | *string*                         | :heavy_minus_sign:               | N/A                              |

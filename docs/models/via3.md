@@ -5,10 +5,12 @@ Metadata for {@link viaIds}.
 ## Example Usage
 
 ```typescript
-import { Via3 } from "@vercel/sdk/models/threehundredandeighteen.js";
+import { Via3 } from "@vercel/sdk/models/threehundredandthirtyseven.js";
 
 let value: Via3 = {
-  type: "system",
+  type: "external",
+  id: "<id>",
+  name: "<value>",
 };
 ```
 
@@ -17,3 +19,6 @@ let value: Via3 = {
 | Field                                                      | Type                                                       | Required                                                   | Description                                                |
 | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
 | `type`                                                     | [models.UserEventVia3Type](../models/usereventvia3type.md) | :heavy_check_mark:                                         | N/A                                                        |
+| `id`                                                       | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        |
+| `name`                                                     | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        |
+| `email`                                                    | *string*                                                   | :heavy_minus_sign:                                         | N/A                                                        |

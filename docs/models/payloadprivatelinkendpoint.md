@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PayloadPrivateLinkEndpoint } from "@vercel/sdk/models/onehundredandeightyfive.js";
+import { PayloadPrivateLinkEndpoint } from "@vercel/sdk/models/preventautoblocking.js";
 
 let value: PayloadPrivateLinkEndpoint = {
   id: "<id>",

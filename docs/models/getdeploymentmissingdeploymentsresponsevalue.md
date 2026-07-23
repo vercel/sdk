@@ -9,11 +9,11 @@
 const value: string = "<value>";
 ```
 
-### `models.GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody12`
+### `models.GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody22`
 
 ```typescript
 const value:
-  models.GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody12 =
+  models.GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody22 =
     {};
 ```
 

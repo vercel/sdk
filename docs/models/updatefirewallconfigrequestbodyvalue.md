@@ -12,13 +12,12 @@ let value: UpdateFirewallConfigRequestBodyValue = {
     {
       conditions: [
         {
-          type: "environment",
+          type: "domain_environment",
           op: "suf",
         },
       ],
     },
   ],
-  action: {},
 };
 ```
 
@@ -30,6 +29,6 @@ let value: UpdateFirewallConfigRequestBodyValue = {
 | `description`                                                                                                                      | *string*                                                                                                                           | :heavy_minus_sign:                                                                                                                 | N/A                                                                                                                                |
 | `active`                                                                                                                           | *boolean*                                                                                                                          | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |
 | `conditionGroup`                                                                                                                   | [models.UpdateFirewallConfigRequestBodyConditionGroup](../models/updatefirewallconfigrequestbodyconditiongroup.md)[]               | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |
-| `action`                                                                                                                           | [models.UpdateFirewallConfigRequestBodySecurityRequest3Action](../models/updatefirewallconfigrequestbodysecurityrequest3action.md) | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |
+| `action`                                                                                                                           | [models.UpdateFirewallConfigRequestBodySecurityRequest2Action](../models/updatefirewallconfigrequestbodysecurityrequest2action.md) | :heavy_minus_sign:                                                                                                                 | N/A                                                                                                                                |
 | `valid`                                                                                                                            | *boolean*                                                                                                                          | :heavy_minus_sign:                                                                                                                 | N/A                                                                                                                                |
 | `validationErrors`                                                                                                                 | *models.UpdateFirewallConfigRequestBodyValidationErrors*                                                                           | :heavy_minus_sign:                                                                                                                 | N/A                                                                                                                                |

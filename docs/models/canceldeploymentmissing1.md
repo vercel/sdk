@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CancelDeploymentMissing1 } from "@vercel/sdk/models/canceldeploymentservicesdeploymentsfunctions.js";
+import { CancelDeploymentMissing1 } from "@vercel/sdk/models/canceldeploymentgitrepoownertype.js";
 
 let value: CancelDeploymentMissing1 = {
   type: "host",
@@ -13,7 +13,7 @@ let value: CancelDeploymentMissing1 = {
 
 ## Fields
 
-| Field                                 | Type                                  | Required                              | Description                           |
-| ------------------------------------- | ------------------------------------- | ------------------------------------- | ------------------------------------- |
-| `type`                                | *"host"*                              | :heavy_check_mark:                    | N/A                                   |
-| `value`                               | *models.CancelDeploymentMissingValue* | :heavy_check_mark:                    | N/A                                   |
+| Field                                            | Type                                             | Required                                         | Description                                      |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
+| `type`                                           | *"host"*                                         | :heavy_check_mark:                               | N/A                                              |
+| `value`                                          | *models.CancelDeploymentMissingDeploymentsValue* | :heavy_check_mark:                               | N/A                                              |

@@ -573,11 +573,11 @@ run();
 
 ## getRepositoryImage
 
-Fetch an individual image from a repository, including its tags and Dockerfile history entries with discriminated layer details for UI rendering.
+Fetch an individual image from a repository, including its tags and Dockerfile history entries with discriminated layer details for UI rendering. The image may be addressed by its internal id (`image_...`) or by its manifest digest (`sha256:...`).
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="getRepositoryImage" method="get" path="/v1/vcr/repository/{idOrName}/images/{imageId}" -->
+<!-- UsageSnippet language="typescript" operationID="getRepositoryImage" method="get" path="/v1/vcr/repository/{idOrName}/images/{imageIdOrDigest}" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -589,7 +589,7 @@ async function run() {
   const result = await vercel.vcr.getRepositoryImage({
     projectId: "<id>",
     idOrName: "<value>",
-    imageId: "<id>",
+    imageIdOrDigest: "<value>",
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     slug: "my-team-url-slug",
   });
@@ -618,7 +618,7 @@ async function run() {
   const res = await vcrGetRepositoryImage(vercel, {
     projectId: "<id>",
     idOrName: "<value>",
-    imageId: "<id>",
+    imageIdOrDigest: "<value>",
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     slug: "my-team-url-slug",
   });

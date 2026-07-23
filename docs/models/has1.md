@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Has1 } from "@vercel/sdk/models/createdeploymentvaluedeployments2.js";
+import { Has1 } from "@vercel/sdk/models/canceldeploymentservicesdeploymentsfunctions.js";
 
 let value: Has1 = {
   type: "host",
@@ -16,4 +16,4 @@ let value: Has1 = {
 | Field                             | Type                              | Required                          | Description                       |
 | --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- |
 | `type`                            | *"host"*                          | :heavy_check_mark:                | N/A                               |
-| `value`                           | *models.CreateDeploymentHasValue* | :heavy_check_mark:                | N/A                               |
+| `value`                           | *models.CancelDeploymentHasValue* | :heavy_check_mark:                | N/A                               |

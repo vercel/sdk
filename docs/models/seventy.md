@@ -5,27 +5,27 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { Seventy } from "@vercel/sdk/models/action.js";
+import { Seventy } from "@vercel/sdk/models/nineteen.js";
 
 let value: Seventy = {
-  team: {
-    id: "<id>",
-    name: "<value>",
+  gitOwnerName: "<value>",
+  gitRepositoryName: "<value>",
+  previous: {
+    enabled: false,
+    autoAddReviewers: true,
   },
-  configuration: {
-    id: "<id>",
-  },
-  project: {
-    id: "<id>",
+  next: {
+    enabled: false,
+    autoAddReviewers: true,
   },
 };
 ```
 
 ## Fields
 
-| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `team`                                                                     | [models.UserEventPayload70Team](../models/usereventpayload70team.md)       | :heavy_check_mark:                                                         | N/A                                                                        |
-| `configuration`                                                            | [models.PayloadConfiguration](../models/payloadconfiguration.md)           | :heavy_check_mark:                                                         | N/A                                                                        |
-| `project`                                                                  | [models.UserEventPayload70Project](../models/usereventpayload70project.md) | :heavy_check_mark:                                                         | N/A                                                                        |
-| `buildsEnabled`                                                            | *boolean*                                                                  | :heavy_minus_sign:                                                         | N/A                                                                        |
+| Field                                    | Type                                     | Required                                 | Description                              |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| `gitOwnerName`                           | *string*                                 | :heavy_check_mark:                       | N/A                                      |
+| `gitRepositoryName`                      | *string*                                 | :heavy_check_mark:                       | N/A                                      |
+| `previous`                               | [models.Previous](../models/previous.md) | :heavy_check_mark:                       | N/A                                      |
+| `next`                                   | [models.Next](../models/next.md)         | :heavy_check_mark:                       | N/A                                      |

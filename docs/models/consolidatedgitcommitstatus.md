@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ConsolidatedGitCommitStatus } from "@vercel/sdk/models/onehundredandeightyfive.js";
+import { ConsolidatedGitCommitStatus } from "@vercel/sdk/models/twohundredandseven.js";
 
 let value: ConsolidatedGitCommitStatus = {
   enabled: true,

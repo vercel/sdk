@@ -10,14 +10,14 @@ import { CreatedBy2 } from "@vercel/sdk/models/createconnectorop.js";
 let value: CreatedBy2 = {
   type: "project",
   id: "<id>",
-  environment: "preview",
+  createdByEnvironmentTarget: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `type`                                                           | *"project"*                                                      | :heavy_check_mark:                                               | N/A                                                              |
-| `id`                                                             | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
-| `environment`                                                    | [models.CreatedByEnvironment](../models/createdbyenvironment.md) | :heavy_check_mark:                                               | N/A                                                              |
+| Field                               | Type                                | Required                            | Description                         |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| `type`                              | *"project"*                         | :heavy_check_mark:                  | N/A                                 |
+| `id`                                | *string*                            | :heavy_check_mark:                  | N/A                                 |
+| `createdByEnvironmentTarget`        | *models.CreatedByEnvironmentTarget* | :heavy_check_mark:                  | N/A                                 |

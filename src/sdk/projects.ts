@@ -8,6 +8,7 @@ import { projectsBatchRemoveProjectEnv } from "../funcs/projectsBatchRemoveProje
 import { projectsCreateProject } from "../funcs/projectsCreateProject.js";
 import { projectsCreateProjectEnv } from "../funcs/projectsCreateProjectEnv.js";
 import { projectsCreateProjectTransferRequest } from "../funcs/projectsCreateProjectTransferRequest.js";
+import { projectsCreateTraceSession } from "../funcs/projectsCreateTraceSession.js";
 import { projectsDeleteProject } from "../funcs/projectsDeleteProject.js";
 import { projectsEditProjectEnv } from "../funcs/projectsEditProjectEnv.js";
 import { projectsFilterProjectEnvs } from "../funcs/projectsFilterProjectEnvs.js";
@@ -16,6 +17,8 @@ import { projectsGetProjectDomain } from "../funcs/projectsGetProjectDomain.js";
 import { projectsGetProjectDomains } from "../funcs/projectsGetProjectDomains.js";
 import { projectsGetProjectEnv } from "../funcs/projectsGetProjectEnv.js";
 import { projectsGetProjects } from "../funcs/projectsGetProjects.js";
+import { projectsGetProjectToken } from "../funcs/projectsGetProjectToken.js";
+import { projectsGetProjectTrace } from "../funcs/projectsGetProjectTrace.js";
 import { projectsListPromoteAliases } from "../funcs/projectsListPromoteAliases.js";
 import { projectsMoveProjectDomain } from "../funcs/projectsMoveProjectDomain.js";
 import { projectsPauseProject } from "../funcs/projectsPauseProject.js";
@@ -44,16 +47,20 @@ import {
   BatchRemoveProjectEnvRequest,
   BatchRemoveProjectEnvResponseBody,
 } from "../models/batchremoveprojectenvop.js";
+import { CreateProjectRequest } from "../models/createprojectbuildmachineselection.js";
 import {
   CreateProjectEnvRequest,
   CreateProjectEnvResponseBody,
 } from "../models/createprojectenvop.js";
 import { CreateProjectResponseBody } from "../models/createprojectresponsebody.js";
-import { CreateProjectRequest } from "../models/createprojectstaticips.js";
 import {
   CreateProjectTransferRequestRequest,
   CreateProjectTransferRequestResponseBody,
 } from "../models/createprojecttransferrequestop.js";
+import {
+  CreateTraceSessionRequest,
+  CreateTraceSessionResponseBody,
+} from "../models/createtracesessionop.js";
 import { DeleteProjectRequest } from "../models/deleteprojectop.js";
 import {
   EditProjectEnvRequest,
@@ -63,6 +70,7 @@ import {
   FilterProjectEnvsRequest,
   FilterProjectEnvsResponseBody,
 } from "../models/filterprojectenvsop.js";
+import { GetProjectRequest } from "../models/getprojectapril2026securityincidentmigrationappliedfrom.js";
 import {
   GetProjectDomainRequest,
   GetProjectDomainResponseBody,
@@ -77,8 +85,15 @@ import {
 } from "../models/getprojectenvop.js";
 import { GetProjectResponseBody } from "../models/getprojectresponsebody.js";
 import { GetProjectsResponseBody } from "../models/getprojectsresponsebody.js";
-import { GetProjectsRequest } from "../models/getprojectsresponsebodyprojectsresponse200applicationjson3projectsreadysubstate.js";
-import { GetProjectRequest } from "../models/getprojecttargets.js";
+import { GetProjectsRequest } from "../models/getprojectsresponsebodyprojectsresponse200applicationjsondeploymenttype.js";
+import {
+  GetProjectTokenRequest,
+  GetProjectTokenResponseBody,
+} from "../models/getprojecttokenop.js";
+import {
+  GetProjectTraceRequest,
+  GetProjectTraceResponseBody,
+} from "../models/getprojecttraceop.js";
 import {
   ListPromoteAliasesRequest,
   ListPromoteAliasesResponseBody,
@@ -99,20 +114,20 @@ import {
 import { RequestPromoteRequest } from "../models/requestpromoteop.js";
 import { RequestRollbackRequest } from "../models/requestrollbackop.js";
 import { UnpauseProjectRequest } from "../models/unpauseprojectop.js";
-import { UpdateMicrofrontendsRequest } from "../models/updatemicrofrontendspermissions.js";
 import { UpdateMicrofrontendsResponseBody } from "../models/updatemicrofrontendsresponsebody.js";
+import { UpdateMicrofrontendsRequest } from "../models/updatemicrofrontendsssoprotection.js";
+import { UpdateProjectRequest } from "../models/updateprojectbranchmatcher.js";
 import {
   UpdateProjectDomainRequest,
   UpdateProjectDomainResponseBody,
 } from "../models/updateprojectdomainop.js";
-import { UpdateProjectRequest } from "../models/updateprojectprojectsbranchmatcher.js";
 import {
   UpdateProjectProtectionBypassRequest,
   UpdateProjectProtectionBypassResponseBody,
 } from "../models/updateprojectprotectionbypassop.js";
 import { UpdateProjectResponseBody } from "../models/updateprojectresponsebody.js";
 import { UpdateProjectsByProjectIdRollbackByDeploymentIdUpdateDescriptionRequest } from "../models/updateprojectsbyprojectidrollbackbydeploymentidupdatedescriptionop.js";
-import { UploadProjectAvatarRequest } from "../models/uploadprojectavatarlastrollbacktarget.js";
+import { UploadProjectAvatarRequest } from "../models/uploadprojectavatarprojectsaliasassigned.js";
 import { UploadProjectAvatarResponseBody } from "../models/uploadprojectavatarresponsebody.js";
 import {
   VerifyProjectDomainRequest,
@@ -139,6 +154,23 @@ export class Projects extends ClientSDK {
   }
 
   /**
+   * Get a project trace by request ID
+   *
+   * @remarks
+   * Returns the OTEL trace for a given Vercel CLI request.
+   */
+  async getProjectTrace(
+    request: GetProjectTraceRequest,
+    options?: RequestOptions,
+  ): Promise<GetProjectTraceResponseBody> {
+    return unwrapAsync(projectsGetProjectTrace(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
    * Create a new project
    *
    * @remarks
@@ -149,6 +181,40 @@ export class Projects extends ClientSDK {
     options?: RequestOptions,
   ): Promise<CreateProjectResponseBody> {
     return unwrapAsync(projectsCreateProject(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Generate a project OIDC token
+   *
+   * @remarks
+   * Generates an OIDC token for the project and returns it.
+   */
+  async getProjectToken(
+    request: GetProjectTokenRequest,
+    options?: RequestOptions,
+  ): Promise<GetProjectTokenResponseBody> {
+    return unwrapAsync(projectsGetProjectToken(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Create a trace session token for a deployment
+   *
+   * @remarks
+   * Mints a short-lived HS256 JWT scoped to a deployment hostname. The Vercel CLI presents this JWT to the Vercel proxy on requests it wants traced.
+   */
+  async createTraceSession(
+    request: CreateTraceSessionRequest,
+    options?: RequestOptions,
+  ): Promise<CreateTraceSessionResponseBody> {
+    return unwrapAsync(projectsCreateTraceSession(
       this,
       request,
       options,

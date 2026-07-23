@@ -26,13 +26,13 @@ export type CancelDeploymentRequest = {
   slug?: string | undefined;
 };
 
-export type CancelDeploymentAliasAssignedAt = number | boolean;
+export type AliasAssignedAt = number | boolean;
 
-export type CancelDeploymentBuild = {
+export type Build = {
   env: Array<string>;
 };
 
-export type CancelDeploymentBuilds = {
+export type Builds = {
   use: string;
   src?: string | undefined;
   config?: { [k: string]: any } | undefined;
@@ -119,6 +119,7 @@ export const CancelDeploymentFramework = {
   Sveltekit: "sveltekit",
   Sveltekit1: "sveltekit-1",
   TanstackStart: "tanstack-start",
+  TanstackStartLovable: "tanstack-start-lovable",
   Umijs: "umijs",
   Vite: "vite",
   Vitepress: "vitepress",
@@ -171,7 +172,7 @@ export type CancelDeploymentDeploymentsStatus = ClosedEnum<
   typeof CancelDeploymentDeploymentsStatus
 >;
 
-export type CancelDeploymentIntegrations = {
+export type Integrations = {
   status: CancelDeploymentDeploymentsStatus;
   startedAt: number;
   claimedAt?: number | undefined;
@@ -183,22 +184,20 @@ export type CancelDeploymentIntegrations = {
 /**
  * Must be `http` or `https`.
  */
-export const CancelDeploymentProtocol = {
+export const Protocol = {
   Http: "http",
   Https: "https",
 } as const;
 /**
  * Must be `http` or `https`.
  */
-export type CancelDeploymentProtocol = ClosedEnum<
-  typeof CancelDeploymentProtocol
->;
+export type Protocol = ClosedEnum<typeof Protocol>;
 
-export type CancelDeploymentRemotePatterns = {
+export type RemotePatterns = {
   /**
    * Must be `http` or `https`.
    */
-  protocol?: CancelDeploymentProtocol | undefined;
+  protocol?: Protocol | undefined;
   /**
    * Can be literal or wildcard. Single `*` matches a single subdomain. Double `**` matches any number of subdomains.
    */
@@ -217,7 +216,7 @@ export type CancelDeploymentRemotePatterns = {
   search?: string | undefined;
 };
 
-export type CancelDeploymentLocalPatterns = {
+export type LocalPatterns = {
   /**
    * Can be literal or wildcard. Single `*` matches a single path segment. Double `**` matches any number of path segments.
    */
@@ -228,33 +227,29 @@ export type CancelDeploymentLocalPatterns = {
   search?: string | undefined;
 };
 
-export const CancelDeploymentFormats = {
+export const Formats = {
   ImageAvif: "image/avif",
   ImageWebp: "image/webp",
 } as const;
-export type CancelDeploymentFormats = ClosedEnum<
-  typeof CancelDeploymentFormats
->;
+export type Formats = ClosedEnum<typeof Formats>;
 
-export const CancelDeploymentContentDispositionType = {
+export const ContentDispositionType = {
   Attachment: "attachment",
   Inline: "inline",
 } as const;
-export type CancelDeploymentContentDispositionType = ClosedEnum<
-  typeof CancelDeploymentContentDispositionType
->;
+export type ContentDispositionType = ClosedEnum<typeof ContentDispositionType>;
 
-export type CancelDeploymentImages = {
+export type Images = {
   sizes?: Array<number> | undefined;
   qualities?: Array<number> | undefined;
   domains?: Array<string> | undefined;
-  remotePatterns?: Array<CancelDeploymentRemotePatterns> | undefined;
-  localPatterns?: Array<CancelDeploymentLocalPatterns> | undefined;
+  remotePatterns?: Array<RemotePatterns> | undefined;
+  localPatterns?: Array<LocalPatterns> | undefined;
   minimumCacheTTL?: number | undefined;
-  formats?: Array<CancelDeploymentFormats> | undefined;
+  formats?: Array<Formats> | undefined;
   dangerouslyAllowSVG?: boolean | undefined;
   contentSecurityPolicy?: string | undefined;
-  contentDispositionType?: CancelDeploymentContentDispositionType | undefined;
+  contentDispositionType?: ContentDispositionType | undefined;
 };
 
 /**
@@ -275,14 +270,14 @@ export type CancelDeploymentCreator = {
   avatar?: string | undefined;
 };
 
-export const CancelDeploymentDeploymentsReadyState = {
+export const CancelDeploymentReadyState = {
   Building: "BUILDING",
   Error: "ERROR",
   Initializing: "INITIALIZING",
   Ready: "READY",
 } as const;
-export type CancelDeploymentDeploymentsReadyState = ClosedEnum<
-  typeof CancelDeploymentDeploymentsReadyState
+export type CancelDeploymentReadyState = ClosedEnum<
+  typeof CancelDeploymentReadyState
 >;
 
 export type CancelDeploymentOutput = {
@@ -293,10 +288,10 @@ export type CancelDeploymentOutput = {
 /**
  * A partial representation of a Build used by the deployment endpoint.
  */
-export type CancelDeploymentLambdas = {
+export type Lambdas = {
   id: string;
   createdAt?: number | undefined;
-  readyState?: CancelDeploymentDeploymentsReadyState | undefined;
+  readyState?: CancelDeploymentReadyState | undefined;
   entrypoint?: string | null | undefined;
   readyStateAt?: number | undefined;
   output: Array<CancelDeploymentOutput>;
@@ -326,14 +321,14 @@ export type CancelDeploymentTeam = {
 /**
  * If the deployment was created using a Custom Environment, then this property contains information regarding the environment used.
  */
-export type CancelDeploymentCustomEnvironment2 = {
+export type CustomEnvironment2 = {
   id: string;
 };
 
 /**
  * The type of environment (production, preview, or development)
  */
-export const CancelDeploymentCustomEnvironmentType = {
+export const CustomEnvironmentType = {
   Development: "development",
   Preview: "preview",
   Production: "production",
@@ -341,14 +336,12 @@ export const CancelDeploymentCustomEnvironmentType = {
 /**
  * The type of environment (production, preview, or development)
  */
-export type CancelDeploymentCustomEnvironmentType = ClosedEnum<
-  typeof CancelDeploymentCustomEnvironmentType
->;
+export type CustomEnvironmentType = ClosedEnum<typeof CustomEnvironmentType>;
 
 /**
  * The type of matching to perform
  */
-export const CancelDeploymentCustomEnvironmentDeploymentsType = {
+export const CancelDeploymentCustomEnvironmentType = {
   EndsWith: "endsWith",
   Equals: "equals",
   StartsWith: "startsWith",
@@ -356,8 +349,8 @@ export const CancelDeploymentCustomEnvironmentDeploymentsType = {
 /**
  * The type of matching to perform
  */
-export type CancelDeploymentCustomEnvironmentDeploymentsType = ClosedEnum<
-  typeof CancelDeploymentCustomEnvironmentDeploymentsType
+export type CancelDeploymentCustomEnvironmentType = ClosedEnum<
+  typeof CancelDeploymentCustomEnvironmentType
 >;
 
 /**
@@ -367,7 +360,7 @@ export type CustomEnvironmentBranchMatcher = {
   /**
    * The type of matching to perform
    */
-  type: CancelDeploymentCustomEnvironmentDeploymentsType;
+  type: CancelDeploymentCustomEnvironmentType;
   /**
    * The pattern to match against branch names
    */
@@ -410,7 +403,7 @@ export type CustomEnvironmentDomains = {
 /**
  * If the deployment was created using a Custom Environment, then this property contains information regarding the environment used.
  */
-export type CancelDeploymentCustomEnvironment1 = {
+export type CustomEnvironment1 = {
   /**
    * Unique identifier for the custom environment (format: env_*)
    */
@@ -422,7 +415,7 @@ export type CancelDeploymentCustomEnvironment1 = {
   /**
    * The type of environment (production, preview, or development)
    */
-  type: CancelDeploymentCustomEnvironmentType;
+  type: CustomEnvironmentType;
   /**
    * Optional description of the environment's purpose
    */
@@ -449,28 +442,29 @@ export type CancelDeploymentCustomEnvironment1 = {
   updatedAt: number;
 };
 
-export type CancelDeploymentCustomEnvironment =
-  | CancelDeploymentCustomEnvironment1
-  | CancelDeploymentCustomEnvironment2;
+export type CustomEnvironment = CustomEnvironment1 | CustomEnvironment2;
 
-export const CancelDeploymentOomReport = {
+export const OomReport = {
   OutOfMemory: "out-of-memory",
 } as const;
-export type CancelDeploymentOomReport = ClosedEnum<
-  typeof CancelDeploymentOomReport
->;
+export type OomReport = ClosedEnum<typeof OomReport>;
 
-export type CancelDeploymentAliasWarning = {
-  code: string;
-  message: string;
-  link?: string | undefined;
-  action?: string | undefined;
-};
+/**
+ * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
+ */
+export const CancelDeploymentTarget = {
+  Production: "production",
+  Staging: "staging",
+} as const;
+/**
+ * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
+ */
+export type CancelDeploymentTarget = ClosedEnum<typeof CancelDeploymentTarget>;
 
 /**
  * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
  */
-export const CancelDeploymentReadyState = {
+export const ReadyState = {
   Blocked: "BLOCKED",
   Building: "BUILDING",
   Canceled: "CANCELED",
@@ -482,41 +476,55 @@ export const CancelDeploymentReadyState = {
 /**
  * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
  */
-export type CancelDeploymentReadyState = ClosedEnum<
-  typeof CancelDeploymentReadyState
->;
+export type ReadyState = ClosedEnum<typeof ReadyState>;
 
-export const CancelDeploymentType = {
-  Lambdas: "LAMBDAS",
+/**
+ * Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic
+ */
+export const ReadySubstate = {
+  Promoted: "PROMOTED",
+  Rolling: "ROLLING",
+  Staged: "STAGED",
 } as const;
-export type CancelDeploymentType = ClosedEnum<typeof CancelDeploymentType>;
+/**
+ * Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic
+ */
+export type ReadySubstate = ClosedEnum<typeof ReadySubstate>;
 
 /**
  * An object that will contain a `code` and a `message` when the aliasing fails, otherwise the value will be `null`
  */
-export type CancelDeploymentAliasError = {
+export type AliasError = {
   code: string;
   message: string;
 };
 
-export const CancelDeploymentChecksState = {
+export type AliasWarning = {
+  code: string;
+  message: string;
+  link?: string | undefined;
+  action?: string | undefined;
+};
+
+export const ChecksState = {
   Completed: "completed",
   Registered: "registered",
   Running: "running",
 } as const;
-export type CancelDeploymentChecksState = ClosedEnum<
-  typeof CancelDeploymentChecksState
->;
+export type ChecksState = ClosedEnum<typeof ChecksState>;
 
-export const CancelDeploymentChecksConclusion = {
+export const ChecksConclusion = {
   Canceled: "canceled",
   Failed: "failed",
   Skipped: "skipped",
   Succeeded: "succeeded",
 } as const;
-export type CancelDeploymentChecksConclusion = ClosedEnum<
-  typeof CancelDeploymentChecksConclusion
->;
+export type ChecksConclusion = ClosedEnum<typeof ChecksConclusion>;
+
+export const CancelDeploymentType = {
+  Lambdas: "LAMBDAS",
+} as const;
+export type CancelDeploymentType = ClosedEnum<typeof CancelDeploymentType>;
 
 export const CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody17Type =
   {
@@ -719,7 +727,7 @@ export type CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONRespon
     typeof CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody7Type
   >;
 
-export type CancelDeploymentGitSourceProjectId = string | number;
+export type GitSourceProjectId = string | number;
 
 export type CancelDeploymentGitSource7 = {
   type:
@@ -873,7 +881,7 @@ export type CancelDeploymentState = ClosedEnum<typeof CancelDeploymentState>;
 /**
  * Present when deployment was created with manual provisioning enabled, either explicitly or via the experimental BYOC git flow. The deployment stays in INITIALIZING until /continue is called.
  */
-export type CancelDeploymentManualProvisioning = {
+export type ManualProvisioning = {
   /**
    * Current provisioning state
    */
@@ -915,21 +923,6 @@ export type CancelDeploymentProject = {
 };
 
 /**
- * Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic
- */
-export const CancelDeploymentReadySubstate = {
-  Promoted: "PROMOTED",
-  Rolling: "ROLLING",
-  Staged: "STAGED",
-} as const;
-/**
- * Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic
- */
-export type CancelDeploymentReadySubstate = ClosedEnum<
-  typeof CancelDeploymentReadySubstate
->;
-
-/**
  * Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it.
  */
 export const CancelDeploymentSource = {
@@ -948,19 +941,7 @@ export const CancelDeploymentSource = {
  */
 export type CancelDeploymentSource = ClosedEnum<typeof CancelDeploymentSource>;
 
-/**
- * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
- */
-export const CancelDeploymentTarget = {
-  Production: "production",
-  Staging: "staging",
-} as const;
-/**
- * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
- */
-export type CancelDeploymentTarget = ClosedEnum<typeof CancelDeploymentTarget>;
-
-export type CancelDeploymentOidcTokenClaims = {
+export type OidcTokenClaims = {
   iss: string;
   sub: string;
   scope: string;
@@ -971,6 +952,7 @@ export type CancelDeploymentOidcTokenClaims = {
   projectId: string;
   environment: string;
   customEnvironmentId?: string | undefined;
+  mfeGroupIds?: Array<string> | undefined;
   plan?: string | undefined;
 };
 
@@ -1036,7 +1018,7 @@ export type CancelDeploymentDeploymentsCreator = {
 /**
  * Metadata about the source platform that triggered the deployment. Allows us to map a deployment back to a platform (e.g. the chat that created it)
  */
-export type CancelDeploymentPlatform = {
+export type Platform = {
   /**
    * The external platform that created the deployment (e.g. its display name).
    */
@@ -1055,32 +1037,28 @@ export type CancelDeploymentPlatform = {
   meta?: { [k: string]: string } | undefined;
 };
 
-export type CancelDeploymentCrons = {
+export type Crons = {
   schedule: string;
   path: string;
 };
 
-export const CancelDeploymentArchitecture = {
+export const Architecture = {
   Arm64: "arm64",
   X8664: "x86_64",
 } as const;
-export type CancelDeploymentArchitecture = ClosedEnum<
-  typeof CancelDeploymentArchitecture
->;
+export type Architecture = ClosedEnum<typeof Architecture>;
 
-export const CancelDeploymentMaxDuration2 = {
+export const MaxDuration2 = {
   Max: "max",
 } as const;
-export type CancelDeploymentMaxDuration2 = ClosedEnum<
-  typeof CancelDeploymentMaxDuration2
->;
+export type MaxDuration2 = ClosedEnum<typeof MaxDuration2>;
 
-export type CancelDeploymentMaxDuration = number | CancelDeploymentMaxDuration2;
+export type MaxDuration = number | MaxDuration2;
 
 /**
  * Queue trigger input event for v2beta (from vercel.json config). Consumer name is implicitly derived from the function path. Only one trigger per function is allowed.
  */
-export type CancelDeploymentExperimentalTriggers2 = {
+export type ExperimentalTriggers2 = {
   /**
    * Event type - must be "queue/v2beta" (REQUIRED)
    */
@@ -1110,7 +1088,7 @@ export type CancelDeploymentExperimentalTriggers2 = {
 /**
  * Queue trigger input event for v1beta (from vercel.json config). Requires explicit consumer name.
  */
-export type CancelDeploymentExperimentalTriggers1 = {
+export type ExperimentalTriggers1 = {
   /**
    * Event type - must be "queue/v1beta" (REQUIRED)
    */
@@ -1141,35 +1119,32 @@ export type CancelDeploymentExperimentalTriggers1 = {
   maxConcurrency?: number | undefined;
 };
 
-export type CancelDeploymentExperimentalTriggers =
-  | CancelDeploymentExperimentalTriggers1
-  | CancelDeploymentExperimentalTriggers2;
+export type ExperimentalTriggers =
+  | ExperimentalTriggers1
+  | ExperimentalTriggers2;
 
-export type CancelDeploymentFunctions = {
-  architecture?: CancelDeploymentArchitecture | undefined;
+export type Functions = {
+  architecture?: Architecture | undefined;
   memory?: number | undefined;
-  maxDuration?: number | CancelDeploymentMaxDuration2 | undefined;
+  maxDuration?: number | MaxDuration2 | undefined;
   regions?: Array<string> | undefined;
   functionFailoverRegions?: Array<string> | undefined;
   runtime?: string | undefined;
   includeFiles?: string | undefined;
   excludeFiles?: string | undefined;
   experimentalTriggers?:
-    | Array<
-      | CancelDeploymentExperimentalTriggers1
-      | CancelDeploymentExperimentalTriggers2
-    >
+    | Array<ExperimentalTriggers1 | ExperimentalTriggers2>
     | undefined;
   supportsCancellation?: boolean | undefined;
 };
 
-export type CancelDeploymentRoutes3 = {
+export type Routes3 = {
   src: string;
   continue: boolean;
   middleware: number;
 };
 
-export const RoutesHandle = {
+export const Handle = {
   Error: "error",
   Filesystem: "filesystem",
   Hit: "hit",
@@ -1177,51 +1152,25 @@ export const RoutesHandle = {
   Resource: "resource",
   Rewrite: "rewrite",
 } as const;
-export type RoutesHandle = ClosedEnum<typeof RoutesHandle>;
+export type Handle = ClosedEnum<typeof Handle>;
 
-export type CancelDeploymentRoutes2 = {
-  handle: RoutesHandle;
+export type Routes2 = {
+  handle: Handle;
   src?: string | undefined;
   dest?: string | undefined;
   status?: number | undefined;
 };
 
-export const CancelDeploymentHasDeploymentsType = {
+export const CancelDeploymentHasType = {
   Cookie: "cookie",
   Header: "header",
   Query: "query",
 } as const;
-export type CancelDeploymentHasDeploymentsType = ClosedEnum<
-  typeof CancelDeploymentHasDeploymentsType
+export type CancelDeploymentHasType = ClosedEnum<
+  typeof CancelDeploymentHasType
 >;
 
-export type CancelDeploymentValueDeploymentsEq = string | number;
-
-export type CancelDeploymentValueDeployments2 = {
-  eq?: string | number | undefined;
-  neq?: string | undefined;
-  inc?: Array<string> | undefined;
-  ninc?: Array<string> | undefined;
-  pre?: string | undefined;
-  suf?: string | undefined;
-  re?: string | undefined;
-  gt?: number | undefined;
-  gte?: number | undefined;
-  lt?: number | undefined;
-  lte?: number | undefined;
-};
-
-export type CancelDeploymentHasDeploymentsValue =
-  | string
-  | CancelDeploymentValueDeployments2;
-
-export type CancelDeploymentHas2 = {
-  type: CancelDeploymentHasDeploymentsType;
-  key: string;
-  value?: string | CancelDeploymentValueDeployments2 | undefined;
-};
-
-export type CancelDeploymentValueEq = string | number;
+export type ValueEq = string | number;
 
 export type CancelDeploymentValue2 = {
   eq?: string | number | undefined;
@@ -1237,29 +1186,15 @@ export type CancelDeploymentValue2 = {
   lte?: number | undefined;
 };
 
-export type CancelDeploymentHasValue = string | CancelDeploymentValue2;
+export type HasValue = string | CancelDeploymentValue2;
 
-export type CancelDeploymentHas1 = {
-  type: "host";
-  value: string | CancelDeploymentValue2;
+export type Has2 = {
+  type: CancelDeploymentHasType;
+  key: string;
+  value?: string | CancelDeploymentValue2 | undefined;
 };
 
-export type RoutesHas =
-  | CancelDeploymentHas1
-  | (CancelDeploymentHas2 & { type: "cookie" })
-  | (CancelDeploymentHas2 & { type: "header" })
-  | (CancelDeploymentHas2 & { type: "query" });
-
-export const CancelDeploymentMissingDeploymentsType = {
-  Cookie: "cookie",
-  Header: "header",
-  Query: "query",
-} as const;
-export type CancelDeploymentMissingDeploymentsType = ClosedEnum<
-  typeof CancelDeploymentMissingDeploymentsType
->;
-
-export type CancelDeploymentValueDeploymentsResponse200Eq = string | number;
+export type Eq = string | number;
 
 export type CancelDeploymentValueDeploymentsResponse2002 = {
   eq?: string | number | undefined;
@@ -1275,17 +1210,31 @@ export type CancelDeploymentValueDeploymentsResponse2002 = {
   lte?: number | undefined;
 };
 
-export type CancelDeploymentMissingDeploymentsValue =
+export type CancelDeploymentHasValue =
   | string
   | CancelDeploymentValueDeploymentsResponse2002;
 
-export type CancelDeploymentMissing2 = {
-  type: CancelDeploymentMissingDeploymentsType;
-  key: string;
-  value?: string | CancelDeploymentValueDeploymentsResponse2002 | undefined;
+export type Has1 = {
+  type: "host";
+  value: string | CancelDeploymentValueDeploymentsResponse2002;
 };
 
-export type CancelDeploymentValueDeploymentsResponseEq = string | number;
+export type RoutesHas =
+  | Has1
+  | (Has2 & { type: "cookie" })
+  | (Has2 & { type: "header" })
+  | (Has2 & { type: "query" });
+
+export const CancelDeploymentMissingType = {
+  Cookie: "cookie",
+  Header: "header",
+  Query: "query",
+} as const;
+export type CancelDeploymentMissingType = ClosedEnum<
+  typeof CancelDeploymentMissingType
+>;
+
+export type CancelDeploymentValueDeploymentsEq = string | number;
 
 export type CancelDeploymentValueDeploymentsResponse2 = {
   eq?: string | number | undefined;
@@ -1305,51 +1254,69 @@ export type CancelDeploymentMissingValue =
   | string
   | CancelDeploymentValueDeploymentsResponse2;
 
-export type CancelDeploymentMissing1 = {
+export type Missing2 = {
+  type: CancelDeploymentMissingType;
+  key: string;
+  value?: string | CancelDeploymentValueDeploymentsResponse2 | undefined;
+};
+
+export type CancelDeploymentValueEq = string | number;
+
+export type CancelDeploymentValueDeployments2 = {
+  eq?: string | number | undefined;
+  neq?: string | undefined;
+  inc?: Array<string> | undefined;
+  ninc?: Array<string> | undefined;
+  pre?: string | undefined;
+  suf?: string | undefined;
+  re?: string | undefined;
+  gt?: number | undefined;
+  gte?: number | undefined;
+  lt?: number | undefined;
+  lte?: number | undefined;
+};
+
+export type MissingValue = string | CancelDeploymentValueDeployments2;
+
+export type Missing1 = {
   type: "host";
-  value: string | CancelDeploymentValueDeploymentsResponse2;
+  value: string | CancelDeploymentValueDeployments2;
 };
 
 export type RoutesMissing =
-  | CancelDeploymentMissing1
-  | (CancelDeploymentMissing2 & { type: "cookie" })
-  | (CancelDeploymentMissing2 & { type: "header" })
-  | (CancelDeploymentMissing2 & { type: "query" });
+  | Missing1
+  | (Missing2 & { type: "cookie" })
+  | (Missing2 & { type: "header" })
+  | (Missing2 & { type: "query" });
 
-export const CancelDeploymentRoutesAction = {
+export const RoutesAction = {
   Challenge: "challenge",
   Deny: "deny",
 } as const;
-export type CancelDeploymentRoutesAction = ClosedEnum<
-  typeof CancelDeploymentRoutesAction
->;
+export type RoutesAction = ClosedEnum<typeof RoutesAction>;
 
 export type RoutesMitigate = {
-  action: CancelDeploymentRoutesAction;
+  action: RoutesAction;
 };
 
-export const CancelDeploymentTransformsDeploymentsOp = {
+export const TransformsOp = {
   Set: "set",
 } as const;
-export type CancelDeploymentTransformsDeploymentsOp = ClosedEnum<
-  typeof CancelDeploymentTransformsDeploymentsOp
->;
+export type TransformsOp = ClosedEnum<typeof TransformsOp>;
 
-export type CancelDeploymentTransforms2 = {
+export type Transforms2 = {
   type: "request.path";
-  op: CancelDeploymentTransformsDeploymentsOp;
+  op: TransformsOp;
   args: string;
   env?: Array<string> | undefined;
 };
 
-export const CancelDeploymentTransformsType = {
+export const TransformsType = {
   RequestHeaders: "request.headers",
   RequestQuery: "request.query",
   ResponseHeaders: "response.headers",
 } as const;
-export type CancelDeploymentTransformsType = ClosedEnum<
-  typeof CancelDeploymentTransformsType
->;
+export type TransformsType = ClosedEnum<typeof TransformsType>;
 
 export const CancelDeploymentTransformsOp = {
   Append: "append",
@@ -1360,9 +1327,9 @@ export type CancelDeploymentTransformsOp = ClosedEnum<
   typeof CancelDeploymentTransformsOp
 >;
 
-export type CancelDeploymentKeyEq = string | number;
+export type KeyEq = string | number;
 
-export type CancelDeploymentKey2 = {
+export type Key2 = {
   eq?: string | number | undefined;
   neq?: string | undefined;
   inc?: Array<string> | undefined;
@@ -1375,29 +1342,29 @@ export type CancelDeploymentKey2 = {
   lte?: number | undefined;
 };
 
-export type TransformsKey = string | CancelDeploymentKey2;
+export type CancelDeploymentTransformsKey = string | Key2;
 
-export type CancelDeploymentTransformsTarget = {
-  key: string | CancelDeploymentKey2;
+export type TransformsTarget = {
+  key: string | Key2;
 };
 
-export type TransformsArgs = string | Array<string>;
+export type Args = string | Array<string>;
 
-export type CancelDeploymentTransforms1 = {
-  type: CancelDeploymentTransformsType;
+export type Transforms1 = {
+  type: TransformsType;
   op: CancelDeploymentTransformsOp;
-  target: CancelDeploymentTransformsTarget;
+  target: TransformsTarget;
   args?: string | Array<string> | undefined;
   env?: Array<string> | undefined;
 };
 
 export type RoutesTransforms =
-  | (CancelDeploymentTransforms1 & { type: "request.headers" })
-  | (CancelDeploymentTransforms1 & { type: "request.query" })
-  | (CancelDeploymentTransforms1 & { type: "response.headers" })
-  | CancelDeploymentTransforms2;
+  | (Transforms1 & { type: "request.headers" })
+  | (Transforms1 & { type: "request.query" })
+  | (Transforms1 & { type: "response.headers" })
+  | Transforms2;
 
-export type RoutesLocale = {
+export type Locale = {
   redirect?: { [k: string]: string } | undefined;
   cookie?: string | undefined;
 };
@@ -1405,21 +1372,19 @@ export type RoutesLocale = {
 /**
  * Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required.
  */
-export const CancelDeploymentDestinationType = {
+export const DestinationType = {
   Service: "service",
 } as const;
 /**
  * Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required.
  */
-export type CancelDeploymentDestinationType = ClosedEnum<
-  typeof CancelDeploymentDestinationType
->;
+export type DestinationType = ClosedEnum<typeof DestinationType>;
 
-export type CancelDeploymentDestination2 = {
+export type Destination2 = {
   /**
    * Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required.
    */
-  type?: CancelDeploymentDestinationType | undefined;
+  type?: DestinationType | undefined;
   service: string;
   /**
    * Routing-only path used to select a route inside the target service.
@@ -1427,9 +1392,9 @@ export type CancelDeploymentDestination2 = {
   path?: string | undefined;
 };
 
-export type RoutesDestination = CancelDeploymentDestination2 | string;
+export type RoutesDestination = Destination2 | string;
 
-export type CancelDeploymentRoutes1 = {
+export type Routes1 = {
   src: string;
   dest?: string | undefined;
   headers?: { [k: string]: string } | undefined;
@@ -1442,36 +1407,36 @@ export type CancelDeploymentRoutes1 = {
   status?: number | undefined;
   has?:
     | Array<
-      | CancelDeploymentHas1
-      | (CancelDeploymentHas2 & { type: "cookie" })
-      | (CancelDeploymentHas2 & { type: "header" })
-      | (CancelDeploymentHas2 & { type: "query" })
+      | Has1
+      | (Has2 & { type: "cookie" })
+      | (Has2 & { type: "header" })
+      | (Has2 & { type: "query" })
     >
     | undefined;
   missing?:
     | Array<
-      | CancelDeploymentMissing1
-      | (CancelDeploymentMissing2 & { type: "cookie" })
-      | (CancelDeploymentMissing2 & { type: "header" })
-      | (CancelDeploymentMissing2 & { type: "query" })
+      | Missing1
+      | (Missing2 & { type: "cookie" })
+      | (Missing2 & { type: "header" })
+      | (Missing2 & { type: "query" })
     >
     | undefined;
   mitigate?: RoutesMitigate | undefined;
   transforms?:
     | Array<
-      | (CancelDeploymentTransforms1 & { type: "request.headers" })
-      | (CancelDeploymentTransforms1 & { type: "request.query" })
-      | (CancelDeploymentTransforms1 & { type: "response.headers" })
-      | CancelDeploymentTransforms2
+      | (Transforms1 & { type: "request.headers" })
+      | (Transforms1 & { type: "request.query" })
+      | (Transforms1 & { type: "response.headers" })
+      | Transforms2
     >
     | undefined;
   env?: Array<string> | undefined;
-  locale?: RoutesLocale | undefined;
+  locale?: Locale | undefined;
   /**
    * Aliases for `src`, `dest`, and `status`. These provide consistency with the `rewrites`, `redirects`, and `headers` fields which use `source`, `destination`, and `statusCode`. During normalization, the string forms are converted to their canonical forms (`src`, `dest`, `status`) and stripped from the route object. `destination` may also be a service-targeted object, in which case routing is delegated into the named service's internal route table and the object is preserved as-is (not folded into `dest`).
    */
   source?: string | undefined;
-  destination?: CancelDeploymentDestination2 | string | undefined;
+  destination?: Destination2 | string | undefined;
   statusCode?: number | undefined;
   /**
    * A middleware key within the `output` key under the build result. Overrides a `middleware` definition.
@@ -1488,18 +1453,11 @@ export type CancelDeploymentRoutes1 = {
   respectOriginCacheControl?: boolean | undefined;
 };
 
-export type CancelDeploymentRoutes =
-  | CancelDeploymentRoutes3
-  | CancelDeploymentRoutes1
-  | CancelDeploymentRoutes2;
+export type CancelDeploymentRoutes = Routes3 | Routes1 | Routes2;
 
-export type CancelDeploymentServicesDeploymentsIncludeFiles =
-  | string
-  | Array<string>;
+export type ServicesIncludeFiles = string | Array<string>;
 
-export type CancelDeploymentServicesDeploymentsExcludeFiles =
-  | string
-  | Array<string>;
+export type ServicesExcludeFiles = string | Array<string>;
 
 export const CancelDeploymentServicesDeploymentsArchitecture = {
   Arm64: "arm64",
@@ -1509,21 +1467,21 @@ export type CancelDeploymentServicesDeploymentsArchitecture = ClosedEnum<
   typeof CancelDeploymentServicesDeploymentsArchitecture
 >;
 
-export const CancelDeploymentMaxDurationDeploymentsResponse2 = {
+export const CancelDeploymentMaxDurationDeployments2 = {
   Max: "max",
 } as const;
-export type CancelDeploymentMaxDurationDeploymentsResponse2 = ClosedEnum<
-  typeof CancelDeploymentMaxDurationDeploymentsResponse2
+export type CancelDeploymentMaxDurationDeployments2 = ClosedEnum<
+  typeof CancelDeploymentMaxDurationDeployments2
 >;
 
 export type CancelDeploymentServicesDeploymentsMaxDuration =
   | number
-  | CancelDeploymentMaxDurationDeploymentsResponse2;
+  | CancelDeploymentMaxDurationDeployments2;
 
 /**
  * Queue trigger input event for v2beta (from vercel.json config). Consumer name is implicitly derived from the function path. Only one trigger per function is allowed.
  */
-export type CancelDeploymentExperimentalTriggersDeploymentsResponse2 = {
+export type CancelDeploymentExperimentalTriggersDeployments2 = {
   /**
    * Event type - must be "queue/v2beta" (REQUIRED)
    */
@@ -1553,7 +1511,7 @@ export type CancelDeploymentExperimentalTriggersDeploymentsResponse2 = {
 /**
  * Queue trigger input event for v1beta (from vercel.json config). Requires explicit consumer name.
  */
-export type CancelDeploymentExperimentalTriggersDeploymentsResponse1 = {
+export type CancelDeploymentExperimentalTriggersDeployments1 = {
   /**
    * Event type - must be "queue/v1beta" (REQUIRED)
    */
@@ -1585,16 +1543,13 @@ export type CancelDeploymentExperimentalTriggersDeploymentsResponse1 = {
 };
 
 export type CancelDeploymentServicesDeploymentsExperimentalTriggers =
-  | CancelDeploymentExperimentalTriggersDeploymentsResponse1
-  | CancelDeploymentExperimentalTriggersDeploymentsResponse2;
+  | CancelDeploymentExperimentalTriggersDeployments1
+  | CancelDeploymentExperimentalTriggersDeployments2;
 
 export type CancelDeploymentServicesDeploymentsFunctions = {
   architecture?: CancelDeploymentServicesDeploymentsArchitecture | undefined;
   memory?: number | undefined;
-  maxDuration?:
-    | number
-    | CancelDeploymentMaxDurationDeploymentsResponse2
-    | undefined;
+  maxDuration?: number | CancelDeploymentMaxDurationDeployments2 | undefined;
   regions?: Array<string> | undefined;
   functionFailoverRegions?: Array<string> | undefined;
   runtime?: string | undefined;
@@ -1602,8 +1557,8 @@ export type CancelDeploymentServicesDeploymentsFunctions = {
   excludeFiles?: string | undefined;
   experimentalTriggers?:
     | Array<
-      | CancelDeploymentExperimentalTriggersDeploymentsResponse1
-      | CancelDeploymentExperimentalTriggersDeploymentsResponse2
+      | CancelDeploymentExperimentalTriggersDeployments1
+      | CancelDeploymentExperimentalTriggersDeployments2
     >
     | undefined;
   supportsCancellation?: boolean | undefined;
@@ -1636,59 +1591,53 @@ export function cancelDeploymentRequestToJSON(
 }
 
 /** @internal */
-export const CancelDeploymentAliasAssignedAt$inboundSchema: z.ZodType<
-  CancelDeploymentAliasAssignedAt,
+export const AliasAssignedAt$inboundSchema: z.ZodType<
+  AliasAssignedAt,
   z.ZodTypeDef,
   unknown
 > = smartUnion([types.number(), types.boolean()]);
 
-export function cancelDeploymentAliasAssignedAtFromJSON(
+export function aliasAssignedAtFromJSON(
   jsonString: string,
-): SafeParseResult<CancelDeploymentAliasAssignedAt, SDKValidationError> {
+): SafeParseResult<AliasAssignedAt, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CancelDeploymentAliasAssignedAt$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CancelDeploymentAliasAssignedAt' from JSON`,
+    (x) => AliasAssignedAt$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AliasAssignedAt' from JSON`,
   );
 }
 
 /** @internal */
-export const CancelDeploymentBuild$inboundSchema: z.ZodType<
-  CancelDeploymentBuild,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  env: z.array(types.string()),
-});
+export const Build$inboundSchema: z.ZodType<Build, z.ZodTypeDef, unknown> = z
+  .object({
+    env: z.array(types.string()),
+  });
 
-export function cancelDeploymentBuildFromJSON(
+export function buildFromJSON(
   jsonString: string,
-): SafeParseResult<CancelDeploymentBuild, SDKValidationError> {
+): SafeParseResult<Build, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CancelDeploymentBuild$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CancelDeploymentBuild' from JSON`,
+    (x) => Build$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Build' from JSON`,
   );
 }
 
 /** @internal */
-export const CancelDeploymentBuilds$inboundSchema: z.ZodType<
-  CancelDeploymentBuilds,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  use: types.string(),
-  src: types.optional(types.string()),
-  config: types.optional(z.record(z.any())),
-});
+export const Builds$inboundSchema: z.ZodType<Builds, z.ZodTypeDef, unknown> = z
+  .object({
+    use: types.string(),
+    src: types.optional(types.string()),
+    config: types.optional(z.record(z.any())),
+  });
 
-export function cancelDeploymentBuildsFromJSON(
+export function buildsFromJSON(
   jsonString: string,
-): SafeParseResult<CancelDeploymentBuilds, SDKValidationError> {
+): SafeParseResult<Builds, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CancelDeploymentBuilds$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CancelDeploymentBuilds' from JSON`,
+    (x) => Builds$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Builds' from JSON`,
   );
 }
 
@@ -1789,8 +1738,8 @@ export const CancelDeploymentDeploymentsStatus$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(CancelDeploymentDeploymentsStatus);
 
 /** @internal */
-export const CancelDeploymentIntegrations$inboundSchema: z.ZodType<
-  CancelDeploymentIntegrations,
+export const Integrations$inboundSchema: z.ZodType<
+  Integrations,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -1802,47 +1751,46 @@ export const CancelDeploymentIntegrations$inboundSchema: z.ZodType<
   skippedBy: types.optional(types.string()),
 });
 
-export function cancelDeploymentIntegrationsFromJSON(
+export function integrationsFromJSON(
   jsonString: string,
-): SafeParseResult<CancelDeploymentIntegrations, SDKValidationError> {
+): SafeParseResult<Integrations, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CancelDeploymentIntegrations$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CancelDeploymentIntegrations' from JSON`,
+    (x) => Integrations$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Integrations' from JSON`,
   );
 }
 
 /** @internal */
-export const CancelDeploymentProtocol$inboundSchema: z.ZodNativeEnum<
-  typeof CancelDeploymentProtocol
-> = z.nativeEnum(CancelDeploymentProtocol);
+export const Protocol$inboundSchema: z.ZodNativeEnum<typeof Protocol> = z
+  .nativeEnum(Protocol);
 
 /** @internal */
-export const CancelDeploymentRemotePatterns$inboundSchema: z.ZodType<
-  CancelDeploymentRemotePatterns,
+export const RemotePatterns$inboundSchema: z.ZodType<
+  RemotePatterns,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  protocol: types.optional(CancelDeploymentProtocol$inboundSchema),
+  protocol: types.optional(Protocol$inboundSchema),
   hostname: types.string(),
   port: types.optional(types.string()),
   pathname: types.optional(types.string()),
   search: types.optional(types.string()),
 });
 
-export function cancelDeploymentRemotePatternsFromJSON(
+export function remotePatternsFromJSON(
   jsonString: string,
-): SafeParseResult<CancelDeploymentRemotePatterns, SDKValidationError> {
+): SafeParseResult<RemotePatterns, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CancelDeploymentRemotePatterns$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CancelDeploymentRemotePatterns' from JSON`,
+    (x) => RemotePatterns$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RemotePatterns' from JSON`,
   );
 }
 
 /** @internal */
-export const CancelDeploymentLocalPatterns$inboundSchema: z.ZodType<
-  CancelDeploymentLocalPatterns,
+export const LocalPatterns$inboundSchema: z.ZodType<
+  LocalPatterns,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -1850,58 +1798,53 @@ export const CancelDeploymentLocalPatterns$inboundSchema: z.ZodType<
   search: types.optional(types.string()),
 });
 
-export function cancelDeploymentLocalPatternsFromJSON(
+export function localPatternsFromJSON(
   jsonString: string,
-): SafeParseResult<CancelDeploymentLocalPatterns, SDKValidationError> {
+): SafeParseResult<LocalPatterns, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CancelDeploymentLocalPatterns$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CancelDeploymentLocalPatterns' from JSON`,
+    (x) => LocalPatterns$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LocalPatterns' from JSON`,
   );
 }
 
 /** @internal */
-export const CancelDeploymentFormats$inboundSchema: z.ZodNativeEnum<
-  typeof CancelDeploymentFormats
-> = z.nativeEnum(CancelDeploymentFormats);
+export const Formats$inboundSchema: z.ZodNativeEnum<typeof Formats> = z
+  .nativeEnum(Formats);
 
 /** @internal */
-export const CancelDeploymentContentDispositionType$inboundSchema:
-  z.ZodNativeEnum<typeof CancelDeploymentContentDispositionType> = z.nativeEnum(
-    CancelDeploymentContentDispositionType,
-  );
+export const ContentDispositionType$inboundSchema: z.ZodNativeEnum<
+  typeof ContentDispositionType
+> = z.nativeEnum(ContentDispositionType);
 
 /** @internal */
-export const CancelDeploymentImages$inboundSchema: z.ZodType<
-  CancelDeploymentImages,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  sizes: types.optional(z.array(types.number())),
-  qualities: types.optional(z.array(types.number())),
-  domains: types.optional(z.array(types.string())),
-  remotePatterns: types.optional(
-    z.array(z.lazy(() => CancelDeploymentRemotePatterns$inboundSchema)),
-  ),
-  localPatterns: types.optional(
-    z.array(z.lazy(() => CancelDeploymentLocalPatterns$inboundSchema)),
-  ),
-  minimumCacheTTL: types.optional(types.number()),
-  formats: types.optional(z.array(CancelDeploymentFormats$inboundSchema)),
-  dangerouslyAllowSVG: types.optional(types.boolean()),
-  contentSecurityPolicy: types.optional(types.string()),
-  contentDispositionType: types.optional(
-    CancelDeploymentContentDispositionType$inboundSchema,
-  ),
-});
+export const Images$inboundSchema: z.ZodType<Images, z.ZodTypeDef, unknown> = z
+  .object({
+    sizes: types.optional(z.array(types.number())),
+    qualities: types.optional(z.array(types.number())),
+    domains: types.optional(z.array(types.string())),
+    remotePatterns: types.optional(
+      z.array(z.lazy(() => RemotePatterns$inboundSchema)),
+    ),
+    localPatterns: types.optional(
+      z.array(z.lazy(() => LocalPatterns$inboundSchema)),
+    ),
+    minimumCacheTTL: types.optional(types.number()),
+    formats: types.optional(z.array(Formats$inboundSchema)),
+    dangerouslyAllowSVG: types.optional(types.boolean()),
+    contentSecurityPolicy: types.optional(types.string()),
+    contentDispositionType: types.optional(
+      ContentDispositionType$inboundSchema,
+    ),
+  });
 
-export function cancelDeploymentImagesFromJSON(
+export function imagesFromJSON(
   jsonString: string,
-): SafeParseResult<CancelDeploymentImages, SDKValidationError> {
+): SafeParseResult<Images, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CancelDeploymentImages$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CancelDeploymentImages' from JSON`,
+    (x) => Images$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Images' from JSON`,
   );
 }
 
@@ -1927,10 +1870,9 @@ export function cancelDeploymentCreatorFromJSON(
 }
 
 /** @internal */
-export const CancelDeploymentDeploymentsReadyState$inboundSchema:
-  z.ZodNativeEnum<typeof CancelDeploymentDeploymentsReadyState> = z.nativeEnum(
-    CancelDeploymentDeploymentsReadyState,
-  );
+export const CancelDeploymentReadyState$inboundSchema: z.ZodNativeEnum<
+  typeof CancelDeploymentReadyState
+> = z.nativeEnum(CancelDeploymentReadyState);
 
 /** @internal */
 export const CancelDeploymentOutput$inboundSchema: z.ZodType<
@@ -1953,28 +1895,23 @@ export function cancelDeploymentOutputFromJSON(
 }
 
 /** @internal */
-export const CancelDeploymentLambdas$inboundSchema: z.ZodType<
-  CancelDeploymentLambdas,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: types.string(),
-  createdAt: types.optional(types.number()),
-  readyState: types.optional(
-    CancelDeploymentDeploymentsReadyState$inboundSchema,
-  ),
-  entrypoint: z.nullable(types.string()).optional(),
-  readyStateAt: types.optional(types.number()),
-  output: z.array(z.lazy(() => CancelDeploymentOutput$inboundSchema)),
-});
+export const Lambdas$inboundSchema: z.ZodType<Lambdas, z.ZodTypeDef, unknown> =
+  z.object({
+    id: types.string(),
+    createdAt: types.optional(types.number()),
+    readyState: types.optional(CancelDeploymentReadyState$inboundSchema),
+    entrypoint: z.nullable(types.string()).optional(),
+    readyStateAt: types.optional(types.number()),
+    output: z.array(z.lazy(() => CancelDeploymentOutput$inboundSchema)),
+  });
 
-export function cancelDeploymentLambdasFromJSON(
+export function lambdasFromJSON(
   jsonString: string,
-): SafeParseResult<CancelDeploymentLambdas, SDKValidationError> {
+): SafeParseResult<Lambdas, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CancelDeploymentLambdas$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CancelDeploymentLambdas' from JSON`,
+    (x) => Lambdas$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Lambdas' from JSON`,
   );
 }
 
@@ -2006,24 +1943,28 @@ export function cancelDeploymentTeamFromJSON(
 }
 
 /** @internal */
-export const CancelDeploymentCustomEnvironment2$inboundSchema: z.ZodType<
-  CancelDeploymentCustomEnvironment2,
+export const CustomEnvironment2$inboundSchema: z.ZodType<
+  CustomEnvironment2,
   z.ZodTypeDef,
   unknown
 > = z.object({
   id: types.string(),
 });
 
-export function cancelDeploymentCustomEnvironment2FromJSON(
+export function customEnvironment2FromJSON(
   jsonString: string,
-): SafeParseResult<CancelDeploymentCustomEnvironment2, SDKValidationError> {
+): SafeParseResult<CustomEnvironment2, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) =>
-      CancelDeploymentCustomEnvironment2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CancelDeploymentCustomEnvironment2' from JSON`,
+    (x) => CustomEnvironment2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CustomEnvironment2' from JSON`,
   );
 }
+
+/** @internal */
+export const CustomEnvironmentType$inboundSchema: z.ZodNativeEnum<
+  typeof CustomEnvironmentType
+> = z.nativeEnum(CustomEnvironmentType);
 
 /** @internal */
 export const CancelDeploymentCustomEnvironmentType$inboundSchema:
@@ -2032,17 +1973,12 @@ export const CancelDeploymentCustomEnvironmentType$inboundSchema:
   );
 
 /** @internal */
-export const CancelDeploymentCustomEnvironmentDeploymentsType$inboundSchema:
-  z.ZodNativeEnum<typeof CancelDeploymentCustomEnvironmentDeploymentsType> = z
-    .nativeEnum(CancelDeploymentCustomEnvironmentDeploymentsType);
-
-/** @internal */
 export const CustomEnvironmentBranchMatcher$inboundSchema: z.ZodType<
   CustomEnvironmentBranchMatcher,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: CancelDeploymentCustomEnvironmentDeploymentsType$inboundSchema,
+  type: CancelDeploymentCustomEnvironmentType$inboundSchema,
   pattern: types.string(),
 });
 
@@ -2110,14 +2046,14 @@ export function customEnvironmentDomainsFromJSON(
 }
 
 /** @internal */
-export const CancelDeploymentCustomEnvironment1$inboundSchema: z.ZodType<
-  CancelDeploymentCustomEnvironment1,
+export const CustomEnvironment1$inboundSchema: z.ZodType<
+  CustomEnvironment1,
   z.ZodTypeDef,
   unknown
 > = z.object({
   id: types.string(),
   slug: types.string(),
-  type: CancelDeploymentCustomEnvironmentType$inboundSchema,
+  type: CustomEnvironmentType$inboundSchema,
   description: types.optional(types.string()),
   branchMatcher: types.optional(
     z.lazy(() => CustomEnvironmentBranchMatcher$inboundSchema),
@@ -2130,45 +2066,77 @@ export const CancelDeploymentCustomEnvironment1$inboundSchema: z.ZodType<
   updatedAt: types.number(),
 });
 
-export function cancelDeploymentCustomEnvironment1FromJSON(
+export function customEnvironment1FromJSON(
   jsonString: string,
-): SafeParseResult<CancelDeploymentCustomEnvironment1, SDKValidationError> {
+): SafeParseResult<CustomEnvironment1, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) =>
-      CancelDeploymentCustomEnvironment1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CancelDeploymentCustomEnvironment1' from JSON`,
+    (x) => CustomEnvironment1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CustomEnvironment1' from JSON`,
   );
 }
 
 /** @internal */
-export const CancelDeploymentCustomEnvironment$inboundSchema: z.ZodType<
-  CancelDeploymentCustomEnvironment,
+export const CustomEnvironment$inboundSchema: z.ZodType<
+  CustomEnvironment,
   z.ZodTypeDef,
   unknown
 > = smartUnion([
-  z.lazy(() => CancelDeploymentCustomEnvironment1$inboundSchema),
-  z.lazy(() => CancelDeploymentCustomEnvironment2$inboundSchema),
+  z.lazy(() => CustomEnvironment1$inboundSchema),
+  z.lazy(() => CustomEnvironment2$inboundSchema),
 ]);
 
-export function cancelDeploymentCustomEnvironmentFromJSON(
+export function customEnvironmentFromJSON(
   jsonString: string,
-): SafeParseResult<CancelDeploymentCustomEnvironment, SDKValidationError> {
+): SafeParseResult<CustomEnvironment, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CancelDeploymentCustomEnvironment$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CancelDeploymentCustomEnvironment' from JSON`,
+    (x) => CustomEnvironment$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CustomEnvironment' from JSON`,
   );
 }
 
 /** @internal */
-export const CancelDeploymentOomReport$inboundSchema: z.ZodNativeEnum<
-  typeof CancelDeploymentOomReport
-> = z.nativeEnum(CancelDeploymentOomReport);
+export const OomReport$inboundSchema: z.ZodNativeEnum<typeof OomReport> = z
+  .nativeEnum(OomReport);
 
 /** @internal */
-export const CancelDeploymentAliasWarning$inboundSchema: z.ZodType<
-  CancelDeploymentAliasWarning,
+export const CancelDeploymentTarget$inboundSchema: z.ZodNativeEnum<
+  typeof CancelDeploymentTarget
+> = z.nativeEnum(CancelDeploymentTarget);
+
+/** @internal */
+export const ReadyState$inboundSchema: z.ZodNativeEnum<typeof ReadyState> = z
+  .nativeEnum(ReadyState);
+
+/** @internal */
+export const ReadySubstate$inboundSchema: z.ZodNativeEnum<
+  typeof ReadySubstate
+> = z.nativeEnum(ReadySubstate);
+
+/** @internal */
+export const AliasError$inboundSchema: z.ZodType<
+  AliasError,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  code: types.string(),
+  message: types.string(),
+});
+
+export function aliasErrorFromJSON(
+  jsonString: string,
+): SafeParseResult<AliasError, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AliasError$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AliasError' from JSON`,
+  );
+}
+
+/** @internal */
+export const AliasWarning$inboundSchema: z.ZodType<
+  AliasWarning,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -2178,55 +2146,29 @@ export const CancelDeploymentAliasWarning$inboundSchema: z.ZodType<
   action: types.optional(types.string()),
 });
 
-export function cancelDeploymentAliasWarningFromJSON(
+export function aliasWarningFromJSON(
   jsonString: string,
-): SafeParseResult<CancelDeploymentAliasWarning, SDKValidationError> {
+): SafeParseResult<AliasWarning, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CancelDeploymentAliasWarning$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CancelDeploymentAliasWarning' from JSON`,
+    (x) => AliasWarning$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AliasWarning' from JSON`,
   );
 }
 
 /** @internal */
-export const CancelDeploymentReadyState$inboundSchema: z.ZodNativeEnum<
-  typeof CancelDeploymentReadyState
-> = z.nativeEnum(CancelDeploymentReadyState);
+export const ChecksState$inboundSchema: z.ZodNativeEnum<typeof ChecksState> = z
+  .nativeEnum(ChecksState);
+
+/** @internal */
+export const ChecksConclusion$inboundSchema: z.ZodNativeEnum<
+  typeof ChecksConclusion
+> = z.nativeEnum(ChecksConclusion);
 
 /** @internal */
 export const CancelDeploymentType$inboundSchema: z.ZodNativeEnum<
   typeof CancelDeploymentType
 > = z.nativeEnum(CancelDeploymentType);
-
-/** @internal */
-export const CancelDeploymentAliasError$inboundSchema: z.ZodType<
-  CancelDeploymentAliasError,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  code: types.string(),
-  message: types.string(),
-});
-
-export function cancelDeploymentAliasErrorFromJSON(
-  jsonString: string,
-): SafeParseResult<CancelDeploymentAliasError, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CancelDeploymentAliasError$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CancelDeploymentAliasError' from JSON`,
-  );
-}
-
-/** @internal */
-export const CancelDeploymentChecksState$inboundSchema: z.ZodNativeEnum<
-  typeof CancelDeploymentChecksState
-> = z.nativeEnum(CancelDeploymentChecksState);
-
-/** @internal */
-export const CancelDeploymentChecksConclusion$inboundSchema: z.ZodNativeEnum<
-  typeof CancelDeploymentChecksConclusion
-> = z.nativeEnum(CancelDeploymentChecksConclusion);
 
 /** @internal */
 export const CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody17Type$inboundSchema:
@@ -2566,20 +2508,19 @@ export const CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONRespo
   );
 
 /** @internal */
-export const CancelDeploymentGitSourceProjectId$inboundSchema: z.ZodType<
-  CancelDeploymentGitSourceProjectId,
+export const GitSourceProjectId$inboundSchema: z.ZodType<
+  GitSourceProjectId,
   z.ZodTypeDef,
   unknown
 > = smartUnion([types.string(), types.number()]);
 
-export function cancelDeploymentGitSourceProjectIdFromJSON(
+export function gitSourceProjectIdFromJSON(
   jsonString: string,
-): SafeParseResult<CancelDeploymentGitSourceProjectId, SDKValidationError> {
+): SafeParseResult<GitSourceProjectId, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) =>
-      CancelDeploymentGitSourceProjectId$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CancelDeploymentGitSourceProjectId' from JSON`,
+    (x) => GitSourceProjectId$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GitSourceProjectId' from JSON`,
   );
 }
 
@@ -2891,8 +2832,8 @@ export const CancelDeploymentState$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(CancelDeploymentState);
 
 /** @internal */
-export const CancelDeploymentManualProvisioning$inboundSchema: z.ZodType<
-  CancelDeploymentManualProvisioning,
+export const ManualProvisioning$inboundSchema: z.ZodType<
+  ManualProvisioning,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -2900,14 +2841,13 @@ export const CancelDeploymentManualProvisioning$inboundSchema: z.ZodType<
   completedAt: types.optional(types.number()),
 });
 
-export function cancelDeploymentManualProvisioningFromJSON(
+export function manualProvisioningFromJSON(
   jsonString: string,
-): SafeParseResult<CancelDeploymentManualProvisioning, SDKValidationError> {
+): SafeParseResult<ManualProvisioning, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) =>
-      CancelDeploymentManualProvisioning$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CancelDeploymentManualProvisioning' from JSON`,
+    (x) => ManualProvisioning$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ManualProvisioning' from JSON`,
   );
 }
 
@@ -2938,23 +2878,13 @@ export function cancelDeploymentProjectFromJSON(
 }
 
 /** @internal */
-export const CancelDeploymentReadySubstate$inboundSchema: z.ZodNativeEnum<
-  typeof CancelDeploymentReadySubstate
-> = z.nativeEnum(CancelDeploymentReadySubstate);
-
-/** @internal */
 export const CancelDeploymentSource$inboundSchema: z.ZodNativeEnum<
   typeof CancelDeploymentSource
 > = z.nativeEnum(CancelDeploymentSource);
 
 /** @internal */
-export const CancelDeploymentTarget$inboundSchema: z.ZodNativeEnum<
-  typeof CancelDeploymentTarget
-> = z.nativeEnum(CancelDeploymentTarget);
-
-/** @internal */
-export const CancelDeploymentOidcTokenClaims$inboundSchema: z.ZodType<
-  CancelDeploymentOidcTokenClaims,
+export const OidcTokenClaims$inboundSchema: z.ZodType<
+  OidcTokenClaims,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -2968,22 +2898,24 @@ export const CancelDeploymentOidcTokenClaims$inboundSchema: z.ZodType<
   project_id: types.string(),
   environment: types.string(),
   custom_environment_id: types.optional(types.string()),
+  mfe_group_ids: types.optional(z.array(types.string())),
   plan: types.optional(types.string()),
 }).transform((v) => {
   return remap$(v, {
     "owner_id": "ownerId",
     "project_id": "projectId",
     "custom_environment_id": "customEnvironmentId",
+    "mfe_group_ids": "mfeGroupIds",
   });
 });
 
-export function cancelDeploymentOidcTokenClaimsFromJSON(
+export function oidcTokenClaimsFromJSON(
   jsonString: string,
-): SafeParseResult<CancelDeploymentOidcTokenClaims, SDKValidationError> {
+): SafeParseResult<OidcTokenClaims, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CancelDeploymentOidcTokenClaims$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CancelDeploymentOidcTokenClaims' from JSON`,
+    (x) => OidcTokenClaims$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OidcTokenClaims' from JSON`,
   );
 }
 
@@ -3058,8 +2990,8 @@ export function cancelDeploymentDeploymentsCreatorFromJSON(
 }
 
 /** @internal */
-export const CancelDeploymentPlatform$inboundSchema: z.ZodType<
-  CancelDeploymentPlatform,
+export const Platform$inboundSchema: z.ZodType<
+  Platform,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -3069,66 +3001,61 @@ export const CancelDeploymentPlatform$inboundSchema: z.ZodType<
   meta: types.optional(z.record(types.string())),
 });
 
-export function cancelDeploymentPlatformFromJSON(
+export function platformFromJSON(
   jsonString: string,
-): SafeParseResult<CancelDeploymentPlatform, SDKValidationError> {
+): SafeParseResult<Platform, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CancelDeploymentPlatform$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CancelDeploymentPlatform' from JSON`,
+    (x) => Platform$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Platform' from JSON`,
   );
 }
 
 /** @internal */
-export const CancelDeploymentCrons$inboundSchema: z.ZodType<
-  CancelDeploymentCrons,
+export const Crons$inboundSchema: z.ZodType<Crons, z.ZodTypeDef, unknown> = z
+  .object({
+    schedule: types.string(),
+    path: types.string(),
+  });
+
+export function cronsFromJSON(
+  jsonString: string,
+): SafeParseResult<Crons, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Crons$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Crons' from JSON`,
+  );
+}
+
+/** @internal */
+export const Architecture$inboundSchema: z.ZodNativeEnum<typeof Architecture> =
+  z.nativeEnum(Architecture);
+
+/** @internal */
+export const MaxDuration2$inboundSchema: z.ZodNativeEnum<typeof MaxDuration2> =
+  z.nativeEnum(MaxDuration2);
+
+/** @internal */
+export const MaxDuration$inboundSchema: z.ZodType<
+  MaxDuration,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  schedule: types.string(),
-  path: types.string(),
-});
+> = smartUnion([types.number(), MaxDuration2$inboundSchema]);
 
-export function cancelDeploymentCronsFromJSON(
+export function maxDurationFromJSON(
   jsonString: string,
-): SafeParseResult<CancelDeploymentCrons, SDKValidationError> {
+): SafeParseResult<MaxDuration, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CancelDeploymentCrons$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CancelDeploymentCrons' from JSON`,
+    (x) => MaxDuration$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'MaxDuration' from JSON`,
   );
 }
 
 /** @internal */
-export const CancelDeploymentArchitecture$inboundSchema: z.ZodNativeEnum<
-  typeof CancelDeploymentArchitecture
-> = z.nativeEnum(CancelDeploymentArchitecture);
-
-/** @internal */
-export const CancelDeploymentMaxDuration2$inboundSchema: z.ZodNativeEnum<
-  typeof CancelDeploymentMaxDuration2
-> = z.nativeEnum(CancelDeploymentMaxDuration2);
-
-/** @internal */
-export const CancelDeploymentMaxDuration$inboundSchema: z.ZodType<
-  CancelDeploymentMaxDuration,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([types.number(), CancelDeploymentMaxDuration2$inboundSchema]);
-
-export function cancelDeploymentMaxDurationFromJSON(
-  jsonString: string,
-): SafeParseResult<CancelDeploymentMaxDuration, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CancelDeploymentMaxDuration$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CancelDeploymentMaxDuration' from JSON`,
-  );
-}
-
-/** @internal */
-export const CancelDeploymentExperimentalTriggers2$inboundSchema: z.ZodType<
-  CancelDeploymentExperimentalTriggers2,
+export const ExperimentalTriggers2$inboundSchema: z.ZodType<
+  ExperimentalTriggers2,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -3140,20 +3067,19 @@ export const CancelDeploymentExperimentalTriggers2$inboundSchema: z.ZodType<
   maxConcurrency: types.optional(types.number()),
 });
 
-export function cancelDeploymentExperimentalTriggers2FromJSON(
+export function experimentalTriggers2FromJSON(
   jsonString: string,
-): SafeParseResult<CancelDeploymentExperimentalTriggers2, SDKValidationError> {
+): SafeParseResult<ExperimentalTriggers2, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) =>
-      CancelDeploymentExperimentalTriggers2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CancelDeploymentExperimentalTriggers2' from JSON`,
+    (x) => ExperimentalTriggers2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ExperimentalTriggers2' from JSON`,
   );
 }
 
 /** @internal */
-export const CancelDeploymentExperimentalTriggers1$inboundSchema: z.ZodType<
-  CancelDeploymentExperimentalTriggers1,
+export const ExperimentalTriggers1$inboundSchema: z.ZodType<
+  ExperimentalTriggers1,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -3166,48 +3092,46 @@ export const CancelDeploymentExperimentalTriggers1$inboundSchema: z.ZodType<
   maxConcurrency: types.optional(types.number()),
 });
 
-export function cancelDeploymentExperimentalTriggers1FromJSON(
+export function experimentalTriggers1FromJSON(
   jsonString: string,
-): SafeParseResult<CancelDeploymentExperimentalTriggers1, SDKValidationError> {
+): SafeParseResult<ExperimentalTriggers1, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) =>
-      CancelDeploymentExperimentalTriggers1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CancelDeploymentExperimentalTriggers1' from JSON`,
+    (x) => ExperimentalTriggers1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ExperimentalTriggers1' from JSON`,
   );
 }
 
 /** @internal */
-export const CancelDeploymentExperimentalTriggers$inboundSchema: z.ZodType<
-  CancelDeploymentExperimentalTriggers,
+export const ExperimentalTriggers$inboundSchema: z.ZodType<
+  ExperimentalTriggers,
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => CancelDeploymentExperimentalTriggers1$inboundSchema),
-  z.lazy(() => CancelDeploymentExperimentalTriggers2$inboundSchema),
+  z.lazy(() => ExperimentalTriggers1$inboundSchema),
+  z.lazy(() => ExperimentalTriggers2$inboundSchema),
 ]);
 
-export function cancelDeploymentExperimentalTriggersFromJSON(
+export function experimentalTriggersFromJSON(
   jsonString: string,
-): SafeParseResult<CancelDeploymentExperimentalTriggers, SDKValidationError> {
+): SafeParseResult<ExperimentalTriggers, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) =>
-      CancelDeploymentExperimentalTriggers$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CancelDeploymentExperimentalTriggers' from JSON`,
+    (x) => ExperimentalTriggers$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ExperimentalTriggers' from JSON`,
   );
 }
 
 /** @internal */
-export const CancelDeploymentFunctions$inboundSchema: z.ZodType<
-  CancelDeploymentFunctions,
+export const Functions$inboundSchema: z.ZodType<
+  Functions,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  architecture: types.optional(CancelDeploymentArchitecture$inboundSchema),
+  architecture: types.optional(Architecture$inboundSchema),
   memory: types.optional(types.number()),
   maxDuration: types.optional(
-    smartUnion([types.number(), CancelDeploymentMaxDuration2$inboundSchema]),
+    smartUnion([types.number(), MaxDuration2$inboundSchema]),
   ),
   regions: types.optional(z.array(types.string())),
   functionFailoverRegions: types.optional(z.array(types.string())),
@@ -3216,185 +3140,82 @@ export const CancelDeploymentFunctions$inboundSchema: z.ZodType<
   excludeFiles: types.optional(types.string()),
   experimentalTriggers: types.optional(
     z.array(z.union([
-      z.lazy(() => CancelDeploymentExperimentalTriggers1$inboundSchema),
+      z.lazy(() => ExperimentalTriggers1$inboundSchema),
       z.lazy(() =>
-        CancelDeploymentExperimentalTriggers2$inboundSchema
+        ExperimentalTriggers2$inboundSchema
       ),
     ])),
   ),
   supportsCancellation: types.optional(types.boolean()),
 });
 
-export function cancelDeploymentFunctionsFromJSON(
+export function functionsFromJSON(
   jsonString: string,
-): SafeParseResult<CancelDeploymentFunctions, SDKValidationError> {
+): SafeParseResult<Functions, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CancelDeploymentFunctions$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CancelDeploymentFunctions' from JSON`,
+    (x) => Functions$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Functions' from JSON`,
   );
 }
 
 /** @internal */
-export const CancelDeploymentRoutes3$inboundSchema: z.ZodType<
-  CancelDeploymentRoutes3,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  src: types.string(),
-  continue: types.boolean(),
-  middleware: types.number(),
-});
+export const Routes3$inboundSchema: z.ZodType<Routes3, z.ZodTypeDef, unknown> =
+  z.object({
+    src: types.string(),
+    continue: types.boolean(),
+    middleware: types.number(),
+  });
 
-export function cancelDeploymentRoutes3FromJSON(
+export function routes3FromJSON(
   jsonString: string,
-): SafeParseResult<CancelDeploymentRoutes3, SDKValidationError> {
+): SafeParseResult<Routes3, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CancelDeploymentRoutes3$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CancelDeploymentRoutes3' from JSON`,
+    (x) => Routes3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Routes3' from JSON`,
   );
 }
 
 /** @internal */
-export const RoutesHandle$inboundSchema: z.ZodNativeEnum<typeof RoutesHandle> =
-  z.nativeEnum(RoutesHandle);
+export const Handle$inboundSchema: z.ZodNativeEnum<typeof Handle> = z
+  .nativeEnum(Handle);
 
 /** @internal */
-export const CancelDeploymentRoutes2$inboundSchema: z.ZodType<
-  CancelDeploymentRoutes2,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  handle: RoutesHandle$inboundSchema,
-  src: types.optional(types.string()),
-  dest: types.optional(types.string()),
-  status: types.optional(types.number()),
-});
+export const Routes2$inboundSchema: z.ZodType<Routes2, z.ZodTypeDef, unknown> =
+  z.object({
+    handle: Handle$inboundSchema,
+    src: types.optional(types.string()),
+    dest: types.optional(types.string()),
+    status: types.optional(types.number()),
+  });
 
-export function cancelDeploymentRoutes2FromJSON(
+export function routes2FromJSON(
   jsonString: string,
-): SafeParseResult<CancelDeploymentRoutes2, SDKValidationError> {
+): SafeParseResult<Routes2, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CancelDeploymentRoutes2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CancelDeploymentRoutes2' from JSON`,
+    (x) => Routes2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Routes2' from JSON`,
   );
 }
 
 /** @internal */
-export const CancelDeploymentHasDeploymentsType$inboundSchema: z.ZodNativeEnum<
-  typeof CancelDeploymentHasDeploymentsType
-> = z.nativeEnum(CancelDeploymentHasDeploymentsType);
+export const CancelDeploymentHasType$inboundSchema: z.ZodNativeEnum<
+  typeof CancelDeploymentHasType
+> = z.nativeEnum(CancelDeploymentHasType);
 
 /** @internal */
-export const CancelDeploymentValueDeploymentsEq$inboundSchema: z.ZodType<
-  CancelDeploymentValueDeploymentsEq,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([types.string(), types.number()]);
+export const ValueEq$inboundSchema: z.ZodType<ValueEq, z.ZodTypeDef, unknown> =
+  smartUnion([types.string(), types.number()]);
 
-export function cancelDeploymentValueDeploymentsEqFromJSON(
+export function valueEqFromJSON(
   jsonString: string,
-): SafeParseResult<CancelDeploymentValueDeploymentsEq, SDKValidationError> {
+): SafeParseResult<ValueEq, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) =>
-      CancelDeploymentValueDeploymentsEq$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CancelDeploymentValueDeploymentsEq' from JSON`,
-  );
-}
-
-/** @internal */
-export const CancelDeploymentValueDeployments2$inboundSchema: z.ZodType<
-  CancelDeploymentValueDeployments2,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  eq: types.optional(smartUnion([types.string(), types.number()])),
-  neq: types.optional(types.string()),
-  inc: types.optional(z.array(types.string())),
-  ninc: types.optional(z.array(types.string())),
-  pre: types.optional(types.string()),
-  suf: types.optional(types.string()),
-  re: types.optional(types.string()),
-  gt: types.optional(types.number()),
-  gte: types.optional(types.number()),
-  lt: types.optional(types.number()),
-  lte: types.optional(types.number()),
-});
-
-export function cancelDeploymentValueDeployments2FromJSON(
-  jsonString: string,
-): SafeParseResult<CancelDeploymentValueDeployments2, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CancelDeploymentValueDeployments2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CancelDeploymentValueDeployments2' from JSON`,
-  );
-}
-
-/** @internal */
-export const CancelDeploymentHasDeploymentsValue$inboundSchema: z.ZodType<
-  CancelDeploymentHasDeploymentsValue,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([
-  types.string(),
-  z.lazy(() => CancelDeploymentValueDeployments2$inboundSchema),
-]);
-
-export function cancelDeploymentHasDeploymentsValueFromJSON(
-  jsonString: string,
-): SafeParseResult<CancelDeploymentHasDeploymentsValue, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      CancelDeploymentHasDeploymentsValue$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CancelDeploymentHasDeploymentsValue' from JSON`,
-  );
-}
-
-/** @internal */
-export const CancelDeploymentHas2$inboundSchema: z.ZodType<
-  CancelDeploymentHas2,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  type: CancelDeploymentHasDeploymentsType$inboundSchema,
-  key: types.string(),
-  value: types.optional(
-    smartUnion([
-      types.string(),
-      z.lazy(() => CancelDeploymentValueDeployments2$inboundSchema),
-    ]),
-  ),
-});
-
-export function cancelDeploymentHas2FromJSON(
-  jsonString: string,
-): SafeParseResult<CancelDeploymentHas2, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CancelDeploymentHas2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CancelDeploymentHas2' from JSON`,
-  );
-}
-
-/** @internal */
-export const CancelDeploymentValueEq$inboundSchema: z.ZodType<
-  CancelDeploymentValueEq,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([types.string(), types.number()]);
-
-export function cancelDeploymentValueEqFromJSON(
-  jsonString: string,
-): SafeParseResult<CancelDeploymentValueEq, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CancelDeploymentValueEq$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CancelDeploymentValueEq' from JSON`,
+    (x) => ValueEq$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ValueEq' from JSON`,
   );
 }
 
@@ -3428,8 +3249,8 @@ export function cancelDeploymentValue2FromJSON(
 }
 
 /** @internal */
-export const CancelDeploymentHasValue$inboundSchema: z.ZodType<
-  CancelDeploymentHasValue,
+export const HasValue$inboundSchema: z.ZodType<
+  HasValue,
   z.ZodTypeDef,
   unknown
 > = smartUnion([
@@ -3437,94 +3258,50 @@ export const CancelDeploymentHasValue$inboundSchema: z.ZodType<
   z.lazy(() => CancelDeploymentValue2$inboundSchema),
 ]);
 
-export function cancelDeploymentHasValueFromJSON(
+export function hasValueFromJSON(
   jsonString: string,
-): SafeParseResult<CancelDeploymentHasValue, SDKValidationError> {
+): SafeParseResult<HasValue, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CancelDeploymentHasValue$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CancelDeploymentHasValue' from JSON`,
+    (x) => HasValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HasValue' from JSON`,
   );
 }
 
 /** @internal */
-export const CancelDeploymentHas1$inboundSchema: z.ZodType<
-  CancelDeploymentHas1,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  type: types.literal("host"),
-  value: smartUnion([
-    types.string(),
-    z.lazy(() => CancelDeploymentValue2$inboundSchema),
-  ]),
-});
+export const Has2$inboundSchema: z.ZodType<Has2, z.ZodTypeDef, unknown> = z
+  .object({
+    type: CancelDeploymentHasType$inboundSchema,
+    key: types.string(),
+    value: types.optional(
+      smartUnion([
+        types.string(),
+        z.lazy(() => CancelDeploymentValue2$inboundSchema),
+      ]),
+    ),
+  });
 
-export function cancelDeploymentHas1FromJSON(
+export function has2FromJSON(
   jsonString: string,
-): SafeParseResult<CancelDeploymentHas1, SDKValidationError> {
+): SafeParseResult<Has2, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CancelDeploymentHas1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CancelDeploymentHas1' from JSON`,
+    (x) => Has2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Has2' from JSON`,
   );
 }
 
 /** @internal */
-export const RoutesHas$inboundSchema: z.ZodType<
-  RoutesHas,
-  z.ZodTypeDef,
-  unknown
-> = z.union([
-  z.lazy(() => CancelDeploymentHas1$inboundSchema),
-  z.lazy(() => CancelDeploymentHas2$inboundSchema).and(
-    z.object({ type: z.literal("cookie") }),
-  ),
-  z.lazy(() => CancelDeploymentHas2$inboundSchema).and(
-    z.object({ type: z.literal("header") }),
-  ),
-  z.lazy(() => CancelDeploymentHas2$inboundSchema).and(
-    z.object({ type: z.literal("query") }),
-  ),
-]);
+export const Eq$inboundSchema: z.ZodType<Eq, z.ZodTypeDef, unknown> =
+  smartUnion([types.string(), types.number()]);
 
-export function routesHasFromJSON(
+export function eqFromJSON(
   jsonString: string,
-): SafeParseResult<RoutesHas, SDKValidationError> {
+): SafeParseResult<Eq, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => RoutesHas$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RoutesHas' from JSON`,
-  );
-}
-
-/** @internal */
-export const CancelDeploymentMissingDeploymentsType$inboundSchema:
-  z.ZodNativeEnum<typeof CancelDeploymentMissingDeploymentsType> = z.nativeEnum(
-    CancelDeploymentMissingDeploymentsType,
-  );
-
-/** @internal */
-export const CancelDeploymentValueDeploymentsResponse200Eq$inboundSchema:
-  z.ZodType<
-    CancelDeploymentValueDeploymentsResponse200Eq,
-    z.ZodTypeDef,
-    unknown
-  > = smartUnion([types.string(), types.number()]);
-
-export function cancelDeploymentValueDeploymentsResponse200EqFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  CancelDeploymentValueDeploymentsResponse200Eq,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      CancelDeploymentValueDeploymentsResponse200Eq$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'CancelDeploymentValueDeploymentsResponse200Eq' from JSON`,
+    (x) => Eq$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Eq' from JSON`,
   );
 }
 
@@ -3565,8 +3342,8 @@ export function cancelDeploymentValueDeploymentsResponse2002FromJSON(
 }
 
 /** @internal */
-export const CancelDeploymentMissingDeploymentsValue$inboundSchema: z.ZodType<
-  CancelDeploymentMissingDeploymentsValue,
+export const CancelDeploymentHasValue$inboundSchema: z.ZodType<
+  CancelDeploymentHasValue,
   z.ZodTypeDef,
   unknown
 > = smartUnion([
@@ -3574,66 +3351,78 @@ export const CancelDeploymentMissingDeploymentsValue$inboundSchema: z.ZodType<
   z.lazy(() => CancelDeploymentValueDeploymentsResponse2002$inboundSchema),
 ]);
 
-export function cancelDeploymentMissingDeploymentsValueFromJSON(
+export function cancelDeploymentHasValueFromJSON(
   jsonString: string,
-): SafeParseResult<
-  CancelDeploymentMissingDeploymentsValue,
-  SDKValidationError
-> {
+): SafeParseResult<CancelDeploymentHasValue, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) =>
-      CancelDeploymentMissingDeploymentsValue$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'CancelDeploymentMissingDeploymentsValue' from JSON`,
+    (x) => CancelDeploymentHasValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CancelDeploymentHasValue' from JSON`,
   );
 }
 
 /** @internal */
-export const CancelDeploymentMissing2$inboundSchema: z.ZodType<
-  CancelDeploymentMissing2,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  type: CancelDeploymentMissingDeploymentsType$inboundSchema,
-  key: types.string(),
-  value: types.optional(
-    smartUnion([
+export const Has1$inboundSchema: z.ZodType<Has1, z.ZodTypeDef, unknown> = z
+  .object({
+    type: types.literal("host"),
+    value: smartUnion([
       types.string(),
       z.lazy(() => CancelDeploymentValueDeploymentsResponse2002$inboundSchema),
     ]),
-  ),
-});
+  });
 
-export function cancelDeploymentMissing2FromJSON(
+export function has1FromJSON(
   jsonString: string,
-): SafeParseResult<CancelDeploymentMissing2, SDKValidationError> {
+): SafeParseResult<Has1, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CancelDeploymentMissing2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CancelDeploymentMissing2' from JSON`,
+    (x) => Has1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Has1' from JSON`,
   );
 }
 
 /** @internal */
-export const CancelDeploymentValueDeploymentsResponseEq$inboundSchema:
-  z.ZodType<CancelDeploymentValueDeploymentsResponseEq, z.ZodTypeDef, unknown> =
-    smartUnion([types.string(), types.number()]);
+export const RoutesHas$inboundSchema: z.ZodType<
+  RoutesHas,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() => Has1$inboundSchema),
+  z.lazy(() => Has2$inboundSchema).and(z.object({ type: z.literal("cookie") })),
+  z.lazy(() => Has2$inboundSchema).and(z.object({ type: z.literal("header") })),
+  z.lazy(() => Has2$inboundSchema).and(z.object({ type: z.literal("query") })),
+]);
 
-export function cancelDeploymentValueDeploymentsResponseEqFromJSON(
+export function routesHasFromJSON(
   jsonString: string,
-): SafeParseResult<
-  CancelDeploymentValueDeploymentsResponseEq,
-  SDKValidationError
-> {
+): SafeParseResult<RoutesHas, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RoutesHas$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RoutesHas' from JSON`,
+  );
+}
+
+/** @internal */
+export const CancelDeploymentMissingType$inboundSchema: z.ZodNativeEnum<
+  typeof CancelDeploymentMissingType
+> = z.nativeEnum(CancelDeploymentMissingType);
+
+/** @internal */
+export const CancelDeploymentValueDeploymentsEq$inboundSchema: z.ZodType<
+  CancelDeploymentValueDeploymentsEq,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([types.string(), types.number()]);
+
+export function cancelDeploymentValueDeploymentsEqFromJSON(
+  jsonString: string,
+): SafeParseResult<CancelDeploymentValueDeploymentsEq, SDKValidationError> {
   return safeParse(
     jsonString,
     (x) =>
-      CancelDeploymentValueDeploymentsResponseEq$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'CancelDeploymentValueDeploymentsResponseEq' from JSON`,
+      CancelDeploymentValueDeploymentsEq$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CancelDeploymentValueDeploymentsEq' from JSON`,
   );
 }
 
@@ -3693,25 +3482,117 @@ export function cancelDeploymentMissingValueFromJSON(
 }
 
 /** @internal */
-export const CancelDeploymentMissing1$inboundSchema: z.ZodType<
-  CancelDeploymentMissing1,
+export const Missing2$inboundSchema: z.ZodType<
+  Missing2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: CancelDeploymentMissingType$inboundSchema,
+  key: types.string(),
+  value: types.optional(
+    smartUnion([
+      types.string(),
+      z.lazy(() => CancelDeploymentValueDeploymentsResponse2$inboundSchema),
+    ]),
+  ),
+});
+
+export function missing2FromJSON(
+  jsonString: string,
+): SafeParseResult<Missing2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Missing2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Missing2' from JSON`,
+  );
+}
+
+/** @internal */
+export const CancelDeploymentValueEq$inboundSchema: z.ZodType<
+  CancelDeploymentValueEq,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([types.string(), types.number()]);
+
+export function cancelDeploymentValueEqFromJSON(
+  jsonString: string,
+): SafeParseResult<CancelDeploymentValueEq, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CancelDeploymentValueEq$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CancelDeploymentValueEq' from JSON`,
+  );
+}
+
+/** @internal */
+export const CancelDeploymentValueDeployments2$inboundSchema: z.ZodType<
+  CancelDeploymentValueDeployments2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  eq: types.optional(smartUnion([types.string(), types.number()])),
+  neq: types.optional(types.string()),
+  inc: types.optional(z.array(types.string())),
+  ninc: types.optional(z.array(types.string())),
+  pre: types.optional(types.string()),
+  suf: types.optional(types.string()),
+  re: types.optional(types.string()),
+  gt: types.optional(types.number()),
+  gte: types.optional(types.number()),
+  lt: types.optional(types.number()),
+  lte: types.optional(types.number()),
+});
+
+export function cancelDeploymentValueDeployments2FromJSON(
+  jsonString: string,
+): SafeParseResult<CancelDeploymentValueDeployments2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CancelDeploymentValueDeployments2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CancelDeploymentValueDeployments2' from JSON`,
+  );
+}
+
+/** @internal */
+export const MissingValue$inboundSchema: z.ZodType<
+  MissingValue,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  types.string(),
+  z.lazy(() => CancelDeploymentValueDeployments2$inboundSchema),
+]);
+
+export function missingValueFromJSON(
+  jsonString: string,
+): SafeParseResult<MissingValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => MissingValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'MissingValue' from JSON`,
+  );
+}
+
+/** @internal */
+export const Missing1$inboundSchema: z.ZodType<
+  Missing1,
   z.ZodTypeDef,
   unknown
 > = z.object({
   type: types.literal("host"),
   value: smartUnion([
     types.string(),
-    z.lazy(() => CancelDeploymentValueDeploymentsResponse2$inboundSchema),
+    z.lazy(() => CancelDeploymentValueDeployments2$inboundSchema),
   ]),
 });
 
-export function cancelDeploymentMissing1FromJSON(
+export function missing1FromJSON(
   jsonString: string,
-): SafeParseResult<CancelDeploymentMissing1, SDKValidationError> {
+): SafeParseResult<Missing1, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CancelDeploymentMissing1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CancelDeploymentMissing1' from JSON`,
+    (x) => Missing1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Missing1' from JSON`,
   );
 }
 
@@ -3721,14 +3602,14 @@ export const RoutesMissing$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => CancelDeploymentMissing1$inboundSchema),
-  z.lazy(() => CancelDeploymentMissing2$inboundSchema).and(
+  z.lazy(() => Missing1$inboundSchema),
+  z.lazy(() => Missing2$inboundSchema).and(
     z.object({ type: z.literal("cookie") }),
   ),
-  z.lazy(() => CancelDeploymentMissing2$inboundSchema).and(
+  z.lazy(() => Missing2$inboundSchema).and(
     z.object({ type: z.literal("header") }),
   ),
-  z.lazy(() => CancelDeploymentMissing2$inboundSchema).and(
+  z.lazy(() => Missing2$inboundSchema).and(
     z.object({ type: z.literal("query") }),
   ),
 ]);
@@ -3744,9 +3625,8 @@ export function routesMissingFromJSON(
 }
 
 /** @internal */
-export const CancelDeploymentRoutesAction$inboundSchema: z.ZodNativeEnum<
-  typeof CancelDeploymentRoutesAction
-> = z.nativeEnum(CancelDeploymentRoutesAction);
+export const RoutesAction$inboundSchema: z.ZodNativeEnum<typeof RoutesAction> =
+  z.nativeEnum(RoutesAction);
 
 /** @internal */
 export const RoutesMitigate$inboundSchema: z.ZodType<
@@ -3754,7 +3634,7 @@ export const RoutesMitigate$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  action: CancelDeploymentRoutesAction$inboundSchema,
+  action: RoutesAction$inboundSchema,
 });
 
 export function routesMitigateFromJSON(
@@ -3768,36 +3648,35 @@ export function routesMitigateFromJSON(
 }
 
 /** @internal */
-export const CancelDeploymentTransformsDeploymentsOp$inboundSchema:
-  z.ZodNativeEnum<typeof CancelDeploymentTransformsDeploymentsOp> = z
-    .nativeEnum(CancelDeploymentTransformsDeploymentsOp);
+export const TransformsOp$inboundSchema: z.ZodNativeEnum<typeof TransformsOp> =
+  z.nativeEnum(TransformsOp);
 
 /** @internal */
-export const CancelDeploymentTransforms2$inboundSchema: z.ZodType<
-  CancelDeploymentTransforms2,
+export const Transforms2$inboundSchema: z.ZodType<
+  Transforms2,
   z.ZodTypeDef,
   unknown
 > = z.object({
   type: types.literal("request.path"),
-  op: CancelDeploymentTransformsDeploymentsOp$inboundSchema,
+  op: TransformsOp$inboundSchema,
   args: types.string(),
   env: types.optional(z.array(types.string())),
 });
 
-export function cancelDeploymentTransforms2FromJSON(
+export function transforms2FromJSON(
   jsonString: string,
-): SafeParseResult<CancelDeploymentTransforms2, SDKValidationError> {
+): SafeParseResult<Transforms2, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CancelDeploymentTransforms2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CancelDeploymentTransforms2' from JSON`,
+    (x) => Transforms2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Transforms2' from JSON`,
   );
 }
 
 /** @internal */
-export const CancelDeploymentTransformsType$inboundSchema: z.ZodNativeEnum<
-  typeof CancelDeploymentTransformsType
-> = z.nativeEnum(CancelDeploymentTransformsType);
+export const TransformsType$inboundSchema: z.ZodNativeEnum<
+  typeof TransformsType
+> = z.nativeEnum(TransformsType);
 
 /** @internal */
 export const CancelDeploymentTransformsOp$inboundSchema: z.ZodNativeEnum<
@@ -3805,129 +3684,114 @@ export const CancelDeploymentTransformsOp$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(CancelDeploymentTransformsOp);
 
 /** @internal */
-export const CancelDeploymentKeyEq$inboundSchema: z.ZodType<
-  CancelDeploymentKeyEq,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([types.string(), types.number()]);
+export const KeyEq$inboundSchema: z.ZodType<KeyEq, z.ZodTypeDef, unknown> =
+  smartUnion([types.string(), types.number()]);
 
-export function cancelDeploymentKeyEqFromJSON(
+export function keyEqFromJSON(
   jsonString: string,
-): SafeParseResult<CancelDeploymentKeyEq, SDKValidationError> {
+): SafeParseResult<KeyEq, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CancelDeploymentKeyEq$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CancelDeploymentKeyEq' from JSON`,
+    (x) => KeyEq$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'KeyEq' from JSON`,
   );
 }
 
 /** @internal */
-export const CancelDeploymentKey2$inboundSchema: z.ZodType<
-  CancelDeploymentKey2,
+export const Key2$inboundSchema: z.ZodType<Key2, z.ZodTypeDef, unknown> = z
+  .object({
+    eq: types.optional(smartUnion([types.string(), types.number()])),
+    neq: types.optional(types.string()),
+    inc: types.optional(z.array(types.string())),
+    ninc: types.optional(z.array(types.string())),
+    pre: types.optional(types.string()),
+    suf: types.optional(types.string()),
+    gt: types.optional(types.number()),
+    gte: types.optional(types.number()),
+    lt: types.optional(types.number()),
+    lte: types.optional(types.number()),
+  });
+
+export function key2FromJSON(
+  jsonString: string,
+): SafeParseResult<Key2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Key2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Key2' from JSON`,
+  );
+}
+
+/** @internal */
+export const CancelDeploymentTransformsKey$inboundSchema: z.ZodType<
+  CancelDeploymentTransformsKey,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([types.string(), z.lazy(() => Key2$inboundSchema)]);
+
+export function cancelDeploymentTransformsKeyFromJSON(
+  jsonString: string,
+): SafeParseResult<CancelDeploymentTransformsKey, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CancelDeploymentTransformsKey$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CancelDeploymentTransformsKey' from JSON`,
+  );
+}
+
+/** @internal */
+export const TransformsTarget$inboundSchema: z.ZodType<
+  TransformsTarget,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  eq: types.optional(smartUnion([types.string(), types.number()])),
-  neq: types.optional(types.string()),
-  inc: types.optional(z.array(types.string())),
-  ninc: types.optional(z.array(types.string())),
-  pre: types.optional(types.string()),
-  suf: types.optional(types.string()),
-  gt: types.optional(types.number()),
-  gte: types.optional(types.number()),
-  lt: types.optional(types.number()),
-  lte: types.optional(types.number()),
+  key: smartUnion([types.string(), z.lazy(() => Key2$inboundSchema)]),
 });
 
-export function cancelDeploymentKey2FromJSON(
+export function transformsTargetFromJSON(
   jsonString: string,
-): SafeParseResult<CancelDeploymentKey2, SDKValidationError> {
+): SafeParseResult<TransformsTarget, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CancelDeploymentKey2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CancelDeploymentKey2' from JSON`,
+    (x) => TransformsTarget$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TransformsTarget' from JSON`,
   );
 }
 
 /** @internal */
-export const TransformsKey$inboundSchema: z.ZodType<
-  TransformsKey,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([
-  types.string(),
-  z.lazy(() => CancelDeploymentKey2$inboundSchema),
-]);
+export const Args$inboundSchema: z.ZodType<Args, z.ZodTypeDef, unknown> =
+  smartUnion([types.string(), z.array(types.string())]);
 
-export function transformsKeyFromJSON(
+export function argsFromJSON(
   jsonString: string,
-): SafeParseResult<TransformsKey, SDKValidationError> {
+): SafeParseResult<Args, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => TransformsKey$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'TransformsKey' from JSON`,
+    (x) => Args$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Args' from JSON`,
   );
 }
 
 /** @internal */
-export const CancelDeploymentTransformsTarget$inboundSchema: z.ZodType<
-  CancelDeploymentTransformsTarget,
+export const Transforms1$inboundSchema: z.ZodType<
+  Transforms1,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  key: smartUnion([
-    types.string(),
-    z.lazy(() => CancelDeploymentKey2$inboundSchema),
-  ]),
-});
-
-export function cancelDeploymentTransformsTargetFromJSON(
-  jsonString: string,
-): SafeParseResult<CancelDeploymentTransformsTarget, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CancelDeploymentTransformsTarget$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CancelDeploymentTransformsTarget' from JSON`,
-  );
-}
-
-/** @internal */
-export const TransformsArgs$inboundSchema: z.ZodType<
-  TransformsArgs,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([types.string(), z.array(types.string())]);
-
-export function transformsArgsFromJSON(
-  jsonString: string,
-): SafeParseResult<TransformsArgs, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => TransformsArgs$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'TransformsArgs' from JSON`,
-  );
-}
-
-/** @internal */
-export const CancelDeploymentTransforms1$inboundSchema: z.ZodType<
-  CancelDeploymentTransforms1,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  type: CancelDeploymentTransformsType$inboundSchema,
+  type: TransformsType$inboundSchema,
   op: CancelDeploymentTransformsOp$inboundSchema,
-  target: z.lazy(() => CancelDeploymentTransformsTarget$inboundSchema),
+  target: z.lazy(() => TransformsTarget$inboundSchema),
   args: types.optional(smartUnion([types.string(), z.array(types.string())])),
   env: types.optional(z.array(types.string())),
 });
 
-export function cancelDeploymentTransforms1FromJSON(
+export function transforms1FromJSON(
   jsonString: string,
-): SafeParseResult<CancelDeploymentTransforms1, SDKValidationError> {
+): SafeParseResult<Transforms1, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CancelDeploymentTransforms1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CancelDeploymentTransforms1' from JSON`,
+    (x) => Transforms1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Transforms1' from JSON`,
   );
 }
 
@@ -3937,16 +3801,16 @@ export const RoutesTransforms$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => CancelDeploymentTransforms1$inboundSchema).and(
+  z.lazy(() => Transforms1$inboundSchema).and(
     z.object({ type: z.literal("request.headers") }),
   ),
-  z.lazy(() => CancelDeploymentTransforms1$inboundSchema).and(
+  z.lazy(() => Transforms1$inboundSchema).and(
     z.object({ type: z.literal("request.query") }),
   ),
-  z.lazy(() => CancelDeploymentTransforms1$inboundSchema).and(
+  z.lazy(() => Transforms1$inboundSchema).and(
     z.object({ type: z.literal("response.headers") }),
   ),
-  z.lazy(() => CancelDeploymentTransforms2$inboundSchema),
+  z.lazy(() => Transforms2$inboundSchema),
 ]);
 
 export function routesTransformsFromJSON(
@@ -3960,48 +3824,45 @@ export function routesTransformsFromJSON(
 }
 
 /** @internal */
-export const RoutesLocale$inboundSchema: z.ZodType<
-  RoutesLocale,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  redirect: types.optional(z.record(types.string())),
-  cookie: types.optional(types.string()),
-});
+export const Locale$inboundSchema: z.ZodType<Locale, z.ZodTypeDef, unknown> = z
+  .object({
+    redirect: types.optional(z.record(types.string())),
+    cookie: types.optional(types.string()),
+  });
 
-export function routesLocaleFromJSON(
+export function localeFromJSON(
   jsonString: string,
-): SafeParseResult<RoutesLocale, SDKValidationError> {
+): SafeParseResult<Locale, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => RoutesLocale$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RoutesLocale' from JSON`,
+    (x) => Locale$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Locale' from JSON`,
   );
 }
 
 /** @internal */
-export const CancelDeploymentDestinationType$inboundSchema: z.ZodNativeEnum<
-  typeof CancelDeploymentDestinationType
-> = z.nativeEnum(CancelDeploymentDestinationType);
+export const DestinationType$inboundSchema: z.ZodNativeEnum<
+  typeof DestinationType
+> = z.nativeEnum(DestinationType);
 
 /** @internal */
-export const CancelDeploymentDestination2$inboundSchema: z.ZodType<
-  CancelDeploymentDestination2,
+export const Destination2$inboundSchema: z.ZodType<
+  Destination2,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.optional(CancelDeploymentDestinationType$inboundSchema),
+  type: types.optional(DestinationType$inboundSchema),
   service: types.string(),
   path: types.optional(types.string()),
 });
 
-export function cancelDeploymentDestination2FromJSON(
+export function destination2FromJSON(
   jsonString: string,
-): SafeParseResult<CancelDeploymentDestination2, SDKValidationError> {
+): SafeParseResult<Destination2, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CancelDeploymentDestination2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CancelDeploymentDestination2' from JSON`,
+    (x) => Destination2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Destination2' from JSON`,
   );
 }
 
@@ -4010,10 +3871,7 @@ export const RoutesDestination$inboundSchema: z.ZodType<
   RoutesDestination,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.lazy(() => CancelDeploymentDestination2$inboundSchema),
-  types.string(),
-]);
+> = smartUnion([z.lazy(() => Destination2$inboundSchema), types.string()]);
 
 export function routesDestinationFromJSON(
   jsonString: string,
@@ -4026,87 +3884,81 @@ export function routesDestinationFromJSON(
 }
 
 /** @internal */
-export const CancelDeploymentRoutes1$inboundSchema: z.ZodType<
-  CancelDeploymentRoutes1,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  src: types.string(),
-  dest: types.optional(types.string()),
-  headers: types.optional(z.record(types.string())),
-  methods: types.optional(z.array(types.string())),
-  continue: types.optional(types.boolean()),
-  override: types.optional(types.boolean()),
-  caseSensitive: types.optional(types.boolean()),
-  check: types.optional(types.boolean()),
-  important: types.optional(types.boolean()),
-  status: types.optional(types.number()),
-  has: types.optional(
-    z.array(z.union([
-      z.lazy(() => CancelDeploymentHas1$inboundSchema),
-      z.lazy(() =>
-        CancelDeploymentHas2$inboundSchema
-      ).and(z.object({ type: z.literal("cookie") })),
-      z.lazy(() => CancelDeploymentHas2$inboundSchema).and(
-        z.object({ type: z.literal("header") }),
-      ),
-      z.lazy(() => CancelDeploymentHas2$inboundSchema).and(
-        z.object({ type: z.literal("query") }),
-      ),
-    ])),
-  ),
-  missing: types.optional(
-    z.array(z.union([
-      z.lazy(() => CancelDeploymentMissing1$inboundSchema),
-      z.lazy(() =>
-        CancelDeploymentMissing2$inboundSchema
-      ).and(z.object({ type: z.literal("cookie") })),
-      z.lazy(() => CancelDeploymentMissing2$inboundSchema).and(
-        z.object({ type: z.literal("header") }),
-      ),
-      z.lazy(() => CancelDeploymentMissing2$inboundSchema).and(
-        z.object({ type: z.literal("query") }),
-      ),
-    ])),
-  ),
-  mitigate: types.optional(z.lazy(() => RoutesMitigate$inboundSchema)),
-  transforms: types.optional(
-    z.array(z.union([
-      z.lazy(() => CancelDeploymentTransforms1$inboundSchema).and(
-        z.object({ type: z.literal("request.headers") }),
-      ),
-      z.lazy(() => CancelDeploymentTransforms1$inboundSchema).and(
-        z.object({ type: z.literal("request.query") }),
-      ),
-      z.lazy(() => CancelDeploymentTransforms1$inboundSchema).and(
-        z.object({ type: z.literal("response.headers") }),
-      ),
-      z.lazy(() => CancelDeploymentTransforms2$inboundSchema),
-    ])),
-  ),
-  env: types.optional(z.array(types.string())),
-  locale: types.optional(z.lazy(() => RoutesLocale$inboundSchema)),
-  source: types.optional(types.string()),
-  destination: types.optional(
-    smartUnion([
-      z.lazy(() => CancelDeploymentDestination2$inboundSchema),
-      types.string(),
-    ]),
-  ),
-  statusCode: types.optional(types.number()),
-  middlewarePath: types.optional(types.string()),
-  middlewareRawSrc: types.optional(z.array(types.string())),
-  middleware: types.optional(types.number()),
-  respectOriginCacheControl: types.optional(types.boolean()),
-});
+export const Routes1$inboundSchema: z.ZodType<Routes1, z.ZodTypeDef, unknown> =
+  z.object({
+    src: types.string(),
+    dest: types.optional(types.string()),
+    headers: types.optional(z.record(types.string())),
+    methods: types.optional(z.array(types.string())),
+    continue: types.optional(types.boolean()),
+    override: types.optional(types.boolean()),
+    caseSensitive: types.optional(types.boolean()),
+    check: types.optional(types.boolean()),
+    important: types.optional(types.boolean()),
+    status: types.optional(types.number()),
+    has: types.optional(
+      z.array(z.union([
+        z.lazy(() => Has1$inboundSchema),
+        z.lazy(() =>
+          Has2$inboundSchema
+        ).and(z.object({ type: z.literal("cookie") })),
+        z.lazy(() => Has2$inboundSchema).and(
+          z.object({ type: z.literal("header") }),
+        ),
+        z.lazy(() => Has2$inboundSchema).and(
+          z.object({ type: z.literal("query") }),
+        ),
+      ])),
+    ),
+    missing: types.optional(
+      z.array(z.union([
+        z.lazy(() => Missing1$inboundSchema),
+        z.lazy(() =>
+          Missing2$inboundSchema
+        ).and(z.object({ type: z.literal("cookie") })),
+        z.lazy(() => Missing2$inboundSchema).and(
+          z.object({ type: z.literal("header") }),
+        ),
+        z.lazy(() => Missing2$inboundSchema).and(
+          z.object({ type: z.literal("query") }),
+        ),
+      ])),
+    ),
+    mitigate: types.optional(z.lazy(() => RoutesMitigate$inboundSchema)),
+    transforms: types.optional(
+      z.array(z.union([
+        z.lazy(() => Transforms1$inboundSchema).and(
+          z.object({ type: z.literal("request.headers") }),
+        ),
+        z.lazy(() => Transforms1$inboundSchema).and(
+          z.object({ type: z.literal("request.query") }),
+        ),
+        z.lazy(() => Transforms1$inboundSchema).and(
+          z.object({ type: z.literal("response.headers") }),
+        ),
+        z.lazy(() => Transforms2$inboundSchema),
+      ])),
+    ),
+    env: types.optional(z.array(types.string())),
+    locale: types.optional(z.lazy(() => Locale$inboundSchema)),
+    source: types.optional(types.string()),
+    destination: types.optional(
+      smartUnion([z.lazy(() => Destination2$inboundSchema), types.string()]),
+    ),
+    statusCode: types.optional(types.number()),
+    middlewarePath: types.optional(types.string()),
+    middlewareRawSrc: types.optional(z.array(types.string())),
+    middleware: types.optional(types.number()),
+    respectOriginCacheControl: types.optional(types.boolean()),
+  });
 
-export function cancelDeploymentRoutes1FromJSON(
+export function routes1FromJSON(
   jsonString: string,
-): SafeParseResult<CancelDeploymentRoutes1, SDKValidationError> {
+): SafeParseResult<Routes1, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CancelDeploymentRoutes1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CancelDeploymentRoutes1' from JSON`,
+    (x) => Routes1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Routes1' from JSON`,
   );
 }
 
@@ -4116,9 +3968,9 @@ export const CancelDeploymentRoutes$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = smartUnion([
-  z.lazy(() => CancelDeploymentRoutes3$inboundSchema),
-  z.lazy(() => CancelDeploymentRoutes1$inboundSchema),
-  z.lazy(() => CancelDeploymentRoutes2$inboundSchema),
+  z.lazy(() => Routes3$inboundSchema),
+  z.lazy(() => Routes1$inboundSchema),
+  z.lazy(() => Routes2$inboundSchema),
 ]);
 
 export function cancelDeploymentRoutesFromJSON(
@@ -4132,50 +3984,36 @@ export function cancelDeploymentRoutesFromJSON(
 }
 
 /** @internal */
-export const CancelDeploymentServicesDeploymentsIncludeFiles$inboundSchema:
-  z.ZodType<
-    CancelDeploymentServicesDeploymentsIncludeFiles,
-    z.ZodTypeDef,
-    unknown
-  > = smartUnion([types.string(), z.array(types.string())]);
+export const ServicesIncludeFiles$inboundSchema: z.ZodType<
+  ServicesIncludeFiles,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([types.string(), z.array(types.string())]);
 
-export function cancelDeploymentServicesDeploymentsIncludeFilesFromJSON(
+export function servicesIncludeFilesFromJSON(
   jsonString: string,
-): SafeParseResult<
-  CancelDeploymentServicesDeploymentsIncludeFiles,
-  SDKValidationError
-> {
+): SafeParseResult<ServicesIncludeFiles, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) =>
-      CancelDeploymentServicesDeploymentsIncludeFiles$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'CancelDeploymentServicesDeploymentsIncludeFiles' from JSON`,
+    (x) => ServicesIncludeFiles$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ServicesIncludeFiles' from JSON`,
   );
 }
 
 /** @internal */
-export const CancelDeploymentServicesDeploymentsExcludeFiles$inboundSchema:
-  z.ZodType<
-    CancelDeploymentServicesDeploymentsExcludeFiles,
-    z.ZodTypeDef,
-    unknown
-  > = smartUnion([types.string(), z.array(types.string())]);
+export const ServicesExcludeFiles$inboundSchema: z.ZodType<
+  ServicesExcludeFiles,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([types.string(), z.array(types.string())]);
 
-export function cancelDeploymentServicesDeploymentsExcludeFilesFromJSON(
+export function servicesExcludeFilesFromJSON(
   jsonString: string,
-): SafeParseResult<
-  CancelDeploymentServicesDeploymentsExcludeFiles,
-  SDKValidationError
-> {
+): SafeParseResult<ServicesExcludeFiles, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) =>
-      CancelDeploymentServicesDeploymentsExcludeFiles$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'CancelDeploymentServicesDeploymentsExcludeFiles' from JSON`,
+    (x) => ServicesExcludeFiles$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ServicesExcludeFiles' from JSON`,
   );
 }
 
@@ -4185,9 +4023,9 @@ export const CancelDeploymentServicesDeploymentsArchitecture$inboundSchema:
     .nativeEnum(CancelDeploymentServicesDeploymentsArchitecture);
 
 /** @internal */
-export const CancelDeploymentMaxDurationDeploymentsResponse2$inboundSchema:
-  z.ZodNativeEnum<typeof CancelDeploymentMaxDurationDeploymentsResponse2> = z
-    .nativeEnum(CancelDeploymentMaxDurationDeploymentsResponse2);
+export const CancelDeploymentMaxDurationDeployments2$inboundSchema:
+  z.ZodNativeEnum<typeof CancelDeploymentMaxDurationDeployments2> = z
+    .nativeEnum(CancelDeploymentMaxDurationDeployments2);
 
 /** @internal */
 export const CancelDeploymentServicesDeploymentsMaxDuration$inboundSchema:
@@ -4197,7 +4035,7 @@ export const CancelDeploymentServicesDeploymentsMaxDuration$inboundSchema:
     unknown
   > = smartUnion([
     types.number(),
-    CancelDeploymentMaxDurationDeploymentsResponse2$inboundSchema,
+    CancelDeploymentMaxDurationDeployments2$inboundSchema,
   ]);
 
 export function cancelDeploymentServicesDeploymentsMaxDurationFromJSON(
@@ -4217,9 +4055,9 @@ export function cancelDeploymentServicesDeploymentsMaxDurationFromJSON(
 }
 
 /** @internal */
-export const CancelDeploymentExperimentalTriggersDeploymentsResponse2$inboundSchema:
+export const CancelDeploymentExperimentalTriggersDeployments2$inboundSchema:
   z.ZodType<
-    CancelDeploymentExperimentalTriggersDeploymentsResponse2,
+    CancelDeploymentExperimentalTriggersDeployments2,
     z.ZodTypeDef,
     unknown
   > = z.object({
@@ -4231,25 +4069,26 @@ export const CancelDeploymentExperimentalTriggersDeploymentsResponse2$inboundSch
     maxConcurrency: types.optional(types.number()),
   });
 
-export function cancelDeploymentExperimentalTriggersDeploymentsResponse2FromJSON(
+export function cancelDeploymentExperimentalTriggersDeployments2FromJSON(
   jsonString: string,
 ): SafeParseResult<
-  CancelDeploymentExperimentalTriggersDeploymentsResponse2,
+  CancelDeploymentExperimentalTriggersDeployments2,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      CancelDeploymentExperimentalTriggersDeploymentsResponse2$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'CancelDeploymentExperimentalTriggersDeploymentsResponse2' from JSON`,
+      CancelDeploymentExperimentalTriggersDeployments2$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CancelDeploymentExperimentalTriggersDeployments2' from JSON`,
   );
 }
 
 /** @internal */
-export const CancelDeploymentExperimentalTriggersDeploymentsResponse1$inboundSchema:
+export const CancelDeploymentExperimentalTriggersDeployments1$inboundSchema:
   z.ZodType<
-    CancelDeploymentExperimentalTriggersDeploymentsResponse1,
+    CancelDeploymentExperimentalTriggersDeployments1,
     z.ZodTypeDef,
     unknown
   > = z.object({
@@ -4262,18 +4101,19 @@ export const CancelDeploymentExperimentalTriggersDeploymentsResponse1$inboundSch
     maxConcurrency: types.optional(types.number()),
   });
 
-export function cancelDeploymentExperimentalTriggersDeploymentsResponse1FromJSON(
+export function cancelDeploymentExperimentalTriggersDeployments1FromJSON(
   jsonString: string,
 ): SafeParseResult<
-  CancelDeploymentExperimentalTriggersDeploymentsResponse1,
+  CancelDeploymentExperimentalTriggersDeployments1,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      CancelDeploymentExperimentalTriggersDeploymentsResponse1$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'CancelDeploymentExperimentalTriggersDeploymentsResponse1' from JSON`,
+      CancelDeploymentExperimentalTriggersDeployments1$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CancelDeploymentExperimentalTriggersDeployments1' from JSON`,
   );
 }
 
@@ -4285,10 +4125,10 @@ export const CancelDeploymentServicesDeploymentsExperimentalTriggers$inboundSche
     unknown
   > = z.union([
     z.lazy(() =>
-      CancelDeploymentExperimentalTriggersDeploymentsResponse1$inboundSchema
+      CancelDeploymentExperimentalTriggersDeployments1$inboundSchema
     ),
     z.lazy(() =>
-      CancelDeploymentExperimentalTriggersDeploymentsResponse2$inboundSchema
+      CancelDeploymentExperimentalTriggersDeployments2$inboundSchema
     ),
   ]);
 
@@ -4321,7 +4161,7 @@ export const CancelDeploymentServicesDeploymentsFunctions$inboundSchema:
     maxDuration: types.optional(
       smartUnion([
         types.number(),
-        CancelDeploymentMaxDurationDeploymentsResponse2$inboundSchema,
+        CancelDeploymentMaxDurationDeployments2$inboundSchema,
       ]),
     ),
     regions: types.optional(z.array(types.string())),
@@ -4332,10 +4172,10 @@ export const CancelDeploymentServicesDeploymentsFunctions$inboundSchema:
     experimentalTriggers: types.optional(
       z.array(z.union([
         z.lazy(() =>
-          CancelDeploymentExperimentalTriggersDeploymentsResponse1$inboundSchema
+          CancelDeploymentExperimentalTriggersDeployments1$inboundSchema
         ),
         z.lazy(() =>
-          CancelDeploymentExperimentalTriggersDeploymentsResponse2$inboundSchema
+          CancelDeploymentExperimentalTriggersDeployments2$inboundSchema
         ),
       ])),
     ),

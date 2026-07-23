@@ -5,7 +5,7 @@ Which repository visibilities get automatic reviews
 ## Example Usage
 
 ```typescript
-import { UserEventPayloadScope } from "@vercel/sdk/models/twohundredandfiftyeight.js";
+import { UserEventPayloadScope } from "@vercel/sdk/models/twohundredandeighty.js";
 
 let value: UserEventPayloadScope = "all";
 ```

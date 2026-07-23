@@ -164,7 +164,7 @@ export class Vcr extends ClientSDK {
    * Get a repository image
    *
    * @remarks
-   * Fetch an individual image from a repository, including its tags and Dockerfile history entries with discriminated layer details for UI rendering.
+   * Fetch an individual image from a repository, including its tags and Dockerfile history entries with discriminated layer details for UI rendering. The image may be addressed by its internal id (`image_...`) or by its manifest digest (`sha256:...`).
    */
   async getRepositoryImage(
     request: GetRepositoryImageRequest,

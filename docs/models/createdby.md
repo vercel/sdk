@@ -18,7 +18,7 @@ const value: models.CreatedBy1 = {
 const value: models.CreatedBy2 = {
   type: "project",
   id: "<id>",
-  environment: "preview",
+  createdByEnvironmentTarget: "<value>",
 };
 ```
 

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PreviousEndpoint } from "@vercel/sdk/models/onehundredandeightyfive.js";
+import { PreviousEndpoint } from "@vercel/sdk/models/preventautoblocking.js";
 
 let value: PreviousEndpoint = {
   name: "<value>",

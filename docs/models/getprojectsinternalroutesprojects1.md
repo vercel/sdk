@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsInternalRoutesProjects1 } from "@vercel/sdk/models/getprojectsresponsebodyprojectsoidctokenclaims.js";
+import { GetProjectsInternalRoutesProjects1 } from "@vercel/sdk/models/getprojectscontenthint3.js";
 
 let value: GetProjectsInternalRoutesProjects1 = {
   src: "<value>",
@@ -17,3 +17,4 @@ let value: GetProjectsInternalRoutesProjects1 = {
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `src`              | *string*           | :heavy_check_mark: | N/A                |
 | `status`           | *number*           | :heavy_check_mark: | N/A                |
+| `expiry`           | *number*           | :heavy_minus_sign: | N/A                |

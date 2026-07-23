@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Trigger } from "@vercel/sdk/models/createdeploymentresponsebody.js";
+import { Trigger } from "@vercel/sdk/models/canceldeploymentgitrepoownertype.js";
 
 let value: Trigger = "queue";
 ```

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GitRepo3 } from "@vercel/sdk/models/createdeploymentresponsebody.js";
+import { GitRepo3 } from "@vercel/sdk/models/canceldeploymentresponsebody.js";
 
 let value: GitRepo3 = {
   owner: "<value>",
@@ -32,4 +32,4 @@ let value: GitRepo3 = {
 | `defaultBranch`                                                                          | *string*                                                                                 | :heavy_check_mark:                                                                       | N/A                                                                                      |
 | `name`                                                                                   | *string*                                                                                 | :heavy_check_mark:                                                                       | N/A                                                                                      |
 | `private`                                                                                | *boolean*                                                                                | :heavy_check_mark:                                                                       | N/A                                                                                      |
-| `ownerType`                                                                              | [models.CreateDeploymentGitRepoOwnerType](../models/createdeploymentgitrepoownertype.md) | :heavy_check_mark:                                                                       | N/A                                                                                      |
+| `ownerType`                                                                              | [models.CancelDeploymentGitRepoOwnerType](../models/canceldeploymentgitrepoownertype.md) | :heavy_check_mark:                                                                       | N/A                                                                                      |

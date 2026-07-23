@@ -95,6 +95,20 @@ export type FilterProjectEnvsResponseBodyProjectsResponse200Type = ClosedEnum<
   typeof FilterProjectEnvsResponseBodyProjectsResponse200Type
 >;
 
+/**
+ * User-facing config/secret model. When set, authoritative for new code paths when the env-var-config-secret-ui flag is enabled. Legacy rows omit this field; legacy rows omit it and callers fall back to existing `type` behavior.
+ */
+export const FilterProjectEnvsResponseBodyProjectsVisibility = {
+  Config: "config",
+  Secret: "secret",
+} as const;
+/**
+ * User-facing config/secret model. When set, authoritative for new code paths when the env-var-config-secret-ui flag is enabled. Legacy rows omit this field; legacy rows omit it and callers fall back to existing `type` behavior.
+ */
+export type FilterProjectEnvsResponseBodyProjectsVisibility = ClosedEnum<
+  typeof FilterProjectEnvsResponseBodyProjectsVisibility
+>;
+
 export type FilterProjectEnvsContentHintProjectsResponse17 = {
   type: "flags-connection-string";
   projectId: string;
@@ -247,6 +261,10 @@ export type ResponseBodyEnvs = {
   createdBy?: string | null | undefined;
   updatedBy?: string | null | undefined;
   gitBranch?: string | undefined;
+  /**
+   * User-facing config/secret model. When set, authoritative for new code paths when the env-var-config-secret-ui flag is enabled. Legacy rows omit this field; legacy rows omit it and callers fall back to existing `type` behavior.
+   */
+  visibility?: FilterProjectEnvsResponseBodyProjectsVisibility | undefined;
   edgeConfigId?: string | null | undefined;
   edgeConfigTokenId?: string | null | undefined;
   contentHint?:
@@ -320,6 +338,20 @@ export const FilterProjectEnvsResponseBodyProjectsResponseType = {
 } as const;
 export type FilterProjectEnvsResponseBodyProjectsResponseType = ClosedEnum<
   typeof FilterProjectEnvsResponseBodyProjectsResponseType
+>;
+
+/**
+ * User-facing config/secret model. When set, authoritative for new code paths when the env-var-config-secret-ui flag is enabled. Legacy rows omit this field; legacy rows omit it and callers fall back to existing `type` behavior.
+ */
+export const FilterProjectEnvsResponseBodyVisibility = {
+  Config: "config",
+  Secret: "secret",
+} as const;
+/**
+ * User-facing config/secret model. When set, authoritative for new code paths when the env-var-config-secret-ui flag is enabled. Legacy rows omit this field; legacy rows omit it and callers fall back to existing `type` behavior.
+ */
+export type FilterProjectEnvsResponseBodyVisibility = ClosedEnum<
+  typeof FilterProjectEnvsResponseBodyVisibility
 >;
 
 export type FilterProjectEnvsContentHintProjects17 = {
@@ -474,6 +506,10 @@ export type Envs = {
   createdBy?: string | null | undefined;
   updatedBy?: string | null | undefined;
   gitBranch?: string | undefined;
+  /**
+   * User-facing config/secret model. When set, authoritative for new code paths when the env-var-config-secret-ui flag is enabled. Legacy rows omit this field; legacy rows omit it and callers fall back to existing `type` behavior.
+   */
+  visibility?: FilterProjectEnvsResponseBodyVisibility | undefined;
   edgeConfigId?: string | null | undefined;
   edgeConfigTokenId?: string | null | undefined;
   contentHint?:
@@ -548,6 +584,18 @@ export const FilterProjectEnvsResponseBodyType = {
 export type FilterProjectEnvsResponseBodyType = ClosedEnum<
   typeof FilterProjectEnvsResponseBodyType
 >;
+
+/**
+ * User-facing config/secret model. When set, authoritative for new code paths when the env-var-config-secret-ui flag is enabled. Legacy rows omit this field; legacy rows omit it and callers fall back to existing `type` behavior.
+ */
+export const ResponseBodyVisibility = {
+  Config: "config",
+  Secret: "secret",
+} as const;
+/**
+ * User-facing config/secret model. When set, authoritative for new code paths when the env-var-config-secret-ui flag is enabled. Legacy rows omit this field; legacy rows omit it and callers fall back to existing `type` behavior.
+ */
+export type ResponseBodyVisibility = ClosedEnum<typeof ResponseBodyVisibility>;
 
 export type FilterProjectEnvsContentHint17 = {
   type: "flags-connection-string";
@@ -699,6 +747,10 @@ export type FilterProjectEnvsResponseBody1 = {
   createdBy?: string | null | undefined;
   updatedBy?: string | null | undefined;
   gitBranch?: string | undefined;
+  /**
+   * User-facing config/secret model. When set, authoritative for new code paths when the env-var-config-secret-ui flag is enabled. Legacy rows omit this field; legacy rows omit it and callers fall back to existing `type` behavior.
+   */
+  visibility?: ResponseBodyVisibility | undefined;
   edgeConfigId?: string | null | undefined;
   edgeConfigTokenId?: string | null | undefined;
   contentHint?:
@@ -819,6 +871,11 @@ export function filterProjectEnvsResponseBodyProjectsResponseTargetFromJSON(
 export const FilterProjectEnvsResponseBodyProjectsResponse200Type$inboundSchema:
   z.ZodNativeEnum<typeof FilterProjectEnvsResponseBodyProjectsResponse200Type> =
     z.nativeEnum(FilterProjectEnvsResponseBodyProjectsResponse200Type);
+
+/** @internal */
+export const FilterProjectEnvsResponseBodyProjectsVisibility$inboundSchema:
+  z.ZodNativeEnum<typeof FilterProjectEnvsResponseBodyProjectsVisibility> = z
+    .nativeEnum(FilterProjectEnvsResponseBodyProjectsVisibility);
 
 /** @internal */
 export const FilterProjectEnvsContentHintProjectsResponse17$inboundSchema:
@@ -1385,6 +1442,9 @@ export const ResponseBodyEnvs$inboundSchema: z.ZodType<
   createdBy: z.nullable(types.string()).optional(),
   updatedBy: z.nullable(types.string()).optional(),
   gitBranch: types.optional(types.string()),
+  visibility: types.optional(
+    FilterProjectEnvsResponseBodyProjectsVisibility$inboundSchema,
+  ),
   edgeConfigId: z.nullable(types.string()).optional(),
   edgeConfigTokenId: z.nullable(types.string()).optional(),
   contentHint: z.nullable(
@@ -1507,6 +1567,11 @@ export function filterProjectEnvsResponseBodyProjectsTargetFromJSON(
 export const FilterProjectEnvsResponseBodyProjectsResponseType$inboundSchema:
   z.ZodNativeEnum<typeof FilterProjectEnvsResponseBodyProjectsResponseType> = z
     .nativeEnum(FilterProjectEnvsResponseBodyProjectsResponseType);
+
+/** @internal */
+export const FilterProjectEnvsResponseBodyVisibility$inboundSchema:
+  z.ZodNativeEnum<typeof FilterProjectEnvsResponseBodyVisibility> = z
+    .nativeEnum(FilterProjectEnvsResponseBodyVisibility);
 
 /** @internal */
 export const FilterProjectEnvsContentHintProjects17$inboundSchema: z.ZodType<
@@ -1968,6 +2033,9 @@ export const Envs$inboundSchema: z.ZodType<Envs, z.ZodTypeDef, unknown> = z
     createdBy: z.nullable(types.string()).optional(),
     updatedBy: z.nullable(types.string()).optional(),
     gitBranch: types.optional(types.string()),
+    visibility: types.optional(
+      FilterProjectEnvsResponseBodyVisibility$inboundSchema,
+    ),
     edgeConfigId: z.nullable(types.string()).optional(),
     edgeConfigTokenId: z.nullable(types.string()).optional(),
     contentHint: z.nullable(
@@ -2066,6 +2134,11 @@ export function filterProjectEnvsResponseBodyTargetFromJSON(
 export const FilterProjectEnvsResponseBodyType$inboundSchema: z.ZodNativeEnum<
   typeof FilterProjectEnvsResponseBodyType
 > = z.nativeEnum(FilterProjectEnvsResponseBodyType);
+
+/** @internal */
+export const ResponseBodyVisibility$inboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyVisibility
+> = z.nativeEnum(ResponseBodyVisibility);
 
 /** @internal */
 export const FilterProjectEnvsContentHint17$inboundSchema: z.ZodType<
@@ -2496,6 +2569,7 @@ export const FilterProjectEnvsResponseBody1$inboundSchema: z.ZodType<
   createdBy: z.nullable(types.string()).optional(),
   updatedBy: z.nullable(types.string()).optional(),
   gitBranch: types.optional(types.string()),
+  visibility: types.optional(ResponseBodyVisibility$inboundSchema),
   edgeConfigId: z.nullable(types.string()).optional(),
   edgeConfigTokenId: z.nullable(types.string()).optional(),
   contentHint: z.nullable(

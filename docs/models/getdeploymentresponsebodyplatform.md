@@ -1,0 +1,31 @@
+# GetDeploymentResponseBodyPlatform
+
+Metadata about the source platform that triggered the deployment. Allows us to map a deployment back to a platform (e.g. the chat that created it)
+
+## Example Usage
+
+```typescript
+import { GetDeploymentResponseBodyPlatform } from "@vercel/sdk/models/getdeploymentmissingdeploymentsresponse1.js";
+
+let value: GetDeploymentResponseBodyPlatform = {
+  source: {
+    name: "<value>",
+  },
+  origin: {
+    type: "id",
+    value: "<value>",
+  },
+  creator: {
+    name: "<value>",
+  },
+};
+```
+
+## Fields
+
+| Field                                                                                                                        | Type                                                                                                                         | Required                                                                                                                     | Description                                                                                                                  |
+| ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| `source`                                                                                                                     | [models.GetDeploymentResponseBodyDeploymentsResponseSource](../models/getdeploymentresponsebodydeploymentsresponsesource.md) | :heavy_check_mark:                                                                                                           | The external platform that created the deployment (e.g. its display name).                                                   |
+| `origin`                                                                                                                     | [models.GetDeploymentResponseBodyOrigin](../models/getdeploymentresponsebodyorigin.md)                                       | :heavy_check_mark:                                                                                                           | Reference back to the entity on the platform that initiated the deployment.                                                  |
+| `creator`                                                                                                                    | [models.GetDeploymentResponseBodyDeploymentsCreator](../models/getdeploymentresponsebodydeploymentscreator.md)               | :heavy_check_mark:                                                                                                           | The user on the external platform who triggered the deployment.                                                              |
+| `meta`                                                                                                                       | Record<string, *string*>                                                                                                     | :heavy_minus_sign:                                                                                                           | Arbitrary key-value metadata provided by the platform.                                                                       |

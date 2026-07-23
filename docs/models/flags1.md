@@ -5,7 +5,7 @@ Flags defined in the Build Output API, used by this deployment. Primarily used b
 ## Example Usage
 
 ```typescript
-import { Flags1 } from "@vercel/sdk/models/createdeploymentresponsebody.js";
+import { Flags1 } from "@vercel/sdk/models/canceldeploymentresponsebody.js";
 
 let value: Flags1 = {
   definitions: {},
@@ -14,6 +14,6 @@ let value: Flags1 = {
 
 ## Fields
 
-| Field                                                                                                    | Type                                                                                                     | Required                                                                                                 | Description                                                                                              |
-| -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
-| `definitions`                                                                                            | Record<string, [models.CreateDeploymentFlagsDefinitions](../models/createdeploymentflagsdefinitions.md)> | :heavy_check_mark:                                                                                       | N/A                                                                                                      |
+| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `definitions`                                                            | Record<string, [models.FlagsDefinitions](../models/flagsdefinitions.md)> | :heavy_check_mark:                                                       | N/A                                                                      |

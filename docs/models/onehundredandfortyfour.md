@@ -5,15 +5,15 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndFortyFour } from "@vercel/sdk/models/usereventpayload125type.js";
+import { OneHundredAndFortyFour } from "@vercel/sdk/models/usereventpayload140newenvvartype.js";
 
 let value: OneHundredAndFortyFour = {
-  action: "disable",
+  configVersion: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `action`                                                                   | [models.UserEventPayload144Action](../models/usereventpayload144action.md) | :heavy_check_mark:                                                         | N/A                                                                        |
+| Field                         | Type                          | Required                      | Description                   |
+| ----------------------------- | ----------------------------- | ----------------------------- | ----------------------------- |
+| `configVersion`               | *models.PayloadConfigVersion* | :heavy_check_mark:            | N/A                           |

@@ -17,10 +17,10 @@ let value: Payload2 = {
 
 ## Fields
 
-| Field                                | Type                                 | Required                             | Description                          |
-| ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
-| `action`                             | [models.Action](../models/action.md) | :heavy_check_mark:                   | N/A                                  |
-| `id`                                 | *string*                             | :heavy_check_mark:                   | N/A                                  |
-| `slug`                               | *string*                             | :heavy_check_mark:                   | N/A                                  |
-| `projectId`                          | *string*                             | :heavy_check_mark:                   | N/A                                  |
-| `projectName`                        | *string*                             | :heavy_minus_sign:                   | N/A                                  |
+| Field                                              | Type                                               | Required                                           | Description                                        |
+| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
+| `action`                                           | [models.PayloadAction](../models/payloadaction.md) | :heavy_check_mark:                                 | N/A                                                |
+| `id`                                               | *string*                                           | :heavy_check_mark:                                 | N/A                                                |
+| `slug`                                             | *string*                                           | :heavy_check_mark:                                 | N/A                                                |
+| `projectId`                                        | *string*                                           | :heavy_check_mark:                                 | N/A                                                |
+| `projectName`                                      | *string*                                           | :heavy_minus_sign:                                 | N/A                                                |

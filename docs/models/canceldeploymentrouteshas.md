@@ -3,43 +3,39 @@
 
 ## Supported Types
 
-### `models.CancelDeploymentHasDeploymentsResponse200ApplicationJson1`
+### `models.CancelDeploymentHasDeploymentsResponse2001`
 
 ```typescript
-const value: models.CancelDeploymentHasDeploymentsResponse200ApplicationJson1 =
-  {
-    type: "host",
-    value: "<value>",
-  };
+const value: models.CancelDeploymentHasDeploymentsResponse2001 = {
+  type: "host",
+  value: {},
+};
 ```
 
-### `models.CancelDeploymentHasDeploymentsResponse200ApplicationJson2`
+### `models.CancelDeploymentHasDeploymentsResponse2002`
 
 ```typescript
-const value: models.CancelDeploymentHasDeploymentsResponse200ApplicationJson2 =
-  {
-    type: "header",
-    key: "<key>",
-  };
+const value: models.CancelDeploymentHasDeploymentsResponse2002 = {
+  type: "cookie",
+  key: "<key>",
+};
 ```
 
-### `models.CancelDeploymentHasDeploymentsResponse200ApplicationJson2`
+### `models.CancelDeploymentHasDeploymentsResponse2002`
 
 ```typescript
-const value: models.CancelDeploymentHasDeploymentsResponse200ApplicationJson2 =
-  {
-    type: "header",
-    key: "<key>",
-  };
+const value: models.CancelDeploymentHasDeploymentsResponse2002 = {
+  type: "cookie",
+  key: "<key>",
+};
 ```
 
-### `models.CancelDeploymentHasDeploymentsResponse200ApplicationJson2`
+### `models.CancelDeploymentHasDeploymentsResponse2002`
 
 ```typescript
-const value: models.CancelDeploymentHasDeploymentsResponse200ApplicationJson2 =
-  {
-    type: "header",
-    key: "<key>",
-  };
+const value: models.CancelDeploymentHasDeploymentsResponse2002 = {
+  type: "cookie",
+  key: "<key>",
+};
 ```
 

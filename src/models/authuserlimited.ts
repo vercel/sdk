@@ -44,6 +44,10 @@ export type AuthUserLimited = {
    * Indicates whether the user is managed by an enterprise.
    */
   isEnterpriseManaged?: boolean | undefined;
+  /**
+   * Whether the Enterprise Managed User joined the current team through the Update Account flow and should see its welcome experience.
+   */
+  shouldShowEnterpriseManagedWelcome?: boolean | undefined;
 };
 
 /** @internal */
@@ -60,6 +64,7 @@ export const AuthUserLimited$inboundSchema: z.ZodType<
   avatar: types.nullable(types.string()),
   defaultTeamId: types.nullable(types.string()),
   isEnterpriseManaged: types.optional(types.boolean()),
+  shouldShowEnterpriseManagedWelcome: types.optional(types.boolean()),
 });
 
 export function authUserLimitedFromJSON(

@@ -11,5 +11,5 @@ let value: GetFirewallConfigRulesSecurityResponseAction = "redirect";
 ## Values
 
 ```typescript
-"bypass" | "challenge" | "deny" | "log" | "rate_limit" | "redirect"
+"allow" | "bypass" | "challenge" | "deny" | "log" | "rate_limit" | "redirect"
 ```

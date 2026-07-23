@@ -34,7 +34,7 @@ import { Result } from "../types/fp.js";
  * List sandboxes
  *
  * @remarks
- * Retrieves a paginated list of named sandboxes belonging to a specific project. Results can be sorted by creation time or name, and optionally filtered by name prefix.
+ * Retrieves a paginated list of named sandboxes belonging to a specific project. Results can be sorted by creation time or name, and optionally filtered by name prefix or status.
  *
  * If set, this operation will use {@link Security.bearerToken} from the global security.
  */
@@ -103,6 +103,7 @@ async function $do(
     "slug": payload.slug,
     "sortBy": payload.sortBy,
     "sortOrder": payload.sortOrder,
+    "status": payload.status,
     "tags": payload.tags,
     "teamId": payload.teamId,
   });
@@ -170,7 +171,7 @@ async function $do(
     | SDKValidationError
   >(
     M.json(200, ListSandboxesResponseBody$inboundSchema),
-    M.fail([400, 401, 403, 404, 429, "4XX"]),
+    M.fail([400, 401, 403, 404, 410, 429, "4XX"]),
     M.fail("5XX"),
   )(response, req);
   if (!result.ok) {

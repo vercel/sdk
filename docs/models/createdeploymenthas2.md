@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CreateDeploymentHas2 } from "@vercel/sdk/models/createdeploymentrouteslocale.js";
+import { CreateDeploymentHas2 } from "@vercel/sdk/models/createdeploymentvaluedeploymentsresponse2.js";
 
 let value: CreateDeploymentHas2 = {
   type: "query",
@@ -13,8 +13,8 @@ let value: CreateDeploymentHas2 = {
 
 ## Fields
 
-| Field                                                                                                        | Type                                                                                                         | Required                                                                                                     | Description                                                                                                  |
-| ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
-| `type`                                                                                                       | [models.CreateDeploymentHasDeploymentsResponseType](../models/createdeploymenthasdeploymentsresponsetype.md) | :heavy_check_mark:                                                                                           | N/A                                                                                                          |
-| `key`                                                                                                        | *string*                                                                                                     | :heavy_check_mark:                                                                                           | N/A                                                                                                          |
-| `value`                                                                                                      | *models.CreateDeploymentHasDeploymentsValue*                                                                 | :heavy_minus_sign:                                                                                           | N/A                                                                                                          |
+| Field                                                                                        | Type                                                                                         | Required                                                                                     | Description                                                                                  |
+| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `type`                                                                                       | [models.CreateDeploymentHasDeploymentsType](../models/createdeploymenthasdeploymentstype.md) | :heavy_check_mark:                                                                           | N/A                                                                                          |
+| `key`                                                                                        | *string*                                                                                     | :heavy_check_mark:                                                                           | N/A                                                                                          |
+| `value`                                                                                      | *models.CreateDeploymentHasDeploymentsValue*                                                 | :heavy_minus_sign:                                                                           | N/A                                                                                          |

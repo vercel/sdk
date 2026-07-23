@@ -8,7 +8,7 @@ A user-facing event type.
 import { ListEventType } from "@vercel/sdk/models/listeventtype.js";
 
 let value: ListEventType = {
-  name: "project-connect-configurations",
+  name: "project-avatar-update",
   description: "monocle jealous accurate vain obscure though",
   categories: [
     "deployment",

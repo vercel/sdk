@@ -136,6 +136,8 @@ export type CountEventsData = {
   cacheHitState: string;
   cacheHitLevel: string;
   cacheApi: string;
+  cacheReason: string;
+  pprState: string;
   clientIp: string;
   clientIpCountry: string;
   clientUserAgent: string;
@@ -147,7 +149,6 @@ export type CountEventsData = {
   botCategory: string;
   botCategoryLegacy: string;
   botVerified: string;
-  dheCipherSuite: string;
   botCheckResult: string;
   deepAnalysisCheck: string;
   wafAction: string;
@@ -200,8 +201,14 @@ export type CountEventsData = {
   aiGatewayModelId: string;
   aiProvider: string;
   aiModelType: string;
+  servedSpeed: string;
   virtualModelSlug: string;
   virtualModelKind: string;
+  inferenceEndpointSlug: string;
+  inferenceScope: string;
+  inferenceGeoRegion: string;
+  inferenceProviderRegion: string;
+  requestedInferenceRegion: string;
   costCurrency: string;
   marketCostCurrency: string;
   cachedInputTokensCurrency: string;
@@ -220,6 +227,8 @@ export type CountEventsData = {
   quotaEntityType: string;
   videoResolution: string;
   videoAspectRatio: string;
+  piiRedactionApplied: string;
+  moderationApplied: string;
   queueName: string;
   consumerGroup: string;
   messageId: string;
@@ -266,6 +275,9 @@ export type CountEventsData = {
   providerAttemptTotalInRequest: string;
   generationId: string;
   sessionId: string;
+  contentCaptureStatus: string;
+  contentCaptureInputs: string;
+  contentCaptureOutputs: string;
   providerAttemptError: string;
   providerAttemptSafetyIdentifier: string;
   providerAttemptDevSafetyIdentifier: string;
@@ -276,6 +288,15 @@ export type CountEventsData = {
   toolCallSuccess: string;
   toolCallErrorType: string;
   toolCallStatusCode: string;
+  environmentId: string;
+  billableRegion: string;
+  direction: string;
+  networkTenancy: string;
+  trafficSource: string;
+  networkId: string;
+  privatelinkEndpointId: string;
+  privatelinkDnsName: string;
+  privatelinkIpAddress: string;
   additionalProperties?: { [k: string]: number | null } | undefined;
 };
 
@@ -431,6 +452,8 @@ export const CountEventsData$inboundSchema: z.ZodType<
     cacheHitState: types.string(),
     cacheHitLevel: types.string(),
     cacheApi: types.string(),
+    cacheReason: types.string(),
+    pprState: types.string(),
     clientIp: types.string(),
     clientIpCountry: types.string(),
     clientUserAgent: types.string(),
@@ -442,7 +465,6 @@ export const CountEventsData$inboundSchema: z.ZodType<
     botCategory: types.string(),
     botCategoryLegacy: types.string(),
     botVerified: types.string(),
-    dheCipherSuite: types.string(),
     botCheckResult: types.string(),
     deepAnalysisCheck: types.string(),
     wafAction: types.string(),
@@ -495,8 +517,14 @@ export const CountEventsData$inboundSchema: z.ZodType<
     aiGatewayModelId: types.string(),
     aiProvider: types.string(),
     aiModelType: types.string(),
+    servedSpeed: types.string(),
     virtualModelSlug: types.string(),
     virtualModelKind: types.string(),
+    inferenceEndpointSlug: types.string(),
+    inferenceScope: types.string(),
+    inferenceGeoRegion: types.string(),
+    inferenceProviderRegion: types.string(),
+    requestedInferenceRegion: types.string(),
     costCurrency: types.string(),
     marketCostCurrency: types.string(),
     cachedInputTokensCurrency: types.string(),
@@ -515,6 +543,8 @@ export const CountEventsData$inboundSchema: z.ZodType<
     quotaEntityType: types.string(),
     videoResolution: types.string(),
     videoAspectRatio: types.string(),
+    piiRedactionApplied: types.string(),
+    moderationApplied: types.string(),
     queueName: types.string(),
     consumerGroup: types.string(),
     messageId: types.string(),
@@ -561,6 +591,9 @@ export const CountEventsData$inboundSchema: z.ZodType<
     providerAttemptTotalInRequest: types.string(),
     generationId: types.string(),
     sessionId: types.string(),
+    contentCaptureStatus: types.string(),
+    contentCaptureInputs: types.string(),
+    contentCaptureOutputs: types.string(),
     providerAttemptError: types.string(),
     providerAttemptSafetyIdentifier: types.string(),
     providerAttemptDevSafetyIdentifier: types.string(),
@@ -571,6 +604,15 @@ export const CountEventsData$inboundSchema: z.ZodType<
     toolCallSuccess: types.string(),
     toolCallErrorType: types.string(),
     toolCallStatusCode: types.string(),
+    environmentId: types.string(),
+    billableRegion: types.string(),
+    direction: types.string(),
+    networkTenancy: types.string(),
+    trafficSource: types.string(),
+    networkId: types.string(),
+    privatelinkEndpointId: types.string(),
+    privatelinkDnsName: types.string(),
+    privatelinkIpAddress: types.string(),
   }).catchall(types.number()),
   "additionalProperties",
   true,

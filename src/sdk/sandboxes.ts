@@ -112,7 +112,7 @@ export class Sandboxes extends ClientSDK {
    * List sandboxes
    *
    * @remarks
-   * Retrieves a paginated list of named sandboxes belonging to a specific project. Results can be sorted by creation time or name, and optionally filtered by name prefix.
+   * Retrieves a paginated list of named sandboxes belonging to a specific project. Results can be sorted by creation time or name, and optionally filtered by name prefix or status.
    */
   async listSandboxes(
     request: ListSandboxesRequest,

@@ -18,6 +18,7 @@ let value: SessionCommand = {
   sessionId: "sbx_123a6c5209bc3778245d011443644c8d27dc2c50",
   exitCode: 0,
   startedAt: 1673123456789,
+  durationMs: 1234,
 };
 ```
 
@@ -32,3 +33,4 @@ let value: SessionCommand = {
 | `sessionId`                                                    | *string*                                                       | :heavy_check_mark:                                             | The ID of the session associated with the command.             | sbx_123a6c5209bc3778245d011443644c8d27dc2c50                   |
 | `exitCode`                                                     | *number*                                                       | :heavy_check_mark:                                             | If the command did finish, the exit code.                      | 0                                                              |
 | `startedAt`                                                    | *number*                                                       | :heavy_check_mark:                                             | When the command was started, in milliseconds since the epoch. | 1673123456789                                                  |
+| `durationMs`                                                   | *number*                                                       | :heavy_minus_sign:                                             | Duration of the command execution in milliseconds.             | 1234                                                           |
